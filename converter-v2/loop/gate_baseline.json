@@ -1,8 +1,8 @@
 {
   "_meta": {
     "purpose": "Committed PROTECTED-gate baseline (efficiency lever 2). The shared corpus DRIFTS between sessions so the BUILD_CHANGELOG absolutes never line up exactly — without a committed baseline the only rigorous proof of hold-or-improve is a second full A/B regen pass (~8m/round). Diff THIS after a regen instead. Refresh it (and the build/round) every shipped round, AFTER the gates pass.",
-    "build": "260619.58",
-    "round": 387,
+    "build": "260619.69",
+    "round": 398,
     "date": "2026-09-19",
     "_round92_note": "Round 92 (ENGS302-01: side-alert-box-in-table + dragAndDrop activity wrapper / data-table capture / phantom-journal-button fix). Verified on a FULL 0-stale tightened regen vs the round-91 committed baseline (which matched the fast-loop baseline exactly: over 42 / any 181). PRIMARY skeleton IMPROVED (pages>=50% 524->539 +15, >=75% 65->70 +5, mean 47.8->48.2, median 49.3->49.8); compare_structure exact 5893->5902 (+9) / missing 261->252 (-9) / EXTRA 142 HELD; structural-clean 1290->1291 (95.0->95.1%) / leak 254->253 (-1) / leak pages 68->67 (-1); tags 9557/9557; flipCard divergence 0 (37/13/10/14); speechBubble defect 0. body_compare any 181->184 (+3) — the +3 over-capture (ENGC201-06, ENGR101-05, MXDB301-03) is the UNAVOIDABLE cost of capturing the dragAndDrop/activity DATA TABLE into the widget (the user's explicit fix): those tables ARE the widget's data the human BUILDS, but body_compare cannot credit Claude's un-built placeholder, and for these 3 the human keeps the table free. Net-positive per the MEASUREMENT MANDATE (judge a structural change FIRST on the skeleton, which improved +15) + the NET-POSITIVE convention. _round91_note: round 91 (ENGS302 emphasis-bullets/caption/media-url/lesson-name) shipped +1 skeleton / +1 compare exact / +2 missing.",
     "corpus": {
@@ -81,15 +81,27 @@
     "_note_r384": "Round 384: DECLINED, shipped inert (elements.table.cell_bullets enabled false) — the corpus is byte-identical to r383; every r383 baseline stands.",
     "_note_r385": "Round 385: the inquiry / fundamentals panel's first own heading is h2 (43 pages / 43 modules; scoped ship #6 since the r377 full). Skeleton 53.250 -> 53.265 (+0.015pp; 38 movers 24 up / 14 down), >=50 1148 -> 1149, >=75 185, >=90 15, RAW 37.560 -> 37.575; every other gate EXACT.",
     "_note_r386": "Round 386: a measurement-tool round - _structural_skeleton.label renders the class tokens SORTED (97 gold pages write class=\"col-12 col-md-8\"); the r385 corpus re-scored: skeleton 53.265 -> 53.351 (+0.087pp, an instrument correction; 77 movers 76 up / 1 down), >=50 1149 -> 1151, >=75 185, >=90 15, RAW 37.575 -> 37.675; every other gate EXACT; no regeneration.",
-    "_note_r387": "Round 387: the whakatauki does not close its column (63 pages / 59 modules; scoped ship #7 since the r377 full). Skeleton 53.351 -> 53.395 (+0.043pp; 62 movers 54 up / 8 down, pp-sum +84.7), >=50 1151 -> 1152, >=75 185 -> 189, >=90 15, RAW 37.675 -> 37.688; every other gate EXACT."
+    "_note_r387": "Round 387: the whakatauki does not close its column (63 pages / 59 modules; scoped ship #7 since the r377 full). Skeleton 53.351 -> 53.395 (+0.043pp; 62 movers 54 up / 8 down, pp-sum +84.7), >=50 1151 -> 1152, >=75 185 -> 189, >=90 15, RAW 37.675 -> 37.688; every other gate EXACT.",
+    "_note_r388": "Round 388: the plain / solid alert box does not close its column either (323 pages / 138 modules; FULL regeneration, the ledger's backstop, counter 0). Skeleton 53.395 -> 53.455 (+0.060pp; 298 movers 244 up / 54 down, pp-sum +117.3), >=50 1152 -> 1155, >=75 189 -> 192, >=90 15, RAW 37.688 -> 37.719; every other gate EXACT.",
+    "_note_r389": "Round 389: the built flipCard group closes its column (29 pages / 21 modules; scoped ship #1 since the r388 full). Skeleton 53.455 -> 53.470 (+0.016pp; 29 movers 23 up / 6 down, pp-sum +30.7), >=50 1155 -> 1157, >=75 192 -> 191 (OSAH301_1_0 named), >=90 15, RAW 37.719 -> 37.725; every other gate EXACT.",
+    "_note_r390": "Round 390: the supervisor note's explicit closer makes the panel a span (21 pages / 3 modules; scoped ship #2 since the r388 full). Skeleton 53.470 -> 53.518 (+0.047pp; 21 movers all up, pp-sum +92.5), >=50 1157, >=75 191, >=90 15 EXACT, RAW 37.725 -> 37.756; compare_structure exact 11643 -> 11700 (+57 IMPROVED); every other gate EXACT.",
+    "_note_r390_cs": "compare_structure exact wrapper chain 11643 -> 11700 (+57) at r390; EXTRA 172 / MISSING 625 unchanged.",
+    "_note_r391": "Round 391: the own-row supervisor panel's text column in Leaving to Learn (28 pages / 6 modules; scoped ship #3 since the r388 full). Skeleton 53.518 -> 53.525 (+0.008pp; 23 movers 21 up / 2 down, pp-sum +15.2), >=50 1157 -> 1158, >=75 191, >=90 15, RAW 37.756 -> 37.762; every other gate EXACT.",
+    "_note_r392": "Round 392: adjacent sibling lists are one list (51 pages / 32 modules; scoped ship #4 since the r388 full). Skeleton 53.525 -> 53.554 (+0.028pp; 38 movers 35 up / 2 down, pp-sum +55.5), >=50 1158 -> 1160, >=75 191, >=90 15, RAW 37.762 -> 37.785; compare_structure exact 11700 -> 11723 (MISSING 625 -> 626); every other gate EXACT.",
+    "_note_r393": "Round 393: a glyph-only line renders nothing (68 pages / 60 modules; scoped ship #5 since the r388 full). Skeleton 53.554 -> 53.560 (+0.0065pp; 47 movers 35 up / 6 down, pp-sum +12.6), >=50 1160 -> 1159 (CEDK501_5_1, the gate's repeat-collapse alignment), >=75 191, >=90 15, RAW 37.785 -> 37.787; compare_structure 11723 / 172 / 626 and every other gate EXACT.",
+    "_note_r394": "Round 394: the clickDrop buttons sit directly in the column (122 pages / 77 modules; scoped ship #6 since the r388 full). Skeleton 53.560 -> 53.674 (+0.114pp; 117 movers 84 up / 29 down, pp-sum +221.9), >=50 1159 -> 1163, >=75 191 -> 194, >=90 15 -> 18, RAW 37.787 -> 37.779; compare_structure 11723 / 172 / 626 and every other gate EXACT; every verifier RESULT identical.",
+    "_note_r395": "Round 395: the flip-card column width follows the card count (39 pages / 37 modules; scoped ship #7 since the r388 full — the next ship is the FULL backstop). Skeleton 53.674 -> 53.684 (+0.010pp; 16 movers 15 up / 1 down, pp-sum +19.4), >=50 1163, >=75 194 -> 195, >=90 18, RAW 37.779 -> 37.784; compare_structure 11723 / 172 / 626 and every other gate EXACT; every verifier RESULT identical.",
+    "_note_r396": "Round 396: a carousel video slide with a caption is item video (52 pages / 44 modules; THE FULL-REGENERATION BACKSTOP — all 416 regenerated, 0 stale, the manifest diff = the probe's 52 pages; the ledger reset to 0 scoped since). Skeleton 53.684 / >=50 1163 / >=75 195 / >=90 18 EXACT (gate-invisible), RAW 37.784 -> 37.780; compare_structure 11723 / 172 / 626 and every other gate EXACT; every verifier RESULT identical.",
+    "_note_r397": "Round 397: a table header cell is plain (92 pages / 58 modules; scoped ship #1 since the r396 full). Skeleton 53.684 -> 53.695 (+0.012pp; 80 movers 70 up / 7 down, pp-sum +23.6), >=50 1163, >=75 195, >=90 18, RAW 37.780 -> 37.782; compare_structure 11723 / 172 / 626 and every other gate EXACT; every verifier RESULT identical.",
+    "_note_r398": "Round 398: the videoSection icon registry re-mined + the widget-embedded video follows it (198 pages / 74 modules; scoped ship #2 since the r396 full). Skeleton 53.695 -> 53.759 (+0.064pp; 88 movers 84 up / 4 down, pp-sum +124.8), >=50 1163 -> 1166, >=75 195, >=90 18, RAW 37.782 -> 37.846; compare_structure 11723 / 172 / 626 and every other gate EXACT; every verifier RESULT identical."
   },
   "skeleton": {
-    "mean_scaffold_pct": 53.395,
-    "median_scaffold_pct": 54.0,
-    "pages_ge_50": 1152,
-    "pages_ge_75": 189,
-    "pages_ge_90": 15,
-    "raw_mean_pct": 37.688,
+    "mean_scaffold_pct": 53.759,
+    "median_scaffold_pct": 54.3,
+    "pages_ge_50": 1166,
+    "pages_ge_75": 195,
+    "pages_ge_90": 18,
+    "raw_mean_pct": 37.846,
     "pairs": 1956,
     "pairs_skipped": 0,
     "_note_r350": "Round 350: the dragAndDrop build kickoff shape 1 + the 03B button row — SCAFFOLD identical page-for-page to r349 (a build is inside the collapsed widget marker); RAW 35.049 → 35.115. State outputs/_r350_sk_final.json.",
@@ -123,12 +135,23 @@
     "_note_r383": "Round 383: SCAFFOLD 53.2192 -> 53.2500 (+0.031pp; 95 movers, 78 up / 17 down, pp-sum +60.4 - CEDO501_1_0 -3.4, ENGJ403_4_0 -3.2 named), >=50 1148, >=75 185, >=90 15, RAW 37.560; SCOPED regeneration of 94 modules (203 pages).",
     "_note_r385": "Round 385: SCAFFOLD 53.2500 -> 53.2647 (+0.015pp; 38 movers, 24 up / 14 down, pp-sum +28.7 - the five biggest dips the alignment artefact, position-free overlap flat or up), >=50 1149, >=75 185, >=90 15, RAW 37.575; SCOPED regeneration of 43 modules (43 pages).",
     "_note_r386": "Round 386: SCAFFOLD 53.2647 -> 53.3513 (+0.087pp; 77 movers, 76 up / 1 down, pp-sum +169.3 - XDLS906_4_0 +15.1), >=50 1151, >=75 185, >=90 15, RAW 37.675; the order-blind class label on the r385 corpus (no regeneration). A comparison across r386 must use the order-blind label on both sides.",
-    "_note_r387": "Round 387: SCAFFOLD 53.3513 -> 53.3946 (+0.043pp; 62 movers, 54 up / 8 down, pp-sum +84.7 - the 8 dips the whakatauki family's gold-BREAK minority: OSAI201_0_0 -3.4, SSCI205_0_0 -2.8, HPRE203_0_0 -2.6, EXBP901_2_0 -1.0, OSBY401_0_0 -0.8, CEDO301_0_0 -0.7, EXIP901_5_0 -0.6, CEDW501_1_0 -0.3), >=50 1152, >=75 189, >=90 15, RAW 37.688; SCOPED regeneration of the 59 whakatauki modules, the probe proving the other 357 byte-identical. State outputs/_s26_r387_sk_final.json."
+    "_note_r387": "Round 387: SCAFFOLD 53.3513 -> 53.3946 (+0.043pp; 62 movers, 54 up / 8 down, pp-sum +84.7 - the 8 dips the whakatauki family's gold-BREAK minority: OSAI201_0_0 -3.4, SSCI205_0_0 -2.8, HPRE203_0_0 -2.6, EXBP901_2_0 -1.0, OSBY401_0_0 -0.8, CEDO301_0_0 -0.7, EXIP901_5_0 -0.6, CEDW501_1_0 -0.3), >=50 1152, >=75 189, >=90 15, RAW 37.688; SCOPED regeneration of the 59 whakatauki modules, the probe proving the other 357 byte-identical. State outputs/_s26_r387_sk_final.json.",
+    "_note_r388": "Round 388: SCAFFOLD 53.3946 -> 53.4546 (+0.060pp; 298 movers, 244 up / 54 down, pp-sum +117.3 - the 54 dips the alert family's gold-BREAK minority: XLP06_2_0 -4.9, MXDB302_5_0 -4.1, ENGJ201_3_0 -2.9, ENGS302_3_0 -2.8, TEDC402_1_0 -2.6, ENGS101_3_0 -2.3, ENGI201_1_0 -2.3, ENGJ102_3_0 -2.2, AGH1005_3_0 -2.1, MXDB102_1_0 -2.0, AGH1007_9_0 -2.0, OSOH201_3_0 -1.8, the rest <= 1.8), >=50 1155, >=75 192, >=90 15, RAW 37.719; FULL regeneration of all 416 (0 movers outside the 138 affected modules). State outputs/_s26_r388_sk_final.json.",
+    "_note_r389": "Round 389: SCAFFOLD 53.4546 -> 53.4702 (+0.016pp; 29 movers, 23 up / 6 down, pp-sum +30.7 - the 6 dips the flipCard family's gold-flow minority: OSAH301_1_0 -2.8 (76.2 -> 73.4, the >=75 down-crosser, accepted by name), OSOH101_3_0 -1.0, OSBY101_1_0 -0.5, OSOH401_1_0 -0.3, TEDC401_4_0 -0.2, TEDC402_2_0 -0.1), >=50 1157 (CEDO501_2_0 + MXFL301_1_0 cross up), >=75 191, >=90 15, RAW 37.725; SCOPED regeneration of the 21 flipCard modules, the probe proving the other 395 byte-identical. State outputs/_s26_r389_sk_final.json.",
+    "_note_r390": "Round 390: SCAFFOLD 53.4702 -> 53.5175 (+0.047pp; 21 movers, ALL up, pp-sum +92.5 - XDLS905_7_0 +19.7, XDLS905_1_0 +15.7, XDLS906_2_0 +5.7, XDLS904_1_0 +4.8), >=50 1157, >=75 191, >=90 15, RAW 37.756; SCOPED regeneration of XDLS904 / 905 / 906, the probe proving the other 413 byte-identical. State outputs/_s26_r390_sk_final.json.",
+    "_note_r391": "Round 391: SCAFFOLD 53.5175 -> 53.5253 (+0.008pp; 23 movers, 21 up / 2 down, pp-sum +15.2 - XDLS901_2_0 -0.9 / XDLS901_4_0 -0.7 the family's col-12 minority), >=50 1158 (XDLS906_2_0 up), >=75 191, >=90 15, RAW 37.762; SCOPED regeneration of the 6 LtL own-row-panel modules. State outputs/_s26_r391_sk_final.json.",
+    "_note_r392": "Round 392: SCAFFOLD 53.5253 -> 53.5537 (+0.028pp; 38 movers, 35 up / 2 down, pp-sum +55.5 - SSOG103_0_0 -0.9 / ENGI103_1_0 -0.5 alignment shifts), >=50 1160 (AGH1006_5_0, XDLS905_2_0 up), >=75 191, >=90 15, RAW 37.785; SCOPED regeneration of the 32 affected modules. State outputs/_s26_r392_sk_final.json.",
+    "_note_r393": "Round 393: SCAFFOLD 53.5537 -> 53.5602 (+0.0065pp; 47 movers, 35 up / 6 down, pp-sum +12.6 - CEDK501_5_1 -9.1 / ENGI301_4_0 -4.1 the repeat-collapse alignment), >=50 1159 (CEDK501_5_1 down), >=75 191, >=90 15, RAW 37.787; SCOPED regeneration of the 60 affected modules. State outputs/_s26_r393_sk_final.json.",
+    "_note_r394": "Round 394: SCAFFOLD 53.5602 -> 53.6736 (+0.114pp; 117 movers, 84 up / 29 down, pp-sum +221.9 - OSBY201_1_0 -6.2 / MXFU301_7_0 -6.1 / BLL217_2_0 -5.1 the alignment re-pairing), >=50 1163 (7 up / 3 down), >=75 194 (+3), >=90 18 (+3), median 54.2, RAW 37.779; SCOPED regeneration of the 77 affected modules. State outputs/_s26_r394_sk_final.json.",
+    "_note_r395": "Round 395: SCAFFOLD 53.6736 -> 53.6835 (+0.010pp; 16 movers, 15 up / 1 down, pp-sum +19.4 - TEFUN08_0_0 -0.2), >=50 1163, >=75 195 (OSOH201_2_0 up), >=90 18, median 54.3, RAW 37.784; SCOPED regeneration of the 37 affected modules. State outputs/_s26_r395_sk_final.json.",
+    "_note_r396": "Round 396: SCAFFOLD 53.6835 EXACT (0 movers - the carousel item class is a widget-internal token), >=50 1163, >=75 195, >=90 18, median 54.3, RAW 37.780; FULL regeneration of all 416 (the ledger's backstop). State outputs/_s26_r396_sk_final.json.",
+    "_note_r397": "Round 397: SCAFFOLD 53.6835 -> 53.6953 (+0.012pp; 80 movers, 70 up / 7 down, pp-sum +23.6 - ENGJ403_6_0 -0.9 / ENGI405_6_0 -0.8 English pages whose gold keeps the bold), >=50 1163, >=75 195, >=90 18, median 54.3, RAW 37.782; SCOPED regeneration of the 58 affected modules. State outputs/_s26_r397_sk_final.json.",
+    "_note_r398": "Round 398: SCAFFOLD 53.6953 -> 53.7589 (+0.064pp; 88 movers, 84 up / 4 down, pp-sum +124.8 - MXDI102 x4 the MXDI10 series' plain minority, MXDI102_0_0 50.0 -> 47.7 the >=50 down-crosser named), >=50 1166, >=75 195, >=90 18, median 54.3, RAW 37.846; SCOPED regeneration of the 74 affected modules. State outputs/_s27_r398_sk_final.json."
   },
   "compare_structure": {
-    "exact_chain": 11643,
+    "exact_chain": 11723,
     "claude_extra_container": 172,
-    "claude_missing_container": 625,
+    "claude_missing_container": 626,
     "row_wrap_missing": 23,
     "_note_r352": "Round 352: exact 11464 → 11607 (+143, the restored sections); missing 607 → 617 NAMED — the 44 pages whose carousel reverts to the honest hand-off box (a trailing [video]/[image], words between slide tables, a leading heading) no longer show the gold's row.carousel container. Hold-or-improve from here.",
     "_note_r356": "Round 356: exact 11607 → 11617 (+10, the restored paragraphs the gold has); EXTRA 175 / missing 617 EXACT.",
@@ -137,7 +160,8 @@
     "_note_r370": "Round 370: exact 11631 -> 11628 = the text-matched pool 13695 -> 13692 (three removed boilerplate lines had text-matched a gold element); EXTRA 175 / MISSING 617 / row-wrap 23 EXACT.",
     "_note_r376": "Round 376: exact 11628 -> 11642 (+14), MISSING 617 -> 620 (+3), EXTRA 175 / row-wrap 23 EXACT.",
     "_note_r377": "Round 377: exact 11642 -> 11641 (-1 = the matched pool 13716 -> 13709, the relocation class), EXTRA 175 -> 172 (IMPROVED), MISSING 620 / row-wrap 23 EXACT.",
-    "_note_r378": "Round 378: exact 11641 -> 11643 (+2), MISSING 620 -> 625 (+5 = the matched pool 13709 -> 13717, the freed prose text-matching gold paragraphs the gold wraps differently), EXTRA 172 / row-wrap 23 EXACT."
+    "_note_r378": "Round 378: exact 11641 -> 11643 (+2), MISSING 620 -> 625 (+5 = the matched pool 13709 -> 13717, the freed prose text-matching gold paragraphs the gold wraps differently), EXTRA 172 / row-wrap 23 EXACT.",
+    "_note_r392": "Round 392: exact 11700 -> 11723; EXTRA 172; MISSING 625 -> 626; row-wrap 23."
   },
   "body_compare": {
     "any_breakdown": 218,

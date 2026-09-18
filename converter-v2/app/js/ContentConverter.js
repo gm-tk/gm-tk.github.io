@@ -3768,7 +3768,10 @@ class ContentConverter {
 				sectionMode: secInquiryMode, sectionLabels: secInq.labels });
 		// ROUND 385: the panel's first own heading is h2 (both panel kinds exist by now); the inquiry
 		// flags below read the PRE-post-pass comparison so the post-pass can never flip them.
-		const finalBody = PanelsBuilder.panelTitleLevelPostpass(finalBody0, run);
+		// ROUND 398: the widget-embedded videos take the module's `icon` class too (MediaBuilder.videoIconPostpass —
+		// the r200 rule's recorded follow-up; runs LAST so every emitter's videoSection is covered at one seam; a
+		// class-token change only, so nothing below it can be affected).
+		const finalBody = MediaBuilder.videoIconPostpass(PanelsBuilder.panelTitleLevelPostpass(finalBody0, run), run);
 		const inquiryActive = (inquiryMode || cedInquiryMode || secInquiryMode) && finalBody0 !== bodyHtml;
 		// CED firing flags the fixed inquiry footer-nav shell (a single-file CED page has no
 		// registry footer links of its own, so SkeletonBuilder would otherwise emit an empty

@@ -1,0 +1,32 @@
+==== A  r200 re-mined (series n>=3 @0.85; st n>=5 @0.80; no carve-out) ====
+   icon_series +['MXDI10']  -[]
+   plain_series []
+   icon_st +['NCEA1|Standard']  -[]
+   modules flipping to ICON 25, to PLAIN 0; pages touched 121; NET matched lines +32 (lines newly right 105 / newly wrong 73)
+   to icon: AGH1001(0/3), AGH1002(0/4), AGH1003(3/2), AGH1004(5/2), AGH1005(16/0), AGH1006(10/0), AGH1007(0/7), AGH1008(12/0), AGH1009(11/0), HES1003(9/0), HES1004(0/1), HES1005(0/13), HES1006(3/0), HES1007(1/0), MXDI101(16/0), MXDI102(0/6), MXDI103(13/0), PHE1001(1/0), PHE1002(2/1), PHE1003(1/4), PHE1004(0/1), PHE1005(2/1), PHE1006(0/3), PHE1007(0/14), PHE1008(0/11)
+   to plain: 
+
+==== A' r200 re-mined + plain-series carve-out (series n>=3 @<=0.40 plain) ====
+   icon_series +['MXDI10']  -[]
+   plain_series ['BLL21', 'BLL22', 'BLL23', 'BLL24', 'BLL25', 'HES10', 'HPFUN20', 'HPFUN30', 'PHE10', 'TRR10', 'TRR11', 'TWHA90', 'XDLS90', 'XGF90', 'XMES10']
+   icon_st +['NCEA1|Standard']  -[]
+   modules flipping to ICON 12, to PLAIN 0; pages touched 73; NET matched lines +62 (lines newly right 86 / newly wrong 24)
+   to icon: AGH1001(0/3), AGH1002(0/4), AGH1003(3/2), AGH1004(5/2), AGH1005(16/0), AGH1006(10/0), AGH1007(0/7), AGH1008(12/0), AGH1009(11/0), MXDI101(16/0), MXDI102(0/6), MXDI103(13/0)
+   to plain: 
+
+==== B  series n>=2 @0.85 / plain <=0.40; st n>=5 @0.80 ====
+   icon_series +['ANZH20', 'CEDR20', 'CEDR30', 'ENGC20', 'ENGC30', 'ENGJ10', 'ENGJ20', 'ENGR10', 'ENGS20', 'MXDB20', 'MXDB30', 'MXDI10', 'MXEO20', 'MXEX20', 'MXEX30', 'MXFL30', 'MXFU30', 'XDLS91']  -[]
+   plain_series ['BLL21', 'BLL22', 'BLL23', 'BLL24', 'BLL25', 'BLL26', 'CEDK10', 'CEDO10', 'CEDO50', 'CEDT10', 'ENGC10', 'ENGJ30', 'ENGJ40', 'ENGR30', 'ENGS10', 'ENGS30', 'ENGS40', 'HES10', 'HPFUN20', 'HPFUN30', 'MXFU40', 'PHE10', 'TEDC40', 'TRR10', 'TRR11', 'TRR30', 'TWHA90', 'XDLS90', 'XGF90', 'XMES10', 'XMES20']
+   icon_st +['NCEA1|Standard']  -[]
+   modules flipping to ICON 44, to PLAIN 0; pages touched 217; NET matched lines +296 (lines newly right 323 / newly wrong 27)
+   to icon: AGH1001(0/3), AGH1002(0/4), AGH1003(3/2), AGH1004(5/2), AGH1005(16/0), AGH1006(10/0), AGH1007(0/7), AGH1008(12/0), AGH1009(11/0), CEDR201(3/0), CEDR204(7/1), CEDR301(5/0), CEDR302(3/0), ENGC201(9/0), ENGC202(3/0), ENGC301(14/1), ENGC302(3/1), ENGJ101(3/0), ENGJ102(9/0), ENGJ201(5/0), ENGJ202(5/0), ENGR101(6/0), ENGR102(20/0), ENGS201(10/0), ENGS202(12/0), MXDB201(10/0), MXDB202(7/0), MXDB301(5/0), MXDB302(11/0), MXDI101(16/0), MXDI102(0/6), MXDI103(13/0), MXEO201(15/0), MXEO202(10/0), MXEX201(5/0), MXEX202(7/0), MXEX301(1/0), MXEX302(8/0), MXFL301(10/0), MXFL302(9/0), MXFU301(7/0), MXFU302(3/0), XDLS911(1/0), XDLS912(11/0)
+   to plain: 
+
+==== C  series n>=2 @0.85 / plain <=0.40; st n>=5 @0.60 ====
+   icon_series +['ANZH20', 'CEDR20', 'CEDR30', 'ENGC20', 'ENGC30', 'ENGJ10', 'ENGJ20', 'ENGR10', 'ENGS20', 'MXDB20', 'MXDB30', 'MXDI10', 'MXEO20', 'MXEX20', 'MXEX30', 'MXFL30', 'MXFU30', 'XDLS91']  -[]
+   plain_series ['BLL21', 'BLL22', 'BLL23', 'BLL24', 'BLL25', 'BLL26', 'CEDK10', 'CEDO10', 'CEDO50', 'CEDT10', 'ENGC10', 'ENGJ30', 'ENGJ40', 'ENGR30', 'ENGS10', 'ENGS30', 'ENGS40', 'HES10', 'HPFUN20', 'HPFUN30', 'MXFU40', 'PHE10', 'TEDC40', 'TRR10', 'TRR11', 'TRR30', 'TWHA90', 'XDLS90', 'XGF90', 'XMES10', 'XMES20']
+   icon_st +['1-10 Mathematics|Standard', 'ConnectED|Inquiry', 'NCEA1|Standard']  -[]
+   modules flipping to ICON 72, to PLAIN 0; pages touched 353; NET matched lines +382 (lines newly right 519 / newly wrong 137)
+   to icon: AGH1001(0/3), AGH1002(0/4), AGH1003(3/2), AGH1004(5/2), AGH1005(16/0), AGH1006(10/0), AGH1007(0/7), AGH1008(12/0), AGH1009(11/0), CEDK501(0/11), CEDO202(0/6), CEDR201(3/0), CEDR204(7/1), CEDR301(5/0), CEDR302(3/0), CEDT201(3/0), CEDT202(3/0), CEDT203(4/0), CEDT204(2/0), CEDT207(18/0), CEDT208(0/3), CEDT301(13/0), CEDT404(7/0), CEDW101(15/0), CEDW201(5/0), ENGC201(9/0), ENGC202(3/0), ENGC301(14/1), ENGC302(3/1), ENGJ101(3/0), ENGJ102(9/0), ENGJ201(5/0), ENGJ202(5/0), ENGR101(6/0), ENGR102(20/0), ENGS201(10/0), ENGS202(12/0), MXDB102(17/0), MXDB201(10/0), MXDB202(7/0), MXDB301(5/0), MXDB302(11/0), MXDI101(16/0), MXDI102(0/6), MXDI103(13/0), MXDI201(29/0), MXDI202(0/38), MXDI301(1/0), MXEO102(5/0), MXEO201(15/0), MXEO202(10/0), MXEO301(11/7), MXEO401(0/10), MXEX101(7/0), MXEX201(5/0), MXEX202(7/0), MXEX301(1/0), MXEX302(8/0), MXEX401(7/0), MXFL101(8/0), MXFL102(0/17), MXFL103(12/0), MXFL104(6/0), MXFL301(10/0), MXFL302(9/0), MXFL401(0/8), MXFU201(17/0), MXFU202(6/10), MXFU301(7/0), MXFU302(3/0), XDLS911(1/0), XDLS912(11/0)
+   to plain: 
+

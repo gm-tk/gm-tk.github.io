@@ -1,0 +1,83 @@
+==== subject|template — gate-VISIBLE videos on paired pages: gold icon / plain, Claude icon / plain, the same-page substitutions (gold icon→Claude plain | gold plain→Claude icon) ====
+   1-10 Mathematics|Standard                gold  311/ 111 (0.74, n= 39)  claude   39/ 333  sub icon→plain  203 on 123 pp /  26 mods  plain→icon   0  
+   1-10 English|Standard                    gold  163/ 137 (0.54, n= 40)  claude   30/ 231  sub icon→plain   87 on  62 pp /  21 mods  plain→icon   1  
+   Leaving to Learn|Standard                gold   84/ 175 (0.32, n= 30)  claude    0/ 243  sub icon→plain   52 on  29 pp /   9 mods  plain→icon   0  
+   ConnectED|Inquiry                        gold   93/  57 (0.62, n= 21)  claude    0/  86  sub icon→plain   45 on  14 pp /   8 mods  plain→icon   0  
+   Leaving to Learn|Inquiry                 gold   29/  12 (0.71, n=  3)  claude    0/  45  sub icon→plain   26 on  10 pp /   2 mods  plain→icon   0  
+   1-10 Blended Literacy|Inquiry            gold  121/ 118 (0.51, n= 11)  claude   21/  46  sub icon→plain   25 on   3 pp /   3 mods  plain→icon   0  
+   Online Safety (OS9000)|Standard          gold   24/ 140 (0.15, n= 28)  claude    0/ 165  sub icon→plain   22 on  15 pp /   6 mods  plain→icon   0  
+   1-10 Mathematics|Fundamentals            gold   51/   1 (0.98, n=  3)  claude    0/  24  sub icon→plain   17 on   7 pp /   2 mods  plain→icon   0  
+   NCEA1|Standard                           gold  313/  72 (0.81, n= 41)  claude  216/  33  sub icon→plain   16 on  13 pp /   5 mods  plain→icon   2  SOLIDIFIES
+   1-10 Technology|Fundamentals             gold   18/   4 (0.82, n=  8)  claude    0/  15  sub icon→plain   10 on   6 pp /   6 mods  plain→icon   0  SOLIDIFIES
+   ConnectED|Standard                       gold    8/  31 (0.21, n=  7)  claude    0/  33  sub icon→plain    7 on   6 pp /   2 mods  plain→icon   0  
+   1-10 Social Science|Standard             gold   12/  13 (0.48, n=  5)  claude    0/  36  sub icon→plain    7 on   5 pp /   3 mods  plain→icon   0  
+   1-10 Blended Literacy|Standard           gold   60/  42 (0.59, n= 65)  claude   46/  26  sub icon→plain    2 on   1 pp /   1 mods  plain→icon   3  
+   1-10 English|Fundamentals                gold   41/   0 (1.00, n=  8)  claude   37/   1  sub icon→plain    1 on   1 pp /   1 mods  plain→icon   0  IN-REGISTRY
+   ANZH|Standard                            gold   45/  11 (0.80, n= 10)  claude   75/   0  sub icon→plain    0 on   0 pp /   0 mods  plain→icon   9  IN-REGISTRY
+   1-10 Arts|Fundamentals                   gold   30/   0 (1.00, n=  5)  claude   66/   7  sub icon→plain    0 on   0 pp /   0 mods  plain→icon   0  IN-REGISTRY
+   EXPlore|Inquiry                          gold    0/   2 (0.00, n=  2)  claude    2/   0  sub icon→plain    0 on   0 pp /   0 mods  plain→icon   0  IN-REGISTRY
+   1-10 Social Science|Fundamentals         gold   41/   0 (1.00, n=  6)  claude   55/   0  sub icon→plain    0 on   0 pp /   0 mods  plain→icon   0  IN-REGISTRY
+
+==== series — gate-VISIBLE videos on paired pages: gold icon / plain, Claude icon / plain, the same-page substitutions (gold icon→Claude plain | gold plain→Claude icon) ====
+   MXDI20                                   gold   29/  38 (0.43, n=  2)  claude    0/  57  sub icon→plain   27 on   9 pp /   1 mods  plain→icon   0  
+   XDLS90                                   gold   30/ 102 (0.23, n=  8)  claude    0/ 154  sub icon→plain   27 on  11 pp /   3 mods  plain→icon   0  
+   MXDI10                                   gold   29/   6 (0.83, n=  3)  claude    0/  36  sub icon→plain   25 on  15 pp /   2 mods  plain→icon   0  
+   MXEO20                                   gold   25/   0 (1.00, n=  2)  claude    0/  25  sub icon→plain   24 on  13 pp /   2 mods  plain→icon   0  
+   MXFL10                                   gold   26/  17 (0.60, n=  4)  claude    0/  44  sub icon→plain   23 on  15 pp /   3 mods  plain→icon   0  
+   XTAS10                                   gold   27/   4 (0.87, n=  3)  claude    0/  23  sub icon→plain   21 on  11 pp /   2 mods  plain→icon   0  SOLIDIFIES
+   ENGR10                                   gold   26/   0 (1.00, n=  2)  claude    0/  20  sub icon→plain   20 on   8 pp /   2 mods  plain→icon   0  
+   MXFU20                                   gold   23/  10 (0.70, n=  2)  claude    0/  39  sub icon→plain   20 on  12 pp /   2 mods  plain→icon   0  
+   MXFL30                                   gold   19/   0 (1.00, n=  2)  claude    0/  21  sub icon→plain   17 on   9 pp /   2 mods  plain→icon   0  
+   AGH10                                    gold   57/  18 (0.76, n=  9)  claude    0/  27  sub icon→plain   14 on  11 pp /   3 mods  plain→icon   0  
+   CEDW10                                   gold   15/   0 (1.00, n=  1)  claude    0/  13  sub icon→plain   13 on   1 pp /   1 mods  plain→icon   0  
+   MXFUN01                                  gold   47/   1 (0.98, n=  1)  claude    0/  14  sub icon→plain   13 on   6 pp /   1 mods  plain→icon   0  
+   MXDB30                                   gold   16/   0 (1.00, n=  2)  claude    0/  15  sub icon→plain   12 on   5 pp /   2 mods  plain→icon   0  
+   MXEX20                                   gold   12/   0 (1.00, n=  2)  claude    0/  16  sub icon→plain   12 on  10 pp /   2 mods  plain→icon   0  
+   BLL12                                    gold   26/   5 (0.84, n=  6)  claude   13/  16  sub icon→plain   11 on   1 pp /   1 mods  plain→icon   0  IN-REGISTRY
+   ENGC20                                   gold   12/   0 (1.00, n=  2)  claude    0/  13  sub icon→plain   11 on   7 pp /   2 mods  plain→icon   0  
+   ENGJ10                                   gold   12/   0 (1.00, n=  2)  claude    0/  13  sub icon→plain   11 on   8 pp /   2 mods  plain→icon   0  
+   MXDB20                                   gold   17/   0 (1.00, n=  2)  claude    0/  10  sub icon→plain   10 on   9 pp /   2 mods  plain→icon   0  
+   XDLS91                                   gold   12/   0 (1.00, n=  2)  claude    0/  10  sub icon→plain   10 on   5 pp /   1 mods  plain→icon   0  
+   BLL11                                    gold   29/   3 (0.91, n=  7)  claude   15/  10  sub icon→plain    9 on   1 pp /   1 mods  plain→icon   2  IN-REGISTRY
+   ENGC10                                   gold    9/   9 (0.50, n=  2)  claude    0/  27  sub icon→plain    9 on   6 pp /   1 mods  plain→icon   0  
+   MXDB10                                   gold   17/   0 (1.00, n=  1)  claude    0/   9  sub icon→plain    9 on   8 pp /   1 mods  plain→icon   0  
+   ENGS20                                   gold   22/   0 (1.00, n=  2)  claude    0/   8  sub icon→plain    8 on   7 pp /   2 mods  plain→icon   0  
+   MXEX30                                   gold    9/   0 (1.00, n=  2)  claude    0/   9  sub icon→plain    8 on   5 pp /   1 mods  plain→icon   0  
+   OSOH40                                   gold   10/   0 (1.00, n=  1)  claude    0/   8  sub icon→plain    8 on   4 pp /   1 mods  plain→icon   0  
+   CEDT20                                   gold   30/   3 (0.91, n=  6)  claude    0/  13  sub icon→plain    7 on   4 pp /   1 mods  plain→icon   0  SOLIDIFIES
+   ENGJ20                                   gold   10/   0 (1.00, n=  2)  claude    0/   7  sub icon→plain    7 on   7 pp /   2 mods  plain→icon   0  
+   XMES10                                   gold    8/  26 (0.24, n=  3)  claude    0/  17  sub icon→plain    7 on   4 pp /   1 mods  plain→icon   0  
+   CEDO10                                   gold    6/  11 (0.35, n=  2)  claude    0/  19  sub icon→plain    6 on   5 pp /   1 mods  plain→icon   0  
+   CEDR20                                   gold   10/   1 (0.91, n=  2)  claude    0/   7  sub icon→plain    6 on   1 pp /   1 mods  plain→icon   0  
+   CEDT30                                   gold   13/   0 (1.00, n=  1)  claude    0/   7  sub icon→plain    6 on   4 pp /   1 mods  plain→icon   0  
+   CEDT40                                   gold    7/   0 (1.00, n=  1)  claude    0/   6  sub icon→plain    6 on   1 pp /   1 mods  plain→icon   0  
+   ENGC30                                   gold   17/   2 (0.89, n=  2)  claude    0/  10  sub icon→plain    6 on   4 pp /   2 mods  plain→icon   0  
+   MXFU30                                   gold   10/   0 (1.00, n=  2)  claude    0/   9  sub icon→plain    6 on   4 pp /   2 mods  plain→icon   0  
+   BLL13                                    gold   28/   6 (0.82, n=  6)  claude   17/  11  sub icon→plain    5 on   1 pp /   1 mods  plain→icon   0  IN-REGISTRY
+   OSOH20                                   gold    5/   1 (0.83, n=  1)  claude    0/   6  sub icon→plain    5 on   3 pp /   1 mods  plain→icon   0  
+   SSOG10                                   gold    5/   5 (0.50, n=  2)  claude    0/  14  sub icon→plain    5 on   3 pp /   1 mods  plain→icon   0  
+   XGF90                                    gold    5/  17 (0.23, n=  5)  claude    0/  41  sub icon→plain    5 on   4 pp /   1 mods  plain→icon   0  
+   XLP01                                    gold   10/   0 (1.00, n=  1)  claude    0/   7  sub icon→plain    5 on   2 pp /   1 mods  plain→icon   0  
+   ENGI10                                   gold   13/   0 (1.00, n=  3)  claude   11/   1  sub icon→plain    1 on   1 pp /   1 mods  plain→icon   0  IN-REGISTRY
+   ANZH10                                   gold    8/   0 (1.00, n=  3)  claude   12/   0  sub icon→plain    0 on   0 pp /   0 mods  plain→icon   0  IN-REGISTRY
+   ANZH30                                   gold   13/   7 (0.65, n=  3)  claude   27/   0  sub icon→plain    0 on   0 pp /   0 mods  plain→icon   6  
+   ART10                                    gold   16/   0 (1.00, n=  4)  claude    1/   0  sub icon→plain    0 on   0 pp /   0 mods  plain→icon   0  IN-REGISTRY
+   BLL14                                    gold   23/   1 (0.96, n=  8)  claude    3/   0  sub icon→plain    0 on   0 pp /   0 mods  plain→icon   0  IN-REGISTRY
+   BLL15                                    gold   28/   3 (0.90, n=  7)  claude    7/   0  sub icon→plain    0 on   0 pp /   0 mods  plain→icon   0  IN-REGISTRY
+   BLL16                                    gold   20/   1 (0.95, n=  6)  claude    7/   0  sub icon→plain    0 on   0 pp /   0 mods  plain→icon   0  IN-REGISTRY
+   BLL17                                    gold   20/   4 (0.83, n=  7)  claude    5/   0  sub icon→plain    0 on   0 pp /   0 mods  plain→icon   1  IN-REGISTRY
+   ENGI20                                   gold   17/   1 (0.94, n=  3)  claude   19/   0  sub icon→plain    0 on   0 pp /   0 mods  plain→icon   1  IN-REGISTRY
+   HIS10                                    gold  131/   3 (0.98, n=  8)  claude  138/   0  sub icon→plain    0 on   0 pp /   0 mods  plain→icon   2  IN-REGISTRY
+   HPFUN10                                  gold    5/   0 (1.00, n=  2)  claude    3/   0  sub icon→plain    0 on   0 pp /   0 mods  plain→icon   0  IN-REGISTRY
+   MXFL20                                   gold   44/   1 (0.98, n=  4)  claude   39/   0  sub icon→plain    0 on   0 pp /   0 mods  plain→icon   0  IN-REGISTRY
+   PES10                                    gold   90/   2 (0.98, n=  7)  claude   77/   0  sub icon→plain    0 on   0 pp /   0 mods  plain→icon   0  IN-REGISTRY
+
+==== NCEA1|Standard by series (visible videos): gold icon/plain, the substitutions ====
+   HIS10      gold 131/  3 (0.98, n=8)  sub icon→plain   0 on 0 pp   IN-REGISTRY
+   PES10      gold  90/  2 (0.98, n=7)  sub icon→plain   0 on 0 pp   IN-REGISTRY
+   AGH10      gold  57/ 18 (0.76, n=9)  sub icon→plain  14 on 11 pp   
+   PHE10      gold   6/ 35 (0.15, n=8)  sub icon→plain   1 on 1 pp   
+   HES10      gold  13/ 14 (0.48, n=5)  sub icon→plain   1 on 1 pp   
+   ART10      gold  16/  0 (1.00, n=4)  sub icon→plain   0 on 0 pp   IN-REGISTRY
+
+TOTAL gate-visible gold-icon→Claude-plain substitutions: 528; registry modules 27

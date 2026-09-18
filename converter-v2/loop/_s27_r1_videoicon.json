@@ -1,0 +1,6276 @@
+{
+"AGH1001": {
+"gi": {},
+"gp": {
+"free": 2,
+"tabs": 2,
+"activity": 1
+},
+"ci": {},
+"cp": {
+"free": 3
+},
+"reg": false,
+"series": "AGH10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"AGH1002": {
+"gi": {},
+"gp": {
+"free": 4
+},
+"ci": {},
+"cp": {
+"free": 3
+},
+"reg": false,
+"series": "AGH10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"AGH1003": {
+"gi": {
+"activity": 1,
+"free": 2,
+"carousel": 2
+},
+"gp": {
+"free": 2
+},
+"ci": {},
+"cp": {
+"activity": 1,
+"free": 2
+},
+"reg": false,
+"series": "AGH10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"AGH1004": {
+"gi": {
+"free": 5
+},
+"gp": {
+"free": 1,
+"activity": 1
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "AGH10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"AGH1005": {
+"gi": {
+"free": 15,
+"activity": 1
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "AGH10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"AGH1006": {
+"gi": {
+"free": 9,
+"activity": 1,
+"accordion": 3
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "AGH10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"AGH1007": {
+"gi": {},
+"gp": {
+"free": 7
+},
+"ci": {},
+"cp": {
+"free": 4
+},
+"reg": false,
+"series": "AGH10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"AGH1008": {
+"gi": {
+"free": 8,
+"activity": 4,
+"carousel": 14
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 6,
+"activity": 4
+},
+"reg": false,
+"series": "AGH10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"AGH1009": {
+"gi": {
+"free": 10,
+"activity": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 4
+},
+"reg": false,
+"series": "AGH10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"ANZH101": {
+"gi": {
+"free": 5,
+"accordion": 3
+},
+"gp": {},
+"ci": {
+"free": 6
+},
+"cp": {},
+"reg": true,
+"series": "ANZH10",
+"st": "ANZH|Standard",
+"tf": "Standard"
+},
+"ANZH104": {
+"gi": {
+"carousel": 2
+},
+"gp": {},
+"ci": {
+"free": 1
+},
+"cp": {},
+"reg": true,
+"series": "ANZH10",
+"st": "ANZH|Standard",
+"tf": "Standard"
+},
+"ANZH105": {
+"gi": {
+"free": 3,
+"accordion": 1,
+"carousel": 3
+},
+"gp": {},
+"ci": {
+"free": 5
+},
+"cp": {
+"accordion": 1
+},
+"reg": true,
+"series": "ANZH10",
+"st": "ANZH|Standard",
+"tf": "Standard"
+},
+"ANZH203": {
+"gi": {
+"free": 4,
+"accordion": 3
+},
+"gp": {},
+"ci": {
+"free": 5
+},
+"cp": {},
+"reg": true,
+"series": "ANZH20",
+"st": "ANZH|Standard",
+"tf": "Standard"
+},
+"ANZH205": {
+"gi": {
+"free": 9,
+"carousel": 15
+},
+"gp": {},
+"ci": {
+"free": 14,
+"activity": 1
+},
+"cp": {
+"carousel": 1
+},
+"reg": true,
+"series": "ANZH20",
+"st": "ANZH|Standard",
+"tf": "Standard"
+},
+"ANZH301": {
+"gi": {
+"free": 3
+},
+"gp": {
+"free": 7,
+"tabs": 1,
+"carousel": 2
+},
+"ci": {
+"free": 3,
+"activity": 6
+},
+"cp": {},
+"reg": true,
+"series": "ANZH30",
+"st": "ANZH|Standard",
+"tf": "Standard"
+},
+"ANZH303": {
+"gi": {
+"carousel": 5,
+"free": 1,
+"tabs": 1
+},
+"gp": {},
+"ci": {
+"free": 2,
+"activity": 6
+},
+"cp": {},
+"reg": true,
+"series": "ANZH30",
+"st": "ANZH|Standard",
+"tf": "Standard"
+},
+"ANZH304": {
+"gi": {
+"free": 5,
+"activity": 4,
+"carousel": 8,
+"accordion": 2
+},
+"gp": {},
+"ci": {
+"free": 3,
+"activity": 7
+},
+"cp": {},
+"reg": true,
+"series": "ANZH30",
+"st": "ANZH|Standard",
+"tf": "Standard"
+},
+"ANZH401": {
+"gi": {
+"activity": 7,
+"free": 4
+},
+"gp": {},
+"ci": {
+"free": 8,
+"activity": 2
+},
+"cp": {},
+"reg": true,
+"series": "ANZH40",
+"st": "ANZH|Standard",
+"tf": "Standard"
+},
+"ANZH404": {
+"gi": {},
+"gp": {
+"free": 4,
+"tabs": 1,
+"accordion": 2
+},
+"ci": {
+"free": 4,
+"activity": 2
+},
+"cp": {},
+"reg": true,
+"series": "ANZH40",
+"st": "ANZH|Standard",
+"tf": "Standard"
+},
+"ARFUN01": {
+"gi": {
+"panel": 3
+},
+"gp": {},
+"ci": {
+"panel": 2
+},
+"cp": {},
+"reg": true,
+"series": "ARFUN01",
+"st": "1-10 Arts|Fundamentals",
+"tf": "Fundamentals"
+},
+"ARFUN02": {
+"gi": {
+"panel": 4,
+"activity": 6,
+"accordion": 6
+},
+"gp": {
+"carousel": 4
+},
+"ci": {
+"panel": 1
+},
+"cp": {
+"carousel": 7
+},
+"reg": true,
+"series": "ARFUN02",
+"st": "1-10 Arts|Fundamentals",
+"tf": "Fundamentals"
+},
+"ARFUN03": {
+"gi": {
+"panel": 8
+},
+"gp": {},
+"ci": {
+"panel": 3
+},
+"cp": {},
+"reg": true,
+"series": "ARFUN03",
+"st": "1-10 Arts|Fundamentals",
+"tf": "Fundamentals"
+},
+"ARFUN04": {
+"gi": {
+"panel": 4
+},
+"gp": {},
+"ci": {
+"free": 1,
+"panel": 51
+},
+"cp": {
+"panel": 6,
+"carousel": 1,
+"clickDrop": 1
+},
+"reg": true,
+"series": "ARFUN04",
+"st": "1-10 Arts|Fundamentals",
+"tf": "Fundamentals"
+},
+"ARFUN05": {
+"gi": {
+"panel": 8
+},
+"gp": {},
+"ci": {
+"panel": 8
+},
+"cp": {},
+"reg": true,
+"series": "ARFUN05",
+"st": "1-10 Arts|Fundamentals",
+"tf": "Fundamentals"
+},
+"ART1002": {
+"gi": {
+"carousel": 3,
+"free": 2,
+"activity": 3
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": true,
+"series": "ART10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"ART1003": {
+"gi": {
+"free": 1
+},
+"gp": {},
+"ci": {
+"free": 1
+},
+"cp": {},
+"reg": true,
+"series": "ART10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"ART1005": {
+"gi": {
+"activity": 1,
+"free": 1,
+"clickDrop": 1
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": true,
+"series": "ART10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"ART1006": {
+"gi": {
+"free": 3,
+"activity": 2,
+"accordion": 1,
+"tabs": 3,
+"clickDrop": 2
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": true,
+"series": "ART10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"BLL110": {
+"gi": {
+"panel": 7,
+"carousel": 22,
+"clickDrop": 12
+},
+"gp": {
+"clickDrop": 1
+},
+"ci": {
+"activity": 6
+},
+"cp": {
+"carousel": 23,
+"modal": 10
+},
+"reg": true,
+"series": "BLL11",
+"st": "1-10 Blended Literacy|Inquiry",
+"tf": "Inquiry"
+},
+"BLL111": {
+"gi": {
+"free": 1
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": true,
+"series": "BLL11",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL112": {
+"gi": {
+"free": 1
+},
+"gp": {},
+"ci": {
+"free": 1
+},
+"cp": {},
+"reg": true,
+"series": "BLL11",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL113": {
+"gi": {
+"free": 1,
+"activity": 1,
+"carousel": 4
+},
+"gp": {
+"activity": 2
+},
+"ci": {
+"free": 1,
+"activity": 3
+},
+"cp": {
+"carousel": 4
+},
+"reg": true,
+"series": "BLL11",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL114": {
+"gi": {
+"free": 1,
+"activity": 1
+},
+"gp": {},
+"ci": {
+"activity": 1
+},
+"cp": {},
+"reg": true,
+"series": "BLL11",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL115": {
+"gi": {
+"activity": 2,
+"carousel": 3
+},
+"gp": {},
+"ci": {
+"activity": 2
+},
+"cp": {
+"carousel": 3
+},
+"reg": true,
+"series": "BLL11",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL116": {
+"gi": {
+"free": 1,
+"activity": 1,
+"carousel": 3
+},
+"gp": {},
+"ci": {
+"free": 1
+},
+"cp": {
+"carousel": 6
+},
+"reg": true,
+"series": "BLL11",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL120": {
+"gi": {
+"carousel": 26,
+"activity": 4,
+"panel": 3,
+"clickDrop": 15
+},
+"gp": {
+"panel": 5
+},
+"ci": {
+"activity": 8
+},
+"cp": {
+"carousel": 31,
+"modal": 16
+},
+"reg": true,
+"series": "BLL12",
+"st": "1-10 Blended Literacy|Inquiry",
+"tf": "Inquiry"
+},
+"BLL121": {
+"gi": {
+"free": 1
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": true,
+"series": "BLL12",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL124": {
+"gi": {
+"activity": 1,
+"carousel": 2
+},
+"gp": {},
+"ci": {
+"activity": 2
+},
+"cp": {},
+"reg": true,
+"series": "BLL12",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL126": {
+"gi": {
+"clickDrop": 1,
+"carousel": 4
+},
+"gp": {},
+"ci": {
+"activity": 1
+},
+"cp": {
+"carousel": 4
+},
+"reg": true,
+"series": "BLL12",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL127": {
+"gi": {
+"activity": 1
+},
+"gp": {},
+"ci": {
+"activity": 1
+},
+"cp": {},
+"reg": true,
+"series": "BLL12",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL130": {
+"gi": {
+"carousel": 24,
+"panel": 4,
+"clickDrop": 14,
+"activity": 1
+},
+"gp": {
+"clickDrop": 4,
+"panel": 2
+},
+"ci": {
+"activity": 7
+},
+"cp": {
+"carousel": 24,
+"modal": 11
+},
+"reg": true,
+"series": "BLL13",
+"st": "1-10 Blended Literacy|Inquiry",
+"tf": "Inquiry"
+},
+"BLL131": {
+"gi": {
+"carousel": 3
+},
+"gp": {},
+"ci": {},
+"cp": {
+"carousel": 3
+},
+"reg": true,
+"series": "BLL13",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL132": {
+"gi": {
+"activity": 1
+},
+"gp": {},
+"ci": {
+"activity": 2
+},
+"cp": {},
+"reg": true,
+"series": "BLL13",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL133": {
+"gi": {
+"activity": 2,
+"carousel": 3
+},
+"gp": {},
+"ci": {
+"activity": 2
+},
+"cp": {
+"carousel": 3
+},
+"reg": true,
+"series": "BLL13",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL134": {
+"gi": {
+"activity": 1,
+"carousel": 3
+},
+"gp": {},
+"ci": {
+"activity": 1
+},
+"cp": {
+"carousel": 2
+},
+"reg": true,
+"series": "BLL13",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL135": {
+"gi": {
+"free": 1,
+"activity": 3
+},
+"gp": {},
+"ci": {
+"activity": 3
+},
+"cp": {},
+"reg": true,
+"series": "BLL13",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL136": {
+"gi": {
+"activity": 1,
+"carousel": 4
+},
+"gp": {},
+"ci": {
+"activity": 2
+},
+"cp": {
+"carousel": 4
+},
+"reg": true,
+"series": "BLL13",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL140": {
+"gi": {
+"carousel": 20,
+"panel": 1,
+"clickDrop": 11
+},
+"gp": {
+"clickDrop": 1
+},
+"ci": {},
+"cp": {
+"carousel": 20
+},
+"reg": true,
+"series": "BLL14",
+"st": "1-10 Blended Literacy|Inquiry",
+"tf": "Inquiry"
+},
+"BLL141": {
+"gi": {
+"activity": 1,
+"carousel": 3
+},
+"gp": {},
+"ci": {
+"activity": 1
+},
+"cp": {
+"carousel": 3
+},
+"reg": true,
+"series": "BLL14",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL142": {
+"gi": {
+"free": 1
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": true,
+"series": "BLL14",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL143": {
+"gi": {
+"free": 1,
+"clickDrop": 2
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": true,
+"series": "BLL14",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL144": {
+"gi": {
+"free": 1,
+"activity": 1,
+"carousel": 6
+},
+"gp": {},
+"ci": {
+"activity": 1
+},
+"cp": {
+"carousel": 3
+},
+"reg": true,
+"series": "BLL14",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL145": {
+"gi": {
+"free": 1
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": true,
+"series": "BLL14",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL146": {
+"gi": {
+"free": 1,
+"carousel": 3
+},
+"gp": {},
+"ci": {},
+"cp": {
+"carousel": 3
+},
+"reg": true,
+"series": "BLL14",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL147": {
+"gi": {
+"free": 1,
+"activity": 1
+},
+"gp": {},
+"ci": {
+"activity": 1
+},
+"cp": {},
+"reg": true,
+"series": "BLL14",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL150": {
+"gi": {
+"carousel": 17,
+"panel": 3,
+"clickDrop": 12
+},
+"gp": {
+"clickDrop": 3
+},
+"ci": {},
+"cp": {
+"carousel": 17
+},
+"reg": true,
+"series": "BLL15",
+"st": "1-10 Blended Literacy|Inquiry",
+"tf": "Inquiry"
+},
+"BLL151": {
+"gi": {
+"free": 1,
+"activity": 3,
+"carousel": 3
+},
+"gp": {},
+"ci": {
+"activity": 3
+},
+"cp": {
+"carousel": 3
+},
+"reg": true,
+"series": "BLL15",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL152": {
+"gi": {
+"free": 1
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": true,
+"series": "BLL15",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL153": {
+"gi": {
+"free": 1,
+"activity": 2
+},
+"gp": {},
+"ci": {
+"activity": 2
+},
+"cp": {},
+"reg": true,
+"series": "BLL15",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL154": {
+"gi": {
+"free": 1,
+"activity": 1
+},
+"gp": {},
+"ci": {
+"activity": 1
+},
+"cp": {},
+"reg": true,
+"series": "BLL15",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL156": {
+"gi": {
+"free": 1,
+"activity": 1,
+"carousel": 3
+},
+"gp": {},
+"ci": {
+"activity": 1
+},
+"cp": {
+"carousel": 3
+},
+"reg": true,
+"series": "BLL15",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL157": {
+"gi": {
+"free": 1,
+"carousel": 7
+},
+"gp": {},
+"ci": {},
+"cp": {
+"carousel": 7
+},
+"reg": true,
+"series": "BLL15",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL160": {
+"gi": {
+"panel": 3,
+"carousel": 17,
+"clickDrop": 10
+},
+"gp": {
+"clickDrop": 1
+},
+"ci": {},
+"cp": {
+"carousel": 18
+},
+"reg": true,
+"series": "BLL16",
+"st": "1-10 Blended Literacy|Inquiry",
+"tf": "Inquiry"
+},
+"BLL161": {
+"gi": {
+"carousel": 5
+},
+"gp": {},
+"ci": {
+"activity": 3
+},
+"cp": {
+"carousel": 2
+},
+"reg": true,
+"series": "BLL16",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL162": {
+"gi": {
+"carousel": 3
+},
+"gp": {},
+"ci": {},
+"cp": {
+"carousel": 3
+},
+"reg": true,
+"series": "BLL16",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL163": {
+"gi": {
+"activity": 1
+},
+"gp": {},
+"ci": {
+"activity": 1
+},
+"cp": {},
+"reg": true,
+"series": "BLL16",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL165": {
+"gi": {
+"free": 1
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": true,
+"series": "BLL16",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL166": {
+"gi": {
+"free": 1,
+"activity": 1,
+"carousel": 2
+},
+"gp": {},
+"ci": {
+"activity": 1
+},
+"cp": {
+"carousel": 2
+},
+"reg": true,
+"series": "BLL16",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL167": {
+"gi": {
+"free": 1,
+"carousel": 8,
+"activity": 2
+},
+"gp": {},
+"ci": {
+"activity": 2
+},
+"cp": {
+"carousel": 8
+},
+"reg": true,
+"series": "BLL16",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL170": {
+"gi": {
+"panel": 1,
+"carousel": 24,
+"free": 1,
+"clickDrop": 15
+},
+"gp": {},
+"ci": {},
+"cp": {
+"carousel": 24
+},
+"reg": true,
+"series": "BLL17",
+"st": "1-10 Blended Literacy|Inquiry",
+"tf": "Inquiry"
+},
+"BLL171": {
+"gi": {},
+"gp": {
+"free": 1,
+"activity": 1
+},
+"ci": {},
+"cp": {},
+"reg": true,
+"series": "BLL17",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL172": {
+"gi": {},
+"gp": {
+"activity": 1
+},
+"ci": {
+"activity": 1
+},
+"cp": {},
+"reg": true,
+"series": "BLL17",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL173": {
+"gi": {
+"free": 1
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": true,
+"series": "BLL17",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL174": {
+"gi": {},
+"gp": {
+"free": 1
+},
+"ci": {},
+"cp": {},
+"reg": true,
+"series": "BLL17",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL175": {
+"gi": {
+"activity": 1
+},
+"gp": {},
+"ci": {
+"activity": 1
+},
+"cp": {},
+"reg": true,
+"series": "BLL17",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL177": {
+"gi": {
+"activity": 1,
+"carousel": 5
+},
+"gp": {},
+"ci": {
+"activity": 3
+},
+"cp": {
+"carousel": 3
+},
+"reg": true,
+"series": "BLL17",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL210": {
+"gi": {
+"panel": 1,
+"carousel": 3
+},
+"gp": {
+"clickDrop": 17,
+"carousel": 31,
+"activity": 2
+},
+"ci": {},
+"cp": {
+"carousel": 23,
+"activity": 2
+},
+"reg": false,
+"series": "BLL21",
+"st": "1-10 Blended Literacy|Inquiry",
+"tf": "Inquiry"
+},
+"BLL211": {
+"gi": {},
+"gp": {
+"activity": 1,
+"carousel": 3
+},
+"ci": {},
+"cp": {
+"activity": 1,
+"carousel": 3
+},
+"reg": false,
+"series": "BLL21",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL215": {
+"gi": {},
+"gp": {
+"activity": 2,
+"carousel": 5
+},
+"ci": {},
+"cp": {
+"activity": 2,
+"carousel": 5
+},
+"reg": false,
+"series": "BLL21",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL216": {
+"gi": {},
+"gp": {
+"activity": 1,
+"carousel": 8
+},
+"ci": {},
+"cp": {
+"activity": 4,
+"carousel": 2
+},
+"reg": false,
+"series": "BLL21",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL220": {
+"gi": {
+"panel": 1
+},
+"gp": {
+"carousel": 41
+},
+"ci": {},
+"cp": {
+"carousel": 22
+},
+"reg": false,
+"series": "BLL22",
+"st": "1-10 Blended Literacy|Inquiry",
+"tf": "Inquiry"
+},
+"BLL221": {
+"gi": {},
+"gp": {
+"free": 1,
+"activity": 1,
+"carousel": 6
+},
+"ci": {},
+"cp": {
+"activity": 1
+},
+"reg": false,
+"series": "BLL22",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL222": {
+"gi": {},
+"gp": {
+"free": 1,
+"carousel": 2
+},
+"ci": {},
+"cp": {
+"carousel": 6
+},
+"reg": false,
+"series": "BLL22",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL223": {
+"gi": {},
+"gp": {
+"free": 1,
+"carousel": 4
+},
+"ci": {},
+"cp": {
+"carousel": 4
+},
+"reg": false,
+"series": "BLL22",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL224": {
+"gi": {},
+"gp": {
+"free": 1,
+"carousel": 8
+},
+"ci": {},
+"cp": {
+"carousel": 8
+},
+"reg": false,
+"series": "BLL22",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL225": {
+"gi": {},
+"gp": {
+"free": 1,
+"activity": 3
+},
+"ci": {},
+"cp": {
+"activity": 3
+},
+"reg": false,
+"series": "BLL22",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL226": {
+"gi": {},
+"gp": {
+"free": 1,
+"activity": 1,
+"carousel": 7
+},
+"ci": {},
+"cp": {
+"activity": 1,
+"carousel": 7
+},
+"reg": false,
+"series": "BLL22",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL227": {
+"gi": {},
+"gp": {
+"free": 1,
+"carousel": 7,
+"activity": 1
+},
+"ci": {},
+"cp": {
+"activity": 1,
+"carousel": 4
+},
+"reg": false,
+"series": "BLL22",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL230": {
+"gi": {
+"panel": 1,
+"carousel": 4
+},
+"gp": {
+"carousel": 59,
+"activity": 1
+},
+"ci": {},
+"cp": {
+"carousel": 29,
+"activity": 1
+},
+"reg": false,
+"series": "BLL23",
+"st": "1-10 Blended Literacy|Inquiry",
+"tf": "Inquiry"
+},
+"BLL231": {
+"gi": {},
+"gp": {
+"free": 1,
+"carousel": 4
+},
+"ci": {},
+"cp": {
+"carousel": 4
+},
+"reg": false,
+"series": "BLL23",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL232": {
+"gi": {},
+"gp": {
+"carousel": 6
+},
+"ci": {},
+"cp": {
+"carousel": 7
+},
+"reg": false,
+"series": "BLL23",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL233": {
+"gi": {
+"clickDrop": 2
+},
+"gp": {
+"carousel": 5
+},
+"ci": {},
+"cp": {
+"clickDrop": 1,
+"free": 1,
+"activity": 5
+},
+"reg": false,
+"series": "BLL23",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL234": {
+"gi": {},
+"gp": {
+"free": 1,
+"activity": 2,
+"carousel": 5
+},
+"ci": {},
+"cp": {
+"activity": 1,
+"free": 1,
+"carousel": 6
+},
+"reg": false,
+"series": "BLL23",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL235": {
+"gi": {},
+"gp": {
+"free": 1,
+"carousel": 5
+},
+"ci": {},
+"cp": {
+"carousel": 5
+},
+"reg": false,
+"series": "BLL23",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL236": {
+"gi": {},
+"gp": {
+"free": 1,
+"carousel": 6
+},
+"ci": {},
+"cp": {
+"carousel": 6
+},
+"reg": false,
+"series": "BLL23",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL237": {
+"gi": {},
+"gp": {
+"free": 1
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "BLL23",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL240": {
+"gi": {
+"panel": 1
+},
+"gp": {
+"free": 1,
+"carousel": 73,
+"activity": 7,
+"clickDrop": 14,
+"modal": 8
+},
+"ci": {},
+"cp": {
+"carousel": 15,
+"free": 1,
+"activity": 5
+},
+"reg": false,
+"series": "BLL24",
+"st": "1-10 Blended Literacy|Inquiry",
+"tf": "Inquiry"
+},
+"BLL241": {
+"gi": {},
+"gp": {
+"free": 1
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "BLL24",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL242": {
+"gi": {},
+"gp": {
+"carousel": 2,
+"clickDrop": 1
+},
+"ci": {},
+"cp": {
+"carousel": 2
+},
+"reg": false,
+"series": "BLL24",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL244": {
+"gi": {},
+"gp": {
+"free": 1,
+"activity": 2,
+"carousel": 4
+},
+"ci": {},
+"cp": {
+"activity": 2,
+"carousel": 4
+},
+"reg": false,
+"series": "BLL24",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL245": {
+"gi": {},
+"gp": {
+"free": 1,
+"activity": 1
+},
+"ci": {},
+"cp": {
+"activity": 1
+},
+"reg": false,
+"series": "BLL24",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL251": {
+"gi": {},
+"gp": {
+"free": 1
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "BLL25",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL252": {
+"gi": {
+"free": 1
+},
+"gp": {
+"carousel": 2
+},
+"ci": {},
+"cp": {
+"carousel": 2
+},
+"reg": false,
+"series": "BLL25",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL253": {
+"gi": {},
+"gp": {
+"free": 1,
+"activity": 1
+},
+"ci": {},
+"cp": {
+"activity": 1
+},
+"reg": false,
+"series": "BLL25",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL262": {
+"gi": {},
+"gp": {
+"free": 1,
+"carousel": 5
+},
+"ci": {},
+"cp": {
+"carousel": 3
+},
+"reg": false,
+"series": "BLL26",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLL263": {
+"gi": {},
+"gp": {
+"free": 1,
+"carousel": 2
+},
+"ci": {},
+"cp": {
+"carousel": 2
+},
+"reg": false,
+"series": "BLL26",
+"st": "1-10 Blended Literacy|Standard",
+"tf": "Standard"
+},
+"BLLR201": {
+"gi": {
+"free": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"carousel": 24
+},
+"reg": false,
+"series": "BLLR20",
+"st": null,
+"tf": "Standard"
+},
+"CEDK101": {
+"gi": {},
+"gp": {
+"panel": 7,
+"clickDrop": 8,
+"activity": 1
+},
+"ci": {},
+"cp": {
+"panel": 3,
+"activity": 5
+},
+"reg": false,
+"series": "CEDK10",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDK102": {
+"gi": {
+"panel": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"panel": 1
+},
+"reg": false,
+"series": "CEDK10",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDK501": {
+"gi": {},
+"gp": {
+"panel": 1,
+"clickDrop": 2,
+"free": 8,
+"carousel": 4
+},
+"ci": {},
+"cp": {
+"free": 1,
+"carousel": 10
+},
+"reg": false,
+"series": "CEDK50",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDO102": {
+"gi": {},
+"gp": {
+"panel": 6,
+"carousel": 15,
+"activity": 5
+},
+"ci": {},
+"cp": {
+"panel": 7,
+"carousel": 11,
+"activity": 6
+},
+"reg": false,
+"series": "CEDO10",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDO105": {
+"gi": {
+"free": 6
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 6,
+"carousel": 4
+},
+"reg": false,
+"series": "CEDO10",
+"st": "ConnectED|Standard",
+"tf": "Standard"
+},
+"CEDO202": {
+"gi": {},
+"gp": {
+"panel": 5,
+"carousel": 6,
+"activity": 1
+},
+"ci": {},
+"cp": {
+"panel": 4,
+"carousel": 6
+},
+"reg": false,
+"series": "CEDO20",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDO301": {
+"gi": {
+"free": 2
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 3,
+"carousel": 6
+},
+"reg": false,
+"series": "CEDO30",
+"st": "ConnectED|Standard",
+"tf": "Standard"
+},
+"CEDO501": {
+"gi": {},
+"gp": {
+"accordion": 1,
+"activity": 1,
+"free": 8
+},
+"ci": {},
+"cp": {
+"free": 10
+},
+"reg": false,
+"series": "CEDO50",
+"st": "ConnectED|Standard",
+"tf": "Standard"
+},
+"CEDO502": {
+"gi": {},
+"gp": {
+"free": 5,
+"activity": 2
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "CEDO50",
+"st": "ConnectED|Standard",
+"tf": "Standard"
+},
+"CEDR201": {
+"gi": {
+"panel": 3,
+"accordion": 3,
+"carousel": 3
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "CEDR20",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDR204": {
+"gi": {
+"panel": 2,
+"free": 1,
+"carousel": 10,
+"clickDrop": 4
+},
+"gp": {
+"panel": 1
+},
+"ci": {},
+"cp": {
+"panel": 4,
+"activity": 3,
+"carousel": 3
+},
+"reg": false,
+"series": "CEDR20",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDR301": {
+"gi": {
+"panel": 5
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "CEDR30",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDR302": {
+"gi": {
+"panel": 3,
+"accordion": 3
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "CEDR30",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDR501": {
+"gi": {},
+"gp": {
+"free": 7,
+"accordion": 3,
+"carousel": 2
+},
+"ci": {},
+"cp": {
+"free": 7,
+"carousel": 18
+},
+"reg": false,
+"series": "CEDR50",
+"st": "ConnectED|Standard",
+"tf": "Standard"
+},
+"CEDT101": {
+"gi": {
+"panel": 3,
+"carousel": 3,
+"activity": 7
+},
+"gp": {},
+"ci": {},
+"cp": {
+"panel": 2,
+"carousel": 3,
+"activity": 3
+},
+"reg": false,
+"series": "CEDT10",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDT104": {
+"gi": {},
+"gp": {
+"activity": 5,
+"carousel": 20,
+"panel": 3,
+"clickDrop": 1,
+"accordion": 4
+},
+"ci": {},
+"cp": {
+"free": 4,
+"carousel": 3,
+"activity": 2
+},
+"reg": false,
+"series": "CEDT10",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDT201": {
+"gi": {
+"panel": 3,
+"accordion": 4,
+"carousel": 4
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "CEDT20",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDT202": {
+"gi": {
+"panel": 3,
+"accordion": 5,
+"carousel": 6
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "CEDT20",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDT203": {
+"gi": {
+"panel": 4
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "CEDT20",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDT204": {
+"gi": {
+"panel": 2,
+"accordion": 12
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "CEDT20",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDT207": {
+"gi": {
+"panel": 4,
+"activity": 10,
+"free": 4
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 6,
+"activity": 1
+},
+"reg": false,
+"series": "CEDT20",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDT208": {
+"gi": {},
+"gp": {
+"panel": 2,
+"carousel": 7,
+"activity": 1,
+"accordion": 4
+},
+"ci": {},
+"cp": {
+"free": 2,
+"activity": 4,
+"accordion": 7
+},
+"reg": false,
+"series": "CEDT20",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDT301": {
+"gi": {
+"free": 4,
+"carousel": 12,
+"panel": 5,
+"activity": 1,
+"clickDrop": 3
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 5,
+"activity": 2
+},
+"reg": false,
+"series": "CEDT30",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDT404": {
+"gi": {
+"panel": 6,
+"carousel": 9,
+"activity": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"panel": 6,
+"carousel": 7
+},
+"reg": false,
+"series": "CEDT40",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDT501": {
+"gi": {},
+"gp": {
+"free": 3,
+"accordion": 4
+},
+"ci": {},
+"cp": {
+"free": 2
+},
+"reg": false,
+"series": "CEDT50",
+"st": "ConnectED|Standard",
+"tf": "Standard"
+},
+"CEDW101": {
+"gi": {
+"panel": 5,
+"activity": 7,
+"clickDrop": 3,
+"tabs": 6,
+"accordion": 3
+},
+"gp": {},
+"ci": {},
+"cp": {
+"panel": 6,
+"activity": 7,
+"accordion": 2
+},
+"reg": false,
+"series": "CEDW10",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDW201": {
+"gi": {
+"panel": 4,
+"activity": 1,
+"carousel": 12
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 1,
+"activity": 1
+},
+"reg": false,
+"series": "CEDW20",
+"st": "ConnectED|Inquiry",
+"tf": "Inquiry"
+},
+"CEDW501": {
+"gi": {},
+"gp": {
+"free": 4,
+"activity": 1,
+"carousel": 4
+},
+"ci": {},
+"cp": {
+"free": 5,
+"carousel": 8
+},
+"reg": false,
+"series": "CEDW50",
+"st": "ConnectED|Standard",
+"tf": "Standard"
+},
+"CHFUN01": {
+"gi": {
+"carousel": 2
+},
+"gp": {
+"carousel": 4,
+"panel": 1
+},
+"ci": {},
+"cp": {
+"carousel": 6
+},
+"reg": false,
+"series": "CHFUN01",
+"st": null,
+"tf": "Fundamentals"
+},
+"CHFUN04": {
+"gi": {
+"panel": 1,
+"carousel": 13
+},
+"gp": {},
+"ci": {},
+"cp": {
+"carousel": 13
+},
+"reg": false,
+"series": "CHFUN04",
+"st": null,
+"tf": "Fundamentals"
+},
+"CHFUN05": {
+"gi": {},
+"gp": {
+"carousel": 8,
+"panel": 39,
+"accordion": 7
+},
+"ci": {},
+"cp": {
+"carousel": 16,
+"accordion": 4
+},
+"reg": false,
+"series": "CHFUN05",
+"st": null,
+"tf": "Fundamentals"
+},
+"CHFUN06": {
+"gi": {
+"carousel": 8,
+"activity": 3,
+"free": 1,
+"accordion": 4,
+"panel": 1
+},
+"gp": {
+"carousel": 4,
+"panel": 1
+},
+"ci": {},
+"cp": {
+"carousel": 12
+},
+"reg": false,
+"series": "CHFUN06",
+"st": null,
+"tf": "Fundamentals"
+},
+"CHFUN07": {
+"gi": {
+"panel": 1,
+"carousel": 1
+},
+"gp": {
+"carousel": 6,
+"panel": 2
+},
+"ci": {},
+"cp": {
+"carousel": 5
+},
+"reg": false,
+"series": "CHFUN07",
+"st": null,
+"tf": "Fundamentals"
+},
+"ENFUN01": {
+"gi": {
+"tabs": 3,
+"activity": 1,
+"carousel": 6,
+"panel": 5,
+"accordion": 2
+},
+"gp": {},
+"ci": {
+"activity": 5,
+"panel": 7
+},
+"cp": {},
+"reg": true,
+"series": "ENFUN01",
+"st": "1-10 English|Fundamentals",
+"tf": "Fundamentals"
+},
+"ENFUN02": {
+"gi": {
+"panel": 3,
+"carousel": 1,
+"activity": 1
+},
+"gp": {},
+"ci": {
+"panel": 2,
+"activity": 1
+},
+"cp": {
+"carousel": 1
+},
+"reg": true,
+"series": "ENFUN02",
+"st": "1-10 English|Fundamentals",
+"tf": "Fundamentals"
+},
+"ENFUN03": {
+"gi": {
+"panel": 4
+},
+"gp": {},
+"ci": {
+"panel": 4
+},
+"cp": {},
+"reg": true,
+"series": "ENFUN03",
+"st": "1-10 English|Fundamentals",
+"tf": "Fundamentals"
+},
+"ENFUN04": {
+"gi": {
+"panel": 5,
+"free": 1
+},
+"gp": {},
+"ci": {
+"panel": 4
+},
+"cp": {},
+"reg": true,
+"series": "ENFUN04",
+"st": "1-10 English|Fundamentals",
+"tf": "Fundamentals"
+},
+"ENFUN05": {
+"gi": {
+"panel": 7
+},
+"gp": {},
+"ci": {
+"panel": 5
+},
+"cp": {},
+"reg": true,
+"series": "ENFUN05",
+"st": "1-10 English|Fundamentals",
+"tf": "Fundamentals"
+},
+"ENFUN07": {
+"gi": {
+"panel": 2,
+"clickDrop": 1
+},
+"gp": {},
+"ci": {
+"panel": 2
+},
+"cp": {},
+"reg": true,
+"series": "ENFUN07",
+"st": "1-10 English|Fundamentals",
+"tf": "Fundamentals"
+},
+"ENFUN08": {
+"gi": {
+"panel": 1,
+"flip": 1
+},
+"gp": {},
+"ci": {
+"panel": 2
+},
+"cp": {
+"carousel": 6
+},
+"reg": true,
+"series": "ENFUN08",
+"st": "1-10 English|Fundamentals",
+"tf": "Fundamentals"
+},
+"ENFUN09": {
+"gi": {
+"activity": 2,
+"panel": 7
+},
+"gp": {},
+"ci": {
+"activity": 1,
+"panel": 4
+},
+"cp": {
+"modal": 1
+},
+"reg": true,
+"series": "ENFUN09",
+"st": "1-10 English|Fundamentals",
+"tf": "Fundamentals"
+},
+"ENGC101": {
+"gi": {
+"free": 7,
+"carousel": 8,
+"activity": 2
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 14,
+"activity": 2
+},
+"reg": false,
+"series": "ENGC10",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGC102": {
+"gi": {},
+"gp": {
+"free": 7,
+"carousel": 18,
+"activity": 2
+},
+"ci": {},
+"cp": {
+"free": 9,
+"carousel": 12,
+"activity": 2
+},
+"reg": false,
+"series": "ENGC10",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGC201": {
+"gi": {
+"free": 7,
+"activity": 2
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 8,
+"carousel": 10,
+"activity": 1
+},
+"reg": false,
+"series": "ENGC20",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGC202": {
+"gi": {
+"free": 3
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 3,
+"carousel": 5,
+"activity": 1
+},
+"reg": false,
+"series": "ENGC20",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGC301": {
+"gi": {
+"free": 9,
+"tabs": 2,
+"activity": 4,
+"modal": 1
+},
+"gp": {
+"free": 1
+},
+"ci": {},
+"cp": {
+"free": 2,
+"activity": 1
+},
+"reg": false,
+"series": "ENGC30",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGC302": {
+"gi": {
+"free": 3
+},
+"gp": {
+"free": 1
+},
+"ci": {},
+"cp": {
+"free": 7,
+"carousel": 8
+},
+"reg": false,
+"series": "ENGC30",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGC401": {
+"gi": {},
+"gp": {
+"free": 8,
+"clickDrop": 9,
+"carousel": 2,
+"activity": 2
+},
+"ci": {},
+"cp": {
+"free": 9,
+"carousel": 12,
+"activity": 2
+},
+"reg": false,
+"series": "ENGC40",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGFUN02": {
+"gi": {
+"free": 5
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "ENGFUN02",
+"st": "NCEA1|Inquiry",
+"tf": "Inquiry"
+},
+"ENGI101": {
+"gi": {
+"activity": 2
+},
+"gp": {},
+"ci": {
+"free": 1,
+"activity": 4
+},
+"cp": {
+"carousel": 2
+},
+"reg": true,
+"series": "ENGI10",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGI102": {
+"gi": {
+"carousel": 10,
+"free": 3
+},
+"gp": {
+"carousel": 2
+},
+"ci": {
+"free": 3
+},
+"cp": {
+"carousel": 5
+},
+"reg": true,
+"series": "ENGI10",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGI103": {
+"gi": {
+"free": 5,
+"modal": 3
+},
+"gp": {},
+"ci": {
+"free": 3
+},
+"cp": {
+"modal": 1
+},
+"reg": true,
+"series": "ENGI10",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGI201": {
+"gi": {
+"free": 3,
+"carousel": 3
+},
+"gp": {},
+"ci": {
+"free": 4
+},
+"cp": {
+"carousel": 3
+},
+"reg": true,
+"series": "ENGI20",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGI202": {
+"gi": {
+"free": 5,
+"clickDrop": 5
+},
+"gp": {},
+"ci": {
+"free": 3,
+"activity": 2
+},
+"cp": {},
+"reg": true,
+"series": "ENGI20",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGI203": {
+"gi": {
+"free": 9,
+"tabs": 14
+},
+"gp": {
+"activity": 1
+},
+"ci": {
+"free": 9,
+"activity": 1
+},
+"cp": {
+"carousel": 21
+},
+"reg": true,
+"series": "ENGI20",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGI301": {
+"gi": {
+"free": 3
+},
+"gp": {
+"free": 1
+},
+"ci": {},
+"cp": {
+"free": 1
+},
+"reg": false,
+"series": "ENGI30",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGI302": {
+"gi": {
+"free": 2,
+"carousel": 2
+},
+"gp": {
+"free": 3,
+"modal": 2,
+"activity": 1
+},
+"ci": {},
+"cp": {
+"free": 3,
+"carousel": 3
+},
+"reg": false,
+"series": "ENGI30",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGI303": {
+"gi": {
+"free": 4,
+"carousel": 1
+},
+"gp": {
+"carousel": 1
+},
+"ci": {},
+"cp": {
+"free": 3,
+"carousel": 2
+},
+"reg": false,
+"series": "ENGI30",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGI401": {
+"gi": {
+"free": 2,
+"carousel": 7
+},
+"gp": {
+"free": 2,
+"modal": 1
+},
+"ci": {},
+"cp": {
+"free": 3,
+"carousel": 2
+},
+"reg": false,
+"series": "ENGI40",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGI405": {
+"gi": {
+"free": 5
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 2,
+"accordion": 1
+},
+"reg": false,
+"series": "ENGI40",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGJ101": {
+"gi": {
+"accordion": 3,
+"activity": 3,
+"tabs": 2,
+"carousel": 2
+},
+"gp": {},
+"ci": {},
+"cp": {
+"accordion": 2,
+"activity": 3,
+"free": 2
+},
+"reg": false,
+"series": "ENGJ10",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGJ102": {
+"gi": {
+"free": 9,
+"carousel": 7
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 5,
+"activity": 3,
+"carousel": 7
+},
+"reg": false,
+"series": "ENGJ10",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGJ201": {
+"gi": {
+"free": 3,
+"activity": 2
+},
+"gp": {},
+"ci": {},
+"cp": {
+"activity": 2,
+"free": 2,
+"carousel": 6
+},
+"reg": false,
+"series": "ENGJ20",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGJ202": {
+"gi": {
+"free": 4,
+"carousel": 2,
+"activity": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"carousel": 2,
+"free": 2,
+"activity": 1
+},
+"reg": false,
+"series": "ENGJ20",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGJ301": {
+"gi": {},
+"gp": {
+"clickDrop": 1,
+"carousel": 9,
+"modal": 9
+},
+"ci": {},
+"cp": {
+"free": 1,
+"carousel": 8
+},
+"reg": false,
+"series": "ENGJ30",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGJ302": {
+"gi": {},
+"gp": {
+"free": 6,
+"clickDrop": 15,
+"carousel": 7
+},
+"ci": {},
+"cp": {
+"free": 4,
+"activity": 1,
+"carousel": 3
+},
+"reg": false,
+"series": "ENGJ30",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGJ402": {
+"gi": {
+"carousel": 1
+},
+"gp": {
+"free": 6,
+"accordion": 9,
+"carousel": 3,
+"clickDrop": 5
+},
+"ci": {},
+"cp": {
+"free": 12
+},
+"reg": false,
+"series": "ENGJ40",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGJ403": {
+"gi": {},
+"gp": {
+"free": 2,
+"tabs": 6,
+"activity": 1,
+"carousel": 8
+},
+"ci": {},
+"cp": {
+"free": 7,
+"carousel": 8
+},
+"reg": false,
+"series": "ENGJ40",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGR101": {
+"gi": {
+"free": 5,
+"carousel": 4,
+"activity": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 3,
+"carousel": 4
+},
+"reg": false,
+"series": "ENGR10",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGR102": {
+"gi": {
+"free": 20,
+"activity": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 13,
+"activity": 4
+},
+"reg": false,
+"series": "ENGR10",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGR201": {
+"gi": {
+"free": 4
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 3
+},
+"reg": false,
+"series": "ENGR20",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGR202": {
+"gi": {},
+"gp": {
+"free": 2
+},
+"ci": {},
+"cp": {
+"free": 1
+},
+"reg": false,
+"series": "ENGR20",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGR301": {
+"gi": {
+"free": 3
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 3
+},
+"reg": false,
+"series": "ENGR30",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGR302": {
+"gi": {},
+"gp": {
+"free": 9,
+"carousel": 8,
+"modal": 1,
+"activity": 2
+},
+"ci": {},
+"cp": {
+"free": 22,
+"activity": 21,
+"carousel": 4,
+"modal": 1,
+"accordion": 2
+},
+"reg": false,
+"series": "ENGR30",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGS101": {
+"gi": {},
+"gp": {
+"free": 5,
+"carousel": 7
+},
+"ci": {},
+"cp": {
+"free": 3,
+"carousel": 4,
+"activity": 1
+},
+"reg": false,
+"series": "ENGS10",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGS102": {
+"gi": {
+"free": 2
+},
+"gp": {
+"free": 4,
+"modal": 1,
+"tabs": 1,
+"flip": 1,
+"activity": 1
+},
+"ci": {},
+"cp": {
+"free": 5,
+"activity": 1
+},
+"reg": false,
+"series": "ENGS10",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGS201": {
+"gi": {
+"free": 9,
+"clickDrop": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 7
+},
+"reg": false,
+"series": "ENGS20",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGS202": {
+"gi": {
+"free": 3,
+"clickDrop": 9
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 1
+},
+"reg": false,
+"series": "ENGS20",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGS301": {
+"gi": {},
+"gp": {
+"free": 5
+},
+"ci": {},
+"cp": {
+"free": 5
+},
+"reg": false,
+"series": "ENGS30",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGS302": {
+"gi": {},
+"gp": {
+"free": 11,
+"activity": 2
+},
+"ci": {},
+"cp": {
+"free": 11,
+"activity": 1
+},
+"reg": false,
+"series": "ENGS30",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGS401": {
+"gi": {},
+"gp": {
+"free": 3,
+"carousel": 5,
+"activity": 2,
+"clickDrop": 2,
+"accordion": 2
+},
+"ci": {},
+"cp": {
+"free": 3,
+"carousel": 11,
+"activity": 1,
+"modal": 1
+},
+"reg": false,
+"series": "ENGS40",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"ENGS405": {
+"gi": {},
+"gp": {
+"free": 1
+},
+"ci": {},
+"cp": {
+"free": 1
+},
+"reg": false,
+"series": "ENGS40",
+"st": "1-10 English|Standard",
+"tf": "Standard"
+},
+"EXBP901": {
+"gi": {
+"carousel": 4,
+"tabs": 4
+},
+"gp": {
+"panel": 11,
+"accordion": 2
+},
+"ci": {},
+"cp": {
+"panel": 5,
+"accordion": 1
+},
+"reg": false,
+"series": "EXBP90",
+"st": "EXPlore|Standard",
+"tf": "Standard"
+},
+"EXIP901": {
+"gi": {
+"tabs": 1
+},
+"gp": {
+"carousel": 2,
+"accordion": 4,
+"panel": 2
+},
+"ci": {},
+"cp": {
+"panel": 1
+},
+"reg": false,
+"series": "EXIP90",
+"st": "EXPlore|Standard",
+"tf": "Standard"
+},
+"EXPFUN02": {
+"gi": {
+"carousel": 16
+},
+"gp": {},
+"ci": {
+"panel": 2
+},
+"cp": {
+"carousel": 14
+},
+"reg": true,
+"series": "EXPFUN02",
+"st": "EXPlore|Inquiry",
+"tf": "Inquiry"
+},
+"EXPFUN03": {
+"gi": {
+"carousel": 16
+},
+"gp": {
+"carousel": 1
+},
+"ci": {},
+"cp": {
+"carousel": 19
+},
+"reg": true,
+"series": "EXPFUN03",
+"st": "EXPlore|Inquiry",
+"tf": "Inquiry"
+},
+"EXPFUN04": {
+"gi": {
+"carousel": 15
+},
+"gp": {},
+"ci": {},
+"cp": {
+"carousel": 3
+},
+"reg": true,
+"series": "EXPFUN04",
+"st": "EXPlore|Inquiry",
+"tf": "Inquiry"
+},
+"EXPFUN05": {
+"gi": {
+"carousel": 9
+},
+"gp": {
+"carousel": 9
+},
+"ci": {},
+"cp": {},
+"reg": true,
+"series": "EXPFUN05",
+"st": "EXPlore|Inquiry",
+"tf": "Inquiry"
+},
+"EXPFUN06": {
+"gi": {},
+"gp": {
+"panel": 2
+},
+"ci": {},
+"cp": {},
+"reg": true,
+"series": "EXPFUN06",
+"st": "EXPlore|Inquiry",
+"tf": "Inquiry"
+},
+"HES1003": {
+"gi": {
+"free": 5,
+"activity": 1,
+"clickDrop": 3,
+"tabs": 1
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "HES10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"HES1004": {
+"gi": {},
+"gp": {
+"free": 1,
+"carousel": 3
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "HES10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"HES1005": {
+"gi": {},
+"gp": {
+"carousel": 10,
+"free": 10,
+"clickDrop": 6,
+"tabs": 1,
+"accordion": 3
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "HES10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"HES1006": {
+"gi": {
+"free": 3
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "HES10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"HES1007": {
+"gi": {
+"free": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 1
+},
+"reg": false,
+"series": "HES10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"HIS1001": {
+"gi": {
+"free": 9,
+"accordion": 2
+},
+"gp": {
+"free": 1
+},
+"ci": {
+"free": 1
+},
+"cp": {},
+"reg": true,
+"series": "HIS10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"HIS1002": {
+"gi": {
+"free": 12
+},
+"gp": {},
+"ci": {
+"free": 12
+},
+"cp": {},
+"reg": true,
+"series": "HIS10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"HIS1003": {
+"gi": {
+"free": 3,
+"carousel": 2,
+"tabs": 4
+},
+"gp": {
+"free": 2
+},
+"ci": {
+"free": 2,
+"activity": 5
+},
+"cp": {},
+"reg": true,
+"series": "HIS10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"HIS1004": {
+"gi": {
+"free": 13,
+"activity": 8,
+"tabs": 3,
+"accordion": 4
+},
+"gp": {},
+"ci": {
+"free": 3,
+"activity": 22
+},
+"cp": {},
+"reg": true,
+"series": "HIS10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"HIS1005": {
+"gi": {
+"free": 13,
+"activity": 19,
+"accordion": 4,
+"tabs": 2,
+"carousel": 2,
+"modal": 1
+},
+"gp": {},
+"ci": {
+"free": 18,
+"activity": 20
+},
+"cp": {},
+"reg": true,
+"series": "HIS10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"HIS1006": {
+"gi": {
+"free": 1,
+"activity": 6,
+"tabs": 2
+},
+"gp": {},
+"ci": {
+"activity": 6,
+"free": 1
+},
+"cp": {},
+"reg": true,
+"series": "HIS10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"HIS1007": {
+"gi": {
+"activity": 12,
+"free": 9,
+"accordion": 3,
+"modal": 1
+},
+"gp": {},
+"ci": {
+"activity": 14,
+"free": 12
+},
+"cp": {},
+"reg": true,
+"series": "HIS10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"HIS1008": {
+"gi": {
+"free": 11,
+"activity": 13,
+"carousel": 2,
+"tabs": 2
+},
+"gp": {},
+"ci": {
+"free": 10,
+"activity": 12
+},
+"cp": {},
+"reg": true,
+"series": "HIS10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"HPFUN101": {
+"gi": {
+"panel": 3
+},
+"gp": {},
+"ci": {
+"panel": 2
+},
+"cp": {},
+"reg": true,
+"series": "HPFUN10",
+"st": "1-10 Health and PE|Fundamentals",
+"tf": "Fundamentals"
+},
+"HPFUN102": {
+"gi": {
+"panel": 2
+},
+"gp": {},
+"ci": {
+"panel": 1
+},
+"cp": {},
+"reg": true,
+"series": "HPFUN10",
+"st": "1-10 Health and PE|Fundamentals",
+"tf": "Fundamentals"
+},
+"HPFUN103": {
+"gi": {
+"activity": 2
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": true,
+"series": "HPFUN10",
+"st": "1-10 Health and PE|Fundamentals",
+"tf": "Fundamentals"
+},
+"HPFUN201": {
+"gi": {
+"panel": 2,
+"activity": 6
+},
+"gp": {},
+"ci": {},
+"cp": {
+"panel": 1
+},
+"reg": false,
+"series": "HPFUN20",
+"st": "1-10 Health and PE|Fundamentals",
+"tf": "Fundamentals"
+},
+"HPFUN202": {
+"gi": {},
+"gp": {
+"carousel": 11
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "HPFUN20",
+"st": "1-10 Health and PE|Fundamentals",
+"tf": "Fundamentals"
+},
+"HPFUN203": {
+"gi": {},
+"gp": {
+"activity": 1,
+"panel": 1
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "HPFUN20",
+"st": "1-10 Health and PE|Fundamentals",
+"tf": "Fundamentals"
+},
+"HPFUN301": {
+"gi": {
+"panel": 4
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "HPFUN30",
+"st": "1-10 Health and PE|Fundamentals",
+"tf": "Fundamentals"
+},
+"HPFUN302": {
+"gi": {},
+"gp": {
+"panel": 1,
+"carousel": 6
+},
+"ci": {},
+"cp": {
+"carousel": 6
+},
+"reg": false,
+"series": "HPFUN30",
+"st": "1-10 Health and PE|Fundamentals",
+"tf": "Fundamentals"
+},
+"HPFUN303": {
+"gi": {},
+"gp": {
+"panel": 3
+},
+"ci": {},
+"cp": {
+"panel": 1
+},
+"reg": false,
+"series": "HPFUN30",
+"st": "1-10 Health and PE|Fundamentals",
+"tf": "Fundamentals"
+},
+"HPFUN401": {
+"gi": {
+"panel": 2
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "HPFUN40",
+"st": "1-10 Health and PE|Fundamentals",
+"tf": "Fundamentals"
+},
+"HPFUN402": {
+"gi": {
+"panel": 1
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "HPFUN40",
+"st": "1-10 Health and PE|Fundamentals",
+"tf": "Fundamentals"
+},
+"HPFUN403": {
+"gi": {},
+"gp": {
+"panel": 1,
+"activity": 1
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "HPFUN40",
+"st": "1-10 Health and PE|Fundamentals",
+"tf": "Fundamentals"
+},
+"HPFUN901": {
+"gi": {},
+"gp": {
+"panel": 4,
+"activity": 1
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "HPFUN90",
+"st": "1-10 Health and PE|Fundamentals",
+"tf": "Fundamentals"
+},
+"HPFUN902": {
+"gi": {
+"panel": 2
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "HPFUN90",
+"st": "1-10 Health and PE|Fundamentals",
+"tf": "Fundamentals"
+},
+"HPFUN903": {
+"gi": {
+"accordion": 4,
+"carousel": 6,
+"panel": 4
+},
+"gp": {},
+"ci": {},
+"cp": {
+"carousel": 6
+},
+"reg": false,
+"series": "HPFUN90",
+"st": "1-10 Health and PE|Fundamentals",
+"tf": "Fundamentals"
+},
+"HPRE203": {
+"gi": {},
+"gp": {
+"free": 9,
+"activity": 4
+},
+"ci": {},
+"cp": {
+"free": 9,
+"activity": 4
+},
+"reg": false,
+"series": "HPRE20",
+"st": null,
+"tf": "Standard"
+},
+"MXDB102": {
+"gi": {
+"free": 11,
+"activity": 6
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 1,
+"activity": 8
+},
+"reg": false,
+"series": "MXDB10",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXDB201": {
+"gi": {
+"carousel": 3,
+"activity": 5,
+"clickDrop": 5
+},
+"gp": {},
+"ci": {},
+"cp": {
+"carousel": 3,
+"activity": 3
+},
+"reg": false,
+"series": "MXDB20",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXDB202": {
+"gi": {
+"free": 6,
+"carousel": 2,
+"tabs": 2,
+"activity": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 6,
+"carousel": 2,
+"tabs": 1,
+"activity": 1
+},
+"reg": false,
+"series": "MXDB20",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXDB301": {
+"gi": {
+"free": 5,
+"accordion": 3,
+"carousel": 2
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 1
+},
+"reg": false,
+"series": "MXDB30",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXDB302": {
+"gi": {
+"accordion": 8,
+"free": 11,
+"carousel": 11
+},
+"gp": {},
+"ci": {},
+"cp": {
+"modal": 2,
+"free": 11,
+"accordion": 5,
+"carousel": 5,
+"activity": 1
+},
+"reg": false,
+"series": "MXDB30",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXDI101": {
+"gi": {
+"free": 12,
+"clickDrop": 1,
+"activity": 3
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 7,
+"activity": 6
+},
+"reg": false,
+"series": "MXDI10",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXDI102": {
+"gi": {},
+"gp": {
+"free": 3,
+"clickDrop": 1,
+"activity": 2
+},
+"ci": {},
+"cp": {
+"free": 4,
+"activity": 7
+},
+"reg": false,
+"series": "MXDI10",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXDI103": {
+"gi": {
+"free": 11,
+"activity": 2,
+"carousel": 8
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 5,
+"activity": 7,
+"carousel": 8
+},
+"reg": false,
+"series": "MXDI10",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXDI201": {
+"gi": {
+"free": 19,
+"activity": 10,
+"carousel": 4
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 22,
+"activity": 9
+},
+"reg": false,
+"series": "MXDI20",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXDI202": {
+"gi": {},
+"gp": {
+"free": 23,
+"clickDrop": 9,
+"carousel": 6,
+"activity": 6
+},
+"ci": {},
+"cp": {
+"free": 17,
+"activity": 9
+},
+"reg": false,
+"series": "MXDI20",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXDI301": {
+"gi": {
+"free": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 2
+},
+"reg": false,
+"series": "MXDI30",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXEO102": {
+"gi": {
+"free": 5,
+"carousel": 2
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "MXEO10",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXEO201": {
+"gi": {
+"free": 12,
+"carousel": 7,
+"activity": 3
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 10,
+"carousel": 5,
+"activity": 4
+},
+"reg": false,
+"series": "MXEO20",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXEO202": {
+"gi": {
+"free": 10
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 9,
+"activity": 2
+},
+"reg": false,
+"series": "MXEO20",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXEO301": {
+"gi": {
+"clickDrop": 5,
+"tabs": 1,
+"free": 6,
+"accordion": 2
+},
+"gp": {
+"free": 7
+},
+"ci": {},
+"cp": {
+"accordion": 2,
+"modal": 4,
+"carousel": 2,
+"free": 2
+},
+"reg": false,
+"series": "MXEO30",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXEO401": {
+"gi": {},
+"gp": {
+"clickDrop": 2,
+"free": 8,
+"tabs": 1
+},
+"ci": {},
+"cp": {
+"free": 7
+},
+"reg": false,
+"series": "MXEO40",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXEX101": {
+"gi": {
+"free": 6,
+"activity": 1,
+"carousel": 3
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "MXEX10",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXEX201": {
+"gi": {
+"free": 4,
+"activity": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 6
+},
+"reg": false,
+"series": "MXEX20",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXEX202": {
+"gi": {
+"free": 6,
+"activity": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 10
+},
+"reg": false,
+"series": "MXEX20",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXEX301": {
+"gi": {
+"free": 1,
+"accordion": 1
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "MXEX30",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXEX302": {
+"gi": {
+"free": 8,
+"carousel": 5
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 9,
+"carousel": 4
+},
+"reg": false,
+"series": "MXEX30",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXEX401": {
+"gi": {
+"free": 6,
+"clickDrop": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 3,
+"activity": 1
+},
+"reg": false,
+"series": "MXEX40",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXFL101": {
+"gi": {
+"free": 7,
+"activity": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 6,
+"activity": 1
+},
+"reg": false,
+"series": "MXFL10",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXFL102": {
+"gi": {},
+"gp": {
+"free": 7,
+"activity": 10,
+"carousel": 3
+},
+"ci": {},
+"cp": {
+"free": 5,
+"activity": 11,
+"carousel": 3
+},
+"reg": false,
+"series": "MXFL10",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXFL103": {
+"gi": {
+"free": 9,
+"activity": 3,
+"carousel": 10
+},
+"gp": {},
+"ci": {},
+"cp": {
+"activity": 11,
+"carousel": 4,
+"free": 3
+},
+"reg": false,
+"series": "MXFL10",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXFL104": {
+"gi": {
+"free": 6,
+"accordion": 2
+},
+"gp": {},
+"ci": {},
+"cp": {
+"carousel": 1,
+"free": 7
+},
+"reg": false,
+"series": "MXFL10",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXFL201": {
+"gi": {
+"activity": 1,
+"free": 1,
+"clickDrop": 4
+},
+"gp": {},
+"ci": {
+"free": 2,
+"activity": 1
+},
+"cp": {},
+"reg": true,
+"series": "MXFL20",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXFL202": {
+"gi": {
+"free": 3,
+"modal": 3
+},
+"gp": {},
+"ci": {
+"free": 2
+},
+"cp": {},
+"reg": true,
+"series": "MXFL20",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXFL203": {
+"gi": {
+"free": 11,
+"activity": 8
+},
+"gp": {},
+"ci": {
+"free": 9,
+"activity": 12
+},
+"cp": {},
+"reg": true,
+"series": "MXFL20",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXFL204": {
+"gi": {
+"free": 12,
+"activity": 1
+},
+"gp": {
+"free": 1
+},
+"ci": {
+"free": 7,
+"activity": 6
+},
+"cp": {},
+"reg": true,
+"series": "MXFL20",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXFL301": {
+"gi": {
+"free": 6,
+"accordion": 15,
+"clickDrop": 4,
+"activity": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 6,
+"accordion": 14,
+"modal": 4
+},
+"reg": false,
+"series": "MXFL30",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXFL302": {
+"gi": {
+"free": 6,
+"clickDrop": 4,
+"carousel": 4,
+"accordion": 11
+},
+"gp": {},
+"ci": {},
+"cp": {
+"activity": 2,
+"modal": 6,
+"free": 5,
+"accordion": 11
+},
+"reg": false,
+"series": "MXFL30",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXFL401": {
+"gi": {},
+"gp": {
+"free": 8
+},
+"ci": {},
+"cp": {
+"free": 8
+},
+"reg": false,
+"series": "MXFL40",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXFU201": {
+"gi": {
+"free": 10,
+"activity": 7
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 12,
+"activity": 6
+},
+"reg": false,
+"series": "MXFU20",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXFU202": {
+"gi": {
+"accordion": 1,
+"free": 6
+},
+"gp": {
+"free": 7,
+"activity": 1,
+"accordion": 2,
+"clickDrop": 2,
+"carousel": 2
+},
+"ci": {},
+"cp": {
+"free": 9,
+"activity": 12
+},
+"reg": false,
+"series": "MXFU20",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXFU301": {
+"gi": {
+"accordion": 3,
+"clickDrop": 3,
+"free": 3,
+"modal": 1
+},
+"gp": {
+"carousel": 2
+},
+"ci": {},
+"cp": {
+"free": 4,
+"modal": 2,
+"carousel": 2
+},
+"reg": false,
+"series": "MXFU30",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXFU302": {
+"gi": {
+"free": 2,
+"activity": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 2,
+"activity": 1
+},
+"reg": false,
+"series": "MXFU30",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXFU401": {
+"gi": {},
+"gp": {
+"free": 12,
+"clickDrop": 2,
+"accordion": 8
+},
+"ci": {},
+"cp": {
+"free": 11,
+"accordion": 7
+},
+"reg": false,
+"series": "MXFU40",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXFU402": {
+"gi": {
+"free": 4,
+"carousel": 2
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 5,
+"carousel": 3
+},
+"reg": false,
+"series": "MXFU40",
+"st": "1-10 Mathematics|Standard",
+"tf": "Standard"
+},
+"MXFUN01": {
+"gi": {
+"activity": 19,
+"panel": 13,
+"free": 15,
+"accordion": 3
+},
+"gp": {
+"panel": 1,
+"accordion": 1
+},
+"ci": {},
+"cp": {
+"activity": 5,
+"free": 9
+},
+"reg": false,
+"series": "MXFUN01",
+"st": "1-10 Mathematics|Fundamentals",
+"tf": "Fundamentals"
+},
+"MXFUN03": {
+"gi": {
+"panel": 3,
+"activity": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"panel": 7
+},
+"reg": false,
+"series": "MXFUN03",
+"st": "1-10 Mathematics|Fundamentals",
+"tf": "Fundamentals"
+},
+"OSAH301": {
+"gi": {},
+"gp": {
+"free": 3
+},
+"ci": {},
+"cp": {
+"free": 3
+},
+"reg": false,
+"series": "OSAH30",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSAH401": {
+"gi": {},
+"gp": {
+"free": 4,
+"carousel": 1
+},
+"ci": {},
+"cp": {
+"free": 4,
+"carousel": 1
+},
+"reg": false,
+"series": "OSAH40",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSAH501": {
+"gi": {},
+"gp": {
+"free": 4
+},
+"ci": {},
+"cp": {
+"free": 5
+},
+"reg": false,
+"series": "OSAH50",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSAI101": {
+"gi": {},
+"gp": {
+"free": 3
+},
+"ci": {},
+"cp": {
+"free": 3,
+"carousel": 5
+},
+"reg": false,
+"series": "OSAI10",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSAI201": {
+"gi": {},
+"gp": {
+"free": 8,
+"accordion": 2
+},
+"ci": {},
+"cp": {
+"free": 8
+},
+"reg": false,
+"series": "OSAI20",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSAI301": {
+"gi": {},
+"gp": {
+"free": 2
+},
+"ci": {},
+"cp": {
+"free": 2
+},
+"reg": false,
+"series": "OSAI30",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSAI401": {
+"gi": {},
+"gp": {
+"free": 5,
+"activity": 1,
+"accordion": 2,
+"tabs": 2
+},
+"ci": {},
+"cp": {
+"free": 8,
+"carousel": 5
+},
+"reg": false,
+"series": "OSAI40",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSAI501": {
+"gi": {},
+"gp": {
+"free": 8,
+"accordion": 2,
+"tabs": 1
+},
+"ci": {},
+"cp": {
+"free": 9,
+"accordion": 2
+},
+"reg": false,
+"series": "OSAI50",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSBY101": {
+"gi": {
+"free": 1
+},
+"gp": {
+"free": 3
+},
+"ci": {},
+"cp": {
+"free": 3,
+"clickDrop": 1
+},
+"reg": false,
+"series": "OSBY10",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSBY201": {
+"gi": {},
+"gp": {
+"free": 5
+},
+"ci": {},
+"cp": {
+"free": 5,
+"activity": 1
+},
+"reg": false,
+"series": "OSBY20",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSBY301": {
+"gi": {},
+"gp": {
+"free": 3
+},
+"ci": {},
+"cp": {
+"free": 3,
+"carousel": 5
+},
+"reg": false,
+"series": "OSBY30",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSBY401": {
+"gi": {},
+"gp": {
+"free": 5
+},
+"ci": {},
+"cp": {
+"free": 5
+},
+"reg": false,
+"series": "OSBY40",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSBY501": {
+"gi": {},
+"gp": {
+"free": 8
+},
+"ci": {},
+"cp": {
+"free": 8
+},
+"reg": false,
+"series": "OSBY50",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSGM101": {
+"gi": {},
+"gp": {
+"free": 3
+},
+"ci": {},
+"cp": {
+"free": 3,
+"carousel": 1
+},
+"reg": false,
+"series": "OSGM10",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSGM201": {
+"gi": {},
+"gp": {
+"free": 3
+},
+"ci": {},
+"cp": {
+"free": 3
+},
+"reg": false,
+"series": "OSGM20",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSGM301": {
+"gi": {},
+"gp": {
+"free": 2,
+"activity": 1
+},
+"ci": {},
+"cp": {
+"free": 2,
+"activity": 1
+},
+"reg": false,
+"series": "OSGM30",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSGM401": {
+"gi": {},
+"gp": {
+"free": 7,
+"activity": 1
+},
+"ci": {},
+"cp": {
+"free": 7,
+"activity": 1
+},
+"reg": false,
+"series": "OSGM40",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSGM501": {
+"gi": {},
+"gp": {
+"free": 7,
+"activity": 1
+},
+"ci": {},
+"cp": {
+"free": 6,
+"activity": 1
+},
+"reg": false,
+"series": "OSGM50",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSOH101": {
+"gi": {},
+"gp": {
+"free": 8
+},
+"ci": {},
+"cp": {
+"free": 8,
+"carousel": 7
+},
+"reg": false,
+"series": "OSOH10",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSOH201": {
+"gi": {
+"free": 5
+},
+"gp": {
+"free": 1
+},
+"ci": {},
+"cp": {
+"free": 6,
+"carousel": 6
+},
+"reg": false,
+"series": "OSOH20",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSOH301": {
+"gi": {
+"free": 4
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 4
+},
+"reg": false,
+"series": "OSOH30",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSOH401": {
+"gi": {
+"free": 10
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 8,
+"carousel": 3
+},
+"reg": false,
+"series": "OSOH40",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSOH501": {
+"gi": {},
+"gp": {
+"free": 11
+},
+"ci": {},
+"cp": {
+"free": 10,
+"clickDrop": 1
+},
+"reg": false,
+"series": "OSOH50",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSSC301": {
+"gi": {
+"free": 3
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 3
+},
+"reg": false,
+"series": "OSSC30",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSSC401": {
+"gi": {},
+"gp": {
+"free": 8,
+"carousel": 7
+},
+"ci": {},
+"cp": {
+"free": 8,
+"carousel": 7
+},
+"reg": false,
+"series": "OSSC40",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSSC501": {
+"gi": {},
+"gp": {
+"free": 10,
+"carousel": 6
+},
+"ci": {},
+"cp": {
+"free": 9,
+"carousel": 3
+},
+"reg": false,
+"series": "OSSC50",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSSM301": {
+"gi": {
+"free": 1
+},
+"gp": {
+"free": 4
+},
+"ci": {},
+"cp": {
+"free": 5
+},
+"reg": false,
+"series": "OSSM30",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"OSSM401": {
+"gi": {},
+"gp": {
+"free": 11
+},
+"ci": {},
+"cp": {
+"free": 11,
+"carousel": 10
+},
+"reg": false,
+"series": "OSSM40",
+"st": "Online Safety (OS9000)|Standard",
+"tf": "Standard"
+},
+"PES1001": {
+"gi": {
+"free": 17,
+"accordion": 3,
+"activity": 1
+},
+"gp": {},
+"ci": {
+"free": 21
+},
+"cp": {},
+"reg": true,
+"series": "PES10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"PES1002": {
+"gi": {
+"free": 16,
+"carousel": 2
+},
+"gp": {
+"free": 2
+},
+"ci": {
+"free": 19
+},
+"cp": {
+"carousel": 1
+},
+"reg": true,
+"series": "PES10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"PES1003": {
+"gi": {
+"free": 8,
+"activity": 4,
+"tabs": 2,
+"clickDrop": 2,
+"carousel": 2
+},
+"gp": {},
+"ci": {
+"free": 8,
+"activity": 1
+},
+"cp": {
+"carousel": 2
+},
+"reg": true,
+"series": "PES10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"PES1004": {
+"gi": {
+"free": 2,
+"carousel": 4
+},
+"gp": {},
+"ci": {
+"free": 1
+},
+"cp": {},
+"reg": true,
+"series": "PES10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"PES1005": {
+"gi": {
+"free": 18
+},
+"gp": {},
+"ci": {
+"free": 15
+},
+"cp": {},
+"reg": true,
+"series": "PES10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"PES1007": {
+"gi": {
+"free": 9,
+"tabs": 2
+},
+"gp": {},
+"ci": {
+"free": 6
+},
+"cp": {},
+"reg": true,
+"series": "PES10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"PES1008": {
+"gi": {
+"free": 10,
+"activity": 3
+},
+"gp": {},
+"ci": {
+"free": 6
+},
+"cp": {},
+"reg": true,
+"series": "PES10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"PHE1001": {
+"gi": {
+"tabs": 4,
+"carousel": 9,
+"free": 1
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "PHE10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"PHE1002": {
+"gi": {
+"free": 2
+},
+"gp": {
+"free": 1
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "PHE10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"PHE1003": {
+"gi": {
+"free": 1,
+"accordion": 1
+},
+"gp": {
+"free": 2,
+"activity": 2
+},
+"ci": {},
+"cp": {
+"free": 5
+},
+"reg": false,
+"series": "PHE10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"PHE1004": {
+"gi": {},
+"gp": {
+"free": 1
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "PHE10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"PHE1005": {
+"gi": {
+"free": 2
+},
+"gp": {
+"free": 1
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "PHE10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"PHE1006": {
+"gi": {},
+"gp": {
+"free": 2,
+"activity": 1
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "PHE10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"PHE1007": {
+"gi": {},
+"gp": {
+"free": 11,
+"activity": 3
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "PHE10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"PHE1008": {
+"gi": {},
+"gp": {
+"free": 10,
+"activity": 1
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "PHE10",
+"st": "NCEA1|Standard",
+"tf": "Standard"
+},
+"PNR101": {
+"gi": {
+"free": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 1,
+"activity": 1
+},
+"reg": false,
+"series": "PNR10",
+"st": "Te Marautanga o Aotearoa TMoA|Bilingual",
+"tf": "Bilingual"
+},
+"PNR102": {
+"gi": {
+"free": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 2,
+"activity": 1
+},
+"reg": false,
+"series": "PNR10",
+"st": "Te Marautanga o Aotearoa TMoA|Bilingual",
+"tf": "Bilingual"
+},
+"PNR104": {
+"gi": {},
+"gp": {
+"free": 1
+},
+"ci": {},
+"cp": {
+"free": 1,
+"activity": 2
+},
+"reg": false,
+"series": "PNR10",
+"st": "Te Marautanga o Aotearoa TMoA|Bilingual",
+"tf": "Bilingual"
+},
+"SCCH301": {
+"gi": {},
+"gp": {
+"accordion": 4,
+"free": 7,
+"clickDrop": 1,
+"carousel": 4
+},
+"ci": {},
+"cp": {
+"free": 11,
+"accordion": 1,
+"carousel": 4
+},
+"reg": false,
+"series": "SCCH30",
+"st": "1-10 Science|Standard",
+"tf": "Standard"
+},
+"SCFUN01": {
+"gi": {
+"panel": 3,
+"tabs": 3,
+"carousel": 2
+},
+"gp": {
+"panel": 1
+},
+"ci": {},
+"cp": {
+"panel": 7,
+"carousel": 4
+},
+"reg": false,
+"series": "SCFUN01",
+"st": "1-10 Science|Fundamentals",
+"tf": "Fundamentals"
+},
+"SCPH301": {
+"gi": {},
+"gp": {
+"free": 8,
+"accordion": 2
+},
+"ci": {},
+"cp": {
+"free": 10
+},
+"reg": false,
+"series": "SCPH30",
+"st": null,
+"tf": "Standard"
+},
+"SSCI205": {
+"gi": {},
+"gp": {
+"free": 6
+},
+"ci": {},
+"cp": {
+"free": 7
+},
+"reg": false,
+"series": "SSCI20",
+"st": "1-10 Social Science|Standard",
+"tf": "Standard"
+},
+"SSFUN01": {
+"gi": {
+"panel": 4,
+"activity": 7,
+"accordion": 7,
+"carousel": 9,
+"clickDrop": 5
+},
+"gp": {},
+"ci": {
+"panel": 24,
+"activity": 5
+},
+"cp": {},
+"reg": true,
+"series": "SSFUN01",
+"st": "1-10 Social Science|Fundamentals",
+"tf": "Fundamentals"
+},
+"SSFUN02": {
+"gi": {
+"activity": 1,
+"panel": 5
+},
+"gp": {},
+"ci": {
+"activity": 6
+},
+"cp": {},
+"reg": true,
+"series": "SSFUN02",
+"st": "1-10 Social Science|Fundamentals",
+"tf": "Fundamentals"
+},
+"SSFUN03": {
+"gi": {
+"panel": 5
+},
+"gp": {},
+"ci": {
+"panel": 5
+},
+"cp": {},
+"reg": true,
+"series": "SSFUN03",
+"st": "1-10 Social Science|Fundamentals",
+"tf": "Fundamentals"
+},
+"SSFUN05": {
+"gi": {
+"tabs": 2
+},
+"gp": {},
+"ci": {
+"activity": 2
+},
+"cp": {},
+"reg": true,
+"series": "SSFUN05",
+"st": "1-10 Social Science|Fundamentals",
+"tf": "Fundamentals"
+},
+"SSFUN06": {
+"gi": {
+"panel": 7,
+"activity": 3
+},
+"gp": {},
+"ci": {
+"activity": 7
+},
+"cp": {},
+"reg": true,
+"series": "SSFUN06",
+"st": "1-10 Social Science|Fundamentals",
+"tf": "Fundamentals"
+},
+"SSFUN07": {
+"gi": {
+"panel": 4,
+"activity": 2
+},
+"gp": {
+"carousel": 11,
+"panel": 2
+},
+"ci": {},
+"cp": {
+"activity": 4
+},
+"reg": false,
+"series": "SSFUN07",
+"st": "1-10 Social Science|Standard",
+"tf": "Standard"
+},
+"SSFUN08": {
+"gi": {
+"panel": 2,
+"activity": 1,
+"tabs": 2,
+"modal": 1,
+"carousel": 2
+},
+"gp": {},
+"ci": {
+"activity": 5,
+"panel": 1
+},
+"cp": {},
+"reg": true,
+"series": "SSFUN08",
+"st": "1-10 Social Science|Fundamentals",
+"tf": "Fundamentals"
+},
+"SSOG101": {
+"gi": {
+"free": 3,
+"accordion": 3,
+"modal": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 7
+},
+"reg": false,
+"series": "SSOG10",
+"st": "1-10 Social Science|Standard",
+"tf": "Standard"
+},
+"SSOG103": {
+"gi": {},
+"gp": {
+"free": 4,
+"activity": 1
+},
+"ci": {},
+"cp": {
+"free": 6,
+"activity": 1,
+"carousel": 6
+},
+"reg": false,
+"series": "SSOG10",
+"st": "1-10 Social Science|Standard",
+"tf": "Standard"
+},
+"SSOG301": {
+"gi": {
+"free": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 8,
+"activity": 3
+},
+"reg": false,
+"series": "SSOG30",
+"st": "1-10 Social Science|Standard",
+"tf": "Standard"
+},
+"TEDC401": {
+"gi": {},
+"gp": {
+"free": 3,
+"tabs": 4
+},
+"ci": {},
+"cp": {
+"carousel": 1,
+"free": 1
+},
+"reg": false,
+"series": "TEDC40",
+"st": null,
+"tf": "Standard"
+},
+"TEDC402": {
+"gi": {},
+"gp": {
+"free": 5,
+"carousel": 8
+},
+"ci": {},
+"cp": {
+"free": 2
+},
+"reg": false,
+"series": "TEDC40",
+"st": null,
+"tf": "Standard"
+},
+"TEFUN01": {
+"gi": {},
+"gp": {
+"panel": 2
+},
+"ci": {},
+"cp": {
+"panel": 2
+},
+"reg": false,
+"series": "TEFUN01",
+"st": "1-10 Technology|Fundamentals",
+"tf": "Fundamentals"
+},
+"TEFUN02": {
+"gi": {
+"panel": 2
+},
+"gp": {
+"panel": 1
+},
+"ci": {},
+"cp": {
+"panel": 3
+},
+"reg": false,
+"series": "TEFUN02",
+"st": "1-10 Technology|Fundamentals",
+"tf": "Fundamentals"
+},
+"TEFUN03": {
+"gi": {
+"panel": 1
+},
+"gp": {
+"panel": 1,
+"carousel": 13
+},
+"ci": {},
+"cp": {
+"panel": 3
+},
+"reg": false,
+"series": "TEFUN03",
+"st": "1-10 Technology|Fundamentals",
+"tf": "Fundamentals"
+},
+"TEFUN04": {
+"gi": {
+"panel": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"panel": 1
+},
+"reg": false,
+"series": "TEFUN04",
+"st": "1-10 Technology|Fundamentals",
+"tf": "Fundamentals"
+},
+"TEFUN05": {
+"gi": {
+"panel": 2
+},
+"gp": {},
+"ci": {},
+"cp": {
+"panel": 2
+},
+"reg": false,
+"series": "TEFUN05",
+"st": "1-10 Technology|Fundamentals",
+"tf": "Fundamentals"
+},
+"TEFUN06": {
+"gi": {
+"carousel": 2,
+"panel": 2
+},
+"gp": {
+"carousel": 1
+},
+"ci": {},
+"cp": {
+"carousel": 2
+},
+"reg": false,
+"series": "TEFUN06",
+"st": "1-10 Technology|Fundamentals",
+"tf": "Fundamentals"
+},
+"TEFUN07": {
+"gi": {
+"panel": 3
+},
+"gp": {},
+"ci": {},
+"cp": {
+"panel": 3
+},
+"reg": false,
+"series": "TEFUN07",
+"st": "1-10 Technology|Fundamentals",
+"tf": "Fundamentals"
+},
+"TEFUN08": {
+"gi": {
+"panel": 7,
+"carousel": 2
+},
+"gp": {
+"carousel": 5
+},
+"ci": {},
+"cp": {
+"carousel": 5,
+"panel": 1
+},
+"reg": false,
+"series": "TEFUN08",
+"st": "1-10 Technology|Fundamentals",
+"tf": "Fundamentals"
+},
+"TRR102": {
+"gi": {},
+"gp": {
+"free": 7
+},
+"ci": {},
+"cp": {
+"free": 4
+},
+"reg": false,
+"series": "TRR10",
+"st": "Te Marautanga o Aotearoa TMoA|Bilingual",
+"tf": "Bilingual"
+},
+"TRR103": {
+"gi": {},
+"gp": {
+"free": 1,
+"activity": 4
+},
+"ci": {},
+"cp": {
+"free": 4
+},
+"reg": false,
+"series": "TRR10",
+"st": "Te Marautanga o Aotearoa TMoA|Bilingual",
+"tf": "Bilingual"
+},
+"TRR108": {
+"gi": {},
+"gp": {
+"free": 1
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "TRR10",
+"st": "Te Marautanga o Aotearoa TMoA|Bilingual",
+"tf": "Bilingual"
+},
+"TRR109": {
+"gi": {},
+"gp": {
+"accordion": 4
+},
+"ci": {},
+"cp": {
+"free": 1
+},
+"reg": false,
+"series": "TRR10",
+"st": "Te Marautanga o Aotearoa TMoA|Bilingual",
+"tf": "Bilingual"
+},
+"TRR111": {
+"gi": {},
+"gp": {
+"free": 4
+},
+"ci": {},
+"cp": {
+"free": 3
+},
+"reg": false,
+"series": "TRR11",
+"st": "Te Marautanga o Aotearoa TMoA|Bilingual",
+"tf": "Bilingual"
+},
+"TRR112": {
+"gi": {},
+"gp": {
+"activity": 4
+},
+"ci": {},
+"cp": {
+"free": 3,
+"activity": 1
+},
+"reg": false,
+"series": "TRR11",
+"st": "Te Marautanga o Aotearoa TMoA|Bilingual",
+"tf": "Bilingual"
+},
+"TRR113": {
+"gi": {},
+"gp": {
+"activity": 1,
+"carousel": 2
+},
+"ci": {},
+"cp": {
+"free": 2
+},
+"reg": false,
+"series": "TRR11",
+"st": "Te Marautanga o Aotearoa TMoA|Bilingual",
+"tf": "Bilingual"
+},
+"TRR114": {
+"gi": {},
+"gp": {
+"free": 1,
+"activity": 3
+},
+"ci": {},
+"cp": {
+"free": 1
+},
+"reg": false,
+"series": "TRR11",
+"st": "Te Marautanga o Aotearoa TMoA|Bilingual",
+"tf": "Bilingual"
+},
+"TRR203": {
+"gi": {},
+"gp": {
+"free": 1,
+"activity": 1
+},
+"ci": {},
+"cp": {
+"free": 3
+},
+"reg": false,
+"series": "TRR20",
+"st": "Te Marautanga o Aotearoa TMoA|Bilingual",
+"tf": "Bilingual"
+},
+"TRR301": {
+"gi": {},
+"gp": {
+"free": 1
+},
+"ci": {},
+"cp": {
+"free": 1
+},
+"reg": false,
+"series": "TRR30",
+"st": "Te Marautanga o Aotearoa TMoA|Bilingual",
+"tf": "Bilingual"
+},
+"TRR304": {
+"gi": {},
+"gp": {
+"free": 1
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "TRR30",
+"st": "Te Marautanga o Aotearoa TMoA|Bilingual",
+"tf": "Bilingual"
+},
+"TWHA901": {
+"gi": {
+"panel": 8,
+"activity": 11
+},
+"gp": {},
+"ci": {},
+"cp": {
+"panel": 1
+},
+"reg": false,
+"series": "TWHA90",
+"st": "Te ara Whakapuawa -Wellbeing|Inquiry",
+"tf": "Inquiry"
+},
+"TWHA902": {
+"gi": {},
+"gp": {
+"panel": 2,
+"tabs": 2,
+"activity": 3,
+"carousel": 2
+},
+"ci": {},
+"cp": {
+"panel": 1
+},
+"reg": false,
+"series": "TWHA90",
+"st": "Te ara Whakapuawa -Wellbeing|Inquiry",
+"tf": "Inquiry"
+},
+"TWHA903": {
+"gi": {},
+"gp": {
+"panel": 3,
+"activity": 4
+},
+"ci": {},
+"cp": {
+"panel": 1
+},
+"reg": false,
+"series": "TWHA90",
+"st": "Te ara Whakapuawa -Wellbeing|Inquiry",
+"tf": "Inquiry"
+},
+"TWHA904": {
+"gi": {
+"panel": 2
+},
+"gp": {
+"panel": 1,
+"carousel": 3
+},
+"ci": {},
+"cp": {
+"panel": 1
+},
+"reg": false,
+"series": "TWHA90",
+"st": "Te ara Whakapuawa -Wellbeing|Inquiry",
+"tf": "Inquiry"
+},
+"TWHA905": {
+"gi": {},
+"gp": {
+"carousel": 14,
+"panel": 1,
+"modal": 1
+},
+"ci": {},
+"cp": {
+"free": 2
+},
+"reg": false,
+"series": "TWHA90",
+"st": "Te ara Whakapuawa -Wellbeing|Inquiry",
+"tf": "Inquiry"
+},
+"TWHA906": {
+"gi": {},
+"gp": {
+"panel": 3,
+"activity": 5
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "TWHA90",
+"st": "Te ara Whakapuawa -Wellbeing|Inquiry",
+"tf": "Inquiry"
+},
+"TWHK901": {
+"gi": {},
+"gp": {
+"panel": 6
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "TWHK90",
+"st": "Te ara Whakapuawa -Wellbeing|Inquiry",
+"tf": "Inquiry"
+},
+"TWHK903": {
+"gi": {
+"carousel": 4,
+"panel": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"carousel": 7,
+"panel": 2
+},
+"reg": false,
+"series": "TWHK90",
+"st": "Te ara Whakapuawa -Wellbeing|Inquiry",
+"tf": "Inquiry"
+},
+"XDLS501": {
+"gi": {
+"free": 11,
+"carousel": 18,
+"activity": 3
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 1
+},
+"reg": false,
+"series": "XDLS50",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XDLS502": {
+"gi": {
+"free": 1
+},
+"gp": {
+"free": 3,
+"carousel": 6,
+"activity": 2,
+"accordion": 3
+},
+"ci": {},
+"cp": {
+"free": 3,
+"carousel": 6
+},
+"reg": false,
+"series": "XDLS50",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XDLS901": {
+"gi": {
+"free": 3,
+"tabs": 2,
+"activity": 2,
+"accordion": 4,
+"carousel": 2
+},
+"gp": {
+"tabs": 3,
+"activity": 1,
+"accordion": 3,
+"carousel": 2
+},
+"ci": {},
+"cp": {
+"free": 5,
+"accordion": 2,
+"activity": 2,
+"carousel": 1
+},
+"reg": false,
+"series": "XDLS90",
+"st": "Leaving to Learn|Inquiry",
+"tf": "Inquiry"
+},
+"XDLS902": {
+"gi": {},
+"gp": {
+"accordion": 25,
+"free": 1,
+"activity": 13,
+"clickDrop": 3
+},
+"ci": {},
+"cp": {
+"free": 3,
+"clickDrop": 5,
+"accordion": 7
+},
+"reg": false,
+"series": "XDLS90",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XDLS903": {
+"gi": {
+"free": 2,
+"accordion": 21,
+"activity": 5,
+"clickDrop": 17
+},
+"gp": {
+"free": 1
+},
+"ci": {},
+"cp": {
+"free": 10,
+"accordion": 12,
+"activity": 4,
+"clickDrop": 16
+},
+"reg": false,
+"series": "XDLS90",
+"st": "Leaving to Learn|Inquiry",
+"tf": "Inquiry"
+},
+"XDLS904": {
+"gi": {},
+"gp": {
+"free": 3,
+"accordion": 26,
+"activity": 2,
+"clickDrop": 17,
+"carousel": 3
+},
+"ci": {},
+"cp": {
+"free": 11,
+"accordion": 15,
+"clickDrop": 16,
+"activity": 1,
+"carousel": 3
+},
+"reg": false,
+"series": "XDLS90",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XDLS905": {
+"gi": {},
+"gp": {
+"free": 2,
+"accordion": 26,
+"activity": 4,
+"clickDrop": 12
+},
+"ci": {},
+"cp": {
+"free": 10,
+"accordion": 16,
+"clickDrop": 11,
+"activity": 1
+},
+"reg": false,
+"series": "XDLS90",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XDLS906": {
+"gi": {},
+"gp": {
+"free": 4,
+"accordion": 25,
+"activity": 3,
+"clickDrop": 8
+},
+"ci": {},
+"cp": {
+"free": 10,
+"clickDrop": 8,
+"accordion": 16,
+"activity": 1
+},
+"reg": false,
+"series": "XDLS90",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XDLS908": {
+"gi": {
+"free": 1
+},
+"gp": {
+"free": 17,
+"carousel": 48,
+"activity": 1
+},
+"ci": {},
+"cp": {
+"free": 31,
+"carousel": 35,
+"activity": 1
+},
+"reg": false,
+"series": "XDLS90",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XDLS909": {
+"gi": {},
+"gp": {
+"free": 5,
+"carousel": 14,
+"accordion": 7,
+"clickDrop": 5
+},
+"ci": {},
+"cp": {
+"free": 5,
+"activity": 3
+},
+"reg": false,
+"series": "XDLS90",
+"st": "Leaving to Learn|Inquiry",
+"tf": "Inquiry"
+},
+"XDLS911": {
+"gi": {
+"free": 1
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "XDLS91",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XDLS912": {
+"gi": {
+"free": 8,
+"activity": 3
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 5,
+"activity": 5
+},
+"reg": false,
+"series": "XDLS91",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XFUN01": {
+"gi": {},
+"gp": {
+"free": 2,
+"carousel": 26,
+"panel": 4
+},
+"ci": {},
+"cp": {
+"free": 6,
+"panel": 25,
+"carousel": 5
+},
+"reg": false,
+"series": "XFUN01",
+"st": "Leaving to Learn|Fundamentals",
+"tf": "Fundamentals"
+},
+"XFUN02": {
+"gi": {},
+"gp": {
+"free": 2,
+"carousel": 6
+},
+"ci": {},
+"cp": {
+"free": 1
+},
+"reg": false,
+"series": "XFUN02",
+"st": "Leaving to Learn|Fundamentals",
+"tf": "Fundamentals"
+},
+"XGF9001": {
+"gi": {},
+"gp": {
+"clickDrop": 4,
+"carousel": 15,
+"free": 2
+},
+"ci": {},
+"cp": {
+"accordion": 6,
+"free": 3,
+"carousel": 18,
+"activity": 1
+},
+"reg": false,
+"series": "XGF90",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XGF9002": {
+"gi": {},
+"gp": {
+"accordion": 4,
+"free": 2,
+"carousel": 19
+},
+"ci": {},
+"cp": {
+"free": 8,
+"carousel": 10
+},
+"reg": false,
+"series": "XGF90",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XGF9003": {
+"gi": {},
+"gp": {
+"tabs": 4,
+"activity": 2,
+"free": 2,
+"carousel": 26
+},
+"ci": {},
+"cp": {
+"carousel": 23,
+"free": 13,
+"activity": 1
+},
+"reg": false,
+"series": "XGF90",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XGF9004": {
+"gi": {},
+"gp": {
+"free": 3,
+"carousel": 27,
+"tabs": 4,
+"activity": 2
+},
+"ci": {},
+"cp": {
+"free": 4,
+"activity": 3,
+"carousel": 4
+},
+"reg": false,
+"series": "XGF90",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XGF9006": {
+"gi": {
+"free": 3,
+"activity": 2,
+"tabs": 1
+},
+"gp": {
+"carousel": 9
+},
+"ci": {},
+"cp": {
+"free": 7,
+"carousel": 7,
+"activity": 1,
+"tabs": 1
+},
+"reg": false,
+"series": "XGF90",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XLP01": {
+"gi": {
+"free": 4,
+"carousel": 2,
+"clickDrop": 5,
+"accordion": 1,
+"activity": 1
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 7,
+"carousel": 2
+},
+"reg": false,
+"series": "XLP01",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XLP02": {
+"gi": {},
+"gp": {
+"free": 3,
+"carousel": 2
+},
+"ci": {},
+"cp": {
+"carousel": 6,
+"free": 3
+},
+"reg": false,
+"series": "XLP02",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XLP03": {
+"gi": {},
+"gp": {
+"carousel": 4,
+"free": 3
+},
+"ci": {},
+"cp": {
+"carousel": 2,
+"free": 2
+},
+"reg": false,
+"series": "XLP03",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XLP04": {
+"gi": {},
+"gp": {
+"free": 2,
+"carousel": 6,
+"activity": 3
+},
+"ci": {},
+"cp": {
+"free": 4,
+"carousel": 6
+},
+"reg": false,
+"series": "XLP04",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XLP05": {
+"gi": {},
+"gp": {
+"free": 3
+},
+"ci": {},
+"cp": {
+"carousel": 1
+},
+"reg": false,
+"series": "XLP05",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XLP06": {
+"gi": {},
+"gp": {
+"free": 6,
+"carousel": 10,
+"tabs": 7,
+"activity": 1
+},
+"ci": {},
+"cp": {
+"free": 9,
+"carousel": 4,
+"activity": 1
+},
+"reg": false,
+"series": "XLP06",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XMES101": {
+"gi": {},
+"gp": {
+"free": 5,
+"activity": 9,
+"carousel": 4
+},
+"ci": {},
+"cp": {
+"carousel": 3,
+"activity": 6,
+"free": 3
+},
+"reg": false,
+"series": "XMES10",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XMES102": {
+"gi": {},
+"gp": {
+"free": 3,
+"activity": 7
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "XMES10",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XMES103": {
+"gi": {
+"accordion": 1,
+"activity": 5,
+"carousel": 2,
+"free": 3,
+"tabs": 1
+},
+"gp": {
+"free": 2
+},
+"ci": {},
+"cp": {
+"activity": 5,
+"free": 3
+},
+"reg": false,
+"series": "XMES10",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XMES201": {
+"gi": {
+"free": 2,
+"activity": 1
+},
+"gp": {
+"free": 4,
+"carousel": 3,
+"activity": 1
+},
+"ci": {},
+"cp": {
+"free": 4,
+"activity": 2
+},
+"reg": false,
+"series": "XMES20",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XMES203": {
+"gi": {},
+"gp": {
+"free": 7,
+"carousel": 15
+},
+"ci": {},
+"cp": {
+"free": 7
+},
+"reg": false,
+"series": "XMES20",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XTAS101": {
+"gi": {},
+"gp": {
+"free": 2,
+"carousel": 2,
+"activity": 2,
+"accordion": 1
+},
+"ci": {},
+"cp": {
+"activity": 2
+},
+"reg": false,
+"series": "XTAS10",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XTAS102": {
+"gi": {
+"free": 8,
+"carousel": 1,
+"activity": 2
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 4,
+"activity": 2
+},
+"reg": false,
+"series": "XTAS10",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XTAS103": {
+"gi": {
+"free": 5,
+"activity": 12,
+"accordion": 2,
+"carousel": 2
+},
+"gp": {},
+"ci": {},
+"cp": {
+"free": 3,
+"activity": 12
+},
+"reg": false,
+"series": "XTAS10",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XWHA01": {
+"gi": {
+"free": 1
+},
+"gp": {
+"free": 1
+},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "XWHA01",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+},
+"XWHA02": {
+"gi": {
+"tabs": 2,
+"free": 1,
+"carousel": 1
+},
+"gp": {},
+"ci": {},
+"cp": {},
+"reg": false,
+"series": "XWHA02",
+"st": "Leaving to Learn|Standard",
+"tf": "Standard"
+}
+}

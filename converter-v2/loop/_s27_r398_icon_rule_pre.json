@@ -1,0 +1,29 @@
+{
+ "enabled": true,
+ "env_off": "VIDEOICON_OFF",
+ "icon_series": [
+  "ANZH10",
+  "ART10",
+  "BLL11",
+  "BLL12",
+  "BLL13",
+  "BLL14",
+  "BLL15",
+  "BLL16",
+  "BLL17",
+  "ENGI10",
+  "ENGI20",
+  "HIS10",
+  "HPFUN10",
+  "MXFL20",
+  "PES10"
+ ],
+ "icon_subject_template": [
+  "1-10 Arts|Fundamentals",
+  "1-10 English|Fundamentals",
+  "1-10 Social Science|Fundamentals",
+  "ANZH|Standard",
+  "EXPlore|Inquiry"
+ ],
+ "_round200_note": "ROUND 200 (Chris, backlog item 3 \u2014 the videoSection `icon` play-button styling). The human adds `icon` to a videoSection div as a per-SUBJECT/SERIES HOUSE STYLE, not a per-video choice \u2014 measured outputs/_measure_videoicon.cjs over ALL 392 paired gold modules: 82% of video-carrying modules are internally PURE (all-icon 182 / all-plain 126) vs 65 MIXED, and every per-video rule tested (first-video, in-carousel, in-activity, media-kind) lands ~56-59% on mixed modules = no per-video signal. The icon-vs-plain CHOICE SOLIDIFIES (r182 solidify: pooled video-share, a SERIES with n>=3 modules at share>=0.85, else a SUBJECT|TEMPLATE with n>=5 at share>=0.80) ONLY in these groups; the near-tie groups (1-10 Blended Literacy|Standard 51%, 1-10 English|Standard 53%, ConnectED|Inquiry 61%) do NOT solidify and stay PLAIN (default). MediaBuilder.media post-replaces the class token `videoSection ` -> `videoSection icon ` (the videoHost-replace precedent, MediaBuilder L111) when the run's module (from Module_Structure_Index.module_meta) has its series in icon_series OR its subject|template in icon_subject_template. Conservative ship (Chris-approved): 115 modules, projected +1163 net video-nodes matching gold, 94% correct in the shipped set; the 73 wrong are the documented net-positive collateral incl. 5 pure-plain modules (ANZH404, BLL171, BLL172, BLL174, EXPFUN06 \u2014 the r164 net-positive class). Widget-embedded videos (accordion/tab/carousel builders that call video.youtube directly) keep plain this round = recorded follow-up. env VIDEOICON_OFF (or enabled:false) reverts to all-plain, byte-identical to r199."
+}

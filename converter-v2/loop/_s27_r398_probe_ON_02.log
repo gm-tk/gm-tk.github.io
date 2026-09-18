@@ -1,0 +1,607 @@
+EXPFUN05: identical 1 / changed 0
+EXPFUN06: identical 1 / changed 0
+EXPFUN07: identical 1 / changed 0
+HES1003: identical 9 / changed 0
+HES1004: identical 5 / changed 0
+HES1005: identical 9 / changed 0
+HES1006: identical 8 / changed 0
+HES1007: identical 10 / changed 0
+HIS1001: identical 8 / changed 0
+HIS1002: identical 21 / changed 0
+HIS1003: identical 11 / changed 0
+HIS1004: identical 11 / changed 0
+HIS1005: identical 15 / changed 0
+HIS1006: identical 15 / changed 0
+HIS1007: identical 7 / changed 0
+HIS1008: identical 12 / changed 0
+HPFUN101: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN103: identical 1 / changed 0
+HPFUN201: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+HPFUN302: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+HPRE203: identical 8 / changed 0
+MXDB102: identical 12 / changed 0
+  ~ MXDB201_0_0.html: -3 +3
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDB201_1_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDB201_3_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDB201_4_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+MXDB201: identical 3 / changed 4
+  ~ MXDB202_0_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDB202_1_0.html: -3 +3
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDB202_2_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDB202_3_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDB202_4_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDB202_5_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+MXDB202: identical 0 / changed 6
+  ~ MXDB301_0_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+MXDB301: identical 7 / changed 1
+  ~ MXDB302_1_0.html: -1 +1
+     - <p>While the examples in this clip do not specifically use measurement units, the process you would go through
+     + <p>While the examples in this clip do not specifically use measurement units, the process you would go through
+  ~ MXDB302_2_0.html: -7 +7
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="accContent"><p>Watch the clip below to learn about the formula we can use to quickly find the area
+     - <div class="accContent"><p>There will be times where you will need to find the area of a triangle as well. Wat
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="accContent"><p>Watch the clip below to learn about the formula we can use to quickly find the area
+     + <div class="accContent"><p>There will be times where you will need to find the area of a triangle as well. Wat
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDB302_3_0.html: -3 +3
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDB302_5_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDB302_6_0.html: -3 +3
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDB302_7_0.html: -4 +4
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDB302_8_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDB302_9_0.html: -3 +3
+     - <div class="accContent"><p>This approach turns the percentage into a fraction then multiplies. It is a good ch
+     - <div class="accContent"><p>Watch the clip below to see how we can find a percentage of an amount using decimal
+     - <div class="accContent"><p>This is a strategy that can be used for any equation but could be especially useful
+     + <div class="accContent"><p>This approach turns the percentage into a fraction then multiplies. It is a good ch
+     + <div class="accContent"><p>Watch the clip below to see how we can find a percentage of an amount using decimal
+     + <div class="accContent"><p>This is a strategy that can be used for any equation but could be especially useful
+MXDB302: identical 2 / changed 8
+  ~ MXDI101_1_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI101_1_2.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI101_1_3.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI101_1_4.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI101_1_5.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI101_1_7.html: -5 +5
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI101_1_8.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI101_1_9.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+MXDI101: identical 3 / changed 8
+  ~ MXDI102_0_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI102_1_0.html: -4 +4
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI102_2_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI102_3_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI102_4_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+MXDI102: identical 0 / changed 5
+  ~ MXDI103_0_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI103_1_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI103_2_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI103_3_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI103_4_0.html: -5 +5
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI103_5_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI103_6_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI103_7_0.html: -4 +4
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXDI103_8_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+MXDI103: identical 1 / changed 9
+MXDI201: identical 11 / changed 0
+MXDI202: identical 12 / changed 0
+MXDI301: identical 5 / changed 0
+MXEO102: identical 5 / changed 0
+  ~ MXEO201_1_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEO201_2_0.html: -3 +3
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEO201_3_0.html: -3 +3
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEO201_4_0.html: -3 +3
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEO201_6_0.html: -3 +3
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEO201_7_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEO201_8_0.html: -4 +4
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEO201_9_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+MXEO201: identical 2 / changed 8
+  ~ MXEO202_0_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEO202_1_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEO202_2_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEO202_3_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEO202_4_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEO202_5_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEO202_6_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEO202_7_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+MXEO202: identical 1 / changed 8
+MXEO301: identical 11 / changed 0
+MXEO401: identical 7 / changed 0
+MXEX101: identical 7 / changed 0
+  ~ MXEX201_0_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEX201_2_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEX201_3_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEX201_4_1.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+MXEX201: identical 2 / changed 4
+  ~ MXEX202_0_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEX202_1_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEX202_2_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEX202_3_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEX202_4_0.html: -3 +3
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEX202_5_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEX202_6_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+MXEX202: identical 0 / changed 7
+MXEX301: identical 8 / changed 0
+  ~ MXEX302_0_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEX302_1_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEX302_2_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEX302_3_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEX302_5_0.html: -4 +4
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXEX302_6_0.html: -4 +4
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+MXEX302: identical 2 / changed 6
+MXEX401: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+MXFL102: identical 9 / changed 0
+MXFL103: identical 8 / changed 0
+MXFL104: identical 6 / changed 0
+MXFL201: identical 10 / changed 0
+MXFL202: identical 6 / changed 0
+MXFL203: identical 12 / changed 0
+MXFL204: identical 12 / changed 0
+  ~ MXFL301_1_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXFL301_2_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXFL301_3_0.html: -7 +7
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="accContent"><p>This first method converts the percentage back into its fraction form and uses mult
+     - <h5>How to convert a percentage to a decimal</h5><p>To convert a percentage to a decimal, you remove the % sig
+     - </div><p>The clip below converts the percentage back to a fraction and then to a decimal. Do not let this conf
+     - <div class="accContent"><p>This is a good alternative method. It follows the same principles we looked at abov
+     - <div class="accContent"><h5>Finding 1% to find 100 %</h5><p>This strategy follows the method we have just expl
+     - <div class="accContent"><p>This strategy uses a formula to solve the problem.</p><p>Part × 100 = Total</p><p>P
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="accContent"><p>This first method converts the percentage back into its fraction form and uses mult
+     + <h5>How to convert a percentage to a decimal</h5><p>To convert a percentage to a decimal, you remove the % sig
+     + </div><p>The clip below converts the percentage back to a fraction and then to a decimal. Do not let this conf
+     + <div class="accContent"><p>This is a good alternative method. It follows the same principles we looked at abov
+     + <div class="accContent"><h5>Finding 1% to find 100 %</h5><p>This strategy follows the method we have just expl
+     + <div class="accContent"><p>This strategy uses a formula to solve the problem.</p><p>Part × 100 = Total</p><p>P
+  ~ MXFL301_4_0.html: -3 +3
+     - <h4>What exactly is rounding and estimating?</h4><p>Rounding and estimating are useful ways to make numbers ea
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="accContent"><p>This is a good method to use if you prefer breaking up numbers into smaller chunks 
+     + <h4>What exactly is rounding and estimating?</h4><p>Rounding and estimating are useful ways to make numbers ea
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="accContent"><p>This is a good method to use if you prefer breaking up numbers into smaller chunks 
+  ~ MXFL301_5_0.html: -3 +3
+     - </ul><p>Watch the clip below to see how to multiply two decimal numbers together and how to multiply a whole n
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + </ul><p>Watch the clip below to see how to multiply two decimal numbers together and how to multiply a whole n
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXFL301_7_0.html: -2 +2
+     - <div class="accContent"><p>To convert between minutes and hours we again need to either multiply or divide by 
+     - </div><p>Let’s work through one more example of a trickier question.</p><p>How many minutes are there in 6 hou
+     + <div class="accContent"><p>To convert between minutes and hours we again need to either multiply or divide by 
+     + </div><p>Let’s work through one more example of a trickier question.</p><p>How many minutes are there in 6 hou
+  ~ MXFL301_8_0.html: -7 +7
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="accContent"><p>It is possible to calculate the time differences between two locations using the 24
+     - <div class="accContent"><p>Once we know the time difference between two locations, it is possible to calculate
+     - <div class="accContent"><p>While 0° longitude measures the Prime Meridian, on the other side of the world, at 
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="accContent"><p>It is possible to calculate the time differences between two locations using the 24
+     + <div class="accContent"><p>Once we know the time difference between two locations, it is possible to calculate
+     + <div class="accContent"><p>While 0° longitude measures the Prime Meridian, on the other side of the world, at 
+MXFL301: identical 3 / changed 7
+  ~ MXFL302_3_0.html: -3 +3
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <p>To explore this concept, watch the example in the video below. Notice the use of probability fractions alon
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <p>To explore this concept, watch the example in the video below. Notice the use of probability fractions alon
+  ~ MXFL302_4_0.html: -5 +5
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <p>The types of questions in the quiz are often used by kaiako to make sure you understand how to create and s
+     - </div><p>Remember to apply a little bit of logic. Find out what has already been done on the finished part of 
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <p>The types of questions in the quiz are often used by kaiako to make sure you understand how to create and s
+     + </div><p>Remember to apply a little bit of logic. Find out what has already been done on the finished part of 
+  ~ MXFL302_5_1_0.html: -5 +5
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="accContent"><p>For easy subtraction equations that involve mixed numbers, we can use the same proc
+     - </div><p>Before we move onto looking at how to solve trickier problems, let’s work through an easier equation 
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="accContent"><p>For easy subtraction equations that involve mixed numbers, we can use the same proc
+     + </div><p>Before we move onto looking at how to solve trickier problems, let’s work through an easier equation 
+  ~ MXFL302_6_0.html: -5 +5
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <p>The clip you just watched introduced a cool maths trick of reducing fractions diagonally. Using it helps yo
+     - <p>If you already know how to multiply using an algorithm, that is great! You can move on to look at the secon
+     - <p>When you are only multiplying by one digit, using place value can be a good choice of strategy, particularl
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <p>The clip you just watched introduced a cool maths trick of reducing fractions diagonally. Using it helps yo
+     + <p>If you already know how to multiply using an algorithm, that is great! You can move on to look at the secon
+     + <p>When you are only multiplying by one digit, using place value can be a good choice of strategy, particularl
+  ~ MXFL302_7_0.html: -2 +2
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXFL302_8_0.html: -4 +4
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+MXFL302: identical 4 / changed 6
+MXFL401: identical 8 / changed 0
+MXFU201: identical 10 / changed 0
+MXFU202: identical 11 / changed 0
+  ~ MXFU301_0_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXFU301_7_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXFU301_8_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXFU301_9_0.html: -5 +5
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+MXFU301: identical 8 / changed 4
+  ~ MXFU302_3_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXFU302_5_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+  ~ MXFU302_6_0.html: -1 +1
+     - <div class="videoSection ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+MXFU302: identical 7 / changed 3
+MXFU401: identical 7 / changed 0
+MXFU402: identical 8 / changed 0
+MXFUN01: identical 19 / changed 0
+MXFUN02: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+OSAH301: identical 4 / changed 0
+OSAH401: identical 5 / changed 0
+OSAH501: identical 6 / changed 0
+OSAI101: identical 3 / changed 0
+OSAI201: identical 4 / changed 0
+OSAI301: identical 4 / changed 0
+OSAI401: identical 5 / changed 0
+OSAI501: identical 6 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY201: identical 4 / changed 0
+OSBY301: identical 4 / changed 0
+OSBY401: identical 5 / changed 0
+OSBY501: identical 6 / changed 0
+OSGM101: identical 3 / changed 0
+OSGM201: identical 4 / changed 0
+OSGM301: identical 4 / changed 0
+OSGM401: identical 5 / changed 0
+OSGM501: identical 6 / changed 0
+OSOH101: identical 4 / changed 0
+OSOH201: identical 4 / changed 0
+OSOH301: identical 4 / changed 0
+OSOH401: identical 5 / changed 0
+OSOH501: identical 6 / changed 0
+OSSC301: identical 4 / changed 0
+
+TOTAL: identical 546 / changed 94 / missing 0 over 98 modules
+CHANGED: MXDB201/MXDB201_0_0.html MXDB201/MXDB201_1_0.html MXDB201/MXDB201_3_0.html MXDB201/MXDB201_4_0.html MXDB202/MXDB202_0_0.html MXDB202/MXDB202_1_0.html MXDB202/MXDB202_2_0.html MXDB202/MXDB202_3_0.html MXDB202/MXDB202_4_0.html MXDB202/MXDB202_5_0.html MXDB301/MXDB301_0_0.html MXDB302/MXDB302_1_0.html MXDB302/MXDB302_2_0.html MXDB302/MXDB302_3_0.html MXDB302/MXDB302_5_0.html MXDB302/MXDB302_6_0.html MXDB302/MXDB302_7_0.html MXDB302/MXDB302_8_0.html MXDB302/MXDB302_9_0.html MXDI101/MXDI101_1_0.html MXDI101/MXDI101_1_2.html MXDI101/MXDI101_1_3.html MXDI101/MXDI101_1_4.html MXDI101/MXDI101_1_5.html MXDI101/MXDI101_1_7.html MXDI101/MXDI101_1_8.html MXDI101/MXDI101_1_9.html MXDI102/MXDI102_0_0.html MXDI102/MXDI102_1_0.html MXDI102/MXDI102_2_0.html MXDI102/MXDI102_3_0.html MXDI102/MXDI102_4_0.html MXDI103/MXDI103_0_0.html MXDI103/MXDI103_1_0.html MXDI103/MXDI103_2_0.html MXDI103/MXDI103_3_0.html MXDI103/MXDI103_4_0.html MXDI103/MXDI103_5_0.html MXDI103/MXDI103_6_0.html MXDI103/MXDI103_7_0.html MXDI103/MXDI103_8_0.html MXEO201/MXEO201_1_0.html MXEO201/MXEO201_2_0.html MXEO201/MXEO201_3_0.html MXEO201/MXEO201_4_0.html MXEO201/MXEO201_6_0.html MXEO201/MXEO201_7_0.html MXEO201/MXEO201_8_0.html MXEO201/MXEO201_9_0.html MXEO202/MXEO202_0_0.html MXEO202/MXEO202_1_0.html MXEO202/MXEO202_2_0.html MXEO202/MXEO202_3_0.html MXEO202/MXEO202_4_0.html MXEO202/MXEO202_5_0.html MXEO202/MXEO202_6_0.html MXEO202/MXEO202_7_0.html MXEX201/MXEX201_0_0.html MXEX201/MXEX201_2_0.html MXEX201/MXEX201_3_0.html MXEX201/MXEX201_4_1.html MXEX202/MXEX202_0_0.html MXEX202/MXEX202_1_0.html MXEX202/MXEX202_2_0.html MXEX202/MXEX202_3_0.html MXEX202/MXEX202_4_0.html MXEX202/MXEX202_5_0.html MXEX202/MXEX202_6_0.html MXEX302/MXEX302_0_0.html MXEX302/MXEX302_1_0.html MXEX302/MXEX302_2_0.html MXEX302/MXEX302_3_0.html MXEX302/MXEX302_5_0.html MXEX302/MXEX302_6_0.html MXFL301/MXFL301_1_0.html MXFL301/MXFL301_2_0.html MXFL301/MXFL301_3_0.html MXFL301/MXFL301_4_0.html MXFL301/MXFL301_5_0.html MXFL301/MXFL301_7_0.html MXFL301/MXFL301_8_0.html MXFL302/MXFL302_3_0.html MXFL302/MXFL302_4_0.html MXFL302/MXFL302_5_1_0.html MXFL302/MXFL302_6_0.html MXFL302/MXFL302_7_0.html MXFL302/MXFL302_8_0.html MXFU301/MXFU301_0_0.html MXFU301/MXFU301_7_0.html MXFU301/MXFU301_8_0.html MXFU301/MXFU301_9_0.html MXFU302/MXFU302_3_0.html MXFU302/MXFU302_5_0.html MXFU302/MXFU302_6_0.html

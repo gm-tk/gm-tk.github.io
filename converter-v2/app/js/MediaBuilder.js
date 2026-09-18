@@ -382,21 +382,67 @@ class MediaBuilder {
 	 * this method entirely, so every video embed stays in the plain form.
 	 */
 	static #applyVideoIcon(embed, run) {
+		return this.#videoIconGroup(run) ? embed.replace('class="videoSection ', 'class="videoSection icon ') : embed;
+	};
+
+	/**
+	 * ROUND 398 — the icon-group decision, shared by the per-embed replace above
+	 * and the page-level post-pass below. The cascade is SERIES first (the
+	 * module's own product line), then the subject|template fallback:
+	 *   1. a series in `icon_series`  → icon
+	 *   2. a series in `plain_series` → plain (NEW at round 398: the carve-out
+	 *      that lets a subject-level group solidify while its plain-majority
+	 *      series — NCEA1's PHE10 / HES10 — keep the plain form)
+	 *   3. else the module's subject|template in `icon_subject_template` → icon
+	 * Returns false whenever the rule is off (data `enabled:false` or env
+	 * VIDEOICON_OFF), so every caller stays plain together.
+	 */
+	static #videoIconGroup(run) {
 		const rule = DataService.Data.EmitTemplates.video?.icon_rule;
-		if (!rule || rule.enabled === false) return embed;
-		if (typeof process !== "undefined" && process.env && process.env.VIDEOICON_OFF) return embed;
+		if (!rule || rule.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env.VIDEOICON_OFF) return false;
 		const code = run?.moduleCode;
-		if (!code) return embed;
+		if (!code) return false;
 		const m = (DataService.Data.ModuleStructureIndex?.module_meta || {})[code] || {};
 		let series = m.series;
 		if (!series) {
 			const g = /^([A-Za-z]+)(\d+)/.exec(code);
 			series = g ? g[1] + g[2].slice(0, 2) : null;   // prefix + first two digits (fallback)
 		}
+		if ((rule.icon_series || []).includes(series)) return true;
+		if ((rule.plain_series || []).includes(series)) return false;
 		const st = (m.subject && m.template_type) ? `${m.subject}|${m.template_type}` : null;
-		const iconGroup = (rule.icon_series || []).includes(series)
-			|| (st && (rule.icon_subject_template || []).includes(st));
-		return iconGroup ? embed.replace('class="videoSection ', 'class="videoSection icon ') : embed;
+		return !!(st && (rule.icon_subject_template || []).includes(st));
+	};
+
+	/**
+	 * ROUND 398 — THE WIDGET-EMBEDDED VIDEO FOLLOWS THE ICON RULE (the r200
+	 * recorded follow-up). `#applyVideoIcon` only ever ran at `media()`, so a
+	 * video emitted by a widget builder — a carousel slide, an accordion / tab /
+	 * clickDrop panel, the bilingual builder — stayed plain in an icon-group
+	 * module, where the gold puts `icon` on those too (0.95 in the registry's
+	 * own modules, measured over the gate's pairs on the r397 corpus). This
+	 * post-pass runs LAST in ContentConverter's final-body chain and adds the
+	 * token to every `class="videoSection …"` in the body that lacks it, so
+	 * every emitter is covered at one seam. Idempotent (a class list that
+	 * already holds `icon` is untouched). Data
+	 * `video.icon_rule.widget_embedded {enabled, env_off}`; env
+	 * VIDEOICONWIDGET_OFF reverts the post-pass alone, VIDEOICON_OFF the
+	 * whole rule.
+	 */
+	static videoIconPostpass(bodyHtml, run) {
+		const cfg = DataService.Data.EmitTemplates.video?.icon_rule?.widget_embedded;
+		if (!cfg || cfg.enabled === false) return bodyHtml;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env_off || "VIDEOICONWIDGET_OFF"]) return bodyHtml;
+		if (!bodyHtml || bodyHtml.indexOf("videoSection") < 0) return bodyHtml;
+		if (!this.#videoIconGroup(run)) return bodyHtml;
+		return bodyHtml.replace(/class="([^"]*)"/g, (whole, cls) => {
+			const toks = cls.split(/\s+/).filter(Boolean);
+			if (!toks.includes("videoSection") || toks.includes("icon")) return whole;
+			const i = toks.indexOf("videoSection");
+			toks.splice(i + 1, 0, "icon");
+			return `class="${toks.join(" ")}"`;
+		});
 	};
 
 	/**

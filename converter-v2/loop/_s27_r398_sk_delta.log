@@ -1,0 +1,7 @@
+scaffold 53.6953 -> 53.7589 (+0.0636pp); RAW 37.782 -> 37.846; pairs 1956 -> 1956, skipped 0 -> 0
+movers 88: up 84 / down 4; pp-sum +124.8; outside affected 0
+worst: [(-5.6, 'MXDI102_3_0.html'), (-3.6, 'MXDI102_4_0.html'), (-2.3, 'MXDI102_0_0.html'), (-1.1, 'MXDI102_1_0.html'), (0.5, 'CEDR204_0_0.html'), (0.5, 'MXDB302_2_0.html')]
+best: [(2.7, 'MXDI103_0_0.html'), (3.1, 'MXEO201_6_0.html'), (3.4, 'MXEX302_0_0.html'), (4.0, 'MXEO201_8_0.html'), (4.9, 'MXDB302_7_0.html'), (6.5, 'ENGC301_2_0.html')]
+>= 50: 1163 -> 1166 up: [('MXDI101', 'MXDI101_1_9.html'), ('MXEX201', 'MXEX201_3_0.html'), ('ENGR102', 'ENGR102_6_0.html'), ('MXEX202', 'MXEX202_4_0.html')] down: [('MXDI102', 'MXDI102_0_0.html')]
+>= 75: 195 -> 195 up: [] down: []
+>= 90: 18 -> 18 up: [] down: []

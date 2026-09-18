@@ -1,0 +1,105 @@
+video-carrying paired modules: 390; in the r200 registry: 114
+gold purity per module: all-icon 185 / all-plain 141 / mixed 64
+gold icon share by CONTEXT (all modules): carousel 624/1459 (0.43); free 763/1330 (0.57); activity 331/510 (0.65); panel 238/366 (0.65); accordion 167/359 (0.47); clickDrop 182/339 (0.54); tabs 74/114 (0.65); modal 12/35 (0.34); flip 1/2 (0.50)
+gold icon share by CONTEXT (REGISTRY modules): carousel 364/382 (0.95); free 269/288 (0.93); activity 155/160 (0.97); clickDrop 112/122 (0.92); panel 111/120 (0.93); tabs 42/44 (0.95); accordion 41/43 (0.95); modal 9/9 (1.00); flip 1/1 (1.00)
+gold icon share by CONTEXT (NON-registry modules): carousel 260/1077 (0.24); free 494/1042 (0.47); activity 176/350 (0.50); accordion 126/316 (0.40); panel 127/246 (0.52); clickDrop 70/217 (0.32); tabs 32/70 (0.46); modal 3/26 (0.12); flip 0/1 (0.00)
+
+==== the r200 solidify test on today's gold — pooled icon share per group (n modules) ====
+-- series (solidify: n>=3, share>=0.85) --
+   XDLS90                                   icon   59 / plain  284  share 0.17  n=  8  
+   HIS10                                    icon  163 / plain    3  share 0.98  n=  8  IN-REGISTRY
+   XGF90                                    icon    6 / plain  125  share 0.05  n=  5  
+   BLL24                                    icon    1 / plain  116  share 0.01  n=  5  
+   PES10                                    icon  105 / plain    2  share 0.98  n=  7  IN-REGISTRY
+   BLL23                                    icon    7 / plain   98  share 0.07  n=  8  
+   AGH10                                    icon   76 / plain   20  share 0.79  n=  9  
+   BLL22                                    icon    1 / plain   88  share 0.01  n=  8  
+   MXDI20                                   icon   33 / plain   44  share 0.43  n=  2  
+   CEDT20                                   icon   61 / plain   14  share 0.81  n=  6  
+   BLL21                                    icon    4 / plain   70  share 0.05  n=  4  
+   BLL13                                    icon   65 / plain    6  share 0.92  n=  7  IN-REGISTRY
+   TWHA90                                   icon   21 / plain   44  share 0.32  n=  6  
+   BLL11                                    icon   61 / plain    3  share 0.95  n=  7  IN-REGISTRY
+   BLL12                                    icon   58 / plain    5  share 0.92  n=  5  IN-REGISTRY
+   BLL15                                    icon   58 / plain    3  share 0.95  n=  7  IN-REGISTRY
+   MXFL10                                   icon   38 / plain   20  share 0.66  n=  4  
+   BLL14                                    icon   55 / plain    1  share 0.98  n=  8  IN-REGISTRY
+   BLL16                                    icon   55 / plain    1  share 0.98  n=  7  IN-REGISTRY
+   PHE10                                    icon   20 / plain   35  share 0.36  n=  8  
+   CHFUN05                                  icon    0 / plain   54  share 0.00  n=  1  
+   BLL17                                    icon   49 / plain    4  share 0.92  n=  7  IN-REGISTRY
+   MXFUN01                                  icon   50 / plain    2  share 0.96  n=  1  
+   MXFL30                                   icon   51 / plain    0  share 1.00  n=  2  
+   HES10                                    icon   14 / plain   34  share 0.29  n=  5  
+   ENGJ30                                   icon    0 / plain   47  share 0.00  n=  2  
+   XDLS50                                   icon   33 / plain   14  share 0.70  n=  2  
+   CEDT10                                   icon   13 / plain   33  share 0.28  n=  2  
+   MXFL20                                   icon   44 / plain    1  share 0.98  n=  4  IN-REGISTRY
+   ENGC10                                   icon   17 / plain   27  share 0.39  n=  2  
+   MXDI10                                   icon   37 / plain    6  share 0.86  n=  3  SOLIDIFIES-NOW
+   XMES10                                   icon   12 / plain   30  share 0.29  n=  3  
+   ENGJ40                                   icon    1 / plain   40  share 0.02  n=  2  
+   ENGI20                                   icon   39 / plain    1  share 0.97  n=  3  IN-REGISTRY
+   MXDB30                                   icon   40 / plain    0  share 1.00  n=  2  
+   ANZH30                                   icon   29 / plain   10  share 0.74  n=  3  
+   XTAS10                                   icon   32 / plain    7  share 0.82  n=  3  
+   MXFU20                                   icon   24 / plain   14  share 0.63  n=  2  
+   XMES20                                   icon    3 / plain   30  share 0.09  n=  2  
+   CEDO10                                   icon    6 / plain   26  share 0.19  n=  2  
+   MXEO20                                   icon   32 / plain    0  share 1.00  n=  2  
+   SSFUN01                                  icon   32 / plain    0  share 1.00  n=  1  
+   XFUN01                                   icon    0 / plain   32  share 0.00  n=  1  
+   ANZH20                                   icon   31 / plain    0  share 1.00  n=  2  
+   ENGR10                                   icon   31 / plain    0  share 1.00  n=  2  
+   MXFU40                                   icon    6 / plain   22  share 0.21  n=  2  
+   CEDR20                                   icon   26 / plain    1  share 0.96  n=  2  
+   ENGJ10                                   icon   26 / plain    0  share 1.00  n=  2  
+   CEDT30                                   icon   25 / plain    0  share 1.00  n=  1  
+   ENGI10                                   icon   23 / plain    2  share 0.92  n=  3  IN-REGISTRY
+   CEDW10                                   icon   24 / plain    0  share 1.00  n=  1  
+   MXDB20                                   icon   24 / plain    0  share 1.00  n=  2  
+   XLP06                                    icon    0 / plain   24  share 0.00  n=  1  
+   ART10                                    icon   23 / plain    0  share 1.00  n=  4  IN-REGISTRY
+   ENGR30                                   icon    3 / plain   20  share 0.13  n=  2  
+   CHFUN06                                  icon   17 / plain    5  share 0.77  n=  1  
+   ENGS10                                   icon    2 / plain   20  share 0.09  n=  2  
+   ENGS20                                   icon   22 / plain    0  share 1.00  n=  2  
+   ENGC30                                   icon   19 / plain    2  share 0.90  n=  2  
+   ENGC40                                   icon    0 / plain   21  share 0.00  n=  1  
+   EXBP90                                   icon    8 / plain   13  share 0.38  n=  1  
+   HPFUN20                                  icon    8 / plain   13  share 0.38  n=  3  
+   HPFUN90                                  icon   16 / plain    5  share 0.76  n=  3  
+   MXEO30                                   icon   14 / plain    7  share 0.67  n=  1  
+   ARFUN02                                  icon   16 / plain    4  share 0.80  n=  1  
+   ENGI30                                   icon   12 / plain    8  share 0.60  n=  3  
+   TEDC40                                   icon    0 / plain   20  share 0.00  n=  2  
+   ANZH10                                   icon   17 / plain    0  share 1.00  n=  3  IN-REGISTRY
+   HPFUN10                                  icon    7 / plain    0  share 1.00  n=  3  IN-REGISTRY
+-- subject|template (solidify: n>=5, share>=0.8) --
+   Leaving to Learn|Standard                icon  117 / plain  500  share 0.19  n= 30  
+   1-10 Mathematics|Standard                icon  425 / plain  135  share 0.76  n= 39  
+   1-10 Blended Literacy|Inquiry            icon  278 / plain  271  share 0.51  n= 11  
+   NCEA1|Standard                           icon  401 / plain   94  share 0.81  n= 41  SOLIDIFIES-NOW
+   1-10 English|Standard                    icon  237 / plain  226  share 0.51  n= 40  
+   ConnectED|Inquiry                        icon  194 / plain  117  share 0.62  n= 21  
+   1-10 Blended Literacy|Standard           icon  137 / plain  138  share 0.50  n= 67  
+   Online Safety (OS9000)|Standard          icon   24 / plain  163  share 0.13  n= 28  
+   ANZH|Standard                            icon   88 / plain   17  share 0.84  n= 10  IN-REGISTRY
+   Leaving to Learn|Inquiry                 icon   58 / plain   41  share 0.59  n=  3  
+   Te ara Whakapuawa -Wellbeing|Inquiry     icon   26 / plain   50  share 0.34  n=  8  
+   EXPlore|Inquiry                          icon   56 / plain   12  share 0.82  n=  5  IN-REGISTRY
+   1-10 Health and PE|Fundamentals          icon   38 / plain   30  share 0.56  n= 15  
+   1-10 Social Science|Fundamentals         icon   63 / plain    0  share 1.00  n=  6  IN-REGISTRY
+   1-10 Mathematics|Fundamentals            icon   54 / plain    2  share 0.96  n=  2  
+   ConnectED|Standard                       icon    8 / plain   45  share 0.15  n=  7  
+   1-10 English|Fundamentals                icon   53 / plain    0  share 1.00  n=  8  IN-REGISTRY
+   1-10 Technology|Fundamentals             icon   22 / plain   23  share 0.49  n=  8  
+   1-10 Arts|Fundamentals                   icon   39 / plain    4  share 0.91  n=  5  IN-REGISTRY
+   Leaving to Learn|Fundamentals            icon    0 / plain   40  share 0.00  n=  2  
+   Te Marautanga o Aotearoa TMoA|Bilingual  icon    2 / plain   37  share 0.05  n= 14  
+   1-10 Social Science|Standard             icon   14 / plain   24  share 0.37  n=  5  
+   EXPlore|Standard                         icon    9 / plain   21  share 0.30  n=  2  
+
+==== paired per-page mismatch (same context): gold icon vs Claude icon ====
+   REGISTRY modules: {'gold icon / Claude plain': 261, 'gold plain / Claude icon': 9} on 44 pages / 39 modules; gold-icon/Claude-plain by context {'accordion': 1, 'carousel': 259, 'modal': 1}
+   NON-registry modules: {'gold icon / Claude plain': 571} on 299 pages / 100 modules; gold-icon/Claude-plain by context {'activity': 90, 'free': 286, 'clickDrop': 13, 'panel': 35, 'carousel': 100, 'accordion': 44, 'tabs': 2, 'modal': 1}
