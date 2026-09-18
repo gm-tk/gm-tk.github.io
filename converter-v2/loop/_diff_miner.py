@@ -56,6 +56,7 @@ for p in (OUTPUTS, BASE):
     sys.path.insert(0, p)
 import _corpus
 from _structural_skeleton import label, WIDGET_MARKERS, VOID, DROP
+import _structural_skeleton
 from _discrepancy_audit import pairs
 from anchor_compare import CLAUDE, HUMAN
 from _measure_ceiling import wt_blob, has_source, unorm, load_meta, kb_family
@@ -223,8 +224,7 @@ def page_lines(path):
     """The gate's scaffold skeleton, one line per element, with text + region. Returns
     (lines, meta). Widget subtrees collapse to WIDGET (both sides), converter notes skipped."""
     raw = open(path, encoding="utf-8", errors="replace").read()
-    m = re.search(r"<body\b[^>]*>(.*)</body>", raw, re.S | re.I)
-    src = m.group(0) if m else raw
+    src = _structural_skeleton.body_source(raw)   # ROUND 382: the gate's shared body reader (99 body-less gold pages + BLL144-1.0)
     tb = TextTree()
     tb.feed(src)
     body = next((k for k in tb.root.kids if k.tag == "body"), None)

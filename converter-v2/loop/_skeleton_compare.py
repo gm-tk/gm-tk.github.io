@@ -85,6 +85,16 @@ def selftest():
         rows, skipped = _score_pairs([("ZZ", os.path.join(td, "missing.html"), b)])
         assert rows == [] and len(skipped) == 1, "a raising pair must land in the skipped count"
         print("DETECTION ok — a raising pair is COUNTED (loud), not silently dropped")
+        # ROUND 382: the shared body reader — a page with NO <body> element (the CED NCEA family) and a page
+        # whose <body> is never closed (BLL144-1.0) must score EXACTLY as the well-formed page does.
+        c, d = os.path.join(td, "c.html"), os.path.join(td, "d.html")
+        inner = '<div class="row"><div class="col-12"><h3>T</h3><p>x</p><p>y</p></div></div>'
+        open(b, "w").write("<html><head><title>t</title></head><body>" + inner + "</body></html>")
+        open(c, "w").write("<html><head><title>t</title></head>" + inner + "</html>")
+        open(d, "w").write("<html><head><title>t</title></head><body>" + inner + "</html>")
+        rc, _, _ = match(c, b, scaffold=True); rd_, _, _ = match(d, b, scaffold=True)
+        assert rc == 1.0 and rd_ == 1.0, f"body-less / unclosed-body pages must read as the closed page (got {rc}, {rd_})"
+        print("BODY READER ok — a body-less page and an unclosed-body page score as the well-formed page")
     print("SELFTEST PASS")
 
 
