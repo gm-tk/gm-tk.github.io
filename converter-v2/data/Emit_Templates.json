@@ -5478,7 +5478,26 @@
 				"activity_close",
 				"interactive_placeholder"
 			],
-			"after_note": "Content following a closed callout/activity/widget always starts a fresh row (verified OSAI201_0.0, OSAH401_1.0)."
+			"after_note": "Content following a closed callout/activity/widget always starts a fresh row (verified OSAI201_0.0, OSAH401_1.0).",
+			"after_built_widgets": {
+				"enabled": true,
+				"env": "FLIPBREAK_OFF",
+				"rules": [
+					{
+						"class_match": "\\bflipCardsContainer\\b",
+						"templates": [
+							"Standard"
+						],
+						"exclude_subjects": [
+							"Leaving to Learn",
+							"NCEA1",
+							"1-10 English"
+						],
+						"_exclude_doc": "ROUND 389: excluded on the gate's own scorer over the probe's ON pages (outputs/_s26_r389_bysubject.log) — Leaving to Learn 0 up / 13 down (its gold keeps prose after the group: LAST-or-only 0.32 of 28), NCEA1 0 / 3, 1-10 English 3 / 4 (a tie; the paired census 3 / 0 on 3 boundaries, under the floor). Kept: Online Safety 12 / 4 (+15.1pp), ConnectED 6 / 0 (+10.7), Mathematics 2 / 0, Science 1 / 0, the subject-less TEDC pair 2 / 2 (+0.7)."
+					}
+				],
+				"_doc": "ROUND 389 (the autonomous loop's session 26 Round 3 — the paired row-break census cut by the built widget's own signature, outputs/_s26_r389_divpair.py + _s26_r389_flipgold.py). The r51 flow_blocks rule keeps every built widget IN the section row and lets the next prose flow on after it; the gold does that for every built widget but ONE — after a built flipCard group (`div.row.flipCardsContainer`) the gold CLOSES the column and opens a new row for the prose (paired 23 / 5 = 0.82 on 26 pages / 20 modules; the gold-side census: the group is its column's LAST or only child 0.75 of 187 — English 0.87, Mathematics 0.93, ConnectED 0.82, Online Safety 0.82). Every other built widget (the reader's WIDGET kind) is a tie at 0.55 and keeps r51. A rule = class_match (a regex on the built html's open-tag class), templates (module_meta.template_type), exclude_subjects (module_meta.subject). Fires only at the INLINE widget site (a top-level widget — inside an activity box the group never closes the box). The break BEFORE the group is NOT taken (the gold is a tie: FIRST-or-only 0.45), nor the col-md-12 width (0.31). OFF = the r388 output."
+			}
 		},
 		"choice_page_tiles": {
 			"enabled": true,

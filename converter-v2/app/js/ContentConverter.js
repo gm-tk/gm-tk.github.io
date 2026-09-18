@@ -2180,9 +2180,10 @@ class ContentConverter {
 						// An inline widget FLOWS into the current section row, per the row-grouping
 						// rule set up earlier in this method; only the older, non-grouping rule gave it
 						// its own row (via rowCfg.after) when row-grouping wasn't in effect.
+						let _r389Break = false;   // ROUND 389 — the built flipCard group closes its column (see #breaksAfterBuilt)
 						const mtkShellI = this.#mtkQuizShellBundle(bundle, it);   // ROUND 322 — see the owned site above ("lead" cannot occur inline)
 						if (mtkShellI === "widget") emit(...this.#mtkQuizShellPre(bundle, it, run, bodyItems, stack, renderedHeading));
-						else if (!this.#mtkQuizBundleThin(bundle)) emit(this.#interactivePlaceholder(bundle, run));
+						else if (!this.#mtkQuizBundleThin(bundle)) { const _r389Html = this.#interactivePlaceholder(bundle, run); emit(_r389Html); _r389Break = this.#breaksAfterBuilt(_r389Html, run); }   // ROUND 389
 						const mtkTailI = this.#mtkQuizBundleTail(bundle, run, it);   // ROUND 232 — CL-0038 (see above)
 						emit(...mtkTailI);
 						if (mtkCfg && (mtkShellI || mtkTailI.length)) mtkSilence(it);
@@ -2200,6 +2201,7 @@ class ContentConverter {
 						}
 						emit(...this.#uploadBoxAfterText(bundle));   // ROUND 376 — after the box when one closed here; in place (byte-identical) for a free upload bundle
 						if (!rowCfg.flow_blocks && !stack.length && rowCfg.after.includes("interactive_placeholder")) breakRow();
+						if (_r389Break && !stack.length) breakRow();   // ROUND 389 — the built flipCard group closes its column
 					}
 					// INQUIRY consumed-opener RECOVERY. Empty `[Tab N]` PANEL OPENERS that come
 					// right after some other widget are often SWALLOWED by that widget's own
@@ -7651,6 +7653,29 @@ class ContentConverter {
 	// listed (an unknown module keeps the r51 break) and its subject is not excluded (NCEA1 —
 	// the HIS 'The whakataukī chosen for this module…' paragraph opens a gold row). Env
 	// WHFLOW_OFF = the r386 output.
+	// ROUND 389 (the autonomous loop's session 26 Round 3): the built flipCard group closes its column — the r51
+	// flow_blocks rule keeps every built widget in the section row, but after a built flipCard group the gold
+	// opens a NEW row for the prose that follows (paired 0.82; the group is its column's last child 0.75
+	// gold-wide). Data body_region.row_breaks.after_built_widgets — a rule matches the built html's open-tag
+	// class, the module's template_type and subject. Returns true when the inline widget site should breakRow().
+	static #breaksAfterBuilt(html, run) {
+		const cfg = DataService.Data.EmitTemplates?.body_region?.row_breaks?.after_built_widgets;
+		if (!cfg || cfg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "FLIPBREAK_OFF"]) return false;
+		const m = String(html || "").match(/^\s*<div class="([^"]*)"/);
+		if (!m) return false;
+		const meta = DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")];
+		if (!meta) return false;
+		for (const rule of (Array.isArray(cfg.rules) ? cfg.rules : [])) {
+			if (!rule.class_match || !new RegExp(rule.class_match).test(m[1])) continue;
+			if ((rule.templates ?? []).length && !(rule.templates ?? []).some((t) => String(t) === String(meta.template_type ?? ""))) continue;
+			if ((rule.exclude_subjects ?? []).some((sub) => String(sub) === String(meta.subject ?? ""))) continue;
+			if (rule.env && typeof process !== "undefined" && process.env && process.env[rule.env]) continue;
+			return true;
+		}
+		return false;
+	}
+
 	static #flowsAfter(tag, run, boxOpen = "") {
 		// ROUND 388: `rules` — each rule its own tags / templates / exclude_subjects / exclude_class_match (the
 		// class test runs on the box's own emitted open tag, e.g. the `top` modifier); one env for the family.

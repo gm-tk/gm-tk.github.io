@@ -1,0 +1,21 @@
+==== direction B, kind 'div' by FULL signature — Claude flows the next text after X inside the column; does the gold break? ====
+   div.flipCardsContainer.row                       gold-breaks  23 / flows   5 = 0.82  pages 26 / mods 20  next={'p': 48}  [{'gold-nowhere': 19, 'no-text': 1}]
+         CEDK501_6_1 X=«div.flipCardsContainer.row» Y=«Commitment shows up in the choices you m»
+         CEDK501_7_0 X=«div.flipCardsContainer.row» Y=«Whether you are studying or working, the»
+         CEDO501_2_0 X=«div.flipCardsContainer.row» Y=«Let’s unpack these types of income furth»
+         CEDO501_2_1 X=«div.flipCardsContainer.row» Y=«Next, we’ll explore a range of examples »
+         CEDO501_3_0 X=«div.flipCardsContainer.row» Y=«Here are some of the things you might do»
+         CEDT501_7_0 X=«div.flipCardsContainer.row» Y=«For this lesson, we’re going to look at »
+   div.ratio.ratio-16x9                             gold-breaks   1 / flows   2 = 0.33  pages 3 / mods 3  next={'p': 18, 'a': 1}  [{'no-text': 4, 'gold-nowhere': 12}]
+         ENGR202_4_0 X=«div.ratio.ratio-16x9» Y=«Ask yourself these questions:»
+   div.TKmodal                                      gold-breaks   1 / flows   0 = 1.00  pages 1 / mods 1  next={'p': 5}  [{'gold-nowhere': 4}]
+         ENGI103_2_0 X=«div.TKmodal» Y=«On page 5, the boys gather for a karakia»
+   div.shapeHover                                   gold-breaks   1 / flows   0 = 1.00  pages 1 / mods 1  next={'p': 1}  [{}]
+         OSAI501_2_0 X=«div.shapeHover[layout=clockwise]» Y=«While it’s not perfect and can make mist»
+   div.audioButton.button                           decided 0  [{'gold-nowhere': 3, 'no-text': 1}]
+
+   per (signature, template, subject) with ≥ 3 decided boundaries:
+     div.flipCardsContainer.row                   Standard     1-10 English                   3 /   0 = 1.00  pages 3
+     div.flipCardsContainer.row                   Standard     ConnectED                      6 /   0 = 1.00  pages 5
+     div.flipCardsContainer.row                   Standard     Leaving to Learn               3 /   2 = 0.60  pages 4
+     div.flipCardsContainer.row                   Standard     Online Safety (OS9000)         8 /   2 = 0.80  pages 10
