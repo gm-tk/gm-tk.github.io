@@ -1,0 +1,7 @@
+scaffold 53.7589 -> 53.8616 (+0.1027pp); RAW 37.846 -> 37.918; pairs 1956 -> 1956, skipped 0 -> 0
+movers 44: up 39 / down 5; pp-sum +200.9; outside affected 0
+worst: [(-4.4, 'CEDT501_7_0.html'), (-1.9, 'CEDT501_2_0.html'), (-1.4, 'CEDT501_5_0.html'), (-0.5, 'CEDW501_2_1.html'), (-0.3, 'CEDT501_6_0.html'), (0.3, 'CEDK501_3_1.html')]
+best: [(9.8, 'CEDT501_0_0.html'), (10.3, 'CEDW501_0_0.html'), (12.7, 'CEDO502_5_0.html'), (14.2, 'CEDW501_5_0.html'), (18.3, 'CEDO502_0_0.html'), (24.2, 'CEDO502_7_0.html')]
+>= 50: 1166 -> 1170 up: [('CEDO501', 'CEDO501_2_2.html'), ('CEDO502', 'CEDO502_7_0.html'), ('CEDO502', 'CEDO502_5_0.html'), ('CEDW501', 'CEDW501_5_0.html')] down: []
+>= 75: 195 -> 197 up: [('CEDW501', 'CEDW501_0_0.html'), ('CEDO502', 'CEDO502_0_0.html')] down: []
+>= 90: 18 -> 18 up: [] down: []

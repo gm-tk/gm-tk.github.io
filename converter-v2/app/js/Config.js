@@ -1759,7 +1759,8 @@ class Config {
 	// ROUND 396 (260619.67): a carousel video slide with a caption is `item video` (interactive.carousel.item_video_with_caption, InteractiveBuilder.#carRenderSlides, env ITEMVIDEO_OFF; the gold 273 / 298 = 0.92; a video-only slide is a tie and stays `item`). 52 pages / 44 modules; THE FULL-REGENERATION BACKSTOP — all 416 regenerated, 0 stale, the manifest diff = the probe's 52 pages (no residue from r389–r395); the ledger's scoped-since counter reset to 0.
 	// ROUND 397 (260619.68): a table header cell is plain — a <th> whose whole content is one <b>/<strong> span drops the wrapper (elements.table.header_cell_plain, TablesAndGrids' cell emit, env THPLAIN_OFF; the gold's th plain 0.96, Claude's bold 0.18 on 86 pages). 92 pages / 58 modules; scoped ship #1 since the r396 full.
 	// ROUND 398 (260619.69): the videoSection `icon` registry re-mined on the r397 corpus + the widget-embedded video follows it (video.icon_rule: 18 series + NCEA1|Standard added, the NEW plain_series carve-out; video.icon_rule.widget_embedded → MediaBuilder.videoIconPostpass at the end of ContentConverter's final-body chain, env VIDEOICONWIDGET_OFF; the gold 0.95 on the registry modules' widget-embedded videos, the r200 recorded follow-up; the autonomous loop's session 27 Round 1).
-	static AppVersion = "260619.69";
+	// ROUND 399 (260619.70): the wānanga / talanoa box is the KB's cultural alert — the CED Phase-5 writer's [Wānanga/Talanoa box] + one-cell table ships as div.alert.cultural[layout=combined] > row > col-12 > p… (callouts.by_tag.wananga.kb_form + table_cell_content; the tag_promote carousel→wananga rule for the [Banner - …] spelling; env WANANGA_OFF; KB 05B + 14A §14.4; the autonomous loop's session 27 Round 2).
+	static AppVersion = "260619.70";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -1,0 +1,66 @@
+gold <br> records (consecutive brs collapsed): 3913 on 701 pages
+==== by (parent, previous sibling, next sibling) — top 30 ====
+     898  parent p                                prev #text                  next #text
+     793  parent p                                prev #text                  next br
+     238  parent td                               prev #text                  next #text
+     123  parent p.quoteText                      prev #text                  next #text
+     119  parent p                                prev b                      next #text
+      98  parent p                                prev #text                  next b
+      67  parent div.TKmodal                      prev h5                     next ul
+      53  parent li                               prev #text                  next #text
+      53  parent span.sassoonI-text               prev #text                  next #text
+      52  parent i                                prev #text                  next #text
+      44  parent td                               prev #text                  next br
+      36  parent div.col-12.col-md-8              prev —                      next h3
+      34  parent li                               prev b                      next #text
+      32  parent p.center-text                    prev #text                  next #text
+      25  parent td                               prev b                      next #text
+      24  parent td                               prev #text                  next b
+      22  parent div.clickDropContent             prev p                      next a
+      21  parent div.col-12.col-md-8              prev —                      next p
+      20  parent td                               prev span.ch-text           next span.pinyin
+      18  parent h4.sassoonI-text                 prev #text                  next #text
+      18  parent p                                prev b                      next br
+      17  parent div                              prev div.row                next br
+      17  parent th                               prev #text                  next #text
+      17  parent p                                prev math                   next math
+      16  parent p                                prev #text                  next —
+      16  parent td                               prev span.pinyin            next i
+      16  parent p.sassoon-text                   prev #text                  next #text
+      16  parent p                                prev img.img-fluid          next #text
+      15  parent div                              prev div.row                next div.row
+      15  parent p                                prev —                      next #text
+
+==== the gold paragraph that holds a <br>: what Claude ships (paired) ====
+    1480  absent on Claude
+     872  SPLIT-P (each line its own p)
+     359  reworded / partial
+     264  ONE-P (br dropped, same words)
+      reworded /: AGH1002 AGH1002.04.html: «Saturation: saturated soils are waterlogged soil where the pore spaces are filled with water and there is no r»
+      reworded /: AGH1002 AGH1002.04.html: «Permanent wilting point: when there is very little water in the soil, and what exists, is held so tightly plan»
+      reworded /: AGH1003 AGH1003_04.0.html: «Organic matter provides food for microorganisms. Soils with low levels of organic matter will also have fewer »
+      absent on : AGH1003 AGH1003_03.0.html: «Sheep and Beef Farms Deer Farms»
+      absent on : AGH1003 AGH1003_03.0.html: «Dairy Farms Sheep and Beef finishing farms Orchards and Vineyards»
+      absent on : AGH1003 AGH1003_03.0.html: «Dairy Farms Sheep and Beef finishing farms Orchards and Vineyards»
+      ONE-P (br : AGH1009 AGH1009.05.html: «This chart shows the greenhouse gas emission in Aotearoa New Zealand. As you can see, carbon dioxide and metha»
+      ONE-P (br : AGH1009 AGH1009.05.html: «This chart shows the greenhouse gas emission in Aotearoa New Zealand. As you can see, carbon dioxide and metha»
+      ONE-P (br : BLL122 BLL122-02.html: «Many heart words will be able to be sounded out later as the ākonga learns more sounds and how they are writte»
+      SPLIT-P (e: ANZH105 ANZH105_06.0.html: «Share what you learned: (Choose one)»
+      SPLIT-P (e: ANZH203 ANZH203_0.0.html: «Polynesian wayfinders and their passengers made intentional and planned journeys to Aotearoa. They knew this l»
+      SPLIT-P (e: ANZH203 ANZH203_1.0.html: «On Thursday, 18 December 1642, Tasman’s ships anchored in Golden Bay. The Europeans heard a trumpet-like noise»
+
+==== per template/subject group (n ≥ 30): verdict shares ====
+   Standard/1-10 Mathematics                     n= 725  absent 0.45  SPLIT-P 0.35  reworded 0.11  ONE-P 0.09
+   Standard/1-10 English                         n= 714  absent 0.52  SPLIT-P 0.34  reworded 0.10  ONE-P 0.03
+   Standard/Leaving to Learn                     n= 242  absent 0.41  ONE-P 0.26  reworded 0.21  SPLIT-P 0.13
+   Standard/NCEA1                                n= 207  absent 0.49  SPLIT-P 0.37  reworded 0.11  ONE-P 0.03
+   Fundamentals/1-10 Mathematics                 n= 202  absent 0.86  SPLIT-P 0.13  reworded 0.01
+   Inquiry/ConnectED                             n= 123  SPLIT-P 0.41  absent 0.38  reworded 0.12  ONE-P 0.08
+   Bilingual/Te Marautanga o Aotearoa TMoA       n= 123  SPLIT-P 0.47  reworded 0.27  absent 0.26
+   Standard/Online Safety (OS9000)               n= 117  absent 0.62  SPLIT-P 0.26  reworded 0.11  ONE-P 0.02
+   Standard/1-10 Blended Literacy                n=  69  absent 0.43  SPLIT-P 0.26  ONE-P 0.16  reworded 0.14
+   Fundamentals/1-10 Social Science              n=  69  absent 0.48  SPLIT-P 0.32  reworded 0.20
+   Standard/ConnectED                            n=  67  absent 0.40  ONE-P 0.37  reworded 0.19  SPLIT-P 0.03
+   Fundamentals/None                             n=  67  ONE-P 0.66  absent 0.34
+   Standard/None                                 n=  47  absent 0.68  reworded 0.19  ONE-P 0.09  SPLIT-P 0.04
+   Standard/ANZH                                 n=  41  absent 0.49  SPLIT-P 0.27  reworded 0.24

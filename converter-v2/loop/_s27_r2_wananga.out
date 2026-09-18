@@ -1,0 +1,74 @@
+tag sites: 69 over 7 modules; gold pages holding a matched site 37; Claude pages 39
+bracket forms: [wananga/talanoa box] 24; [wānanga/talanoa box] 20; [banner - wānanga/talanoa box] 11; [wananga box] 4; [talanoa/wananga box] 2; [wānanga box] 2; [wanana/talanoa box] 1; [wananga / talanoa box] 1; [wananaga/talanoa box] 1; [wananga/ talanoa box] 1; [rolling banner - wānanga/talanoa box] 1; [wānanga is a way of learning and sharing ideas through open discussion, talking and listening together.] 1
+gold wrapper: alert cultural 51; NOT FOUND 16; col-md-8 col-12 › alert › row › col-12 1;  › row › col-md-8 col-12 1
+claude wrapper: table 58; NOT FOUND 6;  ›  › cv2-interactive ›  3; row carousel › col-md-12 col-12 viewer › item › carousel-caption 1; wananga 1
+paired: gold alert cultural → claude table 47; gold NOT FOUND → claude table 10; gold NOT FOUND → claude NOT FOUND 6; gold alert cultural → claude  ›  › cv2-interactive ›  3; gold col-md-8 col-12 › alert › row › col-12 → claude table 1; gold alert cultural → claude row carousel › col-md-12 col-12 viewer › item › carousel-caption 1; gold  › row › col-md-8 col-12 → claude wananga 1
+  CEDK501 L133 [Wānanga/Talanoa box] shape=tail gold=NOT FOUND (None) claude=NOT FOUND (None) «Note for creative services.  For each banner tag, »
+  CEDK501 L149 [Wananga/Talanoa box] shape=table gold=col-md-8 col-12 › alert › row › col-12 (CEDK501 Kia Mahitahi – Idea to Action.html) claude=table (CEDK501_0_0.html) «Imagine you and two friends have $40 between you t»
+  CEDK501 L200 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDK501_1.0.html) claude=table (CEDK501_1_0.html) «Based on what you value, what would you like to sa»
+  CEDK501 L333 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDK501_2.0.html) claude=table (CEDK501_2_0.html) «What are some things you spend money on each week?»
+  CEDK501 L557 [Wānanga/Talanoa box] shape=table gold=alert cultural (CEDK501_3.0.html) claude=table (CEDK501_5_0.html) «For monitoring (checking in): »
+  CEDK501 L777 [Wānanga/Talanoa box] shape=table gold=alert cultural (CEDK501_3.1.html) claude=table (CEDK501_3_1.html) «What do you usually spend your money on each week »
+  CEDK501 L1091 [Wānanga/Talanoa box] shape=table gold=alert cultural (CEDK501_6.0.html) claude=table (CEDK501_10_0.html) «How do you know when someone is really listening t»
+  CEDK501 L1158 [Wanana/Talanoa box] shape=table gold=alert cultural (CEDK501_6.0.html) claude=table (CEDK501_10_0.html) «Why do we need to understand someone’s culture to »
+  CEDK501 L1244 [Wānanga/Talanoa box] shape=table gold=alert cultural (CEDK501_6.1.html) claude=table (CEDK501_6_1.html) «In a group discussion, what happens when members g»
+  CEDO501 L123 [Wānanga/Talanoa box] shape=tail gold=NOT FOUND (None) claude=NOT FOUND (None) «Note for creative services.  For each banner tag, »
+  CEDO501 L169 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDO501_1.0.html) claude=table (CEDO501_1_0.html) «Within te ao Māori (the Māori worldview) and a Pas»
+  CEDO501 L349 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDO501_2.0.html) claude=table (CEDO501_2_0.html) «Discuss the different ways that people in each sta»
+  CEDO501 L418 [Talanoa/Wananga box] shape=table gold=alert cultural (CEDO501_2.0.html) claude=table (CEDO501_2_0.html) «How might different types of earned income suit di»
+  CEDO501 L805 [Talanoa/Wananga box] shape=table gold=alert cultural (CEDO501_2.2.html) claude=table (CEDO501_2_2.html) «Discuss why people might choose to invest their mo»
+  CEDO501 L908 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDO501_3.0.html) claude=table (CEDO501_3_0.html) «Reflect on how you use the internet. »
+  CEDO501 L1250 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDO501_4.0.html) claude=table (CEDO501_4_0.html) «What do you think is the most important factor tha»
+  CEDO501 L1898 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDO501_6.0.html) claude=table (CEDO501_8_0.html) «What are some examples of life changes that could »
+  CEDO502 L145 [Wānanga/Talanoa box] shape=tail gold=NOT FOUND (None) claude=NOT FOUND (None) «Note for creative services.  For each banner tag, »
+  CEDO502 L199 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDO502_1_0.html) claude=table (CEDO502_1_0.html) «Decisions about money often affect not just one pe»
+  CEDO502 L305 [wānanga box] shape=table gold=alert cultural (CEDO502_1_2.html) claude=table (CEDO502_1_1.html) «Why do you think people choose to use credit inste»
+  CEDO502 L592 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDO502_2_0.html) claude=table (CEDO502_2_0.html) «Share some of the ways people borrow money in real»
+  CEDO502 L782 [wānanga box] shape=table gold=alert cultural (CEDO502_3_0.html) claude=table (CEDO502_3_0.html) «Thinking about your own experiences and community:»
+  CEDO502 L834 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDO502_3_0.html) claude=table (CEDO502_3_0.html) «Think about it: Would you find it easier or harder»
+  CEDO502 L1088 [Wananga/Talanoa box] shape=table gold=NOT FOUND (None) claude=table (CEDO502_3_0.html) «Discuss which red flags you’ve seen in your commun»
+  CEDO502 L1325 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDO502_4_0.html) claude=table (CEDO502_4_0.html) «When you need to find information, where do you us»
+  CEDO502 L1398 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDO502_4_0.html) claude=table (CEDO502_4_0.html) «What makes a search purpose clear? »
+  CEDO502 L1444 [Wananga box] shape=table gold=NOT FOUND (None) claude=table (CEDO502_4_0.html) «• What makes a source trustworthy?»
+  CEDO502 L1572 [Wananga box] shape=table gold=NOT FOUND (None) claude=table (CEDO502_5_0.html) «• When would you use open questions instead of clo»
+  CEDO502 L1586 [Wananga box] shape=table gold=NOT FOUND (None) claude=table (CEDO502_5_0.html) «• Why might it matter to use information from Aote»
+  CEDO502 L1812 [Wananga/Talanoa box] shape=table gold=NOT FOUND (None) claude=table (CEDO502_7_0.html) «In many people’s lives, including in Māori and Pas»
+  CEDO502 L1877 [wananga box] shape=table gold=alert cultural (CEDO502_7_0.html) claude=table (CEDO502_7_0.html) «When you think about housing, work hours, transpor»
+  CEDO502 L1907 [Wānanga/Talanoa box] shape=table gold=alert cultural (CEDO502_7_0.html) claude=table (CEDO502_7_0.html) «Think about your whānau, friends, or your own expe»
+  CEDO502 L1959 [Wānanga/Talanoa box] shape=table gold=alert cultural (CEDO502_7_0.html) claude=table (CEDO502_7_0.html) «Discuss how we can tell the difference between deb»
+  CEDR501 L161 [Wānanga/Talanoa box] shape=tail gold=NOT FOUND (None) claude=NOT FOUND (None) «Note for creative services.  For each banner tag, »
+  CEDR501 L245 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDR501_1.0.html) claude=table (CEDR501_1_0.html) «Reflect or discuss:»
+  CEDR501 L850 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDR501_3.0.html) claude=table (CEDR501_4_0.html) «Who made the best first impression, Kiran or Julia»
+  CEDR501 L927 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDR501_3.0.html) claude=table (CEDR501_4_0.html) «Which candidate made a better first impression? Wh»
+  CEDR501 L948 [Wananga / Talanoa box] shape=table gold=alert cultural (CEDR501_3.0.html) claude=table (CEDR501_4_0.html) «What does a respectful language and tone sound lik»
+  CEDR501 L1130 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDR501_4.0.html) claude=table (CEDR501_5_0.html) «Which response do you think would fit best and why»
+  CEDR501 L1280 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDR501_4.0.html) claude=table (CEDR501_5_0.html) «Think about the people, places, and experiences th»
+  CEDR501 L1335 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDR501_5.0.html) claude=table (CEDR501_6_0.html) «What do you notice about how Hemi answered the que»
+  CEDR501 L1349 [Wananaga/Talanoa box] shape=table gold=alert cultural (CEDR501_5.0.html) claude=table (CEDR501_6_0.html) «Why do you think these communication mistakes are »
+  CEDR501 L1512 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDR501_5.0.html) claude=table (CEDR501_6_0.html) «Think about the situations you matched in this act»
+  CEDR501 L1704 [Wananga/ Talanoa box] shape=table gold=alert cultural (CEDR501_7.0.html) claude=table (CEDR501_8_0.html) «Think about Olive’s two examples.»
+  CEDT501 L151 [Banner - Wānanga/Talanoa box] shape=tail gold=NOT FOUND (None) claude=NOT FOUND (None) «Please include the information below in a Banner -»
+  CEDT501 L249 [Banner - Wānanga/Talanoa box] shape=table gold=alert cultural (CEDT501_1.0.html) claude=table (CEDT501_1_0.html) «Discuss this whakataukī and how it might apply to »
+  CEDT501 L336 [Banner - Wānanga/Talanoa box] shape=table gold=alert cultural (CEDT501_2.0.html) claude=table (CEDT501_2_0.html) «Who do you think is affected when someone is bulli»
+  CEDT501 L419 [Rolling Banner - Wānanga/Talanoa box] shape=table gold=NOT FOUND (None) claude=table (CEDT501_2_0.html) «Their mental health could be affected. ║ They migh»
+  CEDT501 L546 [Banner - Wānanga/Talanoa box] shape=tail gold=alert cultural (CEDT501_3.0.html) claude= ›  › cv2-interactive ›  (CEDT501_3_0.html) «How have you or people you know responded to onlin»
+  CEDT501 L594 [Banner - Wānanga/Talanoa box] shape=tail gold=alert cultural (CEDT501_3.0.html) claude=row carousel › col-md-12 col-12 viewer › item › carousel-caption (CEDT501_3_0.html) «Do you think the immediate actions were effective?»
+  CEDT501 L658 [Banner - Wānanga/Talanoa box] shape=table gold=alert cultural (CEDT501_3.1.html) claude=table (CEDT501_3_1.html) «What are some of the ways we can practice being as»
+  CEDT501 L746 [Banner - Wānanga/Talanoa box] shape=table gold=alert cultural (CEDT501_5.0.html) claude=table (CEDT501_5_0.html) «Describe your own communication style. Do others s»
+  CEDT501 L864 [Banner - Wānanga/Talanoa box] shape=table gold=alert cultural (CEDT501_5.1.html) claude=table (CEDT501_5_1.html) «What barriers to being assertive do you notice in »
+  CEDT501 L1027 [Banner - Wānanga/Talanoa box] shape=black gold=alert cultural (CEDT501_6.0.html) claude= ›  › cv2-interactive ›  (CEDT501_6_0.html) «Think of someone you know who is a good communicat»
+  CEDT501 L1251 [Banner - Wānanga/Talanoa box] shape=tail gold=alert cultural (CEDT501_7.0.html) claude= ›  › cv2-interactive ›  (CEDT501_7_0.html) «How does it feel when someone truly listens to you»
+  CEDT501 L1489 [Wānanga is a way of learning and sharing] shape=tail gold= › row › col-md-8 col-12 (CEDT501_8.0.html) claude=wananga (CEDT501_8_0.html) «is more than just group discussion. It is a sacred»
+  CEDT501 L1503 [Banner - Wānanga/Talanoa box] shape=table gold=alert cultural (CEDT501_8.0.html) claude=table (CEDT501_8_0.html) «Have you ever attended a wānanga? Why was it held?»
+  CEDW501 L155 [Wānanga/Talanoa box] shape=tail gold=NOT FOUND (None) claude=NOT FOUND (None) «Note for creative services.  For each banner tag, »
+  CEDW501 L204 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDW501_1.0.html) claude=table (CEDW501_1_0.html) «How do your beliefs and values shape the way you s»
+  CEDW501 L347 [Wananga/Talanoa box] shape=table gold=alert cultural (CEDW501_1.0.html) claude=table (CEDW501_1_0.html) «What comes to mind when you think about marae? »
+  CEDW501 L638 [Wānanga/Talanoa box] shape=table gold=NOT FOUND (None) claude=table (CEDW501_2_1.html) «• How might my strong taha hinengaro support my ta»
+  CEDW501 L650 [Wānanga/Talanoa box] shape=table gold=NOT FOUND (None) claude=table (CEDW501_2_1.html) «• How might this affect my taha tinana?»
+  CEDW501 L662 [Wānanga/Talanoa box] shape=table gold=NOT FOUND (None) claude=table (CEDW501_2_1.html) «• How might this affect my taha hinengaro?»
+  CEDW501 L674 [Wānanga/Talanoa box] shape=table gold=NOT FOUND (None) claude=table (CEDW501_2_1.html) «• How might my strong taha whānau support my taha »
+  CEDW501 L735 [Wānanga/Talanoa box] shape=table gold=alert cultural (CEDW501_3.0.html) claude=table (CEDW501_3_0.html) «Who are some people in your whānau that you feel c»
+  CEDW501 L1178 [Wānanga/Talanoa box] shape=table gold=alert cultural (CEDW501_5.0.html) claude=table (CEDW501_5_0.html) «Consider three things you are grateful for today. »
+  CEDW501 L1266 [Wānanga/Talanoa box] shape=table gold=alert cultural (CEDW501_5.0.html) claude=table (CEDW501_5_0.html) «Which effect of stress (like anxiety, tiredness, o»
+  CEDW501 L1317 [Wānanga/Talanoa box] shape=table gold=alert cultural (CEDW501_5.0.html) claude=table (CEDW501_5_0.html) «What might help protect or strengthen Mereana’s ha»
+  CEDW501 L1721 [Wānanga/Talanoa box] shape=table gold=alert cultural (CEDW501_7.0.html) claude=table (CEDW501_7_2.html) «Why do you think the rating goes up and down in a »

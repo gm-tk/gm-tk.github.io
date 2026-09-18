@@ -1,0 +1,1668 @@
+BLL242: identical 3 / changed 0
+BLL244: identical 3 / changed 0
+BLL245: identical 3 / changed 0
+BLL246: identical 3 / changed 0
+BLL251: identical 3 / changed 0
+BLL252: identical 3 / changed 0
+BLL253: identical 3 / changed 0
+BLL254: identical 3 / changed 0
+BLL262: identical 3 / changed 0
+BLL263: identical 3 / changed 0
+BLLR201: identical 8 / changed 0
+CEDK101: identical 1 / changed 0
+CEDK102: identical 1 / changed 0
+  ~ CEDK501_0_0.html: -22 +19
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>For Māori, <b>wānanga</b> is a way we learn from each other and share ideas. In the process of wānanga, ev
+     - </tr>
+     - </table>
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>Imagine you and two friends have $40 between you to last the weekend. You need to decide together how to s
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>For Māori, <b>wānanga</b> is a way we learn from each other and share ideas. In the process of wānanga, eve
+     + <p><b>Throughout this module, you’ll come across prompts or questions in boxes like this. These are to encoura
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>Imagine you and two friends have $40 between you to last the weekend. You need to decide together how to sp
+     + <p>Here are some example expenses:</p>
+     + <ul>
+     + <li>Bus fare ($5 each).</li>
+     + <li>Basic groceries for lunch ($15).</li>
+     + </ul>
+     + <p>Decide what you’ll spend the $40 on. Discuss your choices and why you picked them.</p>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ CEDK501_1_0.html: -9 +8
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>Based on what you value, what would you like to save for? / If you won the lottery, what would you do (or 
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>Based on what you value, what would you like to save for?</p>
+     + <p>If you won the lottery, what would you do (or not do) with the money?</p>
+     + <p>Strategies are ideas that you put into action. Do you already have personal saving strategies, or is this a
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+  ~ CEDK501_2_0.html: -9 +7
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>What are some things you spend money on each week? Do you think most of your spending is on needs (essenti
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>What are some things you spend money on each week? Do you think most of your spending is on needs (essentia
+     + <p>Is there something you would like to save for in the next year?</p>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+  ~ CEDK501_5_0.html: -13 +11
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td><b>For monitoring (checking in):</b> / What do you already keep track of in your life? For example, some p
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p><b>For monitoring (checking in):</b></p>
+     + <p>What do you already keep track of in your life? For example, some people track their daily health routines,
+     + <p>How could you use a similar ‘check-in’ system to track your money?</p>
+     + <p><b>For maintaining (staying motivated):</b></p>
+     + <p>What do you already do to stick with a routine or habit in your life? For example, some people exercise wit
+     + <p>How could you use similar strategies to stay motivated with your financial goal?</p>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+  ~ CEDK501_3_1.html: -13 +7
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>What do you usually spend your money on each week or month? / Could you cut back on certain wants, such as
+     - </tr>
+     - </table>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>What do you usually spend your money on each week or month?</p>
+     + <p>Could you cut back on certain wants, such as eating out or subscriptions?</p>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+  ~ CEDK501_10_0.html: -18 +14
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>How do you know when someone is really listening to you? What does it feel like when someone interrupts or
+     - </tr>
+     - </table>
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>Why do we need to understand someone’s culture to show respect when we communicate? / What misunderstandin
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>How do you know when someone is really listening to you? What does it feel like when someone interrupts or 
+     + <p>Can you think of a time when respectful communication made a situation better?</p>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>Why do we need to understand someone’s culture to show respect when we communicate?</p>
+     + <p>What misunderstandings or conflicts might happen if cultural differences are ignored?</p>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+  ~ CEDK501_6_1.html: -9 +8
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>In a group discussion, what happens when members go off-topic or stay silent? / Why does using positive la
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>In a group discussion, what happens when members go off-topic or stay silent?</p>
+     + <p>Why does using positive language make a difference in how your group works together?</p>
+     + <p>How can you make sure your messages are clear and easy to understand?</p>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+CEDK501: identical 7 / changed 7
+CEDO102: identical 1 / changed 0
+CEDO105: identical 6 / changed 0
+CEDO202: identical 1 / changed 0
+CEDO301: identical 6 / changed 0
+  ~ CEDO501_0_0.html: -13 +7
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>For Māori, <b>wānanga</b> is a way we learn from each other and share ideas. In the process of wānanga, ev
+     - </tr>
+     - </table>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>For Māori, <b>wānanga</b> is a way we learn from each other and share ideas. In the process of wānanga, eve
+     + <p>Throughout this module, you’ll come across prompts or questions in boxes like this. These are to encourage 
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+  ~ CEDO501_1_0.html: -9 +8
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>Within <b>te ao Māori</b> (the Māori worldview) and a Pasifika worldview, people have different roles and 
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>Within <b>te ao Māori</b> (the Māori worldview) and a Pasifika worldview, people have different roles and r
+     + <p>What are some examples that you have seen in your own whānau or community?</p>
+     + <p>How do people contribute differently when they are young, raising whānau and/or working and when they are o
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+  ~ CEDO501_2_0.html: -22 +15
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>Discuss the different ways that people in each stage of their life might earn or receive money. / How migh
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>How might different types of earned income suit different life stages? / Discuss what you think are the ad
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>Discuss the different ways that people in each stage of their life might earn or receive money.</p>
+     + <p>How might the types of income people rely on change as their goals or responsibilities change?</p>
+     + <p>What factors might influence the amount of someone’s income at different life stages?</p>
+     + </div>
+     + </div>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>How might different types of earned income suit different life stages?</p>
+     + <p>Discuss what you think are the advantages and the disadvantages of these different types of work.</p>
+     + </div>
+     + </div>
+  ~ CEDO501_2_2.html: -9 +7
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>Discuss why people might choose to invest their money like this, instead of keeping it in a savings accoun
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>Discuss why people might choose to invest their money like this, instead of keeping it in a savings account
+     + <p>Why might this option have more risks?</p>
+     + </div>
+     + </div>
+  ~ CEDO501_3_0.html: -13 +8
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>Reflect on how you use the internet. / How often do you go online each day and what do you usually use the
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>Reflect on how you use the internet.</p>
+     + <p>How often do you go online each day and what do you usually use the internet for? How do you decide whether
+     + <p>Why kinds of websites do you trust most and why?</p>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+  ~ CEDO501_4_0.html: -13 +8
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>What do you think is the most important factor that affects income? / Can you name a factor a person can c
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>What do you think is the most important factor that affects income?</p>
+     + <p>Can you name a factor a person can control and one they can’t?</p>
+     + <p>Why might two people doing the ‘same’ job be paid differently?</p>
+     + </div>
+     + </div>
+  ~ CEDO501_8_0.html: -9 +7
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>What are some examples of life changes that could affect how much someone earns? / Which types of income c
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>What are some examples of life changes that could affect how much someone earns?</p>
+     + <p>Which types of income changes do you think are within a person’s control, and which are not?</p>
+     + </div>
+     + </div>
+CEDO501: identical 9 / changed 7
+  ~ CEDO502_0_0.html: -13 +7
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>For Māori, <b>wānanga</b> is a way we learn from each other and share ideas. In the process of wānanga, ev
+     - </tr>
+     - </table>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>For Māori, <b>wānanga</b> is a way we learn from each other and share ideas. In the process of wānanga, eve
+     + <p>Throughout this module, you’ll come across prompts or questions in boxes like this. These are to encourage 
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+  ~ CEDO502_1_0.html: -9 +7
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>Decisions about money often affect not just one person, but the wider whānau and community. / What are som
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>Decisions about money often affect not just one person, but the wider whānau and community.</p>
+     + <p>What are some examples you’ve seen where money decisions have helped support others? Can you think of any w
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+  ~ CEDO502_1_1.html: -9 +7
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>Why do you think people choose to use credit instead of waiting until they’ve saved the money? / When do y
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>Why do you think people choose to use credit instead of waiting until they’ve saved the money?</p>
+     + <p>When do you think using credit will be helpful?</p>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+  ~ CEDO502_2_0.html: -9 +7
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>Share some of the ways people borrow money in real life that you already know about. Why do you think peop
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>Share some of the ways people borrow money in real life that you already know about. Why do you think peopl
+     + <p>Why do you think it is important to understand the cost of credit before using it?</p>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+  ~ CEDO502_3_0.html: -27 +24
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td><b>Thinking about your own experiences and community:</b> / • Where have you seen people using credit (loa
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td><b>Think about it:</b> <i>Would you find it easier or harder to borrow money from someone you know? Why?</
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>Discuss which red flags you’ve seen in your community, online or in shops. / What made them seem risky? / 
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p><b>Thinking about your own experiences and community:</b></p>
+     + <li>Where have you seen people using credit (loans, store cards, buy-now-pay-later, whānau lending) in your wh
+     + <li>What pressures (social media, friends, whānau expectations, big events) might encourage someone to borrow 
+     + <div class="alert cultural" layout="combined">
+     + <p><b>Think about it:</b> <i>Would you find it easier or harder to borrow money from someone you know? Why?</i
+     + <div class="alert cultural" layout="combined">
+     + <p>Discuss which red flags you’ve seen in your community, online or in shops.</p>
+     + <p>What made them seem risky?</p>
+     + <p>How might these traps affect whānau or friends?</p>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-12">
+     + <ul>
+     + </ul>
+     + </div>
+     + </div>
+     + … 4 more added
+  ~ CEDO502_4_0.html: -31 +27
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>When you need to find information, where do you usually start? / What types of sources of information can 
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>What makes a search purpose clear? / What kinds of questions do you think people your age have about credi
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <td>• What makes a source trustworthy? / • What sources do we use in our everyday lives without thinking? / • 
+     - </table>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>When you need to find information, where do you usually start?</p>
+     + <p>What types of sources of information can you think of? For example, website articles, your local newspaper,
+     + <p>How can you tell if information is trustworthy</p>
+     + <div class="alert cultural" layout="combined">
+     + <p>What makes a search purpose clear?</p>
+     + <p>What kinds of questions do you think people your age have about credit or debt?</p>
+     + <p>How could talking with others help you plan a stronger search?</p>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <ul>
+     + <li>What makes a source trustworthy?</li>
+     + <li>What sources do we use in our everyday lives without thinking?</li>
+     + <li>What might make a source unreliable or risky?</li>
+     + <li>How do friends, whānau, or wider communities influence where we look for information?</li>
+     + </ul>
+     + </div>
+     + </div>
+     + <div class="row">
+     + … 7 more added
+  ~ CEDO502_5_0.html: -22 +19
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>• When would you use open questions instead of closed ones? / • How could open questions help you learn mo
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>• Why might it matter to use information from Aotearoa New Zealand in your own research? / • What local kn
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - </table>
+     - </div>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <ul>
+     + <li>When would you use open questions instead of closed ones?</li>
+     + <li>How could open questions help you learn more from someone in your community?</li>
+     + </ul>
+     + <div class="alert cultural" layout="combined">
+     + <ul>
+     + <li>Why might it matter to use information from Aotearoa New Zealand in your own research?</li>
+     + <li>What local knowledge or experiences could help you to gather information?</li>
+     + <li>Who in your community could you talk to about your topic?</li>
+     + </ul>
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ CEDO502_7_0.html: -48 +26
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>In many people’s lives, including in Māori and Pasifika communities, whānau responsibilities can change qu
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>When you think about housing, work hours, transport, or whānau commitments, why might someone struggle to 
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <td>Think about your whānau, friends, or your own experiences. / What are practical ways someone can stay prep
+     - </table>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - </table>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - </table>
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - </div>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>Discuss how we can tell the difference between debts that hold us back and debts that help us move forward
+     - </tr>
+     - </table>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - … 8 more removed
+     + <div class="alert cultural" layout="combined">
+     + <p>In many people’s lives, including in Māori and Pasifika communities, whānau responsibilities can change qui
+     + <p>How could these types of changes affect a person’s ability to repay debt?</p>
+     + <div class="alert cultural" layout="combined">
+     + <p>When you think about housing, work hours, transport, or whānau commitments, why might someone struggle to k
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>Think about your whānau, friends, or your own experiences.</p>
+     + <p>What are practical ways someone can stay prepared for sudden changes in life, so their debt does not become
+     + </div>
+     + </div>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>Discuss how we can tell the difference between debts that hold us back and debts that help us move forward.
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-12">
+     + … 6 more added
+CEDO502: identical 2 / changed 8
+CEDR201: identical 1 / changed 0
+CEDR204: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDR302: identical 1 / changed 0
+  ~ CEDR501_0_0.html: -13 +7
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>For Māori, <b>wānanga</b> is a way we learn from each other and share ideas. In the process of wānanga, ev
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>For Māori, <b>wānanga</b> is a way we learn from each other and share ideas. In the process of wānanga, eve
+     + <p>Throughout this module, you’ll come across prompts or questions in boxes like this. These are to encourage 
+     + </div>
+     + </div>
+  ~ CEDR501_1_0.html: -13 +11
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>Reflect or discuss: / • How could you show <b>manaakitanga</b> (respect and courtesy) when speaking to one
+     - </tr>
+     - </table>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>Reflect or discuss:</p>
+     + <ul>
+     + <li>How could you show <b>manaakitanga</b> (respect and courtesy) when speaking to one or more interviewers?</
+     + <li>How might <b>whakawhanaungatanga</b> (building relationships) help you connect with a group rather than ju
+     + <li>What can you learn from the idea of a <b>hui</b> that could help you feel more comfortable in a panel inte
+     + </ul>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+  ~ CEDR501_4_0.html: -35 +24
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>Who made the best first impression, Kiran or Julia? Why was that obvious? / What kind of first impression 
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <td>Which candidate made a better first impression? Why? / What could Taika have done differently to avoid bei
+     - </table>
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <td>What does a respectful language and tone sound like to you? / Think about a time when someone spoke to you
+     - </table>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>Who made the best first impression, Kiran or Julia? Why was that obvious?</p>
+     + <p>What kind of first impression do you think you make when meeting someone new?</p>
+     + <p>Which small actions or habits help you show positivity when you meet someone for the first time? Can you sh
+     + <div class="alert cultural" layout="combined">
+     + <p>Which candidate made a better first impression? Why?</p>
+     + <p>What could Taika have done differently to avoid being late?</p>
+     + <p>How can being punctual affect the way an interviewer sees you?</p>
+     + <p>Think about a time you were early, on time, or late for something important. What difference did it make?</
+     + <div class="alert cultural" layout="combined">
+     + <p>What does a respectful language and tone sound like to you?</p>
+     + <p>Think about a time when someone spoke to you respectfully. How did it make you feel?</p>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + … 4 more added
+  ~ CEDR501_5_0.html: -22 +16
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>Which response do you think would fit best and why? / Which is another reasonable choice?</td>
+     - </tr>
+     - </table>
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>Think about the people, places, and experiences that shape how you see the world. / What values or beliefs
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>Which response do you think would fit best and why?</p>
+     + <p>Which is another reasonable choice?</p>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>Think about the people, places, and experiences that shape how you see the world.</p>
+     + <p>What values or beliefs guide how you treat others?</p>
+     + <p>How might your culture or background influence how you communicate?</p>
+     + <p>In an interview, how could you show respect for someone with a different worldview?</p>
+     + </div>
+     + </div>
+  ~ CEDR501_6_0.html: -31 +25
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>What do you notice about how Hemi answered the question? / How do you think the interviewer might feel whi
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>Why do you think these communication mistakes are easy to make? / What do you think makes an interviewer r
+     - </tr>
+     - </table>
+     - </div>
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>Think about the situations you matched in this activity. / Which interview slip-up do you think happens mo
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>What do you notice about how Hemi answered the question?</p>
+     + <p>How do you think the interviewer might feel while listening to him?</p>
+     + <p>What clues show that Hemi is starting to feel unsure or nervous?</p>
+     + <div class="alert cultural" layout="combined">
+     + <p>Why do you think these communication mistakes are easy to make?</p>
+     + <p>What do you think makes an interviewer remember someone in a positive way?</p>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>Think about the situations you matched in this activity.</p>
+     + <p>Which interview slip-up do you think happens most often?</p>
+     + … 5 more added
+  ~ CEDR501_8_0.html: -14 +15
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>Think about Olive’s two examples.
+     - She used both the <b>boxing method</b> and the <b>Summary method</b> to take notes on the same article. Each m
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>Think about Olive’s two examples.</p>
+     + <p>She used both the <b>boxing method</b> and the <b>Summary method</b> to take notes on the same article. Eac
+     + <p>Discuss or reflect:</p>
+     + <ul>
+     + <li>Which note-taking method do you think helped Olive prepare best for her interview? Why?</li>
+     + <li>How does the boxing method make information easier to understand?</li>
+     + <li>When might the summary method be a better choice?</li>
+     + <li>Which method do you prefer, and how could it help you in a real interview or study situation?</li>
+     + </ul>
+     + <p>Tip: There is no single “right” way to take notes. The best method depends on the purpose and whether you n
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+CEDR501: identical 5 / changed 6
+CEDT101: identical 1 / changed 0
+CEDT104: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDT208: identical 1 / changed 0
+CEDT301: identical 7 / changed 0
+CEDT404: identical 1 / changed 0
+  ~ CEDT501_0_0.html: -18 +10
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="1" data-cv2-ref="CEDT501-00-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="1" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: carousel (/ box) — Activity (inline)
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>For Māori, <b>wānanga</b> is a way we learn from each other and share ideas. In the process of wānanga, ev
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: wananga note: / box</p>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>For Māori, <b>wānanga</b> is a way we learn from each other and share ideas. In the process of wānanga, eve
+     + <p>You will learn more about the importance of wānanga and talanoa in more depth in Lesson 8 <i>–</i> Assertiv
+     + </div>
+     + </div>
+  ~ CEDT501_1_0.html: -21 +13
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="CEDT501-01-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: flipCard — Activity (inline) — see C
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="CEDT501-01-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: carousel (/ box) — Activity (inline)
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Discuss this whakataukī and how it might apply to how we interact online. / What does this whakataukī tell
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="1" data-cv2-ref="CEDT501-01-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="1" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: flipCard — Activity (inline) — see C
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: wananga note: / box</p>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>Discuss this whakataukī and how it might apply to how we interact online.</p>
+     + <p>What does this whakataukī tell us about the impact of our actions?</p>
+     + </div>
+     + </div>
+  ~ CEDT501_1_1.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="CEDT501-02-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: multiChoiceQuiz (go to - self markin
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="CEDT501-02-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: multiChoiceQuiz (go to - self markin
+  ~ CEDT501_2_0.html: -37 +42
+     - <div class="activity interactive" number="2A">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="CEDT501-03-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Again, please include a Banner - Wāna
+     - <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: carousel + typing (/ box) — Activity
+     - <th>Who do <b>you think</b> is affected when someone is bullied online?</th>
+     - <p>Talk with your education tutor or someone in your whānau and note some ideas in the self-reflection box bel
+     - <div class="button">Answers</div>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Suggested response will appear after 
+     - <td> Answers – Suggested response / • their whānau or family / • the school or workplace / • <span class="info
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="CEDT501-03-02" style="border: 8px so
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: unclassified — Activity 2B — see CED
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="CEDT501-03-03" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: carousel (rolling - / box) — Activit
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="CEDT501-03-04" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: accordion + accordion + accordion + 
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     + <div class="activity" number="2A">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: wananga note: / box</p>
+     + <div class="alert cultural" layout="combined">
+     + <p>Who do <b>you think</b> is affected when someone is bullied online?</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Again, please include a Banner - Wāna
+     + <p>Talk with your education tutor or someone in your whānau and note some ideas in the self-reflection box bel
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="CEDT501-03-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Suggested response will appear after 
+     + <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: typing (insert) — Activity (inline) 
+     + <p>Answers</p>
+     + <th> Answers – Suggested response / • their whānau or family / • the school or workplace / • hapori [Hover: wi
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="CEDT501-03-02" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: unclassified — Activity 2B — see CED
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="CEDT501-03-03" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + … 22 more added
+  ~ CEDT501_3_0.html: -67 +72
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="CEDT501-04-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: carousel (/ box) — Activity (inline)
+     - <p>How have you or people you know responded to online bullying or harm in the past?</p>
+     - <p>What made those responses helpful or unhelpful?</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="CEDT501-04-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: dragAndDrop + dragAndDrop — Activit
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="CEDT501-04-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: accordion + accordion + accordion (
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Do you think the immediate actions were effective? Why or why not?</p>
+     - <p>How might the long-term responses have helped this person to feel safer online?</p>
+     - </div>
+     - <div class="item">
+     - <h4>Steps to reporting</h4>
+     - <div class="carousel-caption">
+     - <p>It’s important to know how to protect yourself and others by taking action when online bullying happens. On
+     - <p><b>Here are the steps you might take to do this:</b></p>
+     - </div>
+     - </div>
+     - <div class="item">
+     - <h4>Step 1: Take a screenshot</h4>
+     - <div class="carousel-caption">
+     - <p>Save this as evidence of the bullying. This might include messages, comments or posts.</p>
+     - </div>
+     - … 27 more removed
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: wananga note: / box</p>
+     + <div class="alert cultural" layout="combined">
+     + <p>How have you or people you know responded to online bullying or harm in the past?</p>
+     + <p>What made those responses helpful or unhelpful?</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [H3] — the writer left a heading pl
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="CEDT501-04-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: dragAndDrop + dragAndDrop — Activity
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="CEDT501-04-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + … 52 more added
+  ~ CEDT501_3_1.html: -18 +9
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="CEDT501-05-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: carousel (/ box) — Activity (inline
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>What are some of the ways we can practice being assertive each day? How can being aggressive, passive or i
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: wananga note: / box</p>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>What are some of the ways we can practice being assertive each day? How can being aggressive, passive or in
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+  ~ CEDT501_5_0.html: -30 +26
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="CEDT501-07-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: carousel (/ box) — Activity (inline
+     - <th>Describe your own communication style. Do others see you in the same way? / Have you ever found it difficu
+     - <p>How you talk with others can either bring you closer or cause conflict. This lesson looks at four ways peop
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="CEDT501-07-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: dragAndDrop — Activity 2 — see CEDT
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="CEDT501-07-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="20" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #20: accordion + accordion — Activity (i
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="CEDT501-07-04" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="21" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: accordion + accordion — Activity (i
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: wananga note: / box</p>
+     + <div class="alert cultural" layout="combined">
+     + <p>Describe your own communication style. Do others see you in the same way?</p>
+     + <p>Have you ever found it difficult to get your message across clearly?</p>
+     + <p>How you talk with others can either bring you closer or cause conflict. This lesson looks at four ways peop
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="CEDT501-07-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: dragAndDrop — Activity 2 — see CEDT
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="CEDT501-07-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: accordion + accordion — Activity (i
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="CEDT501-07-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: accordion + accordion — Activity (i
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + … 6 more added
+  ~ CEDT501_5_1.html: -44 +35
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="CEDT501-08-01" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #22: flipCard — Activity (inline) — see 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="CEDT501-08-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: carousel (/ box) — Activity (inline
+     - <th>What barriers to being assertive do you notice in your life or community?</th>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="CEDT501-08-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: clickDrop + clickDrop + clickDrop —
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="CEDT501-08-04" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: selectionBox — Activity (inline) — 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="CEDT501-08-05" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="26" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #26: clickDrop + clickDrop — Activity (i
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="27" data-cv2-ref="CEDT501-08-06" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="27" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #27: selectionBox — Activity (inline) — 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="28" data-cv2-ref="CEDT501-08-07" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="28" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #28: clickDrop + clickDrop — Activity (i
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="29" data-cv2-ref="CEDT501-08-08" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="29" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #29: selectionBox — Activity (inline) — 
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - … 4 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="CEDT501-08-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: flipCard — Activity (inline) — see 
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: wananga note: / box</p>
+     + <div class="alert cultural" layout="combined">
+     + <p>What barriers to being assertive do you notice in your life or community?</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="CEDT501-08-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: clickDrop + clickDrop + clickDrop —
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="CEDT501-08-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="18" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: selectionBox — Activity (inline) — 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="CEDT501-08-04" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: clickDrop + clickDrop — Activity (i
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="CEDT501-08-05" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + … 15 more added
+  ~ CEDT501_6_0.html: -31 +32
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="30" data-cv2-ref="CEDT501-09-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="30" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #30: carousel (/ box) — Activity (inline
+     - <p>Think of someone you know who is a good communicator. This might be a kaiako, whānau member or peer.</p>
+     - <p>What makes them a good communicator?</p>
+     - <p>Can you give an example of something they have said or done that shows this?</p>
+     - <p>These are some forms of non-verbal communication we see every day. Click on each image to learn more.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="31" data-cv2-ref="CEDT501-09-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="31" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #31: flipCard — Activity (inline) — see 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="32" data-cv2-ref="CEDT501-09-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="32" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #32: multiChoiceQuiz (self marked) — Act
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="33" data-cv2-ref="CEDT501-09-04" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="33" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #33: typing (separate typable boxes) — A
+     - <div style="font-size: 0.95em">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="34" data-cv2-ref="CEDT501-09-05" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="34" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #34: dragAndDrop — Activity 6B — see CED
+     - </div>
+     - </div>
+     - </div>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: wananga note: / box</p>
+     + <div class="alert cultural" layout="combined">
+     + <p>Think of someone you know who is a good communicator. This might be a kaiako, whānau member or peer.</p>
+     + <p>What makes them a good communicator?</p>
+     + <p>Can you give an example of something they have said or done that shows this?</p>
+     + <p>These are some forms of non-verbal communication we see every day. Click on each image to learn more.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="CEDT501-09-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: flipCard — Activity (inline) — see 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="CEDT501-09-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: multiChoiceQuiz (self marked) — Act
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="CEDT501-09-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: typing (separate typable boxes) — A
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + … 12 more added
+  ~ CEDT501_6_1.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="36" data-cv2-ref="CEDT501-10-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="36" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #36: unclassified — Activity 3A — see CE
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="37" data-cv2-ref="CEDT501-10-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="37" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #37: dragAndDrop — Activity 2 — see CEDT
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="28" data-cv2-ref="CEDT501-10-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="28" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #28: unclassified — Activity 3A — see CE
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="29" data-cv2-ref="CEDT501-10-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="29" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #29: dragAndDrop — Activity 2 — see CEDT
+  ~ CEDT501_7_0.html: -22 +23
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="38" data-cv2-ref="CEDT501-11-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="38" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #38: carousel (/ box) — Activity (inline
+     - <p>How does it feel when someone truly listens to you in a one-on-one conversation?</p>
+     - <p>What helps you stay calm and express your thoughts clearly, especially if you&#39;re nervous or upset?</p>
+     - <p>Reflect on your recent conversations and how you felt about them. Record your response in the activity that
+     - <p>Think of the people you have talked with individually during the past week. Who have you had one-to-one con
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="39" data-cv2-ref="CEDT501-11-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="39" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #39: typing — Activity (inline) — see CE
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="40" data-cv2-ref="CEDT501-11-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="40" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #40: typing — Activity (inline) — see CE
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: wananga note: / box</p>
+     + <div class="alert cultural" layout="combined">
+     + <p>How does it feel when someone truly listens to you in a one-on-one conversation?</p>
+     + <p>What helps you stay calm and express your thoughts clearly, especially if you&#39;re nervous or upset?</p>
+     + <p>Reflect on your recent conversations and how you felt about them. Record your response in the activity that
+     + <p>Think of the people you have talked with individually during the past week. Who have you had one-to-one con
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="30" data-cv2-ref="CEDT501-11-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="30" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #30: typing — Activity (inline) — see CE
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="31" data-cv2-ref="CEDT501-11-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="31" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #31: typing — Activity (inline) — see CE
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + <div class="row">
+     + … 3 more added
+  ~ CEDT501_8_0.html: -23 +19
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="45" data-cv2-ref="CEDT501-12-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="45" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #45: typing + typing — Activity (inline)
+     - <div class="wananga">
+     - <p>is more than just group discussion. It is a sacred process which has always been part of Māori culture. On 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="46" data-cv2-ref="CEDT501-12-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="46" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #46: carousel (/ box) — Activity (inline
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Have you ever attended a wānanga? Why was it held? What did you observe? / Think about how people communic
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="36" data-cv2-ref="CEDT501-12-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="36" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #36: typing + typing — Activity (inline)
+     + <div class="alert cultural" layout="combined">
+     + <p>is more than just group discussion. It is a sacred process which has always been part of Māori culture. On 
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: wananga note: / box</p>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>Have you ever attended a wānanga? Why was it held? What did you observe?</p>
+     + <p>Think about how people communicated, listened and shared their ideas.</p>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+  ~ CEDT501_13_0.html: -27 +27
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="47" data-cv2-ref="CEDT501-13-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="47" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #47: clickDrop + clickDrop + clickDrop —
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="48" data-cv2-ref="CEDT501-13-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="48" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #48: selectionBox — Activity (inline) — 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="49" data-cv2-ref="CEDT501-13-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="49" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #49: clickDrop + clickDrop — Activity (i
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="50" data-cv2-ref="CEDT501-13-04" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="50" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #50: selectionBox + selectionBox — Activ
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="51" data-cv2-ref="CEDT501-13-05" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="51" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #51: clickDrop + clickDrop — Activity (i
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="52" data-cv2-ref="CEDT501-13-06" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="52" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #52: dragAndDrop — Activity (inline) — s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="53" data-cv2-ref="CEDT501-13-07" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="53" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #53: selectionBox — Activity (inline) — 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="54" data-cv2-ref="CEDT501-13-08" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="54" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #54: clickDrop + clickDrop — Activity (i
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="55" data-cv2-ref="CEDT501-13-09" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="55" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #55: selectionBox — Activity (inline) — 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="37" data-cv2-ref="CEDT501-13-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="37" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #37: clickDrop + clickDrop + clickDrop —
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="38" data-cv2-ref="CEDT501-13-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="38" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #38: selectionBox — Activity (inline) — 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="39" data-cv2-ref="CEDT501-13-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="39" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #39: clickDrop + clickDrop — Activity (i
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="40" data-cv2-ref="CEDT501-13-04" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="40" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #40: selectionBox + selectionBox — Activ
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="41" data-cv2-ref="CEDT501-13-05" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="41" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #41: clickDrop + clickDrop — Activity (i
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="42" data-cv2-ref="CEDT501-13-06" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="42" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #42: dragAndDrop — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="43" data-cv2-ref="CEDT501-13-07" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="43" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + … 7 more added
+CEDT501: identical 2 / changed 13
+CEDW101: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+  ~ CEDW501_0_0.html: -9 +7
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>For Māori <b>wānanga</b> is a way we learn from each other and share ideas. In the process of wānanga, eve
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>For Māori <b>wānanga</b> is a way we learn from each other and share ideas. In the process of wānanga, ever
+     + <p>Throughout this module, you’ll come across prompts or questions in boxes like this. These are to encourage 
+     + </div>
+     + </div>
+  ~ CEDW501_1_0.html: -18 +15
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>How do your beliefs and values shape the way you see the world? / What things are important in your cultur
+     - </tr>
+     - </table>
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - </div>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>What comes to mind when you think about marae? / If you have been to a marae, what did you notice about th
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>How do your beliefs and values shape the way you see the world?</p>
+     + <p>What things are important in your culture or whānau?</p>
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>What comes to mind when you think about marae?</p>
+     + <p>If you have been to a marae, what did you notice about the way people behaved?</p>
+     + <p>What tikanga did you observe and why do you think they were important?</p>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ CEDW501_2_1.html: -36 +40
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>• How might my strong taha hinengaro support my taha tinana (physical health)? / • Could it strengthen my 
+     - </tr>
+     - </table>
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>• How might this affect my taha tinana? / • Could it impact my taha whānau? / • How might it influence my 
+     - </tr>
+     - </table>
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>• How might this affect my taha hinengaro? / • Could it impact my taha tinana? / • How might it influence 
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - </div>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>• How might my strong taha whānau support my taha hinengaro (mental/emotional health)? / • Could it streng
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <ul>
+     + <li>How might my strong taha hinengaro support my taha tinana (physical health)?</li>
+     + <li>Could it strengthen my taha whānau?</li>
+     + <li>How might it connect to my taha wairua?</li>
+     + </ul>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <ul>
+     + <li>How might this affect my taha tinana?</li>
+     + <li>Could it impact my taha whānau?</li>
+     + <li>How might it influence my taha wairua?</li>
+     + </ul>
+     + </div>
+     + </div>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + … 20 more added
+  ~ CEDW501_3_0.html: -9 +7
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>Who are some people in your whānau that you feel connected to and why? / Why do you think it’s important t
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>Who are some people in your whānau that you feel connected to and why?</p>
+     + <p>Why do you think it’s important to remember and talk about the people who came before us?</p>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+  ~ CEDW501_5_0.html: -27 +24
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>Consider <b>three things you are grateful for today</b>. They might be as small as having a laugh with a f
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>Which effect of stress (like anxiety, tiredness, or loss of focus) do you think was most common for young 
+     - </tr>
+     - </table>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - </div>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>What might help protect or strengthen Mereana’s hauora in this situation? / If bullying continues, what mi
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <p>Consider <b>three things you are grateful for today</b>. They might be as small as having a laugh with a fr
+     + <p>How do these things strengthen your hauora?</p>
+     + <p>Which taha (tinana, hinengaro, whānau, wairua) do they connect to?</p>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>Which effect of stress (like anxiety, tiredness, or loss of focus) do you think was most common for young p
+     + <p>How does your body respond when you feel stressed (E.g., headaches, sore stomach, trouble sleeping, or some
+     + <p>What strategies could someone use to look after their hauora if they were feeling isolated and stressed for
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>What might help protect or strengthen Mereana’s hauora in this situation?</p>
+     + … 4 more added
+  ~ CEDW501_7_2.html: -9 +7
+     - <div class="wananga">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Empty [wananga] — the writer left a callo
+     - <td>Why do you think the rating goes up and down in a pattern (e.g., every second day improves)? Can you predi
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     + <div class="alert cultural" layout="combined">
+     + <div class="row">
+     + <div class="col-12">
+     + <p>Why do you think the rating goes up and down in a pattern (e.g., every second day improves)? Can you predic
+     + <p>Share why certain actions (e.g., exercise, contacting whānau) might create repeating patterns in your diary
+     + </div>
+     + </div>
+CEDW501: identical 7 / changed 6
+CHFUN01: identical 1 / changed 0
+CHFUN04: identical 1 / changed 0
+CHFUN05: identical 1 / changed 0
+CHFUN06: identical 1 / changed 0
+CHFUN07: identical 1 / changed 0
+ENFUN01: identical 1 / changed 0
+ENFUN02: identical 1 / changed 0
+ENFUN03: identical 1 / changed 0
+ENFUN04: identical 1 / changed 0
+ENFUN05: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+ENFUN08: identical 1 / changed 0
+ENFUN09: identical 1 / changed 0
+ENG1004: identical 8 / changed 0
+ENG1005: identical 6 / changed 0
+ENG1007: identical 1 / changed 0
+ENGC101: identical 6 / changed 0
+ENGC102: identical 8 / changed 0
+ENGC201: identical 7 / changed 0
+ENGC202: identical 9 / changed 0
+ENGC301: identical 8 / changed 0
+ENGC302: identical 8 / changed 0
+ENGC401: identical 8 / changed 0
+ENGFUN02: identical 5 / changed 0
+ENGI101: identical 4 / changed 0
+ENGI102: identical 7 / changed 0
+ENGI103: identical 7 / changed 0
+ENGI201: identical 5 / changed 0
+ENGI202: identical 7 / changed 0
+ENGI203: identical 11 / changed 0
+ENGI301: identical 6 / changed 0
+ENGI302: identical 7 / changed 0
+ENGI303: identical 7 / changed 0
+ENGI400: identical 4 / changed 0
+ENGI401: identical 12 / changed 0
+ENGI405: identical 8 / changed 0
+ENGJ101: identical 5 / changed 0
+ENGJ102: identical 6 / changed 0
+ENGJ201: identical 7 / changed 0
+ENGJ202: identical 6 / changed 0
+ENGJ301: identical 8 / changed 0
+ENGJ302: identical 10 / changed 0
+ENGJ402: identical 9 / changed 0
+ENGJ403: identical 10 / changed 0
+ENGR101: identical 8 / changed 0
+ENGR102: identical 7 / changed 0
+ENGR201: identical 7 / changed 0
+ENGR202: identical 8 / changed 0
+ENGR301: identical 9 / changed 0
+ENGR302: identical 8 / changed 0
+ENGS101: identical 6 / changed 0
+ENGS102: identical 7 / changed 0
+ENGS201: identical 9 / changed 0
+ENGS202: identical 7 / changed 0
+ENGS301: identical 8 / changed 0
+ENGS302: identical 7 / changed 0
+ENGS401: identical 7 / changed 0
+ENGS405: identical 1 / changed 0
+EXBP901: identical 6 / changed 0
+EXIP901: identical 6 / changed 0
+EXPFUN02: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+EXPFUN04: identical 1 / changed 0
+
+TOTAL: identical 462 / changed 47 / missing 0 over 102 modules
+CHANGED: CEDK501/CEDK501_0_0.html CEDK501/CEDK501_1_0.html CEDK501/CEDK501_2_0.html CEDK501/CEDK501_5_0.html CEDK501/CEDK501_3_1.html CEDK501/CEDK501_10_0.html CEDK501/CEDK501_6_1.html CEDO501/CEDO501_0_0.html CEDO501/CEDO501_1_0.html CEDO501/CEDO501_2_0.html CEDO501/CEDO501_2_2.html CEDO501/CEDO501_3_0.html CEDO501/CEDO501_4_0.html CEDO501/CEDO501_8_0.html CEDO502/CEDO502_0_0.html CEDO502/CEDO502_1_0.html CEDO502/CEDO502_1_1.html CEDO502/CEDO502_2_0.html CEDO502/CEDO502_3_0.html CEDO502/CEDO502_4_0.html CEDO502/CEDO502_5_0.html CEDO502/CEDO502_7_0.html CEDR501/CEDR501_0_0.html CEDR501/CEDR501_1_0.html CEDR501/CEDR501_4_0.html CEDR501/CEDR501_5_0.html CEDR501/CEDR501_6_0.html CEDR501/CEDR501_8_0.html CEDT501/CEDT501_0_0.html CEDT501/CEDT501_1_0.html CEDT501/CEDT501_1_1.html CEDT501/CEDT501_2_0.html CEDT501/CEDT501_3_0.html CEDT501/CEDT501_3_1.html CEDT501/CEDT501_5_0.html CEDT501/CEDT501_5_1.html CEDT501/CEDT501_6_0.html CEDT501/CEDT501_6_1.html CEDT501/CEDT501_7_0.html CEDT501/CEDT501_8_0.html CEDT501/CEDT501_13_0.html CEDW501/CEDW501_0_0.html CEDW501/CEDW501_1_0.html CEDW501/CEDW501_2_1.html CEDW501/CEDW501_3_0.html CEDW501/CEDW501_5_0.html CEDW501/CEDW501_7_2.html

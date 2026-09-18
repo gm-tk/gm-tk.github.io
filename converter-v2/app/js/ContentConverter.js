@@ -7766,6 +7766,18 @@ class ContentConverter {
 			return [NotesAndComments.redFlag(
 				`Unknown container [${tag}] — content kept below without a wrapper; add it to Emit_Templates callouts.`, run)];
 		}
+		// ROUND 399 (the autonomous loop's session 27 Round 2): THE WĀNANGA / TALANOA BOX IS THE KB'S CULTURAL ALERT.
+		// KB 05B "Cultural Alert (Wānanga / Talanoa)" + 14A §14.4 (ConnectED Phase 5: "all alerts are combined unless
+		// otherwise specified"): the gold renders every [Wānanga/Talanoa box] as <div class="alert cultural"
+		// layout="combined"> > row > col-12 > p… (63 / 63 gold boxes). A callout def carrying kb_form swaps to that
+		// open / close / wrap; the legacy open / close stay as the OFF form.
+		// Data flag: callouts.by_tag.<tag>.kb_form   Env toggle: the def's own env (WANANGA_OFF)
+		const _kbf = def.kb_form;
+		if (_kbf && _kbf.enabled !== false && _kbf.open
+			&& !(typeof process !== "undefined" && process.env && process.env[_kbf.env ?? "WANANGA_OFF"])) {
+			def = Object.assign({}, def, { open: _kbf.open, close: _kbf.close ?? def.close,
+				wrap_content: _kbf.wrap_content ?? def.wrap_content });
+		}
 		// A "[side alert]" tag renders as an alertActivity box sitting in a SIDE column
 		// (found on module BLL210): it has no "alert" CSS class, no inner "row>col-12" wrap,
 		// and no h4-styled lead line — its content is just direct "<p>" elements inside the
@@ -7867,6 +7879,21 @@ class ContentConverter {
 		let content = def.proverb_only
 			? this.#gatherProverb(it, bodyItems, i, def)
 			: MediaBuilder.gatherFollowing(it, bodyItems, i);
+		// ROUND 399: A CALLOUT TYPED BARE + A ONE-CELL TABLE — the cell IS the box's content. The CED Phase-5
+		// writers put the wānanga / talanoa prompt in a one-row one-cell table under the tag; the strict gather
+		// sees no black text (the next item is the table) and the box shipped EMPTY with a red flag, the table as a
+		// kept <table>. The gold dissolves the cell into the box's own <p>s (a <ul> for "• " lines) — 50 / 55 sites.
+		// Measured over every callout tag on all 416 WTs (outputs/_s27_r2_callouttbl.py): the idiom is exactly the
+		// wananga class, so it is opt-in per def. The table is marked consumed (the emit site's `while _consumed`
+		// skip steps over it); #calloutWrapsStructured yields to this rule so the box never span-wraps a kept table.
+		// Data flag: callouts.by_tag.<tag>.table_cell_content   Env toggle: its env (WANANGA_OFF)
+		let _tcParts = null;
+		const _tcTable = content.trim() ? null : this.#calloutTableCell(it, bodyItems, i, def);
+		if (_tcTable) {
+			const _cell = (_tcTable.block.rows[0] || []).find((c) => String(c ?? "").trim() !== "");
+			_tcParts = TablesAndGrids.renderCellParts(_cell, run, this.#norm, _tcTable.block?.links).filter(Boolean);
+			if (_tcParts.length) _tcTable._consumed = true; else _tcParts = null;
+		}
 		if (def.split_payload_on_pipe) {
 			// split "reo SEP english" into separate lines → separate <p>s, where SEP is
 			// any of | – — (pipe / en-dash / em-dash, ALWAYS spaced so hyphenated words
@@ -7944,6 +7971,7 @@ class ContentConverter {
 			? embedded : "";
 		if (longPayload) out.push(...deBold(deItal(ListsAndRuns.renderBlackText(longPayload, run, it.block?.links))));
 		if (content.trim()) out.push(...deProv(deBold(deItal(ListsAndRuns.renderBlackText(content, run, it.block?.links)))));
+		if (_tcParts) out.push(...deProv(deBold(deItal(_tcParts))));   // ROUND 399: the one-cell table's cell
 
 		// SAME-BLOCK BUTTON/LINK ABSORB (found on module OSAH501-01). An "[external link
 		// button]"/"[Button]" ELEMENT tag, or an "[external link]" INLINE tag, that sits in
@@ -7999,7 +8027,7 @@ class ContentConverter {
 			}
 		}
 
-		if (!lead && !longPayload && !content.trim() && !absorbedInline) {
+		if (!lead && !longPayload && !content.trim() && !absorbedInline && !_tcParts) {
 			out.push(NotesAndComments.redFlag(`Empty [${tag}] — the writer left a callout with no content.`, run));
 		}
 		if (wrap) out.push(wrap.close);
@@ -8026,8 +8054,28 @@ class ContentConverter {
 	 *
 	 * @returns {boolean}
 	 */
+	/**
+	 * ROUND 399: the ONE-ROW ONE-CELL table right after a bare callout tag, when the def opts in
+	 * (callouts.by_tag.<tag>.table_cell_content) — the cell is the box's own content (the wānanga / talanoa
+	 * prompt). Returns the table item or null. The env toggle is the def's own (WANANGA_OFF).
+	 */
+	static #calloutTableCell(it, bodyItems, i, def) {
+		const cfg = def?.table_cell_content;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "WANANGA_OFF"]) return null;
+		if ((it.blackAfter ?? "").trim()) return null;
+		const next = bodyItems[i + 1];
+		if (!next || next.type !== "table" || next.consumedBy !== undefined || next._consumed) return null;
+		const rows = next.block?.rows ?? [];
+		if (rows.length !== 1) return null;
+		const cells = (rows[0] || []).filter((c) => String(c ?? "").trim() !== "");
+		if (cells.length !== 1) return null;
+		return next;
+	};
+
 	static #calloutWrapsStructured(it, bodyItems, i) {
 		const def = DataService.Data.EmitTemplates.callouts.by_tag[it.parse.primary?.tag];
+		if (this.#calloutTableCell(it, bodyItems, i, def)) return false;   // ROUND 399: the cell is the strict content
 		if (!def || !def.wrap_content) return false;        // only content callouts wrap
 		if ((it.blackAfter ?? "").trim()) return false;     // it has its own text → strict
 		const next = bodyItems[i + 1];

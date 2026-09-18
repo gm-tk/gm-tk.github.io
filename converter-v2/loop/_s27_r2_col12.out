@@ -1,0 +1,57 @@
+gold col-12.col-md-12 columns: 1865 on 774 pages / 301 modules; parents [('div.row', 1529), ('div.row.selectionBox', 75), ('div.col-12.col-md-8', 71), ('div.row.speechBubble', 71), ('div.col-12', 30)]
+==== by FIRST CHILD (what the full-width column holds) — gold count; the same kind's column-class share across ALL gold columns; the paired Claude column for the same text ====
+     300  div.activity.interactive               | all-gold col-md-8=1629(0.66) col-12.col-md-12=300(0.12) col-12=260(0.11) col-md-other=199(0.08) | paired (no Claude column with this text)=158 col-md-8=131 col-12=11
+     205  h3                                     | all-gold col-12=6301(0.66) col-md-8=2598(0.27) col-md-other=329(0.03) col-12.col-md-12=205(0.02) | paired (no Claude column with this text)=160 col-md-8=35 col-12=10
+     145  p                                      | all-gold col-md-8=3447(0.42) col-other=2457(0.30) col-12=1087(0.13) col-md-other=1002(0.12) | paired (no Claude column with this text)=83 col-12=24 col-12.col-md-12=23 col-md-8=11
+     120  WIDGET:dragAndDrop                     | all-gold col-12.col-md-12=120(0.49) col-12=103(0.42) col-md-8=20(0.08) col-md-other=3(0.01) | paired (no Claude column with this text)=115 col-12.col-md-12=4 col-other=1
+      86  h4                                     | all-gold col-12=551(0.33) col-md-8=547(0.33) col-md-other=472(0.28) col-12.col-md-12=86(0.05) | paired (no Claude column with this text)=75 col-md-other=5 col-md-8=3 col-12.col-md-12=3
+      85  h2                                     | all-gold col-md-8=634(0.79) col-12.col-md-12=85(0.11) col-12=65(0.08) col-md-other=18(0.02) | paired (no Claude column with this text)=44 col-md-8=41
+      74  ol                                     | all-gold col-other=177(0.36) col-md-other=149(0.30) col-md-8=78(0.16) col-12.col-md-12=74(0.15) | paired (no Claude column with this text)=74
+      70  div.whakatauki                         | all-gold col-md-8=96(0.57) col-12.col-md-12=70(0.42) col-12=1(0.01) | paired (no Claude column with this text)=44 col-md-8=26
+      68  div.flipCardsContainer.row             | all-gold col-12.col-md-12=68(0.43) col-md-8=53(0.33) col-md-other=28(0.18) col-12=10(0.06) | paired (no Claude column with this text)=56 col-md-other=10 col-12.col-md-12=1 col-md-8=1
+      59  img.img-fluid                          | all-gold col-md-other=3657(0.69) col-other=1093(0.20) col-md-8=433(0.08) col-12=95(0.02) | paired (no Claude column with this text)=59
+      56  WIDGET:typing                          | all-gold col-12.col-md-12=56(0.53) col-md-8=16(0.15) col-md-other=15(0.14) col-12=13(0.12) | paired (no Claude column with this text)=55 col-md-8=1
+      52  div.activity                           | all-gold col-md-8=2088(0.93) col-md-other=60(0.03) col-12.col-md-12=52(0.02) col-12=47(0.02) | paired (no Claude column with this text)=29 col-md-8=23
+      48  div.row                                | all-gold col-other=294(0.42) col-md-8=187(0.27) col-12=115(0.16) col-md-other=54(0.08) | paired (no Claude column with this text)=44 col-md-other=2 col-md-8=1 col-12=1
+      39  div.bubble-basic.no-hover              | all-gold col-md-other=77(0.59) col-12.col-md-12=39(0.30) col-other=7(0.05) col-md-8=5(0.04) | paired (no Claude column with this text)=34 col-12=5
+      34  WIDGET:carousel                        | all-gold col-md-8=75(0.55) col-12.col-md-12=34(0.25) col-12=16(0.12) col-md-other=10(0.07) | paired (no Claude column with this text)=33 col-md-other=1
+      30  div.table-responsive                   | all-gold col-md-other=75(0.42) col-md-8=43(0.24) col-12.col-md-12=30(0.17) col-12=19(0.11) | paired (no Claude column with this text)=30
+      27  WIDGET:speechBubble                    | all-gold col-md-8=214(0.58) col-md-other=65(0.18) col-12=42(0.11) col-12.col-md-12=27(0.07) | paired (no Claude column with this text)=21 col-md-other=3 col-md-8=2 col-12=1
+      26  WIDGET:dropQuiz                        | all-gold col-12.col-md-12=26(0.68) col-12=11(0.29) col-md-other=1(0.03) | paired (no Claude column with this text)=26
+      24  div.clickDropContent                   | all-gold col-12=87(0.55) col-md-8=35(0.22) col-12.col-md-12=24(0.15) col-md-other=10(0.06) | paired (no Claude column with this text)=22 col-md-other=2
+      23  WIDGET:multiChoiceQuiz                 | all-gold col-12.col-md-12=23(0.46) col-12=15(0.30) col-md-8=9(0.18) col-md-other=3(0.06) | paired (no Claude column with this text)=23
+      21  WIDGET:tabs                            | all-gold col-md-8=32(0.49) col-12.col-md-12=21(0.32) col-12=8(0.12) col-md-other=4(0.06) | paired (no Claude column with this text)=20 col-md-8=1
+      20  WIDGET:rotateBanner                    | all-gold col-12.col-md-12=20(0.80) col-md-8=4(0.16) col-12=1(0.04) | paired (no Claude column with this text)=20
+      13  WIDGET:imageZoom                       | all-gold col-12.col-md-12=13(0.32) col-md-other=12(0.29) col-md-8=11(0.27) col-12=5(0.12) | paired (no Claude column with this text)=13
+      13  a                                      | all-gold col-md-other=84(0.41) col-other=55(0.27) col-12=40(0.19) col-md-8=15(0.07) | paired (no Claude column with this text)=13
+      12  WIDGET:radioQuiz                       | all-gold col-12.col-md-12=12(0.75) col-md-8=4(0.25) | paired (no Claude column with this text)=12
+      12  (empty)                                | all-gold col-other=1986(0.92) col-md-other=138(0.06) col-md-8=28(0.01) col-12.col-md-12=12(0.01) | paired (no Claude column with this text)=12
+      10  div.bubble-basic.bubble-top.left.no-hover.primary-light | all-gold col-12.col-md-12=10(0.83) col-md-other=2(0.17) | paired (no Claude column with this text)=10
+       9  WIDGET:accordion                       | all-gold col-md-8=129(0.85) col-12.col-md-12=9(0.06) col-md-other=8(0.05) col-12=5(0.03) | paired (no Claude column with this text)=9
+       9  div.bubble-basic.bubble-right.no-hover | all-gold col-md-other=135(0.52) col-md-8=107(0.41) col-12.col-md-12=9(0.03) col-other=6(0.02) | paired (no Claude column with this text)=5 col-md-8=3 col-md-other=1
+       8  WIDGET:wordSelect                      | all-gold col-12.col-md-12=8(0.47) col-12=8(0.47) col-md-other=1(0.06) | paired (no Claude column with this text)=8
+       7  div.shapeHover                         | all-gold col-md-8=33(0.70) col-12.col-md-12=7(0.15) col-md-other=5(0.11) col-12=2(0.04) | paired (no Claude column with this text)=7
+       7  WIDGET:clickDrop                       | all-gold col-other=833(0.59) col-md-other=424(0.30) col-md-8=126(0.09) col-12=25(0.02) | paired (no Claude column with this text)=7
+       7  WIDGET:memoryGame                      | all-gold col-12=11(0.61) col-12.col-md-12=7(0.39) | paired (no Claude column with this text)=7
+       7  div.activity.dropbox                   | all-gold col-md-8=478(0.96) col-md-other=7(0.01) col-12.col-md-12=7(0.01) col-12=6(0.01) | paired col-md-8=4 (no Claude column with this text)=3
+       7  div.activity.dropbox.interactive       | all-gold col-md-8=30(0.65) col-12.col-md-12=7(0.15) col-md-other=4(0.09) col-12=3(0.07) | paired col-md-8=5 (no Claude column with this text)=2
+       6  h5                                     | all-gold col-md-8=848(0.56) col-md-other=557(0.37) col-12=72(0.05) col-other=29(0.02) | paired (no Claude column with this text)=6
+       6  WIDGET:hintSlider                      | all-gold col-md-other=13(0.46) col-md-8=7(0.25) col-12.col-md-12=6(0.21) col-other=2(0.07) | paired (no Claude column with this text)=4 col-12.col-md-12=2
+       6  WIDGET:reorder                         | all-gold col-12.col-md-12=6(0.38) col-12=6(0.38) col-md-other=4(0.25) | paired (no Claude column with this text)=6
+       5  WIDGET:wordHighlighter                 | all-gold col-md-8=11(0.55) col-12.col-md-12=5(0.25) col-md-other=4(0.20) | paired (no Claude column with this text)=5
+       5  p.center-text                          | all-gold col-other=43(0.54) col-md-other=30(0.38) col-12.col-md-12=5(0.06) col-12=1(0.01) | paired (no Claude column with this text)=5
+
+==== per template/subject group (n ≥ 20 col-md-12 columns): the kinds held ====
+   Standard/1-10 Mathematics                     n= 306  div.activity.interactive 63  h3 45  WIDGET:typing 20  WIDGET:dragAndDrop 17  div.table-responsive 16  p 14
+   Standard/Leaving to Learn                     n= 212  p 41  div.activity.interactive 33  h3 17  h4 12  div.whakatauki 12  div.bubble-basic.no-hover 12
+   Standard/1-10 English                         n= 201  div.activity.interactive 39  h3 21  WIDGET:dragAndDrop 20  p 16  img.img-fluid 8  div.whakatauki 8
+   Standard/Online Safety (OS9000)               n= 188  div.activity.interactive 40  ol 31  h3 19  p 15  h4 14  div.whakatauki 14
+   Standard/1-10 Blended Literacy                n= 140  div.activity.interactive 38  WIDGET:typing 31  h3 12  div.activity 9  WIDGET:dragAndDrop 7  p 7
+   Fundamentals/1-10 English                     n= 140  WIDGET:dragAndDrop 31  h3 17  WIDGET:multiChoiceQuiz 12  WIDGET:dropQuiz 8  p 8  WIDGET:radioQuiz 7
+   Inquiry/1-10 Blended Literacy                 n=  98  h2 49  p 16  img.img-fluid 15  h3 5  div.item 4  div.activity.interactive 3
+   Standard/NCEA1                                n=  96  h4 13  div.activity.interactive 12  p 11  WIDGET:dragAndDrop 9  WIDGET:dropQuiz 5  div.table-responsive 4
+   Inquiry/ConnectED                             n=  96  h3 19  h2 14  div.row 12  div.clickDropContent 11  p 10  div.whakatauki 6
+   Bilingual/Te Marautanga o Aotearoa TMoA       n=  85  div.activity.interactive 17  h3 15  ol 13  h2 11  div.whakatauki 8  div.flipCardsContainer.row 5
+   Standard/ConnectED                            n=  78  div.activity.interactive 19  div.flipCardsContainer.row 18  div.bubble-basic.no-hover 13  h4 11  ol 5  div.table-responsive 3
+   Standard/ANZH                                 n=  71  h3 13  h4 8  (empty) 8  div.whakatauki 5  WIDGET:dragAndDrop 5  WIDGET:imageZoom 5
+   Standard/None                                 n=  28  div.activity.interactive 13  ol 8  WIDGET:dragAndDrop 2  WIDGET:clickDrop 1  div.row 1  div.flipCardsContainer.row 1

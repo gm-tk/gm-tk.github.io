@@ -643,7 +643,19 @@
 			},
 			"wananga": {
 				"open": "<div class=\"wananga{modifiers}\">",
-				"close": "</div>"
+				"close": "</div>",
+				"kb_form": {
+					"enabled": true,
+					"env": "WANANGA_OFF",
+					"open": "<div class=\"alert cultural\" layout=\"combined\">",
+					"close": "</div>",
+					"wrap_content": true
+				},
+				"table_cell_content": {
+					"enabled": true,
+					"env": "WANANGA_OFF"
+				},
+				"_round399_note": "ROUND 399 (the autonomous loop, session 27 Round 2) — THE WĀNANGA / TALANOA BOX IS THE KB'S CULTURAL ALERT. The CED Phase-5 writers (CEDK501 / CEDO501 / CEDO502 / CEDR501 / CEDT501 / CEDW501) type `[Wānanga/Talanoa box]` (and `[Wananga box]`, `[Talanoa/Wananga box]`, the typos `[Wanana/…]` / `[Wananaga/…]`, CEDT501's `[Banner - Wānanga/Talanoa box]`) on its own line, then a ONE-CELL table holding the discussion prompt. The gold renders every one as KB 05B's Cultural Alert `<div class=\"alert cultural\" layout=\"combined\"> > row > col-12 > p…` (63 / 63 gold boxes are `combined` — KB 14A §14.4 ConnectED Phase 5: 'all alerts are combined unless otherwise specified'; a bulleted cell becomes a <ul>; no h4 — 0 / 63). Claude shipped an EMPTY `div.wananga` + a red flag (the strict gather finds no black text before the table) + the writer's table as a kept `table.table-bordered` (56 flags / 35 pages / 6 modules). Measured `outputs/_s27_r2_wananga.py` (69 tag sites / 7 modules) + `_s27_r2_callouttbl.py` (every callout tag typed bare + a one-cell table, all 416 WTs: the idiom is exactly this class — 55 sites / 6 modules / 37 gold pages, gold `alert cultural` 50 = 0.91; the only other carrier is `[alert]` on TEDC402's page-layout tables, gold not found). kb_form: #calloutOpen swaps the def's open / close / wrap_content when on (the legacy `div.wananga` is the OFF form). table_cell_content: in STRICT mode a callout whose own gather is empty and whose NEXT item is a one-row one-cell table takes the cell as its content through TablesAndGrids.renderCellParts (a <p> per ' / '-part, '• ' lines → a <ul>, the cell's own [H*] / [image] parts honoured) and marks the table consumed; #calloutWrapsStructured yields to it. The Banner form rides Tag_Lexicon._meta.tag_promote (carousel → wananga). ONE env WANANGA_OFF reverts all three."
 			},
 			"whakatauki": {
 				"open": "<div class=\"whakatauki{modifiers}\">",

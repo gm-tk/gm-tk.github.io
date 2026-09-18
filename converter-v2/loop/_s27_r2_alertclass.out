@@ -1,0 +1,73 @@
+==== PAIRED boxes (same opening words): gold class-set → Claude class-set — top 40 ====
+     374  pages  277 mods 125   gold alert                                    → claude alert
+      78  pages   63 mods  39   gold alert                                    → claude alert solid  <<< DIFFERENT
+      73  pages   72 mods  69   gold whakatauki                               → claude whakatauki
+      46  pages   45 mods  29   gold alertActivity                            → claude alert  <<< DIFFERENT
+      45  pages   37 mods  34   gold alertActivity                            → claude alertActivity
+      36  pages   18 mods  16   gold alertActivity                            → claude alert solid  <<< DIFFERENT
+      35  pages   33 mods  15   gold alert top                                → claude alert top
+      33  pages   31 mods  23   gold alert top                                → claude alert  <<< DIFFERENT
+      17  pages   15 mods  11   gold alert blank                              → claude alert solid  <<< DIFFERENT
+      14  pages   14 mods   8   gold alert solid                              → claude alert solid
+      10  pages   10 mods   8   gold alert                                    → claude alertActivity  <<< DIFFERENT
+      10  pages    9 mods   3   gold alert solid                              → claude alert  <<< DIFFERENT
+       9  pages    9 mods   8   gold alert top                                → claude alert solid  <<< DIFFERENT
+       7  pages    7 mods   6   gold alert                                    → claude alert top  <<< DIFFERENT
+       5  pages    5 mods   5   gold whakatauki                               → claude alert solid  <<< DIFFERENT
+       5  pages    5 mods   5   gold alertActivity                            → claude alert top  <<< DIFFERENT
+       4  pages    4 mods   4   gold whakatauki                               → claude alert  <<< DIFFERENT
+       4  pages    4 mods   4   gold alert top                                → claude alertActivity  <<< DIFFERENT
+       3  pages    2 mods   2   gold alertActivity paddingLR                  → claude alertActivity  <<< DIFFERENT
+       3  pages    3 mods   3   gold alert blank                              → claude alert  <<< DIFFERENT
+       2  pages    2 mods   2   gold alertActivity paddingL                   → claude alertActivity  <<< DIFFERENT
+       2  pages    2 mods   2   gold alert paddingL top                       → claude alert top  <<< DIFFERENT
+       1  pages    1 mods   1   gold alert paddingL top                       → claude alert solid  <<< DIFFERENT
+       1  pages    1 mods   1   gold alert alertL top                         → claude alert top  <<< DIFFERENT
+       1  pages    1 mods   1   gold alert margT1                             → claude alert  <<< DIFFERENT
+       1  pages    1 mods   1   gold important                                → claude alert solid  <<< DIFFERENT
+       1  pages    1 mods   1   gold alertActivity dropbox                    → claude alertActivity  <<< DIFFERENT
+       1  pages    1 mods   1   gold alert paddingL                           → claude alert  <<< DIFFERENT
+       1  pages    1 mods   1   gold alertActivity paddingL                   → claude alert  <<< DIFFERENT
+       1  pages    1 mods   1   gold row whakatauki                           → claude whakatauki  <<< DIFFERENT
+
+==== per group, for the gold's PLAIN `alert`: what Claude ships (the solid question) ====
+   Standard/Leaving to Learn                     gold-alert n=  83  alert 77 (0.93)  alert solid 6 (0.07)
+   Standard/Online Safety (OS9000)               gold-alert n=  64  alert 62 (0.97)  alertActivity 1 (0.02)  alert solid 1 (0.02)
+   Standard/1-10 Mathematics                     gold-alert n=  37  alert 25 (0.68)  alert solid 8 (0.22)  alert top 3 (0.08)  alertActivity 1 (0.03)
+   Standard/ConnectED                            gold-alert n=  43  alert 24 (0.56)  alert solid 19 (0.44)
+   Standard/NCEA1                                gold-alert n=  27  alert solid 17 (0.63)  alert 10 (0.37)
+   Standard/1-10 English                         gold-alert n=  28  alert 20 (0.71)  alert solid 8 (0.29)
+   Standard/ANZH                                 gold-alert n=  36  alert 32 (0.89)  alertActivity 3 (0.08)  alert top 1 (0.03)
+   Inquiry/Te ara Whakapuawa -Wellbeing          gold-alert n=  21  alert 20 (0.95)  alert top 1 (0.05)
+   Standard/None                                 gold-alert n=  22  alert 21 (0.95)  alertActivity 1 (0.05)
+   Fundamentals/1-10 Social Science              gold-alert n=  17  alert 15 (0.88)  alert solid 1 (0.06)  alertActivity 1 (0.06)
+   Standard/1-10 Social Science                  gold-alert n=  13  alert 13 (1.00)
+   Standard/EXPlore                              gold-alert n=  12  alert 10 (0.83)  alert solid 1 (0.08)  alert top 1 (0.08)
+
+==== per group, for Claude's `alert solid`: what the gold has ====
+   Standard/1-10 Mathematics                     claude-solid n=  22  alert 8 (0.36)  alert solid 6 (0.27)  alertActivity 4 (0.18)  alert blank 2 (0.09)
+   Standard/ConnectED                            claude-solid n=  23  alert 19 (0.83)  alert top 2 (0.09)  important 1 (0.04)  whakatauki 1 (0.04)
+   Standard/NCEA1                                claude-solid n=  42  alert 17 (0.40)  alertActivity 9 (0.21)  alert blank 6 (0.14)  alert top 4 (0.10)
+   Standard/1-10 English                         claude-solid n=  13  alert 8 (0.62)  alert blank 3 (0.23)  alert solid 1 (0.08)  alertActivity 1 (0.08)
+   Inquiry/1-10 Blended Literacy                 claude-solid n=  24  alertActivity 19 (0.79)  alert 5 (0.21)
+   Inquiry/ConnectED                             claude-solid n=  11  alert 6 (0.55)  alertActivity 2 (0.18)  alert solid 1 (0.09)  alert blank 1 (0.09)
+
+==== gold boxes with NO Claude box of the same words (top 15 class sets) ====
+     808  alert
+     267  alert solid
+     230  alertActivity
+     209  alert top
+     112  whakatauki
+      58  alert cultural[layout=combined]
+      22  alert blank
+      10  alert teacher
+       9  alert combined cultural
+       5  alert paddingL top
+       4  alertActivity dropbox
+       3  alert overflowYScroll solid
+       3  alert margL0 solid
+       3  alert primary solid
+       3  alertActivity paddingL
+
+==== `alert cultural` (gold) — where and what Claude pairs ====
+   Standard/ConnectED (gold-only): {'alert cultural[layout=combined]': 58, 'alert cultural': 2}

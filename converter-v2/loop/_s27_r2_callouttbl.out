@@ -1,0 +1,17 @@
+== [wananga] + one-cell table: 55 sites / 6 modules / 37 gold pages
+   gold: alert cultural 50 (0.91); NOT FOUND 2 (0.04); plain (div.accContent) 2 (0.04); alert 1 (0.02)
+   paired: gold alert cultural → claude kept table 50; gold NOT FOUND → claude kept table 2; gold plain (div.accContent) → claude kept table 2; gold alert → claude kept table 1
+      CEDK501 L149 [wananga/talanoa box] gold=div.alert › div.row › div.col-12 claude=div.col-md-8.col-12 › div.table-responsive › table.table.table-bordered «Imagine you and two friends have $40 bet»
+      CEDK501 L200 [wananga/talanoa box] gold=div.alert.cultural.combined › div.row › div.col-12 claude=div.col-md-8.col-12 › div.table-responsive › table.table.table-bordered «Based on what you value, what would you »
+      CEDK501 L333 [wananga/talanoa box] gold=div.alert.cultural.combined › div.row › div.col-12 claude=div.col-md-8.col-12 › div.table-responsive › table.table.table-bordered «What are some things you spend money on »
+      CEDK501 L557 [wānanga/talanoa box] gold=div.alert.cultural.combined › div.row › div.col-12 claude=div.col-md-8.col-12 › div.table-responsive › table.table.table-bordered «**For monitoring (checking in):** »
+      CEDO502 L1088 [wananga/talanoa box] gold=None claude=div.col-md-8.col-12 › div.table-responsive › table.table.table-bordered «Discuss which red flags you’ve seen in y»
+      CEDO502 L1812 [wananga/talanoa box] gold=None claude=div.col-md-8.col-12 › div.table-responsive › table.table.table-bordered «In many people’s lives, including in Māo»
+      CEDW501 L650 [wānanga/talanoa box] gold=div.col-md-8.col-12.paddingR › div.accordion › div.accContent claude=div › div.table-responsive › table.table.table-bordered «• How might this affect my taha tinana?»
+      CEDW501 L662 [wānanga/talanoa box] gold=div.col-md-8.col-12.paddingR › div.accordion › div.accContent claude=div › div.table-responsive › table.table.table-bordered «• How might this affect my taha hinengar»
+== [alert] + one-cell table: 7 sites / 1 modules / 0 gold pages
+   gold: NOT FOUND 7 (1.00)
+   paired: gold NOT FOUND → claude NOT FOUND 7
+      TEDC402 L373 [alert] gold=None claude=None «🔴[RED TEXT] [H3]  [/RED TEXT]🔴**Lesson**»
+      TEDC402 L554 [alert] gold=None claude=None «🔴[RED TEXT] [H3]  [/RED TEXT]🔴**Lesson**»
+      TEDC402 L842 [alert] gold=None claude=None «🔴[RED TEXT] [H3]  [/RED TEXT]🔴**Lesson**»
