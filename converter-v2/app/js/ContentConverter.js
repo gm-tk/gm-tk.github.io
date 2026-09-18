@@ -2035,7 +2035,15 @@ class ContentConverter {
 							}
 							if (lp && ["h1", "h2", "h3", "h4", "h5", "heading", "activity heading"].includes(lp.tag)) {
 								if (_ulTitleOnly && !titleDone && leadBuf.length) flushLead();
-								addLead(this.#norm.RenderText(lead.text) || lead.blackAfter || "");
+								// ROUND 381: a heading item whose span carries residue text AND a black tail (ARFUN02 3A's
+								// garbled `](or drag and drop) [H3]` + "Matching tempo") keeps BOTH — the tail was dropped.
+								// Rides the round's toggle (mode_opener_merge.reverse_order / MODEREVERSE_OFF) so the OFF corpus is the r380 bytes.
+								const _r381Cfg = tpl.activity_wrapper.mode_opener_merge?.reverse_order;
+								const _r381Join = !!_r381Cfg && _r381Cfg.enabled !== false
+									&& !(typeof process !== "undefined" && process.env && process.env[_r381Cfg.env || "MODEREVERSE_OFF"]);
+								addLead(_r381Join
+									? [this.#norm.RenderText(lead.text), lead.blackAfter].map((x) => String(x ?? "").trim()).filter(Boolean).join(" ")
+									: (this.#norm.RenderText(lead.text) || lead.blackAfter || ""));
 							} else if (lead.blackAfter?.trim()) {
 								if (_ulTitleOnly && !titleDone && (_ulMediaTail(lp) || _ulUrlLike(lead.blackAfter))) { leadBuf.push(lead.blackAfter.trim()); continue; }
 								if (_ulTitleOnly && !titleDone && leadBuf.length) flushLead();

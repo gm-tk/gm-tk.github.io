@@ -1741,7 +1741,8 @@ class Config {
 	// ROUND 378 (260619.49): the unclassified activity resumes free body at the [Body] after its table — the writer's last prose and the upload button leave the hand-off dump and stay inside the box (a table or a widget invocation ahead keeps the walk). opener_rule.unclassified_activity_lead.post_table_resume, env UNCLASSTAIL_OFF; 121 pages / 90 modules, skeleton 53.055 → 53.076. The autonomous loop's session 24 Round 2.
 	// ROUND 379 (260619.50): the mode opener before a bundle-OWNED numbered activity ships no empty box — the r84 / r202 merges see only an unconsumed numbered opener. activity_wrapper.mode_opener_merge.owned_target, env MODEOWNED_OFF; 25 pages / 9 modules, skeleton 53.076 → 53.087. The autonomous loop's session 24 Round 3.
 	// ROUND 380 (260619.51): the mode opener's title heading goes into the OWNED box — no title-only box before a bundle-owned numbered activity (the r379 walk crosses the title heading). owned_target.past_title_headings, env MODETITLE_OFF; 22 pages / 9 modules; scoped ship #3 since the r377 full.
-	static AppVersion = "260619.51";
+	// ROUND 381 (260619.52): the reverse trio — [Activity 2C] → [H3] title → an un-numbered [Activity body] span forms ONE box (the scanner's unclassified path looks back to the numbered opener; the owner lead keeps a heading span's residue AND tail). mode_opener_merge.reverse_order, env MODEREVERSE_OFF; 17 pages / 10 modules; scoped ship #4 since the r377 full.
+	static AppVersion = "260619.52";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

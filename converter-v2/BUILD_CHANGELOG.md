@@ -1,5 +1,37 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-18 (round 381, build 260619.52) — THE REVERSE TRIO: the numbered opener → title heading → un-numbered `[Activity body]` span forms ONE box — the autonomous loop's session 24, Round 5
+
+### 1. WHAT CHANGED, IN ONE LINE
+
+The MXFUN family types the number on one tag and the body on a second un-numbered tag with the title between — `[Activity 2C]` → `[H3] Write the correct number` → `[Activity body] Oops! …` + the widget's table. The numbered opener saw no table in its own window (the `[Activity body]` span ends it), so the unclassified bundle opened at the UN-numbered span with no owner, the r217 box wrapped it with a positional number and the numbered box stood before it holding only the title (Claude: `activity number=2C > h3` then `activity interactive number=3D > p + hand-off`; the gold ONE `activity number=2C > h3 + p + table`). `InteractiveScanner`'s unclassified path now looks BACK from such a span — past blanks and at most one title heading — for a NUMBERED, tail-less, unconsumed activity opener; when it finds one that opener owns the bundle (the r362 owner form): the heading, the span and the prose up to the first table are the lead, the members start at the table. `activity_wrapper.mode_opener_merge.reverse_order {enabled, env}`, env **`MODEREVERSE_OFF`** (the r380 output).
+
+### 2. WHY IT WAS PICKED
+
+- The r380 title-only census's sibling shape ("self num → numbered / unnumbered") — MXFUN01 alone 18 title-only boxes. Measured over every WT (`_parsed.txt`): the numbered → heading → content-carrying mode-opener sequence on **85 sites / 6 modules** (MXFUN01 31, MXFUN03 24, MXFUN02 13, CEDK102 10, MXEX302 5, CEDR204 2); triangulated on MXFUN01 2C / 1A / 1C — the gold's h3 inside the numbered box every time. Authority: the gold (§1b 3) + KB 01F (the box opens with its `<h3>` title).
+- The first cut was a CONVERTER-side merge (the r202 walk in reverse); the probe showed it byte-inert — the un-owned case already renders as one box — and the real failures were the bundle-owned ones the scanner had to fix. The converter block was removed; the round is the scanner rule.
+
+### 3. TWO CATCHES THE PROBE FORCED
+
+- The lead walk first took the writer's `[Type and check] Could this please be recreated …` span (no primary tag) as lead prose and DROPPED it (an instruction span's own text has no lead renderer — a pre-existing r362 hazard the word-bag check caught: §6 never silently strips a documented instruction). The lead now ends at any span without a primary tag; the members start there, so `#swallowMembers` keeps it as the widget's instruction (the standard red Writers Note).
+- ARFUN02 3A's garbled `](or drag and drop) [H3]` span + black tail "Matching tempo": the owner lead's heading renderer took the span's residue OR the tail and dropped the tail. It now keeps BOTH (joined); the change rides the round's toggle so the OFF corpus is the r380 bytes — it reaches three more pages (ENGI405_5_0, TEDC402_4_0, TEFUN05_0_0) where a tail was being dropped, score-neutral.
+- Recorded: MXFL203 9A (an unpaired page) — the owner form makes the r378 `widget_ahead_keeps` walk absorb the following `[Interactive tool] [slideshow]` into the unclassified capture ("unclassified + carousel", one box where Claude shipped two and the gold three); only the second hand-off box's chrome is lost, every writer word kept.
+
+### 4. PROOF
+
+- In-memory A/B probe over all 416 (`_s24_r381_probe.cjs`): **`MODEREVERSE_OFF` = disk 2109 / 2109**; ON **17 pages / 10 modules** (ARFUN02, CEDR204, ENGI405, ENGS102 ×2, MXFL203 ×3, MXFUN01 ×5, MXFUN02, MXFUN03, TEDC402, TEFUN05). Scored on the probe pages with the gate's own `match()` BEFORE regenerating: **8 up / 1 down (−0.1) / 5 same, pp-sum +41.3** — MXFUN01_6_2 11.3 → 38.9, ENGS102_2_0 73.3 → 78.8 (crosses ≥75), ENGS102_4_0 +3.4, CEDR204 +1.9, ARFUN02 +1.3. The word-bag check over the 17 pages: every loss is the hand-off label chrome, a video title line the built embed drops (r80) or a URL becoming an `<img>` / `<iframe>` src (r364).
+- SCOPED regeneration of the 10 (`_s24_r381_batch_1.sh`, rc 0; scoped ship #4 since the r377 full): `fresh --affected` 0 truly stale; `diff` **17 changed / 0 added / 0 removed**; probe-vs-disk **62 / 62** identical.
+
+### 5. PROTECTED GATES (`_s24_r381_gates.log`, rc 0, pairs skipped 0)
+
+- Skeleton SCAFFOLD mean **53.102 → 53.123 % (+0.021pp)**, median 53.7, ≥50 1143 EXACT, **≥75 182 → 183 (+1: ENGS102_2_0)**, ≥90 15 EXACT, RAW 37.487 → 37.492 % @ 1956 pairs; 9 movers — 8 up / 1 down (state `_s24_r381_sk_final.json`).
+- compare_structure exact 11643 / EXTRA 172 / MISSING 625 / row-wrap 23 EXACT; structural defect audit clean **2079 / 2102**, leak **26 / 23** EXACT; **body_compare 42 / 4 / 173 / 218 (EMPTY −1, ANY −1 — IMPROVED)**; tags 9557 / 9557 REAL 0; flipCard divergence 0; every widget verifier at its recorded baseline; 16 selftests GREEN.
+
+### 6. ALSO RECORDED
+
+- Ledger: scoped ship #4 since the r377 full. AppVersion 260619.52; CLAUDE.md §9 / §11 / §14; `gate_baseline.json`; loop README; `_MIGRATION/CHECKSUMS__engine.txt` + `CHECKSUMS__gates.txt` refreshed (`.pre-r381.bak` kept).
+- The remaining 28 empty boxes (27 pages / 15 modules — AGH1009 7 journal-instruction brackets, ANZH401 4, …) stay a set of sub-floor mechanisms; the `[Important]` / `[Alert]` directly after an activity opener is MIXED in the gold (in-box plain 9 / outside 14 / absent 8 of 36 sites) — declined; a callout's `activity alertPadding` class is Chris's D10-8 (leave plain).
+
 ## 2026-09-18 (round 380, build 260619.51) — THE MODE OPENER'S TITLE HEADING GOES INTO THE OWNED BOX — no title-only box before a bundle-owned numbered activity — the autonomous loop's session 24, Round 4
 
 ### 1. WHAT CHANGED, IN ONE LINE

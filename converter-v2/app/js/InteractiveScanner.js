@@ -260,7 +260,55 @@ class InteractiveScanner {
 								break;
 							}
 						}
-						if (_outer >= 0) {
+						// ROUND 381 (the autonomous loop's session 24 Round 5) — THE REVERSE TRIO: the MXFUN family
+						// types `[Activity 2C]` → `[H3] Write the correct number` → `[Activity body] Oops! …` + the
+						// widget's table. The NUMBERED opener has no table in its own window (the `[Activity body]`
+						// span ends it), so the bundle opened HERE at the un-numbered span with no owner, the r217
+						// box wrapped it with a positional number and the numbered box stood before it holding
+						// only the title (85 sites / 6 modules; the gold ONE `number=2C` box with h3 + p + table).
+						// The same lookback as r364 above, but for a TYPED numbered opener with NO tail that sits
+						// past blanks and at most `max_headings` title headings: it owns the bundle (r362 owner
+						// form), the heading + this span + the prose up to the first table are the lead, the
+						// members start at the table. Data Emit_Templates activity_wrapper.mode_opener_merge
+						// .reverse_order; env MODEREVERSE_OFF (the converter side of the same round shares it).
+						const _mrCfg = DataService.Data.EmitTemplates?.activity_wrapper?.mode_opener_merge?.reverse_order;
+						const _mrOn = !!_mrCfg && _mrCfg.enabled !== false && _outer < 0 && !(it.parse.numbers?.length > 0)
+							&& !(typeof process !== "undefined" && process.env && process.env[_mrCfg.env || "MODEREVERSE_OFF"]);
+						let _rev = -1;
+						if (_mrOn) {
+							const _maxH = _mrCfg.max_headings ?? 1; let heads = 0, s = i - 1;
+							while (s >= 0) {
+								const prev = items[s];
+								if (prev.consumedBy !== undefined) break;
+								if (prev.type === "black") { if (!(prev.text ?? "").trim()) { s--; continue; } break; }
+								if (prev.type !== "tag") break;
+								const pp = prev.parse.primary;
+								if (pp?.tag === "activity" && pp.directive === "CONTAINER_OPEN") {
+									if (prev.parse.numbers?.length > 0 && !(prev.blackAfter ?? "").trim()) _rev = s;
+									break;
+								}
+								if (pp && /^(?:h[1-6]|heading|activity heading)$/i.test(String(pp.tag || "")) && heads < _maxH) { heads++; s--; continue; }
+								break;
+							}
+						}
+						if (_rev >= 0) {
+							let j = i + 1;
+							while (j < items.length && items[j].consumedBy === undefined && items[j].type !== "table"
+								// a span with NO primary tag (`[Type and check] Could this please be recreated …`, the
+								// writer's instruction) is NOT lead prose — it ends the lead and starts the members, so
+								// #swallowMembers keeps it as the widget's instruction (the standard red Writers Note)
+								&& (items[j].type === "black" || items[j].type === "assettodo"
+									|| (items[j].type === "tag" && items[j].parse?.primary && items[j].parse.primary.directive === "ELEMENT"))) j++;
+							bundle.activityOwner = items[_rev];
+							bundle.activityLeadItems = items.slice(_rev + 1, j);
+							bundle.activityId = items[_rev].parse.numbers[0]?.toUpperCase() ?? null;
+							bundle.startIndex = _rev;
+							bundle._unclassLead = true;
+							bundle._r381Reverse = true;
+							run?.AddNote?.("info", "InteractiveScanner", `the un-numbered [activity] span after a numbered opener's title heading joins that opener's box (round 381: ${bundle.activityId}).`);
+							bundle.endIndex = this.#swallowMembers(bundle, items, j,
+								/* headings terminate the unknown widget: */ true, absolute, run, normaliser);
+						} else if (_outer >= 0) {
 							bundle.activityOwner = items[_outer];
 							bundle.activityLeadItems = items.slice(_outer + 1, i);
 							bundle.activityId = items[_outer].parse.numbers[0]?.toUpperCase() ?? null;
