@@ -106,8 +106,27 @@ class TablesAndGrids {
 			open = open.replace(/<table class="table">/, `<table class="${cls}">`);
 		}
 		const html = [open];
+		// ROUND 383: the first row is the header row (<th>, KB 05D's column-label form) UNLESS one of its
+		// cells runs to first_row_header.data_row_min_words words — a sentence is not a label, and the gold
+		// ships such a row as data (td 0.88 gold-wide / 0.92 paired; every shorter band stays th). The word
+		// count strips the red-run markers and the ** / __ emphasis. Env TBLHEADLONG_OFF = every first row th.
+		const frh = t.first_row_header;
+		const frhOn = !!frh && frh.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[frh.env ?? "TBLHEADLONG_OFF"]);
+		// The VISIBLE words: the red-run markers, then any bracketed [tag] / [hover: definition] marker, then the ** / __
+		// emphasis are stripped before counting (ENGJ403's one-column heading row carries two hover definitions inside
+		// its brackets — seven visible words). A first row whose every non-empty cell is WHOLLY bold is the writer's own
+		// header cue and stays th whatever its length (gold th 0.86 on the matched bold rows).
+		const plainOf = (c) => String(c ?? "").replace(/\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu, " ").trim();
+		const wordsOf = (c) => plainOf(c).replace(/\[[^\]]*\]?/g, " ").replace(/\*\*|__/g, " ").trim().split(/\s+/).filter(Boolean).length;
+		const wholeBold = (c) => /^(?:\*\*|__)[\s\S]*(?:\*\*|__)$/.test(plainOf(c));
+		// FREE-BODY tables only: a table inside an un-built widget's hand-off dump keeps its raw first-row form
+		// (the r201 placeholder containment — a developer reference, not page content).
+		const firstIsHeader = insidePlaceholder || !frhOn || !rows.length
+			|| rows[0].filter((c) => plainOf(c)).every((c) => wholeBold(c)) && rows[0].some((c) => plainOf(c))
+			|| !rows[0].some((c) => wordsOf(c) >= (frh.data_row_min_words ?? 9));
 		rows.forEach((cells, r) => {
-			const cellTpl = r === 0 ? t.header_cell : t.cell;
+			const isHdr = r === 0 && firstIsHeader;
+			const cellTpl = isHdr ? t.header_cell : t.cell;
 			html.push(t.row_open
 				+ cells.map((c) => {
 					// CELL-TAG rendering: a structural [tag] inside a KEPT free-body table cell
@@ -117,7 +136,7 @@ class TablesAndGrids {
 					// DESIGN (a developer reference), so its markers must NOT be stripped there.
 					// Returns null when the cell doesn't match this case, so the caller falls
 					// through to the plain-text rendering below.
-					const inline = insidePlaceholder ? null : this.renderCellInline(c, run, r === 0, norm, links);
+					const inline = insidePlaceholder ? null : this.renderCellInline(c, run, isHdr, norm, links);
 					const content = inline !== null ? inline
 						// red spans inside table cells: keep their text visible,
 						// marked — they are usually interactive data labels

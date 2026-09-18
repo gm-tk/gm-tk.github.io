@@ -1,8 +1,8 @@
 {
   "_meta": {
     "purpose": "Committed PROTECTED-gate baseline (efficiency lever 2). The shared corpus DRIFTS between sessions so the BUILD_CHANGELOG absolutes never line up exactly — without a committed baseline the only rigorous proof of hold-or-improve is a second full A/B regen pass (~8m/round). Diff THIS after a regen instead. Refresh it (and the build/round) every shipped round, AFTER the gates pass.",
-    "build": "260619.53",
-    "round": 382,
+    "build": "260619.54",
+    "round": 383,
     "date": "2026-09-18",
     "_round92_note": "Round 92 (ENGS302-01: side-alert-box-in-table + dragAndDrop activity wrapper / data-table capture / phantom-journal-button fix). Verified on a FULL 0-stale tightened regen vs the round-91 committed baseline (which matched the fast-loop baseline exactly: over 42 / any 181). PRIMARY skeleton IMPROVED (pages>=50% 524->539 +15, >=75% 65->70 +5, mean 47.8->48.2, median 49.3->49.8); compare_structure exact 5893->5902 (+9) / missing 261->252 (-9) / EXTRA 142 HELD; structural-clean 1290->1291 (95.0->95.1%) / leak 254->253 (-1) / leak pages 68->67 (-1); tags 9557/9557; flipCard divergence 0 (37/13/10/14); speechBubble defect 0. body_compare any 181->184 (+3) — the +3 over-capture (ENGC201-06, ENGR101-05, MXDB301-03) is the UNAVOIDABLE cost of capturing the dragAndDrop/activity DATA TABLE into the widget (the user's explicit fix): those tables ARE the widget's data the human BUILDS, but body_compare cannot credit Claude's un-built placeholder, and for these 3 the human keeps the table free. Net-positive per the MEASUREMENT MANDATE (judge a structural change FIRST on the skeleton, which improved +15) + the NET-POSITIVE convention. _round91_note: round 91 (ENGS302 emphasis-bullets/caption/media-url/lesson-name) shipped +1 skeleton / +1 compare exact / +2 missing.",
     "corpus": {
@@ -76,15 +76,16 @@
     "_note_r379": "Round 379: no empty box before a bundle-owned numbered activity (25 pages / 9 modules; scoped ship #2 since the r377 full). Skeleton 53.076 -> 53.087 (+0.011pp; 18 movers 17 up / 1 down), >=50 1141 -> 1142, >=75 182, >=90 15, RAW 37.472 -> 37.479; every other gate EXACT.",
     "_note_r380": "Round 380: the mode opener's title heading goes into the owned box (22 pages / 9 modules; scoped ship #3 since the r377 full). Skeleton 53.087 -> 53.102 (+0.015pp; 22 movers 17 up / 5 down), >=50 1142 -> 1143, >=75 182, >=90 15, RAW 37.479 -> 37.487; every other gate EXACT.",
     "_note_r381": "Round 381: the reverse trio - the numbered opener owns the un-numbered [Activity body] span's bundle past its title heading (17 pages / 10 modules; scoped ship #4 since the r377 full). Skeleton 53.102 -> 53.123 (+0.021pp; 9 movers 8 up / 1 down), >=50 1143, >=75 182 -> 183, >=90 15, RAW 37.487 -> 37.492; body_compare EMPTY 174 -> 173 / ANY 219 -> 218; every other gate EXACT.",
-    "_note_r382": "Round 382: a measurement-tool round - _structural_skeleton.body_source is the one body reader the skeleton gate + the DIFF MINER share (99 body-less gold pages + BLL144-1.0's unclosed body); the r381 corpus re-scored: skeleton 53.123 -> 53.219 (+0.096pp, an instrument correction; 96 movers all up), >=50 1143 -> 1148, >=75 183 -> 184, >=90 15, RAW 37.492 -> 37.541; every other gate EXACT; no regeneration."
+    "_note_r382": "Round 382: a measurement-tool round - _structural_skeleton.body_source is the one body reader the skeleton gate + the DIFF MINER share (99 body-less gold pages + BLL144-1.0's unclosed body); the r381 corpus re-scored: skeleton 53.123 -> 53.219 (+0.096pp, an instrument correction; 96 movers all up), >=50 1143 -> 1148, >=75 183 -> 184, >=90 15, RAW 37.492 -> 37.541; every other gate EXACT; no regeneration.",
+    "_note_r383": "Round 383: a kept table's first row with a >= 9-word cell is a data row (td), not a header (203 pages / 94 modules; scoped ship #5 since the r377 full). Skeleton 53.219 -> 53.250 (+0.031pp; 95 movers 78 up / 17 down), >=50 1148, >=75 184 -> 185, >=90 15, RAW 37.541 -> 37.560; every other gate EXACT."
   },
   "skeleton": {
-    "mean_scaffold_pct": 53.219,
+    "mean_scaffold_pct": 53.25,
     "median_scaffold_pct": 53.7,
     "pages_ge_50": 1148,
-    "pages_ge_75": 184,
+    "pages_ge_75": 185,
     "pages_ge_90": 15,
-    "raw_mean_pct": 37.541,
+    "raw_mean_pct": 37.56,
     "pairs": 1956,
     "pairs_skipped": 0,
     "_note_r350": "Round 350: the dragAndDrop build kickoff shape 1 + the 03B button row — SCAFFOLD identical page-for-page to r349 (a build is inside the collapsed widget marker); RAW 35.049 → 35.115. State outputs/_r350_sk_final.json.",
@@ -114,7 +115,8 @@
     "_note_r379": "Round 379: SCAFFOLD 53.0757 -> 53.0865 (+0.011pp; 18 movers, 17 up / 1 down, pp-sum +21.1 — HIS1007_1_0 -0.6), >=50 1141 -> 1142, >=75 182, >=90 15, RAW 37.472 -> 37.479; SCOPED regeneration of 9 modules (25 pages).",
     "_note_r380": "Round 380: SCAFFOLD 53.0865 -> 53.1018 (+0.015pp; 22 movers, 17 up / 5 down, pp-sum +30.0 — HIS1003_1_0 -0.9), >=50 1142 -> 1143, >=75 182, >=90 15, RAW 37.479 -> 37.487; SCOPED regeneration of 9 modules (22 pages).",
     "_note_r381": "Round 381: SCAFFOLD 53.1018 -> 53.1229 (+0.021pp; 9 movers, 8 up / 1 down, pp-sum +41.3 - MXFUN01_3_0 -0.1), >=50 1143, >=75 182 -> 183, >=90 15, RAW 37.487 -> 37.492; SCOPED regeneration of 10 modules (17 pages).",
-    "_note_r382": "Round 382: SCAFFOLD 53.1229 -> 53.2192 (+0.096pp; 96 movers, ALL up, pp-sum +188.3 - BLL144_1_0 +52.5), >=50 1148, >=75 184, >=90 15, RAW 37.541; the repaired body reader on the r381 corpus (no regeneration). A comparison across r382 must use the repaired reader on both sides."
+    "_note_r382": "Round 382: SCAFFOLD 53.1229 -> 53.2192 (+0.096pp; 96 movers, ALL up, pp-sum +188.3 - BLL144_1_0 +52.5), >=50 1148, >=75 184, >=90 15, RAW 37.541; the repaired body reader on the r381 corpus (no regeneration). A comparison across r382 must use the repaired reader on both sides.",
+    "_note_r383": "Round 383: SCAFFOLD 53.2192 -> 53.2500 (+0.031pp; 95 movers, 78 up / 17 down, pp-sum +60.4 - CEDO501_1_0 -3.4, ENGJ403_4_0 -3.2 named), >=50 1148, >=75 185, >=90 15, RAW 37.560; SCOPED regeneration of 94 modules (203 pages)."
   },
   "compare_structure": {
     "exact_chain": 11643,

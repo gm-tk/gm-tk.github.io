@@ -231,6 +231,12 @@
 			"row_close": "</tr>",
 			"header_cell": "<th>{content}</th>",
 			"cell": "<td>{content}</td>",
+			"first_row_header": {
+				"enabled": true,
+				"env": "TBLHEADLONG_OFF",
+				"data_row_min_words": 9,
+				"_doc": "ROUND 383 (the autonomous loop's session 24 Round 7). A kept table's first row is the header row (<th>) — KB 05D's `<tr><th>Header 1</th>…` form, a column LABEL — UNLESS one of its cells runs to data_row_min_words words or more: a sentence is not a label, and that row renders as data (<td>; a [Body, bold] cell keeps its <b> as data cells do). MEASURED on every paired page (outputs/_s24_throw.py): Claude made every first row th (907 / 0) while the gold's first row is th only 0.42 (Standard 259 / 617; Inquiry 0.41; Fundamentals 0.44) and no shape signal (columns, rows, bold) separates its th from its td — except the cell length: a first row with a >= 9-word cell is td 0.88 gold-wide (141 tables) and 0.92 on the 25 Claude tables that pair with a gold table by first-cell text (22 pages); every shorter band stays th 0.77–0.84, so the default is unchanged there. Claude population: 333 kept tables on 197 pages / 100 modules. FREE-BODY tables only — a table inside an un-built widget's hand-off dump keeps its raw first-row form (the r201 placeholder containment). The word count strips the red-run markers and the ** / __ emphasis. Env TBLHEADLONG_OFF = every first row th again (the r382 output)."
+			},
 			"kb_class_form": {
 				"enabled": true,
 				"env": "TBLBORDER_OFF",

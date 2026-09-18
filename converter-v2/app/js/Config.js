@@ -1743,7 +1743,8 @@ class Config {
 	// ROUND 380 (260619.51): the mode opener's title heading goes into the OWNED box — no title-only box before a bundle-owned numbered activity (the r379 walk crosses the title heading). owned_target.past_title_headings, env MODETITLE_OFF; 22 pages / 9 modules; scoped ship #3 since the r377 full.
 	// ROUND 381 (260619.52): the reverse trio — [Activity 2C] → [H3] title → an un-numbered [Activity body] span forms ONE box (the scanner's unclassified path looks back to the numbered opener; the owner lead keeps a heading span's residue AND tail). mode_opener_merge.reverse_order, env MODEREVERSE_OFF; 17 pages / 10 modules; scoped ship #4 since the r377 full.
 	// ROUND 382 (260619.53): a measurement-tool round — _structural_skeleton.body_source is the one body reader the skeleton gate + the DIFF MINER share (99 body-less gold pages + BLL144-1.0's unclosed body); the skeleton re-baselined 53.123 -> 53.219 (an instrument correction). No engine / data change.
-	static AppVersion = "260619.53";
+	// ROUND 383 (260619.54): a kept table's first row with a >= 9-word cell is a data row (td), not a header (th) — the gold's first row is th only 0.42; the long-cell row td 0.88 / 0.92 paired. elements.table.first_row_header, env TBLHEADLONG_OFF; 203 pages / 94 modules; scoped ship #5 since the r377 full.
+	static AppVersion = "260619.54";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
