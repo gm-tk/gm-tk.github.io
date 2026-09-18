@@ -3098,12 +3098,14 @@ class ContentConverter {
 					// image|text table). Measured: 18 modules have callout-then-table.
 					const wrapStructured = this.#calloutWrapsStructured(it, bodyItems, i);
 					const spans = this.#explicitCloseAhead(bodyItems, i, primary.tag) || wrapStructured;
-					emit(...this.#calloutOpen(it, bodyItems, i, stack, run, spans, wrapStructured));
+					const _r387Parts = this.#calloutOpen(it, bodyItems, i, stack, run, spans, wrapStructured);
+					const _r388BoxOpen = _r387Parts.find((p) => typeof p === "string" && /^\s*<div class="/.test(p)) ?? "";
+					emit(..._r387Parts);
 					if (!spans) {
 						// strict BOXED callout: the box is already complete — fresh row next.
 						// A FLOWING callout (quote/thought) does NOT break — the intro flows into its row.
 						// ROUND 387: a flow_after_tags box (the whakataukī) keeps its column open — #flowsAfter
-						if (!flowingCallout && !stack.length && !this.#flowsAfter(primary.tag, run)) breakRow();
+						if (!flowingCallout && !stack.length && !this.#flowsAfter(primary.tag, run, _r388BoxOpen)) breakRow();
 						// its following text run was consumed into the box
 						while (bodyItems[i + 1]?._consumed) i++;
 					}
@@ -3141,7 +3143,7 @@ class ContentConverter {
 						// content after a closed callout/activity starts a
 						// fresh row (corpus convention — data knob)
 						// ROUND 387: a flow_after_tags box (the whakataukī) keeps its column open — #flowsAfter
-						if (!stack.length && !this.#flowsAfter(top.tag, run) && rowCfg.after.includes(
+						if (!stack.length && !this.#flowsAfter(top.tag, run, top.boxOpen) && rowCfg.after.includes(
 							top.tag === "activity" ? "activity_close" : "callout_close")) breakRow();
 					} else {
 						// close without an open: ignore gracefully + surface
@@ -7649,16 +7651,27 @@ class ContentConverter {
 	// listed (an unknown module keeps the r51 break) and its subject is not excluded (NCEA1 —
 	// the HIS 'The whakataukī chosen for this module…' paragraph opens a gold row). Env
 	// WHFLOW_OFF = the r386 output.
-	static #flowsAfter(tag, run) {
+	static #flowsAfter(tag, run, boxOpen = "") {
+		// ROUND 388: `rules` — each rule its own tags / templates / exclude_subjects / exclude_class_match (the
+		// class test runs on the box's own emitted open tag, e.g. the `top` modifier); one env for the family.
 		const cfg = DataService.Data.EmitTemplates?.callouts?.flow_after_tags;
 		if (!cfg || cfg.enabled === false) return false;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "WHFLOW_OFF"]) return false;
-		if (!(cfg.tags ?? []).some((t) => String(t) === String(tag))) return false;
 		const meta = DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")];
 		if (!meta) return false;
-		if ((cfg.templates ?? []).length && !(cfg.templates ?? []).some((t) => String(t) === String(meta.template_type ?? ""))) return false;
-		if ((cfg.exclude_subjects ?? []).some((sub) => String(sub) === String(meta.subject ?? ""))) return false;
-		return true;
+		const rules = Array.isArray(cfg.rules) ? cfg.rules : [cfg];   // r387 shape = one rule at the top level
+		for (const rule of rules) {
+			if (!(rule.tags ?? []).some((t) => String(t) === String(tag))) continue;
+			if (rule.env && typeof process !== "undefined" && process.env && process.env[rule.env]) continue;   // the rule's own toggle (r388)
+			if ((rule.templates ?? []).length && !(rule.templates ?? []).some((t) => String(t) === String(meta.template_type ?? ""))) continue;
+			if ((rule.exclude_subjects ?? []).some((sub) => String(sub) === String(meta.subject ?? ""))) continue;
+			if (rule.exclude_class_match) {
+				const m = String(boxOpen || "").match(/^\s*<div class="([^"]*)"/);
+				if (m && new RegExp(rule.exclude_class_match).test(m[1])) continue;
+			}
+			return true;
+		}
+		return false;
 	}
 
 	static #calloutOpen(it, bodyItems, i, stack, run, spans, wrapStructured = false) {
@@ -7772,7 +7785,8 @@ class ContentConverter {
 			// Data flag: callouts.drop_empty_span_wrap   Env toggle: EMPTYWRAP_OFF
 			stack.push({ tag, close: closeHtml,
 				mode: wrapStructured ? "span-wrap" : "span", hasContent: out.length > 1,
-				wrapOpen: wrap ? wrap.open : null, wrapClose: wrap ? wrap.close : null });
+				wrapOpen: wrap ? wrap.open : null, wrapClose: wrap ? wrap.close : null,
+				boxOpen: out.find((p) => typeof p === "string" && /^\s*<div class="/.test(p)) ?? "" });   // ROUND 388: for #flowsAfter's class test
 			run.AddNote("info", "ContentConverter", wrapStructured
 				? `[${tag}] wraps the following table/widget as its content (no [end ${tag}]) — closes at the next heading/section/page.`
 				: `[${tag}] spans to an explicit end tag (writer-authored box).`);

@@ -1,0 +1,15 @@
+CANDIDATE rows pre 179 / post 178; new 0 / gone 1
+GONE (20, 18, '664') ('activity', 'SUBSTITUTED', '`div.row`', '`div.col-12`', '`WIDGET`')
+rows whose line/page counts moved: 81
+   (1216, 323) -> (1194, 323) ('body', 'EXTRA', '`div#body`', '`—`', '`div.row`')
+   (241, 159) -> (224, 153) ('body', 'EXTRA', '`div.row`', '`—`', '`div.col-12.col-md-8`')
+   (424, 185) -> (435, 189) ('body', 'EXTRA', '`div.col-12.col-md-8`', '`—`', '`img.img-fluid`')
+   (848, 319) -> (858, 319) ('body', 'EXTRA', '`div.col-12.col-md-8`', '`—`', '`p`')
+   (174, 106) -> (183, 108) ('body', 'EXTRA', '`div.col-12.col-md-8`', '`—`', '`a`')
+   (1063, 276) -> (1071, 276) ('body', 'MISSING', '`div#body`', '`div.row`', '`—`')
+   (155, 87) -> (148, 84) ('body', 'EXTRA', '`a`', '`—`', '`div.button`')
+   (43, 32) -> (49, 35) ('body', 'EXTRA', '`div.col-12.col-md-8`', '`—`', '`div.alert`')
+   (66, 55) -> (60, 49) ('activity', 'SUBSTITUTED', '`div.col-12`', '`WIDGET`', '`div.row`')
+   (60, 37) -> (66, 42) ('body', 'EXTRA', '`div.col-12`', '`—`', '`p`')
+   (264, 171) -> (270, 174) ('body', 'EXTRA', '`div.col-12.col-md-8`', '`—`', '`WIDGET`')
+   (62, 50) -> (68, 54) ('body', 'SUBSTITUTED', '`div#body`', '`div.row`', '`WIDGET`')

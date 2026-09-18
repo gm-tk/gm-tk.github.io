@@ -537,15 +537,33 @@
 		"flow_after_tags": {
 			"enabled": true,
 			"env": "WHFLOW_OFF",
-			"tags": [
-				"whakatauki"
+			"rules": [
+				{
+					"tags": [
+						"whakatauki"
+					],
+					"templates": [
+						"Standard"
+					],
+					"exclude_subjects": [
+						"NCEA1"
+					]
+				},
+				{
+					"tags": [
+						"alert",
+						"important"
+					],
+					"templates": [
+						"Standard"
+					],
+					"env": "ALERTFLOW_OFF",
+					"exclude_subjects": [],
+					"exclude_class_match": "\\btop\\b",
+					"_doc": "ROUND 388 (session 26 Round 2 — the paired row-break census for every block type, outputs/_s26_rowpair.py). The plain `alert` and `alert solid` boxes: when the next content is PROSE (a heading / activity / callout / widget opens a row on both sides and is not a break question), the gold keeps that prose INSIDE the box's column — alert FLOW 60 / BREAK 21 = 0.74 (50 pages / 39 modules), alert solid 32 / 11 = 0.74 (27 pages / 19 modules); every Standard subject with ≥ 5 boundaries ≥ 0.64 (NCEA1 solid 10 / 0 — NOT excluded here). The s25 'an alert is its column's last child at 0.86' counted the boxes a heading follows. Bilingual 3 / 5 = 0.38 → not listed; `alert top` 1 / 2 → excluded by class (exclude_class_match is tested against the box's own open tag); `side alert` (alertActivity) is its own tag and its own side-column path."
+				}
 			],
-			"templates": [
-				"Standard"
-			],
-			"exclude_subjects": [
-				"NCEA1"
-			],
+			"_rules_doc": "ROUND 388: `rules` replaces the r387 top-level tags / templates / exclude_subjects (kept as rule 1). Each rule: tags (the callout's primary tag), templates (Module_Structure_Index module_meta template_type; empty = any), exclude_subjects (module_meta subject), exclude_class_match (a regex on the emitted box's open tag, e.g. the `top` modifier), env (an optional per-rule env toggle on top of the family env — the rule reverses alone; r388 `ALERTFLOW_OFF`). A tag matched by any rule in scope skips the after-box breakRow; the break BEFORE the box is untouched. One env for the family.",
 			"_doc": "ROUND 387 (the autonomous loop's session 26 Round 1 — the score-band ledger + the extended after-block census, outputs/_s26_after2.py / _s26_before2.py / _s26_whpair.py). A whakataukī box OPENS its column (gold FIRST-in-column 0.78 — the break BEFORE it stands) but does NOT close it: the writer's commentary paragraph after the proverb flows on INSIDE the same col-md-8 (gold followed-on 0.70 over 81 Standard boxes / 57 pages / 51 modules; PAIRED to the gold's rendering of the very next text: FLOW 35 / BREAK 8 = 0.81 on 35 pages / 35 modules — Online Safety 24 / 2, Leaving to Learn 4 / 1, ConnectED 3 / 0). The r51 'after' rule (callout_close → breakRow) was right for every other box (alert 0.74 LAST, alert.solid 0.90, alert.top 0.97, alertActivity 0.99, activity 1.00) and wrong for this one. A listed tag skips the after-box breakRow at BOTH emit sites (the strict box and the CONTAINER_CLOSE of a spanning box) when the module's Module_Structure_Index template_type is listed and its subject is not excluded: NCEA1 excluded (paired 1 / 3 — the HIS 'The whakataukī chosen for this module…' paragraph opens a gold row; census 0.56 = a tie), Inquiry / Bilingual not listed (gold LAST 5 / 5 each). KB 05D gives the box form only; no KB rule on the row after it — authority LOOP §1b level 3 / 4. Structure-only, derivable by construction. Env WHFLOW_OFF = the r386 output."
 		},
 		"containment": {

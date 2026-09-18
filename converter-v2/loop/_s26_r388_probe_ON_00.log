@@ -1,0 +1,380 @@
+  ~ AGH1001_4_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+AGH1001: identical 5 / changed 1
+  ~ AGH1002_1_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ AGH1002_2_0.html: -8 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ AGH1002_3_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ AGH1002_4_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ AGH1002_5_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+AGH1002: identical 2 / changed 5
+  ~ AGH1003_3_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+AGH1003: identical 8 / changed 1
+AGH1004: identical 7 / changed 0
+  ~ AGH1005_3_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+AGH1005: identical 8 / changed 1
+  ~ AGH1006_8_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ AGH1006_9_0.html: -8 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+AGH1006: identical 8 / changed 2
+  ~ AGH1007_1_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ AGH1007_5_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ AGH1007_9_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+AGH1007: identical 7 / changed 3
+  ~ AGH1008_1_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ AGH1008_9_0.html: -8 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+AGH1008: identical 8 / changed 2
+AGH1009: identical 10 / changed 0
+ANZH101: identical 4 / changed 0
+ANZH104: identical 8 / changed 0
+ANZH105: identical 8 / changed 0
+  ~ ANZH203_6_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+ANZH203: identical 6 / changed 1
+ANZH205: identical 7 / changed 0
+  ~ ANZH301_1_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ ANZH301_4_0.html: -8 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+ANZH301: identical 9 / changed 2
+  ~ ANZH303_3_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ ANZH303_4_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ ANZH303_6_0.html: -8 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+ANZH303: identical 4 / changed 3
+  ~ ANZH304_1_0.html: -12 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ ANZH304_3_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ ANZH304_4_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ ANZH304_5_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ ANZH304_6_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+ANZH304: identical 2 / changed 5
+  ~ ANZH401_1_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ ANZH401_3_0.html: -8 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ ANZH401_4_0.html: -8 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ ANZH401_5_0.html: -8 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ ANZH401_7_0.html: -8 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ ANZH401_8_0.html: -8 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ ANZH401_9_0.html: -8 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ ANZH401_10_0.html: -12 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ ANZH401_11_0.html: -16 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+ANZH401: identical 5 / changed 9
+  ~ ANZH404_6_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+ANZH404: identical 6 / changed 1
+ARFUN01: identical 1 / changed 0
+ARFUN02: identical 1 / changed 0
+ARFUN03: identical 1 / changed 0
+ARFUN04: identical 1 / changed 0
+ARFUN05: identical 1 / changed 0
+ART1002: identical 8 / changed 0
+ART1003: identical 1 / changed 0
+ART1004: identical 1 / changed 0
+ART1005: identical 1 / changed 0
+ART1006: identical 6 / changed 0
+BLL110: identical 1 / changed 0
+BLL111: identical 3 / changed 0
+BLL112: identical 3 / changed 0
+BLL113: identical 3 / changed 0
+BLL114: identical 3 / changed 0
+BLL115: identical 3 / changed 0
+BLL116: identical 3 / changed 0
+BLL117: identical 3 / changed 0
+BLL120: identical 1 / changed 0
+BLL121: identical 3 / changed 0
+BLL122: identical 3 / changed 0
+BLL123: identical 3 / changed 0
+BLL124: identical 3 / changed 0
+BLL125: identical 3 / changed 0
+BLL126: identical 3 / changed 0
+BLL127: identical 3 / changed 0
+BLL130: identical 1 / changed 0
+BLL131: identical 3 / changed 0
+BLL132: identical 3 / changed 0
+BLL133: identical 3 / changed 0
+BLL134: identical 3 / changed 0
+BLL135: identical 3 / changed 0
+BLL136: identical 2 / changed 0
+BLL137: identical 3 / changed 0
+BLL140: identical 1 / changed 0
+BLL141: identical 3 / changed 0
+BLL142: identical 3 / changed 0
+BLL143: identical 3 / changed 0
+BLL144: identical 3 / changed 0
+BLL145: identical 3 / changed 0
+BLL146: identical 3 / changed 0
+BLL147: identical 3 / changed 0
+BLL150: identical 1 / changed 0
+BLL151: identical 3 / changed 0
+BLL152: identical 3 / changed 0
+BLL153: identical 3 / changed 0
+BLL154: identical 3 / changed 0
+BLL155: identical 3 / changed 0
+BLL156: identical 3 / changed 0
+BLL157: identical 3 / changed 0
+BLL160: identical 1 / changed 0
+BLL161: identical 3 / changed 0
+BLL162: identical 3 / changed 0
+BLL163: identical 3 / changed 0
+BLL164: identical 3 / changed 0
+BLL165: identical 3 / changed 0
+BLL166: identical 3 / changed 0
+BLL167: identical 3 / changed 0
+BLL170: identical 1 / changed 0
+BLL171: identical 3 / changed 0
+BLL172: identical 3 / changed 0
+BLL173: identical 3 / changed 0
+BLL174: identical 3 / changed 0
+BLL175: identical 4 / changed 0
+BLL176: identical 3 / changed 0
+  ~ BLL177_2_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+BLL177: identical 2 / changed 1
+BLL210: identical 1 / changed 0
+BLL211: identical 3 / changed 0
+BLL212: identical 3 / changed 0
+BLL213: identical 3 / changed 0
+BLL214: identical 3 / changed 0
+BLL215: identical 3 / changed 0
+BLL216: identical 3 / changed 0
+BLL217: identical 3 / changed 0
+BLL220: identical 1 / changed 0
+BLL221: identical 3 / changed 0
+BLL222: identical 3 / changed 0
+BLL223: identical 3 / changed 0
+BLL224: identical 3 / changed 0
+BLL225: identical 3 / changed 0
+BLL226: identical 3 / changed 0
+BLL227: identical 3 / changed 0
+BLL230: identical 1 / changed 0
+BLL231: identical 3 / changed 0
+BLL232: identical 3 / changed 0
+BLL233: identical 3 / changed 0
+  ~ BLL234_2_0.html: -8 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+BLL234: identical 2 / changed 1
+BLL235: identical 3 / changed 0
+BLL236: identical 3 / changed 0
+BLL237: identical 3 / changed 0
+BLL240: identical 9 / changed 0
+BLL241: identical 3 / changed 0
+
+TOTAL: identical 374 / changed 38 / missing 0 over 111 modules
+CHANGED: AGH1001/AGH1001_4_0.html AGH1002/AGH1002_1_0.html AGH1002/AGH1002_2_0.html AGH1002/AGH1002_3_0.html AGH1002/AGH1002_4_0.html AGH1002/AGH1002_5_0.html AGH1003/AGH1003_3_0.html AGH1005/AGH1005_3_0.html AGH1006/AGH1006_8_0.html AGH1006/AGH1006_9_0.html AGH1007/AGH1007_1_0.html AGH1007/AGH1007_5_0.html AGH1007/AGH1007_9_0.html AGH1008/AGH1008_1_0.html AGH1008/AGH1008_9_0.html ANZH203/ANZH203_6_0.html ANZH301/ANZH301_1_0.html ANZH301/ANZH301_4_0.html ANZH303/ANZH303_3_0.html ANZH303/ANZH303_4_0.html ANZH303/ANZH303_6_0.html ANZH304/ANZH304_1_0.html ANZH304/ANZH304_3_0.html ANZH304/ANZH304_4_0.html ANZH304/ANZH304_5_0.html ANZH304/ANZH304_6_0.html ANZH401/ANZH401_1_0.html ANZH401/ANZH401_3_0.html ANZH401/ANZH401_4_0.html ANZH401/ANZH401_5_0.html ANZH401/ANZH401_7_0.html ANZH401/ANZH401_8_0.html ANZH401/ANZH401_9_0.html ANZH401/ANZH401_10_0.html ANZH401/ANZH401_11_0.html ANZH404/ANZH404_6_0.html BLL177/BLL177_2_0.html BLL234/BLL234_2_0.html
