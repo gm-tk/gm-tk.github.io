@@ -1,0 +1,53 @@
+mode pick: merge a row-opening ('h4', 'h5') into the previous plain col-md-8 row
+  ALL                                              pages  1738 touched  141 (cands  432, merged  312)  up  106 / down   29 / flat   6  pp-sum    +29.0  mean/touched +0.21
+  template=Standard                                pages  1738 touched  141 (cands  432, merged  312)  up  106 / down   29 / flat   6  pp-sum    +29.0  mean/touched +0.21
+  subject=NCEA1                                    pages   328 touched   39 (cands  140, merged  104)  up   32 / down    6 / flat   1  pp-sum    +13.4  mean/touched +0.34
+  subject=1-10 Mathematics                         pages   323 touched   41 (cands   91, merged   64)  up   34 / down    6 / flat   1  pp-sum    +10.6  mean/touched +0.26
+  subject=1-10 English                             pages   296 touched   21 (cands   52, merged   40)  up   12 / down    7 / flat   2  pp-sum     -0.0  mean/touched -0.00
+  subject=Leaving to Learn                         pages   181 touched   28 (cands  127, merged   88)  up   18 / down    9 / flat   1  pp-sum     +3.7  mean/touched +0.13
+  subject=Online Safety (OS9000)                   pages   130 touched    8 (cands   13, merged   11)  up    7 / down    1 / flat   0  pp-sum     -0.3  mean/touched -0.04
+  subject=ConnectED                                pages    71 touched    2 (cands    4, merged    3)  up    2 / down    0 / flat   0  pp-sum     +0.6  mean/touched +0.29
+  subject=None                                     pages    41 touched    1 (cands    2, merged    1)  up    1 / down    0 / flat   0  pp-sum     +1.0  mean/touched +1.01
+  subject=EXPlore                                  pages    10 touched    1 (cands    1, merged    1)  up    0 / down    0 / flat   1  pp-sum     +0.0  mean/touched +0.04
+  series=HIS10                                     pages    77 touched    5 (cands   11, merged    8)  up    5 / down    0 / flat   0  pp-sum     +2.3  mean/touched +0.46
+  series=PES10                                     pages    75 touched    3 (cands   15, merged    9)  up    1 / down    1 / flat   1  pp-sum     -6.2  mean/touched -2.06
+  series=AGH10                                     pages    74 touched   11 (cands   36, merged   23)  up    8 / down    3 / flat   0  pp-sum     -0.9  mean/touched -0.08
+  series=PHE10                                     pages    49 touched    4 (cands   13, merged   12)  up    4 / down    0 / flat   0  pp-sum     +5.6  mean/touched +1.40
+  series=XDLS9                                     pages    49 touched    3 (cands    6, merged    4)  up    3 / down    0 / flat   0  pp-sum     +0.7  mean/touched +0.24
+  series=HES10                                     pages    38 touched    9 (cands   13, merged   12)  up    9 / down    0 / flat   0  pp-sum     +8.4  mean/touched +0.94
+  series=XGF90                                     pages    38 touched   15 (cands   97, merged   64)  up    8 / down    6 / flat   1  pp-sum     -2.7  mean/touched -0.18
+  series=MXFL2                                     pages    37 touched    9 (cands   15, merged   11)  up    9 / down    0 / flat   0  pp-sum     +3.9  mean/touched +0.44
+  series=MXFL1                                     pages    29 touched    3 (cands    5, merged    5)  up    3 / down    0 / flat   0  pp-sum     +1.7  mean/touched +0.57
+  series=ENGI2                                     pages    23 touched    3 (cands    8, merged    8)  up    2 / down    0 / flat   1  pp-sum     +0.5  mean/touched +0.16
+  series=MXFU3                                     pages    21 touched    5 (cands    9, merged    5)  up    3 / down    2 / flat   0  pp-sum     +3.8  mean/touched +0.75
+  series=MXFL3                                     pages    20 touched    4 (cands   12, merged    6)  up    2 / down    2 / flat   0  pp-sum     -2.3  mean/touched -0.57
+  series=ENGJ4                                     pages    19 touched    6 (cands   12, merged   12)  up    3 / down    3 / flat   0  pp-sum     -0.7  mean/touched -0.12
+  series=ENGS3                                     pages    15 touched    6 (cands   18, merged   12)  up    6 / down    0 / flat   0  pp-sum     +4.1  mean/touched +0.68
+  series=ENGS4                                     pages     8 touched    3 (cands    6, merged    5)  up    0 / down    2 / flat   1  pp-sum     -2.5  mean/touched -0.85
+  series=MXFL4                                     pages     8 touched    3 (cands    4, merged    3)  up    2 / down    1 / flat   0  pp-sum     -1.5  mean/touched -0.50
+  series=MXEO4                                     pages     7 touched    3 (cands    9, merged    8)  up    3 / down    0 / flat   0  pp-sum     +2.4  mean/touched +0.79
+  series=ENG10                                     pages     5 touched    5 (cands   38, merged   31)  up    3 / down    2 / flat   0  pp-sum     +2.9  mean/touched +0.58
+
+worst 12 pages:
+   ('AGH1005', 'AGH1005_2_0.html', 'Standard', 'NCEA1', 2, 52.11, 39.29, -12.83)
+   ('PES1005', 'PES1005_5_0.html', 'Standard', 'NCEA1', 1, 54.17, 47.89, -6.28)
+   ('MXDI301', 'MXDI301_3_0.html', 'Standard', '1-10 Mathematics', 3, 34.67, 29.22, -5.44)
+   ('OSSM401', 'OSSM401_2_0.html', 'Standard', 'Online Safety (OS9000)', 1, 66.11, 61.6, -4.51)
+   ('XGF9001', 'XGF9001_3_0.html', 'Standard', 'Leaving to Learn', 2, 33.91, 30.88, -3.03)
+   ('MXFL301', 'MXFL301_7_0.html', 'Standard', '1-10 Mathematics', 2, 54.86, 52.11, -2.75)
+   ('ENG1007', 'ENG1007_0_0.html', 'Standard', 'NCEA1', 5, 47.83, 45.31, -2.51)
+   ('ENGS405', 'ENGS405_0_0.html', 'Standard', '1-10 English', 1, 58.11, 56.16, -1.94)
+   ('MXFL401', 'MXFL401_5_0.html', 'Standard', '1-10 Mathematics', 1, 48.81, 46.99, -1.82)
+   ('XGF9004', 'XGF9004_6_0.html', 'Standard', 'Leaving to Learn', 2, 33.75, 32.05, -1.7)
+   ('AGH1004', 'AGH1004_3_0.html', 'Standard', 'NCEA1', 4, 46.92, 45.24, -1.68)
+   ('AGH1009', 'AGH1009_2_0.html', 'Standard', 'NCEA1', 1, 68.75, 67.09, -1.66)
+best 8 pages:
+   ('AGH1009', 'AGH1009_3_0.html', 'Standard', 'NCEA1', 2, 43.43, 50.52, 7.08)
+   ('MXFU301', 'MXFU301_10_0.html', 'Standard', '1-10 Mathematics', 1, 27.37, 31.46, 4.09)
+   ('XLP06', 'XLP06_0_0.html', 'Standard', 'Leaving to Learn', 2, 58.97, 62.16, 3.19)
+   ('AGH1009', 'AGH1009_9_0.html', 'Standard', 'NCEA1', 1, 58.33, 61.45, 3.11)
+   ('PHE1003', 'PHE1003_7_0.html', 'Standard', 'NCEA1', 8, 44.8, 47.71, 2.91)
+   ('ENG1004', 'ENG1004_2_0.html', 'Standard', 'NCEA1', 5, 41.41, 43.62, 2.2)
+   ('HES1004', 'HES1004_2_0.html', 'Standard', 'NCEA1', 1, 41.96, 43.97, 2.01)
+   ('MXEO201', 'MXEO201_2_0.html', 'Standard', '1-10 Mathematics', 2, 64.2, 66.11, 1.91)
+wrote _s25_h45flow_pick.json

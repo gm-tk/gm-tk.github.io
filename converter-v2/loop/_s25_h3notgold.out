@@ -1,0 +1,261 @@
+
+== ALL — Claude row-open h3 with no gold heading of that text: 764
+   NOWHERE in gold — WT h3                192 (0.25)  pages  113 / modules  66
+   NOWHERE in gold — WT untagged          110 (0.14)  pages   96 / modules  51
+   NOWHERE in gold — WT h2                105 (0.14)  pages   84 / modules  51
+   NOWHERE in gold — WT not found          97 (0.13)  pages   61 / modules  26
+   gold inside WIDGET (h4)                 41 (0.05)  pages   17 / modules  12
+   gold header/menu h1                     35 (0.05)  pages   34 / modules  22
+   NOWHERE in gold — WT h1                 27 (0.04)  pages   26 / modules  14
+   gold header/menu li                     26 (0.03)  pages    9 / modules   2
+   gold p                                  16 (0.02)  pages   13 / modules  12
+   NOWHERE in gold — WT title              16 (0.02)  pages   15 / modules  15
+   NOWHERE in gold — WT h4                 15 (0.02)  pages   12 / modules   4
+   gold merged into p                      10 (0.01)  pages    9 / modules   8
+   gold inside WIDGET (li)                  9 (0.01)  pages    4 / modules   4
+   NOWHERE in gold — WT introduction        8 (0.01)  pages    8 / modules   8
+   gold reworded (p)                        7 (0.01)  pages    7 / modules   7
+   gold inside WIDGET (h3)                  7 (0.01)  pages    3 / modules   3
+
+== template=Standard — Claude row-open h3 with no gold heading of that text: 680
+   NOWHERE in gold — WT h3                187 (0.28)  pages  111 / modules  64
+   NOWHERE in gold — WT untagged          108 (0.16)  pages   94 / modules  49
+   NOWHERE in gold — WT h2                 89 (0.13)  pages   74 / modules  43
+   NOWHERE in gold — WT not found          55 (0.08)  pages   36 / modules  16
+   gold inside WIDGET (h4)                 41 (0.06)  pages   17 / modules  12
+   gold header/menu h1                     34 (0.05)  pages   33 / modules  21
+   gold header/menu li                     26 (0.04)  pages    9 / modules   2
+   NOWHERE in gold — WT title              16 (0.02)  pages   15 / modules  15
+   NOWHERE in gold — WT h1                 15 (0.02)  pages   15 / modules   9
+   NOWHERE in gold — WT h4                 15 (0.02)  pages   12 / modules   4
+   gold p                                  14 (0.02)  pages   11 / modules  10
+   gold merged into p                       8 (0.01)  pages    8 / modules   7
+   gold inside WIDGET (li)                  8 (0.01)  pages    3 / modules   3
+   NOWHERE in gold — WT introduction        8 (0.01)  pages    8 / modules   8
+   gold reworded (p)                        7 (0.01)  pages    7 / modules   7
+   gold inside WIDGET (h3)                  7 (0.01)  pages    3 / modules   3
+
+== template=Bilingual — Claude row-open h3 with no gold heading of that text: 61
+   NOWHERE in gold — WT not found          42 (0.69)  pages   25 / modules  10
+   NOWHERE in gold — WT h2                  9 (0.15)  pages    4 / modules   2
+   NOWHERE in gold — WT h1                  6 (0.10)  pages    5 / modules   3
+   NOWHERE in gold — WT h3                  3 (0.05)  pages    1 / modules   1
+   NOWHERE in gold — WT untagged            1 (0.02)  pages    1 / modules   1
+
+== subject=Leaving to Learn — Claude row-open h3 with no gold heading of that text: 165
+   NOWHERE in gold — WT untagged           38 (0.23)  pages   35 / modules  14
+   NOWHERE in gold — WT h3                 35 (0.21)  pages   19 / modules  11
+   NOWHERE in gold — WT h2                 24 (0.15)  pages   17 / modules  10
+   gold header/menu li                     24 (0.15)  pages    8 / modules   1
+   gold inside WIDGET (h4)                 12 (0.07)  pages    4 / modules   2
+   NOWHERE in gold — WT not found           6 (0.04)  pages    1 / modules   1
+   gold p                                   4 (0.02)  pages    1 / modules   1
+   gold header/menu h1                      4 (0.02)  pages    4 / modules   2
+   gold inside WIDGET (li)                  3 (0.02)  pages    2 / modules   2
+   gold merged into p (widget)              2 (0.01)  pages    2 / modules   2
+   gold inside WIDGET (h5)                  2 (0.01)  pages    1 / modules   1
+   gold inside WIDGET (p)                   2 (0.01)  pages    2 / modules   1
+   gold reworded (h4)                       2 (0.01)  pages    2 / modules   1
+   NOWHERE in gold — WT h4                  2 (0.01)  pages    1 / modules   1
+   gold merged into p                       2 (0.01)  pages    2 / modules   1
+   gold reworded (p)                        1 (0.01)  pages    1 / modules   1
+
+== subject=NCEA1 — Claude row-open h3 with no gold heading of that text: 163
+   NOWHERE in gold — WT h3                 60 (0.37)  pages   31 / modules  17
+   NOWHERE in gold — WT untagged           29 (0.18)  pages   28 / modules  13
+   NOWHERE in gold — WT h2                 21 (0.13)  pages   16 / modules  11
+   gold header/menu h1                     10 (0.06)  pages   10 / modules   5
+   NOWHERE in gold — WT h1                  9 (0.06)  pages    9 / modules   5
+   gold inside WIDGET (li)                  6 (0.04)  pages    2 / modules   2
+   NOWHERE in gold — WT not found           5 (0.03)  pages    5 / modules   4
+   gold p                                   5 (0.03)  pages    5 / modules   4
+   gold inside WIDGET (h4)                  3 (0.02)  pages    1 / modules   1
+   gold merged into p                       2 (0.01)  pages    2 / modules   2
+   gold reworded (p)                        2 (0.01)  pages    2 / modules   2
+   gold merged into h3                      2 (0.01)  pages    2 / modules   2
+   gold reworded (h3)                       2 (0.01)  pages    1 / modules   1
+   gold header/menu li                      2 (0.01)  pages    1 / modules   1
+   gold a                                   1 (0.01)  pages    1 / modules   1
+   gold merged into li                      1 (0.01)  pages    1 / modules   1
+
+== subject=1-10 Mathematics — Claude row-open h3 with no gold heading of that text: 152
+   NOWHERE in gold — WT h3                 46 (0.30)  pages   29 / modules  16
+   NOWHERE in gold — WT h2                 40 (0.26)  pages   38 / modules  19
+   NOWHERE in gold — WT untagged           14 (0.09)  pages   14 / modules   8
+   NOWHERE in gold — WT h4                 13 (0.09)  pages   11 / modules   3
+   gold header/menu h1                     10 (0.07)  pages    9 / modules   8
+   NOWHERE in gold — WT h1                  7 (0.05)  pages    7 / modules   1
+   NOWHERE in gold — WT not found           5 (0.03)  pages    4 / modules   4
+   gold header/menu p                       3 (0.02)  pages    2 / modules   2
+   gold header/menu h4                      3 (0.02)  pages    2 / modules   2
+   gold merged into p                       2 (0.01)  pages    2 / modules   2
+   gold p                                   2 (0.01)  pages    2 / modules   2
+   gold inside WIDGET (span)                1 (0.01)  pages    1 / modules   1
+   gold inside WIDGET (div)                 1 (0.01)  pages    1 / modules   1
+   gold merged into h4 (widget)             1 (0.01)  pages    1 / modules   1
+   gold merged into td (widget)             1 (0.01)  pages    1 / modules   1
+   gold reworded (p)                        1 (0.01)  pages    1 / modules   1
+
+== subject=Te Marautanga o Aotearoa TMoA — Claude row-open h3 with no gold heading of that text: 61
+   NOWHERE in gold — WT not found          42 (0.69)  pages   25 / modules  10
+   NOWHERE in gold — WT h2                  9 (0.15)  pages    4 / modules   2
+   NOWHERE in gold — WT h1                  6 (0.10)  pages    5 / modules   3
+   NOWHERE in gold — WT h3                  3 (0.05)  pages    1 / modules   1
+   NOWHERE in gold — WT untagged            1 (0.02)  pages    1 / modules   1
+
+== subject=1-10 Social Science — Claude row-open h3 with no gold heading of that text: 47
+   NOWHERE in gold — WT h3                 23 (0.49)  pages    8 / modules   3
+   NOWHERE in gold — WT untagged           12 (0.26)  pages    5 / modules   2
+   gold inside WIDGET (h4)                  5 (0.11)  pages    2 / modules   1
+   NOWHERE in gold — WT not found           4 (0.09)  pages    3 / modules   1
+   NOWHERE in gold — WT title               2 (0.04)  pages    1 / modules   1
+   NOWHERE in gold — WT h1                  1 (0.02)  pages    1 / modules   1
+
+== subject=None — Claude row-open h3 with no gold heading of that text: 40
+   NOWHERE in gold — WT not found          30 (0.75)  pages   19 / modules   4
+   gold inside WIDGET (h4)                  5 (0.12)  pages    1 / modules   1
+   gold merged into h4 (widget)             2 (0.05)  pages    1 / modules   1
+   gold p                                   1 (0.03)  pages    1 / modules   1
+   gold inside WIDGET (h3)                  1 (0.03)  pages    1 / modules   1
+   gold reworded (h3)                       1 (0.03)  pages    1 / modules   1
+
+== subject=ConnectED — Claude row-open h3 with no gold heading of that text: 36
+   gold inside WIDGET (h4)                 10 (0.28)  pages    4 / modules   3
+   NOWHERE in gold — WT untagged            6 (0.17)  pages    3 / modules   3
+   NOWHERE in gold — WT h2                  6 (0.17)  pages    6 / modules   6
+   NOWHERE in gold — WT not found           4 (0.11)  pages    3 / modules   1
+   gold header/menu h1                      2 (0.06)  pages    2 / modules   2
+   NOWHERE in gold — WT h3                  2 (0.06)  pages    2 / modules   2
+   gold merged into p                       2 (0.06)  pages    1 / modules   1
+   gold p                                   2 (0.06)  pages    2 / modules   2
+   gold td                                  1 (0.03)  pages    1 / modules   1
+   gold merged into h3                      1 (0.03)  pages    1 / modules   1
+
+== subject=1-10 Blended Literacy — Claude row-open h3 with no gold heading of that text: 34
+   NOWHERE in gold — WT title              14 (0.41)  pages   14 / modules  14
+   NOWHERE in gold — WT introduction        8 (0.24)  pages    8 / modules   8
+   NOWHERE in gold — WT untagged            6 (0.18)  pages    6 / modules   6
+   gold inside WIDGET (p)                   2 (0.06)  pages    1 / modules   1
+   gold inside WIDGET (h4)                  2 (0.06)  pages    2 / modules   1
+   gold reworded (p)                        1 (0.03)  pages    1 / modules   1
+   gold inside WIDGET (h5)                  1 (0.03)  pages    1 / modules   1
+
+== subject=1-10 English — Claude row-open h3 with no gold heading of that text: 31
+   NOWHERE in gold — WT h3                  7 (0.23)  pages    7 / modules   5
+   gold inside WIDGET (h3)                  5 (0.16)  pages    1 / modules   1
+   NOWHERE in gold — WT h2                  4 (0.13)  pages    2 / modules   2
+   gold inside WIDGET (h4)                  4 (0.13)  pages    3 / modules   3
+   gold reworded (p)                        2 (0.06)  pages    2 / modules   2
+   NOWHERE in gold — WT untagged            2 (0.06)  pages    2 / modules   2
+   gold header/menu h1                      2 (0.06)  pages    2 / modules   2
+   gold merged into p                       1 (0.03)  pages    1 / modules   1
+   gold merged into h4                      1 (0.03)  pages    1 / modules   1
+   gold b                                   1 (0.03)  pages    1 / modules   1
+   NOWHERE in gold — WT h1                  1 (0.03)  pages    1 / modules   1
+   NOWHERE in gold — WT not found           1 (0.03)  pages    1 / modules   1
+
+== series=XGF90 — Claude row-open h3 with no gold heading of that text: 80
+   gold header/menu li                     24 (0.30)  pages    8 / modules   1
+   NOWHERE in gold — WT h2                 15 (0.19)  pages   10 / modules   3
+   NOWHERE in gold — WT h3                  9 (0.11)  pages    6 / modules   2
+   NOWHERE in gold — WT not found           6 (0.07)  pages    1 / modules   1
+   gold inside WIDGET (h4)                  6 (0.07)  pages    3 / modules   1
+   NOWHERE in gold — WT untagged            5 (0.06)  pages    4 / modules   2
+   gold p                                   4 (0.05)  pages    1 / modules   1
+   gold merged into p (widget)              2 (0.03)  pages    2 / modules   2
+   gold inside WIDGET (h5)                  2 (0.03)  pages    1 / modules   1
+   gold inside WIDGET (li)                  2 (0.03)  pages    1 / modules   1
+   gold inside WIDGET (p)                   2 (0.03)  pages    2 / modules   1
+   gold reworded (h4)                       2 (0.03)  pages    2 / modules   1
+   gold reworded (p)                        1 (0.01)  pages    1 / modules   1
+
+== series=AGH10 — Claude row-open h3 with no gold heading of that text: 45
+   NOWHERE in gold — WT h3                 15 (0.33)  pages   12 / modules   6
+   gold inside WIDGET (li)                  6 (0.13)  pages    2 / modules   2
+   gold p                                   4 (0.09)  pages    4 / modules   3
+   NOWHERE in gold — WT not found           3 (0.07)  pages    3 / modules   2
+   NOWHERE in gold — WT untagged            3 (0.07)  pages    3 / modules   2
+   gold header/menu h1                      3 (0.07)  pages    3 / modules   2
+   gold inside WIDGET (h4)                  3 (0.07)  pages    1 / modules   1
+   gold merged into p                       2 (0.04)  pages    2 / modules   2
+   gold reworded (h3)                       2 (0.04)  pages    1 / modules   1
+   gold reworded (p)                        1 (0.02)  pages    1 / modules   1
+   gold merged into h3                      1 (0.02)  pages    1 / modules   1
+   gold a                                   1 (0.02)  pages    1 / modules   1
+   gold merged into li                      1 (0.02)  pages    1 / modules   1
+
+== series=ART10 — Claude row-open h3 with no gold heading of that text: 33
+   NOWHERE in gold — WT h3                 17 (0.52)  pages    3 / modules   3
+   NOWHERE in gold — WT h2                  8 (0.24)  pages    5 / modules   3
+   NOWHERE in gold — WT untagged            3 (0.09)  pages    2 / modules   2
+   NOWHERE in gold — WT not found           2 (0.06)  pages    2 / modules   2
+   gold header/menu li                      2 (0.06)  pages    1 / modules   1
+   NOWHERE in gold — WT h1                  1 (0.03)  pages    1 / modules   1
+
+== series=TEDC4 — Claude row-open h3 with no gold heading of that text: 33
+   NOWHERE in gold — WT not found          23 (0.70)  pages   12 / modules   2
+   gold inside WIDGET (h4)                  5 (0.15)  pages    1 / modules   1
+   gold merged into h4 (widget)             2 (0.06)  pages    1 / modules   1
+   gold p                                   1 (0.03)  pages    1 / modules   1
+   gold inside WIDGET (h3)                  1 (0.03)  pages    1 / modules   1
+   gold reworded (h3)                       1 (0.03)  pages    1 / modules   1
+
+== series=PES10 — Claude row-open h3 with no gold heading of that text: 31
+   NOWHERE in gold — WT untagged            9 (0.29)  pages    9 / modules   4
+   NOWHERE in gold — WT h2                  8 (0.26)  pages    6 / modules   4
+   gold header/menu h1                      6 (0.19)  pages    6 / modules   2
+   NOWHERE in gold — WT h3                  4 (0.13)  pages    1 / modules   1
+   NOWHERE in gold — WT h1                  2 (0.06)  pages    2 / modules   2
+   gold reworded (p)                        1 (0.03)  pages    1 / modules   1
+   gold p                                   1 (0.03)  pages    1 / modules   1
+
+== series=XDLS9 — Claude row-open h3 with no gold heading of that text: 30
+   NOWHERE in gold — WT h3                 15 (0.50)  pages    4 / modules   3
+   gold inside WIDGET (h4)                  6 (0.20)  pages    1 / modules   1
+   NOWHERE in gold — WT h2                  4 (0.13)  pages    3 / modules   3
+   NOWHERE in gold — WT untagged            4 (0.13)  pages    2 / modules   1
+   gold inside WIDGET (li)                  1 (0.03)  pages    1 / modules   1
+
+== series=SSOG3 — Claude row-open h3 with no gold heading of that text: 27
+   NOWHERE in gold — WT h3                 21 (0.78)  pages    6 / modules   1
+   NOWHERE in gold — WT untagged            6 (0.22)  pages    4 / modules   1
+
+examples:
+  gold merged into p → [('AGH1001', 'AGH1001_2_0.html', 'Here are some well-known jobs that people can do when farming and grow'), ('AGH1008', 'AGH1008_2_0.html', 'Digestibility of feed'), ('ANZH303', 'ANZH303_6_0.html', 'The significance'), ('CEDT104', 'CEDT104_0_0.html', 'Waiata I te Neke | Waiata in Motion'), ('CEDT104', 'CEDT104_0_0.html', 'Waiata I te Neke | Waiata in Motion')]
+  NOWHERE in gold — WT h3 → [('AGH1001', 'AGH1001_2_0.html', 'Career Example:'), ('AGH1004', 'AGH1004_2_0.html', 'Topographic Descriptions'), ('AGH1006', 'AGH1006_1_0.html', 'Can you name some of the benefits to people and nature mentioned in th'), ('AGH1006', 'AGH1006_2_0.html', 'Propagation Methods – The How and Why of Propagation'), ('AGH1006', 'AGH1006_2_0.html', 'Fill in the sentences to complete the summary statement about propagat')]
+  NOWHERE in gold — WT not found → [('AGH1001', 'AGH1001_3_0.html', 'Te reo korero:'), ('AGH1006', 'AGH1006_0_0.html', 'Plant Management Practice:Tick ✔'), ('AGH1006', 'AGH1006_4_0.html', 'Knowledge CheckTrue/False'), ('ART1004', 'ART1004_0_0.html', 'TASK 4: Showcasing your work'), ('ART1005', 'ART1005_0_0.html', 'Activity 1 Develop workbook drawings using the resource pages you crea')]
+  gold p → [('AGH1004', 'AGH1004_5_0.html', 'Take a look at this farm and its plan to improve production through th'), ('AGH1005', 'AGH1005_0_0.html', 'Watch this introductory video of a garden coming to life with plant fl'), ('AGH1005', 'AGH1005_2_0.html', 'Match the label to the correct part of the plant.'), ('AGH1006', 'AGH1006_0_0.html', 'Watch this introductory video of management practices that include man'), ('CEDT104', 'CEDT104_0_0.html', 'Find a comfy spot where:')]
+  gold reworded (p) → [('AGH1005', 'AGH1005_1_0.html', 'Here is an example of New Zealand viticulture using the Mauri Model.'), ('BLL253', 'BLL253_2_0.html', 'Decide whether each of these sentences are TRUE or FALSE.'), ('ENGI102', 'ENGI102_10_0.html', 'Stories from around the world crossword'), ('ENGR301', 'ENGR301_0_0.html', '“Persuasion is not a science but an art” William Bernbach'), ('MXFL401', 'MXFL401_6_0.html', 'If Tiana wants to create 3 sets, she would multiply each part of the r')]
+  NOWHERE in gold — WT untagged → [('AGH1005', 'AGH1005_2_0.html', 'Flowers'), ('AGH1009', 'AGH1009_6_0.html', 'Crop rotation cycles'), ('AGH1009', 'AGH1009_8_0.html', 'Lesson 8:'), ('ANZH303', 'ANZH303_6_0.html', 'The signing'), ('ART1002', 'ART1002_1_0.html', 'Introduction:')]
+  gold header/menu h1 → [('AGH1005', 'AGH1005_4_0.html', 'Respiration'), ('AGH1005', 'AGH1005_5_0.html', 'Transpiration'), ('AGH1008', 'AGH1008_3_0.html', 'Supplementary Feed'), ('ANZH301', 'ANZH301_1_0.html', 'Life before, during and after the Second World War'), ('ANZH303', 'ANZH303_4_0.html', 'Innovation, Interactions and Mana.')]
+  gold merged into h3 → [('AGH1006', 'AGH1006_1_0.html', 'Practical Example'), ('CEDW501', 'CEDW501_2_1.html', 'Strong versus weak walls –'), ('HES1006', 'HES1006_7_0.html', 'Practice question')]
+  gold reworded (h3) → [('AGH1006', 'AGH1006_2_0.html', 'How to propagate from a cutting'), ('AGH1006', 'AGH1006_2_0.html', 'How to Propagate from Grafting'), ('OSAH501', 'OSAH501_3_0.html', 'What to do if you encounter these situations:'), ('TEDC402', 'TEDC402_3_0.html', 'Part 1: The main parts of a computer part')]
+  gold inside WIDGET (h4) → [('AGH1006', 'AGH1006_6_0.html', 'Cultural control'), ('AGH1006', 'AGH1006_6_0.html', 'Biological Control'), ('AGH1006', 'AGH1006_6_0.html', 'Integrated Weed Management'), ('BLL254', 'BLL254_1_0.html', 'Bought and brought'), ('BLL254', 'BLL254_2_0.html', 'An important note')]
+  gold inside WIDGET (li) → [('AGH1006', 'AGH1006_8_0.html', 'Diseases'), ('AGH1007', 'AGH1007_9_0.html', 'Bacteria'), ('AGH1007', 'AGH1007_9_0.html', 'Virus'), ('AGH1007', 'AGH1007_9_0.html', 'Fungi'), ('AGH1007', 'AGH1007_9_0.html', 'Parasite')]
+  gold a → [('AGH1007', 'AGH1007_4_0.html', 'The Amazing Cow: An introduction to ruminant digestive systems.')]
+  gold merged into li → [('AGH1009', 'AGH1009_6_0.html', 'Precision agriculture and soil testing')]
+  gold merged into h4 → [('ANZH303', 'ANZH303_6_0.html', 'Motives for a Declaration'), ('ENGI102', 'ENGI102_8_0.html', 'Cook Islands:')]
+  NOWHERE in gold — WT h2 → [('ANZH304', 'ANZH304_2_0.html', 'Aotearoa – The Last and the Loveliest?'), ('ART1002', 'ART1002_5_0.html', 'Activity 1: What is in a Visual Arts Diary?'), ('ART1004', 'ART1004_0_0.html', 'TASK 2: Who am I? A portrait of me and my environment'), ('ART1006', 'ART1006_2_0.html', 'Activity 1: Choose your materials and plan the process'), ('ART1006', 'ART1006_3_1.html', 'Step 1: Create a time limit on your project')]
+  gold reworded (h2) → [('ANZH401', 'ANZH401_2_0.html', 'Tauiwi – Push and Pull Factors of Tauiwi')]
+  gold merged into h2 → [('ANZH401', 'ANZH401_5_0.html', 'with Tangata Whenua')]
+  NOWHERE in gold — WT h1 → [('ARFUN04', 'ARFUN04_0_0.html', 'Title: Exploring Visual Arts'), ('ART1005', 'ART1005_0_0.html', 'How to present your learning:'), ('ENG1004', 'ENG1004_0_0.html', 'Speak up'), ('ENGFUN02', 'ENGFUN02_0_0.html', 'Lesson 1'), ('ENGFUN02', 'ENGFUN02_1_0.html', 'Lesson 2')]
+  gold header/menu li → [('ART1006', 'ART1006_0_0.html', 'Ākonga will learn how to pursue a project aligned with their interests'), ('ART1006', 'ART1006_0_0.html', 'Ākonga will complete a self-chosen passion project using an appropriat'), ('XGF9002', 'XGF9002_1_0.html', 'Purpose'), ('XGF9002', 'XGF9002_1_0.html', 'Key Ideas'), ('XGF9002', 'XGF9002_1_0.html', 'Reflective prompt')]
+  NOWHERE in gold — WT title → [('BLL111', 'BLL111_0_0.html', 'Module 1 – s, a, t, p, i, n.'), ('BLL131', 'BLL131_0_0.html', 'Module 1 - g, o, u, l, b, f'), ('BLL132', 'BLL132_0_0.html', 'Module 2 - g, o, u, l, b, f'), ('BLL133', 'BLL133_0_0.html', 'Module 3 - g, o, u, l, b, f'), ('BLL134', 'BLL134_0_0.html', 'Module 4 - g, o, u, l, b, f')]
+  NOWHERE in gold — WT introduction → [('BLL115', 'BLL115_0_0.html', 'animation?'), ('BLL116', 'BLL116_0_0.html', 'Animation?'), ('BLL117', 'BLL117_0_0.html', 'Animation?'), ('BLL141', 'BLL141_0_0.html', 'Introduction'), ('BLL142', 'BLL142_0_0.html', 'Introduction')]
+  gold inside WIDGET (p) → [('BLL253', 'BLL253_2_0.html', 'Find these words in the article.'), ('BLL253', 'BLL253_2_0.html', 'Imagine your town or city gets a giant sculpture'), ('XGF9006', 'XGF9006_2_0.html', 'If you had a whole day to do anything you want, what would you pick?'), ('XGF9006', 'XGF9006_4_0.html', 'Main Idea?')]
+  gold inside WIDGET (h5) → [('BLL254', 'BLL254_1_0.html', 'A trick'), ('MXFU301', 'MXFU301_6_0.html', 'What coloured balloon?'), ('XGF9006', 'XGF9006_2_0.html', 'Questions:'), ('XGF9006', 'XGF9006_2_0.html', 'Questions:')]
+  gold td → [('CEDK501', 'CEDK501_10_0.html', 'Work together more effectively')]
+  gold b → [('ENGI301', 'ENGI301_4_0.html', 'Constructing Paragraphs'), ('HIS1002', 'HIS1002_11_0.html', 'Source C')]
+  gold inside WIDGET (h3) → [('ENGJ403', 'ENGJ403_5_0.html', 'How to write a script for theatre'), ('ENGJ403', 'ENGJ403_5_0.html', 'From script to stage'), ('ENGJ403', 'ENGJ403_5_0.html', 'The script'), ('ENGJ403', 'ENGJ403_5_0.html', 'How to write a screenplay for film'), ('ENGJ403', 'ENGJ403_5_0.html', 'The screenplay')]
+  gold reworded (li) → [('HES1003', 'HES1003_8_0.html', 'SHORT TERM AND LONG TERM CONSEQUENCES consequences')]
+  NOWHERE in gold — WT h4 → [('MXDB302', 'MXDB302_3_0.html', 'Two- and Three-Dimensional Shapes'), ('MXDB302', 'MXDB302_5_0.html', 'Volume v Capacity'), ('MXEO301', 'MXEO301_1_0.html', 'Factors and multiples'), ('MXEO301', 'MXEO301_3_0.html', 'Greater than or less than'), ('MXEO301', 'MXEO301_7_0.html', 'Pulling everything together')]
+  gold header/menu p → [('MXDI101', 'MXDI101_0_0.html', 'The world is full of patterns and structures that we use mathematics a'), ('MXDI101', 'MXDI101_0_0.html', 'I can:'), ('MXFL103', 'MXFL103_0_0.html', 'I can:')]
+  gold header/menu h4 → [('MXDI101', 'MXDI101_0_0.html', 'Know:'), ('MXEO201', 'MXEO201_0_0.html', 'Know:'), ('MXEO201', 'MXEO201_0_0.html', 'Do:')]
+  gold inside WIDGET (span) → [('MXEO401', 'MXEO401_3_0.html', 'L')]
+  gold inside WIDGET (div) → [('MXEX401', 'MXEX401_2_0.html', 'Tridoku.')]
+  gold merged into h4 (widget) → [('MXFL104', 'MXFL104_3_0.html', 'How long do we sleep?'), ('TEDC401', 'TEDC401_3_0.html', 'Create a wireframe (Ideate 🡪 Prototype)'), ('TEDC401', 'TEDC401_3_0.html', 'Create attribution notes')]
+  gold merged into td (widget) → [('MXFL203', 'MXFL203_10_0.html', 'Sheep Shearing')]
+  gold reworded (h5) → [('MXFU302', 'MXFU302_6_0.html', 'Variables can be used to hold the place of a number that we don’t yet ')]
+  gold li → [('PHE1003', 'PHE1003_7_0.html', 'Alofa/Aroha/Ofa/Aloha')]
+  gold merged into p (widget) → [('XGF9001', 'XGF9001_4_0.html', 'The Power of the Flip!'), ('XGF9004', 'XGF9004_2_0.html', 'Instructions')]
+  gold reworded (h4) → [('XGF9006', 'XGF9006_2_0.html', 'Mostly b – you’re a tinkerer!'), ('XGF9006', 'XGF9006_3_0.html', 'Sticky note question or wonderwall')]

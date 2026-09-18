@@ -1,0 +1,126 @@
+
+== ALL — pages 1963
+  alert     gold   n= 1906 followed-on 0.14 (pages 200): LAST in column 1631 (0.86), followed by p 117 (0.06), followed by repeat 43 (0.02), followed by alert 23 (0.01), followed by h3 17 (0.01), followed by h2 17 (0.01), followed by h4 15 (0.01)
+            claude n= 1215: LAST in column 1215 (1.00)
+  activity  gold   n= 4804 followed-on 0.00 (pages 11): LAST in column 4786 (1.00), followed by activity 14 (0.00), followed by h4 2 (0.00), followed by p 1 (0.00), followed by h3 1 (0.00)
+            claude n= 4921: LAST in column 4921 (1.00)
+  WIDGET    gold   n= 1229 followed-on 0.34 (pages 297): LAST in column 808 (0.66), followed by p 186 (0.15), followed by div 64 (0.05), followed by repeat 53 (0.04), followed by h3 29 (0.02), followed by alert 24 (0.02), followed by br 18 (0.01)
+            claude n= 1276: LAST in column 803 (0.63), followed by p 272 (0.21), followed by repeat 79 (0.06), followed by video 49 (0.04), followed by a 22 (0.02), followed by div 17 (0.01), followed by img 9 (0.01)
+
+== template=Standard — pages 1738
+  alert     gold   n= 1761 followed-on 0.14 (pages 185): LAST in column 1511 (0.86), followed by p 110 (0.06), followed by repeat 29 (0.02), followed by alert 22 (0.01), followed by h3 17 (0.01), followed by h2 17 (0.01), followed by h4 15 (0.01)
+            claude n= 1146: LAST in column 1146 (1.00)
+  activity  gold   n= 4409 followed-on 0.00 (pages 8): LAST in column 4401 (1.00), followed by activity 4 (0.00), followed by h4 2 (0.00), followed by p 1 (0.00), followed by h3 1 (0.00)
+            claude n= 4533: LAST in column 4533 (1.00)
+  WIDGET    gold   n= 1175 followed-on 0.33 (pages 271): LAST in column 786 (0.67), followed by p 173 (0.15), followed by div 60 (0.05), followed by repeat 45 (0.04), followed by h3 28 (0.02), followed by alert 22 (0.02), followed by br 18 (0.02)
+            claude n= 1177: LAST in column 735 (0.62), followed by p 259 (0.22), followed by repeat 69 (0.06), followed by video 44 (0.04), followed by a 21 (0.02), followed by div 17 (0.01), followed by img 9 (0.01)
+
+== template=Inquiry — pages 98
+  alert     gold   n=   42 followed-on 0.24 (pages 8): LAST in column 32 (0.76), followed by p 7 (0.17), followed by repeat 2 (0.05), followed by div 1 (0.02)
+            claude n=   47: LAST in column 47 (1.00)
+  activity  gold   n=  148 followed-on 0.07 (pages 3): LAST in column 138 (0.93), followed by activity 10 (0.07)
+            claude n=  235: LAST in column 235 (1.00)
+  WIDGET    gold   n=   33 followed-on 0.67 (pages 17): followed by p 12 (0.36), LAST in column 11 (0.33), followed by div 4 (0.12), followed by h2 2 (0.06), followed by h3 1 (0.03), followed by row 1 (0.03), followed by repeat 1 (0.03)
+            claude n=   55: LAST in column 36 (0.65), followed by p 9 (0.16), followed by video 5 (0.09), followed by repeat 3 (0.05), followed by list 1 (0.02), followed by a 1 (0.02)
+
+== template=Fundamentals — pages 64
+  alert     gold   n=   16 followed-on 0.00 (pages 0): LAST in column 16 (1.00)
+            claude n=   17: LAST in column 17 (1.00)
+  activity  gold   n=   41 followed-on 0.00 (pages 0): LAST in column 41 (1.00)
+            claude n=   62: LAST in column 62 (1.00)
+
+== template=Bilingual — pages 63
+  alert     gold   n=   87 followed-on 0.17 (pages 7): LAST in column 72 (0.83), followed by repeat 12 (0.14), followed by video 2 (0.02), followed by alert 1 (0.01)
+            claude n=    5: LAST in column 5 (1.00)
+  activity  gold   n=  206 followed-on 0.00 (pages 0): LAST in column 206 (1.00)
+            claude n=   91: LAST in column 91 (1.00)
+  WIDGET    gold   n=   15 followed-on 0.60 (pages 8): followed by repeat 7 (0.47), LAST in column 6 (0.40), followed by alert 2 (0.13)
+            claude n=   35: LAST in column 28 (0.80), followed by repeat 6 (0.17), followed by audio 1 (0.03)
+
+== subject=NCEA1 — pages 333
+  alert     gold   n=  402 followed-on 0.10 (pages 32): LAST in column 361 (0.90), followed by p 14 (0.03), followed by alert 9 (0.02), followed by h4 4 (0.01), followed by img 4 (0.01), followed by h3 3 (0.01), followed by repeat 3 (0.01)
+            claude n=  223: LAST in column 223 (1.00)
+  activity  gold   n=  659 followed-on 0.00 (pages 0): LAST in column 659 (1.00)
+            claude n=  619: LAST in column 619 (1.00)
+  WIDGET    gold   n=  152 followed-on 0.29 (pages 39): LAST in column 108 (0.71), followed by p 19 (0.12), followed by h3 9 (0.06), followed by repeat 6 (0.04), followed by h4 2 (0.01), followed by h2 2 (0.01), followed by alert 1 (0.01)
+            claude n=  128: LAST in column 93 (0.73), followed by p 15 (0.12), followed by repeat 11 (0.09), followed by a 5 (0.04), followed by row 1 (0.01), followed by div 1 (0.01), followed by list 1 (0.01)
+
+== subject=1-10 Mathematics — pages 332
+  alert     gold   n=  303 followed-on 0.10 (pages 25): LAST in column 274 (0.90), followed by p 13 (0.04), followed by repeat 5 (0.02), followed by WIDGET 4 (0.01), followed by video 3 (0.01), followed by h3 1 (0.00), followed by h4 1 (0.00)
+            claude n=  169: LAST in column 169 (1.00)
+  activity  gold   n= 1117 followed-on 0.00 (pages 0): LAST in column 1117 (1.00)
+            claude n= 1222: LAST in column 1222 (1.00)
+  WIDGET    gold   n=  276 followed-on 0.34 (pages 59): LAST in column 183 (0.66), followed by p 29 (0.11), followed by div 27 (0.10), followed by repeat 19 (0.07), followed by br 5 (0.02), followed by alert 3 (0.01), followed by row 3 (0.01)
+            claude n=  153: LAST in column 107 (0.70), followed by p 29 (0.19), followed by repeat 8 (0.05), followed by video 4 (0.03), followed by a 3 (0.02), followed by div 1 (0.01), followed by row 1 (0.01)
+
+== subject=1-10 English — pages 304
+  alert     gold   n=  224 followed-on 0.12 (pages 21): LAST in column 196 (0.88), followed by p 14 (0.06), followed by repeat 5 (0.02), followed by video 5 (0.02), followed by WIDGET 2 (0.01), followed by h2 1 (0.00), followed by alert 1 (0.00)
+            claude n=   88: LAST in column 88 (1.00)
+  activity  gold   n=  695 followed-on 0.00 (pages 3): LAST in column 692 (1.00), followed by h4 2 (0.00), followed by activity 1 (0.00)
+            claude n=  657: LAST in column 657 (1.00)
+  WIDGET    gold   n=  194 followed-on 0.29 (pages 42): LAST in column 138 (0.71), followed by p 26 (0.13), followed by div 14 (0.07), followed by row 5 (0.03), followed by h3 2 (0.01), followed by h4 2 (0.01), followed by repeat 2 (0.01)
+            claude n=  210: LAST in column 130 (0.62), followed by p 46 (0.22), followed by repeat 9 (0.04), followed by div 7 (0.03), followed by video 6 (0.03), followed by img 4 (0.02), followed by h4 3 (0.01)
+
+== subject=1-10 Blended Literacy — pages 258
+  alert     gold   n=   88 followed-on 0.01 (pages 1): LAST in column 87 (0.99), followed by p 1 (0.01)
+            claude n=   47: LAST in column 47 (1.00)
+  activity  gold   n=  801 followed-on 0.00 (pages 1): LAST in column 800 (1.00), followed by p 1 (0.00)
+            claude n=  869: LAST in column 869 (1.00)
+  WIDGET    gold   n=    0 followed-on 0.00 (pages 0): 
+            claude n=   21: LAST in column 13 (0.62), followed by a 4 (0.19), followed by p 3 (0.14), followed by repeat 1 (0.05)
+
+== subject=Leaving to Learn — pages 206
+  alert     gold   n=  319 followed-on 0.17 (pages 32): LAST in column 266 (0.83), followed by p 26 (0.08), followed by h4 8 (0.03), followed by repeat 5 (0.02), followed by alert 4 (0.01), followed by h3 3 (0.01), followed by img 3 (0.01)
+            claude n=  212: LAST in column 212 (1.00)
+  activity  gold   n=  627 followed-on 0.02 (pages 3): LAST in column 617 (0.98), followed by activity 10 (0.02)
+            claude n=  678: LAST in column 678 (1.00)
+  WIDGET    gold   n=  201 followed-on 0.38 (pages 54): LAST in column 125 (0.62), followed by p 45 (0.22), followed by repeat 8 (0.04), followed by alert 7 (0.03), followed by br 6 (0.03), followed by div 2 (0.01), followed by h4 2 (0.01)
+            claude n=  257: LAST in column 125 (0.49), followed by p 82 (0.32), followed by video 22 (0.09), followed by repeat 18 (0.07), followed by audio 4 (0.02), followed by div 3 (0.01), followed by row 2 (0.01)
+
+== subject=Online Safety (OS9000) — pages 130
+  alert     gold   n=  100 followed-on 0.29 (pages 23): LAST in column 71 (0.71), followed by p 16 (0.16), followed by h3 5 (0.05), followed by WIDGET 2 (0.02), followed by h4 2 (0.02), followed by row 1 (0.01), followed by repeat 1 (0.01)
+            claude n=   87: LAST in column 87 (1.00)
+  activity  gold   n=  193 followed-on 0.00 (pages 0): LAST in column 193 (1.00)
+            claude n=  181: LAST in column 181 (1.00)
+  WIDGET    gold   n=  211 followed-on 0.40 (pages 54): LAST in column 127 (0.60), followed by p 42 (0.20), followed by repeat 8 (0.04), followed by alert 7 (0.03), followed by div 7 (0.03), followed by h3 7 (0.03), followed by video 6 (0.03)
+            claude n=  226: LAST in column 121 (0.54), followed by p 68 (0.30), followed by repeat 15 (0.07), followed by video 14 (0.06), followed by div 3 (0.01), followed by row 3 (0.01), followed by a 2 (0.01)
+
+== subject=ConnectED — pages 114
+  alert     gold   n=  168 followed-on 0.27 (pages 29): LAST in column 122 (0.73), followed by p 28 (0.17), followed by repeat 7 (0.04), followed by alert 6 (0.04), followed by h3 2 (0.01), followed by h2 2 (0.01), followed by div 1 (0.01)
+            claude n=  130: LAST in column 130 (1.00)
+  activity  gold   n=  166 followed-on 0.00 (pages 0): LAST in column 166 (1.00)
+            claude n=  180: LAST in column 180 (1.00)
+  WIDGET    gold   n=   66 followed-on 0.26 (pages 12): LAST in column 49 (0.74), followed by p 4 (0.06), followed by div 3 (0.05), followed by alert 3 (0.05), followed by h3 2 (0.03), followed by br 2 (0.03), followed by h4 1 (0.02)
+            claude n=   89: LAST in column 66 (0.74), followed by p 15 (0.17), followed by repeat 4 (0.04), followed by list 1 (0.01), followed by a 1 (0.01), followed by video 1 (0.01), followed by div 1 (0.01)
+
+== subject=ANZH — pages 78
+  alert     gold   n=   98 followed-on 0.22 (pages 22): LAST in column 76 (0.78), followed by h2 11 (0.11), followed by p 4 (0.04), followed by h3 2 (0.02), followed by repeat 2 (0.02), followed by img 1 (0.01), followed by row 1 (0.01)
+            claude n=  140: LAST in column 140 (1.00)
+  activity  gold   n=  109 followed-on 0.00 (pages 0): LAST in column 109 (1.00)
+            claude n=  165: LAST in column 165 (1.00)
+  WIDGET    gold   n=   38 followed-on 0.42 (pages 10): LAST in column 22 (0.58), followed by p 10 (0.26), followed by div 4 (0.11), followed by repeat 1 (0.03), followed by h3 1 (0.03)
+            claude n=   16: LAST in column 15 (0.94), followed by a 1 (0.06)
+
+== subject=Te Marautanga o Aotearoa TMoA — pages 63
+  alert     gold   n=   87 followed-on 0.17 (pages 7): LAST in column 72 (0.83), followed by repeat 12 (0.14), followed by video 2 (0.02), followed by alert 1 (0.01)
+            claude n=    5: LAST in column 5 (1.00)
+  activity  gold   n=  206 followed-on 0.00 (pages 0): LAST in column 206 (1.00)
+            claude n=   91: LAST in column 91 (1.00)
+  WIDGET    gold   n=   15 followed-on 0.60 (pages 8): followed by repeat 7 (0.47), LAST in column 6 (0.40), followed by alert 2 (0.13)
+            claude n=   35: LAST in column 28 (0.80), followed by repeat 6 (0.17), followed by audio 1 (0.03)
+
+== subject=None — pages 46
+  alert     gold   n=   60 followed-on 0.05 (pages 3): LAST in column 57 (0.95), followed by p 1 (0.02), followed by img 1 (0.02), followed by h3 1 (0.02)
+            claude n=   44: LAST in column 44 (1.00)
+  activity  gold   n=  156 followed-on 0.02 (pages 3): LAST in column 153 (0.98), followed by activity 2 (0.01), followed by h3 1 (0.01)
+            claude n=  141: LAST in column 141 (1.00)
+  WIDGET    gold   n=   52 followed-on 0.29 (pages 9): LAST in column 37 (0.71), followed by p 7 (0.13), followed by h3 3 (0.06), followed by div 3 (0.06), followed by repeat 1 (0.02), followed by br 1 (0.02)
+            claude n=  108: LAST in column 82 (0.76), followed by p 10 (0.09), followed by repeat 5 (0.05), followed by h4 4 (0.04), followed by img 3 (0.03), followed by a 2 (0.02), followed by table 1 (0.01)
+
+== subject=1-10 Social Science — pages 38
+  alert     gold   n=   42 followed-on 0.19 (pages 5): LAST in column 34 (0.81), followed by repeat 3 (0.07), followed by WIDGET 3 (0.07), followed by video 1 (0.02), followed by h2 1 (0.02)
+            claude n=   46: LAST in column 46 (1.00)
+  activity  gold   n=   47 followed-on 0.02 (pages 1): LAST in column 46 (0.98), followed by activity 1 (0.02)
+            claude n=   72: LAST in column 72 (1.00)
+  WIDGET    gold   n=   14 followed-on 0.43 (pages 5): LAST in column 8 (0.57), followed by p 3 (0.21), followed by div 1 (0.07), followed by h3 1 (0.07), followed by video 1 (0.07)
+            claude n=   22: LAST in column 14 (0.64), followed by p 3 (0.14), followed by repeat 2 (0.09), followed by a 1 (0.05), followed by video 1 (0.05), followed by img 1 (0.05)

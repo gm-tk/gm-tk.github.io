@@ -1,0 +1,183 @@
+Claude row-opening h5 → where the gold puts the same-text heading; pages scanned 1963
+
+== ALL — Claude row-open h5: 277
+   NOT-IN-GOLD                          147 (0.53)  pages   39 / modules  30
+   gold h5 inline after p                19 (0.07)  pages   13 / modules   7
+   gold h4 row-open                      11 (0.04)  pages   11 / modules  11
+   gold h5 row-open                      11 (0.04)  pages    9 / modules   7
+   gold h5 deep                           9 (0.03)  pages    4 / modules   4
+   gold h4 inline after p                 8 (0.03)  pages    8 / modules   8
+   gold h3 row-open                       8 (0.03)  pages    5 / modules   5
+   gold h3 nested:panel                   7 (0.03)  pages    2 / modules   2
+   gold h4 nested:alert                   7 (0.03)  pages    6 / modules   6
+   gold h4 inline after img               6 (0.02)  pages    3 / modules   3
+   gold h5 nested:alert                   4 (0.01)  pages    3 / modules   2
+   gold h4 nested:activity                4 (0.01)  pages    4 / modules   4
+   gold h3 inline after h3                4 (0.01)  pages    2 / modules   2
+   gold h4 inline after div               3 (0.01)  pages    1 / modules   1
+
+== template=Standard — Claude row-open h5: 189
+   NOT-IN-GOLD                           85 (0.45)  pages   32 / modules  27
+   gold h5 inline after p                19 (0.10)  pages   13 / modules   7
+   gold h5 row-open                      11 (0.06)  pages    9 / modules   7
+   gold h4 row-open                      10 (0.05)  pages   10 / modules  10
+   gold h5 deep                           9 (0.05)  pages    4 / modules   4
+   gold h4 inline after p                 7 (0.04)  pages    7 / modules   7
+   gold h4 inline after img               6 (0.03)  pages    3 / modules   3
+   gold h3 row-open                       6 (0.03)  pages    4 / modules   4
+   gold h4 nested:alert                   5 (0.03)  pages    5 / modules   5
+   gold h5 nested:alert                   4 (0.02)  pages    3 / modules   2
+   gold h4 nested:activity                4 (0.02)  pages    4 / modules   4
+   gold h4 inline after div               3 (0.02)  pages    1 / modules   1
+   gold h4 inline after alert             2 (0.01)  pages    2 / modules   2
+   gold h4 inline after h3                2 (0.01)  pages    2 / modules   2
+
+== template=Inquiry — Claude row-open h5: 72
+   NOT-IN-GOLD                           58 (0.81)  pages    6 / modules   2
+   gold h3 nested:panel                   7 (0.10)  pages    2 / modules   2
+   gold h4 nested:panel                   2 (0.03)  pages    2 / modules   2
+   gold h4 nested:alert                   2 (0.03)  pages    1 / modules   1
+   gold h2 nested:panel                   1 (0.01)  pages    1 / modules   1
+   gold h2 inline after WIDGET            1 (0.01)  pages    1 / modules   1
+   gold h3 nested:alert                   1 (0.01)  pages    1 / modules   1
+
+== subject=NCEA1 — Claude row-open h5: 108
+   NOT-IN-GOLD                           94 (0.87)  pages   17 / modules   9
+   gold h4 nested:alert                   4 (0.04)  pages    4 / modules   4
+   gold h4 row-open                       2 (0.02)  pages    2 / modules   2
+   gold h4 inline after alert             1 (0.01)  pages    1 / modules   1
+   gold h4 inline after p                 1 (0.01)  pages    1 / modules   1
+   gold h3 inline after p                 1 (0.01)  pages    1 / modules   1
+   gold h4 inline after h3                1 (0.01)  pages    1 / modules   1
+   gold h4 inline after list              1 (0.01)  pages    1 / modules   1
+   gold h4 col-open                       1 (0.01)  pages    1 / modules   1
+   gold h2 inline after WIDGET            1 (0.01)  pages    1 / modules   1
+   gold h4 nested:activity                1 (0.01)  pages    1 / modules   1
+
+== subject=1-10 English — Claude row-open h5: 67
+   NOT-IN-GOLD                           16 (0.24)  pages    5 / modules   5
+   gold h5 inline after p                15 (0.22)  pages    9 / modules   4
+   gold h5 row-open                       8 (0.12)  pages    6 / modules   4
+   gold h3 row-open                       5 (0.07)  pages    3 / modules   3
+   gold h5 nested:alert                   4 (0.06)  pages    3 / modules   2
+   gold h4 inline after div               3 (0.04)  pages    1 / modules   1
+   gold h5 deep                           3 (0.04)  pages    2 / modules   2
+   gold h4 inline after p                 2 (0.03)  pages    2 / modules   2
+   gold h4 nested:activity                2 (0.03)  pages    2 / modules   2
+   gold h4 deep                           2 (0.03)  pages    2 / modules   2
+   gold h4 row-open                       1 (0.01)  pages    1 / modules   1
+   gold h4 inline after img               1 (0.01)  pages    1 / modules   1
+   gold h4 nested:alert                   1 (0.01)  pages    1 / modules   1
+   gold h5 inline after video             1 (0.01)  pages    1 / modules   1
+
+== subject=1-10 Mathematics — Claude row-open h5: 33
+   NOT-IN-GOLD                           15 (0.45)  pages    8 / modules   7
+   gold h4 inline after img               5 (0.15)  pages    2 / modules   2
+   gold h4 row-open                       4 (0.12)  pages    4 / modules   4
+   gold h4 inline after p                 3 (0.09)  pages    3 / modules   3
+   gold h5 row-open                       2 (0.06)  pages    2 / modules   2
+   gold h5 nested:activity                2 (0.06)  pages    1 / modules   1
+   gold h3 nested:activity                1 (0.03)  pages    1 / modules   1
+   gold h4 inline after row               1 (0.03)  pages    1 / modules   1
+
+== template+ptype=Standard/lesson — Claude row-open h5: 165
+   NOT-IN-GOLD                           71 (0.43)  pages   28 / modules  24
+   gold h5 inline after p                19 (0.12)  pages   13 / modules   7
+   gold h5 row-open                      11 (0.07)  pages    9 / modules   7
+   gold h5 deep                           9 (0.05)  pages    4 / modules   4
+   gold h4 row-open                       8 (0.05)  pages    8 / modules   8
+   gold h4 inline after img               6 (0.04)  pages    3 / modules   3
+   gold h3 row-open                       6 (0.04)  pages    4 / modules   4
+   gold h4 inline after p                 5 (0.03)  pages    5 / modules   5
+   gold h5 nested:alert                   4 (0.02)  pages    3 / modules   2
+   gold h4 nested:activity                4 (0.02)  pages    4 / modules   4
+   gold h4 nested:alert                   4 (0.02)  pages    4 / modules   4
+   gold h4 inline after div               3 (0.02)  pages    1 / modules   1
+   gold h4 deep                           2 (0.01)  pages    2 / modules   2
+   gold h5 nested:activity                2 (0.01)  pages    1 / modules   1
+
+== subject+ptype=NCEA1/lesson — Claude row-open h5: 74
+   NOT-IN-GOLD                           69 (0.93)  pages   12 / modules   6
+   gold h4 nested:alert                   3 (0.04)  pages    3 / modules   3
+   gold h2 inline after WIDGET            1 (0.01)  pages    1 / modules   1
+   gold h4 nested:activity                1 (0.01)  pages    1 / modules   1
+
+== subject+ptype=1-10 English/lesson — Claude row-open h5: 66
+   NOT-IN-GOLD                           16 (0.24)  pages    5 / modules   5
+   gold h5 inline after p                15 (0.23)  pages    9 / modules   4
+   gold h5 row-open                       8 (0.12)  pages    6 / modules   4
+   gold h3 row-open                       5 (0.08)  pages    3 / modules   3
+   gold h5 nested:alert                   4 (0.06)  pages    3 / modules   2
+   gold h4 inline after div               3 (0.05)  pages    1 / modules   1
+   gold h5 deep                           3 (0.05)  pages    2 / modules   2
+   gold h4 nested:activity                2 (0.03)  pages    2 / modules   2
+   gold h4 deep                           2 (0.03)  pages    2 / modules   2
+   gold h4 row-open                       1 (0.02)  pages    1 / modules   1
+   gold h4 inline after p                 1 (0.02)  pages    1 / modules   1
+   gold h4 inline after img               1 (0.02)  pages    1 / modules   1
+   gold h4 nested:alert                   1 (0.02)  pages    1 / modules   1
+   gold h5 inline after video             1 (0.02)  pages    1 / modules   1
+
+== series=ENGFU — Claude row-open h5: 55
+   NOT-IN-GOLD                           54 (0.98)  pages    5 / modules   1
+   gold h2 inline after WIDGET            1 (0.02)  pages    1 / modules   1
+
+== template+ptype=Inquiry/lesson — Claude row-open h5: 44
+   NOT-IN-GOLD                           43 (0.98)  pages    4 / modules   1
+   gold h2 inline after WIDGET            1 (0.02)  pages    1 / modules   1
+
+== subject+ptype=NCEA1/overview — Claude row-open h5: 34
+   NOT-IN-GOLD                           25 (0.74)  pages    5 / modules   5
+   gold h4 row-open                       2 (0.06)  pages    2 / modules   2
+   gold h4 inline after alert             1 (0.03)  pages    1 / modules   1
+   gold h4 inline after p                 1 (0.03)  pages    1 / modules   1
+   gold h3 inline after p                 1 (0.03)  pages    1 / modules   1
+   gold h4 inline after h3                1 (0.03)  pages    1 / modules   1
+   gold h4 inline after list              1 (0.03)  pages    1 / modules   1
+   gold h4 col-open                       1 (0.03)  pages    1 / modules   1
+   gold h4 nested:alert                   1 (0.03)  pages    1 / modules   1
+
+== subject+ptype=1-10 Mathematics/lesson — Claude row-open h5: 33
+   NOT-IN-GOLD                           15 (0.45)  pages    8 / modules   7
+   gold h4 inline after img               5 (0.15)  pages    2 / modules   2
+   gold h4 row-open                       4 (0.12)  pages    4 / modules   4
+   gold h4 inline after p                 3 (0.09)  pages    3 / modules   3
+   gold h5 row-open                       2 (0.06)  pages    2 / modules   2
+   gold h5 nested:activity                2 (0.06)  pages    1 / modules   1
+   gold h3 nested:activity                1 (0.03)  pages    1 / modules   1
+   gold h4 inline after row               1 (0.03)  pages    1 / modules   1
+
+examples:
+  NOT-IN-GOLD → [('ART1003', 'ART1003_0_0.html', 'activity 1'), ('ART1003', 'ART1003_0_0.html', 'activity 2 3 a3 pages'), ('ART1003', 'ART1003_0_0.html', 'activity 1 investigate landscape photographic conventions an'), ('ART1003', 'ART1003_0_0.html', 'activity 1 an inquiry about my significant place')]
+  gold h2 nested:panel → [('CEDW201', 'CEDW201_0_0.html', 'introduction'), ('EXIP901', 'EXIP901_4_0.html', 'whakamana agency')]
+  gold h3 nested:panel → [('CEDW201', 'CEDW201_0_0.html', 'what are concrete poems'), ('TWHK901', 'TWHK901_0_0.html', 'local vs global sustainability'), ('TWHK901', 'TWHK901_0_0.html', 'sustainable development goals sdgs'), ('TWHK901', 'TWHK901_0_0.html', 'why is rubbish a problem')]
+  gold h4 inline after alert → [('ENG1004', 'ENG1004_0_0.html', 'how to present your learning'), ('XLP02', 'XLP02_5_0.html', 'benefits for writing')]
+  gold h4 inline after p → [('ENG1004', 'ENG1004_0_0.html', 'possible contexts'), ('ENGI400', 'ENGI400_3_0.html', 'this or that research project'), ('ENGS405', 'ENGS405_0_0.html', 'kia t mata tatou'), ('MXEX401', 'MXEX401_5_0.html', 'example')]
+  gold h4 row-open → [('ENG1005', 'ENG1005_0_0.html', 'purpose of this standard'), ('ENG1007', 'ENG1007_0_0.html', 'purpose of this standard'), ('ENGI400', 'ENGI400_1_0.html', 'journal activities'), ('MXFL104', 'MXFL104_3_0.html', 'quarter to')]
+  gold h3 inline after p → [('ENG1005', 'ENG1005_0_0.html', 'two key terms'), ('TRR114', 'TRR114_1_0.html', 'he aha t ku i ako ai')]
+  gold h4 inline after h3 → [('ENG1005', 'ENG1005_0_0.html', 'what is an aspect'), ('ENGS401', 'ENGS401_4_0.html', 'no words needed')]
+  gold h4 inline after list → [('ENG1005', 'ENG1005_0_0.html', 'what is a studied text'), ('XLP02', 'XLP02_5_0.html', 'practical activities')]
+  gold h4 col-open → [('ENG1007', 'ENG1007_0_0.html', 'what is an aspect')]
+  gold h4 nested:alert → [('ENG1007', 'ENG1007_0_0.html', 'assessment conditions'), ('ENGJ402', 'ENGJ402_2_0.html', 'a note on rhyming schemes'), ('HIS1005', 'HIS1005_9_0.html', 'modernday slavery'), ('HIS1006', 'HIS1006_10_0.html', 'koha')]
+  gold h2 inline after WIDGET → [('ENGFUN02', 'ENGFUN02_1_0.html', 'canted angle')]
+  gold h5 nested:alert → [('ENGI102', 'ENGI102_10_0.html', 'aesops fables'), ('ENGJ402', 'ENGJ402_3_0.html', 'a note on rhythm schemes'), ('ENGJ402', 'ENGJ402_5_0.html', 'a note on imagery metaphor and symbolism'), ('ENGJ402', 'ENGJ402_5_0.html', 'have a go')]
+  gold h5 row-open → [('ENGI202', 'ENGI202_1_0.html', 'congratulations on finishing lesson one in the next lesson y'), ('ENGI202', 'ENGI202_2_0.html', 'congratulations on finishing lesson two in the next lesson y'), ('ENGI202', 'ENGI202_4_0.html', 'aesops fables'), ('ENGI202', 'ENGI202_4_0.html', 'grimms fairy tales')]
+  gold h5 inline after p → [('ENGI202', 'ENGI202_4_0.html', 'jack and the beanstalk'), ('ENGI202', 'ENGI202_4_0.html', 'the monkey and the crocodile'), ('ENGI202', 'ENGI202_4_0.html', 'the tale of chunhyang'), ('ENGS301', 'ENGS301_2_0.html', 'trees are taongatreasure')]
+  gold h4 inline after div → [('ENGI400', 'ENGI400_3_0.html', 'this or that being the audience'), ('ENGI400', 'ENGI400_3_0.html', 'this or that being the creator'), ('ENGI400', 'ENGI400_3_0.html', 'optional gaming')]
+  gold h4 inline after img → [('ENGI400', 'ENGI400_3_0.html', 'there are a few ways to contact your kaiako'), ('MXFL104', 'MXFL104_3_0.html', 'quarter past'), ('MXFL201', 'MXFL201_8_0.html', 'dine out at a restaurant'), ('MXFL201', 'MXFL201_8_0.html', 'eat at a caf or bakery')]
+  gold h4 nested:activity → [('ENGI405', 'ENGI405_5_0.html', 'click here to see why'), ('ENGS401', 'ENGS401_5_0.html', 'judges scorecard'), ('HIS1005', 'HIS1005_2_0.html', 'the question of sovereignty'), ('XDLS908', 'XDLS908_3_0.html', 'what dog am i most like')]
+  gold h4 deep → [('ENGJ402', 'ENGJ402_6_0.html', 'valentine'), ('ENGS302', 'ENGS302_6_0.html', 'basics of editing in film')]
+  gold h5 deep → [('ENGJ402', 'ENGJ402_6_0.html', 'olive'), ('ENGS302', 'ENGS302_6_0.html', 'what is editing'), ('ENGS302', 'ENGS302_6_0.html', 'why is editing important'), ('OSOH401', 'OSOH401_1_0.html', 'taha tinana physical wellbeing')]
+  gold h3 row-open → [('ENGJ402', 'ENGJ402_7_0.html', 'similarities'), ('ENGJ402', 'ENGJ402_7_0.html', 'differences'), ('ENGS302', 'ENGS302_1_0.html', 'the beginning middle and end'), ('ENGS302', 'ENGS302_1_0.html', 'conflict and resolution')]
+  gold h5 inline after video → [('ENGS301', 'ENGS301_2_0.html', 'trees inspire creativity')]
+  gold h3 inline after row → [('ENGS302', 'ENGS302_2_0.html', 'protagonist')]
+  gold h5 inline after list → [('ENGS302', 'ENGS302_2_0.html', 'antagonist')]
+  gold h3 nested:activity → [('MXFL104', 'MXFL104_3_0.html', 'practise matching times that show half past')]
+  gold h4 inline after row → [('MXFU402', 'MXFU402_3_0.html', 'hei tama t tama instructions')]
+  gold h5 nested:activity → [('MXFU402', 'MXFU402_6_0.html', 'pie chart'), ('MXFU402', 'MXFU402_6_0.html', 'bar graph')]
+  gold h3 inline after h3 → [('TRR114', 'TRR114_1_0.html', 'finished'), ('TRR114', 'TRR114_1_0.html', 'what have i learned'), ('TRR304', 'TRR304_2_0.html', 'finished'), ('TRR304', 'TRR304_2_0.html', 'what have i learned')]
+  gold h3 inline after alert → [('TRR114', 'TRR114_1_0.html', 'kua oti')]
+  gold h4 inline after h4 → [('TRR203', 'TRR203_1_0.html', 'finished'), ('TRR203', 'TRR203_1_0.html', 'what have i learned')]
+  gold h4 nested:panel → [('TWHA905', 'TWHA905_0_0.html', 'these questions might include'), ('TWHK901', 'TWHK901_0_0.html', 'reflect')]
+  gold h3 nested:alert → [('TWHK901', 'TWHK901_0_0.html', 'whakatauk')]
+  gold h4 inline after WIDGET → [('XTAS103', 'XTAS103_2_0.html', 'triangles'), ('XTAS103', 'XTAS103_2_0.html', 'squares')]

@@ -1,0 +1,901 @@
+
+== ALL — pages 1957
+  [gold] top-level: row 11305, other:div.inquiryPanel 330, WIDGET 228, other:div.fundamentalsPanel 226, other:div 144, other:div.clickDropContent 121
+  [gold] rows 11305 (mean/page 5.8); cols/row: 1 9353 (0.83), 2 1602 (0.14), 3+ 350 (0.03); cols in multi-col rows 4588/13941 = 0.33
+  [gold] row labels: div.row 11015, div.row.supervisor 287, div.row.selectionBox 3
+  [gold] heading-led columns 2458: opens-row 2356 (0.96) / continues-row 102 (0.04); heading-only 508 (0.21) / heading+content 1950
+  [gold] row openers: activity 4771, h3 1714, p 1355, alert 703, repeat 653, WIDGET 387, h2 332, h4 310
+  [gold] continuing-column openers: alert 864, img 576, col 409, p 353, repeat 145, h3 82, WIDGET 48, - 33
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 743, col-12.col-md-8,col-12.col-md-4 160, col-12,col-12.col-md-8 84, col-12.col-md-8,col-6.col-md-4.offset-3.offset-md-0 63, col-12.col-md-8,col-12.col-md-8 62, col-12.col-md-8,col-12.col-md-8,col-12.col-md-4.offset-md-0 51
+  [gold] widgets: in-col 435, top-level 228
+  [claude] top-level: row 13230, other:div.fundamentalsPanel 230, other:div.inquiryPanel 215, other:repeat 173, WIDGET 104, other:div.phases 48
+  [claude] rows 13230 (mean/page 6.8); cols/row: 1 12928 (0.98), 2 293 (0.02), 3+ 9 (0.00); cols in multi-col rows 614/13542 = 0.05
+  [claude] row labels: div.row 12942, div.row.supervisor 288
+  [claude] heading-led columns 3678: opens-row 3668 (1.00) / continues-row 10 (0.00); heading-only 388 (0.11) / heading+content 3290
+  [claude] row openers: activity 4917, h3 2678, p 1295, alert 1099, h4 765, repeat 750, img 246, h2 225
+  [claude] continuing-column openers: alert 116, p 112, img 58, repeat 11, h4 7, col 4, h3 3, - 1
+  [claude] multi-col patterns: col-12.col-md-6,col-12.col-md-6 105, col-12.col-md-8,col-12.col-md-4.offset-md-0 71, col-12.col-md-8,col-12.col-md-8 71, col-12.col-md-8,col-12.col-md-4 41, col-12.col-md-8,col-md-4 4, col-12.col-md-4,col-12.col-md-4,col-12.col-md-4 3
+  [claude] widgets: in-col 220, top-level 104
+
+== template=Standard — pages 1732
+  [gold] top-level: row 10497, WIDGET 220, other:div 116, other:div.clickDropContent 92, other:repeat 54, other:col 44
+  [gold] rows 10497 (mean/page 6.1); cols/row: 1 8657 (0.82), 2 1500 (0.14), 3+ 340 (0.03); cols in multi-col rows 4332/12989 = 0.33
+  [gold] row labels: div.row 10219, div.row.supervisor 275, div.row.selectionBox 3
+  [gold] heading-led columns 2384: opens-row 2282 (0.96) / continues-row 102 (0.04); heading-only 504 (0.21) / heading+content 1880
+  [gold] row openers: activity 4394, h3 1646, p 1306, alert 644, repeat 494, WIDGET 379, h2 327, h4 309
+  [gold] continuing-column openers: alert 795, img 556, col 372, p 350, repeat 142, h3 82, WIDGET 47, - 32
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 669, col-12.col-md-8,col-12.col-md-4 157, col-12,col-12.col-md-8 84, col-12.col-md-8,col-6.col-md-4.offset-3.offset-md-0 60, col-12.col-md-8,col-12.col-md-8 59, col-12.col-md-8,col-12.col-md-8,col-12.col-md-4.offset-md-0 50
+  [gold] widgets: in-col 426, top-level 220
+  [claude] top-level: row 12110, other:repeat 122, WIDGET 80, other:div.inquiryPanel 14, other:div.crumbs 5
+  [claude] rows 12110 (mean/page 7.0); cols/row: 1 11813 (0.98), 2 288 (0.02), 3+ 9 (0.00); cols in multi-col rows 604/12417 = 0.05
+  [claude] row labels: div.row 11839, div.row.supervisor 271
+  [claude] heading-led columns 3488: opens-row 3478 (1.00) / continues-row 10 (0.00); heading-only 350 (0.10) / heading+content 3138
+  [claude] row openers: activity 4529, h3 2576, p 1215, alert 1034, h4 695, repeat 544, img 235, h2 207
+  [claude] continuing-column openers: alert 112, p 111, img 58, repeat 11, h4 7, col 4, h3 3, - 1
+  [claude] multi-col patterns: col-12.col-md-6,col-12.col-md-6 105, col-12.col-md-8,col-12.col-md-8 70, col-12.col-md-8,col-12.col-md-4.offset-md-0 69, col-12.col-md-8,col-12.col-md-4 39, col-12.col-md-8,col-md-4 4, col-12.col-md-4,col-12.col-md-4,col-12.col-md-4 3
+  [claude] widgets: in-col 189, top-level 80
+
+== template=Inquiry — pages 98
+  [gold] top-level: row 302, other:div.inquiryPanel 298, other:div.crumbs 45, other:div.clickDropContent 27, other:div 11, WIDGET 4
+  [gold] rows 302 (mean/page 3.1); cols/row: 1 269 (0.89), 2 29 (0.10), 3+ 4 (0.01); cols in multi-col rows 79/348 = 0.23
+  [gold] row labels: div.row 292, div.row.supervisor 10
+  [gold] heading-led columns 41: opens-row 41 (1.00) / continues-row 0 (0.00); heading-only 4 (0.10) / heading+content 37
+  [gold] row openers: activity 132, h3 36, repeat 34, p 31, alert 24, row 10, div.acks 9, WIDGET 5
+  [gold] continuing-column openers: img 13, col 13, alert 10, repeat 2, p 2, whakatauki 2, div.choiceHeightMatch 2, div 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 21, col-12.col-md-8,col-12.col-md-8 3, col-12.col-md-8,col-6.col-md-4.offset-3.offset-md-0 2, col-12.col-md-8,div.row,div.row,div.row… 2, col-12.col-md-8,div.row,div.row 1, col-12.col-md-4,col-12.col-md-4 1
+  [gold] widgets: in-col 5, top-level 4
+  [claude] top-level: row 650, other:div.inquiryPanel 197, other:div.crumbs 29, other:repeat 18, WIDGET 4
+  [claude] rows 650 (mean/page 6.6); cols/row: 1 648 (1.00), 2 2 (0.00); cols in multi-col rows 4/652 = 0.01
+  [claude] row labels: div.row 638, div.row.supervisor 12
+  [claude] heading-led columns 139: opens-row 139 (1.00) / continues-row 0 (0.00); heading-only 33 (0.24) / heading+content 106
+  [claude] row openers: activity 235, h4 62, p 61, h3 59, alert 46, repeat 42, h5 41, - 22
+  [claude] continuing-column openers: p 1, alert 1
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-8 1, col-12.col-md-8,col-12.col-md-4.offset-md-0 1
+  [claude] widgets: in-col 9, top-level 4
+
+== template=Fundamentals — pages 64
+  [gold] top-level: other:div.fundamentalsPanel 222, row 124, other:div.phases 52, other:div.introduction 37, other:div 16, WIDGET 4
+  [gold] rows 124 (mean/page 1.9); cols/row: 1 111 (0.90), 2 10 (0.08), 3+ 3 (0.02); cols in multi-col rows 43/154 = 0.28
+  [gold] row labels: div.row 123, div.row.supervisor 1
+  [gold] heading-led columns 31: opens-row 31 (1.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 31
+  [gold] row openers: activity 42, h3 30, p 15, div.acks 14, alert 8, repeat 7, row 3, - 1
+  [gold] continuing-column openers: col 16, alert 7, img 3, WIDGET 1, - 1, list 1, p 1
+  [gold] multi-col patterns: col-12.col-md-8,col-4 5, col-12.col-md-8,col-12.col-md-4.offset-md-0 3, col-12,col-12.col-md-12 1, div.alertPadding.col-12.col-md-8,col-4 1, col-12.col-md-10,div.row,h2,div.row… 1, col-12.col-md-8,div.row,div.row,div.row… 1
+  [gold] widgets: top-level 4, in-col 2
+  [claude] top-level: other:div.fundamentalsPanel 230, row 155, other:div.phases 48, other:div.introduction 33, other:div.inquiryPanel 4, other:div.crumbs 2
+  [claude] rows 155 (mean/page 2.4); cols/row: 1 153 (0.99), 2 2 (0.01); cols in multi-col rows 4/157 = 0.03
+  [claude] row labels: div.row 150, div.row.supervisor 5
+  [claude] heading-led columns 43: opens-row 43 (1.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 43
+  [claude] row openers: activity 62, h3 36, alert 15, - 14, p 11, h4 7, repeat 5, row 2
+  [claude] continuing-column openers: alert 2
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4 2
+  [claude] widgets: top-level 1, in-col 1
+
+== template=Bilingual — pages 63
+  [gold] top-level: row 382, other:div.clickDropContent 2, other:div 1, other:col 1, other:br 1, other:p 1
+  [gold] rows 382 (mean/page 6.1); cols/row: 1 316 (0.83), 2 63 (0.16), 3+ 3 (0.01); cols in multi-col rows 134/450 = 0.30
+  [gold] row labels: div.row 381, div.row.supervisor 1
+  [gold] heading-led columns 2: opens-row 2 (1.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 2
+  [gold] row openers: activity 203, repeat 118, alert 27, - 9, col 8, whakatauki 4, p 3, h3 2
+  [gold] continuing-column openers: alert 52, col 8, img 4, activity 3, repeat 1, whakatauki 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 50, p,col-12.col-md-8 5, col-12.col-md-8,col-12.col-md-2.offset-md-0 2, col-12.col-md-8,col-12.col-md-4 2, col-12.col-md-8,div.row,div.row 1, col-12.col-md-8,col-12.col-md-3.offset-md-0 1
+  [gold] widgets: in-col 2
+  [claude] top-level: row 315, other:repeat 32, WIDGET 19
+  [claude] rows 315 (mean/page 5.0); cols/row: 1 314 (1.00), 2 1 (0.00); cols in multi-col rows 2/316 = 0.01
+  [claude] row labels: div.row 315
+  [claude] heading-led columns 8: opens-row 8 (1.00) / continues-row 0 (0.00); heading-only 5 (0.62) / heading+content 3
+  [claude] row openers: repeat 159, activity 91, WIDGET 21, h5 12, row 8, p 8, h3 7, alert 4
+  [claude] continuing-column openers: alert 1
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 1
+  [claude] widgets: in-col 21, top-level 19
+
+== template+ptype=Standard/lesson — pages 1448
+  [gold] top-level: row 9928, WIDGET 217, other:div.clickDropContent 88, other:div 75, other:repeat 51, other:col 34
+  [gold] rows 9928 (mean/page 6.9); cols/row: 1 8217 (0.83), 2 1417 (0.14), 3+ 294 (0.03); cols in multi-col rows 4019/12236 = 0.33
+  [gold] row labels: div.row 9723, div.row.supervisor 202, div.row.selectionBox 3
+  [gold] heading-led columns 2244: opens-row 2147 (0.96) / continues-row 97 (0.04); heading-only 424 (0.19) / heading+content 1820
+  [gold] row openers: activity 4380, h3 1539, p 1205, alert 612, repeat 446, WIDGET 364, h2 310, h4 298
+  [gold] continuing-column openers: alert 781, img 530, col 335, p 273, repeat 132, h3 79, WIDGET 45, - 30
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 655, col-12.col-md-8,col-12.col-md-4 148, col-12,col-12.col-md-8 81, col-12.col-md-8,col-6.col-md-4.offset-3.offset-md-0 60, col-12.col-md-8,col-12.col-md-8,col-12.col-md-4.offset-md-0 48, col-12.col-md-8,col-4 43
+  [gold] widgets: in-col 409, top-level 217
+  [claude] top-level: row 11357, other:repeat 93, WIDGET 76, other:div.inquiryPanel 14, other:div.crumbs 5
+  [claude] rows 11357 (mean/page 7.8); cols/row: 1 11130 (0.98), 2 218 (0.02), 3+ 9 (0.00); cols in multi-col rows 464/11594 = 0.04
+  [claude] row labels: div.row 11162, div.row.supervisor 195
+  [claude] heading-led columns 3273: opens-row 3263 (1.00) / continues-row 10 (0.00); heading-only 257 (0.08) / heading+content 3016
+  [claude] row openers: activity 4484, h3 2421, p 1073, alert 1001, h4 641, repeat 476, img 223, h2 201
+  [claude] continuing-column openers: alert 112, img 58, p 48, h4 7, repeat 4, col 4, h3 3, - 1
+  [claude] multi-col patterns: col-12.col-md-6,col-12.col-md-6 105, col-12.col-md-8,col-12.col-md-4.offset-md-0 69, col-12.col-md-8,col-12.col-md-4 39, col-12.col-md-8,col-md-4 4, col-12.col-md-4,col-12.col-md-4,col-12.col-md-4 3, ┌ 2× repeated:,col-12.col-md-3,col-12.col-md-3 2
+  [claude] widgets: in-col 178, top-level 76
+
+== template+ptype=Standard/overview — pages 284
+  [gold] top-level: row 569, other:div 41, other:col 10, other:div.clickDropContent 4, other:repeat 3, other:br 3
+  [gold] rows 569 (mean/page 2.0); cols/row: 1 440 (0.77), 2 83 (0.15), 3+ 46 (0.08); cols in multi-col rows 313/753 = 0.42
+  [gold] row labels: div.row 496, div.row.supervisor 73
+  [gold] heading-led columns 140: opens-row 135 (0.96) / continues-row 5 (0.04); heading-only 80 (0.57) / heading+content 60
+  [gold] row openers: h3 107, p 101, row 77, repeat 48, whakatauki 48, col 42, alert 32, video 26
+  [gold] continuing-column openers: p 77, col 37, img 26, alert 14, repeat 10, whakatauki 4, video 3, h3 3
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-8 43, col-12.col-md-8,col-12.col-md-8,div.row 31, col-12.col-md-8,col-12.col-md-4.offset-md-0 14, col-12.col-md-8,col-12.col-md-4 9, col-12,col-12.col-md-8 3, col-12.col-md-8,col-12.col-md-8,col-12.col-md-4.offset-md-0 2
+  [gold] widgets: in-col 17, top-level 3
+  [claude] top-level: row 753, other:repeat 29, WIDGET 4
+  [claude] rows 753 (mean/page 2.7); cols/row: 1 683 (0.91), 2 70 (0.09); cols in multi-col rows 140/823 = 0.17
+  [claude] row labels: div.row 677, div.row.supervisor 76
+  [claude] heading-led columns 215: opens-row 215 (1.00) / continues-row 0 (0.00); heading-only 93 (0.43) / heading+content 122
+  [claude] row openers: h3 155, p 142, row 76, repeat 68, whakatauki 67, h4 54, activity 45, alert 33
+  [claude] continuing-column openers: p 63, repeat 7
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-8 70
+  [claude] widgets: in-col 11, top-level 4
+
+== template+ptype=Fundamentals/overview — pages 53
+  [gold] top-level: other:div.fundamentalsPanel 222, other:div.phases 52, other:div.introduction 37, row 17, other:div 15, other:repeat 2
+  [gold] rows 17 (mean/page 0.3); cols/row: 1 15 (0.88), 2 1 (0.06), 3+ 1 (0.06); cols in multi-col rows 5/20 = 0.25
+  [gold] row labels: div.row 17
+  [gold] heading-led columns 1: opens-row 0 (0.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 0
+  [gold] row openers: div.acks 14, p 2, - 1
+  [gold] continuing-column openers: WIDGET 1, p 1, img 1
+  [gold] multi-col patterns: col-12,col-12.col-md-12 1, col-12.col-md-8,col-12.col-md-8,col-12.col-md-4.offset-md-0 1
+  [gold] widgets: in-col 1
+  [claude] top-level: other:div.fundamentalsPanel 230, other:div.phases 48, other:div.introduction 33, row 18, other:div.inquiryPanel 4, other:div.crumbs 2
+  [claude] rows 18 (mean/page 0.3); cols/row: 1 18 (1.00); cols in multi-col rows 0/18 = 0.00
+  [claude] row labels: div.row 18
+  [claude] heading-led columns 1: opens-row 1 (1.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 1
+  [claude] row openers: - 14, h3 1, alert 1, img 1, p 1
+  [claude] continuing-column openers: 
+  [claude] multi-col patterns: 
+  [claude] widgets: 
+
+== template+ptype=Inquiry/overview — pages 49
+  [gold] top-level: other:div.inquiryPanel 283, other:div.crumbs 43, row 21, other:div 9, other:repeat 1
+  [gold] rows 21 (mean/page 0.4); cols/row: 1 18 (0.86), 2 2 (0.10), 3+ 1 (0.05); cols in multi-col rows 9/27 = 0.33
+  [gold] row labels: div.row 19, div.row.supervisor 2
+  [gold] heading-led columns 2: opens-row 2 (1.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 2
+  [gold] row openers: div.acks 9, repeat 3, row 2, whakatauki 1, activity 1, div 1, p 1, h4 1
+  [gold] continuing-column openers: whakatauki 2, repeat 1, video 1, p 1, col 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-8 2, col-12.col-md-8,col-12.col-md-8,col-12.col-md-8,col-12.col-md-8… 1
+  [gold] widgets: 
+  [claude] top-level: row 236, other:div.inquiryPanel 197, other:div.crumbs 29, other:repeat 10, WIDGET 3
+  [claude] rows 236 (mean/page 4.8); cols/row: 1 235 (1.00), 2 1 (0.00); cols in multi-col rows 2/237 = 0.01
+  [claude] row labels: div.row 234, div.row.supervisor 2
+  [claude] heading-led columns 77: opens-row 77 (1.00) / continues-row 0 (0.00); heading-only 18 (0.23) / heading+content 59
+  [claude] row openers: activity 62, h4 53, h5 20, alert 19, p 15, h3 15, repeat 14, - 11
+  [claude] continuing-column openers: p 1
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-8 1
+  [claude] widgets: in-col 4, top-level 3
+
+== template+ptype=Inquiry/lesson — pages 49
+  [gold] top-level: row 281, other:div.clickDropContent 27, other:div.inquiryPanel 15, WIDGET 4, other:div.crumbs 2, other:div 2
+  [gold] rows 281 (mean/page 5.7); cols/row: 1 251 (0.89), 2 27 (0.10), 3+ 3 (0.01); cols in multi-col rows 70/321 = 0.22
+  [gold] row labels: div.row 273, div.row.supervisor 8
+  [gold] heading-led columns 39: opens-row 39 (1.00) / continues-row 0 (0.00); heading-only 4 (0.10) / heading+content 35
+  [gold] row openers: activity 131, h3 35, repeat 31, p 30, alert 24, row 8, WIDGET 5, img 4
+  [gold] continuing-column openers: img 13, col 12, alert 10, div.choiceHeightMatch 2, repeat 1, p 1, div 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 21, col-12.col-md-8,col-6.col-md-4.offset-3.offset-md-0 2, col-12.col-md-8,div.row,div.row,div.row… 2, col-12.col-md-8,div.row,div.row 1, col-12.col-md-4,col-12.col-md-4 1, col-12.col-md-8,col-12.col-md-8 1
+  [gold] widgets: in-col 5, top-level 4
+  [claude] top-level: row 414, other:repeat 8, WIDGET 1
+  [claude] rows 414 (mean/page 8.4); cols/row: 1 413 (1.00), 2 1 (0.00); cols in multi-col rows 2/415 = 0.00
+  [claude] row labels: div.row 404, div.row.supervisor 10
+  [claude] heading-led columns 62: opens-row 62 (1.00) / continues-row 0 (0.00); heading-only 15 (0.24) / heading+content 47
+  [claude] row openers: activity 173, p 46, h3 44, repeat 28, alert 27, h5 21, - 11, img 9
+  [claude] continuing-column openers: alert 1
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 1
+  [claude] widgets: in-col 5, top-level 1
+
+== template+ptype=Bilingual/lesson — pages 47
+  [gold] top-level: row 344, other:div.clickDropContent 2, other:div 1, other:br 1
+  [gold] rows 344 (mean/page 7.3); cols/row: 1 285 (0.83), 2 56 (0.16), 3+ 3 (0.01); cols in multi-col rows 120/405 = 0.30
+  [gold] row labels: div.row 343, div.row.supervisor 1
+  [gold] heading-led columns 2: opens-row 2 (1.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 2
+  [gold] row openers: activity 190, repeat 102, alert 27, col 7, - 6, whakatauki 2, h3 2, WIDGET 2
+  [gold] continuing-column openers: alert 49, col 7, img 3, activity 3
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 46, p,col-12.col-md-8 3, col-12.col-md-8,col-12.col-md-2.offset-md-0 2, col-12.col-md-8,col-12.col-md-4 2, col-12.col-md-8,div.row,div.row 1, col-12.col-md-8,col-12.col-md-3.offset-md-0 1
+  [gold] widgets: in-col 2
+  [claude] top-level: row 276, other:repeat 30, WIDGET 19
+  [claude] rows 276 (mean/page 5.9); cols/row: 1 275 (1.00), 2 1 (0.00); cols in multi-col rows 2/277 = 0.01
+  [claude] row labels: div.row 276
+  [claude] heading-led columns 1: opens-row 1 (1.00) / continues-row 0 (0.00); heading-only 1 (1.00) / heading+content 0
+  [claude] row openers: repeat 140, activity 83, WIDGET 21, h5 12, row 8, p 7, col 2, alert 2
+  [claude] continuing-column openers: alert 1
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 1
+  [claude] widgets: in-col 21, top-level 19
+
+== template+ptype=Bilingual/overview — pages 16
+  [gold] top-level: row 38, other:col 1, other:p 1
+  [gold] rows 38 (mean/page 2.4); cols/row: 1 31 (0.82), 2 7 (0.18); cols in multi-col rows 14/45 = 0.31
+  [gold] row labels: div.row 38
+  [gold] heading-led columns 1: opens-row 0 (0.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 0
+  [gold] row openers: repeat 16, activity 13, - 3, p 2, whakatauki 2, row 1, col 1
+  [gold] continuing-column openers: alert 3, col 1, img 1, repeat 1, whakatauki 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 4, p,col-12.col-md-8 2, ┌ 2× repeated:,col-12.col-md-8 1
+  [gold] widgets: 
+  [claude] top-level: row 39, other:repeat 2
+  [claude] rows 39 (mean/page 2.4); cols/row: 1 39 (1.00); cols in multi-col rows 0/39 = 0.00
+  [claude] row labels: div.row 39
+  [claude] heading-led columns 7: opens-row 7 (1.00) / continues-row 0 (0.00); heading-only 4 (0.57) / heading+content 3
+  [claude] row openers: repeat 19, activity 8, h3 7, video 2, alert 2, p 1
+  [claude] continuing-column openers: 
+  [claude] multi-col patterns: 
+  [claude] widgets: 
+
+== template+ptype=Fundamentals/lesson — pages 11
+  [gold] top-level: row 107, WIDGET 4, other:div 1
+  [gold] rows 107 (mean/page 9.7); cols/row: 1 96 (0.90), 2 9 (0.08), 3+ 2 (0.02); cols in multi-col rows 38/134 = 0.28
+  [gold] row labels: div.row 106, div.row.supervisor 1
+  [gold] heading-led columns 31: opens-row 31 (1.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 31
+  [gold] row openers: activity 42, h3 30, p 13, alert 8, repeat 7, row 3, img 1, h2 1
+  [gold] continuing-column openers: col 16, alert 7, img 2, - 1, list 1
+  [gold] multi-col patterns: col-12.col-md-8,col-4 5, col-12.col-md-8,col-12.col-md-4.offset-md-0 3, div.alertPadding.col-12.col-md-8,col-4 1, col-12.col-md-10,div.row,h2,div.row… 1, col-12.col-md-8,div.row,div.row,div.row… 1
+  [gold] widgets: top-level 4, in-col 1
+  [claude] top-level: row 137, other:repeat 1, WIDGET 1
+  [claude] rows 137 (mean/page 12.5); cols/row: 1 135 (0.99), 2 2 (0.01); cols in multi-col rows 4/139 = 0.03
+  [claude] row labels: div.row 132, div.row.supervisor 5
+  [claude] heading-led columns 42: opens-row 42 (1.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 42
+  [claude] row openers: activity 62, h3 35, alert 14, p 10, h4 7, repeat 5, row 2, WIDGET 1
+  [claude] continuing-column openers: alert 2
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4 2
+  [claude] widgets: top-level 1, in-col 1
+
+== subject=NCEA1 — pages 333
+  [gold] top-level: row 1789, WIDGET 30, other:div.clickDropContent 12, other:col 11, other:div 10, other:repeat 4
+  [gold] rows 1789 (mean/page 5.4); cols/row: 1 1398 (0.78), 2 264 (0.15), 3+ 127 (0.07); cols in multi-col rows 999/2397 = 0.42
+  [gold] row labels: div.row 1789
+  [gold] heading-led columns 531: opens-row 477 (0.90) / continues-row 54 (0.10); heading-only 154 (0.29) / heading+content 377
+  [gold] row openers: activity 660, h3 292, p 209, alert 176, h2 162, repeat 108, WIDGET 38, img 25
+  [gold] continuing-column openers: alert 154, img 133, p 105, repeat 72, col 53, h3 47, WIDGET 12, video 8
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 147, col-12,col-12.col-md-8 40, col-12.col-md-8,col-12.col-md-8,col-12.col-md-4.offset-md-0 37, col-12.col-md-8,col-12.col-md-4 28, col-12.col-md-8,col-12,col-12.col-md-8 17, col-12.col-md-8,col-6.col-md-4.offset-3.offset-md-0 11
+  [gold] widgets: in-col 50, top-level 30
+  [claude] top-level: row 2104, other:repeat 27, WIDGET 1
+  [claude] rows 2104 (mean/page 6.3); cols/row: 1 2100 (1.00), 2 4 (0.00); cols in multi-col rows 8/2108 = 0.00
+  [claude] row labels: div.row 2104
+  [claude] heading-led columns 826: opens-row 826 (1.00) / continues-row 0 (0.00); heading-only 105 (0.13) / heading+content 721
+  [claude] row openers: activity 619, h3 543, alert 219, h2 191, p 159, h4 92, repeat 84, h5 74
+  [claude] continuing-column openers: alert 4
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 2, col-12.col-md-8,col-12.col-md-4 2
+  [claude] widgets: in-col 18, top-level 1
+
+== subject=1-10 Mathematics — pages 332
+  [gold] top-level: row 2177, other:div 28, other:col 7, WIDGET 7, other:div.fundamentalsPanel 6, other:repeat 5
+  [gold] rows 2177 (mean/page 6.6); cols/row: 1 1723 (0.79), 2 402 (0.18), 3+ 52 (0.02); cols in multi-col rows 1041/2764 = 0.38
+  [gold] row labels: div.row 2149, div.row.supervisor 28
+  [gold] heading-led columns 443: opens-row 435 (0.98) / continues-row 8 (0.02); heading-only 73 (0.16) / heading+content 370
+  [gold] row openers: activity 1119, h3 347, p 271, repeat 83, WIDGET 72, h4 49, alert 46, row 43
+  [gold] continuing-column openers: alert 230, img 130, col 105, p 55, repeat 18, WIDGET 8, h3 8, - 7
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 208, col-12.col-md-8,col-4 28, col-12.col-md-8,col-12.col-md-4 21, col-12.col-md-12,col-12.col-md-8 20, col-12.col-md-8,col-12.col-md-3.offset-md-0 19, col-12.col-md-8,col-12.col-md-2 15
+  [gold] widgets: in-col 80, top-level 7
+  [claude] top-level: row 2408, other:repeat 12, WIDGET 10, other:div.inquiryPanel 4, other:div.crumbs 2
+  [claude] rows 2408 (mean/page 7.3); cols/row: 1 2373 (0.99), 2 35 (0.01); cols in multi-col rows 70/2443 = 0.03
+  [claude] row labels: div.row 2385, div.row.supervisor 23
+  [claude] heading-led columns 588: opens-row 588 (1.00) / continues-row 0 (0.00); heading-only 33 (0.06) / heading+content 555
+  [claude] row openers: activity 1222, h3 506, p 177, alert 143, repeat 91, h4 82, img 67, h5 24
+  [claude] continuing-column openers: alert 26, img 7, p 2
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4 16, col-12.col-md-8,col-12.col-md-4.offset-md-0 10, col-12.col-md-6,col-12.col-md-6 9
+  [claude] widgets: in-col 20, top-level 10
+
+== subject=1-10 English — pages 304
+  [gold] top-level: row 1676, other:div.fundamentalsPanel 32, WIDGET 29, other:repeat 26, other:div 21, other:div.phases 8
+  [gold] rows 1676 (mean/page 5.5); cols/row: 1 1370 (0.82), 2 263 (0.16), 3+ 43 (0.03); cols in multi-col rows 687/2057 = 0.33
+  [gold] row labels: div.row 1650, div.row.supervisor 23, div.row.selectionBox 3
+  [gold] heading-led columns 428: opens-row 416 (0.97) / continues-row 12 (0.03); heading-only 88 (0.21) / heading+content 340
+  [gold] row openers: activity 687, h3 293, p 250, h4 116, WIDGET 66, repeat 54, alert 39, row 37
+  [gold] continuing-column openers: alert 146, img 81, p 52, col 35, repeat 27, h3 11, WIDGET 6, - 6
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 95, col-12.col-md-8,col-12.col-md-4 25, col-12,col-12.col-md-8 16, col-12.col-md-8,col-4 14, col-md-12,col-12.col-md-8 14, col-12.col-md-8,col-6.col-md-4.offset-3.offset-md-0 13
+  [gold] widgets: in-col 72, top-level 29
+  [claude] top-level: row 1782, other:div.fundamentalsPanel 32, WIDGET 28, other:repeat 19, other:div.phases 8, other:div.introduction 8
+  [claude] rows 1782 (mean/page 5.9); cols/row: 1 1719 (0.96), 2 61 (0.03), 3+ 2 (0.00); cols in multi-col rows 129/1848 = 0.07
+  [claude] row labels: div.row 1758, div.row.supervisor 24
+  [claude] heading-led columns 550: opens-row 548 (1.00) / continues-row 2 (0.00); heading-only 56 (0.10) / heading+content 494
+  [claude] row openers: activity 657, h3 364, p 251, h4 184, alert 76, repeat 66, h5 52, WIDGET 38
+  [claude] continuing-column openers: img 33, p 15, alert 12, repeat 3, h4 2, col 1
+  [claude] multi-col patterns: col-12.col-md-6,col-12.col-md-6 48, col-12.col-md-8,col-12.col-md-4 6, col-12.col-md-8,col-md-4 4, col-12.col-md-8,col-12.col-md-4.offset-md-0 2, col-12.col-md-4,┌ 2× repeated: 1, col-12.col-md-4,col-12.col-md-4,col-12.col-md-4 1
+  [claude] widgets: in-col 38, top-level 28
+
+== subject=1-10 Blended Literacy — pages 258
+  [gold] top-level: row 1069, other:div.inquiryPanel 81, other:div 44, other:div.crumbs 11, other:col 8, WIDGET 4
+  [gold] rows 1069 (mean/page 4.1); cols/row: 1 868 (0.81), 2 150 (0.14), 3+ 51 (0.05); cols in multi-col rows 473/1341 = 0.35
+  [gold] row labels: div.row 899, div.row.supervisor 170
+  [gold] heading-led columns 83: opens-row 83 (1.00) / continues-row 0 (0.00); heading-only 69 (0.83) / heading+content 14
+  [gold] row openers: activity 794, row 87, h3 79, p 41, alert 16, img 16, div.acks 10, div 10
+  [gold] continuing-column openers: col 89, p 86, alert 85, img 5, list 3, div 1, activity 1, - 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-8 40, col-12.col-md-8,col-12.col-md-4.offset-md-0 39, col-12.col-md-8,col-12.col-md-8,div.row 31, col-12.col-md-8,col-6.col-md-4.offset-3.offset-md-0 15, col-12.col-md-8,div.align-self-center.col-12.col-md-4.offset-md-0 9, col-12.col-md-2,col-12.col-md-6 8
+  [gold] widgets: top-level 4
+  [claude] top-level: row 1274, other:div.inquiryPanel 73, other:repeat 22, other:div.crumbs 10, WIDGET 4
+  [claude] rows 1274 (mean/page 4.9); cols/row: 1 1171 (0.92), 2 103 (0.08); cols in multi-col rows 206/1377 = 0.15
+  [claude] row labels: div.row 1097, div.row.supervisor 177
+  [claude] heading-led columns 75: opens-row 75 (1.00) / continues-row 0 (0.00); heading-only 54 (0.72) / heading+content 21
+  [claude] row openers: activity 869, p 138, row 76, h3 67, repeat 27, a 26, audio 17, alert 15
+  [claude] continuing-column openers: p 64, alert 32, repeat 7
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-8 71, col-12.col-md-8,col-12.col-md-4.offset-md-0 32
+  [claude] widgets: in-col 10, top-level 4
+
+== subject=Leaving to Learn — pages 200
+  [gold] top-level: row 1578, other:div.clickDropContent 89, WIDGET 14, other:div 11, other:div.fundamentalsPanel 9, other:col 6
+  [gold] rows 1578 (mean/page 7.9); cols/row: 1 1403 (0.89), 2 149 (0.09), 3+ 26 (0.02); cols in multi-col rows 415/1818 = 0.23
+  [gold] row labels: div.row 1524, div.row.supervisor 54
+  [gold] heading-led columns 245: opens-row 244 (1.00) / continues-row 1 (0.00); heading-only 30 (0.12) / heading+content 215
+  [gold] row openers: activity 618, p 239, h3 202, alert 176, repeat 165, row 42, WIDGET 38, h4 21
+  [gold] continuing-column openers: alert 75, col 67, img 56, p 16, repeat 6, whakatauki 4, - 4, WIDGET 3
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 70, col-12.col-md-8,col-12.col-md-4 24, col-12.col-md-8,col-6.col-md-4.offset-3.offset-md-0 6, col-12.col-md-8,col-3 6, col-12,col-12.col-md-8 6, col-12.col-md-8,div.row 5
+  [gold] widgets: in-col 41, top-level 14
+  [claude] top-level: row 1944, other:repeat 22, other:div.fundamentalsPanel 9, other:div.phases 1, other:div.introduction 1
+  [claude] rows 1944 (mean/page 9.7); cols/row: 1 1932 (0.99), 2 9 (0.00), 3+ 3 (0.00); cols in multi-col rows 27/1959 = 0.01
+  [claude] row labels: div.row 1900, div.row.supervisor 44
+  [claude] heading-led columns 491: opens-row 489 (1.00) / continues-row 2 (0.00); heading-only 25 (0.05) / heading+content 466
+  [claude] row openers: activity 674, h3 366, p 204, alert 203, repeat 145, h4 123, img 51, - 33
+  [claude] continuing-column openers: alert 9, h4 2, col 2, p 1, repeat 1
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4 6, col-12.col-md-8,col-12.col-md-4.offset-md-0 3, ┌ 2× repeated:,col-12.col-md-3,col-12.col-md-3 1, col-12.col-md-3,col-12.col-md-3,┌ 2× repeated: 1, col-12.col-md-3,┌ 2× repeated:,col-12.col-md-3 1
+  [claude] widgets: in-col 19
+
+== subject=Online Safety (OS9000) — pages 130
+  [gold] top-level: row 886, WIDGET 16, other:div.flipCardsContainer 5, other:col 3, other:repeat 3, other:br 3
+  [gold] rows 886 (mean/page 6.8); cols/row: 1 825 (0.93), 2 54 (0.06), 3+ 7 (0.01); cols in multi-col rows 134/959 = 0.14
+  [gold] row labels: div.row 879, div.row.supervisor 7
+  [gold] heading-led columns 220: opens-row 218 (0.99) / continues-row 2 (0.01); heading-only 28 (0.13) / heading+content 192
+  [gold] row openers: activity 193, p 144, h3 140, WIDGET 106, h4 54, alert 46, video 43, repeat 32
+  [gold] continuing-column openers: alert 14, img 14, WIDGET 14, col 11, p 8, repeat 4, div.clickDropContent 2, div.shapeHover 2
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 17, col-12.col-md-12,col-12.col-md-8 8, col-12,col-12.col-md-8 6, col-12.col-md-8,col-12.col-md-8 3, col-12.col-md-12,div.row 3, col-12.col-md-8,col-12.col-md-3.offset-md-0 3
+  [gold] widgets: in-col 120, top-level 16
+  [claude] top-level: row 801, WIDGET 8, other:repeat 4
+  [claude] rows 801 (mean/page 6.2); cols/row: 1 781 (0.98), 2 20 (0.02); cols in multi-col rows 40/821 = 0.05
+  [claude] row labels: div.row 792, div.row.supervisor 9
+  [claude] heading-led columns 256: opens-row 256 (1.00) / continues-row 0 (0.00); heading-only 9 (0.04) / heading+content 247
+  [claude] row openers: activity 181, h3 176, p 104, alert 84, h4 80, WIDGET 48, repeat 48, whakatauki 28
+  [claude] continuing-column openers: p 14, img 3, alert 3
+  [claude] multi-col patterns: col-12.col-md-6,col-12.col-md-6 17, col-12.col-md-8,col-12.col-md-4.offset-md-0 3
+  [claude] widgets: in-col 48, top-level 8
+
+== subject=ConnectED — pages 114
+  [gold] top-level: row 712, other:div.inquiryPanel 125, other:div.crumbs 21, other:div.clickDropContent 8, other:repeat 7, other:div 4
+  [gold] rows 712 (mean/page 6.2); cols/row: 1 591 (0.83), 2 109 (0.15), 3+ 12 (0.02); cols in multi-col rows 263/854 = 0.31
+  [gold] row labels: div.row 709, div.row.supervisor 3
+  [gold] heading-led columns 222: opens-row 217 (0.98) / continues-row 5 (0.02); heading-only 22 (0.10) / heading+content 200
+  [gold] row openers: activity 166, h3 137, p 104, alert 69, h2 46, repeat 41, h4 34, WIDGET 24
+  [gold] continuing-column openers: img 87, alert 23, p 11, repeat 10, col 3, h2 3, h3 2, div.clickDropContent 2
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 54, col-12.col-md-8,col-12.col-md-4 37, col-12.col-md-8,col-12.col-md-8,col-12.col-md-4.offset-md-0,col-12.col-md-8 8, col-12.col-md-8,col-12.col-md-8 5, col-12.col-md-8,col-6.col-md-4.offset-3.offset-md-0 3, col-12.col-md-8,div.align-self-center.col-12.col-md-4.offset-md-0.paddingL 3
+  [gold] widgets: in-col 25
+  [claude] top-level: row 1093, other:div.inquiryPanel 51, WIDGET 15, other:repeat 9, other:div.crumbs 8
+  [claude] rows 1093 (mean/page 9.6); cols/row: 1 1066 (0.98), 2 24 (0.02), 3+ 3 (0.00); cols in multi-col rows 57/1123 = 0.05
+  [claude] row labels: div.row 1088, div.row.supervisor 5
+  [claude] heading-led columns 360: opens-row 354 (0.98) / continues-row 6 (0.02); heading-only 44 (0.12) / heading+content 316
+  [claude] row openers: h3 206, activity 180, p 133, alert 129, h4 119, repeat 77, table 57, div.wananga 54
+  [claude] continuing-column openers: img 12, p 11, h3 3, h4 3, alert 1
+  [claude] multi-col patterns: col-12.col-md-6,col-12.col-md-6 23, col-12.col-md-4,col-12.col-md-4,col-12.col-md-4 2, ┌ 2× repeated:,col-12.col-md-3,col-12.col-md-3 1, col-12.col-md-8,col-12.col-md-4.offset-md-0 1
+  [claude] widgets: in-col 19, top-level 15
+
+== subject=ANZH — pages 78
+  [gold] top-level: row 319, WIDGET 3, other:repeat 2, other:div 1, other:div.12 1, other:alert 1
+  [gold] rows 319 (mean/page 4.1); cols/row: 1 242 (0.76), 2 58 (0.18), 3+ 19 (0.06); cols in multi-col rows 200/442 = 0.45
+  [gold] row labels: div.row 318, div.row.supervisor 1
+  [gold] heading-led columns 78: opens-row 66 (0.85) / continues-row 12 (0.15); heading-only 18 (0.23) / heading+content 60
+  [gold] row openers: activity 108, alert 61, h3 53, p 32, WIDGET 15, h2 10, video 9, repeat 8
+  [gold] continuing-column openers: alert 41, col 20, p 16, img 14, h3 8, repeat 6, list 3, WIDGET 3
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 28, col-12.col-md-8,div.align-self-end.col-6.col-md-4.offset-3.offset-md-0 8, col-12.col-md-12,col-12.col-md-8 4, col-12.col-md-8,div.row,div.row,div.row… 3, col-12.col-md-8,div.row 3, col-12.col-md-8,col-12.col-md-3.offset-md-1 3
+  [gold] widgets: in-col 18, top-level 3
+  [claude] top-level: row 518, other:repeat 4
+  [claude] rows 518 (mean/page 6.6); cols/row: 1 497 (0.96), 2 21 (0.04); cols in multi-col rows 42/539 = 0.08
+  [claude] row labels: div.row 512, div.row.supervisor 6
+  [claude] heading-led columns 130: opens-row 130 (1.00) / continues-row 0 (0.00); heading-only 27 (0.21) / heading+content 103
+  [claude] row openers: activity 165, alert 119, h3 112, p 44, h4 18, img 13, video 13, repeat 11
+  [claude] continuing-column openers: alert 21
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 14, col-12.col-md-8,col-12.col-md-4 7
+  [claude] widgets: 
+
+== subject=Te Marautanga o Aotearoa TMoA — pages 63
+  [gold] top-level: row 382, other:div.clickDropContent 2, other:div 1, other:col 1, other:br 1, other:p 1
+  [gold] rows 382 (mean/page 6.1); cols/row: 1 316 (0.83), 2 63 (0.16), 3+ 3 (0.01); cols in multi-col rows 134/450 = 0.30
+  [gold] row labels: div.row 381, div.row.supervisor 1
+  [gold] heading-led columns 2: opens-row 2 (1.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 2
+  [gold] row openers: activity 203, repeat 118, alert 27, - 9, col 8, whakatauki 4, p 3, h3 2
+  [gold] continuing-column openers: alert 52, col 8, img 4, activity 3, repeat 1, whakatauki 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 50, p,col-12.col-md-8 5, col-12.col-md-8,col-12.col-md-2.offset-md-0 2, col-12.col-md-8,col-12.col-md-4 2, col-12.col-md-8,div.row,div.row 1, col-12.col-md-8,col-12.col-md-3.offset-md-0 1
+  [gold] widgets: in-col 2
+  [claude] top-level: row 315, other:repeat 32, WIDGET 19
+  [claude] rows 315 (mean/page 5.0); cols/row: 1 314 (1.00), 2 1 (0.00); cols in multi-col rows 2/316 = 0.01
+  [claude] row labels: div.row 315
+  [claude] heading-led columns 8: opens-row 8 (1.00) / continues-row 0 (0.00); heading-only 5 (0.62) / heading+content 3
+  [claude] row openers: repeat 159, activity 91, WIDGET 21, h5 12, row 8, p 8, h3 7, alert 4
+  [claude] continuing-column openers: alert 1
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 1
+  [claude] widgets: in-col 21, top-level 19
+
+== subject=None — pages 46
+  [gold] top-level: row 455, WIDGET 115, other:div.fundamentalsPanel 10, other:div.flipCardsContainer 9, other:div 7, other:repeat 7
+  [gold] rows 455 (mean/page 9.9); cols/row: 1 417 (0.92), 2 32 (0.07), 3+ 6 (0.01); cols in multi-col rows 106/523 = 0.20
+  [gold] row labels: div.row 455
+  [gold] heading-led columns 113: opens-row 113 (1.00) / continues-row 0 (0.00); heading-only 19 (0.17) / heading+content 94
+  [gold] row openers: activity 150, h3 101, br 59, p 42, WIDGET 21, alert 21, repeat 20, h2 8
+  [gold] continuing-column openers: alert 23, col 18, img 12, - 9, p 3, br 2, div.justify-content-around 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 16, col-12.col-md-8,col-12.col-md-4 13, col-12.col-md-8,col-12.col-md-8,col-12.col-md-4 1, col-12.col-md-8,col-12.col-md-8,col-12.col-md-4.offset-md-0,col-12.col-md-8 1, col-12,col-12.col-md-8,col-12.col-md-4.offset-md-0 1, col-12,col-6.col-md-4.offset-3.offset-md-0,col-12.col-md-8 1
+  [gold] widgets: top-level 115, in-col 21
+  [claude] top-level: row 519, WIDGET 16, other:div.fundamentalsPanel 10, other:div.phases 5, other:div.introduction 5, other:repeat 4
+  [claude] rows 519 (mean/page 11.3); cols/row: 1 508 (0.98), 2 10 (0.02), 3+ 1 (0.00); cols in multi-col rows 23/531 = 0.04
+  [claude] row labels: div.row 519
+  [claude] heading-led columns 222: opens-row 222 (1.00) / continues-row 0 (0.00); heading-only 21 (0.09) / heading+content 201
+  [claude] row openers: h3 196, activity 141, p 43, alert 42, repeat 26, h4 26, WIDGET 25, img 5
+  [claude] continuing-column openers: p 5, img 3, alert 2, - 1, col 1
+  [claude] multi-col patterns: col-12.col-md-6,col-12.col-md-6 8, col-12.col-md-8,col-12.col-md-4.offset-md-0 2, col-12.col-md-3,col-12.col-md-3,┌ 2× repeated: 1
+  [claude] widgets: in-col 25, top-level 16
+
+== subject=1-10 Social Science — pages 38
+  [gold] top-level: row 174, other:div.fundamentalsPanel 28, WIDGET 8, other:div.phases 7, other:div.introduction 7, other:div.flipCardsContainer 4
+  [gold] rows 174 (mean/page 4.6); cols/row: 1 122 (0.70), 2 52 (0.30); cols in multi-col rows 104/226 = 0.46
+  [gold] row labels: div.row 174
+  [gold] heading-led columns 63: opens-row 63 (1.00) / continues-row 0 (0.00); heading-only 2 (0.03) / heading+content 61
+  [gold] row openers: h3 52, activity 45, repeat 18, p 18, alert 15, h2 11, col 4, div.acks 4
+  [gold] continuing-column openers: img 35, alert 17
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 18, col-12.col-md-8,col-12.col-md-4 8, col-12.col-md-7,col-12.col-md-3 8, col-12.col-md-8,col-12.col-md-2.offset-md-0 6, col-12.col-md-8,col-12.col-md-2 3, col-12.col-md-7,col-12.col-md-5 2
+  [gold] widgets: top-level 8, in-col 3
+  [claude] top-level: row 285, other:div.fundamentalsPanel 23, other:repeat 7, other:div.phases 6, other:div.introduction 6
+  [claude] rows 285 (mean/page 7.5); cols/row: 1 283 (0.99), 2 2 (0.01); cols in multi-col rows 4/287 = 0.01
+  [claude] row labels: div.row 285
+  [claude] heading-led columns 123: opens-row 123 (1.00) / continues-row 0 (0.00); heading-only 2 (0.02) / heading+content 121
+  [claude] row openers: h3 111, activity 72, alert 44, p 16, h4 12, img 11, repeat 8, whakatauki 2
+  [claude] continuing-column openers: alert 2
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4 2
+  [claude] widgets: in-col 2
+
+== subject=EXPlore — pages 15
+  [gold] top-level: other:div.inquiryPanel 64, row 21, other:div.crumbs 11, WIDGET 2, other:div 1
+  [gold] rows 21 (mean/page 1.4); cols/row: 1 13 (0.62), 2 4 (0.19), 3+ 4 (0.19); cols in multi-col rows 28/41 = 0.68
+  [gold] row labels: div.row 21
+  [gold] heading-led columns 14: opens-row 6 (0.43) / continues-row 8 (0.57); heading-only 5 (0.36) / heading+content 9
+  [gold] row openers: alert 3, h4 3, h2 2, activity 2, repeat 2, WIDGET 1, img 1, p 1
+  [gold] continuing-column openers: img 5, h3 4, h4 4, alert 3, whakatauki 2, p 1, div.choicePage 1
+  [gold] multi-col patterns: col-12,col-12.col-md-8,col-12 2, col-12.col-md-8,col-12 1, col-12.col-md-8,div.align-self-center.col-12.col-md-4.offset-md-0 1, div.clearfix,col-12.col-md-8,col-12.col-md-8,col-12.col-md-4… 1, col-12.col-md-8,col-12.col-md-4,col-12.col-md-8,col-12.col-md-4 1, col-12.col-md-4,col-12.col-md-8 1
+  [gold] widgets: top-level 2, in-col 1
+  [claude] top-level: row 49, other:div.inquiryPanel 44, other:div.crumbs 10, other:repeat 7, WIDGET 2
+  [claude] rows 49 (mean/page 3.3); cols/row: 1 47 (0.96), 2 2 (0.04); cols in multi-col rows 4/51 = 0.08
+  [claude] row labels: div.row 49
+  [claude] heading-led columns 22: opens-row 22 (1.00) / continues-row 0 (0.00); heading-only 7 (0.32) / heading+content 15
+  [claude] row openers: h4 11, h3 11, p 7, alert 6, repeat 5, activity 4, - 2, whakatauki 1
+  [claude] continuing-column openers: alert 2
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4 2
+  [claude] widgets: top-level 2
+
+== subject=1-10 Health and PE — pages 15
+  [gold] top-level: other:div.fundamentalsPanel 85, other:div.phases 15, other:div 2, row 2
+  [gold] rows 2 (mean/page 0.1); cols/row: 1 2 (1.00); cols in multi-col rows 0/2 = 0.00
+  [gold] row labels: div.row 2
+  [gold] heading-led columns 1: opens-row 0 (0.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 0
+  [gold] row openers: div.acks 2
+  [gold] continuing-column openers: 
+  [gold] multi-col patterns: 
+  [gold] widgets: 
+  [claude] top-level: other:div.fundamentalsPanel 83, other:div.phases 15, row 14
+  [claude] rows 14 (mean/page 0.9); cols/row: 1 14 (1.00); cols in multi-col rows 0/14 = 0.00
+  [claude] row labels: div.row 14
+  [claude] heading-led columns 1: opens-row 0 (0.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 0
+  [claude] row openers: - 14
+  [claude] continuing-column openers: 
+  [claude] multi-col patterns: 
+  [claude] widgets: 
+
+== subject=1-10 Science — pages 10
+  [gold] top-level: row 55, other:div.fundamentalsPanel 4, other:div.flipCardsContainer 1, other:div.phases 1, other:div.introduction 1
+  [gold] rows 55 (mean/page 5.5); cols/row: 1 54 (0.98), 2 1 (0.02); cols in multi-col rows 2/56 = 0.04
+  [gold] row labels: div.row 55
+  [gold] heading-led columns 16: opens-row 16 (1.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 16
+  [gold] row openers: activity 26, h3 15, alert 8, repeat 2, whakatauki 1, h4 1, WIDGET 1, p 1
+  [gold] continuing-column openers: alert 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4 1
+  [gold] widgets: in-col 1
+  [claude] top-level: row 65, other:div.fundamentalsPanel 4, other:repeat 2, other:div.phases 1, other:div.introduction 1
+  [claude] rows 65 (mean/page 6.5); cols/row: 1 64 (0.98), 2 1 (0.02); cols in multi-col rows 2/66 = 0.03
+  [claude] row labels: div.row 65
+  [claude] heading-led columns 15: opens-row 15 (1.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 15
+  [claude] row openers: activity 27, h3 11, p 8, alert 8, h4 4, row 3, video 2, whakatauki 1
+  [claude] continuing-column openers: alert 1
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 1
+  [claude] widgets: 
+
+== subject+ptype=1-10 Mathematics/lesson — pages 292
+  [gold] top-level: row 2119, other:div 24, WIDGET 7, other:col 5, other:div.clickDropContent 5, other:repeat 3
+  [gold] rows 2119 (mean/page 7.3); cols/row: 1 1677 (0.79), 2 392 (0.18), 3+ 50 (0.02); cols in multi-col rows 1015/2692 = 0.38
+  [gold] row labels: div.row 2094, div.row.supervisor 25
+  [gold] heading-led columns 432: opens-row 424 (0.98) / continues-row 8 (0.02); heading-only 68 (0.16) / heading+content 364
+  [gold] row openers: activity 1119, h3 340, p 254, repeat 76, WIDGET 68, h4 49, alert 46, row 40
+  [gold] continuing-column openers: alert 230, img 125, col 105, p 54, repeat 14, WIDGET 8, h3 8, - 7
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 205, col-12.col-md-8,col-4 28, col-12.col-md-8,col-12.col-md-4 20, col-12.col-md-8,col-12.col-md-3.offset-md-0 19, col-12.col-md-12,col-12.col-md-8 19, col-12.col-md-8,col-12.col-md-2 15
+  [gold] widgets: in-col 76, top-level 7
+  [claude] top-level: row 2351, other:repeat 11, WIDGET 10
+  [claude] rows 2351 (mean/page 8.1); cols/row: 1 2316 (0.99), 2 35 (0.01); cols in multi-col rows 70/2386 = 0.03
+  [claude] row labels: div.row 2331, div.row.supervisor 20
+  [claude] heading-led columns 571: opens-row 571 (1.00) / continues-row 0 (0.00); heading-only 31 (0.05) / heading+content 540
+  [claude] row openers: activity 1221, h3 489, p 166, alert 143, h4 82, repeat 81, img 60, h5 24
+  [claude] continuing-column openers: alert 26, img 7, p 2
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4 16, col-12.col-md-8,col-12.col-md-4.offset-md-0 10, col-12.col-md-6,col-12.col-md-6 9
+  [claude] widgets: in-col 18, top-level 10
+
+== subject+ptype=NCEA1/lesson — pages 291
+  [gold] top-level: row 1714, WIDGET 29, other:div.clickDropContent 8, other:col 8, other:div 7, other:div.flipCardsContainer 4
+  [gold] rows 1714 (mean/page 5.9); cols/row: 1 1338 (0.78), 2 253 (0.15), 3+ 123 (0.07); cols in multi-col rows 963/2301 = 0.42
+  [gold] row labels: div.row 1714
+  [gold] heading-led columns 515: opens-row 463 (0.90) / continues-row 52 (0.10); heading-only 153 (0.30) / heading+content 362
+  [gold] row openers: activity 646, h3 288, p 198, alert 174, h2 156, repeat 95, WIDGET 36, img 25
+  [gold] continuing-column openers: alert 150, img 128, p 104, repeat 68, col 52, h3 47, WIDGET 10, video 7
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 143, col-12,col-12.col-md-8 39, col-12.col-md-8,col-12.col-md-8,col-12.col-md-4.offset-md-0 36, col-12.col-md-8,col-12.col-md-4 27, col-12.col-md-8,col-12,col-12.col-md-8 17, col-12.col-md-8,col-6.col-md-4.offset-3.offset-md-0 11
+  [gold] widgets: in-col 46, top-level 29
+  [claude] top-level: row 1920, other:repeat 24, WIDGET 1
+  [claude] rows 1920 (mean/page 6.6); cols/row: 1 1916 (1.00), 2 4 (0.00); cols in multi-col rows 8/1924 = 0.00
+  [claude] row labels: div.row 1920
+  [claude] heading-led columns 769: opens-row 769 (1.00) / continues-row 0 (0.00); heading-only 76 (0.10) / heading+content 693
+  [claude] row openers: activity 576, h3 511, alert 209, h2 184, p 147, h4 74, repeat 67, h5 46
+  [claude] continuing-column openers: alert 4
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 2, col-12.col-md-8,col-12.col-md-4 2
+  [claude] widgets: in-col 14, top-level 1
+
+== subject+ptype=1-10 English/lesson — pages 256
+  [gold] top-level: row 1613, WIDGET 29, other:repeat 24, other:div 15, other:div.clickDropContent 5, other:col 3
+  [gold] rows 1613 (mean/page 6.3); cols/row: 1 1312 (0.81), 2 260 (0.16), 3+ 41 (0.03); cols in multi-col rows 675/1987 = 0.34
+  [gold] row labels: div.row 1587, div.row.supervisor 23, div.row.selectionBox 3
+  [gold] heading-led columns 418: opens-row 406 (0.97) / continues-row 12 (0.03); heading-only 87 (0.21) / heading+content 331
+  [gold] row openers: activity 687, h3 286, p 225, h4 114, WIDGET 64, repeat 48, alert 39, row 35
+  [gold] continuing-column openers: alert 145, img 77, p 51, col 35, repeat 27, h3 11, WIDGET 6, - 6
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 95, col-12.col-md-8,col-12.col-md-4 25, col-12,col-12.col-md-8 16, col-12.col-md-8,col-4 14, col-md-12,col-12.col-md-8 14, col-12.col-md-8,col-6.col-md-4.offset-3.offset-md-0 13
+  [gold] widgets: in-col 70, top-level 29
+  [claude] top-level: row 1723, WIDGET 25, other:repeat 19
+  [claude] rows 1723 (mean/page 6.7); cols/row: 1 1660 (0.96), 2 61 (0.04), 3+ 2 (0.00); cols in multi-col rows 129/1789 = 0.07
+  [claude] row labels: div.row 1699, div.row.supervisor 24
+  [claude] heading-led columns 533: opens-row 531 (1.00) / continues-row 2 (0.00); heading-only 53 (0.10) / heading+content 480
+  [claude] row openers: activity 657, h3 348, p 228, h4 183, alert 75, repeat 57, h5 51, WIDGET 37
+  [claude] continuing-column openers: img 33, p 15, alert 12, repeat 3, h4 2, col 1
+  [claude] multi-col patterns: col-12.col-md-6,col-12.col-md-6 48, col-12.col-md-8,col-12.col-md-4 6, col-12.col-md-8,col-md-4 4, col-12.col-md-8,col-12.col-md-4.offset-md-0 2, col-12.col-md-4,┌ 2× repeated: 1, col-12.col-md-4,col-12.col-md-4,col-12.col-md-4 1
+  [claude] widgets: in-col 37, top-level 25
+
+== subject+ptype=1-10 Blended Literacy/lesson — pages 167
+  [gold] top-level: row 877, other:div 15, other:div.inquiryPanel 8, other:col 7, WIDGET 4, other:div.gx-md-0 1
+  [gold] rows 877 (mean/page 5.3); cols/row: 1 748 (0.85), 2 110 (0.13), 3+ 19 (0.02); cols in multi-col rows 295/1043 = 0.28
+  [gold] row labels: div.row 777, div.row.supervisor 100
+  [gold] heading-led columns 8: opens-row 8 (1.00) / continues-row 0 (0.00); heading-only 2 (0.25) / heading+content 6
+  [gold] row openers: activity 794, p 28, row 18, img 16, div.acks 8, h3 7, alert 2, - 1
+  [gold] continuing-column openers: alert 85, col 55, p 17, img 5, list 3, activity 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 39, col-12.col-md-8,col-6.col-md-4.offset-3.offset-md-0 15, col-12.col-md-8,div.align-self-center.col-12.col-md-4.offset-md-0 9, col-12.col-md-2,col-12.col-md-6 8, col-12.col-md-8,col-6.col-md-3.offset-3.offset-md-0 5, col-12.col-md-8,col-6.col-md-3.offset-md-0 3
+  [gold] widgets: top-level 4
+  [claude] top-level: row 1066, WIDGET 4, other:repeat 2
+  [claude] rows 1066 (mean/page 6.4); cols/row: 1 1034 (0.97), 2 32 (0.03); cols in multi-col rows 64/1098 = 0.06
+  [claude] row labels: div.row 962, div.row.supervisor 104
+  [claude] heading-led columns 8: opens-row 8 (1.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 8
+  [claude] row openers: activity 869, p 85, repeat 26, a 26, alert 15, WIDGET 10, audio 9, h3 8
+  [claude] continuing-column openers: alert 32
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 32
+  [claude] widgets: in-col 10, top-level 4
+
+== subject+ptype=Leaving to Learn/lesson — pages 167
+  [gold] top-level: row 1481, other:div.clickDropContent 89, WIDGET 13, other:div 10, other:col 6, other:repeat 5
+  [gold] rows 1481 (mean/page 8.9); cols/row: 1 1323 (0.89), 2 138 (0.09), 3+ 20 (0.01); cols in multi-col rows 369/1692 = 0.22
+  [gold] row labels: div.row 1429, div.row.supervisor 52
+  [gold] heading-led columns 224: opens-row 224 (1.00) / continues-row 0 (0.00); heading-only 27 (0.12) / heading+content 197
+  [gold] row openers: activity 618, p 218, h3 189, alert 169, repeat 148, row 39, WIDGET 33, h2 19
+  [gold] continuing-column openers: alert 71, col 64, img 47, p 10, repeat 6, - 3, WIDGET 3, list 2
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 64, col-12.col-md-8,col-12.col-md-4 22, col-12.col-md-8,col-6.col-md-4.offset-3.offset-md-0 6, col-12.col-md-8,col-3 6, col-12,col-12.col-md-8 6, col-12.col-md-8,div.row 5
+  [gold] widgets: in-col 36, top-level 13
+  [claude] top-level: row 1820, other:repeat 20
+  [claude] rows 1820 (mean/page 10.9); cols/row: 1 1808 (0.99), 2 9 (0.00), 3+ 3 (0.00); cols in multi-col rows 27/1835 = 0.01
+  [claude] row labels: div.row 1777, div.row.supervisor 43
+  [claude] heading-led columns 449: opens-row 447 (1.00) / continues-row 2 (0.00); heading-only 22 (0.05) / heading+content 427
+  [claude] row openers: activity 673, h3 344, p 193, alert 192, repeat 126, h4 103, img 50, - 32
+  [claude] continuing-column openers: alert 9, h4 2, col 2, p 1, repeat 1
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4 6, col-12.col-md-8,col-12.col-md-4.offset-md-0 3, ┌ 2× repeated:,col-12.col-md-3,col-12.col-md-3 1, col-12.col-md-3,col-12.col-md-3,┌ 2× repeated: 1, col-12.col-md-3,┌ 2× repeated:,col-12.col-md-3 1
+  [claude] widgets: in-col 18
+
+== subject+ptype=Online Safety (OS9000)/lesson — pages 102
+  [gold] top-level: row 852, WIDGET 16, other:div.flipCardsContainer 5, other:col 3, other:repeat 3, other:br 3
+  [gold] rows 852 (mean/page 8.4); cols/row: 1 791 (0.93), 2 54 (0.06), 3+ 7 (0.01); cols in multi-col rows 134/925 = 0.14
+  [gold] row labels: div.row 845, div.row.supervisor 7
+  [gold] heading-led columns 220: opens-row 218 (0.99) / continues-row 2 (0.01); heading-only 28 (0.13) / heading+content 192
+  [gold] row openers: activity 193, p 142, h3 140, WIDGET 106, h4 54, alert 46, video 40, repeat 31
+  [gold] continuing-column openers: alert 14, img 14, WIDGET 14, col 11, p 8, repeat 4, div.clickDropContent 2, div.shapeHover 2
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 17, col-12.col-md-12,col-12.col-md-8 8, col-12,col-12.col-md-8 6, col-12.col-md-8,col-12.col-md-8 3, col-12.col-md-12,div.row 3, col-12.col-md-8,col-12.col-md-3.offset-md-0 3
+  [gold] widgets: in-col 120, top-level 16
+  [claude] top-level: row 745, WIDGET 8, other:repeat 4
+  [claude] rows 745 (mean/page 7.3); cols/row: 1 725 (0.97), 2 20 (0.03); cols in multi-col rows 40/765 = 0.05
+  [claude] row labels: div.row 736, div.row.supervisor 9
+  [claude] heading-led columns 256: opens-row 256 (1.00) / continues-row 0 (0.00); heading-only 9 (0.04) / heading+content 247
+  [claude] row openers: activity 181, h3 176, p 86, alert 84, h4 80, WIDGET 48, repeat 38, img 14
+  [claude] continuing-column openers: p 14, img 3, alert 3
+  [claude] multi-col patterns: col-12.col-md-6,col-12.col-md-6 17, col-12.col-md-8,col-12.col-md-4.offset-md-0 3
+  [claude] widgets: in-col 48, top-level 8
+
+== subject+ptype=1-10 Blended Literacy/overview — pages 91
+  [gold] top-level: row 192, other:div.inquiryPanel 73, other:div 29, other:div.crumbs 10, other:col 1
+  [gold] rows 192 (mean/page 2.1); cols/row: 1 120 (0.62), 2 40 (0.21), 3+ 32 (0.17); cols in multi-col rows 178/298 = 0.60
+  [gold] row labels: div.row 122, div.row.supervisor 70
+  [gold] heading-led columns 75: opens-row 75 (1.00) / continues-row 0 (0.00); heading-only 67 (0.89) / heading+content 8
+  [gold] row openers: h3 72, row 69, alert 14, p 13, div 10, video 8, h2 2, div.acks 2
+  [gold] continuing-column openers: p 69, col 34, div 1, - 1, repeat 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-8 39, col-12.col-md-8,col-12.col-md-8,div.row 31, col-12.col-md-8,col-12.col-md-8,div.row,br… 1, col-12.col-md-8,div.row 1
+  [gold] widgets: 
+  [claude] top-level: row 208, other:div.inquiryPanel 73, other:repeat 20, other:div.crumbs 10
+  [claude] rows 208 (mean/page 2.3); cols/row: 1 137 (0.66), 2 71 (0.34); cols in multi-col rows 142/279 = 0.51
+  [claude] row labels: div.row 135, div.row.supervisor 73
+  [claude] heading-led columns 67: opens-row 67 (1.00) / continues-row 0 (0.00); heading-only 54 (0.81) / heading+content 13
+  [claude] row openers: row 73, h3 59, p 53, audio 8, h4 7, - 3, video 1, img 1
+  [claude] continuing-column openers: p 64, repeat 7
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-8 71
+  [claude] widgets: 
+
+== subject+ptype=ConnectED/lesson — pages 86
+  [gold] top-level: row 691, other:div.clickDropContent 8, other:div.inquiryPanel 7, other:repeat 6, other:div 2, other:br 2
+  [gold] rows 691 (mean/page 8.0); cols/row: 1 574 (0.83), 2 106 (0.15), 3+ 11 (0.02); cols in multi-col rows 253/827 = 0.31
+  [gold] row labels: div.row 688, div.row.supervisor 3
+  [gold] heading-led columns 221: opens-row 216 (0.98) / continues-row 5 (0.02); heading-only 22 (0.10) / heading+content 199
+  [gold] row openers: activity 166, h3 136, p 101, alert 64, h2 46, repeat 39, h4 34, WIDGET 24
+  [gold] continuing-column openers: img 85, alert 22, p 10, repeat 8, col 3, h2 3, h3 2, div.clickDropContent 2
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 54, col-12.col-md-8,col-12.col-md-4 36, col-12.col-md-8,col-12.col-md-8,col-12.col-md-4.offset-md-0,col-12.col-md-8 7, col-12.col-md-8,col-6.col-md-4.offset-3.offset-md-0 3, col-12.col-md-8,col-12.col-md-8 3, col-12.col-md-8,div.align-self-center.col-12.col-md-4.offset-md-0.paddingL 3
+  [gold] widgets: in-col 25
+  [claude] top-level: row 904, WIDGET 13, other:repeat 6
+  [claude] rows 904 (mean/page 10.5); cols/row: 1 877 (0.97), 2 24 (0.03), 3+ 3 (0.00); cols in multi-col rows 57/934 = 0.06
+  [claude] row labels: div.row 900, div.row.supervisor 4
+  [claude] heading-led columns 299: opens-row 293 (0.98) / continues-row 6 (0.02); heading-only 32 (0.11) / heading+content 267
+  [claude] row openers: h3 191, activity 133, p 116, alert 112, h4 76, repeat 70, table 51, div.wananga 48
+  [claude] continuing-column openers: img 12, p 11, h3 3, h4 3, alert 1
+  [claude] multi-col patterns: col-12.col-md-6,col-12.col-md-6 23, col-12.col-md-4,col-12.col-md-4,col-12.col-md-4 2, ┌ 2× repeated:,col-12.col-md-3,col-12.col-md-3 1, col-12.col-md-8,col-12.col-md-4.offset-md-0 1
+  [claude] widgets: in-col 14, top-level 13
+
+== subject+ptype=ANZH/lesson — pages 68
+  [gold] top-level: row 304, WIDGET 3, other:repeat 2, other:div.12 1, other:alert 1, other:div.flipCardsContainer 1
+  [gold] rows 304 (mean/page 4.5); cols/row: 1 228 (0.75), 2 57 (0.19), 3+ 19 (0.06); cols in multi-col rows 198/426 = 0.46
+  [gold] row labels: div.row 303, div.row.supervisor 1
+  [gold] heading-led columns 77: opens-row 65 (0.84) / continues-row 12 (0.16); heading-only 18 (0.23) / heading+content 59
+  [gold] row openers: activity 108, alert 60, h3 53, p 27, WIDGET 15, h2 9, video 8, repeat 7
+  [gold] continuing-column openers: alert 41, col 20, p 16, img 13, h3 8, repeat 6, list 3, WIDGET 3
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 28, col-12.col-md-8,div.align-self-end.col-6.col-md-4.offset-3.offset-md-0 8, col-12.col-md-12,col-12.col-md-8 4, col-12.col-md-8,div.row,div.row,div.row… 3, col-12.col-md-8,div.row 3, col-12.col-md-8,col-12.col-md-3.offset-md-1 3
+  [gold] widgets: in-col 18, top-level 3
+  [claude] top-level: row 503, other:repeat 3
+  [claude] rows 503 (mean/page 7.4); cols/row: 1 482 (0.96), 2 21 (0.04); cols in multi-col rows 42/524 = 0.08
+  [claude] row labels: div.row 497, div.row.supervisor 6
+  [claude] heading-led columns 128: opens-row 128 (1.00) / continues-row 0 (0.00); heading-only 27 (0.21) / heading+content 101
+  [claude] row openers: activity 165, alert 117, h3 110, p 38, h4 18, img 13, video 13, a 10
+  [claude] continuing-column openers: alert 21
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 14, col-12.col-md-8,col-12.col-md-4 7
+  [claude] widgets: 
+
+== subject+ptype=1-10 English/overview — pages 48
+  [gold] top-level: row 63, other:div.fundamentalsPanel 32, other:div.phases 8, other:div.introduction 8, other:div 6, other:col 2
+  [gold] rows 63 (mean/page 1.3); cols/row: 1 58 (0.92), 2 3 (0.05), 3+ 2 (0.03); cols in multi-col rows 12/70 = 0.17
+  [gold] row labels: div.row 63
+  [gold] heading-led columns 10: opens-row 10 (1.00) / continues-row 0 (0.00); heading-only 1 (0.10) / heading+content 9
+  [gold] row openers: p 25, col 8, h3 7, repeat 6, whakatauki 4, h4 2, row 2, video 2
+  [gold] continuing-column openers: img 4, video 1, alert 1, p 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-8,col-12.col-md-4.offset-md-0 1, col-12.col-md-8,col-12.col-md-3 1, col-12.col-md-8,div.align-self-center.col-12.col-md-3.paddingL 1, col-12.col-md-8,col-12.col-md-4.offset-md-0,col-12.col-md-8 1, col-12.col-md-7,col-12.col-md-4.offset-md-1 1
+  [gold] widgets: in-col 2
+  [claude] top-level: row 59, other:div.fundamentalsPanel 32, other:div.phases 8, other:div.introduction 8, WIDGET 3
+  [claude] rows 59 (mean/page 1.2); cols/row: 1 59 (1.00); cols in multi-col rows 0/59 = 0.00
+  [claude] row labels: div.row 59
+  [claude] heading-led columns 17: opens-row 17 (1.00) / continues-row 0 (0.00); heading-only 3 (0.18) / heading+content 14
+  [claude] row openers: p 23, h3 16, repeat 9, whakatauki 4, video 1, list 1, h4 1, alert 1
+  [claude] continuing-column openers: 
+  [claude] multi-col patterns: 
+  [claude] widgets: top-level 3, in-col 1
+
+== subject+ptype=Te Marautanga o Aotearoa TMoA/lesson — pages 47
+  [gold] top-level: row 344, other:div.clickDropContent 2, other:div 1, other:br 1
+  [gold] rows 344 (mean/page 7.3); cols/row: 1 285 (0.83), 2 56 (0.16), 3+ 3 (0.01); cols in multi-col rows 120/405 = 0.30
+  [gold] row labels: div.row 343, div.row.supervisor 1
+  [gold] heading-led columns 2: opens-row 2 (1.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 2
+  [gold] row openers: activity 190, repeat 102, alert 27, col 7, - 6, whakatauki 2, h3 2, WIDGET 2
+  [gold] continuing-column openers: alert 49, col 7, img 3, activity 3
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 46, p,col-12.col-md-8 3, col-12.col-md-8,col-12.col-md-2.offset-md-0 2, col-12.col-md-8,col-12.col-md-4 2, col-12.col-md-8,div.row,div.row 1, col-12.col-md-8,col-12.col-md-3.offset-md-0 1
+  [gold] widgets: in-col 2
+  [claude] top-level: row 276, other:repeat 30, WIDGET 19
+  [claude] rows 276 (mean/page 5.9); cols/row: 1 275 (1.00), 2 1 (0.00); cols in multi-col rows 2/277 = 0.01
+  [claude] row labels: div.row 276
+  [claude] heading-led columns 1: opens-row 1 (1.00) / continues-row 0 (0.00); heading-only 1 (1.00) / heading+content 0
+  [claude] row openers: repeat 140, activity 83, WIDGET 21, h5 12, row 8, p 7, col 2, alert 2
+  [claude] continuing-column openers: alert 1
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 1
+  [claude] widgets: in-col 21, top-level 19
+
+== subject+ptype=NCEA1/overview — pages 42
+  [gold] top-level: row 75, other:div.clickDropContent 4, other:col 3, other:div 3, other:repeat 1, other:br 1
+  [gold] rows 75 (mean/page 1.8); cols/row: 1 60 (0.80), 2 11 (0.15), 3+ 4 (0.05); cols in multi-col rows 36/96 = 0.38
+  [gold] row labels: div.row 75
+  [gold] heading-led columns 16: opens-row 14 (0.88) / continues-row 2 (0.12); heading-only 1 (0.06) / heading+content 15
+  [gold] row openers: activity 14, repeat 13, whakatauki 13, p 11, h2 6, h3 4, h4 4, div.choiceHeightMatch 2
+  [gold] continuing-column openers: img 5, repeat 4, alert 4, WIDGET 2, h4 2, video 1, col 1, whakatauki 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 4, col-12.col-md-8,col-12.col-md-8 3, col-12,col-12.col-md-8 1, col-12.col-md-8,col-12.col-md-8,col-12.col-md-4.offset-md-0 1, col-12.col-md-1,col-12.col-md-3,col-12.col-md-6 1, col-12.col-md-3.offset-md-0,┌ 3× repeated: 1
+  [gold] widgets: in-col 4, top-level 1
+  [claude] top-level: row 184, other:repeat 3
+  [claude] rows 184 (mean/page 4.4); cols/row: 1 184 (1.00); cols in multi-col rows 0/184 = 0.00
+  [claude] row labels: div.row 184
+  [claude] heading-led columns 57: opens-row 57 (1.00) / continues-row 0 (0.00); heading-only 29 (0.51) / heading+content 28
+  [claude] row openers: activity 43, h3 32, h5 28, h4 18, repeat 17, p 12, alert 10, h2 7
+  [claude] continuing-column openers: 
+  [claude] multi-col patterns: 
+  [claude] widgets: in-col 4
+
+== subject+ptype=1-10 Mathematics/overview — pages 40
+  [gold] top-level: row 58, other:div.fundamentalsPanel 6, other:div 4, other:div.phases 3, other:div.introduction 3, other:col 2
+  [gold] rows 58 (mean/page 1.4); cols/row: 1 46 (0.79), 2 10 (0.17), 3+ 2 (0.03); cols in multi-col rows 26/72 = 0.36
+  [gold] row labels: div.row 55, div.row.supervisor 3
+  [gold] heading-led columns 11: opens-row 11 (1.00) / continues-row 0 (0.00); heading-only 5 (0.45) / heading+content 6
+  [gold] row openers: p 17, repeat 7, h3 7, col 7, WIDGET 4, h2 4, img 3, video 3
+  [gold] continuing-column openers: img 5, repeat 4, br 1, div.flipCardsContainer 1, p 1, video 1, div.audioButton 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 3, col-12,col-12.col-md-8 2, col-12.col-md-8,col-3 1, col-12.col-md-5.offset-md-0,col-12.col-md-2.offset-md-0,col-12.col-md-5.offset-md-0 1, col-12.col-md-8,col-12.col-md-12 1, col-12.col-md-12,col-12.col-md-8 1
+  [gold] widgets: in-col 4
+  [claude] top-level: row 57, other:div.inquiryPanel 4, other:div.crumbs 2, other:repeat 1
+  [claude] rows 57 (mean/page 1.4); cols/row: 1 57 (1.00); cols in multi-col rows 0/57 = 0.00
+  [claude] row labels: div.row 54, div.row.supervisor 3
+  [claude] heading-led columns 17: opens-row 17 (1.00) / continues-row 0 (0.00); heading-only 2 (0.12) / heading+content 15
+  [claude] row openers: h3 17, p 11, repeat 10, img 7, whakatauki 3, row 3, WIDGET 2, table 1
+  [claude] continuing-column openers: 
+  [claude] multi-col patterns: 
+  [claude] widgets: in-col 2
+
+== subject+ptype=None/lesson — pages 36
+  [gold] top-level: row 437, WIDGET 115, other:div.flipCardsContainer 9, other:repeat 7, other:col 2, other:div 2
+  [gold] rows 437 (mean/page 12.1); cols/row: 1 401 (0.92), 2 30 (0.07), 3+ 6 (0.01); cols in multi-col rows 102/503 = 0.20
+  [gold] row labels: div.row 437
+  [gold] heading-led columns 110: opens-row 110 (1.00) / continues-row 0 (0.00); heading-only 19 (0.17) / heading+content 91
+  [gold] row openers: activity 150, h3 98, br 59, p 37, WIDGET 20, repeat 20, alert 20, h2 8
+  [gold] continuing-column openers: alert 21, col 18, img 12, - 9, p 3, br 2, div.justify-content-around 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 16, col-12.col-md-8,col-12.col-md-4 11, col-12.col-md-8,col-12.col-md-8,col-12.col-md-4 1, col-12.col-md-8,col-12.col-md-8,col-12.col-md-4.offset-md-0,col-12.col-md-8 1, col-12,col-12.col-md-8,col-12.col-md-4.offset-md-0 1, col-12,col-6.col-md-4.offset-3.offset-md-0,col-12.col-md-8 1
+  [gold] widgets: top-level 115, in-col 20
+  [claude] top-level: row 506, WIDGET 15, other:repeat 4
+  [claude] rows 506 (mean/page 14.1); cols/row: 1 495 (0.98), 2 10 (0.02), 3+ 1 (0.00); cols in multi-col rows 23/518 = 0.04
+  [claude] row labels: div.row 506
+  [claude] heading-led columns 220: opens-row 220 (1.00) / continues-row 0 (0.00); heading-only 20 (0.09) / heading+content 200
+  [claude] row openers: h3 194, activity 141, alert 41, p 41, h4 26, repeat 24, WIDGET 23, img 5
+  [claude] continuing-column openers: p 5, img 3, alert 2, - 1, col 1
+  [claude] multi-col patterns: col-12.col-md-6,col-12.col-md-6 8, col-12.col-md-8,col-12.col-md-4.offset-md-0 2, col-12.col-md-3,col-12.col-md-3,┌ 2× repeated: 1
+  [claude] widgets: in-col 23, top-level 15
+
+== subject+ptype=Leaving to Learn/overview — pages 33
+  [gold] top-level: row 97, other:div.fundamentalsPanel 9, other:br 2, other:div.phases 1, other:div.introduction 1, WIDGET 1
+  [gold] rows 97 (mean/page 2.9); cols/row: 1 80 (0.82), 2 11 (0.11), 3+ 6 (0.06); cols in multi-col rows 46/126 = 0.37
+  [gold] row labels: div.row 95, div.row.supervisor 2
+  [gold] heading-led columns 21: opens-row 20 (0.95) / continues-row 1 (0.05); heading-only 3 (0.14) / heading+content 18
+  [gold] row openers: p 21, repeat 17, h3 13, col 8, alert 7, video 6, h4 5, WIDGET 5
+  [gold] continuing-column openers: img 9, p 6, whakatauki 4, alert 4, col 3, video 1, h3 1, - 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 6, col-12.col-md-8,col-12.col-md-4 2, col-12.col-md-8,col-12.col-md-8 1, col-12.col-md-8,col-12.col-md-8,col-12.col-md-8,col-12.col-md-8… 1, col-12.col-md-12,col-12.col-md-8 1, col-12.col-md-8,col-12.col-md-8,col-12.col-md-4.offset-md-0 1
+  [gold] widgets: in-col 5, top-level 1
+  [claude] top-level: row 124, other:div.fundamentalsPanel 9, other:repeat 2, other:div.phases 1, other:div.introduction 1
+  [claude] rows 124 (mean/page 3.8); cols/row: 1 124 (1.00); cols in multi-col rows 0/124 = 0.00
+  [claude] row labels: div.row 123, div.row.supervisor 1
+  [claude] heading-led columns 42: opens-row 42 (1.00) / continues-row 0 (0.00); heading-only 3 (0.07) / heading+content 39
+  [claude] row openers: h3 22, h4 20, repeat 19, audio 18, whakatauki 16, alert 11, p 11, video 2
+  [claude] continuing-column openers: 
+  [claude] multi-col patterns: 
+  [claude] widgets: in-col 1
+
+== subject+ptype=ConnectED/overview — pages 28
+  [gold] top-level: other:div.inquiryPanel 118, row 21, other:div.crumbs 20, other:div 2, other:repeat 1, other:col 1
+  [gold] rows 21 (mean/page 0.8); cols/row: 1 17 (0.81), 2 3 (0.14), 3+ 1 (0.05); cols in multi-col rows 10/27 = 0.37
+  [gold] row labels: div.row 21
+  [gold] heading-led columns 1: opens-row 1 (1.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 1
+  [gold] row openers: whakatauki 5, alert 5, p 3, div.acks 2, repeat 2, video 2, col 1, h3 1
+  [gold] continuing-column openers: img 2, repeat 2, p 1, alert 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-8 2, col-12.col-md-8,col-12.col-md-4 1, col-12.col-md-8,col-12.col-md-8,col-12.col-md-4.offset-md-0,col-12.col-md-8 1
+  [gold] widgets: 
+  [claude] top-level: row 189, other:div.inquiryPanel 51, other:div.crumbs 8, other:repeat 3, WIDGET 2
+  [claude] rows 189 (mean/page 6.8); cols/row: 1 189 (1.00); cols in multi-col rows 0/189 = 0.00
+  [claude] row labels: div.row 188, div.row.supervisor 1
+  [claude] heading-led columns 61: opens-row 61 (1.00) / continues-row 0 (0.00); heading-only 12 (0.20) / heading+content 49
+  [claude] row openers: activity 47, h4 43, alert 17, p 17, h3 15, whakatauki 11, - 10, repeat 7
+  [claude] continuing-column openers: 
+  [claude] multi-col patterns: 
+  [claude] widgets: in-col 5, top-level 2
+
+== subject+ptype=Online Safety (OS9000)/overview — pages 28
+  [gold] top-level: row 34
+  [gold] rows 34 (mean/page 1.2); cols/row: 1 34 (1.00); cols in multi-col rows 0/34 = 0.00
+  [gold] row labels: div.row 34
+  [gold] heading-led columns 1: opens-row 0 (0.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 0
+  [gold] row openers: col 14, whakatauki 13, video 3, p 2, row 1, repeat 1
+  [gold] continuing-column openers: 
+  [gold] multi-col patterns: 
+  [gold] widgets: 
+  [claude] top-level: row 56
+  [claude] rows 56 (mean/page 2.0); cols/row: 1 56 (1.00); cols in multi-col rows 0/56 = 0.00
+  [claude] row labels: div.row 56
+  [claude] heading-led columns 1: opens-row 0 (0.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 0
+  [claude] row openers: whakatauki 28, p 18, repeat 10
+  [claude] continuing-column openers: 
+  [claude] multi-col patterns: 
+  [claude] widgets: 
+
+== subject+ptype=1-10 Social Science/lesson — pages 27
+  [gold] top-level: row 165, WIDGET 8, other:div.flipCardsContainer 4, other:div.fundamentalsPanel 4, other:p 1, other:div.phases 1
+  [gold] rows 165 (mean/page 6.1); cols/row: 1 114 (0.69), 2 51 (0.31); cols in multi-col rows 102/216 = 0.47
+  [gold] row labels: div.row 165
+  [gold] heading-led columns 63: opens-row 63 (1.00) / continues-row 0 (0.00); heading-only 2 (0.03) / heading+content 61
+  [gold] row openers: h3 52, activity 45, p 17, repeat 16, alert 15, h2 11, row 3, WIDGET 3
+  [gold] continuing-column openers: img 34, alert 17
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 18, col-12.col-md-7,col-12.col-md-3 8, col-12.col-md-8,col-12.col-md-4 7, col-12.col-md-8,col-12.col-md-2.offset-md-0 6, col-12.col-md-8,col-12.col-md-2 3, col-12.col-md-7,col-12.col-md-5 2
+  [gold] widgets: top-level 8, in-col 3
+  [claude] top-level: row 273, other:repeat 7
+  [claude] rows 273 (mean/page 10.1); cols/row: 1 271 (0.99), 2 2 (0.01); cols in multi-col rows 4/275 = 0.01
+  [claude] row labels: div.row 273
+  [claude] heading-led columns 120: opens-row 120 (1.00) / continues-row 0 (0.00); heading-only 2 (0.02) / heading+content 118
+  [claude] row openers: h3 109, activity 72, alert 41, p 15, img 11, h4 11, repeat 6, WIDGET 2
+  [claude] continuing-column openers: alert 2
+  [claude] multi-col patterns: col-12.col-md-8,col-12.col-md-4 2
+  [claude] widgets: in-col 2
+
+== subject+ptype=Te Marautanga o Aotearoa TMoA/overview — pages 16
+  [gold] top-level: row 38, other:col 1, other:p 1
+  [gold] rows 38 (mean/page 2.4); cols/row: 1 31 (0.82), 2 7 (0.18); cols in multi-col rows 14/45 = 0.31
+  [gold] row labels: div.row 38
+  [gold] heading-led columns 1: opens-row 0 (0.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 0
+  [gold] row openers: repeat 16, activity 13, - 3, p 2, whakatauki 2, row 1, col 1
+  [gold] continuing-column openers: alert 3, col 1, img 1, repeat 1, whakatauki 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4.offset-md-0 4, p,col-12.col-md-8 2, ┌ 2× repeated:,col-12.col-md-8 1
+  [gold] widgets: 
+  [claude] top-level: row 39, other:repeat 2
+  [claude] rows 39 (mean/page 2.4); cols/row: 1 39 (1.00); cols in multi-col rows 0/39 = 0.00
+  [claude] row labels: div.row 39
+  [claude] heading-led columns 7: opens-row 7 (1.00) / continues-row 0 (0.00); heading-only 4 (0.57) / heading+content 3
+  [claude] row openers: repeat 19, activity 8, h3 7, video 2, alert 2, p 1
+  [claude] continuing-column openers: 
+  [claude] multi-col patterns: 
+  [claude] widgets: 
+
+== subject+ptype=1-10 Health and PE/overview — pages 15
+  [gold] top-level: other:div.fundamentalsPanel 85, other:div.phases 15, other:div 2, row 2
+  [gold] rows 2 (mean/page 0.1); cols/row: 1 2 (1.00); cols in multi-col rows 0/2 = 0.00
+  [gold] row labels: div.row 2
+  [gold] heading-led columns 1: opens-row 0 (0.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 0
+  [gold] row openers: div.acks 2
+  [gold] continuing-column openers: 
+  [gold] multi-col patterns: 
+  [gold] widgets: 
+  [claude] top-level: other:div.fundamentalsPanel 83, other:div.phases 15, row 14
+  [claude] rows 14 (mean/page 0.9); cols/row: 1 14 (1.00); cols in multi-col rows 0/14 = 0.00
+  [claude] row labels: div.row 14
+  [claude] heading-led columns 1: opens-row 0 (0.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 0
+  [claude] row openers: - 14
+  [claude] continuing-column openers: 
+  [claude] multi-col patterns: 
+  [claude] widgets: 
+
+== subject+ptype=1-10 Social Science/overview — pages 11
+  [gold] top-level: other:div.fundamentalsPanel 24, row 9, other:div.phases 6, other:div.introduction 6, other:col 3, other:div 3
+  [gold] rows 9 (mean/page 0.8); cols/row: 1 8 (0.89), 2 1 (0.11); cols in multi-col rows 2/10 = 0.20
+  [gold] row labels: div.row 9
+  [gold] heading-led columns 1: opens-row 0 (0.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 0
+  [gold] row openers: div.acks 3, repeat 2, col 2, whakatauki 1, p 1
+  [gold] continuing-column openers: img 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4 1
+  [gold] widgets: 
+  [claude] top-level: other:div.fundamentalsPanel 23, row 12, other:div.phases 6, other:div.introduction 6
+  [claude] rows 12 (mean/page 1.1); cols/row: 1 12 (1.00); cols in multi-col rows 0/12 = 0.00
+  [claude] row labels: div.row 12
+  [claude] heading-led columns 3: opens-row 3 (1.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 3
+  [claude] row openers: alert 3, whakatauki 2, repeat 2, h3 2, h4 1, p 1, - 1
+  [claude] continuing-column openers: 
+  [claude] multi-col patterns: 
+  [claude] widgets: 
+
+== subject+ptype=ANZH/overview — pages 10
+  [gold] top-level: row 15, other:div 1
+  [gold] rows 15 (mean/page 1.5); cols/row: 1 14 (0.93), 2 1 (0.07); cols in multi-col rows 2/16 = 0.12
+  [gold] row labels: div.row 15
+  [gold] heading-led columns 1: opens-row 1 (1.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 1
+  [gold] row openers: p 5, whakatauki 3, col 2, alert 1, repeat 1, video 1, h2 1, row 1
+  [gold] continuing-column openers: img 1
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4 1
+  [gold] widgets: 
+  [claude] top-level: row 15, other:repeat 1
+  [claude] rows 15 (mean/page 1.5); cols/row: 1 15 (1.00); cols in multi-col rows 0/15 = 0.00
+  [claude] row labels: div.row 15
+  [claude] heading-led columns 2: opens-row 2 (1.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 2
+  [claude] row openers: p 6, h3 2, repeat 2, alert 2, whakatauki 2, list 1
+  [claude] continuing-column openers: 
+  [claude] multi-col patterns: 
+  [claude] widgets: 
+
+== subject+ptype=None/overview — pages 10
+  [gold] top-level: row 18, other:div.fundamentalsPanel 10, other:div.phases 5, other:div.introduction 5, other:div 5
+  [gold] rows 18 (mean/page 1.8); cols/row: 1 16 (0.89), 2 2 (0.11); cols in multi-col rows 4/20 = 0.20
+  [gold] row labels: div.row 18
+  [gold] heading-led columns 3: opens-row 3 (1.00) / continues-row 0 (0.00); heading-only 0 (0.00) / heading+content 3
+  [gold] row openers: p 5, div.acks 5, h3 3, whakatauki 2, video 1, WIDGET 1, alert 1
+  [gold] continuing-column openers: alert 2
+  [gold] multi-col patterns: col-12.col-md-8,col-12.col-md-4 2
+  [gold] widgets: in-col 1
+  [claude] top-level: row 13, other:div.fundamentalsPanel 10, other:div.phases 5, other:div.introduction 5, WIDGET 1
+  [claude] rows 13 (mean/page 1.3); cols/row: 1 13 (1.00); cols in multi-col rows 0/13 = 0.00
+  [claude] row labels: div.row 13
+  [claude] heading-led columns 2: opens-row 2 (1.00) / continues-row 0 (0.00); heading-only 1 (0.50) / heading+content 1
+  [claude] row openers: repeat 2, - 2, whakatauki 2, p 2, WIDGET 2, h3 2, alert 1
+  [claude] continuing-column openers: 
+  [claude] multi-col patterns: 
+  [claude] widgets: in-col 2, top-level 1
+wrote _s25_rowcol.json

@@ -1,0 +1,1092 @@
+
+== ALL — pages 1963
+  h2    gold   n=  899: nested:panel 405 (0.45), row-open 332 (0.37), inline 55 (0.06), deep:col/repeat 52 (0.06), deep:row/col 16 (0.02), nested:activity 12 (0.01), col-open 7 (0.01)
+  h2    claude n=  571: nested:panel 324 (0.57), row-open 225 (0.39), deep:col/repeat 14 (0.02), deep:row/col 5 (0.01), nested:activity 3 (0.01)
+        inline-after gold: alert 17 (0.31), p 12 (0.22), repeat 6 (0.11), WIDGET 5 (0.09), br 5 (0.09), video 3 (0.05), a 2 (0.04) | claude: 
+  h3    gold   n=10385: nested:activity 6627 (0.64), row-open 1711 (0.16), nested:panel 756 (0.07), deep:col/repeat 344 (0.03), inline 340 (0.03), deep:row/col 244 (0.02), nested:alert 151 (0.01)
+  h3    claude n= 8907: nested:activity 5063 (0.57), row-open 2682 (0.30), nested:panel 578 (0.06), deep:col/repeat 255 (0.03), deep:row/col 225 (0.03), deep:col/div 57 (0.01), nested:alert 22 (0.00)
+        inline-after gold: p 131 (0.39), br 37 (0.11), repeat 35 (0.10), WIDGET 29 (0.09), video 22 (0.06), row 21 (0.06), alert 17 (0.05) | claude: p 5 (0.56), repeat 2 (0.22), img 1 (0.11), video 1 (0.11)
+  h4    gold   n= 3012: nested:activity 854 (0.28), nested:alert 732 (0.24), nested:panel 315 (0.10), inline 310 (0.10), row-open 309 (0.10), deep:col/repeat 146 (0.05), deep:row/col 91 (0.03)
+  h4    claude n= 2245: row-open 765 (0.34), nested:activity 640 (0.29), nested:panel 282 (0.13), nested:alert 261 (0.12), inline 150 (0.07), deep:row/col 62 (0.03), deep:col/repeat 59 (0.03)
+        inline-after gold: p 125 (0.40), repeat 47 (0.15), h3 27 (0.09), img 19 (0.06), alert 15 (0.05), list 14 (0.05), video 12 (0.04) | claude: p 82 (0.55), repeat 25 (0.17), list 16 (0.11), table 7 (0.05), WIDGET 7 (0.05), a 4 (0.03), video 4 (0.03)
+  h5    gold   n=  847: nested:activity 214 (0.25), nested:panel 106 (0.13), inline 98 (0.12), nested:alert 73 (0.09), deep:col/repeat 60 (0.07), deep:repeat/col 42 (0.05), deep:repeat/div 40 (0.05)
+  h5    claude n=  892: nested:panel 486 (0.54), row-open 205 (0.23), nested:activity 94 (0.11), deep:col/repeat 41 (0.05), deep:row/col 28 (0.03), inline 24 (0.03), nested:alert 7 (0.01)
+        inline-after gold: p 54 (0.55), repeat 10 (0.10), list 9 (0.09), img 5 (0.05), h3 5 (0.05), row 4 (0.04), video 4 (0.04) | claude: list 18 (0.75), h3 4 (0.17), p 2 (0.08)
+  alert gold   n= 2788: col-open 824 (0.30), row-open 703 (0.25), nested:panel 523 (0.19), inline 379 (0.14), deep:row/col 153 (0.05), nested:activity 94 (0.03), deep:row/div 43 (0.02)
+  alert claude n= 1504: row-open 1099 (0.73), nested:panel 243 (0.16), col-open 116 (0.08), deep:row/col 46 (0.03)
+        inline-after gold: p 140 (0.37), repeat 39 (0.10), video 36 (0.09), WIDGET 24 (0.06), alert 23 (0.06), h3 18 (0.05), list 17 (0.04) | claude: 
+
+== template=Standard — pages 1738
+  h2    gold   n=  437: row-open 327 (0.75), inline 50 (0.11), nested:panel 19 (0.04), deep:row/col 10 (0.02), col-open 7 (0.02), nested:alert 7 (0.02), nested:table 5 (0.01)
+  h2    claude n=  211: row-open 207 (0.98), nested:activity 3 (0.01), deep:row/col 1 (0.00)
+        inline-after gold: alert 17 (0.34), p 12 (0.24), br 5 (0.10), repeat 4 (0.08), WIDGET 3 (0.06), video 3 (0.06), a 2 (0.04) | claude: 
+  h3    gold   n= 7415: nested:activity 4882 (0.66), row-open 1643 (0.22), inline 331 (0.04), deep:row/col 206 (0.03), nested:alert 138 (0.02), col-open 82 (0.01), nested:panel 53 (0.01)
+  h3    claude n= 6710: nested:activity 3844 (0.57), row-open 2580 (0.38), deep:row/col 191 (0.03), nested:panel 46 (0.01), nested:alert 22 (0.00), inline 8 (0.00), deep:div/repeat 6 (0.00)
+        inline-after gold: p 128 (0.39), br 37 (0.11), repeat 33 (0.10), WIDGET 28 (0.08), video 22 (0.07), row 21 (0.06), alert 17 (0.05) | claude: p 5 (0.62), img 1 (0.12), repeat 1 (0.12), video 1 (0.12)
+  h4    gold   n= 2225: nested:activity 702 (0.32), nested:alert 563 (0.25), row-open 308 (0.14), inline 306 (0.14), deep:col/div 72 (0.03), deep:row/col 69 (0.03), deep:repeat/div 67 (0.03)
+  h4    claude n= 1732: row-open 695 (0.40), nested:activity 593 (0.34), nested:alert 233 (0.13), inline 147 (0.08), deep:row/col 37 (0.02), deep:repeat/col 14 (0.01), col-open 7 (0.00)
+        inline-after gold: p 125 (0.41), repeat 46 (0.15), h3 26 (0.08), img 17 (0.06), alert 15 (0.05), list 14 (0.05), video 12 (0.04) | claude: p 81 (0.55), repeat 24 (0.16), list 16 (0.11), WIDGET 7 (0.05), table 6 (0.04), a 4 (0.03), video 4 (0.03)
+  h5    gold   n=  586: nested:activity 169 (0.29), inline 96 (0.16), nested:alert 60 (0.10), deep:col/repeat 36 (0.06), deep:repeat/col 33 (0.06), deep:col/div 32 (0.05), row-open 30 (0.05)
+  h5    claude n=  278: row-open 152 (0.55), nested:activity 64 (0.23), inline 22 (0.08), deep:col/repeat 13 (0.05), deep:row/col 13 (0.05), nested:alert 7 (0.03), deep:a/div 4 (0.01)
+        inline-after gold: p 53 (0.55), repeat 10 (0.10), list 9 (0.09), img 5 (0.05), h3 5 (0.05), row 4 (0.04), video 4 (0.04) | claude: list 16 (0.73), h3 4 (0.18), p 2 (0.09)
+  alert gold   n= 2104: col-open 755 (0.36), row-open 644 (0.31), inline 362 (0.17), deep:row/col 127 (0.06), nested:activity 66 (0.03), deep:row/div 43 (0.02), nested:panel 43 (0.02)
+  alert claude n= 1175: row-open 1034 (0.88), col-open 112 (0.10), nested:panel 19 (0.02), deep:row/col 10 (0.01)
+        inline-after gold: p 136 (0.38), video 35 (0.10), repeat 33 (0.09), alert 22 (0.06), WIDGET 22 (0.06), list 17 (0.05), h3 17 (0.05) | claude: 
+
+== template=Inquiry — pages 98
+  h2    gold   n=  237: nested:panel 214 (0.90), nested:activity 9 (0.04), deep:col/repeat 5 (0.02), inline 5 (0.02), row-open 4 (0.02)
+  h2    claude n=  183: nested:panel 161 (0.88), row-open 18 (0.10), deep:row/col 4 (0.02)
+        inline-after gold: repeat 2 (0.40), WIDGET 2 (0.40), img 1 (0.20) | claude: 
+  h3    gold   n= 1409: nested:activity 1123 (0.80), nested:panel 204 (0.14), row-open 36 (0.03), deep:row/col 18 (0.01), deep:col/repeat 16 (0.01), inline 7 (0.00), nested:alert 4 (0.00)
+  h3    claude n=  926: nested:activity 799 (0.86), row-open 59 (0.06), nested:panel 56 (0.06), deep:row/col 10 (0.01), deep:repeat/col 1 (0.00), inline 1 (0.00)
+        inline-after gold: p 3 (0.43), repeat 2 (0.29), img 1 (0.14), WIDGET 1 (0.14) | claude: repeat 1 (1.00)
+  h4    gold   n=  341: nested:activity 136 (0.40), nested:alert 89 (0.26), nested:panel 76 (0.22), deep:row/col 14 (0.04), deep:repeat/div 8 (0.02), deep:col/repeat 6 (0.02), deep:alert/repeat 5 (0.01)
+  h4    claude n=  229: nested:panel 97 (0.42), row-open 62 (0.27), nested:activity 47 (0.21), nested:alert 15 (0.07), deep:row/col 5 (0.02), inline 3 (0.01)
+        inline-after gold: h3 1 (1.00) | claude: p 1 (0.33), table 1 (0.33), repeat 1 (0.33)
+  h5    gold   n=  154: nested:panel 60 (0.39), nested:activity 26 (0.17), deep:div/repeat 26 (0.17), deep:repeat/div 13 (0.08), deep:row/col 11 (0.07), deep:col/repeat 4 (0.03), nested:alert 4 (0.03)
+  h5    claude n=  294: nested:panel 216 (0.73), row-open 41 (0.14), nested:activity 14 (0.05), deep:row/col 11 (0.04), deep:col/repeat 9 (0.03), inline 2 (0.01), deep:a/div 1 (0.00)
+        inline-after gold: p 1 (0.50), WIDGET 1 (0.50) | claude: list 2 (1.00)
+  alert gold   n=  315: nested:panel 246 (0.78), row-open 24 (0.08), nested:activity 19 (0.06), col-open 10 (0.03), inline 8 (0.03), deep:row/col 5 (0.02), deep:repeat/div 1 (0.00)
+  alert claude n=  160: nested:panel 111 (0.69), row-open 46 (0.29), deep:row/col 2 (0.01), col-open 1 (0.01)
+        inline-after gold: p 3 (0.38), h3 1 (0.12), h2 1 (0.12), a 1 (0.12), video 1 (0.12), repeat 1 (0.12) | claude: 
+
+== template=Fundamentals — pages 64
+  h2    gold   n=  180: nested:panel 172 (0.96), deep:row/col 6 (0.03), row-child 1 (0.01), row-open 1 (0.01)
+  h2    claude n=  163: nested:panel 163 (1.00)
+  h3    gold   n= 1239: nested:activity 609 (0.49), nested:panel 499 (0.40), deep:col/div 61 (0.05), row-open 30 (0.02), deep:row/col 20 (0.02), nested:alert 8 (0.01), deep:col/repeat 6 (0.00)
+  h3    claude n= 1009: nested:panel 476 (0.47), nested:activity 419 (0.42), deep:col/div 56 (0.06), row-open 36 (0.04), deep:row/col 22 (0.02)
+        inline-after gold: h2 1 (1.00) | claude: 
+  h4    gold   n=  352: nested:panel 231 (0.66), nested:alert 75 (0.21), nested:activity 16 (0.05), deep:col/repeat 11 (0.03), deep:row/col 8 (0.02), deep:div/div 3 (0.01), deep:repeat/div 2 (0.01)
+  h4    claude n=  213: nested:panel 185 (0.87), nested:alert 13 (0.06), row-open 7 (0.03), deep:row/col 6 (0.03), deep:div/repeat 1 (0.00), deep:col/repeat 1 (0.00)
+        inline-after gold: img 2 (1.00) | claude: 
+  h5    gold   n=  106: nested:panel 44 (0.42), deep:col/repeat 20 (0.19), nested:activity 19 (0.18), nested:alert 9 (0.08), deep:repeat/col 5 (0.05), deep:repeat/div 3 (0.03), deep:col/div 2 (0.02)
+  h5    claude n=  299: nested:panel 267 (0.89), deep:col/repeat 16 (0.05), nested:activity 12 (0.04), deep:row/col 2 (0.01), deep:repeat/col 2 (0.01)
+  alert gold   n=  279: nested:panel 234 (0.84), deep:row/col 20 (0.07), row-open 8 (0.03), nested:activity 7 (0.03), col-open 7 (0.03), nested:alert 1 (0.00), row-child 1 (0.00)
+  alert claude n=  144: nested:panel 113 (0.78), row-open 15 (0.10), deep:row/col 14 (0.10), col-open 2 (0.01)
+        inline-after gold: p 1 (1.00) | claude: 
+
+== template=Bilingual — pages 63
+  h2    gold   n=   45: deep:col/repeat 44 (0.98), deep:row/repeat 1 (0.02)
+  h2    claude n=   14: deep:col/repeat 14 (1.00)
+  h3    gold   n=  322: deep:col/repeat 300 (0.93), nested:activity 13 (0.04), deep:activity/repeat 4 (0.01), row-open 2 (0.01), inline 1 (0.00), deep:row/repeat 1 (0.00), nested:alert 1 (0.00)
+  h3    claude n=  262: deep:col/repeat 252 (0.96), row-open 7 (0.03), deep:row/col 2 (0.01), nested:activity 1 (0.00)
+        inline-after gold: h3 1 (1.00) | claude: 
+  h4    gold   n=   94: deep:col/repeat 85 (0.90), nested:alert 5 (0.05), deep:alert/repeat 2 (0.02), deep:activity/repeat 1 (0.01), inline 1 (0.01)
+  h4    claude n=   71: deep:col/repeat 56 (0.79), deep:row/col 14 (0.20), row-open 1 (0.01)
+        inline-after gold: repeat 1 (1.00) | claude: 
+  h5    gold   n=    1: deep:repeat/col 1 (1.00)
+  h5    claude n=   21: row-open 12 (0.57), nested:activity 4 (0.19), deep:col/repeat 3 (0.14), deep:row/col 2 (0.10)
+  alert gold   n=   90: col-open 52 (0.58), row-open 27 (0.30), inline 8 (0.09), nested:activity 2 (0.02), deep:row/col 1 (0.01)
+  alert claude n=   25: deep:row/col 20 (0.80), row-open 4 (0.16), col-open 1 (0.04)
+        inline-after gold: repeat 5 (0.62), WIDGET 2 (0.25), alert 1 (0.12) | claude: 
+
+== template+ptype=Standard/lesson — pages 1453
+  h2    gold   n=  412: row-open 310 (0.75), inline 47 (0.11), nested:panel 19 (0.05), deep:row/col 10 (0.02), col-open 7 (0.02), nested:alert 7 (0.02), nested:table 4 (0.01)
+  h2    claude n=  205: row-open 201 (0.98), nested:activity 3 (0.01), deep:row/col 1 (0.00)
+        inline-after gold: alert 16 (0.34), p 11 (0.23), br 5 (0.11), repeat 4 (0.09), WIDGET 3 (0.06), video 3 (0.06), a 2 (0.04) | claude: 
+  h3    gold   n= 7173: nested:activity 4864 (0.68), row-open 1536 (0.21), inline 321 (0.04), nested:alert 135 (0.02), deep:row/col 118 (0.02), col-open 79 (0.01), nested:panel 53 (0.01)
+  h3    claude n= 6413: nested:activity 3803 (0.59), row-open 2425 (0.38), deep:row/col 90 (0.01), nested:panel 46 (0.01), nested:alert 22 (0.00), inline 8 (0.00), deep:div/repeat 6 (0.00)
+        inline-after gold: p 123 (0.38), br 37 (0.12), repeat 30 (0.09), WIDGET 28 (0.09), video 21 (0.07), row 21 (0.07), alert 17 (0.05) | claude: p 5 (0.62), img 1 (0.12), repeat 1 (0.12), video 1 (0.12)
+  h4    gold   n= 2159: nested:activity 701 (0.32), nested:alert 541 (0.25), row-open 297 (0.14), inline 282 (0.13), deep:col/div 72 (0.03), deep:row/col 68 (0.03), deep:repeat/div 66 (0.03)
+  h4    claude n= 1669: row-open 641 (0.38), nested:activity 593 (0.36), nested:alert 231 (0.14), inline 143 (0.09), deep:row/col 34 (0.02), deep:repeat/col 14 (0.01), col-open 7 (0.00)
+        inline-after gold: p 121 (0.43), repeat 41 (0.15), h3 25 (0.09), img 17 (0.06), video 12 (0.04), alert 11 (0.04), list 11 (0.04) | claude: p 80 (0.56), repeat 23 (0.16), list 14 (0.10), WIDGET 7 (0.05), table 6 (0.04), a 4 (0.03), video 4 (0.03)
+  h5    gold   n=  563: nested:activity 166 (0.29), inline 93 (0.17), nested:alert 58 (0.10), deep:col/repeat 36 (0.06), deep:repeat/col 33 (0.06), deep:col/div 32 (0.06), deep:div/col 29 (0.05)
+  h5    claude n=  243: row-open 128 (0.53), nested:activity 61 (0.25), inline 22 (0.09), deep:row/col 13 (0.05), deep:col/repeat 9 (0.04), nested:alert 7 (0.03), nested:panel 3 (0.01)
+        inline-after gold: p 51 (0.55), repeat 10 (0.11), list 9 (0.10), img 5 (0.05), h3 5 (0.05), video 4 (0.04), row 3 (0.03) | claude: list 16 (0.73), h3 4 (0.18), p 2 (0.09)
+  alert gold   n= 2027: col-open 742 (0.37), row-open 612 (0.30), inline 343 (0.17), deep:row/col 118 (0.06), nested:activity 66 (0.03), nested:panel 43 (0.02), deep:row/div 42 (0.02)
+  alert claude n= 1141: row-open 1001 (0.88), col-open 112 (0.10), nested:panel 19 (0.02), deep:row/col 9 (0.01)
+        inline-after gold: p 131 (0.38), repeat 33 (0.10), video 32 (0.09), alert 21 (0.06), WIDGET 21 (0.06), h3 17 (0.05), br 16 (0.05) | claude: 
+
+== template+ptype=Standard/overview — pages 285
+  h2    gold   n=   25: row-open 17 (0.68), inline 3 (0.12), row-child 3 (0.12), nested:table 1 (0.04), deep:div/col 1 (0.04)
+  h2    claude n=    6: row-open 6 (1.00)
+        inline-after gold: p 1 (0.33), alert 1 (0.33), div 1 (0.33) | claude: 
+  h3    gold   n=  242: row-open 107 (0.44), deep:row/col 88 (0.36), nested:activity 18 (0.07), inline 10 (0.04), deep:a/div 9 (0.04), nested:alert 3 (0.01), col-open 3 (0.01)
+  h3    claude n=  297: row-open 155 (0.52), deep:row/col 101 (0.34), nested:activity 41 (0.14)
+        inline-after gold: p 5 (0.50), repeat 3 (0.30), h2 1 (0.10), video 1 (0.10) | claude: 
+  h4    gold   n=   66: inline 24 (0.36), nested:alert 22 (0.33), row-open 11 (0.17), col-open 2 (0.03), nested:table 2 (0.03), deep:repeat/col 1 (0.02), deep:repeat/div 1 (0.02)
+  h4    claude n=   63: row-open 54 (0.86), inline 4 (0.06), deep:row/col 3 (0.05), nested:alert 2 (0.03)
+        inline-after gold: repeat 5 (0.21), alert 4 (0.17), p 4 (0.17), list 3 (0.12), h4 3 (0.12), row 1 (0.04), h3 1 (0.04) | claude: list 2 (0.50), repeat 1 (0.25), p 1 (0.25)
+  h5    gold   n=   23: deep:a/div 8 (0.35), row-open 4 (0.17), nested:activity 3 (0.13), inline 3 (0.13), deep:row/div 3 (0.13), nested:alert 2 (0.09)
+  h5    claude n=   35: row-open 24 (0.69), deep:col/repeat 4 (0.11), deep:a/div 4 (0.11), nested:activity 3 (0.09)
+        inline-after gold: p 2 (0.67), row 1 (0.33) | claude: 
+  alert gold   n=   77: row-open 32 (0.42), inline 19 (0.25), col-open 13 (0.17), deep:row/col 9 (0.12), deep:div/col 3 (0.04), deep:row/div 1 (0.01)
+  alert claude n=   34: row-open 33 (0.97), deep:row/col 1 (0.03)
+        inline-after gold: p 5 (0.26), video 3 (0.16), list 2 (0.11), col 2 (0.11), h2 1 (0.05), alert 1 (0.05), div 1 (0.05) | claude: 
+
+== template+ptype=Fundamentals/overview — pages 53
+  h2    gold   n=  178: nested:panel 172 (0.97), deep:row/col 6 (0.03)
+  h2    claude n=  163: nested:panel 163 (1.00)
+  h3    gold   n= 1153: nested:activity 561 (0.49), nested:panel 499 (0.43), deep:col/div 61 (0.05), deep:row/col 15 (0.01), nested:alert 8 (0.01), deep:col/repeat 6 (0.01), deep:repeat/div 1 (0.00)
+  h3    claude n=  910: nested:panel 476 (0.52), nested:activity 357 (0.39), deep:col/div 56 (0.06), deep:row/col 20 (0.02), row-open 1 (0.00)
+  h4    gold   n=  345: nested:panel 231 (0.67), nested:alert 73 (0.21), nested:activity 15 (0.04), deep:col/repeat 11 (0.03), deep:row/col 6 (0.02), deep:div/div 3 (0.01), deep:repeat/div 2 (0.01)
+  h4    claude n=  205: nested:panel 185 (0.90), nested:alert 12 (0.06), deep:row/col 6 (0.03), deep:div/repeat 1 (0.00), deep:col/repeat 1 (0.00)
+  h5    gold   n=  102: nested:panel 44 (0.43), deep:col/repeat 20 (0.20), nested:activity 19 (0.19), nested:alert 9 (0.09), deep:repeat/div 3 (0.03), deep:col/div 2 (0.02), deep:repeat/li 1 (0.01)
+  h5    claude n=  299: nested:panel 267 (0.89), deep:col/repeat 16 (0.05), nested:activity 12 (0.04), deep:row/col 2 (0.01), deep:repeat/col 2 (0.01)
+  alert gold   n=  255: nested:panel 234 (0.92), deep:row/col 15 (0.06), nested:activity 5 (0.02), nested:alert 1 (0.00)
+  alert claude n=  128: nested:panel 113 (0.88), deep:row/col 14 (0.11), row-open 1 (0.01)
+
+== template+ptype=Inquiry/overview — pages 49
+  h2    gold   n=  219: nested:panel 207 (0.95), nested:activity 9 (0.04), inline 2 (0.01), deep:col/repeat 1 (0.00)
+  h2    claude n=  171: nested:panel 161 (0.94), row-open 9 (0.05), deep:row/col 1 (0.01)
+        inline-after gold: repeat 1 (0.50), WIDGET 1 (0.50) | claude: 
+  h3    gold   n= 1103: nested:activity 875 (0.79), nested:panel 198 (0.18), deep:col/repeat 15 (0.01), deep:row/col 8 (0.01), nested:alert 4 (0.00), deep:repeat/td 1 (0.00), row-open 1 (0.00)
+  h3    claude n=  728: nested:activity 656 (0.90), nested:panel 56 (0.08), row-open 15 (0.02), deep:row/col 1 (0.00)
+        inline-after gold: repeat 1 (1.00) | claude: 
+  h4    gold   n=  312: nested:activity 120 (0.38), nested:alert 87 (0.28), nested:panel 76 (0.24), deep:row/col 10 (0.03), deep:repeat/div 8 (0.03), deep:alert/repeat 5 (0.02), deep:col/repeat 4 (0.01)
+  h4    claude n=  207: nested:panel 97 (0.47), row-open 53 (0.26), nested:activity 42 (0.20), nested:alert 9 (0.04), deep:row/col 5 (0.02), inline 1 (0.00)
+        inline-after gold:  | claude: table 1 (1.00)
+  h5    gold   n=  140: nested:panel 60 (0.43), deep:div/repeat 26 (0.19), nested:activity 23 (0.16), deep:repeat/div 13 (0.09), deep:row/col 10 (0.07), deep:repeat/col 3 (0.02), nested:alert 2 (0.01)
+  h5    claude n=  255: nested:panel 216 (0.85), row-open 20 (0.08), deep:col/repeat 9 (0.04), nested:activity 5 (0.02), deep:row/col 3 (0.01), inline 1 (0.00), deep:a/div 1 (0.00)
+        inline-after gold:  | claude: list 1 (1.00)
+  alert gold   n=  256: nested:panel 241 (0.94), nested:activity 12 (0.05), deep:repeat/div 1 (0.00), nested:list 1 (0.00), deep:row/col 1 (0.00)
+  alert claude n=  132: nested:panel 111 (0.84), row-open 19 (0.14), deep:row/col 2 (0.02)
+
+== template+ptype=Inquiry/lesson — pages 49
+  h2    gold   n=   18: nested:panel 7 (0.39), row-open 4 (0.22), deep:col/repeat 4 (0.22), inline 3 (0.17)
+  h2    claude n=   12: row-open 9 (0.75), deep:row/col 3 (0.25)
+        inline-after gold: repeat 1 (0.33), img 1 (0.33), WIDGET 1 (0.33) | claude: 
+  h3    gold   n=  306: nested:activity 248 (0.81), row-open 35 (0.11), deep:row/col 10 (0.03), nested:panel 6 (0.02), inline 6 (0.02), deep:col/repeat 1 (0.00)
+  h3    claude n=  198: nested:activity 143 (0.72), row-open 44 (0.22), deep:row/col 9 (0.05), deep:repeat/col 1 (0.01), inline 1 (0.01)
+        inline-after gold: p 3 (0.50), img 1 (0.17), WIDGET 1 (0.17), repeat 1 (0.17) | claude: repeat 1 (1.00)
+  h4    gold   n=   29: nested:activity 16 (0.55), deep:row/col 4 (0.14), deep:row/div 3 (0.10), deep:col/repeat 2 (0.07), nested:alert 2 (0.07), deep:col/div 1 (0.03), inline 1 (0.03)
+  h4    claude n=   22: row-open 9 (0.41), nested:alert 6 (0.27), nested:activity 5 (0.23), inline 2 (0.09)
+        inline-after gold: h3 1 (1.00) | claude: p 1 (0.50), repeat 1 (0.50)
+  h5    gold   n=   14: deep:col/repeat 3 (0.21), nested:activity 3 (0.21), nested:table 2 (0.14), inline 2 (0.14), nested:alert 2 (0.14), deep:span/repeat 1 (0.07), deep:row/col 1 (0.07)
+  h5    claude n=   39: row-open 21 (0.54), nested:activity 9 (0.23), deep:row/col 8 (0.21), inline 1 (0.03)
+        inline-after gold: p 1 (0.50), WIDGET 1 (0.50) | claude: list 1 (1.00)
+  alert gold   n=   59: row-open 24 (0.41), col-open 10 (0.17), inline 8 (0.14), nested:activity 7 (0.12), nested:panel 5 (0.08), deep:row/col 4 (0.07), deep:div/col 1 (0.02)
+  alert claude n=   28: row-open 27 (0.96), col-open 1 (0.04)
+        inline-after gold: p 3 (0.38), h3 1 (0.12), h2 1 (0.12), a 1 (0.12), video 1 (0.12), repeat 1 (0.12) | claude: 
+
+== template+ptype=Bilingual/lesson — pages 47
+  h2    gold   n=   38: deep:col/repeat 38 (1.00)
+  h2    claude n=   14: deep:col/repeat 14 (1.00)
+  h3    gold   n=  299: deep:col/repeat 281 (0.94), nested:activity 9 (0.03), deep:activity/repeat 4 (0.01), row-open 2 (0.01), inline 1 (0.00), deep:row/repeat 1 (0.00), nested:alert 1 (0.00)
+  h3    claude n=  228: deep:col/repeat 227 (1.00), nested:activity 1 (0.00)
+        inline-after gold: h3 1 (1.00) | claude: 
+  h4    gold   n=   91: deep:col/repeat 84 (0.92), nested:alert 4 (0.04), deep:alert/repeat 2 (0.02), deep:activity/repeat 1 (0.01)
+  h4    claude n=   67: deep:col/repeat 52 (0.78), deep:row/col 14 (0.21), row-open 1 (0.01)
+  h5    gold   n=    0: 
+  h5    claude n=   21: row-open 12 (0.57), nested:activity 4 (0.19), deep:col/repeat 3 (0.14), deep:row/col 2 (0.10)
+  alert gold   n=   85: col-open 49 (0.58), row-open 27 (0.32), inline 7 (0.08), nested:activity 1 (0.01), deep:row/col 1 (0.01)
+  alert claude n=   22: deep:row/col 19 (0.86), row-open 2 (0.09), col-open 1 (0.05)
+        inline-after gold: repeat 5 (0.71), WIDGET 1 (0.14), alert 1 (0.14) | claude: 
+
+== template+ptype=Bilingual/overview — pages 16
+  h3    gold   n=   23: deep:col/repeat 19 (0.83), nested:activity 4 (0.17)
+  h3    claude n=   34: deep:col/repeat 25 (0.74), row-open 7 (0.21), deep:row/col 2 (0.06)
+
+== template+ptype=Fundamentals/lesson — pages 11
+  h3    gold   n=   86: nested:activity 48 (0.56), row-open 30 (0.35), deep:row/col 5 (0.06), deep:tr/td 1 (0.01), nested:table 1 (0.01), inline 1 (0.01)
+  h3    claude n=   99: nested:activity 62 (0.63), row-open 35 (0.35), deep:row/col 2 (0.02)
+        inline-after gold: h2 1 (1.00) | claude: 
+  h4    gold   n=    7: inline 2 (0.29), deep:row/col 2 (0.29), nested:alert 2 (0.29), nested:activity 1 (0.14)
+  h4    claude n=    8: row-open 7 (0.88), nested:alert 1 (0.12)
+        inline-after gold: img 2 (1.00) | claude: 
+  alert gold   n=   24: row-open 8 (0.33), col-open 7 (0.29), deep:row/col 5 (0.21), nested:activity 2 (0.08), row-child 1 (0.04), inline 1 (0.04)
+  alert claude n=   16: row-open 14 (0.88), col-open 2 (0.12)
+        inline-after gold: p 1 (1.00) | claude: 
+
+== subject=NCEA1 — pages 333
+  h2    gold   n=  201: row-open 162 (0.81), inline 21 (0.10), deep:row/col 6 (0.03), deep:col/repeat 6 (0.03), row-child 3 (0.01), col-open 1 (0.00), nested:alert 1 (0.00)
+  h2    claude n=  197: row-open 191 (0.97), deep:row/col 5 (0.03), nested:activity 1 (0.01)
+        inline-after gold: p 7 (0.33), repeat 5 (0.24), video 3 (0.14), WIDGET 2 (0.10), row 1 (0.05), alert 1 (0.05), img 1 (0.05) | claude: 
+  h3    gold   n= 1180: nested:activity 696 (0.59), row-open 291 (0.25), inline 77 (0.07), col-open 47 (0.04), nested:alert 38 (0.03), deep:row/col 13 (0.01), deep:col/repeat 8 (0.01)
+  h3    claude n=  930: row-open 543 (0.58), nested:activity 369 (0.40), deep:row/col 11 (0.01), deep:div/repeat 5 (0.01), deep:row/div 1 (0.00), deep:repeat/div 1 (0.00)
+        inline-after gold: p 23 (0.30), repeat 13 (0.17), video 9 (0.12), WIDGET 9 (0.12), list 8 (0.10), img 4 (0.05), alert 3 (0.04) | claude: 
+  h4    gold   n=  441: nested:alert 205 (0.46), inline 83 (0.19), nested:activity 75 (0.17), row-open 22 (0.05), deep:col/repeat 13 (0.03), deep:repeat/div 11 (0.02), deep:row/col 9 (0.02)
+  h4    claude n=  285: nested:activity 120 (0.42), row-open 92 (0.32), nested:alert 38 (0.13), inline 25 (0.09), deep:row/col 10 (0.04)
+        inline-after gold: p 28 (0.34), repeat 18 (0.22), h3 10 (0.12), row 5 (0.06), h4 5 (0.06), list 4 (0.05), alert 4 (0.05) | claude: p 14 (0.56), repeat 5 (0.20), list 2 (0.08), video 2 (0.08), a 1 (0.04), div 1 (0.04)
+  h5    gold   n=   82: nested:activity 34 (0.41), inline 13 (0.16), deep:col/div 7 (0.09), deep:repeat/col 6 (0.07), nested:alert 4 (0.05), deep:div/col 3 (0.04), deep:row/col 3 (0.04)
+  h5    claude n=  120: row-open 74 (0.62), inline 15 (0.12), deep:row/col 12 (0.10), nested:activity 10 (0.08), deep:col/repeat 6 (0.05), nested:alert 3 (0.03)
+        inline-after gold: img 3 (0.23), h3 3 (0.23), p 2 (0.15), row 2 (0.15), h2 2 (0.15), repeat 1 (0.08) | claude: list 14 (0.93), p 1 (0.07)
+  alert gold   n=  435: row-open 176 (0.40), col-open 154 (0.35), inline 72 (0.17), deep:row/col 12 (0.03), deep:div/col 9 (0.02), row-child 5 (0.01), nested:activity 5 (0.01)
+  alert claude n=  227: row-open 219 (0.96), deep:row/col 4 (0.02), col-open 4 (0.02)
+        inline-after gold: p 26 (0.36), alert 9 (0.12), repeat 8 (0.11), video 7 (0.10), list 6 (0.08), img 5 (0.07), row 3 (0.04) | claude: 
+
+== subject=1-10 Mathematics — pages 332
+  h2    gold   n=   77: row-open 39 (0.51), nested:panel 32 (0.42), nested:alert 3 (0.04), deep:repeat/col 1 (0.01), deep:row/col 1 (0.01), row-child 1 (0.01)
+  h2    claude n=   22: nested:panel 22 (1.00)
+  h3    gold   n= 1863: nested:activity 1304 (0.70), row-open 347 (0.19), nested:panel 77 (0.04), inline 58 (0.03), deep:row/col 32 (0.02), deep:col/div 14 (0.01), nested:alert 12 (0.01)
+  h3    claude n= 1577: nested:activity 1016 (0.64), row-open 506 (0.32), nested:panel 36 (0.02), deep:row/col 18 (0.01), deep:div/repeat 1 (0.00)
+        inline-after gold: p 40 (0.69), video 5 (0.09), repeat 4 (0.07), WIDGET 2 (0.03), img 2 (0.03), br 1 (0.02), alert 1 (0.02) | claude: 
+  h4    gold   n=  389: nested:activity 124 (0.32), inline 87 (0.22), nested:alert 62 (0.16), row-open 49 (0.13), deep:row/col 23 (0.06), deep:col/repeat 10 (0.03), nested:panel 8 (0.02)
+  h4    claude n=  346: nested:activity 215 (0.62), row-open 82 (0.24), inline 33 (0.10), nested:alert 11 (0.03), deep:row/col 2 (0.01), deep:col/div 2 (0.01), deep:repeat/col 1 (0.00)
+        inline-after gold: p 37 (0.43), img 14 (0.16), repeat 8 (0.09), list 6 (0.07), row 5 (0.06), h3 5 (0.06), video 4 (0.05) | claude: p 15 (0.45), table 5 (0.15), repeat 5 (0.15), video 2 (0.06), list 2 (0.06), a 2 (0.06), img 1 (0.03)
+  h5    gold   n=  125: inline 37 (0.30), nested:activity 28 (0.22), nested:alert 11 (0.09), deep:row/col 10 (0.08), deep:col/repeat 6 (0.05), deep:repeat/col 6 (0.05), row-open 5 (0.04)
+  h5    claude n=   70: row-open 24 (0.34), nested:activity 23 (0.33), nested:panel 7 (0.10), deep:col/repeat 6 (0.09), deep:row/col 4 (0.06), inline 4 (0.06), deep:repeat/col 2 (0.03)
+        inline-after gold: p 17 (0.46), list 8 (0.22), repeat 3 (0.08), img 2 (0.05), row 2 (0.05), video 2 (0.05), h3 1 (0.03) | claude: h3 4 (1.00)
+  alert gold   n=  418: col-open 219 (0.52), row-open 46 (0.11), deep:row/col 42 (0.10), inline 38 (0.09), nested:panel 31 (0.07), nested:activity 18 (0.04), deep:row/div 11 (0.03)
+  alert claude n=  186: row-open 143 (0.77), col-open 26 (0.14), nested:panel 15 (0.08), deep:row/col 2 (0.01)
+        inline-after gold: p 15 (0.39), video 6 (0.16), repeat 5 (0.13), h3 3 (0.08), WIDGET 3 (0.08), img 2 (0.05), list 2 (0.05) | claude: 
+
+== subject=1-10 English — pages 304
+  h2    gold   n=   25: nested:panel 11 (0.44), row-open 7 (0.28), nested:table 4 (0.16), inline 3 (0.12)
+  h2    claude n=    0: 
+        inline-after gold: alert 1 (0.33), p 1 (0.33), div 1 (0.33) | claude: 
+  h3    gold   n= 1327: nested:activity 831 (0.63), row-open 292 (0.22), nested:panel 107 (0.08), inline 31 (0.02), deep:row/col 16 (0.01), nested:alert 15 (0.01), deep:col/div 14 (0.01)
+  h3    claude n= 1159: nested:activity 652 (0.56), row-open 364 (0.31), nested:panel 110 (0.09), deep:row/col 16 (0.01), deep:col/div 8 (0.01), nested:alert 6 (0.01), inline 2 (0.00)
+        inline-after gold: p 11 (0.35), row 6 (0.19), video 3 (0.10), list 3 (0.10), repeat 2 (0.06), WIDGET 2 (0.06), img 1 (0.03) | claude: repeat 1 (0.50), p 1 (0.50)
+  h4    gold   n=  549: nested:activity 183 (0.33), row-open 116 (0.21), nested:alert 84 (0.15), inline 39 (0.07), deep:col/div 36 (0.07), nested:panel 29 (0.05), deep:row/col 24 (0.04)
+  h4    claude n=  429: row-open 184 (0.43), nested:activity 160 (0.37), nested:panel 42 (0.10), inline 20 (0.05), nested:alert 9 (0.02), deep:repeat/col 7 (0.02), deep:row/col 5 (0.01)
+        inline-after gold: p 22 (0.56), repeat 4 (0.10), video 2 (0.05), WIDGET 2 (0.05), br 2 (0.05), h3 2 (0.05), activity 2 (0.05) | claude: p 8 (0.40), list 6 (0.30), WIDGET 3 (0.15), img 2 (0.10), repeat 1 (0.05)
+  h5    gold   n=  151: inline 30 (0.20), nested:alert 23 (0.15), nested:activity 23 (0.15), row-open 15 (0.10), deep:col/div 14 (0.09), deep:col/repeat 10 (0.07), deep:repeat/div 7 (0.05)
+  h5    claude n=  158: nested:panel 63 (0.40), row-open 52 (0.33), nested:activity 19 (0.12), deep:col/repeat 15 (0.09), deep:row/col 4 (0.03), nested:alert 3 (0.02), inline 2 (0.01)
+        inline-after gold: p 22 (0.73), repeat 5 (0.17), video 2 (0.07), list 1 (0.03) | claude: list 1 (0.50), p 1 (0.50)
+  alert gold   n=  323: col-open 145 (0.45), nested:panel 59 (0.18), inline 40 (0.12), row-open 39 (0.12), deep:row/col 16 (0.05), nested:activity 13 (0.04), nested:alert 3 (0.01)
+  alert claude n=   98: row-open 76 (0.78), col-open 12 (0.12), nested:panel 8 (0.08), deep:row/col 2 (0.02)
+        inline-after gold: p 24 (0.60), video 5 (0.12), repeat 4 (0.10), h3 2 (0.05), row 2 (0.05), alert 1 (0.03), br 1 (0.03) | claude: 
+
+== subject=1-10 Blended Literacy — pages 258
+  h2    gold   n=   74: nested:panel 70 (0.95), row-open 2 (0.03), nested:activity 1 (0.01), deep:col/repeat 1 (0.01)
+  h2    claude n=   47: nested:panel 46 (0.98), row-open 1 (0.02)
+  h3    gold   n= 1679: nested:activity 1476 (0.88), row-open 79 (0.05), deep:row/col 76 (0.05), nested:panel 39 (0.02), nested:alert 3 (0.00), deep:col/repeat 2 (0.00), deep:repeat/div 2 (0.00)
+  h3    claude n= 1607: nested:activity 1396 (0.87), deep:row/col 98 (0.06), row-open 67 (0.04), nested:panel 46 (0.03)
+        inline-after gold: p 1 (1.00) | claude: 
+  h4    gold   n=   69: nested:alert 32 (0.46), nested:activity 20 (0.29), deep:repeat/div 7 (0.10), deep:col/repeat 4 (0.06), row-open 2 (0.03), deep:repeat/th 1 (0.01), deep:td/repeat 1 (0.01)
+  h4    claude n=   29: nested:panel 19 (0.66), row-open 7 (0.24), nested:alert 3 (0.10)
+  h5    gold   n=   42: nested:activity 31 (0.74), deep:col/repeat 6 (0.14), deep:repeat/col 5 (0.12)
+  h5    claude n=    4: nested:panel 2 (0.50), nested:activity 2 (0.50)
+  alert gold   n=  219: nested:panel 91 (0.42), col-open 72 (0.33), row-open 16 (0.07), deep:row/div 15 (0.07), deep:row/col 13 (0.06), nested:activity 10 (0.05), deep:repeat/col 1 (0.00)
+  alert claude n=  105: nested:panel 58 (0.55), col-open 32 (0.30), row-open 15 (0.14)
+
+== subject=Leaving to Learn — pages 206
+  h2    gold   n=   25: row-open 21 (0.84), nested:alert 3 (0.12), deep:row/col 1 (0.04)
+  h2    claude n=    2: nested:activity 2 (1.00)
+  h3    gold   n= 1121: nested:activity 778 (0.69), row-open 201 (0.18), deep:row/col 52 (0.05), inline 42 (0.04), nested:alert 27 (0.02), nested:panel 10 (0.01), deep:col/repeat 4 (0.00)
+  h3    claude n= 1058: nested:activity 617 (0.58), row-open 370 (0.35), deep:row/col 39 (0.04), nested:alert 15 (0.01), nested:panel 8 (0.01), inline 6 (0.01), deep:col/repeat 2 (0.00)
+        inline-after gold: p 22 (0.52), repeat 8 (0.19), row 3 (0.07), alert 3 (0.07), img 2 (0.05), list 2 (0.05), WIDGET 2 (0.05) | claude: p 4 (0.67), repeat 1 (0.17), video 1 (0.17)
+  h4    gold   n=  334: nested:activity 135 (0.40), nested:alert 106 (0.32), inline 41 (0.12), row-open 21 (0.06), deep:repeat/div 7 (0.02), nested:panel 7 (0.02), deep:row/col 6 (0.02)
+  h4    claude n=  264: row-open 123 (0.47), nested:alert 69 (0.26), inline 40 (0.15), nested:activity 12 (0.05), deep:row/col 10 (0.04), deep:repeat/col 6 (0.02), col-open 2 (0.01)
+        inline-after gold: p 17 (0.41), alert 8 (0.20), repeat 5 (0.12), h3 3 (0.07), WIDGET 2 (0.05), list 2 (0.05), video 1 (0.02) | claude: p 32 (0.80), repeat 7 (0.17), list 1 (0.03)
+  h5    gold   n=  111: nested:activity 57 (0.51), deep:div/col 22 (0.20), deep:a/div 6 (0.05), deep:col/repeat 6 (0.05), inline 5 (0.05), deep:repeat/col 5 (0.05), deep:row/div 3 (0.03)
+  h5    claude n=   35: nested:activity 19 (0.54), deep:a/div 5 (0.14), row-open 5 (0.14), nested:panel 4 (0.11), inline 1 (0.03), deep:row/col 1 (0.03)
+        inline-after gold: p 2 (0.40), h3 1 (0.20), h4 1 (0.20), WIDGET 1 (0.20) | claude: list 1 (1.00)
+  alert gold   n=  375: row-open 176 (0.47), col-open 72 (0.19), inline 71 (0.19), deep:row/col 22 (0.06), nested:activity 21 (0.06), row-child 5 (0.01), deep:row/div 3 (0.01)
+  alert claude n=  212: row-open 203 (0.96), col-open 9 (0.04)
+        inline-after gold: p 26 (0.37), WIDGET 7 (0.10), repeat 7 (0.10), h3 6 (0.08), row 6 (0.08), img 5 (0.07), video 4 (0.06) | claude: 
+
+== subject=Online Safety (OS9000) — pages 130
+  h2    gold   n=   29: row-open 24 (0.83), inline 4 (0.14), nested:table 1 (0.03)
+  h2    claude n=    0: 
+        inline-after gold: WIDGET 2 (0.50), alert 1 (0.25), p 1 (0.25) | claude: 
+  h3    gold   n=  390: nested:activity 199 (0.51), row-open 140 (0.36), inline 39 (0.10), deep:row/col 5 (0.01), deep:div/div 2 (0.01), top-level 1 (0.00), nested:alert 1 (0.00)
+  h3    claude n=  365: nested:activity 181 (0.50), row-open 176 (0.48), deep:row/col 5 (0.01), deep:row/div 2 (0.01), deep:col/div 1 (0.00)
+        inline-after gold: p 11 (0.28), WIDGET 7 (0.18), alert 5 (0.13), video 4 (0.10), h2 3 (0.08), repeat 3 (0.08), br 2 (0.05) | claude: 
+  h4    gold   n=  151: row-open 54 (0.36), inline 23 (0.15), deep:repeat/div 22 (0.15), nested:alert 17 (0.11), nested:activity 13 (0.09), deep:col/div 9 (0.06), deep:row/col 6 (0.04)
+  h4    claude n=   99: row-open 80 (0.81), nested:alert 15 (0.15), deep:repeat/div 2 (0.02), deep:row/col 2 (0.02)
+        inline-after gold: p 9 (0.39), repeat 3 (0.13), WIDGET 2 (0.09), div 2 (0.09), video 2 (0.09), a 2 (0.09), alert 2 (0.09) | claude: 
+  h5    gold   n=   44: deep:repeat/div 8 (0.18), inline 7 (0.16), deep:div/div 7 (0.16), row-open 6 (0.14), deep:row/col 3 (0.07), deep:col/div 3 (0.07), deep:div/col 3 (0.07)
+  h5    claude n=   13: row-open 13 (1.00)
+        inline-after gold: p 6 (0.86), h2 1 (0.14) | claude: 
+  alert gold   n=  110: row-open 46 (0.42), inline 41 (0.37), col-open 13 (0.12), deep:row/col 5 (0.05), nested:activity 4 (0.04), deep:row/div 1 (0.01)
+  alert claude n=   87: row-open 84 (0.97), col-open 3 (0.03)
+        inline-after gold: p 13 (0.32), video 11 (0.27), WIDGET 7 (0.17), list 3 (0.07), h4 2 (0.05), repeat 2 (0.05), div 1 (0.02) | claude: 
+
+== subject=ConnectED — pages 114
+  h2    gold   n=  133: nested:panel 67 (0.50), row-open 46 (0.35), inline 9 (0.07), nested:activity 8 (0.06), col-open 3 (0.02)
+  h2    claude n=   76: nested:panel 47 (0.62), row-open 29 (0.38)
+        inline-after gold: p 3 (0.33), alert 2 (0.22), div 1 (0.11), WIDGET 1 (0.11), a 1 (0.11), repeat 1 (0.11) | claude: 
+  h3    gold   n=  634: nested:activity 402 (0.63), row-open 137 (0.22), nested:panel 60 (0.09), inline 23 (0.04), nested:alert 5 (0.01), deep:div/col 3 (0.00), col-open 2 (0.00)
+  h3    claude n=  488: nested:activity 260 (0.53), row-open 206 (0.42), nested:panel 9 (0.02), deep:row/col 6 (0.01), col-open 3 (0.01), deep:repeat/col 2 (0.00), inline 1 (0.00)
+        inline-after gold: p 9 (0.39), row 5 (0.22), WIDGET 2 (0.09), alert 2 (0.09), img 1 (0.04), table 1 (0.04), a 1 (0.04) | claude: img 1 (1.00)
+  h4    gold   n=  338: nested:alert 113 (0.33), nested:activity 101 (0.30), nested:panel 40 (0.12), row-open 34 (0.10), inline 19 (0.06), deep:col/div 10 (0.03), deep:repeat/div 8 (0.02)
+  h4    claude n=  241: row-open 119 (0.49), nested:alert 58 (0.24), nested:activity 48 (0.20), nested:panel 10 (0.04), col-open 3 (0.01), inline 3 (0.01)
+        inline-after gold: p 7 (0.37), repeat 6 (0.32), h3 2 (0.11), object 1 (0.05), WIDGET 1 (0.05), row 1 (0.05), col 1 (0.05) | claude: p 2 (0.67), table 1 (0.33)
+  h5    gold   n=   49: nested:alert 16 (0.33), nested:activity 15 (0.31), deep:repeat/col 5 (0.10), deep:col/repeat 3 (0.06), nested:table 2 (0.04), nested:panel 2 (0.04), deep:div/repeat 1 (0.02)
+  h5    claude n=   25: deep:col/repeat 7 (0.28), nested:panel 6 (0.24), row-open 6 (0.24), nested:activity 5 (0.20), inline 1 (0.04)
+        inline-after gold: p 1 (1.00) | claude: list 1 (1.00)
+  alert gold   n=  313: nested:panel 112 (0.36), inline 76 (0.24), row-open 69 (0.22), col-open 23 (0.07), deep:row/col 11 (0.04), nested:activity 10 (0.03), deep:col/div 7 (0.02)
+  alert claude n=  145: row-open 129 (0.89), nested:panel 12 (0.08), deep:row/col 3 (0.02), col-open 1 (0.01)
+        inline-after gold: p 31 (0.41), audio 12 (0.16), alert 6 (0.08), h3 5 (0.07), h2 4 (0.05), repeat 4 (0.05), WIDGET 3 (0.04) | claude: 
+
+== subject=ANZH — pages 78
+  h2    gold   n=   26: inline 12 (0.46), row-open 10 (0.38), col-open 3 (0.12), deep:col/repeat 1 (0.04)
+  h2    claude n=    0: 
+        inline-after gold: alert 11 (0.92), a 1 (0.08) | claude: 
+  h3    gold   n=  240: nested:activity 125 (0.52), row-open 53 (0.22), inline 22 (0.09), nested:alert 18 (0.07), deep:row/col 13 (0.05), col-open 8 (0.03), row-child 1 (0.00)
+  h3    claude n=  235: nested:activity 116 (0.49), row-open 112 (0.48), deep:row/col 7 (0.03)
+        inline-after gold: p 11 (0.50), img 2 (0.09), alert 2 (0.09), repeat 2 (0.09), br 1 (0.05), a 1 (0.05), row 1 (0.05) | claude: 
+  h4    gold   n=   95: nested:activity 52 (0.55), nested:alert 26 (0.27), inline 7 (0.07), row-open 3 (0.03), deep:col/repeat 3 (0.03), deep:row/col 2 (0.02), col-open 1 (0.01)
+  h4    claude n=   70: nested:activity 45 (0.64), row-open 18 (0.26), inline 5 (0.07), deep:row/col 2 (0.03)
+        inline-after gold: p 3 (0.43), h3 2 (0.29), video 1 (0.14), repeat 1 (0.14) | claude: repeat 2 (0.40), p 1 (0.20), a 1 (0.20), list 1 (0.20)
+  h5    gold   n=    8: deep:div/repeat 4 (0.50), nested:alert 3 (0.38), nested:activity 1 (0.12)
+  h5    claude n=    5: nested:activity 4 (0.80), deep:col/repeat 1 (0.20)
+  alert gold   n=  123: row-open 61 (0.50), col-open 31 (0.25), deep:row/col 12 (0.10), deep:row/div 11 (0.09), inline 6 (0.05), top-level 1 (0.01), nested:activity 1 (0.01)
+  alert claude n=  140: row-open 119 (0.85), col-open 21 (0.15)
+        inline-after gold: p 3 (0.50), repeat 1 (0.17), video 1 (0.17), alert 1 (0.17) | claude: 
+
+== subject=Te Marautanga o Aotearoa TMoA — pages 63
+  h2    gold   n=   45: deep:col/repeat 44 (0.98), deep:row/repeat 1 (0.02)
+  h2    claude n=   14: deep:col/repeat 14 (1.00)
+  h3    gold   n=  322: deep:col/repeat 300 (0.93), nested:activity 13 (0.04), deep:activity/repeat 4 (0.01), row-open 2 (0.01), inline 1 (0.00), deep:row/repeat 1 (0.00), nested:alert 1 (0.00)
+  h3    claude n=  262: deep:col/repeat 252 (0.96), row-open 7 (0.03), deep:row/col 2 (0.01), nested:activity 1 (0.00)
+        inline-after gold: h3 1 (1.00) | claude: 
+  h4    gold   n=   94: deep:col/repeat 85 (0.90), nested:alert 5 (0.05), deep:alert/repeat 2 (0.02), deep:activity/repeat 1 (0.01), inline 1 (0.01)
+  h4    claude n=   71: deep:col/repeat 56 (0.79), deep:row/col 14 (0.20), row-open 1 (0.01)
+        inline-after gold: repeat 1 (1.00) | claude: 
+  h5    gold   n=    1: deep:repeat/col 1 (1.00)
+  h5    claude n=   21: row-open 12 (0.57), nested:activity 4 (0.19), deep:col/repeat 3 (0.14), deep:row/col 2 (0.10)
+  alert gold   n=   90: col-open 52 (0.58), row-open 27 (0.30), inline 8 (0.09), nested:activity 2 (0.02), deep:row/col 1 (0.01)
+  alert claude n=   25: deep:row/col 20 (0.80), row-open 4 (0.16), col-open 1 (0.04)
+        inline-after gold: repeat 5 (0.62), WIDGET 2 (0.25), alert 1 (0.12) | claude: 
+
+== subject=None — pages 46
+  h2    gold   n=   17: row-open 8 (0.47), inline 5 (0.29), deep:row/col 2 (0.12), nested:activity 2 (0.12)
+  h2    claude n=    0: 
+        inline-after gold: br 5 (1.00) | claude: 
+  h3    gold   n=  458: nested:activity 225 (0.49), row-open 101 (0.22), nested:panel 63 (0.14), inline 44 (0.10), nested:alert 11 (0.02), deep:row/col 8 (0.02), deep:col/div 5 (0.01)
+  h3    claude n=  410: row-open 196 (0.48), nested:activity 142 (0.35), nested:panel 61 (0.15), deep:row/col 6 (0.01), deep:col/div 5 (0.01)
+        inline-after gold: br 32 (0.73), p 3 (0.07), WIDGET 3 (0.07), img 2 (0.05), repeat 1 (0.02), activity 1 (0.02), alert 1 (0.02) | claude: 
+  h4    gold   n=  203: nested:activity 85 (0.42), nested:panel 66 (0.33), nested:alert 23 (0.11), inline 7 (0.03), nested:list 6 (0.03), row-open 4 (0.02), deep:row/col 3 (0.01)
+  h4    claude n=  150: nested:panel 61 (0.41), nested:alert 29 (0.19), row-open 26 (0.17), inline 18 (0.12), nested:activity 15 (0.10), deep:row/col 1 (0.01)
+        inline-after gold: p 2 (0.29), h3 2 (0.29), img 1 (0.14), br 1 (0.14), list 1 (0.14) | claude: p 6 (0.33), WIDGET 4 (0.22), list 4 (0.22), repeat 3 (0.17), table 1 (0.06)
+  h5    gold   n=   40: deep:col/repeat 20 (0.50), nested:panel 12 (0.30), inline 4 (0.10), nested:activity 2 (0.05), nested:alert 1 (0.03), deep:repeat/col 1 (0.03)
+  h5    claude n=    4: row-open 3 (0.75), nested:activity 1 (0.25)
+        inline-after gold: p 3 (0.75), repeat 1 (0.25) | claude: 
+  alert gold   n=   70: col-open 23 (0.33), row-open 21 (0.30), inline 16 (0.23), nested:panel 3 (0.04), deep:row/col 3 (0.04), row-child 2 (0.03), nested:activity 1 (0.01)
+  alert claude n=   45: row-open 42 (0.93), col-open 2 (0.04), nested:panel 1 (0.02)
+        inline-after gold: br 11 (0.69), list 2 (0.12), repeat 2 (0.12), p 1 (0.06) | claude: 
+
+== subject=1-10 Social Science — pages 38
+  h2    gold   n=   31: nested:panel 19 (0.61), row-open 11 (0.35), inline 1 (0.03)
+  h2    claude n=    0: 
+        inline-after gold: alert 1 (1.00) | claude: 
+  h3    gold   n=  286: nested:activity 139 (0.49), nested:panel 64 (0.22), row-open 52 (0.18), nested:alert 16 (0.06), deep:col/div 7 (0.02), deep:row/col 5 (0.02), inline 2 (0.01)
+  h3    claude n=  326: nested:activity 129 (0.40), row-open 111 (0.34), nested:panel 70 (0.21), deep:row/col 9 (0.03), deep:col/div 6 (0.02), nested:alert 1 (0.00)
+        inline-after gold: WIDGET 1 (0.50), repeat 1 (0.50) | claude: 
+  h4    gold   n=   56: nested:activity 21 (0.38), nested:alert 20 (0.36), nested:panel 13 (0.23), deep:repeat/col 1 (0.02), deep:repeat/div 1 (0.02)
+  h4    claude n=   62: nested:panel 21 (0.34), nested:activity 17 (0.27), row-open 12 (0.19), nested:alert 5 (0.08), deep:row/col 5 (0.08), inline 2 (0.03)
+        inline-after gold:  | claude: repeat 2 (1.00)
+  h5    gold   n=   37: nested:activity 12 (0.32), nested:alert 6 (0.16), deep:col/repeat 4 (0.11), nested:panel 4 (0.11), deep:col/div 4 (0.11), deep:row/col 3 (0.08), deep:repeat/div 3 (0.08)
+  h5    claude n=   21: nested:panel 8 (0.38), nested:activity 6 (0.29), deep:row/col 3 (0.14), row-open 2 (0.10), nested:alert 1 (0.05), deep:col/repeat 1 (0.05)
+  alert gold   n=  136: nested:panel 89 (0.65), col-open 17 (0.12), row-open 15 (0.11), inline 10 (0.07), deep:row/col 3 (0.02), nested:activity 2 (0.01)
+  alert claude n=   99: nested:panel 49 (0.49), row-open 44 (0.44), deep:row/col 4 (0.04), col-open 2 (0.02)
+        inline-after gold: h2 7 (0.70), repeat 1 (0.10), h3 1 (0.10), col 1 (0.10) | claude: 
+
+== subject=EXPlore — pages 15
+  h2    gold   n=   58: nested:panel 54 (0.93), row-open 2 (0.03), deep:div/col 1 (0.02), nested:activity 1 (0.02)
+  h2    claude n=   28: nested:panel 28 (1.00)
+  h3    gold   n=  183: nested:panel 82 (0.45), nested:activity 56 (0.31), deep:row/col 18 (0.10), deep:col/repeat 12 (0.07), deep:a/div 8 (0.04), col-open 4 (0.02), deep:div/div 2 (0.01)
+  h3    claude n=   85: nested:panel 46 (0.54), nested:activity 28 (0.33), row-open 11 (0.13)
+  h4    gold   n=   63: nested:panel 24 (0.38), deep:row/col 11 (0.17), nested:alert 7 (0.11), nested:activity 5 (0.08), col-open 4 (0.06), deep:repeat/div 4 (0.06), row-open 3 (0.05)
+  h4    claude n=   86: nested:panel 57 (0.66), row-open 11 (0.13), nested:alert 8 (0.09), deep:row/col 7 (0.08), nested:activity 2 (0.02), inline 1 (0.01)
+        inline-after gold:  | claude: p 1 (1.00)
+  h5    gold   n=  114: nested:panel 60 (0.53), deep:div/repeat 25 (0.22), deep:repeat/div 13 (0.11), deep:row/col 10 (0.09), deep:repeat/col 4 (0.04), nested:alert 2 (0.02)
+  h5    claude n=  205: nested:panel 204 (1.00), row-open 1 (0.00)
+  alert gold   n=   50: nested:panel 41 (0.82), row-open 3 (0.06), col-open 2 (0.04), deep:row/div 1 (0.02), row-child 1 (0.02), inline 1 (0.02), nested:activity 1 (0.02)
+  alert claude n=   33: nested:panel 25 (0.76), row-open 6 (0.18), col-open 2 (0.06)
+        inline-after gold: p 1 (1.00) | claude: 
+
+== subject=1-10 Health and PE — pages 15
+  h2    gold   n=   63: nested:panel 63 (1.00)
+  h2    claude n=   68: nested:panel 68 (1.00)
+  h3    gold   n=  206: nested:activity 104 (0.50), nested:panel 76 (0.37), deep:col/div 24 (0.12), nested:alert 1 (0.00), deep:repeat/div 1 (0.00)
+  h3    claude n=  149: nested:panel 94 (0.63), nested:activity 31 (0.21), deep:col/div 23 (0.15), deep:row/col 1 (0.01)
+  h4    gold   n=   14: nested:activity 4 (0.29), deep:row/col 4 (0.29), nested:alert 3 (0.21), nested:panel 1 (0.07), deep:div/div 1 (0.07), deep:repeat/div 1 (0.07)
+  h4    claude n=    1: nested:alert 1 (1.00)
+  alert gold   n=   21: nested:panel 21 (1.00)
+  alert claude n=    8: nested:panel 8 (1.00)
+
+== subject=1-10 Science — pages 10
+  h3    gold   n=   53: nested:activity 35 (0.66), row-open 15 (0.28), nested:panel 2 (0.04), deep:col/div 1 (0.02)
+  h3    claude n=   43: nested:activity 29 (0.67), row-open 11 (0.26), deep:row/col 2 (0.05), deep:col/div 1 (0.02)
+  h4    gold   n=   24: nested:activity 9 (0.38), nested:alert 7 (0.29), nested:panel 4 (0.17), inline 3 (0.12), row-open 1 (0.04)
+  h4    claude n=   30: nested:panel 8 (0.27), nested:alert 7 (0.23), nested:activity 6 (0.20), row-open 4 (0.13), inline 3 (0.10), deep:row/col 2 (0.07)
+        inline-after gold: WIDGET 1 (0.33), repeat 1 (0.33), img 1 (0.33) | claude: p 3 (1.00)
+  alert gold   n=   18: nested:panel 9 (0.50), row-open 8 (0.44), col-open 1 (0.06)
+  alert claude n=   11: row-open 8 (0.73), nested:panel 2 (0.18), col-open 1 (0.09)
+
+== subject+ptype=1-10 Mathematics/lesson — pages 292
+  h2    gold   n=   41: row-open 35 (0.85), nested:alert 3 (0.07), deep:repeat/col 1 (0.02), deep:row/col 1 (0.02), row-child 1 (0.02)
+  h2    claude n=    0: 
+  h3    gold   n= 1672: nested:activity 1210 (0.72), row-open 340 (0.20), inline 58 (0.03), deep:row/col 29 (0.02), deep:col/div 11 (0.01), nested:alert 9 (0.01), col-open 8 (0.00)
+  h3    claude n= 1480: nested:activity 977 (0.66), row-open 489 (0.33), deep:row/col 13 (0.01), deep:div/repeat 1 (0.00)
+        inline-after gold: p 40 (0.69), video 5 (0.09), repeat 4 (0.07), WIDGET 2 (0.03), img 2 (0.03), br 1 (0.02), alert 1 (0.02) | claude: 
+  h4    gold   n=  374: nested:activity 122 (0.33), inline 87 (0.23), nested:alert 58 (0.16), row-open 49 (0.13), deep:row/col 23 (0.06), deep:col/repeat 10 (0.03), deep:repeat/div 7 (0.02)
+  h4    claude n=  345: nested:activity 215 (0.62), row-open 82 (0.24), inline 33 (0.10), nested:alert 10 (0.03), deep:row/col 2 (0.01), deep:col/div 2 (0.01), deep:repeat/col 1 (0.00)
+        inline-after gold: p 37 (0.43), img 14 (0.16), repeat 8 (0.09), list 6 (0.07), row 5 (0.06), h3 5 (0.06), video 4 (0.05) | claude: p 15 (0.45), table 5 (0.15), repeat 5 (0.15), video 2 (0.06), list 2 (0.06), a 2 (0.06), img 1 (0.03)
+  h5    gold   n=  115: inline 37 (0.32), nested:activity 25 (0.22), nested:alert 11 (0.10), deep:row/col 10 (0.09), deep:col/repeat 5 (0.04), deep:repeat/col 5 (0.04), row-open 4 (0.03)
+  h5    claude n=   57: row-open 24 (0.42), nested:activity 20 (0.35), deep:col/repeat 5 (0.09), deep:row/col 4 (0.07), inline 4 (0.07)
+        inline-after gold: p 17 (0.46), list 8 (0.22), repeat 3 (0.08), img 2 (0.05), row 2 (0.05), video 2 (0.05), h3 1 (0.03) | claude: h3 4 (1.00)
+  alert gold   n=  383: col-open 219 (0.57), row-open 46 (0.12), deep:row/col 42 (0.11), inline 36 (0.09), nested:activity 16 (0.04), deep:row/div 11 (0.03), deep:div/col 5 (0.01)
+  alert claude n=  171: row-open 143 (0.84), col-open 26 (0.15), deep:row/col 2 (0.01)
+        inline-after gold: p 14 (0.39), video 5 (0.14), repeat 5 (0.14), h3 3 (0.08), WIDGET 3 (0.08), img 2 (0.06), list 2 (0.06) | claude: 
+
+== subject+ptype=NCEA1/lesson — pages 291
+  h2    gold   n=  186: row-open 156 (0.84), inline 17 (0.09), deep:row/col 6 (0.03), deep:col/repeat 5 (0.03), col-open 1 (0.01), nested:alert 1 (0.01)
+  h2    claude n=  189: row-open 184 (0.97), deep:row/col 4 (0.02), nested:activity 1 (0.01)
+        inline-after gold: p 6 (0.35), repeat 4 (0.24), video 3 (0.18), row 1 (0.06), img 1 (0.06), WIDGET 1 (0.06), hr 1 (0.06) | claude: 
+  h3    gold   n= 1153: nested:activity 678 (0.59), row-open 287 (0.25), inline 75 (0.07), col-open 47 (0.04), nested:alert 38 (0.03), deep:row/col 13 (0.01), deep:col/repeat 8 (0.01)
+  h3    claude n=  857: row-open 511 (0.60), nested:activity 329 (0.38), deep:row/col 10 (0.01), deep:div/repeat 5 (0.01), deep:row/div 1 (0.00), deep:repeat/div 1 (0.00)
+        inline-after gold: p 23 (0.31), repeat 11 (0.15), video 9 (0.12), WIDGET 9 (0.12), list 8 (0.11), img 4 (0.05), alert 3 (0.04) | claude: 
+  h4    gold   n=  412: nested:alert 197 (0.48), nested:activity 75 (0.18), inline 68 (0.17), row-open 18 (0.04), deep:col/repeat 13 (0.03), deep:repeat/div 11 (0.03), deep:row/col 9 (0.02)
+  h4    claude n=  264: nested:activity 120 (0.45), row-open 74 (0.28), nested:alert 38 (0.14), inline 22 (0.08), deep:row/col 10 (0.04)
+        inline-after gold: p 25 (0.37), repeat 16 (0.24), h3 9 (0.13), row 4 (0.06), alert 3 (0.04), video 2 (0.03), WIDGET 2 (0.03) | claude: p 13 (0.59), repeat 4 (0.18), video 2 (0.09), list 1 (0.05), a 1 (0.05), div 1 (0.05)
+  h5    gold   n=   74: nested:activity 31 (0.42), inline 12 (0.16), deep:col/div 7 (0.09), deep:repeat/col 6 (0.08), nested:alert 4 (0.05), deep:div/col 3 (0.04), deep:row/col 3 (0.04)
+  h5    claude n=   83: row-open 46 (0.55), inline 15 (0.18), deep:row/col 10 (0.12), nested:activity 7 (0.08), nested:alert 3 (0.04), deep:col/repeat 2 (0.02)
+        inline-after gold: img 3 (0.25), h3 3 (0.25), p 2 (0.17), h2 2 (0.17), row 1 (0.08), repeat 1 (0.08) | claude: list 14 (0.93), p 1 (0.07)
+  alert gold   n=  420: row-open 174 (0.41), col-open 150 (0.36), inline 66 (0.16), deep:row/col 12 (0.03), deep:div/col 6 (0.01), row-child 5 (0.01), nested:activity 5 (0.01)
+  alert claude n=  216: row-open 209 (0.97), col-open 4 (0.02), deep:row/col 3 (0.01)
+        inline-after gold: p 26 (0.39), alert 9 (0.14), repeat 8 (0.12), video 7 (0.11), list 5 (0.08), img 4 (0.06), br 2 (0.03) | claude: 
+
+== subject+ptype=1-10 English/lesson — pages 256
+  h2    gold   n=   11: row-open 6 (0.55), nested:table 3 (0.27), inline 2 (0.18)
+  h2    claude n=    0: 
+        inline-after gold: alert 1 (0.50), p 1 (0.50) | claude: 
+  h3    gold   n= 1080: nested:activity 712 (0.66), row-open 285 (0.26), inline 28 (0.03), deep:row/col 16 (0.01), nested:alert 15 (0.01), col-open 11 (0.01), deep:col/div 6 (0.01)
+  h3    claude n=  922: nested:activity 550 (0.60), row-open 348 (0.38), deep:row/col 15 (0.02), nested:alert 6 (0.01), inline 2 (0.00), deep:row/div 1 (0.00)
+        inline-after gold: p 10 (0.36), row 6 (0.21), list 3 (0.11), repeat 2 (0.07), WIDGET 2 (0.07), video 2 (0.07), img 1 (0.04) | claude: repeat 1 (0.50), p 1 (0.50)
+  h4    gold   n=  473: nested:activity 177 (0.37), row-open 114 (0.24), nested:alert 53 (0.11), inline 36 (0.08), deep:col/div 36 (0.08), deep:row/col 23 (0.05), deep:repeat/div 7 (0.01)
+  h4    claude n=  385: row-open 183 (0.48), nested:activity 160 (0.42), inline 20 (0.05), nested:alert 8 (0.02), deep:repeat/col 7 (0.02), deep:row/col 5 (0.01), col-open 2 (0.01)
+        inline-after gold: p 21 (0.58), repeat 3 (0.08), video 2 (0.06), WIDGET 2 (0.06), br 2 (0.06), h3 2 (0.06), activity 2 (0.06) | claude: p 8 (0.40), list 6 (0.30), WIDGET 3 (0.15), img 2 (0.10), repeat 1 (0.05)
+  h5    gold   n=  142: inline 29 (0.20), nested:activity 23 (0.16), nested:alert 22 (0.15), row-open 14 (0.10), deep:col/div 14 (0.10), deep:col/repeat 10 (0.07), deep:repeat/div 7 (0.05)
+  h5    claude n=   77: row-open 51 (0.66), nested:activity 16 (0.21), deep:row/col 4 (0.05), nested:alert 3 (0.04), inline 2 (0.03), deep:col/repeat 1 (0.01)
+        inline-after gold: p 21 (0.72), repeat 5 (0.17), video 2 (0.07), list 1 (0.03) | claude: list 1 (0.50), p 1 (0.50)
+  alert gold   n=  260: col-open 144 (0.55), inline 39 (0.15), row-open 39 (0.15), deep:row/col 16 (0.06), nested:activity 12 (0.05), deep:col/div 2 (0.01), row-child 2 (0.01)
+  alert claude n=   87: row-open 75 (0.86), col-open 12 (0.14)
+        inline-after gold: p 24 (0.62), video 4 (0.10), repeat 4 (0.10), h3 2 (0.05), row 2 (0.05), alert 1 (0.03), br 1 (0.03) | claude: 
+
+== subject+ptype=Leaving to Learn/lesson — pages 172
+  h2    gold   n=   23: row-open 19 (0.83), nested:alert 3 (0.13), deep:row/col 1 (0.04)
+  h2    claude n=    2: nested:activity 2 (1.00)
+  h3    gold   n= 1078: nested:activity 778 (0.72), row-open 188 (0.17), deep:row/col 45 (0.04), inline 38 (0.04), nested:alert 25 (0.02), deep:col/repeat 3 (0.00), deep:col/row 1 (0.00)
+  h3    claude n= 1023: nested:activity 616 (0.60), row-open 348 (0.34), deep:row/col 36 (0.04), nested:alert 15 (0.01), inline 6 (0.01), deep:col/repeat 2 (0.00)
+        inline-after gold: p 20 (0.53), repeat 6 (0.16), row 3 (0.08), alert 3 (0.08), img 2 (0.05), list 2 (0.05), WIDGET 2 (0.05) | claude: p 4 (0.67), repeat 1 (0.17), video 1 (0.17)
+  h4    gold   n=  311: nested:activity 135 (0.43), nested:alert 103 (0.33), inline 35 (0.11), row-open 16 (0.05), deep:repeat/div 7 (0.02), deep:row/col 5 (0.02), deep:col/repeat 4 (0.01)
+  h4    claude n=  241: row-open 103 (0.43), nested:alert 68 (0.28), inline 39 (0.16), nested:activity 12 (0.05), deep:row/col 9 (0.04), deep:repeat/col 6 (0.02), col-open 2 (0.01)
+        inline-after gold: p 17 (0.49), alert 5 (0.14), repeat 3 (0.09), h3 3 (0.09), WIDGET 2 (0.06), list 2 (0.06), video 1 (0.03) | claude: p 32 (0.82), repeat 7 (0.18)
+  h5    gold   n=  100: nested:activity 57 (0.57), deep:div/col 22 (0.22), deep:col/repeat 6 (0.06), deep:repeat/col 5 (0.05), inline 4 (0.04), nested:alert 2 (0.02), deep:repeat/div 2 (0.02)
+  h5    claude n=   26: nested:activity 19 (0.73), row-open 5 (0.19), inline 1 (0.04), deep:row/col 1 (0.04)
+        inline-after gold: h3 1 (0.25), h4 1 (0.25), WIDGET 1 (0.25), p 1 (0.25) | claude: list 1 (1.00)
+  alert gold   n=  359: row-open 169 (0.47), col-open 68 (0.19), inline 67 (0.19), deep:row/col 21 (0.06), nested:activity 21 (0.06), row-child 5 (0.01), deep:row/div 3 (0.01)
+  alert claude n=  201: row-open 192 (0.96), col-open 9 (0.04)
+        inline-after gold: p 25 (0.37), WIDGET 7 (0.10), repeat 7 (0.10), h3 6 (0.09), row 6 (0.09), img 5 (0.07), alert 4 (0.06) | claude: 
+
+== subject+ptype=1-10 Blended Literacy/lesson — pages 167
+  h3    gold   n=  987: nested:activity 975 (0.99), row-open 7 (0.01), deep:repeat/div 2 (0.00), nested:panel 1 (0.00), deep:col/repeat 1 (0.00), nested:alert 1 (0.00)
+  h3    claude n=  967: nested:activity 954 (0.99), row-open 8 (0.01), deep:row/col 5 (0.01)
+  h4    gold   n=   38: nested:activity 12 (0.32), nested:alert 11 (0.29), deep:repeat/div 7 (0.18), deep:col/repeat 3 (0.08), row-open 1 (0.03), deep:repeat/th 1 (0.03), deep:td/repeat 1 (0.03)
+  h4    claude n=    2: nested:alert 2 (1.00)
+  h5    gold   n=   34: nested:activity 24 (0.71), deep:col/repeat 5 (0.15), deep:repeat/col 5 (0.15)
+  h5    claude n=    2: nested:activity 2 (1.00)
+  alert gold   n=  102: col-open 72 (0.71), deep:row/div 15 (0.15), nested:activity 5 (0.05), deep:row/col 4 (0.04), row-open 2 (0.02), nested:panel 2 (0.02), deep:repeat/col 1 (0.01)
+  alert claude n=   47: col-open 32 (0.68), row-open 15 (0.32)
+
+== subject+ptype=Online Safety (OS9000)/lesson — pages 102
+  h2    gold   n=   29: row-open 24 (0.83), inline 4 (0.14), nested:table 1 (0.03)
+  h2    claude n=    0: 
+        inline-after gold: WIDGET 2 (0.50), alert 1 (0.25), p 1 (0.25) | claude: 
+  h3    gold   n=  390: nested:activity 199 (0.51), row-open 140 (0.36), inline 39 (0.10), deep:row/col 5 (0.01), deep:div/div 2 (0.01), top-level 1 (0.00), nested:alert 1 (0.00)
+  h3    claude n=  365: nested:activity 181 (0.50), row-open 176 (0.48), deep:row/col 5 (0.01), deep:row/div 2 (0.01), deep:col/div 1 (0.00)
+        inline-after gold: p 11 (0.28), WIDGET 7 (0.18), alert 5 (0.13), video 4 (0.10), h2 3 (0.08), repeat 3 (0.08), br 2 (0.05) | claude: 
+  h4    gold   n=  151: row-open 54 (0.36), inline 23 (0.15), deep:repeat/div 22 (0.15), nested:alert 17 (0.11), nested:activity 13 (0.09), deep:col/div 9 (0.06), deep:row/col 6 (0.04)
+  h4    claude n=   99: row-open 80 (0.81), nested:alert 15 (0.15), deep:repeat/div 2 (0.02), deep:row/col 2 (0.02)
+        inline-after gold: p 9 (0.39), repeat 3 (0.13), WIDGET 2 (0.09), div 2 (0.09), video 2 (0.09), a 2 (0.09), alert 2 (0.09) | claude: 
+  h5    gold   n=   44: deep:repeat/div 8 (0.18), inline 7 (0.16), deep:div/div 7 (0.16), row-open 6 (0.14), deep:row/col 3 (0.07), deep:col/div 3 (0.07), deep:div/col 3 (0.07)
+  h5    claude n=   13: row-open 13 (1.00)
+        inline-after gold: p 6 (0.86), h2 1 (0.14) | claude: 
+  alert gold   n=  110: row-open 46 (0.42), inline 41 (0.37), col-open 13 (0.12), deep:row/col 5 (0.05), nested:activity 4 (0.04), deep:row/div 1 (0.01)
+  alert claude n=   87: row-open 84 (0.97), col-open 3 (0.03)
+        inline-after gold: p 13 (0.32), video 11 (0.27), WIDGET 7 (0.17), list 3 (0.07), h4 2 (0.05), repeat 2 (0.05), div 1 (0.02) | claude: 
+
+== subject+ptype=1-10 Blended Literacy/overview — pages 91
+  h2    gold   n=   65: nested:panel 63 (0.97), row-open 2 (0.03)
+  h2    claude n=   47: nested:panel 46 (0.98), row-open 1 (0.02)
+  h3    gold   n=  692: nested:activity 501 (0.72), deep:row/col 76 (0.11), row-open 72 (0.10), nested:panel 38 (0.05), nested:alert 2 (0.00), deep:col/repeat 1 (0.00), deep:repeat/td 1 (0.00)
+  h3    claude n=  640: nested:activity 442 (0.69), deep:row/col 93 (0.15), row-open 59 (0.09), nested:panel 46 (0.07)
+        inline-after gold: p 1 (1.00) | claude: 
+  h4    gold   n=   31: nested:alert 21 (0.68), nested:activity 8 (0.26), deep:col/repeat 1 (0.03), row-open 1 (0.03)
+  h4    claude n=   27: nested:panel 19 (0.70), row-open 7 (0.26), nested:alert 1 (0.04)
+  h5    gold   n=    8: nested:activity 7 (0.88), deep:col/repeat 1 (0.12)
+  h5    claude n=    2: nested:panel 2 (1.00)
+  alert gold   n=  117: nested:panel 89 (0.76), row-open 14 (0.12), deep:row/col 9 (0.08), nested:activity 5 (0.04)
+  alert claude n=   58: nested:panel 58 (1.00)
+
+== subject+ptype=ConnectED/lesson — pages 86
+  h2    gold   n=   58: row-open 46 (0.79), inline 9 (0.16), col-open 3 (0.05)
+  h2    claude n=   26: row-open 26 (1.00)
+        inline-after gold: p 3 (0.33), alert 2 (0.22), div 1 (0.11), WIDGET 1 (0.11), a 1 (0.11), repeat 1 (0.11) | claude: 
+  h3    gold   n=  372: nested:activity 198 (0.53), row-open 136 (0.37), inline 23 (0.06), nested:panel 5 (0.01), nested:alert 4 (0.01), deep:div/col 3 (0.01), col-open 2 (0.01)
+  h3    claude n=  307: row-open 191 (0.62), nested:activity 104 (0.34), deep:row/col 5 (0.02), col-open 3 (0.01), deep:repeat/col 2 (0.01), inline 1 (0.00), deep:col/repeat 1 (0.00)
+        inline-after gold: p 9 (0.39), row 5 (0.22), WIDGET 2 (0.09), alert 2 (0.09), img 1 (0.04), table 1 (0.04), a 1 (0.04) | claude: img 1 (1.00)
+  h4    gold   n=  139: nested:alert 46 (0.33), row-open 34 (0.24), nested:activity 20 (0.14), inline 19 (0.14), deep:col/div 10 (0.07), deep:col/repeat 2 (0.01), deep:repeat/td 2 (0.01)
+  h4    claude n=  138: row-open 76 (0.55), nested:alert 51 (0.37), nested:activity 6 (0.04), col-open 3 (0.02), inline 2 (0.01)
+        inline-after gold: p 7 (0.37), repeat 6 (0.32), h3 2 (0.11), object 1 (0.05), WIDGET 1 (0.05), row 1 (0.05), col 1 (0.05) | claude: p 2 (1.00)
+  h5    gold   n=   26: nested:alert 13 (0.50), deep:col/repeat 3 (0.12), nested:table 2 (0.08), deep:repeat/col 2 (0.08), inline 1 (0.04), deep:span/repeat 1 (0.04), row-open 1 (0.04)
+  h5    claude n=    6: row-open 4 (0.67), inline 1 (0.17), nested:activity 1 (0.17)
+        inline-after gold: p 1 (1.00) | claude: list 1 (1.00)
+  alert gold   n=  191: inline 71 (0.37), row-open 64 (0.34), col-open 22 (0.12), deep:row/col 11 (0.06), nested:activity 9 (0.05), deep:col/div 7 (0.04), nested:panel 3 (0.02)
+  alert claude n=  116: row-open 112 (0.97), deep:row/col 3 (0.03), col-open 1 (0.01)
+        inline-after gold: p 28 (0.39), audio 12 (0.17), h3 5 (0.07), alert 5 (0.07), h2 4 (0.06), repeat 4 (0.06), WIDGET 3 (0.04) | claude: 
+
+== subject+ptype=ANZH/lesson — pages 68
+  h2    gold   n=   25: inline 12 (0.48), row-open 9 (0.36), col-open 3 (0.12), deep:col/repeat 1 (0.04)
+  h2    claude n=    0: 
+        inline-after gold: alert 11 (0.92), a 1 (0.08) | claude: 
+  h3    gold   n=  240: nested:activity 125 (0.52), row-open 53 (0.22), inline 22 (0.09), nested:alert 18 (0.07), deep:row/col 13 (0.05), col-open 8 (0.03), row-child 1 (0.00)
+  h3    claude n=  232: nested:activity 116 (0.50), row-open 110 (0.47), deep:row/col 6 (0.03)
+        inline-after gold: p 11 (0.50), img 2 (0.09), alert 2 (0.09), repeat 2 (0.09), br 1 (0.05), a 1 (0.05), row 1 (0.05) | claude: 
+  h4    gold   n=   94: nested:activity 52 (0.55), nested:alert 25 (0.27), inline 7 (0.07), row-open 3 (0.03), deep:col/repeat 3 (0.03), deep:row/col 2 (0.02), col-open 1 (0.01)
+  h4    claude n=   70: nested:activity 45 (0.64), row-open 18 (0.26), inline 5 (0.07), deep:row/col 2 (0.03)
+        inline-after gold: p 3 (0.43), h3 2 (0.29), video 1 (0.14), repeat 1 (0.14) | claude: repeat 2 (0.40), p 1 (0.20), a 1 (0.20), list 1 (0.20)
+  h5    gold   n=    8: deep:div/repeat 4 (0.50), nested:alert 3 (0.38), nested:activity 1 (0.12)
+  h5    claude n=    5: nested:activity 4 (0.80), deep:col/repeat 1 (0.20)
+  alert gold   n=  122: row-open 60 (0.49), col-open 31 (0.25), deep:row/col 12 (0.10), deep:row/div 11 (0.09), inline 6 (0.05), top-level 1 (0.01), nested:activity 1 (0.01)
+  alert claude n=  138: row-open 117 (0.85), col-open 21 (0.15)
+        inline-after gold: p 3 (0.50), repeat 1 (0.17), video 1 (0.17), alert 1 (0.17) | claude: 
+
+== subject+ptype=1-10 English/overview — pages 48
+  h2    gold   n=   14: nested:panel 11 (0.79), row-open 1 (0.07), nested:table 1 (0.07), inline 1 (0.07)
+  h2    claude n=    0: 
+        inline-after gold: div 1 (1.00) | claude: 
+  h3    gold   n=  247: nested:activity 119 (0.48), nested:panel 107 (0.43), deep:col/div 8 (0.03), row-open 7 (0.03), deep:col/repeat 3 (0.01), inline 3 (0.01)
+  h3    claude n=  237: nested:panel 110 (0.46), nested:activity 102 (0.43), row-open 16 (0.07), deep:col/div 8 (0.03), deep:row/col 1 (0.00)
+        inline-after gold: h2 1 (0.33), video 1 (0.33), p 1 (0.33) | claude: 
+  h4    gold   n=   76: nested:alert 31 (0.41), nested:panel 29 (0.38), nested:activity 6 (0.08), inline 3 (0.04), deep:col/repeat 2 (0.03), row-open 2 (0.03), nested:table 2 (0.03)
+  h4    claude n=   44: nested:panel 42 (0.95), nested:alert 1 (0.02), row-open 1 (0.02)
+        inline-after gold: col 1 (0.33), repeat 1 (0.33), p 1 (0.33) | claude: 
+  h5    gold   n=    9: nested:panel 6 (0.67), nested:alert 1 (0.11), inline 1 (0.11), row-open 1 (0.11)
+  h5    claude n=   81: nested:panel 63 (0.78), deep:col/repeat 14 (0.17), nested:activity 3 (0.04), row-open 1 (0.01)
+        inline-after gold: p 1 (1.00) | claude: 
+  alert gold   n=   63: nested:panel 59 (0.94), nested:activity 1 (0.02), nested:alert 1 (0.02), col-open 1 (0.02), inline 1 (0.02)
+  alert claude n=   11: nested:panel 8 (0.73), deep:row/col 2 (0.18), row-open 1 (0.09)
+        inline-after gold: video 1 (1.00) | claude: 
+
+== subject+ptype=Te Marautanga o Aotearoa TMoA/lesson — pages 47
+  h2    gold   n=   38: deep:col/repeat 38 (1.00)
+  h2    claude n=   14: deep:col/repeat 14 (1.00)
+  h3    gold   n=  299: deep:col/repeat 281 (0.94), nested:activity 9 (0.03), deep:activity/repeat 4 (0.01), row-open 2 (0.01), inline 1 (0.00), deep:row/repeat 1 (0.00), nested:alert 1 (0.00)
+  h3    claude n=  228: deep:col/repeat 227 (1.00), nested:activity 1 (0.00)
+        inline-after gold: h3 1 (1.00) | claude: 
+  h4    gold   n=   91: deep:col/repeat 84 (0.92), nested:alert 4 (0.04), deep:alert/repeat 2 (0.02), deep:activity/repeat 1 (0.01)
+  h4    claude n=   67: deep:col/repeat 52 (0.78), deep:row/col 14 (0.21), row-open 1 (0.01)
+  h5    gold   n=    0: 
+  h5    claude n=   21: row-open 12 (0.57), nested:activity 4 (0.19), deep:col/repeat 3 (0.14), deep:row/col 2 (0.10)
+  alert gold   n=   85: col-open 49 (0.58), row-open 27 (0.32), inline 7 (0.08), nested:activity 1 (0.01), deep:row/col 1 (0.01)
+  alert claude n=   22: deep:row/col 19 (0.86), row-open 2 (0.09), col-open 1 (0.05)
+        inline-after gold: repeat 5 (0.71), WIDGET 1 (0.14), alert 1 (0.14) | claude: 
+
+== subject+ptype=NCEA1/overview — pages 42
+  h2    gold   n=   15: row-open 6 (0.40), inline 4 (0.27), row-child 3 (0.20), deep:col/repeat 1 (0.07), deep:div/col 1 (0.07)
+  h2    claude n=    8: row-open 7 (0.88), deep:row/col 1 (0.12)
+        inline-after gold: p 1 (0.25), alert 1 (0.25), repeat 1 (0.25), WIDGET 1 (0.25) | claude: 
+  h3    gold   n=   27: nested:activity 18 (0.67), row-open 4 (0.15), deep:a/div 3 (0.11), inline 2 (0.07)
+  h3    claude n=   73: nested:activity 40 (0.55), row-open 32 (0.44), deep:row/col 1 (0.01)
+        inline-after gold: repeat 2 (1.00) | claude: 
+  h4    gold   n=   29: inline 15 (0.52), nested:alert 8 (0.28), row-open 4 (0.14), col-open 2 (0.07)
+  h4    claude n=   21: row-open 18 (0.86), inline 3 (0.14)
+        inline-after gold: list 3 (0.20), h4 3 (0.20), p 3 (0.20), repeat 2 (0.13), alert 1 (0.07), row 1 (0.07), h3 1 (0.07) | claude: repeat 1 (0.33), p 1 (0.33), list 1 (0.33)
+  h5    gold   n=    8: deep:a/div 3 (0.38), nested:activity 3 (0.38), row-open 1 (0.12), inline 1 (0.12)
+  h5    claude n=   37: row-open 28 (0.76), deep:col/repeat 4 (0.11), nested:activity 3 (0.08), deep:row/col 2 (0.05)
+        inline-after gold: row 1 (1.00) | claude: 
+  alert gold   n=   15: inline 6 (0.40), col-open 4 (0.27), deep:div/col 3 (0.20), row-open 2 (0.13)
+  alert claude n=   11: row-open 10 (0.91), deep:row/col 1 (0.09)
+        inline-after gold: h2 1 (0.17), img 1 (0.17), row 1 (0.17), WIDGET 1 (0.17), h5 1 (0.17), list 1 (0.17) | claude: 
+
+== subject+ptype=1-10 Mathematics/overview — pages 40
+  h2    gold   n=   36: nested:panel 32 (0.89), row-open 4 (0.11)
+  h2    claude n=   22: nested:panel 22 (1.00)
+  h3    gold   n=  191: nested:activity 94 (0.49), nested:panel 77 (0.40), row-open 7 (0.04), deep:row/col 3 (0.02), deep:col/div 3 (0.02), nested:alert 3 (0.02), deep:col/repeat 2 (0.01)
+  h3    claude n=   97: nested:activity 39 (0.40), nested:panel 36 (0.37), row-open 17 (0.18), deep:row/col 5 (0.05)
+  h4    gold   n=   15: nested:panel 8 (0.53), nested:alert 4 (0.27), nested:activity 2 (0.13), deep:alert/repeat 1 (0.07)
+  h4    claude n=    1: nested:alert 1 (1.00)
+  h5    gold   n=   10: nested:activity 3 (0.30), nested:panel 3 (0.30), row-open 1 (0.10), deep:p/repeat 1 (0.10), deep:col/repeat 1 (0.10), deep:repeat/col 1 (0.10)
+  h5    claude n=   13: nested:panel 7 (0.54), nested:activity 3 (0.23), deep:repeat/col 2 (0.15), deep:col/repeat 1 (0.08)
+  alert gold   n=   35: nested:panel 31 (0.89), inline 2 (0.06), nested:activity 2 (0.06)
+  alert claude n=   15: nested:panel 15 (1.00)
+        inline-after gold: video 1 (0.50), p 1 (0.50) | claude: 
+
+== subject+ptype=None/lesson — pages 36
+  h2    gold   n=   17: row-open 8 (0.47), inline 5 (0.29), deep:row/col 2 (0.12), nested:activity 2 (0.12)
+  h2    claude n=    0: 
+        inline-after gold: br 5 (1.00) | claude: 
+  h3    gold   n=  324: nested:activity 165 (0.51), row-open 98 (0.30), inline 43 (0.13), nested:alert 11 (0.03), deep:row/col 6 (0.02), deep:col/repeat 1 (0.00)
+  h3    claude n=  286: row-open 194 (0.68), nested:activity 89 (0.31), deep:row/col 3 (0.01)
+        inline-after gold: br 32 (0.74), WIDGET 3 (0.07), p 2 (0.05), img 2 (0.05), repeat 1 (0.02), activity 1 (0.02), alert 1 (0.02) | claude: 
+  h4    gold   n=  136: nested:activity 85 (0.62), nested:alert 22 (0.16), inline 7 (0.05), nested:list 6 (0.04), row-open 4 (0.03), deep:row/col 3 (0.02), deep:col/repeat 3 (0.02)
+  h4    claude n=   89: nested:alert 29 (0.33), row-open 26 (0.29), inline 18 (0.20), nested:activity 15 (0.17), deep:row/col 1 (0.01)
+        inline-after gold: p 2 (0.29), h3 2 (0.29), img 1 (0.14), br 1 (0.14), list 1 (0.14) | claude: p 6 (0.33), WIDGET 4 (0.22), list 4 (0.22), repeat 3 (0.17), table 1 (0.06)
+  h5    gold   n=    9: inline 4 (0.44), nested:activity 2 (0.22), nested:alert 1 (0.11), deep:col/repeat 1 (0.11), deep:repeat/col 1 (0.11)
+  h5    claude n=    4: row-open 3 (0.75), nested:activity 1 (0.25)
+        inline-after gold: p 3 (0.75), repeat 1 (0.25) | claude: 
+  alert gold   n=   64: col-open 21 (0.33), row-open 20 (0.31), inline 16 (0.25), deep:row/col 3 (0.05), row-child 2 (0.03), nested:activity 1 (0.02), nested:alert 1 (0.02)
+  alert claude n=   43: row-open 41 (0.95), col-open 2 (0.05)
+        inline-after gold: br 11 (0.69), list 2 (0.12), repeat 2 (0.12), p 1 (0.06) | claude: 
+
+== subject+ptype=Leaving to Learn/overview — pages 34
+  h3    gold   n=   43: row-open 13 (0.30), nested:panel 10 (0.23), deep:row/col 7 (0.16), inline 4 (0.09), deep:a/div 2 (0.05), nested:alert 2 (0.05), deep:col/div 1 (0.02)
+  h3    claude n=   35: row-open 22 (0.63), nested:panel 8 (0.23), deep:row/col 3 (0.09), deep:col/div 1 (0.03), nested:activity 1 (0.03)
+        inline-after gold: repeat 2 (0.50), p 2 (0.50) | claude: 
+  h4    gold   n=   23: nested:panel 7 (0.30), inline 6 (0.26), row-open 5 (0.22), nested:alert 3 (0.13), deep:row/col 1 (0.04), deep:col/repeat 1 (0.04)
+  h4    claude n=   23: row-open 20 (0.87), nested:alert 1 (0.04), deep:row/col 1 (0.04), inline 1 (0.04)
+        inline-after gold: alert 3 (0.50), repeat 2 (0.33), div 1 (0.17) | claude: list 1 (1.00)
+  h5    gold   n=   11: deep:a/div 6 (0.55), deep:row/div 3 (0.27), row-open 1 (0.09), inline 1 (0.09)
+  h5    claude n=    9: deep:a/div 5 (0.56), nested:panel 4 (0.44)
+        inline-after gold: p 1 (1.00) | claude: 
+  alert gold   n=   16: row-open 7 (0.44), inline 4 (0.25), col-open 4 (0.25), deep:row/col 1 (0.06)
+  alert claude n=   11: row-open 11 (1.00)
+        inline-after gold: video 1 (0.25), list 1 (0.25), col 1 (0.25), p 1 (0.25) | claude: 
+
+== subject+ptype=ConnectED/overview — pages 28
+  h2    gold   n=   75: nested:panel 67 (0.89), nested:activity 8 (0.11)
+  h2    claude n=   50: nested:panel 47 (0.94), row-open 3 (0.06)
+  h3    gold   n=  262: nested:activity 204 (0.78), nested:panel 55 (0.21), nested:alert 1 (0.00), row-open 1 (0.00), deep:col/repeat 1 (0.00)
+  h3    claude n=  181: nested:activity 156 (0.86), row-open 15 (0.08), nested:panel 9 (0.05), deep:row/col 1 (0.01)
+  h4    gold   n=  199: nested:activity 81 (0.41), nested:alert 67 (0.34), nested:panel 40 (0.20), deep:repeat/div 7 (0.04), deep:col/repeat 3 (0.02), deep:alert/repeat 1 (0.01)
+  h4    claude n=  103: row-open 43 (0.42), nested:activity 42 (0.41), nested:panel 10 (0.10), nested:alert 7 (0.07), inline 1 (0.01)
+        inline-after gold:  | claude: table 1 (1.00)
+  h5    gold   n=   23: nested:activity 14 (0.61), nested:alert 3 (0.13), deep:repeat/col 3 (0.13), nested:panel 2 (0.09), deep:div/repeat 1 (0.04)
+  h5    claude n=   19: deep:col/repeat 7 (0.37), nested:panel 6 (0.32), nested:activity 4 (0.21), row-open 2 (0.11)
+  alert gold   n=  122: nested:panel 109 (0.89), inline 5 (0.04), row-open 5 (0.04), nested:activity 1 (0.01), deep:repeat/div 1 (0.01), col-open 1 (0.01)
+  alert claude n=   29: row-open 17 (0.59), nested:panel 12 (0.41)
+        inline-after gold: p 3 (0.60), alert 1 (0.20), div 1 (0.20) | claude: 
+
+== subject+ptype=Online Safety (OS9000)/overview — pages 28
+
+== subject+ptype=1-10 Social Science/lesson — pages 27
+  h2    gold   n=   12: row-open 11 (0.92), inline 1 (0.08)
+  h2    claude n=    0: 
+        inline-after gold: alert 1 (1.00) | claude: 
+  h3    gold   n=  141: nested:activity 57 (0.40), row-open 52 (0.37), nested:panel 15 (0.11), nested:alert 13 (0.09), inline 2 (0.01), deep:row/col 1 (0.01), deep:col/div 1 (0.01)
+  h3    claude n=  174: row-open 109 (0.63), nested:activity 61 (0.35), deep:row/col 3 (0.02), nested:alert 1 (0.01)
+        inline-after gold: WIDGET 1 (0.50), repeat 1 (0.50) | claude: 
+  h4    gold   n=   20: nested:activity 19 (0.95), nested:alert 1 (0.05)
+  h4    claude n=   35: nested:activity 17 (0.49), row-open 11 (0.31), nested:alert 4 (0.11), inline 2 (0.06), deep:row/col 1 (0.03)
+        inline-after gold:  | claude: repeat 2 (1.00)
+  h5    gold   n=   18: nested:activity 5 (0.28), deep:col/repeat 4 (0.22), deep:col/div 4 (0.22), deep:row/col 3 (0.17), deep:repeat/col 1 (0.06), deep:repeat/div 1 (0.06)
+  h5    claude n=    5: deep:row/col 2 (0.40), row-open 2 (0.40), nested:alert 1 (0.20)
+  alert gold   n=   53: col-open 17 (0.32), row-open 15 (0.28), nested:panel 11 (0.21), inline 9 (0.17), deep:row/col 1 (0.02)
+  alert claude n=   44: row-open 41 (0.93), col-open 2 (0.05), deep:row/col 1 (0.02)
+        inline-after gold: h2 7 (0.78), repeat 1 (0.11), h3 1 (0.11) | claude: 
+
+== subject+ptype=Te Marautanga o Aotearoa TMoA/overview — pages 16
+  h3    gold   n=   23: deep:col/repeat 19 (0.83), nested:activity 4 (0.17)
+  h3    claude n=   34: deep:col/repeat 25 (0.74), row-open 7 (0.21), deep:row/col 2 (0.06)
+
+== subject+ptype=1-10 Health and PE/overview — pages 15
+  h2    gold   n=   63: nested:panel 63 (1.00)
+  h2    claude n=   68: nested:panel 68 (1.00)
+  h3    gold   n=  206: nested:activity 104 (0.50), nested:panel 76 (0.37), deep:col/div 24 (0.12), nested:alert 1 (0.00), deep:repeat/div 1 (0.00)
+  h3    claude n=  149: nested:panel 94 (0.63), nested:activity 31 (0.21), deep:col/div 23 (0.15), deep:row/col 1 (0.01)
+  h4    gold   n=   14: nested:activity 4 (0.29), deep:row/col 4 (0.29), nested:alert 3 (0.21), nested:panel 1 (0.07), deep:div/div 1 (0.07), deep:repeat/div 1 (0.07)
+  h4    claude n=    1: nested:alert 1 (1.00)
+  alert gold   n=   21: nested:panel 21 (1.00)
+  alert claude n=    8: nested:panel 8 (1.00)
+
+== subject+ptype=1-10 Social Science/overview — pages 11
+  h2    gold   n=   19: nested:panel 19 (1.00)
+  h2    claude n=    0: 
+  h3    gold   n=  145: nested:activity 82 (0.57), nested:panel 49 (0.34), deep:col/div 6 (0.04), deep:row/col 4 (0.03), nested:alert 3 (0.02), deep:col/repeat 1 (0.01)
+  h3    claude n=  152: nested:panel 70 (0.46), nested:activity 68 (0.45), deep:row/col 6 (0.04), deep:col/div 6 (0.04), row-open 2 (0.01)
+  h4    gold   n=   36: nested:alert 19 (0.53), nested:panel 13 (0.36), nested:activity 2 (0.06), deep:repeat/col 1 (0.03), deep:repeat/div 1 (0.03)
+  h4    claude n=   27: nested:panel 21 (0.78), deep:row/col 4 (0.15), nested:alert 1 (0.04), row-open 1 (0.04)
+  h5    gold   n=   19: nested:activity 7 (0.37), nested:alert 6 (0.32), nested:panel 4 (0.21), deep:repeat/div 2 (0.11)
+  h5    claude n=   16: nested:panel 8 (0.50), nested:activity 6 (0.38), deep:row/col 1 (0.06), deep:col/repeat 1 (0.06)
+  alert gold   n=   83: nested:panel 78 (0.94), deep:row/col 2 (0.02), nested:activity 2 (0.02), inline 1 (0.01)
+  alert claude n=   55: nested:panel 49 (0.89), deep:row/col 3 (0.05), row-open 3 (0.05)
+        inline-after gold: col 1 (1.00) | claude: 
+
+== subject+ptype=ANZH/overview — pages 10
+
+== subject+ptype=None/overview — pages 10
+  h3    gold   n=  134: nested:panel 63 (0.47), nested:activity 60 (0.45), deep:col/div 5 (0.04), row-open 3 (0.02), deep:row/col 2 (0.01), inline 1 (0.01)
+  h3    claude n=  124: nested:panel 61 (0.49), nested:activity 53 (0.43), deep:col/div 5 (0.04), deep:row/col 3 (0.02), row-open 2 (0.02)
+        inline-after gold: p 1 (1.00) | claude: 
+  h4    gold   n=   67: nested:panel 66 (0.99), nested:alert 1 (0.01)
+  h4    claude n=   61: nested:panel 61 (1.00)
+  h5    gold   n=   31: deep:col/repeat 19 (0.61), nested:panel 12 (0.39)
+  h5    claude n=    0: 
+
+== series=HIS10 — pages 77
+  h2    gold   n=  118: row-open 104 (0.88), inline 8 (0.07), deep:row/col 3 (0.03), row-child 3 (0.03)
+  h2    claude n=  182: row-open 180 (0.99), deep:row/col 1 (0.01), nested:activity 1 (0.01)
+        inline-after gold: p 4 (0.50), repeat 3 (0.38), hr 1 (0.12) | claude: 
+  h3    gold   n=  352: nested:activity 214 (0.61), row-open 77 (0.22), nested:alert 35 (0.10), inline 13 (0.04), deep:row/col 10 (0.03), deep:col/repeat 2 (0.01), col-open 1 (0.00)
+  h3    claude n=  294: nested:activity 204 (0.69), row-open 90 (0.31)
+        inline-after gold: p 9 (0.69), WIDGET 2 (0.15), a 1 (0.08), list 1 (0.08) | claude: 
+  h4    gold   n=  104: nested:alert 71 (0.68), nested:activity 18 (0.17), deep:col/div 6 (0.06), inline 3 (0.03), deep:repeat/div 2 (0.02), deep:row/col 2 (0.02), row-open 2 (0.02)
+  h4    claude n=  129: nested:activity 105 (0.81), inline 17 (0.13), nested:alert 6 (0.05), row-open 1 (0.01)
+        inline-after gold: repeat 2 (0.67), p 1 (0.33) | claude: p 10 (0.59), repeat 2 (0.12), video 2 (0.12), list 1 (0.06), a 1 (0.06), div 1 (0.06)
+  h5    gold   n=   32: nested:activity 22 (0.69), inline 5 (0.16), nested:alert 3 (0.09), deep:row/div 2 (0.06)
+  h5    claude n=   23: row-open 10 (0.43), nested:activity 7 (0.30), deep:col/repeat 3 (0.13), nested:alert 3 (0.13)
+        inline-after gold: h3 3 (0.60), h2 2 (0.40) | claude: 
+  alert gold   n=  192: col-open 89 (0.46), row-open 65 (0.34), inline 20 (0.10), deep:row/col 8 (0.04), nested:activity 5 (0.03), row-child 4 (0.02), deep:div/div 1 (0.01)
+  alert claude n=  135: row-open 130 (0.96), col-open 4 (0.03), deep:row/col 1 (0.01)
+        inline-after gold: p 8 (0.40), alert 7 (0.35), video 1 (0.05), img 1 (0.05), h3 1 (0.05), repeat 1 (0.05), h2 1 (0.05) | claude: 
+
+== series=PES10 — pages 75
+  h2    gold   n=   61: row-open 51 (0.84), inline 5 (0.08), deep:row/col 2 (0.03), col-open 1 (0.02), nested:alert 1 (0.02), deep:col/repeat 1 (0.02)
+  h2    claude n=    0: 
+        inline-after gold: video 3 (0.60), p 2 (0.40) | claude: 
+  h3    gold   n=  190: nested:activity 114 (0.60), row-open 54 (0.28), inline 18 (0.09), row-child 1 (0.01), deep:col/repeat 1 (0.01), nested:alert 1 (0.01), deep:row/col 1 (0.01)
+  h3    claude n=  188: row-open 142 (0.76), nested:activity 46 (0.24)
+        inline-after gold: video 6 (0.33), p 6 (0.33), img 2 (0.11), list 1 (0.06), repeat 1 (0.06), a 1 (0.06), WIDGET 1 (0.06) | claude: 
+  h4    gold   n=   59: nested:alert 39 (0.66), inline 11 (0.19), nested:activity 4 (0.07), deep:repeat/col 2 (0.03), row-open 2 (0.03), deep:col/repeat 1 (0.02)
+  h4    claude n=   10: row-open 10 (1.00)
+        inline-after gold: p 5 (0.45), repeat 2 (0.18), h4 2 (0.18), list 1 (0.09), img 1 (0.09) | claude: 
+  h5    gold   n=    4: nested:activity 3 (0.75), deep:col/repeat 1 (0.25)
+  h5    claude n=   20: inline 14 (0.70), row-open 5 (0.25), deep:row/col 1 (0.05)
+        inline-after gold:  | claude: list 14 (1.00)
+  alert gold   n=   65: row-open 39 (0.60), col-open 15 (0.23), inline 8 (0.12), deep:row/col 3 (0.05)
+  alert claude n=    2: row-open 2 (1.00)
+        inline-after gold: p 3 (0.38), repeat 3 (0.38), video 2 (0.25) | claude: 
+
+== series=AGH10 — pages 74
+  h3    gold   n=  316: nested:activity 162 (0.51), row-open 95 (0.30), inline 34 (0.11), col-open 21 (0.07), deep:col/repeat 3 (0.01), deep:div/col 1 (0.00)
+  h3    claude n=  188: row-open 160 (0.85), nested:activity 26 (0.14), deep:row/col 2 (0.01)
+        inline-after gold: repeat 9 (0.26), p 7 (0.21), WIDGET 6 (0.18), row 3 (0.09), video 2 (0.06), list 2 (0.06), img 2 (0.06) | claude: 
+  h4    gold   n=  159: nested:alert 77 (0.48), inline 38 (0.24), row-open 14 (0.09), deep:col/repeat 9 (0.06), deep:row/col 7 (0.04), deep:repeat/div 6 (0.04), nested:activity 2 (0.01)
+  h4    claude n=   68: row-open 36 (0.53), nested:alert 29 (0.43), deep:row/col 3 (0.04)
+        inline-after gold: p 15 (0.39), repeat 12 (0.32), row 3 (0.08), h3 2 (0.05), video 2 (0.05), WIDGET 2 (0.05), h2 1 (0.03) | claude: 
+  h5    gold   n=   14: inline 4 (0.29), deep:div/col 3 (0.21), deep:row/col 3 (0.21), deep:repeat/col 2 (0.14), nested:alert 1 (0.07), deep:col/repeat 1 (0.07)
+  h5    claude n=    2: nested:activity 1 (0.50), deep:col/repeat 1 (0.50)
+        inline-after gold: img 2 (0.50), p 1 (0.25), row 1 (0.25) | claude: 
+  alert gold   n=  101: row-open 63 (0.62), col-open 21 (0.21), inline 15 (0.15), deep:col/repeat 1 (0.01), deep:row/col 1 (0.01)
+  alert claude n=   52: row-open 52 (1.00)
+        inline-after gold: p 11 (0.73), repeat 2 (0.13), br 1 (0.07), list 1 (0.07) | claude: 
+
+== series=XDLS9 — pages 67
+  h3    gold   n=  428: nested:activity 324 (0.76), row-open 47 (0.11), deep:row/col 40 (0.09), nested:alert 8 (0.02), inline 7 (0.02), deep:col/repeat 1 (0.00), deep:a/div 1 (0.00)
+  h3    claude n=  392: nested:activity 284 (0.72), row-open 71 (0.18), deep:row/col 31 (0.08), inline 6 (0.02)
+        inline-after gold: repeat 3 (0.43), p 2 (0.29), row 1 (0.14), alert 1 (0.14) | claude: p 4 (0.67), repeat 1 (0.17), video 1 (0.17)
+  h4    gold   n=   48: nested:activity 18 (0.38), inline 12 (0.25), deep:row/col 5 (0.10), nested:alert 5 (0.10), row-open 3 (0.06), deep:row/div 3 (0.06), deep:col/div 1 (0.02)
+  h4    claude n=   12: nested:alert 7 (0.58), row-open 4 (0.33), inline 1 (0.08)
+        inline-after gold: p 6 (0.50), h3 3 (0.25), repeat 1 (0.08), video 1 (0.08), alert 1 (0.08) | claude: repeat 1 (1.00)
+  h5    gold   n=   36: deep:div/col 22 (0.61), deep:a/div 6 (0.17), nested:activity 4 (0.11), inline 2 (0.06), deep:col/repeat 1 (0.03), deep:row/col 1 (0.03)
+  h5    claude n=   26: nested:activity 19 (0.73), deep:a/div 5 (0.19), row-open 2 (0.08)
+        inline-after gold: h4 1 (0.50), WIDGET 1 (0.50) | claude: 
+  alert gold   n=   98: row-open 60 (0.61), inline 11 (0.11), col-open 9 (0.09), nested:activity 8 (0.08), deep:row/col 8 (0.08), deep:div/col 1 (0.01), deep:row/div 1 (0.01)
+  alert claude n=   55: row-open 53 (0.96), col-open 2 (0.04)
+        inline-after gold: p 4 (0.36), video 3 (0.27), WIDGET 1 (0.09), h4 1 (0.09), br 1 (0.09), repeat 1 (0.09) | claude: 
+
+== series=PHE10 — pages 49
+  h3    gold   n=  138: nested:activity 77 (0.56), row-open 35 (0.25), col-open 15 (0.11), inline 4 (0.03), deep:col/repeat 2 (0.01), nested:alert 2 (0.01), deep:col/h3 1 (0.01)
+  h3    claude n=   88: row-open 61 (0.69), nested:activity 26 (0.30), deep:row/col 1 (0.01)
+        inline-after gold: alert 2 (0.50), p 1 (0.25), repeat 1 (0.25) | claude: 
+  h4    gold   n=   20: inline 6 (0.30), nested:alert 5 (0.25), deep:col/div 3 (0.15), nested:activity 2 (0.10), deep:repeat/div 2 (0.10), row-open 1 (0.05), deep:col/repeat 1 (0.05)
+  h4    claude n=    7: row-open 6 (0.86), nested:alert 1 (0.14)
+        inline-after gold: br 2 (0.33), p 2 (0.33), alert 1 (0.17), repeat 1 (0.17) | claude: 
+  h5    gold   n=   14: deep:col/div 7 (0.50), deep:repeat/col 4 (0.29), deep:repeat/div 2 (0.14), inline 1 (0.07)
+  h5    claude n=    7: row-open 7 (1.00)
+        inline-after gold: img 1 (1.00) | claude: 
+  alert gold   n=   28: col-open 13 (0.46), inline 11 (0.39), row-open 4 (0.14)
+  alert claude n=    8: row-open 8 (1.00)
+        inline-after gold: p 3 (0.27), video 2 (0.18), list 2 (0.18), repeat 1 (0.09), table 1 (0.09), alert 1 (0.09), br 1 (0.09) | claude: 
+
+== series=HES10 — pages 38
+  h3    gold   n=  120: nested:activity 79 (0.66), row-open 23 (0.19), col-open 10 (0.08), inline 5 (0.04), deep:row/col 1 (0.01), deep:row/div 1 (0.01), deep:a/div 1 (0.01)
+  h3    claude n=   90: row-open 47 (0.52), nested:activity 30 (0.33), deep:row/col 6 (0.07), deep:div/repeat 5 (0.06), deep:row/div 1 (0.01), deep:repeat/div 1 (0.01)
+        inline-after gold: list 4 (0.80), h2 1 (0.20) | claude: 
+  h4    gold   n=   63: nested:activity 44 (0.70), inline 9 (0.14), deep:col/repeat 2 (0.03), col-open 2 (0.03), nested:alert 2 (0.03), deep:row/div 1 (0.02), deep:repeat/div 1 (0.02)
+  h4    claude n=   40: nested:activity 15 (0.38), row-open 13 (0.33), deep:row/col 7 (0.17), inline 5 (0.12)
+        inline-after gold: h3 7 (0.78), p 1 (0.11), row 1 (0.11) | claude: p 3 (0.60), repeat 2 (0.40)
+  alert gold   n=   18: inline 8 (0.44), col-open 6 (0.33), row-open 3 (0.17), row-child 1 (0.06)
+  alert claude n=   14: row-open 14 (1.00)
+        inline-after gold: list 3 (0.38), video 2 (0.25), img 1 (0.12), p 1 (0.12), repeat 1 (0.12) | claude: 
+
+== series=XGF90 — pages 38
+  h2    gold   n=   17: row-open 14 (0.82), nested:alert 3 (0.18)
+  h2    claude n=    0: 
+  h3    gold   n=  240: nested:activity 142 (0.59), row-open 67 (0.28), nested:alert 17 (0.07), inline 6 (0.03), deep:col/repeat 3 (0.01), deep:row/col 3 (0.01), deep:a/div 1 (0.00)
+  h3    claude n=  258: row-open 136 (0.53), nested:activity 99 (0.38), nested:alert 15 (0.06), deep:row/col 6 (0.02), deep:col/repeat 2 (0.01)
+        inline-after gold: p 5 (0.83), repeat 1 (0.17) | claude: 
+  h4    gold   n=  147: nested:activity 82 (0.56), nested:alert 53 (0.36), inline 6 (0.04), deep:repeat/div 2 (0.01), deep:col/repeat 2 (0.01), deep:alert/repeat 1 (0.01), row-open 1 (0.01)
+  h4    claude n=  199: row-open 98 (0.49), inline 39 (0.20), nested:alert 31 (0.16), nested:activity 12 (0.06), deep:row/col 9 (0.05), deep:repeat/col 6 (0.03), col-open 2 (0.01)
+        inline-after gold: p 5 (0.83), a 1 (0.17) | claude: p 32 (0.82), repeat 6 (0.15), list 1 (0.03)
+  h5    gold   n=   22: nested:activity 13 (0.59), deep:col/repeat 4 (0.18), row-open 2 (0.09), nested:alert 2 (0.09), inline 1 (0.05)
+  h5    claude n=    0: 
+        inline-after gold: p 1 (1.00) | claude: 
+  alert gold   n=  128: row-open 55 (0.43), col-open 31 (0.24), inline 20 (0.16), deep:row/col 8 (0.06), nested:activity 6 (0.05), row-child 4 (0.03), top-level 2 (0.02)
+  alert claude n=   52: row-open 48 (0.92), col-open 4 (0.08)
+        inline-after gold: img 5 (0.25), p 5 (0.25), h3 4 (0.20), alert 3 (0.15), WIDGET 1 (0.05), list 1 (0.05), col 1 (0.05) | claude: 
+
+== series=MXFL2 — pages 37
+  h3    gold   n=  187: nested:activity 147 (0.79), row-open 34 (0.18), inline 3 (0.02), nested:alert 1 (0.01), deep:col/repeat 1 (0.01), deep:row/col 1 (0.01)
+  h3    claude n=  182: nested:activity 134 (0.74), row-open 48 (0.26)
+        inline-after gold: p 2 (0.67), img 1 (0.33) | claude: 
+  h4    gold   n=   25: inline 11 (0.44), nested:alert 5 (0.20), nested:activity 4 (0.16), deep:col/repeat 2 (0.08), row-open 2 (0.08), deep:row/col 1 (0.04)
+  h4    claude n=   34: nested:activity 16 (0.47), row-open 12 (0.35), inline 4 (0.12), nested:alert 2 (0.06)
+        inline-after gold: img 8 (0.73), h3 2 (0.18), col 1 (0.09) | claude: p 3 (0.75), list 1 (0.25)
+  h5    gold   n=    9: inline 4 (0.44), nested:activity 2 (0.22), deep:repeat/div 2 (0.22), deep:col/repeat 1 (0.11)
+  h5    claude n=    8: row-open 5 (0.62), deep:row/col 2 (0.25), nested:activity 1 (0.12)
+        inline-after gold: repeat 1 (0.25), img 1 (0.25), list 1 (0.25), p 1 (0.25) | claude: 
+  alert gold   n=   55: col-open 28 (0.51), row-open 12 (0.22), deep:row/col 7 (0.13), inline 4 (0.07), nested:activity 3 (0.05), deep:row/div 1 (0.02)
+  alert claude n=   18: row-open 11 (0.61), col-open 5 (0.28), deep:row/col 2 (0.11)
+        inline-after gold: p 2 (0.50), h3 2 (0.50) | claude: 
+
+== series=MXFL1 — pages 29
+  h2    gold   n=   13: row-open 12 (0.92), deep:row/col 1 (0.08)
+  h2    claude n=    0: 
+  h3    gold   n=  123: nested:activity 84 (0.68), deep:col/div 11 (0.09), row-open 11 (0.09), deep:row/col 8 (0.07), inline 6 (0.05), nested:alert 3 (0.02)
+  h3    claude n=   95: nested:activity 71 (0.75), row-open 16 (0.17), deep:row/col 8 (0.08)
+        inline-after gold: p 5 (0.83), video 1 (0.17) | claude: 
+  h4    gold   n=   12: inline 4 (0.33), row-open 3 (0.25), nested:alert 2 (0.17), nested:activity 2 (0.17), deep:col/repeat 1 (0.08)
+  h4    claude n=   34: nested:activity 32 (0.94), row-open 1 (0.03), nested:alert 1 (0.03)
+        inline-after gold: table 2 (0.50), p 1 (0.25), img 1 (0.25) | claude: 
+  h5    gold   n=    2: deep:row/col 2 (1.00)
+  h5    claude n=    8: row-open 6 (0.75), deep:col/repeat 1 (0.12), nested:activity 1 (0.12)
+  alert gold   n=   20: col-open 8 (0.40), deep:div/col 5 (0.25), deep:row/col 3 (0.15), deep:row/div 2 (0.10), inline 1 (0.05), row-open 1 (0.05)
+  alert claude n=   13: row-open 7 (0.54), col-open 6 (0.46)
+        inline-after gold: p 1 (1.00) | claude: 
+
+== series=ANZH3 — pages 25
+  h3    gold   n=  100: nested:activity 50 (0.50), row-open 26 (0.26), inline 11 (0.11), col-open 8 (0.08), deep:row/col 3 (0.03), nested:alert 2 (0.02)
+  h3    claude n=  118: nested:activity 66 (0.56), row-open 51 (0.43), deep:row/col 1 (0.01)
+        inline-after gold: p 4 (0.36), alert 2 (0.18), img 1 (0.09), a 1 (0.09), row 1 (0.09), repeat 1 (0.09), WIDGET 1 (0.09) | claude: 
+  h4    gold   n=   60: nested:activity 39 (0.65), nested:alert 16 (0.27), deep:col/repeat 2 (0.03), inline 2 (0.03), deep:row/col 1 (0.02)
+  h4    claude n=   25: nested:activity 23 (0.92), row-open 1 (0.04), inline 1 (0.04)
+        inline-after gold: repeat 1 (0.50), p 1 (0.50) | claude: repeat 1 (1.00)
+  alert gold   n=   57: row-open 32 (0.56), col-open 15 (0.26), deep:row/col 4 (0.07), inline 4 (0.07), deep:row/div 1 (0.02), nested:activity 1 (0.02)
+  alert claude n=   54: row-open 42 (0.78), col-open 12 (0.22)
+        inline-after gold: p 3 (0.75), video 1 (0.25) | claude: 
+
+== series=CEDO5 — pages 25
+  h3    gold   n=  119: row-open 61 (0.51), nested:activity 48 (0.40), nested:alert 4 (0.03), deep:div/col 3 (0.03), inline 2 (0.02), col-open 1 (0.01)
+  h3    claude n=   89: row-open 64 (0.72), nested:activity 20 (0.22), col-open 3 (0.03), deep:repeat/col 1 (0.01), inline 1 (0.01)
+        inline-after gold: p 2 (1.00) | claude: img 1 (1.00)
+  h4    gold   n=   81: nested:alert 32 (0.40), row-open 27 (0.33), deep:col/div 9 (0.11), inline 6 (0.07), nested:activity 3 (0.04), deep:col/repeat 2 (0.02), deep:repeat/td 2 (0.02)
+  h4    claude n=   80: row-open 58 (0.72), nested:alert 20 (0.25), col-open 2 (0.03)
+        inline-after gold: repeat 2 (0.33), p 2 (0.33), object 1 (0.17), h3 1 (0.17) | claude: 
+  alert gold   n=   85: row-open 36 (0.42), inline 28 (0.33), deep:col/div 7 (0.08), col-open 6 (0.07), deep:row/col 6 (0.07), deep:col/repeat 1 (0.01), deep:repeat/div 1 (0.01)
+  alert claude n=   42: row-open 42 (1.00)
+        inline-after gold: audio 12 (0.43), p 10 (0.36), h3 3 (0.11), img 1 (0.04), alert 1 (0.04), list 1 (0.04) | claude: 
+
+== series=BLL24 — pages 24
+  h3    gold   n=  173: nested:activity 154 (0.89), row-open 10 (0.06), deep:row/col 6 (0.03), nested:panel 1 (0.01), deep:col/repeat 1 (0.01), inline 1 (0.01)
+  h3    claude n=  116: nested:activity 102 (0.88), deep:row/col 9 (0.08), row-open 5 (0.04)
+        inline-after gold: p 1 (1.00) | claude: 
+  h4    gold   n=   10: nested:activity 5 (0.50), deep:col/repeat 3 (0.30), deep:repeat/div 2 (0.20)
+  h4    claude n=    0: 
+  alert gold   n=   11: col-open 8 (0.73), nested:panel 2 (0.18), nested:activity 1 (0.09)
+  alert claude n=    4: row-open 4 (1.00)
+
+== series=MXDI1 — pages 24
+  h3    gold   n=   95: nested:activity 76 (0.80), row-open 11 (0.12), deep:row/col 6 (0.06), inline 2 (0.02)
+  h3    claude n=   82: nested:activity 73 (0.89), deep:row/col 5 (0.06), row-open 4 (0.05)
+        inline-after gold: p 1 (0.50), row 1 (0.50) | claude: 
+  h4    gold   n=    8: nested:activity 3 (0.38), nested:alert 3 (0.38), deep:repeat/div 2 (0.25)
+  h4    claude n=   45: nested:activity 41 (0.91), inline 3 (0.07), nested:alert 1 (0.02)
+        inline-after gold:  | claude: table 2 (0.67), p 1 (0.33)
+  alert gold   n=   11: col-open 4 (0.36), deep:repeat/col 2 (0.18), inline 2 (0.18), nested:alert 2 (0.18), deep:row/col 1 (0.09)
+  alert claude n=    4: row-open 3 (0.75), col-open 1 (0.25)
+        inline-after gold: p 1 (0.50), video 1 (0.50) | claude: 
+
+== series=TRR10 — pages 24
+  h3    gold   n=  121: deep:col/repeat 114 (0.94), deep:activity/repeat 4 (0.03), row-open 1 (0.01), inline 1 (0.01), deep:row/repeat 1 (0.01)
+  h3    claude n=   91: deep:col/repeat 88 (0.97), deep:row/col 2 (0.02), row-open 1 (0.01)
+        inline-after gold: h3 1 (1.00) | claude: 
+  h4    gold   n=   28: deep:col/repeat 23 (0.82), nested:alert 4 (0.14), deep:activity/repeat 1 (0.04)
+  h4    claude n=   10: deep:row/col 8 (0.80), deep:col/repeat 1 (0.10), row-open 1 (0.10)
+  alert gold   n=   39: col-open 26 (0.67), row-open 6 (0.15), inline 5 (0.13), nested:activity 1 (0.03), deep:row/col 1 (0.03)
+  alert claude n=   17: deep:row/col 14 (0.82), row-open 2 (0.12), col-open 1 (0.06)
+        inline-after gold: repeat 3 (0.60), WIDGET 2 (0.40) | claude: 
+
+== series=ENGI2 — pages 23
+  h3    gold   n=   75: nested:activity 49 (0.65), row-open 25 (0.33), nested:alert 1 (0.01)
+  h3    claude n=   74: row-open 36 (0.49), nested:activity 36 (0.49), deep:row/col 2 (0.03)
+  h4    gold   n=   28: row-open 14 (0.50), nested:activity 7 (0.25), deep:col/div 2 (0.07), deep:repeat/div 2 (0.07), deep:a/div 2 (0.07), inline 1 (0.04)
+  h4    claude n=   31: row-open 20 (0.65), nested:activity 10 (0.32), inline 1 (0.03)
+        inline-after gold: p 1 (1.00) | claude: list 1 (1.00)
+  h5    gold   n=   23: deep:col/div 6 (0.26), inline 5 (0.22), row-open 5 (0.22), deep:repeat/div 2 (0.09), nested:alert 1 (0.04), row-child 1 (0.04), deep:col/repeat 1 (0.04)
+  h5    claude n=   16: row-open 8 (0.50), nested:activity 7 (0.44), nested:alert 1 (0.06)
+        inline-after gold: p 5 (1.00) | claude: 
+  alert gold   n=   17: col-open 7 (0.41), row-open 4 (0.24), nested:activity 3 (0.18), deep:col/div 2 (0.12), deep:repeat/div 1 (0.06)
+  alert claude n=    5: row-open 4 (0.80), col-open 1 (0.20)
+
+== series=ENGI4 — pages 23
+  h3    gold   n=   88: nested:activity 58 (0.66), row-open 29 (0.33), inline 1 (0.01)
+  h3    claude n=  108: nested:activity 55 (0.51), row-open 50 (0.46), deep:row/col 2 (0.02), inline 1 (0.01)
+        inline-after gold: repeat 1 (1.00) | claude: repeat 1 (1.00)
+  h4    gold   n=   58: nested:activity 29 (0.50), row-open 14 (0.24), deep:div/repeat 6 (0.10), inline 5 (0.09), deep:col/repeat 1 (0.02), nested:alert 1 (0.02), deep:a/div 1 (0.02)
+  h4    claude n=   29: nested:activity 18 (0.62), row-open 11 (0.38)
+        inline-after gold: repeat 2 (0.40), col 1 (0.20), p 1 (0.20), img 1 (0.20) | claude: 
+  h5    gold   n=   20: nested:alert 9 (0.45), nested:activity 5 (0.25), row-open 3 (0.15), deep:repeat/div 2 (0.10), inline 1 (0.05)
+  h5    claude n=    8: row-open 6 (0.75), deep:row/col 2 (0.25)
+        inline-after gold: repeat 1 (1.00) | claude: 
+  alert gold   n=   22: inline 12 (0.55), col-open 4 (0.18), row-open 4 (0.18), nested:activity 2 (0.09)
+  alert claude n=    6: row-open 6 (1.00)
+        inline-after gold: p 5 (0.42), h3 2 (0.17), row 2 (0.17), repeat 2 (0.17), video 1 (0.08) | claude: 
+
+== series=MXDI2 — pages 23
+  h2    gold   n=   17: row-open 16 (0.94), nested:alert 1 (0.06)
+  h2    claude n=    0: 
+  h3    gold   n=  166: nested:activity 132 (0.80), row-open 33 (0.20), deep:row/col 1 (0.01)
+  h3    claude n=  176: nested:activity 130 (0.74), row-open 46 (0.26)
+  h4    gold   n=   53: nested:activity 27 (0.51), inline 13 (0.25), nested:alert 8 (0.15), deep:repeat/col 2 (0.04), row-open 1 (0.02), deep:col/repeat 1 (0.02), deep:alert/repeat 1 (0.02)
+  h4    claude n=   25: nested:activity 23 (0.92), row-open 2 (0.08)
+        inline-after gold: p 5 (0.38), list 4 (0.31), h2 1 (0.08), row 1 (0.08), col 1 (0.08), img 1 (0.08) | claude: 
+  h5    gold   n=   19: nested:activity 9 (0.47), inline 8 (0.42), deep:row/col 1 (0.05), nested:alert 1 (0.05)
+  h5    claude n=    0: 
+        inline-after gold: list 4 (0.50), p 2 (0.25), img 1 (0.12), h3 1 (0.12) | claude: 
+  alert gold   n=   31: col-open 25 (0.81), inline 3 (0.10), deep:row/div 1 (0.03), deep:row/col 1 (0.03), row-open 1 (0.03)
+  alert claude n=    0: 
+        inline-after gold: video 1 (0.33), p 1 (0.33), repeat 1 (0.33) | claude: 
+
+== series=BLL11 — pages 22
+  h2    gold   n=    8: nested:panel 6 (0.75), row-open 2 (0.25)
+  h2    claude n=    6: nested:panel 6 (1.00)
+  h3    gold   n=  153: nested:activity 138 (0.90), deep:row/col 7 (0.05), row-open 6 (0.04), nested:panel 1 (0.01), nested:alert 1 (0.01)
+  h3    claude n=  146: nested:activity 131 (0.90), deep:row/col 10 (0.07), nested:panel 3 (0.02), row-open 2 (0.01)
+  alert gold   n=   24: nested:panel 13 (0.54), col-open 7 (0.29), row-open 2 (0.08), deep:row/col 2 (0.08)
+  alert claude n=   12: nested:panel 9 (0.75), col-open 3 (0.25)
+
+== series=BLL12 — pages 22
+  h2    gold   n=    8: nested:panel 8 (1.00)
+  h2    claude n=    9: nested:panel 8 (0.89), row-open 1 (0.11)
+  h3    gold   n=  182: nested:activity 169 (0.93), row-open 7 (0.04), deep:row/col 6 (0.03)
+  h3    claude n=  170: nested:activity 157 (0.92), deep:row/col 8 (0.05), row-open 5 (0.03)
+  h4    gold   n=    9: nested:alert 8 (0.89), nested:activity 1 (0.11)
+  h4    claude n=    8: row-open 7 (0.88), nested:alert 1 (0.12)
+  h5    gold   n=   11: nested:activity 10 (0.91), deep:col/repeat 1 (0.09)
+  h5    claude n=    0: 
+  alert gold   n=   28: nested:panel 18 (0.64), col-open 7 (0.25), row-open 3 (0.11)
+  alert claude n=   23: nested:panel 20 (0.87), col-open 3 (0.13)
+
+== series=BLL14 — pages 22
+  h3    gold   n=  138: nested:activity 120 (0.87), nested:panel 8 (0.06), deep:row/col 7 (0.05), row-open 3 (0.02)
+  h3    claude n=  148: nested:activity 125 (0.84), deep:row/col 9 (0.06), nested:panel 8 (0.05), row-open 6 (0.04)
+  alert gold   n=   26: col-open 9 (0.35), nested:panel 7 (0.27), row-open 6 (0.23), nested:activity 4 (0.15)
+  alert claude n=    7: nested:panel 6 (0.86), col-open 1 (0.14)
+
+== series=BLL16 — pages 22
+  h3    gold   n=  134: nested:activity 115 (0.86), deep:row/col 7 (0.05), nested:panel 6 (0.04), row-open 6 (0.04)
+  h3    claude n=  132: nested:activity 112 (0.85), deep:row/col 8 (0.06), nested:panel 6 (0.05), row-open 6 (0.05)
+  h4    gold   n=    9: nested:activity 4 (0.44), nested:alert 2 (0.22), deep:repeat/div 1 (0.11), deep:repeat/th 1 (0.11), deep:td/repeat 1 (0.11)
+  h4    claude n=    3: nested:panel 3 (1.00)
+  alert gold   n=   21: nested:panel 11 (0.52), col-open 7 (0.33), deep:row/col 2 (0.10), row-open 1 (0.05)
+  alert claude n=    6: nested:panel 3 (0.50), col-open 3 (0.50)
+
+== series=BLL17 — pages 22
+  h3    gold   n=  134: nested:activity 118 (0.88), row-open 7 (0.05), deep:row/col 7 (0.05), nested:panel 1 (0.01), nested:alert 1 (0.01)
+  h3    claude n=  133: nested:activity 114 (0.86), row-open 7 (0.05), deep:row/col 7 (0.05), nested:panel 5 (0.04)
+  alert gold   n=   22: col-open 9 (0.41), nested:panel 6 (0.27), nested:activity 2 (0.09), row-open 2 (0.09), deep:row/div 1 (0.05), deep:row/col 1 (0.05), deep:repeat/col 1 (0.05)
+  alert claude n=    5: nested:panel 2 (0.40), col-open 2 (0.40), row-open 1 (0.20)
+
+== series=BLL21 — pages 22
+  h2    gold   n=    8: nested:panel 8 (1.00)
+  h2    claude n=    8: nested:panel 8 (1.00)
+  h3    gold   n=  146: nested:activity 125 (0.86), row-open 7 (0.05), deep:row/col 7 (0.05), nested:panel 6 (0.04), deep:repeat/div 1 (0.01)
+  h3    claude n=  140: nested:activity 119 (0.85), deep:row/col 9 (0.06), nested:panel 7 (0.05), row-open 5 (0.04)
+  alert gold   n=   11: nested:panel 4 (0.36), deep:row/div 4 (0.36), col-open 3 (0.27)
+  alert claude n=    6: nested:panel 3 (0.50), col-open 3 (0.50)
+
+== series=BLL22 — pages 22
+  h2    gold   n=    5: nested:panel 5 (1.00)
+  h2    claude n=    5: nested:panel 5 (1.00)
+  h3    gold   n=  123: nested:activity 107 (0.87), row-open 7 (0.06), deep:row/col 7 (0.06), nested:panel 1 (0.01), deep:repeat/td 1 (0.01)
+  h3    claude n=  122: nested:activity 106 (0.87), row-open 7 (0.06), deep:row/col 7 (0.06), nested:panel 2 (0.02)
+  alert gold   n=   14: col-open 5 (0.36), deep:row/div 4 (0.29), nested:panel 3 (0.21), nested:activity 1 (0.07), deep:row/col 1 (0.07)
+  alert claude n=   11: col-open 8 (0.73), nested:panel 3 (0.27)
+
+== series=BLL23 — pages 22
+  h2    gold   n=    7: nested:panel 7 (1.00)
+  h2    claude n=    7: nested:panel 7 (1.00)
+  h3    gold   n=  144: nested:activity 129 (0.90), row-open 7 (0.05), deep:row/col 6 (0.04), nested:panel 1 (0.01), deep:repeat/div 1 (0.01)
+  h3    claude n=  140: nested:activity 126 (0.90), row-open 7 (0.05), deep:row/col 5 (0.04), nested:panel 2 (0.01)
+  alert gold   n=   12: col-open 6 (0.50), deep:row/div 3 (0.25), nested:panel 2 (0.17), deep:div/col 1 (0.08)
+  alert claude n=    8: nested:panel 3 (0.38), col-open 3 (0.38), row-open 2 (0.25)
+
+== series=BLL13 — pages 21
+  h3    gold   n=  146: nested:activity 125 (0.86), nested:panel 7 (0.05), row-open 7 (0.05), deep:row/col 7 (0.05)
+  h3    claude n=  153: nested:activity 132 (0.86), deep:row/col 14 (0.09), nested:panel 7 (0.05)
+  h4    gold   n=    6: nested:alert 6 (1.00)
+  h4    claude n=    5: nested:panel 5 (1.00)
+  alert gold   n=   21: nested:panel 14 (0.67), col-open 5 (0.24), deep:row/col 1 (0.05), deep:row/div 1 (0.05)
+  alert claude n=    8: nested:panel 6 (0.75), col-open 2 (0.25)
+
+== series=MXFU3 — pages 21
+  h3    gold   n=   86: nested:activity 57 (0.66), row-open 23 (0.27), inline 4 (0.05), deep:row/col 1 (0.01), nested:alert 1 (0.01)
+  h3    claude n=   84: nested:activity 46 (0.55), row-open 38 (0.45)
+        inline-after gold: WIDGET 1 (0.25), repeat 1 (0.25), img 1 (0.25), p 1 (0.25) | claude: 
+  h4    gold   n=   19: inline 7 (0.37), nested:alert 3 (0.16), deep:row/col 3 (0.16), row-open 3 (0.16), deep:col/div 2 (0.11), deep:repeat/div 1 (0.05)
+  h4    claude n=   24: row-open 11 (0.46), nested:activity 8 (0.33), inline 2 (0.08), deep:col/div 1 (0.04), deep:row/col 1 (0.04), nested:alert 1 (0.04)
+        inline-after gold: p 4 (0.57), row 1 (0.14), h3 1 (0.14), img 1 (0.14) | claude: div 1 (0.50), table 1 (0.50)
+  h5    gold   n=   15: inline 6 (0.40), nested:table 4 (0.27), deep:col/div 2 (0.13), row-open 1 (0.07), deep:tr/td 1 (0.07), deep:row/col 1 (0.07)
+  h5    claude n=    5: nested:activity 3 (0.60), row-open 2 (0.40)
+        inline-after gold: p 5 (0.83), row 1 (0.17) | claude: 
+  alert gold   n=   18: col-open 6 (0.33), row-open 5 (0.28), deep:row/div 3 (0.17), nested:activity 2 (0.11), inline 1 (0.06), deep:row/col 1 (0.06)
+  alert claude n=   10: row-open 7 (0.70), col-open 3 (0.30)
+        inline-after gold: WIDGET 1 (1.00) | claude: 
+
+== series=XMES1 — pages 21
+  h3    gold   n=  104: nested:activity 95 (0.91), row-open 7 (0.07), col-open 1 (0.01), deep:col/row 1 (0.01)
+  h3    claude n=   79: nested:activity 64 (0.81), row-open 15 (0.19)
+  h4    gold   n=   26: nested:activity 14 (0.54), nested:alert 11 (0.42), row-open 1 (0.04)
+  h4    claude n=    1: row-open 1 (1.00)
+  alert gold   n=   28: row-open 14 (0.50), col-open 4 (0.14), nested:activity 4 (0.14), deep:row/col 3 (0.11), inline 2 (0.07), deep:row/div 1 (0.04)
+  alert claude n=    4: row-open 4 (1.00)
+        inline-after gold: h3 1 (0.50), repeat 1 (0.50) | claude: 
+
+== series=ANZH1 — pages 20
+  h3    gold   n=   60: nested:activity 34 (0.57), row-open 11 (0.18), deep:row/col 8 (0.13), inline 6 (0.10), nested:alert 1 (0.02)
+  h3    claude n=   46: nested:activity 22 (0.48), row-open 18 (0.39), deep:row/col 6 (0.13)
+        inline-after gold: p 4 (0.67), br 1 (0.17), img 1 (0.17) | claude: 
+  h4    gold   n=   18: nested:alert 6 (0.33), nested:activity 6 (0.33), row-open 2 (0.11), inline 2 (0.11), deep:row/col 1 (0.06), col-open 1 (0.06)
+  h4    claude n=   19: nested:activity 8 (0.42), row-open 7 (0.37), inline 3 (0.16), deep:row/col 1 (0.05)
+        inline-after gold: p 1 (0.50), h3 1 (0.50) | claude: p 1 (0.33), a 1 (0.33), repeat 1 (0.33)
+  alert gold   n=   18: col-open 9 (0.50), deep:row/col 5 (0.28), row-open 2 (0.11), top-level 1 (0.06), inline 1 (0.06)
+  alert claude n=   10: row-open 6 (0.60), col-open 4 (0.40)
+        inline-after gold: repeat 1 (1.00) | claude: 
+
+== series=ANZH4 — pages 20
+  h2    gold   n=   21: inline 11 (0.52), row-open 9 (0.43), deep:col/repeat 1 (0.05)
+  h2    claude n=    0: 
+        inline-after gold: alert 11 (1.00) | claude: 
+  h3    gold   n=   55: nested:activity 25 (0.45), nested:alert 13 (0.24), row-open 10 (0.18), inline 5 (0.09), deep:row/col 1 (0.02), row-child 1 (0.02)
+  h3    claude n=   47: row-open 30 (0.64), nested:activity 17 (0.36)
+        inline-after gold: p 3 (0.60), video 1 (0.20), repeat 1 (0.20) | claude: 
+  h4    gold   n=    8: nested:activity 6 (0.75), row-open 1 (0.12), inline 1 (0.12)
+  h4    claude n=   14: row-open 8 (0.57), nested:activity 5 (0.36), inline 1 (0.07)
+        inline-after gold: h3 1 (1.00) | claude: list 1 (1.00)
+  alert gold   n=   41: row-open 27 (0.66), deep:row/div 10 (0.24), col-open 3 (0.07), inline 1 (0.02)
+  alert claude n=   70: row-open 67 (0.96), col-open 3 (0.04)
+        inline-after gold: alert 1 (1.00) | claude: 
+
+== series=ENGI3 — pages 20
+  h3    gold   n=   62: nested:activity 46 (0.74), row-open 14 (0.23), nested:alert 1 (0.02), deep:col/repeat 1 (0.02)
+  h3    claude n=   57: nested:activity 36 (0.63), row-open 21 (0.37)
+  h4    gold   n=   34: nested:activity 18 (0.53), row-open 7 (0.21), nested:alert 7 (0.21), deep:row/col 1 (0.03), deep:col/repeat 1 (0.03)
+  h4    claude n=    6: row-open 4 (0.67), nested:activity 1 (0.17), deep:repeat/col 1 (0.17)
+  h5    gold   n=    6: deep:repeat/div 3 (0.50), row-open 2 (0.33), deep:repeat/col 1 (0.17)
+  h5    claude n=    4: nested:activity 2 (0.50), inline 1 (0.25), row-open 1 (0.25)
+        inline-after gold:  | claude: list 1 (1.00)
+  alert gold   n=   26: col-open 17 (0.65), deep:row/col 4 (0.15), row-open 3 (0.12), inline 1 (0.04), row-child 1 (0.04)
+  alert claude n=    8: row-open 8 (1.00)
+        inline-after gold: alert 1 (1.00) | claude: 
+
+== series=MXFL3 — pages 20
+  h3    gold   n=  141: nested:activity 86 (0.61), row-open 49 (0.35), inline 6 (0.04)
+  h3    claude n=  131: nested:activity 76 (0.58), row-open 55 (0.42)
+        inline-after gold: p 6 (1.00) | claude: 
+  h4    gold   n=   19: nested:alert 6 (0.32), row-open 3 (0.16), inline 3 (0.16), deep:row/col 3 (0.16), nested:activity 2 (0.11), deep:col/div 1 (0.05), deep:repeat/div 1 (0.05)
+  h4    claude n=   30: nested:activity 16 (0.53), row-open 12 (0.40), deep:col/div 1 (0.03), nested:alert 1 (0.03)
+        inline-after gold: h3 1 (0.33), list 1 (0.33), p 1 (0.33) | claude: 
+  alert gold   n=   18: col-open 12 (0.67), row-open 4 (0.22), inline 2 (0.11)
+  alert claude n=   13: row-open 9 (0.69), col-open 4 (0.31)
+        inline-after gold: div 1 (0.50), repeat 1 (0.50) | claude: 
+
+== series=MXFU2 — pages 20
+  h3    gold   n=  151: nested:activity 118 (0.78), row-open 30 (0.20), col-open 3 (0.02)
+  h3    claude n=  159: nested:activity 126 (0.79), row-open 33 (0.21)
+  h4    gold   n=   26: nested:activity 17 (0.65), inline 3 (0.12), nested:alert 2 (0.08), row-open 2 (0.08), deep:div/col 1 (0.04), deep:repeat/th 1 (0.04)
+  h4    claude n=    0: 
+        inline-after gold: p 3 (1.00) | claude: 
+  h5    gold   n=   18: nested:activity 6 (0.33), inline 5 (0.28), nested:alert 3 (0.17), deep:repeat/col 2 (0.11), deep:col/repeat 1 (0.06), col-open 1 (0.06)
+  h5    claude n=    3: deep:col/repeat 2 (0.67), row-open 1 (0.33)
+        inline-after gold: p 3 (0.60), list 1 (0.20), video 1 (0.20) | claude: 
+  alert gold   n=   47: col-open 44 (0.94), inline 1 (0.02), deep:row/div 1 (0.02), nested:activity 1 (0.02)
+  alert claude n=    0: 
+        inline-after gold: repeat 1 (1.00) | claude: 
+
+== series=TRR11 — pages 20
+  h3    gold   n=  148: deep:col/repeat 133 (0.90), nested:activity 13 (0.09), nested:alert 1 (0.01), row-open 1 (0.01)
+  h3    claude n=  117: deep:col/repeat 110 (0.94), row-open 6 (0.05), nested:activity 1 (0.01)
+  h4    gold   n=    3: nested:alert 1 (0.33), inline 1 (0.33), deep:col/repeat 1 (0.33)
+  h4    claude n=   20: deep:col/repeat 14 (0.70), deep:row/col 6 (0.30)
+        inline-after gold: repeat 1 (1.00) | claude: 
+  alert gold   n=   33: col-open 22 (0.67), row-open 8 (0.24), inline 2 (0.06), nested:activity 1 (0.03)
+  alert claude n=    6: deep:row/col 4 (0.67), row-open 2 (0.33)
+        inline-after gold: repeat 1 (0.50), alert 1 (0.50) | claude: 
+wrote _s25_headpos.json
