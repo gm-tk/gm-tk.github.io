@@ -1747,7 +1747,8 @@ class Config {
 	// ROUND 384 (260619.55): DECLINED, shipped inert — a kept table cell's bullet lines as a <ul> list (elements.table.cell_bullets, enabled false, env TBLCELLLIST_OFF): the gate's own scorer read 12 up / 61 down over 84 pages; the corpus is byte-identical to r383.
 	// ROUND 385 (260619.56): the inquiry / fundamentals panel's first own heading is h2 (PanelsBuilder.panelTitleLevelPostpass; the gold 0.70 inquiry / HPFUN 0.84 / ARFUN 1.00). fundamentals_panels.first_heading_level, env PANELH2_OFF; 43 pages / 43 modules; scoped ship #6 since the r377 full.
 	// ROUND 386 (260619.57): a measurement-tool round — _structural_skeleton.label renders the class tokens SORTED (97 gold pages write class="col-12 col-md-8"); the skeleton re-baselined 53.265 -> 53.351 (an instrument correction, 77 pages 76 up). No engine / data change.
-	static AppVersion = "260619.57";
+	// ROUND 387 (260619.58): the whakatauki does not close its column — the commentary paragraph after the proverb flows on inside the same col-md-8 (callouts.flow_after_tags, env WHFLOW_OFF; ContentConverter.#flowsAfter at both after-box breakRow sites). Standard template, NCEA1 excluded; the gold 0.70 / paired 0.81 on 35 pages; 63 pages / 59 modules; scoped ship #7 since the r377 full.
+	static AppVersion = "260619.58";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

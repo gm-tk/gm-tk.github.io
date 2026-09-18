@@ -1,0 +1,249 @@
+
+== ALL: gold lesson-menu li missing from Claude = 2735; Claude extra li = 628
+     898   0.33  claude-overview
+     641   0.23  nowhere
+     364   0.13  gold-other-lesson
+     251   0.09  wt
+     221   0.08  on-page-other-tag:li
+     143   0.05  claude-other-page
+      75   0.03  gold-overview-only
+      71   0.03  on-page-other-tag:p
+      63   0.02  on-page-other-tag:i
+       6   0.00  on-page-other-tag:b
+       2   0.00  on-page-other-tag:span
+
+== template=Inquiry: gold lesson-menu li missing from Claude = 141; Claude extra li = 9
+      43   0.30  claude-overview
+      42   0.30  gold-other-lesson
+      28   0.20  nowhere
+       9   0.06  claude-other-page
+       7   0.05  on-page-other-tag:i
+       7   0.05  on-page-other-tag:li
+       4   0.03  wt
+       1   0.01  gold-overview-only
+
+== template=Standard: gold lesson-menu li missing from Claude = 2594; Claude extra li = 619
+     855   0.33  claude-overview
+     613   0.24  nowhere
+     322   0.12  gold-other-lesson
+     247   0.10  wt
+     214   0.08  on-page-other-tag:li
+     134   0.05  claude-other-page
+      74   0.03  gold-overview-only
+      71   0.03  on-page-other-tag:p
+      56   0.02  on-page-other-tag:i
+       6   0.00  on-page-other-tag:b
+       2   0.00  on-page-other-tag:span
+
+== prefix=AGH: gold lesson-menu li missing from Claude = 44; Claude extra li = 57
+      15   0.34  nowhere
+      15   0.34  wt
+      11   0.25  claude-other-page
+       2   0.05  gold-other-lesson
+       1   0.02  on-page-other-tag:p
+
+== prefix=ANZH: gold lesson-menu li missing from Claude = 304; Claude extra li = 5
+     199   0.65  claude-overview
+      98   0.32  gold-other-lesson
+       6   0.02  on-page-other-tag:p
+       1   0.00  wt
+
+== prefix=BLL: gold lesson-menu li missing from Claude = 52; Claude extra li = 0
+      30   0.58  gold-other-lesson
+      22   0.42  claude-overview
+
+== prefix=BLLR: gold lesson-menu li missing from Claude = 40; Claude extra li = 0
+      15   0.38  nowhere
+      13   0.33  on-page-other-tag:i
+      12   0.30  gold-other-lesson
+
+== prefix=CEDK: gold lesson-menu li missing from Claude = 21; Claude extra li = 0
+      12   0.57  gold-other-lesson
+       9   0.43  claude-other-page
+
+== prefix=CEDO: gold lesson-menu li missing from Claude = 42; Claude extra li = 24
+      23   0.55  wt
+      14   0.33  nowhere
+       5   0.12  gold-other-lesson
+
+== prefix=CEDT: gold lesson-menu li missing from Claude = 72; Claude extra li = 2
+      21   0.29  claude-overview
+      19   0.26  on-page-other-tag:i
+      16   0.22  claude-other-page
+      14   0.19  gold-other-lesson
+       1   0.01  gold-overview-only
+       1   0.01  nowhere
+
+== prefix=ENGC: gold lesson-menu li missing from Claude = 72; Claude extra li = 54
+      40   0.56  nowhere
+      22   0.31  claude-overview
+       5   0.07  gold-overview-only
+       4   0.06  wt
+       1   0.01  on-page-other-tag:p
+
+== prefix=ENGI: gold lesson-menu li missing from Claude = 264; Claude extra li = 99
+     189   0.72  claude-overview
+      59   0.22  nowhere
+      14   0.05  wt
+       2   0.01  on-page-other-tag:p
+
+== prefix=ENGJ: gold lesson-menu li missing from Claude = 99; Claude extra li = 50
+      48   0.48  claude-overview
+      35   0.35  nowhere
+      16   0.16  wt
+
+== prefix=ENGR: gold lesson-menu li missing from Claude = 88; Claude extra li = 32
+      66   0.75  nowhere
+      17   0.19  wt
+       3   0.03  gold-overview-only
+       2   0.02  claude-overview
+
+== prefix=ENGS: gold lesson-menu li missing from Claude = 96; Claude extra li = 59
+      67   0.70  nowhere
+      16   0.17  wt
+      10   0.10  gold-other-lesson
+       3   0.03  gold-overview-only
+
+== prefix=HIS: gold lesson-menu li missing from Claude = 75; Claude extra li = 9
+      47   0.63  claude-other-page
+      23   0.31  nowhere
+       2   0.03  on-page-other-tag:p
+       2   0.03  gold-other-lesson
+       1   0.01  wt
+
+== prefix=HPRE: gold lesson-menu li missing from Claude = 126; Claude extra li = 0
+     126   1.00  gold-other-lesson
+
+== prefix=MXDB: gold lesson-menu li missing from Claude = 116; Claude extra li = 8
+      84   0.72  claude-overview
+      15   0.13  gold-other-lesson
+      12   0.10  nowhere
+       5   0.04  gold-overview-only
+
+== prefix=MXDI: gold lesson-menu li missing from Claude = 45; Claude extra li = 6
+      28   0.62  nowhere
+      14   0.31  gold-other-lesson
+       3   0.07  wt
+
+== prefix=MXEO: gold lesson-menu li missing from Claude = 43; Claude extra li = 26
+      26   0.60  nowhere
+      11   0.26  wt
+       5   0.12  on-page-other-tag:p
+       1   0.02  claude-other-page
+
+== prefix=MXEX: gold lesson-menu li missing from Claude = 62; Claude extra li = 6
+      28   0.45  nowhere
+      18   0.29  on-page-other-tag:li
+       6   0.10  wt
+       6   0.10  on-page-other-tag:b
+       3   0.05  claude-other-page
+       1   0.02  on-page-other-tag:span
+
+== prefix=MXFL: gold lesson-menu li missing from Claude = 287; Claude extra li = 22
+     159   0.55  claude-overview
+      54   0.19  on-page-other-tag:p
+      52   0.18  gold-overview-only
+      17   0.06  nowhere
+       2   0.01  wt
+       2   0.01  gold-other-lesson
+       1   0.00  claude-other-page
+
+== prefix=MXFU: gold lesson-menu li missing from Claude = 58; Claude extra li = 1
+      37   0.64  nowhere
+      11   0.19  wt
+      10   0.17  gold-other-lesson
+
+== prefix=PES: gold lesson-menu li missing from Claude = 93; Claude extra li = 17
+      27   0.29  on-page-other-tag:li
+      21   0.23  wt
+      13   0.14  on-page-other-tag:i
+      12   0.13  nowhere
+      12   0.13  claude-other-page
+       7   0.08  gold-other-lesson
+       1   0.01  on-page-other-tag:span
+
+== prefix=SSOG: gold lesson-menu li missing from Claude = 110; Claude extra li = 0
+      88   0.80  claude-overview
+      22   0.20  nowhere
+
+== prefix=TEDC: gold lesson-menu li missing from Claude = 145; Claude extra li = 0
+     134   0.92  on-page-other-tag:li
+       7   0.05  wt
+       3   0.02  nowhere
+       1   0.01  gold-other-lesson
+
+== prefix=XDLS: gold lesson-menu li missing from Claude = 120; Claude extra li = 28
+      71   0.59  nowhere
+      35   0.29  on-page-other-tag:li
+      14   0.12  wt
+
+== prefix=XGF: gold lesson-menu li missing from Claude = 41; Claude extra li = 0
+      28   0.68  wt
+      13   0.32  claude-overview
+
+== prefix=XLP: gold lesson-menu li missing from Claude = 54; Claude extra li = 2
+      41   0.76  claude-overview
+       7   0.13  on-page-other-tag:li
+       3   0.06  wt
+       2   0.04  claude-other-page
+       1   0.02  nowhere
+
+== prefix=XMES: gold lesson-menu li missing from Claude = 29; Claude extra li = 56
+      19   0.66  nowhere
+       9   0.31  wt
+       1   0.03  claude-other-page
+
+== top 40 modules by missing li (lesson pages) ==
+   ANZH401    Standard     missing li= 144 on 12 lesson pages
+   HPRE203    Standard     missing li= 126 on  7 lesson pages
+   ENGI202    Standard     missing li= 103 on  6 lesson pages
+   ANZH404    Standard     missing li=  98 on  6 lesson pages
+   MXFL202    Standard     missing li=  90 on  5 lesson pages
+   SSOG103    Standard     missing li=  88 on  4 lesson pages
+   TEDC402    Standard     missing li=  87 on  9 lesson pages
+   MXDB201    Standard     missing li=  84 on  6 lesson pages
+   ENGI201    Standard     missing li=  83 on  4 lesson pages
+   MXFL101    Standard     missing li=  70 on  7 lesson pages
+   TEDC401    Standard     missing li=  58 on  6 lesson pages
+   ANZH203    Standard     missing li=  55 on  5 lesson pages
+   MXFL201    Standard     missing li=  54 on  9 lesson pages
+   BLL240     Inquiry      missing li=  52 on  7 lesson pages
+   MXFL102    Standard     missing li=  51 on  8 lesson pages
+   ENGJ101    Standard     missing li=  48 on  4 lesson pages
+   CEDT501    Standard     missing li=  43 on  9 lesson pages
+   ENGI401    Standard     missing li=  41 on 10 lesson pages
+   BLLR201    Standard     missing li=  40 on  6 lesson pages
+   MXDI202    Standard     missing li=  37 on 10 lesson pages
+   XLP05      Standard     missing li=  36 on  3 lesson pages
+   MXFU202    Standard     missing li=  32 on  9 lesson pages
+   ENGJ301    Standard     missing li=  31 on  7 lesson pages
+   ENGS101    Standard     missing li=  29 on  5 lesson pages
+   ENGR102    Standard     missing li=  28 on  6 lesson pages
+   ENGR202    Standard     missing li=  28 on  7 lesson pages
+   MXEX302    Standard     missing li=  28 on  7 lesson pages
+   PES1008    Standard     missing li=  28 on  9 lesson pages
+   XGF9006    Standard     missing li=  28 on  7 lesson pages
+   PES1004    Standard     missing li=  27 on  8 lesson pages
+   MXEX101    Standard     missing li=  26 on  4 lesson pages
+   HIS1008    Standard     missing li=  24 on  6 lesson pages
+   XDLS902    Standard     missing li=  24 on  7 lesson pages
+   XDLS909    Inquiry      missing li=  24 on  4 lesson pages
+   ENGR101    Standard     missing li=  22 on  7 lesson pages
+   HIS1001    Standard     missing li=  22 on  6 lesson pages
+   SSOG101    Standard     missing li=  22 on  6 lesson pages
+   CEDK501    Inquiry      missing li=  21 on  4 lesson pages
+   CEDO105    Standard     missing li=  21 on  5 lesson pages
+   ENGS102    Standard     missing li=  21 on  6 lesson pages
+
+== examples ==
+   claude-other-page: AGH1003_2_0: explain how farmers and growers carrying out soil management | AGH1003_3_0: explain how farmers and growers carrying out soil management | AGH1003_4_0: explain how farmers and growers carrying out soil management | AGH1003_5_0: explain how farmers and growers carrying out soil management
+   on-page-other-tag:p: AGH1003_3_0: justify the use of key management practices due to the posit | ANZH101_1_0: m ori history is the foundational and continuous history of  | ANZH101_1_0: m ori are tangata whenua they were the first people of this  | ANZH101_2_0: m ori history is the foundational and continuous history of 
+   nowhere: AGH1004_1_0: about factors that impact where primary products are grown | AGH1004_1_0: be able to label factors under categories of climate physica | AGH1004_1_0: be able to match important terms with definitions | AGH1006_2_0: investigating propagation practices in practical experiments
+   wt: AGH1004_4_0: describing how soil types within a region contribute to the  | AGH1005_1_0: apply matauranga m ori values of kaitiakitanga and manaakita | AGH1005_2_0: investigate plant anatomy and how this affects primary produ | AGH1005_8_0: investigate and describe the plant process of reproduction f
+   gold-other-lesson: AGH1009_6_0: identify and describe ways farmers have adopted sustainable  | AGH1009_7_0: identify and describe ways farmers have adopted sustainable  | ANZH404_1_0: m ori history is the foundational and continuous history of  | ANZH404_1_0: colonisation and settlement have been central to aotearoa ne
+   claude-overview: ANZH203_1_0: use appropriate and relevant sources | ANZH203_1_0: analyse and categorise peoples values viewpoints and perspec | ANZH203_1_0: use historical sources giving deliberate attention to m taur | ANZH203_1_0: use literacy and numeracy tools to sort and group findings
+   on-page-other-tag:i: BLLR201_3_0: identify prefixes and suffixes | BLLR201_3_0: use word parts to help work out meanings | BLLR201_4_0: use what we already know | BLLR201_4_0: use clues from a title and illustrations
+   gold-overview-only: CEDT301_6_0: develop broad technical knowledge and digital literacy throu | ENGC102_1_0: identify the difference between a fiction and nonfiction tex | ENGC302_1_0: adapt tone to suit the audience | ENGC302_1_0: recognise the parts of an email such as the subject line gre
+   on-page-other-tag:li: MXEX101_1_0: help you compare and instantly recognize small quantities | MXEX101_1_0: sort and group different materials | MXEX101_1_0: talking about the materials you chose and explaining where t | MXEX101_4_0: learn that most of the materials found in your community or 
+   on-page-other-tag:b: MXEX101_2_0: learn that there are patterns that exist in the natural mate | MXEX101_2_0: help you identify patterns in size shape colour and number o | MXEX101_2_0: identifying patterns in size shape colour and number of some | MXEX101_2_0: following patterns using natural materials in the community
+   on-page-other-tag:span: MXEX301_1_0: inenga the early m ori measurement | PES1008_7_0: electrical charge

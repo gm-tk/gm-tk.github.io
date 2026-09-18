@@ -1,0 +1,247 @@
+
+== ALL — pages 1534: gold li 7428 / Claude li 5550 / pages gold>claude 417
+   gold  : list:ul=2671  block:ulN=1629  block:none=889  block:ul1=808  block:p1=562  block:mixed:p+ul=145  block:mixed:ul+p=40  block:pN=31  list:ol=4  block:olN=3  block:mixed:ul+p+p+p=2  block:mixed:p+ul+p=1  block:mixed:ul+p+p=1
+   claude: list:ul=1941  block:ulN=1141  block:ul1=633  block:none=514  block:p1=308  block:pN=190  block:mixed:ul+p=44  list:ol=31  block:olN=22  block:mixed:p+p+ul=17  block:mixed:ul+p+p=16  block:mixed:p+ul=15  block:ol1=8  block:mixed:ul+ul+p=6  block:mixed:ul+p+p+p=5  block:mixed:ul+p+p+ul=5  block:mixed:p+ul+p=2  block:mixed:ul+p+p+p+p=2  block:mixed:ul+p+ul=2  block:mixed:ol+p+p=1  block:mixed:ul+ul+p+p+p+p=1  block:mixed:ul+p+p+p+p+p+p+p+p=1  block:mixed:p+p+p+p+p+p+p+p+p+p+p+ul=1  block:mixed:p+ul+ul+p+p+p+p+p=1  block:mixed:ul+p+ul+p+ul=1  block:mixed:p+ul+p+p+p=1  block:mixed:p+ul+p+ul+p+ul=1  block:mixed:p+ul+p+ul+p+ul+p+ul+p+ul=1
+   paired block forms (gold → claude): ulN→ulN=787  ul1→ul1=477  none→none=279  p1→p1=203  none→ulN=158  ulN→none=88  p1→none=71  none→ul1=71  ulN→p1=52  p1→pN=47  ul1→ulN=43  ul1→none=36  ulN→pN=34  none→pN=24
+
+== page=overview — pages 393: gold li 2588 / Claude li 2824 / pages gold>claude 68
+   gold  : list:ul=613  block:ulN=479  block:none=421  block:p1=326  block:ul1=96  block:pN=19  block:mixed:p+ul=13  block:mixed:ul+p=4  list:ol=2  block:olN=2  block:mixed:p+ul+p=1  block:mixed:ul+p+p+p=1
+   claude: list:ul=650  block:none=487  block:ulN=458  block:p1=277  block:pN=148  block:ul1=93  block:mixed:p+p+ul=17  block:mixed:p+ul=12  block:mixed:ul+p=12  list:ol=9  block:olN=8  block:mixed:ul+ul+p=6  block:mixed:ul+p+p+ul=5  block:mixed:ul+p+p+p=2  block:mixed:p+ul+p=2  block:mixed:ol+p+p=1  block:mixed:ul+p+p=1  block:mixed:ul+ul+p+p+p+p=1  block:mixed:ul+p+p+p+p=1  block:mixed:ul+p+p+p+p+p+p+p+p=1  block:mixed:p+p+p+p+p+p+p+p+p+p+p+ul=1  block:mixed:p+ul+ul+p+p+p+p+p=1  block:mixed:ul+p+ul+p+ul=1  block:mixed:p+ul+p+p+p=1  block:mixed:p+ul+p+ul+p+ul=1  block:mixed:p+ul+p+ul+p+ul+p+ul+p+ul=1  block:mixed:ul+p+ul=1
+   paired block forms (gold → claude): none→none=273  ulN→ulN=261  p1→p1=192  ulN→none=85  none→ulN=67  p1→none=62  ul1→ul1=49  ulN→p1=39  ul1→none=29  p1→pN=29  ulN→pN=28  none→ul1=27  none→pN=15  p1→ulN=11
+
+== page=lesson — pages 1141: gold li 4840 / Claude li 2726 / pages gold>claude 349
+   gold  : list:ul=2058  block:ulN=1150  block:ul1=712  block:none=468  block:p1=236  block:mixed:p+ul=132  block:mixed:ul+p=36  block:pN=12  list:ol=2  block:olN=1  block:mixed:ul+p+p=1  block:mixed:ul+p+p+p=1
+   claude: list:ul=1291  block:ulN=683  block:ul1=540  block:pN=42  block:mixed:ul+p=32  block:p1=31  block:none=27  list:ol=22  block:mixed:ul+p+p=15  block:olN=14  block:ol1=8  block:mixed:ul+p+p+p=3  block:mixed:p+ul=3  block:mixed:ul+p+ul=1  block:mixed:ul+p+p+p+p=1
+   paired block forms (gold → claude): ulN→ulN=526  ul1→ul1=428  none→ulN=91  none→ul1=44  ul1→ulN=35  p1→pN=18  ulN→mixed:ul+p=17  p1→ul1=16  ulN→ul1=13  ulN→p1=13  mixed:ul+p→mixed:ul+p+p=13  ulN→olN=12  p1→p1=11  mixed:p+ul→ulN=10
+
+== template=Fundamentals — pages 53: gold li 233 / Claude li 214 / pages gold>claude 10
+   gold  : block:none=98  list:ul=64  block:ulN=57  block:ul1=7  block:p1=6  block:pN=1
+   claude: list:ul=62  block:ulN=50  block:pN=45  block:none=41  block:p1=15  block:ul1=10  list:ol=1  block:mixed:ol+p+p=1  block:mixed:ul+p+p+p=1  block:mixed:ul+p=1
+   paired block forms (gold → claude): ulN→ulN=44  none→none=37  none→ul1=6  none→pN=4  none→p1=3  ulN→pN=3  ul1→ulN=3  ulN→ul1=2  ul1→ul1=2  none→mixed:ul+p=1  ulN→none=1  ulN→p1=1
+
+== template=Inquiry — pages 85: gold li 739 / Claude li 585 / pages gold>claude 39
+   gold  : list:ul=206  block:ulN=164  block:none=96  block:p1=80  block:ul1=22  block:mixed:ul+p=8  block:pN=4  list:ol=2  block:olN=2  block:mixed:p+ul+p=1
+   claude: list:ul=159  block:ulN=95  block:none=76  block:p1=58  block:pN=23  block:ul1=15  block:mixed:ul+p=8  list:ol=8  block:olN=8  block:mixed:ul+ul+p=6  block:mixed:p+p+ul=6  block:mixed:ul+p+p=5  block:mixed:p+ul+p=2  block:mixed:ul+ul+p+p+p+p=1  block:mixed:ul+p+p+p+p=1  block:mixed:ul+p+p+p+p+p+p+p+p=1  block:mixed:p+p+p+p+p+p+p+p+p+p+p+ul=1  block:mixed:p+ul+ul+p+p+p+p+p=1  block:mixed:ul+p+ul+p+ul=1  block:mixed:p+ul=1  block:mixed:ul+p+p+p=1
+   paired block forms (gold → claude): ulN→ulN=68  p1→p1=46  none→none=45  ulN→none=18  none→ulN=13  ul1→ul1=8  ulN→pN=7  p1→none=6  p1→mixed:ul+ul+p=6  p1→mixed:ul+p=6  ulN→p1=4  none→p1=4  ul1→none=4  p1→ulN=4
+
+== template=Standard — pages 1370: gold li 6456 / Claude li 4751 / pages gold>claude 368
+   gold  : list:ul=2401  block:ulN=1408  block:ul1=779  block:none=695  block:p1=476  block:mixed:p+ul=145  block:mixed:ul+p=32  block:pN=26  list:ol=2  block:mixed:ul+p+p+p=2  block:olN=1  block:mixed:ul+p+p=1
+   claude: list:ul=1720  block:ulN=996  block:ul1=608  block:none=397  block:p1=235  block:pN=122  block:mixed:ul+p=35  list:ol=22  block:olN=14  block:mixed:p+ul=14  block:mixed:p+p+ul=11  block:mixed:ul+p+p=11  block:ol1=8  block:mixed:ul+p+p+ul=5  block:mixed:ul+p+p+p=3  block:mixed:ul+p+ul=2  block:mixed:p+ul+p+p+p=1  block:mixed:p+ul+p+ul+p+ul=1  block:mixed:p+ul+p+ul+p+ul+p+ul+p+ul=1  block:mixed:ul+p+p+p+p=1
+   paired block forms (gold → claude): ulN→ulN=675  ul1→ul1=467  none→none=197  p1→p1=157  none→ulN=145  ulN→none=69  p1→none=65  none→ul1=62  ulN→p1=47  p1→pN=44  ul1→ulN=40  ul1→none=32  ulN→pN=24  ulN→mixed:ul+p=20
+
+== prefix=AGH — pages 74: gold li 243 / Claude li 256 / pages gold>claude 2
+   gold  : list:ul=121  block:ulN=62  block:ul1=59  block:p1=9
+   claude: list:ul=110  block:ul1=54  block:ulN=54  list:ol=20  block:olN=12  block:ol1=8  block:mixed:ul+p=1
+   paired block forms (gold → claude): ulN→ulN=48  ul1→ul1=44  ulN→olN=12  p1→ul1=9  ul1→ol1=8  ul1→ulN=6  ulN→mixed:ul+p=1  ulN→ul1=1
+
+== prefix=ANZH — pages 58: gold li 425 / Claude li 117 / pages gold>claude 28
+   gold  : list:ul=150  block:mixed:p+ul=83  block:ulN=57  block:none=38  block:p1=22  block:ul1=9
+   claude: list:ul=38  block:ulN=34  block:p1=17  block:none=15  block:mixed:p+ul=3  block:mixed:ul+p+p+p=1  block:pN=1
+   paired block forms (gold → claude): none→ulN=14  ulN→ulN=12  ulN→p1=7  ulN→none=6  ul1→none=4  ul1→p1=4  p1→none=4  p1→p1=3  mixed:p+ul→mixed:p+ul=3  p1→ulN=1  ulN→mixed:ul+p+p+p=1  mixed:p+ul→none=1  mixed:p+ul→ulN=1
+
+== prefix=BLL — pages 107: gold li 1202 / Claude li 1231 / pages gold>claude 38
+   gold  : list:ul=281  block:none=230  block:ulN=187  block:p1=171  block:ul1=82  block:pN=3  block:mixed:p+ul=1
+   claude: block:none=270  list:ul=252  block:ulN=165  block:p1=148  block:ul1=72  block:pN=25  block:mixed:ul+p+p+ul=4  block:mixed:ul+p=2  block:mixed:ul+p+p=1
+   paired block forms (gold → claude): none→none=161  p1→p1=122  ulN→ulN=93  ul1→ul1=40  p1→none=35  ulN→none=34  none→ul1=25  ul1→none=25  none→ulN=25  ulN→p1=20  ulN→pN=11  none→pN=8  p1→pN=6  ul1→ulN=5
+
+== prefix=CEDK — pages 14: gold li 81 / Claude li 39 / pages gold>claude 6
+   gold  : list:ul=25  block:ulN=23  block:none=21  block:p1=7  block:pN=1  block:mixed:p+ul+p=1  block:mixed:ul+p=1
+   claude: list:ul=12  block:ulN=12  block:none=4  block:p1=3  block:pN=2
+   paired block forms (gold → claude): ulN→ulN=7  none→ulN=4  p1→p1=3  none→none=3  ulN→none=1  p1→ulN=1  pN→pN=1  p1→pN=1
+
+== prefix=CEDO — pages 34: gold li 118 / Claude li 112 / pages gold>claude 6
+   gold  : list:ul=41  block:ulN=38  block:none=14  block:p1=6  block:ul1=3
+   claude: list:ul=36  block:ulN=32  block:none=7  block:p1=5  block:pN=3  block:ul1=2  block:mixed:ul+p=1  block:mixed:p+ul=1
+   paired block forms (gold → claude): ulN→ulN=23  none→ulN=5  none→none=4  p1→p1=2  ulN→p1=1  p1→ul1=1  ulN→mixed:ul+p=1  p1→none=1  p1→pN=1  p1→ulN=1  ulN→none=1
+
+== prefix=CEDR — pages 14: gold li 95 / Claude li 101 / pages gold>claude 2
+   gold  : list:ul=25  block:mixed:p+ul=14  block:p1=11  block:ulN=11  block:none=3  block:pN=1
+   claude: list:ul=33  block:ulN=18  block:p1=5  block:none=5  block:mixed:ul+p=3  block:pN=3  block:mixed:ul+ul+p=2  block:mixed:ul+ul+p+p+p+p=1  block:mixed:p+ul+p=1  block:mixed:ul+p+p+p+p=1  block:mixed:ul+p+p+p+p+p+p+p+p=1  block:mixed:p+p+p+p+p+p+p+p+p+p+p+ul=1  block:mixed:p+ul+ul+p+p+p+p+p=1
+   paired block forms (gold → claude): mixed:p+ul→ulN=10  ulN→ulN=6  p1→p1=4  p1→mixed:ul+ul+p=2  p1→mixed:ul+p=2  none→none=2  pN→pN=1  p1→ulN=1  p1→mixed:ul+ul+p+p+p+p=1  p1→mixed:p+ul+p=1  ulN→none=1  ulN→mixed:ul+p+p+p+p=1  none→mixed:ul+p+p+p+p+p+p+p+p=1  ulN→pN=1
+
+== prefix=CEDT — pages 28: gold li 194 / Claude li 161 / pages gold>claude 10
+   gold  : list:ul=58  block:ulN=53  block:none=33  block:p1=27  block:ul1=5  block:pN=1
+   claude: list:ul=50  block:ulN=30  block:p1=14  block:none=9  block:pN=5  block:mixed:ul+ul+p=4  block:mixed:ul+p=4  block:ul1=3  block:mixed:ul+p+ul+p+ul=1  block:mixed:p+ul+p=1  block:mixed:p+ul=1
+   paired block forms (gold → claude): ulN→ulN=17  p1→p1=13  none→none=5  p1→mixed:ul+ul+p=4  p1→mixed:ul+p=4  ulN→none=3  none→ulN=3  p1→ulN=2  none→ul1=2  ul1→ulN=2  ulN→pN=1  none→mixed:ul+p+ul+p+ul=1  ulN→mixed:p+ul+p=1  ul1→ul1=1
+
+== prefix=CEDW — pages 13: gold li 64 / Claude li 49 / pages gold>claude 3
+   gold  : block:none=22  list:ul=20  block:ulN=17  block:p1=6  block:ul1=3
+   claude: list:ul=14  block:ulN=12  block:p1=7  block:none=4  block:ul1=2
+   paired block forms (gold → claude): none→ulN=7  p1→p1=4  ulN→ulN=4  none→p1=2  p1→none=2  none→ul1=2  ul1→none=1  ulN→none=1  ul1→ulN=1
+
+== prefix=ENGC — pages 54: gold li 290 / Claude li 297 / pages gold>claude 10
+   gold  : list:ul=115  block:ulN=78  block:ul1=37  block:none=17  block:p1=12  block:pN=1
+   claude: list:ul=110  block:ulN=78  block:ul1=25  block:none=17  block:p1=11  block:pN=8  block:mixed:p+p+ul=3  block:mixed:p+ul+p+p+p=1  block:mixed:ul+p=1  block:mixed:ul+p+ul=1
+   paired block forms (gold → claude): ulN→ulN=56  ul1→ul1=24  none→ulN=10  ulN→none=8  p1→p1=7  none→none=5  p1→none=4  ulN→p1=4  ul1→ulN=2  p1→pN=1  none→pN=1  pN→mixed:p+ul+p+p+p=1  ulN→mixed:ul+p=1  ulN→pN=1
+
+== prefix=ENGI — pages 81: gold li 595 / Claude li 469 / pages gold>claude 12
+   gold  : list:ul=194  block:ulN=142  block:p1=68  block:ul1=45  block:none=43  block:pN=17  block:mixed:p+ul=7
+   claude: list:ul=179  block:ulN=115  block:ul1=51  block:none=23  block:pN=22  block:p1=14  block:mixed:p+p+ul=5  block:mixed:ul+p=4  block:mixed:p+ul=3  block:mixed:ul+p+p+p=1
+   paired block forms (gold → claude): ulN→ulN=84  ul1→ul1=33  none→none=21  p1→pN=12  none→ulN=12  p1→p1=10  p1→ulN=7  p1→ul1=6  pN→pN=4  pN→ulN=4  ul1→ulN=3  ulN→none=2  ulN→pN=2  ulN→mixed:p+ul=2
+
+== prefix=ENGJ — pages 55: gold li 198 / Claude li 147 / pages gold>claude 7
+   gold  : list:ul=89  block:none=69  block:ulN=58  block:ul1=31  block:p1=15
+   claude: list:ul=76  block:ulN=43  block:ul1=33  block:none=9  block:p1=5  block:pN=1
+   paired block forms (gold → claude): ulN→ulN=19  none→ul1=18  none→ulN=17  ul1→ul1=12  none→none=9  ul1→ulN=7  p1→p1=5  ulN→ul1=2  ulN→pN=1  p1→ul1=1
+
+== prefix=ENGR — pages 46: gold li 184 / Claude li 125 / pages gold>claude 14
+   gold  : list:ul=89  block:ulN=47  block:ul1=37  block:none=14  block:mixed:ul+p=5  block:p1=4  block:pN=2
+   claude: list:ul=61  block:ulN=36  block:ul1=25  block:none=6  block:p1=3  block:pN=2
+   paired block forms (gold → claude): ulN→ulN=31  ul1→ul1=25  p1→none=2  ulN→none=2  ulN→p1=1  mixed:ul+p→p1=1  mixed:ul+p→ulN=1  pN→p1=1  pN→pN=1  mixed:ul+p→pN=1
+
+== prefix=ENGS — pages 52: gold li 289 / Claude li 269 / pages gold>claude 13
+   gold  : list:ul=110  block:ulN=83  block:none=52  block:ul1=22  block:p1=9  block:mixed:p+ul=4  block:pN=2
+   claude: list:ul=98  block:ulN=70  block:ul1=23  block:none=13  block:pN=10  block:p1=7  block:mixed:p+ul=3  block:mixed:p+p+ul=1
+   paired block forms (gold → claude): ulN→ulN=51  ul1→ul1=18  none→ulN=12  none→none=11  p1→p1=6  none→ul1=4  ulN→pN=3  ul1→ulN=3  p1→pN=3  pN→pN=2  mixed:p+ul→mixed:p+ul=2  ul1→p1=1  mixed:p+ul→mixed:p+p+ul=1  ulN→ul1=1
+
+== prefix=HES — pages 21: gold li 43 / Claude li 43 / pages gold>claude 0
+   gold  : list:ul=18  block:ulN=10  block:ul1=8
+   claude: list:ul=18  block:ulN=10  block:ul1=8
+   paired block forms (gold → claude): ulN→ulN=10  ul1→ul1=8
+
+== prefix=HIS — pages 77: gold li 197 / Claude li 131 / pages gold>claude 17
+   gold  : list:ul=100  block:ulN=81  block:ul1=19  block:none=7
+   claude: list:ul=69  block:ulN=46  block:ul1=14  block:mixed:ul+p=9  block:pN=1
+   paired block forms (gold → claude): ulN→ulN=45  ul1→ul1=13  ulN→mixed:ul+p=7  ul1→mixed:ul+p=2  none→ulN=1  ulN→ul1=1  ulN→pN=1
+
+== prefix=HPFUN — pages 15: gold li 136 / Claude li 136 / pages gold>claude 0
+   gold  : list:ul=30  block:ulN=30  block:none=28
+   claude: list:ul=30  block:none=30  block:ulN=30
+   paired block forms (gold → claude): ulN→ulN=29  none→none=28  ulN→none=1
+
+== prefix=MXDB — pages 30: gold li 219 / Claude li 107 / pages gold>claude 15
+   gold  : list:ul=81  block:ulN=54  block:none=33  block:p1=19  block:ul1=19
+   claude: list:ul=43  block:ulN=27  block:ul1=16  block:p1=13  block:pN=6  block:none=5
+   paired block forms (gold → claude): ulN→ulN=15  p1→p1=13  ul1→ul1=9  ulN→pN=6  none→none=5  none→ulN=5  ulN→ul1=4  ul1→ulN=2
+
+== prefix=MXDI — pages 31: gold li 47 / Claude li 8 / pages gold>claude 11
+   gold  : list:ul=28  block:ulN=15  block:ul1=13
+   claude: list:ul=6  block:ul1=4  block:ulN=2
+   paired block forms (gold → claude): ul1→ul1=4  ulN→ulN=2
+
+== prefix=MXEO — pages 34: gold li 68 / Claude li 51 / pages gold>claude 10
+   gold  : list:ul=40  block:ulN=21  block:ul1=19  block:none=16
+   claude: list:ul=32  block:ul1=17  block:ulN=15  block:none=2
+   paired block forms (gold → claude): ulN→ulN=9  ul1→ul1=6  none→ulN=5  none→ul1=3  ul1→ulN=1
+
+== prefix=MXEX — pages 24: gold li 91 / Claude li 56 / pages gold>claude 15
+   gold  : list:ul=43  block:ul1=23  block:ulN=20  block:none=11  block:p1=5
+   claude: list:ul=16  block:ulN=12  block:none=5  block:p1=2  block:mixed:p+ul=2  block:mixed:ul+p+p+ul=1  block:pN=1
+   paired block forms (gold → claude): ul1→ulN=4  p1→none=3  ulN→ulN=3  ulN→none=2  p1→p1=1  ulN→p1=1
+
+== prefix=MXFL — pages 84: gold li 581 / Claude li 320 / pages gold>claude 30
+   gold  : list:ul=176  block:ulN=120  block:p1=118  block:none=87  block:mixed:p+ul=30  block:ul1=26
+   claude: list:ul=84  block:ulN=70  block:pN=38  block:none=22  block:p1=13  block:ul1=9  block:mixed:p+ul=2  block:mixed:p+ul+p+ul+p+ul=1
+   paired block forms (gold → claude): ulN→ulN=42  none→ulN=21  p1→pN=20  p1→none=13  none→pN=9  ul1→pN=9  ulN→p1=9  ul1→ul1=6  ulN→none=4  ul1→none=3  p1→p1=2  ulN→ul1=2  mixed:p+ul→p1=1  none→mixed:p+ul=1
+
+== prefix=MXFU — pages 50: gold li 142 / Claude li 85 / pages gold>claude 21
+   gold  : list:ul=84  block:ul1=50  block:ulN=34
+   claude: list:ul=42  block:ulN=22  block:ul1=20
+   paired block forms (gold → claude): ulN→ulN=22  ul1→ul1=20
+
+== prefix=OSAH — pages 15: gold li 24 / Claude li 24 / pages gold>claude 0
+   gold  : list:ul=24  block:ul1=14
+   claude: list:ul=24  block:ul1=24
+   paired block forms (gold → claude): ul1→ul1=14
+
+== prefix=OSAI — pages 22: gold li 35 / Claude li 34 / pages gold>claude 1
+   gold  : list:ul=34  block:ul1=33  block:none=9  block:ulN=1
+   claude: list:ul=34  block:ul1=33  block:mixed:ul+p=1
+   paired block forms (gold → claude): ul1→ul1=26  none→ul1=6  ul1→mixed:ul+p=1  ulN→ul1=1
+
+== prefix=OSBY — pages 23: gold li 44 / Claude li 44 / pages gold>claude 0
+   gold  : list:ul=38  block:ul1=36  block:none=3  block:ulN=2  block:p1=1
+   claude: list:ul=38  block:ul1=36  block:none=2  block:ulN=2  block:pN=1
+   paired block forms (gold → claude): ul1→ul1=33  none→ul1=3  ulN→none=1  ulN→ulN=1  p1→none=1
+
+== prefix=OSGM — pages 22: gold li 34 / Claude li 34 / pages gold>claude 0
+   gold  : list:ul=34  block:ul1=34
+   claude: list:ul=34  block:ul1=34
+   paired block forms (gold → claude): ul1→ul1=34
+
+== prefix=OSOH — pages 23: gold li 36 / Claude li 36 / pages gold>claude 0
+   gold  : list:ul=36  block:ul1=36
+   claude: list:ul=36  block:ul1=36
+   paired block forms (gold → claude): ul1→ul1=36
+
+== prefix=OSSC — pages 15: gold li 24 / Claude li 6 / pages gold>claude 9
+   gold  : list:ul=24  block:ul1=24
+   claude: list:ul=6  block:ul1=6
+   paired block forms (gold → claude): ul1→ul1=6
+
+== prefix=OSSM — pages 10: gold li 0 / Claude li 8 / pages gold>claude 0
+   gold  : 
+   claude: list:ul=8  block:ul1=8
+   paired block forms (gold → claude): 
+
+== prefix=PES — pages 56: gold li 144 / Claude li 68 / pages gold>claude 26
+   gold  : list:ul=89  block:ulN=46  block:ul1=42
+   claude: list:ul=41  block:ulN=19  block:ul1=12  block:mixed:ul+p=4  block:none=3  block:mixed:ul+p+p=1
+   paired block forms (gold → claude): ulN→ulN=19  ul1→ul1=11  ul1→mixed:ul+p=2  ulN→mixed:ul+p=2  ul1→none=2  ul1→mixed:ul+p+p=1  ulN→none=1  ulN→ul1=1
+
+== prefix=SSCI — pages 10: gold li 0 / Claude li 29 / pages gold>claude 0
+   gold  : 
+   claude: list:ul=8  block:ulN=3  block:none=2  block:mixed:p+ul+p+ul+p+ul+p+ul+p+ul=1
+   paired block forms (gold → claude): 
+
+== prefix=SSOG — pages 13: gold li 139 / Claude li 25 / pages gold>claude 11
+   gold  : list:ul=39  block:ulN=31  block:none=10  block:ul1=3
+   claude: list:ul=7  block:ulN=6  block:none=4  block:p1=2  block:pN=2
+   paired block forms (gold → claude): ulN→p1=2  ulN→none=2  ulN→pN=1  ulN→ulN=1  none→pN=1  none→ulN=1
+
+== prefix=TEDC — pages 17: gold li 145 / Claude li 0 / pages gold>claude 15
+   gold  : list:ul=28  block:ulN=28
+   claude: 
+   paired block forms (gold → claude): 
+
+== prefix=XDLS — pages 73: gold li 260 / Claude li 168 / pages gold>claude 23
+   gold  : list:ul=85  block:ulN=39  block:mixed:ul+p=34  block:ul1=11  block:p1=4  list:ol=1  block:mixed:ul+p+p=1
+   claude: list:ul=55  block:ulN=16  block:mixed:ul+p+p=14  block:ul1=12  block:mixed:ul+p=10  block:mixed:ul+p+p+p=2  block:mixed:ul+p+p+p+p=1
+   paired block forms (gold → claude): ulN→ulN=16  mixed:ul+p→mixed:ul+p+p=13  ul1→ul1=11  mixed:ul+p→mixed:ul+p=5  ulN→mixed:ul+p=5  mixed:ul+p→mixed:ul+p+p+p=2  mixed:ul+p→mixed:ul+p+p+p+p=1  ulN→mixed:ul+p+p=1  ulN→ul1=1
+
+== prefix=XGF — pages 21: gold li 112 / Claude li 63 / pages gold>claude 9
+   gold  : list:ul=30  block:ulN=30  block:none=8  block:p1=6
+   claude: list:ul=13  block:ulN=13  block:none=12  block:p1=4  block:pN=2
+   paired block forms (gold → claude): ulN→none=7  none→ulN=6  ulN→ulN=4  p1→none=3  ulN→p1=3  p1→pN=2  none→none=2  p1→p1=1
+
+== prefix=XLP — pages 28: gold li 143 / Claude li 106 / pages gold>claude 8
+   gold  : list:ul=54  block:ulN=30  block:ul1=24  block:none=20  block:p1=1
+   claude: list:ul=41  block:ulN=20  block:ul1=15  block:none=12  block:p1=6  block:mixed:ul+p=3  block:mixed:p+p+ul=1  block:mixed:ul+p+ul=1  block:pN=1
+   paired block forms (gold → claude): ul1→ul1=14  ulN→ulN=13  none→none=7  none→ulN=3  ulN→none=2  ul1→mixed:ul+p=2  ulN→mixed:ul+p=1  p1→none=1  ulN→p1=1  ulN→ul1=1  ul1→ulN=1  none→p1=1
+
+== prefix=XMES — pages 32: gold li 131 / Claude li 158 / pages gold>claude 2
+   gold  : list:ul=54  block:ulN=33  block:ul1=21
+   claude: list:ul=55  block:ulN=35  block:ul1=15  list:ol=2  block:olN=2
+   paired block forms (gold → claude): ulN→ulN=32  ul1→ul1=15  ul1→ulN=3  ul1→olN=2
+
+== prefix=XTAS — pages 14: gold li 57 / Claude li 45 / pages gold>claude 2
+   gold  : list:ul=22  block:ulN=16  block:ul1=6
+   claude: list:ul=18  block:ulN=12  block:ul1=6
+   paired block forms (gold → claude): ulN→ulN=12  ul1→ul1=6
+
+== examples of the swapped pairs ==
+   none→ulN (158): ANZH101_0_0 ANZH101_0_0 ANZH101_1_0 ANZH101_1_0
+   ulN→none (88): ANZH105_0_0 ANZH105_0_0 ANZH203_0_0 ANZH203_0_0
+   p1→none (71): ANZH104_0_0 ANZH105_0_0 ANZH203_0_0 ANZH205_0_0
+   none→ul1 (71): BLL111_0_0 BLL112_0_0 BLL113_0_0 BLL120_0_0
+   ulN→p1 (52): ANZH101_0_0 ANZH101_1_0 ANZH101_2_0 ANZH101_3_0
+   p1→pN (47): BLL123_0_0 BLL130_0_0 BLL132_0_0 BLL133_0_0
+   ul1→ulN (43): AGH1004_1_0 AGH1006_5_0 AGH1006_5_0 AGH1007_3_0
+   ul1→none (36): ANZH101_0_0 ANZH101_1_0 ANZH101_2_0 ANZH101_3_0
+   ulN→pN (34): BLL126_0_0 BLL127_0_0 BLL136_0_0 BLL137_0_0
+   none→pN (24): ARFUN02_0_0 ARFUN03_0_0 ARFUN05_0_0 BLL125_0_0
+   p1→ul1 (21): AGH1001_1_0 AGH1001_2_0 AGH1001_3_0 AGH1001_4_0
+   ulN→mixed:ul+p (21): AGH1003_3_0 BLL213_0_0 BLL214_0_0 CEDO202_0_0
+   ulN→ul1 (19): AGH1007_7_0 BLL116_0_0 BLL173_0_0 ENFUN04_0_0
+   p1→ulN (16): ANZH104_0_0 BLL145_0_0 CEDK101_0_0 CEDO301_0_0
+   ulN→olN (15): AGH1001_1_0 AGH1001_2_0 AGH1001_3_0 AGH1004_1_0
+   mixed:ul+p→mixed:ul+p+p (13): XDLS903_1_0 XDLS903_3_0 XDLS903_4_0 XDLS903_5_0
+   mixed:p+ul→ulN (12): ANZH401_0_0 CEDR501_1_0 CEDR501_1_0 CEDR501_3_0
+   none→p1 (11): ARFUN02_0_0 ARFUN03_0_0 BLL120_0_0 CEDT404_0_0
+   ul1→pN (10): ENGC202_0_0 MXFL201_1_0 MXFL201_2_0 MXFL201_3_0
+   ul1→p1 (9): ANZH101_0_0 ANZH101_1_0 ANZH101_2_0 ANZH101_3_0
+   ul1→ol1 (8): AGH1005_3_0 AGH1005_4_0 AGH1005_5_0 AGH1005_6_0
+   p1→mixed:ul+p (7): CEDR201_0_0 CEDR301_0_0 CEDT201_0_0 CEDT202_0_0
+   ul1→mixed:ul+p (7): HIS1005_6_0 HIS1005_8_0 OSAI101_1_0 PES1002_2_0
+   p1→mixed:ul+ul+p (6): CEDR201_0_0 CEDR301_0_0 CEDT201_0_0 CEDT202_0_0
+   pN→ulN (6): CEDT404_0_0 ENGI202_1_0 ENGI202_1_0 ENGI202_5_0

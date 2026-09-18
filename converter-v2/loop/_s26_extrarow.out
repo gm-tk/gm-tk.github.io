@@ -1,0 +1,154 @@
+pages scored ≥ 0.6: 716; Claude EXTRA rows whose text all matched: 284
+
+== by (row's first text tag · what precedes the row on Claude · the gold's wrapper of that text) — rows · pages · modules ==
+    32  p= 32 m= 32  ('p', 'closed-by:p', 'gold-wrap:div.row>div.col-12.col-md-8')
+           CEDW101_0_0 «Manaakitanga is when we show love, kindness, » gold-prev=p:«If kindness is sown, then kind»
+           CEDW501_1_0 «Ko au te whenua, ko te whenua ko au.» gold-prev=p:«Tikanga is underpinned by Māor»
+    15  p= 15 m= 15  ('h3', 'closed-by:h3', 'gold-wrap:div.row>div.col-12')
+           BLL111_0_0 «Introduction» gold-prev=li:«complete vocabulary activities»
+           BLL114_0_0 «Introduction» gold-prev=li:«Match a word to its sound.»
+    14  p= 13 m= 13  ('h3', 'closed-by:p', 'gold-wrap:div.row>div.col-12.col-md-8')
+           AGH1003_5_0 «Adding Lime» gold-prev=p:«Dolomite lime can also be used»
+           AGH1006_7_0 «Types of Fertiliser» gold-prev=p:«Nutrients are especially impor»
+    13  p= 11 m= 11  ('p', 'closed-by:div.alert', 'gold-wrap:div.row>div.col-12.col-md-8')
+           ANZH303_4_0 «Māori interactions with Europeans continued t» gold-prev=p:«In this lesson we are learning»
+           CEDT501_6_1 «need a longer answer and usually ask for an e» gold-prev=b:«Are you feeling okay?»
+     7  p=  7 m=  7  ('p', 'closed-by:p', 'gold-wrap:div.row>div.col-12.col-md-8>div.row>div.col-12')
+           AGH1002_5_0 «pH doesn’t affect the nutrient status, or amo» gold-prev=p:«The pH of a soil impacts the n»
+           CEDR501_1_0 «means an agreed or official way of doing some» gold-prev=p:«Formal interviews are differen»
+     7  p=  7 m=  7  ('p', 'closed-by:p', 'gold-wrap:(text not on gold page)')
+           CEDO105_5_0 «Safety comes first. If following the instruct» gold-prev=-:«»
+           OSBY501_0_0 «In today’s digital world, our lives are incre» gold-prev=-:«»
+     7  p=  3 m=  3  ('h4', 'closed-by:h3', 'gold-wrap:div.row>div.col-12.col-md-8')
+           CHFUN01_0_0 «What is Chinese Calligraphy?» gold-prev=h3:«Chinese characters and calligr»
+           CHFUN01_0_0 «Why use hand gestures for Chinese numbers?» gold-prev=h3:«Chinese number hand gestures»
+     6  p=  6 m=  6  ('h3', 'closed-by:div.buttonD', 'gold-wrap:div.row>div.col-12.col-md-8>div.row>div.col-12')
+           BLL123_2_0 «Sorting Game - Hats vs Caps» gold-prev=p:«Don’t forget to start your sen»
+           BLL125_1_0 «Memory Game» gold-prev=p:«Remember to start your sentenc»
+     5  p=  5 m=  5  ('p', 'closed-by:div.alert.solid', 'gold-wrap:div.row>div.col-12.col-md-8')
+           AGH1002_5_0 «The chart below shows how nutrients change at» gold-prev=p:«pH doesn’t affect the nutrient»
+           CEDR501_1_0 «Informal interviews are more relaxed and feel» gold-prev=b:«Procedure»
+     5  p=  5 m=  5  ('h3', 'closed-by:(none)', 'gold-wrap:div.row>div.col-12.col-md-8>div.row>div.col-12')
+           ANZH105_1_0 «Multi-choice learning» gold-prev=p:«Designer note: video cannot be»
+           BLL231_1_0 «Memory Game» gold-prev=p:«For example, pain and crane st»
+     5  p=  5 m=  5  ('h3', 'closed-by:WIDGET', 'gold-wrap:div.row>div.col-12.col-md-8>div.row>div.col-12')
+           BLL156_1_0 «Reading Revision» gold-prev=span:«z, w, v, ng, oo»
+           BLL175_1_0 «Speed Reading» gold-prev=p:«Now let’s look at the suffix ‘»
+     5  p=  5 m=  5  ('h3', 'closed-by:WIDGET', 'gold-wrap:div.row>div.col-12.col-md-8')
+           BLLR201_5_0 «Stop and check your understanding» gold-prev=p:«Read the first part of the sto»
+           ENGC202_1_0 «Where do we find instructions?» gold-prev=p:«Not like the pictures below!»
+     4  p=  4 m=  4  ('h3', 'closed-by:h3', 'gold-wrap:(text not on gold page)')
+           AGH1005_1_0 «What are the Mauri Model concepts shared in t» gold-prev=-:«»
+           BLL115_0_0 «animation?» gold-prev=-:«»
+     4  p=  4 m=  3  ('p', 'closed-by:div.button', 'gold-wrap:div.row>div.col-12.col-md-8')
+           CEDO501_5_0 «In this lesson, you’ll build on the internet » gold-prev=li:«apply the PROMPT framework to »
+           CEDR501_1_0 «A formal interview is a planned meeting where» gold-prev=li:«explain the needs and expectat»
+     4  p=  4 m=  4  ('p', 'closed-by:(none)', 'gold-wrap:div.row>div.col-12.col-md-8')
+           CEDO502_0_0 «He kai kei aku ringa.» gold-prev=span:«Making More Decisions»
+           OSOH401_2_0 «If you want to go ‘next level’ in creating a » gold-prev=li:«sharing personal information a»
+     4  p=  4 m=  4  ('p', 'closed-by:a', 'gold-wrap:div.row>div.col-12.col-md-8')
+           CHFUN04_0_0 «Watch these videos for more on the meaning of» gold-prev=b:«white is linked to mourning»
+           ENGS202_4_0 «Here are some landmarks that we can see in Ta» gold-prev=p:«If you have not learned about »
+     4  p=  2 m=  2  ('p', 'closed-by:h3', 'gold-wrap:div.row>div.col-12.col-md-8')
+           ENGI400_2_0 «Writing is a good way of sharing our knowledg» gold-prev=h2:«Growing our writing skills»
+           PES1007_10_0 «A chilly bin is designed to keep food cold, t» gold-prev=h3:«A chilly bin»
+     4  p=  3 m=  3  ('h3', 'closed-by:div.activity', 'gold-wrap:div.row>div.col-12.col-md-8>div.row>div.col-12')
+           MXDI103_1_0 «Ordering numbers» gold-prev=a:«Go to journal»
+           MXDI201_10_0 «Ordering numbers in millions» gold-prev=p:«The following numbers are all »
+     4  p=  4 m=  2  ('h3', 'closed-by:iframe', 'gold-wrap:div.row>div.col-12.col-md-8')
+           MXEO201_2_0 «What is Perimeter?» gold-prev=p:«Watch this clip to find out mo»
+           MXEO201_4_0 «What is a Polygon?» gold-prev=p:«Watch this clip to find out mo»
+     4  p=  3 m=  3  ('h4', 'closed-by:p', 'gold-wrap:div.row>div.col-12.col-md-8')
+           MXEO201_2_0 «Calculating the Perimeter of Rectangles» gold-prev=p:«Perimeter is the distance arou»
+           OSAI401_1_0 «What is Generative AI and LLM (Large Language» gold-prev=p:«For education purposes, many u»
+     3  p=  3 m=  3  ('h3', 'closed-by:p', 'gold-wrap:div.row>div.col-12')
+           AGH1002_5_0 «Types of nutrients.» gold-prev=p:«Nutrient status is impacted by»
+           PHE1006_2_0 «Types of influences» gold-prev=p:«There are lots of things that »
+     3  p=  3 m=  3  ('h3', 'closed-by:div.alert', 'gold-wrap:div.row>div.col-12.col-md-8')
+           ANZH304_2_0 «The British Crown and mana» gold-prev=p:«If someone has strong mana, it»
+           OSGM201_1_0 «Why game?» gold-prev=p:«Always password protect your d»
+     3  p=  1 m=  1  ('p', 'closed-by:p', 'gold-wrap:div.row.supervisor>div.col-12.col-md-8')
+           BLL210_0_0 «In this section we will be learning all about» gold-prev=p:«Some ākonga need more practise»
+           BLL210_0_0 «In this section we will be learning all about» gold-prev=p:«Some ākonga need more practise»
+     3  p=  3 m=  3  ('h3', 'closed-by:p', 'gold-wrap:div.row>div.col-12.col-md-8>div.row>div.col-12')
+           BLL217_1_0 «Writing words» gold-prev=p:«Listen to each word on the aud»
+           ENGI400_1_0 «– What’s important to me» gold-prev=p:«Below is the first journal act»
+     3  p=  3 m=  2  ('h2', 'closed-by:WIDGET', 'gold-wrap:div.row>div.col-12.col-md-8')
+           CEDR501_1_0 «Why interviews happen» gold-prev=p:«A formal interview is a planne»
+           CEDR501_5_0 «Asking for clarification» gold-prev=p:«Read each interview question a»
+     3  p=  3 m=  3  ('h3', 'closed-by:table.table.table-bordered', 'gold-wrap:div.row>div.col-12.col-md-8')
+           CEDR501_1_0 «Features of formal interviews» gold-prev=b:«hui»
+           MXDB102_1_0 «Shapes» gold-prev=p:«Drag the shapes into the corre»
+     3  p=  3 m=  3  ('p', 'closed-by:h3', 'gold-wrap:div.row>div.col-12.col-md-8.paddingR')
+           CEDR501_5_0 «When you act with mana (integrity), show fair» gold-prev=h3:«Behaviours and Te Tiriti o Wai»
+           ENGI303_6_0 «Chronological connectives are words that help» gold-prev=h3:«Chronological connectives»
+     2  p=  2 m=  2  ('p', 'closed-by:li', 'gold-wrap:div.row>div.col-12.col-md-8>div.row>div.col-12')
+           AGH1003_5_0 «Other than carbon, lime adds NO nutrients to » gold-prev=li:«soil texture.»
+           HPRE203_6_0 «Remember: your digital footprint is something» gold-prev=li:«be a good digital citizen.»
+     2  p=  2 m=  2  ('h3', 'closed-by:WIDGET', 'gold-wrap:div.row.supervisor>div.col-12.col-md-8>div.row>div.col-12')
+           BLL115_2_0 «Writing ‘and’» gold-prev=p:«The purpose of this activity i»
+           BLL226_2_0 «Kite arts and crafts» gold-prev=i:«The Kite Flying Contest»
+     2  p=  1 m=  1  ('p', 'closed-by:p', 'gold-wrap:div.row.supervisor>div.col-12.col-md-8.super-content-button')
+           BLL210_0_0 «In this section we will be learning all about» gold-prev=p:«Some ākonga need more practise»
+           BLL210_0_0 «In this section we will be learning all about» gold-prev=p:«Some ākonga need more practise»
+     2  p=  2 m=  2  ('h3', 'closed-by:table.table.table-bordered', 'gold-wrap:div.row>div.col-12.col-md-8>div.row>div.col-12')
+           BLL234_1_0 «Suffix memory game» gold-prev=li:«sickness»
+           XMES203_2_0 «Sign language» gold-prev=p:«Let's try this in te reo Māori»
+     2  p=  1 m=  1  ('p', 'closed-by:div.activity', 'gold-wrap:div.row>div.col-6.col-md-4.offset-3.offset-md-0')
+           BLL234_2_0 «New Zealand Sign language is an official lang» gold-prev=p:«The story we are going to read»
+           BLL234_2_0 «Remember, speech marks are only used around t» gold-prev=p:«Some of these sentences below »
+     2  p=  1 m=  1  ('p', 'closed-by:(none)', 'gold-wrap:div.row>div.col-6.col-md-4.offset-3.offset-md-0')
+           BLL234_2_0 «New Zealand Sign language is an official lang» gold-prev=p:«The story we are going to read»
+           BLL234_2_0 «Remember, speech marks are only used around t» gold-prev=p:«Some of these sentences below »
+     2  p=  2 m=  1  ('h3', 'closed-by:i', 'gold-wrap:div.row>div.col-12.col-md-8')
+           BLLR201_5_0 «Learning about the plan and actions» gold-prev=i:«After the Storm»
+           BLLR201_6_0 «Retelling a story» gold-prev=i:«After the Storm»
+     2  p=  2 m=  2  ('h3', 'closed-by:iframe', 'gold-wrap:div.row>div.col-12.col-md-8>div.row>div.col-12')
+           CEDW101_0_0 «Activities» gold-prev=li:«You were kind to someone else.»
+           MXEO202_2_0 «Triangles and angles» gold-prev=li:«A reflex angle is more than 18»
+     2  p=  2 m=  2  ('h3', 'closed-by:h4', 'gold-wrap:div.row>div.col-12.col-md-8>div.row>div.col-12')
+           ENGC102_2_0 «Subheadings» gold-prev=a:«Go to journal»
+           OSOH101_3_0 «Kind words build mana» gold-prev=h5:«Josie’s mana meter AFTER»
+     2  p=  2 m=  2  ('h3', 'closed-by:p', 'gold-wrap:div.row>div.col-12.col-md-8.paddingR')
+           ENGS201_3_0 «Winston Reid» gold-prev=p:«When we write about someone’s »
+           MXDB302_8_0 «Multiplying decimals» gold-prev=p:«When it comes to multiplying a»
+     2  p=  2 m=  2  ('p', 'closed-by:p', 'gold-wrap:div.row>div.col-12.col-md-8.paddingR')
+           ENGS201_5_0 «Watch the video to see how these measurements» gold-prev=p:«Click each of the cards to see»
+           ENGS401_4_0 «is inherited at birth through ancestry/whakap» gold-prev=p:«The concept of ‘mana’ is a key»
+     2  p=  2 m=  2  ('h3', 'closed-by:(none)', 'gold-wrap:div.row>div.col-12.col-md-8>div.row>div.col-12.col-md-12')
+           ENGS401_4_0 «Interpreting actions» gold-prev=p:«Sometimes in movies, especiall»
+           OSGM101_1_0 «What have you learned about gaming?» gold-prev=p:«Gaming offline is safer. You c»
+     2  p=  2 m=  2  ('p', 'closed-by:div.alert.solid', 'gold-wrap:(text not on gold page)')
+           HIS1006_8_0 «This Engineering School tradition had been ha» gold-prev=-:«»
+           HIS1007_2_0 «After the introduction of the White Australia» gold-prev=-:«»
+
+== by the row's first text tag alone ==
+   129  m= 91  h3
+   126  m= 77  p
+    20  m= 13  h4
+     6  m=  3  h2
+     2  m=  1  li
+     1  m=  1  h5
+
+== by what precedes the row on Claude ==
+    90  m= 69  closed-by:p
+    35  m= 29  closed-by:h3
+    32  m= 30  closed-by:WIDGET
+    21  m= 17  closed-by:div.alert
+    16  m= 15  closed-by:(none)
+    12  m=  8  closed-by:iframe
+    11  m=  9  closed-by:div.activity
+     9  m=  9  closed-by:a
+     8  m=  6  closed-by:div.button
+     8  m=  8  closed-by:img.img-fluid
+     7  m=  7  closed-by:div.alert.solid
+     6  m=  6  closed-by:div.buttonD
+     6  m=  5  closed-by:table.table.table-bordered
+     5  m=  5  closed-by:li
+     5  m=  3  closed-by:i
+     4  m=  4  closed-by:b
+     3  m=  3  closed-by:span
+     2  m=  2  closed-by:h4
+     2  m=  2  closed-by:audio.audioPlayer.icon
+     1  m=  1  closed-by:div.alertActivity
+     1  m=  1  closed-by:h2

@@ -534,6 +534,20 @@
 			"thought"
 		],
 		"flowing_tags_note": "ROUND 51: these callouts are NOT self-contained own-row boxes (unlike alert/important) — the human renders them as classed paragraphs that FLOW into the current section row (the page-start quote opens the row and the intro flows in). ContentConverter row-groups them as 'block' (flow) and skips the after-breakRow.",
+		"flow_after_tags": {
+			"enabled": true,
+			"env": "WHFLOW_OFF",
+			"tags": [
+				"whakatauki"
+			],
+			"templates": [
+				"Standard"
+			],
+			"exclude_subjects": [
+				"NCEA1"
+			],
+			"_doc": "ROUND 387 (the autonomous loop's session 26 Round 1 — the score-band ledger + the extended after-block census, outputs/_s26_after2.py / _s26_before2.py / _s26_whpair.py). A whakataukī box OPENS its column (gold FIRST-in-column 0.78 — the break BEFORE it stands) but does NOT close it: the writer's commentary paragraph after the proverb flows on INSIDE the same col-md-8 (gold followed-on 0.70 over 81 Standard boxes / 57 pages / 51 modules; PAIRED to the gold's rendering of the very next text: FLOW 35 / BREAK 8 = 0.81 on 35 pages / 35 modules — Online Safety 24 / 2, Leaving to Learn 4 / 1, ConnectED 3 / 0). The r51 'after' rule (callout_close → breakRow) was right for every other box (alert 0.74 LAST, alert.solid 0.90, alert.top 0.97, alertActivity 0.99, activity 1.00) and wrong for this one. A listed tag skips the after-box breakRow at BOTH emit sites (the strict box and the CONTAINER_CLOSE of a spanning box) when the module's Module_Structure_Index template_type is listed and its subject is not excluded: NCEA1 excluded (paired 1 / 3 — the HIS 'The whakataukī chosen for this module…' paragraph opens a gold row; census 0.56 = a tie), Inquiry / Bilingual not listed (gold LAST 5 / 5 each). KB 05D gives the box form only; no KB rule on the row after it — authority LOOP §1b level 3 / 4. Structure-only, derivable by construction. Env WHFLOW_OFF = the r386 output."
+		},
 		"containment": {
 			"rule": "STRICT BY DEFAULT — a callout holds ONLY its own content run: the embedded payload plus the black text following its marker, up to the NEXT tag span (the project's core marker model, §1.1: 'the marker's content is the black text that follows it, up to the next marker'). The next [body]/[video]/[image]/heading tag is NEVER inside the callout. ONE exception: when the writer placed an explicit matching [end X] further ahead, the box deliberately spans — everything until that close stays inside.",
 			"evidence": "Measured across all 2,045 human pages (12/06/26): .whakatauki direct children are ONLY <p> (median 2, n=181) — never the following body/video (the OSAI201 over-nesting bug). Large .alert boxes with media inside exist (median direct <p> 0, div-heavy) and correspond to deliberately spanned boxes — the explicit-close pathway.",

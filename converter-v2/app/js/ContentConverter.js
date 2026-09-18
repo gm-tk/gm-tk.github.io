@@ -3102,7 +3102,8 @@ class ContentConverter {
 					if (!spans) {
 						// strict BOXED callout: the box is already complete — fresh row next.
 						// A FLOWING callout (quote/thought) does NOT break — the intro flows into its row.
-						if (!flowingCallout && !stack.length) breakRow();
+						// ROUND 387: a flow_after_tags box (the whakataukī) keeps its column open — #flowsAfter
+						if (!flowingCallout && !stack.length && !this.#flowsAfter(primary.tag, run)) breakRow();
 						// its following text run was consumed into the box
 						while (bodyItems[i + 1]?._consumed) i++;
 					}
@@ -3139,7 +3140,8 @@ class ContentConverter {
 						}
 						// content after a closed callout/activity starts a
 						// fresh row (corpus convention — data knob)
-						if (!stack.length && rowCfg.after.includes(
+						// ROUND 387: a flow_after_tags box (the whakataukī) keeps its column open — #flowsAfter
+						if (!stack.length && !this.#flowsAfter(top.tag, run) && rowCfg.after.includes(
 							top.tag === "activity" ? "activity_close" : "callout_close")) breakRow();
 					} else {
 						// close without an open: ignore gracefully + surface
@@ -7634,6 +7636,29 @@ class ContentConverter {
 		if (_txt) inner.push(...deBold(ListsAndRuns.renderBlackText(_txt, run, it.block?.links)));
 		const box = `${def.open}\n${inner.join("\n")}\n${def.close}`;
 		return `<div class="${def.side_column}">\n${[...pre, box].join("\n")}\n</div>`;
+	}
+
+	// ROUND 387 (the autonomous loop's session 26 Round 1) — a callout that does NOT close its
+	// column. The r51 `row_breaks.after` rule closes the section row after every boxed callout;
+	// measured on today's corpus (outputs/_s26_after2.py) that is the gold's own form for every
+	// box but the whakataukī, whose commentary paragraph flows on INSIDE the same col-md-8 (gold
+	// 0.70 over 81 Standard boxes; paired to the very next text 0.81 on 35 pages / 35 modules).
+	// The break BEFORE the box stands (gold FIRST-in-column 0.78). Data
+	// callouts.flow_after_tags {enabled, env, tags, templates, exclude_subjects}: a listed tag
+	// skips the after-box breakRow when the module's Module_Structure_Index template_type is
+	// listed (an unknown module keeps the r51 break) and its subject is not excluded (NCEA1 —
+	// the HIS 'The whakataukī chosen for this module…' paragraph opens a gold row). Env
+	// WHFLOW_OFF = the r386 output.
+	static #flowsAfter(tag, run) {
+		const cfg = DataService.Data.EmitTemplates?.callouts?.flow_after_tags;
+		if (!cfg || cfg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "WHFLOW_OFF"]) return false;
+		if (!(cfg.tags ?? []).some((t) => String(t) === String(tag))) return false;
+		const meta = DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")];
+		if (!meta) return false;
+		if ((cfg.templates ?? []).length && !(cfg.templates ?? []).some((t) => String(t) === String(meta.template_type ?? ""))) return false;
+		if ((cfg.exclude_subjects ?? []).some((sub) => String(sub) === String(meta.subject ?? ""))) return false;
+		return true;
 	}
 
 	static #calloutOpen(it, bodyItems, i, stack, run, spans, wrapStructured = false) {

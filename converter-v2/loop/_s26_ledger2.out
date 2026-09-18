@@ -1,0 +1,1005 @@
+
+== ALL — pages 1963: total loss 47.94pp (mean score ≈ 52.1)
+     7.28pp  pages  3373   wrapper-empty
+     5.58pp  pages  3095   alignment-residue
+     5.29pp  pages  2693   chrome
+     3.76pp  pages  1603   editorial-gold
+     3.51pp  pages  1612   editorial-claude
+     2.40pp  pages  1892   wrapper-of-container-shift
+     2.18pp  pages  1221   wrapper-of-editorial-gold
+     2.10pp  pages  2547   widget-line
+     2.01pp  pages  2363   merged-split
+     1.49pp  pages  1615   wrapper-of-alignment-residue
+     1.44pp  pages  1456   wrapper-of-widget-line
+     1.39pp  pages  1102   wrapper-of-editorial-claude
+     1.35pp  pages   878   container-shift:activity->widget
+     1.33pp  pages  2133   wrapper-form
+     1.21pp  pages   725   container-shift:free->widget
+     1.15pp  pages  1655   tag-swap
+   by REGION (region · direction):
+      13.59pp  ('body', 'MISSING')
+      12.54pp  ('body', 'EXTRA')
+      10.51pp  ('activity', 'MISSING')
+       5.56pp  ('activity', 'EXTRA')
+       2.28pp  ('module-menu', 'MISSING')
+       1.34pp  ('module-menu', 'EXTRA')
+       0.49pp  ('footer', 'EXTRA')
+       0.47pp  ('footer', 'MISSING')
+       0.31pp  ('root', 'EXTRA')
+       0.28pp  ('acks', 'EXTRA')
+       0.22pp  ('root', 'MISSING')
+       0.18pp  ('acks', 'MISSING')
+       0.13pp  ('title', 'MISSING')
+       0.02pp  ('crumbs', 'MISSING')
+   top detail rows (family · direction · region · container · signature) — pp · pages · modules:
+       0.82pp  p= 886 m=284  ('editorial-claude', 'EXTRA', 'body', 'free', 'p')
+       0.72pp  p= 998 m=359  ('widget-line', 'MISSING', 'activity', 'activity', 'WIDGET')
+       0.67pp  p= 503 m=155  ('chrome', 'MISSING', 'module-menu', 'free', 'li')
+       0.55pp  p= 759 m=211  ('widget-line', 'MISSING', 'body', 'free', 'WIDGET')
+       0.52pp  p= 853 m=330  ('editorial-gold', 'MISSING', 'activity', 'activity', 'p')
+       0.50pp  p= 619 m=282  ('editorial-claude', 'EXTRA', 'activity', 'activity', 'p')
+       0.48pp  p= 590 m=210  ('editorial-gold', 'MISSING', 'body', 'free', 'p')
+       0.41pp  p= 649 m=227  ('wrapper-empty', 'MISSING', 'body', 'free', 'img.img-fluid')
+       0.40pp  p= 335 m=143  ('wrapper-empty', 'MISSING', 'body', 'free', 'br')
+       0.39pp  p= 716 m=242  ('alignment-residue', 'EXTRA', 'body', 'free', 'p')
+       0.38pp  p= 626 m=219  ('widget-line', 'EXTRA', 'body', 'free', 'WIDGET')
+       0.34pp  p= 805 m=326  ('widget-line', 'EXTRA', 'activity', 'activity', 'WIDGET')
+       0.34pp  p= 617 m=210  ('merged-split', 'EXTRA', 'body', 'free', 'p')
+       0.34pp  p= 787 m=249  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'div.button')
+       0.33pp  p= 811 m=254  ('alignment-residue', 'MISSING', 'body', 'free', 'div.col-12.col-md-8')
+       0.33pp  p= 809 m=257  ('alignment-residue', 'MISSING', 'body', 'free', 'div.row')
+       0.32pp  p= 794 m=254  ('alignment-residue', 'EXTRA', 'body', 'free', 'div.row')
+       0.32pp  p= 777 m=252  ('alignment-residue', 'EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.31pp  p= 755 m=247  ('editorial-gold', 'MISSING', 'activity', 'activity', 'a')
+       0.31pp  p= 545 m=194  ('chrome', 'MISSING', 'module-menu', 'free', 'p')
+       0.31pp  p= 435 m=241  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'img.img-fluid')
+       0.30pp  p= 182 m= 81  ('chrome', 'EXTRA', 'module-menu', 'free', 'li')
+       0.30pp  p= 442 m=231  ('chrome', 'EXTRA', 'module-menu', 'free', 'h5')
+       0.30pp  p= 576 m=225  ('alignment-residue', 'MISSING', 'body', 'free', 'p')
+       0.28pp  p= 580 m=256  ('wrapper-of-editorial-claude', 'EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.27pp  p= 534 m=227  ('editorial-claude', 'EXTRA', 'body', 'free', 'a')
+       0.27pp  p= 594 m=299  ('merged-split', 'MISSING', 'activity', 'activity', 'p')
+       0.27pp  p= 600 m=252  ('editorial-gold', 'MISSING', 'activity', 'activity', 'h3')
+       0.26pp  p= 497 m=181  ('wrapper-empty', 'EXTRA', 'body', 'free', 'img.img-fluid')
+       0.26pp  p= 487 m=243  ('alignment-residue', 'EXTRA', 'activity', 'activity', 'p')
+       0.26pp  p= 487 m=243  ('alignment-residue', 'MISSING', 'activity', 'activity', 'p')
+       0.25pp  p= 478 m=128  ('chrome', 'MISSING', 'module-menu', 'free', 'ul')
+       0.25pp  p= 476 m=233  ('wrapper-of-editorial-claude', 'EXTRA', 'body', 'free', 'div.row')
+       0.24pp  p= 106 m= 81  ('container-shift:activity->widget', 'MISSING', 'activity', 'activity', 'td')
+       0.24pp  p= 345 m=175  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'br')
+       0.23pp  p= 489 m=191  ('merged-split', 'MISSING', 'body', 'free', 'p')
+       0.23pp  p= 205 m=108  ('editorial-claude', 'EXTRA', 'body', 'free', 'td')
+       0.22pp  p= 385 m=205  ('editorial-claude', 'EXTRA', 'body', 'free', 'b')
+       0.22pp  p= 229 m=155  ('editorial-gold', 'MISSING', 'activity', 'activity', 'li')
+       0.21pp  p= 197 m=117  ('editorial-claude', 'EXTRA', 'body', 'free', 'li')
+   CHROME split (direction · region · signature) — pp · pages · modules · examples:
+       0.68pp  p= 520 m=165  ('MISSING', 'module-menu', 'li')  AGH1003:I can justify the use of key management practices due to the; AGH1007:to identify the connection between animals and their taiao (
+       0.36pp  p= 606 m=243  ('MISSING', 'module-menu', 'p')  AGH1001:Identify and describe New Zealand agricultural and horticult; AGH1001:Explain the significance of agricultural and horticultural p
+       0.32pp  p= 201 m= 93  ('EXTRA', 'module-menu', 'li')  AGH1001:to identify and describe New Zealand Agricultural and Hortic; AGH1001:to explain the significance of Agricultural and Horticultura
+       0.31pp  p= 452 m=240  ('EXTRA', 'module-menu', 'h5')  AGH1005:We are learning:; AGH1008:We are learning:
+       0.26pp  p= 504 m=144  ('MISSING', 'module-menu', 'ul')  
+       0.19pp  p= 433 m=218  ('EXTRA', 'footer', 'li')  
+       0.18pp  p= 217 m= 84  ('MISSING', 'module-menu', 'span')  ANZH101:Learning intentions; ANZH101:How will I know if I’ve learned it?
+       0.18pp  p= 424 m=230  ('MISSING', 'footer', 'li')  BLL236:Home
+       0.18pp  p= 215 m=136  ('EXTRA', 'module-menu', 'p')  AGH1003:I can justify the use of key management practices due to the; ANZH101:Māori history is the foundational and continuous history of 
+       0.17pp  p= 362 m= 84  ('MISSING', 'module-menu', 'h5')  AGH1004:We are learning to:; ARFUN01:Learning intentions
+       0.17pp  p= 173 m= 39  ('MISSING', 'module-menu', 'h3')  ANZH101:Understand; ANZH101:Know
+       0.15pp  p= 372 m=372  ('EXTRA', 'acks', 'div.acks.acksTemplate')  
+       0.13pp  p= 276 m=276  ('EXTRA', 'root', 'div.row')  
+       0.13pp  p= 277 m=277  ('EXTRA', 'root', 'div.col-12.col-md-8')  
+       0.13pp  p= 275 m=275  ('EXTRA', 'acks', 'WIDGET')  
+       0.12pp  p= 454 m= 86  ('EXTRA', 'module-menu', 'div.col-12.col-md-8')  
+       0.10pp  p= 182 m= 79  ('EXTRA', 'module-menu', 'ul')  
+       0.09pp  p= 287 m=171  ('EXTRA', 'footer', 'a#next-lesson')  
+       0.09pp  p= 267 m=177  ('MISSING', 'footer', 'a#next-lesson')  BLL236:Next
+       0.09pp  p= 348 m=322  ('MISSING', 'acks', 'div.acks')  
+       0.08pp  p=  53 m= 26  ('MISSING', 'module-menu', 'br')  
+       0.07pp  p= 271 m=250  ('MISSING', 'acks', 'WIDGET')  
+       0.07pp  p= 226 m=200  ('MISSING', 'root', 'div.row')  
+       0.07pp  p= 229 m=206  ('MISSING', 'root', 'div.col-12.col-md-8')  
+       0.06pp  p= 270 m=157  ('EXTRA', 'footer', 'a.home-nav')  
+       0.06pp  p= 104 m= 44  ('MISSING', 'module-menu', 'b')  AGH1009:water quality; AGH1009:impacts
+       0.06pp  p= 261 m=154  ('MISSING', 'footer', 'a.home-nav')  
+       0.06pp  p= 211 m= 51  ('EXTRA', 'module-menu', 'div.row')  
+       0.06pp  p= 201 m=117  ('MISSING', 'title', 'span')  ANZH101:Ko ngā Ingoa Waahi ngā Kōrero ake; ANZH101:Pepeha
+       0.06pp  p= 200 m=116  ('MISSING', 'title', 'h1')  ANZH101:Ko ngā Ingoa Waahi ngā Kōrero ake; ANZH101:Pepeha
+       0.05pp  p=  80 m= 62  ('EXTRA', 'module-menu', 'b')  AGH1004:soil types; AGH1005:kaitiakitanga
+       0.05pp  p= 179 m= 45  ('EXTRA', 'root', 'body.container-fluid')  
+       0.05pp  p= 179 m=121  ('EXTRA', 'footer', 'div#footer')  
+       0.05pp  p=  99 m= 62  ('MISSING', 'module-menu', 'h4')  AGH1005:We are learning to:.; AGH1008:We are learning to ...
+       0.04pp  p= 168 m= 87  ('MISSING', 'footer', 'ul.footer-nav')  
+       0.04pp  p= 158 m=116  ('MISSING', 'footer', 'div#footer')  
+       0.04pp  p=  81 m= 21  ('MISSING', 'module-menu', 'div.col-12.col-md-6.offset-md-0')  
+       0.04pp  p= 138 m=100  ('EXTRA', 'footer', 'a#prev-lesson')  
+       0.04pp  p=  82 m= 66  ('EXTRA', 'module-menu', 'span')  ANZH101:Know; ANZH101:Know
+       0.04pp  p= 129 m= 64  ('EXTRA', 'footer', 'ul.footer-nav.inquiry-nav')  
+
+== band=90+ — pages 15: total loss 6.48pp (mean score ≈ 93.5)
+     3.01pp  pages    13   chrome
+     1.73pp  pages    12   wrapper-form
+     0.84pp  pages     8   wrapper-empty
+     0.37pp  pages     2   chrome-aligned
+     0.13pp  pages     2   alignment-residue
+     0.10pp  pages     1   container-shift:activity->widget
+     0.09pp  pages     1   tag-swap
+     0.07pp  pages     1   editorial-gold
+     0.07pp  pages     1   wrapper-of-widget-line
+     0.07pp  pages     1   widget-line
+   by REGION (region · direction):
+       1.50pp  ('acks', 'EXTRA')
+       1.47pp  ('body', 'EXTRA')
+       1.15pp  ('root', 'EXTRA')
+       1.13pp  ('body', 'MISSING')
+       0.38pp  ('activity', 'MISSING')
+       0.36pp  ('acks', 'MISSING')
+       0.19pp  ('footer', 'MISSING')
+       0.19pp  ('footer', 'EXTRA')
+       0.12pp  ('activity', 'EXTRA')
+   top detail rows (family · direction · region · container · signature) — pp · pages · modules:
+       0.83pp  p=   8 m=  8  ('chrome', 'EXTRA', 'acks', 'free', 'div.acks.acksTemplate')
+       0.57pp  p=   5 m=  5  ('chrome', 'EXTRA', 'root', 'free', 'div.row')
+       0.57pp  p=   5 m=  5  ('chrome', 'EXTRA', 'root', 'free', 'div.col-12.col-md-8')
+       0.57pp  p=   5 m=  5  ('chrome', 'EXTRA', 'acks', 'free', 'WIDGET')
+       0.57pp  p=   6 m=  6  ('wrapper-form', 'EXTRA', 'body', 'free', 'div.row')
+       0.57pp  p=   6 m=  6  ('wrapper-form', 'EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.27pp  p=   3 m=  2  ('wrapper-empty', 'MISSING', 'body', 'free', 'div.icon.ratio.ratio-16x9.videoSection')
+       0.27pp  p=   3 m=  2  ('wrapper-empty', 'EXTRA', 'body', 'free', 'div.ratio.ratio-16x9.videoSection')
+       0.26pp  p=   3 m=  3  ('chrome', 'MISSING', 'acks', 'free', 'div.acks.acksAI.acksTemplate')
+       0.14pp  p=   2 m=  2  ('wrapper-form', 'MISSING', 'body', 'free', 'div.row')
+       0.14pp  p=   2 m=  2  ('wrapper-form', 'MISSING', 'body', 'free', 'div.col-12.col-md-8')
+       0.10pp  p=   1 m=  1  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'br')
+       0.10pp  p=   1 m=  1  ('chrome', 'MISSING', 'acks', 'free', 'div.acks.acksTemplate')
+       0.10pp  p=   1 m=  1  ('chrome', 'EXTRA', 'acks', 'free', 'div.acks.acksAI.acksTemplate')
+       0.09pp  p=   1 m=  1  ('chrome-aligned', 'MISSING', 'footer', 'free', 'li')
+       0.09pp  p=   1 m=  1  ('chrome-aligned', 'MISSING', 'footer', 'free', 'a#next-lesson')
+       0.09pp  p=   1 m=  1  ('chrome-aligned', 'EXTRA', 'footer', 'free', 'a#next-lesson')
+       0.09pp  p=   1 m=  1  ('chrome-aligned', 'EXTRA', 'footer', 'free', 'li')
+       0.09pp  p=   1 m=  1  ('tag-swap', 'MISSING', 'body', 'free', 'b')
+       0.07pp  p=   1 m=  1  ('editorial-gold', 'MISSING', 'body', 'free', 'p')
+       0.07pp  p=   1 m=  1  ('wrapper-empty', 'MISSING', 'body', 'free', 'div.row')
+       0.07pp  p=   1 m=  1  ('wrapper-empty', 'MISSING', 'body', 'free', 'div.col-12.col-md-8')
+       0.07pp  p=   1 m=  1  ('wrapper-form', 'MISSING', 'body', 'free', 'div.col-12')
+       0.07pp  p=   1 m=  1  ('wrapper-form', 'MISSING', 'activity', 'free', 'div.activity.interactive[number=3A]')
+       0.07pp  p=   1 m=  1  ('wrapper-of-widget-line', 'MISSING', 'body', 'free', 'div.row')
+       0.07pp  p=   1 m=  1  ('alignment-residue', 'MISSING', 'body', 'free', 'div.col-12.col-md-8')
+       0.07pp  p=   1 m=  1  ('widget-line', 'MISSING', 'body', 'free', 'WIDGET')
+       0.07pp  p=   1 m=  1  ('alignment-residue', 'EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.07pp  p=   1 m=  1  ('wrapper-form', 'EXTRA', 'activity', 'free', 'div.activity[number=3A]')
+       0.05pp  p=   1 m=  1  ('wrapper-form', 'MISSING', 'activity', 'free', 'div.activity.interactive[number=1A]')
+       0.05pp  p=   1 m=  1  ('container-shift:activity->widget', 'MISSING', 'activity', 'activity', 'p')
+       0.05pp  p=   1 m=  1  ('container-shift:activity->widget', 'MISSING', 'activity', 'activity', 'a')
+       0.05pp  p=   1 m=  1  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'div.buttonD')
+       0.05pp  p=   1 m=  1  ('wrapper-form', 'EXTRA', 'activity', 'free', 'div.activity[number=1A]')
+
+== band=75-90 — pages 170: total loss 20.49pp (mean score ≈ 79.5)
+     3.70pp  pages   169   chrome
+     3.50pp  pages   219   wrapper-empty
+     1.80pp  pages   183   wrapper-form
+     1.65pp  pages   153   alignment-residue
+     1.55pp  pages    91   editorial-claude
+     1.25pp  pages   126   widget-line
+     0.91pp  pages    74   wrapper-of-widget-line
+     0.89pp  pages    73   editorial-gold
+     0.66pp  pages    50   wrapper-of-container-shift
+     0.66pp  pages    36   container-shift:activity->widget
+     0.65pp  pages    76   merged-split
+     0.50pp  pages    72   tag-swap
+     0.49pp  pages    50   wrapper-of-alignment-residue
+     0.45pp  pages    27   wrapper-of-editorial-gold
+     0.44pp  pages    43   wrapper-of-editorial-claude
+     0.38pp  pages    24   container-shift:free->widget
+   by REGION (region · direction):
+       5.63pp  ('body', 'MISSING')
+       5.19pp  ('body', 'EXTRA')
+       3.76pp  ('activity', 'MISSING')
+       1.87pp  ('activity', 'EXTRA')
+       0.89pp  ('module-menu', 'EXTRA')
+       0.83pp  ('module-menu', 'MISSING')
+       0.79pp  ('acks', 'EXTRA')
+       0.73pp  ('root', 'EXTRA')
+       0.22pp  ('acks', 'MISSING')
+       0.16pp  ('title', 'MISSING')
+       0.15pp  ('root', 'MISSING')
+       0.14pp  ('footer', 'MISSING')
+       0.11pp  ('footer', 'EXTRA')
+       0.01pp  ('title', 'EXTRA')
+   top detail rows (family · direction · region · container · signature) — pp · pages · modules:
+       0.51pp  p=  41 m= 40  ('editorial-claude', 'EXTRA', 'body', 'free', 'p')
+       0.44pp  p=  59 m= 59  ('chrome', 'EXTRA', 'acks', 'free', 'div.acks.acksTemplate')
+       0.42pp  p=  66 m= 53  ('wrapper-form', 'EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.38pp  p=  41 m= 29  ('widget-line', 'MISSING', 'body', 'free', 'WIDGET')
+       0.36pp  p=  34 m= 30  ('widget-line', 'MISSING', 'activity', 'activity', 'WIDGET')
+       0.35pp  p=  46 m= 46  ('chrome', 'EXTRA', 'root', 'free', 'div.row')
+       0.35pp  p=  46 m= 46  ('chrome', 'EXTRA', 'root', 'free', 'div.col-12.col-md-8')
+       0.35pp  p=  46 m= 46  ('chrome', 'EXTRA', 'acks', 'free', 'WIDGET')
+       0.34pp  p=  31 m= 26  ('alignment-residue', 'EXTRA', 'body', 'free', 'p')
+       0.34pp  p=  30 m= 24  ('widget-line', 'EXTRA', 'body', 'free', 'WIDGET')
+       0.29pp  p=  26 m= 24  ('alignment-residue', 'MISSING', 'body', 'free', 'p')
+       0.24pp  p=  29 m= 26  ('wrapper-empty', 'MISSING', 'body', 'free', 'div.icon.ratio.ratio-16x9.videoSection')
+       0.23pp  p=  30 m= 25  ('chrome', 'EXTRA', 'module-menu', 'free', 'h5')
+       0.22pp  p=  37 m= 30  ('wrapper-form', 'EXTRA', 'body', 'free', 'div.row')
+       0.22pp  p=  16 m= 11  ('chrome', 'MISSING', 'module-menu', 'free', 'li')
+       0.20pp  p=  19 m= 16  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'img.img-fluid')
+       0.19pp  p=  32 m= 31  ('editorial-claude', 'EXTRA', 'body', 'free', 'a')
+       0.19pp  p=  22 m= 18  ('wrapper-empty', 'MISSING', 'body', 'free', 'iframe.embed-responsive-item')
+       0.18pp  p=  10 m= 10  ('container-shift:free->widget', 'MISSING', 'body', 'free', 'p')
+       0.17pp  p=  19 m= 18  ('editorial-claude', 'EXTRA', 'activity', 'activity', 'p')
+       0.17pp  p=  18 m= 17  ('editorial-gold', 'MISSING', 'body', 'free', 'p')
+       0.17pp  p=   8 m=  8  ('wrapper-empty', 'MISSING', 'body', 'free', 'br')
+       0.16pp  p=   5 m=  5  ('container-shift:activity->widget', 'MISSING', 'activity', 'activity', 'td')
+       0.15pp  p=  24 m= 21  ('editorial-gold', 'MISSING', 'activity', 'activity', 'p')
+       0.15pp  p=  17 m= 17  ('merged-split', 'EXTRA', 'body', 'free', 'p')
+       0.15pp  p=  12 m= 11  ('merged-split', 'MISSING', 'body', 'free', 'p')
+       0.14pp  p=   2 m=  2  ('container-shift:activity->widget', 'EXTRA', 'activity', 'activity', 'td')
+       0.14pp  p=  18 m= 18  ('wrapper-empty', 'MISSING', 'body', 'free', 'img.img-fluid')
+       0.13pp  p=  17 m= 15  ('wrapper-empty', 'EXTRA', 'body', 'free', 'img.img-fluid')
+       0.13pp  p=  26 m= 24  ('widget-line', 'EXTRA', 'activity', 'activity', 'WIDGET')
+       0.13pp  p=  27 m= 25  ('wrapper-of-editorial-claude', 'EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.13pp  p=  14 m= 11  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'div.button')
+       0.13pp  p=  25 m= 25  ('chrome', 'MISSING', 'acks', 'free', 'div.acks')
+       0.13pp  p=   9 m=  4  ('chrome', 'EXTRA', 'module-menu', 'free', 'li')
+       0.12pp  p=  15 m= 14  ('chrome', 'MISSING', 'module-menu', 'free', 'p')
+       0.12pp  p=  16 m= 16  ('wrapper-empty', 'MISSING', 'body', 'free', 'iframe')
+       0.11pp  p=  16 m= 15  ('wrapper-empty', 'EXTRA', 'body', 'free', 'iframe')
+       0.11pp  p=  17 m= 16  ('wrapper-empty', 'EXTRA', 'body', 'free', 'div.ratio.ratio-16x9.videoSection')
+       0.11pp  p=  16 m= 16  ('editorial-claude', 'EXTRA', 'body', 'free', 'b')
+       0.11pp  p=   3 m=  3  ('editorial-claude', 'EXTRA', 'body', 'free', 'li')
+   CHROME split (direction · region · signature) — pp · pages · modules · examples:
+       0.44pp  p=  59 m= 59  ('EXTRA', 'acks', 'div.acks.acksTemplate')  
+       0.35pp  p=  46 m= 46  ('EXTRA', 'root', 'div.row')  
+       0.35pp  p=  46 m= 46  ('EXTRA', 'root', 'div.col-12.col-md-8')  
+       0.35pp  p=  46 m= 46  ('EXTRA', 'acks', 'WIDGET')  
+       0.23pp  p=  17 m= 12  ('MISSING', 'module-menu', 'li')  BLL126:Ākonga can use their basic literacy capability and can read ; BLL126:When reading aloud, ākonga use appropriate intonation and ph
+       0.23pp  p=  30 m= 25  ('EXTRA', 'module-menu', 'h5')  BLL126:We are learning:; BLL126:I can:
+       0.21pp  p=  24 m= 23  ('MISSING', 'module-menu', 'p')  BLL126:We are learning:; BLL126:I can:
+       0.14pp  p=  10 m=  5  ('EXTRA', 'module-menu', 'li')  BLL145:to divide syllables,; BLL145:to create new words,
+       0.13pp  p=  25 m= 25  ('MISSING', 'acks', 'div.acks')  
+       0.12pp  p=  14 m= 13  ('EXTRA', 'module-menu', 'p')  BLL126:Students interpret texts by drawing on various elements and ; BLL126:Students develop basic literacy capability to read fluently 
+       0.09pp  p=   8 m=  8  ('EXTRA', 'module-menu', 'b')  AGH1006:cultivation practices; AGH1006:cultivation practices
+       0.09pp  p=  13 m=  6  ('MISSING', 'module-menu', 'h5')  BLLR201:We are learning:; BLLR201:You will show your understanding by:
+       0.08pp  p=  15 m= 10  ('MISSING', 'module-menu', 'ul')  
+       0.08pp  p=  16 m=  8  ('EXTRA', 'module-menu', 'div.col-12.col-md-8')  
+       0.08pp  p=  10 m=  9  ('MISSING', 'title', 'h1')  ENGC102:Keeping it real; ENGR302:Stories of Influence
+       0.08pp  p=  10 m=  9  ('MISSING', 'title', 'span')  ENGC102:Keeping it real; ENGR302:Stories of Influence
+       0.07pp  p=  17 m= 17  ('MISSING', 'acks', 'WIDGET')  
+       0.07pp  p=  16 m= 16  ('MISSING', 'root', 'div.col-12.col-md-8')  
+       0.06pp  p=  12 m=  5  ('EXTRA', 'module-menu', 'div.row')  
+       0.06pp  p=  13 m= 10  ('MISSING', 'footer', 'li')  
+       0.06pp  p=  14 m= 14  ('MISSING', 'root', 'div.row')  
+       0.06pp  p=  10 m=  5  ('EXTRA', 'module-menu', 'ul')  
+       0.05pp  p=   3 m=  3  ('MISSING', 'module-menu', 'br')  
+       0.04pp  p=   8 m=  5  ('EXTRA', 'footer', 'li')  
+       0.04pp  p=   5 m=  3  ('EXTRA', 'module-menu', 'div#module-menu-content.moduleMenu')  
+       0.03pp  p=   1 m=  1  ('MISSING', 'module-menu', 'i')  BLL254:sc, eigh, augh; BLL254:ough
+       0.03pp  p=   4 m=  2  ('MISSING', 'root', 'body')  
+       0.03pp  p=   4 m=  2  ('EXTRA', 'root', 'body.container-fluid')  
+       0.02pp  p=   6 m=  3  ('MISSING', 'footer', 'a.home-nav')  
+       0.02pp  p=   6 m=  3  ('EXTRA', 'footer', 'a.home-nav')  
+       0.02pp  p=   5 m=  5  ('MISSING', 'footer', 'a#next-lesson')  
+       0.02pp  p=   7 m=  2  ('MISSING', 'module-menu', 'div.item')  
+       0.02pp  p=   3 m=  3  ('MISSING', 'acks', 'div.acks.acksAI.acksTemplate')  
+       0.02pp  p=   4 m=  4  ('MISSING', 'module-menu', 'span')  BLL242:Practices:; BLL246:Practices:
+       0.02pp  p=   2 m=  2  ('EXTRA', 'module-menu', 'div#module-head-buttons')  
+       0.02pp  p=   2 m=  2  ('EXTRA', 'module-menu', 'div#module-menu-button.btn1.circle-button')  
+       0.02pp  p=   4 m=  4  ('MISSING', 'footer', 'ul.footer-nav')  
+       0.02pp  p=   4 m=  4  ('EXTRA', 'footer', 'ul.footer-nav.inquiry-nav')  
+       0.02pp  p=   2 m=  2  ('EXTRA', 'module-menu', 'div.col-12.col-md-6.offset-md-0')  
+       0.02pp  p=   2 m=  2  ('MISSING', 'module-menu', 'b')  OSAI301:We are learning:; OSAI301:I can:
+
+== band=60-75 — pages 531: total loss 34.31pp (mean score ≈ 65.7)
+     5.38pp  pages   855   wrapper-empty
+     4.65pp  pages   676   chrome
+     3.72pp  pages   780   alignment-residue
+     2.23pp  pages   384   editorial-gold
+     2.18pp  pages   406   editorial-claude
+     1.69pp  pages   628   wrapper-form
+     1.67pp  pages   381   wrapper-of-container-shift
+     1.60pp  pages   562   widget-line
+     1.30pp  pages   480   merged-split
+     1.28pp  pages   201   container-shift:activity->widget
+     1.24pp  pages   261   wrapper-of-editorial-gold
+     1.13pp  pages   294   wrapper-of-widget-line
+     1.06pp  pages   339   wrapper-of-alignment-residue
+     0.89pp  pages   387   tag-swap
+     0.75pp  pages   141   container-shift:free->widget
+     0.73pp  pages   249   wrapper-of-editorial-claude
+   by REGION (region · direction):
+       9.49pp  ('body', 'MISSING')
+       8.07pp  ('body', 'EXTRA')
+       7.67pp  ('activity', 'MISSING')
+       3.82pp  ('activity', 'EXTRA')
+       1.63pp  ('module-menu', 'MISSING')
+       1.20pp  ('module-menu', 'EXTRA')
+       0.49pp  ('footer', 'MISSING')
+       0.48pp  ('root', 'EXTRA')
+       0.48pp  ('footer', 'EXTRA')
+       0.45pp  ('acks', 'EXTRA')
+       0.20pp  ('root', 'MISSING')
+       0.18pp  ('acks', 'MISSING')
+       0.14pp  ('title', 'MISSING')
+       0.01pp  ('title', 'EXTRA')
+   top detail rows (family · direction · region · container · signature) — pp · pages · modules:
+       0.58pp  p= 192 m=134  ('widget-line', 'MISSING', 'activity', 'activity', 'WIDGET')
+       0.50pp  p= 203 m=140  ('editorial-claude', 'EXTRA', 'body', 'free', 'p')
+       0.43pp  p= 159 m= 91  ('widget-line', 'MISSING', 'body', 'free', 'WIDGET')
+       0.41pp  p=  81 m= 53  ('chrome', 'MISSING', 'module-menu', 'free', 'li')
+       0.39pp  p= 134 m= 97  ('chrome', 'EXTRA', 'module-menu', 'free', 'h5')
+       0.37pp  p= 171 m=114  ('alignment-residue', 'EXTRA', 'body', 'free', 'p')
+       0.34pp  p= 109 m= 74  ('editorial-gold', 'MISSING', 'body', 'free', 'p')
+       0.33pp  p= 141 m= 98  ('editorial-claude', 'EXTRA', 'activity', 'activity', 'p')
+       0.31pp  p=  93 m= 72  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'img.img-fluid')
+       0.30pp  p= 153 m=114  ('editorial-gold', 'MISSING', 'activity', 'activity', 'p')
+       0.30pp  p= 133 m= 87  ('widget-line', 'EXTRA', 'body', 'free', 'WIDGET')
+       0.30pp  p=  28 m= 26  ('container-shift:activity->widget', 'MISSING', 'activity', 'activity', 'td')
+       0.30pp  p= 126 m= 93  ('alignment-residue', 'MISSING', 'body', 'free', 'p')
+       0.28pp  p= 126 m= 92  ('chrome', 'MISSING', 'module-menu', 'free', 'p')
+       0.28pp  p= 178 m=126  ('wrapper-form', 'EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.27pp  p= 160 m= 85  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'div.button')
+       0.27pp  p= 139 m= 96  ('wrapper-empty', 'MISSING', 'body', 'free', 'img.img-fluid')
+       0.26pp  p= 157 m= 90  ('editorial-gold', 'MISSING', 'activity', 'activity', 'a')
+       0.26pp  p= 141 m=117  ('editorial-claude', 'EXTRA', 'body', 'free', 'a')
+       0.25pp  p= 168 m=118  ('widget-line', 'EXTRA', 'activity', 'activity', 'WIDGET')
+       0.25pp  p= 169 m=112  ('alignment-residue', 'MISSING', 'body', 'free', 'div.col-12.col-md-8')
+       0.24pp  p= 164 m=110  ('alignment-residue', 'EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.22pp  p= 129 m=129  ('chrome', 'EXTRA', 'acks', 'free', 'div.acks.acksTemplate')
+       0.22pp  p=  63 m= 52  ('wrapper-empty', 'MISSING', 'body', 'free', 'br')
+       0.21pp  p= 116 m=116  ('chrome', 'EXTRA', 'root', 'free', 'div.row')
+       0.20pp  p= 111 m=111  ('chrome', 'EXTRA', 'root', 'free', 'div.col-12.col-md-8')
+       0.20pp  p= 101 m= 74  ('merged-split', 'EXTRA', 'body', 'free', 'p')
+       0.20pp  p= 107 m=107  ('chrome', 'EXTRA', 'acks', 'free', 'WIDGET')
+       0.19pp  p= 155 m=110  ('alignment-residue', 'EXTRA', 'body', 'free', 'div.row')
+       0.19pp  p=  93 m= 80  ('container-shift:activity->widget', 'MISSING', 'activity', 'activity', 'p')
+       0.19pp  p= 155 m=110  ('alignment-residue', 'MISSING', 'body', 'free', 'div.row')
+       0.19pp  p=  97 m= 64  ('wrapper-empty', 'EXTRA', 'body', 'free', 'img.img-fluid')
+       0.19pp  p= 132 m=109  ('wrapper-of-editorial-claude', 'EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.18pp  p=  28 m= 21  ('container-shift:activity->widget', 'EXTRA', 'activity', 'activity', 'li')
+       0.17pp  p= 102 m= 58  ('wrapper-empty', 'EXTRA', 'body', 'free', 'iframe')
+       0.17pp  p=  46 m= 38  ('container-shift:free->widget', 'MISSING', 'body', 'free', 'p')
+       0.17pp  p=  98 m= 47  ('wrapper-empty', 'MISSING', 'body', 'free', 'iframe.embed-responsive-item')
+       0.16pp  p=  86 m= 68  ('merged-split', 'MISSING', 'body', 'free', 'p')
+       0.16pp  p=  66 m= 50  ('wrapper-empty', 'EXTRA', 'activity', 'activity', 'img.img-fluid')
+       0.16pp  p=  49 m= 38  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'br')
+   CHROME split (direction · region · signature) — pp · pages · modules · examples:
+       0.42pp  p=  86 m= 58  ('MISSING', 'module-menu', 'li')  AGH1008:digestion, and immunity/health.; AGH1009:identify and describe ways farmers have adopted sustainable 
+       0.41pp  p= 140 m=103  ('EXTRA', 'module-menu', 'h5')  AGH1008:We are learning:; AGH1008:You will show your understanding by:
+       0.35pp  p= 146 m=112  ('MISSING', 'module-menu', 'p')  AGH1001:Identify and describe New Zealand agricultural and horticult; AGH1001:Identify and describe the relationship that Māori have with 
+       0.22pp  p= 129 m=129  ('EXTRA', 'acks', 'div.acks.acksTemplate')  
+       0.21pp  p= 116 m=116  ('EXTRA', 'root', 'div.row')  
+       0.21pp  p= 115 m=115  ('EXTRA', 'root', 'div.col-12.col-md-8')  
+       0.21pp  p= 115 m=115  ('EXTRA', 'acks', 'WIDGET')  
+       0.19pp  p=  93 m= 74  ('MISSING', 'footer', 'li')  
+       0.18pp  p=  85 m= 70  ('EXTRA', 'footer', 'li')  
+       0.17pp  p=  87 m= 57  ('MISSING', 'module-menu', 'ul')  
+       0.15pp  p=  60 m= 50  ('EXTRA', 'module-menu', 'p')  ANZH104:[MODULE INTRODUCTION]; ANZH104:In this module, we will be learning about how the early sett
+       0.15pp  p=  39 m= 30  ('EXTRA', 'module-menu', 'li')  AGH1001:to identify and describe New Zealand Agricultural and Hortic; AGH1001:to identify and describe the relationship that Māori have wi
+       0.12pp  p=  58 m= 34  ('MISSING', 'module-menu', 'h5')  BLL114:Know:; BLL114:Do:
+       0.12pp  p=  72 m= 67  ('MISSING', 'footer', 'a#next-lesson')  
+       0.11pp  p=  64 m= 63  ('EXTRA', 'footer', 'a#next-lesson')  
+       0.10pp  p=  89 m= 34  ('EXTRA', 'module-menu', 'div.col-12.col-md-8')  
+       0.09pp  p=  38 m= 25  ('MISSING', 'module-menu', 'span')  ANZH104:Know; ANZH104:Do
+       0.09pp  p=  76 m= 76  ('MISSING', 'acks', 'div.acks')  
+       0.08pp  p=  30 m= 17  ('MISSING', 'module-menu', 'h3')  ANZH203:Understand; ANZH203:Know
+       0.08pp  p=  62 m= 62  ('MISSING', 'acks', 'WIDGET')  
+       0.07pp  p=  59 m= 59  ('MISSING', 'root', 'div.col-12.col-md-8')  
+       0.07pp  p=  55 m= 55  ('MISSING', 'root', 'div.row')  
+       0.07pp  p=  58 m= 41  ('EXTRA', 'footer', 'ul.footer-nav.inquiry-nav')  
+       0.07pp  p=  21 m= 21  ('EXTRA', 'module-menu', 'b')  AGH1005:kaitiakitanga; AGH1005:manaakitanga
+       0.06pp  p=  27 m= 17  ('MISSING', 'module-menu', 'b')  AGH1009:water quality; ANZH401:I am learning to understand that ...
+       0.06pp  p=  30 m= 24  ('MISSING', 'title', 'h1')  ANZH301:Ngā Raiti Nui o te Tāone; ANZH301:Ngā Raiti Nui o te Tāone
+       0.06pp  p=  30 m= 24  ('MISSING', 'title', 'span')  ANZH301:Ngā Raiti Nui o te Tāone; ANZH301:Ngā Raiti Nui o te Tāone
+       0.06pp  p=  31 m= 22  ('EXTRA', 'module-menu', 'ul')  
+       0.06pp  p=  25 m= 20  ('MISSING', 'module-menu', 'h4')  AGH1008:We are learning to ...; AGH1008:You will show your understanding by …
+       0.05pp  p=  47 m= 39  ('MISSING', 'footer', 'a.home-nav')  
+       0.05pp  p=  47 m= 39  ('EXTRA', 'footer', 'a.home-nav')  
+       0.05pp  p=  22 m= 22  ('EXTRA', 'module-menu', 'div.col-12.col-md-6.paddingR')  
+       0.05pp  p=  30 m= 15  ('EXTRA', 'root', 'body.container-fluid')  
+       0.04pp  p=  27 m= 15  ('EXTRA', 'module-menu', 'div.row')  
+       0.04pp  p=  31 m= 30  ('MISSING', 'footer', 'div#footer')  
+       0.04pp  p=  31 m= 30  ('EXTRA', 'footer', 'div#footer')  
+       0.04pp  p=  34 m= 18  ('MISSING', 'footer', 'ul.footer-nav')  
+       0.04pp  p=  30 m= 30  ('EXTRA', 'module-menu', 'span')  ANZH105:Know; ANZH205:Know
+       0.04pp  p=   7 m=  7  ('MISSING', 'module-menu', 'br')  
+       0.04pp  p=  20 m=  9  ('MISSING', 'root', 'body')  
+
+== band=40-60 — pages 810: total loss 51.11pp (mean score ≈ 48.9)
+     7.62pp  pages  1469   wrapper-empty
+     6.39pp  pages  1383   alignment-residue
+     5.51pp  pages  1155   chrome
+     3.68pp  pages   732   editorial-gold
+     3.38pp  pages   705   editorial-claude
+     2.71pp  pages   913   wrapper-of-container-shift
+     2.34pp  pages  1120   merged-split
+     2.33pp  pages  1174   widget-line
+     2.05pp  pages   572   wrapper-of-editorial-gold
+     1.58pp  pages   666   wrapper-of-widget-line
+     1.55pp  pages   412   container-shift:activity->widget
+     1.55pp  pages   752   wrapper-of-alignment-residue
+     1.45pp  pages   359   container-shift:free->widget
+     1.35pp  pages   501   wrapper-of-editorial-claude
+     1.28pp  pages   893   wrapper-form
+     1.26pp  pages   743   tag-swap
+   by REGION (region · direction):
+      14.46pp  ('body', 'MISSING')
+      13.31pp  ('body', 'EXTRA')
+      11.24pp  ('activity', 'MISSING')
+       6.16pp  ('activity', 'EXTRA')
+       2.52pp  ('module-menu', 'MISSING')
+       1.53pp  ('module-menu', 'EXTRA')
+       0.49pp  ('footer', 'MISSING')
+       0.47pp  ('footer', 'EXTRA')
+       0.25pp  ('root', 'MISSING')
+       0.21pp  ('root', 'EXTRA')
+       0.18pp  ('acks', 'MISSING')
+       0.16pp  ('acks', 'EXTRA')
+       0.11pp  ('title', 'MISSING')
+       0.01pp  ('title', 'EXTRA')
+   top detail rows (family · direction · region · container · signature) — pp · pages · modules:
+       0.79pp  p= 470 m=243  ('widget-line', 'MISSING', 'activity', 'activity', 'WIDGET')
+       0.76pp  p= 226 m= 90  ('chrome', 'MISSING', 'module-menu', 'free', 'li')
+       0.71pp  p= 376 m=170  ('editorial-claude', 'EXTRA', 'body', 'free', 'p')
+       0.63pp  p= 353 m=162  ('widget-line', 'MISSING', 'body', 'free', 'WIDGET')
+       0.51pp  p= 321 m=162  ('wrapper-empty', 'MISSING', 'body', 'free', 'img.img-fluid')
+       0.50pp  p= 279 m=177  ('editorial-claude', 'EXTRA', 'activity', 'activity', 'p')
+       0.47pp  p= 268 m=149  ('editorial-gold', 'MISSING', 'body', 'free', 'p')
+       0.47pp  p= 394 m=210  ('editorial-gold', 'MISSING', 'activity', 'activity', 'p')
+       0.46pp  p=  89 m= 49  ('chrome', 'EXTRA', 'module-menu', 'free', 'li')
+       0.42pp  p= 286 m=149  ('widget-line', 'EXTRA', 'body', 'free', 'WIDGET')
+       0.41pp  p= 301 m=145  ('merged-split', 'EXTRA', 'body', 'free', 'p')
+       0.41pp  p= 152 m= 79  ('wrapper-empty', 'MISSING', 'body', 'free', 'br')
+       0.40pp  p= 324 m=169  ('alignment-residue', 'EXTRA', 'body', 'free', 'p')
+       0.40pp  p= 407 m=184  ('alignment-residue', 'MISSING', 'body', 'free', 'div.row')
+       0.40pp  p= 404 m=183  ('alignment-residue', 'EXTRA', 'body', 'free', 'div.row')
+       0.40pp  p= 386 m=207  ('widget-line', 'EXTRA', 'activity', 'activity', 'WIDGET')
+       0.38pp  p= 388 m=174  ('alignment-residue', 'MISSING', 'body', 'free', 'div.col-12.col-md-8')
+       0.38pp  p= 366 m=176  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'div.button')
+       0.37pp  p= 377 m=174  ('alignment-residue', 'EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.34pp  p= 343 m=169  ('editorial-gold', 'MISSING', 'activity', 'activity', 'a')
+       0.32pp  p= 182 m=103  ('chrome', 'EXTRA', 'module-menu', 'free', 'h5')
+       0.30pp  p= 239 m= 97  ('chrome', 'MISSING', 'module-menu', 'free', 'p')
+       0.30pp  p= 265 m=146  ('alignment-residue', 'MISSING', 'body', 'free', 'p')
+       0.30pp  p= 217 m= 81  ('chrome', 'MISSING', 'module-menu', 'free', 'ul')
+       0.30pp  p= 189 m=131  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'img.img-fluid')
+       0.29pp  p= 251 m=133  ('merged-split', 'MISSING', 'body', 'free', 'p')
+       0.28pp  p= 229 m=149  ('alignment-residue', 'MISSING', 'activity', 'activity', 'p')
+       0.28pp  p=  73 m= 45  ('container-shift:activity->widget', 'EXTRA', 'activity', 'activity', 'li')
+       0.27pp  p= 266 m=180  ('merged-split', 'MISSING', 'activity', 'activity', 'p')
+       0.27pp  p= 227 m=118  ('wrapper-empty', 'EXTRA', 'body', 'free', 'img.img-fluid')
+       0.27pp  p= 101 m= 61  ('editorial-claude', 'EXTRA', 'body', 'free', 'td')
+       0.27pp  p= 226 m=124  ('editorial-claude', 'EXTRA', 'body', 'free', 'a')
+       0.26pp  p= 216 m=142  ('alignment-residue', 'EXTRA', 'activity', 'activity', 'p')
+       0.25pp  p= 175 m=110  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'br')
+       0.25pp  p= 238 m=142  ('wrapper-of-editorial-claude', 'EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.24pp  p= 267 m=153  ('editorial-gold', 'MISSING', 'activity', 'activity', 'h3')
+       0.23pp  p=  49 m= 41  ('container-shift:activity->widget', 'MISSING', 'activity', 'activity', 'td')
+       0.22pp  p=  71 m= 53  ('editorial-gold', 'MISSING', 'body', 'free', 'li')
+       0.22pp  p= 185 m=130  ('container-shift:activity->widget', 'MISSING', 'activity', 'activity', 'p')
+       0.22pp  p= 174 m=100  ('container-shift:free->activity', 'EXTRA', 'body', 'free', 'p')
+
+== band=<40 — pages 430: total loss 70.57pp (mean score ≈ 29.4)
+    10.71pp  pages   808   wrapper-empty
+     8.16pp  pages   766   alignment-residue
+     6.67pp  pages   406   editorial-gold
+     6.33pp  pages   403   editorial-claude
+     6.27pp  pages   666   chrome
+     4.07pp  pages   354   wrapper-of-editorial-gold
+     3.49pp  pages   540   wrapper-of-container-shift
+     2.93pp  pages   686   merged-split
+     2.70pp  pages   677   widget-line
+     2.70pp  pages   302   wrapper-of-editorial-claude
+     2.39pp  pages   474   wrapper-of-alignment-residue
+     1.85pp  pages   414   wrapper-of-widget-line
+     1.73pp  pages   201   container-shift:free->widget
+     1.59pp  pages   452   tag-swap
+     1.39pp  pages   228   container-shift:activity->widget
+     1.18pp  pages   367   wrapper-of-merged-split
+   by REGION (region · direction):
+      19.99pp  ('body', 'EXTRA')
+      19.97pp  ('body', 'MISSING')
+      15.70pp  ('activity', 'MISSING')
+       8.32pp  ('activity', 'EXTRA')
+       3.26pp  ('module-menu', 'MISSING')
+       1.32pp  ('module-menu', 'EXTRA')
+       0.72pp  ('footer', 'EXTRA')
+       0.53pp  ('footer', 'MISSING')
+       0.23pp  ('root', 'MISSING')
+       0.15pp  ('acks', 'MISSING')
+       0.13pp  ('title', 'MISSING')
+       0.11pp  ('root', 'EXTRA')
+       0.06pp  ('acks', 'EXTRA')
+       0.06pp  ('crumbs', 'MISSING')
+   top detail rows (family · direction · region · container · signature) — pp · pages · modules:
+       1.59pp  p= 262 m=136  ('editorial-claude', 'EXTRA', 'body', 'free', 'p')
+       1.01pp  p= 275 m=149  ('editorial-gold', 'MISSING', 'activity', 'activity', 'p')
+       1.00pp  p= 177 m= 75  ('chrome', 'MISSING', 'module-menu', 'free', 'li')
+       0.96pp  p= 302 m=160  ('widget-line', 'MISSING', 'activity', 'activity', 'WIDGET')
+       0.86pp  p= 180 m=109  ('editorial-claude', 'EXTRA', 'activity', 'activity', 'p')
+       0.79pp  p= 194 m=101  ('editorial-gold', 'MISSING', 'body', 'free', 'p')
+       0.70pp  p= 112 m= 68  ('wrapper-empty', 'MISSING', 'body', 'free', 'br')
+       0.65pp  p= 205 m=103  ('widget-line', 'MISSING', 'body', 'free', 'WIDGET')
+       0.55pp  p= 232 m=126  ('editorial-gold', 'MISSING', 'activity', 'activity', 'h3')
+       0.53pp  p= 176 m=109  ('wrapper-of-editorial-claude', 'EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.51pp  p= 171 m= 92  ('wrapper-empty', 'MISSING', 'body', 'free', 'img.img-fluid')
+       0.51pp  p= 153 m= 96  ('wrapper-of-editorial-claude', 'EXTRA', 'body', 'free', 'div.row')
+       0.50pp  p= 214 m=125  ('merged-split', 'MISSING', 'activity', 'activity', 'p')
+       0.50pp  p= 103 m= 76  ('editorial-gold', 'MISSING', 'activity', 'activity', 'li')
+       0.49pp  p= 198 m=107  ('merged-split', 'EXTRA', 'body', 'free', 'p')
+       0.48pp  p= 230 m=122  ('alignment-residue', 'MISSING', 'body', 'free', 'div.row')
+       0.47pp  p= 164 m=102  ('alignment-residue', 'EXTRA', 'activity', 'activity', 'p')
+       0.46pp  p= 166 m=106  ('alignment-residue', 'MISSING', 'activity', 'activity', 'p')
+       0.46pp  p= 225 m=132  ('widget-line', 'EXTRA', 'activity', 'activity', 'WIDGET')
+       0.46pp  p= 218 m=119  ('alignment-residue', 'EXTRA', 'body', 'free', 'div.row')
+       0.46pp  p= 162 m= 69  ('chrome', 'MISSING', 'module-menu', 'free', 'p')
+       0.45pp  p= 233 m=120  ('alignment-residue', 'MISSING', 'body', 'free', 'div.col-12.col-md-8')
+       0.44pp  p= 139 m= 78  ('wrapper-of-editorial-gold', 'MISSING', 'body', 'free', 'div.row')
+       0.43pp  p= 240 m=127  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'div.button')
+       0.43pp  p= 177 m=108  ('widget-line', 'EXTRA', 'body', 'free', 'WIDGET')
+       0.43pp  p= 140 m= 85  ('editorial-claude', 'EXTRA', 'body', 'free', 'b')
+       0.43pp  p= 190 m=112  ('alignment-residue', 'EXTRA', 'body', 'free', 'p')
+       0.42pp  p= 215 m=115  ('alignment-residue', 'EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.42pp  p= 230 m=126  ('editorial-gold', 'MISSING', 'activity', 'activity', 'a')
+       0.39pp  p= 156 m= 87  ('wrapper-empty', 'EXTRA', 'body', 'free', 'img.img-fluid')
+       0.39pp  p=  71 m= 50  ('editorial-claude', 'EXTRA', 'body', 'free', 'td')
+       0.39pp  p= 114 m= 76  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'br')
+       0.38pp  p= 134 m= 83  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'img.img-fluid')
+       0.38pp  p= 117 m= 65  ('wrapper-of-editorial-gold', 'MISSING', 'body', 'free', 'div.col-12.col-md-8')
+       0.37pp  p=  36 m= 31  ('editorial-gold', 'MISSING', 'body', 'free', 'td')
+       0.37pp  p=  83 m= 59  ('editorial-claude', 'EXTRA', 'body', 'free', 'li')
+       0.37pp  p= 165 m= 62  ('chrome', 'MISSING', 'module-menu', 'free', 'ul')
+       0.36pp  p= 132 m= 82  ('container-shift:free->activity', 'EXTRA', 'body', 'free', 'p')
+       0.35pp  p= 170 m=104  ('wrapper-of-editorial-gold', 'MISSING', 'activity', 'activity', 'div.row')
+       0.35pp  p= 135 m= 77  ('editorial-claude', 'EXTRA', 'body', 'free', 'a')
+
+== template=Standard — pages 1738: total loss 46.33pp (mean score ≈ 53.7)
+     7.12pp  pages  2963   wrapper-empty
+     5.50pp  pages  2307   chrome
+     5.43pp  pages  2705   alignment-residue
+     3.42pp  pages  1389   editorial-gold
+     3.28pp  pages  1410   editorial-claude
+     2.28pp  pages  1595   wrapper-of-container-shift
+     2.05pp  pages  1038   wrapper-of-editorial-gold
+     2.02pp  pages  2189   widget-line
+     1.90pp  pages  2027   merged-split
+     1.48pp  pages  1391   wrapper-of-alignment-residue
+     1.38pp  pages  1231   wrapper-of-widget-line
+     1.37pp  pages  1894   wrapper-form
+     1.36pp  pages   957   wrapper-of-editorial-claude
+     1.34pp  pages   729   container-shift:activity->widget
+     1.28pp  pages   672   container-shift:free->widget
+     1.11pp  pages  1467   tag-swap
+   by REGION (region · direction):
+      13.25pp  ('body', 'MISSING')
+      12.07pp  ('body', 'EXTRA')
+       9.76pp  ('activity', 'MISSING')
+       5.28pp  ('activity', 'EXTRA')
+       2.41pp  ('module-menu', 'MISSING')
+       1.41pp  ('module-menu', 'EXTRA')
+       0.50pp  ('footer', 'EXTRA')
+       0.48pp  ('footer', 'MISSING')
+       0.32pp  ('root', 'EXTRA')
+       0.29pp  ('acks', 'EXTRA')
+       0.23pp  ('root', 'MISSING')
+       0.18pp  ('acks', 'MISSING')
+       0.12pp  ('title', 'MISSING')
+       0.01pp  ('title', 'EXTRA')
+   top detail rows (family · direction · region · container · signature) — pp · pages · modules:
+       0.78pp  p= 793 m=252  ('editorial-claude', 'EXTRA', 'body', 'free', 'p')
+       0.70pp  p= 451 m=120  ('chrome', 'MISSING', 'module-menu', 'free', 'li')
+       0.66pp  p= 840 m=266  ('widget-line', 'MISSING', 'activity', 'activity', 'WIDGET')
+       0.59pp  p= 713 m=195  ('widget-line', 'MISSING', 'body', 'free', 'WIDGET')
+       0.45pp  p= 700 m=232  ('editorial-gold', 'MISSING', 'activity', 'activity', 'p')
+       0.45pp  p= 540 m=187  ('editorial-gold', 'MISSING', 'body', 'free', 'p')
+       0.44pp  p= 610 m=212  ('wrapper-empty', 'MISSING', 'body', 'free', 'img.img-fluid')
+       0.42pp  p= 518 m=213  ('editorial-claude', 'EXTRA', 'activity', 'activity', 'p')
+       0.41pp  p= 314 m=134  ('wrapper-empty', 'MISSING', 'body', 'free', 'br')
+       0.40pp  p= 571 m=195  ('widget-line', 'EXTRA', 'body', 'free', 'WIDGET')
+       0.40pp  p= 662 m=215  ('alignment-residue', 'EXTRA', 'body', 'free', 'p')
+       0.35pp  p= 743 m=230  ('alignment-residue', 'MISSING', 'body', 'free', 'div.col-12.col-md-8')
+       0.34pp  p= 738 m=233  ('alignment-residue', 'MISSING', 'body', 'free', 'div.row')
+       0.34pp  p= 554 m=185  ('merged-split', 'EXTRA', 'body', 'free', 'p')
+       0.34pp  p= 674 m=177  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'div.button')
+       0.34pp  p= 685 m=248  ('widget-line', 'EXTRA', 'activity', 'activity', 'WIDGET')
+       0.34pp  p= 166 m= 65  ('chrome', 'EXTRA', 'module-menu', 'free', 'li')
+       0.33pp  p= 724 m=230  ('alignment-residue', 'EXTRA', 'body', 'free', 'div.row')
+       0.33pp  p= 712 m=228  ('alignment-residue', 'EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.33pp  p= 467 m=141  ('chrome', 'MISSING', 'module-menu', 'free', 'p')
+       0.33pp  p= 373 m=165  ('chrome', 'EXTRA', 'module-menu', 'free', 'h5')
+       0.31pp  p= 659 m=190  ('editorial-gold', 'MISSING', 'activity', 'activity', 'a')
+       0.31pp  p= 533 m=205  ('alignment-residue', 'MISSING', 'body', 'free', 'p')
+       0.29pp  p= 511 m=215  ('editorial-claude', 'EXTRA', 'body', 'free', 'a')
+       0.29pp  p= 532 m=225  ('wrapper-of-editorial-claude', 'EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.29pp  p= 349 m=185  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'img.img-fluid')
+       0.27pp  p= 446 m=113  ('chrome', 'MISSING', 'module-menu', 'free', 'ul')
+       0.26pp  p=  92 m= 68  ('container-shift:activity->widget', 'MISSING', 'activity', 'activity', 'td')
+       0.26pp  p= 445 m=164  ('wrapper-empty', 'EXTRA', 'body', 'free', 'img.img-fluid')
+       0.25pp  p= 430 m=202  ('wrapper-of-editorial-claude', 'EXTRA', 'body', 'free', 'div.row')
+       0.25pp  p= 461 m=179  ('merged-split', 'MISSING', 'body', 'free', 'p')
+       0.25pp  p= 189 m= 99  ('editorial-claude', 'EXTRA', 'body', 'free', 'td')
+       0.24pp  p= 397 m=182  ('alignment-residue', 'EXTRA', 'activity', 'activity', 'p')
+       0.24pp  p= 395 m=180  ('alignment-residue', 'MISSING', 'activity', 'activity', 'p')
+       0.24pp  p= 481 m=169  ('editorial-gold', 'MISSING', 'activity', 'activity', 'h3')
+       0.24pp  p= 293 m=133  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'br')
+       0.23pp  p= 534 m=229  ('wrapper-form', 'EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.22pp  p= 351 m=186  ('editorial-claude', 'EXTRA', 'body', 'free', 'b')
+       0.22pp  p= 467 m=214  ('merged-split', 'MISSING', 'activity', 'activity', 'p')
+       0.21pp  p= 344 m=146  ('wrapper-of-editorial-gold', 'MISSING', 'body', 'free', 'div.row')
+   CHROME split (direction · region · signature) — pp · pages · modules · examples:
+       0.72pp  p= 466 m=128  ('MISSING', 'module-menu', 'li')  AGH1003:I can justify the use of key management practices due to the; AGH1007:to identify the connection between animals and their taiao (
+       0.38pp  p= 513 m=176  ('MISSING', 'module-menu', 'p')  AGH1001:Identify and describe New Zealand agricultural and horticult; AGH1001:Explain the significance of agricultural and horticultural p
+       0.35pp  p= 177 m= 69  ('EXTRA', 'module-menu', 'li')  AGH1001:to identify and describe New Zealand Agricultural and Hortic; AGH1001:to explain the significance of Agricultural and Horticultura
+       0.34pp  p= 382 m=173  ('EXTRA', 'module-menu', 'h5')  AGH1005:We are learning:; AGH1008:We are learning:
+       0.28pp  p= 459 m=116  ('MISSING', 'module-menu', 'ul')  
+       0.19pp  p= 344 m=147  ('EXTRA', 'footer', 'li')  
+       0.19pp  p= 183 m= 56  ('MISSING', 'module-menu', 'span')  ANZH101:Learning intentions; ANZH101:How will I know if I’ve learned it?
+       0.19pp  p= 164 m= 35  ('MISSING', 'module-menu', 'h3')  ANZH101:Understand; ANZH101:Know
+       0.18pp  p= 339 m=157  ('MISSING', 'footer', 'li')  BLL236:Home
+       0.18pp  p= 329 m= 70  ('MISSING', 'module-menu', 'h5')  AGH1004:We are learning to:; BLL112:Know:
+       0.17pp  p= 180 m=105  ('EXTRA', 'module-menu', 'p')  AGH1003:I can justify the use of key management practices due to the; ANZH101:Māori history is the foundational and continuous history of 
+       0.15pp  p= 266 m=266  ('EXTRA', 'acks', 'div.acks.acksTemplate')  
+       0.14pp  p= 231 m=231  ('EXTRA', 'root', 'div.row')  
+       0.13pp  p= 230 m=230  ('EXTRA', 'root', 'div.col-12.col-md-8')  
+       0.13pp  p= 229 m=229  ('EXTRA', 'acks', 'WIDGET')  
+       0.13pp  p= 423 m= 73  ('EXTRA', 'module-menu', 'div.col-12.col-md-8')  
+       0.11pp  p= 164 m= 61  ('EXTRA', 'module-menu', 'ul')  
+       0.09pp  p= 244 m=139  ('EXTRA', 'footer', 'a#next-lesson')  
+       0.09pp  p= 234 m=147  ('MISSING', 'footer', 'a#next-lesson')  BLL236:Next
+       0.09pp  p=  49 m= 22  ('MISSING', 'module-menu', 'br')  
+       0.09pp  p= 250 m=228  ('MISSING', 'acks', 'div.acks')  
+       0.08pp  p= 229 m=210  ('MISSING', 'acks', 'WIDGET')  
+       0.08pp  p= 208 m=184  ('MISSING', 'root', 'div.row')  
+       0.07pp  p= 211 m=190  ('MISSING', 'root', 'div.col-12.col-md-8')  
+       0.07pp  p=  92 m= 32  ('MISSING', 'module-menu', 'b')  AGH1009:water quality; AGH1009:impacts
+       0.07pp  p= 210 m=101  ('EXTRA', 'footer', 'a.home-nav')  
+       0.06pp  p= 203 m= 43  ('EXTRA', 'module-menu', 'div.row')  
+       0.06pp  p= 204 m=100  ('MISSING', 'footer', 'a.home-nav')  
+       0.06pp  p= 141 m= 71  ('MISSING', 'title', 'h1')  ANZH101:Ko ngā Ingoa Waahi ngā Kōrero ake; ANZH101:Pepeha
+       0.06pp  p= 141 m= 71  ('MISSING', 'title', 'span')  ANZH101:Ko ngā Ingoa Waahi ngā Kōrero ake; ANZH101:Pepeha
+       0.05pp  p=  66 m= 48  ('EXTRA', 'module-menu', 'b')  AGH1004:soil types; AGH1005:kaitiakitanga
+       0.05pp  p= 149 m= 26  ('EXTRA', 'root', 'body.container-fluid')  
+       0.05pp  p= 143 m= 92  ('EXTRA', 'footer', 'div#footer')  
+       0.04pp  p= 129 m= 89  ('MISSING', 'footer', 'div#footer')  
+       0.04pp  p=  70 m= 33  ('MISSING', 'module-menu', 'h4')  AGH1005:We are learning to:.; AGH1008:We are learning to ...
+       0.04pp  p= 132 m= 69  ('MISSING', 'footer', 'ul.footer-nav')  
+       0.04pp  p=  75 m= 20  ('MISSING', 'module-menu', 'div.col-12.col-md-6.offset-md-0')  
+       0.04pp  p=  75 m= 59  ('EXTRA', 'module-menu', 'span')  ANZH101:Know; ANZH101:Know
+       0.04pp  p=  63 m= 46  ('EXTRA', 'module-menu', 'div.col-12.col-md-6.paddingR')  
+       0.04pp  p= 113 m= 81  ('EXTRA', 'footer', 'a#prev-lesson')  
+
+== template=Inquiry — pages 98: total loss 62.77pp (mean score ≈ 37.2)
+     8.33pp  pages   186   wrapper-empty
+     7.57pp  pages   175   alignment-residue
+     6.42pp  pages    93   editorial-gold
+     4.99pp  pages   193   chrome
+     4.27pp  pages    81   wrapper-of-editorial-gold
+     4.05pp  pages   133   wrapper-of-container-shift
+     3.38pp  pages    88   editorial-claude
+     3.09pp  pages   147   widget-line
+     2.45pp  pages    99   wrapper-of-widget-line
+     2.27pp  pages   142   merged-split
+     2.24pp  pages   115   wrapper-of-alignment-residue
+     2.12pp  pages    58   container-shift:panel->free
+     1.40pp  pages    71   wrapper-of-editorial-claude
+     1.37pp  pages    88   tag-swap
+     1.27pp  pages    57   container-shift:activity->widget
+     1.13pp  pages    29   container-shift:free->widget
+   by REGION (region · direction):
+      19.12pp  ('activity', 'MISSING')
+      15.82pp  ('body', 'MISSING')
+      15.28pp  ('body', 'EXTRA')
+       6.97pp  ('activity', 'EXTRA')
+       2.32pp  ('module-menu', 'MISSING')
+       0.83pp  ('module-menu', 'EXTRA')
+       0.63pp  ('footer', 'EXTRA')
+       0.55pp  ('footer', 'MISSING')
+       0.39pp  ('crumbs', 'MISSING')
+       0.23pp  ('root', 'EXTRA')
+       0.20pp  ('root', 'MISSING')
+       0.15pp  ('acks', 'EXTRA')
+       0.14pp  ('acks', 'MISSING')
+       0.12pp  ('title', 'MISSING')
+   top detail rows (family · direction · region · container · signature) — pp · pages · modules:
+       1.63pp  p=  64 m= 35  ('widget-line', 'MISSING', 'activity', 'activity', 'WIDGET')
+       1.11pp  p=  70 m= 44  ('editorial-gold', 'MISSING', 'activity', 'activity', 'p')
+       0.81pp  p=  42 m= 25  ('chrome', 'MISSING', 'module-menu', 'free', 'li')
+       0.63pp  p=  37 m= 28  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'img.img-fluid')
+       0.59pp  p=  52 m= 34  ('alignment-residue', 'MISSING', 'activity', 'activity', 'p')
+       0.57pp  p=  52 m= 34  ('editorial-gold', 'MISSING', 'activity', 'activity', 'h3')
+       0.56pp  p=  39 m= 14  ('editorial-claude', 'EXTRA', 'body', 'free', 'p')
+       0.55pp  p=  53 m= 31  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'div.button')
+       0.55pp  p=  34 m= 27  ('editorial-gold', 'MISSING', 'activity', 'activity', 'li')
+       0.53pp  p=  48 m= 31  ('alignment-residue', 'EXTRA', 'activity', 'activity', 'p')
+       0.52pp  p=  53 m= 35  ('editorial-gold', 'MISSING', 'activity', 'activity', 'a')
+       0.51pp  p=  18 m= 10  ('wrapper-of-widget-line', 'MISSING', 'activity', 'activity', 'div.col-12.col-md-4.paddingLR')
+       0.51pp  p=  21 m= 21  ('wrapper-of-editorial-gold', 'MISSING', 'body', 'panel', 'div.col-12.col-md-8')
+       0.48pp  p=  31 m= 31  ('editorial-gold', 'MISSING', 'body', 'panel', 'p')
+       0.46pp  p=   6 m=  3  ('container-shift:free->widget', 'EXTRA', 'body', 'free', 'td')
+       0.45pp  p=  54 m= 38  ('merged-split', 'MISSING', 'activity', 'activity', 'p')
+       0.44pp  p=  25 m= 25  ('wrapper-of-editorial-gold', 'MISSING', 'body', 'panel', 'div.row')
+       0.43pp  p=  33 m= 28  ('container-shift:activity->widget', 'MISSING', 'activity', 'activity', 'p')
+       0.42pp  p=  22 m= 10  ('alignment-residue', 'EXTRA', 'body', 'free', 'p')
+       0.42pp  p=  36 m= 36  ('widget-line', 'MISSING', 'body', 'panel', 'WIDGET')
+       0.38pp  p=  11 m= 11  ('editorial-gold', 'MISSING', 'body', 'alert', 'li')
+       0.38pp  p=  44 m= 32  ('editorial-claude', 'EXTRA', 'activity', 'activity', 'p')
+       0.37pp  p=  23 m=  7  ('widget-line', 'MISSING', 'body', 'free', 'WIDGET')
+       0.37pp  p=  46 m= 34  ('wrapper-of-editorial-gold', 'MISSING', 'activity', 'activity', 'div.row')
+       0.36pp  p=  41 m= 28  ('merged-split', 'EXTRA', 'activity', 'activity', 'p')
+       0.36pp  p=  43 m= 23  ('container-shift:activity->free', 'MISSING', 'activity', 'activity', 'p')
+       0.35pp  p=  44 m= 32  ('widget-line', 'EXTRA', 'activity', 'activity', 'WIDGET')
+       0.34pp  p=  21 m= 17  ('alignment-residue', 'EXTRA', 'activity', 'activity', 'li')
+       0.32pp  p=  25 m= 25  ('container-shift:panel->free', 'MISSING', 'body', 'panel', 'p')
+       0.31pp  p=  40 m= 24  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'iframe')
+       0.30pp  p=  32 m=  7  ('alignment-residue', 'MISSING', 'body', 'free', 'div.row')
+       0.30pp  p=  28 m=  9  ('container-shift:free->activity', 'EXTRA', 'body', 'free', 'p')
+       0.29pp  p=  41 m= 33  ('wrapper-of-editorial-gold', 'MISSING', 'activity', 'activity', 'div.col-12')
+       0.29pp  p=  18 m= 16  ('editorial-claude', 'EXTRA', 'body', 'free', 'li')
+       0.29pp  p=  31 m=  7  ('alignment-residue', 'EXTRA', 'body', 'free', 'div.row')
+       0.28pp  p=  21 m= 18  ('alignment-residue', 'MISSING', 'activity', 'activity', 'li')
+       0.28pp  p=  11 m=  4  ('wrapper-empty', 'MISSING', 'body', 'free', 'br')
+       0.28pp  p=   5 m=  5  ('container-shift:panel->free', 'MISSING', 'body', 'panel', 'td')
+       0.28pp  p=  29 m=  7  ('alignment-residue', 'MISSING', 'body', 'free', 'div.col-12.col-md-8')
+       0.28pp  p=  29 m=  7  ('alignment-residue', 'EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+   CHROME split (direction · region · signature) — pp · pages · modules · examples:
+       0.84pp  p=  44 m= 27  ('MISSING', 'module-menu', 'li')  BLL110:When reading aloud, ākonga use appropriate intonation and ph; BLL110:Ākonga can use transcription skills to write grammatically a
+       0.32pp  p=  58 m= 42  ('MISSING', 'module-menu', 'p')  BLL110:Shared codes and conventions enable us to make sense of what; BLL110:Ākonga will learn the name, the sounds and how to write the 
+       0.26pp  p=  41 m= 24  ('MISSING', 'module-menu', 'ul')  
+       0.21pp  p=  54 m= 39  ('EXTRA', 'footer', 'li')  
+       0.21pp  p=  30 m= 26  ('EXTRA', 'module-menu', 'p')  BLL120:Awaiting new curriculum; BLL130:ākonga develop basic literacy capability to read fluently an
+       0.19pp  p=  19 m= 19  ('MISSING', 'crumbs', 'div')  
+       0.18pp  p=  19 m=  6  ('MISSING', 'module-menu', 'h5')  BLL240:Knowledge:; BLL240:Practices:
+       0.18pp  p=  28 m= 27  ('MISSING', 'module-menu', 'span')  BLL110:Do; BLL110:Learning Intentions
+       0.18pp  p=  44 m= 36  ('MISSING', 'footer', 'li')  
+       0.17pp  p=  29 m= 29  ('MISSING', 'module-menu', 'h4')  BLL110:Know; BLL110:Do
+       0.16pp  p=  43 m= 40  ('EXTRA', 'module-menu', 'h5')  BLL110:Understand; BLL110:Learning Intentions
+       0.14pp  p=  22 m=  6  ('MISSING', 'footer', 'ul.footer-nav')  
+       0.14pp  p=  29 m= 13  ('EXTRA', 'footer', 'ul.footer-nav.inquiry-nav')  
+       0.14pp  p=  12 m= 12  ('MISSING', 'crumbs', 'p')  CEDK501:Intro; CEDK501:Dream it, plan it, do it
+       0.13pp  p=  20 m= 20  ('EXTRA', 'module-menu', 'li')  BLL170:Ākonga can use their basic literacy capability and can read ; BLL170:When reading aloud, ākonga use appropriate intonation and ph
+       0.12pp  p=  30 m= 19  ('EXTRA', 'root', 'body.container-fluid')  
+       0.10pp  p=  31 m= 21  ('EXTRA', 'footer', 'a#next-lesson')  
+       0.10pp  p=  47 m= 47  ('EXTRA', 'acks', 'div.acks.acksTemplate')  
+       0.09pp  p=  50 m= 48  ('MISSING', 'acks', 'div.acks')  
+       0.07pp  p=  18 m= 14  ('EXTRA', 'footer', 'a#prev-lesson')  
+       0.06pp  p=  20 m= 13  ('MISSING', 'module-menu', 'div.col-12.col-md-12.paddingR')  
+       0.06pp  p=  16 m= 16  ('EXTRA', 'module-menu', 'ul')  
+       0.06pp  p=  12 m= 12  ('EXTRA', 'module-menu', 'b')  BLL130:Oral Language:; BLL130:Reading:
+       0.06pp  p=  19 m= 17  ('MISSING', 'footer', 'a#next-lesson')  
+       0.06pp  p=  11 m=  1  ('MISSING', 'root', 'body')  
+       0.06pp  p=  20 m= 17  ('MISSING', 'title', 'span')  BLL240:wh, tch, dge, air, ear, ere, eer; CEDK102:Profile pics and photography
+       0.06pp  p=  19 m= 16  ('MISSING', 'title', 'h1')  CEDK102:Profile pics and photography; CEDK501:Idea to Action
+       0.06pp  p=  18 m= 18  ('MISSING', 'root', 'body.container-fluid.inquiry')  
+       0.05pp  p=  15 m=  7  ('EXTRA', 'module-menu', 'div.col-12.col-md-8')  
+       0.05pp  p=  15 m= 15  ('EXTRA', 'root', 'div.row')  
+       0.05pp  p=  15 m= 15  ('EXTRA', 'root', 'div.col-12.col-md-8')  
+       0.05pp  p=  15 m= 15  ('EXTRA', 'acks', 'WIDGET')  
+       0.05pp  p=  17 m= 17  ('MISSING', 'acks', 'WIDGET')  
+       0.05pp  p=  16 m= 12  ('EXTRA', 'footer', 'div#footer')  
+       0.04pp  p=  14 m= 13  ('MISSING', 'module-menu', 'div.row')  
+       0.04pp  p=   5 m=  1  ('MISSING', 'footer', 'a.active')  
+       0.04pp  p=  19 m= 19  ('MISSING', 'module-menu', 'div.col-12.col-md-6.paddingL')  
+       0.04pp  p=  29 m= 28  ('MISSING', 'footer', 'a.home-nav')  
+       0.04pp  p=  29 m= 28  ('EXTRA', 'footer', 'a.home-nav')  
+       0.04pp  p=   8 m=  8  ('MISSING', 'root', 'div.row')  
+
+== template=Fundamentals — pages 64: total loss 55.09pp (mean score ≈ 44.9)
+     8.20pp  pages   121   wrapper-empty
+     6.45pp  pages   121   alignment-residue
+     4.06pp  pages    64   editorial-gold
+     3.94pp  pages    58   editorial-claude
+     3.80pp  pages    99   container-shift:panel->free
+     3.60pp  pages   107   wrapper-of-container-shift
+     3.34pp  pages   128   chrome
+     3.02pp  pages   121   widget-line
+     2.95pp  pages   114   merged-split
+     2.39pp  pages    59   wrapper-of-editorial-gold
+     1.98pp  pages    94   wrapper-of-widget-line
+     1.76pp  pages    50   wrapper-of-editorial-claude
+     1.64pp  pages    62   container-shift:panel->widget
+     1.46pp  pages   103   wrapper-form
+     1.25pp  pages    91   wrapper-of-merged-split
+     1.13pp  pages    73   wrapper-of-alignment-residue
+   by REGION (region · direction):
+      18.51pp  ('body', 'MISSING')
+      17.37pp  ('body', 'EXTRA')
+      10.51pp  ('activity', 'MISSING')
+       5.14pp  ('activity', 'EXTRA')
+       1.33pp  ('module-menu', 'EXTRA')
+       0.76pp  ('module-menu', 'MISSING')
+       0.33pp  ('footer', 'EXTRA')
+       0.31pp  ('footer', 'MISSING')
+       0.18pp  ('acks', 'EXTRA')
+       0.17pp  ('root', 'EXTRA')
+       0.15pp  ('acks', 'MISSING')
+       0.09pp  ('title', 'MISSING')
+       0.08pp  ('root', 'MISSING')
+       0.04pp  ('title', 'EXTRA')
+   top detail rows (family · direction · region · container · signature) — pp · pages · modules:
+       1.00pp  p=  44 m= 44  ('editorial-claude', 'EXTRA', 'body', 'panel', 'p')
+       0.94pp  p=  52 m= 44  ('widget-line', 'MISSING', 'activity', 'activity', 'WIDGET')
+       0.83pp  p=  42 m= 42  ('widget-line', 'MISSING', 'body', 'panel', 'WIDGET')
+       0.73pp  p=  46 m= 46  ('wrapper-empty', 'EXTRA', 'body', 'panel', 'img.img-fluid')
+       0.73pp  p=  46 m= 46  ('container-shift:panel->free', 'EXTRA', 'body', 'panel', 'p')
+       0.70pp  p=  49 m= 49  ('alignment-residue', 'MISSING', 'body', 'panel', 'div.row')
+       0.68pp  p=  48 m= 48  ('alignment-residue', 'EXTRA', 'body', 'panel', 'div.row')
+       0.65pp  p=  48 m= 48  ('widget-line', 'EXTRA', 'body', 'panel', 'WIDGET')
+       0.56pp  p=  47 m= 47  ('alignment-residue', 'MISSING', 'body', 'panel', 'div.col-12.col-md-8')
+       0.55pp  p=  46 m= 46  ('alignment-residue', 'EXTRA', 'body', 'panel', 'div.col-12.col-md-8')
+       0.54pp  p=  51 m= 43  ('editorial-gold', 'MISSING', 'activity', 'activity', 'p')
+       0.49pp  p=  24 m= 24  ('editorial-claude', 'EXTRA', 'activity', 'activity', 'p')
+       0.48pp  p=  22 m= 22  ('editorial-claude', 'EXTRA', 'body', 'panel', 'li')
+       0.46pp  p=  42 m= 42  ('container-shift:panel->free', 'MISSING', 'body', 'panel', 'p')
+       0.46pp  p=  42 m= 42  ('merged-split', 'EXTRA', 'body', 'panel', 'p')
+       0.45pp  p=  12 m= 10  ('merged-split', 'MISSING', 'activity', 'activity', 'li')
+       0.44pp  p=  42 m= 42  ('editorial-gold', 'MISSING', 'body', 'panel', 'p')
+       0.43pp  p=  31 m= 31  ('wrapper-empty', 'MISSING', 'body', 'panel', 'br')
+       0.40pp  p=  32 m= 32  ('wrapper-empty', 'MISSING', 'body', 'panel', 'img.img-fluid')
+       0.39pp  p=  22 m= 22  ('container-shift:panel->widget', 'EXTRA', 'body', 'panel', 'p')
+       0.37pp  p=  41 m= 33  ('widget-line', 'EXTRA', 'activity', 'activity', 'WIDGET')
+       0.35pp  p=  39 m= 39  ('merged-split', 'MISSING', 'body', 'panel', 'p')
+       0.35pp  p=  35 m= 35  ('wrapper-of-container-shift', 'EXTRA', 'body', 'panel', 'div.col-12.col-md-8')
+       0.34pp  p=  25 m= 25  ('wrapper-of-editorial-claude', 'EXTRA', 'body', 'panel', 'div.col-12.col-md-8')
+       0.34pp  p=  23 m= 23  ('container-shift:panel->free', 'EXTRA', 'body', 'panel', 'b')
+       0.33pp  p=   5 m=  5  ('chrome', 'EXTRA', 'module-menu', 'free', 'p')
+       0.32pp  p=  43 m= 43  ('container-shift:panel->free', 'EXTRA', 'body', 'panel', 'h3')
+       0.32pp  p=  23 m= 23  ('wrapper-of-editorial-claude', 'EXTRA', 'body', 'panel', 'div.row')
+       0.32pp  p=  24 m= 18  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'br')
+       0.30pp  p=  42 m= 42  ('container-shift:panel->free', 'MISSING', 'body', 'panel', 'h3')
+       0.29pp  p=  21 m= 21  ('editorial-claude', 'EXTRA', 'body', 'panel', 'b')
+       0.28pp  p=  38 m= 37  ('editorial-gold', 'MISSING', 'activity', 'activity', 'h3')
+       0.28pp  p=  14 m= 13  ('editorial-gold', 'MISSING', 'activity', 'activity', 'li')
+       0.28pp  p=  31 m= 31  ('wrapper-of-container-shift', 'EXTRA', 'body', 'panel', 'div.row')
+       0.27pp  p=  33 m= 33  ('editorial-claude', 'EXTRA', 'body', 'panel', 'a')
+       0.27pp  p=  38 m= 34  ('merged-split', 'MISSING', 'activity', 'activity', 'p')
+       0.25pp  p=  22 m= 22  ('wrapper-empty', 'EXTRA', 'body', 'panel', 'iframe')
+       0.25pp  p=  24 m= 24  ('editorial-gold', 'MISSING', 'body', 'panel', 'li')
+       0.24pp  p=  12 m= 12  ('editorial-claude', 'EXTRA', 'activity', 'activity', 'li')
+       0.24pp  p=   8 m=  8  ('container-shift:activity->widget', 'EXTRA', 'activity', 'activity', 'li')
+   CHROME split (direction · region · signature) — pp · pages · modules · examples:
+       0.33pp  p=   5 m=  5  ('EXTRA', 'module-menu', 'p')  ARFUN02:Welcome to our FUNdamental module where we'll explore fun mu; ARFUN02:In this module there is learning for each of the different p
+       0.21pp  p=  35 m= 25  ('MISSING', 'module-menu', 'p')  ENFUN01:We are learning to:; ENFUN02:We are learning to:
+       0.16pp  p=  27 m= 27  ('EXTRA', 'module-menu', 'h5')  ARFUN05:The drama techniques; ARFUN05:The drama elements
+       0.16pp  p=   2 m=  2  ('EXTRA', 'module-menu', 'td')  MXFUN02:11; MXFUN02:12
+       0.14pp  p=   2 m=  2  ('EXTRA', 'module-menu', 'b')  MXFUN02:not; MXFUN02:Patterns! | Mini Math Movies | Scratch Garden
+       0.14pp  p=   6 m=  1  ('MISSING', 'module-menu', 'h3')  MXFUN01:Understand; MXFUN01:Know
+       0.14pp  p=   6 m=  1  ('MISSING', 'module-menu', 'span')  MXFUN01:Understand; MXFUN01:Know
+       0.13pp  p=  50 m= 50  ('EXTRA', 'acks', 'div.acks.acksTemplate')  
+       0.12pp  p=   2 m=  2  ('EXTRA', 'module-menu', 'th')  MXFUN02:[Click drop image] / Please can an image of equals sign go h; MXFUN02:[Click drop image] / / [H4] Patterns
+       0.11pp  p=  31 m= 29  ('EXTRA', 'footer', 'li')  
+       0.10pp  p=  29 m= 27  ('MISSING', 'footer', 'li')  
+       0.08pp  p=  41 m= 41  ('MISSING', 'acks', 'div.acks')  
+       0.08pp  p=  11 m=  2  ('EXTRA', 'root', 'body.container-fluid.fundamentals')  
+       0.08pp  p=  14 m=  8  ('MISSING', 'module-menu', 'h5')  ARFUN01:Learning intentions; ARFUN01:You will show your understanding by:
+       0.07pp  p=  16 m=  6  ('EXTRA', 'module-menu', 'div.col-12.col-md-8')  
+       0.07pp  p=  28 m= 26  ('EXTRA', 'footer', 'a.home-nav')  
+       0.07pp  p=  27 m= 25  ('MISSING', 'footer', 'a.home-nav')  
+       0.06pp  p=   2 m=  2  ('EXTRA', 'module-menu', 'tr')  
+       0.06pp  p=  10 m= 10  ('MISSING', 'module-menu', 'li')  ENFUN01:understand why we are writing and who we are writing for; ENFUN01:identifying the specific purposes and audiences of a text (e
+       0.06pp  p=   4 m=  4  ('EXTRA', 'module-menu', 'a')  ARFUN03:https://www.istockphoto.com/photo/boys-and-girls-dancing-gm6; ARFUN05:https://www.istockphoto.com/vector/acting-isolated-cartoon-v
+       0.06pp  p=   6 m=  1  ('MISSING', 'module-menu', 'div.col-12.col-md-6.offset-md-0')  
+       0.05pp  p=   1 m=  1  ('EXTRA', 'module-menu', 'img.img-fluid')  
+       0.05pp  p=   5 m=  1  ('MISSING', 'root', 'body.Fundamentals.container-fluid')  
+       0.05pp  p=  22 m= 22  ('EXTRA', 'root', 'div.col-12.col-md-8')  
+       0.05pp  p=  25 m= 25  ('MISSING', 'title', 'h1')  ARFUN01:What the arts have in common; ARFUN01:TE REO required
+       0.05pp  p=  25 m= 25  ('MISSING', 'title', 'span')  ARFUN01:What the arts have in common; ARFUN01:TE REO required
+       0.05pp  p=  21 m= 21  ('EXTRA', 'acks', 'WIDGET')  
+       0.05pp  p=  20 m= 20  ('EXTRA', 'root', 'div.row')  
+       0.04pp  p=  17 m= 15  ('MISSING', 'footer', 'div#footer')  
+       0.04pp  p=  17 m= 15  ('EXTRA', 'footer', 'div#footer')  
+       0.04pp  p=  18 m= 18  ('EXTRA', 'footer', 'ul.footer-nav.fundamentals-nav')  
+       0.04pp  p=   5 m=  1  ('MISSING', 'module-menu', 'div.col-12.col-md-8.offset-md-0')  
+       0.03pp  p=  13 m= 11  ('MISSING', 'footer', 'ul.footer-nav')  
+       0.03pp  p=  13 m= 13  ('MISSING', 'footer', 'ul.footer-nav.fundamentals-nav')  
+       0.03pp  p=  14 m= 14  ('MISSING', 'acks', 'WIDGET')  
+       0.03pp  p=   6 m=  1  ('MISSING', 'root', 'body.container-fluid')  
+       0.03pp  p=  10 m=  9  ('EXTRA', 'footer', 'a#next-lesson')  
+       0.03pp  p=   3 m=  3  ('MISSING', 'acks', 'div.acks.acksAI.acksTemplate')  
+       0.02pp  p=   1 m=  1  ('EXTRA', 'title', 'h1')  XFUN02:Junior Learning Support FUNdamental Skills
+       0.02pp  p=   1 m=  1  ('EXTRA', 'title', 'span')  XFUN02:Junior Learning Support FUNdamental Skills
+
+== template=Bilingual — pages 63: total loss 62.07pp (mean score ≈ 37.9)
+     9.66pp  pages    56   editorial-claude
+     9.20pp  pages   103   wrapper-empty
+     8.62pp  pages    57   editorial-gold
+     5.53pp  pages    94   alignment-residue
+     3.76pp  pages    80   merged-split
+     2.68pp  pages    58   tag-swap
+     2.62pp  pages    41   container-shift:free->activity
+     2.55pp  pages    43   container-shift:activity->free
+     2.49pp  pages    43   wrapper-of-editorial-gold
+     2.10pp  pages    38   container-shift:activity->widget
+     1.85pp  pages    90   widget-line
+     1.80pp  pages    24   wrapper-of-editorial-claude
+     1.78pp  pages    65   chrome
+     1.77pp  pages    57   wrapper-of-container-shift
+     1.03pp  pages    32   wrapper-of-widget-line
+     0.88pp  pages    36   wrapper-of-alignment-residue
+   by REGION (region · direction):
+      17.92pp  ('activity', 'MISSING')
+      16.37pp  ('body', 'EXTRA')
+      14.51pp  ('body', 'MISSING')
+      11.46pp  ('activity', 'EXTRA')
+       0.44pp  ('title', 'MISSING')
+       0.32pp  ('acks', 'EXTRA')
+       0.29pp  ('root', 'EXTRA')
+       0.18pp  ('footer', 'MISSING')
+       0.14pp  ('acks', 'MISSING')
+       0.11pp  ('root', 'MISSING')
+       0.11pp  ('footer', 'EXTRA')
+       0.11pp  ('module-menu', 'MISSING')
+       0.09pp  ('module-menu', 'EXTRA')
+       0.02pp  ('header', 'MISSING')
+   top detail rows (family · direction · region · container · signature) — pp · pages · modules:
+       3.32pp  p=  48 m= 16  ('editorial-claude', 'EXTRA', 'body', 'free', 'p')
+       2.71pp  p=  33 m= 13  ('editorial-claude', 'EXTRA', 'activity', 'activity', 'p')
+       1.86pp  p=  29 m= 13  ('editorial-gold', 'MISSING', 'body', 'free', 'p')
+       1.38pp  p=  32 m= 11  ('editorial-gold', 'MISSING', 'activity', 'activity', 'p')
+       1.34pp  p=  35 m= 13  ('merged-split', 'MISSING', 'activity', 'activity', 'p')
+       1.21pp  p=  29 m= 11  ('container-shift:free->activity', 'EXTRA', 'body', 'free', 'p')
+       1.07pp  p=  21 m=  8  ('wrapper-empty', 'EXTRA', 'activity', 'activity', 'audio.audioPlayer.icon')
+       1.03pp  p=  25 m= 10  ('wrapper-empty', 'EXTRA', 'activity', 'activity', 'img.img-fluid')
+       0.84pp  p=  28 m= 11  ('merged-split', 'EXTRA', 'body', 'free', 'p')
+       0.82pp  p=  42 m= 14  ('widget-line', 'MISSING', 'activity', 'activity', 'WIDGET')
+       0.80pp  p=  10 m=  7  ('editorial-gold', 'MISSING', 'body', 'free', 'b')
+       0.77pp  p=  17 m=  8  ('container-shift:activity->widget', 'EXTRA', 'activity', 'activity', 'p')
+       0.75pp  p=  26 m= 11  ('container-shift:activity->free', 'MISSING', 'activity', 'activity', 'p')
+       0.71pp  p=  15 m=  7  ('editorial-gold', 'MISSING', 'activity', 'activity', 'li')
+       0.65pp  p=  23 m= 10  ('editorial-claude', 'EXTRA', 'activity', 'activity', 'b')
+       0.65pp  p=  33 m= 10  ('wrapper-empty', 'EXTRA', 'body', 'free', 'img.img-fluid')
+       0.65pp  p=  34 m= 14  ('editorial-claude', 'EXTRA', 'body', 'free', 'h3')
+       0.64pp  p=  21 m= 12  ('editorial-claude', 'EXTRA', 'body', 'free', 'b')
+       0.56pp  p=  29 m= 12  ('editorial-gold', 'MISSING', 'activity', 'activity', 'h3')
+       0.55pp  p=   6 m=  4  ('editorial-gold', 'MISSING', 'body', 'free', 'li')
+       0.54pp  p=  21 m= 10  ('wrapper-empty', 'EXTRA', 'body', 'free', 'audio.audioPlayer.icon')
+       0.51pp  p=  35 m= 13  ('widget-line', 'EXTRA', 'activity', 'activity', 'WIDGET')
+       0.49pp  p=  14 m=  6  ('container-shift:activity->widget', 'EXTRA', 'activity', 'activity', 'b')
+       0.49pp  p=   9 m=  6  ('wrapper-of-editorial-claude', 'EXTRA', 'body', 'free', 'div.row')
+       0.49pp  p=   9 m=  6  ('wrapper-of-editorial-claude', 'EXTRA', 'body', 'free', 'div.col-12.col-md-8')
+       0.49pp  p=  17 m=  9  ('merged-split', 'MISSING', 'activity', 'activity', 'li')
+       0.47pp  p=  20 m= 10  ('alignment-residue', 'EXTRA', 'activity', 'activity', 'p')
+       0.46pp  p=  28 m= 11  ('wrapper-empty', 'MISSING', 'activity', 'activity', 'img.img-fluid')
+       0.44pp  p=  24 m= 15  ('alignment-residue', 'EXTRA', 'body', 'free', 'p')
+       0.40pp  p=  28 m= 13  ('wrapper-of-editorial-gold', 'MISSING', 'body', 'free', 'div.row')
+       0.40pp  p=  12 m=  5  ('editorial-claude', 'EXTRA', 'body', 'free', 'li')
+       0.40pp  p=  17 m=  9  ('alignment-residue', 'MISSING', 'activity', 'activity', 'p')
+       0.38pp  p=  15 m=  7  ('alignment-residue', 'EXTRA', 'body', 'free', 'b')
+       0.37pp  p=  23 m=  9  ('widget-line', 'EXTRA', 'body', 'free', 'WIDGET')
+       0.35pp  p=  21 m= 12  ('wrapper-of-editorial-gold', 'MISSING', 'body', 'free', 'div.col-12.col-md-8')
+       0.35pp  p=  18 m=  8  ('wrapper-empty', 'MISSING', 'body', 'free', 'img.img-fluid')
+       0.35pp  p=  11 m=  5  ('container-shift:activity->free', 'EXTRA', 'activity', 'activity', 'p')
+       0.33pp  p=  16 m=  9  ('container-shift:free->activity', 'EXTRA', 'body', 'free', 'b')
+       0.33pp  p=  12 m=  7  ('container-shift:activity->free', 'MISSING', 'activity', 'activity', 'b')
+       0.33pp  p=  24 m=  9  ('container-shift:activity->free', 'MISSING', 'activity', 'activity', 'h3')
+   CHROME split (direction · region · signature) — pp · pages · modules · examples:
+       0.25pp  p=  14 m=  4  ('MISSING', 'title', 'span.sassoonI-text')  TRR103:Ee; TRR103:Ee
+       0.16pp  p=   9 m=  9  ('EXTRA', 'acks', 'div.acks.acksTemplate')  
+       0.14pp  p=  10 m= 10  ('EXTRA', 'root', 'div.row')  
+       0.14pp  p=  10 m= 10  ('EXTRA', 'root', 'div.col-12.col-md-8')  
+       0.14pp  p=  10 m= 10  ('EXTRA', 'acks', 'WIDGET')  
+       0.10pp  p=  15 m=  4  ('MISSING', 'title', 'h1')  TRR114:The Dipthongs: u; TRR203:Ngā Kūmua Rongoiti
+       0.10pp  p=  15 m=  4  ('MISSING', 'title', 'span')  TRR114:The Dipthongs: u; TRR203:Ngā Kūmua Rongoiti
+       0.08pp  p=  12 m= 10  ('MISSING', 'footer', 'li')  
+       0.06pp  p=   9 m=  9  ('MISSING', 'footer', 'a#next-lesson')  
+       0.05pp  p=  10 m=  4  ('MISSING', 'module-menu', 'div#module-head-buttons')  
+       0.05pp  p=  10 m=  4  ('MISSING', 'module-menu', 'div#module-menu-button.btn1.circle-button')  
+       0.05pp  p=  11 m=  9  ('MISSING', 'acks', 'WIDGET')  
+       0.05pp  p=   5 m=  5  ('MISSING', 'acks', 'div.acks.acksAI.acksTemplate')  
+       0.05pp  p=  10 m=  8  ('MISSING', 'root', 'div.row')  
+       0.05pp  p=  10 m=  8  ('MISSING', 'root', 'div.col-12.col-md-8')  
+       0.04pp  p=   4 m=  3  ('EXTRA', 'footer', 'li')  
+       0.04pp  p=   7 m=  5  ('MISSING', 'acks', 'div.acks')  
+       0.02pp  p=   3 m=  1  ('MISSING', 'header', 'p')  TRR114:Designer note: title please; TRR114:Designer note: title please
+       0.02pp  p=   3 m=  3  ('EXTRA', 'module-menu', 'div#module-menu-content.moduleMenu')  
+       0.02pp  p=   3 m=  3  ('EXTRA', 'module-menu', 'div.row')  
+       0.02pp  p=   3 m=  3  ('EXTRA', 'module-menu', 'WIDGET')  
+       0.02pp  p=   3 m=  3  ('EXTRA', 'acks', 'div.acks.acksAI.acksTemplate')  
+       0.02pp  p=   1 m=  1  ('MISSING', 'root', 'p')  TRR304:RED FLAG: The NZQA Learning Objectives document (Item 1) lin
+       0.02pp  p=   3 m=  2  ('EXTRA', 'footer', 'div#footer')  
+       0.02pp  p=   3 m=  2  ('EXTRA', 'footer', 'ul.footer-nav')  
+       0.02pp  p=   3 m=  2  ('EXTRA', 'footer', 'a#prev-lesson')  
+       0.02pp  p=   3 m=  2  ('EXTRA', 'footer', 'a.home-nav')  
+       0.02pp  p=   3 m=  3  ('MISSING', 'footer', 'a#prev-lesson')  
+       0.01pp  p=   2 m=  2  ('EXTRA', 'module-menu', 'div#module-head-buttons')  
+       0.01pp  p=   2 m=  2  ('EXTRA', 'module-menu', 'div#module-menu-button.btn1.circle-button')  
+       0.01pp  p=   2 m=  2  ('EXTRA', 'footer', 'a#next-lesson')  
+       0.01pp  p=   1 m=  1  ('MISSING', 'footer', 'div#footer')  
+       0.01pp  p=   1 m=  1  ('MISSING', 'footer', 'ul.footer-nav')  
+       0.01pp  p=   1 m=  1  ('MISSING', 'footer', 'a.home-nav')  
+       0.00pp  p=   1 m=  1  ('MISSING', 'acks', 'div.acks.acksTemplate')  

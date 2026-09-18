@@ -1,9 +1,9 @@
 {
   "_meta": {
     "purpose": "Committed PROTECTED-gate baseline (efficiency lever 2). The shared corpus DRIFTS between sessions so the BUILD_CHANGELOG absolutes never line up exactly — without a committed baseline the only rigorous proof of hold-or-improve is a second full A/B regen pass (~8m/round). Diff THIS after a regen instead. Refresh it (and the build/round) every shipped round, AFTER the gates pass.",
-    "build": "260619.57",
-    "round": 386,
-    "date": "2026-09-18",
+    "build": "260619.58",
+    "round": 387,
+    "date": "2026-09-19",
     "_round92_note": "Round 92 (ENGS302-01: side-alert-box-in-table + dragAndDrop activity wrapper / data-table capture / phantom-journal-button fix). Verified on a FULL 0-stale tightened regen vs the round-91 committed baseline (which matched the fast-loop baseline exactly: over 42 / any 181). PRIMARY skeleton IMPROVED (pages>=50% 524->539 +15, >=75% 65->70 +5, mean 47.8->48.2, median 49.3->49.8); compare_structure exact 5893->5902 (+9) / missing 261->252 (-9) / EXTRA 142 HELD; structural-clean 1290->1291 (95.0->95.1%) / leak 254->253 (-1) / leak pages 68->67 (-1); tags 9557/9557; flipCard divergence 0 (37/13/10/14); speechBubble defect 0. body_compare any 181->184 (+3) — the +3 over-capture (ENGC201-06, ENGR101-05, MXDB301-03) is the UNAVOIDABLE cost of capturing the dragAndDrop/activity DATA TABLE into the widget (the user's explicit fix): those tables ARE the widget's data the human BUILDS, but body_compare cannot credit Claude's un-built placeholder, and for these 3 the human keeps the table free. Net-positive per the MEASUREMENT MANDATE (judge a structural change FIRST on the skeleton, which improved +15) + the NET-POSITIVE convention. _round91_note: round 91 (ENGS302 emphasis-bullets/caption/media-url/lesson-name) shipped +1 skeleton / +1 compare exact / +2 missing.",
     "corpus": {
       "claude_pages": 1358,
@@ -80,15 +80,16 @@
     "_note_r383": "Round 383: a kept table's first row with a >= 9-word cell is a data row (td), not a header (203 pages / 94 modules; scoped ship #5 since the r377 full). Skeleton 53.219 -> 53.250 (+0.031pp; 95 movers 78 up / 17 down), >=50 1148, >=75 184 -> 185, >=90 15, RAW 37.541 -> 37.560; every other gate EXACT.",
     "_note_r384": "Round 384: DECLINED, shipped inert (elements.table.cell_bullets enabled false) — the corpus is byte-identical to r383; every r383 baseline stands.",
     "_note_r385": "Round 385: the inquiry / fundamentals panel's first own heading is h2 (43 pages / 43 modules; scoped ship #6 since the r377 full). Skeleton 53.250 -> 53.265 (+0.015pp; 38 movers 24 up / 14 down), >=50 1148 -> 1149, >=75 185, >=90 15, RAW 37.560 -> 37.575; every other gate EXACT.",
-    "_note_r386": "Round 386: a measurement-tool round - _structural_skeleton.label renders the class tokens SORTED (97 gold pages write class=\"col-12 col-md-8\"); the r385 corpus re-scored: skeleton 53.265 -> 53.351 (+0.087pp, an instrument correction; 77 movers 76 up / 1 down), >=50 1149 -> 1151, >=75 185, >=90 15, RAW 37.575 -> 37.675; every other gate EXACT; no regeneration."
+    "_note_r386": "Round 386: a measurement-tool round - _structural_skeleton.label renders the class tokens SORTED (97 gold pages write class=\"col-12 col-md-8\"); the r385 corpus re-scored: skeleton 53.265 -> 53.351 (+0.087pp, an instrument correction; 77 movers 76 up / 1 down), >=50 1149 -> 1151, >=75 185, >=90 15, RAW 37.575 -> 37.675; every other gate EXACT; no regeneration.",
+    "_note_r387": "Round 387: the whakatauki does not close its column (63 pages / 59 modules; scoped ship #7 since the r377 full). Skeleton 53.351 -> 53.395 (+0.043pp; 62 movers 54 up / 8 down, pp-sum +84.7), >=50 1151 -> 1152, >=75 185 -> 189, >=90 15, RAW 37.675 -> 37.688; every other gate EXACT."
   },
   "skeleton": {
-    "mean_scaffold_pct": 53.351,
-    "median_scaffold_pct": 53.8,
-    "pages_ge_50": 1151,
-    "pages_ge_75": 185,
+    "mean_scaffold_pct": 53.395,
+    "median_scaffold_pct": 54.0,
+    "pages_ge_50": 1152,
+    "pages_ge_75": 189,
     "pages_ge_90": 15,
-    "raw_mean_pct": 37.675,
+    "raw_mean_pct": 37.688,
     "pairs": 1956,
     "pairs_skipped": 0,
     "_note_r350": "Round 350: the dragAndDrop build kickoff shape 1 + the 03B button row — SCAFFOLD identical page-for-page to r349 (a build is inside the collapsed widget marker); RAW 35.049 → 35.115. State outputs/_r350_sk_final.json.",
@@ -121,7 +122,8 @@
     "_note_r382": "Round 382: SCAFFOLD 53.1229 -> 53.2192 (+0.096pp; 96 movers, ALL up, pp-sum +188.3 - BLL144_1_0 +52.5), >=50 1148, >=75 184, >=90 15, RAW 37.541; the repaired body reader on the r381 corpus (no regeneration). A comparison across r382 must use the repaired reader on both sides.",
     "_note_r383": "Round 383: SCAFFOLD 53.2192 -> 53.2500 (+0.031pp; 95 movers, 78 up / 17 down, pp-sum +60.4 - CEDO501_1_0 -3.4, ENGJ403_4_0 -3.2 named), >=50 1148, >=75 185, >=90 15, RAW 37.560; SCOPED regeneration of 94 modules (203 pages).",
     "_note_r385": "Round 385: SCAFFOLD 53.2500 -> 53.2647 (+0.015pp; 38 movers, 24 up / 14 down, pp-sum +28.7 - the five biggest dips the alignment artefact, position-free overlap flat or up), >=50 1149, >=75 185, >=90 15, RAW 37.575; SCOPED regeneration of 43 modules (43 pages).",
-    "_note_r386": "Round 386: SCAFFOLD 53.2647 -> 53.3513 (+0.087pp; 77 movers, 76 up / 1 down, pp-sum +169.3 - XDLS906_4_0 +15.1), >=50 1151, >=75 185, >=90 15, RAW 37.675; the order-blind class label on the r385 corpus (no regeneration). A comparison across r386 must use the order-blind label on both sides."
+    "_note_r386": "Round 386: SCAFFOLD 53.2647 -> 53.3513 (+0.087pp; 77 movers, 76 up / 1 down, pp-sum +169.3 - XDLS906_4_0 +15.1), >=50 1151, >=75 185, >=90 15, RAW 37.675; the order-blind class label on the r385 corpus (no regeneration). A comparison across r386 must use the order-blind label on both sides.",
+    "_note_r387": "Round 387: SCAFFOLD 53.3513 -> 53.3946 (+0.043pp; 62 movers, 54 up / 8 down, pp-sum +84.7 - the 8 dips the whakatauki family's gold-BREAK minority: OSAI201_0_0 -3.4, SSCI205_0_0 -2.8, HPRE203_0_0 -2.6, EXBP901_2_0 -1.0, OSBY401_0_0 -0.8, CEDO301_0_0 -0.7, EXIP901_5_0 -0.6, CEDW501_1_0 -0.3), >=50 1152, >=75 189, >=90 15, RAW 37.688; SCOPED regeneration of the 59 whakatauki modules, the probe proving the other 357 byte-identical. State outputs/_s26_r387_sk_final.json."
   },
   "compare_structure": {
     "exact_chain": 11643,

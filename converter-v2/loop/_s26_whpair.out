@@ -1,0 +1,94 @@
+
+== ALL: Claude whakatauki rows 82; paired FLOW 35 / BREAK 9 → flow share 0.80
+     35  FLOW (gold same row as its whakatauki)
+     23  gold-nowhere
+      9  BREAK (gold new row)
+      4  page-end
+      4  untouched:h3
+      3  untouched:wananga
+      2  untouched:h4
+      1  untouched:WIDGET
+      1  untouched:alert
+
+== template=Inquiry: Claude whakatauki rows 6; paired FLOW 0 / BREAK 1 → flow share 0.00
+      4  gold-nowhere
+      1  untouched:wananga
+      1  BREAK (gold new row)
+
+== template=Standard: Claude whakatauki rows 76; paired FLOW 35 / BREAK 8 → flow share 0.81
+     35  FLOW (gold same row as its whakatauki)
+     19  gold-nowhere
+      8  BREAK (gold new row)
+      4  page-end
+      4  untouched:h3
+      2  untouched:wananga
+      2  untouched:h4
+      1  untouched:WIDGET
+      1  untouched:alert
+
+== tmpl+subj=Inquiry/ConnectED: Claude whakatauki rows 4; paired FLOW 0 / BREAK 0 → flow share 0.00
+      3  gold-nowhere
+      1  untouched:wananga
+
+== tmpl+subj=Inquiry/Leaving to Learn: Claude whakatauki rows 2; paired FLOW 0 / BREAK 1 → flow share 0.00
+      1  gold-nowhere
+      1  BREAK (gold new row)
+
+== tmpl+subj=Standard/1-10 English: Claude whakatauki rows 5; paired FLOW 1 / BREAK 0 → flow share 1.00
+      3  gold-nowhere
+      1  untouched:h3
+      1  FLOW (gold same row as its whakatauki)
+
+== tmpl+subj=Standard/1-10 Mathematics: Claude whakatauki rows 3; paired FLOW 1 / BREAK 0 → flow share 1.00
+      2  gold-nowhere
+      1  FLOW (gold same row as its whakatauki)
+
+== tmpl+subj=Standard/1-10 Science: Claude whakatauki rows 1; paired FLOW 1 / BREAK 0 → flow share 1.00
+      1  FLOW (gold same row as its whakatauki)
+
+== tmpl+subj=Standard/1-10 Social Science: Claude whakatauki rows 2; paired FLOW 0 / BREAK 1 → flow share 0.00
+      1  BREAK (gold new row)
+      1  untouched:h3
+
+== tmpl+subj=Standard/ANZH: Claude whakatauki rows 2; paired FLOW 0 / BREAK 0 → flow share 0.00
+      2  page-end
+
+== tmpl+subj=Standard/ConnectED: Claude whakatauki rows 10; paired FLOW 3 / BREAK 0 → flow share 1.00
+      3  FLOW (gold same row as its whakatauki)
+      2  untouched:h3
+      2  untouched:wananga
+      1  gold-nowhere
+      1  untouched:WIDGET
+      1  untouched:alert
+
+== tmpl+subj=Standard/EXPlore: Claude whakatauki rows 1; paired FLOW 0 / BREAK 0 → flow share 0.00
+      1  gold-nowhere
+
+== tmpl+subj=Standard/Leaving to Learn: Claude whakatauki rows 15; paired FLOW 4 / BREAK 1 → flow share 0.80
+      8  gold-nowhere
+      4  FLOW (gold same row as its whakatauki)
+      2  page-end
+      1  BREAK (gold new row)
+
+== tmpl+subj=Standard/NCEA1: Claude whakatauki rows 7; paired FLOW 1 / BREAK 3 → flow share 0.25
+      3  BREAK (gold new row)
+      2  untouched:h4
+      1  FLOW (gold same row as its whakatauki)
+      1  gold-nowhere
+
+== tmpl+subj=Standard/None: Claude whakatauki rows 2; paired FLOW 0 / BREAK 1 → flow share 0.00
+      1  BREAK (gold new row)
+      1  gold-nowhere
+
+== tmpl+subj=Standard/Online Safety (OS9000): Claude whakatauki rows 28; paired FLOW 24 / BREAK 2 → flow share 0.92
+     24  FLOW (gold same row as its whakatauki)
+      2  BREAK (gold new row)
+      2  gold-nowhere
+
+== examples ==
+   gold-nowhere: CEDO301_0_0 p «Human wellbeing involves our spiritual, » | CEDT104_0_0 p «Hold fast to our culture, our māna, and » | CEDT208_0_0 p «Ko toku Tokiga» | CEDW201_0_0 p «Manaakitanga is showing love and compass» | ENGJ101_0_0 p «Welcome to a magical world of stories an»
+   FLOW (gold same row as its whakatauki): CEDR501_0_0 p «This whakataukī reminds us that conversa» | CEDT501_0_0 p «Speak to me, speak back – through dialog» | CEDW501_1_0 p «The whakataukī proverb) here shares the » | ENGR102_1_0 p «What does being a buddy or friend mean t» | HES1007_0_0 p «In Health Studies, we like to explore an»
+   BREAK (gold new row): HIS1005_0_0 p «The whakataukī chosen for this topic con» | HIS1006_0_0 p «The whakataukī chosen for this module is» | HIS1008_0_0 p «The whakataukī chosen for this module is» | HPRE203_0_0 p «In this module you will build the knowle» | OSAI201_0_0 p «This whakataukī means that having help f»
+
+== ON set (FLOW pages) ==
+   Standard: 35 pages / 35 modules: CEDR501 CEDT501 CEDW501 ENGR102 HES1007 MXEX302 OSAH301 OSAH401 OSAH501 OSAI101 OSAI401 OSAI501 OSBY101 OSBY201 OSBY301 OSBY401 OSGM101 OSGM201 OSGM301 OSGM401 OSGM501 OSOH101 OSOH201 OSOH401 OSOH501 OSSC301 OSSC401 OSSC501 OSSM301 OSSM401 SCCH301 XDLS904 XDLS905 XDLS911 XMES203

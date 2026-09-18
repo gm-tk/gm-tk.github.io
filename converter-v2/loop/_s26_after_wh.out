@@ -1,0 +1,370 @@
+
+== ALL — pages 1963
+  whakatauki    gold   n=   91 followed-on 0.63 (pages 57 / 91, mods 51): LAST in column 34 (0.37), followed by p 32 (0.35), followed by repeat 15 (0.16), followed by img 4 (0.04), followed by div 2 (0.02), followed by alert.cultural 1 (0.01), followed by alert 1 (0.01)  <== CANDIDATE
+                claude n=   82 followed-on 0.00: LAST in column 82 (1.00)
+
+== template=Standard — pages 1738
+  whakatauki    gold   n=   81 followed-on 0.70 (pages 57 / 81, mods 51): followed by p 32 (0.40), LAST in column 24 (0.30), followed by repeat 15 (0.19), followed by img 4 (0.05), followed by div 2 (0.02), followed by alert.cultural 1 (0.01), followed by alert 1 (0.01)  <== CANDIDATE
+                claude n=   76 followed-on 0.00: LAST in column 76 (1.00)
+
+== template=Inquiry — pages 98
+  whakatauki    gold   n=    5 followed-on 0.00 (pages 0 / 5, mods 0): LAST in column 5 (1.00)
+                claude n=    6 followed-on 0.00: LAST in column 6 (1.00)
+
+== template=Fundamentals — pages 64
+
+== template=Bilingual — pages 63
+  whakatauki    gold   n=    5 followed-on 0.00 (pages 0 / 5, mods 0): LAST in column 5 (1.00)
+                claude n=    0 followed-on 0.00: 
+
+== subject=NCEA1 — pages 333
+  whakatauki    gold   n=   25 followed-on 0.56 (pages 14 / 25, mods 11): LAST in column 11 (0.44), followed by p 7 (0.28), followed by repeat 3 (0.12), followed by div 2 (0.08), followed by img 1 (0.04), followed by video 1 (0.04)
+                claude n=    7 followed-on 0.00: LAST in column 7 (1.00)
+
+== subject=1-10 Mathematics — pages 332
+  whakatauki    gold   n=    2 followed-on 1.00 (pages 2 / 2, mods 2): followed by p 1 (0.50), followed by img 1 (0.50)
+                claude n=    3 followed-on 0.00: LAST in column 3 (1.00)
+
+== tmpl+subj=Standard/NCEA1 — pages 328
+  whakatauki    gold   n=   25 followed-on 0.56 (pages 14 / 25, mods 11): LAST in column 11 (0.44), followed by p 7 (0.28), followed by repeat 3 (0.12), followed by div 2 (0.08), followed by img 1 (0.04), followed by video 1 (0.04)
+                claude n=    7 followed-on 0.00: LAST in column 7 (1.00)
+
+== tmpl+subj=Standard/1-10 Mathematics — pages 323
+  whakatauki    gold   n=    2 followed-on 1.00 (pages 2 / 2, mods 2): followed by p 1 (0.50), followed by img 1 (0.50)
+                claude n=    3 followed-on 0.00: LAST in column 3 (1.00)
+
+== subject=1-10 English — pages 304
+  whakatauki    gold   n=    5 followed-on 0.40 (pages 2 / 5, mods 2): LAST in column 3 (0.60), followed by p 1 (0.20), followed by h2 1 (0.20)
+                claude n=    5 followed-on 0.00: LAST in column 5 (1.00)
+
+== tmpl+subj=Standard/1-10 English — pages 296
+  whakatauki    gold   n=    5 followed-on 0.40 (pages 2 / 5, mods 2): LAST in column 3 (0.60), followed by p 1 (0.20), followed by h2 1 (0.20)
+                claude n=    5 followed-on 0.00: LAST in column 5 (1.00)
+
+== subject=1-10 Blended Literacy — pages 258
+
+== prefix=BLL — pages 258
+
+== tmpl+subj=Standard/1-10 Blended Literacy — pages 239
+
+== subject=Leaving to Learn — pages 206
+  whakatauki    gold   n=   19 followed-on 0.74 (pages 14 / 19, mods 14): followed by p 9 (0.47), LAST in column 5 (0.26), followed by repeat 4 (0.21), followed by img 1 (0.05)
+                claude n=   17 followed-on 0.00: LAST in column 17 (1.00)
+
+== tmpl+subj=Standard/Leaving to Learn — pages 181
+  whakatauki    gold   n=   17 followed-on 0.82 (pages 14 / 17, mods 14): followed by p 9 (0.53), followed by repeat 4 (0.24), LAST in column 3 (0.18), followed by img 1 (0.06)
+                claude n=   15 followed-on 0.00: LAST in column 15 (1.00)
+
+== subject=Online Safety (OS9000) — pages 130
+  whakatauki    gold   n=   13 followed-on 0.92 (pages 12 / 13, mods 12): followed by p 6 (0.46), followed by repeat 6 (0.46), LAST in column 1 (0.08)
+                claude n=   28 followed-on 0.00: LAST in column 28 (1.00)
+
+== tmpl+subj=Standard/Online Safety (OS9000) — pages 130
+  whakatauki    gold   n=   13 followed-on 0.92 (pages 12 / 13, mods 12): followed by p 6 (0.46), followed by repeat 6 (0.46), LAST in column 1 (0.08)
+                claude n=   28 followed-on 0.00: LAST in column 28 (1.00)
+
+== subject=ConnectED — pages 114
+  whakatauki    gold   n=   12 followed-on 0.50 (pages 6 / 12, mods 3): LAST in column 6 (0.50), followed by p 2 (0.17), followed by img 1 (0.08), followed by alert.cultural 1 (0.08), followed by alert 1 (0.08), followed by repeat 1 (0.08)
+                claude n=   14 followed-on 0.00: LAST in column 14 (1.00)
+
+== prefix=MXFL — pages 94
+
+== prefix=ENGI — pages 84
+
+== subject=ANZH — pages 78
+  whakatauki    gold   n=    3 followed-on 0.67 (pages 2 / 3, mods 2): followed by p 2 (0.67), LAST in column 1 (0.33)
+                claude n=    2 followed-on 0.00: LAST in column 2 (1.00)
+
+== tmpl+subj=Standard/ANZH — pages 78
+  whakatauki    gold   n=    3 followed-on 0.67 (pages 2 / 3, mods 2): followed by p 2 (0.67), LAST in column 1 (0.33)
+                claude n=    2 followed-on 0.00: LAST in column 2 (1.00)
+
+== prefix=ANZH — pages 78
+  whakatauki    gold   n=    3 followed-on 0.67 (pages 2 / 3, mods 2): followed by p 2 (0.67), LAST in column 1 (0.33)
+                claude n=    2 followed-on 0.00: LAST in column 2 (1.00)
+
+== prefix=HIS — pages 77
+  whakatauki    gold   n=    4 followed-on 0.25 (pages 1 / 4, mods 1): LAST in column 3 (0.75), followed by repeat 1 (0.25)
+                claude n=    4 followed-on 0.00: LAST in column 4 (1.00)
+
+== prefix=PES — pages 75
+  whakatauki    gold   n=    2 followed-on 0.50 (pages 1 / 2, mods 1): LAST in column 1 (0.50), followed by p 1 (0.50)
+                claude n=    0 followed-on 0.00: 
+
+== prefix=XDLS — pages 75
+  whakatauki    gold   n=    6 followed-on 0.33 (pages 2 / 6, mods 2): LAST in column 4 (0.67), followed by repeat 2 (0.33)
+                claude n=    9 followed-on 0.00: LAST in column 9 (1.00)
+
+== prefix=AGH — pages 74
+  whakatauki    gold   n=    4 followed-on 0.50 (pages 2 / 4, mods 2): LAST in column 2 (0.50), followed by repeat 1 (0.25), followed by p 1 (0.25)
+                claude n=    0 followed-on 0.00: 
+
+== tmpl+subj=Standard/ConnectED — pages 71
+  whakatauki    gold   n=    9 followed-on 0.67 (pages 6 / 9, mods 3): LAST in column 3 (0.33), followed by p 2 (0.22), followed by img 1 (0.11), followed by alert.cultural 1 (0.11), followed by alert 1 (0.11), followed by repeat 1 (0.11)
+                claude n=   10 followed-on 0.00: LAST in column 10 (1.00)
+
+== subject=Te Marautanga o Aotearoa TMoA — pages 63
+  whakatauki    gold   n=    5 followed-on 0.00 (pages 0 / 5, mods 0): LAST in column 5 (1.00)
+                claude n=    0 followed-on 0.00: 
+
+== tmpl+subj=Bilingual/Te Marautanga o Aotearoa TMoA — pages 63
+  whakatauki    gold   n=    5 followed-on 0.00 (pages 0 / 5, mods 0): LAST in column 5 (1.00)
+                claude n=    0 followed-on 0.00: 
+
+== prefix=ENGJ — pages 60
+  whakatauki    gold   n=    1 followed-on 0.00 (pages 0 / 1, mods 0): LAST in column 1 (1.00)
+                claude n=    3 followed-on 0.00: LAST in column 3 (1.00)
+
+== prefix=MXFU — pages 56
+  whakatauki    gold   n=    1 followed-on 1.00 (pages 1 / 1, mods 1): followed by img 1 (1.00)
+                claude n=    0 followed-on 0.00: 
+
+== prefix=TRR — pages 55
+  whakatauki    gold   n=    4 followed-on 0.00 (pages 0 / 4, mods 0): LAST in column 4 (1.00)
+                claude n=    0 followed-on 0.00: 
+
+== prefix=ENGC — pages 54
+  whakatauki    gold   n=    2 followed-on 0.50 (pages 1 / 2, mods 1): followed by p 1 (0.50), LAST in column 1 (0.50)
+                claude n=    0 followed-on 0.00: 
+
+== prefix=ENGS — pages 52
+  whakatauki    gold   n=    1 followed-on 1.00 (pages 1 / 1, mods 1): followed by h2 1 (1.00)
+                claude n=    0 followed-on 0.00: 
+
+== prefix=MXDI — pages 52
+  whakatauki    gold   n=    1 followed-on 1.00 (pages 1 / 1, mods 1): followed by p 1 (1.00)
+                claude n=    0 followed-on 0.00: 
+
+== prefix=PHE — pages 49
+  whakatauki    gold   n=    8 followed-on 0.50 (pages 4 / 8, mods 4): LAST in column 4 (0.50), followed by p 2 (0.25), followed by video 1 (0.12), followed by div 1 (0.12)
+                claude n=    0 followed-on 0.00: 
+
+== subject=None — pages 46
+  whakatauki    gold   n=    3 followed-on 0.67 (pages 2 / 3, mods 2): followed by p 1 (0.33), LAST in column 1 (0.33), followed by repeat 1 (0.33)
+                claude n=    2 followed-on 0.00: LAST in column 2 (1.00)
+
+== prefix=ENGR — pages 46
+  whakatauki    gold   n=    1 followed-on 0.00 (pages 0 / 1, mods 0): LAST in column 1 (1.00)
+                claude n=    2 followed-on 0.00: LAST in column 2 (1.00)
+
+== tmpl+subj=Inquiry/ConnectED — pages 43
+  whakatauki    gold   n=    3 followed-on 0.00 (pages 0 / 3, mods 0): LAST in column 3 (1.00)
+                claude n=    4 followed-on 0.00: LAST in column 4 (1.00)
+
+== tmpl+subj=Standard/None — pages 41
+  whakatauki    gold   n=    3 followed-on 0.67 (pages 2 / 3, mods 2): followed by p 1 (0.33), LAST in column 1 (0.33), followed by repeat 1 (0.33)
+                claude n=    2 followed-on 0.00: LAST in column 2 (1.00)
+
+== prefix=MXDB — pages 41
+  whakatauki    gold   n=    0 followed-on 0.00 (pages 0 / 0, mods 0): 
+                claude n=    1 followed-on 0.00: LAST in column 1 (1.00)
+
+== prefix=MXEO — pages 40
+  whakatauki    gold   n=    0 followed-on 0.00 (pages 0 / 0, mods 0): 
+                claude n=    1 followed-on 0.00: LAST in column 1 (1.00)
+
+== prefix=MXEX — pages 40
+  whakatauki    gold   n=    0 followed-on 0.00 (pages 0 / 0, mods 0): 
+                claude n=    1 followed-on 0.00: LAST in column 1 (1.00)
+
+== prefix=HES — pages 38
+  whakatauki    gold   n=    6 followed-on 1.00 (pages 6 / 6, mods 3): followed by p 3 (0.50), followed by div 1 (0.17), followed by img 1 (0.17), followed by repeat 1 (0.17)
+                claude n=    3 followed-on 0.00: LAST in column 3 (1.00)
+
+== subject=1-10 Social Science — pages 38
+  whakatauki    gold   n=    1 followed-on 0.00 (pages 0 / 1, mods 0): LAST in column 1 (1.00)
+                claude n=    2 followed-on 0.00: LAST in column 2 (1.00)
+
+== prefix=XGF — pages 38
+  whakatauki    gold   n=    1 followed-on 1.00 (pages 1 / 1, mods 1): followed by p 1 (1.00)
+                claude n=    2 followed-on 0.00: LAST in column 2 (1.00)
+
+== prefix=CEDO — pages 37
+  whakatauki    gold   n=    3 followed-on 0.33 (pages 1 / 3, mods 1): LAST in column 2 (0.67), followed by img 1 (0.33)
+                claude n=    4 followed-on 0.00: LAST in column 4 (1.00)
+
+== prefix=CEDT — pages 36
+  whakatauki    gold   n=    5 followed-on 0.40 (pages 2 / 5, mods 1): LAST in column 3 (0.60), followed by p 1 (0.20), followed by alert.cultural 1 (0.20)
+                claude n=    5 followed-on 0.00: LAST in column 5 (1.00)
+
+== tmpl+subj=Standard/1-10 Social Science — pages 32
+  whakatauki    gold   n=    1 followed-on 0.00 (pages 0 / 1, mods 0): LAST in column 1 (1.00)
+                claude n=    2 followed-on 0.00: LAST in column 2 (1.00)
+
+== prefix=XMES — pages 32
+  whakatauki    gold   n=    5 followed-on 1.00 (pages 5 / 5, mods 5): followed by p 4 (0.80), followed by repeat 1 (0.20)
+                claude n=    2 followed-on 0.00: LAST in column 2 (1.00)
+
+== prefix=XLP — pages 28
+  whakatauki    gold   n=    6 followed-on 0.83 (pages 5 / 6, mods 5): followed by p 3 (0.50), followed by repeat 1 (0.17), followed by img 1 (0.17), LAST in column 1 (0.17)
+                claude n=    3 followed-on 0.00: LAST in column 3 (1.00)
+
+== prefix=OSBY — pages 23
+  whakatauki    gold   n=    1 followed-on 1.00 (pages 1 / 1, mods 1): followed by p 1 (1.00)
+                claude n=    5 followed-on 0.00: LAST in column 5 (1.00)
+
+== prefix=OSOH — pages 23
+  whakatauki    gold   n=    4 followed-on 1.00 (pages 4 / 4, mods 4): followed by repeat 2 (0.50), followed by p 2 (0.50)
+                claude n=    5 followed-on 0.00: LAST in column 5 (1.00)
+
+== prefix=OSAI — pages 22
+  whakatauki    gold   n=    1 followed-on 0.00 (pages 0 / 1, mods 0): LAST in column 1 (1.00)
+                claude n=    5 followed-on 0.00: LAST in column 5 (1.00)
+
+== prefix=OSGM — pages 22
+  whakatauki    gold   n=    2 followed-on 1.00 (pages 2 / 2, mods 2): followed by repeat 2 (1.00)
+                claude n=    5 followed-on 0.00: LAST in column 5 (1.00)
+
+== tmpl+subj=Inquiry/1-10 Blended Literacy — pages 19
+
+== prefix=SSOG — pages 19
+  whakatauki    gold   n=    0 followed-on 0.00 (pages 0 / 0, mods 0): 
+                claude n=    1 followed-on 0.00: LAST in column 1 (1.00)
+
+== tmpl+subj=Inquiry/Leaving to Learn — pages 18
+  whakatauki    gold   n=    2 followed-on 0.00 (pages 0 / 2, mods 0): LAST in column 2 (1.00)
+                claude n=    2 followed-on 0.00: LAST in column 2 (1.00)
+
+== prefix=XTAS — pages 18
+  whakatauki    gold   n=    1 followed-on 1.00 (pages 1 / 1, mods 1): followed by p 1 (1.00)
+                claude n=    1 followed-on 0.00: LAST in column 1 (1.00)
+
+== prefix=TEDC — pages 17
+
+== subject=EXPlore — pages 15
+  whakatauki    gold   n=    2 followed-on 1.00 (pages 2 / 2, mods 2): followed by p 2 (1.00)
+                claude n=    1 followed-on 0.00: LAST in column 1 (1.00)
+
+== subject=1-10 Health and PE — pages 15
+
+== tmpl+subj=Fundamentals/1-10 Health and PE — pages 15
+
+== prefix=HPFUN — pages 15
+
+== prefix=OSAH — pages 15
+  whakatauki    gold   n=    0 followed-on 0.00 (pages 0 / 0, mods 0): 
+                claude n=    3 followed-on 0.00: LAST in column 3 (1.00)
+
+== prefix=OSSC — pages 15
+  whakatauki    gold   n=    3 followed-on 1.00 (pages 3 / 3, mods 3): followed by repeat 2 (0.67), followed by p 1 (0.33)
+                claude n=    3 followed-on 0.00: LAST in column 3 (1.00)
+
+== prefix=CEDK — pages 14
+  whakatauki    gold   n=    1 followed-on 0.00 (pages 0 / 1, mods 0): LAST in column 1 (1.00)
+                claude n=    1 followed-on 0.00: LAST in column 1 (1.00)
+
+== prefix=CEDR — pages 14
+  whakatauki    gold   n=    0 followed-on 0.00 (pages 0 / 0, mods 0): 
+                claude n=    1 followed-on 0.00: LAST in column 1 (1.00)
+
+== prefix=CEDW — pages 13
+  whakatauki    gold   n=    3 followed-on 1.00 (pages 3 / 3, mods 1): followed by alert 1 (0.33), followed by repeat 1 (0.33), followed by p 1 (0.33)
+                claude n=    3 followed-on 0.00: LAST in column 3 (1.00)
+
+== prefix=ART — pages 10
+
+== tmpl+subj=Standard/EXPlore — pages 10
+  whakatauki    gold   n=    2 followed-on 1.00 (pages 2 / 2, mods 2): followed by p 2 (1.00)
+                claude n=    1 followed-on 0.00: LAST in column 1 (1.00)
+
+== prefix=OSSM — pages 10
+  whakatauki    gold   n=    2 followed-on 1.00 (pages 2 / 2, mods 2): followed by p 2 (1.00)
+                claude n=    2 followed-on 0.00: LAST in column 2 (1.00)
+
+== subject=1-10 Science — pages 10
+  whakatauki    gold   n=    1 followed-on 1.00 (pages 1 / 1, mods 1): followed by p 1 (1.00)
+                claude n=    1 followed-on 0.00: LAST in column 1 (1.00)
+
+== prefix=SSCI — pages 10
+  whakatauki    gold   n=    1 followed-on 0.00 (pages 0 / 1, mods 0): LAST in column 1 (1.00)
+                claude n=    1 followed-on 0.00: LAST in column 1 (1.00)
+
+== tmpl+subj=Fundamentals/1-10 Mathematics — pages 9
+
+== prefix=MXFUN — pages 9
+
+== tmpl+subj=Standard/1-10 Science — pages 9
+  whakatauki    gold   n=    1 followed-on 1.00 (pages 1 / 1, mods 1): followed by p 1 (1.00)
+                claude n=    1 followed-on 0.00: LAST in column 1 (1.00)
+
+== prefix=SCCH — pages 9
+  whakatauki    gold   n=    1 followed-on 1.00 (pages 1 / 1, mods 1): followed by p 1 (1.00)
+                claude n=    1 followed-on 0.00: LAST in column 1 (1.00)
+
+== prefix=SCPH — pages 9
+  whakatauki    gold   n=    1 followed-on 1.00 (pages 1 / 1, mods 1): followed by repeat 1 (1.00)
+                claude n=    1 followed-on 0.00: LAST in column 1 (1.00)
+
+== prefix=SSFUN — pages 9
+
+== tmpl+subj=Fundamentals/1-10 English — pages 8
+
+== prefix=ENFUN — pages 8
+
+== prefix=HPRE — pages 8
+  whakatauki    gold   n=    1 followed-on 0.00 (pages 0 / 1, mods 0): LAST in column 1 (1.00)
+                claude n=    1 followed-on 0.00: LAST in column 1 (1.00)
+
+== prefix=PNR — pages 8
+  whakatauki    gold   n=    1 followed-on 0.00 (pages 0 / 1, mods 0): LAST in column 1 (1.00)
+                claude n=    0 followed-on 0.00: 
+
+== subject=1-10 Technology — pages 8
+
+== tmpl+subj=Fundamentals/1-10 Technology — pages 8
+
+== prefix=TEFUN — pages 8
+
+== subject=Te ara Whakapuawa -Wellbeing — pages 8
+
+== tmpl+subj=Inquiry/Te ara Whakapuawa -Wellbeing — pages 8
+
+== prefix=XWHA — pages 8
+
+== prefix=BLLR — pages 7
+  whakatauki    gold   n=    1 followed-on 1.00 (pages 1 / 1, mods 1): followed by p 1 (1.00)
+                claude n=    0 followed-on 0.00: 
+
+== tmpl+subj=Fundamentals/Leaving to Learn — pages 7
+
+== prefix=XFUN — pages 7
+
+== prefix=EXPFUN — pages 6
+
+== tmpl+subj=Fundamentals/1-10 Social Science — pages 6
+
+== prefix=TWHA — pages 6
+
+== subject=1-10 Arts — pages 5
+
+== tmpl+subj=Fundamentals/1-10 Arts — pages 5
+
+== prefix=ARFUN — pages 5
+
+== tmpl+subj=Fundamentals/None — pages 5
+
+== prefix=CHFUN — pages 5
+
+== prefix=ENG — pages 5
+  whakatauki    gold   n=    1 followed-on 0.00 (pages 0 / 1, mods 0): LAST in column 1 (1.00)
+                claude n=    0 followed-on 0.00: 
+
+== tmpl+subj=Inquiry/NCEA1 — pages 5
+
+== prefix=ENGFUN — pages 5
+
+== prefix=EXBP — pages 5
+  whakatauki    gold   n=    1 followed-on 1.00 (pages 1 / 1, mods 1): followed by p 1 (1.00)
+                claude n=    1 followed-on 0.00: LAST in column 1 (1.00)
+
+== tmpl+subj=Inquiry/EXPlore — pages 5
+
+== prefix=EXIP — pages 4
+  whakatauki    gold   n=    1 followed-on 1.00 (pages 1 / 1, mods 1): followed by p 1 (1.00)
+                claude n=    0 followed-on 0.00: 
+
+== prefix=TWHK — pages 2
+
+== tmpl+subj=Fundamentals/1-10 Science — pages 1
+
+== prefix=SCFUN — pages 1
