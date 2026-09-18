@@ -1,0 +1,315 @@
+OSSC401: identical 5 / changed 0
+OSSC501: identical 6 / changed 0
+OSSM301: identical 5 / changed 0
+OSSM401: identical 5 / changed 0
+  ~ PES1001_2_0.html: -5 +5
+     - <th><b>Description</b></th>
+     - <th><b>True</b></th>
+     - <th><b>False</b></th>
+     - <th><b>Landform</b></th>
+     - <th><b>Formed by</b></th>
+     + <th>Description</th>
+     + <th>True</th>
+     + <th>False</th>
+     + <th>Landform</th>
+     + <th>Formed by</th>
+  ~ PES1001_3_0.html: -3 +3
+     - <th><b>Igneous rocks</b></th>
+     - <th><b>Sedimentary rocks</b></th>
+     - <th><b>Metamorphic rocks</b></th>
+     + <th>Igneous rocks</th>
+     + <th>Sedimentary rocks</th>
+     + <th>Metamorphic rocks</th>
+PES1001: identical 8 / changed 2
+PES1002: identical 11 / changed 0
+PES1003: identical 11 / changed 0
+PES1004: identical 11 / changed 0
+PES1005: identical 12 / changed 0
+PES1007: identical 12 / changed 0
+PES1008: identical 19 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1004: identical 4 / changed 0
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+  ~ PHE1007_2_0.html: -4 +4
+     - <th><b>Joint Movement</b></th>
+     - <th><b>Agonist</b></th>
+     - <th><b>Antagonist</b></th>
+     - <th><b>Example</b></th>
+     + <th>Joint Movement</th>
+     + <th>Agonist</th>
+     + <th>Antagonist</th>
+     + <th>Example</th>
+PHE1007: identical 9 / changed 1
+  ~ PHE1008_1_0.html: -4 +4
+     - <th><b>Name</b></th>
+     - <th><b>Atua</b></th>
+     - <th><b>Name</b></th>
+     - <th><b>Atua</b></th>
+     + <th>Name</th>
+     + <th>Atua</th>
+     + <th>Name</th>
+     + <th>Atua</th>
+PHE1008: identical 5 / changed 1
+PNR101: identical 2 / changed 0
+PNR102: identical 3 / changed 0
+PNR104: identical 3 / changed 0
+SCCH301: identical 9 / changed 0
+  ~ SCFUN01_0_0.html: -4 +4
+     - <th><b>Observations</b></th>
+     - <th><b>Inferences</b></th>
+     - <th><b>Observations</b></th>
+     - <th><b>Inferences</b></th>
+     + <th>Observations</th>
+     + <th>Inferences</th>
+     + <th>Observations</th>
+     + <th>Inferences</th>
+SCFUN01: identical 0 / changed 1
+SCPH301: identical 9 / changed 0
+SSCI205: identical 10 / changed 0
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+  ~ SSFUN05_0_0.html: -2 +2
+     - <th><b>Similarities</b></th>
+     - <th><b>Differences</b></th>
+     + <th>Similarities</th>
+     + <th>Differences</th>
+SSFUN05: identical 0 / changed 1
+SSFUN06: identical 1 / changed 0
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+SSOG101: identical 8 / changed 0
+SSOG103: identical 7 / changed 0
+SSOG301: identical 8 / changed 0
+  ~ TEDC401_1_0.html: -4 +4
+     - <th><b>Point 1</b></th>
+     - <th><b>Point 2</b></th>
+     - <th><b>Point 3</b></th>
+     - <th><b>Point 4</b></th>
+     + <th>Point 1</th>
+     + <th>Point 2</th>
+     + <th>Point 3</th>
+     + <th>Point 4</th>
+  ~ TEDC401_3_0.html: -8 +8
+     - <th><b>Your wireframe must show:</b></th>
+     - <th><b>Here is an example:</b></th>
+     - <th><b>Accessibility checklist</b></th>
+     - <th><b>Attribution table</b></th>
+     - <th><b>Here is an example:</b></th>
+     - <th><b>Asset</b></th>
+     - <th><b>Source</b></th>
+     - <th><b>Permission/license</b></th>
+     + <th>Your wireframe must show:</th>
+     + <th>Here is an example:</th>
+     + <th>Accessibility checklist</th>
+     + <th>Attribution table</th>
+     + <th>Here is an example:</th>
+     + <th>Asset</th>
+     + <th>Source</th>
+     + <th>Permission/license</th>
+  ~ TEDC401_6_0.html: -4 +4
+     - <th><b>Your idea</b></th>
+     - <th><b>Design choices</b></th>
+     - <th><b>Testing + data</b></th>
+     - <th><b>Improvements</b></th>
+     + <th>Your idea</th>
+     + <th>Design choices</th>
+     + <th>Testing + data</th>
+     + <th>Improvements</th>
+TEDC401: identical 5 / changed 3
+  ~ TEDC402_2_0.html: -1 +1
+     - <th><b>Screen time (hours)</b></th>
+     + <th>Screen time (hours)</th>
+  ~ TEDC402_3_0.html: -4 +4
+     - <th><b>Storage 🡪 RAM</b></th>
+     - <th><b>RAM 🡪 CPU</b></th>
+     - <th><b>Buses (data highways)</b></th>
+     - <th><b>CPU 🡪 Output</b></th>
+     + <th>Storage 🡪 RAM</th>
+     + <th>RAM 🡪 CPU</th>
+     + <th>Buses (data highways)</th>
+     + <th>CPU 🡪 Output</th>
+  ~ TEDC402_4_0.html: -5 +5
+     - <th><b>Strong passwords</b></th>
+     - <th><b>Updates</b></th>
+     - <th><b>App permissions</b></th>
+     - <th><b>Privacy settings</b></th>
+     - <th><b>Screen lock &amp; login protection</b></th>
+     + <th>Strong passwords</th>
+     + <th>Updates</th>
+     + <th>App permissions</th>
+     + <th>Privacy settings</th>
+     + <th>Screen lock &amp; login protection</th>
+  ~ TEDC402_5_0.html: -2 +2
+     - <th><b>Raw data</b></th>
+     - <th><b>Cleaning data</b></th>
+     + <th>Raw data</th>
+     + <th>Cleaning data</th>
+  ~ TEDC402_7_0.html: -8 +8
+     - <th><b>1 – Sequence</b></th>
+     - <th><b>2 – Selection</b></th>
+     - <th><b>3 – Decomposition</b></th>
+     - <th><b>Pseudocode version</b></th>
+     - <th><b>Flowchart version</b></th>
+     - <th><b>Trace table steps</b></th>
+     - <th><b>Trace tables help</b></th>
+     - <th><b>Example:</b></th>
+     + <th>1 – Sequence</th>
+     + <th>2 – Selection</th>
+     + <th>3 – Decomposition</th>
+     + <th>Pseudocode version</th>
+     + <th>Flowchart version</th>
+     + <th>Trace table steps</th>
+     + <th>Trace tables help</th>
+     + <th>Example:</th>
+TEDC402: identical 6 / changed 5
+TEFUN01: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+  ~ TEFUN08_0_0.html: -3 +3
+     - <th><b>Pseudocode</b></th>
+     - <th><b>Scratch code for the parrot</b></th>
+     - <th><b>Scratch code for the balloon</b></th>
+     + <th>Pseudocode</th>
+     + <th>Scratch code for the parrot</th>
+     + <th>Scratch code for the balloon</th>
+TEFUN08: identical 0 / changed 1
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+TRR107: identical 3 / changed 0
+TRR108: identical 3 / changed 0
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR203: identical 4 / changed 0
+  ~ TRR301_0_0.html: -10 +10
+     - <th><b>English</b></th>
+     - <th><b>Māori</b></th>
+     - <th><b>English</b></th>
+     - <th><b>Māori</b></th>
+     - <th><b>English</b></th>
+     - <th><b>Māori</b></th>
+     - <th><b>English</b></th>
+     - <th><b>Māori</b></th>
+     - <th><b>English</b></th>
+     - <th><b>Māori</b></th>
+     + <th>English</th>
+     + <th>Māori</th>
+     + <th>English</th>
+     + <th>Māori</th>
+     + <th>English</th>
+     + <th>Māori</th>
+     + <th>English</th>
+     + <th>Māori</th>
+     + <th>English</th>
+     + <th>Māori</th>
+TRR301: identical 3 / changed 1
+TRR304: identical 3 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+TWHA906: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+  ~ TWHK903_0_0.html: -8 +8
+     - <th><b>Activity</b></th>
+     - <th><b>Time goal</b></th>
+     - <th><b>Completed 🗹</b></th>
+     - <th><b>Daily Activity</b></th>
+     - <th><b>Challenge</b></th>
+     - <th><b>Activity</b></th>
+     - <th><b>Time goal</b></th>
+     - <th><b>Completed 🗹</b></th>
+     + <th>Activity</th>
+     + <th>Time goal</th>
+     + <th>Completed 🗹</th>
+     + <th>Daily Activity</th>
+     + <th>Challenge</th>
+     + <th>Activity</th>
+     + <th>Time goal</th>
+     + <th>Completed 🗹</th>
+TWHK903: identical 0 / changed 1
+XDLS501: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+XDLS901: identical 5 / changed 0
+XDLS902: identical 8 / changed 0
+XDLS903: identical 8 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS906: identical 8 / changed 0
+XDLS908: identical 9 / changed 0
+  ~ XDLS909_2_0.html: -2 +2
+     - <th><b>Ko</b></th>
+     - <th><b>taku ingoa.</b></th>
+     + <th>Ko</th>
+     + <th>taku ingoa.</th>
+XDLS909: identical 4 / changed 1
+XDLS911: identical 2 / changed 0
+XDLS912: identical 6 / changed 0
+XFUN01: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+  ~ XGF9001_4_0.html: -2 +2
+     - <th><b>Strengths</b></th>
+     - <th><b>Challenges</b></th>
+     + <th>Strengths</th>
+     + <th>Challenges</th>
+XGF9001: identical 6 / changed 1
+XGF9002: identical 10 / changed 0
+XGF9003: identical 6 / changed 0
+XGF9004: identical 18 / changed 0
+XGF9006: identical 8 / changed 0
+XLP01: identical 5 / changed 0
+XLP02: identical 7 / changed 0
+  ~ XLP03_2_0.html: -1 +1
+     - <th><b>Number recognition (identifying numbers visually and audibly)</b></th>
+     + <th>Number recognition (identifying numbers visually and audibly)</th>
+  ~ XLP03_4_0.html: -1 +1
+     - <th><b>Quantifying (Identifying amounts of a set)</b></th>
+     + <th>Quantifying (Identifying amounts of a set)</th>
+XLP03: identical 4 / changed 2
+  ~ XLP04_2_0.html: -4 +4
+     - <th><b>Sensory avoidant</b></th>
+     - <th><b>Tick</b></th>
+     - <th><b>Sensory seeking</b></th>
+     - <th><b>Tick 🗹</b></th>
+     + <th>Sensory avoidant</th>
+     + <th>Tick</th>
+     + <th>Sensory seeking</th>
+     + <th>Tick 🗹</th>
+XLP04: identical 4 / changed 1
+XLP05: identical 6 / changed 0
+XLP06: identical 3 / changed 0
+XMES101: identical 9 / changed 0
+XMES102: identical 6 / changed 0
+XMES103: identical 6 / changed 0
+XMES201: identical 6 / changed 0
+XMES203: identical 6 / changed 0
+XTAS101: identical 5 / changed 0
+XTAS102: identical 6 / changed 0
+  ~ XTAS103_3_1.html: -3 +3
+     - <th><b>I</b></th>
+     - <th><b>go</b></th>
+     - <th><b>the</b></th>
+     + <th>I</th>
+     + <th>go</th>
+     + <th>the</th>
+XTAS103: identical 6 / changed 1
+XWHA01: identical 2 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 525 / changed 23 / missing 0 over 105 modules
+CHANGED: PES1001/PES1001_2_0.html PES1001/PES1001_3_0.html PHE1007/PHE1007_2_0.html PHE1008/PHE1008_1_0.html SCFUN01/SCFUN01_0_0.html SSFUN05/SSFUN05_0_0.html TEDC401/TEDC401_1_0.html TEDC401/TEDC401_3_0.html TEDC401/TEDC401_6_0.html TEDC402/TEDC402_2_0.html TEDC402/TEDC402_3_0.html TEDC402/TEDC402_4_0.html TEDC402/TEDC402_5_0.html TEDC402/TEDC402_7_0.html TEFUN08/TEFUN08_0_0.html TRR301/TRR301_0_0.html TWHK903/TWHK903_0_0.html XDLS909/XDLS909_2_0.html XGF9001/XGF9001_4_0.html XLP03/XLP03_2_0.html XLP03/XLP03_4_0.html XLP04/XLP04_2_0.html XTAS103/XTAS103_3_1.html

@@ -231,6 +231,11 @@
 			"row_close": "</tr>",
 			"header_cell": "<th>{content}</th>",
 			"cell": "<td>{content}</td>",
+			"header_cell_plain": {
+				"_doc": "ROUND 397 (the autonomous loop's session 26 Round 11 — the census outputs/_s26_r397_thb.py). A TABLE HEADER CELL IS PLAIN: the gold's 2170 <th> cells are wholly bold 97 = 0.04 (plain 0.96; Mathematics 0.93, ConnectED 0.98, TEDC / NCEA1 / EXPlore / LtL 1.00); Claude's were wholly bold 369 = 0.18 on 86 pages / 56 modules — the r383 first-row-header rule promotes a writer's **bold** row to <th> and the cell's own markdown then renders <b> inside it (KB 05D's form is <tr><th>Header 1</th>…, plain). At the cell emit, free-body tables only: a header cell whose rendered content is exactly one <b>/<strong> span with no other bold inside drops the wrapper; data cells (<td>) keep theirs (the gold keeps <td><b> for a matrix's row labels). OFF = the r396 output.",
+				"enabled": true,
+				"env": "THPLAIN_OFF"
+			},
 			"first_row_header": {
 				"enabled": true,
 				"env": "TBLHEADLONG_OFF",

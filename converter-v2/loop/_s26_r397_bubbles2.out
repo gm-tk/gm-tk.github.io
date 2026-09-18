@@ -1,0 +1,32 @@
+==== speechBubble rows: (tail, image?, layout) — gold vs Claude ====
+   gold  479   claude  186 (pages  94 / mods  37)   ('right', 'img', 'speech')
+   gold   68   claude  454 (pages 129 / mods  62)   ('top', 'no-img', 'speech')
+   gold   88   claude   79 (pages  33 / mods  19)   ('top', 'no-img', 'thought')
+   gold  100   claude   43 (pages  38 / mods  21)   ('left', 'img', 'speech')
+   gold   88   claude    0 (pages   0 / mods   0)   ('basic', 'no-img', 'thought')
+   gold   48   claude    2 (pages   1 / mods   1)   ('right', 'no-img', 'speech')
+   gold   16   claude    0 (pages   0 / mods   0)   ('basic', 'no-img', 'speech')
+   gold   14   claude    0 (pages   0 / mods   0)   ('top', 'img', 'speech')
+   gold   10   claude    0 (pages   0 / mods   0)   ('basic', 'img', 'speech')
+   gold    8   claude    0 (pages   0 / mods   0)   ('right', 'img', 'thought')
+   gold    7   claude    0 (pages   0 / mods   0)   ('basic', 'img', 'thought')
+   gold    3   claude    0 (pages   0 / mods   0)   ('none', 'img', 'speech')
+column layouts — gold: [(('img', 'col-md-2 offset-md-0 col-12 paddingR | col-md-6 col-6'), 117), (('no-img', 'col-12'), 82), (('no-img', 'col-md-12 col-12'), 60), (('img', 'col-2 | col-md-10 col-10'), 42), (('img', 'col-md-4 offset-md-0 col-12 paddingR | col-md-8 col-6'), 38), (('img', 'col-md-4 offset-md-0 col-12 | col-md-8 col-6'), 37)]
+column layouts — claude: [(('no-img', 'col-12'), 533), (('img', 'col-md-2 offset-md-0 col-12 paddingR | col-md-6 col-6'), 120), (('img', 'col-3 | col-md-9 col-sm-8'), 64), (('img', 'col-md-9 col-sm-8 | col-3'), 42), (('no-img', 'col-md-12 col-12'), 2), (('img', 'col-md-2 offset-md-0 col-12 paddingR | col-md-2 offset-md-0 col-12 paddingR'), 2)]
+per group (top-6 keys):
+   Standard/Online Safety (OS9000)      gold [(('right', 'img', 'speech'), 105), (('left', 'img', 'speech'), 41), (('right', 'no-img', 'speech'), 7), (('top', 'img', 'speech'), 5)]
+                                        claude [(('top', 'no-img', 'speech'), 92), (('right', 'img', 'speech'), 82), (('left', 'img', 'speech'), 32)]
+   Standard/None                        gold [(('right', 'img', 'speech'), 152), (('left', 'img', 'speech'), 19), (('top', 'no-img', 'thought'), 16)]
+                                        claude [(('top', 'no-img', 'speech'), 106), (('right', 'img', 'speech'), 62), (('top', 'no-img', 'thought'), 8)]
+   Standard/Leaving to Learn            gold [(('top', 'no-img', 'thought'), 59), (('right', 'img', 'speech'), 45), (('basic', 'no-img', 'thought'), 25), (('top', 'no-img', 'speech'), 10)]
+                                        claude [(('top', 'no-img', 'speech'), 75), (('top', 'no-img', 'thought'), 14), (('right', 'img', 'speech'), 1)]
+   Standard/1-10 English                gold [(('right', 'img', 'speech'), 40), (('right', 'no-img', 'speech'), 16), (('basic', 'no-img', 'thought'), 11), (('top', 'no-img', 'thought'), 11)]
+                                        claude [(('top', 'no-img', 'speech'), 61), (('top', 'no-img', 'thought'), 34), (('left', 'img', 'speech'), 10)]
+   Standard/1-10 Mathematics            gold [(('top', 'no-img', 'speech'), 30), (('right', 'img', 'speech'), 27), (('basic', 'no-img', 'thought'), 14), (('left', 'img', 'speech'), 8)]
+                                        claude [(('top', 'no-img', 'speech'), 24), (('right', 'img', 'speech'), 12), (('top', 'no-img', 'thought'), 2)]
+   Inquiry/Leaving to Learn             gold [(('right', 'img', 'speech'), 26), (('right', 'no-img', 'speech'), 10), (('basic', 'no-img', 'thought'), 5), (('left', 'img', 'speech'), 2)]
+                                        claude [(('top', 'no-img', 'speech'), 14), (('top', 'no-img', 'thought'), 8), (('right', 'img', 'speech'), 2)]
+   Fundamentals/1-10 Technology         gold [(('basic', 'no-img', 'thought'), 5), (('right', 'no-img', 'speech'), 3), (('left', 'img', 'speech'), 2), (('top', 'img', 'speech'), 1)]
+                                        claude [(('top', 'no-img', 'speech'), 36), (('top', 'no-img', 'thought'), 6), (('right', 'img', 'speech'), 5)]
+   Standard/ConnectED                   gold [(('basic', 'no-img', 'thought'), 17), (('right', 'img', 'speech'), 8), (('basic', 'no-img', 'speech'), 5), (('top', 'no-img', 'speech'), 2)]
+                                        claude [(('top', 'no-img', 'speech'), 8), (('top', 'no-img', 'thought'), 2), (('right', 'img', 'speech'), 2)]

@@ -149,7 +149,19 @@ class TablesAndGrids {
 						// red spans inside table cells: keep their text visible,
 						// marked — they are usually interactive data labels
 						: ListsAndRuns.inlineMarkup(c.replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, ""), [], !insidePlaceholder);   // only weave hover/definition markers into a FREE-BODY cell, never a placeholder dump
-					return Utils.FillTemplate(cellTpl, { content });
+					// ROUND 397 — A HEADER CELL IS PLAIN: the gold's <th> is wholly bold 0.04 (KB 05D's
+					// <tr><th>Header 1</th> form); Claude's writer-bold header row rendered <th><b>…</b></th>
+					// on 86 pages. A header cell whose rendered content is exactly ONE <b>/<strong> span
+					// (no other bold inside) drops the wrapper; <td> cells keep theirs. Free-body only.
+					// Data elements.table.header_cell_plain; env THPLAIN_OFF (= the r396 output).
+					let _cell = content;
+					const _thp = t.header_cell_plain;
+					if (isHdr && !insidePlaceholder && _thp && _thp.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[_thp.env ?? "THPLAIN_OFF"])) {
+						const _m = String(_cell).match(/^\s*<(b|strong)>([\s\S]*)<\/\1>\s*$/);
+						if (_m && !/<\/?(?:b|strong)\b/.test(_m[2])) _cell = _m[2];
+					}
+					return Utils.FillTemplate(cellTpl, { content: _cell });
 				}).join("")
 				+ t.row_close);
 		});

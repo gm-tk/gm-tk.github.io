@@ -1,0 +1,501 @@
+  ~ EXPFUN05_0_0.html: -18 +18
+     - <th><b>Foundational</b></th>
+     - <th><b>Building Confidence</b></th>
+     - <th><b>Next Steps</b></th>
+     - <th><b>Foundations</b></th>
+     - <th><b>Building Confidence</b></th>
+     - <th><b>Ready for Next Steps</b></th>
+     - <th><b>Foundations</b></th>
+     - <th><b>Building Confidence</b></th>
+     - <th><b>Ready for Next Steps</b></th>
+     - <th><b>Foundations</b></th>
+     - <th><b>Building Confidence</b></th>
+     - <th><b>Ready for Next Steps</b></th>
+     - <th><b>Foundations</b></th>
+     - <th><b>Building Confidence</b></th>
+     - <th><b>Ready for Next Steps</b></th>
+     - <th><b>Foundations</b></th>
+     - <th><b>Building Confidence</b></th>
+     - <th><b>Ready for Next Steps</b></th>
+     + <th>Foundational</th>
+     + <th>Building Confidence</th>
+     + <th>Next Steps</th>
+     + <th>Foundations</th>
+     + <th>Building Confidence</th>
+     + <th>Ready for Next Steps</th>
+     + <th>Foundations</th>
+     + <th>Building Confidence</th>
+     + <th>Ready for Next Steps</th>
+     + <th>Foundations</th>
+     + <th>Building Confidence</th>
+     + <th>Ready for Next Steps</th>
+     + <th>Foundations</th>
+     + <th>Building Confidence</th>
+     + <th>Ready for Next Steps</th>
+     + <th>Foundations</th>
+     + <th>Building Confidence</th>
+     + <th>Ready for Next Steps</th>
+EXPFUN05: identical 0 / changed 1
+EXPFUN06: identical 1 / changed 0
+EXPFUN07: identical 1 / changed 0
+HES1003: identical 9 / changed 0
+HES1004: identical 5 / changed 0
+HES1005: identical 9 / changed 0
+HES1006: identical 8 / changed 0
+HES1007: identical 10 / changed 0
+HIS1001: identical 8 / changed 0
+HIS1002: identical 21 / changed 0
+HIS1003: identical 11 / changed 0
+HIS1004: identical 11 / changed 0
+HIS1005: identical 15 / changed 0
+HIS1006: identical 15 / changed 0
+HIS1007: identical 7 / changed 0
+HIS1008: identical 12 / changed 0
+HPFUN101: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN103: identical 1 / changed 0
+HPFUN201: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+HPFUN302: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+HPRE203: identical 8 / changed 0
+  ~ MXDB102_1_0.html: -5 +5
+     - <th><b>Red</b></th>
+     - <th><b>Yellow</b></th>
+     - <th><b>Purple</b></th>
+     - <th><b>CIRCLE</b></th>
+     - <th><b>SQUARE</b></th>
+     + <th>Red</th>
+     + <th>Yellow</th>
+     + <th>Purple</th>
+     + <th>CIRCLE</th>
+     + <th>SQUARE</th>
+MXDB102: identical 11 / changed 1
+MXDB201: identical 7 / changed 0
+MXDB202: identical 6 / changed 0
+  ~ MXDB301_1_0.html: -3 +3
+     - <th><b>Crackers</b></th>
+     - <th><b>Packaging Type</b></th>
+     - <th><b>Packaging to Product Amount</b></th>
+     + <th>Crackers</th>
+     + <th>Packaging Type</th>
+     + <th>Packaging to Product Amount</th>
+  ~ MXDB301_2_0.html: -1 +1
+     - <th><b>Cracker Packaging</b></th>
+     + <th>Cracker Packaging</th>
+MXDB301: identical 6 / changed 2
+MXDB302: identical 10 / changed 0
+  ~ MXDI101_1_1.html: -10 +10
+     - <th><b>1</b></th>
+     - <th><b>2</b></th>
+     - <th><b>3</b></th>
+     - <th><b>4</b></th>
+     - <th><b>5</b></th>
+     - <th><b>6</b></th>
+     - <th><b>7</b></th>
+     - <th><b>8</b></th>
+     - <th><b>9</b></th>
+     - <th><b>10</b></th>
+     + <th>1</th>
+     + <th>2</th>
+     + <th>3</th>
+     + <th>4</th>
+     + <th>5</th>
+     + <th>6</th>
+     + <th>7</th>
+     + <th>8</th>
+     + <th>9</th>
+     + <th>10</th>
+MXDI101: identical 10 / changed 1
+MXDI102: identical 5 / changed 0
+MXDI103: identical 10 / changed 0
+  ~ MXDI201_4_0.html: -6 +6
+     - <th><b>1000</b></th>
+     - <th><b>100</b></th>
+     - <th><b>10</b></th>
+     - <th><b>98 - 32</b></th>
+     - <th><b>164 - 91</b></th>
+     - <th><b>175 - 48</b></th>
+     + <th>1000</th>
+     + <th>100</th>
+     + <th>10</th>
+     + <th>98 - 32</th>
+     + <th>164 - 91</th>
+     + <th>175 - 48</th>
+MXDI201: identical 10 / changed 1
+MXDI202: identical 12 / changed 0
+  ~ MXDI301_1_0.html: -9 +9
+     - <th><b>Powers of 10</b></th>
+     - <th><b>Multiplication of the base number by itself</b></th>
+     - <th><b>Value</b></th>
+     - <th><b>Word Form</b></th>
+     - <th><b>Powers of 10</b></th>
+     - <th><b>Positive Exponent</b></th>
+     - <th><b>Multiplication of the base value by itself</b></th>
+     - <th><b>Value</b></th>
+     - <th><b>Word Form</b></th>
+     + <th>Powers of 10</th>
+     + <th>Multiplication of the base number by itself</th>
+     + <th>Value</th>
+     + <th>Word Form</th>
+     + <th>Powers of 10</th>
+     + <th>Positive Exponent</th>
+     + <th>Multiplication of the base value by itself</th>
+     + <th>Value</th>
+     + <th>Word Form</th>
+  ~ MXDI301_3_0.html: -6 +6
+     - <th><b>Term</b></th>
+     - <th><b>Figure</b></th>
+     - <th><b>k=</b></th>
+     - <th><b>Number of squares in total</b></th>
+     - <th><b>2k</b></th>
+     - <th><b>+2</b></th>
+     + <th>Term</th>
+     + <th>Figure</th>
+     + <th>k=</th>
+     + <th>Number of squares in total</th>
+     + <th>2k</th>
+     + <th>+2</th>
+  ~ MXDI301_5_0.html: -1 +1
+     - <th><b>Input = number of bags</b></th>
+     + <th>Input = number of bags</th>
+MXDI301: identical 2 / changed 3
+  ~ MXEO102_1_0.html: -19 +19
+     - <th><b>A</b></th>
+     - <th><b>B</b></th>
+     - <th><b>A</b></th>
+     - <th><b>B</b></th>
+     - <th><b>A</b></th>
+     - <th><b>A</b></th>
+     - <th><b>B</b></th>
+     - <th><b>C</b></th>
+     - <th><b>A</b></th>
+     - <th><b>B</b></th>
+     - <th><b>C</b></th>
+     - <th><b>A</b></th>
+     - <th><b>A</b></th>
+     - <th><b>B</b></th>
+     - <th><b>B</b></th>
+     - <th><b>A</b></th>
+     - <th><b>B</b></th>
+     - <th><b>B</b></th>
+     - <th><b>A</b></th>
+     + <th>A</th>
+     + <th>B</th>
+     + <th>A</th>
+     + <th>B</th>
+     + <th>A</th>
+     + <th>A</th>
+     + <th>B</th>
+     + <th>C</th>
+     + <th>A</th>
+     + <th>B</th>
+     + <th>C</th>
+     + <th>A</th>
+     + <th>A</th>
+     + <th>B</th>
+     + <th>B</th>
+     + <th>A</th>
+     + <th>B</th>
+     + <th>B</th>
+     + <th>A</th>
+  ~ MXEO102_4_0.html: -2 +2
+     - <th><b>What will i do?</b></th>
+     - <th><b>You will make an artwork based on kōwhaiwhai art. You may draw your own original one, follow the video 
+     + <th>What will i do?</th>
+     + <th>You will make an artwork based on kōwhaiwhai art. You may draw your own original one, follow the video ins
+MXEO102: identical 3 / changed 2
+MXEO201: identical 10 / changed 0
+MXEO202: identical 9 / changed 0
+  ~ MXEO301_1_0.html: -3 +3
+     - <th><b>Number</b></th>
+     - <th><b>Rule</b></th>
+     - <th><b>Examples</b></th>
+     + <th>Number</th>
+     + <th>Rule</th>
+     + <th>Examples</th>
+MXEO301: identical 10 / changed 1
+MXEO401: identical 7 / changed 0
+MXEX101: identical 7 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX202: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+MXEX302: identical 8 / changed 0
+MXEX401: identical 7 / changed 0
+  ~ MXFL101_2_1.html: -1 +1
+     - <th><b>toru</b></th>
+     + <th>toru</th>
+  ~ MXFL101_3_1.html: -1 +1
+     - <th><b>five</b></th>
+     + <th>five</th>
+  ~ MXFL101_3_2.html: -1 +1
+     - <th><b>six</b></th>
+     + <th>six</th>
+  ~ MXFL101_3_3.html: -1 +1
+     - <th><b>whitu</b></th>
+     + <th>whitu</th>
+  ~ MXFL101_3_5.html: -1 +1
+     - <th><b>iwa</b></th>
+     + <th>iwa</th>
+MXFL101: identical 7 / changed 5
+MXFL102: identical 9 / changed 0
+MXFL103: identical 8 / changed 0
+MXFL104: identical 6 / changed 0
+MXFL201: identical 10 / changed 0
+  ~ MXFL202_6_0.html: -6 +6
+     - <th><b>Graph</b></th>
+     - <th><b>What does it show?</b></th>
+     - <th><b>What does it look like?</b></th>
+     - <th><b>What’s on the bottom? (x-axis)</b></th>
+     - <th><b>What’s on the side? (y-axis)</b></th>
+     - <th><b>What is it good for?</b></th>
+     + <th>Graph</th>
+     + <th>What does it show?</th>
+     + <th>What does it look like?</th>
+     + <th>What’s on the bottom? (x-axis)</th>
+     + <th>What’s on the side? (y-axis)</th>
+     + <th>What is it good for?</th>
+MXFL202: identical 5 / changed 1
+  ~ MXFL203_10_0.html: -1 +1
+     - <th><b>Open Final 12 sheep</b></th>
+     + <th>Open Final 12 sheep</th>
+MXFL203: identical 11 / changed 1
+MXFL204: identical 12 / changed 0
+MXFL301: identical 10 / changed 0
+MXFL302: identical 10 / changed 0
+  ~ MXFL401_2_0.html: -3 +3
+     - <th><b>40%</b></th>
+     - <th><b>of</b></th>
+     - <th><b>70</b></th>
+     + <th>40%</th>
+     + <th>of</th>
+     + <th>70</th>
+MXFL401: identical 7 / changed 1
+  ~ MXFU201_1_0.html: -2 +2
+     - <th><b>AM</b></th>
+     - <th><b>PM</b></th>
+     + <th>AM</th>
+     + <th>PM</th>
+  ~ MXFU201_8_0.html: -7 +7
+     - <th><b>Monday</b></th>
+     - <th><b>Tuesday</b></th>
+     - <th><b>Wednesday</b></th>
+     - <th><b>Thursday</b></th>
+     - <th><b>Friday</b></th>
+     - <th><b>Saturday</b></th>
+     - <th><b>Sunday</b></th>
+     + <th>Monday</th>
+     + <th>Tuesday</th>
+     + <th>Wednesday</th>
+     + <th>Thursday</th>
+     + <th>Friday</th>
+     + <th>Saturday</th>
+     + <th>Sunday</th>
+MXFU201: identical 8 / changed 2
+MXFU202: identical 11 / changed 0
+  ~ MXFU301_1_0.html: -5 +5
+     - <th><b>Impossible</b></th>
+     - <th><b>Very Unlikely</b></th>
+     - <th><b>Possible</b></th>
+     - <th><b>Likely</b></th>
+     - <th><b>Certain</b></th>
+     + <th>Impossible</th>
+     + <th>Very Unlikely</th>
+     + <th>Possible</th>
+     + <th>Likely</th>
+     + <th>Certain</th>
+  ~ MXFU301_7_0.html: -6 +6
+     - <th><b>1</b></th>
+     - <th><b>2</b></th>
+     - <th><b>3</b></th>
+     - <th><b>4</b></th>
+     - <th><b>5</b></th>
+     - <th><b>6</b></th>
+     + <th>1</th>
+     + <th>2</th>
+     + <th>3</th>
+     + <th>4</th>
+     + <th>5</th>
+     + <th>6</th>
+  ~ MXFU301_8_0.html: -16 +16
+     - <th><b>Theoretical Probability</b></th>
+     - <th><b>Experimental Probability</b></th>
+     - <th><b>Number</b></th>
+     - <th><b>1</b></th>
+     - <th><b>2</b></th>
+     - <th><b>3</b></th>
+     - <th><b>4</b></th>
+     - <th><b>5</b></th>
+     - <th><b>6</b></th>
+     - <th><b>Number</b></th>
+     - <th><b>1</b></th>
+     - <th><b>2</b></th>
+     - <th><b>3</b></th>
+     - <th><b>4</b></th>
+     - <th><b>5</b></th>
+     - <th><b>6</b></th>
+     + <th>Theoretical Probability</th>
+     + <th>Experimental Probability</th>
+     + <th>Number</th>
+     + <th>1</th>
+     + <th>2</th>
+     + <th>3</th>
+     + <th>4</th>
+     + <th>5</th>
+     + <th>6</th>
+     + <th>Number</th>
+     + <th>1</th>
+     + <th>2</th>
+     + <th>3</th>
+     + <th>4</th>
+     + <th>5</th>
+     + <th>6</th>
+MXFU301: identical 9 / changed 3
+  ~ MXFU302_3_0.html: -1 +1
+     - <th><b>Questions</b></th>
+     + <th>Questions</th>
+  ~ MXFU302_7_0.html: -6 +6
+     - <th><b>Match Number</b></th>
+     - <th><b>Week</b></th>
+     - <th><b>Total Cost</b></th>
+     - <th><b>X and y values</b></th>
+     - <th><b>Game</b></th>
+     - <th><b>Points Scored</b></th>
+     + <th>Match Number</th>
+     + <th>Week</th>
+     + <th>Total Cost</th>
+     + <th>X and y values</th>
+     + <th>Game</th>
+     + <th>Points Scored</th>
+MXFU302: identical 8 / changed 2
+  ~ MXFU401_2_0.html: -2 +2
+     - <th><b>INPUT</b></th>
+     - <th><b>OUTPUT</b></th>
+     + <th>INPUT</th>
+     + <th>OUTPUT</th>
+  ~ MXFU401_5_0.html: -5 +5
+     - <th><b>Shape</b></th>
+     - <th><b>Polygon</b></th>
+     - <th><b>No. of Sides</b></th>
+     - <th><b>Measure of one exterior angle (degrees)</b></th>
+     - <th><b>Measure of one interior angle (degrees)</b></th>
+     + <th>Shape</th>
+     + <th>Polygon</th>
+     + <th>No. of Sides</th>
+     + <th>Measure of one exterior angle (degrees)</th>
+     + <th>Measure of one interior angle (degrees)</th>
+MXFU401: identical 5 / changed 2
+MXFU402: identical 8 / changed 0
+  ~ MXFUN01_6_5.html: -2 +2
+     - <th><b>Mixed number</b></th>
+     - <th><b>Improper Fraction</b></th>
+     + <th>Mixed number</th>
+     + <th>Improper Fraction</th>
+MXFUN01: identical 18 / changed 1
+  ~ MXFUN02_0_0.html: -45 +45
+     - <th><b>1</b></th>
+     - <th><b>2</b></th>
+     - <th><b>3</b></th>
+     - <th><b>4</b></th>
+     - <th><b>5</b></th>
+     - <th><b>6</b></th>
+     - <th><b>7</b></th>
+     - <th><b>8</b></th>
+     - <th><b>9</b></th>
+     - <th><b>10</b></th>
+     - <th><b>1</b></th>
+     - <th><b>2</b></th>
+     - <th><b>3</b></th>
+     - <th><b>4</b></th>
+     - <th><b>5</b></th>
+     - <th><b>6</b></th>
+     - <th><b>7</b></th>
+     - <th><b>8</b></th>
+     - <th><b>9</b></th>
+     - <th><b>10</b></th>
+     - <th><b>1</b></th>
+     - <th><b>2</b></th>
+     - <th><b>3</b></th>
+     - <th><b>4</b></th>
+     - <th><b>5</b></th>
+     - <th><b>6</b></th>
+     - <th><b>7</b></th>
+     - <th><b>8</b></th>
+     - <th><b>9</b></th>
+     - <th><b>10</b></th>
+     - <th><b>11</b></th>
+     - <th><b>12</b></th>
+     - <th><b>13</b></th>
+     - <th><b>1</b></th>
+     - <th><b>2</b></th>
+     - <th><b>3</b></th>
+     - <th><b>4</b></th>
+     - <th><b>5</b></th>
+     - <th><b>6</b></th>
+     - <th><b>7</b></th>
+     - … 5 more removed
+     + <th>1</th>
+     + <th>2</th>
+     + <th>3</th>
+     + <th>4</th>
+     + <th>5</th>
+     + <th>6</th>
+     + <th>7</th>
+     + <th>8</th>
+     + <th>9</th>
+     + <th>10</th>
+     + <th>1</th>
+     + <th>2</th>
+     + <th>3</th>
+     + <th>4</th>
+     + <th>5</th>
+     + <th>6</th>
+     + <th>7</th>
+     + <th>8</th>
+     + <th>9</th>
+     + <th>10</th>
+     + … 25 more added
+MXFUN02: identical 0 / changed 1
+MXFUN03: identical 1 / changed 0
+OSAH301: identical 4 / changed 0
+OSAH401: identical 5 / changed 0
+OSAH501: identical 6 / changed 0
+OSAI101: identical 3 / changed 0
+OSAI201: identical 4 / changed 0
+OSAI301: identical 4 / changed 0
+OSAI401: identical 5 / changed 0
+OSAI501: identical 6 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY201: identical 4 / changed 0
+OSBY301: identical 4 / changed 0
+OSBY401: identical 5 / changed 0
+OSBY501: identical 6 / changed 0
+OSGM101: identical 3 / changed 0
+OSGM201: identical 4 / changed 0
+OSGM301: identical 4 / changed 0
+OSGM401: identical 5 / changed 0
+OSGM501: identical 6 / changed 0
+OSOH101: identical 4 / changed 0
+OSOH201: identical 4 / changed 0
+OSOH301: identical 4 / changed 0
+OSOH401: identical 5 / changed 0
+  ~ OSOH501_2_0.html: -3 +3
+     - <th><b>Ingredient</b></th>
+     - <th><b>Amount</b></th>
+     - <th><b>Examples</b></th>
+     + <th>Ingredient</th>
+     + <th>Amount</th>
+     + <th>Examples</th>
+OSOH501: identical 5 / changed 1
+OSSC301: identical 4 / changed 0
+
+TOTAL: identical 608 / changed 32 / missing 0 over 98 modules
+CHANGED: EXPFUN05/EXPFUN05_0_0.html MXDB102/MXDB102_1_0.html MXDB301/MXDB301_1_0.html MXDB301/MXDB301_2_0.html MXDI101/MXDI101_1_1.html MXDI201/MXDI201_4_0.html MXDI301/MXDI301_1_0.html MXDI301/MXDI301_3_0.html MXDI301/MXDI301_5_0.html MXEO102/MXEO102_1_0.html MXEO102/MXEO102_4_0.html MXEO301/MXEO301_1_0.html MXFL101/MXFL101_2_1.html MXFL101/MXFL101_3_1.html MXFL101/MXFL101_3_2.html MXFL101/MXFL101_3_3.html MXFL101/MXFL101_3_5.html MXFL202/MXFL202_6_0.html MXFL203/MXFL203_10_0.html MXFL401/MXFL401_2_0.html MXFU201/MXFU201_1_0.html MXFU201/MXFU201_8_0.html MXFU301/MXFU301_1_0.html MXFU301/MXFU301_7_0.html MXFU301/MXFU301_8_0.html MXFU302/MXFU302_3_0.html MXFU302/MXFU302_7_0.html MXFU401/MXFU401_2_0.html MXFU401/MXFU401_5_0.html MXFUN01/MXFUN01_6_5.html MXFUN02/MXFUN02_0_0.html OSOH501/OSOH501_2_0.html

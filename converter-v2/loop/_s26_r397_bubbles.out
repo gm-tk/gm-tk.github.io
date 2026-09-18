@@ -1,0 +1,17 @@
+speechBubble rows: gold 1044 on 350 pages; claude 764 on 230 pages / 85 modules
+bubbles per row (6 = 6+):  gold [(1, 893), (2, 73), (3, 33), (4, 15), (5, 9), (6, 21)]   claude [(1, 762), (2, 1), (6, 1)]
+layout attr:  gold [('speech', 844), ('thought', 200)]   claude [('speech', 685), ('thought', 79)]
+ADJACENT speechBubble rows (whitespace only between): gold 304  claude 357
+bubble class sets — gold: [(('bubble-basic bubble-right no-hover',), 277), (('bubble-right no-hover',), 239), (('bubble-basic bubble-top no-hover',), 107), (('bubble-basic no-hover',), 97), (('bubble-basic bubble-left no-hover',), 70), (('bubble-top no-hover',), 48)]
+bubble class sets — claude: [(('bubble-basic bubble-top no-hover',), 533), (('bubble-basic bubble-right no-hover',), 146), (('bubble-right no-hover',), 40), (('bubble-left no-hover',), 33), (('bubble-basic bubble-left no-hover',), 10), (('bubble-left no-hover secondary', 'bubble-right no-hover'), 2)]
+per group, bubbles-per-row (gold | claude):
+   Standard/Online Safety (OS9000)          gold [(1, 160), (2, 21), (3, 3), (4, 2), (5, 3), (6, 5)]   claude [(1, 206), (2, 1), (6, 1)]
+   Standard/None                            gold [(1, 194)]   claude [(1, 177)]
+   Standard/Leaving to Learn                gold [(1, 158), (2, 9), (4, 1), (6, 1)]   claude [(1, 90)]
+   Standard/1-10 English                    gold [(1, 98), (2, 14), (3, 3), (4, 7), (6, 4)]   claude [(1, 114)]
+   Standard/1-10 Mathematics                gold [(1, 80), (2, 7), (3, 8), (5, 1), (6, 1)]   claude [(1, 38)]
+   Fundamentals/1-10 Technology             gold [(1, 16), (2, 3), (3, 1), (4, 1), (6, 1)]   claude [(1, 47)]
+   Inquiry/Leaving to Learn                 gold [(1, 43)]   claude [(1, 24)]
+   Standard/ConnectED                       gold [(1, 19), (2, 8), (3, 5), (4, 3), (5, 1), (6, 1)]   claude [(1, 12)]
+   Inquiry/Te ara Whakapuawa -Wellbeing     gold [(1, 36), (3, 10)]   claude []
+   Standard/ANZH                            gold [(1, 12), (2, 1), (5, 2), (6, 4)]   claude [(1, 7)]

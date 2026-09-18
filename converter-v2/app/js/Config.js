@@ -1757,7 +1757,8 @@ class Config {
 	// ROUND 394 (260619.65): the clickDrop buttons sit directly in the column — the built widget's inner <div class="row"> is dropped (interactive.clickDrop.no_row_wrapper, InteractiveBuilder.#cdWrap, env CDROW_OFF; the gold's 385 groups: parent = a column 0.78, an inner row 0.05; Claude wrapped 127 / 128). 122 pages / 77 modules; scoped ship #6 since the r388 full.
 	// ROUND 395 (260619.66): the flip-card column width follows the card count — a 2-card or 4-card group's cards are col-md-6 col-12 paddingLR (interactive.flipCard.card_col_by_count + exclude_subjects_by_count, InteractiveBuilder.#flipCardsByCount, env FLIPCOL_OFF; the gold 0.86 / 0.76; English's 4-card tie, ConnectED / NCEA1's col-md-3 lead, NCEA1 / TEDC's 2-card forms excluded). 39 pages / 37 modules; scoped ship #7 since the r388 full — the next ship is the FULL backstop.
 	// ROUND 396 (260619.67): a carousel video slide with a caption is `item video` (interactive.carousel.item_video_with_caption, InteractiveBuilder.#carRenderSlides, env ITEMVIDEO_OFF; the gold 273 / 298 = 0.92; a video-only slide is a tie and stays `item`). 52 pages / 44 modules; THE FULL-REGENERATION BACKSTOP — all 416 regenerated, 0 stale, the manifest diff = the probe's 52 pages (no residue from r389–r395); the ledger's scoped-since counter reset to 0.
-	static AppVersion = "260619.67";
+	// ROUND 397 (260619.68): a table header cell is plain — a <th> whose whole content is one <b>/<strong> span drops the wrapper (elements.table.header_cell_plain, TablesAndGrids' cell emit, env THPLAIN_OFF; the gold's th plain 0.96, Claude's bold 0.18 on 86 pages). 92 pages / 58 modules; scoped ship #1 since the r396 full.
+	static AppVersion = "260619.68";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
