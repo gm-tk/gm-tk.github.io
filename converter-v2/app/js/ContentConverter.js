@@ -3733,16 +3733,19 @@ class ContentConverter {
 		// "div.crumbs" + "div.inquiryPanel" elements at each "[Tab N]" sentinel position.
 		// inquiryActive then tells SkeletonBuilder whether to emit the inquiry page's body
 		// class and footer.
-		const finalBody = PanelsBuilder.inquiryPanels(bodyHtml,
+		const finalBody0 = PanelsBuilder.inquiryPanels(bodyHtml,
 			{ on: inquiryMode, sentinel: INQ_SENTINEL, labels: inquiryLabels,
 				cedMode: cedInquiryMode, cedLabels: cedInq.labels, headingLabel: _headingLabelOn,
 				sectionMode: secInquiryMode, sectionLabels: secInq.labels });
-		const inquiryActive = (inquiryMode || cedInquiryMode || secInquiryMode) && finalBody !== bodyHtml;
+		// ROUND 385: the panel's first own heading is h2 (both panel kinds exist by now); the inquiry
+		// flags below read the PRE-post-pass comparison so the post-pass can never flip them.
+		const finalBody = PanelsBuilder.panelTitleLevelPostpass(finalBody0, run);
+		const inquiryActive = (inquiryMode || cedInquiryMode || secInquiryMode) && finalBody0 !== bodyHtml;
 		// CED firing flags the fixed inquiry footer-nav shell (a single-file CED page has no
 		// registry footer links of its own, so SkeletonBuilder would otherwise emit an empty
 		// #footer). Scoped specifically to CED so the BLL family's footers stay byte-unchanged.
 		return { bodyHtml: finalBody, menu, titleBar, inquiryActive,
-			cedInquiry: cedInquiryMode && finalBody !== bodyHtml };
+			cedInquiry: cedInquiryMode && finalBody0 !== bodyHtml };
 	};
 
 	/**

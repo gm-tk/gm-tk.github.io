@@ -4852,6 +4852,17 @@
 			"enabled": true
 		},
 		"fundamentals_panels": {
+			"first_heading_level": {
+				"enabled": true,
+				"env": "PANELH2_OFF",
+				"level": 2,
+				"inquiry_enabled": true,
+				"inquiry_exclude_code_prefixes": ["EXBP", "EXIP"],
+				"fundamentals_code_prefixes": ["HPFUN", "ARFUN", "SCFUN", "MXFUN"],
+				"skip_panel_class_match": "introduction",
+				"box_class_match": "^(?:activity|alert|alertActivity|accordion|tabs|carousel|flipCard|clickDropContent|TKmodal|speechBubble|cv2-interactive|supervisor|super-content|whakatauki|choicePage)$",
+				"_doc": "ROUND 385 (the autonomous loop's session 24 Round 9). THE PANEL'S FIRST OWN HEADING IS h2: the first heading directly in an inquiryPanel's / fundamentalsPanel's own column — not inside an activity, alert, supervisor panel or widget box, and not the introduction panel — renders at `level` (2) whatever level the writer's digit + the body shift + the rank rule gave it. MEASURED on every paired page (outputs/_s24_panelhead.py + _s24_panelhead2.py, the panels paired in order and their first headings by text): the gold's inquiry panels open with h2 0.70 (193 / 275 with a heading) — CED* 1.00, TWHA 1.00, TWHK 1.00, EXPFUN 0.69, BLL 1.00 on the paired texts (Claude already h2 there) — while EXBP / EXIP (n ≤ 2, h3 present) are excluded; the fundamentals panels split by family: HPFUN 0.84 (57 of 68 paired first headings h2 → Claude h3), ARFUN 1.00, SCFUN 1.00, MXFUN 6 / 6 where a heading exists, TEFUN 0.71 (Claude already h2 through the r373 keep) — and ENFUN / SSFUN / CHFUN / XFUN are h3 (0.81+), so only the listed `fundamentals_code_prefixes` take the rule. Claude's own first headings there were h3 / h4 / h5 (the panel label heading through the body shift). KB 06 §3.4 / §3.3 do not name the panel title's level; KB 06 §6's `<h3>` is the general section heading — the gold's own group convention decides (§1b 3). A post-pass on the finished body (PanelsBuilder.panelTitleLevelPostpass, after inquiryPanels), the r334 activity-title pass's sibling. Env PANELH2_OFF = the r384 output."
+			},
 			"_doc": "ROUND 98 (Templates round B) — wrap the FUNDAMENTALS body into div.fundamentalsPanel phase=\"N\" panels. The HPFUN family delimits each phase with a [New tab] marker (which otherwise ORPHANS as a '[tab n]' RED FLAG — 4-6 leaks/module); in fundamentals mode ContentConverter drops that flag and pushes a top-level {sentinel} at each [New tab], and #fundamentalsPanels splits the assembled body on the sentinel and wraps every non-empty segment. The FIRST segment is the introduction panel (intro_class). AUTO-SCOPED to modules that carry [New tab] — the HPFUN family (7 mods); the SSFUN (activity-number-group delimiter, 4 mods) and XFUN ([H1] delimiter, 1 mod) families carry NO [New tab] so the pass is a NO-OP for them (byte-identical) — sized follow-up. DEFERRED as non-derivable: the div.phases nav (editorial short labels 'Intro'/'Feelings') + the intro phaseLink cards (editorial images/labels/col-md layout) + suppressing the tab-nav CS notes (gate-neutral cv2-note). Measured outputs/_measure_fundamentals_panels.py. Env FUNDPANEL_OFF reverts to the round-97 flat render (orphan flags and all).",
 			"enabled": true,
 			"sentinel": "<!--CV2_FUNDPANEL-->",

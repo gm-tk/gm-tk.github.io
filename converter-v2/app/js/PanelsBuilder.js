@@ -929,6 +929,69 @@ class PanelsBuilder {
 		}
 		return { on: true, labels: [cfg.intro_label || "Intro", ...labels] };
 	};
+	/**
+	 * ROUND 385 — THE PANEL'S FIRST OWN HEADING IS h2. A post-pass on the finished body (after
+	 * inquiryPanels, so both panel kinds exist): for every div.inquiryPanel / div.fundamentalsPanel
+	 * (never the introduction panel) the first heading that sits in the panel's OWN column — not
+	 * inside an activity / alert / supervisor / widget box (box_class_match on any div between the
+	 * panel and the heading) — is rewritten to <h{level}>. Inquiry panels everywhere except the
+	 * inquiry_exclude_code_prefixes; fundamentals panels only for the fundamentals_code_prefixes
+	 * (the gold's own family convention — HPFUN / ARFUN / SCFUN / MXFUN open at h2, ENFUN / SSFUN /
+	 * CHFUN / XFUN at h3). Data fundamentals_panels.first_heading_level; env PANELH2_OFF.
+	 */
+	static panelTitleLevelPostpass(html, run) {
+		const cfg = DataService.Data.EmitTemplates.body_region?.fundamentals_panels?.first_heading_level;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "PANELH2_OFF"]) return html;
+		const code = String(run?.moduleCode ?? "");
+		const inqOn = cfg.inquiry_enabled !== false && !(cfg.inquiry_exclude_code_prefixes ?? []).some((p) => code.startsWith(p));
+		const funOn = (cfg.fundamentals_code_prefixes ?? []).some((p) => code.startsWith(p));
+		if (!inqOn && !funOn) return html;
+		const lvl = Number(cfg.level ?? 2);
+		const skipRe = new RegExp(cfg.skip_panel_class_match || "introduction");
+		const boxRe = new RegExp(cfg.box_class_match || "^(?:activity|alert)$");
+		const tagRe = /<(\/?)(div|h[1-6])\b([^>]*)>/g;
+		const classOf = (attrs) => { const m = /class="([^"]*)"/.exec(attrs); return m ? m[1].split(/\s+/).filter(Boolean) : []; };
+		let out = "", last = 0, changed = 0, m;
+		// walk every tag once; a panel open starts a scan for its first own heading
+		const stack = [];   // { panel: bool, boxed: bool, cls }
+		let want = null;    // the open panel awaiting its first heading: { depth, boxes }
+		while ((m = tagRe.exec(html))) {
+			const closing = m[1] === "/", tag = m[2];
+			if (tag === "div") {
+				if (!closing) {
+					const cls = classOf(m[3]);
+					const isPanel = (cls.includes("inquiryPanel") && inqOn) || (cls.includes("fundamentalsPanel") && funOn && !cls.some((c) => skipRe.test(c)));
+					const boxed = cls.some((c) => boxRe.test(c));
+					stack.push({ panel: isPanel, boxed });
+					if (isPanel) want = { depth: stack.length, boxes: 0 };
+					else if (want && boxed) want.boxes++;
+				} else {
+					const fr = stack.pop();
+					if (want && fr) {
+						if (fr.panel && stack.length < want.depth) want = null;
+						else if (fr.boxed && stack.length >= want.depth) want.boxes--;
+					}
+				}
+				continue;
+			}
+			if (closing || !want || want.boxes > 0) continue;
+			// the panel's first own heading
+			const cur = Number(tag[1]);
+			want = null;
+			if (cur === lvl) continue;
+			const closeTag = `</${tag}>`;
+			const c = html.indexOf(closeTag, m.index + m[0].length);
+			if (c < 0) continue;
+			out += html.slice(last, m.index) + `<h${lvl}${m[3]}>` + html.slice(m.index + m[0].length, c) + `</h${lvl}>`;
+			last = c + closeTag.length; changed++;
+			tagRe.lastIndex = Math.max(tagRe.lastIndex, last);
+		}
+		if (!changed) return html;
+		out += html.slice(last);
+		if (run) run.AddNote("info", "PanelsBuilder", `${changed} panel title heading(s) set to h${lvl} (first_heading_level).`);
+		return out;
+	};
 }
 
 // Node test-harness hook; browsers ignore it.
