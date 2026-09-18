@@ -1,0 +1,23 @@
+==== a div.row DIRECTLY inside the activity box col-12 column: (inner row's class, its first child) ====
+Claude:
+    239 (pages 150 / mods 115)  div.carousel.row  ›  div.col-12.col-md-12.viewer
+     38 (pages  35 / mods  30)  div.flipCardsContainer.row  ›  div.col-12.col-md-4.paddingLR
+     28 (pages  25 / mods  14)  div.row  ›  div.col-12.col-md-6
+     14 (pages   8 / mods   1)  div.row  ›  div.col-12.col-md-8
+      5 (pages   5 / mods   5)  div.flipCardsContainer.row  ›  div.col-12.col-md-6.paddingLR
+      2 (pages   1 / mods   1)  div.row  ›  div.col-12.col-md-3
+gold:
+    328 (pages 231)  div.carousel.row  ›  div.col-12.col-md-12.viewer
+    238 (pages 154)  div.row  ›  div.col-12
+    150 (pages  25)  div.row  ›  div.col-4
+     68 (pages  27)  div.reorder.row  ›  div.col-12.reorderList
+     63 (pages  42)  div.flipCardsContainer.row  ›  div.col-12.col-md-4.paddingLR
+     61 (pages  35)  div.row  ›  div.col-12.col-md-8
+     49 (pages  37)  div.carousel.carouselBorder.row  ›  div.col-12.col-md-12.viewer
+     37 (pages  27)  div.row  ›  div.col-12.col-md-4.offset-md-0
+     37 (pages  24)  div.row  ›  div.col-12.col-md-8.offset-md-2
+     32 (pages  25)  div.justify-content-center.margB2.row.slider  ›  div.col-11
+     31 (pages  13)  div.row.wordDrag  ›  div.col-12.wordDragContainer
+     30 (pages  11)  div.row  ›  div.col-12.col-md-6.paddingR
+     30 (pages  21)  div.row  ›  div.col-12.col-md-4
+     28 (pages  27)  div.row  ›  div.col-12.col-md-6.offset-md-0

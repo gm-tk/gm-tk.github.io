@@ -1,0 +1,5 @@
+gold inner row›col-12 inside an activity's col-12: 234 on 157 pages;  claude 0 on 0 pages
+activity kind: [('div.activity', 148), ('div.activity.dropbox', 30), ('div.activity.interactive', 27), ('div.activity.alertPadding', 17), ('div.activity.alertPadding.inte', 6)]
+previous sibling in the outer col-12 (before the inner row): [('div.row', 234)]
+inner col-12's first child: [('div.hintDropContent', 114), ('div.clickDropContent', 48), ('div.clickDropContent.noBorder', 15), ('div.alert', 11), ('a', 9), ('div.alert.solid', 5), ('div.dragAndDrop', 4), ('div.typingSlides', 3), ('div.row', 3), ('div.row.speechBubble', 3)]
+by subject: [('1-10 Blended Literacy', 50), ('1-10 Mathematics', 48), ('ConnectED', 44), ('NCEA1', 39), ('1-10 English', 21), ('Leaving to Learn', 15), ('ANZH', 6), ('1-10 Health and PE', 5)]

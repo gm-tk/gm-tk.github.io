@@ -1,0 +1,31 @@
+==== wholly-bold paragraphs <p><b>…</b></p> — gold vs Claude (with h4/h5 counts as the heading proxy) ====
+   ALL                                            p>b gold  1079 (pages 311)  claude  1781 (pages 480 / mods 255)   h4/h5 gold  8186  claude  4744
+   template=Standard                              p>b gold   731 (pages   0)  claude   989 (pages   0 / mods   0)   h4/h5 gold  6225  claude  3233
+   template=Bilingual                             p>b gold   162 (pages   0)  claude   466 (pages   0 / mods   0)   h4/h5 gold   274  claude   167
+   template=Fundamentals                          p>b gold    98 (pages   0)  claude   166 (pages   0 / mods   0)   h4/h5 gold   808  claude   650
+   template=Inquiry                               p>b gold    88 (pages   0)  claude   160 (pages   0 / mods   0)   h4/h5 gold   879  claude   694
+   tmpl+subj=Bilingual/Te Marautanga o Aotearoa TMoA p>b gold   162 (pages  31)  claude   466 (pages  45 / mods  15)   h4/h5 gold   274  claude   167
+   tmpl+subj=Standard/1-10 Mathematics            p>b gold   123 (pages  38)  claude   274 (pages  68 / mods  22)   h4/h5 gold  1201  claude   558
+   tmpl+subj=Standard/Leaving to Learn            p>b gold   154 (pages  42)  claude   180 (pages  58 / mods  22)   h4/h5 gold  1252  claude   703
+   tmpl+subj=Standard/1-10 Blended Literacy       p>b gold    30 (pages  13)  claude   106 (pages  78 / mods  61)   h4/h5 gold   264  claude    77
+   tmpl+subj=Standard/NCEA1                       p>b gold    69 (pages  30)  claude   101 (pages  56 / mods  28)   h4/h5 gold  1003  claude   527
+   tmpl+subj=Inquiry/ConnectED                    p>b gold    66 (pages  17)  claude    89 (pages  13 / mods  11)   h4/h5 gold   389  claude   171
+   tmpl+subj=Standard/1-10 English                p>b gold   121 (pages  39)  claude    88 (pages  36 / mods  21)   h4/h5 gold  1063  claude   648
+   tmpl+subj=Standard/None                        p>b gold    56 (pages  22)  claude    80 (pages  18 / mods   4)   h4/h5 gold   242  claude   117
+   tmpl+subj=Fundamentals/1-10 Technology         p>b gold    10 (pages   2)  claude    68 (pages   8 / mods   8)   h4/h5 gold    99  claude    17
+   tmpl+subj=Standard/ANZH                        p>b gold    24 (pages   7)  claude    54 (pages  17 / mods   8)   h4/h5 gold   157  claude    86
+   tmpl+subj=Inquiry/1-10 Blended Literacy        p>b gold    10 (pages   2)  claude    54 (pages  13 / mods   8)   h4/h5 gold    56  claude    22
+   tmpl+subj=Fundamentals/1-10 Arts               p>b gold     2 (pages   1)  claude    47 (pages   2 / mods   2)   h4/h5 gold    86  claude   244
+   tmpl+subj=Standard/Online Safety (OS9000)      p>b gold    98 (pages  24)  claude    38 (pages  19 / mods  15)   h4/h5 gold   518  claude   243
+   tmpl+subj=Standard/ConnectED                   p>b gold    43 (pages  13)  claude    36 (pages  15 / mods   5)   h4/h5 gold   329  claude   155
+   tmpl+subj=Fundamentals/None                    p>b gold     9 (pages   3)  claude    27 (pages   3 / mods   3)   h4/h5 gold   178  claude   109
+   tmpl+subj=Standard/EXPlore                     p>b gold     0 (pages   0)  claude    15 (pages   6 / mods   2)   h4/h5 gold   104  claude    35
+   tmpl+subj=Inquiry/Te ara Whakapuawa -Wellbeing p>b gold     9 (pages   4)  claude    13 (pages   4 / mods   4)   h4/h5 gold   152  claude    45
+   tmpl+subj=Standard/1-10 Science                p>b gold    11 (pages   4)  claude    11 (pages   4 / mods   1)   h4/h5 gold    35  claude    36
+   tmpl+subj=Fundamentals/1-10 English            p>b gold    31 (pages   6)  claude     8 (pages   4 / mods   4)   h4/h5 gold   134  claude   167
+   tmpl+subj=Fundamentals/1-10 Health and PE      p>b gold    30 (pages   5)  claude     5 (pages   2 / mods   2)   h4/h5 gold   153  claude    20
+   examples:
+      AGH1001_1_0: <p><b>For example:</b></p>
+      AGH1001_2_0: <p><b>Timeline of primary production in Aotearoa:</b></p>
+      AGH1005_7_0: <p><b>Common pests and diseases:</b></p>
+      AGH1005_8_0: <p><b>Flowering</b></p>
