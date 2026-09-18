@@ -1,0 +1,6 @@
+XDLS502: identical 4 / changed 1
+XDLS901: identical 1 / changed 4
+XDLS904: identical 1 / changed 7
+XDLS905: identical 1 / changed 7
+XDLS906: identical 1 / changed 7
+XDLS911: identical 0 / changed 2

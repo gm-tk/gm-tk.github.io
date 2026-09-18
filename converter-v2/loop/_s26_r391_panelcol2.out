@@ -1,0 +1,8 @@
+  ('1-10 English', 'activity')                       gold n= 18 pages= 15 {'div.col-12.col-md-12': 9, 'div.col-12': 9}   claude n= 15 {'div.col-12': 15}
+  ('1-10 English', 'own-row')                        gold n=  9 pages=  9 {'div.col-12.col-md-12': 7, 'div.col-12': 2}   claude n= 10 {'div.col-12': 10}
+  ('ConnectED', 'activity')                          gold n= 15 pages=  7 {'div.col-12.col-md-12': 9, 'div.col-12': 6}   claude n=  3 {'div.col-12': 3}
+  ('ConnectED', 'own-row')                           gold n=  5 pages=  4 {'div.col-12': 4, 'div.col-12.col-md-12': 1}   claude n=  9 {'div.col-12': 9}
+  ('Leaving to Learn', 'activity')                   gold n= 19 pages= 18 {'div.col-12': 12, 'div.col-12.col-md-12': 7}   claude n= 13 {'div.col-12': 13}
+  ('Leaving to Learn', 'own-row')                    gold n= 37 pages= 35 {'div.col-12.col-md-12': 28, 'div.col-12': 8, 'div.col-xs-12': 1}   claude n= 31 {'div.col-12': 31}
+  ('Online Safety (OS9000)', 'activity')             gold n=  5 pages=  5 {'div.col-12.col-md-12': 3, 'div.col-12': 2}   claude n=  6 {'div.col-12': 6}
+  ('Online Safety (OS9000)', 'own-row')              gold n=  4 pages=  4 {'div.col-12': 2, 'div.col-12.col-md-12': 2}   claude n=  3 {'div.col-12': 3}

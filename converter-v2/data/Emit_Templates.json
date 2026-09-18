@@ -673,6 +673,14 @@
 				"note": "The supervisor-note structure from the human gold standard (BLL146-0.0): a row-level super-content block. own_row = the template carries its OWN row/col wrappers, so the engine must NOT wrap it in the standard content row. ROUND 160: the flat open/close above are the LEGACY (round-159) form, kept verbatim for SUPINROW_OFF; the live form is inner_row below.",
 				"inner_row": {
 					"enabled": true,
+					"text_col_by_subject": {
+						"enabled": true,
+						"env": "PANELCOL_OFF",
+						"by_subject": {
+							"Leaving to Learn": "col-12 col-md-12"
+						},
+						"_doc": "ROUND 391 (the autonomous loop's session 26 Round 5 — the r390 miner row #3735 decomposed by outputs/_s26_r391_panelcol.py). The own-row supervisor panel's TEXT column (the inner row's second col) is `col-12` corpus-wide (gold 327 / 93 — the BLL / MXDI majority, the template's default) but `col-12 col-md-12` in the Leaving to Learn family (own-row panels 28 / 37 = 0.76 on 35 pages / 15 modules; the XDLS90x series 28 / 37). The module's Module_Structure_Index subject picks the class; the LAST `<div class=\"col-12\">` of the inner_row open is rewritten. The activity-owned panel template (activity_wrapper.super_content.panel_open) is untouched (LtL 0.37, English 0.50 — ties). OFF = the r390 output."
+					},
 					"_note": "ROUND 160 (Chris, BLL225-0.0). The human wraps the panel's two col-12s in an INNER row (super-content row > row > col-12 label + col-12 text) — measured 215/215 human non-activity sites vs Claude 0/214 (outputs/_measure_supervisor_nonactivity.py); the legacy template UNDER-COPIED its own gold source BLL146-0.0. Same class as the round-143.1 activity-panel inner row (the reveal JS keys on the nested structure). Env SUPINROW_OFF reverts to the flat legacy open/close.",
 					"open": "<div class=\"row supervisor\">\n<div class=\"col-md-8 col-12 super-content-button\">\n<div class=\"super-content row\">\n<div class=\"row\">\n<div class=\"col-12\">\n<h3>Supervisor note</h3>\n</div>\n<div class=\"col-12\">",
 					"close": "</div>\n</div>\n</div>\n</div>\n</div>"

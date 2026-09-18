@@ -7744,7 +7744,20 @@ class ContentConverter {
 		const _irCfg = def?.inner_row;
 		if (_irCfg && _irCfg.enabled !== false && _irCfg.open
 			&& !(typeof process !== "undefined" && process.env && process.env.SUPINROW_OFF)) {
-			def = Object.assign({}, def, { open: _irCfg.open, close: _irCfg.close });
+			let _irOpen = _irCfg.open;
+			// ROUND 391 (the autonomous loop's session 26 Round 5): the panel's TEXT column class by subject — the
+			// Leaving to Learn family's own-row panels carry `col-12 col-md-12` (gold 28 / 37 = 0.76); the LAST
+			// `<div class="col-12">` of the inner_row open is the text column. Data inner_row.text_col_by_subject; env PANELCOL_OFF.
+			const _tcCfg = _irCfg.text_col_by_subject;
+			if (_tcCfg && _tcCfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[_tcCfg.env ?? "PANELCOL_OFF"])) {
+				const _subj = String(DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")]?.subject ?? "");
+				const _cls = _subj && (_tcCfg.by_subject ?? {})[_subj];
+				const _needle = '<div class="col-12">';
+				const _at = _cls ? _irOpen.lastIndexOf(_needle) : -1;
+				if (_at >= 0) _irOpen = _irOpen.slice(0, _at) + `<div class="${_cls}">` + _irOpen.slice(_at + _needle.length);
+			}
+			def = Object.assign({}, def, { open: _irOpen, close: _irCfg.close });
 		}
 		if (!def) {
 			return [NotesAndComments.redFlag(

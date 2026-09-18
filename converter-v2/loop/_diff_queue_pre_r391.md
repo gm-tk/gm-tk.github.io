@@ -1,6 +1,6 @@
 # DIFF_QUEUE.md — the diff miner's ranked class queue (LOOP__Autonomous_Rounds.md §1d)
 
-**Produced:** 2026-09-19 02:21 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD 146c839; Claude corpus 416 dirs). **Population:** the skeleton gate's own — 1956 paired pages / 405 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 63.1 s.
+**Produced:** 2026-09-19 02:00 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD 5c460d2; Claude corpus 416 dirs). **Population:** the skeleton gate's own — 1956 paired pages / 405 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 63.0 s.
 
 **What a row is.** One CLASS = (region, parent element, gold form, Claude form, direction) over every differing skeleton line of every paired page — the same lines, labels, widget collapse and difflib alignment the PRIMARY gate scores (each element its own line so it can be quoted). Direction: MISSING = gold has it, Claude lacks it; EXTRA = Claude has it, gold lacks it; SUBSTITUTED = same position, different tag / class / wrapper; MOVED = same text, different place. Consensus = of the gold pages in the group where the region exists, the share carrying the gold form (for EXTRA: the share NOT carrying Claude's form). Derivable = the gold line's text is in the module's parsed Writers Template (round-110 tolerance); structure-only differences are always derivable.
 
@@ -8,9 +8,9 @@
 
 ## Summary
 
-- differing skeleton lines: 227467 — by direction {'MISSING': 119581, 'SUBSTITUTED': 20800, 'EXTRA': 79281, 'MOVED': 7805}
-- by region: {'module-code': 15, 'title': 251, 'header': 5, 'module-menu': 11995, 'phases-nav': 43, 'crumbs': 179, 'footer': 2081, 'acks': 1175, 'activity': 83504, 'body': 126812, 'root': 1407}
-- classes: 8143 — CANDIDATE 178, below floor 7716, the rest below consensus / not derivable
+- differing skeleton lines: 227485 — by direction {'MISSING': 119580, 'SUBSTITUTED': 20820, 'EXTRA': 79280, 'MOVED': 7805}
+- by region: {'module-code': 15, 'title': 251, 'header': 5, 'module-menu': 11995, 'phases-nav': 43, 'crumbs': 179, 'footer': 2081, 'acks': 1175, 'activity': 83504, 'body': 126830, 'root': 1407}
+- classes: 8141 — CANDIDATE 178, below floor 7713, the rest below consensus / not derivable
 
 ## Completeness census — the repeating chrome (§1d item 4)
 
@@ -506,9 +506,9 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 | 3715 | body | SUBSTITUTED | `div#body` | `div.row` | `div.table-responsive` | 22 | 16 | 0.94 of 1950 | ptype=lesson c=0.98 n=20 | structure | — | CANDIDATE |
 | 3725 | body | EXTRA | `th>b` | `—` | `b` | 20 | 15 | 1.00 of 1950 | era=Refresh c=1.00 n=20 | structure | — | CANDIDATE |
 | 3734 | body | MISSING | `div#body` | `div.clickDropContent.noBorder.row` | `—` | 49 | 14 | 0.03 of 1950 | series=XDLS90 c=0.64 n=38 | 0.94 | yes | CANDIDATE |
-| 4286 | body | EXTRA | `div.col-12.col-md-12` | `—` | `ul` | 21 | 3 | 1.00 of 1950 | template=Standard c=1.00 n=21 | structure | — | CANDIDATE |
-| 8076 | root | EXTRA | `body.container-fluid` | `—` | `div.row` | 233 | 233 | 0.87 of 1956 | subject+ptype=NCEA1/overview c=0.98 n=41 | structure | — | CANDIDATE |
-| 8081 | root | SUBSTITUTED | `#root` | `body` | `body.container-fluid` | 94 | 10 | 0.05 of 1956 | series=CEDO50 c=1.00 n=25 | structure | yes | CANDIDATE |
+| 3735 | body | EXTRA | `div.col-12` | `—` | `ul` | 32 | 14 | 1.00 of 1950 | series=XDLS90 c=1.00 n=20 | structure | — | CANDIDATE |
+| 8074 | root | EXTRA | `body.container-fluid` | `—` | `div.row` | 233 | 233 | 0.87 of 1956 | subject+ptype=NCEA1/overview c=0.98 n=41 | structure | — | CANDIDATE |
+| 8079 | root | SUBSTITUTED | `#root` | `body` | `body.container-fluid` | 94 | 10 | 0.05 of 1956 | series=CEDO50 c=1.00 n=25 | structure | yes | CANDIDATE |
 
 ## Details — in the companion file `CONVERTER_V2/outputs/_diff_queue_details.md`
 Every CANDIDATE and every top-40 row has three quoted examples (WT / gold / Claude) there, plus the

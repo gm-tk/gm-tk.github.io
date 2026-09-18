@@ -1,0 +1,7 @@
+scaffold 53.5175 -> 53.5253 (+0.0078pp); RAW 37.756 -> 37.762
+movers 23: up 21 / down 2; pp-sum +15.2; outside affected 0
+worst: [(-0.9, 'XDLS901_2_0.html'), (-0.7, 'XDLS901_4_0.html'), (0.7, 'XDLS904_5_0.html')]
+best: [(0.9, 'XDLS905_5_0.html'), (0.9, 'XDLS906_7_0.html'), (0.9, 'XDLS502_4_0.html')]
+>= 50: 1157 -> 1158 up: [('XDLS906', 'XDLS906_2_0.html')] down: []
+>= 75: 191 -> 191 up: [] down: []
+>= 90: 15 -> 15 up: [] down: []
