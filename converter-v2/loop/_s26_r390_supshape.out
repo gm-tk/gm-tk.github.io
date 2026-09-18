@@ -1,0 +1,111 @@
+==== the gold panel's run, per template/subject: what the gold skipped INSIDE the panel (kinds between panel items) ====
+   Inquiry/1-10 Blended Literacy            panels= 58  skipped-inside={'black': 16, 'red-prose+red-prose+red-prose(+black)': 2, 'body-tag(+black)': 1}
+   Standard/Leaving to Learn                panels= 38  skipped-inside={'black': 11}
+   Standard/1-10 Mathematics                panels= 23  skipped-inside={'black': 7}
+
+==== per group: the top shapes ====
+-- Standard/1-10 Blended Literacy (n=144)
+     118  stop=STRUCT:supervisor(+black); skipped-inside=-; after-panel=-
+       4  stop=STRUCT:embed+red-prose(+black); skipped-inside=-; after-panel=['body-tag(+black)', 'body-tag(+black)']
+       4  stop=STRUCT:embed+red-prose+red-prose; skipped-inside=-; after-panel=['body-tag(+black)']
+       3  stop=STRUCT:embed+red-prose(+black); skipped-inside=-; after-panel=['body-tag(+black)', 'black']
+       3  stop=STRUCT:embed+red-prose(+black); skipped-inside=-; after-panel=['body-tag(+black)']
+       1  stop=STRUCT:activity(+black); skipped-inside=-; after-panel=['black', 'red-prose+red-prose+red-prose']
+       ex: BLL114-01: [] stop=STRUCT:supervisor(+black)
+       ex: BLL114-03: [('black', True), ('body-tag(+black)', False), ('black', False), ('body-tag(+black)', False)] stop=STRUCT:embed+red-prose(+black)
+       ex: BLL115-01: [] stop=STRUCT:supervisor(+black)
+-- Inquiry/1-10 Blended Literacy (n=58)
+      35  stop=STRUCT:activity(+black); skipped-inside=-; after-panel=-
+      10  stop=STRUCT:supervisor(+black); skipped-inside=-; after-panel=-
+       8  stop=STRUCT:carousel; skipped-inside=-; after-panel=['body-tag(+black)']
+       3  stop=STRUCT:activity(+black); skipped-inside=-; after-panel=['body-tag+other-tag:[include audio(+black)', 'black']
+       1  stop=run-end; skipped-inside=['black', 'body-tag(+black)', 'red-prose+red-prose+red-prose(+black)']; after-panel=['black', 'black']
+       1  stop=STRUCT:important; skipped-inside=-; after-panel=-
+       ex: BLL110: [('other-tag:[+red-prose(', True)] stop=STRUCT:activity(+black)
+       ex: BLL110: [('other-tag:[+red-prose(', True)] stop=STRUCT:activity(+black)
+       ex: BLL110: [('other-tag:[+red-prose(', True)] stop=STRUCT:activity(+black)
+-- Standard/Leaving to Learn (n=38)
+      11  stop=STRUCT:end; skipped-inside=['black']; after-panel=-
+      11  stop=STRUCT:end; skipped-inside=-; after-panel=-
+       7  stop=STRUCT:supervisor(+black); skipped-inside=-; after-panel=-
+       3  stop=STRUCT:alert.solid(+black); skipped-inside=-; after-panel=['black', 'black']
+       1  stop=STRUCT:supervisor+inline-tag+red-prose+inline-tag+red-prose(+black); skipped-inside=-; after-panel=-
+       1  stop=STRUCT:supervisor+inline-tag+red-prose+other-tag:[insert link]+red-prose(+black); skipped-inside=-; after-panel=-
+       ex: XDLS502.03: [] stop=STRUCT:supervisor(+black)
+       ex: XDLS502.03: [] stop=STRUCT:supervisor(+black)
+       ex: XDLS904_01.0: [('black', True), ('black', True), ('inline-tag(+black)', True), ('black', True), ('inline-tag(+black)', True), ('black', False), ('inline-tag(+black)', True), ('inline-tag(+black)', True)] stop=STRUCT:end
+-- Standard/1-10 Mathematics (n=23)
+      10  stop=STRUCT:supervisor(+black); skipped-inside=-; after-panel=-
+       2  stop=STRUCT:video(+black); skipped-inside=-; after-panel=['body-tag(+black)', 'black']
+       2  stop=STRUCT:activity(+black); skipped-inside=-; after-panel=-
+       2  stop=STRUCT:video(+black); skipped-inside=['black']; after-panel=['body-tag(+black)', 'black']
+       1  stop=STRUCT:video(+black); skipped-inside=-; after-panel=['body-tag(+black)']
+       1  stop=STRUCT:button(+black); skipped-inside=['black']; after-panel=['black']
+       ex: MXDI102_3.0: [] stop=STRUCT:supervisor(+black)
+       ex: MXDI103_0.0: [('black', True), ('black', True), ('black', True), ('black', True), ('black', True), ('body-tag(+black)', False), ('black', False), ('black', False)] stop=STRUCT:video(+black)
+       ex: MXDI103_1.0: [('black', True), ('black', True), ('black', True), ('black', True), ('black', True), ('black', True), ('body-tag(+black)', False)] stop=STRUCT:video(+black)
+-- Standard/1-10 English (n=19)
+       5  stop=STRUCT:supervisor(+black); skipped-inside=-; after-panel=-
+       4  stop=STRUCT:image(+black); skipped-inside=-; after-panel=-
+       2  stop=STRUCT:activity+STRUCT:activity+body-tag+STRUCT:image+other-tag:[go to journal+STRUCT:supervisor(+black); skipped-inside=-; after-panel=-
+       1  stop=body-tag+STRUCT:important+body-tag+STRUCT:image+STRUCT:supervisor(+black); skipped-inside=-; after-panel=-
+       1  stop=STRUCT:image+body-tag+STRUCT:supervisor(+black); skipped-inside=-; after-panel=-
+       1  stop=body-tag+body-tag+other-tag:[go to journal+STRUCT:supervisor(+black); skipped-inside=-; after-panel=-
+       ex: ENGC101_2.0: [] stop=STRUCT:supervisor(+black)
+       ex: ENGC101_2.0: [] stop=STRUCT:supervisor(+black)
+       ex: ENGC102_6.0: [] stop=STRUCT:supervisor(+black)
+-- Inquiry/ConnectED (n=15)
+       8  stop=STRUCT:supervisor(+black); skipped-inside=-; after-panel=-
+       4  stop=STRUCT:alert(+black); skipped-inside=-; after-panel=-
+       2  stop=STRUCT:drag; skipped-inside=-; after-panel=-
+       1  stop=STRUCT:activity; skipped-inside=-; after-panel=['black', 'black']
+       ex: CEDK102: [] stop=STRUCT:supervisor(+black)
+       ex: CEDK102: [] stop=STRUCT:supervisor(+black)
+       ex: CEDK102: [] stop=STRUCT:supervisor(+black)
+-- Standard/Online Safety (OS9000) (n=9)
+       6  stop=STRUCT:supervisor(+black); skipped-inside=-; after-panel=-
+       1  stop=body-tag+STRUCT:supervisor+red-prose+red-prose+red-prose(+black); skipped-inside=-; after-panel=-
+       1  stop=STRUCT:image+STRUCT:supervisor+red-prose+red-prose(+black); skipped-inside=-; after-panel=-
+       1  stop=STRUCT:alert+STRUCT:supervisor+inline-tag+red-prose(+black); skipped-inside=-; after-panel=-
+       ex: OSAI101-02: [] stop=STRUCT:supervisor(+black)
+       ex: OSBY101-01: [] stop=STRUCT:supervisor(+black)
+       ex: OSBY101-02: [] stop=STRUCT:supervisor(+black)
+-- Fundamentals/1-10 Technology (n=8)
+       7  stop=STRUCT:alert+inline-tag+other-tag:[https://www.s(+black); skipped-inside=-; after-panel=-
+       1  stop=STRUCT:activity; skipped-inside=-; after-panel=-
+       ex: TEFUN02: [('black', True), ('black', True), ('black', True), ('black', True)] stop=STRUCT:activity
+       ex: TEFUN08: [] stop=STRUCT:alert+inline-tag+other-tag:[https://www.s(+black)
+       ex: TEFUN08: [] stop=STRUCT:alert+inline-tag+other-tag:[https://www.s(+black)
+-- Standard/ANZH (n=5)
+       4  stop=STRUCT:supervisor(+black); skipped-inside=-; after-panel=-
+       1  stop=STRUCT:button(+black); skipped-inside=-; after-panel=-
+       ex: ANZH104_06.0: [] stop=STRUCT:supervisor(+black)
+       ex: ANZH105_03.0: [('body-tag(+black)', True)] stop=STRUCT:button(+black)
+       ex: ANZH105_04.0: [] stop=STRUCT:supervisor(+black)
+-- Inquiry/Leaving to Learn (n=4)
+       3  stop=STRUCT:supervisor(+black); skipped-inside=-; after-panel=-
+       1  stop=STRUCT:end; skipped-inside=-; after-panel=-
+       ex: XDLS901.02: [] stop=STRUCT:supervisor(+black)
+       ex: XDLS901.03: [] stop=STRUCT:supervisor(+black)
+       ex: XDLS901.04: [('black', True), ('black', True), ('black', True), ('black', True), ('black', True), ('black', True)] stop=STRUCT:end
+-- Standard/ConnectED (n=2)
+       1  stop=STRUCT:supervisor(+black); skipped-inside=-; after-panel=-
+       1  stop=STRUCT:supervisor+other-tag:[insert link](+black); skipped-inside=-; after-panel=-
+       ex: CEDO105.1.0: [] stop=STRUCT:supervisor(+black)
+       ex: CEDO105.2.0: [] stop=STRUCT:supervisor+other-tag:[insert link](+black)
+-- Fundamentals/1-10 Mathematics (n=2)
+       2  stop=STRUCT:supervisor(+black); skipped-inside=-; after-panel=-
+       ex: MXFUN01: [] stop=STRUCT:supervisor(+black)
+       ex: MXFUN01_6.0: [] stop=STRUCT:supervisor(+black)
+-- Fundamentals/1-10 English (n=1)
+       1  stop=body-tag+red-prose+STRUCT:supervisor(+black); skipped-inside=-; after-panel=-
+       ex: ENFUN09: [] stop=body-tag+red-prose+STRUCT:supervisor(+black)
+-- Fundamentals/1-10 Health and PE (n=1)
+       1  stop=STRUCT:alert(+black); skipped-inside=-; after-panel=-
+       ex: HPFUN101: [] stop=STRUCT:alert(+black)
+-- Bilingual/Te Marautanga o Aotearoa TMoA (n=1)
+       1  stop=STRUCT:alert+STRUCT:supervisors+STRUCT:alert+STRUCT:supervisors(+black); skipped-inside=-; after-panel=-
+       ex: TRR114_1.0: [] stop=STRUCT:alert+STRUCT:supervisors+STRUCT:alert+STRUCT:supervisors(+black)
+-- Fundamentals/Leaving to Learn (n=1)
+       1  stop=STRUCT:video(+black); skipped-inside=-; after-panel=['black', 'inline-tag(+black)']
+       ex: XFUN01.00: [('other-tag:[hoa ako / l', True), ('black', False), ('inline-tag(+black)', False), ('inline-tag(+black)', False), ('inline-tag(+black)', False)] stop=STRUCT:video(+black)

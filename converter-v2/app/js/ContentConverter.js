@@ -433,6 +433,7 @@ class ContentConverter {
 		const rowCfg = tpl.body_region.row_breaks;
 		const parts = [];
 		let rowOpen = false;
+		let ownSpanClose = null;   // ROUND 390: the close string of an OPEN own-row span (the supervisor panel a writer closes explicitly) — emit() opens no content row while it is set and pushes that close directly
 		// FUNDAMENTALS PANELS: the "Fundamentals" family of modules present their content as a
 		// set of numbered "phase" panels rather than one continuous scroll. The HPFUN subject
 		// group marks where each phase begins with a writer tag "[New tab]" — if nothing
@@ -1005,7 +1006,10 @@ class ContentConverter {
 			// returns []) can never produce an empty, useless "row > col" pair.
 			const content = html.filter(Boolean);
 			if (!content.length) return;
-			if (!rowOpen) {
+			if (ownSpanClose !== null && content.length === 1 && content[0] === ownSpanClose) {   // ROUND 390: the own-row span's close — no content row around it
+				parts.push(content[0]); ownSpanClose = null; rowOpen = false; return;
+			}
+			if (!rowOpen && ownSpanClose === null) {
 				lastRowOpenIdx = parts.length;
 				parts.push(Utils.FillTemplate(tpl.body_region.content_row_open,
 					{ contentColClass: tpl.body_region.content_col_class_default, rowClass: nextRowClass }));
@@ -1193,7 +1197,7 @@ class ContentConverter {
 			while (stack.length) {
 				const top = stack[stack.length - 1];
 				let hit;
-				if (top.mode === "span" || top.mode === "span-wrap") {
+				if (top.mode === "span" || top.mode === "span-wrap" || top.mode === "span-own") {   // ROUND 390: span-own = the explicitly closed supervisor panel
 					const spanCfg = tpl.callouts.containment.span_close_before;
 					hit = primary && spanCfg.directives.includes(primary.directive);
 					// a STRUCTURED-CONTENT wrap (no explicit [end X] — the callout wraps a
@@ -2848,6 +2852,25 @@ class ContentConverter {
 					if (defOwn?.own_row && !stack.length) {
 						breakRow();
 						headingHold = false;
+						// ROUND 390 (the autonomous loop's session 26 Round 4): a writer who CLOSES the note explicitly —
+						// [Supervisor Button] … [End Supervisor button] / [Supervisor note] … [end supervisor note] — means the
+						// whole run to the closer is the panel's content (the gold's panel: Leaving to Learn 22 / 0). The
+						// panel opens in SPAN mode (stack mode span-own): the loop renders the items between inside its
+						// column, emit() opens no content row meanwhile, the closer pops it. Data
+						// callouts.by_tag.<tag>.explicit_close_span; env SUPSPAN_OFF.
+						const _ecs = defOwn.explicit_close_span;
+						if (_ecs && _ecs.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[_ecs.env ?? "SUPSPAN_OFF"])
+							&& this.#explicitCloseAhead(bodyItems, i, primary.tag, { stopAtActivity: _ecs.stop_at_activity !== false, promotedClosers: true })) {
+							const spanParts = this.#calloutOpen(it, bodyItems, i, stack, run, true).filter(Boolean);
+							const topE = stack[stack.length - 1];
+							if (topE && topE.tag === primary.tag) { topE.mode = "span-own"; ownSpanClose = topE.close; }
+							parts.push(...spanParts);
+							run.AddNote("info", "ContentConverter",
+								`Page ${page.lessonLabel}: [${primary.tag}] spans to its explicit closer — the panel holds everything between (round 390).`);
+							while (bodyItems[i + 1]?._consumed) i++;
+							break;
+						}
 						const boxParts = this.#calloutOpen(it, bodyItems, i, stack, run, false).filter(Boolean);
 						// BLL-family SIDE-BY-SIDE PAIRING (module BLL225): the human-built version
 						// anchors a non-activity supervisor note directly to the section paragraph it
@@ -8039,7 +8062,8 @@ class ContentConverter {
 	 * CONTAINER_CLOSE of the same family (or the generic [end]) means the
 	 * writer authored a spanning box.
 	 */
-	static #explicitCloseAhead(bodyItems, i, canonTag) {
+	static #explicitCloseAhead(bodyItems, i, canonTag, opts = {}) {
+		const stopAtActivity = !!opts.stopAtActivity;   // ROUND 390: only the own-row (supervisor) span asks for these two
 		// ONLY the specific family close counts as span evidence — the
 		// generic [end]/[End Phase N] forms resolve to "end other" and are
 		// far too weak (TEFUN07's [End Phase 1] section markers wrongly
@@ -8048,6 +8072,11 @@ class ContentConverter {
 		// alert/important share close phrasing in the wild
 		if (canonTag === "important") family.add("end alert");
 		if (canonTag === "alert") family.add("end important");
+		// ROUND 390: a tag_promote SOURCE's closer counts for its promoted target — the writer who types
+		// [Supervisor Button] … [End Supervisor button] closes the promoted `supervisor note` span.
+		if (opts.promotedClosers) for (const r of (DataService.Data.TagLexicon?._meta?.tag_promote?.rules ?? [])) {
+			if (r && r.to === canonTag && r.from) family.add(`end ${r.from}`);
+		}
 
 		for (let j = i + 1; j < bodyItems.length; j++) {
 			const it2 = bodyItems[j];
@@ -8055,7 +8084,7 @@ class ContentConverter {
 			const p = it2.parse.primary;
 			if (!p) continue;
 			if (p.directive === "PAGE_BOUNDARY" || p.directive === "SECTION_MARKER") return false;
-			if (p.directive === "CONTAINER_OPEN" && p.tag !== "activity") return false;
+			if (p.directive === "CONTAINER_OPEN" && (stopAtActivity || p.tag !== "activity")) return false;   // ROUND 390: an own-row span never swallows an activity
 			if (it2.parse.tags.some((t) => t.directive === "CONTAINER_CLOSE" && family.has(t.tag))) return true;
 		}
 		return false;

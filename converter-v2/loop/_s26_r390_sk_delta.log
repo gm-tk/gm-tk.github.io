@@ -1,0 +1,5 @@
+scaffold 53.4702 -> 53.5175 (+0.0473pp); RAW 37.725 -> 37.756
+movers 21: up 21 / down 0; pp-sum +92.5; added 0 / dropped 0; outside affected 0
+>= 50: 1157 -> 1157
+>= 75: 191 -> 191
+>= 90: 15 -> 15

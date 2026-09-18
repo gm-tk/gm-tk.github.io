@@ -1,0 +1,29 @@
+==== the supervisor panel TEXT column (the inner row's last col) — gold vs Claude, per group ====
+  ALL                                  gold n= 429 m=147 {'div.col-12': 327, 'div.col-12.col-md-12': 93, 'div.col-12.col-md-8': 7}   claude n= 353 {'div.col-12': 353}
+  Fundamentals                         gold n=  19 m= 10 {'div.col-12': 14, 'div.col-12.col-md-12': 4, 'div.col-12.col-md-8': 1}   claude n=   7 {'div.col-12': 7}
+  Fundamentals/1-10 English            gold n=   5 m=  4 {'div.col-12.col-md-12': 4, 'div.col-12': 1}   claude n=   1 {'div.col-12': 1}
+  Fundamentals/1-10 Technology         gold n=   8 m=  2 {'div.col-12': 8}   claude n=   1 {'div.col-12': 1}
+  Inquiry                              gold n= 123 m= 19 {'div.col-12': 98, 'div.col-12.col-md-12': 25}   claude n=  74 {'div.col-12': 74}
+  Inquiry/1-10 Blended Literacy        gold n=  97 m= 11 {'div.col-12': 82, 'div.col-12.col-md-12': 15}   claude n=  57 {'div.col-12': 57}
+  Inquiry/ConnectED                    gold n=  18 m=  6 {'div.col-12.col-md-12': 10, 'div.col-12': 8}   claude n=  10 {'div.col-12': 10}
+  Inquiry/Leaving to Learn             gold n=   8 m=  2 {'div.col-12': 8}   claude n=   7 {'div.col-12': 7}
+  Standard                             gold n= 286 m=117 {'div.col-12': 214, 'div.col-12.col-md-12': 64, 'div.col-12.col-md-8': 6}   claude n= 272 {'div.col-12': 272}
+  Standard/1-10 Blended Literacy       gold n= 169 m= 77 {'div.col-12': 163, 'div.col-12.col-md-8': 3, 'div.col-12.col-md-12': 3}   claude n= 176 {'div.col-12': 176}
+  Standard/1-10 English                gold n=  22 m=  6 {'div.col-12.col-md-12': 12, 'div.col-12': 10}   claude n=  24 {'div.col-12': 24}
+  Standard/1-10 Mathematics            gold n=  33 m= 10 {'div.col-12': 21, 'div.col-12.col-md-12': 8, 'div.col-12.col-md-8': 3}   claude n=  18 {'div.col-12': 18}
+  Standard/ANZH                        gold n=   5 m=  2 {'div.col-12': 4, 'div.col-12.col-md-12': 1}   claude n=   6 {'div.col-12': 6}
+  Standard/Leaving to Learn            gold n=  46 m= 15 {'div.col-12.col-md-12': 35, 'div.col-12': 10, 'div.col-xs-12': 1}   claude n=  37 {'div.col-12': 37}
+  Standard/Online Safety (OS9000)      gold n=   9 m=  6 {'div.col-12.col-md-12': 5, 'div.col-12': 4}   claude n=   9 {'div.col-12': 9}
+  series=ANZH1                         gold n=   5 m=  2 {'div.col-12': 4, 'div.col-12.col-md-12': 1}   claude n=   6 {'div.col-12': 6}
+  series=BLL1                          gold n= 192 m= 55 {'div.col-12': 187, 'div.col-12.col-md-12': 3, 'div.col-12.col-md-8': 2}   claude n= 156 {'div.col-12': 156}
+  series=BLL2                          gold n=  74 m= 33 {'div.col-12': 58, 'div.col-12.col-md-12': 15, 'div.col-12.col-md-8': 1}   claude n=  77 {'div.col-12': 77}
+  series=CEDK1                         gold n=   6 m=  1 {'div.col-12': 6}   claude n=   6 {'div.col-12': 6}
+  series=CEDT1                         gold n=   5 m=  2 {'div.col-12.col-md-12': 5}   claude n=   0 {}
+  series=ENFUN0                        gold n=   5 m=  4 {'div.col-12.col-md-12': 4, 'div.col-12': 1}   claude n=   1 {'div.col-12': 1}
+  series=ENGR1                         gold n=  11 m=  2 {'div.col-12.col-md-12': 11}   claude n=  10 {'div.col-12': 10}
+  series=MXDI1                         gold n=   5 m=  2 {'div.col-12': 5}   claude n=   7 {'div.col-12': 7}
+  series=MXEO1                         gold n=   7 m=  1 {'div.col-12.col-md-12': 4, 'div.col-12.col-md-8': 3}   claude n=   0 {}
+  series=MXFL1                         gold n=  15 m=  3 {'div.col-12': 15}   claude n=   9 {'div.col-12': 9}
+  series=TEFUN0                        gold n=   8 m=  2 {'div.col-12': 8}   claude n=   1 {'div.col-12': 1}
+  series=XDLS9                         gold n=  37 m=  8 {'div.col-12.col-md-12': 28, 'div.col-12': 9}   claude n=  39 {'div.col-12': 39}
+  series=XGF9                          gold n=   6 m=  1 {'div.col-12': 6}   claude n=   0 {}

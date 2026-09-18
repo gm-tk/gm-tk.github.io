@@ -1,0 +1,37 @@
+==== (1) WT census — every [Supervisor note] opener: explicit closer? items between? ====
+   ALL                                          n=203  {'open+items': 174, 'open+empty': 27, 'closed+items': 2}  mods(closed+items)=0
+   template=Fundamentals                        n=  1  {'open+items': 1}  mods(closed+items)=0
+   template=Inquiry                             n= 20  {'open+items': 15, 'open+empty': 4, 'closed+items': 1}  mods(closed+items)=0
+   template=Standard                            n=182  {'open+items': 158, 'open+empty': 23, 'closed+items': 1}  mods(closed+items)=0
+   tmpl+subj=Inquiry/1-10 Blended Literacy      n= 14  {'open+items': 12, 'open+empty': 2}  mods(closed+items)=0
+   tmpl+subj=Inquiry/Leaving to Learn           n=  5  {'open+empty': 2, 'open+items': 2, 'closed+items': 1}  mods(closed+items)=1
+   tmpl+subj=Standard/1-10 Blended Literacy     n=146  {'open+items': 133, 'open+empty': 13}  mods(closed+items)=0
+   tmpl+subj=Standard/1-10 English              n= 14  {'open+empty': 4, 'open+items': 10}  mods(closed+items)=0
+   tmpl+subj=Standard/1-10 Mathematics          n=  8  {'open+items': 7, 'open+empty': 1}  mods(closed+items)=0
+   tmpl+subj=Standard/ANZH                      n=  5  {'open+items': 1, 'open+empty': 4}  mods(closed+items)=0
+   tmpl+subj=Standard/Leaving to Learn          n=  9  {'closed+items': 1, 'open+items': 7, 'open+empty': 1}  mods(closed+items)=1
+   examples:
+      XDLS502 L483: [('[body]', 3)]
+      XDLS901 L1068: [('black', 6)]
+
+==== (2) PAIRED — after a Claude non-activity supervisor panel row, the next row's first prose: inside the gold's panel? ====
+   ALL                                          in-panel  27 / free  18 = 0.60  pages 45 / mods 19  [{'next=opener/none': 20, 'gold-nowhere': 75}]
+   template=Inquiry                             in-panel   0 / free   1 = 0.00  pages 0 / mods 0  [{'gold-nowhere': 3, 'next=opener/none': 3}]
+   template=Standard                            in-panel  27 / free  17 = 0.61  pages 0 / mods 0  [{'next=opener/none': 16, 'gold-nowhere': 71}]
+   tmpl+subj=Inquiry/Leaving to Learn           in-panel   0 / free   1 = 0.00  pages 1 / mods 1  [{'gold-nowhere': 2, 'next=opener/none': 2}]
+   tmpl+subj=Standard/1-10 Blended Literacy     in-panel   0 / free   4 = 0.00  pages 4 / mods 4  [{'gold-nowhere': 61, 'next=opener/none': 8}]
+   tmpl+subj=Standard/1-10 English              in-panel   4 / free   2 = 0.67  pages 6 / mods 3  [{'next=opener/none': 2, 'gold-nowhere': 1}]
+   tmpl+subj=Standard/1-10 Mathematics          in-panel   0 / free   9 = 0.00  pages 9 / mods 4  [{'gold-nowhere': 3, 'next=opener/none': 2}]
+   tmpl+subj=Standard/ANZH                      in-panel   1 / free   0 = 1.00  pages 1 / mods 1  [{'next=opener/none': 3, 'gold-nowhere': 1}]
+   tmpl+subj=Standard/ConnectED                 in-panel   0 / free   1 = 0.00  pages 1 / mods 1  [{'gold-nowhere': 1}]
+   tmpl+subj=Standard/Leaving to Learn          in-panel  22 / free   0 = 1.00  pages 22 / mods 4  [{'gold-nowhere': 4}]
+   tmpl+subj=Standard/Online Safety (OS9000)    in-panel   0 / free   1 = 0.00  pages 1 / mods 1  [{'next=opener/none': 1}]
+   examples:
+      ANZH105_3_0 next=«use the support material below to help y»
+      ENGR102_2_0 next=«this lesson will be exploring the silent»
+      ENGR102_3_0 next=«this lesson will be exploring the rule t»
+      ENGR102_4_0 next=«this lesson will be exploring the rcontr»
+      ENGR102_5_0 next=«this lesson will be exploring the way co»
+      XDLS502_4_0 next=«kia haumaru»
+      XDLS904_1_0 next=«this unit refreshes understanding of lif»
+      XDLS904_2_0 next=«this unit refreshes understanding of lif»
