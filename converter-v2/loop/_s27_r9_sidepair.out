@@ -1,0 +1,47 @@
+GOLD two-column side pairs: 2065 on 902 pages;  CLAUDE: 166 on 121 pages
+==== GOLD top 20 (left | right | right's first kind) ====
+    226  col-12 col-md-8                              | col-12 col-md-4 offset-md-0                  | div.alertImage
+    196  col-12 col-md-8                              | col-12 col-md-4 offset-md-0                  | div.alertActivity
+    157  col-12 col-md-8                              | col-12 col-md-4 offset-md-0 paddingL         | img
+    117  col-12 col-md-8 paddingR                     | col-12 col-md-4 paddingL                     | img
+     84  col-12 col-md-8                              | col-12 col-md-4 offset-md-0                  | img
+     79  col-12 col-md-8                              | col-12 col-md-4 offset-md-0 paddingL         | div.alert.top
+     70  col-6 col-md-8                               | col-6 col-md-4 dropQuestion                  | div.dropDown
+     58  col-12 col-md-8 paddingR                     | col-12 col-md-4 offset-md-0 paddingL         | img
+     57  col-12 col-md-8                              | col-12 col-md-3 offset-md-0 paddingL         | img
+     49  col-12 col-md-8                              | col-12 col-md-3 offset-md-0                  | div.alertImage
+     49  col-12 col-md-8                              | col-12 col-md-3 offset-md-0                  | img
+     48  col-12 col-md-8                              | col-6 col-md-4 offset-3 offset-md-0          | div.alertActivity
+     48  col-12 col-md-8                              | col-12 col-md-4                              | img
+     35  col-12 col-md-8                              | col-12 col-md-3 offset-md-0                  | div.alertActivity
+     34  col-12 col-md-8                              | col-12 col-md-4 paddingL                     | img
+     34  col-12 col-md-8                              | col-12 col-md-3 offset-md-0 paddingR         | div.alertActivity
+     33  col-6 col-md-8                               | col-12 col-md-4 offset-md-0 paddingL         | img
+     29  col-12 col-md-8                              | col-6 col-md-4 offset-3 offset-md-0          | div.alertImage
+     18  col-12 col-md-8                              | col-12 col-md-4                              | div.alertActivity
+     18  col-12 col-md-8                              | col-12 col-md-3                              | div.alertImage
+==== CLAUDE top 12 ====
+    107  col-12 col-md-8                              | col-12 col-md-4 offset-md-0                  | div.alertActivity
+     53  col-12 col-md-8                              | col-12 col-md-4                              | div.alert.top
+      3  col-12 col-md-8                              | col-md-4                                     | div.alert.top
+      1  col-12 col-md-8                              | col-md-4                                     | div.alert.solid.top
+      1  col-12 col-md-8                              | col-12 col-md-4 offset-md-0                  | p
+      1  col-12 col-md-8                              | col-12 col-md-4                              | p
+==== GOLD by right-kind: the right column's class share ====
+   div.alert.top      n= 160  col-12 col-md-4 offset-md-0 paddingL 81 (0.51)  col-12 col-md-4 paddingL 22 (0.14)  col-12 col-md-4 17 (0.11)  col-12 col-md-4 offset-md-0 13 (0.08)  col-12 col-md-3 offset-md-0 paddingL 9 (0.06)
+   div.alert          n=  29  col-12 col-md-4 offset-md-0 13 (0.45)  col-12 col-md-4 offset-md-0 paddingL 6 (0.21)  col-12 col-md-4 paddingL 5 (0.17)  col-12 col-md-4 offset-md-0 paddingLR 2 (0.07)  col-12 col-md-4 2 (0.07)
+   div.alertActivity  n= 414  col-12 col-md-4 offset-md-0 198 (0.48)  col-6 col-md-4 offset-3 offset-md-0 51 (0.12)  col-12 col-md-3 offset-md-0 35 (0.08)  col-12 col-md-3 offset-md-0 paddingR 34 (0.08)  col-12 col-md-4 18 (0.04)
+   img                n= 806  col-12 col-md-4 offset-md-0 paddingL 256 (0.32)  col-12 col-md-4 paddingL 152 (0.19)  col-12 col-md-4 offset-md-0 110 (0.14)  col-12 col-md-3 offset-md-0 paddingL 60 (0.07)  col-12 col-md-3 offset-md-0 52 (0.06)
+   div.alert.solid    n=   6  col-12 col-md-4 paddingL 3 (0.50)  col-12 col-md-4 1 (0.17)  col-12 col-md-4 paddingLR 1 (0.17)  col-md-4 paddingL 1 (0.17)
+==== GOLD left-column class when the right is div.alert.top / div.alertActivity ====
+   div.alert.top      n= 160  col-12 col-md-8 143 (0.89)  col-12 col-md-8 paddingR 15 (0.09)  alertPadding col-12 col-md-8 1 (0.01)  col-12 col-md-8 paddingLR 1 (0.01)
+   div.alertActivity  n= 414  col-12 col-md-8 396 (0.96)  col-12 col-md-8 paddingR 12 (0.03)  align-self-centre col-12 col-md-8 2 (0.00)  alertPadding col-12 col-md-8 2 (0.00)
+   img                n= 806  col-12 col-md-8 472 (0.59)  col-12 col-md-8 paddingR 229 (0.28)  col-6 col-md-8 54 (0.07)  col-12 col-md-8 paddingLR 20 (0.02)
+==== per group (gold): the dominant full pair for alert.top ====
+   Standard/1-10 Mathematics                  n=  20  [col-12 col-md-8 | col-12 col-md-4 offset-md-0 paddingL] 15 (0.75)  [col-12 col-md-8 paddingR | col-12 col-md-4 paddingL] 3 (0.15)
+   Standard/NCEA1                             n=  47  [col-12 col-md-8 | col-12 col-md-4 offset-md-0 paddingL] 33 (0.70)  [col-12 col-md-8 | col-12 col-md-4 offset-md-0] 5 (0.11)
+   Standard/1-10 English                      n=  25  [col-12 col-md-8 | col-12 col-md-4 offset-md-0 paddingL] 8 (0.32)  [col-12 col-md-8 | col-12 col-md-4] 4 (0.16)
+   Standard/Leaving to Learn                  n=  11  [col-12 col-md-8 paddingR | col-12 col-md-4 paddingL] 5 (0.45)  [col-12 col-md-8 | col-12 col-md-4 offset-md-0 paddingL] 2 (0.18)
+   Fundamentals/1-10 English                  n=   8  [col-12 col-md-8 | col-12 col-md-3 offset-md-0 paddingL] 7 (0.88)  [col-12 col-md-8 | col-12 col-md-3 offset-md-0] 1 (0.12)
+   Bilingual/Te Marautanga o Aotearoa TMoA    n=   7  [col-12 col-md-8 | col-12 col-md-4 offset-md-0 paddingL] 6 (0.86)  [col-12 col-md-8 | col-12 col-md-4 paddingL] 1 (0.14)
+   Standard/None                              n=   5  [col-12 col-md-8 | col-12 col-md-4 paddingL] 2 (0.40)  [col-12 col-md-8 | col-12 col-md-4 offset-md-0] 2 (0.40)

@@ -1,0 +1,15 @@
+r404 (260619.75): DECLINED, shipped inert — the alert-top side column's class by subject (positional_side_alert.after_content.side_column_by_subject, empty; SIDECOLSUBJ_OFF)
+
+The position-free label census lists the gold's `col-12 col-md-4 offset-md-0 paddingL` at 392 lines against Claude's 0.
+The two-column side-pair census (outputs/_s27_r9_sidepair.py — every gold col-md-8 | col-md-4 row by the right
+column's first child) reads the alert-top side column's class at 0.51 corpus-wide (a tie) and 0.70 / 0.75 / 0.86 in
+NCEA1 / Mathematics / TMoA. Built as a #sideAlertCol data map and probed in memory over all 416 modules: 17 pages / 10
+modules changed, scored +1.4 pp-sum (2 up / 13 same) with the gate's own match() — the subject share is a per-module
+mix of four spellings (MXFU301's gold pairs use col-md-4 col-12 paddingL, HIS1004's the offset form) and Claude's 56
+alert-top pairs sit mostly in the English / Leaving to Learn ties. Declined: the map ships empty (the hook is a no-op;
+ON with the empty map = disk 2109/2109), the _doc carries the measurement.
+
+Session 27 Round 9 (the autonomous loop). No regeneration, no ship-ledger increment (scoped #7 since the r396 full —
+the next ship is the full backstop); every r403 baseline stands. Plateau window 1 of 3.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

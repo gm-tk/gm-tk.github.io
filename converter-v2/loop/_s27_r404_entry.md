@@ -1,0 +1,13 @@
+## 2026-09-19 (round 404, build 260619.75) — DECLINED, SHIPPED INERT: the alert-top side column's class by subject (the autonomous loop's session 27 Round 9; no regeneration — the corpus is byte-identical to r403, every r403 baseline stands)
+
+### 1. WHAT WAS MEASURED
+
+The position-free label census's MISSING side lists `div.col-12.col-md-4.offset-md-0.paddingL` (gold 392 / Claude 0) and `div.col-12.col-md-4.offset-md-0` (gold 682 / Claude 116). `outputs/_s27_r9_sidepair.py` — every gold `div.row` pairing a col-md-8 with a col-md-4 / col-md-3 on the paired pages (2065 rows / 902 pages), by the right column's first child — decomposes them: the image sidebar 806 (the r331 / session-27-r3 declined class: 35 % of the pictures are in no WT), the `alertActivity` sidebar 414 (`col-12 col-md-4 offset-md-0` 0.48 = Claude's own r333 form), and the **`alert top` side column, n = 160: `col-12 col-md-4 offset-md-0 paddingL` 81 = 0.51 corpus-wide — a tie — but 0.70 in NCEA1 (33 / 47), 0.75 in Mathematics (15 / 20), 0.86 in TMoA (6 / 7)**; English 0.32 and Leaving to Learn 0.45 ties; the left column stays `col-12 col-md-8` (0.89). Claude's 56 alert-top side pairs all ship the r333 `col-md-4 col-12`.
+
+### 2. WHAT WAS BUILT, PROBED, AND DECLINED
+
+`#sideAlertCol` gained a data map (`callouts.positional_side_alert.after_content.side_column_by_subject`, env `SIDECOLSUBJ_OFF`) resolving the side column's class by the module's `module_meta` subject. The in-memory probe with the three solid subjects: OFF = disk 2109 / 2109; ON **17 pages / 10 modules** changed (HIS1004, the MX families); scored with the gate's own `match()`: **2 up / 0 down / 13 same, +1.4 pp-sum**. The per-subject share is a MIX of per-module spellings — MXFU301's gold pairs use `col-md-4 col-12 paddingL`, HIS1004's the offset form — and Claude's alert-top pairs sit mostly in the English / Leaving to Learn ties, so the rule reaches 17 pages (under the 20-page floor) for nothing. **DECLINED**: the map ships EMPTY (the hook is a no-op), the `_doc` carries the measurement, and the corpus is byte-identical (probe ON with the empty map = disk 2109 / 2109). Re-open only with a per-series measurement.
+
+### 3. PROTECTED GATES
+
+Unchanged — every r403 baseline stands (skeleton 53.998 % / 1175 / 200 / 18 / RAW 38.006 %; compare_structure 11798 / 172 / 626; body_compare 42 / 4 / 173 / 218; clean 2079 / 2102; leak 26 / 23). No regeneration, no ship-ledger increment (scoped #7 since the r396 full — the next SHIP is the full backstop). Checksums: engine 2 changed / gates 0. Plateau: a no-movement round — the window's 1 of 3.

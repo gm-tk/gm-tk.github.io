@@ -7698,7 +7698,19 @@ class ContentConverter {
 		}
 		if (_txt) inner.push(...deBold(ListsAndRuns.renderBlackText(_txt, run, it.block?.links)));
 		const box = `${def.open}\n${inner.join("\n")}\n${def.close}`;
-		return `<div class="${def.side_column}">\n${[...pre, box].join("\n")}\n</div>`;
+		// ROUND 404 (the autonomous loop's session 27, Round 9): the side column's CLASS follows the module's
+		// subject where the gold's form is solid — the alert-top side column is `col-md-4 offset-md-0 col-12
+		// paddingL` in NCEA1 0.70 (33 / 47), Mathematics 0.75 (15 / 20), TMoA 0.86 (6 / 7) (outputs/_s27_r9_sidepair.py:
+		// every gold row pairing a col-md-8 with a col-md-4 / col-md-3, by the right column's first child);
+		// English (0.32) and Leaving to Learn (0.45) are ties and keep the def's own class. Data: the def's
+		// `side_column_by_subject` map (+ `side_column_by_subject_env`); the subject from module_meta.
+		let _sideCls = def.side_column;
+		const _bySubj = def.side_column_by_subject;
+		if (_bySubj && !(typeof process !== "undefined" && process.env && process.env[def.side_column_by_subject_env || "SIDECOLSUBJ_OFF"])) {
+			const _subj = DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")]?.subject;
+			if (_subj && _bySubj[_subj]) _sideCls = _bySubj[_subj];
+		}
+		return `<div class="${_sideCls}">\n${[...pre, box].join("\n")}\n</div>`;
 	}
 
 	// ROUND 387 (the autonomous loop's session 26 Round 1) — a callout that does NOT close its
