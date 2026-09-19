@@ -1,6 +1,6 @@
 # DIFF_QUEUE.md — the diff miner's ranked class queue (LOOP__Autonomous_Rounds.md §1d)
 
-**Produced:** 2026-09-19 14:07 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD 2c3a88c; Claude corpus 416 dirs). **Population:** the skeleton gate's own — 1956 paired pages / 405 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 70.2 s.
+**Produced:** 2026-09-19 13:38 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD ac8c136; Claude corpus 416 dirs). **Population:** the skeleton gate's own — 1956 paired pages / 405 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 68.5 s.
 
 **What a row is.** One CLASS = (region, parent element, gold form, Claude form, direction) over every differing skeleton line of every paired page — the same lines, labels, widget collapse and difflib alignment the PRIMARY gate scores (each element its own line so it can be quoted). Direction: MISSING = gold has it, Claude lacks it; EXTRA = Claude has it, gold lacks it; SUBSTITUTED = same position, different tag / class / wrapper; MOVED = same text, different place. Consensus = of the gold pages in the group where the region exists, the share carrying the gold form (for EXTRA: the share NOT carrying Claude's form). Derivable = the gold line's text is in the module's parsed Writers Template (round-110 tolerance); structure-only differences are always derivable.
 
@@ -8,8 +8,8 @@
 
 ## Summary
 
-- differing skeleton lines: 225475 — by direction {'MISSING': 119108, 'SUBSTITUTED': 20389, 'EXTRA': 78291, 'MOVED': 7687}
-- by region: {'module-code': 15, 'title': 251, 'header': 5, 'module-menu': 11990, 'phases-nav': 43, 'crumbs': 179, 'footer': 2075, 'acks': 1176, 'activity': 82851, 'body': 125483, 'root': 1407}
+- differing skeleton lines: 225487 — by direction {'MISSING': 119114, 'SUBSTITUTED': 20389, 'EXTRA': 78298, 'MOVED': 7686}
+- by region: {'module-code': 15, 'title': 251, 'header': 5, 'module-menu': 11990, 'phases-nav': 43, 'crumbs': 179, 'footer': 2075, 'acks': 1176, 'activity': 82858, 'body': 125488, 'root': 1407}
 - classes: 8014 — CANDIDATE 169, below floor 7603, the rest below consensus / not derivable
 
 ## Completeness census — the repeating chrome (§1d item 4)
@@ -369,12 +369,12 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 | 411 | footer | SUBSTITUTED | `ul.footer-nav` | `li>a.home-nav` | `li>a.home-nav` | 11 | 10 | 0.85 of 1956 | era=Refresh c=0.85 n=10 | structure | yes | CANDIDATE |
 | 412 | footer | EXTRA | `ul.footer-nav.fundamentals-nav` | `—` | `li>a.home-nav` | 10 | 10 | 0.99 of 1956 | era=Refresh c=0.99 n=10 | structure | yes | CANDIDATE |
 | 496 | acks | SUBSTITUTED | `div.col-12.col-md-8` | `div.acks` | `div.acks.acksTemplate` | 84 | 84 | 0.17 of 1956 | template+ptype=Inquiry/overview c=0.83 n=27 | structure | yes | CANDIDATE |
-| 522 | activity | MISSING | `div.col-12` | `p` | `—` | 625 | 291 | 0.31 of 1950 | subject+ptype=1-10 Blended Literacy/lesson c=0.78 n=98 | 0.80 | — | CANDIDATE |
+| 522 | activity | MISSING | `div.col-12` | `p` | `—` | 624 | 290 | 0.31 of 1950 | subject+ptype=1-10 Blended Literacy/lesson c=0.78 n=98 | 0.80 | — | CANDIDATE |
 | 523 | activity | EXTRA | `div.col-12` | `—` | `p` | 505 | 244 | 0.88 of 1950 | series=XDLS90 c=1.00 n=22 | structure | — | CANDIDATE |
 | 525 | activity | MISSING | `div.col-12` | `a` | `—` | 398 | 200 | 0.29 of 1950 | series=HIS10 c=0.71 n=40 | 0.64 | — | CANDIDATE |
 | 526 | activity | MISSING | `a` | `div.button` | `—` | 514 | 192 | 0.23 of 1950 | series=HIS10 c=0.71 n=35 | 0.63 | yes | CANDIDATE |
 | 527 | activity | EXTRA | `div.col-12` | `—` | `WIDGET` | 278 | 163 | 0.82 of 1950 | subject=NCEA1 c=0.97 n=29 | structure | — | CANDIDATE |
-| 528 | activity | MISSING | `div.col-12` | `h3` | `—` | 313 | 156 | 0.32 of 1950 | template=Fundamentals c=0.81 n=20 | 0.66 | — | CANDIDATE |
+| 528 | activity | MISSING | `div.col-12` | `h3` | `—` | 312 | 156 | 0.32 of 1950 | template=Fundamentals c=0.81 n=20 | 0.66 | — | CANDIDATE |
 | 529 | activity | MOVED | `div.col-12` | `p` | `p` | 255 | 152 | 0.19 of 1950 | template+ptype=Fundamentals/overview c=0.62 n=22 | structure | — | CANDIDATE |
 | 530 | activity | SUBSTITUTED | `div.col-12.col-md-8` | `div.activity.interactive[number=*]` | `div.activity[number=*]` | 224 | 152 | 0.42 of 1950 | subject+ptype=1-10 Blended Literacy/lesson c=0.72 n=53 | structure | yes | CANDIDATE |
 | 532 | activity | EXTRA | `div.col-12` | `—` | `img.img-fluid` | 209 | 126 | 0.97 of 1950 | subject=1-10 English c=0.99 n=22 | structure | — | CANDIDATE |
@@ -382,7 +382,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 | 535 | activity | MISSING | `div.activity.interactive[number=*]` | `div.row` | `—` | 196 | 113 | 0.20 of 1950 | template+ptype=Bilingual/lesson c=0.68 n=25 | 0.91 | yes | CANDIDATE |
 | 537 | activity | EXTRA | `div.col-12` | `—` | `p>a` | 119 | 95 | 1.00 of 1950 | subject+ptype=1-10 Blended Literacy/lesson c=1.00 n=33 | structure | — | CANDIDATE |
 | 538 | activity | EXTRA | `div.activity[number=*]` | `—` | `div.row` | 130 | 89 | 0.94 of 1950 | template=Standard c=0.96 n=107 | structure | yes | CANDIDATE |
-| 539 | activity | EXTRA | `div.activity.interactive[number=*]` | `—` | `div.row` | 113 | 88 | 0.80 of 1950 | subject=NCEA1 c=0.93 n=22 | structure | yes | CANDIDATE |
+| 539 | activity | EXTRA | `div.activity.interactive[number=*]` | `—` | `div.row` | 114 | 88 | 0.80 of 1950 | subject=NCEA1 c=0.93 n=23 | structure | yes | CANDIDATE |
 | 545 | activity | EXTRA | `div.col-12` | `—` | `p>b` | 113 | 75 | 0.97 of 1950 | template=Standard c=0.98 n=85 | structure | — | CANDIDATE |
 | 546 | activity | SUBSTITUTED | `div.col-12.col-md-8` | `div.activity[number=*]` | `div.activity[number=*]` | 109 | 75 | 0.48 of 1950 | subject+ptype=1-10 Mathematics/lesson c=0.68 n=24 | structure | yes | CANDIDATE |
 | 547 | activity | SUBSTITUTED | `div.col-12.col-md-8` | `div.activity[number=*]` | `div.activity.interactive[number=*]` | 103 | 74 | 0.48 of 1950 | subject+ptype=1-10 Blended Literacy/lesson c=0.86 n=23 | structure | yes | CANDIDATE |
@@ -494,7 +494,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 | 3629 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.alert.solid` | 24 | 19 | 0.99 of 1950 | era=Refresh c=0.99 n=24 | structure | yes | CANDIDATE |
 | 3632 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h5` | 20 | 19 | 1.00 of 1950 | era=Refresh c=1.00 n=20 | structure | — | CANDIDATE |
 | 3633 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `div.activity.interactive[number=*]` | 20 | 19 | 0.85 of 1950 | era=Refresh c=0.85 n=20 | structure | yes | CANDIDATE |
-| 3637 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `div.alert` | 25 | 18 | 0.85 of 1950 | era=Refresh c=0.85 n=25 | structure | — | CANDIDATE |
+| 3638 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `div.alert` | 25 | 18 | 0.85 of 1950 | era=Refresh c=0.85 n=25 | structure | — | CANDIDATE |
 | 3657 | body | SUBSTITUTED | `div#body` | `div.row` | `div.table-responsive` | 22 | 16 | 0.94 of 1950 | ptype=lesson c=0.98 n=20 | structure | — | CANDIDATE |
 | 3678 | body | MISSING | `div#body` | `div.clickDropContent.noBorder.row` | `—` | 49 | 14 | 0.03 of 1950 | series=XDLS90 c=0.64 n=38 | 0.94 | yes | CANDIDATE |
 | 3694 | body | EXTRA | `div.col-12.col-md-6` | `—` | `p` | 20 | 13 | 1.00 of 1950 | era=Refresh c=1.00 n=20 | structure | — | CANDIDATE |

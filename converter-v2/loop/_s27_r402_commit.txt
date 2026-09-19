@@ -1,0 +1,24 @@
+r402 (260619.73): the [interactive: video] line before a widget is the box's first lead element, not its swallowed opener — opener_rule.owner_alias_exclude (OWNERALIAS_OFF)
+
+`[interactive: video]` parses to `video` as the primary tag with a second `activity` tag whose alias word is
+`interactive`; the scanner's owner lookback takes any span carrying an `activity` tag as the following widget's
+owner, so the AGH writer's video line before `[interactive: drag and drop]` became the drag-and-drop's activity
+OWNER and was rendered as the box opener — the video request vanished from the page without a note (the gold's
+videoSection at that spot is missing from Claude's page). The span now stays the owner (a synthetic bare opener
+takes its place) and joins the box's lead as its own element through the r364 lead_media path, so its "no URL"
+flag surfaces (the URL is a Media-List item, the r292 class). Scoped by element_tags + exclude_primary_hows.
+
+Session 27 Round 7 (the autonomous loop): the r401 recorded candidate measured through the live scanner over all
+416 modules (_s27_r7_ownerscan.cjs — 128 non-activity-primary owner spans, 20 aliased). Two variants probed in
+memory and scored with the gate's own match(): the span NOT an owner (the standalone widget) 4 up / 14 down
+-31.0 pp-sum — the gold BOXES the group the line leads — DECLINED; the span as the box's first lead element
+14 same / 4 down unscoped (the embedded image / list forms), 12 same scoped. Probe OFF = disk 2109/2109, ON =
+12 pages / 3 modules, every change a cv2-note; SCOPED regeneration of the 3 (1 batch rc 0; fresh --affected 0
+truly stale; probe ON == disk 26/26); scoped ship #6 since the r396 full (2 of headroom).
+
+Gates: skeleton 53.989 % / >=50 1174 / >=75 200 / >=90 18 / RAW 38.000 % page-for-page (0 movers);
+compare_structure 11798 / 172 / 626, body_compare 42 / 4 / 173 / 218, clean 2079 / 2102, leak 26 / 23 — EXACT;
+every verifier RESULT identical to r401; 15 selftests + the feature-index selftest GREEN. Miner re-mined: 169
+CANDIDATE (nothing gone, nothing new). Plateau window 2 of 3 (a gate-neutral round).
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

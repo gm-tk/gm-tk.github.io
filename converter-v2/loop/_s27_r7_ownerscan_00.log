@@ -1,0 +1,55 @@
+AGH1004	5.0	dragAndDrop	video/ELEMENT	interactive/exact	lead=2	id=	mem=1	tbl=0	«[interactive: video]»	after«Here is a video of how water is used to »
+AGH1005	1.0	radioQuiz	video/ELEMENT	interactive/exact	lead=1	id=	mem=7	tbl=0	«[interactive: video]»	after«»
+AGH1005	2.0	dragAndDrop	video/ELEMENT	interactive/exact	lead=0	id=	mem=1	tbl=0	«[interactive: video]»	after«»
+AGH1005	2.0	dragAndDrop	video/ELEMENT	interactive/exact	lead=10	id=	mem=2	tbl=0	«[interactive: video]»	after«»
+AGH1005	3.0	dragAndDrop	video/ELEMENT	interactive/exact	lead=2	id=	mem=2	tbl=1	«[interactive: video]»	after«»
+AGH1005	4.0	carousel	video/ELEMENT	interactive/exact	lead=3	id=	mem=4	tbl=1	«[interactive: video]»	after«»
+AGH1005	5.0	carousel	video/ELEMENT	interactive/exact	lead=1	id=	mem=12	tbl=1	«[interactive: video]»	after«»
+AGH1005	6.0	dropDown	video/ELEMENT	interactive/exact	lead=3	id=	mem=5	tbl=1	«[interactive: video]»	after«»
+AGH1005	7.0	carousel	video/ELEMENT	interactive/exact	lead=2	id=	mem=2	tbl=1	«[interactive: video]»	after«»
+AGH1006	2.0	reorder	video/ELEMENT	interactive/exact	lead=1	id=	mem=5	tbl=1	«[interactive: video]»	after«»
+AGH1006	3.0	dragAndDrop	video/ELEMENT	interactive/exact	lead=2	id=	mem=5	tbl=1	«[interactive: video]»	after«»
+AGH1006	4.0	radioQuiz	video/ELEMENT	interactive/exact	lead=0	id=	mem=1	tbl=0	«[interactive: video]»	after«»
+AGH1006	4.0	accordion	video/ELEMENT	interactive/exact	lead=2	id=	mem=2	tbl=1	«[interactive: video]»	after«»
+AGH1006	5.0	radioQuiz	video/ELEMENT	interactive/exact	lead=13	id=	mem=9	tbl=0	«[interactive: video]»	after«»
+AGH1009	6.0	accordion	image/ELEMENT	interactive/embedded	lead=21	id=	mem=10	tbl=0	«[interactive as a flow diagram if possible (click on each number)] Mer»	after«»
+AGH1009	8.0	accordion	list/ELEMENT	interactive/head	lead=4	id=3	mem=22	tbl=0	«[interactive: List the 3 ways nitrogen are introduced]»	after«»
+ANZH101	3.0	accordion	body/ELEMENT	activity/exact	lead=3	id=3A	mem=8	tbl=0	«[Activity] 3A [Body]»	after«After watching the video, locate some of»
+ANZH301	9.0	interactive	image/ELEMENT	activity box/embedded	lead=2	id=	mem=7	tbl=0	«[Alert box RHC next to activity box with an image from this article pl»	after«https://www.aljazeera.com/features/2020/»
+ARFUN02	0.0	flipCard	h3/ELEMENT	activity/denumbered	lead=1	id=2A	mem=3	tbl=1	«[Activity 2A] [H3]»	after«**Let's play a game!** Click on the imag»
+ARFUN02	0.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=1	id=3B	mem=3	tbl=1	«[Activity 3B] [H3]»	after«🎸Pitch (Houoro)»
+ARFUN04	0.0	clickDrop	image/ELEMENT	activity/embedded	lead=13	id=5	mem=5	tbl=0	«[CS to create mix and match activity] [insert item #5: pictures of sha»	after«»
+ARFUN04	0.0	carousel	h3/ELEMENT	activity/denumbered	lead=2	id=1E	mem=35	tbl=0	«[Activity 1E] [H3]»	after«**Texture**»
+ARFUN04	0.0	modal	h3/ELEMENT	activity/denumbered	lead=5	id=3	mem=20	tbl=0	«[H3] [Activity 1F]»	after«»
+ARFUN04	0.0	selectionBox	h3/ELEMENT	activity/embedded	lead=1	id=1I	mem=9	tbl=0	«[Activity 1I Tick box] [H3]»	after«**What have I learned?**»
+ARFUN04	0.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=19	id=2A	mem=2	tbl=0	«[Activity 2A] [H3]»	after«**What have I learned?**»
+ARFUN04	0.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=23	id=2D	mem=19	tbl=0	«[Activity 2D] [H3]»	after«**What have I learned? Colour in art**»
+ARFUN04	0.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=6	id=2F	mem=9	tbl=0	«[Activity 2F] [H3]»	after«**What have I learned? Reflection**»
+ARFUN04	0.0	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=0	id=2H	mem=3	tbl=0	«[Activity 2H] [H3]»	after«**What have I learned?**»
+ARFUN04	0.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=13	id=2J	mem=3	tbl=0	«[Activity 2J] [H3]»	after«**Famous artworks**»
+ARFUN04	0.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=0	id=2K	mem=20	tbl=0	«[Activity 2K] [H3]»	after«Terms»
+ARFUN04	0.0	flipCard	h3/ELEMENT	activity/denumbered	lead=27	id=3F	mem=10	tbl=0	«[Activity 3F] [H3]»	after«**Name the form**»
+ARFUN04	0.0	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=8	id=3G	mem=1	tbl=0	«[Activity 3G] [H3]»	after«**Implied or real texture**»
+ARFUN04	0.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=13	id=3H	mem=17	tbl=0	«[Activity 3H] [H3]»	after«**What is space?**»
+ARFUN04	0.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=16	id=3L	mem=2	tbl=0	«[Activity 3L] [H3]»	after«**Give it a try! Balance exploration [**»
+ARFUN04	0.0	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=0	id=3M	mem=21	tbl=0	«[Activity 3M] [H3]»	after«**Learning about contrast:**»
+ARFUN04	0.0	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=0	id=3N	mem=8	tbl=0	«[Activity 3N] [H3]»	after«**Learning about the difference between »
+ARFUN04	0.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=25	id=4B	mem=3	tbl=0	«[Activity 4B] [H3]»	after«**Mix and match: Understanding shape**»
+ARFUN04	0.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=9	id=4G	mem=1	tbl=0	«[Activity 4G] [H3]»	after«**Understanding Space**»
+ARFUN04	0.0	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=0	id=4K	mem=7	tbl=0	«[Activity 4K] [H3]»	after«**What have I learned? Balance questions»
+ARFUN04	0.0	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=0	id=4L	mem=6	tbl=2	«[Activity 4L] [H3]»	after«**Test your knowledge**»
+ARFUN04	0.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=10	id=4M	mem=2	tbl=0	«[Activity 4M] [H3]»	after«**What have I learned?**»
+ARFUN04	0.0	radioQuiz	h3/ELEMENT	activity/denumbered	lead=0	id=4O	mem=1	tbl=0	«[Activity 4O] [H3]»	after«**What have I learned?**»
+ARFUN04	0.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=14	id=4S	mem=7	tbl=0	«[Activity 4S] [H3]»	after«**What have I learned?**»
+ARFUN05	0.0	multiChoiceQuiz	h3/ELEMENT	activity/embedded	lead=0	id=3	mem=20	tbl=0	«[H3: Focus activity]»	after«»
+ARFUN05	0.0	multiChoiceQuiz	h3/ELEMENT	activity/head	lead=0	id=3A	mem=24	tbl=0	«[H3: Activity: Where could you be?]»	after«»
+SUMMARY rows 45 modules 9 pages 19
+  23	h3/ELEMENT | activity/denumbered
+  14	video/ELEMENT | interactive/exact
+  2	h3/ELEMENT | activity/embedded
+  1	image/ELEMENT | interactive/embedded
+  1	list/ELEMENT | interactive/head
+  1	body/ELEMENT | activity/exact
+  1	image/ELEMENT | activity box/embedded
+  1	image/ELEMENT | activity/embedded
+  1	h3/ELEMENT | activity/head

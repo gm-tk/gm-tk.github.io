@@ -722,6 +722,24 @@ class InteractiveScanner {
 			// not slurp the activity's lead body into the box.
 			let s = i - 1;
 			let activityIdx = -1;
+			// ROUND 402 (the autonomous loop's session 27, Round 7): the `[interactive: video]` / `[interactive: image]`
+			// bracket resolves its ELEMENT as the primary and carries `activity` only through the alias word
+			// "interactive". The lookback still takes it as the OWNER (the gold boxes the group it leads — the
+			// standalone form was probed and scored 4 up / 14 down), but the span is no longer SWALLOWED as the
+			// box opener: the owner becomes a synthetic bare opener and the span itself is the box's first LEAD
+			// item, rendered through the body loop's own element path (the r364 lead_media rule) — so the writer's
+			// media line surfaces (its embed, or the "no URL" flag) instead of vanishing (AGH1004 / AGH1005 /
+			// AGH1006's every lesson, TWHA902, TWHK901).
+			// Data: BoundaryBank._meta.opener_rule.owner_alias_exclude   Env: OWNERALIAS_OFF
+			const _oaeCfg = bank._meta.opener_rule.owner_alias_exclude;
+			const _oaeOn = !!_oaeCfg && _oaeCfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[_oaeCfg.env || "OWNERALIAS_OFF"]);
+			const _oaeWords = new Set((_oaeCfg && _oaeCfg.alias_words) || []);
+			const _oaeTags = new Set((_oaeCfg && _oaeCfg.element_tags) || []);
+			const _oaeNoHow = new Set((_oaeCfg && _oaeCfg.exclude_primary_hows) || []);
+			const _isAliasElement = (p) => _oaeOn && p.parse.primary?.tag !== "activity" && p.parse.primary?.tag != null
+				&& _oaeTags.has(p.parse.primary.tag) && !_oaeNoHow.has(String(p.parse.primary.how ?? ""))
+				&& p.parse.tags.some((t) => t.tag === "activity" && _oaeWords.has(String(t.raw ?? t.alias ?? "").toLowerCase()));
 			while (s >= 0) {
 				const prev = items[s];
 				if (prev.consumedBy !== undefined) break;
@@ -743,9 +761,17 @@ class InteractiveScanner {
 				// as activity-level content, then the cv2 box (widget + data)
 				// nested inside. Mark the activity + in-between items so the
 				// converter knows this range is one activity unit.
-				bundle.activityOwner = items[activityIdx];
-				bundle.activityLeadItems = items.slice(activityIdx + 1, i); // title/body/media before the widget
-				bundle.activityId = items[activityIdx].parse.numbers[0]?.toUpperCase() ?? bundle.activityId;
+				if (_isAliasElement(items[activityIdx])) {
+					// ROUND 402: the aliased element span opens the box as a SYNTHETIC bare opener and joins the
+					// lead as its own element (rendered by the converter's lead loop — media through #element,
+					// a heading as the title); the box keeps the r217 / r400 positional letter.
+					bundle.activityOwner = { type: "tag", parse: { tags: [], numbers: [], primary: null }, blackAfter: "", _aliasElementOwner: true };
+					bundle.activityLeadItems = items.slice(activityIdx, i); // the span itself + title/body/media before the widget
+				} else {
+					bundle.activityOwner = items[activityIdx];
+					bundle.activityLeadItems = items.slice(activityIdx + 1, i); // title/body/media before the widget
+					bundle.activityId = items[activityIdx].parse.numbers[0]?.toUpperCase() ?? bundle.activityId;
+				}
 				bundle.startIndex = activityIdx;
 				bundle.openerItems = [];   // nothing goes INSIDE the box from the openers
 			} else {

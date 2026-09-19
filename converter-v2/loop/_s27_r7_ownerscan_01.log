@@ -1,0 +1,30 @@
+CEDK501	10.0	selectionBox	h3/ELEMENT	activity/denumbered	lead=1	id=6B	mem=5	tbl=0	«[Activity 6B] [H3]»	after«A warm welcome»
+CEDO501	1.0	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=1	id=1C	mem=4	tbl=2	«[Activity 1C] [H3]»	after«Understanding Life Stages»
+CEDO501	2.1	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=1	id=2A	mem=18	tbl=8	«[Activity 2A] [H3]»	after«A father’s story»
+CEDO501	2.1	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=1	id=2D	mem=8	tbl=1	«[Activity 2D] [H3]»	after«How much will I earn?»
+CEDO501	3.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=1	id=3A	mem=11	tbl=1	«[Activity 3A] [H3]»	after«How the internet works»
+CEDO501	6.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=3	id=3C	mem=3	tbl=2	«[Activity 3C] [H3]»	after«Revisiting internet terms»
+CEDO501	6.0	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=1	id=3D	mem=7	tbl=1	«[Activity 3D] [H3]»	after«Find the browsers»
+CEDO501	5.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=1	id=5A	mem=3	tbl=2	«[Activity 5A] [H3]»	after«Search engine sort»
+CEDO501	5.1	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=0	id=5C	mem=16	tbl=7	«[Activity 5C] [H3]»	after«Using Boolean operators»
+CEDO502	1.0	sketcher	h3/ELEMENT	activity/embedded	lead=7	id=3	mem=2	tbl=1	«[H3] [Kaiako-Marked Activity 1A]»	after«Kaiako-marked Activity 1A: Calculating I»
+CEDO502	3.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=0	id=3B	mem=4	tbl=2	«[Activity 3B] [H3]»	after«Match the provider to the situation»
+CEDO502	7.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=2	id=7A	mem=3	tbl=2	«[Activity 7A] [H3]»	after«When change affects credit»
+CEDR501	1.0	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=0	id=1A	mem=2	tbl=1	«[Activity 1A] [H3]»	after«Understanding formal interviews»
+CEDR501	3.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=0	id=2A	mem=3	tbl=2	«[Activity 2A] [H3]»	after«Expand vocabulary»
+CEDT501	1.1	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=1	id=3	mem=2	tbl=1	«[H3] [Activity 1B]»	after«Unwanted comments»
+CEDT501	5.0	dragAndDrop	h2/ELEMENT	activity/denumbered	lead=0	id=2	mem=4	tbl=2	«[H2] [Activity 5A]»	after«Behaviour types»
+CEDT501	6.1	dragAndDrop	h2/ELEMENT	activity/denumbered	lead=0	id=2	mem=9	tbl=1	«[H2] [Activity 6D]»	after«Positive or negative language»
+CEDW501	2.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=0	id=3	mem=4	tbl=2	«[H3] [Activity 2A]»	after«Aotearoa models of hauora»
+CEDW501	5.0	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=0	id=3	mem=16	tbl=0	«[H3] [Activity 5C]»	after«Mereana’s story»
+CEDW501	7.2	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=0	id=3	mem=2	tbl=1	«[H3] [Activity 7B]»	after«Noticing changes»
+ENFUN03	0.0	clickDrop	image/ELEMENT	interactive/embedded	lead=1	id=	mem=3	tbl=2	«[interactive image like this]»	after«https://drive.google.com/file/d/1-Kv7fxy»
+ENGI400	2.0	accordion	embed/ELEMENT	activity/embedded	lead=0	id=3A	mem=13	tbl=0	«[insert existing article pdf from activity 3A»	after«Lesson 3.0 - Reading - English 000»
+ENGR102	3.0	dragAndDrop	supervisor note/CONTAINER_OPEN	activity/embedded	lead=1	id=2B	mem=5	tbl=0	«[Supervisor Note above activity]»	after«»
+SUMMARY rows 23 modules 9 pages 21
+  17	h3/ELEMENT | activity/denumbered
+  2	h2/ELEMENT | activity/denumbered
+  1	h3/ELEMENT | activity/embedded
+  1	image/ELEMENT | interactive/embedded
+  1	embed/ELEMENT | activity/embedded
+  1	supervisor note/CONTAINER_OPEN | activity/embedded

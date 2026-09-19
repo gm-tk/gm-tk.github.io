@@ -46,6 +46,14 @@
 			},
 			"rule": "A span immediately preceding an interactive tag belongs to its block when its primary tag resolves (via Tag_Lexicon.json) to one of opener_tags — it is the activity wrapper/title for that interactive.",
 			"owner_id_from_tail": true,
+			"owner_alias_exclude": {
+				"_doc": "ROUND 402 (the autonomous loop's session 27, Round 7 — recorded at the r401 ship, AGH1005 lesson 2). THE `[interactive: video]` LINE IS THE BOX'S FIRST LEAD ELEMENT, NOT ITS SWALLOWED OPENER. `[interactive: video]` parses to `video` as the primary tag with a second `activity` tag whose alias word is `interactive`; the owner lookback takes ANY span carrying an `activity` tag as the following widget's owner, so the writer's video line before `[interactive: drag and drop]` became the drag-and-drop's activity OWNER and was rendered as the box opener — the video request vanished from the page without a note (the gold's videoSection is missing from Claude's page). Measured through the live scanner over all 416 modules (outputs/_s27_r7_ownerscan.cjs): 128 owner spans whose primary is not `activity`, 20 of them carrying the `interactive` alias (14 `[interactive: video]` on AGH1004 / AGH1005 / AGH1006; `[interactive: Video – …]` TWHA902 / TWHK901; the embedded `[interactive image like this]` / `[interactive as a flow diagram …]` / `[interactive: List the 3 ways …]` forms). TWO VARIANTS PROBED IN MEMORY AND SCORED WITH THE GATE'S OWN match(): (a) the span NOT an owner (the widget standalone) — 4 up / 14 down, −31.0 pp-sum: the gold BOXES the group the `[interactive: X]` line leads (AGH1005 7A = h3 + the built carousel), so the owner reading is structurally right; DECLINED. (b) the span KEPT as the owner but rendered as the box's first LEAD element through the r364 lead_media path (a synthetic bare opener takes its place) — 14 same / 4 down, the dips all the EMBEDDED image / list forms (AGH1009 −7.0, ENFUN03, XTAS102), whose element path renders nothing or re-numbers the box; SHIPPED scoped to `element_tags` with `exclude_primary_hows` (the 14 AGH `[interactive: video]` sites, gate-neutral: the video's `no URL` flag now surfaces inside the box — the r43 rule, never silently strip a documented request; the URL is a Media-List item, the r292 class). OFF = the r401 output.",
+				"enabled": true,
+				"env": "OWNERALIAS_OFF",
+				"alias_words": ["interactive"],
+				"element_tags": ["video", "audio", "image"],
+				"exclude_primary_hows": ["embedded"]
+			},
 			"opener_tags": [
 				"activity",
 				"activity heading",

@@ -1,0 +1,25 @@
+HES1007	2.0	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=3	id=2A	mem=1	tbl=0	«[Activity 2A] [H3]»	after«Checkpoint»
+HES1007	3.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=3	id=3A	mem=8	tbl=0	«[Activity 3A] [H3]»	after«Summarise the article»
+HES1007	3.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=8	id=3B	mem=15	tbl=0	«[Activity 3B] [H3]»	after«Energy drink resources»
+HES1007	4.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=3	id=4A	mem=8	tbl=0	«[Activity 4A] [H3]»	after«Summarise the article»
+HES1007	4.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=7	id=4B	mem=15	tbl=0	«[Activity 4B] [H3]»	after«Vegetable resources»
+HES1007	5.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=4	id=5A	mem=8	tbl=0	«[Activity 5A] [H3]»	after«Summarise the article»
+HES1007	5.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=6	id=5B	mem=15	tbl=0	«[Activity 5B] [H3]»	after«Online behaviour resources»
+HES1007	6.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=3	id=6A	mem=8	tbl=0	«[Activity 6A] [H3]»	after«Summarise the article»
+HES1007	6.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=7	id=6B	mem=15	tbl=0	«[Activity 6B] [H3]»	after«Vaping resources»
+HES1007	7.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=3	id=7A	mem=8	tbl=0	«[Activity 7A] [H3]»	after«Summarise the article»
+HES1007	7.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=11	id=7B	mem=15	tbl=0	«[Activity 7B] [H3]»	after«Menstruation resources»
+HES1007	8.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=3	id=8A	mem=8	tbl=0	«[Activity 8A] [H3]»	after«Summarise the article»
+HES1007	8.0	clickDrop	h3/ELEMENT	activity/denumbered	lead=13	id=8B	mem=15	tbl=0	«[Activity 8B] [H3]»	after«Resources»
+HPFUN303	0.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=1	id=1A	mem=2	tbl=1	«[Activity 1A] [H3]»	after«Scenario sorting»
+MXEX201	4.0	modal	h3/ELEMENT	activity/denumbered	lead=1	id=4A	mem=23	tbl=0	«[Activity 4A] [H3]»	after«Activities»
+MXEX401	1.0	carousel	h3/ELEMENT	activity/denumbered	lead=0	id=1B	mem=3	tbl=0	«[Activity 1B] [H3]»	after«*A hands on activity*»
+MXFL202	6.0	dragAndDrop	h2/ELEMENT	activity/denumbered	lead=1	id=2	mem=2	tbl=1	«[H2] [Activity 6A]»	after«Which graph will you use?»
+OSAI201	1.0	multiChoiceQuiz	activity heading/ELEMENT	activity/denumbered	lead=2	id=1C	mem=12	tbl=1	«[Activity 1C] [activity heading]»	after«Story prediction»
+OSSC301	1.0	reorder	heading/ELEMENT	activity/denumbered	lead=1	id=1A	mem=2	tbl=1	«[Activity 1A] [heading]»	after«Which scam is it?»
+OSSC301	3.0	modal	heading/ELEMENT	activity/denumbered	lead=1	id=3A	mem=3	tbl=1	«[Activity 3A] [heading]»	after«Keep it safe!»
+SUMMARY rows 20 modules 7 pages 14
+  16	h3/ELEMENT | activity/denumbered
+  2	heading/ELEMENT | activity/denumbered
+  1	h2/ELEMENT | activity/denumbered
+  1	activity heading/ELEMENT | activity/denumbered

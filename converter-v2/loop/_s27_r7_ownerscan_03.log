@@ -1,0 +1,49 @@
+OSSC401	1.0	reorder	heading/ELEMENT	activity/denumbered	lead=1	id=1A	mem=4	tbl=1	«[Activity 1A] [heading]»	after«Which scam is it?»
+OSSC401	2.0	clickDrop	heading/ELEMENT	activity/denumbered	lead=1	id=2C	mem=4	tbl=1	«[Activity 2C] [heading]»	after«How fake news spreads»
+OSSC401	4.0	modal	heading/ELEMENT	activity/denumbered	lead=1	id=4A	mem=3	tbl=1	«[Activity 4A] [heading]»	after«Keep it safe!»
+PHE1005	4.0	clickDrop	image/ELEMENT	activity/embedded	lead=13	id=	mem=6	tbl=0	«[Activity for creative services - picture of Fonofale. Move over the d»	after«»
+PHE1007	4.0	typing	h3/ELEMENT	activity/embedded	lead=2	id=3	mem=2	tbl=0	«[Individual activity] [H3]»	after«Great catch»
+PHE1007	4.0	reorder	h3/ELEMENT	activity/embedded	lead=0	id=3A	mem=8	tbl=0	«[Individual activity] [H3]»	after«Who is more balanced?»
+PHE1007	5.0	dragAndDrop	h3/ELEMENT	activity/embedded	lead=1	id=3	mem=39	tbl=0	«[Individual activity] [H3]»	after«Biomechanics summary»
+PHE1007	7.0	accordion	h3/ELEMENT	activity/embedded	lead=9	id=3	mem=15	tbl=0	«[Individual activity] [H3]»	after«Are you on the pulse?»
+PHE1007	9.0	clickDrop	h3/ELEMENT	activity/embedded	lead=10	id=3	mem=28	tbl=0	«[Individual activity] [H3]»	after«Danny’s driveway»
+TRR107	0.0	speechBubble	image/ELEMENT	activity/embedded	lead=0	id=	mem=1	tbl=0	«[Please snip each relevant consonant image and audio for activity grap»	after«»
+TRR107	0.0	speechBubble	image/ELEMENT	activity/embedded	lead=0	id=	mem=1	tbl=0	«[Please snip each consonant image and audio for activity graphics]»	after«»
+TWHA902	0.0	dropDown	video/ELEMENT	interactive/head	lead=8	id=	mem=14	tbl=2	«[interactive: Video – The art of listening]»	after«»
+TWHA904	0.0	selectionBox	video/ELEMENT	activity/denumbered_head	lead=0	id=2A	mem=20	tbl=0	«[Activity 2A: Title: Video Review]»	after«»
+TWHA904	0.0	selectionBox	video/ELEMENT	activity/denumbered_head	lead=0	id=3A	mem=11	tbl=0	«[Activity 3A: Video review]»	after«»
+TWHA904	0.0	selectionBox	video/ELEMENT	activity/denumbered_head	lead=1	id=5A	mem=9	tbl=0	«[Activity 5A: Video Review]»	after«»
+TWHK901	0.0	flipCard	video/ELEMENT	interactive/head	lead=2	id=	mem=2	tbl=1	«[interactive: video – Biomass Energy]»	after«»
+XGF9002	1.0	flipCard	h3/ELEMENT	activity/denumbered	lead=0	id=3	mem=4	tbl=1	«[H3] [Activity 1A]»	after«Beyond the myths: understanding your gif»
+XGF9002	2.0	flipCard	h3/ELEMENT	activity/denumbered	lead=1	id=3	mem=3	tbl=1	«[H3] [Activity 2B]»	after«Responding with calm and connection»
+XGF9002	2.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=1	id=3A	mem=3	tbl=1	«[H3] [Activity 2C]»	after«Empathy match-up»
+XGF9002	3.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=2	id=3	mem=15	tbl=1	«[H3] [Activity 3B]»	after«What builds resilience?»
+XGF9002	3.0	flipCard	h3/ELEMENT	activity/denumbered	lead=1	id=3B	mem=2	tbl=1	«[H3] [Activity 3C]»	after«Flip the script – what could I say inste»
+XGF9002	4.0	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=1	id=3	mem=53	tbl=0	«[H3] [Activity 4C]»	after«Everyday spark finder»
+XGF9002	5.0	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=2	id=3	mem=37	tbl=0	«[H3] [Activity 5A]»	after«Structure or freedom?»
+XGF9002	5.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=2	id=3A	mem=24	tbl=1	«[H3] [Activity 5B]»	after«Routine builder match-up»
+XGF9002	5.0	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=2	id=3B	mem=36	tbl=0	«[H3] [Activity 5C]»	after«Overload or rebalance»
+XGF9002	6.0	flipCard	h3/ELEMENT	activity/denumbered	lead=2	id=3	mem=2	tbl=1	«[H3] [Activity 6A]»	after«Questions that open thinking»
+XGF9002	7.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=1	id=3	mem=21	tbl=1	«[H3] [Activity 7B]»	after«Words we use»
+XGF9002	7.0	flipCard	h3/ELEMENT	activity/denumbered	lead=2	id=3A	mem=2	tbl=1	«[H3] [Activity 7C]»	after«Responding to setbacks»
+XGF9002	8.0	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=2	id=3	mem=44	tbl=0	«[H3] [Activity 8A]»	after«Why community matters»
+XGF9002	8.0	accordion	h3/ELEMENT	activity/denumbered	lead=1	id=3A	mem=45	tbl=0	«[H3] [Activity 8B]»	after«Mapping support across Aotearoa New Zeal»
+XGF9003	1.0	multiChoiceQuiz	h3/ELEMENT	activity/denumbered	lead=0	id=2A	mem=33	tbl=0	«[Activity 2A] [H3]»	after«Let's get organised!»
+XGF9003	1.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=1	id=2C	mem=2	tbl=1	«[Activity 2C] [H3]»	after«Putting the day in order»
+XGF9003	1.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=1	id=2D	mem=3	tbl=1	«[Activity 2D] [H3]»	after«Time it!»
+XGF9003	1.0	accordion	h3/ELEMENT	activity/denumbered	lead=1	id=2E	mem=17	tbl=0	«[Activity 2E] [H3]»	after«Planning your week»
+XGF9003	1.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=1	id=2H	mem=2	tbl=1	«[Activity 2H] [H3]»	after«Getting started»
+XGF9003	1.2	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=11	id=4C	mem=1	tbl=0	«[Activity 4C] [H3]»	after«Metacognitive questions to ask yourself»
+XGF9004	10.0	dragAndDrop	h2/ELEMENT	activity/denumbered	lead=2	id=4A	mem=2	tbl=1	«[Activity 4A] [H2]»	after«True false detective»
+XGF9006	3.0	dragAndDrop	h3/ELEMENT	activity/denumbered	lead=3	id=3	mem=3	tbl=2	«[H3] [Activity 3A]»	after«Is it a Big Question?»
+XGF9006	7.0	wordFind	h3/ELEMENT	activity/denumbered	lead=5	id=3	mem=1	tbl=0	«[H3] [Activity 7A]»	after«genius hour Vocabulary builder»
+XTAS102	2.0	dragAndDrop	image/ELEMENT	interactive/embedded	lead=1	id=	mem=2	tbl=1	«[See example but include large image of beach at the top of interactiv»	after«»
+SUMMARY rows 40 modules 12 pages 26
+  22	h3/ELEMENT | activity/denumbered
+  5	h3/ELEMENT | activity/embedded
+  3	heading/ELEMENT | activity/denumbered
+  3	image/ELEMENT | activity/embedded
+  3	video/ELEMENT | activity/denumbered_head
+  2	video/ELEMENT | interactive/head
+  1	h2/ELEMENT | activity/denumbered
+  1	image/ELEMENT | interactive/embedded
