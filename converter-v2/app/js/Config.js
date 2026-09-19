@@ -1760,7 +1760,8 @@ class Config {
 	// ROUND 397 (260619.68): a table header cell is plain — a <th> whose whole content is one <b>/<strong> span drops the wrapper (elements.table.header_cell_plain, TablesAndGrids' cell emit, env THPLAIN_OFF; the gold's th plain 0.96, Claude's bold 0.18 on 86 pages). 92 pages / 58 modules; scoped ship #1 since the r396 full.
 	// ROUND 398 (260619.69): the videoSection `icon` registry re-mined on the r397 corpus + the widget-embedded video follows it (video.icon_rule: 18 series + NCEA1|Standard added, the NEW plain_series carve-out; video.icon_rule.widget_embedded → MediaBuilder.videoIconPostpass at the end of ContentConverter's final-body chain, env VIDEOICONWIDGET_OFF; the gold 0.95 on the registry modules' widget-embedded videos, the r200 recorded follow-up; the autonomous loop's session 27 Round 1).
 	// ROUND 399 (260619.70): the wānanga / talanoa box is the KB's cultural alert — the CED Phase-5 writer's [Wānanga/Talanoa box] + one-cell table ships as div.alert.cultural[layout=combined] > row > col-12 > p… (callouts.by_tag.wananga.kb_form + table_cell_content; the tag_promote carousel→wananga rule for the [Banner - …] spelling; env WANANGA_OFF; KB 05B + 14A §14.4; the autonomous loop's session 27 Round 2).
-	static AppVersion = "260619.70";
+	// ROUND 400 (260619.71): the un-numbered activity opener takes the next positional letter — a writer's bare [Activity] / [Activity: Embedded] / [interactive] … opener on a numbered-lesson page ships number="{lesson}{letter}" like every other box (activity_wrapper.lesson_letter_number.unnumbered_positional; env ACTUNNUM_OFF; the gold numbers every box — 6 numberless in 2385 gold pages vs Claude's 629; the autonomous loop's session 27 Round 5).
+	static AppVersion = "260619.71";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

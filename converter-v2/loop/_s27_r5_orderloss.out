@@ -1,0 +1,87 @@
+fixed
+gate pages: 1956 sample: [('MXFUN01_0_0.html', 0.006588235294117647), ('BLL240_1_0.html', 0.04509283819628647)]
+pages scored 1956; total lost lines 48966; mean pf 73.08 mean gate 53.86
+==== top 40 pages by lost lines (pf − gate) ====
+    531.0  loss  58.8pp  pf  65.8  gate   7.0  CEDT104/CEDT104_0_0.html  claude 957 gold 848
+    487.0  loss  36.2pp  pf  62.1  gate  25.8  BLL120/BLL120_0_0.html  claude 1168 gold 1519
+    407.0  loss  63.7pp  pf  74.9  gate  11.1  EXPFUN05/EXPFUN05_0_0.html  claude 628 gold 649
+    374.0  loss  23.1pp  pf  64.8  gate  41.7  CHFUN05/CHFUN05_0_0.html  claude 1223 gold 2012
+    320.0  loss  46.5pp  pf  67.4  gate  20.9  EXPFUN02/EXPFUN02_0_0.html  claude 773 gold 603
+    307.0  loss  46.4pp  pf  61.3  gate  14.8  EXPFUN03/EXPFUN03_0_0.html  claude 791 gold 531
+    295.0  loss  59.5pp  pf  80.9  gate  21.4  EXPFUN04/EXPFUN04_0_0.html  claude 486 gold 505
+    287.0  loss  29.8pp  pf  65.4  gate  35.6  BLL110/BLL110_0_0.html  claude 807 gold 1117
+    272.0  loss  69.0pp  pf  79.4  gate  10.4  TWHA905/TWHA905_0_0.html  claude 358 gold 430
+    257.0  loss  41.6pp  pf  74.4  gate  32.8  BLL160/BLL160_0_0.html  claude 505 gold 731
+    247.0  loss  44.3pp  pf  59.2  gate  14.9  TEFUN03/TEFUN03_0_0.html  claude 399 gold 716
+    229.0  loss  24.7pp  pf  71.4  gate  46.7  BLL130/BLL130_0_0.html  claude 818 gold 1040
+    197.0  loss  37.8pp  pf  76.5  gate  38.6  ENFUN01/ENFUN01_0_0.html  claude 495 gold 546
+    194.0  loss  60.7pp  pf  74.5  gate  13.8  CEDW201/CEDW201_0_0.html  claude 273 gold 366
+    192.0  loss  42.2pp  pf  62.6  gate  20.4  ARFUN02/ARFUN02_0_0.html  claude 491 gold 420
+    192.0  loss  38.9pp  pf  80.4  gate  41.5  ENFUN08/ENFUN08_0_0.html  claude 514 gold 474
+    188.0  loss  38.7pp  pf  63.2  gate  24.5  SSFUN05/SSFUN05_0_0.html  claude 404 gold 568
+    187.0  loss  32.2pp  pf  40.1  gate   7.9  MXFUN03/MXFUN03_0_0.html  claude 868 gold 295
+    185.0  loss  48.4pp  pf  69.6  gate  21.2  SSFUN01/SSFUN01_0_0.html  claude 396 gold 368
+    184.0  loss  61.4pp  pf  70.8  gate   9.3  TWHK901/TWHK901_0_0.html  claude 251 gold 348
+    181.0  loss  45.9pp  pf  80.9  gate  35.0  ENFUN05/ENFUN05_0_0.html  claude 416 gold 373
+    177.0  loss  29.1pp  pf  80.5  gate  51.4  TWHA906/TWHA906_0_0.html  claude 564 gold 654
+    173.0  loss  40.7pp  pf  76.4  gate  35.7  ARFUN05/ARFUN05_0_0.html  claude 420 gold 431
+    171.0  loss  45.2pp  pf  63.5  gate  18.3  TWHA903/TWHA903_0_0.html  claude 301 gold 455
+    167.0  loss  36.4pp  pf  79.7  gate  43.4  ENFUN03/ENFUN03_0_0.html  claude 469 gold 449
+    164.0  loss  50.9pp  pf  67.9  gate  17.1  TRR304/TRR304_2_0.html  claude 334 gold 311
+    162.0  loss  24.3pp  pf  74.7  gate  50.4  BLL230/BLL230_0_0.html  claude 545 gold 788
+    157.0  loss  32.0pp  pf  74.7  gate  42.7  SSFUN02/SSFUN02_0_0.html  claude 491 gold 489
+    149.0  loss  36.3pp  pf  76.1  gate  39.8  ENFUN07/ENFUN07_0_0.html  claude 368 gold 452
+    148.0  loss  41.7pp  pf  74.6  gate  33.0  MXDI301/MXDI301_1_0.html  claude 393 gold 317
+    145.0  loss  50.6pp  pf  68.8  gate  18.2  EXBP901/EXBP901_3_0.html  claude 228 gold 345
+    143.0  loss  61.9pp  pf  72.3  gate  10.4  EXIP901/EXIP901_4_0.html  claude 204 gold 258
+    142.0  loss  49.6pp  pf  80.3  gate  30.7  TEDC402/TEDC402_2_0.html  claude 248 gold 325
+    138.0  loss  41.1pp  pf  83.3  gate  42.3  TEDC402/TEDC402_4_0.html  claude 315 gold 357
+    138.0  loss  23.4pp  pf  42.0  gate  18.6  TWHA901/TWHA901_0_0.html  claude 272 gold 910
+    137.0  loss  30.3pp  pf  78.0  gate  47.6  ENFUN09/ENFUN09_0_0.html  claude 453 gold 450
+    137.0  loss  55.8pp  pf  68.0  gate  12.2  TEDC401/TEDC401_3_0.html  claude 297 gold 194
+    136.0  loss  49.2pp  pf  79.6  gate  30.4  TEDC402/TEDC402_5_0.html  claude 261 gold 292
+    134.0  loss  34.9pp  pf  74.1  gate  39.3  TWHA904/TWHA904_0_0.html  claude 342 gold 427
+    134.0  loss  18.9pp  pf  77.6  gate  58.7  BLL140/BLL140_0_0.html  claude 610 gold 810
+==== by group: lost lines / mean lines / pages ====
+   Standard/1-10 Mathematics                  lost    7440  of    32548 lines (22.9%)  pages 323
+   Standard/Leaving to Learn                  lost    5441  of    20792 lines (26.2%)  pages 181
+   Standard/NCEA1                             lost    5171  of    27308 lines (18.9%)  pages 328
+   Standard/1-10 English                      lost    4625  of    25930 lines (17.8%)  pages 296
+   Standard/1-10 Blended Literacy             lost    3302  of    18419 lines (17.9%)  pages 239
+   Inquiry/ConnectED                          lost    2111  of     6639 lines (31.8%)  pages 36
+   Inquiry/1-10 Blended Literacy              lost    2069  of     8928 lines (23.2%)  pages 19
+   Bilingual/Te Marautanga o Aotearoa TMoA    lost    1937  of     7042 lines (27.5%)  pages 63
+   Standard/None                              lost    1786  of     5994 lines (29.8%)  pages 41
+   Standard/Online Safety (OS9000)            lost    1699  of    10378 lines (16.4%)  pages 130
+   Standard/ConnectED                         lost    1697  of     7994 lines (21.2%)  pages 71
+   Inquiry/EXPlore                            lost    1402  of     2717 lines (51.6%)  pages 5
+   Standard/ANZH                              lost    1321  of     6083 lines (21.7%)  pages 78
+   Inquiry/Te ara Whakapuawa -Wellbeing       lost    1287  of     3535 lines (36.4%)  pages 8
+   Fundamentals/1-10 English                  lost    1231  of     3514 lines (35.0%)  pages 8
+   Fundamentals/1-10 Social Science           lost     874  of     2493 lines (35.1%)  pages 6
+==== top 25 modules by lost lines ====
+   TEDC402    lost    883  pages 10
+   CEDT104    lost    531  pages 1
+   XGF9006    lost    502  pages 8
+   BLL120     lost    487  pages 1
+   TEDC401    lost    481  pages 7
+   HIS1002    lost    452  pages 11
+   MXFU202    lost    441  pages 10
+   HIS1005    lost    414  pages 15
+   EXPFUN05   lost    407  pages 1
+   MXDI202    lost    396  pages 12
+   CHFUN05    lost    374  pages 1
+   XDLS904    lost    373  pages 8
+   EXBP901    lost    366  pages 5
+   XGF9003    lost    362  pages 6
+   MXFU301    lost    359  pages 11
+   CEDO502    lost    351  pages 10
+   CEDO501    lost    345  pages 15
+   CEDK501    lost    338  pages 12
+   MXFL204    lost    334  pages 11
+   HIS1004    lost    333  pages 11
+   CEDW501    lost    331  pages 11
+   HIS1003    lost    328  pages 10
+   EXPFUN02   lost    320  pages 1
+   CEDT501    lost    314  pages 15
+   EXPFUN03   lost    307  pages 1

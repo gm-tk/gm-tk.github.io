@@ -1,0 +1,33 @@
+## 2026-09-19 (round 400, build 260619.71) — THE UN-NUMBERED ACTIVITY OPENER TAKES THE NEXT POSITIONAL LETTER: a writer's bare `[Activity]` / `[Activity: Embedded]` / `[interactive] …` opener on a numbered-lesson page ships `number="{lesson}{letter}"` like every other box (the autonomous loop's session 27 Round 5; a SCOPED regeneration of the 94 changed modules, the probe proving the other 322 byte-identical — scoped ship #4 since the r396 full)
+
+### 1. WHAT CHANGED
+
+**The class.** The gold numbers EVERY activity box `{lesson}{positional letter}` — the position-free label census counts **6** numberless `div.activity` boxes in the 2,385 gold pages against Claude's **629** on the paired pages (`outputs/_s27_r5_numberless.py`: 265 pages / 115 modules; NCEA1 223, Mathematics 73, Leaving to Learn 45, ANZH 44, the Fundamentals overviews 130). They are the writer's openers with no id — a bare `[Activity]`, the mode openers `[Activity: Embedded]` / `[Activity individual]` that own their own box, `[interactive] Drag and drop onto above picture.` (AGH1001 lesson 3 — the lexicon resolves it to the `activity` container; the gold's `activity interactive number="3A"`). The r88 rule lettered only an opener that CARRIED an id (a bare digit renumbered, a letter kept) and the r217 synthetic standalone-widget box (`positionalId`); an id-less writer opener neither took a letter nor advanced the lesson's letter counter, so its box shipped as plain `div.activity` — a skeleton label that matches no gold line whatever the alignment (the `number` attribute is a KEEP_ATTR).
+
+**The fix (DATA OVER CODE, one env `ACTUNNUM_OFF`).** `Emit_Templates.activity_wrapper.lesson_letter_number.unnumbered_positional {enabled, env}`; in `ActivitiesBuilder.activityOpen` an opener with no writer id enters the letter counter under the same gate as the r217 box (`#pageLessonNumber != null` — the r325 phase pages included) and takes the next positional letter: `if (llOn && (id || positionalId || unOn) && pageLessonNumber != null)` and `if ((positionalId || unOn) && !id && idx < 26) id = ln + letter`. Writer-lettered ids are kept, bare digits renumbered, overview / single-file pages without a phase number untouched — exactly as before. OFF = the r399 output byte-for-byte (the probe's OFF leg 2109 / 2109).
+
+### 2. HOW IT WAS FOUND
+
+The session's position-free label census (`_s27_r3_labelcensus.py`) lists `div.activity` as the 25th-largest EXTRA label — 529 lines Claude ships over the gold on 265 pages, with the gold total **6**. Round 4's census of Claude's numberless boxes by page kind / content / gold verdict (`_s27_r5_numberless.py`) found them on 261 lesson pages; `_s27_r5_posnum.py` then measured the derivable rule on the 76 paired lesson pages where both sides ship the same number of top-level boxes: the positional k-th letter equals the gold's number on **69 / 101 = 0.68** (56 pages / 34 modules — NCEA1 0.65, Leaving to Learn 0.67, Mathematics 0.86, English 5 / 5), Claude's own numbered boxes on the same pages 77 / 104; the misses are lesson-number offsets (AGH1006_3_0's gold is lesson 4, CEDO301_4_0's gold is lesson 5) that no letter rule reaches.
+
+### 3. AUTHORITY (LOOP §1b)
+
+KB 01F / 03A: the activity box carries its ID (`<div class="activity" number="ID">`); constraint 62 / 65: the page's activities are lettered consecutively by lesson. The gold's own form is universal (6 exceptions in 2,385 pages); the rule generalises the r88 / r217 / r325 positional numbering to the one opener form it never reached. The r369 decline (renaming a writer's DUPLICATE / foreign-lesson id) is untouched — this round assigns a number only where the writer gave none.
+
+### 4. PROOF
+
+- `_s27_r400_probe.cjs` + `_s27_r400_probe_run.sh` (the r399 in-memory A/B over all 416 modules, 4 shards): **OFF (`ACTUNNUM_OFF=1`) = disk 2109 / 2109**; ON = **281 pages / 94 modules changed, 1828 identical**; every changed line a `number=` attribute (+ the box's `.txt` hand-off "Activity:" line).
+- `_s27_r400_pagescore.py` (the gate's own `match()` on the probe's ON pages BEFORE regenerating): 266 changed paired pages — **up 67 / down 13 / same 186; pp-sum +229.9** (+0.118pp projected on the 1956 pairs).
+- Regeneration: `_s27_r400_batches.sh` (10 batches from `_batch_plan.py`, run two at a time, all rc 0); `_content_manifest.py fresh --affected` → 0 truly stale, the 319 unaffected byte-identical to the manifest; **probe ON == regenerated disk 795 / 795 pages**.
+- `_s27_r400_skdelta.py`: 80 movers, 67 up / 13 down, **0 outside the affected set**.
+
+### 5. PROTECTED GATES (all HELD-or-IMPROVED)
+
+- **Skeleton (PRIMARY)**: SCAFFOLD **53.862 → 53.979 % (+0.118pp)**; ≥50 **1170 → 1174**; ≥75 **197 → 200**; ≥90 18; RAW **37.918 → 37.995 %**; 1956 pairs / 0 skipped (state `outputs/_s27_r400_sk_final.json`). The 13 dips, named: **ENGI201_2_0 −11.3** (the numberless writer box takes 2A and the r217 synthetic box moves 2A → 2B; the gold's 2A is `activity interactive` and its 2B plain, so both labels now miss where one matched — the r369 letter-shift class on a page whose gold has four boxes to Claude's two), MXFL203_3_0 −6.1, HIS1005_4_0 −5.3, ANZH301_7_0 −4.5, ENGI203_10_0 −2.8, ANZH301_2_0 −2.6, ANZH301_4_0 −2.3, MXFL104_3_0 −1.4, AGH1005_6_0 −0.9, XGF9002_4_0 −0.9, MXFUN01_5_0 −0.8, ENGC101_3_0 −0.7, SCFUN01_0_0 −0.3 — every one the same class (the letter lands on a gold box of another class or the page's box counts differ). The largest gains: SSOG101_5_0 +24.5, ENGI203_7_0 +19.8, PHE1005_1_0 +15.2, AGH1001_4_0 +12.0, XTAS102_1_0 +12.0, HES1005_1_0 +9.8.
+- **compare_structure** exact 11798 / EXTRA 172 / MISSING 626 — **EXACT** (the number is not in the wrapper chain); **body_compare** 42 / 4 / 173 / 218 EXACT; structural-defect **clean 2079 / 2102, leak 26 / 23** EXACT; tags 9557 / 9557; every widget verifier RESULT identical to r399 (the gate log body diffs only in timings and one content-element count); 15 selftests + the feature-index selftest GREEN.
+- Ship ledger: scoped #4 since the r396 full (4 of headroom); content manifest + fast-loop baselines re-snapshotted; feature index `--rehtml` + `--merge` + `--selftest` GREEN.
+
+### 6. RECORDED, NOT TAKEN
+
+- The pages where Claude's box count differs from the gold's (185 of the 261 numberless pages) carry the r369 letter-shift hazard by construction — a writer opener Claude boxes that the gold does not (or the reverse) offsets every later letter; the fix is the BOX-count class (the r362 / r377 / r379 owner rules), not the numbering.
+- The `.interactive` modifier on the newly-numbered boxes follows the r58 / r64 widget-type post-pass unchanged; the gold's `activity interactive` on a box whose widget is a hand-off dump (ENGI201 2A) stays the D10-3 build lane's.

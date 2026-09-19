@@ -1,0 +1,44 @@
+gold div.col-8 (exact) on paired pages: 331
+     58 pages  35 mods  14  widget=free         sibs=div.col-8                                        first=div.alert>p                  claude: div.col-12.col-md-8 32  absent 24
+     49 pages  25 mods  19  widget=free         sibs=div.col-8                                        first=h3                           claude: div.col-12 40  div.col-12.col-md-8 6
+     19 pages  13 mods  11  widget=free         sibs=div.col-8                                        first=div.activity.interactive>div.row claude: div.col-12.col-md-8 10  absent 9
+     16 pages   3 mods   3  widget=free         sibs=div.col-12|div.col-8|div.col-4|div.col-12        first=p                            claude: absent 15  div.col-12.col-md-8 1
+     13 pages   3 mods   3  widget=free         sibs=div.col-8|div.col-4|div.col-8                    first=p                            claude: absent 13
+     13 pages   3 mods   3  widget=free         sibs=div.col-8|div.col-4|div.col-8                    first=a                            claude: absent 13
+     12 pages   2 mods   2  widget=radioQuiz    sibs=div.col-4.radioButtons|div.col-8                 first=p                            claude: absent 12
+     10 pages   2 mods   2  widget=radioQuiz    sibs=div.col-8|div.col-4.radioButtons                 first=p                            claude: absent 10
+      9 pages   5 mods   5  widget=wordSelect   sibs=div.col-4.wSCenter.wordSelectOptions|div.col-8|div.col-12 first=div.wordSelectContainer>p.wordSelectText claude: absent 8  div.col-12.col-md-8 1
+      8 pages   1 mods   1  widget=free         sibs=div.col-4|div.col-8                              first=img.img-fluid                claude: absent 8
+      8 pages   1 mods   1  widget=multiChoiceQuiz sibs=div.col-8|div.col-4                              first=p                            claude: absent 8
+      6 pages   1 mods   1  widget=dropQuiz     sibs=div.align-self-center.col-4.dropQuestion|div.col-8 first=p                            claude: absent 6
+      6 pages   2 mods   2  widget=free         sibs=div.col-8                                        first=div.clickDropContent.noBorder>div.row claude: absent 6
+      6 pages   6 mods   3  widget=free         sibs=div.col-8                                        first=div.alert>h4                 claude: div.col-12.col-md-8 4  absent 1
+      5 pages   1 mods   1  widget=multiChoiceQuiz sibs=div.col-4|div.col-8                              first=div.mcqOptions>p.mcqOption   claude: absent 5
+      5 pages   4 mods   2  widget=speechBubble sibs=div.col-4.paddingR|div.col-8                     first=div.bubble-basic.bubble-right.no-hover>p claude: div.col-12.col-md-6 3  div.col-12.col-md-8 1
+      4 pages   4 mods   2  widget=free         sibs=div.col-8|div.col-4                              first=p                            claude: absent 4
+      4 pages   1 mods   1  widget=speechBubble sibs=div.col-4|div.col-8                              first=div.bubble-right.no-hover>p  claude: div.col-6.col-md-6 3  div.col-12 1
+      4 pages   4 mods   4  widget=tabs         sibs=div.col-8|div.row                                first=h5                           claude: absent 4
+      4 pages   2 mods   2  widget=free         sibs=div.col-8                                        first=p                            claude: absent 4
+==== per group ====
+   Inquiry/1-10 Blended Literacy              n=  82  [free/h3] 29  [free/p] 16  [free/p] 13
+   Standard/1-10 English                      n=  42  [free/div.alert>p] 12  [radioQ/p] 6  [free/h3] 5
+   Standard/1-10 Mathematics                  n=  36  [free/h3] 9  [free/div.alert>p] 8  [wordSe/div.wordSelectCont] 5
+   Fundamentals/1-10 English                  n=  23  [free/div.activity.inter] 11  [radioQ/p] 9  [free/h3] 2
+   Standard/Online Safety (OS9000)            n=  20  [speech/div.bubble-basic.b] 5  [typing/p] 3  [speech/div.bubble-basic.b] 2
+   Fundamentals/1-10 Mathematics              n=  18  [free/div.alert>p] 14  [free/div.alert>] 2  [free/h3] 1
+   Standard/Leaving to Learn                  n=  17  [free/div.alert>h4] 4  [free/div.activity.dropb] 2  [free/div.activity.dropb] 2
+   Fundamentals/1-10 Social Science           n=  16  [free/div.alert>p] 12  [free/p] 3  [free/div.alert>h4] 1
+   Standard/NCEA1                             n=  14  [tabs/h5] 4  [free/p] 3  [tabs/h4] 1
+   Standard/1-10 Blended Literacy             n=  13  [free/img.img-fluid] 8  [free/h3] 2  [free/div.activity.inter] 1
+   Standard/ANZH                              n=  11  [dropQu/p] 6  [free/div.alert>p] 4  [free/div.alert>ul] 1
+   Fundamentals/1-10 Science                  n=  10  [multiC/p] 8  [free/div.alert>p] 2
+   ('free', 'div.col-8', 'div.alert>p'): ANZH101 ANZH101_1.0.html grand=div.row claude=div.col-12.col-md-8
+   ('free', 'div.col-8', 'div.alert>p'): ANZH101 ANZH101_2.0.html grand=div.row claude=div.col-12.col-md-8
+   ('free', 'div.col-12|div.col-8|div.col-4|div.col-12', 'p'): BLL110 BLL110.html grand=div.activity.alertPadding.super-content-button claude=absent
+   ('free', 'div.col-12|div.col-8|div.col-4|div.col-12', 'p'): BLL110 BLL110.html grand=div.activity.alertPadding.super-content-button claude=absent
+   ('free', 'div.col-8', 'h3'): BLL110 BLL110.html grand=div.activity claude=div.col-12
+   ('free', 'div.col-8', 'h3'): BLL110 BLL110.html grand=div.activity claude=div.col-12
+   ('free', 'div.col-8|div.col-4|div.col-8', 'p'): BLL110 BLL110.html grand=div.activity claude=absent
+   ('free', 'div.col-8|div.col-4|div.col-8', 'p'): BLL110 BLL110.html grand=div.activity claude=absent
+   ('free', 'div.col-8|div.col-4|div.col-8', 'a'): BLL110 BLL110.html grand=div.activity claude=absent
+   ('free', 'div.col-8|div.col-4|div.col-8', 'a'): BLL110 BLL110.html grand=div.activity claude=absent

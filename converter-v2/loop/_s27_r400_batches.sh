@@ -1,0 +1,10 @@
+STUB_OEMBED=1 timeout 900 node --require ./_deflate_raw_polyfill.cjs batch_convert.cjs EXBP901 EXIP901 MXFL204 MXFL302 MXFU201 MXFU202 --force
+STUB_OEMBED=1 timeout 900 node --require ./_deflate_raw_polyfill.cjs batch_convert.cjs MXFU302 XGF9002 XGF9004 --force
+STUB_OEMBED=1 timeout 900 node --require ./_deflate_raw_polyfill.cjs batch_convert.cjs AGH1001 AGH1002 AGH1003 AGH1004 AGH1005 AGH1006 AGH1007 AGH1008 AGH1009 ANZH104 ANZH205 --force
+STUB_OEMBED=1 timeout 900 node --require ./_deflate_raw_polyfill.cjs batch_convert.cjs ANZH301 ANZH303 ANZH304 ANZH401 ANZH404 CEDO301 ENGI201 ENGI202 ENGI203 ENGI301 ENGI405 --force
+STUB_OEMBED=1 timeout 900 node --require ./_deflate_raw_polyfill.cjs batch_convert.cjs ENGJ402 ENGR202 ENGS101 HES1003 HES1004 HES1005 HES1006 HIS1001 HIS1002 HIS1003 HIS1004 --force
+STUB_OEMBED=1 timeout 900 node --require ./_deflate_raw_polyfill.cjs batch_convert.cjs HIS1005 HIS1006 HIS1008 MXDI201 MXDI202 MXEX201 MXEX302 MXFL101 MXFL104 MXFL201 MXFL203 --force
+STUB_OEMBED=1 timeout 900 node --require ./_deflate_raw_polyfill.cjs batch_convert.cjs MXFUN01 OSOH201 OSOH301 OSSM401 PES1001 PES1002 PES1003 PES1005 PES1007 PES1008 PHE1001 --force
+STUB_OEMBED=1 timeout 900 node --require ./_deflate_raw_polyfill.cjs batch_convert.cjs PHE1002 PHE1005 PHE1006 PHE1007 PHE1008 TEFUN01 TEFUN04 TRR301 XDLS901 XDLS902 XDLS903 --force
+STUB_OEMBED=1 timeout 900 node --require ./_deflate_raw_polyfill.cjs batch_convert.cjs XDLS904 XDLS905 XDLS906 XDLS908 XMES201 XMES203 XTAS102 XTAS103 XWHA02 --force
+STUB_OEMBED=1 timeout 900 node --require ./_deflate_raw_polyfill.cjs batch_convert.cjs ARFUN02 ENFUN03 ENGC101 SCCH301 SCFUN01 SCPH301 SSOG101 SSOG103 SSOG301 TEDC402 --force

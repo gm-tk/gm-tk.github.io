@@ -385,7 +385,16 @@ class ActivitiesBuilder {
 		const llRule = tpl.activity_wrapper.lesson_letter_number;
 		const llOn = llRule && llRule.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env.ACTLETTER_OFF);
-		if (llOn && (id || positionalId) && pageLessonNumber != null) {
+		// ROUND 400 (the autonomous loop's session 27, Round 5): an opener with NO writer id takes the
+		// next positional letter too — the gold numbers every box (6 numberless in 2385 gold pages;
+		// Claude shipped 629), and on the pages where both sides ship the same box count the
+		// positional letter is the gold's on 0.68 (outputs/_s27_r5_posnum.py). Same gate as the r217
+		// synthetic box (a known lesson number). Data lesson_letter_number.unnumbered_positional;
+		// env ACTUNNUM_OFF.
+		const unRule = llRule && llRule.unnumbered_positional;
+		const unOn = llOn && unRule && unRule.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[unRule.env || "ACTUNNUM_OFF"]);
+		if (llOn && (id || positionalId || unOn) && pageLessonNumber != null) {
 			// INTEGER LESSON PREFIX (ROUND 222b — the ENGJ403 "1.0A" screenshot). A
 			// page whose lesson number is DOTTED ("1.0" from the new-era writer tags,
 			// "5.1" from a harvested "Lesson 5.1:" heading) must still number its
@@ -408,7 +417,7 @@ class ActivitiesBuilder {
 			lessonLetterMap[ln] = idx + 1;
 			// ROUND 217: a synthetic standalone-widget box has NO writer id — it takes the
 			// next positional letter outright (same bare-digit rule, same 26-letter cap).
-			if (positionalId && !id && idx < 26) {
+			if ((positionalId || unOn) && !id && idx < 26) {
 				id = ln + String.fromCharCode(65 + idx);
 			}
 			// Renumber ONLY a BARE-DIGIT id into {lessonNumber}{positional letter} form

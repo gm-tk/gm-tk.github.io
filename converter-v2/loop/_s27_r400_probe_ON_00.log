@@ -1,0 +1,362 @@
+  ~ AGH1001_3_0.html: -1 +1
+     - <div class="activity">
+     + <div class="activity" number="3A">
+  ~ AGH1001_4_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity interactive" number="4A">
+     + <div class="activity" number="4A">
+     + <div class="activity interactive" number="4E">
+AGH1001: identical 4 / changed 2
+  ~ AGH1002_2_0.html: -1 +1
+     - <div class="activity">
+     + <div class="activity" number="2A">
+  ~ AGH1002_4_0.html: -1 +1
+     - <div class="activity">
+     + <div class="activity" number="4A">
+  ~ AGH1002_5_0.html: -1 +1
+     - <div class="activity">
+     + <div class="activity" number="5B">
+AGH1002: identical 4 / changed 3
+  ~ AGH1003_1_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="1A">
+     + <div class="activity" number="1B">
+  ~ AGH1003_8_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="8A">
+     + <div class="activity" number="8B">
+AGH1003: identical 7 / changed 2
+  ~ AGH1004_1_0.html: -1 +1
+     - <div class="activity interactive">
+     + <div class="activity interactive" number="1A">
+  ~ AGH1004_2_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity interactive" number="2A">
+     + <div class="activity" number="2A">
+     + <div class="activity interactive" number="2B">
+  ~ AGH1004_5_0.html: -1 +1
+     - <div class="activity interactive">
+     + <div class="activity interactive" number="5B">
+AGH1004: identical 4 / changed 3
+  ~ AGH1005_1_0.html: -1 +1
+     - <div class="activity interactive">
+     + <div class="activity interactive" number="1A">
+  ~ AGH1005_2_0.html: -2 +2
+     - <div class="activity interactive">
+     - <div class="activity interactive">
+     + <div class="activity interactive" number="2A">
+     + <div class="activity interactive" number="2B">
+  ~ AGH1005_3_0.html: -1 +1
+     - <div class="activity interactive">
+     + <div class="activity interactive" number="3A">
+  ~ AGH1005_4_0.html: -1 +1
+     - <div class="activity">
+     + <div class="activity" number="4A">
+  ~ AGH1005_5_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity interactive" number="5A">
+     + <div class="activity" number="5A">
+     + <div class="activity interactive" number="5B">
+  ~ AGH1005_6_0.html: -1 +1
+     - <div class="activity interactive">
+     + <div class="activity interactive" number="6B">
+  ~ AGH1005_7_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity interactive" number="7A">
+     + <div class="activity" number="7A">
+     + <div class="activity interactive" number="7B">
+AGH1005: identical 2 / changed 7
+  ~ AGH1006_2_0.html: -1 +1
+     - <div class="activity interactive">
+     + <div class="activity interactive" number="2B">
+  ~ AGH1006_3_0.html: -1 +1
+     - <div class="activity interactive">
+     + <div class="activity interactive" number="3A">
+  ~ AGH1006_4_0.html: -2 +2
+     - <div class="activity interactive">
+     - <div class="activity">
+     + <div class="activity interactive" number="4C">
+     + <div class="activity" number="4D">
+  ~ AGH1006_5_0.html: -1 +1
+     - <div class="activity interactive">
+     + <div class="activity interactive" number="5B">
+AGH1006: identical 6 / changed 4
+  ~ AGH1007_8_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity interactive" number="8B">
+     + <div class="activity" number="8B">
+     + <div class="activity interactive" number="8C">
+AGH1007: identical 9 / changed 1
+  ~ AGH1008_1_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="1A">
+     + <div class="activity" number="1B">
+  ~ AGH1008_5_0.html: -4 +4
+     - <div class="activity">
+     - <div class="activity interactive" number="5B">
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="5A">
+     + <div class="activity interactive" number="5C">
+     + <div class="activity" number="5D">
+     + <div class="activity" number="5E">
+  ~ AGH1008_6_0.html: -1 +1
+     - <div class="activity">
+     + <div class="activity" number="6B">
+  ~ AGH1008_7_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="7A">
+     + <div class="activity" number="7B">
+  ~ AGH1008_8_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="8A">
+     + <div class="activity" number="8B">
+AGH1008: identical 5 / changed 5
+  ~ AGH1009_3_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="3B">
+     + <div class="activity" number="3A">
+  ~ AGH1009_6_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity interactive" number="6A">
+     + <div class="activity interactive" number="6B">
+     + <div class="activity" number="6A">
+AGH1009: identical 8 / changed 2
+ANZH101: identical 4 / changed 0
+  ~ ANZH104_3_0.html: -1 +1
+     - <div class="activity">
+     + <div class="activity" number="3A">
+ANZH104: identical 7 / changed 1
+ANZH105: identical 8 / changed 0
+ANZH203: identical 7 / changed 0
+  ~ ANZH205_2_0.html: -1 +1
+     - <div class="activity">
+     + <div class="activity" number="2A">
+  ~ ANZH205_4_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="4A">
+     + <div class="activity" number="4B">
+  ~ ANZH205_5_0.html: -1 +1
+     - <div class="activity">
+     + <div class="activity" number="5A">
+ANZH205: identical 4 / changed 3
+  ~ ANZH301_1_0.html: -5 +5
+     - <div class="activity">
+     - <div class="activity">
+     - <div class="activity">
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="1D">
+     + <div class="activity" number="1E">
+     + <div class="activity" number="1B">
+     + <div class="activity" number="1G">
+     + <div class="activity" number="1H">
+  ~ ANZH301_2_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="2B">
+     + <div class="activity" number="2A">
+  ~ ANZH301_3_0.html: -5 +5
+     - <div class="activity">
+     - <div class="activity">
+     - <div class="activity">
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="3D">
+     + <div class="activity" number="3E">
+     + <div class="activity" number="3F">
+     + <div class="activity" number="3H">
+     + <div class="activity" number="3I">
+  ~ ANZH301_4_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="4D">
+     + <div class="activity" number="4B">
+  ~ ANZH301_5_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="5B">
+     + <div class="activity" number="5A">
+  ~ ANZH301_6_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="6A">
+     + <div class="activity" number="6C">
+  ~ ANZH301_7_0.html: -4 +4
+     - <div class="activity">
+     - <div class="activity interactive" number="7A">
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity interactive" number="7B">
+     + <div class="activity" number="7C">
+     + <div class="activity" number="7D">
+     + <div class="activity" number="7A">
+  ~ ANZH301_8_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity interactive" number="8B">
+     + <div class="activity" number="8A">
+     + <div class="activity interactive" number="8C">
+  ~ ANZH301_9_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="9B">
+     + <div class="activity" number="9D">
+ANZH301: identical 2 / changed 9
+  ~ ANZH303_5_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="5A">
+     + <div class="activity" number="5B">
+ANZH303: identical 6 / changed 1
+  ~ ANZH304_1_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="1A">
+     + <div class="activity" number="1B">
+  ~ ANZH304_2_0.html: -1 +1
+     - <div class="activity">
+     + <div class="activity" number="2B">
+  ~ ANZH304_3_0.html: -4 +4
+     - <div class="activity">
+     - <div class="activity">
+     - <div class="activity">
+     - <div class="activity interactive" number="3H">
+     + <div class="activity" number="3D">
+     + <div class="activity" number="3F">
+     + <div class="activity" number="3I">
+     + <div class="activity interactive" number="3K">
+ANZH304: identical 4 / changed 3
+  ~ ANZH401_1_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity interactive" number="1C">
+     + <div class="activity" number="1C">
+     + <div class="activity interactive" number="1D">
+  ~ ANZH401_7_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity interactive" number="7B">
+     + <div class="activity" number="7A">
+     + <div class="activity interactive" number="7C">
+  ~ ANZH401_11_0.html: -3 +3
+     - <div class="activity">
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="11A">
+     + <div class="activity" number="11B">
+     + <div class="activity" number="11C">
+  ~ ANZH401_13_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity interactive" number="13A">
+     + <div class="activity" number="13A">
+     + <div class="activity interactive" number="13C">
+ANZH401: identical 10 / changed 4
+  ~ ANZH404_5_0.html: -1 +1
+     - <div class="activity">
+     + <div class="activity" number="5C">
+ANZH404: identical 6 / changed 1
+ARFUN01: identical 1 / changed 0
+  ~ ARFUN02_0_0.html: -2 +2
+     - <div class="activity">
+     - <div class="activity">
+     + <div class="activity" number="4B">
+     + <div class="activity" number="4C">
+ARFUN02: identical 0 / changed 1
+ARFUN03: identical 1 / changed 0
+ARFUN04: identical 1 / changed 0
+ARFUN05: identical 1 / changed 0
+ART1002: identical 8 / changed 0
+ART1003: identical 1 / changed 0
+ART1004: identical 1 / changed 0
+ART1005: identical 1 / changed 0
+ART1006: identical 6 / changed 0
+BLL110: identical 1 / changed 0
+BLL111: identical 3 / changed 0
+BLL112: identical 3 / changed 0
+BLL113: identical 3 / changed 0
+BLL114: identical 3 / changed 0
+BLL115: identical 3 / changed 0
+BLL116: identical 3 / changed 0
+BLL117: identical 3 / changed 0
+BLL120: identical 1 / changed 0
+BLL121: identical 3 / changed 0
+BLL122: identical 3 / changed 0
+BLL123: identical 3 / changed 0
+BLL124: identical 3 / changed 0
+BLL125: identical 3 / changed 0
+BLL126: identical 3 / changed 0
+BLL127: identical 3 / changed 0
+BLL130: identical 1 / changed 0
+BLL131: identical 3 / changed 0
+BLL132: identical 3 / changed 0
+BLL133: identical 3 / changed 0
+BLL134: identical 3 / changed 0
+BLL135: identical 3 / changed 0
+BLL136: identical 2 / changed 0
+BLL137: identical 3 / changed 0
+BLL140: identical 1 / changed 0
+BLL141: identical 3 / changed 0
+BLL142: identical 3 / changed 0
+BLL143: identical 3 / changed 0
+BLL144: identical 3 / changed 0
+BLL145: identical 3 / changed 0
+BLL146: identical 3 / changed 0
+BLL147: identical 3 / changed 0
+BLL150: identical 1 / changed 0
+BLL151: identical 3 / changed 0
+BLL152: identical 3 / changed 0
+BLL153: identical 3 / changed 0
+BLL154: identical 3 / changed 0
+BLL155: identical 3 / changed 0
+BLL156: identical 3 / changed 0
+BLL157: identical 3 / changed 0
+BLL160: identical 1 / changed 0
+BLL161: identical 3 / changed 0
+BLL162: identical 3 / changed 0
+BLL163: identical 3 / changed 0
+BLL164: identical 3 / changed 0
+BLL165: identical 3 / changed 0
+BLL166: identical 3 / changed 0
+BLL167: identical 3 / changed 0
+BLL170: identical 1 / changed 0
+BLL171: identical 3 / changed 0
+BLL172: identical 3 / changed 0
+BLL173: identical 3 / changed 0
+BLL174: identical 3 / changed 0
+BLL175: identical 4 / changed 0
+BLL176: identical 3 / changed 0
+BLL177: identical 3 / changed 0
+BLL210: identical 1 / changed 0
+BLL211: identical 3 / changed 0
+BLL212: identical 3 / changed 0
+BLL213: identical 3 / changed 0
+BLL214: identical 3 / changed 0
+BLL215: identical 3 / changed 0
+BLL216: identical 3 / changed 0
+BLL217: identical 3 / changed 0
+BLL220: identical 1 / changed 0
+BLL221: identical 3 / changed 0
+BLL222: identical 3 / changed 0
+BLL223: identical 3 / changed 0
+BLL224: identical 3 / changed 0
+BLL225: identical 3 / changed 0
+BLL226: identical 3 / changed 0
+BLL227: identical 3 / changed 0
+BLL230: identical 1 / changed 0
+BLL231: identical 3 / changed 0
+BLL232: identical 3 / changed 0
+BLL233: identical 3 / changed 0
+BLL234: identical 3 / changed 0
+BLL235: identical 3 / changed 0
+BLL236: identical 3 / changed 0
+BLL237: identical 3 / changed 0
+BLL240: identical 9 / changed 0
+BLL241: identical 3 / changed 0
+
+TOTAL: identical 360 / changed 52 / missing 0 over 111 modules
+CHANGED: AGH1001/AGH1001_3_0.html AGH1001/AGH1001_4_0.html AGH1002/AGH1002_2_0.html AGH1002/AGH1002_4_0.html AGH1002/AGH1002_5_0.html AGH1003/AGH1003_1_0.html AGH1003/AGH1003_8_0.html AGH1004/AGH1004_1_0.html AGH1004/AGH1004_2_0.html AGH1004/AGH1004_5_0.html AGH1005/AGH1005_1_0.html AGH1005/AGH1005_2_0.html AGH1005/AGH1005_3_0.html AGH1005/AGH1005_4_0.html AGH1005/AGH1005_5_0.html AGH1005/AGH1005_6_0.html AGH1005/AGH1005_7_0.html AGH1006/AGH1006_2_0.html AGH1006/AGH1006_3_0.html AGH1006/AGH1006_4_0.html AGH1006/AGH1006_5_0.html AGH1007/AGH1007_8_0.html AGH1008/AGH1008_1_0.html AGH1008/AGH1008_5_0.html AGH1008/AGH1008_6_0.html AGH1008/AGH1008_7_0.html AGH1008/AGH1008_8_0.html AGH1009/AGH1009_3_0.html AGH1009/AGH1009_6_0.html ANZH104/ANZH104_3_0.html ANZH205/ANZH205_2_0.html ANZH205/ANZH205_4_0.html ANZH205/ANZH205_5_0.html ANZH301/ANZH301_1_0.html ANZH301/ANZH301_2_0.html ANZH301/ANZH301_3_0.html ANZH301/ANZH301_4_0.html ANZH301/ANZH301_5_0.html ANZH301/ANZH301_6_0.html ANZH301/ANZH301_7_0.html ANZH301/ANZH301_8_0.html ANZH301/ANZH301_9_0.html ANZH303/ANZH303_5_0.html ANZH304/ANZH304_1_0.html ANZH304/ANZH304_2_0.html ANZH304/ANZH304_3_0.html ANZH401/ANZH401_1_0.html ANZH401/ANZH401_7_0.html ANZH401/ANZH401_11_0.html ANZH401/ANZH401_13_0.html ANZH404/ANZH404_5_0.html ARFUN02/ARFUN02_0_0.html

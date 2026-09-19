@@ -1,0 +1,24 @@
+{'pages': 1348, 'pages-with-numberless': 261, 'count-differs': 185, 'count-equal': 76}
+Claude's NUMBERED boxes on count-equal pages: {'claude-numbered=gold': 77, 'claude-numbered≠gold': 27}
+numberless boxes — positional k-th letter: {'pos=gold': 69, 'pos≠gold': 32}  pages {'pos=gold': 56, 'pos≠gold': 20}  mods {'pos=gold': 34, 'pos≠gold': 11}
+numberless boxes — next-letter rule: {'next=gold': 68, 'next≠gold': 33}
+   Standard/NCEA1                             n= 57  pos=gold 37 (0.65)  pos≠gold 20 (0.35)
+   Standard/Leaving to Learn                  n= 15  pos=gold 10 (0.67)  pos≠gold 5 (0.33)
+   Standard/1-10 Mathematics                  n=  7  pos=gold 6 (0.86)  pos≠gold 1 (0.14)
+   Standard/1-10 English                      n=  5  pos=gold 5 (1.00)
+   Fundamentals/1-10 Mathematics              n=  4  pos≠gold 4 (1.00)
+   Standard/ANZH                              n=  3  pos=gold 3 (1.00)
+   Standard/ConnectED                         n=  3  pos≠gold 2 (0.67)  pos=gold 1 (0.33)
+   Standard/1-10 Social Science               n=  3  pos=gold 3 (1.00)
+   Standard/Online Safety (OS9000)            n=  2  pos=gold 2 (1.00)
+   Standard/1-10 Science                      n=  1  pos=gold 1 (1.00)
+   Standard/None                              n=  1  pos=gold 1 (1.00)
+   ('pos=gold', 'next=gold'): AGH1002/AGH1002_2_0.html k=0 gold=2A pos=2A next=2A claude-seq=['', '2B', '2C']
+   ('pos=gold', 'next=gold'): AGH1002/AGH1002_4_0.html k=0 gold=4A pos=4A next=4A claude-seq=['', '4B']
+   ('pos=gold', 'next=gold'): AGH1002/AGH1002_5_0.html k=1 gold=5B pos=5B next=5B claude-seq=['5A', '', '5C']
+   ('pos=gold', 'next=gold'): AGH1003/AGH1003_1_0.html k=0 gold=1A pos=1A next=1A claude-seq=['', '']
+   ('pos≠gold', 'next≠gold'): AGH1006/AGH1006_3_0.html k=0 gold=4A pos=3A next=3A claude-seq=['']
+   ('pos≠gold', 'next≠gold'): AGH1006/AGH1006_5_0.html k=1 gold=6B pos=5B next=5B claude-seq=['5A', '']
+   ('pos≠gold', 'next≠gold'): CEDO301/CEDO301_4_0.html k=0 gold=5A pos=4A next=4A claude-seq=['']
+   ('pos≠gold', 'next≠gold'): CEDO301/CEDO301_5_0.html k=0 gold=2A pos=5A next=5A claude-seq=['']
+   ('pos=gold', 'next≠gold'): MXEX201/MXEX201_2_0.html k=2 gold=2C pos=2C next=2B claude-seq=['', '2A', '']

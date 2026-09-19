@@ -1,0 +1,23 @@
+r400 (260619.71): the un-numbered activity opener takes the next positional letter — activity_wrapper.lesson_letter_number.unnumbered_positional (ACTUNNUM_OFF)
+
+A writer's bare [Activity] / [Activity: Embedded] / [interactive] … opener with no id shipped a plain div.activity
+(629 numberless boxes on the paired pages; the gold ships 6 in 2385 pages — it numbers every box {lesson}{letter}).
+The r88 rule lettered only an id-carrying opener and the r217 synthetic box; an id-less writer opener neither took a
+letter nor advanced the lesson's letter counter. Now, under the same gate as the r217 box (a known lesson number,
+the r325 phase pages included), it takes the next positional letter. Measured on the paired lesson pages where both
+sides ship the same box count: the positional letter is the gold's on 69 / 101 = 0.68 (outputs/_s27_r5_posnum.py).
+
+Session 27 Round 5 (the autonomous loop): Round 4's PICK pass measured the D10-3 dragAndDrop build lane (795
+declines over 663 signatures; the title-led form 25 bundles, gold DD 0.40) and the <br> follow-up (the writer's
+soft break as <br> is 8 pages; the gold's 3819 br are developer joins) to the floor; Round 5's numberless-box
+census found this class. In-memory probe OFF = disk 2109/2109, ON = 281 pages / 94 modules; scored on the ON pages
+with the gate's own match() 67 up / 13 down (+229.9) before regenerating; SCOPED regeneration of the 94 (10 batches
+rc 0; fresh --affected 0 truly stale; probe ON == disk 795/795); scoped ship #4 since the r396 full.
+
+Gates: skeleton 53.862 -> 53.979 % (+0.118pp; 80 movers 67 up / 13 down, 0 outside the affected set — the 13 dips
+named, the r369 letter-shift class: ENGI201_2_0 -11.3 the largest), >=50 1170 -> 1174, >=75 197 -> 200, >=90 18,
+RAW 37.918 -> 37.995 %; compare_structure 11798 / 172 / 626, body_compare 42 / 4 / 173 / 218, clean 2079 / 2102,
+leak 26 / 23 — EXACT; every verifier RESULT identical to r399; 15 selftests + the feature-index selftest GREEN.
+Miner re-mined: 173 -> 169 CANDIDATE (four numberless-box rows gone, nothing new). Plateau window reset.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

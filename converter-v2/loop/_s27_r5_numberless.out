@@ -1,0 +1,85 @@
+Claude numberless activity boxes on paired pages: 629
+==== (page kind, box classes, content, gold verdict) ====
+    161 pages 109 mods  40  ('lesson', 'plain', 'prose', 'gold:?(no heading)')
+     80 pages  64 mods  34  ('lesson', 'plain', 'prose', 'gold:none')
+     74 pages  24 mods  24  ('overview', 'plain', 'prose', 'gold:?(no heading)')
+     37 pages  29 mods  13  ('lesson', 'plain', 'prose', 'gold:box')
+     33 pages  28 mods  17  ('lesson', 'plain', 'widget', 'gold:none')
+     24 pages  21 mods  12  ('lesson', 'plain', 'widget', 'gold:free-p')
+     18 pages  13 mods   7  ('lesson', 'interactive', 'widget', 'gold:free-p')
+     17 pages  13 mods   7  ('lesson', 'plain', 'prose', 'gold:free-p')
+     16 pages  11 mods   5  ('lesson', 'plain', 'widget', 'gold:?(no heading)')
+     15 pages  10 mods  10  ('overview', 'plain', 'prose', 'gold:box')
+     13 pages  12 mods  11  ('lesson', 'plain', 'widget', 'gold:box')
+     13 pages   7 mods   6  ('lesson', 'dropbox', 'prose', 'gold:none')
+     13 pages  10 mods   4  ('lesson', 'interactive', 'widget', 'gold:box')
+     11 pages   7 mods   7  ('overview', 'plain', 'widget', 'gold:none')
+     11 pages   8 mods   8  ('overview', 'plain', 'prose', 'gold:none')
+     10 pages   6 mods   6  ('overview', 'plain', 'widget', 'gold:free-p')
+      9 pages   3 mods   3  ('overview', 'interactive', 'widget', 'gold:none')
+      7 pages   5 mods   5  ('overview', 'plain', 'widget', 'gold:box')
+      6 pages   6 mods   4  ('lesson', 'interactive', 'widget', 'gold:none')
+      6 pages   2 mods   2  ('overview', 'interactive', 'widget', 'gold:free-p')
+      6 pages   3 mods   3  ('overview', 'plain', 'prose', 'gold:free-p')
+      5 pages   5 mods   4  ('lesson', 'interactive', 'widget', 'gold:?(no heading)')
+      4 pages   4 mods   4  ('lesson', 'plain', 'prose', 'gold:free-h4')
+      4 pages   3 mods   3  ('overview', 'plain', 'widget', 'gold:?(no heading)')
+      4 pages   2 mods   1  ('lesson', 'plain', 'prose', 'gold:free-h3')
+      3 pages   3 mods   3  ('overview', 'plain', 'prose', 'gold:free-h2')
+      3 pages   2 mods   2  ('lesson', 'super-content-button', 'prose', 'gold:none')
+      2 pages   2 mods   2  ('lesson', 'interactive', 'prose', 'gold:?(no heading)')
+==== per group ====
+   Standard/NCEA1                             n= 223  [les/plain/pros/gold:?(no he] 71  [les/plain/pros/gold:none] 48  [les/plain/widg/gold:none] 24
+   Standard/1-10 Mathematics                  n=  73  [les/plain/pros/gold:?(no he] 61  [les/plain/pros/gold:none] 4  [les/plain/pros/gold:free-p] 2
+   Standard/Leaving to Learn                  n=  45  [les/plain/pros/gold:box] 11  [les/dropbox/pros/gold:none] 9  [les/plain/pros/gold:?(no he] 7
+   Standard/ANZH                              n=  44  [les/plain/pros/gold:?(no he] 13  [les/plain/widg/gold:free-p] 9  [les/plain/pros/gold:none] 8
+   Fundamentals/1-10 Health and PE            n=  44  [ove/plain/pros/gold:?(no he] 21  [ove/plain/pros/gold:box] 12  [ove/plain/widg/gold:box] 7
+   Fundamentals/1-10 Social Science           n=  41  [ove/plain/pros/gold:?(no he] 29  [ove/plain/widg/gold:none] 4  [ove/plain/pros/gold:none] 2
+   Inquiry/ConnectED                          n=  37  [ove/plain/pros/gold:?(no he] 7  [ove/interactive/widg/gold:free-p] 6  [ove/plain/pros/gold:none] 6
+   Standard/1-10 English                      n=  30  [les/interactive/widg/gold:box] 8  [les/plain/pros/gold:?(no he] 6  [les/interactive/widg/gold:free-p] 4
+   Fundamentals/1-10 Mathematics              n=  26  [les/interactive/widg/gold:free-p] 10  [ove/interactive/widg/gold:none] 8  [les/plain/pros/gold:free-p] 3
+   Inquiry/Te ara Whakapuawa -Wellbeing       n=  14  [ove/plain/pros/gold:?(no he] 11  [ove/interactive/widg/gold:none] 1  [ove/plain/pros/gold:none] 1
+   Inquiry/Leaving to Learn                   n=  10  [les/plain/pros/gold:free-h3] 4  [les/plain/pros/gold:none] 3  [les/dropbox/pros/gold:none] 3
+   Standard/EXPlore                           n=   9  [les/plain/pros/gold:none] 3  [les/plain/pros/gold:?(no he] 3  [les/plain/pros/gold:box] 3
+   Bilingual/Te Marautanga o Aotearoa TMoA    n=   7  [les/plain/widg/gold:?(no he] 5  [ove/plain/widg/gold:?(no he] 2
+   Fundamentals/1-10 Arts                     n=   6  [ove/plain/pros/gold:?(no he] 4  [ove/plain/widg/gold:none] 2
+
+   ('lesson', 'plain', 'prose', 'gold:?(no heading)'): AGH1001/AGH1001_3_0.html «» gold:?(no heading) w=None
+   ('lesson', 'plain', 'prose', 'gold:?(no heading)'): AGH1001/AGH1001_4_0.html «» gold:?(no heading) w=None
+   ('lesson', 'plain', 'prose', 'gold:?(no heading)'): AGH1002/AGH1002_2_0.html «» gold:?(no heading) w=None
+   ('lesson', 'plain', 'widget', 'gold:free-p'): AGH1003/AGH1003_1_0.html «answer the questions below» gold:free-p w=carousel
+   ('lesson', 'plain', 'widget', 'gold:free-p'): AGH1005/AGH1005_7_0.html «let s review the content covered about c» gold:free-p w=carousel
+   ('lesson', 'plain', 'widget', 'gold:free-p'): AGH1006/AGH1006_4_0.html «here is a video of how these controls ar» gold:free-p w=accordion
+   ('lesson', 'plain', 'widget', 'gold:none'): AGH1005/AGH1005_4_0.html «here is an animated video to see the pro» gold:none w=carousel
+   ('lesson', 'plain', 'widget', 'gold:none'): AGH1005/AGH1005_5_0.html «factors that influence the rate of trans» gold:none w=cv2-interactive
+   ('lesson', 'plain', 'widget', 'gold:none'): AGH1008/AGH1008_1_0.html «in the space below brainstorm how you th» gold:none w=carousel
+   ('lesson', 'interactive', 'widget', 'gold:free-p'): AGH1005/AGH1005_6_0.html «this means that growers of fruits vegeta» gold:free-p w=cv2-interactive
+   ('lesson', 'interactive', 'widget', 'gold:free-p'): ENGI203/ENGI203_6_0.html «review a few of the facts from our movie» gold:free-p w=dragAndDrop
+   ('lesson', 'interactive', 'widget', 'gold:free-p'): ENGI203/ENGI203_10_0.html «think about the sentences below sort the» gold:free-p w=dragAndDrop
+   ('lesson', 'plain', 'prose', 'gold:none'): ANZH104/ANZH104_3_0.html «word find» gold:none w=None
+   ('lesson', 'plain', 'prose', 'gold:none'): ANZH205/ANZH205_2_0.html «activity 2a opposing opinions» gold:none w=None
+   ('lesson', 'plain', 'prose', 'gold:none'): ANZH205/ANZH205_4_0.html «activity 4a iwi in my rohe» gold:none w=None
+   ('lesson', 'plain', 'prose', 'gold:free-p'): ANZH301/ANZH301_1_0.html «have a listen to this audio of riria uti» gold:free-p w=None
+   ('lesson', 'plain', 'prose', 'gold:free-p'): ANZH301/ANZH301_1_0.html «click the flip cards below to find out m» gold:free-p w=None
+   ('lesson', 'plain', 'prose', 'gold:free-p'): ANZH301/ANZH301_2_0.html «watch the following video source that gi» gold:free-p w=None
+   ('lesson', 'plain', 'prose', 'gold:box'): ANZH301/ANZH301_1_0.html «post war blues» gold:box#1C w=None
+   ('lesson', 'plain', 'prose', 'gold:box'): ENGI203/ENGI203_10_0.html «dear future reader» gold:box#10C w=None
+   ('lesson', 'plain', 'prose', 'gold:box'): EXIP901/EXIP901_4_0.html «checking my understanding» gold:box#2C w=None
+   ('lesson', 'plain', 'widget', 'gold:box'): ANZH303/ANZH303_5_0.html «the symbolism of te kara o te whakaminen» gold:box#5A w=carousel
+   ('lesson', 'plain', 'widget', 'gold:box'): ENGC101/ENGC101_5_0.html «emoji memory game» gold:box#5B w=cv2-interactive
+   ('lesson', 'plain', 'widget', 'gold:box'): HIS1005/HIS1005_4_0.html «the native land court» gold:box#4B w=cv2-interactive
+   ('overview', 'plain', 'prose', 'gold:?(no heading)'): ARFUN02/ARFUN02_0_0.html «» gold:?(no heading) w=None
+   ('overview', 'plain', 'prose', 'gold:?(no heading)'): ARFUN02/ARFUN02_0_0.html «» gold:?(no heading) w=None
+   ('overview', 'plain', 'prose', 'gold:?(no heading)'): ARFUN04/ARFUN04_0_0.html «» gold:?(no heading) w=None
+   ('lesson', 'dropbox', 'prose', 'gold:none'): CEDO301/CEDO301_5_0.html «4a the science of rongoā» gold:none w=None
+   ('lesson', 'dropbox', 'prose', 'gold:none'): XDLS903/XDLS903_1_0.html «1d» gold:none w=None
+   ('lesson', 'dropbox', 'prose', 'gold:none'): XDLS903/XDLS903_1_0.html «1e» gold:none w=None
+   ('lesson', 'interactive', 'widget', 'gold:box'): ENGI203/ENGI203_4_0.html «tunes through time» gold:box#4A w=cv2-interactive
+   ('lesson', 'interactive', 'widget', 'gold:box'): ENGI203/ENGI203_4_0.html «the meaning behind the songs» gold:box#4B w=dragAndDrop
+   ('lesson', 'interactive', 'widget', 'gold:box'): ENGI203/ENGI203_5_0.html «when is that from» gold:box#5A w=cv2-interactive
+   ('lesson', 'plain', 'widget', 'gold:?(no heading)'): HIS1003/HIS1003_2_0.html «» gold:?(no heading) w=cv2-interactive
+   ('lesson', 'plain', 'widget', 'gold:?(no heading)'): HIS1003/HIS1003_2_0.html «» gold:?(no heading) w=cv2-interactive
+   ('lesson', 'plain', 'widget', 'gold:?(no heading)'): HIS1003/HIS1003_6_0.html «» gold:?(no heading) w=cv2-interactive
+   ('overview', 'plain', 'prose', 'gold:box'): HPFUN101/HPFUN101_0_0.html «different movement activities» gold:box#2B w=None
+   ('overview', 'plain', 'prose', 'gold:box'): HPFUN102/HPFUN102_0_0.html «luck of the dice» gold:box#1B w=None
+   ('overview', 'plain', 'prose', 'gold:box'): HPFUN202/HPFUN202_0_0.html «feel your body change» gold:box#1B w=None
