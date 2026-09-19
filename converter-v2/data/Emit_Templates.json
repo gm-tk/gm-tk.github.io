@@ -1267,6 +1267,11 @@
 		}
 	},
 	"embeds": {
+		"external_button": {
+			"_doc": "ROUND 403 (the autonomous loop's session 27, Round 8). AN [embed] OF AN EXTERNAL WEB PAGE IS THE KB'S externalButton, NEVER A BARE IFRAME. The [embed link] / [link to PDF of: …] / [Embed audio] / [Please embed these slides …] route wrapped any non-video URL in `div.ratio.ratio-16x9 > iframe` — a label the gold ships 0 times (the position-free label census, session 27) against Claude's 133. Measured on the paired pages (outputs/_s27_r8_bareratio.py: 129 sites / 77 pages / 58 modules) the gold iframes NONE of them: absent 91 (kindergartenworksheets / twinkl / tahurangi worksheet and PDF pages the developer re-sourced or dropped), an anchor 38 (24 `div.button` / `externalButton`, 14 plain `<a>`) — every kept URL is a LINK. KB 05D: an external destination is `<a href target=_blank><div class=externalButton>Go to website</div></a>` (constraint 75's default label) — the r338 `buttons.external_destination` form, label and internal-host list, reused here; a URL on an internal host (Google Docs / Drive / SharePoint, whose embed genuinely frames — the gold drops those 20 too, unknowably) keeps the iframe; a video host never reaches this branch (it takes the videoSection above). OFF (env EMBEDBTN_OFF) = the bare iframe.",
+			"enabled": true,
+			"env": "EMBEDBTN_OFF"
+		},
 		"iframe": "<div class=\"ratio ratio-16x9\">\n<iframe src=\"{url}\" loading=\"lazy\" frameborder=\"0\" allowfullscreen></iframe>\n</div>",
 		"text_box": "<textarea class=\"form-control\" rows=\"4\" placeholder=\"{placeholder}\"></textarea>"
 	},

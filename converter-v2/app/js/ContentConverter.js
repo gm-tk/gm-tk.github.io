@@ -7455,6 +7455,29 @@ class ContentConverter {
 				out.push(NotesAndComments.redFlag("[embed] with no URL found — add the embed source.", run));
 				return out;
 			}
+			// ROUND 403 (the autonomous loop's session 27, Round 8): an [embed] of an EXTERNAL web page is the KB's
+			// externalButton, never a bare iframe. The position-free label census lists `div.ratio.ratio-16x9`
+			// (this route's wrapper) as a label the gold ships 0 times against Claude's 133: measured on the paired
+			// pages (outputs/_s27_r8_bareratio.py, 129 sites / 77 pages / 58 modules) the gold iframes NONE of them —
+			// it drops the resource (91, mostly worksheet / PDF pages the developer re-sourced) or links it (38: 24
+			// buttons + 14 anchors). KB 05D: an external destination is `<a target="_blank"><div class="externalButton">`
+			// (the r338 rule, whose form / default label / internal-host list this reuses); a URL on one of those
+			// internal hosts (Google Docs / Drive / SharePoint — an embed that genuinely frames) keeps the iframe.
+			// Data elements.embeds.external_button; env EMBEDBTN_OFF.
+			const _ebCfg = tpl.embeds?.external_button;
+			const _ebOn = _ebCfg && _ebCfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[_ebCfg.env || "EMBEDBTN_OFF"]);
+			if (_ebOn) {
+				const _ext = tpl.buttons?.external_destination ?? {};
+				const _host = (String(url).match(/^https?:\/\/([^/?#:]+)/i)?.[1] ?? "").toLowerCase();
+				const _internal = (_ebCfg.internal_hosts ?? _ext.internal_hosts ?? [])
+					.some((h) => _host === String(h).toLowerCase() || _host.endsWith("." + String(h).toLowerCase()));
+				if (_host && !_internal) {
+					const _label = _ebCfg.label ?? _ext.default_label ?? "Go to website";
+					out.push(Utils.FillTemplate(_ebCfg.form ?? _ext.form, { url: Utils.EscapeHtml(url), label: Utils.EscapeHtml(_label) }));
+					return out;
+				}
+			}
 			out.push(Utils.FillTemplate(tpl.embeds.iframe, { url: Utils.EscapeHtml(url) }));
 			return out;
 		}

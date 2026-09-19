@@ -1,0 +1,228 @@
+EXPFUN05: identical 1 / changed 0
+EXPFUN06: identical 1 / changed 0
+EXPFUN07: identical 1 / changed 0
+HES1003: identical 9 / changed 0
+HES1004: identical 5 / changed 0
+HES1005: identical 9 / changed 0
+HES1006: identical 8 / changed 0
+HES1007: identical 10 / changed 0
+HIS1001: identical 8 / changed 0
+  ~ HIS1002_11_0.html: -6 +2
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.greenpeace.org/static/planet4-aotearoa-stateless/2018/05/27dcad40-nzsis-declassified-
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.cia.gov/readingroom/docs/CIA-RDP90-00965R000201630021-0.pdf" loading="lazy" framebord
+     - </div>
+     - </div>
+     + <a href="https://www.greenpeace.org/static/planet4-aotearoa-stateless/2018/05/27dcad40-nzsis-declassified-file
+     + <a href="https://www.cia.gov/readingroom/docs/CIA-RDP90-00965R000201630021-0.pdf" target="_blank"><div class="
+HIS1002: identical 20 / changed 1
+HIS1003: identical 11 / changed 0
+HIS1004: identical 11 / changed 0
+HIS1005: identical 15 / changed 0
+HIS1006: identical 15 / changed 0
+HIS1007: identical 7 / changed 0
+HIS1008: identical 12 / changed 0
+HPFUN101: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN103: identical 1 / changed 0
+HPFUN201: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+HPFUN302: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+HPRE203: identical 8 / changed 0
+MXDB102: identical 12 / changed 0
+MXDB201: identical 7 / changed 0
+  ~ MXDB202_4_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.twinkl.co.nz/search?q=pyramid+net&amp;c=154&amp;ca=855&amp;ct=ks2&amp;r=teacher&amp;f
+     - </div>
+     + <a href="https://www.twinkl.co.nz/search?q=pyramid+net&amp;c=154&amp;ca=855&amp;ct=ks2&amp;r=teacher&amp;fco=1
+MXDB202: identical 5 / changed 1
+MXDB301: identical 8 / changed 0
+  ~ MXDB302_4_0.html: -6 +2
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://tuigarden.co.nz/how-to-guide/vegetable-growing-guide/" loading="lazy" frameborder="0" all
+     - </div>
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://tuigarden.co.nz/how-to-guide/fruit-tree-growing-guide/" loading="lazy" frameborder="0" al
+     - </div>
+     + <a href="https://tuigarden.co.nz/how-to-guide/vegetable-growing-guide/" target="_blank"><div class="externalBu
+     + <a href="https://tuigarden.co.nz/how-to-guide/fruit-tree-growing-guide/" target="_blank"><div class="externalB
+MXDB302: identical 9 / changed 1
+MXDI101: identical 11 / changed 0
+MXDI102: identical 5 / changed 0
+MXDI103: identical 10 / changed 0
+  ~ MXDI201_2_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://nzmaths.co.nz/sites/default/files/NumberStretches.pdf" loading="lazy" frameborder="0" all
+     - </div>
+     + <a href="https://nzmaths.co.nz/sites/default/files/NumberStretches.pdf" target="_blank"><div class="externalBu
+  ~ MXDI201_4_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://content.twinkl.co.uk/resource/06/ec/au-n-2548712-addition-strategy-compensation-method_ve
+     - </div>
+     + <a href="https://content.twinkl.co.uk/resource/06/ec/au-n-2548712-addition-strategy-compensation-method_ver_5.
+  ~ MXDI201_6_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.twinkl.co.nz/resource/maths-summer-themed-multiplying-and-dividing-by-10-100-and-1000
+     - </div>
+     + <a href="https://www.twinkl.co.nz/resource/maths-summer-themed-multiplying-and-dividing-by-10-100-and-1000-dif
+  ~ MXDI201_7_0.html: -6 +2
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://content.twinkl.co.uk/resource/68/db/T2-M-1735-Factors-and-Multiples-Display-Poster_ver_1.
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.twinkl.co.nz/resource/t2-m-1693-blank-100-number-square" loading="lazy" frameborder="
+     - </div>
+     - </div>
+     + <a href="https://content.twinkl.co.uk/resource/68/db/T2-M-1735-Factors-and-Multiples-Display-Poster_ver_1.pdf?
+     + <a href="https://www.twinkl.co.nz/resource/t2-m-1693-blank-100-number-square" target="_blank"><div class="exte
+  ~ MXDI201_8_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.istockphoto.com/photo/family-playing-board-game-kids-play-gm1415494891-463845019" loa
+     - </div>
+     + <a href="https://www.istockphoto.com/photo/family-playing-board-game-kids-play-gm1415494891-463845019" target=
+  ~ MXDI201_9_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.twinkl.co.nz/resource/reading-and-writing-numbers-to-1000000-maths-mat-t-m-4007" load
+     - </div>
+     + <a href="https://www.twinkl.co.nz/resource/reading-and-writing-numbers-to-1000000-maths-mat-t-m-4007" target="
+MXDI201: identical 5 / changed 6
+  ~ MXDI202_8_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.twinkl.co.nz/resource/weighing-scales-display-poster-roi-ms-1713628207?q=weighing+sca
+     - </div>
+     + <a href="https://www.twinkl.co.nz/resource/weighing-scales-display-poster-roi-ms-1713628207?q=weighing+scales&
+MXDI202: identical 11 / changed 1
+MXDI301: identical 5 / changed 0
+MXEO102: identical 5 / changed 0
+  ~ MXEO201_9_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.twinkl.co.nz/resource/nz-ad-9-kowhaiwhai-pattern-activity-sheet" loading="lazy" frame
+     - </div>
+     + <a href="https://www.twinkl.co.nz/resource/nz-ad-9-kowhaiwhai-pattern-activity-sheet" target="_blank"><div cla
+MXEO201: identical 9 / changed 1
+  ~ MXEO202_2_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.visnos.com/demos/basic-angles" loading="lazy" frameborder="0" allowfullscreen></ifram
+     - </div>
+     + <a href="https://www.visnos.com/demos/basic-angles" target="_blank"><div class="externalButton">Go to website<
+MXEO202: identical 8 / changed 1
+MXEO301: identical 11 / changed 0
+MXEO401: identical 7 / changed 0
+MXEX101: identical 7 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX202: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+  ~ MXEX302_2_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://newzealandcurriculum.tahurangi.education.govt.nz/5637201011.p" loading="lazy" frameborder
+     - </div>
+     + <a href="https://newzealandcurriculum.tahurangi.education.govt.nz/5637201011.p" target="_blank"><div class="ex
+  ~ MXEX302_5_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://newzealandcurriculum.tahurangi.education.govt.nz/5637200396.p" loading="lazy" frameborder
+     - </div>
+     + <a href="https://newzealandcurriculum.tahurangi.education.govt.nz/5637200396.p" target="_blank"><div class="ex
+MXEX302: identical 6 / changed 2
+MXEX401: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+MXFL102: identical 9 / changed 0
+MXFL103: identical 8 / changed 0
+MXFL104: identical 6 / changed 0
+  ~ MXFL201_9_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://nzmaths.co.nz/sites/default/files/HolidayPlansandBudgets.pdf" loading="lazy" frameborder=
+     - </div>
+     + <a href="https://nzmaths.co.nz/sites/default/files/HolidayPlansandBudgets.pdf" target="_blank"><div class="ext
+MXFL201: identical 9 / changed 1
+MXFL202: identical 6 / changed 0
+  ~ MXFL203_8_0.html: -6 +2
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.twinkl.co.nz/resource/cooking-and-baking-conversion-charts-display-poster-au-st-16620
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://content.twinkl.co.uk/resource/8b/58/au-t2-m-41425-mass-mess-board-game-english.pdf?__toke
+     - </div>
+     - </div>
+     + <a href="https://www.twinkl.co.nz/resource/cooking-and-baking-conversion-charts-display-poster-au-st-166207906
+     + <a href="https://content.twinkl.co.uk/resource/8b/58/au-t2-m-41425-mass-mess-board-game-english.pdf?__token__=
+MXFL203: identical 11 / changed 1
+MXFL204: identical 12 / changed 0
+MXFL301: identical 10 / changed 0
+  ~ MXFL302_3_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.nctm.org/Classroom-Resources/Illuminations/Interactives/Adjustable-Spinner/" loading=
+     - </div>
+     + <a href="https://www.nctm.org/Classroom-Resources/Illuminations/Interactives/Adjustable-Spinner/" target="_bla
+MXFL302: identical 9 / changed 1
+MXFL401: identical 8 / changed 0
+  ~ MXFU201_2_0.html: -9 +3
+     - <iframe src="https://www.twinkl.co.nz/resource/cfe-n-145-five-times-table-activity-booklet" loading="lazy" fra
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.twinkl.co.nz/resource/telling-the-time-in-5-minute-intervals-display-poster-t-m-16840
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.twinkl.co.nz/resource/t-n-2932-clock-hours-and-minutes-interactive-visual-aid" loadin
+     - <div class="ratio ratio-16x9">
+     - </div>
+     - </div>
+     - </div>
+     + <a href="https://www.twinkl.co.nz/resource/cfe-n-145-five-times-table-activity-booklet" target="_blank"><div c
+     + <a href="https://www.twinkl.co.nz/resource/telling-the-time-in-5-minute-intervals-display-poster-t-m-168405360
+     + <a href="https://www.twinkl.co.nz/resource/t-n-2932-clock-hours-and-minutes-interactive-visual-aid" target="_b
+MXFU201: identical 9 / changed 1
+MXFU202: identical 11 / changed 0
+  ~ MXFU301_5_0.html: -9 +3
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://mrnussbaum.com/probability-fair-online-game" loading="lazy" frameborder="0" allowfullscre
+     - </div>
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.mathsisfun.com/data/spinner.php" loading="lazy" frameborder="0" allowfullscreen></ifr
+     - </div>
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.scootle.edu.au/ec/viewing/L118/index.html" loading="lazy" frameborder="0" allowfullsc
+     - </div>
+     + <a href="https://mrnussbaum.com/probability-fair-online-game" target="_blank"><div class="externalButton">Go t
+     + <a href="https://www.mathsisfun.com/data/spinner.php" target="_blank"><div class="externalButton">Go to websit
+     + <a href="https://www.scootle.edu.au/ec/viewing/L118/index.html" target="_blank"><div class="externalButton">Go
+MXFU301: identical 11 / changed 1
+MXFU302: identical 10 / changed 0
+MXFU401: identical 7 / changed 0
+MXFU402: identical 8 / changed 0
+MXFUN01: identical 19 / changed 0
+MXFUN02: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+OSAH301: identical 4 / changed 0
+OSAH401: identical 5 / changed 0
+OSAH501: identical 6 / changed 0
+OSAI101: identical 3 / changed 0
+OSAI201: identical 4 / changed 0
+OSAI301: identical 4 / changed 0
+OSAI401: identical 5 / changed 0
+OSAI501: identical 6 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY201: identical 4 / changed 0
+OSBY301: identical 4 / changed 0
+OSBY401: identical 5 / changed 0
+OSBY501: identical 6 / changed 0
+OSGM101: identical 3 / changed 0
+OSGM201: identical 4 / changed 0
+OSGM301: identical 4 / changed 0
+OSGM401: identical 5 / changed 0
+OSGM501: identical 6 / changed 0
+OSOH101: identical 4 / changed 0
+OSOH201: identical 4 / changed 0
+OSOH301: identical 4 / changed 0
+OSOH401: identical 5 / changed 0
+OSOH501: identical 6 / changed 0
+OSSC301: identical 4 / changed 0
+
+TOTAL: identical 621 / changed 19 / missing 0 over 98 modules
+CHANGED: HIS1002/HIS1002_11_0.html MXDB202/MXDB202_4_0.html MXDB302/MXDB302_4_0.html MXDI201/MXDI201_2_0.html MXDI201/MXDI201_4_0.html MXDI201/MXDI201_6_0.html MXDI201/MXDI201_7_0.html MXDI201/MXDI201_8_0.html MXDI201/MXDI201_9_0.html MXDI202/MXDI202_8_0.html MXEO201/MXEO201_9_0.html MXEO202/MXEO202_2_0.html MXEX302/MXEX302_2_0.html MXEX302/MXEX302_5_0.html MXFL201/MXFL201_9_0.html MXFL203/MXFL203_8_0.html MXFL302/MXFL302_3_0.html MXFU201/MXFU201_2_0.html MXFU301/MXFU301_5_0.html

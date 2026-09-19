@@ -1,0 +1,24 @@
+r403 (260619.74): an [embed] of an external web page is the KB's externalButton, never a bare iframe — elements.embeds.external_button (EMBEDBTN_OFF)
+
+The [embed link] / [link to PDF of: …] / [Embed audio] route wrapped any non-video URL in div.ratio.ratio-16x9 > iframe —
+a label the gold ships 0 times against Claude's 133 (the session's position-free label census). Measured on the paired
+pages (outputs/_s27_r8_bareratio.py: 129 sites / 77 pages / 58 modules) the gold iframes NONE of them: it drops the
+resource on 91 (worksheet / PDF / slide pages the developer re-sourced or omitted) and LINKS it on 38 (24 buttons, 14
+anchors) — every kept URL a link. KB 05D: an external destination is <a target=_blank><div class=externalButton>Go to
+website</div></a> (constraint 75's default label) — the r338 form, label and internal-host list reused at the [embed]
+seam; a Google Docs / Drive / SharePoint URL keeps the iframe; a video host never reaches the branch.
+
+Session 27 Round 8 (the autonomous loop): measured and declined first — the r6 census's "synthetic box after a writer
+box" merge class (_s27_r8_mergebox.py: the gold ships the same-numbered box on 0.62, merges on 0.08). Probe OFF = disk
+2109/2109, ON = 66 pages / 53 modules; scored on the ON pages with the gate's own match() 18 up / 2 down (+17.7)
+before regenerating; SCOPED regeneration of the 53 (6 batches rc 0; fresh --affected 0 truly stale; probe ON == disk
+344/344); scoped ship #7 since the r396 full — THE NEXT SHIP IS THE FULL REGENERATION BACKSTOP.
+
+Gates: skeleton 53.989 -> 53.998 % (+0.0091pp; 20 movers 18 up / 2 down, 0 outside the affected set — XDLS903_7_0 -8.7
+the alignment artefact on a page whose gold ships this very site as the externalButton, MXDI202_8_0 -0.7), >=50 1174 ->
+1175, >=75 200, >=90 18, RAW 38.000 -> 38.006 %; compare_structure 11798 / 172 / 626, body_compare 42 / 4 / 173 / 218,
+clean 2079 / 2102, leak 26 / 23 — EXACT; every verifier RESULT identical to r402; 15 selftests + the feature-index
+selftest GREEN. Miner re-mined: 169 CANDIDATE (one alignment-shadow row gone, one alignment row new at the floor).
+Plateau window reset (>=50 moved).
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

@@ -1,0 +1,53 @@
+bare ratio-16x9 iframe sites on paired pages: 129 on 77 pages / 58 modules
+     91  gold:absent
+     24  gold:anchor button
+     14  gold:anchor
+==== by host (top 20) ====
+   kindergartenworksheets.net           n= 24  gold:absent 18  gold:anchor 6
+   twinkl.co.nz                         n= 16  gold:absent 11  gold:anchor 4  gold:anchor button 1
+   instructionalseries.tki.org.nz       n= 15  gold:absent 12  gold:anchor button 2  gold:anchor 1
+   newzealandcurriculum.tahurangi.education.govt.nz n= 10  gold:absent 10
+   mytekuraschool.sharepoint.com        n= 10  gold:absent 9  gold:anchor button 1
+   mytekuraschool-my.sharepoint.com     n=  8  gold:absent 8
+   csfieldguide.org.nz                  n=  4  gold:anchor button 4
+   scratch.mit.edu                      n=  4  gold:anchor button 4
+   content.twinkl.co.uk                 n=  3  gold:absent 3
+   speldsa.org.au                       n=  2  gold:absent 2
+   docs.google.com                      n=  2  gold:absent 2
+   drive.google.com                     n=  2  gold:absent 2
+   tuigarden.co.nz                      n=  2  gold:anchor button 2
+   nzmaths.co.nz                        n=  2  gold:absent 2
+   learn.codeavengers.com               n=  2  gold:anchor button 2
+   padlet.com                           n=  2  gold:anchor button 2
+   aotearoahistories.education.govt.nz  n=  1  gold:absent 1
+   natlib.govt.nz                       n=  1  gold:anchor button 1
+   nzhistory.govt.nz                    n=  1  gold:anchor button 1
+   highlightskids.com                   n=  1  gold:absent 1
+==== by group ====
+   Standard/1-10 Mathematics                  n= 31  gold:absent 26 (0.84)  gold:anchor button 4 (0.13)  gold:anchor 1 (0.03)
+   Inquiry/1-10 Blended Literacy              n= 24  gold:absent 18 (0.75)  gold:anchor 6 (0.25)
+   Standard/1-10 English                      n= 22  gold:absent 19 (0.86)  gold:anchor button 3 (0.14)
+   Fundamentals/1-10 Technology               n= 13  gold:anchor button 10 (0.77)  gold:absent 2 (0.15)  gold:anchor 1 (0.08)
+   Standard/1-10 Blended Literacy             n=  9  gold:absent 9 (1.00)
+   Standard/NCEA1                             n=  8  gold:absent 7 (0.88)  gold:anchor button 1 (0.12)
+   Inquiry/ConnectED                          n=  6  gold:absent 4 (0.67)  gold:anchor 2 (0.33)
+   Standard/Leaving to Learn                  n=  6  gold:anchor button 4 (0.67)  gold:absent 1 (0.17)  gold:anchor 1 (0.17)
+   Standard/ANZH                              n=  4  gold:absent 2 (0.50)  gold:anchor button 2 (0.50)
+   Inquiry/Leaving to Learn                   n=  4  gold:anchor 3 (0.75)  gold:absent 1 (0.25)
+   Standard/None                              n=  1  gold:absent 1 (1.00)
+   Standard/Online Safety (OS9000)            n=  1  gold:absent 1 (1.00)
+   gold:absent: ANZH105/ANZH105_3_0.html aotearoahistories.education.govt.nz https://aotearoahistories.education.govt.nz/teaching-resourc
+   gold:absent: ANZH304/ANZH304_3_0.html mytekuraschool-my.sharepoint.com https://mytekuraschool-my.sharepoint.com/:p:/g/personal/char
+   gold:absent: BLL110/BLL110_0_0.html kindergartenworksheets.net https://www.kindergartenworksheets.net/handwriting-practice-
+   gold:absent: BLL110/BLL110_0_0.html kindergartenworksheets.net https://www.kindergartenworksheets.net/handwriting-practice-
+   gold:absent: BLL110/BLL110_0_0.html kindergartenworksheets.net https://www.kindergartenworksheets.net/handwriting-practice-
+   gold:anchor button: ANZH303/ANZH303_1_0.html natlib.govt.nz https://natlib.govt.nz/files/schools/primary-source-tool-ana
+   gold:anchor button: ANZH304/ANZH304_3_0.html nzhistory.govt.nz https://nzhistory.govt.nz/media/interactive/waitangi-treaty-
+   gold:anchor button: ENGI202/ENGI202_4_0.html instructionalseries.tki.org.nz https://instructionalseries.tki.org.nz/Instructional-Series/
+   gold:anchor button: ENGI202/ENGI202_4_0.html instructionalseries.tki.org.nz https://instructionalseries.tki.org.nz/Instructional-Series/
+   gold:anchor button: ENGI405/ENGI405_4_1.html mytekuraschool.sharepoint.com https://mytekuraschool.sharepoint.com/sites/TeAraWhakamua381
+   gold:anchor: BLL120/BLL120_0_0.html kindergartenworksheets.net https://www.kindergartenworksheets.net/handwriting-practice-
+   gold:anchor: BLL120/BLL120_0_0.html kindergartenworksheets.net https://www.kindergartenworksheets.net/handwriting-practice-
+   gold:anchor: BLL120/BLL120_0_0.html kindergartenworksheets.net https://www.kindergartenworksheets.net/handwriting-practice-
+   gold:anchor: BLL140/BLL140_0_0.html kindergartenworksheets.net https://www.kindergartenworksheets.net/handwriting-practice-
+   gold:anchor: BLL160/BLL160_0_0.html kindergartenworksheets.net https://www.kindergartenworksheets.net/handwriting-practice-

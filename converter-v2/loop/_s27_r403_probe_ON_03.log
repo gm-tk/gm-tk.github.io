@@ -1,0 +1,230 @@
+OSSC401: identical 5 / changed 0
+OSSC501: identical 6 / changed 0
+OSSM301: identical 5 / changed 0
+OSSM401: identical 5 / changed 0
+  ~ PES1001_8_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.sciencelearn.org.nz/image_maps/3-carbon-cycle" loading="lazy" frameborder="0" allowfu
+     - </div>
+     + <a href="https://www.sciencelearn.org.nz/image_maps/3-carbon-cycle" target="_blank"><div class="externalButton
+PES1001: identical 9 / changed 1
+PES1002: identical 11 / changed 0
+PES1003: identical 11 / changed 0
+PES1004: identical 11 / changed 0
+  ~ PES1005_9_0.html: -9 +3
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://solarsystem.nasa.gov/resources/2366/earths-moon-3d-model/" loading="lazy" frameborder="0"
+     - <div class="ratio ratio-16x9">
+     - <iframe src="http://www.wdisseny.com/lluna/?lang=en#ex_02" loading="lazy" frameborder="0" allowfullscreen></if
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://ccnmtl.github.io/astro-simulations/lunar-phase-simulator/" loading="lazy" frameborder="0"
+     - </div>
+     - </div>
+     - </div>
+     + <a href="https://solarsystem.nasa.gov/resources/2366/earths-moon-3d-model/" target="_blank"><div class="extern
+     + <a href="http://www.wdisseny.com/lluna/?lang=en#ex_02" target="_blank"><div class="externalButton">Go to websi
+     + <a href="https://ccnmtl.github.io/astro-simulations/lunar-phase-simulator/" target="_blank"><div class="extern
+PES1005: identical 11 / changed 1
+PES1007: identical 12 / changed 0
+PES1008: identical 19 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1004: identical 4 / changed 0
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+PHE1007: identical 10 / changed 0
+PHE1008: identical 6 / changed 0
+PNR101: identical 2 / changed 0
+PNR102: identical 3 / changed 0
+PNR104: identical 3 / changed 0
+SCCH301: identical 9 / changed 0
+SCFUN01: identical 1 / changed 0
+SCPH301: identical 9 / changed 0
+SSCI205: identical 10 / changed 0
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+SSOG101: identical 8 / changed 0
+SSOG103: identical 7 / changed 0
+SSOG301: identical 8 / changed 0
+TEDC401: identical 8 / changed 0
+TEDC402: identical 11 / changed 0
+TEFUN01: identical 1 / changed 0
+  ~ TEFUN02_0_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.twinkl.co.nz/resource/perfect-playground-planning-activity-nz-ty-1663843917" loading=
+     - </div>
+     + <a href="https://www.twinkl.co.nz/resource/perfect-playground-planning-activity-nz-ty-1663843917" target="_bla
+TEFUN02: identical 0 / changed 1
+TEFUN03: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+  ~ TEFUN05_0_0.html: -15 +5
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.csfieldguide.org.nz/en/interactives/delayed-checkbox/" loading="lazy" frameborder="0"
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.csunplugged.org/en/at-a-distance/stroop-effect/#/14" loading="lazy" frameborder="0" a
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.csfieldguide.org.nz/en/interactives/payment-interface/" loading="lazy" frameborder="0
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.csfieldguide.org.nz/en/interactives/no-help/" loading="lazy" frameborder="0" allowful
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.csfieldguide.org.nz/en/interactives/close-window/" loading="lazy" frameborder="0" all
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <a href="https://www.csfieldguide.org.nz/en/interactives/delayed-checkbox/" target="_blank"><div class="extern
+     + <a href="https://www.csunplugged.org/en/at-a-distance/stroop-effect/#/14" target="_blank"><div class="external
+     + <a href="https://www.csfieldguide.org.nz/en/interactives/payment-interface/" target="_blank"><div class="exter
+     + <a href="https://www.csfieldguide.org.nz/en/interactives/no-help/" target="_blank"><div class="externalButton"
+     + <a href="https://www.csfieldguide.org.nz/en/interactives/close-window/" target="_blank"><div class="externalBu
+TEFUN05: identical 0 / changed 1
+TEFUN06: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+  ~ TEFUN08_0_0.html: -21 +7
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://learn.codeavengers.com/programming/0#1.1.1" loading="lazy" frameborder="0" allowfullscree
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://scratch.mit.edu/projects/1083952609/editor/" loading="lazy" frameborder="0" allowfullscre
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://resources.scratch.mit.edu/www/guides/en/ScratchLearningResource_DebuggingStrategies.pdf" 
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://learn.codeavengers.com/digital-media/300#1.1.1" loading="lazy" frameborder="0" allowfulls
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://scratch.mit.edu/projects/1085997294/editor/" loading="lazy" frameborder="0" allowfullscre
+     - </div>
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://scratch.mit.edu/projects/1085997294/editor/" loading="lazy" frameborder="0" allowfullscre
+     - </div>
+     - </div>
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://scratch.mit.edu/projects/584061471/editor/" loading="lazy" frameborder="0" allowfullscree
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <a href="https://learn.codeavengers.com/programming/0#1.1.1" target="_blank"><div class="externalButton">Go to
+     + <a href="https://scratch.mit.edu/projects/1083952609/editor/" target="_blank"><div class="externalButton">Go t
+     + <a href="https://resources.scratch.mit.edu/www/guides/en/ScratchLearningResource_DebuggingStrategies.pdf" targ
+     + <a href="https://learn.codeavengers.com/digital-media/300#1.1.1" target="_blank"><div class="externalButton">G
+     + <a href="https://scratch.mit.edu/projects/1085997294/editor/" target="_blank"><div class="externalButton">Go t
+     + <a href="https://scratch.mit.edu/projects/1085997294/editor/" target="_blank"><div class="externalButton">Go t
+     + <a href="https://scratch.mit.edu/projects/584061471/editor/" target="_blank"><div class="externalButton">Go to
+TEFUN08: identical 0 / changed 1
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+TRR107: identical 3 / changed 0
+TRR108: identical 3 / changed 0
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR203: identical 4 / changed 0
+TRR301: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+TWHA906: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+XDLS501: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+XDLS901: identical 5 / changed 0
+  ~ XDLS902_5_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.msd.govt.nz/documents/about-msd-and-our-work/work-programmes/initiatives/family-and-s
+     - </div>
+     + <a href="https://www.msd.govt.nz/documents/about-msd-and-our-work/work-programmes/initiatives/family-and-sexua
+  ~ XDLS902_6_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.transport.govt.nz/assets/Uploads/Report/Road-to-Zero-strategy_final.pdf" loading="laz
+     - </div>
+     + <a href="https://www.transport.govt.nz/assets/Uploads/Report/Road-to-Zero-strategy_final.pdf" target="_blank">
+XDLS902: identical 6 / changed 2
+  ~ XDLS903_7_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.twinkl.co.nz/resource/acts-of-kindness-bingo-au-t-1632906826" loading="lazy" framebor
+     - </div>
+     + <a href="https://www.twinkl.co.nz/resource/acts-of-kindness-bingo-au-t-1632906826" target="_blank"><div class=
+XDLS903: identical 7 / changed 1
+XDLS904: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS906: identical 8 / changed 0
+  ~ XDLS908_3_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.twinkl.co.nz/resource/esl-food-adjectives-word-cards-with-pictures-t-t-24662" loading
+     - </div>
+     + <a href="https://www.twinkl.co.nz/resource/esl-food-adjectives-word-cards-with-pictures-t-t-24662" target="_bl
+XDLS908: identical 8 / changed 1
+  ~ XDLS909_4_0.html: -6 +2
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://drive.govt.nz/" loading="lazy" frameborder="0" allowfullscreen></iframe>
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.drivingtests.co.nz/" loading="lazy" frameborder="0" allowfullscreen></iframe>
+     - </div>
+     - </div>
+     + <a href="https://drive.govt.nz/" target="_blank"><div class="externalButton">Go to website</div></a>
+     + <a href="https://www.drivingtests.co.nz/" target="_blank"><div class="externalButton">Go to website</div></a>
+XDLS909: identical 4 / changed 1
+XDLS911: identical 2 / changed 0
+XDLS912: identical 6 / changed 0
+XFUN01: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+  ~ XGF9001_2_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://padlet.com/justine_hughes2/our-top-hits-playlists-iadbw9j6vmhefqr" loading="lazy" framebo
+     - </div>
+     + <a href="https://padlet.com/justine_hughes2/our-top-hits-playlists-iadbw9j6vmhefqr" target="_blank"><div class
+XGF9001: identical 6 / changed 1
+XGF9002: identical 10 / changed 0
+XGF9003: identical 6 / changed 0
+  ~ XGF9004_12_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://content.twinkl.co.uk/resource/c0/46/nz-m-1696152194-back-to-school-logic-puzzle_ver_1.pdf
+     - </div>
+     + <a href="https://content.twinkl.co.uk/resource/c0/46/nz-m-1696152194-back-to-school-logic-puzzle_ver_1.pdf?__t
+XGF9004: identical 17 / changed 1
+  ~ XGF9006_6_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://padlet.com/justine_hughes2/genius-hour-projects-bftxy2d5wputj6nj" loading="lazy" framebor
+     - </div>
+     + <a href="https://padlet.com/justine_hughes2/genius-hour-projects-bftxy2d5wputj6nj" target="_blank"><div class=
+XGF9006: identical 7 / changed 1
+XLP01: identical 5 / changed 0
+XLP02: identical 7 / changed 0
+XLP03: identical 6 / changed 0
+XLP04: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+  ~ XLP06_2_0.html: -3 +1
+     - <div class="ratio ratio-16x9">
+     - <iframe src="https://www.twinkl.co.nz/resource/t-s-4403-staying-calm-activity-booklet" loading="lazy" framebor
+     - </div>
+     + <a href="https://www.twinkl.co.nz/resource/t-s-4403-staying-calm-activity-booklet" target="_blank"><div class=
+XLP06: identical 2 / changed 1
+XMES101: identical 9 / changed 0
+XMES102: identical 6 / changed 0
+XMES103: identical 6 / changed 0
+XMES201: identical 6 / changed 0
+XMES203: identical 6 / changed 0
+XTAS101: identical 5 / changed 0
+XTAS102: identical 6 / changed 0
+XTAS103: identical 7 / changed 0
+XWHA01: identical 2 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 534 / changed 14 / missing 0 over 105 modules
+CHANGED: PES1001/PES1001_8_0.html PES1005/PES1005_9_0.html TEFUN02/TEFUN02_0_0.html TEFUN05/TEFUN05_0_0.html TEFUN08/TEFUN08_0_0.html XDLS902/XDLS902_5_0.html XDLS902/XDLS902_6_0.html XDLS903/XDLS903_7_0.html XDLS908/XDLS908_3_0.html XDLS909/XDLS909_4_0.html XGF9001/XGF9001_2_0.html XGF9004/XGF9004_12_0.html XGF9006/XGF9006_6_0.html XLP06/XLP06_2_0.html

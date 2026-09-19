@@ -1,0 +1,49 @@
+synthetic (heading-less single-widget) Claude boxes on paired lesson pages: 387
+    151 pages  120 mods  63  ('gold-own-box', 'gap')
+     90 pages   90 mods  60  ('gold-own-box', 'first')
+     61 pages   46 mods  34  ('gold-no-prev-box', 'gap')
+     31 pages   27 mods  19  ('gold-merged-into-prev', 'gap')
+     29 pages   26 mods  21  ('gold-prev-same-widgets', 'gap')
+     25 pages   25 mods  17  ('no-prev-box', 'first')
+adjacency: {'gap': 272, 'first-box': 115}
+==== per group ====
+   Standard/1-10 Mathematics                  n= 114  gold-own-box 70 (0.61)  gold-merged-into-prev 15 (0.13)  gold-no-prev-box 13 (0.11)  no-prev-box 8 (0.07)
+   Standard/NCEA1                             n=  73  gold-own-box 45 (0.62)  gold-no-prev-box 11 (0.15)  no-prev-box 9 (0.12)  gold-prev-same-widgets 5 (0.07)
+   Standard/1-10 English                      n=  50  gold-own-box 34 (0.68)  gold-no-prev-box 8 (0.16)  no-prev-box 4 (0.08)  gold-prev-same-widgets 3 (0.06)
+   Standard/Leaving to Learn                  n=  48  gold-own-box 28 (0.58)  gold-no-prev-box 14 (0.29)  gold-prev-same-widgets 3 (0.06)  gold-merged-into-prev 2 (0.04)
+   Standard/None                              n=  32  gold-own-box 20 (0.62)  gold-merged-into-prev 5 (0.16)  gold-prev-same-widgets 5 (0.16)  gold-no-prev-box 2 (0.06)
+   Standard/ANZH                              n=  23  gold-own-box 15 (0.65)  gold-no-prev-box 4 (0.17)  gold-merged-into-prev 3 (0.13)  gold-prev-same-widgets 1 (0.04)
+   Inquiry/Leaving to Learn                   n=  10  gold-own-box 3 (0.30)  gold-prev-same-widgets 3 (0.30)  gold-no-prev-box 3 (0.30)  gold-merged-into-prev 1 (0.10)
+   Standard/1-10 Blended Literacy             n=   9  gold-own-box 8 (0.89)  gold-merged-into-prev 1 (0.11)
+   Standard/1-10 Social Science               n=   6  gold-no-prev-box 3 (0.50)  gold-own-box 2 (0.33)  no-prev-box 1 (0.17)
+   Standard/Online Safety (OS9000)            n=   5  gold-own-box 5 (1.00)
+   Bilingual/Te Marautanga o Aotearoa TMoA    n=   5  gold-own-box 5 (1.00)
+   Inquiry/ConnectED                          n=   4  gold-own-box 2 (0.50)  no-prev-box 1 (0.25)  gold-no-prev-box 1 (0.25)
+   Standard/ConnectED                         n=   4  gold-own-box 3 (0.75)  gold-no-prev-box 1 (0.25)
+   Standard/EXPlore                           n=   2  no-prev-box 1 (0.50)  gold-no-prev-box 1 (0.50)
+   Fundamentals/1-10 Mathematics              n=   1  gold-prev-same-widgets 1 (1.00)
+   Standard/1-10 Science                      n=   1  gold-own-box 1 (1.00)
+   ('gold-own-box', 'first'): AGH1001/AGH1001_1_0.html own=#1A prev=# cw=0 gw=-1 first-box
+   ('gold-own-box', 'first'): AGH1004/AGH1004_5_0.html own=#5A prev=# cw=0 gw=-1 first-box
+   ('gold-own-box', 'first'): AGH1005/AGH1005_8_0.html own=#8A prev=# cw=0 gw=-1 first-box
+   ('gold-own-box', 'first'): AGH1007/AGH1007_4_0.html own=#4A prev=# cw=0 gw=-1 first-box
+   ('gold-own-box', 'gap'): AGH1001/AGH1001_1_0.html own=#1B prev=#1A cw=1 gw=1 gap:?
+   ('gold-own-box', 'gap'): AGH1001/AGH1001_2_0.html own=#2A prev=#2A cw=1 gw=1 gap:?
+   ('gold-own-box', 'gap'): AGH1001/AGH1001_4_0.html own=#4B prev=#4A cw=0 gw=0 gap:?
+   ('gold-own-box', 'gap'): AGH1001/AGH1001_4_0.html own=#4C prev=#4B cw=1 gw=1 gap:?
+   ('no-prev-box', 'first'): AGH1004/AGH1004_6_0.html own=#6A prev=# cw=0 gw=-1 first-box
+   ('no-prev-box', 'first'): AGH1006/AGH1006_4_0.html own=#4A prev=# cw=0 gw=-1 first-box
+   ('no-prev-box', 'first'): AGH1006/AGH1006_7_0.html own=#7A prev=# cw=0 gw=-1 first-box
+   ('no-prev-box', 'first'): AGH1007/AGH1007_3_0.html own=#3A prev=# cw=0 gw=-1 first-box
+   ('gold-no-prev-box', 'gap'): AGH1008/AGH1008_3_0.html own=#3E prev=#2C cw=0 gw=-1 gap:?
+   ('gold-no-prev-box', 'gap'): AGH1009/AGH1009_6_0.html own=#6B prev=#6A cw=1 gw=-1 gap:?
+   ('gold-no-prev-box', 'gap'): ANZH203/ANZH203_4_0.html own=#4B prev=#4A cw=0 gw=-1 gap:?
+   ('gold-no-prev-box', 'gap'): ANZH303/ANZH303_3_0.html own=#3C prev=#3B cw=1 gw=-1 gap:?
+   ('gold-merged-into-prev', 'gap'): ANZH301/ANZH301_8_0.html own=#8C prev=#8A cw=0 gw=1 gap:?
+   ('gold-merged-into-prev', 'gap'): ANZH303/ANZH303_3_0.html own=#3B prev=#3A cw=0 gw=2 gap:?
+   ('gold-merged-into-prev', 'gap'): ANZH304/ANZH304_3_0.html own=#3K prev=#3G cw=0 gw=1 gap:?
+   ('gold-merged-into-prev', 'gap'): BLL173/BLL173_1_0.html own=#1F prev=#1E cw=0 gw=1 gap:?
+   ('gold-prev-same-widgets', 'gap'): ANZH401/ANZH401_6_0.html own=#6B prev=#6A cw=1 gw=0 gap:?
+   ('gold-prev-same-widgets', 'gap'): ENGI203/ENGI203_2_0.html own=#2B prev=#2A cw=1 gw=1 gap:?
+   ('gold-prev-same-widgets', 'gap'): ENGR101/ENGR101_2_0.html own=#2D prev=#2C cw=0 gw=0 gap:?
+   ('gold-prev-same-widgets', 'gap'): ENGR302/ENGR302_1_0.html own=#1D prev=#1C cw=1 gw=1 gap:?
