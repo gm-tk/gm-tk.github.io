@@ -1625,6 +1625,34 @@ class InteractiveScanner {
 		const isActOpener = (x, id) => x && x.type === "tag" && x.parse?.primary?.tag === "activity"
 			&& x.parse.primary.directive === "CONTAINER_OPEN"
 			&& (!id || (x.parse.numbers ?? []).some((n) => String(n).toUpperCase() === id));
+		// ROUND 405 (the autonomous loop's session 27, Round 10) — THE JOURNAL SECTION: a free heading whose
+		// section (before the next heading / opener / section marker) carries a go-to-journal [button] is an
+		// activity box in the subjects whose gold boxes it — English 0.88 (15 / 17), Leaving to Learn 0.90
+		// (9 / 10) (outputs/_s27_r6_journalsec.py); NCEA1 0.50 / Mathematics 0.45 are ties, EXPlore's gold
+		// drops the heading. The heading is re-tagged as a bare [Activity] opener (the r400 positional
+		// letter numbers it; the heading's own words are the box title; the button becomes the r239
+		// goJournal h4 inside the box). Data: opener_rule.id_heading_opener.journal_section   Env: JOURNALBOX_OFF
+		const js = cfg.journal_section;
+		const jsOn = js && js.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[js.env || "JOURNALBOX_OFF"])
+			&& (js.subjects ?? []).includes(String(DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")]?.subject ?? ""));
+		const jsTags = new Set((js?.heading_tags ?? ["h2", "h3", "h4"]).map((t) => String(t).toLowerCase()));
+		const jsStop = new Set((js?.stop_tags ?? ["h1", "h2", "h3", "h4", "h5", "heading", "activity heading", "activity", "title bar", "lesson content"]).map((t) => String(t).toLowerCase()));
+		const journalAhead = (from) => {
+			const limit = Math.min(items.length, from + (js?.max_items ?? 30));
+			for (let k = from; k < limit; k++) {
+				const x = items[k];
+				if (!x || x.consumedBy !== undefined) return false;
+				if (x.type === "table") return false;                       // a table-led section is a widget's, not a journal task's
+				if (x.type !== "tag") continue;
+				const q = x.parse?.primary;
+				if (!q) continue;
+				if (q.directive === "PAGE_BOUNDARY" || q.directive === "SECTION_MARKER" || q.directive === "INTERACTIVE"
+					|| q.directive === "CONTAINER_OPEN" || q.directive === "CONTAINER_CLOSE" || jsStop.has(String(q.tag || "").toLowerCase())) return false;
+				if (q.tag === "button" && this.#isGoJournalButton(x)) return true;
+			}
+			return false;
+		};
 		let n = 0;
 		for (let i = 0; i < items.length; i++) {
 			const it = items[i];
@@ -1634,6 +1662,23 @@ class InteractiveScanner {
 			const tail = String(it.blackAfter ?? "").replace(/\s+/g, " ").trim();
 			let m = tail.match(idRe);
 			let viaWord = false;
+			if (!m && jsOn && jsTags.has(String(p.tag || "").toLowerCase()) && tail.length >= minTitle && !it.parse?.instructionFragment) {
+				// the previous non-blank item must not be an activity opener (that heading is the box's own title)
+				let pv = i - 1;
+				while (pv >= 0 && items[pv].type === "black" && !String(items[pv].text ?? "").trim()) pv--;
+				const prevOpener = pv >= 0 && isActOpener(items[pv], null);
+				if (!prevOpener && journalAhead(i + 1)) {
+					const parsedJ = normaliser.Parse("[Activity] ");
+					if (parsedJ && parsedJ.primary?.tag === "activity") {
+						it._idHeading = { level: String(p.tag).toLowerCase(), raw: it.text, tail, journalSection: true };
+						it.text = "[Activity]";
+						it.parse = parsedJ;
+						it.blackAfter = tail.replace(/\*/g, "").trim();
+						n++;
+					}
+					continue;
+				}
+			}
 			if (!m && wordRe) {
 				m = tail.match(wordRe);
 				if (!m && wf.embedded !== false) {

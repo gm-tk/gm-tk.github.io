@@ -1,8 +1,8 @@
 {
   "_meta": {
     "purpose": "Committed PROTECTED-gate baseline (efficiency lever 2). The shared corpus DRIFTS between sessions so the BUILD_CHANGELOG absolutes never line up exactly — without a committed baseline the only rigorous proof of hold-or-improve is a second full A/B regen pass (~8m/round). Diff THIS after a regen instead. Refresh it (and the build/round) every shipped round, AFTER the gates pass.",
-    "build": "260619.75",
-    "round": 404,
+    "build": "260619.76",
+    "round": 405,
     "date": "2026-09-19",
     "_round92_note": "Round 92 (ENGS302-01: side-alert-box-in-table + dragAndDrop activity wrapper / data-table capture / phantom-journal-button fix). Verified on a FULL 0-stale tightened regen vs the round-91 committed baseline (which matched the fast-loop baseline exactly: over 42 / any 181). PRIMARY skeleton IMPROVED (pages>=50% 524->539 +15, >=75% 65->70 +5, mean 47.8->48.2, median 49.3->49.8); compare_structure exact 5893->5902 (+9) / missing 261->252 (-9) / EXTRA 142 HELD; structural-clean 1290->1291 (95.0->95.1%) / leak 254->253 (-1) / leak pages 68->67 (-1); tags 9557/9557; flipCard divergence 0 (37/13/10/14); speechBubble defect 0. body_compare any 181->184 (+3) — the +3 over-capture (ENGC201-06, ENGR101-05, MXDB301-03) is the UNAVOIDABLE cost of capturing the dragAndDrop/activity DATA TABLE into the widget (the user's explicit fix): those tables ARE the widget's data the human BUILDS, but body_compare cannot credit Claude's un-built placeholder, and for these 3 the human keeps the table free. Net-positive per the MEASUREMENT MANDATE (judge a structural change FIRST on the skeleton, which improved +15) + the NET-POSITIVE convention. _round91_note: round 91 (ENGS302 emphasis-bullets/caption/media-url/lesson-name) shipped +1 skeleton / +1 compare exact / +2 missing.",
     "corpus": {
@@ -99,15 +99,16 @@
     "_note_r401": "Round 401: no synthetic activity box around a widget that captured nothing (27 pages / 22 modules; scoped ship #5 since the r396 full). Skeleton 53.979 -> 53.989 (+0.0095pp; 26 movers 22 up / 4 down, named), >=50 1174, >=75 200, >=90 18 EXACT, RAW 37.995 -> 38.000; compare_structure 11798 / 172 / 626 EXACT; every other gate EXACT; every verifier RESULT identical to r400.",
     "_note_r402": "Round 402: the [interactive: video] line is the box's first lead element (12 pages / 3 modules, every change a cv2-note; scoped ship #6 since the r396 full). Skeleton 53.989 / 1174 / 200 / 18 / RAW 38.000 page-for-page = r401 (0 movers); every other gate EXACT; every verifier RESULT identical to r401.",
     "_note_r403": "Round 403: an [embed] of an external web page is the KB's externalButton (66 pages / 53 modules; scoped ship #7 since the r396 full — the next ship is the FULL backstop). Skeleton 53.989 -> 53.998 (+0.0091pp; 20 movers 18 up / 2 down, named), >=50 1174 -> 1175, >=75 200, >=90 18, RAW 38.000 -> 38.006; compare_structure 11798 / 172 / 626 EXACT; every other gate EXACT; every verifier RESULT identical to r402.",
-    "_note_r404": "Round 404: DECLINED, shipped inert (the alert-top side column's class by subject — an empty map); no regeneration; every r403 baseline stands."
+    "_note_r404": "Round 404: DECLINED, shipped inert (the alert-top side column's class by subject — an empty map); no regeneration; every r403 baseline stands.",
+    "_note_r405": "Round 405: the journal section is an activity box (11 pages / 5 modules; the FULL-regeneration backstop — all 416 rebuilt, 0 stale, no residue from r397–r403; scoped counter reset). Skeleton 53.998 -> 54.001 (+0.0032pp; 9 movers 6 up / 2 down, named), >=50 1175, >=75 200, >=90 18, RAW 38.006 -> 38.008; compare_structure exact 11796 (the text-matched pool 13816 -> 13814) / 172 / 626; every other gate EXACT; every verifier RESULT identical to r403."
   },
   "skeleton": {
-    "mean_scaffold_pct": 53.998,
+    "mean_scaffold_pct": 54.001,
     "median_scaffold_pct": 54.3,
     "pages_ge_50": 1175,
     "pages_ge_75": 200,
     "pages_ge_90": 18,
-    "raw_mean_pct": 38.006,
+    "raw_mean_pct": 38.008,
     "pairs": 1956,
     "pairs_skipped": 0,
     "_note_r350": "Round 350: the dragAndDrop build kickoff shape 1 + the 03B button row — SCAFFOLD identical page-for-page to r349 (a build is inside the collapsed widget marker); RAW 35.049 → 35.115. State outputs/_r350_sk_final.json.",
@@ -157,10 +158,11 @@
     "_note_r400": "Round 400: SCAFFOLD 53.8616 -> 53.9791 (+0.118pp; 80 movers, 67 up / 13 down, pp-sum +230.0 — ENGI201_2_0 -11.3, MXFL203_3_0 -6.1, HIS1005_4_0 -5.3, ANZH301_7_0 -4.5, ENGI203_10_0 -2.8, ANZH301_2_0 -2.6, ANZH301_4_0 -2.3, the rest <= 1.4: the r369 letter-shift class), >=50 1170 -> 1174, >=75 197 -> 200, >=90 18; RAW 37.918 -> 37.995; 1956 pairs / 0 skipped.",
     "_note_r401": "Round 401: SCAFFOLD 53.9791 -> 53.9886 (+0.0095pp; 26 movers, 22 up / 4 down, pp-sum +18.4 — XLP05_5_0 -1.0, AGH1004_6_0 -0.9, AGH1006_2_0 -0.7, TEDC401_4_0 -0.6: the gold ships a numbered box with the widget built where Claude's empty box had matched its line), >=50 1174, >=75 200, >=90 18; RAW 37.995 -> 38.000; 1956 pairs / 0 skipped.",
     "_note_r402": "Round 402: 0 movers — the r401 state page-for-page (1956 pairs / 0 skipped).",
-    "_note_r403": "Round 403: SCAFFOLD 53.9886 -> 53.9977 (+0.0091pp; 20 movers, 18 up / 2 down, pp-sum +17.9 — XDLS903_7_0 -8.7 the alignment artefact on a page whose gold ships the site as the externalButton, MXDI202_8_0 -0.7), >=50 1174 -> 1175 (TEFUN08_0_0), >=75 200, >=90 18; RAW 38.000 -> 38.006; 1956 pairs / 0 skipped."
+    "_note_r403": "Round 403: SCAFFOLD 53.9886 -> 53.9977 (+0.0091pp; 20 movers, 18 up / 2 down, pp-sum +17.9 — XDLS903_7_0 -8.7 the alignment artefact on a page whose gold ships the site as the externalButton, MXDI202_8_0 -0.7), >=50 1174 -> 1175 (TEFUN08_0_0), >=75 200, >=90 18; RAW 38.000 -> 38.006; 1956 pairs / 0 skipped.",
+    "_note_r405": "Round 405: SCAFFOLD 53.9977 -> 54.0009 (+0.0032pp; 9 movers, 6 up / 2 down, pp-sum +6.4 — XGF9006_2_0 -0.3, XGF9006_6_0 -0.2), >=50 1175, >=75 200, >=90 18; RAW 38.006 -> 38.008; 1956 pairs / 0 skipped."
   },
   "compare_structure": {
-    "exact_chain": 11798,
+    "exact_chain": 11796,
     "claude_extra_container": 172,
     "claude_missing_container": 626,
     "row_wrap_missing": 23,
@@ -173,7 +175,8 @@
     "_note_r377": "Round 377: exact 11642 -> 11641 (-1 = the matched pool 13716 -> 13709, the relocation class), EXTRA 175 -> 172 (IMPROVED), MISSING 620 / row-wrap 23 EXACT.",
     "_note_r378": "Round 378: exact 11641 -> 11643 (+2), MISSING 620 -> 625 (+5 = the matched pool 13709 -> 13717, the freed prose text-matching gold paragraphs the gold wraps differently), EXTRA 172 / row-wrap 23 EXACT.",
     "_note_r392": "Round 392: exact 11700 -> 11723; EXTRA 172; MISSING 625 -> 626; row-wrap 23.",
-    "_note_r399": "Round 399: exact 11723 -> 11798 (+75 — the cultural box's <p>s text-match the gold's); EXTRA 172 / MISSING 626 EXACT."
+    "_note_r399": "Round 399: exact 11723 -> 11798 (+75 — the cultural box's <p>s text-match the gold's); EXTRA 172 / MISSING 626 EXACT.",
+    "_note_r405": "Round 405: exact 11798 -> 11796 = the text-matched pool 13816 -> 13814 (the r344 relocation class); EXTRA 172 / MISSING 626 EXACT."
   },
   "body_compare": {
     "any_breakdown": 218,

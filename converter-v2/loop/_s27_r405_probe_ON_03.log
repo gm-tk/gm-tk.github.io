@@ -1,0 +1,408 @@
+OSSC401: identical 5 / changed 0
+OSSC501: identical 6 / changed 0
+OSSM301: identical 5 / changed 0
+OSSM401: identical 5 / changed 0
+PES1001: identical 10 / changed 0
+PES1002: identical 11 / changed 0
+PES1003: identical 11 / changed 0
+PES1004: identical 11 / changed 0
+PES1005: identical 12 / changed 0
+PES1007: identical 12 / changed 0
+PES1008: identical 19 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1004: identical 4 / changed 0
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+PHE1007: identical 10 / changed 0
+PHE1008: identical 6 / changed 0
+PNR101: identical 2 / changed 0
+PNR102: identical 3 / changed 0
+PNR104: identical 3 / changed 0
+SCCH301: identical 9 / changed 0
+SCFUN01: identical 1 / changed 0
+SCPH301: identical 9 / changed 0
+SSCI205: identical 10 / changed 0
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+SSOG101: identical 8 / changed 0
+SSOG103: identical 7 / changed 0
+SSOG301: identical 8 / changed 0
+TEDC401: identical 8 / changed 0
+TEDC402: identical 11 / changed 0
+TEFUN01: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+TRR107: identical 3 / changed 0
+TRR108: identical 3 / changed 0
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR203: identical 4 / changed 0
+TRR301: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+TWHA906: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+XDLS501: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+XDLS901: identical 5 / changed 0
+XDLS902: identical 8 / changed 0
+XDLS903: identical 8 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS906: identical 8 / changed 0
+XDLS908: identical 9 / changed 0
+XDLS909: identical 5 / changed 0
+XDLS911: identical 2 / changed 0
+XDLS912: identical 6 / changed 0
+XFUN01: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+  ~ XGF9001_3_0.html: -16 +28
+     - <h4>Reflection questions</h4>
+     - <ol>
+     - <li>Which of these challenges do you relate to the most?</li>
+     - <li>Which solution do you think would work best for you?</li>
+     - <li>Can you think of any other strategies that help you overcome learning challenges?</li>
+     - </ol>
+     - <p>If you would like to work on different learning skills or executive function skills, head over to a module 
+     - <a href="" target="_blank"><div class="button">XGF9003 Executive Function</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <p>What learning challenge or challenges would you like to solve? Go to your journal and solve the challenge.<
+     - <h4 class="goJournal">Go to your journal</h4>
+     - <p><a href="https://www.istockphoto.com/vector/compass-rose-symbol-black-and-white-vector-illustration-of-four
+     - <h4>Your turn!</h4>
+     - <p>Now it’s your turn to design your ideal learning space. You can complete this activity straight into the sp
+     - <h4 class="goJournal">Go to your journal</h4>
+     - <div class="activity interactive" number="3G">
+     + <div class="activity" number="3C">
+     + <h3>Reflection questions</h3>
+     + <p><a href="https://www.istockphoto.com/vector/compass-rose-symbol-black-and-white-vector-illustration-of-four
+     + <ol>
+     + <li>Which of these challenges do you relate to the most?</li>
+     + <li>Which solution do you think would work best for you?</li>
+     + <li>Can you think of any other strategies that help you overcome learning challenges?</li>
+     + </ol>
+     + <p>If you would like to work on different learning skills or executive function skills, head over to a module 
+     + <a href="" target="_blank"><div class="button">XGF9003 Executive Function</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>What learning challenge or challenges would you like to solve? Go to your journal and solve the challenge.<
+     + <div class="activity" number="3G">
+     + <h3>Your turn!</h3>
+     + <p>Now it’s your turn to design your ideal learning space. You can complete this activity straight into the sp
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + … 8 more added
+  ~ XGF9001_4_0.html: -12 +24
+     - <h4>If you answered mostly mostly d you align with the passionate advocate</h4>
+     - <li>Your superpower is <b>determination and leadership.</b></li>
+     - <li>You take action to make a difference and stand up for what you believe in.</li>
+     - <li>You thrive when you have a cause or mission to pursue.</li>
+     - <p>What did you discover about your emotional superpower? Go to your journal and share with your kaiako. The m
+     - <div class="activity interactive" number="4D">
+     - <h4>Your turn</h4>
+     - <p>Sometimes the hardest moments are the ones that help us grow the most. In this activity, you will think abo
+     - <h4 class="goJournal">Go to your journal</h4>
+     - <ul>
+     - </ul>
+     - <h4 class="goJournal">Go to your journal</h4>
+     + <div class="activity" number="4B">
+     + <h3>If you answered mostly mostly d you align with the passionate advocate</h3>
+     + <li>Your superpower is <b>determination and leadership.</b></li>
+     + <li>You take action to make a difference and stand up for what you believe in.</li>
+     + <li>You thrive when you have a cause or mission to pursue.</li>
+     + <p>What did you discover about your emotional superpower? Go to your journal and share with your kaiako. The m
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <div class="activity interactive" number="4E">
+     + <ul>
+     + </ul>
+     + <div class="activity" number="4H">
+     + <h3>Your turn</h3>
+     + <p>Sometimes the hardest moments are the ones that help us grow the most. In this activity, you will think abo
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + … 4 more added
+XGF9001: identical 5 / changed 2
+XGF9002: identical 10 / changed 0
+  ~ XGF9003_0_0.html: -8 +14
+     - <h3><a href="https://www.istockphoto.com/vector/search-loupe-icon-in-flat-style-magnifying-glass-on-transparen
+     - <ul>
+     - <li>What is one thing you have learned already about how your brain helps you every day?</li>
+     - <li>What have you learned about executive function? What questions do you have?</li>
+     - <li>What are your executive function strengths, and which ones do you need to work on?</li>
+     - </ul>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Download journal]</p>
+     - <h4 class="goJournal">Go to your journal</h4>
+     + <div class="activity">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3><a href="https://www.istockphoto.com/vector/search-loupe-icon-in-flat-style-magnifying-glass-on-transparen
+     + <ul>
+     + <li>What is one thing you have learned already about how your brain helps you every day?</li>
+     + <li>What have you learned about executive function? What questions do you have?</li>
+     + <li>What are your executive function strengths, and which ones do you need to work on?</li>
+     + </ul>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Download journal]</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + </div>
+     + </div>
+     + </div>
+  ~ XGF9003_1_3.html: -5 +11
+     - <h4>Picture B</h4>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [CS, I created these on ChatGPT, but 
+     - <p><a href="https://mytekuraschool-my.sharepoint.com/:i:/g/personal/justine_hughes_tekura_school_nz/EdLaaOyqhm
+     - <p>You have tried two different ways of strengthening your working memory. Head to your journal to complete a 
+     - <h4 class="goJournal">Go to your journal</h4>
+     + <div class="activity" number="1O">
+     + <h3>Picture B</h3>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [CS, I created these on ChatGPT, but 
+     + <p><a href="https://mytekuraschool-my.sharepoint.com/:i:/g/personal/justine_hughes_tekura_school_nz/EdLaaOyqhm
+     + <p>You have tried two different ways of strengthening your working memory. Head to your journal to complete a 
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + </div>
+     + </div>
+XGF9003: identical 4 / changed 2
+  ~ XGF9004_9_0.html: -9 +15
+     - <h4>Steps</h4>
+     - <ol>
+     - <li>Write the basic rules of your game.</li>
+     - <li>Ask: <i>Do the rules give everyone a fair chance to play?</i></li>
+     - <li>Change or add one rule that makes the game fairer.</li>
+     - <li>Share your game in your learning journal.</li>
+     - </ol>
+     - <p>If you completed this optional activity, head to your learning journal to share what you created with your 
+     - <h4 class="goJournal">Go to your journal</h4>
+     + <div class="activity" number="9N">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Steps</h3>
+     + <ol>
+     + <li>Write the basic rules of your game.</li>
+     + <li>Ask: <i>Do the rules give everyone a fair chance to play?</i></li>
+     + <li>Change or add one rule that makes the game fairer.</li>
+     + <li>Share your game in your learning journal.</li>
+     + </ol>
+     + <p>If you completed this optional activity, head to your learning journal to share what you created with your 
+     + <h4 class="goJournal">Go to your journal</h4>
+     + </div>
+     + </div>
+     + </div>
+  ~ XGF9004_10_0.html: -11 +17
+     - <h4>Jump offline!</h4>
+     - <p>Your task:</p>
+     - <ul>
+     - <li>Find something around your home – either inside or outside.</li>
+     - <li>Give someone else 5–10 clues.</li>
+     - <li>See how long it takes them to discover the truth about your object.</li>
+     - <li>Add your clues and reflection to your learning journal.</li>
+     - <li>You could also add a challenge for your kaiako and see how long it takes them to discover the truth about 
+     - </ul>
+     - <h4 class="goJournal">Go to your journal</h4>
+     - <div class="activity interactive" number="10E">
+     + <div class="activity" number="10C">
+     + <h3>Jump offline!</h3>
+     + <p>Your task:</p>
+     + <li>Find something around your home – either inside or outside.</li>
+     + <li>Give someone else 5–10 clues.</li>
+     + <li>See how long it takes them to discover the truth about your object.</li>
+     + <li>Add your clues and reflection to your learning journal.</li>
+     + <li>You could also add a challenge for your kaiako and see how long it takes them to discover the truth about 
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <ul>
+     + </ul>
+     + <div class="col-12">
+     + <div class="activity interactive" number="10F">
+     + <div class="row">
+     + </div>
+     + </div>
+     + </div>
+XGF9004: identical 16 / changed 2
+  ~ XGF9006_2_0.html: -13 +19
+     - <h3>Questions:</h3>
+     - <li>What makes the girl’s idea “magnificent” to her, even before she builds it?</li>
+     - <li>How does the girl feel when her project doesn’t turn out the way she planned? What does she do next?</li>
+     - <li>What message do you think the story gives about creativity and not giving up?</li>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/Oa_HVVvHUr8" loading="lazy" title="YouTube video player" frameborde
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/Sj6MAmeDh7k" loading="lazy" title="YouTube video player" frameborde
+     - <p>Head to your journal to explore these ideas and how they connect to genius hour for you in a little more de
+     - </div>
+     - <h4 class="goJournal">Go to your journal</h4>
+     - <ol>
+     - </ol>
+     + <div class="activity" number="2B">
+     + <h3>Questions:</h3>
+     + <ol>
+     + <li>What makes the girl’s idea “magnificent” to her, even before she builds it?</li>
+     + <li>How does the girl feel when her project doesn’t turn out the way she planned? What does she do next?</li>
+     + <li>What message do you think the story gives about creativity and not giving up?</li>
+     + </ol>
+     + <iframe src="https://www.youtube.com/embed/Oa_HVVvHUr8" loading="lazy" title="YouTube video player" frameborde
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/Sj6MAmeDh7k" loading="lazy" title="YouTube video player" frameborde
+     + <p>Head to your journal to explore these ideas and how they connect to genius hour for you in a little more de
+     + <h4 class="goJournal">Go to your journal</h4>
+     + </div>
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="videoSection ratio ratio-16x9">
+     + </div>
+     + </div>
+     + </div>
+  ~ XGF9006_4_0.html: -20 +26
+     - <h3>Choices</h3>
+     - <p>Plastic waste.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Good search keywords.]</p>
+     - <p>What is the ocean made of?</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Not so helpful.]</p>
+     - <p>Clean-up technology.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Good search keywords.]</p>
+     - <p>Pollution.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Good search keywords.]</p>
+     - <p>Sea creatures that are blue.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Not so helpful.]</p>
+     - <p>Recycling.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Good search keywords.]</p>
+     - <p>Marine ecosystems.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Good search keywords.]</p>
+     - <p>Trash is bad.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Not so helpful.]</p>
+     - <div class="button">Check your answers</div>
+     - <p>You have been thinking about your genius hour topic and will now have some keywords to help you find useful
+     - <h4 class="goJournal">Go to your journal</h4>
+     + <div class="activity" number="4D">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Choices</h3>
+     + <p>Plastic waste.</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Good search keywords.]</p>
+     + <p>What is the ocean made of?</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Not so helpful.]</p>
+     + <p>Clean-up technology.</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Good search keywords.]</p>
+     + <p>Pollution.</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Good search keywords.]</p>
+     + <p>Sea creatures that are blue.</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Not so helpful.]</p>
+     + <p>Recycling.</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Good search keywords.]</p>
+     + <p>Marine ecosystems.</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Good search keywords.]</p>
+     + <p>Trash is bad.</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Not so helpful.]</p>
+     + … 6 more added
+  ~ XGF9006_6_0.html: -24 +30
+     - <h4>Instructions (these will also be on the Padlet for you):</h4>
+     - <ol>
+     - <li>Post your project, a photo, or video to the group Padlet by clicking on the button below.</li>
+     - <li>Visit other people’s posts and projects.</li>
+     - <li>Leave a kind, helpful comment. You could use the sentence starters below if you need some ideas:</li>
+     - </ol>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1439973042" alt="Red Heart
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1439973042.jpg" alt="Red Heart Flat Icon the Sym
+     - <p>“One thing I liked was ...”</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-807963510" alt="Green Plan
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-807963510.jpg" alt="Green Plant Illustration" />
+     - <p>“Something I learned from your project was. ...”</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-650132862" alt="Yellow Que
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-650132862.jpg" alt="Yellow Question Mark" /> -->
+     - <p>“A question I still have is ...”</p>
+     - <ol>
+     - <li>Reply to one or more of the comments you received. Try saying:</li>
+     - <li>“Thanks! That made me feel ...”</li>
+     - <li>“Thanks! That gave me an idea to ...”</li>
+     - </ol>
+     - <a href="https://padlet.com/justine_hughes2/genius-hour-projects-bftxy2d5wputj6nj" target="_blank"><div class=
+     - <a href="https://padlet.com/justine_hughes2/genius-hour-projects-bftxy2d5wputj6nj" target="_blank"><div class=
+     - <p>Have you completed the activities in the Padlet? Go to your journal to tick this off your list.</p>
+     - <h4 class="goJournal">Go to your journal</h4>
+     + <div class="activity" number="6F">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Instructions (these will also be on the Padlet for you):</h3>
+     + <ol>
+     + <li>Post your project, a photo, or video to the group Padlet by clicking on the button below.</li>
+     + <li>Visit other people’s posts and projects.</li>
+     + <li>Leave a kind, helpful comment. You could use the sentence starters below if you need some ideas:</li>
+     + </ol>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1439973042" alt="Red Heart
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1439973042.jpg" alt="Red Heart Flat Icon the Sym
+     + <p>“One thing I liked was ...”</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-807963510" alt="Green Plan
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-807963510.jpg" alt="Green Plant Illustration" />
+     + <p>“Something I learned from your project was. ...”</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-650132862" alt="Yellow Que
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-650132862.jpg" alt="Yellow Question Mark" /> -->
+     + <p>“A question I still have is ...”</p>
+     + <ol>
+     + <li>Reply to one or more of the comments you received. Try saying:</li>
+     + … 10 more added
+  ~ XGF9006_7_0.html: -6 +6
+     - <h3>My genius hour growth timeline</h3>
+     - <p>Remember your timeline that was introduced in Lesson 1? Throughout your genius hour journey, you&#39;ve bee
+     - <p>This final timeline activity helps you reflect on the mahi (work) you’ve done, think about the order of you
+     - <p>It’s time to complete your timeline, answer a few questions using numbers and fractions, and celebrate how 
+     - <p>Let’s take one last look at your learning adventure from beginning to end. Ka mau te wehi –you’ve done some
+     - <h4 class="goJournal">Go to your journal</h4>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: My genius hour growth timeline</p>
+     + <p>Remember your timeline that was introduced in Lesson 1? Throughout your genius hour journey, you&#39;ve bee
+     + <p>This final timeline activity helps you reflect on the mahi (work) you’ve done, think about the order of you
+     + <p>It’s time to complete your timeline, answer a few questions using numbers and fractions, and celebrate how 
+     + <p>Let’s take one last look at your learning adventure from beginning to end. Ka mau te wehi –you’ve done some
+     + <h4 class="goJournal">Go to your journal</h4>
+XGF9006: identical 4 / changed 4
+XLP01: identical 5 / changed 0
+XLP02: identical 7 / changed 0
+XLP03: identical 6 / changed 0
+XLP04: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+XLP06: identical 3 / changed 0
+XMES101: identical 9 / changed 0
+XMES102: identical 6 / changed 0
+XMES103: identical 6 / changed 0
+XMES201: identical 6 / changed 0
+XMES203: identical 6 / changed 0
+XTAS101: identical 5 / changed 0
+XTAS102: identical 6 / changed 0
+XTAS103: identical 7 / changed 0
+XWHA01: identical 2 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 538 / changed 10 / missing 0 over 105 modules
+CHANGED: XGF9001/XGF9001_3_0.html XGF9001/XGF9001_4_0.html XGF9003/XGF9003_0_0.html XGF9003/XGF9003_1_3.html XGF9004/XGF9004_9_0.html XGF9004/XGF9004_10_0.html XGF9006/XGF9006_2_0.html XGF9006/XGF9006_4_0.html XGF9006/XGF9006_6_0.html XGF9006/XGF9006_7_0.html

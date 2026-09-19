@@ -1,0 +1,25 @@
+r405 (260619.76): the journal section is an activity box — opener_rule.id_heading_opener.journal_section (JOURNALBOX_OFF); THE FULL-regeneration backstop
+
+A writer's free [H3] Title + prose + [button] Go to journal (no [Activity] opener) shipped free on Claude's page; the
+gold's developer boxes the task as a numbered activity (h3 title + prose + the goJournal h4) in English 15/17 = 0.88
+and Leaving to Learn 9/10 = 0.90 (outputs/_s27_r6_journalsec.py — every free heading section on the paired pages
+holding a journal / activity-id button); NCEA1 0.50 and Mathematics 0.45 are ties, EXPlore's gold drops the heading.
+InteractiveScanner.#idHeadingOpeners (the r364 / r377 re-tagger) now re-tags such a free h2–h4 heading as a bare
+[Activity] opener in a listed subject when its section (before the next heading / opener / section marker / table /
+widget invocation) carries a [button] #isGoJournalButton recognises: the heading's words are the box title, the r400
+positional letter numbers it, r239 puts the goJournal h4 inside; a heading directly after a writer's [Activity]
+opener is never re-tagged.
+
+Session 27 Round 10 (the autonomous loop). Probe OFF = disk 2109/2109, ON = 11 pages / 5 modules (ENGC301, XGF9001 /
+9003 / 9004 / 9006); scored on the ON pages 6 up / 3 down (+6.3) before regenerating. THE FULL REGENERATION of all
+416 (the ledger's backstop after the seven scoped ships r397–r403): 36 batches / 4 workers all rc 0, 0 stale, the
+content-manifest diff = the round's 11 pages exactly — no residue; probe ON == disk 47/47; ledger FULL, counter 0.
+
+Gates: skeleton 53.998 -> 54.001 % (+0.0032pp; 9 movers 6 up / 2 down, 0 outside the affected set — XGF9006_2_0
+-0.3, XGF9006_6_0 -0.2), >=50 1175 / >=75 200 / >=90 18 EXACT, RAW 38.006 -> 38.008 %; compare_structure exact 11798
+-> 11796 = the text-matched pool 13816 -> 13814 (the r344 relocation class), EXTRA 172 / MISSING 626 EXACT;
+body_compare 42 / 4 / 173 / 218, clean 2079 / 2102, leak 26 / 23 — EXACT; every verifier RESULT identical to r403;
+15 selftests + the feature-index selftest GREEN. Miner re-mined: 169 CANDIDATE (nothing gone, nothing new).
+Plateau window 2 of 3.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

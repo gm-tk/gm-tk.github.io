@@ -1,0 +1,7 @@
+scaffold 53.9977 -> 54.0009 (+0.0032pp); RAW 38.006 -> 38.008; pairs 1956 -> 1956, skipped 0 -> 0
+movers 9: up 6 / down 2; pp-sum +6.4; outside affected 0
+worst: [(-0.3, 'XGF9006_2_0.html'), (-0.2, 'XGF9006_6_0.html'), (-0.0, 'XGF9001_3_0.html'), (0.1, 'XGF9006_7_0.html'), (0.6, 'XGF9003_0_0.html'), (0.8, 'XGF9001_4_0.html')]
+best: [(0.1, 'XGF9006_7_0.html'), (0.6, 'XGF9003_0_0.html'), (0.8, 'XGF9001_4_0.html'), (0.8, 'XGF9003_1_3.html'), (2.3, 'ENGC301_6_0.html'), (2.3, 'XGF9006_4_0.html')]
+>= 50: 1175 -> 1175 up: [] down: []
+>= 75: 200 -> 200 up: [] down: []
+>= 90: 18 -> 18 up: [] down: []
