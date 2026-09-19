@@ -1,0 +1,1577 @@
+EXPFUN05: identical 1 / changed 0
+EXPFUN06: identical 1 / changed 0
+EXPFUN07: identical 1 / changed 0
+HES1003: identical 9 / changed 0
+HES1004: identical 5 / changed 0
+HES1005: identical 9 / changed 0
+HES1006: identical 8 / changed 0
+HES1007: identical 10 / changed 0
+HIS1001: identical 8 / changed 0
+  ~ HIS1002_19_0.html: -15 +11
+     - <h3>Causation</h3>
+     - <p>Using the knowledge you have gained from this module, apply the concept of causation to one of these contex
+     - <ul>
+     - <li>te Vaka ki Moruroa</li>
+     - <li>the Flotilla from Aotearoa</li>
+     - <li>the bombing of the <i>Rainbow Warrior</i></li>
+     - </ul>
+     - <p>Write a paragraph to explain how causation is a useful concept to shed light on your historical context. Re
+     - <p>Record your answer in your Learning Journal.</p>
+     - <h4 class="goJournal">Go to your journal</h4>
+     - <p>Your kaiako will give you feedback on your work to support your learning.</p>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <h3>Causation</h3>
+     + <p>Using the knowledge you have gained from this module, apply the concept of causation to one of these contex
+     + <ul>
+     + <li>te Vaka ki Moruroa</li>
+     + <li>the Flotilla from Aotearoa</li>
+     + <li>the bombing of the <i>Rainbow Warrior</i></li>
+     + </ul>
+     + <p>Write a paragraph to explain how causation is a useful concept to shed light on your historical context. Re
+     + <p>Record your answer in your Learning Journal.</p>
+     + <p>Go to journal.</p>
+     + <p>Your kaiako will give you feedback on your work to support your learning.</p>
+HIS1002: identical 20 / changed 1
+HIS1003: identical 11 / changed 0
+HIS1004: identical 11 / changed 0
+HIS1005: identical 15 / changed 0
+  ~ HIS1006_6_0.html: -108 +118
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>How Many Bubbles in This Soap?</h3>
+     - <p>In his powerful letter ‘The Right to Vote’ Martin Luther king identified four roadblocks to Black voter reg
+     - <ol>
+     - <li>The white racist control of local government which frightens people into not registering.</li>
+     - <li>The abuse of local and state laws to stop Black people from voting.</li>
+     - <li>The use of complex registration procedures to prevent or delay registration.</li>
+     - <li>Literacy tests that were difficult and applied only to Black citizens.</li>
+     - </ol>
+     - <p>Below is a list of registration procedures that were applied in Selma. Beside them are dots numbered 1–4, t
+     - <p>Read each procedure from Selma and match it to ONE of King’s roadblocks by clicking on a dot.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [please create something interactive 
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>Tests designed to frustrate and humiliate such as asking, “How many jellybeans are in the jar.”</td>
+     - <td>• O 2. O 3. O 4. O</td>
+     - </tr>
+     - <tr>
+     - <td>Only opening the registration office two days of every month, making it hard for those who worked.</td>
+     - <td>• O 2. O 3. O 4. O</td>
+     - </tr>
+     - <tr>
+     - <td>Closing the office for lunch the minute a Black citizen came to register at the counter.</td>
+     - <td>• O 2. O 3. O 4. O</td>
+     - </tr>
+     - <tr>
+     - <td>Requiring African Americans to complete a questionnaire that white citizens did not have to.</td>
+     - <td>• O 2. O 3. O 4. O</td>
+     - </tr>
+     - <tr>
+     - <td>Requiring Black citizens to produce a birth certificate which many did not have.</td>
+     - <td>• O 2. O 3. O 4. O</td>
+     - </tr>
+     - <tr>
+     - <td>Requiring a guarantor of good character by a person of ‘good standing’ in the community.</td>
+     - <td>• O 2. O 3. O 4. O</td>
+     - </tr>
+     - </table>
+     - <div class="activity" number="6C">
+     - … 68 more removed
+     + <h3>How Many Bubbles in This Soap?</h3>
+     + <p>In his powerful letter ‘The Right to Vote’ Martin Luther king identified four roadblocks to Black voter reg
+     + <ol>
+     + <li>The white racist control of local government which frightens people into not registering.</li>
+     + <li>The abuse of local and state laws to stop Black people from voting.</li>
+     + <li>The use of complex registration procedures to prevent or delay registration.</li>
+     + <li>Literacy tests that were difficult and applied only to Black citizens.</li>
+     + </ol>
+     + <p>Below is a list of registration procedures that were applied in Selma. Beside them are dots numbered 1–4, t
+     + <p>Read each procedure from Selma and match it to ONE of King’s roadblocks by clicking on a dot.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="HIS1006-09-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: unclassified — Activity 5B — see HIS
+     + <th>Tests designed to frustrate and humiliate such as asking, “How many jellybeans are in the jar.”</th>
+     + <th>• O 2. O 3. O 4. O</th>
+     + <td>Only opening the registration office two days of every month, making it hard for those who worked.</td>
+     + <td>• O 2. O 3. O 4. O</td>
+     + <td>Closing the office for lunch the minute a Black citizen came to register at the counter.</td>
+     + <td>• O 2. O 3. O 4. O</td>
+     + … 98 more added
+HIS1006: identical 14 / changed 1
+HIS1007: identical 7 / changed 0
+  ~ HIS1008_6_0.html: -108 +118
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>How many bubbles in this soap?</h3>
+     - <p>In his powerful letter <i>The Right to Vote</i> Martin Luther King identified four roadblocks to black vote
+     - <ol>
+     - <li>The white racist control of local government which frightens people into not registering.</li>
+     - <li>The abuse of local and state laws to stop black people from voting.</li>
+     - <li>The use of complex registration procedures to prevent or delay registration.</li>
+     - <li>Literacy tests that were difficult and applied only to black citizens.</li>
+     - </ol>
+     - <p>Below is a list of registration procedures that were applied in Selma. Beside them are dots numbered 1–4, t
+     - <p>Read each procedure from Selma and match it to ONE of King’s roadblocks by clicking on a dot.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [please create something interactive 
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>Tests designed to frustrate and humiliate such as asking, “How many jellybeans are in the jar.”</td>
+     - <td>• O 2. O 3. O 4. O </td>
+     - </tr>
+     - <tr>
+     - <td>Only opening the registration office two days of every month, making it hard for those who worked.</td>
+     - <td>• O 2. O 3. O 4. O </td>
+     - </tr>
+     - <tr>
+     - <td>Closing the office for lunch the minute a black citizen came to register at the counter.</td>
+     - <td>• O 2. O 3. O 4. O </td>
+     - </tr>
+     - <tr>
+     - <td>Requiring African Americans to complete a questionnaire that white citizens did not have to.</td>
+     - <td>• O 2. O 3. O 4. O </td>
+     - </tr>
+     - <tr>
+     - <td>Requiring black citizens to produce a birth certificate which many did not have.</td>
+     - <td>• O 2. O 3. O 4. O </td>
+     - </tr>
+     - <tr>
+     - <td>Requiring a guarantor of good character by a person of ‘good standing’ in the community.</td>
+     - <td>• O 2. O 3. O 4. O </td>
+     - </tr>
+     - </table>
+     - <div class="activity" number="6C">
+     - … 68 more removed
+     + <h3>How many bubbles in this soap?</h3>
+     + <p>In his powerful letter <i>The Right to Vote</i> Martin Luther King identified four roadblocks to black vote
+     + <li>The white racist control of local government which frightens people into not registering.</li>
+     + <li>The abuse of local and state laws to stop black people from voting.</li>
+     + <li>The use of complex registration procedures to prevent or delay registration.</li>
+     + <li>Literacy tests that were difficult and applied only to black citizens.</li>
+     + <p>Below is a list of registration procedures that were applied in Selma. Beside them are dots numbered 1–4, t
+     + <p>Read each procedure from Selma and match it to ONE of King’s roadblocks by clicking on a dot.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="HIS1008-09-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: unclassified — Activity 5B — see HIS
+     + <th>Tests designed to frustrate and humiliate such as asking, “How many jellybeans are in the jar.”</th>
+     + <th>• O 2. O 3. O 4. O </th>
+     + <td>Only opening the registration office two days of every month, making it hard for those who worked.</td>
+     + <td>• O 2. O 3. O 4. O </td>
+     + <td>Closing the office for lunch the minute a black citizen came to register at the counter.</td>
+     + <td>• O 2. O 3. O 4. O </td>
+     + <td>Requiring African Americans to complete a questionnaire that white citizens did not have to.</td>
+     + <td>• O 2. O 3. O 4. O </td>
+     + … 98 more added
+HIS1008: identical 11 / changed 1
+HPFUN101: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+  ~ HPFUN103_0_0.html: -45 +54
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Feelings faces</h3>
+     - <p>Look at the pictures of the faces and ask yourself “what is this person feeling?” This is a drag and drop a
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2151699367" alt="Littl
+     - <th>Happy</th>
+     - </tr>
+     - <tr>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1340606089" alt="Upset
+     - <td>Angry</td>
+     - </tr>
+     - <tr>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1004418436" alt="Sad G
+     - <td>Sad</td>
+     - </tr>
+     - <tr>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1403823610" alt="Littl
+     - <td>Tired</td>
+     - </tr>
+     - <tr>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1175798458" alt="Cute 
+     - <td>Surprised</td>
+     - </tr>
+     - <tr>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1223199848" alt="Illus
+     - <td>Excited</td>
+     - </tr>
+     - <tr>
+     - <td>[Dev please cut the squiggly grey line from above the characters head]</td>
+     - <td>Confused</td>
+     - </tr>
+     - </table>
+     - <p>Now it’s your turn to make some faces! Pull some faces and say “I feel _______________ when _______________
+     - <p>For example, pull a happy face and say “I feel happy when I am jumping on the trampoline”.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="HPFUN103-00-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - … 5 more removed
+     + <h3>Feelings faces</h3>
+     + <p>Look at the pictures of the faces and ask yourself “what is this person feeling?” This is a drag and drop a
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="HPFUN103-00-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: unclassified — Activity 3A — see HPF
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [Insert media item 24] <a href="https://www.istockphoto.com/vector/little-kid-with-friend-smile-and-wavin
+     + <th>Happy</th>
+     + </tr>
+     + <tr>
+     + <td> [Insert media item 25] <a href="https://www.istockphoto.com/vector/upset-little-girl-frowning-vector-cart
+     + <td>Angry</td>
+     + </tr>
+     + <tr>
+     + <td> [Insert media item 26] <a href="https://www.istockphoto.com/vector/sad-girl-sitting-alone-gm1004418436-27
+     + <td>Sad</td>
+     + </tr>
+     + … 34 more added
+HPFUN103: identical 0 / changed 1
+HPFUN201: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+HPFUN302: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+  ~ HPFUN403_0_0.html: -53 +51
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Possible issues in a relationship</h3>
+     - <p>Find the statement that best matches an issue that could arise in a relationship.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Dev correct answer on RHS of table. 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="HPFUN403-00-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: dropDown — Activity (inline) — see H
+     - <th>Relationship Issues: [Drop down options] </th>
+     - <th></th>
+     - <td>Miscommunication</td>
+     - <td>You misheard what someone said and got upset.</td>
+     - <td>Jealousy</td>
+     - <td>You think your friend is spending more time with someone else and you feel upset.</td>
+     - <td>Disagreements</td>
+     - <td>You and a friend argue about what game to play.</td>
+     - <td>Peer pressure</td>
+     - <td>You feel pressured to join in on a prank.</td>
+     - <td>Exclusion</td>
+     - <td>You feel left out when your friends make plans without you.</td>
+     - <tr>
+     - <td>Broken trust</td>
+     - <td>Someone shares your secret without asking.</td>
+     - </tr>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="HPFUN403-00-03" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: unclassified — Activity (inline) — s
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - … 13 more removed
+     + <h3>Possible issues in a relationship</h3>
+     + <p>Find the statement that best matches an issue that could arise in a relationship.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="HPFUN403-00-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: unclassified — Activity 1A — see HPF
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>Relationship Issues: [Drop down options] </th>
+     + <th></th>
+     + </tr>
+     + <tr>
+     + <td>Miscommunication</td>
+     + <td>You misheard what someone said and got upset.</td>
+     + </tr>
+     + … 31 more added
+HPFUN403: identical 0 / changed 1
+HPFUN901: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+  ~ HPRE203_2_0.html: -21 +6
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Considering consent</h3>
+     - <p>In the following slideshow Alex, Sura and Leila share some experiences. Read about their experience and the
+     - <div class="activity interactive" number="2C">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="HPRE203-02-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: dragAndDrop — Activity (inline) — s
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <h3>Considering consent</h3>
+     + <p>In the following slideshow Alex, Sura and Leila share some experiences. Read about their experience and the
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="HPRE203-02-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: unclassified — Activity 2B — see HP
+  ~ HPRE203_3_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="HPRE203-03-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: multiChoiceQuiz — Activity (inline)
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="HPRE203-03-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="18" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: unclassified — Activity 3C — see HP
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="HPRE203-03-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: multiChoiceQuiz — Activity (inline)
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="HPRE203-03-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: unclassified — Activity 3C — see HP
+  ~ HPRE203_4_0.html: -10 +10
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="HPRE203-04-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="22" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #22: slider — Activity 4A — see HPRE203_
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="HPRE203-04-02" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: dragAndDrop — Activity 4B — see HPR
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="HPRE203-04-03" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: wordFind — Activity 4C — see HPRE20
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="HPRE203-04-04" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="26" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #26: carousel — Activity 4D — see HPRE20
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="HPRE203-04-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="21" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: slider — Activity 4A — see HPRE203_
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="HPRE203-04-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: dragAndDrop — Activity 4B — see HPR
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="HPRE203-04-03" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: wordFind — Activity 4C — see HPRE20
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="HPRE203-04-04" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: carousel — Activity 4D — see HPRE20
+  ~ HPRE203_5_0.html: -9 +9
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="31" data-cv2-ref="HPRE203-05-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="31" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #31: radioQuiz (no , reveal image when i
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="33" data-cv2-ref="HPRE203-05-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="33" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #33: unclassified — Activity 5B — see HP
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="37" data-cv2-ref="HPRE203-05-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="37" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #37: multiChoiceQuiz — Activity (inline)
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="30" data-cv2-ref="HPRE203-05-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="30" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #30: radioQuiz (no , reveal image when i
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="32" data-cv2-ref="HPRE203-05-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="32" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #32: unclassified — Activity 5B — see HP
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="36" data-cv2-ref="HPRE203-05-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="36" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #36: multiChoiceQuiz — Activity (inline)
+  ~ HPRE203_6_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="42" data-cv2-ref="HPRE203-06-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="42" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #42: dragAndDrop — Activity 6A — see HPR
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="43" data-cv2-ref="HPRE203-06-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="43" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #43: multiChoiceQuiz — Activity (inline)
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="41" data-cv2-ref="HPRE203-06-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="41" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #41: dragAndDrop — Activity 6A — see HPR
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="42" data-cv2-ref="HPRE203-06-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="42" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #42: multiChoiceQuiz — Activity (inline)
+  ~ HPRE203_7_0.html: -5 +5
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="48" data-cv2-ref="HPRE203-07-01" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #48: crossword — Activity 7A — see HPRE2
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="49" data-cv2-ref="HPRE203-07-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="49" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #49: dropDown — Activity 7B — see HPRE20
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="47" data-cv2-ref="HPRE203-07-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="47" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #47: crossword — Activity 7A — see HPRE2
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="48" data-cv2-ref="HPRE203-07-02" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #48: dropDown — Activity 7B — see HPRE20
+HPRE203: identical 2 / changed 6
+MXDB102: identical 12 / changed 0
+MXDB201: identical 7 / changed 0
+MXDB202: identical 6 / changed 0
+MXDB301: identical 8 / changed 0
+MXDB302: identical 10 / changed 0
+MXDI101: identical 11 / changed 0
+MXDI102: identical 5 / changed 0
+MXDI103: identical 10 / changed 0
+MXDI201: identical 11 / changed 0
+MXDI202: identical 12 / changed 0
+MXDI301: identical 5 / changed 0
+MXEO102: identical 5 / changed 0
+MXEO201: identical 10 / changed 0
+MXEO202: identical 9 / changed 0
+MXEO301: identical 11 / changed 0
+  ~ MXEO401_1_0.html: -22 +31
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Body measurements</h3>
+     - <p>Now it is time for you to have a go at taking your own body measurements and choosing your clothing size fr
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>6</td>
+     - <td><b>1 Height:</b> / <b>2 Chest circumference:</b> / <b>3 Waist circumference:</b> / <b>4 Hip circumference:
+     - </tr>
+     - </table>
+     - <a href="https://docs.google.com/document/d/1Bl5HP5yctQ0AHJ4qxMzdHUyYiVS00dqpxJLISVTVBxk/edit?usp=sharing" tar
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="MXEO401-01-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="MXEO401-01-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <h3>Body measurements</h3>
+     + <p>Now it is time for you to have a go at taking your own body measurements and choosing your clothing size fr
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="MXEO401-01-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: unclassified — Activity 1B — see MXE
+     + <th>6</th>
+     + <th><b>1 Height:</b> / <b>2 Chest circumference:</b> / <b>3 Waist circumference:</b> / <b>4 Hip circumference:
+     + <p>Download journal</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="MXEO401-01-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + </tr>
+     + </table>
+     + </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="MXEO401-01-04" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + … 11 more added
+  ~ MXEO401_2_0.html: -35 +43
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Precision of the eye</h3>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: please scramble these</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>The height of a standard internal doorway</th>
+     - <th> 2 metres </th>
+     - </tr>
+     - <tr>
+     - <td>The length of a fork</td>
+     - <td> 20 centimetres </td>
+     - </tr>
+     - <tr>
+     - <td>The width of a standard refrigerator</td>
+     - <td> 80 centimetres </td>
+     - </tr>
+     - <tr>
+     - <td>The length of an average 3-seater couch</td>
+     - <td> 2.5 metres </td>
+     - </tr>
+     - <tr>
+     - <td>The width of an average cellphone</td>
+     - <td> 7 centimetres </td>
+     - </tr>
+     - <tr>
+     - <td>The width of a Queen size bed</td>
+     - <td> 1.5 metres </td>
+     - </tr>
+     - </table>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <h3>Precision of the eye</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="MXEO401-02-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: unclassified — Activity 2D — see MXE
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>The height of a standard internal doorway</th>
+     + <th> 2 metres </th>
+     + </tr>
+     + <tr>
+     + <td>The length of a fork</td>
+     + <td> 20 centimetres </td>
+     + </tr>
+     + <tr>
+     + … 23 more added
+  ~ MXEO401_3_0.html: -30 +38
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Is it dependent or independent?</h3>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [self.check]</p>
+     - <p>Write in the box if you think Variable A is dependent or independent or neither for the bivariate investiga
+     - <td><b>Variable A vs Variable B:</b></td>
+     - <td><b>Variable A is ...</b> (Dependent or independent or neither)</td>
+     - <td>The time it takes a student to get to school vs their bag weight.</td>
+     - <td> Dependent (explanatory) </td>
+     - <tr>
+     - <td>The length of a person’s left big toe vs the length of their left thumb.</td>
+     - <td> Neither </td>
+     - </tr>
+     - <tr>
+     - <td>The amount of water that a plant gets vs the height of the plant.</td>
+     - <td> Independent (response) </td>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="MXEO401-03-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <h3>Is it dependent or independent?</h3>
+     + <p>Write in the box if you think Variable A is dependent or independent or neither for the bivariate investiga
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="MXEO401-03-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: unclassified — Activity 3A — see MXE
+     + <th><b>Variable A vs Variable B:</b></th>
+     + <th><b>Variable A is ...</b> (Dependent or independent or neither)</th>
+     + <td>The time it takes a student to get to school vs their bag weight.</td>
+     + <td> Dependent (explanatory) </td>
+     + <td>The length of a person’s left big toe vs the length of their left thumb.</td>
+     + <td> Neither </td>
+     + <td>The amount of water that a plant gets vs the height of the plant.</td>
+     + <td> Independent (response) </td>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="MXEO401-03-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+     + … 18 more added
+MXEO401: identical 4 / changed 3
+MXEX101: identical 7 / changed 0
+  ~ MXEX201_1_0.html: -7 +3
+     - <h3>Famous Places</h3>
+     - <p>Open up Google Earth and see if you can find and explore some famous landmarks and cities around the world.
+     - <a href="https://earth.google.com/web/" target="_blank"><div class="externalButton">Google Earth -</div></a>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <h3>Famous Places</h3>
+     + <p>Open up Google Earth and see if you can find and explore some famous landmarks and cities around the world.
+     + <p>Google Earth - <a href="https://earth.google.com/web/" target="_blank">https://earth.google.com/web/</a></p
+MXEX201: identical 5 / changed 1
+MXEX202: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+  ~ MXEX302_4_0.html: -50 +59
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Coaches’ training camp</h3>
+     - <p>Te Kura is organising a coaches’ training camp where ākonga will learn to identify and demonstrate differen
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Aria 45</th>
+     - <th>Lucas 50</th>
+     - <th>Ava 46</th>
+     - <th>Mason 30</th>
+     - <th>Charlotte 59</th>
+     - </tr>
+     - <tr>
+     - <td>Tama 22</td>
+     - <td>Manaia 47</td>
+     - <td>Ethan 50</td>
+     - <td>Aroha 43</td>
+     - <td>Hemi 39</td>
+     - </tr>
+     - <tr>
+     - <td>Sophie 36</td>
+     - <td>Oliver 45</td>
+     - <td>Kiri 36</td>
+     - <td>Thomas 42</td>
+     - <td>Zoe 47</td>
+     - </tr>
+     - <tr>
+     - <td>Noah 39</td>
+     - <td>Emily 23</td>
+     - <td>James 23</td>
+     - <td>Ruby 39</td>
+     - <td>Rangi 13</td>
+     - </tr>
+     - <tr>
+     - <td>Anahera 43</td>
+     - <td>Nikau 13</td>
+     - <td>Lily 20</td>
+     - <td>Tane 9</td>
+     - <td>Olivia 50</td>
+     - </tr>
+     - … 10 more removed
+     + <h3>Coaches’ training camp</h3>
+     + <p>Te Kura is organising a coaches’ training camp where ākonga will learn to identify and demonstrate differen
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="MXEX302-04-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: unclassified — Activity 4B — see MXE
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>Aria 45</th>
+     + <th>Lucas 50</th>
+     + <th>Ava 46</th>
+     + <th>Mason 30</th>
+     + <th>Charlotte 59</th>
+     + </tr>
+     + <tr>
+     + … 39 more added
+  ~ MXEX302_5_0.html: -97 +121
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Find the mean or average</h3>
+     - <p>Find the mean or average of these sets of data. Type your answer into the box.</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1481856929" alt="Contempor
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1481856929.jpg" alt="Contemporary Art Collage wi
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Type and check]</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>• 20, 6, 18, 4</th>
+     - <th> Answer / 12</th>
+     - </tr>
+     - <tr>
+     - <td>• 45, 46, 47 ,50, 57</td>
+     - <td> Answer / 49</td>
+     - </tr>
+     - <tr>
+     - <td>• 13, 7, 5, 8, 3, 2, 4</td>
+     - <td> Answer / 6</td>
+     - </tr>
+     - <tr>
+     - <td>• Imagine these are the heights of the Breakers basketball team members. / 1.73m, 1.75m, 1.88m, 1.8m, 1.79
+     - </tr>
+     - </table>
+     - <div class="button">Check answers</div>
+     - <div class="button">Reset</div>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Find the range</h3>
+     - <p>Find the range for these sets of data. Type your answer into the box.</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2159775255" alt="Shiny Red
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2159775255.jpg" alt="Shiny Red Leather Stitched 
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Type and check]</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>• 22, 14, 17, 13, 2, 33</th>
+     - <th>Range = 31 </th>
+     - </tr>
+     - <tr>
+     - <td>• 123, 148, 55, 89, 94, 131</td>
+     - … 57 more removed
+     + <h3>Find the mean or average</h3>
+     + <p>Find the mean or average of these sets of data. Type your answer into the box.</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1481856929" alt="Contempor
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1481856929.jpg" alt="Contemporary Art Collage wi
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="MXEX302-05-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: unclassified — Activity 5A — see MX
+     + <th>• 20, 6, 18, 4</th>
+     + <th> Answer / 12</th>
+     + <td>• 45, 46, 47 ,50, 57</td>
+     + <td> Answer / 49</td>
+     + <td>• 13, 7, 5, 8, 3, 2, 4</td>
+     + <td> Answer / 6</td>
+     + <td>• Imagine these are the heights of the Breakers basketball team members. / 1.73m, 1.75m, 1.88m, 1.8m, 1.79
+     + <h3>Find the range</h3>
+     + <p>Find the range for these sets of data. Type your answer into the box.</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2159775255" alt="Shiny Red
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2159775255.jpg" alt="Shiny Red Leather Stitched 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="MXEX302-05-02" style="border: 8px s
+     + … 101 more added
+  ~ MXEX302_6_0.html: -70 +79
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Basketball scores: Auckland Eagles v Wellington Warriors</h3>
+     - <p>You&#39;re the coach of the Auckland Eagles, and you&#39;ve been keeping track of your team&#39;s performan
+     - <p>Your task is to use the scores from these games to create a double line graph. This will help you visually 
+     - <p>Use the data provided to create a double line graph to display the data.</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Game number</th>
+     - <th>Auckland Eagles points</th>
+     - <th>Wellington Warriors points</th>
+     - </tr>
+     - <tr>
+     - <td>1</td>
+     - <td>98</td>
+     - <td>102</td>
+     - </tr>
+     - <tr>
+     - <td>2</td>
+     - <td>115</td>
+     - <td>108</td>
+     - </tr>
+     - <tr>
+     - <td>3</td>
+     - <td>123</td>
+     - <td>117</td>
+     - </tr>
+     - <tr>
+     - <td>4</td>
+     - <td>110</td>
+     - <td>125</td>
+     - </tr>
+     - <tr>
+     - <td>5</td>
+     - <td>130</td>
+     - <td>119</td>
+     - </tr>
+     - <tr>
+     - <td>6</td>
+     - <td>127</td>
+     - … 30 more removed
+     + <h3>Basketball scores: Auckland Eagles v Wellington Warriors</h3>
+     + <p>You&#39;re the coach of the Auckland Eagles, and you&#39;ve been keeping track of your team&#39;s performan
+     + <p>Your task is to use the scores from these games to create a double line graph. This will help you visually 
+     + <p>Use the data provided to create a double line graph to display the data.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="MXEX302-06-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: unclassified — Activity 6C — see MX
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>Game number</th>
+     + <th>Auckland Eagles points</th>
+     + <th>Wellington Warriors points</th>
+     + </tr>
+     + <tr>
+     + … 59 more added
+MXEX302: identical 5 / changed 3
+MXEX401: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+MXFL102: identical 9 / changed 0
+MXFL103: identical 8 / changed 0
+  ~ MXFL104_4_0.html: -29 +30
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Collecting Data Using Tally Charts</h3>
+     - <p>Below are pictures of activities that a group of six-year-olds suggested would be good for staying active. 
+     - <p>Look at each picture and make a mark in the tally chart one at a time. Remember, the marks are grouped in s
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - </tr>
+     - </table>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>Football</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-855658238" alt="Little Gir
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-855658238.jpg" alt="Little Girl Riding Bike" /> 
+     - <p>Biking</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-889168476" alt="Little Boy
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-889168476.jpg" alt="Little Boy Playing Table Ten
+     - <p>Table Tennis</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-889167580" alt="Karate Boy
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-889167580.jpg" alt="Karate Boy" /> -->
+     - <p>Martial Arts</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="MXFL104-04-01" style="border: 8px so
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="MXFL104-04-02" style="border: 8px s
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <h3>Collecting Data Using Tally Charts</h3>
+     + <p>Below are pictures of activities that a group of six-year-olds suggested would be good for staying active. 
+     + <p>Look at each picture and make a mark in the tally chart one at a time. Remember, the marks are grouped in s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="MXFL104-04-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: unclassified — Activity 4B — see MXF
+     + <p>Football <a href="https://media.istockphoto.com/id/889168388/vector/little-girl-playing-soccer.jpg?s=612x61
+     + <p>Biking <a href="https://www.istockphoto.com/vector/little-girl-riding-bike-gm855658238-140951255?phrase=lit
+     + <p>Table Tennis <a href="https://www.istockphoto.com/vector/little-boy-playing-table-tennis-gm889168476-246554
+     + <p>Martial Arts <a href="https://www.istockphoto.com/vector/karate-boy-gm889167580-246554024" target="_blank">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="MXFL104-04-02" style="border: 8px so
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="MXFL104-04-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <th></th>
+     + … 10 more added
+MXFL104: identical 5 / changed 1
+MXFL201: identical 10 / changed 0
+MXFL202: identical 6 / changed 0
+  ~ MXFL203_2_0.html: -46 +51
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Reading a calendar</h3>
+     - <p>You are now going to answer some questions about different events in New Zealand if you need some help lear
+     - <div class="videoSection icon ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/RxVx4WhSfrI" loading="lazy" title="YouTube video player" f
+     - <p>Below are the first four months of 2024. In each month there are some festivals and events that are held ar
+     - <ul>
+     - <li>Are there any dates in these 4 months that are important to you?</li>
+     - <li>If not, are there any months of the year that are more important to you?</li>
+     - <li>What do you notice about the date Easter was in 2024 compared to this year?</li>
+     - <li>What do you notice about the day of the week New Year’s Day fell on in 2024 compared to this year?</li>
+     - <li>Are there any carnivals, events or shows that you have attended? What month were they held?</li>
+     - </ul>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/embedded.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/item-27-january-jpg.jpg" alt="" /> -->
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/item-28-february-jpg.jpg" alt="" /> -->
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/item-29-march-jpg.jpg" alt="" /> -->
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/item-30-april-jpg.jpg" alt="" /> -->
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="MXFL203-02-04" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - … 6 more removed
+     + <h3>Reading a calendar</h3>
+     + <p>You are now going to answer some questions about different events in New Zealand if you need some help lear
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <iframe src="https://www.youtube-nocookie.com/embed/RxVx4WhSfrI" loading="lazy" title="YouTube video player" f
+     + <p>Below are the first four months of 2024. In each month there are some festivals and events that are held ar
+     + <ul>
+     + <li>Are there any dates in these 4 months that are important to you?</li>
+     + <li>If not, are there any months of the year that are more important to you?</li>
+     + <li>What do you notice about the date Easter was in 2024 compared to this year?</li>
+     + <li>What do you notice about the day of the week New Year’s Day fell on in 2024 compared to this year?</li>
+     + <li>Are there any carnivals, events or shows that you have attended? What month were they held?</li>
+     + </ul>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/embedded.jpg" alt="" /> -->
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="MXFL203-02-04" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: unclassified — Activity 2D — see MXF
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + … 31 more added
+  ~ MXFL203_3_0.html: -45 +52
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Identifying Half</h3>
+     - <p>Half is the word that is used to describe when a number or object is split into 2 equal parts. The fraction
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/item-37.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/item-38.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/item-39.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/item-40.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/item-41.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/item-42.jpg" alt="" /> -->
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="MXFL203-03-02" style="border: 8px s
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="MXFL203-03-03" style="border: 8px s
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - … 5 more removed
+     + <h3>Identifying Half</h3>
+     + <p>Half is the word that is used to describe when a number or object is split into 2 equal parts. The fraction
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="MXFL203-03-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: unclassified — Activity 3C — see MX
+     + <th> [image] [item #37] <a href="https://images.unsplash.com/photo-1531905117481-2117c6655c72?w=500" target="_
+     + <td> [image] [item #38] <a href="https://unsplash.com/photos/an-avocado-cut-in-half-on-a-white-surface-dPWV5J8
+     + <td> [image] [item #39] <a href="https://media.istockphoto.com/id/1315108813/photo/apple-cut-in-half.jpg?s=612
+     + <td> [image] [item #40] <a href="https://media.istockphoto.com/id/1371698527/vector/1-out-of-2-one-half-icon-w
+     + <td> [image] [item #41] <a href="https://media.istockphoto.com/id/468846502/photo/peach-slice-of-fruit-isolate
+     + <td> [image] [item #42] <a href="https://media.istockphoto.com/id/183422512/photo/fresh-red-apples-on-white-ba
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="MXFL203-03-03" style="border: 8px s
+     + <td></td>
+     + <td></td>
+     + <td></td>
+     + <td></td>
+     + <tr>
+     + </tr>
+     + <tr>
+     + <td></td>
+     + … 32 more added
+  ~ MXFL203_8_0.html: -79 +86
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Capacity – Millilitres and Litres</h3>
+     - <p>Capacity is the amount of liquid a container can hold.</p>
+     - <p>We can measure both in millilitres and litres. A litre is much more than a millilitre. 1 litre = 1000 milli
+     - <p>The Abbreviation for litre is &#39;l&#39;.</p>
+     - <p>We use litres to measure larger capacities. E.g. how much water you might drink in a day or how much paint 
+     - <p>The abbreviation for millilitres is ‘ml’.</p>
+     - <p>There is 1000 ml in 1 litre. We use mls to measure smaller capacities. E.g. how much liquid in a recipe or 
+     - <p>In the kitchen we also use spoons and cups as measurements.</p>
+     - <p>Teaspoon (tsp) = 5ml</p>
+     - <p>Tablespoon (Tbsp) = 15ml</p>
+     - <p>Cup = 250 ml</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     - <p>Millilitres (ml) to Litres (l)</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Millilitre / (ml)</th>
+     - <th>Decimal / (Litres)</th>
+     - <th>Fraction</th>
+     - <th>Spoons and
+     - cups</th>
+     - </tr>
+     - <tr>
+     - <td>1 mL</td>
+     - <td>0.001 L</td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td>5 ml</td>
+     - <td>0.005 L</td>
+     - <td></td>
+     - <td>1 tsp</td>
+     - </tr>
+     - <tr>
+     - <td>15 ml</td>
+     - <td>0.015 L</td>
+     - <td></td>
+     - <td>1 tbsp</td>
+     - … 39 more removed
+     + <h3>Capacity – Millilitres and Litres</h3>
+     + <p>Capacity is the amount of liquid a container can hold.</p>
+     + <p>We can measure both in millilitres and litres. A litre is much more than a millilitre. 1 litre = 1000 milli
+     + <p>The Abbreviation for litre is &#39;l&#39;.</p>
+     + <p>We use litres to measure larger capacities. E.g. how much water you might drink in a day or how much paint 
+     + <p>The abbreviation for millilitres is ‘ml’.</p>
+     + <p>There is 1000 ml in 1 litre. We use mls to measure smaller capacities. E.g. how much liquid in a recipe or 
+     + <p>In the kitchen we also use spoons and cups as measurements.</p>
+     + <p>Teaspoon (tsp) = 5ml</p>
+     + <p>Tablespoon (Tbsp) = 15ml</p>
+     + <p>Cup = 250 ml</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="MXFL203-08-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: unclassified — Activity 8D — see MX
+     + <div style="font-size: 0.95em">
+     + <p>Millilitres (ml) to Litres (l)</p>
+     + … 66 more added
+  ~ MXFL203_10_0.html: -293 +326
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Show Jumping</h3>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>Look at the table below showing the results of a show jumping competition. Use this table to answer the que
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Name of Rider</th>
+     - <th>Name of Horse</th>
+     - <th>Total score</th>
+     - <th>Percentage</th>
+     - </tr>
+     - <tr>
+     - <td>Ahorangi</td>
+     - <td>Saint</td>
+     - <td>55/100</td>
+     - <td>55%</td>
+     - </tr>
+     - <tr>
+     - <td>Sione</td>
+     - <td>Rory</td>
+     - <td>82/100</td>
+     - <td>82%</td>
+     - </tr>
+     - <tr>
+     - <td>Evie</td>
+     - <td>Tommy</td>
+     - <td>50/100</td>
+     - <td>50%</td>
+     - </tr>
+     - <tr>
+     - <td>Sylvie</td>
+     - <td>Flicka</td>
+     - <td>93/100</td>
+     - <td>93%</td>
+     - </tr>
+     - <tr>
+     - … 253 more removed
+     + <h3>Show Jumping</h3>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>Look at the table below showing the results of a show jumping competition. Use this table to answer the que
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="MXFL203-10-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="26" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #26: unclassified — Activity 10F — see M
+     + <th>Name of Rider</th>
+     + <th>Name of Horse</th>
+     + <th>Total score</th>
+     + <th>Percentage</th>
+     + <td>Ahorangi</td>
+     + <td>Saint</td>
+     + <td>55/100</td>
+     + <td>55%</td>
+     + <td>Sione</td>
+     + <td>Rory</td>
+     + <td>82/100</td>
+     + … 306 more added
+MXFL203: identical 8 / changed 4
+MXFL204: identical 12 / changed 0
+MXFL301: identical 10 / changed 0
+MXFL302: identical 10 / changed 0
+MXFL401: identical 8 / changed 0
+MXFU201: identical 10 / changed 0
+MXFU202: identical 11 / changed 0
+MXFU301: identical 12 / changed 0
+  ~ MXFU302_7_0.html: -36 +46
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>More linear patterns</h3>
+     - <p>This is a table of a basketball player’s scores in the first five games. Complete the tasks in your journal
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Game</th>
+     - <th>Points Scored</th>
+     - </tr>
+     - <tr>
+     - <td>1</td>
+     - <td>5</td>
+     - </tr>
+     - <tr>
+     - <td>2</td>
+     - <td>7</td>
+     - </tr>
+     - <tr>
+     - <td>3</td>
+     - <td>9</td>
+     - </tr>
+     - <tr>
+     - <td>4</td>
+     - <td>11</td>
+     - </tr>
+     - <tr>
+     - <td>5</td>
+     - <td>13</td>
+     - </tr>
+     - </table>
+     - </div>
+     - <h4 class="goJournal">Go to your journal</h4>
+     - </div>
+     - </div>
+     + <h3>More linear patterns</h3>
+     + <p>This is a table of a basketball player’s scores in the first five games. Complete the tasks in your journal
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="MXFU302-07-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="18" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: unclassified — Activity 8C — see MX
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th><b>Game</b></th>
+     + <th><b>Points Scored</b></th>
+     + </tr>
+     + <tr>
+     + <td>1</td>
+     + <td>5</td>
+     + </tr>
+     + … 26 more added
+MXFU302: identical 9 / changed 1
+  ~ MXFU401_5_0.html: -90 +96
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>All about polygons</h3>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [write in the boxes]</p>
+     - <p>Fill in the gaps.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please can you create a grid like thi
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Shape</th>
+     - <th>Polygon</th>
+     - <th>No. of Sides</th>
+     - <th><b>Sum of the exterior angles</b> / <b>(degrees)</b></th>
+     - <th>Measure of one exterior angle (degrees)</th>
+     - <th>Measure of one interior angle (degrees)</th>
+     - </tr>
+     - <tr>
+     - <td></td>
+     - <td><b>Triangle</b></td>
+     - <td><b>3</b></td>
+     - <td><b>360</b></td>
+     - <td><b>120</b></td>
+     - <td><b>60</b></td>
+     - </tr>
+     - <tr>
+     - <td></td>
+     - <td></td>
+     - <td><b>4</b></td>
+     - <td></td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td></td>
+     - <td><b>Pentagon</b></td>
+     - <td></td>
+     - <td></td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - … 50 more removed
+     + <h3>All about polygons</h3>
+     + <p>Fill in the gaps.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="MXFU401-05-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please can you insert the following i
+     + <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: unclassified — Activity 5A — see MX
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th><b>Shape</b></th>
+     + <th><b>Polygon</b></th>
+     + <th><b>No. of Sides</b></th>
+     + <th><b>Sum of the exterior angles</b> / <b>(degrees)</b></th>
+     + <th><b>Measure of one exterior angle (degrees)</b></th>
+     + <th><b>Measure of one interior angle (degrees)</b></th>
+     + … 76 more added
+MXFU401: identical 6 / changed 1
+MXFU402: identical 8 / changed 0
+  ~ MXFUN01_3_0.html: -46 +53
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>What is the value?</h3>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Type and check]</p>
+     - <p>Type value of the underlined digit in these numbers.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Could the images next to the numbers 
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>• 356</th>
+     - <th></th>
+     - <th> Answer / 50 </th>
+     - </tr>
+     - <tr>
+     - <td>• 435</td>
+     - <td></td>
+     - <td> 400 </td>
+     - </tr>
+     - <tr>
+     - <td>3. 628</td>
+     - <td></td>
+     - <td> 20 </td>
+     - </tr>
+     - <tr>
+     - <td>4. 216</td>
+     - <td></td>
+     - <td> 6 </td>
+     - </tr>
+     - <tr>
+     - <td>5. 539</td>
+     - <td></td>
+     - <td> 500 </td>
+     - </tr>
+     - <tr>
+     - <td>6. 146</td>
+     - <td></td>
+     - <td> 40 </td>
+     - </tr>
+     - </table>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="MXFUN01-03-02" style="border: 8px so
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="MXFUN01-03-03" style="border: 8px so
+     - … 6 more removed
+     + <h3>What is the value?</h3>
+     + <p>Type value of the underlined digit in these numbers.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="MXFUN01-03-02" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: unclassified — Activity 2B — see MXF
+     + <th>• 356</th>
+     + <th></th>
+     + <th> Answer / 50 </th>
+     + <td>• 435</td>
+     + <td></td>
+     + <td> 400 </td>
+     + <td>3. 628</td>
+     + <td></td>
+     + <td> 20 </td>
+     + <td>4. 216</td>
+     + <td></td>
+     + <td> 6 </td>
+     + <td>5. 539</td>
+     + <td></td>
+     + <td> 500 </td>
+     + … 33 more added
+  ~ MXFUN01_5_0.html: -52 +60
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Fractions of amounts</h3>
+     - <p>Find the fraction amounts and type in the answers. The first one has been done for you.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Type and check] Could this please be
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> Question number </th>
+     - <th> Question </th>
+     - <th> Answers to be typed have been shown in red </th>
+     - </tr>
+     - <tr>
+     - <td>1.</td>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1465324527" alt="Set o
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td>2.</td>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" /><!-- <img cla
+     - <td> 8 ÷ 4 = 2 / ¼ of 8 = 2 </td>
+     - </tr>
+     - <tr>
+     - <td>3.</td>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" /><!-- <img cla
+     - <td> 8 ÷ 8 = 1 / 1/8 of 8 = 1 </td>
+     - </tr>
+     - <tr>
+     - <td>4.</td>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1168803180" alt="Ladyb
+     - <td> 16 ÷2 = 8 / ½ of 16 = 8 </td>
+     - </tr>
+     - <tr>
+     - <td>5.</td>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-138294998" alt="Color 
+     - <td> 9 ÷ 3 = 3 / 1/3 of 9 = 3 </td>
+     - </tr>
+     - </table>
+     - <div class="button">Check answers</div>
+     - <div class="button">Reset</div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="MXFUN01-05-02" style="border: 8px s
+     - … 12 more removed
+     + <h3>Fractions of amounts</h3>
+     + <p>Find the fraction amounts and type in the answers. The first one has been done for you.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="MXFUN01-05-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: unclassified — Activity 4C — see MX
+     + <th> Question number </th>
+     + <th> Answers to be typed have been shown in red </th>
+     + <td>1.</td>
+     + <td> [Image] <a href="https://www.istockphoto.com/vector/set-of-colorful-lollipop-sweet-candies-vector-illustr
+     + <td>2.</td>
+     + <td> [Image] Please use apple images from earlier in the module </td>
+     + <td> 8 ÷ 4 = 2 / ¼ of 8 = 2 </td>
+     + <td>3.</td>
+     + <td> [Image] Please use cupcake image from activity 3D </td>
+     + <td> 8 ÷ 8 = 1 / 1/8 of 8 = 1 </td>
+     + <td>4.</td>
+     + <td> [Image] <a href="https://www.istockphoto.com/vector/ladybug-icon-isolated-on-white-background-vector-illu
+     + <td> 16 ÷2 = 8 / ½ of 16 = 8 </td>
+     + <td>5.</td>
+     + … 40 more added
+  ~ MXFUN01_6_2.html: -41 +43
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Factors of 24</h3>
+     - <p>Twenty-four can be arranged in many different ways. Use the arrays to complete the facts and find the facto
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Type and Check] Could these images p
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> 1 x 24 = 24 / [Image] <a href="https://www.istockphoto.com/vector/yellow-happy-face-vector-symbol-icon-gm
+     - </tr>
+     - <tr>
+     - <td> 2 x 12 = 24</td>
+     - </tr>
+     - <tr>
+     - <td> 3 x 8 = 24</td>
+     - <td> 4 x 6 = 24</td>
+     - </tr>
+     - <tr>
+     - <td>The factors of 24 are: 1 2 3 4 6 8 12 24 These are the answers shown in red, could there please be a box f
+     - </tr>
+     - </table>
+     - <div class="button">Check answers</div>
+     - <div class="button">Reset</div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="MXFUN01-08-04" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="MXFUN01-08-05" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="MXFUN01-08-06" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="27" data-cv2-ref="MXFUN01-08-07" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - … 1 more removed
+     + <h3>Factors of 24</h3>
+     + <p>Twenty-four can be arranged in many different ways. Use the arrays to complete the facts and find the facto
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="MXFUN01-08-04" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: unclassified — Activity 1D — see MX
+     + <th> 1 x 24 = 24 / [Image] <a href="https://www.istockphoto.com/vector/yellow-happy-face-vector-symbol-icon-gm
+     + <td> 2 x 12 = 24</td>
+     + <td> 3 x 8 = 24</td>
+     + <td> 4 x 6 = 24</td>
+     + <td>The factors of 24 are: 1 2 3 4 6 8 12 24 These are the answers shown in red, could there please be a box f
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="MXFUN01-08-05" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="MXFUN01-08-06" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="MXFUN01-08-07" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <tr>
+     + </tr>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="27" data-cv2-ref="MXFUN01-08-08" style="border: 8px s
+     + … 23 more added
+  ~ MXFUN01_6_5.html: -57 +65
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Mixed numbers and improper fractions</h3>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Type and check] I have put what need
+     - <th>Mixed number</th>
+     - <th> Images to be recreated please </th>
+     - <th>Improper Fraction</th>
+     - <tr>
+     - <td> 1 3/4 </td>
+     - <td></td>
+     - <td> 7/4 </td>
+     - </tr>
+     - <tr>
+     - <td> 1 4/6 </td>
+     - <td></td>
+     - <td> 10/12 </td>
+     - </tr>
+     - <tr>
+     - <td> 1 5/8 </td>
+     - <td></td>
+     - <td> 13/8 </td>
+     - </tr>
+     - <tr>
+     - <td> 1 4/5 </td>
+     - <td></td>
+     - <td> 9/5 </td>
+     - </tr>
+     - <tr>
+     - <td> 1 2/3 </td>
+     - <td></td>
+     - <td> 5/3 </td>
+     - </tr>
+     - <tr>
+     - <td> 1 7/10 </td>
+     - <td></td>
+     - <td> 17/10 </td>
+     - </tr>
+     - <tr>
+     - <td> 1 3/9 </td>
+     - <td></td>
+     - <td> 12/9 </td>
+     - … 17 more removed
+     + <h3>Mixed numbers and improper fractions</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="38" data-cv2-ref="MXFUN01-11-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="38" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #38: unclassified — Activity 4C — see MX
+     + <th><b>Mixed number</b></th>
+     + <th> Images to be recreated please </th>
+     + <th><b>Improper Fraction</b></th>
+     + <td> 1 3/4 </td>
+     + <td> 7/4 </td>
+     + <td> 1 4/6 </td>
+     + <td> 10/12 </td>
+     + <td> 1 5/8 </td>
+     + <td> 13/8 </td>
+     + <td> 1 4/5 </td>
+     + <td> 9/5 </td>
+     + <td> 1 2/3 </td>
+     + <td> 5/3 </td>
+     + <td> 1 7/10 </td>
+     + <td></td>
+     + <td> 17/10 </td>
+     + … 45 more added
+MXFUN01: identical 15 / changed 4
+MXFUN02: identical 1 / changed 0
+  ~ MXFUN03_0_0.html: -86 +101
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Converting 24 hour and am/pm times</h3>
+     - <p>Convert these 24 hour times to am/pm times.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Type and check] Can this please be m
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - <th>b. 3 : 00 pm</th>
+     - <th>c. 1 : 30 pm</th>
+     - </tr>
+     - <tr>
+     - <td>d. 4 : 05 pm</td>
+     - <td>• 9 : 20 am</td>
+     - <td>• 8 . 25 am</td>
+     - </tr>
+     - </table>
+     - <p>Convert these am/pm times to 24 hour times.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Type and check] Can this please be m
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>• 0900 </th>
+     - <th>b. 2200 </th>
+     - <th>c. 0730 </th>
+     - </tr>
+     - <tr>
+     - <td>d. 1415 </td>
+     - <td>e. 0535 </td>
+     - <td>f. 1925 </td>
+     - </tr>
+     - </table>
+     - <div class="button">Check answers</div>
+     - <div class="button">Reset</div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="28" data-cv2-ref="MXFUN03-00-08" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Measure the angles</h3>
+     - <p>Use the protractor to measure the marked angles.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Is it possible for the protractor ima
+     - … 46 more removed
+     + <h3>Converting 24 hour and am/pm times</h3>
+     + <p>Convert these 24 hour times to am/pm times.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="27" data-cv2-ref="MXFUN03-00-08" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Type and check] Can this please be m
+     + <div class="cv2-interactive" data-cv2-index="27" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #27: unclassified — Activity 2C — see MX
+     + <th></th>
+     + <th>b. 3 : 00 pm</th>
+     + <th>c. 1 : 30 pm</th>
+     + <td>d. 4 : 05 pm</td>
+     + <td>• 9 : 20 am</td>
+     + <td>• 8 . 25 am</td>
+     + <p>Convert these am/pm times to 24 hour times.</p>
+     + <th>• 0900 </th>
+     + <th>b. 2200 </th>
+     + <th>c. 0730 </th>
+     + <td>d. 1415 </td>
+     + <td>e. 0535 </td>
+     + <td>f. 1925 </td>
+     + … 81 more added
+MXFUN03: identical 0 / changed 1
+OSAH301: identical 4 / changed 0
+OSAH401: identical 5 / changed 0
+OSAH501: identical 6 / changed 0
+OSAI101: identical 3 / changed 0
+OSAI201: identical 4 / changed 0
+OSAI301: identical 4 / changed 0
+OSAI401: identical 5 / changed 0
+OSAI501: identical 6 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY201: identical 4 / changed 0
+OSBY301: identical 4 / changed 0
+OSBY401: identical 5 / changed 0
+OSBY501: identical 6 / changed 0
+OSGM101: identical 3 / changed 0
+OSGM201: identical 4 / changed 0
+OSGM301: identical 4 / changed 0
+OSGM401: identical 5 / changed 0
+OSGM501: identical 6 / changed 0
+OSOH101: identical 4 / changed 0
+OSOH201: identical 4 / changed 0
+OSOH301: identical 4 / changed 0
+OSOH401: identical 5 / changed 0
+OSOH501: identical 6 / changed 0
+OSSC301: identical 4 / changed 0
+
+TOTAL: identical 610 / changed 30 / missing 0 over 98 modules
+CHANGED: HIS1002/HIS1002_19_0.html HIS1006/HIS1006_6_0.html HIS1008/HIS1008_6_0.html HPFUN103/HPFUN103_0_0.html HPFUN403/HPFUN403_0_0.html HPRE203/HPRE203_2_0.html HPRE203/HPRE203_3_0.html HPRE203/HPRE203_4_0.html HPRE203/HPRE203_5_0.html HPRE203/HPRE203_6_0.html HPRE203/HPRE203_7_0.html MXEO401/MXEO401_1_0.html MXEO401/MXEO401_2_0.html MXEO401/MXEO401_3_0.html MXEX201/MXEX201_1_0.html MXEX302/MXEX302_4_0.html MXEX302/MXEX302_5_0.html MXEX302/MXEX302_6_0.html MXFL104/MXFL104_4_0.html MXFL203/MXFL203_2_0.html MXFL203/MXFL203_3_0.html MXFL203/MXFL203_8_0.html MXFL203/MXFL203_10_0.html MXFU302/MXFU302_7_0.html MXFU401/MXFU401_5_0.html MXFUN01/MXFUN01_3_0.html MXFUN01/MXFUN01_5_0.html MXFUN01/MXFUN01_6_2.html MXFUN01/MXFUN01_6_5.html MXFUN03/MXFUN03_0_0.html

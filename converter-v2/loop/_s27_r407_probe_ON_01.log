@@ -1,0 +1,591 @@
+BLL242: identical 3 / changed 0
+BLL244: identical 3 / changed 0
+BLL245: identical 3 / changed 0
+BLL246: identical 3 / changed 0
+BLL251: identical 3 / changed 0
+BLL252: identical 3 / changed 0
+BLL253: identical 3 / changed 0
+BLL254: identical 3 / changed 0
+BLL262: identical 3 / changed 0
+BLL263: identical 3 / changed 0
+BLLR201: identical 8 / changed 0
+CEDK101: identical 1 / changed 0
+CEDK102: identical 1 / changed 0
+CEDK501: identical 14 / changed 0
+CEDO102: identical 1 / changed 0
+  ~ CEDO105_1_0.html: -9 +5
+     - <h4>Time to dance</h4>
+     - <p>You are going to look at the parts of your body which move. When you roll over a body part say the words al
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <h4>What can you move?</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <h3>Time to dance</h3>
+     + <h3>What can you move?</h3>
+     + <p>You are going to look at the parts of your body which move. When you roll over a body part say the words al
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+CEDO105: identical 5 / changed 1
+CEDO202: identical 1 / changed 0
+CEDO301: identical 6 / changed 0
+CEDO501: identical 16 / changed 0
+CEDO502: identical 10 / changed 0
+CEDR201: identical 1 / changed 0
+CEDR204: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDR302: identical 1 / changed 0
+CEDR501: identical 11 / changed 0
+CEDT101: identical 1 / changed 0
+CEDT104: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDT208: identical 1 / changed 0
+CEDT301: identical 7 / changed 0
+CEDT404: identical 1 / changed 0
+CEDT501: identical 15 / changed 0
+CEDW101: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+CEDW501: identical 13 / changed 0
+CHFUN01: identical 1 / changed 0
+CHFUN04: identical 1 / changed 0
+CHFUN05: identical 1 / changed 0
+CHFUN06: identical 1 / changed 0
+CHFUN07: identical 1 / changed 0
+ENFUN01: identical 1 / changed 0
+ENFUN02: identical 1 / changed 0
+ENFUN03: identical 1 / changed 0
+ENFUN04: identical 1 / changed 0
+ENFUN05: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+ENFUN08: identical 1 / changed 0
+ENFUN09: identical 1 / changed 0
+ENG1004: identical 8 / changed 0
+ENG1005: identical 6 / changed 0
+ENG1007: identical 1 / changed 0
+ENGC101: identical 6 / changed 0
+ENGC102: identical 8 / changed 0
+ENGC201: identical 7 / changed 0
+ENGC202: identical 9 / changed 0
+ENGC301: identical 8 / changed 0
+ENGC302: identical 8 / changed 0
+ENGC401: identical 8 / changed 0
+ENGFUN02: identical 5 / changed 0
+ENGI101: identical 4 / changed 0
+  ~ ENGI102_4_0.html: -30 +37
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Retelling a story in order</h3>
+     - <p>Drag the pictures below to retell the story of <i>Jack and the Beanstalk</i> in the correct order.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (Images and captions below are in the
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>Jack swapped his cow for some magic beans. / (Image snip page 3) </td>
+     - <td>Jack’s mother was not happy. She threw the beans out the window. / (Image snip page 5) </td>
+     - <td>The beans grew into an enormous beanstalk. / (Image snip page 7) </td>
+     - </tr>
+     - <tr>
+     - <td>Jack climbed up the beanstalk and found a huge castle. / (Image snip page 8) </td>
+     - <td>Inside the castle, Jack saw a sleeping giant and a goose that laid golden eggs. / (Image snip page 9) </td
+     - <td>Jack snatched the goose and ran back to the beanstalk. / (Image snip page 9) </td>
+     - </tr>
+     - <tr>
+     - <td>The giant woke up and chased after Jack. / (Image snip page 10) </td>
+     - <td>Jack chopped the beanstalk down so the giant couldn’t follow him. / (Image snip page 11) </td>
+     - <td>Jack and his mother and the goose lived happily ever after. / (Image snip page 12) </td>
+     - </tr>
+     - </table>
+     - </div>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>Tino pai! You have completed Lesson Two of this module. We hope you have enjoyed learning about the element
+     - </div>
+     - </div>
+     + <h3>Retelling a story in order</h3>
+     + <p>Drag the pictures below to retell the story of <i>Jack and the Beanstalk</i> in the correct order.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="ENGI102-02-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: unclassified — Activity 2C — see ENG
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>Jack swapped his cow for some magic beans. / (Image snip page 3) </th>
+     + <th>Jack’s mother was not happy. She threw the beans out the window. / (Image snip page 5) </th>
+     + <th>The beans grew into an enormous beanstalk. / (Image snip page 7) </th>
+     + </tr>
+     + <tr>
+     + <td>Jack climbed up the beanstalk and found a huge castle. / (Image snip page 8) </td>
+     + <td>Inside the castle, Jack saw a sleeping giant and a goose that laid golden eggs. / (Image snip page 9) </td
+     + … 17 more added
+  ~ ENGI102_8_0.html: -100 +126
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Check your understanding</h3>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Drag and drop self-marking comprehens
+     - <p>Listen to the story carefully and read along to find the answers to these questions. This is an activity wh
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>• What was Mariri looking for in a new place to live?</td>
+     - <td>A place that was less crowded, with more land and food.</td>
+     - </tr>
+     - <tr>
+     - <td>• The new island was called Enuamanu, which means?</td>
+     - <td>Island of birds and creatures.</td>
+     - </tr>
+     - <tr>
+     - <td>• Mariri made wings that were inspired by which creatures?</td>
+     - <td>A flock of rakoa and a swarm of potipoti.</td>
+     - </tr>
+     - <tr>
+     - <td>• Mariri could not fly from the beach, so where did he fly from?</td>
+     - <td>The top of Tekurikuri (The Seabird hill).</td>
+     - </tr>
+     - <tr>
+     - <td>• Today the island of Enuamanu is called?</td>
+     - <td>Atiu, which is now part of the Cook Islands.</td>
+     - </tr>
+     - </table>
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Check your understanding</h3>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Drag and drop self marking comprehens
+     - <p>Listen to the story carefully to find the answers to these questions</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>• How did Naua discover the cave where he hid ‘Ofa?</td>
+     - <td>He found it while hunting turtles.</td>
+     - </tr>
+     - <tr>
+     - … 60 more removed
+     + <h3>Check your understanding</h3>
+     + <p>Listen to the story carefully and read along to find the answers to these questions. This is an activity wh
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="ENGI102-04-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: unclassified — Activity 4A — see ENG
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>• What was Mariri looking for in a new place to live?</th>
+     + <th>A place that was less crowded, with more land and food.</th>
+     + </tr>
+     + <tr>
+     + <td>• The new island was called Enuamanu, which means?</td>
+     + <td>Island of birds and creatures.</td>
+     + </tr>
+     + <tr>
+     + <td>• Mariri made wings that were inspired by which creatures?</td>
+     + <td>A flock of rakoa and a swarm of potipoti.</td>
+     + </tr>
+     + … 106 more added
+  ~ ENGI102_10_0.html: -145 +184
+     - <h4>Greece: The Lion and the Mouse</h4>
+     - <h5>Aesop’s Fables</h5>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h4>Check your understanding</h4>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Drag and drop self marking comprehens
+     - <p>Listen to the story carefully and read along to find the answers to these questions. This is an activity wh
+     - <td>• Why did the Lion say he would not let the Mouse go?</td>
+     - <td>He was annoyed that the Mouse had woken him from his sleep.</td>
+     - <tr>
+     - <td>• Why did the Lion laugh when the Mouse said it would help the Lion someday?</td>
+     - <td>Because he was King of the jungle and did not think he needed help from a little mouse.</td>
+     - </tr>
+     - <tr>
+     - <td>• Why was the Lion roaring for help?</td>
+     - <td>He was caught in a trapper’s net.</td>
+     - </tr>
+     - <tr>
+     - <td>• How did the Mouse help to free the Lion from the trapper’s net?</td>
+     - <td>He gnawed through the ropes of the net until the Lion was free</td>
+     - </tr>
+     - <tr>
+     - <td>• What did the Lion say to the Mouse at the end of the story?</td>
+     - <td>I will never laugh at you again.</td>
+     - </tr>
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <h4>India: Monkey and Crocodile</h4>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h4>Check your understanding</h4>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Drag and drop self marking comprehens
+     - <p>Listen to the story carefully and read along to find the answers to these questions.</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>• Why did Monkey decide he wanted to cross the river?`</td>
+     - <td>To get some mangoes to eat.</td>
+     - </tr>
+     - <tr>
+     - <td>• Why did Crocodile offer to help Monkey cross the river?</td>
+     - <td>He was trying to trick Monkey, because he wanted to eat him.</td>
+     - … 105 more removed
+     + <h3>Greece: The Lion and the Mouse</h3>
+     + <h4>Aesop’s Fables</h4>
+     + <h3>Check your understanding</h3>
+     + <p>Listen to the story carefully and read along to find the answers to these questions. This is an activity wh
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="ENGI102-05-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: unclassified — Activity 5A — see EN
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>• Why did the Lion say he would not let the Mouse go?</th>
+     + <th>He was annoyed that the Mouse had woken him from his sleep.</th>
+     + </tr>
+     + <tr>
+     + <td>• Why did the Lion laugh when the Mouse said it would help the Lion someday?</td>
+     + … 164 more added
+ENGI102: identical 4 / changed 3
+ENGI103: identical 7 / changed 0
+ENGI201: identical 5 / changed 0
+  ~ ENGI202_1_0.html: -20 +27
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Traditional story elements</h3>
+     - <p>Which story did you enjoy the most? Choose one of the traditional stories you found in our bookcase of stor
+     - <div class="row speechBubble" layout="thought">
+     - <div class="col-12">
+     - <div class="bubble-basic no-hover bubble-top"><p><b>Whaitake</b><br />Use your inquiring mind to explore what 
+     - </div>
+     - </div>
+     - <p>With your supervisor, go to the journal and fill out Activity 1A. Show your teacher what you have learnt ab
+     - <a href="" target="_blank"><div class="button">Download Journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h5>Congratulations on finishing Lesson One. In the next lesson you will learn about traditional stories from 
+     - </div>
+     - </div>
+     + <h3>Traditional story elements</h3>
+     + <p>Which story did you enjoy the most? Choose one of the traditional stories you found in our bookcase of stor
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="ENGI202-01-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: unclassified — Activity 1A — see ENG
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [Thought bubble] / [H4] Whaitake / [Body] Use your inquiring mind to explore what interests you.</th>
+     + </tr>
+     + </table>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + … 7 more added
+  ~ ENGI202_2_0.html: -272 +112
+     - <h3>The Story of Rona</h3>
+     - <p>Listen to this story carefully and answer the questions below in your journal.</p>
+     - <ol>
+     - <li>What is the name of the Moon?</li>
+     - <li>In the story the children are asleep on their mats in the <b>whare</b>. What do you think the word <b>whar
+     - <li>How did Rona see her way on the bumpy path at night time when she was going to get the children water?</li
+     - <li>What does the legend suggest are the markings on the moon made up of? (Hint: There are three things.)</li>
+     - </ol>
+     - <h4 class="goJournal">Go to your journal</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity" number="2E">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Kete of activities</h3>
+     - <p>Choose your favourite Māori legend and then choose an activity from this kete (woven basket) to show your k
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/of-kete-similar-to-this-example.jpg" alt="" /> -->
+     - <div class="row speechBubble" layout="thought">
+     - <div class="col-12">
+     - <div class="bubble-basic no-hover bubble-top"><p><b>Kotahitanga</b><br />Connect with the world around you and
+     - </div>
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="ENGI202-02-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: clickDrop + clickDrop (activities) —
+     - <div style="font-size: 0.95em">
+     - <p>Characters: Storytelling masks</p>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="ENGI202-02-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - … 232 more removed
+     + <h3>The Story of Rona</h3>
+     + <li>What is the name of the Moon?</li>
+     + <li>In the story the children are asleep on their mats in the <b>whare</b>. What do you think the word <b>whar
+     + <li>How did Rona see her way on the bumpy path at night time when she was going to get the children water?</li
+     + <li>What does the legend suggest are the markings on the moon made up of? (Hint: There are three things.)</li>
+     + <p>Go to journal</p>
+     + <p>Listen to this story carefully and answer the questions below in your journal.</p>
+     + <ol>
+     + </ol>
+     + <div class="activity interactive" number="2E">
+     + <h3>Kete of activities</h3>
+     + <p>Choose your favourite Māori legend and then choose an activity from this kete (woven basket) to show your k
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/of-kete-similar-to-this-example.jpg" alt="" /> -->
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="ENGI202-02-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + … 92 more added
+  ~ ENGI202_3_0.html: -40 +19
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="ENGI202-03-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: accordion (please write the coordin
+     - <div class="activity" number="3D">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Understanding texts</h3>
+     - <p>Once you have listened to all the stories carefully, answer these comprehension questions to show you have 
+     - <div class="row speechBubble" layout="thought">
+     - <div class="col-12">
+     - <div class="bubble-basic no-hover bubble-top"><p><b>Māramatonutanga</b><br />Challenge yourself to find the an
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity interactive" number="3E">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="28" data-cv2-ref="ENGI202-03-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="28" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #28: dragAndDrop (embed activity which i
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p>Once you have completed this activity correctly, you can move on to the next lesson. Please note , the page
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Congratulations on finishing Lesson Three. In the next lesson you will learn about traditional stories fro
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="ENGI202-03-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: accordion (please write the coordina
+     + <div class="activity interactive" number="3D">
+     + <h3>Understanding texts</h3>
+     + <p>Once you have listened to all the stories carefully, answer these comprehension questions to show you have 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="ENGI202-03-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: unclassified + dragAndDrop — Activit
+     + <th> [Thought bubble] / [H4] Māramatonutanga / [Body] Challenge yourself to find the answers in the text and s
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + </tr>
+     + </table>
+     + </div>
+     + <p>Once you have completed this activity correctly, you can move on to the next lesson. Please note , the page
+     + <h5>Congratulations on finishing Lesson Three. In the next lesson you will learn about traditional stories fro
+  ~ ENGI202_4_0.html: -19 +30
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Responding to stories</h3>
+     - <p>Once you have listened to all the stories carefully. Talk about each question below with your supervisor an
+     - <ol>
+     - <li>Which story did you most like on your travels in the lesson?</li>
+     - <li>Why did you like this story?</li>
+     - <li>What is the main plot of this story?</li>
+     - <li>What was a lesson or moral from this story?</li>
+     - <li>What is something that you could relate to in this story?</li>
+     - </ol>
+     - <div class="row speechBubble" layout="thought">
+     - <div class="col-12">
+     - <div class="bubble-basic no-hover bubble-top"><p><b>Whakawhanaungatanga</b><br />Develop your relationships wi
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <h3>Responding to stories</h3>
+     + <p>Once you have listened to all the stories carefully. Talk about each question below with your supervisor an
+     + <ol>
+     + <li>Which story did you most like on your travels in the lesson?</li>
+     + <li>Why did you like this story?</li>
+     + <li>What is the main plot of this story?</li>
+     + <li>What was a lesson or moral from this story?</li>
+     + <li>What is something that you could relate to in this story?</li>
+     + </ol>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="ENGI202-04-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: unclassified — Activity 4A — see EN
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + … 10 more added
+ENGI202: identical 3 / changed 4
+ENGI203: identical 11 / changed 0
+ENGI301: identical 6 / changed 0
+ENGI302: identical 7 / changed 0
+ENGI303: identical 7 / changed 0
+ENGI400: identical 4 / changed 0
+ENGI401: identical 12 / changed 0
+ENGI405: identical 8 / changed 0
+ENGJ101: identical 5 / changed 0
+ENGJ102: identical 6 / changed 0
+ENGJ201: identical 7 / changed 0
+ENGJ202: identical 6 / changed 0
+ENGJ301: identical 8 / changed 0
+ENGJ302: identical 10 / changed 0
+ENGJ402: identical 9 / changed 0
+ENGJ403: identical 10 / changed 0
+  ~ ENGR101_2_0.html: -20 +5
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3><i>Butterfly Day</i> facts</h3>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity interactive" number="2D">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="ENGR101-02-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: multiChoiceQuiz — Activity (inline) 
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <h3>Butterfly Day facts</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="ENGR101-02-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: unclassified — Activity 2C — see ENG
+  ~ ENGR101_3_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="ENGR101-03-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: hintSlider — Activity (inline) — se
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="ENGR101-03-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: hintSlider — Activity (inline) — se
+  ~ ENGR101_4_0.html: -11 +11
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="ENGR101-04-01" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: modal — Activity (inline) — see ENG
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="ENGR101-04-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: speechBubble (can with each time wh
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="ENGR101-04-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: dragAndDrop — Activity 4B — see ENG
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="ENGR101-04-04" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="18" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: unclassified — Activity 4C — see EN
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="ENGR101-04-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: modal — Activity (inline) — see ENG
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="ENGR101-04-02" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: speechBubble (can with each time wh
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="ENGR101-04-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: dragAndDrop — Activity 4B — see ENG
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="ENGR101-04-04" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: unclassified — Activity 4C — see EN
+  ~ ENGR101_5_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="ENGR101-05-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="20" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #20: unclassified + typing + typing — Ac
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="ENGR101-05-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: unclassified + typing + typing — Ac
+  ~ ENGR101_6_0.html: -5 +5
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="ENGR101-06-01" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #22: memoryGame (game) — Activity 6B — s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="ENGR101-06-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: unclassified — Activity 6C — see EN
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="ENGR101-06-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="21" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: memoryGame (game) — Activity 6B — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="ENGR101-06-02" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #22: unclassified — Activity 6C — see EN
+  ~ ENGR101_7_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="ENGR101-07-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: carousel — Activity 7A — see ENGR10
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="ENGR101-07-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="26" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #26: dropDown + dropDown (go to) — Activ
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="ENGR101-07-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: carousel — Activity 7A — see ENGR10
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="ENGR101-07-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: dropDown + dropDown (go to) — Activ
+ENGR101: identical 2 / changed 6
+ENGR102: identical 7 / changed 0
+ENGR201: identical 7 / changed 0
+ENGR202: identical 8 / changed 0
+ENGR301: identical 9 / changed 0
+ENGR302: identical 8 / changed 0
+ENGS101: identical 6 / changed 0
+ENGS102: identical 7 / changed 0
+ENGS201: identical 9 / changed 0
+ENGS202: identical 7 / changed 0
+ENGS301: identical 8 / changed 0
+ENGS302: identical 7 / changed 0
+ENGS401: identical 7 / changed 0
+ENGS405: identical 1 / changed 0
+EXBP901: identical 6 / changed 0
+EXIP901: identical 6 / changed 0
+EXPFUN02: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+EXPFUN04: identical 1 / changed 0
+
+TOTAL: identical 495 / changed 14 / missing 0 over 102 modules
+CHANGED: CEDO105/CEDO105_1_0.html ENGI102/ENGI102_4_0.html ENGI102/ENGI102_8_0.html ENGI102/ENGI102_10_0.html ENGI202/ENGI202_1_0.html ENGI202/ENGI202_2_0.html ENGI202/ENGI202_3_0.html ENGI202/ENGI202_4_0.html ENGR101/ENGR101_2_0.html ENGR101/ENGR101_3_0.html ENGR101/ENGR101_4_0.html ENGR101/ENGR101_5_0.html ENGR101/ENGR101_6_0.html ENGR101/ENGR101_7_0.html

@@ -212,7 +212,18 @@ class InteractiveScanner {
 						const _hloCfg = _ualCfg.heading_led_owner;
 						const _hloOn = !!_hloCfg && _hloCfg.enabled !== false
 							&& !(typeof process !== "undefined" && process.env && process.env[_hloCfg.env || "UNCLASSHEAD_OFF"]);
-						const _hloMemberTags = new Set((_hloCfg?.member_form_tags ?? ["h2", "h3", "h4", "h5"]).map((t) => String(t).toLowerCase()));
+						// ROUND 407 (the autonomous loop's session 27, Round 12): THE HEADING-LED NUMBERED OPENER
+						// TAKES THE OWNER FORM TOO. The member form kept for an h2–h5-led lead is an EMPTY box: the
+						// heading is the walk's first item and headings terminate, so the bundle holds only the
+						// opener — the page ships the box with its `no content captured` flag alone and the
+						// heading / prose / table free AFTER it. The gold's same-numbered box holds that section
+						// INSIDE (h3 + widget / prose / table on 61 of 75 writer-owned empty boxes, 0.81 —
+						// outputs/_s27_r12_emptyowner.py). With empty_walk_owner on, member_form_tags is ignored
+						// and the owner form applies to every heading-led lead. Env HEADLEDOWNER_OFF.
+						const _ewoCfg = _hloCfg?.empty_walk_owner;
+						const _ewoOn = _hloOn && !!_ewoCfg && _ewoCfg.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[_ewoCfg.env || "HEADLEDOWNER_OFF"]);
+						const _hloMemberTags = new Set(_ewoOn ? [] : (_hloCfg?.member_form_tags ?? ["h2", "h3", "h4", "h5"]).map((t) => String(t).toLowerCase()));
 						const _ualLeadHeads = items.slice(i + 1, j).some((x) => _ualHeading(x)
 							&& (!_hloOn || _hloMemberTags.has(String(x.parse?.primary?.tag || "").toLowerCase())));
 						if (_ualLeadHeads) {

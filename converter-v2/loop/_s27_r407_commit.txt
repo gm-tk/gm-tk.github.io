@@ -1,0 +1,29 @@
+r407 (260619.78): the heading-led numbered opener takes the owner form too — unclassified_activity_lead.heading_led_owner.empty_walk_owner (HEADLEDOWNER_OFF); scoped ship #2; session 27 STOPPED on the budget
+
+A writer's numbered `[Activity N]` opener directly followed by an `[H2]`–`[H5]` heading kept the r362 / r363
+MEMBER form: the heading ends the member walk at once, so the bundle held only the opener and the page shipped
+an EMPTY box (the `no content captured` flag alone) with the heading / prose / table free AFTER it. Counted on
+the paired pages of the r406 corpus (_s27_r12_emptyowner.py): 75 writer-owned empty boxes on 53 pages / 31
+modules; the gold's same-numbered box holds the section INSIDE — h3 + widget 43, h3 + prose 13, h3 + table 3,
+widget 2 = 61 / 75 = 0.81. With the flag on, member_form_tags is ignored and every heading-led numbered opener
+takes the r362 owner form (opener -> activityOwner, heading + prose -> activityLeadItems, members from the
+first table). The typed-widget empty boxes (the normal path's, 20) are the recorded follow-up.
+
+Session 27 Round 12 (the autonomous loop; the budget's last round). Probe OFF = disk 2109/2109, ON = 56 pages /
+24 modules; scored on the ON pages 32 up / 6 down / 16 same (+114.0) before regenerating — the dips named
+(MXFUN01_6_2 -11.5 / MXFUN01_5_0 -5.9 the r362-named type-and-check tables now inside the hand-off box,
+AGH1008_3_0 -4.6 the gold's absent box #2C, TEDC401_1_0 -1.6, MXEO401_3_0 -1.4, XTAS102_1_0 -0.9). SCOPED
+regeneration of the 24: 0 truly stale, probe ON == disk 197/197; ledger scoped #2 since the r405 full.
+
+Gates: skeleton 54.025 -> 54.084 % (+0.0583pp; 38 movers 32 up / 6 down, 0 outside the affected set),
+>=50 1176 -> 1181, >=75 200 -> 202, >=90 18, RAW 38.012 -> 38.022 %; compare_structure exact 11795 -> 11779 =
+the text-matched pool 13813 -> 13794 (the r344 relocation class), EXTRA 172 / MISSING 626 EXACT; body_compare
+over-capture 42, runaway 4 -> 5 (ENGI202_2_0, named), EMPTY 173 -> 170, ANY 218 -> 216; clean 2079 / 2102,
+leak 26 / 23 EXACT; every verifier RESULT identical to r406; 15 selftests + the feature-index selftest GREEN.
+Miner re-mined: 169 -> 168 CANDIDATE (the `activity MISSING div.col-12 > h3` row under the floor).
+
+Session 27 STOPPED on the §4 budget (12 rounds; 9 shipped + 1 declined-inert + 2 PICK passes): skeleton
+53.695 -> 54.084 %, >=50 1163 -> 1181, >=75 195 -> 202. LOOP_STATE.md carries the STOPPED entry and the
+"Next session starts with:" line; the session-26 STOPPED entry moved to the archive.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

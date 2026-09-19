@@ -1,0 +1,563 @@
+OSSC401: identical 5 / changed 0
+OSSC501: identical 6 / changed 0
+OSSM301: identical 5 / changed 0
+OSSM401: identical 5 / changed 0
+PES1001: identical 10 / changed 0
+PES1002: identical 11 / changed 0
+PES1003: identical 11 / changed 0
+PES1004: identical 11 / changed 0
+PES1005: identical 12 / changed 0
+PES1007: identical 12 / changed 0
+PES1008: identical 19 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1004: identical 4 / changed 0
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+PHE1007: identical 10 / changed 0
+PHE1008: identical 6 / changed 0
+PNR101: identical 2 / changed 0
+PNR102: identical 3 / changed 0
+PNR104: identical 3 / changed 0
+SCCH301: identical 9 / changed 0
+SCFUN01: identical 1 / changed 0
+SCPH301: identical 9 / changed 0
+SSCI205: identical 10 / changed 0
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+SSOG101: identical 8 / changed 0
+SSOG103: identical 7 / changed 0
+SSOG301: identical 8 / changed 0
+  ~ TEDC401_1_0.html: -29 +24
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Self-assessment</h3>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="TEDC401-01-06" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="22" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #22: selectionBox — Activity (inline) — 
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> [Checkbox] / Which one sounds most like the current reality of your file‑management? / • “My files are … 
+     - </tr>
+     - <tr>
+     - <td> [Slider] / How confident do you feel with metadata right now? / (1 = huh? … 5 = easy!) / 1 5</td>
+     - </tr>
+     - <tr>
+     - <td> [thought bubble] / Do a kaitiakitanga check: / Ask yourself, do I: / ✔ respect ownership of digital conte
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <h3>Self-assessment</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="TEDC401-01-06" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="21" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: unclassified — Activity 1H — see TE
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [Checkbox] / Which one sounds most like the current reality of your file‑management? / • “My files are … 
+     + </tr>
+     + <tr>
+     + <td> [Slider] / How confident do you feel with metadata right now? / (1 = huh? … 5 = easy!) / 1 5</td>
+     + </tr>
+     + <tr>
+     + <td> [thought bubble] / Do a kaitiakitanga check: / Ask yourself, do I: / ✔ respect ownership of digital conte
+     + </tr>
+     + … 4 more added
+  ~ TEDC401_2_0.html: -27 +27
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="TEDC401-02-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="26" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #26: selectionBox — Activity (inline) — 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="28" data-cv2-ref="TEDC401-02-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="28" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #28: tabs (ideally each 'landing tab' ha
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="32" data-cv2-ref="TEDC401-02-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="32" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #32: tabs + speechBubble — Activity 2C —
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="35" data-cv2-ref="TEDC401-02-04" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="35" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #35: shapeHover (with circles (bolded ) 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="38" data-cv2-ref="TEDC401-02-05" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="38" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #38: dragAndDrop — Activity (inline) — s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="40" data-cv2-ref="TEDC401-02-06" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="40" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #40: carousel (external nav or a series 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="43" data-cv2-ref="TEDC401-02-07" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="43" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #43: unclassified — Activity (inline) — 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="44" data-cv2-ref="TEDC401-02-08" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="44" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #44: speechBubble — Activity (inline) — 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="45" data-cv2-ref="TEDC401-02-09" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="45" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #45: multiChoiceQuiz — Activity (inline)
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="TEDC401-02-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: selectionBox — Activity (inline) — 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="27" data-cv2-ref="TEDC401-02-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="27" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #27: tabs (ideally each 'landing tab' ha
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="31" data-cv2-ref="TEDC401-02-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="31" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #31: tabs + speechBubble — Activity 2C —
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="34" data-cv2-ref="TEDC401-02-04" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="34" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #34: shapeHover (with circles (bolded ) 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="37" data-cv2-ref="TEDC401-02-05" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="37" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #37: dragAndDrop — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="39" data-cv2-ref="TEDC401-02-06" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="39" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #39: carousel (external nav or a series 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="42" data-cv2-ref="TEDC401-02-07" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="42" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + … 7 more added
+  ~ TEDC401_3_0.html: -24 +24
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="48" data-cv2-ref="TEDC401-03-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="48" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #48: unclassified + speechBubble + speec
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="52" data-cv2-ref="TEDC401-03-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="52" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #52: multiChoiceQuiz + multiChoiceQuiz —
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="53" data-cv2-ref="TEDC401-03-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="53" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #53: hint — Activity (inline) — see TEDC
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="54" data-cv2-ref="TEDC401-03-04" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="54" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #54: dragAndDrop (matching matches are) 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="55" data-cv2-ref="TEDC401-03-05" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="55" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #55: hint — Activity (inline) — see TEDC
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="60" data-cv2-ref="TEDC401-03-06" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="60" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #60: accordion + speechBubble (could be 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="61" data-cv2-ref="TEDC401-03-07" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="61" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #61: selectionBox — Activity (inline) — 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="67" data-cv2-ref="TEDC401-03-08" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="67" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #67: multiChoiceQuiz (go to) — Activity 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="47" data-cv2-ref="TEDC401-03-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="47" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #47: unclassified + speechBubble + speec
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="51" data-cv2-ref="TEDC401-03-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="51" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #51: multiChoiceQuiz + multiChoiceQuiz —
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="52" data-cv2-ref="TEDC401-03-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="52" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #52: hint — Activity (inline) — see TEDC
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="53" data-cv2-ref="TEDC401-03-04" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="53" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #53: dragAndDrop (matching matches are) 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="54" data-cv2-ref="TEDC401-03-05" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="54" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #54: hint — Activity (inline) — see TEDC
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="59" data-cv2-ref="TEDC401-03-06" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="59" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #59: accordion + speechBubble (could be 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="60" data-cv2-ref="TEDC401-03-07" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="60" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + … 4 more added
+  ~ TEDC401_4_0.html: -89 +75
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="77" data-cv2-ref="TEDC401-04-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="77" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #77: tabs — Activity (inline) — see TEDC
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="78" data-cv2-ref="TEDC401-04-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="78" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #78: dragAndDrop + speechBubble (matchin
+     - <h3>Your turn: build your prototype</h3>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="81" data-cv2-ref="TEDC401-04-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="81" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #81: accordion — Activity (inline) — see
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Level up your prototype</h3>
+     - <div class="bubble-basic no-hover bubble-top">
+     - <p>You’ve built your prototype, nice work. Now it’s time to make it better. This is what real designers do in 
+     - <p>“Learn more about the design process”]</p>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Image] avatar ‘Jo’ thumbs up<b
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="86" data-cv2-ref="TEDC401-04-04" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="86" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #86: tabs — Activity (inline) — see TEDC
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> [tab title: Level up!] / Time to level up your prototype! / This is where your prototype becomes somethin
+     - <th> [alert] to the right pls / <i>If you already have a prototype → use your own design.</i> / <i>If you don’
+     - </tr>
+     - <tr>
+     - <td></td>
+     - <td>Prototype main screen example / [insert image or re-create] </td>
+     - <td>Prototype secondary screen example / [insert image or re-create] </td>
+     - </tr>
+     - <tr>
+     - <td> [tab title: Level 1] <b>Level 1: Does it work?</b> / [Body] Goal: To confirm that your prototype can <i>d
+     - </tr>
+     - <tr>
+     - <td> [tab title: Level 2] <b>Level 2: What do users notice first?</b> / [Body] Goal: Ensure the user’s eyes go
+     - … 49 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="76" data-cv2-ref="TEDC401-04-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="76" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #76: tabs — Activity (inline) — see TEDC
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="77" data-cv2-ref="TEDC401-04-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="77" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #77: dragAndDrop + speechBubble (matchin
+     + <h3>Your turn: build your prototype</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="80" data-cv2-ref="TEDC401-04-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="80" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #80: accordion — Activity (inline) — see
+     + <h3>Level up your prototype</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="83" data-cv2-ref="TEDC401-04-04" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="83" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #83: unclassified + tabs + speechBubble 
+     + <th> [Image] avatar ‘Jo’ thumbs up Handsome Business Man Set Stock Illustration - Download Image Now - Men, Ch
+     + they refine immediately. This is the difference between ‘I made something’ and ‘I designed something.’</th>
+     + <th> [insert image of labelled design process- Phase 4 design process (pls highlight/animate the ‘Prototype’ c
+     + <th> [insert button link to TEFUN04 (again) - Using Design Processes, text: “Learn more about the design proce
+     + <div class="table-responsive">
+     + … 55 more added
+  ~ TEDC401_5_0.html: -14 +14
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="94" data-cv2-ref="TEDC401-05-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="94" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #94: selectionBox + speechBubble + tabs 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="95" data-cv2-ref="TEDC401-05-02" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #95: tabs + speechBubble — Activity 5B —
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="97" data-cv2-ref="TEDC401-05-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="97" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #97: multiChoiceQuiz — Activity (inline)
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="99" data-cv2-ref="TEDC401-05-04" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="99" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #99: unclassified + speechBubble — Activ
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="100" data-cv2-ref="TEDC401-05-05" style="border: 8px 
+     - <div class="cv2-interactive" data-cv2-index="100" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #100: selectionBox — Activity (inline) —
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="90" data-cv2-ref="TEDC401-05-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="90" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #90: selectionBox + speechBubble + tabs 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="91" data-cv2-ref="TEDC401-05-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="91" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #91: tabs + speechBubble — Activity 5B —
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="93" data-cv2-ref="TEDC401-05-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="93" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #93: multiChoiceQuiz — Activity (inline)
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="95" data-cv2-ref="TEDC401-05-04" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #95: unclassified + speechBubble — Activ
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="96" data-cv2-ref="TEDC401-05-05" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="96" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #96: selectionBox — Activity (inline) — 
+  ~ TEDC401_6_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="103" data-cv2-ref="TEDC401-06-01" style="border: 8px 
+     - <div class="cv2-interactive" data-cv2-index="103" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #103: speechBubble + speechBubble — Acti
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="99" data-cv2-ref="TEDC401-06-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="99" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #99: speechBubble + speechBubble — Activ
+TEDC401: identical 2 / changed 6
+TEDC402: identical 11 / changed 0
+TEFUN01: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+TRR107: identical 3 / changed 0
+TRR108: identical 3 / changed 0
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR203: identical 4 / changed 0
+TRR301: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+TWHA906: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+XDLS501: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+XDLS901: identical 5 / changed 0
+XDLS902: identical 8 / changed 0
+XDLS903: identical 8 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS906: identical 8 / changed 0
+XDLS908: identical 9 / changed 0
+  ~ XDLS909_2_0.html: -36 +44
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     - <h3>Practise introducing yourself. Complete these sentences with your hoa ako.</h3>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Ko</th>
+     - <th></th>
+     - <th>taku ingoa.</th>
+     - </tr>
+     - <tr>
+     - <td><i>My name is</i></td>
+     - <td></td>
+     - <td><i>.</i></td>
+     - </tr>
+     - <tr>
+     - <td><b>No</b></td>
+     - <td></td>
+     - <td><b>ahau. (I am from)</b></td>
+     - </tr>
+     - <tr>
+     - <td><i>I am from</i></td>
+     - <td></td>
+     - <td><i>.</i></td>
+     - </tr>
+     - </table>
+     - <p>You can dropbox a video or audio of you doing this.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="XDLS909-02-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: speechBubble + flipCard — Activity 
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [clickDrop] marker — no content 
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <h3>Practise introducing yourself. Complete these sentences with your hoa ako.</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="XDLS909-02-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: unclassified + clickDrop — Activity 
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th><b>Ko</b></th>
+     + <th></th>
+     + <th><b>taku ingoa.</b></th>
+     + </tr>
+     + <tr>
+     + <td><i>My name is</i></td>
+     + <td></td>
+     + <td><i>.</i></td>
+     + </tr>
+     + <tr>
+     + <td><b>No</b></td>
+     + <td></td>
+     + … 24 more added
+  ~ XDLS909_3_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="XDLS909-03-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: flipCard — Activity (inline) — see 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="XDLS909-03-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: accordion + clickDrop — Activity 3A
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="XDLS909-03-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: flipCard — Activity (inline) — see 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="XDLS909-03-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="18" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: accordion + clickDrop — Activity 3A
+  ~ XDLS909_4_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="XDLS909-04-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: accordion — Activity (inline) — see
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="XDLS909-04-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: dragAndDrop — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="XDLS909-04-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: accordion — Activity (inline) — see
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="XDLS909-04-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: dragAndDrop — Activity (inline) — s
+XDLS909: identical 2 / changed 3
+XDLS911: identical 2 / changed 0
+XDLS912: identical 6 / changed 0
+XFUN01: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+XGF9001: identical 7 / changed 0
+XGF9002: identical 10 / changed 0
+  ~ XGF9003_1_3.html: -43 +39
+     - <p>Memory card game</p>
+     - <h4>Matching pairs</h4>
+     - <p>Memory card matching games are great for strengthening your working memory because they make you remember w
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> This.... </th>
+     - <th> Matches with this </th>
+     - </tr>
+     - <tr>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1423179028" alt="Reali
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1219243078" alt="Mobil
+     - </tr>
+     - <tr>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1411635454" alt="Color
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1795051595" alt="Afric
+     - </tr>
+     - <tr>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1134278860" alt="White
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-460552225" alt="Xbox O
+     - </tr>
+     - <tr>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-606215724" alt="Skateb
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-877160910" alt="Bike H
+     - </tr>
+     - <tr>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1049314242" alt="Smili
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1331374113" alt="Horse
+     - </tr>
+     - <tr>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-618214356" alt="Basket
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1220760256" alt="21 Bu
+     - </tr>
+     - <tr>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-97688073" alt="Sandals
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1983784095" alt="Waihi
+     - </tr>
+     - </table>
+     - </div>
+     - <div class="row">
+     - … 3 more removed
+     + <h3>Memory card game</h3>
+     + <p>Matching pairs</p>
+     + <p>Memory card matching games are great for strengthening your working memory because they make you remember w
+     + <th> This.... </th>
+     + <th> Matches with this </th>
+     + <td> [Image] <a href="https://www.istockphoto.com/vector/realistic-mobile-phone-mockup-app-template-isolated-s
+     + <td> [Image] <a href="https://www.istockphoto.com/photo/mobile-phone-charging-cable-isolated-on-white-backgrou
+     + <td> [Image] <a href="https://www.istockphoto.com/photo/colorful-purple-sneakers-isolated-over-white-studio-ba
+     + <td> [Image] <a href="https://www.istockphoto.com/photo/african-american-national-basketball-superstar-player-
+     + <td> [Image] <a href="https://www.istockphoto.com/photo/white-gamepad-on-white-uniform-background-minimalism-c
+     + <td> [Image] <a href="https://www.istockphoto.com/photo/xbox-one-gm460552225-30934796" target="_blank">https:/
+     + <td> [Image] <a href="https://www.istockphoto.com/photo/skateboard-gm606215724-103957467" target="_blank">http
+     + <td> [Image] <a href="https://www.istockphoto.com/photo/bike-helmet-gm877160910-244792413" target="_blank">htt
+     + <tr>
+     + <td> [Image] <a href="https://www.istockphoto.com/photo/smiling-young-horsewoman-in-uniform-holding-horseman-s
+     + <td> [Image] <a href="https://www.istockphoto.com/photo/horse-jumping-over-hurdle-gm1331374113-414532028" targ
+     + </tr>
+     + <tr>
+     + <td> [Image] <a href="https://www.istockphoto.com/photo/basket-of-famous-fast-food-french-fries-gm618214356-10
+     + <td> [Image] <a href="https://www.istockphoto.com/photo/21-burger-on-a-black-background-for-the-menu-black-and
+     + … 19 more added
+XGF9003: identical 5 / changed 1
+XGF9004: identical 18 / changed 0
+XGF9006: identical 8 / changed 0
+XLP01: identical 5 / changed 0
+XLP02: identical 7 / changed 0
+XLP03: identical 6 / changed 0
+XLP04: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+XLP06: identical 3 / changed 0
+XMES101: identical 9 / changed 0
+XMES102: identical 6 / changed 0
+XMES103: identical 6 / changed 0
+XMES201: identical 6 / changed 0
+XMES203: identical 6 / changed 0
+XTAS101: identical 5 / changed 0
+  ~ XTAS102_1_0.html: -65 +49
+     - <div class="activity" number="1B">
+     - <p>Sound and picture match</p>
+     - <h3>Sounds we hear</h3>
+     - <p>When we go to places we like to visit there are sounds. Sounds are things we can hear with our ears.</p>
+     - <p>Can you touch your ears to show where they are?</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2160275016" alt="A Woman P
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2160275016.jpg" alt="A Woman Puts Her Hand to He
+     - <p>A sound we hear at the marae will be different to a sound we hear at the beach.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Dev team to insert</p>
+     - <p><a href="https://mytekuraschool.sharepoint.com/:w:/s/TeAraWhakamua381/ERXSAZxyuKFIl9Wg3Lndy8YBHJCU1ngjdGM-b
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/when-hovering-or-clicking-on.jpg" alt="" /> -->
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" /><!-- <img cla
+     - <th><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" /><!-- <img cla
+     - </tr>
+     - <tr>
+     - <td> Sound: audio sound</td>
+     - <td> Sound: audio sound</td>
+     - </tr>
+     - </table>
+     - <p>Let’s try matching these sounds to their places.</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> Sound A / Swimming sounds</th>
+     - <th> Sound B / skateboards</th>
+     - <th> Sound C / Guitar</th>
+     - <th> Sound D / Horse galloping</th>
+     - </tr>
+     - </table>
+     - <div class="col-md-3 col-12">
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1183202559" alt="Love Stor
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1183202559.jpg" alt="Love Story" /> -->
+     - <div class="col-md-3 col-12">
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-596345112" alt="Learning t
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-596345112.jpg" alt="Learning to Play the Guitar 
+     - <div class="col-md-3 col-12">
+     - … 25 more removed
+     + <div class="activity dropbox" number="1B">
+     + <h3>Sound and picture match</h3>
+     + <p>Sounds we hear</p>
+     + <p>When we go to places we like to visit there are sounds. Sounds are things we can hear with our ears.</p>
+     + <p>Can you touch your ears to show where they are?</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2160275016" alt="A Woman P
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2160275016.jpg" alt="A Woman Puts Her Hand to He
+     + <p>A sound we hear at the marae will be different to a sound we hear at the beach.</p>
+     + <p>sound to play</p>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/when-hovering-or-clicking-on.jpg" alt="" /> -->
+     + <th> [image] Marae</th>
+     + <th> [image] beach</th>
+     + <td> Sound: audio sound</td>
+     + <td> Sound: audio sound</td>
+     + <p>[</p>
+     + <p>Let’s try matching these sounds to their places.</p>
+     + <th> Sound A / Swimming sounds</th>
+     + <th> Sound B / skateboards</th>
+     + <th> Sound C / Guitar</th>
+     + … 29 more added
+XTAS102: identical 5 / changed 1
+XTAS103: identical 7 / changed 0
+XWHA01: identical 2 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 537 / changed 11 / missing 0 over 105 modules
+CHANGED: TEDC401/TEDC401_1_0.html TEDC401/TEDC401_2_0.html TEDC401/TEDC401_3_0.html TEDC401/TEDC401_4_0.html TEDC401/TEDC401_5_0.html TEDC401/TEDC401_6_0.html XDLS909/XDLS909_2_0.html XDLS909/XDLS909_3_0.html XDLS909/XDLS909_4_0.html XGF9003/XGF9003_1_3.html XTAS102/XTAS102_1_0.html

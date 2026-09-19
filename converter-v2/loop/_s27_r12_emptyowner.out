@@ -1,0 +1,78 @@
+writer-owned EMPTY boxes (the `no content captured` flag alone): 75 on 53 pages / 31 modules
+flag types: {'unclassified': 52, 'dragAndDrop': 14, 'multiChoiceQuiz': 6, 'radioQuiz': 1, 'dropDown': 1, 'selectionBox': 1}
+what follows on the Claude page (next 4 elements):
+    12  h3 p p p
+    10  h3 p p table
+     6  h3 W:cv2-interactive W:cv2-interactive p
+     3  h4 p p table
+     3  h3 p img p
+     2  h3 p ul p
+     2  h3 p table h3
+     2  h3 p W:speechBubble p
+     2  h3 p table img
+     2  h3 p p W:cv2-interactive
+     2  h3 p W:cv2-interactive W:cv2-interactive
+     2  h3 table p p
+     2  h3 W:cv2-interactive table W:speechBubble
+     2  h4 p table p
+     1  h3 ol p p
+the gold's same-numbered box:
+    43  gold: h3+widget
+    14  gold: no box of that number
+    13  gold: h3+prose-only
+     3  gold: h3+table
+     2  gold: widget
+gold widget kinds: {'dragAndDrop': 16, 'speechBubble': 5, 'mcqOptions': 5, 'table': 5, 'carousel': 4, 'typing': 4, 'dropQuiz': 3, 'reorder': 3, 'flipCardsContainer': 1, 'clickDrop': 1, 'tabs': 1}
+by template/subject:
+   Standard/1-10 Mathematics                {'widget': 1, 'h3+widget': 9, 'h3+table': 3, 'h3+prose-only': 3, 'gold-absent': 4}
+   Standard/None                            {'h3+widget': 13, 'h3+prose-only': 2, 'widget': 1}
+   Standard/1-10 English                    {'gold-absent': 1, 'h3+widget': 10, 'h3+prose-only': 3}
+   Standard/NCEA1                           {'h3+widget': 3, 'gold-absent': 2, 'h3+prose-only': 3}
+   Fundamentals/1-10 Mathematics            {'h3+widget': 3, 'gold-absent': 2}
+   Fundamentals/1-10 Technology             {'h3+widget': 3, 'h3+prose-only': 2}
+   Fundamentals/1-10 Health and PE          {'gold-absent': 1, 'h3+widget': 1}
+   Inquiry/Te ara Whakapuawa -Wellbeing     {'gold-absent': 2}
+   Standard/ConnectED                       {'h3+widget': 1}
+   Standard/EXPlore                         {'gold-absent': 1}
+   Inquiry/Leaving to Learn                 {'gold-absent': 1}
+examples:
+   AGH1005/AGH1005_2_0.html #2A [dragAndDrop] follows «h3 p p p» gold h3+widget
+   AGH1006/AGH1006_4_0.html #4B [radioQuiz] follows «h3 ol p p» gold ABSENT
+   AGH1008/AGH1008_3_0.html #2C [unclassified] follows «h3 p ul p» gold ABSENT
+   CEDO105/CEDO105_1_0.html #1A [unclassified] follows «h3 p img h4» gold h3+widget
+   ENGI102/ENGI102_4_0.html #2C [unclassified] follows «h3 p p table» gold ABSENT
+   ENGI102/ENGI102_8_0.html #4A [unclassified] follows «h3 p p table» gold h3+widget
+   ENGI102/ENGI102_8_0.html #4B [unclassified] follows «h3 p p table» gold h3+widget
+   ENGI102/ENGI102_8_0.html #4C [unclassified] follows «h3 p p table» gold h3+widget
+   ENGI102/ENGI102_10_0.html #5A [unclassified] follows «h4 p p table» gold h3+widget
+   ENGI102/ENGI102_10_0.html #5B [unclassified] follows «h4 p p table» gold h3+widget
+   ENGI102/ENGI102_10_0.html #5C [unclassified] follows «h4 p p table» gold h3+widget
+   ENGI102/ENGI102_10_0.html #5D [unclassified] follows «h3 p table h3» gold h3+prose-only
+   ENGI202/ENGI202_1_0.html #1A [unclassified] follows «h3 p W:speechBubble p» gold h3+widget
+   ENGI202/ENGI202_2_0.html #2A [unclassified] follows «h3 p ol h4» gold h3+prose-only
+   ENGI202/ENGI202_2_0.html #2E [unclassified] follows «h3 p img W:speechBubble» gold h3+widget
+   ENGI202/ENGI202_3_0.html #3D [unclassified] follows «h3 p W:speechBubble p» gold h3+widget
+   ENGI202/ENGI202_4_0.html #4A [unclassified] follows «h3 p ol W:speechBubble» gold h3+widget
+   ENGR101/ENGR101_2_0.html #2C [unclassified] follows «h3 W:cv2-interactive W:cv2-interactive p» gold h3+prose-only
+   EXIP901/EXIP901_2_0.html #2A [multiChoiceQuiz] follows «h3 p p p» gold ABSENT
+   HES1005/HES1005_7_0.html #7C [dragAndDrop] follows «ul» gold h3+prose-only
+   HIS1002/HIS1002_2_0.html #1A [dropDown] follows «h3 p p p» gold h3+widget
+   HIS1002/HIS1002_19_0.html #10B [unclassified] follows «h3 p ul p» gold h3+prose-only
+   HIS1008/HIS1008_6_0.html #5B [unclassified] follows «h3 p ol p» gold h3+widget
+   HIS1008/HIS1008_6_0.html #5C [unclassified] follows «h3 p p p» gold h3+prose-only
+   HPFUN103/HPFUN103_0_0.html #3A [unclassified] follows «h3 p table img» gold ABSENT
+   HPFUN403/HPFUN403_0_0.html #1A [unclassified] follows «h3 p p W:cv2-interactive» gold h3+widget
+   HPRE203/HPRE203_2_0.html #2B [unclassified] follows «h3 p W:cv2-interactive W:cv2-interactive» gold h3+widget
+   MXEO401/MXEO401_1_0.html #1B [unclassified] follows «h3 p img table» gold widget
+   MXEO401/MXEO401_2_0.html #2D [unclassified] follows «h3 p table h3» gold h3+widget
+   MXEO401/MXEO401_3_0.html #3A [unclassified] follows «h3 p p table» gold h3+widget
+   MXEX201/MXEX201_1_0.html #1A [unclassified] follows «h3 p h3 p» gold h3+widget
+   MXEX302/MXEX302_4_0.html #4B [unclassified] follows «h3 p table p» gold h3+table
+   MXEX302/MXEX302_5_0.html #5A [unclassified] follows «h3 p img p» gold h3+widget
+   MXEX302/MXEX302_5_0.html #5B [unclassified] follows «h3 p img p» gold h3+widget
+   MXEX302/MXEX302_5_0.html #5D [unclassified] follows «h3 p p table» gold h3+widget
+   MXEX302/MXEX302_6_0.html #6C [unclassified] follows «h3 p p p» gold h3+prose-only
+   MXFL104/MXFL104_4_0.html #4B [unclassified] follows «h3 p p table» gold h3+table
+   MXFL203/MXFL203_2_0.html #2D [unclassified] follows «h3 p p ul» gold h3+widget
+   MXFL203/MXFL203_3_0.html #3C [unclassified] follows «h3 p img img» gold h3+widget
+   MXFL203/MXFL203_8_0.html #8D [unclassified] follows «h3 p p p» gold h3+prose-only
