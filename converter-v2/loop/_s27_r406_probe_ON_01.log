@@ -1,0 +1,369 @@
+BLL242: identical 3 / changed 0
+BLL244: identical 3 / changed 0
+BLL245: identical 3 / changed 0
+BLL246: identical 3 / changed 0
+BLL251: identical 3 / changed 0
+BLL252: identical 3 / changed 0
+BLL253: identical 3 / changed 0
+BLL254: identical 3 / changed 0
+BLL262: identical 3 / changed 0
+BLL263: identical 3 / changed 0
+BLLR201: identical 8 / changed 0
+CEDK101: identical 1 / changed 0
+CEDK102: identical 1 / changed 0
+CEDK501: identical 14 / changed 0
+CEDO102: identical 1 / changed 0
+CEDO105: identical 6 / changed 0
+CEDO202: identical 1 / changed 0
+CEDO301: identical 6 / changed 0
+CEDO501: identical 16 / changed 0
+CEDO502: identical 10 / changed 0
+CEDR201: identical 1 / changed 0
+CEDR204: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDR302: identical 1 / changed 0
+CEDR501: identical 11 / changed 0
+CEDT101: identical 1 / changed 0
+CEDT104: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDT208: identical 1 / changed 0
+CEDT301: identical 7 / changed 0
+CEDT404: identical 1 / changed 0
+CEDT501: identical 15 / changed 0
+CEDW101: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+CEDW501: identical 13 / changed 0
+CHFUN01: identical 1 / changed 0
+CHFUN04: identical 1 / changed 0
+CHFUN05: identical 1 / changed 0
+CHFUN06: identical 1 / changed 0
+CHFUN07: identical 1 / changed 0
+ENFUN01: identical 1 / changed 0
+ENFUN02: identical 1 / changed 0
+ENFUN03: identical 1 / changed 0
+ENFUN04: identical 1 / changed 0
+ENFUN05: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+ENFUN08: identical 1 / changed 0
+ENFUN09: identical 1 / changed 0
+ENG1004: identical 8 / changed 0
+ENG1005: identical 6 / changed 0
+ENG1007: identical 1 / changed 0
+ENGC101: identical 6 / changed 0
+ENGC102: identical 8 / changed 0
+ENGC201: identical 7 / changed 0
+ENGC202: identical 9 / changed 0
+ENGC301: identical 8 / changed 0
+ENGC302: identical 8 / changed 0
+ENGC401: identical 8 / changed 0
+ENGFUN02: identical 5 / changed 0
+ENGI101: identical 4 / changed 0
+  ~ ENGI102_8_0.html: -3 +36
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="ENGI102-04-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: wordFind — Activity 4D — see ENGI102
+     + <div class="activity" number="4A">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     + <div class="activity" number="4B">
+     + <div class="row">
+     + <div class="col-12">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity" number="4C">
+     + <div class="row">
+     + <div class="col-12">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + … 16 more added
+  ~ ENGI102_10_0.html: -0 +33
+     + <div class="activity" number="5A">
+     + <div class="activity" number="5B">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     + <div class="activity" number="5C">
+     + <div class="row">
+     + <div class="col-12">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-12">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [unclassified] marker — no conte
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + … 13 more added
+ENGI102: identical 5 / changed 2
+ENGI103: identical 7 / changed 0
+ENGI201: identical 5 / changed 0
+ENGI202: identical 7 / changed 0
+ENGI203: identical 11 / changed 0
+ENGI301: identical 6 / changed 0
+ENGI302: identical 7 / changed 0
+ENGI303: identical 7 / changed 0
+ENGI400: identical 4 / changed 0
+ENGI401: identical 12 / changed 0
+ENGI405: identical 8 / changed 0
+ENGJ101: identical 5 / changed 0
+ENGJ102: identical 6 / changed 0
+ENGJ201: identical 7 / changed 0
+ENGJ202: identical 6 / changed 0
+ENGJ301: identical 8 / changed 0
+ENGJ302: identical 10 / changed 0
+  ~ ENGJ402_3_0.html: -36 +39
+     - <h4>The parts of a sonnet</h4>
+     - <p>In the following activity drag and drop the definition next to the word that best matches it. This is a sel
+     - <div class="dragAndDrop" layout="standard">
+     - <div class="row">
+     - <div class="col-6 questionContainer">
+     - <div class="question"><p>A sonnet’s themes are usually:</p></div>
+     - <div class="question"><p>The structure of a sonnet:</p></div>
+     - <div class="question"><p>The rhyming scheme of a sonnet:</p></div>
+     - <div class="question"><p>Iambic Pentameter:</p></div>
+     - <div class="question"><p>The rhythm of iambic pentameter is:</p></div>
+     - <div class="col-6 ddContainer">
+     - <div class="dropContainer">
+     - <div class="drop" option="1"></div>
+     - <div class="drop" option="2"></div>
+     - <div class="drop" option="3"></div>
+     - <div class="drop" option="4"></div>
+     - <div class="drop" option="5"></div>
+     - <div class="dragContainer">
+     - <div class="drag" option="1"><p>love, beauty, mortality, and the passage of time.</p></div>
+     - <div class="drag" option="2"><p>Usually has fourteen lines</p></div>
+     - <div class="drag" option="3"><p>Is usually Iambic Pentameter</p></div>
+     - <div class="drag" option="4"><p>Has ten syllables per line</p></div>
+     - <div class="drag" option="5"><p>The rhythm of a heartbeat duh-DUM! duh-DUM!</p></div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="activityButton reset">Reset</div>
+     - <div class="activityButton undo hidden">Undo</div>
+     - <div class="activityButton checkAnswer hidden">Check answers</div>
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: with correct answers, please au
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [modal] marker — no content capt
+     - </div>
+     - </div>
+     + <h3>The parts of a sonnet</h3>
+     + <p>In the following activity drag and drop the definition next to the word that best matches it. This is a sel
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="ENGJ402-03-04" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: dragAndDrop + modal (with correct , 
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>A sonnet’s themes are usually:</th>
+     + <th>love, beauty, mortality, and the passage of time.</th>
+     + </tr>
+     + <tr>
+     + <td>The structure of a sonnet:</td>
+     + <td>Usually has fourteen lines</td>
+     + </tr>
+     + … 19 more added
+  ~ ENGJ402_6_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="ENGJ402-06-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: unclassified — Activity 6A — see EN
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="ENGJ402-06-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: unclassified — Activity 6A — see EN
+ENGJ402: identical 7 / changed 2
+ENGJ403: identical 10 / changed 0
+ENGR101: identical 8 / changed 0
+ENGR102: identical 7 / changed 0
+ENGR201: identical 7 / changed 0
+ENGR202: identical 8 / changed 0
+ENGR301: identical 9 / changed 0
+ENGR302: identical 8 / changed 0
+ENGS101: identical 6 / changed 0
+ENGS102: identical 7 / changed 0
+ENGS201: identical 9 / changed 0
+ENGS202: identical 7 / changed 0
+ENGS301: identical 8 / changed 0
+  ~ ENGS302_2_0.html: -19 +39
+     - <p><b>Match the character to the description</b></p>
+     - <li>In this activity you will read the description about the character and then drag it to the correct charact
+     - <div class="activity interactive" number="2A">
+     - <ul>
+     - </ul>
+     - <p>Plot how the characters change over time</p>
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: dragAndDrop (can we create a fun loo
+     - <p><b>Character development in</b> <b>Two Cars, One Night</b></p>
+     - <p>You are now going to return to your Learning Journal for this module and share with your kaiako what you ha
+     - <ul>
+     - <li>Why do we have characters in films?</li>
+     - <li>Describe what protagonist and antagonist characters are in films?</li>
+     - <li>Describe the main characters in <i>Two Cars, One Night.</i></li>
+     - <li>Say who the protagonist and antagonist characters are in this film and why you think that.</li>
+     - <li>Describe what the main conflict in the film was and how it was resolved.</li>
+     - <li>Write a short reflection on how the characters in <i>Two Cars, One Night</i> change from the beginning to 
+     - <li>Finally, let your kaiako know about a personal connection you have to the film. What was something you cou
+     - </ul>
+     - <p>Before handing this important piece of mahi into your kaiako, please make sure you have written about all t
+     + <div class="activity" number="1A">
+     + <h3>Match the character to the description</h3>
+     + <ul>
+     + <li>In this activity you will read the description about the character and then drag it to the correct charact
+     + </ul>
+     + <div class="activity interactive" number="2B">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Plot how the characters change over time</h3>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: dragAndDrop (can we create a fun loo
+     + </div>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity" number="2C">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Character development in Two Cars, One Night</h3>
+     + <p>You are now going to return to your Learning Journal for this module and share with your kaiako what you ha
+     + … 19 more added
+  ~ ENGS302_3_0.html: -65 +89
+     - <p><b>Identifying themes</b></p>
+     - <p>Below are a list of themes found in the film. Match the correct description to go with the theme.</p>
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: dragAndDrop (please make a where the
+     - <p><b>Symbols crossword</b></p>
+     - <p>Below are some clues to help you solve this crossword. All the answers are either themes or symbols found i
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="ENGS302-03-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: crossword (please create a using the
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> Friendship </th>
+     - <th> Starsky and Kenny share this special bond. </th>
+     - </tr>
+     - <tr>
+     - <td> Birds </td>
+     - <td> These creatures symbolise time passing while Starsky waits. </td>
+     - </tr>
+     - <tr>
+     - <td> Pies </td>
+     - <td> A comforting food that is used to symbolise friendship and connection. </td>
+     - </tr>
+     - <tr>
+     - <td> Family </td>
+     - <td> Starsky wants to connect with his father, highlighting this important theme. </td>
+     - </tr>
+     - <tr>
+     - <td> Dairy </td>
+     - <td> A place where people gather to connect with each other and buy supplies. </td>
+     - </tr>
+     - <tr>
+     - <td> Raro </td>
+     - <td> A popular powdered drink mix in New Zealand, symbolising connection with others. </td>
+     - </tr>
+     - <tr>
+     - … 25 more removed
+     + <h3>Identifying themes</h3>
+     + <p>Below are a list of themes found in the film. Match the correct description to go with the theme.</p>
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: dragAndDrop (please make a where the
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity interactive" number="3B">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Symbols crossword</h3>
+     + <p>Below are some clues to help you solve this crossword. All the answers are either themes or symbols found i
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="ENGS302-03-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: crossword (please create a using the
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + … 69 more added
+  ~ ENGS302_6_0.html: -26 +32
+     - <p><b>Reflecting on editing in film</b></p>
+     - <p>As we wrap up Lesson 6 on editing in films, it’s time to reflect on what we’ve learned and how we can apply
+     - <h5>Reflection questions</h5>
+     - <li><b>Understanding key concepts:</b>
+     - <ol>
+     - <li><b>What is editing in film?</b> Describe in your own words what editing involves and why it is crucial in 
+     - <li><b>Why is editing important?</b> Reflect on how editing sets the pace of the film and helps to tell the st
+     - </ol></li>
+     - <li><b>Analysing techniques:</b>
+     - <ol>
+     - <li><b>Cut:</b> Think about the example from <i>Space Invaders.</i> How did the simple cuts between Max and hi
+     - <li><b>Montage:</b> Reflect on the montage sequence from <i>Samoan Tales: Farm Boys.</i> How did the series of
+     - <li><b>Jump cut:</b> Consider the jump cut in <i>Space Invaders.</i> How did this technique create a dramatic 
+     - <li><b>Long shots:</b> In the film <i>Ma,</i> how did the use of long shots contribute to the portrayal of the
+     - <li><b>Cross-cutting:</b> Reflect on the scene from <i>Manurewa.</i> How did the cross-cutting between the you
+     - <li><b>Fade:</b> Think about the use of fades in <i>Aiga</i>. How did the fade in and fade out transitions ind
+     - </ol></li>
+     - <li><b>Personal Reflection:</b>
+     - <ol>
+     - <li><b>Favourite technique:</b> Which editing technique did you find most interesting or effective? Why?</li>
+     - <li><b>Application:</b> How might you use these editing techniques in your own storytelling or filmmaking proj
+     - </ol></li>
+     - <p>Write your reflections in your Learning Journal. Be creative and thoughtful in your responses. This is your
+     - <p>Before handing this important piece of mahi in to your kaiako, please make sure you have written about all 
+     - <ol>
+     - </ol>
+     + <div class="activity" number="6C">
+     + <h3>Reflecting on editing in film</h3>
+     + <p>As we wrap up Lesson 6 on editing in films, it’s time to reflect on what we’ve learned and how we can apply
+     + <h5>Reflection questions</h5>
+     + <li><b>Understanding key concepts:</b>
+     + <li><b>What is editing in film?</b> Describe in your own words what editing involves and why it is crucial in 
+     + <li><b>Why is editing important?</b> Reflect on how editing sets the pace of the film and helps to tell the st
+     + <li><b>Analysing techniques:</b>
+     + <li><b>Cut:</b> Think about the example from <i>Space Invaders.</i> How did the simple cuts between Max and hi
+     + <li><b>Montage:</b> Reflect on the montage sequence from <i>Samoan Tales: Farm Boys.</i> How did the series of
+     + <li><b>Jump cut:</b> Consider the jump cut in <i>Space Invaders.</i> How did this technique create a dramatic 
+     + <li><b>Long shots:</b> In the film <i>Ma,</i> how did the use of long shots contribute to the portrayal of the
+     + <li><b>Cross-cutting:</b> Reflect on the scene from <i>Manurewa.</i> How did the cross-cutting between the you
+     + <li><b>Fade:</b> Think about the use of fades in <i>Aiga</i>. How did the fade in and fade out transitions ind
+     + <li><b>Personal Reflection:</b>
+     + <li><b>Favourite technique:</b> Which editing technique did you find most interesting or effective? Why?</li>
+     + <li><b>Application:</b> How might you use these editing techniques in your own storytelling or filmmaking proj
+     + <p>Write your reflections in your Learning Journal. Be creative and thoughtful in your responses. This is your
+     + <p>Before handing this important piece of mahi in to your kaiako, please make sure you have written about all 
+     + <ol>
+     + … 12 more added
+ENGS302: identical 4 / changed 3
+ENGS401: identical 7 / changed 0
+ENGS405: identical 1 / changed 0
+EXBP901: identical 6 / changed 0
+EXIP901: identical 6 / changed 0
+EXPFUN02: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+EXPFUN04: identical 1 / changed 0
+
+TOTAL: identical 502 / changed 7 / missing 0 over 102 modules
+CHANGED: ENGI102/ENGI102_8_0.html ENGI102/ENGI102_10_0.html ENGJ402/ENGJ402_3_0.html ENGJ402/ENGJ402_6_0.html ENGS302/ENGS302_2_0.html ENGS302/ENGS302_3_0.html ENGS302/ENGS302_6_0.html

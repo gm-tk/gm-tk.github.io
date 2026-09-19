@@ -1,0 +1,27 @@
+r406 (260619.77): the bracket-less red `Activity 4A` line is the `[Activity 4A]` opener — opener_rule.bare_red_opener (BAREACT_OFF); scoped ship #1 since the r405 full
+
+A writer colours the activity opener red but types no brackets (`Activity 4A`, then `[H4] Check your
+understanding` + a red instruction + the answer table — ENGI102 lesson 8, whose gold ships box 4A with a
+built dragAndDrop); the span parsed as noise with no primary and the box never opened. Sized on the parsed
+WTs: 36 sites / 14 modules, 27 on the 8 tracked ones, the gold's box count exceeding Claude's on every one
+(ENGI102 16 vs 9, PES1001 20 vs 9, TWHA902 27 vs 1). InteractiveScanner.#bareRedOpeners (a pre-pass beside
+#idHeadingOpeners) re-parses a tag-less, primary-less red span whose ENTIRE folded text matches the pattern
+(`activity <id>`, optional bold markers / colon) in place as the typed `[Activity <ID>]` opener — the r148
+bare-lead class; a whole-span exact predicate cannot over-fire on prose. The data block had first been
+inserted one level too deep (the ON probe changed 0 pages); the item dump proved the span arrived as a
+no-primary tag and the block was relocated.
+
+Session 27 Round 11 (the autonomous loop). Probe OFF = disk 2109/2109, ON = 15 pages / 7 modules (ANZH101,
+ENGI102, ENGJ402, ENGS302, PES1001, SSFUN06, TWHA902); scored on the ON pages 9 up / 3 down / 3 same
+(+47.8) before regenerating — the dips named (ENGS302_6_0 -4.0 alignment on a page whose gold boxes 6C too,
+PES1001_10_0 -3.6 the gold's colon-split title, PES1001_1_0 -1.9 the gold's own un-boxed 1B). SCOPED
+regeneration of the 7: 0 truly stale, probe ON == disk 39/39; ledger scoped #1.
+
+Gates: skeleton 54.001 -> 54.025 % (+0.0244pp; 12 movers 9 up / 3 down, 0 outside the affected set),
+>=50 1175 -> 1176 (PES1001_2_0), >=75 200 / >=90 18 EXACT, RAW 38.008 -> 38.012 %; compare_structure exact
+11796 -> 11795 = the text-matched pool 13814 -> 13813 (the r344 relocation class), EXTRA 172 / MISSING 626
+EXACT; body_compare 42 / 4 / 173 / 218, clean 2079 / 2102, leak 26 / 23 — EXACT; every verifier RESULT
+identical to r405; 15 selftests + the feature-index selftest GREEN. Miner re-mined: 169 CANDIDATE (nothing
+gone, nothing new). Plateau window RESET (0 of 3).
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

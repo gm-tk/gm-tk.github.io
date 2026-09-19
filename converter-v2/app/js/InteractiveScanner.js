@@ -107,6 +107,13 @@ class InteractiveScanner {
 		// pages (their number is a table row); never beside a typed opener with the same id.
 		// Data: BoundaryBank._meta.opener_rule.id_heading_opener   Env: IDHEAD_OFF
 		this.#idHeadingOpeners(items, normaliser, run, page, reoMode);
+		// ROUND 406 (the autonomous loop's session 27, Round 11): a bracket-less red `Activity 4A` line — the
+		// writer coloured the opener but typed no brackets, so it parses as noise with no primary and the box
+		// never opens (ENGI102 lesson 8's four `Activity 4A` + `[H4] Check your understanding` + the answer
+		// table; the gold's box 4A) — is the `[Activity 4A]` opener (the r148 bare-lead class). A red span
+		// whose ENTIRE folded text is the word + id is re-parsed in place; a longer sentence never matches.
+		// Data: BoundaryBank._meta.opener_rule.bare_red_opener   Env: BAREACT_OFF
+		this.#bareRedOpeners(items, normaliser, run, page, reoMode);
 
 		// rolling context: the most recent heading/element text, so each
 		// bundle can say where it sits ("After heading …") for the manifest
@@ -1600,6 +1607,36 @@ class InteractiveScanner {
 	/** ROUND 364 — re-tag an id-carrying heading (`[H3] 1A Spot the place value`) as the
 	 *  `[Activity 1A]` opener it is, in place. See ScanPage's call site and the data _doc
 	 *  (opener_rule.id_heading_opener). Returns the number of items re-tagged. */
+	/**
+	 * ROUND 406 — the bracket-less red `Activity 4A` opener (see the ScanPage call site). Returns the count re-parsed.
+	 */
+	static #bareRedOpeners(items, normaliser, run, page, reoMode) {
+		const cfg = DataService.Data.BoundaryBank?._meta?.opener_rule?.bare_red_opener;
+		if (!cfg || cfg.enabled === false || reoMode || !normaliser) return 0;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "BAREACT_OFF"]) return 0;
+		const re = new RegExp(cfg.pattern ?? "^\\**\\s*activity\\s+(\\d{1,2}[a-z]?)\\s*\\**\\s*[:.]?\\s*$", "i");
+		const strip = (s) => String(s ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\s+/g, " ").trim();
+		let n = 0;
+		for (const it of items) {
+			if (it.type !== "tag" || it.consumedBy !== undefined || it.parse?.primary) continue;
+			if ((it.parse?.tags ?? []).length) continue;                 // a span that resolved any tag is not a bare line
+			const m = strip(it.text).match(re);
+			if (!m) continue;
+			const id = m[1].toUpperCase();
+			const parsed = normaliser.Parse(`[Activity ${id}] `);
+			if (!parsed || parsed.primary?.tag !== "activity") continue;
+			it._bareRedOpener = { raw: it.text };
+			it.text = `[Activity ${id}]`;
+			it.parse = parsed;
+			n++;
+		}
+		if (n && run && typeof run.AddNote === "function") {
+			run.AddNote("info", "InteractiveScanner",
+				`Page ${page?.lessonLabel ?? "?"}: ${n} bracket-less red "Activity N" line(s) re-parsed as [Activity N] openers (opener_rule.bare_red_opener).`);
+		}
+		return n;
+	};
+
 	static #idHeadingOpeners(items, normaliser, run, page, reoMode) {
 		const cfg = DataService.Data.BoundaryBank?._meta?.opener_rule?.id_heading_opener;
 		if (!cfg || cfg.enabled === false || reoMode || !normaliser) return 0;

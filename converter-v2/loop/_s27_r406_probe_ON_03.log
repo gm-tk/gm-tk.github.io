@@ -1,0 +1,378 @@
+OSSC401: identical 5 / changed 0
+OSSC501: identical 6 / changed 0
+OSSM301: identical 5 / changed 0
+OSSM401: identical 5 / changed 0
+  ~ PES1001_1_0.html: -37 +47
+     - <p>: Think about how each of these atua may be associated with the different Earth spheres below:</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="1" data-cv2-ref="PES1001-01-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="1" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: flipCard — Activity (inline) — see P
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Atua Māori</th>
+     - <th></th>
+     - <th>Flip</th>
+     - </tr>
+     - <tr>
+     - <td>Tangaroa</td>
+     - <td></td>
+     - <td>Hydrosphere – Tangaroa is god of the sea / Biosphere – Tangaroa also has domain over the living things of 
+     - </tr>
+     - <tr>
+     - <td>Tāne Mahuta</td>
+     - <td></td>
+     - <td>Biosphere – Tāne Mahuta is god of the forest and the things that live there</td>
+     - </tr>
+     - <tr>
+     - <td>Tāwhirimātea</td>
+     - <td></td>
+     - <td>Atmosphere – Tāwhirimātea is god of the weather, his children are the winds, the clouds, mist and fog</td>
+     - </tr>
+     - <tr>
+     - <td>Rūaumoko</td>
+     - <td></td>
+     - <td>Geosphere – Rūaumoko is god of earthquakes and volcanoes. His movements below cause fire and earthquakes.<
+     - </tr>
+     - </table>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="activity" number="1B">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>: Think about how each of these atua may be associated with the different Earth spheres below:</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="1" data-cv2-ref="PES1001-01-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="1" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: flipCard — Activity 1B — see PES1001
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>Atua Māori</th>
+     + <th></th>
+     + <th>Flip</th>
+     + … 27 more added
+  ~ PES1001_2_0.html: -57 +105
+     - <p>Earth’s structure Self-check: True or false?</p>
+     - <p>Decide whether the following statements are true or false.</p>
+     - <th>Description</th>
+     - <th>True</th>
+     - <th>False</th>
+     - <td>The geosphere includes everything on Earth</td>
+     - <td></td>
+     - <td></td>
+     - <tr>
+     - <td>The core of the Earth is made of metal</td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td>The crust is the thickest layer of the Earth</td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td>Volcanoes are one way the geosphere interacts with the atmosphere</td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td>There are three kinds of crust: oceanic crust, continental crust, and molten crust</td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <p><b>Reset</b></p>
+     - <tr>
+     - </tr>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - <p>Multichoice or Mix and match?</p>
+     - <p>Guess the landform: Use the image and text to decide which processes formed the landforms</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - … 17 more removed
+     + <div class="activity" number="2A">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Earth’s structure Self-check: True or false?</h3>
+     + <p>Decide whether the following statements are true or false.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="PES1001-02-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: unclassified — Activity 2A — see PES
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th><b>Description</b></th>
+     + <th><b>True</b></th>
+     + <th><b>False</b></th>
+     + </tr>
+     + … 85 more added
+  ~ PES1001_3_0.html: -11 +35
+     - <p>Drag and drop labels to describe parts of the rock cycle</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>sedimentary rock / igneous or volcanic rock / metamorphic rock / magma / erosion / sedimentation / heat an
+     - <td>Image: <a href="https://commons.wikimedia.org/wiki/File:Rockcycle.jpg" target="_blank">https://commons.wik
+     - </tr>
+     - <tr>
+     - <td>(answers: 1 magma, 2 cooling and crystallisation, 3 igneous or volcanic rock, 4 erosion, 5 sedimentation, 
+     - </tr>
+     - </table>
+     + <div class="activity" number="3A">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Drag and drop labels to describe parts of the rock cycle</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="PES1001-03-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: unclassified — Activity 3A — see PES
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>sedimentary rock / igneous or volcanic rock / metamorphic rock / magma / erosion / sedimentation / heat an
+     + <th>Image: <a href="https://commons.wikimedia.org/wiki/File:Rockcycle.jpg" target="_blank">https://commons.wik
+     + </tr>
+     + <tr>
+     + <td>(answers: 1 magma, 2 cooling and crystallisation, 3 igneous or volcanic rock, 4 erosion, 5 sedimentation, 
+     + … 15 more added
+  ~ PES1001_9_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="PES1001-08-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: unclassified — Activity 9A — see PES
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="PES1001-08-02" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: flipCard (with) — Activity 9B — see 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="PES1001-08-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: unclassified — Activity 9A — see PES
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="PES1001-08-02" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: flipCard (with) — Activity 9B — see 
+  ~ PES1001_10_0.html: -14 +24
+     - <p>Vocabulary review: Type the answers to the questions below. Each question has a one-word answer.</p>
+     - <ul>
+     - <li>What is the sphere representing all the water on the Earth&#39;s surface?</li>
+     - <li>Which sphere includes all living organisms on Earth?</li>
+     - <li>The layer of gases surrounding Earth is known as the what?</li>
+     - <li>The solid part of Earth&#39;s surface, including rocks and soil, is called the what?</li>
+     - <li>What is the process by which plants use sunlight to convert carbon dioxide and water into glucose and oxyg
+     - <li>The continuous movement of water between the atmosphere, land, and oceans is known as what cycle?</li>
+     - <li>What word, starting with B, describes the variety of life and ecosystems on Earth?</li>
+     - <li>What is the layer of Earth beneath the crust and above the core called?</li>
+     - <li>The process of rocks breaking down and wearing away is called what?</li>
+     - <li>What is the term for the &quot;effect&quot; of gases that trap heat near the Earth&#39;s surface, maintain
+     - </ul>
+     - <p><b>Check your answers.</b></p>
+     + <div class="activity" number="10A">
+     + <h3>Vocabulary review: Type the answers to the questions below. Each question has a one-word answer.</h3>
+     + <ul>
+     + <li>What is the sphere representing all the water on the Earth&#39;s surface?</li>
+     + <li>Which sphere includes all living organisms on Earth?</li>
+     + <li>The layer of gases surrounding Earth is known as the what?</li>
+     + <li>The solid part of Earth&#39;s surface, including rocks and soil, is called the what?</li>
+     + <li>What is the process by which plants use sunlight to convert carbon dioxide and water into glucose and oxyg
+     + <li>The continuous movement of water between the atmosphere, land, and oceans is known as what cycle?</li>
+     + <li>What word, starting with B, describes the variety of life and ecosystems on Earth?</li>
+     + <li>What is the layer of Earth beneath the crust and above the core called?</li>
+     + <li>The process of rocks breaking down and wearing away is called what?</li>
+     + <li>What is the term for the &quot;effect&quot; of gases that trap heat near the Earth&#39;s surface, maintain
+     + </ul>
+     + <p><b>Check your answers.</b></p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="row">
+     + <div class="col-12">
+     + </div>
+     + … 4 more added
+PES1001: identical 5 / changed 5
+PES1002: identical 11 / changed 0
+PES1003: identical 11 / changed 0
+PES1004: identical 11 / changed 0
+PES1005: identical 12 / changed 0
+PES1007: identical 12 / changed 0
+PES1008: identical 19 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1004: identical 4 / changed 0
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+PHE1007: identical 10 / changed 0
+PHE1008: identical 6 / changed 0
+PNR101: identical 2 / changed 0
+PNR102: identical 3 / changed 0
+PNR104: identical 3 / changed 0
+SCCH301: identical 9 / changed 0
+SCFUN01: identical 1 / changed 0
+SCPH301: identical 9 / changed 0
+SSCI205: identical 10 / changed 0
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+  ~ SSFUN06_0_0.html: -1 +1
+     - <div class="activity">
+     + <div class="activity" number="1B">
+SSFUN06: identical 0 / changed 1
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+SSOG101: identical 8 / changed 0
+SSOG103: identical 7 / changed 0
+SSOG301: identical 8 / changed 0
+TEDC401: identical 8 / changed 0
+TEDC402: identical 11 / changed 0
+TEFUN01: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+TRR107: identical 3 / changed 0
+TRR108: identical 3 / changed 0
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR203: identical 4 / changed 0
+TRR301: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+TWHA901: identical 1 / changed 0
+  ~ TWHA902_0_0.html: -169 +160
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="TWHA902-00-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Dev same four options for the drop do
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: dropDown — Activity (inline) — see T
+     - <p>Choose the feeling</p>
+     - <p>Read the statement and then select the correct feeling that matches with the statement.</p>
+     - <p>Body language is like a secret code that our bodies use to talk without words. It’s the way we move, stand,
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="TWHA902-00-04" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: flipCard — Activity (inline) — see T
+     - <p><a href="https://www.istockphoto.com/photo/portrait-of-smiling-smart-school-boy-wearing-braces-on-teeth-loo
+     - <p>Smiling means you’re happy or friendly.</p>
+     - <p><a href="https://www.istockphoto.com/photo/upset-little-kid-boy-with-arms-crossed-at-home-gm690853212-12739
+     - <p>Crossing your arms might mean you’re feeling upset or defensive.</p>
+     - <p><a href="https://www.istockphoto.com/photo/adorable-boy-gives-thumbs-up-in-preschool-gm886934266-246223304?
+     - <p>Thumbs up or nodding your head shows you agree with someone.</p>
+     - <p><a href="https://www.istockphoto.com/photo/teenage-girl-with-purple-hair-rolling-her-eyes-gm1312018611-4009
+     - <p>Rolling your eyes can mean you’re annoyed or don’t believe something.</p>
+     - <p>It’s like a special language that most people can understand, even if they don’t speak the same words.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="TWHA902-00-05" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p>Communication timeline</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: timeline note: title: timeline of com
+     - <div class="activity interactive" number="1920">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="TWHA902-00-06" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: timeline + multiChoiceQuiz (title: t
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="TWHA902-00-07" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="TWHA902-00-08" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div style="font-size: 0.95em">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="TWHA902-00-09" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - … 129 more removed
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Dev same four options for the drop do
+     + <div class="activity" number="2A">
+     + <h3>Choose the feeling</h3>
+     + <p>Read the statement and then select the correct feeling that matches with the statement.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="TWHA902-00-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: unclassified + flipCard — Activity 2
+     + <p>Body language is like a secret code that our bodies use to talk without words. It’s the way we move, stand,
+     + <p><a href="https://www.istockphoto.com/photo/portrait-of-smiling-smart-school-boy-wearing-braces-on-teeth-loo
+     + <p>Smiling means you’re happy or friendly.</p>
+     + <p><a href="https://www.istockphoto.com/photo/upset-little-kid-boy-with-arms-crossed-at-home-gm690853212-12739
+     + <p>Crossing your arms might mean you’re feeling upset or defensive.</p>
+     + <p><a href="https://www.istockphoto.com/photo/adorable-boy-gives-thumbs-up-in-preschool-gm886934266-246223304?
+     + <p>Thumbs up or nodding your head shows you agree with someone.</p>
+     + <p><a href="https://www.istockphoto.com/photo/teenage-girl-with-purple-hair-rolling-her-eyes-gm1312018611-4009
+     + <p>Rolling your eyes can mean you’re annoyed or don’t believe something.</p>
+     + <p>It’s like a special language that most people can understand, even if they don’t speak the same words.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="TWHA902-00-04" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + … 140 more added
+TWHA902: identical 0 / changed 1
+TWHA903: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+TWHA906: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+XDLS501: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+XDLS901: identical 5 / changed 0
+XDLS902: identical 8 / changed 0
+XDLS903: identical 8 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS906: identical 8 / changed 0
+XDLS908: identical 9 / changed 0
+XDLS909: identical 5 / changed 0
+XDLS911: identical 2 / changed 0
+XDLS912: identical 6 / changed 0
+XFUN01: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+XGF9001: identical 7 / changed 0
+XGF9002: identical 10 / changed 0
+XGF9003: identical 6 / changed 0
+XGF9004: identical 18 / changed 0
+XGF9006: identical 8 / changed 0
+XLP01: identical 5 / changed 0
+XLP02: identical 7 / changed 0
+XLP03: identical 6 / changed 0
+XLP04: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+XLP06: identical 3 / changed 0
+XMES101: identical 9 / changed 0
+XMES102: identical 6 / changed 0
+XMES103: identical 6 / changed 0
+XMES201: identical 6 / changed 0
+XMES203: identical 6 / changed 0
+XTAS101: identical 5 / changed 0
+XTAS102: identical 6 / changed 0
+XTAS103: identical 7 / changed 0
+XWHA01: identical 2 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 541 / changed 7 / missing 0 over 105 modules
+CHANGED: PES1001/PES1001_1_0.html PES1001/PES1001_2_0.html PES1001/PES1001_3_0.html PES1001/PES1001_9_0.html PES1001/PES1001_10_0.html SSFUN06/SSFUN06_0_0.html TWHA902/TWHA902_0_0.html

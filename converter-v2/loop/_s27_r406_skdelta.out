@@ -1,0 +1,7 @@
+scaffold 54.0009 -> 54.0253 (+0.0244pp); RAW 38.008 -> 38.012; pairs 1956 -> 1956, skipped 0 -> 0
+movers 12: up 9 / down 3; pp-sum +47.8; outside affected 0
+worst: [(-4.0, 'ENGS302_6_0.html'), (-3.6, 'PES1001_10_0.html'), (-1.9, 'PES1001_1_0.html'), (0.8, 'ENGI102_8_0.html'), (1.4, 'ENGJ402_3_0.html'), (3.3, 'ENGS302_3_0.html')]
+best: [(4.3, 'TWHA902_0_0.html'), (4.6, 'ENGI102_10_0.html'), (5.5, 'PES1001_3_0.html'), (5.8, 'ANZH101_3_0.html'), (9.0, 'ENGS302_2_0.html'), (22.6, 'PES1001_2_0.html')]
+>= 50: 1175 -> 1176 up: [('PES1001', 'PES1001_2_0.html')] down: []
+>= 75: 200 -> 200 up: [] down: []
+>= 90: 18 -> 18 up: [] down: []

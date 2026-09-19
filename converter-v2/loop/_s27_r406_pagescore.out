@@ -1,0 +1,23 @@
+changed paired pages 15: up 9 / down 3 / same 3; pp-sum +47.8; mean delta +3.19pp per changed page
+worst 12:
+  ENGS302 ENGS302_6_0.html 42.8 -> 38.8 (-4.0)
+  PES1001 PES1001_10_0.html 55.6 -> 51.9 (-3.6)
+  PES1001 PES1001_1_0.html 41.9 -> 40.0 (-1.9)
+  ENGJ402 ENGJ402_6_0.html 24.5 -> 24.5 (+0.0)
+  PES1001 PES1001_9_0.html 74.0 -> 74.0 (+0.0)
+  SSFUN06 SSFUN06_0_0.html 49.6 -> 49.6 (+0.0)
+  ENGI102 ENGI102_8_0.html 27.7 -> 28.6 (+0.8)
+  ENGJ402 ENGJ402_3_0.html 57.5 -> 58.9 (+1.4)
+  ENGS302 ENGS302_3_0.html 50.8 -> 54.1 (+3.3)
+  TWHA902 TWHA902_0_0.html 22.5 -> 26.8 (+4.3)
+  ENGI102 ENGI102_10_0.html 35.5 -> 40.1 (+4.6)
+  PES1001 PES1001_3_0.html 37.5 -> 43.0 (+5.5)
+best 8:
+  ENGJ402 ENGJ402_3_0.html 57.5 -> 58.9 (+1.4)
+  ENGS302 ENGS302_3_0.html 50.8 -> 54.1 (+3.3)
+  TWHA902 TWHA902_0_0.html 22.5 -> 26.8 (+4.3)
+  ENGI102 ENGI102_10_0.html 35.5 -> 40.1 (+4.6)
+  PES1001 PES1001_3_0.html 37.5 -> 43.0 (+5.5)
+  ANZH101 ANZH101_3_0.html 28.4 -> 34.2 (+5.8)
+  ENGS302 ENGS302_2_0.html 56.9 -> 65.8 (+9.0)
+  PES1001 PES1001_2_0.html 36.4 -> 59.0 (+22.6)
