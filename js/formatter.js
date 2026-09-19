@@ -8,6 +8,62 @@
 class OutputFormatter {
 
     /**
+     * The activity-table template notice (session 28, Task 2 — the XOTP dialect).
+     * A data-shaped switch: `enabled` false (or `window.PF_ACTIVITY_TABLE_NOTICE_OFF`
+     * set, the A/B toggle) restores the plain "[TITLE BAR] marker not found" warning
+     * for every document. `header` is the folded two-cell header row that identifies
+     * the shape; `scan_rows` is how deep into a table the header row may sit (the
+     * XOTP tables open with a merged title row, so the header is the SECOND row).
+     */
+    static ACTIVITY_TABLE_NOTICE = {
+        enabled: true,
+        header: ['section heading', 'text/activity'],
+        scan_rows: 3,
+        message: 'ℹ Activity-table template detected (a "Section heading | Text/Activity" table, no red tags) — no [TITLE BAR] expected. Showing all extracted content.'
+    };
+
+    /**
+     * Is this document the activity-table dialect? True when any table's first
+     * `scan_rows` rows hold exactly two cells whose folded text is the header pair.
+     * @param {Array} content - the parser's content blocks
+     * @returns {boolean}
+     */
+    _isActivityTableDoc(content) {
+        const cfg = OutputFormatter.ACTIVITY_TABLE_NOTICE;
+        if (!cfg || cfg.enabled === false) return false;
+        if (typeof window !== 'undefined' && window.PF_ACTIVITY_TABLE_NOTICE_OFF) return false;
+        const fold = (cell) => {
+            const parts = [];
+            for (let p = 0; p < (cell.paragraphs || []).length; p++) {
+                const para = cell.paragraphs[p];
+                if (!para || para.nestedTable) continue;
+                let t = para.text;
+                if ((t === undefined || t === null) && para.runs) {
+                    t = para.runs.map((r) => r.text || '').join('');
+                }
+                if (t) parts.push(t);
+            }
+            return parts.join(' ').replace(/[*_]/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
+        };
+        const want = cfg.header.map((h) => String(h).toLowerCase());
+        for (let i = 0; i < (content || []).length; i++) {
+            const block = content[i];
+            if (!block || block.type !== 'table' || !block.data || !block.data.rows) continue;
+            const rows = block.data.rows;
+            for (let r = 0; r < Math.min(rows.length, cfg.scan_rows || 3); r++) {
+                const cells = rows[r].cells || [];
+                if (cells.length !== want.length) continue;
+                let ok = true;
+                for (let c = 0; c < want.length; c++) {
+                    if (fold(cells[c]) !== want[c]) { ok = false; break; }
+                }
+                if (ok) return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Format everything: metadata header + content.
      * @param {Object} parserResult - Result from DocxParser.parse()
      * @returns {{ full: string, metadataOnly: string, contentOnly: string }}
@@ -79,7 +135,17 @@ class OutputFormatter {
 
         if (!startFound) {
             lines.push('');
-            lines.push('⚠ [TITLE BAR] marker not found. Showing all extracted content.');
+            // The XOTP activity-table dialect (12 modules, September 2026 intake) carries
+            // NO red tags at all: its structure is a two-column "Section heading | Text/
+            // Activity" table, so "[TITLE BAR] not found" is the expected shape, not a
+            // failure. Say so plainly instead of a warning that reads like breakage.
+            // The header row is the detector (present in all 12, nothing else in the
+            // 762-docx corpus) — never the CS: line (the six G / O modules have none).
+            if (this._isActivityTableDoc(content)) {
+                lines.push(OutputFormatter.ACTIVITY_TABLE_NOTICE.message);
+            } else {
+                lines.push('⚠ [TITLE BAR] marker not found. Showing all extracted content.');
+            }
         }
 
         lines.push('');
