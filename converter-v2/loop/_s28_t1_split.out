@@ -1,0 +1,35 @@
+== compare_structure: baseline (19 Sept) vs live
+  matched                     15668 →  16414   (+746)
+  exact_chain                 13410 →  14091   (+681)
+  claude_extra_container        184 →    186   (+2)
+  claude_missing_container      685 →    690   (+5)
+  row_wrap_missing               23 →     23   (+0)
+  UNAFFECTED modules with any moved row: 0  (EXACT)
+  AFFECTED modules account for: matched +746, exact_chain +681, claude_extra_container +2, claude_missing_container +5, row_wrap_missing +0
+  EXTRA/MISSING movers (affected): JPFUN01 EXTRA +0 MISSING +1 exact +49 | WJFUN108 EXTRA +0 MISSING +1 exact +17 | WJFUN109 EXTRA +0 MISSING +1 exact +15 | WJFUN206 EXTRA +2 MISSING +0 exact +52 | WJFUN304 EXTRA +0 MISSING +2 exact +102
+
+== body_compare row keys: page, module, over_capture, biggest_widget_chars, multi_type, n_widgets, empty_widgets, claude_free_blocks, human_free_blocks, lost_blocks, biggest_banner
+  body_compare UNAFFECTED modules moved: 0 (EXACT)
+  body_compare AFFECTED modules moved: 22
+    JPFUN01: {"pages":6,"over_capture":6} → {"pages":1,"over_capture":1}
+    WJFUN105: {"pages":3,"over_capture":3} → {"pages":1,"over_capture":1}
+    WJFUN106: {"pages":2,"over_capture":2} → {"pages":1,"over_capture":1}
+    WJFUN107: {"pages":4,"over_capture":4} → {"pages":1,"over_capture":1}
+    WJFUN108: {"pages":3,"over_capture":3} → {"pages":1,"over_capture":1}
+    WJFUN109: {"pages":2,"over_capture":2} → {"pages":1,"over_capture":1}
+    WJFUN110: {"pages":2,"over_capture":2} → {"pages":1,"over_capture":1}
+    WJFUN112: {"pages":2,"over_capture":2} → {"pages":1,"over_capture":1}
+    WJFUN113: {"pages":2,"over_capture":2} → {"pages":1,"over_capture":1}
+    WJFUN115: {"pages":3,"over_capture":3} → {"pages":1,"over_capture":1}
+    WJFUN116: {"pages":3,"over_capture":3} → {"pages":1,"over_capture":1}
+    WJFUN205: {"pages":3,"over_capture":3} → {"pages":1,"over_capture":1}
+    WJFUN206: {"pages":3,"over_capture":3} → {"pages":1,"over_capture":1}
+    WJFUN208: {"pages":2,"over_capture":2} → {"pages":1,"over_capture":1}
+    WJFUN210: {"pages":3,"over_capture":3} → {"pages":1,"over_capture":1}
+    WJFUN211: {"pages":2,"over_capture":2} → {"pages":1,"over_capture":1}
+    WJFUN212: {"pages":2,"over_capture":2} → {"pages":1,"over_capture":1}
+    WJFUN304: {"pages":4,"over_capture":4} → {"pages":1,"over_capture":1}
+    WJFUN305: {"pages":4,"over_capture":4} → {"pages":1,"over_capture":1}
+    WJFUN306: {"pages":2,"over_capture":2} → {"pages":1,"over_capture":1}
+    WJFUN307: {"pages":2,"over_capture":2} → {"pages":1,"over_capture":1}
+    WJFUN308: {"pages":2,"over_capture":2} → {"pages":1,"over_capture":1}

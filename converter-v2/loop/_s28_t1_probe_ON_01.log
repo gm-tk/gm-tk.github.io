@@ -1,0 +1,2144 @@
+CEDK102: identical 1 / changed 0
+CEDK501: identical 14 / changed 0
+CEDO102: identical 1 / changed 0
+CEDO105: identical 6 / changed 0
+CEDO202: identical 1 / changed 0
+  ~ CEDO204_0_0.html: -19 +8
+     - <div class="col-md-12 col-12 paddingR">
+     - <h4><span>Learning Intentions</span></h4>
+     - <div class="col-md-6 col-12 paddingR">
+     - <h3><b>Understand:</b> Our observations and understanding of the natural world influence our designs.</h3>
+     - <h3><b>Know:</b> Humans and other animals create structures that fit a purpose.</h3>
+     - <h3><b>Do:</b> Use observations of animal-built structures to design a home for people.</h3>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <h4><span>Understand</span></h4>
+     + <p>Our observations and understanding of the natural world influence our designs.</p>
+     + <h4><span>Know</span></h4>
+     + <p>Humans and other animals create structures that fit a purpose.</p>
+     + <h4><span>Do</span></h4>
+     + <p>Use observations of animal-built structures to design a home for people.</p>
+     + <div class="col-md-6 col-12 paddingL">
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+CEDO204: identical 0 / changed 1
+CEDO301: identical 6 / changed 0
+CEDO501: identical 16 / changed 0
+CEDO502: identical 10 / changed 0
+CEDR201: identical 1 / changed 0
+CEDR204: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDR302: identical 1 / changed 0
+CEDR501: identical 11 / changed 0
+  ~ CEDT101_0_0.html: -5 +5
+     - <iframe src="https://www.youtube-nocookie.com/embed/LKFuXETZUsI" loading="lazy" title="YouTube video player" f
+     - <iframe src="https://www.youtube-nocookie.com/embed/x0Pn3mJUzZE" loading="lazy" title="YouTube video player" f
+     - <iframe src="https://www.youtube-nocookie.com/embed/T9VwmBvGEOU" loading="lazy" title="YouTube video player" f
+     - <iframe src="https://www.youtube-nocookie.com/embed/3vPI4gKWDGg" loading="lazy" title="YouTube video player" f
+     - <iframe src="https://www.youtube-nocookie.com/embed/cyVzjoj96vs" loading="lazy" title="YouTube video player" f
+     + <iframe src="https://www.youtube.com/embed/LKFuXETZUsI" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube.com/embed/x0Pn3mJUzZE" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube.com/embed/T9VwmBvGEOU" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube.com/embed/3vPI4gKWDGg" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube.com/embed/cyVzjoj96vs" loading="lazy" title="YouTube video player" frameborde
+CEDT101: identical 0 / changed 1
+  ~ CEDT104_0_0.html: -5 +5
+     - <iframe src="https://www.youtube-nocookie.com/embed/oIbrz-tS098" loading="lazy" title="YouTube video player" f
+     - <iframe src="https://www.youtube-nocookie.com/embed/y_CJFEKNvX8" loading="lazy" title="YouTube video player" f
+     - <iframe src="https://www.youtube-nocookie.com/embed/svyHrb7nNI8" loading="lazy" title="YouTube video player" f
+     - <iframe src="https://www.youtube-nocookie.com/embed/ROo6DmJ-ohU" loading="lazy" title="YouTube video player" f
+     - <iframe src="https://www.youtube-nocookie.com/embed/fWetp87FIhA" loading="lazy" title="YouTube video player" f
+     + <iframe src="https://www.youtube.com/embed/oIbrz-tS098" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube.com/embed/y_CJFEKNvX8" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube.com/embed/svyHrb7nNI8" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube.com/embed/ROo6DmJ-ohU" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube.com/embed/fWetp87FIhA" loading="lazy" title="YouTube video player" frameborde
+CEDT104: identical 0 / changed 1
+CEDT201: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDT208: identical 1 / changed 0
+CEDT301: identical 7 / changed 0
+  ~ CEDT404_0_0.html: -4 +4
+     - <iframe src="https://www.youtube-nocookie.com/embed/64M6NoFM2RI" loading="lazy" title="YouTube video player" f
+     - <iframe src="https://www.youtube-nocookie.com/embed/zRwt25M5nGw" loading="lazy" title="YouTube video player" f
+     - <iframe src="https://www.youtube-nocookie.com/embed/yBtTDQSAa_0" loading="lazy" title="YouTube video player" f
+     - <iframe src="https://www.youtube-nocookie.com/embed/QXY5TyCUTlo" loading="lazy" title="YouTube video player" f
+     + <iframe src="https://www.youtube.com/embed/64M6NoFM2RI" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube.com/embed/zRwt25M5nGw" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube.com/embed/yBtTDQSAa_0" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube.com/embed/QXY5TyCUTlo" loading="lazy" title="YouTube video player" frameborde
+CEDT404: identical 0 / changed 1
+CEDT501: identical 15 / changed 0
+CEDW101: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+CEDW501: identical 13 / changed 0
+CHFUN01: identical 1 / changed 0
+CHFUN04: identical 1 / changed 0
+CHFUN05: identical 1 / changed 0
+CHFUN06: identical 1 / changed 0
+CHFUN07: identical 1 / changed 0
+CHFUN08: identical 1 / changed 0
+  ~ CHI1003_0_0.html: -2 +3
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+  ~ CHI1003_1_0.html: -0 +1
+     + <h1><span>Pakeke, Wā me ngā Kaupeka</span></h1>
+  ~ CHI1003_2_0.html: -0 +1
+     + <h1><span>Pakeke, Wā me ngā Kaupeka</span></h1>
+  ~ CHI1003_3_0.html: -0 +1
+     + <h1><span>Pakeke, Wā me ngā Kaupeka</span></h1>
+  ~ CHI1003_4_0.html: -0 +1
+     + <h1><span>Pakeke, Wā me ngā Kaupeka</span></h1>
+  ~ CHI1003_5_0.html: -0 +1
+     + <h1><span>Pakeke, Wā me ngā Kaupeka</span></h1>
+  ~ CHI1003_6_0.html: -0 +1
+     + <h1><span>Pakeke, Wā me ngā Kaupeka</span></h1>
+  ~ CHI1003_7_0.html: -0 +1
+     + <h1><span>Pakeke, Wā me ngā Kaupeka</span></h1>
+  ~ CHI1003_8_0.html: -0 +2
+     + <h1><span>Pakeke, Wā me ngā Kaupeka</span></h1>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+CHI1003: identical 0 / changed 9
+  ~ CHI1004_0_0.html: -2 +3
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+  ~ CHI1004_1_0.html: -2 +3
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+  ~ CHI1004_9_0.html: -0 +1
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+CHI1004: identical 7 / changed 3
+  ~ CHI1005_0_0.html: -2 +3
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+  ~ CHI1005_7_0.html: -0 +1
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+CHI1005: identical 6 / changed 2
+CHWHA: identical 1 / changed 0
+  ~ COM1002_0_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div class="col-md-6 col-12">
+  ~ COM1002_1_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div class="col-md-6 col-12">
+  ~ COM1002_2_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ COM1002_3_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ COM1002_4_0.html: -7 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ COM1002_5_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ COM1002_6_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ COM1002_7_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ COM1002_8_0.html: -3 +4
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+COM1002: identical 0 / changed 9
+  ~ COM1005_0_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div class="col-md-6 col-12">
+  ~ COM1005_1_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ COM1005_2_0.html: -4 +4
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <h5>THE MĀORI ECONOMY</h5>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <h3>THE MĀORI ECONOMY</h3>
+  ~ COM1005_3_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ COM1005_5_0.html: -9 +9
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <h4>1. TAXATION</h4>
+     - <h4>2. PUBLIC GOODS AND SERVICES</h4>
+     - <h4>3. SUBSIDIES</h4>
+     - <h4>4. GOVERNMENT AS PRODUCER</h4>
+     - <h4>5. BENEFITS</h4>
+     - <h4>6. REGULATION AND POLICY</h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <h3>1. TAXATION</h3>
+     + <h3>2. PUBLIC GOODS AND SERVICES</h3>
+     + <h3>3. SUBSIDIES</h3>
+     + <h3>4. GOVERNMENT AS PRODUCER</h3>
+     + <h3>5. BENEFITS</h3>
+     + <h3>6. REGULATION AND POLICY</h3>
+  ~ COM1005_6_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ COM1005_7_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ COM1005_8_0.html: -3 +4
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+COM1005: identical 0 / changed 8
+  ~ COM1006_0_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div class="col-md-6 col-12">
+  ~ COM1006_1_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ COM1006_2_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ COM1006_3_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ COM1006_4_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ COM1006_5_0.html: -5 +5
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <h4>Question</h4>
+     - <h4>A sample answer</h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <h3>Question</h3>
+     + <h3>A sample answer</h3>
+  ~ COM1006_6_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ COM1006_7_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ COM1006_8_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ COM1006_9_0.html: -3 +4
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+COM1006: identical 0 / changed 10
+  ~ DAN1003_0_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div class="col-md-12 col-12">
+     - <h4>Whakatauki</h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div class="col-md-6 col-12">
+     + <h3>Whakatauki</h3>
+  ~ DAN1003_1_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DAN1003_2_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DAN1003_3_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DAN1003_4_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DAN1003_5_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DAN1003_6_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DAN1003_7_0.html: -11 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <h4>Important to include</h4>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>Important to include</h3>
+  ~ DAN1003_8_0.html: -11 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Important to include</h4>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>Important to include</h3>
+  ~ DAN1003_9_0.html: -14 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+DAN1003: identical 0 / changed 10
+  ~ DAN1004_0_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div class="col-md-6 col-12">
+  ~ DAN1004_1_0.html: -15 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>ACTIVITY</h4>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>ACTIVITY</h3>
+  ~ DAN1004_2_0.html: -14 +5
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Activity</h4>
+     - <h4>Activity</h4>
+     - <h4>Activity</h4>
+     - </div>
+     - </div>
+     - <h4>Activity: filming and reflecting</h4>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>Activity</h3>
+     + <h3>Activity</h3>
+     + <h3>Activity</h3>
+     + <h3>Activity: filming and reflecting</h3>
+  ~ DAN1004_9_0.html: -10 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+DAN1004: identical 0 / changed 4
+  ~ DAN1006_0_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div class="col-md-6 col-12">
+  ~ DAN1006_1_0.html: -11 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>What is contemporary dance?</h4>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>What is contemporary dance?</h3>
+  ~ DAN1006_1_1.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DAN1006_2_0.html: -14 +6
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - <h4>Activity: Rehearsing for confidence</h4>
+     - <h4>Activity: Rehearsal</h4>
+     - <h4>Activity: Performance reflection</h4>
+     - <h4>Activity: 8A Submitting your sequences for feedback</h4>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>Activity: Rehearsing for confidence</h3>
+     + <h3>Activity: Rehearsal</h3>
+     + <h3>Activity: Performance reflection</h3>
+     + <h3>Activity: 8A Submitting your sequences for feedback</h3>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+DAN1006: identical 0 / changed 4
+  ~ DTC1004_0_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div class="col-md-6 col-12">
+  ~ DTC1004_1_0.html: -11 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>The environment –</h4>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>The environment –</h3>
+  ~ DTC1004_2_0.html: -18 +5
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Who are the end-users?</h4>
+     - <h4>What is a stakeholder?</h4>
+     - <h4>End-user requirements</h4>
+     - <h4>Considering manaakitanga and kaitiakitanga</h4>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>Who are the end-users?</h3>
+     + <h3>What is a stakeholder?</h3>
+     + <h3>End-user requirements</h3>
+     + <h3>Considering manaakitanga and kaitiakitanga</h3>
+  ~ DTC1004_3_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1004_4_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1004_5_0.html: -19 +6
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Why is testing Important?</h4>
+     - <h4>How do you test?</h4>
+     - </div>
+     - <h4>Recording results of your testing</h4>
+     - </div>
+     - <h4>Iterations</h4>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>How many times do you test?</h4>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>Why is testing Important?</h3>
+     + <h3>How do you test?</h3>
+     + <h3>Recording results of your testing</h3>
+     + <h3>Iterations</h3>
+     + <h3>How many times do you test?</h3>
+  ~ DTC1004_6_0.html: -14 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1004_7_0.html: -10 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+DTC1004: identical 0 / changed 8
+  ~ DTC1005_0_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div class="col-md-6 col-12">
+  ~ DTC1005_1_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1005_2_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1005_3_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1005_4_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1005_5_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1005_6_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1005_7_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1005_8_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1005_9_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1005_10_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1005_11_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1005_12_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1005_13_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1005_14_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1005_15_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1005_16_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1005_17_0.html: -13 +4
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - <h4>Video resolution</h4>
+     - <h4>Frame rate</h4>
+     - <h4>Aspect ratios</h4>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>Video resolution</h3>
+     + <h3>Frame rate</h3>
+     + <h3>Aspect ratios</h3>
+  ~ DTC1005_18_0.html: -11 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Simple tips and techniques to improve your footage</h4>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>Simple tips and techniques to improve your footage</h3>
+  ~ DTC1005_19_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ DTC1005_20_0.html: -10 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+DTC1005: identical 0 / changed 21
+ENFUN01: identical 1 / changed 0
+ENFUN02: identical 1 / changed 0
+ENFUN03: identical 1 / changed 0
+ENFUN04: identical 1 / changed 0
+ENFUN05: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+ENFUN08: identical 1 / changed 0
+ENFUN09: identical 1 / changed 0
+ENG1004: identical 8 / changed 0
+ENG1005: identical 6 / changed 0
+ENG1007: identical 1 / changed 0
+ENGC101: identical 6 / changed 0
+ENGC102: identical 8 / changed 0
+ENGC201: identical 7 / changed 0
+ENGC202: identical 9 / changed 0
+  ~ ENGC204_0_0.html: -51 +63
+     - <div class="col-md-6 offset-md-0 col-12">
+     - <h4><span>Knowledge</span></h4>
+     - <ul>
+     - <li>Texts can be compared – examining their structure, language, and visual features – to understand the simil
+     - <li>Making changes to texts in response to feedback can improve clarity for the intended audience.</li>
+     - <li>Identifying and correcting grammar and meaning errors helps readers understand the writer’s message.</li>
+     - <li>Editing includes checking that known punctuation and layout conventions have been used correctly.</li>
+     - <li>Words and phrases such as ‘better’, ‘more effective’, and ‘important’ are used to compare ideas, explain p
+     - <li>Authors write with specific audiences and purposes in mind, and make deliberate choices to communicate par
+     - <li>Contractions follow predictable spelling patterns by leaving out certain letters and replacing them with a
+     - <li>A text’s intended audience and purpose shape its content, structure, text type, word choices, and style.</
+     - <div class="col-md-6 offset-md-0 col-12">
+     - <p>Information</p>
+     - <h5>Practices</h5>
+     - <ul>
+     - <li>Using evaluative language (e.g. ‘better’, ‘more effective’, ‘important’) to compare ideas or approaches.</
+     - <li>Anticipating and planning for audience needs and expectations, leading to more tailored and effective comm
+     - <li>Explaining how their thinking has changed or solidified in response to discussion.</li>
+     - <li>Identifying and comparing how effectively different texts use structure, language, and visual features to 
+     - <li>Making deliberate choices about what content to include or leave out in the texts they create, based on th
+     - <li>Explaining how the devices they have used help create meaning for the intended audience.</li>
+     - <li>Using a range of sentence structures and types, rearranging the order of clauses and phrases for optimal e
+     - <li>Independently reading and checking continuously while writing, throughout the school day across all learni
+     - <li>Making revisions at the word, sentence, and text structure levels, with the purpose and audience in mind.<
+     - <li>Making edits to improve the clarity of a range of texts using known punctuation and layout conventions.</l
+     - <li>Selectively accepting or rejecting audience and peer feedback and justifying their decision.</li>
+     - <li>Including headings and visual features to support the meaning of their writing.</li>
+     - <li>Interpreting key details and implied information to draw a reasoned conclusion about the whole text that i
+     - <li>Making inferences using explicit and implicit evidence, justifying the inferences using evidence from the 
+     - </ul>
+     - <p>Overview</p>
+     - <h5>Learning Intentions</h5>
+     - <h5>We are learning:</h5>
+     - <ul>
+     - <li>to read and write a clear set of instructions</li>
+     - <li>to follow steps in instructions.</li>
+     - </ul>
+     - <h5>How will I know I have learned it?</h5>
+     - <h5>I can:</h5>
+     - <ul>
+     - … 11 more removed
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-6 col-12">
+     + <p>Information</p>
+     + <h4><span>Knowledge</span></h4>
+     + <ul>
+     + <li>Texts can be compared – examining their structure, language, and visual features – to understand the simil
+     + <li>Making changes to texts in response to feedback can improve clarity for the intended audience.</li>
+     + <li>Identifying and correcting grammar and meaning errors helps readers understand the writer’s message.</li>
+     + <li>Editing includes checking that known punctuation and layout conventions have been used correctly.</li>
+     + <li>Words and phrases such as ‘better’, ‘more effective’, and ‘important’ are used to compare ideas, explain p
+     + <li>Authors write with specific audiences and purposes in mind, and make deliberate choices to communicate par
+     + <li>Contractions follow predictable spelling patterns by leaving out certain letters and replacing them with a
+     + <li>A text’s intended audience and purpose shape its content, structure, text type, word choices, and style.</
+     + </ul>
+     + … 43 more added
+ENGC204: identical 6 / changed 1
+  ~ ENGC206_0_0.html: -61 +73
+     - <div class="col-md-6 offset-md-0 col-12">
+     - <h4><span>Knowledge</span></h4>
+     - <ul>
+     - <li>Information texts include language features such as precise and topic-related vocabulary.</li>
+     - <li>Precise and topic-related vocabulary makes writing clearer and more informative, especially when explainin
+     - <li>Understanding the structure of a text and the way language is used helps with understanding that text.</li
+     - <li>Organisational features in texts such as contents, index, glossary, headings and sub-headings help with re
+     - <li>Authors make deliberate choices about specific words, structure, and visuals to guide how audiences unders
+     - <li>The number of syllables in a word is the same as the number of vowel sounds (phonemes).</li>
+     - <li>Some texts, such as pūrākau (traditional Māori stories and oral histories) are passed down to share cultur
+     - <li>Summarising involves identifying and selecting key details, then organising them to show how ideas are con
+     - <li>A text’s intended audience and purpose shape its content, structure, text type, word choices, and style.</
+     - <li>Informative texts introduce a topic and organise ideas clearly, grouping related information into paragrap
+     - <li>Informative texts end with a concluding statement, which wraps up the topic and reinforces the main idea.<
+     - <div class="col-md-6 offset-md-0 col-12">
+     - <h5>Practices</h5>
+     - <ul>
+     - <li>Decoding multi-syllable words by applying their knowledge of English and te reo Māori: phonics, syllables,
+     - <li>Exploring how authors use structure, language, and text features to communicate ideas clearly and support 
+     - <li>Writing texts to inform that: reflect personal experiences and knowledge, include precise and domain-speci
+     - <li>Explaining how authors use language to create impact, including how literal language communicates facts or
+     - <li>Identifying how people, places, or the natural world are portrayed in pūrākau and considering the messages
+     - <li>Summarising a text by organising key details to show how the ideas and messages are introduced and connect
+     - <li>Planning and writing with an audience and purpose in mind so that their writing is in the most appropriate
+     - <li>Selecting and using words and phrases that clearly express actions, feelings, situations, or conditions.</
+     - </ul>
+     - <h5>Learning Intentions</h5>
+     - <h5>We are learning:</h5>
+     - <ul>
+     - <li>to select texts based on personal interest and reflect on food experiences</li>
+     - <li>to understand and use precise and topic-related vocabulary</li>
+     - <li>to decode and read multi-syllable words</li>
+     - <li>to understand how recipes are structured and how language is used</li>
+     - <li>to identify and use features of informational writing</li>
+     - <li>to understand how authors organise ideas and communicate meaning</li>
+     - <li>to explore cultural food texts and summarise key ideas</li>
+     - <li>to extract information and transform it into a structured recipe</li>
+     - <li>to plan and write a food blog for a specific audience and purpose</li>
+     - <li>to use clear structure, vocabulary, and organisation in informative writing</li>
+     - <li>to publish a completed food blog with an introduction, recipe, and conclusion.</li>
+     - … 21 more removed
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-6 col-12">
+     + <h4><span>Knowledge</span></h4>
+     + <ul>
+     + <li>Information texts include language features such as precise and topic-related vocabulary.</li>
+     + <li>Precise and topic-related vocabulary makes writing clearer and more informative, especially when explainin
+     + <li>Understanding the structure of a text and the way language is used helps with understanding that text.</li
+     + <li>Organisational features in texts such as contents, index, glossary, headings and sub-headings help with re
+     + <li>Authors make deliberate choices about specific words, structure, and visuals to guide how audiences unders
+     + <li>The number of syllables in a word is the same as the number of vowel sounds (phonemes).</li>
+     + <li>Some texts, such as pūrākau (traditional Māori stories and oral histories) are passed down to share cultur
+     + <li>Summarising involves identifying and selecting key details, then organising them to show how ideas are con
+     + <li>A text’s intended audience and purpose shape its content, structure, text type, word choices, and style.</
+     + <li>Informative texts introduce a topic and organise ideas clearly, grouping related information into paragrap
+     + … 53 more added
+  ~ ENGC206_6_0.html: -5 +5
+     - <h4>Food and culture</h4>
+     - <h4>Pūha (poo-ha)</h4>
+     - <h4>Hāngī</h4>
+     - <h4>Summarising information</h4>
+     - <h4>My culture and food</h4>
+     + <h3>Food and culture</h3>
+     + <h3>Pūha (poo-ha)</h3>
+     + <h3>Hāngī</h3>
+     + <h3>Summarising information</h3>
+     + <h3>My culture and food</h3>
+  ~ ENGC206_7_0.html: -3 +3
+     - <h4>Writing for an audience</h4>
+     - <h4>Planning your food blog</h4>
+     - <h4>Publishing your final blog</h4>
+     + <h3>Writing for an audience</h3>
+     + <h3>Planning your food blog</h3>
+     + <h3>Publishing your final blog</h3>
+ENGC206: identical 5 / changed 3
+ENGC301: identical 8 / changed 0
+ENGC302: identical 8 / changed 0
+ENGC401: identical 8 / changed 0
+  ~ ENGC403_0_0.html: -74 +87
+     - <div class="col-md-12 col-12 paddingR">
+     - <h4><span>Overview</span></h4>
+     - <div class="col-md-6 col-12 paddingR">
+     - <h5><span>Knowledge</span></h5>
+     - <ul>
+     - <li>Text forms and genres are selected and adapted by authors to achieve specific purposes.</li>
+     - <li>clarifying purpose means recognising the communicative intention of a text (e.g., to argue a position.</li
+     - <li>clear organisation of ideas, including a strong introduction, well-structured body, and compelling conclus
+     - <li>oral communication in Aotearoa New Zealand can be shaped by rich spoken traditions, such as mihi, pepeha, 
+     - <li>critical listening involves questioning (e.g., Socratic questioning, probing questions) for the purposes o
+     - <li>misinformation (false information shared by mistake), disinformation (false information shared deliberatel
+     - <div class="col-md-6 col-12 paddingR">
+     - <p>Te tūhura i te tautohetohe</p>
+     - <h5>Learning Intentions</h5>
+     - <h5>We are learning:</h5>
+     - <ul>
+     - <li>how to argue and discuss a point of view in a logical way</li>
+     - <li>to use critical thinking to develop an argument</li>
+     - <li>to understand how to structure a persuasive or argumentative speech</li>
+     - <li>to use appropriate language and tone to respectfully present a perspective</li>
+     - <li>about how to research effectively</li>
+     - <li>about how to develop a speech by building on a main idea</li>
+     - <li>present an oral text using oral language with purpose and intention.</li>
+     - </ul>
+     - <h5>Success Criteria</h5>
+     - <h5>I can:</h5>
+     - <ul>
+     - <li>describe the structure of a persuasive or argumentative speech including introduction, PEER body paragraph
+     - <li>consider counterarguments and address them in my planning</li>
+     - <li>develop an argument that fits within the structure of a debate or persuasive speech</li>
+     - <li>select and use words and phrases that suit the purpose of my argument</li>
+     - <li>develop key points and search for supporting evidence that is relevant</li>
+     - <li>evaluate whether a source is credible or not</li>
+     - <li>write a logical and formal debate speech or persuasive speech</li>
+     - <li>use oral techniques to support the purpose and intention of my speech</li>
+     - <li>use oral techniques to engage the audience.</li>
+     - </ul>
+     - <h5>Planning your time</h5>
+     - <p>Allow 20 hours for the learning in this module.</p>
+     - <p>It may take more or less time, depending on what you know and can do already, and the way you like to appro
+     - … 34 more removed
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-12 col-12">
+     + <p>Te tūhura i te tautohetohe</p>
+     + <h4><span>Learning Intentions</span></h4>
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>how to argue and discuss a point of view in a logical way</li>
+     + <li>to use critical thinking to develop an argument</li>
+     + <li>to understand how to structure a persuasive or argumentative speech</li>
+     + <li>to use appropriate language and tone to respectfully present a perspective</li>
+     + <li>about how to research effectively</li>
+     + <li>about how to develop a speech by building on a main idea</li>
+     + <li>present an oral text using oral language with purpose and intention.</li>
+     + </ul>
+     + … 67 more added
+  ~ ENGC403_2_0.html: -1 +1
+     - <h4>Ka pai! You are going well.</h4>
+     + <h3>Ka pai! You are going well.</h3>
+  ~ ENGC403_3_0.html: -2 +2
+     - <h4>F</h4>
+     - <h4>Misinformation, disinformation and malinformation</h4>
+     + <h3>F</h3>
+     + <h3>Misinformation, disinformation and malinformation</h3>
+  ~ ENGC403_7_0.html: -17 +9
+     - <h4>The writing process</h4>
+     - <h4>Define your moot</h4>
+     - <h4>Brainstorm ideas and planning</h4>
+     - <h4>Decide on your three main points</h4>
+     - <h4>Here’s an example:</h4>
+     - <h4>Research and gather evidence</h4>
+     - <h4>Merit</h4>
+     - <h4>Excellence</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>How to peer and self assess</h4>
+     - </div>
+     - </div>
+     + <h3>The writing process</h3>
+     + <h3>Define your moot</h3>
+     + <h3>Brainstorm ideas and planning</h3>
+     + <h3>Decide on your three main points</h3>
+     + <h3>Here’s an example:</h3>
+     + <h3>Research and gather evidence</h3>
+     + <h3>Merit</h3>
+     + <h3>Excellence</h3>
+     + <h3>How to peer and self assess</h3>
+  ~ ENGC403_4_2.html: -8 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ ENGC403_5_0.html: -1 +1
+     - <h4>Verbal language practise</h4>
+     + <h3>Verbal language practise</h3>
+  ~ ENGC403_9_0.html: -7 +3
+     - <h4>Model peer assessment</h4>
+     - <h4>Merit</h4>
+     - <h4>Excellence</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <h3>Model peer assessment</h3>
+     + <h3>Merit</h3>
+     + <h3>Excellence</h3>
+  ~ ENGC403_12_0.html: -4 +4
+     - <h4>Quick check!</h4>
+     - <h4>Merit</h4>
+     - <h4>Excellence</h4>
+     - <h4>Ngā mihi nui! Congratulations! You have now completed this module.</h4>
+     + <h3>Quick check!</h3>
+     + <h3>Merit</h3>
+     + <h3>Excellence</h3>
+     + <h3>Ngā mihi nui! Congratulations! You have now completed this module.</h3>
+ENGC403: identical 8 / changed 8
+ENGFUN02: identical 5 / changed 0
+ENGI101: identical 4 / changed 0
+ENGI102: identical 7 / changed 0
+ENGI103: identical 7 / changed 0
+ENGI201: identical 5 / changed 0
+ENGI202: identical 7 / changed 0
+ENGI203: identical 11 / changed 0
+ENGI301: identical 6 / changed 0
+ENGI302: identical 7 / changed 0
+ENGI303: identical 7 / changed 0
+ENGI400: identical 4 / changed 0
+ENGI401: identical 12 / changed 0
+ENGI405: identical 8 / changed 0
+ENGJ101: identical 5 / changed 0
+ENGJ102: identical 6 / changed 0
+ENGJ201: identical 7 / changed 0
+ENGJ202: identical 6 / changed 0
+ENGJ301: identical 8 / changed 0
+ENGJ302: identical 10 / changed 0
+ENGJ402: identical 9 / changed 0
+ENGJ403: identical 10 / changed 0
+ENGR101: identical 8 / changed 0
+ENGR102: identical 7 / changed 0
+ENGR201: identical 7 / changed 0
+ENGR202: identical 8 / changed 0
+ENGR301: identical 9 / changed 0
+ENGR302: identical 8 / changed 0
+ENGS101: identical 6 / changed 0
+ENGS102: identical 7 / changed 0
+ENGS201: identical 9 / changed 0
+ENGS202: identical 7 / changed 0
+ENGS301: identical 8 / changed 0
+ENGS302: identical 7 / changed 0
+ENGS401: identical 7 / changed 0
+  ~ ENGS404_0_0.html: -67 +88
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p><b>Te tūhura i ngā kōrero pūrākau</b></p>
+     - <h5>Learning Intentions</h5>
+     - <h5>We are learning:</h5>
+     - <ul>
+     - <li>about narrative structure</li>
+     - <li>to follow the writing process in the narrative writing context</li>
+     - <li>about how to develop characters</li>
+     - <li>about how to use language with intention and purpose</li>
+     - <li>to understand the features and conventions of narratives</li>
+     - <li>about how to write with control and accuracy</li>
+     - <li>to explore ideas in an imaginative way.</li>
+     - </ul>
+     - <h5>Success Criteria</h5>
+     - <h5>I can:</h5>
+     - <ul>
+     - <li>explain plot and structure in narratives</li>
+     - <li>explain key characters and how to avoid stereotyping</li>
+     - <li>use a range of punctuation accurately and for effect</li>
+     - <li>use vivid verbs and imagery (show not tell) to communicate ideas</li>
+     - <li>write using a variety of sentences</li>
+     - <li>write using appropriate structure</li>
+     - <li>self-assess and improve my writing with feedback and self-review</li>
+     - <li>use the writing process.</li>
+     - </ul>
+     - <h5>Whakamaheretia tō wā | Planning your time</h5>
+     - <p>Allow 20 hours for the learning in this module.</p>
+     - <p>It may take more or less time, depending on what you know and can do already, and the way you like to appro
+     - <h5>He aha tāku hei tīmata? | What do I need to get started?</h5>
+     - <p>Work your way through each lesson.</p>
+     - <p>Download and complete the response sheets and dropbox them to your kaiako as you go.</p>
+     - <p>Contact your kaiako at any time for extra support and guidance.</p>
+     - <h5>Hononga | Connections</h5>
+     - <p>Learning connected to this module can be found in</p>
+     - <p>ENFUN09 - The Writing Process - English</p>
+     - <p>ENFUN07 - Paragraphs - English</p>
+     - <h5>Aromatawai | Assessment for Learning</h5>
+     - <p>At the end of this module you will submit a narrative piece of writing for assessment.</p>
+     - <h5>Knowledge:</h5>
+     - … 27 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-12 col-12 paddingR">
+     + <h3><span>Tirohanga Whānui | Overview</span></h3>
+     + <div class="row">
+     + <div class="col-md-6 col-12 paddingLR">
+     + <h4>Learning Intentions</h4>
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>about narrative structure</li>
+     + <li>to follow the writing process in the narrative writing context</li>
+     + <li>about how to develop characters</li>
+     + <li>about how to use language with intention and purpose</li>
+     + <li>to understand the features and conventions of narratives</li>
+     + <li>about how to write with control and accuracy</li>
+     + … 68 more added
+  ~ ENGS404_1_0.html: -3 +3
+     - <h4>Practise plot mapping</h4>
+     - <h4>Tāwhirimātea myth</h4>
+     - <h4>Ka mau te wehi! Nice work!</h4>
+     + <h3>Practise plot mapping</h3>
+     + <h3>Tāwhirimātea myth</h3>
+     + <h3>Ka mau te wehi! Nice work!</h3>
+  ~ ENGS404_2_0.html: -2 +2
+     - <h4>Flow</h4>
+     - <h4>Ka pai, you are going well.</h4>
+     + <h3>Flow</h3>
+     + <h3>Ka pai, you are going well.</h3>
+  ~ ENGS404_3_0.html: -2 +2
+     - <h4>How to show and not tell</h4>
+     - <h4>Other ways to explain show not tell</h4>
+     + <h3>How to show and not tell</h3>
+     + <h3>Other ways to explain show not tell</h3>
+  ~ ENGS404_3_1.html: -14 +6
+     - <h4>Cumulative or loose sentences</h4>
+     - <h4>Sentences using anadiplosis or yoked words</h4>
+     - <h4>Short sentences and varied sentence beginnings</h4>
+     - <h4>Writing prompts</h4>
+     - <h4>Model</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Ka pai, you are going well.</h4>
+     - </div>
+     - </div>
+     + <h3>Cumulative or loose sentences</h3>
+     + <h3>Sentences using anadiplosis or yoked words</h3>
+     + <h3>Short sentences and varied sentence beginnings</h3>
+     + <h3>Writing prompts</h3>
+     + <h3>Model</h3>
+     + <h3>Ka pai, you are going well.</h3>
+  ~ ENGS404_5_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ ENGS404_6_0.html: -1 +1
+     - <h4>Well done! You are making great progress.</h4>
+     + <h3>Well done! You are making great progress.</h3>
+  ~ ENGS404_6_1.html: -6 +2
+     - <h4>Step one – create a unique character</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Ka pai, you are going well.</h4>
+     - </div>
+     - </div>
+     + <h3>Step one – create a unique character</h3>
+     + <h3>Ka pai, you are going well.</h3>
+  ~ ENGS404_7_0.html: -4 +4
+     - <h4>Putting your character into a situation</h4>
+     - <h4>Look at the video for a brief overview of how to map out your story</h4>
+     - <h4>Using a model</h4>
+     - <h4>E pai ana tō haere, you are going well!</h4>
+     + <h3>Putting your character into a situation</h3>
+     + <h3>Look at the video for a brief overview of how to map out your story</h3>
+     + <h3>Using a model</h3>
+     + <h3>E pai ana tō haere, you are going well!</h3>
+  ~ ENGS404_8_0.html: -1 +1
+     - <h4>Nearly there!</h4>
+     + <h3>Nearly there!</h3>
+  ~ ENGS404_9_0.html: -1 +1
+     - <h4>Congratulations! Ngā mihi nui. You have completed this module.</h4>
+     + <h3>Congratulations! Ngā mihi nui. You have completed this module.</h3>
+ENGS404: identical 1 / changed 11
+  ~ ENGS405_0_0.html: -48 +66
+     - <div class="col-md-8 col-12">
+     - <h5>Knowledge</h5>
+     - <ul>
+     - <li>Text forms and genres are selected and adapted by authors to achieve specific purposes</li>
+     - <li>features of text can be examined individually and together to support interpretation of meaning, reveal un
+     - <li>a text is influenced by its historical, cultural, and social contexts, as well as its place in a literary 
+     - <li>understanding the context in which a text was written may provide deeper insights into the text’s themes, 
+     - <li>texts and their meanings are not static — how texts are viewed and interpreted by readers can shift across
+     - <li>connections can be made between a text and other texts, personal experiences, and the wider world</li>
+     - <li>interpretations are strengthened when supported by evidence from the text</li>
+     - <li>a reader’s own historical, cultural, and social background can influence how they interpret a text</li>
+     - <li>personal responses to a text may provide information about ourselves and others</li>
+     - <li>personal responses to texts are shaped by individual experiences, cultural backgrounds, and social context
+     - <li>reading purpose influences response (e.g. a text read for pleasure may inspire emotional, imaginative, or 
+     - <li>text conventions vary across forms, modes and disciplines, and writers use specific combinations of langua
+     - <li>language features (e.g. sensory details, metaphors, emotive language), structural features (e.g. metre, va
+     - <h5>Practices</h5>
+     - <ul>
+     - <li>In poetry, explaining how features of text — such as rhythm, figurative language, lineation, sound devices
+     - <li>analysing the relationship between a text and its context, identifying how it reflects, reinforces, or con
+     - <li>expressing their personal responses to texts in varied formats</li>
+     - <li>making strategic planning decisions by selecting and adapting techniques that reflect the purpose, audienc
+     - </ul>
+     - <h5>Learning Intentions</h5>
+     - <h5>We are learning:</h5>
+     - <ul>
+     - <li>About different forms of poetry</li>
+     - <li>about how language features influence meaning in poetry</li>
+     - <li>about how context and purpose are reflected in poetry</li>
+     - <li>to craft our own poetry using features of language</li>
+     - <li>to craft our own poetry whilst considering context and purpose.</li>
+     - </ul>
+     - <h5>Success Criteria</h5>
+     - <h5>I can:</h5>
+     - <ul>
+     - <li>Identify and explain the use of a range of features used in poetry</li>
+     - <li>discuss how context and purpose is reflected in a range of poems, from both Aotearoa and other places</li>
+     - <li>use evidence from the poems to support my findings</li>
+     - <li>create different forms of poetry that express my own point of view</li>
+     - <li>consider how context is reflected in my own poetry</li>
+     - … 8 more removed
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-12 col-12">
+     + <h4><span>Knowledge</span></h4>
+     + <ul>
+     + <li>Text forms and genres are selected and adapted by authors to achieve specific purposes</li>
+     + <li>features of text can be examined individually and together to support interpretation of meaning, reveal un
+     + <li>a text is influenced by its historical, cultural, and social contexts, as well as its place in a literary 
+     + <li>understanding the context in which a text was written may provide deeper insights into the text’s themes, 
+     + <li>texts and their meanings are not static — how texts are viewed and interpreted by readers can shift across
+     + <li>connections can be made between a text and other texts, personal experiences, and the wider world</li>
+     + <li>interpretations are strengthened when supported by evidence from the text</li>
+     + <li>a reader’s own historical, cultural, and social background can influence how they interpret a text</li>
+     + <li>personal responses to a text may provide information about ourselves and others</li>
+     + <li>personal responses to texts are shaped by individual experiences, cultural backgrounds, and social context
+     + … 46 more added
+ENGS405: identical 0 / changed 1
+  ~ ENO2060_0_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+  ~ ENO2060_1_0.html: -8 +13
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h1>1.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-8 col-12">
+     - <h4>Selecting a text type</h4>
+     - <h4>Where to look for ideas</h4>
+     - <h4>Checklist to test idea</h4>
+     - <h4>Ka pai, great work.</h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h1>01</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-12 col-12 paddingR">
+     + <h4><span>Learning Intentions</span></h4>
+     + <div class="col-md-6 col-12 paddingR">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h3>Selecting a text type</h3>
+     + <h3>Where to look for ideas</h3>
+     + <h3>Checklist to test idea</h3>
+     + </div>
+     + </div>
+     + <h3>Ka pai, great work.</h3>
+  ~ ENO2060_2_0.html: -7 +11
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h1>2.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-8 col-12">
+     - <h4>Text type one - graphic stories</h4>
+     - <h4>Where to find more exemplars</h4>
+     - <h4>Well done, let’s continue …</h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h1>02</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-12 col-12 paddingR">
+     + <div class="col-md-6 col-12 paddingR">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h3>Text type one - graphic stories</h3>
+     + </div>
+     + </div>
+     + <h3>Where to find more exemplars</h3>
+     + <h3>Well done, let’s continue …</h3>
+  ~ ENO2060_3_0.html: -7 +11
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h1>3.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-8 col-12">
+     - <h4>Important notes about visual digital texts</h4>
+     - <h4>Some inspiring professional texts</h4>
+     - <h4>Ka pai, great work.</h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h1>03</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-12 col-12 paddingR">
+     + <div class="col-md-6 col-12 paddingR">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h3>Important notes about visual digital texts</h3>
+     + <h3>Some inspiring professional texts</h3>
+     + </div>
+     + </div>
+     + <h3>Ka pai, great work.</h3>
+  ~ ENO2060_4_0.html: -9 +9
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h1>4.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-8 col-12">
+     - <h4>Statement of intention</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h1>04</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-12 col-12 paddingR">
+     + <div class="col-md-6 col-12 paddingR">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h3>Statement of intention</h3>
+     + </div>
+     + </div>
+  ~ ENO2060_8_0.html: -8 +5
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h1>8.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <h5>Merit</h5>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h1>08</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <h3>Merit</h3>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+ENO2060: identical 0 / changed 6
+EXBP901: identical 6 / changed 0
+EXIP901: identical 6 / changed 0
+EXPFUN02: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+EXPFUN04: identical 1 / changed 0
+EXPFUN05: identical 1 / changed 0
+EXPFUN06: identical 1 / changed 0
+EXPFUN07: identical 1 / changed 0
+  ~ FRFUN06_0_0.html: -14 +14
+     - <h5>Hearing “a” inside words</h5>
+     - <h5>Self-check</h5>
+     - <h5>Hearing “é” inside words</h5>
+     - <h5>Self-check</h5>
+     - <h5>3a – <b>Hearing the difference</b></h5>
+     - <h5>Self-check</h5>
+     - <h5>Hearing “i” inside words</h5>
+     - <h5>Self-check</h5>
+     - <h5>Hearing “o” inside words</h5>
+     - <h5>Self-check</h5>
+     - <h5>Hearing “u” inside words</h5>
+     - <h5>Self-check</h5>
+     - <h5>Look at the image below to remind you of the shape of the sound.</h5>
+     - <h5>Self-check</h5>
+     + <h3>Hearing “a” inside words</h3>
+     + <h3>Self-check</h3>
+     + <h3>Hearing “é” inside words</h3>
+     + <h3>Self-check</h3>
+     + <h3>3a – <b>Hearing the difference</b></h3>
+     + <h3>Self-check</h3>
+     + <h3>Hearing “i” inside words</h3>
+     + <h3>Self-check</h3>
+     + <h3>Hearing “o” inside words</h3>
+     + <h3>Self-check</h3>
+     + <h3>Hearing “u” inside words</h3>
+     + <h3>Self-check</h3>
+     + <h3>Look at the image below to remind you of the shape of the sound.</h3>
+     + <h3>Self-check</h3>
+  ~ FRFUN06_1_0.html: -7 +7
+     - <h4>Self-check</h4>
+     - <h4>Meet the “on/om” sound inside words.</h4>
+     - <h4>Self check</h4>
+     - <h4>One sound, four spellings</h4>
+     - <h4>– Meet the “in” sound inside words</h4>
+     - <h4>Self check</h4>
+     - <h4>Self check</h4>
+     + <h3>Self-check</h3>
+     + <h3>Meet the “on/om” sound inside words.</h3>
+     + <h3>Self check</h3>
+     + <h3>One sound, four spellings</h3>
+     + <h3>– Meet the “in” sound inside words</h3>
+     + <h3>Self check</h3>
+     + <h3>Self check</h3>
+  ~ FRFUN06_2_0.html: -14 +14
+     - <h4>Meet this sound inside French words.</h4>
+     - <h4>Self check</h4>
+     - <h4>Say the sound</h4>
+     - <h4>Self check</h4>
+     - <h4>Meet this sound inside words.</h4>
+     - <div class="col-md-4 col-12 paddingLR">
+     - <div class="col-md-4 col-12 paddingLR">
+     - <h4>Self check</h4>
+     - <h4><b>Meet the sound g</b> before <b>e, i, y</b>. <b>inside words</b></h4>
+     - <h4>Self check</h4>
+     - <h4>Hearing the “ch” inside words</h4>
+     - <h4>Self check</h4>
+     - <h4>Hearing the “gn” inside words</h4>
+     - <h4>Self check</h4>
+     + <h3>Meet this sound inside French words.</h3>
+     + <h3>Self check</h3>
+     + <h3>Say the sound</h3>
+     + <h3>Self check</h3>
+     + <h3>Meet this sound inside words.</h3>
+     + <div class="col-md-6 col-12 paddingLR">
+     + <div class="col-md-6 col-12 paddingLR">
+     + <h3>Self check</h3>
+     + <h3><b>Meet the sound g</b> before <b>e, i, y</b>. <b>inside words</b></h3>
+     + <h3>Self check</h3>
+     + <h3>Hearing the “ch” inside words</h3>
+     + <h3>Self check</h3>
+     + <h3>Hearing the “gn” inside words</h3>
+     + <h3>Self check</h3>
+  ~ FRFUN06_3_0.html: -3 +3
+     - <h4>Hear the sound “oi” inside words.</h4>
+     - <h4>Meet the “ien” sound in words</h4>
+     - <h4>Meet the “ill” sound inside words</h4>
+     + <h3>Hear the sound “oi” inside words.</h3>
+     + <h3>Meet the “ien” sound in words</h3>
+     + <h3>Meet the “ill” sound inside words</h3>
+  ~ FRFUN06_4_0.html: -1 +1
+     - <h4>Now watch the words wake up</h4>
+     + <h3>Now watch the words wake up</h3>
+  ~ FRFUN06_7_0.html: -1 +1
+     - <h4>Optional insert symbol (Word) method</h4>
+     + <h3>Optional insert symbol (Word) method</h3>
+FRFUN06: identical 4 / changed 6
+  ~ FRFUN07_1_0.html: -1 +1
+     - <h4>What does it mean?</h4>
+     + <h3>What does it mean?</h3>
+FRFUN07: identical 8 / changed 1
+  ~ FRFUN08_0_0.html: -19 +1
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - </ul>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-12 col-12">
+     - </div>
+     - </div>
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="col-md-8 col-12">
+FRFUN08: identical 10 / changed 1
+  ~ FRNO901_0_0.html: -2 +2
+     - <div class="col-md-12 col-12">
+     - <h5>Step into Paris</h5>
+     + <div class="col-md-6 col-12">
+     + <h3>Step into Paris</h3>
+  ~ FRNO901_1_0.html: -1 +1
+     - <h4>to the right of above.]</h4>
+     + <div>to the right of above.]</div>
+  ~ FRNO901_2_0.html: -7 +7
+     - <h4>Meet the introductions</h4>
+     - <h4>Explore the sounds</h4>
+     - <h4>Different types of names</h4>
+     - <h4>Watch and listen like a detective</h4>
+     - <h4>Meet French spelling</h4>
+     - <h4>Real French through music</h4>
+     - <h4>Build a conversation</h4>
+     + <h3>Meet the introductions</h3>
+     + <h3>Explore the sounds</h3>
+     + <h3>Different types of names</h3>
+     + <h3>Watch and listen like a detective</h3>
+     + <h3>Meet French spelling</h3>
+     + <h3>Real French through music</h3>
+     + <h3>Build a conversation</h3>
+  ~ FRNO901_3_0.html: -3 +3
+     - <h4>Meet the expressions</h4>
+     - <h4>Watch and listen like a detective</h4>
+     - <h4>Build a conversation</h4>
+     + <h3>Meet the expressions</h3>
+     + <h3>Watch and listen like a detective</h3>
+     + <h3>Build a conversation</h3>
+  ~ FRNO901_4_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+  ~ FRNO901_8_0.html: -4 +1
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+FRNO901: identical 3 / changed 6
+  ~ FRNO902_0_0.html: -6 +2
+     - <div class="col-md-12 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h5>Important</h5>
+     - </div>
+     - </div>
+     + <div class="col-md-6 col-12">
+     + <h3>Important</h3>
+  ~ FRNO902_1_0.html: -1 +1
+     - <h3>to the right of above.]</h3>
+     + <div>to the right of above.]</div>
+  ~ FRNO902_5_0.html: -0 +4
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+  ~ FRNO902_8_0.html: -7 +8
+     - <h4>What a strong answer looks like</h4>
+     - <h4>Model example</h4>
+     - <h4>Helpful language</h4>
+     - <h4>Final module task – Crée ton défi : Qui est-ce ?</h4>
+     - <h4>Part 1 – Décris un animal</h4>
+     - <h4>Part 2 – Décris une personne</h4>
+     - <h4>Part 3 – Compare</h4>
+     + <h3>What a strong answer looks like</h3>
+     + <h3>Model example</h3>
+     + <h3>Helpful language</h3>
+     + <h3>Final module task – Crée ton défi : Qui est-ce ?</h3>
+     + <h3>Part 1 – Décris un animal</h3>
+     + <h3>Part 2 – Décris une personne</h3>
+     + <h3>Part 3 – Compare</h3>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+FRNO902: identical 5 / changed 4
+  ~ GENO901_0_0.html: -7 +3
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Submitting your work</h4>
+     - </div>
+     - </div>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+     + <h3>Submitting your work</h3>
+  ~ GENO901_1_0.html: -2 +2
+     - <h1>1.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>01</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_2_0.html: -5 +4
+     - <h1>2.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <h4><span>Learning Intentions</span></h4>
+     - <h4>Asking how someone is in German.</h4>
+     - <h4>Now it’s your turn</h4>
+     + <h1>02</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <h3>Asking how someone is in German.</h3>
+     + <h3>Now it’s your turn</h3>
+  ~ GENO901_2_1.html: -2 +2
+     - <h1>2.1</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>02</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_3_0.html: -2 +2
+     - <h1>3.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>03</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_3_1.html: -2 +2
+     - <h1>3.1</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>03</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_3_2.html: -7 +3
+     - <h1>3.2</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <h4>Wie schreibt man das? How do you spell that?</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <h1>03</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <h3>Wie schreibt man das? How do you spell that?</h3>
+  ~ GENO901_3_3.html: -2 +2
+     - <h1>3.3</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>03</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_3_4.html: -2 +2
+     - <h1>3.4</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>03</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_4_0.html: -2 +2
+     - <h1>4.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>04</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_4_1.html: -6 +2
+     - <h1>4.1</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <h1>04</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_5_0.html: -2 +2
+     - <h1>5.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>05</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_5_1.html: -6 +2
+     - <h1>5.1</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <h1>05</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_5_2.html: -2 +2
+     - <h1>5.2</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>05</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_6_0.html: -2 +2
+     - <h1>6.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>06</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_6_1.html: -2 +2
+     - <h1>6.1</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>06</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_6_2.html: -2 +2
+     - <h1>6.2</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>06</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_6_3.html: -2 +2
+     - <h1>6.3</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>06</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_7_0.html: -2 +2
+     - <h1>7.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>07</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_7_1.html: -6 +2
+     - <h1>7.1</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <h1>07</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_7_2.html: -2 +2
+     - <h1>7.2</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>07</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_7_3.html: -2 +2
+     - <h1>7.3</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>07</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ GENO901_8_0.html: -2 +3
+     - <h1>8.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>08</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+GENO901: identical 0 / changed 23
+  ~ GEO1004_0_0.html: -3 +4
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div class="col-md-6 col-12">
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+  ~ GEO1004_1_0.html: -11 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+  ~ GEO1004_2_0.html: -11 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+GEO1004: identical 0 / changed 3
+  ~ GEO1005_0_0.html: -3 +4
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div class="col-md-6 col-12">
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+  ~ GEO1005_1_0.html: -4 +4
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <h4>Māori creation story</h4>
+     - <h4>Plains formation</h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <h3>Māori creation story</h3>
+     + <h3>Plains formation</h3>
+  ~ GEO1005_2_0.html: -6 +5
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <h4><span>Learning Intentions</span></h4>
+     - <h4>Canterbury Plains (Waitaha)</h4>
+     - <h4>Natural processes</h4>
+     - <h4>Canterbury natural environment</h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <h3>Canterbury Plains (Waitaha)</h3>
+     + <h3>Natural processes</h3>
+     + <h3>Canterbury natural environment</h3>
+  ~ GEO1005_3_0.html: -8 +8
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <h4>A Māori perspective</h4>
+     - <h4>LAND-BUILDING PROCESSES</h4>
+     - <h4>Tectonic process</h4>
+     - <h4>Zealandia an undersea continent</h4>
+     - <h4>Which plate are you on?</h4>
+     - <h4>How the Southern Alps have formed and changed over time</h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <h3>A Māori perspective</h3>
+     + <h3>LAND-BUILDING PROCESSES</h3>
+     + <h3>Tectonic process</h3>
+     + <h3>Zealandia an undersea continent</h3>
+     + <h3>Which plate are you on?</h3>
+     + <h3>How the Southern Alps have formed and changed over time</h3>
+  ~ GEO1005_4_0.html: -12 +8
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <h4>(important note] Key</h4>
+     - <h4>Effects of earthquakes on the natural environment</h4>
+     - <h4>E</h4>
+     - <h4>Banks Peninsula</h4>
+     - <h4>Metamorphic rock: schist</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Limestone Rocks Castle Hill /Kura Tawhiti Conservation Area</h4>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div>(important note] Key</div>
+     + <h3>Effects of earthquakes on the natural environment</h3>
+     + <h3>E</h3>
+     + <h3>Banks Peninsula</h3>
+     + <h3>Metamorphic rock: schist</h3>
+     + <h3>Limestone Rocks Castle Hill /Kura Tawhiti Conservation Area</h3>
+  ~ GEO1005_5_0.html: -5 +5
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <h4>Latitude</h4>
+     - <h4>Oceans</h4>
+     - <h4>Winds</h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <h3>Latitude</h3>
+     + <h3>Oceans</h3>
+     + <h3>Winds</h3>
+  ~ GEO1005_6_0.html: -2 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+GEO1005: identical 0 / changed 7
+  ~ GEO1006_0_0.html: -3 +4
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div class="col-md-6 col-12">
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+  ~ GEO1006_1_0.html: -10 +10
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <h4>Mātauranga Māori</h4>
+     - <h4>The ice ages</h4>
+     - <h4>What is the Glaciation process?</h4>
+     - <h4>There are three phases to the glaciation process:</h4>
+     - <h4>Accumulation</h4>
+     - <h4>Erosion and transportation</h4>
+     - <h4>Deposition</h4>
+     - <h4>The extent of glaciation in the South Island</h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <h3>Mātauranga Māori</h3>
+     + <h3>The ice ages</h3>
+     + <h3>What is the Glaciation process?</h3>
+     + <h3>There are three phases to the glaciation process:</h3>
+     + <h3>Accumulation</h3>
+     + <h3>Erosion and transportation</h3>
+     + <h3>Deposition</h3>
+     + <h3>The extent of glaciation in the South Island</h3>
+  ~ GEO1006_2_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+  ~ GEO1006_3_0.html: -19 +20
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <h4>How will climate change affect Aotearoa New Zealand?</h4>
+     - <h4>What will climate change mean for Canterbury glaciers?</h4>
+     - <h4>Impacts of climate change on Canterbury</h4>
+     - <h4>Climate change opportunities</h4>
+     - <h4>Mātauranga Māori</h4>
+     - <h4>How are rivers formed?</h4>
+     - <h4>The different characteristics of an awa (river)</h4>
+     - <h4>Fluvial processes</h4>
+     - <h4>1.Types of erosion</h4>
+     - <h4>2. Types of transportation</h4>
+     - <h4>3. Deposition</h4>
+     - <h4>Features created by Awa</h4>
+     - <h4>Upper course features</h4>
+     - <h4>How Braided rivers formed the Canterbury plains</h4>
+     - <h4>Climate change and flooding</h4>
+     - <h4>Impacts of floods</h4>
+     - <h4>Droughts</h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <h3>How will climate change affect Aotearoa New Zealand?</h3>
+     + <h3>What will climate change mean for Canterbury glaciers?</h3>
+     + <h3>Impacts of climate change on Canterbury</h3>
+     + <h3>Climate change opportunities</h3>
+     + <h3>Mātauranga Māori</h3>
+     + <h3>How are rivers formed?</h3>
+     + <h3>The different characteristics of an awa (river)</h3>
+     + <h3>Fluvial processes</h3>
+     + <h3>1.Types of erosion</h3>
+     + <h3>2. Types of transportation</h3>
+     + <h3>3. Deposition</h3>
+     + <h3>Features created by Awa</h3>
+     + <h3>Upper course features</h3>
+     + <h3>How Braided rivers formed the Canterbury plains</h3>
+     + <h3>Climate change and flooding</h3>
+     + <h3>Impacts of floods</h3>
+     + <h3>Droughts</h3>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+GEO1006: identical 0 / changed 4
+
+TOTAL: identical 534 / changed 177 / missing 0 over 121 modules
+CHANGED: CEDO204/CEDO204_0_0.html CEDT101/CEDT101_0_0.html CEDT104/CEDT104_0_0.html CEDT404/CEDT404_0_0.html CHI1003/CHI1003_0_0.html CHI1003/CHI1003_1_0.html CHI1003/CHI1003_2_0.html CHI1003/CHI1003_3_0.html CHI1003/CHI1003_4_0.html CHI1003/CHI1003_5_0.html CHI1003/CHI1003_6_0.html CHI1003/CHI1003_7_0.html CHI1003/CHI1003_8_0.html CHI1004/CHI1004_0_0.html CHI1004/CHI1004_1_0.html CHI1004/CHI1004_9_0.html CHI1005/CHI1005_0_0.html CHI1005/CHI1005_7_0.html COM1002/COM1002_0_0.html COM1002/COM1002_1_0.html COM1002/COM1002_2_0.html COM1002/COM1002_3_0.html COM1002/COM1002_4_0.html COM1002/COM1002_5_0.html COM1002/COM1002_6_0.html COM1002/COM1002_7_0.html COM1002/COM1002_8_0.html COM1005/COM1005_0_0.html COM1005/COM1005_1_0.html COM1005/COM1005_2_0.html COM1005/COM1005_3_0.html COM1005/COM1005_5_0.html COM1005/COM1005_6_0.html COM1005/COM1005_7_0.html COM1005/COM1005_8_0.html COM1006/COM1006_0_0.html COM1006/COM1006_1_0.html COM1006/COM1006_2_0.html COM1006/COM1006_3_0.html COM1006/COM1006_4_0.html COM1006/COM1006_5_0.html COM1006/COM1006_6_0.html COM1006/COM1006_7_0.html COM1006/COM1006_8_0.html COM1006/COM1006_9_0.html DAN1003/DAN1003_0_0.html DAN1003/DAN1003_1_0.html DAN1003/DAN1003_2_0.html DAN1003/DAN1003_3_0.html DAN1003/DAN1003_4_0.html DAN1003/DAN1003_5_0.html DAN1003/DAN1003_6_0.html DAN1003/DAN1003_7_0.html DAN1003/DAN1003_8_0.html DAN1003/DAN1003_9_0.html DAN1004/DAN1004_0_0.html DAN1004/DAN1004_1_0.html DAN1004/DAN1004_2_0.html DAN1004/DAN1004_9_0.html DAN1006/DAN1006_0_0.html DAN1006/DAN1006_1_0.html DAN1006/DAN1006_1_1.html DAN1006/DAN1006_2_0.html DTC1004/DTC1004_0_0.html DTC1004/DTC1004_1_0.html DTC1004/DTC1004_2_0.html DTC1004/DTC1004_3_0.html DTC1004/DTC1004_4_0.html DTC1004/DTC1004_5_0.html DTC1004/DTC1004_6_0.html DTC1004/DTC1004_7_0.html DTC1005/DTC1005_0_0.html DTC1005/DTC1005_1_0.html DTC1005/DTC1005_2_0.html DTC1005/DTC1005_3_0.html DTC1005/DTC1005_4_0.html DTC1005/DTC1005_5_0.html DTC1005/DTC1005_6_0.html DTC1005/DTC1005_7_0.html DTC1005/DTC1005_8_0.html DTC1005/DTC1005_9_0.html DTC1005/DTC1005_10_0.html DTC1005/DTC1005_11_0.html DTC1005/DTC1005_12_0.html DTC1005/DTC1005_13_0.html DTC1005/DTC1005_14_0.html DTC1005/DTC1005_15_0.html DTC1005/DTC1005_16_0.html DTC1005/DTC1005_17_0.html DTC1005/DTC1005_18_0.html DTC1005/DTC1005_19_0.html DTC1005/DTC1005_20_0.html ENGC204/ENGC204_0_0.html ENGC206/ENGC206_0_0.html ENGC206/ENGC206_6_0.html ENGC206/ENGC206_7_0.html ENGC403/ENGC403_0_0.html ENGC403/ENGC403_2_0.html ENGC403/ENGC403_3_0.html ENGC403/ENGC403_7_0.html ENGC403/ENGC403_4_2.html ENGC403/ENGC403_5_0.html ENGC403/ENGC403_9_0.html ENGC403/ENGC403_12_0.html ENGS404/ENGS404_0_0.html ENGS404/ENGS404_1_0.html ENGS404/ENGS404_2_0.html ENGS404/ENGS404_3_0.html ENGS404/ENGS404_3_1.html ENGS404/ENGS404_5_0.html ENGS404/ENGS404_6_0.html ENGS404/ENGS404_6_1.html ENGS404/ENGS404_7_0.html ENGS404/ENGS404_8_0.html ENGS404/ENGS404_9_0.html ENGS405/ENGS405_0_0.html ENO2060/ENO2060_0_0.html ENO2060/ENO2060_1_0.html ENO2060/ENO2060_2_0.html ENO2060/ENO2060_3_0.html ENO2060/ENO2060_4_0.html ENO2060/ENO2060_8_0.html FRFUN06/FRFUN06_0_0.html FRFUN06/FRFUN06_1_0.html FRFUN06/FRFUN06_2_0.html FRFUN06/FRFUN06_3_0.html FRFUN06/FRFUN06_4_0.html FRFUN06/FRFUN06_7_0.html FRFUN07/FRFUN07_1_0.html FRFUN08/FRFUN08_0_0.html FRNO901/FRNO901_0_0.html FRNO901/FRNO901_1_0.html FRNO901/FRNO901_2_0.html FRNO901/FRNO901_3_0.html FRNO901/FRNO901_4_0.html FRNO901/FRNO901_8_0.html FRNO902/FRNO902_0_0.html FRNO902/FRNO902_1_0.html FRNO902/FRNO902_5_0.html FRNO902/FRNO902_8_0.html GENO901/GENO901_0_0.html GENO901/GENO901_1_0.html GENO901/GENO901_2_0.html GENO901/GENO901_2_1.html GENO901/GENO901_3_0.html GENO901/GENO901_3_1.html GENO901/GENO901_3_2.html GENO901/GENO901_3_3.html GENO901/GENO901_3_4.html GENO901/GENO901_4_0.html GENO901/GENO901_4_1.html GENO901/GENO901_5_0.html GENO901/GENO901_5_1.html GENO901/GENO901_5_2.html GENO901/GENO901_6_0.html GENO901/GENO901_6_1.html GENO901/GENO901_6_2.html GENO901/GENO901_6_3.html GENO901/GENO901_7_0.html GENO901/GENO901_7_1.html GENO901/GENO901_7_2.html GENO901/GENO901_7_3.html GENO901/GENO901_8_0.html GEO1004/GEO1004_0_0.html GEO1004/GEO1004_1_0.html GEO1004/GEO1004_2_0.html GEO1005/GEO1005_0_0.html GEO1005/GEO1005_1_0.html GEO1005/GEO1005_2_0.html GEO1005/GEO1005_3_0.html GEO1005/GEO1005_4_0.html GEO1005/GEO1005_5_0.html GEO1005/GEO1005_6_0.html GEO1006/GEO1006_0_0.html GEO1006/GEO1006_1_0.html GEO1006/GEO1006_2_0.html GEO1006/GEO1006_3_0.html

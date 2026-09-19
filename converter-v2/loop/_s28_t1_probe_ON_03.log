@@ -1,0 +1,1948 @@
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+PHE1007: identical 10 / changed 0
+PHE1008: identical 6 / changed 0
+PNR101: identical 2 / changed 0
+PNR102: identical 3 / changed 0
+PNR104: identical 3 / changed 0
+PNR107: identical 3 / changed 0
+  ~ PWY1001_0_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+  ~ PWY1001_1_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1001_1_1.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1001_1_2_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1001_1_3_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1001_2_1_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1001_2_2_0.html: -6 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1001_2_3_0.html: -6 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1001_3_1_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1001_3_2_0.html: -2 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+PWY1001: identical 0 / changed 10
+  ~ PWY1002_0_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+  ~ PWY1002_1_1_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1002_1_2_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1002_1_3_0.html: -6 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1002_2_1_0.html: -6 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1002_2_2_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1002_3_1_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1002_3_2_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1002_3_3_0.html: -10 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1002_4_0.html: -10 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+PWY1002: identical 0 / changed 10
+  ~ PWY1007_0_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+  ~ PWY1007_1_0.html: -6 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1007_2_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1007_3_0.html: -10 +6
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-6 col-12 paddingLR">
+     - <div class="col-md-6 col-12 paddingLR">
+     - <div class="col-md-6 col-12 paddingLR">
+     - <div class="col-md-6 col-12 paddingLR">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-4 col-12 paddingLR">
+     + <div class="col-md-4 col-12 paddingLR">
+     + <div class="col-md-4 col-12 paddingLR">
+     + <div class="col-md-4 col-12 paddingLR">
+  ~ PWY1007_4_0.html: -10 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1007_5_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1007_6_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1007_7_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1007_8_0.html: -2 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+PWY1007: identical 0 / changed 9
+  ~ PWY1008_0_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+  ~ PWY1008_1_1_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1008_1_2_0.html: -10 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1008_1_3_0.html: -6 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1008_2_1_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1008_2_2_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1008_2_3_0.html: -6 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1008_3_1_0.html: -6 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1008_3_2_0.html: -6 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1008_3_3_0.html: -2 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+PWY1008: identical 0 / changed 10
+  ~ PWY1009_0_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+  ~ PWY1009_1_1_0.html: -6 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1009_1_2_0.html: -6 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1009_1_3_0.html: -6 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1009_2_1_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1009_2_2_0.html: -11 +7
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <h4>Seven steps to follow.</h4>
+     - <h4>Fair treatment</h4>
+     - <h4>Good faith</h4>
+     - <h4>Health and safety</h4>
+     - <h4>Representation and support</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <h3>Seven steps to follow.</h3>
+     + <h3>Fair treatment</h3>
+     + <h3>Good faith</h3>
+     + <h3>Health and safety</h3>
+     + <h3>Representation and support</h3>
+  ~ PWY1009_3_1_0.html: -10 +6
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-6 col-12 paddingLR">
+     - <div class="col-md-6 col-12 paddingLR">
+     - <div class="col-md-6 col-12 paddingLR">
+     - <div class="col-md-6 col-12 paddingLR">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-4 col-12 paddingLR">
+     + <div class="col-md-4 col-12 paddingLR">
+     + <div class="col-md-4 col-12 paddingLR">
+     + <div class="col-md-4 col-12 paddingLR">
+  ~ PWY1009_3_2_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ PWY1009_3_3_0.html: -2 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+PWY1009: identical 0 / changed 9
+  ~ PWY1000_0_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+PWYWHA1: identical 0 / changed 1
+  ~ SCBI301_0_0.html: -5 +1
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ SCBI301_8_0.html: -0 +1
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+SCBI301: identical 7 / changed 2
+SCCH301: identical 9 / changed 0
+  ~ SCES201_0_0.html: -6 +2
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+  ~ SCES201_1_0.html: -2 +2
+     - <h1>1.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>01</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ SCES201_2_0.html: -2 +2
+     - <h1>2.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>02</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ SCES201_3_0.html: -6 +2
+     - <h1>3.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <h1>03</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+  ~ SCES201_4_0.html: -2 +3
+     - <h1>4.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     + <h1>04</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+SCES201: identical 0 / changed 5
+SCFUN01: identical 1 / changed 0
+SCPH301: identical 9 / changed 0
+  ~ SPA1004_0_0.html: -1 +1
+     - <div class="col-md-12 col-12">
+     + <div class="col-md-6 col-12">
+  ~ SPA1004_3_0.html: -0 +1
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+SPA1004: identical 1 / changed 2
+  ~ SSCI205_0_0.html: -56 +74
+     - <div class="col-md-8 col-12">
+     - <h5>Knowledge</h5>
+     - <p><b>Where and when</b></p>
+     - <ul>
+     - <li>Location and geographical features of ancient Greek city states.</li>
+     - <li>Timeline of key periods: Archaic, Classical, Hellenistic.</li>
+     - <p><b>Government and society: Athens and other city states</b></p>
+     - <ul>
+     - <li>How society was structured, including the role of women and slaves and daily life.</li>
+     - <li>What the role of government was, with a focus on democracy and empire.</li>
+     - <li>How Sparta and Corinth were different from Athens (as city states).</li>
+     - </ul>
+     - <p><b>Religious beliefs and culture</b></p>
+     - <ul>
+     - <li>The importance of religion: gods, temples, and festivals (Olympics, Dionysia).</li>
+     - <li>Development of philosophy and importance of philosophers including: Socrates, Plato, and Aristotle.</li>
+     - <li>The importance of art, architecture, literature, and drama (tragedy and comedy).</li>
+     - </ul>
+     - <p><b>Military and warfare</b></p>
+     - <ul>
+     - <li>Importance of hoplites.</li>
+     - <li>Significance of key battles in the Persian Wars (Marathon, Thermopylae, Salamis).</li>
+     - <li>The Peloponnesian War: causes and effect on Greek unity and identity.</li>
+     - </ul>
+     - <p><b>Greek legacies</b></p>
+     - <ul>
+     - <li>Contributions to government, philosophy, science, architecture.</li>
+     - </ul>
+     - <h5>Practices</h5>
+     - <ul>
+     - <li>What Athens and other Greek city states had in common.</li>
+     - <li>Similarities and differences in the role played by religion in society between the two periods.</li>
+     - <li>The sources we use to find out about ancient Greece and why it is sometimes difficult to be certain about 
+     - <li>How the ancient Greek civilisation was similar to and different from the Egyptian civilisation.</li>
+     - <li>The historical significance of ancient Greece in shaping the modern world.</li>
+     - </ul>
+     - <h5>Learning Intentions</h5>
+     - <h5>We are learning:</h5>
+     - <ul>
+     - <li>about where and when ancient Greece existed, and how the land and sea shaped Greek life</li>
+     - … 16 more removed
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-12 col-12">
+     + <h4><span>Knowledge</span></h4>
+     + <p><b>Where and when</b></p>
+     + <ul>
+     + <li>Location and geographical features of ancient Greek city states.</li>
+     + <li>Timeline of key periods: Archaic, Classical, Hellenistic.</li>
+     + </ul>
+     + <p><b>Government and society: Athens and other city states</b></p>
+     + <ul>
+     + <li>How society was structured, including the role of women and slaves and daily life.</li>
+     + <li>What the role of government was, with a focus on democracy and empire.</li>
+     + <li>How Sparta and Corinth were different from Athens (as city states).</li>
+     + </ul>
+     + … 54 more added
+  ~ SSCI205_1_0.html: -1 +19
+     - <div class="col-md-8 col-12">
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-12 col-12">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ SSCI205_2_0.html: -1 +19
+     - <div class="col-md-8 col-12">
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-12 col-12">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ SSCI205_3_0.html: -1 +19
+     - <div class="col-md-8 col-12">
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-12 col-12">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ SSCI205_4_0.html: -1 +19
+     - <div class="col-md-8 col-12">
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-12 col-12">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ SSCI205_5_0.html: -1 +19
+     - <div class="col-md-8 col-12">
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-12 col-12">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ SSCI205_6_0.html: -1 +19
+     - <div class="col-md-8 col-12">
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-12 col-12">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ SSCI205_7_0.html: -1 +19
+     - <div class="col-md-8 col-12">
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-12 col-12">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ SSCI205_8_0.html: -1 +19
+     - <div class="col-md-8 col-12">
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-12 col-12">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ SSCI205_9_0.html: -1 +19
+     - <div class="col-md-8 col-12">
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-12 col-12">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+SSCI205: identical 0 / changed 10
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+SSOG101: identical 8 / changed 0
+SSOG103: identical 7 / changed 0
+SSOG301: identical 8 / changed 0
+  ~ TEDC401_4_0.html: -2 +2
+     - <div class="col-md-4 col-12 paddingLR">
+     - <div class="col-md-4 col-12 paddingLR">
+     + <div class="col-md-6 col-12 paddingLR">
+     + <div class="col-md-6 col-12 paddingLR">
+  ~ TEDC401_6_0.html: -2 +2
+     - <div class="col-md-4 col-12 paddingLR">
+     - <div class="col-md-4 col-12 paddingLR">
+     + <div class="col-md-6 col-12 paddingLR">
+     + <div class="col-md-6 col-12 paddingLR">
+TEDC401: identical 6 / changed 2
+  ~ TEDC402_2_0.html: -2 +2
+     - <div class="col-md-4 col-12 paddingLR">
+     - <div class="col-md-4 col-12 paddingLR">
+     + <div class="col-md-6 col-12 paddingLR">
+     + <div class="col-md-6 col-12 paddingLR">
+  ~ TEDC402_4_0.html: -2 +2
+     - <div class="col-md-4 col-12 paddingLR">
+     - <div class="col-md-4 col-12 paddingLR">
+     + <div class="col-md-6 col-12 paddingLR">
+     + <div class="col-md-6 col-12 paddingLR">
+  ~ TEDC402_8_0.html: -2 +2
+     - <div class="col-md-4 col-12 paddingLR">
+     - <div class="col-md-4 col-12 paddingLR">
+     + <div class="col-md-6 col-12 paddingLR">
+     + <div class="col-md-6 col-12 paddingLR">
+TEDC402: identical 8 / changed 3
+TEFUN01: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+  ~ TRR107_0_0.html: -2 +2
+     - <iframe src="https://www.youtube.com/embed/r3TBK7MiF3Y" loading="lazy" title="YouTube video player" frameborde
+     - <iframe src="https://www.youtube.com/embed/r3TBK7MiF3Y" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube-nocookie.com/embed/r3TBK7MiF3Y" loading="lazy" title="YouTube video player" f
+     + <iframe src="https://www.youtube-nocookie.com/embed/r3TBK7MiF3Y" loading="lazy" title="YouTube video player" f
+TRR107: identical 2 / changed 1
+TRR108: identical 3 / changed 0
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR116: identical 5 / changed 0
+  ~ TRR203_0_0.html: -1 +1
+     - <div class="col-md-8 col-12">
+     + <div class="col-md-6 col-12">
+TRR203: identical 3 / changed 1
+  ~ TRR301_0_0.html: -1 +1
+     - <div class="col-md-8 col-12">
+     + <div class="col-md-12 col-12">
+TRR301: identical 3 / changed 1
+  ~ TRR304_0_0.html: -1 +1
+     - <div class="col-md-8 col-12">
+     + <div class="col-md-12 col-12">
+TRR304: identical 2 / changed 1
+TWHA901: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+TWHA906: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+  ~ WJFUN105_0_0.html: -10 +352
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <h5>Knowledge Year 0</h5>
+     - <h5>Practices Year 0</h5>
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+     - <!-- Lesson 1.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 2.0 -->
+     - <div class="acksLesson">
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-8 col-12">
+     + <h3>Knowledge Year 0</h3>
+     + <h3>Practices Year 0</h3>
+     + <div class="introduction fundamentalsPanel" phase="1">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p><i>Punctuation</i></p>
+     + <p><i>What is a sentence?</i></p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>Punctuation</h3>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h4>Overview</h4>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     + … 332 more added
+WJFUN105: identical 0 / changed 1
+  ~ WJFUN106_0_0.html: -8 +467
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <h5>Knowledge Year 1</h5>
+     - <h5>Practices Year 1</h5>
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+     - <!-- Lesson 1.0 -->
+     - <div class="acksLesson">
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-8 col-12">
+     + <h3>Knowledge Year 1</h3>
+     + <h3>Practices Year 1</h3>
+     + <p>What is a sentence?</p>
+     + <p>Punctuation</p>
+     + <p>Writing a sentence</p>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>What is a Sentence?</h3>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h4>Overview</h4>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     + <p>We are learning:</p>
+     + <ul>
+     + <li>to say a complete sentence with a subject and a verb.</li>
+     + </ul>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     + … 447 more added
+WJFUN106: identical 0 / changed 1
+  ~ WJFUN107_0_0.html: -83 +761
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Overview</h3>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Knowledge Year 2:</h4>
+     - <ul>
+     - <li>Capital letters are used at the beginning of sentences and for names.</li>
+     - <li>Full stops show where sentences end.</li>
+     - <li>A compound sentence is made by joining two complete sentences (independent clauses) with a joining word, s
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Practices Year 2:</h4>
+     - <ul>
+     - <li>Using full stops and capital letters correctly and independently.</li>
+     - <li>Combining two simple sentences orally, using a coordinating conjunction, to form a compound sentence.</li>
+     - <li>Using compound sentences with coordinating conjunctions in writing.</li>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Introduction content</h3>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Sentence Structure</h3>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Welcome to Ashburton!</h4>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/rhs.jpg" alt="" /> -->
+     - <p>Kia ora everyone! We are travelling in the South Island and today we are going to make a stop at Ashburton.
+     - <p>A long time ago, when the first settlers came to this place, they saw wide, open land covered in tussock gr
+     - <p>Ashburton is special because of its rivers. The rivers flow down from the mountains and bring fresh water t
+     - <p>Today, people still enjoy the land and the rivers in Ashburton, so let’s take a moment to rest by the beaut
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - … 43 more removed
+     + <body class="inquiry container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-8 col-12">
+     + <div class="crumbs">
+     + <div crumb="Intro" class="showing"><p>Introduction</p></div>
+     + <div crumb="1"><p></p></div>
+     + <div crumb="2"><p></p></div>
+     + <div class="inquiryPanel showing" rel="intro">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h2>Overview</h2>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>Knowledge Year 2:</h3>
+     + <ul>
+     + <li>Capital letters are used at the beginning of sentences and for names.</li>
+     + <li>Full stops show where sentences end.</li>
+     + <li>A compound sentence is made by joining two complete sentences (independent clauses) with a joining word, s
+     + </ul>
+     + </div>
+     + … 741 more added
+WJFUN107: identical 0 / changed 1
+  ~ WJFUN108_0_0.html: -14 +685
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <h3>Overview</h3>
+     - <h4>Knowledge Year 3</h4>
+     - <h4>Practices Year 3</h4>
+     - <h3>Introduction content</h3>
+     - <h3>FUNdamental Sentence Structure</h3>
+     - <h4>Welcome to the West Coast!</h4>
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+     - <!-- Lesson 1.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 2.0 -->
+     - <div class="acksLesson">
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-8 col-12">
+     + <h4>Overview</h4>
+     + <h3>Knowledge Year 3</h3>
+     + <h3>Practices Year 3</h3>
+     + <h4>Introduction content</h4>
+     + <h4>FUNdamental Sentence Structure</h4>
+     + <h3>Welcome to the West Coast!</h3>
+     + <div class="introduction fundamentalsPanel" phase="1">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Types of Sentences</p>
+     + <p>Punctuation</p>
+     + <p>Writing Sentences</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>Types of Sentences</h3>
+     + </div>
+     + … 665 more added
+WJFUN108: identical 0 / changed 1
+  ~ WJFUN109_0_0.html: -10 +462
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <h5>Knowledge</h5>
+     - <h5>Practices</h5>
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+     - <!-- Lesson 1.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 2.0 -->
+     - <div class="acksLesson">
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-8 col-12">
+     + <h3>Knowledge</h3>
+     + <h3>Practices</h3>
+     + <div class="introduction fundamentalsPanel" phase="1">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Purpose</p>
+     + <p>Audience</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>The Purpose Of Writing</h3>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h4>Overview</h4>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     + … 442 more added
+WJFUN109: identical 0 / changed 1
+  ~ WJFUN110_0_0.html: -10 +469
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <h5>Knowledge</h5>
+     - <h5>Practices</h5>
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+     - <!-- Lesson 1.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 2.0 -->
+     - <div class="acksLesson">
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-8 col-12">
+     + <h3>Knowledge</h3>
+     + <h3>Practices</h3>
+     + <div class="introduction fundamentalsPanel" phase="1">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Purpose</p>
+     + <p>Audience</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>The Purpose Of Writing</h3>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h4>Overview</h4>
+     + </div>
+     + … 449 more added
+WJFUN110: identical 0 / changed 1
+  ~ WJFUN112_0_0.html: -38 +635
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Introduction content</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>FUNdamental: Audience and Purpose</h3>
+     - <div class="row supervisor">
+     - <div class="col-md-8 col-12 super-content-button">
+     - <div class="super-content row">
+     - <div class="row">
+     - <h3>Supervisor note</h3>
+     - <p>All content within this module is intended to be read aloud by the supervisor, as it is not written at the 
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Welcome to Abel Tasman National Park!</h4>
+     - <audio preload="none" src="audio/.mp3" class="audioPlayer icon" title=""></audio>
+     - <p>Imagine walking along a golden-sand beach, paddling a kayak across turquoise water, or spotting a fur seal 
+     - <p>The park is famous for its stunning scenery, crystal-clear water, native forests, and golden beaches. Visit
+     - <p>Throughout this fundamental we will explore the amazing places, wildlife, and adventures found in Abel Tasm
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/rhs.jpg" alt="" /> -->
+     - <p>Take a look at the video below to explore a very special part of New Zealand and discover why so many peopl
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/PkzAeRXOsN0" loading="lazy" title="YouTube video player" f
+     - <p>This fundamental is about Audience and Purpose. Click on the first tile to get started and then work on the
+     - <a href="https://www.istockphoto.com/photo/sea-kayaks-in-abel-tasman-national-park-gm1131882053-299851774" tar
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+     - <!-- Lesson 1.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 2.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 3.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 4.0 -->
+     - <div class="acksLesson">
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-8 col-12">
+     + <div class="phases">
+     + <div phase="1">
+     + <p>Phase 1</p>
+     + <div phase="2">
+     + <p>Phase 2</p>
+     + <div class="introduction">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h4>Introduction content</h4>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>FUNdamental: Audience and Purpose</h3>
+     + <div class="row supervisor">
+     + <div class="col-md-8 col-12 super-content-button">
+     + <div class="super-content row">
+     + <div class="row">
+     + <div class="col-12">
+     + … 615 more added
+WJFUN112: identical 0 / changed 1
+  ~ WJFUN113_0_0.html: -11 +519
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <h5>Knowledge Y0</h5>
+     - <h5>Practices Year 0</h5>
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+     - <!-- Lesson 1.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 2.0 -->
+     - <p>Image: , created with Copilot, © Te Aho o Te Kura Pounamu, Wellington, New Zealand.</p>
+     - <div class="acksLesson">
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-8 col-12">
+     + <h3>Knowledge Y0</h3>
+     + <h3>Practices Year 0</h3>
+     + <div class="introduction fundamentalsPanel" phase="1">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p><i>Parts of speech</i></p>
+     + <p><i>Language features</i></p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>Parts of Speech</h3>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h4>Overview</h4>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     + … 499 more added
+WJFUN113: identical 0 / changed 1
+  ~ WJFUN115_0_0.html: -10 +1316
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+     - <!-- Lesson 1.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 2.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 3.0 -->
+     - <div class="acksLesson">
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-8 col-12">
+     + <div class="introduction fundamentalsPanel" phase="1">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Language choices</p>
+     + <p>Language features 1</p>
+     + <p>Language features 2</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>Language Choices</h3>
+     + <h5>Learning Intention:</h5>
+     + <p>We are learning:</p>
+     + <ul>
+     + <li>how writers choose words that help readers create pictures in their minds</li>
+     + <li>how writers use adjectives, adverbs, and phrases to add detail to their writing</li>
+     + <li>how writers choose more interesting and precise words to make their writing clearer and more engaging.</li
+     + </ul>
+     + … 1296 more added
+WJFUN115: identical 0 / changed 1
+  ~ WJFUN116_0_0.html: -10 +1626
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+     - <!-- Lesson 1.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 2.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 3.0 -->
+     - <div class="acksLesson">
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-8 col-12">
+     + <div class="introduction fundamentalsPanel" phase="1">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Language choices</p>
+     + <p>Language features</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>Language Choices</h3>
+     + <p>Year 3 Learning Intention</p>
+     + <p>We are learning:</p>
+     + <ul>
+     + <li>how writers use language choices to make their writing more clear, interesting, and descriptive.</li>
+     + </ul>
+     + <p>Year 3 Success Criteria</p>
+     + <p>I can:</p>
+     + <ul>
+     + … 1606 more added
+WJFUN116: identical 0 / changed 1
+  ~ WJFUN205_0_0.html: -71 +823
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Overview</h3>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Knowledge Year 5:</h4>
+     - <ul>
+     - <li>Independent clauses can stand alone as complete sentences, while dependent clauses cannot.</li>
+     - <li>Different sentence structures and types can be used to enhance the impact of a text.</li>
+     - <li>A short, simple sentence can add impact and intensity.</li>
+     - <li>A complex, expanded sentence can add description and detail.</li>
+     - <li>Phrases are groups of words that do not contain both a subject and a verb, so they cannot stand alone (e.g
+     - <li>Phrases can be inserted into sentences in different positions (beginning, middle, or end).</li>
+     - <li>Varying the position of phrases adds interest.</li>
+     - <li>Writers can experiment with sentence structure by saying sentences aloud before writing them down.</li>
+     - <li>Using a variety of sentence lengths and types keeps writing engaging and avoids repetition.</li>
+     - <li>Expanding sentences improves writing by adding detail, clarifying meaning, and increasing precision and en
+     - <li>An adverbial phrase is a group of words that acts like an adverb.</li>
+     - <li>An adverbial phrase expands a sentence by explaining how, when, where, or to what extent something happene
+     - <li>An appositive is a word or phrase that provides more information about a noun by renaming or explaining it
+     - <li>Correct use of beginning and ending punctuation makes writing clearer and easier to understand.</li>
+     - <li>Commas are used to separate two independent clauses joined by a conjunction.</li>
+     - <li>Commas follow adverbs or adverbial phrases at the start of sentences to improve readability.</li>
+     - <li>Speech marks (quotation marks) show exactly what someone is saying.</li>
+     - <li>Punctuation (commas, full stops, question marks, exclamation marks) goes inside speech marks when it is pa
+     - <li>Each new speaker’s dialogue should start on a new line to help readers follow the conversation.</li>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Practices Year 5:</h4>
+     - <ul>
+     - <li>Identifying dependent and independent clauses</li>
+     - <li>Combining sentences orally to create a range of structures</li>
+     - <li>Identifying the impact of different sentence structures</li>
+     - <li>Using a range of sentence structures and types to suit the purpose of the writing</li>
+     - <li>Avoiding repetition of certain sentence structures</li>
+     - <li>Expanding sentences using adverbial phrases and appositives</li>
+     - … 31 more removed
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+     + <div class="phases">
+     + <div phase="1">
+     + <p>Phase 1</p>
+     + <div phase="2">
+     + <p>Phase 2</p>
+     + <div phase="3">
+     + <p>Phase 3</p>
+     + <div class="introduction">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>Overview</h3>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>Knowledge Year 5:</h3>
+     + <ul>
+     + <li>Independent clauses can stand alone as complete sentences, while dependent clauses cannot.</li>
+     + <li>Different sentence structures and types can be used to enhance the impact of a text.</li>
+     + … 803 more added
+WJFUN205: identical 0 / changed 1
+  ~ WJFUN206_0_0.html: -82 +1070
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Overview</h3>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Knowledge Year 6:</h4>
+     - <ul>
+     - <li>An adverb is a word that adds detail to a verb, an adjective, or another adverb by describing how, when, w
+     - <li>An adverbial phrase is a group of words that acts like an adverb.</li>
+     - <li>Clauses contain a subject and a verb, while adverbial phrases do not.</li>
+     - <li>Different sentence structures and types can be used to enhance the impact of a text.</li>
+     - <li>A short, simple sentence can add impact and intensity.</li>
+     - <li>A complex, expanded sentence can add description and detail.</li>
+     - <li>Phrases are groups of words that work together but do not contain both a subject and a verb so cannot stan
+     - <li>Phrases can be inserted into sentences in different positions (beginning, middle, or end).</li>
+     - <li>Varying the position of phrases adds interest.</li>
+     - <li>Writers can experiment with the way sentences are structured by saying them, to see how they sound, before
+     - <li>Writers combine a variety of sentence lengths and types in a piece of writing to keep it engaging and avoi
+     - <li>Expanding sentences improves writing by adding detail, clarifying meaning, and making it more precise and 
+     - <li>An appositive is a word or phrase that gives more information about a noun by renaming or explaining.</li>
+     - <li>An adjectival phrase is a group of words that describes a noun by giving more information about it, often 
+     - <li>Understanding and consistently applying the knowledge they already have about correct beginning and ending
+     - <li>Commas are used to separate two independent clauses when they are joined by a conjunction.</li>
+     - <li>Commas follow adverbs or adverbial phrases at the start of sentences, improving flow and readability.</li>
+     - <li>Commas are used with appositives to separate extra information about a noun, helping the sentence stay cle
+     - <li>Speech marks (quotation marks) are used to show exactly what someone is saying.</li>
+     - <li>Punctuation, such as commas, full stops, question marks, and exclamation marks, is placed inside the speec
+     - <li>Each new speaker’s words should start on a new line to help readers follow who is speaking.</li>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Practices Year 6:</h4>
+     - <ul>
+     - <li>Explaining the difference between a clause and an adverbial phrase and identifying these in a variety of s
+     - <li>Combining sentences orally to create a range of structures, choosing their preferred structure and justify
+     - <li>Using a range of sentence structures and types, rearranging the order of clauses and phrases for optimal e
+     - <li>Expanding sentences using adverbial and adjectival phrases and appositives .</li>
+     - … 42 more removed
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+     + <div class="phases">
+     + <div phase="1">
+     + <p>Phase 1</p>
+     + <div phase="2">
+     + <p>Phase 2</p>
+     + <div class="introduction">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h4>Overview</h4>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>Knowledge Year 6:</h3>
+     + <ul>
+     + <li>An adverb is a word that adds detail to a verb, an adjective, or another adverb by describing how, when, w
+     + <li>An adverbial phrase is a group of words that acts like an adverb.</li>
+     + <li>Clauses contain a subject and a verb, while adverbial phrases do not.</li>
+     + <li>Different sentence structures and types can be used to enhance the impact of a text.</li>
+     + … 1050 more added
+WJFUN206: identical 0 / changed 1
+  ~ WJFUN208_0_0.html: -16 +678
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <h3>Overview</h3>
+     - <h4>Knowledge Year 5:</h4>
+     - <h4>Practices Year 5:</h4>
+     - <h3>Introduction content</h3>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [tab n] outside an interac
+     - <p>Audience and Purpose</p>
+     - <p>Choosing Words for Effect</p>
+     - <ul class="footer-nav">
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+     - <!-- Lesson 1.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 2.0 -->
+     - <div class="acksLesson">
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+     + <h4>Overview</h4>
+     + <h3>Knowledge Year 5:</h3>
+     + <h3>Practices Year 5:</h3>
+     + <h4>Introduction content</h4>
+     + <div class="introduction fundamentalsPanel" phase="1">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Audience and Purpose</p>
+     + <p>Choosing Words for Effect</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h4>Audience and Purpose</h4>
+     + <p>We are learning:</p>
+     + <ul>
+     + <li>to identify and write for a clear audience and purpose by making deliberate language choices.</li>
+     + </ul>
+     + … 658 more added
+WJFUN208: identical 0 / changed 1
+  ~ WJFUN210_0_0.html: -14 +618
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <h3>Overview</h3>
+     - <h4>Knowledge Year 4</h4>
+     - <h4>Practices Year 4:</h4>
+     - <h3>Nau mai haere mai, welcome to Whanganui!</h3>
+     - <h3>Introduction content</h3>
+     - <ul class="footer-nav">
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+     - <!-- Lesson 1.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 2.0 -->
+     - <div class="acksLesson">
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+     + <h4>Overview</h4>
+     + <h3>Knowledge Year 4</h3>
+     + <h3>Practices Year 4:</h3>
+     + <h4>Nau mai haere mai, welcome to Whanganui!</h4>
+     + <h4>Introduction content</h4>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Figurative Language</p>
+     + <p>Word Choice</p>
+     + <div class="fundamentalsPanel" phase="1">
+     + <h3>Phase 1</h3>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h4>Figurative Language</h4>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + … 598 more added
+WJFUN210: identical 0 / changed 1
+  ~ WJFUN211_0_0.html: -18 +596
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <h3>Overview</h3>
+     - <h4>Knowledge Year 5:</h4>
+     - <h4>Practices Year 5:</h4>
+     - <h3>Introduction content</h3>
+     - <h3>Figurative Language And Imagery</h3>
+     - <h4>Figurative Language and Imagery</h4>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [tab n] outside an interac
+     - <p>Using Figurative Language</p>
+     - <p>Imagery and Author’s Choices</p>
+     - <ul class="footer-nav">
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+     - <!-- Lesson 1.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 2.0 -->
+     - <div class="acksLesson">
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+     + <h4>Overview</h4>
+     + <h3>Knowledge Year 5:</h3>
+     + <h3>Practices Year 5:</h3>
+     + <h4>Introduction content</h4>
+     + <h4>Figurative Language And Imagery</h4>
+     + <h3>Figurative Language and Imagery</h3>
+     + <div class="introduction fundamentalsPanel" phase="1">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Using Figurative Language</p>
+     + <p>Imagery and Author’s Choices</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>Using Figurative Language</h3>
+     + <p>We are learning:</p>
+     + <ul>
+     + … 576 more added
+WJFUN211: identical 0 / changed 1
+  ~ WJFUN212_0_0.html: -27 +953
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <h3>Overview</h3>
+     - <h4>Knowledge Year 6:</h4>
+     - <h4>Practices Year 6:</h4>
+     - <h3>Nau mai haere mai - Welcome to Te Puke</h3>
+     - <p>Kiwifruit Country Tours &#39;Glorious Bay&#39; excursion to TePukeGoodnessGrowsHere</p>
+     - <p>Experience Comvita - Share Nature Share Life. All part of Te Puke Goodness Grows Here - YouTube</p>
+     - <p>In this Fundamental, you will learn how writers use literary techniques and descriptive language to make th
+     - <p>Click on an image below to get started. You can do them in any order. At the end of each one there will be 
+     - <div class="row carousel">
+     - <div class="col-md-12 col-12 viewer">
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>Kiwi Plantation In Te Puke In The Bay Of Plenty Region On The North Island Of New Zealand Stock Photo - Dow
+     - <p>Panoramic Aerial View Of Te Puke At Sunrise In Summer Bay Of Plenty New Zealand Stock Photo - Download Imag
+     - <div class="item">
+     - <div class="carousel-caption">
+     - <p>/ Literary Techniques</p>
+     - <p>/ Vocabulary</p>
+     - <ul class="footer-nav">
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+     - <!-- Lesson 1.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 2.0 -->
+     - <div class="acksLesson">
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+     + <h4>Overview</h4>
+     + <h3>Knowledge Year 6:</h3>
+     + <h3>Practices Year 6:</h3>
+     + <h4>Nau mai haere mai - Welcome to Te Puke</h4>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="1" data-cv2-ref="WJFUN212-00-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="1" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: carousel — Activity (inline) — see W
+     + <div style="font-size: 0.95em">
+     + <p>Kiwifruit Country Tours &#39;Glorious Bay&#39; excursion to TePukeGoodnessGrowsHere</p>
+     + <p>Experience Comvita - Share Nature Share Life. All part of Te Puke Goodness Grows Here - YouTube</p>
+     + <p>In this Fundamental, you will learn how writers use literary techniques and descriptive language to make th
+     + <p>Click on an image below to get started. You can do them in any order. At the end of each one there will be 
+     + <div class="table-responsive">
+     + … 933 more added
+WJFUN212: identical 0 / changed 1
+  ~ WJFUN304_0_0.html: -20 +2051
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <h3>Overview</h3>
+     - <h4>Knowledge Year 8:</h4>
+     - <h4>Practices Year 8:</h4>
+     - <h3>Introduction content</h3>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [tab n] outside an interac
+     - <p>Compound - complex sentences</p>
+     - <p>Expanding sentence meaning</p>
+     - <p>Controlling sentence meaning</p>
+     - <p>Elaborating sentences</p>
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+     - <!-- Lesson 1.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 2.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 3.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 4.0 -->
+     - <div class="acksLesson">
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <h4>Overview</h4>
+     + <h3>Knowledge Year 8:</h3>
+     + <h3>Practices Year 8:</h3>
+     + <h4>Introduction content</h4>
+     + <div class="introduction fundamentalsPanel" phase="1">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Compound - complex sentences</p>
+     + <p>Expanding sentence meaning</p>
+     + <p>Controlling sentence meaning</p>
+     + <p>Elaborating sentences</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>Compound-Complex Sentences</h3>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Use the practices from the curriculum
+     + <p>We are learning:</p>
+     + <ul>
+     + … 2031 more added
+WJFUN304: identical 0 / changed 1
+  ~ WJFUN305_0_0.html: -12 +1107
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [tab n] outside an interac
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+     - <!-- Lesson 1.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 2.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 2.1 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 3.0 -->
+     - <div class="acksLesson">
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>Audience, Purpose and Audience Reaction</h3>
+     + <p>We are learning:</p>
+     + <p>● to understand how audience and purpose influence the way texts are written.</p>
+     + <p>I can:</p>
+     + <p>● identify the audience of a text</p>
+     + <p>● identify the purpose of a text</p>
+     + <p>● explain how audience influences a writer&#39;s choices</p>
+     + <p>● explain how purpose influences a writer&#39;s choices</p>
+     + <p>● recognise that different audiences may respond differently to the same text</p>
+     + <p>● explain why a writer has included certain information to suit an audience and purpose.</p>
+     + <div class="row speechBubble" layout="speech">
+     + <div class="col-12">
+     + <div class="bubble-basic no-hover bubble-top"><p>Kia ora koutou! Ready to think like a writer? Let&#39;s disco
+     + … 1087 more added
+WJFUN305: identical 0 / changed 1
+  ~ WJFUN306_0_0.html: -278 +750
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <h5>Knowledge Year 8:</h5>
+     - <h5>Practices Year 8:</h5>
+     - <h5>Audience and Purpose</h5>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [tab n] outside an interac
+     - <p>Tab 1: Audience and purpose</p>
+     - <p>Tab 2: Choosing modes for effect</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Audience and Purpose</h4>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: We are learning:</p>
+     - <ul>
+     - <li>to identify and write for a clear audience and purpose by making deliberate communication choices.</li>
+     - <li>identify the audience and purpose of a text</li>
+     - <li>explain how different audiences may respond to the same message</li>
+     - <li>explain how communication choices suit an intended audience and purpose</li>
+     - <li>explain why a writer, designer, or creator has made particular choices</li>
+     - <li>create a message that is clearly designed for a specific audience and purpose.</li>
+     - </ul>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     - <div class="row speechBubble" layout="speech">
+     - <div class="col-12">
+     - <div class="bubble-basic no-hover bubble-top"><p>Kia ora and welcome to Dargaville! Let&#39;s think like commu
+     - <p>When we communicate, we always have a reason (our purpose) and a group of people in mind (our audience). Ef
+     - <p>Imagine you are sharing information about Dargaville. Would you communicate in the same way for:</p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/insert-to-the-lhs-of-the.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-641227896" alt="Kai Iwi La
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-641227896.jpg" alt="Kai Iwi Lake New Zealand Sto
+     - <ul>
+     - <li>a tourist visiting Kai Iwi Lakes for the first time?</li>
+     - </ul>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-2210858636" alt="Wooden Bo
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-2210858636.jpg" alt="Wooden Boardwalk Walkway Le
+     - <ul>
+     - <li>a local student who already knows the area?</li>
+     - </ul>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1491621734" alt="Orange Co
+     - … 238 more removed
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <h3>Knowledge Year 8:</h3>
+     + <h3>Practices Year 8:</h3>
+     + <h3>Audience and Purpose</h3>
+     + <div class="introduction fundamentalsPanel" phase="1">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Tab 1: Audience and purpose</p>
+     + <p>Tab 2: Choosing modes for effect</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h4>Audience and Purpose</h4>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: We are learning:</p>
+     + <li>to identify and write for a clear audience and purpose by making deliberate communication choices.</li>
+     + <li>identify the audience and purpose of a text</li>
+     + <li>explain how different audiences may respond to the same message</li>
+     + <li>explain how communication choices suit an intended audience and purpose</li>
+     + <li>explain why a writer, designer, or creator has made particular choices</li>
+     + … 730 more added
+WJFUN306: identical 0 / changed 1
+  ~ WJFUN307_0_0.html: -11 +939
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <h4>Tile 1: Choosing words for effect
+     - Explore how writers use synonyms and precise vocabulary to communicate meaning clearly. Learn how a thesaurus 
+     - <h4>Tile 2: Language features that communicate ideas
+     - Investigate how writers use language features such as listing, repetition, and rhetorical questions to highlig
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+     - <!-- Lesson 1.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 2.0 -->
+     - <div class="acksLesson">
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <h5>Tile 1: Choosing words for effect
+     + Explore how writers use synonyms and precise vocabulary to communicate meaning clearly. Learn how a thesaurus 
+     + <h5>Tile 2: Language features that communicate ideas
+     + Investigate how writers use language features such as listing, repetition, and rhetorical questions to highlig
+     + <div class="introduction fundamentalsPanel" phase="1">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Choosing words for effect</p>
+     + <div class="fundamentalsPanel" phase="2">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Language features</p>
+     + </div>
+     + </div>
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>Choosing words for effect</h3>
+     + <p>We are learning:</p>
+     + … 919 more added
+WJFUN307: identical 0 / changed 1
+  ~ WJFUN308_0_0.html: -360 +875
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <h5>Knowledge Year 8:</h5>
+     - <h5>Practices Year 8:</h5>
+     - <h5>Language choices</h5>
+     - <h5>Explore the learning</h5>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [tab n] outside an interac
+     - <p>Choosing words carefully</p>
+     - <p>Language features for impact</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Choosing words carefully</h3>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: We are learning:</p>
+     - <ul>
+     - <li>to deliberately select words that communicate precise meaning and create a desired effect for an audience.
+     - <li>explain that synonyms can have different shades of meaning</li>
+     - <li>identify which synonym is most effective in a particular context</li>
+     - <li>use a thesaurus to locate suitable synonyms for different purposes</li>
+     - <li>explain why a writer has chosen particular words and phrases</li>
+     - <li>select vocabulary that clearly communicates my intended meaning</li>
+     - <li>explain how my word choices create clarity, impact, and personal voice in my writing.</li>
+     - </ul>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     - <div class="row speechBubble" layout="speech">
+     - <div class="col-12">
+     - <div class="bubble-basic no-hover bubble-top"><p>Kia ora! The right word can change everything. Let&#39;s expl
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity interactive" number="1A">
+     - <div class="row">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="WJFUN308-00-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: dragAndDrop — Activity 1A — see WJFU
+     - <div style="font-size: 0.95em">
+     - <p>Shades of meaning</p>
+     - … 320 more removed
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <h3>Knowledge Year 8:</h3>
+     + <h3>Practices Year 8:</h3>
+     + <h3>Language choices</h3>
+     + <h3>Explore the learning</h3>
+     + <div class="introduction fundamentalsPanel" phase="1">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Choosing words carefully</p>
+     + <p>Language features for impact</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [shape n] outside an inter
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>Choosing words carefully</h3>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: We are learning:</p>
+     + <ul>
+     + <li>to deliberately select words that communicate precise meaning and create a desired effect for an audience.
+     + <li>explain that synonyms can have different shades of meaning</li>
+     + <li>identify which synonym is most effective in a particular context</li>
+     + … 855 more added
+WJFUN308: identical 0 / changed 1
+XDLS501: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+XDLS901: identical 5 / changed 0
+XDLS902: identical 8 / changed 0
+XDLS903: identical 8 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS906: identical 8 / changed 0
+XDLS908: identical 9 / changed 0
+XDLS909: identical 5 / changed 0
+XDLS911: identical 2 / changed 0
+XDLS912: identical 6 / changed 0
+XFUN01: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+XGF9001: identical 7 / changed 0
+  ~ XGF9002_1_0.html: -0 +27
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-6 col-12">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + … 7 more added
+  ~ XGF9002_2_0.html: -0 +27
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-6 col-12">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + … 7 more added
+  ~ XGF9002_3_0.html: -0 +27
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-6 col-12">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + … 7 more added
+  ~ XGF9002_4_0.html: -0 +27
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-6 col-12">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + … 7 more added
+  ~ XGF9002_5_0.html: -0 +27
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-6 col-12">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + … 7 more added
+  ~ XGF9002_6_0.html: -0 +27
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-6 col-12">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + … 7 more added
+  ~ XGF9002_7_0.html: -0 +27
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-6 col-12">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + … 7 more added
+  ~ XGF9002_8_0.html: -0 +27
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-6 col-12">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + … 7 more added
+  ~ XGF9002_9_0.html: -0 +27
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-6 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + … 7 more added
+XGF9002: identical 1 / changed 9
+XGF9003: identical 6 / changed 0
+XGF9004: identical 18 / changed 0
+XGF9006: identical 8 / changed 0
+XLP01: identical 5 / changed 0
+XLP02: identical 7 / changed 0
+XLP03: identical 6 / changed 0
+XLP04: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+XLP06: identical 3 / changed 0
+XMES101: identical 9 / changed 0
+XMES102: identical 6 / changed 0
+XMES103: identical 6 / changed 0
+XMES201: identical 6 / changed 0
+XMES203: identical 6 / changed 0
+XTAS101: identical 5 / changed 0
+XTAS102: identical 6 / changed 0
+XTAS103: identical 7 / changed 0
+XWHA01: identical 2 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 405 / changed 107 / missing 0 over 122 modules
+CHANGED: PWY1001/PWY1001_0_0.html PWY1001/PWY1001_1_0.html PWY1001/PWY1001_1_1.html PWY1001/PWY1001_1_2_0.html PWY1001/PWY1001_1_3_0.html PWY1001/PWY1001_2_1_0.html PWY1001/PWY1001_2_2_0.html PWY1001/PWY1001_2_3_0.html PWY1001/PWY1001_3_1_0.html PWY1001/PWY1001_3_2_0.html PWY1002/PWY1002_0_0.html PWY1002/PWY1002_1_1_0.html PWY1002/PWY1002_1_2_0.html PWY1002/PWY1002_1_3_0.html PWY1002/PWY1002_2_1_0.html PWY1002/PWY1002_2_2_0.html PWY1002/PWY1002_3_1_0.html PWY1002/PWY1002_3_2_0.html PWY1002/PWY1002_3_3_0.html PWY1002/PWY1002_4_0.html PWY1007/PWY1007_0_0.html PWY1007/PWY1007_1_0.html PWY1007/PWY1007_2_0.html PWY1007/PWY1007_3_0.html PWY1007/PWY1007_4_0.html PWY1007/PWY1007_5_0.html PWY1007/PWY1007_6_0.html PWY1007/PWY1007_7_0.html PWY1007/PWY1007_8_0.html PWY1008/PWY1008_0_0.html PWY1008/PWY1008_1_1_0.html PWY1008/PWY1008_1_2_0.html PWY1008/PWY1008_1_3_0.html PWY1008/PWY1008_2_1_0.html PWY1008/PWY1008_2_2_0.html PWY1008/PWY1008_2_3_0.html PWY1008/PWY1008_3_1_0.html PWY1008/PWY1008_3_2_0.html PWY1008/PWY1008_3_3_0.html PWY1009/PWY1009_0_0.html PWY1009/PWY1009_1_1_0.html PWY1009/PWY1009_1_2_0.html PWY1009/PWY1009_1_3_0.html PWY1009/PWY1009_2_1_0.html PWY1009/PWY1009_2_2_0.html PWY1009/PWY1009_3_1_0.html PWY1009/PWY1009_3_2_0.html PWY1009/PWY1009_3_3_0.html PWYWHA1/PWY1000_0_0.html SCBI301/SCBI301_0_0.html SCBI301/SCBI301_8_0.html SCES201/SCES201_0_0.html SCES201/SCES201_1_0.html SCES201/SCES201_2_0.html SCES201/SCES201_3_0.html SCES201/SCES201_4_0.html SPA1004/SPA1004_0_0.html SPA1004/SPA1004_3_0.html SSCI205/SSCI205_0_0.html SSCI205/SSCI205_1_0.html SSCI205/SSCI205_2_0.html SSCI205/SSCI205_3_0.html SSCI205/SSCI205_4_0.html SSCI205/SSCI205_5_0.html SSCI205/SSCI205_6_0.html SSCI205/SSCI205_7_0.html SSCI205/SSCI205_8_0.html SSCI205/SSCI205_9_0.html TEDC401/TEDC401_4_0.html TEDC401/TEDC401_6_0.html TEDC402/TEDC402_2_0.html TEDC402/TEDC402_4_0.html TEDC402/TEDC402_8_0.html TRR107/TRR107_0_0.html TRR203/TRR203_0_0.html TRR301/TRR301_0_0.html TRR304/TRR304_0_0.html WJFUN105/WJFUN105_0_0.html WJFUN106/WJFUN106_0_0.html WJFUN107/WJFUN107_0_0.html WJFUN108/WJFUN108_0_0.html WJFUN109/WJFUN109_0_0.html WJFUN110/WJFUN110_0_0.html WJFUN112/WJFUN112_0_0.html WJFUN113/WJFUN113_0_0.html WJFUN115/WJFUN115_0_0.html WJFUN116/WJFUN116_0_0.html WJFUN205/WJFUN205_0_0.html WJFUN206/WJFUN206_0_0.html WJFUN208/WJFUN208_0_0.html WJFUN210/WJFUN210_0_0.html WJFUN211/WJFUN211_0_0.html WJFUN212/WJFUN212_0_0.html WJFUN304/WJFUN304_0_0.html WJFUN305/WJFUN305_0_0.html WJFUN306/WJFUN306_0_0.html WJFUN307/WJFUN307_0_0.html WJFUN308/WJFUN308_0_0.html XGF9002/XGF9002_1_0.html XGF9002/XGF9002_2_0.html XGF9002/XGF9002_3_0.html XGF9002/XGF9002_4_0.html XGF9002/XGF9002_5_0.html XGF9002/XGF9002_6_0.html XGF9002/XGF9002_7_0.html XGF9002/XGF9002_8_0.html XGF9002/XGF9002_9_0.html

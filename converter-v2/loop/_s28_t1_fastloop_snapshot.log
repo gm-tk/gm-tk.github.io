@@ -1,0 +1,23 @@
+[snapshot] running cs (full corpus)
+  $ python3 compare_structure.py
+[snapshot] running bc (full corpus)
+  $ python3 body_compare.py
+[snapshot] running skeleton (full corpus)
+  $ python3 _skeleton_compare.py --json /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_fastloop_baseline/skeleton.json
+[snapshot] running defect (full corpus)
+  $ python3 _structural_defect_audit.py --json /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_fastloop_baseline/defect.json
+
+[snapshot] baseline complete -> /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_fastloop_baseline
+
+BASELINE aggregates (paste these into the changelog round):
+  skeleton SCAFFOLD mean %                  53.68
+  skeleton pages >=50%                       1398
+  skeleton pages >=75%                        236
+  compare_structure exact chain             14091
+  compare_structure EXTRA container           186
+  compare_structure missing container         690
+  body_compare ANY breakdown                  248
+  defect structurally-clean %               98.27
+  literal-[tag] leak (occ)                     73
+  literal-[tag] leak (pages)                   44
+  (context: sk_pages=2349  cs_matched=16414  body_pages=2548  df_total=2548  df_clean=2504)

@@ -1,0 +1,4221 @@
+{
+ "counts": {
+  "body|h2": {
+   "h3@plain": 54,
+   "th@plain": 2,
+   "p@plain": 134,
+   "li@list": 49,
+   "p@alert": 4,
+   "li@alert>list": 1,
+   "radioQuiz@activity": 1,
+   "li@activity>list": 9,
+   "h2@plain": 66,
+   "h3@activity": 23,
+   "h4@plain": 14,
+   "tabs@plain": 1,
+   "a@plain": 42,
+   "td@table": 1,
+   "infoTrigger@plain": 8,
+   "flipCard@plain": 6,
+   "p@activity": 19,
+   "dragAndDrop@activity": 1,
+   "wordHighlighter@plain": 1,
+   "h4@activity": 1,
+   "h5@plain": 1,
+   "td@activity>table": 3,
+   "h5@activity": 3,
+   "h3@activity>table>activity": 1,
+   "flipCard@activity": 2,
+   "p@activity>table": 2
+  },
+  "body|module introduction": {
+   "p@plain": 24,
+   "li@list": 19,
+   "h3@activity": 4,
+   "li@alert>list": 1,
+   "h3@plain": 2,
+   "h2@plain": 1,
+   "a@activity": 1
+  },
+  "header|alert": {
+   "h1@plain": 3
+  },
+  "menu|lesson overview": {
+   "h5@plain": 80,
+   "li@list": 78,
+   "p@plain": 19,
+   "h4@plain": 27,
+   "tabs@plain": 2
+  },
+  "menu|h2": {
+   "p@plain": 122,
+   "h5@plain": 130,
+   "li@list": 823,
+   "tabs@plain": 4,
+   "h4@plain": 50,
+   "h3@plain": 53
+  },
+  "body|body": {
+   "p@plain": 802,
+   "multiChoiceQuiz@activity": 4,
+   "infoTrigger@plain": 3,
+   "li@list": 184,
+   "h4@plain": 10,
+   "p@activity": 762,
+   "a@plain": 1,
+   "p@alert": 14,
+   "selfCheck@activity": 1,
+   "li@activity>list": 254,
+   "carousel@plain": 2,
+   "li@alert>list": 5,
+   "th@table": 2,
+   "h3@plain": 23,
+   "h3@activity": 9,
+   "accordion@plain": 5,
+   "li@table>list": 1,
+   "h5@plain": 2,
+   "a@alert": 2,
+   "h4@activity": 4,
+   "flipCard@plain": 14,
+   "a@activity": 14,
+   "speechBubble@plain": 1,
+   "dragAndDrop@activity": 7,
+   "td@table": 14,
+   "carousel@activity": 1,
+   "p@activity>table": 4,
+   "tabs@plain": 1,
+   "reorder@activity": 1,
+   "td@activity>list>table": 5,
+   "td@activity>table": 26,
+   "accordion@activity": 9,
+   "h5@activity": 7,
+   "p@activity>table>activity": 3,
+   "li@activity>table>activity>list": 5,
+   "memoryGame@activity": 1,
+   "wordHighlighter@activity": 2,
+   "h2@activity": 1,
+   "typing@activity": 1,
+   "radioQuiz@activity": 1,
+   "wordSelect@activity": 2,
+   "p@activity>list": 2
+  },
+  "body|h3": {
+   "h3@activity": 150,
+   "h3@plain": 319,
+   "p@plain": 235,
+   "tabs@activity": 1,
+   "p@activity": 70,
+   "infoTrigger@plain": 9,
+   "li@list": 190,
+   "li@alert>list": 3,
+   "h4@plain": 61,
+   "th@plain": 1,
+   "dragAndDrop@activity": 4,
+   "h5@plain": 2,
+   "p@alert": 7,
+   "clickDrop@list": 1,
+   "a@activity": 17,
+   "h2@plain": 8,
+   "td@table": 12,
+   "a@plain": 8,
+   "h4@alert": 3,
+   "selfCheck@activity": 2,
+   "h3@alert": 2,
+   "a@list": 3,
+   "p@activity>list": 2,
+   "li@activity>list": 17,
+   "slider@activity": 1,
+   "h4@activity": 2,
+   "infoTrigger@activity": 2,
+   "accordion@plain": 5,
+   "flipCard@plain": 12,
+   "multiChoiceQuiz@activity": 1,
+   "p@list": 1,
+   "clickDrop@plain": 3,
+   "carousel@plain": 1
+  },
+  "body|activity": {
+   "p@activity": 178,
+   "h3@activity": 509,
+   "dragAndDrop@activity": 12,
+   "selfCheck@activity": 5,
+   "h4@activity": 4,
+   "li@activity>list": 39,
+   "th@table": 1,
+   "td@table": 7,
+   "multiChoiceQuiz@activity": 4,
+   "shapeHover@plain": 1,
+   "h3@plain": 26,
+   "p@plain": 35,
+   "accordion@plain": 2,
+   "h4@alert": 8,
+   "infoTrigger@plain": 1,
+   "flipCard@activity": 14,
+   "tabs@plain": 1,
+   "p@whakatauki": 1,
+   "dropQuiz@activity": 2,
+   "clickDrop@activity": 4,
+   "h5@activity": 6,
+   "a@plain": 4,
+   "clickDrop@plain": 1,
+   "radioQuiz@activity": 1,
+   "p@alert": 2,
+   "accordion@activity": 1,
+   "typing@activity": 1,
+   "p@list": 1,
+   "infoTrigger@list": 1,
+   "h2@plain": 3,
+   "flipCard@plain": 1,
+   "h3@alert": 1,
+   "h3@activity>table>activity": 1,
+   "p@activity>table": 1,
+   "radioQuiz@activity>table": 3,
+   "td@activity>table": 2,
+   "wordHighlighter@activity": 1,
+   "randomSelect@plain": 1
+  },
+  "body|hover definition red text": {
+   "infoTrigger@plain": 1,
+   "h3@activity": 1,
+   "p@plain": 11,
+   "p@activity": 1,
+   "li@list": 2,
+   "accordion@plain": 1
+  },
+  "body|image": {
+   "h5@plain": 2,
+   "p@plain": 125,
+   "carousel@plain": 21,
+   "p@activity": 45,
+   "li@list": 42,
+   "li@alert>list": 2,
+   "td@table": 34,
+   "clickDrop@activity": 1,
+   "p@table": 3,
+   "dragAndDrop@activity": 5,
+   "accordion@plain": 11,
+   "infoTrigger@plain": 5,
+   "p@alert": 4,
+   "h3@plain": 3,
+   "h3@activity": 5,
+   "th@plain": 1,
+   "infoTrigger@list": 1,
+   "imageLabel@plain": 1,
+   "h4@plain": 5,
+   "tabs@plain": 1,
+   "p@whakatauki": 1,
+   "reorder@activity": 1,
+   "a@alert": 1,
+   "li@activity>list": 4,
+   "a@plain": 2,
+   "speechBubble@plain": 2,
+   "flipCard@activity": 10,
+   "a@list": 1,
+   "carousel@activity": 1,
+   "flipCard@plain": 5,
+   "td@activity>table": 2,
+   "h5@activity": 1,
+   "wordSelect@activity": 1,
+   "tabs@activity": 1,
+   "th@activity>table": 2,
+   "p@activity>table": 1,
+   "typing@activity": 1
+  },
+  "body|alert": {
+   "h4@alert": 42,
+   "li@alert>list": 105,
+   "h3@activity": 12,
+   "td@table": 1,
+   "li@alert": 5,
+   "p@plain": 17,
+   "p@alert": 55,
+   "p@whakatauki": 4,
+   "h5@plain": 1,
+   "flipCard@plain": 1,
+   "p@activity": 5,
+   "accordion@activity": 1,
+   "p@activity>table": 2,
+   "h3@plain": 5,
+   "h3@alert": 1,
+   "li@activity>list": 9
+  },
+  "header|h2": {
+   "h1@plain": 33
+  },
+  "body|info trigger": {
+   "p@plain": 6,
+   "h4@plain": 1,
+   "h3@activity": 2,
+   "li@list": 3,
+   "p@whakatauki": 2
+  },
+  "body|button": {
+   "dragAndDrop@activity": 1,
+   "p@plain": 13,
+   "h4@alert": 1,
+   "h4@plain": 4,
+   "p@activity": 37,
+   "a@activity": 136,
+   "a@plain": 2,
+   "infoTrigger@plain": 1,
+   "h4@activity": 41,
+   "h3@activity": 2,
+   "li@activity>list": 1
+  },
+  "body|external link": {
+   "p@activity": 8,
+   "p@plain": 4
+  },
+  "header|h3": {
+   "h1@plain": 27
+  },
+  "body|important": {
+   "p@alert": 12,
+   "p@whakatauki": 2,
+   "li@activity>list": 12,
+   "p@activity": 29,
+   "p@plain": 21,
+   "multiChoiceQuiz@activity": 1,
+   "p@activity>alert": 4
+  },
+  "header|title bar": {
+   "h1@plain": 116
+  },
+  "menu|body": {
+   "tabs@plain": 2,
+   "p@plain": 3,
+   "li@list": 3
+  },
+  "body|summary": {
+   "li@alert>list": 64,
+   "p@alert": 5,
+   "h3@plain": 1,
+   "h3@activity": 1,
+   "li@alert": 3
+  },
+  "body|go to your red text": {
+   "p@activity": 1
+  },
+  "body|secondary text": {
+   "p@plain": 11,
+   "p@alert": 4,
+   "h3@plain": 1,
+   "p@activity": 3,
+   "h4@plain": 2,
+   "h4@alert": 1
+  },
+  "header|activity": {
+   "h1@plain": 7
+  },
+  "body|h4": {
+   "h3@plain": 20,
+   "p@plain": 26,
+   "h3@activity": 9,
+   "h4@plain": 25,
+   "li@list": 10,
+   "th@table": 1,
+   "td@table": 4,
+   "p@whakatauki": 1,
+   "h5@plain": 2,
+   "accordion@plain": 1,
+   "td@activity>table": 2,
+   "h4@activity": 3,
+   "clickDrop@activity": 1,
+   "typing@activity": 1,
+   "p@activity": 13,
+   "li@activity>list": 16,
+   "p@alert": 4
+  },
+  "body|activtiy embedded": {
+   "p@activity": 1,
+   "h3@activity": 1,
+   "h3@plain": 1
+  },
+  "body|drop": {
+   "p@table": 1,
+   "p@plain": 1
+  },
+  "body|video": {
+   "p@activity": 22,
+   "p@plain": 3,
+   "p@alert": 1,
+   "h2@plain": 1,
+   "p@whakatauki": 2,
+   "infoTrigger@activity": 1,
+   "carousel@plain": 9
+  },
+  "body|secondarytext": {
+   "h4@alert": 1
+  },
+  "header|summary": {
+   "h1@plain": 1
+  },
+  "body|table": {
+   "th@plain": 1,
+   "th@table": 1,
+   "td@table": 4,
+   "accordion@plain": 2,
+   "p@plain": 1
+  },
+  "body|merged content 3": {
+   "p@activity": 1
+  },
+  "header|module introduction": {
+   "h1@plain": 4
+  },
+  "body|lesson overview": {
+   "td@table": 1,
+   "p@plain": 1
+  },
+  "body|title bar": {
+   "h3@plain": 1,
+   "infoTrigger@plain": 2,
+   "h2@plain": 4,
+   "infoTrigger@alert": 1,
+   "h3@activity": 4,
+   "p@activity": 1,
+   "a@activity": 1
+  },
+  "body|radio quiz": {
+   "infoTrigger@plain": 1,
+   "infoTrigger@activity": 1
+  },
+  "body|end page": {
+   "li@alert>list": 3,
+   "h3@activity": 1
+  },
+  "header|h4": {
+   "h1@plain": 2
+  },
+  "body|seconday text": {
+   "p@plain": 2
+  },
+  "body|hover definition yearly": {
+   "p@plain": 2
+  },
+  "header|body": {
+   "h1@plain": 9
+  },
+  "menu|activity": {
+   "p@plain": 11,
+   "li@list": 8,
+   "h4@plain": 1
+  },
+  "body|rhs alert": {
+   "p@plain": 1,
+   "p@alert": 1
+  },
+  "menu|title bar": {
+   "h3@plain": 21,
+   "li@list": 28
+  },
+  "body|mcq": {
+   "h3@activity": 1
+  },
+  "body|dropdown": {
+   "p@activity": 1
+  },
+  "body|supervisor button": {
+   "p@activity": 1
+  },
+  "header|image": {
+   "h1@plain": 2
+  },
+  "body|supervisor note": {
+   "p@plain": 5,
+   "p@alert": 1,
+   "p@activity": 58,
+   "p@activity>table>activity": 1,
+   "td@activity>table": 6,
+   "li@activity>list": 15,
+   "h5@activity": 1,
+   "reorder@activity": 5
+  },
+  "header|lesson": {
+   "h1@plain": 6
+  },
+  "body|data marker": {
+   "infoTrigger@plain": 2,
+   "p@plain": 14,
+   "li@list": 4,
+   "h4@plain": 1,
+   "multiChoiceQuiz@activity": 1
+  },
+  "body|lesson": {
+   "h3@activity": 1
+  },
+  "menu|alert": {
+   "p@plain": 1
+  },
+  "body|source 4": {
+   "p@activity": 1
+  },
+  "body|add link button": {
+   "p@activity": 1
+  },
+  "menu|image": {
+   "li@list": 12
+  },
+  "body|m": {
+   "a@plain": 1
+  },
+  "body|embed": {
+   "p@activity": 2,
+   "li@activity>list": 2,
+   "h5@plain": 2,
+   "p@plain": 1
+  },
+  "body|insert image with caption rhc": {
+   "p@alert": 3,
+   "a@alert": 1,
+   "p@activity": 1
+  },
+  "body|insert these as images in rhc": {
+   "p@plain": 1,
+   "a@plain": 1
+  },
+  "body|insert link button": {
+   "p@activity": 2
+  },
+  "body|insert image rhc": {
+   "p@plain": 4
+  },
+  "body|click drop link map 1": {
+   "h4@activity": 1,
+   "li@activity>list": 3
+  },
+  "body|click drop link map 2": {
+   "li@activity>list": 7
+  },
+  "body|adapted": {
+   "p@activity": 2
+  },
+  "body|please embed this link": {
+   "p@plain": 1
+  },
+  "body|h1": {
+   "h2@plain": 16,
+   "h4@plain": 1,
+   "h3@activity": 2,
+   "p@plain": 13,
+   "p@activity": 8
+  },
+  "body|add button quiz": {
+   "a@plain": 1
+  },
+  "body|whakatauki": {
+   "p@whakatauki": 2
+  },
+  "body|click drop one for timeline": {
+   "timeline@plain": 1
+  },
+  "body|primary source click drop": {
+   "p@plain": 1
+  },
+  "body|secondary source click drop": {
+   "p@plain": 3
+  },
+  "body|slide n": {
+   "p@plain": 1
+  },
+  "body|module summary": {
+   "p@alert": 1
+  },
+  "header|tags": {
+   "h1@plain": 3
+  },
+  "body|tags": {
+   "h2@plain": 1
+  },
+  "body|lesson content": {
+   "p@plain": 13,
+   "h3@plain": 1,
+   "p@alert": 1,
+   "h2@plain": 2,
+   "li@list": 3,
+   "infoTrigger@activity": 1
+  },
+  "body|insert images red text": {
+   "p@plain": 4
+  },
+  "body|phase one content begins": {
+   "p@plain": 1
+  },
+  "body|insert h3 emotion": {
+   "p@plain": 1
+  },
+  "body|insert image red text": {
+   "p@plain": 6
+  },
+  "body|insert alert box k rero": {
+   "p@alert": 4,
+   "li@alert>list": 9
+  },
+  "body|insert h3 identity": {
+   "p@plain": 4,
+   "li@list": 4
+  },
+  "body|phase two content begins": {
+   "p@plain": 1
+  },
+  "body|insert in an alert box": {
+   "p@alert": 1
+  },
+  "body|engagement quiz button": {
+   "h3@activity": 1,
+   "p@activity": 6
+  },
+  "body|insert h red text": {
+   "h2@plain": 1,
+   "p@plain": 2
+  },
+  "body|insert youtube video": {
+   "p@plain": 2
+  },
+  "body|phase three content begins": {
+   "h3@activity": 1
+  },
+  "header|arfun02": {
+   "h1@plain": 1
+  },
+  "body|please use clap emoji": {
+   "p@plain": 2,
+   "li@list": 2,
+   "h3@activity": 1
+  },
+  "body|format": {
+   "h3@activity": 1,
+   "p@plain": 20,
+   "p@activity": 1,
+   "dragAndDrop@activity": 1,
+   "infoTrigger@plain": 2,
+   "a@plain": 1
+  },
+  "body|insert flip cards": {
+   "p@plain": 1
+  },
+  "body|correct": {
+   "flipCard@plain": 2,
+   "multiChoiceQuiz@activity": 2
+  },
+  "menu|h3": {
+   "h5@plain": 1
+  },
+  "body|insert item 2 video": {
+   "p@plain": 4
+  },
+  "body|insert item 88 video": {
+   "p@plain": 2
+  },
+  "body|insert item 10 video": {
+   "p@plain": 1
+  },
+  "body|insert item 11 video": {
+   "p@plain": 1
+  },
+  "body|insert item 13 video": {
+   "p@plain": 1
+  },
+  "body|insert items 15 carousel": {
+   "p@activity": 1
+  },
+  "body|hover over p red text": {
+   "p@plain": 1
+  },
+  "body|insert item 16 video": {
+   "p@plain": 1,
+   "li@list": 4
+  },
+  "body|insert item 17 images": {
+   "p@activity": 1
+  },
+  "body|insert item 21 video": {
+   "p@plain": 1
+  },
+  "body|insert item 47 video": {
+   "p@plain": 4
+  },
+  "body|insert item 24 video": {
+   "p@plain": 1,
+   "li@list": 2,
+   "dragAndDrop@activity": 2
+  },
+  "body|create tick boxes": {
+   "p@activity": 2
+  },
+  "body|insert item 27 video": {
+   "p@plain": 2,
+   "dropQuiz@activity": 1
+  },
+  "body|insert item 31 painting": {
+   "p@plain": 2
+  },
+  "body|insert item 33 video": {
+   "p@plain": 1
+  },
+  "body|insert item 34 video": {
+   "p@plain": 1
+  },
+  "body|insert item 40 video": {
+   "p@plain": 3
+  },
+  "body|cs to create a mix and match": {
+   "p@activity": 2
+  },
+  "body|insert item 44 video": {
+   "p@plain": 3
+  },
+  "body|insert item 45 video": {
+   "p@plain": 1
+  },
+  "body|insert item 46 video": {
+   "p@plain": 2
+  },
+  "body|insert item 48 video": {
+   "p@plain": 1
+  },
+  "body|insert item 49 video": {
+   "li@list": 1
+  },
+  "body|insert item 51 video": {
+   "li@list": 1
+  },
+  "body|insert item 52 video": {
+   "li@list": 1
+  },
+  "body|insert item 53 video": {
+   "li@list": 2
+  },
+  "body|click drop": {
+   "li@list": 2
+  },
+  "body|insert item 57 video": {
+   "p@plain": 1
+  },
+  "body|insert item 37 video": {
+   "p@plain": 1
+  },
+  "body|insert item 64 video": {
+   "p@plain": 1
+  },
+  "body|insert item 12 images": {
+   "td@table": 1
+  },
+  "body|insert item 71 images": {
+   "td@table": 1
+  },
+  "body|insert item 66 video": {
+   "p@plain": 1
+  },
+  "body|insert item 67 image": {
+   "p@list": 1
+  },
+  "body|insert item 68 image": {
+   "p@list": 1
+  },
+  "body|mix and match": {
+   "p@activity": 1
+  },
+  "body|insert item 43 video": {
+   "p@plain": 1
+  },
+  "body|insert item 73 video": {
+   "p@plain": 2
+  },
+  "body|insert item 75 x3 images": {
+   "p@activity": 1
+  },
+  "body|insert item 76 x3 images": {
+   "p@activity": 1
+  },
+  "body|insert item x3 77 images": {
+   "p@activity": 1
+  },
+  "body|insert item 81 video": {
+   "p@plain": 1
+  },
+  "body|insert item 91 video": {
+   "p@plain": 2
+  },
+  "body|insert item 93 video": {
+   "li@list": 8
+  },
+  "body|insert item 94 video": {
+   "li@list": 1
+  },
+  "body|insert item 95 video": {
+   "li@list": 1
+  },
+  "body|insert item 96 video": {
+   "li@list": 1
+  },
+  "body|insert item 98 video": {
+   "li@list": 1
+  },
+  "body|insert item 100 video": {
+   "li@list": 1
+  },
+  "body|insert item 105 video": {
+   "p@plain": 1
+  },
+  "body|insert item 107 video": {
+   "p@plain": 1
+  },
+  "body|insert item 108 video": {
+   "p@plain": 1
+  },
+  "body|insert item 109 video": {
+   "p@plain": 1
+  },
+  "body|create flip cards": {
+   "p@plain": 5
+  },
+  "body|insert item 115 video": {
+   "p@plain": 1
+  },
+  "body|insert item 117 video": {
+   "p@plain": 1
+  },
+  "body|insert item 119 video": {
+   "p@plain": 1
+  },
+  "body|insert item 121 video": {
+   "p@plain": 1
+  },
+  "body|create mix and match": {
+   "p@activity": 1
+  },
+  "body|insert item 124 video": {
+   "p@list": 5
+  },
+  "body|insert item 127 video": {
+   "p@plain": 1
+  },
+  "body|end other": {
+   "li@list": 1
+  },
+  "body|insert item 131 video": {
+   "li@list": 1
+  },
+  "body|insert item 132 video": {
+   "li@list": 1
+  },
+  "body|insert item 133 video": {
+   "li@list": 1
+  },
+  "body|insert item 135 video": {
+   "li@list": 1
+  },
+  "body|insert item 137 video": {
+   "li@list": 1
+  },
+  "body|insert item 139 video": {
+   "li@list": 1
+  },
+  "body|insert alert box": {
+   "p@alert": 1
+  },
+  "body|insert image beside text": {
+   "p@plain": 3
+  },
+  "menu|h1": {
+   "tabs@plain": 2
+  },
+  "body|insert item 4 graphic": {
+   "p@plain": 1,
+   "p@alert": 1
+  },
+  "body|insert item 8 photo": {
+   "li@activity>list": 1
+  },
+  "body|insert item 12 graphic": {
+   "p@activity": 1
+  },
+  "header|h1": {
+   "h1@plain": 1
+  },
+  "body|subject name": {
+   "a@alert": 1,
+   "h5@plain": 1,
+   "h3@activity": 2,
+   "li@activity>list": 1,
+   "infoTrigger@activity>list": 1,
+   "a@activity": 2,
+   "h4@activity": 1
+  },
+  "body|h5": {
+   "p@activity>list": 3,
+   "p@activity": 7,
+   "p@plain": 1,
+   "li@activity>list": 3
+  },
+  "body|insert link 5 to fundamentals": {
+   "p@activity": 1
+  },
+  "body|insert item 9b template": {
+   "h5@plain": 1,
+   "a@activity": 5,
+   "li@activity>list": 6,
+   "p@activity": 1
+  },
+  "header|insert item 9b template": {
+   "h1@plain": 1
+  },
+  "body|insert item 12 image": {
+   "p@activity": 3,
+   "li@activity>list": 3
+  },
+  "header|heading": {
+   "h1@plain": 1
+  },
+  "body|heading": {
+   "clickDrop@plain": 1,
+   "h3@plain": 1
+  },
+  "body|insert item red text": {
+   "p@plain": 1,
+   "clickDrop@activity": 1
+  },
+  "body|insert text box": {
+   "p@plain": 1
+  },
+  "body|insert text into textbox": {
+   "p@plain": 1
+  },
+  "body|italicised body text": {
+   "p@activity": 1
+  },
+  "body|insert link 13 embed video": {
+   "p@activity": 1
+  },
+  "body|insert text box with text": {
+   "p@plain": 1
+  },
+  "body|insert item 14 google folder": {
+   "p@activity": 1
+  },
+  "body|tab n": {
+   "p@plain": 26,
+   "h2@plain": 21,
+   "p@activity": 1,
+   "h3@activity": 5
+  },
+  "body|typing quiz": {
+   "p@activity": 30,
+   "wordSelect@activity": 3,
+   "multiChoiceQuiz@activity": 2,
+   "typing@activity": 2,
+   "dragAndDrop@activity": 1,
+   "flipCard@activity": 1,
+   "dropQuiz@activity": 1
+  },
+  "body|modal": {
+   "p@activity": 141,
+   "h3@activity": 7,
+   "li@activity>list": 107,
+   "h4@activity": 1,
+   "h3@plain": 1,
+   "clickDrop@activity": 1
+  },
+  "menu|drag and drop": {
+   "li@list": 1
+  },
+  "body|drag and drop": {
+   "p@activity": 9,
+   "flipCard@activity": 2,
+   "accordion@activity": 1,
+   "dragAndDrop@activity": 4,
+   "reorder@activity": 3,
+   "td@activity>table": 1
+  },
+  "body|accordion": {
+   "accordion@activity": 2,
+   "clickDrop@activity": 1,
+   "li@activity>list": 5
+  },
+  "body|audio": {
+   "p@activity>table": 1,
+   "dragAndDrop@activity": 2,
+   "carousel@activity": 1,
+   "td@activity>table": 1,
+   "p@activity": 2,
+   "li@activity>list": 3,
+   "p@activity>list": 1,
+   "memoryGame@activity": 1
+  },
+  "body|side alert": {
+   "p@plain": 8
+  },
+  "body|flip card": {
+   "p@activity": 1
+  },
+  "body|check in": {
+   "p@plain": 1
+  },
+  "body|supervision note": {
+   "p@activity": 1
+  },
+  "body|upload to dropbox": {
+   "p@plain": 2
+  },
+  "body|insert crossword": {
+   "h5@activity": 1,
+   "p@activity": 1
+  },
+  "body|a": {
+   "p@activity": 2,
+   "li@activity>list": 2
+  },
+  "menu|h5": {
+   "h4@plain": 1,
+   "h5@plain": 2,
+   "p@plain": 1,
+   "li@list": 8
+  },
+  "body|create crossword": {
+   "p@activity": 1
+  },
+  "body|source image of a cross": {
+   "p@activity": 1
+  },
+  "body|multiple choice quiz": {
+   "multiChoiceQuiz@activity": 1
+  }
+ },
+ "examples": {
+  "body|h2": {
+   "h3@plain": [
+    "AGH1001",
+    "AGH1005",
+    "ANZH303",
+    "ANZH304",
+    "ANZH401",
+    "ARFUN02",
+    "ARFUN03",
+    "ARFUN04",
+    "ARFUN05",
+    "ART1002",
+    "ART1003",
+    "ART1006"
+   ],
+   "th@plain": [
+    "AGH1001",
+    "ARFUN04"
+   ],
+   "p@plain": [
+    "AGH1002",
+    "AGH1003",
+    "ANZH104",
+    "ANZH303",
+    "ANZH404",
+    "ARFUN02",
+    "ARFUN03",
+    "ARFUN04",
+    "ARFUN05",
+    "ART1002",
+    "ART1005",
+    "BLL130"
+   ],
+   "li@list": [
+    "AGH1002",
+    "AGH1004",
+    "AGH1005",
+    "ARFUN03",
+    "ARFUN04",
+    "ARFUN05",
+    "ART1003"
+   ],
+   "p@alert": [
+    "AGH1002",
+    "ARFUN05"
+   ],
+   "li@alert>list": [
+    "AGH1004"
+   ],
+   "radioQuiz@activity": [
+    "AGH1005"
+   ],
+   "li@activity>list": [
+    "AGH1006",
+    "ART1003",
+    "ART1006"
+   ],
+   "h2@plain": [
+    "ANZH101",
+    "ANZH203",
+    "ANZH303",
+    "ANZH404",
+    "ARFUN03",
+    "ARFUN04",
+    "ART1006",
+    "BLL130"
+   ],
+   "h3@activity": [
+    "ANZH103",
+    "ANZH205",
+    "ANZH304",
+    "ANZH404",
+    "ARFUN03",
+    "ARFUN04",
+    "ARFUN05",
+    "ART1002",
+    "ART1003",
+    "ART1006"
+   ],
+   "h4@plain": [
+    "ANZH104",
+    "ARFUN04",
+    "ART1003"
+   ],
+   "tabs@plain": [
+    "ANZH105"
+   ],
+   "a@plain": [
+    "ANZH203",
+    "ARFUN04"
+   ],
+   "td@table": [
+    "ANZH303"
+   ],
+   "infoTrigger@plain": [
+    "ANZH304",
+    "ANZH404",
+    "ARFUN03",
+    "ARFUN04",
+    "ARFUN05"
+   ],
+   "flipCard@plain": [
+    "ARFUN03"
+   ],
+   "p@activity": [
+    "ARFUN03",
+    "ARFUN05",
+    "ART1002",
+    "ART1005",
+    "ART1006",
+    "BLL120",
+    "BLL147"
+   ],
+   "dragAndDrop@activity": [
+    "ARFUN04"
+   ],
+   "wordHighlighter@plain": [
+    "ART1002"
+   ],
+   "h4@activity": [
+    "ART1003"
+   ],
+   "h5@plain": [
+    "ART1004"
+   ],
+   "td@activity>table": [
+    "ART1006",
+    "BLL126"
+   ],
+   "h5@activity": [
+    "ART1006",
+    "BLL120"
+   ],
+   "h3@activity>table>activity": [
+    "BLL114"
+   ],
+   "flipCard@activity": [
+    "BLL126"
+   ],
+   "p@activity>table": [
+    "BLL136",
+    "BLL137"
+   ]
+  },
+  "body|module introduction": {
+   "p@plain": [
+    "AGH1001",
+    "AGH1003",
+    "AGH1004",
+    "AGH1006",
+    "AGH1008",
+    "AGH1009",
+    "ANZH101",
+    "ANZH104",
+    "ANZH203",
+    "ANZH301",
+    "ANZH303",
+    "ANZH304",
+    "ANZH404",
+    "ART1002",
+    "ART1003",
+    "ART1006"
+   ],
+   "li@list": [
+    "AGH1001",
+    "AGH1004",
+    "AGH1009",
+    "ANZH304"
+   ],
+   "h3@activity": [
+    "AGH1004",
+    "AGH1005"
+   ],
+   "li@alert>list": [
+    "AGH1004"
+   ],
+   "h3@plain": [
+    "AGH1005"
+   ],
+   "h2@plain": [
+    "ART1006"
+   ],
+   "a@activity": [
+    "ART1006"
+   ]
+  },
+  "header|alert": {
+   "h1@plain": [
+    "AGH1001",
+    "ANZH101"
+   ]
+  },
+  "menu|lesson overview": {
+   "h5@plain": [
+    "AGH1001",
+    "AGH1002",
+    "AGH1003",
+    "AGH1004",
+    "AGH1005",
+    "AGH1006",
+    "AGH1008",
+    "ANZH301"
+   ],
+   "li@list": [
+    "AGH1001",
+    "AGH1004",
+    "AGH1005",
+    "AGH1006",
+    "AGH1008",
+    "AGH1009",
+    "ANZH301"
+   ],
+   "p@plain": [
+    "AGH1001",
+    "AGH1008",
+    "ANZH301",
+    "ART1004"
+   ],
+   "h4@plain": [
+    "AGH1005",
+    "AGH1008",
+    "AGH1009"
+   ],
+   "tabs@plain": [
+    "ANZH301"
+   ]
+  },
+  "menu|h2": {
+   "p@plain": [
+    "AGH1001",
+    "AGH1006",
+    "AGH1008",
+    "ANZH104",
+    "ANZH105",
+    "ANZH203",
+    "ANZH404",
+    "BLL110",
+    "BLL112",
+    "BLL113",
+    "BLL114",
+    "BLL115",
+    "BLL116",
+    "BLL117",
+    "BLL120",
+    "BLL121",
+    "BLL122",
+    "BLL123",
+    "BLL125",
+    "BLL126",
+    "BLL127",
+    "BLL130",
+    "BLL131",
+    "BLL132",
+    "BLL133",
+    "BLL134",
+    "BLL135",
+    "BLL136",
+    "BLL137",
+    "BLL140",
+    "BLL141",
+    "BLL142",
+    "BLL143",
+    "BLL144",
+    "BLL145",
+    "BLL146",
+    "BLL147"
+   ],
+   "h5@plain": [
+    "AGH1002",
+    "AGH1003",
+    "AGH1008",
+    "ANZH104",
+    "ANZH105",
+    "ANZH205",
+    "BLL111",
+    "BLL112",
+    "BLL113",
+    "BLL114",
+    "BLL115",
+    "BLL116",
+    "BLL117",
+    "BLL120",
+    "BLL121",
+    "BLL122",
+    "BLL123",
+    "BLL124",
+    "BLL125",
+    "BLL126",
+    "BLL127",
+    "BLL130",
+    "BLL131",
+    "BLL132",
+    "BLL133",
+    "BLL134",
+    "BLL135",
+    "BLL136",
+    "BLL137",
+    "BLL140",
+    "BLL141",
+    "BLL142",
+    "BLL143",
+    "BLL144",
+    "BLL145",
+    "BLL146",
+    "BLL147"
+   ],
+   "li@list": [
+    "AGH1002",
+    "AGH1003",
+    "AGH1004",
+    "AGH1005",
+    "AGH1006",
+    "AGH1008",
+    "AGH1009",
+    "ANZH101",
+    "ANZH104",
+    "ANZH105",
+    "ANZH203",
+    "ANZH205",
+    "ANZH401",
+    "ANZH404",
+    "BLL110",
+    "BLL111",
+    "BLL112",
+    "BLL113",
+    "BLL114",
+    "BLL115",
+    "BLL116",
+    "BLL117",
+    "BLL120",
+    "BLL121",
+    "BLL122",
+    "BLL123",
+    "BLL124",
+    "BLL125",
+    "BLL126",
+    "BLL127",
+    "BLL130",
+    "BLL131",
+    "BLL132",
+    "BLL133",
+    "BLL134",
+    "BLL135",
+    "BLL136",
+    "BLL137",
+    "BLL140",
+    "BLL141",
+    "BLL142",
+    "BLL143",
+    "BLL144",
+    "BLL146",
+    "BLL147"
+   ],
+   "tabs@plain": [
+    "AGH1003",
+    "AGH1006",
+    "AGH1008",
+    "ART1006"
+   ],
+   "h4@plain": [
+    "AGH1008",
+    "ANZH104",
+    "ANZH105",
+    "ANZH203",
+    "ANZH205",
+    "BLL110",
+    "BLL111",
+    "BLL115",
+    "BLL116",
+    "BLL117",
+    "BLL121",
+    "BLL122",
+    "BLL123",
+    "BLL126",
+    "BLL127",
+    "BLL131",
+    "BLL132",
+    "BLL133",
+    "BLL134",
+    "BLL135",
+    "BLL136",
+    "BLL137",
+    "BLL146",
+    "BLL147"
+   ],
+   "h3@plain": [
+    "ANZH101",
+    "ANZH203",
+    "ANZH404"
+   ]
+  },
+  "body|body": {
+   "p@plain": [
+    "AGH1001",
+    "AGH1002",
+    "AGH1003",
+    "AGH1004",
+    "AGH1005",
+    "AGH1006",
+    "AGH1008",
+    "AGH1009",
+    "ANZH101",
+    "ANZH103",
+    "ANZH104",
+    "ANZH105",
+    "ANZH203",
+    "ANZH205",
+    "ANZH301",
+    "ANZH303",
+    "ANZH304",
+    "ANZH401",
+    "ANZH404",
+    "ANZHFUN05",
+    "ARFUN01",
+    "ARFUN02",
+    "ART1002",
+    "ART1003",
+    "ART1004",
+    "ART1005",
+    "ART1006",
+    "BLL110",
+    "BLL111",
+    "BLL112",
+    "BLL113",
+    "BLL114",
+    "BLL115",
+    "BLL116",
+    "BLL117",
+    "BLL120",
+    "BLL121",
+    "BLL122",
+    "BLL123",
+    "BLL124",
+    "BLL125",
+    "BLL126",
+    "BLL127",
+    "BLL130",
+    "BLL131",
+    "BLL132",
+    "BLL133",
+    "BLL134",
+    "BLL135",
+    "BLL136",
+    "BLL137",
+    "BLL140",
+    "BLL141",
+    "BLL142",
+    "BLL143",
+    "BLL144",
+    "BLL145",
+    "BLL146",
+    "BLL147"
+   ],
+   "multiChoiceQuiz@activity": [
+    "AGH1001",
+    "ART1006",
+    "BLL116",
+    "BLL125"
+   ],
+   "infoTrigger@plain": [
+    "AGH1001",
+    "ART1006"
+   ],
+   "li@list": [
+    "AGH1001",
+    "AGH1002",
+    "AGH1003",
+    "AGH1006",
+    "AGH1008",
+    "AGH1009",
+    "ANZH103",
+    "ANZH205",
+    "ANZHFUN05",
+    "ARFUN02"
+   ],
+   "h4@plain": [
+    "AGH1001",
+    "AGH1009",
+    "ANZH205",
+    "ANZH303",
+    "ART1006"
+   ],
+   "p@activity": [
+    "AGH1001",
+    "AGH1006",
+    "AGH1008",
+    "AGH1009",
+    "ANZH101",
+    "ANZH103",
+    "ANZH104",
+    "ANZH105",
+    "ANZH203",
+    "ANZH205",
+    "ANZH301",
+    "ANZH401",
+    "ANZH404",
+    "ARFUN01",
+    "ARFUN02",
+    "ARFUN04",
+    "ART1002",
+    "ART1003",
+    "ART1004",
+    "ART1005",
+    "ART1006",
+    "BLL110",
+    "BLL111",
+    "BLL112",
+    "BLL113",
+    "BLL114",
+    "BLL115",
+    "BLL116",
+    "BLL117",
+    "BLL120",
+    "BLL121",
+    "BLL122",
+    "BLL123",
+    "BLL124",
+    "BLL125",
+    "BLL126",
+    "BLL127",
+    "BLL130",
+    "BLL131",
+    "BLL132",
+    "BLL133",
+    "BLL134",
+    "BLL135",
+    "BLL136",
+    "BLL137",
+    "BLL140",
+    "BLL141",
+    "BLL142",
+    "BLL143",
+    "BLL144",
+    "BLL145",
+    "BLL146",
+    "BLL147"
+   ],
+   "a@plain": [
+    "AGH1001"
+   ],
+   "p@alert": [
+    "AGH1001",
+    "ANZH105",
+    "ANZH303",
+    "ANZH401",
+    "ART1003"
+   ],
+   "selfCheck@activity": [
+    "AGH1001"
+   ],
+   "li@activity>list": [
+    "AGH1001",
+    "ANZH101",
+    "ANZH103",
+    "ANZH104",
+    "ANZH105",
+    "ARFUN04",
+    "ART1002",
+    "ART1003",
+    "ART1004",
+    "ART1005",
+    "BLL110",
+    "BLL113",
+    "BLL116",
+    "BLL117",
+    "BLL120",
+    "BLL123",
+    "BLL124",
+    "BLL126",
+    "BLL130",
+    "BLL132",
+    "BLL133",
+    "BLL136",
+    "BLL137",
+    "BLL140",
+    "BLL142",
+    "BLL144",
+    "BLL145",
+    "BLL147"
+   ],
+   "carousel@plain": [
+    "AGH1002",
+    "ANZH404"
+   ],
+   "li@alert>list": [
+    "AGH1002",
+    "AGH1005",
+    "AGH1006",
+    "AGH1009"
+   ],
+   "th@table": [
+    "AGH1002",
+    "AGH1008"
+   ],
+   "h3@plain": [
+    "AGH1002",
+    "AGH1009",
+    "ANZH304",
+    "ARFUN02"
+   ],
+   "h3@activity": [
+    "AGH1003",
+    "AGH1009",
+    "ANZH104",
+    "ANZH205",
+    "ARFUN02",
+    "ART1002",
+    "ART1003",
+    "ART1006"
+   ],
+   "accordion@plain": [
+    "AGH1004",
+    "AGH1006",
+    "AGH1009"
+   ],
+   "li@table>list": [
+    "AGH1004"
+   ],
+   "h5@plain": [
+    "AGH1008",
+    "ART1003"
+   ],
+   "a@alert": [
+    "AGH1009"
+   ],
+   "h4@activity": [
+    "ANZH101",
+    "ANZH103",
+    "ART1002",
+    "ART1004"
+   ],
+   "flipCard@plain": [
+    "ANZH103",
+    "ANZH304",
+    "ARFUN01"
+   ],
+   "a@activity": [
+    "ANZH103",
+    "ART1004",
+    "BLL120"
+   ],
+   "speechBubble@plain": [
+    "ANZH104"
+   ],
+   "dragAndDrop@activity": [
+    "ANZH104",
+    "ANZH304",
+    "ART1003",
+    "ART1005",
+    "BLL121",
+    "BLL141",
+    "BLL144"
+   ],
+   "td@table": [
+    "ANZH303",
+    "ART1003"
+   ],
+   "carousel@activity": [
+    "ANZH303"
+   ],
+   "p@activity>table": [
+    "ANZH304",
+    "BLL112",
+    "BLL141"
+   ],
+   "tabs@plain": [
+    "ANZH404"
+   ],
+   "reorder@activity": [
+    "ARFUN02"
+   ],
+   "td@activity>list>table": [
+    "ART1003"
+   ],
+   "td@activity>table": [
+    "ART1003",
+    "BLL121",
+    "BLL122",
+    "BLL126",
+    "BLL133",
+    "BLL142",
+    "BLL143",
+    "BLL144",
+    "BLL146"
+   ],
+   "accordion@activity": [
+    "ART1006",
+    "BLL111",
+    "BLL121",
+    "BLL124",
+    "BLL131",
+    "BLL134",
+    "BLL137",
+    "BLL145",
+    "BLL147"
+   ],
+   "h5@activity": [
+    "BLL113",
+    "BLL120",
+    "BLL123",
+    "BLL124",
+    "BLL126"
+   ],
+   "p@activity>table>activity": [
+    "BLL114"
+   ],
+   "li@activity>table>activity>list": [
+    "BLL114"
+   ],
+   "memoryGame@activity": [
+    "BLL123"
+   ],
+   "wordHighlighter@activity": [
+    "BLL133"
+   ],
+   "h2@activity": [
+    "BLL135"
+   ],
+   "typing@activity": [
+    "BLL136"
+   ],
+   "radioQuiz@activity": [
+    "BLL143"
+   ],
+   "wordSelect@activity": [
+    "BLL146",
+    "BLL147"
+   ],
+   "p@activity>list": [
+    "BLL147"
+   ]
+  },
+  "body|h3": {
+   "h3@activity": [
+    "AGH1001",
+    "AGH1002",
+    "AGH1003",
+    "AGH1004",
+    "AGH1005",
+    "AGH1006",
+    "AGH1008",
+    "AGH1009",
+    "ANZH101",
+    "ANZH103",
+    "ANZH104",
+    "ANZH105",
+    "ANZH203",
+    "ANZH205",
+    "ANZH301",
+    "ANZH303",
+    "ANZH304",
+    "ANZH404",
+    "ARFUN02",
+    "ARFUN03",
+    "ARFUN04",
+    "ARFUN05",
+    "ART1004",
+    "ART1005"
+   ],
+   "h3@plain": [
+    "AGH1001",
+    "AGH1002",
+    "AGH1003",
+    "AGH1004",
+    "AGH1005",
+    "AGH1006",
+    "AGH1008",
+    "AGH1009",
+    "ANZH101",
+    "ANZH103",
+    "ANZH104",
+    "ANZH105",
+    "ANZH203",
+    "ANZH205",
+    "ANZH301",
+    "ANZH303",
+    "ANZH304",
+    "ANZH404",
+    "ARFUN02",
+    "ARFUN03",
+    "ARFUN04",
+    "ART1005"
+   ],
+   "p@plain": [
+    "AGH1001",
+    "AGH1002",
+    "AGH1003",
+    "AGH1004",
+    "AGH1005",
+    "AGH1006",
+    "AGH1009",
+    "ANZH303",
+    "ARFUN02",
+    "ARFUN03",
+    "ARFUN04",
+    "ARFUN05",
+    "ART1005"
+   ],
+   "tabs@activity": [
+    "AGH1001"
+   ],
+   "p@activity": [
+    "AGH1001",
+    "AGH1002",
+    "AGH1004",
+    "AGH1005",
+    "AGH1009",
+    "ANZH101",
+    "ANZH203",
+    "ANZH301",
+    "ANZH303",
+    "ARFUN03",
+    "ARFUN04",
+    "ARFUN05",
+    "ART1003",
+    "ART1004",
+    "ART1005"
+   ],
+   "infoTrigger@plain": [
+    "AGH1002",
+    "AGH1004",
+    "AGH1006",
+    "AGH1008"
+   ],
+   "li@list": [
+    "AGH1002",
+    "AGH1004",
+    "AGH1005",
+    "AGH1006",
+    "ANZH104",
+    "ARFUN02",
+    "ARFUN03",
+    "ARFUN04",
+    "ARFUN05"
+   ],
+   "li@alert>list": [
+    "AGH1002",
+    "AGH1005",
+    "AGH1006"
+   ],
+   "h4@plain": [
+    "AGH1002",
+    "AGH1003",
+    "AGH1005",
+    "AGH1006",
+    "ANZH203",
+    "ANZH301",
+    "ANZH303",
+    "ARFUN02",
+    "ARFUN03",
+    "ARFUN05"
+   ],
+   "th@plain": [
+    "AGH1003"
+   ],
+   "dragAndDrop@activity": [
+    "AGH1004",
+    "ARFUN04"
+   ],
+   "h5@plain": [
+    "AGH1004",
+    "ART1002"
+   ],
+   "p@alert": [
+    "AGH1004",
+    "AGH1009",
+    "ANZH105",
+    "ARFUN05",
+    "ART1003"
+   ],
+   "clickDrop@list": [
+    "AGH1004"
+   ],
+   "a@activity": [
+    "AGH1005",
+    "AGH1006",
+    "ANZH304"
+   ],
+   "h2@plain": [
+    "AGH1006",
+    "ANZH303",
+    "ARFUN04"
+   ],
+   "td@table": [
+    "AGH1006",
+    "ANZH303",
+    "ARFUN04"
+   ],
+   "a@plain": [
+    "AGH1006",
+    "ANZH203",
+    "ARFUN04"
+   ],
+   "h4@alert": [
+    "AGH1009",
+    "ANZH101",
+    "ANZH104"
+   ],
+   "selfCheck@activity": [
+    "AGH1009"
+   ],
+   "h3@alert": [
+    "ANZH105"
+   ],
+   "a@list": [
+    "ANZH205",
+    "ARFUN04"
+   ],
+   "p@activity>list": [
+    "ANZH301"
+   ],
+   "li@activity>list": [
+    "ANZH301",
+    "ANZH303",
+    "ARFUN04",
+    "ART1004"
+   ],
+   "slider@activity": [
+    "ANZH301"
+   ],
+   "h4@activity": [
+    "ANZH304",
+    "ART1004"
+   ],
+   "infoTrigger@activity": [
+    "ANZH304",
+    "ANZH401"
+   ],
+   "accordion@plain": [
+    "ARFUN02"
+   ],
+   "flipCard@plain": [
+    "ARFUN03",
+    "ARFUN04"
+   ],
+   "multiChoiceQuiz@activity": [
+    "ARFUN03"
+   ],
+   "p@list": [
+    "ARFUN04"
+   ],
+   "clickDrop@plain": [
+    "ARFUN04"
+   ],
+   "carousel@plain": [
+    "ARFUN05"
+   ]
+  },
+  "body|activity": {
+   "p@activity": [
+    "AGH1001",
+    "AGH1002",
+    "AGH1003",
+    "AGH1004",
+    "AGH1006",
+    "AGH1008",
+    "AGH1009",
+    "ANZH101",
+    "ANZH105",
+    "ANZH203",
+    "ANZH205",
+    "ANZH301",
+    "ANZH303",
+    "ANZH304",
+    "ANZH401",
+    "ANZH404",
+    "ANZHFUN05",
+    "ARFUN02",
+    "ARFUN04",
+    "BLL110",
+    "BLL115",
+    "BLL117",
+    "BLL120",
+    "BLL130",
+    "BLL140",
+    "BLL144"
+   ],
+   "h3@activity": [
+    "AGH1001",
+    "AGH1002",
+    "AGH1003",
+    "AGH1005",
+    "AGH1009",
+    "ANZH101",
+    "ANZH105",
+    "ANZH203",
+    "ANZH205",
+    "ANZH401",
+    "ARFUN04",
+    "BLL110",
+    "BLL111",
+    "BLL112",
+    "BLL113",
+    "BLL114",
+    "BLL115",
+    "BLL116",
+    "BLL117",
+    "BLL120",
+    "BLL121",
+    "BLL122",
+    "BLL123",
+    "BLL124",
+    "BLL125",
+    "BLL126",
+    "BLL127",
+    "BLL130",
+    "BLL131",
+    "BLL132",
+    "BLL133",
+    "BLL134",
+    "BLL135",
+    "BLL136",
+    "BLL137",
+    "BLL140",
+    "BLL141",
+    "BLL142",
+    "BLL143",
+    "BLL144",
+    "BLL145",
+    "BLL146",
+    "BLL147"
+   ],
+   "dragAndDrop@activity": [
+    "AGH1001",
+    "AGH1003",
+    "AGH1005",
+    "AGH1006",
+    "AGH1008",
+    "AGH1009",
+    "ANZH101",
+    "ANZH103",
+    "ANZH203",
+    "ANZH304",
+    "ARFUN02",
+    "ARFUN04"
+   ],
+   "selfCheck@activity": [
+    "AGH1001",
+    "AGH1009"
+   ],
+   "h4@activity": [
+    "AGH1001",
+    "AGH1002",
+    "ANZH104"
+   ],
+   "li@activity>list": [
+    "AGH1001",
+    "ANZH101",
+    "ANZH203",
+    "ANZH301",
+    "ANZH304",
+    "ANZH404",
+    "ANZHFUN05",
+    "ARFUN04"
+   ],
+   "th@table": [
+    "AGH1002"
+   ],
+   "td@table": [
+    "AGH1002",
+    "AGH1003",
+    "ARFUN04"
+   ],
+   "multiChoiceQuiz@activity": [
+    "AGH1003",
+    "ANZH101",
+    "ANZH104",
+    "ARFUN04"
+   ],
+   "shapeHover@plain": [
+    "AGH1003"
+   ],
+   "h3@plain": [
+    "AGH1003",
+    "AGH1005",
+    "ANZH301",
+    "ANZH401",
+    "ARFUN04",
+    "BLL115",
+    "BLL117",
+    "BLL126",
+    "BLL130",
+    "BLL131",
+    "BLL147"
+   ],
+   "p@plain": [
+    "AGH1004",
+    "AGH1005",
+    "AGH1006",
+    "AGH1009",
+    "ANZH301",
+    "ANZH304",
+    "ANZH404",
+    "ANZHFUN05",
+    "ARFUN04"
+   ],
+   "accordion@plain": [
+    "AGH1006",
+    "AGH1009"
+   ],
+   "h4@alert": [
+    "AGH1008"
+   ],
+   "infoTrigger@plain": [
+    "AGH1008"
+   ],
+   "flipCard@activity": [
+    "ANZH105",
+    "BLL114",
+    "BLL123"
+   ],
+   "tabs@plain": [
+    "ANZH203"
+   ],
+   "p@whakatauki": [
+    "ANZH301"
+   ],
+   "dropQuiz@activity": [
+    "ANZH301",
+    "ANZH304"
+   ],
+   "clickDrop@activity": [
+    "ANZH301"
+   ],
+   "h5@activity": [
+    "ANZH301",
+    "BLL113",
+    "BLL123"
+   ],
+   "a@plain": [
+    "ANZH401",
+    "ARFUN04"
+   ],
+   "clickDrop@plain": [
+    "ANZH404"
+   ],
+   "radioQuiz@activity": [
+    "ANZH404"
+   ],
+   "p@alert": [
+    "ANZH404",
+    "ANZHFUN05"
+   ],
+   "accordion@activity": [
+    "ANZH404"
+   ],
+   "typing@activity": [
+    "ANZH404"
+   ],
+   "p@list": [
+    "ANZHFUN05"
+   ],
+   "infoTrigger@list": [
+    "ANZHFUN05"
+   ],
+   "h2@plain": [
+    "ARFUN04"
+   ],
+   "flipCard@plain": [
+    "ARFUN04"
+   ],
+   "h3@alert": [
+    "BLL110"
+   ],
+   "h3@activity>table>activity": [
+    "BLL114"
+   ],
+   "p@activity>table": [
+    "BLL116"
+   ],
+   "radioQuiz@activity>table": [
+    "BLL117"
+   ],
+   "td@activity>table": [
+    "BLL127",
+    "BLL137"
+   ],
+   "wordHighlighter@activity": [
+    "BLL133"
+   ],
+   "randomSelect@plain": [
+    "BLL141"
+   ]
+  },
+  "body|hover definition red text": {
+   "infoTrigger@plain": [
+    "AGH1001"
+   ],
+   "h3@activity": [
+    "AGH1001"
+   ],
+   "p@plain": [
+    "AGH1001",
+    "AGH1006",
+    "AGH1008",
+    "AGH1009"
+   ],
+   "p@activity": [
+    "AGH1001"
+   ],
+   "li@list": [
+    "AGH1009"
+   ],
+   "accordion@plain": [
+    "AGH1009"
+   ]
+  },
+  "body|image": {
+   "h5@plain": [
+    "AGH1001",
+    "AGH1008"
+   ],
+   "p@plain": [
+    "AGH1001",
+    "AGH1002",
+    "AGH1003",
+    "AGH1004",
+    "AGH1005",
+    "AGH1006",
+    "AGH1008",
+    "AGH1009",
+    "ANZH101",
+    "ANZH203",
+    "ANZH205",
+    "ANZH302",
+    "ANZH303",
+    "ANZH304",
+    "ARFUN03",
+    "ARFUN05",
+    "ART1002"
+   ],
+   "carousel@plain": [
+    "AGH1001",
+    "AGH1002",
+    "AGH1003",
+    "AGH1004",
+    "AGH1009"
+   ],
+   "p@activity": [
+    "AGH1001",
+    "AGH1002",
+    "AGH1004",
+    "AGH1005",
+    "AGH1008",
+    "ANZH301",
+    "ANZH302",
+    "ANZH303",
+    "ANZH401",
+    "ART1002",
+    "BLL124",
+    "BLL135",
+    "BLL137",
+    "BLL140",
+    "BLL144"
+   ],
+   "li@list": [
+    "AGH1002",
+    "AGH1003",
+    "AGH1004",
+    "AGH1005",
+    "AGH1006",
+    "AGH1008",
+    "ARFUN05"
+   ],
+   "li@alert>list": [
+    "AGH1002",
+    "AGH1004"
+   ],
+   "td@table": [
+    "AGH1002",
+    "AGH1003",
+    "AGH1005",
+    "AGH1006",
+    "AGH1008",
+    "AGH1009"
+   ],
+   "clickDrop@activity": [
+    "AGH1002"
+   ],
+   "p@table": [
+    "AGH1003"
+   ],
+   "dragAndDrop@activity": [
+    "AGH1003",
+    "AGH1004",
+    "AGH1005",
+    "AGH1009",
+    "BLL145"
+   ],
+   "accordion@plain": [
+    "AGH1003",
+    "AGH1005",
+    "AGH1006",
+    "AGH1008",
+    "AGH1009"
+   ],
+   "infoTrigger@plain": [
+    "AGH1004",
+    "ARFUN02"
+   ],
+   "p@alert": [
+    "AGH1004",
+    "ARFUN03"
+   ],
+   "h3@plain": [
+    "AGH1004"
+   ],
+   "h3@activity": [
+    "AGH1004",
+    "AGH1009",
+    "ANZH302"
+   ],
+   "th@plain": [
+    "AGH1004"
+   ],
+   "infoTrigger@list": [
+    "AGH1005"
+   ],
+   "imageLabel@plain": [
+    "AGH1005"
+   ],
+   "h4@plain": [
+    "AGH1005",
+    "AGH1008"
+   ],
+   "tabs@plain": [
+    "AGH1006"
+   ],
+   "p@whakatauki": [
+    "AGH1008"
+   ],
+   "reorder@activity": [
+    "AGH1008"
+   ],
+   "a@alert": [
+    "AGH1009"
+   ],
+   "li@activity>list": [
+    "ANZH103",
+    "ART1002"
+   ],
+   "a@plain": [
+    "ANZH203",
+    "ANZH303"
+   ],
+   "speechBubble@plain": [
+    "ANZH205"
+   ],
+   "flipCard@activity": [
+    "ANZH205",
+    "BLL120",
+    "BLL123"
+   ],
+   "a@list": [
+    "ANZH205"
+   ],
+   "carousel@activity": [
+    "ANZH304"
+   ],
+   "flipCard@plain": [
+    "ANZH304"
+   ],
+   "td@activity>table": [
+    "BLL123",
+    "BLL143"
+   ],
+   "h5@activity": [
+    "BLL124"
+   ],
+   "wordSelect@activity": [
+    "BLL135"
+   ],
+   "tabs@activity": [
+    "BLL135"
+   ],
+   "th@activity>table": [
+    "BLL143"
+   ],
+   "p@activity>table": [
+    "BLL143"
+   ],
+   "typing@activity": [
+    "BLL145"
+   ]
+  },
+  "body|alert": {
+   "h4@alert": [
+    "AGH1001",
+    "AGH1004",
+    "AGH1005",
+    "AGH1006",
+    "AGH1009",
+    "ANZH301",
+    "ANZHFUN05"
+   ],
+   "li@alert>list": [
+    "AGH1001",
+    "AGH1004",
+    "AGH1006",
+    "AGH1009",
+    "ANZH301"
+   ],
+   "h3@activity": [
+    "AGH1001",
+    "AGH1005",
+    "ANZH401",
+    "BLL120"
+   ],
+   "td@table": [
+    "AGH1004"
+   ],
+   "li@alert": [
+    "AGH1005",
+    "AGH1006"
+   ],
+   "p@plain": [
+    "AGH1006",
+    "ANZH101",
+    "ANZH105",
+    "ANZH301",
+    "ANZH303",
+    "ANZH304",
+    "ANZH401",
+    "ANZH404",
+    "ANZHFUN05"
+   ],
+   "p@alert": [
+    "ANZH101",
+    "ANZH205",
+    "ANZH301",
+    "ANZH303",
+    "ANZH304",
+    "ANZH401",
+    "ANZH404",
+    "ANZHFUN05"
+   ],
+   "p@whakatauki": [
+    "ANZH105",
+    "ANZH205"
+   ],
+   "h5@plain": [
+    "ANZH301"
+   ],
+   "flipCard@plain": [
+    "ANZH304"
+   ],
+   "p@activity": [
+    "ANZH304",
+    "ANZH401",
+    "BLL120"
+   ],
+   "accordion@activity": [
+    "ANZH304"
+   ],
+   "p@activity>table": [
+    "ANZH304"
+   ],
+   "h3@plain": [
+    "ANZH401",
+    "ANZHFUN05"
+   ],
+   "h3@alert": [
+    "ANZH401"
+   ],
+   "li@activity>list": [
+    "ANZH401",
+    "ANZH404",
+    "BLL120"
+   ]
+  },
+  "header|h2": {
+   "h1@plain": [
+    "AGH1001",
+    "AGH1004",
+    "AGH1006",
+    "AGH1009",
+    "ANZH101",
+    "ANZH103",
+    "ANZH104",
+    "ANZH105",
+    "ANZH203",
+    "ANZH205",
+    "ANZH303",
+    "ANZH304",
+    "ARFUN03",
+    "ART1003",
+    "ART1004",
+    "ART1005"
+   ]
+  },
+  "body|info trigger": {
+   "p@plain": [
+    "AGH1001",
+    "AGH1004"
+   ],
+   "h4@plain": [
+    "AGH1001"
+   ],
+   "h3@activity": [
+    "AGH1001"
+   ],
+   "li@list": [
+    "AGH1001"
+   ],
+   "p@whakatauki": [
+    "AGH1001"
+   ]
+  },
+  "body|button": {
+   "dragAndDrop@activity": [
+    "AGH1001"
+   ],
+   "p@plain": [
+    "AGH1001",
+    "AGH1004",
+    "AGH1006",
+    "AGH1009",
+    "ARFUN02",
+    "BLL111"
+   ],
+   "h4@alert": [
+    "AGH1003"
+   ],
+   "h4@plain": [
+    "AGH1003",
+    "AGH1009"
+   ],
+   "p@activity": [
+    "AGH1003",
+    "AGH1004",
+    "AGH1005",
+    "AGH1006",
+    "AGH1009",
+    "ANZH101",
+    "BLL130"
+   ],
+   "a@activity": [
+    "ANZH101",
+    "ANZH104",
+    "ANZH105",
+    "ANZH203",
+    "ANZH205",
+    "ANZH301",
+    "ANZH303",
+    "ANZH304",
+    "ANZH401",
+    "ANZH404",
+    "ARFUN02",
+    "ARFUN04",
+    "BLL125",
+    "BLL126",
+    "BLL127",
+    "BLL130",
+    "BLL132",
+    "BLL133",
+    "BLL134",
+    "BLL135",
+    "BLL136",
+    "BLL137",
+    "BLL140",
+    "BLL141",
+    "BLL146"
+   ],
+   "a@plain": [
+    "ANZH101",
+    "ANZH401"
+   ],
+   "infoTrigger@plain": [
+    "ANZH301"
+   ],
+   "h4@activity": [
+    "ANZH301",
+    "ANZH303",
+    "ANZH304",
+    "ANZH404"
+   ],
+   "h3@activity": [
+    "ANZH301",
+    "ARFUN04"
+   ],
+   "li@activity>list": [
+    "ANZH303"
+   ]
+  },
+  "body|external link": {
+   "p@activity": [
+    "AGH1001",
+    "ANZH101",
+    "ANZH303",
+    "ANZH304"
+   ],
+   "p@plain": [
+    "ANZH203",
+    "ANZH303"
+   ]
+  },
+  "header|h3": {
+   "h1@plain": [
+    "AGH1001",
+    "AGH1002",
+    "AGH1003",
+    "AGH1004",
+    "AGH1005",
+    "AGH1006",
+    "AGH1008",
+    "ANZH103",
+    "ANZH104",
+    "ANZH301",
+    "ANZH303",
+    "ART1002",
+    "ART1003"
+   ]
+  },
+  "body|important": {
+   "p@alert": [
+    "AGH1001",
+    "AGH1002",
+    "AGH1003",
+    "AGH1006",
+    "AGH1008",
+    "ANZH401"
+   ],
+   "p@whakatauki": [
+    "AGH1002"
+   ],
+   "li@activity>list": [
+    "AGH1004",
+    "ANZH401"
+   ],
+   "p@activity": [
+    "ANZH203",
+    "ANZH303",
+    "ANZH304",
+    "ANZH401"
+   ],
+   "p@plain": [
+    "ANZH401",
+    "BLL110",
+    "BLL120",
+    "BLL130",
+    "BLL140"
+   ],
+   "multiChoiceQuiz@activity": [
+    "ANZH401"
+   ],
+   "p@activity>alert": [
+    "BLL140"
+   ]
+  },
+  "header|title bar": {
+   "h1@plain": [
+    "AGH1002",
+    "AGH1003",
+    "AGH1006",
+    "AGH1008",
+    "AGH1009",
+    "ANZH101",
+    "ANZH103",
+    "ANZH104",
+    "ANZH105",
+    "ANZH203",
+    "ANZH301",
+    "ANZH304",
+    "ANZH401",
+    "ANZH404",
+    "ANZHFUN05",
+    "ART1002",
+    "ART1003",
+    "ART1006",
+    "BLL110",
+    "BLL114",
+    "BLL115",
+    "BLL117",
+    "BLL122",
+    "BLL125",
+    "BLL126",
+    "BLL127",
+    "BLL130",
+    "BLL132",
+    "BLL133",
+    "BLL134",
+    "BLL135",
+    "BLL136",
+    "BLL137",
+    "BLL140",
+    "BLL141",
+    "BLL142",
+    "BLL143",
+    "BLL144",
+    "BLL145",
+    "BLL147"
+   ]
+  },
+  "menu|body": {
+   "tabs@plain": [
+    "AGH1002",
+    "AGH1004"
+   ],
+   "p@plain": [
+    "ANZH205",
+    "ART1004"
+   ],
+   "li@list": [
+    "BLL110",
+    "BLL123"
+   ]
+  },
+  "body|summary": {
+   "li@alert>list": [
+    "AGH1002",
+    "AGH1003",
+    "AGH1008"
+   ],
+   "p@alert": [
+    "AGH1003"
+   ],
+   "h3@plain": [
+    "AGH1003"
+   ],
+   "h3@activity": [
+    "AGH1003"
+   ],
+   "li@alert": [
+    "AGH1008"
+   ]
+  },
+  "body|go to your red text": {
+   "p@activity": [
+    "AGH1002"
+   ]
+  },
+  "body|secondary text": {
+   "p@plain": [
+    "AGH1002",
+    "AGH1003",
+    "AGH1008"
+   ],
+   "p@alert": [
+    "AGH1003",
+    "AGH1009"
+   ],
+   "h3@plain": [
+    "AGH1003"
+   ],
+   "p@activity": [
+    "AGH1008"
+   ],
+   "h4@plain": [
+    "AGH1008"
+   ],
+   "h4@alert": [
+    "AGH1009"
+   ]
+  },
+  "header|activity": {
+   "h1@plain": [
+    "AGH1003",
+    "AGH1008",
+    "AGH1009",
+    "ANZH101",
+    "ANZH105"
+   ]
+  },
+  "body|h4": {
+   "h3@plain": [
+    "AGH1003",
+    "AGH1004",
+    "AGH1008",
+    "AGH1009",
+    "ANZH101",
+    "ANZH303",
+    "ART1003",
+    "ART1005"
+   ],
+   "p@plain": [
+    "AGH1003",
+    "AGH1004",
+    "AGH1005",
+    "AGH1006",
+    "AGH1009",
+    "ANZH105",
+    "ANZH203",
+    "ART1003",
+    "ART1005"
+   ],
+   "h3@activity": [
+    "AGH1003",
+    "AGH1004",
+    "AGH1008",
+    "AGH1009",
+    "ANZH101",
+    "ANZH105",
+    "ANZH303",
+    "ART1003"
+   ],
+   "h4@plain": [
+    "AGH1004",
+    "AGH1005",
+    "AGH1006",
+    "AGH1008",
+    "AGH1009",
+    "ANZH101",
+    "ANZH105",
+    "ANZH203"
+   ],
+   "li@list": [
+    "AGH1004",
+    "AGH1005",
+    "AGH1006"
+   ],
+   "th@table": [
+    "AGH1004"
+   ],
+   "td@table": [
+    "AGH1004"
+   ],
+   "p@whakatauki": [
+    "AGH1005"
+   ],
+   "h5@plain": [
+    "AGH1006",
+    "ART1005"
+   ],
+   "accordion@plain": [
+    "ANZH101"
+   ],
+   "td@activity>table": [
+    "ANZH101",
+    "ART1003"
+   ],
+   "h4@activity": [
+    "ANZH105",
+    "ART1003"
+   ],
+   "clickDrop@activity": [
+    "ANZH105"
+   ],
+   "typing@activity": [
+    "ANZH105"
+   ],
+   "p@activity": [
+    "ANZH303",
+    "ART1003",
+    "ART1005"
+   ],
+   "li@activity>list": [
+    "ART1003",
+    "ART1005"
+   ],
+   "p@alert": [
+    "ART1003"
+   ]
+  },
+  "body|activtiy embedded": {
+   "p@activity": [
+    "AGH1003"
+   ],
+   "h3@activity": [
+    "AGH1003"
+   ],
+   "h3@plain": [
+    "AGH1003"
+   ]
+  },
+  "body|drop": {
+   "p@table": [
+    "AGH1003"
+   ],
+   "p@plain": [
+    "ARFUN01"
+   ]
+  },
+  "body|video": {
+   "p@activity": [
+    "AGH1003",
+    "AGH1008",
+    "ANZH205",
+    "ANZH301",
+    "ANZH304",
+    "BLL110",
+    "BLL120",
+    "BLL124",
+    "BLL147"
+   ],
+   "p@plain": [
+    "AGH1008",
+    "ANZH301"
+   ],
+   "p@alert": [
+    "AGH1009"
+   ],
+   "h2@plain": [
+    "ANZH103"
+   ],
+   "p@whakatauki": [
+    "ANZH303"
+   ],
+   "infoTrigger@activity": [
+    "ARFUN03"
+   ],
+   "carousel@plain": [
+    "BLL110",
+    "BLL120"
+   ]
+  },
+  "body|secondarytext": {
+   "h4@alert": [
+    "AGH1003"
+   ]
+  },
+  "header|summary": {
+   "h1@plain": [
+    "AGH1003"
+   ]
+  },
+  "body|table": {
+   "th@plain": [
+    "AGH1003"
+   ],
+   "th@table": [
+    "AGH1008"
+   ],
+   "td@table": [
+    "AGH1008"
+   ],
+   "accordion@plain": [
+    "AGH1008"
+   ],
+   "p@plain": [
+    "AGH1008"
+   ]
+  },
+  "body|merged content 3": {
+   "p@activity": [
+    "AGH1003"
+   ]
+  },
+  "header|module introduction": {
+   "h1@plain": [
+    "AGH1004",
+    "AGH1005",
+    "AGH1006"
+   ]
+  },
+  "body|lesson overview": {
+   "td@table": [
+    "AGH1004"
+   ],
+   "p@plain": [
+    "ART1004"
+   ]
+  },
+  "body|title bar": {
+   "h3@plain": [
+    "AGH1005"
+   ],
+   "infoTrigger@plain": [
+    "AGH1007",
+    "ANZH302"
+   ],
+   "h2@plain": [
+    "ANZH302",
+    "ARFUN05"
+   ],
+   "infoTrigger@alert": [
+    "ANZH302"
+   ],
+   "h3@activity": [
+    "ANZH302",
+    "ARFUN04",
+    "ART1002"
+   ],
+   "p@activity": [
+    "ANZH302"
+   ],
+   "a@activity": [
+    "ART1006"
+   ]
+  },
+  "body|radio quiz": {
+   "infoTrigger@plain": [
+    "AGH1005"
+   ],
+   "infoTrigger@activity": [
+    "AGH1005"
+   ]
+  },
+  "body|end page": {
+   "li@alert>list": [
+    "AGH1006",
+    "AGH1009"
+   ],
+   "h3@activity": [
+    "ANZH101"
+   ]
+  },
+  "header|h4": {
+   "h1@plain": [
+    "AGH1008",
+    "ART1005"
+   ]
+  },
+  "body|seconday text": {
+   "p@plain": [
+    "AGH1008"
+   ]
+  },
+  "body|hover definition yearly": {
+   "p@plain": [
+    "AGH1008"
+   ]
+  },
+  "header|body": {
+   "h1@plain": [
+    "AGH1009",
+    "ANZH105",
+    "BLL116"
+   ]
+  },
+  "menu|activity": {
+   "p@plain": [
+    "ANZH101",
+    "BLL111",
+    "BLL112",
+    "BLL113",
+    "BLL114",
+    "BLL116",
+    "BLL117"
+   ],
+   "li@list": [
+    "BLL122",
+    "BLL123",
+    "BLL134"
+   ],
+   "h4@plain": [
+    "BLL124"
+   ]
+  },
+  "body|rhs alert": {
+   "p@plain": [
+    "ANZH101"
+   ],
+   "p@alert": [
+    "ANZH203"
+   ]
+  },
+  "menu|title bar": {
+   "h3@plain": [
+    "ANZH103"
+   ],
+   "li@list": [
+    "ANZH103"
+   ]
+  },
+  "body|mcq": {
+   "h3@activity": [
+    "ANZH103"
+   ]
+  },
+  "body|dropdown": {
+   "p@activity": [
+    "ANZH103"
+   ]
+  },
+  "body|supervisor button": {
+   "p@activity": [
+    "ANZH104"
+   ]
+  },
+  "header|image": {
+   "h1@plain": [
+    "ANZH105",
+    "ANZH302"
+   ]
+  },
+  "body|supervisor note": {
+   "p@plain": [
+    "ANZH105",
+    "BLL130",
+    "BLL140"
+   ],
+   "p@alert": [
+    "BLL110"
+   ],
+   "p@activity": [
+    "BLL111",
+    "BLL112",
+    "BLL113",
+    "BLL115",
+    "BLL116",
+    "BLL117",
+    "BLL121",
+    "BLL122",
+    "BLL123",
+    "BLL124",
+    "BLL125",
+    "BLL126",
+    "BLL131",
+    "BLL132",
+    "BLL133",
+    "BLL134",
+    "BLL135",
+    "BLL136",
+    "BLL137",
+    "BLL140",
+    "BLL141",
+    "BLL142",
+    "BLL143",
+    "BLL144",
+    "BLL145",
+    "BLL146",
+    "BLL147"
+   ],
+   "p@activity>table>activity": [
+    "BLL114"
+   ],
+   "td@activity>table": [
+    "BLL122",
+    "BLL142"
+   ],
+   "li@activity>list": [
+    "BLL122",
+    "BLL127",
+    "BLL142"
+   ],
+   "h5@activity": [
+    "BLL142"
+   ],
+   "reorder@activity": [
+    "BLL147"
+   ]
+  },
+  "header|lesson": {
+   "h1@plain": [
+    "ANZH203",
+    "ANZH301"
+   ]
+  },
+  "body|data marker": {
+   "infoTrigger@plain": [
+    "ANZH203"
+   ],
+   "p@plain": [
+    "ANZH301",
+    "ANZH401",
+    "ARFUN02"
+   ],
+   "li@list": [
+    "ARFUN02"
+   ],
+   "h4@plain": [
+    "ARFUN02"
+   ],
+   "multiChoiceQuiz@activity": [
+    "ARFUN05"
+   ]
+  },
+  "body|lesson": {
+   "h3@activity": [
+    "ANZH203"
+   ]
+  },
+  "menu|alert": {
+   "p@plain": [
+    "ANZH205"
+   ]
+  },
+  "body|source 4": {
+   "p@activity": [
+    "ANZH301"
+   ]
+  },
+  "body|add link button": {
+   "p@activity": [
+    "ANZH301"
+   ]
+  },
+  "menu|image": {
+   "li@list": [
+    "ANZH302"
+   ]
+  },
+  "body|m": {
+   "a@plain": [
+    "ANZH303"
+   ]
+  },
+  "body|embed": {
+   "p@activity": [
+    "ANZH303",
+    "ART1003"
+   ],
+   "li@activity>list": [
+    "ART1003"
+   ],
+   "h5@plain": [
+    "ART1003"
+   ],
+   "p@plain": [
+    "BLL142"
+   ]
+  },
+  "body|insert image with caption rhc": {
+   "p@alert": [
+    "ANZH303"
+   ],
+   "a@alert": [
+    "ANZH303"
+   ],
+   "p@activity": [
+    "ANZH304"
+   ]
+  },
+  "body|insert these as images in rhc": {
+   "p@plain": [
+    "ANZH303"
+   ],
+   "a@plain": [
+    "ANZH303"
+   ]
+  },
+  "body|insert link button": {
+   "p@activity": [
+    "ANZH303"
+   ]
+  },
+  "body|insert image rhc": {
+   "p@plain": [
+    "ANZH303"
+   ]
+  },
+  "body|click drop link map 1": {
+   "h4@activity": [
+    "ANZH304"
+   ],
+   "li@activity>list": [
+    "ANZH304"
+   ]
+  },
+  "body|click drop link map 2": {
+   "li@activity>list": [
+    "ANZH304"
+   ]
+  },
+  "body|adapted": {
+   "p@activity": [
+    "ANZH304"
+   ]
+  },
+  "body|please embed this link": {
+   "p@plain": [
+    "ANZH304"
+   ]
+  },
+  "body|h1": {
+   "h2@plain": [
+    "ANZH401",
+    "ANZHFUN05",
+    "ARFUN02",
+    "ART1003",
+    "BLL120"
+   ],
+   "h4@plain": [
+    "ANZH401"
+   ],
+   "h3@activity": [
+    "ARFUN04",
+    "ART1005"
+   ],
+   "p@plain": [
+    "ARFUN05",
+    "BLL130",
+    "BLL140"
+   ],
+   "p@activity": [
+    "BLL110",
+    "BLL130",
+    "BLL140"
+   ]
+  },
+  "body|add button quiz": {
+   "a@plain": [
+    "ANZH401"
+   ]
+  },
+  "body|whakatauki": {
+   "p@whakatauki": [
+    "ANZH404"
+   ]
+  },
+  "body|click drop one for timeline": {
+   "timeline@plain": [
+    "ANZH404"
+   ]
+  },
+  "body|primary source click drop": {
+   "p@plain": [
+    "ANZH404"
+   ]
+  },
+  "body|secondary source click drop": {
+   "p@plain": [
+    "ANZH404"
+   ]
+  },
+  "body|slide n": {
+   "p@plain": [
+    "ANZH404"
+   ]
+  },
+  "body|module summary": {
+   "p@alert": [
+    "ANZH404"
+   ]
+  },
+  "header|tags": {
+   "h1@plain": [
+    "ARFUN01",
+    "ART1004"
+   ]
+  },
+  "body|tags": {
+   "h2@plain": [
+    "ARFUN01"
+   ]
+  },
+  "body|lesson content": {
+   "p@plain": [
+    "ARFUN01",
+    "ARFUN02",
+    "ARFUN03",
+    "ARFUN04",
+    "ARFUN05"
+   ],
+   "h3@plain": [
+    "ARFUN02"
+   ],
+   "p@alert": [
+    "ARFUN02"
+   ],
+   "h2@plain": [
+    "ARFUN02"
+   ],
+   "li@list": [
+    "ARFUN05"
+   ],
+   "infoTrigger@activity": [
+    "ARFUN05"
+   ]
+  },
+  "body|insert images red text": {
+   "p@plain": [
+    "ARFUN01"
+   ]
+  },
+  "body|phase one content begins": {
+   "p@plain": [
+    "ARFUN01"
+   ]
+  },
+  "body|insert h3 emotion": {
+   "p@plain": [
+    "ARFUN01"
+   ]
+  },
+  "body|insert image red text": {
+   "p@plain": [
+    "ARFUN01"
+   ]
+  },
+  "body|insert alert box k rero": {
+   "p@alert": [
+    "ARFUN01"
+   ],
+   "li@alert>list": [
+    "ARFUN01"
+   ]
+  },
+  "body|insert h3 identity": {
+   "p@plain": [
+    "ARFUN01"
+   ],
+   "li@list": [
+    "ARFUN01"
+   ]
+  },
+  "body|phase two content begins": {
+   "p@plain": [
+    "ARFUN01"
+   ]
+  },
+  "body|insert in an alert box": {
+   "p@alert": [
+    "ARFUN01"
+   ]
+  },
+  "body|engagement quiz button": {
+   "h3@activity": [
+    "ARFUN01"
+   ],
+   "p@activity": [
+    "ARFUN01",
+    "ARFUN02"
+   ]
+  },
+  "body|insert h red text": {
+   "h2@plain": [
+    "ARFUN01"
+   ],
+   "p@plain": [
+    "ARFUN01"
+   ]
+  },
+  "body|insert youtube video": {
+   "p@plain": [
+    "ARFUN01",
+    "ARFUN05"
+   ]
+  },
+  "body|phase three content begins": {
+   "h3@activity": [
+    "ARFUN01"
+   ]
+  },
+  "header|arfun02": {
+   "h1@plain": [
+    "ARFUN02"
+   ]
+  },
+  "body|please use clap emoji": {
+   "p@plain": [
+    "ARFUN02"
+   ],
+   "li@list": [
+    "ARFUN02"
+   ],
+   "h3@activity": [
+    "ARFUN02"
+   ]
+  },
+  "body|format": {
+   "h3@activity": [
+    "ARFUN03"
+   ],
+   "p@plain": [
+    "ARFUN03",
+    "ARFUN05"
+   ],
+   "p@activity": [
+    "ARFUN03"
+   ],
+   "dragAndDrop@activity": [
+    "ARFUN03"
+   ],
+   "infoTrigger@plain": [
+    "ARFUN05"
+   ],
+   "a@plain": [
+    "ARFUN05"
+   ]
+  },
+  "body|insert flip cards": {
+   "p@plain": [
+    "ARFUN03"
+   ]
+  },
+  "body|correct": {
+   "flipCard@plain": [
+    "ARFUN03"
+   ],
+   "multiChoiceQuiz@activity": [
+    "ARFUN05"
+   ]
+  },
+  "menu|h3": {
+   "h5@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 2 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 88 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 10 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 11 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 13 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert items 15 carousel": {
+   "p@activity": [
+    "ARFUN04"
+   ]
+  },
+  "body|hover over p red text": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 16 video": {
+   "p@plain": [
+    "ARFUN04"
+   ],
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 17 images": {
+   "p@activity": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 21 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 47 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 24 video": {
+   "p@plain": [
+    "ARFUN04"
+   ],
+   "li@list": [
+    "ARFUN04"
+   ],
+   "dragAndDrop@activity": [
+    "ARFUN04"
+   ]
+  },
+  "body|create tick boxes": {
+   "p@activity": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 27 video": {
+   "p@plain": [
+    "ARFUN04"
+   ],
+   "dropQuiz@activity": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 31 painting": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 33 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 34 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 40 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|cs to create a mix and match": {
+   "p@activity": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 44 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 45 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 46 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 48 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 49 video": {
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 51 video": {
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 52 video": {
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 53 video": {
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|click drop": {
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 57 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 37 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 64 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 12 images": {
+   "td@table": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 71 images": {
+   "td@table": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 66 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 67 image": {
+   "p@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 68 image": {
+   "p@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|mix and match": {
+   "p@activity": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 43 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 73 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 75 x3 images": {
+   "p@activity": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 76 x3 images": {
+   "p@activity": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item x3 77 images": {
+   "p@activity": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 81 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 91 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 93 video": {
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 94 video": {
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 95 video": {
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 96 video": {
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 98 video": {
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 100 video": {
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 105 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 107 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 108 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 109 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|create flip cards": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 115 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 117 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 119 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 121 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|create mix and match": {
+   "p@activity": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 124 video": {
+   "p@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 127 video": {
+   "p@plain": [
+    "ARFUN04"
+   ]
+  },
+  "body|end other": {
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 131 video": {
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 132 video": {
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 133 video": {
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 135 video": {
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 137 video": {
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert item 139 video": {
+   "li@list": [
+    "ARFUN04"
+   ]
+  },
+  "body|insert alert box": {
+   "p@alert": [
+    "ARFUN05"
+   ]
+  },
+  "body|insert image beside text": {
+   "p@plain": [
+    "ARFUN05"
+   ]
+  },
+  "menu|h1": {
+   "tabs@plain": [
+    "ART1002",
+    "ART1003"
+   ]
+  },
+  "body|insert item 4 graphic": {
+   "p@plain": [
+    "ART1002"
+   ],
+   "p@alert": [
+    "ART1002"
+   ]
+  },
+  "body|insert item 8 photo": {
+   "li@activity>list": [
+    "ART1002"
+   ]
+  },
+  "body|insert item 12 graphic": {
+   "p@activity": [
+    "ART1002"
+   ]
+  },
+  "header|h1": {
+   "h1@plain": [
+    "ART1003"
+   ]
+  },
+  "body|subject name": {
+   "a@alert": [
+    "ART1003"
+   ],
+   "h5@plain": [
+    "ART1003"
+   ],
+   "h3@activity": [
+    "ART1003"
+   ],
+   "li@activity>list": [
+    "ART1003"
+   ],
+   "infoTrigger@activity>list": [
+    "ART1003"
+   ],
+   "a@activity": [
+    "ART1003"
+   ],
+   "h4@activity": [
+    "ART1003"
+   ]
+  },
+  "body|h5": {
+   "p@activity>list": [
+    "ART1003"
+   ],
+   "p@activity": [
+    "ART1003"
+   ],
+   "p@plain": [
+    "ART1003"
+   ],
+   "li@activity>list": [
+    "ART1003"
+   ]
+  },
+  "body|insert link 5 to fundamentals": {
+   "p@activity": [
+    "ART1003"
+   ]
+  },
+  "body|insert item 9b template": {
+   "h5@plain": [
+    "ART1004"
+   ],
+   "a@activity": [
+    "ART1004"
+   ],
+   "li@activity>list": [
+    "ART1004"
+   ],
+   "p@activity": [
+    "ART1004"
+   ]
+  },
+  "header|insert item 9b template": {
+   "h1@plain": [
+    "ART1004"
+   ]
+  },
+  "body|insert item 12 image": {
+   "p@activity": [
+    "ART1004"
+   ],
+   "li@activity>list": [
+    "ART1004"
+   ]
+  },
+  "header|heading": {
+   "h1@plain": [
+    "ART1005"
+   ]
+  },
+  "body|heading": {
+   "clickDrop@plain": [
+    "ART1005"
+   ],
+   "h3@plain": [
+    "ART1005"
+   ]
+  },
+  "body|insert item red text": {
+   "p@plain": [
+    "ART1005"
+   ],
+   "clickDrop@activity": [
+    "ART1005"
+   ]
+  },
+  "body|insert text box": {
+   "p@plain": [
+    "ART1005"
+   ]
+  },
+  "body|insert text into textbox": {
+   "p@plain": [
+    "ART1005"
+   ]
+  },
+  "body|italicised body text": {
+   "p@activity": [
+    "ART1005"
+   ]
+  },
+  "body|insert link 13 embed video": {
+   "p@activity": [
+    "ART1005"
+   ]
+  },
+  "body|insert text box with text": {
+   "p@plain": [
+    "ART1005"
+   ]
+  },
+  "body|insert item 14 google folder": {
+   "p@activity": [
+    "ART1006"
+   ]
+  },
+  "body|tab n": {
+   "p@plain": [
+    "BLL110",
+    "BLL120",
+    "BLL130",
+    "BLL140"
+   ],
+   "h2@plain": [
+    "BLL110",
+    "BLL120",
+    "BLL130",
+    "BLL140"
+   ],
+   "p@activity": [
+    "BLL140"
+   ],
+   "h3@activity": [
+    "BLL140"
+   ]
+  },
+  "body|typing quiz": {
+   "p@activity": [
+    "BLL110",
+    "BLL113",
+    "BLL120",
+    "BLL130",
+    "BLL140"
+   ],
+   "wordSelect@activity": [
+    "BLL113"
+   ],
+   "multiChoiceQuiz@activity": [
+    "BLL115",
+    "BLL120"
+   ],
+   "typing@activity": [
+    "BLL123",
+    "BLL144"
+   ],
+   "dragAndDrop@activity": [
+    "BLL124"
+   ],
+   "flipCard@activity": [
+    "BLL140"
+   ],
+   "dropQuiz@activity": [
+    "BLL145"
+   ]
+  },
+  "body|modal": {
+   "p@activity": [
+    "BLL110",
+    "BLL111",
+    "BLL112",
+    "BLL120",
+    "BLL121",
+    "BLL122",
+    "BLL125",
+    "BLL130",
+    "BLL140",
+    "BLL143",
+    "BLL146"
+   ],
+   "h3@activity": [
+    "BLL110",
+    "BLL130"
+   ],
+   "li@activity>list": [
+    "BLL111",
+    "BLL112",
+    "BLL121",
+    "BLL122",
+    "BLL125",
+    "BLL143",
+    "BLL146"
+   ],
+   "h4@activity": [
+    "BLL120"
+   ],
+   "h3@plain": [
+    "BLL121"
+   ],
+   "clickDrop@activity": [
+    "BLL132"
+   ]
+  },
+  "menu|drag and drop": {
+   "li@list": [
+    "BLL111"
+   ]
+  },
+  "body|drag and drop": {
+   "p@activity": [
+    "BLL111",
+    "BLL112",
+    "BLL113",
+    "BLL116",
+    "BLL117",
+    "BLL121",
+    "BLL123",
+    "BLL126",
+    "BLL131"
+   ],
+   "flipCard@activity": [
+    "BLL111",
+    "BLL131"
+   ],
+   "accordion@activity": [
+    "BLL116"
+   ],
+   "dragAndDrop@activity": [
+    "BLL116",
+    "BLL137"
+   ],
+   "reorder@activity": [
+    "BLL126"
+   ],
+   "td@activity>table": [
+    "BLL143"
+   ]
+  },
+  "body|accordion": {
+   "accordion@activity": [
+    "BLL112",
+    "BLL122"
+   ],
+   "clickDrop@activity": [
+    "BLL125"
+   ],
+   "li@activity>list": [
+    "BLL125"
+   ]
+  },
+  "body|audio": {
+   "p@activity>table": [
+    "BLL113"
+   ],
+   "dragAndDrop@activity": [
+    "BLL113",
+    "BLL123"
+   ],
+   "carousel@activity": [
+    "BLL114"
+   ],
+   "td@activity>table": [
+    "BLL121"
+   ],
+   "p@activity": [
+    "BLL121",
+    "BLL123"
+   ],
+   "li@activity>list": [
+    "BLL121"
+   ],
+   "p@activity>list": [
+    "BLL121"
+   ],
+   "memoryGame@activity": [
+    "BLL124"
+   ]
+  },
+  "body|side alert": {
+   "p@plain": [
+    "BLL113",
+    "BLL114",
+    "BLL123",
+    "BLL125",
+    "BLL127",
+    "BLL131",
+    "BLL140",
+    "BLL146"
+   ]
+  },
+  "body|flip card": {
+   "p@activity": [
+    "BLL114"
+   ]
+  },
+  "body|check in": {
+   "p@plain": [
+    "BLL121"
+   ]
+  },
+  "body|supervision note": {
+   "p@activity": [
+    "BLL122"
+   ]
+  },
+  "body|upload to dropbox": {
+   "p@plain": [
+    "BLL123",
+    "BLL124"
+   ]
+  },
+  "body|insert crossword": {
+   "h5@activity": [
+    "BLL124"
+   ],
+   "p@activity": [
+    "BLL124"
+   ]
+  },
+  "body|a": {
+   "p@activity": [
+    "BLL144"
+   ],
+   "li@activity>list": [
+    "BLL144"
+   ]
+  },
+  "menu|h5": {
+   "h4@plain": [
+    "BLL145"
+   ],
+   "h5@plain": [
+    "BLL145"
+   ],
+   "p@plain": [
+    "BLL145"
+   ],
+   "li@list": [
+    "BLL145"
+   ]
+  },
+  "body|create crossword": {
+   "p@activity": [
+    "BLL145"
+   ]
+  },
+  "body|source image of a cross": {
+   "p@activity": [
+    "BLL145"
+   ]
+  },
+  "body|multiple choice quiz": {
+   "multiChoiceQuiz@activity": [
+    "BLL147"
+   ]
+  }
+ }
+}

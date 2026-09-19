@@ -1,0 +1,3800 @@
+{
+ "counts": {
+  "header|title bar": {
+   "h1@plain": 73
+  },
+  "menu|h2": {
+   "p@plain": 67,
+   "li@list": 289,
+   "h5@plain": 83,
+   "h4@plain": 39,
+   "tabs@plain": 3,
+   "h3@plain": 4
+  },
+  "body|tab n": {
+   "p@plain": 42,
+   "h2@plain": 28,
+   "infoTrigger@plain": 2,
+   "h3@plain": 4,
+   "h4@plain": 2,
+   "flipCard@activity": 3,
+   "h1@plain": 1,
+   "clickDrop@plain": 2,
+   "h4@activity": 1,
+   "h3@activity": 1,
+   "a@activity": 1,
+   "tabs@plain": 1
+  },
+  "body|h2": {
+   "p@plain": 48,
+   "h3@plain": 58,
+   "p@activity": 21,
+   "h2@plain": 51,
+   "h3@activity": 45,
+   "h2@activity": 4,
+   "h5@activity": 1,
+   "a@activity": 32,
+   "li@list": 7,
+   "flipCard@plain": 5,
+   "flipCard@activity": 8,
+   "li@activity>list": 9,
+   "td@activity>table": 1,
+   "infoTrigger@plain": 4,
+   "h4@plain": 9,
+   "infoTrigger@list": 1,
+   "dragAndDrop@activity": 2,
+   "tabs@plain": 1,
+   "clickDrop@activity": 1,
+   "a@plain": 3,
+   "tabs@activity": 1,
+   "a@alert": 2,
+   "h4@alert": 4,
+   "td@table": 2,
+   "h5@plain": 3,
+   "h4@activity>alert": 1
+  },
+  "body|body": {
+   "p@plain": 721,
+   "p@activity": 508,
+   "li@activity>list": 213,
+   "speechBubble@activity": 1,
+   "speechBubble@plain": 2,
+   "li@list": 168,
+   "li@activity>table>list": 1,
+   "accordion@plain": 2,
+   "p@alert": 49,
+   "radioQuiz@activity": 1,
+   "dragAndDrop@activity": 5,
+   "th@activity>table": 1,
+   "td@activity>table": 9,
+   "multiChoiceQuiz@activity": 8,
+   "p@whakatauki": 3,
+   "h4@plain": 12,
+   "td@table": 7,
+   "h3@activity": 11,
+   "h4@alert": 5,
+   "selectionBox@activity": 2,
+   "clickDrop@plain": 3,
+   "audioTrigger@list": 1,
+   "h4@activity": 5,
+   "carousel@activity": 2,
+   "li@alert>list": 54,
+   "a@activity": 2,
+   "infoTrigger@list": 6,
+   "dropQuiz@activity": 4,
+   "h3@plain": 3,
+   "flipCard@activity": 5,
+   "tabs@plain": 2,
+   "p@table": 2,
+   "typing@activity": 1,
+   "wordHighlighter@plain": 3,
+   "p@activity>alert": 3,
+   "multiChoiceQuiz@alert": 2,
+   "wordHighlighter@alert": 1,
+   "memoryGame@activity": 1,
+   "wordHighlighter@activity": 1,
+   "tabs@activity": 1,
+   "h5@alert": 1
+  },
+  "body|activity": {
+   "h3@activity": 176,
+   "h3@plain": 17,
+   "p@activity": 106,
+   "li@activity>list": 54,
+   "h2@activity": 2,
+   "a@activity": 5,
+   "p@plain": 5,
+   "h2@plain": 1,
+   "accordion@activity": 1,
+   "clickDrop@activity": 2,
+   "radioQuiz@activity": 1,
+   "h4@plain": 2,
+   "selfCheck@activity": 1,
+   "dragAndDrop@activity": 3,
+   "p@alert": 3,
+   "flipCard@plain": 4
+  },
+  "body|drag and drop": {
+   "p@activity": 6,
+   "dragAndDrop@activity": 20,
+   "infoTrigger@activity": 1,
+   "hintSlider@plain": 1,
+   "p@plain": 1,
+   "reorder@activity": 1,
+   "td@activity>table": 1,
+   "li@list": 1
+  },
+  "body|button": {
+   "a@activity": 136,
+   "h4@activity": 55,
+   "h5@activity": 6,
+   "dragAndDrop@activity": 1,
+   "multiChoiceQuiz@activity": 1,
+   "carousel@activity": 1,
+   "h3@activity": 1,
+   "a@plain": 5,
+   "p@activity": 9,
+   "li@activity>list": 3,
+   "h4@plain": 2,
+   "a@list": 1,
+   "tabs@plain": 1,
+   "p@activity>alert": 2,
+   "clickDrop@activity": 1,
+   "wordHighlighter@activity": 1,
+   "p@plain": 2,
+   "li@list": 1,
+   "p@alert": 1
+  },
+  "body|image": {
+   "h4@activity": 2,
+   "p@activity": 61,
+   "li@activity>list": 71,
+   "p@plain": 58,
+   "h4@plain": 7,
+   "memoryGame@activity": 1,
+   "li@list": 16,
+   "accordion@activity": 1,
+   "p@alert": 3,
+   "flipCard@plain": 6,
+   "h3@activity": 2,
+   "infoTrigger@plain": 1,
+   "td@activity>table": 21,
+   "rotateBanner@activity": 2,
+   "clickDrop@activity": 1,
+   "carousel@plain": 1,
+   "dragAndDrop@activity": 5,
+   "a@activity": 1,
+   "h4@alert": 1,
+   "h3@plain": 3,
+   "a@plain": 1,
+   "infoTrigger@table": 5,
+   "td@table": 11,
+   "dropQuiz@activity": 2,
+   "wordHighlighter@plain": 3,
+   "carousel@activity": 1
+  },
+  "body|slide n": {
+   "h4@plain": 1
+  },
+  "body|video": {
+   "p@activity": 16,
+   "h3@activity": 5,
+   "li@activity>list": 17,
+   "p@plain": 7,
+   "h3@plain": 1,
+   "li@list": 6,
+   "h5@plain": 1,
+   "p@whakatauki": 2
+  },
+  "body|h4": {
+   "h3@plain": 9,
+   "h4@plain": 16,
+   "dragAndDrop@activity": 2,
+   "p@plain": 4,
+   "h4@alert": 7,
+   "a@alert": 1,
+   "a@plain": 1,
+   "h4@activity": 2,
+   "p@activity": 2,
+   "li@activity>list": 25,
+   "h3@activity": 6,
+   "carousel@activity": 2,
+   "h5@plain": 1,
+   "li@alert>list": 3,
+   "li@list": 5,
+   "clickDrop@plain": 3
+  },
+  "body|click drop": {
+   "p@plain": 3,
+   "h4@plain": 1,
+   "tabs@plain": 1
+  },
+  "body|supervisor button": {
+   "p@plain": 4,
+   "p@activity": 5,
+   "li@activity>list": 1
+  },
+  "body|h5": {
+   "accordion@activity": 1,
+   "p@plain": 12,
+   "li@list": 1,
+   "speechBubble@plain": 2,
+   "h4@plain": 5,
+   "h3@activity": 1,
+   "wordHighlighter@plain": 3,
+   "h3@plain": 4,
+   "h4@alert": 8,
+   "tabs@plain": 1,
+   "p@activity": 1,
+   "h4@activity": 1,
+   "h5@plain": 4,
+   "h5@activity": 1,
+   "li@alert>list": 2,
+   "h5@alert": 1,
+   "a@activity": 3
+  },
+  "body|accordion": {
+   "li@activity>list": 1,
+   "accordion@plain": 2,
+   "p@plain": 2,
+   "li@list": 3,
+   "accordion@activity": 2,
+   "hintSlider@plain": 4,
+   "clickDrop@plain": 3,
+   "h5@activity": 9,
+   "h3@activity": 4,
+   "li@alert>list": 1
+  },
+  "body|h3": {
+   "h3@activity": 91,
+   "h3@plain": 159,
+   "h2@plain": 7,
+   "li@list": 29,
+   "p@plain": 59,
+   "p@activity": 31,
+   "h4@plain": 42,
+   "h4@activity": 14,
+   "selectionBox@activity": 1,
+   "li@activity>list": 13,
+   "h4@alert": 8,
+   "clickDrop@plain": 15,
+   "infoTrigger@plain": 6,
+   "radioQuiz@activity": 1,
+   "a@plain": 5,
+   "infoTrigger@list": 1,
+   "a@activity": 10,
+   "infoTrigger@activity": 1,
+   "multiChoiceQuiz@activity": 1,
+   "td@table": 2,
+   "th@plain": 1,
+   "li@alert>list": 3,
+   "h3@alert": 2,
+   "infoTrigger@alert": 2,
+   "p@alert": 1
+  },
+  "body|click drop button": {
+   "clickDrop@activity": 2,
+   "li@activity>list": 12,
+   "p@activity": 1
+  },
+  "body|click drop body": {
+   "li@activity>list": 5
+  },
+  "body|click drop image": {
+   "p@plain": 3
+  },
+  "body|important": {
+   "p@alert": 16,
+   "h4@plain": 3,
+   "h4@alert": 4,
+   "li@alert>list": 7,
+   "li@list": 2,
+   "p@whakatauki": 9,
+   "p@plain": 15,
+   "h3@plain": 1,
+   "flipCard@plain": 1,
+   "p@activity": 1
+  },
+  "body|modal": {
+   "h4@activity": 1,
+   "p@activity": 20,
+   "multiChoiceQuiz@activity": 2,
+   "h5@plain": 1
+  },
+  "body|title bar": {
+   "p@plain": 17,
+   "infoTrigger@activity": 1,
+   "th@activity": 6,
+   "h3@plain": 8,
+   "a@activity": 4,
+   "h5@plain": 1,
+   "h3@activity": 7,
+   "li@table>list": 2,
+   "h2@plain": 9,
+   "h4@alert": 2,
+   "p@whakatauki": 1,
+   "p@alert": 2,
+   "td@table": 2,
+   "h4@plain": 1,
+   "carousel@plain": 1,
+   "li@list": 2,
+   "wordHighlighter@plain": 1,
+   "flipCard@plain": 1,
+   "h4@activity": 1,
+   "h2@activity": 1,
+   "h5@activity": 1,
+   "p@activity": 2
+  },
+  "body|whakatauki": {
+   "p@whakatauki": 13,
+   "p@plain": 1
+  },
+  "header|h2": {
+   "h1@plain": 61
+  },
+  "body|data marker": {
+   "p@plain": 13,
+   "a@activity": 1,
+   "li@list": 3,
+   "td@table": 2,
+   "p@activity": 7,
+   "h4@activity": 5,
+   "h3@plain": 1
+  },
+  "menu|image": {
+   "li@list": 1
+  },
+  "body|alert": {
+   "p@alert": 15,
+   "p@plain": 9,
+   "p@activity": 15,
+   "h4@activity": 6,
+   "li@activity>list": 15,
+   "li@alert>list": 20,
+   "h4@plain": 2,
+   "h4@alert": 3,
+   "li@list": 3,
+   "h5@plain": 1,
+   "li@alert": 4
+  },
+  "body|thought bubble lhs": {
+   "speechBubble@activity": 1
+  },
+  "menu|body": {
+   "li@list": 21,
+   "p@plain": 11
+  },
+  "body|end other": {
+   "p@plain": 3,
+   "p@activity": 1,
+   "h3@plain": 1,
+   "h4@activity": 1
+  },
+  "menu|h3": {
+   "li@list": 8,
+   "h4@plain": 2,
+   "h5@plain": 1
+  },
+  "header|h3": {
+   "h1@plain": 12
+  },
+  "body|hover red text": {
+   "p@plain": 9,
+   "li@list": 9,
+   "li@activity>list": 4
+  },
+  "body|end page": {
+   "p@plain": 27,
+   "h2@plain": 2,
+   "h3@plain": 28,
+   "h4@plain": 1,
+   "h3@activity": 2,
+   "li@list": 6,
+   "h4@alert": 2,
+   "infoTrigger@plain": 1
+  },
+  "body|module introduction": {
+   "p@plain": 7,
+   "li@list": 4,
+   "h3@activity": 1,
+   "p@whakatauki": 4
+  },
+  "body|heading": {
+   "infoTrigger@list": 1,
+   "flipCard@plain": 1,
+   "li@activity>list": 4,
+   "h3@activity": 1,
+   "h3@plain": 3,
+   "h4@plain": 1
+  },
+  "body|format": {
+   "p@plain": 9,
+   "p@activity": 4,
+   "li@list": 10,
+   "li@activity>list": 4,
+   "infoTrigger@plain": 1
+  },
+  "body|insert image red text": {
+   "p@plain": 2
+  },
+  "body|shape n": {
+   "flipCard@plain": 2
+  },
+  "body|when clicked reveal": {
+   "flipCard@plain": 2
+  },
+  "body|question": {
+   "multiChoiceQuiz@activity": 1
+  },
+  "header|video": {
+   "h1@plain": 1
+  },
+  "body|page": {
+   "p@plain": 1,
+   "h3@plain": 1,
+   "h4@plain": 1,
+   "h3@activity": 2
+  },
+  "body|rhs alert": {
+   "p@alert": 3,
+   "p@activity>alert": 1
+  },
+  "body|inline interactive activity": {
+   "h3@activity": 2,
+   "p@activity": 2
+  },
+  "body|correct": {
+   "p@activity": 1
+  },
+  "body|define shapes with 6 sides": {
+   "p@plain": 1
+  },
+  "body|flip card": {
+   "p@plain": 3,
+   "flipCard@plain": 4,
+   "td@table": 1,
+   "hintSlider@activity": 2,
+   "imageLabel@plain": 1,
+   "flipCard@activity": 1
+  },
+  "body|flip card 5 back": {
+   "p@plain": 1
+  },
+  "body|flip card 2 back": {
+   "flipCard@plain": 2
+  },
+  "body|flip card 3 back": {
+   "flipCard@plain": 2
+  },
+  "body|flip card 7 back": {
+   "flipCard@plain": 1
+  },
+  "body|drag and drop interactive": {
+   "p@activity": 1
+  },
+  "body|embedded activity": {
+   "h3@plain": 1,
+   "h3@activity": 1
+  },
+  "header|tab n": {
+   "h1@plain": 1
+  },
+  "body|h1": {
+   "h3@plain": 27,
+   "p@plain": 11,
+   "li@list": 20,
+   "h2@plain": 7,
+   "h3@activity": 10,
+   "p@whakatauki": 2,
+   "wordHighlighter@plain": 1,
+   "h2@activity": 1,
+   "h4@plain": 1,
+   "h4@list": 2
+  },
+  "menu|title bar": {
+   "li@list": 26,
+   "tabs@plain": 1,
+   "h5@plain": 12,
+   "p@plain": 8
+  },
+  "header|side tabs": {
+   "h1@plain": 1
+  },
+  "body|side tabs": {
+   "p@plain": 1,
+   "h3@activity": 1
+  },
+  "body|workbook activity": {
+   "p@activity": 3,
+   "li@activity>list": 8,
+   "li@list": 1
+  },
+  "header|lesson": {
+   "h1@plain": 2
+  },
+  "body|lesson": {
+   "p@plain": 4,
+   "td@table": 1,
+   "h2@plain": 4,
+   "h3@plain": 1,
+   "td@activity>table": 2
+  },
+  "body|insert whakatauk": {
+   "p@whakatauki": 1,
+   "td@table": 2
+  },
+  "body|hover definition words": {
+   "p@plain": 1
+  },
+  "body|option": {
+   "p@plain": 1
+  },
+  "body|audio button": {
+   "h3@activity": 1
+  },
+  "body|green record button": {
+   "li@activity>list": 2,
+   "h4@activity": 1
+  },
+  "body|yes m ybe and no": {
+   "p@activity": 1,
+   "p@alert": 1
+  },
+  "body|please insert a dropbox": {
+   "p@activity": 1,
+   "li@activity>list": 2
+  },
+  "body|please insert tick box": {
+   "li@list": 3
+  },
+  "body|hover definition red text": {
+   "h4@plain": 1,
+   "p@plain": 3,
+   "li@list": 3
+  },
+  "body|please create a carousel": {
+   "p@activity": 1
+  },
+  "body|tap click click": {
+   "h4@activity": 1
+  },
+  "body|drop": {
+   "p@plain": 1,
+   "accordion@plain": 1,
+   "h3@plain": 1,
+   "clickDrop@activity": 1,
+   "li@activity>list": 5
+  },
+  "body|please include emojis": {
+   "p@activity": 1,
+   "h4@activity": 1
+  },
+  "body|tap x1 floor click x2 repeat": {
+   "h4@activity": 1
+  },
+  "body|lesson overview": {
+   "p@plain": 3,
+   "h3@activity": 1,
+   "infoTrigger@plain": 1
+  },
+  "body|embed": {
+   "p@activity": 3,
+   "p@plain": 1
+  },
+  "body|journal activity": {
+   "h3@activity": 2,
+   "p@activity": 2,
+   "li@activity>list": 4
+  },
+  "menu|lesson overview": {
+   "p@plain": 1,
+   "h5@plain": 18,
+   "li@list": 67
+  },
+  "header|activity": {
+   "h1@plain": 2
+  },
+  "body|speech bubble": {
+   "p@activity": 2,
+   "multiChoiceQuiz@activity": 1,
+   "p@plain": 1,
+   "speechBubble@activity": 1
+  },
+  "body|alternatively you could draw": {
+   "p@activity": 2
+  },
+  "header|h1": {
+   "h1@plain": 19
+  },
+  "header|h4": {
+   "h1@plain": 1
+  },
+  "menu|h1": {
+   "h4@plain": 1,
+   "h3@plain": 2,
+   "h5@plain": 6,
+   "li@list": 3
+  },
+  "header|internal data": {
+   "h1@plain": 7
+  },
+  "body|internal data": {
+   "p@plain": 2,
+   "h2@plain": 1,
+   "h4@plain": 1,
+   "a@plain": 1
+  },
+  "menu|internal data": {
+   "li@list": 4
+  },
+  "acks|title bar": {
+   "accordion@plain": 1
+  },
+  "body|supervisor note": {
+   "p@activity": 3,
+   "li@activity>list": 1,
+   "p@alert": 1
+  },
+  "header|change title code and name": {
+   "h1@plain": 6
+  },
+  "body|insert important message box": {
+   "p@whakatauki": 2,
+   "p@plain": 4,
+   "td@activity>table": 2,
+   "h3@activity": 1
+  },
+  "body|lesson content": {
+   "h3@activity": 2,
+   "td@activity>table": 1,
+   "h4@activity": 2,
+   "dragAndDrop@activity": 2,
+   "p@activity": 1,
+   "p@plain": 8,
+   "li@list": 8
+  },
+  "body|change title code and name": {
+   "h3@activity": 2
+  },
+  "header|lesson content": {
+   "h1@plain": 2
+  },
+  "body|embedded video": {
+   "p@plain": 1
+  },
+  "body|create 8a and 8b": {
+   "p@activity": 1
+  },
+  "header|create 8a and 8b": {
+   "h1@plain": 1
+  },
+  "body|info trigger": {
+   "p@plain": 4
+  },
+  "body|instruction": {
+   "p@plain": 1
+  },
+  "body|insert text": {
+   "p@plain": 1
+  },
+  "body|insert web address": {
+   "p@list": 6,
+   "li@list": 1
+  },
+  "menu|a box": {
+   "p@plain": 10
+  },
+  "body|a box": {
+   "p@alert": 1
+  },
+  "menu|a fancy looking box": {
+   "p@plain": 2
+  },
+  "body|typing quiz": {
+   "multiChoiceQuiz@activity": 2,
+   "hintSlider@activity": 1,
+   "selfCheck@activity": 1,
+   "typing@activity": 1
+  },
+  "header|body": {
+   "h1@plain": 2
+  },
+  "body|hyper link the red text": {
+   "p@activity": 1,
+   "li@activity>list": 3
+  },
+  "header|end page": {
+   "h1@plain": 12
+  },
+  "body|hover over red text": {
+   "li@list": 3
+  },
+  "body|external link": {
+   "li@list": 1,
+   "p@plain": 1,
+   "p@activity": 2,
+   "a@alert": 1,
+   "accordion@activity": 1,
+   "h4@activity": 1,
+   "a@activity": 2
+  },
+  "menu|hover earth mother": {
+   "tabs@plain": 1
+  },
+  "body|hover earth mother": {
+   "p@plain": 4
+  },
+  "body|insert alert solid": {
+   "p@activity>alert": 1
+  },
+  "body|check box": {
+   "selectionBox@plain": 1
+  },
+  "body|insert a dropbox link": {
+   "p@activity": 2
+  },
+  "header|shape n": {
+   "h1@plain": 2
+  },
+  "body|hover on narrative storyline": {
+   "p@plain": 1
+  },
+  "body|insert introduction video": {
+   "p@plain": 1,
+   "li@list": 5,
+   "li@activity>list": 1
+  },
+  "body|insert explanation video": {
+   "p@plain": 1
+  },
+  "header|dropdown": {
+   "h1@plain": 1
+  },
+  "body|table": {
+   "td@table": 19,
+   "th@table": 1
+  },
+  "body|journal link": {
+   "p@activity": 1
+  },
+  "body|activty": {
+   "p@activity": 1
+  },
+  "body|dropdown": {
+   "p@plain": 1,
+   "a@activity": 6,
+   "p@activity": 4,
+   "td@table": 35,
+   "dropQuiz@activity": 2
+  },
+  "body|side alert": {
+   "p@alert": 1
+  },
+  "header|button": {
+   "h1@plain": 1
+  },
+  "body|show answer quiz": {
+   "p@plain": 1,
+   "h3@plain": 1,
+   "multiChoiceQuiz@activity": 2
+  },
+  "body|multiple choice quiz": {
+   "p@plain": 1,
+   "h3@plain": 1
+  },
+  "body|activity heading": {
+   "h3@activity": 98,
+   "td@table": 2,
+   "h3@plain": 1,
+   "p@alert": 1,
+   "p@plain": 4,
+   "p@activity": 2
+  },
+  "body|tabs": {
+   "h4@plain": 2,
+   "p@plain": 5,
+   "p@alert": 2,
+   "hintSlider@activity": 1
+  },
+  "body|source image from video above": {
+   "h3@plain": 1
+  },
+  "menu|activity heading": {
+   "h5@plain": 3,
+   "li@list": 1
+  },
+  "body|b red text": {
+   "p@activity": 1
+  },
+  "header|drag and drop": {
+   "h1@plain": 1
+  },
+  "body|insert quiz link button": {
+   "a@activity": 2
+  },
+  "body|full stop": {
+   "p@plain": 1
+  },
+  "body|hover trigger red text": {
+   "p@plain": 3,
+   "li@alert>list": 1
+  },
+  "body|word select": {
+   "wordSelect@activity": 1
+  },
+  "body|radio quiz": {
+   "radioQuiz@activity": 2,
+   "li@activity>list": 1
+  },
+  "body|hint slider": {
+   "hintSlider@activity": 1
+  },
+  "body|insert quiz button link": {
+   "p@plain": 1,
+   "h3@plain": 1
+  },
+  "body|mcq": {
+   "p@plain": 1,
+   "h3@plain": 1,
+   "multiChoiceQuiz@activity": 1
+  },
+  "body|hover over": {
+   "p@plain": 2
+  },
+  "body|hover text": {
+   "p@plain": 1
+  },
+  "header|page": {
+   "h1@plain": 1
+  },
+  "body|self check multi choice": {
+   "dropQuiz@activity": 1
+  },
+  "menu|act red text": {
+   "li@list": 1
+  },
+  "menu|activity": {
+   "li@list": 2
+  },
+  "body|act red text": {
+   "h3@activity": 1
+  },
+  "body|slider": {
+   "multiChoiceQuiz@activity": 1
+  },
+  "header|activity heading": {
+   "h1@plain": 2
+  },
+  "body|upload to dropbox": {
+   "li@activity>list": 2,
+   "p@activity>list": 1
+  },
+  "body|memorygame": {
+   "h4@plain": 1
+  },
+  "body|audio": {
+   "dragAndDrop@activity": 1
+  }
+ },
+ "examples": {
+  "header|title bar": {
+   "h1@plain": [
+    "CEDK101",
+    "CEDK102",
+    "CEDK501",
+    "CEDO102",
+    "CEDO202",
+    "CEDO204",
+    "CEDR204",
+    "CEDR501",
+    "CEDT104",
+    "CEDT207",
+    "CEDT208",
+    "CEDT301",
+    "CEDT404",
+    "CEDT501",
+    "CEDW101",
+    "CEDW201",
+    "CEDW501",
+    "CHI1004",
+    "CHI1005",
+    "COM1002",
+    "COM1005",
+    "COM1006",
+    "DAN1003",
+    "DAN1004",
+    "DAN1006",
+    "ENFUN01",
+    "ENFUN02",
+    "ENFUN03",
+    "ENFUN04",
+    "ENFUN05",
+    "ENFUN07",
+    "ENFUN08",
+    "ENFUN09",
+    "ENG1007",
+    "ENGC101",
+    "ENGC102",
+    "ENGC201",
+    "ENGC202"
+   ]
+  },
+  "menu|h2": {
+   "p@plain": [
+    "CEDK101",
+    "CEDK102",
+    "CEDO102",
+    "CEDO202",
+    "CEDO204",
+    "CEDR204",
+    "CEDT101",
+    "CEDT208",
+    "CEDT301",
+    "CEDT404",
+    "CEDW101",
+    "CEDW201",
+    "COM1006",
+    "ENGC101",
+    "ENGC102",
+    "ENGC201",
+    "ENGC202",
+    "ENGC301",
+    "ENGC302"
+   ],
+   "li@list": [
+    "CEDK101",
+    "CEDK102",
+    "CEDO102",
+    "CEDO105",
+    "CEDO202",
+    "CEDO204",
+    "CEDR204",
+    "CEDT101",
+    "CEDT207",
+    "CEDT208",
+    "CEDT301",
+    "CEDT404",
+    "CEDW101",
+    "CEDW201",
+    "CHI1003",
+    "CHI1004",
+    "CHI1005",
+    "ENGC101",
+    "ENGC102",
+    "ENGC201",
+    "ENGC202",
+    "ENGC301",
+    "ENGC302"
+   ],
+   "h5@plain": [
+    "CEDK101",
+    "CEDO102",
+    "CEDO105",
+    "CEDO202",
+    "CEDO204",
+    "CEDO301",
+    "CEDR204",
+    "ENGC101",
+    "ENGC102",
+    "ENGC201",
+    "ENGC202",
+    "ENGC301",
+    "ENGC302"
+   ],
+   "h4@plain": [
+    "CEDK102",
+    "CEDO202",
+    "CEDO301",
+    "CEDR204",
+    "CEDT101",
+    "CEDT208",
+    "CEDT301",
+    "CEDT404",
+    "CEDW101",
+    "CEDW201",
+    "ENGC201",
+    "ENGC202",
+    "ENGC301",
+    "ENGC302"
+   ],
+   "tabs@plain": [
+    "CEDO105",
+    "COM1005",
+    "COM1006"
+   ],
+   "h3@plain": [
+    "ENGC101"
+   ]
+  },
+  "body|tab n": {
+   "p@plain": [
+    "CEDK101",
+    "CEDK102",
+    "CEDO102",
+    "CEDR204",
+    "CEDT208",
+    "CEDT404",
+    "CEDW101",
+    "CEDW201"
+   ],
+   "h2@plain": [
+    "CEDK101",
+    "CEDK102",
+    "CEDO102",
+    "CEDR204",
+    "CEDT208",
+    "CEDT404",
+    "CEDW101",
+    "CEDW201"
+   ],
+   "infoTrigger@plain": [
+    "CEDK101",
+    "CEDO102"
+   ],
+   "h3@plain": [
+    "CEDK102",
+    "CEDT404",
+    "CEDW201"
+   ],
+   "h4@plain": [
+    "CEDK102"
+   ],
+   "flipCard@activity": [
+    "CEDK102"
+   ],
+   "h1@plain": [
+    "CEDK102"
+   ],
+   "clickDrop@plain": [
+    "CEDK102"
+   ],
+   "h4@activity": [
+    "CEDK102"
+   ],
+   "h3@activity": [
+    "CEDT404"
+   ],
+   "a@activity": [
+    "CEDT404"
+   ],
+   "tabs@plain": [
+    "DTC1004"
+   ]
+  },
+  "body|h2": {
+   "p@plain": [
+    "CEDK101",
+    "CEDO102",
+    "CEDO105",
+    "CEDO202",
+    "CEDT101",
+    "CEDT104",
+    "CEDT207",
+    "CEDT208",
+    "CEDT301",
+    "COM1002",
+    "COM1005",
+    "COM1006",
+    "DAN1003",
+    "DTC1005",
+    "ENG1004",
+    "ENG1005"
+   ],
+   "h3@plain": [
+    "CEDK101",
+    "CEDK102",
+    "CEDO202",
+    "CEDO301",
+    "CEDT104",
+    "CEDT208",
+    "CEDT301",
+    "COM1002",
+    "COM1005",
+    "COM1006",
+    "DTC1005",
+    "ENFUN01",
+    "ENFUN02",
+    "ENFUN04",
+    "ENFUN05",
+    "ENFUN07",
+    "ENG1004",
+    "ENGC102"
+   ],
+   "p@activity": [
+    "CEDK101",
+    "CEDK102",
+    "CEDO105",
+    "CEDO202",
+    "CEDT208",
+    "DAN1003",
+    "DAN1004"
+   ],
+   "h2@plain": [
+    "CEDK101",
+    "CEDK102",
+    "CEDO102",
+    "CEDO202",
+    "CEDT101",
+    "CEDT104",
+    "CEDT207",
+    "CEDT208",
+    "CEDT404",
+    "COM1005",
+    "DTC1004",
+    "DTC1005",
+    "ENFUN03",
+    "ENG1007"
+   ],
+   "h3@activity": [
+    "CEDK102",
+    "CEDO105",
+    "CEDO202",
+    "CEDO301",
+    "CEDT101",
+    "CEDT104",
+    "CEDW201",
+    "CHI1004",
+    "CHI1005",
+    "COM1002",
+    "COM1005",
+    "COM1006",
+    "DAN1003",
+    "DTC1005",
+    "ENFUN01",
+    "ENGC102",
+    "ENGC302"
+   ],
+   "h2@activity": [
+    "CEDK102"
+   ],
+   "h5@activity": [
+    "CEDK102"
+   ],
+   "a@activity": [
+    "CEDK102",
+    "CHI1003",
+    "CHI1004"
+   ],
+   "li@list": [
+    "CEDO202",
+    "COM1005",
+    "DTC1005"
+   ],
+   "flipCard@plain": [
+    "CEDO202"
+   ],
+   "flipCard@activity": [
+    "CEDO202"
+   ],
+   "li@activity>list": [
+    "CEDO202",
+    "CEDO301",
+    "CEDT404",
+    "CHI1003",
+    "DAN1006"
+   ],
+   "td@activity>table": [
+    "CHI1004"
+   ],
+   "infoTrigger@plain": [
+    "COM1002",
+    "COM1005",
+    "DAN1003"
+   ],
+   "h4@plain": [
+    "COM1002",
+    "COM1005",
+    "DTC1005",
+    "ENFUN01"
+   ],
+   "infoTrigger@list": [
+    "COM1005"
+   ],
+   "dragAndDrop@activity": [
+    "COM1005"
+   ],
+   "tabs@plain": [
+    "COM1006"
+   ],
+   "clickDrop@activity": [
+    "DAN1006"
+   ],
+   "a@plain": [
+    "DTC1004",
+    "DTC1005"
+   ],
+   "tabs@activity": [
+    "DTC1005"
+   ],
+   "a@alert": [
+    "DTC1005"
+   ],
+   "h4@alert": [
+    "DTC1005",
+    "ENFUN01",
+    "ENG1004"
+   ],
+   "td@table": [
+    "DTC1005",
+    "ENG1005"
+   ],
+   "h5@plain": [
+    "ENG1004"
+   ],
+   "h4@activity>alert": [
+    "ENGC102"
+   ]
+  },
+  "body|body": {
+   "p@plain": [
+    "CEDK101",
+    "CEDK102",
+    "CEDO102",
+    "CEDO105",
+    "CEDO204",
+    "CEDO301",
+    "CEDR204",
+    "CEDT101",
+    "CEDT104",
+    "CEDT207",
+    "CEDT208",
+    "CEDT301",
+    "CEDT404",
+    "CEDW101",
+    "CEDW201",
+    "CHI1003",
+    "COM1002",
+    "COM1005",
+    "COM1006",
+    "DAN1003",
+    "DAN1004",
+    "DAN1006",
+    "DTC1004",
+    "DTC1005",
+    "ENFUN01",
+    "ENFUN02",
+    "ENFUN03",
+    "ENFUN04",
+    "ENFUN05",
+    "ENFUN07",
+    "ENFUN08",
+    "ENFUN09",
+    "ENG1004",
+    "ENG1005",
+    "ENG1007",
+    "ENGC101",
+    "ENGC102",
+    "ENGC201",
+    "ENGC202",
+    "ENGC301",
+    "ENGC302"
+   ],
+   "p@activity": [
+    "CEDK101",
+    "CEDK102",
+    "CEDO102",
+    "CEDO105",
+    "CEDO204",
+    "CEDO301",
+    "CEDT101",
+    "CEDT104",
+    "CEDT207",
+    "CEDT208",
+    "CEDT301",
+    "CEDW101",
+    "CEDW201",
+    "CHI1004",
+    "COM1002",
+    "COM1005",
+    "DAN1004",
+    "DAN1006",
+    "DTC1005",
+    "ENFUN01",
+    "ENFUN02",
+    "ENFUN03",
+    "ENFUN04",
+    "ENFUN05",
+    "ENFUN07",
+    "ENFUN08",
+    "ENFUN09",
+    "ENG1004",
+    "ENGC101",
+    "ENGC102",
+    "ENGC201",
+    "ENGC202",
+    "ENGC301",
+    "ENGC302"
+   ],
+   "li@activity>list": [
+    "CEDK101",
+    "CEDO102",
+    "CEDT104",
+    "CEDT207",
+    "CEDT301",
+    "CEDW101",
+    "CEDW201",
+    "DAN1004",
+    "ENFUN02",
+    "ENFUN07",
+    "ENFUN08",
+    "ENFUN09",
+    "ENGC101",
+    "ENGC102",
+    "ENGC201",
+    "ENGC202",
+    "ENGC301"
+   ],
+   "speechBubble@activity": [
+    "CEDO102"
+   ],
+   "speechBubble@plain": [
+    "CEDO102",
+    "ENGC101"
+   ],
+   "li@list": [
+    "CEDO102",
+    "CEDO105",
+    "CEDO301",
+    "CEDT104",
+    "CEDT301",
+    "COM1002",
+    "COM1005",
+    "COM1006",
+    "DAN1003",
+    "DAN1004",
+    "DTC1004",
+    "DTC1005",
+    "ENFUN01",
+    "ENFUN02",
+    "ENFUN04",
+    "ENFUN05",
+    "ENFUN07",
+    "ENFUN09",
+    "ENG1004",
+    "ENG1005",
+    "ENG1007",
+    "ENGC101",
+    "ENGC202",
+    "ENGC301"
+   ],
+   "li@activity>table>list": [
+    "CEDO102"
+   ],
+   "accordion@plain": [
+    "CEDO105",
+    "DTC1005"
+   ],
+   "p@alert": [
+    "CEDO105",
+    "CEDO301",
+    "CEDT207",
+    "COM1005",
+    "DTC1004",
+    "DTC1005",
+    "ENFUN01",
+    "ENFUN02",
+    "ENFUN03",
+    "ENFUN04",
+    "ENFUN05",
+    "ENFUN07",
+    "ENFUN08",
+    "ENFUN09",
+    "ENG1004",
+    "ENG1005",
+    "ENG1007",
+    "ENGC101",
+    "ENGC202"
+   ],
+   "radioQuiz@activity": [
+    "CEDO204"
+   ],
+   "dragAndDrop@activity": [
+    "CEDO204",
+    "ENFUN01",
+    "ENGC101",
+    "ENGC102",
+    "ENGC301"
+   ],
+   "th@activity>table": [
+    "CEDO204"
+   ],
+   "td@activity>table": [
+    "CEDO204",
+    "DTC1005",
+    "ENFUN04"
+   ],
+   "multiChoiceQuiz@activity": [
+    "CEDO204",
+    "CEDW101",
+    "COM1005",
+    "COM1006",
+    "ENFUN02",
+    "ENFUN08",
+    "ENFUN09",
+    "ENGC101"
+   ],
+   "p@whakatauki": [
+    "CEDR204",
+    "CEDT104"
+   ],
+   "h4@plain": [
+    "CEDR204",
+    "CEDT104",
+    "COM1002",
+    "COM1005",
+    "ENFUN03",
+    "ENFUN04",
+    "ENFUN08"
+   ],
+   "td@table": [
+    "CEDT104",
+    "COM1002",
+    "ENFUN03"
+   ],
+   "h3@activity": [
+    "CEDT104",
+    "COM1005",
+    "DTC1004",
+    "ENFUN01",
+    "ENFUN05",
+    "ENGC202"
+   ],
+   "h4@alert": [
+    "CEDT104",
+    "ENFUN02",
+    "ENG1004"
+   ],
+   "selectionBox@activity": [
+    "CEDT104",
+    "ENFUN09"
+   ],
+   "clickDrop@plain": [
+    "CEDT104",
+    "CEDT207"
+   ],
+   "audioTrigger@list": [
+    "CEDT104"
+   ],
+   "h4@activity": [
+    "CEDT104",
+    "ENFUN04",
+    "ENFUN08",
+    "ENFUN09"
+   ],
+   "carousel@activity": [
+    "CEDT104",
+    "ENFUN04"
+   ],
+   "li@alert>list": [
+    "CEDT104",
+    "ENFUN01",
+    "ENFUN02",
+    "ENFUN05",
+    "ENFUN08",
+    "ENG1004",
+    "ENG1007",
+    "ENGC101",
+    "ENGC202"
+   ],
+   "a@activity": [
+    "CEDT301"
+   ],
+   "infoTrigger@list": [
+    "COM1005"
+   ],
+   "dropQuiz@activity": [
+    "COM1005",
+    "ENFUN04",
+    "ENFUN08"
+   ],
+   "h3@plain": [
+    "DAN1006",
+    "ENFUN01",
+    "ENFUN02"
+   ],
+   "flipCard@activity": [
+    "ENFUN01",
+    "ENFUN02"
+   ],
+   "tabs@plain": [
+    "ENFUN03",
+    "ENFUN04"
+   ],
+   "p@table": [
+    "ENFUN03"
+   ],
+   "typing@activity": [
+    "ENFUN03"
+   ],
+   "wordHighlighter@plain": [
+    "ENFUN05",
+    "ENFUN08"
+   ],
+   "p@activity>alert": [
+    "ENFUN08"
+   ],
+   "multiChoiceQuiz@alert": [
+    "ENFUN09"
+   ],
+   "wordHighlighter@alert": [
+    "ENGC101"
+   ],
+   "memoryGame@activity": [
+    "ENGC101"
+   ],
+   "wordHighlighter@activity": [
+    "ENGC102"
+   ],
+   "tabs@activity": [
+    "ENGC301"
+   ],
+   "h5@alert": [
+    "ENGC301"
+   ]
+  },
+  "body|activity": {
+   "h3@activity": [
+    "CEDK101",
+    "CEDO102",
+    "CEDO204",
+    "CEDO301",
+    "CEDR204",
+    "CEDT101",
+    "CEDT207",
+    "CEDT208",
+    "CEDT301",
+    "CEDT404",
+    "CEDW101",
+    "CEDW201",
+    "DTC1004",
+    "ENFUN03",
+    "ENGC101",
+    "ENGC102",
+    "ENGC201",
+    "ENGC301",
+    "ENGC302"
+   ],
+   "h3@plain": [
+    "CEDK101",
+    "CEDO102",
+    "CEDT101",
+    "CEDT207",
+    "CEDT208",
+    "CEDT301",
+    "ENGC301"
+   ],
+   "p@activity": [
+    "CEDK102",
+    "CEDO204",
+    "CEDR204",
+    "CEDT101",
+    "CEDT208",
+    "CEDT301",
+    "CEDT404",
+    "CEDW201",
+    "COM1005",
+    "COM1006",
+    "DTC1004",
+    "DTC1005",
+    "ENFUN01",
+    "ENGC101",
+    "ENGC302"
+   ],
+   "li@activity>list": [
+    "CEDK102",
+    "CEDT101",
+    "CEDT301",
+    "CEDT404",
+    "CEDW201",
+    "ENFUN02"
+   ],
+   "h2@activity": [
+    "CEDK102",
+    "CEDR204"
+   ],
+   "a@activity": [
+    "CEDO102",
+    "CEDW201",
+    "DTC1004"
+   ],
+   "p@plain": [
+    "CEDT207",
+    "CEDT208",
+    "CEDT301",
+    "CEDW201"
+   ],
+   "h2@plain": [
+    "CEDT207"
+   ],
+   "accordion@activity": [
+    "CEDT404"
+   ],
+   "clickDrop@activity": [
+    "CEDW201"
+   ],
+   "radioQuiz@activity": [
+    "COM1002"
+   ],
+   "h4@plain": [
+    "COM1002",
+    "ENGC301"
+   ],
+   "selfCheck@activity": [
+    "COM1005"
+   ],
+   "dragAndDrop@activity": [
+    "COM1005",
+    "COM1006",
+    "DTC1004"
+   ],
+   "p@alert": [
+    "ENGC101"
+   ],
+   "flipCard@plain": [
+    "ENGC301"
+   ]
+  },
+  "body|drag and drop": {
+   "p@activity": [
+    "CEDK101",
+    "CEDT101",
+    "CEDT404",
+    "ENFUN07"
+   ],
+   "dragAndDrop@activity": [
+    "CEDK101",
+    "CEDO102",
+    "CEDT101",
+    "CEDT404",
+    "ENFUN02",
+    "ENFUN03",
+    "ENFUN04",
+    "ENFUN05",
+    "ENFUN07",
+    "ENFUN08",
+    "ENFUN09",
+    "ENGC102",
+    "ENGC202"
+   ],
+   "infoTrigger@activity": [
+    "ENFUN03"
+   ],
+   "hintSlider@plain": [
+    "ENFUN05"
+   ],
+   "p@plain": [
+    "ENFUN08"
+   ],
+   "reorder@activity": [
+    "ENFUN08"
+   ],
+   "td@activity>table": [
+    "ENFUN08"
+   ],
+   "li@list": [
+    "ENFUN09"
+   ]
+  },
+  "body|button": {
+   "a@activity": [
+    "CEDK101",
+    "CEDK102",
+    "CEDO102",
+    "CEDO105",
+    "CEDO204",
+    "CEDO301",
+    "CEDR204",
+    "CEDT101",
+    "CEDT104",
+    "CEDT207",
+    "CEDT208",
+    "CEDT301",
+    "CEDT404",
+    "CEDW101",
+    "CEDW201",
+    "DTC1005",
+    "ENGC101",
+    "ENGC102",
+    "ENGC301",
+    "ENGC302"
+   ],
+   "h4@activity": [
+    "CEDK101",
+    "CEDO102",
+    "CEDO204",
+    "CEDT208",
+    "CEDT404",
+    "CEDW101",
+    "ENGC301",
+    "ENGC302"
+   ],
+   "h5@activity": [
+    "CEDK102"
+   ],
+   "dragAndDrop@activity": [
+    "CEDK102"
+   ],
+   "multiChoiceQuiz@activity": [
+    "CEDK102"
+   ],
+   "carousel@activity": [
+    "CEDO102"
+   ],
+   "h3@activity": [
+    "CEDO204"
+   ],
+   "a@plain": [
+    "CEDO301",
+    "DTC1005"
+   ],
+   "p@activity": [
+    "CEDT208",
+    "DAN1004",
+    "DTC1005",
+    "ENGC302"
+   ],
+   "li@activity>list": [
+    "DAN1004"
+   ],
+   "h4@plain": [
+    "DAN1004",
+    "DTC1005"
+   ],
+   "a@list": [
+    "DTC1005"
+   ],
+   "tabs@plain": [
+    "ENFUN03"
+   ],
+   "p@activity>alert": [
+    "ENFUN05"
+   ],
+   "clickDrop@activity": [
+    "ENFUN05"
+   ],
+   "wordHighlighter@activity": [
+    "ENFUN05"
+   ],
+   "p@plain": [
+    "ENFUN07",
+    "ENGC202"
+   ],
+   "li@list": [
+    "ENFUN09"
+   ],
+   "p@alert": [
+    "ENGC101"
+   ]
+  },
+  "body|image": {
+   "h4@activity": [
+    "CEDK101"
+   ],
+   "p@activity": [
+    "CEDK101",
+    "CEDO202",
+    "CEDT101",
+    "CEDT207",
+    "CEDT208",
+    "CEDT301",
+    "CEDW101",
+    "CEDW201",
+    "DTC1005",
+    "ENFUN01",
+    "ENFUN08",
+    "ENGC201"
+   ],
+   "li@activity>list": [
+    "CEDK101",
+    "CEDO202",
+    "CEDT207",
+    "CEDT301",
+    "CEDW101",
+    "DTC1005",
+    "ENGC201"
+   ],
+   "p@plain": [
+    "CEDK101",
+    "CEDO105",
+    "CEDO202",
+    "CEDO204",
+    "CEDT207",
+    "CEDT208",
+    "COM1002",
+    "COM1006",
+    "DTC1004",
+    "DTC1005",
+    "ENFUN04",
+    "ENFUN09",
+    "ENG1004",
+    "ENGC101",
+    "ENGC206"
+   ],
+   "h4@plain": [
+    "CEDK102",
+    "CEDR204",
+    "COM1006"
+   ],
+   "memoryGame@activity": [
+    "CEDK102"
+   ],
+   "li@list": [
+    "CEDO105",
+    "DTC1004",
+    "ENGC101"
+   ],
+   "accordion@activity": [
+    "CEDO202"
+   ],
+   "p@alert": [
+    "CEDO202",
+    "COM1005",
+    "ENGC206"
+   ],
+   "flipCard@plain": [
+    "CEDO202",
+    "ENFUN01",
+    "ENGC301"
+   ],
+   "h3@activity": [
+    "CEDO301",
+    "CEDT101"
+   ],
+   "infoTrigger@plain": [
+    "CEDT101"
+   ],
+   "td@activity>table": [
+    "CEDT101"
+   ],
+   "rotateBanner@activity": [
+    "CEDT207"
+   ],
+   "clickDrop@activity": [
+    "CEDT208"
+   ],
+   "carousel@plain": [
+    "COM1006"
+   ],
+   "dragAndDrop@activity": [
+    "DAN1004",
+    "ENFUN07",
+    "ENFUN08",
+    "ENGC302"
+   ],
+   "a@activity": [
+    "DTC1004"
+   ],
+   "h4@alert": [
+    "DTC1005"
+   ],
+   "h3@plain": [
+    "DTC1005",
+    "ENGC201"
+   ],
+   "a@plain": [
+    "DTC1005"
+   ],
+   "infoTrigger@table": [
+    "DTC1005"
+   ],
+   "td@table": [
+    "DTC1005"
+   ],
+   "dropQuiz@activity": [
+    "ENFUN01",
+    "ENGC102"
+   ],
+   "wordHighlighter@plain": [
+    "ENFUN03",
+    "ENFUN05"
+   ],
+   "carousel@activity": [
+    "ENGC101"
+   ]
+  },
+  "body|slide n": {
+   "h4@plain": [
+    "CEDK101"
+   ]
+  },
+  "body|video": {
+   "p@activity": [
+    "CEDK101",
+    "CEDO202",
+    "CEDO204",
+    "CEDT207",
+    "CEDT208",
+    "CEDT301",
+    "CEDW201",
+    "ENFUN02",
+    "ENGC101",
+    "ENGC201"
+   ],
+   "h3@activity": [
+    "CEDO204",
+    "CEDT207"
+   ],
+   "li@activity>list": [
+    "CEDT207",
+    "CEDT301",
+    "ENGC101"
+   ],
+   "p@plain": [
+    "CEDT404",
+    "CEDW201",
+    "ENFUN04"
+   ],
+   "h3@plain": [
+    "CEDT404"
+   ],
+   "li@list": [
+    "ENFUN04",
+    "ENFUN09"
+   ],
+   "h5@plain": [
+    "ENFUN09"
+   ],
+   "p@whakatauki": [
+    "ENGC101"
+   ]
+  },
+  "body|h4": {
+   "h3@plain": [
+    "CEDK102",
+    "CEDW201",
+    "ENFUN08",
+    "ENG1005",
+    "ENGC101"
+   ],
+   "h4@plain": [
+    "CEDK102",
+    "CEDO105",
+    "CEDO204",
+    "COM1002",
+    "ENFUN01",
+    "ENG1005",
+    "ENG1007",
+    "ENGC101"
+   ],
+   "dragAndDrop@activity": [
+    "CEDK102",
+    "CEDO105"
+   ],
+   "p@plain": [
+    "CEDO105",
+    "CEDO204",
+    "ENG1004"
+   ],
+   "h4@alert": [
+    "CEDO301",
+    "ENFUN04",
+    "ENFUN09"
+   ],
+   "a@alert": [
+    "CEDO301"
+   ],
+   "a@plain": [
+    "CEDO301"
+   ],
+   "h4@activity": [
+    "CEDW201",
+    "ENGC101"
+   ],
+   "p@activity": [
+    "CEDW201",
+    "ENGC101"
+   ],
+   "li@activity>list": [
+    "CEDW201",
+    "ENG1004"
+   ],
+   "h3@activity": [
+    "CEDW201",
+    "ENG1004",
+    "ENGC101"
+   ],
+   "carousel@activity": [
+    "DAN1006",
+    "ENFUN01"
+   ],
+   "h5@plain": [
+    "ENFUN09"
+   ],
+   "li@alert>list": [
+    "ENG1004"
+   ],
+   "li@list": [
+    "ENG1004",
+    "ENG1005"
+   ],
+   "clickDrop@plain": [
+    "ENG1004"
+   ]
+  },
+  "body|click drop": {
+   "p@plain": [
+    "CEDK102",
+    "DTC1005"
+   ],
+   "h4@plain": [
+    "CEDO204"
+   ],
+   "tabs@plain": [
+    "ENGC302"
+   ]
+  },
+  "body|supervisor button": {
+   "p@plain": [
+    "CEDK102",
+    "CEDO105",
+    "CEDR204"
+   ],
+   "p@activity": [
+    "CEDK102"
+   ],
+   "li@activity>list": [
+    "CEDK102"
+   ]
+  },
+  "body|h5": {
+   "accordion@activity": [
+    "CEDK102"
+   ],
+   "p@plain": [
+    "CEDO204",
+    "ENFUN07",
+    "ENG1004",
+    "ENG1005",
+    "ENGC201",
+    "ENGC202"
+   ],
+   "li@list": [
+    "ENFUN01"
+   ],
+   "speechBubble@plain": [
+    "ENFUN01"
+   ],
+   "h4@plain": [
+    "ENFUN01",
+    "ENFUN09"
+   ],
+   "h3@activity": [
+    "ENFUN01"
+   ],
+   "wordHighlighter@plain": [
+    "ENFUN01",
+    "ENFUN04",
+    "ENFUN07"
+   ],
+   "h3@plain": [
+    "ENFUN01",
+    "ENFUN05",
+    "ENFUN07",
+    "ENGC202"
+   ],
+   "h4@alert": [
+    "ENFUN02",
+    "ENFUN03",
+    "ENGC202"
+   ],
+   "tabs@plain": [
+    "ENFUN04"
+   ],
+   "p@activity": [
+    "ENFUN05"
+   ],
+   "h4@activity": [
+    "ENFUN05"
+   ],
+   "h5@plain": [
+    "ENFUN09",
+    "ENG1004"
+   ],
+   "h5@activity": [
+    "ENGC201"
+   ],
+   "li@alert>list": [
+    "ENGC202"
+   ],
+   "h5@alert": [
+    "ENGC202"
+   ],
+   "a@activity": [
+    "ENGC202"
+   ]
+  },
+  "body|accordion": {
+   "li@activity>list": [
+    "CEDK102"
+   ],
+   "accordion@plain": [
+    "CEDO102",
+    "ENFUN09"
+   ],
+   "p@plain": [
+    "CEDT101",
+    "ENG1005"
+   ],
+   "li@list": [
+    "CEDT101",
+    "ENFUN07",
+    "ENG1005"
+   ],
+   "accordion@activity": [
+    "CEDW101",
+    "ENFUN04"
+   ],
+   "hintSlider@plain": [
+    "ENFUN07"
+   ],
+   "clickDrop@plain": [
+    "ENG1004"
+   ],
+   "h5@activity": [
+    "ENG1004"
+   ],
+   "h3@activity": [
+    "ENG1004",
+    "ENGC102"
+   ],
+   "li@alert>list": [
+    "ENG1005"
+   ]
+  },
+  "body|h3": {
+   "h3@activity": [
+    "CEDK102",
+    "CEDO105",
+    "CEDO202",
+    "CEDT101",
+    "CEDT104",
+    "CEDT207",
+    "COM1002",
+    "DAN1003",
+    "DAN1004",
+    "DAN1006",
+    "DTC1004",
+    "ENFUN01",
+    "ENFUN02",
+    "ENFUN04",
+    "ENFUN07",
+    "ENFUN08",
+    "ENGC101",
+    "ENGC201",
+    "ENGC302"
+   ],
+   "h3@plain": [
+    "CEDK102",
+    "CEDO105",
+    "CEDO202",
+    "CEDO204",
+    "CEDT104",
+    "CEDT207",
+    "COM1002",
+    "COM1005",
+    "DAN1003",
+    "DAN1006",
+    "DTC1004",
+    "ENFUN01",
+    "ENFUN02",
+    "ENFUN03",
+    "ENFUN04",
+    "ENFUN05",
+    "ENFUN07",
+    "ENFUN08",
+    "ENFUN09",
+    "ENG1005",
+    "ENGC101",
+    "ENGC201",
+    "ENGC202",
+    "ENGC301",
+    "ENGC302"
+   ],
+   "h2@plain": [
+    "CEDK102",
+    "CEDO202",
+    "CEDT207",
+    "ENFUN01",
+    "ENFUN08",
+    "ENG1005",
+    "ENGC301"
+   ],
+   "li@list": [
+    "CEDO105",
+    "CEDT104",
+    "COM1002",
+    "DAN1003",
+    "DTC1004",
+    "DTC1005"
+   ],
+   "p@plain": [
+    "CEDO105",
+    "CEDO202",
+    "CEDO204",
+    "CEDT104",
+    "CEDT207",
+    "CEDW201",
+    "COM1002",
+    "COM1005",
+    "DAN1003",
+    "DAN1004",
+    "DTC1004",
+    "DTC1005",
+    "ENFUN01",
+    "ENFUN03",
+    "ENFUN05",
+    "ENFUN07",
+    "ENFUN08",
+    "ENFUN09",
+    "ENGC101",
+    "ENGC202"
+   ],
+   "p@activity": [
+    "CEDO202",
+    "CEDT104",
+    "DAN1003",
+    "DAN1004",
+    "DAN1006",
+    "DTC1005",
+    "ENFUN07",
+    "ENG1004",
+    "ENGC101"
+   ],
+   "h4@plain": [
+    "CEDO204",
+    "CEDT104",
+    "COM1002",
+    "COM1005",
+    "COM1006",
+    "DAN1003",
+    "DTC1005",
+    "ENFUN01",
+    "ENFUN03",
+    "ENG1004",
+    "ENG1007",
+    "ENGC302"
+   ],
+   "h4@activity": [
+    "CEDT104",
+    "ENGC302"
+   ],
+   "selectionBox@activity": [
+    "CEDT104"
+   ],
+   "li@activity>list": [
+    "CEDT104",
+    "DAN1003",
+    "DAN1006"
+   ],
+   "h4@alert": [
+    "CEDT104",
+    "ENFUN02",
+    "ENFUN05"
+   ],
+   "clickDrop@plain": [
+    "CEDT207",
+    "ENG1004"
+   ],
+   "infoTrigger@plain": [
+    "COM1002",
+    "ENFUN01",
+    "ENFUN04",
+    "ENGC101"
+   ],
+   "radioQuiz@activity": [
+    "COM1002"
+   ],
+   "a@plain": [
+    "COM1005",
+    "ENFUN02"
+   ],
+   "infoTrigger@list": [
+    "COM1005"
+   ],
+   "a@activity": [
+    "DAN1003"
+   ],
+   "infoTrigger@activity": [
+    "DAN1003"
+   ],
+   "multiChoiceQuiz@activity": [
+    "DAN1006"
+   ],
+   "td@table": [
+    "DTC1005"
+   ],
+   "th@plain": [
+    "ENFUN03"
+   ],
+   "li@alert>list": [
+    "ENFUN05"
+   ],
+   "h3@alert": [
+    "ENGC101"
+   ],
+   "infoTrigger@alert": [
+    "ENGC201"
+   ],
+   "p@alert": [
+    "ENGC302"
+   ]
+  },
+  "body|click drop button": {
+   "clickDrop@activity": [
+    "CEDK102",
+    "CEDR204"
+   ],
+   "li@activity>list": [
+    "CEDR204"
+   ],
+   "p@activity": [
+    "CEDR204"
+   ]
+  },
+  "body|click drop body": {
+   "li@activity>list": [
+    "CEDK102"
+   ]
+  },
+  "body|click drop image": {
+   "p@plain": [
+    "CEDK102"
+   ]
+  },
+  "body|important": {
+   "p@alert": [
+    "CEDK102",
+    "CEDO102",
+    "CEDT101",
+    "CEDT207",
+    "DAN1003",
+    "DAN1004",
+    "DTC1005",
+    "ENFUN04",
+    "ENFUN09",
+    "ENGC101"
+   ],
+   "h4@plain": [
+    "CEDT104"
+   ],
+   "h4@alert": [
+    "CEDT104",
+    "DAN1004"
+   ],
+   "li@alert>list": [
+    "CEDT104"
+   ],
+   "li@list": [
+    "CEDT104",
+    "DAN1003"
+   ],
+   "p@whakatauki": [
+    "CEDT207",
+    "CEDT301",
+    "CEDT404"
+   ],
+   "p@plain": [
+    "CEDT207",
+    "COM1002",
+    "DTC1004",
+    "ENG1004"
+   ],
+   "h3@plain": [
+    "COM1002"
+   ],
+   "flipCard@plain": [
+    "ENFUN04"
+   ],
+   "p@activity": [
+    "ENFUN05"
+   ]
+  },
+  "body|modal": {
+   "h4@activity": [
+    "CEDK102"
+   ],
+   "p@activity": [
+    "CEDT301"
+   ],
+   "multiChoiceQuiz@activity": [
+    "CEDW101"
+   ],
+   "h5@plain": [
+    "ENFUN09"
+   ]
+  },
+  "body|title bar": {
+   "p@plain": [
+    "CEDK501",
+    "CEDR501",
+    "CEDW501",
+    "CHFUN07",
+    "DAN1004",
+    "DAN1006",
+    "ENFUN01",
+    "ENFUN07"
+   ],
+   "infoTrigger@activity": [
+    "CEDK501"
+   ],
+   "th@activity": [
+    "CEDK501"
+   ],
+   "h3@plain": [
+    "CEDO501",
+    "CEDR501",
+    "CEDW501",
+    "ENFUN01",
+    "ENFUN04"
+   ],
+   "a@activity": [
+    "CEDO501"
+   ],
+   "h5@plain": [
+    "CEDR204"
+   ],
+   "h3@activity": [
+    "CEDR501",
+    "CEDW501",
+    "ENFUN01",
+    "ENGC204"
+   ],
+   "li@table>list": [
+    "CEDR501"
+   ],
+   "h2@plain": [
+    "CEDR501",
+    "CEDW501",
+    "COM1002",
+    "ENFUN09"
+   ],
+   "h4@alert": [
+    "CEDT501",
+    "ENFUN05"
+   ],
+   "p@whakatauki": [
+    "CEDW501"
+   ],
+   "p@alert": [
+    "CEDW501"
+   ],
+   "td@table": [
+    "CEDW501"
+   ],
+   "h4@plain": [
+    "CHFUN04"
+   ],
+   "carousel@plain": [
+    "CHFUN07"
+   ],
+   "li@list": [
+    "ENFUN02",
+    "ENGC206"
+   ],
+   "wordHighlighter@plain": [
+    "ENFUN03"
+   ],
+   "flipCard@plain": [
+    "ENFUN05"
+   ],
+   "h4@activity": [
+    "ENFUN05"
+   ],
+   "h2@activity": [
+    "ENFUN08"
+   ],
+   "h5@activity": [
+    "ENGC204"
+   ],
+   "p@activity": [
+    "ENGC204"
+   ]
+  },
+  "body|whakatauki": {
+   "p@whakatauki": [
+    "CEDO102",
+    "CEDO301",
+    "CEDT208",
+    "CEDW101",
+    "CEDW201",
+    "ENG1004",
+    "ENG1007"
+   ],
+   "p@plain": [
+    "CEDT208"
+   ]
+  },
+  "header|h2": {
+   "h1@plain": [
+    "CEDO105",
+    "CEDT207",
+    "CEDT301",
+    "CHI1003",
+    "CHI1004",
+    "CHI1005",
+    "COM1002",
+    "COM1005",
+    "COM1006",
+    "DAN1006",
+    "DTC1004",
+    "DTC1005",
+    "ENG1004",
+    "ENG1005",
+    "ENGC102",
+    "ENGC201",
+    "ENGC202",
+    "ENGC301",
+    "ENGC302"
+   ]
+  },
+  "body|data marker": {
+   "p@plain": [
+    "CEDO105",
+    "CEDO204",
+    "CEDT104",
+    "COM1002",
+    "DAN1004"
+   ],
+   "a@activity": [
+    "CEDO301"
+   ],
+   "li@list": [
+    "CEDT104"
+   ],
+   "td@table": [
+    "CEDT104"
+   ],
+   "p@activity": [
+    "CEDT104"
+   ],
+   "h4@activity": [
+    "CEDT104"
+   ],
+   "h3@plain": [
+    "CEDT104"
+   ]
+  },
+  "menu|image": {
+   "li@list": [
+    "CEDO105"
+   ]
+  },
+  "body|alert": {
+   "p@alert": [
+    "CEDO105",
+    "DTC1004",
+    "DTC1005",
+    "ENFUN01",
+    "ENFUN04",
+    "ENGC101"
+   ],
+   "p@plain": [
+    "CEDO105",
+    "CEDW201",
+    "DTC1004",
+    "DTC1005",
+    "ENFUN01",
+    "ENG1005",
+    "ENGC101"
+   ],
+   "p@activity": [
+    "CEDT207",
+    "CEDT404",
+    "ENGC101"
+   ],
+   "h4@activity": [
+    "CEDT207"
+   ],
+   "li@activity>list": [
+    "CEDT207",
+    "CEDT404"
+   ],
+   "li@alert>list": [
+    "DTC1004",
+    "ENFUN01",
+    "ENGC201"
+   ],
+   "h4@plain": [
+    "DTC1004",
+    "ENFUN01"
+   ],
+   "h4@alert": [
+    "DTC1004",
+    "ENFUN01"
+   ],
+   "li@list": [
+    "ENFUN01"
+   ],
+   "h5@plain": [
+    "ENG1007"
+   ],
+   "li@alert": [
+    "ENGC101"
+   ]
+  },
+  "body|thought bubble lhs": {
+   "speechBubble@activity": [
+    "CEDO105"
+   ]
+  },
+  "menu|body": {
+   "li@list": [
+    "CEDO105",
+    "CEDT104",
+    "ENFUN05",
+    "ENGC201",
+    "ENGC202",
+    "ENGC301"
+   ],
+   "p@plain": [
+    "CEDT104",
+    "CEDT207",
+    "COM1002",
+    "COM1005"
+   ]
+  },
+  "body|end other": {
+   "p@plain": [
+    "CEDO105",
+    "DTC1005"
+   ],
+   "p@activity": [
+    "CEDO204"
+   ],
+   "h3@plain": [
+    "DTC1005"
+   ],
+   "h4@activity": [
+    "DTC1005"
+   ]
+  },
+  "menu|h3": {
+   "li@list": [
+    "CEDO105",
+    "CEDT104",
+    "ENFUN02",
+    "ENFUN07",
+    "ENGC201"
+   ],
+   "h4@plain": [
+    "CEDT104"
+   ],
+   "h5@plain": [
+    "CEDT104"
+   ]
+  },
+  "header|h3": {
+   "h1@plain": [
+    "CEDO105",
+    "CEDT207",
+    "COM1002",
+    "DAN1003",
+    "DTC1004",
+    "ENGC101",
+    "ENGC301",
+    "ENGC302"
+   ]
+  },
+  "body|hover red text": {
+   "p@plain": [
+    "CEDO202",
+    "CEDT207",
+    "DAN1006"
+   ],
+   "li@list": [
+    "CEDO202",
+    "DAN1006"
+   ],
+   "li@activity>list": [
+    "CEDO202"
+   ]
+  },
+  "body|end page": {
+   "p@plain": [
+    "CEDO202",
+    "CEDT101",
+    "ENFUN01",
+    "ENFUN02",
+    "ENFUN03",
+    "ENFUN04",
+    "ENFUN05",
+    "ENFUN07",
+    "ENFUN08",
+    "ENFUN09"
+   ],
+   "h2@plain": [
+    "CEDO202",
+    "CEDT104"
+   ],
+   "h3@plain": [
+    "DTC1005",
+    "ENFUN01",
+    "ENFUN02",
+    "ENFUN03",
+    "ENFUN04",
+    "ENFUN05",
+    "ENFUN07",
+    "ENFUN08",
+    "ENFUN09"
+   ],
+   "h4@plain": [
+    "DTC1005"
+   ],
+   "h3@activity": [
+    "DTC1005"
+   ],
+   "li@list": [
+    "DTC1005"
+   ],
+   "h4@alert": [
+    "DTC1005"
+   ],
+   "infoTrigger@plain": [
+    "ENGC301"
+   ]
+  },
+  "body|module introduction": {
+   "p@plain": [
+    "CEDO202",
+    "CEDT301",
+    "DTC1004",
+    "ENGC101",
+    "ENGC302"
+   ],
+   "li@list": [
+    "CEDO202"
+   ],
+   "h3@activity": [
+    "CEDT301"
+   ],
+   "p@whakatauki": [
+    "ENGC201"
+   ]
+  },
+  "body|heading": {
+   "infoTrigger@list": [
+    "CEDO202"
+   ],
+   "flipCard@plain": [
+    "CEDO202"
+   ],
+   "li@activity>list": [
+    "CEDO202"
+   ],
+   "h3@activity": [
+    "ENFUN08"
+   ],
+   "h3@plain": [
+    "ENFUN09"
+   ],
+   "h4@plain": [
+    "ENGC301"
+   ]
+  },
+  "body|format": {
+   "p@plain": [
+    "CEDO202",
+    "DAN1003",
+    "DAN1004"
+   ],
+   "p@activity": [
+    "CEDO202",
+    "DAN1003",
+    "DAN1004"
+   ],
+   "li@list": [
+    "DAN1003"
+   ],
+   "li@activity>list": [
+    "DAN1003"
+   ],
+   "infoTrigger@plain": [
+    "DAN1003"
+   ]
+  },
+  "body|insert image red text": {
+   "p@plain": [
+    "CEDO202"
+   ]
+  },
+  "body|shape n": {
+   "flipCard@plain": [
+    "CEDO202"
+   ]
+  },
+  "body|when clicked reveal": {
+   "flipCard@plain": [
+    "CEDO202"
+   ]
+  },
+  "body|question": {
+   "multiChoiceQuiz@activity": [
+    "CEDO202"
+   ]
+  },
+  "header|video": {
+   "h1@plain": [
+    "CEDO204"
+   ]
+  },
+  "body|page": {
+   "p@plain": [
+    "CEDO204"
+   ],
+   "h3@plain": [
+    "CEDO204"
+   ],
+   "h4@plain": [
+    "CEDO204"
+   ],
+   "h3@activity": [
+    "ENGC102"
+   ]
+  },
+  "body|rhs alert": {
+   "p@alert": [
+    "CEDO204",
+    "ENGC101"
+   ],
+   "p@activity>alert": [
+    "CEDO204"
+   ]
+  },
+  "body|inline interactive activity": {
+   "h3@activity": [
+    "CEDO204"
+   ],
+   "p@activity": [
+    "CEDO204"
+   ]
+  },
+  "body|correct": {
+   "p@activity": [
+    "CEDO204"
+   ]
+  },
+  "body|define shapes with 6 sides": {
+   "p@plain": [
+    "CEDO204"
+   ]
+  },
+  "body|flip card": {
+   "p@plain": [
+    "CEDO204"
+   ],
+   "flipCard@plain": [
+    "CEDO204",
+    "ENFUN09",
+    "ENGC301"
+   ],
+   "td@table": [
+    "ENFUN03"
+   ],
+   "hintSlider@activity": [
+    "ENFUN03",
+    "ENFUN05"
+   ],
+   "imageLabel@plain": [
+    "ENFUN07"
+   ],
+   "flipCard@activity": [
+    "ENGC201"
+   ]
+  },
+  "body|flip card 5 back": {
+   "p@plain": [
+    "CEDO204"
+   ]
+  },
+  "body|flip card 2 back": {
+   "flipCard@plain": [
+    "CEDO204"
+   ]
+  },
+  "body|flip card 3 back": {
+   "flipCard@plain": [
+    "CEDO204"
+   ]
+  },
+  "body|flip card 7 back": {
+   "flipCard@plain": [
+    "CEDO204"
+   ]
+  },
+  "body|drag and drop interactive": {
+   "p@activity": [
+    "CEDO301"
+   ]
+  },
+  "body|embedded activity": {
+   "h3@plain": [
+    "CEDO301"
+   ],
+   "h3@activity": [
+    "CEDO301"
+   ]
+  },
+  "header|tab n": {
+   "h1@plain": [
+    "CEDO301"
+   ]
+  },
+  "body|h1": {
+   "h3@plain": [
+    "CEDO301",
+    "COM1006",
+    "DTC1005",
+    "ENFUN01",
+    "ENFUN02",
+    "ENFUN03",
+    "ENFUN04",
+    "ENFUN05",
+    "ENFUN07",
+    "ENFUN08"
+   ],
+   "p@plain": [
+    "CEDT301",
+    "COM1006",
+    "DTC1005",
+    "ENFUN07"
+   ],
+   "li@list": [
+    "CEDT301",
+    "COM1005",
+    "DTC1004",
+    "DTC1005"
+   ],
+   "h2@plain": [
+    "COM1005",
+    "ENFUN08",
+    "ENFUN09"
+   ],
+   "h3@activity": [
+    "COM1005",
+    "COM1006",
+    "DAN1004",
+    "DTC1005"
+   ],
+   "p@whakatauki": [
+    "DAN1004"
+   ],
+   "wordHighlighter@plain": [
+    "ENFUN05"
+   ],
+   "h2@activity": [
+    "ENFUN08"
+   ],
+   "h4@plain": [
+    "ENG1005"
+   ],
+   "h4@list": [
+    "ENG1005"
+   ]
+  },
+  "menu|title bar": {
+   "li@list": [
+    "CEDR501",
+    "CEDT501",
+    "CEDW501",
+    "ENFUN01",
+    "ENFUN02",
+    "ENFUN03",
+    "ENFUN04",
+    "ENFUN05",
+    "ENFUN07",
+    "ENFUN09"
+   ],
+   "tabs@plain": [
+    "DTC1005"
+   ],
+   "h5@plain": [
+    "ENFUN01",
+    "ENFUN02",
+    "ENFUN03",
+    "ENFUN04",
+    "ENFUN05",
+    "ENFUN07",
+    "ENFUN08",
+    "ENFUN09"
+   ],
+   "p@plain": [
+    "ENFUN01",
+    "ENFUN02",
+    "ENFUN03",
+    "ENFUN04",
+    "ENFUN05",
+    "ENFUN07",
+    "ENFUN08",
+    "ENFUN09"
+   ]
+  },
+  "header|side tabs": {
+   "h1@plain": [
+    "CEDT101"
+   ]
+  },
+  "body|side tabs": {
+   "p@plain": [
+    "CEDT101"
+   ],
+   "h3@activity": [
+    "CEDT101"
+   ]
+  },
+  "body|workbook activity": {
+   "p@activity": [
+    "CEDT101"
+   ],
+   "li@activity>list": [
+    "CEDT101"
+   ],
+   "li@list": [
+    "CEDT101"
+   ]
+  },
+  "header|lesson": {
+   "h1@plain": [
+    "CEDT104",
+    "ENGC101"
+   ]
+  },
+  "body|lesson": {
+   "p@plain": [
+    "CEDT104"
+   ],
+   "td@table": [
+    "CEDT104"
+   ],
+   "h2@plain": [
+    "CEDT104"
+   ],
+   "h3@plain": [
+    "CEDT104"
+   ],
+   "td@activity>table": [
+    "CHI1003",
+    "CHI1004"
+   ]
+  },
+  "body|insert whakatauk": {
+   "p@whakatauki": [
+    "CEDT104"
+   ],
+   "td@table": [
+    "CEDT104"
+   ]
+  },
+  "body|hover definition words": {
+   "p@plain": [
+    "CEDT104"
+   ]
+  },
+  "body|option": {
+   "p@plain": [
+    "CEDT104"
+   ]
+  },
+  "body|audio button": {
+   "h3@activity": [
+    "CEDT104"
+   ]
+  },
+  "body|green record button": {
+   "li@activity>list": [
+    "CEDT104"
+   ],
+   "h4@activity": [
+    "CEDT104"
+   ]
+  },
+  "body|yes m ybe and no": {
+   "p@activity": [
+    "CEDT104"
+   ],
+   "p@alert": [
+    "CEDT104"
+   ]
+  },
+  "body|please insert a dropbox": {
+   "p@activity": [
+    "CEDT104"
+   ],
+   "li@activity>list": [
+    "CEDT104"
+   ]
+  },
+  "body|please insert tick box": {
+   "li@list": [
+    "CEDT104"
+   ]
+  },
+  "body|hover definition red text": {
+   "h4@plain": [
+    "CEDT104"
+   ],
+   "p@plain": [
+    "CEDT104"
+   ],
+   "li@list": [
+    "CEDT104"
+   ]
+  },
+  "body|please create a carousel": {
+   "p@activity": [
+    "CEDT104"
+   ]
+  },
+  "body|tap click click": {
+   "h4@activity": [
+    "CEDT104"
+   ]
+  },
+  "body|drop": {
+   "p@plain": [
+    "CEDT104"
+   ],
+   "accordion@plain": [
+    "CEDT104"
+   ],
+   "h3@plain": [
+    "CEDT404"
+   ],
+   "clickDrop@activity": [
+    "CEDT404"
+   ],
+   "li@activity>list": [
+    "CEDT404"
+   ]
+  },
+  "body|please include emojis": {
+   "p@activity": [
+    "CEDT104"
+   ],
+   "h4@activity": [
+    "CEDT104"
+   ]
+  },
+  "body|tap x1 floor click x2 repeat": {
+   "h4@activity": [
+    "CEDT104"
+   ]
+  },
+  "body|lesson overview": {
+   "p@plain": [
+    "CEDT207",
+    "ENG1004"
+   ],
+   "h3@activity": [
+    "ENGC101"
+   ],
+   "infoTrigger@plain": [
+    "ENGC201"
+   ]
+  },
+  "body|embed": {
+   "p@activity": [
+    "CEDT207",
+    "CEDT301"
+   ],
+   "p@plain": [
+    "CEDT301"
+   ]
+  },
+  "body|journal activity": {
+   "h3@activity": [
+    "CEDT207"
+   ],
+   "p@activity": [
+    "CEDT207"
+   ],
+   "li@activity>list": [
+    "CEDT207"
+   ]
+  },
+  "menu|lesson overview": {
+   "p@plain": [
+    "CEDT207"
+   ],
+   "h5@plain": [
+    "CEDT207",
+    "ENGC101",
+    "ENGC201"
+   ],
+   "li@list": [
+    "CEDT207",
+    "ENGC101",
+    "ENGC201",
+    "ENGC202",
+    "ENGC301",
+    "ENGC302"
+   ]
+  },
+  "header|activity": {
+   "h1@plain": [
+    "CEDT207",
+    "CEDW101"
+   ]
+  },
+  "body|speech bubble": {
+   "p@activity": [
+    "CEDT301"
+   ],
+   "multiChoiceQuiz@activity": [
+    "ENFUN01"
+   ],
+   "p@plain": [
+    "ENFUN05"
+   ],
+   "speechBubble@activity": [
+    "ENGC101"
+   ]
+  },
+  "body|alternatively you could draw": {
+   "p@activity": [
+    "CEDT301"
+   ]
+  },
+  "header|h1": {
+   "h1@plain": [
+    "CEDT301",
+    "COM1005",
+    "COM1006",
+    "DAN1003",
+    "DAN1004",
+    "DTC1005",
+    "ENG1004",
+    "ENG1005"
+   ]
+  },
+  "header|h4": {
+   "h1@plain": [
+    "CEDT301"
+   ]
+  },
+  "menu|h1": {
+   "h4@plain": [
+    "CEDT404"
+   ],
+   "h3@plain": [
+    "CEDW101",
+    "CEDW201"
+   ],
+   "h5@plain": [
+    "COM1002"
+   ],
+   "li@list": [
+    "ENFUN02",
+    "ENFUN04",
+    "ENFUN07"
+   ]
+  },
+  "header|internal data": {
+   "h1@plain": [
+    "CEDT501"
+   ]
+  },
+  "body|internal data": {
+   "p@plain": [
+    "CEDT501"
+   ],
+   "h2@plain": [
+    "CEDT501"
+   ],
+   "h4@plain": [
+    "CEDT501"
+   ],
+   "a@plain": [
+    "CEDT501"
+   ]
+  },
+  "menu|internal data": {
+   "li@list": [
+    "CEDT501"
+   ]
+  },
+  "acks|title bar": {
+   "accordion@plain": [
+    "CEDT501"
+   ]
+  },
+  "body|supervisor note": {
+   "p@activity": [
+    "CEDW201",
+    "ENGC101",
+    "ENGC102"
+   ],
+   "li@activity>list": [
+    "CEDW201"
+   ],
+   "p@alert": [
+    "ENGC101"
+   ]
+  },
+  "header|change title code and name": {
+   "h1@plain": [
+    "CHI1003"
+   ]
+  },
+  "body|insert important message box": {
+   "p@whakatauki": [
+    "CHI1003",
+    "CHI1004"
+   ],
+   "p@plain": [
+    "CHI1004",
+    "CHI1005"
+   ],
+   "td@activity>table": [
+    "CHI1004"
+   ],
+   "h3@activity": [
+    "CHI1005"
+   ]
+  },
+  "body|lesson content": {
+   "h3@activity": [
+    "CHI1003",
+    "CHI1004"
+   ],
+   "td@activity>table": [
+    "CHI1004"
+   ],
+   "h4@activity": [
+    "CHI1004"
+   ],
+   "dragAndDrop@activity": [
+    "CHI1004"
+   ],
+   "p@activity": [
+    "CHI1004"
+   ],
+   "p@plain": [
+    "DAN1003"
+   ],
+   "li@list": [
+    "DAN1003"
+   ]
+  },
+  "body|change title code and name": {
+   "h3@activity": [
+    "CHI1003"
+   ]
+  },
+  "header|lesson content": {
+   "h1@plain": [
+    "CHI1003",
+    "CHI1004"
+   ]
+  },
+  "body|embedded video": {
+   "p@plain": [
+    "CHI1005"
+   ]
+  },
+  "body|create 8a and 8b": {
+   "p@activity": [
+    "CHI1005"
+   ]
+  },
+  "header|create 8a and 8b": {
+   "h1@plain": [
+    "CHI1005"
+   ]
+  },
+  "body|info trigger": {
+   "p@plain": [
+    "COM1002",
+    "DAN1003",
+    "ENGC201"
+   ]
+  },
+  "body|instruction": {
+   "p@plain": [
+    "COM1002"
+   ]
+  },
+  "body|insert text": {
+   "p@plain": [
+    "COM1002"
+   ]
+  },
+  "body|insert web address": {
+   "p@list": [
+    "COM1002"
+   ],
+   "li@list": [
+    "COM1002"
+   ]
+  },
+  "menu|a box": {
+   "p@plain": [
+    "COM1005",
+    "COM1006"
+   ]
+  },
+  "body|a box": {
+   "p@alert": [
+    "COM1005"
+   ]
+  },
+  "menu|a fancy looking box": {
+   "p@plain": [
+    "COM1006"
+   ]
+  },
+  "body|typing quiz": {
+   "multiChoiceQuiz@activity": [
+    "COM1006",
+    "ENGC102"
+   ],
+   "hintSlider@activity": [
+    "ENFUN04"
+   ],
+   "selfCheck@activity": [
+    "ENFUN04"
+   ],
+   "typing@activity": [
+    "ENGC102"
+   ]
+  },
+  "header|body": {
+   "h1@plain": [
+    "DAN1003",
+    "ENGC202"
+   ]
+  },
+  "body|hyper link the red text": {
+   "p@activity": [
+    "DAN1003"
+   ],
+   "li@activity>list": [
+    "DAN1003"
+   ]
+  },
+  "header|end page": {
+   "h1@plain": [
+    "DAN1003",
+    "DTC1005"
+   ]
+  },
+  "body|hover over red text": {
+   "li@list": [
+    "DAN1003"
+   ]
+  },
+  "body|external link": {
+   "li@list": [
+    "DAN1003"
+   ],
+   "p@plain": [
+    "DAN1004"
+   ],
+   "p@activity": [
+    "DAN1006",
+    "DTC1005"
+   ],
+   "a@alert": [
+    "DTC1005"
+   ],
+   "accordion@activity": [
+    "DTC1005"
+   ],
+   "h4@activity": [
+    "DTC1005"
+   ],
+   "a@activity": [
+    "ENGC201"
+   ]
+  },
+  "menu|hover earth mother": {
+   "tabs@plain": [
+    "DAN1004"
+   ]
+  },
+  "body|hover earth mother": {
+   "p@plain": [
+    "DAN1004"
+   ]
+  },
+  "body|insert alert solid": {
+   "p@activity>alert": [
+    "DAN1004"
+   ]
+  },
+  "body|check box": {
+   "selectionBox@plain": [
+    "DAN1004"
+   ]
+  },
+  "body|insert a dropbox link": {
+   "p@activity": [
+    "DAN1004"
+   ]
+  },
+  "header|shape n": {
+   "h1@plain": [
+    "DAN1006"
+   ]
+  },
+  "body|hover on narrative storyline": {
+   "p@plain": [
+    "DAN1006"
+   ]
+  },
+  "body|insert introduction video": {
+   "p@plain": [
+    "DAN1006"
+   ],
+   "li@list": [
+    "DAN1006"
+   ],
+   "li@activity>list": [
+    "DAN1006"
+   ]
+  },
+  "body|insert explanation video": {
+   "p@plain": [
+    "DAN1006"
+   ]
+  },
+  "header|dropdown": {
+   "h1@plain": [
+    "DTC1004"
+   ]
+  },
+  "body|table": {
+   "td@table": [
+    "DTC1004",
+    "ENGC301"
+   ],
+   "th@table": [
+    "ENGC301"
+   ]
+  },
+  "body|journal link": {
+   "p@activity": [
+    "DTC1004"
+   ]
+  },
+  "body|activty": {
+   "p@activity": [
+    "DTC1004"
+   ]
+  },
+  "body|dropdown": {
+   "p@plain": [
+    "DTC1004"
+   ],
+   "a@activity": [
+    "DTC1005"
+   ],
+   "p@activity": [
+    "DTC1005"
+   ],
+   "td@table": [
+    "DTC1005"
+   ],
+   "dropQuiz@activity": [
+    "ENFUN03",
+    "ENFUN08"
+   ]
+  },
+  "body|side alert": {
+   "p@alert": [
+    "DTC1005"
+   ]
+  },
+  "header|button": {
+   "h1@plain": [
+    "DTC1005"
+   ]
+  },
+  "body|show answer quiz": {
+   "p@plain": [
+    "ENFUN01"
+   ],
+   "h3@plain": [
+    "ENFUN01"
+   ],
+   "multiChoiceQuiz@activity": [
+    "ENFUN01"
+   ]
+  },
+  "body|multiple choice quiz": {
+   "p@plain": [
+    "ENFUN01"
+   ],
+   "h3@plain": [
+    "ENFUN01"
+   ]
+  },
+  "body|activity heading": {
+   "h3@activity": [
+    "ENFUN01",
+    "ENFUN02",
+    "ENFUN03",
+    "ENFUN04",
+    "ENFUN05",
+    "ENFUN07",
+    "ENFUN08",
+    "ENFUN09",
+    "ENGC202"
+   ],
+   "td@table": [
+    "ENFUN03"
+   ],
+   "h3@plain": [
+    "ENFUN05"
+   ],
+   "p@alert": [
+    "ENFUN05"
+   ],
+   "p@plain": [
+    "ENFUN07"
+   ],
+   "p@activity": [
+    "ENFUN09"
+   ]
+  },
+  "body|tabs": {
+   "h4@plain": [
+    "ENFUN01"
+   ],
+   "p@plain": [
+    "ENFUN01"
+   ],
+   "p@alert": [
+    "ENFUN01"
+   ],
+   "hintSlider@activity": [
+    "ENFUN08"
+   ]
+  },
+  "body|source image from video above": {
+   "h3@plain": [
+    "ENFUN02"
+   ]
+  },
+  "menu|activity heading": {
+   "h5@plain": [
+    "ENFUN03",
+    "ENFUN05",
+    "ENFUN08"
+   ],
+   "li@list": [
+    "ENGC202"
+   ]
+  },
+  "body|b red text": {
+   "p@activity": [
+    "ENFUN03"
+   ]
+  },
+  "header|drag and drop": {
+   "h1@plain": [
+    "ENFUN04"
+   ]
+  },
+  "body|insert quiz link button": {
+   "a@activity": [
+    "ENFUN05"
+   ]
+  },
+  "body|full stop": {
+   "p@plain": [
+    "ENFUN05"
+   ]
+  },
+  "body|hover trigger red text": {
+   "p@plain": [
+    "ENFUN07",
+    "ENGC201",
+    "ENGC301"
+   ],
+   "li@alert>list": [
+    "ENGC201"
+   ]
+  },
+  "body|word select": {
+   "wordSelect@activity": [
+    "ENFUN08"
+   ]
+  },
+  "body|radio quiz": {
+   "radioQuiz@activity": [
+    "ENFUN08"
+   ],
+   "li@activity>list": [
+    "ENGC202"
+   ]
+  },
+  "body|hint slider": {
+   "hintSlider@activity": [
+    "ENFUN08"
+   ]
+  },
+  "body|insert quiz button link": {
+   "p@plain": [
+    "ENFUN09"
+   ],
+   "h3@plain": [
+    "ENFUN09"
+   ]
+  },
+  "body|mcq": {
+   "p@plain": [
+    "ENFUN09"
+   ],
+   "h3@plain": [
+    "ENFUN09"
+   ],
+   "multiChoiceQuiz@activity": [
+    "ENGC302"
+   ]
+  },
+  "body|hover over": {
+   "p@plain": [
+    "ENG1007"
+   ]
+  },
+  "body|hover text": {
+   "p@plain": [
+    "ENGC101"
+   ]
+  },
+  "header|page": {
+   "h1@plain": [
+    "ENGC102"
+   ]
+  },
+  "body|self check multi choice": {
+   "dropQuiz@activity": [
+    "ENGC102"
+   ]
+  },
+  "menu|act red text": {
+   "li@list": [
+    "ENGC201"
+   ]
+  },
+  "menu|activity": {
+   "li@list": [
+    "ENGC201",
+    "ENGC301"
+   ]
+  },
+  "body|act red text": {
+   "h3@activity": [
+    "ENGC201"
+   ]
+  },
+  "body|slider": {
+   "multiChoiceQuiz@activity": [
+    "ENGC202"
+   ]
+  },
+  "header|activity heading": {
+   "h1@plain": [
+    "ENGC202"
+   ]
+  },
+  "body|upload to dropbox": {
+   "li@activity>list": [
+    "ENGC202"
+   ],
+   "p@activity>list": [
+    "ENGC202"
+   ]
+  },
+  "body|memorygame": {
+   "h4@plain": [
+    "ENGC301"
+   ]
+  },
+  "body|audio": {
+   "dragAndDrop@activity": [
+    "ENGC301"
+   ]
+  }
+ }
+}

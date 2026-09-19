@@ -1,0 +1,1024 @@
+  ~ GER1002_0_0.html: -2 +2
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div class="col-md-12 col-12">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div class="col-md-6 col-12">
+  ~ GER1002_1_0.html: -2 +20
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div class="col-md-8 col-12">
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-6 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ GER1002_2_0.html: -9 +5
+     - <script type="text/javascript" src="https://tekura.desire2learn.com/shared/refresh_template/js/idoc_scripts.js
+     - <div class="col-md-12 col-12">
+     - <h4>Most German comparatives follow these two simple rules:</h4>
+     - <h4>Schuhe an oder aus?</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <li><a href="" id="prev-lesson" target="_self"></a></li>
+     + <script type="text/javascript" src="https://tekuradev.desire2learn.com/shared/refresh_template/js/idoc_scripts
+     + <div class="col-md-6 col-12">
+     + <h3>Most German comparatives follow these two simple rules:</h3>
+     + <h3>Schuhe an oder aus?</h3>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+GER1002: identical 0 / changed 3
+GEWHA: identical 1 / changed 0
+  ~ HES1002_1_0.html: -5 +1
+     - <h4>So, now you know what one serving is, how many servings of each food group per day is best for optimal gro
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <h3>So, now you know what one serving is, how many servings of each food group per day is best for optimal gro
+  ~ HES1002_2_0.html: -4 +0
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+HES1002: identical 5 / changed 2
+HES1003: identical 9 / changed 0
+HES1004: identical 5 / changed 0
+HES1005: identical 9 / changed 0
+HES1006: identical 8 / changed 0
+HES1007: identical 10 / changed 0
+HIS1001: identical 8 / changed 0
+HIS1002: identical 21 / changed 0
+HIS1003: identical 11 / changed 0
+HIS1004: identical 11 / changed 0
+HIS1005: identical 15 / changed 0
+HIS1006: identical 15 / changed 0
+HIS1007: identical 7 / changed 0
+HIS1008: identical 12 / changed 0
+HPFUN101: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN103: identical 1 / changed 0
+HPFUN201: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+HPFUN302: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+HPRE203: identical 8 / changed 0
+  ~ JPFUN01_0_0.html: -21 +697
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <ul class="footer-nav">
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+     - <!-- Lesson 1.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 2.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 3.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 4.0 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 4.1 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 4.2 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 4.3 -->
+     - <div class="acksLesson">
+     - <!-- Lesson 4.4 -->
+     - <div class="acksLesson">
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h3>Bowing</h3>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1360031812" alt="Members o
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1360031812.jpg" alt="Members of Female Kids Socc
+     + <p>In Japanese culture, how you greet someone is not just about words — it also includes your body language an
+     + <p>Bowing is more than a simple movement. The way you bow can change depending on the situation. A small bow m
+     + <div class="row carousel">
+     + <div class="col-md-12 col-12 viewer">
+     + <div class="item video">
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.istockphoto.com/video/female-kids-soccer-or-football-team-members-and-their-coach-sho
+     + </div>
+     + <div class="carousel-caption">
+     + <p>Before a soccer game.</p>
+     + </div>
+     + <div class="videoSection ratio ratio-16x9">
+     + … 677 more added
+JPFUN01: identical 0 / changed 1
+  ~ JPFUN02_0_0.html: -8 +7
+     - <body class="container-fluid">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <h4>What would you say?</h4>
+     - <h4>Speaking Mat</h4>
+     - <h4>Expressions used in the Classroom</h4>
+     - <ul class="footer-nav">
+     - <li><a href="" id="next-lesson" target="_self"></a></li>
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+     + <h3>What would you say?</h3>
+     + <h3>Speaking Mat</h3>
+     + <h3>Expressions used in the Classroom</h3>
+     + <ul class="footer-nav fundamentals-nav">
+JPFUN02: identical 0 / changed 1
+  ~ JPN1004_0_0.html: -6 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div class="col-md-12 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div class="col-md-6 col-12">
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+  ~ JPN1004_1_0.html: -7 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     - <h4>たんご VOCABULARY</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>たんご VOCABULARY</h3>
+  ~ JPN1004_2_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ JPN1004_3_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ JPN1004_4_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ JPN1004_5_0.html: -6 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ JPN1004_6_0.html: -7 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     - <h4>Formation</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>Formation</h3>
+  ~ JPN1004_7_0.html: -1 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ JPN1004_8_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ JPN1004_9_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ JPN1004_10_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     - <h4>Kotahitanga | Wellbeing</h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>Kotahitanga | Wellbeing</h3>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+JPN1004: identical 0 / changed 11
+  ~ MUS1004_0_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div class="col-md-6 col-12">
+  ~ MUS1004_1_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ MUS1004_2_0.html: -11 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Here are the first two:</h4>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>Here are the first two:</h3>
+  ~ MUS1004_3_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ MUS1004_4_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ MUS1004_5_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ MUS1004_6_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ MUS1004_7_0.html: -12 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Partly Syncopated</h4>
+     - <h4>Really Syncopated</h4>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>Partly Syncopated</h3>
+     + <h3>Really Syncopated</h3>
+  ~ MUS1004_8_0.html: -12 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Here are some essential ‘shuffle’ grooves for the drums</h4>
+     - <h4>On guitar a shuffle might look like this<b>.</b></h4>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>Here are some essential ‘shuffle’ grooves for the drums</h3>
+     + <h3>On guitar a shuffle might look like this<b>.</b></h3>
+  ~ MUS1004_9_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ MUS1004_10_0.html: -11 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <h4>Have a look at the following image</h4>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>Have a look at the following image</h3>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+MUS1004: identical 0 / changed 11
+  ~ MUS1006_0_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div class="col-md-6 col-12">
+  ~ MUS1006_1_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div class="col-md-6 col-12">
+  ~ MUS1006_2_0.html: -10 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ MUS1006_3_0.html: -11 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-head-buttons">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div id="module-menu-content" class="moduleMenu">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>This is a Te kura requirement.before you complete the summative assessment, you must complete at least one
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>This is a Te kura requirement.before you complete the summative assessment, you must complete at least one
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+MUS1006: identical 0 / changed 4
+MXDB102: identical 12 / changed 0
+MXDB201: identical 7 / changed 0
+MXDB202: identical 6 / changed 0
+MXDB301: identical 8 / changed 0
+MXDB302: identical 10 / changed 0
+MXDI101: identical 11 / changed 0
+MXDI102: identical 5 / changed 0
+MXDI103: identical 10 / changed 0
+MXDI201: identical 11 / changed 0
+MXDI202: identical 12 / changed 0
+MXDI301: identical 5 / changed 0
+MXEO102: identical 5 / changed 0
+MXEO201: identical 10 / changed 0
+MXEO202: identical 9 / changed 0
+MXEO301: identical 11 / changed 0
+MXEO401: identical 7 / changed 0
+MXEX101: identical 7 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX202: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+MXEX302: identical 8 / changed 0
+MXEX401: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+MXFL102: identical 9 / changed 0
+MXFL103: identical 8 / changed 0
+MXFL104: identical 6 / changed 0
+MXFL201: identical 10 / changed 0
+MXFL202: identical 6 / changed 0
+MXFL203: identical 12 / changed 0
+MXFL204: identical 12 / changed 0
+MXFL301: identical 10 / changed 0
+MXFL302: identical 10 / changed 0
+MXFL401: identical 8 / changed 0
+MXFU201: identical 10 / changed 0
+MXFU202: identical 11 / changed 0
+MXFU301: identical 12 / changed 0
+MXFU302: identical 10 / changed 0
+MXFU401: identical 7 / changed 0
+MXFU402: identical 8 / changed 0
+MXFUN01: identical 19 / changed 0
+MXFUN02: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+  ~ MXS1004_0_0.html: -4 +5
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12">
+     - <ul class="footer-nav">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="col-md-6 col-12">
+     + <ul class="footer-nav fundamentals-nav">
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+  ~ MXS1004_1_0.html: -6 +6
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h1>1.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <h4>Pro tip!</h4>
+     - <h5>Look at each of the sampling methods below and decide whether they are random or biased.</h5>
+     - <ul class="footer-nav">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h1>01</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div>Pro tip!</div>
+     + <h4>Look at each of the sampling methods below and decide whether they are random or biased.</h4>
+     + <ul class="footer-nav fundamentals-nav">
+  ~ MXS1004_2_0.html: -8 +4
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h1>2.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <ul class="footer-nav">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h1>02</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <ul class="footer-nav fundamentals-nav">
+  ~ MXS1004_3_0.html: -12 +4
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h1>3.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <ul class="footer-nav">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h1>03</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <ul class="footer-nav fundamentals-nav">
+  ~ MXS1004_4_0.html: -9 +4
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h1>4.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <h4><span>Learning Intentions</span></h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <ul class="footer-nav">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h1>04</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <ul class="footer-nav fundamentals-nav">
+  ~ MXS1004_5_0.html: -8 +4
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h1>5.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <ul class="footer-nav">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h1>05</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <ul class="footer-nav fundamentals-nav">
+  ~ MXS1004_6_0.html: -4 +4
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h1>6.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <ul class="footer-nav">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h1>06</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <ul class="footer-nav fundamentals-nav">
+  ~ MXS1004_7_0.html: -8 +4
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h1>7.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <ul class="footer-nav">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h1>07</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <ul class="footer-nav fundamentals-nav">
+  ~ MXS1004_8_0.html: -4 +5
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h1>8.0</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <ul class="footer-nav">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h1>08</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <ul class="footer-nav fundamentals-nav">
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+MXS1004: identical 0 / changed 9
+OSAH301: identical 4 / changed 0
+OSAH401: identical 5 / changed 0
+OSAH501: identical 6 / changed 0
+  ~ OSAI101_0_0.html: -1 +1
+     - <iframe src="https://www.youtube.com/embed/_oyST-hoZNE" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube-nocookie.com/embed/_oyST-hoZNE" loading="lazy" title="YouTube video player" f
+  ~ OSAI101_1_0.html: -1 +1
+     - <iframe src="https://www.youtube.com/embed/UWeDo09UveM" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube-nocookie.com/embed/UWeDo09UveM" loading="lazy" title="YouTube video player" f
+  ~ OSAI101_2_0.html: -1 +1
+     - <iframe src="https://www.youtube.com/embed/BY4nbuzPXCo" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube-nocookie.com/embed/BY4nbuzPXCo" loading="lazy" title="YouTube video player" f
+OSAI101: identical 0 / changed 3
+OSAI201: identical 4 / changed 0
+OSAI301: identical 4 / changed 0
+OSAI401: identical 5 / changed 0
+OSAI501: identical 6 / changed 0
+  ~ OSBY101_0_0.html: -1 +1
+     - <iframe src="https://www.youtube.com/embed/1qrAJWmjG18" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube-nocookie.com/embed/1qrAJWmjG18" loading="lazy" title="YouTube video player" f
+  ~ OSBY101_1_0.html: -1 +1
+     - <iframe src="https://www.youtube.com/embed/6ctd75a7_Yw" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube-nocookie.com/embed/6ctd75a7_Yw" loading="lazy" title="YouTube video player" f
+  ~ OSBY101_2_0.html: -1 +1
+     - <iframe src="https://www.youtube.com/embed/MxJX-porZtA" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube-nocookie.com/embed/MxJX-porZtA" loading="lazy" title="YouTube video player" f
+OSBY101: identical 1 / changed 3
+OSBY201: identical 4 / changed 0
+OSBY301: identical 4 / changed 0
+OSBY401: identical 5 / changed 0
+OSBY501: identical 6 / changed 0
+  ~ OSGM101_0_0.html: -1 +1
+     - <iframe src="https://www.youtube.com/embed/2cBZrr2ZUsg" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube-nocookie.com/embed/2cBZrr2ZUsg" loading="lazy" title="YouTube video player" f
+  ~ OSGM101_1_0.html: -1 +1
+     - <iframe src="https://www.youtube.com/embed/VlhlGk_9X4A" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube-nocookie.com/embed/VlhlGk_9X4A" loading="lazy" title="YouTube video player" f
+  ~ OSGM101_2_0.html: -1 +1
+     - <iframe src="https://www.youtube.com/embed/RnPJVqMy_00" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube-nocookie.com/embed/RnPJVqMy_00" loading="lazy" title="YouTube video player" f
+OSGM101: identical 0 / changed 3
+  ~ OSGM201_0_0.html: -1 +1
+     - <iframe src="https://www.youtube.com/embed/pxNGrDY5CDM" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube-nocookie.com/embed/pxNGrDY5CDM" loading="lazy" title="YouTube video player" f
+  ~ OSGM201_1_0.html: -1 +1
+     - <iframe src="https://www.youtube.com/embed/_NdlwUs0X3M" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube-nocookie.com/embed/_NdlwUs0X3M" loading="lazy" title="YouTube video player" f
+  ~ OSGM201_3_0.html: -1 +1
+     - <iframe src="https://www.youtube.com/embed/-HP-U-UXFns" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube-nocookie.com/embed/-HP-U-UXFns" loading="lazy" title="YouTube video player" f
+OSGM201: identical 1 / changed 3
+OSGM301: identical 4 / changed 0
+OSGM401: identical 5 / changed 0
+OSGM501: identical 6 / changed 0
+  ~ OSOH101_0_0.html: -1 +1
+     - <iframe src="https://www.youtube.com/embed/S3nVxt6_lAc" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube-nocookie.com/embed/S3nVxt6_lAc" loading="lazy" title="YouTube video player" f
+  ~ OSOH101_1_0.html: -1 +1
+     - <iframe src="https://www.youtube.com/embed/YitHISP0Isk" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube-nocookie.com/embed/YitHISP0Isk" loading="lazy" title="YouTube video player" f
+  ~ OSOH101_2_0.html: -5 +5
+     - <iframe src="https://www.youtube.com/embed/-N7lRYMmbXU" loading="lazy" title="YouTube video player" frameborde
+     - <iframe src="https://www.youtube.com/embed/-Kq3nvC8La0" loading="lazy" title="YouTube video player" frameborde
+     - <iframe src="https://www.youtube.com/embed/ezLtf5Anc-8" loading="lazy" title="YouTube video player" frameborde
+     - <iframe src="https://www.youtube.com/embed/2ZzNrhuk8Vg" loading="lazy" title="YouTube video player" frameborde
+     - <iframe src="https://www.youtube.com/embed/B91E3tesiI0" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube-nocookie.com/embed/-N7lRYMmbXU" loading="lazy" title="YouTube video player" f
+     + <iframe src="https://www.youtube-nocookie.com/embed/-Kq3nvC8La0" loading="lazy" title="YouTube video player" f
+     + <iframe src="https://www.youtube-nocookie.com/embed/ezLtf5Anc-8" loading="lazy" title="YouTube video player" f
+     + <iframe src="https://www.youtube-nocookie.com/embed/2ZzNrhuk8Vg" loading="lazy" title="YouTube video player" f
+     + <iframe src="https://www.youtube-nocookie.com/embed/B91E3tesiI0" loading="lazy" title="YouTube video player" f
+  ~ OSOH101_3_0.html: -1 +1
+     - <iframe src="https://www.youtube.com/embed/ersVA_lfgwM" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube-nocookie.com/embed/ersVA_lfgwM" loading="lazy" title="YouTube video player" f
+OSOH101: identical 0 / changed 4
+OSOH201: identical 4 / changed 0
+OSOH301: identical 4 / changed 0
+OSOH401: identical 5 / changed 0
+OSOH501: identical 6 / changed 0
+OSSC301: identical 4 / changed 0
+  ~ OSSC401_1_0.html: -10 +15
+     - <p>We are learning:</p>
+     - <li><i>what a scam is.</i></li>
+     - <p>I can:</p>
+     - <li><i>define what different types of scams are.</i></li>
+     - <ul>
+     - </ul>
+     - <ul>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>what a scam is.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>define what different types of scams are.</li>
+     + </ul>
+     + </div>
+     + </div>
+  ~ OSSC401_2_0.html: -11 +16
+     - <p>Ākonga will learn the difference between, mis, dis and malinformation. They will look deeper into features 
+     - <p>We are learning:</p>
+     - <li><i>what misinformation, disinformation and malinformation are.</i></li>
+     - <p>I can:</p>
+     - <ul>
+     - <li><i>describe the difference between misinformation, disinformation and malinformation.</i></li>
+     - </ul>
+     - <ul>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Ākonga will learn the difference between, mis, dis and malinformation. They will look deeper into features 
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>what misinformation, disinformation and malinformation are.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>describe the difference between misinformation, disinformation and malinformation.</li>
+     + </ul>
+     + </div>
+     + </div>
+  ~ OSSC401_3_0.html: -11 +16
+     - <p>Ākonga will learn the key features to look out for in a scam so they can recognise them.</p>
+     - <p>We are learning:</p>
+     - <ul>
+     - <li><i>how to recognise a scam.</i></li>
+     - </ul>
+     - <p>I can:</p>
+     - <ul>
+     - <li><i>identify key elements of a scam.</i></li>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Ākonga will learn the key features to look out for in a scam so they can recognise them.</p>
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>how to recognise a scam.</li>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>identify key elements of a scam.</li>
+     + </ul>
+     + </ul>
+     + </div>
+     + </div>
+  ~ OSSC401_4_0.html: -11 +16
+     - <p>Ākonga will learn what to do if they or someone they know is scammed.</p>
+     - <p>We are learning:</p>
+     - <li><i>what to do if scammed.</i></li>
+     - <p>I can:</p>
+     - <ul>
+     - <li><i>take action when a scam happens.</i></li>
+     - </ul>
+     - <ul>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Ākonga will learn what to do if they or someone they know is scammed.</p>
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>what to do if scammed.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>take action when a scam happens.</li>
+     + </ul>
+     + </div>
+     + </div>
+OSSC401: identical 1 / changed 4
+  ~ OSSC501_1_0.html: -10 +15
+     - <p>We are learning:</p>
+     - <ul>
+     - <li><i>what a scam is.</i></li>
+     - </ul>
+     - <p>I can:</p>
+     - <ul>
+     - <li><i>define what different types of scams are and how they can impact people.</i></li>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>what a scam is.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>define what different types of scams are and how they can impact people.</li>
+     + </ul>
+     + </div>
+     + </div>
+  ~ OSSC501_2_0.html: -10 +15
+     - <p>We are learning:</p>
+     - <ul>
+     - <li><i>what misinformation, disinformation and malinformation is.</i></li>
+     - </ul>
+     - <p>I can:</p>
+     - <ul>
+     - <li><i>describe the difference between misinformation, disinformation and malinformation, as well as potential
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>what misinformation, disinformation and malinformation is.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>describe the difference between misinformation, disinformation and malinformation, as well as potential so
+     + </ul>
+     + </div>
+     + </div>
+  ~ OSSC501_3_0.html: -10 +15
+     - <p>We are learning:</p>
+     - <ul>
+     - <li><i>how to recognise a scam.</i></li>
+     - </ul>
+     - <p>I can:</p>
+     - <ul>
+     - <li><i>identify key elements of a scam and the different types.</i></li>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>how to recognise a scam.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>identify key elements of a scam and the different types.</li>
+     + </ul>
+     + </div>
+     + </div>
+  ~ OSSC501_4_0.html: -10 +15
+     - <p>We are learning:</p>
+     - <ul>
+     - <li><i>how to keep information safe and what to do if scammed.</i></li>
+     - </ul>
+     - <p>I can:</p>
+     - <ul>
+     - <li><i>identify ways to keep information safe and take action when a scam happens.</i></li>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>how to keep information safe and what to do if scammed.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>identify ways to keep information safe and take action when a scam happens.</li>
+     + </ul>
+     + </div>
+     + </div>
+  ~ OSSC501_5_0.html: -10 +15
+     - <p>We are learning:</p>
+     - <li><i>what to do when encountering misinformation, disinformation or malinformation.</i></li>
+     - <p>I can:</p>
+     - <ul>
+     - <li><i>adopt strategies to identify misinformation, disinformation and malinformation to take appropriate acti
+     - </ul>
+     - <ul>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>what to do when encountering misinformation, disinformation or malinformation.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>adopt strategies to identify misinformation, disinformation and malinformation to take appropriate action.
+     + </ul>
+     + </div>
+     + </div>
+OSSC501: identical 1 / changed 5
+OSSM301: identical 5 / changed 0
+  ~ OSSM401_0_0.html: -1 +1
+     - <iframe src="https://www.youtube.com/embed/zrGgC5PcLj0" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube-nocookie.com/embed/zrGgC5PcLj0" loading="lazy" title="YouTube video player" f
+  ~ OSSM401_1_0.html: -9 +27
+     - <div class="col-md-8 col-12">
+     - <p>Ākonga will learn what social media is.</p>
+     - <h5>We are learning:</h5>
+     - <ul>
+     - <li>about what social media is.</li>
+     - <h5>I can:</h5>
+     - <ul>
+     - <li>define what social media is.</li>
+     - </ul>
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Ākonga will learn what social media is.</p>
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>about what social media is.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>define what social media is.</li>
+     + </ul>
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + … 7 more added
+  ~ OSSM401_2_0.html: -13 +31
+     - <div class="col-md-8 col-12">
+     - <p>Ākonga will recognise that social media is a tool with both benefits and risks. They will look at a few of 
+     - <h5>We are learning:</h5>
+     - <ul>
+     - <li>about the benefits and risks of social media.</li>
+     - <h5>I can:</h5>
+     - <ul>
+     - <li>recognise the benefits and risks of social media.</li>
+     - </ul>
+     - <iframe src="https://www.youtube.com/embed/qgf5QIpttRw" loading="lazy" title="YouTube video player" frameborde
+     - <iframe src="https://www.youtube.com/embed/z-HF75QLjVA" loading="lazy" title="YouTube video player" frameborde
+     - <iframe src="https://www.youtube.com/embed/j_X0p8wBEmw" loading="lazy" title="YouTube video player" frameborde
+     - <iframe src="https://www.youtube.com/embed/dLJfIGgkef0" loading="lazy" title="YouTube video player" frameborde
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Ākonga will recognise that social media is a tool with both benefits and risks. They will look at a few of 
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>about the benefits and risks of social media.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>recognise the benefits and risks of social media.</li>
+     + </ul>
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + … 11 more added
+  ~ OSSM401_3_0.html: -11 +29
+     - <div class="col-md-8 col-12">
+     - <p>Ākonga will learn about how social media uses algorithms to manipulate users.</p>
+     - <h5>We are learning:</h5>
+     - <ul>
+     - <li>how social media services engage and use people.</li>
+     - <h5>I can:</h5>
+     - <ul>
+     - <li>examine how algorithms, bubbles/echo chambers control my feed.</li>
+     - </ul>
+     - <iframe src="https://www.youtube.com/embed/OuU3UfRM2pE" loading="lazy" title="YouTube video player" frameborde
+     - <iframe src="https://www.youtube.com/embed/pcwgQS5PvT8" loading="lazy" title="YouTube video player" frameborde
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Ākonga will learn about how social media uses algorithms to manipulate users.</p>
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>how social media services engage and use people.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>examine how algorithms, bubbles/echo chambers control my feed.</li>
+     + </ul>
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + … 9 more added
+  ~ OSSM401_4_0.html: -13 +31
+     - <div class="col-md-8 col-12">
+     - <p>Ākonga will learn how to use social media safely and responsibly.</p>
+     - <h5>We are learning:</h5>
+     - <ul>
+     - <li>to use social media safely, securely and respect others online.</li>
+     - <h5>I can:</h5>
+     - <ul>
+     - <li>identify the best actions to take in scenarios involving safe, secure, and respectful use of social media.
+     - </ul>
+     - <iframe src="https://www.youtube.com/embed/oQ2vXEMYM0A" loading="lazy" title="YouTube video player" frameborde
+     - <iframe src="https://www.youtube.com/embed/6Z1WDe0n-bQ" loading="lazy" title="YouTube video player" frameborde
+     - <iframe src="https://www.youtube.com/embed/viNyPNqdhyw" loading="lazy" title="YouTube video player" frameborde
+     - <iframe src="https://www.youtube.com/embed/GHW6O3Mf0qE" loading="lazy" title="YouTube video player" frameborde
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <p>Ākonga will learn how to use social media safely and responsibly.</p>
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>to use social media safely, securely and respect others online.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>identify the best actions to take in scenarios involving safe, secure, and respectful use of social media.
+     + </ul>
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + … 11 more added
+OSSM401: identical 0 / changed 5
+PES1001: identical 10 / changed 0
+PES1002: identical 11 / changed 0
+PES1003: identical 11 / changed 0
+PES1004: identical 11 / changed 0
+PES1005: identical 12 / changed 0
+PES1007: identical 12 / changed 0
+PES1008: identical 19 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1004: identical 4 / changed 0
+
+TOTAL: identical 744 / changed 72 / missing 0 over 119 modules
+CHANGED: GER1002/GER1002_0_0.html GER1002/GER1002_1_0.html GER1002/GER1002_2_0.html HES1002/HES1002_1_0.html HES1002/HES1002_2_0.html JPFUN01/JPFUN01_0_0.html JPFUN02/JPFUN02_0_0.html JPN1004/JPN1004_0_0.html JPN1004/JPN1004_1_0.html JPN1004/JPN1004_2_0.html JPN1004/JPN1004_3_0.html JPN1004/JPN1004_4_0.html JPN1004/JPN1004_5_0.html JPN1004/JPN1004_6_0.html JPN1004/JPN1004_7_0.html JPN1004/JPN1004_8_0.html JPN1004/JPN1004_9_0.html JPN1004/JPN1004_10_0.html MUS1004/MUS1004_0_0.html MUS1004/MUS1004_1_0.html MUS1004/MUS1004_2_0.html MUS1004/MUS1004_3_0.html MUS1004/MUS1004_4_0.html MUS1004/MUS1004_5_0.html MUS1004/MUS1004_6_0.html MUS1004/MUS1004_7_0.html MUS1004/MUS1004_8_0.html MUS1004/MUS1004_9_0.html MUS1004/MUS1004_10_0.html MUS1006/MUS1006_0_0.html MUS1006/MUS1006_1_0.html MUS1006/MUS1006_2_0.html MUS1006/MUS1006_3_0.html MXS1004/MXS1004_0_0.html MXS1004/MXS1004_1_0.html MXS1004/MXS1004_2_0.html MXS1004/MXS1004_3_0.html MXS1004/MXS1004_4_0.html MXS1004/MXS1004_5_0.html MXS1004/MXS1004_6_0.html MXS1004/MXS1004_7_0.html MXS1004/MXS1004_8_0.html OSAI101/OSAI101_0_0.html OSAI101/OSAI101_1_0.html OSAI101/OSAI101_2_0.html OSBY101/OSBY101_0_0.html OSBY101/OSBY101_1_0.html OSBY101/OSBY101_2_0.html OSGM101/OSGM101_0_0.html OSGM101/OSGM101_1_0.html OSGM101/OSGM101_2_0.html OSGM201/OSGM201_0_0.html OSGM201/OSGM201_1_0.html OSGM201/OSGM201_3_0.html OSOH101/OSOH101_0_0.html OSOH101/OSOH101_1_0.html OSOH101/OSOH101_2_0.html OSOH101/OSOH101_3_0.html OSSC401/OSSC401_1_0.html OSSC401/OSSC401_2_0.html OSSC401/OSSC401_3_0.html OSSC401/OSSC401_4_0.html OSSC501/OSSC501_1_0.html OSSC501/OSSC501_2_0.html OSSC501/OSSC501_3_0.html OSSC501/OSSC501_4_0.html OSSC501/OSSC501_5_0.html OSSM401/OSSM401_0_0.html OSSM401/OSSM401_1_0.html OSSM401/OSSM401_2_0.html OSSM401/OSSM401_3_0.html OSSM401/OSSM401_4_0.html

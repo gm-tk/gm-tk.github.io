@@ -1,0 +1,3529 @@
+{
+ "counts": {
+  "header|title bar": {
+   "h1@plain": 47
+  },
+  "body|body": {
+   "p@plain": 1124,
+   "li@list": 244,
+   "p@activity": 557,
+   "h3@activity": 20,
+   "h3@plain": 7,
+   "th@activity>table": 11,
+   "td@activity>table": 29,
+   "h4@plain": 8,
+   "p@alert": 34,
+   "infoTrigger@plain": 5,
+   "li@activity>list": 102,
+   "wordHighlighter@plain": 2,
+   "typing@activity": 3,
+   "td@table": 58,
+   "h5@activity": 7,
+   "dropQuiz@activity": 3,
+   "p@whakatauki": 2,
+   "flipCard@plain": 8,
+   "h5@plain": 27,
+   "multiChoiceQuiz@activity": 7,
+   "th@table": 2,
+   "p@activity>alert": 4,
+   "carousel@plain": 9,
+   "accordion@plain": 7,
+   "h4@alert": 11,
+   "li@alert>list": 83,
+   "memoryGame@activity": 1,
+   "dragAndDrop@activity": 6,
+   "carousel@activity": 2,
+   "p@alert>list": 7,
+   "li@plain": 6,
+   "speechBubble@plain": 1,
+   "h2@plain": 4,
+   "p@table": 1,
+   "tabs@plain": 2,
+   "td@alert>table": 1,
+   "th@plain": 2,
+   "a@plain": 2
+  },
+  "body|h2": {
+   "h2@plain": 73,
+   "h3@activity": 88,
+   "a@plain": 4,
+   "td@activity>table": 5,
+   "a@activity": 16,
+   "p@plain": 26,
+   "h3@alert": 1,
+   "infoTrigger@plain": 8,
+   "td@table": 12,
+   "h3@plain": 118,
+   "th@activity>table": 2,
+   "p@activity": 20,
+   "h4@plain": 4,
+   "p@alert>list": 1,
+   "h5@alert": 1,
+   "li@alert>list": 7,
+   "p@alert": 5,
+   "th@table": 2,
+   "h4@activity": 1,
+   "accordion@plain": 1,
+   "li@activity>list": 1,
+   "infoTrigger@activity": 1,
+   "clickDrop@activity": 1,
+   "clickDrop@plain": 1,
+   "a@activity>alert": 1,
+   "p@whakatauki": 2,
+   "h4@alert": 22,
+   "h2@alert": 1,
+   "td@alert>table": 2,
+   "li@list": 1
+  },
+  "header|body": {
+   "h1@plain": 22
+  },
+  "body|activity": {
+   "h3@activity": 138,
+   "h2@plain": 4,
+   "p@plain": 6,
+   "h3@plain": 11,
+   "p@activity": 155,
+   "dragAndDrop@activity": 11,
+   "th@activity>table": 8,
+   "li@activity>table>list": 15,
+   "multiChoiceQuiz@activity": 5,
+   "h5@activity": 5,
+   "td@activity>table": 37,
+   "dropQuiz@activity": 2,
+   "flipCard@activity": 1,
+   "td@table": 48,
+   "typing@activity": 1,
+   "h4@plain": 5,
+   "th@plain": 1,
+   "th@activity": 3,
+   "infoTrigger@plain": 6,
+   "bingo@activity": 1,
+   "th@table": 1,
+   "li@list": 2,
+   "li@activity>list": 5,
+   "clickDrop@plain": 1,
+   "selfCheck@alert": 1,
+   "clickDrop@alert": 1,
+   "radioQuiz@activity": 2,
+   "a@plain": 2,
+   "p@alert": 1,
+   "selfCheck@activity": 1
+  },
+  "body|button": {
+   "a@activity": 179,
+   "a@plain": 3,
+   "p@activity": 10,
+   "clickDrop@activity": 4,
+   "p@plain": 3,
+   "h3@activity": 3,
+   "h4@activity": 2,
+   "li@activity>list": 2,
+   "memoryGame@activity": 2,
+   "p@activity>alert": 1,
+   "typing@activity": 2,
+   "dragAndDrop@activity": 2
+  },
+  "body|image": {
+   "li@activity>list": 16,
+   "h3@activity": 16,
+   "p@plain": 153,
+   "dropQuiz@activity": 5,
+   "p@activity": 76,
+   "td@table": 35,
+   "typing@activity": 7,
+   "h4@plain": 4,
+   "p@alert": 13,
+   "dragAndDrop@activity": 7,
+   "td@activity>table": 5,
+   "th@table": 3,
+   "h4@alert": 2,
+   "li@list": 23,
+   "flipCard@plain": 11,
+   "speechBubble@plain": 3,
+   "memoryGame@activity": 1,
+   "h5@plain": 4,
+   "h3@plain": 1,
+   "speechBubble@activity": 1,
+   "sliderChart@activity": 1,
+   "th@activity>table": 1,
+   "p@activity>list": 1,
+   "li@activity": 4,
+   "infoTrigger@plain": 4,
+   "h5@table": 1,
+   "p@table": 9,
+   "carousel@plain": 4,
+   "hintSlider@plain": 3,
+   "clickDrop@plain": 3,
+   "h4@activity": 4,
+   "th@plain": 2,
+   "accordion@plain": 1,
+   "a@plain": 2,
+   "infoTrigger@list": 1,
+   "clickDrop@activity": 4,
+   "tabs@plain": 1,
+   "h2@plain": 1,
+   "p@whakatauki": 2
+  },
+  "body|drag and drop": {
+   "h3@activity": 1,
+   "dragAndDrop@activity": 3,
+   "reorder@activity": 1,
+   "p@activity": 8,
+   "p@list": 3,
+   "p@plain": 2
+  },
+  "body|video": {
+   "p@activity": 10,
+   "p@plain": 30,
+   "p@whakatauki": 2,
+   "memoryGame@activity": 1,
+   "multiChoiceQuiz@activity": 1,
+   "p@alert>list": 2,
+   "h3@activity": 5,
+   "accordion@plain": 1,
+   "p@alert": 3,
+   "li@list": 4
+  },
+  "header|h2": {
+   "h1@plain": 75
+  },
+  "body|alert": {
+   "li@alert>list": 8,
+   "p@alert": 33,
+   "p@plain": 5,
+   "li@activity>alert>list": 2,
+   "p@activity": 1,
+   "p@activity>alert": 12
+  },
+  "body|modal": {
+   "clickDrop@activity": 7,
+   "h3@activity": 8,
+   "p@activity": 4,
+   "infoTrigger@plain": 2,
+   "h4@plain": 5,
+   "clickDrop@plain": 10,
+   "clickDrop@alert": 1,
+   "accordion@plain": 1,
+   "th@table": 1,
+   "h5@plain": 2,
+   "p@plain": 1,
+   "h3@plain": 1
+  },
+  "header|activity": {
+   "h1@plain": 23
+  },
+  "header|h3": {
+   "h1@plain": 12
+  },
+  "body|data marker": {
+   "carousel@plain": 1,
+   "p@plain": 27,
+   "li@list": 2,
+   "p@alert": 1,
+   "dragAndDrop@activity": 3,
+   "h4@plain": 1,
+   "th@table": 1,
+   "td@table": 1,
+   "a@plain": 1,
+   "h3@activity": 1
+  },
+  "header|lesson": {
+   "h1@plain": 26
+  },
+  "menu|h2": {
+   "li@list": 299,
+   "h3@plain": 76,
+   "p@plain": 82,
+   "h5@plain": 144,
+   "tabs@plain": 11
+  },
+  "menu|lesson overview": {
+   "li@list": 236,
+   "h5@plain": 141,
+   "p@plain": 3,
+   "h4@plain": 18
+  },
+  "body|rhs alert": {
+   "p@plain": 4,
+   "td@table": 1,
+   "p@alert": 10,
+   "li@alert>list": 2,
+   "h5@plain": 1,
+   "th@table": 1
+  },
+  "body|h4": {
+   "h4@plain": 30,
+   "h3@activity": 16,
+   "h4@activity": 4,
+   "th@activity>table": 2,
+   "infoTrigger@plain": 1,
+   "h4@alert": 4,
+   "h3@plain": 38,
+   "td@table": 2,
+   "li@activity>list": 1,
+   "p@plain": 26,
+   "th@plain": 2,
+   "speechBubble@plain": 3,
+   "li@list": 8,
+   "p@alert": 1,
+   "clickDrop@plain": 3,
+   "h5@plain": 1,
+   "h4@activity>alert": 1,
+   "wordHighlighter@activity": 1,
+   "p@activity": 3,
+   "wordHighlighter@plain": 1,
+   "dropQuiz@activity": 2
+  },
+  "body|supervisor note": {
+   "p@plain": 1,
+   "p@activity": 2
+  },
+  "body|h3": {
+   "h3@activity": 210,
+   "p@activity": 13,
+   "h3@plain": 137,
+   "h4@plain": 4,
+   "infoTrigger@plain": 1,
+   "td@table": 3,
+   "p@plain": 19,
+   "a@alert": 1,
+   "a@activity": 2,
+   "th@table": 5,
+   "a@plain": 3,
+   "th@activity>table": 2,
+   "infoTrigger@alert": 1,
+   "th@plain": 1,
+   "h2@plain": 1,
+   "speechBubble@plain": 1,
+   "p@activity>alert": 2,
+   "li@list": 3,
+   "h3@alert": 2,
+   "p@alert": 1,
+   "h5@plain": 1,
+   "p@activity>table": 6,
+   "clickDrop@activity": 4,
+   "typing@activity": 1,
+   "clickDrop@plain": 3,
+   "h4@alert": 1,
+   "dragAndDrop@activity": 1,
+   "imageLabel@plain": 1,
+   "h4@activity": 2
+  },
+  "header|module introduction": {
+   "h1@plain": 1
+  },
+  "menu|body": {
+   "p@plain": 55,
+   "h5@plain": 36,
+   "li@list": 91,
+   "tabs@plain": 2
+  },
+  "body|module introduction": {
+   "p@plain": 10,
+   "p@whakatauki": 2,
+   "h3@plain": 2,
+   "li@list": 4,
+   "li@activity>list": 1
+  },
+  "header|selfmarked quiz": {
+   "h1@plain": 4
+  },
+  "body|embedded activity": {
+   "accordion@activity": 1
+  },
+  "body|selfmarked quiz": {
+   "clickDrop@activity": 1,
+   "li@activity>list": 6,
+   "td@table": 1
+  },
+  "header|h1": {
+   "h1@plain": 5
+  },
+  "body|self check answers": {
+   "typing@activity": 1
+  },
+  "body|accordion": {
+   "infoTrigger@plain": 1,
+   "h3@activity": 12,
+   "h3@plain": 1,
+   "accordion@plain": 3,
+   "flipCard@plain": 1,
+   "td@table": 10,
+   "h4@plain": 2
+  },
+  "body|supervisors note": {
+   "p@alert": 1
+  },
+  "body|important": {
+   "p@alert": 23,
+   "p@plain": 4,
+   "p@activity": 5,
+   "p@activity>alert": 4,
+   "h4@alert": 9,
+   "li@alert": 23,
+   "li@alert>list": 2,
+   "li@list": 1
+  },
+  "body|drop": {
+   "dropQuiz@activity": 1,
+   "dragAndDrop@activity": 3
+  },
+  "body|speech bubble": {
+   "speechBubble@activity": 3,
+   "speechBubble@plain": 4,
+   "p@plain": 3
+  },
+  "body|embedded map": {
+   "p@activity": 2,
+   "li@activity>list": 8
+  },
+  "body|coloured box": {
+   "p@alert": 11,
+   "p@plain": 4,
+   "h4@alert": 2,
+   "th@table": 1,
+   "h5@alert": 1,
+   "p@activity": 1
+  },
+  "menu|title bar": {
+   "p@plain": 8,
+   "li@list": 1
+  },
+  "body|title bar": {
+   "p@plain": 7,
+   "p@alert": 3,
+   "a@alert": 1,
+   "h3@activity": 10,
+   "h3@plain": 3,
+   "a@plain": 2,
+   "h5@activity": 2,
+   "clickDrop@plain": 3,
+   "p@whakatauki": 1,
+   "h4@plain": 1,
+   "li@list": 1,
+   "infoTrigger@plain": 1,
+   "clickDrop@activity": 1,
+   "clickDrop@alert": 1,
+   "a@table": 1
+  },
+  "header|lesson content": {
+   "h1@plain": 2
+  },
+  "menu|lesson content": {
+   "p@plain": 1
+  },
+  "body|embedded link": {
+   "p@activity": 1
+  },
+  "body|lesson content": {
+   "p@plain": 1
+  },
+  "body|lesson": {
+   "td@activity>table": 7,
+   "h3@plain": 9,
+   "h3@activity": 8,
+   "td@table": 1,
+   "a@activity": 1,
+   "p@plain": 4,
+   "h2@activity": 2,
+   "h2@plain": 1,
+   "h1@plain": 1,
+   "td@activity>list>table": 4
+  },
+  "body|insert table": {
+   "h4@plain": 1,
+   "td@table": 7,
+   "th@table": 2
+  },
+  "menu|over view": {
+   "p@plain": 1
+  },
+  "header|h4": {
+   "h1@plain": 4
+  },
+  "body|table": {
+   "th@table": 2,
+   "td@table": 14,
+   "th@activity": 1,
+   "p@activity": 1,
+   "p@plain": 4,
+   "th@plain": 2,
+   "p@alert": 1
+  },
+  "body|embed": {
+   "p@activity": 4,
+   "a@activity": 1,
+   "td@table": 2,
+   "p@plain": 1,
+   "li@list": 4,
+   "p@alert": 1
+  },
+  "body|external link": {
+   "p@activity": 11,
+   "p@plain": 2
+  },
+  "body|graph": {
+   "multiChoiceQuiz@activity": 1
+  },
+  "body|audio": {
+   "speechBubble@plain": 9
+  },
+  "body|h5": {
+   "flipCard@plain": 1,
+   "h4@plain": 3,
+   "infoTrigger@plain": 1,
+   "h3@plain": 3,
+   "p@plain": 7,
+   "h3@activity": 1,
+   "h4@alert": 1,
+   "li@alert>list": 2,
+   "h5@plain": 6,
+   "h5@table": 1,
+   "p@table": 1,
+   "p@activity": 2,
+   "carousel@plain": 1
+  },
+  "body|end other": {
+   "h3@activity": 2,
+   "p@activity": 27,
+   "multiChoiceQuiz@activity": 1,
+   "td@table": 11,
+   "carousel@activity": 1,
+   "h4@activity": 4,
+   "li@activity>list": 2,
+   "dragAndDrop@activity": 1
+  },
+  "body|lesson overview": {
+   "h3@activity": 13,
+   "h3@plain": 1,
+   "accordion@plain": 1,
+   "p@alert": 1,
+   "carousel@plain": 1,
+   "p@plain": 2,
+   "infoTrigger@plain": 2,
+   "h2@plain": 2
+  },
+  "menu|end other": {
+   "li@list": 2
+  },
+  "body|close accordion": {
+   "p@activity": 4,
+   "dropQuiz@activity": 1
+  },
+  "body|reveal answer": {
+   "p@plain": 2,
+   "p@activity": 4
+  },
+  "body|close accordions": {
+   "p@activity": 7,
+   "dragAndDrop@activity": 1,
+   "multiChoiceQuiz@activity": 2
+  },
+  "body|close alert": {
+   "p@activity": 1
+  },
+  "body|from point a": {
+   "speechBubble@plain": 1
+  },
+  "body|from point f": {
+   "p@activity": 2
+  },
+  "body|click drop": {
+   "th@activity>table": 1,
+   "clickDrop@plain": 4,
+   "p@plain": 1,
+   "flipCard@plain": 8,
+   "clickDrop@activity": 2
+  },
+  "header|end other": {
+   "h1@plain": 1
+  },
+  "body|flip card": {
+   "hintSlider@plain": 1,
+   "p@plain": 2,
+   "h4@plain": 1
+  },
+  "body|accordions end here": {
+   "p@activity": 2
+  },
+  "body|slide n": {
+   "h3@activity": 2,
+   "clickDrop@plain": 2,
+   "th@table": 2,
+   "h5@table": 2,
+   "carousel@plain": 1,
+   "accordion@plain": 1
+  },
+  "body|hover red text": {
+   "p@plain": 3,
+   "td@table": 5
+  },
+  "body|word select": {
+   "speechBubble@plain": 1,
+   "p@plain": 1
+  },
+  "body|list": {
+   "li@list": 9,
+   "p@plain": 1
+  },
+  "body|tabs": {
+   "p@plain": 2,
+   "tabs@plain": 2
+  },
+  "body|format": {
+   "h5@plain": 1,
+   "p@plain": 5
+  },
+  "body|max 3 minutes": {
+   "p@whakatauki": 2
+  },
+  "body|interactivity activity": {
+   "h3@activity": 1
+  },
+  "menu|h3": {
+   "li@list": 1
+  },
+  "body|carousel": {
+   "p@activity": 1,
+   "p@plain": 2,
+   "accordion@plain": 1,
+   "h4@plain": 3,
+   "h3@plain": 1
+  },
+  "menu|module introduction": {
+   "li@list": 1,
+   "tabs@plain": 3
+  },
+  "menu|activity": {
+   "li@list": 3
+  },
+  "body|rh side note": {
+   "p@activity": 1
+  },
+  "header|tab n": {
+   "h1@plain": 1
+  },
+  "body|tab n": {
+   "h3@plain": 1,
+   "h4@plain": 1,
+   "h4@activity": 1,
+   "td@table": 3,
+   "h3@activity": 1,
+   "h5@plain": 2
+  },
+  "body|answer": {
+   "th@plain": 1
+  },
+  "body|webpage": {
+   "a@plain": 1,
+   "p@activity": 1,
+   "a@activity": 3
+  },
+  "body|yellow shirt girl": {
+   "speechBubble@plain": 1
+  },
+  "body|pink shirt girl": {
+   "th@table": 2
+  },
+  "body|close modal": {
+   "p@activity": 3,
+   "typing@activity": 2,
+   "td@table": 1
+  },
+  "body|click drop down": {
+   "clickDrop@plain": 2
+  },
+  "body|clip drop down": {
+   "clickDrop@plain": 1
+  },
+  "header|lesson overview": {
+   "h5@plain": 1,
+   "li@list": 2,
+   "h1@plain": 2
+  },
+  "body|flowchart": {
+   "p@table": 1
+  },
+  "body|example": {
+   "p@activity": 1
+  },
+  "header|write in the boxes": {
+   "h1@plain": 1
+  },
+  "body|rhetoric question": {
+   "li@list": 3
+  },
+  "body|write in the boxes": {
+   "p@activity": 1,
+   "typing@activity": 1,
+   "p@plain": 1
+  },
+  "body|supervisor button": {
+   "p@plain": 4,
+   "p@activity": 6,
+   "p@alert": 2
+  },
+  "body|type and check": {
+   "infoTrigger@plain": 2,
+   "typing@activity": 6,
+   "p@activity": 3
+  },
+  "body|typing quiz": {
+   "p@activity": 2
+  },
+  "body|end page": {
+   "h2@activity": 3,
+   "h2@plain": 3,
+   "p@plain": 8,
+   "h3@plain": 8,
+   "a@list": 4,
+   "typing@activity": 1,
+   "a@activity": 1
+  },
+  "body|iside important box rhs": {
+   "p@alert": 1
+  },
+  "body|multi choice quiz": {
+   "clickDrop@activity": 10
+  },
+  "menu|lesson": {
+   "h5@plain": 1
+  },
+  "body|reorder": {
+   "reorder@activity": 2
+  },
+  "body|side tab 4": {
+   "h1@plain": 1
+  },
+  "body|whakatauki": {
+   "p@whakatauki": 2
+  },
+  "body|drag and drop task": {
+   "p@activity": 1,
+   "dragAndDrop@activity>list": 1
+  },
+  "body|info trigger": {
+   "p@plain": 13,
+   "p@alert": 1,
+   "li@list": 8,
+   "accordion@plain": 1,
+   "flipCard@plain": 8
+  },
+  "body|drag and drop images": {
+   "h3@activity": 1,
+   "p@activity": 1,
+   "dragAndDrop@activity": 1
+  },
+  "body|radio quiz": {
+   "h2@plain": 1,
+   "p@plain": 1,
+   "h3@activity": 2
+  },
+  "body|drag and drop match": {
+   "p@activity": 1
+  },
+  "menu|end page": {
+   "li@list": 4
+  },
+  "body|memory game": {
+   "p@activity": 1
+  },
+  "header|end page": {
+   "h1@plain": 1
+  },
+  "body|mcq": {
+   "multiChoiceQuiz@activity": 1
+  },
+  "acks|title bar": {
+   "accordion@plain": 5
+  },
+  "body|h1": {
+   "h3@activity": 3,
+   "h3@plain": 1,
+   "li@alert>list": 2,
+   "p@plain": 2
+  },
+  "body|flip card activity": {
+   "flipCard@plain": 4
+  },
+  "body|expand": {
+   "h3@plain": 1,
+   "accordion@plain": 1
+  },
+  "body|dropdown": {
+   "p@activity": 2,
+   "dropQuiz@activity": 2,
+   "dragAndDrop@activity": 1
+  },
+  "menu|h1": {
+   "li@list": 33
+  },
+  "menu|dropdown": {
+   "li@list": 1
+  },
+  "header|image": {
+   "h1@plain": 2
+  },
+  "body|mix match or quiz": {
+   "h3@activity": 2
+  },
+  "body|shape n": {
+   "p@activity": 1
+  },
+  "body|learning journal": {
+   "p@activity": 8
+  },
+  "body|key points": {
+   "li@alert>list": 7
+  },
+  "header|drag drop activity": {
+   "h1@plain": 1
+  },
+  "body|drag drop activity": {
+   "h3@activity": 2
+  },
+  "body|mix and match": {
+   "p@activity": 1
+  },
+  "menu|video": {
+   "li@list": 1
+  },
+  "body|highlighted quote": {
+   "p@plain": 2
+  },
+  "body|imbedded image": {
+   "p@plain": 1
+  },
+  "body|text box": {
+   "p@alert": 4,
+   "p@alert>list": 1,
+   "p@plain": 1
+  },
+  "menu|info trigger": {
+   "li@list": 1
+  },
+  "body|pop out info box image": {
+   "td@table": 1
+  },
+  "body|type answer activity": {
+   "p@activity": 1
+  },
+  "body|instructional video": {
+   "p@activity": 1
+  },
+  "header|hover over definition see": {
+   "h1@plain": 4
+  },
+  "body|slider": {
+   "h3@activity": 3
+  }
+ },
+ "examples": {
+  "header|title bar": {
+   "h1@plain": [
+    "MXFL103",
+    "MXFL202",
+    "MXFL203",
+    "MXFL204",
+    "MXFL301",
+    "MXFL302",
+    "MXFL401",
+    "MXFU201",
+    "MXFU202",
+    "MXFU401",
+    "MXFUN01",
+    "MXFUN02",
+    "MXFUN03",
+    "MXS1004",
+    "OSOH201",
+    "OSSC301",
+    "OSSC401",
+    "OSSC501",
+    "OSSM301",
+    "PES1001",
+    "PES1003",
+    "PES1005",
+    "PHE1001",
+    "PHE1002",
+    "PHE1003",
+    "PHE1004",
+    "PHE1005"
+   ]
+  },
+  "body|body": {
+   "p@plain": [
+    "MXFL103",
+    "MXFL104",
+    "MXFL201",
+    "MXFL202",
+    "MXFL203",
+    "MXFL204",
+    "MXFL301",
+    "MXFL302",
+    "MXFL401",
+    "MXFU201",
+    "MXFU202",
+    "MXFU301",
+    "MXFU302",
+    "MXFU401",
+    "MXFUN01",
+    "MXFUN02",
+    "MXFUN03",
+    "MXS1004",
+    "PES1001",
+    "PES1002",
+    "PES1003",
+    "PES1004",
+    "PES1005",
+    "PES1007",
+    "PES1008",
+    "PHE1001",
+    "PHE1002",
+    "PHE1003",
+    "PHE1004",
+    "PHE1005"
+   ],
+   "li@list": [
+    "MXFL103",
+    "MXFL104",
+    "MXFL201",
+    "MXFL202",
+    "MXFL203",
+    "MXFL204",
+    "MXFL301",
+    "MXFL302",
+    "MXFU201",
+    "MXFU301",
+    "MXFU302",
+    "MXS1004",
+    "PES1001",
+    "PES1002",
+    "PES1003",
+    "PES1004",
+    "PES1005",
+    "PES1007",
+    "PES1008",
+    "PHE1001",
+    "PHE1003",
+    "PHE1004"
+   ],
+   "p@activity": [
+    "MXFL103",
+    "MXFL104",
+    "MXFL201",
+    "MXFL202",
+    "MXFL203",
+    "MXFL204",
+    "MXFL301",
+    "MXFL302",
+    "MXFL401",
+    "MXFU201",
+    "MXFU202",
+    "MXFU301",
+    "MXFU302",
+    "MXFU401",
+    "MXFUN01",
+    "MXFUN03",
+    "PES1003",
+    "PES1004",
+    "PES1008",
+    "PHE1002",
+    "PHE1003"
+   ],
+   "h3@activity": [
+    "MXFL103",
+    "MXFL204",
+    "MXFL302",
+    "MXFL401",
+    "MXFU201",
+    "MXFU301",
+    "MXFUN01",
+    "MXS1004",
+    "PES1001",
+    "PES1003",
+    "PES1004",
+    "PES1008",
+    "PHE1001",
+    "PHE1003"
+   ],
+   "h3@plain": [
+    "MXFL103",
+    "MXFL104",
+    "PES1007",
+    "PHE1002",
+    "PHE1004"
+   ],
+   "th@activity>table": [
+    "MXFL103",
+    "MXFU201"
+   ],
+   "td@activity>table": [
+    "MXFL103",
+    "MXFL202",
+    "MXFU201",
+    "MXFU301",
+    "MXFU302"
+   ],
+   "h4@plain": [
+    "MXFL104",
+    "MXFL302",
+    "MXFU301",
+    "PES1004",
+    "PES1008",
+    "PHE1003"
+   ],
+   "p@alert": [
+    "MXFL104",
+    "MXFL204",
+    "MXFL301",
+    "MXFL302",
+    "MXFU202",
+    "MXFU301",
+    "MXFU302",
+    "MXS1004",
+    "PES1004",
+    "PES1005",
+    "PES1007",
+    "PES1008",
+    "PHE1003"
+   ],
+   "infoTrigger@plain": [
+    "MXFL104",
+    "PES1004"
+   ],
+   "li@activity>list": [
+    "MXFL201",
+    "MXFL202",
+    "MXFL203",
+    "MXFL204",
+    "MXFU201",
+    "MXFU202",
+    "MXFU302",
+    "MXFU401",
+    "PES1003",
+    "PES1008",
+    "PHE1003"
+   ],
+   "wordHighlighter@plain": [
+    "MXFL201",
+    "MXFU302"
+   ],
+   "typing@activity": [
+    "MXFL201",
+    "MXFL202",
+    "MXFL302"
+   ],
+   "td@table": [
+    "MXFL202",
+    "MXFL204",
+    "MXFL302",
+    "MXFU202",
+    "MXFU302",
+    "PHE1002",
+    "PHE1004"
+   ],
+   "h5@activity": [
+    "MXFL202",
+    "MXFU201",
+    "PES1008"
+   ],
+   "dropQuiz@activity": [
+    "MXFL202",
+    "MXFL301",
+    "MXFU202"
+   ],
+   "p@whakatauki": [
+    "MXFL203"
+   ],
+   "flipCard@plain": [
+    "MXFL203",
+    "PHE1001"
+   ],
+   "h5@plain": [
+    "MXFL203",
+    "MXFU202",
+    "MXFUN03",
+    "MXS1004",
+    "PES1008",
+    "PHE1003"
+   ],
+   "multiChoiceQuiz@activity": [
+    "MXFL203",
+    "MXFU201",
+    "MXFU301",
+    "MXFU302",
+    "MXFUN03"
+   ],
+   "th@table": [
+    "MXFL203",
+    "MXFU301"
+   ],
+   "p@activity>alert": [
+    "MXFL204",
+    "MXFU301",
+    "MXFUN01"
+   ],
+   "carousel@plain": [
+    "MXFL301",
+    "MXFL302",
+    "MXFU201",
+    "MXFU202",
+    "MXS1004"
+   ],
+   "accordion@plain": [
+    "MXFL301",
+    "MXFU202",
+    "MXS1004",
+    "PES1008",
+    "PHE1003"
+   ],
+   "h4@alert": [
+    "MXFL301",
+    "MXFUN01",
+    "PES1008"
+   ],
+   "li@alert>list": [
+    "MXFL301",
+    "MXFL401",
+    "MXFU301",
+    "PES1003",
+    "PES1004",
+    "PES1007",
+    "PES1008"
+   ],
+   "memoryGame@activity": [
+    "MXFL301"
+   ],
+   "dragAndDrop@activity": [
+    "MXFL301",
+    "MXFL302",
+    "MXFU301",
+    "PES1004",
+    "PES1005",
+    "PHE1004"
+   ],
+   "carousel@activity": [
+    "MXFL302",
+    "MXFU201"
+   ],
+   "p@alert>list": [
+    "MXFL401",
+    "PES1007"
+   ],
+   "li@plain": [
+    "MXFU202",
+    "PHE1004"
+   ],
+   "speechBubble@plain": [
+    "MXFU401"
+   ],
+   "h2@plain": [
+    "MXFUN01",
+    "PES1008"
+   ],
+   "p@table": [
+    "PES1001"
+   ],
+   "tabs@plain": [
+    "PES1007",
+    "PHE1001"
+   ],
+   "td@alert>table": [
+    "PES1008"
+   ],
+   "th@plain": [
+    "PHE1002",
+    "PHE1004"
+   ],
+   "a@plain": [
+    "PHE1004"
+   ]
+  },
+  "body|h2": {
+   "h2@plain": [
+    "MXFL103",
+    "MXFL104",
+    "MXFL203",
+    "MXFL204",
+    "MXFU201",
+    "MXFU202",
+    "MXFUN02",
+    "MXFUN03",
+    "MXS1004",
+    "PES1001",
+    "PES1002",
+    "PES1005",
+    "PES1007",
+    "PES1008"
+   ],
+   "h3@activity": [
+    "MXFL103",
+    "MXFL104",
+    "MXFL201",
+    "MXFL202",
+    "MXFL203",
+    "MXFL204",
+    "MXFL401",
+    "MXFU201",
+    "MXFU202",
+    "MXFU401",
+    "MXFUN01",
+    "MXFUN03",
+    "PES1001",
+    "PES1003",
+    "PES1004",
+    "PES1005",
+    "PES1007",
+    "PES1008",
+    "PHE1002",
+    "PHE1004",
+    "PHE1005"
+   ],
+   "a@plain": [
+    "MXFL201",
+    "MXFU301",
+    "MXFUN01",
+    "PES1007"
+   ],
+   "td@activity>table": [
+    "MXFL201",
+    "MXFUN01"
+   ],
+   "a@activity": [
+    "MXFL201",
+    "MXFU202",
+    "MXFU401",
+    "MXFUN01",
+    "MXFUN03",
+    "PES1001",
+    "PES1002",
+    "PES1005"
+   ],
+   "p@plain": [
+    "MXFL203",
+    "MXFL401",
+    "MXFU201",
+    "MXFU202",
+    "MXFU401",
+    "MXFUN01",
+    "PES1001",
+    "PES1002",
+    "PES1007",
+    "PES1008",
+    "PHE1004"
+   ],
+   "h3@alert": [
+    "MXFL204"
+   ],
+   "infoTrigger@plain": [
+    "MXFL204",
+    "MXFU401",
+    "MXFUN01",
+    "MXS1004"
+   ],
+   "td@table": [
+    "MXFL204",
+    "MXFL301",
+    "MXFL401",
+    "MXFUN01",
+    "PES1003"
+   ],
+   "h3@plain": [
+    "MXFL204",
+    "MXFL401",
+    "MXFU201",
+    "MXFU202",
+    "MXFU401",
+    "MXFUN01",
+    "PES1001",
+    "PES1002",
+    "PES1003",
+    "PES1004",
+    "PES1007",
+    "PHE1001",
+    "PHE1003",
+    "PHE1004"
+   ],
+   "th@activity>table": [
+    "MXFL301",
+    "MXFU201"
+   ],
+   "p@activity": [
+    "MXFL401",
+    "MXFU201",
+    "MXFU202",
+    "MXFU401",
+    "PES1001",
+    "PES1007",
+    "PES1008"
+   ],
+   "h4@plain": [
+    "MXFL401",
+    "PES1008"
+   ],
+   "p@alert>list": [
+    "MXFL401"
+   ],
+   "h5@alert": [
+    "MXFL401"
+   ],
+   "li@alert>list": [
+    "MXFL401",
+    "MXFU401",
+    "PES1004"
+   ],
+   "p@alert": [
+    "MXFL401",
+    "PES1007",
+    "PHE1002"
+   ],
+   "th@table": [
+    "MXFL401",
+    "MXFU301"
+   ],
+   "h4@activity": [
+    "MXFU202"
+   ],
+   "accordion@plain": [
+    "MXFU202"
+   ],
+   "li@activity>list": [
+    "MXFU401"
+   ],
+   "infoTrigger@activity": [
+    "MXFUN01"
+   ],
+   "clickDrop@activity": [
+    "MXFUN01"
+   ],
+   "clickDrop@plain": [
+    "MXFUN01"
+   ],
+   "a@activity>alert": [
+    "MXFUN01"
+   ],
+   "p@whakatauki": [
+    "PES1002"
+   ],
+   "h4@alert": [
+    "PES1003",
+    "PES1004",
+    "PES1007"
+   ],
+   "h2@alert": [
+    "PES1007"
+   ],
+   "td@alert>table": [
+    "PES1008"
+   ],
+   "li@list": [
+    "PHE1001"
+   ]
+  },
+  "header|body": {
+   "h1@plain": [
+    "MXFL103",
+    "MXFL203",
+    "MXFU301",
+    "MXFU302",
+    "PES1002",
+    "PES1003",
+    "PES1004",
+    "PES1008",
+    "PHE1004"
+   ]
+  },
+  "body|activity": {
+   "h3@activity": [
+    "MXFL103",
+    "MXFL104",
+    "MXFL201",
+    "MXFL202",
+    "MXFL203",
+    "MXFL204",
+    "MXFL301",
+    "MXFL302",
+    "MXFU202",
+    "MXFU301",
+    "MXFU302",
+    "MXS1004",
+    "PES1001",
+    "PES1002",
+    "PES1003",
+    "PHE1003",
+    "PHE1005"
+   ],
+   "h2@plain": [
+    "MXFL103",
+    "PES1001"
+   ],
+   "p@plain": [
+    "MXFL103",
+    "MXFL201",
+    "MXFU202",
+    "PES1005"
+   ],
+   "h3@plain": [
+    "MXFL103",
+    "MXFL203",
+    "MXFL204",
+    "MXFU202"
+   ],
+   "p@activity": [
+    "MXFL103",
+    "MXFL104",
+    "MXFL201",
+    "MXFL202",
+    "MXFL203",
+    "MXFL301",
+    "MXFL302",
+    "MXFU201",
+    "MXFU202",
+    "MXFU301",
+    "MXFU302",
+    "MXFUN01",
+    "MXFUN03",
+    "MXS1004",
+    "PES1002",
+    "PES1003",
+    "PES1005",
+    "PES1007",
+    "PHE1001",
+    "PHE1002",
+    "PHE1005"
+   ],
+   "dragAndDrop@activity": [
+    "MXFL104",
+    "MXFL201",
+    "MXFL203",
+    "MXFL204",
+    "MXFU201",
+    "MXS1004",
+    "PES1002",
+    "PHE1005"
+   ],
+   "th@activity>table": [
+    "MXFL201",
+    "MXFU201",
+    "MXFU301"
+   ],
+   "li@activity>table>list": [
+    "MXFL201"
+   ],
+   "multiChoiceQuiz@activity": [
+    "MXFL201",
+    "PES1001",
+    "PES1002",
+    "PES1005"
+   ],
+   "h5@activity": [
+    "MXFL201",
+    "MXFU202"
+   ],
+   "td@activity>table": [
+    "MXFL202",
+    "MXFL203",
+    "MXFU201",
+    "MXFU301"
+   ],
+   "dropQuiz@activity": [
+    "MXFL203",
+    "MXFU202"
+   ],
+   "flipCard@activity": [
+    "MXFL203"
+   ],
+   "td@table": [
+    "MXFL203",
+    "MXFL204",
+    "MXFU202"
+   ],
+   "typing@activity": [
+    "MXFL203"
+   ],
+   "h4@plain": [
+    "MXFL204",
+    "MXFU202",
+    "MXFU302"
+   ],
+   "th@plain": [
+    "MXFL204"
+   ],
+   "th@activity": [
+    "MXFL204"
+   ],
+   "infoTrigger@plain": [
+    "MXFL204",
+    "PES1001",
+    "PES1005"
+   ],
+   "bingo@activity": [
+    "MXFU202"
+   ],
+   "th@table": [
+    "MXFU202"
+   ],
+   "li@list": [
+    "MXFU202"
+   ],
+   "li@activity>list": [
+    "MXFU202",
+    "MXFU302"
+   ],
+   "clickDrop@plain": [
+    "MXFU302"
+   ],
+   "selfCheck@alert": [
+    "MXFU302"
+   ],
+   "clickDrop@alert": [
+    "MXFU302"
+   ],
+   "radioQuiz@activity": [
+    "PES1002"
+   ],
+   "a@plain": [
+    "PES1002",
+    "PHE1002"
+   ],
+   "p@alert": [
+    "PES1007"
+   ],
+   "selfCheck@activity": [
+    "PHE1005"
+   ]
+  },
+  "body|button": {
+   "a@activity": [
+    "MXFL103",
+    "MXFL104",
+    "MXFL201",
+    "MXFL202",
+    "MXFL203",
+    "MXFL204",
+    "MXFL301",
+    "MXFL302",
+    "MXFL401",
+    "MXFU201",
+    "MXFU202",
+    "MXFU301",
+    "MXFU302",
+    "MXFU401",
+    "MXS1004",
+    "PES1001",
+    "PES1002",
+    "PES1003",
+    "PES1004",
+    "PES1005",
+    "PES1007",
+    "PES1008"
+   ],
+   "a@plain": [
+    "MXFL104",
+    "MXFL201",
+    "MXFL204"
+   ],
+   "p@activity": [
+    "MXFL104",
+    "MXFL201",
+    "MXFU201",
+    "MXFU401",
+    "PES1001",
+    "PES1007"
+   ],
+   "clickDrop@activity": [
+    "MXFL203",
+    "MXFL204"
+   ],
+   "p@plain": [
+    "MXFL401",
+    "PHE1001"
+   ],
+   "h3@activity": [
+    "MXFU201",
+    "MXS1004"
+   ],
+   "h4@activity": [
+    "MXFU202"
+   ],
+   "li@activity>list": [
+    "MXFU301"
+   ],
+   "memoryGame@activity": [
+    "MXFUN01"
+   ],
+   "p@activity>alert": [
+    "MXFUN01"
+   ],
+   "typing@activity": [
+    "MXFUN03"
+   ],
+   "dragAndDrop@activity": [
+    "MXFUN03"
+   ]
+  },
+  "body|image": {
+   "li@activity>list": [
+    "MXFL103",
+    "MXFU302"
+   ],
+   "h3@activity": [
+    "MXFL103",
+    "MXFL301",
+    "MXFL302",
+    "MXFL401",
+    "MXFU201",
+    "MXFUN01",
+    "PES1002"
+   ],
+   "p@plain": [
+    "MXFL103",
+    "MXFL202",
+    "MXFL203",
+    "MXFL204",
+    "MXFL301",
+    "MXFL302",
+    "MXFL401",
+    "MXFU201",
+    "MXFU202",
+    "MXFU301",
+    "MXFU302",
+    "MXFU401",
+    "MXFUN01",
+    "PES1001",
+    "PES1002",
+    "PES1003",
+    "PES1004",
+    "PES1005",
+    "PES1007",
+    "PES1008",
+    "PHE1001",
+    "PHE1003",
+    "PHE1005"
+   ],
+   "dropQuiz@activity": [
+    "MXFL103",
+    "MXFL202",
+    "MXFL301",
+    "MXFU301"
+   ],
+   "p@activity": [
+    "MXFL103",
+    "MXFL202",
+    "MXFL203",
+    "MXFL204",
+    "MXFL301",
+    "MXFL302",
+    "MXFL401",
+    "MXFU201",
+    "MXFU202",
+    "MXFU301",
+    "MXFU302",
+    "PES1001",
+    "PES1008"
+   ],
+   "td@table": [
+    "MXFL104",
+    "MXFL202",
+    "MXFL302",
+    "MXFU202",
+    "MXFU301",
+    "MXFU302",
+    "MXFU401"
+   ],
+   "typing@activity": [
+    "MXFL104",
+    "MXFL401",
+    "MXFU301"
+   ],
+   "h4@plain": [
+    "MXFL104",
+    "MXFL203",
+    "MXFUN01"
+   ],
+   "p@alert": [
+    "MXFL104",
+    "MXFL203",
+    "MXFL204",
+    "MXFL302",
+    "MXFL401",
+    "MXFU202"
+   ],
+   "dragAndDrop@activity": [
+    "MXFL104",
+    "MXFL202",
+    "MXFL301",
+    "MXFUN03",
+    "PES1004",
+    "PES1007",
+    "PES1008"
+   ],
+   "td@activity>table": [
+    "MXFL202",
+    "MXFU302"
+   ],
+   "th@table": [
+    "MXFL202",
+    "MXFU301",
+    "MXFU302"
+   ],
+   "h4@alert": [
+    "MXFL203",
+    "MXFL401"
+   ],
+   "li@list": [
+    "MXFL204",
+    "MXFU201",
+    "PHE1005"
+   ],
+   "flipCard@plain": [
+    "MXFL204",
+    "MXFL302",
+    "MXFU301",
+    "PHE1005"
+   ],
+   "speechBubble@plain": [
+    "MXFL301"
+   ],
+   "memoryGame@activity": [
+    "MXFL302"
+   ],
+   "h5@plain": [
+    "MXFL401",
+    "MXFUN01"
+   ],
+   "h3@plain": [
+    "MXFL401"
+   ],
+   "speechBubble@activity": [
+    "MXFU201"
+   ],
+   "sliderChart@activity": [
+    "MXFU201"
+   ],
+   "th@activity>table": [
+    "MXFU201"
+   ],
+   "p@activity>list": [
+    "MXFU201"
+   ],
+   "li@activity": [
+    "MXFU202"
+   ],
+   "infoTrigger@plain": [
+    "MXFU301",
+    "MXFU401"
+   ],
+   "h5@table": [
+    "MXFU301"
+   ],
+   "p@table": [
+    "MXFU301",
+    "MXFU302"
+   ],
+   "carousel@plain": [
+    "MXFU302",
+    "PES1003",
+    "PES1005"
+   ],
+   "hintSlider@plain": [
+    "MXFU401"
+   ],
+   "clickDrop@plain": [
+    "MXFUN01"
+   ],
+   "h4@activity": [
+    "MXFUN01",
+    "PES1004"
+   ],
+   "th@plain": [
+    "MXS1004"
+   ],
+   "accordion@plain": [
+    "PES1002"
+   ],
+   "a@plain": [
+    "PES1002",
+    "PES1005"
+   ],
+   "infoTrigger@list": [
+    "PES1002"
+   ],
+   "clickDrop@activity": [
+    "PES1007"
+   ],
+   "tabs@plain": [
+    "PES1008"
+   ],
+   "h2@plain": [
+    "PES1008"
+   ],
+   "p@whakatauki": [
+    "PHE1005"
+   ]
+  },
+  "body|drag and drop": {
+   "h3@activity": [
+    "MXFL103"
+   ],
+   "dragAndDrop@activity": [
+    "MXFL103",
+    "MXFL202"
+   ],
+   "reorder@activity": [
+    "MXFL103"
+   ],
+   "p@activity": [
+    "MXFL202",
+    "MXFL401",
+    "MXFU401",
+    "MXFUN01",
+    "MXS1004"
+   ],
+   "p@list": [
+    "MXFL401"
+   ],
+   "p@plain": [
+    "MXFU401"
+   ]
+  },
+  "body|video": {
+   "p@activity": [
+    "MXFL103",
+    "MXFL204",
+    "MXFL302",
+    "PES1001"
+   ],
+   "p@plain": [
+    "MXFL104",
+    "MXFL202",
+    "MXFL204",
+    "MXFL401",
+    "MXFU202",
+    "MXFU401",
+    "PES1001",
+    "PES1003",
+    "PES1005",
+    "PES1008"
+   ],
+   "p@whakatauki": [
+    "MXFL204"
+   ],
+   "memoryGame@activity": [
+    "MXFL302"
+   ],
+   "multiChoiceQuiz@activity": [
+    "MXFL302"
+   ],
+   "p@alert>list": [
+    "MXFL401"
+   ],
+   "h3@activity": [
+    "MXFL401",
+    "MXFU201",
+    "PES1001"
+   ],
+   "accordion@plain": [
+    "MXFU202"
+   ],
+   "p@alert": [
+    "MXFU401"
+   ],
+   "li@list": [
+    "PES1001"
+   ]
+  },
+  "header|h2": {
+   "h1@plain": [
+    "MXFL103",
+    "MXFL104",
+    "MXFL201",
+    "MXFL202",
+    "MXFL203",
+    "MXFL204",
+    "MXFL301",
+    "MXFL302",
+    "MXFL401",
+    "MXFU201",
+    "MXFU202",
+    "MXFU301",
+    "MXFU302",
+    "MXFU401",
+    "PES1001",
+    "PES1002",
+    "PES1003",
+    "PES1004",
+    "PES1005",
+    "PES1007",
+    "PES1008",
+    "PHE1001",
+    "PHE1002",
+    "PHE1004"
+   ]
+  },
+  "body|alert": {
+   "li@alert>list": [
+    "MXFL103"
+   ],
+   "p@alert": [
+    "MXFL104",
+    "MXFL201",
+    "MXFL202",
+    "MXFL301",
+    "MXFL302",
+    "MXFL401",
+    "MXFU301",
+    "MXFU401",
+    "MXFUN01",
+    "MXFUN03",
+    "PES1007",
+    "PHE1004"
+   ],
+   "p@plain": [
+    "MXFL201",
+    "MXFL302",
+    "MXFL401",
+    "MXFUN01"
+   ],
+   "li@activity>alert>list": [
+    "MXFL201"
+   ],
+   "p@activity": [
+    "MXFL302"
+   ],
+   "p@activity>alert": [
+    "MXFUN01"
+   ]
+  },
+  "body|modal": {
+   "clickDrop@activity": [
+    "MXFL103"
+   ],
+   "h3@activity": [
+    "MXFL103",
+    "MXFU301"
+   ],
+   "p@activity": [
+    "MXFL202"
+   ],
+   "infoTrigger@plain": [
+    "MXFL301"
+   ],
+   "h4@plain": [
+    "MXFL301",
+    "MXFU301"
+   ],
+   "clickDrop@plain": [
+    "MXFL301",
+    "MXFL302",
+    "MXFU301"
+   ],
+   "clickDrop@alert": [
+    "MXFL302"
+   ],
+   "accordion@plain": [
+    "MXFL401"
+   ],
+   "th@table": [
+    "MXFU301"
+   ],
+   "h5@plain": [
+    "MXFUN01"
+   ],
+   "p@plain": [
+    "MXFUN01"
+   ],
+   "h3@plain": [
+    "MXFUN01"
+   ]
+  },
+  "header|activity": {
+   "h1@plain": [
+    "MXFL103",
+    "MXFL202",
+    "MXFL203",
+    "MXFU201",
+    "MXFU202",
+    "MXFU301",
+    "PES1001",
+    "PES1002"
+   ]
+  },
+  "header|h3": {
+   "h1@plain": [
+    "MXFL104",
+    "MXFL202",
+    "MXFL301",
+    "MXFU201",
+    "PES1005",
+    "PHE1002",
+    "PHE1003"
+   ]
+  },
+  "body|data marker": {
+   "carousel@plain": [
+    "MXFL104"
+   ],
+   "p@plain": [
+    "MXFL104",
+    "MXFL301",
+    "MXFL302",
+    "MXFU301",
+    "MXS1004",
+    "PES1002",
+    "PES1007"
+   ],
+   "li@list": [
+    "MXFL104"
+   ],
+   "p@alert": [
+    "MXS1004"
+   ],
+   "dragAndDrop@activity": [
+    "MXS1004"
+   ],
+   "h4@plain": [
+    "MXS1004"
+   ],
+   "th@table": [
+    "MXS1004"
+   ],
+   "td@table": [
+    "MXS1004"
+   ],
+   "a@plain": [
+    "PES1002"
+   ],
+   "h3@activity": [
+    "PES1002"
+   ]
+  },
+  "header|lesson": {
+   "h1@plain": [
+    "MXFL104",
+    "MXFL203",
+    "MXFL204",
+    "MXFU201",
+    "MXFU302",
+    "MXFUN01",
+    "PES1005",
+    "PES1007",
+    "PES1008"
+   ]
+  },
+  "menu|h2": {
+   "li@list": [
+    "MXFL104",
+    "MXFL201",
+    "MXFL202",
+    "MXFL301",
+    "MXFU201",
+    "MXFU202",
+    "MXFU301",
+    "MXFU302"
+   ],
+   "h3@plain": [
+    "MXFL201",
+    "MXFL202"
+   ],
+   "p@plain": [
+    "MXFL201",
+    "MXFL202"
+   ],
+   "h5@plain": [
+    "MXFL202",
+    "MXFL301",
+    "MXFL302",
+    "MXFU201",
+    "MXFU202",
+    "MXFU301"
+   ],
+   "tabs@plain": [
+    "MXFL301",
+    "MXFU301",
+    "MXFU401",
+    "MXS1004",
+    "PES1001",
+    "PES1008",
+    "PHE1001",
+    "PHE1002",
+    "PHE1003",
+    "PHE1004",
+    "PHE1005"
+   ]
+  },
+  "menu|lesson overview": {
+   "li@list": [
+    "MXFL104",
+    "MXFL301",
+    "MXFL302",
+    "MXFU201",
+    "MXFU301",
+    "MXFU302",
+    "MXS1004",
+    "PES1002",
+    "PES1004",
+    "PES1005",
+    "PES1007",
+    "PES1008"
+   ],
+   "h5@plain": [
+    "MXFL104",
+    "MXFL302",
+    "MXFU301",
+    "MXFU302",
+    "PES1002",
+    "PES1004",
+    "PES1005",
+    "PES1007",
+    "PES1008"
+   ],
+   "p@plain": [
+    "MXFL203",
+    "MXFU201"
+   ],
+   "h4@plain": [
+    "MXS1004"
+   ]
+  },
+  "body|rhs alert": {
+   "p@plain": [
+    "MXFL104",
+    "MXFL202",
+    "MXFL301"
+   ],
+   "td@table": [
+    "MXFL104"
+   ],
+   "p@alert": [
+    "MXFL104",
+    "MXFL202",
+    "MXFL301",
+    "MXFU302"
+   ],
+   "li@alert>list": [
+    "MXFL301"
+   ],
+   "h5@plain": [
+    "MXFU302"
+   ],
+   "th@table": [
+    "MXFU302"
+   ]
+  },
+  "body|h4": {
+   "h4@plain": [
+    "MXFL104",
+    "MXFL201",
+    "MXFL202",
+    "MXFL204",
+    "MXFL301",
+    "MXFU202",
+    "MXFU301",
+    "MXFU302",
+    "MXFUN01",
+    "MXS1004"
+   ],
+   "h3@activity": [
+    "MXFL104",
+    "MXFL302",
+    "MXFL401",
+    "MXFU301",
+    "MXFU302",
+    "PHE1003"
+   ],
+   "h4@activity": [
+    "MXFL104",
+    "MXFL201",
+    "MXFUN01"
+   ],
+   "th@activity>table": [
+    "MXFL201",
+    "MXFU302"
+   ],
+   "infoTrigger@plain": [
+    "MXFL204"
+   ],
+   "h4@alert": [
+    "MXFL301",
+    "MXFL302",
+    "MXFU302"
+   ],
+   "h3@plain": [
+    "MXFL302",
+    "MXFL401",
+    "MXS1004",
+    "PHE1003"
+   ],
+   "td@table": [
+    "MXFL302"
+   ],
+   "li@activity>list": [
+    "MXFL302"
+   ],
+   "p@plain": [
+    "MXFL302",
+    "MXFL401",
+    "MXFU202",
+    "MXFUN01",
+    "MXS1004",
+    "PHE1003"
+   ],
+   "th@plain": [
+    "MXFL302"
+   ],
+   "speechBubble@plain": [
+    "MXFL401"
+   ],
+   "li@list": [
+    "MXFL401",
+    "MXS1004",
+    "PHE1003"
+   ],
+   "p@alert": [
+    "MXFL401"
+   ],
+   "clickDrop@plain": [
+    "MXFU301"
+   ],
+   "h5@plain": [
+    "MXFU302"
+   ],
+   "h4@activity>alert": [
+    "MXFUN01"
+   ],
+   "wordHighlighter@activity": [
+    "MXFUN01"
+   ],
+   "p@activity": [
+    "MXFUN01",
+    "MXS1004"
+   ],
+   "wordHighlighter@plain": [
+    "MXFUN01"
+   ],
+   "dropQuiz@activity": [
+    "MXFUN03"
+   ]
+  },
+  "body|supervisor note": {
+   "p@plain": [
+    "MXFL104"
+   ],
+   "p@activity": [
+    "MXFL104"
+   ]
+  },
+  "body|h3": {
+   "h3@activity": [
+    "MXFL104",
+    "MXFL201",
+    "MXFL203",
+    "MXFL301",
+    "MXFL401",
+    "MXFU201",
+    "MXFU202",
+    "MXFU301",
+    "MXFU302",
+    "MXFU401",
+    "MXFUN01",
+    "MXFUN03",
+    "PES1002",
+    "PHE1001",
+    "PHE1002",
+    "PHE1003",
+    "PHE1005"
+   ],
+   "p@activity": [
+    "MXFL104",
+    "MXFL203",
+    "MXFU201",
+    "MXFU202",
+    "MXFU401",
+    "MXFUN01",
+    "MXFUN03"
+   ],
+   "h3@plain": [
+    "MXFL104",
+    "MXFL201",
+    "MXFL202",
+    "MXFL203",
+    "MXFL301",
+    "MXFL401",
+    "MXFU201",
+    "MXFU301",
+    "MXFU302",
+    "MXFU401",
+    "MXFUN01",
+    "PES1002",
+    "PES1005",
+    "PES1007",
+    "PHE1001",
+    "PHE1002",
+    "PHE1003",
+    "PHE1005"
+   ],
+   "h4@plain": [
+    "MXFL104",
+    "MXFL401",
+    "MXFU302"
+   ],
+   "infoTrigger@plain": [
+    "MXFL202"
+   ],
+   "td@table": [
+    "MXFL202",
+    "MXFU401"
+   ],
+   "p@plain": [
+    "MXFL203",
+    "MXFL301",
+    "MXFL401",
+    "MXFU302",
+    "MXFU401",
+    "MXFUN02",
+    "PES1002",
+    "PES1005",
+    "PES1007",
+    "PHE1001"
+   ],
+   "a@alert": [
+    "MXFL203"
+   ],
+   "a@activity": [
+    "MXFL203",
+    "MXFL401"
+   ],
+   "th@table": [
+    "MXFL203",
+    "MXFU302"
+   ],
+   "a@plain": [
+    "MXFL203",
+    "PES1002",
+    "PES1005"
+   ],
+   "th@activity>table": [
+    "MXFL203",
+    "MXFU201"
+   ],
+   "infoTrigger@alert": [
+    "MXFL301"
+   ],
+   "th@plain": [
+    "MXFL301"
+   ],
+   "h2@plain": [
+    "MXFL401"
+   ],
+   "speechBubble@plain": [
+    "MXFL401"
+   ],
+   "p@activity>alert": [
+    "MXFU202"
+   ],
+   "li@list": [
+    "MXFU302",
+    "PHE1003"
+   ],
+   "h3@alert": [
+    "MXFU302",
+    "PES1005"
+   ],
+   "p@alert": [
+    "MXFU302"
+   ],
+   "h5@plain": [
+    "MXFU302"
+   ],
+   "p@activity>table": [
+    "MXFUN01"
+   ],
+   "clickDrop@activity": [
+    "MXFUN01"
+   ],
+   "typing@activity": [
+    "MXFUN01"
+   ],
+   "clickDrop@plain": [
+    "MXFUN01"
+   ],
+   "h4@alert": [
+    "MXFUN01"
+   ],
+   "dragAndDrop@activity": [
+    "PES1005"
+   ],
+   "imageLabel@plain": [
+    "PHE1001"
+   ],
+   "h4@activity": [
+    "PHE1003"
+   ]
+  },
+  "header|module introduction": {
+   "h1@plain": [
+    "MXFL201"
+   ]
+  },
+  "menu|body": {
+   "p@plain": [
+    "MXFL201",
+    "MXFL202",
+    "MXFL203",
+    "MXFL204"
+   ],
+   "h5@plain": [
+    "MXFL201"
+   ],
+   "li@list": [
+    "MXFL201",
+    "MXFL202",
+    "MXFU202",
+    "PES1002"
+   ],
+   "tabs@plain": [
+    "MXFL203",
+    "MXFL401"
+   ]
+  },
+  "body|module introduction": {
+   "p@plain": [
+    "MXFL201",
+    "MXFU201",
+    "MXFU202",
+    "PES1001",
+    "PES1007",
+    "PHE1002"
+   ],
+   "p@whakatauki": [
+    "MXFU202"
+   ],
+   "h3@plain": [
+    "MXFU202",
+    "MXFU401"
+   ],
+   "li@list": [
+    "PES1003",
+    "PES1004"
+   ],
+   "li@activity>list": [
+    "PES1003"
+   ]
+  },
+  "header|selfmarked quiz": {
+   "h1@plain": [
+    "MXFL201"
+   ]
+  },
+  "body|embedded activity": {
+   "accordion@activity": [
+    "MXFL201"
+   ]
+  },
+  "body|selfmarked quiz": {
+   "clickDrop@activity": [
+    "MXFL201"
+   ],
+   "li@activity>list": [
+    "MXFL201"
+   ],
+   "td@table": [
+    "MXFL201"
+   ]
+  },
+  "header|h1": {
+   "h1@plain": [
+    "MXFL201",
+    "PES1001",
+    "PES1003",
+    "PES1004"
+   ]
+  },
+  "body|self check answers": {
+   "typing@activity": [
+    "MXFL202"
+   ]
+  },
+  "body|accordion": {
+   "infoTrigger@plain": [
+    "MXFL202"
+   ],
+   "h3@activity": [
+    "MXFL204",
+    "MXFL301",
+    "MXFL302"
+   ],
+   "h3@plain": [
+    "MXFL301"
+   ],
+   "accordion@plain": [
+    "MXFL301",
+    "MXFL302"
+   ],
+   "flipCard@plain": [
+    "MXFL302"
+   ],
+   "td@table": [
+    "MXFL302"
+   ],
+   "h4@plain": [
+    "MXFL302"
+   ]
+  },
+  "body|supervisors note": {
+   "p@alert": [
+    "MXFL202"
+   ]
+  },
+  "body|important": {
+   "p@alert": [
+    "MXFL202",
+    "MXFL301",
+    "MXFL401",
+    "MXFUN01",
+    "MXS1004",
+    "PES1008",
+    "PHE1003"
+   ],
+   "p@plain": [
+    "MXFL301",
+    "MXS1004"
+   ],
+   "p@activity": [
+    "MXFL301",
+    "MXFU401",
+    "PHE1003"
+   ],
+   "p@activity>alert": [
+    "MXFU302",
+    "MXFUN01"
+   ],
+   "h4@alert": [
+    "MXS1004"
+   ],
+   "li@alert": [
+    "MXS1004"
+   ],
+   "li@alert>list": [
+    "MXS1004"
+   ],
+   "li@list": [
+    "MXS1004"
+   ]
+  },
+  "body|drop": {
+   "dropQuiz@activity": [
+    "MXFL202"
+   ],
+   "dragAndDrop@activity": [
+    "MXS1004"
+   ]
+  },
+  "body|speech bubble": {
+   "speechBubble@activity": [
+    "MXFL202",
+    "MXFU201"
+   ],
+   "speechBubble@plain": [
+    "MXFU301",
+    "MXFU302"
+   ],
+   "p@plain": [
+    "MXFU301"
+   ]
+  },
+  "body|embedded map": {
+   "p@activity": [
+    "MXFL203"
+   ],
+   "li@activity>list": [
+    "MXFL203"
+   ]
+  },
+  "body|coloured box": {
+   "p@alert": [
+    "MXFL203",
+    "MXFL301",
+    "MXFU201"
+   ],
+   "p@plain": [
+    "MXFL203",
+    "MXFU202"
+   ],
+   "h4@alert": [
+    "MXFL203"
+   ],
+   "th@table": [
+    "MXFL203"
+   ],
+   "h5@alert": [
+    "MXFU201"
+   ],
+   "p@activity": [
+    "MXFU202"
+   ]
+  },
+  "menu|title bar": {
+   "p@plain": [
+    "MXFL203",
+    "MXFL204"
+   ],
+   "li@list": [
+    "OSAH301"
+   ]
+  },
+  "body|title bar": {
+   "p@plain": [
+    "MXFL203",
+    "MXFL204",
+    "OSAI401"
+   ],
+   "p@alert": [
+    "MXFL204",
+    "PHE1003"
+   ],
+   "a@alert": [
+    "MXFU202"
+   ],
+   "h3@activity": [
+    "MXFU202",
+    "MXFU402",
+    "OSOH201",
+    "OSSM301",
+    "OSSM401",
+    "PHE1001"
+   ],
+   "h3@plain": [
+    "MXFU202",
+    "PES1005"
+   ],
+   "a@plain": [
+    "MXFU202",
+    "OSOH201"
+   ],
+   "h5@activity": [
+    "MXFU202"
+   ],
+   "clickDrop@plain": [
+    "OSAH501",
+    "OSBY401",
+    "OSBY501"
+   ],
+   "p@whakatauki": [
+    "OSBY101"
+   ],
+   "h4@plain": [
+    "OSBY101"
+   ],
+   "li@list": [
+    "OSGM101"
+   ],
+   "infoTrigger@plain": [
+    "OSSC401"
+   ],
+   "clickDrop@activity": [
+    "OSSC401"
+   ],
+   "clickDrop@alert": [
+    "OSSM301"
+   ],
+   "a@table": [
+    "OSSM401"
+   ]
+  },
+  "header|lesson content": {
+   "h1@plain": [
+    "MXFL203",
+    "MXFUN01"
+   ]
+  },
+  "menu|lesson content": {
+   "p@plain": [
+    "MXFL203"
+   ]
+  },
+  "body|embedded link": {
+   "p@activity": [
+    "MXFL203"
+   ]
+  },
+  "body|lesson content": {
+   "p@plain": [
+    "MXFL203"
+   ]
+  },
+  "body|lesson": {
+   "td@activity>table": [
+    "MXFL203",
+    "MXFU201"
+   ],
+   "h3@plain": [
+    "MXFL204",
+    "MXFU202",
+    "MXFUN01"
+   ],
+   "h3@activity": [
+    "MXFL204",
+    "MXFU202",
+    "MXFUN01",
+    "MXS1004"
+   ],
+   "td@table": [
+    "MXFL204"
+   ],
+   "a@activity": [
+    "MXFU202"
+   ],
+   "p@plain": [
+    "MXFUN01"
+   ],
+   "h2@activity": [
+    "MXFUN01"
+   ],
+   "h2@plain": [
+    "MXFUN01"
+   ],
+   "h1@plain": [
+    "MXFUN03"
+   ],
+   "td@activity>list>table": [
+    "PES1008"
+   ]
+  },
+  "body|insert table": {
+   "h4@plain": [
+    "MXFL203"
+   ],
+   "td@table": [
+    "MXFL203"
+   ],
+   "th@table": [
+    "MXFL203"
+   ]
+  },
+  "menu|over view": {
+   "p@plain": [
+    "MXFL204"
+   ]
+  },
+  "header|h4": {
+   "h1@plain": [
+    "MXFL204",
+    "MXFL302"
+   ]
+  },
+  "body|table": {
+   "th@table": [
+    "MXFL204",
+    "MXFU202"
+   ],
+   "td@table": [
+    "MXFL204",
+    "MXFU202",
+    "MXFU301",
+    "MXFU401"
+   ],
+   "th@activity": [
+    "MXFL204"
+   ],
+   "p@activity": [
+    "MXFU301"
+   ],
+   "p@plain": [
+    "MXFU401"
+   ],
+   "th@plain": [
+    "MXFU401"
+   ],
+   "p@alert": [
+    "MXFU401"
+   ]
+  },
+  "body|embed": {
+   "p@activity": [
+    "MXFL204",
+    "MXFU201"
+   ],
+   "a@activity": [
+    "MXFU202"
+   ],
+   "td@table": [
+    "MXS1004"
+   ],
+   "p@plain": [
+    "PES1005"
+   ],
+   "li@list": [
+    "PES1005"
+   ],
+   "p@alert": [
+    "PES1005"
+   ]
+  },
+  "body|external link": {
+   "p@activity": [
+    "MXFL204",
+    "MXFU201",
+    "MXFU202",
+    "MXFU401"
+   ],
+   "p@plain": [
+    "MXFL401",
+    "PES1002"
+   ]
+  },
+  "body|graph": {
+   "multiChoiceQuiz@activity": [
+    "MXFL204"
+   ]
+  },
+  "body|audio": {
+   "speechBubble@plain": [
+    "MXFL301"
+   ]
+  },
+  "body|h5": {
+   "flipCard@plain": [
+    "MXFL301"
+   ],
+   "h4@plain": [
+    "MXFL301",
+    "MXFU302",
+    "MXS1004"
+   ],
+   "infoTrigger@plain": [
+    "MXFL302"
+   ],
+   "h3@plain": [
+    "MXFL302"
+   ],
+   "p@plain": [
+    "MXFL302",
+    "MXFU301",
+    "MXFU302",
+    "MXS1004"
+   ],
+   "h3@activity": [
+    "MXFL302"
+   ],
+   "h4@alert": [
+    "MXFL302"
+   ],
+   "li@alert>list": [
+    "MXFL302"
+   ],
+   "h5@plain": [
+    "MXFU301",
+    "MXFU302"
+   ],
+   "h5@table": [
+    "MXFU301"
+   ],
+   "p@table": [
+    "MXFU301"
+   ],
+   "p@activity": [
+    "MXFU301",
+    "MXS1004"
+   ],
+   "carousel@plain": [
+    "MXFU301"
+   ]
+  },
+  "body|end other": {
+   "h3@activity": [
+    "MXFL301"
+   ],
+   "p@activity": [
+    "MXFL301",
+    "MXFL302",
+    "MXFU301"
+   ],
+   "multiChoiceQuiz@activity": [
+    "MXFL301"
+   ],
+   "td@table": [
+    "MXFL302"
+   ],
+   "carousel@activity": [
+    "MXFL302"
+   ],
+   "h4@activity": [
+    "MXFL302"
+   ],
+   "li@activity>list": [
+    "MXFL302"
+   ],
+   "dragAndDrop@activity": [
+    "MXFL302"
+   ]
+  },
+  "body|lesson overview": {
+   "h3@activity": [
+    "MXFL301",
+    "MXFL302",
+    "MXFU302",
+    "PES1007",
+    "PES1008"
+   ],
+   "h3@plain": [
+    "MXFL302"
+   ],
+   "accordion@plain": [
+    "MXFL302"
+   ],
+   "p@alert": [
+    "MXS1004"
+   ],
+   "carousel@plain": [
+    "MXS1004"
+   ],
+   "p@plain": [
+    "PES1002"
+   ],
+   "infoTrigger@plain": [
+    "PES1007",
+    "PES1008"
+   ],
+   "h2@plain": [
+    "PES1007",
+    "PES1008"
+   ]
+  },
+  "menu|end other": {
+   "li@list": [
+    "MXFL301"
+   ]
+  },
+  "body|close accordion": {
+   "p@activity": [
+    "MXFL301",
+    "MXFU301"
+   ],
+   "dropQuiz@activity": [
+    "MXFU301"
+   ]
+  },
+  "body|reveal answer": {
+   "p@plain": [
+    "MXFL301"
+   ],
+   "p@activity": [
+    "MXFL301"
+   ]
+  },
+  "body|close accordions": {
+   "p@activity": [
+    "MXFL301",
+    "MXFU301"
+   ],
+   "dragAndDrop@activity": [
+    "MXFL301"
+   ],
+   "multiChoiceQuiz@activity": [
+    "MXFL301",
+    "MXFU301"
+   ]
+  },
+  "body|close alert": {
+   "p@activity": [
+    "MXFL301"
+   ]
+  },
+  "body|from point a": {
+   "speechBubble@plain": [
+    "MXFL301"
+   ]
+  },
+  "body|from point f": {
+   "p@activity": [
+    "MXFL301"
+   ]
+  },
+  "body|click drop": {
+   "th@activity>table": [
+    "MXFL301"
+   ],
+   "clickDrop@plain": [
+    "MXFL302"
+   ],
+   "p@plain": [
+    "MXFL302"
+   ],
+   "flipCard@plain": [
+    "MXFL302"
+   ],
+   "clickDrop@activity": [
+    "MXFL302"
+   ]
+  },
+  "header|end other": {
+   "h1@plain": [
+    "MXFL302"
+   ]
+  },
+  "body|flip card": {
+   "hintSlider@plain": [
+    "MXFL302"
+   ],
+   "p@plain": [
+    "PES1003",
+    "PES1004"
+   ],
+   "h4@plain": [
+    "PES1003"
+   ]
+  },
+  "body|accordions end here": {
+   "p@activity": [
+    "MXFL302"
+   ]
+  },
+  "body|slide n": {
+   "h3@activity": [
+    "MXFL302"
+   ],
+   "clickDrop@plain": [
+    "MXFL302"
+   ],
+   "th@table": [
+    "MXFL302"
+   ],
+   "h5@table": [
+    "MXFU301"
+   ],
+   "carousel@plain": [
+    "MXFU302"
+   ],
+   "accordion@plain": [
+    "PES1002"
+   ]
+  },
+  "body|hover red text": {
+   "p@plain": [
+    "MXFL401",
+    "MXFU401"
+   ],
+   "td@table": [
+    "PHE1002"
+   ]
+  },
+  "body|word select": {
+   "speechBubble@plain": [
+    "MXFL401"
+   ],
+   "p@plain": [
+    "MXFL401"
+   ]
+  },
+  "body|list": {
+   "li@list": [
+    "MXFL401"
+   ],
+   "p@plain": [
+    "MXFL401"
+   ]
+  },
+  "body|tabs": {
+   "p@plain": [
+    "MXFL401"
+   ],
+   "tabs@plain": [
+    "PES1004",
+    "PES1008"
+   ]
+  },
+  "body|format": {
+   "h5@plain": [
+    "MXFL401"
+   ],
+   "p@plain": [
+    "MXFL401",
+    "PHE1003"
+   ]
+  },
+  "body|max 3 minutes": {
+   "p@whakatauki": [
+    "MXFU201"
+   ]
+  },
+  "body|interactivity activity": {
+   "h3@activity": [
+    "MXFU201"
+   ]
+  },
+  "menu|h3": {
+   "li@list": [
+    "MXFU201"
+   ]
+  },
+  "body|carousel": {
+   "p@activity": [
+    "MXFU201"
+   ],
+   "p@plain": [
+    "MXFU302",
+    "PES1003"
+   ],
+   "accordion@plain": [
+    "PES1001"
+   ],
+   "h4@plain": [
+    "PES1002"
+   ],
+   "h3@plain": [
+    "PES1002"
+   ]
+  },
+  "menu|module introduction": {
+   "li@list": [
+    "MXFU202"
+   ],
+   "tabs@plain": [
+    "PES1003",
+    "PES1004",
+    "PES1005"
+   ]
+  },
+  "menu|activity": {
+   "li@list": [
+    "MXFU202",
+    "MXFU301",
+    "PES1005"
+   ]
+  },
+  "body|rh side note": {
+   "p@activity": [
+    "MXFU202"
+   ]
+  },
+  "header|tab n": {
+   "h1@plain": [
+    "MXFU202"
+   ]
+  },
+  "body|tab n": {
+   "h3@plain": [
+    "MXFU202"
+   ],
+   "h4@plain": [
+    "MXFU202"
+   ],
+   "h4@activity": [
+    "MXFU202"
+   ],
+   "td@table": [
+    "MXFU301"
+   ],
+   "h3@activity": [
+    "MXFU301"
+   ],
+   "h5@plain": [
+    "PHE1003"
+   ]
+  },
+  "body|answer": {
+   "th@plain": [
+    "MXFU202"
+   ]
+  },
+  "body|webpage": {
+   "a@plain": [
+    "MXFU202"
+   ],
+   "p@activity": [
+    "MXFU202"
+   ],
+   "a@activity": [
+    "MXFU202"
+   ]
+  },
+  "body|yellow shirt girl": {
+   "speechBubble@plain": [
+    "MXFU301"
+   ]
+  },
+  "body|pink shirt girl": {
+   "th@table": [
+    "MXFU301"
+   ]
+  },
+  "body|close modal": {
+   "p@activity": [
+    "MXFU301"
+   ],
+   "typing@activity": [
+    "MXFU301"
+   ],
+   "td@table": [
+    "MXFU301"
+   ]
+  },
+  "body|click drop down": {
+   "clickDrop@plain": [
+    "MXFU301"
+   ]
+  },
+  "body|clip drop down": {
+   "clickDrop@plain": [
+    "MXFU301"
+   ]
+  },
+  "header|lesson overview": {
+   "h5@plain": [
+    "MXFU301"
+   ],
+   "li@list": [
+    "MXFU301"
+   ],
+   "h1@plain": [
+    "PES1008"
+   ]
+  },
+  "body|flowchart": {
+   "p@table": [
+    "MXFU301"
+   ]
+  },
+  "body|example": {
+   "p@activity": [
+    "MXFU302"
+   ]
+  },
+  "header|write in the boxes": {
+   "h1@plain": [
+    "MXFU401"
+   ]
+  },
+  "body|rhetoric question": {
+   "li@list": [
+    "MXFU401"
+   ]
+  },
+  "body|write in the boxes": {
+   "p@activity": [
+    "MXFU401"
+   ],
+   "typing@activity": [
+    "MXFU401"
+   ],
+   "p@plain": [
+    "MXFU401"
+   ]
+  },
+  "body|supervisor button": {
+   "p@plain": [
+    "MXFUN01"
+   ],
+   "p@activity": [
+    "MXFUN01"
+   ],
+   "p@alert": [
+    "MXFUN01"
+   ]
+  },
+  "body|type and check": {
+   "infoTrigger@plain": [
+    "MXFUN01"
+   ],
+   "typing@activity": [
+    "MXFUN01"
+   ],
+   "p@activity": [
+    "MXFUN01"
+   ]
+  },
+  "body|typing quiz": {
+   "p@activity": [
+    "MXFUN01"
+   ]
+  },
+  "body|end page": {
+   "h2@activity": [
+    "MXFUN01"
+   ],
+   "h2@plain": [
+    "MXFUN01"
+   ],
+   "p@plain": [
+    "MXFUN02",
+    "MXFUN03"
+   ],
+   "h3@plain": [
+    "MXFUN02",
+    "MXFUN03"
+   ],
+   "a@list": [
+    "MXS1004"
+   ],
+   "typing@activity": [
+    "PES1001"
+   ],
+   "a@activity": [
+    "PES1002"
+   ]
+  },
+  "body|iside important box rhs": {
+   "p@alert": [
+    "MXFUN01"
+   ]
+  },
+  "body|multi choice quiz": {
+   "clickDrop@activity": [
+    "MXFUN01"
+   ]
+  },
+  "menu|lesson": {
+   "h5@plain": [
+    "MXFUN03"
+   ]
+  },
+  "body|reorder": {
+   "reorder@activity": [
+    "MXFUN03"
+   ]
+  },
+  "body|side tab 4": {
+   "h1@plain": [
+    "MXFUN03"
+   ]
+  },
+  "body|whakatauki": {
+   "p@whakatauki": [
+    "MXS1004"
+   ]
+  },
+  "body|drag and drop task": {
+   "p@activity": [
+    "MXS1004"
+   ],
+   "dragAndDrop@activity>list": [
+    "MXS1004"
+   ]
+  },
+  "body|info trigger": {
+   "p@plain": [
+    "MXS1004",
+    "PES1002",
+    "PES1007"
+   ],
+   "p@alert": [
+    "MXS1004"
+   ],
+   "li@list": [
+    "PES1002"
+   ],
+   "accordion@plain": [
+    "PES1002"
+   ],
+   "flipCard@plain": [
+    "PES1007"
+   ]
+  },
+  "body|drag and drop images": {
+   "h3@activity": [
+    "MXS1004"
+   ],
+   "p@activity": [
+    "MXS1004"
+   ],
+   "dragAndDrop@activity": [
+    "MXS1004"
+   ]
+  },
+  "body|radio quiz": {
+   "h2@plain": [
+    "MXS1004"
+   ],
+   "p@plain": [
+    "MXS1004"
+   ],
+   "h3@activity": [
+    "MXS1004"
+   ]
+  },
+  "body|drag and drop match": {
+   "p@activity": [
+    "MXS1004"
+   ]
+  },
+  "menu|end page": {
+   "li@list": [
+    "MXS1004"
+   ]
+  },
+  "body|memory game": {
+   "p@activity": [
+    "MXS1004"
+   ]
+  },
+  "header|end page": {
+   "h1@plain": [
+    "MXS1004"
+   ]
+  },
+  "body|mcq": {
+   "multiChoiceQuiz@activity": [
+    "MXS1004"
+   ]
+  },
+  "acks|title bar": {
+   "accordion@plain": [
+    "OSAI501",
+    "OSOH401",
+    "OSSC401",
+    "OSSC501",
+    "OSSM401"
+   ]
+  },
+  "body|h1": {
+   "h3@activity": [
+    "PES1001",
+    "PES1004",
+    "PES1005"
+   ],
+   "h3@plain": [
+    "PES1004"
+   ],
+   "li@alert>list": [
+    "PES1004"
+   ],
+   "p@plain": [
+    "PES1004"
+   ]
+  },
+  "body|flip card activity": {
+   "flipCard@plain": [
+    "PES1001"
+   ]
+  },
+  "body|expand": {
+   "h3@plain": [
+    "PES1001"
+   ],
+   "accordion@plain": [
+    "PES1001"
+   ]
+  },
+  "body|dropdown": {
+   "p@activity": [
+    "PES1002"
+   ],
+   "dropQuiz@activity": [
+    "PES1002"
+   ],
+   "dragAndDrop@activity": [
+    "PES1002"
+   ]
+  },
+  "menu|h1": {
+   "li@list": [
+    "PES1002",
+    "PES1004"
+   ]
+  },
+  "menu|dropdown": {
+   "li@list": [
+    "PES1002"
+   ]
+  },
+  "header|image": {
+   "h1@plain": [
+    "PES1002"
+   ]
+  },
+  "body|mix match or quiz": {
+   "h3@activity": [
+    "PES1004"
+   ]
+  },
+  "body|shape n": {
+   "p@activity": [
+    "PES1004"
+   ]
+  },
+  "body|learning journal": {
+   "p@activity": [
+    "PES1004"
+   ]
+  },
+  "body|key points": {
+   "li@alert>list": [
+    "PES1004"
+   ]
+  },
+  "header|drag drop activity": {
+   "h1@plain": [
+    "PES1004"
+   ]
+  },
+  "body|drag drop activity": {
+   "h3@activity": [
+    "PES1004"
+   ]
+  },
+  "body|mix and match": {
+   "p@activity": [
+    "PES1004"
+   ]
+  },
+  "menu|video": {
+   "li@list": [
+    "PES1005"
+   ]
+  },
+  "body|highlighted quote": {
+   "p@plain": [
+    "PES1005"
+   ]
+  },
+  "body|imbedded image": {
+   "p@plain": [
+    "PES1007"
+   ]
+  },
+  "body|text box": {
+   "p@alert": [
+    "PES1007"
+   ],
+   "p@alert>list": [
+    "PES1007"
+   ],
+   "p@plain": [
+    "PES1007"
+   ]
+  },
+  "menu|info trigger": {
+   "li@list": [
+    "PES1007"
+   ]
+  },
+  "body|pop out info box image": {
+   "td@table": [
+    "PES1008"
+   ]
+  },
+  "body|type answer activity": {
+   "p@activity": [
+    "PHE1001"
+   ]
+  },
+  "body|instructional video": {
+   "p@activity": [
+    "PHE1002"
+   ]
+  },
+  "header|hover over definition see": {
+   "h1@plain": [
+    "PHE1005"
+   ]
+  },
+  "body|slider": {
+   "h3@activity": [
+    "PHE1005"
+   ]
+  }
+ }
+}

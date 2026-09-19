@@ -1,0 +1,2524 @@
+{
+ "counts": {
+  "header|title bar": {
+   "h1@plain": 35
+  },
+  "menu|h2": {
+   "tabs@plain": 2,
+   "p@plain": 21,
+   "li@list": 103,
+   "h5@plain": 14
+  },
+  "body|body": {
+   "p@whakatauki": 6,
+   "p@plain": 473,
+   "li@list": 161,
+   "infoTrigger@plain": 9,
+   "h3@activity": 18,
+   "h3@plain": 2,
+   "th@table": 3,
+   "td@table": 3,
+   "p@activity": 159,
+   "tabs@plain": 2,
+   "accordion@plain": 4,
+   "multiChoiceQuiz@activity": 3,
+   "a@alert": 1,
+   "td@activity>table": 5,
+   "h4@plain": 3,
+   "p@alert": 10,
+   "li@activity>list": 84,
+   "dragAndDrop@activity": 3,
+   "h5@activity": 2,
+   "speechBubble@plain": 4,
+   "p@activity>alert": 4,
+   "dropQuiz@activity": 3,
+   "a@activity": 1,
+   "infoTrigger@activity": 1,
+   "carousel@plain": 5,
+   "flipCard@plain": 10,
+   "li@alert>list": 6,
+   "carousel@activity": 2,
+   "flipCard@activity": 11,
+   "wordHighlighter@activity": 1,
+   "li@plain": 3,
+   "h4@alert": 3,
+   "speechBubble@alert": 1,
+   "clickDrop@plain": 4,
+   "h5@plain": 1,
+   "infoTrigger@activity>list": 1
+  },
+  "body|activity": {
+   "p@activity": 58,
+   "radioQuiz@activity": 2,
+   "infoTrigger@plain": 11,
+   "a@activity": 4,
+   "h3@activity": 25,
+   "flipCard@activity": 1,
+   "h4@activity": 1,
+   "li@activity>list": 48,
+   "infoTrigger@alert": 2,
+   "dropQuiz@activity": 1,
+   "p@plain": 6,
+   "li@alert": 22,
+   "a@alert": 6,
+   "dragAndDrop@activity": 2,
+   "p@alert": 4,
+   "h5@activity": 2,
+   "multiChoiceQuiz@activity": 18,
+   "speechBubble@activity": 1
+  },
+  "header|h2": {
+   "h1@plain": 9
+  },
+  "body|h3": {
+   "h3@plain": 101,
+   "p@plain": 25,
+   "infoTrigger@plain": 7,
+   "h3@activity": 84,
+   "th@table": 2,
+   "a@plain": 14,
+   "clickDrop@plain": 2,
+   "h4@plain": 17,
+   "a@alert": 2,
+   "h4@alert": 7,
+   "p@activity": 4,
+   "a@activity": 1,
+   "li@activity>list": 1,
+   "li@list": 14,
+   "accordion@plain": 1,
+   "tabs@plain": 2,
+   "dragAndDrop@activity": 1,
+   "carousel@plain": 1,
+   "h2@plain": 9
+  },
+  "body|hover red text": {
+   "p@plain": 3
+  },
+  "body|h2": {
+   "h3@activity": 32,
+   "h3@plain": 24,
+   "a@plain": 2,
+   "h2@activity": 1,
+   "p@activity": 15,
+   "clickDrop@activity": 1,
+   "td@activity>table": 4,
+   "li@activity>list": 6,
+   "h4@plain": 7,
+   "th@activity>table": 2,
+   "a@activity": 9,
+   "h2@plain": 47,
+   "p@plain": 19,
+   "h4@activity": 3,
+   "li@list": 10,
+   "a@list": 1,
+   "td@alert>table": 1,
+   "td@activity>list>table": 2,
+   "td@table": 13,
+   "li@activity": 1,
+   "dragAndDrop@activity": 1,
+   "h3@alert": 2,
+   "h5@activity": 1,
+   "flipCard@activity": 3,
+   "infoTrigger@activity": 1,
+   "infoTrigger@plain": 3,
+   "clickDrop@plain": 6,
+   "p@activity>alert": 1
+  },
+  "body|data marker": {
+   "typing@activity": 3,
+   "carousel@plain": 5,
+   "p@plain": 1,
+   "p@activity": 8,
+   "flipCard@plain": 5
+  },
+  "body|hover give details of": {
+   "td@table": 1,
+   "li@list": 2,
+   "p@plain": 1
+  },
+  "body|hover talk through": {
+   "td@table": 1,
+   "p@plain": 1,
+   "li@list": 1
+  },
+  "header|body": {
+   "h1@plain": 3
+  },
+  "body|module introduction": {
+   "p@whakatauki": 2
+  },
+  "header|h3": {
+   "h1@plain": 4
+  },
+  "body|image": {
+   "p@plain": 88,
+   "li@list": 45,
+   "td@table": 9,
+   "a@plain": 1,
+   "multiChoiceQuiz@activity": 3,
+   "p@activity": 30,
+   "li@activity>list": 17,
+   "dragAndDrop@activity": 5,
+   "h3@activity": 10,
+   "clickDrop@activity": 2,
+   "flipCard@activity": 4,
+   "li@alert>list": 6,
+   "p@alert": 2,
+   "reorder@activity": 1,
+   "carousel@activity": 1,
+   "h4@plain": 1,
+   "radioQuiz@activity": 1,
+   "carousel@plain": 3,
+   "h3@plain": 1,
+   "infoTrigger@plain": 1,
+   "p@table": 3,
+   "p@whakatauki": 1,
+   "selectionBox@activity": 2,
+   "speechBubble@activity": 5,
+   "clickDrop@plain": 5,
+   "th@activity>table": 1,
+   "accordion@plain": 6,
+   "h2@plain": 4
+  },
+  "body|hover customs": {
+   "p@plain": 1,
+   "li@list": 4
+  },
+  "body|dropdown": {
+   "p@activity": 2,
+   "h3@activity": 1,
+   "td@table": 2
+  },
+  "body|accordion": {
+   "h3@activity": 1,
+   "li@list": 1,
+   "accordion@plain": 2
+  },
+  "body|merge existing material": {
+   "p@activity": 1
+  },
+  "body|alert": {
+   "p@alert": 60,
+   "h3@activity": 2,
+   "p@plain": 23,
+   "p@activity>alert": 2,
+   "accordion@activity": 1,
+   "p@activity": 1,
+   "h5@activity": 1,
+   "li@activity>list": 2,
+   "li@list": 2,
+   "h3@alert": 1,
+   "p@whakatauki": 3,
+   "h4@alert": 3,
+   "li@alert>list": 9
+  },
+  "body|heading": {
+   "flipCard@plain": 2,
+   "accordion@plain": 1,
+   "clickDrop@plain": 2,
+   "h4@plain": 2,
+   "p@plain": 1
+  },
+  "body|button": {
+   "a@activity": 101,
+   "p@activity": 6,
+   "dropQuiz@activity": 1,
+   "h3@plain": 2,
+   "multiChoiceQuiz@activity>list": 6,
+   "infoTrigger@plain": 1,
+   "h3@activity": 16,
+   "p@plain": 7,
+   "speechBubble@activity": 2
+  },
+  "header|individual activity": {
+   "h1@plain": 2
+  },
+  "body|individual activity": {
+   "h3@activity": 6
+  },
+  "body|dev red text": {
+   "reorder@activity": 1
+  },
+  "body|typing quiz": {
+   "p@activity": 1
+  },
+  "body|reorder": {
+   "p@activity": 1
+  },
+  "body|hover gods": {
+   "p@plain": 1
+  },
+  "body|hover atua": {
+   "p@plain": 1
+  },
+  "body|hover t karo": {
+   "p@plain": 1
+  },
+  "body|external link to the story": {
+   "p@plain": 1,
+   "a@plain": 1
+  },
+  "body|journal activity": {
+   "h3@activity": 1,
+   "p@activity": 1
+  },
+  "body|self marked": {
+   "flipCard@plain": 7,
+   "p@activity": 1,
+   "dragAndDrop@activity": 1
+  },
+  "body|hover games": {
+   "p@plain": 1
+  },
+  "body|hover sacred": {
+   "p@plain": 1
+  },
+  "body|important": {
+   "p@activity": 2,
+   "p@alert": 1,
+   "li@alert>list": 4,
+   "infoTrigger@activity": 2
+  },
+  "body|h1": {
+   "clickDrop@plain": 1,
+   "h4@plain": 5,
+   "p@plain": 1,
+   "h3@activity": 1,
+   "h3@plain": 5
+  },
+  "body|dev correct answer in red": {
+   "p@activity": 1
+  },
+  "body|title bar": {
+   "h3@activity": 18,
+   "td@table": 2,
+   "h3@plain": 12,
+   "th@table": 3,
+   "p@plain": 29,
+   "h5@plain": 10,
+   "li@list": 16,
+   "a@activity": 5,
+   "h4@activity": 3,
+   "h2@plain": 10,
+   "h5@alert": 1,
+   "h4@plain": 2,
+   "p@activity": 8,
+   "clickDrop@activity": 1,
+   "li@activity>list": 10,
+   "imageLabel@plain": 1,
+   "clickDrop@plain": 4,
+   "infoTrigger@plain": 2,
+   "h5@activity": 1,
+   "li@alert>list": 6,
+   "li@activity>list>table>list": 1,
+   "audioTrigger@activity": 2,
+   "dragAndDrop@activity": 6,
+   "carousel@activity": 1,
+   "audioTrigger@activity>table": 2,
+   "multiChoiceQuiz@activity": 2,
+   "wordSelect@activity": 1,
+   "reorder@activity": 6,
+   "selfCheck@activity": 4,
+   "td@activity>table": 1,
+   "flipCard@activity": 3
+  },
+  "body|carousel": {
+   "h3@activity": 1
+  },
+  "body|also 37 53": {
+   "li@activity>list": 1
+  },
+  "menu|image": {
+   "li@list": 10,
+   "h5@plain": 1
+  },
+  "body|external link": {
+   "p@plain": 8,
+   "li@activity>list": 4,
+   "h3@plain": 1,
+   "a@plain": 1,
+   "h3@activity": 2,
+   "clickDrop@activity": 2,
+   "td@table": 1,
+   "p@alert": 2,
+   "p@activity": 2,
+   "li@list": 1,
+   "h4@plain": 1
+  },
+  "menu|external link": {
+   "li@list": 2
+  },
+  "header|lesson content": {
+   "h1@plain": 2
+  },
+  "body|shape n": {
+   "p@plain": 9,
+   "h3@plain": 4
+  },
+  "body|h4": {
+   "h4@plain": 9,
+   "h3@plain": 2,
+   "h3@activity": 10,
+   "h5@plain": 3,
+   "th@table": 2,
+   "h5@alert": 1,
+   "clickDrop@plain": 9,
+   "h4@activity": 2,
+   "p@plain": 11,
+   "li@list": 11
+  },
+  "body|table": {
+   "h3@activity": 3,
+   "td@table": 4
+  },
+  "body|text box": {
+   "p@alert": 4,
+   "p@plain": 1
+  },
+  "body|answer": {
+   "a@plain": 1,
+   "td@table": 2,
+   "dragAndDrop@activity": 1
+  },
+  "menu|lesson overview": {
+   "h5@plain": 12,
+   "li@list": 3
+  },
+  "body|end page": {
+   "td@activity>table": 2,
+   "td@table": 1,
+   "h3@activity": 2,
+   "infoTrigger@activity": 1,
+   "p@plain": 11,
+   "h3@plain": 11
+  },
+  "body|lesson overview": {
+   "p@plain": 4,
+   "a@list": 1,
+   "li@list": 1,
+   "p@activity": 1
+  },
+  "header|lesson": {
+   "h1@plain": 2
+  },
+  "body|lesson": {
+   "h4@plain": 1,
+   "h3@activity": 1,
+   "li@activity>list": 2
+  },
+  "header|lesson overview": {
+   "h1@plain": 2
+  },
+  "body|word select": {
+   "p@whakatauki": 2
+  },
+  "body|rollover family": {
+   "p@activity": 2
+  },
+  "body|option": {
+   "infoTrigger@activity": 1
+  },
+  "body|insert button pop out title": {
+   "h5@activity": 1
+  },
+  "body|video": {
+   "p@plain": 12,
+   "h5@activity": 4,
+   "h3@activity": 1,
+   "accordion@plain": 1
+  },
+  "body|insert story title": {
+   "a@plain": 1
+  },
+  "body|instruction": {
+   "speechBubble@plain": 1
+  },
+  "body|insert important statement": {
+   "p@alert": 1
+  },
+  "body|insert mtk autograded quiz": {
+   "p@activity": 3
+  },
+  "body|insert alert": {
+   "h4@plain": 1,
+   "p@plain": 1
+  },
+  "body|insert alert box": {
+   "p@plain": 2
+  },
+  "body|insert flip card": {
+   "flipCard@plain": 1
+  },
+  "body|tab n": {
+   "accordion@plain": 1,
+   "p@plain": 17,
+   "h3@plain": 6,
+   "clickDrop@plain": 3,
+   "h3@activity": 2,
+   "li@list": 4,
+   "h2@plain": 1,
+   "infoTrigger@plain": 1
+  },
+  "body|insert flip cards": {
+   "flipCard@plain": 4
+  },
+  "body|insert important alert": {
+   "h4@alert": 2
+  },
+  "body|insert quiz button": {
+   "h3@activity": 2,
+   "p@activity": 2,
+   "dropQuiz@activity": 1
+  },
+  "body|rollover definition actions": {
+   "p@plain": 1
+  },
+  "body|insert carousel": {
+   "p@plain": 2
+  },
+  "body|lesson content": {
+   "p@plain": 1
+  },
+  "body|insert rollover red text": {
+   "li@list": 1
+  },
+  "body|roll over definition child": {
+   "carousel@plain": 1
+  },
+  "body|roll over definition 1000kg": {
+   "p@plain": 1
+  },
+  "menu|h3": {
+   "li@list": 3,
+   "h5@plain": 1
+  },
+  "menu|body": {
+   "li@list": 4,
+   "p@plain": 2
+  },
+  "body|rhs alert": {
+   "p@alert": 1
+  },
+  "body|insert embedded activity": {
+   "p@activity": 1
+  },
+  "menu|title bar": {
+   "li@list": 1
+  },
+  "acks|title bar": {
+   "accordion@plain": 2
+  },
+  "header|h1": {
+   "h1@plain": 7
+  },
+  "body|end other": {
+   "p@plain": 17,
+   "h3@plain": 17
+  },
+  "body|mcq": {
+   "p@plain": 2,
+   "h3@plain": 2,
+   "infoTrigger@activity": 1,
+   "flipCard@activity": 5,
+   "h5@activity": 1,
+   "th@table": 1,
+   "h4@plain": 4
+  },
+  "body|info trigger": {
+   "li@list": 26,
+   "p@plain": 17,
+   "p@activity": 1
+  },
+  "body|supervisor note": {
+   "p@plain": 1,
+   "li@list": 1
+  },
+  "body|speech bubble": {
+   "speechBubble@plain": 2,
+   "carousel@plain": 4,
+   "p@plain": 4
+  },
+  "body|hover trigger a": {
+   "flipCard@activity": 1,
+   "h5@activity": 1
+  },
+  "body|modal": {
+   "p@plain": 2,
+   "tabs@plain": 1
+  },
+  "body|hover trigger s": {
+   "h5@activity": 1
+  },
+  "body|hover trigger c": {
+   "h5@activity": 1
+  },
+  "body|hover trigger m": {
+   "h5@activity": 1
+  },
+  "body|hover trigger p": {
+   "h5@activity": 1
+  },
+  "body|hover trigger e": {
+   "h5@activity": 1
+  },
+  "body|thinking bubble": {
+   "speechBubble@plain": 2
+  },
+  "body|click drop": {
+   "h4@plain": 2,
+   "p@plain": 1
+  },
+  "body|alertrhs": {
+   "p@alert": 1
+  },
+  "body|page": {
+   "p@plain": 1,
+   "h3@plain": 1
+  },
+  "body|hover definition red text": {
+   "p@plain": 4,
+   "li@list": 3
+  },
+  "body|rhs image opposite text below": {
+   "p@plain": 1,
+   "li@list": 3
+  },
+  "menu|alert": {
+   "p@plain": 2
+  },
+  "body|back": {
+   "p@plain": 2,
+   "carousel@plain": 1,
+   "p@activity": 1
+  },
+  "body|flip card": {
+   "p@plain": 1
+  },
+  "body|hover work together": {
+   "p@plain": 1
+  },
+  "menu|activity": {
+   "li@list": 1
+  },
+  "body|insert media item rhs of text": {
+   "accordion@plain": 2
+  },
+  "body|insert rhs": {
+   "p@plain": 2
+  },
+  "body|insert image rhs of text": {
+   "accordion@plain": 1
+  }
+ },
+ "examples": {
+  "header|title bar": {
+   "h1@plain": [
+    "PHE1006",
+    "PHE1007",
+    "PHE1008",
+    "SCFUN01",
+    "SPA1004",
+    "SSFUN01",
+    "SSFUN03",
+    "SSFUN05",
+    "SSFUN06",
+    "SSFUN07",
+    "SSFUN08",
+    "SSOG101",
+    "SSOG301",
+    "TEDC402",
+    "TEFUN01",
+    "TEFUN03",
+    "TEFUN04",
+    "TWHA902",
+    "TWHA903"
+   ]
+  },
+  "menu|h2": {
+   "tabs@plain": [
+    "PHE1006",
+    "SPA1004"
+   ],
+   "p@plain": [
+    "SPA1004",
+    "TWHA901",
+    "TWHA902",
+    "TWHA903",
+    "TWHA904",
+    "TWHA905"
+   ],
+   "li@list": [
+    "SPA1004",
+    "SSOG101",
+    "TWHA901",
+    "TWHA902",
+    "TWHA903",
+    "TWHA904",
+    "TWHA905"
+   ],
+   "h5@plain": [
+    "SPA1004",
+    "TWHA901",
+    "TWHA905"
+   ]
+  },
+  "body|body": {
+   "p@whakatauki": [
+    "PHE1006",
+    "PHE1007",
+    "PNR107",
+    "TWHA905"
+   ],
+   "p@plain": [
+    "PHE1006",
+    "PHE1007",
+    "PHE1008",
+    "PNR107",
+    "SCFUN01",
+    "SSFUN01",
+    "SSFUN02",
+    "SSFUN03",
+    "SSFUN05",
+    "SSFUN06",
+    "SSFUN07",
+    "SSFUN08",
+    "SSOG101",
+    "SSOG301",
+    "TEFUN01",
+    "TEFUN02",
+    "TEFUN03",
+    "TEFUN04",
+    "TEFUN05",
+    "TEFUN06",
+    "TEFUN07",
+    "TEFUN08",
+    "TWHA901",
+    "TWHA902",
+    "TWHA903",
+    "TWHA904",
+    "TWHA905"
+   ],
+   "li@list": [
+    "PHE1006",
+    "PHE1007",
+    "PHE1008",
+    "SSFUN01",
+    "SSFUN02",
+    "SSFUN07",
+    "TEFUN01",
+    "TEFUN02",
+    "TEFUN03",
+    "TEFUN04",
+    "TEFUN05",
+    "TEFUN07",
+    "TEFUN08",
+    "TWHA901",
+    "TWHA902",
+    "TWHA903",
+    "TWHA904",
+    "TWHA905"
+   ],
+   "infoTrigger@plain": [
+    "PHE1006",
+    "SSFUN06",
+    "TEFUN04",
+    "TEFUN05"
+   ],
+   "h3@activity": [
+    "PHE1006",
+    "PHE1008",
+    "SSFUN01",
+    "SSOG301",
+    "TWHA901",
+    "TWHA902",
+    "TWHA903"
+   ],
+   "h3@plain": [
+    "PHE1006",
+    "TWHA901"
+   ],
+   "th@table": [
+    "PHE1006"
+   ],
+   "td@table": [
+    "PHE1006",
+    "SPA1004"
+   ],
+   "p@activity": [
+    "PHE1007",
+    "PHE1008",
+    "PNR107",
+    "SCFUN01",
+    "SSFUN01",
+    "SSFUN02",
+    "SSFUN03",
+    "SSFUN05",
+    "SSFUN06",
+    "SSFUN07",
+    "SSFUN08",
+    "SSOG101",
+    "SSOG301",
+    "TEFUN01",
+    "TEFUN02",
+    "TEFUN03",
+    "TEFUN04",
+    "TEFUN05",
+    "TEFUN06",
+    "TWHA901",
+    "TWHA902",
+    "TWHA904",
+    "TWHA905"
+   ],
+   "tabs@plain": [
+    "PHE1007",
+    "TEFUN05"
+   ],
+   "accordion@plain": [
+    "PHE1007",
+    "TEFUN01",
+    "TWHA905"
+   ],
+   "multiChoiceQuiz@activity": [
+    "PHE1008",
+    "SCFUN01",
+    "SSFUN01"
+   ],
+   "a@alert": [
+    "PHE1008"
+   ],
+   "td@activity>table": [
+    "SPA1004"
+   ],
+   "h4@plain": [
+    "SPA1004",
+    "TWHA901",
+    "TWHA902"
+   ],
+   "p@alert": [
+    "SSFUN01",
+    "SSFUN02",
+    "SSFUN03",
+    "SSFUN07",
+    "TEFUN05",
+    "TWHA905"
+   ],
+   "li@activity>list": [
+    "SSFUN01",
+    "SSFUN02",
+    "SSFUN06",
+    "SSFUN07",
+    "SSFUN08",
+    "SSOG101",
+    "TEFUN01",
+    "TEFUN02",
+    "TEFUN05",
+    "TEFUN06",
+    "TWHA901",
+    "TWHA904"
+   ],
+   "dragAndDrop@activity": [
+    "SSFUN01",
+    "TWHA904",
+    "TWHA905"
+   ],
+   "h5@activity": [
+    "SSFUN01",
+    "SSFUN02"
+   ],
+   "speechBubble@plain": [
+    "SSFUN02",
+    "TEFUN02",
+    "TEFUN03",
+    "TEFUN06"
+   ],
+   "p@activity>alert": [
+    "SSFUN02"
+   ],
+   "dropQuiz@activity": [
+    "SSFUN02"
+   ],
+   "a@activity": [
+    "SSFUN06"
+   ],
+   "infoTrigger@activity": [
+    "SSFUN06"
+   ],
+   "carousel@plain": [
+    "SSFUN07",
+    "TEFUN03",
+    "TEFUN06",
+    "TWHA901",
+    "TWHA905"
+   ],
+   "flipCard@plain": [
+    "SSFUN07",
+    "TEFUN02"
+   ],
+   "li@alert>list": [
+    "SSFUN07",
+    "TEFUN05"
+   ],
+   "carousel@activity": [
+    "SSFUN07",
+    "TEFUN06"
+   ],
+   "flipCard@activity": [
+    "SSOG101",
+    "TEFUN03"
+   ],
+   "wordHighlighter@activity": [
+    "SSOG101"
+   ],
+   "li@plain": [
+    "TEFUN03"
+   ],
+   "h4@alert": [
+    "TEFUN05"
+   ],
+   "speechBubble@alert": [
+    "TEFUN05"
+   ],
+   "clickDrop@plain": [
+    "TEFUN08",
+    "TWHA901",
+    "TWHA902"
+   ],
+   "h5@plain": [
+    "TWHA902"
+   ],
+   "infoTrigger@activity>list": [
+    "TWHA904"
+   ]
+  },
+  "body|activity": {
+   "p@activity": [
+    "PHE1006",
+    "PHE1008",
+    "SCFUN01",
+    "SSFUN02",
+    "SSFUN05",
+    "SSFUN06",
+    "SSFUN08",
+    "TEFUN03",
+    "TEFUN04",
+    "TWHA901",
+    "TWHA902",
+    "TWHA903",
+    "TWHA904",
+    "TWHA905"
+   ],
+   "radioQuiz@activity": [
+    "PHE1006",
+    "TWHA903"
+   ],
+   "infoTrigger@plain": [
+    "PHE1008"
+   ],
+   "a@activity": [
+    "PHE1008",
+    "SSFUN06",
+    "SSOG101"
+   ],
+   "h3@activity": [
+    "SCFUN01",
+    "SSOG101",
+    "TEFUN03",
+    "TEFUN04",
+    "TWHA902",
+    "TWHA903",
+    "TWHA904",
+    "TWHA905"
+   ],
+   "flipCard@activity": [
+    "SCFUN01"
+   ],
+   "h4@activity": [
+    "SCFUN01"
+   ],
+   "li@activity>list": [
+    "SCFUN01",
+    "SSFUN05",
+    "SSFUN08",
+    "TWHA901",
+    "TWHA902",
+    "TWHA903",
+    "TWHA904",
+    "TWHA905"
+   ],
+   "infoTrigger@alert": [
+    "SCFUN01"
+   ],
+   "dropQuiz@activity": [
+    "SSFUN02"
+   ],
+   "p@plain": [
+    "SSFUN02",
+    "SSFUN06",
+    "SSFUN08",
+    "TWHA903"
+   ],
+   "li@alert": [
+    "SSFUN05"
+   ],
+   "a@alert": [
+    "SSFUN05"
+   ],
+   "dragAndDrop@activity": [
+    "SSFUN05",
+    "TWHA902"
+   ],
+   "p@alert": [
+    "SSFUN05",
+    "SSFUN08"
+   ],
+   "h5@activity": [
+    "TEFUN08"
+   ],
+   "multiChoiceQuiz@activity": [
+    "TWHA901"
+   ],
+   "speechBubble@activity": [
+    "TWHA902"
+   ]
+  },
+  "header|h2": {
+   "h1@plain": [
+    "PHE1006",
+    "PHE1007",
+    "SSOG101",
+    "SSOG301"
+   ]
+  },
+  "body|h3": {
+   "h3@plain": [
+    "PHE1006",
+    "PHE1007",
+    "PHE1008",
+    "SSFUN02",
+    "SSFUN03",
+    "SSFUN05",
+    "SSFUN06",
+    "SSFUN08",
+    "SSOG101",
+    "SSOG301",
+    "TEFUN02",
+    "TEFUN03",
+    "TEFUN04",
+    "TEFUN05",
+    "TEFUN06",
+    "TEFUN07",
+    "TEFUN08",
+    "TWHA902"
+   ],
+   "p@plain": [
+    "PHE1006",
+    "SSFUN02",
+    "SSFUN03",
+    "TEFUN02",
+    "TEFUN06",
+    "TEFUN08",
+    "TWHA901",
+    "TWHA902"
+   ],
+   "infoTrigger@plain": [
+    "PHE1006",
+    "PHE1008",
+    "SSOG301",
+    "TEFUN03",
+    "TEFUN07"
+   ],
+   "h3@activity": [
+    "PHE1007",
+    "PHE1008",
+    "PNR107",
+    "SSFUN01",
+    "SSFUN02",
+    "SSFUN03",
+    "SSFUN05",
+    "SSFUN06",
+    "SSFUN08",
+    "SSOG301",
+    "TEFUN01",
+    "TEFUN02",
+    "TEFUN03",
+    "TEFUN05",
+    "TEFUN06"
+   ],
+   "th@table": [
+    "PHE1007",
+    "TEFUN08"
+   ],
+   "a@plain": [
+    "PHE1008",
+    "SSFUN02",
+    "TEFUN03",
+    "TEFUN08"
+   ],
+   "clickDrop@plain": [
+    "PHE1008"
+   ],
+   "h4@plain": [
+    "PHE1008",
+    "PNR107",
+    "SSFUN02",
+    "SSFUN03",
+    "TEFUN01",
+    "TEFUN02",
+    "TEFUN03",
+    "TEFUN05",
+    "TWHA902"
+   ],
+   "a@alert": [
+    "SSFUN02",
+    "TEFUN08"
+   ],
+   "h4@alert": [
+    "SSFUN02",
+    "SSFUN03"
+   ],
+   "p@activity": [
+    "SSFUN02",
+    "TEFUN05",
+    "TEFUN06"
+   ],
+   "a@activity": [
+    "SSFUN02"
+   ],
+   "li@activity>list": [
+    "SSFUN02"
+   ],
+   "li@list": [
+    "SSFUN08"
+   ],
+   "accordion@plain": [
+    "SSOG101"
+   ],
+   "tabs@plain": [
+    "TEFUN01"
+   ],
+   "dragAndDrop@activity": [
+    "TEFUN06"
+   ],
+   "carousel@plain": [
+    "TEFUN08"
+   ],
+   "h2@plain": [
+    "TWHA901",
+    "TWHA904",
+    "TWHA905"
+   ]
+  },
+  "body|hover red text": {
+   "p@plain": [
+    "PHE1006",
+    "TWHA905"
+   ]
+  },
+  "body|h2": {
+   "h3@activity": [
+    "PHE1006",
+    "PNR107",
+    "SPA1004",
+    "SSFUN01",
+    "SSFUN02",
+    "SSFUN05",
+    "SSFUN07",
+    "TEFUN04",
+    "TEFUN05",
+    "TEFUN08",
+    "TWHA901",
+    "TWHA902",
+    "TWHA903"
+   ],
+   "h3@plain": [
+    "PHE1007",
+    "PHE1008",
+    "SPA1004",
+    "SSFUN05",
+    "SSFUN07",
+    "SSFUN08",
+    "TEFUN01",
+    "TEFUN03",
+    "TEFUN04",
+    "TEFUN05"
+   ],
+   "a@plain": [
+    "PHE1007",
+    "TEFUN08"
+   ],
+   "h2@activity": [
+    "PNR107"
+   ],
+   "p@activity": [
+    "PNR107",
+    "SPA1004",
+    "SSFUN01",
+    "TWHA903"
+   ],
+   "clickDrop@activity": [
+    "SPA1004"
+   ],
+   "td@activity>table": [
+    "SPA1004"
+   ],
+   "li@activity>list": [
+    "SPA1004",
+    "SSFUN07",
+    "TWHA901"
+   ],
+   "h4@plain": [
+    "SPA1004",
+    "TEFUN03"
+   ],
+   "th@activity>table": [
+    "SPA1004"
+   ],
+   "a@activity": [
+    "SPA1004"
+   ],
+   "h2@plain": [
+    "SPA1004",
+    "SSFUN02",
+    "SSFUN03",
+    "SSFUN06",
+    "SSFUN08",
+    "TEFUN03",
+    "TEFUN04",
+    "TEFUN05",
+    "TEFUN06",
+    "TEFUN07",
+    "TEFUN08",
+    "TWHA901",
+    "TWHA903",
+    "TWHA904"
+   ],
+   "p@plain": [
+    "SPA1004",
+    "SSFUN06",
+    "SSFUN07",
+    "SSFUN08",
+    "TWHA901",
+    "TWHA903",
+    "TWHA904"
+   ],
+   "h4@activity": [
+    "SPA1004"
+   ],
+   "li@list": [
+    "SPA1004",
+    "TWHA903"
+   ],
+   "a@list": [
+    "SPA1004"
+   ],
+   "td@alert>table": [
+    "SPA1004"
+   ],
+   "td@activity>list>table": [
+    "SPA1004"
+   ],
+   "td@table": [
+    "SPA1004"
+   ],
+   "li@activity": [
+    "SPA1004"
+   ],
+   "dragAndDrop@activity": [
+    "SPA1004"
+   ],
+   "h3@alert": [
+    "SSFUN01",
+    "SSFUN07"
+   ],
+   "h5@activity": [
+    "SSFUN01"
+   ],
+   "flipCard@activity": [
+    "SSFUN02"
+   ],
+   "infoTrigger@activity": [
+    "SSFUN02"
+   ],
+   "infoTrigger@plain": [
+    "SSFUN07",
+    "SSFUN08",
+    "TEFUN05"
+   ],
+   "clickDrop@plain": [
+    "TEFUN08",
+    "TWHA901",
+    "TWHA903"
+   ],
+   "p@activity>alert": [
+    "TWHA904"
+   ]
+  },
+  "body|data marker": {
+   "typing@activity": [
+    "PHE1006"
+   ],
+   "carousel@plain": [
+    "SCFUN01",
+    "TEFUN06",
+    "TEFUN07",
+    "TEFUN08"
+   ],
+   "p@plain": [
+    "SCFUN01"
+   ],
+   "p@activity": [
+    "SSFUN05"
+   ],
+   "flipCard@plain": [
+    "TEFUN06"
+   ]
+  },
+  "body|hover give details of": {
+   "td@table": [
+    "PHE1006"
+   ],
+   "li@list": [
+    "PHE1006"
+   ],
+   "p@plain": [
+    "PHE1006"
+   ]
+  },
+  "body|hover talk through": {
+   "td@table": [
+    "PHE1006"
+   ],
+   "p@plain": [
+    "PHE1006"
+   ],
+   "li@list": [
+    "PHE1006"
+   ]
+  },
+  "header|body": {
+   "h1@plain": [
+    "PHE1007",
+    "PHE1008",
+    "SSOG101"
+   ]
+  },
+  "body|module introduction": {
+   "p@whakatauki": [
+    "PHE1007"
+   ]
+  },
+  "header|h3": {
+   "h1@plain": [
+    "PHE1007",
+    "PNR107"
+   ]
+  },
+  "body|image": {
+   "p@plain": [
+    "PHE1007",
+    "PHE1008",
+    "SSFUN02",
+    "SSFUN03",
+    "SSFUN07",
+    "SSFUN08",
+    "TEFUN03",
+    "TEFUN04",
+    "TEFUN06",
+    "TEFUN07",
+    "TEFUN08",
+    "TWHA901",
+    "TWHA902",
+    "TWHA903",
+    "TWHA904",
+    "TWHA905"
+   ],
+   "li@list": [
+    "PHE1007",
+    "PHE1008",
+    "SCPH301",
+    "TEFUN02",
+    "TEFUN06",
+    "TEFUN07",
+    "TWHA902",
+    "TWHA903",
+    "TWHA905"
+   ],
+   "td@table": [
+    "PHE1007",
+    "TEFUN08"
+   ],
+   "a@plain": [
+    "PHE1008"
+   ],
+   "multiChoiceQuiz@activity": [
+    "PHE1008",
+    "SSFUN03",
+    "TWHA904"
+   ],
+   "p@activity": [
+    "PNR107",
+    "SCCH301",
+    "SCPH301",
+    "SSFUN05",
+    "SSFUN06",
+    "TEFUN02",
+    "TWHA901",
+    "TWHA902",
+    "TWHA903",
+    "TWHA904"
+   ],
+   "li@activity>list": [
+    "SCBI301",
+    "TEFUN02",
+    "TWHA903"
+   ],
+   "dragAndDrop@activity": [
+    "SCBI301",
+    "SSFUN01",
+    "TEFUN04",
+    "TEFUN05",
+    "TWHA902"
+   ],
+   "h3@activity": [
+    "SCBI301",
+    "TWHA902"
+   ],
+   "clickDrop@activity": [
+    "SCCH301"
+   ],
+   "flipCard@activity": [
+    "SCFUN01",
+    "TWHA903"
+   ],
+   "li@alert>list": [
+    "SCFUN01"
+   ],
+   "p@alert": [
+    "SCFUN01",
+    "TEFUN06"
+   ],
+   "reorder@activity": [
+    "SCPH301"
+   ],
+   "carousel@activity": [
+    "SSFUN02"
+   ],
+   "h4@plain": [
+    "SSFUN03"
+   ],
+   "radioQuiz@activity": [
+    "SSFUN03"
+   ],
+   "carousel@plain": [
+    "TEDC402",
+    "TWHA905"
+   ],
+   "h3@plain": [
+    "TEFUN04"
+   ],
+   "infoTrigger@plain": [
+    "TEFUN04"
+   ],
+   "p@table": [
+    "TEFUN08"
+   ],
+   "p@whakatauki": [
+    "TWHA901"
+   ],
+   "selectionBox@activity": [
+    "TWHA902"
+   ],
+   "speechBubble@activity": [
+    "TWHA902"
+   ],
+   "clickDrop@plain": [
+    "TWHA902",
+    "TWHA905"
+   ],
+   "th@activity>table": [
+    "TWHA903"
+   ],
+   "accordion@plain": [
+    "TWHA903",
+    "TWHA904",
+    "TWHA905"
+   ],
+   "h2@plain": [
+    "TWHA905"
+   ]
+  },
+  "body|hover customs": {
+   "p@plain": [
+    "PHE1007"
+   ],
+   "li@list": [
+    "PHE1007"
+   ]
+  },
+  "body|dropdown": {
+   "p@activity": [
+    "PHE1007"
+   ],
+   "h3@activity": [
+    "PHE1007"
+   ],
+   "td@table": [
+    "PHE1007"
+   ]
+  },
+  "body|accordion": {
+   "h3@activity": [
+    "PHE1007"
+   ],
+   "li@list": [
+    "PHE1007"
+   ],
+   "accordion@plain": [
+    "TEFUN08"
+   ]
+  },
+  "body|merge existing material": {
+   "p@activity": [
+    "PHE1007"
+   ]
+  },
+  "body|alert": {
+   "p@alert": [
+    "PHE1007",
+    "SCFUN01",
+    "SSFUN01",
+    "SSFUN02",
+    "SSFUN05",
+    "SSFUN06",
+    "SSFUN07",
+    "SSFUN08",
+    "TEFUN01",
+    "TEFUN02",
+    "TEFUN03",
+    "TEFUN04",
+    "TEFUN05",
+    "TEFUN06",
+    "TEFUN07",
+    "TEFUN08",
+    "TWHA903",
+    "TWHA904",
+    "TWHA905"
+   ],
+   "h3@activity": [
+    "SSFUN01"
+   ],
+   "p@plain": [
+    "SSFUN01",
+    "SSFUN02",
+    "SSFUN03",
+    "SSFUN07",
+    "SSFUN08",
+    "TEFUN02",
+    "TEFUN04",
+    "TEFUN05",
+    "TEFUN07",
+    "TEFUN08",
+    "TWHA901",
+    "TWHA903",
+    "TWHA904"
+   ],
+   "p@activity>alert": [
+    "SSFUN01",
+    "TWHA902"
+   ],
+   "accordion@activity": [
+    "SSFUN01"
+   ],
+   "p@activity": [
+    "SSFUN01"
+   ],
+   "h5@activity": [
+    "SSFUN02"
+   ],
+   "li@activity>list": [
+    "SSFUN02"
+   ],
+   "li@list": [
+    "SSFUN07"
+   ],
+   "h3@alert": [
+    "SSFUN08"
+   ],
+   "p@whakatauki": [
+    "SSOG101",
+    "SSOG301"
+   ],
+   "h4@alert": [
+    "TEFUN01",
+    "TEFUN03",
+    "TEFUN05"
+   ],
+   "li@alert>list": [
+    "TEFUN02",
+    "TEFUN03",
+    "TEFUN08"
+   ]
+  },
+  "body|heading": {
+   "flipCard@plain": [
+    "PHE1007"
+   ],
+   "accordion@plain": [
+    "PHE1007"
+   ],
+   "clickDrop@plain": [
+    "PHE1008"
+   ],
+   "h4@plain": [
+    "PHE1008"
+   ],
+   "p@plain": [
+    "PHE1008"
+   ]
+  },
+  "body|button": {
+   "a@activity": [
+    "PHE1007",
+    "SSFUN05",
+    "SSFUN06",
+    "SSFUN08",
+    "SSOG101",
+    "SSOG301",
+    "TEFUN01",
+    "TEFUN02",
+    "TEFUN03",
+    "TEFUN04",
+    "TEFUN05",
+    "TEFUN06",
+    "TEFUN07",
+    "TEFUN08",
+    "TWHA901",
+    "TWHA902",
+    "TWHA903",
+    "TWHA904",
+    "TWHA905"
+   ],
+   "p@activity": [
+    "PHE1008",
+    "SSOG101",
+    "TWHA901",
+    "TWHA902"
+   ],
+   "dropQuiz@activity": [
+    "SSFUN02"
+   ],
+   "h3@plain": [
+    "SSFUN05"
+   ],
+   "multiChoiceQuiz@activity>list": [
+    "SSFUN05"
+   ],
+   "infoTrigger@plain": [
+    "SSFUN08"
+   ],
+   "h3@activity": [
+    "TEFUN01",
+    "TEFUN04",
+    "TEFUN06",
+    "TEFUN07",
+    "TEFUN08"
+   ],
+   "p@plain": [
+    "TWHA902"
+   ],
+   "speechBubble@activity": [
+    "TWHA902"
+   ]
+  },
+  "header|individual activity": {
+   "h1@plain": [
+    "PHE1007"
+   ]
+  },
+  "body|individual activity": {
+   "h3@activity": [
+    "PHE1007",
+    "PHE1008"
+   ]
+  },
+  "body|dev red text": {
+   "reorder@activity": [
+    "PHE1007"
+   ]
+  },
+  "body|typing quiz": {
+   "p@activity": [
+    "PHE1007"
+   ]
+  },
+  "body|reorder": {
+   "p@activity": [
+    "PHE1007"
+   ]
+  },
+  "body|hover gods": {
+   "p@plain": [
+    "PHE1008"
+   ]
+  },
+  "body|hover atua": {
+   "p@plain": [
+    "PHE1008"
+   ]
+  },
+  "body|hover t karo": {
+   "p@plain": [
+    "PHE1008"
+   ]
+  },
+  "body|external link to the story": {
+   "p@plain": [
+    "PHE1008"
+   ],
+   "a@plain": [
+    "PHE1008"
+   ]
+  },
+  "body|journal activity": {
+   "h3@activity": [
+    "PHE1008"
+   ],
+   "p@activity": [
+    "PHE1008"
+   ]
+  },
+  "body|self marked": {
+   "flipCard@plain": [
+    "PHE1008"
+   ],
+   "p@activity": [
+    "PHE1008"
+   ],
+   "dragAndDrop@activity": [
+    "PHE1008"
+   ]
+  },
+  "body|hover games": {
+   "p@plain": [
+    "PHE1008"
+   ]
+  },
+  "body|hover sacred": {
+   "p@plain": [
+    "PHE1008"
+   ]
+  },
+  "body|important": {
+   "p@activity": [
+    "PHE1008",
+    "SSFUN05"
+   ],
+   "p@alert": [
+    "SSFUN01"
+   ],
+   "li@alert>list": [
+    "SSFUN01"
+   ],
+   "infoTrigger@activity": [
+    "SSFUN05"
+   ]
+  },
+  "body|h1": {
+   "clickDrop@plain": [
+    "PHE1008"
+   ],
+   "h4@plain": [
+    "PHE1008",
+    "SSFUN06"
+   ],
+   "p@plain": [
+    "PHE1008"
+   ],
+   "h3@activity": [
+    "PNR107"
+   ],
+   "h3@plain": [
+    "SSFUN01",
+    "SSFUN02",
+    "SSFUN06",
+    "SSFUN07"
+   ]
+  },
+  "body|dev correct answer in red": {
+   "p@activity": [
+    "PHE1008"
+   ]
+  },
+  "body|title bar": {
+   "h3@activity": [
+    "PNR102",
+    "PWY1007",
+    "PWY1009",
+    "SCFUN01",
+    "SCPH301",
+    "SSCI205",
+    "SSFUN01",
+    "TEDC401",
+    "TEDC402",
+    "TRR103"
+   ],
+   "td@table": [
+    "PWY1002"
+   ],
+   "h3@plain": [
+    "PWY1002",
+    "SSCI205",
+    "TRR103"
+   ],
+   "th@table": [
+    "PWY1008",
+    "SCFUN01"
+   ],
+   "p@plain": [
+    "PWY1009",
+    "SCFUN01",
+    "SSCI205",
+    "SSFUN03",
+    "TEDC402",
+    "TEFUN05",
+    "TEFUN06",
+    "TEFUN08",
+    "TRR102",
+    "TRR111"
+   ],
+   "h5@plain": [
+    "PWYWHA1",
+    "SSCI205"
+   ],
+   "li@list": [
+    "SCCH301",
+    "SSCI205",
+    "TEDC402",
+    "TRR109",
+    "TRR304"
+   ],
+   "a@activity": [
+    "SCES201",
+    "SSCI205",
+    "SSOG103"
+   ],
+   "h4@activity": [
+    "SCES201"
+   ],
+   "h2@plain": [
+    "SCFUN01",
+    "SSCI205"
+   ],
+   "h5@alert": [
+    "SCFUN01"
+   ],
+   "h4@plain": [
+    "SPA1004",
+    "SSFUN01"
+   ],
+   "p@activity": [
+    "SSCI205",
+    "TRR109",
+    "TWHA906"
+   ],
+   "clickDrop@activity": [
+    "SSCI205"
+   ],
+   "li@activity>list": [
+    "SSCI205",
+    "TRR301",
+    "TWHA906"
+   ],
+   "imageLabel@plain": [
+    "SSCI205"
+   ],
+   "clickDrop@plain": [
+    "SSCI205"
+   ],
+   "infoTrigger@plain": [
+    "SSFUN01",
+    "SSFUN05"
+   ],
+   "h5@activity": [
+    "SSFUN01"
+   ],
+   "li@alert>list": [
+    "SSOG103",
+    "TRR111",
+    "TRR301"
+   ],
+   "li@activity>list>table>list": [
+    "TEDC402"
+   ],
+   "audioTrigger@activity": [
+    "TRR109"
+   ],
+   "dragAndDrop@activity": [
+    "TRR111",
+    "TRR116"
+   ],
+   "carousel@activity": [
+    "TRR113"
+   ],
+   "audioTrigger@activity>table": [
+    "TRR114"
+   ],
+   "multiChoiceQuiz@activity": [
+    "TRR116",
+    "TRR301"
+   ],
+   "wordSelect@activity": [
+    "TRR301"
+   ],
+   "reorder@activity": [
+    "TRR301"
+   ],
+   "selfCheck@activity": [
+    "TRR301"
+   ],
+   "td@activity>table": [
+    "TWHA906"
+   ],
+   "flipCard@activity": [
+    "TWHA906"
+   ]
+  },
+  "body|carousel": {
+   "h3@activity": [
+    "PNR107"
+   ]
+  },
+  "body|also 37 53": {
+   "li@activity>list": [
+    "PWY1007"
+   ]
+  },
+  "menu|image": {
+   "li@list": [
+    "SCBI301",
+    "SCCH301",
+    "TWHA903",
+    "TWHA904",
+    "TWHA905"
+   ],
+   "h5@plain": [
+    "TWHA903"
+   ]
+  },
+  "body|external link": {
+   "p@plain": [
+    "SCCH301",
+    "TEFUN08"
+   ],
+   "li@activity>list": [
+    "SCCH301",
+    "SSOG101"
+   ],
+   "h3@plain": [
+    "SCCH301"
+   ],
+   "a@plain": [
+    "SPA1004"
+   ],
+   "h3@activity": [
+    "SPA1004"
+   ],
+   "clickDrop@activity": [
+    "SPA1004"
+   ],
+   "td@table": [
+    "SPA1004"
+   ],
+   "p@alert": [
+    "SSFUN02"
+   ],
+   "p@activity": [
+    "SSFUN05",
+    "SSOG101"
+   ],
+   "li@list": [
+    "TRR304"
+   ],
+   "h4@plain": [
+    "TRR304"
+   ]
+  },
+  "menu|external link": {
+   "li@list": [
+    "SCCH301"
+   ]
+  },
+  "header|lesson content": {
+   "h1@plain": [
+    "SCFUN01",
+    "SSFUN03"
+   ]
+  },
+  "body|shape n": {
+   "p@plain": [
+    "SCFUN01",
+    "SSFUN01"
+   ],
+   "h3@plain": [
+    "SCFUN01"
+   ]
+  },
+  "body|h4": {
+   "h4@plain": [
+    "SCFUN01",
+    "TEFUN04",
+    "TWHA902"
+   ],
+   "h3@plain": [
+    "SCFUN01"
+   ],
+   "h3@activity": [
+    "SCFUN01",
+    "SSFUN05",
+    "TWHA902"
+   ],
+   "h5@plain": [
+    "SCFUN01"
+   ],
+   "th@table": [
+    "SCFUN01"
+   ],
+   "h5@alert": [
+    "SCFUN01"
+   ],
+   "clickDrop@plain": [
+    "SSFUN05",
+    "TWHA902"
+   ],
+   "h4@activity": [
+    "SSFUN05"
+   ],
+   "p@plain": [
+    "TWHA902"
+   ],
+   "li@list": [
+    "TWHA902"
+   ]
+  },
+  "body|table": {
+   "h3@activity": [
+    "SCFUN01"
+   ],
+   "td@table": [
+    "SCFUN01"
+   ]
+  },
+  "body|text box": {
+   "p@alert": [
+    "SCFUN01"
+   ],
+   "p@plain": [
+    "SCFUN01"
+   ]
+  },
+  "body|answer": {
+   "a@plain": [
+    "SCFUN01"
+   ],
+   "td@table": [
+    "SCFUN01"
+   ],
+   "dragAndDrop@activity": [
+    "SCFUN01"
+   ]
+  },
+  "menu|lesson overview": {
+   "h5@plain": [
+    "SPA1004"
+   ],
+   "li@list": [
+    "SPA1004"
+   ]
+  },
+  "body|end page": {
+   "td@activity>table": [
+    "SPA1004"
+   ],
+   "td@table": [
+    "SPA1004"
+   ],
+   "h3@activity": [
+    "SPA1004"
+   ],
+   "infoTrigger@activity": [
+    "SSFUN08"
+   ],
+   "p@plain": [
+    "TEFUN01",
+    "TEFUN02",
+    "TEFUN03",
+    "TEFUN05",
+    "TEFUN06",
+    "TEFUN07",
+    "TEFUN08"
+   ],
+   "h3@plain": [
+    "TEFUN01",
+    "TEFUN02",
+    "TEFUN03",
+    "TEFUN05",
+    "TEFUN06",
+    "TEFUN07",
+    "TEFUN08"
+   ]
+  },
+  "body|lesson overview": {
+   "p@plain": [
+    "SPA1004"
+   ],
+   "a@list": [
+    "SPA1004"
+   ],
+   "li@list": [
+    "SPA1004"
+   ],
+   "p@activity": [
+    "SPA1004"
+   ]
+  },
+  "header|lesson": {
+   "h1@plain": [
+    "SPA1004"
+   ]
+  },
+  "body|lesson": {
+   "h4@plain": [
+    "SPA1004"
+   ],
+   "h3@activity": [
+    "SPA1004"
+   ],
+   "li@activity>list": [
+    "SPA1004"
+   ]
+  },
+  "header|lesson overview": {
+   "h1@plain": [
+    "SPA1004"
+   ]
+  },
+  "body|word select": {
+   "p@whakatauki": [
+    "SSFUN01"
+   ]
+  },
+  "body|rollover family": {
+   "p@activity": [
+    "SSFUN01"
+   ]
+  },
+  "body|option": {
+   "infoTrigger@activity": [
+    "SSFUN01"
+   ]
+  },
+  "body|insert button pop out title": {
+   "h5@activity": [
+    "SSFUN01"
+   ]
+  },
+  "body|video": {
+   "p@plain": [
+    "SSFUN01",
+    "SSFUN03",
+    "SSFUN07",
+    "TEFUN08"
+   ],
+   "h5@activity": [
+    "SSFUN01"
+   ],
+   "h3@activity": [
+    "SSFUN03"
+   ],
+   "accordion@plain": [
+    "TWHA903"
+   ]
+  },
+  "body|insert story title": {
+   "a@plain": [
+    "SSFUN01"
+   ]
+  },
+  "body|instruction": {
+   "speechBubble@plain": [
+    "SSFUN02"
+   ]
+  },
+  "body|insert important statement": {
+   "p@alert": [
+    "SSFUN03"
+   ]
+  },
+  "body|insert mtk autograded quiz": {
+   "p@activity": [
+    "SSFUN03"
+   ]
+  },
+  "body|insert alert": {
+   "h4@plain": [
+    "SSFUN03"
+   ],
+   "p@plain": [
+    "SSFUN03"
+   ]
+  },
+  "body|insert alert box": {
+   "p@plain": [
+    "SSFUN03"
+   ]
+  },
+  "body|insert flip card": {
+   "flipCard@plain": [
+    "SSFUN03"
+   ]
+  },
+  "body|tab n": {
+   "accordion@plain": [
+    "SSFUN03"
+   ],
+   "p@plain": [
+    "TWHA902",
+    "TWHA903",
+    "TWHA904"
+   ],
+   "h3@plain": [
+    "TWHA902",
+    "TWHA904"
+   ],
+   "clickDrop@plain": [
+    "TWHA902",
+    "TWHA903"
+   ],
+   "h3@activity": [
+    "TWHA902",
+    "TWHA903"
+   ],
+   "li@list": [
+    "TWHA903"
+   ],
+   "h2@plain": [
+    "TWHA904"
+   ],
+   "infoTrigger@plain": [
+    "TWHA904"
+   ]
+  },
+  "body|insert flip cards": {
+   "flipCard@plain": [
+    "SSFUN03"
+   ]
+  },
+  "body|insert important alert": {
+   "h4@alert": [
+    "SSFUN03"
+   ]
+  },
+  "body|insert quiz button": {
+   "h3@activity": [
+    "SSFUN07"
+   ],
+   "p@activity": [
+    "SSFUN07"
+   ],
+   "dropQuiz@activity": [
+    "SSFUN07"
+   ]
+  },
+  "body|rollover definition actions": {
+   "p@plain": [
+    "SSFUN07"
+   ]
+  },
+  "body|insert carousel": {
+   "p@plain": [
+    "SSFUN07"
+   ]
+  },
+  "body|lesson content": {
+   "p@plain": [
+    "SSFUN07"
+   ]
+  },
+  "body|insert rollover red text": {
+   "li@list": [
+    "SSFUN07"
+   ]
+  },
+  "body|roll over definition child": {
+   "carousel@plain": [
+    "SSFUN08"
+   ]
+  },
+  "body|roll over definition 1000kg": {
+   "p@plain": [
+    "SSFUN08"
+   ]
+  },
+  "menu|h3": {
+   "li@list": [
+    "SSOG101"
+   ],
+   "h5@plain": [
+    "TEFUN07"
+   ]
+  },
+  "menu|body": {
+   "li@list": [
+    "SSOG101",
+    "TWHA902"
+   ],
+   "p@plain": [
+    "TWHA901"
+   ]
+  },
+  "body|rhs alert": {
+   "p@alert": [
+    "SSOG101"
+   ]
+  },
+  "body|insert embedded activity": {
+   "p@activity": [
+    "SSOG301"
+   ]
+  },
+  "menu|title bar": {
+   "li@list": [
+    "TEDC402"
+   ]
+  },
+  "acks|title bar": {
+   "accordion@plain": [
+    "TEDC402",
+    "TRR102"
+   ]
+  },
+  "header|h1": {
+   "h1@plain": [
+    "TEFUN01",
+    "TEFUN02",
+    "TEFUN03",
+    "TEFUN04",
+    "TEFUN05",
+    "TEFUN06",
+    "TEFUN07"
+   ]
+  },
+  "body|end other": {
+   "p@plain": [
+    "TEFUN01",
+    "TEFUN02",
+    "TEFUN03",
+    "TEFUN04",
+    "TEFUN06",
+    "TEFUN07",
+    "TEFUN08"
+   ],
+   "h3@plain": [
+    "TEFUN01",
+    "TEFUN02",
+    "TEFUN03",
+    "TEFUN04",
+    "TEFUN06",
+    "TEFUN07",
+    "TEFUN08"
+   ]
+  },
+  "body|mcq": {
+   "p@plain": [
+    "TEFUN01",
+    "TEFUN03"
+   ],
+   "h3@plain": [
+    "TEFUN01",
+    "TEFUN03"
+   ],
+   "infoTrigger@activity": [
+    "TEFUN03"
+   ],
+   "flipCard@activity": [
+    "TEFUN03"
+   ],
+   "h5@activity": [
+    "TEFUN03"
+   ],
+   "th@table": [
+    "TEFUN03"
+   ],
+   "h4@plain": [
+    "TEFUN03"
+   ]
+  },
+  "body|info trigger": {
+   "li@list": [
+    "TEFUN01",
+    "TEFUN06",
+    "TEFUN07"
+   ],
+   "p@plain": [
+    "TEFUN01",
+    "TEFUN03",
+    "TEFUN06",
+    "TEFUN07",
+    "TEFUN08"
+   ],
+   "p@activity": [
+    "TEFUN04"
+   ]
+  },
+  "body|supervisor note": {
+   "p@plain": [
+    "TEFUN02"
+   ],
+   "li@list": [
+    "TEFUN02"
+   ]
+  },
+  "body|speech bubble": {
+   "speechBubble@plain": [
+    "TEFUN02",
+    "TEFUN03"
+   ],
+   "carousel@plain": [
+    "TEFUN03"
+   ],
+   "p@plain": [
+    "TEFUN03"
+   ]
+  },
+  "body|hover trigger a": {
+   "flipCard@activity": [
+    "TEFUN03"
+   ],
+   "h5@activity": [
+    "TEFUN03"
+   ]
+  },
+  "body|modal": {
+   "p@plain": [
+    "TEFUN03"
+   ],
+   "tabs@plain": [
+    "TEFUN03"
+   ]
+  },
+  "body|hover trigger s": {
+   "h5@activity": [
+    "TEFUN03"
+   ]
+  },
+  "body|hover trigger c": {
+   "h5@activity": [
+    "TEFUN03"
+   ]
+  },
+  "body|hover trigger m": {
+   "h5@activity": [
+    "TEFUN03"
+   ]
+  },
+  "body|hover trigger p": {
+   "h5@activity": [
+    "TEFUN03"
+   ]
+  },
+  "body|hover trigger e": {
+   "h5@activity": [
+    "TEFUN03"
+   ]
+  },
+  "body|thinking bubble": {
+   "speechBubble@plain": [
+    "TEFUN03"
+   ]
+  },
+  "body|click drop": {
+   "h4@plain": [
+    "TEFUN03"
+   ],
+   "p@plain": [
+    "TEFUN03"
+   ]
+  },
+  "body|alertrhs": {
+   "p@alert": [
+    "TEFUN03"
+   ]
+  },
+  "body|page": {
+   "p@plain": [
+    "TEFUN05"
+   ],
+   "h3@plain": [
+    "TEFUN05"
+   ]
+  },
+  "body|hover definition red text": {
+   "p@plain": [
+    "TEFUN05"
+   ],
+   "li@list": [
+    "TEFUN05"
+   ]
+  },
+  "body|rhs image opposite text below": {
+   "p@plain": [
+    "TEFUN06"
+   ],
+   "li@list": [
+    "TEFUN06"
+   ]
+  },
+  "menu|alert": {
+   "p@plain": [
+    "TEFUN07"
+   ]
+  },
+  "body|back": {
+   "p@plain": [
+    "TEFUN07"
+   ],
+   "carousel@plain": [
+    "TEFUN07"
+   ],
+   "p@activity": [
+    "TWHA901"
+   ]
+  },
+  "body|flip card": {
+   "p@plain": [
+    "TEFUN08"
+   ]
+  },
+  "body|hover work together": {
+   "p@plain": [
+    "TWHA901"
+   ]
+  },
+  "menu|activity": {
+   "li@list": [
+    "TWHA903"
+   ]
+  },
+  "body|insert media item rhs of text": {
+   "accordion@plain": [
+    "TWHA903",
+    "TWHA904"
+   ]
+  },
+  "body|insert rhs": {
+   "p@plain": [
+    "TWHA904"
+   ]
+  },
+  "body|insert image rhs of text": {
+   "accordion@plain": [
+    "TWHA905"
+   ]
+  }
+ }
+}

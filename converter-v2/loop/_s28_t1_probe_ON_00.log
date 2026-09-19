@@ -1,0 +1,2066 @@
+AGH1001: identical 6 / changed 0
+AGH1002: identical 7 / changed 0
+AGH1003: identical 9 / changed 0
+AGH1004: identical 7 / changed 0
+AGH1005: identical 9 / changed 0
+AGH1006: identical 10 / changed 0
+AGH1007: identical 10 / changed 0
+AGH1008: identical 10 / changed 0
+AGH1009: identical 10 / changed 0
+  ~ ANZH101_1_0.html: -1 +1
+     - <iframe src="https://www.youtube-nocookie.com/embed/8w0zjqA3hUI" loading="lazy" title="YouTube video player" f
+     + <iframe src="https://www.youtube.com/embed/8w0zjqA3hUI" loading="lazy" title="YouTube video player" frameborde
+  ~ ANZH101_2_0.html: -3 +3
+     - <iframe src="https://www.youtube-nocookie.com/embed/0xw_r8xsYsI" loading="lazy" title="YouTube video player" f
+     - <iframe src="https://www.youtube-nocookie.com/embed/g1Kpekzypg0" loading="lazy" title="YouTube video player" f
+     - <iframe src="https://www.youtube-nocookie.com/embed/cHspwLb3w3Q" loading="lazy" title="YouTube video player" f
+     + <iframe src="https://www.youtube.com/embed/0xw_r8xsYsI" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube.com/embed/g1Kpekzypg0" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube.com/embed/cHspwLb3w3Q" loading="lazy" title="YouTube video player" frameborde
+  ~ ANZH101_3_0.html: -1 +1
+     - <iframe src="https://www.youtube-nocookie.com/embed/kf9cMhAFnns" loading="lazy" title="YouTube video player" f
+     + <iframe src="https://www.youtube.com/embed/kf9cMhAFnns" loading="lazy" title="YouTube video player" frameborde
+ANZH101: identical 1 / changed 3
+  ~ ANZH103_1_0.html: -15 +20
+     - <iframe src="https://www.youtube-nocookie.com/embed/Lkwr8Ip1l24" loading="lazy" title="YouTube video player" f
+     - <h5>Where is Waitangi and how was it named?</h5>
+     - <h5>What happened in 1840?</h5>
+     - <h5>Who Was There?</h5>
+     - <h5>What happened after the Treaty was signed on 6 February, 1840?</h5>
+     - <iframe src="https://www.youtube-nocookie.com/embed/GPhhHwwveDw" loading="lazy" title="YouTube video player" f
+     - <h5>What the Treaty looks like now</h5>
+     - <h5>What happens on February 6 these days?</h5>
+     - <iframe src="https://www.youtube-nocookie.com/embed/wfErnJzhLr8" loading="lazy" title="YouTube video player" f
+     - <h5>How long ago did it happen?</h5>
+     - <h5>Why do we commemorate Waitangi Day?</h5>
+     - <h5>Checking for understanding</h5>
+     - <h5>Subheading</h5>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <iframe src="https://www.youtube.com/embed/Lkwr8Ip1l24" loading="lazy" title="YouTube video player" frameborde
+     + <h3>Where is Waitangi and how was it named?</h3>
+     + <h3>What happened in 1840?</h3>
+     + <h3>Who Was There?</h3>
+     + <h3>What happened after the Treaty was signed on 6 February, 1840?</h3>
+     + <iframe src="https://www.youtube.com/embed/GPhhHwwveDw" loading="lazy" title="YouTube video player" frameborde
+     + <h3>What the Treaty looks like now</h3>
+     + <h3>What happens on February 6 these days?</h3>
+     + <iframe src="https://www.youtube.com/embed/wfErnJzhLr8" loading="lazy" title="YouTube video player" frameborde
+     + <h3>How long ago did it happen?</h3>
+     + <h3>Why do we commemorate Waitangi Day?</h3>
+     + <h3>Checking for understanding</h3>
+     + <h3>Subheading</h3>
+     + </div>
+     + </div>
+ANZH103: identical 1 / changed 1
+  ~ ANZH104_4_0.html: -1 +1
+     - <iframe src="https://www.youtube-nocookie.com/embed/Fhv2C2zXbKo" loading="lazy" title="YouTube video player" f
+     + <iframe src="https://www.youtube.com/embed/Fhv2C2zXbKo" loading="lazy" title="YouTube video player" frameborde
+ANZH104: identical 7 / changed 1
+  ~ ANZH105_0_0.html: -1 +1
+     - <iframe src="https://www.youtube-nocookie.com/embed/VorENrY3rr4" loading="lazy" title="YouTube video player" f
+     + <iframe src="https://www.youtube.com/embed/VorENrY3rr4" loading="lazy" title="YouTube video player" frameborde
+  ~ ANZH105_6_0.html: -3 +3
+     - <iframe src="https://www.youtube-nocookie.com/embed/ifN0-A8Zo_0" loading="lazy" title="YouTube video player" f
+     - <iframe src="https://www.youtube-nocookie.com/embed/iL9eDZptX4I" loading="lazy" title="YouTube video player" f
+     - <iframe src="https://www.youtube-nocookie.com/embed/IhSaLpkRqHo" loading="lazy" title="YouTube video player" f
+     + <iframe src="https://www.youtube.com/embed/ifN0-A8Zo_0" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube.com/embed/iL9eDZptX4I" loading="lazy" title="YouTube video player" frameborde
+     + <iframe src="https://www.youtube.com/embed/IhSaLpkRqHo" loading="lazy" title="YouTube video player" frameborde
+ANZH105: identical 6 / changed 2
+ANZH203: identical 7 / changed 0
+ANZH205: identical 7 / changed 0
+  ~ ANZH301_1_0.html: -2 +2
+     - <div>Transcript for Audio Clip:</div>
+     - <div>Lesson summary</div>
+     + <h4>Transcript for Audio Clip:</h4>
+     + <h4>Lesson summary</h4>
+  ~ ANZH301_2_0.html: -1 +1
+     - <div>Lesson summary</div>
+     + <h4>Lesson summary</h4>
+  ~ ANZH301_3_0.html: -1 +1
+     - <div>Lesson summary</div>
+     + <p>Lesson summary</p>
+  ~ ANZH301_4_0.html: -2 +2
+     - <div>Please include the image from the Tūhura resource here and the caption]</div>
+     - <div>Lesson summary</div>
+     + <p>Please include the image from the Tūhura resource here and the caption]</p>
+     + <h4>Lesson summary</h4>
+  ~ ANZH301_5_0.html: -1 +1
+     - <div>Lesson summary</div>
+     + <h4>Lesson summary</h4>
+  ~ ANZH301_6_0.html: -1 +1
+     - <div>Lesson summary</div>
+     + <p>Lesson summary</p>
+  ~ ANZH301_7_0.html: -2 +2
+     - <div>Please present the following extract in a colourful alert box:</div>
+     - <div>Lesson summary</div>
+     + <p>Please present the following extract in a colourful alert box:</p>
+     + <h4>Lesson summary</h4>
+  ~ ANZH301_8_0.html: -1 +1
+     - <div>lesson summary</div>
+     + <h4>lesson summary</h4>
+  ~ ANZH301_9_0.html: -1 +1
+     - <div>Lesson summary</div>
+     + <h4>Lesson summary</h4>
+ANZH301: identical 2 / changed 9
+  ~ ANZH302_0_0.html: -91 +60
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <li><a>Standards</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-12 col-12">
+     - <div class="col-md-6 col-12 paddingR">
+     - <h4><span>Understand</span></h4>
+     - <ul>
+     - <li>Māori history is the foundational and continuous history of Aotearoa New Zealand.</li>
+     - <li>Relationships and connections between people and across boundaries have shaped the course of Aotearoa New 
+     - </ul>
+     - <h4><span>Know</span></h4>
+     - <ul>
+     - <li>Mid-twentieth-century Māori migration to New Zealand cities occurred at an unprecedented pace and scale, d
+     - <li>New approaches to being Māori and retaining iwi values and practices were created and debated.</li>
+     - <li>Movements to reassert Māori language, culture, and identity arose throughout the country.</li>
+     - </ul>
+     - </div>
+     - <div class="col-md-6 col-12 paddingL">
+     - <h4><span>Do</span></h4>
+     - <ul>
+     - <li>Construct a narrative of cause and effect that shows relationships between events. By comparing examples o
+     - <li>Use historical sources with differing perspectives on the past, giving deliberate attention to mātauranga 
+     - <li>Make informed ethical judgements about people’s actions in the past, basing them on historical evidence an
+     - </ul>
+     - </div>
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-6 col-12 paddingR">
+     - <h5>Learning Intentions</h5>
+     - <h5>Ākonga will:</h5>
+     - <ul>
+     - <li>read, view and listen to multiple narratives about Māori migration to cities in the 20th century</li>
+     - <li>interpret a variety of historical sources with differing perspectives on the past</li>
+     - <li>compare examples over time to identify causes and consequences of migrations over time</li>
+     - <li>carry out a mini-inquiry into a cultural group or individual that works to create connections and retain M
+     - … 51 more removed
+     + <div class="col-md-8 col-12">
+     + <h5>Understand:</h5>
+     + <ul>
+     + <li>Māori history is the foundational and continuous history of Aotearoa New Zealand.</li>
+     + <li>Relationships and connections between people and across boundaries have shaped the course of Aotearoa New 
+     + <h5>Know:</h5>
+     + <ul>
+     + <li>Mid-twentieth-century Māori migration to New Zealand cities occurred at an unprecedented pace and scale, d
+     + <li>New approaches to being Māori and retaining iwi values and practices were created and debated.</li>
+     + <li>Movements to reassert Māori language, culture, and identity arose throughout the country.</li>
+     + </ul>
+     + <h5>Do:</h5>
+     + <ul>
+     + <li>Construct a narrative of cause and effect that shows relationships between events. By comparing examples o
+     + <li>Use historical sources with differing perspectives on the past, giving deliberate attention to mātauranga 
+     + <li>Make informed ethical judgements about people’s actions in the past, basing them on historical evidence an
+     + </ul>
+     + <h5>Learning Intentions</h5>
+     + <h5>Ākonga will:</h5>
+     + <ul>
+     + … 40 more added
+  ~ ANZH302_1_0.html: -33 +11
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-12 col-12">
+     - <p>In this lesson we are learning about the push and pull factors/reasons why more Māori moved to the cities b
+     - <h5>You will show your understanding by:</h5>
+     - <ul>
+     - <li>using multiple sources of information to help you answer the question: What were some of the reasons why M
+     - <li>interpreting and exploring different perspectives about this movement.</li>
+     - </ul>
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>War. What is it good for?</h4>
+     - <h4>Can statistics tell a part of this story?</h4>
+     - <h4>Following the big city lights.</h4>
+     - <div>Transcript for Audio Clip:</div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div>Lesson summary</div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="col-md-8 col-12">
+     + <p>In this lesson we are learning about the push and pull factors/reasons why more Māori moved to the cities b
+     + <h5>You will show your understanding by:</h5>
+     + <ul>
+     + <li>using multiple sources of information to help you answer the question: What were some of the reasons why M
+     + <li>interpreting and exploring different perspectives about this movement.</li>
+     + <h3>War. What is it good for?</h3>
+     + <h3>Can statistics tell a part of this story?</h3>
+     + <h3>Following the big city lights.</h3>
+     + <h4>Transcript for Audio Clip:</h4>
+     + <h4>Lesson summary</h4>
+  ~ ANZH302_2_0.html: -26 +8
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-12 col-12">
+     - <p>In this lesson we are learning about challenges and pressures facing Māori as they moved to the cities.</p>
+     - <h5>You will show your understanding by:</h5>
+     - <ul>
+     - <li>using multiple sources of information to help you answer the question: What were some of the challenges fo
+     - <li>interpreting different sources to identify examples of the pressures Māori faced around assimilation, inte
+     - </ul>
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - <div class="videoSection ratio ratio-16x9">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div>Lesson summary</div>
+     - </div>
+     - </div>
+     + <div class="col-md-8 col-12">
+     + <p>In this lesson we are learning about challenges and pressures facing Māori as they moved to the cities.</p>
+     + <h5>You will show your understanding by:</h5>
+     + <ul>
+     + <li>using multiple sources of information to help you answer the question: What were some of the challenges fo
+     + <li>interpreting different sources to identify examples of the pressures Māori faced around assimilation, inte
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <h4>Lesson summary</h4>
+  ~ ANZH302_3_0.html: -26 +8
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-12 col-12">
+     - <p>In this lesson we are learning to compare some of the ‘hopes’ of Māori with the ‘realities’ of life in the 
+     - <h5>You will show your understanding by:</h5>
+     - <ul>
+     - <li>selecting relevant information to compare ‘hopes’ of city life with ‘realities’ for Māori</li>
+     - <li>interpreting different sources to identify examples of the pressures Māori faced around assimilation, inte
+     - </ul>
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - <div class="videoSection ratio ratio-16x9">
+     - </div>
+     - </div>
+     - <div>Lesson summary</div>
+     - </div>
+     - </div>
+     + <div class="col-md-8 col-12">
+     + <p>In this lesson we are learning to compare some of the ‘hopes’ of Māori with the ‘realities’ of life in the 
+     + <h5>You will show your understanding by:</h5>
+     + <ul>
+     + <li>selecting relevant information to compare ‘hopes’ of city life with ‘realities’ for Māori</li>
+     + <li>interpreting different sources to identify examples of the pressures Māori faced around assimilation, inte
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <p>Lesson summary</p>
+  ~ ANZH302_4_0.html: -34 +8
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-12 col-12">
+     - <p>In this lesson we are learning more about the impacts of urban life on Māori.</p>
+     - <h5>You will show your understanding by:</h5>
+     - <ul>
+     - <li>interpreting different sources to identify examples of the <b>changes</b> Māori had to make living in the 
+     - <li>using visual literacy skills to show your understanding of these changes.</li>
+     - </ul>
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div>Please include the image from the Tūhura resource here and the caption]</div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div>Lesson summary</div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="col-md-8 col-12">
+     + <p>In this lesson we are learning more about the impacts of urban life on Māori.</p>
+     + <h5>You will show your understanding by:</h5>
+     + <ul>
+     + <li>interpreting different sources to identify examples of the <b>changes</b> Māori had to make living in the 
+     + <li>using visual literacy skills to show your understanding of these changes.</li>
+     + <p>Please include the image from the Tūhura resource here and the caption]</p>
+     + <h4>Lesson summary</h4>
+  ~ ANZH302_5_0.html: -25 +7
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-12 col-12">
+     - <p>In this lesson we are learning more about the perspectives of hāpu and iwi towards urbanisation.</p>
+     - <h5>You will show your understanding by:</h5>
+     - <ul>
+     - <li>exploring different perspectives about urbanisation and its impacts on Māori</li>
+     - <li>analysing different pūrakau to construct your own historical narrative.</li>
+     - </ul>
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div>Lesson summary</div>
+     - </div>
+     - </div>
+     + <div class="col-md-8 col-12">
+     + <p>In this lesson we are learning more about the perspectives of hāpu and iwi towards urbanisation.</p>
+     + <h5>You will show your understanding by:</h5>
+     + <ul>
+     + <li>exploring different perspectives about urbanisation and its impacts on Māori</li>
+     + <li>analysing different pūrakau to construct your own historical narrative.</li>
+     + <h4>Lesson summary</h4>
+  ~ ANZH302_6_0.html: -25 +7
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-12 col-12">
+     - <p>In this lesson we are learning more about the movement among Māori to revive connections to their identity 
+     - <h5>You will show your understanding by:</h5>
+     - <ul>
+     - <li>thinking critically about visual sources of information to explain the importance of language and culture 
+     - <li>making personal connections to the importance of being part of cultural groups within our communities.</li
+     - </ul>
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div>Lesson summary</div>
+     - </div>
+     - </div>
+     + <div class="col-md-8 col-12">
+     + <p>In this lesson we are learning more about the movement among Māori to revive connections to their identity 
+     + <h5>You will show your understanding by:</h5>
+     + <ul>
+     + <li>thinking critically about visual sources of information to explain the importance of language and culture 
+     + <li>making personal connections to the importance of being part of cultural groups within our communities.</li
+     + <p>Lesson summary</p>
+  ~ ANZH302_7_0.html: -29 +11
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-12 col-12">
+     - <p>In this lesson we are learning more about the movement among Māori in the 1970s to stand-up for their repre
+     - <h5>You will show your understanding by:</h5>
+     - <ul>
+     - <li>exploring different perspectives about urbanisation and its impacts on Māori</li>
+     - <li>analysing different pūrakau to compare goals and actions of individuals and groups.</li>
+     - </ul>
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div>Please present the following extract in a colourful alert box:</div>
+     - <div class="videoSection ratio ratio-16x9">
+     - </div>
+     - <div class="videoSection ratio ratio-16x9">
+     - </div>
+     - </div>
+     - </div>
+     - <div class="videoSection ratio ratio-16x9">
+     - </div>
+     - <div>Lesson summary</div>
+     - </div>
+     - </div>
+     + <div class="col-md-8 col-12">
+     + <p>In this lesson we are learning more about the movement among Māori in the 1970s to stand-up for their repre
+     + <h5>You will show your understanding by:</h5>
+     + <ul>
+     + <li>exploring different perspectives about urbanisation and its impacts on Māori</li>
+     + <li>analysing different pūrakau to compare goals and actions of individuals and groups.</li>
+     + <p>Please present the following extract in a colourful alert box:</p>
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <h4>Lesson summary</h4>
+  ~ ANZH302_8_0.html: -28 +10
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-12 col-12">
+     - <p>In this lesson we are learning more about the movement among Māori to revive connections to their identity 
+     - <h5>You will show your understanding by:</h5>
+     - <ul>
+     - <li>exploring different perspectives about urbanisation and its impacts on Māori</li>
+     - <li>analysing a visual source and evaluating its usefulness.</li>
+     - </ul>
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - <div class="videoSection ratio ratio-16x9">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div>lesson summary</div>
+     - </div>
+     - </div>
+     + <div class="col-md-8 col-12">
+     + <p>In this lesson we are learning more about the movement among Māori to revive connections to their identity 
+     + <h5>You will show your understanding by:</h5>
+     + <ul>
+     + <li>exploring different perspectives about urbanisation and its impacts on Māori</li>
+     + <li>analysing a visual source and evaluating its usefulness.</li>
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <div class="videoSection icon ratio ratio-16x9">
+     + <h4>lesson summary</h4>
+  ~ ANZH302_9_0.html: -25 +7
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-12 col-12">
+     - <p>In this lesson we are learning more about the movement among Māori to revive connections to their identity 
+     - <h5>You will show your understanding by:</h5>
+     - <ul>
+     - <li>exploring different perspectives about urbanisation and its impacts on Māori</li>
+     - <li>using different sources of information and sharing your understanding of urban marae/cultural centres in y
+     - </ul>
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div>Lesson summary</div>
+     - </div>
+     - </div>
+     + <div class="col-md-8 col-12">
+     + <p>In this lesson we are learning more about the movement among Māori to revive connections to their identity 
+     + <h5>You will show your understanding by:</h5>
+     + <ul>
+     + <li>exploring different perspectives about urbanisation and its impacts on Māori</li>
+     + <li>using different sources of information and sharing your understanding of urban marae/cultural centres in y
+     + <h4>Lesson summary</h4>
+  ~ ANZH302_10_0.html: -24 +6
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-12 col-12">
+     - <p>In this lesson we are reviewing our learning more about Māori urbanisation in Aotearoa and the impacts of t
+     - <h5>You will show your understanding by:</h5>
+     - <ul>
+     - <li>exploring different perspectives about urbanisation and its impacts on Māori</li>
+     - <li>analysing different sources of information and answering questions.</li>
+     - </ul>
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="col-md-8 col-12">
+     + <p>In this lesson we are reviewing our learning more about Māori urbanisation in Aotearoa and the impacts of t
+     + <h5>You will show your understanding by:</h5>
+     + <ul>
+     + <li>exploring different perspectives about urbanisation and its impacts on Māori</li>
+     + <li>analysing different sources of information and answering questions.</li>
+ANZH302: identical 0 / changed 11
+  ~ ANZH303_1_0.html: -1 +1
+     - <div>Lesson summary:</div>
+     + <h4>Lesson summary:</h4>
+  ~ ANZH303_2_0.html: -1 +1
+     - <div>Lesson summary:</div>
+     + <h4>Lesson summary:</h4>
+  ~ ANZH303_3_0.html: -2 +2
+     - <div>learning intention</div>
+     - <div>Lesson summary</div>
+     + <h5>learning intention</h5>
+     + <h4>Lesson summary</h4>
+  ~ ANZH303_4_0.html: -1 +1
+     - <div>Lesson summary</div>
+     + <h4>Lesson summary</h4>
+  ~ ANZH303_5_0.html: -1 +1
+     - <div>Lesson summary</div>
+     + <h4>Lesson summary</h4>
+ANZH303: identical 2 / changed 5
+  ~ ANZH304_1_0.html: -2 +2
+     - <div>Learning intention</div>
+     - <div>Lesson summary</div>
+     + <h5>Learning intention</h5>
+     + <h4>Lesson summary</h4>
+  ~ ANZH304_2_0.html: -2 +2
+     - <div>Learning Intention</div>
+     - <div>Lesson Summary</div>
+     + <h5>Learning Intention</h5>
+     + <h4>Lesson Summary</h4>
+  ~ ANZH304_3_0.html: -2 +2
+     - <div>Learning Intention</div>
+     - <div>Lesson summary</div>
+     + <h5>Learning Intention</h5>
+     + <h4>Lesson summary</h4>
+  ~ ANZH304_4_0.html: -2 +2
+     - <div>Learning Intention</div>
+     - <div>Lesson summary</div>
+     + <h5>Learning Intention</h5>
+     + <h4>Lesson summary</h4>
+  ~ ANZH304_5_0.html: -2 +2
+     - <div>Learning Intention</div>
+     - <div>Lesson summary</div>
+     + <h5>Learning Intention</h5>
+     + <h4>Lesson summary</h4>
+  ~ ANZH304_6_0.html: -2 +2
+     - <div>Learning Intention</div>
+     - <div>Module summary</div>
+     + <h5>Learning Intention</h5>
+     + <h4>Module summary</h4>
+ANZH304: identical 1 / changed 6
+ANZH401: identical 14 / changed 0
+ANZH404: identical 7 / changed 0
+ANZHFUN05: identical 1 / changed 0
+ARFUN01: identical 1 / changed 0
+ARFUN02: identical 1 / changed 0
+ARFUN03: identical 1 / changed 0
+ARFUN04: identical 1 / changed 0
+ARFUN05: identical 1 / changed 0
+ART1002: identical 8 / changed 0
+ART1003: identical 1 / changed 0
+ART1004: identical 1 / changed 0
+ART1005: identical 1 / changed 0
+ART1006: identical 6 / changed 0
+BLL110: identical 1 / changed 0
+BLL111: identical 3 / changed 0
+BLL112: identical 3 / changed 0
+BLL113: identical 3 / changed 0
+BLL114: identical 3 / changed 0
+BLL115: identical 3 / changed 0
+BLL116: identical 3 / changed 0
+BLL117: identical 3 / changed 0
+BLL120: identical 1 / changed 0
+BLL121: identical 3 / changed 0
+BLL122: identical 3 / changed 0
+BLL123: identical 3 / changed 0
+BLL124: identical 3 / changed 0
+BLL125: identical 3 / changed 0
+BLL126: identical 3 / changed 0
+BLL127: identical 3 / changed 0
+BLL130: identical 1 / changed 0
+BLL131: identical 3 / changed 0
+BLL132: identical 3 / changed 0
+BLL133: identical 3 / changed 0
+BLL134: identical 3 / changed 0
+BLL135: identical 3 / changed 0
+BLL136: identical 2 / changed 0
+BLL137: identical 3 / changed 0
+BLL140: identical 1 / changed 0
+BLL141: identical 3 / changed 0
+BLL142: identical 3 / changed 0
+BLL143: identical 3 / changed 0
+BLL144: identical 3 / changed 0
+BLL145: identical 3 / changed 0
+BLL146: identical 3 / changed 0
+BLL147: identical 3 / changed 0
+BLL150: identical 1 / changed 0
+BLL151: identical 3 / changed 0
+BLL152: identical 3 / changed 0
+BLL153: identical 3 / changed 0
+BLL154: identical 3 / changed 0
+BLL155: identical 3 / changed 0
+BLL156: identical 3 / changed 0
+BLL157: identical 3 / changed 0
+BLL160: identical 1 / changed 0
+BLL161: identical 3 / changed 0
+BLL162: identical 3 / changed 0
+BLL163: identical 3 / changed 0
+BLL164: identical 3 / changed 0
+BLL165: identical 3 / changed 0
+BLL166: identical 3 / changed 0
+BLL167: identical 3 / changed 0
+BLL170: identical 1 / changed 0
+BLL171: identical 3 / changed 0
+BLL172: identical 3 / changed 0
+BLL173: identical 3 / changed 0
+BLL174: identical 3 / changed 0
+BLL175: identical 4 / changed 0
+BLL176: identical 3 / changed 0
+BLL177: identical 3 / changed 0
+BLL210: identical 1 / changed 0
+BLL211: identical 3 / changed 0
+BLL212: identical 3 / changed 0
+BLL213: identical 3 / changed 0
+BLL214: identical 3 / changed 0
+BLL215: identical 3 / changed 0
+BLL216: identical 3 / changed 0
+BLL217: identical 3 / changed 0
+BLL220: identical 1 / changed 0
+BLL221: identical 3 / changed 0
+BLL222: identical 3 / changed 0
+BLL223: identical 3 / changed 0
+BLL224: identical 3 / changed 0
+BLL225: identical 3 / changed 0
+BLL226: identical 3 / changed 0
+BLL227: identical 3 / changed 0
+BLL230: identical 1 / changed 0
+BLL231: identical 3 / changed 0
+BLL232: identical 3 / changed 0
+BLL233: identical 3 / changed 0
+BLL234: identical 3 / changed 0
+BLL235: identical 3 / changed 0
+BLL236: identical 3 / changed 0
+BLL237: identical 3 / changed 0
+BLL240: identical 9 / changed 0
+BLL241: identical 3 / changed 0
+BLL242: identical 3 / changed 0
+BLL244: identical 3 / changed 0
+BLL245: identical 3 / changed 0
+BLL246: identical 3 / changed 0
+  ~ BLL251_0_0.html: -57 +70
+     - <div class="col-md-12 col-12 paddingR">
+     - <h4><span>Overview</span></h4>
+     - <div class="col-md-6 col-12 paddingR">
+     - <h5><span>Knowledge</span></h5>
+     - <ul>
+     - <li>Many sounds (phonemes) can be spelt in more than one way.</li>
+     - <li>Sometimes words have one or more letter-sound combinations (grapheme-phoneme correspondences) that are unk
+     - <li>Sounds (phonemes) can be shown with unusual letter combinations (graphemes) such as &lt;eigh&gt; for the /
+     - <li>Written words are made up of letters and letter combinations (graphemes) that match to sounds (phonemes).<
+     - <li>Decoding an unknown word (with one syllable) involves:</li>
+     - <p>* using phonics knowledge to match letters and letter combinations (graphemes) to the correct sounds (phone
+     - <p>* saying the sounds without pausing between them (e.g. mmmmaaaat) and sliding from one sound to the next un
+     - <ul>
+     - <li>Skilled readers check their understanding as they read and use strategies to fix confusion (e.g. they rere
+     - <li>Pictures and other visual features in a text can help readers understand ideas that are not fully explaine
+     - <li>High-frequency words are words that appear often in spoken and written language, so spelling them correctl
+     - <li>Some high-frequency words have one or more phonemes that don’t match usual spelling patterns that have alr
+     - <li>Reading fluency involves reading words correctly, at a natural talking pace, and with expression.</li>
+     - <li>Expression means readers using their voice to match the feelings, punctuation, and meaning of the text.</l
+     - <li>Stories are written in sentences and paragraphs; have a beginning, middle and end; and have characters, se
+     - <li>Language features (eg: figurative and topic-specific language, tense) help communicate meaning clearly, en
+     - </ul>
+     - <div class="col-md-6 col-12 paddingR">
+     - <h5>Practices:</h5>
+     - <ul>
+     - <li>Identifying and recording phonemes in words including consonants sounds spelled with digraphs and trigraph
+     - <li>Decoding words with less-common graphemes or grapheme–phoneme correspondences in connected text, using the
+     - <li>Monitoring their understanding of texts and attempting to repair meaning by rereading, drawing on their pr
+     - <li>Making use of stated and implied information or ideas in a text to make connections with their own knowled
+     - <li>Spelling the most commonly used irregular words containing less typical phoneme– grapheme correspondences.
+     - <li>Reading Year 3 level text, accurately, with expression, and at oral- reading fluency rates appropriate for
+     - <li>Reading and comprehending both extended simple and compound sentences.</li>
+     - <li>Explaining how the author’s choice of words, symbols, and images communicates their intended meaning.</li>
+     - </ul>
+     - <h5>Learning Intentions</h5>
+     - <h5>We are learning:</h5>
+     - <ul>
+     - <li>to hear, read and spell the sounds sc, eigh, augh and ough, and words with the silent b</li>
+     - <li>to match irregular verbs with their past tense</li>
+     - <li>to read for enjoyment</li>
+     - … 17 more removed
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h4><span>Knowledge:</span></h4>
+     + <ul>
+     + <li>Many sounds (phonemes) can be spelt in more than one way.</li>
+     + <li>Sometimes words have one or more letter-sound combinations (grapheme-phoneme correspondences) that are unk
+     + <li>Sounds (phonemes) can be shown with unusual letter combinations (graphemes) such as &lt;eigh&gt; for the /
+     + <li>Written words are made up of letters and letter combinations (graphemes) that match to sounds (phonemes).<
+     + <li>Decoding an unknown word (with one syllable) involves:</li>
+     + </ul>
+     + <p>* using phonics knowledge to match letters and letter combinations (graphemes) to the correct sounds (phone
+     + <p>* saying the sounds without pausing between them (e.g. mmmmaaaat) and sliding from one sound to the next un
+     + <ul>
+     + <li>Skilled readers check their understanding as they read and use strategies to fix confusion (e.g. they rere
+     + … 50 more added
+BLL251: identical 2 / changed 1
+BLL252: identical 3 / changed 0
+  ~ BLL253_0_0.html: -50 +63
+     - <div class="col-md-12 col-12 paddingR">
+     - <h4><span>Overview</span></h4>
+     - <div class="col-md-6 col-12 paddingR">
+     - <h5><span>Knowledge</span></h5>
+     - <ul>
+     - <li>Reading fluency involves reading words correctly, at a natural talking pace, and with expression.</li>
+     - <li>Expression means readers using their voice to match the feelings, punctuation, and meaning of the text.</l
+     - <li>Poems are written in lines and stanzas, often have rhyming words or a rhythm, and use descriptive or creat
+     - <li>Suffixes are added to the end of a base word to form a new word with a new meaning.</li>
+     - <li>Pictures and other visual features in a text can help readers understand ideas that are not fully explaine
+     - <li>High-frequency words are words that appear often in spoken and written language, so spelling them correctl
+     - <li>Some high-frequency words have one or more phonemes that don’t match usual spelling patterns that have alr
+     - <li>Print features, such as bold and italics, can be used to emphasise key words or ideas.</li>
+     - <li>Each text form has distinct structures, and features that support their form and their purpose; for exampl
+     - <li>Text structure and features (e.g. visual features, headings, glossaries, chapters, stanzas, scenes) are us
+     - <li>Readers can relate ideas in texts to their personal experiences, other texts, and their knowledge of the w
+     - <div class="col-md-6 col-12 paddingR">
+     - <h5>Practices:</h5>
+     - <ul>
+     - <li>Decoding words with less-common graphemes or grapheme–phoneme correspondences in connected text, using the
+     - <li>Decoding words with a wide range of prefixes and suffixes using their phonics and morpheme knowledge.</li>
+     - <li>Monitoring their understanding of texts and attempting to repair meaning by rereading, drawing on their pr
+     - <li>Spelling the most commonly used irregular words containing less typical phoneme– grapheme correspondences.
+     - <li>Reading Year 3 level text, accurately, with expression, and at oral- reading fluency rates appropriate for
+     - <li>Identifying and discussing the structure and basic features of poems, stories, and non-fiction texts.</li>
+     - <li>Responding to, sharing opinions about, and making connections to texts by drawing on their knowledge of to
+     - </ul>
+     - <h5>Learning Intentions</h5>
+     - <h5>We are learning:</h5>
+     - <ul>
+     - <li>to read poetry clearly and fluently</li>
+     - <li>to understand the meaning of new suffixes</li>
+     - <li>to identify common features of non-fiction texts</li>
+     - <li>to compare different text types</li>
+     - <li>to locate specific information in a text.</li>
+     - </ul>
+     - <h5>Success Criteria</h5>
+     - <h5>I can:</h5>
+     - <ul>
+     - <li>read a poem clearly and fluently</li>
+     - … 10 more removed
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h4><span>Knowledge:</span></h4>
+     + <ul>
+     + <li>Reading fluency involves reading words correctly, at a natural talking pace, and with expression.</li>
+     + <li>Expression means readers using their voice to match the feelings, punctuation, and meaning of the text.</l
+     + <li>Poems are written in lines and stanzas, often have rhyming words or a rhythm, and use descriptive or creat
+     + <li>Suffixes are added to the end of a base word to form a new word with a new meaning.</li>
+     + <li>Pictures and other visual features in a text can help readers understand ideas that are not fully explaine
+     + <li>High-frequency words are words that appear often in spoken and written language, so spelling them correctl
+     + <li>Some high-frequency words have one or more phonemes that don’t match usual spelling patterns that have alr
+     + <li>Print features, such as bold and italics, can be used to emphasise key words or ideas.</li>
+     + <li>Each text form has distinct structures, and features that support their form and their purpose; for exampl
+     + <li>Text structure and features (e.g. visual features, headings, glossaries, chapters, stanzas, scenes) are us
+     + … 43 more added
+BLL253: identical 2 / changed 1
+BLL254: identical 3 / changed 0
+  ~ BLL262_0_0.html: -68 +81
+     - <div class="col-md-12 col-12 paddingR">
+     - <h4><span>Learning Intentions</span></h4>
+     - <div class="col-md-6 col-12 paddingR">
+     - <h5><span>Knowledge</span></h5>
+     - <ul>
+     - <li>Written words are made up of letters and letter combinations (graphemes) that match to sounds (phonemes).<
+     - <li>Decoding an unknown word (with one syllable) involves:
+     - <ul>
+     - <li>using phonics knowledge to match letters and letter combinations (graphemes) to the correct sounds (phonem
+     - <li>saying the sounds without pausing between them (e.g., mmmmaaaat) and sliding from one sound to the next un
+     - </ul></li>
+     - <li>The in- prefix shows that something is missing or the opposite of the base word (e.g., incomplete means no
+     - <li>The dis- prefix is similar to the in- prefix in that it can show something is missing or the opposite of t
+     - <li>The -less suffix shows without or not having something (e.g., hopeless, fearless).</li>
+     - <li>The -ful suffix shows full of or having a lot of something (e.g., hopeful, thankful).</li>
+     - <li>Word knowledge (e.g., word origins or knowledge of unstressed syllables) can be used to help read multi-sy
+     - <li>Some syllables in multisyllable words are spoken with less emphasis or force, and their vowel sounds are u
+     - <li>Reading fluency involves reading words correctly, at a natural talking pace, and with expression.</li>
+     - <li>Expression means readers using their voice to match the feelings, punctuation, and meaning of the text.</l
+     - <li>Reading with expression comes from understanding the meaning of the text.</li>
+     - <li>Knowledge of the meaningful parts of words (morphemes) can help with a word’s meaning.</li>
+     - <li>There are specific spelling conventions for adding some suffixes (such as taking away e from a split-vowel
+     - <li>A contraction is the shortened form of two combined words, leaving out certain letters and replacing them 
+     - <li>A well-structured paragraph includes a topic sentence to introduce the main idea, supporting details to ex
+     - <li>Oral language can be used to explain the connections between what was done, why it was done, and what was 
+     - <div class="col-md-6 col-12 paddingR">
+     - <h5>Practices</h5>
+     - <ul>
+     - <li>Decoding words with less common graphemes or grapheme phoneme correspondences in connected text, using the
+     - <li>Decoding words with a wide range of prefixes (in, dis) and suffixes (less, ful), using their phonics and m
+     - <li>Decoding multi-syllable words, including words with unstressed syllables, using their syllable, morpheme, 
+     - <li>Reading Year 3 level text, accurately, with expression, and at oral reading fluency rates appropriate for 
+     - <li>Spelling the most commonly used irregular words containing less typical phoneme grapheme correspondences.<
+     - <li>Adding less-common suffixes (er, ly) and applying simple spelling conventions.</li>
+     - <li>Spelling easier contractions for two-word phrases.</li>
+     - <li>Writing a paragraph about a topic that includes a topic sentence, supporting details, and a concluding sen
+     - <li>Reflecting on and explaining their learning, using clear, connected talk that links actions, reasons, and 
+     - </ul>
+     - <h5>Learning Intentions</h5>
+     - <h5>We are learning:</h5>
+     - … 28 more removed
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h4><span>Knowledge</span></h4>
+     + <ul>
+     + <li>Written words are made up of letters and letter combinations (graphemes) that match to sounds (phonemes).<
+     + <li>Decoding an unknown word (with one syllable) involves:
+     + <ul>
+     + <li>using phonics knowledge to match letters and letter combinations (graphemes) to the correct sounds (phonem
+     + <li>saying the sounds without pausing between them (e.g., mmmmaaaat) and sliding from one sound to the next un
+     + </ul></li>
+     + <li>The in- prefix shows that something is missing or the opposite of the base word (e.g., incomplete means no
+     + <li>The dis- prefix is similar to the in- prefix in that it can show something is missing or the opposite of t
+     + <li>The -less suffix shows without or not having something (e.g., hopeless, fearless).</li>
+     + <li>The -ful suffix shows full of or having a lot of something (e.g., hopeful, thankful).</li>
+     + … 61 more added
+BLL262: identical 2 / changed 1
+  ~ BLL263_0_0.html: -64 +77
+     - <div class="col-md-12 col-12 paddingR">
+     - <h4><span>Learning Intentions</span></h4>
+     - <div class="col-md-6 col-12 paddingR">
+     - <h5><span>Knowledge</span></h5>
+     - <ul>
+     - <li>Written words are made up of letters and letter combinations (graphemes) that match to sounds (phonemes).<
+     - <li>Decoding an unknown word (with one syllable) involves:
+     - <ul>
+     - <li>using phonics knowledge to match letters and letter combinations (graphemes) to the correct sounds (phonem
+     - <li>saying the sounds without pausing between them (e.g. mmmmaaaat) and sliding from one sound to the next unt
+     - </ul></li>
+     - <li>The in- prefix shows that something is missing or the opposite of the base word (e.g. incomplete means not
+     - <li>The dis- prefix is similar to the in- prefix in that it can show something is missing or the opposite of t
+     - <li>The -less suffix shows without or not having something (e.g. hopeless , fearless ).</li>
+     - <li>The -ful suffix shows full of or having a lot of something (e.g. hopeful, thankful ).</li>
+     - <li>Word knowledge (e.g. word origins or knowledge of unstressed syllables) can be used to help read multi-syl
+     - <li>Some syllables in multisyllable words are spoken with less emphasis or force, and their vowel sounds are u
+     - <li>Reading fluency involves reading words correctly, at a natural talking pace, and with expression.</li>
+     - <li>Expression means readers using their voice to match the feelings, punctuation, and meaning of the text.</l
+     - <li>Reading with expression comes from understanding the meaning of the text.</li>
+     - <li>Knowledge of the meaningful parts of words (morphemes) can help with a word s meaning.</li>
+     - <li>There are specific spelling conventions for adding some suffixes (such as taking away e from a split-vowel
+     - <li>A contraction is the shortened form of two combined words, leaving out certain letters and replacing them 
+     - <li>A well-structured paragraph includes a topic sentence to introduce the main idea, supportingdetails to exp
+     - <li>Oral language can be used to explain the connections between what was done, why it was done, and what was 
+     - <div class="col-md-6 col-12 paddingR">
+     - <h5>Practices</h5>
+     - <ul>
+     - <li>Decoding words with less common graphemes or grapheme phoneme correspondences in connected text, using the
+     - <li>Decoding words with a wide range of prefixes (in , dis ) and suffixes ( less, ful), using their phonics an
+     - <li>Decoding multi-syllable words, including words with unstressed syllables, using their syllable, morpheme, 
+     - <li>Reading Year 3 level text, accurately, with expression, and at oral reading fluency rates appropriate for 
+     - <li>Spelling the most commonly used irregular words containing less typical phoneme grapheme correspondences.<
+     - <li>Adding less-common suffixes ( er, ly) and applying simple spelling conventions.</li>
+     - <li>Spelling easier contractions for two-word phrases.</li>
+     - <li>Writing a paragraph about a topic that includes a topic sentence, supporting details, and a concluding sen
+     - <li>Reflecting on and explaining their learning, using clear, connected talk that links actions, reasons, and 
+     - </ul>
+     - <h5>Learning Intentions</h5>
+     - <h5>We are learning:</h5>
+     - … 24 more removed
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h4><span>Knowledge</span></h4>
+     + <ul>
+     + <li>Written words are made up of letters and letter combinations (graphemes) that match to sounds (phonemes).<
+     + <li>Decoding an unknown word (with one syllable) involves:
+     + <ul>
+     + <li>using phonics knowledge to match letters and letter combinations (graphemes) to the correct sounds (phonem
+     + <li>saying the sounds without pausing between them (e.g. mmmmaaaat) and sliding from one sound to the next unt
+     + </ul></li>
+     + <li>The in- prefix shows that something is missing or the opposite of the base word (e.g. incomplete means not
+     + <li>The dis- prefix is similar to the in- prefix in that it can show something is missing or the opposite of t
+     + <li>The -less suffix shows without or not having something (e.g. hopeless , fearless ).</li>
+     + <li>The -ful suffix shows full of or having a lot of something (e.g. hopeful, thankful ).</li>
+     + … 57 more added
+BLL263: identical 2 / changed 1
+  ~ BLLR201_0_0.html: -71 +85
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <h1>Module</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12 paddingR">
+     - <h4><span>Overview</span></h4>
+     - <div class="col-md-6 col-12 paddingR">
+     - <h5><span>Knowledge</span></h5>
+     - <ul>
+     - <li>Strategies for selecting texts based on personal interest include thinking about likes and dislikes, looki
+     - <li>Reading stamina supports academic success and enjoyment of reading.</li>
+     - <li>Reading stamina is supported by choosing texts that are high interest and developed by slowly building up 
+     - <li>A contraction is the shortened form of two combined words.</li>
+     - <li>Contractions follow predictable spelling patterns by leaving out certain letters and replacing them with a
+     - <li>Knowledge of meaningful parts of words (morphemes) and word origins (etymology) can help with working out 
+     - <li>Meaningful parts of words (morphemes) include base words, roots, and affixes.</li>
+     - <li>Affixes are meaningful parts of words (morphemes) that are added to a base word or root and include prefix
+     - <li>A base word can stand alone, and affixes can be added to change the meaning or how it is used in a sentenc
+     - <li>Understanding the structure of a text and the way language is used helps with understanding that text.</li
+     - <li>Narrative texts:
+     - <ul>
+     - <li>often begin by introducing the setting and characters, develop through a problem or goal and the actions t
+     - </ul></li>
+     - <li>Visual features such as diagrams, illustrations, and graphs help with understanding the information in a t
+     - <li>An inference is an understanding formed by the reader combining information in the text and their own prio
+     - <li>Making connections within a text involves identifying how ideas, events or characters relate to each other
+     - <li>Summarising helps readers understand and remember ideas by condensing what the text says into a shorter fo
+     - <li>Drawing conclusions involves interpreting what the whole text suggests, using both stated and implied info
+     - <li>Emotion words (e.g., ‘frustrated’, ‘proud’, ‘confused’) and explanatory phrases (e.g., ‘Because I didn’t u
+     - <li>Reflective sentence starters (e.g., ‘I found it tricky when …’, ‘Next time I’ll …’) can help students expr
+     - <div class="col-md-6 col-12 paddingR">
+     - <h5>Practices:</h5>
+     - <ul>
+     - <li>Using strategies for identifying and selecting texts based on their interests.</li>
+     - <li>Spelling contractions for two-word phrases ending with have, would, will (e.g., ‘I’ve’, ‘he’d’, ‘she’ll’).
+     - <li>Using knowledge from other Year 4 learning areas and topics to determine the meaning of root and base word
+     - <li>Identifying the structure used in a text and how this is used to communicate ideas clearly .</li>
+     - <li>Making predictions, inferences, and connections within the text, using information from the text and prior
+     - <li>Summarising a text by providing the key details in sequence, explaining how the details support the meanin
+     - <li>and messages of the text.</li>
+     - <li>Identifying key details and implied information in the text to draw a simple, supported conclusion.</li>
+     - … 31 more removed
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <h1>BLLR201</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-6 col-12">
+     + <h4><span>Knowledge:</span></h4>
+     + <ul>
+     + <li>Strategies for selecting texts based on personal interest include thinking about likes and dislikes, looki
+     + <li>Reading stamina supports academic success and enjoyment of reading.</li>
+     + <li>Reading stamina is supported by choosing texts that are high interest and developed by slowly building up 
+     + <li>A contraction is the shortened form of two combined words.</li>
+     + <li>Contractions follow predictable spelling patterns by leaving out certain letters and replacing them with a
+     + <li>Knowledge of meaningful parts of words (morphemes) and word origins (etymology) can help with working out 
+     + <li>Meaningful parts of words (morphemes) include base words, roots, and affixes.</li>
+     + … 65 more added
+  ~ BLLR201_1_0.html: -15 +20
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p>We are learning:</p>
+     - <ul>
+     - <li><i>to use strategies to find a good book to read</i></li>
+     - <li><i>to spell contractions.</i></li>
+     - </ul>
+     - <p>I can:</p>
+     - <ul>
+     - <li><i>use tips to help me find a good book to read</i></li>
+     - <li><i>use Te Kura’s library website to search for a good book</i></li>
+     - <li><i>spell contractions</i></li>
+     - <li><i>use contractions in a sentence.</i></li>
+     - </ul>
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>to use strategies to find a good book to read</li>
+     + <li>to spell contractions.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>use tips to help me find a good book to read</li>
+     + <li>use Te Kura’s library website to search for a good book</li>
+     + <li>spell contractions</li>
+     + <li>use contractions in a sentence.</li>
+     + </ul>
+     + </div>
+     + </div>
+  ~ BLLR201_1_1.html: -1 +10
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ BLLR201_2_0.html: -1 +10
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ BLLR201_3_0.html: -15 +20
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <p>We are learning:</p>
+     - <li><i>to find the base word</i> <b>form</b> <i>inside bigger words</i></li>
+     - <li><i>identify prefixes and suffixes</i></li>
+     - <li><i>use word parts to help work out meanings.</i></li>
+     - <p>I can:</p>
+     - <ul>
+     - <li><i>find</i> <b>form</b> <i>in longer words</i></li>
+     - <li><i>tell whether extra letters are at the beginning or end</i></li>
+     - <li><i>use the base word and affix to help explain meaning.</i></li>
+     - </ul>
+     - <ul>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>to find the base word <b>form</b> inside bigger words</li>
+     + <li>identify prefixes and suffixes</li>
+     + <li>use word parts to help work out meanings.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>find <b>form</b> in longer words</li>
+     + <li>tell whether extra letters are at the beginning or end</li>
+     + <li>use the base word and affix to help explain meaning.</li>
+     + </ul>
+     + </div>
+     + </div>
+  ~ BLLR201_4_0.html: -15 +20
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <p>We are learning:</p>
+     - <ul>
+     - <li><i>to use what we already know</i></li>
+     - <li><i>to use clues from a title and illustrations</i></li>
+     - <li><i>to make predictions</i></li>
+     - <li><i>new words to help with our understanding.</i></li>
+     - </ul>
+     - <p>I can:</p>
+     - <ul>
+     - <li><i>make a prediction before I read</i></li>
+     - <li><i>match a new word with its definition.</i></li>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>to use what we already know</li>
+     + <li>to use clues from a title and illustrations</li>
+     + <li>to make predictions</li>
+     + <li>new words to help with our understanding.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>make a prediction before I read</li>
+     + <li>match a new word with its definition.</li>
+     + </ul>
+     + </div>
+     + </div>
+  ~ BLLR201_5_0.html: -17 +22
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <p>We are learning:</p>
+     - <li><i>to follow what happens in a story</i></li>
+     - <li><i>to notice the important parts of a narrative</i></li>
+     - <li><i>to use clues to update our predictions.</i></li>
+     - <p>I can:</p>
+     - <li><i>say who is in the story</i></li>
+     - <li><i>say where and when the story happens</i></li>
+     - <li><i>explain the problem</i></li>
+     - <li><i>make a new prediction using clues</i></li>
+     - <li><i>tell what the characters do to solve the problem.</i></li>
+     - <ul>
+     - </ul>
+     - <ul>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>to follow what happens in a story</li>
+     + <li>to notice the important parts of a narrative</li>
+     + <li>to use clues to update our predictions.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>say who is in the story</li>
+     + <li>say where and when the story happens</li>
+     + <li>explain the problem</li>
+     + <li>make a new prediction using clues</li>
+     + <li>tell what the characters do to solve the problem.</li>
+     + </ul>
+     + … 2 more added
+  ~ BLLR201_6_0.html: -17 +23
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <p>We are learning:</p>
+     - <li><i>to summarise key ideas in sequence</i></li>
+     - <li><i>to write a supported conclusion</i></li>
+     - <li><i>to answer different kinds of questions</i></li>
+     - <li><i>make inferences from the text.</i></li>
+     - <p>I can:</p>
+     - <li><i>use a narrative organiser to retell the story in order</i></li>
+     - <li><i>make a conclusion about the story and support my thinking with evidence</i></li>
+     - <li><i>answer questions about the text</i></li>
+     - <li><i>make an inference using clues from the text and what I already know.</i></li>
+     - <ul>
+     - </ul>
+     - <ul>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>to summarise key ideas in sequence</li>
+     + <li>to write a supported conclusion</li>
+     + <li>to answer different kinds of questions</li>
+     + <li>make inferences from the text.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>use a narrative organiser to retell the story in order</li>
+     + <li>make a conclusion about the story and support my thinking with evidence</li>
+     + <li>answer questions about the text</li>
+     + <li>make an inference using clues from the text and what I already know.</li>
+     + </ul>
+     + … 3 more added
+BLLR201: identical 0 / changed 8
+  ~ BLLR202_0_0.html: -71 +85
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <h1>Module</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12 paddingR">
+     - <h4><span>Overview</span></h4>
+     - <div class="col-md-6 col-12 paddingR">
+     - <h5><span>Knowledge</span></h5>
+     - <ul>
+     - <li>Reading comprehension depends on reading fluently with accuracy, natural pace, automaticity, and expressio
+     - <li>Reading comprehension can be negatively affected by reading at a rate that is too fast or too slow.</li>
+     - <li>Reading with expression involves responding to punctuation, sentence structure, and language features.</li
+     - <li>Decoding a multi-syllable word can occur at the letter-sound (grapheme–phoneme) level and syllable level, 
+     - <li>Accurate spelling means breaking words into syllables and morphemes, then listening for each phoneme in th
+     - <li>The same phoneme can be spelt in different ways.</li>
+     - <li>The number of syllables in a word is the same as the number of vowel sounds (phonemes).</li>
+     - <li>Knowledge of meaningful parts of words (morphemes) and word origins (etymology) can help with working out 
+     - <li>Meaningful parts of words (morphemes) include base words, roots, and affixes.</li>
+     - <li>Affixes are meaningful parts of words (morphemes) that are added to a base word or root and include prefix
+     - <li>A base word can stand alone, and affixes can be added to change the meaning or how it is used in a sentenc
+     - <li>A suffix is a meaningful part added to the end of a word, which has a consistent spelling pattern and can 
+     - <li>The meaning of unfamiliar words can be worked out by using explicit and implied information from surroundi
+     - <li>Understanding the structure of a text and the way language is used helps with understanding that text.</li
+     - <li>Narrative texts: often begin by introducing the setting and characters, develop through a problem or goal 
+     - <li>Reading involves checking for understanding before, during, and after reading texts.</li>
+     - <li>Meaning can become unclear for different reasons when reading across a range of texts, and readers use a v
+     - <li>An inference is an understanding formed by the reader combining information in the text and their own prio
+     - <li>Summarising helps readers understand and remember ideas by condensing what the text says into a shorter fo
+     - <li>Drawing conclusions involves interpreting what the whole text suggests, using both stated and implied info
+     - <li>Texts can portray people, places, and ideas in different ways depending on what the author wants the audie
+     - <li>Organisers (e.g., graphic organisers or mnemonics) help plan and structure writing clearly by supporting t
+     - <div class="col-md-6 col-12 paddingR">
+     - <h5>Practices:</h5>
+     - <ul>
+     - <li>Reading year-level texts accurately and expressively, including correct pronunciation of kupu Māori, refle
+     - <li>Spelling words with: &lt;ea&gt;, &lt;ey&gt; representing /long a/.</li>
+     - <li>Decoding multi-syllable words by applying their knowledge of English and te reo Māori: phonics; syllables;
+     - <li>Inferring from the context and using a developing knowledge of morphemes to determine the meaning of words
+     - <li>Identifying the structure used in a text and how this is used to communicate ideas clearly.</li>
+     - <li>Making predictions, inferences, and connections within the text, using information from the text and prior
+     - <li>Summarising a text by providing the key details in sequence, explaining how the details support the meanin
+     - … 31 more removed
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <h1>BLLR202</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-6 col-12">
+     + <h4><span>Knowledge</span></h4>
+     + <ul>
+     + <li>Reading comprehension depends on reading fluently with accuracy, natural pace, automaticity, and expressio
+     + <li>Reading comprehension can be negatively affected by reading at a rate that is too fast or too slow.</li>
+     + <li>Reading with expression involves responding to punctuation, sentence structure, and language features.</li
+     + <li>Decoding a multi-syllable word can occur at the letter-sound (grapheme–phoneme) level and syllable level, 
+     + <li>Accurate spelling means breaking words into syllables and morphemes, then listening for each phoneme in th
+     + <li>The same phoneme can be spelt in different ways.</li>
+     + <li>The number of syllables in a word is the same as the number of vowel sounds (phonemes).</li>
+     + … 65 more added
+  ~ BLLR202_1_0.html: -20 +25
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p>We are learning:</p>
+     - <ul>
+     - <li><i>to read aloud smoothly and with expression</i></li>
+     - <li><i>to notice the long ā sound in words spelt with ea and ey</i></li>
+     - <li><i>to break words into syllables to help us read and spell them</i></li>
+     - <li><i>to spell and use our focus words correctly.</i></li>
+     - </ul>
+     - <p>I can:</p>
+     - <ul>
+     - <li><i>listen to two readings and choose the one that sounds better</i></li>
+     - <li><i>read aloud at a steady pace and use my voice to show meaning</i></li>
+     - <li><i>hear the long ā sound in words spelt with ea and ey</i></li>
+     - <li><i>break words into syllables to help me read and spell them</i></li>
+     - <li><i>spell the focus words correctly</i></li>
+     - <li><i>choose the right focus word to complete a sentence</i></li>
+     - <li><i>use the focus words in my own sentences.</i></li>
+     - </ul>
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>to read aloud smoothly and with expression</li>
+     + <li>to notice the long ā sound in words spelt with ea and ey</li>
+     + <li>to break words into syllables to help us read and spell them</li>
+     + <li>to spell and use our focus words correctly.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>listen to two readings and choose the one that sounds better</li>
+     + <li>read aloud at a steady pace and use my voice to show meaning</li>
+     + <li>hear the long ā sound in words spelt with ea and ey</li>
+     + <li>break words into syllables to help me read and spell them</li>
+     + <li>spell the focus words correctly</li>
+     + … 5 more added
+  ~ BLLR202_1_1.html: -5 +10
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <div class="col-md-4 col-12 paddingLR">
+     - <div class="col-md-4 col-12 paddingLR">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <div class="col-md-6 col-12 paddingLR">
+     + <div class="col-md-6 col-12 paddingLR">
+     + </div>
+     + </div>
+  ~ BLLR202_1_2.html: -1 +10
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ BLLR202_2_0.html: -23 +20
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <p>We are learning:</p>
+     - <li><i>to identify the suffixes -al and -ial</i></li>
+     - <li><i>to find the base word, even when the spelling changes a little</i></li>
+     - <li><i>to use the base word and suffix to help work out meaning.</i></li>
+     - <p>I can:</p>
+     - <li><i>spot words that end in -al</i></li>
+     - <li><i>find the base word in a longer word, even when the ending changes a little</i></li>
+     - <li><i>use the suffix to help explain what a word means</i></li>
+     - <li><i>notice how -ial is connected to -al in some words.</i></li>
+     - <ul>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <ul>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>to identify the suffixes -al and -ial</li>
+     + <li>to find the base word, even when the spelling changes a little</li>
+     + <li>to use the base word and suffix to help work out meaning.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>spot words that end in -al</li>
+     + <li>find the base word in a longer word, even when the ending changes a little</li>
+     + <li>use the suffix to help explain what a word means</li>
+     + <li>notice how -ial is connected to -al in some words.</li>
+     + </ul>
+     + </div>
+  ~ BLLR202_3_0.html: -18 +23
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <p>We are learning:</p>
+     - <li><i>to make predictions using clues from the title and picture of a story</i></li>
+     - <li><i>new words to help with our understanding</i></li>
+     - <li><i>to revise our thinking as we read</i></li>
+     - <li><i>to make inferences using what we read and what we already know.</i></li>
+     - <p>I can:</p>
+     - <ul>
+     - <li><i>make a prediction before I read and explain why it is possible</i></li>
+     - <li><i>match a new word with its definition</i></li>
+     - <li><i>use clues from the text to check my predictions</i></li>
+     - <li><i>change or add to a prediction as I read</i></li>
+     - <li><i>explain my thinking using evidence from the text.</i></li>
+     - </ul>
+     - <ul>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>to make predictions using clues from the title and picture of a story</li>
+     + <li>new words to help with our understanding</li>
+     + <li>to revise our thinking as we read</li>
+     + <li>to make inferences using what we read and what we already know.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>make a prediction before I read and explain why it is possible</li>
+     + <li>match a new word with its definition</li>
+     + <li>use clues from the text to check my predictions</li>
+     + <li>change or add to a prediction as I read</li>
+     + <li>explain my thinking using evidence from the text.</li>
+     + … 3 more added
+  ~ BLLR202_3_1.html: -1 +10
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ BLLR202_3_1_1.html: -1 +10
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ BLLR202_4_0.html: -15 +20
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <p>We are learning:</p>
+     - <li><i>to summarise key ideas in sequence</i></li>
+     - <li><i>to decide what is important in a story</i></li>
+     - <li><i>to draw a supported conclusion about a text.</i></li>
+     - <p>I can:</p>
+     - <li><i>identify key events in order</i></li>
+     - <li><i>write a short summary</i></li>
+     - <li><i>explain what the story shows using evidence.</i></li>
+     - <ul>
+     - </ul>
+     - <ul>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>to summarise key ideas in sequence</li>
+     + <li>to decide what is important in a story</li>
+     + <li>to draw a supported conclusion about a text.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>identify key events in order</li>
+     + <li>write a short summary</li>
+     + <li>explain what the story shows using evidence.</li>
+     + </ul>
+     + </div>
+     + </div>
+  ~ BLLR202_5_0.html: -15 +20
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <p>We are learning:</p>
+     - <ul>
+     - <li><i>to make inferences using clues from the text</i></li>
+     - <li><i>to explain ideas using evidence</i></li>
+     - <li><i>to explain how an author presents a character through what they say and do.</i></li>
+     - </ul>
+     - <p>I can:</p>
+     - <ul>
+     - <li><i>make an inference about how a character feels or what they are like</i></li>
+     - <li><i>use evidence from the text to support my thinking</i></li>
+     - <li><i>explain how the author helps me see a character in a certain way.</i></li>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>to make inferences using clues from the text</li>
+     + <li>to explain ideas using evidence</li>
+     + <li>to explain how an author presents a character through what they say and do.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>make an inference about how a character feels or what they are like</li>
+     + <li>use evidence from the text to support my thinking</li>
+     + <li>explain how the author helps me see a character in a certain way.</li>
+     + </ul>
+     + </div>
+     + </div>
+  ~ BLLR202_5_1.html: -1 +10
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ BLLR202_5_2.html: -1 +11
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+BLLR202: identical 0 / changed 12
+  ~ BLLR203_0_0.html: -79 +93
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <h1>Module</h1>
+     - <div id="module-menu-button" class="circle-button btn1"></div>
+     - <div class="col-md-12 col-12 paddingR">
+     - <h4><span>Learning Intentions</span></h4>
+     - <div class="col-md-6 col-12 paddingR">
+     - <h5><span>Knowledge</span></h5>
+     - <ul>
+     - <li>Accurate spelling means breaking words into syllables and morphemes, then listening for each phoneme in th
+     - <li>The same phoneme can be spelt in different ways.</li>
+     - <li>A suffix is a meaningful part added to the end of a word, which has a consistent spelling pattern and can 
+     - <li>Knowledge of meaningful parts of words (morphemes) and word origins (etymology) can help with working out 
+     - <li>Meaningful parts of words (morphemes) include base words, roots, and affixes.</li>
+     - <li>Affixes are meaningful parts of words (morphemes) that are added to a base word or root and include prefix
+     - <li>A base word can stand alone, and affixes can be added to change the meaning or how it is used in a sentenc
+     - <li>The meaning of unfamiliar words can be worked out by using explicit and implied information from surroundi
+     - <li>Understanding the structure of a text and the way language is used helps with understanding that text.</li
+     - <li>Narrative texts: often begin by introducing the setting and characters, develop through a problem or goal 
+     - <li>Narrative texts: include dialogue and sensory words or phrases that describe how things look, sound, smell
+     - <li>Visual features such as diagrams, illustrations, and graphs help with understanding the information in a t
+     - <li>Authors make deliberate choices about specific words, structure, and visuals to guide how audiences unders
+     - <li>Reading involves checking for understanding before, during, and after reading texts.</li>
+     - <li>An inference is an understanding formed by the reader combining information in the text and their own prio
+     - <li>Making connections within a text involves identifying how ideas, events or characters relate to each other
+     - <li>Summarising helps readers understand and remember ideas by condensing what the text says into a shorter fo
+     - <li>Drawing conclusions involves interpreting what the whole text suggests, using both stated and implied info
+     - <li>Texts are created to express ideas, share feelings, or persuade audiences to think or act in certain ways.
+     - <li>Texts can portray people, places, and ideas in different ways depending on what the author wants the audie
+     - <li>Readers can relate texts to their own knowledge, experiences, and cultural understandings by identifying r
+     - <li>Responses to texts can include sharing personal thoughts and feelings about ideas in texts.</li>
+     - <li>Organisers (e.g., graphic organisers or mnemonics) help plan and structure writing clearly by supporting t
+     - <li>Emotion words (e.g., ‘frustrated’, ‘proud’, ‘confused’) and explanatory phrases (e.g., ‘Because I didn’t u
+     - <li>Reflective sentence starters (e.g., ‘I found it tricky when …’, ‘Next time I’ll …’) can help students expr
+     - <div class="col-md-6 col-12 paddingR">
+     - <h5>Practices</h5>
+     - <ul>
+     - <li>Spelling words with &lt;y&gt;, &lt;ey&gt; representing /long e/.</li>
+     - <li>Inferring from the context and using a developing knowledge of morphemes to determine the meaning of words
+     - <li>Identifying the structure used in a text and how this is used to communicate ideas clearly.</li>
+     - <li>Exploring how authors use language for effect, including both literal language (which means exactly what i
+     - … 39 more removed
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <h1>BLLR203</h1>
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div class="tabs col-12">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Information</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-6 col-12">
+     + <h4><span>Knowledge</span></h4>
+     + <ul>
+     + <li>Accurate spelling means breaking words into syllables and morphemes, then listening for each phoneme in th
+     + <li>The same phoneme can be spelt in different ways.</li>
+     + <li>A suffix is a meaningful part added to the end of a word, which has a consistent spelling pattern and can 
+     + <li>Knowledge of meaningful parts of words (morphemes) and word origins (etymology) can help with working out 
+     + <li>Meaningful parts of words (morphemes) include base words, roots, and affixes.</li>
+     + <li>Affixes are meaningful parts of words (morphemes) that are added to a base word or root and include prefix
+     + <li>A base word can stand alone, and affixes can be added to change the meaning or how it is used in a sentenc
+     + … 73 more added
+  ~ BLLR203_1_0.html: -22 +23
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <p>We are learning:</p>
+     - <li><i>to hear the long /e/ sound in words</i></li>
+     - <li><i>to recognise y and ey spelling patterns</i></li>
+     - <li><i>to break words into syllables</i></li>
+     - <li><i>to read, spell, and use our spelling words correctly.</i></li>
+     - <p>I can:</p>
+     - <ul>
+     - <li><i>hear the long /e/ sound in words</i></li>
+     - <li><i>sort words by spelling pattern</i></li>
+     - <li><i>break words into syllables</i></li>
+     - <li><i>spell and use the spelling words in sentences.</i></li>
+     - </ul>
+     - <div class="col-md-4 col-12 paddingLR">
+     - <div class="col-md-4 col-12 paddingLR">
+     - <ul>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>to hear the long /e/ sound in words</li>
+     + <li>to recognise y and ey spelling patterns</li>
+     + <li>to break words into syllables</li>
+     + <li>to read, spell, and use our spelling words correctly.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>hear the long /e/ sound in words</li>
+     + <li>sort words by spelling pattern</li>
+     + <li>break words into syllables</li>
+     + <li>spell and use the spelling words in sentences.</li>
+     + </ul>
+     + … 3 more added
+  ~ BLLR203_1_1.html: -1 +10
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ BLLR203_2_0.html: -21 +22
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <p>We are learning:</p>
+     - <li><i>to understand that suffixes can change word meaning</i></li>
+     - <li><i>to understand that -ist and -or mean a person who does something</i></li>
+     - <li><i>to use -ist and -or to work out word meanings</i></li>
+     - <li><i>to choose the correct suffix to make a real word.</i></li>
+     - <p>I can:</p>
+     - <li><i>find the suffix in a word</i></li>
+     - <li><i>explain what -ist and -or mean</i></li>
+     - <li><i>break a word into base word + suffix</i></li>
+     - <li><i>use the suffix to understand what a word means</i></li>
+     - <li><i>choose the correct suffix (-ist or -or).</i></li>
+     - <ul>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <ul>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>to understand that suffixes can change word meaning</li>
+     + <li>to understand that -ist and -or mean a person who does something</li>
+     + <li>to use -ist and -or to work out word meanings</li>
+     + <li>to choose the correct suffix to make a real word.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>find the suffix in a word</li>
+     + <li>explain what -ist and -or mean</li>
+     + <li>break a word into base word + suffix</li>
+     + <li>use the suffix to understand what a word means</li>
+     + <li>choose the correct suffix (-ist or -or).</li>
+     + … 2 more added
+  ~ BLLR203_3_0.html: -19 +24
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <p>We are learning:</p>
+     - <li><i>to make connections to a text</i></li>
+     - <li><i>to make predictions using clues from the title and picture of a story</i></li>
+     - <li><i>new words to help with our understanding</i></li>
+     - <li><i>to create pictures in our minds to help us understand what we read.</i></li>
+     - <p>I can:</p>
+     - <ul>
+     - <li><i>make a connection between the text and my own experiences or other texts</i></li>
+     - <li><i>make a prediction before I read and explain why it is possible</i></li>
+     - <li><i>create a clear picture in my mind as I read</i></li>
+     - <li><i>use words from the text to help build my picture</i></li>
+     - <li><i>describe what I can see, hear or imagine from the text</i></li>
+     - <li><i>change or add to my thinking as I read more.</i></li>
+     - </ul>
+     - <ul>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>to make connections to a text</li>
+     + <li>to make predictions using clues from the title and picture of a story</li>
+     + <li>new words to help with our understanding</li>
+     + <li>to create pictures in our minds to help us understand what we read.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>make a connection between the text and my own experiences or other texts</li>
+     + <li>make a prediction before I read and explain why it is possible</li>
+     + <li>create a clear picture in my mind as I read</li>
+     + <li>use words from the text to help build my picture</li>
+     + <li>describe what I can see, hear or imagine from the text</li>
+     + … 4 more added
+  ~ BLLR203_4_0.html: -16 +21
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <p>We are learning:</p>
+     - <li><i>to build understanding as we read</i></li>
+     - <li><i>to check and change our predictions</i></li>
+     - <li><i>to identify the parts of a narrative.</i></li>
+     - <p>I can:</p>
+     - <ul>
+     - <li><i>describe what I can picture as I read</i></li>
+     - <li><i>find words that help me imagine the setting and events</i></li>
+     - <li><i>check and change my prediction using clues from the text</i></li>
+     - <li><i>identify the characters, setting, problem, plan, actions, and ending of a story.</i></li>
+     - </ul>
+     - <ul>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>to build understanding as we read</li>
+     + <li>to check and change our predictions</li>
+     + <li>to identify the parts of a narrative.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>describe what I can picture as I read</li>
+     + <li>find words that help me imagine the setting and events</li>
+     + <li>check and change my prediction using clues from the text</li>
+     + <li>identify the characters, setting, problem, plan, actions, and ending of a story.</li>
+     + </ul>
+     + </div>
+     + … 1 more added
+  ~ BLLR203_4_1_0.html: -19 +24
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <p>We are learning:</p>
+     - <ul>
+     - <li><i>to use a narrative organiser to summarise a story</i></li>
+     - <li><i>to make a supported conclusion about a story</i></li>
+     - <li><i>to answer questions using evidence from the text</i></li>
+     - <li><i>to make inferences using clues and what we already know</i>.</li>
+     - </ul>
+     - <p>I can:</p>
+     - <ul>
+     - <li><i>write the main events of a story in order</i></li>
+     - <li><i>make a conclusion about what the story shows</i></li>
+     - <li><i>support my conclusion with evidence from the text</i></li>
+     - <li><i>find information in the text to answer questions</i></li>
+     - <li><i>use clues from the text and what I already know to make an inference</i></li>
+     - <li><i>explain my inferences clearly.</i></li>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>to use a narrative organiser to summarise a story</li>
+     + <li>to make a supported conclusion about a story</li>
+     + <li>to answer questions using evidence from the text</li>
+     + <li>to make inferences using clues and what we already know.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>write the main events of a story in order</li>
+     + <li>make a conclusion about what the story shows</li>
+     + <li>support my conclusion with evidence from the text</li>
+     + <li>find information in the text to answer questions</li>
+     + <li>use clues from the text and what I already know to make an inference</li>
+     + … 4 more added
+  ~ BLLR203_5_1.html: -1 +10
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ BLLR203_5_2.html: -1 +10
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ BLLR203_5_0.html: -18 +24
+     - <html lang="en" level="" template="1-3" class="notranslate" translate="no">
+     - <p>We are learning:</p>
+     - <li><i>to explain how words, pictures and story structure communicate ideas</i></li>
+     - <li><i>to describe how a writer presents characters and setting</i></li>
+     - <li><i>to reflect on our learning.</i></li>
+     - <p>I can:</p>
+     - <li><i>identify words or phrases that help me understand the story</i></li>
+     - <li><i>explain how structure, language and pictures communicate ideas</i></li>
+     - <li><i>describe how a character is presented</i></li>
+     - <li><i>describe how a setting is presented</i></li>
+     - <li><i>explain how the writer influences what I think or feel</i></li>
+     - <li><i>reflect on what helped me learn.</i></li>
+     - <ul>
+     - </ul>
+     - <ul>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     + <html lang="en" level="" template="4-6" class="notranslate" translate="no">
+     + <div id="module-head-buttons">
+     + <div id="module-menu-button" class="circle-button btn1" tooltip="Overview"></div>
+     + <div id="module-menu-content" class="moduleMenu">
+     + <div class="row">
+     + <div class="col-md-8 col-12">
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>to explain how words, pictures and story structure communicate ideas</li>
+     + <li>to describe how a writer presents characters and setting</li>
+     + <li>to reflect on our learning.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + <li>identify words or phrases that help me understand the story</li>
+     + <li>explain how structure, language and pictures communicate ideas</li>
+     + <li>describe how a character is presented</li>
+     + <li>describe how a setting is presented</li>
+     + <li>explain how the writer influences what I think or feel</li>
+     + <li>reflect on what helped me learn.</li>
+     + … 4 more added
+BLLR203: identical 0 / changed 10
+  ~ CBI1004_0_0.html: -6 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div class="col-md-12 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div class="col-md-6 col-12">
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+  ~ CBI1004_1_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1004_2_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1004_3_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1004_4_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1004_5_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1004_6_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1004_7_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1004_8_0.html: -6 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1004_9_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1004_10_0.html: -1 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+CBI1004: identical 0 / changed 11
+  ~ CBI1005_0_0.html: -2 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div class="col-md-6 col-12">
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+  ~ CBI1005_1_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1005_2_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1005_3_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1005_4_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1005_5_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1005_6_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1005_7_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1005_8_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1005_9_0.html: -2 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4><span>Learning Intentions</span></h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1005_10_0.html: -1 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+CBI1005: identical 0 / changed 11
+  ~ CBI1008_0_0.html: -2 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div class="col-md-6 col-12">
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+  ~ CBI1008_1_0.html: -2 +2
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4>Different forms of carbon</h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>Different forms of carbon</h3>
+  ~ CBI1008_2_0.html: -2 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h5>Watch the videoThe Carbon Cycle to understand the various processes involved in a carbon cycle.</h5>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>Watch the videoThe Carbon Cycle to understand the various processes involved in a carbon cycle.</h3>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+CBI1008: identical 0 / changed 3
+  ~ CBI1009_0_0.html: -2 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <div class="col-md-12 col-12">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <div class="col-md-6 col-12">
+     + <li><a href="" id="prev-lesson" target="_self"></a></li>
+  ~ CBI1009_1_0.html: -1 +1
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+  ~ CBI1009_2_0.html: -3 +3
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h4>Insoluble salts do not dissolve in a solvent and remain as insoluble solids in the solution. Insoluble sal
+     - <h4>Solubility Table</h4>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>Insoluble salts do not dissolve in a solvent and remain as insoluble solids in the solution. Insoluble sal
+     + <h3>Solubility Table</h3>
+  ~ CBI1009_3_0.html: -7 +8
+     - <html lang="en" level="" template="combo" class="notranslate" translate="no">
+     - <h5>Precipitation Reaction</h5>
+     - <h5>Word and Symbol Precipitation Equations</h5>
+     - <h5>Rules to write word equations.</h5>
+     - <h5>Using solubility rule</h5>
+     - <h5>Note: Equations that are not balanced are not valid chemical reactions.</h5>
+     - <h5>How do we know if a chemical equation is balanced?</h5>
+     + <html lang="en" level="" template="NCEA" class="notranslate" translate="no">
+     + <h3>Precipitation Reaction</h3>
+     + <h3>Word and Symbol Precipitation Equations</h3>
+     + <h3>Rules to write word equations.</h3>
+     + <h3>Using solubility rule</h3>
+     + <h3>Note: Equations that are not balanced are not valid chemical reactions.</h3>
+     + <h3>How do we know if a chemical equation is balanced?</h3>
+     + <li><a href="" id="next-lesson" target="_self"></a></li>
+CBI1009: identical 0 / changed 4
+CEDK101: identical 1 / changed 0
+
+TOTAL: identical 415 / changed 101 / missing 0 over 132 modules
+CHANGED: ANZH101/ANZH101_1_0.html ANZH101/ANZH101_2_0.html ANZH101/ANZH101_3_0.html ANZH103/ANZH103_1_0.html ANZH104/ANZH104_4_0.html ANZH105/ANZH105_0_0.html ANZH105/ANZH105_6_0.html ANZH301/ANZH301_1_0.html ANZH301/ANZH301_2_0.html ANZH301/ANZH301_3_0.html ANZH301/ANZH301_4_0.html ANZH301/ANZH301_5_0.html ANZH301/ANZH301_6_0.html ANZH301/ANZH301_7_0.html ANZH301/ANZH301_8_0.html ANZH301/ANZH301_9_0.html ANZH302/ANZH302_0_0.html ANZH302/ANZH302_1_0.html ANZH302/ANZH302_2_0.html ANZH302/ANZH302_3_0.html ANZH302/ANZH302_4_0.html ANZH302/ANZH302_5_0.html ANZH302/ANZH302_6_0.html ANZH302/ANZH302_7_0.html ANZH302/ANZH302_8_0.html ANZH302/ANZH302_9_0.html ANZH302/ANZH302_10_0.html ANZH303/ANZH303_1_0.html ANZH303/ANZH303_2_0.html ANZH303/ANZH303_3_0.html ANZH303/ANZH303_4_0.html ANZH303/ANZH303_5_0.html ANZH304/ANZH304_1_0.html ANZH304/ANZH304_2_0.html ANZH304/ANZH304_3_0.html ANZH304/ANZH304_4_0.html ANZH304/ANZH304_5_0.html ANZH304/ANZH304_6_0.html BLL251/BLL251_0_0.html BLL253/BLL253_0_0.html BLL262/BLL262_0_0.html BLL263/BLL263_0_0.html BLLR201/BLLR201_0_0.html BLLR201/BLLR201_1_0.html BLLR201/BLLR201_1_1.html BLLR201/BLLR201_2_0.html BLLR201/BLLR201_3_0.html BLLR201/BLLR201_4_0.html BLLR201/BLLR201_5_0.html BLLR201/BLLR201_6_0.html BLLR202/BLLR202_0_0.html BLLR202/BLLR202_1_0.html BLLR202/BLLR202_1_1.html BLLR202/BLLR202_1_2.html BLLR202/BLLR202_2_0.html BLLR202/BLLR202_3_0.html BLLR202/BLLR202_3_1.html BLLR202/BLLR202_3_1_1.html BLLR202/BLLR202_4_0.html BLLR202/BLLR202_5_0.html BLLR202/BLLR202_5_1.html BLLR202/BLLR202_5_2.html BLLR203/BLLR203_0_0.html BLLR203/BLLR203_1_0.html BLLR203/BLLR203_1_1.html BLLR203/BLLR203_2_0.html BLLR203/BLLR203_3_0.html BLLR203/BLLR203_4_0.html BLLR203/BLLR203_4_1_0.html BLLR203/BLLR203_5_1.html BLLR203/BLLR203_5_2.html BLLR203/BLLR203_5_0.html CBI1004/CBI1004_0_0.html CBI1004/CBI1004_1_0.html CBI1004/CBI1004_2_0.html CBI1004/CBI1004_3_0.html CBI1004/CBI1004_4_0.html CBI1004/CBI1004_5_0.html CBI1004/CBI1004_6_0.html CBI1004/CBI1004_7_0.html CBI1004/CBI1004_8_0.html CBI1004/CBI1004_9_0.html CBI1004/CBI1004_10_0.html CBI1005/CBI1005_0_0.html CBI1005/CBI1005_1_0.html CBI1005/CBI1005_2_0.html CBI1005/CBI1005_3_0.html CBI1005/CBI1005_4_0.html CBI1005/CBI1005_5_0.html CBI1005/CBI1005_6_0.html CBI1005/CBI1005_7_0.html CBI1005/CBI1005_8_0.html CBI1005/CBI1005_9_0.html CBI1005/CBI1005_10_0.html CBI1008/CBI1008_0_0.html CBI1008/CBI1008_1_0.html CBI1008/CBI1008_2_0.html CBI1009/CBI1009_0_0.html CBI1009/CBI1009_1_0.html CBI1009/CBI1009_2_0.html CBI1009/CBI1009_3_0.html

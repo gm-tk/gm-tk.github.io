@@ -1,0 +1,30 @@
+r408 (260619.79): the mined registries rebuilt over the 552-module gold corpus — session 28 pre-loop Task 1; scoped ship #1 since the 19 Sept full
+
+A DATA round (no engine change): the 98-module September intake joins every registry mined
+from the gold, in one pass (the round-263 stale-registry trap avoided):
+- Module_Structure_Index module_meta 454 -> 552 (all 98 new codes; blank subjects 12 -> 0;
+  the Reference-module picker now lists 552); the Granular registry (dev-only) 710 keys.
+- Style_Anchor_Registry: 24 NEW bases mined per family with ReferenceMiner.Distil (BLLR, CBI,
+  CHI, COM, DAN, DTC, GEO, GER, JPN, MUS, MXS, PWY, PWYWHA, SAM, SPA, CHWHA, FRNO, GENO, GEWHA,
+  JPFUN, SCBI, SCES, PMT, WJFUN — WJFUN + JPFUN page_model single-file), new members on 7
+  bases, the evidence-floor-flip rows ANZHFUN / ENO / XOTPB / XOTPG / XOTPO corrected from the
+  gold; a new "1-10 Writing (MiW)" bucket. FRFUN held back, measured (the multi-file level-page
+  fundamentals dialect has no renderer; the faithful row scored 26 / 28 pages down).
+- Menu_Scaffold_Registry 120 -> 174 groups / 370 -> 525 series rows; Html_Convention_Registry
+  43 -> 52 groups (14 re-measured on the current gold); Overview_Menu_Heading_Lexicon 61 -> 66;
+  Module_Feature_Index 552 / 143 (dev-only); Scaffold_Consensus rebuilt with GRANULAR_SIG_OFF.
+- NEW data/Subject_Prefix_Map.json — prefix -> subject for the 30 prefixes the report folders
+  never filed; STATUS PROPOSED, Chris approves the labels (decision points in its _meta).
+- Dev tools: build_granular_registry.build_subject_map() reads the map (gaps only); the cascade
+  and parity selftest fixtures re-pinned (BLL254 body|@p L4, MXDI101 menu|@p SOLIDIFY-DEFER).
+
+Proof: probe OFF (pre snapshot swapped in) = disk 2613 / 2613; ON 457 pages / 103 modules;
+scoped regeneration of the 103 (0 truly stale; probe == disk 590 / 590). Skeleton 53.134 ->
+53.680 % (+0.5455pp; 275 movers 197 up / 76 down, 0 outside the set; the 1813 unaffected
+pairs EXACT), >=50 1378 -> 1398, >=75 228 -> 236, >=90 19 -> 20, RAW 37.487 -> 37.884 %;
+WJFUN 21 modules 10.4 -> 37.6 %. compare_structure exact 13410 -> 14091 (pool +746) / EXTRA
+186 / MISSING 690 (+2 / +5 inside five newly single-file modules); body_compare 54 / 6 / 190 /
+248 (EMPTY -2, ANY -2); defect pages 44 / leak 73 EXACT (2548 pages); every verifier EXACT;
+46 selftest lines GREEN; miner 187 -> 183 (the five WJFUN chrome rows collapsed as one).
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

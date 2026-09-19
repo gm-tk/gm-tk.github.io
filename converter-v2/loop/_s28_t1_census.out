@@ -1,0 +1,142 @@
+code	tpl	prefix	meta	mods	MFI	claude	SAR base	MAJ subj	subject_map	GSR map	resolver note
+ANZH103	Standard	ANZH	-	-	-	Y	ANZH/ANZH*	ANZH	ANZH	ANZH	HTML conventions from group ANZH|1-3: overview menu two_col_li, lesson menu flat.
+ANZH302	Standard	ANZH	-	-	-	Y	ANZH/ANZH*	ANZH	ANZH	ANZH	Multiple module-code candidates found (ANZH302, HSO1012) — using ANZH302 from filename "AN | HTML conventions from group ANZH|7-8: overview menu tabs, lesson menu tabs.
+ANZHFUN05	Fundamentals	ANZHFUN	-	-	-	Y	ANZH/ANZHFUN*	ANZH	ANZH	ANZH	No module code found in filenames or front-matter — converting with global defaults; outpu | No module code — resolved from global defaults only. | No convention group found for this module — using the global Emit_Templates defaults.
+BLLR202	Standard	BLLR	-	-	-	Y	1-10 Blended Literacy/BLL	1-10 Blended Literacy	-	-	BLLR202 is not in the registry members — inherited from its level BLL2 (sibling rule). | HTML conventions from group 1-10 Blended Literacy|1-3: overview menu two_col_li, lesson me
+BLLR203	Standard	BLLR	-	-	-	Y	1-10 Blended Literacy/BLL	1-10 Blended Literacy	-	-	BLLR203 is not in the registry members — inherited from its level BLL2 (sibling rule). | HTML conventions from group 1-10 Blended Literacy|1-3: overview menu two_col_li, lesson me
+CBI1004	Standard	CBI	-	-	-	Y	-	-	-	-	Multiple module-code candidates found (CBI1004, SCO1091) — using CBI1004 from filename "CB | no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+CBI1005	Standard	CBI	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+CBI1008	Standard	CBI	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+CBI1009	Standard	CBI	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+CEDO204	Inquiry	CEDO	-	-	-	Y	ConnectED/CEDO*	ConnectED	ConnectED	ConnectED	HTML conventions from group ConnectED|4-6: overview menu two_col_li, lesson menu two_col_l
+CHFUN08	Fundamentals	CHFUN	-	-	-	Y	1-10 Languages/CHFUN	-	-	-	CHFUN08 is not in the registry members — inherited from its level CHFUN0 (sibling rule). | No convention group found for this module — using the global Emit_Templates defaults.
+CHI1003	Standard	CHI	-	-	-	Y	-	-	-	-	Multiple module-code candidates found (CHI1003, CHI1000) — using CHI1003 from filename "CH | no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+CHI1004	Standard	CHI	-	-	-	Y	-	-	-	-	Multiple module-code candidates found (CHI1004, CHI1000) — using CHI1004 from filename "CH | no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+CHI1005	Standard	CHI	-	-	-	Y	-	-	-	-	Multiple module-code candidates found (CHI1005, CHI1000) — using CHI1005 from filename "CH | no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+CHWHA	Inquiry	CHWHA	-	-	-	Y	-	-	-	-	No module code found in filenames or front-matter — converting with global defaults; outpu | No module code — resolved from global defaults only. | No convention group found for this module — using the global Emit_Templates defaults.
+COM1002	Standard	COM	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+COM1005	Standard	COM	-	-	-	Y	-	-	-	-	Multiple module-code candidates found (COM1005, ECO1001) — using COM1005 from filename "CO | no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+COM1006	Standard	COM	-	-	-	Y	-	-	-	-	Multiple module-code candidates found (COM1006, ECO1003) — using COM1006 from filename "CO | no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+DAN1003	Standard	DAN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+DAN1004	Standard	DAN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+DAN1006	Standard	DAN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+DTC1004	Standard	DTC	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+DTC1005	Standard	DTC	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+ENGC204	Standard	ENGC	-	-	-	Y	1-10 English/ENGC	1-10 English	1-10 English	1-10 English	Multiple module-code candidates found (ENGC204, ENWO307) — using ENGC204 from filename "EN | ENGC204 is not in the registry members — inherited from its level ENGC2 (sibling rule). | HTML conventions from group 1-10 English|4-6: overview menu two_col_li, lesson menu flat.
+ENGC206	Standard	ENGC	-	-	-	Y	1-10 English/ENGC	1-10 English	1-10 English	1-10 English	Multiple module-code candidates found (ENGC206, ENO304) — using ENGC206 from filename "ENG | ENGC206 is not in the registry members — inherited from its level ENGC2 (sibling rule). | HTML conventions from group 1-10 English|4-6: overview menu two_col_li, lesson menu flat.
+ENGC403	Standard	ENGC	-	-	-	Y	1-10 English/ENGC	1-10 English	1-10 English	1-10 English	ENGC403 is not in the registry members — inherited from its level ENGC4 (sibling rule). | HTML conventions from series ENGC (deviation over 1-10 English|9-10): overview menu two_co
+ENGS404	Standard	ENGS	-	-	-	Y	1-10 English/ENGS	1-10 English	1-10 English	1-10 English	Multiple module-code candidates found (ENGS404, ENO000) — using ENGS404 from filename "ENG | ENGS404 is not in the registry members — inherited from its level ENGS4 (sibling rule). | HTML conventions from group 1-10 English|9-10/NCEA: overview menu tabs, lesson menu flat.
+ENO2060	Standard	ENO	-	-	-	Y	NCEA1/ENO	NCEA1	NCEA1	NCEA1	ENO2060 is not in the registry members — inherited from its level ENO1 (sibling rule). | its registry group (base ENO) has no gold-built member in the library index — a first-in-s | No convention group found for this module — using the global Emit_Templates defaults.
+FRFUN06	Fundamentals	FRFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+FRFUN07	Fundamentals	FRFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+FRFUN08	Fundamentals	FRFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+FRNO901	Standard	FRNO	-	-	-	Y	-	-	-	-	Multiple module-code candidates found (FRNO901, FRO101) — using FRNO901 from filename "FRN | no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+FRNO902	Standard	FRNO	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+GENO901	Standard	GENO	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+GEO1004	Standard	GEO	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+GEO1005	Standard	GEO	-	-	-	Y	-	-	-	-	Multiple module-code candidates found (GEO1005, GYO1008) — using GEO1005 from filename "GE | no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+GEO1006	Standard	GEO	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+GER1002	Standard	GER	-	-	-	Y	-	-	-	-	Multiple module-code candidates found (GER1002, GER1000) — using GER1002 from filename "GE | no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+GER1003	Standard	GER	-	-	-	-	-	-	-	-	(no Claude dir)
+GER1004	Standard	GER	-	-	-	-	-	-	-	-	(no Claude dir)
+GER1005	Standard	GER	-	-	-	-	-	-	-	-	(no Claude dir)
+GER1006	Standard	GER	-	-	-	-	-	-	-	-	(no Claude dir)
+GER1007	Standard	GER	-	-	-	-	-	-	-	-	(no Claude dir)
+GEWHA	Inquiry	GEWHA	-	-	-	Y	-	-	-	-	No module code found in filenames or front-matter — converting with global defaults; outpu | No module code — resolved from global defaults only. | No convention group found for this module — using the global Emit_Templates defaults.
+HES1002	Standard	HES	-	-	-	Y	NCEA1/HES*	-	NCEA1	NCEA1	Multiple module-code candidates found (HES1002, PEO1042) — using HES1002 from filename "HE | HTML conventions from group NCEA1|NCEA: overview menu tabs, lesson menu flat.
+JPFUN01	Fundamentals	JPFUN	-	-	-	Y	-	-	-	-	Multiple module-code candidates found (JPFUN01, JP000) — using JPFUN01 from filename "JPFU | no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+JPFUN02	Fundamentals	JPFUN	-	-	-	Y	-	-	-	-	Multiple module-code candidates found (JPFUN02, JP000) — using JPFUN02 from filename "JPFU | no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+JPN1004	Standard	JPN	-	-	-	Y	-	-	-	-	Multiple module-code candidates found (JPN1004, JAP1000) — using JPN1004 from filename "JP | no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+MUS1004	Standard	MUS	-	-	-	Y	-	-	-	-	Multiple module-code candidates found (MUS1004, MUS1001) — using MUS1004 from filename "MU | no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+MUS1006	Standard	MUS	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+MXS1004	Standard	MXS	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+PMT101	Bilingual	PMT	-	-	-	-	-	-	-	-	(no Claude dir)
+PNR107	Bilingual	PNR	-	-	-	Y	Te Marautanga o Aotearoa TMoA/PNR	Te Marautanga o Aotearoa TMoA	Te Marautanga o Aotearoa TMoA	Te Marautanga o Aotearoa TMoA	PNR107 is not in the registry members — inherited from its level PNR1 (sibling rule). | No media list found — acknowledgements will hold the standing items plus per-lesson design | HTML conventions from group Te Marautanga o Aotearoa TMoA|1-3: overview menu tabs, lesson 
+PWY1001	Standard	PWY	-	-	-	Y	-	-	-	-	Multiple module-code candidates found (PWY1001, PWO1007) — using PWY1001 from filename "PW | no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+PWY1002	Standard	PWY	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+PWY1007	Standard	PWY	-	-	-	Y	-	-	-	-	Multiple module-code candidates found (PWY1007, PW1003) — using PWY1007 from filename "PWY | no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+PWY1008	Standard	PWY	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+PWY1009	Standard	PWY	-	-	-	Y	-	-	-	-	Multiple module-code candidates found (PWY1009, LGO1007) — using PWY1009 from filename "PW | no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+PWYWHA1	Standard	PWYWHA	-	-	-	Y	-	-	-	-	PWY1000: no registry entry and no majority ruleset found — using global defaults. Check th | No convention group found for this module — using the global Emit_Templates defaults.
+SAM1005	Standard	SAM	-	-	-	-	-	-	-	-	(no Claude dir)
+SAM1006	Standard	SAM	-	-	-	-	-	-	-	-	(no Claude dir)
+SCBI301	Standard	SCBI	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+SCES201	Standard	SCES	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+SPA1004	Standard	SPA	-	-	-	Y	-	-	-	-	Multiple module-code candidates found (SPA1004, SPO1007) — using SPA1004 from filename "SP | no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+TRR116	Bilingual	TRR	-	-	-	Y	Te Marautanga o Aotearoa TMoA/TRR	Te Marautanga o Aotearoa TMoA	Te Marautanga o Aotearoa TMoA	Te Marautanga o Aotearoa TMoA	TRR116 is not in the registry members — inherited from its level TRR1 (sibling rule). | HTML conventions from group Te Marautanga o Aotearoa TMoA|1-3: overview menu tabs, lesson 
+WJFUN105	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN106	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN107	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN108	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN109	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN110	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN112	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN113	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN115	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN116	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN205	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN206	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN208	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN210	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN211	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN212	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN304	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN305	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN306	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	Multiple module-code candidates found (WJFUN306, WJFUN205) — using WJFUN306 from filename  | no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN307	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+WJFUN308	Fundamentals	WJFUN	-	-	-	Y	-	-	-	-	no registry entry and no majority ruleset found — using global defaults. Check the code, o | No convention group found for this module — using the global Emit_Templates defaults.
+XOTPB08	Standard	XOTPB	-	-	-	-	Leaving to Learn/XOTPB*	Leaving to Learn	Leaving to Learn	Leaving to Learn	(no Claude dir)
+XOTPB09	Standard	XOTPB	-	-	-	-	Leaving to Learn/XOTPB*	Leaving to Learn	Leaving to Learn	Leaving to Learn	(no Claude dir)
+XOTPB10	Standard	XOTPB	-	-	-	-	Leaving to Learn/XOTPB*	Leaving to Learn	Leaving to Learn	Leaving to Learn	(no Claude dir)
+XOTPB11	Standard	XOTPB	-	-	-	-	Leaving to Learn/XOTPB*	Leaving to Learn	Leaving to Learn	Leaving to Learn	(no Claude dir)
+XOTPB12	Standard	XOTPB	-	-	-	-	Leaving to Learn/XOTPB*	Leaving to Learn	Leaving to Learn	Leaving to Learn	(no Claude dir)
+XOTPB13	Standard	XOTPB	-	-	-	-	Leaving to Learn/XOTPB*	Leaving to Learn	Leaving to Learn	Leaving to Learn	(no Claude dir)
+XOTPG01	Standard	XOTPG	-	-	-	-	Leaving to Learn/XOTPG*	Leaving to Learn	Leaving to Learn	Leaving to Learn	(no Claude dir)
+XOTPG03	Standard	XOTPG	-	-	-	-	Leaving to Learn/XOTPG*	Leaving to Learn	Leaving to Learn	Leaving to Learn	(no Claude dir)
+XOTPG04	Standard	XOTPG	-	-	-	-	Leaving to Learn/XOTPG*	Leaving to Learn	Leaving to Learn	Leaving to Learn	(no Claude dir)
+XOTPG05	Standard	XOTPG	-	-	-	-	Leaving to Learn/XOTPG*	Leaving to Learn	Leaving to Learn	Leaving to Learn	(no Claude dir)
+XOTPG06	Standard	XOTPG	-	-	-	-	Leaving to Learn/XOTPG*	Leaving to Learn	Leaving to Learn	Leaving to Learn	(no Claude dir)
+XOTPO01	Standard	XOTPO	-	-	-	-	Leaving to Learn/XOTPO*	Leaving to Learn	Leaving to Learn	Leaving to Learn	(no Claude dir)
+
+== PREFIX SUMMARY ==
+ANZH	n=2	Standard	subject_map=ANZH	SARbase=ANZH/ANZH	MSR=ANZH|1-3,ANZH|4-6,ANZH|7-8,ANZH|9-10	ANZH103 ANZH302
+ANZHFUN	n=1	Fundamentals	subject_map=ANZH	SARbase=ANZH/ANZH	MSR=-	ANZHFUN05
+BLLR	n=2	Standard	subject_map=-	SARbase=1-10 Blended Literacy/BL	MSR=-	BLLR202 BLLR203
+CBI	n=4	Standard	subject_map=-	SARbase=-	MSR=-	CBI1004 CBI1005 CBI1008 CBI1009
+CEDO	n=1	Inquiry	subject_map=ConnectED	SARbase=ConnectED/CEDO	MSR=CEDO|1-3,CEDO|4-6,CEDO|7-8,CEDO|NCEA	CEDO204
+CHFUN	n=1	Fundamentals	subject_map=-	SARbase=1-10 Languages/CHFUN	MSR=-	CHFUN08
+CHI	n=3	Standard	subject_map=-	SARbase=-	MSR=-	CHI1003 CHI1004 CHI1005
+CHWHA	n=1	Inquiry	subject_map=-	SARbase=-	MSR=-	CHWHA
+COM	n=3	Standard	subject_map=-	SARbase=-	MSR=-	COM1002 COM1005 COM1006
+DAN	n=3	Standard	subject_map=-	SARbase=-	MSR=-	DAN1003 DAN1004 DAN1006
+DTC	n=2	Standard	subject_map=-	SARbase=-	MSR=-	DTC1004 DTC1005
+ENGC	n=3	Standard	subject_map=1-10 English	SARbase=1-10 English/ENGC	MSR=ENGC|1-3,ENGC|4-6,ENGC|7-8,ENGC|9-10	ENGC204 ENGC206 ENGC403
+ENGS	n=1	Standard	subject_map=1-10 English	SARbase=1-10 English/ENGS	MSR=ENGS|1-3,ENGS|4-6,ENGS|7-8,ENGS|9-10,ENGS|NCEA	ENGS404
+ENO	n=1	Standard	subject_map=NCEA1	SARbase=NCEA1/ENO	MSR=-	ENO2060
+FRFUN	n=3	Fundamentals	subject_map=-	SARbase=-	MSR=-	FRFUN06 FRFUN07 FRFUN08
+FRNO	n=2	Standard	subject_map=-	SARbase=-	MSR=-	FRNO901 FRNO902
+GENO	n=1	Standard	subject_map=-	SARbase=-	MSR=-	GENO901
+GEO	n=3	Standard	subject_map=-	SARbase=-	MSR=-	GEO1004 GEO1005 GEO1006
+GER	n=6	Standard	subject_map=-	SARbase=-	MSR=-	GER1002 GER1003 GER1004 GER1005 GER1006 GER1007
+GEWHA	n=1	Inquiry	subject_map=-	SARbase=-	MSR=-	GEWHA
+HES	n=1	Standard	subject_map=NCEA1	SARbase=NCEA1/HES	MSR=HES|NCEA	HES1002
+JPFUN	n=2	Fundamentals	subject_map=-	SARbase=-	MSR=-	JPFUN01 JPFUN02
+JPN	n=1	Standard	subject_map=-	SARbase=-	MSR=-	JPN1004
+MUS	n=2	Standard	subject_map=-	SARbase=-	MSR=-	MUS1004 MUS1006
+MXS	n=1	Standard	subject_map=-	SARbase=-	MSR=-	MXS1004
+PMT	n=1	Bilingual	subject_map=-	SARbase=-	MSR=-	PMT101
+PNR	n=1	Bilingual	subject_map=Te Marautanga o Aotearoa TMoA	SARbase=Te Marautanga o Aotearoa TMoA/PNR	MSR=PNR|1-3	PNR107
+PWY	n=5	Standard	subject_map=-	SARbase=-	MSR=-	PWY1001 PWY1002 PWY1007 PWY1008 PWY1009
+PWYWHA	n=1	Standard	subject_map=-	SARbase=-	MSR=-	PWYWHA1
+SAM	n=2	Standard	subject_map=-	SARbase=-	MSR=-	SAM1005 SAM1006
+SCBI	n=1	Standard	subject_map=-	SARbase=-	MSR=-	SCBI301
+SCES	n=1	Standard	subject_map=-	SARbase=-	MSR=-	SCES201
+SPA	n=1	Standard	subject_map=-	SARbase=-	MSR=-	SPA1004
+TRR	n=1	Bilingual	subject_map=Te Marautanga o Aotearoa TMoA	SARbase=Te Marautanga o Aotearoa TMoA/TRR	MSR=TRR|1-3,TRR|4-6,TRR|7-8	TRR116
+WJFUN	n=21	Fundamentals	subject_map=-	SARbase=-	MSR=-	WJFUN105 WJFUN106 WJFUN107 WJFUN108 WJFUN109 WJFUN110 WJFUN112 WJFUN113 WJFUN115 WJFUN116 WJFUN205 WJFUN206 WJFUN208 WJFUN210 WJFUN211 WJFUN212 WJFUN304 WJFUN305 WJFUN306 WJFUN307 WJFUN308
+XOTPB	n=6	Standard	subject_map=Leaving to Learn	SARbase=Leaving to Learn/XOTPB	MSR=-	XOTPB08 XOTPB09 XOTPB10 XOTPB11 XOTPB12 XOTPB13
+XOTPG	n=5	Standard	subject_map=Leaving to Learn	SARbase=Leaving to Learn/XOTPG	MSR=-	XOTPG01 XOTPG03 XOTPG04 XOTPG05 XOTPG06
+XOTPO	n=1	Standard	subject_map=Leaving to Learn	SARbase=Leaving to Learn/XOTPO	MSR=-	XOTPO01
+
+module_meta n= 454  modules n= 453  MFI n= 454
+subject_map keys: 113  distinct subjects: 1-10 Arts | 1-10 Blended Literacy | 1-10 English | 1-10 Health and PE | 1-10 Mathematics | 1-10 Science | 1-10 Social Science | 1-10 Technology | ANZH | ConnectED | ECE | EXPlore | Leaving to Learn | NCEA1 | NCEA2 | NCEA3 | Online Safety (OS9000) | Te Marautanga o Aotearoa TMoA | Te ara Whakapuawa -Wellbeing

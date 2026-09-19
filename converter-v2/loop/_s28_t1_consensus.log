@@ -1,0 +1,11 @@
+[10:10:23] consensus over 487 modules, 8 partials
+part 01 rc=0
+part 00 rc=0
+part 05 rc=0
+part 04 rc=0
+part 02 rc=0
+part 03 rc=0
+part 07 rc=0
+part 06 rc=0
+consensus registry: 604 tag-keys (147 reliable, N>=5) -> /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/reference/tests/../../data/Scaffold_Consensus.json
+[10:12:32] CONSENSUS_DONE

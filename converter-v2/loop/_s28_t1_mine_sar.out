@@ -1,0 +1,534 @@
+
+=== ANZH  (12 gold modules: ANZH101 ANZH103 ANZH104 ANZH105 ANZH203 ANZH205 ANZH301 ANZH302 ANZH303 ANZH304 ANZH401 ANZH404)
+  template_phase       1-3  [4/12]   deviators: 7-8 ×4 (ANZH301,ANZH302,ANZH303,ANZH304) | 4-6 ×2 (ANZH203,ANZH205) | 9-10 ×2 (ANZH401,ANZH404)
+  level_attr           empty  [12/12]
+  body_class           container-fluid  [12/12]
+  idoc_host            tekura  [12/12]
+  footer_class         footer-nav  [12/12]
+  acknowledgements     yes  [11/12]   deviators: no ×1 (ANZH303)
+  page_model           multi-file  [12/12]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [7/12]   deviators: {"overview":"full-code","lesson":"padded-number"} ×3 (ANZH101,ANZH103,ANZH203) | {"overview":"full-code","lesson":"full-code"} ×1 (ANZH401) | {"overview":"full-code","lesson":"Lesson 1"} ×1 (ANZH404)
+  h1_count             {"overview":"2","lesson":"1"}  [5/12]   deviators: {"overview":"3","lesson":"1"} ×2 (ANZH103,ANZH203) | {"overview":"2","lesson":"2"} ×2 (ANZH105,ANZH301) | {"overview":"3","lesson":"3"} ×2 (ANZH401,ANZH404) | {"overview":"3","lesson":"2"} ×1 (ANZH101)
+  menu_type            {"overview":"simplified","lesson":"simplified"}  [5/12]   deviators: {"overview":"simplified","lesson":"none"} ×3 (ANZH104,ANZH105,ANZH205) | {"overview":"tabs","lesson":"tabs"} ×3 (ANZH301,ANZH303,ANZH304) | {"overview":"tabs","lesson":"simplified"} ×1 (ANZH404)
+  menu_button_tooltip  {"overview":"no","lesson":"no"}  [7/12]   deviators: {"overview":"yes","lesson":"yes"} ×4 (ANZH104,ANZH105,ANZH303,ANZH304) | {"overview":"yes"} ×1 (ANZH205)
+  footer_links         {"overview":"next+home","lesson":"prev+next+home"}  [7/12]   deviators: {"overview":"prev+next+home","lesson":"prev+next+home"} ×5 (ANZH104,ANZH105,ANZH205,ANZH401…)
+
+=== ANZHFUN  (1 gold modules: ANZHFUN05)
+  template_phase       combo  [1/1]
+  level_attr           ∅  [1/1]
+  body_class           fundamentals container-fluid  [1/1]
+  idoc_host            tekura  [1/1]
+  footer_class         footer-nav fundamentals-nav  [1/1]
+  acknowledgements     yes  [1/1]
+  page_model           single-file  [1/1]
+  module_code          {"overview":"ANZHFUN05"}  [1/1]
+  h1_count             {"overview":"2"}  [1/1]
+  menu_type            {"overview":"none"}  [1/1]
+  menu_button_tooltip  ∅  [1/1]
+  footer_links         {"overview":"prev+next+home"}  [1/1]
+
+=== BLLR  (3 gold modules: BLLR201 BLLR202 BLLR203)
+  template_phase       4-6  [3/3]
+  level_attr           ∅  [3/3]
+  body_class           container-fluid  [3/3]
+  idoc_host            tekura  [3/3]
+  footer_class         footer-nav inquiry-nav  [3/3]
+  acknowledgements     yes  [3/3]
+  page_model           multi-file  [3/3]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [3/3]
+  h1_count             {"overview":"2","lesson":"1"}  [3/3]
+  menu_type            {"overview":"tabs","lesson":"simplified"}  [3/3]
+  menu_button_tooltip  {"overview":"yes","lesson":"yes"}  [3/3]
+  footer_links         {"overview":"prev+next+home","lesson":"prev+next+home"}  [2/3]   deviators: {"overview":"next+home","lesson":"prev+next+home"} ×1 (BLLR203)
+
+=== CBI  (4 gold modules: CBI1004 CBI1005 CBI1008 CBI1009)
+  template_phase       NCEA  [4/4]
+  level_attr           empty  [4/4]
+  body_class           container-fluid  [4/4]
+  idoc_host            tekura  [4/4]
+  footer_class         footer-nav  [4/4]
+  acknowledgements     yes  [4/4]
+  page_model           multi-file  [4/4]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [4/4]
+  h1_count             {"overview":"2","lesson":"1"}  [4/4]
+  menu_type            {"overview":"tabs","lesson":"none"}  [2/4]   deviators: {"overview":"tabs","lesson":"simplified"} ×2 (CBI1008,CBI1009)
+  menu_button_tooltip  {"overview":"no","lesson":"no"}  [2/4]   deviators: {"overview":"yes","lesson":"yes"} ×1 (CBI1008) | {"overview":"yes","lesson":"no"} ×1 (CBI1009)
+  footer_links         {"overview":"prev+next+home","lesson":"prev+next+home"}  [4/4]
+
+=== CEDO  (9 gold modules: CEDO102 CEDO201 CEDO202 CEDO204 CEDO402 CEDO105 CEDO301 CEDO501 CEDO502)
+  template_phase       4-6  [3/9]   deviators: 1-3 ×2 (CEDO102,CEDO105) | NCEA ×2 (CEDO501,CEDO502) | 9-10 ×1 (CEDO402) | 7-8 ×1 (CEDO301)
+  level_attr           ∅  [5/9]   deviators: empty ×4 (CEDO105,CEDO301,CEDO501,CEDO502)
+  body_class           inquiry container-fluid  [5/9]   deviators: container-fluid ×2 (CEDO105,CEDO301) | ∅ ×2 (CEDO501,CEDO502)
+  idoc_host            tekura  [7/9]   deviators: tekuradev ×2 (CEDO105,CEDO501)
+  footer_class         footer-nav inquiry-nav  [5/9]   deviators: footer-nav ×4 (CEDO105,CEDO301,CEDO501,CEDO502)
+  acknowledgements     yes  [9/9]
+  page_model           multi-file  [5/9]   deviators: single-file ×4 (CEDO102,CEDO201,CEDO202,CEDO402)
+  module_code          ∅  [5/9]   deviators: {"overview":"full-code","lesson":"decimal"} ×4 (CEDO105,CEDO301,CEDO501,CEDO502)
+  h1_count             {"overview":"2"}  [5/9]   deviators: {"overview":"2","lesson":"1"} ×4 (CEDO105,CEDO301,CEDO501,CEDO502)
+  menu_type            {"overview":"simplified"}  [5/9]   deviators: {"overview":"tabs","lesson":"simplified"} ×2 (CEDO105,CEDO502) | {"overview":"simplified","lesson":"simplified"} ×1 (CEDO301) | {"overview":"tabs","lesson":"tabs"} ×1 (CEDO501)
+  menu_button_tooltip  {"overview":"no"}  [5/9]   deviators: {"overview":"yes","lesson":"yes"} ×3 (CEDO105,CEDO501,CEDO502) | {"overview":"no","lesson":"no"} ×1 (CEDO301)
+  footer_links         {"overview":"prev+next+home"}  [5/9]   deviators: {"overview":"next+home","lesson":"prev+next+home"} ×3 (CEDO105,CEDO501,CEDO502) | {"overview":"prev+next+home","lesson":"prev+next+home"} ×1 (CEDO301)
+
+=== CHFUN  (6 gold modules: CHFUN01 CHFUN04 CHFUN05 CHFUN06 CHFUN07 CHFUN08)
+  template_phase       combo  [6/6]
+  level_attr           ∅  [3/6]   deviators: empty ×3 (CHFUN05,CHFUN07,CHFUN08)
+  body_class           fundamentals container-fluid  [6/6]
+  idoc_host            tekura  [6/6]
+  footer_class         footer-nav fundamentals-nav  [6/6]
+  acknowledgements     yes  [6/6]
+  page_model           single-file  [6/6]
+  module_code          {"overview":"full-code"}  [6/6]
+  h1_count             {"overview":"2"}  [6/6]
+  menu_type            {"overview":"tabs"}  [6/6]
+  menu_button_tooltip  {"overview":"yes"}  [6/6]
+  footer_links         {"overview":"home"}  [6/6]
+
+=== CHI  (3 gold modules: CHI1003 CHI1004 CHI1005)
+  template_phase       NCEA  [3/3]
+  level_attr           empty  [3/3]
+  body_class           container-fluid  [3/3]
+  idoc_host            tekura  [3/3]
+  footer_class         footer-nav  [3/3]
+  acknowledgements     yes  [3/3]
+  page_model           multi-file  [3/3]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [3/3]
+  h1_count             {"overview":"2","lesson":"2"}  [3/3]
+  menu_type            {"overview":"tabs","lesson":"simplified"}  [3/3]
+  menu_button_tooltip  {"overview":"yes","lesson":"no"}  [2/3]   deviators: {"overview":"yes","lesson":"yes"} ×1 (CHI1003)
+  footer_links         {"overview":"prev+next+home","lesson":"prev+next+home"}  [3/3]
+
+=== CHWHA  (1 gold modules: CHWHA)
+  template_phase       combo  [1/1]
+  level_attr           ∅  [1/1]
+  body_class           inquiry container-fluid mathJax  [1/1]
+  idoc_host            tekura  [1/1]
+  footer_class         footer-nav inquiry-nav  [1/1]
+  acknowledgements     yes  [1/1]
+  page_model           single-file  [1/1]
+  module_code          {"overview":"CHWHA"}  [1/1]
+  h1_count             {"overview":"3"}  [1/1]
+  menu_type            {"overview":"none"}  [1/1]
+  menu_button_tooltip  ∅  [1/1]
+  footer_links         {"overview":"home"}  [1/1]
+
+=== COM  (3 gold modules: COM1002 COM1005 COM1006)
+  template_phase       NCEA  [3/3]
+  level_attr           empty  [3/3]
+  body_class           container-fluid  [3/3]
+  idoc_host            tekuradev  [3/3]
+  footer_class         footer-nav  [3/3]
+  acknowledgements     yes  [3/3]
+  page_model           multi-file  [3/3]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [3/3]
+  h1_count             {"overview":"2","lesson":"1"}  [3/3]
+  menu_type            {"overview":"tabs","lesson":"simplified"}  [3/3]
+  menu_button_tooltip  {"overview":"no","lesson":"yes"}  [2/3]   deviators: {"overview":"no","lesson":"no"} ×1 (COM1002)
+  footer_links         {"overview":"next+home","lesson":"prev+next+home"}  [2/3]   deviators: {"overview":"prev+next+home","lesson":"prev+next+home"} ×1 (COM1002)
+
+=== DAN  (3 gold modules: DAN1003 DAN1004 DAN1006)
+  template_phase       NCEA  [3/3]
+  level_attr           empty  [3/3]
+  body_class           container-fluid  [3/3]
+  idoc_host            tekura  [3/3]
+  footer_class         footer-nav  [3/3]
+  acknowledgements     yes  [3/3]
+  page_model           multi-file  [3/3]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [3/3]
+  h1_count             {"overview":"2","lesson":"1"}  [3/3]
+  menu_type            {"overview":"tabs","lesson":"none"}  [3/3]
+  menu_button_tooltip  {"overview":"no"}  [3/3]
+  footer_links         {"overview":"next+home","lesson":"prev+next+home"}  [3/3]
+
+=== DTC  (2 gold modules: DTC1004 DTC1005)
+  template_phase       NCEA  [2/2]
+  level_attr           empty  [2/2]
+  body_class           container-fluid  [2/2]
+  idoc_host            tekura  [2/2]
+  footer_class         footer-nav  [2/2]
+  acknowledgements     yes  [2/2]
+  page_model           multi-file  [2/2]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [2/2]
+  h1_count             {"overview":"2","lesson":"1"}  [2/2]
+  menu_type            {"overview":"tabs","lesson":"none"}  [2/2]
+  menu_button_tooltip  {"overview":"no"}  [1/2]   deviators: {"overview":"no","lesson":"no"} ×1 (DTC1005)
+  footer_links         {"overview":"prev+next+home","lesson":"prev+next+home"}  [1/2]   deviators: {"overview":"next+home","lesson":"prev+next+home"} ×1 (DTC1005)
+
+=== ENGC  (10 gold modules: ENGC101 ENGC102 ENGC201 ENGC202 ENGC204 ENGC206 ENGC301 ENGC302 ENGC401 ENGC403)
+  template_phase       4-6  [4/10]   deviators: 1-3 ×2 (ENGC101,ENGC102) | 7-8 ×2 (ENGC301,ENGC302) | 9-10 ×2 (ENGC401,ENGC403)
+  level_attr           empty  [10/10]
+  body_class           container-fluid  [10/10]
+  idoc_host            tekuradev  [5/10]   deviators: tekura ×5 (ENGC102,ENGC301,ENGC302,ENGC401…)
+  footer_class         footer-nav  [10/10]
+  acknowledgements     yes  [10/10]
+  page_model           multi-file  [10/10]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [8/10]   deviators: {"overview":"full-code","lesson":"padded-number"} ×2 (ENGC204,ENGC206)
+  h1_count             {"overview":"2","lesson":"1"}  [8/10]   deviators: {"overview":"1","lesson":"1"} ×2 (ENGC101,ENGC206)
+  menu_type            {"overview":"simplified","lesson":"simplified"}  [7/10]   deviators: {"overview":"tabs","lesson":"simplified"} ×3 (ENGC204,ENGC206,ENGC403)
+  menu_button_tooltip  {"overview":"yes","lesson":"yes"}  [5/10]   deviators: {"overview":"yes","lesson":"no"} ×3 (ENGC101,ENGC201,ENGC202) | {"overview":"no","lesson":"yes"} ×1 (ENGC102) | {"overview":"no","lesson":"no"} ×1 (ENGC206)
+  footer_links         {"overview":"next+home","lesson":"prev+next+home"}  [9/10]   deviators: {"overview":"prev+next+home","lesson":"prev+next+home"} ×1 (ENGC102)
+
+=== ENGS  (9 gold modules: ENGS101 ENGS102 ENGS201 ENGS202 ENGS301 ENGS302 ENGS401 ENGS404 ENGS405)
+  template_phase       1-3  [2/9]   deviators: 4-6 ×2 (ENGS201,ENGS202) | 7-8 ×2 (ENGS301,ENGS302) | 9-10 ×2 (ENGS404,ENGS405) | NCEA ×1 (ENGS401)
+  level_attr           empty  [9/9]
+  body_class           container-fluid  [9/9]
+  idoc_host            tekura  [9/9]
+  footer_class         footer-nav  [9/9]
+  acknowledgements     yes  [9/9]
+  page_model           multi-file  [9/9]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [5/9]   deviators: {"overview":"full-code","lesson":"padded-number"} ×4 (ENGS102,ENGS201,ENGS202,ENGS301)
+  h1_count             {"overview":"2","lesson":"1"}  [7/9]   deviators: {"overview":"1","lesson":"1"} ×1 (ENGS101) | {"overview":"2","lesson":"2"} ×1 (ENGS404)
+  menu_type            {"overview":"simplified","lesson":"simplified"}  [5/9]   deviators: {"overview":"tabs","lesson":"simplified"} ×4 (ENGS102,ENGS401,ENGS404,ENGS405)
+  menu_button_tooltip  {"overview":"no","lesson":"no"}  [5/9]   deviators: {"overview":"yes","lesson":"no"} ×2 (ENGS401,ENGS405) | {"overview":"no","lesson":"yes"} ×1 (ENGS101) | {"overview":"yes","lesson":"yes"} ×1 (ENGS404)
+  footer_links         {"overview":"prev+next+home","lesson":"prev+next+home"}  [6/9]   deviators: {"overview":"next+home","lesson":"prev+next+home"} ×3 (ENGS301,ENGS302,ENGS404)
+
+=== ENO  (1 gold modules: ENO2060)
+  template_phase       NCEA  [1/1]
+  level_attr           empty  [1/1]
+  body_class           container-fluid  [1/1]
+  idoc_host            tekura  [1/1]
+  footer_class         footer-nav  [1/1]
+  acknowledgements     yes  [1/1]
+  page_model           multi-file  [1/1]
+  module_code          {"overview":"full-code","lesson":"ENO2060.01"}  [1/1]
+  h1_count             {"overview":"2","lesson":"2"}  [1/1]
+  menu_type            {"overview":"tabs","lesson":"simplified"}  [1/1]
+  menu_button_tooltip  {"overview":"yes","lesson":"yes"}  [1/1]
+  footer_links         {"overview":"next+home","lesson":"prev+next+home"}  [1/1]
+
+=== FRFUN  (3 gold modules: FRFUN06 FRFUN07 FRFUN08)
+  template_phase       combo  [3/3]
+  level_attr           ∅  [3/3]
+  body_class           fundamentals container-fluid  [3/3]
+  idoc_host            tekura  [3/3]
+  footer_class         footer-nav fundamentals-nav  [3/3]
+  acknowledgements     yes  [3/3]
+  page_model           multi-file  [3/3]
+  module_code          {"overview":"full-code"}  [3/3]
+  h1_count             {"overview":"2"}  [3/3]
+  menu_type            {"overview":"tabs"}  [2/3]   deviators: {"overview":"simplified"} ×1 (FRFUN08)
+  menu_button_tooltip  {"overview":"yes"}  [3/3]
+  footer_links         {"overview":"home"}  [3/3]
+
+=== FRNO  (2 gold modules: FRNO901 FRNO902)
+  template_phase       combo  [2/2]
+  level_attr           empty  [2/2]
+  body_class           container-fluid  [2/2]
+  idoc_host            tekura  [2/2]
+  footer_class         footer-nav  [2/2]
+  acknowledgements     yes  [2/2]
+  page_model           multi-file  [2/2]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [1/2]   deviators: {"overview":"full-code","lesson":"padded-number"} ×1 (FRNO902)
+  h1_count             {"overview":"2","lesson":"2"}  [1/2]   deviators: {"overview":"2","lesson":"1"} ×1 (FRNO902)
+  menu_type            {"overview":"tabs","lesson":"simplified"}  [2/2]
+  menu_button_tooltip  {"overview":"no","lesson":"no"}  [1/2]   deviators: {"overview":"yes","lesson":"yes"} ×1 (FRNO902)
+  footer_links         {"overview":"next+home","lesson":"prev+next+home"}  [2/2]
+
+=== GENO  (1 gold modules: GENO901)
+  template_phase       combo  [1/1]
+  level_attr           empty  [1/1]
+  body_class           container-fluid  [1/1]
+  idoc_host            tekura  [1/1]
+  footer_class         footer-nav  [1/1]
+  acknowledgements     yes  [1/1]
+  page_model           multi-file  [1/1]
+  module_code          {"overview":"full-code","lesson":"padded-number"}  [1/1]
+  h1_count             {"overview":"3","lesson":"1"}  [1/1]
+  menu_type            {"overview":"tabs","lesson":"simplified"}  [1/1]
+  menu_button_tooltip  {"overview":"yes","lesson":"yes"}  [1/1]
+  footer_links         {"overview":"next+home","lesson":"prev+next+home"}  [1/1]
+
+=== GEO  (3 gold modules: GEO1004 GEO1005 GEO1006)
+  template_phase       NCEA  [3/3]
+  level_attr           empty  [3/3]
+  body_class           container-fluid  [3/3]
+  idoc_host            tekuradev  [3/3]
+  footer_class         footer-nav  [3/3]
+  acknowledgements     yes  [3/3]
+  page_model           multi-file  [3/3]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [3/3]
+  h1_count             {"overview":"2","lesson":"1"}  [3/3]
+  menu_type            {"overview":"tabs","lesson":"simplified"}  [2/3]   deviators: {"overview":"tabs","lesson":"none"} ×1 (GEO1004)
+  menu_button_tooltip  {"overview":"no","lesson":"no"}  [2/3]   deviators: {"overview":"no"} ×1 (GEO1004)
+  footer_links         {"overview":"prev+next+home","lesson":"prev+next+home"}  [3/3]
+
+=== GER  (6 gold modules: GER1002 GER1003 GER1004 GER1005 GER1006 GER1007)
+  template_phase       NCEA  [6/6]
+  level_attr           empty  [6/6]
+  body_class           container-fluid  [6/6]
+  idoc_host            tekuradev  [6/6]
+  footer_class         footer-nav  [6/6]
+  acknowledgements     yes  [6/6]
+  page_model           multi-file  [6/6]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [4/6]   deviators: {"overview":"full-code","lesson":"Lesson 1"} ×1 (GER1002) | {"overview":"full-code","lesson":"padded-number"} ×1 (GER1003)
+  h1_count             {"overview":"1","lesson":"1"}  [3/6]   deviators: {"overview":"2","lesson":"1"} ×2 (GER1004,GER1007) | {"overview":"2","lesson":"2"} ×1 (GER1002)
+  menu_type            {"overview":"tabs","lesson":"none"}  [4/6]   deviators: {"overview":"tabs","lesson":"tabs"} ×2 (GER1002,GER1004)
+  menu_button_tooltip  {"overview":"no","lesson":"no"}  [6/6]
+  footer_links         {"overview":"prev+next+home","lesson":"prev+next+home"}  [3/6]   deviators: {"overview":"next+home","lesson":"prev+next+home"} ×3 (GER1005,GER1006,GER1007)
+
+=== GEWHA  (1 gold modules: GEWHA)
+  template_phase       combo  [1/1]
+  level_attr           ∅  [1/1]
+  body_class           inquiry container-fluid mathJax  [1/1]
+  idoc_host            tekura  [1/1]
+  footer_class         footer-nav inquiry-nav  [1/1]
+  acknowledgements     yes  [1/1]
+  page_model           single-file  [1/1]
+  module_code          {"overview":"GEWHA"}  [1/1]
+  h1_count             {"overview":"3"}  [1/1]
+  menu_type            {"overview":"simplified"}  [1/1]
+  menu_button_tooltip  {"overview":"yes"}  [1/1]
+  footer_links         {"overview":"home"}  [1/1]
+
+=== HES  (6 gold modules: HES1002 HES1003 HES1004 HES1005 HES1006 HES1007)
+  template_phase       NCEA  [6/6]
+  level_attr           empty  [6/6]
+  body_class           container-fluid  [6/6]
+  idoc_host            tekura  [6/6]
+  footer_class         footer-nav  [6/6]
+  acknowledgements     yes  [6/6]
+  page_model           multi-file  [6/6]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [6/6]
+  h1_count             {"overview":"2","lesson":"1"}  [3/6]   deviators: {"overview":"1","lesson":"1"} ×2 (HES1003,HES1004) | {"overview":"2","lesson":"2"} ×1 (HES1005)
+  menu_type            {"overview":"tabs","lesson":"none"}  [4/6]   deviators: {"overview":"tabs","lesson":"tabs"} ×1 (HES1005) | {"overview":"tabs","lesson":"simplified"} ×1 (HES1007)
+  menu_button_tooltip  {"overview":"yes","lesson":"yes"}  [2/6]   deviators: {"overview":"yes"} ×2 (HES1003,HES1004) | {"overview":"yes","lesson":"no"} ×2 (HES1006,HES1007)
+  footer_links         {"overview":"prev+next+home","lesson":"prev+next+home"}  [3/6]   deviators: {"overview":"next+home","lesson":"prev+next+home"} ×3 (HES1005,HES1006,HES1007)
+
+=== JPFUN  (2 gold modules: JPFUN01 JPFUN02)
+  template_phase       combo  [2/2]
+  level_attr           empty  [2/2]
+  body_class           fundamentals container-fluid  [2/2]
+  idoc_host            tekura  [2/2]
+  footer_class         footer-nav fundamentals-nav  [2/2]
+  acknowledgements     yes  [2/2]
+  page_model           single-file  [2/2]
+  module_code          {"overview":"full-code"}  [2/2]
+  h1_count             {"overview":"2"}  [2/2]
+  menu_type            {"overview":"tabs"}  [2/2]
+  menu_button_tooltip  {"overview":"yes"}  [2/2]
+  footer_links         {"overview":"home"}  [2/2]
+
+=== JPN  (1 gold modules: JPN1004)
+  template_phase       NCEA  [1/1]
+  level_attr           empty  [1/1]
+  body_class           container-fluid  [1/1]
+  idoc_host            tekura  [1/1]
+  footer_class         footer-nav  [1/1]
+  acknowledgements     yes  [1/1]
+  page_model           multi-file  [1/1]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [1/1]
+  h1_count             {"overview":"3","lesson":"2"}  [1/1]
+  menu_type            {"overview":"tabs","lesson":"simplified"}  [1/1]
+  menu_button_tooltip  {"overview":"no","lesson":"no"}  [1/1]
+  footer_links         {"overview":"prev+next+home","lesson":"prev+next+home"}  [1/1]
+
+=== MUS  (2 gold modules: MUS1004 MUS1006)
+  template_phase       NCEA  [2/2]
+  level_attr           empty  [2/2]
+  body_class           container-fluid  [2/2]
+  idoc_host            tekura  [2/2]
+  footer_class         footer-nav  [2/2]
+  acknowledgements     yes  [2/2]
+  page_model           multi-file  [2/2]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [2/2]
+  h1_count             {"overview":"1","lesson":"1"}  [1/2]   deviators: {"overview":"2","lesson":"2"} ×1 (MUS1006)
+  menu_type            {"overview":"tabs","lesson":"none"}  [2/2]
+  menu_button_tooltip  {"overview":"no","lesson":"no"}  [1/2]   deviators: {"overview":"no"} ×1 (MUS1006)
+  footer_links         {"overview":"prev+next+home","lesson":"prev+next+home"}  [1/2]   deviators: {"overview":"next+home","lesson":"prev+next+home"} ×1 (MUS1006)
+
+=== MXS  (1 gold modules: MXS1004)
+  template_phase       NCEA  [1/1]
+  level_attr           empty  [1/1]
+  body_class           container-fluid  [1/1]
+  idoc_host            tekura  [1/1]
+  footer_class         footer-nav fundamentals-nav  [1/1]
+  acknowledgements     yes  [1/1]
+  page_model           multi-file  [1/1]
+  module_code          {"overview":"full-code","lesson":"padded-number"}  [1/1]
+  h1_count             {"overview":"2","lesson":"1"}  [1/1]
+  menu_type            {"overview":"tabs","lesson":"simplified"}  [1/1]
+  menu_button_tooltip  {"overview":"yes","lesson":"yes"}  [1/1]
+  footer_links         {"overview":"prev+next+home","lesson":"prev+next+home"}  [1/1]
+
+=== PMT  (1 gold modules: PMT101)
+  template_phase       1-3  [1/1]
+  level_attr           empty  [1/1]
+  body_class           container-fluid reoTranslate  [1/1]
+  idoc_host            tekura  [1/1]
+  footer_class         footer-nav  [1/1]
+  acknowledgements     yes  [1/1]
+  page_model           multi-file  [1/1]
+  module_code          {"overview":"full-code","lesson":"full-code"}  [1/1]
+  h1_count             {"overview":"2","lesson":"2"}  [1/1]
+  menu_type            {"overview":"tabs","lesson":"none"}  [1/1]
+  menu_button_tooltip  {"overview":"no","lesson":"no"}  [1/1]
+  footer_links         {"overview":"next+home","lesson":"prev+next+home"}  [1/1]
+
+=== PNR  (4 gold modules: PNR101 PNR102 PNR104 PNR107)
+  template_phase       1-3  [4/4]
+  level_attr           empty  [4/4]
+  body_class           container-fluid reoTranslate  [4/4]
+  idoc_host            tekura  [3/4]   deviators: tekuradev ×1 (PNR107)
+  footer_class         footer-nav  [4/4]
+  acknowledgements     yes  [4/4]
+  page_model           multi-file  [4/4]
+  module_code          {"overview":"full-code","lesson":"full-code"}  [3/4]   deviators: {"overview":"full-code","lesson":"padded-number"} ×1 (PNR101)
+  h1_count             {"overview":"2","lesson":"2"}  [4/4]
+  menu_type            {"overview":"tabs","lesson":"none"}  [4/4]
+  menu_button_tooltip  {"overview":"no","lesson":"no"}  [3/4]   deviators: {"overview":"yes","lesson":"no"} ×1 (PNR107)
+  footer_links         {"overview":"next+home","lesson":"prev+next+home"}  [4/4]
+
+=== PWY  (5 gold modules: PWY1001 PWY1002 PWY1007 PWY1008 PWY1009)
+  template_phase       NCEA  [5/5]
+  level_attr           empty  [5/5]
+  body_class           ∅  [5/5]
+  idoc_host            tekura  [3/5]   deviators: tekuradev ×2 (PWY1001,PWY1007)
+  footer_class         footer-nav  [5/5]
+  acknowledgements     yes  [5/5]
+  page_model           multi-file  [5/5]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [5/5]
+  h1_count             {"overview":"1","lesson":"1"}  [3/5]   deviators: {"overview":"2","lesson":"1"} ×2 (PWY1008,PWY1009)
+  menu_type            {"overview":"tabs","lesson":"simplified"}  [5/5]
+  menu_button_tooltip  {"overview":"yes","lesson":"yes"}  [5/5]
+  footer_links         {"overview":"next+home","lesson":"prev+next+home"}  [5/5]
+
+=== PWYWHA  (1 gold modules: PWYWHA1)
+  template_phase       NCEA  [1/1]
+  level_attr           empty  [1/1]
+  body_class           container-fluid  [1/1]
+  idoc_host            tekuradev  [1/1]
+  footer_class         footer-nav  [1/1]
+  acknowledgements     yes  [1/1]
+  page_model           single-file  [1/1]
+  module_code          {"overview":"PWYWHA1"}  [1/1]
+  h1_count             {"overview":"1"}  [1/1]
+  menu_type            {"overview":"none"}  [1/1]
+  menu_button_tooltip  {"overview":"no"}  [1/1]
+  footer_links         {"overview":"prev+next+home"}  [1/1]
+
+=== SAM  (2 gold modules: SAM1005 SAM1006)
+  template_phase       NCEA  [2/2]
+  level_attr           empty  [2/2]
+  body_class           container-fluid  [2/2]
+  idoc_host            tekura  [2/2]
+  footer_class         footer-nav  [2/2]
+  acknowledgements     yes  [2/2]
+  page_model           multi-file  [2/2]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [2/2]
+  h1_count             {"overview":"3","lesson":"2"}  [2/2]
+  menu_type            {"overview":"tabs","lesson":"simplified"}  [2/2]
+  menu_button_tooltip  {"overview":"yes","lesson":"no"}  [1/2]   deviators: {"overview":"no","lesson":"no"} ×1 (SAM1006)
+  footer_links         {"overview":"prev+next+home","lesson":"prev+next+home"}  [2/2]
+
+=== SCBI  (1 gold modules: SCBI301)
+  template_phase       7-8  [1/1]
+  level_attr           empty  [1/1]
+  body_class           container-fluid  [1/1]
+  idoc_host            tekura  [1/1]
+  footer_class         footer-nav  [1/1]
+  acknowledgements     yes  [1/1]
+  page_model           multi-file  [1/1]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [1/1]
+  h1_count             {"overview":"2","lesson":"1"}  [1/1]
+  menu_type            {"overview":"tabs","lesson":"simplified"}  [1/1]
+  menu_button_tooltip  {"overview":"yes","lesson":"no"}  [1/1]
+  footer_links         {"overview":"next+home","lesson":"prev+next+home"}  [1/1]
+
+=== SCES  (1 gold modules: SCES201)
+  template_phase       4-6  [1/1]
+  level_attr           empty  [1/1]
+  body_class           container-fluid  [1/1]
+  idoc_host            tekura  [1/1]
+  footer_class         footer-nav  [1/1]
+  acknowledgements     yes  [1/1]
+  page_model           multi-file  [1/1]
+  module_code          {"overview":"full-code","lesson":"padded-number"}  [1/1]
+  h1_count             {"overview":"2","lesson":"1"}  [1/1]
+  menu_type            {"overview":"tabs","lesson":"simplified"}  [1/1]
+  menu_button_tooltip  {"overview":"yes","lesson":"yes"}  [1/1]
+  footer_links         {"overview":"next+home","lesson":"prev+next+home"}  [1/1]
+
+=== SPA  (1 gold modules: SPA1004)
+  template_phase       NCEA  [1/1]
+  level_attr           empty  [1/1]
+  body_class           container-fluid  [1/1]
+  idoc_host            tekura  [1/1]
+  footer_class         footer-nav  [1/1]
+  acknowledgements     yes  [1/1]
+  page_model           multi-file  [1/1]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [1/1]
+  h1_count             {"overview":"3","lesson":"2"}  [1/1]
+  menu_type            {"overview":"tabs","lesson":"simplified"}  [1/1]
+  menu_button_tooltip  {"overview":"no","lesson":"no"}  [1/1]
+  footer_links         {"overview":"next+home","lesson":"prev+next+home"}  [1/1]
+
+=== TRR  (18 gold modules: TRR102 TRR103 TRR104 TRR105 TRR106 TRR107 TRR108 TRR109 TRR110 TRR111 TRR112 TRR113 TRR114 TRR115 TRR116 TRR203 TRR301 TRR304)
+  template_phase       1-3  [15/18]   deviators: 7-8 ×2 (TRR301,TRR304) | 4-6 ×1 (TRR203)
+  level_attr           empty  [18/18]
+  body_class           container-fluid reoTranslate  [18/18]
+  idoc_host            tekura  [17/18]   deviators: tekuradev ×1 (TRR116)
+  footer_class         footer-nav  [18/18]
+  acknowledgements     yes  [17/18]   deviators: no ×1 (TRR105)
+  page_model           multi-file  [18/18]
+  module_code          {"overview":"full-code","lesson":"decimal"}  [15/18]   deviators: {"overview":"full-code","lesson":"full-code"} ×3 (TRR107,TRR109,TRR110)
+  h1_count             {"overview":"2","lesson":"2"}  [18/18]
+  menu_type            {"overview":"tabs","lesson":"none"}  [18/18]
+  menu_button_tooltip  {"overview":"no"}  [15/18]   deviators: {"overview":"no","lesson":"no"} ×3 (TRR107,TRR109,TRR110)
+  footer_links         {"overview":"next+home","lesson":"prev+next+home"}  [16/18]   deviators: {"overview":"next+home","lesson":"next+home"} ×1 (TRR107) | {"overview":"prev+next+home","lesson":"prev+next+home"} ×1 (TRR112)
+
+=== WJFUN  (21 gold modules: WJFUN105 WJFUN106 WJFUN107 WJFUN108 WJFUN109 WJFUN110 WJFUN112 WJFUN113 WJFUN115 WJFUN116 WJFUN205 WJFUN206 WJFUN208 WJFUN210 WJFUN211 WJFUN212 WJFUN304 WJFUN305 WJFUN306 WJFUN307 WJFUN308)
+  template_phase       1-3  [9/21]   deviators: 4-6 ×6 (WJFUN205,WJFUN206,WJFUN208,WJFUN210…) | 7-8 ×5 (WJFUN304,WJFUN305,WJFUN306,WJFUN307…) | combo ×1 (WJFUN112)
+  level_attr           ∅  [20/21]   deviators: empty ×1 (WJFUN210)
+  body_class           fundamentals container-fluid  [21/21]
+  idoc_host            tekura  [21/21]
+  footer_class         footer-nav  [13/21]   deviators: footer-nav fundamentals-nav ×8 (WJFUN112,WJFUN113,WJFUN206,WJFUN208…)
+  acknowledgements     yes  [21/21]
+  page_model           single-file  [21/21]
+  module_code          {"overview":"full-code"}  [21/21]
+  h1_count             {"overview":"2"}  [13/21]   deviators: {"overview":"1"} ×8 (WJFUN105,WJFUN106,WJFUN107,WJFUN109…)
+  menu_type            {"overview":"tabs"}  [21/21]
+  menu_button_tooltip  {"overview":"yes"}  [21/21]
+  footer_links         {"overview":"home"}  [21/21]
+
+=== XOTPB  (6 gold modules: XOTPB08 XOTPB09 XOTPB10 XOTPB11 XOTPB12 XOTPB13)
+  template_phase       1-3  [6/6]
+  level_attr           empty  [6/6]
+  body_class           container-fluid  [6/6]
+  idoc_host            tekura  [6/6]
+  footer_class         footer-nav inquiry-nav  [6/6]
+  acknowledgements     yes  [6/6]
+  page_model           multi-file  [6/6]
+  module_code          {"lesson":"full-code"}  [6/6]
+  h1_count             {"lesson":"2"}  [6/6]
+  menu_type            {"lesson":"simplified"}  [6/6]
+  menu_button_tooltip  {"lesson":"no"}  [6/6]
+  footer_links         {"lesson":"next+home"}  [6/6]
+
+=== XOTPG  (5 gold modules: XOTPG01 XOTPG03 XOTPG04 XOTPG05 XOTPG06)
+  template_phase       1-3  [5/5]
+  level_attr           empty  [5/5]
+  body_class           container-fluid  [5/5]
+  idoc_host            tekura  [5/5]
+  footer_class         footer-nav inquiry-nav  [5/5]
+  acknowledgements     yes  [5/5]
+  page_model           multi-file  [5/5]
+  module_code          {"lesson":"full-code"}  [5/5]
+  h1_count             {"lesson":"2"}  [5/5]
+  menu_type            {"lesson":"simplified"}  [5/5]
+  menu_button_tooltip  {"lesson":"no"}  [5/5]
+  footer_links         {"lesson":"next+home"}  [5/5]
+
+=== XOTPO  (1 gold modules: XOTPO01)
+  template_phase       1-3  [1/1]
+  level_attr           empty  [1/1]
+  body_class           container-fluid  [1/1]
+  idoc_host            tekura  [1/1]
+  footer_class         footer-nav inquiry-nav  [1/1]
+  acknowledgements     yes  [1/1]
+  page_model           multi-file  [1/1]
+  module_code          {"lesson":"full-code"}  [1/1]
+  h1_count             {"lesson":"2"}  [1/1]
+  menu_type            {"lesson":"simplified"}  [1/1]
+  menu_button_tooltip  {"lesson":"no"}  [1/1]
+  footer_links         {"lesson":"next+home"}  [1/1]
+
+wrote outputs/_s28_t1_mine_sar.json (162 modules, 38 prefixes)

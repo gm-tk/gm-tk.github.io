@@ -1,0 +1,8910 @@
+{
+ "generated": "2026-09-19T22:02:29.234Z",
+ "per_module": {
+  "PMT101": {
+   "_pages": 4,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "PNR101": {
+   "_pages": 3,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "padded-number"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "PNR102": {
+   "_pages": 3,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "PNR104": {
+   "_pages": 3,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "PNR107": {
+   "_pages": 3,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "TRR102": {
+   "_pages": 6,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "TRR103": {
+   "_pages": 4,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "TRR104": {
+   "_pages": 4,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "TRR105": {
+   "_pages": 3,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "no",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "TRR106": {
+   "_pages": 3,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "TRR107": {
+   "_pages": 6,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "next+home"
+   },
+   "_unmined": []
+  },
+  "TRR108": {
+   "_pages": 3,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "TRR109": {
+   "_pages": 6,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "TRR110": {
+   "_pages": 6,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "TRR111": {
+   "_pages": 6,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "TRR112": {
+   "_pages": 7,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "TRR113": {
+   "_pages": 6,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "TRR114": {
+   "_pages": 6,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "TRR115": {
+   "_pages": 4,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "TRR116": {
+   "_pages": 10,
+   "_tpl": "Bilingual",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "TRR203": {
+   "_pages": 4,
+   "_tpl": "Bilingual",
+   "template_phase": "4-6",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "TRR301": {
+   "_pages": 4,
+   "_tpl": "Bilingual",
+   "template_phase": "7-8",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "TRR304": {
+   "_pages": 5,
+   "_tpl": "Bilingual",
+   "template_phase": "7-8",
+   "level_attr": "empty",
+   "body_class": "container-fluid reoTranslate",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ANZHFUN05": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "combo",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "ANZHFUN05"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "none"
+   },
+   "footer_links": {
+    "overview": "prev+next+home"
+   },
+   "_unmined": [
+    "level_attr",
+    "menu_button_tooltip"
+   ]
+  },
+  "CHFUN01": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "combo",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "CHFUN04": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "combo",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "CHFUN05": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "combo",
+   "level_attr": "empty",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": []
+  },
+  "CHFUN06": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "combo",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "CHFUN07": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "combo",
+   "level_attr": "empty",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": []
+  },
+  "CHFUN08": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "combo",
+   "level_attr": "empty",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": []
+  },
+  "FRFUN06": {
+   "_pages": 11,
+   "_tpl": "Fundamentals",
+   "template_phase": "combo",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "FRFUN07": {
+   "_pages": 8,
+   "_tpl": "Fundamentals",
+   "template_phase": "combo",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "FRFUN08": {
+   "_pages": 10,
+   "_tpl": "Fundamentals",
+   "template_phase": "combo",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "JPFUN01": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "combo",
+   "level_attr": "empty",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": []
+  },
+  "JPFUN02": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "combo",
+   "level_attr": "empty",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": []
+  },
+  "WJFUN105": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "1-3",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "1"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN106": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "1-3",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "1"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN107": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "1-3",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "1"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN108": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "1-3",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN109": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "1-3",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "1"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN110": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "1-3",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN112": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "combo",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN113": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "1-3",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN115": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "1-3",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN116": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "1-3",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "1"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN205": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "4-6",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN206": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "4-6",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "1"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN208": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "4-6",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN210": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "4-6",
+   "level_attr": "empty",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": []
+  },
+  "WJFUN211": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "4-6",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN212": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "4-6",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN304": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "7-8",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "1"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN305": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "7-8",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN306": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "7-8",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN307": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "7-8",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "WJFUN308": {
+   "_pages": 1,
+   "_tpl": "Fundamentals",
+   "template_phase": "7-8",
+   "body_class": "fundamentals container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "full-code"
+   },
+   "h1_count": {
+    "overview": "1"
+   },
+   "menu_type": {
+    "overview": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "CEDO102": {
+   "_pages": 1,
+   "_tpl": "Inquiry",
+   "template_phase": "1-3",
+   "body_class": "inquiry container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home"
+   },
+   "_unmined": [
+    "level_attr",
+    "module_code"
+   ]
+  },
+  "CEDO201": {
+   "_pages": 1,
+   "_tpl": "Inquiry",
+   "template_phase": "4-6",
+   "body_class": "inquiry container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home"
+   },
+   "_unmined": [
+    "level_attr",
+    "module_code"
+   ]
+  },
+  "CEDO202": {
+   "_pages": 1,
+   "_tpl": "Inquiry",
+   "template_phase": "4-6",
+   "body_class": "inquiry container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home"
+   },
+   "_unmined": [
+    "level_attr",
+    "module_code"
+   ]
+  },
+  "CEDO204": {
+   "_pages": 2,
+   "_tpl": "Inquiry",
+   "template_phase": "4-6",
+   "body_class": "inquiry container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home"
+   },
+   "_unmined": [
+    "level_attr",
+    "module_code"
+   ]
+  },
+  "CEDO402": {
+   "_pages": 1,
+   "_tpl": "Inquiry",
+   "template_phase": "9-10",
+   "body_class": "inquiry container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "h1_count": {
+    "overview": "2"
+   },
+   "menu_type": {
+    "overview": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home"
+   },
+   "_unmined": [
+    "level_attr",
+    "module_code"
+   ]
+  },
+  "CHWHA": {
+   "_pages": 1,
+   "_tpl": "Inquiry",
+   "template_phase": "combo",
+   "body_class": "inquiry container-fluid mathJax",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "CHWHA"
+   },
+   "h1_count": {
+    "overview": "3"
+   },
+   "menu_type": {
+    "overview": "none"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr",
+    "menu_button_tooltip"
+   ]
+  },
+  "GEWHA": {
+   "_pages": 1,
+   "_tpl": "Inquiry",
+   "template_phase": "combo",
+   "body_class": "inquiry container-fluid mathJax",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "GEWHA"
+   },
+   "h1_count": {
+    "overview": "3"
+   },
+   "menu_type": {
+    "overview": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "ANZH101": {
+   "_pages": 6,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "padded-number"
+   },
+   "h1_count": {
+    "overview": "3",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ANZH103": {
+   "_pages": 7,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "padded-number"
+   },
+   "h1_count": {
+    "overview": "3",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ANZH104": {
+   "_pages": 8,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ANZH105": {
+   "_pages": 9,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ANZH203": {
+   "_pages": 8,
+   "_tpl": "Standard",
+   "template_phase": "4-6",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "padded-number"
+   },
+   "h1_count": {
+    "overview": "3",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ANZH205": {
+   "_pages": 8,
+   "_tpl": "Standard",
+   "template_phase": "4-6",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ANZH301": {
+   "_pages": 11,
+   "_tpl": "Standard",
+   "template_phase": "7-8",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ANZH302": {
+   "_pages": 12,
+   "_tpl": "Standard",
+   "template_phase": "7-8",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ANZH303": {
+   "_pages": 7,
+   "_tpl": "Standard",
+   "template_phase": "7-8",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "no",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ANZH304": {
+   "_pages": 7,
+   "_tpl": "Standard",
+   "template_phase": "7-8",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ANZH401": {
+   "_pages": 13,
+   "_tpl": "Standard",
+   "template_phase": "9-10",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "overview": "3",
+    "lesson": "3"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ANZH404": {
+   "_pages": 7,
+   "_tpl": "Standard",
+   "template_phase": "9-10",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "Lesson 1"
+   },
+   "h1_count": {
+    "overview": "3",
+    "lesson": "3"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "BLLR201": {
+   "_pages": 7,
+   "_tpl": "Standard",
+   "template_phase": "4-6",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "BLLR202": {
+   "_pages": 7,
+   "_tpl": "Standard",
+   "template_phase": "4-6",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "BLLR203": {
+   "_pages": 7,
+   "_tpl": "Standard",
+   "template_phase": "4-6",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": [
+    "level_attr"
+   ]
+  },
+  "CBI1004": {
+   "_pages": 11,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "CBI1005": {
+   "_pages": 11,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "CBI1008": {
+   "_pages": 7,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "CBI1009": {
+   "_pages": 5,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "CEDO105": {
+   "_pages": 6,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "CEDO301": {
+   "_pages": 5,
+   "_tpl": "Standard",
+   "template_phase": "7-8",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "CEDO501": {
+   "_pages": 15,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": [
+    "body_class"
+   ]
+  },
+  "CEDO502": {
+   "_pages": 13,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": [
+    "body_class"
+   ]
+  },
+  "CHI1003": {
+   "_pages": 11,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "CHI1004": {
+   "_pages": 12,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "CHI1005": {
+   "_pages": 12,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "COM1002": {
+   "_pages": 8,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "COM1005": {
+   "_pages": 9,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "COM1006": {
+   "_pages": 9,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "DAN1003": {
+   "_pages": 10,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "DAN1004": {
+   "_pages": 9,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "DAN1006": {
+   "_pages": 10,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "DTC1004": {
+   "_pages": 8,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "DTC1005": {
+   "_pages": 22,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGC101": {
+   "_pages": 6,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "1",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGC102": {
+   "_pages": 8,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGC201": {
+   "_pages": 7,
+   "_tpl": "Standard",
+   "template_phase": "4-6",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGC202": {
+   "_pages": 9,
+   "_tpl": "Standard",
+   "template_phase": "4-6",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGC204": {
+   "_pages": 7,
+   "_tpl": "Standard",
+   "template_phase": "4-6",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "padded-number"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGC206": {
+   "_pages": 6,
+   "_tpl": "Standard",
+   "template_phase": "4-6",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "padded-number"
+   },
+   "h1_count": {
+    "overview": "1",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGC301": {
+   "_pages": 8,
+   "_tpl": "Standard",
+   "template_phase": "7-8",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGC302": {
+   "_pages": 8,
+   "_tpl": "Standard",
+   "template_phase": "7-8",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGC401": {
+   "_pages": 8,
+   "_tpl": "Standard",
+   "template_phase": "9-10",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGC403": {
+   "_pages": 16,
+   "_tpl": "Standard",
+   "template_phase": "9-10",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGS101": {
+   "_pages": 6,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "1",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGS102": {
+   "_pages": 7,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "padded-number"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGS201": {
+   "_pages": 9,
+   "_tpl": "Standard",
+   "template_phase": "4-6",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "padded-number"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGS202": {
+   "_pages": 7,
+   "_tpl": "Standard",
+   "template_phase": "4-6",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "padded-number"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGS301": {
+   "_pages": 8,
+   "_tpl": "Standard",
+   "template_phase": "7-8",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "padded-number"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGS302": {
+   "_pages": 8,
+   "_tpl": "Standard",
+   "template_phase": "7-8",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "simplified",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGS401": {
+   "_pages": 7,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGS404": {
+   "_pages": 12,
+   "_tpl": "Standard",
+   "template_phase": "9-10",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENGS405": {
+   "_pages": 20,
+   "_tpl": "Standard",
+   "template_phase": "9-10",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "ENO2060": {
+   "_pages": 7,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "ENO2060.01"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "FRNO901": {
+   "_pages": 9,
+   "_tpl": "Standard",
+   "template_phase": "combo",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "FRNO902": {
+   "_pages": 10,
+   "_tpl": "Standard",
+   "template_phase": "combo",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "padded-number"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "GENO901": {
+   "_pages": 9,
+   "_tpl": "Standard",
+   "template_phase": "combo",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "padded-number"
+   },
+   "h1_count": {
+    "overview": "3",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "GEO1004": {
+   "_pages": 5,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "GEO1005": {
+   "_pages": 8,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "GEO1006": {
+   "_pages": 8,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "GER1002": {
+   "_pages": 11,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "Lesson 1"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "GER1003": {
+   "_pages": 11,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "padded-number"
+   },
+   "h1_count": {
+    "overview": "1",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "GER1004": {
+   "_pages": 11,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "GER1005": {
+   "_pages": 13,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "1",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "GER1006": {
+   "_pages": 10,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "1",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "GER1007": {
+   "_pages": 10,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "HES1002": {
+   "_pages": 12,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "HES1003": {
+   "_pages": 10,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "1",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "HES1004": {
+   "_pages": 5,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "1",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "HES1005": {
+   "_pages": 8,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "tabs"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "HES1006": {
+   "_pages": 7,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "HES1007": {
+   "_pages": 10,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "JPN1004": {
+   "_pages": 12,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "3",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "MUS1004": {
+   "_pages": 11,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "1",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "MUS1006": {
+   "_pages": 3,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "MXS1004": {
+   "_pages": 10,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav fundamentals-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "padded-number"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "PWY1001": {
+   "_pages": 9,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "1",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": [
+    "body_class"
+   ]
+  },
+  "PWY1002": {
+   "_pages": 10,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "1",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": [
+    "body_class"
+   ]
+  },
+  "PWY1007": {
+   "_pages": 10,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "1",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": [
+    "body_class"
+   ]
+  },
+  "PWY1008": {
+   "_pages": 9,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": [
+    "body_class"
+   ]
+  },
+  "PWY1009": {
+   "_pages": 10,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": [
+    "body_class"
+   ]
+  },
+  "PWYWHA1": {
+   "_pages": 1,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekuradev",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "single-file",
+   "module_code": {
+    "overview": "PWYWHA1"
+   },
+   "h1_count": {
+    "overview": "1"
+   },
+   "menu_type": {
+    "overview": "none"
+   },
+   "menu_button_tooltip": {
+    "overview": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "SAM1005": {
+   "_pages": 15,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "3",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "SAM1006": {
+   "_pages": 18,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "3",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "prev+next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "SCBI301": {
+   "_pages": 9,
+   "_tpl": "Standard",
+   "template_phase": "7-8",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "SCES201": {
+   "_pages": 5,
+   "_tpl": "Standard",
+   "template_phase": "4-6",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "padded-number"
+   },
+   "h1_count": {
+    "overview": "2",
+    "lesson": "1"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "yes",
+    "lesson": "yes"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "SPA1004": {
+   "_pages": 15,
+   "_tpl": "Standard",
+   "template_phase": "NCEA",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "overview": "full-code",
+    "lesson": "decimal"
+   },
+   "h1_count": {
+    "overview": "3",
+    "lesson": "2"
+   },
+   "menu_type": {
+    "overview": "tabs",
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "overview": "no",
+    "lesson": "no"
+   },
+   "footer_links": {
+    "overview": "next+home",
+    "lesson": "prev+next+home"
+   },
+   "_unmined": []
+  },
+  "XOTPB08": {
+   "_pages": 2,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "lesson": "2"
+   },
+   "menu_type": {
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "lesson": "no"
+   },
+   "footer_links": {
+    "lesson": "next+home"
+   },
+   "_unmined": []
+  },
+  "XOTPB09": {
+   "_pages": 2,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "lesson": "2"
+   },
+   "menu_type": {
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "lesson": "no"
+   },
+   "footer_links": {
+    "lesson": "next+home"
+   },
+   "_unmined": []
+  },
+  "XOTPB10": {
+   "_pages": 2,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "lesson": "2"
+   },
+   "menu_type": {
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "lesson": "no"
+   },
+   "footer_links": {
+    "lesson": "next+home"
+   },
+   "_unmined": []
+  },
+  "XOTPB11": {
+   "_pages": 2,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "lesson": "2"
+   },
+   "menu_type": {
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "lesson": "no"
+   },
+   "footer_links": {
+    "lesson": "next+home"
+   },
+   "_unmined": []
+  },
+  "XOTPB12": {
+   "_pages": 2,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "lesson": "2"
+   },
+   "menu_type": {
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "lesson": "no"
+   },
+   "footer_links": {
+    "lesson": "next+home"
+   },
+   "_unmined": []
+  },
+  "XOTPB13": {
+   "_pages": 2,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "lesson": "2"
+   },
+   "menu_type": {
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "lesson": "no"
+   },
+   "footer_links": {
+    "lesson": "next+home"
+   },
+   "_unmined": []
+  },
+  "XOTPG01": {
+   "_pages": 2,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "lesson": "2"
+   },
+   "menu_type": {
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "lesson": "no"
+   },
+   "footer_links": {
+    "lesson": "next+home"
+   },
+   "_unmined": []
+  },
+  "XOTPG03": {
+   "_pages": 2,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "lesson": "2"
+   },
+   "menu_type": {
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "lesson": "no"
+   },
+   "footer_links": {
+    "lesson": "next+home"
+   },
+   "_unmined": []
+  },
+  "XOTPG04": {
+   "_pages": 2,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "lesson": "2"
+   },
+   "menu_type": {
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "lesson": "no"
+   },
+   "footer_links": {
+    "lesson": "next+home"
+   },
+   "_unmined": []
+  },
+  "XOTPG05": {
+   "_pages": 2,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "lesson": "2"
+   },
+   "menu_type": {
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "lesson": "no"
+   },
+   "footer_links": {
+    "lesson": "next+home"
+   },
+   "_unmined": []
+  },
+  "XOTPG06": {
+   "_pages": 2,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "lesson": "2"
+   },
+   "menu_type": {
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "lesson": "no"
+   },
+   "footer_links": {
+    "lesson": "next+home"
+   },
+   "_unmined": []
+  },
+  "XOTPO01": {
+   "_pages": 2,
+   "_tpl": "Standard",
+   "template_phase": "1-3",
+   "level_attr": "empty",
+   "body_class": "container-fluid",
+   "idoc_host": "tekura",
+   "footer_class": "footer-nav inquiry-nav",
+   "acknowledgements": "yes",
+   "page_model": "multi-file",
+   "module_code": {
+    "lesson": "full-code"
+   },
+   "h1_count": {
+    "lesson": "2"
+   },
+   "menu_type": {
+    "lesson": "simplified"
+   },
+   "menu_button_tooltip": {
+    "lesson": "no"
+   },
+   "footer_links": {
+    "lesson": "next+home"
+   },
+   "_unmined": []
+  }
+ },
+ "by_prefix": {
+  "ANZH": {
+   "codes": [
+    "ANZH101",
+    "ANZH103",
+    "ANZH104",
+    "ANZH105",
+    "ANZH203",
+    "ANZH205",
+    "ANZH301",
+    "ANZH302",
+    "ANZH303",
+    "ANZH304",
+    "ANZH401",
+    "ANZH404"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "1-3",
+     "n": 4,
+     "of": 12,
+     "deviators": [
+      {
+       "value": "7-8",
+       "modules": [
+        "ANZH301",
+        "ANZH302",
+        "ANZH303",
+        "ANZH304"
+       ]
+      },
+      {
+       "value": "4-6",
+       "modules": [
+        "ANZH203",
+        "ANZH205"
+       ]
+      },
+      {
+       "value": "9-10",
+       "modules": [
+        "ANZH401",
+        "ANZH404"
+       ]
+      }
+     ]
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 12,
+     "of": 12,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 12,
+     "of": 12,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 12,
+     "of": 12,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 12,
+     "of": 12,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 11,
+     "of": 12,
+     "deviators": [
+      {
+       "value": "no",
+       "modules": [
+        "ANZH303"
+       ]
+      }
+     ]
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 12,
+     "of": 12,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 7,
+     "of": 12,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"full-code\",\"lesson\":\"padded-number\"}",
+       "modules": [
+        "ANZH101",
+        "ANZH103",
+        "ANZH203"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"full-code\",\"lesson\":\"full-code\"}",
+       "modules": [
+        "ANZH401"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"full-code\",\"lesson\":\"Lesson 1\"}",
+       "modules": [
+        "ANZH404"
+       ]
+      }
+     ]
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"1\"}",
+     "n": 5,
+     "of": 12,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"3\",\"lesson\":\"1\"}",
+       "modules": [
+        "ANZH103",
+        "ANZH203"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"2\",\"lesson\":\"2\"}",
+       "modules": [
+        "ANZH105",
+        "ANZH301"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"3\",\"lesson\":\"3\"}",
+       "modules": [
+        "ANZH401",
+        "ANZH404"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"3\",\"lesson\":\"2\"}",
+       "modules": [
+        "ANZH101"
+       ]
+      }
+     ]
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"simplified\",\"lesson\":\"simplified\"}",
+     "n": 5,
+     "of": 12,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"simplified\",\"lesson\":\"none\"}",
+       "modules": [
+        "ANZH104",
+        "ANZH105",
+        "ANZH205"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"tabs\",\"lesson\":\"tabs\"}",
+       "modules": [
+        "ANZH301",
+        "ANZH303",
+        "ANZH304"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+       "modules": [
+        "ANZH404"
+       ]
+      }
+     ]
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"no\",\"lesson\":\"no\"}",
+     "n": 7,
+     "of": 12,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"yes\",\"lesson\":\"yes\"}",
+       "modules": [
+        "ANZH104",
+        "ANZH105",
+        "ANZH303",
+        "ANZH304"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"yes\"}",
+       "modules": [
+        "ANZH205"
+       ]
+      }
+     ]
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 7,
+     "of": 12,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"}",
+       "modules": [
+        "ANZH104",
+        "ANZH105",
+        "ANZH205",
+        "ANZH401",
+        "ANZH404"
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "ANZHFUN": {
+   "codes": [
+    "ANZHFUN05"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "combo",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "∅",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "fundamentals container-fluid",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav fundamentals-nav",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "single-file",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"ANZHFUN05\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"none\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "∅",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"prev+next+home\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    }
+   }
+  },
+  "BLLR": {
+   "codes": [
+    "BLLR201",
+    "BLLR202",
+    "BLLR203"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "4-6",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "∅",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav inquiry-nav",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"1\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"yes\",\"lesson\":\"yes\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 2,
+     "of": 3,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+       "modules": [
+        "BLLR203"
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "CBI": {
+   "codes": [
+    "CBI1004",
+    "CBI1005",
+    "CBI1008",
+    "CBI1009"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "NCEA",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"1\"}",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"none\"}",
+     "n": 2,
+     "of": 4,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+       "modules": [
+        "CBI1008",
+        "CBI1009"
+       ]
+      }
+     ]
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"no\",\"lesson\":\"no\"}",
+     "n": 2,
+     "of": 4,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"yes\",\"lesson\":\"yes\"}",
+       "modules": [
+        "CBI1008"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"yes\",\"lesson\":\"no\"}",
+       "modules": [
+        "CBI1009"
+       ]
+      }
+     ]
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    }
+   }
+  },
+  "CEDO": {
+   "codes": [
+    "CEDO102",
+    "CEDO201",
+    "CEDO202",
+    "CEDO204",
+    "CEDO402",
+    "CEDO105",
+    "CEDO301",
+    "CEDO501",
+    "CEDO502"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "4-6",
+     "n": 3,
+     "of": 9,
+     "deviators": [
+      {
+       "value": "1-3",
+       "modules": [
+        "CEDO102",
+        "CEDO105"
+       ]
+      },
+      {
+       "value": "NCEA",
+       "modules": [
+        "CEDO501",
+        "CEDO502"
+       ]
+      },
+      {
+       "value": "9-10",
+       "modules": [
+        "CEDO402"
+       ]
+      },
+      {
+       "value": "7-8",
+       "modules": [
+        "CEDO301"
+       ]
+      }
+     ]
+    },
+    "level_attr": {
+     "majority": "∅",
+     "n": 5,
+     "of": 9,
+     "deviators": [
+      {
+       "value": "empty",
+       "modules": [
+        "CEDO105",
+        "CEDO301",
+        "CEDO501",
+        "CEDO502"
+       ]
+      }
+     ]
+    },
+    "body_class": {
+     "majority": "inquiry container-fluid",
+     "n": 5,
+     "of": 9,
+     "deviators": [
+      {
+       "value": "container-fluid",
+       "modules": [
+        "CEDO105",
+        "CEDO301"
+       ]
+      },
+      {
+       "value": "∅",
+       "modules": [
+        "CEDO501",
+        "CEDO502"
+       ]
+      }
+     ]
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 7,
+     "of": 9,
+     "deviators": [
+      {
+       "value": "tekuradev",
+       "modules": [
+        "CEDO105",
+        "CEDO501"
+       ]
+      }
+     ]
+    },
+    "footer_class": {
+     "majority": "footer-nav inquiry-nav",
+     "n": 5,
+     "of": 9,
+     "deviators": [
+      {
+       "value": "footer-nav",
+       "modules": [
+        "CEDO105",
+        "CEDO301",
+        "CEDO501",
+        "CEDO502"
+       ]
+      }
+     ]
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 9,
+     "of": 9,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 5,
+     "of": 9,
+     "deviators": [
+      {
+       "value": "single-file",
+       "modules": [
+        "CEDO102",
+        "CEDO201",
+        "CEDO202",
+        "CEDO402"
+       ]
+      }
+     ]
+    },
+    "module_code": {
+     "majority": "∅",
+     "n": 5,
+     "of": 9,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+       "modules": [
+        "CEDO105",
+        "CEDO301",
+        "CEDO501",
+        "CEDO502"
+       ]
+      }
+     ]
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\"}",
+     "n": 5,
+     "of": 9,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"2\",\"lesson\":\"1\"}",
+       "modules": [
+        "CEDO105",
+        "CEDO301",
+        "CEDO501",
+        "CEDO502"
+       ]
+      }
+     ]
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"simplified\"}",
+     "n": 5,
+     "of": 9,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+       "modules": [
+        "CEDO105",
+        "CEDO502"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"simplified\",\"lesson\":\"simplified\"}",
+       "modules": [
+        "CEDO301"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"tabs\",\"lesson\":\"tabs\"}",
+       "modules": [
+        "CEDO501"
+       ]
+      }
+     ]
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"no\"}",
+     "n": 5,
+     "of": 9,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"yes\",\"lesson\":\"yes\"}",
+       "modules": [
+        "CEDO105",
+        "CEDO501",
+        "CEDO502"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"no\",\"lesson\":\"no\"}",
+       "modules": [
+        "CEDO301"
+       ]
+      }
+     ]
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"prev+next+home\"}",
+     "n": 5,
+     "of": 9,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+       "modules": [
+        "CEDO105",
+        "CEDO501",
+        "CEDO502"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"}",
+       "modules": [
+        "CEDO301"
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "CHFUN": {
+   "codes": [
+    "CHFUN01",
+    "CHFUN04",
+    "CHFUN05",
+    "CHFUN06",
+    "CHFUN07",
+    "CHFUN08"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "combo",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "∅",
+     "n": 3,
+     "of": 6,
+     "deviators": [
+      {
+       "value": "empty",
+       "modules": [
+        "CHFUN05",
+        "CHFUN07",
+        "CHFUN08"
+       ]
+      }
+     ]
+    },
+    "body_class": {
+     "majority": "fundamentals container-fluid",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav fundamentals-nav",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "single-file",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\"}",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\"}",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\"}",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"yes\"}",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"home\"}",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    }
+   }
+  },
+  "CHI": {
+   "codes": [
+    "CHI1003",
+    "CHI1004",
+    "CHI1005"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "NCEA",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"2\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"yes\",\"lesson\":\"no\"}",
+     "n": 2,
+     "of": 3,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"yes\",\"lesson\":\"yes\"}",
+       "modules": [
+        "CHI1003"
+       ]
+      }
+     ]
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    }
+   }
+  },
+  "CHWHA": {
+   "codes": [
+    "CHWHA"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "combo",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "∅",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "inquiry container-fluid mathJax",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav inquiry-nav",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "single-file",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"CHWHA\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"3\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"none\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "∅",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"home\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    }
+   }
+  },
+  "COM": {
+   "codes": [
+    "COM1002",
+    "COM1005",
+    "COM1006"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "NCEA",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekuradev",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"1\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"no\",\"lesson\":\"yes\"}",
+     "n": 2,
+     "of": 3,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"no\",\"lesson\":\"no\"}",
+       "modules": [
+        "COM1002"
+       ]
+      }
+     ]
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 2,
+     "of": 3,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"}",
+       "modules": [
+        "COM1002"
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "DAN": {
+   "codes": [
+    "DAN1003",
+    "DAN1004",
+    "DAN1006"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "NCEA",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"1\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"none\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"no\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    }
+   }
+  },
+  "DTC": {
+   "codes": [
+    "DTC1004",
+    "DTC1005"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "NCEA",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"1\"}",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"none\"}",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"no\"}",
+     "n": 1,
+     "of": 2,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"no\",\"lesson\":\"no\"}",
+       "modules": [
+        "DTC1005"
+       ]
+      }
+     ]
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 1,
+     "of": 2,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+       "modules": [
+        "DTC1005"
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "ENGC": {
+   "codes": [
+    "ENGC101",
+    "ENGC102",
+    "ENGC201",
+    "ENGC202",
+    "ENGC204",
+    "ENGC206",
+    "ENGC301",
+    "ENGC302",
+    "ENGC401",
+    "ENGC403"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "4-6",
+     "n": 4,
+     "of": 10,
+     "deviators": [
+      {
+       "value": "1-3",
+       "modules": [
+        "ENGC101",
+        "ENGC102"
+       ]
+      },
+      {
+       "value": "7-8",
+       "modules": [
+        "ENGC301",
+        "ENGC302"
+       ]
+      },
+      {
+       "value": "9-10",
+       "modules": [
+        "ENGC401",
+        "ENGC403"
+       ]
+      }
+     ]
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 10,
+     "of": 10,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 10,
+     "of": 10,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekuradev",
+     "n": 5,
+     "of": 10,
+     "deviators": [
+      {
+       "value": "tekura",
+       "modules": [
+        "ENGC102",
+        "ENGC301",
+        "ENGC302",
+        "ENGC401",
+        "ENGC403"
+       ]
+      }
+     ]
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 10,
+     "of": 10,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 10,
+     "of": 10,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 10,
+     "of": 10,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 8,
+     "of": 10,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"full-code\",\"lesson\":\"padded-number\"}",
+       "modules": [
+        "ENGC204",
+        "ENGC206"
+       ]
+      }
+     ]
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"1\"}",
+     "n": 8,
+     "of": 10,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"1\",\"lesson\":\"1\"}",
+       "modules": [
+        "ENGC101",
+        "ENGC206"
+       ]
+      }
+     ]
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"simplified\",\"lesson\":\"simplified\"}",
+     "n": 7,
+     "of": 10,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+       "modules": [
+        "ENGC204",
+        "ENGC206",
+        "ENGC403"
+       ]
+      }
+     ]
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"yes\",\"lesson\":\"yes\"}",
+     "n": 5,
+     "of": 10,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"yes\",\"lesson\":\"no\"}",
+       "modules": [
+        "ENGC101",
+        "ENGC201",
+        "ENGC202"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"no\",\"lesson\":\"yes\"}",
+       "modules": [
+        "ENGC102"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"no\",\"lesson\":\"no\"}",
+       "modules": [
+        "ENGC206"
+       ]
+      }
+     ]
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 9,
+     "of": 10,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"}",
+       "modules": [
+        "ENGC102"
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "ENGS": {
+   "codes": [
+    "ENGS101",
+    "ENGS102",
+    "ENGS201",
+    "ENGS202",
+    "ENGS301",
+    "ENGS302",
+    "ENGS401",
+    "ENGS404",
+    "ENGS405"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "1-3",
+     "n": 2,
+     "of": 9,
+     "deviators": [
+      {
+       "value": "4-6",
+       "modules": [
+        "ENGS201",
+        "ENGS202"
+       ]
+      },
+      {
+       "value": "7-8",
+       "modules": [
+        "ENGS301",
+        "ENGS302"
+       ]
+      },
+      {
+       "value": "9-10",
+       "modules": [
+        "ENGS404",
+        "ENGS405"
+       ]
+      },
+      {
+       "value": "NCEA",
+       "modules": [
+        "ENGS401"
+       ]
+      }
+     ]
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 9,
+     "of": 9,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 9,
+     "of": 9,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 9,
+     "of": 9,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 9,
+     "of": 9,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 9,
+     "of": 9,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 9,
+     "of": 9,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 5,
+     "of": 9,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"full-code\",\"lesson\":\"padded-number\"}",
+       "modules": [
+        "ENGS102",
+        "ENGS201",
+        "ENGS202",
+        "ENGS301"
+       ]
+      }
+     ]
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"1\"}",
+     "n": 7,
+     "of": 9,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"1\",\"lesson\":\"1\"}",
+       "modules": [
+        "ENGS101"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"2\",\"lesson\":\"2\"}",
+       "modules": [
+        "ENGS404"
+       ]
+      }
+     ]
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"simplified\",\"lesson\":\"simplified\"}",
+     "n": 5,
+     "of": 9,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+       "modules": [
+        "ENGS102",
+        "ENGS401",
+        "ENGS404",
+        "ENGS405"
+       ]
+      }
+     ]
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"no\",\"lesson\":\"no\"}",
+     "n": 5,
+     "of": 9,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"yes\",\"lesson\":\"no\"}",
+       "modules": [
+        "ENGS401",
+        "ENGS405"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"no\",\"lesson\":\"yes\"}",
+       "modules": [
+        "ENGS101"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"yes\",\"lesson\":\"yes\"}",
+       "modules": [
+        "ENGS404"
+       ]
+      }
+     ]
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 6,
+     "of": 9,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+       "modules": [
+        "ENGS301",
+        "ENGS302",
+        "ENGS404"
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "ENO": {
+   "codes": [
+    "ENO2060"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "NCEA",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"ENO2060.01\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"2\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"yes\",\"lesson\":\"yes\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    }
+   }
+  },
+  "FRFUN": {
+   "codes": [
+    "FRFUN06",
+    "FRFUN07",
+    "FRFUN08"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "combo",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "∅",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "fundamentals container-fluid",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav fundamentals-nav",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\"}",
+     "n": 2,
+     "of": 3,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"simplified\"}",
+       "modules": [
+        "FRFUN08"
+       ]
+      }
+     ]
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"yes\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"home\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    }
+   }
+  },
+  "FRNO": {
+   "codes": [
+    "FRNO901",
+    "FRNO902"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "combo",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 1,
+     "of": 2,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"full-code\",\"lesson\":\"padded-number\"}",
+       "modules": [
+        "FRNO902"
+       ]
+      }
+     ]
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"2\"}",
+     "n": 1,
+     "of": 2,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"2\",\"lesson\":\"1\"}",
+       "modules": [
+        "FRNO902"
+       ]
+      }
+     ]
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"no\",\"lesson\":\"no\"}",
+     "n": 1,
+     "of": 2,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"yes\",\"lesson\":\"yes\"}",
+       "modules": [
+        "FRNO902"
+       ]
+      }
+     ]
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    }
+   }
+  },
+  "GENO": {
+   "codes": [
+    "GENO901"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "combo",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"padded-number\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"3\",\"lesson\":\"1\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"yes\",\"lesson\":\"yes\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    }
+   }
+  },
+  "GEO": {
+   "codes": [
+    "GEO1004",
+    "GEO1005",
+    "GEO1006"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "NCEA",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekuradev",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"1\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+     "n": 2,
+     "of": 3,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"tabs\",\"lesson\":\"none\"}",
+       "modules": [
+        "GEO1004"
+       ]
+      }
+     ]
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"no\",\"lesson\":\"no\"}",
+     "n": 2,
+     "of": 3,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"no\"}",
+       "modules": [
+        "GEO1004"
+       ]
+      }
+     ]
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 3,
+     "of": 3,
+     "deviators": []
+    }
+   }
+  },
+  "GER": {
+   "codes": [
+    "GER1002",
+    "GER1003",
+    "GER1004",
+    "GER1005",
+    "GER1006",
+    "GER1007"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "NCEA",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekuradev",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 4,
+     "of": 6,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"full-code\",\"lesson\":\"Lesson 1\"}",
+       "modules": [
+        "GER1002"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"full-code\",\"lesson\":\"padded-number\"}",
+       "modules": [
+        "GER1003"
+       ]
+      }
+     ]
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"1\",\"lesson\":\"1\"}",
+     "n": 3,
+     "of": 6,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"2\",\"lesson\":\"1\"}",
+       "modules": [
+        "GER1004",
+        "GER1007"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"2\",\"lesson\":\"2\"}",
+       "modules": [
+        "GER1002"
+       ]
+      }
+     ]
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"none\"}",
+     "n": 4,
+     "of": 6,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"tabs\",\"lesson\":\"tabs\"}",
+       "modules": [
+        "GER1002",
+        "GER1004"
+       ]
+      }
+     ]
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"no\",\"lesson\":\"no\"}",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 3,
+     "of": 6,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+       "modules": [
+        "GER1005",
+        "GER1006",
+        "GER1007"
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "GEWHA": {
+   "codes": [
+    "GEWHA"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "combo",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "∅",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "inquiry container-fluid mathJax",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav inquiry-nav",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "single-file",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"GEWHA\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"3\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"simplified\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"yes\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"home\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    }
+   }
+  },
+  "HES": {
+   "codes": [
+    "HES1002",
+    "HES1003",
+    "HES1004",
+    "HES1005",
+    "HES1006",
+    "HES1007"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "NCEA",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"1\"}",
+     "n": 3,
+     "of": 6,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"1\",\"lesson\":\"1\"}",
+       "modules": [
+        "HES1003",
+        "HES1004"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"2\",\"lesson\":\"2\"}",
+       "modules": [
+        "HES1005"
+       ]
+      }
+     ]
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"none\"}",
+     "n": 4,
+     "of": 6,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"tabs\",\"lesson\":\"tabs\"}",
+       "modules": [
+        "HES1005"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+       "modules": [
+        "HES1007"
+       ]
+      }
+     ]
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"yes\",\"lesson\":\"yes\"}",
+     "n": 2,
+     "of": 6,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"yes\"}",
+       "modules": [
+        "HES1003",
+        "HES1004"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"yes\",\"lesson\":\"no\"}",
+       "modules": [
+        "HES1006",
+        "HES1007"
+       ]
+      }
+     ]
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 3,
+     "of": 6,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+       "modules": [
+        "HES1005",
+        "HES1006",
+        "HES1007"
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "JPFUN": {
+   "codes": [
+    "JPFUN01",
+    "JPFUN02"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "combo",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "fundamentals container-fluid",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav fundamentals-nav",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "single-file",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\"}",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\"}",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\"}",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"yes\"}",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"home\"}",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    }
+   }
+  },
+  "JPN": {
+   "codes": [
+    "JPN1004"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "NCEA",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"3\",\"lesson\":\"2\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"no\",\"lesson\":\"no\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    }
+   }
+  },
+  "MUS": {
+   "codes": [
+    "MUS1004",
+    "MUS1006"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "NCEA",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"1\",\"lesson\":\"1\"}",
+     "n": 1,
+     "of": 2,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"2\",\"lesson\":\"2\"}",
+       "modules": [
+        "MUS1006"
+       ]
+      }
+     ]
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"none\"}",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"no\",\"lesson\":\"no\"}",
+     "n": 1,
+     "of": 2,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"no\"}",
+       "modules": [
+        "MUS1006"
+       ]
+      }
+     ]
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 1,
+     "of": 2,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+       "modules": [
+        "MUS1006"
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "MXS": {
+   "codes": [
+    "MXS1004"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "NCEA",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav fundamentals-nav",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"padded-number\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"1\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"yes\",\"lesson\":\"yes\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    }
+   }
+  },
+  "PMT": {
+   "codes": [
+    "PMT101"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "1-3",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid reoTranslate",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"full-code\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"2\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"none\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"no\",\"lesson\":\"no\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    }
+   }
+  },
+  "PNR": {
+   "codes": [
+    "PNR101",
+    "PNR102",
+    "PNR104",
+    "PNR107"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "1-3",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid reoTranslate",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 3,
+     "of": 4,
+     "deviators": [
+      {
+       "value": "tekuradev",
+       "modules": [
+        "PNR107"
+       ]
+      }
+     ]
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"full-code\"}",
+     "n": 3,
+     "of": 4,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"full-code\",\"lesson\":\"padded-number\"}",
+       "modules": [
+        "PNR101"
+       ]
+      }
+     ]
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"2\"}",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"none\"}",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"no\",\"lesson\":\"no\"}",
+     "n": 3,
+     "of": 4,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"yes\",\"lesson\":\"no\"}",
+       "modules": [
+        "PNR107"
+       ]
+      }
+     ]
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 4,
+     "of": 4,
+     "deviators": []
+    }
+   }
+  },
+  "PWY": {
+   "codes": [
+    "PWY1001",
+    "PWY1002",
+    "PWY1007",
+    "PWY1008",
+    "PWY1009"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "NCEA",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "∅",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 3,
+     "of": 5,
+     "deviators": [
+      {
+       "value": "tekuradev",
+       "modules": [
+        "PWY1001",
+        "PWY1007"
+       ]
+      }
+     ]
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"1\",\"lesson\":\"1\"}",
+     "n": 3,
+     "of": 5,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"2\",\"lesson\":\"1\"}",
+       "modules": [
+        "PWY1008",
+        "PWY1009"
+       ]
+      }
+     ]
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"yes\",\"lesson\":\"yes\"}",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    }
+   }
+  },
+  "PWYWHA": {
+   "codes": [
+    "PWYWHA1"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "NCEA",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekuradev",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "single-file",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"PWYWHA1\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"1\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"none\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"no\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"prev+next+home\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    }
+   }
+  },
+  "SAM": {
+   "codes": [
+    "SAM1005",
+    "SAM1006"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "NCEA",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"3\",\"lesson\":\"2\"}",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"yes\",\"lesson\":\"no\"}",
+     "n": 1,
+     "of": 2,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"no\",\"lesson\":\"no\"}",
+       "modules": [
+        "SAM1006"
+       ]
+      }
+     ]
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 2,
+     "of": 2,
+     "deviators": []
+    }
+   }
+  },
+  "SCBI": {
+   "codes": [
+    "SCBI301"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "7-8",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"1\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"yes\",\"lesson\":\"no\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    }
+   }
+  },
+  "SCES": {
+   "codes": [
+    "SCES201"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "4-6",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"padded-number\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"1\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"yes\",\"lesson\":\"yes\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    }
+   }
+  },
+  "SPA": {
+   "codes": [
+    "SPA1004"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "NCEA",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"3\",\"lesson\":\"2\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"simplified\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"no\",\"lesson\":\"no\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    }
+   }
+  },
+  "TRR": {
+   "codes": [
+    "TRR102",
+    "TRR103",
+    "TRR104",
+    "TRR105",
+    "TRR106",
+    "TRR107",
+    "TRR108",
+    "TRR109",
+    "TRR110",
+    "TRR111",
+    "TRR112",
+    "TRR113",
+    "TRR114",
+    "TRR115",
+    "TRR116",
+    "TRR203",
+    "TRR301",
+    "TRR304"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "1-3",
+     "n": 15,
+     "of": 18,
+     "deviators": [
+      {
+       "value": "7-8",
+       "modules": [
+        "TRR301",
+        "TRR304"
+       ]
+      },
+      {
+       "value": "4-6",
+       "modules": [
+        "TRR203"
+       ]
+      }
+     ]
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 18,
+     "of": 18,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid reoTranslate",
+     "n": 18,
+     "of": 18,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 17,
+     "of": 18,
+     "deviators": [
+      {
+       "value": "tekuradev",
+       "modules": [
+        "TRR116"
+       ]
+      }
+     ]
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 18,
+     "of": 18,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 17,
+     "of": 18,
+     "deviators": [
+      {
+       "value": "no",
+       "modules": [
+        "TRR105"
+       ]
+      }
+     ]
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 18,
+     "of": 18,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\",\"lesson\":\"decimal\"}",
+     "n": 15,
+     "of": 18,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"full-code\",\"lesson\":\"full-code\"}",
+       "modules": [
+        "TRR107",
+        "TRR109",
+        "TRR110"
+       ]
+      }
+     ]
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\",\"lesson\":\"2\"}",
+     "n": 18,
+     "of": 18,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\",\"lesson\":\"none\"}",
+     "n": 18,
+     "of": 18,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"no\"}",
+     "n": 15,
+     "of": 18,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"no\",\"lesson\":\"no\"}",
+       "modules": [
+        "TRR107",
+        "TRR109",
+        "TRR110"
+       ]
+      }
+     ]
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"}",
+     "n": 16,
+     "of": 18,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"next+home\",\"lesson\":\"next+home\"}",
+       "modules": [
+        "TRR107"
+       ]
+      },
+      {
+       "value": "{\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"}",
+       "modules": [
+        "TRR112"
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "WJFUN": {
+   "codes": [
+    "WJFUN105",
+    "WJFUN106",
+    "WJFUN107",
+    "WJFUN108",
+    "WJFUN109",
+    "WJFUN110",
+    "WJFUN112",
+    "WJFUN113",
+    "WJFUN115",
+    "WJFUN116",
+    "WJFUN205",
+    "WJFUN206",
+    "WJFUN208",
+    "WJFUN210",
+    "WJFUN211",
+    "WJFUN212",
+    "WJFUN304",
+    "WJFUN305",
+    "WJFUN306",
+    "WJFUN307",
+    "WJFUN308"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "1-3",
+     "n": 9,
+     "of": 21,
+     "deviators": [
+      {
+       "value": "4-6",
+       "modules": [
+        "WJFUN205",
+        "WJFUN206",
+        "WJFUN208",
+        "WJFUN210",
+        "WJFUN211",
+        "WJFUN212"
+       ]
+      },
+      {
+       "value": "7-8",
+       "modules": [
+        "WJFUN304",
+        "WJFUN305",
+        "WJFUN306",
+        "WJFUN307",
+        "WJFUN308"
+       ]
+      },
+      {
+       "value": "combo",
+       "modules": [
+        "WJFUN112"
+       ]
+      }
+     ]
+    },
+    "level_attr": {
+     "majority": "∅",
+     "n": 20,
+     "of": 21,
+     "deviators": [
+      {
+       "value": "empty",
+       "modules": [
+        "WJFUN210"
+       ]
+      }
+     ]
+    },
+    "body_class": {
+     "majority": "fundamentals container-fluid",
+     "n": 21,
+     "of": 21,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 21,
+     "of": 21,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav",
+     "n": 13,
+     "of": 21,
+     "deviators": [
+      {
+       "value": "footer-nav fundamentals-nav",
+       "modules": [
+        "WJFUN112",
+        "WJFUN113",
+        "WJFUN206",
+        "WJFUN208",
+        "WJFUN210",
+        "WJFUN211",
+        "WJFUN212",
+        "WJFUN305"
+       ]
+      }
+     ]
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 21,
+     "of": 21,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "single-file",
+     "n": 21,
+     "of": 21,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"overview\":\"full-code\"}",
+     "n": 21,
+     "of": 21,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"overview\":\"2\"}",
+     "n": 13,
+     "of": 21,
+     "deviators": [
+      {
+       "value": "{\"overview\":\"1\"}",
+       "modules": [
+        "WJFUN105",
+        "WJFUN106",
+        "WJFUN107",
+        "WJFUN109",
+        "WJFUN116",
+        "WJFUN206",
+        "WJFUN304",
+        "WJFUN308"
+       ]
+      }
+     ]
+    },
+    "menu_type": {
+     "majority": "{\"overview\":\"tabs\"}",
+     "n": 21,
+     "of": 21,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"overview\":\"yes\"}",
+     "n": 21,
+     "of": 21,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"overview\":\"home\"}",
+     "n": 21,
+     "of": 21,
+     "deviators": []
+    }
+   }
+  },
+  "XOTPB": {
+   "codes": [
+    "XOTPB08",
+    "XOTPB09",
+    "XOTPB10",
+    "XOTPB11",
+    "XOTPB12",
+    "XOTPB13"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "1-3",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav inquiry-nav",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"lesson\":\"full-code\"}",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"lesson\":\"2\"}",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"lesson\":\"simplified\"}",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"lesson\":\"no\"}",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"lesson\":\"next+home\"}",
+     "n": 6,
+     "of": 6,
+     "deviators": []
+    }
+   }
+  },
+  "XOTPG": {
+   "codes": [
+    "XOTPG01",
+    "XOTPG03",
+    "XOTPG04",
+    "XOTPG05",
+    "XOTPG06"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "1-3",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav inquiry-nav",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"lesson\":\"full-code\"}",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"lesson\":\"2\"}",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"lesson\":\"simplified\"}",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"lesson\":\"no\"}",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"lesson\":\"next+home\"}",
+     "n": 5,
+     "of": 5,
+     "deviators": []
+    }
+   }
+  },
+  "XOTPO": {
+   "codes": [
+    "XOTPO01"
+   ],
+   "fields": {
+    "template_phase": {
+     "majority": "1-3",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "level_attr": {
+     "majority": "empty",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "body_class": {
+     "majority": "container-fluid",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "idoc_host": {
+     "majority": "tekura",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_class": {
+     "majority": "footer-nav inquiry-nav",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "acknowledgements": {
+     "majority": "yes",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "page_model": {
+     "majority": "multi-file",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "module_code": {
+     "majority": "{\"lesson\":\"full-code\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "h1_count": {
+     "majority": "{\"lesson\":\"2\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_type": {
+     "majority": "{\"lesson\":\"simplified\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "menu_button_tooltip": {
+     "majority": "{\"lesson\":\"no\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    },
+    "footer_links": {
+     "majority": "{\"lesson\":\"next+home\"}",
+     "n": 1,
+     "of": 1,
+     "deviators": []
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,53 @@
+scaffold 53.1341 -> 53.6797 (+0.5455pp); RAW 37.487 -> 37.884; pairs 2349 -> 2349, skipped 0 -> 0
+movers 275: up 197 / down 76; pp-sum +725.6; outside affected 0; pairs gone 22 / new 22
+pairs gone (sample): ['WJFUN116_1_0.html', 'WJFUN212_1_0.html', 'WJFUN108_2_0.html', 'WJFUN205_3_0.html', 'WJFUN112_4_0.html', 'WJFUN304_4_0.html', 'JPFUN01_3_0.html', 'WJFUN113_2_0.html']
+pairs new (sample): ['JPFUN01_0_0.html', 'WJFUN106_0_0.html', 'WJFUN107_0_0.html', 'WJFUN116_0_0.html', 'WJFUN108_0_0.html', 'WJFUN212_0_0.html', 'WJFUN305_0_0.html', 'WJFUN105_0_0.html']
+worst 10: [(-11.3, 'GEO1006_3_0.html'), (-9.4, 'GEO1004_1_0.html'), (-8.2, 'ENGS404_6_1.html'), (-7.0, 'PWY1001_2_3_0.html'), (-5.0, 'CHI1003_8_0.html'), (-4.7, 'CHI1003_6_0.html'), (-4.7, 'CHI1003_7_0.html'), (-4.3, 'PWY1002_4_0.html'), (-4.0, 'XGF9002_9_0.html'), (-3.7, 'ENGC403_4_2.html')]
+best 10: [(17.8, 'BLLR202_0_0.html'), (18.7, 'BLL263_0_0.html'), (18.8, 'BLL262_0_0.html'), (19.9, 'BLL251_0_0.html'), (21.6, 'WJFUN308_0_0.html'), (25.1, 'SSCI205_0_0.html'), (26.0, 'BLL253_0_0.html'), (26.3, 'ENGC204_0_0.html'), (26.6, 'BLLR201_0_0.html'), (27.5, 'ENGC403_0_0.html')]
+>= 50: 1378 -> 1398  up 20 ['PWY1008_1_2_0.html', 'GENO901_2_0.html', 'DTC1005_5_0.html', 'ANZH302_0_0.html', 'ANZH302_2_0.html', 'BLLR201_2_0.html', 'OSSC501_3_0.html', 'HES1002_1_0.html', 'ANZH302_10_0.html', 'OSSC401_2_0.html', 'OSSC401_1_0.html', 'OSSC401_4_0.html']  down 4 ['ENGS404_6_1.html', 'COM1006_5_0.html', 'ANZH301_3_0.html', 'FRNO901_3_0.html']
+>= 75: 228 -> 236  up 10 ['CBI1005_2_0.html', 'BLLR201_5_0.html', 'ENGC403_2_0.html', 'OSSC501_2_0.html', 'BLLR202_3_1.html', 'BLLR201_6_0.html', 'SSCI205_0_0.html', 'BLL253_0_0.html', 'BLLR203_3_0.html', 'ENGC204_0_0.html']  down 2 ['GEO1004_1_0.html', 'SCBI301_8_0.html']
+>= 90: 19 -> 20  up 1 ['BLLR201_4_0.html']  down 0 []
+unaffected pairs 1813: mean before 53.9017 after 53.9017
+== families
+  WJFUN+JPF  pairs  23 ->  23  mean  10.1 ->  35.0  median  36.8
+  ANZH       pairs  58 ->  58  mean  53.2 ->  54.1  median  56.7
+  BLL        pairs  12 ->  12  mean  47.9 ->  54.9  median  57.6
+  BLLR       pairs  21 ->  21  mean  56.0 ->  65.5  median  68.6
+  CBI        pairs  28 ->  28  mean  59.5 ->  60.0  median  65.7
+  CEDO       pairs   1 ->   1  mean  11.3 ->  17.0  median  17.0
+  CEDT       pairs   3 ->   3  mean  34.0 ->  34.0  median  39.9
+  CHI        pairs  26 ->  26  mean  33.9 ->  32.8  median  32.1
+  COM        pairs  23 ->  23  mean  54.7 ->  54.8  median  55.2
+  DAN        pairs  17 ->  17  mean  52.8 ->  55.7  median  56.4
+  DTC        pairs  18 ->  18  mean  47.7 ->  51.2  median  50.4
+  ENGC       pairs  27 ->  27  mean  62.6 ->  65.6  median  66.7
+  ENGS       pairs  13 ->  13  mean  54.0 ->  57.0  median  57.1
+  ENO        pairs   6 ->   6  mean  48.6 ->  48.1  median  50.5
+  FRFUN      pairs  28 ->  28  mean  50.6 ->  50.8  median  48.5
+  FRNO       pairs  18 ->  18  mean  54.9 ->  55.2  median  51.8
+  GENO       pairs   9 ->   9  mean  46.0 ->  46.3  median  44.6
+  GEO        pairs  14 ->  14  mean  46.3 ->  45.2  median  44.8
+  GER        pairs   3 ->   3  mean  40.8 ->  41.4  median  28.1
+  HES        pairs   7 ->   7  mean  57.8 ->  59.3  median  52.9
+  JPFUN      pairs   2 ->   2  mean   7.3 ->   7.7  median   7.7
+  JPN        pairs  11 ->  11  mean  38.1 ->  38.0  median  37.5
+  MUS        pairs  12 ->  12  mean  49.0 ->  51.3  median  51.6
+  MXS        pairs   9 ->   9  mean  35.7 ->  35.4  median  38.3
+  OSAI       pairs   3 ->   3  mean  61.6 ->  61.6  median  63.4
+  OSBY       pairs   4 ->   4  mean  57.6 ->  57.6  median  60.6
+  OSGM       pairs   7 ->   7  mean  75.8 ->  75.8  median  82.6
+  OSOH       pairs   4 ->   4  mean  75.1 ->  75.1  median  77.1
+  OSSC       pairs  11 ->  11  mean  60.4 ->  67.9  median  60.3
+  OSSM       pairs   5 ->   5  mean  62.9 ->  64.8  median  62.9
+  PWY        pairs  44 ->  44  mean  58.3 ->  57.6  median  57.0
+  PWYWHA     pairs   1 ->   1  mean  15.2 ->  15.2  median  15.2
+  SCBI       pairs   9 ->   9  mean  76.6 ->  76.9  median  73.7
+  SCES       pairs   5 ->   5  mean  62.5 ->  63.1  median  63.7
+  SPA        pairs   3 ->   3  mean  46.0 ->  46.3  median  58.5
+  SSCI       pairs  10 ->  10  mean  68.9 ->  72.2  median  71.4
+  TEDC       pairs  17 ->  17  mean  39.5 ->  39.7  median  38.2
+  TRR        pairs  14 ->  14  mean  34.9 ->  34.9  median  36.2
+  WJFUN      pairs  21 ->  21  mean  10.4 ->  37.6  median  36.9
+  XGF        pairs  10 ->  10  mean  50.5 ->  52.1  median  48.9
+== WJFUN/JPFUN per-module mean before -> after:
+  JPFUN01 9->9  JPFUN02 6->6  WJFUN105 12->31  WJFUN106 12->14  WJFUN107 13->17  WJFUN108 7->26  WJFUN109 15->51  WJFUN110 11->42  WJFUN112 8->53  WJFUN113 9->46  WJFUN115 9->48  WJFUN116 7->25  WJFUN205 8->37  WJFUN206 10->48  WJFUN208 11->53  WJFUN210 11->38  WJFUN211 13->37  WJFUN212 7->28  WJFUN304 9->34  WJFUN305 10->28  WJFUN306 10->51  WJFUN307 11->49  WJFUN308 14->36

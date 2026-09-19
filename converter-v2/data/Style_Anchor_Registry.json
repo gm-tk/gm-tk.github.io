@@ -462,6 +462,50 @@
 						}
 					}
 				}
+			},
+			"BLLR": {
+				"base_code": "BLLR",
+				"base_rules": {
+					"template_phase": "4-6",
+					"body_class": "container-fluid",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav inquiry-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "decimal"
+					},
+					"h1_count": {
+						"overview": "2",
+						"lesson": "1"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "simplified"
+					},
+					"menu_button_tooltip": {
+						"overview": "yes",
+						"lesson": "yes"
+					},
+					"footer_links": {
+						"overview": "prev+next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"BLLR2": {
+						"members": [
+							"BLLR201",
+							"BLLR202",
+							"BLLR203"
+						],
+						"delta": {
+							"template_phase": "4-6"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 3 gold module(s) BLLR201 BLLR202 BLLR203 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; splits — footer_links: {\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"} 2/3 | {\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"} ×1 (BLLR203)"
 			}
 		}
 	},
@@ -542,7 +586,9 @@
 					"ENGC2": {
 						"members": [
 							"ENGC201",
-							"ENGC202"
+							"ENGC202",
+							"ENGC204",
+							"ENGC206"
 						],
 						"delta": {
 							"template_phase": "4-6",
@@ -565,7 +611,8 @@
 					},
 					"ENGC4": {
 						"members": [
-							"ENGC401"
+							"ENGC401",
+							"ENGC403"
 						],
 						"delta": {
 							"template_phase": "9-10",
@@ -851,7 +898,9 @@
 					},
 					"ENGS4": {
 						"members": [
-							"ENGS401"
+							"ENGS401",
+							"ENGS404",
+							"ENGS405"
 						],
 						"delta": {
 							"template_phase": "9-10/NCEA",
@@ -1659,6 +1708,92 @@
 						}
 					}
 				}
+			},
+			"SCBI": {
+				"base_code": "SCBI",
+				"base_rules": {
+					"template_phase": "7-8",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "decimal"
+					},
+					"h1_count": {
+						"overview": "2",
+						"lesson": "1"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "simplified"
+					},
+					"menu_button_tooltip": {
+						"overview": "yes",
+						"lesson": "no"
+					},
+					"footer_links": {
+						"overview": "next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"SCBI3": {
+						"members": [
+							"SCBI301"
+						],
+						"delta": {
+							"template_phase": "7-8"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 1 gold module(s) SCBI301 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; every field unanimous"
+			},
+			"SCES": {
+				"base_code": "SCES",
+				"base_rules": {
+					"template_phase": "4-6",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "padded-number"
+					},
+					"h1_count": {
+						"overview": "2",
+						"lesson": "1"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "simplified"
+					},
+					"menu_button_tooltip": {
+						"overview": "yes",
+						"lesson": "yes"
+					},
+					"footer_links": {
+						"overview": "next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"SCES2": {
+						"members": [
+							"SCES201"
+						],
+						"delta": {
+							"template_phase": "4-6"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 1 gold module(s) SCES201 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; every field unanimous"
 			}
 		}
 	},
@@ -1989,7 +2124,21 @@
 							"ANZHFUN09"
 						],
 						"delta": {
-							"template_phase": "combo"
+							"template_phase": "combo",
+							"body_class": "fundamentals container-fluid",
+							"module_code": {
+								"overview": "full-code"
+							},
+							"h1_count": {
+								"overview": "2"
+							},
+							"menu_type": {
+								"overview": "none"
+							},
+							"footer_links": {
+								"overview": "prev+next+home"
+							},
+							"page_model": "single-file"
 						}
 					},
 					"ANZHFUN1": {
@@ -2242,6 +2391,7 @@
 					},
 					"CEDO2": {
 						"members": [
+							"CEDO201",
 							"CEDO202",
 							"CEDO203",
 							"CEDO204"
@@ -2299,6 +2449,14 @@
 						"delta": {
 							"template_phase": "NCEA",
 							"page_model": "multi-file"
+						}
+					},
+					"CEDO4": {
+						"members": [
+							"CEDO402"
+						],
+						"delta": {
+							"template_phase": "9-10"
 						}
 					}
 				}
@@ -3958,8 +4116,19 @@
 						"delta": {
 							"template_phase": "1-3",
 							"module_code": {
-								"overview": "free-text:\"XOTPB09\"",
-								"lesson": "—"
+								"lesson": "full-code"
+							},
+							"h1_count": {
+								"lesson": "2"
+							},
+							"menu_type": {
+								"lesson": "simplified"
+							},
+							"menu_button_tooltip": {
+								"lesson": "no"
+							},
+							"footer_links": {
+								"lesson": "next+home"
 							}
 						}
 					},
@@ -3972,7 +4141,22 @@
 							"XOTPB14"
 						],
 						"delta": {
-							"template_phase": "1-3"
+							"template_phase": "1-3",
+							"module_code": {
+								"lesson": "full-code"
+							},
+							"h1_count": {
+								"lesson": "2"
+							},
+							"menu_type": {
+								"lesson": "simplified"
+							},
+							"menu_button_tooltip": {
+								"lesson": "no"
+							},
+							"footer_links": {
+								"lesson": "next+home"
+							}
 						}
 					}
 				}
@@ -4021,8 +4205,19 @@
 						"delta": {
 							"template_phase": "1-3",
 							"module_code": {
-								"overview": "free-text:\"XOTPG10\"",
-								"lesson": "—"
+								"lesson": "full-code"
+							},
+							"h1_count": {
+								"lesson": "2"
+							},
+							"menu_type": {
+								"lesson": "simplified"
+							},
+							"menu_button_tooltip": {
+								"lesson": "no"
+							},
+							"footer_links": {
+								"lesson": "next+home"
 							}
 						}
 					},
@@ -4084,8 +4279,19 @@
 						"delta": {
 							"template_phase": "1-3",
 							"module_code": {
-								"overview": "free-text:\"XOTPO09\"",
-								"lesson": "—"
+								"lesson": "full-code"
+							},
+							"h1_count": {
+								"lesson": "2"
+							},
+							"menu_type": {
+								"lesson": "simplified"
+							},
+							"menu_button_tooltip": {
+								"lesson": "no"
+							},
+							"footer_links": {
+								"lesson": "next+home"
 							}
 						}
 					},
@@ -4561,6 +4767,31 @@
 							"ENO1921"
 						],
 						"delta": {}
+					},
+					"ENO2": {
+						"members": [
+							"ENO2060"
+						],
+						"delta": {
+							"template_phase": "NCEA",
+							"idoc_host": "tekura",
+							"module_code": {
+								"overview": "full-code",
+								"lesson": "padded-number"
+							},
+							"h1_count": {
+								"overview": "2",
+								"lesson": "2"
+							},
+							"menu_button_tooltip": {
+								"overview": "yes",
+								"lesson": "yes"
+							},
+							"footer_links": {
+								"overview": "next+home",
+								"lesson": "prev+next+home"
+							}
+						}
 					}
 				}
 			},
@@ -5019,6 +5250,624 @@
 						"delta": {}
 					}
 				}
+			},
+			"CBI": {
+				"base_code": "CBI",
+				"base_rules": {
+					"template_phase": "NCEA",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "decimal"
+					},
+					"h1_count": {
+						"overview": "2",
+						"lesson": "1"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "none"
+					},
+					"menu_button_tooltip": {
+						"overview": "no",
+						"lesson": "no"
+					},
+					"footer_links": {
+						"overview": "prev+next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"CBI1": {
+						"members": [
+							"CBI1004",
+							"CBI1005",
+							"CBI1008",
+							"CBI1009"
+						],
+						"delta": {
+							"template_phase": "NCEA"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 4 gold module(s) CBI1004 CBI1005 CBI1008 CBI1009 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; splits — menu_type: {\"overview\":\"tabs\",\"lesson\":\"none\"} 2/4 | {\"overview\":\"tabs\",\"lesson\":\"simplified\"} ×2 (CBI1008,CBI1009); menu_button_tooltip: {\"overview\":\"no\",\"lesson\":\"no\"} 2/4 | {\"overview\":\"yes\",\"lesson\":\"no\"} ×1 (CBI1009) | {\"overview\":\"yes\",\"lesson\":\"yes\"} ×1 (CBI1008)"
+			},
+			"CHI": {
+				"base_code": "CHI",
+				"base_rules": {
+					"template_phase": "NCEA",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "decimal"
+					},
+					"h1_count": {
+						"overview": "2",
+						"lesson": "2"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "simplified"
+					},
+					"menu_button_tooltip": {
+						"overview": "yes",
+						"lesson": "no"
+					},
+					"footer_links": {
+						"overview": "prev+next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"CHI1": {
+						"members": [
+							"CHI1003",
+							"CHI1004",
+							"CHI1005"
+						],
+						"delta": {
+							"template_phase": "NCEA"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 3 gold module(s) CHI1003 CHI1004 CHI1005 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; splits — menu_button_tooltip: {\"overview\":\"yes\",\"lesson\":\"no\"} 2/3 | {\"overview\":\"yes\",\"lesson\":\"yes\"} ×1 (CHI1003)"
+			},
+			"COM": {
+				"base_code": "COM",
+				"base_rules": {
+					"template_phase": "NCEA",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekuradev",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "decimal"
+					},
+					"h1_count": {
+						"overview": "2",
+						"lesson": "1"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "simplified"
+					},
+					"menu_button_tooltip": {
+						"overview": "no",
+						"lesson": "yes"
+					},
+					"footer_links": {
+						"overview": "next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"COM1": {
+						"members": [
+							"COM1002",
+							"COM1005",
+							"COM1006"
+						],
+						"delta": {
+							"template_phase": "NCEA"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 3 gold module(s) COM1002 COM1005 COM1006 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; splits — menu_button_tooltip: {\"overview\":\"no\",\"lesson\":\"yes\"} 2/3 | {\"overview\":\"no\",\"lesson\":\"no\"} ×1 (COM1002); footer_links: {\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"} 2/3 | {\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"} ×1 (COM1002)"
+			},
+			"DAN": {
+				"base_code": "DAN",
+				"base_rules": {
+					"template_phase": "NCEA",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "decimal"
+					},
+					"h1_count": {
+						"overview": "2",
+						"lesson": "1"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "none"
+					},
+					"menu_button_tooltip": {
+						"overview": "no"
+					},
+					"footer_links": {
+						"overview": "next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"DAN1": {
+						"members": [
+							"DAN1003",
+							"DAN1004",
+							"DAN1006"
+						],
+						"delta": {
+							"template_phase": "NCEA"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 3 gold module(s) DAN1003 DAN1004 DAN1006 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; every field unanimous"
+			},
+			"DTC": {
+				"base_code": "DTC",
+				"base_rules": {
+					"template_phase": "NCEA",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "decimal"
+					},
+					"h1_count": {
+						"overview": "2",
+						"lesson": "1"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "none"
+					},
+					"menu_button_tooltip": {
+						"overview": "no",
+						"lesson": "no"
+					},
+					"footer_links": {
+						"overview": "next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"DTC1": {
+						"members": [
+							"DTC1004",
+							"DTC1005"
+						],
+						"delta": {
+							"template_phase": "NCEA"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 2 gold module(s) DTC1004 DTC1005 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; splits — menu_button_tooltip: {\"overview\":\"no\",\"lesson\":\"no\"} 1/2 | {\"overview\":\"no\"} ×1 (DTC1004); footer_links: {\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"} 1/2 | {\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"} ×1 (DTC1004)"
+			},
+			"GEO": {
+				"base_code": "GEO",
+				"base_rules": {
+					"template_phase": "NCEA",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekuradev",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "decimal"
+					},
+					"h1_count": {
+						"overview": "2",
+						"lesson": "1"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "simplified"
+					},
+					"menu_button_tooltip": {
+						"overview": "no",
+						"lesson": "no"
+					},
+					"footer_links": {
+						"overview": "prev+next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"GEO1": {
+						"members": [
+							"GEO1004",
+							"GEO1005",
+							"GEO1006"
+						],
+						"delta": {
+							"template_phase": "NCEA"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 3 gold module(s) GEO1004 GEO1005 GEO1006 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; splits — menu_type: {\"overview\":\"tabs\",\"lesson\":\"simplified\"} 2/3 | {\"overview\":\"tabs\",\"lesson\":\"none\"} ×1 (GEO1004); menu_button_tooltip: {\"overview\":\"no\",\"lesson\":\"no\"} 2/3 | {\"overview\":\"no\"} ×1 (GEO1004)"
+			},
+			"GER": {
+				"base_code": "GER",
+				"base_rules": {
+					"template_phase": "NCEA",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekuradev",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "decimal"
+					},
+					"h1_count": {
+						"overview": "1",
+						"lesson": "1"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "none"
+					},
+					"menu_button_tooltip": {
+						"overview": "no",
+						"lesson": "no"
+					},
+					"footer_links": {
+						"overview": "next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"GER1": {
+						"members": [
+							"GER1002",
+							"GER1003",
+							"GER1004",
+							"GER1005",
+							"GER1006",
+							"GER1007"
+						],
+						"delta": {
+							"template_phase": "NCEA"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 6 gold module(s) GER1002 GER1003 GER1004 GER1005 GER1006 GER1007 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; splits — module_code: {\"overview\":\"full-code\",\"lesson\":\"decimal\"} 4/6 | {\"overview\":\"full-code\",\"lesson\":\"free-text:\\\"Lesson\\\"\"} ×1 (GER1002) | {\"overview\":\"full-code\",\"lesson\":\"padded-number\"} ×1 (GER1003); h1_count: {\"overview\":\"1\",\"lesson\":\"1\"} 3/6 | {\"overview\":\"2\",\"lesson\":\"1\"} ×2 (GER1004,GER1007) | {\"overview\":\"2\",\"lesson\":\"2\"} ×1 (GER1002); menu_type: {\"overview\":\"tabs\",\"lesson\":\"none\"} 4/6 | {\"overview\":\"tabs\",\"lesson\":\"tabs\"} ×2 (GER1002,GER1004); footer_links: {\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"} 3/6 | {\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"} ×3 (GER1002,GER1003,GER1004)"
+			},
+			"JPN": {
+				"base_code": "JPN",
+				"base_rules": {
+					"template_phase": "NCEA",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "decimal"
+					},
+					"h1_count": {
+						"overview": "3",
+						"lesson": "2"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "simplified"
+					},
+					"menu_button_tooltip": {
+						"overview": "no",
+						"lesson": "no"
+					},
+					"footer_links": {
+						"overview": "prev+next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"JPN1": {
+						"members": [
+							"JPN1004"
+						],
+						"delta": {
+							"template_phase": "NCEA"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 1 gold module(s) JPN1004 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; every field unanimous"
+			},
+			"MUS": {
+				"base_code": "MUS",
+				"base_rules": {
+					"template_phase": "NCEA",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "decimal"
+					},
+					"h1_count": {
+						"overview": "1",
+						"lesson": "1"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "none"
+					},
+					"menu_button_tooltip": {
+						"overview": "no",
+						"lesson": "no"
+					},
+					"footer_links": {
+						"overview": "next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"MUS1": {
+						"members": [
+							"MUS1004",
+							"MUS1006"
+						],
+						"delta": {
+							"template_phase": "NCEA"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 2 gold module(s) MUS1004 MUS1006 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; splits — h1_count: {\"overview\":\"1\",\"lesson\":\"1\"} 1/2 | {\"overview\":\"2\",\"lesson\":\"2\"} ×1 (MUS1006); menu_button_tooltip: {\"overview\":\"no\",\"lesson\":\"no\"} 1/2 | {\"overview\":\"no\"} ×1 (MUS1006); footer_links: {\"overview\":\"next+home\",\"lesson\":\"prev+next+home\"} 1/2 | {\"overview\":\"prev+next+home\",\"lesson\":\"prev+next+home\"} ×1 (MUS1004)"
+			},
+			"MXS": {
+				"base_code": "MXS",
+				"base_rules": {
+					"template_phase": "NCEA",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav fundamentals-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "padded-number"
+					},
+					"h1_count": {
+						"overview": "2",
+						"lesson": "1"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "simplified"
+					},
+					"menu_button_tooltip": {
+						"overview": "yes",
+						"lesson": "yes"
+					},
+					"footer_links": {
+						"overview": "prev+next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"MXS1": {
+						"members": [
+							"MXS1004"
+						],
+						"delta": {
+							"template_phase": "NCEA"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 1 gold module(s) MXS1004 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; every field unanimous"
+			},
+			"PWY": {
+				"base_code": "PWY",
+				"base_rules": {
+					"template_phase": "NCEA",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "decimal"
+					},
+					"h1_count": {
+						"overview": "1",
+						"lesson": "1"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "simplified"
+					},
+					"menu_button_tooltip": {
+						"overview": "yes",
+						"lesson": "yes"
+					},
+					"footer_links": {
+						"overview": "next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"PWY1": {
+						"members": [
+							"PWY1001",
+							"PWY1002",
+							"PWY1007",
+							"PWY1008",
+							"PWY1009"
+						],
+						"delta": {
+							"template_phase": "NCEA"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 5 gold module(s) PWY1001 PWY1002 PWY1007 PWY1008 PWY1009 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; splits — idoc_host: \"tekura\" 3/5 | \"tekuradev\" ×2 (PWY1001,PWY1007); h1_count: {\"overview\":\"1\",\"lesson\":\"1\"} 3/5 | {\"overview\":\"2\",\"lesson\":\"1\"} ×2 (PWY1008,PWY1009)"
+			},
+			"PWYWHA": {
+				"base_code": "PWYWHA",
+				"base_rules": {
+					"template_phase": "NCEA",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekuradev",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code"
+					},
+					"h1_count": {
+						"overview": "1"
+					},
+					"menu_type": {
+						"overview": "none"
+					},
+					"menu_button_tooltip": {
+						"overview": "no"
+					},
+					"footer_links": {
+						"overview": "prev+next+home"
+					},
+					"page_model": "single-file"
+				},
+				"levels": {
+					"PWYWHA1": {
+						"members": [
+							"PWYWHA1"
+						],
+						"delta": {
+							"template_phase": "NCEA"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 1 gold module(s) PWYWHA1 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; every field unanimous"
+			},
+			"SAM": {
+				"base_code": "SAM",
+				"base_rules": {
+					"template_phase": "NCEA",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "decimal"
+					},
+					"h1_count": {
+						"overview": "3",
+						"lesson": "2"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "simplified"
+					},
+					"menu_button_tooltip": {
+						"overview": "no",
+						"lesson": "no"
+					},
+					"footer_links": {
+						"overview": "prev+next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"SAM1": {
+						"members": [
+							"SAM1005",
+							"SAM1006"
+						],
+						"delta": {
+							"template_phase": "NCEA"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 2 gold module(s) SAM1005 SAM1006 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; splits — menu_button_tooltip: {\"overview\":\"no\",\"lesson\":\"no\"} 1/2 | {\"overview\":\"yes\",\"lesson\":\"no\"} ×1 (SAM1005)"
+			},
+			"SPA": {
+				"base_code": "SPA",
+				"base_rules": {
+					"template_phase": "NCEA",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "decimal"
+					},
+					"h1_count": {
+						"overview": "3",
+						"lesson": "2"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "simplified"
+					},
+					"menu_button_tooltip": {
+						"overview": "no",
+						"lesson": "no"
+					},
+					"footer_links": {
+						"overview": "next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"SPA1": {
+						"members": [
+							"SPA1004"
+						],
+						"delta": {
+							"template_phase": "NCEA"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 1 gold module(s) SPA1004 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; every field unanimous"
 			}
 		}
 	},
@@ -5688,7 +6537,8 @@
 						"members": [
 							"PNR101",
 							"PNR102",
-							"PNR104"
+							"PNR104",
+							"PNR107"
 						],
 						"delta": {
 							"template_phase": "1-3",
@@ -5730,18 +6580,81 @@
 							"TRR106",
 							"TRR107",
 							"TRR108",
+							"TRR109",
+							"TRR110",
 							"TRR111",
 							"TRR112",
 							"TRR113",
 							"TRR114",
-							"TRR115"
+							"TRR115",
+							"TRR116"
 						],
 						"delta": {
 							"template_phase": "1-3",
 							"page_model": "multi-file"
 						}
+					},
+					"TRR2": {
+						"members": [
+							"TRR203"
+						],
+						"delta": {
+							"template_phase": "4-6"
+						}
+					},
+					"TRR3": {
+						"members": [
+							"TRR301",
+							"TRR304"
+						],
+						"delta": {
+							"template_phase": "7-8"
+						}
 					}
 				}
+			},
+			"PMT": {
+				"base_code": "PMT",
+				"base_rules": {
+					"template_phase": "1-3",
+					"body_class": "container-fluid reoTranslate",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "full-code"
+					},
+					"h1_count": {
+						"overview": "2",
+						"lesson": "2"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "none"
+					},
+					"menu_button_tooltip": {
+						"overview": "no",
+						"lesson": "no"
+					},
+					"footer_links": {
+						"overview": "next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"PMT1": {
+						"members": [
+							"PMT101"
+						],
+						"delta": {
+							"template_phase": "1-3"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 1 gold module(s) PMT101 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; every field unanimous"
 			}
 		}
 	},
@@ -5975,11 +6888,290 @@
 							"CHFUN04",
 							"CHFUN05",
 							"CHFUN06",
-							"CHFUN07"
+							"CHFUN07",
+							"CHFUN08"
 						],
 						"delta": {}
 					}
 				}
+			},
+			"CHWHA": {
+				"base_code": "CHWHA",
+				"base_rules": {
+					"template_phase": "combo",
+					"body_class": "inquiry container-fluid mathJax",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav inquiry-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code"
+					},
+					"h1_count": {
+						"overview": "3"
+					},
+					"menu_type": {
+						"overview": "none"
+					},
+					"footer_links": {
+						"overview": "home"
+					},
+					"page_model": "single-file"
+				},
+				"levels": {
+					"CHWHA": {
+						"members": [
+							"CHWHA"
+						],
+						"delta": {
+							"template_phase": "combo"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 1 gold module(s) CHWHA with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; every field unanimous"
+			},
+			"FRNO": {
+				"base_code": "FRNO",
+				"base_rules": {
+					"template_phase": "combo",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "decimal"
+					},
+					"h1_count": {
+						"overview": "2",
+						"lesson": "1"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "simplified"
+					},
+					"menu_button_tooltip": {
+						"overview": "no",
+						"lesson": "no"
+					},
+					"footer_links": {
+						"overview": "next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"FRNO9": {
+						"members": [
+							"FRNO901",
+							"FRNO902"
+						],
+						"delta": {
+							"template_phase": "combo"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 2 gold module(s) FRNO901 FRNO902 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; splits — module_code: {\"overview\":\"full-code\",\"lesson\":\"decimal\"} 1/2 | {\"overview\":\"full-code\",\"lesson\":\"padded-number\"} ×1 (FRNO902); h1_count: {\"overview\":\"2\",\"lesson\":\"1\"} 1/2 | {\"overview\":\"2\",\"lesson\":\"2\"} ×1 (FRNO901); menu_button_tooltip: {\"overview\":\"no\",\"lesson\":\"no\"} 1/2 | {\"overview\":\"yes\",\"lesson\":\"yes\"} ×1 (FRNO902)"
+			},
+			"GENO": {
+				"base_code": "GENO",
+				"base_rules": {
+					"template_phase": "combo",
+					"body_class": "container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code",
+						"lesson": "padded-number"
+					},
+					"h1_count": {
+						"overview": "3",
+						"lesson": "1"
+					},
+					"menu_type": {
+						"overview": "tabs",
+						"lesson": "simplified"
+					},
+					"menu_button_tooltip": {
+						"overview": "yes",
+						"lesson": "yes"
+					},
+					"footer_links": {
+						"overview": "next+home",
+						"lesson": "prev+next+home"
+					},
+					"page_model": "multi-file"
+				},
+				"levels": {
+					"GENO9": {
+						"members": [
+							"GENO901"
+						],
+						"delta": {
+							"template_phase": "combo"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 1 gold module(s) GENO901 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; every field unanimous"
+			},
+			"GEWHA": {
+				"base_code": "GEWHA",
+				"base_rules": {
+					"template_phase": "combo",
+					"body_class": "inquiry container-fluid mathJax",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav inquiry-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code"
+					},
+					"h1_count": {
+						"overview": "3"
+					},
+					"menu_type": {
+						"overview": "simplified"
+					},
+					"menu_button_tooltip": {
+						"overview": "yes"
+					},
+					"footer_links": {
+						"overview": "home"
+					},
+					"page_model": "single-file"
+				},
+				"levels": {
+					"GEWHA": {
+						"members": [
+							"GEWHA"
+						],
+						"delta": {
+							"template_phase": "combo"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 1 gold module(s) GEWHA with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; every field unanimous"
+			},
+			"JPFUN": {
+				"base_code": "JPFUN",
+				"base_rules": {
+					"template_phase": "combo",
+					"body_class": "fundamentals container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav fundamentals-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code"
+					},
+					"h1_count": {
+						"overview": "2"
+					},
+					"menu_type": {
+						"overview": "tabs"
+					},
+					"menu_button_tooltip": {
+						"overview": "yes"
+					},
+					"footer_links": {
+						"overview": "home"
+					},
+					"page_model": "single-file"
+				},
+				"levels": {
+					"JPFUN0": {
+						"members": [
+							"JPFUN01",
+							"JPFUN02"
+						],
+						"delta": {
+							"template_phase": "combo"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 2 gold module(s) JPFUN01 JPFUN02 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; every field unanimous"
+			}
+		}
+	},
+	"1-10 Writing (MiW)": {
+		"subject_rules": {},
+		"bases": {
+			"WJFUN": {
+				"base_code": "WJFUN",
+				"base_rules": {
+					"template_phase": "1-3",
+					"body_class": "fundamentals container-fluid",
+					"level_attr": "empty",
+					"idoc_host": "tekura",
+					"footer_class": "footer-nav",
+					"acknowledgements": "yes",
+					"module_code": {
+						"overview": "full-code"
+					},
+					"h1_count": {
+						"overview": "2"
+					},
+					"menu_type": {
+						"overview": "tabs"
+					},
+					"menu_button_tooltip": {
+						"overview": "yes"
+					},
+					"footer_links": {
+						"overview": "home"
+					},
+					"page_model": "single-file"
+				},
+				"levels": {
+					"WJFUN1": {
+						"members": [
+							"WJFUN105",
+							"WJFUN106",
+							"WJFUN107",
+							"WJFUN108",
+							"WJFUN109",
+							"WJFUN110",
+							"WJFUN112",
+							"WJFUN113",
+							"WJFUN115",
+							"WJFUN116"
+						],
+						"delta": {
+							"template_phase": "1-3",
+							"h1_count": {
+								"overview": "1"
+							}
+						}
+					},
+					"WJFUN2": {
+						"members": [
+							"WJFUN205",
+							"WJFUN206",
+							"WJFUN208",
+							"WJFUN210",
+							"WJFUN211",
+							"WJFUN212"
+						],
+						"delta": {
+							"template_phase": "4-6",
+							"footer_class": "footer-nav fundamentals-nav"
+						}
+					},
+					"WJFUN3": {
+						"members": [
+							"WJFUN304",
+							"WJFUN305",
+							"WJFUN306",
+							"WJFUN307",
+							"WJFUN308"
+						],
+						"delta": {
+							"template_phase": "7-8"
+						}
+					}
+				},
+				"_mined_2026_09_20": "Session 28 / Task 1: base row mined from the 21 gold module(s) WJFUN105 WJFUN106 WJFUN107 WJFUN108 WJFUN109 WJFUN110 WJFUN112 WJFUN113 WJFUN115 WJFUN116 WJFUN205 WJFUN206 WJFUN208 WJFUN210 WJFUN211 WJFUN212 WJFUN304 WJFUN305 WJFUN306 WJFUN307 WJFUN308 with ReferenceMiner.Distil (outputs/_s28_t1_mine_sar.json); majority per field; splits — template_phase: \"1-3\" 9/21 | \"4-6\" ×6 (WJFUN205,WJFUN206,WJFUN208,WJFUN210,WJFUN211,WJFUN212) | \"7-8\" ×5 (WJFUN304,WJFUN305,WJFUN306,WJFUN307,WJFUN308) | \"combo\" ×1 (WJFUN112); footer_class: \"footer-nav\" 13/21 | \"footer-nav fundamentals-nav\" ×8 (WJFUN112,WJFUN113,WJFUN206,WJFUN208,WJFUN210,WJFUN211,WJFUN212,WJFUN305); h1_count: {\"overview\":\"2\"} 13/21 | {\"overview\":\"1\"} ×8 (WJFUN105,WJFUN106,WJFUN107,WJFUN109,WJFUN116,WJFUN206,WJFUN304,WJFUN308)"
 			}
 		}
 	}

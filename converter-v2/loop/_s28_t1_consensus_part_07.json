@@ -1,0 +1,1180 @@
+{
+ "counts": {
+  "header|title bar": {
+   "h1@plain": 23
+  },
+  "menu|h2": {
+   "p@plain": 88,
+   "h4@plain": 3,
+   "li@list": 157,
+   "h5@plain": 6,
+   "h3@plain": 22
+  },
+  "menu|lesson overview": {
+   "li@list": 64,
+   "p@plain": 10
+  },
+  "body|h1": {
+   "p@plain": 4,
+   "li@list": 2,
+   "h3@plain": 3
+  },
+  "body|body": {
+   "p@plain": 270,
+   "li@list": 61,
+   "h3@activity": 5,
+   "p@activity": 108,
+   "h4@plain": 2,
+   "li@activity>list": 13,
+   "speechBubble@plain": 5,
+   "clickDrop@activity": 1,
+   "h4@activity": 1,
+   "h3@plain": 3,
+   "p@alert": 9,
+   "li@alert>list": 4,
+   "clickDrop@plain": 1,
+   "li@activity": 5,
+   "a@activity": 1,
+   "li@plain": 1,
+   "dragAndDrop@activity": 1,
+   "p@whakatauki": 6
+  },
+  "body|h3": {
+   "h3@alert": 2,
+   "p@alert": 1,
+   "h3@plain": 39,
+   "h3@activity": 14,
+   "p@activity": 3,
+   "li@activity>list": 6,
+   "p@plain": 7,
+   "p@whakatauki": 2,
+   "a@activity": 1,
+   "li@list": 1
+  },
+  "body|h2": {
+   "h4@plain": 2,
+   "h3@plain": 8,
+   "p@plain": 13,
+   "h2@plain": 9,
+   "p@alert": 1,
+   "th@activity>table": 2,
+   "li@list": 1,
+   "flipCard@plain": 4,
+   "h3@activity": 3,
+   "clickDrop@activity": 1,
+   "p@activity": 1,
+   "h5@activity": 1,
+   "infoTrigger@activity": 1,
+   "speechBubble@plain": 2,
+   "h5@plain": 1
+  },
+  "body|lesson overview": {
+   "h4@alert": 8,
+   "li@alert>list": 7
+  },
+  "body|image": {
+   "h3@activity": 5,
+   "p@activity": 31,
+   "carousel@plain": 4,
+   "flipCard@plain": 27,
+   "p@plain": 45,
+   "multiChoiceQuiz@activity": 1,
+   "li@list": 16,
+   "h4@plain": 2,
+   "th@activity>table": 1,
+   "speechBubble@plain": 1,
+   "a@plain": 4,
+   "a@alert": 1,
+   "a@activity": 1,
+   "dragAndDrop@activity": 3,
+   "carousel@activity": 3,
+   "flipCard@activity": 6,
+   "li@activity>list": 3,
+   "slider@activity": 4
+  },
+  "body|button": {
+   "a@activity": 4,
+   "p@plain": 8,
+   "p@alert": 1
+  },
+  "body|h4": {
+   "h4@plain": 18,
+   "p@plain": 12,
+   "p@activity": 2,
+   "h3@plain": 10,
+   "h3@activity": 2,
+   "th@activity>table": 1,
+   "td@activity>table": 2,
+   "a@alert": 1
+  },
+  "body|alert": {
+   "p@alert": 15,
+   "p@plain": 3,
+   "li@activity>list": 1,
+   "h4@alert": 5,
+   "li@alert>list": 27,
+   "h4@plain": 1,
+   "p@activity>alert": 2
+  },
+  "body|video": {
+   "p@plain": 1,
+   "a@plain": 1
+  },
+  "body|drop": {
+   "p@activity": 3,
+   "p@plain": 1
+  },
+  "body|insert image rhs": {
+   "p@activity": 1,
+   "p@plain": 1,
+   "li@list": 2
+  },
+  "body|activity": {
+   "p@plain": 1,
+   "p@activity": 8,
+   "speechBubble@plain": 1,
+   "li@activity>list": 2,
+   "h4@activity": 2,
+   "h3@activity": 51,
+   "a@activity": 2,
+   "a@plain": 1,
+   "audioTrigger@plain": 1,
+   "typing@activity": 1,
+   "th@activity>table": 1,
+   "td@activity": 1
+  },
+  "body|title bar": {
+   "infoTrigger@plain": 3,
+   "li@list": 5,
+   "p@plain": 7,
+   "h4@activity": 2,
+   "carousel@plain": 8,
+   "a@plain": 2,
+   "th@table": 1,
+   "td@table": 1,
+   "p@activity": 5,
+   "infoTrigger@activity": 1,
+   "clickDrop@plain": 8,
+   "carousel@activity": 4,
+   "h3@activity": 8,
+   "accordion@plain": 1,
+   "h3@plain": 5,
+   "accordion@activity": 2,
+   "h5@plain": 1,
+   "a@activity": 1,
+   "th@activity>table": 2,
+   "a@activity>list": 1,
+   "a@activity>table": 1,
+   "th@activity": 2,
+   "li@alert>list": 1,
+   "h4@plain": 1
+  },
+  "menu|title bar": {
+   "li@list": 5,
+   "p@plain": 2
+  },
+  "acks|title bar": {
+   "accordion@plain": 2
+  },
+  "body|start at 0 13": {
+   "infoTrigger@alert": 1,
+   "p@plain": 2,
+   "selectionBox@activity": 4
+  },
+  "body|whakatauki": {
+   "p@whakatauki": 6,
+   "p@plain": 1
+  },
+  "body|external link": {
+   "p@plain": 1,
+   "li@list": 2
+  },
+  "menu|h1": {
+   "p@plain": 1
+  },
+  "body|click drop": {
+   "h4@plain": 6,
+   "p@plain": 6,
+   "h4@activity": 2,
+   "p@activity": 2
+  },
+  "header|insert image in centre": {
+   "h1@plain": 2
+  },
+  "menu|lesson content": {
+   "li@list": 2
+  },
+  "header|h2": {
+   "h1@plain": 5
+  },
+  "body|insert into speech bubble": {
+   "speechBubble@plain": 1
+  },
+  "header|h4": {
+   "h1@plain": 1
+  },
+  "body|insert image in centre": {
+   "h3@activity": 1
+  },
+  "body|side alert": {
+   "p@alert": 1
+  },
+  "body|insert icons with flip cards": {
+   "p@plain": 1
+  },
+  "body|summary box red text": {
+   "h4@alert": 4,
+   "li@alert>list": 6
+  },
+  "body|summary box": {
+   "li@alert>list": 9
+  },
+  "body|insert tick checklist": {
+   "p@plain": 11
+  },
+  "body|insert yes no drop down": {
+   "li@list": 9
+  },
+  "body|insert tabs for each level": {
+   "tabs@plain": 1
+  },
+  "body|insert accordions": {
+   "li@list": 4
+  },
+  "body|insert tabs for each stage": {
+   "tabs@plain": 1
+  },
+  "body|insert media item 1 rhs": {
+   "p@plain": 1
+  },
+  "body|carousel": {
+   "p@plain": 1,
+   "carousel@activity": 1
+  },
+  "header|h3": {
+   "h1@plain": 6
+  },
+  "body|insert media item 24 rhs": {
+   "p@plain": 1
+  },
+  "body|dev to red text": {
+   "li@list": 12
+  },
+  "body|insert dropbox icon": {
+   "a@activity": 11,
+   "a@plain": 1
+  },
+  "header|activity": {
+   "h1@plain": 4
+  },
+  "body|audio": {
+   "p@plain": 15,
+   "p@whakatauki": 2,
+   "a@activity": 3,
+   "p@activity": 15,
+   "h3@activity": 2,
+   "li@activity>list": 2,
+   "carousel@activity": 1,
+   "p@alert": 3,
+   "flipCard@plain": 1
+  },
+  "body|flip card": {
+   "flipCard@activity": 1
+  },
+  "body|end page": {
+   "p@plain": 1
+  },
+  "menu|h3": {
+   "li@list": 1
+  },
+  "body|insert text box": {
+   "typing@activity": 1,
+   "p@activity": 1
+  },
+  "body|accordion": {
+   "clickDrop@activity": 2,
+   "th@activity>table": 1
+  },
+  "menu|body": {
+   "p@plain": 6
+  },
+  "body|hover student": {
+   "p@plain": 2
+  }
+ },
+ "examples": {
+  "header|title bar": {
+   "h1@plain": [
+    "TWHK901",
+    "TWHK903",
+    "XDLS904",
+    "XDLS908",
+    "XDLS911",
+    "XDLS912",
+    "XFUN01",
+    "XLP01",
+    "XLP03",
+    "XLP05",
+    "XMES102",
+    "XTAS101"
+   ]
+  },
+  "menu|h2": {
+   "p@plain": [
+    "TWHK901",
+    "TWHK903",
+    "XLP01",
+    "XLP02",
+    "XLP05",
+    "XMES101",
+    "XMES102",
+    "XMES103",
+    "XWHA02"
+   ],
+   "h4@plain": [
+    "TWHK901",
+    "TWHK903"
+   ],
+   "li@list": [
+    "TWHK901",
+    "TWHK903",
+    "XLP01",
+    "XLP02",
+    "XLP05",
+    "XMES101",
+    "XMES102",
+    "XMES103",
+    "XWHA02"
+   ],
+   "h5@plain": [
+    "TWHK901",
+    "TWHK903",
+    "XWHA02"
+   ],
+   "h3@plain": [
+    "XWHA02"
+   ]
+  },
+  "menu|lesson overview": {
+   "li@list": [
+    "TWHK901",
+    "XLP01",
+    "XLP02",
+    "XMES101",
+    "XMES102",
+    "XMES103"
+   ],
+   "p@plain": [
+    "XMES102",
+    "XMES103"
+   ]
+  },
+  "body|h1": {
+   "p@plain": [
+    "TWHK901"
+   ],
+   "li@list": [
+    "TWHK901"
+   ],
+   "h3@plain": [
+    "XFUN01",
+    "XWHA01"
+   ]
+  },
+  "body|body": {
+   "p@plain": [
+    "TWHK901",
+    "TWHK903",
+    "XFUN01",
+    "XLP01",
+    "XLP02",
+    "XLP05",
+    "XMES101",
+    "XMES103",
+    "XWHA01",
+    "XWHA02"
+   ],
+   "li@list": [
+    "TWHK901",
+    "TWHK903",
+    "XFUN01",
+    "XLP01",
+    "XLP05"
+   ],
+   "h3@activity": [
+    "TWHK901",
+    "XLP01",
+    "XMES102"
+   ],
+   "p@activity": [
+    "TWHK901",
+    "TWHK903",
+    "XLP01",
+    "XLP02",
+    "XLP05",
+    "XMES101",
+    "XMES103"
+   ],
+   "h4@plain": [
+    "TWHK901",
+    "XMES103"
+   ],
+   "li@activity>list": [
+    "TWHK903",
+    "XLP01",
+    "XMES101",
+    "XMES103"
+   ],
+   "speechBubble@plain": [
+    "XFUN01"
+   ],
+   "clickDrop@activity": [
+    "XLP01"
+   ],
+   "h4@activity": [
+    "XLP01"
+   ],
+   "h3@plain": [
+    "XLP02",
+    "XLP05",
+    "XMES101"
+   ],
+   "p@alert": [
+    "XLP02",
+    "XLP05",
+    "XMES101"
+   ],
+   "li@alert>list": [
+    "XLP02",
+    "XLP05"
+   ],
+   "clickDrop@plain": [
+    "XLP05"
+   ],
+   "li@activity": [
+    "XMES101"
+   ],
+   "a@activity": [
+    "XMES101"
+   ],
+   "li@plain": [
+    "XMES101"
+   ],
+   "dragAndDrop@activity": [
+    "XMES101"
+   ],
+   "p@whakatauki": [
+    "XMES103",
+    "XWHA02"
+   ]
+  },
+  "body|h3": {
+   "h3@alert": [
+    "TWHK901",
+    "XWHA01"
+   ],
+   "p@alert": [
+    "TWHK901"
+   ],
+   "h3@plain": [
+    "TWHK901",
+    "TWHK903",
+    "XFUN01",
+    "XLP02",
+    "XLP05",
+    "XMES101",
+    "XWHA01",
+    "XWHA02"
+   ],
+   "h3@activity": [
+    "TWHK901",
+    "TWHK903",
+    "XLP05",
+    "XMES101",
+    "XMES102",
+    "XWHA01",
+    "XWHA02"
+   ],
+   "p@activity": [
+    "TWHK903",
+    "XWHA01",
+    "XWHA02"
+   ],
+   "li@activity>list": [
+    "TWHK903"
+   ],
+   "p@plain": [
+    "XFUN01",
+    "XWHA01"
+   ],
+   "p@whakatauki": [
+    "XMES101"
+   ],
+   "a@activity": [
+    "XMES101"
+   ],
+   "li@list": [
+    "XWHA02"
+   ]
+  },
+  "body|h2": {
+   "h4@plain": [
+    "TWHK901",
+    "TWHK903"
+   ],
+   "h3@plain": [
+    "TWHK901",
+    "TWHK903",
+    "XLP05",
+    "XWHA02"
+   ],
+   "p@plain": [
+    "TWHK903",
+    "XLP01",
+    "XMES102"
+   ],
+   "h2@plain": [
+    "TWHK903"
+   ],
+   "p@alert": [
+    "TWHK903"
+   ],
+   "th@activity>table": [
+    "TWHK903"
+   ],
+   "li@list": [
+    "TWHK903"
+   ],
+   "flipCard@plain": [
+    "XLP01"
+   ],
+   "h3@activity": [
+    "XLP01",
+    "XMES101",
+    "XMES102"
+   ],
+   "clickDrop@activity": [
+    "XMES101"
+   ],
+   "p@activity": [
+    "XMES102"
+   ],
+   "h5@activity": [
+    "XMES103"
+   ],
+   "infoTrigger@activity": [
+    "XWHA01"
+   ],
+   "speechBubble@plain": [
+    "XWHA02"
+   ],
+   "h5@plain": [
+    "XWHA02"
+   ]
+  },
+  "body|lesson overview": {
+   "h4@alert": [
+    "TWHK901"
+   ],
+   "li@alert>list": [
+    "TWHK901"
+   ]
+  },
+  "body|image": {
+   "h3@activity": [
+    "TWHK901",
+    "TWHK903",
+    "XGF9003"
+   ],
+   "p@activity": [
+    "TWHK901",
+    "TWHK903",
+    "XMES101",
+    "XMES102",
+    "XMES103",
+    "XWHA02"
+   ],
+   "carousel@plain": [
+    "TWHK901",
+    "XMES102",
+    "XWHA01"
+   ],
+   "flipCard@plain": [
+    "TWHK901",
+    "XLP02",
+    "XMES101",
+    "XWHA01"
+   ],
+   "p@plain": [
+    "TWHK901",
+    "TWHK903",
+    "XLP01",
+    "XLP02",
+    "XMES102",
+    "XWHA01"
+   ],
+   "multiChoiceQuiz@activity": [
+    "TWHK901"
+   ],
+   "li@list": [
+    "TWHK903",
+    "XGF9003",
+    "XLP02",
+    "XLP05"
+   ],
+   "h4@plain": [
+    "TWHK903",
+    "XFUN01"
+   ],
+   "th@activity>table": [
+    "TWHK903"
+   ],
+   "speechBubble@plain": [
+    "WJFUN113"
+   ],
+   "a@plain": [
+    "WJFUN212",
+    "XDLS502"
+   ],
+   "a@alert": [
+    "WJFUN212"
+   ],
+   "a@activity": [
+    "XDLS502"
+   ],
+   "dragAndDrop@activity": [
+    "XLP01",
+    "XMES101",
+    "XMES102"
+   ],
+   "carousel@activity": [
+    "XMES101",
+    "XMES103"
+   ],
+   "flipCard@activity": [
+    "XMES102",
+    "XMES103"
+   ],
+   "li@activity>list": [
+    "XMES102",
+    "XMES103"
+   ],
+   "slider@activity": [
+    "XMES103"
+   ]
+  },
+  "body|button": {
+   "a@activity": [
+    "TWHK901",
+    "TWHK903"
+   ],
+   "p@plain": [
+    "TWHK901",
+    "TWHK903",
+    "XMES102"
+   ],
+   "p@alert": [
+    "TWHK903"
+   ]
+  },
+  "body|h4": {
+   "h4@plain": [
+    "TWHK901",
+    "XFUN01",
+    "XLP01",
+    "XLP02"
+   ],
+   "p@plain": [
+    "TWHK901",
+    "TWHK903",
+    "XFUN01",
+    "XLP01"
+   ],
+   "p@activity": [
+    "TWHK901",
+    "TWHK903"
+   ],
+   "h3@plain": [
+    "TWHK903",
+    "XFUN01",
+    "XLP01",
+    "XMES101"
+   ],
+   "h3@activity": [
+    "TWHK903",
+    "XLP01"
+   ],
+   "th@activity>table": [
+    "TWHK903"
+   ],
+   "td@activity>table": [
+    "TWHK903"
+   ],
+   "a@alert": [
+    "XLP02"
+   ]
+  },
+  "body|alert": {
+   "p@alert": [
+    "TWHK903",
+    "XLP01",
+    "XLP02",
+    "XLP05"
+   ],
+   "p@plain": [
+    "TWHK903",
+    "XLP02"
+   ],
+   "li@activity>list": [
+    "TWHK903"
+   ],
+   "h4@alert": [
+    "XLP01",
+    "XLP02"
+   ],
+   "li@alert>list": [
+    "XLP01",
+    "XLP02"
+   ],
+   "h4@plain": [
+    "XLP02"
+   ],
+   "p@activity>alert": [
+    "XMES101"
+   ]
+  },
+  "body|video": {
+   "p@plain": [
+    "TWHK903"
+   ],
+   "a@plain": [
+    "XFUN01"
+   ]
+  },
+  "body|drop": {
+   "p@activity": [
+    "TWHK903"
+   ],
+   "p@plain": [
+    "TWHK903"
+   ]
+  },
+  "body|insert image rhs": {
+   "p@activity": [
+    "TWHK903"
+   ],
+   "p@plain": [
+    "XLP01"
+   ],
+   "li@list": [
+    "XLP01"
+   ]
+  },
+  "body|activity": {
+   "p@plain": [
+    "TWHK903"
+   ],
+   "p@activity": [
+    "TWHK903",
+    "XMES101",
+    "XMES102",
+    "XMES103"
+   ],
+   "speechBubble@plain": [
+    "TWHK903"
+   ],
+   "li@activity>list": [
+    "TWHK903"
+   ],
+   "h4@activity": [
+    "XLP01"
+   ],
+   "h3@activity": [
+    "XLP02",
+    "XMES101",
+    "XMES103"
+   ],
+   "a@activity": [
+    "XLP02",
+    "XMES103"
+   ],
+   "a@plain": [
+    "XMES101"
+   ],
+   "audioTrigger@plain": [
+    "XMES101"
+   ],
+   "typing@activity": [
+    "XMES103"
+   ],
+   "th@activity>table": [
+    "XMES103"
+   ],
+   "td@activity": [
+    "XMES103"
+   ]
+  },
+  "body|title bar": {
+   "infoTrigger@plain": [
+    "WJFUN107",
+    "XDLS909",
+    "XGF9006"
+   ],
+   "li@list": [
+    "WJFUN107",
+    "WJFUN308",
+    "XDLS908",
+    "XGF9004"
+   ],
+   "p@plain": [
+    "WJFUN112",
+    "WJFUN212",
+    "XMES203",
+    "XTAS101",
+    "XTAS103"
+   ],
+   "h4@activity": [
+    "WJFUN115"
+   ],
+   "carousel@plain": [
+    "WJFUN210",
+    "XDLS501",
+    "XGF9002",
+    "XMES201",
+    "XTAS101"
+   ],
+   "a@plain": [
+    "WJFUN212",
+    "XDLS912"
+   ],
+   "th@table": [
+    "WJFUN305"
+   ],
+   "td@table": [
+    "WJFUN306"
+   ],
+   "p@activity": [
+    "XDLS501",
+    "XDLS502",
+    "XDLS902",
+    "XGF9002",
+    "XTAS101"
+   ],
+   "infoTrigger@activity": [
+    "XDLS903"
+   ],
+   "clickDrop@plain": [
+    "XDLS904",
+    "XTAS101"
+   ],
+   "carousel@activity": [
+    "XDLS904",
+    "XGF9001",
+    "XMES201"
+   ],
+   "h3@activity": [
+    "XDLS905",
+    "XDLS908",
+    "XGF9003",
+    "XGF9004",
+    "XTAS101"
+   ],
+   "accordion@plain": [
+    "XDLS906"
+   ],
+   "h3@plain": [
+    "XDLS908",
+    "XTAS101",
+    "XTAS103"
+   ],
+   "accordion@activity": [
+    "XGF9001",
+    "XGF9002"
+   ],
+   "h5@plain": [
+    "XGF9002"
+   ],
+   "a@activity": [
+    "XGF9002"
+   ],
+   "th@activity>table": [
+    "XGF9003",
+    "XGF9004"
+   ],
+   "a@activity>list": [
+    "XLP06"
+   ],
+   "a@activity>table": [
+    "XMES201"
+   ],
+   "th@activity": [
+    "XTAS101"
+   ],
+   "li@alert>list": [
+    "XTAS101"
+   ],
+   "h4@plain": [
+    "XTAS103"
+   ]
+  },
+  "menu|title bar": {
+   "li@list": [
+    "XDLS906",
+    "XFUN01"
+   ],
+   "p@plain": [
+    "XFUN01"
+   ]
+  },
+  "acks|title bar": {
+   "accordion@plain": [
+    "XDLS908",
+    "XGF9002"
+   ]
+  },
+  "body|start at 0 13": {
+   "infoTrigger@alert": [
+    "XDLS908"
+   ],
+   "p@plain": [
+    "XDLS908"
+   ],
+   "selectionBox@activity": [
+    "XDLS908"
+   ]
+  },
+  "body|whakatauki": {
+   "p@whakatauki": [
+    "XFUN01",
+    "XLP01",
+    "XLP05"
+   ],
+   "p@plain": [
+    "XLP01"
+   ]
+  },
+  "body|external link": {
+   "p@plain": [
+    "XFUN01"
+   ],
+   "li@list": [
+    "XFUN01"
+   ]
+  },
+  "menu|h1": {
+   "p@plain": [
+    "XLP01"
+   ]
+  },
+  "body|click drop": {
+   "h4@plain": [
+    "XLP01",
+    "XLP02"
+   ],
+   "p@plain": [
+    "XLP01",
+    "XLP02"
+   ],
+   "h4@activity": [
+    "XMES101"
+   ],
+   "p@activity": [
+    "XMES101"
+   ]
+  },
+  "header|insert image in centre": {
+   "h1@plain": [
+    "XLP01"
+   ]
+  },
+  "menu|lesson content": {
+   "li@list": [
+    "XLP01"
+   ]
+  },
+  "header|h2": {
+   "h1@plain": [
+    "XLP01",
+    "XMES101",
+    "XWHA02"
+   ]
+  },
+  "body|insert into speech bubble": {
+   "speechBubble@plain": [
+    "XLP01"
+   ]
+  },
+  "header|h4": {
+   "h1@plain": [
+    "XLP01"
+   ]
+  },
+  "body|insert image in centre": {
+   "h3@activity": [
+    "XLP01"
+   ]
+  },
+  "body|side alert": {
+   "p@alert": [
+    "XLP02"
+   ]
+  },
+  "body|insert icons with flip cards": {
+   "p@plain": [
+    "XLP02"
+   ]
+  },
+  "body|summary box red text": {
+   "h4@alert": [
+    "XLP02"
+   ],
+   "li@alert>list": [
+    "XLP02"
+   ]
+  },
+  "body|summary box": {
+   "li@alert>list": [
+    "XLP02"
+   ]
+  },
+  "body|insert tick checklist": {
+   "p@plain": [
+    "XLP02"
+   ]
+  },
+  "body|insert yes no drop down": {
+   "li@list": [
+    "XLP02"
+   ]
+  },
+  "body|insert tabs for each level": {
+   "tabs@plain": [
+    "XLP02"
+   ]
+  },
+  "body|insert accordions": {
+   "li@list": [
+    "XLP02"
+   ]
+  },
+  "body|insert tabs for each stage": {
+   "tabs@plain": [
+    "XLP02"
+   ]
+  },
+  "body|insert media item 1 rhs": {
+   "p@plain": [
+    "XLP05"
+   ]
+  },
+  "body|carousel": {
+   "p@plain": [
+    "XLP05"
+   ],
+   "carousel@activity": [
+    "XMES103"
+   ]
+  },
+  "header|h3": {
+   "h1@plain": [
+    "XLP05",
+    "XWHA02"
+   ]
+  },
+  "body|insert media item 24 rhs": {
+   "p@plain": [
+    "XLP05"
+   ]
+  },
+  "body|dev to red text": {
+   "li@list": [
+    "XLP05"
+   ]
+  },
+  "body|insert dropbox icon": {
+   "a@activity": [
+    "XMES101"
+   ],
+   "a@plain": [
+    "XMES101"
+   ]
+  },
+  "header|activity": {
+   "h1@plain": [
+    "XMES101"
+   ]
+  },
+  "body|audio": {
+   "p@plain": [
+    "XMES101",
+    "XMES102",
+    "XWHA01"
+   ],
+   "p@whakatauki": [
+    "XMES102"
+   ],
+   "a@activity": [
+    "XMES102"
+   ],
+   "p@activity": [
+    "XMES102"
+   ],
+   "h3@activity": [
+    "XMES102"
+   ],
+   "li@activity>list": [
+    "XMES102"
+   ],
+   "carousel@activity": [
+    "XMES102"
+   ],
+   "p@alert": [
+    "XWHA01"
+   ],
+   "flipCard@plain": [
+    "XWHA01"
+   ]
+  },
+  "body|flip card": {
+   "flipCard@activity": [
+    "XMES101"
+   ]
+  },
+  "body|end page": {
+   "p@plain": [
+    "XMES102"
+   ]
+  },
+  "menu|h3": {
+   "li@list": [
+    "XMES102"
+   ]
+  },
+  "body|insert text box": {
+   "typing@activity": [
+    "XMES103"
+   ],
+   "p@activity": [
+    "XMES103"
+   ]
+  },
+  "body|accordion": {
+   "clickDrop@activity": [
+    "XMES103"
+   ],
+   "th@activity>table": [
+    "XMES103"
+   ]
+  },
+  "menu|body": {
+   "p@plain": [
+    "XWHA02"
+   ]
+  },
+  "body|hover student": {
+   "p@plain": [
+    "XWHA02"
+   ]
+  }
+ }
+}

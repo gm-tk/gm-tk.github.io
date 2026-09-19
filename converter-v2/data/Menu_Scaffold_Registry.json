@@ -4,7 +4,7 @@
   "what": "menu_type tells the converter whether a page renders a #module-menu-content and, if so, tabbed vs simplified. Keyed by run.groupKey = subjectLetters|template_phase. 'overview'/'lesson' are the page scopes.",
   "why": "The Style-Anchor registry's menu_type was wrong for some groups (e.g. a lesson menu suppressed when the human has one). This file is measured directly from 01-Finalized_Modules_, so it is the Group-Majority truth. Re-run reference/tests/derive_menu_type.cjs after new modules ship.",
   "cascade": "ContentConverter.#menuTypeFor resolves: this group value (Group Majority) -> Style-Anchor menu_type -> global_default. A future per-series deviation can override its group here.",
-  "generated": "2026-07-02",
+  "generated": "2026-09-19",
   "legacy": "pre-round-147 rows (sub-page-diluted mining) — used only when MENUREG_OFF=1"
  },
  "global_default": {
@@ -30,21 +30,39 @@
     }
    }
   },
+  "ANZHFUN|combo": {
+   "overview": "none",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 1,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
   "ANZH|1-3": {
    "overview": "simplified",
    "lesson": "none",
    "_evidence": {
     "overview": {
      "tabs": 0,
-     "simplified": 3,
+     "simplified": 4,
      "none": 0,
-     "n": 3
+     "n": 4
     },
     "lesson": {
      "tabs": 0,
-     "simplified": 4,
+     "simplified": 10,
      "none": 16,
-     "n": 20
+     "n": 26
     }
    }
   },
@@ -68,19 +86,19 @@
   },
   "ANZH|7-8": {
    "overview": "tabs",
-   "lesson": "tabs",
+   "lesson": "simplified",
    "_evidence": {
     "overview": {
      "tabs": 3,
-     "simplified": 0,
+     "simplified": 1,
      "none": 0,
-     "n": 3
+     "n": 4
     },
     "lesson": {
      "tabs": 14,
-     "simplified": 8,
+     "simplified": 19,
      "none": 0,
-     "n": 22
+     "n": 33
     }
    }
   },
@@ -138,21 +156,75 @@
     }
    }
   },
+  "BLLR|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 15,
+     "none": 0,
+     "n": 15
+    }
+   }
+  },
   "BLL|1-3": {
    "overview": "simplified",
    "lesson": "none",
    "_evidence": {
     "overview": {
-     "tabs": 0,
-     "simplified": 69,
+     "tabs": 18,
+     "simplified": 72,
      "none": 0,
-     "n": 69
+     "n": 90
     },
     "lesson": {
      "tabs": 0,
-     "simplified": 28,
-     "none": 159,
-     "n": 187
+     "simplified": 32,
+     "none": 191,
+     "n": 223
+    }
+   }
+  },
+  "BLL|4-6": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 2,
+     "n": 2
+    }
+   }
+  },
+  "CBI|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 4,
+     "simplified": 0,
+     "none": 0,
+     "n": 4
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 27,
+     "none": 2,
+     "n": 29
     }
    }
   },
@@ -216,9 +288,9 @@
    "_evidence": {
     "overview": {
      "tabs": 0,
-     "simplified": 1,
+     "simplified": 3,
      "none": 0,
-     "n": 1
+     "n": 3
     },
     "lesson": {
      "tabs": 0,
@@ -246,21 +318,57 @@
     }
    }
   },
+  "CEDO|9-10": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
   "CEDO|NCEA": {
    "overview": "tabs",
    "lesson": "simplified",
    "_evidence": {
     "overview": {
-     "tabs": 1,
+     "tabs": 2,
      "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 1,
+     "simplified": 11,
+     "none": 4,
+     "n": 16
+    }
+   }
+  },
+  "CEDR|4-6": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
      "none": 0,
      "n": 1
     },
     "lesson": {
-     "tabs": 1,
-     "simplified": 5,
-     "none": 2,
-     "n": 8
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
     }
    }
   },
@@ -279,6 +387,24 @@
      "simplified": 6,
      "none": 1,
      "n": 7
+    }
+   }
+  },
+  "CEDT|1-3": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
     }
    }
   },
@@ -372,6 +498,114 @@
     }
    }
   },
+  "CHFUN|combo": {
+   "overview": "tabs",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 6,
+     "simplified": 0,
+     "none": 0,
+     "n": 6
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "CHI|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 24,
+     "none": 0,
+     "n": 24
+    }
+   }
+  },
+  "CHWHA|combo": {
+   "overview": "none",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 1,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "COM|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 20,
+     "none": 3,
+     "n": 23
+    }
+   }
+  },
+  "DAN|NCEA": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 26,
+     "n": 26
+    }
+   }
+  },
+  "DTC|NCEA": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 14,
+     "n": 14
+    }
+   }
+  },
   "ENFUN|combo": {
    "overview": "simplified",
    "lesson": null,
@@ -409,20 +643,20 @@
    }
   },
   "ENGC|4-6": {
-   "overview": "simplified",
+   "overview": "tabs",
    "lesson": "simplified",
    "_evidence": {
     "overview": {
-     "tabs": 0,
+     "tabs": 2,
      "simplified": 2,
      "none": 0,
-     "n": 2
+     "n": 4
     },
     "lesson": {
      "tabs": 0,
-     "simplified": 14,
+     "simplified": 25,
      "none": 0,
-     "n": 14
+     "n": 25
     }
    }
   },
@@ -445,20 +679,20 @@
    }
   },
   "ENGC|9-10": {
-   "overview": "simplified",
+   "overview": "tabs",
    "lesson": "simplified",
    "_evidence": {
     "overview": {
-     "tabs": 0,
+     "tabs": 1,
      "simplified": 1,
      "none": 0,
-     "n": 1
+     "n": 2
     },
     "lesson": {
      "tabs": 0,
-     "simplified": 7,
+     "simplified": 16,
      "none": 0,
-     "n": 7
+     "n": 16
     }
    }
   },
@@ -585,6 +819,24 @@
      "simplified": 29,
      "none": 0,
      "n": 29
+    }
+   }
+  },
+  "ENGJ|9-10": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 7,
+     "none": 0,
+     "n": 7
     }
    }
   },
@@ -715,20 +967,20 @@
    }
   },
   "ENGS|9-10": {
-   "overview": null,
+   "overview": "tabs",
    "lesson": "simplified",
    "_evidence": {
     "overview": {
-     "tabs": 0,
+     "tabs": 2,
      "simplified": 0,
      "none": 0,
-     "n": 0
+     "n": 2
     },
     "lesson": {
      "tabs": 0,
-     "simplified": 1,
+     "simplified": 14,
      "none": 0,
-     "n": 1
+     "n": 14
     }
    }
   },
@@ -765,6 +1017,24 @@
      "simplified": 0,
      "none": 10,
      "n": 10
+    }
+   }
+  },
+  "ENO|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 6,
+     "none": 0,
+     "n": 6
     }
    }
   },
@@ -894,21 +1164,129 @@
     }
    }
   },
+  "FRFUN|combo": {
+   "overview": "tabs",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 1,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "FRNO|combo": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 16,
+     "none": 0,
+     "n": 16
+    }
+   }
+  },
+  "GENO|combo": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 8,
+     "none": 0,
+     "n": 8
+    }
+   }
+  },
+  "GEO|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 3,
+     "simplified": 0,
+     "none": 0,
+     "n": 3
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 11,
+     "none": 3,
+     "n": 14
+    }
+   }
+  },
+  "GER|NCEA": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 6,
+     "simplified": 0,
+     "none": 0,
+     "n": 6
+    },
+    "lesson": {
+     "tabs": 18,
+     "simplified": 0,
+     "none": 33,
+     "n": 51
+    }
+   }
+  },
+  "GEWHA|combo": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
   "HES|NCEA": {
    "overview": "tabs",
    "lesson": "none",
    "_evidence": {
     "overview": {
-     "tabs": 5,
+     "tabs": 6,
      "simplified": 0,
      "none": 0,
-     "n": 5
+     "n": 6
     },
     "lesson": {
      "tabs": 7,
      "simplified": 9,
-     "none": 19,
-     "n": 35
+     "none": 30,
+     "n": 46
     }
    }
   },
@@ -930,6 +1308,42 @@
     }
    }
   },
+  "HPFUN|7-8": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "HPFUN|9-10": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
   "HPFUN|combo": {
    "overview": "simplified",
    "lesson": null,
@@ -945,6 +1359,96 @@
      "simplified": 0,
      "none": 0,
      "n": 0
+    }
+   }
+  },
+  "HPRE|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 7,
+     "none": 0,
+     "n": 7
+    }
+   }
+  },
+  "HPRE|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 10,
+     "none": 0,
+     "n": 10
+    }
+   }
+  },
+  "JPFUN|combo": {
+   "overview": "tabs",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "JPN|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 10,
+     "none": 0,
+     "n": 10
+    }
+   }
+  },
+  "MUS|NCEA": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 10,
+     "n": 10
     }
    }
   },
@@ -1344,6 +1848,24 @@
     }
    }
   },
+  "MXS|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 9,
+     "none": 0,
+     "n": 9
+    }
+   }
+  },
   "OSAH|7-8": {
    "overview": "tabs",
    "lesson": "simplified",
@@ -1740,7 +2262,7 @@
     }
    }
   },
-  "OSSC|NCEA": {
+  "OSSC|9-10": {
    "overview": "tabs",
    "lesson": "simplified",
    "_evidence": {
@@ -1752,9 +2274,27 @@
     },
     "lesson": {
      "tabs": 0,
-     "simplified": 3,
+     "simplified": 4,
      "none": 0,
-     "n": 3
+     "n": 4
+    }
+   }
+  },
+  "OSSC|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 8,
+     "none": 0,
+     "n": 8
     }
    }
   },
@@ -1773,6 +2313,42 @@
      "simplified": 0,
      "none": 0,
      "n": 4
+    }
+   }
+  },
+  "OSSM|9-10": {
+   "overview": "tabs",
+   "lesson": "tabs",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 4,
+     "simplified": 0,
+     "none": 0,
+     "n": 4
+    }
+   }
+  },
+  "OSSM|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 5,
+     "none": 0,
+     "n": 5
     }
    }
   },
@@ -1812,21 +2388,147 @@
     }
    }
   },
+  "PMT|1-3": {
+   "overview": "tabs",
+   "lesson": "none",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 3,
+     "n": 3
+    }
+   }
+  },
   "PNR|1-3": {
    "overview": "tabs",
    "lesson": "none",
    "_evidence": {
     "overview": {
-     "tabs": 3,
+     "tabs": 4,
      "simplified": 0,
      "none": 0,
-     "n": 3
+     "n": 4
     },
     "lesson": {
      "tabs": 0,
      "simplified": 0,
-     "none": 6,
+     "none": 8,
+     "n": 8
+    }
+   }
+  },
+  "PWYWHA|NCEA": {
+   "overview": "none",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 1,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "PWY|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 5,
+     "simplified": 0,
+     "none": 0,
+     "n": 5
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 6,
+     "none": 0,
      "n": 6
+    }
+   }
+  },
+  "SAM|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 17,
+     "none": 0,
+     "n": 17
+    }
+   }
+  },
+  "SCBI|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 8,
+     "none": 0,
+     "n": 8
+    }
+   }
+  },
+  "SCCH|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 8,
+     "none": 0,
+     "n": 8
+    }
+   }
+  },
+  "SCES|4-6": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 4,
+     "none": 0,
+     "n": 4
     }
    }
   },
@@ -1845,6 +2547,96 @@
      "simplified": 0,
      "none": 0,
      "n": 0
+    }
+   }
+  },
+  "SCPH|7-8": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 8,
+     "none": 0,
+     "n": 8
+    }
+   }
+  },
+  "SPA|NCEA": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 12,
+     "none": 0,
+     "n": 12
+    }
+   }
+  },
+  "SSCI|1-3": {
+   "overview": "tabs",
+   "lesson": "tabs",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 6,
+     "simplified": 0,
+     "none": 0,
+     "n": 6
+    }
+   }
+  },
+  "SSCI|4-6": {
+   "overview": "tabs",
+   "lesson": "tabs",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 9,
+     "simplified": 0,
+     "none": 0,
+     "n": 9
+    }
+   }
+  },
+  "SSEA|4-6": {
+   "overview": "tabs",
+   "lesson": "tabs",
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 5,
+     "simplified": 1,
+     "none": 0,
+     "n": 6
     }
    }
   },
@@ -1872,15 +2664,15 @@
    "_evidence": {
     "overview": {
      "tabs": 0,
-     "simplified": 2,
+     "simplified": 3,
      "none": 0,
-     "n": 2
+     "n": 3
     },
     "lesson": {
      "tabs": 0,
-     "simplified": 11,
+     "simplified": 18,
      "none": 0,
-     "n": 11
+     "n": 18
     }
    }
   },
@@ -1899,6 +2691,24 @@
      "simplified": 0,
      "none": 7,
      "n": 7
+    }
+   }
+  },
+  "TEDC|9-10": {
+   "overview": "tabs",
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 2,
+     "simplified": 0,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 15,
+     "none": 1,
+     "n": 16
     }
    }
   },
@@ -1925,16 +2735,16 @@
    "lesson": "none",
    "_evidence": {
     "overview": {
-     "tabs": 13,
+     "tabs": 14,
      "simplified": 0,
      "none": 0,
-     "n": 13
+     "n": 14
     },
     "lesson": {
      "tabs": 0,
      "simplified": 0,
-     "none": 50,
-     "n": 50
+     "none": 59,
+     "n": 59
     }
    }
   },
@@ -1981,6 +2791,132 @@
     "overview": {
      "tabs": 0,
      "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "TWHK|combo": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "TWHR|combo": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "TWHT|combo": {
+   "overview": "simplified",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 1,
+     "none": 0,
+     "n": 1
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "WJFUN|1-3": {
+   "overview": "tabs",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 9,
+     "simplified": 0,
+     "none": 0,
+     "n": 9
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "WJFUN|4-6": {
+   "overview": "tabs",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 6,
+     "simplified": 0,
+     "none": 0,
+     "n": 6
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "WJFUN|7-8": {
+   "overview": "tabs",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 5,
+     "simplified": 0,
+     "none": 0,
+     "n": 5
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    }
+   }
+  },
+  "WJFUN|combo": {
+   "overview": "tabs",
+   "lesson": null,
+   "_evidence": {
+    "overview": {
+     "tabs": 1,
+     "simplified": 0,
      "none": 0,
      "n": 1
     },
@@ -2052,15 +2988,15 @@
    "_evidence": {
     "overview": {
      "tabs": 1,
-     "simplified": 3,
+     "simplified": 4,
      "none": 0,
-     "n": 4
+     "n": 5
     },
     "lesson": {
-     "tabs": 0,
+     "tabs": 8,
      "simplified": 8,
-     "none": 16,
-     "n": 24
+     "none": 17,
+     "n": 33
     }
    }
   },
@@ -2105,16 +3041,70 @@
    "lesson": "simplified",
    "_evidence": {
     "overview": {
-     "tabs": 1,
+     "tabs": 2,
      "simplified": 0,
      "none": 0,
-     "n": 1
+     "n": 2
     },
     "lesson": {
      "tabs": 0,
-     "simplified": 5,
+     "simplified": 10,
      "none": 0,
-     "n": 5
+     "n": 10
+    }
+   }
+  },
+  "XOTPB|1-3": {
+   "overview": null,
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 12,
+     "none": 0,
+     "n": 12
+    }
+   }
+  },
+  "XOTPG|1-3": {
+   "overview": null,
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 10,
+     "none": 0,
+     "n": 10
+    }
+   }
+  },
+  "XOTPO|1-3": {
+   "overview": null,
+   "lesson": "simplified",
+   "_evidence": {
+    "overview": {
+     "tabs": 0,
+     "simplified": 0,
+     "none": 0,
+     "n": 0
+    },
+    "lesson": {
+     "tabs": 0,
+     "simplified": 2,
+     "none": 0,
+     "n": 2
     }
    }
   },
@@ -2151,24 +3141,6 @@
      "simplified": 7,
      "none": 0,
      "n": 7
-    }
-   }
-  },
-  "SCCH|7-8": {
-   "overview": "tabs",
-   "lesson": "simplified",
-   "_evidence": {
-    "overview": {
-     "tabs": 1,
-     "simplified": 0,
-     "none": 0,
-     "n": 1
-    },
-    "lesson": {
-     "tabs": 0,
-     "simplified": 8,
-     "none": 0,
-     "n": 8
     }
    }
   }
@@ -2214,6 +3186,10 @@
    "overview": "simplified",
    "lesson": "simplified"
   },
+  "ANZH103": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
   "ANZH104": {
    "overview": "simplified",
    "lesson": "none"
@@ -2234,6 +3210,10 @@
    "overview": "tabs",
    "lesson": "simplified"
   },
+  "ANZH302": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
   "ANZH303": {
    "overview": "tabs",
    "lesson": "tabs"
@@ -2249,6 +3229,10 @@
   "ANZH404": {
    "overview": "tabs",
    "lesson": "simplified"
+  },
+  "ANZHFUN05": {
+   "overview": "none",
+   "lesson": null
   },
   "ARFUN01": {
    "overview": "simplified",
@@ -2618,6 +3602,10 @@
    "overview": "simplified",
    "lesson": "none"
   },
+  "BLL243": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
   "BLL244": {
    "overview": "simplified",
    "lesson": "none"
@@ -2630,13 +3618,125 @@
    "overview": "simplified",
    "lesson": "none"
   },
+  "BLL247": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "BLL250": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "BLL251": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
   "BLL252": {
    "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL253": {
+   "overview": "tabs",
    "lesson": "none"
   },
   "BLL254": {
    "overview": "simplified",
    "lesson": "none"
+  },
+  "BLL255": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "BLL256": {
+   "overview": "simplified",
+   "lesson": "none"
+  },
+  "BLL257": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "BLL260": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "BLL261": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "BLL262": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "BLL263": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "BLL264": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "BLL265": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "BLL266": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "BLL270": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "BLL271": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "BLL272": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "BLL273": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "BLL274": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "BLL275": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "BLL276": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "BLLR201": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "BLLR202": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "BLLR203": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "CBI1004": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "CBI1005": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "CBI1008": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "CBI1009": {
+   "overview": "tabs",
+   "lesson": "simplified"
   },
   "CEDK101": {
    "overview": "simplified",
@@ -2658,7 +3758,15 @@
    "overview": "tabs",
    "lesson": "simplified"
   },
+  "CEDO201": {
+   "overview": "simplified",
+   "lesson": null
+  },
   "CEDO202": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "CEDO204": {
    "overview": "simplified",
    "lesson": null
   },
@@ -2666,13 +3774,29 @@
    "overview": "simplified",
    "lesson": "none"
   },
+  "CEDO402": {
+   "overview": "simplified",
+   "lesson": null
+  },
   "CEDO501": {
    "overview": "tabs",
    "lesson": "simplified"
   },
+  "CEDO502": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "CEDR203": {
+   "overview": "simplified",
+   "lesson": null
+  },
   "CEDR501": {
    "overview": "tabs",
    "lesson": "simplified"
+  },
+  "CEDT102": {
+   "overview": "simplified",
+   "lesson": null
   },
   "CEDT207": {
    "overview": "simplified",
@@ -2693,6 +3817,78 @@
   "CEDW501": {
    "overview": "tabs",
    "lesson": "simplified"
+  },
+  "CHFUN01": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "CHFUN04": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "CHFUN05": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "CHFUN06": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "CHFUN07": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "CHFUN08": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "CHI1003": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "CHI1004": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "CHI1005": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "CHWHA": {
+   "overview": "none",
+   "lesson": null
+  },
+  "COM1002": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "COM1005": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "COM1006": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "DAN1003": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "DAN1004": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "DAN1006": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "DTC1004": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "DTC1005": {
+   "overview": "tabs",
+   "lesson": "none"
   },
   "ENFUN01": {
    "overview": "simplified",
@@ -2754,6 +3950,14 @@
    "overview": "simplified",
    "lesson": "simplified"
   },
+  "ENGC204": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENGC206": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
   "ENGC301": {
    "overview": "simplified",
    "lesson": "simplified"
@@ -2764,6 +3968,10 @@
   },
   "ENGC401": {
    "overview": "simplified",
+   "lesson": "simplified"
+  },
+  "ENGC403": {
+   "overview": "tabs",
    "lesson": "simplified"
   },
   "ENGFUN02": {
@@ -2846,6 +4054,10 @@
    "overview": "tabs",
    "lesson": "simplified"
   },
+  "ENGJ403": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
   "ENGR101": {
    "overview": "simplified",
    "lesson": "simplified"
@@ -2898,6 +4110,18 @@
    "overview": "tabs",
    "lesson": "simplified"
   },
+  "ENGS404": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENGS405": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "ENO2060": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
   "EXBP901": {
    "overview": "tabs",
    "lesson": "simplified"
@@ -2929,6 +4153,74 @@
   "EXPFUN07": {
    "overview": "none",
    "lesson": null
+  },
+  "FRFUN06": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "FRFUN07": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "FRFUN08": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "FRNO901": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "FRNO902": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "GENO901": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "GEO1004": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "GEO1005": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "GEO1006": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "GER1002": {
+   "overview": "tabs",
+   "lesson": "tabs"
+  },
+  "GER1003": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "GER1004": {
+   "overview": "tabs",
+   "lesson": "tabs"
+  },
+  "GER1005": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "GER1006": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "GER1007": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "GEWHA": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "HES1002": {
+   "overview": "tabs",
+   "lesson": "none"
   },
   "HES1003": {
    "overview": "tabs",
@@ -3022,6 +4314,18 @@
    "overview": "simplified",
    "lesson": null
   },
+  "HPFUN402": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "HPFUN403": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "HPFUN901": {
+   "overview": "simplified",
+   "lesson": null
+  },
   "HPFUN902": {
    "overview": "simplified",
    "lesson": null
@@ -3029,6 +4333,34 @@
   "HPFUN903": {
    "overview": "simplified",
    "lesson": null
+  },
+  "HPRE203": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "HPRE301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "JPFUN01": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "JPFUN02": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "JPN1004": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "MUS1004": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "MUS1006": {
+   "overview": "tabs",
+   "lesson": "none"
   },
   "MXDB102": {
    "overview": "tabs",
@@ -3198,6 +4530,10 @@
    "overview": "simplified",
    "lesson": null
   },
+  "MXS1004": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
   "OSAH301": {
    "overview": "tabs",
    "lesson": "simplified"
@@ -3294,9 +4630,25 @@
    "overview": "tabs",
    "lesson": "simplified"
   },
+  "OSSC401": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "OSSC501": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
   "OSSM301": {
    "overview": "tabs",
    "lesson": "tabs"
+  },
+  "OSSM401": {
+   "overview": "tabs",
+   "lesson": "tabs"
+  },
+  "OSSM501": {
+   "overview": "tabs",
+   "lesson": "simplified"
   },
   "PES1001": {
    "overview": "tabs",
@@ -3358,6 +4710,10 @@
    "overview": "tabs",
    "lesson": "none"
   },
+  "PMT101": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
   "PNR101": {
    "overview": "tabs",
    "lesson": "none"
@@ -3370,9 +4726,77 @@
    "overview": "tabs",
    "lesson": "none"
   },
+  "PNR107": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
+  "PWY1001": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "PWY1002": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "PWY1007": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "PWY1008": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "PWY1009": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "PWYWHA1": {
+   "overview": "none",
+   "lesson": null
+  },
+  "SAM1005": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "SAM1006": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "SCBI301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "SCCH301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "SCES201": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
   "SCFUN01": {
    "overview": "none",
    "lesson": null
+  },
+  "SCPH301": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "SPA1004": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "SSCI104": {
+   "overview": "tabs",
+   "lesson": "tabs"
+  },
+  "SSCI205": {
+   "overview": "tabs",
+   "lesson": "tabs"
+  },
+  "SSEA203": {
+   "overview": "tabs",
+   "lesson": "tabs"
   },
   "SSFUN01": {
    "overview": "none",
@@ -3410,9 +4834,21 @@
    "overview": "simplified",
    "lesson": "simplified"
   },
+  "SSOG105": {
+   "overview": "simplified",
+   "lesson": "simplified"
+  },
   "SSOG301": {
    "overview": "tabs",
    "lesson": "none"
+  },
+  "TEDC401": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "TEDC402": {
+   "overview": "tabs",
+   "lesson": "simplified"
   },
   "TEFUN01": {
    "overview": "none",
@@ -3498,6 +4934,10 @@
    "overview": "tabs",
    "lesson": "none"
   },
+  "TRR116": {
+   "overview": "tabs",
+   "lesson": "none"
+  },
   "TRR203": {
    "overview": "tabs",
    "lesson": "none"
@@ -3512,6 +4952,106 @@
   },
   "TWHK901": {
    "overview": "simplified",
+   "lesson": null
+  },
+  "TWHK902": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "TWHK907": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "TWHR905": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "TWHT903": {
+   "overview": "simplified",
+   "lesson": null
+  },
+  "WJFUN105": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN106": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN107": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN108": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN109": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN110": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN112": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN113": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN115": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN116": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN205": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN206": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN208": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN210": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN211": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN212": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN304": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN305": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN306": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN307": {
+   "overview": "tabs",
+   "lesson": null
+  },
+  "WJFUN308": {
+   "overview": "tabs",
    "lesson": null
   },
   "XDLS501": {
@@ -3574,6 +5114,10 @@
    "overview": "tabs",
    "lesson": "none"
   },
+  "XGF9002": {
+   "overview": "simplified",
+   "lesson": "tabs"
+  },
   "XGF9003": {
    "overview": "simplified",
    "lesson": "none"
@@ -3626,8 +5170,60 @@
    "overview": "tabs",
    "lesson": "simplified"
   },
+  "XMES202": {
+   "overview": "tabs",
+   "lesson": "simplified"
+  },
   "XMES203": {
    "overview": "tabs",
+   "lesson": "simplified"
+  },
+  "XOTPB08": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XOTPB09": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XOTPB10": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XOTPB11": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XOTPB12": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XOTPB13": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XOTPG01": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XOTPG03": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XOTPG04": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XOTPG05": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XOTPG06": {
+   "overview": null,
+   "lesson": "simplified"
+  },
+  "XOTPO01": {
+   "overview": null,
    "lesson": "simplified"
   },
   "XTAS101": {
@@ -3648,10 +5244,6 @@
   },
   "XWHA02": {
    "overview": "simplified",
-   "lesson": "simplified"
-  },
-  "SCCH301": {
-   "overview": "tabs",
    "lesson": "simplified"
   }
  },
