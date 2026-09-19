@@ -1813,7 +1813,17 @@ class ContentConverter {
 								&& (saCfg.types_round367 ?? []).includes(bundle.type)
 								// ROUND 368: the KB c43 upload box is a dropDown-typed bundle (the lexicon's `dropbox` alias) and
 								// lives INSIDE the preceding activity (r314) — never its own box (r367 boxed 184 of them: −275pp)
-								&& !(bundle.type === "dropDown" && InteractiveBuilder.UploadBoxCandidate(bundle, tpl.interactive_builders?.dropDown))));
+								&& !(bundle.type === "dropDown" && InteractiveBuilder.UploadBoxCandidate(bundle, tpl.interactive_builders?.dropDown))))
+						// ROUND 401 (the autonomous loop's session 27, Round 6): a bundle that captured NOTHING — no
+						// heading, instruction, table, media or member text (the placeholder's own emptiness test,
+						// #bundleHasContent) — renders its "no content captured" flag alone in the section flow. It
+						// used to open a synthetic numbered box holding only that flag (89 such boxes on 74 pages /
+						// 49 modules; the gold ships 4 empty boxes in 2385 pages) and SPEND a positional letter, so
+						// every later box on the page was lettered one too far. Data standalone_widget_box.skip_empty;
+						// env SABOXEMPTY_OFF.
+						&& !(saCfg.skip_empty && saCfg.skip_empty.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[saCfg.skip_empty.env || "SABOXEMPTY_OFF"])
+							&& !this.#bundleHasContent(bundle));
 					const saOwner = saOn
 						? { type: "tag", parse: { tags: [], numbers: [], primary: null }, blackAfter: "" }
 						: null;
@@ -8265,6 +8275,60 @@ class ContentConverter {
 	 * instructions inside the bundle flag in red. NEVER an answer-bearing
 	 * comment.
 	 */
+	/**
+	 * ROUND 342 — a TAG member whose words ride its OWN bracket line ("[audio] while, whale, whirl,
+	 * whole, whine" — an ELEMENT with embedded text and an empty tail) is member CONTENT: the guards
+	 * count it and the dump renders it. Before this the two guards read blackAfter alone, so a bundle
+	 * whose only member was such an element rendered as notes-only (or the "no content captured"
+	 * flag) and the writer's words vanished from the page (BLL240 1.1 wordDrag, BLL150/BLL166
+	 * dragAndDrop audio lists, ENGC101 4.0's five [image] faces). Data
+	 * interactive_placeholder.embedded_member_text (directives listed there; an instruction-class
+	 * member never counts — it already surfaces as the note before the box); env MEMBERTEXT_OFF.
+	 * A HYPERLINKED media tag with no words ("[audio]" linked to its sound file, the BLL phonics
+	 * dragAndDrop members) carries its content in the link target (BLL141/171/253/262/263 lesson 1):
+	 * the dump line is the bracket + its target. Data embedded_member_text.linked_tag_counts.
+	 * ROUND 401: factored out of #interactivePlaceholder (verbatim) so #bundleHasContent can be
+	 * consulted before the r217 synthetic box opens.
+	 */
+	static #bundleEmbeddedText(it) {
+		const embCfg = DataService.Data.EmitTemplates.interactive_placeholder?.embedded_member_text;
+		const embOn = embCfg && embCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.MEMBERTEXT_OFF);
+		if (!embOn || !it || it.type !== "tag" || String(it.blackAfter ?? "").trim()) return "";
+		const p = it.parse; const prim = p?.primary;
+		if (!prim || p.class !== "tag" || p.instructionFragment) return "";
+		if (!(embCfg.directives ?? ["ELEMENT", "INLINE"]).includes(prim.directive)) return "";
+		let words = ""; try { words = this.#norm.RenderText(it.text) || ""; } catch { words = ""; }
+		const raw = String(it.text ?? "").replace(/\s+/g, " ").trim();
+		if (words.trim()) return raw;
+		const link = it.block?.hyperTag && it.block?.links?.[0]?.target;
+		if (embCfg.linked_tag_counts !== false && link) return `${raw} ${link}`;
+		return "";
+	}
+
+	/** ROUND 401 — does a bundle item carry text the placeholder would render (its own words, or the r342 embedded text)? */
+	static #bundleItemHasText(it) {
+		return String(it.type === "black" ? it.text : (it.blackAfter ?? "")).trim().length > 0
+			|| this.#bundleEmbeddedText(it).length > 0;
+	}
+
+	/**
+	 * The EMPTY-BUNDLE test (body-breakdown #2): an interactive invocation that captured NO content —
+	 * no member text, no table, no media, no heading, no instruction — renders a compact red flag
+	 * instead of a placeholder box. ROUND 401: factored out of #interactivePlaceholder (verbatim) and
+	 * ALSO consulted by the r217 synthetic-box decision (activity_wrapper.standalone_widget_box
+	 * .skip_empty): a content-less bundle used to be wrapped in a numbered activity box holding only
+	 * its flag — 89 such boxes on 74 pages, a shape the gold never ships — and to spend a positional
+	 * letter the gold gives to the next real box.
+	 */
+	static #bundleHasContent(bundle) {
+		return !!(bundle.headingText?.trim())
+			|| bundle.instructions.length > 0
+			|| (bundle.tables?.length > 0)
+			|| (bundle.media?.length > 0)
+			|| [...bundle.openerItems, ...bundle.memberItems].some((it) => this.#bundleItemHasText(it));
+	}
+
 	static #interactivePlaceholder(bundle, run) {
 		// FIRST: can we build this interactive for REAL? The InteractiveBuilder
 		// handles the small set of "easy" widgets we fully understand. It returns
@@ -8338,35 +8402,11 @@ class ContentConverter {
 		// ENGC101 4.0's five [image] faces). Data interactive_placeholder.embedded_member_text
 		// (directives listed there; an instruction-class member never counts — it already
 		// surfaces as the note before the box); env MEMBERTEXT_OFF.
-		const embCfg = DataService.Data.EmitTemplates.interactive_placeholder?.embedded_member_text;
-		const embOn = embCfg && embCfg.enabled !== false
-			&& !(typeof process !== "undefined" && process.env && process.env.MEMBERTEXT_OFF);
-		const embeddedText = (it) => {
-			if (!embOn || !it || it.type !== "tag" || String(it.blackAfter ?? "").trim()) return "";
-			const p = it.parse; const prim = p?.primary;
-			if (!prim || p.class !== "tag" || p.instructionFragment) return "";
-			if (!(embCfg.directives ?? ["ELEMENT", "INLINE"]).includes(prim.directive)) return "";
-			let words = ""; try { words = this.#norm.RenderText(it.text) || ""; } catch { words = ""; }
-			const raw = String(it.text ?? "").replace(/\s+/g, " ").trim();
-			if (words.trim()) return raw;
-			// ROUND 342 (session 11) — a HYPERLINKED media tag with no words ("[audio]" linked
-			// to its sound file, the BLL phonics dragAndDrop members) carries its content in
-			// the link target: before the hyperlinked-tag rule that member was a BLACK link
-			// line that kept the hand-off box alive; as a tag it must still count, or the
-			// box (and the developer's .txt entry with the writer's request) vanishes
-			// (BLL141/171/253/262/263 lesson 1). The dump line is the bracket + its target.
-			// Data embedded_member_text.linked_tag_counts (default on).
-			const link = it.block?.hyperTag && it.block?.links?.[0]?.target;
-			if (embCfg.linked_tag_counts !== false && link) return `${raw} ${link}`;
-			return "";
-		};
-		const hasText = (it) => String(it.type === "black" ? it.text : (it.blackAfter ?? "")).trim().length > 0
-			|| embeddedText(it).length > 0;
-		const hasContent = !!(bundle.headingText?.trim())
-			|| bundle.instructions.length > 0
-			|| (bundle.tables?.length > 0)
-			|| (bundle.media?.length > 0)
-			|| [...bundle.openerItems, ...bundle.memberItems].some(hasText);
+		// ROUND 401: the content test + the r342 embedded-text reading live in #bundleHasContent /
+		// #bundleEmbeddedText so the r217 synthetic-box decision can consult the same predicate.
+		const embeddedText = (it) => this.#bundleEmbeddedText(it);
+		const hasText = (it) => this.#bundleItemHasText(it);
+		const hasContent = this.#bundleHasContent(bundle);
 		if (!hasContent) {
 			bundle.built = false;
 			const label = [bundle.type, ...(bundle.extraTypes ?? [])].join(" + ");

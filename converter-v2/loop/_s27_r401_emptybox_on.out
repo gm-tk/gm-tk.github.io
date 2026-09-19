@@ -1,0 +1,91 @@
+note-only activity boxes: 78 on 60 pages / 38 modules; kinds {'writers-note': 7, 'no-content-flag': 69, 'other-note': 2}; page box-count relation {'equal': 20, 'gold-more': 29, 'gold-fewer': 29}
+   Standard/1-10 Mathematics                  23
+   Standard/None                              16
+   Standard/NCEA1                             11
+   Standard/1-10 English                      8
+   Fundamentals/1-10 Mathematics              5
+   Fundamentals/1-10 Technology               5
+   Standard/EXPlore                           2
+   Fundamentals/1-10 Health and PE            2
+   Inquiry/Te ara Whakapuawa -Wellbeing       2
+   Standard/ConnectED                         1
+   Fundamentals/1-10 Social Science           1
+   Standard/1-10 Social Science               1
+   AGH1002/AGH1002_2_0.html #2C writers-note «Writers Note: [Summary]»
+   AGH1005/AGH1005_2_0.html #2A no-content-flag «Red Flag: Un-built [dragAndDrop] marker — no content captured (an inli»
+   AGH1006/AGH1006_4_0.html #4B no-content-flag «Red Flag: Un-built [radioQuiz] marker — no content captured (an inline»
+   AGH1007/AGH1007_6_0.html #4A writers-note «Writers Note: [Summary]»
+   AGH1008/AGH1008_3_0.html #2C no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   CEDO105/CEDO105_1_0.html #1A no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   ENGI102/ENGI102_4_0.html #2C no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   ENGI102/ENGI102_10_0.html #5D no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   ENGI202/ENGI202_1_0.html #1A no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   ENGI202/ENGI202_2_0.html #2A no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   ENGI202/ENGI202_2_0.html #2E no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   ENGI202/ENGI202_3_0.html #3D no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   ENGI202/ENGI202_4_0.html #4A no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   ENGR101/ENGR101_2_0.html #2C no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   EXIP901/EXIP901_2_0.html #2A no-content-flag «Red Flag: Un-built [multiChoiceQuiz] marker — no content captured (an »
+   EXIP901/EXIP901_4_0.html #4A writers-note «Writers Note: [Activity] Drag and drop [Dev – in the table below the l»
+   HES1005/HES1005_7_0.html #7C no-content-flag «Red Flag: Un-built [dragAndDrop] marker — no content captured (an inli»
+   HIS1002/HIS1002_2_0.html #1A no-content-flag «Red Flag: Un-built [dropDown] marker — no content captured (an inline »
+   HIS1002/HIS1002_19_0.html #10B no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   HIS1004/HIS1004_2_0.html #2E other-note «Red Flag: Interactive [interactive] reached the converter unbundled — »
+   HIS1008/HIS1008_6_0.html #5B no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   HIS1008/HIS1008_6_0.html #5C no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   HPFUN103/HPFUN103_0_0.html #3A no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   HPFUN403/HPFUN403_0_0.html #1A no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   HPRE203/HPRE203_2_0.html #2B no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXEO401/MXEO401_1_0.html #1B no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXEO401/MXEO401_2_0.html #2D no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXEO401/MXEO401_3_0.html #3A no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXEX201/MXEX201_1_0.html #1A no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXEX302/MXEX302_4_0.html #4B no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXEX302/MXEX302_5_0.html #5A no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXEX302/MXEX302_5_0.html #5B no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXEX302/MXEX302_5_0.html #5D no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXEX302/MXEX302_6_0.html #6C no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXFL104/MXFL104_4_0.html #4B no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXFL203/MXFL203_2_0.html #2D no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXFL203/MXFL203_3_0.html #3C no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXFL203/MXFL203_8_0.html #8D no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXFL203/MXFL203_10_0.html #10F no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXFL203/MXFL203_10_0.html #10G no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXFL203/MXFL203_10_0.html #10M writers-note «Writers Note: Times to position: 10.09»
+   MXFL203/MXFL203_10_0.html #10I no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXFL203/MXFL203_10_0.html #10K no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXFL204/MXFL204_3_1.html #3K writers-note «Writers Note: [side information] keep information text that is current»
+   MXFL401/MXFL401_2_0.html #2B writers-note «Writers Note: Answers: 1) $64; 2) $33; 3) $4; 4) $140; 5) $7.50»
+   MXFU302/MXFU302_3_0.html #3A no-content-flag «Red Flag: Un-built [multiChoiceQuiz] marker — no content captured (an »
+   MXFU302/MXFU302_7_0.html #8C no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXFU401/MXFU401_5_0.html #5A no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXFUN01/MXFUN01_3_0.html #2B no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXFUN01/MXFUN01_5_0.html #4C no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXFUN01/MXFUN01_6_2.html #1D no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXFUN03/MXFUN03_0_0.html #2C no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   MXFUN03/MXFUN03_0_0.html #3B no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   SSFUN02/SSFUN02_0_0.html # other-note «Red Flag: Orphan sub-tag [question] outside an interactive — content k»
+   SSFUN07/SSFUN07_1_0.html #1C writers-note «Writers Note: Please create two columns similar to the model below wit»
+   TEDC401/TEDC401_1_0.html #1E no-content-flag «Red Flag: Un-built [dragAndDrop] marker — no content captured (an inli»
+   TEDC401/TEDC401_1_0.html #1H no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   TEDC401/TEDC401_2_0.html #2A no-content-flag «Red Flag: Un-built [selectionBox] marker — no content captured (an inl»
+   TEDC401/TEDC401_2_0.html #2D no-content-flag «Red Flag: Un-built [dragAndDrop] marker — no content captured (an inli»
+   TEDC401/TEDC401_3_0.html #3B no-content-flag «Red Flag: Un-built [dragAndDrop] marker — no content captured (an inli»
+   TEDC401/TEDC401_3_0.html #3D no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   TEDC401/TEDC401_3_0.html #3G no-content-flag «Red Flag: Un-built [multiChoiceQuiz] marker — no content captured (an »
+   TEDC401/TEDC401_4_0.html #4A no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   TEDC401/TEDC401_4_0.html #4C no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   TEDC401/TEDC401_4_0.html #4D no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»
+   TEDC401/TEDC401_6_0.html #6A no-content-flag «Red Flag: Un-built [multiChoiceQuiz] marker — no content captured (an »
+   TEDC402/TEDC402_3_0.html #2D no-content-flag «Red Flag: Un-built [dragAndDrop] marker — no content captured (an inli»
+   TEDC402/TEDC402_7_0.html #6A no-content-flag «Red Flag: Un-built [multiChoiceQuiz] marker — no content captured (an »
+   TEDC402/TEDC402_7_0.html #6B no-content-flag «Red Flag: Un-built [dragAndDrop] marker — no content captured (an inli»
+   TEDC402/TEDC402_8_0.html #7A no-content-flag «Red Flag: Un-built [dragAndDrop] marker — no content captured (an inli»
+   TEFUN02/TEFUN02_0_0.html #3A no-content-flag «Red Flag: Un-built [dragAndDrop] marker — no content captured (an inli»
+   TEFUN05/TEFUN05_0_0.html #1B no-content-flag «Red Flag: Un-built [dragAndDrop] marker — no content captured (an inli»
+   TEFUN05/TEFUN05_0_0.html #3A no-content-flag «Red Flag: Un-built [dragAndDrop] marker — no content captured (an inli»
+   TEFUN05/TEFUN05_0_0.html #4A no-content-flag «Red Flag: Un-built [multiChoiceQuiz] marker — no content captured (an »
+   TEFUN06/TEFUN06_0_0.html #2A no-content-flag «Red Flag: Un-built [dragAndDrop] marker — no content captured (an inli»
+   TWHA904/TWHA904_0_0.html #1A no-content-flag «Red Flag: Un-built [dragAndDrop] marker — no content captured (an inli»
+   TWHA905/TWHA905_0_0.html #1A no-content-flag «Red Flag: Un-built [dragAndDrop] marker — no content captured (an inli»
+   XDLS909/XDLS909_2_0.html #2A no-content-flag «Red Flag: Un-built [unclassified] marker — no content captured (an inl»

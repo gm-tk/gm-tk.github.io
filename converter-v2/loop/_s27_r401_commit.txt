@@ -1,0 +1,29 @@
+r401 (260619.72): no synthetic activity box around a widget that captured nothing — activity_wrapper.standalone_widget_box.skip_empty (SABOXEMPTY_OFF)
+
+The r217 standalone box wrapped every task-type bundle, including one whose invocation captured nothing at all (a
+tag-only [drag and drop] / [radio quiz] whose title heading terminated the walk, an inline marker, a stray end tag):
+the page carried div.activity.interactive[number=6B] > row > col-12 > p.cv2-note ("no content captured") and nothing
+else, and the box SPENT a positional letter so every later box on the page was lettered one too far (AGH1006 4A / 4B
+/ 4C against the gold's 4A / 4B). The gold ships 4 empty boxes in 2385 pages. Now saOn consults the placeholder's own
+emptiness test — factored verbatim out of #interactivePlaceholder into ContentConverter.#bundleEmbeddedText /
+#bundleItemHasText / #bundleHasContent (the placeholder byte-identical by construction) — and a content-less bundle
+renders its flag alone in the section flow: no box, no letter. A writer's OWN opener owning an empty bundle keeps its
+box (the gold ships that box with the widget built — the capture class).
+
+Session 27 Round 6 (the autonomous loop): the post-r400 activity-box census (_s27_r6_numbers / _goldboxes /
+_claudeboxes / _journalsec / _emptybox.py) found 98 note-only boxes on 74 paired pages; the in-memory probe separated
+the synthetic ones — OFF = disk 2109/2109, ON = 27 pages / 22 modules (the census re-run on the ON pages 98 -> 78);
+scored on the ON pages with the gate's own match() 22 up / 4 down (+18.5) before regenerating; SCOPED regeneration
+of the 22 (4 batches rc 0; fresh --affected 0 truly stale; probe ON == disk 145/145); scoped ship #5 since the r396
+full (3 of headroom).
+
+Gates: skeleton 53.979 -> 53.989 % (+0.0095pp; 26 movers 22 up / 4 down, 0 outside the affected set — the 4 dips
+named: XLP05_5_0 -1.0, AGH1004_6_0 -0.9, AGH1006_2_0 -0.7, TEDC401_4_0 -0.6, pages whose gold ships a numbered box
+with the widget built), >=50 1174 / >=75 200 / >=90 18 EXACT, RAW 37.995 -> 38.000 %; compare_structure 11798 / 172
+/ 626, body_compare 42 / 4 / 173 / 218, clean 2079 / 2102, leak 26 / 23 — EXACT; every verifier RESULT identical to
+r400; 15 selftests + the feature-index selftest GREEN. Miner re-mined: 169 CANDIDATE (nothing gone, nothing new).
+Plateau window 1 of 3. Recorded for the next PICK: the [interactive: X] bracket resolves an `activity` tag and the
+scanner's owner lookback takes the preceding [interactive: video] line as the widget's OWNER (AGH1005 2A — the video
+never renders, the box opens empty).
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

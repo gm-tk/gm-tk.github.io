@@ -1,0 +1,7 @@
+scaffold 53.9791 -> 53.9886 (+0.0095pp); RAW 37.995 -> 38.000; pairs 1956 -> 1956, skipped 0 -> 0
+movers 26: up 22 / down 4; pp-sum +18.4; outside affected 0
+worst: [(-1.0, 'XLP05_5_0.html'), (-0.9, 'AGH1004_6_0.html'), (-0.7, 'AGH1006_2_0.html'), (-0.6, 'TEDC401_4_0.html'), (0.1, 'EXIP901_4_0.html'), (0.2, 'EXBP901_3_0.html')]
+best: [(1.5, 'MXEO202_1_0.html'), (1.6, 'ANZH303_1_0.html'), (1.6, 'ENGC102_4_0.html'), (1.8, 'BLL115_1_0.html'), (2.4, 'ANZH104_6_0.html'), (2.6, 'BLL114_1_0.html')]
+>= 50: 1174 -> 1174 up: [] down: []
+>= 75: 200 -> 200 up: [] down: []
+>= 90: 18 -> 18 up: [] down: []

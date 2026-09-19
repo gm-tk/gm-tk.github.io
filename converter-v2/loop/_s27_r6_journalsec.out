@@ -1,0 +1,60 @@
+free heading sections with a journal / activity-id button: 115
+     32 pages   28 mods  14  ('journal-button', 'gold:box')
+     19 pages   16 mods  12  ('journal-button', 'gold:free')
+     16 pages   12 mods   7  ('id-button', 'gold:heading-absent')
+     15 pages   12 mods   9  ('journal-button', 'gold:heading-absent')
+     10 pages    9 mods   8  ('id-prose', 'gold:free')
+      7 pages    6 mods   5  ('id-button', 'gold:free')
+      5 pages    5 mods   3  ('id-prose', 'gold:heading-absent')
+      4 pages    4 mods   2  ('id-button', 'gold:box=id')
+      3 pages    3 mods   2  ('id-button', 'gold:box≠id')
+      2 pages    2 mods   2  ('id-prose', 'gold:box=id')
+      2 pages    2 mods   2  ('id-prose', 'gold:box≠id')
+==== per group ====
+   Standard/NCEA1                             n=  36  gold:free 18 (0.50)  gold:heading-absent 12 (0.33)  gold:box≠id 3 (0.08)  gold:box 2 (0.06)
+   Standard/EXPlore                           n=  22  gold:heading-absent 15 (0.68)  gold:free 5 (0.23)  gold:box=id 1 (0.05)  gold:box≠id 1 (0.05)
+   Standard/1-10 English                      n=  17  gold:box 15 (0.88)  gold:box=id 1 (0.06)  gold:free 1 (0.06)
+   Standard/ConnectED                         n=  11  gold:heading-absent 5 (0.45)  gold:box=id 3 (0.27)  gold:free 3 (0.27)
+   Standard/1-10 Mathematics                  n=  11  gold:box 5 (0.45)  gold:free 3 (0.27)  gold:heading-absent 2 (0.18)  gold:box≠id 1 (0.09)
+   Standard/Leaving to Learn                  n=  10  gold:box 9 (0.90)  gold:heading-absent 1 (0.10)
+   Standard/None                              n=   6  gold:free 4 (0.67)  gold:heading-absent 1 (0.17)  gold:box 1 (0.17)
+   Standard/ANZH                              n=   2  gold:free 2 (1.00)
+   ('id-button', 'gold:heading-absent'): AGH1001/AGH1001_4_0.html «reflective questions» label-id=4A gold=None
+   ('id-button', 'gold:heading-absent'): AGH1004/AGH1004_3_0.html «class 6 non agricultural land land» label-id=3B gold=None
+   ('id-button', 'gold:heading-absent'): AGH1006/AGH1006_1_0.html «can you name some of the benefits » label-id=1A gold=None
+   ('id-button', 'gold:heading-absent'): AGH1006/AGH1006_5_0.html «herbaceous perennials» label-id=4A gold=None
+   ('journal-button', 'gold:free'): AGH1003/AGH1003_5_0.html «advantages of lime» label-id=— gold=None
+   ('journal-button', 'gold:free'): ANZH105/ANZH105_3_0.html «supervisor note» label-id=— gold=None
+   ('journal-button', 'gold:free'): ANZH401/ANZH401_4_0.html «want to travel back in time» label-id=— gold=None
+   ('journal-button', 'gold:free'): CEDO501/CEDO501_5_1.html «using bing to search» label-id=— gold=None
+   ('id-button', 'gold:box≠id'): AGH1004/AGH1004_1_0.html «knowledge self check» label-id=1A gold=2A
+   ('id-button', 'gold:box≠id'): AGH1004/AGH1004_6_0.html «from grass to glass» label-id=5A gold=7B
+   ('id-button', 'gold:box≠id'): EXIP901/EXIP901_2_0.html «sophie s essential questions» label-id=1B gold=1C
+   ('id-button', 'gold:free'): AGH1004/AGH1004_2_0.html «topography challenges and impact o» label-id=2B gold=None
+   ('id-button', 'gold:free'): AGH1005/AGH1005_3_0.html «factors that influence the rate of» label-id=3A gold=None
+   ('id-button', 'gold:free'): AGH1006/AGH1006_6_0.html «weed identification» label-id=5A gold=None
+   ('id-button', 'gold:free'): AGH1006/AGH1006_6_0.html «integrated weed management» label-id=5B gold=None
+   ('id-prose', 'gold:heading-absent'): AGH1006/AGH1006_2_0.html «fill in the sentences to complete » label-id=2B gold=None
+   ('id-prose', 'gold:heading-absent'): EXBP901/EXBP901_1_0.html «the best questions» label-id=1C gold=None
+   ('id-prose', 'gold:heading-absent'): EXBP901/EXBP901_2_0.html «what is a project proposal and wha» label-id=2A gold=None
+   ('id-prose', 'gold:heading-absent'): EXBP901/EXBP901_3_0.html «he rawe koe you are awesome» label-id=2G gold=None
+   ('id-button', 'gold:box=id'): CEDO501/CEDO501_2_1.html «aria s savings goals» label-id=2E gold=2E
+   ('id-button', 'gold:box=id'): CEDO501/CEDO501_4_1.html «factors that impact» label-id=4B gold=4B
+   ('id-button', 'gold:box=id'): CEDO501/CEDO501_7_0.html «is it trustworthy» label-id=5D gold=5D
+   ('id-button', 'gold:box=id'): EXBP901/EXBP901_3_0.html «matching goals and intentions» label-id=2C gold=2C
+   ('journal-button', 'gold:heading-absent'): CEDT501/CEDT501_8_0.html «want to use paper for this lesson» label-id=— gold=None
+   ('journal-button', 'gold:heading-absent'): CEDW501/CEDW501_7_2.html «taha tinana» label-id=— gold=None
+   ('journal-button', 'gold:heading-absent'): CEDW501/CEDW501_7_2.html «taha whānau» label-id=— gold=None
+   ('journal-button', 'gold:heading-absent'): CEDW501/CEDW501_7_2.html «taha hinengaro» label-id=— gold=None
+   ('journal-button', 'gold:box'): ENGC302/ENGC302_7_0.html «optional extra» label-id=— gold=7A
+   ('journal-button', 'gold:box'): ENGI102/ENGI102_8_0.html «check your understanding» label-id=— gold=4A
+   ('journal-button', 'gold:box'): ENGI102/ENGI102_8_0.html «check your understanding» label-id=— gold=4A
+   ('journal-button', 'gold:box'): ENGI102/ENGI102_8_0.html «check your understanding» label-id=— gold=4A
+   ('id-prose', 'gold:box=id'): ENGI202/ENGI202_1_0.html «traditional story elements» label-id=1A gold=1A
+   ('id-prose', 'gold:box=id'): PHE1007/PHE1007_3_0.html «shot put throw order of body segme» label-id=3A gold=3A
+   ('id-prose', 'gold:free'): ENGI400/ENGI400_3_0.html «time to make your choices» label-id=3B gold=None
+   ('id-prose', 'gold:free'): EXBP901/EXBP901_4_0.html «let s go» label-id=2A gold=None
+   ('id-prose', 'gold:free'): EXBP901/EXBP901_4_0.html «what s the question» label-id=2A gold=None
+   ('id-prose', 'gold:free'): EXIP901/EXIP901_5_0.html «tracking your progress» label-id=2D gold=None
+   ('id-prose', 'gold:box≠id'): HIS1002/HIS1002_13_0.html «writing explanations» label-id=7B gold=7C
+   ('id-prose', 'gold:box≠id'): MXDI301/MXDI301_5_0.html «identifying linear patterns in tab» label-id=6C gold=6A

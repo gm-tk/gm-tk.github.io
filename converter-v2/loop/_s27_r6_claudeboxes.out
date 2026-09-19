@@ -1,0 +1,82 @@
+claude extra boxes on claude-more lesson pages: 949
+the gold's rendering of the box's heading: {'no-heading': 431, 'absent': 427, 'free-h3': 45, 'in-box-h3': 25, 'in-box-h4': 9, 'free-h4': 6, 'free-h1': 3, 'free-h5': 3}
+==== (claude context, gold box content) — top 40 ====
+    211 pages  128 mods  66  no-heading     W:cv2-interactive
+     87 pages   57 mods  31  absent         h3,p,W:cv2-interactive
+     63 pages   49 mods  29  no-heading     p
+     46 pages   35 mods  25  absent         h3,W:cv2-interactive
+     34 pages   26 mods  19  absent         h3,p
+     20 pages   16 mods  11  absent         h3
+     14 pages   10 mods   8  no-heading     p,W:cv2-interactive
+     13 pages   13 mods   8  no-heading     p,ul
+     11 pages   11 mods   6  no-heading     p,button
+     10 pages    8 mods   6  free-h3        h3,p,W:cv2-interactive
+     10 pages    8 mods   6  absent         h3,p,goJournal
+      9 pages    9 mods   6  no-heading     
+      9 pages    9 mods   8  free-h3        h3,p
+      8 pages    4 mods   3  no-heading     img
+      7 pages    5 mods   4  absent         h3,iframe,p
+      7 pages    6 mods   4  no-heading     ol
+      7 pages    7 mods   6  absent         h3,p,W:cv2-interactive,goJournal
+      6 pages    3 mods   3  in-box-h3      h3,p,W:cv2-interactive
+      6 pages    6 mods   3  no-heading     p,iframe
+      6 pages    6 mods   4  no-heading     ol,p,button
+      6 pages    4 mods   4  absent         h3,h5,p,iframe,p,a,p
+      5 pages    5 mods   5  free-h3        h3,p,iframe,p
+      5 pages    5 mods   4  absent         W:cv2-interactive,goJournal
+      5 pages    4 mods   3  no-heading     p,a,p
+      5 pages    5 mods   2  no-heading     p,iframe,p
+      5 pages    3 mods   3  in-box-h3      h3,p,goJournal
+      4 pages    3 mods   3  absent         h3,p,a,p
+      4 pages    4 mods   4  absent         h3,p,iframe
+      4 pages    3 mods   3  absent         h3,p,h3
+      4 pages    4 mods   3  absent         h3,h5,p,a,p
+      3 pages    3 mods   2  absent         h3,a
+      3 pages    2 mods   2  absent         h3,p,h3,p,W:cv2-interactive
+      3 pages    3 mods   3  absent         h3,img,p
+      3 pages    3 mods   3  no-heading     W:dragAndDrop,p
+      3 pages    3 mods   3  absent         h3,p,ol,a,p
+      3 pages    3 mods   2  no-heading     W:dragAndDrop
+      3 pages    3 mods   3  no-heading     ol,W:cv2-interactive
+      3 pages    3 mods   2  no-heading     img,p,img,p,img,p,img,p,img,p,img,p,img,p,img,p,img,p
+      3 pages    3 mods   3  no-heading     ul
+      3 pages    1 mods   1  no-heading     p,ol
+==== per group: Claude context of the gold-only boxes ====
+   Standard/1-10 Mathematics                  n= 296  no-heading 146  absent 124  free-h3 13  in-box-h3 9
+   Standard/NCEA1                             n= 185  no-heading 112  absent 67  free-h3 3  free-h1 1
+   Standard/Leaving to Learn                  n= 136  absent 75  no-heading 42  free-h3 13  free-h4 3
+   Standard/ANZH                              n=  69  no-heading 38  absent 27  in-box-h4 2  free-h3 2
+   Standard/1-10 English                      n=  66  absent 33  no-heading 26  free-h3 2  free-h1 2
+   Standard/1-10 Blended Literacy             n=  47  absent 25  no-heading 14  in-box-h3 6  free-h3 1
+   Inquiry/Leaving to Learn                   n=  40  absent 22  no-heading 12  free-h3 5  in-box-h3 1
+   Standard/1-10 Social Science               n=  27  absent 17  no-heading 9  in-box-h3 1
+   Fundamentals/1-10 Mathematics              n=  19  absent 16  no-heading 3
+   Inquiry/ConnectED                          n=  15  no-heading 11  free-h3 2  absent 2
+   Standard/None                              n=  14  no-heading 11  free-h3 2  in-box-h4 1
+   Bilingual/Te Marautanga o Aotearoa TMoA    n=  11  absent 9  in-box-h3 1  free-h3 1
+   Standard/ConnectED                         n=   8  absent 5  no-heading 3
+   Standard/1-10 Science                      n=   6  in-box-h3 5  free-h3 1
+   ('absent', 'h3,W:cv2-interactive'): AGH1006/AGH1006_2_0.html #2A «knowledge self check» first=«knowledge self check agh1006 int 02 01 reorder int»
+   ('absent', 'h3,W:cv2-interactive'): ANZH301/ANZH301_2_0.html #2B «the following sources will help you » first=«the following sources will help you to find out mo»
+   ('absent', 'h3,W:cv2-interactive'): ANZH301/ANZH301_3_0.html #3D «look at and read the text in the dia» first=«look at and read the text in the diagram below abo»
+   ('no-heading', 'p'): AGH1006/AGH1006_2_0.html #2B «» first=«red flag un built draganddrop marker no content ca»
+   ('no-heading', 'p'): AGH1006/AGH1006_4_0.html #4B «» first=«red flag un built radioquiz marker no content capt»
+   ('no-heading', 'p'): AGH1006/AGH1006_4_0.html #4C «» first=«red flag un built draganddrop marker no content ca»
+   ('no-heading', 'W:cv2-interactive'): AGH1006/AGH1006_4_0.html #4A «» first=«agh1006 int 04 01 tabs writers note merged content»
+   ('no-heading', 'W:cv2-interactive'): AGH1007/AGH1007_3_0.html #3A «» first=«agh1007 int 03 02 unclassified writers note drag a»
+   ('no-heading', 'W:cv2-interactive'): AGH1007/AGH1007_7_0.html #7A «» first=«agh1007 int 07 01 unclassified writers note comple»
+   ('no-heading', 'p,ul'): AGH1007/AGH1007_7_0.html #5A «» first=«writers note summary the male reproductive tract i»
+   ('no-heading', 'p,ul'): AGH1008/AGH1008_2_0.html #2A «» first=«writers note summary the quality of pasture change»
+   ('no-heading', 'p,ul'): AGH1008/AGH1008_4_0.html #3B «» first=«writers note summary there are a wide variety of t»
+   ('no-heading', 'p,W:cv2-interactive'): AGH1008/AGH1008_2_0.html #2B «» first=«for each of the two feed types shown below use the»
+   ('no-heading', 'p,W:cv2-interactive'): AGH1008/AGH1008_3_0.html #3A «» first=«drag and drop the images of the following feed int»
+   ('no-heading', 'p,W:cv2-interactive'): AGH1008/AGH1008_3_0.html #3B «» first=«the videos below show some of the benefits of feed»
+   ('absent', 'h3'): ANZH104/ANZH104_3_0.html #3A «word find» first=«word find»
+   ('absent', 'h3'): ANZH301/ANZH301_1_0.html #1B «have a listen to this audio of riria» first=«have a listen to this audio of riria utiku ngāti t»
+   ('absent', 'h3'): ANZH301/ANZH301_1_0.html #1D «click the flip cards below to find o» first=«click the flip cards below to find out more»
+   ('absent', 'h3,p,W:cv2-interactive'): ANZH301/ANZH301_1_0.html #1H «the time after the second world war » first=«the time after the second world war was one of big»
+   ('absent', 'h3,p,W:cv2-interactive'): ANZH301/ANZH301_3_0.html #3H «listen to this audio about the māori» first=«listen to this audio about the māori women s welfa»
+   ('absent', 'h3,p,W:cv2-interactive'): BLL114/BLL114_2_0.html #2E «memory game» first=«memory game some of these flip cards have a word a»
+   ('absent', 'h3,p'): ANZH304/ANZH304_3_0.html #3D «https nzhistory govt nz media_galler» first=«https nzhistory govt nz media_gallery tid 122 writ»
+   ('absent', 'h3,p'): CEDT501/CEDT501_6_1.html #6C «open or closed pātai» first=«open or closed pātai read each question and tick t»
+   ('absent', 'h3,p'): ENGS302/ENGS302_6_0.html #7A «review quiz» first=«review quiz let s begin with a multiple choice qui»

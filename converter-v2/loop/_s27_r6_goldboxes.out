@@ -1,0 +1,106 @@
+gold extra boxes on gold-more lesson pages: 1419
+Claude's rendering of the box's heading: {'absent': 1100, 'free-h3': 200, 'free-h4': 51, 'in-box-h3': 26, 'free-h1': 19, 'no-heading': 9, 'in-box-h2': 7, 'in-box-h5': 3, 'free-h2': 2, 'in-box-h4': 1, 'free-h5': 1}
+==== (claude context, gold box content) — top 40 ====
+    224 pages  186 mods  81  absent         h3,p,a
+    125 pages   86 mods  52  absent         h3,p,W:dragAndDrop
+     46 pages   38 mods  27  absent         h3,p,W:multiChoiceQuiz
+     36 pages   26 mods  17  absent         h3,p,W:typing
+     32 pages   32 mods  23  free-h3        h3,p,a
+     28 pages   26 mods  13  absent         h3,p
+     23 pages   20 mods  14  absent         h3,p,goJournal
+     21 pages   14 mods  10  absent         h3,p,W:carousel
+     19 pages    9 mods   3  free-h3        h3,p,goJournal
+     18 pages   18 mods  14  absent         h3,p,W:radioQuiz
+     18 pages   18 mods  16  absent         h3,p,W:dropQuiz
+     17 pages   14 mods  10  free-h3        h3,p,W:dragAndDrop
+     15 pages    8 mods   3  absent         h3,p,img,p
+     13 pages    9 mods   5  absent         h3,p,ul,a
+     12 pages   12 mods   9  absent         h3,p,a,p,a
+     12 pages    8 mods   6  absent         h3,p,img
+     11 pages    9 mods   8  absent         h3,p,a,p
+     10 pages   10 mods   8  free-h1        h3,p,a
+      9 pages    8 mods   6  free-h3        h3,p,W:radioQuiz
+      9 pages    3 mods   3  absent         h3,p,W:wordDrag
+      8 pages    7 mods   6  absent         h3,p,iframe,a
+      8 pages    2 mods   2  absent         h3,p,W:flipCard,p,a
+      8 pages    8 mods   4  in-box-h3      h3,p,iframe,p
+      7 pages    4 mods   4  absent         h3,W:dragAndDrop
+      7 pages    7 mods   2  free-h4        h3,p,a,p,a
+      7 pages    6 mods   4  absent         h3,p,img,W:typing
+      7 pages    7 mods   4  absent         h3,p,W:wordSelect
+      6 pages    6 mods   6  absent         h3,p,W:dragAndDrop,p
+      6 pages    6 mods   4  absent         h3,W:multiChoiceQuiz
+      6 pages    5 mods   5  absent         h3,p,W:reorder
+      6 pages    6 mods   3  absent         h3,h4,p,a
+      6 pages    6 mods   6  absent         h3,p,W:memoryGame
+      6 pages    6 mods   1  absent         h3,p,iframe,p,a,p
+      6 pages    6 mods   2  in-box-h3      h3,p
+      5 pages    5 mods   5  absent         h3,p,ul,p,a
+      5 pages    5 mods   5  absent         h3,p,iframe
+      5 pages    5 mods   3  free-h3        h3,p,ul,p,a
+      5 pages    2 mods   2  free-h4        h3,p,img,a
+      5 pages    4 mods   3  absent         h3,p,iframe,p
+      5 pages    5 mods   3  in-box-h3      h3,p,iframe
+==== per group: Claude context of the gold-only boxes ====
+   Standard/NCEA1                             n= 316  absent 255  free-h3 47  free-h1 8  free-h4 3
+   Standard/1-10 Mathematics                  n= 277  absent 237  free-h3 23  free-h4 7  free-h1 4
+   Standard/Leaving to Learn                  n= 235  absent 179  free-h3 22  in-box-h3 17  free-h4 16
+   Bilingual/Te Marautanga o Aotearoa TMoA    n= 154  absent 104  free-h3 39  in-box-h2 7  no-heading 2
+   Standard/1-10 English                      n= 135  absent 101  free-h4 15  free-h3 13  no-heading 3
+   Standard/None                              n=  60  absent 33  free-h3 25  free-h4 2
+   Standard/ConnectED                         n=  51  absent 32  free-h3 15  free-h4 3  free-h2 1
+   Inquiry/1-10 Blended Literacy              n=  44  absent 44
+   Inquiry/ConnectED                          n=  31  absent 25  free-h4 3  free-h3 3
+   Standard/EXPlore                           n=  30  absent 22  free-h3 7  free-h1 1
+   Standard/Online Safety (OS9000)            n=  21  absent 16  free-h3 4  free-h4 1
+   Standard/ANZH                              n=  17  absent 14  free-h3 1  no-heading 1  free-h1 1
+   Inquiry/Leaving to Learn                   n=  17  absent 11  in-box-h3 6
+   Standard/1-10 Social Science               n=  15  absent 14  free-h3 1
+   ('absent', 'h3,p,W:dragAndDrop'): AGH1001/AGH1001_2_0.html #2A «value of primary products»
+   ('absent', 'h3,p,W:dragAndDrop'): AGH1001/AGH1001_3_0.html #3A «māori creation story»
+   ('absent', 'h3,p,W:dragAndDrop'): AGH1001/AGH1001_4_0.html #4B «mix and match»
+   ('absent', 'h3,p,a'): AGH1001/AGH1001_2_0.html #2B «flow diagram from new zealand to the»
+   ('absent', 'h3,p,a'): AGH1001/AGH1001_3_0.html #3C «reflecting on mātauranga māori in ag»
+   ('absent', 'h3,p,a'): AGH1001/AGH1001_4_0.html #4F «seasonality and maramataka»
+   ('absent', 'h3,p,a,p,a'): AGH1002/AGH1002_6_0.html #6E «biological properties of soil»
+   ('absent', 'h3,p,a,p,a'): CEDO502/CEDO502_5_0.html #5C «note gathering»
+   ('absent', 'h3,p,a,p,a'): CEDT501/CEDT501_3_0.html #3B «an online business»
+   ('absent', 'h3,p,W:multiChoiceQuiz'): AGH1003/AGH1003_2_0.html #2B «soil properties review»
+   ('absent', 'h3,p,W:multiChoiceQuiz'): AGH1003/AGH1003_2_0.html #2C «soil properties review»
+   ('absent', 'h3,p,W:multiChoiceQuiz'): ANZH401/ANZH401_2_0.html #2A «push or pull»
+   ('free-h3', 'h3,p,a'): AGH1003/AGH1003_4_0.html #4B «benefits of organic matter»
+   ('free-h3', 'h3,p,a'): CEDK501/CEDK501_9_0.html #7A «assessment information»
+   ('free-h3', 'h3,p,a'): CEDO501/CEDO501_2_1.html #2E «aria s savings goals»
+   ('absent', 'h3,p,W:radioQuiz'): AGH1003/AGH1003_6_0.html #6B «positive or negative activity»
+   ('absent', 'h3,p,W:radioQuiz'): AGH1003/AGH1003_7_0.html #7A «poor drainage knowledge check»
+   ('absent', 'h3,p,W:radioQuiz'): AGH1004/AGH1004_3_0.html #3E «climate change»
+   ('free-h3', 'h3,p,W:dragAndDrop'): AGH1004/AGH1004_6_0.html #7B «from grass to glass»
+   ('free-h3', 'h3,p,W:dragAndDrop'): AGH1005/AGH1005_5_0.html #5C «knowledge check»
+   ('free-h3', 'h3,p,W:dragAndDrop'): AGH1005/AGH1005_8_0.html #8B «sexual reproduction»
+   ('absent', 'h3,p,W:dropQuiz'): AGH1005/AGH1005_8_0.html #8C «values»
+   ('absent', 'h3,p,W:dropQuiz'): ENGC201/ENGC201_5_0.html #5B «identifying emotions»
+   ('absent', 'h3,p,W:dropQuiz'): ENGI301/ENGI301_1_0.html #1B «using appositives»
+   ('absent', 'h3,p'): AGH1009/AGH1009_1_0.html #1B «brainstorm»
+   ('absent', 'h3,p'): ART1006/ART1006_4_0.html #4C «present your completed project»
+   ('absent', 'h3,p'): ENGS101/ENGS101_2_0.html #2D «lesson reflection»
+   ('absent', 'h3,p,img'): ART1006/ART1006_3_1.html #3C «getting yourself ready»
+   ('absent', 'h3,p,img'): BLL240/BLL240_1_0.html #1D «read the words»
+   ('absent', 'h3,p,img'): BLL240/BLL240_1_0.html #2C «read the words»
+   ('absent', 'h3,p,W:carousel'): BLL143/BLL143_1_1.html #2B «create a sentence»
+   ('absent', 'h3,p,W:carousel'): BLL240/BLL240_1_0.html #2A «trigraph tch»
+   ('absent', 'h3,p,W:carousel'): BLL240/BLL240_1_0.html #3A «trigraph dge»
+   ('absent', 'h3,p,ul,a'): CEDT301/CEDT301_6_0.html #1A «my belonging connection and roots»
+   ('absent', 'h3,p,ul,a'): CEDT301/CEDT301_6_0.html #2A «strengthening our mana»
+   ('absent', 'h3,p,ul,a'): CEDT301/CEDT301_6_0.html #2B «photo challenge two»
+   ('absent', 'h3,p,W:typing'): ENGC302/ENGC302_5_0.html #5A «email corrections»
+   ('absent', 'h3,p,W:typing'): ENGR302/ENGR302_4_0.html #5A «equivalent fractions»
+   ('absent', 'h3,p,W:typing'): ENGR302/ENGR302_4_0.html #5B «simplify fractions»
+   ('absent', 'h3,p,goJournal'): ENGC302/ENGC302_6_0.html #6B «a warm welcome to kahu»
+   ('absent', 'h3,p,goJournal'): ENGC401/ENGC401_5_0.html #5B «sounds in a film of your choice»
+   ('absent', 'h3,p,goJournal'): ENGI301/ENGI301_1_0.html #1C «writing appositives»
+   ('free-h3', 'h3,p,goJournal'): HES1007/HES1007_1_0.html #1B «identifying personal interpersonal a»
+   ('free-h3', 'h3,p,goJournal'): HES1007/HES1007_1_0.html #1C «identify and describe factors in you»
+   ('free-h3', 'h3,p,goJournal'): HES1007/HES1007_3_0.html #3C «sugary drink advertisements»
+   ('absent', 'h3,p,img,p'): XDLS501/XDLS501_3_0.html #3F «practise mindfulness»
+   ('absent', 'h3,p,img,p'): XDLS501/XDLS501_3_0.html #3H «do you think we are mindful on socia»
+   ('absent', 'h3,p,img,p'): XDLS902/XDLS902_2_0.html #2E «do you think kiwi children eat too m»
