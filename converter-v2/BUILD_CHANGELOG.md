@@ -1,5 +1,41 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-19 (FULL CORPUS REGENERATION + INTAKE RE-BASELINE, build 260619.78 — no engine change) — the 98-module September intake joins the corpus and every protected gate is re-proved on the grown population
+
+### 1. WHAT HAPPENED
+
+**Not a code round — a corpus round.** No `data/*.json`, no `app/js`, no `Config.js` AppVersion bump; `pageforge-site` is clean. Two out-of-repo harness repairs only: `outputs/parse_docx.cjs` had absolute paths from a retired session and could not run at all (now resolves its deps from `PF_NODE_MODULES`, default `$HOME/pfdeps/node_modules`, and its JS dir from `__dirname`); `reference/tests/_regen_safe.sh` now honours `REGEN_TIMEOUT` (default 40 — unchanged behaviour) so a longer-walled shell can run bigger batches.
+
+**The intake.** 98 modules moved into `01-Finalized_Modules_` (64 Standard / 28 Fundamentals / 3 Inquiry / 3 Bilingual), family read from each module's own container class and cross-checked against sibling placement; Chris's FUN rule agreed with the body class on all 28 FUN-coded modules. 143 `_parsed.txt` generated with the V1 parser, proven byte-identical 5/5 on existing corpus modules. 78 of the 98 converted into `01-Claude_Modules_`.
+
+**The full regeneration.** All 494 Claude dirs rebuilt in 47 batches; `_stalecheck.sh` **0 stale**. This is the first full ship since r405 (r406 and r407 were scoped, 7 and 24 modules), so the ship ledger's scoped counter resets to 0.
+
+### 2. PROOF — every protected gate HELD, and the population change is what moved the numbers
+
+The population grew: skeleton pairs **1956 → 2349**, cs matched **13794 → 15668**, body/defect pages **2102 → 2606**. So every absolute moves and the rates fall with no regression behind it. Measured by splitting each gate by population, the **pre-existing modules reproduce r407 EXACTLY**:
+
+| Gate | r407 baseline | live pre-existing | new batch adds |
+|---|---|---|---|
+| skeleton mean / ≥50 / ≥75 / ≥90 | 54.084 % / 1181 / 202 / 18 | **EXACT** | 393 pairs @ 48.409 % (197 / 26 / 1) |
+| compare_structure exact / EXTRA / missing / row-wrap | 11779 / 172 / 626 / 23 | **EXACT** | 1631 / 12 / 59 / 0 |
+| body_compare runaway / empty_container | 5 / 170 | **EXACT** | 1 / 22 |
+| literal-[tag] leak occ / pages | 26 / 23 | **EXACT** | 47 / 21 (GENO901 16, DTC1005 14) |
+| structurally clean | 2079 / 2102 = 98.91 % | **EXACT** | 483 / 504 = 95.83 % |
+
+`_content_manifest.py fresh` confirmed **all 413 pre-existing modules byte-identical** to the manifest — identical bytes cannot yield different metrics, which is the structural argument the table then confirms number by number.
+
+**Verifier gates, all EXACT vs baseline:** tags **9557 / 9557, 0 real failures**; flipCard **61 (exact 32 / copy-edit 11 / defect 18), divergence 0**; speechBubble **defect 4**; math **323 / 323, defect 0**; menulabels **91, defect 0**; dragAndDrop **21 widgets / images 9, defect 0**; modal **defect 0**; mtkQuiz **defect 0**; entry-parity selftest **PASS**.
+
+**New committed baseline (the whole 2349-pair population):** skeleton **53.13 %** / ≥50 **1378** / ≥75 **228** / ≥90 **19** / RAW **37.49 %**; cs exact **13410** / EXTRA **184** / missing **685** / row-wrap **23**; body ANY **250**; defect clean **2562 / 2606 = 98.31 %**, leak **73 occ / 44 pages**. `gate_baseline.json`, `_fastloop_baseline/` and `_content_manifest.txt` (2613 pages / 491 modules) all refreshed; full ship recorded in the ledger.
+
+### 3. WHAT THE INTAKE EXPOSED — the ranked next work
+
+1. **The WJFUN / JPFUN single-file page model — the biggest lever in the corpus.** 21 WJFUN modules plus JPFUN01/02 ship ONE human page each and the converter builds 2–5, mean SCAFFOLD **10.4 %**; they hold 17 of the worst 25 module scores corpus-wide. This is the documented `page_model: "single-file"` class (r106 / r186 `MTKPAGE_OFF`) — the same finding recorded for CHFUN at the 3 Aug intake and then fixed — and the family simply has no registry entry. **Data-only, no code.**
+2. **PMT101 — the fully table-laid-out Te Aka Taumatua template is refused.** `LooksLikeWritersTemplate` needs a PARAGRAPH-level opener; PMT101 has 450 red bracket runs inside table cells and only 3 at paragraph level (`[tags]`, `[Content for DROP DOWN MENU]`), so it reports "no Writers Template". PNR107 (11 paragraph-level, incl. `[MODULE CONTENT: PAGE 1]`) and TRR116 (22, incl. `[Lesson 2]`) convert. Round 212 recorded this family's shape and rescued the TRIM step; recognition was never extended. Ruled out along the way: a UTF-8 BOM (30 of the corpus's 762 docx carry one and convert) and red-hex case (`DocxExtractor` line 1477 already lower-cases).
+3. **The XOTP activity-table family** — 12 modules refused because their Writers Templates carry no red tags at all; structure lives in a two-column `Section heading | Text/Activity` table. Needs an input adapter, not a new engine: every page is plain Standard and every widget already exists. Spec: `00-NEW_NEW_NEW/_SPEC__XOTP_Activity_Table_Template.md`.
+4. Seven modules (GER1003–1007, SAM1005, SAM1006) have **no Writers Template at all** — a source-collection gap, not a converter one.
+
+
 ## 2026-09-19 (round 407, build 260619.78) — THE HEADING-LED NUMBERED OPENER TAKES THE OWNER FORM TOO: no empty box before its own section — the heading, prose and table go INSIDE the box the writer opened (the autonomous loop's session 27 Round 12, the budget's last; **SCOPED regeneration of the 24 affected modules — scoped ship #2 since the r405 full**; every protected gate held-or-improved, skeleton +0.0583pp, ≥50 +5, ≥75 +2)
 
 ### 1. WHAT CHANGED
