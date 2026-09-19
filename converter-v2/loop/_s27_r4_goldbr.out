@@ -1,0 +1,111 @@
+gold elements with a <br>: 3819; segments per element: {2: 1795, 5: 224, 4: 328, 3: 1137, 6: 335}
+==== (element, kind, source, claude) ====
+     847  pages  295 mods 176   ('p', 'two-texts', 'para-join?', 'absent')
+     577  pages  250 mods 129   ('p', 'two-texts', 'para-join?', 'split')
+     413  pages  130 mods  86   ('p', 'two-texts', 'para-join?', 'n/a')
+     409  pages  172 mods 114   ('p', 'two-texts', 'para-join?', 'joined')
+     208  pages  139 mods  95   ('p', 'two-texts', 'para-join?', 'A-only')
+     169  pages   48 mods  37   ('td', 'two-texts', 'para-join?', 'joined')
+     141  pages   10 mods  10   ('p', 'layout-br-lead', 'n/a', 'n/a')
+     136  pages   38 mods  28   ('li', 'two-texts', 'para-join?', 'absent')
+     128  pages   38 mods  32   ('td', 'two-texts', 'para-join?', 'n/a')
+      95  pages   24 mods  21   ('td', 'two-texts', 'para-join?', 'absent')
+      82  pages   31 mods  19   ('p', 'two-texts', 'writer-softbreak', 'split')
+      80  pages   10 mods  10   ('td', 'all-empty', 'n/a', 'n/a')
+      71  pages   14 mods  12   ('td', 'layout-br-lead', 'n/a', 'n/a')
+      56  pages   20 mods  19   ('li', 'two-texts', 'para-join?', 'joined')
+      52  pages   24 mods  20   ('li', 'two-texts', 'para-join?', 'split')
+      49  pages   22 mods  18   ('li', 'two-texts', 'para-join?', 'n/a')
+      46  pages   18 mods  14   ('p', 'layout-br-trail', 'n/a', 'n/a')
+      32  pages   14 mods  12   ('p', 'two-texts', 'writer-softbreak', 'joined')
+      28  pages   18 mods  17   ('td', 'two-texts', 'para-join?', 'A-only')
+      26  pages   10 mods   9   ('li', 'two-texts', 'para-join?', 'A-only')
+      19  pages    6 mods   5   ('td', 'layout-br-trail', 'n/a', 'n/a')
+      18  pages    6 mods   6   ('li', 'layout-br-trail', 'n/a', 'n/a')
+      17  pages   11 mods  10   ('p', 'two-texts', 'writer-softbreak', 'A-only')
+      15  pages    5 mods   5   ('li', 'two-texts', 'writer-softbreak', 'A-only')
+      14  pages    6 mods   6   ('li', 'two-texts', 'writer-softbreak', 'split')
+      14  pages    8 mods   7   ('td', 'two-texts', 'para-join?', 'split')
+      12  pages    8 mods   7   ('th', 'two-texts', 'para-join?', 'joined')
+      12  pages    4 mods   4   ('th', 'two-texts', 'para-join?', 'n/a')
+      10  pages    8 mods   7   ('p', 'two-texts', 'writer-softbreak', 'n/a')
+       8  pages    3 mods   3   ('th', 'layout-br-trail', 'n/a', 'n/a')
+
+==== two-texts by group: Claude's rendering (split = two <p>, joined = one element) ====
+   Standard/1-10 Mathematics                  n= 906  absent 259 (0.29)  split 241 (0.27)  joined 175 (0.19)  n/a 164 (0.18)  A-only 67 (0.07)
+   Standard/1-10 English                      n= 669  absent 193 (0.29)  split 180 (0.27)  joined 126 (0.19)  n/a 110 (0.16)  A-only 60 (0.09)
+   Standard/NCEA1                             n= 327  absent 171 (0.52)  split 51 (0.16)  n/a 49 (0.15)  joined 37 (0.11)  A-only 19 (0.06)
+   Standard/Leaving to Learn                  n= 222  joined 65 (0.29)  absent 56 (0.25)  n/a 42 (0.19)  A-only 32 (0.14)  split 27 (0.12)
+   Fundamentals/None                          n= 177  n/a 97 (0.55)  joined 37 (0.21)  absent 26 (0.15)  split 13 (0.07)  A-only 4 (0.02)
+   Standard/Online Safety (OS9000)            n= 176  joined 68 (0.39)  split 46 (0.26)  n/a 24 (0.14)  A-only 20 (0.11)  absent 18 (0.10)
+   Fundamentals/1-10 Mathematics              n= 140  absent 108 (0.77)  split 19 (0.14)  n/a 10 (0.07)  A-only 3 (0.02)
+   Bilingual/Te Marautanga o Aotearoa TMoA    n= 134  absent 68 (0.51)  A-only 31 (0.23)  n/a 16 (0.12)  joined 12 (0.09)  split 7 (0.05)
+   Standard/1-10 Blended Literacy             n=  85  n/a 24 (0.28)  joined 23 (0.27)  absent 16 (0.19)  split 12 (0.14)  A-only 10 (0.12)
+   Inquiry/ConnectED                          n=  83  absent 22 (0.27)  split 21 (0.25)  joined 17 (0.20)  n/a 15 (0.18)  A-only 8 (0.10)
+   Fundamentals/1-10 English                  n=  74  joined 28 (0.38)  absent 18 (0.24)  n/a 14 (0.19)  split 8 (0.11)  A-only 6 (0.08)
+   Fundamentals/1-10 Social Science           n=  70  split 27 (0.39)  absent 23 (0.33)  n/a 11 (0.16)  joined 6 (0.09)  A-only 3 (0.04)
+   Standard/ConnectED                         n=  58  joined 17 (0.29)  n/a 12 (0.21)  absent 11 (0.19)  split 11 (0.19)  A-only 7 (0.12)
+   Standard/None                              n=  51  joined 23 (0.45)  split 12 (0.24)  n/a 9 (0.18)  A-only 4 (0.08)  absent 3 (0.06)
+   Fundamentals/1-10 Technology               n=  39  absent 15 (0.38)  joined 9 (0.23)  split 7 (0.18)  A-only 6 (0.15)  n/a 2 (0.05)
+   Inquiry/Te ara Whakapuawa -Wellbeing       n=  36  absent 25 (0.69)  split 5 (0.14)  joined 4 (0.11)  A-only 2 (0.06)
+   Standard/ANZH                              n=  33  absent 11 (0.33)  split 11 (0.33)  n/a 5 (0.15)  joined 3 (0.09)  A-only 3 (0.09)
+   Inquiry/Leaving to Learn                   n=  29  absent 14 (0.48)  split 6 (0.21)  joined 4 (0.14)  n/a 4 (0.14)  A-only 1 (0.03)
+   Inquiry/EXPlore                            n=  23  joined 21 (0.91)  split 1 (0.04)  absent 1 (0.04)
+   Fundamentals/1-10 Health and PE            n=  20  A-only 11 (0.55)  n/a 3 (0.15)  joined 2 (0.10)  split 2 (0.10)  absent 2 (0.10)
+   Standard/1-10 Social Science               n=  20  split 9 (0.45)  absent 8 (0.40)  joined 2 (0.10)  A-only 1 (0.05)
+   Inquiry/1-10 Blended Literacy              n=  16  split 10 (0.62)  n/a 4 (0.25)  absent 2 (0.12)
+
+   ('li', 'two-texts', 'para-join?', 'split'): AGH1001 AGH1001.00.html «or the learning in this module» ¦ «it may take more or less time »
+   ('li', 'two-texts', 'para-join?', 'split'): AGH1002 AGH1002.04.html «ts cannot survive in this soil» ¦ «main causes of a saturated soi»
+   ('li', 'two-texts', 'para-join?', 'split'): AGH1002 AGH1002.04.html « tightly plants cant access it» ¦ «main causes                   »
+   ('p', 'two-texts', 'para-join?', 'A-only'): AGH1001 AGH1001.00.html «agh1002 and agh1003» ¦ «achievement standard 91930»
+   ('p', 'two-texts', 'para-join?', 'A-only'): AGH1001 AGH1001.00.html «05 agh1006 agh1007 and agh1008» ¦ «achievement standard 91928»
+   ('p', 'two-texts', 'para-join?', 'A-only'): AGH1002 AGH1002.03.html «water levels in soil» ¦ «this is often caused by weathe»
+   ('p', 'two-texts', 'para-join?', 'n/a'): AGH1001 AGH1001.00.html «agh1004» ¦ «achievement standard 91929»
+   ('p', 'two-texts', 'para-join?', 'n/a'): AGH1001 AGH1001.00.html «agh1009» ¦ «achievement standard 91931»
+   ('p', 'two-texts', 'para-join?', 'n/a'): AGH1002 AGH1002.01.html «onepuia» ¦ «volcanic soils which exist acr»
+   ('p', 'two-texts', 'para-join?', 'split'): AGH1001 AGH1001.02.html «farm manager» ¦ «overseeing daytoday operations»
+   ('p', 'two-texts', 'para-join?', 'split'): AGH1001 AGH1001.02.html «farm worker» ¦ «assisting with tasks like plan»
+   ('p', 'two-texts', 'para-join?', 'split'): AGH1001 AGH1001.02.html «dairy herd manager» ¦ «responsible for the care and m»
+   ('p', 'two-texts', 'para-join?', 'absent'): AGH1002 AGH1002.00.html «achievement standard 91930» ¦ «demonstrate understanding of h»
+   ('p', 'two-texts', 'para-join?', 'absent'): AGH1002 AGH1002.01.html «parakiwai» ¦ «alluvial soil which is formed »
+   ('p', 'two-texts', 'para-join?', 'absent'): AGH1003 AGH1003_00.0.html «achievement standard 91930» ¦ «demonstrate understanding of h»
+   ('li', 'two-texts', 'para-join?', 'n/a'): AGH1002 AGH1002.02.html «35 clay» ¦ «50 silt»
+   ('li', 'two-texts', 'para-join?', 'n/a'): AGH1002 AGH1002.02.html «50 sand» ¦ «20 clay»
+   ('li', 'two-texts', 'para-join?', 'n/a'): AGH1002 AGH1002.02.html «50 silt» ¦ «50 clay»
+   ('p', 'two-texts', 'para-join?', 'joined'): AGH1002 AGH1002.03.html «sunlight» ¦ «sunlight provides the energy s»
+   ('p', 'two-texts', 'para-join?', 'joined'): AGH1002 AGH1002.06.html «n the growth of soil organisms» ¦ «lots of rain can wash or leach»
+   ('p', 'two-texts', 'para-join?', 'joined'): AGH1002 AGH1002.06.html «w ph much better than bacteria» ¦ «most soils in new zealand are »
+   ('td', 'two-texts', 'para-join?', 'joined'): AGH1003 AGH1003_03.0.html «sheep and beef farms» ¦ «deer farms»
+   ('td', 'two-texts', 'para-join?', 'joined'): AGH1003 AGH1003_03.0.html «dairy farms» ¦ «sheep and beef finishing farms»
+   ('td', 'two-texts', 'para-join?', 'joined'): AGH1003 AGH1003_03.0.html «orchards and vineyards» ¦ «dairy farms»
+   ('li', 'two-texts', 'para-join?', 'absent'): AGH1003 AGH1003_07.0.html «open drains or ditches» ¦ «ditches can be of any shape or»
+   ('li', 'two-texts', 'para-join?', 'absent'): AGH1003 AGH1003_07.0.html «graded banks» ¦ «these are formed using a grade»
+   ('li', 'two-texts', 'para-join?', 'absent'): AGH1004 AGH1004.04.html «re because of its large grains» ¦ «it is easy to dig has plenty o»
+   ('p', 'layout-br-lead', 'n/a', 'n/a'): AGH1004 AGH1004.07.html «ly on farms across new zealand» ¦ «»
+   ('p', 'layout-br-lead', 'n/a', 'n/a'): AGH1004 AGH1004.07.html « up to 30000l for up to 2 days» ¦ «»
+   ('p', 'layout-br-lead', 'n/a', 'n/a'): AGH1004 AGH1004.07.html «terra factories for processing» ¦ «»
+   ('p', 'layout-br-trail', 'n/a', 'n/a'): AGH1009 AGH1009.01.html «the buying and selling of land» ¦ «»
+   ('p', 'layout-br-trail', 'n/a', 'n/a'): BLL121 BLL121-02.html «c» ¦ «»
+   ('p', 'layout-br-trail', 'n/a', 'n/a'): BLL121 BLL121-02.html «k» ¦ «»
+   ('li', 'two-texts', 'para-join?', 'joined'): ANZH105 ANZH105_05.0.html «ther and   of them are pounamu» ¦ «write this as a fraction      »
+   ('li', 'two-texts', 'para-join?', 'joined'): BLLR201 BLLR201_5_0.html «philip inside during the storm» ¦ «the text says                 »
+   ('li', 'two-texts', 'para-join?', 'joined'): BLLR201 BLLR201_5_0.html « add a tiny sun to her drawing» ¦ «the text says                 »
+   ('p', 'two-texts', 'writer-softbreak', 'split'): ANZH205 ANZH205_01.0.html «en sailing in the salty oceans» ¦ «timber from kauri and other na»
+   ('p', 'two-texts', 'writer-softbreak', 'split'): ENGJ402 ENGJ402_3.0.html «ove thee let me count the ways» ¦ «i love thee to the depth and b»
+   ('p', 'two-texts', 'writer-softbreak', 'split'): ENGJ402 ENGJ402_3.0.html «shut against my tightened face» ¦ «and i am sharp as steel with d»
+   ('td', 'two-texts', 'para-join?', 'n/a'): BLL122 BLL122-03.html «a ts» ¦ «ant»
+   ('td', 'two-texts', 'para-join?', 'n/a'): BLL122 BLL122-03.html «mi» ¦ «ick»
+   ('td', 'two-texts', 'para-join?', 'n/a'): BLL122 BLL122-03.html «im» ¦ «ki»
+   ('td', 'layout-br-lead', 'n/a', 'n/a'): BLL141 BLL141-1.0.html «                         roast» ¦ «»
+   ('td', 'layout-br-lead', 'n/a', 'n/a'): BLL141 BLL141-1.0.html «                         coast» ¦ «»
+   ('td', 'layout-br-lead', 'n/a', 'n/a'): CEDR301 CEDR301 People Making a Difference.html «sportsperson» ¦ «»
+   ('td', 'two-texts', 'para-join?', 'absent'): CEDT203 CEDT203 My Pepeha.html «ine overpopulation and warfare» ¦ «from these  waka   rohe  devel»
+   ('td', 'two-texts', 'para-join?', 'absent'): CEDT501 CEDT501_3.1.html «text netsafe to 4282» ¦ «report online  httpsreportnets»
+   ('td', 'two-texts', 'para-join?', 'absent'): CHFUN07 CHFUN07_0_0.html «xio   small» ¦ «xi   down»
+   ('p', 'two-texts', 'writer-softbreak', 'joined'): CEDW501 CEDW501_2.1.html «nengaro mentalemotional health» ¦ «feeling unwell and missing out»
+   ('p', 'two-texts', 'writer-softbreak', 'joined'): CEDW501 CEDW501_2.1.html «t my taha whānau relationships» ¦ «yes not seeing my mates for a »
+   ('p', 'two-texts', 'writer-softbreak', 'joined'): CEDW501 CEDW501_2.1.html «aha wairua spiritual wellbeing» ¦ «if i usually find meaning purp»
+   ('td', 'all-empty', 'n/a', 'n/a'): ENGR101 ENGR101_03.0.html «» ¦ «»
+   ('td', 'all-empty', 'n/a', 'n/a'): HIS1002 HIS1002-9.0.html «» ¦ «»
+   ('td', 'all-empty', 'n/a', 'n/a'): HIS1002 HIS1002-9.0.html «» ¦ «»

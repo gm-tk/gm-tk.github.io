@@ -1,0 +1,95 @@
+consecutive Claude <p> sibling pairs: absent 41735  A-only 1303  kept-split 1298  joined-br 301  joined-nobr 122
+==== by feature (decided ≥ 40): joined-br share ====
+   A>10/B>10/punct/noeq       decided   729  joined-br   61 (0.08)  kept-split   654  joined-nobr  14  absent 19296 A-only 306
+   A>10/B≤10/punct/noeq       decided   266  joined-br   26 (0.10)  kept-split   232  joined-nobr   8  absent 4805 A-only 214
+   A≤4/B≤10/none/noeq         decided   120  joined-br   50 (0.42)  kept-split    31  joined-nobr  39  absent 2329 A-only 209
+   A≤10/B≤10/punct/noeq       decided   110  joined-br   27 (0.25)  kept-split    72  joined-nobr  11  absent 2714 A-only 85
+   A≤10/B≤10/none/noeq        decided    94  joined-br   57 (0.61)  kept-split    32  joined-nobr   5  absent 1542 A-only 28
+   A≤10/B>10/punct/noeq       decided    81  joined-br   15 (0.19)  kept-split    56  joined-nobr  10  absent 2377 A-only 64
+   A≤4/B>10/none/noeq         decided    48  joined-br    1 (0.02)  kept-split    39  joined-nobr   8  absent 1182 A-only 124
+
+==== by group (decided ≥ 30): joined-br share ====
+   Standard/1-10 Mathematics                  decided   355  joined-br  106 (0.30)  kept-split   230  nobr 19
+   Standard/NCEA1                             decided   224  joined-br   14 (0.06)  kept-split   174  nobr 36
+   Standard/1-10 English                      decided   208  joined-br  138 (0.66)  kept-split    58  nobr 12
+   Standard/Leaving to Learn                  decided   185  joined-br    3 (0.02)  kept-split   164  nobr 18
+   Bilingual/Te Marautanga o Aotearoa TMoA    decided   178  joined-br    2 (0.01)  kept-split   173  nobr 3
+   Standard/Online Safety (OS9000)            decided   145  joined-br    2 (0.01)  kept-split   141  nobr 2
+   Standard/1-10 Blended Literacy             decided    48  joined-br    1 (0.02)  kept-split    44  nobr 3
+   Standard/ANZH                              decided    46  joined-br    4 (0.09)  kept-split    42  nobr 0
+   Inquiry/ConnectED                          decided    46  joined-br   10 (0.22)  kept-split    36  nobr 0
+   Standard/ConnectED                         decided    46  joined-br    1 (0.02)  kept-split    42  nobr 3
+   Standard/None                              decided    35  joined-br    0 (0.00)  kept-split    32  nobr 3
+
+==== 1-10 English by feature ====
+   A≤10/B≤10/none/noeq        decided   55  joined-br   55 (1.00)  kept-split    0  nobr 0  br-pages 4 mods 2 ['ENGJ102', 'ENGJ402']
+   A≤4/B≤10/none/noeq         decided   54  joined-br   46 (0.85)  kept-split    0  nobr 8  br-pages 3 mods 2 ['ENGJ102', 'ENGJ402']
+   A>10/B>10/punct/noeq       decided   32  joined-br    2 (0.06)  kept-split   28  nobr 2  br-pages 2 mods 2 ['ENGI102', 'ENGI202']
+   A>10/B≤10/punct/noeq       decided   23  joined-br    1 (0.04)  kept-split   20  nobr 2  br-pages 1 mods 1 ['ENGI102']
+   A≤10/B≤10/punct/noeq       decided   21  joined-br   17 (0.81)  kept-split    4  nobr 0  br-pages 4 mods 3 ['ENGC101', 'ENGJ102', 'ENGJ402']
+   A≤4/B≤10/punct/noeq        decided    8  joined-br    7 (0.88)  kept-split    1  nobr 0  br-pages 2 mods 2 ['ENGC101', 'ENGJ402']
+   A≤4/B>10/none/noeq         decided    8  joined-br    0 (0.00)  kept-split    8  nobr 0  br-pages 0 mods 0 []
+==== by prefix (decided ≥ 20) ====
+   TRR      decided  171  joined-br    2 (0.01)  kept-split  166  nobr 3
+   ENGJ     decided  154  joined-br  130 (0.84)  kept-split   18  nobr 6
+   MXFU     decided  115  joined-br   41 (0.36)  kept-split   69  nobr 5
+   XDLS     decided  102  joined-br    2 (0.02)  kept-split   93  nobr 7
+   MXFL     decided   94  joined-br    4 (0.04)  kept-split   78  nobr 12
+   HIS      decided   72  joined-br    7 (0.10)  kept-split   63  nobr 2
+   AGH      decided   68  joined-br    0 (0.00)  kept-split   63  nobr 5
+   MXDB     decided   65  joined-br   52 (0.80)  kept-split   13  nobr 0
+   BLL      decided   63  joined-br    7 (0.11)  kept-split   49  nobr 7
+   ANZH     decided   46  joined-br    4 (0.09)  kept-split   42  nobr 0
+   MXEO     decided   45  joined-br    4 (0.09)  kept-split   41  nobr 0
+   HES      decided   41  joined-br    0 (0.00)  kept-split   21  nobr 20
+   CEDR     decided   38  joined-br    7 (0.18)  kept-split   30  nobr 1
+   OSAI     decided   38  joined-br    2 (0.05)  kept-split   36  nobr 0
+   OSGM     decided   37  joined-br    0 (0.00)  kept-split   37  nobr 0
+   XGF      decided   36  joined-br    0 (0.00)  kept-split   28  nobr 8
+   XLP      decided   28  joined-br    0 (0.00)  kept-split   25  nobr 3
+   OSOH     decided   26  joined-br    0 (0.00)  kept-split   25  nobr 1
+   XTAS     decided   24  joined-br    0 (0.00)  kept-split   24  nobr 0
+   OSBY     decided   23  joined-br    0 (0.00)  kept-split   22  nobr 1
+   MXDI     decided   22  joined-br    5 (0.23)  kept-split   15  nobr 2
+   TEFUN    decided   21  joined-br    0 (0.00)  kept-split   19  nobr 2
+
+   A>10/B>10/none/noeq: ANZH304 ANZH304_0.5.html «‘In what ways did Eruera Patuone inf» ¦ «It would be a good idea to refresh y»
+   A>10/B>10/none/noeq: ENGJ402 ENGJ402_6.0.html «The black body lies quite still on t» ¦ «The black body looks down through th»
+   A≤10/B>10/colon/noeq: ANZH401 ANZH401_4.0.html «Here is an example to help you with » ¦ «The item of evidence that I chose is»
+   A≤10/B>10/colon/noeq: XDLS911 XDLS911.0.0.html «This one unit standard is open to al» ¦ «Unit Standard 27106: Describe whakap»
+   A>10/B≤10/punct/noeq: ANZH401 ANZH401_9.0.html «1945 New Zealand Census data shows f» ¦ «In 1961 there were 12,000.»
+   A>10/B≤10/punct/noeq: BLL160 BLL160.html «A duck ran in the door and hopped up» ¦ «The duck got stuck in the blanket.»
+   A≤10/B≤10/punct/noeq: ANZH401 ANZH401_9.0.html «In 1961 there were 12,000.» ¦ «In 1971 there were 48,000.»
+   A≤10/B≤10/punct/noeq: CEDR204 CEDR204 STOMP.html «Close your eyes and listen carefully» ¦ «What do you hear?»
+   A>10/B>10/punct/noeq: BLL145 BLL145-1.0.html «Can you tell your supervisor a sente» ¦ «Can you tell your supervisor a sente»
+   A>10/B>10/punct/noeq: CEDO105 CEDO105.3.0.html «You are going to create an algorithm» ¦ «Below are examples of algorithms. Pr»
+   A≤10/B>10/punct/noeq: BLL160 BLL160.html «A child was in bed sleeping.» ¦ «A duck ran in the door and hopped up»
+   A≤10/B>10/punct/noeq: BLL160 BLL160.html «The duck got stuck in the blanket.» ¦ «The child did not like ducks but he »
+   A≤4/B≤10/punct/noeq: CEDR204 CEDR204 STOMP.html «What do you hear?» ¦ «Do you hear the sounds dancing in yo»
+   A≤4/B≤10/punct/noeq: ENGC101 ENGC101_5.0.html «“Run!” Harry shouted.» ¦ «“Help!” screamed Maia.»
+   A≤4/B≤10/none/noeq: CEDT104 CEDT104 Waiata In Motion.html «E Pāpā Waiari» ¦ «Taku nei mahi,»
+   A≤4/B≤10/none/noeq: CEDT104 CEDT104 Waiata In Motion.html «Taku nei mahi,» ¦ «Taku nei mahi»
+   A≤10/B>10/none/noeq: ENGC101 ENGC101_5.0.html «The door opened and …» ¦ «“Are those happy tears or … ?” Mum s»
+   A≤10/B>10/none/noeq: ENGJ402 ENGJ402_6.0.html «hoping for a miracle twenty nine tim» ¦ «the size of a mountain in the eye of»
+   A≤10/B≤10/none/noeq: ENGJ102 ENGJ102_3.0.html «Wild Wellington wind whips my face» ¦ «Savoury sausages sizzle on our BBQ»
+   A≤10/B≤10/none/noeq: ENGJ102 ENGJ102_3.0.html «Savoury sausages sizzle on our BBQ» ¦ «The lads’ loud laughter fills the ai»
+   A≤10/B≤10/colon/noeq: ENGJ402 ENGJ402_3.0.html «But bears it out even to the edge of» ¦ «If this be error and upon me proved,»
+   A≤10/B≤10/colon/noeq: MXDB302 MXDB302_9.0.html «For example, using the problem in th» ¦ «Find 25% of 20»
+   A>10/B≤10/none/noeq: ENGJ402 ENGJ402_6.0.html «The black body looks down through th» ¦ «down and down and down and down»
+   A>10/B≤10/none/noeq: ENGJ402 ENGJ402_6.0.html «the size of a mountain in the eye of» ¦ «stitching blue heaven to green earth»
+   A>10/B≤10/none/eq: MXDB302 MXDB302_2.0.html «The formula tells us to multiply the» ¦ «The area of this rectangle is 70m².»
+   A>10/B≤10/none/eq: MXDB302 MXDB302_9.0.html «We know the line that splits the top» ¦ «Let’s look at one more example, usin»
+   A≤10/B≤10/none/eq: MXDB302 MXDB302_2.0.html «4 × 8 = 32» ¦ «The area of rectangle 1 is»
+   A≤10/B≤10/none/eq: MXDB302 MXDB302_2.0.html «6 × 4 = 24» ¦ «The area of rectangle 2 is»
+   A≤10/B>10/none/eq: MXDB302 MXDB302_9.0.html «We know 150 ÷ 100 = 1.50 or 1.5» ¦ «Now, we will multiply this by 8. Rem»
+   A≤10/B>10/none/eq: MXFU301 MXFU301_6.0.html «0.700 × 100 = 70.0 = 70%» ¦ «To convert a percentage back into a »
+   A>10/B>10/none/eq: MXDI201 MXDI201_4.0.html «45 - 30 = 15 (You can round 31 to 30» ¦ «15 - 1 = 14 (the answer from 45-30 =»
+   A>10/B>10/none/eq: MXFU301 MXFU301_6.0.html «0.37 × 100 = 37.0 which is the same » ¦ «The final step is to add the % sign »
+   A≤10/B≤10/punct/eq: MXFU201 MXFU201_9.0.html «For example: at 1:00 am there is 71%» ¦ «71% is between 50% and 75%.»
+   A≤10/B≤10/punct/eq: MXFU201 MXFU201_9.0.html «71% is between 50% and 75%.» ¦ «Therefore 1:00 am will be placed in »
+   A>10/B>10/punct/eq: MXFU301 MXFU301_6.0.html «For example, given the fraction 23/1» ¦ «We can apply this to any fraction we»
+   A>10/B>10/punct/eq: MXFU301 MXFU301_7.0.html «Our calculations tell us that the sp» ¦ «Note that our relative frequencies, »
+   A≤4/B>10/none/noeq: MXFU301 MXFU301_6.0.html «For example,» ¦ «0.37 × 100 = 37.0 which is the same »
+   A>10/B≤10/colon/noeq: MXFU301 MXFU301_8.0.html «Question 2: What is the probability » ¦ «P(diamond, emerald)»
+   A≤4/B>10/colon/noeq: OSAI501 OSAI501-03.html «Example for an essay:» ¦ «“I used AI to suggest possible intro»
+   A≤4/B>10/colon/noeq: OSAI501 OSAI501-03.html «Example for a report:» ¦ «“AI helped me organise key points an»

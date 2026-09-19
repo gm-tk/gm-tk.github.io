@@ -1,0 +1,91 @@
+gold div.col-12.col-md-12 on paired pages: 1865
+==== by (box, first-child kind) — top 30 ====
+     157  pages  138 mods  90   free         W:dragAndDrop                      claude: absent 79 (0.50)  div.col-12.col-md-8 77 (0.49)  div.col-12 1 (0.01)
+     132  pages   86 mods  57   in-activity  W:dragAndDrop                      claude: absent 97 (0.73)  div.col-12.col-md-8 35 (0.27)
+     112  pages   55 mods  23   free         h3                                 claude: div.col-12.col-md-8 65 (0.58)  absent 35 (0.31)  div.col-12 12 (0.11)
+      94  pages   65 mods  49   in-activity  h3                                 claude: div.col-12 56 (0.60)  absent 34 (0.36)  div.col-12.col-md-8 4 (0.04)
+      84  pages   65 mods  37   free         p                                  claude: absent 42 (0.50)  div.col-12.col-md-12 23 (0.27)  div.col-12.col-md-8 8 (0.10)
+      74  pages   20 mods  17   free         h2                                 claude: div.col-12.col-md-8 51 (0.69)  absent 18 (0.24)  div.col-12.col-md-8.paddingR 5 (0.07)
+      70  pages   70 mods  63   free         div.whakatauki                     claude: absent 39 (0.56)  div.col-12.col-md-8 31 (0.44)
+      70  pages   53 mods  39   in-activity  p                                  claude: absent 49 (0.70)  div.col-12 17 (0.24)  div.col-12.col-md-8 4 (0.06)
+      65  pages   61 mods  54   free         h4                                 claude: absent 25 (0.38)  div.col-12.col-md-12 23 (0.35)  div.col-12.col-md-6.paddingR 9 (0.14)
+      64  pages   56 mods  41   free         W:flipCard                         claude: absent 23 (0.36)  div.col-12.col-md-4.paddingLR 21 (0.33)  div.col-12.col-md-8 13 (0.20)
+      57  pages   27 mods  19   in-activity  W:typing                           claude: absent 56 (0.98)  div.col-12.col-md-8 1 (0.02)
+      44  pages   24 mods  13   in-activity  ol                                 claude: absent 44 (1.00)
+      40  pages   13 mods  13   in-activity  img                                claude: absent 40 (1.00)
+      33  pages   28 mods  20   free         W:typing                           claude: absent 22 (0.67)  div.col-12.col-md-8 11 (0.33)
+      33  pages   27 mods  22   free         W:clickDrop                        claude: absent 24 (0.73)  div.col-12.col-md-8 8 (0.24)  div.col-12.col-md-8.tabs 1 (0.03)
+      32  pages   10 mods   7   free         div.bubble-basic.no-hover          claude: absent 32 (1.00)
+      31  pages   23 mods  16   free         W:speechBubble                     claude: absent 23 (0.74)  div.col-12.col-md-8 6 (0.19)  div.col-md-9.col-sm-8 1 (0.03)
+      31  pages   29 mods  25   free         W:carousel                         claude: absent 16 (0.52)  div.col-12.col-md-8 15 (0.48)
+      29  pages   24 mods  19   in-activity  W:carousel                         claude: absent 24 (0.83)  div.col-12.col-md-8 5 (0.17)
+      28  pages   25 mods  18   free         div.table-responsive               claude: absent 28 (1.00)
+      26  pages   25 mods  16   free         W:multiChoiceQuiz                  claude: absent 20 (0.77)  div.col-12.col-md-8 6 (0.23)
+      26  pages   21 mods  14   in-activity  W:dropQuiz                         claude: absent 26 (1.00)
+      23  pages   22 mods  18   free         div.activity.interactive           claude: absent 14 (0.61)  div.col-12.col-md-8 9 (0.39)
+      23  pages   11 mods  10   free         ol                                 claude: absent 23 (1.00)
+      22  pages   15 mods  14   in-activity  W:multiChoiceQuiz                  claude: absent 22 (1.00)
+      22  pages   17 mods  12   in-activity  W:clickDrop                        claude: absent 20 (0.91)  div.col-12.col-md-8 2 (0.09)
+      22  pages   17 mods  14   free         img                                claude: absent 22 (1.00)
+      19  pages    8 mods   7   in-activity  h4                                 claude: absent 18 (0.95)  div.col-12.col-md-8 1 (0.05)
+      19  pages   19 mods  19   free         W:rotateBanner                     claude: absent 19 (1.00)
+      17  pages   17 mods  10   free         W:tabs                             claude: absent 13 (0.76)  div.col-12.col-md-8 3 (0.18)  div.col-12.col-md-8.tabs 1 (0.06)
+
+==== per group (n ≥ 15): top kinds ====
+   Standard/1-10 Mathematics                  n= 306  [free/h3] 39  [free/W:dragAndDrop] 30  [free/W:typing] 23  [in-act/W:typing] 20
+   Standard/Leaving to Learn                  n= 212  [free/p] 34  [free/W:dragAndDrop] 27  [free/div.whakatauki] 12  [in-act/h3] 12
+   Standard/1-10 English                      n= 201  [free/W:dragAndDrop] 25  [in-act/W:dragAndDrop] 22  [free/h3] 14  [in-act/h3] 8
+   Standard/Online Safety (OS9000)            n= 188  [in-act/ol] 22  [free/div.whakatauki] 14  [free/W:dragAndDrop] 14  [free/h4] 12
+   Standard/1-10 Blended Literacy             n= 140  [in-act/W:typing] 31  [in-act/h3] 12  [free/W:dragAndDrop] 12  [in-act/W:dragAndDrop] 7
+   Fundamentals/1-10 English                  n= 140  [in-act/W:dragAndDrop] 32  [in-act/h3] 17  [in-act/W:multiChoiceQuiz] 12  [in-act/W:dropQuiz] 8
+   Inquiry/1-10 Blended Literacy              n=  98  [free/h2] 49  [in-act/img] 15  [free/p] 9  [in-act/p] 7
+   Standard/NCEA1                             n=  96  [free/h4] 13  [free/W:dragAndDrop] 11  [free/p] 9  [in-act/W:dragAndDrop] 9
+   Inquiry/ConnectED                          n=  96  [free/h2] 14  [free/h3] 11  [in-act/div.clickDropContent] 11  [in-act/p] 9
+   Bilingual/Te Marautanga o Aotearoa TMoA    n=  85  [in-act/h3] 15  [in-act/h2] 11  [free/div.whakatauki] 8  [free/ol] 8
+   Standard/ConnectED                         n=  78  [free/W:flipCard] 18  [free/div.bubble-basic.no-ho] 13  [free/W:dragAndDrop] 10  [in-act/h4] 10
+   Standard/ANZH                              n=  71  [free/h3] 13  [free/empty] 8  [free/h4] 7  [free/div.whakatauki] 5
+   Standard/None                              n=  28  [in-act/ol] 8  [free/W:multiChoiceQuiz] 6  [free/W:dragAndDrop] 5  [free/W:clickDrop] 2
+   Inquiry/EXPlore                            n=  18  [free/h3] 14  [free/h2] 3  [free/h4] 1
+
+   ('free', 'h4'): AGH1001 AGH1001.00.html parent=div.row claude=div.col-12.col-md-12
+   ('free', 'h4'): AGH1002 AGH1002.00.html parent=div.row claude=div.col-12.col-md-12
+   ('in-activity', 'W:multiChoiceQuiz'): AGH1003 AGH1003_01.0.html parent=div.row claude=absent
+   ('in-activity', 'W:multiChoiceQuiz'): ENFUN01 ENFUN01.html parent=div.row claude=absent
+   ('free', 'div.table-responsive'): AGH1003 AGH1003_03.0.html parent=div.row claude=absent
+   ('free', 'div.table-responsive'): AGH1003 AGH1003_06.0.html parent=div.row claude=absent
+   ('free', 'p'): AGH1003 AGH1003_04.0.html parent=div.row claude=absent
+   ('free', 'p'): AGH1003 AGH1003_04.0.html parent=div.row claude=absent
+   ('in-activity', 'W:dragAndDrop'): AGH1003 AGH1003_04.0.html parent=div.row claude=absent
+   ('in-activity', 'W:dragAndDrop'): AGH1004 AGH1004.06.html parent=div.row claude=absent
+   ('free', 'W:dragAndDrop'): AGH1003 AGH1003_04.0.html parent=div.row claude=absent
+   ('free', 'W:dragAndDrop'): AGH1004 AGH1004.07.html parent=div.row claude=absent
+   ('free', 'div.whakatauki'): ANZH104 ANZH104_00.0.html parent=div.col-12.col-md-8 claude=absent
+   ('free', 'div.whakatauki'): ANZH205 ANZH205_00.0.html parent=div.col-12.col-md-8 claude=div.col-12.col-md-8
+   ('free', 'W:speechBubble'): ANZH104 ANZH104_01.0.html parent=div.row claude=absent
+   ('free', 'W:speechBubble'): ANZH104 ANZH104_05.0.html parent=div.row claude=absent
+   ('free', 'div.activity.interactive'): ANZH104 ANZH104_05.0.html parent=div.row claude=div.col-12.col-md-8
+   ('free', 'div.activity.interactive'): BLL244 BLL244-1.0.html parent=div.row claude=div.col-12.col-md-8
+   ('in-activity', 'img'): ANZH104 ANZH104_05.0.html parent=div.row claude=absent
+   ('in-activity', 'img'): ANZH205 ANZH205_03.0.html parent=div.row claude=absent
+   ('in-activity', 'p'): ANZH104 ANZH104_06.0.html parent=div.row claude=div.col-12
+   ('in-activity', 'p'): BLL120 BLL120.html parent=div.row claude=absent
+   ('in-activity', 'h4'): ANZH105 ANZH105_05.0.html parent=div.row claude=div.col-12.col-md-8
+   ('in-activity', 'h4'): BLL160 BLL160.html parent=div.row claude=absent
+   ('free', 'div.bubble-basic.no-hover'): ANZH205 ANZH205_01.0.html parent=div.row.speechBubble claude=absent
+   ('free', 'div.bubble-basic.no-hover'): ANZH205 ANZH205_01.0.html parent=div.row.speechBubble claude=absent
+   ('in-activity', 'W:flipCard'): ANZH205 ANZH205_03.0.html parent=div.row claude=div.col-12.col-md-4.paddingLR
+   ('in-activity', 'W:flipCard'): ENFUN01 ENFUN01.html parent=div.row claude=div.col-12.col-md-8
+   ('free', 'W:carousel'): ANZH205 ANZH205_06.0.html parent=div.row claude=absent
+   ('free', 'W:carousel'): ANZH301 ANZH301_4.0.html parent=div.row claude=absent
+   ('free', 'W:flipCard'): ANZH301 ANZH301_1.0.html parent=div.row claude=absent
+   ('free', 'W:flipCard'): ANZH304 ANZH304_0.4.html parent=div.row claude=absent
+   ('free', 'h2'): ANZH303 ANZH303_0.1.html parent=div.row claude=div.col-12.col-md-8
+   ('free', 'h2'): ANZH303 ANZH303_0.2.html parent=div.row claude=div.col-12.col-md-8
+   ('free', 'h3'): ANZH303 ANZH303_0.1.html parent=div.row claude=div.col-12.col-md-8
+   ('free', 'h3'): ANZH303 ANZH303_0.1.html parent=div.row claude=div.col-12.col-md-8
+   ('in-activity', 'W:carousel'): ANZH304 ANZH304_0.1.html parent=div.row claude=div.col-12.col-md-8
+   ('in-activity', 'W:carousel'): ANZH304 ANZH304_0.5.html parent=div.row claude=absent
+   ('free', 'W:rotateBanner'): ANZH404 ANZH404_3.0.html parent=div.row claude=absent
+   ('free', 'W:rotateBanner'): ENGC401 ENGC401_0.1.html parent=div.row claude=absent
+   ('free', 'W:accordion'): ARFUN02 ARFUN02.html parent=div.row claude=div.col-12.col-md-8
+   ('free', 'W:accordion'): BLL254 BLL254_2.0.html parent=div.row claude=div.col-12.col-md-8

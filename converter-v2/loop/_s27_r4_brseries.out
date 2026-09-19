@@ -1,0 +1,31 @@
+series   decided  br-share   br/split/spaced/glued | red short unmatched | br-pages mods | gold br parents
+EXPFUN0    187   0.00   0/1/186/0 | 5 21 47 | 0 5 | {}
+ENGJ4       62   0.97   60/1/1/0 | 14 7 18 | 5 2 | {'p': 41, 'td': 19}
+SSCI2       61   0.00   0/50/11/0 | 14 4 25 | 0 1 | {}
+ARFUN0      31   0.48   15/15/1/0 | 37 36 184 | 2 2 | {'li': 15}
+SSOG1       30   0.30   9/18/3/0 | 13 20 94 | 2 2 | {'p': 9}
+OSSC5       27   0.00   0/21/6/0 | 1 13 3 | 0 1 | {}
+MXFL2       26   0.27   7/19/0/0 | 43 30 95 | 2 4 | {'p': 7}
+MXFU2       23   0.09   2/20/1/0 | 44 27 44 | 2 2 | {'p': 2}
+MXDI2       22   0.27   6/16/0/0 | 140 95 99 | 3 2 | {'p': 5, 'li': 1}
+BLL1        20   0.00   0/19/1/0 | 46 5 13 | 0 24 | {}
+HIS1        20   0.65   13/7/0/0 | 77 30 29 | 2 7 | {'p': 13}
+CEDW5       18   0.33   6/7/5/0 | 27 2 20 | 1 1 | {'p': 6}
+CEDR5       17   0.00   0/16/1/0 | 129 42 65 | 0 1 | {}
+CEDO5       16   0.00   0/13/3/0 | 72 25 23 | 0 2 | {}
+OSAI5       15   0.20   3/7/5/0 | 14 1 19 | 1 1 | {'p': 3}
+SSFUN0      15   0.40   6/6/3/0 | 179 80 84 | 1 7 | {'p': 6}
+TEFUN0      14   0.36   5/6/3/0 | 21 10 15 | 1 8 | {'p': 5}
+ENGR2       12   1.00   12/0/0/0 | 26 3 6 | 1 2 | {'p': 12}
+OSAH4       12   0.00   0/10/2/0 | 2 12 0 | 0 1 | {}
+PES1        12   0.00   0/8/4/0 | 157 63 45 | 0 7 | {}
+TWHA9       11   0.00   0/1/0/10 | 36 14 32 | 0 6 | {}
+TEDC4       10   0.40   4/1/5/0 | 17 8 43 | 2 2 | {'p': 4}
+BLL2         9   0.33   3/6/0/0 | 29 6 7 | 1 15 | {'li': 3}
+HPRE2        9   0.00   0/5/4/0 | 21 4 4 | 0 1 | {}
+MXFU4        9   0.44   4/3/2/0 | 13 8 17 | 4 2 | {'p': 4}
+XLP0         9   0.56   5/4/0/0 | 8 6 13 | 1 6 | {'li': 5}
+CEDK5        8   0.00   0/8/0/0 | 15 29 13 | 0 1 | {}
+CEDT5        8   0.00   0/8/0/0 | 12 13 13 | 0 1 | {}
+
+modules with >= 6 br sites: {'ARFUN04': {'red': 37, 'unmatched': 184, 'split': 15, 'short': 35, 'br': 15, 'spaced': 1}, 'CEDW501': {'red': 27, 'split': 7, 'unmatched': 20, 'br': 6, 'short': 2, 'spaced': 5}, 'ENGI302': {'red': 5, 'br': 7, 'unmatched': 4}, 'ENGJ402': {'red': 9, 'short': 6, 'br': 38, 'unmatched': 16, 'spaced': 1}, 'ENGJ403': {'red': 5, 'split': 1, 'br': 22, 'unmatched': 2, 'short': 1}, 'ENGR202': {'red': 17, 'br': 12, 'short': 1}, 'HIS1002': {'red': 4, 'short': 1, 'unmatched': 16, 'br': 12, 'split': 6}, 'MXDB301': {'unmatched': 17, 'short': 5, 'br': 6, 'red': 1}, 'MXDI201': {'unmatched': 67, 'red': 118, 'split': 14, 'br': 6, 'short': 78}, 'MXFL201': {'red': 7, 'br': 6, 'unmatched': 24, 'split': 4, 'short': 2}, 'OSAH501': {'red': 1, 'br': 7}, 'SSFUN05': {'short': 20, 'red': 25, 'unmatched': 2, 'br': 6}, 'SSOG103': {'red': 8, 'split': 18, 'unmatched': 92, 'spaced': 3, 'short': 17, 'br': 9}, 'XTAS101': {'red': 2, 'short': 1, 'br': 6, 'unmatched': 2}}

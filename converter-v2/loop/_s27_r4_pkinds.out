@@ -1,0 +1,120 @@
+==== gold <p> sub-kinds: total gold / total claude / per-page DEFICIT (gold over claude) / per-page EXCESS / deficit pages / modules ====
+   text                   gold  31395 claude  32065  deficit  6808  excess  7478  pages  994  mods 333
+   text+inline            gold   4685 claude   5015  deficit  1515  excess  1845  pages  523  mods 255
+   br                     gold   1253 claude      3  deficit  1250  excess     0  pages  435  mods 201
+   b-only                 gold    949 claude   1751  deficit   599  excess  1401  pages  212  mods 125
+   inline-only            gold    207 claude    114  deficit   182  excess    89  pages   71  mods  47
+   other:math             gold    143 claude     34  deficit   127  excess    18  pages   41  mods  19
+   i-only                 gold    161 claude    607  deficit   116  excess   562  pages   57  mods  41
+   other:ul               gold     28 claude      0  deficit    28  excess     0  pages   23  mods  17
+   empty                  gold     75 claude   7471  deficit    17  excess  7413  pages    9  mods   7
+   a-only                 gold     19 claude   1014  deficit    14  excess  1009  pages    4  mods   3
+   other:img              gold     12 claude      0  deficit    12  excess     0  pages    6  mods   4
+   other:p                gold      8 claude      0  deficit     8  excess     0  pages    8  mods   8
+   other:b,math           gold     10 claude      6  deficit     8  excess     4  pages    6  mods   4
+   other:li               gold      7 claude      0  deficit     7  excess     0  pages    2  mods   2
+   other:div              gold      7 claude      0  deficit     7  excess     0  pages    7  mods   7
+   other:b,img            gold      5 claude      0  deficit     5  excess     0  pages    1  mods   1
+   other:ol               gold      4 claude      0  deficit     4  excess     0  pages    4  mods   4
+   other:ruby             gold      3 claude      0  deficit     3  excess     0  pages    1  mods   1
+   other:input            gold      3 claude      0  deficit     3  excess     0  pages    1  mods   1
+   other:mark             gold      3 claude      0  deficit     3  excess     0  pages    2  mods   1
+   other:a,div,p          gold      2 claude      0  deficit     2  excess     0  pages    2  mods   2
+   other:h4               gold      2 claude      0  deficit     2  excess     0  pages    2  mods   2
+   other:math,span        gold      2 claude      0  deficit     2  excess     0  pages    2  mods   1
+   other:p,ul             gold      2 claude      0  deficit     2  excess     0  pages    2  mods   2
+   other:code             gold      2 claude      0  deficit     2  excess     0  pages    1  mods   1
+   other:code,i           gold      2 claude      0  deficit     2  excess     0  pages    1  mods   1
+   other:img,p            gold      1 claude      0  deficit     1  excess     0  pages    1  mods   1
+   other:div,h4,p         gold      1 claude      0  deficit     1  excess     0  pages    1  mods   1
+   other:b,p              gold      1 claude      0  deficit     1  excess     0  pages    1  mods   1
+   other:b,s              gold      1 claude      0  deficit     1  excess     0  pages    1  mods   1
+   other:a,p              gold      1 claude      0  deficit     1  excess     0  pages    1  mods   1
+   other:div,p            gold      1 claude      0  deficit     1  excess     0  pages    1  mods   1
+   other:b,div,p,span     gold      1 claude      0  deficit     1  excess     0  pages    1  mods   1
+   other:img,math         gold      1 claude      0  deficit     1  excess     0  pages    1  mods   1
+   other:div,math,p       gold      1 claude      0  deficit     1  excess     0  pages    1  mods   1
+   other:h5,p             gold      1 claude      0  deficit     1  excess     0  pages    1  mods   1
+   other:math,mi          gold      1 claude      0  deficit     1  excess     0  pages    1  mods   1
+   other:b,math,sup       gold      1 claude      0  deficit     1  excess     0  pages    1  mods   1
+   other:math,ul          gold      1 claude      0  deficit     1  excess     0  pages    1  mods   1
+   other:a,ul             gold      1 claude      0  deficit     1  excess     0  pages    1  mods   1
+   other:p,span           gold      1 claude      0  deficit     1  excess     0  pages    1  mods   1
+
+==== deficit by (parent, sub-kind) — top 25 ====
+    3024  div.col-12                                   text
+    2020  div.col-12.col-md-8                          text
+    1391  div.clickDropContent                         text
+     658  div.col-12.col-md-8                          text+inline
+     608  div.col-12                                   text+inline
+     601  div.col-12.col-md-8.paddingR                 text
+     374  div.activity.clickDropContent.dropbox        text
+     343  div.col-12.col-md-12                         text
+     321  div.col-12.col-md-8                          br
+     314  div                                          text
+     281  div.alert                                    text
+     278  div.col-12.col-md-6.paddingR                 text
+     271  td                                           text
+     267  div.col-12                                   br
+     240  div.alertActivity                            text
+     240  div.activity.dropbox                         text
+     227  div.slidePoints                              text
+     219  div.whakatauki                               text
+     214  div.clickDropContent                         text+inline
+     201  div.TKmodal                                  text
+     171  div.col-12.col-md-6.offset-md-0              text
+     156  div.col-12.col-md-8                          b-only
+     149  div.clickDropContent                         br
+     148  div.col-12.col-md-8.paddingR                 text+inline
+     145  div.col-12.col-md-6                          text
+
+==== per group (deficit ≥ 60): top sub-kinds ====
+   Standard/NCEA1                             n= 1548  [text] 1085  [text+inline] 250  [br] 74  [b-only] 39  [inline-only] 38
+   Standard/1-10 Mathematics                  n= 1394  [text] 719  [br] 354  [text+inline] 123  [other:math] 83  [b-only] 64
+   Standard/1-10 English                      n= 1296  [text] 640  [br] 311  [text+inline] 215  [b-only] 69  [i-only] 18
+   Standard/Leaving to Learn                  n=  983  [text] 796  [text+inline] 81  [br] 49  [b-only] 39  [i-only] 7
+   Standard/1-10 Blended Literacy             n=  702  [text] 566  [br] 43  [text+inline] 42  [b-only] 23  [inline-only] 14
+   Inquiry/1-10 Blended Literacy              n=  604  [text] 468  [text+inline] 100  [i-only] 20  [inline-only] 10  [br] 4
+   Standard/Online Safety (OS9000)            n=  556  [text] 361  [text+inline] 72  [b-only] 60  [br] 44  [inline-only] 14
+   Inquiry/ConnectED                          n=  550  [text] 397  [text+inline] 49  [b-only] 47  [br] 30  [inline-only] 16
+   Bilingual/Te Marautanga o Aotearoa TMoA    n=  500  [text] 233  [text+inline] 132  [b-only] 49  [inline-only] 42  [br] 41
+   Fundamentals/1-10 Mathematics              n=  416  [text] 254  [br] 123  [text+inline] 23  [other:img] 8  [empty] 4
+   Standard/ConnectED                         n=  333  [text] 247  [text+inline] 41  [b-only] 30  [br] 15
+   Standard/ANZH                              n=  285  [text] 156  [b-only] 81  [text+inline] 20  [br] 20  [i-only] 3
+   Standard/None                              n=  255  [text] 142  [text+inline] 52  [br] 22  [b-only] 21  [i-only] 17
+   Inquiry/Te ara Whakapuawa -Wellbeing       n=  234  [text] 185  [text+inline] 34  [br] 12  [b-only] 2  [i-only] 1
+   Fundamentals/None                          n=  206  [text+inline] 98  [text] 92  [inline-only] 12  [br] 4
+   Fundamentals/1-10 Health and PE            n=  163  [text] 111  [b-only] 21  [inline-only] 11  [other:ul] 9  [text+inline] 6
+   Standard/1-10 Social Science               n=  144  [text] 106  [text+inline] 19  [br] 16  [b-only] 2  [i-only] 1
+   Inquiry/Leaving to Learn                   n=   96  [text] 64  [text+inline] 19  [br] 11  [b-only] 2
+   Fundamentals/1-10 English                  n=   94  [text] 33  [text+inline] 19  [i-only] 16  [b-only] 13  [br] 12
+   Standard/EXPlore                           n=   71  [text] 64  [text+inline] 5  [inline-only] 1  [br] 1
+
+   text: AGH1001 AGH1001.00.html +1 ('div.col-12.col-md-8', 'This module “From the Ground Up” is an i')
+   text: AGH1001 AGH1001.02.html +8 ('div.col-12.col-md-8', 'Explain the significance of agricultural')
+   text: AGH1001 AGH1001.04.html +6 ('div.col-12.col-md-8', 'Describe the role our unique climate and')
+   text: AGH1001 AGH1001.05.html +5 ('div.col-12.col-md-8', 'Recognise management practices and the r')
+   text+inline: AGH1001 AGH1001.04.html +1 ('div.col-12.col-md-8', 'Livestock reproduction on farming system')
+   text+inline: AGH1002 AGH1002.01.html +3 ('div.col-12.col-md-8', 'Soils also take a long time to form. Two')
+   text+inline: AGH1002 AGH1002.02.html +2 ('div.col-12.col-md-8', 'A key factor which determines the levels')
+   text+inline: AGH1002 AGH1002.03.html +1 ('div.col-12.col-md-8', 'Tiny roots hairs on the surface of plant')
+   inline-only: AGH1001 AGH1001.04.html +1 ('div.col-12', '')
+   inline-only: AGH1001 AGH1001.05.html +1 ('div.alert.blank', '')
+   inline-only: AGH1004 AGH1004.03.html +4 ('div.shapeContent', '')
+   inline-only: AGH1009 AGH1009.04.0.html +1 ('div.col-12', '')
+   b-only: AGH1002 AGH1002.02.html +1 ('div.col-12.col-md-8', '')
+   b-only: AGH1004 AGH1004.03.html +1 ('div.col-12.col-md-8', '')
+   b-only: AGH1005 AGH1005.06.html +7 ('div.col.paddingL', '')
+   b-only: ANZH101 ANZH101_4.0.html +1 ('a', '')
+   br: AGH1003 AGH1003_03.0.html +3 ('td', 'Sheep and Beef Farms Deer Farms')
+   br: AGH1003 AGH1003_04.0.html +1 ('div.shapeContent', 'Organic matter provides food for microor')
+   br: AGH1009 AGH1009.05.html +1 ('div.col-6.col-md-3.offset-3.offset-md-0.paddingL', 'This chart shows the greenhouse gas emis')
+   br: AGH1009 AGH1009.03.1.html +1 ('div.col-12.col-md-8', 'Designer note: The requested plugging di')
+   i-only: ANZH401 ANZH401_4.0.html +1 ('div.activity.alertPadding', '')
+   i-only: ANZH401 ANZH401_10.0.html +1 ('div.activity.alertPadding', '')
+   i-only: ANZH401 ANZH401_11.0.html +1 ('div.activity.dropbox', '')
+   i-only: ART1006 ART1006_1.0.html +1 ('div.col-12', '')
+   other:math: CEDK501 CEDK501_2.0.html +5 ('div.col-12.col-md-8', '')
+   other:math: ENGS401 ENGS401_5.0.html +2 ('ul', '')
+   other:math: MXDB301 MXDB301_4.0.html +3 ('div.alert', 'The formula this video used can also be ')
+   other:math: MXDI102 MXDI102_3.0.html +12 ('div.col-12', 'Ākonga need to read fractions such as as')

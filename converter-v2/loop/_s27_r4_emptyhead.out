@@ -1,0 +1,35 @@
+Empty [Hn] flags: 57 on 37 pages / 18 modules  by tag {'H2': 22, 'H3': 33, 'H4': 2}
+next element after the flag: END:empty 24; p:short 14; p:long 9; div:short 7; div:long 2; i:long 1
+gold element for the short <p> text that follows: gold:absent 11; gold:h2 2; gold:p 1
+   Fundamentals: gold:absent 4
+   Inquiry: gold:absent 3
+   Standard: gold:absent 4  gold:h2 2  gold:p 1
+
+   ('H2', 'END:empty', 'n/a'): ARFUN02/ARFUN02_0_0.html «»
+   ('H2', 'END:empty', 'n/a'): CEDT501/CEDT501_2_0.html «»
+   ('H2', 'END:empty', 'n/a'): CEDT501/CEDT501_6_0.html «»
+   ('H3', 'END:empty', 'n/a'): ARFUN02/ARFUN02_0_0.html «»
+   ('H3', 'END:empty', 'n/a'): CEDT104/CEDT104_0_0.html «»
+   ('H3', 'END:empty', 'n/a'): CEDT501/CEDT501_3_0.html «»
+   ('H2', 'p:short', 'gold:absent'): SSFUN01/SSFUN01_0_0.html «writers note: activity 1a: agree and disagreeing»
+   ('H2', 'p:short', 'gold:absent'): SSFUN01/SSFUN01_0_0.html «writers note: activity 2a: connecting with others:»
+   ('H2', 'p:short', 'gold:absent'): SSFUN01/SSFUN01_0_0.html «writers note: activity 3a: rights and responsibili»
+   ('H3', 'p:short', 'gold:absent'): CEDT104/CEDT104_0_0.html «designer/developer to do: a media list item goes h»
+   ('H3', 'p:short', 'gold:absent'): CEDT104/CEDT104_0_0.html «designer/developer to do: a media list item goes h»
+   ('H3', 'p:short', 'gold:absent'): CEDT104/CEDT104_0_0.html «designer/developer to do: a media list item goes h»
+   ('H3', 'div:short', 'n/a'): CEDT104/CEDT104_0_0.html «cedt104-int-00-06-dropdown ▼»
+   ('H3', 'div:short', 'n/a'): CEDT104/CEDT104_0_0.html «cedt104-int-00-07-dropdown ▼»
+   ('H3', 'div:short', 'n/a'): CEDT104/CEDT104_0_0.html «cedt104-int-00-08-dropdown ▼»
+   ('H3', 'p:long', 'n/a'): ART1005/ART1005_0_0.html «those who inhabit the planet earth live in a natur»
+   ('H3', 'p:long', 'n/a'): MXFU302/MXFU302_5_0.html «the could be replaced with a letter as the symbol »
+   ('H3', 'p:long', 'n/a'): SCPH301/SCPH301_7_0.html «in the last lesson, we learnt about how we can use»
+   ('H3', 'i:long', 'n/a'): CEDO501/CEDO501_5_0.html «--> in this lesson, you’ll build on the internet s»
+   ('H2', 'p:long', 'n/a'): HIS1003/HIS1003_2_0.html «writers note: the importance of empathy and ethics»
+   ('H2', 'p:long', 'n/a'): HIS1003/HIS1003_6_0.html «writers note: lesson 6: government actions and uni»
+   ('H2', 'p:long', 'n/a'): HIS1003/HIS1003_7_0.html «writers note: lesson 7: examining and exploring pe»
+   ('H4', 'p:short', 'gold:p'): MXFL401/MXFL401_3_0.html «why do we multiply by 1.15 to get the “gst inclusi»
+   ('H4', 'END:empty', 'n/a'): OSAH301/OSAH301_2_0.html «»
+   ('H3', 'div:long', 'n/a'): XGF9006/XGF9006_4_0.html «reliable or not? not all information is created eq»
+   ('H3', 'div:long', 'n/a'): XGF9006/XGF9006_5_0.html «choose your creative path in this activity, you ha»
+   ('H2', 'p:short', 'gold:h2'): XWHA02/XWHA02_1_0.html «can you think about what makes you, you?»
+   ('H2', 'p:short', 'gold:h2'): XWHA02/XWHA02_2_0.html «now it’s your turn to show your i am.»

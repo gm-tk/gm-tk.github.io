@@ -1,0 +1,16 @@
+Session 27 Round 4 — PICK pass on the r399 corpus, no engine change: the D10-3 build lane and the <br> follow-up measured to the floor
+
+The coverage census rebuilt fresh on the r399 corpus (2490 built / 2450 declined = 50.4 %): dragAndDrop's 795
+declines spread over 663 authoring signatures; the largest, the tag that captured nothing (53 bundles), decomposed
+by _s27_r4_ddhead.cjs into data-less D&Ds (gap-fills, maps — 103) and the TITLE-LED form (the widget tag → a [H3]
+title → prose → the table; heading_is_terminator ends the walk at the title): 25 bundles / 24 pages, the gold
+builds a dragAndDrop on 10 of them and only ≈ 10 have a builder-readable table shape — under D10-3's ≥ 20-site bar.
+No widget type has an un-built dialect ≥ 20 sites left on this corpus (clickDrop's 24 / 5 = the XDLS tile capture
+class; selfCheck's 153 = the phonics typing tables). The soft-break <br> follow-up is CLOSED: _s27_r4_brseries.py
+puts the writer's soft break as <br> on ≈ 8 pages (ENGJ4 60 / 62 on 5 pages / 2 modules); _s27_r4_goldbr.py /
+_s27_r4_brjoin.py show the gold's 3819 br-carrying elements are developer joins of writer paragraphs with no
+feature, prefix or series at the floor outside two poem modules. The Empty [Hn] flags (2 derivable sites), the
+col-12 col-md-12 widget wrapper (re-declined on the paired census) and the missing <p> (order + editorial) round
+out the pass. Plateau window 2 of 3. The s27-r3 round-log clock corrected (11:30, the commit time).
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
