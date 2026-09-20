@@ -1,0 +1,49 @@
+nested pairs on paired pages: 97 | pages 84 | modules 63
+  54  ABSENT (inner text not in gold)
+         ENFUN04_0_0.html 2B>2C [ABSENT] https docs google com document d 1ydhj1g
+         WJFUN115_0_0.html 3C>3D [ABSENT] 1the horse was steady as a rock on the n || 2the c
+         BLL240_1_1.html 1A>1B [ABSENT] https media istockphoto com id 903479832 || https 
+         XDLS909_4_0.html 4B>4C [ABSENT] who can vote if you are over 18 a citize || what t
+         AGH1008_5_0.html 3C>5C [ABSENT] click on the heading to get the addition
+         ANZH301_7_0.html 7A>7B [ABSENT] urban m ori protest movements urban m or
+  19  gold: in the OUTER's box (same number)
+         ENFUN02_0_0.html 4D>4E [4D] new zealand s connection to the wider world
+         BLL112_1_0.html 1B>1C [1B] when you have made a correct word can you tell you
+         BLL113_1_0.html 1B>1C [1B] click on the word on
+         BLL114_2_0.html 2B>2C [2B] when you have made a correct word can you tell you
+         BLL123_2_0.html 2A>2B [2A] which line on the grid is completed
+         BLL124_1_0.html 1D>1E [1D] read each sentence below and decide if it is askin
+  16  gold: in ANOTHER box (other number)
+         FRFUN06_1_0.html 1A>1B [2A] drag the words into the correct column
+         FRFUN06_3_0.html 3A>3B [4B] contains the ien team sound
+         FRFUN06_3_0.html 4A>3D [4C] which of these words contain the ill sound
+         FRFUN06_4_0.html 1A>4B [5A] click the words where you know that the final cons
+         ANZH203_3_0.html 3C>3D [4C] you will find this document in your journal which 
+         ENGJ102_1_0.html 1A>1C [1B] click on the nouns in the sentence
+   6  gold: in NO box
+         FRFUN06_2_0.html 5B>2D [NOBOX] audiovisual request template fun06 pronunciation d
+         HIS1003_2_0.html 2F>2G [NOBOX] we will continue to develop our understanding of t
+         HIS1004_1_0.html 1A>1B [NOBOX] while these 30 human rights are guaranteed by the 
+         HIS1004_7_0.html 7L>7M [NOBOX] if you have not yet completed the lesson hisfun08 
+         HIS1008_6_0.html 6F>6G [NOBOX] civil rights leaders such as martin luther king an
+         SSFUN07_2_0.html 2D>2E [NOBOX] what is consumption and why do people want to buy 
+   2  gold: in its OWN box (the inner's number)
+         CBI1004_3_0.html 3A>3B [3B] genetic characteristics are determined by the sequ
+         ENGI405_5_0.html 5L>5M [5M] rolling out the dough
+
+by template | subject:
+  Standard       1-10 Blended Literacy        {'ABSENT (inner text not in gold)': 15, "gold: in the OUTER's box (same number)": 10}
+  Standard       NCEA1                        {'ABSENT (inner text not in gold)': 8, "gold: in its OWN box (the inner's number)": 1, 'gold: in NO box': 4, 'gold: in ANOTHER box (other number)': 3, "gold: in the OUTER's box (same number)": 3}
+  Standard       1-10 Mathematics             {'ABSENT (inner text not in gold)': 10, 'gold: in ANOTHER box (other number)': 5, "gold: in the OUTER's box (same number)": 1}
+  Standard       1-10 English                 {'ABSENT (inner text not in gold)': 10, "gold: in its OWN box (the inner's number)": 1, 'gold: in ANOTHER box (other number)': 2}
+  Fundamentals   1-10 Languages               {'gold: in ANOTHER box (other number)': 4, 'gold: in NO box': 1}
+  Standard       Leaving to Learn             {"gold: in the OUTER's box (same number)": 2, 'ABSENT (inner text not in gold)': 3}
+  Standard       ANZH                         {'gold: in ANOTHER box (other number)': 1, 'ABSENT (inner text not in gold)': 2}
+  Standard       1-10 Health and PE           {"gold: in the OUTER's box (same number)": 2, 'ABSENT (inner text not in gold)': 1}
+  Fundamentals   1-10 English                 {"gold: in the OUTER's box (same number)": 1, 'ABSENT (inner text not in gold)': 1}
+  Fundamentals   1-10 Writing (MiW)           {'ABSENT (inner text not in gold)': 1}
+  Inquiry        1-10 Blended Literacy        {'ABSENT (inner text not in gold)': 1}
+  Inquiry        Leaving to Learn             {'ABSENT (inner text not in gold)': 1}
+  Standard       ConnectED                    {'ABSENT (inner text not in gold)': 1}
+  Standard       1-10 Science                 {'gold: in ANOTHER box (other number)': 1}
+  Standard       1-10 Social Science          {'gold: in NO box': 1}

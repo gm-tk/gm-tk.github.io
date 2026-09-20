@@ -1,5 +1,38 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-20 (round 414, build 260619.85) — THE NESTED ACTIVITY BOX: a synthetic widget box never opens inside an open activity box — the widget belongs to the open box (the autonomous loop's session 29 Round 5; SCOPED regeneration of the 65 affected modules — scoped ship #6 since the 19 Sept FULL; every protected gate HELD-or-IMPROVED)
+
+### 1. WHAT CHANGED
+
+**The class.** Claude shipped an `activity` box INSIDE another `activity` box on **108 sites / 94 pages / 65 modules**; the gold nests on 3 pages (11 boxes, all Mathematics — MXDI101 / MXFL101 / MXFL301, editorial). The inner box was ALWAYS `activity interactive` — the r217 SYNTHETIC standalone-widget box (`saOwner`) or the r266 level-pages box (`lvOwner`): both are decided AFTER the bundle site's `isNewActivity` guard (which closes an open activity only for a bundle with a REAL owner or id), so a standalone task widget met while a writer's activity frame was still on the stack — a bundle-owned box whose frame stayed open after its own widget (77 of 108; the r314 / r378 held frames and the plain owned box), a plain writer box (22), a super-content box (9) — opened its own box inside the open one (HIS1004 7D: the writer's `[Activity 7D]` + `[Interactive] Please add a button …` → `activity 7D › activity interactive 7E`; MXFL102 8A › 7B; BLL114 2B › 2C). Found through the empty-shell census (`outputs/_s29_r5_emptyrows.py` → `_s29_r5_emptyrows.out`: 818 empty `row › col` shells — 725 the module menu's `moduleMenu › row › col-md-8` shell on pages whose gold menu has TEXT (445) or no menu element (56), the body's 154 decomposing to the nested box's own artefact (76: the inner box's close pops the outer's inner `row › col-12`, and the outer's own close then lands in a fresh `row › col-md-8` shell), 38 writer-owned empty boxes and 14 HPFUN omitted-prompt rows).
+
+**Measured** (`outputs/_s29_r5_nestbox.py` → `_s29_r5_nestbox.out`, every nested pair on a paired page, the inner box's words found in the gold): 97 pairs / 84 pages / 63 modules; decided 43 — the gold keeps the widget INSIDE the outer's box 19 (BLL 10 / 10, the phonics multi-widget box of the r229 CL-0030 record), starts a SEPARATE sibling box 18 (Mathematics 5 / 6, English 3 / 3, FRFUN 4 / 4, NCEA1 3), no box 6; 54 ABSENT (the gold's built widget carries different words). The nesting itself is 0.97 wrong in every group; the un-nesting FORM looked split by family — so both forms were scored with the skeleton gate's own `match()` on the probe's 84 paired ON pages (`_s29_r414_variants.sh`): SUPPRESS the synthetic box everywhere = **81 up / 3 down (+163.5 pp-sum; every subject group net up — Mathematics 12 / 0, English 9 / 0, NCEA1 15 / 1, BLL 23 / 1)**; CLOSE the outer first everywhere = 28 up / 24 down (+27.7; BLL 2 / 14); the per-subject mix 50 / 10 (+115.4). The gate decides: the widget belongs to the OPEN box (the `activity_close_before.keeps_inside` rule — "everything content-like including interactive placeholders stays inside").
+
+**The fix (DATA OVER CODE).** `activity_wrapper.standalone_widget_box.inside_open_activity {enabled, env NESTBOX_OFF, close_outer_subjects: []}`: at the bundle site, when the synthetic owner (`saOwner` / `lvOwner`) is about to open and the stack top is an activity, the synthetic box is SUPPRESSED and the widget renders inside the open box (no positional letter spent — every later box on the page keeps the gold's lettering); a subject listed in `close_outer_subjects` (the module index's subject; none measured to want it) takes the other form — the outer closes first (the `isNewActivity` convention) and the widget becomes the next sibling box. `ContentConverter` (the bundle site, `actOwner` now `let`). OFF = the r413 output byte-for-byte.
+
+### 2. PROOF
+
+- `_s29_r414_probe_run.sh` (the r410 harness over all 494 Claude-dir modules, 4 shards): **OFF (`NESTBOX_OFF`) = disk 2555 / 2555**; **ON = 94 pages / 65 modules** (`_affected_r414.txt`) = the nested-box census to the page; nested boxes in the ON output **108 → 0**; the body's empty shells 154 → 74.
+- `_s29_r414_pagescore.py` (the gate's own `match()` on the ON pages before regenerating): **81 up / 3 down / 0 same, SCAFFOLD pp-sum +163.5, RAW +64.1**; the three dips BLL162_1_0 −1.1, HIS1004_8_0 −0.5, XDLS909_4_0 −0.1 (alignment on pages whose gold boxes differ in count; RAW up on BLL162).
+- `REGENERATE CORPUS` scoped by §0a: the 65 + the 12-module spot-check sample (`_s29_r414_regen.sh`, 7 batches rc 0); `scoped_ship.sh --affected _affected_r414.txt --toggle NESTBOX_OFF --no-regen --commit --round 414` **PASS** — content-hash 0 truly stale, containment 65 ⊆ 65, spot-check 12 / 12 byte-identical, the exact decomposition gate proof (`_s29_r414_scoped_ship.log`).
+- `_s29_skdelta.py _s29_r413_sk_final.json _s29_r414_sk_final.json --affected _affected_r414.txt`: **84 movers, 81 up / 3 down, 0 outside the affected set**, 0 pages added / gone; BLL143_1_0 +15.1, FRFUN06_3_0 +12.2, AGH1008_5_0 +7.9, BLL151_1_0 +6.6, ENGS404_2_0 +6.4.
+- Verifiers in the gate run: dragAndDrop 21 widgets / defect 0, flipCard divergence 0, speechBubble / modal / mtkquiz / math / menulabels ✓ — every RESULT identical to r413.
+
+### 3. PROTECTED GATES (all HELD-or-IMPROVED — `_s29_r414_gates.log`, `_s29_r414_scoped_ship.log`)
+
+- **Skeleton (PRIMARY)**: SCAFFOLD **53.817 → 53.886 % (+0.0696pp)**; ≥50 **1408 → 1412**, ≥75 **236 → 238**, ≥90 **20** EXACT; RAW **37.970 → 37.997 %**; 2349 pairs, skipped 0 (state `outputs/_s29_r414_sk_final.json`).
+- **compare_structure** exact **14174** / EXTRA **186** / MISSING **690** / row-wrap **23** EXACT; **body_compare** 54 / 6 / 190 / 248 EXACT; **defect** clean 2504 / 2548 = 98.27 %, leak 73 / 44 EXACT.
+- tags **9557 / 9557**; entry-parity PASS; index-sync 33 / 28; **16 selftests GREEN** (46 PASS / GREEN lines, 0 FAIL).
+- Ship ledger: **scoped ship #6 since the 19 Sept FULL** (2 of headroom); fast-loop baseline + content manifest refreshed; feature index `--rehtml` / `--merge` / `--selftest` GREEN.
+- DIFF MINER re-mined on the r414 corpus (`_diff_miner_s29_r414.log`): **182 → 181 CANDIDATE rows** — the `activity EXTRA div.col-12` row (the nested box's inner column) gone, nothing new.
+- Plateau: **+0.0696pp with ≥50 +4 / ≥75 +2 — the window RESETS (0 of 3)**.
+
+### 4. RECORDED, NOT TAKEN (the Round 5 PICK's measurements — `LOOP_STATE.md`)
+
+- The module menu's empty `row › col-md-8` shell (725 of the 818 shells): right where the gold's menu has content (445 pages — class C menu text, the r147 "not-in-WT" record); where the gold ships NO menu element (56: FRFUN 25 / 26 lesson pages, ConnectED 13) the fix is a family `menu_type` row, not a shell rule.
+- The 38 writer-owned EMPTY boxes (the r379 `[Activity: Embedded – Brainstorm]` class) and the 14 HPFUN omitted-prompt rows (r203).
+- The r314 / r378 held-frame `breakRow()` running with an outer container still open (the shell artefact's mechanism) — closed for the nested-box case by this round; no other producer found.
+
 ## 2026-09-20 (round 413, build 260619.84) — THE OWNED HALF OF THE r412 CLASS: a writer-owned typed-widget box whose walk ended at the heading takes the heading, prose and table too (the r407-recorded item itself — "the typed-widget empty boxes, the normal path's opener + a heading"; the autonomous loop's session 29 Round 4; env `HEADTABLEOWNED_OFF` inside `HEADTABLE_OFF`; **SCOPED regeneration of the 5 affected modules, scoped ship #5 since the 19 Sept FULL**)
 
 ### 1. WHAT CHANGED

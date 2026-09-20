@@ -2169,7 +2169,44 @@ class ContentConverter {
 					// same numbered `activity interactive` form, but the dialect's box
 					// also carries the writer's OWN title heading (a task type like
 					// radioQuiz can qualify for both — the titled form is the human's).
-					const actOwner = bundle.activityOwner ?? (embeddedAct ? it : (reoOwner ?? lvOwner ?? saOwner));
+					let actOwner = bundle.activityOwner ?? (embeddedAct ? it : (reoOwner ?? lvOwner ?? saOwner));
+					// ROUND 414 (the autonomous loop's session 29, Round 5): A SYNTHETIC WIDGET BOX NEVER
+					// OPENS INSIDE AN OPEN ACTIVITY BOX. The r217 saOwner / r266 lvOwner are decided AFTER
+					// the isNewActivity guard above (which closes an open activity only for a bundle with a
+					// REAL owner or id), so a standalone task widget met while a writer's frame was still
+					// open — a bundle-owned box whose frame stayed open after its own widget, a plain
+					// writer box, a super-content box — opened its box INSIDE that frame: 108 nested boxes
+					// on 94 pages / 65 modules, where the gold nests on 3 pages (11, all Mathematics —
+					// editorial). The widget belongs to the OPEN box (the activity_close_before keeps_inside
+					// rule): scored with the skeleton gate's own match() on the probe's 84 paired pages,
+					// suppressing the synthetic box everywhere = 81 up / 3 down (every subject group net up),
+					// closing the outer first everywhere = 28 up / 24 down (outputs/_s29_r414_variants.sh).
+					// So the synthetic box is SUPPRESSED and the widget renders inside the open box; a
+					// subject listed in close_outer_subjects (none measured to want it) takes the other
+					// form — the outer closes first (the isNewActivity convention) and the widget becomes
+					// the next sibling box with the next positional letter.
+					// Data activity_wrapper.standalone_widget_box.inside_open_activity; env NESTBOX_OFF.
+					{
+						const _nbCfg = saCfg?.inside_open_activity;
+						if (_nbCfg && _nbCfg.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[_nbCfg.env || "NESTBOX_OFF"])
+							&& actOwner && (actOwner === saOwner || actOwner === lvOwner)
+							&& stack.length && stack[stack.length - 1].tag === "activity") {
+							const _nbSubj = String(DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")]?.subject ?? "");
+							if (!(_nbCfg.close_outer_subjects ?? []).includes(_nbSubj)) {
+								actOwner = null;
+								run.AddNote("info", "ContentConverter",
+									`Page ${page.lessonLabel}: the standalone ${bundle.type} widget renders inside the open [activity] box — no synthetic box of its own (inside_open_activity).`);
+							} else {
+								while (stack.length && stack[stack.length - 1].tag === "activity") {
+									emit(stack.pop().close);
+									if (!stack.length) breakRow();
+								}
+								run.AddNote("info", "ContentConverter",
+									`Page ${page.lessonLabel}: open [activity] closed before the standalone ${bundle.type} widget's own box (inside_open_activity, ${_nbSubj}).`);
+							}
+						}
+					}
 					rowFor(actOwner ? "section" : "block");   // activity = own section row; inline widget flows
 					if (actOwner) {
 						// OSAI301 1A shape: render a REAL activity wrapper, its

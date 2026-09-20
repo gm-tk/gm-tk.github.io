@@ -1,0 +1,37 @@
+[18:04:32] spot-check plan
+  AGH1002 ANZH101 BLL132 BLL154 BLL262 ENFUN09 ENGI201 ENGS401 JPFUN01 MXDB301 MXEO102 TEFUN07
+
+Regenerate them WITH THE FIX ON (default env, NO *_OFF), then run `verify`:
+  python3 _batch_plan.py --codes AGH1002 ANZH101 BLL132 BLL154 BLL262 ENFUN09 ENGI201 ENGS401 JPFUN01 MXDB301 MXEO102 TEFUN07
+sample: AGH1002 ANZH101 BLL132 BLL154 BLL262 ENFUN09 ENGI201 ENGS401 JPFUN01 MXDB301 MXEO102 TEFUN07
+[18:04:32] batch plan over 77 modules
+7
+[18:04:36] batch 1: _regen_safe.sh XGF9001 XGF9004
+OK — 2 module(s) regenerated fresh.
+   rc=0
+[18:04:57] batch 2: _regen_safe.sh AGH1002 AGH1008 ANZH101 ANZH203 ANZH301 ANZH302 CEDO105 ENGC102 ENGC401 ENGI101 ENGI201
+OK — 11 module(s) regenerated fresh.
+   rc=0
+[18:05:49] batch 3: _regen_safe.sh ENGI303 ENGI405 ENGJ102 ENGJ202 ENGS401 ENGS404 HIS1003 HIS1004 HIS1005 HIS1006 HIS1007
+OK — 11 module(s) regenerated fresh.
+   rc=0
+[18:06:55] batch 4: _regen_safe.sh HIS1008 MXDB102 MXDB301 MXDI102 MXDI103 MXEO102 MXEO202 MXEO301 MXFL102 MXFL103 MXFL203
+OK — 11 module(s) regenerated fresh.
+   rc=0
+[18:08:04] batch 5: _regen_safe.sh SSFUN07 TEFUN07 XDLS909 XMES103 XMES201
+OK — 5 module(s) regenerated fresh.
+   rc=0
+[18:08:33] batch 6: _regen_safe.sh BLL111 BLL112 BLL113 BLL114 BLL122 BLL123 BLL124 BLL126 BLL127 BLL131 BLL132 BLL135 BLL143 BLL144 BLL145 BLL151 BLL154 BLL155
+OK — 22 module(s) regenerated fresh.
+   rc=0
+[18:09:26] batch 7: _regen_safe.sh BLL216 BLL240 BLL245 BLL251 BLL262 CBI1004 DAN1006 ENFUN02 ENFUN04 ENFUN09 FRFUN06 HPRE203 JPFUN01 SCES201 WJFUN115
+OK — 15 module(s) regenerated fresh.
+   rc=0
+[18:10:24] fresh check
+[content-manifest] content-hash 0-stale vs _content_manifest.txt
+  affected set: 65 module(s) (must be freshly regenerated)
+  unaffected  : 426 module(s) (must be byte-identical to the manifest; mtime IGNORED)
+  OK — 0 truly stale. 65 affected regenerated; the untouched corpus is byte-identical to the manifest (mtime false-alarm defeated).
+[spotcheck] verifying 12 non-affected modules regenerated WITH the fix ON
+  OK — all 12 sampled non-affected modules are BYTE-IDENTICAL under the fix (P's no-op claim holds on the sample).
+[18:10:36] done

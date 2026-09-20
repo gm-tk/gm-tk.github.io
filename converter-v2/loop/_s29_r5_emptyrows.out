@@ -1,0 +1,41 @@
+EMPTY row>col shells: gold 37 on 37 pages | Claude 818 on 707 pages / 222 modules
+
+per template|subject (gold shells / gold pages | Claude shells / Claude pages):
+  Standard      NCEA1                        gold   12 /  12 | Claude  208 / 184
+  Standard      1-10 Mathematics             gold    3 /   3 | Claude  118 / 113
+  Standard      Leaving to Learn             gold    0 /   0 | Claude   69 /  60
+  Standard      1-10 English                 gold    3 /   3 | Claude   68 /  65
+  Standard      ANZH                         gold    0 /   0 | Claude   55 /  38
+  Fundamentals  1-10 Languages               gold    1 /   1 | Claude   40 /  30
+  Standard      ConnectED                    gold    4 /   4 | Claude   35 /  34
+  Standard      1-10 Blended Literacy        gold    1 /   1 | Claude   33 /  33
+  Standard      1-10 Social Science          gold    1 /   1 | Claude   30 /  21
+  Bilingual     Te Marautanga o Aotearoa TMo gold    6 /   6 | Claude   26 /  14
+  Standard      1-10 Technology              gold    0 /   0 | Claude   17 /  17
+  Standard      1-10 Languages               gold    0 /   0 | Claude   17 /  14
+  Fundamentals  1-10 Health and PE           gold    0 /   0 | Claude   15 /  14
+  Standard      1-10 Health and PE           gold    0 /   0 | Claude   12 /   8
+  Standard      1-10 Science                 gold    1 /   1 | Claude   10 /   5
+  Inquiry       1-10 Blended Literacy        gold    0 /   0 | Claude    9 /   8
+  Standard      Online Safety (OS9000)       gold    0 /   0 | Claude    9 /   9
+  Fundamentals  1-10 Social Science          gold    0 /   0 | Claude    8 /   3
+  Fundamentals  1-10 Mathematics             gold    1 /   1 | Claude    7 /   7
+  Inquiry       ConnectED                    gold    2 /   2 | Claude    7 /   7
+  Inquiry       Leaving to Learn             gold    1 /   1 | Claude    6 /   6
+  Standard      EXPlore                      gold    0 /   0 | Claude    5 /   4
+
+Claude empty shells by (col class, next tag):
+    623  col-md-8 col-12                  next div.
+     79  col-md-8 col-12                  next div.row
+     30  col-12                           next div.row
+     24  col-md-12 col-12                 next div.tab-pane
+     24  col-md-6 col-12                  next div.tab-pane
+     14  col-md-8 col-12                  next div.introduction
+     11  col-md-8 col-12                  next div.tab-pane
+      7  col-12                           next div.
+      2  col-12                           next div.cv2-interactive
+      1  col-md-8 col-12                  next div.inquiryPanel
+      1  col-md-8 col-12                  next div.col-md-4
+      1  col-12                           next p.cv2-comment
+
+empty COLS (any parent) gold: [('col-12 wordDragContainer', 84), ('col-12 wordDropContainer', 80), ('col-md-8 col-12', 29), ('col-md-5 col-xs-6', 22), ('col-md-4 offset-md-0 col-12', 21)]  Claude: [('col-md-8 col-12', 730), ('col-12', 81), ('col-md-12 col-12', 30), ('col-md-6 col-12 paddingR', 25), ('col-md-6 col-12', 25)]

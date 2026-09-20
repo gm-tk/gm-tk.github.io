@@ -1,0 +1,1093 @@
+  ~ AGH1008_5_0.html: -20 +10
+     - <div class="activity interactive" number="5C">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="AGH1008-05-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: interactive — Activity (inline) — s
+     - <div style="font-size: 0.95em">
+     - <p>Click on the heading to get the additional information.</p>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="activity" number="5E">
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="AGH1008-05-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: interactive — Activity (inline) — s
+     + <div style="font-size: 0.95em">
+     + <p>Click on the heading to get the additional information.</p>
+     + <div class="activity" number="5C">
+AGH1008: identical 9 / changed 1
+  ~ BLL111_1_0.html: -21 +11
+     - <div class="activity interactive" number="1E">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL111-01-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we create something like this ple
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: dragAndDrop — Activity (inline) — se
+     - <div style="font-size: 0.95em">
+     - <p>When you have made a correct word, can you tell your supervisor a sentence that has that word in it? For ex
+     - <p>the bin.”</p>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - </div>
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL111-01-03" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can we create something like this ple
+     + <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: dragAndDrop — Activity (inline) — se
+     + <p>When you have made a correct word, can you tell your supervisor a sentence that has that word in it? For ex
+     + <p>the bin.”</p>
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+  ~ BLL111_2_0.html: -20 +10
+     - <div class="activity interactive" number="2C">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="BLL111-02-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: dragAndDrop — Activity (inline) — se
+     - <div style="font-size: 0.95em">
+     - <p>When you have made a word, can you tell your supervisor a sentence that has that word in it? For example, “
+     - <p>on the chair.”</p>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - </div>
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="BLL111-02-02" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: dragAndDrop — Activity (inline) — se
+     + <p>When you have made a word, can you tell your supervisor a sentence that has that word in it? For example, “
+     + <p>on the chair.”</p>
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+BLL111: identical 1 / changed 2
+  ~ BLL122_1_0.html: -49 +39
+     - <div class="activity interactive" number="1D">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="BLL122-01-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: ⬇️ ⬇️ ⬇️ ⬇️<br />Is it possible to sn
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: dragAndDrop + dragAndDrop — Activity
+     - <div style="font-size: 0.95em">
+     - <p>Let’s make 3 sound words first (remember when we need to end with ‘ck’ we will have 4 letters but 3 sounds)
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>a</th>
+     - <th>ck</th>
+     - <th>c</th>
+     - <th>d</th>
+     - <th>e</th>
+     - <th>h</th>
+     - <th>i</th>
+     - <th>k</th>
+     - <th>p</th>
+     - <th>t</th>
+     - <th>s</th>
+     - <th>r</th>
+     - <th>n</th>
+     - <th>m</th>
+     - </tr>
+     - </table>
+     - </div>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - <th></th>
+     - <th></th>
+     - </tr>
+     - … 9 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="BLL122-01-02" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: ⬇️ ⬇️ ⬇️ ⬇️<br />Is it possible to sn
+     + <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: dragAndDrop + dragAndDrop — Activity
+     + <p>Let’s make 3 sound words first (remember when we need to end with ‘ck’ we will have 4 letters but 3 sounds)
+     + <th>ck</th>
+     + <th>c</th>
+     + <th>d</th>
+     + <th>e</th>
+     + <th>h</th>
+     + <th>i</th>
+     + <th>k</th>
+     + <th>p</th>
+     + <th>t</th>
+     + <th>s</th>
+     + <th>r</th>
+     + <th>n</th>
+     + <th>m</th>
+     + <th></th>
+     + … 19 more added
+BLL122: identical 2 / changed 1
+  ~ BLL127_1_0.html: -20 +10
+     - <div class="activity interactive" number="1D">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL127-01-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: selfCheck — Activity (inline) — see 
+     - <div style="font-size: 0.95em">
+     - <p>Which line on the grid is completed? 1 2 3 4 5</p>
+     - <p>Once you have identified your winning line, look through the grid to see if you can read all the words that
+     - </div>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL127-01-03" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: selfCheck — Activity (inline) — see 
+     + <div style="font-size: 0.95em">
+     + <p>Which line on the grid is completed? 1 2 3 4 5</p>
+     + <p>Once you have identified your winning line, look through the grid to see if you can read all the words that
+BLL127: identical 2 / changed 1
+  ~ BLL144_1_0.html: -28 +18
+     - <div class="activity interactive" number="1F">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="BLL144-01-05" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: “What is in the sack?”<br />“Get up” 
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: dragAndDrop — Activity (inline) — se
+     - <div style="font-size: 0.95em">
+     - <p>Put speech marks around the correct parts of the sentence. Remember, these are parts that the character wou
+     - <ul>
+     - <li>The kids come to him. What is in the sack?</li>
+     - <li>Get up. The kids demand.</li>
+     - <li>I can see an ill magpie, says Jim. “</li>
+     - </ul>
+     - <p>Copy one the sentences above - make sure you remember the speech marks as you write it down.</p>
+     - <p>Look at a book or a magazine you have. Highlight 6 speech marks.</p>
+     - <p>Take a photo of your work and upload it to the dropbox for you kaiako to see.</p>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="BLL144-01-05" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: “What is in the sack?”<br />“Get up” 
+     + <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: dragAndDrop — Activity (inline) — se
+     + <div style="font-size: 0.95em">
+     + <p>Put speech marks around the correct parts of the sentence. Remember, these are parts that the character wou
+     + <ul>
+     + <li>The kids come to him. What is in the sack?</li>
+     + <li>Get up. The kids demand.</li>
+     + <li>I can see an ill magpie, says Jim. “</li>
+     + </ul>
+     + <p>Copy one the sentences above - make sure you remember the speech marks as you write it down.</p>
+     + <p>Look at a book or a magazine you have. Highlight 6 speech marks.</p>
+     + <p>Take a photo of your work and upload it to the dropbox for you kaiako to see.</p>
+BLL144: identical 2 / changed 1
+  ~ BLL156_1_1.html: -26 +16
+     - <div class="activity interactive" number="1I">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="BLL156-02-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: selfCheck (source of a comma) — Acti
+     - <div style="font-size: 0.95em">
+     - <p>When the jet is set free</p>
+     - <p>the band spins.</p>
+     - <p>On the jet</p>
+     - <p>dad has fun!</p>
+     - <p>When the wind stops</p>
+     - <p>the prop lands free.</p>
+     - <p>It has 2 wings</p>
+     - <p>a tail and a prop.</p>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="BLL156-02-02" style="border: 8px sol
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: selfCheck (source of a comma) — Acti
+     + <p>When the jet is set free</p>
+     + <p>the band spins.</p>
+     + <p>On the jet</p>
+     + <p>dad has fun!</p>
+     + <p>When the wind stops</p>
+     + <p>the prop lands free.</p>
+     + <p>It has 2 wings</p>
+     + <p>a tail and a prop.</p>
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+BLL156: identical 2 / changed 1
+  ~ BLL216_1_0.html: -48 +38
+     - <div class="activity interactive" number="1C">
+     - <div class="col-12">
+     - <div class="dragAndDrop" layout="standard">
+     - <div class="row">
+     - <div class="col-6 questionContainer">
+     - <div class="question"><p>un</p></div>
+     - <div class="question"><p>un</p></div>
+     - <div class="question"><p>mis</p></div>
+     - <div class="question"><p>mis</p></div>
+     - <div class="question"><p>re</p></div>
+     - <div class="question"><p>re</p></div>
+     - <div class="question"><p>up</p></div>
+     - <div class="question"><p>up</p></div>
+     - <div class="col-6 ddContainer">
+     - <div class="dropContainer">
+     - <div class="drop" option="1"></div>
+     - <div class="drop" option="2"></div>
+     - <div class="drop" option="3"></div>
+     - <div class="drop" option="4"></div>
+     - <div class="drop" option="5"></div>
+     - <div class="drop" option="6"></div>
+     - <div class="drop" option="7"></div>
+     - <div class="drop" option="8"></div>
+     - </div>
+     - <div class="dragContainer">
+     - <div class="drag" option="1"><p>well</p></div>
+     - <div class="drag" option="2"><p>lucky</p></div>
+     - <div class="drag" option="3"><p>match</p></div>
+     - <div class="drag" option="4"><p>place</p></div>
+     - <div class="drag" option="5"><p>read</p></div>
+     - <div class="drag" option="6"><p>open</p></div>
+     - <div class="drag" option="7"><p>hill</p></div>
+     - <div class="drag" option="8"><p>wards</p></div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="activityButton reset">Reset</div>
+     - <div class="activityButton undo hidden">Undo</div>
+     - <div class="activityButton checkAnswer hidden">Check answers</div>
+     - </div>
+     - … 8 more removed
+     + <div class="dragAndDrop" layout="standard">
+     + <div class="col-6 questionContainer">
+     + <div class="question"><p>un</p></div>
+     + <div class="question"><p>un</p></div>
+     + <div class="question"><p>mis</p></div>
+     + <div class="question"><p>mis</p></div>
+     + <div class="question"><p>re</p></div>
+     + <div class="question"><p>re</p></div>
+     + <div class="question"><p>up</p></div>
+     + <div class="question"><p>up</p></div>
+     + <div class="col-6 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + <div class="drop" option="5"></div>
+     + <div class="drop" option="6"></div>
+     + <div class="drop" option="7"></div>
+     + <div class="drop" option="8"></div>
+     + … 18 more added
+BLL216: identical 2 / changed 1
+  ~ CBI1004_3_0.html: -43 +33
+     - <div class="activity interactive" number="3B">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="CBI1004-03-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: multiChoiceQuiz — Activity (inline) 
+     - <div style="font-size: 0.95em">
+     - <ol>
+     - <li>Genetic characteristics are determined by the sequence of bases (As, Ts, Cs and Gs)</li>
+     - </ol>
+     - <p>a. True</p>
+     - <p>b. False</p>
+     - <ol>
+     - <li>Are human beings more closely related to chimpanzees or bananas?</li>
+     - </ol>
+     - <p>a. Chimpanzees</p>
+     - <p>b. Bananas</p>
+     - <ol>
+     - <li>Do your nerve cells have the same genetic information as your heart cells?</li>
+     - </ol>
+     - <p>A. Yes the DNA is identical</p>
+     - <p>b. No the DNA is different</p>
+     - <ol>
+     - <li>Do skin cells from different people have the same genetic information or different genetic information?</l
+     - </ol>
+     - <p>a. The same genetic information</p>
+     - <p>b. Different genetic information</p>
+     - <p>Check answers</p>
+     - <p>Reset</p>
+     - <ol>
+     - <li>a 2. a 3. a 4. b</li>
+     - </ol>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - … 3 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="CBI1004-03-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: multiChoiceQuiz — Activity (inline) 
+     + <div style="font-size: 0.95em">
+     + <ol>
+     + <li>Genetic characteristics are determined by the sequence of bases (As, Ts, Cs and Gs)</li>
+     + </ol>
+     + <p>a. True</p>
+     + <p>b. False</p>
+     + <ol>
+     + <li>Are human beings more closely related to chimpanzees or bananas?</li>
+     + </ol>
+     + <p>a. Chimpanzees</p>
+     + <p>b. Bananas</p>
+     + <ol>
+     + <li>Do your nerve cells have the same genetic information as your heart cells?</li>
+     + … 13 more added
+CBI1004: identical 10 / changed 1
+  ~ ENFUN04_0_0.html: -22 +12
+     - <div class="activity interactive" number="2C">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="ENFUN04-00-08" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (Please ensure the quiz is linked to 
+     - <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: multiChoiceQuiz (insert to) — Activ
+     - <div style="font-size: 0.95em">
+     - <p><a href="https://docs.google.com/document/d/1YdhJ1G1m_OXNRNK0JoBkt7O5VwKCioURu41upwjp0X0/edit?usp=sharing" 
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="activity" number="2D">
+     - <div class="activity interactive" number="2E">
+     - </div>
+     - <div class="row">
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="ENFUN04-00-08" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (Please ensure the quiz is linked to 
+     + <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: multiChoiceQuiz (insert to) — Activ
+     + <p><a href="https://docs.google.com/document/d/1YdhJ1G1m_OXNRNK0JoBkt7O5VwKCioURu41upwjp0X0/edit?usp=sharing" 
+     + <div class="activity" number="2C">
+     + <div class="activity interactive" number="2D">
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+ENFUN04: identical 0 / changed 1
+  ~ ENGI303_3_0.html: -27 +17
+     - <div class="activity interactive" number="3C">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="ENGI303-03-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (have this one as a self-checker mult
+     - <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: multiChoiceQuiz (layout) — Activity
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> [image] <a href="https://unsplash.com/photos/a-young-boy-sitting-in-a-chair-reading-a-book-0rnbvYn2p34" t
+     - <th> [image] <a href="https://www.istockphoto.com/photo/happy-boy-with-a-beautiful-dog-gm618635454-107706237?u
+     - <th> [image] <a href="https://www.istockphoto.com/photo/portrait-of-smiling-boy-with-basketball-standing-in-ya
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="ENGI303-03-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (have this one as a self-checker mult
+     + <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: multiChoiceQuiz (layout) — Activity
+     + <th> [image] <a href="https://unsplash.com/photos/a-young-boy-sitting-in-a-chair-reading-a-book-0rnbvYn2p34" t
+     + <th> [image] <a href="https://www.istockphoto.com/photo/happy-boy-with-a-beautiful-dog-gm618635454-107706237?u
+     + <th> [image] <a href="https://www.istockphoto.com/photo/portrait-of-smiling-boy-with-basketball-standing-in-ya
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + </tr>
+     + </table>
+ENGI303: identical 6 / changed 1
+  ~ ENGS404_2_0.html: -55 +43
+     - <div class="activity interactive" number="2B">
+     - <div class="row">
+     - <div class="col-12">
+     - <ol>
+     - <li>Early Saturday morning, Mia woke to unexpected phone call.</li>
+     - </ol>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="ENGS404-02-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: dragAndDrop (can we create a or that
+     - <div style="font-size: 0.95em">
+     - <ol>
+     - <li>Her friend Sam needed help moving before Monday. He was having a bit of a meltdown. [</li>
+     - <li>Mia brought coffee, gloves, and a playlist from 2016</li>
+     - <li>They lifted boxes, argued about what counted as “light,” and laughed anyway.</li>
+     - <li>Sam’s cat hid under the couch.</li>
+     - <li>By Sunday afternoon, the flat was empty.</li>
+     - <li>They ate takeaways on the floor, tired but relieved.</li>
+     - </ol>
+     - <p>Details have a purpose</p>
+     - <p>Remember that details slow down the pace, but they do this to draw our attention to important ideas.</p>
+     - <p>Look at the detailed lines in the left column and then drag and drop the right ‘important ideas’ that they 
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> [H3] Details shared</th>
+     - <th></th>
+     - <th> [H3] Important ideas [autoshuffle] </th>
+     - </tr>
+     - <tr>
+     - <td>Her friend Sam needed help moving before Monday. He was having a bit of a meltdown.</td>
+     - <td></td>
+     - <td>Mia and Sam are close friends; he knows he can count on her.</td>
+     - </tr>
+     - <tr>
+     - <td>Mia brought coffee, gloves, and a playlist from 2016.</td>
+     - <td></td>
+     - … 15 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="ENGS404-02-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: dragAndDrop (can we create a or that
+     + <ol>
+     + <li>Early Saturday morning, Mia woke to unexpected phone call.</li>
+     + <li>Her friend Sam needed help moving before Monday. He was having a bit of a meltdown. [</li>
+     + <li>Mia brought coffee, gloves, and a playlist from 2016</li>
+     + <li>They lifted boxes, argued about what counted as “light,” and laughed anyway.</li>
+     + <li>Sam’s cat hid under the couch.</li>
+     + <li>By Sunday afternoon, the flat was empty.</li>
+     + <li>They ate takeaways on the floor, tired but relieved.</li>
+     + </ol>
+     + <p>Details have a purpose</p>
+     + <p>Remember that details slow down the pace, but they do this to draw our attention to important ideas.</p>
+     + <p>Look at the detailed lines in the left column and then drag and drop the right ‘important ideas’ that they 
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [H3] Details shared</th>
+     + … 23 more added
+ENGS404: identical 11 / changed 1
+  ~ HIS1005_5_1.html: -20 +10
+     - <div class="activity interactive" number="5F">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="HIS1005-06-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: interactive — Activity (inline) — s
+     - <div style="font-size: 0.95em">
+     - <p>In the video you have just watched, there was a brief view of two primary sources used as evidence to back 
+     - </div>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="activity" number="5J">
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="HIS1005-06-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: interactive — Activity (inline) — s
+     + <p>In the video you have just watched, there was a brief view of two primary sources used as evidence to back 
+     + <div class="activity" number="5I">
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+  ~ HIS1005_6_1.html: -23 +13
+     - <div class="activity interactive" number="6E">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="HIS1005-08-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: radioQuiz (please set up as an simi
+     - <div style="font-size: 0.95em">
+     - <p><a href="https://tekura.desire2learn.com/d2l/le/content/15666/viewContent/190753/View" target="_blank">http
+     - <p>Reset</p>
+     - <p>Check your answers</p>
+     - <p>Now read an extract of an article by Trevor Richards for the online magazine <i>E-tangata</i>.</p>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="activity" number="6G">
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="HIS1005-08-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: radioQuiz (please set up as an simi
+     + <p><a href="https://tekura.desire2learn.com/d2l/le/content/15666/viewContent/190753/View" target="_blank">http
+     + <p>Reset</p>
+     + <p>Check your answers</p>
+     + <p>Now read an extract of an article by Trevor Richards for the online magazine <i>E-tangata</i>.</p>
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+     + <div class="activity" number="6E">
+  ~ HIS1005_9_1.html: -19 +9
+     - <div class="activity interactive" number="9E">
+     - <div class="row">
+     - <div class="col-12">
+     - <p>Dred Scott.docx</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="HIS1005-12-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: dragAndDrop (please insert the deta
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="HIS1005-12-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: dragAndDrop (please insert the deta
+     + <div style="font-size: 0.95em">
+     + <p>Dred Scott.docx</p>
+HIS1005: identical 12 / changed 3
+  ~ HPRE203_3_0.html: -52 +42
+     - <div class="activity interactive" number="3B">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="HPRE203-03-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: multiChoiceQuiz — Activity (inline)
+     - <div style="font-size: 0.95em">
+     - <p>Tick all the correct statements.</p>
+     - <p><a href="https://m.media-amazon.com/images/M/MV5BOTE4MzBjZjMtYWE5ZS00YTZlLWEwZTItNWNmYzc4MTZiMTc0XkEyXkFqcG
+     - <ul>
+     - <li><b>In the first part of the movie the man does not show empathy when:</b></li>
+     - </ul>
+     - <ul>
+     - <li>the lift door closes before a lady can get in</li>
+     - <li>the taxi does stop</li>
+     - <li>a girl lets go of her balloon and it floats away</li>
+     - <li>a boy drops his toy</li>
+     - <li>a volunteer is looking for people to sign a petition.
+     - <ul>
+     - <li><b>How does the man feel when he is crossing the road with the elderly lady?</b></li>
+     - </ul></li>
+     - <li>happy to cross the road</li>
+     - <li>uncomfortable holding the lady’s hand</li>
+     - <li>impatient walking slowly</li>
+     - <li>scared of the fast car</li>
+     - <li>pleased to walk slowly.
+     - <ul>
+     - <li><b>After helping the elderly lady, the man began to understand:</b></li>
+     - </ul></li>
+     - <li>showing empathy can make him feel more connected</li>
+     - <li>showing empathy shows he cares</li>
+     - <li>showing empathy shows others he understands</li>
+     - <li>showing empathy can make others feel safe.
+     - <ul>
+     - <li><b>Some of the ways the man showed empathy at the end were by:</b></li>
+     - </ul></li>
+     - … 12 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="HPRE203-03-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: multiChoiceQuiz — Activity (inline)
+     + <p>Tick all the correct statements.</p>
+     + <p><a href="https://m.media-amazon.com/images/M/MV5BOTE4MzBjZjMtYWE5ZS00YTZlLWEwZTItNWNmYzc4MTZiMTc0XkEyXkFqcG
+     + <ul>
+     + <li><b>In the first part of the movie the man does not show empathy when:</b></li>
+     + </ul>
+     + <ul>
+     + <li>the lift door closes before a lady can get in</li>
+     + <li>the taxi does stop</li>
+     + <li>a girl lets go of her balloon and it floats away</li>
+     + <li>a boy drops his toy</li>
+     + <li>a volunteer is looking for people to sign a petition.
+     + <ul>
+     + <li><b>How does the man feel when he is crossing the road with the elderly lady?</b></li>
+     + </ul></li>
+     + <li>happy to cross the road</li>
+     + <li>uncomfortable holding the lady’s hand</li>
+     + … 22 more added
+  ~ HPRE203_5_0.html: -57 +47
+     - <div class="activity interactive" number="5B">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="30" data-cv2-ref="HPRE203-05-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="30" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #30: radioQuiz (no , reveal image when i
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - <th>girl</th>
+     - <th>boy</th>
+     - <th>unknown</th>
+     - <th> Answer: reveal when answer box is clicked </th>
+     - </tr>
+     - <tr>
+     - <td>• I have curly black hair, I enjoy baking and I like riding my scooter around the neighbourhood.</td>
+     - <td></td>
+     - <td></td>
+     - <td></td>
+     - <td> [answer] [image] <a href="https://www.istockphoto.com/photo/smiling-young-boy-in-blue-hoodie-standing-con
+     - </tr>
+     - <tr>
+     - <td>• I wear glasses, my hair is braided. I love reading fantasy books and I spend a lot of time drawing pink 
+     - <td></td>
+     - <td></td>
+     - <td></td>
+     - <td> [answer] [image] <a href="https://www.istockphoto.com/photo/little-genius-gm519997083-50218526" target="_
+     - </tr>
+     - <tr>
+     - <td>• I have very short hair, I enjoy science experiments and I like writing short stories.</td>
+     - <td></td>
+     - <td></td>
+     - <td></td>
+     - <td> [answer][image] <a href="https://www.istockphoto.com/photo/young-beautiful-girl-with-a-short-hair-cut-pix
+     - … 17 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="30" data-cv2-ref="HPRE203-05-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="30" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #30: radioQuiz (no , reveal image when i
+     + <th></th>
+     + <th>girl</th>
+     + <th>boy</th>
+     + <th>unknown</th>
+     + <th> Answer: reveal when answer box is clicked </th>
+     + <td>• I have curly black hair, I enjoy baking and I like riding my scooter around the neighbourhood.</td>
+     + <td> [answer] [image] <a href="https://www.istockphoto.com/photo/smiling-young-boy-in-blue-hoodie-standing-con
+     + <td>• I wear glasses, my hair is braided. I love reading fantasy books and I spend a lot of time drawing pink 
+     + <td> [answer] [image] <a href="https://www.istockphoto.com/photo/little-genius-gm519997083-50218526" target="_
+     + <td>• I have very short hair, I enjoy science experiments and I like writing short stories.</td>
+     + <td> [answer][image] <a href="https://www.istockphoto.com/photo/young-beautiful-girl-with-a-short-hair-cut-pix
+     + <td>• I have blonde hair; I am short for my age. I love boxing and playing rugby league.</td>
+     + <td></td>
+     + <td></td>
+     + <td> [answer][image] <a href="https://www.istockphoto.com/photo/small-boxer-exercising-punches-on-a-sports-tra
+     + <div class="table-responsive">
+     + … 27 more added
+  ~ HPRE203_6_0.html: -57 +47
+     - <div class="activity interactive" number="6C">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="42" data-cv2-ref="HPRE203-06-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="42" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #42: multiChoiceQuiz — Activity (inline)
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - <th> a </th>
+     - <th> b </th>
+     - <th> c </th>
+     - <th> d </th>
+     - </tr>
+     - <tr>
+     - <td>• [image] <a href="https://youtu.be/yiKeLOKc1tw" target="_blank">https://youtu.be/yiKeLOKc1tw</a> 0.19min 
+     - <td>where to meet / [correct answer] </td>
+     - <td>it’s my birthday / [correct answer] </td>
+     - <td>home address</td>
+     - <td>age</td>
+     - </tr>
+     - <tr>
+     - <td>• [image] <a href="https://youtu.be/yiKeLOKc1tw" target="_blank">https://youtu.be/yiKeLOKc1tw</a> 0.30min 
+     - <td>friends faces / [correct answer] </td>
+     - <td>at home</td>
+     - <td>family</td>
+     - <td>Inside school / [correct answer] </td>
+     - </tr>
+     - <tr>
+     - <td>• [image] <a href="https://youtu.be/yiKeLOKc1tw" target="_blank">https://youtu.be/yiKeLOKc1tw</a> 0.45min 
+     - <td>who to meet</td>
+     - <td>where to meet / [correct answer] </td>
+     - <td>when to meet / [correct answer] </td>
+     - <td>why to meet</td>
+     - … 17 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="42" data-cv2-ref="HPRE203-06-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="42" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #42: multiChoiceQuiz — Activity (inline)
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th></th>
+     + <th> a </th>
+     + <th> b </th>
+     + <th> c </th>
+     + <th> d </th>
+     + </tr>
+     + <tr>
+     + <td>• [image] <a href="https://youtu.be/yiKeLOKc1tw" target="_blank">https://youtu.be/yiKeLOKc1tw</a> 0.19min 
+     + <td>where to meet / [correct answer] </td>
+     + … 27 more added
+HPRE203: identical 5 / changed 3
+  ~ MXEO202_1_0.html: -19 +9
+     - <div class="activity interactive" number="1D">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="MXEO202-01-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: dragAndDrop — Activity (inline) — se
+     - <div style="font-size: 0.95em">
+     - <p>Can we make something like this please?</p>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="MXEO202-01-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: dragAndDrop — Activity (inline) — se
+     + <div style="font-size: 0.95em">
+     + <p>Can we make something like this please?</p>
+MXEO202: identical 8 / changed 1
+  ~ MXFL203_10_0.html: -55 +45
+     - <div class="activity interactive" number="10I">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="MXFL203-10-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: multiChoiceQuiz — Activity (inline)
+     - <div style="font-size: 0.95em">
+     - <p>Using the timetable answer the questions by typing the answer.</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>What time do the Topp Twins perform?</th>
+     - <th> 10 am </th>
+     - </tr>
+     - <tr>
+     - <td>What time does Action Man start?</td>
+     - <td> 11 am </td>
+     - </tr>
+     - <tr>
+     - <td>How long is face painting available?</td>
+     - <td> 3 hours </td>
+     - </tr>
+     - <tr>
+     - <td>When do the Kaka games close?</td>
+     - <td> 4pm </td>
+     - </tr>
+     - <tr>
+     - <td>What time is Jack Russel racing?</td>
+     - <td> 12 noon </td>
+     - </tr>
+     - <tr>
+     - <td>When does the sheep judging start?</td>
+     - <td> 11 am00 </td>
+     - </tr>
+     - <tr>
+     - <td>What day is the Grand parade on?</td>
+     - … 15 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="MXFL203-10-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: multiChoiceQuiz — Activity (inline)
+     + <p>Using the timetable answer the questions by typing the answer.</p>
+     + <th>What time do the Topp Twins perform?</th>
+     + <th> 10 am </th>
+     + <td>What time does Action Man start?</td>
+     + <td> 11 am </td>
+     + <td>How long is face painting available?</td>
+     + <td> 3 hours </td>
+     + <td>When do the Kaka games close?</td>
+     + <td> 4pm </td>
+     + <td>What time is Jack Russel racing?</td>
+     + <td> 12 noon </td>
+     + <td>When does the sheep judging start?</td>
+     + <td> 11 am00 </td>
+     + <td>What day is the Grand parade on?</td>
+     + <td> Sunday </td>
+     + <td>How often does the Wood chopping start?</td>
+     + … 25 more added
+  ~ MXFL203_11_0.html: -26 +16
+     - <div class="activity interactive" number="11D">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="31" data-cv2-ref="MXFL203-11-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answers qu 1. 0.5 and ½<br />Qu 2. 0.
+     - <div class="cv2-interactive" data-cv2-index="31" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #31: multiChoiceQuiz — Activity (inline)
+     - <div style="font-size: 0.95em">
+     - <p>You have 10 marbles: 5 are blue, 3 are pink, 2 are black</p>
+     - <ol>
+     - <li>What is the probability the marble you select is blue? 0.5½</li>
+     - <li>What is the probability the marble you select is pink? 0. 33/10</li>
+     - <li>What is the probability the marble you select is black? 0.22/10</li>
+     - </ol>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="activity" number="11F">
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="31" data-cv2-ref="MXFL203-11-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Answers qu 1. 0.5 and ½<br />Qu 2. 0.
+     + <div class="cv2-interactive" data-cv2-index="31" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #31: multiChoiceQuiz — Activity (inline)
+     + <div style="font-size: 0.95em">
+     + <p>You have 10 marbles: 5 are blue, 3 are pink, 2 are black</p>
+     + <ol>
+     + <li>What is the probability the marble you select is blue? 0.5½</li>
+     + <li>What is the probability the marble you select is pink? 0. 33/10</li>
+     + <li>What is the probability the marble you select is black? 0.22/10</li>
+     + </ol>
+     + <div class="activity" number="11E">
+MXFL203: identical 10 / changed 2
+  ~ XDLS909_4_0.html: -25 +15
+     - <div class="activity interactive" number="4C">
+     - <div class="row">
+     - <div class="col-12">
+     - <p>Who can vote? – If you are over 18, a citizen of New Zealand or a permanent resident of New Zealand and you
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="XDLS909-04-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover – Documents that prove you are
+     - <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: dragAndDrop — Activity (inline) — s
+     - <div style="font-size: 0.95em">
+     - <p>What three pieces or types of identification</p>
+     - <p>can you give when filling out the enrolment form? – Either New Zealand driver license, New Zealand passport
+     - <p>Voting is not compulsory, what does that mean? – It means you do not have to actually vote but it does give
+     - <p>Do you have a choice on what roll to go on if Māori ? – Yes, you can choose to be on the Māori roll to vote
+     - <p>Why vote? – so we can have a say in who represents us and our interests when decisions are made at local or
+     - </div>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="XDLS909-04-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover – Documents that prove you are
+     + <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: dragAndDrop — Activity (inline) — s
+     + <div style="font-size: 0.95em">
+     + <p>Who can vote? – If you are over 18, a citizen of New Zealand or a permanent resident of New Zealand and you
+     + <p>What three pieces or types of identification</p>
+     + <p>can you give when filling out the enrolment form? – Either New Zealand driver license, New Zealand passport
+     + <p>Voting is not compulsory, what does that mean? – It means you do not have to actually vote but it does give
+     + <p>Do you have a choice on what roll to go on if Māori ? – Yes, you can choose to be on the Māori roll to vote
+     + <p>Why vote? – so we can have a say in who represents us and our interests when decisions are made at local or
+XDLS909: identical 4 / changed 1
+  ~ XMES201_4_0.html: -59 +49
+     - <div class="activity interactive" number="4D">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="34" data-cv2-ref="XMES201-04-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [insert chart showing heights]</p>
+     - <div class="cv2-interactive" data-cv2-index="34" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #34: dragAndDrop (insert) — Activity (in
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - </tr>
+     - </table>
+     - </div>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>chinchilla</th>
+     - <th>white horse</th>
+     - <th>Siamese cat</th>
+     - <th>scottie dog</th>
+     - </tr>
+     - <tr>
+     - <td>guinea pig</td>
+     - <td>white rabbit</td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - </table>
+     - </div>
+     - <p>There were pets in the story.</p>
+     - <p>Compare who is the tallest of all the pets in the story and place them in the chart showing <b>shortest to 
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - … 19 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="34" data-cv2-ref="XMES201-04-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [insert chart showing heights]</p>
+     + <div class="cv2-interactive" data-cv2-index="34" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #34: dragAndDrop (insert) — Activity (in
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th></th>
+     + </tr>
+     + </table>
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>chinchilla</th>
+     + <th>white horse</th>
+     + … 29 more added
+XMES201: identical 5 / changed 1
+
+TOTAL: identical 91 / changed 23 / missing 0 over 17 modules
+CHANGED: AGH1008/AGH1008_5_0.html BLL111/BLL111_1_0.html BLL111/BLL111_2_0.html BLL122/BLL122_1_0.html BLL127/BLL127_1_0.html BLL144/BLL144_1_0.html BLL156/BLL156_1_1.html BLL216/BLL216_1_0.html CBI1004/CBI1004_3_0.html ENFUN04/ENFUN04_0_0.html ENGI303/ENGI303_3_0.html ENGS404/ENGS404_2_0.html HIS1005/HIS1005_5_1.html HIS1005/HIS1005_6_1.html HIS1005/HIS1005_9_1.html HPRE203/HPRE203_3_0.html HPRE203/HPRE203_5_0.html HPRE203/HPRE203_6_0.html MXEO202/MXEO202_1_0.html MXFL203/MXFL203_10_0.html MXFL203/MXFL203_11_0.html XDLS909/XDLS909_4_0.html XMES201/XMES201_4_0.html

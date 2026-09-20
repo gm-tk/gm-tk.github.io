@@ -1,0 +1,17 @@
+ART1005	0.0	unclassified  	GOLD head:ABSENT                                 	CLAUDE head:h3 act:out next:table	«**Activity 3 Exploring Skyscape**»
+ART1005	0.0	unclassified  	GOLD head:ABSENT                                 	CLAUDE head:h5 act:out next:table	«**Activity 2 Watch the video “Exploring »
+CEDO105	1.0	unclassified  	GOLD head:h3 act:IN next:widget:flipCard         	CLAUDE head:h3 act:IN next:table	«What can you move?»
+CEDR501	8.0	unclassified  	GOLD head:h2 act:out next:table                  	CLAUDE head:h2 act:out next:table	«Preferences»
+ENFUN05	0.0	unclassified  	GOLD head:h4 act:IN next:widget:hintSlider       	CLAUDE head:h5 act:out next:neither	«With punctuation»
+ENGI303	6.0	unclassified  	GOLD head:h3 act:out next:table                  	CLAUDE head:h3 act:out next:table	«Past tense»
+ENGI405	6.0	unclassified  	GOLD head:h3 act:out next:table                  	CLAUDE head:h3 act:out next:table	«Literary essay assessment»
+ENGS401	5.0	unclassified  	GOLD head:h4 act:IN next:table                   	CLAUDE head:h5 act:out next:table	«Judge’s scorecard»
+MXFU301	9.0	unclassified  	GOLD head:h3 act:out next:table                  	CLAUDE head:h3 act:out next:neither	«Asking questions for investigations»
+MXFU402	6.0	unclassified  	GOLD head:h3 act:IN next:widget:clickDrop        	CLAUDE head:h3 act:IN next:table	«Displaying the data»
+PES1005	11.0	unclassified  	GOLD head:p act:out next:neither                 	CLAUDE head:h3 act:out next:neither	«**Lunar Eclipse**»
+PWY1001	2.3.0	unclassified  	GOLD head:h3 act:out next:neither                	CLAUDE head:h3 act:out next:table	«Being trained and supervised»
+TEDC401	3.0	unclassified  	GOLD head:h3 act:IN next:widget:reorder          	CLAUDE head:h3 act:out next:table	«Sorting the design thinking steps»
+TEDC401	4.0	unclassified  	GOLD head:h3 act:IN next:widget:flipCard         	CLAUDE head:h3 act:out next:widget:flipCard	«**From sketch to screen | From wireframe»
+TEDC401	4.0	unclassified  	GOLD head:h2 act:IN next:table                   	CLAUDE head:h3 act:IN next:table	«**Your turn: build your prototype**»
+XGF9001	5.0	unclassified  	GOLD head:h3 act:IN next:widget:flipCard         	CLAUDE head:h4 act:out next:widget:flipCard	«Your turn»
+XGF9004	9.0	unclassified  	GOLD gold:UNPAIRED                               	CLAUDE head:h4 act:out next:table	«Instructions:»

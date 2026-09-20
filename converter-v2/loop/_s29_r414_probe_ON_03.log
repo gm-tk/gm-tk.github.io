@@ -1,0 +1,935 @@
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+PHE1007: identical 10 / changed 0
+PHE1008: identical 6 / changed 0
+PNR101: identical 2 / changed 0
+PNR102: identical 3 / changed 0
+PNR104: identical 3 / changed 0
+PNR107: identical 3 / changed 0
+PWY1001: identical 10 / changed 0
+PWY1002: identical 10 / changed 0
+PWY1007: identical 9 / changed 0
+PWY1008: identical 10 / changed 0
+PWY1009: identical 9 / changed 0
+PWYWHA1: identical 1 / changed 0
+SCBI301: identical 9 / changed 0
+SCCH301: identical 9 / changed 0
+  ~ SCES201_2_0.html: -46 +36
+     - <div class="activity interactive" number="2D">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="SCES201-02-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: dragAndDrop — Activity (inline) — s
+     - <div style="font-size: 0.95em">
+     - <p>Match each word on the right with its meaning.</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> [title] Word</th>
+     - <th> [title] Meaning</th>
+     - </tr>
+     - <tr>
+     - <td> [Q1] Astronomer</td>
+     - <td> [Q1 answer] A scientist who studies the stars.</td>
+     - </tr>
+     - <tr>
+     - <td> [Q2] Tautoru</td>
+     - <td> [Q2 answer] Orion’s belt.</td>
+     - </tr>
+     - <tr>
+     - <td> [Q3] Matariki</td>
+     - <td> [Q3 answer] A star cluster also known as the Pleiades.</td>
+     - </tr>
+     - <tr>
+     - <td> [Q4] A ncestors</td>
+     - <td> [Q4 answer] Tūpuna, family members who lived before you.</td>
+     - </tr>
+     - <tr>
+     - <td> [Q5] Hākari</td>
+     - <td> [Q5 answer] Feast.</td>
+     - </tr>
+     - </table>
+     - </div>
+     - … 6 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="SCES201-02-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: dragAndDrop — Activity (inline) — s
+     + <div style="font-size: 0.95em">
+     + <p>Match each word on the right with its meaning.</p>
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [title] Word</th>
+     + <th> [title] Meaning</th>
+     + </tr>
+     + <tr>
+     + <td> [Q1] Astronomer</td>
+     + <td> [Q1 answer] A scientist who studies the stars.</td>
+     + </tr>
+     + <tr>
+     + … 16 more added
+SCES201: identical 4 / changed 1
+SCFUN01: identical 1 / changed 0
+SCPH301: identical 9 / changed 0
+SPA1004: identical 3 / changed 0
+SSCI205: identical 10 / changed 0
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+  ~ SSFUN07_2_0.html: -26 +16
+     - <div class="activity interactive" number="2E">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="SSFUN07-02-04" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: multiChoiceQuiz (insert) — Activity 
+     - <div style="font-size: 0.95em">
+     - <p>Click the link to the quiz for questions to think about while you watch the video. Don’t forget to answer t
+     - <ol>
+     - <li>What is consumption, and why do people want to buy so much?</li>
+     - <li>How do advertisers try to make us want things we might not really need?</li>
+     - <li>What is consumerism – can you give an example in your daily life?</li>
+     - <li>Why do you think that some companies make things that don’t last very long?</li>
+     - </ol>
+     - <p>To learn more about what actions we can take to reduce consumption, watch the video below.</p>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="SSFUN07-02-04" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: multiChoiceQuiz (insert) — Activity 
+     + <div style="font-size: 0.95em">
+     + <p>Click the link to the quiz for questions to think about while you watch the video. Don’t forget to answer t
+     + <ol>
+     + <li>What is consumption, and why do people want to buy so much?</li>
+     + <li>How do advertisers try to make us want things we might not really need?</li>
+     + <li>What is consumerism – can you give an example in your daily life?</li>
+     + <li>Why do you think that some companies make things that don’t last very long?</li>
+     + </ol>
+     + <p>To learn more about what actions we can take to reduce consumption, watch the video below.</p>
+  ~ SSFUN07_3_0.html: -27 +17
+     - <div class="activity interactive" number="3B">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="SSFUN07-03-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: multiChoiceQuiz + multiChoiceQuiz (i
+     - <div style="font-size: 0.95em">
+     - <p>What does the term ‘consumer’ mean?</p>
+     - <p>a. Someone who produces goods</p>
+     - <p>b. Someone who buys goods and services</p>
+     - <p>c. Someone who sells goods</p>
+     - <p>What is a responsibility of a consumer?</p>
+     - <p>a. Paying taxes</p>
+     - <p>b. Complaining about everything</p>
+     - <p>c. Being informed about products</p>
+     - <p>If a product is defective, what right does a consumer have?</p>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="SSFUN07-03-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: multiChoiceQuiz + multiChoiceQuiz (i
+     + <p>What does the term ‘consumer’ mean?</p>
+     + <p>a. Someone who produces goods</p>
+     + <p>b. Someone who buys goods and services</p>
+     + <p>c. Someone who sells goods</p>
+     + <p>What is a responsibility of a consumer?</p>
+     + <p>a. Paying taxes</p>
+     + <p>b. Complaining about everything</p>
+     + <p>c. Being informed about products</p>
+     + <p>If a product is defective, what right does a consumer have?</p>
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+SSFUN07: identical 3 / changed 2
+SSFUN08: identical 1 / changed 0
+SSOG101: identical 8 / changed 0
+SSOG103: identical 7 / changed 0
+SSOG301: identical 8 / changed 0
+TEDC401: identical 8 / changed 0
+TEDC402: identical 11 / changed 0
+TEFUN01: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+TRR107: identical 3 / changed 0
+TRR108: identical 3 / changed 0
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR116: identical 5 / changed 0
+TRR203: identical 4 / changed 0
+TRR301: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+TWHA906: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+WJFUN105: identical 1 / changed 0
+WJFUN106: identical 1 / changed 0
+WJFUN107: identical 1 / changed 0
+WJFUN108: identical 1 / changed 0
+WJFUN109: identical 1 / changed 0
+WJFUN110: identical 1 / changed 0
+WJFUN112: identical 1 / changed 0
+WJFUN113: identical 1 / changed 0
+  ~ WJFUN115_0_0.html: -30 +20
+     - <div class="activity interactive" number="3D">
+     - <div class="row">
+     - <div class="col-12">
+     - <p>1The horse was ______ steady as a rock on the narrow trail.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="WJFUN115-00-14" style="border: 8px 
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: dragAndDrop — Activity (inline) — s
+     - <div style="font-size: 0.95em">
+     - <p>as</p>
+     - <p>2The Canterbury Plains were ______ flat as a table.</p>
+     - <p>as</p>
+     - <p>3The tractor moved through the paddock ______ a giant beetle.</p>
+     - <p>like</p>
+     - <p>4The mountains stood as tall ______ giants above the plains.</p>
+     - <p>as</p>
+     - <p>5The children searched for fairy doors ______ curious detectives.</p>
+     - <p>like</p>
+     - <p>6The crowd at the Southern Field Days was ______ busy ______ a beehive.</p>
+     - <p>as</p>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="WJFUN115-00-14" style="border: 8px 
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: dragAndDrop — Activity (inline) — s
+     + <div style="font-size: 0.95em">
+     + <p>1The horse was ______ steady as a rock on the narrow trail.</p>
+     + <p>as</p>
+     + <p>2The Canterbury Plains were ______ flat as a table.</p>
+     + <p>as</p>
+     + <p>3The tractor moved through the paddock ______ a giant beetle.</p>
+     + <p>like</p>
+     + <p>4The mountains stood as tall ______ giants above the plains.</p>
+     + <p>as</p>
+     + <p>5The children searched for fairy doors ______ curious detectives.</p>
+     + <p>like</p>
+     + <p>6The crowd at the Southern Field Days was ______ busy ______ a beehive.</p>
+     + <p>as</p>
+WJFUN115: identical 0 / changed 1
+WJFUN116: identical 1 / changed 0
+WJFUN205: identical 1 / changed 0
+WJFUN206: identical 1 / changed 0
+WJFUN208: identical 1 / changed 0
+WJFUN210: identical 1 / changed 0
+WJFUN211: identical 1 / changed 0
+WJFUN212: identical 1 / changed 0
+WJFUN304: identical 1 / changed 0
+WJFUN305: identical 1 / changed 0
+WJFUN306: identical 1 / changed 0
+WJFUN307: identical 1 / changed 0
+WJFUN308: identical 1 / changed 0
+XDLS501: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+XDLS901: identical 5 / changed 0
+XDLS902: identical 8 / changed 0
+XDLS903: identical 8 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS906: identical 8 / changed 0
+XDLS908: identical 9 / changed 0
+  ~ XDLS909_4_0.html: -25 +15
+     - <div class="activity interactive" number="4C">
+     - <div class="row">
+     - <div class="col-12">
+     - <p>Who can vote? – If you are over 18, a citizen of New Zealand or a permanent resident of New Zealand and you
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="XDLS909-04-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover – Documents that prove you are
+     - <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: dragAndDrop — Activity (inline) — s
+     - <div style="font-size: 0.95em">
+     - <p>What three pieces or types of identification</p>
+     - <p>can you give when filling out the enrolment form? – Either New Zealand driver license, New Zealand passport
+     - <p>Voting is not compulsory, what does that mean? – It means you do not have to actually vote but it does give
+     - <p>Do you have a choice on what roll to go on if Māori ? – Yes, you can choose to be on the Māori roll to vote
+     - <p>Why vote? – so we can have a say in who represents us and our interests when decisions are made at local or
+     - </div>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="XDLS909-04-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover – Documents that prove you are
+     + <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: dragAndDrop — Activity (inline) — s
+     + <div style="font-size: 0.95em">
+     + <p>Who can vote? – If you are over 18, a citizen of New Zealand or a permanent resident of New Zealand and you
+     + <p>What three pieces or types of identification</p>
+     + <p>can you give when filling out the enrolment form? – Either New Zealand driver license, New Zealand passport
+     + <p>Voting is not compulsory, what does that mean? – It means you do not have to actually vote but it does give
+     + <p>Do you have a choice on what roll to go on if Māori ? – Yes, you can choose to be on the Māori roll to vote
+     + <p>Why vote? – so we can have a say in who represents us and our interests when decisions are made at local or
+XDLS909: identical 4 / changed 1
+XDLS911: identical 2 / changed 0
+XDLS912: identical 6 / changed 0
+XFUN01: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+  ~ XGF9001_2_0.html: -63 +53
+     - <div class="activity interactive" number="2B">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="XGF9001-02-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [CS – are we able to have the small i
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: multiChoiceQuiz (- quiz where what t
+     - <div style="font-size: 0.95em">
+     - <p>What Aotearoa New Zealand Bird Are You?</p>
+     - <p>Answer the questions below to find out which Aotearoa New Zealand bird matches your personality.</p>
+     - <p>Answer each question by choosing the option that sounds most like you. <b>Keep a record of the letter you c
+     - <p><b>who you are</b> and what makes you unique.</p>
+     - <ol>
+     - <li><b>How do you like to spend your time?</b>
+     - <ol>
+     - <li>Exploring and trying new things 🏕️.</li>
+     - <li>Helping others and looking after my friends 🤗.</li>
+     - <li>Thinking deeply and working on projects 🧠.</li>
+     - <li>Playing, having fun, and making people laugh 🎭.</li>
+     - </ol></li>
+     - <li><b>What’s your superpower?</b>
+     - <ol>
+     - <li>Being brave and independent 💪.</li>
+     - <li>Being kind and bringing people together ❤️.</li>
+     - <li>Noticing things that others don’t 👀.</li>
+     - <li>Being creative and full of energy 🎨.</li>
+     - </ol></li>
+     - <li><b>If you could go anywhere, where would it be?</b>
+     - <ol>
+     - <li>On an exciting adventure in the wild 🌲.</li>
+     - <li>Somewhere with my friends and whānau 🏡.</li>
+     - <li>A quiet place to think and dream 🌊.</li>
+     - <li>A fun event with lots of action and people 🎉.</li>
+     - </ol></li>
+     - <li><b>What describes you best?</b>
+     - <ol>
+     - … 23 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="XGF9001-02-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [CS – are we able to have the small i
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: multiChoiceQuiz (- quiz where what t
+     + <p>What Aotearoa New Zealand Bird Are You?</p>
+     + <p>Answer the questions below to find out which Aotearoa New Zealand bird matches your personality.</p>
+     + <p>Answer each question by choosing the option that sounds most like you. <b>Keep a record of the letter you c
+     + <p><b>who you are</b> and what makes you unique.</p>
+     + <li><b>How do you like to spend your time?</b>
+     + <ol>
+     + <li>Exploring and trying new things 🏕️.</li>
+     + <li>Helping others and looking after my friends 🤗.</li>
+     + <li>Thinking deeply and working on projects 🧠.</li>
+     + <li>Playing, having fun, and making people laugh 🎭.</li>
+     + </ol></li>
+     + <li><b>What’s your superpower?</b>
+     + <ol>
+     + <li>Being brave and independent 💪.</li>
+     + <li>Being kind and bringing people together ❤️.</li>
+     + … 33 more added
+XGF9001: identical 6 / changed 1
+XGF9002: identical 10 / changed 0
+XGF9003: identical 6 / changed 0
+  ~ XGF9004_2_0.html: -56 +46
+     - <div class="activity interactive" number="2B">
+     - <div class="col-12">
+     - <div class="multiChoiceQuiz">
+     - <div class="row">
+     - <div class="col-12 mcqQuestion">
+     - <p class="mcqQuestionText">What is Eva doing at the start of the story?</p>
+     - <div class="mcqOptions">
+     - <p class="mcqOption">Running and playing outside.</p>
+     - <p class="mcqOption" value="correct">Looking at the night sky with her mum.</p>
+     - <p class="mcqOption">Watching TV.</p>
+     - <p class="mcqOption">Reading a book.</p>
+     - <div class="col-12 mcqQuestion">
+     - <p class="mcqQuestionText">What does Eva keep doing throughout the story?</p>
+     - <div class="mcqOptions">
+     - <p class="mcqOption" value="correct">Asking questions about the world.</p>
+     - <p class="mcqOption">Building a tower.</p>
+     - <p class="mcqOption">Going on a long walk alone.</p>
+     - <p class="mcqOption">Drawing pictures.</p>
+     - </div>
+     - </div>
+     - <div class="col-12 mcqQuestion">
+     - <p class="mcqQuestionText">What does Eva’s mum do when Eva asks big questions?</p>
+     - <div class="mcqOptions">
+     - <p class="mcqOption">Tells her to stop asking.</p>
+     - <p class="mcqOption">Gets cross with her.</p>
+     - <p class="mcqOption" value="correct">Wonders with her and encourages her questions.</p>
+     - <p class="mcqOption">Gives her all the answers.</p>
+     - </div>
+     - </div>
+     - <div class="col-12 mcqQuestion">
+     - <p class="mcqQuestionText">What does the word <i>wonder</i> mean in the story?</p>
+     - <div class="mcqOptions">
+     - <p class="mcqOption">To know everything.</p>
+     - <p class="mcqOption" value="correct">To ask questions and be curious.</p>
+     - <p class="mcqOption">To forget things.</p>
+     - <p class="mcqOption">To make a wish.</p>
+     - </div>
+     - </div>
+     - <div class="col-12 mcqQuestion">
+     - <p class="mcqQuestionText">What is the main idea of the story?</p>
+     - … 16 more removed
+     + <div class="multiChoiceQuiz">
+     + <div class="col-12 mcqQuestion">
+     + <p class="mcqQuestionText">What is Eva doing at the start of the story?</p>
+     + <div class="mcqOptions">
+     + <p class="mcqOption">Running and playing outside.</p>
+     + <p class="mcqOption" value="correct">Looking at the night sky with her mum.</p>
+     + <p class="mcqOption">Watching TV.</p>
+     + <p class="mcqOption">Reading a book.</p>
+     + <div class="col-12 mcqQuestion">
+     + <p class="mcqQuestionText">What does Eva keep doing throughout the story?</p>
+     + <div class="mcqOptions">
+     + <p class="mcqOption" value="correct">Asking questions about the world.</p>
+     + <p class="mcqOption">Building a tower.</p>
+     + <p class="mcqOption">Going on a long walk alone.</p>
+     + <p class="mcqOption">Drawing pictures.</p>
+     + </div>
+     + <div class="col-12 mcqQuestion">
+     + <p class="mcqQuestionText">What does Eva’s mum do when Eva asks big questions?</p>
+     + <div class="mcqOptions">
+     + <p class="mcqOption">Tells her to stop asking.</p>
+     + … 26 more added
+  ~ XGF9004_6_0.html: -59 +49
+     - <div class="activity interactive" number="6B">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="XGF9004-06-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: multiChoiceQuiz (insert) — Activity
+     - <div style="font-size: 0.95em">
+     - <p>Read the situation and think about how Brian might feel. This is called ‘putting yourself in someone else’s
+     - <ol>
+     - <li>Brian isn’t picked for the game at recess.</li>
+     - </ol>
+     - <ul>
+     - <li>happy</li>
+     - <li>lonely</li>
+     - <li>angry.</li>
+     - </ul>
+     - <ol>
+     - <li>A new friend invites Brian to draw together.</li>
+     - </ol>
+     - <ul>
+     - <li>excited</li>
+     - <li>sad</li>
+     - <li>mad.</li>
+     - </ul>
+     - <ol>
+     - <li>Brian shares his idea and others listen.</li>
+     - </ol>
+     - <ul>
+     - <li>proud</li>
+     - <li>left out</li>
+     - <li>grumpy.</li>
+     - </ul>
+     - <ol>
+     - <li>Brian sits quietly while others talk at lunch.</li>
+     - </ol>
+     - <ul>
+     - … 19 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="XGF9004-06-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: multiChoiceQuiz (insert) — Activity
+     + <p>Read the situation and think about how Brian might feel. This is called ‘putting yourself in someone else’s
+     + <ol>
+     + <li>Brian isn’t picked for the game at recess.</li>
+     + </ol>
+     + <ul>
+     + <li>happy</li>
+     + <li>lonely</li>
+     + <li>angry.</li>
+     + </ul>
+     + <ol>
+     + <li>A new friend invites Brian to draw together.</li>
+     + </ol>
+     + <ul>
+     + <li>excited</li>
+     + <li>sad</li>
+     + <li>mad.</li>
+     + … 29 more added
+  ~ XGF9004_8_0.html: -53 +43
+     - <div class="activity interactive" number="8B">
+     - <div class="col-12">
+     - <div class="multiChoiceQuiz">
+     - <div class="row">
+     - <div class="col-12 mcqQuestion">
+     - <p class="mcqQuestionText">Question 1. What did Jeremy</p>
+     - <div class="mcqOptions">
+     - <p class="mcqOption">want?</p>
+     - <p class="mcqOption">Warm boots</p>
+     - <p class="mcqOption" value="correct">Cool black shoes with white stripes.</p>
+     - <p class="mcqOption">A sandwich</p>
+     - <p class="mcqOption">Question 2. What did Jeremy</p>
+     - <div class="col-12 mcqQuestion">
+     - <p class="mcqQuestionText">need?</p>
+     - <div class="mcqOptions">
+     - <p class="mcqOption" value="correct">Shoes that fit and kept his feet warm.</p>
+     - <p class="mcqOption">A hat</p>
+     - <p class="mcqOption">A toy</p>
+     - </div>
+     - <div class="col-12 mcqQuestion">
+     - <p class="mcqQuestionText">Question 3. Jeremy bought shoes that were too small. Was this a good choice?</p>
+     - <div class="mcqOptions">
+     - <p class="mcqOption">Yes, because they looked cool.</p>
+     - <p class="mcqOption" value="correct">No, because they hurt his feet.</p>
+     - <p class="mcqOption">Yes, because everyone else had them.</p>
+     - </div>
+     - </div>
+     - <div class="col-12 mcqQuestion">
+     - <p class="mcqQuestionText">Question 4. What did Jeremy decide to do with the shoes?</p>
+     - <div class="mcqOptions">
+     - <p class="mcqOption">Keep them in his cupboard.</p>
+     - <p class="mcqOption" value="correct">Give them to his friend who needed them.</p>
+     - <p class="mcqOption">Throw them away.</p>
+     - </div>
+     - </div>
+     - <div class="col-12 mcqQuestion">
+     - <p class="mcqQuestionText">Question 5. What do philosophers think is more important?</p>
+     - <div class="mcqOptions">
+     - <p class="mcqOption">Wants</p>
+     - <p class="mcqOption" value="correct">Needs</p>
+     - … 13 more removed
+     + <div class="multiChoiceQuiz">
+     + <div class="col-12 mcqQuestion">
+     + <p class="mcqQuestionText">Question 1. What did Jeremy</p>
+     + <div class="mcqOptions">
+     + <p class="mcqOption">want?</p>
+     + <p class="mcqOption">Warm boots</p>
+     + <p class="mcqOption" value="correct">Cool black shoes with white stripes.</p>
+     + <p class="mcqOption">A sandwich</p>
+     + <p class="mcqOption">Question 2. What did Jeremy</p>
+     + <div class="col-12 mcqQuestion">
+     + <p class="mcqQuestionText">need?</p>
+     + <div class="mcqOptions">
+     + <p class="mcqOption" value="correct">Shoes that fit and kept his feet warm.</p>
+     + <p class="mcqOption">A hat</p>
+     + <p class="mcqOption">A toy</p>
+     + </div>
+     + <div class="col-12 mcqQuestion">
+     + <p class="mcqQuestionText">Question 3. Jeremy bought shoes that were too small. Was this a good choice?</p>
+     + <div class="mcqOptions">
+     + <p class="mcqOption">Yes, because they looked cool.</p>
+     + … 23 more added
+  ~ XGF9004_9_0.html: -25 +15
+     - <div class="activity interactive" number="9B">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="XGF9004-09-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: multiChoiceQuiz (insert quiz with p
+     - <div style="font-size: 0.95em">
+     - <ol>
+     - <li>Philosophy is the study of</li>
+     - </ol>
+     - <p>a. big ideas, truth and meaning.</p>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="activity interactive" number="9F">
+     - </div>
+     - <div class="activity interactive" number="9K">
+     - <div class="activity" number="9N">
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="XGF9004-09-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: multiChoiceQuiz (insert quiz with p
+     + <li>Philosophy is the study of</li>
+     + <p>a. big ideas, truth and meaning.</p>
+     + <div class="activity interactive" number="9E">
+     + <div class="activity interactive" number="9J">
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+     + <ol>
+     + </ol>
+     + <div class="activity" number="9M">
+  ~ XGF9004_10_0.html: -34 +21
+     - <div class="activity interactive" number="10F">
+     - <div class="row">
+     - <div class="col-12">
+     - <ol>
+     - <li>Water boils at 100°C.</li>
+     - </ol>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="42" data-cv2-ref="XGF9004-10-04" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Fact]<br />[Opinion]<br />[Fact]<br 
+     - <div class="cv2-interactive" data-cv2-index="42" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #42: radioQuiz (insert quiz with options
+     - <div style="font-size: 0.95em">
+     - <ol>
+     - <li>Chocolate is the best ice cream flavour.</li>
+     - <li>The moon affects the tides.</li>
+     - <li>The human body needs oxygen to survive.</li>
+     - <li>Dogs are friendlier than cats.</li>
+     - <li>Aotearoa New Zealand is in the Southern Hemisphere.</li>
+     - <li>Rainbows are the most beautiful thing in nature.</li>
+     - <li>Reading books is more fun than watching movies.</li>
+     - </ol>
+     - <p>This activity helped you practise deciding what is fact and what is opinion. Were there any of these statem
+     - <p>It’s time to head to your learning journal to share your understanding of facts and opinions with your kaia
+     - </div>
+     - </div>
+     - </div>
+     - <h4 class="goJournal">Go to your journal</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="42" data-cv2-ref="XGF9004-10-04" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Fact]<br />[Opinion]<br />[Fact]<br 
+     + <div class="cv2-interactive" data-cv2-index="42" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #42: radioQuiz (insert quiz with options
+     + <div style="font-size: 0.95em">
+     + <ol>
+     + <li>Water boils at 100°C.</li>
+     + <li>Chocolate is the best ice cream flavour.</li>
+     + <li>The moon affects the tides.</li>
+     + <li>The human body needs oxygen to survive.</li>
+     + <li>Dogs are friendlier than cats.</li>
+     + <li>Aotearoa New Zealand is in the Southern Hemisphere.</li>
+     + <li>Rainbows are the most beautiful thing in nature.</li>
+     + <li>Reading books is more fun than watching movies.</li>
+     + </ol>
+     + <p>This activity helped you practise deciding what is fact and what is opinion. Were there any of these statem
+     + … 1 more added
+  ~ XGF9004_12_0.html: -21 +11
+     - <div class="activity interactive" number="12E">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="48" data-cv2-ref="XGF9004-12-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="48" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #48: multiChoiceQuiz (insert with two ch
+     - <div style="font-size: 0.95em">
+     - <ol>
+     - <li>If you drop a glass, it might break.</li>
+     - </ol>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="48" data-cv2-ref="XGF9004-12-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="48" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #48: multiChoiceQuiz (insert with two ch
+     + <li>If you drop a glass, it might break.</li>
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+     + <ol>
+     + </ol>
+  ~ XGF9004_13_0.html: -87 +66
+     - <div class="activity interactive" number="13B">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="50" data-cv2-ref="XGF9004-13-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="50" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #50: dragAndDrop (insert , in red, with 
+     - <div style="font-size: 0.95em">
+     - <p><a href="https://www.istockphoto.com/photo/wants-needs-concept-gm1292651878-387380963" target="_blank">http
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> [H3] Need</th>
+     - <th> [H3] Want</th>
+     - </tr>
+     - <tr>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - </table>
+     - </div>
+     - <ul>
+     - <li>Clean water</li>
+     - </ul>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="activity interactive" number="13D">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="52" data-cv2-ref="XGF9004-13-03" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="52" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #52: multiChoiceQuiz (insert . in red) —
+     - … 47 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="50" data-cv2-ref="XGF9004-13-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="50" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #50: dragAndDrop (insert , in red, with 
+     + <p><a href="https://www.istockphoto.com/photo/wants-needs-concept-gm1292651878-387380963" target="_blank">http
+     + <th> [H3] Need</th>
+     + <th> [H3] Want</th>
+     + <li>Clean water</li>
+     + <ul>
+     + </ul>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="52" data-cv2-ref="XGF9004-13-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="52" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #52: multiChoiceQuiz (insert . in red) —
+     + <div style="font-size: 0.95em">
+     + <ol>
+     + <li>You spend all your pocket money on lollies.</li>
+     + … 46 more added
+XGF9004: identical 11 / changed 7
+XGF9006: identical 8 / changed 0
+XLP01: identical 5 / changed 0
+XLP02: identical 7 / changed 0
+XLP03: identical 6 / changed 0
+XLP04: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+XLP06: identical 3 / changed 0
+XMES101: identical 9 / changed 0
+XMES102: identical 6 / changed 0
+  ~ XMES103_2_0.html: -37 +27
+     - <div class="activity interactive" number="2C">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="XMES103-02-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: dragAndDrop (insert) — Activity (in
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> [image] tuatara</th>
+     - <th> [image] kereru</th>
+     - <th> [image] weta</th>
+     - <th> [image] Eel/Tuna</th>
+     - <th> [image] kiwi</th>
+     - <th> [image] Matariki</th>
+     - </tr>
+     - <tr>
+     - <td><b>1</b></td>
+     - <td><b>2</b></td>
+     - <td><b>3</b></td>
+     - <td><b>4</b></td>
+     - <td><b>5</b></td>
+     - <td><b>6</b></td>
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="XMES103-02-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: dragAndDrop (insert) — Activity (in
+     + <td><b>1</b></td>
+     + <td><b>2</b></td>
+     + <td><b>3</b></td>
+     + <td><b>4</b></td>
+     + <td><b>5</b></td>
+     + <td><b>6</b></td>
+     + <th> [image] tuatara</th>
+     + <th> [image] kereru</th>
+     + <th> [image] weta</th>
+     + <th> [image] Eel/Tuna</th>
+     + <th> [image] kiwi</th>
+     + <th> [image] Matariki</th>
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div style="font-size: 0.95em">
+     + … 7 more added
+XMES103: identical 5 / changed 1
+  ~ XMES201_4_0.html: -59 +49
+     - <div class="activity interactive" number="4D">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="34" data-cv2-ref="XMES201-04-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [insert chart showing heights]</p>
+     - <div class="cv2-interactive" data-cv2-index="34" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #34: dragAndDrop (insert) — Activity (in
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - </tr>
+     - </table>
+     - </div>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>chinchilla</th>
+     - <th>white horse</th>
+     - <th>Siamese cat</th>
+     - <th>scottie dog</th>
+     - </tr>
+     - <tr>
+     - <td>guinea pig</td>
+     - <td>white rabbit</td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - </table>
+     - </div>
+     - <p>There were pets in the story.</p>
+     - <p>Compare who is the tallest of all the pets in the story and place them in the chart showing <b>shortest to 
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - … 19 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="34" data-cv2-ref="XMES201-04-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [insert chart showing heights]</p>
+     + <div class="cv2-interactive" data-cv2-index="34" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #34: dragAndDrop (insert) — Activity (in
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th></th>
+     + </tr>
+     + </table>
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>chinchilla</th>
+     + <th>white horse</th>
+     + … 29 more added
+XMES201: identical 5 / changed 1
+XMES203: identical 6 / changed 0
+XTAS101: identical 5 / changed 0
+XTAS102: identical 6 / changed 0
+XTAS103: identical 7 / changed 0
+XWHA01: identical 2 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 497 / changed 15 / missing 0 over 122 modules
+CHANGED: SCES201/SCES201_2_0.html SSFUN07/SSFUN07_2_0.html SSFUN07/SSFUN07_3_0.html WJFUN115/WJFUN115_0_0.html XDLS909/XDLS909_4_0.html XGF9001/XGF9001_2_0.html XGF9004/XGF9004_2_0.html XGF9004/XGF9004_6_0.html XGF9004/XGF9004_8_0.html XGF9004/XGF9004_9_0.html XGF9004/XGF9004_10_0.html XGF9004/XGF9004_12_0.html XGF9004/XGF9004_13_0.html XMES103/XMES103_2_0.html XMES201/XMES201_4_0.html
