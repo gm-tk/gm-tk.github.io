@@ -1,0 +1,21 @@
+Claude bare-lead alert boxes (lead then row>col-12): 60 on 47 pages / 27 modules
+   gold-absent                  28
+   gold-bare-h4                 10
+   gold-bare-p                  9
+   gold-wrapped-p               6
+   gold-wrapped-h4              6
+   gold-wrapped-h5              1
+
+by (template, subject):
+   ('Standard', 'Leaving to Learn')                 n= 18  gold-absent=10  gold-bare-p=3  gold-wrapped-p=2  gold-bare-h4=2  gold-wrapped-h5=1
+   ('Fundamentals', '1-10 Writing (MiW)')           n= 15  gold-wrapped-h4=5  gold-wrapped-p=3  gold-bare-h4=3  gold-bare-p=3  gold-absent=1
+   ('Standard', '1-10 Science')                     n= 13  gold-absent=12  gold-wrapped-h4=1
+   ('Standard', 'EXPlore')                          n=  4  gold-absent=2  gold-bare-p=2
+   ('Inquiry', 'Leaving to Learn')                  n=  2  gold-absent=1  gold-bare-p=1
+   ('Standard', '1-10 Blended Literacy')            n=  2  gold-bare-h4=1  gold-absent=1
+   ('Standard', 'ConnectED')                        n=  1  gold-bare-h4=1
+   ('Standard', '1-10 English')                     n=  1  gold-bare-h4=1
+   ('Standard', 'NCEA1')                            n=  1  gold-bare-h4=1
+   ('Standard', '1-10 Mathematics')                 n=  1  gold-bare-h4=1
+   ('Standard', 'Online Safety (OS9000)')           n=  1  gold-wrapped-p=1
+   ('Standard', '1-10 Technology')                  n=  1  gold-absent=1

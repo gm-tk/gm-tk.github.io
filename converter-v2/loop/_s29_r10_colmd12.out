@@ -1,0 +1,115 @@
+gold col-12 col-md-12 columns by CONTEXT (ancestor):
+   other               1000  pages 596
+   activity             634  pages 279
+   super-content        119  pages 84
+   inquiryPanel         112  pages 27
+   tab-pane              83  pages 77
+   fundamentalsPanel     77  pages 34
+   accContent            37  pages 17
+   clickDropContent      25  pages 9
+   moduleMenu            19  pages 19
+   supervisor            15  pages 15
+   alert                 11  pages 10
+
+by FIRST CHILD:
+   div.activity.interactive                 380
+   h3                                       223
+   p                                        154
+   h4                                       94
+   ol                                       91
+   h2                                       86
+   div.flipCardsContainer.row               77
+   div.whakatauki                           77
+   img.img-fluid                            64
+   div.activity                             56
+   div.row                                  54
+   div.dragAndDrop                          43
+
+by (template, subject) x context:
+   ('Standard', '1-10 Mathematics')                 n= 313  other=206  activity=80  super-content=10  accContent=7
+   ('Standard', '1-10 English')                     n= 229  other=135  activity=67  super-content=12  moduleMenu=4
+   ('Standard', 'Leaving to Learn')                 n= 216  other=102  activity=59  super-content=35  tab-pane=10
+   ('Standard', 'NCEA1')                            n= 201  other=99  activity=68  tab-pane=25  accContent=9
+   ('Standard', 'Online Safety (OS9000)')           n= 189  other=136  activity=23  tab-pane=14  super-content=6
+   ('Standard', '1-10 Blended Literacy')            n= 181  activity=95  other=57  super-content=12  supervisor=7
+   ('Fundamentals', '1-10 English')                 n= 145  activity=109  fundamentalsPanel=15  other=10  super-content=7
+   ('Inquiry', '1-10 Blended Literacy')             n=  98  inquiryPanel=50  super-content=18  other=17  activity=9
+   ('Inquiry', 'ConnectED')                         n=  86  inquiryPanel=37  activity=25  super-content=11  other=10
+   ('Bilingual', 'Te Marautanga o Aotearoa TMoA')   n=  81  other=45  activity=28  accContent=7  alert=1
+   ('Standard', 'ConnectED')                        n=  78  other=63  clickDropContent=11  alert=2  activity=2
+   ('Standard', 'ANZH')                             n=  74  other=45  tab-pane=16  activity=12  super-content=1
+   ('Fundamentals', '1-10 Writing (MiW)')           n=  55  fundamentalsPanel=23  activity=21  super-content=6  other=4
+   ('Standard', '1-10 Languages')                   n=  22  other=18  activity=3  tab-pane=1
+   ('Standard', '1-10 Technology')                  n=  19  other=13  activity=5  accContent=1
+   ('Inquiry', 'EXPlore')                           n=  18  inquiryPanel=16  other=1  tab-pane=1
+   ('Fundamentals', '1-10 Arts')                    n=  14  fundamentalsPanel=13  other=1
+   ('Fundamentals', '1-10 Health and PE')           n=  14  fundamentalsPanel=12  activity=2
+   ('Fundamentals', '1-10 Technology')              n=  12  other=5  fundamentalsPanel=4  activity=2  accContent=1
+   ('Fundamentals', 'Leaving to Learn')             n=  12  activity=7  other=5
+   ('Standard', '1-10 Social Science')              n=  12  other=7  alert=3  activity=2
+   ('Fundamentals', '1-10 Social Science')          n=  11  fundamentalsPanel=8  activity=2  super-content=1
+   ('Standard', 'EXPlore')                          n=   9  inquiryPanel=6  tab-pane=2  other=1
+   ('Standard', '1-10 Health and PE')               n=   9  other=5  activity=4
+   ('Fundamentals', '1-10 Mathematics')             n=   8  other=6  fundamentalsPanel=2
+
+Claude's column at the same content (context, Claude's nearest preceding col class):
+   other                451  (text absent)
+   activity             251  (text absent)
+   other                149  col-12
+   other                 97  (no col)
+   other                 78  col-md-8 col-12
+   inquiryPanel          67  (text absent)
+   activity              47  (no col)
+   super-content         43  (text absent)
+   tab-pane              39  (text absent)
+   fundamentalsPanel     38  (text absent)
+   accContent            25  (text absent)
+   super-content         24  col-12
+   activity              22  col-12
+   super-content         22  col-12 col-md-12
+   clickDropContent      19  (text absent)
+   moduleMenu            18  (text absent)
+   inquiryPanel          16  (no col)
+   super-content         13  (no col)
+   fundamentalsPanel     12  col-12
+   inquiryPanel          10  col-md-8 col-12
+   fundamentalsPanel      9  col-md-8 col-12
+   activity               8  col-md-8 col-12
+   super-content          8  col-md-8 col-12
+   alert                  7  (text absent)
+   other                  5  col-md-4 col-12 paddingLR
+
+examples:
+   activity ('PNR101', 'PNR101_2_0.html', 'div.col-12.col-md-8 › div.activity.interactive › div.row', 'h2', 'Te wā pānui Story time Mātaki, whakarongo hoki ki ')
+   activity ('PNR101', 'PNR101_2_0.html', 'div.activity.interactive › div.row › div.row', 'h3', 'Te noho hōpuni Going camping Whakarongo ki ia rere')
+   activity ('PNR101', 'PNR101_2_0.html', 'div.activity.interactive › div.row › div.row', 'div.autoCheck.dragAndDrop.images', '')
+   other ('PNR102', 'PNR102_1_0.html', 'div › div.row › div.col-12.col-md-8', 'div.whakatauki', 'Haere whakaparirau i a koe, haere whakamanu. Go, d')
+   other ('PNR102', 'PNR102_2_0.html', 'div › div › div.row', 'h2', 'He aha tāku i ako ai? What have I learned? Ka mau ')
+   other ('PNR104', 'PNR104_1_0.html', 'div › div › div.row', 'div.flipCardsContainer.row', '')
+   accContent ('TRR108', 'TRR108_0.0.html', 'div.accordion › div.accContent › div.row.selectionBox', 'ol', 'Waiata Whakapapa Waiata whānau whakatōhea whakapap')
+   accContent ('TRR108', 'TRR108_0.0.html', 'div.accordion › div.accContent › div.row.selectionBox', 'ol', "Simon Says i Te Reo Whakahau i te reo Māori - 'Tū ")
+   accContent ('TRR108', 'TRR108_0.0.html', 'div.accordion › div.accContent › div.row.selectionBox', 'ol', 'Whare Pukapuka Whakaahua Whakaatu pukapuka whakaah')
+   alert ('TRR301', 'TRR301_3.0.html', 'div.row › div.col-12 › div.row.selectionBox', 'ol', 'wehewehe i tētahi reretūpono i ōna āhuatanga. <li ')
+   alert ('CEDO501', 'CEDO501_5.2.html', 'div.row › div.col-12 › div.row.selectionBox', 'ol', 'Excellent Good Fair Poor')
+   alert ('CEDO502', 'CEDO502_3_1.html', 'div.col-12.col-md-8 › div.alert › div.row', 'h4', 'For example <div class="col-md-4 offset-md-0 col-1')
+   fundamentalsPanel ('ARFUN02', 'ARFUN02.html', 'div › div.fundamentalsPanel › div.row', 'div.activity.interactive', 'Designer note:')
+   fundamentalsPanel ('ARFUN04', 'ARFUN04_0.00.html', 'div.row › div.col-12.col-md-8 › div.row', 'a', 'Line <a href="/d2l/common/dialogs/quickLink/quickL')
+   fundamentalsPanel ('ARFUN04', 'ARFUN04_0.00.html', 'div.row › div.col-12.col-md-8 › div.row', 'a', 'Balance <a href="/d2l/common/dialogs/quickLink/qui')
+   tab-pane ('ENFUN01', 'ENFUN01.html', 'div.tab-content › div.tab-pane › div.row', 'div.flipCardsContainer.row', '')
+   tab-pane ('ENFUN01', 'ENFUN01.html', 'div.tab-content › div.tab-pane › div.row', 'div.flipCardsContainer.row', '')
+   tab-pane ('ENFUN01', 'ENFUN01.html', 'div.tab-content › div.tab-pane › div.row', 'div.flipCardsContainer.row', '')
+   super-content ('ENFUN02', 'ENFUN02.html', 'div.activity.super-content-button.supervisor › div.row.super-content › div.row', 'p', 'Ask your ākonga to retell the story to you. A good')
+   super-content ('ENFUN03', 'ENFUN03.html', 'div.activity.super-content-button.supervisor › div.row.super-content › div.row', 'p', 'Help your student to go through this checklist for')
+   super-content ('ENFUN03', 'ENFUN03.html', 'div.col-12.col-md-8 › div.activity.super-content-button.supervisor › div.row', 'div.carousel.row', '')
+   inquiryPanel ('BLL110', 'BLL110.html', 'div › div.inquiryPanel › div.row', 'h2', 'The letter s')
+   inquiryPanel ('BLL110', 'BLL110.html', 'div › div.inquiryPanel › div.row', 'h2', 'The letter a')
+   inquiryPanel ('BLL110', 'BLL110.html', 'div › div.inquiryPanel › div.row', 'h2', 'The letter t')
+   clickDropContent ('BLL220', 'BLL220.html', 'div.col-12 › div.col-12 › div.clickDropContent', 'div.item', 'Ahoy there, mateys! Watch these videos and choose ')
+   clickDropContent ('BLL220', 'BLL220.html', 'div.col-12 › div.col-12 › div.clickDropContent', 'div.item', 'Look on the internet or YouTube with your supervis')
+   clickDropContent ('BLL230', 'BLL230.html', 'div.col-12 › div.col-12 › div.clickDropContent', 'div.item', 'Draw some things that have the long ‘o’ vowel soun')
+   moduleMenu ('CEDK101', 'CEDK101_0.html', 'div › div.moduleMenu › div.row', 'h4', 'Understand Making connections across related')
+   moduleMenu ('BLL174', 'BLL174-00.html', 'div › div.moduleMenu › div.row', 'h4', 'Understand Shared codes and conventions enable')
+   moduleMenu ('BLL175', 'BLL175-00.html', 'div › div.moduleMenu › div.row', 'h4', 'Understand Shared codes and conventions enable')
+   supervisor ('CEDT207', 'CEDT207 Me, my selfie and I.html', 'div.inquiryPanel › div.row.supervisor › div.col-12.col-md-8', 'div.activity.alertPadding.super-content-button', 'Supervisor')
+   supervisor ('CEDT207', 'CEDT207_3.0.html', 'div › div.row.supervisor › div.col-12.col-md-8', 'div.activity.alertPadding.super-content-button', 'Supervisor <div')
+   supervisor ('BLL141', 'BLL141-2.0.html', 'div › div.row.supervisor › div.col-12.col-md-8', 'div.activity.super-content-button', '')
