@@ -356,6 +356,317 @@ class ContentConverter {
 	};
 
 	/**
+	 * THE TILE-PAGE FUNDAMENTALS DIALECT (ROUND 410 — session 28 Task 3, the
+	 * WJFUN "My Te Kura Writing" family, 21 modules). The seventh phase-delimiter
+	 * dialect: the writer authors ONE single-file module whose lessons are
+	 * TILES. `[Tile N content]` (or a bare `[Tile N]`) opens each tile and
+	 * `[Tile N content ENDS]` closes it; inside a tile the `[H1] <title>` names
+	 * it, `[Overview]` + `[Learning intention for tile]` ("We are learning:" +
+	 * bullets) + `[Success criteria for tile]` ("I can:" + bullets) carry the
+	 * tile's menu pane, and `[Lesson content]` opens its body. Before the first
+	 * tile the module's own `[Overview]` holds the `[H3] Knowledge Year N` /
+	 * `[H3] Practices Year N` bullet blocks (the menu's Overview pane, two
+	 * columns), the `[Introduction content]` prose, an "[Insert links/buttons
+	 * to the individual tile sections …]" tile TABLE (the tile row is built by
+	 * PanelsBuilder, so the table is consumed) and the "[RHS side tab
+	 * navigation: for all pages/tiles]" list of `Tab N <label>` lines — the
+	 * phases nav's labels (consumed; without the list the tile titles label
+	 * the nav). Everything else rides the ROUND 265 level-pages machinery: a
+	 * phasebreak per tile, the tile title synthesized as a writer-level heading,
+	 * run._levelMenu for MenuBuilder.#levelTabs (its `pane_form` "single_col"
+	 * — LI + SC in ONE column, the gold's WJFUN pane) and the registry row for
+	 * PanelsBuilder.#levelPagesNav (nav + tiles).
+	 *
+	 * Registry-gated (tile_pages.registry — WJFUN|1-3 / 4-6 / 7-8), fundamentals
+	 * body class AND single-file page model; fewer than `min_markers` distinct
+	 * tile markers → null and the page is left exactly as before. Note that the
+	 * TagNormaliser resolves `[Tile N content]` / `[Learning intention for tile]`
+	 * / `[Success criteria for tile]` to the `shape n` sub-tag (the source of
+	 * the "Orphan sub-tag [shape n]" red flags every WJFUN page carried), so the
+	 * detectors read each item's FOLDED TEXT, never its primary.
+	 *
+	 * @param {Object[]} bodyItems - the page's body items (mutated in place)
+	 * @param {ConversionRun} run - the conversion run (gains run._levelMenu)
+	 * @param {boolean} fundPanelMode - fundamentals mode is on for this page
+	 * @param {boolean} singleFilePage - registry page_model is "single-file"
+	 * @returns {{labels: string[], row: Object}|null}
+	 *
+	 * Data: body_region.fundamentals_panels.tile_pages. Env toggle: TILEPAGE_OFF.
+	 */
+	static #tilePagesPrepass(bodyItems, run, fundPanelMode, singleFilePage, menuItems = []) {
+		const cfg = DataService.Data.EmitTemplates.body_region.fundamentals_panels?.tile_pages;
+		if (!cfg || cfg.enabled === false || !fundPanelMode || !singleFilePage) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "TILEPAGE_OFF"]) return null;
+		const reg = cfg.registry || {};
+		let row = reg.series?.[run?.moduleCode] ?? null;
+		if (!row) {
+			const subj = (run?.moduleCode || "").match(/^[A-Za-z]+/)?.[0] || "";
+			const rawPhase = run?.resolvedRules?.template_phase ?? "";
+			const phase = DataService.Data.EmitTemplates.skeleton?.template_attr_map?.[rawPhase] ?? rawPhase;
+			const lk = `${subj}|${phase}`.toLowerCase();
+			const hit = Object.keys(reg.groups || {}).find((k) => k.toLowerCase() === lk);
+			row = hit ? reg.groups[hit] : null;
+		}
+		if (!row) return null;
+		const folded = (it) => (it.parse?.folded ?? Utils.Fold(String(it.text || ""))).trim();
+		const free = (it) => it.consumedBy === undefined;
+		const markerRe = new RegExp(cfg.marker_pattern || "^\\[tile\\s*(\\d+)(?:\\s+content)?\\]$", "i");
+		const endsRe = new RegExp(cfg.marker_ends_pattern || "^\\[tile\\s*\\d+\\s+content\\s+ends\\]$", "i");
+		const isMarker = (it) => it.type === "tag" && free(it) && !endsRe.test(folded(it)) && markerRe.test(folded(it));
+		// ROUND 410b — the dialect's OTHER two tile boundaries (WJFUN205 / 210 / 212 / 307):
+		// a `[LESSON N]` marker (alone, or riding the title's own span — `[LESSON 1] [H1]
+		// Literary Techniques`), and a top-level heading whose text IS one of the tile
+		// names the writer listed (the `Tab N` side-tab list, or the `[Tile title] / X`
+		// cells of the tile-links table) — the round-361 "opener by name" pattern.
+		const lessonMarkRe = new RegExp(cfg.lesson_marker_pattern || "^\\[lesson\\s*(\\d+)\\]", "i");
+		const tileCellRe = new RegExp(cfg.tile_cell_pattern || "^\\[?tile\\s*(\\d+)\\]?$", "i");
+		const tileTitleCellRe = new RegExp(cfg.tile_title_cell_pattern || "^\\[tile\\s*title\\]\\s*/\\s*(.+)$", "i");
+		const liLeadRe = new RegExp(cfg.li_lead_pattern || "^(we are learning|learning intentions?)\\b", "i");
+		const scLeadRe = new RegExp(cfg.sc_lead_pattern || "^(i can\\b|success criteria|how will i know|you will show)", "i");
+		const boundLesson = cfg.lesson_markers !== false;
+		const boundNamed = cfg.named_heading_openers !== false;
+		const isLessonMark = (it) => boundLesson && it.type === "tag" && free(it) && lessonMarkRe.test(folded(it));
+		const cellText = (c) => String(c ?? "").replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "")
+			.replace(/\*+/g, "").replace(/\s+/g, " ").trim();
+		const isTileTable = (it) => it.type === "table" && free(it) && Array.isArray(it.block?.rows)
+			&& it.block.rows.some((r) => (r || []).filter((c) => tileCellRe.test(cellText(c))).length >= 1)
+			&& it.block.rows.some((r) => (r || []).some((c) => tileTitleCellRe.test(cellText(c))));
+
+		const navTagRe = new RegExp(cfg.nav_tag_pattern || "side tab navigation", "i");
+		const tabLineRe = new RegExp(cfg.tab_line_pattern || "^tab\\s*(\\d+)\\b", "i");
+		const tileLinksRe = new RegExp(cfg.tile_links_pattern || "^\\[insert links?\\s*/\\s*buttons? to the individual tile sections", "i");
+		const liTagRe = new RegExp(cfg.li_tag_pattern || "^\\[learning intentions? for tile\\]$", "i");
+		const scTagRe = new RegExp(cfg.sc_tag_pattern || "^\\[success criteria for tile\\]$", "i");
+		const lessonRe = new RegExp(cfg.lesson_content_pattern || "^\\[lesson content\\]$", "i");
+		const ovAliasRe = new RegExp(cfg.overview_alias_pattern || "^\\[overview\\]$", "i");
+		const paneHeadRe = new RegExp(cfg.module_pane_heading_pattern || "knowledge|practices|learning intention|success criteria|how will i know", "i");
+		const titleTags = new Set((cfg.title_tags || ["h1", "h2", "h3"]).map((t) => String(t).toLowerCase()));
+		const stripMd = (s) => String(s || "").replace(/\*+/g, "").replace(/\s+/g, " ").trim();
+		// a run of black lines after item i (the bullet block of a tag) — returns [lines, nextIndex]
+		const blackRun = (i, alsoBody) => {
+			const lines = [];
+			let j = i + 1;
+			if (alsoBody && j < bodyItems.length && bodyItems[j].type === "tag" && free(bodyItems[j])
+				&& bodyItems[j].parse?.primary?.tag === "body") {
+				if ((bodyItems[j].blackAfter || "").trim()) lines.push(...String(bodyItems[j].blackAfter).split("\n"));
+				j++;
+			}
+			while (j < bodyItems.length && bodyItems[j].type === "black" && free(bodyItems[j])) {
+				lines.push(...String(bodyItems[j].text || "").split("\n"));
+				j++;
+			}
+			return [lines, j];
+		};
+
+		const tabLabels = {};        // "1" -> label (the RHS side-tab list)
+		const tileNames = {};        // "1" -> name (the tile-links table's "[Tile title] / X" cells)
+		const foldName = (s) => Utils.Fold(stripMd(s)).replace(/^lesson\s*\d+\s*[:\-–—]?\s*/, "").trim();
+		// the side-tab list after item i: fills tabLabels, returns the index after the list
+		const readTabList = (i) => {
+			let j = i + 1;
+			while (j < bodyItems.length && bodyItems[j].type === "tag" && free(bodyItems[j])
+				&& !bodyItems[j].parse?.primary && tabLineRe.test(String(bodyItems[j].text || "").trim())) {
+				const n = String(bodyItems[j].text).trim().match(tabLineRe)[1];
+				const lab = stripMd(bodyItems[j].blackAfter) || stripMd(String(bodyItems[j].text).replace(tabLineRe, ""));
+				if (lab && !tabLabels[n]) tabLabels[n] = lab;
+				j++;
+			}
+			return j;
+		};
+		// the tile-links table: its "[Tile title] / X" cells name the tiles by column
+		const readTileTable = (it) => {
+			for (const r of it.block.rows) {
+				const cells = (r || []).map(cellText);
+				if (!cells.some((c) => tileTitleCellRe.test(c))) continue;
+				cells.forEach((c, k) => { const m = c.match(tileTitleCellRe); if (m && !tileNames[String(k + 1)]) tileNames[String(k + 1)] = stripMd(m[1]); });
+			}
+		};
+		// ---- pre-scan: the tile NAMES first (the lists precede every tile), then the
+		// ---- boundary count over all three kinds (the min_markers gate)
+		let declIdx = -1;   // the last item declaring the tile names — a named opener counts only AFTER it
+		for (let i = 0; i < bodyItems.length; i++) {
+			const it = bodyItems[i];
+			if (it.type === "tag" && free(it) && navTagRe.test(folded(it))) { i = readTabList(i) - 1; declIdx = i; continue; }
+			if (isTileTable(it)) { readTileTable(it); declIdx = i; }
+		}
+		const nameNum = (txt) => {   // a heading's text → the tile number it names, else null
+			if (!boundNamed) return null;
+			const fn = foldName(txt); if (!fn) return null;
+			for (const [n, lab] of Object.entries(tileNames)) if (foldName(lab) === fn) return n;
+			for (const [n, lab] of Object.entries(tabLabels)) if (foldName(lab) === fn) return n;
+			return null;
+		};
+		const isNamedOpener = (it) => it.type === "tag" && free(it) && titleTags.has(it.parse?.primary?.tag || "")
+			&& (it.blackAfter || "").trim() && nameNum(it.blackAfter) !== null;
+		const boundaryNums = new Set();
+		bodyItems.forEach((it, i) => {
+			if (isMarker(it)) boundaryNums.add(folded(it).match(markerRe)[1]);
+			else if (isLessonMark(it)) boundaryNums.add(folded(it).match(lessonMarkRe)[1]);
+			else if (i > declIdx && isNamedOpener(it)) boundaryNums.add(nameNum(it.blackAfter));
+		});
+		if (boundaryNums.size < (cfg.min_markers ?? 2)) return null;
+
+		const moduleMenu = { li: null, sc: null };
+		const tiles = [];            // [{num, label, li, sc}] in first-seen order
+		const tileIdx = new Map();
+		let cur = null;              // the open tile (index into tiles) or null before the first
+		let titlePending = false;    // the tile's title heading not yet seen
+		let pendingLiSc = null;      // a tile's LI/SC block typed BEFORE its boundary (WJFUN212)
+		const out = [];
+		// a tile's "We are learning: … I can: …" run (the `[Lesson Overview]` / tile
+		// `[Overview]` form, no `[Learning intention for tile]` tag) → li + sc buckets
+		const splitLiSc = (lines) => {
+			const li = [], sc = []; let side = null;
+			for (const ln of lines) {
+				const t = ln.trim(); if (!t) continue;
+				if (side === null && liLeadRe.test(t)) side = li;
+				else if (scLeadRe.test(t) && !/^[•◦▪]/.test(t)) side = sc;
+				if (side === null) return null;   // the run does not open with a learning lead — not a tile LI/SC block
+				side.push(ln);
+			}
+			return li.length ? { li, sc } : null;
+		};
+		const applyLiSc = (tile, blk) => { this.#levelMenuLines(tile.li, blk.li, cfg); this.#levelMenuLines(tile.sc, blk.sc, cfg); };
+		const openTile = (num) => {
+			if (!tileIdx.has(num)) {
+				tileIdx.set(num, tiles.length);
+				tiles.push({ num, label: "", li: { lead: "", bullets: [] }, sc: { lead: "", bullets: [] } });
+				out.push({ type: "phasebreak" });
+			}
+			cur = tileIdx.get(num);
+			titlePending = true;
+			if (pendingLiSc) { applyLiSc(tiles[cur], pendingLiSc); pendingLiSc = null; }
+		};
+		const pushTitle = (it, text) => {
+			titlePending = false;
+			if (!tiles[cur].label) tiles[cur].label = stripMd(text);
+			const wl = cfg.title_writer_level ?? 1;
+			out.push({ type: "tag", text: `[H${wl}]`, parse: this.#norm.Parse(`[H${wl}] `), blackAfter: text, block: it.block });
+		};
+		// the FIRST tile's LI/SC block may already sit in the MENU items (the page's first
+		// `[Lesson Overview]` region is routed there by #partitionItems) — harvest it
+		if (Array.isArray(menuItems)) {
+			const k = menuItems.findIndex((m) => m.type === "tag" && m.parse?.primary?.tag === "lesson overview");
+			if (k >= 0) {
+				const lines = [];
+				if ((menuItems[k].blackAfter || "").trim()) lines.push(...String(menuItems[k].blackAfter).split("\n"));
+				for (let j = k + 1; j < menuItems.length && menuItems[j].type === "black"; j++) lines.push(...String(menuItems[j].text || "").split("\n"));
+				const blk = splitLiSc(lines);
+				if (blk) pendingLiSc = blk;
+			}
+		}
+		for (let i = 0; i < bodyItems.length; i++) {
+			const it = bodyItems[i];
+			const f = it.type === "tag" && free(it) ? folded(it) : null;
+			// ---- "[Tile N content]" — a tile opens ------------------------------
+			if (f !== null && isMarker(it)) {
+				openTile(f.match(markerRe)[1]);
+				if ((it.blackAfter || "").trim()) out.push({ type: "black", text: it.blackAfter, block: it.block });
+				continue;
+			}
+			// ---- "[LESSON N]" — a tile opens (the marker may share the title's span) --
+			if (f !== null && isLessonMark(it)) {
+				openTile(f.match(lessonMarkRe)[1]);
+				if (titleTags.has(it.parse?.primary?.tag || "") && (it.blackAfter || "").trim()) pushTitle(it, it.blackAfter);
+				else if ((it.blackAfter || "").trim()) out.push({ type: "black", text: it.blackAfter, block: it.block });
+				continue;
+			}
+			// ---- a top-level heading naming a tile not yet open — that tile opens ----
+			if (f !== null && i > declIdx && isNamedOpener(it) && !tileIdx.has(nameNum(it.blackAfter)) && !(cur !== null && titlePending)) {
+				openTile(nameNum(it.blackAfter));
+				pushTitle(it, it.blackAfter);
+				continue;
+			}
+			if (f !== null) {
+				// ---- "[Tile N content ENDS]" / "[Lesson content]" — structural no-ops --
+				if (endsRe.test(f) || lessonRe.test(f)) {
+					if ((it.blackAfter || "").trim()) out.push({ type: "black", text: it.blackAfter, block: it.block });
+					continue;
+				}
+				// ---- the RHS side-tab navigation list — the nav labels ------------
+				if (cur === null && navTagRe.test(f)) {
+					i = readTabList(i) - 1;
+					continue;
+				}
+				// ---- the tile-links instruction + its tile table — consumed -------
+				if (cur === null && tileLinksRe.test(f)) {
+					let j = i + 1;
+					while (j < bodyItems.length && (bodyItems[j].type === "black" && !String(bodyItems[j].text || "").trim())) j++;
+					if (j < bodyItems.length && bodyItems[j].type === "table" && free(bodyItems[j])) j++;
+					i = j - 1;
+					continue;
+				}
+				// ---- a tile's `[Lesson Overview]` / `[Overview]` + its WALT run → the pane --
+				if (it.parse?.primary?.tag === "lesson overview" || (it.parse?.primary?.tag === "title bar" && ovAliasRe.test(f))) {
+					const [lines, j] = blackRun(i, false);
+					if ((it.blackAfter || "").trim()) lines.unshift(...String(it.blackAfter).split("\n"));
+					const blk = splitLiSc(lines);
+					if (blk && (cur !== null || it.parse?.primary?.tag === "lesson overview")) {
+						if (cur !== null) applyLiSc(tiles[cur], blk); else pendingLiSc = blk;
+						i = j - 1;
+						continue;
+					}
+					// ---- the module's own [Overview] / a tile's [Overview] — nothing ---
+					if ((it.blackAfter || "").trim()) out.push({ type: "black", text: it.blackAfter, block: it.block });
+					continue;
+				}
+				// ---- a tile's LI / SC block → its menu pane ----------------------
+				if (cur !== null && (liTagRe.test(f) || scTagRe.test(f))) {
+					const side = liTagRe.test(f) ? "li" : "sc";
+					const [lines, j] = blackRun(i, true);
+					if ((it.blackAfter || "").trim()) lines.unshift(...String(it.blackAfter).split("\n"));
+					i = j - 1;
+					this.#levelMenuLines(tiles[cur][side], lines, cfg);
+					continue;
+				}
+				// ---- the tile's title heading → the panel's own heading ----------
+				if (cur !== null && titlePending && titleTags.has(it.parse?.primary?.tag || "")
+					&& (it.blackAfter || "").trim()) {
+					pushTitle(it, it.blackAfter);
+					continue;
+				}
+				// ---- module-overview [H3]-labelled block → the Overview pane -------
+				if (cur === null && /^h[1-6]$/.test(it.parse?.primary?.tag || "")
+					&& paneHeadRe.test(Utils.Fold(it.blackAfter || ""))) {
+					const side = moduleMenu.li ? "sc" : "li";
+					if (moduleMenu[side]) { out.push(it); continue; }
+					const [lines, j] = blackRun(i, true);
+					i = j - 1;
+					const bucket = { label: stripMd(it.blackAfter), lead: "", bullets: [], tail: [] };
+					// the lines after the bullets that are not bullets are the pane's
+					// trailing paragraph(s) (the gold's "Learning Intentions and Success
+					// criteria are included in each tile.")
+					let seenBullet = false;
+					for (const ln of lines) {
+						const t = ln.trim();
+						if (!t) continue;
+						const bare = t.replace(/^[•◦▪]\s*/, "");
+						if (bare !== t) { seenBullet = true; bucket.bullets.push(this.#levelBullet(bare)); }
+						else if (seenBullet) bucket.tail.push(stripMd(bare));
+						else if (!bucket.lead) bucket.lead = bare;
+						else bucket.bullets.push(this.#levelBullet(bare));
+					}
+					moduleMenu[side] = bucket;
+					continue;
+				}
+			}
+			// ---- the tile-links table itself (its instruction line worded otherwise) — consumed
+			if (cur === null && isTileTable(it)) continue;
+			out.push(it);
+		}
+		// labels: the side-tab list by position, else the table's tile name, else the tile's own title, else "Phase N"
+		tiles.forEach((t, k) => {
+			t.label = tabLabels[String(k + 1)] || tabLabels[t.num] || tileNames[t.num] || t.label || `Phase ${k + 1}`;
+		});
+		bodyItems.splice(0, bodyItems.length, ...out);
+		const menuCfg = { ...cfg, menu: { ...(cfg.menu || {}) } };
+		run._levelMenu = { module: moduleMenu, levels: tiles, row, cfg: menuCfg };
+		run.AddNote("info", "ContentConverter",
+			`Tile-page fundamentals dialect: ${tiles.length} tiles (${tiles.map((t) => t.label).join(", ")}) — one panel per tile, the tile LI/SC blocks routed to the module menu (fundamentals_panels.tile_pages).`);
+		return { labels: tiles.map((t) => t.label), row };
+	};
+
+	/**
 	 * Converts one page.
 	 *
 	 * @param {Object} page - PageSplitter page (items carry parse results +
@@ -793,7 +1104,12 @@ class ContentConverter {
 		// group) + single-file page model, so no other module family can enter this
 		// path. Data: body_region.fundamentals_panels.level_pages.
 		// Env toggle: LEVELPAGE_OFF (reverts the whole dialect).
-		const lvInfo = this.#levelPagesPrepass(bodyItems, run, fundPanelMode, singleFilePage);
+		// ROUND 410: the TILE-PAGE dialect (the WJFUN family) is the level-pages
+		// machinery's sibling — tried only when the level-pages pre-pass declined
+		// (the two are registry-disjoint). Data: fundamentals_panels.tile_pages;
+		// env TILEPAGE_OFF.
+		const lvInfo = this.#levelPagesPrepass(bodyItems, run, fundPanelMode, singleFilePage)
+			?? this.#tilePagesPrepass(bodyItems, run, fundPanelMode, singleFilePage, menuItems);
 
 		// INQUIRY TABBED TEMPLATE (the BLL "[Tab N] label-list" family): some modules present
 		// their content as a set of navigable "inquiry" panels labelled by a crumb-trail of

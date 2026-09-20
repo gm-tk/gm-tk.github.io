@@ -1060,6 +1060,44 @@ class InteractiveScanner {
 	 * @param {ConversionRun} run - for resolvedRules.body_class / page_model
 	 * @returns {boolean}
 	 */
+	/**
+	 * ROUND 410 — is this item a TILE-PAGE marker (`[Tile N content]` / `[Tile N]`) on a page
+	 * the tile-page dialect governs? The marker resolves to the `shape n` SUBTAG, so it is
+	 * recognised by its FOLDED TEXT (tile_pages.marker_pattern, never the ENDS form). Gated to
+	 * the fundamentals body class + the single-file page model + a tile_pages registry row for
+	 * this module (its series, else its subject|template_phase group) — the same gate
+	 * ContentConverter.#tilePagesPrepass applies, so the scanner and the pre-pass agree on
+	 * exactly which pages the markers are boundaries. Data
+	 * fundamentals_panels.tile_pages (scanner_hard_terminator); env TILEPAGE_OFF.
+	 *
+	 * @param {Object} it - a page item
+	 * @param {ConversionRun} run
+	 * @returns {boolean}
+	 */
+	static #tilePageMarker(it, run) {
+		const tp = DataService.Data.EmitTemplates?.body_region?.fundamentals_panels?.tile_pages;
+		if (!tp || tp.enabled === false || tp.scanner_hard_terminator === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[tp.env || "TILEPAGE_OFF"]) return false;
+		if (it.type !== "tag") return false;
+		if (!/(^|\s)fundamentals(\s|$)/.test(run?.resolvedRules?.body_class || "")) return false;
+		if (run?.resolvedRules?.page_model !== "single-file") return false;
+		const folded = (it.parse?.folded ?? "").trim();
+		if (new RegExp(tp.marker_ends_pattern || "^\\[tile\\s*\\d+\\s+content\\s+ends\\]$", "i").test(folded)) return false;
+		// the tile markers, plus the page-structure instructions the pre-pass consumes
+		// (the RHS side-tab navigation list and the tile-links table instruction) —
+		// all of them section boundaries a widget must never swallow
+		const pats = [tp.marker_pattern || "^\\[tile\\s*(\\d+)(?:\\s+content)?\\]$",
+			...(tp.scanner_terminator_patterns ?? [tp.nav_tag_pattern, tp.tile_links_pattern]).filter(Boolean)];
+		if (!pats.some((p) => new RegExp(p, "i").test(folded))) return false;
+		const reg = tp.registry || {};
+		if (reg.series?.[run?.moduleCode]) return true;
+		const subj = (run?.moduleCode || "").match(/^[A-Za-z]+/)?.[0] || "";
+		const rawPhase = run?.resolvedRules?.template_phase ?? "";
+		const phase = DataService.Data.EmitTemplates?.skeleton?.template_attr_map?.[rawPhase] ?? rawPhase;
+		const lk = `${subj}|${phase}`.toLowerCase();
+		return Object.keys(reg.groups || {}).some((k) => k.toLowerCase() === lk);
+	};
+
 	static #redPhaseDelimiter(it, run) {
 		const fp = DataService.Data.EmitTemplates?.body_region?.fundamentals_panels?.phase_text;
 		if (!fp) return false;
@@ -2002,6 +2040,15 @@ class InteractiveScanner {
 			// content). Gated to fundamentals body_class + single-file + the data flag. Data
 			// fundamentals_panels.phase_text.red_delimiter; env FUNPANRED_OFF.
 			if (!p && this.#redPhaseDelimiter(next, run)) break;
+			// ROUND 410 — a TILE-PAGE marker (`[Tile N content]` / `[Tile N]`, the WJFUN
+			// family's phase boundary) is a HARD terminator too: it resolves to the `shape n`
+			// SUBTAG, so without this the widget open at the end of a tile swallowed the
+			// next tile's marker (and its `[H1]` / LI / SC block) as members, the panel
+			// never opened and the marker leaked as a Writers Note. Same gate as the phase
+			// delimiter above (fundamentals body class + single-file) plus the tile_pages
+			// registry row. Data fundamentals_panels.tile_pages.scanner_hard_terminator;
+			// env TILEPAGE_OFF.
+			if (this.#tilePageMarker(next, run)) break;
 			// A suppressed numbered/bare accordion invocation is a fundamentals PHASE BOUNDARY on
 			// a gated page (accordion-as-phases): a HARD terminator, never a member — no bundle may
 			// swallow a phase delimiter (the same principle as the other phase-delimiter checks

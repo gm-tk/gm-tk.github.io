@@ -5039,6 +5039,8 @@
 				"inquiry_enabled": true,
 				"inquiry_exclude_code_prefixes": ["EXBP", "EXIP"],
 				"fundamentals_code_prefixes": ["HPFUN", "ARFUN", "SCFUN", "MXFUN"],
+				"level_dialect_code_prefixes": ["WJFUN"],
+				"_r410_note": "ROUND 410 — level_dialect_code_prefixes: a family listed here is promoted ONLY on a page whose panels the tile-pages / level-pages pre-pass made (run._levelMenu set). WJFUN: every gold tile panel opens with its title as <h2> (21 / 21 modules, outputs/_s28_t3_tiles.out); the promotion rides TILEPAGE_OFF, so the toggle reproduces the r409 bytes exactly — a WJFUN panel the round-106 'Phase N' path made (9 modules before r410) is not touched (the gold has no such heading).",
 				"skip_panel_class_match": "introduction",
 				"box_class_match": "^(?:activity|alert|alertActivity|accordion|tabs|carousel|flipCard|clickDropContent|TKmodal|speechBubble|cv2-interactive|supervisor|super-content|whakatauki|choicePage)$",
 				"_doc": "ROUND 385 (the autonomous loop's session 24 Round 9). THE PANEL'S FIRST OWN HEADING IS h2: the first heading directly in an inquiryPanel's / fundamentalsPanel's own column — not inside an activity, alert, supervisor panel or widget box, and not the introduction panel — renders at `level` (2) whatever level the writer's digit + the body shift + the rank rule gave it. MEASURED on every paired page (outputs/_s24_panelhead.py + _s24_panelhead2.py, the panels paired in order and their first headings by text): the gold's inquiry panels open with h2 0.70 (193 / 275 with a heading) — CED* 1.00, TWHA 1.00, TWHK 1.00, EXPFUN 0.69, BLL 1.00 on the paired texts (Claude already h2 there) — while EXBP / EXIP (n ≤ 2, h3 present) are excluded; the fundamentals panels split by family: HPFUN 0.84 (57 of 68 paired first headings h2 → Claude h3), ARFUN 1.00, SCFUN 1.00, MXFUN 6 / 6 where a heading exists, TEFUN 0.71 (Claude already h2 through the r373 keep) — and ENFUN / SSFUN / CHFUN / XFUN are h3 (0.81+), so only the listed `fundamentals_code_prefixes` take the rule. Claude's own first headings there were h3 / h4 / h5 (the panel label heading through the body shift). KB 06 §3.4 / §3.3 do not name the panel title's level; KB 06 §6's `<h3>` is the general section heading — the gold's own group convention decides (§1b 3). A post-pass on the finished body (PanelsBuilder.panelTitleLevelPostpass, after inquiryPanels), the r334 activity-title pass's sibling. Env PANELH2_OFF = the r384 output."
@@ -5155,6 +5157,101 @@
 					"groups": {
 						"HPFUN|combo": {
 							"label_mode": "heading"
+						}
+					}
+				}
+			},
+			"tile_pages": {
+				"enabled": true,
+				"env": "TILEPAGE_OFF",
+				"_doc": "ROUND 410 (session 28, Task 3 — the WJFUN 'My Te Kura Writing' FUNdamentals family, 21 modules). THE TILE-PAGE fundamentals dialect: the writer authors ONE single-file module whose lessons are TILES — `[Tile N content]` (or `[Tile N]`) opens each, `[Tile N content ENDS]` closes it; inside a tile `[H1] <title>` names it, `[Overview]` + `[Learning intention for tile]` (a 'We are learning:' lead + bullets) + `[Success criteria for tile]` ('I can:' + bullets) carry its menu pane, `[Lesson content]` opens the body; before the tiles the module's `[Overview]` holds the `[H3] Knowledge Year N` / `[H3] Practices Year N` bullet blocks (the menu's Overview pane, two columns), the `[Introduction content]` prose, an `[Insert links/buttons to the individual tile sections …]` tile table (rendered by the tile row, so consumed) and the `[RHS side tab navigation: for all pages/tiles]` list of `Tab N <label>` lines (the phases nav's labels, consumed). Measured on the 21 golds (outputs/_s28_t3_tiles.py): the distinct `[Tile N …]` count equals the gold's fundamentalsPanel count on 16 / 21 (the `Tab N` list on 15 / 21; both together 19 / 21 — WJFUN105's developer split one tile in two, WJFUN112's nav lists a 'Test' phase without a panel). The gold form: `div.phases` nav labelled with the tab labels, `div.introduction` ending in a `row phaseContainer` of `col-md-3 col-6` phaseLink tiles (h3 label + phaseImg), one `fundamentalsPanel phase=N` per tile opening with the tile title as `<h2>`, and a tabs menu Overview + one pane per tile (ONE `col-md-8 col-12` column: `<h5>Learning Intentions</h5><p>We are learning:</p><ul>…</ul><p>I can:</p><ul>…</ul>`). Rides the r265 level-pages machinery: the pre-pass pushes a phasebreak per tile, synthesizes the tile title as a writer heading (title_writer_level), fills run._levelMenu (PanelsBuilder.#levelPagesNav builds nav + tiles from the registry row; MenuBuilder.#levelTabs composes the panes — the NEW menu.pane_form 'single_col' puts LI + SC in one column). Registry-gated (WJFUN|1-3 / 4-6 / 7-8) + fundamentals body class + single-file; a module with fewer than min_markers distinct tile markers is left exactly as before. Env TILEPAGE_OFF reverts the whole dialect.",
+				"marker_pattern": "^\\[tile\\s*(\\d+)(?:\\s+content)?\\]$",
+				"marker_ends_pattern": "^\\[tile\\s*\\d+\\s+content\\s+ends\\]$",
+				"min_markers": 2,
+				"nav_tag_pattern": "side tab navigation",
+				"tab_line_pattern": "^tab\\s*(\\d+)\\b",
+				"tile_links_pattern": "^\\[insert links?\\s*/\\s*buttons? to the individual tile sections",
+				"li_tag_pattern": "^\\[learning intentions? for tile\\]$",
+				"sc_tag_pattern": "^\\[success criteria for tile\\]$",
+				"lesson_content_pattern": "^\\[(?:lesson|introduction) content\\]$",
+				"overview_alias_pattern": "^\\[overview\\]$",
+				"module_pane_heading_pattern": "knowledge|practices|learning intention|success criteria|how will i know",
+				"_doc_boundaries": "ROUND 410b — the dialect's three tile BOUNDARIES, counted together against min_markers: (1) a `[Tile N content]` / `[Tile N]` marker (marker_pattern — 16 of the 21 modules); (2) a `[LESSON N]` marker, alone or riding the title's own span (`[LESSON 1] [H1] Literary Techniques`; lesson_marker_pattern, lesson_markers — WJFUN205 / 210 / 212); (3) a top-level heading (title_tags) whose text IS one of the tile NAMES the writer listed (named_heading_openers — the round-361 opener-by-name pattern; WJFUN210 / 307). The names come from the `Tab N` side-tab list (tab_line_pattern) or the `[Tile title] / X` cells of the tile-links table (tile_title_cell_pattern; the table is recognised by its own cells, tile_cell_pattern, whatever its instruction line says). A tile's LI / SC block typed as a `[Lesson Overview]` / tile `[Overview]` + 'We are learning: … I can: …' run (no `[Learning intention for tile]` tag) splits at the SC lead (li_lead_pattern / sc_lead_pattern) into the tile's pane — the FIRST tile's block is harvested from the menu items when #partitionItems routed it there.",
+				"lesson_markers": true,
+				"lesson_marker_pattern": "^\\[lesson\\s*(\\d+)\\]",
+				"named_heading_openers": true,
+				"tile_cell_pattern": "^\\[?tile\\s*(\\d+)\\]?$",
+				"tile_title_cell_pattern": "^\\[tile\\s*title\\]\\s*/\\s*(.+)$",
+				"li_lead_pattern": "^(we are learning|learning intentions?)\\b",
+				"sc_lead_pattern": "^(i can\\b|success criteria|how will i know|you will show)",
+				"title_writer_level": 1,
+				"title_tags": [
+					"h1",
+					"h2",
+					"h3"
+				],
+				"menu": {
+					"pane_form": "single_col",
+					"overview_label": "Overview",
+					"nav_item": "\n<li><a>{label}</a></li>",
+					"pane_open": "\n<div class=\"tab-pane\">\n<div class=\"row\">",
+					"pane_close": "\n</div>\n</div>",
+					"col_template": "<div class=\"{cls}\">\n{content}\n</div>",
+					"heading_template": "<h5>{label}</h5>",
+					"li_label_default": "Learning Intentions",
+					"sc_label_default": "How will I know I have learned it?"
+				},
+				"registry": {
+					"_doc": "series (this module's own code) beats the subject|template_phase group. Every WJFUN level shares the gold's one tile form.",
+					"series": {},
+					"groups": {
+						"WJFUN|1-3": {
+							"menu_cols": [
+								"col-md-8 col-12"
+							],
+							"menu_cols_overview": [
+								"col-md-6 col-12 paddingR",
+								"col-md-6 col-12 paddingL"
+							],
+							"phases_nav_item": "<div phase=\"{n}\">\n<p>{label}</p>\n</div>",
+							"tiles_open": "<div class=\"row phaseContainer\">",
+							"tile_open": "<div class=\"col-md-3 col-6\">\n<div class=\"phaseLink\" phase=\"{n}\">\n<h3>{label}</h3>",
+							"tile_img": "<img class=\"phaseImg\" src=\"{src}\" alt=\"{alt}\">",
+							"tile_close": "</div>\n</div>",
+							"tiles_close": "</div>",
+							"tiles_inside_col": false
+						},
+						"WJFUN|4-6": {
+							"menu_cols": [
+								"col-md-8 col-12"
+							],
+							"menu_cols_overview": [
+								"col-md-6 col-12 paddingR",
+								"col-md-6 col-12 paddingL"
+							],
+							"phases_nav_item": "<div phase=\"{n}\">\n<p>{label}</p>\n</div>",
+							"tiles_open": "<div class=\"row phaseContainer\">",
+							"tile_open": "<div class=\"col-md-3 col-6\">\n<div class=\"phaseLink\" phase=\"{n}\">\n<h3>{label}</h3>",
+							"tile_img": "<img class=\"phaseImg\" src=\"{src}\" alt=\"{alt}\">",
+							"tile_close": "</div>\n</div>",
+							"tiles_close": "</div>",
+							"tiles_inside_col": false
+						},
+						"WJFUN|7-8": {
+							"menu_cols": [
+								"col-md-8 col-12"
+							],
+							"menu_cols_overview": [
+								"col-md-6 col-12 paddingR",
+								"col-md-6 col-12 paddingL"
+							],
+							"phases_nav_item": "<div phase=\"{n}\">\n<p>{label}</p>\n</div>",
+							"tiles_open": "<div class=\"row phaseContainer\">",
+							"tile_open": "<div class=\"col-md-3 col-6\">\n<div class=\"phaseLink\" phase=\"{n}\">\n<h3>{label}</h3>",
+							"tile_img": "<img class=\"phaseImg\" src=\"{src}\" alt=\"{alt}\">",
+							"tile_close": "</div>\n</div>",
+							"tiles_close": "</div>",
+							"tiles_inside_col": false
 						}
 					}
 				}

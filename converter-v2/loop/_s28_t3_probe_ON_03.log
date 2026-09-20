@@ -1,0 +1,1448 @@
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+PHE1007: identical 10 / changed 0
+PHE1008: identical 6 / changed 0
+PNR101: identical 2 / changed 0
+PNR102: identical 3 / changed 0
+PNR104: identical 3 / changed 0
+PNR107: identical 3 / changed 0
+PWY1001: identical 10 / changed 0
+PWY1002: identical 10 / changed 0
+PWY1007: identical 9 / changed 0
+PWY1008: identical 10 / changed 0
+PWY1009: identical 9 / changed 0
+PWYWHA1: identical 1 / changed 0
+SCBI301: identical 9 / changed 0
+SCCH301: identical 9 / changed 0
+SCES201: identical 5 / changed 0
+SCFUN01: identical 1 / changed 0
+SCPH301: identical 9 / changed 0
+SPA1004: identical 3 / changed 0
+SSCI205: identical 10 / changed 0
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+SSOG101: identical 8 / changed 0
+SSOG103: identical 7 / changed 0
+SSOG301: identical 8 / changed 0
+TEDC401: identical 8 / changed 0
+TEDC402: identical 11 / changed 0
+TEFUN01: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+TRR107: identical 3 / changed 0
+TRR108: identical 3 / changed 0
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR116: identical 5 / changed 0
+TRR203: identical 4 / changed 0
+TRR301: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+TWHA906: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+  ~ WJFUN105_0_0.html: -116 +92
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - </ul>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Overview</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Knowledge Year 0</h3>
+     - <ul>
+     - <li>A sentence is a group of words that communicates an idea.</li>
+     - <li>Correct use of capital letters and punctuation makes writing clear and easy to understand.</li>
+     - <li>Full stops show where sentences end.</li>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Practices Year 0</h3>
+     - <ul>
+     - <li>Repeating simple sentences, modelled by the teacher.</li>
+     - <li>Identifying and using a full stop at the end of the sentence.</li>
+     - </ul>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: The LI/SC are outlined in each lesson
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Introduction content</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>FUNdamental Sentence Structure</h3>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Welcome to Fiordland!</h4>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - … 76 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Punctuation</a></li>
+     + <li><a>What is a sentence?</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Knowledge Year 0</h5>
+     + <ul>
+     + <li>A sentence is a group of words that communicates an idea</li>
+     + <li>Correct use of capital letters and punctuation makes writing clear and easy to understand</li>
+     + <li>Full stops show where sentences end.</li>
+     + </ul>
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>Practices Year 0</h5>
+     + <ul>
+     + <li>Repeating simple sentences, modelled by the teacher</li>
+     + <li>Identifying and using a full stop at the end of the sentence.</li>
+     + </ul>
+     + … 72 more added
+WJFUN105: identical 0 / changed 1
+  ~ WJFUN106_0_0.html: -437 +448
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Overview</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Knowledge Year 1</h3>
+     - <ul>
+     - <li>A simple sentence has one complete idea that includes: a naming word (subject), which tells who or what th
+     - <li>A sentence fragment/incomplete sentence is a group of words that is missing something important, such as a
+     - <li>Capital letters are used at the beginning of sentences and for names.</li>
+     - <li>Full stops show where sentences end.</li>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Practices Year 1</h3>
+     - <ul>
+     - <li>Saying a simple sentence, with a subject-verb clause.</li>
+     - <li>Using simple sentences in writing.</li>
+     - <li>Correctly using full stops and capital letters.</li>
+     - </ul>
+     - <p>Learning Inentions and Success criteria are included in each tile.</p>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Introduction content</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>FUNdamental Sentence Structure</h3>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Welcome to Wānaka!</h4>
+     - … 397 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>What is a sentence?</a></li>
+     + <li><a>Punctuation</a></li>
+     + <li><a>Writing a sentence</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Knowledge Year 1</h5>
+     + <ul>
+     + <li>A simple sentence has one complete idea that includes: a naming word (subject), which tells who or what th
+     + <li>A sentence fragment/incomplete sentence is a group of words that is missing something important, such as a
+     + <li>Capital letters are used at the beginning of sentences and for names</li>
+     + <li>Full stops show where sentences end.</li>
+     + </ul>
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>Practices Year 1</h5>
+     + <ul>
+     + … 428 more added
+WJFUN106: identical 0 / changed 1
+  ~ WJFUN107_0_0.html: -606 +569
+     - <body class="inquiry container-fluid" language="eng" translation="reo">
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="crumbs">
+     - <div crumb="Intro" class="showing"><p>Introduction</p></div>
+     - <div crumb="1"><p></p></div>
+     - <div crumb="2"><p></p></div>
+     - <div class="inquiryPanel showing" rel="intro">
+     - <h2>Overview</h2>
+     - <h3>Knowledge Year 2:</h3>
+     - <li>Capital letters are used at the beginning of sentences and for names.</li>
+     - <li>Full stops show where sentences end.</li>
+     - <li>A compound sentence is made by joining two complete sentences (independent clauses) with a joining word, s
+     - </ul>
+     - <h3>Practices Year 2:</h3>
+     - <ul>
+     - <li>Using full stops and capital letters correctly and independently.</li>
+     - <li>Combining two simple sentences orally, using a coordinating conjunction, to form a compound sentence.</li>
+     - <li>Using compound sentences with coordinating conjunctions in writing.</li>
+     - </ul>
+     - <h4>Introduction content</h4>
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> [Tile 1] </th>
+     - <th> [Tile 2 ] </th>
+     - <th> [Tile 3] </th>
+     - </tr>
+     - <tr>
+     - <td> [Insert tile image as per global parameters] </td>
+     - … 566 more removed
+     + <body class="fundamentals container-fluid" language="eng" translation="reo">
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>What is a sentence?</a></li>
+     + <li><a>Punctuation</a></li>
+     + <li><a>Writing a compound sentence</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="row">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Knowledge Year 2:</h5>
+     + <ul>
+     + <li>Capital letters are used at the beginning of sentences and for names</li>
+     + <li>Full stops show where sentences end</li>
+     + <li>A compound sentence is made by joining two complete sentences (independent clauses) with a joining word, s
+     + </ul>
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>Practices Year 2:</h5>
+     + … 549 more added
+WJFUN107: identical 0 / changed 1
+  ~ WJFUN108_0_0.html: -127 +98
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Overview</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Knowledge Year 3</h3>
+     - <ul>
+     - <li>A complex sentence has one complete idea that makes sense on its own (independent clause), joined with a s
+     - <li>A supporting idea that doesn’t make sense on its own is a fragment (or incomplete sentence) unless it is j
+     - <li>Full stops, question marks, and exclamation marks show where sentences end and what kind of sentence it is
+     - <li>Commas can be used to separate items in a list.</li>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Practices Year 3</h3>
+     - <ul>
+     - <li>Combining two simple sentences orally, using a subordinating conjunction, to form a complex sentence.</li>
+     - <li>Using complex sentences with subordinating conjunctions in writing.</li>
+     - <li>Using capital letters, full stops, question marks, and exclamation marks correctly.</li>
+     - <li>Using commas for lists.</li>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Introduction content</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>FUNdamental Sentence Structure</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Welcome to the West Coast!</h3>
+     - … 87 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Types of Sentences</a></li>
+     + <li><a>Punctuation</a></li>
+     + <li><a>Writing Sentences</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Knowledge Year 3</h5>
+     + <ul>
+     + <li>A complex sentence has one complete idea that makes sense on its own (independent clause), joined with a s
+     + <li>A supporting idea that doesn’t make sense on its own is a fragment (or incomplete sentence) unless it is j
+     + <li>Full stops, question marks, and exclamation marks show where sentences end and what kind of sentence it is
+     + <li>Commas can be used to separate items in a list.</li>
+     + </ul>
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>Practices Year 3</h5>
+     + <ul>
+     + <li>Combining two simple sentences orally, using a subordinating conjunction, to form a complex sentence</li>
+     + … 78 more added
+WJFUN108: identical 0 / changed 1
+  ~ WJFUN109_0_0.html: -175 +184
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="col-md-8 col-12">
+     - <div class="tab-pane">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Overview</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Knowledge</h3>
+     - <ul>
+     - <li>Writing is created for a reader, called the ‘audience’, and writers make choices based on who that audienc
+     - <li>Writers have a reason for writing, called the ‘purpose’ (e.g. to tell a story, give information, or ask fo
+     - <li>Considering the audience and purpose before writing helps writers decide what content to include and how t
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Practices</h3>
+     - <ul>
+     - <li>Following along while the teacher writes for different purposes.</li>
+     - <li>Suggesting an audience and purpose for the teacher to write about.</li>
+     - </ul>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: The LI/SC are outlined in each lesson
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Introduction content</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>FUNdamental - Audience and Purpose</h3>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Welcome to Te Anau!</h4>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/rhs.jpg" alt="" /> -->
+     - </div>
+     - <div class="row supervisor">
+     - … 135 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Purpose</a></li>
+     + <li><a>Audience</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Knowledge</h5>
+     + <ul>
+     + <li>Writing is created for a reader, called the ‘audience’, and writers make choices based on who that audienc
+     + <li>Writers have a reason for writing, called the ‘purpose’ (e.g. to tell a story, give information, or ask fo
+     + <li>Considering the audience and purpose before writing helps writers decide what content to include and how t
+     + </ul>
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>Practices</h5>
+     + <ul>
+     + <li>Following along while the teacher writes for different purposes</li>
+     + <li>Suggesting an audience and purpose for the teacher to write about.</li>
+     + </ul>
+     + … 164 more added
+WJFUN109: identical 0 / changed 1
+  ~ WJFUN110_0_0.html: -148 +132
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - </tr>
+     - </table>
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Overview</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Knowledge</h3>
+     - <ul>
+     - <li>Writing is created for a reader, called the ‘audience’, and writers make choices based on who that audienc
+     - <li>Writers have a reason for writing, called the ‘purpose’ (e.g. to tell a story, give information, or ask fo
+     - <li>Considering the audience and purpose before writing helps writers decide what content to include and how t
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Practices</h3>
+     - <ul>
+     - <li>Following along while the teacher writes for different purposes.</li>
+     - <li>Suggesting an audience and purpose for the teacher to write about.</li>
+     - </ul>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: The LI/SC are outlined in each lesson
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Introduction content</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - … 108 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Purpose</a></li>
+     + <li><a>Audience</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Knowledge</h5>
+     + <ul>
+     + <li>Writing is created for a reader, called the ‘audience’, and writers make choices based on who that audienc
+     + <li>Writers have a reason for writing, called the ‘purpose’ (e.g. to tell a story, give information, or ask fo
+     + <li>Considering the audience and purpose before writing helps writers decide what content to include and how t
+     + </ul>
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>Practices</h5>
+     + <ul>
+     + <li>Following along while the teacher writes for different purposes</li>
+     + <li>Suggesting an audience and purpose for the teacher to write about.</li>
+     + </ul>
+     + … 112 more added
+WJFUN110: identical 0 / changed 1
+  ~ WJFUN112_0_0.html: -95 +58
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p>Year 3 Knowledge</p>
+     - <ul>
+     - <li>Choosing the right language style (register), such as formal or informal, helps make the writing clear and
+     - </ul>
+     - <p>Year 3 Practice</p>
+     - <ul>
+     - <li>Identifying the audience and purpose for a text, then planning and writing for the intended audience and p
+     - <li>Choosing an appropriate language register (e.g. formal or informal language).</li>
+     - </ul>
+     - <p>Year 3 Learning Intention</p>
+     - <h5>We are learning:</h5>
+     - <ul>
+     - <li>how writers use audience and purpose to make language choices.</li>
+     - </ul>
+     - <p>Year 3 Success Criteria</p>
+     - <h5>I can:</h5>
+     - <ul>
+     - <li>identify the audience of a text</li>
+     - <li>identify the purpose of a text</li>
+     - <li>recognise texts that inform, persuade, or entertain.</li>
+     - <li>explain why a writer has chosen formal or informal language</li>
+     - <li>describe how language changes for different audiences.</li>
+     - </ul>
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p>Phase 1</p>
+     - <p>Phase 2</p>
+     - <h4>Introduction content</h4>
+     - <a href="https://www.istockphoto.com/photo/sea-kayaks-in-abel-tasman-national-park-gm1131882053-299851774" tar
+     - <p>Purpose</p>
+     - <p>Audience</p>
+     - … 55 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Purpose</a></li>
+     + <li><a>Audience</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Learning Intentions</h5>
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>How will I know I have learned it?</h5>
+     + <div class="tab-pane">
+     + <div class="col-md-8 col-12">
+     + <h5>Learning Intentions</h5>
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>to identify the purpose of a text.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + … 38 more added
+WJFUN112: identical 0 / changed 1
+  ~ WJFUN113_0_0.html: -122 +109
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - </ul>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Overview</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Knowledge Y0</h3>
+     - <ol>
+     - <li>Ideas are expressed more clearly, precisely, or vividly when the right words are chosen.</li>
+     - <li>Writers use special language features (e.g. alliteration, onomatopoeia, repetition, and simile) to enterta
+     - </ol>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Practices Year 0</h3>
+     - <ol>
+     - <li>Identifying simple language features during shared reading.</li>
+     - </ol>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: The LI/SC are outlined in each lesson
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Introduction content</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>FUNdamental Language Choices</h3>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Welcome to Manapouri!</h4>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/rhs.jpg" alt="" /> -->
+     - … 82 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Parts of speech</a></li>
+     + <li><a>Language features</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Knowledge Y0</h5>
+     + <p>1. Ideas are expressed more clearly, precisely, or vividly when the right words are chosen.</p>
+     + <ul>
+     + <li>1. Writers use special language features (e.g. alliteration, onomatopoeia, repetition, and simile) to ente
+     + </ul>
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>Practices Year 0</h5>
+     + <p>1. Identifying simple language features during shared reading.</p>
+     + <div class="tab-pane">
+     + <div class="col-md-8 col-12">
+     + <h5>Learning Intentions</h5>
+     + … 89 more added
+WJFUN113: identical 0 / changed 1
+  ~ WJFUN115_0_0.html: -160 +183
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p>Year 2 Knowledge</p>
+     - <ul>
+     - <li>Ideas are expressed more clearly, precisely, or vividly when the right words are chosen.</li>
+     - <li>Writers use special language features (e.g. alliteration, onomatopoeia, repetition, and simile) to enterta
+     - </ul>
+     - <p>Year 2 Practices</p>
+     - <ul>
+     - <li>Selecting and using adjectives, adverbs, vocabulary, and phrases that give clear details about an object o
+     - <li>Identifying and using rhyme, alliteration, onomatopoeia, repetition, and simile to entertain and engage th
+     - </ul>
+     - <h5>Learning Intention</h5>
+     - <h5>We are learning:</h5>
+     - <ul>
+     - <li>how writers choose words carefully to create clear and interesting pictures in a reader&#39;s mind</li>
+     - <li>how writers use language features to make writing more engaging, memorable, and enjoyable to read</li>
+     - <li>how language choices and language features help readers understand, imagine, and enjoy a text.</li>
+     - </ul>
+     - <h5>Success Criteria</h5>
+     - <h5>I can:</h5>
+     - <ul>
+     - <li>identify adjectives, adverbs, interesting word choices, and phrases</li>
+     - <li>identify alliteration, rhyme, onomatopoeia, repetition, and similes</li>
+     - <li>explain how words and phrases add detail to writing</li>
+     - <li>explain how language features help readers hear sounds, create pictures, and notice important ideas</li>
+     - <li>explain why a writer has chosen a particular word, phrase, or language feature</li>
+     - <li>recognise how language choices and language features make writing more effective.</li>
+     - </ul>
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - … 120 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Language choices</a></li>
+     + <li><a>Language features 1</a></li>
+     + <li><a>Language features 2</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Learning Intentions</h5>
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>How will I know I have learned it?</h5>
+     + <div class="tab-pane">
+     + <div class="col-md-8 col-12">
+     + <h5>Learning Intentions</h5>
+     + <p>Learning Intention:</p>
+     + <ul>
+     + <li>We are learning:</li>
+     + <li>how writers choose words that help readers create pictures in their minds</li>
+     + … 163 more added
+WJFUN115: identical 0 / changed 1
+  ~ WJFUN116_0_0.html: -157 +171
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p>Year 3 Knowledge</p>
+     - <ul>
+     - <li>Choosing the right language style (register), such as formal or informal, helps make the writing clear and
+     - <li>Words can have similar meanings but differ in intensity or feeling (shades of meaning) and should be chose
+     - <li>Ideas are expressed more clearly, precisely, or vividly when the right words are chosen.</li>
+     - <li>Writers use special language features (e.g. alliteration, onomatopoeia, repetition, and simile) to enterta
+     - </ul>
+     - <p>Year 3 Practice</p>
+     - <ul>
+     - <li>Choosing an appropriate language register (e.g. formal or informal language).</li>
+     - <li>Selecting and using adjectives, adverbs, vocabulary, and phrases that are increasingly precise in expressi
+     - <li>Using a range of language features to enhance writing and describe how they can communicate meaning figura
+     - </ul>
+     - <p>Year 3 Learning Intentions</p>
+     - <h5>We are learning:</h5>
+     - <ul>
+     - <li>how writers choose words and phrases to create clear and interesting pictures for readers</li>
+     - <li>how writers use language features to make their writing more engaging and memorable</li>
+     - <li>how language choices and language features help readers understand, imagine, and enjoy a text.</li>
+     - </ul>
+     - <h5>Success Criteria</h5>
+     - <h5>I can:</h5>
+     - <ul>
+     - <li>identify adjectives, adverbs, synonyms, and phrases in a text</li>
+     - <li>explain how words and phrases add detail and meaning</li>
+     - <li>identify alliteration, rhyme, onomatopoeia, repetition, similes, and personification</li>
+     - <li>explain how language features help readers create pictures and hear sounds in their minds</li>
+     - <li>explain why a writer has chosen particular words, phrases, or language features</li>
+     - <li>recognise how language choices and language features make writing more interesting and effective.</li>
+     - </ul>
+     - <div class="tab-pane">
+     - <div class="row">
+     - … 117 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Language choices</a></li>
+     + <li><a>Language features</a></li>
+     + <li><a>Language features 2</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Learning Intentions</h5>
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>How will I know I have learned it?</h5>
+     + <div class="tab-pane">
+     + <div class="col-md-8 col-12">
+     + <h5>Learning Intentions</h5>
+     + <div class="tab-pane">
+     + <div class="col-md-8 col-12">
+     + <h5>Learning Intentions</h5>
+     + <h5>We are learning:</h5>
+     + … 151 more added
+WJFUN116: identical 0 / changed 1
+  ~ WJFUN205_0_0.html: -136 +112
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-6 col-12">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p>Phase 1</p>
+     - <p>Phase 2</p>
+     - <p>Phase 3</p>
+     - <h3>Overview</h3>
+     - <h3>Knowledge Year 5:</h3>
+     - <li>Independent clauses can stand alone as complete sentences, while dependent clauses cannot.</li>
+     - <li>Different sentence structures and types can be used to enhance the impact of a text.</li>
+     - <li>A short, simple sentence can add impact and intensity.</li>
+     - <li>A complex, expanded sentence can add description and detail.</li>
+     - <li>Phrases are groups of words that do not contain both a subject and a verb, so they cannot stand alone (e.g
+     - <li>Phrases can be inserted into sentences in different positions (beginning, middle, or end).</li>
+     - <li>Varying the position of phrases adds interest.</li>
+     - <li>Writers can experiment with sentence structure by saying sentences aloud before writing them down.</li>
+     - <li>Using a variety of sentence lengths and types keeps writing engaging and avoids repetition.</li>
+     - <li>Expanding sentences improves writing by adding detail, clarifying meaning, and increasing precision and en
+     - <li>An adverbial phrase is a group of words that acts like an adverb.</li>
+     - <li>An adverbial phrase expands a sentence by explaining how, when, where, or to what extent something happene
+     - <li>An appositive is a word or phrase that provides more information about a noun by renaming or explaining it
+     - <li>Correct use of beginning and ending punctuation makes writing clearer and easier to understand.</li>
+     - <li>Commas are used to separate two independent clauses joined by a conjunction.</li>
+     - <li>Commas follow adverbs or adverbial phrases at the start of sentences to improve readability.</li>
+     - <li>Speech marks (quotation marks) show exactly what someone is saying.</li>
+     - <li>Punctuation (commas, full stops, question marks, exclamation marks) goes inside speech marks when it is pa
+     - <li>Each new speaker’s dialogue should start on a new line to help readers follow the conversation.</li>
+     - </ul>
+     - <h3>Practices Year 5:</h3>
+     - <ul>
+     - <li>Identifying dependent and independent clauses</li>
+     - <li>Combining sentences orally to create a range of structures</li>
+     - … 96 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Varying Sentence Structure</a></li>
+     + <li><a>Adverbial Phrases and Appositives</a></li>
+     + <li><a>Commas and Speech Marks</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Knowledge Year 5:</h5>
+     + <li>Independent clauses can stand alone as complete sentences, while dependent clauses cannot</li>
+     + <li>Different sentence structures and types can be used to enhance the impact of a text</li>
+     + <li>A short, simple sentence can add impact and intensity</li>
+     + <li>A complex, expanded sentence can add description and detail</li>
+     + <li>Phrases are groups of words that do not contain both a subject and a verb, so they cannot stand alone (e.g
+     + <li>Phrases can be inserted into sentences in different positions (beginning, middle, or end)</li>
+     + <li>Varying the position of phrases adds interest</li>
+     + <li>Writers can experiment with sentence structure by saying sentences aloud before writing them down</li>
+     + <li>Using a variety of sentence lengths and types keeps writing engaging and avoids repetition</li>
+     + … 92 more added
+WJFUN205: identical 0 / changed 1
+  ~ WJFUN206_0_0.html: -171 +172
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-6 col-12">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p>Phase 1</p>
+     - <p>Phase 2</p>
+     - <h4>Overview</h4>
+     - <h3>Knowledge Year 6:</h3>
+     - <li>An adverb is a word that adds detail to a verb, an adjective, or another adverb by describing how, when, w
+     - <li>An adverbial phrase is a group of words that acts like an adverb.</li>
+     - <li>Clauses contain a subject and a verb, while adverbial phrases do not.</li>
+     - <li>Different sentence structures and types can be used to enhance the impact of a text.</li>
+     - <li>A short, simple sentence can add impact and intensity.</li>
+     - <li>A complex, expanded sentence can add description and detail.</li>
+     - <li>Phrases are groups of words that work together but do not contain both a subject and a verb so cannot stan
+     - <li>Phrases can be inserted into sentences in different positions (beginning, middle, or end).</li>
+     - <li>Varying the position of phrases adds interest.</li>
+     - <li>Writers can experiment with the way sentences are structured by saying them, to see how they sound, before
+     - <li>Writers combine a variety of sentence lengths and types in a piece of writing to keep it engaging and avoi
+     - <li>Expanding sentences improves writing by adding detail, clarifying meaning, and making it more precise and 
+     - <li>An appositive is a word or phrase that gives more information about a noun by renaming or explaining.</li>
+     - <li>An adjectival phrase is a group of words that describes a noun by giving more information about it, often 
+     - <li>Understanding and consistently applying the knowledge they already have about correct beginning and ending
+     - <li>Commas are used to separate two independent clauses when they are joined by a conjunction.</li>
+     - <li>Commas follow adverbs or adverbial phrases at the start of sentences, improving flow and readability.</li>
+     - <li>Commas are used with appositives to separate extra information about a noun, helping the sentence stay cle
+     - <li>Speech marks (quotation marks) are used to show exactly what someone is saying.</li>
+     - <li>Punctuation, such as commas, full stops, question marks, and exclamation marks, is placed inside the speec
+     - <li>Each new speaker’s words should start on a new line to help readers follow who is speaking.</li>
+     - <h3>Practices Year 6:</h3>
+     - <li>Explaining the difference between a clause and an adverbial phrase and identifying these in a variety of s
+     - <li>Combining sentences orally to create a range of structures, choosing their preferred structure and justify
+     - <li>Using a range of sentence structures and types, rearranging the order of clauses and phrases for optimal e
+     - … 131 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Varying sentence structure</a></li>
+     + <li><a>Expanding sentences</a></li>
+     + <li><a>Commas and speech marks</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Knowledge Year 6:</h5>
+     + <li>An adverb is a word that adds detail to a verb, an adjective, or another adverb by describing how, when, w
+     + <li>An adverbial phrase is a group of words that acts like an adverb</li>
+     + <li>Clauses contain a subject and a verb, while adverbial phrases do not</li>
+     + <li>Different sentence structures and types can be used to enhance the impact of a text</li>
+     + <li>A short, simple sentence can add impact and intensity</li>
+     + <li>A complex, expanded sentence can add description and detail</li>
+     + <li>Phrases are groups of words that work together but do not contain both a subject and a verb so cannot stan
+     + <li>Phrases can be inserted into sentences in different positions (beginning, middle, or end)</li>
+     + <li>Varying the position of phrases adds interest</li>
+     + … 152 more added
+WJFUN206: identical 0 / changed 1
+  ~ WJFUN208_0_0.html: -109 +111
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-6 col-12">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Overview</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Knowledge Year 5:</h3>
+     - <p>A text’s intended audience and purpose shape its content, structure, text type, word choices, and style.</p
+     - <p>Different audiences may interpret or respond to the same text in different ways, so writers need to conside
+     - <p>Vivid, emotive, or descriptive language can enhance creative writing and help engage the reader.</p>
+     - <p>Choosing the best word helps convey an exact meaning, and words with similar meanings (e.g. ‘freezing,’ ‘fr
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Practices Year 5:</h3>
+     - <p>Planning and writing with an audience and purpose in mind so that their writing is in the most appropriate 
+     - <p>Justifying their use of language register and words to best communicate the intended meaning to the intende
+     - <p>Considering how different audiences may be affected by the text they are creating.</p>
+     - <p>Selecting and using words and phrases that clearly express actions, feelings, situations, or conditions.</p
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Audience and Purpose</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Introduction content</h4>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/insert-rhs-rhs.jpg" alt="" /> -->
+     - <p>Nau mai, haere mai! Welcome to Taupō, a place of powerful landscapes, rich stories, and deep connections.</
+     - <p>Nestled in the heart of Aotearoa New Zealand, Lake Taupō is the largest freshwater lake in the country, sur
+     - <p>According to tradition, this region holds deep cultural and historical significance. It is closely connecte
+     - <p>As you watch this video about Taupō, think like a writer. How does the video use language and ideas to make
+     - … 69 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Audience and Purpose</a></li>
+     + <li><a>Choosing Words for Effect</a></li>
+     + </ul>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Knowledge Year 5:</h5>
+     + <p>A text’s intended audience and purpose shape its content, structure, text type, word choices, and style.</p
+     + <li>Different audiences may interpret or respond to the same text in different ways, so writers need to consid
+     + <li>Vivid, emotive, or descriptive language can enhance creative writing and help engage the reader</li>
+     + <li>Choosing the best word helps convey an exact meaning, and words with similar meanings (e.g. ‘freezing,’ ‘f
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>Practices Year 5:</h5>
+     + <p>Planning and writing with an audience and purpose in mind so that their writing is in the most appropriate 
+     + <li>Justifying their use of language register and words to best communicate the intended meaning to the intend
+     + <li>Considering how different audiences may be affected by the text they are creating</li>
+     + <li>Selecting and using words and phrases that clearly express actions, feelings, situations, or conditions.</
+     + … 91 more added
+WJFUN208: identical 0 / changed 1
+  ~ WJFUN210_0_0.html: -117 +109
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-6 col-12">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Overview</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Knowledge Year 4</h3>
+     - <ul>
+     - <li>Vivid, emotive, or descriptive language can enhance creative writing and help engage the reader.</li>
+     - <li>Choosing the best word helps convey an exact meaning, and words with similar meanings (e.g. ‘freezing,’ ‘f
+     - <li>Figurative language is used to purposefully create vivid images and effects that engage the reader.</li>
+     - <li>A simile is a comparison between two things using ‘like’ or ‘as’.</li>
+     - <li>A metaphor is a direct comparison that says one thing is another.</li>
+     - <li>Imagery is descriptive language that helps the reader imagine what something looks, sounds, feels, smells,
+     - <li>Personification gives human actions or feelings to non-human things.</li>
+     - <li>Alliteration is the repetition of the same sound at the beginning of words.</li>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Practices Year 4:</h3>
+     - <ul>
+     - <li>Selecting and using words and phrases appropriate to the purpose of writing</li>
+     - <li>Using figurative language, such as similes and metaphors, to create vivid images and engage the reader.</l
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Nau mai haere mai, welcome to Whanganui!</h4>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/rhs.jpg" alt="" /> -->
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - … 77 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Figurative Language</a></li>
+     + <li><a>Word Choice</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Knowledge Year 4</h5>
+     + <li>Vivid, emotive, or descriptive language can enhance creative writing and help engage the reader</li>
+     + <li>Choosing the best word helps convey an exact meaning, and words with similar meanings (e.g. ‘freezing,’ ‘f
+     + <li>Figurative language is used to purposefully create vivid images and effects that engage the reader</li>
+     + <li>A simile is a comparison between two things using ‘like’ or ‘as’</li>
+     + <li>A metaphor is a direct comparison that says one thing is another</li>
+     + <li>Imagery is descriptive language that helps the reader imagine what something looks, sounds, feels, smells,
+     + <li>Personification gives human actions or feelings to non-human things</li>
+     + <li>Alliteration is the repetition of the same sound at the beginning of words.</li>
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>Practices Year 4:</h5>
+     + <ul>
+     + … 89 more added
+WJFUN210: identical 0 / changed 1
+  ~ WJFUN211_0_0.html: -82 +91
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - </ul>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-6 col-12">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Overview</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Knowledge Year 5:</h3>
+     - <p> Figurative language is used to purposefully create vivid images and effects that engage the reader.</p>
+     - <p> A simile is a comparison between two things using ‘like’ or ‘as’.</p>
+     - <p> A metaphor is a direct comparison that says one thing is another.</p>
+     - <p> Imagery is descriptive language that helps the reader imagine what something looks, sounds, feels, smells
+     - <p> Personification gives human actions or feelings to non-human things.</p>
+     - <p> Alliteration is the repetition of the same sound at the beginning of words.</p>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Practices Year 5:</h3>
+     - <ul>
+     - <li>Deliberately and carefully selecting and using literary devices, including simile, metaphor, and personifi
+     - <li>Explaining how the devices they have used help create meaning for the intended audience.</li>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Introduction content</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Figurative Language And Imagery</h4>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/insert-rhs-rhs.jpg" alt="" /> -->
+     - <p>Nau mai, haere mai! Welcome to Taupō, a region known for its dramatic landscapes, natural wonders, and outd
+     - <p>From thundering waterfalls and steaming geothermal areas to sparkling lakes, rivers, and mountain views, Ta
+     - … 42 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Using Figurative Language</a></li>
+     + <li><a>Imagery and Author’s Choices</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Knowledge Year 5:</h5>
+     + <p> Figurative language is used to purposefully create vivid images and effects that engage the reader.</p>
+     + <li> A simile is a comparison between two things using ‘like’ or ‘as’</li>
+     + <li> A metaphor is a direct comparison that says one thing is another</li>
+     + <li> Imagery is descriptive language that helps the reader imagine what something looks, sounds, feels, smell
+     + <li> Personification gives human actions or feelings to non-human things</li>
+     + <li> Alliteration is the repetition of the same sound at the beginning of words.</li>
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>Practices Year 5:</h5>
+     + <ul>
+     + <li>Deliberately and carefully selecting and using literary devices, including simile, metaphor, and personifi
+     + <li>Explaining how the devices they have used help create meaning for the intended audience.</li>
+     + … 71 more added
+WJFUN211: identical 0 / changed 1
+  ~ WJFUN212_0_0.html: -469 +473
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - </ul>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-6 col-12">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Overview</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Knowledge Year 6:</h3>
+     - <ul>
+     - <li>Vivid, emotive, or descriptive language can enhance creative writing and help engage the reader.</li>
+     - <li>Choosing the best word helps convey an exact meaning, and words with similar meanings (e.g. ‘freezing,’ ‘f
+     - <li>An idiom is a common phrase that means something different from the literal words.</li>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Practices Year 6:</h3>
+     - <ul>
+     - <li>Selecting and using words and phrases that clearly express differences, additions, and other logical conne
+     - <li>Deliberately selecting and using a range of literary techniques, including imagery, personification, figur
+     - <li>Explaining how the devices they have used help create meaning for the intended audience.</li>
+     - </ul>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/rhs.jpg" alt="" /> -->
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Nau mai haere mai - Welcome to Te Puke</h4>
+     - <p>Te Puke is a lovely rural town in the Bay of Plenty, known as the &quot;Kiwifruit Capital of the World&quot
+     - <p>Inland, rolling hills, native bush, and scenic countryside provide excellent opportunities for walking, cyc
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="1" data-cv2-ref="WJFUN212-00-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - … 429 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Literary Techniques</a></li>
+     + <li><a>Vocabulary</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Knowledge Year 6:</h5>
+     + <li>Vivid, emotive, or descriptive language can enhance creative writing and help engage the reader</li>
+     + <li>Choosing the best word helps convey an exact meaning, and words with similar meanings (e.g. ‘freezing,’ ‘f
+     + <li>An idiom is a common phrase that means something different from the literal words.</li>
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>Practices Year 6:</h5>
+     + <ul>
+     + <li>Selecting and using words and phrases that clearly express differences, additions, and other logical conne
+     + <li>Deliberately selecting and using a range of literary techniques, including imagery, personification, figur
+     + <li>Explaining how the devices they have used help create meaning for the intended audience.</li>
+     + </ul>
+     + <div class="tab-pane">
+     + … 453 more added
+WJFUN212: identical 0 / changed 1
+  ~ WJFUN304_0_0.html: -166 +199
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-12 col-12">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Overview</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Knowledge Year 8:</h3>
+     - <p>Using a variety of complex sentence structures adds depth and detail, and shows how ideas are linked.</p>
+     - <p>A complex sentence with a relative or adjective clause includes extra information about a noun that helps m
+     - <p>A relative (or adjective) clause is a group of words that describes a noun and begins with who, whom, whose
+     - <p>A complex sentence that combines phrases and clauses helps writers express detailed and connected ideas.</p
+     - <p>An indirect object is a person or thing that receives the benefit of the action, and it usually comes betwe
+     - <p>A predicate noun is a word that comes after a linking verb (e.g. ‘is’) and explains who or what the subject
+     - <p>A predicate adjective is an adjective that comes after a linking verb (e.g. ‘is’) and explains more about t
+     - <p>A participle is a verb form with endings such as –ing, –ed, and –en that can act like an adjective and desc
+     - <p>A gerund is a verb form that ends in –ing and functions as a noun in a sentence, such as ‘swimming’ or ‘rea
+     - <p>Writers make deliberate choices about using active or passive voice to control sentence focus and emphasis.
+     - <p>Using active voice helps make writing more direct, clearly showing who is doing the action.</p>
+     - <p>Passive voice focuses on the action or the person/thing receiving it and is useful when the doer is unknown
+     - <p>A colon is used to separate a list after a complete sentence or for introducing explanations.</p>
+     - <p>A semicolon is used to separate two independent clauses that are closely related in meaning, helping to avo
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Practices Year 8:</h3>
+     - <p>Using their understanding of sentence structures to craft sentences that effectively communicate ideas, usi
+     - <p>Crafting sentences that communicate meaning clearly, correctly using: indirect objects, predicate nouns, pr
+     - <p>Distinguishing between active and passive voice and making deliberate choices about which to use when writi
+     - <p>Using colons for introducing explanations or examples (e.g. ‘There was only one thing left to do: finish th
+     - <p>Using colons for introducing a list after a complete sentence (e.g. ‘The recipe calls for several ingredien
+     - <p>Using semicolons to separate two independent clauses (e.g. ‘The weather was perfect for a hike; the sun was
+     - … 126 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Compound - complex sentences</a></li>
+     + <li><a>Expanding sentence meaning</a></li>
+     + <li><a>Controlling sentence meaning</a></li>
+     + <li><a>Elaborating sentences</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Knowledge Year 8:</h5>
+     + <p>Using a variety of complex sentence structures adds depth and detail, and shows how ideas are linked.</p>
+     + <li>A complex sentence with a relative or adjective clause includes extra information about a noun that helps 
+     + <li>A relative (or adjective) clause is a group of words that describes a noun and begins with who, whom, whos
+     + <li>A complex sentence that combines phrases and clauses helps writers express detailed and connected ideas</l
+     + <li>An indirect object is a person or thing that receives the benefit of the action, and it usually comes betw
+     + <li>A predicate noun is a word that comes after a linking verb (e.g. ‘is’) and explains who or what the subjec
+     + <li>A predicate adjective is an adjective that comes after a linking verb (e.g. ‘is’) and explains more about 
+     + <li>A participle is a verb form with endings such as –ing, –ed, and –en that can act like an adjective and des
+     + <li>A gerund is a verb form that ends in –ing and functions as a noun in a sentence, such as ‘swimming’ or ‘re
+     + … 179 more added
+WJFUN304: identical 0 / changed 1
+  ~ WJFUN305_0_0.html: -519 +541
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-12 col-12">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> [Overview] (leave blank if not applicable)
+     - [tab] [H4] Knowledge / [Body] / • A text’s purpose, and the intended audience’s anticipated reaction, influenc
+     - </tr>
+     - </table>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [RHS] [New Zealand map as per the glo
+     - <p>Nau mai, haere mai! Welcome to Thames, a town rich in history, natural beauty, and stories waiting to be to
+     - <p>Located on the shores of the Firth of Thames, this historic town is known as the gateway to the Coromandel 
+     - <p>Thames played an important role in Aotearoa New Zealand&#39;s gold-mining history. During the gold rush of 
+     - <p>Today, Thames is a vibrant community where visitors come to explore historic sites, enjoy beautiful scenery
+     - <p>Who is the intended audience? What is the purpose of the video? What choices help make Thames seem appealin
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube-nocookie.com/embed/oIZqDlYEDLE" loading="lazy" title="YouTube video player" f
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Audience &amp; Purpose</h3>
+     - <p>This fundamental focuses on understanding how audience and purpose influence the choices writers make, incl
+     - <p>We will be learning to:</p>
+     - <ol>
+     - <li>Understand how audience and purpose influence writing choices.</li>
+     - <li>Choose appropriate forms, genres, and styles to suit different audiences and purposes.</li>
+     - </ol>
+     - <a href="https://www.istockphoto.com/photo/old-thames-north-school-now-arts-and-cultural-centre-gm1226900459-3
+     - <div class="row">
+     - … 479 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Audience, Purpose &amp; Reaction</a></li>
+     + <li><a>Form, Genre and Style</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Learning Intentions</h5>
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>How will I know I have learned it?</h5>
+     + <div class="tab-pane">
+     + <div class="col-md-8 col-12">
+     + <h5>Learning Intentions</h5>
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>● to understand how audience and purpose influence the way texts are written.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + … 521 more added
+WJFUN305: identical 0 / changed 1
+  ~ WJFUN306_0_0.html: -90 +100
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-12 col-12">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Overview</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Knowledge Year 8:</h3>
+     - <ul>
+     - <li>A mode is a channel of communication, such as a written text, images, visual design, audio, or video.</li>
+     - <li>The careful selection of a mode or modes can enhance a text’s messages.</li>
+     - <li>Reflecting on how well writing achieves its purpose and communicates meaning helps improve clarity and imp
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Practices Year 8:</h3>
+     - <ul>
+     - <li>Selecting or deliberately combining modes to enhance the message in texts in relation to their purpose.</l
+     - <li>Using codes and conventions of different modes and text types in the texts they compose.</li>
+     - <li>Considering the effectiveness of the writing in relation to its purpose.</li>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Audience And Purpose</h3>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Introduction content</h4>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/insert-rhs-rhs.jpg" alt="" /> -->
+     - <p>Nau mai, haere mai! Welcome to Dargaville, a place of rich history, stunning landscapes, and strong connect
+     - <p>Nestled on the banks of the mighty northern Wairoa River, Dargaville is known as the heart of the Kauri Coa
+     - <p>This area holds deep historical and cultural significance. For generations, the Northern Wairoa River has b
+     - … 50 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Audience and purpose</a></li>
+     + <li><a>Choosing modes for effect</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Knowledge Year 8:</h5>
+     + <li>A mode is a channel of communication, such as a written text, images, visual design, audio, or video</li>
+     + <li>The careful selection of a mode or modes can enhance a text’s messages</li>
+     + <li>Reflecting on how well writing achieves its purpose and communicates meaning helps improve clarity and imp
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>Practices Year 8:</h5>
+     + <ul>
+     + <li>Selecting or deliberately combining modes to enhance the message in texts in relation to their purpose</li
+     + <li>Using codes and conventions of different modes and text types in the texts they compose</li>
+     + <li>Considering the effectiveness of the writing in relation to its purpose.</li>
+     + </ul>
+     + <div class="tab-pane">
+     + … 80 more added
+WJFUN306: identical 0 / changed 1
+  ~ WJFUN307_0_0.html: -138 +146
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-12 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <p>(leave blank if not applicable)</p>
+     - <p>[tab] [H4] Learning Intentions</p>
+     - <h5>We are learning:</h5>
+     - <p>to choose words and synonyms that clearly communicate our intended meaning</p>
+     - <p>to use a thesaurus to find and select suitable words for different purposes</p>
+     - <p>to use language features such as listing, repetition, and rhetorical questions to communicate ideas effecti
+     - <p>to explain how language choices help connect with an audience and achieve a purpose.</p>
+     - <h5>How will I know I have learned it?</h5>
+     - <h5>I can:</h5>
+     - <ul>
+     - <li>identify words that have similar meanings but create different effects</li>
+     - <li>select the most suitable synonym for a particular audience and purpose</li>
+     - <li>use a physical or digital thesaurus to find alternative words</li>
+     - <li>explain why a particular word choice is more effective than another</li>
+     - <li>identify language features such as listing, repetition, and rhetorical questions</li>
+     - <li>explain how language features help communicate ideas to an audience</li>
+     - <li>use language features deliberately to support the purpose of my writing</li>
+     - <li>justify my language choices by explaining how they help achieve my intended message.</li>
+     - </ul>
+     - <p>[H4] Knowledge</p>
+     - <ul>
+     - <li>Authors deliberately choose words and language features to suit the text’s audience and purpose.</li>
+     - <li>Words that are synonyms carry subtle differences in their meaning, tone, or intensity (often referred to a
+     - <li>Choosing the most accurate synonym can convey meaning with greater clarity and impact.</li>
+     - <li>A thesaurus is a useful tool to support word choice.</li>
+     - </ul>
+     - <p>[H4] Practices</p>
+     - <ul>
+     - <li>Selecting and using a range of language features (e.g. listing, repetition, rhetorical questions) to meet 
+     - <li>Selecting and using words that clearly express the intended meaning, including deciding between synonyms f
+     - … 98 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Choosing words for effect</a></li>
+     + <li><a>Language features</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Learning Intentions</h5>
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>How will I know I have learned it?</h5>
+     + <div class="tab-pane">
+     + <div class="col-md-8 col-12">
+     + <h5>Learning Intentions</h5>
+     + <h5>We are learning:</h5>
+     + <ul>
+     + <li>● to deliberately choose words that communicate meaning clearly and effectively.</li>
+     + </ul>
+     + <h5>I can:</h5>
+     + <ul>
+     + … 126 more added
+WJFUN307: identical 0 / changed 1
+  ~ WJFUN308_0_0.html: -111 +112
+     - <div class="tabs col-12">
+     - <ul class="nav nav-tabs">
+     - <li><a>Overview</a></li>
+     - <li><a>Information</a></li>
+     - <div class="tab-content">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-12 col-12">
+     - <div class="tab-pane">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Overview</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Knowledge Year 8:</h3>
+     - <ul>
+     - <li>Authors deliberately choose words and language features to suit the text’s audience and purpose.</li>
+     - <li>Words that are synonyms carry subtle differences in their meaning, tone, or intensity (often referred to a
+     - <li>Choosing the most accurate synonym can convey meaning with greater clarity and impact.</li>
+     - <li>A thesaurus is a useful tool to support word choice.</li>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Practices Year 8:</h3>
+     - <ul>
+     - <li>Deliberately selecting and using a range of language features (e.g. hyperbole, cliché, contrast, pun) to s
+     - <li>Deliberately selecting and using words and phrases that clearly express their intended meaning, considerin
+     - <li>Using a physical or appropriate digital thesaurus to locate synonyms for different purposes.</li>
+     - </ul>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Language Choices</h4>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h4>Introduction content</h4>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/insert-rhs-rhs.jpg" alt="" /> -->
+     - <p>Nau mai, haere mai! Welcome to Dargaville, a community with a rich history shaped by the people, cultures, 
+     - <p>Long before Dargaville became known as the Kūmara Capital of New Zealand, the region played an important ro
+     - … 71 more removed
+     + <div class="tabs">
+     + <ul class="nav nav-tabs">
+     + <li><a>Overview</a></li>
+     + <li><a>Choosing words carefully</a></li>
+     + <li><a>Language features for impact</a></li>
+     + <div class="tab-content">
+     + <div class="tab-pane">
+     + <div class="col-md-6 col-12 paddingR">
+     + <h5>Knowledge Year 8:</h5>
+     + <ul>
+     + <li>Authors deliberately choose words and language features to suit the text’s audience and purpose</li>
+     + <li>Words that are synonyms carry subtle differences in their meaning, tone, or intensity (often referred to a
+     + <li>Choosing the most accurate synonym can convey meaning with greater clarity and impact</li>
+     + <li>A thesaurus is a useful tool to support word choice.</li>
+     + </ul>
+     + <div class="col-md-6 col-12 paddingL">
+     + <h5>Practices Year 8:</h5>
+     + <ul>
+     + <li>Deliberately selecting and using a range of language features (e.g. hyperbole, cliché, contrast, pun) to s
+     + <li>Deliberately selecting and using words and phrases that clearly express their intended meaning, considerin
+     + … 92 more added
+WJFUN308: identical 0 / changed 1
+XDLS501: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+XDLS901: identical 5 / changed 0
+XDLS902: identical 8 / changed 0
+XDLS903: identical 8 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS906: identical 8 / changed 0
+XDLS908: identical 9 / changed 0
+XDLS909: identical 5 / changed 0
+XDLS911: identical 2 / changed 0
+XDLS912: identical 6 / changed 0
+XFUN01: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+XGF9001: identical 7 / changed 0
+XGF9002: identical 10 / changed 0
+XGF9003: identical 6 / changed 0
+XGF9004: identical 18 / changed 0
+XGF9006: identical 8 / changed 0
+XLP01: identical 5 / changed 0
+XLP02: identical 7 / changed 0
+XLP03: identical 6 / changed 0
+XLP04: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+XLP06: identical 3 / changed 0
+XMES101: identical 9 / changed 0
+XMES102: identical 6 / changed 0
+XMES103: identical 6 / changed 0
+XMES201: identical 6 / changed 0
+XMES203: identical 6 / changed 0
+XTAS101: identical 5 / changed 0
+XTAS102: identical 6 / changed 0
+XTAS103: identical 7 / changed 0
+XWHA01: identical 2 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 491 / changed 21 / missing 0 over 122 modules
+CHANGED: WJFUN105/WJFUN105_0_0.html WJFUN106/WJFUN106_0_0.html WJFUN107/WJFUN107_0_0.html WJFUN108/WJFUN108_0_0.html WJFUN109/WJFUN109_0_0.html WJFUN110/WJFUN110_0_0.html WJFUN112/WJFUN112_0_0.html WJFUN113/WJFUN113_0_0.html WJFUN115/WJFUN115_0_0.html WJFUN116/WJFUN116_0_0.html WJFUN205/WJFUN205_0_0.html WJFUN206/WJFUN206_0_0.html WJFUN208/WJFUN208_0_0.html WJFUN210/WJFUN210_0_0.html WJFUN211/WJFUN211_0_0.html WJFUN212/WJFUN212_0_0.html WJFUN304/WJFUN304_0_0.html WJFUN305/WJFUN305_0_0.html WJFUN306/WJFUN306_0_0.html WJFUN307/WJFUN307_0_0.html WJFUN308/WJFUN308_0_0.html

@@ -945,7 +945,13 @@ class PanelsBuilder {
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "PANELH2_OFF"]) return html;
 		const code = String(run?.moduleCode ?? "");
 		const inqOn = cfg.inquiry_enabled !== false && !(cfg.inquiry_exclude_code_prefixes ?? []).some((p) => code.startsWith(p));
-		const funOn = (cfg.fundamentals_code_prefixes ?? []).some((p) => code.startsWith(p));
+		// ROUND 410: a family whose panels are TILE / LEVEL pages (ContentConverter's
+		// tile-pages / level-pages pre-pass set run._levelMenu) may be listed under
+		// `level_dialect_code_prefixes` instead — the promotion then rides the dialect
+		// (TILEPAGE_OFF / LEVELPAGE_OFF revert it with the panels), and a panel the
+		// family got some OTHER way (the round-106 "Phase N" path) is left alone.
+		const funOn = (cfg.fundamentals_code_prefixes ?? []).some((p) => code.startsWith(p))
+			|| (!!run?._levelMenu && (cfg.level_dialect_code_prefixes ?? []).some((p) => code.startsWith(p)));
 		if (!inqOn && !funOn) return html;
 		const lvl = Number(cfg.level ?? 2);
 		const skipRe = new RegExp(cfg.skip_panel_class_match || "introduction");

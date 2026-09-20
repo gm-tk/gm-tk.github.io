@@ -1,0 +1,34 @@
+code      gold: panels nav tabs | WT: tileN tileAny endpage tabN h1 LI SC lessonContent | gold nav labels | WT Tab labels
+JPFUN01        2   2    2 |     0       0       6    0  0  0  0  0 | Novice / Emergent | 
+JPFUN02        2   2    2 |     0       0       1    0  0  0  0  0 | Novice / Emergent | 
+WJFUN105       3   3    4 |     2       6       2    2  3  2  2  2 | Alphabet / Full stops / Sentence | Punctuation / What is a sentence?
+WJFUN106       3   3    4 |     3       8       1    3  2  3  3  2 | What is a sentence? / Punctuation / Writing a sentence | What is a sentence / Punctuation / Writing a sentence
+WJFUN107       3   3    9 |     3      12       1    3  1  1  1  3 | What is a sentence? / Punctuation / Compound sentence | What is a sentence? / Punctuation / Writing a compound sente
+WJFUN108       3   3    4 |     2       8       2    3  0  0  0  2 | Punctuation / Compound sentences / Complex sentences | Types of Sentences / Punctuation / Writing Sentences
+WJFUN109       2   2    3 |     2       4       3    2  2  2  2  2 | Purpose / Audience | Purpose / Audience
+WJFUN110       2   2    3 |     2       4       2    2  2  2  2  2 | Purpose / Audience | Purpose / Audience
+WJFUN112       2   3    5 |     2       4       3    2  3  0  0  2 | Purpose / Audience / Test | Purpose / Audience
+WJFUN113       2   2    4 |     2       4       3    2  2  2  2  2 | Parts of speech / Language features | P / Language
+WJFUN115       3   3    2 |     3       6       3    3  4  0  0  2 | Language choices / Language features 1 / Language features 2 | Language choices / Language features 1 / Language features 2
+WJFUN116       3   3    1 |     3       6       4    2  3  0  0  2 | Language choices / Language features 1 / Language features 2 | Language choices / Language features
+WJFUN205       3   3    3 |     1       4       3    3  0  0  0  3 | Varying Sentence Structure / Adverbial Phrases and Appositiv | Varying Sentence Structure / Adverbial Phrases and Appositiv
+WJFUN206       3   3    3 |     3       3       2    3  1  2  2  1 | Varying sentence structure / Expanding sentences / Commas an | Varying sentence structure / Expanding sentences / Commas an
+WJFUN208       2   2   18 |     2       8       2    2  1  0  0  2 | Audience and Purpose / Choosing Words for Effect | Audience and Purpose / Choosing Words for Effect
+WJFUN210       2   2    2 |     0       2       3    2  0  0  0  1 | Figurative Language / Word Choice | F / W
+WJFUN211       2   2    2 |     2       7       2    2  2  0  0  2 | Using Figurative Language / Imagery and Author&rsquo;s Choic | Using Figurative Language / Imagery and Author’s Choices
+WJFUN212       2   2    6 |     0       2       3    2  0  0  0  0 | Literary Techniques / Vocabulary | Literary Techniques / Vocabulary
+WJFUN304       4   4    5 |     4       4       1    4  4  0  0  4 | Compound-complex sentences / Expanding sentences / Controlli | Compound - complex sentences / Expanding sentence meaning / 
+WJFUN305       2   2    3 |     2       6       2    0  0  0  0  2 | Audience, Purpose &amp; Reaction / Form, Genre and Style | 
+WJFUN306       2   2    3 |     2       7       1    0  0  0  0  2 | Audience and purpose / Choosing modes for effect | 
+WJFUN307       2   2    3 |     2       5       1    0  3  0  0  2 | Choosing words for effect / Language features | 
+WJFUN308       2   2    2 |     2       7       1    0  0  0  0  2 | Choosing words carefully / Language features for impact | 
+
+== which WT count predicts the gold's panel count?
+  tileN        == gold panel count on 16/21 WJFUN modules
+  tileAny      == gold panel count on 4/21 WJFUN modules
+  endpage      == gold panel count on 6/21 WJFUN modules
+  tabN         == gold panel count on 15/21 WJFUN modules
+  h1           == gold panel count on 7/21 WJFUN modules
+  lessonContent == gold panel count on 13/21 WJFUN modules
+  endpage+1    == gold on 6
+  gold nav count == gold panel count on 20 (sanity)

@@ -221,6 +221,22 @@ class MenuBuilder {
 	 *   #fundamentalsOverviewLi) instead of, or alongside, the plain strings.
 	 */
 	static buildMenu(menuItems, menuType, run, page, norm) {
+		// ROUND 410 (the tile-page dialect): the level / tile menu is composed from
+		// run._levelMenu, which the BODY pre-pass fills — a WJFUN overview's whole
+		// LI/SC block sits in the body ([Introduction content] is not a menu
+		// boundary), so menuItems is EMPTY here and the early return below would
+		// ship the bare two-pane shell. Compose the level tabs first whenever the
+		// pre-pass captured them (CHFUN's menuItems were never empty, so its r265
+		// path is unchanged: the same branch, reached a few lines earlier).
+		if (menuType !== "none" && page?.isOverview && run._levelMenu && !menuItems.length) {
+			const lm0 = this.#levelTabs(run._levelMenu);
+			if (lm0) {
+				run.AddNote("info", "MenuBuilder",
+					`Overview menu composed as level tabs (Overview + ${run._levelMenu.levels.map((l) => l.label).join(", ")}; fundamentals_panels.level_pages / tile_pages).`);
+				return { kind: menuType, archetype: "writer_tabs", wtNav: lm0.nav, wtPanes: lm0.panes,
+					tab1: "", tab2: "", content: "", left: "", right: "" };
+			}
+		}
 		if (menuType === "none" || !menuItems.length) {
 			// ROUND 359: an Inquiry overview with nothing to put in the menu ships NO menu (ENGFUN02) — menuTypeFor's
 			// none_becomes only serves a page that has menu content; an empty shell is never emitted.
@@ -1904,8 +1920,12 @@ class MenuBuilder {
 		const liLabel = (mod.li && mod.li.label) || mc.li_label_default || "Learning Intentions";
 		const scLabel = (mod.sc && mod.sc.label) || mc.sc_label_default || "How will I know I have learned it?";
 		const cols = row.menu_cols || ["col-md-6 offset-md-0 col-12 paddingR", "col-md-6 offset-md-0 col-12 paddingL"];
-		const colHtml = (bucket, label) => {
-			const parts = [Utils.FillTemplate(mc.heading_template || "<h5>{label}</h5>", { label: Utils.EscapeHtml(label) })];
+		// ROUND 410 (the tile-page dialect): the Overview pane may take its own column
+		// set (the gold's WJFUN Overview pane is the two-column Knowledge | Practices
+		// form while its tile panes are ONE column) — registry row `menu_cols_overview`.
+		const ovCols = row.menu_cols_overview || cols;
+		const listHtml = (bucket) => {
+			const parts = [];
 			if (bucket && bucket.lead) parts.push(`<p>${Utils.EscapeHtml(bucket.lead)}</p>`);
 			if (bucket && bucket.bullets.length) {
 				// bullet punctuation, the human's pane convention: every bullet
@@ -1920,22 +1940,39 @@ class MenuBuilder {
 				for (const b of bs) parts.push(`<li>${Utils.EscapeHtml(b)}</li>`);
 				parts.push("</ul>");
 			}
-			return parts.join("\n");
+			// ROUND 410: a bucket's trailing paragraph(s) after its list (the tile
+			// dialect's "Learning Intentions and Success criteria are included in
+			// each tile." line under the Practices bullets)
+			for (const t of (bucket && bucket.tail) || []) if (t) parts.push(`<p>${Utils.EscapeHtml(t)}</p>`);
+			return parts;
 		};
-		const pane = (li, sc) =>
+		const colHtml = (bucket, label) =>
+			[Utils.FillTemplate(mc.heading_template || "<h5>{label}</h5>", { label: Utils.EscapeHtml(label) }), ...listHtml(bucket)].join("\n");
+		const colT = mc.col_template || "<div class=\"{cls}\">\n{content}\n</div>";
+		const pane = (li, sc, c) =>
 			(mc.pane_open || "\n<div class=\"tab-pane\">\n<div class=\"row\">") + "\n"
-			+ Utils.FillTemplate(mc.col_template || "<div class=\"{cls}\">\n{content}\n</div>",
-				{ cls: cols[0], content: colHtml(li, liLabel) }) + "\n"
-			+ Utils.FillTemplate(mc.col_template || "<div class=\"{cls}\">\n{content}\n</div>",
-				{ cls: cols[1] ?? cols[0], content: colHtml(sc, scLabel) })
+			+ Utils.FillTemplate(colT, { cls: c[0], content: colHtml(li, liLabel) }) + "\n"
+			+ Utils.FillTemplate(colT, { cls: c[1] ?? c[0], content: colHtml(sc, scLabel) })
 			+ (mc.pane_close || "\n</div>\n</div>");
+		// ROUND 410 — menu.pane_form "single_col": a level / tile pane is ONE column
+		// holding the LI heading, the LI lead + bullets, then the SC lead + bullets
+		// (the gold's WJFUN tile pane: <h5>Learning Intentions</h5><p>We are
+		// learning:</p><ul>…</ul><p>I can:</p><ul>…</ul>). The Overview pane keeps
+		// the two-column form under its own labels.
+		const paneSingle = (li, sc, c) =>
+			(mc.pane_open || "\n<div class=\"tab-pane\">\n<div class=\"row\">") + "\n"
+			+ Utils.FillTemplate(colT, { cls: c[0], content: [
+				Utils.FillTemplate(mc.heading_template || "<h5>{label}</h5>", { label: Utils.EscapeHtml(mc.li_label_default || "Learning Intentions") }),
+				...listHtml(li), ...listHtml(sc)].join("\n") })
+			+ (mc.pane_close || "\n</div>\n</div>");
+		const levelPane = mc.pane_form === "single_col" ? paneSingle : pane;
 		const navItem = (label) => Utils.FillTemplate(mc.nav_item || "\n<li><a>{label}</a></li>",
 			{ label: Utils.EscapeHtml(label) });
 		let nav = navItem(mc.overview_label || "Overview");
-		let panes = pane(mod.li, mod.sc);
+		let panes = pane(mod.li, mod.sc, ovCols);
 		for (const l of levels) {
 			nav += navItem(l.label);
-			panes += pane(l.li, l.sc);
+			panes += levelPane(l.li, l.sc, cols);
 		}
 		return { nav, panes };
 	};
