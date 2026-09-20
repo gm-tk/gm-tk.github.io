@@ -3230,7 +3230,9 @@
 			"reo_tabs": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"row\">\n<div class=\"tabs col-12\">\n<ul class=\"nav nav-tabs\">{navItems}\n</ul>\n<div class=\"tab-content\">{panes}\n</div>\n</div>\n</div>\n</div>",
 			"_reo_tabs_note": "ROUND 212 — the bilingual (reoTranslate) tabs menu composed from the MTK drop-down-menu table (the PNR family). {navItems} = <li><a><span reo>/<span eng>… items; {panes} = the composed tab-pane divs. See elements.dual_language.dropdown_menu.",
 			"writer_tabs": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"tabs\">\n<ul class=\"nav nav-tabs\">{navItems}\n</ul>\n<div class=\"tab-content\">{panes}\n</div>\n</div>\n</div>",
-			"_writer_tabs_note": "ROUND 221 — the writer-authored tab-partition menu (ENGJ403): a BARE div.tabs (no row wrapper — the new-era gold form), {navItems} = <li><a>label</a></li> per writer tab, {panes} = the composed tab-pane divs. Selected by SkeletonBuilder when content.menu.wtNav/wtPanes are set. See menu.writer_tab_partition."
+			"_writer_tabs_note": "ROUND 221 — the writer-authored tab-partition menu (ENGJ403): a BARE div.tabs (no row wrapper — the new-era gold form), {navItems} = <li><a>label</a></li> per writer tab, {panes} = the composed tab-pane divs. Selected by SkeletonBuilder when content.menu.wtNav/wtPanes are set. See menu.writer_tab_partition.",
+			"writer_tabs_row": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"row\">\n<div class=\"tabs col-12\">\n<ul class=\"nav nav-tabs\">{navItems}\n</ul>\n<div class=\"tab-content\">{panes}\n</div>\n</div>\n</div>\n</div>",
+			"_writer_tabs_row_note": "ROUND 411 — the writer_tabs shell in the corpus's ROW+COL form (moduleMenu › div.row › div.tabs.col-12 — the same wrapper the `tabs` / `tabs_two_col` / `reo_tabs` shells carry). Measured on every paired page whose gold #module-menu-content holds a tabs menu (`_s29_r2_menutabs.py`): the gold wraps the tabs this way on 279 / 293 = 0.95; the BARE form is CHFUN's (6 / 6) + ENGJ403's own. A composer that names this shell (`tile_pages.menu.shell_row`) selects it through content.menu.wtShell; the bare `writer_tabs` stays the default for the writer tab partition and the r265 level pages."
 		},
 		"extra_tabs": {
 			"enabled": true,
@@ -5191,6 +5193,12 @@
 					"h3"
 				],
 				"menu": {
+					"shell_row": {
+						"enabled": true,
+						"env": "TILEMENUROW_OFF",
+						"shell": "writer_tabs_row",
+						"_doc": "ROUND 411 (session 29 Round 2) — the tile dialect's menu takes the gold's ROW+COL tabs shell (moduleMenu › div.row › div.tabs.col-12 — `menu.shells.writer_tabs_row`) instead of the bare r221 writer_tabs shell it inherited from the level-pages machinery. The WJFUN gold is ROW+COL 21 / 21; corpus-wide the gold's tabs menu is ROW+COL 279 / 293 = 0.95 and Claude already emits it on 253 (the normal `tabs` shells) — the bare form was the r410 branch alone (+ ENGS404's writer partition, its sibling ENGJ403's gold bare: a tie at n = 2, left). CHFUN (gold bare 6 / 6) keeps the bare shell: this block lives on tile_pages.menu only. OFF = the r410 output byte-for-byte."
+					},
 					"pane_form": "single_col",
 					"overview_label": "Overview",
 					"nav_item": "\n<li><a>{label}</a></li>",

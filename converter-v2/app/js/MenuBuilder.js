@@ -233,7 +233,7 @@ class MenuBuilder {
 			if (lm0) {
 				run.AddNote("info", "MenuBuilder",
 					`Overview menu composed as level tabs (Overview + ${run._levelMenu.levels.map((l) => l.label).join(", ")}; fundamentals_panels.level_pages / tile_pages).`);
-				return { kind: menuType, archetype: "writer_tabs", wtNav: lm0.nav, wtPanes: lm0.panes,
+				return { kind: menuType, archetype: "writer_tabs", wtNav: lm0.nav, wtPanes: lm0.panes, wtShell: lm0.shell,
 					tab1: "", tab2: "", content: "", left: "", right: "" };
 			}
 		}
@@ -286,7 +286,7 @@ class MenuBuilder {
 			if (lm) {
 				run.AddNote("info", "MenuBuilder",
 					`Overview menu composed as level tabs (Overview + ${run._levelMenu.levels.map((l) => l.label).join(", ")}; fundamentals_panels.level_pages).`);
-				return { kind: menuType, archetype: "writer_tabs", wtNav: lm.nav, wtPanes: lm.panes,
+				return { kind: menuType, archetype: "writer_tabs", wtNav: lm.nav, wtPanes: lm.panes, wtShell: lm.shell,
 					tab1: "", tab2: "", content: "", left: "", right: "" };
 			}
 		}
@@ -1974,7 +1974,16 @@ class MenuBuilder {
 			nav += navItem(l.label);
 			panes += levelPane(l.li, l.sc, cols);
 		}
-		return { nav, panes };
+		// ROUND 411 — menu.shell_row: a dialect whose gold wraps the tabs in the
+		// corpus ROW+COL form (moduleMenu > div.row > div.tabs.col-12 — the
+		// WJFUN gold 21 / 21, the corpus's tabs menus 0.95) names its shell
+		// here and SkeletonBuilder selects it through content.menu.wtShell;
+		// a cfg without the block (the r265 level pages — CHFUN's gold IS
+		// bare) keeps the bare r221 writer_tabs shell. Env TILEMENUROW_OFF.
+		const sr = mc.shell_row;
+		const shellOff = typeof process !== "undefined" && process.env && process.env[(sr && sr.env) || "TILEMENUROW_OFF"];
+		const shell = (sr && sr.enabled !== false && sr.shell && !shellOff) ? sr.shell : undefined;
+		return { nav, panes, shell };
 	};
 
 	static #writerTabPartition(menuItems, run, norm, cfg) {

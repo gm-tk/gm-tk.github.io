@@ -1,0 +1,66 @@
+paired pages with a gold menu 1902; with a TABS menu in the gold 293 (modules 246)
+gold tabs-menu form overall: [('ROW+COL', 279), ('BARE', 13), ('ROW+TABS', 1)]
+Claude form on those pages : [('ROW+COL', 253), ('BARE', 29), ('ROW+div.col-md-8.col-12', 9), (None, 2)]
+paired (gold, Claude)      : [(('ROW+COL', 'ROW+COL'), 246), (('ROW+COL', 'BARE'), 22), (('ROW+COL', 'ROW+div.col-md-8.col-12'), 9), (('BARE', 'BARE'), 7), (('BARE', 'ROW+COL'), 6), (('ROW+COL', None), 2), (('ROW+TABS', 'ROW+COL'), 1)]
+Claude tabs-menu pages 296 — gold form there: [('ROW+COL', 268), ('BARE', 13), ('ROW+div.col-md-12.col-12', 8), ('ROW+div.row', 2), ('ROW+div.col-md-8.col-12', 2), ('ROW+TABS', 1)]
+
+GOLD tabs-menu form per group (n = tabs-menu pages; m = modules) and Claude's form on the same pages:
+  prefix    WJFUN                      n= 21 m= 21  gold ROW+COL 1.00                              Claude BARE 1.00
+  prefix    ANZH                       n= 18 m=  4  gold ROW+COL 0.94 / ROW+TABS 0.06              Claude ROW+COL 0.89 / ROW+div.col-md-8.col-12 0.11
+  prefix    HES                        n= 13 m=  6  gold ROW+COL 1.00                              Claude ROW+COL 0.92 / None 0.08
+  prefix    ENGJ                       n= 12 m=  6  gold ROW+COL 0.92 / BARE 0.08                  Claude ROW+COL 0.92 / BARE 0.08
+  prefix    XDLS                       n= 11 m= 11  gold ROW+COL 1.00                              Claude ROW+COL 0.91 / ROW+div.col-md-8.col-12 0.09
+  prefix    OSSM                       n= 10 m=  2  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    SSCI                       n= 10 m=  1  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    TRR                        n= 10 m= 10  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    AGH                        n=  9 m=  9  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    HIS                        n=  8 m=  8  gold ROW+COL 1.00                              Claude ROW+COL 0.75 / ROW+div.col-md-8.col-12 0.25
+  prefix    PHE                        n=  8 m=  8  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    MXFL                       n=  7 m=  7  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    PES                        n=  7 m=  7  gold ROW+COL 1.00                              Claude ROW+COL 0.86 / ROW+div.col-md-8.col-12 0.14
+  prefix    CHFUN                      n=  6 m=  6  gold BARE 1.00                                 Claude BARE 1.00
+  prefix    MXDI                       n=  6 m=  6  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    MXFU                       n=  6 m=  6  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    MXEO                       n=  5 m=  5  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    OSAI                       n=  5 m=  5  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    OSGM                       n=  5 m=  5  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    OSOH                       n=  5 m=  5  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    PWY                        n=  5 m=  5  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    XMES                       n=  5 m=  5  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    BLL                        n=  4 m=  4  gold ROW+COL 0.75 / BARE 0.25                  Claude ROW+COL 1.00
+  prefix    CBI                        n=  4 m=  4  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    CEDO                       n=  4 m=  3  gold ROW+COL 1.00                              Claude ROW+COL 0.75 / ROW+div.col-md-8.col-12 0.25
+  prefix    ENGS                       n=  4 m=  4  gold ROW+COL 1.00                              Claude ROW+COL 0.75 / BARE 0.25
+  prefix    OSBY                       n=  4 m=  4  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    PNR                        n=  4 m=  4  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    ART                        n=  3 m=  3  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    BLLR                       n=  3 m=  3  gold ROW+COL 0.67 / BARE 0.33                  Claude ROW+COL 1.00
+  prefix    CHI                        n=  3 m=  3  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    COM                        n=  3 m=  3  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    DAN                        n=  3 m=  3  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    ENGC                       n=  3 m=  3  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    ENGR                       n=  3 m=  3  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    GEO                        n=  3 m=  3  gold ROW+COL 1.00                              Claude ROW+COL 0.67 / None 0.33
+  prefix    GER                        n=  3 m=  1  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    MXDB                       n=  3 m=  3  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    MXEX                       n=  3 m=  3  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    OSAH                       n=  3 m=  3  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    OSSC                       n=  3 m=  3  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  prefix    SSFUN                      n=  3 m=  3  gold BARE 0.67 / ROW+COL 0.33                  Claude ROW+COL 1.00
+  prefix    XTAS                       n=  3 m=  3  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  subject   NCEA1                      n= 82 m= 73  gold ROW+COL 1.00                              Claude ROW+COL 0.94 / ROW+div.col-md-8.col-12 0.04 / None 0.02
+  subject   Online Safety (OS9000)     n= 35 m= 27  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  subject   1-10 Mathematics           n= 30 m= 30  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  subject   1-10 English               n= 22 m= 16  gold ROW+COL 0.95 / BARE 0.05                  Claude ROW+COL 0.91 / BARE 0.09
+  subject   1-10 Writing (MiW)         n= 21 m= 21  gold ROW+COL 1.00                              Claude BARE 1.00
+  subject   Leaving to Learn           n= 20 m= 20  gold ROW+COL 1.00                              Claude ROW+COL 0.95 / ROW+div.col-md-8.col-12 0.05
+  subject   ANZH                       n= 18 m=  4  gold ROW+COL 0.94 / ROW+TABS 0.06              Claude ROW+COL 0.89 / ROW+div.col-md-8.col-12 0.11
+  subject   Te Marautanga o Aotearoa T n= 14 m= 14  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  subject   1-10 Social Science        n= 14 m=  5  gold ROW+COL 0.86 / BARE 0.14                  Claude ROW+COL 1.00
+  subject   1-10 Languages             n= 12 m= 12  gold BARE 0.67 / ROW+COL 0.33                  Claude BARE 0.50 / ROW+COL 0.50
+  subject   ConnectED                  n=  8 m=  7  gold ROW+COL 1.00                              Claude ROW+COL 0.75 / ROW+div.col-md-8.col-12 0.25
+  subject   1-10 Blended Literacy      n=  7 m=  7  gold ROW+COL 0.71 / BARE 0.29                  Claude ROW+COL 1.00
+  subject   1-10 Science               n=  4 m=  4  gold ROW+COL 1.00                              Claude ROW+COL 1.00
+  subject   EXPlore                    n=  3 m=  3  gold ROW+COL 1.00                              Claude ROW+COL 0.67 / ROW+div.col-md-8.col-12 0.33
+  template  Standard                   n=240 m=193  gold ROW+COL 0.98 / BARE 0.01 / ROW+TABS 0.00  Claude ROW+COL 0.95 / ROW+div.col-md-8.col-12 0.03 / BARE 0.01
+  template  Fundamentals               n= 34 m= 34  gold ROW+COL 0.71 / B

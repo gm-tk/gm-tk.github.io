@@ -1,5 +1,35 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-20 (round 411, build 260619.82) — THE TILE DIALECT'S MENU TAKES THE GOLD'S ROW+COL TABS SHELL: `moduleMenu › div.row › div.tabs.col-12`, the form every other tabs menu already ships (the autonomous loop's session 29 Round 2 — the DIFF MINER's rows #47 / #48, surfaced by r410; **SCOPED regeneration of the 21 WJFUN modules — scoped ship #3 since the 19 Sept FULL**; every protected gate held-or-improved: skeleton +0.0058pp, 21 up / 0 down)
+
+### 1. WHAT CHANGED
+
+**The class (DIFF_QUEUE #47 `module-menu MISSING div.row › WIDGET` + #48 `SUBSTITUTED div#module-menu-content.moduleMenu › div.row / WIDGET`, 22 pages / 22 modules, subject=1-10 Writing c=1.00 n=21).** The r410 tile dialect composes its menu through `MenuBuilder.#levelTabs` → the r221 `writer_tabs` shell, which is BARE (`moduleMenu › div.tabs`) by design for its own family (ENGJ403's gold) and for the r265 CHFUN level pages (gold bare 6 / 6). The WJFUN gold wraps the tabs in the corpus form — `div.row › div.tabs.col-12` — on 21 / 21. Measured on every paired page whose gold `#module-menu-content` holds a tabs menu (`_s29_r2_menutabs.py` → `_s29_r2_menutabs.out`, the gate's own pairing, 293 pages / 246 modules): the gold is ROW+COL **279 = 0.95** (BARE 13 = 0.04: CHFUN 6, ENGJ 1, BLL / BLLR / SSFUN scatter); Claude already emits ROW+COL on 253 (the `tabs` / `tabs_two_col` / `reo_tabs` shells) and is bare on 29 — **the 21 WJFUN overviews + ENGS404 are the only pages where the gold is ROW+COL and Claude is bare.** Per subject every group ≥ 0.86 ROW+COL except 1-10 Languages (CHFUN's gold IS bare). Authority §1b 3 — the family's own gold, agreeing with the corpus convention; the KB's 06 §3.3 has no tabs-shell rule. NEW-FAMILY CHECK: the class holds outside the family (0.95), and Claude is already right there, so the fix is confined to the tile dialect's registry.
+
+**The fix (DATA OVER CODE, env `TILEMENUROW_OFF`).** `Emit_Templates.menu.shells.writer_tabs_row` — the writer-tabs shell in the ROW+COL form; `body_region.fundamentals_panels.tile_pages.menu.shell_row {enabled, env, shell}` names it. `MenuBuilder.#levelTabs` returns the shell key when its cfg carries the block (the level-pages cfg does not → CHFUN keeps the bare shell), both call sites pass `wtShell`, and `SkeletonBuilder`'s shell selection honours `content.menu.wtShell` when the name exists in `menu.shells` (else the bare `writer_tabs`). OFF = the r410 output byte-for-byte.
+
+### 2. PROOF
+
+- `_s29_r411_probe_run.sh` (the r410 harness over all 494 Claude-dir modules): **OFF = disk 2555 / 2555** (516 + 711 + 816 + 512, 0 changed); **ON = exactly the 21 WJFUN overviews**, the other 473 modules / 2534 pages byte-identical — CHFUN01 / 04–08 (the bare-gold level pages) and ENGS404 (the writer partition) untouched by construction.
+- `_s29_r411_pagescore.py` (the gate's own `match()` on the ON pages before regenerating): **21 / 21 up, pp-sum +13.6 scaffold (mean +0.65 per page) / +87.3 RAW**, 0 down — WJFUN105 35.5 → 36.7, WJFUN109 62.7 → 63.6, WJFUN107 52.6 → 53.4, WJFUN106 44.2 → 45.0 …
+- `REGENERATE CORPUS - the WJFUN modules` → the 21 (`_affected_r411.txt`, 2 batches rc 0); `scoped_ship.sh --affected _affected_r411.txt --toggle TILEMENUROW_OFF --no-regen --commit --round 411` (`_s29_r411_scoped_ship.log`): **0 truly stale**, **containment 21 ⊆ 21**, the 12-module spot-check (BLL164 BLL172 BLL237 ENGI405 ENGJ403 ENGR101 HPFUN403 OSBY201 OSOH401 PHE1004 TRR111 XMES102, regenerated with the fix ON — ENGJ403, the bare shell's own family, among them) **all byte-identical**; the decomposition PASS.
+- `_s29_skdelta.py _s29_r410_sk_final.json _s29_r411_sk_final.json`: **21 movers, 21 up / 0 down, 0 outside the affected set, 0 pages added or gone.**
+
+### 3. PROTECTED GATES (all HELD-or-IMPROVED — `_s29_r411_gates.log`, `_s29_r411_scoped_ship.log`)
+
+- **Skeleton (PRIMARY)**: SCAFFOLD **53.789 → 53.795 % (+0.0058pp)**; ≥50 **1406** / ≥75 **236** / ≥90 **20** EXACT; RAW **37.925 → 37.963 %**; 2349 pairs / 0 skipped (state `outputs/_s29_r411_sk_final.json`).
+- **compare_structure** exact **14175** / EXTRA **186** / MISSING **690** / row-wrap **23** EXACT (a `#header`-scoped change — invisible to it by construction); **body_compare** 54 / 6 / 190 / 248 EXACT; **defect audit** clean **2504 / 2548 = 98.27 %**, leak **73 / 44** EXACT.
+- tags **9557 / 9557**; flipCard 61 / divergence 0; speechBubble defect 4 (baseline); modal 0; mtkQuiz 0; math 323 / 323; menulabels 99 / 0; dragAndDrop 21 / 0; entry-parity PASS; **16 selftests GREEN** (46 PASS / GREEN, 0 FAIL); feature index GREEN.
+- Ship ledger: **scoped ship #3 since the 19 Sept FULL** (5 of headroom); fast-loop baseline + content manifest refreshed.
+- DIFF MINER re-mined on the r411 corpus (`_diff_miner_s29_r411.log`): **184 → 182 CANDIDATE rows** — GONE: exactly this round's two rows (#47 / #48); NEW: none.
+- Plateau: **+0.0058pp, no bucket moved — the window advances to 1 of 3** (r410 reset it). Read on the post-intake 2,349-pair population (§1e).
+
+### 4. RECORDED, NOT TAKEN
+
+- **ENGS404** (Standard, 1-10 English) takes the r221 writer tab-partition path and its gold is ROW+COL, while its sibling ENGJ403's gold is bare — a tie at n = 2, under the floor; the bare shell stays the partition's default.
+- The 9 pages where Claude's tabs menu opens `div.row › div.col-md-8.col-12` while the gold's is `div.row › div.tabs.col-12` (ANZH ×2, HIS ×2, XDLS, PES, CEDO …) — a different class (the simplified-vs-tabs verdict on those pages), ≈ 9 modules, under the 10-module chrome floor.
+- The 6 pages where the gold is bare and Claude ROW+COL (BLL / BLLR / SSFUN) — under the floor.
+
 ## 2026-09-20 (round 410, build 260619.81) — THE WJFUN "MY TE KURA WRITING" TILE-PAGE DIALECT: a single-file Fundamentals module laid out as clickable tiles builds the gold's tabs menu + `div.phases` nav + `phaseLink` tile row + one `fundamentalsPanel` per tile (built and proven in session 28 Task 3, finished and shipped by the autonomous loop's session 29 Round 1; **SCOPED regeneration of the 23 WJFUN + JPFUN modules — scoped ship #2 since the 19 Sept FULL**; every protected gate held-or-improved: skeleton +0.1095pp, ≥50 +8, compare_structure exact +84; the WJFUN family 37.6 → 49.9 %)
 
 ### 1. WHAT CHANGED

@@ -794,8 +794,11 @@ class SkeletonBuilder {
 			// writer's own [tab N]/[close tab] markers. Data:
 			// menu.shells.writer_tabs + menu.writer_tab_partition;
 			// env MENUTABPART_OFF.
+			// ROUND 411 — a writer_tabs composer may name its own shell
+			// (content.menu.wtShell, e.g. the tile dialect's ROW+COL
+			// `writer_tabs_row`); an unknown name falls back to the bare shell.
 			const shellKey = (content.menu.archetype === "writer_tabs" && content.menu.wtPanes)
-				? "writer_tabs"
+				? ((content.menu.wtShell && tpl.menu.shells[content.menu.wtShell]) ? content.menu.wtShell : "writer_tabs")
 				: (content.menu.archetype === "reo_tabs" && content.menu.reoNav)
 				? "reo_tabs"
 				: (content.menu.funLiCols && content.menu.funLiCols.length)
