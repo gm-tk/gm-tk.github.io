@@ -1,0 +1,106 @@
+Claude boxes title-paired with a gold box: 3540 | mismatched numbers 631 = 0.18 | pages 331 / modules 173
+   2909  same
+    386  letter differs (phase same)
+    150  phase differs (letter same)
+     71  phase AND letter differ
+     23  Claude numberless
+      1  unparsed
+
+by group (n paired, mismatch share, breakdown):
+  Standard      1-10 Mathematics             n= 685 mismatch 185 = 0.27  {'letter differs (phase same)': 127, 'phase differs (letter same)': 42, 'phase AND letter differ': 16}
+  Standard      1-10 English                 n= 491 mismatch 103 = 0.21  {'letter differs (phase same)': 57, 'phase differs (letter same)': 37, 'phase AND letter differ': 9}
+  Standard      NCEA1                        n= 210 mismatch  51 = 0.24  {'phase differs (letter same)': 28, 'letter differs (phase same)': 18, 'phase AND letter differ': 5}
+  Standard      Leaving to Learn             n= 307 mismatch  50 = 0.16  {'letter differs (phase same)': 32, 'phase AND letter differ': 10, 'phase differs (letter same)': 8}
+  Standard      1-10 Blended Literacy        n= 746 mismatch  43 = 0.06  {'letter differs (phase same)': 37, 'phase differs (letter same)': 5, 'phase AND letter differ': 1}
+  Inquiry       ConnectED                    n= 110 mismatch  32 = 0.29  {'letter differs (phase same)': 17, 'phase differs (letter same)': 12, 'phase AND letter differ': 2, 'Claude numberless': 1}
+  Standard      Online Safety (OS9000)       n= 156 mismatch  29 = 0.19  {'letter differs (phase same)': 28, 'phase AND letter differ': 1}
+  Bilingual     Te Marautanga o Aotearoa TMo n=  29 mismatch  23 = 0.79  {'phase AND letter differ': 18, 'phase differs (letter same)': 5}
+  Fundamentals  1-10 Health and PE           n=  29 mismatch  22 = 0.76  {'Claude numberless': 22}
+  Fundamentals  1-10 Writing (MiW)           n= 114 mismatch  20 = 0.18  {'letter differs (phase same)': 10, 'phase differs (letter same)': 8, 'phase AND letter differ': 2}
+  Standard      ANZH                         n=  76 mismatch  18 = 0.24  {'letter differs (phase same)': 13, 'phase differs (letter same)': 4, 'phase AND letter differ': 1}
+  Fundamentals  1-10 Social Science          n=  42 mismatch   9 = 0.21  {'letter differs (phase same)': 9}
+  Standard      ConnectED                    n=  64 mismatch   8 = 0.12  {'letter differs (phase same)': 8}
+  Fundamentals  1-10 English                 n=  79 mismatch   7 = 0.09  {'letter differs (phase same)': 7}
+  Standard      1-10 Science                 n=  63 mismatch   7 = 0.11  {'letter differs (phase same)': 7}
+  Standard      EXPlore                      n=   6 mismatch   6 = 1.00  {'phase AND letter differ': 5, 'phase differs (letter same)': 1}
+  Standard      1-10 Health and PE           n=  24 mismatch   5 = 0.21  {'letter differs (phase same)': 5}
+  Fundamentals  1-10 Technology              n=  13 mismatch   4 = 0.31  {'letter differs (phase same)': 4}
+  Inquiry       1-10 Blended Literacy        n= 147 mismatch   3 = 0.02  {'letter differs (phase same)': 2, 'phase AND letter differ': 1}
+  Fundamentals  1-10 Arts                    n=   4 mismatch   2 = 0.50  {'letter differs (phase same)': 2}
+  Fundamentals  Leaving to Learn             n=  12 mismatch   2 = 0.17  {'letter differs (phase same)': 2}
+  Fundamentals  1-10 Languages               n=   2 mismatch   1 = 0.50  {'letter differs (phase same)': 1}
+
+modules with the most mismatches:
+  MXEO202    22 /  22
+  ENGI401    16 /  20
+  MXDI202    16 /  41
+  MXFL203    16 /  51
+  MXDI103    14 /  25
+  MXFU202    14 /  33
+  MXFL102    13 /  18
+  ENGI405    12 /  20
+  MXDI201    12 /  45
+  XGF9001    12 /  15
+  HIS1006    11 /  11
+  TRR113     10 /  10
+  ENGC403    10 /  17
+  ENGS102    10 /  14
+  MXDB102     9 /  27
+  TRR112      8 /   8
+  ENGC101     8 /  15
+  ENGC102     8 /  21
+  HIS1008     8 /  31
+  MXDI102     8 /   8
+  XGF9002     8 /  20
+  HPFUN202    7 /   7
+  CEDT104     7 /   7
+  MXFL204     7 /  30
+  MXFU201     7 /  52
+
+examples:
+  phase differs (letter same)
+      TRR109 TRR109_1_0.html gold #1.2 claude #1.3 «te oro ao» (boxes gold 5 / claude 5)
+      TRR109 TRR109_1_0.html gold #1.4 claude #1.5 «kete kupu» (boxes gold 5 / claude 5)
+      TRR109 TRR109_3_0.html gold #4.3 claude #3.3 «kete kupu» (boxes gold 3 / claude 3)
+      TRR109 TRR109_5_0.html gold #5.2 claude #5.3 «kete kupu» (boxes gold 2 / claude 4)
+      TRR109 TRR109_5_0.html gold #5.3 claude #5.4 «rerenga rorirori» (boxes gold 2 / claude 4)
+      WJFUN105 WJFUN105_0_0.html gold #2B claude #1B «full stops» (boxes gold 6 / claude 4)
+      WJFUN105 WJFUN105_0_0.html gold #3A claude #2A «unscramble the sentence» (boxes gold 6 / claude 4)
+      WJFUN108 WJFUN108_0_0.html gold #1A claude #2A «which words need capital letters» (boxes gold 11 / claude 7)
+      WJFUN108 WJFUN108_0_0.html gold #1B claude #2B «choosing the correct punctuation» (boxes gold 11 / claude 7)
+      WJFUN108 WJFUN108_0_0.html gold #1C claude #2C «are the commas used correctly» (boxes gold 11 / claude 7)
+  phase AND letter differ
+      TRR112 TRR112_0_0.html gold #1C claude #1.2 «te oro oa» (boxes gold 8 / claude 3)
+      TRR112 TRR112_0_0.html gold #1E claude #1.3 «kete kupu» (boxes gold 8 / claude 3)
+      TRR112 TRR112_0_0.html gold #1G claude #1.5 «rerenga k rero» (boxes gold 8 / claude 3)
+      TRR112 TRR112_2_0.html gold #2C claude #2.2 «te oro oe» (boxes gold 8 / claude 2)
+      TRR112 TRR112_3_0.html gold #3G claude #3.4 «kia whakangahautahi» (boxes gold 8 / claude 4)
+      TRR112 TRR112_4_0.html gold #4C claude #4.2 «te oro ou» (boxes gold 8 / claude 2)
+      TRR112 TRR112_4_0.html gold #4E claude #4.3 «kete kupu» (boxes gold 8 / claude 2)
+      TRR112 TRR112_5_0.html gold #5C claude #5.2 «kete kupu» (boxes gold 6 / claude 3)
+      TRR113 TRR113_0_0.html gold #1B claude #1.2 «te oro ua» (boxes gold 5 / claude 3)
+      TRR113 TRR113_0_0.html gold #1D claude #1.4 «kete kupu» (boxes gold 5 / claude 3)
+  letter differs (phase same)
+      ARFUN03 ARFUN03_0_0.html gold #3C claude #3B «give it a try air pathways» (boxes gold 11 / claude 9)
+      ARFUN03 ARFUN03_0_0.html gold #3D claude #3C «give it a try floor pathways» (boxes gold 11 / claude 9)
+      CHFUN05 CHFUN05_0_0.html gold #1H claude #1F «type the number» (boxes gold 38 / claude 34)
+      ENFUN01 ENFUN01_0_0.html gold #3E claude #3F «test your audience knowledge» (boxes gold 17 / claude 15)
+      ENFUN02 ENFUN02_0_0.html gold #1D claude #1B «exploring the ideas» (boxes gold 15 / claude 13)
+      ENFUN02 ENFUN02_0_0.html gold #1E claude #1C «reorder the ideas» (boxes gold 15 / claude 13)
+      ENFUN08 ENFUN08_0_0.html gold #1E claude #1F «the meaning behind the phrase» (boxes gold 19 / claude 18)
+      ENFUN08 ENFUN08_0_0.html gold #3C claude #3B «identifying assonance» (boxes gold 19 / claude 18)
+      ENFUN09 ENFUN09_0_0.html gold #3B claude #3A «parts of the writing process» (boxes gold 13 / claude 13)
+      ENFUN09 ENFUN09_0_0.html gold #3A claude #3B «correcting the errors» (boxes gold 13 / claude 13)
+  Claude numberless
+      HPFUN101 HPFUN101_0_0.html gold #2B claude #- «different movement activities» (boxes gold 8 / claude 5)
+      HPFUN101 HPFUN101_0_0.html gold #3B claude #- «my people» (boxes gold 8 / claude 5)
+      HPFUN102 HPFUN102_0_0.html gold #1B claude #- «luck of the dice» (boxes gold 7 / claude 1)
+      HPFUN201 HPFUN201_0_0.html gold #3A claude #- «what do you like» (boxes gold 8 / claude 2)
+      HPFUN201 HPFUN201_0_0.html gold #4A claude #- «move your body» (boxes gold 8 / claude 2)
+      HPFUN202 HPFUN202_0_0.html gold #1A claude #- «what happens to your body when you» (boxes gold 9 / claude 9)
+      HPFUN202 HPFUN202_0_0.html gold #1B claude #- «feel your body change» (boxes gold 9 / claude 9)
+      HPFUN202 HPFUN202_0_0.html gold #2A claude #- «can you link movements» (boxes gold 9 / claude 9)
+      HPFUN202 HPFUN202_0_0.html gold #2B claude #- «make your own sequence» (boxes gold 9 / claude 9)
+      HPFUN202 HPFUN202_0_0.html gold #3B claude #- «things we can improve on» (boxes gold 9 / claude 9)
+  unparsed
+      TWHA906 TWHA906_0_0.html gold #1C1 claude #1C «personality types» (boxes gold 27 / claude 26)

@@ -1,0 +1,22 @@
+[gatecheck] running cs (full corpus)…
+[gatecheck] running bc (full corpus)…
+[gatecheck] running skeleton (full corpus)…
+[gatecheck] running defect (full corpus)…
+
+FULL-REGEN GATE VERDICT — live full corpus vs committed gate_baseline.json (round 415, build 260619.86)
+  metric                                 baseline       live     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  53.91      53.93     +0.02  IMPROVED
+  skeleton pages >=50%                       1415       1415         0  HELD
+  skeleton pages >=75%                        238        238         0  HELD
+  compare_structure exact chain             14168      14168         0  HELD
+  compare_structure EXTRA container           186        186         0  HELD
+  compare_structure missing container         683        683         0  HELD
+  body_compare ANY breakdown                  247        247         0  HELD
+  defect structurally-clean %               98.27      98.27     +0.00  HELD
+  literal-[tag] leak (occ)                     73         73         0  HELD
+  literal-[tag] leak (pages)                   44         44         0  HELD
+
+  (Run the 3 verifier gates separately — tags / flipCard / speechBubble via run_all_gates.sh.)
+
+RESULT: PASS — every decomposable protected gate held-or-improved vs the committed baseline.

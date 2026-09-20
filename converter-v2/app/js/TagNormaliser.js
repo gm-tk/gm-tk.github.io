@@ -890,6 +890,17 @@ class TagNormaliser {
 	 * @param {number} minWords - minimum word count to count as "substantial prose" (default 8)
 	 * @returns {boolean} true when this span should be treated as an instruction, not a tag
 	 */
+	/**
+	 * ROUND 416 — does this text carry an instruction cue (Instruction_Cues.cue_patterns),
+	 * scanned exactly as Parse() scans a span's folded text? Used by the embedded activity-title
+	 * rule (ContentConverter.#embeddedOpenerTitle) to keep a writer's request out of an <h3>.
+	 * @param {string} text
+	 * @returns {boolean}
+	 */
+	HasInstructionCue(text) {
+		return this.#cuesRegex.test(Utils.Fold(String(text ?? "")));
+	}
+
 	IsInstructionDominant(parse, minWords = 8) {
 		if (!parse || parse.class !== "tag" || !parse.tags?.length) return false;
 		if (!parse.tags.every((t) => t.how === "embedded")) return false;

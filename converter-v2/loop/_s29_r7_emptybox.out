@@ -1,0 +1,51 @@
+Claude EMPTY writer-owned boxes on paired pages: 64 | pages 52 | modules 32
+    34  gold: no box with that number
+    17  gold same number: media/table
+    13  gold same number: text
+
+by opener form:
+    24  other:?
+    12  journal-instruction
+     6  (numberless)
+     3  other:[activity 2a]
+     3  other:[activity 4b]
+     2  other:[activity 1a]
+     1  other:[activity 6a]
+     1  other:[activity 3c]
+     1  other:[activity individual - 3a]
+     1  other:[activity – independent - 9b]
+     1  other:[activity individual – 11b]
+     1  other:[copy activity 3a and 3b from lesson 3 o
+     1  other:[insert activity 6b and rename it 4a]
+     1  other:[activity 5c]
+     1  other:[activity 11e]
+
+examples:
+  [gold same number: media/table | other:?] ARFUN02_0_0.html 3C ? ; WJFUN212_0_0.html 1D ? ; AGH1009_7_0.html 7A ? ; TEDC401_4_0.html 4A ?
+  [gold: no box with that number | other:?] ARFUN02_0_0.html 4C ? ; CEDT207_2_0.html 2D ? ; CEDT207_2_0.html 2E ? ; CEDT207_2_0.html 2F ?
+  [gold: no box with that number | (numberless)] HPFUN101_0_0.html - (numberless) ; HPFUN101_0_0.html - (numberless) ; HPFUN103_0_0.html - (numberless) ; HPFUN403_0_0.html - (numberless)
+  [gold: no box with that number | journal-instruction] AGH1007_3_0.html 1A [Go to your Leaners Journal and complete activity 1A and 1B] ; AGH1007_6_0.html 4A [Go to your Learners Journal and complete activity 4A and 4B] ; AGH1007_9_0.html 6A [Go to your learning journal and complete activity 6A and 6B] ; AGH1009_6_0.html 6B [Go to your learning journal and complete activity 6B]
+  [gold same number: text | journal-instruction] AGH1009_3_0.html 3A [Go to your learning journal and complete activity 3A] ; AGH1009_4_0.html 4A [Go to your learning journal and complete activity 4A and 4B] ; AGH1009_5_0.html 5A [Go to your learning journal and complete activity 5A] ; AGH1009_9_0.html 9A [Go to your learners journal and complete activity 9A and 9B]
+  [gold same number: media/table | journal-instruction] AGH1001_1_0.html 1A [Complete activity 1A in your Learners Journal] ; AGH1001_3_0.html 3A [Go to your learning journal and complete activity 3A] ; AGH1001_5_0.html 5A [Complete activity 5A and 5B in your Learners Journal]
+  [gold same number: text | other:?] AGH1002_2_0.html 2C ? ; HES1005_7_0.html 7C ? ; TEDC401_3_0.html 3D ?
+  [gold: no box with that number | other:[activity 2a]] FRFUN06_0_0.html 2A [Activity 2A] ; FRFUN06_4_0.html 2A [Activity 2A]
+  [gold same number: media/table | other:[activity 4b]] HIS1005_4_0.html 4B [Activity 4B] ; SCES201_4_0.html 4B [activity 4b]
+  [gold: no box with that number | other:[activity 6a]] FRFUN06_0_0.html 6A [Activity 6A]
+  [gold: no box with that number | other:[activity 3c]] FRFUN06_1_0.html 3C [Activity 3C]
+  [gold: no box with that number | other:[activity 4b]] FRFUN06_1_0.html 4B [Activity 4B]
+  [gold same number: text | other:[activity 1a]] FRFUN08_7_0.html 1A [Activity 1A]
+  [gold same number: media/table | other:[activity 1a]] JPFUN02_0_0.html 1A [Activity 1A]
+
+by group:
+  Standard       NCEA1                      {'gold same number: media/table': 6, 'gold same number: text': 8, 'gold: no box with that number': 8}
+  Fundamentals   1-10 Languages             {'gold: no box with that number': 5, 'gold same number: text': 1, 'gold same number: media/table': 1}
+  Inquiry        ConnectED                  {'gold: no box with that number': 6}
+  Standard       1-10 Mathematics           {'gold: no box with that number': 3, 'gold same number: text': 2, 'gold same number: media/table': 1}
+  Fundamentals   1-10 Health and PE         {'gold: no box with that number': 4}
+  Standard       ANZH                       {'gold: no box with that number': 1, 'gold same number: media/table': 3}
+  Standard       1-10 Science               {'gold same number: media/table': 3, 'gold same number: text': 1}
+  Fundamentals   1-10 Arts                  {'gold same number: media/table': 1, 'gold: no box with that number': 1}
+  Fundamentals   1-10 Social Science        {'gold: no box with that number': 2}
+  Standard       1-10 English               {'gold: no box with that number': 2}
+  Standard       1-10 Technology            {'gold same number: text': 1, 'gold same number: media/table': 1}
+  Fundamentals   1-10 Writing (MiW)         {'gold same number: media/table': 1}

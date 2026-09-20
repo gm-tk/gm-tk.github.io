@@ -1,0 +1,4 @@
+newest OUTPUT-affecting source: 2026-09-20 20:25:27  (Config.js excluded — UI-only; data/ scoped to the 19 files the engine loads)
+stale modules: 0   OK — every output is fresh.
+[content-manifest] 44 page(s) differ vs _content_manifest.txt (changed 44 / added 0 / removed 0)
+  changed MODULES (37): AGH1002 ANZH401 BLL133 BLL137 BLL167 BLL172 BLL233 CBI1008 CBI1009 CEDK101 CEDW201 COM1005 ENGC102 ENGC204 ENGI101 ENGI405 ENGS101 ENGS102 ENGS302 GENO901 HIS1008 MXDB202 MXDB301 MXDI101 MXEO102 MXEO201 MXFL101 MXFL104 MXFL202 MXFL204 MXFUN01 PHE1003 TWHA903 TWHA904 XMES201 XTAS102 XTAS103

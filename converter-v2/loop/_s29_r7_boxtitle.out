@@ -1,0 +1,212 @@
+
+real	1m8.826s
+user	0m25.348s
+sys	0m1.710s
+n <h3> title on paired pages: 7582 | pages 1901 | modules 467
+
+CLAUDE renders the title as:
+  3275  MATCH (h3 first)
+  1180  box: ANOTHER h3 first
+   998  no box: absent from page
+   704  no box: free h3
+   585  no box: text elsewhere
+   378  box: no title text
+   179  box: text inside (not first)
+   172  no box: free p
+    54  no box: free h4
+    28  no box: free h1
+    14  no box: free h5
+     9  box: title as p
+     6  no box: free h2
+
+WT source of the title (all): {'opener black tail': 3330, 'inside a longer line': 2563, 'absent': 1486, 'opener red-embedded': 132, 'bare black line': 51, 'other [tag] line': 15, '[H#] line': 5}
+
+NON-MATCH 4307 — WT source x Claude rendering:
+   710  absent                   → no box: absent from page
+   450  absent                   → box: ANOTHER h3 first
+   447  inside a longer line     → no box: text elsewhere
+   406  inside a longer line     → box: ANOTHER h3 first
+   326  inside a longer line     → no box: free h3
+   310  opener black tail        → no box: free h3
+   280  opener black tail        → box: ANOTHER h3 first
+   182  inside a longer line     → no box: absent from page
+   176  absent                   → box: no title text
+   134  inside a longer line     → box: no title text
+    92  inside a longer line     → box: text inside (not first)
+    84  opener black tail        → no box: absent from page
+    80  inside a longer line     → no box: free p
+    62  absent                   → no box: free h3
+    61  opener black tail        → no box: text elsewhere
+    59  opener black tail        → box: text inside (not first)
+    58  opener black tail        → no box: free p
+    43  absent                   → no box: text elsewhere
+    39  opener black tail        → box: no title text
+    39  inside a longer line     → no box: free h4
+    35  opener red-embedded      → box: ANOTHER h3 first
+    31  bare black line          → no box: free p
+    26  opener red-embedded      → box: no title text
+    25  opener red-embedded      → no box: text elsewhere
+    21  opener red-embedded      → box: text inside (not first)
+    21  inside a longer line     → no box: free h1
+    16  opener red-embedded      → no box: absent from page
+    14  inside a longer line     → no box: free h5
+    14  opener black tail        → no box: free h4
+     6  absent                   → box: text inside (not first)
+
+NON-MATCH by group (top Claude renderings):
+  Standard      NCEA1                      non-match 936 / 1097  {'no box: absent from page': 305, 'no box: text elsewhere': 163, 'box: ANOTHER h3 first': 149}
+  Standard      1-10 Mathematics           non-match 640 / 1165  {'box: ANOTHER h3 first': 228, 'no box: absent from page': 121, 'no box: free h3': 112}
+  Standard      1-10 English               non-match 398 / 794  {'box: ANOTHER h3 first': 136, 'no box: free h3': 92, 'no box: absent from page': 47}
+  Standard      Leaving to Learn           non-match 397 / 660  {'box: ANOTHER h3 first': 148, 'no box: absent from page': 113, 'no box: free h3': 46}
+  Bilingual     Te Marautanga o Aotearoa T non-match 208 / 210  {'no box: free h3': 84, 'no box: text elsewhere': 43, 'no box: absent from page': 40}
+  Inquiry       ConnectED                  non-match 157 / 247  {'box: ANOTHER h3 first': 48, 'no box: absent from page': 37, 'no box: free h3': 28}
+  Inquiry       1-10 Blended Literacy      non-match 142 / 524  {'box: ANOTHER h3 first': 70, 'no box: absent from page': 47, 'no box: free h3': 25}
+  Standard      1-10 Blended Literacy      non-match 130 / 852  {'box: ANOTHER h3 first': 96, 'no box: free h3': 16, 'no box: absent from page': 10}
+  Standard      1-10 Languages             non-match 126 / 127  {'no box: text elsewhere': 76, 'no box: absent from page': 22, 'box: no title text': 13}
+  Inquiry       Te ara Whakapuawa -Wellbei non-match 125 / 150  {'no box: text elsewhere': 37, 'no box: absent from page': 36, 'no box: free p': 23}
+  Fundamentals  1-10 Health and PE         non-match 104 / 111  {'no box: free h3': 40, 'no box: absent from page': 29, 'no box: text elsewhere': 21}
+  Fundamentals  1-10 Languages             non-match 103 / 136  {'no box: free h3': 32, 'no box: text elsewhere': 26, 'no box: free p': 17}
+  Fundamentals  1-10 Mathematics           non-match  98 / 128  {'no box: absent from page': 79, 'box: ANOTHER h3 first': 14, 'no box: text elsewhere': 3}
+  Fundamentals  1-10 Writing (MiW)         non-match  93 / 197  {'no box: free h3': 23, 'box: ANOTHER h3 first': 20, 'box: text inside (not first)': 18}
+  Standard      ANZH                       non-match  78 / 136  {'box: ANOTHER h3 first': 36, 'no box: free h3': 12, 'no box: absent from page': 11}
+  Standard      ConnectED                  non-match  74 / 131  {'no box: absent from page': 21, 'no box: free h3': 21, 'no box: text elsewhere': 13}
+
+examples per (wt, claude) class:
+  [inside a longer line → box: text inside (not first)] PNR107_1_0.html 1.1 «kimihia te tau 7»
+  [inside a longer line → box: text inside (not first)] PNR107_1_0.html 1.2 «kimihia te r p takiwhitu»
+  [inside a longer line → no box: text elsewhere] PNR107_1_0.html 1.4 «te t hura tau tuimotu»
+  [inside a longer line → box: text inside (not first)] PNR107_2_0.html 2.1 «te w p nui»
+  [inside a longer line → no box: text elsewhere] PNR107_2_0.html 2.4 «he aha t ku i ako ai»
+  [absent → no box: text elsewhere] TRR102_1_0.html 1A «he oropuare ahau»
+  [absent → no box: free h3] TRR102_1_0.html 1B «whakaahuatia ng oropuare»
+  [absent → no box: free h3] TRR102_1_0.html 1C «ng hua oropuare»
+  [absent → no box: text elsewhere] TRR102_1_0.html 1D «rapua ng oropuare taurite»
+  [absent → no box: text elsewhere] TRR102_1_0.html 1E «he aha t ku i ako ai»
+  [absent → no box: free h3] TRR102_2_0.html 2D «te r p ako o te kiwi»
+  [absent → no box: absent from page] TRR102_3_0.html 3B «rapua ng a»
+  [absent → no box: absent from page] TRR102_3_0.html 3C «k mu memory»
+  [absent → no box: absent from page] TRR102_4_0.html 4B «ng ingoa»
+  [absent → no box: free h4] TRR103_2_0.html 2.3 «te r p ako o te kiwi»
+  [inside a longer line → no box: free h3] TRR106_2_0.html 2.1 «tuhi ringa»
+  [inside a longer line → no box: free h3] TRR106_2_0.html 2.2 «he rotarota»
+  [inside a longer line → no box: free h3] TRR106_2_0.html 2.3 «ng rerenga rorirori»
+  [inside a longer line → no box: text elsewhere] TRR106_2_0.html 2.4 «he aha t ku i ako ai»
+  [absent → box: no title text] TRR108_1_0.html 1A «ngohe 1a t ia te oro ki te orokati e tika ana»
+  [absent → box: no title text] TRR108_1_0.html 1B «ngohe 1b te t hono i te oro ki te pikitia orokati»
+  [absent → box: no title text] TRR108_1_0.html 1C «ngohe 1c»
+  [absent → box: title as p] TRR108_2_0.html 2A «ngohe 2a te t hura orokati»
+  [absent → box: ANOTHER h3 first] TRR109_1_0.html 1.1 «oropuare oropuare p rua r nei»
+  [absent → box: ANOTHER h3 first] TRR109_1_0.html 1.1 «rapua ng ao»
+  [absent → box: ANOTHER h3 first] TRR109_1_0.html 1.2 «te oro ao»
+  [absent → no box: free p] TRR111_1_0.html 1.3 «he pukapuka tino pai t u kei t k inga»
+  [inside a longer line → box: no title text] TRR114_1_0.html 1A «kia maumahara koe»
+  [inside a longer line → box: no title text] TRR114_3_0.html 3A «t ia te kupu»
+  [opener red-embedded → no box: text elsewhere] TRR114_3_0.html 3D «activity»
+  [opener red-embedded → no box: text elsewhere] TRR114_3_0.html 3E «activity»
+  [opener red-embedded → no box: text elsewhere] TRR114_3_0.html 3F «activity»
+  [absent → box: text inside (not first)] TRR203_1_0.html 1A «k mu k mua»
+  [absent → box: text inside (not first)] TRR301_2_0.html 2A «m n»
+  [absent → box: text inside (not first)] TRR301_2_0.html 2C «ina»
+  [opener red-embedded → box: text inside (not first)] ARFUN01_0_0.html 1A «emotions»
+  [opener red-embedded → box: text inside (not first)] ARFUN01_0_0.html 2A «culture in the arts»
+  [opener red-embedded → box: no title text] ARFUN01_0_0.html 3A «making change»
+  [opener red-embedded → box: no title text] ARFUN01_0_0.html 4A «who came before us»
+  [opener black tail → box: text inside (not first)] ARFUN02_0_0.html 3A «matching tempo»
+  [opener black tail → box: text inside (not first)] ARFUN02_0_0.html 3D «what have i learned he aha aku i ako ai»
+  [inside a longer line → box: no title text] ARFUN03_0_0.html 1A «what have i learnt»
+  [inside a longer line → no box: free p] ARFUN03_0_0.html 2C «what have i learnt»
+  [inside a longer line → box: ANOTHER h3 first] ARFUN03_0_0.html 3C «give it a try air pathways»
+  [inside a longer line → no box: free p] ARFUN03_0_0.html 3F «what have i learnt»
+  [inside a longer line → box: ANOTHER h3 first] CHFUN05_0_0.html 1F «check your understanding»
+  [inside a longer line → box: ANOTHER h3 first] CHFUN05_0_0.html 1H «type the number»
+  [inside a longer line → no box: free h5] ENFUN01_0_0.html 2C «let s revise»
+  [opener red-embedded → box: ANOTHER h3 first] ENFUN02_0_0.html 1C «supervisor»
+  [opener black tail → no box: free h3] ENFUN02_0_0.html 1D «exploring the ideas»
+  [opener black tail → no box: free h3] ENFUN02_0_0.html 1E «reorder the ideas»
+  [opener black tail → box: ANOTHER h3 first] ENFUN03_0_0.html 3E «putting it all together»
+  [opener black tail → box: ANOTHER h3 first] ENFUN03_0_0.html 4C «putting it all together»
+  [opener black tail → box: text inside (not first)] ENFUN05_0_0.html 1B «what punctuation»
+  [opener black tail → box: no title text] ENFUN07_0_0.html 3A «build a paragraph»
+  [opener black tail → box: ANOTHER h3 first] ENFUN08_0_0.html 1E «the meaning behind the phrase»
+  [opener black tail → no box: free h3] ENFUN08_0_0.html 3D «putting it together»
+  [inside a longer line → no box: free p] FRFUN06_0_0.html 1A «can you spot the sound»
+  [inside a longer line → no box: free h4] FRFUN06_0_0.html 1G «match the sound to the word»
+  [opener black tail → no box: free p] FRFUN06_2_0.html 3A «spot the sound»
+  [opener black tail → no box: free p] FRFUN06_2_0.html 3C «spot the sound»
+  [opener black tail → no box: free p] FRFUN06_2_0.html 3D «spot the sound»
+  [opener black tail → no box: text elsewhere] FRFUN06_3_0.html 4B «spot the sound»
+  [opener black tail → no box: text elsewhere] FRFUN06_3_0.html 4C «spot the sound»
+  [inside a longer line → no box: absent from page] FRFUN06_4_0.html 5A «click the quiet letter»
+  [inside a longer line → no box: absent from page] FRFUN06_9_0.html 3B «link or do not link»
+  [inside a longer line → no box: absent from page] HPFUN201_0_0.html 1A «memory activity»
+  [opener red-embedded → no box: free h3] HPFUN401_0_0.html 4A «barrier or motivator»
+  [opener black tail → no box: text elsewhere] JPFUN02_0_0.html 1B «introduction s listening»
+  [opener black tail → no box: free h2] JPFUN02_0_0.html 1D «classroom instructions»
+  [opener black tail → no box: absent from page] MXFUN01_0_0.html 1B «ascending order»
+  [opener black tail → no box: absent from page] MXFUN01_0_0.html 1C «descending order»
+  [opener black tail → no box: absent from page] MXFUN01_0_0.html 3D «round then estimate»
+  [inside a longer line → no box: free h5] MXFUN03_0_0.html 1B «measuring in cm»
+  [inside a longer line → no box: free h5] MXFUN03_0_0.html 2F «telling the time»
+  [inside a longer line → no box: free h1] SCFUN01_0_0.html 2C «observations»
+  [other [tag] line → box: ANOTHER h3 first] SSFUN01_0_0.html 4C «random acts of kindness»
+  [other [tag] line → box: ANOTHER h3 first] SSFUN06_0_0.html 3C «if i were prime minister»
+  [inside a longer line → box: title as p] TEFUN04_0_0.html 2A «desired outcomes»
+  [opener black tail → box: no title text] WJFUN105_0_0.html 2B «full stops»
+  [opener red-embedded → box: text inside (not first)] WJFUN206_0_0.html 3B «quiz»
+  [opener black tail → no box: free h4] WJFUN208_0_0.html 1C «show your learning»
+  [opener black tail → box: no title text] WJFUN211_0_0.html 1E «think like the author»
+  [[H#] line → box: text inside (not first)] WJFUN306_0_0.html 2B «selecting modes for effect»
+  [opener red-embedded → box: no title text] CEDK101_0_0.html 3A «evolution of light»
+  [opener black tail → no box: free h4] CEDK501_5_1.html 5B «making a contribution»
+  [opener black tail → no box: free h4] CEDK501_7_0.html 5A «identifying an objective»
+  [inside a longer line → no box: free h2] CEDO202_0_0.html 6B «rehearsal»
+  [opener red-embedded → no box: free p] CEDO204_0_0.html 4A «quiz»
+  [bare black line → box: ANOTHER h3 first] CEDT104_0_0.html 3A «step 1 echo time»
+  [absent → no box: free p] CEDT104_0_0.html 3D «step 3 sing together»
+  [inside a longer line → no box: free h4] CEDT104_0_0.html 3E «what have i learned»
+  [bare black line → no box: free p] CEDT104_0_0.html 3G «let s check what we ve learned»
+  [bare black line → no box: free p] CEDT104_0_0.html 7D «let s check what we ve learned»
+  [inside a longer line → no box: free h1] CEDT207_0_0.html 1B «me my selfie and i»
+  [bare black line → no box: absent from page] CEDT207_0_0.html 5B «aboriginal family symbology»
+  [bare black line → no box: absent from page] CEDT207_0_0.html 5C «heart filled symbol art»
+  [bare black line → no box: free p] CEDT207_6_0.html 5B «aboriginal family symbology»
+  [inside a longer line → no box: free h1] ENGFUN02_1_0.html 2A «camera angles»
+  [inside a longer line → no box: free h2] TWHA902_0_0.html 3A «understanding body language»
+  [opener red-embedded → no box: absent from page] TWHA903_0_0.html 1D «ka pai»
+  [opener red-embedded → no box: absent from page] TWHA903_0_0.html 2D «ka pai»
+  [opener red-embedded → no box: absent from page] TWHA903_0_0.html 3D «ka pai»
+  [inside a longer line → no box: free h4] TWHA906_0_0.html 1F «reflection and portfolio»
+  [bare black line → box: title as p] AGH1002_4_0.html 4A «drainage and water holding capacity of soils»
+  [bare black line → box: title as p] AGH1003_2_0.html 2A «irrigation systems and production types»
+  [[H#] line → no box: text elsewhere] AGH1006_5_0.html 6B «knowledge check»
+  [opener red-embedded → box: ANOTHER h3 first] AGH1008_1_0.html 1A «brainstorm»
+  [opener red-embedded → box: ANOTHER h3 first] AGH1009_3_0.html 3A «brainstorm»
+  [opener black tail → no box: free h1] ANZH205_6_0.html 6A «after te tiriti»
+  [bare black line → no box: text elsewhere] ART1002_5_0.html 2C «reflections on your work and progress»
+  [bare black line → no box: absent from page] ART1002_5_0.html 2C «let s get creative»
+  [opener black tail → no box: free h2] CEDR501_2_0.html 1B «needs and expectations»
+  [other [tag] line → no box: text elsewhere] CEDW501_7_2.html 7D «social wellbeing scale»
+  [opener red-embedded → no box: free h3] ENGC204_6_0.html 6D «edit and revise»
+  [opener black tail → no box: free h1] ENGI101_1_1.html 3A «being frank»
+  [opener black tail → no box: free h1] ENGI101_1_2.html 5A «my grandad marches on anzac day»
+  [bare black line → box: no title text] ENGI405_1_0.html 1B «character archetypes»
+  [bare black line → no box: text elsewhere] ENGR302_3_0.html 4E «check your understanding»
+  [bare black line → no box: text elsewhere] ENGR302_4_0.html 5B «simplify fractions»
+  [inside a longer line → box: title as p] ENGS404_2_0.html 2B «put the narrative in order»
+  [bare black line → box: ANOTHER h3 first] HES1003_3_0.html 3A «making complex decisions»
+  [inside a longer line → box: title as p] HES1003_5_0.html 5A «interpersonal influences»
+  [bare black line → box: title as p] HES1003_6_0.html 6A «exploring societal factors that influence you»
+  [inside a longer line → no box: free h2] HIS1001_5_0.html 5C «annotating a source»
+  [[H#] line → box: ANOTHER h3 first] HIS1003_6_0.html 6B «how similar and how different»
+  [other [tag] line → box: ANOTHER h3 first] MXDI201_3_0.html 3E «place value addition»
+  [other [tag] line → no box: text elsewhere] MXDI201_4_0.html 4F «dropbox»
+  [[H#] line → box: no title text] MXDI201_6_0.html 6B «multiplying by 10»
+  [[H#] line → box: ANOTHER h3 first] MXDI201_6_0.html 6C «multiplying by 100»
+  [other [tag] line → no box: text elsewhere] MXDI201_7_0.html 7G «dropbox»
+  [other [tag] line → box: no title text] MXDI201_10_0.html 10C «order the numbers»
+  [opener red-embedded → no box: free h3] MXDI301_5_0.html 6A «identifying linear patterns in tables»
+  [absent → no box: free h1] MXEO401_6_0.html 6A «teacher marked assessment»
+  [absent → no box: free h1] MXFL401_7_0.html 7A «teacher marked assessment»
+  [opener black tail → box: title as p] PHE1005_2_0.html 2A «match the m ori with the english»
+  [bare black line → no box: free h3] PWY1009_2_2_0.html 2F «representation and support»
+  [other [tag] line → no box: absent from page] SSFUN07_2_0.html 1A «needs and wants»

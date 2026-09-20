@@ -1,0 +1,175 @@
+GER1002: identical 3 / changed 0
+GEWHA: identical 1 / changed 0
+HES1002: identical 7 / changed 0
+HES1003: identical 9 / changed 0
+HES1004: identical 5 / changed 0
+HES1005: identical 9 / changed 0
+HES1006: identical 8 / changed 0
+HES1007: identical 10 / changed 0
+HIS1001: identical 8 / changed 0
+HIS1002: identical 21 / changed 0
+HIS1003: identical 11 / changed 0
+HIS1004: identical 11 / changed 0
+HIS1005: identical 15 / changed 0
+HIS1006: identical 15 / changed 0
+HIS1007: identical 7 / changed 0
+  ~ HIS1008_1_0.html: -0 +1
+     + <h3>What Does it Mean?</h3>
+HIS1008: identical 11 / changed 1
+HPFUN101: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN103: identical 1 / changed 0
+HPFUN201: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+HPFUN302: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+HPRE203: identical 8 / changed 0
+JPFUN01: identical 1 / changed 0
+JPFUN02: identical 1 / changed 0
+JPN1004: identical 11 / changed 0
+MUS1004: identical 11 / changed 0
+MUS1006: identical 4 / changed 0
+MXDB102: identical 12 / changed 0
+MXDB201: identical 7 / changed 0
+  ~ MXDB202_3_0.html: -0 +1
+     + <h3>Fun Facts</h3>
+  ~ MXDB202_4_0.html: -1 +2
+     - <h3>Imagine you are building a pyramid tower out of blocks, like the image below.</h3>
+     + <h3>Making pyramids</h3>
+     + <p>Imagine you are building a pyramid tower out of blocks, like the image below.</p>
+MXDB202: identical 4 / changed 2
+  ~ MXDB301_3_0.html: -0 +1
+     + <h3>Finding the Perimeter</h3>
+MXDB301: identical 7 / changed 1
+MXDB302: identical 10 / changed 0
+  ~ MXDI101_1_2.html: -1 +2
+     - <h3>Click on the numbers on the hundreds board so they skip count in 2s. The number will change to a different
+     + <h3>Counting in 2s</h3>
+     + <p>Click on the numbers on the hundreds board so they skip count in 2s. The number will change to a different 
+MXDI101: identical 10 / changed 1
+MXDI102: identical 5 / changed 0
+MXDI103: identical 10 / changed 0
+MXDI201: identical 11 / changed 0
+MXDI202: identical 12 / changed 0
+MXDI301: identical 5 / changed 0
+  ~ MXEO102_2_0.html: -0 +1
+     + <h3>Composing and Decomposing Shapes</h3>
+  ~ MXEO102_3_0.html: -1 +2
+     - <h3>1.What is the perimeter? _____________ What is the area? ___________________ square units</h3>
+     + <h3>Using square grids to find perimeter of shapes</h3>
+     + <p><b>1.What is the perimeter? _____________ What is the area? ___________________ square units</b></p>
+MXEO102: identical 3 / changed 2
+  ~ MXEO201_4_0.html: -0 +1
+     + <h3>Tessellation Problem</h3>
+MXEO201: identical 9 / changed 1
+MXEO202: identical 9 / changed 0
+MXEO301: identical 11 / changed 0
+MXEO401: identical 7 / changed 0
+MXEX101: identical 7 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX202: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+MXEX302: identical 8 / changed 0
+MXEX401: identical 7 / changed 0
+  ~ MXFL101_3_3.html: -1 +2
+     - <h3>Choose one or more of the following activities to complete. In your journal write a brief explanation of w
+     + <h3>Activities</h3>
+     + <p>Choose one or more of the following activities to complete. In your journal write a brief explanation of wh
+MXFL101: identical 11 / changed 1
+MXFL102: identical 9 / changed 0
+MXFL103: identical 8 / changed 0
+  ~ MXFL104_1_0.html: -0 +1
+     + <h3>Understanding Capacity and Volume</h3>
+MXFL104: identical 5 / changed 1
+MXFL201: identical 10 / changed 0
+  ~ MXFL202_1_0.html: -0 +1
+     + <h3>Addition practice</h3>
+  ~ MXFL202_2_0.html: -2 +7
+     - <h3>Looking at the different cat food brands below and their prices, estimate which option you think will be t
+     - <h3>Anne’s dog eats 4 kg of dry dog food a week and 1 kg of dog meat per week. Looking at dog food brands belo
+     + <h3>Cat Food</h3>
+     + <h3>Cat food calculations</h3>
+     + <h3>Estimating the best deal</h3>
+     + <p>Looking at the different cat food brands below and their prices, estimate which option you think will be th
+     + <h3>Grams and kilograms</h3>
+     + <h3>Best value dog food</h3>
+     + <p>Anne’s dog eats 4 kg of dry dog food a week and 1 kg of dog meat per week. Looking at dog food brands below
+  ~ MXFL202_7_0.html: -1 +2
+     - <h3>Choose your final activity from the options below. You can choose to do more than one if you like. Upload 
+     + <h3>Choose your task</h3>
+     + <p>Choose your final activity from the options below. You can choose to do more than one if you like. Upload t
+MXFL202: identical 3 / changed 3
+MXFL203: identical 12 / changed 0
+  ~ MXFL204_8_0.html: -1 +1
+     - <h3>airy farming research</h3>
+     + <h3>Dairy farming research</h3>
+MXFL204: identical 11 / changed 1
+MXFL301: identical 10 / changed 0
+MXFL302: identical 10 / changed 0
+MXFL401: identical 8 / changed 0
+MXFU201: identical 10 / changed 0
+MXFU202: identical 11 / changed 0
+MXFU301: identical 12 / changed 0
+MXFU302: identical 10 / changed 0
+MXFU401: identical 7 / changed 0
+MXFU402: identical 8 / changed 0
+  ~ MXFUN01_13_0.html: -0 +1
+     + <h3>Go directly to 3B</h3>
+MXFUN01: identical 18 / changed 1
+MXFUN02: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+MXS1004: identical 9 / changed 0
+OSAH301: identical 4 / changed 0
+OSAH401: identical 5 / changed 0
+OSAH501: identical 6 / changed 0
+OSAI101: identical 3 / changed 0
+OSAI201: identical 4 / changed 0
+OSAI301: identical 4 / changed 0
+OSAI401: identical 5 / changed 0
+OSAI501: identical 6 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY201: identical 4 / changed 0
+OSBY301: identical 4 / changed 0
+OSBY401: identical 5 / changed 0
+OSBY501: identical 6 / changed 0
+OSGM101: identical 3 / changed 0
+OSGM201: identical 4 / changed 0
+OSGM301: identical 4 / changed 0
+OSGM401: identical 5 / changed 0
+OSGM501: identical 6 / changed 0
+OSOH101: identical 4 / changed 0
+OSOH201: identical 4 / changed 0
+OSOH301: identical 4 / changed 0
+OSOH401: identical 5 / changed 0
+OSOH501: identical 6 / changed 0
+OSSC301: identical 4 / changed 0
+OSSC401: identical 5 / changed 0
+OSSC501: identical 6 / changed 0
+OSSM301: identical 5 / changed 0
+OSSM401: identical 5 / changed 0
+PES1001: identical 10 / changed 0
+PES1002: identical 11 / changed 0
+PES1003: identical 11 / changed 0
+PES1004: identical 11 / changed 0
+PES1005: identical 12 / changed 0
+PES1007: identical 12 / changed 0
+PES1008: identical 19 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1002: identical 4 / changed 0
+  ~ PHE1003_4_0.html: -1 +2
+     - <h3>For each of the examples below, click the down arrow to choose which leadership strategy it connects to.</
+     + <h3>Time to practise and test yourself!</h3>
+     + <p>For each of the examples below, click the down arrow to choose which leadership strategy it connects to.</p
+PHE1003: identical 10 / changed 1
+PHE1004: identical 4 / changed 0
+
+TOTAL: identical 800 / changed 16 / missing 0 over 119 modules
+CHANGED: HIS1008/HIS1008_1_0.html MXDB202/MXDB202_3_0.html MXDB202/MXDB202_4_0.html MXDB301/MXDB301_3_0.html MXDI101/MXDI101_1_2.html MXEO102/MXEO102_2_0.html MXEO102/MXEO102_3_0.html MXEO201/MXEO201_4_0.html MXFL101/MXFL101_3_3.html MXFL104/MXFL104_1_0.html MXFL202/MXFL202_1_0.html MXFL202/MXFL202_2_0.html MXFL202/MXFL202_7_0.html MXFL204/MXFL204_8_0.html MXFUN01/MXFUN01_13_0.html PHE1003/PHE1003_4_0.html

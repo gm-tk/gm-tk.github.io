@@ -2355,8 +2355,24 @@ class ContentConverter {
 						// ROUND 380 — the title heading a mode opener's walk carried into this owned box (see the
 						// activity CONTAINER_OPEN branch): rendered FIRST, so it is the <h3> the gold opens with.
 						for (const _t of (bundle._r380Title ?? [])) leadStream.push({ type: "black", text: _t, _ownerTitle: true });
-						if (bundle.activityOwner.blackAfter?.trim() && !_tailIsId) {
-							leadStream.push({ type: "black", text: bundle.activityOwner.blackAfter, _ownerTitle: true });
+						// ROUND 416 — the title typed INSIDE the owner's red span (`[Activity 2A] Cat Food` all
+						// red, then the `[Drag and drop]` line): the span's free text is the box's <h3>, pushed
+						// FIRST so addLead promotes it and the owner's black tail joins the lead prose.
+						// See #embeddedOpenerTitle (data standalone_title_heading.embedded_free_text, EMBTITLE_OFF).
+						let _ownerTail = bundle.activityOwner.blackAfter ?? "";
+						if (!_tailIsId && !bundle.activityOwner._typedTitle) {
+							const _et = this.#embeddedOpenerTitle(bundle.activityOwner, tpl);
+							if (_et && _et.mode === "prefix") {
+								_ownerTail = _et.title + (/^\s/.test(String(_ownerTail)) ? "" : " ") + String(_ownerTail);
+								run.AddNote("info", "ContentConverter", `Page ${page.lessonLabel}: [${bundle.activityOwner.text}] — the words inside the red span "${_et.title}" open the black tail's sentence (embedded_free_text, prefix).`);
+							} else if (_et) {
+								leadStream.push({ type: "black", text: _et.title, _ownerTitle: true });
+								if (_et.mode === "join") { const _nl = String(_ownerTail).search(/\n/); _ownerTail = _nl >= 0 ? String(_ownerTail).slice(_nl + 1) : ""; }
+								run.AddNote("info", "ContentConverter", `Page ${page.lessonLabel}: [${bundle.activityOwner.text}] — the words inside the red span "${_et.title}" are the activity title (embedded_free_text${_et.mode === "join" ? ", joined with the black tail" : ""}).`);
+							}
+						}
+						if (String(_ownerTail).trim() && !_tailIsId) {
+							leadStream.push({ type: "black", text: _ownerTail, _ownerTitle: true });
 						}
 						for (const l of (bundle.activityLeadItems ?? [])) leadStream.push(l);
 						// ROUND 362 (the unclassified-activity lead, InteractiveScanner's `_unclassLead`
@@ -3188,6 +3204,21 @@ class ContentConverter {
 						// "<h3>4A</h3>" id-titles on XTAS101/XLP01/XMES203/TEDC402, so a blanket
 						// bare-id-tail repair would diverge there (measured; recorded follow-up).
 						// Data: tile_grid.anchor_id_from_tail   Env: CDTILEID_OFF
+						// ROUND 416 — the title typed INSIDE the opener's red span (`[Activity 2A] Concrete
+						// poems`, all red) is the box's <h3>; ActivitiesBuilder.activityOpen emits it and
+						// renders the whole black tail as content. See #embeddedOpenerTitle.
+						if (!it._r307TailIsId) {
+							const _et = this.#embeddedOpenerTitle(it, tpl);
+							if (_et && _et.mode === "prefix") {
+								// the red words open a sentence the black tail continues: keep them, no title of their own
+								it.blackAfter = _et.title + (/^\s/.test(String(it.blackAfter ?? "")) ? "" : " ") + String(it.blackAfter ?? "");
+								run.AddNote("info", "ContentConverter", `Page ${page.lessonLabel}: [${it.text}] — the words inside the red span "${_et.title}" open the black tail's sentence (embedded_free_text, prefix).`);
+							} else if (_et) {
+								it._embeddedTitle = _et.title;
+								if (_et.mode === "join") { const _t = String(it.blackAfter ?? ""); const _nl = _t.search(/\n/); it.blackAfter = _nl >= 0 ? _t.slice(_nl + 1) : ""; }
+								run.AddNote("info", "ContentConverter", `Page ${page.lessonLabel}: [${it.text}] — the words inside the red span "${_et.title}" are the activity title (embedded_free_text${_et.mode === "join" ? ", joined with the black tail" : ""}).`);
+							}
+						}
 						emit(...ActivitiesBuilder.activityOpen(it, stack, run, true, this.#phaseBareId(it, it._r307PanelId ?? it._activityIdOverride ?? null, tpl), false, supNote, this.#pageLessonNumber, this.#lessonLetterMap));
 						// When the note sits immediately next to the opener, the loop index jumps
 						// past it right away; when it was instead found by the lookahead scan
@@ -6827,6 +6858,87 @@ class ContentConverter {
 		if (/^\d+$/.test(writer) && override != null && /^\d+[A-Z]$/.test(String(override))
 			&& String(override).slice(0, -1) === writer) return writer;
 		return override;
+	}
+
+	/**
+	 * ROUND 416 (the autonomous loop's session 29 Round 7) — THE ACTIVITY TITLE TYPED INSIDE
+	 * THE RED SPAN. A writer types the box title in the SAME red run as the opener —
+	 * `[Activity 2A] Concrete poems`, `[Activity] Calculating soil type.`, `[Activity box:] Ka pai!`
+	 * — so the words are the span's FREE text (parse.free), not `blackAfter`; the r66 rule and the
+	 * owner-lead addLead both read blackAfter, and the title was DROPPED silently (the gold's
+	 * box opens with `<h3>Concrete poems</h3>`). Returns the original-case title when the rule
+	 * holds, else null. The rule (measured over the 216 red-embedded opener spans: 48 selected,
+	 * the gold's <h3> on 40 = 0.83): an activity CONTAINER_OPEN opener · an EMPTY bracket
+	 * remainder or a listed mode word (never `embedded` — `[Activity: Embedded] Drag and Drop`
+	 * names the widget, gold absent 52 / 59) · free text that is no instruction fragment / cue,
+	 * not parenthesised, not digit-led (`4A Perspectives`), not colon-ended (`Title:`), at most
+	 * max_words words · and that does NOT itself resolve to a lexicon tag (`[True False Quiz]` →
+	 * radio quiz, `[wordfind]`, `[Trigger Engagement]` — a widget NAME, gold absent 27 / 37).
+	 * Data activity_wrapper.standalone_title_heading.embedded_free_text; env EMBTITLE_OFF
+	 * (ACTTITLE_OFF turns it off with the parent rule).
+	 */
+	static #embeddedOpenerTitle(it, tpl) {
+		const th = tpl?.activity_wrapper?.standalone_title_heading;
+		const cfg = th?.embedded_free_text;
+		if (!th || th.enabled === false || !cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env
+			&& (process.env[cfg.env || "EMBTITLE_OFF"] || process.env.ACTTITLE_OFF)) return null;
+		const p = it?.parse; const pr = p?.primary;
+		if (!p || !pr || pr.tag !== "activity" || pr.directive !== "CONTAINER_OPEN" || p.instructionFragment) return null;
+		// the opener's own alias: `[interactive activity] type and check` / `[Activity – interactive] …` name
+		// the WIDGET after the bracket (the MXDI / MXFU / MXFL dialect, r364), never a title
+		const alias = String(pr.alias ?? "").toLowerCase();
+		if ((cfg.exclude_alias_words ?? []).some((w) => alias.includes(String(w).toLowerCase()))) return null;
+		const rem = String(pr.remainder ?? "").replace(/[^a-z]+/g, " ").trim();
+		if (rem && !(cfg.remainder_allow ?? []).includes(rem)) return null;
+		const free = String(p.free ?? "").trim();
+		if (!free || !/[a-zĀ-ſ]/i.test(free)) return null;
+		if (/^\(|\)$/.test(free) || /^\d/.test(free) || /:$/.test(free)) return null;
+		const base = String(this.#norm.RenderText(it.text) || "").replace(/\*+/g, "").replace(/\s+/g, " ").trim();
+		let title = base;
+		if (!title || /^\(|^\d|:$/.test(title)) return null;
+		// THE RED RUN THAT ENDS MID-SENTENCE: Word split the writer's line into a red run and a black
+		// one — `[Activity 5A] L` + `ooking at precise word choice` (mid-word, no space), `[Activity 1]
+		// Click` + ` on the link below to load…` (mid-sentence). A black tail opening with a LOWERCASE
+		// letter continues the red words: joined and short it is the title (`Looking at precise word
+		// choice`, the black first line consumed — mode "join"); joined and long it is a sentence, so the
+		// red words are PREPENDED to the black tail and the r66 rule reads the whole line (mode "prefix").
+		let mode = "plain";
+		const tail = String(it.blackAfter ?? "");
+		if (tail.trim() && /^\s*\p{Ll}/u.test(tail)) {
+			const nl = tail.search(/\n/);
+			const first = (nl >= 0 ? tail.slice(0, nl) : tail);
+			// a single-letter last word is a run split MID-WORD (`L` + `ooking`): no space at the seam
+			const midWord = /(^|\s)\S$/.test(title);
+			const joined = (title + (!midWord && /^\s/.test(tail) ? " " : "") + first.trim()).replace(/\s+/g, " ").trim();
+			if (joined.split(/\s+/).length <= (cfg.max_words ?? 8)) { title = joined; mode = "join"; }
+			else return { title, mode: "prefix" };
+		}
+		let cand = title.trim();
+		if (/[\[\]]/.test(cand)) return null;   // a broken bracket (`Activity: individual]`) is not a title
+		if (cand.length < (cfg.min_chars ?? 3) || cand.split(/\s+/).length > (cfg.max_words ?? 8)) return mode === "join" ? { title: base, mode: "prefix" } : null;
+		if (this.#norm.HasInstructionCue(cand)) return mode === "join" ? { title: base, mode: "prefix" } : null;
+		let q = null; try { q = this.#norm.Parse("[" + cand + "]"); } catch { q = null; }
+		// the text NAMES A WIDGET when the lexicon finds an INTERACTIVE / ELEMENT tag in it (`[True False Quiz]` → radio quiz,
+		// `[Wordfind- no backwards words]` → word find, `[Trigger Engagement]` → engagement quiz button, `[Video]`); a SUBTAG /
+		// container hit inside a phrase (`[Looking at precise word choice]` → option via `choice`, `[Word art]` → data marker,
+		// `[Matching activity]` → activity) is a title that happens to contain a tag word
+		const _widgetDirs = cfg.widget_directives ?? ["INTERACTIVE", "ELEMENT"];
+		if (q && (q.tags ?? []).some((t) => _widgetDirs.includes(String(t.directive))))
+			return mode === "join" ? { title: base, mode: "prefix" } : null;
+		// a title that opens with its own id (`Activity 3A Finding the Perimeter` → `Finding the Perimeter`; the
+		// id is the box's number= already); nothing left = the id alone (`Activity 1C`), never a title
+		if (cfg.strip_leading_id !== false) {
+			const _stripped = cand.replace(/^activity\s+\d+(?:\.\d+)?\s*[a-z]?\b[\s:.\-–—]*/i, "").trim();
+			if (_stripped !== cand) { if (!_stripped) return mode === "join" ? { title: base, mode: "prefix" } : null; cand = _stripped; }
+		}
+		// a title is CAPITALISED (`Concrete poems`, `Ka pai!`); a lowercase tail (`wide`, `type and check`,
+		// `tick the pictures that show fractions.`) is a writer's aside — measured, never a gold title
+		const _c0 = cand.charAt(0);
+		if (cfg.require_capital !== false && !(_c0 === _c0.toUpperCase() && _c0 !== _c0.toLowerCase())) return mode === "join" ? { title: base, mode: "prefix" } : null;
+		title = cfg.strip_trailing_stop !== false ? cand.replace(/\.$/, "").trim() : cand;
+		if (title.length < (cfg.min_chars ?? 3)) return null;
+		return { title, mode };
 	}
 
 	static #buttonLabelTrim(label, tpl) {

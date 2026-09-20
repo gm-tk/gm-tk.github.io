@@ -1,0 +1,43 @@
+[20:47:01] skeleton state (--json) + delta vs r415
+  rc=0
+OLD pairs 2349  SCAFFOLD 53.9110%  RAW 37.996%  >=50 1415  >=75 238  >=90 20
+NEW pairs 2349  SCAFFOLD 53.9284%  RAW 38.000%  >=50 1415  >=75 238  >=90 20
+delta SCAFFOLD +0.0174pp  RAW +0.005pp  >=50 +0  >=75 +0  >=90 +0
+[20:49:04] gatecheck verdict vs gate_baseline.json (r415 values)
+  rc=0
+[gatecheck] running skeleton (full corpus)…
+[gatecheck] running defect (full corpus)…
+FULL-REGEN GATE VERDICT — live full corpus vs committed gate_baseline.json (round 415, build 260619.86)
+  skeleton SCAFFOLD mean %                  53.91      53.93     +0.02  IMPROVED
+  skeleton pages >=50%                       1415       1415         0  HELD
+  skeleton pages >=75%                        238        238         0  HELD
+  compare_structure exact chain             14168      14168         0  HELD
+  compare_structure EXTRA container           186        186         0  HELD
+  compare_structure missing container         683        683         0  HELD
+  body_compare ANY breakdown                  247        247         0  HELD
+  defect structurally-clean %               98.27      98.27     +0.00  HELD
+  literal-[tag] leak (occ)                     73         73         0  HELD
+[20:52:12] ship ledger: record-full (the backstop after scoped #7)
+[ledger] recorded FULL ship (round 416); scoped-since counter reset to 0.
+[ledger] last full ship: round 416 (2026-09-20T08:52:12Z); scoped ships since: 0 (cadence 8, hard 16)
+  OK — a full-ship backstop is not yet due (8 scoped ship(s) of headroom).
+[20:52:13] fast-loop baseline re-snapshot
+  rc=0
+  literal-[tag] leak (pages)                   44
+  (context: sk_pages=2349  cs_matched=16456  body_pages=2548  df_total=2548  df_clean=2504)
+[20:55:02] content manifest snapshot
+  rc=0
+[content-manifest] wrote 2555 pages / 491 modules -> /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_content_manifest.txt
+[20:55:12] selftests
+  rc=0  PASS/GREEN lines: 46  FAIL lines: 0
+[20:56:29] feature index
+  rc=0
+  ok   SAFETY: feature "flipCard" resolves to 258 modules (non-empty)
+  ok   SAFETY: feature "clickDrop" resolves to 191 modules (non-empty)
+SELFTEST build_feature_index: GREEN
+[20:56:43] DIFF MINER (§1d — after every regeneration)
+  miner rc=0
+pairs 2349 / modules 483 / parse errors 0 / diff lines 265050 / classes 8850 (CANDIDATE 181, below floor 8384) in 81.8 s
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_diff_miner.json
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/DIFF_QUEUE.md
+[20:58:10] POSTSHIP_DONE

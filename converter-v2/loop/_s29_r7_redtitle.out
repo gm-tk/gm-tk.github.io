@@ -1,0 +1,73 @@
+
+real	0m13.083s
+user	0m1.877s
+sys	0m0.438s
+he red span: 216 | modules 86
+
+title: 185 sites / 77 modules
+  gold renders the words as: {'absent': 119, 'h3': 56, 'elsewhere': 10}
+  claude renders the words as: {'absent': 109, 'elsewhere': 69, 'h3': 5, 'h#': 2}
+  gold x claude: {('absent', 'absent'): 74, ('absent', 'elsewhere'): 45, ('h3', 'absent'): 33, ('h3', 'elsewhere'): 17, ('elsewhere', 'elsewhere'): 7, ('h3', 'h3'): 5, ('elsewhere', 'absent'): 2, ('elsewhere', 'h#'): 1, ('h3', 'h#'): 1}
+  by group (gold,claude):
+    Bilingual     Te Marautanga o Aotearoa T n= 34  {('absent', 'elsewhere'): 27, ('absent', 'absent'): 7}
+    Standard      NCEA1                      n= 34  {('absent', 'absent'): 16, ('absent', 'elsewhere'): 5, ('h3', 'absent'): 4, ('elsewhere', 'elsewhere'): 3}
+    Standard      1-10 Mathematics           n= 30  {('absent', 'absent'): 13, ('h3', 'absent'): 8, ('h3', 'h3'): 3, ('elsewhere', 'elsewhere'): 3}
+    Standard      1-10 English               n= 25  {('absent', 'absent'): 20, ('h3', 'elsewhere'): 3, ('h3', 'absent'): 2}
+    Inquiry       Te ara Whakapuawa -Wellbei n= 14  {('h3', 'absent'): 11, ('absent', 'absent'): 3}
+    Standard      Online Safety (OS9000)     n=  8  {('absent', 'elsewhere'): 4, ('absent', 'absent'): 4}
+    Standard      Leaving to Learn           n=  8  {('h3', 'elsewhere'): 4, ('h3', 'absent'): 3, ('h3', 'h3'): 1}
+    Inquiry       ConnectED                  n=  7  {('h3', 'elsewhere'): 3, ('h3', 'absent'): 1, ('absent', 'absent'): 1, ('h3', 'h#'): 1}
+    Standard      ANZH                       n=  7  {('absent', 'absent'): 5, ('h3', 'absent'): 2}
+    Standard      1-10 Blended Literacy      n=  5  {('h3', 'elsewhere'): 3, ('h3', 'absent'): 2}
+    Standard      1-10 Social Science        n=  4  {('absent', 'elsewhere'): 3, ('absent', 'absent'): 1}
+    Fundamentals  1-10 Arts                  n=  2  {('absent', 'absent'): 1, ('elsewhere', 'h#'): 1}
+    Fundamentals  1-10 Mathematics           n=  2  {('absent', 'elsewhere'): 2}
+    Standard      EXPlore                    n=  2  {('absent', 'absent'): 2}
+    Fundamentals  1-10 Health and PE         n=  1  {('absent', 'elsewhere'): 1}
+    Standard      1-10 Science               n=  1  {('absent', 'elsewhere'): 1}
+    Standard      1-10 Technology            n=  1  {('absent', 'absent'): 1}
+  examples:
+    TRR116 - [Activity: Embedded] | «Drag and Drop» → gold absent / claude elsewhere
+    TRR116 - [Activity: Embedded] | «Flipcards» → gold absent / claude absent
+    TRR116 - [Activity: Embedded] | «Drop scatter on map??» → gold absent / claude absent
+    TRR116 - [Activity: Embedded] | «Drag and Drop» → gold absent / claude elsewhere
+    TRR116 - [Activity: Embedded] | «Drag and Drop» → gold absent / claude elsewhere
+    TRR116 - [Activity: Embedded] | «Memory Game» → gold absent / claude elsewhere
+    TRR116 - [Activity: Embedded] | «Flipcard with Audio» → gold absent / claude absent
+    TRR116 - [Activity: Embedded] | «Drag and drop» → gold absent / claude elsewhere
+    TRR116 - [Activity: Embedded] | «Wordfind» → gold absent / claude absent
+    TRR116 - [Activity: Embedded] | «Drop and Drag» → gold absent / claude absent
+    TRR116 - [Activity: Embedded] | «Drop and Drag» → gold absent / claude absent
+    TRR116 - [Activity: Embedded] | «Drop and Drag» → gold absent / claude absent
+    TRR116 - [Activity: Embedded] | «Word select» → gold absent / claude elsewhere
+    TRR116 - [Activity: Embedded] | «Drag and Drop» → gold absent / claude elsewhere
+
+long(>12w): 31 sites / 21 modules
+  gold renders the words as: {'absent': 31}
+  claude renders the words as: {'absent': 28, 'elsewhere': 3}
+  gold x claude: {('absent', 'absent'): 28, ('absent', 'elsewhere'): 3}
+  by group (gold,claude):
+    Standard      NCEA1                      n= 10  {('absent', 'absent'): 9, ('absent', 'elsewhere'): 1}
+    Standard      1-10 English               n=  9  {('absent', 'absent'): 9}
+    Fundamentals  1-10 Mathematics           n=  3  {('absent', 'absent'): 3}
+    Inquiry       Te ara Whakapuawa -Wellbei n=  3  {('absent', 'elsewhere'): 2, ('absent', 'absent'): 1}
+    Inquiry       ConnectED                  n=  2  {('absent', 'absent'): 2}
+    Fundamentals  1-10 Health and PE         n=  1  {('absent', 'absent'): 1}
+    Fundamentals  1-10 Social Science        n=  1  {('absent', 'absent'): 1}
+    Standard      EXPlore                    n=  1  {('absent', 'absent'): 1}
+    Standard      1-10 Mathematics           n=  1  {('absent', 'absent'): 1}
+  examples:
+    HPFUN102 - [Activity] | «Tick box – scavenger hunt. Can you please make the activity box look l» → gold absent / claude absent
+    MXFUN01 - [Activity body] | «Round these whole numbers to the nearest 10, 100, or 1000.  The first » → gold absent / claude absent
+    MXFUN01 - [Activity] [typed answer] | «. We will need the fraction set up so ākonga can just type in the nume» → gold absent / claude absent
+    MXFUN01 - [Activity] [typed answer] | «.  We will need the fraction set up so ākonga can just type in the num» → gold absent / claude absent
+    SSFUN08 - [Activity Interactive] | «Click, check and reset activity using the terms on this table (link to» → gold absent / claude absent
+    CEDR204 - [Activity Drag and Drop] | «Can the images pat, clap, stomp, snap, pop, and the rest sign image pl» → gold absent / claude absent
+    CEDT101 2C [Activity 2c] | «Put answers in a box for students to select from and then students dra» → gold absent / claude absent
+    TWHA904 1A [Activity 1A: Drag and drop] | «Dev when creating scatter the questions around. They are in the ‘corre» → gold absent / claude elsewhere
+    TWHA905 - [Activity 1A Drag and drop] | «Dev when creating scatter the questions around. They are in the ‘corre» → gold absent / claude elsewhere
+    TWHK903 7A [Activity 7A] | «Dev to create drop down activity – students select from Safe or Unsafe» → gold absent / claude absent
+    COM1002 - [Activity] | «This can be a slider activity or flipcards or click and drop images» → gold absent / claude absent
+    COM1005 3C [Activity 3C] | «Copy Activity 2A of ECO1004 in the module as well as in the learning j» → gold absent / claude absent
+    COM1005 5B [Activity 5B] | «Copy Activity 5A from ECO1004. Number it as 5B. Copy it in the learnin» → gold absent / claude absent
+    ENGI401 7C [Activity 7C] | «the following is the same as the end of the previous lesson, just chan» → gold absent / claude absent

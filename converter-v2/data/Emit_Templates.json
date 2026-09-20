@@ -831,6 +831,18 @@
 		"standalone_title_heading": {
 			"enabled": true,
 			"level": 3,
+			"embedded_free_text": {
+				"enabled": true,
+				"env": "EMBTITLE_OFF",
+				"max_words": 8,
+				"min_chars": 3,
+				"require_capital": true,
+				"strip_trailing_stop": true,
+				"exclude_alias_words": ["interactive"],
+				"remainder_allow": ["individual", "independent", "group"],
+				"_doc_guards": "The first probe (49 pages) showed three more shapes the census's `[activity`-anchored scan had not seen: the `[interactive activity] type and check` / `[interactive tool] …` openers (alias `interactive` — the MXDI / MXFU / MXFL dialect names the WIDGET after the bracket, r364) → exclude_alias_words; a Word run split mid-word (`[Activity 5A] L` + black `ooking at…`) → min_chars; a lowercase aside (`[activity 5b] wide`, `tick the pictures that show fractions.`) → require_capital (every gold-titled site is capitalised); `Calculating soil type.` → strip_trailing_stop (the gold's h3 carries no stop).",
+				"_doc": "ROUND 416 (the autonomous loop's session 29 Round 7). An [Activity …] opener whose TITLE the writer typed INSIDE the red span — `[Activity 2A] Concrete poems` all red, `[Activity] Calculating soil type.`, `[Activity box:] Ka pai!` — carries it as the span's FREE text (parse.free), which neither the r66 rule above (blackAfter's first line) nor the owner-lead addLead read: the title was dropped silently. ContentConverter.#embeddedOpenerTitle applies the rule at BOTH opener sites (the plain path via it._embeddedTitle → ActivitiesBuilder.activityOpen; the bundle-owned path as the first _ownerTitle lead item): an activity CONTAINER_OPEN opener whose bracket remainder is empty or a listed mode word, whose free text is not an instruction fragment / cue, not parenthesised, not digit-led, not colon-ended, at most max_words words, and does NOT itself resolve to a lexicon tag (`[True False Quiz]` → radio quiz, `[Drag and Drop]`, `[wordfind]`, `[Trigger Engagement]` — a widget NAME the gold never titles with) → RenderText(free) is the box's <h{level}>; the whole blackAfter then renders as content. Measured (_s29_r7_titlerule.cjs over the 216 red-embedded opener spans / 86 modules): the rule selects 48 sites / 30 modules, the gold's box opening with that <h3> on 40 = 0.83 (Te ara Whakapuawa 11 / 11, Leaving to Learn 5 / 5, ConnectED 3 / 3, Blended Literacy 4 / 4, Mathematics 10 / 15, English 4 / 5); the exclusions: `[Activity: Embedded] <widget>` (remainder embedded, gold absent 52 / 59), widget names 37 (gold absent 27), digit-led / parenthesised / colon-ended / cues 18. Env EMBTITLE_OFF = the r415 output byte-for-byte; ACTTITLE_OFF turns this off with the parent rule."
+			},
 			"_round66_note": "ROUND 66 (Chris, BLL233-01). The text trailing an [Activity NX] tag is the activity TITLE; the human renders it as <h3> as the box's first child (measured 86.6% of 6496 human activity boxes start with <h3>, vs 0.2% <p> — outputs/_measure_activity_title.py). Claude's interactive-OWNED activity path already promotes the lead line to <h3> (#activityOpen renderBlack=false, the addLead title logic). The STANDALONE path (renderBlack=true, a plain [Activity] with no captured widget — BLL233 1E) dumped the whole blackAfter via #renderBlackText as a plain <p>. Fix: when enabled, #activityOpen promotes the FIRST LINE of blackAfter to <h{level}> (the title) and renders the REST as body, mirroring the owned path exactly. Env ACTTITLE_OFF reverts to the all-<p> baseline."
 		},
 		"number_from_tail": {

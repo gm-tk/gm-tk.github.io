@@ -525,9 +525,23 @@ class ActivitiesBuilder {
 		// EMPTY tail, so under the plain rule the writer's following "[Activity] 7F"
 		// merged into box 7E and the sixth panel vanished — a merge the shipped disk
 		// also carries; the gold ships six separate panels.)
+		// ROUND 416 — the title typed INSIDE the opener's red span (ContentConverter.#embeddedOpenerTitle
+		// sets it._embeddedTitle on the plain path): a self-titled box (titledOpener), the title emitted as
+		// the <h{level}> below and the WHOLE black tail rendered as content — its first line is no longer
+		// promoted, the words the writer put after the bracket are. Data
+		// activity_wrapper.standalone_title_heading.embedded_free_text; env EMBTITLE_OFF.
+		const embTitle = renderBlack && !tailIsId ? String(it._embeddedTitle ?? "").trim() : "";
 		stack.push({ tag: "activity", close: tpl.activity_wrapper.close, mode: "activity",
-			hasContent: false, titledOpener: it._r307PanelId ? true : (it.blackAfter ?? "").trim().length > 0, id,
+			hasContent: false, titledOpener: it._r307PanelId ? true : ((it.blackAfter ?? "").trim().length > 0 || !!embTitle), id,
 			idHeading: !!it._idHeading });   // ROUND 364: opened by an id-carrying heading (InteractiveScanner.#idHeadingOpeners)
+		if (embTitle) {
+			const th = tpl.activity_wrapper.standalone_title_heading;
+			const lvl = th?.level ?? 3;
+			out.push(`<h${lvl}>${ListsAndRuns.inlineMarkup(embTitle)}</h${lvl}>`);
+			if ((it.blackAfter ?? "").trim()) out.push(...ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links));
+			stack[stack.length - 1].hasContent = true;
+			return out;
+		}
 		// renderBlack=false lets the activity-OWNED path lay out the lead itself
 		// (first line → <h3> title); the standalone container path keeps true.
 		if (renderBlack && !tailIsId && it.blackAfter.trim()) {
