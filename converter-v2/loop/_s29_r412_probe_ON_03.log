@@ -1,0 +1,837 @@
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+PHE1007: identical 10 / changed 0
+PHE1008: identical 6 / changed 0
+PNR101: identical 2 / changed 0
+PNR102: identical 3 / changed 0
+PNR104: identical 3 / changed 0
+PNR107: identical 3 / changed 0
+PWY1001: identical 10 / changed 0
+PWY1002: identical 10 / changed 0
+PWY1007: identical 9 / changed 0
+PWY1008: identical 10 / changed 0
+PWY1009: identical 9 / changed 0
+PWYWHA1: identical 1 / changed 0
+SCBI301: identical 9 / changed 0
+SCCH301: identical 9 / changed 0
+  ~ SCES201_3_0.html: -38 +47
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <h3>Matariki around the world</h3>
+     - <p>Many <span class="infoTrigger" info="Groups of people who live in the same place.">civilisations</span> hav
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> [column 1 title] Civilisation</th>
+     - <th> [column 2 title] Name for Matariki</th>
+     - </tr>
+     - <tr>
+     - <td> [Q1] Japan</td>
+     - <td> [Q1 answer] Subaru</td>
+     - </tr>
+     - <tr>
+     - <td> [Q2] China</td>
+     - <td> [Q2 answer] The blossom stars</td>
+     - </tr>
+     - <tr>
+     - <td> [Q3] Vikings</td>
+     - <td> [Q3 answer] Freya’s hens</td>
+     - </tr>
+     - <tr>
+     - <td> [Q4] Egyptians</td>
+     - <td> [Q4 answer] Neit</td>
+     - </tr>
+     - <tr>
+     - <td> [Q5] Greek</td>
+     - <td> [Q5 answer] Seven sisters</td>
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="button">reset</div>
+     - </div>
+     - </div>
+     + <h3>Matariki around the world</h3>
+     + <p>Many civilisations</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="SCES201-03-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover: Groups of people who live in 
+     + <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: dragAndDrop — Activity 3C — see SCE
+     + <div style="font-size: 0.95em">
+     + <p>have their own names and stories about the Matariki whētu. Match the civilisation with the name they give M
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [column 1 title] Civilisation</th>
+     + <th> [column 2 title] Name for Matariki</th>
+     + </tr>
+     + <tr>
+     + <td> [Q1] Japan</td>
+     + … 27 more added
+SCES201: identical 4 / changed 1
+SCFUN01: identical 1 / changed 0
+SCPH301: identical 9 / changed 0
+SPA1004: identical 3 / changed 0
+SSCI205: identical 10 / changed 0
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+SSOG101: identical 8 / changed 0
+SSOG103: identical 7 / changed 0
+SSOG301: identical 8 / changed 0
+  ~ TEDC401_2_0.html: -86 +51
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: drag and drop note: wide (for interac
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <h3>Design principles identified (label)</h3>
+     - <p>Apply what you’ve learned to a real interface.</p>
+     - <div class="activity interactive" number="2E">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="37" data-cv2-ref="TEDC401-02-05" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="37" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #37: dragAndDrop — Activity (inline) — s
+     - <div class="bubble-basic no-hover bubble-right"><p>Layout, hierarchy, colour, typography – these aren’t random
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="39" data-cv2-ref="TEDC401-02-06" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: https://www.youtube.com/ / https://ww
+     - <div class="cv2-interactive" data-cv2-index="39" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #39: carousel (external nav or a series 
+     - <p><b>Interfaces: be a ‘design principles’ detective</b></p>
+     - <p>Explore real interfaces and notice design choices.</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - <th> Image &amp; Link </th>
+     - <th><b>What you might notice about the design features:</b></th>
+     - </tr>
+     - <tr>
+     - <td> Slide 1 nav button text “Wikipedia” </td>
+     - <td><b><a href="https://www.wikipedia.org/" target="_blank">https://www.wikipedia.org/</a></b> / <b><a href="h
+     - <td><b>Layout:</b> very text-heavy and structured. Can feel dense or overwhelming at first. / <b>Hierarchy:</b
+     - </tr>
+     - <tr>
+     - <td> Slide 2 nav button text “Google Classroom” </td>
+     - <td><a href="https://classroom.google.com/" target="_blank">https://classroom.google.com/</a> / <a href="https
+     - <td><b>Layout:</b> very organised and predictable. Sections like “Stream,” “Classwork,” and “People” are clear
+     - </tr>
+     - <tr>
+     - <td> Slide 3 nav button text “Youtube” </td>
+     - <td><a href="https://www.youtube.com/" target="_blank">https://www.youtube.com/</a> / <a href="https://www.shu
+     - <td><b>Layout:</b> grid of thumbnails – visually clear, but very busy. / <b>Hierarchy:</b> thumbnails dominate
+     - </tr>
+     - <tr>
+     - <td> Slide 4 nav button text “Spotify” </td>
+     - … 46 more removed
+     + <h3>Design principles identified (label)</h3>
+     + <p>Apply what you’ve learned to a real interface.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="36" data-cv2-ref="TEDC401-02-05" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="36" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #36: dragAndDrop + speechBubble + carous
+     + <p>Handsome Business Man Set Stock Illustration - Download Image Now - Men, Characters, Variation - iStock</p>
+     + <p>Layout, hierarchy, colour, typography – these aren’t random choices. They guide what users see and do. That
+     + <h3>Interfaces: be a ‘design principles’ detective</h3>
+     + <p>Explore real interfaces and notice design choices.</p>
+     + <th></th>
+     + <th> Image &amp; Link </th>
+     + <th>What you might notice about the design features:</th>
+     + <tr>
+     + <td> Slide 1 nav button text “Wikipedia” </td>
+     + <td><b><a href="https://www.wikipedia.org/" target="_blank">https://www.wikipedia.org/</a></b> / <b><a href="h
+     + <td><b>Layout:</b> very text-heavy and structured. Can feel dense or overwhelming at first. / <b>Hierarchy:</b
+     + </tr>
+     + <tr>
+     + <td> Slide 2 nav button text “Google Classroom” </td>
+     + <td><a href="https://classroom.google.com/" target="_blank">https://classroom.google.com/</a> / <a href="https
+     + … 31 more added
+  ~ TEDC401_3_0.html: -24 +24
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="47" data-cv2-ref="TEDC401-03-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="47" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #47: unclassified + speechBubble + speec
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="51" data-cv2-ref="TEDC401-03-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="51" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #51: multiChoiceQuiz + multiChoiceQuiz —
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="52" data-cv2-ref="TEDC401-03-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="52" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #52: hint — Activity (inline) — see TEDC
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="53" data-cv2-ref="TEDC401-03-04" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="53" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #53: dragAndDrop (matching matches are) 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="54" data-cv2-ref="TEDC401-03-05" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="54" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #54: hint — Activity (inline) — see TEDC
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="59" data-cv2-ref="TEDC401-03-06" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="59" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #59: accordion + speechBubble (could be 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="60" data-cv2-ref="TEDC401-03-07" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="60" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #60: selectionBox — Activity (inline) — 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="66" data-cv2-ref="TEDC401-03-08" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="66" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #66: multiChoiceQuiz (go to) — Activity 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="44" data-cv2-ref="TEDC401-03-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="44" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #44: unclassified + speechBubble + speec
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="48" data-cv2-ref="TEDC401-03-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="48" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #48: multiChoiceQuiz + multiChoiceQuiz —
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="49" data-cv2-ref="TEDC401-03-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="49" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #49: hint — Activity (inline) — see TEDC
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="50" data-cv2-ref="TEDC401-03-04" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="50" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #50: dragAndDrop (matching matches are) 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="51" data-cv2-ref="TEDC401-03-05" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="51" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #51: hint — Activity (inline) — see TEDC
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="56" data-cv2-ref="TEDC401-03-06" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="56" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #56: accordion + speechBubble (could be 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="57" data-cv2-ref="TEDC401-03-07" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="57" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + … 4 more added
+  ~ TEDC401_4_0.html: -14 +14
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="76" data-cv2-ref="TEDC401-04-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="76" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #76: tabs — Activity (inline) — see TEDC
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="77" data-cv2-ref="TEDC401-04-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="77" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #77: dragAndDrop + speechBubble (matchin
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="80" data-cv2-ref="TEDC401-04-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="80" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #80: accordion — Activity (inline) — see
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="83" data-cv2-ref="TEDC401-04-04" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #83: unclassified + tabs + speechBubble 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="86" data-cv2-ref="TEDC401-04-05" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="86" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #86: multiChoiceQuiz (go to) — Activity 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="73" data-cv2-ref="TEDC401-04-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="73" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #73: tabs — Activity (inline) — see TEDC
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="74" data-cv2-ref="TEDC401-04-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="74" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #74: dragAndDrop + speechBubble (matchin
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="77" data-cv2-ref="TEDC401-04-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="77" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #77: accordion — Activity (inline) — see
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="80" data-cv2-ref="TEDC401-04-04" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="80" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #80: unclassified + tabs + speechBubble 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="83" data-cv2-ref="TEDC401-04-05" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #83: multiChoiceQuiz (go to) — Activity 
+  ~ TEDC401_5_0.html: -14 +14
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="90" data-cv2-ref="TEDC401-05-01" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #90: selectionBox + speechBubble + tabs 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="91" data-cv2-ref="TEDC401-05-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="91" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #91: tabs + speechBubble — Activity 5B —
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="93" data-cv2-ref="TEDC401-05-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="93" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #93: multiChoiceQuiz — Activity (inline)
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="95" data-cv2-ref="TEDC401-05-04" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="95" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #95: unclassified + speechBubble — Activ
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="96" data-cv2-ref="TEDC401-05-05" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="96" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #96: selectionBox — Activity (inline) — 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="87" data-cv2-ref="TEDC401-05-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="87" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #87: selectionBox + speechBubble + tabs 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="88" data-cv2-ref="TEDC401-05-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="88" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #88: tabs + speechBubble — Activity 5B —
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="90" data-cv2-ref="TEDC401-05-03" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #90: multiChoiceQuiz — Activity (inline)
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="92" data-cv2-ref="TEDC401-05-04" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="92" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #92: unclassified + speechBubble — Activ
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="93" data-cv2-ref="TEDC401-05-05" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="93" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #93: selectionBox — Activity (inline) — 
+  ~ TEDC401_6_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="99" data-cv2-ref="TEDC401-06-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="99" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #99: speechBubble + speechBubble — Activ
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="96" data-cv2-ref="TEDC401-06-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="96" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #96: speechBubble + speechBubble — Activ
+TEDC401: identical 3 / changed 5
+TEDC402: identical 11 / changed 0
+TEFUN01: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+  ~ TEFUN06_0_0.html: -24 +31
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: drag and drop note: captions - please
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <h3>Make it last</h3>
+     - <p>Can you predict how these things will wear out, and match up the possible solutions?</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-171557401" alt="Skateb
+     - <th>A stronger board might make it last longer.</th>
+     - </tr>
+     - <tr>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1167181006" alt="Toy T
+     - <td>Stronger stitching might make it last longer.</td>
+     - </tr>
+     - <tr>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1392926964" alt="Sun W
+     - <td>Different paint might make it last longer.</td>
+     - </tr>
+     - <tr>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1406770425" alt="Overh
+     - <td>Warning messages before problems get serious might make it last longer.</td>
+     - </tr>
+     - </table>
+     - </div>
+     + <h3>Make it last</h3>
+     + <p>Can you predict how these things will wear out, and match up the possible solutions?</p>
+     + <div class="dragAndDrop images" layout="standard">
+     + <div class="col-7 questionContainer">
+     + <div class="question"><p>A stronger board might make it last longer.</p></div>
+     + <div class="question"><p>Stronger stitching might make it last longer.</p></div>
+     + <div class="question"><p>Different paint might make it last longer.</p></div>
+     + <div class="question"><p>Warning messages before problems get serious might make it last longer.</p></div>
+     + <div class="col-5 ddContainer">
+     + <div class="drag" option="1"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-17155
+     + <div class="drag" option="2"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-11671
+     + <div class="drag" option="3"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-13929
+     + <div class="drag" option="4"><img class="img-fluid margB0" src="https://placehold.co/600x400?text=iStock-14067
+     + </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: 2A captions – please mix up the
+     + <div class="row">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + … 11 more added
+TEFUN06: identical 0 / changed 1
+TEFUN07: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+TRR107: identical 3 / changed 0
+TRR108: identical 3 / changed 0
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR116: identical 5 / changed 0
+TRR203: identical 4 / changed 0
+TRR301: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+  ~ TWHA904_0_0.html: -19 +54
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <h4>Essential questions</h4>
+     - <p>Max has brainstormed some questions around transport and the problems it causes. Read each question and dra
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Think like a Social Scientist</th>
+     - <th>Think like a Scientist</th>
+     - <th>Think like a Mathematician</th>
+     - <th>Think like an Innovator</th>
+     - </tr>
+     - <tr>
+     - <td>• How does transport help people? / • Do we need transport? / • Can I come up with environmentally friendl
+     - <td>• What is the impact of pollution on te taiao (the environment)? / • How can we reduce the pollution from 
+     - <td>• How does New Zealand’s air quality level compare with countries around the world? / • How can I plan my 
+     - <td>• Can I design a transport solution that carries lots of people with minimal pollution? / • What can we do
+     - </tr>
+     - </table>
+     - </div>
+     + <h3>Essential questions</h3>
+     + <p>Max has brainstormed some questions around transport and the problems it causes. Read each question and dra
+     + <div class="dragAndDrop" layout="column">
+     + <div class="row dropContainer">
+     + <div class="ddColumn">
+     + <p>Think like a Social Scientist</p>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="ddColumn">
+     + <p>Think like a Scientist</p>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="ddColumn">
+     + <p>Think like a Mathematician</p>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="3"></div>
+     + … 34 more added
+TWHA904: identical 0 / changed 1
+  ~ TWHA905_0_0.html: -19 +52
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <h4>Essential questions</h4>
+     - <p>Alex has brainstormed some questions around growing food and the problems it causes. Read each question and
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Think like a social scientist</th>
+     - <th>Think like a scientist</th>
+     - <th>Think like a mathematician</th>
+     - <th>Think like an innovator</th>
+     - </tr>
+     - <tr>
+     - <td>What are the social and economic impacts of sustainable food production? / What action should I take to re
+     - <td>What observations can I make about deforestation? / Can I predict what will happen with less biodiversity?
+     - <td>How can I measure pollution? / How can I show my data to others? / What does this data mean for our planet
+     - <td>How can I solve the problem of food production causing pollution? / Can I design a solution that produces 
+     - </tr>
+     - </table>
+     - </div>
+     + <h3>Essential questions</h3>
+     + <p>Alex has brainstormed some questions around growing food and the problems it causes. Read each question and
+     + <div class="dragAndDrop" layout="column">
+     + <div class="row dropContainer">
+     + <div class="ddColumn">
+     + <p>Think like a social scientist</p>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="1"></div>
+     + <div class="ddColumn">
+     + <p>Think like a scientist</p>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="ddColumn">
+     + <p>Think like a mathematician</p>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="ddColumn">
+     + … 32 more added
+TWHA905: identical 0 / changed 1
+TWHA906: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+WJFUN105: identical 1 / changed 0
+WJFUN106: identical 1 / changed 0
+WJFUN107: identical 1 / changed 0
+WJFUN108: identical 1 / changed 0
+WJFUN109: identical 1 / changed 0
+  ~ WJFUN110_0_0.html: -63 +79
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <h3>Guess the audience</h3>
+     - <p>Read these and decide who you think the audience would be, drag the topic to the right audience.</p>
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Audience [static row] </th>
+     - <th> [Drag and drops] currently correct </th>
+     - </tr>
+     - <tr>
+     - <td>Parents</td>
+     - <td>A Mother’s Day card</td>
+     - <td>The Te Kura newsletter</td>
+     - <td>Overdue library notice</td>
+     - </tr>
+     - <tr>
+     - <td>Teacher</td>
+     - <td>My writing book to check</td>
+     - <td>A test to mark</td>
+     - <td>A written story about my trip to Queenstown</td>
+     - </tr>
+     - <tr>
+     - <td>Friend</td>
+     - <td>A postcard from Queenstown</td>
+     - <td>A fun play to read</td>
+     - <td>A letter about your trip to the Remarkables</td>
+     - </tr>
+     - <tr>
+     - <td>Stranger</td>
+     - <td>A poster about an event at Lake Whakatipu</td>
+     - <td>Queenstown newsletter</td>
+     - <td>Advertising a business</td>
+     - </tr>
+     - </table>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <h3>Which Kea?</h3>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: make two images with the global param
+     - <p>Which Kea are we writing for in these pieces of writing? Are we writing for the formal kea or the informal 
+     - <div class="table-responsive">
+     - … 23 more removed
+     + <h3>Guess the audience</h3>
+     + <p>Read these and decide who you think the audience would be, drag the topic to the right audience.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="WJFUN110-00-04" style="border: 8px 
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: dragAndDrop — Activity 2B — see WJF
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>Audience [static row] </th>
+     + <th> [Drag and drops] currently correct </th>
+     + </tr>
+     + <tr>
+     + <td>Parents</td>
+     + <td>A Mother’s Day card</td>
+     + <td>The Te Kura newsletter</td>
+     + … 59 more added
+WJFUN110: identical 0 / changed 1
+WJFUN112: identical 1 / changed 0
+WJFUN113: identical 1 / changed 0
+WJFUN115: identical 1 / changed 0
+WJFUN116: identical 1 / changed 0
+WJFUN205: identical 1 / changed 0
+WJFUN206: identical 1 / changed 0
+  ~ WJFUN208_0_0.html: -70 +71
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dropDown] marker — no content c
+     - <h3>Which word would a writer choose?</h3>
+     - <p>Choose the word that best creates the effect the writer wants.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Maybe these may look better in a slid
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th></th>
+     - <th></th>
+     - <th> [Draggable words] </th>
+     - </tr>
+     - <tr>
+     - <td>A writer wants to show that a hiker is <b>exhausted</b>.</td>
+     - <td>After climbing the track to the Huka Falls lookout, Ben ______ to the top.</td>
+     - <td>walked / travelled / staggered [Correct answer] / moved</td>
+     - </tr>
+     - <tr>
+     - <td>A writer wants to show that a person is <b>very happy</b>.</td>
+     - <td>When she saw the view across Lake Taupō, Aroha ______.</td>
+     - <td>smiled / beamed [Correct answer] / looked / glanced</td>
+     - </tr>
+     - <tr>
+     - <td>A writer wants to show that someone is <b>moving very quietly</b>.</td>
+     - <td>As the ranger searched for kiwi in the bush, he ______ along the track.</td>
+     - <td>walked / crept [Correct answer] / travelled / wandered</td>
+     - </tr>
+     - <tr>
+     - <td>A writer wants to show that someone is <b>looking carefully</b>.</td>
+     - <td>At the Taupō Museum, Noah ______ at the small details in the display.</td>
+     - <td>looked / saw / peered [Correct answer] / noticed</td>
+     - </tr>
+     - <tr>
+     - <td>A writer wants to show that a runner is <b>moving very quickly</b>.</td>
+     - <td>During the Taupō Fun Run, Emma ______ towards the finish line.</td>
+     - <td>moved / travelled / sprinted [Correct answer] / walked</td>
+     - </tr>
+     - <tr>
+     - <td>A writer wants to show that someone is <b>holding on tightly because they are nervous or excited</b>.</td>
+     - <td>As the jet boat picked up speed on the Waikato River, Luka ______ the handrail.</td>
+     - … 30 more removed
+     + <h3>Which word would a writer choose?</h3>
+     + <p>Choose the word that best creates the effect the writer wants.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="WJFUN208-00-04" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Maybe these may look better in a slid
+     + <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: dropDown — Activity 2B — see WJFUN20
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th></th>
+     + <th></th>
+     + <th> [Draggable words] </th>
+     + </tr>
+     + <tr>
+     + <td>A writer wants to show that a hiker is <b>exhausted</b>.</td>
+     + … 51 more added
+WJFUN208: identical 0 / changed 1
+WJFUN210: identical 1 / changed 0
+  ~ WJFUN211_0_0.html: -47 +54
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <h3>Sort the feature</h3>
+     - <p>Match each definition to the correct language feature.</p>
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Language feature [static] </th>
+     - <th>Definition [movable] [correct answers shown] [please jumble] </th>
+     - </tr>
+     - <tr>
+     - <td>Simile</td>
+     - <td>Compares two things using <i>like</i> or <i>as.</i></td>
+     - </tr>
+     - <tr>
+     - <td>Metaphor</td>
+     - <td>Says one thing <i>is</i> another thing.</td>
+     - </tr>
+     - <tr>
+     - <td>Personification</td>
+     - <td>Gives human qualities to non-human things.</td>
+     - </tr>
+     - <tr>
+     - <td>Alliteration</td>
+     - <td>Uses repeated beginning sounds.</td>
+     - </tr>
+     - <tr>
+     - <td>Hyperbole</td>
+     - <td>Uses exaggeration for effect.</td>
+     - </tr>
+     - <tr>
+     - <td>Onomatopoeia</td>
+     - <td>Words that sound like the noise they describe.</td>
+     - </tr>
+     - </table>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="WJFUN211-00-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="WJFUN211-00-02" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="WJFUN211-00-03" style="border: 8px 
+     - … 7 more removed
+     + <h3>Sort the feature</h3>
+     + <p>Match each definition to the correct language feature.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="WJFUN211-00-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: dragAndDrop — Activity 1A — see WJFU
+     + <th>Language feature [static] </th>
+     + <th>Definition [movable] [correct answers shown] [please jumble] </th>
+     + <tr>
+     + <td>Simile</td>
+     + <td>Compares two things using <i>like</i> or <i>as.</i></td>
+     + </tr>
+     + <tr>
+     + <td>Metaphor</td>
+     + <td>Says one thing <i>is</i> another thing.</td>
+     + </tr>
+     + <tr>
+     + <td>Personification</td>
+     + <td>Gives human qualities to non-human things.</td>
+     + </tr>
+     + … 34 more added
+WJFUN211: identical 0 / changed 1
+  ~ WJFUN212_0_0.html: -30 +43
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <h3>Choosing descriptive words</h3>
+     - <p>Choose the best descriptive words for these sentences.</p>
+     - <th></th>
+     - <th> Draggable words – currently in correct place </th>
+     - <td>The start of a story about a family heading to the beach for a swim. / • The air was fine,__________ , hot
+     - <td> humid </td>
+     - <td>Information for tourists / • Maketu Pies are a __________ snack while visiting the area.</td>
+     - <td> tempting </td>
+     - <td>A recount about a road trip. / • Raparapahoe Falls was a _____________stop on our way to Te Puke.</td>
+     - <td> refreshing </td>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="WJFUN212-00-09" style="border: 8px 
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="WJFUN212-00-10" style="border: 8px 
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - </table>
+     - <div class="button">Reset</div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="WJFUN212-00-11" style="border: 8px 
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - </div>
+     + <h3>Choosing descriptive words</h3>
+     + <p>Choose the best descriptive words for these sentences.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="WJFUN212-00-09" style="border: 8px 
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: dragAndDrop — Activity 2B — see WJF
+     + <th></th>
+     + <th> Draggable words – currently in correct place </th>
+     + <td>The start of a story about a family heading to the beach for a swim. / • The air was fine,__________ , hot
+     + <td> humid </td>
+     + <td>Information for tourists / • Maketu Pies are a __________ snack while visiting the area.</td>
+     + <td> tempting </td>
+     + <td>A recount about a road trip. / • Raparapahoe Falls was a _____________stop on our way to Te Puke.</td>
+     + <td> refreshing </td>
+     + <p>Reset</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="WJFUN212-00-10" style="border: 8px 
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="WJFUN212-00-11" style="border: 8px 
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + … 23 more added
+WJFUN212: identical 0 / changed 1
+WJFUN304: identical 1 / changed 0
+  ~ WJFUN305_0_0.html: -94 +93
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: drag and drop note: currently in orde
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <h3>Matching Form, Genre and Style</h3>
+     - <p>Match each text example to its form, genre, and style.</p>
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Text Example [Static] </th>
+     - <th>Form [Draggable] </th>
+     - <th>Genre [Draggable] </th>
+     - <th>Style [Draggable] </th>
+     - </tr>
+     - <tr>
+     - <td>Plan your perfect Thames getaway. Discover coastal walks, historic streets, and unforgettable Coromandel s
+     - <td>Brochure</td>
+     - <td>Travel writing</td>
+     - <td>Persuasive</td>
+     - </tr>
+     - <tr>
+     - <td>Thames became a significant gold-mining centre during the 1860s, contributing to regional growth and settl
+     - <td>Report</td>
+     - <td>Historical writing</td>
+     - <td>Factual</td>
+     - </tr>
+     - <tr>
+     - <td>Welcome everyone. Today I will explain how the gold rush influenced the development of Thames.</td>
+     - <td>Speech</td>
+     - <td>Historical presentation</td>
+     - <td>Informative</td>
+     - </tr>
+     - <tr>
+     - <td>I spent Saturday exploring the Kauaeranga Valley. The views were incredible, and I would definitely recomm
+     - <td>Blog Post</td>
+     - <td>Travel writing</td>
+     - <td>Personal</td>
+     - </tr>
+     - <tr>
+     - <td>Don&#39;t miss the Thames Community Market this Saturday. Support local businesses and enjoy a great day o
+     - <td>Advertisement</td>
+     - … 54 more removed
+     + <h3>Matching Form, Genre and Style</h3>
+     + <p>Match each text example to its form, genre, and style.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="WJFUN305-00-08" style="border: 8px 
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Note:Duplicate items below intention
+     + <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: dragAndDrop (currently in order cre
+     + <th>Text Example [Static] </th>
+     + <th>Form [Draggable] </th>
+     + <th>Genre [Draggable] </th>
+     + <th>Style [Draggable] </th>
+     + <tr>
+     + <td>Plan your perfect Thames getaway. Discover coastal walks, historic streets, and unforgettable Coromandel s
+     + <td>Brochure</td>
+     + <td>Travel writing</td>
+     + <td>Persuasive</td>
+     + </tr>
+     + <tr>
+     + <td>Thames became a significant gold-mining centre during the 1860s, contributing to regional growth and settl
+     + <td>Report</td>
+     + … 73 more added
+WJFUN305: identical 0 / changed 1
+WJFUN306: identical 1 / changed 0
+WJFUN307: identical 1 / changed 0
+WJFUN308: identical 1 / changed 0
+XDLS501: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+XDLS901: identical 5 / changed 0
+XDLS902: identical 8 / changed 0
+XDLS903: identical 8 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS906: identical 8 / changed 0
+XDLS908: identical 9 / changed 0
+XDLS909: identical 5 / changed 0
+XDLS911: identical 2 / changed 0
+XDLS912: identical 6 / changed 0
+XFUN01: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+XGF9001: identical 7 / changed 0
+XGF9002: identical 10 / changed 0
+  ~ XGF9003_1_0.html: -16 +36
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <h4>Prioritise the tasks</h4>
+     - <p>Below is a list of tasks that you need to place into the Eisenhower Matrix. You need to think about how urg
+     - <p>Urgent</p>
+     - <p>Non urgent</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <td>Do this now: / Dance rehearsal. / Internal assessment. / Part time job shift. / Household chores – taking 
+     - <td>Do this later: / Reading books. / Meditation or relaxation exercises. / Spending time with family and frie
+     - </tr>
+     - <tr>
+     - <td>Delegate this: / Helping your sibling mow the lawns. / Shopping or running errands. / Group project at sch
+     - <td>Delete or schedule for later: / Watching TV or movies. / Gaming. / Scrolling social media.</td>
+     - </tr>
+     - </table>
+     + <div class="activity interactive" number="1H">
+     + <h3>Prioritise the tasks</h3>
+     + <p>Below is a list of tasks that you need to place into the Eisenhower Matrix. You need to think about how urg
+     + <p>Urgent</p>
+     + <p>Non urgent</p>
+     + <div class="question"><p>Do this now: / Dance rehearsal. / Internal assessment. / Part time job shift. / House
+     + <div class="question"><p>Delegate this: / Helping your sibling mow the lawns. / Shopping or running errands. /
+     + <div class="drag" option="1"><p>Do this later: / Reading books. / Meditation or relaxation exercises. / Spendi
+     + <div class="drag" option="2"><p>Delete or schedule for later: / Watching TV or movies. / Gaming. / Scrolling s
+     + </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Dev can you create a 4 grid dra
+     + <div class="row">
+     + <div class="col-12">
+     + <div class="dragAndDrop" layout="standard">
+     + <div class="row">
+     + <div class="col-6 questionContainer">
+     + </div>
+     + <div class="col-6 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + … 16 more added
+  ~ XGF9003_1_2.html: -2 +2
+     - <div class="activity interactive" number="1K">
+     - <div class="activity interactive" number="1M">
+     + <div class="activity interactive" number="1L">
+     + <div class="activity interactive" number="1N">
+  ~ XGF9003_1_3.html: -1 +1
+     - <div class="activity" number="1O">
+     + <div class="activity" number="1P">
+XGF9003: identical 3 / changed 3
+XGF9004: identical 18 / changed 0
+XGF9006: identical 8 / changed 0
+XLP01: identical 5 / changed 0
+XLP02: identical 7 / changed 0
+XLP03: identical 6 / changed 0
+XLP04: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+XLP06: identical 3 / changed 0
+XMES101: identical 9 / changed 0
+XMES102: identical 6 / changed 0
+XMES103: identical 6 / changed 0
+XMES201: identical 6 / changed 0
+XMES203: identical 6 / changed 0
+XTAS101: identical 5 / changed 0
+XTAS102: identical 6 / changed 0
+XTAS103: identical 7 / changed 0
+XWHA01: identical 2 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 495 / changed 17 / missing 0 over 122 modules
+CHANGED: SCES201/SCES201_3_0.html TEDC401/TEDC401_2_0.html TEDC401/TEDC401_3_0.html TEDC401/TEDC401_4_0.html TEDC401/TEDC401_5_0.html TEDC401/TEDC401_6_0.html TEFUN06/TEFUN06_0_0.html TWHA904/TWHA904_0_0.html TWHA905/TWHA905_0_0.html WJFUN110/WJFUN110_0_0.html WJFUN208/WJFUN208_0_0.html WJFUN211/WJFUN211_0_0.html WJFUN212/WJFUN212_0_0.html WJFUN305/WJFUN305_0_0.html XGF9003/XGF9003_1_0.html XGF9003/XGF9003_1_2.html XGF9003/XGF9003_1_3.html

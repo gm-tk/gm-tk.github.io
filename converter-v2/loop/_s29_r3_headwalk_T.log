@@ -1,0 +1,120 @@
+AGH1004	6.0	dragAndDrop	h p T		«[interactive: flowchart drag and drop]»	after«»	cell0«»	head«From Grass to Glass»
+AGH1006	2.0	dragAndDrop	h X		«[interactive: sentence drag and drop or drop-down »	after«»	cell0«»	head«Fill in the sentences to complete the summary statement abou»
+AGH1006	4.0	dragAndDrop	h p e p p X		«[interactive: See drag and drop activity below] *N»	after«»	cell0«»	head«Controlled Environments»
+AGH1006	5.0	dragAndDrop	h p p e h p p p		«[interactive: drag and drop] (Merged content: HTO1»	after«»	cell0«»	head«Pruning»
+AGH1006	8.0	dragAndDrop	h T		«[interactive: Drag and drop]»	after«»	cell0«»	head«Compare the advantages and disadvantages of using chemicals:»
+AGH1009	4.0	unclassified	h p p T		«[Activity: Embedded]»	after«»	cell0«»	head«Good or poor-quality water?»
+AGH1009	6.0	dragAndDrop	X		«[interactive: drag and drop]»	after«Place these green manure and b»	cell0«»	head«»
+CEDR501	5.0	flipCard	T		«[Flipcards]»	after«»	cell0«»	head«»
+CHFUN05	0.0	flipCard	T		«[flipcard] [body]»	after«Click on the card to turn the »	cell0«»	head«»
+DAN1004	1.0	unclassified	h p T		«[Interactive Activity]»	after«»	cell0«»	head«»
+DAN1004	2.0	carousel	X		«[Carousel slideshow]»	after«»	cell0«»	head«»
+EXBP901	3.0	dragAndDrop	h p T		«[Interactive drag and drop]»	after«»	cell0«»	head«Matching goals and intentions»
+EXIP901	2.0	multiChoiceQuiz	h p I p p p p I		«[Quiz – not teacher graded]»	after«»	cell0«»	head«Reflection»
+EXIP901	4.0	dropDown	h e p p e X		«[button to dropbox]»	after«Upload your journal.»	cell0«»	head«Learning Intentions»
+EXIP901	4.0	unclassified	h p T		«[Activity] Drag and drop [Dev – in the table below»	after«»	cell0«»	head«Match the learning intention to the learning goal»
+EXIP901	4.0	multiChoiceQuiz	h p I T		«[Quiz – check box]»	after«»	cell0«»	head«Look what I have completed!»
+HES1002	1.0	dropDown	X		«[Text for the dropdown]»	after«»	cell0«»	head«»
+HES1002	5.0	dragAndDrop	h p I T		«[Individual activity] [Drag and drop]»	after«»	cell0«»	head«How well do you know contraceptives?»
+HPFUN102	0.0	unclassified	h p T		«[Activity] Tick box – scavenger hunt. Can you plea»	after«»	cell0«»	head«Let’s go hunting!»
+HPFUN201	0.0	unclassified	h p I T		«[Interactive activity]»	after«»	cell0«»	head«Reflecting on your qualities»
+HPFUN302	0.0	dragAndDrop	h p T		«[Drag and drop]»	after«»	cell0«»	head«Best materials for making your own sports equipment»
+HPFUN402	0.0	unclassified	h p I T		«[Activity] Drag and drop»	after«»	cell0«»	head«Sports and the equipment required for the environment»
+SCES201	1.0	radioQuiz	h p I ?		«[activity 1a] [radio quiz] [auto check]»	after«»	cell0«»	head«All about stars»
+SCES201	1.0	dragAndDrop	h e p p p p p p		«[Activity 1c] [download then drag and drop activit»	after«»	cell0«»	head«Maramataka wheel.»
+SCES201	2.0	dropDown	h p X		«[Activity 2b] [dropdown quiz paragraph]»	after«»	cell0«»	head«Puanga and Orion»
+SCES201	3.0	dropDown	h p I ?		«[activity 3b] [dropdown quiz] [self check]»	after«»	cell0«»	head«The Matariki whetū»
+SCES201	3.0	dragAndDrop	h p T		«[activity 3c][drag and drop][auto check]»	after«»	cell0«»	head«Matariki around the world»
+TEDC401	2.0	dragAndDrop	h p T		«[Activity Box Wide (For Interactives) with a drag »	after«»	cell0«»	head«Design principles identified (label)»
+TEDC401	4.0	multiChoiceQuiz	h X		«[self check quiz]»	after«»	cell0«»	head«**Design checkpoint**»
+TEDC401	6.0	dropDown	h p e T		«[Activty / Dropbox] 6C»	after«»	cell0«»	head«**Share your learning**»
+TEDC402	8.0	unclassified	h I T		«[Activity]»	after«**7H**»	cell0«»	head«**Quick check + reflection**»
+TEFUN05	0.0	carousel	T		«[Insert Carousel]»	after«»	cell0«»	head«»
+TEFUN05	0.0	multiChoiceQuiz	X		«[Go to quiz]»	after«»	cell0«»	head«»
+TEFUN05	0.0	multiChoiceQuiz	h p X		«[Free text box with file upload capability quiz] [»	after«»	cell0«»	head«Your turn»
+TEFUN06	0.0	dragAndDrop	h p T		«[Activity 2A][Interactive – drag and drop captions»	after«»	cell0«»	head«Make it last»
+TEFUN06	0.0	clickDrop	X		«[Clickdrop]»	after«Compare your ideas with ours»	cell0«»	head«»
+TEFUN06	0.0	clickDrop	X		«[Clickdrop]»	after«Compare your ideas with ours»	cell0«»	head«»
+TEFUN06	0.0	clickDrop	X		«[Clickdrop]»	after«Compare your ideas with ours»	cell0«»	head«»
+TWHA902	0.0	unclassified	h I p T		«[Interactive activity] Drag and drop [Dev mix the »	after«»	cell0«»	head«Understanding body language»
+TWHA902	0.0	dragAndDrop	X		«[interactive: Drag and drop] Dev – answers align i»	after«»	cell0«»	head«»
+TWHA904	0.0	dragAndDrop	h p T		«[Activity 1A: Drag and drop] Dev when creating sca»	after«»	cell0«»	head«Essential questions»
+TWHA905	0.0	dragAndDrop	h p T		«[Activity 1A Drag and drop] Dev when creating scat»	after«»	cell0«»	head«Essential questions»
+WJFUN110	0.0	clickDrop	X		«[click drop]»	after«»	cell0«»	head«»
+WJFUN110	0.0	dragAndDrop	h X		«[Activity 1B] [drag and drop]»	after«»	cell0«»	head«Match it up!»
+WJFUN110	0.0	dragAndDrop	h p T		«[Activity 2B][drag and drop][self check]»	after«»	cell0«»	head«Guess the audience»
+WJFUN110	0.0	dragAndDrop	h I p T		«[Activity 2C][drag and drop]»	after«»	cell0«»	head«Which Kea?»
+WJFUN208	0.0	dropDown	h p I T		«[Activity 2B] [Dropdown quiz – Auto check]»	after«»	cell0«»	head«Which word would a writer choose?»
+WJFUN211	0.0	dragAndDrop	h p T		«[Activity 1A] [Drag and drop]»	after«»	cell0«»	head«Sort the feature»
+WJFUN211	0.0	dropDown	h e e e I e I p		«[Activity 2A] [Dropdown quiz – Auto check] [Please»	after«»	cell0«»	head«Engaging the senses»
+WJFUN211	0.0	dropDown	h p p p p p ?		«[Activity 2B][Dropdown Quiz – Auto Check][Arrange »	after«»	cell0«»	head«Think Like the Reader»
+WJFUN212	0.0	dragAndDrop	h p T		«[Activity 2B] [drag and drop] [Self Check]»	after«»	cell0«»	head«Choosing descriptive words»
+WJFUN305	0.0	dropDown	h p e p p p p ?		«[Activity 1A] [Dropdown quiz – Auto check] [Arrang»	after«»	cell0«»	head«Audience or Purpose?»
+WJFUN305	0.0	dropDown	h p p p p ?		«[Activity 2A] [Dropdown quiz – Auto check] [Arrang»	after«»	cell0«»	head«Form, Genre, or Style?»
+WJFUN305	0.0	dragAndDrop	h p T		«[Activity 2B] [Drag and Drop] [Table currently in »	after«»	cell0«»	head«Matching Form, Genre and Style»
+WJFUN305	0.0	dropDown	h p p p p ?		«[Activity 2C] [Dropdown Quiz – Auto Check] [arrang»	after«»	cell0«»	head«Why did the writer choose that?»
+WJFUN307	0.0	dropDown	h p p p p p p ?		«[Activity 1A] [Dropdown Quiz – Auto Check] [Arrang»	after«»	cell0«»	head«Synonym strength»
+WJFUN307	0.0	dragAndDrop	h p e T		«[Activity 1B] [Drag and Drop]»	after«»	cell0«»	head«Choosing the best thesaurus suggestion»
+WJFUN307	0.0	selectionBox	h p p p p p ?		«[Activity 2A] [checkbox – Auto Check] [Arrange the»	after«»	cell0«»	head«Spot the language feature»
+WJFUN307	0.0	selectionBox	h p p p p p ?		«[Activity 2B] [checkbox – Auto Check] [Arrange the»	after«»	cell0«»	head«Choose the best language feature»
+XGF9003	1.0	modal	h X		«[Pop-out]»	after«Tasks that need immediate atte»	cell0«»	head«**Do this later**»
+XGF9003	1.0	modal	h X		«[Pop-out]»	after«Tasks that are important for y»	cell0«»	head«**Delegate this**»
+XGF9003	1.0	modal	h X		«[Pop-out]»	after«These are tasks that need imme»	cell0«»	head«**Delete this**»
+XGF9003	1.0	modal	h p X		«[Pop-out]»	after«Tasks that are neither urgent »	cell0«»	head«Putting the Eisenhower Matrix into practice»
+XGF9003	1.0	dragAndDrop	h p p p T		«[Insert drag and drop] Dev can you create a 4 grid»	after«»	cell0«»	head«Prioritise the tasks»
+SUMMARY empty task bundles 64 modules 28 pages 39
+BY SHAPE:
+  15	h p T
+  9	X
+  6	h X
+  5	h p I T
+  3	T
+  3	h p X
+  3	h p p p p p ?
+  2	h p I ?
+  2	h p e T
+  2	h I p T
+  2	h p p p p ?
+  1	h p e p p X
+  1	h p p e h p p p
+  1	h T
+  1	h p p T
+  1	h p I p p p p I
+  1	h e p p e X
+  1	h e p p p p p p
+  1	h I T
+  1	h e e e I e I p
+  1	h p e p p p p ?
+  1	h p p p p p p ?
+  1	h p p p T
+BY TYPE|SHAPE:
+  12	dragAndDrop | h p T
+  4	clickDrop | X
+  3	unclassified | h p T
+  3	modal | h X
+  2	dragAndDrop | h X
+  2	dragAndDrop | X
+  2	flipCard | T
+  2	unclassified | h p I T
+  2	dropDown | h p p p p ?
+  2	selectionBox | h p p p p p ?
+  1	dragAndDrop | h p e p p X
+  1	dragAndDrop | h p p e h p p p
+  1	dragAndDrop | h T
+  1	unclassified | h p p T
+  1	carousel | X
+  1	multiChoiceQuiz | h p I p p p p I
+  1	dropDown | h e p p e X
+  1	multiChoiceQuiz | h p I T
+  1	dropDown | X
+  1	dragAndDrop | h p I T
+  1	radioQuiz | h p I ?
+  1	dragAndDrop | h e p p p p p p
+  1	dropDown | h p X
+  1	dropDown | h p I ?
+  1	multiChoiceQuiz | h X
+  1	dropDown | h p e T
+  1	unclassified | h I T
+  1	carousel | T
+  1	multiChoiceQuiz | X
+  1	multiChoiceQuiz | h p X

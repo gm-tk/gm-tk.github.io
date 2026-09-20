@@ -1,0 +1,244 @@
+CEDK102: identical 1 / changed 0
+CEDK501: identical 14 / changed 0
+CEDO102: identical 1 / changed 0
+CEDO105: identical 6 / changed 0
+CEDO202: identical 1 / changed 0
+CEDO204: identical 1 / changed 0
+CEDO301: identical 6 / changed 0
+CEDO501: identical 16 / changed 0
+CEDO502: identical 10 / changed 0
+CEDR201: identical 1 / changed 0
+CEDR204: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDR302: identical 1 / changed 0
+CEDR501: identical 11 / changed 0
+CEDT101: identical 1 / changed 0
+CEDT104: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDT208: identical 1 / changed 0
+CEDT301: identical 7 / changed 0
+CEDT404: identical 1 / changed 0
+CEDT501: identical 15 / changed 0
+CEDW101: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+CEDW501: identical 13 / changed 0
+CHFUN01: identical 1 / changed 0
+CHFUN04: identical 1 / changed 0
+CHFUN05: identical 1 / changed 0
+CHFUN06: identical 1 / changed 0
+CHFUN07: identical 1 / changed 0
+CHFUN08: identical 1 / changed 0
+CHI1003: identical 9 / changed 0
+CHI1004: identical 10 / changed 0
+CHI1005: identical 8 / changed 0
+CHWHA: identical 1 / changed 0
+COM1002: identical 9 / changed 0
+COM1005: identical 8 / changed 0
+COM1006: identical 10 / changed 0
+DAN1003: identical 10 / changed 0
+DAN1004: identical 4 / changed 0
+DAN1006: identical 4 / changed 0
+DTC1004: identical 8 / changed 0
+DTC1005: identical 21 / changed 0
+ENFUN01: identical 1 / changed 0
+ENFUN02: identical 1 / changed 0
+ENFUN03: identical 1 / changed 0
+ENFUN04: identical 1 / changed 0
+ENFUN05: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+ENFUN08: identical 1 / changed 0
+ENFUN09: identical 1 / changed 0
+ENG1004: identical 8 / changed 0
+ENG1005: identical 6 / changed 0
+ENG1007: identical 1 / changed 0
+ENGC101: identical 6 / changed 0
+ENGC102: identical 8 / changed 0
+ENGC201: identical 7 / changed 0
+ENGC202: identical 9 / changed 0
+ENGC204: identical 7 / changed 0
+ENGC206: identical 8 / changed 0
+ENGC301: identical 8 / changed 0
+ENGC302: identical 8 / changed 0
+ENGC401: identical 8 / changed 0
+ENGC403: identical 16 / changed 0
+ENGFUN02: identical 5 / changed 0
+ENGI101: identical 4 / changed 0
+ENGI102: identical 7 / changed 0
+ENGI103: identical 7 / changed 0
+ENGI201: identical 5 / changed 0
+ENGI202: identical 7 / changed 0
+ENGI203: identical 11 / changed 0
+ENGI301: identical 6 / changed 0
+ENGI302: identical 7 / changed 0
+ENGI303: identical 7 / changed 0
+ENGI400: identical 4 / changed 0
+ENGI401: identical 12 / changed 0
+ENGI405: identical 8 / changed 0
+ENGJ101: identical 5 / changed 0
+ENGJ102: identical 6 / changed 0
+ENGJ201: identical 7 / changed 0
+ENGJ202: identical 6 / changed 0
+ENGJ301: identical 8 / changed 0
+ENGJ302: identical 10 / changed 0
+ENGJ402: identical 9 / changed 0
+ENGJ403: identical 10 / changed 0
+ENGR101: identical 8 / changed 0
+ENGR102: identical 7 / changed 0
+ENGR201: identical 7 / changed 0
+ENGR202: identical 8 / changed 0
+ENGR301: identical 9 / changed 0
+ENGR302: identical 8 / changed 0
+ENGS101: identical 6 / changed 0
+ENGS102: identical 7 / changed 0
+ENGS201: identical 9 / changed 0
+ENGS202: identical 7 / changed 0
+ENGS301: identical 8 / changed 0
+ENGS302: identical 7 / changed 0
+ENGS401: identical 7 / changed 0
+ENGS404: identical 12 / changed 0
+ENGS405: identical 1 / changed 0
+ENO2060: identical 6 / changed 0
+  ~ EXBP901_3_0.html: -35 +50
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <h3>Matching goals and intentions</h3>
+     - <p>Match the learning intention to the correct learning goal.</p>
+     - <th>LEARNING GOAL</th>
+     - <th>LEARNING INTENTION</th>
+     - <td>My goal is to raise awareness of how to keep rivers clean enough to swim in.</td>
+     - <td>I am learning to clearly communicate my message about keeping rivers clean.</td>
+     - <td>My goal is to find out how to make a kite that flies well.</td>
+     - <td>I am learning about aerodynamics to work out what shapes, surface area and materials might be best for my 
+     - <td>My goal is to teach my band to play the song that I wrote.</td>
+     - <td>I am learning to work collaboratively with my band members to find out their preferred learning style.</td
+     - <td>My goal is to make it easier for people to access books that they want.</td>
+     - <td>I am learning to gather different peoples’ viewpoints to help set up a book swap.</td>
+     - <td>My goal is to calculate the area of the field I want to be replaced with astroturf, so I can get an accura
+     - <td>I am learning to calculate the area of an object.</td>
+     - <td>My goal is to use sustainable and functional materials for my kite.</td>
+     - <td>I am learning how to use a design process to work out what materials to use to create my kite.</td>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <div class="activity" number="3B">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - </table>
+     + <div class="activity interactive" number="3B">
+     + <h3>Matching goals and intentions</h3>
+     + <p>Match the learning intention to the correct learning goal.</p>
+     + <div class="dragAndDrop" layout="standard">
+     + <div class="row">
+     + <div class="col-6 questionContainer">
+     + <div class="question"><p>LEARNING GOAL</p></div>
+     + <div class="question"><p>My goal is to raise awareness of how to keep rivers clean enough to swim in.</p></div
+     + <div class="question"><p>My goal is to find out how to make a kite that flies well.</p></div>
+     + <div class="question"><p>My goal is to teach my band to play the song that I wrote.</p></div>
+     + <div class="question"><p>My goal is to make it easier for people to access books that they want.</p></div>
+     + <div class="question"><p>My goal is to calculate the area of the field I want to be replaced with astroturf, s
+     + <div class="question"><p>My goal is to use sustainable and functional materials for my kite.</p></div>
+     + </div>
+     + <div class="col-6 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + … 30 more added
+EXBP901: identical 5 / changed 1
+  ~ EXIP901_4_0.html: -52 +75
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [multiChoiceQuiz] marker — no co
+     - <h3>Look what I have completed!</h3>
+     - <p>Check off the activities you have completed in your journal. Be proud of what you have done.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Dev have a column headed ‘Completed’
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Activity:</th>
+     - <th>Completed</th>
+     - <th>I would like help</th>
+     - </tr>
+     - <tr>
+     - <td>1A Mindmap</td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td>1B My topic and essential questions</td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td>1C Designing questions</td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td>2A Learning goals</td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td>2B Learning intentions</td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td>2C Success criteria</td>
+     - <td></td>
+     - <td></td>
+     - … 12 more removed
+     + <div class="activity interactive" number="4D">
+     + <div class="row">
+     + <div class="col-12">
+     + <h3>Look what I have completed!</h3>
+     + <p>Check off the activities you have completed in your journal. Be proud of what you have done.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="EXIP901-04-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Dev have a column headed ‘Completed’
+     + <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: multiChoiceQuiz (check) — Activity 
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>Activity:</th>
+     + <th>Completed</th>
+     + <th>I would like help</th>
+     + … 55 more added
+EXIP901: identical 5 / changed 1
+EXPFUN02: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+EXPFUN04: identical 1 / changed 0
+EXPFUN05: identical 1 / changed 0
+EXPFUN06: identical 1 / changed 0
+EXPFUN07: identical 1 / changed 0
+FRFUN06: identical 10 / changed 0
+FRFUN07: identical 9 / changed 0
+FRFUN08: identical 11 / changed 0
+FRNO901: identical 9 / changed 0
+FRNO902: identical 9 / changed 0
+GENO901: identical 23 / changed 0
+GEO1004: identical 3 / changed 0
+GEO1005: identical 7 / changed 0
+GEO1006: identical 4 / changed 0
+
+TOTAL: identical 709 / changed 2 / missing 0 over 121 modules
+CHANGED: EXBP901/EXBP901_3_0.html EXIP901/EXIP901_4_0.html

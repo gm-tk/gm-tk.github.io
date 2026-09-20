@@ -827,6 +827,10 @@ class InteractiveScanner {
 
 			// ---- members: walk FORWARD until a terminator -----------------
 			bundle.endIndex = this.#swallowMembers(bundle, items, i + 1, headingTerminates, absolute, run, normaliser);
+			// ROUND 412 — THE HEADING-THEN-TABLE SHAPE AFTER AN EMPTY TYPED-WIDGET INVOCATION TAKES THE
+			// OWNER FORM (the autonomous loop's session 29, Round 3 — the r407-recorded follow-up at the
+			// NORMAL widget path). See #headingTableOwner. Data opener_rule.heading_table_owner; env HEADTABLE_OFF.
+			this.#headingTableOwner(bundle, items, i, headingTerminates, absolute, run, normaliser);
 			// GATHER THE WHOLE INFERRED SERIES, OR NONE OF IT (ROUND 303). A bare-series bundle
 			// is a guess about a widget the writer never named, so it is only worth making when
 			// the capture actually reaches the series the guess was based on. If a terminator
@@ -3034,6 +3038,97 @@ class InteractiveScanner {
 				|| pa.directive === "SECTION_MARKER" || pa.directive === "CONTAINER_CLOSE") return false;
 		}
 		return false;
+	};
+
+	/**
+	 * ROUND 412 — THE HEADING-THEN-TABLE SHAPE AFTER AN EMPTY TYPED-WIDGET INVOCATION
+	 * TAKES THE OWNER FORM (the autonomous loop's session 29, Round 3 — the follow-up
+	 * r407 recorded: "the typed-widget empty boxes — the normal path's opener + a heading").
+	 *
+	 * A task-typed invocation with no activity opener before it (`[interactive: drag and
+	 * drop]`, `[Interactive activity]`) or with its id embedded in the span
+	 * (`[Activity 2C][drag and drop]`) is followed by the writer's `[H3]` title, an
+	 * instruction paragraph and the widget's TABLE. Headings terminate the member walk, so
+	 * the bundle held only its invocation: the r401 skip_empty rendered no box, the heading
+	 * and prose shipped free and the table as a kept <table>. The gold boxes the section —
+	 * <h3> title + <p> + the BUILT widget (measured over all 494 Claude-dir modules,
+	 * outputs/_s29_r3_headwalk.cjs + _s29_r3_goldcheck.py: 31 bundles / 29 pages / 28 modules;
+	 * the gold's box on 15 of the 17 pages that carry the heading = 0.88, the widget built
+	 * inside it on 13; Standard 6 / 7, Fundamentals 11 / 12, Inquiry 1 / 1; 10 / 13 without the
+	 * September-intake WJFUN family).
+	 *
+	 * The rule fires ONLY when every one of these holds: the bundle's type is listed, it has
+	 * no owner, it captured no table and no member beyond its invocation, the walk stopped at
+	 * a listed heading, and — within max_between blank / prose / `[body]` / `[list]` /
+	 * instruction items — a TABLE follows before anything else (another opener, a marker, a
+	 * media element or a consumed item ends the look-ahead with no change). Then the bundle
+	 * becomes an OWNED bundle in the r402 `_aliasElementOwner` shape: a synthetic bare owner
+	 * (an embedded `[Activity 2C]` id keeps its number; an id-less one takes the r400
+	 * positional letter), the heading + prose become activityLeadItems (ContentConverter's
+	 * lead loop renders the <h3> title and the free prose inside the box), instruction spans
+	 * join the bundle's instructions (the red Writers Note before the widget), and the member
+	 * walk resumes AT the table so it is captured as the widget's data (the r69 / r350 / r351
+	 * dragAndDrop builders then build it). The lead items sit inside [startIndex, endIndex)
+	 * and are consumed by the caller's ownership-marking loop like every other member.
+	 *
+	 * Data: BoundaryBank._meta.opener_rule.heading_table_owner   Env: HEADTABLE_OFF
+	 *
+	 * @param {Object} bundle           - the bundle whose members were just collected
+	 * @param {Array}  items            - the page items
+	 * @param {number} i                - the invocation's index
+	 * @param {boolean} headingTerminates - the widget's heading_is_terminator flag
+	 * @param {Set}    absolute         - the absolute terminator set
+	 * @param {Object} run              - the conversion run
+	 * @param {Object} normaliser       - the tag normaliser
+	 */
+	static #headingTableOwner(bundle, items, i, headingTerminates, absolute, run, normaliser) {
+		const cfg = DataService.Data.BoundaryBank?._meta?.opener_rule?.heading_table_owner;
+		if (!cfg || cfg.enabled === false) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "HEADTABLE_OFF"]) return;
+		if (!(cfg.types ?? []).includes(bundle.type)) return;
+		if (bundle.activityOwner !== undefined || (bundle.extraTypes ?? []).length) return;
+		if ((bundle.tables ?? []).length) return;
+		const inv = items[i];
+		if ((bundle.memberItems ?? []).some((m) => m !== inv)) return;
+		const headTags = new Set((cfg.heading_tags ?? ["h1", "h2", "h3", "h4", "h5", "h6", "heading"]).map((t) => String(t).toLowerCase()));
+		const betweenTags = new Set((cfg.between_tags ?? ["body", "list"]).map((t) => String(t).toLowerCase()));
+		const maxBetween = cfg.max_between ?? 6;
+		const isBlank = (x) => x.type === "black" && !String(x.text ?? "").trim();
+		// the walk must have stopped AT a heading (blank lines aside)
+		let j = bundle.endIndex;
+		while (j < items.length && isBlank(items[j])) j++;
+		const head = items[j];
+		if (!head || head.consumedBy !== undefined || head.type !== "tag") return;
+		const hp = head.parse?.primary;
+		if (!hp || !headTags.has(String(hp.tag ?? "").toLowerCase())) return;
+		// look ahead: prose / [body] / [list] / instruction spans, then a TABLE — nothing else
+		let k = j + 1, between = 0, tIdx = -1;
+		const instr = [];
+		for (; k < items.length; k++) {
+			const x = items[k];
+			if (x.consumedBy !== undefined) return;
+			if (isBlank(x)) continue;
+			if (x.type === "table") { tIdx = k; break; }
+			if (++between > maxBetween) return;
+			if (x.type === "black" || x.type === "assettodo") continue;
+			if (x.type !== "tag") return;
+			const p = x.parse?.primary;
+			if (!p) { if (x.parse?.class === "instruction" || x.parse?.instructionFragment) instr.push(x); continue; }
+			if (p.directive === "ELEMENT" && betweenTags.has(String(p.tag ?? "").toLowerCase())) continue;
+			return;
+		}
+		if (tIdx < 0) return;
+		// the owner form: a synthetic bare owner (the r402 shape), the heading + prose as the lead,
+		// instruction spans as the bundle's instructions, the walk resumed at the table
+		bundle.activityOwner = { type: "tag", parse: { tags: [], numbers: [], primary: null }, blackAfter: "", _headTableOwner: true };
+		bundle.activityLeadItems = items.slice(j, tIdx).filter((x) => !instr.includes(x));
+		bundle._headTableOwner = true;
+		for (const x of instr) this.#collectMember(bundle, x, run);
+		bundle.endIndex = this.#swallowMembers(bundle, items, tIdx, headingTerminates, absolute, run, normaliser);
+		if (run && typeof run.AddNote === "function") {
+			run.AddNote("info", "InteractiveScanner",
+				`[${String(inv?.text ?? "").trim()}] — the heading "${String(head.blackAfter ?? normaliser?.RenderText?.(head.text) ?? "").trim().slice(0, 60)}" and its table are the widget's own (heading_table_owner).`);
+		}
 	};
 
 	/**

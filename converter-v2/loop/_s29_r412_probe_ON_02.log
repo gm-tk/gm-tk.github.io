@@ -1,0 +1,311 @@
+GER1002: identical 3 / changed 0
+GEWHA: identical 1 / changed 0
+  ~ HES1002_5_0.html: -52 +71
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <h3>How well do you know contraceptives?</h3>
+     - <p>Drag and drop the correct definition and picture to match the name of the contraceptive.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Dev] I will create a three-column ta
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Contraceptive</th>
+     - <th>Photo</th>
+     - <th>Definition</th>
+     - </tr>
+     - <tr>
+     - <td>Condoms</td>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" /><!-- <img cla
+     - <td>The male condom is a fine rubber or synthetic sheath that is worn on a stiff (erect) penis. It collects th
+     - </tr>
+     - <tr>
+     - <td>IUD</td>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" /><!-- <img cla
+     - <td>This is a small contraceptive device that is placed in your uterus. There are two kinds of intrauterine de
+     - </tr>
+     - <tr>
+     - <td>Combined pill</td>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" /><!-- <img cla
+     - <td>This pill has two hormones, which stop the ovaries releasing an egg each month. Those on the pill still bl
+     - </tr>
+     - <tr>
+     - <td>Implant</td>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" /><!-- <img cla
+     - <td>This is a small plastic rod, which is inserted underneath the skin on the inside of the upper arm. It slow
+     - </tr>
+     - <tr>
+     - <td>Contraceptive injection</td>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" /><!-- <img cla
+     - <td>This method is known as Depo Provera and is an injection of a long-acting synthetic hormone. Women have th
+     - </tr>
+     - <tr>
+     - <td>Progestogen only pill</td>
+     - <td><img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" /><!-- <img cla
+     - <td>This pill has only one hormone and works by changing the mucus at the entrance to the womb (uterus) so tha
+     - … 12 more removed
+     + <h3>How well do you know contraceptives?</h3>
+     + <p>Drag and drop the correct definition and picture to match the name of the contraceptive.</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="HES1002-04-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Dev] I will create a three-column ta
+     + <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: dragAndDrop (individual) — Activity
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>Contraceptive</th>
+     + <th>Photo</th>
+     + <th>Definition</th>
+     + </tr>
+     + <tr>
+     + <td>Condoms</td>
+     + … 51 more added
+HES1002: identical 6 / changed 1
+HES1003: identical 9 / changed 0
+HES1004: identical 5 / changed 0
+HES1005: identical 9 / changed 0
+HES1006: identical 8 / changed 0
+HES1007: identical 10 / changed 0
+HIS1001: identical 8 / changed 0
+HIS1002: identical 21 / changed 0
+HIS1003: identical 11 / changed 0
+HIS1004: identical 11 / changed 0
+HIS1005: identical 15 / changed 0
+HIS1006: identical 15 / changed 0
+HIS1007: identical 7 / changed 0
+HIS1008: identical 12 / changed 0
+HPFUN101: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN103: identical 1 / changed 0
+  ~ HPFUN201_0_0.html: -55 +74
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Interactive [interactive] reached the con
+     - <h3>What do you like?</h3>
+     - <p>Read the statements below and select ‘Yes’ if you like doing those things all time. Use ‘No’ if you don’t l
+     - <th></th>
+     - <th> Tick box or drop-down menu – Yes, Sometimes, No </th>
+     - <td>Spending time with family.</td>
+     - <td>Making something creative.</td>
+     - <td>Talking to others about how you are feeling.</td>
+     - <td>Caring for pets or younger or older family members.</td>
+     - <td>Moving your body by dancing, playing sports or other activities.</td>
+     - <td>Hanging out with friends.</td>
+     - <td><a href="https://www.istockphoto.com/vector/cute-kids-surfing-internet-vector-gm1540876463-525766078" targ
+     - (not found, replaced: <a href="https://www.istockphoto.com/vector/boy-using-laptop-gm166081988-20880062" targe
+     - <td>Preparing kai (food) for your whānau.</td>
+     - <td>Setting yourself goals or targets to achieve.</td>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td></td>
+     - </tr>
+     - <tr>
+     - <td></td>
+     - </tr>
+     - … 15 more removed
+     + <h3>What do you like?</h3>
+     + <p>Read the statements below and select ‘Yes’ if you like doing those things all time. Use ‘No’ if you don’t l
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="HPFUN201-00-05" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: interactive — Activity (inline) — se
+     + <th></th>
+     + <th> Tick box or drop-down menu – Yes, Sometimes, No </th>
+     + <td> [Insert media item 39] <a href="https://www.istockphoto.com/vector/happy-big-family-with-children-parents
+     + <td></td>
+     + <td> [Insert media item 40] / <a href="https://www.istockphoto.com/vector/top-view-of-kid-cutting-paper-gm1454
+     + <td></td>
+     + <td> [Insert media item 41] / <a href="https://www.istockphoto.com/vector/cute-kid-face-expression-emoji-emoti
+     + <td></td>
+     + <td> [Insert media item 42] / <a href="https://www.istockphoto.com/vector/bath-time-gm1353545674-428612241" ta
+     + <td></td>
+     + <td> [Insert media item 43] / <a href="https://www.istockphoto.com/vector/swimming-board-gm1856943158-55229071
+     + <td></td>
+     + <td> [Insert media item 44] <a href="https://www.istockphoto.com/vector/little-kid-on-wheelchair-play-toy-with
+     + <td></td>
+     + … 54 more added
+HPFUN201: identical 0 / changed 1
+HPFUN202: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+  ~ HPFUN302_0_0.html: -46 +54
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <h3>Best materials for making your own sports equipment</h3>
+     - <p>Match the correct materials to use for the sport.</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Sport</th>
+     - <th>Best materials to use</th>
+     - </tr>
+     - <tr>
+     - <td>Mini soccer</td>
+     - <td>Rolled-up socks, soft foam balls, cardboard boxes, plastic containers.</td>
+     - </tr>
+     - <tr>
+     - <td>Volleyball</td>
+     - <td>Balloon, string or tape, chairs or broomsticks for net posts.</td>
+     - </tr>
+     - <tr>
+     - <td>Frisbee</td>
+     - <td>Plastic lids, sturdy paper plates, thin cardboard circles.</td>
+     - </tr>
+     - <tr>
+     - <td>Ten pin bowling</td>
+     - <td>Empty bottles or cans, soft ball, rolled-up socks.</td>
+     - </tr>
+     - <tr>
+     - <td>Obstacle course</td>
+     - <td>Cushions, chairs, boxes, broomsticks, tape, towels.</td>
+     - </tr>
+     - <tr>
+     - <td>Target throw</td>
+     - <td>Buckets, hoops, boxes, bean bags, soft balls, scrunched paper.</td>
+     - </tr>
+     - <tr>
+     - <td>Bat and ball game</td>
+     - <td>Wooden spoon or cardboard bat, soft ball, paper ball.</td>
+     - </tr>
+     - <tr>
+     - <td>Beam</td>
+     - <td>Rolled-up towel, long cardboard tube, tape line on the floor.</td>
+     - … 6 more removed
+     + <div class="activity interactive">
+     + <h3>Best materials for making your own sports equipment</h3>
+     + <p>Match the correct materials to use for the sport.</p>
+     + <div class="dragAndDrop" layout="standard">
+     + <div class="row">
+     + <div class="col-6 questionContainer">
+     + <div class="question"><p>Sport</p></div>
+     + <div class="question"><p>Mini soccer</p></div>
+     + <div class="question"><p>Volleyball</p></div>
+     + <div class="question"><p>Frisbee</p></div>
+     + <div class="question"><p>Ten pin bowling</p></div>
+     + <div class="question"><p>Obstacle course</p></div>
+     + <div class="question"><p>Target throw</p></div>
+     + <div class="question"><p>Bat and ball game</p></div>
+     + <div class="question"><p>Beam</p></div>
+     + <div class="question"><p>Creative dance</p></div>
+     + <div class="col-6 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + … 34 more added
+HPFUN302: identical 0 / changed 1
+HPFUN303: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+HPRE203: identical 8 / changed 0
+JPFUN01: identical 1 / changed 0
+JPFUN02: identical 1 / changed 0
+JPN1004: identical 11 / changed 0
+MUS1004: identical 11 / changed 0
+MUS1006: identical 4 / changed 0
+MXDB102: identical 12 / changed 0
+MXDB201: identical 7 / changed 0
+MXDB202: identical 6 / changed 0
+MXDB301: identical 8 / changed 0
+MXDB302: identical 10 / changed 0
+MXDI101: identical 11 / changed 0
+MXDI102: identical 5 / changed 0
+MXDI103: identical 10 / changed 0
+MXDI201: identical 11 / changed 0
+MXDI202: identical 12 / changed 0
+MXDI301: identical 5 / changed 0
+MXEO102: identical 5 / changed 0
+MXEO201: identical 10 / changed 0
+MXEO202: identical 9 / changed 0
+MXEO301: identical 11 / changed 0
+MXEO401: identical 7 / changed 0
+MXEX101: identical 7 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX202: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+MXEX302: identical 8 / changed 0
+MXEX401: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+MXFL102: identical 9 / changed 0
+MXFL103: identical 8 / changed 0
+MXFL104: identical 6 / changed 0
+MXFL201: identical 10 / changed 0
+MXFL202: identical 6 / changed 0
+MXFL203: identical 12 / changed 0
+MXFL204: identical 12 / changed 0
+MXFL301: identical 10 / changed 0
+MXFL302: identical 10 / changed 0
+MXFL401: identical 8 / changed 0
+MXFU201: identical 10 / changed 0
+MXFU202: identical 11 / changed 0
+MXFU301: identical 12 / changed 0
+MXFU302: identical 10 / changed 0
+MXFU401: identical 7 / changed 0
+MXFU402: identical 8 / changed 0
+MXFUN01: identical 19 / changed 0
+MXFUN02: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+MXS1004: identical 9 / changed 0
+OSAH301: identical 4 / changed 0
+OSAH401: identical 5 / changed 0
+OSAH501: identical 6 / changed 0
+OSAI101: identical 3 / changed 0
+OSAI201: identical 4 / changed 0
+OSAI301: identical 4 / changed 0
+OSAI401: identical 5 / changed 0
+OSAI501: identical 6 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY201: identical 4 / changed 0
+OSBY301: identical 4 / changed 0
+OSBY401: identical 5 / changed 0
+OSBY501: identical 6 / changed 0
+OSGM101: identical 3 / changed 0
+OSGM201: identical 4 / changed 0
+OSGM301: identical 4 / changed 0
+OSGM401: identical 5 / changed 0
+OSGM501: identical 6 / changed 0
+OSOH101: identical 4 / changed 0
+OSOH201: identical 4 / changed 0
+OSOH301: identical 4 / changed 0
+OSOH401: identical 5 / changed 0
+OSOH501: identical 6 / changed 0
+OSSC301: identical 4 / changed 0
+OSSC401: identical 5 / changed 0
+OSSC501: identical 6 / changed 0
+OSSM301: identical 5 / changed 0
+OSSM401: identical 5 / changed 0
+PES1001: identical 10 / changed 0
+PES1002: identical 11 / changed 0
+PES1003: identical 11 / changed 0
+PES1004: identical 11 / changed 0
+PES1005: identical 12 / changed 0
+PES1007: identical 12 / changed 0
+PES1008: identical 19 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1004: identical 4 / changed 0
+
+TOTAL: identical 813 / changed 3 / missing 0 over 119 modules
+CHANGED: HES1002/HES1002_5_0.html HPFUN201/HPFUN201_0_0.html HPFUN302/HPFUN302_0_0.html

@@ -1,0 +1,77 @@
+
+==== (A) CLAUDE BREAKS a row after block L — does the gold flow? ====
+
+-- ALL --
+   activity       gold-disagrees    2 / agrees    0 = 1.00  pages 2 / mods 2  [opener=139 no-text=8 gold-nowhere=4]
+   video          gold-disagrees    1 / agrees    0 = 1.00  pages 1 / mods 1  [opener=43]
+   alert.solid    gold-disagrees    1 / agrees    3 = 0.25  pages 1 / mods 1  [opener=29 no-text=1]
+   p              gold-disagrees    0 / agrees    8 = 0.00  pages 0 / mods 0  [opener=411 gold-nowhere=17 no-text=8]
+   WIDGET         gold-disagrees    0 / agrees    2 = 0.00  pages 0 / mods 0  [opener=65 gold-nowhere=1]
+   alert          gold-disagrees    0 / agrees    1 = 0.00  pages 0 / mods 0  [opener=7 gold-nowhere=2]
+   h3             gold-disagrees    0 / agrees    1 = 0.00  pages 0 / mods 0  [opener=31 gold-nowhere=1]
+
+-- template=Standard --
+   activity       gold-disagrees    2 / agrees    0 = 1.00    [opener=139 no-text=8 gold-nowhere=4]
+   video          gold-disagrees    1 / agrees    0 = 1.00    [opener=43]
+   alert.solid    gold-disagrees    1 / agrees    3 = 0.25    [opener=29 no-text=1]
+   p              gold-disagrees    0 / agrees    8 = 0.00    [opener=411 gold-nowhere=17 no-text=8]
+   WIDGET         gold-disagrees    0 / agrees    2 = 0.00    [opener=65 gold-nowhere=1]
+   alert          gold-disagrees    0 / agrees    1 = 0.00    [opener=7 gold-nowhere=2]
+   h3             gold-disagrees    0 / agrees    1 = 0.00    [opener=31 gold-nowhere=1]
+
+-- template=Inquiry --
+
+-- template=Fundamentals --
+
+-- template=Bilingual --
+   subject groups with ≥ 0.60 disagree on ≥ 10 boundaries:
+   examples:
+
+==== (B) CLAUDE FLOWS after block X — does the gold break? ====
+
+-- ALL --
+   h3             gold-disagrees   33 / agrees   93 = 0.26  pages 26 / mods 10  [gold-nowhere=215]
+   WIDGET         gold-disagrees   25 / agrees    3 = 0.89  pages 18 / mods 7  [gold-nowhere=17 no-text=4]
+   img            gold-disagrees   22 / agrees   25 = 0.47  pages 13 / mods 8  [gold-nowhere=112 no-text=31]
+   p              gold-disagrees   20 / agrees  287 = 0.07  pages 16 / mods 11  [gold-nowhere=1461]
+   alert          gold-disagrees   14 / agrees    4 = 0.78  pages 13 / mods 5  [gold-nowhere=2]
+   list           gold-disagrees   13 / agrees   21 = 0.38  pages 6 / mods 5  [gold-nowhere=89]
+   table          gold-disagrees    3 / agrees    7 = 0.30  pages 3 / mods 3  [gold-nowhere=19]
+   video          gold-disagrees    2 / agrees    5 = 0.29  pages 2 / mods 2  [gold-nowhere=24 no-text=1]
+   h5             gold-disagrees    2 / agrees   16 = 0.11  pages 1 / mods 1  [gold-nowhere=36]
+   div            gold-disagrees    2 / agrees    0 = 1.00  pages 2 / mods 2  [gold-nowhere=1]
+   h4             gold-disagrees    1 / agrees   22 = 0.04  pages 1 / mods 1  [gold-nowhere=49]
+   a              gold-disagrees    0 / agrees    4 = 0.00  pages 0 / mods 0  [gold-nowhere=62]
+   alert.solid    gold-disagrees    0 / agrees    2 = 0.00  pages 0 / mods 0  [gold-nowhere=7]
+   audio          gold-disagrees    0 / agrees    1 = 0.00  pages 0 / mods 0  [gold-nowhere=1]
+
+-- template=Standard --
+   h3             gold-disagrees   33 / agrees   93 = 0.26    [gold-nowhere=215]
+   WIDGET         gold-disagrees   25 / agrees    3 = 0.89    [gold-nowhere=17 no-text=4]
+   img            gold-disagrees   22 / agrees   25 = 0.47    [gold-nowhere=112 no-text=31]
+   p              gold-disagrees   20 / agrees  287 = 0.07    [gold-nowhere=1461]
+   alert          gold-disagrees   14 / agrees    4 = 0.78    [gold-nowhere=2]
+   list           gold-disagrees   13 / agrees   21 = 0.38    [gold-nowhere=89]
+   table          gold-disagrees    3 / agrees    7 = 0.30    [gold-nowhere=19]
+   video          gold-disagrees    2 / agrees    5 = 0.29    [gold-nowhere=24 no-text=1]
+   h5             gold-disagrees    2 / agrees   16 = 0.11    [gold-nowhere=36]
+   div            gold-disagrees    2 / agrees    0 = 1.00    [gold-nowhere=1]
+   h4             gold-disagrees    1 / agrees   22 = 0.04    [gold-nowhere=49]
+   a              gold-disagrees    0 / agrees    4 = 0.00    [gold-nowhere=62]
+   alert.solid    gold-disagrees    0 / agrees    2 = 0.00    [gold-nowhere=7]
+   audio          gold-disagrees    0 / agrees    1 = 0.00    [gold-nowhere=1]
+
+-- template=Inquiry --
+
+-- template=Fundamentals --
+
+-- template=Bilingual --
+   subject groups with ≥ 0.60 disagree on ≥ 10 boundaries:
+     tmpl+subj=Standard/NCEA1 WIDGET: 25 / 3 = 0.89
+     tmpl+subj=Standard/NCEA1 alert: 14 / 4 = 0.78
+   examples:
+     p: CBI1004_1_0 X=«Characteristics» Y=«Decide whether these characteristic» | CBI1004_5_0 X=«Humans have about 20,000 genes. The» Y=«Label this diagram by dragging and » | CBI1004_9_0 X=«In , only one parent is needed to m» Y=«Asexual reproduction is often used » | CBI1008_2_0 X=«The formed by combustion is also es» Y=«However, elevated levels of carbon »
+     img: CBI1004_3_0 X=«img.img-fluid» Y=«This video describes the structure » | CBI1004_6_0 X=«img.img-fluid» Y=«Genes are usually given a letter fo» | CBI1008_1_0 X=«img.img-fluid» Y=«Diamond» | COM1006_5_0 X=«img.img-fluid» Y=«This decrease in the money flow can»
+     h3: CBI1004_6_0 X=«Genotypes and phenotypes» Y=«We have two alleles for each charac» | CBI1004_7_0 X=«Genetic variation and conservation» Y=«Some species have low genetic varia» | CBI1004_9_0 X=«Fertilisation» Y=«Fertilisation is when an egg cell a» | COM1005_7_0 X=«TYPES OF MARKETS» Y=«MARKETS»
+     WIDGET: DTC1005_18_0 X=«WIDGET» Y=«Remember that the exact steps may v» | DTC1005_19_0 X=«WIDGET» Y=«By completing these pre-editing ste» | DTC1005_19_0 X=«WIDGET» Y=«Keep in mind that these settings ar» | MUS1004_5_0 X=«WIDGET» Y=«Test yourself. This link takes you »
+     alert: PWY1001_2_2_0 X=«div.alert» Y=«Common types of disciplinary action» | PWY1002_1_3_0 X=«div.alert» Y=«Here is an example of a positive at» | PWY1002_3_3_0 X=«div.alert» Y=«If you want to learn more, visit th» | PWY1002_4_0 X=«div.alert» Y=«Congratulations! You have completed»

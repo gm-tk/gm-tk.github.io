@@ -1,0 +1,31 @@
+AGH1004	6.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«From Grass to Glass»
+AGH1006	8.0	dragAndDrop   	GOLD head:ABSENT                                 	CLAUDE head:h4 act:out next:table	«Compare the advantages and disadvantages»
+AGH1009	4.0	unclassified  	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«Good or poor-quality water?»
+CEDR501	5.0	flipCard      	GOLD head:ABSENT                                 	CLAUDE head:ABSENT	«»
+CHFUN05	0.0	flipCard      	GOLD head:ABSENT                                 	CLAUDE head:ABSENT	«»
+DAN1004	1.0	unclassified  	GOLD head:ABSENT                                 	CLAUDE head:ABSENT	«»
+EXBP901	3.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«Matching goals and intentions»
+EXIP901	4.0	unclassified  	GOLD head:ABSENT                                 	CLAUDE head:h3 act:out next:table	«Match the learning intention to the lear»
+EXIP901	4.0	multiChoiceQuiz	GOLD head:h3 act:IN next:neither                 	CLAUDE head:h3 act:out next:table	«Look what I have completed!»
+HES1002	5.0	dragAndDrop   	GOLD head:ABSENT                                 	CLAUDE head:h3 act:out next:table	«How well do you know contraceptives?»
+HPFUN102	0.0	unclassified  	GOLD head:h3 act:IN next:neither                 	CLAUDE head:h3 act:out next:table	«Let’s go hunting!»
+HPFUN201	0.0	unclassified  	GOLD head:h3 act:out next:widget:dropQuiz        	CLAUDE head:h3 act:out next:table	«Reflecting on your qualities»
+HPFUN302	0.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«Best materials for making your own sport»
+HPFUN402	0.0	unclassified  	GOLD head:h3 act:IN next:widget:reorder          	CLAUDE head:h3 act:out next:table	«Sports and the equipment required for th»
+SCES201	3.0	dragAndDrop   	GOLD head:h3 act:out next:widget:dragAndDrop     	CLAUDE head:h3 act:out next:table	«Matariki around the world»
+TEDC401	2.0	dragAndDrop   	GOLD head:ABSENT                                 	CLAUDE head:h3 act:out next:table	«Design principles identified (label)»
+TEDC401	6.0	dropDown      	GOLD head:h3 act:IN next:widget:selectionBox     	CLAUDE head:h3 act:out next:table	«**Share your learning**»
+TEDC402	8.0	unclassified  	GOLD head:h3 act:IN next:table                   	CLAUDE head:h3 act:out next:neither	«**Quick check + reflection**»
+TEFUN05	0.0	carousel      	GOLD head:ABSENT                                 	CLAUDE head:ABSENT	«»
+TEFUN06	0.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«Make it last»
+TWHA902	0.0	unclassified  	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h2 act:out next:table	«Understanding body language»
+TWHA904	0.0	dragAndDrop   	GOLD head:ABSENT                                 	CLAUDE head:h4 act:out next:table	«Essential questions»
+TWHA905	0.0	dragAndDrop   	GOLD head:ABSENT                                 	CLAUDE head:h4 act:out next:table	«Essential questions»
+WJFUN110	0.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«Guess the audience»
+WJFUN110	0.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«Which Kea?»
+WJFUN208	0.0	dropDown      	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«Which word would a writer choose?»
+WJFUN211	0.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«Sort the feature»
+WJFUN212	0.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:tabs             	CLAUDE head:h3 act:out next:table	«Choosing descriptive words»
+WJFUN305	0.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«Matching Form, Genre and Style»
+WJFUN307	0.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«Choosing the best thesaurus suggestion»
+XGF9003	1.0	dragAndDrop   	GOLD head:ABSENT                                 	CLAUDE head:h4 act:out next:table	«Prioritise the tasks»

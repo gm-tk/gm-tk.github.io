@@ -1,0 +1,378 @@
+AGH1002	3.0	multiChoiceQuiz	h p p p e p p p		«[Interactive: Quiz]»	after«»	cell0«»
+AGH1004	6.0	dragAndDrop	h p T		«[interactive: flowchart drag and drop]»	after«»	cell0«»
+AGH1005	2.0	dropDown	h h p p p p p p		«[interactive: Drop down menu]»	after«»	cell0«»
+AGH1006	2.0	dragAndDrop	h X		«[interactive: sentence drag and drop or drop-down »	after«»	cell0«»
+AGH1006	4.0	dragAndDrop	h p e p p X		«[interactive: See drag and drop activity below] *N»	after«»	cell0«»
+AGH1006	5.0	dragAndDrop	h p p e h p p p		«[interactive: drag and drop] (Merged content: HTO1»	after«»	cell0«»
+AGH1006	8.0	dragAndDrop	h T		«[interactive: Drag and drop]»	after«»	cell0«»
+AGH1008	5.0	interactive	h p h p h p p p		«[Interactive]»	after«Click on the heading to get th»	cell0«»
+AGH1009	4.0	unclassified	h p p T		«[Activity: Embedded]»	after«»	cell0«»
+AGH1009	6.0	dragAndDrop	X		«[interactive: drag and drop]»	after«Place these green manure and b»	cell0«»
+ANZH103	1.0	unclassified	h p p p p p p h		«[Activity: embedded]»	after«Map of Aotearoa with drag and »	cell0«»
+ANZH104	6.0	dragAndDrop	X		«[Interactive: Drag and Drop]»	after«»	cell0«»
+ANZH105	1.0	accordion	X		«[Activity: Embedded – Accordion]»	after«»	cell0«»
+ANZH205	1.0	dragAndDrop	X		«[Activity: Embedded – Vertical Drag and Drop]»	after«»	cell0«»
+ANZH205	6.0	carousel	X		«[PDF slideshow and Audio player from TKI]»	after«Te Tiriti o Waitangi (Pages 10»	cell0«»
+ANZH303	1.0	multiChoiceQuiz	h p X		«[Go to quiz]»	after«»	cell0«»
+ANZH401	1.0	multiChoiceQuiz	X		«[Add button- Quiz]»	after«Go to quiz button»	cell0«»
+ANZH401	1.0	dragAndDrop	X		«[Answers for the Drag and Drop Activity] “Who is i»	after«»	cell0«»
+ANZH401	6.0	multiChoiceQuiz	X		«[Add button- Quiz]»	after«Go to quiz button»	cell0«»
+ANZHFUN05	0.0	dropDown	X		«[Dropbox]»	after«Upload to the dropbox»	cell0«»
+ARFUN01	0.0	dropDown	X		«[Drop down text for image one]»	after«Banksy is a famous artist who »	cell0«»
+ARFUN02	0.0	carousel	X		«[Insert an image or series of images relating to a»	after«»	cell0«»
+ARFUN04	0.0	clickDrop	e h p I p p p h		«[create click and drop] [H3]»	after«**Watch** Watch this video abo»	cell0«»
+ARFUN04	0.0	clickDrop	e X		«[create click and drop] [H3]»	after«**Watch** Watch this video abo»	cell0«»
+BLL113	1.0	dragAndDrop	X		«[drop and drag] Can we make something like this pl»	after«»	cell0«»
+BLL114	1.0	dragAndDrop	X		«[drag and drop]»	after«»	cell0«»
+BLL115	1.0	dragAndDrop	X		«[drop and drag] Can we make something like this pl»	after«»	cell0«»
+BLL123	1.0	dropDown	E		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL123	2.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL124	1.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL124	1.0	dropDown	E		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL124	2.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL131	1.0	dragAndDrop	X		«[drop and drag] Can we make something like this pl»	after«»	cell0«»
+BLL141	1.0	dropDown	E		«[Dropbox to trigger engagement]»	after«»	cell0«»
+BLL141	2.0	dropDown	X		«[Dropbox to trigger engagement]»	after«»	cell0«»
+BLL143	1.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL143	1.1	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL143	1.1	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL144	1.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL146	2.0	dropDown	X		«[Dropbox to trigger engagement]»	after«»	cell0«»
+BLL147	1.1	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL147	1.1	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL151	2.0	dropDown	X		«[Dropbox to trigger engagement]»	after«»	cell0«»
+BLL153	1.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL153	1.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL154	1.1	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL154	1.1	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL155	1.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL155	1.0	dropDown	E		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL161	1.0	dropDown	E		«[Dropbox to trigger engagement]»	after«»	cell0«»
+BLL163	1.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL163	1.1	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL164	1.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL165	1.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL165	1.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL171	1.0	dropDown	E		«[Dropbox to trigger engagement]»	after«»	cell0«»
+BLL175	1.1	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL176	1.1	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL212	1.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL212	2.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL214	1.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»
+BLL224	2.0	dropDown	X		«[Dropbox to trigger engagement]»	after«»	cell0«»
+BLL231	2.0	dropDown	X		«[Dropbox to trigger engagement]»	after«»	cell0«»
+BLL232	2.0	dropDown	X		«[Dropbox to trigger engagement]»	after«»	cell0«»
+BLL237	1.0	dropDown	X		«[Dropbox to trigger engagement]»	after«»	cell0«»
+BLL262	1.0	dropDown	X		«[Dropbox to trigger engagement]»	after«»	cell0«»
+BLL262	3.0	dropDown	X		«[Dropbox to trigger engagement]»	after«»	cell0«»
+BLL262	3.0	dropDown	X		«Dropbox to trigger engagement]»	after«»	cell0«»
+BLL263	3.0	dropDown	X		«[Dropbox to trigger engagement]»	after«»	cell0«»
+BLL263	3.0	dropDown	X		«[Dropbox to trigger engagement]»	after«»	cell0«»
+BLLR201	1.1	clickDrop	X		«[clickdrop 1]»	after«The 13-Storey Treehouse»	cell0«»
+BLLR201	1.1	clickDrop	X		«[clickdrop 2]»	after«*Detective Beans and the Case »	cell0«»
+BLLR201	1.1	clickDrop	X		«[clickdrop 3]»	after«*Animals of Aotearoa*»	cell0«»
+BLLR201	1.1	clickDrop	X		«[clickdrop 4]»	after«The Observologist»	cell0«»
+CEDO301	3.0	carousel	X		«[Slideshow] [Video]»	after«Media item numbers 15, 16, 17,»	cell0«»
+CEDR302	0.0	dropDown	h p p p p p p p		«[Keep the dropdown]»	after«»	cell0«»
+CEDR501	5.0	flipCard	T		«[Flipcards]»	after«»	cell0«»
+CEDT104	0.0	dropDown	h ?		«Please create a dropdown menu for each item]»	after«»	cell0«»
+CEDT104	0.0	dropDown	h p X		«[Please insert a Dropbox]»	after«»	cell0«»
+CEDT104	0.0	selectionBox	X		«[Please insert tick boxes] [earn a star ⭐️]»	after«»	cell0«»
+CEDT104	0.0	dropDown	h p p I p p I p		«[Dropbox link]»	after«»	cell0«»
+CEDT501	7.0	dropDown	h p p p p p p p		«[Upload to dropbox]»	after«»	cell0«»
+CEDW501	6.0	dropDown	X		«[Upload to Dropbox]»	after«Upload to dropbox»	cell0«»
+CHFUN05	0.0	flipCard	T		«[flipcard] [body]»	after«Click on the card to turn the »	cell0«»
+CHI1005	7.0	dropDown	E		«[insert dropbox icon]»	after«»	cell0«»
+CHWHA	0.0	typing	X		«[self-check model answers]»	after«There are **1.4 billion people»	cell0«»
+COM1002	2.0	dropDown	h p I I I I p I		«[Please create an onscreen fill the gap activity. »	after«»	cell0«»
+COM1005	3.0	multiChoiceQuiz	X		«[Quiz 3A]»	after«Select whether the following s»	cell0«»
+COM1006	3.0	multiChoiceQuiz	X		«[Activity 2A- Self check multichoice]»	after«Select the most appropriate an»	cell0«»
+DAN1003	1.0	unclassified	h p ?		«[Interactive Activity]»	after«»	cell0«»
+DAN1004	1.0	unclassified	h p T		«[Interactive Activity]»	after«»	cell0«»
+DAN1004	2.0	carousel	X		«[Carousel slideshow]»	after«»	cell0«»
+DTC1004	2.0	dropDown	E		«[Drop Box] –»	after«Working towards DTC1004 – Jour»	cell0«»
+DTC1005	17.0	dropDown	h p h p h p p h		«[Dropdown]»	after«»	cell0«»
+ENG1004	0.0	dropDown	X		«[Button – ENG1004 Working towards dropbox]»	after«»	cell0«»
+ENG1004	1.0	dropDown	X		«[Button – ENG1004 Working towards dropbox]»	after«»	cell0«»
+ENG1004	2.0	dropDown	X		«[Button – ENG1004 Working towards dropbox]»	after«»	cell0«»
+ENG1005	0.0	dropDown	X		«[Button – ENG1005 Working towards dropbox]»	after«»	cell0«»
+ENG1005	1.0	dropDown	h p e		«[Button – ENG1005 Working towards dropbox]»	after«»	cell0«»
+ENG1005	2.0	dropDown	h p e		«[Button – ENG1005 Working towards dropbox]»	after«»	cell0«»
+ENGC102	4.0	dragAndDrop	X		«[drag and drop] Are we able to take the captions o»	after«»	cell0«»
+ENGC201	3.0	multiChoiceQuiz	E		«[quiz]»	after«https://docs.google.com/docume»	cell0«»
+ENGC204	3.0	multiChoiceQuiz	E		«[quiz link]»	after«https://docs.google.com/docume»	cell0«»
+ENGC204	4.0	dropDown	X		«[upload to dropbox]»	after«»	cell0«»
+ENGC204	4.0	dropDown	X		«[upload to dropbox]»	after«»	cell0«»
+ENGC204	4.0	dropDown	E		«[go to dropbox]»	after«»	cell0«»
+ENGC206	6.0	carousel	X		«[Insert original Lesson 5 Pūha slideshow with audi»	after«»	cell0«»
+ENGC401	7.0	dropDown	E		«[dropbox]»	after«Upload to dropbox»	cell0«»
+ENGC403	1.0	dropDown	E		«[insert Dropbox formative work add audio visual op»	after«»	cell0«»
+ENGC403	2.0	dropDown	h		«] [insert dropbox formative assessment include aud»	after«»	cell0«»
+ENGI103	6.0	dropDown	E		«[upload to dropbox]»	after«»	cell0«»
+ENGI301	5.0	dropDown	E		«[upload to dropbox]»	after«»	cell0«»
+ENGI302	6.0	dropDown	E		«[link to dropbox]»	after«Go to dropbox»	cell0«»
+ENGI303	3.0	dropDown	E		«[go to dropbox]»	after«»	cell0«»
+ENGI303	5.0	typing	X		«[Typing quiz standard autocheck] possible answers:»	after«»	cell0«»
+ENGI405	5.0	dropDown	X		«[dropbox button]»	after«Working towards»	cell0«»
+ENGJ202	5.0	dropDown	E		«[link to dropbox]»	after«Go to dropbox»	cell0«»
+ENGJ302	9.0	dropDown	E		«[Upload to dropbox]»	after«»	cell0«»
+ENGJ402	1.0	modal	p		«[If correct please let the person know by having ‘»	after«»	cell0«»
+ENGJ403	6.0	dropDown	h		«[add a button to the working towards dropbox – for»	after«»	cell0«»
+ENGR201	4.0	modal	X		«[modal]»	after«Graph information https://driv»	cell0«»
+ENGR201	6.0	dropDown	X		«[upload to dropbox] [Engagement trigger]»	after«»	cell0«»
+ENGR302	4.0	modal	X		«[Modal 1]»	after«Equivalent fFractions revisite»	cell0«»
+ENGS102	1.0	dropDown	E		«[go to dropbox]»	after«»	cell0«»
+ENGS102	2.0	modal	h p p p e I X		«[modal]»	after«https://www.youtube.com/watch?»	cell0«»
+ENGS102	3.0	dropDown	E		«[upload to dropbox]»	after«»	cell0«»
+ENGS102	6.0	dropDown	E		«[upload to dropbox] Engagement trigger»	after«»	cell0«»
+ENGS201	3.0	modal	X		«(please ensure this stands out) [modal] Insert Rea»	after«https://tekura.desire2learn.co»	cell0«»
+ENGS201	7.0	dropDown	E		«[upload to dropbox]»	after«»	cell0«»
+ENGS301	7.0	dropDown	X		«[upload to dropbox]»	after«»	cell0«»
+ENGS401	1.0	dropDown	E		«[upload to dropbox]»	after«»	cell0«»
+ENGS401	5.0	modal	X		«[Modal] [video]»	after«https://www.youtube.com/watch?»	cell0«»
+ENGS404	8.0	dropDown	h		«[add a button to the working towards dropbox- form»	after«»	cell0«»
+ENGS404	9.0	dropDown	h e p		«[add a button to the working towards dropbox- form»	after«»	cell0«»
+ENO2060	3.0	carousel	X		«[insert video carousel with text above video]»	after«»	cell0«»
+ENO2060	8.0	dropDown	E		«[button] Upload to assessment dropbox [include fin»	after«»	cell0«»
+EXBP901	3.0	dragAndDrop	h p T		«[Interactive drag and drop]»	after«»	cell0«»
+EXIP901	2.0	multiChoiceQuiz	h p I p p p p I		«[Quiz – not teacher graded]»	after«»	cell0«»
+EXIP901	4.0	dropDown	h e p p e X		«[button to dropbox]»	after«Upload your journal.»	cell0«»
+EXIP901	4.0	unclassified	h p T		«[Activity] Drag and drop [Dev – in the table below»	after«»	cell0«»
+EXIP901	4.0	multiChoiceQuiz	h p I T		«[Quiz – check box]»	after«»	cell0«»
+FRFUN06	1.0	multiChoiceQuiz	h p p ?		«[multichoice checklist autocheck]»	after«**bonjour nom maman rose son p»	cell0«»
+FRFUN07	3.0	dragAndDrop	X		«[Drag and drop column autocheck]»	after«»	cell0«»
+GENO901	1.0	dragAndDrop	X		«[1D Drag and Drop Activity with questions and answ»	after«1D Greetings “Eintopf”»	cell0«»
+GENO901	2.1	dragAndDrop	p p p X		«[Drag and drop activity]»	after«2E Read the mini dialogues.»	cell0«»
+GENO901	3.3	typing	h e		«[Placeholder Link to Fundamental GEFUN03 typing sp»	after«»	cell0«»
+GENO901	5.2	typing	X		«[typing self-check] 5F»	after«5F Writing practice»	cell0«»
+GER1002	2.0	selectionBox	X		«[in the tick list, correct to this: all words in i»	after«»	cell0«»
+GEWHA	0.0	dropDown	X		«[Dropbox button]»	after«Upload it to the dropbox»	cell0«»
+HES1002	1.0	dropDown	X		«[Text for the dropdown]»	after«»	cell0«»
+HES1002	5.0	dragAndDrop	h p I T		«[Individual activity] [Drag and drop]»	after«»	cell0«»
+HES1005	7.0	modal	X		«[M Modal] [Insert media item 49]»	after«Contraceptive Methods»	cell0«»
+HES1005	7.0	dragAndDrop	E		«[Drag and Drop Activity] [Media Item 54]»	after«»	cell0«»
+HES1006	7.0	clickDrop	X		«[Click drop] [Heading for tab]»	after«Food and nutrition»	cell0«»
+HES1006	7.0	clickDrop	X		«[Click drop] [Heading for tab]»	after«Sexuality and Relationships»	cell0«»
+HES1006	7.0	clickDrop	X		«[Click drop] [Heading for tab]»	after«Mental Health»	cell0«»
+HIS1001	0.0	multiChoiceQuiz	E		«[Image to go in the right-hand column beside the m»	after«»	cell0«»
+HIS1002	11.0	modal	h p e I p X		«[Please insert a full width modal box with the sou»	after«»	cell0«»
+HIS1002	11.0	modal	h p e I p X		«[Please insert a full-width modal box with the sou»	after«»	cell0«»
+HIS1003	7.0	interactive	X		«[Interactive] Please create a button with link to »	after«**Audio of Toby Hill:** https:»	cell0«»
+HIS1003	7.0	interactive	X		«[Interactive] Please create a button to take stude»	after«: https://docs.google.com/docu»	cell0«»
+HIS1005	2.0	interactive	e h p p X		«[Interactive]»	after«please embed this video with a»	cell0«»
+HPFUN102	0.0	unclassified	h p T		«[Activity] Tick box – scavenger hunt. Can you plea»	after«»	cell0«»
+HPFUN201	0.0	unclassified	h p I T		«[Interactive activity]»	after«»	cell0«»
+HPFUN302	0.0	dragAndDrop	h p T		«[Drag and drop]»	after«»	cell0«»
+HPFUN402	0.0	unclassified	h p I T		«[Activity] Drag and drop»	after«»	cell0«»
+HPRE203	7.0	dropDown	h p p p e e p p		«[dropbox]»	after«»	cell0«»
+JPN1004	3.0	typing	X		«[Self-check Typing Short Answers]»	after«»	cell0«»
+JPN1004	5.0	selfCheck	X		«[MTK Quiz –Auto check]»	after«»	cell0«»
+JPN1004	6.0	typing	X		«[Typing Sentences Quiz Auto Check]»	after«»	cell0«»
+JPN1004	6.0	typing	X		«[Typing Quiz Paragraph Auto Check]»	after«»	cell0«»
+JPN1004	9.0	dropDown	X		«[Dropdown Quiz – auto Check]»	after«»	cell0«»
+MUS1006	3.0	dropDown	E		«[DROPBOX] SUMMATIVE ASSESSMENT»	after«»	cell0«»
+MXDI201	3.0	carousel	X		«[slide show] [item #41]»	after«Split Strategy PowerPoint – Tw»	cell0«»
+MXEO202	1.0	selfCheck	X		«[Self check] Can we have the number of sides as a »	after«»	cell0«»
+MXEO202	1.0	dragAndDrop	X		«[drag and drop]»	after«Can we make something like thi»	cell0«»
+MXEO301	3.0	multiChoiceQuiz	E		«[Link for quiz]»	after«https://docs.google.com/docume»	cell0«»
+MXEO401	4.0	typing	X		«[Selfcheck] Questions here about each graph.»	after«»	cell0«»
+MXEX302	7.0	clickDrop	X		«[Click drop image]»	after«»	cell0«»
+MXEX302	7.0	clickDrop	X		«[Click drop image]»	after«»	cell0«»
+MXFU302	1.0	selectionBox	X		«[Inline checkbox activity] Answers in red]»	after«»	cell0«»
+MXFU302	1.0	selectionBox	X		«[Inline checkbox activity] Answers in red]»	after«»	cell0«»
+MXFU302	1.0	selectionBox	X		«[Inline checkbox activity] Answers in red]»	after«»	cell0«»
+MXFU302	3.0	multiChoiceQuiz	h p p p p p p p		«[Activity 3A Multichoice Check]»	after«»	cell0«»
+MXFU402	7.0	dropDown	E		«[upload to dropbox] [trigger engagement]»	after«»	cell0«»
+MXS1004	8.0	dropDown	E		«[Button][dropbox]»	after«»	cell0«»
+OSAI401	4.0	modal	X		«[modal button]»	after«https://drive.google.com/file/»	cell0«»
+OSBY201	2.0	modal	E		«[modal]»	after«https://resource.netsafe.org.n»	cell0«»
+OSBY401	2.0	accordion	X		«[Accordion]»	after«»	cell0«»
+OSOH101	2.0	modal	h p p p p X		«[modal]»	after«https://drive.google.com/file/»	cell0«»
+OSOH201	2.0	modal	X		«[modal] Please create a visual poster»	after«Student_Password_Manager_Guide»	cell0«»
+OSOH201	2.0	modal	E		«[modal]»	after«https://www.privacy.org.nz/ass»	cell0«»
+OSOH201	3.0	modal	X		«[modal]»	after«**Ākonga Online User Agreement»	cell0«»
+OSOH401	3.0	typing	X		«[typing self-check]»	after«Type your reflections on the f»	cell0«»
+OSOH401	3.0	modal	X		«[modal]»	after«Ākonga 13-15 Years Old Online »	cell0«»
+OSSC301	1.0	carousel	h p X		«[carousel/slideshow]»	after«https://docs.google.com/presen»	cell0«»
+PES1008	7.0	tabs	X		«[tabs from PHO1031 lesson 1]»	after«»	cell0«»
+PHE1002	2.0	typing	E		«[Activity box - short answer typing box]»	after«»	cell0«»
+PHE1003	7.0	tabs	h e p p p h p p		«[Tabs]»	after«»	cell0«»
+PHE1003	10.0	multiChoiceQuiz	E		«[self-marked quiz - item 30]»	after«Activity 6 - Self Check Quiz»	cell0«»
+PHE1007	6.0	dropDown	h p p I p I p I		«[Individual activity – drop down quiz ] Dev – each»	after«»	cell0«»
+PHE1008	5.0	clickDrop	h e p h e p h e		«[Click drop]»	after«»	cell0«»
+SCCH301	6.0	flipCard	h X		«[Three flip cards next to each other, with H5 size»	after«»	cell0«»
+SCES201	1.0	radioQuiz	h p I ?		«[activity 1a] [radio quiz] [auto check]»	after«»	cell0«»
+SCES201	1.0	dragAndDrop	h e p p p p p p		«[Activity 1c] [download then drag and drop activit»	after«»	cell0«»
+SCES201	2.0	dropDown	h p X		«[Activity 2b] [dropdown quiz paragraph]»	after«»	cell0«»
+SCES201	3.0	dropDown	h p I ?		«[activity 3b] [dropdown quiz] [self check]»	after«»	cell0«»
+SCES201	3.0	dragAndDrop	h p T		«[activity 3c][drag and drop][auto check]»	after«»	cell0«»
+SSCI205	9.0	dropDown	h p e e e p		«[Dropbox]»	after«»	cell0«»
+SSFUN02	0.0	interactive	X		«[Interactive] Please include this visual in the ri»	after«https://www.growingup.co.nz/no»	cell0«»
+SSFUN03	0.0	flipCard	I X		«[insert flip cards] Developer please place name of»	after«**The Pacific Ocean**The large»	cell0«»
+SSOG103	6.0	dropDown	h p e e e X		«[Dropbox]»	after«»	cell0«»
+TEDC401	2.0	dragAndDrop	h p T		«[Activity Box Wide (For Interactives) with a drag »	after«»	cell0«»
+TEDC401	4.0	multiChoiceQuiz	h X		«[self check quiz]»	after«»	cell0«»
+TEDC401	6.0	dropDown	h p e T		«[Activty / Dropbox] 6C»	after«»	cell0«»
+TEDC402	8.0	unclassified	h I T		«[Activity]»	after«**7H**»	cell0«»
+TEFUN05	0.0	carousel	T		«[Insert Carousel]»	after«»	cell0«»
+TEFUN05	0.0	multiChoiceQuiz	X		«[Go to quiz]»	after«»	cell0«»
+TEFUN05	0.0	multiChoiceQuiz	h p X		«[Free text box with file upload capability quiz] [»	after«»	cell0«»
+TEFUN06	0.0	dragAndDrop	h p T		«[Activity 2A][Interactive – drag and drop captions»	after«»	cell0«»
+TEFUN06	0.0	clickDrop	X		«[Clickdrop]»	after«Compare your ideas with ours»	cell0«»
+TEFUN06	0.0	clickDrop	X		«[Clickdrop]»	after«Compare your ideas with ours»	cell0«»
+TEFUN06	0.0	clickDrop	X		«[Clickdrop]»	after«Compare your ideas with ours»	cell0«»
+TEFUN08	0.0	accordion	X		«[Accordion]»	after«Click here to see if you notic»	cell0«»
+TRR301	2.0	typing	X		«[Activity: Embedded] [typing – self check] Please »	after«»	cell0«»
+TWHA902	0.0	unclassified	h I p T		«[Interactive activity] Drag and drop [Dev mix the »	after«»	cell0«»
+TWHA902	0.0	dragAndDrop	X		«[interactive: Drag and drop] Dev – answers align i»	after«»	cell0«»
+TWHA904	0.0	dragAndDrop	h p T		«[Activity 1A: Drag and drop] Dev when creating sca»	after«»	cell0«»
+TWHA905	0.0	dragAndDrop	h p T		«[Activity 1A Drag and drop] Dev when creating scat»	after«»	cell0«»
+WJFUN109	0.0	selfCheck	X		«[self auto check]»	after«»	cell0«»
+WJFUN110	0.0	clickDrop	X		«[click drop]»	after«»	cell0«»
+WJFUN110	0.0	dragAndDrop	h X		«[Activity 1B] [drag and drop]»	after«»	cell0«»
+WJFUN110	0.0	dragAndDrop	h p T		«[Activity 2B][drag and drop][self check]»	after«»	cell0«»
+WJFUN110	0.0	dragAndDrop	h I p T		«[Activity 2C][drag and drop]»	after«»	cell0«»
+WJFUN113	0.0	dragAndDrop	h p p p p p p p		«[Activity 2A] [Drag and drop]»	after«»	cell0«»
+WJFUN113	0.0	dragAndDrop	h p p p p p p p		«[Activity 2B] [drag and drop]»	after«»	cell0«»
+WJFUN208	0.0	dropDown	h p I T		«[Activity 2B] [Dropdown quiz – Auto check]»	after«»	cell0«»
+WJFUN210	0.0	typing	h p p X		«[Activity 1B] [dropquiz] [self-check]»	after«»	cell0«»
+WJFUN210	0.0	dragAndDrop	h p ?		«[Activity 2B] [drag and drop] [Self Check]»	after«»	cell0«»
+WJFUN211	0.0	dragAndDrop	h p T		«[Activity 1A] [Drag and drop]»	after«»	cell0«»
+WJFUN211	0.0	dropDown	h e e e I e I p		«[Activity 2A] [Dropdown quiz – Auto check] [Please»	after«»	cell0«»
+WJFUN211	0.0	dropDown	h p p p p p ?		«[Activity 2B][Dropdown Quiz – Auto Check][Arrange »	after«»	cell0«»
+WJFUN212	0.0	dragAndDrop	h p T		«[Activity 2B] [drag and drop] [Self Check]»	after«»	cell0«»
+WJFUN304	0.0	multiChoiceQuiz	X		«[H3] [Activity 2A] [Multi-choice][Auto-marked sele»	after«Upgrade your sentences»	cell0«»
+WJFUN305	0.0	dropDown	h p e p p p p ?		«[Activity 1A] [Dropdown quiz – Auto check] [Arrang»	after«»	cell0«»
+WJFUN305	0.0	dropDown	h p p p p ?		«[Activity 2A] [Dropdown quiz – Auto check] [Arrang»	after«»	cell0«»
+WJFUN305	0.0	dragAndDrop	h p T		«[Activity 2B] [Drag and Drop] [Table currently in »	after«»	cell0«»
+WJFUN305	0.0	dropDown	h p p p p ?		«[Activity 2C] [Dropdown Quiz – Auto Check] [arrang»	after«»	cell0«»
+WJFUN306	0.0	dropDown	h e p p p ?		«[Activity 2C] [Dropdown quiz – autocheck] [positio»	after«»	cell0«»
+WJFUN307	0.0	dropDown	h p p p p p p ?		«[Activity 1A] [Dropdown Quiz – Auto Check] [Arrang»	after«»	cell0«»
+WJFUN307	0.0	dragAndDrop	h p e T		«[Activity 1B] [Drag and Drop]»	after«»	cell0«»
+WJFUN307	0.0	selectionBox	h p p p p p ?		«[Activity 2A] [checkbox – Auto Check] [Arrange the»	after«»	cell0«»
+WJFUN307	0.0	selectionBox	h p p p p p ?		«[Activity 2B] [checkbox – Auto Check] [Arrange the»	after«»	cell0«»
+WJFUN308	0.0	dropDown	h p p p p p p p		«[Activity 1B] [Dropdown Quiz – Auto Check] [Arrang»	after«»	cell0«»
+XDLS501	2.0	dropDown	X		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»
+XDLS501	2.0	dropDown	X		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»
+XDLS501	2.0	dropDown	X		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»
+XDLS501	2.0	dropDown	X		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»
+XDLS501	2.0	dropDown	X		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»
+XDLS501	2.0	dropDown	X		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»
+XDLS501	2.0	dropDown	X		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»
+XDLS501	2.0	dropDown	X		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»
+XDLS501	3.0	dropDown	h e h e X		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»
+XDLS501	3.0	dropDown	E		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»
+XDLS501	4.0	dropDown	e X		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»
+XDLS501	4.0	dropDown	E		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»
+XDLS501	5.0	dropDown	h e X		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»
+XDLS501	5.0	dropDown	E		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»
+XDLS501	6.0	dropDown	e X		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»
+XDLS501	6.0	dropDown	E		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»
+XDLS501	7.0	dropDown	E		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»
+XDLS502	0.0	flipCard	X		«[flipcards]»	after«»	cell0«»
+XDLS901	1.0	dropDown	X		«[dropbox buttons] video, camera, microphone»	after«»	cell0«»
+XDLS901	1.0	dropDown	X		«[dropbox buttons] video, camera, microphone»	after«»	cell0«»
+XDLS901	1.0	dropDown	X		«[dropbox buttons] video, camera, microphone»	after«»	cell0«»
+XDLS901	1.0	dropDown	E		«[dropbox buttons] video, camera, microphone»	after«»	cell0«»
+XDLS901	2.0	dropDown	X		«[dropbox buttons] video, camera, microphone»	after«»	cell0«»
+XDLS901	2.0	dropDown	E		«[dropbox buttons] video, camera, microphone»	after«»	cell0«»
+XDLS901	3.0	dropDown	X		«[dropbox buttons] video, camera, microphone»	after«»	cell0«»
+XDLS901	3.0	dropDown	E		«[dropbox buttons] video, camera, microphone»	after«»	cell0«»
+XDLS901	4.0	dropDown	X		«[dropbox buttons] video, camera, microphone»	after«»	cell0«»
+XDLS902	1.0	clickDrop	X		«[Click Drop 2]»	after«**Explain:**»	cell0«»
+XDLS902	1.0	clickDrop	X		«[Click Drop 3]»	after«**Do:**»	cell0«»
+XDLS902	2.0	clickDrop	X		«[Click Drop 3]»	after«**Do:**»	cell0«»
+XDLS902	4.0	clickDrop	X		«[Click Drop 5]»	after«**Create**»	cell0«»
+XDLS902	6.0	clickDrop	X		«[Click Drop 2]»	after«**Explain:**»	cell0«»
+XDLS902	6.0	clickDrop	X		«[Click Drop 5]»	after«**Create**»	cell0«»
+XDLS906	1.0	clickDrop	X		«[Click Drop Activities x 6]»	after«»	cell0«»
+XDLS906	2.0	clickDrop	X		«[Click Drop Activities x 6]»	after«»	cell0«»
+XDLS906	3.0	clickDrop	X		«[Click Drop Activities x 6]»	after«»	cell0«»
+XDLS906	4.0	clickDrop	X		«[Click Drop Activities x 6]»	after«»	cell0«»
+XDLS906	5.0	clickDrop	X		«[Click Drop Activities x 6]»	after«»	cell0«»
+XDLS906	6.0	clickDrop	X		«[Click Drop Activities x 6]»	after«»	cell0«»
+XDLS906	7.0	clickDrop	X		«[Click Drop Activities x 6]»	after«»	cell0«»
+XDLS909	1.0	clickDrop	X		«[Click Drop 3] Compare»	after«»	cell0«»
+XDLS909	2.0	clickDrop	X		«[Click Drop 3] Compare»	after«»	cell0«»
+XDLS909	2.0	clickDrop	X		«[Click Drop 5] Judge»	after«»	cell0«»
+XDLS909	3.0	clickDrop	X		«[Click Drop 3] Compare»	after«»	cell0«»
+XDLS909	4.0	clickDrop	X		«[Click Drop 2] Explain and do»	after«»	cell0«»
+XDLS909	4.0	clickDrop	X		«[Click Drop 3] Compare»	after«»	cell0«»
+XDLS909	4.0	clickDrop	X		«[Click Drop 5] Judge»	after«»	cell0«»
+XDLS912	1.0	dropDown	X		«[dropbox buttons] camera and video»	after«»	cell0«»
+XDLS912	1.0	dropDown	X		«[dropbox buttons] camera and video»	after«»	cell0«»
+XDLS912	2.0	dropDown	X		«[Dropbox buttons] Video and camera»	after«»	cell0«»
+XDLS912	3.0	dropDown	X		«[Dropbox buttons] Camera and video»	after«»	cell0«»
+XDLS912	3.0	dropDown	X		«[Dropbox buttons] Video and camera»	after«»	cell0«»
+XDLS912	4.0	dropDown	X		«[Dropbox buttons] camera and video»	after«»	cell0«»
+XDLS912	5.0	dropDown	X		«[dropbox buttons] Camera and video»	after«»	cell0«»
+XDLS912	5.0	dropDown	X		«[dropbox buttons] Video and camera»	after«»	cell0«»
+XGF9001	4.0	multiChoiceQuiz	h p p p p h p p		«[Quiz]»	after«»	cell0«»
+XGF9001	5.0	dropDown	X		«[Dropbox]»	after«»	cell0«»
+XGF9001	6.0	dropDown	h p p p p p		«[Upload Journal to Dropbox]»	after«»	cell0«»
+XGF9003	1.0	modal	h X		«[Pop-out]»	after«Tasks that need immediate atte»	cell0«»
+XGF9003	1.0	modal	h X		«[Pop-out]»	after«Tasks that are important for y»	cell0«»
+XGF9003	1.0	modal	h X		«[Pop-out]»	after«These are tasks that need imme»	cell0«»
+XGF9003	1.0	modal	h p X		«[Pop-out]»	after«Tasks that are neither urgent »	cell0«»
+XGF9003	1.0	dragAndDrop	h p p p T		«[Insert drag and drop] Dev can you create a 4 grid»	after«»	cell0«»
+XGF9004	8.0	dropDown	h p p p p h p p		«[Upload to dropbox.]»	after«»	cell0«»
+XGF9004	13.0	dropDown	h p p h p X		«[Upload to dropbox.]»	after«»	cell0«»
+XGF9004	17.0	dropDown	h p p I X		«[Upload to dropbox.]»	after«»	cell0«»
+XGF9004	17.0	dropDown	h h p h p X		«[Upload to dropbox.]»	after«»	cell0«»
+XLP03	4.0	dragAndDrop	X		«[insert drag and drop interactive]»	after«»	cell0«»
+XLP04	3.0	clickDrop	X		«[insert accordion click and drop]»	after«»	cell0«»
+XLP05	2.0	reorder	h p I p e p e p		«[Reorder interactive – with images]»	after«»	cell0«»
+XLP05	5.0	multiChoiceQuiz	h p p p p p ?		«[Multi choice quiz]»	after«»	cell0«»
+XMES101	1.0	dropDown	X		«[Camera and video dropbox buttons]»	after«»	cell0«»
+XMES101	3.0	dropDown	X		«[camera dropbox button]»	after«»	cell0«»
+XMES101	6.0	dropDown	X		«[camera dropbox button]»	after«»	cell0«»
+XMES101	6.0	dropDown	X		«[camera dropbox button]»	after«»	cell0«»
+XMES101	8.0	dropDown	X		«[microphone and video dropbox buttons]»	after«»	cell0«»
+XMES101	8.0	dropDown	h p e p e		«[camera dropbox button]»	after«»	cell0«»
+XMES103	1.0	dropDown	X		«[insert Dropbox] microphone.»	after«»	cell0«»
+XMES103	1.0	dropDown	X		«[Dropbox Button] camera, video, microphone»	after«»	cell0«»
+XMES103	2.0	dropDown	X		«[insert dropbox button] camera, video.»	after«»	cell0«»
+XMES103	2.0	dropDown	X		«[Dropbox Button] camera, video.»	after«»	cell0«»
+XMES103	3.0	dropDown	X		«[Dropbox Button] microphone, camera, video.»	after«»	cell0«»
+XMES103	3.0	dropDown	X		«[Dropbox Button] camera, video.»	after«»	cell0«»
+XMES103	4.0	dropDown	X		«[Dropbox Button] Microphone»	after«»	cell0«»
+XMES103	5.0	dropDown	X		«[Dropbox Button] camera, video.»	after«»	cell0«»
+XMES201	1.0	dropDown	X		«[insert dropbox icon for microphone and video]»	after«»	cell0«»
+XMES201	1.0	dropDown	X		«[insert dropbox icon for microphone and video]»	after«»	cell0«»
+XMES201	2.0	dropDown	X		«[insert dropbox icon for microphone and video]»	after«»	cell0«»
+XMES201	2.0	dropDown	X		«[insert dropbox link for microphone, camera and vi»	after«»	cell0«»
+XMES203	1.0	dropDown	X		«[insert dropbox icon for microphone and video]»	after«»	cell0«»
+XMES203	1.0	dropDown	X		«[insert dropbox icon for microphone and video]»	after«»	cell0«»
+XMES203	2.0	dropDown	X		«[insert dropbox icon for microphone and video]»	after«»	cell0«»
+XMES203	2.0	dropDown	X		«[insert dropbox icon for microphone and video]»	after«»	cell0«»
+XMES203	3.0	dropDown	X		«[insert dropbox icon for microphone and video]»	after«»	cell0«»
+XMES203	3.0	dropDown	X		«[insert dropbox icon for photograph and video]»	after«»	cell0«»
+XMES203	4.0	dropDown	X		«[insert dropbox icon for microphone and video]»	after«»	cell0«»
+XMES203	4.0	dropDown	X		«[insert dropbox icon for microphone and video]»	after«»	cell0«»
+XMES203	4.0	dropDown	X		«[insert dropbox icon for photographs]»	after«»	cell0«»
+XMES203	4.0	dropDown	X		«[insert dropbox icon for microphone and video]»	after«»	cell0«»
+XMES203	4.0	dropDown	X		«[insert dropbox icon for microphone and video]»	after«»	cell0«»
+XMES203	5.0	dropDown	X		«[insert dropbox icon for microphone and video]»	after«»	cell0«»
+XTAS101	1.0	dropDown	h p X		«[insert dropbox button] Microphone»	after«»	cell0«»
+XTAS101	1.0	dropDown	X		«[insert dropbox link] photo/video»	after«»	cell0«»
+XTAS101	1.0	dropDown	h p p I X		«[insert dropbox link] Photo»	after«»	cell0«»
+XTAS101	2.0	dropDown	X		«[insert Dropbox link] microphone/video/photo»	after«»	cell0«»
+XTAS101	2.0	dropDown	X		«[insert dropbox link] photo/video»	after«»	cell0«»
+XTAS101	3.0	dropDown	X		«[insert dropbox link] photo/video»	after«»	cell0«»
+XTAS102	1.0	dropDown	X		«[insert dropbox icon for photographs]»	after«»	cell0«»
+XTAS102	1.0	dropDown	X		«[insert dropbox icon for video]»	after«»	cell0«»
+XTAS102	2.0	dropDown	X		«[insert dropbox icon for photographs and video]»	after«»	cell0«»
+XTAS102	2.0	dropDown	X		«[insert dropbox icon for photographs and video]»	after«»	cell0«»
+XTAS102	2.0	dropDown	h p p p X		«[insert dropbox icon for photographs and video]»	after«»	cell0«»
+XTAS102	2.0	dropDown	X		«[insert dropbox icon for photographs and video]»	after«»	cell0«»
+XTAS102	3.0	dropDown	X		«[insert dropbox icon for photographs and video]»	after«»	cell0«»
+XTAS102	4.0	dropDown	X		«[insert dropbox icon for photographs and video]»	after«»	cell0«»
+XTAS102	4.0	dropDown	X		«[insert dropbox icon for photographs and video]»	after«»	cell0«»
+XTAS102	5.0	dropDown	X		«[insert dropbox icon for photographs]»	after«»	cell0«»
+XTAS103	1.0	dropDown	X		«[insert dropbox icon for video]»	after«»	cell0«»
+XTAS103	2.0	dropDown	X		«[insert dropbox icon for photographs]»	after«»	cell0«»
+XTAS103	2.1	dropDown	X		«[insert dropbox icon for photographs]»	after«»	cell0«»
+XTAS103	3.0	dropDown	X		«[insert dropbox icon for photographs and video]»	after«»	cell0«»
+XTAS103	3.0	dropDown	X		«[insert dropbox icon for video]»	after«»	cell0«»
+XTAS103	4.0	dropDown	X		«[insert dropbox icon for video]»	after«»	cell0«»
+XTAS103	4.0	dropDown	X		«[insert dropbox icon for video]»	after«»	cell0«»
