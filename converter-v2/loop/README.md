@@ -18,6 +18,10 @@ them from here.
 | `_r0b_kbfacts.json` | `CONVERTER_V2/outputs/` | Round 0b — its output |
 | `KB_AMALGAMATION_STATUS.md` | `FINAL_MODULE_DATA/` (folder root) | Round 0b — one row per front-facing KB decision with its PageForge status |
 | `LOOP_STATE.md` | `FINAL_MODULE_DATA/` (folder root) | the loop's position, declined/blocked classes, round log |
+| `LOOP_INTAKE__2026-09-19_98_Modules.md` | `FINAL_MODULE_DATA/` (folder root) | **the September 2026 intake handover** — the 98 modules, the new corpus census, the re-based gate baseline and the split-by-population proof method, the re-mined queue (168 → 188 candidates), the WJFUN finding, the 20 modules that cannot convert, and six operational traps |
+| `SESSION_28__Pre_Loop_Summary_2026-09-20.md` | `FINAL_MODULE_DATA/` (folder root) | the interactive pre-loop session — r408 registries rebuilt over 552 modules, r409 the XOTP parsed-text message, and **round 410 (WJFUN tile dialect) BUILT AND PROVEN BUT NOT SHIPPED**, five files uncommitted; the subject labels awaiting Chris's approval |
+| `NEXT_SESSION__Pre_Loop_Fixes.md` | `FINAL_MODULE_DATA/` (folder root) | the work order session 28 ran from (kept for the record) |
+| `_skills/loop-start.SKILL.md` | `.claude/skills/loop-start/SKILL.md` | the actual `/loop-start` message, mirrored so a rules change and the command that runs it can be seen to agree (§7) |
 | `LOOP__Autonomous_Rounds.md` | `FINAL_MODULE_DATA/` (folder root) | the loop's STANDING RULES (mirrored from 16 Sept 2026 — it had never been in git; amended by each `/loop-review` with Chris's approval) |
 | `LOOP_REVIEW__2026-09-16.md` | `FINAL_MODULE_DATA/` (folder root) | the first `/loop-review` — health check, six assessments with numbers, twelve approved proposals, the items owed by Chris |
 | `DECISIONS__Pending_2026-09-16.md` | `FINAL_MODULE_DATA/` (folder root) | session 10 (`/loop-decisions`) — the plain-English report of the nine pending decisions with the WT / gold / PageForge evidence, and Chris's answers (recorded in `LOOP_STATE.md` as D10-1 … D10-9) |

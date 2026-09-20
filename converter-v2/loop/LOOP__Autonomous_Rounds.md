@@ -29,10 +29,37 @@ kickoff: do not delete it. Update it when the loop's rules change.
    §1b). It has been maintained for ~9 months AFTER most of the human gold was built.
 5. `LOOP_STATE.md` at the folder root, IF it exists — a previous session's position in the loop.
    Resume from it. If it does not exist, this is the first session: start at Round 0.
+6. **`LOOP_INTAKE__2026-09-19_98_Modules.md`** (folder root) — the September 2026 intake of 98
+   modules: what the corpus now is, what the new families are, the 20 modules that cannot
+   convert and why, and the six operational traps it exposed. Read this once per session until
+   the loop has shipped three rounds on the new corpus; it is the reason several numbers in
+   older changelog entries no longer compare.
+7. **`SESSION_28__Pre_Loop_Summary_2026-09-20.md`** (folder root) — the interactive session that
+   rebuilt the registries (r408) and fixed the XOTP parsed-text message (r409), and that left
+   **round 410 (the WJFUN tile dialect) BUILT AND PROVEN BUT NOT SHIPPED**, five files
+   uncommitted with the corpus rolled back to the shipped state.
+   **CHECK FOR AN IN-FLIGHT ROUND BEFORE PICKING ANYTHING.** `LOOP_STATE.md` carries the
+   handover block. Either finish round 410 from that state or revert its five files
+   deliberately — never `git checkout` them away without deciding (CLAUDE.md §16, the round-284
+   lesson).
 
 Then run `bash _MIGRATION/verify_after_transfer.sh` once. It must say PASS before anything else
 (it checks the five symlinks and the engine checksums). If it fails, stop and report — do not
 regenerate anything on a broken tree.
+
+**The census it prints changed on 19–20 September 2026** and any older figure you find in this
+file, in `LOOP_STATE.md` or in a changelog entry is pre-intake. Current, after the 98-module
+intake and the round-408 registry rebuild:
+
+| | before | now |
+|---|---:|---:|
+| Claude module dirs | 416 | **494** |
+| Claude pages | 2,109 | **2,555** |
+| gold dirs | 454 | **552** |
+| Writers Template / Media List docx | 619 | **762** |
+
+**552 gold dirs against 494 Claude dirs is CORRECT, not a fault.** 20 modules have no Claude
+build at all (§2), so a gold-only dir is the expected state for them.
 
 ## 1. The measure of success — and the honest ceiling
 
@@ -51,6 +78,14 @@ corpus-wide, the share of the human's structure that has NO source in the WT. Th
 part of the gap no converter rule can ever close. From then on every progress report states the
 score as "X% of achievable" alongside the raw number. Commit the tool and its first output
 (`outputs/_ceiling_r0.json`) before Round 1. This round changes NO converter output.
+
+**The ceiling is currently UNMEASURED on this corpus (20 Sept 2026).** Every recorded ceiling —
+`_ceiling_r0`, `_ceiling_r315`, `_ceiling_r343`, and the "X % of the 91.9 % ceiling" phrasing in
+`LOOP_STATE.md` — was measured on the 1,956-pair corpus. The population is now 2,349 pairs with
+new families whose derivable share is unknown. **Do not quote a "% of achievable" figure until
+`_measure_ceiling.py` has been re-run**, and re-run it early: it is the denominator every
+"how much is left" judgement uses. `COVERAGE_DASHBOARD.md` is stale for the same reason (last
+built on the r349 corpus).
 
 ## 1b. The order of authority — what the converter is trying to match (Chris, 14 September 2026)
 
@@ -163,6 +198,40 @@ correct decline; the menu-label `h4>span` class (63/65) is the worked example of
 **Cadence.** Re-run the miner at the start of every session and after every full
 regeneration (it reads 2 × ~2,100 pages; keep it under the timeout by sharding if needed).
 `DIFF_QUEUE.md` is committed each time. The PICK step (§3) reads it FIRST.
+(It now reads 2 × ~2,555 pages, not 2 × ~2,100 — budget accordingly; a full mine took ~134 s on
+19 Sept.)
+
+## 1e. PROVING HOLD-OR-IMPROVE ACROSS THE SEPTEMBER INTAKE (20 September 2026) — read before judging any gate
+
+On 19 September 2026 the corpus grew by 98 gold modules and 78 Claude builds: skeleton pairs
+**1,956 → 2,349**, compare_structure matched **13,794 → 15,668**, body/defect pages
+**2,102 → 2,606**. **Every gate absolute therefore moved and every rate fell, with no regression
+behind any of it.** `gate_baseline.json` has been re-based to the whole population and
+`_gatecheck.py` reports PASS, but anyone comparing a live number to a figure quoted in a
+changelog entry written before 19 September will see a "drop" that is pure arithmetic.
+
+**The rule: when a gate looks worse, SPLIT IT BY POPULATION before concluding anything.** Score
+the pre-existing modules separately from the new ones. On 19 September the pre-existing subset
+reproduced round 407 exactly:
+
+| gate | r407 baseline | pre-existing subset, after a full regen |
+|---|---|---|
+| skeleton mean / ≥50 / ≥75 / ≥90 | 54.084 % / 1181 / 202 / 18 | **identical** |
+| compare_structure exact / EXTRA / missing / row-wrap | 11779 / 172 / 626 / 23 | **identical** |
+| body_compare runaway / empty_container | 5 / 170 | **identical** |
+| literal-[tag] leak occ / pages | 26 / 23 | **identical** |
+| structurally clean | 2079 / 2102 = 98.91 % | **identical** |
+
+The structural argument underneath it is stronger than the table: `_content_manifest.py fresh`
+confirmed all 413 pre-existing modules **byte-identical**, and identical bytes cannot produce
+different metrics. Reach for the manifest first — it is one command and it settles the question
+outright.
+
+**Two consequences for the round log.** Round-over-round deltas from before 19 September are not
+comparable with deltas after it: the population is larger and harder, so the same amount of real
+work now buys a smaller headline movement. And the §4 plateau test (three consecutive rounds
+under 0.02pp) must be read in that light — say so in the entry rather than letting a session
+stop on a plateau that is really a denominator change.
 
 ## 2. What this loop is authorised to do (Chris, 14 September 2026)
 
@@ -185,6 +254,29 @@ regeneration (it reads 2 × ~2,100 pages; keep it under the timeout by sharding 
   read-only, forever); reading the gold as a converter INPUT (Level 0 guardrail); any per-module
   `if (code === …)` special case (DATA OVER CODE); disabling a new rule to silence a verifier
   (§0a: debug until both populations build).
+- **The 20 modules with no Claude build are NOT converter faults — do not "fix" them by
+  inventing a source.** 12 XOTP modules (`XOTPB08–13`, `XOTPG01`, `XOTPG03–06`, `XOTPO01`) are
+  refused because their Writers Templates are an activity-table dialect with no red tags — that
+  is a recognition round with a written spec
+  (`00-NEW_NEW_NEW/_SPEC__XOTP_Activity_Table_Template.md`), not a defect. Seven
+  (`GER1003–1007`, `SAM1005`, `SAM1006`) **have no Writers Template at all**; nothing the
+  converter can do will ever build them, and chasing them is wasted work. One (`PMT101`) is a
+  real recognition gap: its content is entirely inside table cells, so the paragraph-level
+  opener test refuses it. Their empty Claude dirs were deliberately removed so no ghost
+  directory skews pairing (the r285 trap) — **do not recreate them.**
+- **The subject labels are PROPOSED, not final.** `data/Subject_Prefix_Map.json` (round 408)
+  assigns a subject to 30 module-code prefixes that had no learning-area folder. Chris has not
+  yet approved the Languages split (CHI/GER/JPN/SAM/SPA under NCEA1 vs a single Languages
+  label). Treat the labels as a grouping convenience; **do not build a rule that depends on one
+  being correct**, and do not re-litigate them — they are one data edit plus a registry
+  re-merge when he decides.
+- **The division of labour with interactive sessions (Chris, 20 September 2026).** An
+  interactive session does only what the loop cannot do for itself — a registry rebuild after
+  an intake, the parsed-text process, the example-module UI. **Converter rounds belong to the
+  loop**, because the loop has the compaction and handover machinery for them. If a round is
+  stopped mid-flight: roll the corpus back with that round's `*_OFF` toggle, prove
+  `_content_manifest.py diff` is 0 pages, leave the code uncommitted, and write the state into
+  `LOOP_STATE.md`.
 
 ## 3. One round, exactly (repeat until §4 says stop)
 
@@ -199,6 +291,14 @@ Each round is bounded so an interruption loses at most one round of work.
    gold-matching class:** search the KB for a rule covering the element; if one exists, the
    KB rule is the target, not the gold. Write the choice, its measured size per template and
    subject group, and its authority source (§1b, 1–4) to `LOOP_STATE.md` FIRST.
+   **NEW-FAMILY CHECK (20 Sept 2026).** The intake added 24 family bases the registries had
+   never seen. A class can now reach the candidate floor purely because one new family repeats
+   the same shape 20 times. Before committing, check whether the class holds OUTSIDE that
+   family: if its consensus collapses once the new family is excluded, it is a family dialect,
+   and the right fix is a registry row for that family — not a general rule applied corpus-wide.
+   The round-408 FRFUN row is the worked example of getting this wrong in the safe direction: a
+   faithful registry row for a family whose renderer does not exist yet scored 26 of 28 pages
+   DOWN, and was held back rather than shipped.
 2. **TRIANGULATE** three named modules for the class — raw WT → human gold → Claude output, side
    by side, the literal text (Decision Framework, "SHOW THE WRITERS-TEMPLATE EVIDENCE").
 3. **MEASURE corpus-wide before coding** (§5 step 2) with a probe in `outputs/` that scans ALL
@@ -238,6 +338,10 @@ refresh the state after every scoped regen, and run a fresh full score when one 
   corpus, and has no candidate row left (chrome floor 10 modules, body floor 20 pages, each
   judged per template/subject group); `KB_AMALGAMATION_STATUS.md` has no NOT CAPTURED row
   left with ≥ 20 in-scope pages; and the dashboard backlog has no derivable class ≥ 20 pages.
+  **Any exhaustion verdict reached before 19 September 2026 is VOID**, for the same reason the
+  sessions 15–18 verdicts are: the corpus gained 98 modules and 24 family bases the queue had
+  never seen, and re-mining on 19 Sept moved it 168 → 188 candidate rows (183 after round 408).
+  Exhaustion may only be declared on a miner run over the POST-intake corpus.
   Everything remaining is class C (editorial) or is in "Declined classes". This is the GOOD
   ending — but it may only be declared with the miner's output quoted in the report. The
   session 15–18 verdicts, reached without the miner, do not count.
@@ -345,6 +449,18 @@ STOP procedure (§7) immediately so the session ends with the state saved rather
 ## 6. Anti-timeout discipline (why this runs in Claude Code, not Cowork)
 
 - Claude Code runs on Chris's computer with no 45-second command wall and no folder-mount bug.
+- **NEVER call `python3` from the Bash tool on this machine (Chris, 20 September 2026).** It
+  resolves to the Windows Store stub and hangs for the full 30-minute timeout — hit three times
+  in session 28, once on a line that looked like a harmless guard. **Every Python and every gate
+  runs under WSL.** Write scripts with the Write tool; make engine and data edits with the Edit
+  tool against the real `pageforge-site/converter-v2/…` path.
+- **`_regen_safe.sh` honours `REGEN_TIMEOUT`** (default 40 s, behaviour unchanged when unset).
+  Batches of ~11 modules are reliable; the 22-module batches `_batch_plan.py` emits are not.
+- **`_gatecheck.py` prints CACHED rows for gates it did not run.** Running it as
+  `_gatecheck.py skeleton defect` still prints compare_structure and body_compare lines, from
+  the previous run. On 19 September that showed exact-chain down 419 when it was actually up
+  1,631 — a false regression verdict that took an hour to unpick. **Always run `cs bc` before
+  believing those two rows.**
 - Never run a single command longer than ~10 minutes; batch the corpus.
 - Write `LOOP_STATE.md` before and after every round; a new session resumes from it.
 - Commit after every round, so a crash loses at most one round.
