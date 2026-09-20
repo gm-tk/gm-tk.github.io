@@ -6358,12 +6358,38 @@ class ContentConverter {
 	static #cdTilePair(html, state, run) {
 		if (!state || !state.rowEmitted || !state.pair) return html;
 		const prefix = state.cfg.panel_class_prefix ?? "clickDropContent ";
-		let out = html, cursor = 0, missed = 0;
+		// ROUND 418 — THE FIRST PANEL TAKES THE ROW FORM: the gold's first tile panel on every
+		// choice page is `<div class="row clickDropContent noBorder"><div class="col-12 col-md-8">
+		// <div class="activity dropbox" number="2A">` — the clickDropContent token on the section
+		// ROW (the JS's first .clickDropContent shows open, without a border), the box itself
+		// without it; the later panels keep the token on the box (35 / 35 pages of XDLS902–906,
+		// `_s29_r9_panelforms.py`). The section row wrapping the box must be exactly
+		// `<div class="row">` + `<div class="col-md-8 col-12">` with nothing else between (the
+		// r51 section row); any other shape keeps the prefix form. Data
+		// interactive_builders.clickDrop.tile_grid.first_panel_row; env CDFIRSTROW_OFF.
+		const frCfg = state.cfg.first_panel_row;
+		const firstRow = !!frCfg && frCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[frCfg.env || "CDFIRSTROW_OFF"]);
+		let out = html, cursor = 0, missed = 0, first = true;
 		for (const id of state.panelIds) {
 			const re = new RegExp(`<div class="(activity[^"]*)"( number="${id}")`, "g");
 			re.lastIndex = cursor;
+			const isFirst = first; first = false;
 			const m = re.exec(out);
 			if (!m) { missed++; continue; }
+			if (isFirst && firstRow) {
+				const rowOpen = String(frCfg.row_open ?? '<div class="row">');
+				const rowAt = out.lastIndexOf(rowOpen, m.index);
+				const between = rowAt >= 0 ? out.slice(rowAt + rowOpen.length, m.index) : null;
+				const colRe = new RegExp("^\\s*" + String(frCfg.col_open_pattern ?? '<div class="col-md-8 col-12">').replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*$");
+				if (between !== null && colRe.test(between)) {
+					const newRow = String(frCfg.row_class_open ?? '<div class="row clickDropContent noBorder">');
+					out = out.slice(0, rowAt) + newRow + out.slice(rowAt + rowOpen.length);
+					cursor = m.index + (newRow.length - rowOpen.length) + m[0].length;   // the box keeps its own class
+					continue;
+				}
+			}
+			first = false;
 			const rep = `<div class="${prefix}${m[1]}"${m[2]}`;
 			out = out.slice(0, m.index) + rep + out.slice(m.index + m[0].length);
 			cursor = m.index + rep.length;

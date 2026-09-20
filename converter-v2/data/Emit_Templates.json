@@ -2563,6 +2563,14 @@
 				"panel_class_prefix": "clickDropContent ",
 				"anchor_id_from_tail": true,
 				"released_url_button": true,
+				"first_panel_row": {
+					"enabled": true,
+					"env": "CDFIRSTROW_OFF",
+					"row_open": "<div class=\"row\">",
+					"col_open_pattern": "<div class=\"col-md-8 col-12\">",
+					"row_class_open": "<div class=\"row clickDropContent noBorder\">",
+					"_doc": "ROUND 418 (the autonomous loop's session 29 Round 9) — THE FIRST PANEL TAKES THE ROW FORM. The gold's first tile panel on every choice page is <div class=\"row clickDropContent noBorder\"><div class=\"col-12 col-md-8\"><div class=\"activity dropbox\" number=\"2A\"> — the clickDropContent token on the section ROW (the JS's first .clickDropContent shows open, noBorder), the box without it; the later panels keep the token on the box. Measured 35 / 35 pages of XDLS902-906 (_s29_r9_panelforms.py; XDLS902 lessons 2-7 carry every panel in the row form — the module's own extension, not taken). In ContentConverter.#cdTilePair the first panel id's box keeps its own class and the section row wrapping it (row_open + col_open_pattern, nothing else between) takes row_class_open; any other shape keeps the prefix form. OFF = the prefix on every panel (the r417 output)."
+				},
 				"panel_no_inner_row": {
 					"enabled": true,
 					"env": "CDPANELROW_OFF",

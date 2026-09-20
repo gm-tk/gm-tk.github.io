@@ -200,7 +200,11 @@ class ActivitiesBuilder {
 		const lvl = Number(cfg.level ?? 3);
 		const openRe = /<div class="activity[^"]*"[^>]*>/g;
 		const panelRe = new RegExp('^\\s*<div class="' + String(cfg.skip_panel_class ?? "super-content row").replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + '"');
-		const titleRe = /^(\s*<div class="row">\s*<div class="col-12">\s*)<h([1-6])\b([^>]*)>/;
+		// ROUND 418 — the inner row > col-12 is OPTIONAL: the r417 BARE box (a tile-grid panel,
+		// activity_wrapper.open_bare) opens straight onto its heading, and the pin must reach it
+		// too (r417 shipped 114 panels at the relevel level — repaired, not reverted). A box
+		// with the inner row / col matches exactly as before.
+		const titleRe = /^(\s*(?:<div class="row">\s*<div class="col-12">\s*)?)<h([1-6])\b([^>]*)>/;
 		const balancedEnd = (s, from) => {   // index just past the </div> closing the <div at `from`
 			const re = /<div\b|<\/div>/g; re.lastIndex = from; let depth = 0, m;
 			while ((m = re.exec(s))) { depth += m[0] === "<div" ? 1 : -1; if (depth === 0) return m.index + m[0].length; }

@@ -1,0 +1,503 @@
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+PHE1007: identical 10 / changed 0
+PHE1008: identical 6 / changed 0
+PNR101: identical 2 / changed 0
+PNR102: identical 3 / changed 0
+PNR104: identical 3 / changed 0
+PNR107: identical 3 / changed 0
+PWY1001: identical 10 / changed 0
+PWY1002: identical 10 / changed 0
+PWY1007: identical 9 / changed 0
+PWY1008: identical 10 / changed 0
+PWY1009: identical 9 / changed 0
+PWYWHA1: identical 1 / changed 0
+SCBI301: identical 9 / changed 0
+SCCH301: identical 9 / changed 0
+SCES201: identical 5 / changed 0
+SCFUN01: identical 1 / changed 0
+SCPH301: identical 9 / changed 0
+SPA1004: identical 3 / changed 0
+SSCI205: identical 10 / changed 0
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+SSOG101: identical 8 / changed 0
+SSOG103: identical 7 / changed 0
+SSOG301: identical 8 / changed 0
+TEDC401: identical 8 / changed 0
+TEDC402: identical 11 / changed 0
+TEFUN01: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+TRR107: identical 3 / changed 0
+TRR108: identical 3 / changed 0
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR116: identical 5 / changed 0
+TRR203: identical 4 / changed 0
+TRR301: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+TWHA906: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+WJFUN105: identical 1 / changed 0
+WJFUN106: identical 1 / changed 0
+WJFUN107: identical 1 / changed 0
+WJFUN108: identical 1 / changed 0
+WJFUN109: identical 1 / changed 0
+WJFUN110: identical 1 / changed 0
+WJFUN112: identical 1 / changed 0
+WJFUN113: identical 1 / changed 0
+WJFUN115: identical 1 / changed 0
+WJFUN116: identical 1 / changed 0
+WJFUN205: identical 1 / changed 0
+WJFUN206: identical 1 / changed 0
+WJFUN208: identical 1 / changed 0
+WJFUN210: identical 1 / changed 0
+WJFUN211: identical 1 / changed 0
+WJFUN212: identical 1 / changed 0
+WJFUN304: identical 1 / changed 0
+WJFUN305: identical 1 / changed 0
+WJFUN306: identical 1 / changed 0
+WJFUN307: identical 1 / changed 0
+WJFUN308: identical 1 / changed 0
+XDLS501: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+XDLS901: identical 5 / changed 0
+  ~ XDLS902_1_0.html: -2 +2
+     - <div class="clickDropContent activity" number="1A">
+     - <div class="row">
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity" number="1A">
+  ~ XDLS902_2_0.html: -2 +2
+     - <div class="clickDropContent activity" number="2A">
+     - <div class="row">
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity" number="2A">
+  ~ XDLS902_3_0.html: -2 +2
+     - <div class="clickDropContent activity" number="3A">
+     - <div class="row">
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity" number="3A">
+  ~ XDLS902_4_0.html: -2 +2
+     - <div class="clickDropContent activity" number="4A">
+     - <div class="row">
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity" number="4A">
+  ~ XDLS902_5_0.html: -2 +2
+     - <div class="clickDropContent activity" number="5A">
+     - <div class="row">
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity" number="5A">
+  ~ XDLS902_6_0.html: -2 +2
+     - <div class="clickDropContent activity" number="6A">
+     - <div class="row">
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity" number="6A">
+  ~ XDLS902_7_0.html: -2 +2
+     - <div class="clickDropContent activity" number="1A">
+     - <div class="row">
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity" number="1A">
+XDLS902: identical 1 / changed 7
+  ~ XDLS903_2_0.html: -8 +8
+     - <div class="clickDropContent activity dropbox" number="2A">
+     - <h5>Learn karakia Mō Te Kai</h5>
+     - <h5>Why?</h5>
+     - <h5>Add food to your routine; make, grow or eat healthy.</h5>
+     - <h5>Eating fast vs eating mindfully</h5>
+     - <h5>Should people sit around a table to eat?</h5>
+     - <div class="row">
+     - <h5>Become a creative foodie</h5>
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="2A">
+     + <h3>Learn karakia Mō Te Kai</h3>
+     + <h3>Why?</h3>
+     + <h3>Add food to your routine; make, grow or eat healthy.</h3>
+     + <h3>Eating fast vs eating mindfully</h3>
+     + <h3>Should people sit around a table to eat?</h3>
+     + <h3>Become a creative foodie</h3>
+  ~ XDLS903_3_0.html: -5 +5
+     - <div class="clickDropContent activity dropbox" number="3A">
+     - <h5>Why should you feed your wairua?</h5>
+     - <h5>Add activities that strengthen your wairua</h5>
+     - <div class="row">
+     - <h5>Create</h5>
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="3A">
+     + <h3>Why should you feed your wairua?</h3>
+     + <h3>Add activities that strengthen your wairua</h3>
+     + <h3>Create</h3>
+  ~ XDLS903_4_0.html: -7 +7
+     - <div class="clickDropContent activity dropbox" number="4A">
+     - <h5>Learn to be nice to yourself</h5>
+     - <h5>How to be nice to yourself?</h5>
+     - <h5>Being nice to yourself vs being harsh on yourself.</h5>
+     - <h5>Is self-care important?</h5>
+     - <div class="row">
+     - <h5>Create</h5>
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="4A">
+     + <h3>Learn to be nice to yourself</h3>
+     + <h3>How to be nice to yourself?</h3>
+     + <h3>Being nice to yourself vs being harsh on yourself.</h3>
+     + <h3>Is self-care important?</h3>
+     + <h3>Create</h3>
+  ~ XDLS903_5_0.html: -2 +2
+     - <div class="clickDropContent activity dropbox" number="5A">
+     - <div class="row">
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="5A">
+  ~ XDLS903_6_0.html: -2 +2
+     - <div class="clickDropContent activity dropbox" number="6A">
+     - <div class="row">
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="6A">
+  ~ XDLS903_7_0.html: -2 +2
+     - <div class="clickDropContent activity dropbox" number="7A">
+     - <div class="row">
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="7A">
+XDLS903: identical 2 / changed 6
+  ~ XDLS904_1_0.html: -8 +8
+     - <div class="clickDropContent activity dropbox" number="1A">
+     - <h5>Learn some moves with your whānau and perform them in the right order</h5>
+     - <h5>Why get healthy as a group?</h5>
+     - <h5>Add to your routine</h5>
+     - <h5>Movement vs sitting</h5>
+     - <h5>Do kiwis get enough exercise?</h5>
+     - <div class="row">
+     - <h5>Creation inspired by movement</h5>
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="1A">
+     + <h3>Learn some moves with your whānau and perform them in the right order</h3>
+     + <h3>Why get healthy as a group?</h3>
+     + <h3>Add to your routine</h3>
+     + <h3>Movement vs sitting</h3>
+     + <h3>Do kiwis get enough exercise?</h3>
+     + <h3>Creation inspired by movement</h3>
+  ~ XDLS904_2_0.html: -8 +8
+     - <div class="clickDropContent activity dropbox" number="2A">
+     - <h5>Learn to identify healthy and unhealthy food options</h5>
+     - <h5>Why feed the whānau healthy food?</h5>
+     - <h5>Add food to your routine; make, grow or eat healthy.</h5>
+     - <h5>Eating together vs eating alone</h5>
+     - <h5>Should food be a human right?</h5>
+     - <div class="row">
+     - <h5>Become a creative foodie</h5>
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="2A">
+     + <h3>Learn to identify healthy and unhealthy food options</h3>
+     + <h3>Why feed the whānau healthy food?</h3>
+     + <h3>Add food to your routine; make, grow or eat healthy.</h3>
+     + <h3>Eating together vs eating alone</h3>
+     + <h3>Should food be a human right?</h3>
+     + <h3>Become a creative foodie</h3>
+  ~ XDLS904_3_0.html: -8 +8
+     - <div class="clickDropContent activity dropbox" number="3A">
+     - <h5>Learn</h5>
+     - <h5>Why celebrate?</h5>
+     - <h5>Add a celebration to your life</h5>
+     - <h5>Inclusive celebrations vs celebrations that some people do not enjoy</h5>
+     - <h5>Do enough New Zealanders celebrate Matariki?</h5>
+     - <div class="row">
+     - <h5>Celebrate.</h5>
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="3A">
+     + <h3>Learn</h3>
+     + <h3>Why celebrate?</h3>
+     + <h3>Add a celebration to your life</h3>
+     + <h3>Inclusive celebrations vs celebrations that some people do not enjoy</h3>
+     + <h3>Do enough New Zealanders celebrate Matariki?</h3>
+     + <h3>Celebrate.</h3>
+  ~ XDLS904_4_0.html: -8 +8
+     - <div class="clickDropContent activity dropbox" number="4A">
+     - <h5>Learn your whānau rules</h5>
+     - <h5>Why focus on you?</h5>
+     - <h5>Add to your routine</h5>
+     - <h5>Mood changes: Pre puberty vs puberty</h5>
+     - <h5>Do we need whānau meetings?</h5>
+     - <h5>Create</h5>
+     - <div class="row">
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="4A">
+     + <h3>Learn your whānau rules</h3>
+     + <h3>Why focus on you?</h3>
+     + <h3>Add to your routine</h3>
+     + <h3>Mood changes: Pre puberty vs puberty</h3>
+     + <h3>Do we need whānau meetings?</h3>
+     + <h3>Create</h3>
+  ~ XDLS904_6_0.html: -8 +8
+     - <div class="clickDropContent activity dropbox" number="6A">
+     - <h5>Learn your ikigai by heart</h5>
+     - <h5>What is ikigai</h5>
+     - <h5>Add to your routine</h5>
+     - <h5>Do we achieve work/life balance as a whānau</h5>
+     - <h5>Do we achieve work/life balance</h5>
+     - <div class="row">
+     - <h5>Ikigai</h5>
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="6A">
+     + <h3>Learn your ikigai by heart</h3>
+     + <h3>What is ikigai</h3>
+     + <h3>Add to your routine</h3>
+     + <h3>Do we achieve work/life balance as a whānau</h3>
+     + <h3>Do we achieve work/life balance</h3>
+     + <h3>Ikigai</h3>
+  ~ XDLS904_7_0.html: -8 +8
+     - <div class="clickDropContent activity dropbox" number="7A">
+     - <h5>Learn to estimate costs and add amounts together.</h5>
+     - <h5>How my whānau budgets?</h5>
+     - <h5>Add to your routine</h5>
+     - <h5>How my whānau budget vs choices I would make if I was in charge of the budget.</h5>
+     - <h5>Do Aotearoa New Zealand households pay too much for things we need?</h5>
+     - <div class="row">
+     - <h5>Budget</h5>
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="7A">
+     + <h3>Learn to estimate costs and add amounts together.</h3>
+     + <h3>How my whānau budgets?</h3>
+     + <h3>Add to your routine</h3>
+     + <h3>How my whānau budget vs choices I would make if I was in charge of the budget.</h3>
+     + <h3>Do Aotearoa New Zealand households pay too much for things we need?</h3>
+     + <h3>Budget</h3>
+XDLS904: identical 2 / changed 6
+  ~ XDLS905_1_0.html: -8 +8
+     - <div class="clickDropContent activity dropbox" number="1A">
+     - <h5>Learn some moves and perform them in the right order</h5>
+     - <h5>How does the mind benefit from exercise?</h5>
+     - <h5>Add to your routine</h5>
+     - <h5>Exercise vs no exercise</h5>
+     - <h5>Should health funding go to gyms and other exercise facilities?</h5>
+     - <div class="row">
+     - <h5>Creation inspired by movement</h5>
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="1A">
+     + <h3>Learn some moves and perform them in the right order</h3>
+     + <h3>How does the mind benefit from exercise?</h3>
+     + <h3>Add to your routine</h3>
+     + <h3>Exercise vs no exercise</h3>
+     + <h3>Should health funding go to gyms and other exercise facilities?</h3>
+     + <h3>Creation inspired by movement</h3>
+  ~ XDLS905_2_0.html: -8 +8
+     - <div class="clickDropContent activity dropbox" number="2A">
+     - <h5>Learn how to add variety to your diet.</h5>
+     - <h5>Why eat a variety of plants each week?</h5>
+     - <h5>Add food to your routine; make, grow or eat healthy.</h5>
+     - <h5>Eating plants vs eating processed foods</h5>
+     - <h5>Should fruit and vegetables be taxed?</h5>
+     - <div class="row">
+     - <h5>Become a creative foodie</h5>
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="2A">
+     + <h3>Learn how to add variety to your diet.</h3>
+     + <h3>Why eat a variety of plants each week?</h3>
+     + <h3>Add food to your routine; make, grow or eat healthy.</h3>
+     + <h3>Eating plants vs eating processed foods</h3>
+     + <h3>Should fruit and vegetables be taxed?</h3>
+     + <h3>Become a creative foodie</h3>
+  ~ XDLS905_3_0.html: -8 +8
+     - <div class="clickDropContent activity dropbox" number="3A">
+     - <h5>Learn non-sleep deep rest</h5>
+     - <h5>Why sleep?</h5>
+     - <h5>Add sleep or rest to your routine.</h5>
+     - <h5>Sleeping well vs tired</h5>
+     - <h5>Do I get enough sleep?</h5>
+     - <div class="row">
+     - <h5>Sleep aids.</h5>
+     + <div class="row clickDropContent noBorder">
+     + <h3>Learn non-sleep deep rest</h3>
+     + <h3>Why sleep?</h3>
+     + <h3>Add sleep or rest to your routine.</h3>
+     + <h3>Sleeping well vs tired</h3>
+     + <h3>Do I get enough sleep?</h3>
+     + <div class="activity dropbox" number="3A">
+     + <h3>Sleep aids.</h3>
+  ~ XDLS905_5_0.html: -8 +8
+     - <div class="clickDropContent activity dropbox" number="5A">
+     - <h5>Learn healthy friendship routines.</h5>
+     - <h5>Who are the people important to you in your life?</h5>
+     - <h5>Add to your routine</h5>
+     - <h5>Healthy vs unhealthy relationships</h5>
+     - <h5>Are friendships important?</h5>
+     - <div class="row">
+     - <h5>Create</h5>
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="5A">
+     + <h3>Learn healthy friendship routines.</h3>
+     + <h3>Who are the people important to you in your life?</h3>
+     + <h3>Add to your routine</h3>
+     + <h3>Healthy vs unhealthy relationships</h3>
+     + <h3>Are friendships important?</h3>
+     + <h3>Create</h3>
+  ~ XDLS905_6_0.html: -7 +7
+     - <div class="clickDropContent activity dropbox" number="6A">
+     - <h5>Learn to express your strengths.</h5>
+     - <h5>Why is resilience important to getting a job done?</h5>
+     - <h5>Add to your routine</h5>
+     - <div class="row">
+     - <h5>Focus on strengths vs focus on weaknesses</h5>
+     - <h5>Resilience</h5>
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="6A">
+     + <h3>Learn to express your strengths.</h3>
+     + <h3>Why is resilience important to getting a job done?</h3>
+     + <h3>Add to your routine</h3>
+     + <h3>Focus on strengths vs focus on weaknesses</h3>
+     + <h3>Resilience</h3>
+  ~ XDLS905_7_0.html: -8 +8
+     - <div class="clickDropContent activity dropbox" number="7A">
+     - <h5>Learn to estimate costs and add amounts together</h5>
+     - <h5>How can people save money?</h5>
+     - <h5>Add to your routine</h5>
+     - <h5>Not enough vs enough</h5>
+     - <h5>Is New Zealand meeting people’s human rights?</h5>
+     - <div class="row">
+     - <h5>Budget</h5>
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="7A">
+     + <h3>Learn to estimate costs and add amounts together</h3>
+     + <h3>How can people save money?</h3>
+     + <h3>Add to your routine</h3>
+     + <h3>Not enough vs enough</h3>
+     + <h3>Is New Zealand meeting people’s human rights?</h3>
+     + <h3>Budget</h3>
+XDLS905: identical 2 / changed 6
+  ~ XDLS906_1_0.html: -8 +8
+     - <div class="clickDropContent activity dropbox" number="1A">
+     - <h5><span class="infoTrigger" info="woven fish">Raranga Ika</span></h5>
+     - <h5>How does your well-being improve when you let nature come into your life?</h5>
+     - <h5>Add to your routine</h5>
+     - <h5>Natural vs man-made</h5>
+     - <h5>Should people spend more time in nature?</h5>
+     - <div class="row">
+     - <h5>Creation inspired by nature</h5>
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="1A">
+     + <h3><span class="infoTrigger" info="woven fish">Raranga Ika</span></h3>
+     + <h3>How does your well-being improve when you let nature come into your life?</h3>
+     + <h3>Add to your routine</h3>
+     + <h3>Natural vs man-made</h3>
+     + <h3>Should people spend more time in nature?</h3>
+     + <h3>Creation inspired by nature</h3>
+  ~ XDLS906_2_0.html: -7 +7
+     - <div class="clickDropContent activity dropbox" number="2A">
+     - <h5>Add local plants to your diet.</h5>
+     - <h5>Add food to your routine: make, grow or eat healthy.</h5>
+     - <h5>Eating local vs eating foods grown and made far away</h5>
+     - <h5>Should we eat more wild food?</h5>
+     - <div class="row">
+     - <h5>Become a creative foodie</h5>
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="2A">
+     + <h3>Add local plants to your diet.</h3>
+     + <h3>Add food to your routine: make, grow or eat healthy.</h3>
+     + <h3>Eating local vs eating foods grown and made far away</h3>
+     + <h3>Should we eat more wild food?</h3>
+     + <h3>Become a creative foodie</h3>
+  ~ XDLS906_4_0.html: -8 +8
+     - <div class="clickDropContent activity dropbox" number="4A">
+     - <h5>Swap a bad habit for a good habit.</h5>
+     - <h5>Explain the circadian rhythm and how it impacts your sleep patterns.</h5>
+     - <h5>Add to your routine</h5>
+     - <h5>Natural vs man made sleep patterns</h5>
+     - <h5>Should people light up the world at night?</h5>
+     - <div class="row">
+     - <h5>Creation inspired by natural cycles</h5>
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="4A">
+     + <h3>Swap a bad habit for a good habit.</h3>
+     + <h3>Explain the circadian rhythm and how it impacts your sleep patterns.</h3>
+     + <h3>Add to your routine</h3>
+     + <h3>Natural vs man made sleep patterns</h3>
+     + <h3>Should people light up the world at night?</h3>
+     + <h3>Creation inspired by natural cycles</h3>
+  ~ XDLS906_6_0.html: -8 +8
+     - <div class="clickDropContent activity dropbox" number="6A">
+     - <h5>Learn directions.</h5>
+     - <h5>Explain why it is good to walk, pedal or push your way to work.</h5>
+     - <h5>Add to your routine</h5>
+     - <h5>Taking the car vs moving your body to get to work.</h5>
+     - <h5>Should people leave the car at home?</h5>
+     - <div class="row">
+     - <h5>Creative ways to get to around</h5>
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="6A">
+     + <h3>Learn directions.</h3>
+     + <h3>Explain why it is good to walk, pedal or push your way to work.</h3>
+     + <h3>Add to your routine</h3>
+     + <h3>Taking the car vs moving your body to get to work.</h3>
+     + <h3>Should people leave the car at home?</h3>
+     + <h3>Creative ways to get to around</h3>
+  ~ XDLS906_7_0.html: -8 +8
+     - <div class="clickDropContent activity dropbox" number="7A">
+     - <h5>Learn to meet your basic needs while creating.</h5>
+     - <h5>Explain how to keep healthy as a creative.</h5>
+     - <h5>Add to your routine</h5>
+     - <h5>Taking the car vs moving your body to get to work.</h5>
+     - <h5>Do we need to connect with the land/whenua<b>?</b></h5>
+     - <div class="row">
+     - <h5>Creative ways to connect with whenua</h5>
+     + <div class="row clickDropContent noBorder">
+     + <div class="activity dropbox" number="7A">
+     + <h3>Learn to meet your basic needs while creating.</h3>
+     + <h3>Explain how to keep healthy as a creative.</h3>
+     + <h3>Add to your routine</h3>
+     + <h3>Taking the car vs moving your body to get to work.</h3>
+     + <h3>Do we need to connect with the land/whenua<b>?</b></h3>
+     + <h3>Creative ways to connect with whenua</h3>
+XDLS906: identical 3 / changed 5
+XDLS908: identical 9 / changed 0
+XDLS909: identical 5 / changed 0
+XDLS911: identical 2 / changed 0
+XDLS912: identical 6 / changed 0
+XFUN01: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+XGF9001: identical 7 / changed 0
+XGF9002: identical 10 / changed 0
+XGF9003: identical 6 / changed 0
+XGF9004: identical 18 / changed 0
+XGF9006: identical 8 / changed 0
+XLP01: identical 5 / changed 0
+XLP02: identical 7 / changed 0
+XLP03: identical 6 / changed 0
+XLP04: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+XLP06: identical 3 / changed 0
+XMES101: identical 9 / changed 0
+XMES102: identical 6 / changed 0
+XMES103: identical 6 / changed 0
+XMES201: identical 6 / changed 0
+XMES203: identical 6 / changed 0
+XTAS101: identical 5 / changed 0
+XTAS102: identical 6 / changed 0
+XTAS103: identical 7 / changed 0
+XWHA01: identical 2 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 482 / changed 30 / missing 0 over 122 modules
+CHANGED: XDLS902/XDLS902_1_0.html XDLS902/XDLS902_2_0.html XDLS902/XDLS902_3_0.html XDLS902/XDLS902_4_0.html XDLS902/XDLS902_5_0.html XDLS902/XDLS902_6_0.html XDLS902/XDLS902_7_0.html XDLS903/XDLS903_2_0.html XDLS903/XDLS903_3_0.html XDLS903/XDLS903_4_0.html XDLS903/XDLS903_5_0.html XDLS903/XDLS903_6_0.html XDLS903/XDLS903_7_0.html XDLS904/XDLS904_1_0.html XDLS904/XDLS904_2_0.html XDLS904/XDLS904_3_0.html XDLS904/XDLS904_4_0.html XDLS904/XDLS904_6_0.html XDLS904/XDLS904_7_0.html XDLS905/XDLS905_1_0.html XDLS905/XDLS905_2_0.html XDLS905/XDLS905_3_0.html XDLS905/XDLS905_5_0.html XDLS905/XDLS905_6_0.html XDLS905/XDLS905_7_0.html XDLS906/XDLS906_1_0.html XDLS906/XDLS906_2_0.html XDLS906/XDLS906_4_0.html XDLS906/XDLS906_6_0.html XDLS906/XDLS906_7_0.html
