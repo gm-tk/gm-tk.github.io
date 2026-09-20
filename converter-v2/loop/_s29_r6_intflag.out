@@ -1,0 +1,80 @@
+number-paired boxes by what Claude's box holds → (gold flag / Claude flag):
+  none                                     n=1961  gold:plain / claude:plain 1349  gold:int / claude:plain 446  gold:int / claude:int 114  gold:plain / claude:int 52
+      e.g. gold:plain / claude:int: TRR108_2_0.html 2A, TRR109_1_0.html 1.6, TRR114_1_0.html 1A
+      e.g. gold:int / claude:plain: ARFUN02_0_0.html 3C, ARFUN03_0_0.html 3B, ENFUN01_0_0.html 3B
+  dump:unclassified                        n=764   gold:int / claude:plain 269  gold:plain / claude:plain 258  gold:int / claude:int 168  gold:plain / claude:int 69
+      e.g. gold:int / claude:plain: ARFUN02_0_0.html 3A, CHFUN08_0_0.html 1A, ENFUN01_0_0.html 1C
+      e.g. gold:plain / claude:int: CEDO202_0_0.html 8A, CEDO204_0_0.html 2A, CEDT104_0_0.html 1A
+  dump:dragAndDrop                         n=580   gold:int / claude:int 511  gold:plain / claude:int 69
+      e.g. gold:plain / claude:int: HPFUN303_0_0.html 1A, MXFUN01_3_0.html 2A, MXFUN01_3_0.html 2D
+  dump:multiChoiceQuiz                     n=219   gold:int / claude:int 143  gold:plain / claude:int 76
+      e.g. gold:plain / claude:int: ARFUN01_0_0.html 1A, ARFUN01_0_0.html 2A, ARFUN01_0_0.html 3A
+  built:carousel                           n=183   gold:plain / claude:plain 161  gold:int / claude:plain 22
+      e.g. gold:int / claude:plain: ENFUN08_0_0.html 2A, SCFUN01_0_0.html 2B, WJFUN107_0_0.html 1A
+  dump:selfCheck                           n=133   gold:int / claude:int 109  gold:plain / claude:int 24
+      e.g. gold:plain / claude:int: BLL110_0_0.html 1C, BLL110_0_0.html 3D, BLL110_0_0.html 4D
+  dump:carousel                            n=112   gold:plain / claude:plain 73  gold:int / claude:plain 24  gold:plain / claude:int 10  gold:int / claude:int 5
+      e.g. gold:int / claude:plain: TRR301_1_0.html 1A, TRR301_1_0.html 1B, TRR301_2_0.html 2A
+      e.g. gold:plain / claude:int: SSFUN01_0_0.html 4B, SSFUN01_0_0.html 4D, XFUN02_4_0.html 3C
+  dump:typing                              n=105   gold:int / claude:int 100  gold:plain / claude:int 5
+      e.g. gold:plain / claude:int: ENFUN04_0_0.html 2D, CEDO502_5_0.html 5B, CEDR501_5_0.html 4B
+  dump:interactive                         n=95    gold:plain / claude:plain 34  gold:int / claude:int 22  gold:plain / claude:int 21  gold:int / claude:plain 18
+      e.g. gold:int / claude:plain: SSFUN02_0_0.html 1B, SSFUN02_0_0.html 1C, SSFUN02_0_0.html 2C
+      e.g. gold:plain / claude:int: SSFUN06_0_0.html 3A, ANZH104_7_0.html 7A, ANZH105_5_0.html 5A
+  dump:dropDown                            n=83    gold:int / claude:int 70  gold:plain / claude:int 13
+      e.g. gold:plain / claude:int: CEDO202_0_0.html 8B, CEDT101_0_0.html 2C, CEDT101_0_0.html 2E
+  built:dragAndDrop                        n=82    gold:int / claude:int 70  gold:plain / claude:int 8  gold:int / claude:plain 4
+      e.g. gold:plain / claude:int: TEFUN06_0_0.html 2A, BLL233_1_0.html 1C, BLL244_1_0.html 1C
+      e.g. gold:int / claude:plain: BLL210_0_0.html 3B, BLL230_0_0.html 1C, BLL216_1_0.html 1B
+  dump:clickDrop                           n=73    gold:plain / claude:plain 56  gold:int / claude:plain 14  gold:plain / claude:int 2  gold:int / claude:int 1
+      e.g. gold:int / claude:plain: ENFUN03_0_0.html 2C, XFUN02_2_0.html 1A, CEDW501_1_0.html 1A
+      e.g. gold:plain / claude:int: JPFUN02_0_0.html 1A, PHE1007_9_0.html 9A
+  built:accordion                          n=63    gold:plain / claude:plain 47  gold:int / claude:plain 14  gold:plain / claude:int 2
+      e.g. gold:plain / claude:int: ANZH105_1_0.html 1A, MXDI202_2_0.html 2B
+      e.g. gold:int / claude:plain: BLL164_1_0.html 1E, BLL165_1_0.html 1D, BLL246_2_0.html 2A
+  dump:radioQuiz                           n=60    gold:int / claude:int 55  gold:plain / claude:int 5
+      e.g. gold:plain / claude:int: SSFUN03_0_0.html 2C, AGH1004_3_0.html 3B, AGH1007_4_0.html 4B
+  dump:reorder                             n=59    gold:int / claude:int 55  gold:plain / claude:int 4
+      e.g. gold:plain / claude:int: ENFUN02_0_0.html 1C, AGH1006_2_0.html 2A, ENGC201_5_0.html 5A
+  dump:modal                               n=48    gold:plain / claude:plain 40  gold:int / claude:int 4  gold:int / claude:plain 3  gold:plain / claude:int 1
+      e.g. gold:plain / claude:int: SSFUN01_0_0.html 3D
+      e.g. gold:int / claude:plain: CEDW101_0_0.html 1B, BLL146_2_0.html 2A, MXDI101_1_4.html 3C
+  built:clickDrop                          n=46    gold:plain / claude:plain 37  gold:int / claude:plain 9
+      e.g. gold:int / claude:plain: BLL245_2_0.html 2A, BLL246_2_0.html 2B, BLL254_1_0.html 1B
+  dump:flipCard                            n=43    gold:plain / claude:plain 28  gold:int / claude:plain 13  gold:plain / claude:int 1  gold:int / claude:int 1
+      e.g. gold:int / claude:plain: ARFUN02_0_0.html 2A, ENFUN01_0_0.html 3A, SSFUN01_0_0.html 2C
+      e.g. gold:plain / claude:int: MXFU202_1_0.html 1F
+  built:TKmodal                            n=41    gold:plain / claude:plain 41
+  dump:accordion                           n=37    gold:plain / claude:plain 25  gold:int / claude:plain 9  gold:int / claude:int 3
+      e.g. gold:int / claude:plain: WJFUN304_0_0.html 3C, BLL112_2_0.html 2B, BLL246_1_0.html 1B
+  built:flipCard                           n=34    gold:plain / claude:plain 20  gold:int / claude:plain 13  gold:plain / claude:int 1
+      e.g. gold:int / claude:plain: ENFUN01_0_0.html 1B, ENFUN02_0_0.html 2A, ENFUN03_0_0.html 3A
+      e.g. gold:plain / claude:int: CEDO202_0_0.html 6A
+  built:speechBubble                       n=33    gold:plain / claude:plain 19  gold:int / claude:plain 12  gold:plain / claude:int 1  gold:int / claude:int 1
+      e.g. gold:int / claude:plain: WJFUN106_0_0.html 3C, WJFUN108_0_0.html 2D, WJFUN116_0_0.html 1B
+      e.g. gold:plain / claude:int: MXFU201_4_0.html 4H
+  dump:slider                              n=28    gold:int / claude:plain 14  gold:plain / claude:plain 14
+      e.g. gold:int / claude:plain: WJFUN112_0_0.html 2B, HPRE203_4_0.html 4A, OSAI101_2_0.html 2B
+  dump:memoryGame                          n=27    gold:int / claude:int 23  gold:plain / claude:int 4
+      e.g. gold:plain / claude:int: WJFUN115_0_0.html 3E, BLL230_0_0.html 4A, OSOH101_2_0.html 2D
+  built:accordion+built:carousel           n=20    gold:plain / claude:plain 19  gold:int / claude:plain 1
+      e.g. gold:int / claude:plain: BLL236_2_0.html 2C
+  dump:selectionBox                        n=19    gold:int / claude:int 14  gold:plain / claude:int 5
+      e.g. gold:plain / claude:int: SSFUN01_0_0.html 2B, XFUN02_3_0.html 2B, CEDK501_10_0.html 6B
+  built:dropQuiz                           n=16    gold:int / claude:int 15  gold:plain / claude:int 1
+      e.g. gold:plain / claude:int: MXFL301_2_0.html 2D
+  dump:tabs                                n=13    gold:plain / claude:plain 9  gold:int / claude:plain 3  gold:int / claude:int 1
+      e.g. gold:int / claude:plain: WJFUN212_0_0.html 2A, TEDC401_1_0.html 1F, TEDC401_5_0.html 5B
+  dump:crossword                           n=11    gold:int / claude:int 11
+  dump:wordFind                            n=11    gold:int / claude:plain 11
+      e.g. gold:int / claude:plain: WJFUN113_0_0.html 1C, WJFUN210_0_0.html 2D, BLL244_1_0.html 1A
+  built:tabs                               n=11    gold:plain / claude:plain 6  gold:int / claude:plain 5
+      e.g. gold:int / claude:plain: BLL236_1_0.html 1B, BLL245_1_0.html 1A, PHE1005_1_0.html 1A
+  dump:clickingOrder                       n=9     gold:int / claude:int 9
+  dump:wordDrag                            n=9     gold:int / claude:int 9
+
+by group:
+  Standard       1-10 Blended Literacy      n=857   gold:plain / claude:plain 434  gold:int / claude:int 214  gold:int / claude:plain 168  gold:plain / claude:int 41
+  Standard       1-10 Mathematics           n=827   gold:plain / claude:plain 281  gold:int / claude:int 276  gold:int / claude:plain 192  gold:plain / claude:int 78
+  Standard       1-10 English               n=607   gold:plain / claude:plain 251  gold:int / claude:int 194  gold:int / claude:plain 113  gold:plain / claude:int 49
+  Standard       NCEA1                      n=472   gold:plain / claude:plain 228 

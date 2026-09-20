@@ -1,0 +1,283 @@
+GER1002: identical 3 / changed 0
+GEWHA: identical 1 / changed 0
+  ~ HES1002_5_0.html: -20 +23
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [reorder] marker — no content ca
+     - <h3>Most effective</h3>
+     - <p>Sort the following methods of contraception from least effective to most effective at preventing pregnancy.
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Dev – I will place the pictures/medi
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - </div>
+     - </div>
+     + <h3>Most effective</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="HES1002-04-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Dev – I will place the pictures/medi
+     + <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: reorder — Activity (inline) — see H
+     + <div style="font-size: 0.95em">
+     + <p>Sort the following methods of contraception from least effective to most effective at preventing pregnancy.
+     + <p>[Insert media item 21] Emergency pill</p>
+     + <p>[Insert media item 14] Condom</p>
+     + <p>[Insert media item 16] Combined pill</p>
+     + <p>[Insert media item 18] Contraceptive injection</p>
+     + <p>[Insert media item 15] IUD</p>
+     + <p>[Insert media item 20] Abstinence</p>
+     + </div>
+     + </div>
+     + </div>
+     + … 3 more added
+HES1002: identical 6 / changed 1
+HES1003: identical 9 / changed 0
+HES1004: identical 5 / changed 0
+HES1005: identical 9 / changed 0
+HES1006: identical 8 / changed 0
+HES1007: identical 10 / changed 0
+HIS1001: identical 8 / changed 0
+  ~ HIS1002_2_0.html: -42 +33
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dropDown] marker — no content c
+     - <h3>Actions and Responses</h3>
+     - <p>Historical sources often include an explicit declaration of the author’s perspective. However, sometimes a 
+     - <p>Consider the statements below. Does each statement reveal the motivation, experience, belief or value behin
+     - <p>Select one of the multi-choice answers to define each statement of perspective.</p>
+     - <ol>
+     - <li>For de Gaulle, French nuclear capability meant a great power role for France in international affairs.</li
+     - </ol>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Select one: action, response, experi
+     - <ol>
+     - <li>France moved its nuclear programme to Mā’ohi Nui (French Polynesia).</li>
+     - </ol>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Select one: action, motivation, beli
+     - <ol>
+     - <li>The yacht, <i>Vega,</i> was rammed by a French military warship, drawing international attention to the ca
+     - </ol>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Select one: belief, value, motivatio
+     - <ol>
+     - <li>The Pacific Conference of Churches protested, “If it’s safe, test it in Paris”.</li>
+     - </ol>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Select one: action, motivation, expe
+     - <ol>
+     - <li>Aotearoa New Zealand and Australia sent navy frigates into the French testing zone.</li>
+     - </ol>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Select one: action, belief, value, m
+     - <div class="button">Reset</div>
+     - <div class="button">Check Answers</div>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [answer] outside an intera
+     - <p>1.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: For de Gaulle, French nuclear capabil
+     - <p>1.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: France moved its nuclear programme to
+     - <p>1.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: The yacht, Vega, was rammed by a Fren
+     - <p>1.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: The Pacific Conference of Churches pr
+     - <p>1.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Aotearoa New Zealand and Australia se
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - … 2 more removed
+     + <h3>Actions and Responses</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="1" data-cv2-ref="HIS1002-02-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Select one: action, response, experi
+     + <div class="cv2-interactive" data-cv2-index="1" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: dropDown + infoTrigger — Activity 1A
+     + <div style="font-size: 0.95em">
+     + <p>Historical sources often include an explicit declaration of the author’s perspective. However, sometimes a 
+     + <p>Consider the statements below. Does each statement reveal the motivation, experience, belief or value behin
+     + <p>Select one of the multi-choice answers to define each statement of perspective.</p>
+     + <ol>
+     + <li>For de Gaulle, French nuclear capability meant a great power role for France in international affairs.</li
+     + <li>France moved its nuclear programme to Mā’ohi Nui (French Polynesia).</li>
+     + <li>The yacht, <i>Vega,</i> was rammed by a French military warship, drawing international attention to the ca
+     + <li>The Pacific Conference of Churches protested, “If it’s safe, test it in Paris”.</li>
+     + <li>Aotearoa New Zealand and Australia sent navy frigates into the French testing zone.</li>
+     + </ol>
+     + … 13 more added
+HIS1002: identical 20 / changed 1
+HIS1003: identical 11 / changed 0
+HIS1004: identical 11 / changed 0
+HIS1005: identical 15 / changed 0
+HIS1006: identical 15 / changed 0
+HIS1007: identical 7 / changed 0
+HIS1008: identical 12 / changed 0
+HPFUN101: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN103: identical 1 / changed 0
+HPFUN201: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+HPFUN302: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+HPRE203: identical 8 / changed 0
+JPFUN01: identical 1 / changed 0
+JPFUN02: identical 1 / changed 0
+JPN1004: identical 11 / changed 0
+MUS1004: identical 11 / changed 0
+MUS1006: identical 4 / changed 0
+MXDB102: identical 12 / changed 0
+MXDB201: identical 7 / changed 0
+MXDB202: identical 6 / changed 0
+MXDB301: identical 8 / changed 0
+MXDB302: identical 10 / changed 0
+MXDI101: identical 11 / changed 0
+MXDI102: identical 5 / changed 0
+MXDI103: identical 10 / changed 0
+MXDI201: identical 11 / changed 0
+MXDI202: identical 12 / changed 0
+MXDI301: identical 5 / changed 0
+MXEO102: identical 5 / changed 0
+MXEO201: identical 10 / changed 0
+MXEO202: identical 9 / changed 0
+MXEO301: identical 11 / changed 0
+MXEO401: identical 7 / changed 0
+MXEX101: identical 7 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX202: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+MXEX302: identical 8 / changed 0
+MXEX401: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+MXFL102: identical 9 / changed 0
+MXFL103: identical 8 / changed 0
+MXFL104: identical 6 / changed 0
+MXFL201: identical 10 / changed 0
+MXFL202: identical 6 / changed 0
+MXFL203: identical 12 / changed 0
+MXFL204: identical 12 / changed 0
+MXFL301: identical 10 / changed 0
+MXFL302: identical 10 / changed 0
+MXFL401: identical 8 / changed 0
+MXFU201: identical 10 / changed 0
+MXFU202: identical 11 / changed 0
+MXFU301: identical 12 / changed 0
+  ~ MXFU302_3_0.html: -34 +43
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [multiChoiceQuiz] marker — no co
+     - <h3>Understanding Expected Values in Sports</h3>
+     - <p>A basketball player shoots 25 free throws during basketball practice and makes 10 of them. What is the expe
+     - <p>Calculating the probability of an event =</p>
+     - <p>Number of successful attemps</p>
+     - <p>The total number of attempts</p>
+     - <p>P (free throws) = 10</p>
+     - <p>= 25</p>
+     - <p>= 0.4</p>
+     - <p>Use this formula to answer the questions below.</p>
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Questions</th>
+     - <th> Answers </th>
+     - </tr>
+     - <tr>
+     - <td>A soccer player attempted kicking a goal 20 times during a game. He kicked 16 field goals and missed 4 tim
+     - <td> 0.8, 0.6, 0.4, 0.2</td>
+     - </tr>
+     - <tr>
+     - <td>In a hockey game, Amy is taking penalty shots. Amy has taken 32 penalty shots during the season and has su
+     - <td>0.32, 0.25 , 0.5, 0.8</td>
+     - </tr>
+     - <tr>
+     - <td>In a darts game, George needs to hit a double to win the leg. During this game, he has attempted to hit a 
+     - <td>0.15, 0.2, 0.5 , 0.7</td>
+     - </tr>
+     - </table>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <h3>Understanding Expected Values in Sports</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="MXFU302-03-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: multiChoiceQuiz (check) — Activity 3
+     + <div style="font-size: 0.95em">
+     + <p>A basketball player shoots 25 free throws during basketball practice and makes 10 of them. What is the expe
+     + <p>Calculating the probability of an event =</p>
+     + <p>Number of successful attemps</p>
+     + <p>The total number of attempts</p>
+     + <p>P (free throws) = 10</p>
+     + <p>= 25</p>
+     + <p>= 0.4</p>
+     + <p>Use this formula to answer the questions below.</p>
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + … 23 more added
+MXFU302: identical 9 / changed 1
+MXFU401: identical 7 / changed 0
+MXFU402: identical 8 / changed 0
+MXFUN01: identical 19 / changed 0
+MXFUN02: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+MXS1004: identical 9 / changed 0
+OSAH301: identical 4 / changed 0
+OSAH401: identical 5 / changed 0
+OSAH501: identical 6 / changed 0
+OSAI101: identical 3 / changed 0
+OSAI201: identical 4 / changed 0
+OSAI301: identical 4 / changed 0
+OSAI401: identical 5 / changed 0
+OSAI501: identical 6 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY201: identical 4 / changed 0
+OSBY301: identical 4 / changed 0
+OSBY401: identical 5 / changed 0
+OSBY501: identical 6 / changed 0
+OSGM101: identical 3 / changed 0
+OSGM201: identical 4 / changed 0
+OSGM301: identical 4 / changed 0
+OSGM401: identical 5 / changed 0
+OSGM501: identical 6 / changed 0
+OSOH101: identical 4 / changed 0
+OSOH201: identical 4 / changed 0
+OSOH301: identical 4 / changed 0
+OSOH401: identical 5 / changed 0
+OSOH501: identical 6 / changed 0
+OSSC301: identical 4 / changed 0
+OSSC401: identical 5 / changed 0
+OSSC501: identical 6 / changed 0
+OSSM301: identical 5 / changed 0
+OSSM401: identical 5 / changed 0
+PES1001: identical 10 / changed 0
+PES1002: identical 11 / changed 0
+PES1003: identical 11 / changed 0
+PES1004: identical 11 / changed 0
+PES1005: identical 12 / changed 0
+PES1007: identical 12 / changed 0
+PES1008: identical 19 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1004: identical 4 / changed 0
+
+TOTAL: identical 813 / changed 3 / missing 0 over 119 modules
+CHANGED: HES1002/HES1002_5_0.html HIS1002/HIS1002_2_0.html MXFU302/MXFU302_3_0.html

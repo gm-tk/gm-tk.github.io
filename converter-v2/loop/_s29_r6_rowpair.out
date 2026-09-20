@@ -1,0 +1,160 @@
+
+==== (A) CLAUDE BREAKS a row after block L — does the gold flow? ====
+
+-- ALL --
+   activity       gold-disagrees   95 / agrees  121 = 0.44  pages 87 / mods 67  [no-text=126 opener=3993 gold-nowhere=248]
+   p              gold-disagrees   18 / agrees   22 = 0.45  pages 15 / mods 11  [opener=2968 gold-nowhere=214 no-text=79]
+   h3             gold-disagrees   16 / agrees   59 = 0.21  pages 16 / mods 13  [opener=252 gold-nowhere=38 no-text=15]
+   alert          gold-disagrees   11 / agrees    8 = 0.58  pages 11 / mods 8  [opener=323 gold-nowhere=23 no-text=12]
+   alertActivity  gold-disagrees    8 / agrees    1 = 0.89  pages 8 / mods 8  [gold-nowhere=12 opener=26 no-text=32]
+   alert.cultural gold-disagrees    7 / agrees   13 = 0.35  pages 6 / mods 3  [opener=24 gold-nowhere=14 no-text=2]
+   row            gold-disagrees    6 / agrees    6 = 0.50  pages 6 / mods 6  [opener=31 no-text=11 gold-nowhere=15]
+   alert.solid    gold-disagrees    4 / agrees    8 = 0.33  pages 3 / mods 3  [opener=167 no-text=3 gold-nowhere=9]
+   WIDGET         gold-disagrees    3 / agrees    5 = 0.38  pages 3 / mods 3  [opener=1021 gold-nowhere=12 no-text=10]
+   list           gold-disagrees    2 / agrees    3 = 0.40  pages 2 / mods 2  [opener=469 gold-nowhere=20 no-text=7]
+   video          gold-disagrees    2 / agrees    1 = 0.67  pages 2 / mods 2  [opener=613 gold-nowhere=3 no-text=1]
+   div            gold-disagrees    2 / agrees   16 = 0.11  pages 2 / mods 2  [opener=162 gold-nowhere=4 no-text=2]
+   alert.top      gold-disagrees    2 / agrees    2 = 0.50  pages 2 / mods 2  [gold-nowhere=50 opener=25 no-text=9]
+   h2             gold-disagrees    2 / agrees    1 = 0.67  pages 2 / mods 1  [opener=54 gold-nowhere=2]
+   whakatauki     gold-disagrees    2 / agrees    1 = 0.67  pages 2 / mods 2  [opener=16 gold-nowhere=9 no-text=5]
+   table          gold-disagrees    1 / agrees    0 = 1.00  pages 1 / mods 1  [opener=271 gold-nowhere=5]
+   h4             gold-disagrees    1 / agrees    1 = 0.50  pages 1 / mods 1  [opener=202 gold-nowhere=7 no-text=6]
+   img            gold-disagrees    0 / agrees    5 = 0.00  pages 0 / mods 0  [opener=437 no-text=46 gold-nowhere=16]
+
+-- template=Standard --
+   activity       gold-disagrees   85 / agrees  117 = 0.42    [no-text=115 opener=3640 gold-nowhere=235]
+   p              gold-disagrees   16 / agrees   21 = 0.43    [opener=2713 gold-nowhere=192 no-text=77]
+   h3             gold-disagrees   16 / agrees   59 = 0.21    [opener=215 gold-nowhere=24 no-text=15]
+   alert          gold-disagrees    9 / agrees    7 = 0.56    [opener=307 gold-nowhere=11 no-text=4]
+   alertActivity  gold-disagrees    8 / agrees    1 = 0.89    [gold-nowhere=11 opener=26 no-text=31]
+   row            gold-disagrees    5 / agrees    6 = 0.45    [opener=22 no-text=4 gold-nowhere=14]
+   alert.cultural gold-disagrees    5 / agrees   12 = 0.29    [opener=21 no-text=2 gold-nowhere=11]
+   WIDGET         gold-disagrees    3 / agrees    4 = 0.43    [opener=935 gold-nowhere=10 no-text=8]
+   list           gold-disagrees    2 / agrees    3 = 0.40    [opener=441 gold-nowhere=18 no-text=7]
+   video          gold-disagrees    2 / agrees    1 = 0.67    [opener=576 gold-nowhere=3 no-text=1]
+   div            gold-disagrees    2 / agrees   16 = 0.11    [opener=159 gold-nowhere=4 no-text=2]
+   alert.top      gold-disagrees    2 / agrees    2 = 0.50    [gold-nowhere=44 opener=24 no-text=8]
+   h2             gold-disagrees    2 / agrees    1 = 0.67    [opener=30 gold-nowhere=2]
+   whakatauki     gold-disagrees    2 / agrees    0 = 1.00    [opener=14 gold-nowhere=5 no-text=4]
+   alert.solid    gold-disagrees    1 / agrees    3 = 0.25    [opener=147 no-text=2 gold-nowhere=1]
+   table          gold-disagrees    1 / agrees    0 = 1.00    [opener=246 gold-nowhere=4]
+   h4             gold-disagrees    1 / agrees    1 = 0.50    [opener=170 gold-nowhere=5 no-text=5]
+   img            gold-disagrees    0 / agrees    5 = 0.00    [opener=392 no-text=40 gold-nowhere=16]
+
+-- template=Inquiry --
+   activity       gold-disagrees    9 / agrees    1 = 0.90    [opener=195 gold-nowhere=8 no-text=6]
+   p              gold-disagrees    2 / agrees    1 = 0.67    [gold-nowhere=15 opener=134 no-text=1]
+   alert.cultural gold-disagrees    2 / agrees    1 = 0.67    [opener=3 gold-nowhere=3]
+   alert          gold-disagrees    1 / agrees    0 = 1.00    [no-text=7 opener=12 gold-nowhere=9]
+   row            gold-disagrees    1 / agrees    0 = 1.00    [opener=3 no-text=2]
+   WIDGET         gold-disagrees    0 / agrees    1 = 0.00    [opener=40 gold-nowhere=2 no-text=1]
+   whakatauki     gold-disagrees    0 / agrees    1 = 0.00    [opener=2 gold-nowhere=3 no-text=1]
+
+-- template=Fundamentals --
+   alert          gold-disagrees    1 / agrees    1 = 0.50    [opener=4 no-text=1 gold-nowhere=3]
+   activity       gold-disagrees    1 / agrees    3 = 0.25    [opener=72 gold-nowhere=5 no-text=3]
+
+-- template=Bilingual --
+   alert.solid    gold-disagrees    3 / agrees    5 = 0.38    [opener=13 gold-nowhere=6]
+   subject groups with ≥ 0.60 disagree on ≥ 10 boundaries:
+   examples:
+     activity: ANZH301_6_0 L=«div.activity[number=6A]» F=«This was seen in things like kapa h» | BLL123_1_0 L=«div.activity.super-content-button[n» F=«div.row.super-content» | BLL124_2_0 L=«div.activity.interactive[number=2F]» F=«Congratulations on completing Modul» | BLL134_2_0 L=«div.activity[number=2E]» F=«Upload to Dropbox»
+     alert: ANZH401_1_0 L=«div.alert» F=«At different times in history the N» | ANZH401_6_0 L=«div.alert» F=«A society develops characteristics » | ANZH401_7_0 L=«div.alert» F=«As you know from earlier lessons in» | ANZH401_11_0 L=«div.alert» F=«As the economic boom slowed at the »
+     p: BLL135_0_0 L=«Welcome to Module 5. In this module» F=«Get ready to continue on your liter» | CEDK501_2_0 L=«Talia is a 16-year-old student who » F=«Talia has made a list of her expens» | CEDK501_3_1 L=«Here are two realistic case studies» F=«Mere» | CEDO501_5_1 L=«Read Tane’s experience here using B» F=«Kōrero 1:»
+     alertActivity: BLL177_2_0 L=«div.alertActivity» F=«On your white board or paper write » | BLL232_1_0 L=«div.alertActivity» F=«Upload to Dropbox» | GENO901_3_2 L=«div.alertActivity» F=«There is more information about typ» | MXFU402_3_0 L=«div.alertActivity» F=«Simplifying fractions»
+     h3: BLL236_0_0 L=«Introduction» F=«div.row.super-content» | BLL237_0_0 L=«Introduction» F=«div.row.super-content» | BLL241_0_0 L=«Introduction» F=«div.row.super-content» | BLL244_0_0 L=«Introduction» F=«div.row.super-content»
+
+==== (B) CLAUDE FLOWS after block X — does the gold break? ====
+
+-- ALL --
+   p              gold-disagrees  285 / agrees 3408 = 0.08  pages 187 / mods 107  [gold-nowhere=8441]
+   WIDGET         gold-disagrees  159 / agrees   94 = 0.63  pages 129 / mods 76  [gold-nowhere=268 no-text=69]  <== CANDIDATE
+   img            gold-disagrees   97 / agrees  338 = 0.22  pages 78 / mods 59  [gold-nowhere=762 no-text=202]
+   h3             gold-disagrees   80 / agrees 1507 = 0.05  pages 66 / mods 44  [gold-nowhere=1286]
+   list           gold-disagrees   46 / agrees  378 = 0.11  pages 35 / mods 28  [gold-nowhere=663 no-text=2]
+   video          gold-disagrees   42 / agrees  156 = 0.21  pages 41 / mods 31  [gold-nowhere=260 no-text=32]
+   alert          gold-disagrees   28 / agrees   54 = 0.34  pages 26 / mods 17  [gold-nowhere=77 no-text=22]
+   h4             gold-disagrees   27 / agrees  313 = 0.08  pages 15 / mods 12  [gold-nowhere=461]
+   table          gold-disagrees   25 / agrees   54 = 0.32  pages 23 / mods 19  [gold-nowhere=209 no-text=3]
+   div            gold-disagrees   18 / agrees    8 = 0.69  pages 17 / mods 14  [gold-nowhere=33 no-text=2]
+   a              gold-disagrees   15 / agrees   67 = 0.18  pages 14 / mods 14  [gold-nowhere=335]
+   h5             gold-disagrees   11 / agrees  105 = 0.09  pages 5 / mods 5  [gold-nowhere=165]
+   alert.solid    gold-disagrees    8 / agrees   28 = 0.22  pages 7 / mods 7  [gold-nowhere=73 no-text=7]
+   h2             gold-disagrees    4 / agrees   52 = 0.07  pages 4 / mods 3  [gold-nowhere=117]
+   whakatauki     gold-disagrees    2 / agrees   32 = 0.06  pages 2 / mods 2  [gold-nowhere=19 no-text=3]
+   audio          gold-disagrees    1 / agrees   13 = 0.07  pages 1 / mods 1  [no-text=61 gold-nowhere=139]
+   textarea       gold-disagrees    1 / agrees    0 = 1.00  pages 1 / mods 1  [gold-nowhere=4]
+   quote          gold-disagrees    0 / agrees    4 = 0.00  pages 0 / mods 0  [gold-nowhere=15]
+
+-- template=Standard --
+   p              gold-disagrees  218 / agrees 2772 = 0.07    [gold-nowhere=6620]
+   WIDGET         gold-disagrees  150 / agrees   91 = 0.62    [gold-nowhere=245 no-text=65]
+   img            gold-disagrees   95 / agrees  320 = 0.23    [gold-nowhere=703 no-text=186]
+   h3             gold-disagrees   74 / agrees 1418 = 0.05    [gold-nowhere=1138]
+   list           gold-disagrees   42 / agrees  362 = 0.10    [gold-nowhere=550 no-text=2]
+   video          gold-disagrees   40 / agrees  152 = 0.21    [gold-nowhere=234 no-text=27]
+   alert          gold-disagrees   28 / agrees   54 = 0.34    [gold-nowhere=77 no-text=22]
+   table          gold-disagrees   25 / agrees   53 = 0.32    [gold-nowhere=193 no-text=3]
+   a              gold-disagrees   15 / agrees   64 = 0.19    [gold-nowhere=321]
+   div            gold-disagrees   15 / agrees    5 = 0.75    [gold-nowhere=27 no-text=2]
+   h4             gold-disagrees   12 / agrees  293 = 0.04    [gold-nowhere=369]
+   alert.solid    gold-disagrees    8 / agrees   28 = 0.22    [gold-nowhere=73 no-text=7]
+   h5             gold-disagrees    8 / agrees   63 = 0.11    [gold-nowhere=129]
+   h2             gold-disagrees    4 / agrees   52 = 0.07    [gold-nowhere=110]
+   whakatauki     gold-disagrees    2 / agrees   32 = 0.06    [gold-nowhere=19 no-text=3]
+   audio          gold-disagrees    1 / agrees    7 = 0.12    [no-text=58 gold-nowhere=131]
+   textarea       gold-disagrees    1 / agrees    0 = 1.00    [gold-nowhere=4]
+   quote          gold-disagrees    0 / agrees    4 = 0.00    [gold-nowhere=15]
+
+-- template=Inquiry --
+   p              gold-disagrees    5 / agrees   64 = 0.07    [gold-nowhere=339]
+   WIDGET         gold-disagrees    3 / agrees    3 = 0.50    [gold-nowhere=13 no-text=4]
+   div            gold-disagrees    2 / agrees    0 = 1.00    [gold-nowhere=5]
+   h3             gold-disagrees    1 / agrees   13 = 0.07    [gold-nowhere=26]
+   a              gold-disagrees    0 / agrees    2 = 0.00    [gold-nowhere=13]
+   table          gold-disagrees    0 / agrees    1 = 0.00    [gold-nowhere=15]
+   img            gold-disagrees    0 / agrees    6 = 0.00    [no-text=14 gold-nowhere=26]
+   list           gold-disagrees    0 / agrees    6 = 0.00    [gold-nowhere=59]
+   h4             gold-disagrees    0 / agrees    9 = 0.00    [gold-nowhere=35]
+   h5             gold-disagrees    0 / agrees   42 = 0.00    [gold-nowhere=30]
+   video          gold-disagrees    0 / agrees    2 = 0.00    [no-text=4 gold-nowhere=19]
+
+-- template=Fundamentals --
+   WIDGET         gold-disagrees    6 / agrees    0 = 1.00    [gold-nowhere=7]
+   h3             gold-disagrees    4 / agrees   27 = 0.13    [gold-nowhere=37]
+   img            gold-disagrees    2 / agrees    9 = 0.18    [gold-nowhere=18 no-text=2]
+   video          gold-disagrees    1 / agrees    2 = 0.33    [gold-nowhere=6]
+   div            gold-disagrees    1 / agrees    3 = 0.25    [gold-nowhere=1]
+   p              gold-disagrees    0 / agrees   58 = 0.00    [gold-nowhere=188]
+   h4             gold-disagrees    0 / agrees    2 = 0.00    [gold-nowhere=9]
+   list           gold-disagrees    0 / agrees    2 = 0.00    [gold-nowhere=13]
+   a              gold-disagrees    0 / agrees    1 = 0.00    [gold-nowhere=1]
+
+-- template=Bilingual --
+   p              gold-disagrees   62 / agrees  514 = 0.11    [gold-nowhere=1294]
+   h4             gold-disagrees   15 / agrees    9 = 0.62    [gold-nowhere=48]
+   list           gold-disagrees    4 / agrees    8 = 0.33    [gold-nowhere=41]
+   h5             gold-disagrees    3 / agrees    0 = 1.00    [gold-nowhere=5]
+   h3             gold-disagrees    1 / agrees   49 = 0.02    [gold-nowhere=85]
+   video          gold-disagrees    1 / agrees    0 = 1.00    [no-text=1 gold-nowhere=1]
+   audio          gold-disagrees    0 / agrees    6 = 0.00    [no-text=1 gold-nowhere=6]
+   img            gold-disagrees    0 / agrees    3 = 0.00    [gold-nowhere=15]
+   subject groups with ≥ 0.60 disagree on ≥ 10 boundaries:
+     tmpl+subj=Bilingual/Te Marautanga o Aotearoa TMoA h4: 15 / 9 = 0.62
+     tmpl+subj=Standard/1-10 Blended Literacy WIDGET: 6 / 4 = 0.60
+     tmpl+subj=Standard/1-10 Blended Literacy img: 13 / 3 = 0.81
+     tmpl+subj=Standard/1-10 Languages WIDGET: 16 / 1 = 0.94
+     tmpl+subj=Standard/NCEA1 WIDGET: 31 / 12 = 0.72
+     tmpl+subj=Standard/NCEA1 alert: 14 / 5 = 0.74
+   examples:
+     img: AGH1001_1_0 X=«img.img-fluid» Y=«For example:» | AGH1003_8_0 X=«img.img-fluid» Y=«This can also be shown in a table f» | AGH1007_5_0 X=«img.img-fluid» Y=«**June- Mid-July» | AGH1009_7_0 X=«img.img-fluid» Y=«Fencing and planting of waterways i»
+     p: AGH1001_1_0 X=«For example:» Y=«Dairy Farming» | AGH1003_2_0 X=«Irrigation will have no, or minimal» Y=«Revisit this list from earlier in t» | AGH1003_4_0 X=«Benefits of adding organic matter» Y=«Improves water holding capacity of » | AGH1003_8_0 X=«Alternatively, farmers and growers » Y=«When farmers and growers do not pra»
+     WIDGET: AGH1001_2_0 X=«WIDGET» Y=«Pre-European settlement:» | AGH1002_5_0 X=«WIDGET» Y=«Two chemical properties are impacte» | AGH1004_6_0 X=«WIDGET» Y=«Let’s look more closely at an examp» | AGH1007_4_0 X=«WIDGET» Y=«The rest of the digestion in rumina»
+     table: AGH1002_1_0 X=«div.table-responsive» Y=«This process of soil formation take» | AGH1002_3_0 X=«div.table-responsive» Y=«The following factors can impact th» | AGH1009_3_0 X=«div.table-responsive» Y=«When the land was cleared, the soil» | CEDO501_5_1 X=«div.table-responsive» Y=«Here is another example. You may wa»
+     h3: AGH1002_6_0 X=«Organic Matter» Y=«The amount of organic matter in soi» | AGH1004_4_0 X=«Types of Soil» Y=«Soil develops slowly over time with» | AGH1009_2_0 X=«Carbon cycle» Y=«The carbon cycle is a fundamental n» | AGH1009_4_0 X=«] Sediment» Y=«Sediment refers to small particles »
+     video: AGH1002_6_0 X=«div.ratio.ratio-16x9.videoSection» Y=«Soils contain a wide variety of org» | ANZH205_3_0 X=«div.icon.ratio.ratio-16x9.videoSect» Y=«Can you use the videos above to hel» | CEDO501_5_1 X=«div.ratio.ratio-16x9.videoSection» Y=«Read Tane’s experience here using B» | CEDR501_4_0 X=«div.ratio.ratio-16x9.videoSection» Y=«Body language plays a big part in h»
+     a: AGH1004_3_0 X=«Complete activity 3B in your learni» Y=«Ultimately farmers are going to nee» | BLL134_2_0 X=«Upload to Dropbox» Y=«Congratulations on completing Modul» | BLL166_1_1 X=«Upload to Dropbox» Y=«Congratulations on completing Modul» | BLL234_2_0 X=«Upload to dropbox» Y=«Congratulations on completing Modul»
+     alert: BLL242_1_1 X=«div.alert» Y=«Upload to dropbox» | CEDO105_1_0 X=«div.alert» Y=«Great job, let us move on to the ne» | CEDO501_3_0 X=«div.alert» Y=«HTML is the basic building block of» | ENGI201_1_0 X=«div.alert» Y=«The following video can help you id»
+     div: BLLR201_2_0 X=«div.clickDropContent» Y=«In each module, you will have a spe» | CEDK501_6_1 X=«div.flipCardsContainer.row» Y=«Commitment shows up in the choices » | CEDK501_7_0 X=«div.flipCardsContainer.row» Y=«Whether you are studying or working» | ENGC206_1_0 X=«div.flipCardsContainer.row» Y=«You can see the difference that bei»
+     h4: BLLR201_2_0 X=«Spelling list» Y=«I’ll» | ENGC403_8_0 X=«Rhetorical question» Y=«This is a question that is included» | ENGS302_5_0 X=«Dialogue» Y=«Dialogue is very important in films» | HES1007_6_0 X=«Youth vaping rates halve within two» Y=«A survey of more than 30,000 of New»
+     list: BLLR203_5_0 X=«ul» Y=«Before you go to your journal, thin» | CBI1005_9_0 X=«ul» Y=«How did kūmara get to New Zealand?» | CBI1008_2_0 X=«ul» Y=«EFFECTS OF COMBUSTION» | CEDW501_3_0 X=«ul» Y=«However, the consonants and are dif»

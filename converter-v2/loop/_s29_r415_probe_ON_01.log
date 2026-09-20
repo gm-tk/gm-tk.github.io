@@ -1,0 +1,205 @@
+CEDK102: identical 1 / changed 0
+CEDK501: identical 14 / changed 0
+CEDO102: identical 1 / changed 0
+CEDO105: identical 6 / changed 0
+CEDO202: identical 1 / changed 0
+CEDO204: identical 1 / changed 0
+CEDO301: identical 6 / changed 0
+CEDO501: identical 16 / changed 0
+CEDO502: identical 10 / changed 0
+CEDR201: identical 1 / changed 0
+CEDR204: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDR302: identical 1 / changed 0
+CEDR501: identical 11 / changed 0
+CEDT101: identical 1 / changed 0
+CEDT104: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDT208: identical 1 / changed 0
+CEDT301: identical 7 / changed 0
+CEDT404: identical 1 / changed 0
+CEDT501: identical 15 / changed 0
+CEDW101: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+CEDW501: identical 13 / changed 0
+CHFUN01: identical 1 / changed 0
+CHFUN04: identical 1 / changed 0
+CHFUN05: identical 1 / changed 0
+CHFUN06: identical 1 / changed 0
+CHFUN07: identical 1 / changed 0
+CHFUN08: identical 1 / changed 0
+CHI1003: identical 9 / changed 0
+CHI1004: identical 10 / changed 0
+CHI1005: identical 8 / changed 0
+CHWHA: identical 1 / changed 0
+COM1002: identical 9 / changed 0
+COM1005: identical 8 / changed 0
+COM1006: identical 10 / changed 0
+DAN1003: identical 10 / changed 0
+DAN1004: identical 4 / changed 0
+DAN1006: identical 4 / changed 0
+DTC1004: identical 8 / changed 0
+DTC1005: identical 21 / changed 0
+  ~ ENFUN01_0_0.html: -3 +3
+     - <h3>Revise your purpose knowledge.</h3>
+     - <h3>Growing Audience Awareness</h3>
+     - <p>Who is reading, watching, or listening to us when we create things? This is important to consider this befo
+     + <h3>Growing Audience Awareness</h3>
+     + <p>Revise your purpose knowledge.</p>
+     + <p>Who is reading, watching, or listening to us when we create things? This is important to consider this befo
+ENFUN01: identical 0 / changed 1
+ENFUN02: identical 1 / changed 0
+  ~ ENFUN03_0_0.html: -21 +9
+     - <h3>Putting it all together</h3>
+     - <h5>In summary</h5>
+     - <p>In this lesson, we have learned about simple, compound and complex sentences. We have practised using conju
+     - <h3>Putting it all together</h3>
+     - <h5>In summary</h5>
+     - <p>In this lesson, we learned about three types of sentences: simple, compound, and complex. We practised usin
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h3>Putting it all together</h3>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h5>In summary</h5>
+     - <p>In this lesson, we learned how sentence length affects writing pace. Short sentences speed up the pace and 
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <h3>In summary</h3>
+     + <p>Putting it all together</p>
+     + <p>In this lesson, we have learned about simple, compound and complex sentences. We have practised using conju
+     + <h3>In summary</h3>
+     + <p>Putting it all together</p>
+     + <p>In this lesson, we learned about three types of sentences: simple, compound, and complex. We practised usin
+     + <h3>In summary</h3>
+     + <p>Putting it all together</p>
+     + <p>In this lesson, we learned how sentence length affects writing pace. Short sentences speed up the pace and 
+ENFUN03: identical 0 / changed 1
+  ~ ENFUN04_0_0.html: -7 +3
+     - <h3>Test your antonym, synonym, homonym, homophone, and homograph vocabulary knowledge.</h3>
+     - <p>In this lesson, we have learned about synonyms and antonyms. We have also looked at homophones, homonyms an
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <h5>In Summary …</h5>
+     - </div>
+     - </div>
+     + <h3>In Summary …</h3>
+     + <p>Test your antonym, synonym, homonym, homophone, and homograph vocabulary knowledge.</p>
+     + <p>In this lesson, we have learned about synonyms and antonyms. We have also looked at homophones, homonyms an
+ENFUN04: identical 0 / changed 1
+ENFUN05: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+ENFUN08: identical 1 / changed 0
+ENFUN09: identical 1 / changed 0
+ENG1004: identical 8 / changed 0
+ENG1005: identical 6 / changed 0
+ENG1007: identical 1 / changed 0
+ENGC101: identical 6 / changed 0
+ENGC102: identical 8 / changed 0
+ENGC201: identical 7 / changed 0
+ENGC202: identical 9 / changed 0
+ENGC204: identical 7 / changed 0
+ENGC206: identical 8 / changed 0
+ENGC301: identical 8 / changed 0
+ENGC302: identical 8 / changed 0
+ENGC401: identical 8 / changed 0
+ENGC403: identical 16 / changed 0
+ENGFUN02: identical 5 / changed 0
+ENGI101: identical 4 / changed 0
+ENGI102: identical 7 / changed 0
+ENGI103: identical 7 / changed 0
+ENGI201: identical 5 / changed 0
+ENGI202: identical 7 / changed 0
+ENGI203: identical 11 / changed 0
+ENGI301: identical 6 / changed 0
+ENGI302: identical 7 / changed 0
+ENGI303: identical 7 / changed 0
+ENGI400: identical 4 / changed 0
+ENGI401: identical 12 / changed 0
+ENGI405: identical 8 / changed 0
+ENGJ101: identical 5 / changed 0
+ENGJ102: identical 6 / changed 0
+ENGJ201: identical 7 / changed 0
+ENGJ202: identical 6 / changed 0
+ENGJ301: identical 8 / changed 0
+ENGJ302: identical 10 / changed 0
+ENGJ402: identical 9 / changed 0
+ENGJ403: identical 10 / changed 0
+ENGR101: identical 8 / changed 0
+ENGR102: identical 7 / changed 0
+ENGR201: identical 7 / changed 0
+ENGR202: identical 8 / changed 0
+ENGR301: identical 9 / changed 0
+ENGR302: identical 8 / changed 0
+ENGS101: identical 6 / changed 0
+ENGS102: identical 7 / changed 0
+ENGS201: identical 9 / changed 0
+ENGS202: identical 7 / changed 0
+ENGS301: identical 8 / changed 0
+ENGS302: identical 7 / changed 0
+ENGS401: identical 7 / changed 0
+ENGS404: identical 12 / changed 0
+ENGS405: identical 1 / changed 0
+ENO2060: identical 6 / changed 0
+EXBP901: identical 6 / changed 0
+  ~ EXIP901_2_0.html: -10 +23
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [multiChoiceQuiz] marker — no co
+     - <h3>Sophie’s essential questions</h3>
+     - <p>Read Sophie’s essential questions and select if they’re an open or closed question.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Dev – create a quiz set up like true
+     - <p>Can I set up a book swap? C</p>
+     - <p>How will I categorise my books? O</p>
+     - <p>What book genres will appeal to my community? O</p>
+     - <p>Can I make a sign to advertise my book swap? C</p>
+     - <p>Do I need to have a code of conduct for my book swap? C</p>
+     - <p>What should I include in my code of conduct for my book swap? O</p>
+     + <h3>Sophie’s essential questions</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="EXIP901-02-04" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Dev – create a quiz set up like true
+     + <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: multiChoiceQuiz — Activity 2 — see E
+     + <div style="font-size: 0.95em">
+     + <p>Read Sophie’s essential questions and select if they’re an open or closed question.</p>
+     + <p>Can I set up a book swap? C</p>
+     + <p>How will I categorise my books? O</p>
+     + <p>What book genres will appeal to my community? O</p>
+     + <p>Can I make a sign to advertise my book swap? C</p>
+     + <p>Do I need to have a code of conduct for my book swap? C</p>
+     + <p>What should I include in my code of conduct for my book swap? O</p>
+     + </div>
+     + </div>
+     + </div>
+     + … 3 more added
+EXIP901: identical 5 / changed 1
+EXPFUN02: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+EXPFUN04: identical 1 / changed 0
+EXPFUN05: identical 1 / changed 0
+EXPFUN06: identical 1 / changed 0
+EXPFUN07: identical 1 / changed 0
+FRFUN06: identical 10 / changed 0
+FRFUN07: identical 9 / changed 0
+FRFUN08: identical 11 / changed 0
+FRNO901: identical 9 / changed 0
+FRNO902: identical 9 / changed 0
+GENO901: identical 23 / changed 0
+GEO1004: identical 3 / changed 0
+GEO1005: identical 7 / changed 0
+GEO1006: identical 4 / changed 0
+
+TOTAL: identical 707 / changed 4 / missing 0 over 121 modules
+CHANGED: ENFUN01/ENFUN01_0_0.html ENFUN03/ENFUN03_0_0.html ENFUN04/ENFUN04_0_0.html EXIP901/EXIP901_2_0.html

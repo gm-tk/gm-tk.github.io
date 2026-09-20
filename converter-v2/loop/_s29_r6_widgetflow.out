@@ -1,0 +1,28 @@
+after-WIDGET boundaries (Claude flows the next text into the same column) — does the gold BREAK?
+  ANY                    ALL                                      breaks  69 / flows  52 = 0.57  [nowhere 174]  pages 61 / mods 39
+  ANY                    Standard      Online Safety (OS9000)     breaks  21 / flows  17 = 0.55  [nowhere 16]
+  ANY                    Standard      NCEA1                      breaks   9 / flows   8 = 0.53  [nowhere 45]
+  ANY                    Standard      1-10 English               breaks  11 / flows   6 = 0.65  [nowhere 28]
+  ANY                    Standard      Leaving to Learn           breaks   4 / flows   8 = 0.33  [nowhere 31]
+  ANY                    Standard      1-10 Mathematics           breaks   5 / flows   4 = 0.56  [nowhere 14]
+  ANY                    Standard      1-10 Blended Literacy      breaks   3 / flows   4 = 0.43  [nowhere 2]
+  ANY                    Standard      1-10 Health and PE         breaks   6 / flows   0 = 1.00  [nowhere 0]
+  ANY                    Fundamentals  Leaving to Learn           breaks   5 / flows   0 = 1.00  [nowhere 2]
+  built:carousel         ALL                                      breaks   9 / flows   6 = 0.60  [nowhere 24]  pages 9 / mods 6
+  built:flipCardsContainer ALL                                      breaks   3 / flows   2 = 0.60  [nowhere 8]  pages 3 / mods 2
+  built:speechBubble     ALL                                      breaks  34 / flows  23 = 0.60  [nowhere 29]  pages 32 / mods 22
+  built:speechBubble     Standard      Online Safety (OS9000)     breaks  15 / flows  12 = 0.56  [nowhere 9]
+  built:speechBubble     Standard      1-10 English               breaks   5 / flows   4 = 0.56  [nowhere 9]
+  built:speechBubble     Standard      1-10 Blended Literacy      breaks   3 / flows   4 = 0.43  [nowhere 0]
+  built:speechBubble     Standard      1-10 Health and PE         breaks   6 / flows   0 = 1.00  [nowhere 0]
+  handoff                ALL                                      breaks  19 / flows  14 = 0.58  [nowhere 97]  pages 18 / mods 15
+  handoff                Standard      NCEA1                      breaks   4 / flows   4 = 0.50  [nowhere 27]
+  handoff                Standard      Online Safety (OS9000)     breaks   4 / flows   3 = 0.57  [nowhere 7]
+  e.g. built:accordion: ENFUN02_0_0.html Y=«when we write our ideas become stories f»
+  e.g. built:carousel: XFUN02_2_0.html Y=«these signals let us know it s time to r» | XFUN02_5_0.html Y=«in this lesson we will practise setting » | AGH1002_5_0.html Y=«two chemical properties are impacted by »
+  e.g. handoff: XFUN02_3_0.html Y=«look at your bedroom environment and see» | XFUN02_4_0.html Y=«some foods and drinks make our bodies wa» | XFUN02_4_0.html Y=«there are many more than this some exerc»
+  e.g. built:speechBubble: BLLR201_6_0.html Y=«a summary is shorter than a retell» | BLLR201_6_0.html Y=«here are some ways we can explain how we» | BLLR203_1_1.html Y=«we will need to apply this rule to three»
+  e.g. built:flipCardsContainer: ENGR301_5_0.html Y=«to conclude your introduction briefly ou» | ENGR301_6_0.html Y=«hover over harper s body paragraph to se» | PWY1008_3_1_0.html Y=«these things can affect communication be»
+  e.g. built:TKmodal: MXEO301_1_0.html Y=«numbers play a big role in our daily liv»
+  e.g. built:tabs: OSAI201_3_0.html Y=«there are many things ai can be helpful »
+  e.g. built:shapeHover: OSAI501_2_0.html Y=«while it s not perfect and can make mist»

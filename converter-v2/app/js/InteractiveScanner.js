@@ -3125,18 +3125,33 @@ class InteractiveScanner {
 		const instr = [];
 		for (; k < items.length; k++) {
 			const x = items[k];
-			if (x.consumedBy !== undefined) return;
+			if (x.consumedBy !== undefined) break;
 			if (isBlank(x)) continue;
 			if (x.type === "table") { tIdx = k; break; }
-			if (++between > maxBetween) return;
+			if (++between > maxBetween) break;
 			if (x.type === "black" || x.type === "assettodo") continue;
-			if (x.type !== "tag") return;
+			if (x.type !== "tag") break;
 			const p = x.parse?.primary;
 			if (!p) { if (x.parse?.class === "instruction" || x.parse?.instructionFragment) instr.push(x); continue; }
 			if (p.directive === "ELEMENT" && (betweenTags.has(String(p.tag ?? "").toLowerCase()) || betweenMedia.has(String(p.tag ?? "").toLowerCase()))) continue;
-			return;
+			break;
 		}
-		if (tIdx < 0) return;
+		// ROUND 415 — THE OWNED HEADING-LED BUNDLE WITH NO TABLE (data owned_bundles.no_table; env NOTABLEOWNED_OFF):
+		// the quiz written as paragraphs after the heading (`[Activity 1A] [Dropdown Quiz]` + `[H3]` + `[body]` + the
+		// questions as lines — WJFUN307, ENGJ403, ENFUN03). r413 took the heading + prose only when a table followed;
+		// without one the box shipped EMPTY and the section free after it (the gold's same-numbered box holds it on
+		// 60 of Claude's 96 empty writer-owned boxes = 0.63). The heading becomes the first lead item and the member
+		// walk RESUMES right after it — the standard capture with its own terminators takes the section as members.
+		// Owned bundles only — a real owner, or the r92 embedded form whose invocation carries the id
+		// (`[Activity 1A] [Dropdown Quiz]`, its box already exists and shipped empty); the unowned
+		// no-table shape measured 0.41 boxed and stays free.
+		let ntMode = false;
+		if (tIdx < 0) {
+			const nt = ocOn && (owned || bundle.activityId != null) ? oc.no_table : null;
+			if (!nt || nt.enabled === false) return;
+			if (typeof process !== "undefined" && process.env && process.env[nt.env || "NOTABLEOWNED_OFF"]) return;
+			ntMode = true; tIdx = j + 1; instr.length = 0;
+		}
 		// the owner form: a synthetic bare owner (the r402 shape), the heading + prose as the lead,
 		// instruction spans as the bundle's instructions, the walk resumed at the table
 		if (!owned) bundle.activityOwner = { type: "tag", parse: { tags: [], numbers: [], primary: null }, blackAfter: "", _headTableOwner: true };
@@ -3149,7 +3164,7 @@ class InteractiveScanner {
 		bundle.endIndex = this.#swallowMembers(bundle, items, tIdx, headingTerminates, absolute, run, normaliser);
 		if (run && typeof run.AddNote === "function") {
 			run.AddNote("info", "InteractiveScanner",
-				`[${String(inv?.text ?? "").trim()}] — the heading "${String(head.blackAfter ?? normaliser?.RenderText?.(head.text) ?? "").trim().slice(0, 60)}" and its table are the widget's own (heading_table_owner).`);
+				`[${String(inv?.text ?? "").trim()}] — the heading "${String(head.blackAfter ?? normaliser?.RenderText?.(head.text) ?? "").trim().slice(0, 60)}" and ${ntMode ? "the section after it are" : "its table are"} the widget's own (heading_table_owner${ntMode ? ", no_table" : ""}).`);
 		}
 	};
 

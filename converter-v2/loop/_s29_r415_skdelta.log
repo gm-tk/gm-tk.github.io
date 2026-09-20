@@ -1,0 +1,32 @@
+OLD pairs 2349  SCAFFOLD 53.8864%  RAW 37.997%  >=50 1412  >=75 238  >=90 20
+NEW pairs 2349  SCAFFOLD 53.9110%  RAW 37.996%  >=50 1415  >=75 238  >=90 20
+delta SCAFFOLD +0.0246pp  RAW -0.002pp  >=50 +3  >=75 +0  >=90 +0
+movers 26 (up 24 / down 2), pp-sum +57.7
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  MXFU302    MXFU302_3_0.html           53.5 ->   60.0  (+6.5)
+  SCES201    SCES201_1_0.html           56.9 ->   63.2  (+6.2)
+  HIS1002    HIS1002_2_0.html           56.1 ->   61.3  (+5.2)
+  WJFUN211   WJFUN211_0_0.html          49.2 ->   54.1  (+5.0)
+  WJFUN210   WJFUN210_0_0.html          49.3 ->   53.4  (+4.1)
+  HES1002    HES1002_5_0.html           34.2 ->   38.0  (+3.8)
+  WJFUN307   WJFUN307_0_0.html          55.6 ->   59.2  (+3.7)
+  TEFUN05    TEFUN05_0_0.html           52.7 ->   56.2  (+3.5)
+  SCES201    SCES201_2_0.html           66.1 ->   68.8  (+2.7)
+  WJFUN305   WJFUN305_0_0.html          59.5 ->   62.2  (+2.6)
+  WJFUN306   WJFUN306_0_0.html          57.1 ->   59.6  (+2.6)
+  AGH1005    AGH1005_2_0.html           53.5 ->   55.5  (+2.0)
+  TEDC402    TEDC402_3_0.html           46.1 ->   48.0  (+2.0)
+  TEFUN02    TEFUN02_0_0.html           56.7 ->   58.4  (+1.7)
+  SCES201    SCES201_3_0.html           81.3 ->   82.9  (+1.5)
+  WJFUN110   WJFUN110_0_0.html          57.8 ->   59.1  (+1.3)
+  EXIP901    EXIP901_2_0.html           49.4 ->   50.6  (+1.2)
+  WJFUN308   WJFUN308_0_0.html          43.9 ->   45.0  (+1.2)
+  TEDC402    TEDC402_6_0.html           36.0 ->   36.8  (+0.8)
+  WJFUN113   WJFUN113_0_0.html          56.0 ->   56.7  (+0.7)
+  ENFUN04    ENFUN04_0_0.html           54.6 ->   55.1  (+0.5)
+  AGH1006    AGH1006_4_0.html           36.5 ->   36.9  (+0.3)
+  TEDC402    TEDC402_8_0.html           33.4 ->   33.7  (+0.3)
+  TEDC401    TEDC401_3_0.html           13.1 ->   13.4  (+0.3)
+  ENFUN01    ENFUN01_0_0.html           38.6 ->   38.5  (-0.2)
+  ENFUN03    ENFUN03_0_0.html           43.4 ->   41.6  (-1.8)

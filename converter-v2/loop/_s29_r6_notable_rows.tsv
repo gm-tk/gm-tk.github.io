@@ -1,0 +1,125 @@
+AGH1002	3.0	multiChoiceQuiz	h p p p e p p p		«[Interactive: Quiz]»	after«»	cell0«»	head«Nutrient Uptake»	owner«»	prev«T!»	unowned
+AGH1005	2.0	dropDown	h h p p p p p p		«[interactive: Drop down menu]»	after«»	cell0«»	head«Here is a more detailed description of the main **internal**»	owner«»	prev«h»	unowned
+AGH1006	2.0	dragAndDrop	h X		«[interactive: sentence drag and drop or drop-down »	after«»	cell0«»	head«Fill in the sentences to complete the summary statement abou»	owner«»	prev«p»	unowned
+AGH1006	4.0	dragAndDrop	h p e p p X		«[interactive: See drag and drop activity below] *N»	after«»	cell0«»	head«Controlled Environments»	owner«»	prev«I»	unowned
+AGH1006	5.0	dragAndDrop	h p p e h p p p		«[interactive: drag and drop] (Merged content: HTO1»	after«»	cell0«»	head«Pruning»	owner«»	prev«h»	unowned
+AGH1008	5.0	interactive	h p h p h p p p		«[Interactive]»	after«Click on the heading to get th»	cell0«»	head«Increased chance of pregnancy»	owner«»	prev«p»	unowned
+ANZH103	1.0	unclassified	h p p p p p p h		«[Activity: embedded]»	after«Map of Aotearoa with drag and »	cell0«»	head«What happened in 1840?»	owner«»	prev«p»	unowned
+ANZH303	1.0	multiChoiceQuiz	h p X		«[Go to quiz]»	after«»	cell0«»	head«The many meanings of mana»	owner«»	prev«p»	unowned
+CEDR302	0.0	dropDown	h p p p p p p p		«[Keep the dropdown]»	after«»	cell0«»	head«What do I want to know?»	owner«»	prev«p!»	unowned
+CEDT104	0.0	dropDown	h ?		«Please create a dropdown menu for each item]»	after«»	cell0«»	head«»	owner«»	prev«h»	unowned
+CEDT104	0.0	dropDown	h p X		«[Please insert a Dropbox]»	after«»	cell0«»	head«**What have I learned?**»	owner«»	prev«p»	unowned
+CEDT104	0.0	dropDown	h p p I p p I p		«[Dropbox link]»	after«»	cell0«»	head«**Let's check what we've learned**»	owner«»	prev«p»	unowned
+CEDT501	7.0	dropDown	h p p p p p p p		«[Upload to dropbox]»	after«»	cell0«»	head«What if you’re on the receiving end?»	owner«»	prev«I»	unowned
+COM1002	2.0	dropDown	h p I I I I p I		«[Please create an onscreen fill the gap activity. »	after«»	cell0«»	head«**Unincorporated community organisations**»	owner«»	prev«I»	unowned
+DAN1003	1.0	unclassified	h p ?		«[Interactive Activity]»	after«»	cell0«»	head«Drag and drop»	owner«»	prev«p»	unowned
+DTC1005	17.0	dropDown	h p h p h p p h		«[Dropdown]»	after«»	cell0«»	head«Video resolution»	owner«»	prev«h»	unowned
+ENG1005	1.0	dropDown	h p e		«[Button – ENG1005 Working towards dropbox]»	after«»	cell0«»	head«Final assessment.»	owner«»	prev«p!»	unowned
+ENG1005	2.0	dropDown	h p e		«[Button – ENG1005 Working towards dropbox]»	after«»	cell0«»	head«Final assessment.»	owner«»	prev«p»	unowned
+ENGC403	2.0	dropDown	h		«] [insert dropbox formative assessment include aud»	after«»	cell0«»	head«Ka pai! You are going well.»	owner«»	prev«e»	unowned
+ENGJ403	6.0	dropDown	h		«[add a button to the working towards dropbox – for»	after«»	cell0«»	head«Nearly there!»	owner«»	prev«p»	unowned
+ENGS102	2.0	modal	h p p p e I X		«[modal]»	after«https://www.youtube.com/watch?»	cell0«»	head«*The Three Cattle Dogs Gruff*»	owner«»	prev«p»	unowned
+ENGS404	8.0	dropDown	h		«[add a button to the working towards dropbox- form»	after«»	cell0«»	head«Nearly there!»	owner«»	prev«p»	unowned
+ENGS404	9.0	dropDown	h e p		«[add a button to the working towards dropbox- form»	after«»	cell0«»	head«Congratulations! Ngā mihi nui. You have completed this modul»	owner«»	prev«p»	unowned
+EXIP901	2.0	multiChoiceQuiz	h p I p p p p I		«[Quiz – not teacher graded]»	after«»	cell0«»	head«Reflection»	owner«»	prev«T»	unowned
+EXIP901	4.0	dropDown	h e p p e X		«[button to dropbox]»	after«Upload your journal.»	cell0«»	head«Learning Intentions»	owner«»	prev«e»	unowned
+FRFUN06	1.0	multiChoiceQuiz	h p p ?		«[multichoice checklist autocheck]»	after«**bonjour nom maman rose son p»	cell0«»	head«**Self check**»	owner«»	prev«p»	unowned
+GENO901	3.3	typing	h e		«[Placeholder Link to Fundamental GEFUN03 typing sp»	after«»	cell0«»	head«Grammar: nouns in German»	owner«»	prev«p!»	unowned
+HIS1002	11.0	modal	h p e I p X		«[Please insert a full width modal box with the sou»	after«»	cell0«»	head«Source A»	owner«»	prev«p»	unowned
+HIS1002	11.0	modal	h p e I p X		«[Please insert a full-width modal box with the sou»	after«»	cell0«»	head«Source B»	owner«»	prev«p»	unowned
+HPRE203	7.0	dropDown	h p p p e e p p		«[dropbox]»	after«»	cell0«»	head«Share your learning»	owner«»	prev«p»	unowned
+MXFU302	3.0	multiChoiceQuiz	h p p p p p p p		«[Activity 3A Multichoice Check]»	after«»	cell0«»	head«**Understanding Expected Values in Sports**»	owner«»	prev«X!»	unowned
+OSOH101	2.0	modal	h p p p p X		«[modal]»	after«https://drive.google.com/file/»	cell0«»	head«Fun screen time limits»	owner«»	prev«I»	unowned
+OSSC301	1.0	carousel	h p X		«[carousel/slideshow]»	after«https://docs.google.com/presen»	cell0«»	head«Which scam is it?»	owner«»	prev«p»	unowned
+PHE1003	7.0	tabs	h e p p p h p p		«[Tabs]»	after«»	cell0«»	head«Alofa/Aroha/Ofa/Aloha»	owner«»	prev«h»	unowned
+PHE1007	6.0	dropDown	h p p I p I p I		«[Individual activity – drop down quiz ] Dev – each»	after«»	cell0«»	head«Identify the energy system»	owner«»	prev«e»	unowned
+PHE1008	5.0	clickDrop	h e p h e p h e		«[Click drop]»	after«»	cell0«»	head«Sport»	owner«»	prev«p»	unowned
+SCCH301	6.0	flipCard	h X		«[Three flip cards next to each other, with H5 size»	after«»	cell0«»	head«Running hot water over a stuck jar lid often loosens it. Why»	owner«»	prev«p»	unowned
+SCES201	1.0	radioQuiz	h p I ?		«[activity 1a] [radio quiz] [auto check]»	after«»	cell0«»	head«All about stars»	owner«»	prev«p»	unowned
+SCES201	1.0	dragAndDrop	h e p p p p p p		«[Activity 1c] [download then drag and drop activit»	after«»	cell0«»	head«Maramataka wheel.»	owner«»	prev«X»	unowned
+SCES201	2.0	dropDown	h p X		«[Activity 2b] [dropdown quiz paragraph]»	after«»	cell0«»	head«Puanga and Orion»	owner«»	prev«e»	unowned
+SCES201	3.0	dropDown	h p I ?		«[activity 3b] [dropdown quiz] [self check]»	after«»	cell0«»	head«The Matariki whetū»	owner«»	prev«e»	unowned
+SSCI205	9.0	dropDown	h p e e e p		«[Dropbox]»	after«»	cell0«»	head«Share your learning»	owner«»	prev«p!»	unowned
+SSOG103	6.0	dropDown	h p e e e X		«[Dropbox]»	after«»	cell0«»	head«Share your learning»	owner«»	prev«p!»	unowned
+TEDC401	4.0	multiChoiceQuiz	h X		«[self check quiz]»	after«»	cell0«»	head«**Design checkpoint**»	owner«»	prev«X!»	unowned
+TEFUN05	0.0	multiChoiceQuiz	h p X		«[Free text box with file upload capability quiz] [»	after«»	cell0«»	head«Your turn»	owner«»	prev«p»	unowned
+WJFUN110	0.0	dragAndDrop	h X		«[Activity 1B] [drag and drop]»	after«»	cell0«»	head«Match it up!»	owner«»	prev«T!»	unowned
+WJFUN113	0.0	dragAndDrop	h p p p p p p p		«[Activity 2A] [Drag and drop]»	after«»	cell0«»	head«Make a simile»	owner«»	prev«e»	unowned
+WJFUN113	0.0	dragAndDrop	h p p p p p p p		«[Activity 2B] [drag and drop]»	after«»	cell0«»	head«Sound hunt!»	owner«»	prev«e»	unowned
+WJFUN210	0.0	typing	h p p X		«[Activity 1B] [dropquiz] [self-check]»	after«»	cell0«»	head«Practice using figurative language»	owner«»	prev«X!»	unowned
+WJFUN210	0.0	dragAndDrop	h p ?		«[Activity 2B] [drag and drop] [Self Check]»	after«»	cell0«»	head«Choosing effective words»	owner«»	prev«?»	unowned
+WJFUN211	0.0	dropDown	h e e e I e I p		«[Activity 2A] [Dropdown quiz – Auto check] [Please»	after«»	cell0«»	head«Engaging the senses»	owner«»	prev«p»	unowned
+WJFUN211	0.0	dropDown	h p p p p p ?		«[Activity 2B][Dropdown Quiz – Auto Check][Arrange »	after«»	cell0«»	head«Think Like the Reader»	owner«»	prev«p»	unowned
+WJFUN305	0.0	dropDown	h p e p p p p ?		«[Activity 1A] [Dropdown quiz – Auto check] [Arrang»	after«»	cell0«»	head«Audience or Purpose?»	owner«»	prev«X»	unowned
+WJFUN305	0.0	dropDown	h p p p p ?		«[Activity 2A] [Dropdown quiz – Auto check] [Arrang»	after«»	cell0«»	head«Form, Genre, or Style?»	owner«»	prev«p»	unowned
+WJFUN305	0.0	dropDown	h p p p p ?		«[Activity 2C] [Dropdown Quiz – Auto Check] [arrang»	after«»	cell0«»	head«Why did the writer choose that?»	owner«»	prev«X»	unowned
+WJFUN306	0.0	dropDown	h e p p p ?		«[Activity 2C] [Dropdown quiz – autocheck] [positio»	after«»	cell0«»	head«Codes and conventions»	owner«»	prev«X»	unowned
+WJFUN307	0.0	dropDown	h p p p p p p ?		«[Activity 1A] [Dropdown Quiz – Auto Check] [Arrang»	after«»	cell0«»	head«Synonym strength»	owner«»	prev«p»	unowned
+WJFUN307	0.0	selectionBox	h p p p p p ?		«[Activity 2A] [checkbox – Auto Check] [Arrange the»	after«»	cell0«»	head«Spot the language feature»	owner«»	prev«p»	unowned
+WJFUN307	0.0	selectionBox	h p p p p p ?		«[Activity 2B] [checkbox – Auto Check] [Arrange the»	after«»	cell0«»	head«Choose the best language feature»	owner«»	prev«X»	unowned
+WJFUN308	0.0	dropDown	h p p p p p p p		«[Activity 1B] [Dropdown Quiz – Auto Check] [Arrang»	after«»	cell0«»	head«The author's choice»	owner«»	prev«p»	unowned
+XDLS501	3.0	dropDown	h e h e X		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»	head«Mindful Behavior»	owner«»	prev«e»	unowned
+XDLS501	5.0	dropDown	h e X		«[Dropbox If we could embed a dropbox capable of re»	after«»	cell0«»	head«Mindfully sharing ideas and information»	owner«»	prev«e»	unowned
+XGF9001	4.0	multiChoiceQuiz	h p p p p h p p		«[Quiz]»	after«»	cell0«»	head«1. When faced with a big challenge, you:»	owner«»	prev«p»	unowned
+XGF9001	6.0	dropDown	h p p p p p		«[Upload Journal to Dropbox]»	after«»	cell0«»	head«What have we learned and where to next?»	owner«»	prev«e»	unowned
+XGF9003	1.0	modal	h X		«[Pop-out]»	after«Tasks that need immediate atte»	cell0«»	head«**Do this later**»	owner«»	prev«h»	unowned
+XGF9003	1.0	modal	h X		«[Pop-out]»	after«Tasks that are important for y»	cell0«»	head«**Delegate this**»	owner«»	prev«h»	unowned
+XGF9003	1.0	modal	h X		«[Pop-out]»	after«These are tasks that need imme»	cell0«»	head«**Delete this**»	owner«»	prev«h»	unowned
+XGF9003	1.0	modal	h p X		«[Pop-out]»	after«Tasks that are neither urgent »	cell0«»	head«Putting the Eisenhower Matrix into practice»	owner«»	prev«h»	unowned
+XGF9004	8.0	dropDown	h p p p p h p p		«[Upload to dropbox.]»	after«»	cell0«»	head«What have we learned?»	owner«»	prev«e»	unowned
+XGF9004	13.0	dropDown	h p p h p X		«[Upload to dropbox.]»	after«»	cell0«»	head«What have we learned in Awa Whakaaro | River of Thought?»	owner«»	prev«p»	unowned
+XGF9004	17.0	dropDown	h p p I X		«[Upload to dropbox.]»	after«»	cell0«»	head«What have we learned?»	owner«»	prev«e»	unowned
+XGF9004	17.0	dropDown	h h p h p X		«[Upload to dropbox.]»	after«»	cell0«»	head«Bringing it All Together»	owner«»	prev«e»	unowned
+XLP05	2.0	reorder	h p I p e p e p		«[Reorder interactive – with images]»	after«»	cell0«»	head«Evening schedule»	owner«»	prev«e»	unowned
+XLP05	5.0	multiChoiceQuiz	h p p p p p ?		«[Multi choice quiz]»	after«»	cell0«»	head«Quiz time»	owner«»	prev«p»	unowned
+XMES101	8.0	dropDown	h p e p e		«[camera dropbox button]»	after«»	cell0«»	head«Matariki song»	owner«»	prev«p!»	unowned
+XTAS101	1.0	dropDown	h p X		«[insert dropbox button] Microphone»	after«»	cell0«»	head«Sorting»	owner«»	prev«p»	unowned
+XTAS101	1.0	dropDown	h p p I X		«[insert dropbox link] Photo»	after«»	cell0«»	head«Where does my special interest belong?»	owner«»	prev«p!»	unowned
+XTAS102	2.0	dropDown	h p p p X		«[insert dropbox icon for photographs and video]»	after«»	cell0«»	head«Matching pairs»	owner«»	prev«p!»	unowned
+AGH1005	2.0	dragAndDrop	h p p p p h p p		«[interactive: drag and drop]»	after«»	cell0«»	head«Match the label to the correct part of the plant.»	owner«(synthetic)#»	owned
+AGH1006	4.0	radioQuiz	h p p p p p I X		«[interactive: true/false]»	after«»	cell0«»	head«Knowledge CheckTrue/False»	owner«(synthetic)#»	owned
+ARFUN04	0.0	multiChoiceQuiz	h p h p p p h X		«[create visual quiz with images and words]»	after«»	cell0«»	head«**Give it a try**»	owner«[Activity 3G] [H3]#3G»	owned
+ARFUN04	0.0	dragAndDrop	h p p p p p p p		«[create a drag and drop]»	after«»	cell0«»	head«**Types of Space and Techniques to Create Space**»	owner«[Activity 4G] [H3]#4G»	owned
+ARFUN04	0.0	radioQuiz	h p p p p p h p		«[Create true or false quiz]»	after«»	cell0«»	head«**Unity in art**»	owner«[Activity 4O] [H3]#4O»	owned
+CEDO105	1.0	unclassified	h p e h p I I T		«[ACTIVITY 1A]»	after«»	cell0«»	head«What can you move?»	owner«[ACTIVITY 1A]#1A»	owned
+CEDO202	0.0	unclassified	h h e p p p e p		«[Insert Right click Tab – Bringing the seasons to »	after«»	cell0«»	head«Bringing the seasons to life»	owner«[Activity 3B]#3B»	owned
+COM1006	5.0	dragAndDrop	h p p p p h p T		«[Create a drag and drop activity for the content g»	after«»	cell0«»	head«HOW TO EXPLAIN FLOW-ON EFFECTS?»	owner«[Activity 4A]#4A»	owned
+ENFUN01	0.0	multiChoiceQuiz	h p e X		«[Multiple-Choice Quiz]»	after«https://docs.google.com/docume»	cell0«»	head«Growing Audience Awareness»	owner«[Activity 3]#3»	owned
+ENFUN03	0.0	multiChoiceQuiz	h p I X		«[Quiz]»	after«https://docs.google.com/docume»	cell0«»	head«In summary»	owner«[Activity 2E]#2E»	owned
+ENFUN03	0.0	multiChoiceQuiz	h p I X		«[Quiz]»	after«https://docs.google.com/docume»	cell0«»	head«In summary»	owner«[Activity 3E]#3E»	owned
+ENFUN03	0.0	multiChoiceQuiz	h p		«[Quiz]»	after«https://docs.google.com/docume»	cell0«»	head«In summary»	owner«[Activity 4C]#4C»	owned
+ENFUN04	0.0	multiChoiceQuiz	h p I X		«[Multiple-Choice Quiz]»	after«https://docs.google.com/docume»	cell0«»	head«In Summary …»	owner«[Activity 4]#4»	owned
+ENGI202	2.0	unclassified	h p p p p p e h		«[Activity 2A]»	after«»	cell0«»	head«The Story of Rona»	owner«[Activity 2A]#2A»	owned
+ENGJ403	2.1	dropDown	h		«[insert dropbox formative work]»	after«Response Sheet 2»	cell0«»	head«Ka pai! Great work!»	owner«[Insert Activity 2C]#2C»	owned
+ENGJ403	3.1	dropDown	h		«[insert dropbox formative work]»	after«Response sheet 3»	cell0«»	head«You are going well!»	owner«[Insert Activity 3C]#3C»	owned
+ENGJ403	4.0	dropDown	h		«[insert dropbox formative work]»	after«Response sheet 4»	cell0«»	head«Ka pai! Great work!»	owner«[Insert Activity 4A]#4A»	owned
+ENGJ403	5.0	dropDown	h		«[insert formative work dropbox with audio and visu»	after«»	cell0«»	head«Great work! You are doing really well.»	owner«[Insert Activity 5A]#5A»	owned
+ENGJ403	7.0	dropDown	h e p		«[add a button to the working towards dropbox – for»	after«»	cell0«»	head«Congratulations! Ngā mihi nui. You have completed this modul»	owner«[insert Activity 7A]#7A»	owned
+ENGS404	2.0	dropDown	h		«[add a button to the working towards dropbox- form»	after«»	cell0«»	head«Ka pai, you are going well.»	owner«[insert Activity 2C]#2C»	owned
+ENGS404	3.1	dropDown	h		«[add a button to the working towards dropbox- form»	after«»	cell0«»	head«Ka pai, you are going well.»	owner«[Insert Activity 3D]#3D»	owned
+ENGS404	5.0	dropDown	h p		«[add a button to the working towards dropbox- form»	after«»	cell0«»	head«Nice work!»	owner«[insert activity 5D]#5D»	owned
+ENGS404	6.1	dropDown	h p		«[add a button to the working towards dropbox- form»	after«»	cell0«»	head«Ka pai, you are going well.»	owner«[insert Activity 6B]#6B»	owned
+ENGS404	7.0	dropDown	h		«[add a button to the working towards dropbox- form»	after«»	cell0«»	head«E pai ana tō haere, you are going well!»	owner«[insert Activity 7B]#7B»	owned
+ENO2060	1.0	dropDown	h p		«[add a button to the practice dropbox- formative w»	after«»	cell0«»	head«Ka pai, great work.»	owner«[Insert Activity 1C]#1C»	owned
+EXIP901	2.0	multiChoiceQuiz	h p I p p p p p		«[Interactive quiz 2]»	after«»	cell0«»	head«Sophie’s essential questions»	owner«[Interactive x2] Create the fo#2»	owned
+HES1002	5.0	reorder	h p I e e e e e		«[Reorder interactive]»	after«»	cell0«»	head«Most effective»	owner«[Individual activity – this ac#»	owned
+HES1007	2.0	multiChoiceQuiz	h p p p p p e ?		«[Quiz instructions]»	after«Read the scenario then answer »	cell0«»	head«Scenario»	owner«[Activity 2A] [H3]#2A»	owned
+HIS1002	2.0	dropDown	h p p p p I p I		«[Dropdown Quiz Autocheck]»	after«»	cell0«»	head«Actions and Responses»	owner«[Activity: Embedded] 1A#1A»	owned
+HIS1002	19.0	unclassified	h p p p p p p e		«[Activity 10B]»	after«»	cell0«»	head«Causation»	owner«[Activity 10B]#10B»	owned
+MXEX201	1.0	unclassified	h p e h p p p p		«[Activity 1A]»	after«»	cell0«»	head«Famous Places»	owner«[Activity 1A]#1A»	owned
+MXFU402	6.0	unclassified	h p h p I T		«[Activity 6A]»	after«»	cell0«»	head«Displaying the data»	owner«[Activity 6A]#6A»	owned
+MXFUN03	0.0	dragAndDrop	h I e e h I e e		«[Drag and Drop] Could these please be recreated. F»	after«»	cell0«»	head«The pencil case is»	owner«[Activity body]#»	owned
+TEDC401	3.0	multiChoiceQuiz	h X		«[self check quiz]»	after«»	cell0«»	head«**Hierarchy check-up**»	owner«[Activity] 3G#3G»	owned
+TEDC401	4.0	unclassified	h h p e T		«[Activity] 4C (note: this activity has 3 parts)»	after«»	cell0«»	head«**Your turn: build your prototype**»	owner«[Activity] 4C (note: this acti#4C»	owned
+TEDC402	3.0	dragAndDrop	h p p X		«[drag and drop matching]»	after«»	cell0«»	head«**FDE matching meanings**»	owner«[Activity]#2D»	owned
+TEDC402	6.0	dragAndDrop	h p ?		«[drag and drop]»	after«»	cell0«»	head«**Match the chart to the data**»	owner«[Activity]#5B»	owned
+TEDC402	6.0	dropDown	h p X		«[clickdrops + PDF modals + drop box]»	after«»	cell0«»	head«**Your turn: Create your visualisation**»	owner«[Activity]#5E»	owned
+TEDC402	8.0	dragAndDrop	h X		«[2 x drag and drop]»	after«»	cell0«»	head«**Smooth as smoothies**»	owner«[Activity]#7A»	owned
+TEFUN02	0.0	dragAndDrop	h p I p p p p p		«[Drop and Drag AutoCheck]»	after«»	cell0«»	head«Create a brief»	owner«[ACTIVITY 3A]#3A»	owned
+TEFUN02	0.0	multiChoiceQuiz	h p I p p p p p		«[go to quiz] [trigger engagement]»	after«»	cell0«»	head«Presentation power»	owner«[ACTIVITY 3D]#3D»	owned
+TEFUN05	0.0	dragAndDrop	h p e ?		«[Embed Drop and Drag AutoCheck Activity] [trigger »	after«»	cell0«»	head«The right improvement?»	owner«[ACTIVITY 3A]#3A»	owned
+TEFUN05	0.0	multiChoiceQuiz	h p I p p p p p		«[Go to quiz] [trigger engagement]»	after«»	cell0«»	head«Which design?»	owner«[ACTIVITY 4A]#4A»	owned
+WJFUN211	0.0	dropDown	h p p p p p ?		«[Dropdown quiz – Auto check] [Please arrange this »	after«»	cell0«»	head«**Part One: Choose the Best Language**»	owner«[Activity 1C]#1C»	owned
+WJFUN304	0.0	multiChoiceQuiz	h p p ?		«[multi choice questions 1-6] [short answer autoche»	after«»	cell0«»	head«Identify the voice»	owner«[Activity 3A]#3A»	owned
+XGF9002	4.0	multiChoiceQuiz	h p X		«[Insert multichoice with pop-outs for feedback]»	after«»	cell0«»	head«1. Which space best supports a gifted child’s learning and w»	owner«[Activity 4A]#4A»	owned
+XGF9004	8.0	multiChoiceQuiz	h p p ?		«[Insert interactive multichoice quiz. Correct answ»	after«»	cell0«»	head«Questions»	owner«[Activity 7C]#7C»	owned

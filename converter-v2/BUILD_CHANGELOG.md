@@ -1,5 +1,40 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-20 (round 415, build 260619.86) — THE OWNED HEADING-LED BUNDLE WITH NO TABLE: the empty writer-owned box takes its section (the autonomous loop's session 29 Round 6; SCOPED regeneration of the 22 affected modules — scoped ship #7 since the 19 Sept FULL, the FULL backstop is due at the next ship; every protected gate HELD-or-IMPROVED, the compare_structure exact −6 named as the relocation class)
+
+### 1. WHAT CHANGED
+
+**The class.** The r412 / r413 shape without the table: a writer-owned typed-widget invocation — a real `[Activity N]` opener, or the r92 embedded form whose invocation carries the id (`[Activity 1A] [Dropdown Quiz – Auto Check]`) — whose member walk ended at once on the writer's `[H3]`, with the quiz written as PARAGRAPHS after it (`[H3] Synonym strength` + `[body]` + the questions and options as lines, `[Correct answer]` marks, `[Hint]` spans — WJFUN307 / 210 / 211, ENGJ403, ENFUN03, ENGS404, TEFUN05, SCES201, HIS1002 2.0, MXFU302 3.0). r413 took the heading + prose only when a TABLE followed; without one the box shipped EMPTY (the `no content captured` flag) and the whole section free after it. Found through the empty-box census (`outputs/_s29_r6_emptybox.py` → `_s29_r6_emptybox.out`: Claude 96 EMPTY writer-owned boxes on 73 pages / 47 modules; the gold's same-numbered box holds text 39 / media 21 = **60 / 96 = 0.63**, no box with that number 36) and the r4 owned-walk census's no-table rows (`_s29_r6_notable_rows.tsv`: 47 owned bundles / 40 pages / 28 modules).
+
+**Measured** (`_s29_r6_goldcheck.py` — the r3 gold check without its table filter — over all 125 heading-led no-table bundles → `_s29_r6_notablecheck.out`): the heading inside the gold's box 46 / 99 found = 0.46 overall, a TIE split by family (MiW 7 / 9, Technology 4 / 4, Science 3 / 4, dragAndDrop 5 / 7 IN; English 0 / 7, NCEA1 1 / 7, dropDown 6 / 13 out) — so the UNOWNED half (0.41) stays free and the OWNED half, whose box already exists, was decided by the gate's own scorer on the probe's ON pages (`_s29_r415_pagescore.py`): **34 paired pages, 24 up / 2 down / 8 same, +57.7 pp-sum** — MiW 8 / 0, NCEA1 4 / 0, Science 3 / 0, Mathematics 1 / 0, Technology 6 / 0 (7 same — the TEDC boxes whose section is a collapsed widget either way), ENFUN 1 / 2 (−1.5). NEW-FAMILY CHECK: without WJFUN 26 pages, 16 up / 2 down, +36.6 — the class holds outside the intake family.
+
+**The fix (DATA OVER CODE).** `opener_rule.heading_table_owner.owned_bundles.no_table {enabled, env NOTABLEOWNED_OFF}`: in `InteractiveScanner.#headingTableOwner` the table look-ahead no longer returns on a non-table item — when it finds no table, an OWNED bundle (a real owner, or `activityId` set by the embedded form) takes the heading as its FIRST lead item and the member walk RESUMES right after it (`#swallowMembers` from the heading's successor — the standard capture with its own terminators: the next heading, an activity opener, a section marker; the r366 lead_free rule then frees the first paragraph). An unowned bundle without a table returns as before. OFF = the r414 output byte-for-byte.
+
+### 2. PROOF
+
+- `_s29_r415_probe_run.sh` (the r410 harness over all 494 Claude-dir modules): **OFF (`NOTABLEOWNED_OFF`) = disk 2555 / 2555**; **ON = 35 pages / 22 modules** (`_affected_r415.txt`).
+- `_s29_r415_pagescore.py`: **24 up / 2 down / 8 same, SCAFFOLD pp-sum +57.7, RAW −3.8** (the captured section's nodes move inside the collapsed widget — the r176 net-positive class); the dips ENFUN03_0_0 −1.8, ENFUN01_0_0 −0.2 (the ENFUN family's boxes whose gold keeps the quiz free, named).
+- `REGENERATE CORPUS` scoped by §0a: the 22 + the 12-module spot-check sample (`_s29_r415_regen.sh`, 4 batches rc 0); `scoped_ship.sh --affected _affected_r415.txt --toggle NOTABLEOWNED_OFF --no-regen --commit --round 415`: content-hash 0 truly stale, containment 22 ⊆ 22, spot-check 12 / 12 byte-identical; the exact decomposition gate proof FAILED on `compare_structure exact chain` −6 alone (14174 → 14168) = **the matched pool −13 (ENFUN01 −2, ENFUN03 −6, ENFUN04 −1, SCES201 −1, TEFUN02 −1, WJFUN210 −1, WJFUN306 −1 — every one inside the affected set, `_s29_r415_cs_decomp.log`): the captured section's text-matched elements moving into the widget subtree the comparator excludes — the r57 / r147 / r412 relocation class; EXTRA 186 EXACT, MISSING 690 → 683 IMPROVED** → committed with `_fastloop_diff.py $UNION --commit --accept-named "compare_structure exact chain"` (`_s29_r415_fastloop_commit.log`); the content manifest refreshed.
+- `_s29_skdelta.py _s29_r414_sk_final.json _s29_r415_sk_final.json --affected _affected_r415.txt`: **26 movers, 24 up / 2 down, 0 outside the affected set**, 0 pages added / gone; MXFU302_3_0 +6.5, SCES201_1_0 +6.2, HIS1002_2_0 +5.2, WJFUN211_0_0 +5.0.
+- Verifiers in the gate run: dragAndDrop 21 widgets / defect 0, flipCard divergence 0, speechBubble / modal / mtkquiz / math / menulabels ✓ — every RESULT identical to r414.
+
+### 3. PROTECTED GATES (all HELD-or-IMPROVED — `_s29_r415_gates.log`, `_s29_r415_scoped_ship.log`, `_s29_r415_fastloop_commit.log`)
+
+- **Skeleton (PRIMARY)**: SCAFFOLD **53.886 → 53.911 % (+0.0246pp)**; ≥50 **1412 → 1415**, ≥75 **238**, ≥90 **20** EXACT; RAW **37.997 → 37.996 %** (−0.002, the relocation class); 2349 pairs, skipped 0 (state `outputs/_s29_r415_sk_final.json`).
+- **compare_structure** exact **14168** (−6 = the pool −13, named) / EXTRA **186** EXACT / MISSING **683** (−7 IMPROVED) / row-wrap **23**; **body_compare** 54 / **5** (runaway −1 IMPROVED) / 190 / **247** (ANY −1); **defect** clean 2504 / 2548 = 98.27 %, leak 73 / 44 EXACT.
+- tags **9557 / 9557**; entry-parity PASS; index-sync 33 / 28; **16 selftests GREEN** (46 PASS / GREEN lines, 0 FAIL).
+- Ship ledger: **scoped ship #7 since the 19 Sept FULL — the FULL backstop is due at the next ship (#8)**; fast-loop baseline + content manifest refreshed; feature index `--rehtml` / `--merge` / `--selftest` GREEN.
+- DIFF MINER re-mined on the r415 corpus (`_diff_miner_s29_r415.log`): **181 → 181 CANDIDATE rows**.
+- Plateau: **+0.0246pp with ≥50 +3 — above the 0.02 threshold; the window stays at 0 of 3** (r414 reset it).
+
+### 4. RECORDED, NOT TAKEN (the Round 6 PICK's measurements — `LOOP_STATE.md`)
+
+- The unowned heading-led no-table shape (78 bundles / 62 pages / 50 modules): the gold boxes it 0.41 — stays free.
+- DIFF_QUEUE #3677 (gold `col-12` section column vs Claude `col-md-8 col-12`, 315 pages): the gold's single-column body row is `col-12 col-md-8` ≥ 0.78 for every content kind (`_s29_r6_colwidth.py`; tables 0.46 / 0.42 col-md-12 a tie, overview headings 0.61 / 0.37) — an alignment artefact.
+- #587 / #606 (the box's `interactive` class, 247 + 114 pages): number-paired (`_s29_r6_intflag.py`) the flag tracks the widget Claude's box holds (dragAndDrop 0.88 / mcq 0.65 int; clickDrop / carousel / TKmodal plain); the 446 gold-interactive / Claude-plain boxes hold NO widget at all — a capture class, not a flag rule.
+- The after-widget row break (`_s26_rowpair.py` re-run → `_s29_r6_rowpair.out`: WIDGET 0.63 on 129 pages; the raw-HTML instrument `_s29_r6_widgetflow.py`: 0.57 on 61 pages, speechBubble 0.60, the hand-off box 0.58) — a tie between the two instruments.
+- The footer rows #441–#443 (MISSING next-lesson / home-nav on 97–100 pages) — page-COUNT artefacts (Claude's last page pairs with a gold page that is not the gold's last: AGH1004 7 pages vs the gold's 10); the 133 'gold menu / Claude no menu' lesson pages — the gold's menu is COMMENTED OUT (ART1002); CHI1003 / 1004 / 1005's ≤ 20 % pages are `Merge item N` lessons (the r300 zero class, the ceiling's population).
+
 ## 2026-09-20 (round 414, build 260619.85) — THE NESTED ACTIVITY BOX: a synthetic widget box never opens inside an open activity box — the widget belongs to the open box (the autonomous loop's session 29 Round 5; SCOPED regeneration of the 65 affected modules — scoped ship #6 since the 19 Sept FULL; every protected gate HELD-or-IMPROVED)
 
 ### 1. WHAT CHANGED

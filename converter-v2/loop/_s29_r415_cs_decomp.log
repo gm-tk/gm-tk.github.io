@@ -1,0 +1,9 @@
+module        matched   exact   missing   (before -> after)
+ENFUN01    AFF matched   57->  55 (-2)  exact   43->  41 (-2)  missing   5->  5 (+0)
+ENFUN03    AFF matched   62->  56 (-6)  exact   52->  52 (+0)  missing   9->  3 (-6)
+ENFUN04    AFF matched   46->  45 (-1)  exact   43->  43 (+0)  missing   3->  2 (-1)
+SCES201    AFF matched   57->  56 (-1)  exact   53->  52 (-1)  missing   4->  4 (+0)
+TEFUN02    AFF matched   62->  61 (-1)  exact   55->  54 (-1)  missing   0->  0 (+0)
+WJFUN210   AFF matched   36->  35 (-1)  exact   28->  27 (-1)  missing   2->  2 (+0)
+WJFUN306   AFF matched   66->  65 (-1)  exact   56->  55 (-1)  missing   0->  0 (+0)
+TOTAL matched -13  exact -6  missing -7

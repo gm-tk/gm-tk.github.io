@@ -1,0 +1,125 @@
+AGH1002	3.0	multiChoiceQuiz	GOLD head:h3 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«Nutrient Uptake»
+AGH1005	2.0	dropDown      	GOLD head:ABSENT                                 	CLAUDE head:h4 act:out next:neither	«Here is a more detailed description of t»
+AGH1006	2.0	dragAndDrop   	GOLD head:ABSENT                                 	CLAUDE head:h3 act:out next:table	«Fill in the sentences to complete the su»
+AGH1006	4.0	dragAndDrop   	GOLD head:h3 act:out next:widget:accordion       	CLAUDE head:h3 act:out next:widget:accordion	«Controlled Environments»
+AGH1006	5.0	dragAndDrop   	GOLD head:h4 act:out next:neither                	CLAUDE head:p act:out next:neither	«Pruning»
+AGH1008	5.0	interactive   	GOLD head:h4 act:out next:widget:clickDrop       	CLAUDE head:h5 act:out next:neither	«Increased chance of pregnancy»
+ANZH103	1.0	unclassified  	GOLD head:ABSENT                                 	CLAUDE head:h3 act:out next:table	«What happened in 1840?»
+ANZH303	1.0	multiChoiceQuiz	GOLD head:h3 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«The many meanings of mana»
+CEDR302	0.0	dropDown      	GOLD head:h4 act:out next:widget:accordion       	CLAUDE head:h5 act:out next:neither	«What do I want to know?»
+CEDT104	0.0	dropDown      	GOLD head:ABSENT                                 	CLAUDE head:ABSENT	«»
+CEDT104	0.0	dropDown      	GOLD head:h4 act:out next:widget:carousel        	CLAUDE head:h4 act:out next:neither	«**What have I learned?**»
+CEDT104	0.0	dropDown      	GOLD head:h3 act:IN next:widget:hintSlider       	CLAUDE head:p act:out next:neither	«**Let's check what we've learned**»
+CEDT501	7.0	dropDown      	GOLD head:h2 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«What if you’re on the receiving end?»
+COM1002	2.0	dropDown      	GOLD head:h4 act:out next:neither                	CLAUDE head:h3 act:out next:widget:clickDrop	«**Unincorporated community organisations»
+DAN1003	1.0	unclassified  	GOLD gold:UNPAIRED                               	CLAUDE head:h3 act:out next:table	«Drag and drop»
+DTC1005	17.0	dropDown      	GOLD head:h4 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«Video resolution»
+ENG1005	1.0	dropDown      	GOLD gold:UNPAIRED                               	CLAUDE head:h5 act:out next:neither	«Final assessment.»
+ENG1005	2.0	dropDown      	GOLD gold:UNPAIRED                               	CLAUDE head:h5 act:out next:neither	«Final assessment.»
+ENGC403	2.0	dropDown      	GOLD head:h3 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«Ka pai! You are going well.»
+ENGJ403	6.0	dropDown      	GOLD head:h4 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«Nearly there!»
+ENGS102	2.0	modal         	GOLD head:h3 act:out next:widget:carousel        	CLAUDE head:h3 act:out next:neither	«*The Three Cattle Dogs Gruff*»
+ENGS404	8.0	dropDown      	GOLD head:h3 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«Nearly there!»
+ENGS404	9.0	dropDown      	GOLD head:h3 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«Congratulations! Ngā mihi nui. You have »
+EXIP901	2.0	multiChoiceQuiz	GOLD head:h3 act:IN next:neither                 	CLAUDE head:h3 act:out next:table	«Reflection»
+EXIP901	4.0	dropDown      	GOLD head:h4 act:out next:widget:clickDrop       	CLAUDE head:h3 act:out next:table	«Learning Intentions»
+FRFUN06	1.0	multiChoiceQuiz	GOLD head:h3 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«**Self check**»
+GENO901	3.3	typing        	GOLD gold:UNPAIRED                               	CLAUDE head:h3 act:out next:neither	«Grammar: nouns in German»
+HIS1002	11.0	modal         	GOLD head:h4 act:out next:widget:TKmodal         	CLAUDE head:h3 act:out next:neither	«Source A»
+HIS1002	11.0	modal         	GOLD head:h4 act:out next:widget:clickDrop       	CLAUDE head:h3 act:out next:neither	«Source B»
+HPRE203	7.0	dropDown      	GOLD head:h3 act:IN next:neither                 	CLAUDE head:h3 act:out next:neither	«Share your learning»
+MXFU302	3.0	multiChoiceQuiz	GOLD head:h3 act:IN next:widget:mcqOptions       	CLAUDE head:h3 act:out next:table	«**Understanding Expected Values in Sport»
+OSOH101	2.0	modal         	GOLD head:h3 act:out next:widget:TKmodal         	CLAUDE head:h3 act:out next:widget:TKmodal	«Fun screen time limits»
+OSSC301	1.0	carousel      	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:IN next:table	«Which scam is it?»
+PHE1003	7.0	tabs          	GOLD head:ABSENT                                 	CLAUDE head:h3 act:out next:neither	«Alofa/Aroha/Ofa/Aloha»
+PHE1007	6.0	dropDown      	GOLD head:h3 act:IN next:widget:dropQuiz         	CLAUDE head:h3 act:out next:neither	«Identify the energy system»
+PHE1008	5.0	clickDrop     	GOLD head:p act:out next:widget:clickDrop        	CLAUDE head:p act:out next:neither	«Sport»
+SCCH301	6.0	flipCard      	GOLD head:p act:out next:widget:flipCard         	CLAUDE head:h4 act:out next:widget:flipCard	«Running hot water over a stuck jar lid o»
+SCES201	1.0	radioQuiz     	GOLD head:h3 act:IN next:neither                 	CLAUDE head:h3 act:out next:neither	«All about stars»
+SCES201	1.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«Maramataka wheel.»
+SCES201	2.0	dropDown      	GOLD head:h3 act:IN next:widget:dropQuiz         	CLAUDE head:h3 act:out next:neither	«Puanga and Orion»
+SCES201	3.0	dropDown      	GOLD head:h2 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«The Matariki whetū»
+SSCI205	9.0	dropDown      	GOLD head:h3 act:IN next:neither                 	CLAUDE head:h3 act:out next:neither	«Share your learning»
+SSOG103	6.0	dropDown      	GOLD gold:UNPAIRED                               	CLAUDE head:h3 act:out next:neither	«Share your learning»
+TEDC401	4.0	multiChoiceQuiz	GOLD head:h3 act:IN next:widget:mcqOptions       	CLAUDE head:h3 act:out next:table	«**Design checkpoint**»
+TEFUN05	0.0	multiChoiceQuiz	GOLD head:h3 act:IN next:widget:accordion        	CLAUDE head:h3 act:out next:widget:accordion	«Your turn»
+WJFUN110	0.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:p act:out next:table	«Match it up!»
+WJFUN113	0.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:neither	«Make a simile»
+WJFUN113	0.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:neither	«Sound hunt!»
+WJFUN210	0.0	typing        	GOLD head:h3 act:IN next:widget:dropQuiz         	CLAUDE head:h3 act:out next:neither	«Practice using figurative language»
+WJFUN210	0.0	dragAndDrop   	GOLD head:h3 act:out next:widget:dragAndDrop     	CLAUDE head:h3 act:out next:table	«Choosing effective words»
+WJFUN211	0.0	dropDown      	GOLD head:h3 act:IN next:widget:mcqOptions       	CLAUDE head:h3 act:out next:neither	«Engaging the senses»
+WJFUN211	0.0	dropDown      	GOLD head:h3 act:IN next:widget:mcqOptions       	CLAUDE head:h3 act:out next:neither	«Think Like the Reader»
+WJFUN305	0.0	dropDown      	GOLD head:h3 act:IN next:widget:dropQuiz         	CLAUDE head:h3 act:out next:neither	«Audience or Purpose?»
+WJFUN305	0.0	dropDown      	GOLD head:h3 act:IN next:widget:dropQuiz         	CLAUDE head:h3 act:out next:neither	«Form, Genre, or Style?»
+WJFUN305	0.0	dropDown      	GOLD head:h3 act:IN next:widget:dropQuiz         	CLAUDE head:h3 act:out next:neither	«Why did the writer choose that?»
+WJFUN306	0.0	dropDown      	GOLD head:h3 act:out next:widget:accordion       	CLAUDE head:h3 act:out next:widget:accordion	«Codes and conventions»
+WJFUN307	0.0	dropDown      	GOLD head:h3 act:IN next:widget:dropQuiz         	CLAUDE head:h3 act:out next:neither	«Synonym strength»
+WJFUN307	0.0	selectionBox  	GOLD head:h3 act:IN next:widget:mcqOptions       	CLAUDE head:h3 act:out next:neither	«Spot the language feature»
+WJFUN307	0.0	selectionBox  	GOLD head:h3 act:IN next:widget:mcqOptions       	CLAUDE head:h3 act:out next:neither	«Choose the best language feature»
+WJFUN308	0.0	dropDown      	GOLD head:h3 act:IN next:widget:dropQuiz         	CLAUDE head:h3 act:out next:neither	«The author's choice»
+XDLS501	3.0	dropDown      	GOLD head:ABSENT                                 	CLAUDE head:h1 act:out next:neither	«Mindful Behavior»
+XDLS501	5.0	dropDown      	GOLD gold:UNPAIRED                               	CLAUDE head:h1 act:out next:neither	«Mindfully sharing ideas and information»
+XGF9001	4.0	multiChoiceQuiz	GOLD head:ABSENT                                 	CLAUDE head:h4 act:out next:neither	«1. When faced with a big challenge, you:»
+XGF9001	6.0	dropDown      	GOLD head:h3 act:out next:widget:accordion       	CLAUDE head:h3 act:out next:neither	«What have we learned and where to next?»
+XGF9003	1.0	modal         	GOLD head:p act:out next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:neither	«**Do this later**»
+XGF9003	1.0	modal         	GOLD head:p act:out next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:neither	«**Delegate this**»
+XGF9003	1.0	modal         	GOLD head:p act:out next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:widget:dragAndDrop	«**Delete this**»
+XGF9003	1.0	modal         	GOLD head:ABSENT                                 	CLAUDE head:h4 act:out next:widget:dragAndDrop	«Putting the Eisenhower Matrix into pract»
+XGF9004	8.0	dropDown      	GOLD gold:UNPAIRED                               	CLAUDE head:h3 act:out next:neither	«What have we learned?»
+XGF9004	13.0	dropDown      	GOLD gold:UNPAIRED                               	CLAUDE head:h3 act:out next:neither	«What have we learned in Awa Whakaaro | R»
+XGF9004	17.0	dropDown      	GOLD gold:UNPAIRED                               	CLAUDE head:h4 act:out next:neither	«What have we learned?»
+XGF9004	17.0	dropDown      	GOLD gold:UNPAIRED                               	CLAUDE head:h3 act:out next:neither	«Bringing it All Together»
+XLP05	2.0	reorder       	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:neither	«Evening schedule»
+XLP05	5.0	multiChoiceQuiz	GOLD head:h3 act:IN next:widget:mcqOptions       	CLAUDE head:h3 act:out next:neither	«Quiz time»
+XMES101	8.0	dropDown      	GOLD head:h3 act:out next:widget:accordion       	CLAUDE head:h3 act:out next:neither	«Matariki song»
+XTAS101	1.0	dropDown      	GOLD head:h3 act:out next:table                  	CLAUDE head:h3 act:out next:table	«Sorting»
+XTAS101	1.0	dropDown      	GOLD head:h3 act:out next:widget:dragAndDrop     	CLAUDE head:h3 act:out next:neither	«Where does my special interest belong?»
+XTAS102	2.0	dropDown      	GOLD head:h3 act:out next:widget:carousel        	CLAUDE head:h3 act:out next:widget:carousel	«Matching pairs»
+AGH1005	2.0	dragAndDrop   	GOLD head:p act:IN next:widget:dragAndDrop       	CLAUDE head:h3 act:out next:neither	«Match the label to the correct part of t»
+AGH1006	4.0	radioQuiz     	GOLD head:ABSENT                                 	CLAUDE head:h3 act:out next:widget:accordion	«Knowledge CheckTrue/False»
+ARFUN04	0.0	multiChoiceQuiz	GOLD head:ABSENT                                 	CLAUDE head:p act:out next:neither	«**Give it a try**»
+ARFUN04	0.0	dragAndDrop   	GOLD head:ABSENT                                 	CLAUDE head:h5 act:out next:neither	«**Types of Space and Techniques to Creat»
+ARFUN04	0.0	radioQuiz     	GOLD head:ABSENT                                 	CLAUDE head:h5 act:out next:neither	«**Unity in art**»
+CEDO105	1.0	unclassified  	GOLD head:h3 act:IN next:widget:flipCard         	CLAUDE head:h3 act:IN next:table	«What can you move?»
+CEDO202	0.0	unclassified  	GOLD head:p act:out next:widget:carousel         	CLAUDE head:p act:out next:neither	«Bringing the seasons to life»
+COM1006	5.0	dragAndDrop   	GOLD head:h3 act:out next:neither                	CLAUDE head:h3 act:out next:table	«HOW TO EXPLAIN FLOW-ON EFFECTS?»
+ENFUN01	0.0	multiChoiceQuiz	GOLD head:h3 act:out next:widget:dragAndDrop     	CLAUDE head:h3 act:out next:neither	«Growing Audience Awareness»
+ENFUN03	0.0	multiChoiceQuiz	GOLD head:h4 act:out next:widget:tabs            	CLAUDE head:h5 act:out next:widget:flipCard	«In summary»
+ENFUN03	0.0	multiChoiceQuiz	GOLD head:h4 act:out next:widget:tabs            	CLAUDE head:h5 act:out next:widget:flipCard	«In summary»
+ENFUN03	0.0	multiChoiceQuiz	GOLD head:h4 act:out next:widget:tabs            	CLAUDE head:h5 act:out next:widget:flipCard	«In summary»
+ENFUN04	0.0	multiChoiceQuiz	GOLD head:h4 act:out next:neither                	CLAUDE head:h4 act:out next:neither	«In Summary …»
+ENGI202	2.0	unclassified  	GOLD head:p act:out next:widget:clickDrop        	CLAUDE head:p act:out next:widget:carousel	«The Story of Rona»
+ENGJ403	2.1	dropDown      	GOLD head:h4 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«Ka pai! Great work!»
+ENGJ403	3.1	dropDown      	GOLD head:h4 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«You are going well!»
+ENGJ403	4.0	dropDown      	GOLD head:h4 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«Ka pai! Great work!»
+ENGJ403	5.0	dropDown      	GOLD head:h4 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«Great work! You are doing really well.»
+ENGJ403	7.0	dropDown      	GOLD head:h4 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«Congratulations! Ngā mihi nui. You have »
+ENGS404	2.0	dropDown      	GOLD head:h3 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«Ka pai, you are going well.»
+ENGS404	3.1	dropDown      	GOLD head:h3 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«Ka pai, you are going well.»
+ENGS404	5.0	dropDown      	GOLD head:h3 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«Nice work!»
+ENGS404	6.1	dropDown      	GOLD head:h3 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«Ka pai, you are going well.»
+ENGS404	7.0	dropDown      	GOLD head:h3 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«E pai ana tō haere, you are going well!»
+ENO2060	1.0	dropDown      	GOLD head:h3 act:out next:neither                	CLAUDE head:h3 act:out next:neither	«Ka pai, great work.»
+EXIP901	2.0	multiChoiceQuiz	GOLD head:h3 act:IN next:neither                 	CLAUDE head:h3 act:out next:table	«Sophie’s essential questions»
+HES1002	5.0	reorder       	GOLD head:ABSENT                                 	CLAUDE head:h3 act:out next:neither	«Most effective»
+HES1007	2.0	multiChoiceQuiz	GOLD head:ABSENT                                 	CLAUDE head:h4 act:out next:neither	«Scenario»
+HIS1002	2.0	dropDown      	GOLD head:h3 act:IN next:widget:dropQuiz         	CLAUDE head:h3 act:out next:neither	«Actions and Responses»
+HIS1002	19.0	unclassified  	GOLD head:h3 act:IN next:neither                 	CLAUDE head:h3 act:IN next:neither	«Causation»
+MXEX201	1.0	unclassified  	GOLD head:h3 act:IN next:widget:carousel         	CLAUDE head:h3 act:IN next:table	«Famous Places»
+MXFU402	6.0	unclassified  	GOLD head:h3 act:IN next:widget:clickDrop        	CLAUDE head:h3 act:IN next:table	«Displaying the data»
+MXFUN03	0.0	dragAndDrop   	GOLD head:p act:out next:widget:dropQuiz         	CLAUDE head:h5 act:out next:table	«The pencil case is»
+TEDC401	3.0	multiChoiceQuiz	GOLD head:h3 act:IN next:widget:mcqOptions       	CLAUDE head:h3 act:out next:table	«**Hierarchy check-up**»
+TEDC401	4.0	unclassified  	GOLD head:h2 act:IN next:table                   	CLAUDE head:h3 act:IN next:table	«**Your turn: build your prototype**»
+TEDC402	3.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«**FDE matching meanings**»
+TEDC402	6.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:widget:tabs	«**Match the chart to the data**»
+TEDC402	6.0	dropDown      	GOLD head:h3 act:IN next:widget:clickDrop        	CLAUDE head:h3 act:out next:table	«**Your turn: Create your visualisation**»
+TEDC402	8.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:reorder          	CLAUDE head:h3 act:out next:table	«**Smooth as smoothies**»
+TEFUN02	0.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:neither	«Create a brief»
+TEFUN02	0.0	multiChoiceQuiz	GOLD head:h3 act:IN next:widget:accordion        	CLAUDE head:h3 act:IN next:neither	«Presentation power»
+TEFUN05	0.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«The right improvement?»
+TEFUN05	0.0	multiChoiceQuiz	GOLD head:h3 act:IN next:widget:accordion        	CLAUDE head:h2 act:out next:widget:accordion	«Which design?»
+WJFUN211	0.0	dropDown      	GOLD head:h4 act:IN next:widget:mcqOptions       	CLAUDE head:h5 act:out next:neither	«**Part One: Choose the Best Language**»
+WJFUN304	0.0	multiChoiceQuiz	GOLD head:h4 act:IN next:widget:mcqOptions       	CLAUDE head:h5 act:out next:table	«Identify the voice»
+XGF9002	4.0	multiChoiceQuiz	GOLD head:ABSENT                                 	CLAUDE head:h3 act:out next:neither	«1. Which space best supports a gifted ch»
+XGF9004	8.0	multiChoiceQuiz	GOLD gold:UNPAIRED                               	CLAUDE head:h4 act:out next:neither	«Questions»
