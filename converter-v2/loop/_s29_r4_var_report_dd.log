@@ -1,0 +1,94 @@
+DECLINING SHAPES for dragAndDrop — 750 distinct signatures
+
+[  57 bundles /  41 modules]  dragAndDrop :: noTable || drag and drop || var:dragAndDrop
+        e.g. AGH1004/1.0, AGH1004/5.0, AGH1005/2.0, AGH1006/4.0
+[  15 bundles /   7 modules]  dragAndDrop :: noTable || drag and drop,audio,INSTR || var:dragAndDrop || hasInstr
+        e.g. BLL141/1.0, BLL150/0.0, BLL160/0.0, BLL160/0.0
+[   6 bundles /   6 modules]  dragAndDrop :: T4x2[txt|txt*4] || drag and drop,TABLE || var:dragAndDrop
+        e.g. BLL250/2.4, CEDT501/6.0, ENFUN07/0.0, ENGI103/6.0
+[   5 bundles /   4 modules]  dragAndDrop :: noTable || drag and drop+txt || var:dragAndDrop
+        e.g. AGH1009/6.0, BLL151/2.0, GENO901/2.1, GENO901/1.0
+[   5 bundles /   5 modules]  dragAndDrop :: T6x2[txt|txt,Mistock|Mistock*5] || drag and drop,TABLE || var:dragAndDrop
+        e.g. BLL140/0.0, BLL161/1.0, BLL230/0.0, CEDO102/0.0
+[   5 bundles /   1 modules]  dragAndDrop :: T2x2[-|txtL,Mweb|txt] || drag and drop,TABLE || var:dragAndDrop
+        e.g. ENGI203/6.0, ENGI203/7.0, ENGI203/8.0, ENGI203/4.0
+[   5 bundles /   3 modules]  dragAndDrop :: noTable || drag and drop+txt,body+txt || var:dragAndDrop
+        e.g. ENGR102/2.0, ENGR102/4.0, ENGR102/6.0, FRFUN07/8.0
+[   4 bundles /   1 modules]  dragAndDrop :: T7x3[txt|txt|txt,-|Mistock|txt*6] || drag and drop,TABLE || var:dragAndDrop
+        e.g. BLL230/0.0, BLL230/0.0, BLL230/0.0, BLL230/0.0
+[   4 bundles /   3 modules]  dragAndDrop :: noTable || drag and drop,blk || var:dragAndDrop
+        e.g. HIS1006/3.1, HIS1008/3.1, XGF9004/9.0, XGF9004/15.0
+[   3 bundles /   3 modules]  dragAndDrop :: noTable || drag and drop,body+txt || var:dragAndDrop
+        e.g. BLL114/2.0, BLL124/1.0, HES1005/3.0
+[   3 bundles /   3 modules]  dragAndDrop :: noTable || drag and drop,INSTR || var:dragAndDrop || hasInstr
+        e.g. BLL126/1.0, CEDK401/2.0, SSFUN07/1.0
+[   3 bundles /   3 modules]  dragAndDrop :: T5x2[txt|txt,Mistock|Mistock*4] || drag and drop,TABLE || var:dragAndDrop
+        e.g. BLL150/0.0, BLL160/0.0, BLL210/0.0
+[   3 bundles /   3 modules]  dragAndDrop :: T6x2[txt|txt*6] || drag and drop,TABLE || var:dragAndDrop
+        e.g. BLL174/1.1, BLL175/1.0, MXFL202/4.0
+[   3 bundles /   3 modules]  dragAndDrop :: T5x3[txt|txt|txt*5] || drag and drop,TABLE || var:dragAndDrop
+        e.g. BLL240/1.5, BLL250/2.3, ENGI103/2.0
+[   3 bundles /   3 modules]  dragAndDrop :: T7x3[txt|txt|txt*7] || drag and drop,TABLE || var:dragAndDrop
+        e.g. BLL251/2.0, MXFU301/7.0, XMES201/3.0
+[   3 bundles /   1 modules]  dragAndDrop :: T8x2[T:data marker+txt|txt,-|txt*7] || drag and drop,TABLE || var:dragAndDrop
+        e.g. BLL270/4.0, BLL270/6.0, BLL270/8.0
+[   3 bundles /   1 modules]  dragAndDrop :: T4x2[T:h3+txt|T:h3+txt,T:correct+txt|T:correct+txt*3] || drag and drop,TABLE || var:dragAndDrop
+        e.g. ENGC403/2.0, ENGC403/2.0, ENGC403/2.0
+[   3 bundles /   1 modules]  dragAndDrop :: noTable || drag and drop+txt,button+txt || var:dragAndDrop
+        e.g. SSFUN03/0.0, SSFUN03/0.0, SSFUN03/0.0
+[   3 bundles /   2 modules]  dragAndDrop :: T3x4[T:drag and drop+txt,T:h3+txt|T:h3+txt|-|-,T:body+txt|T:body+txt|-|-] || TABLE
+        e.g. TRR102/5.0, TRR102/2.0, TRR106/2.0
+[   2 bundles /   2 modules]  dragAndDrop :: noTable || drag and drop+txt,INSTR || var:dragAndDrop || hasInstr
+        e.g. AGH1005/2.0, BLL117/2.0
+[   2 bundles /   2 modules]  dragAndDrop :: noTable || drag and drop,blkL*7 || var:dragAndDrop
+        e.g. ARFUN04/0.0, ENO2060/2.0
+[   2 bundles /   2 modules]  dragAndDrop :: noTable || drag and drop,body+txt,INSTR || var:dragAndDrop || hasInstr
+        e.g. BLL111/2.0, BLL112/1.0
+[   2 bundles /   2 modules]  dragAndDrop :: T7x1[txt*7] || drag and drop,TABLE || var:dragAndDrop
+        e.g. BLL134/2.0, BLL151/2.0
+[   2 bundles /   2 modules]  dragAndDrop :: T8x1[txt*8] || drag and drop,TABLE || var:dragAndDrop
+        e.g. BLL143/1.0, BLL154/1.0
+[   2 bundles /   2 modules]  dragAndDrop :: noTable || drag and drop,blk,audio,blk || var:dragAndDrop
+        e.g. BLL150/0.0, BLL160/0.0
+[   2 bundles /   2 modules]  dragAndDrop :: T4x3[-|-|-,txt|txtL|txtL,txt|txt|txt*2] || drag and drop,image:istock,TABLE,INSTR || var:dragAndDrop || hasInstr
+        e.g. BLL151/1.0, BLL162/1.0
+[   2 bundles /   2 modules]  dragAndDrop :: T5x3[txt|txt|txt,Mistock|Mistock|txtL,Mistock|Mistock|Mistock*3] || drag and drop,TABLE || var:dragAndDrop
+        e.g. BLL160/0.0, BLL210/0.0
+[   2 bundles /   2 modules]  dragAndDrop :: T4x3[txt|txt|txt,Mistock|Mistock|Mistock*3] || drag and drop,TABLE || var:dragAndDrop
+        e.g. BLL170/0.0, BLL210/0.0
+[   2 bundles /   2 modules]  dragAndDrop :: noTable || drag and drop,audio+txt,INSTR*2 || var:dragAndDrop || hasInstr
+        e.g. BLL170/0.0, BLL210/0.0
+[   2 bundles /   2 modules]  dragAndDrop :: noTable || drag and drop,audio,body+txt,button+txt,engagement quiz button || var:dragAndDrop
+        e.g. BLL177/1.0, BLL211/1.0
+[   2 bundles /   2 modules]  dragAndDrop :: noTable || drag and drop,blk,INSTR*9 || var:dragAndDrop || hasInstr
+        e.g. BLL235/2.0, BLL241/2.0
+[   2 bundles /   2 modules]  dragAndDrop :: T9x3[txt|Mistock|txt*9] || drag and drop,TABLE || var:dragAndDrop
+        e.g. BLL236/1.0, BLL237/1.0
+[   2 bundles /   2 modules]  dragAndDrop :: T10x3[txt|txt|T:correct+txt*10] || drag and drop,data marker,TABLE || var:dragAndDrop
+        e.g. BLL274/2.0, BLL276/2.0
+[   2 bundles /   2 modules]  dragAndDrop :: noTable || drag and drop,blk:web,INSTR || var:dragAndDrop || hasInstr
+        e.g. CEDO102/0.0, MXEO201/6.0
+[   2 bundles /   2 modules]  dragAndDrop :: T5x3[-|txt|txt,txt|Mistock|txt*4] || drag and drop+txt,body+txt,TABLE || var:dragAndDrop
+        e.g. CHFUN04/0.0, CHFUN05/0.0
+[   2 bundles /   1 modules]  dragAndDrop :: T1x5[txt|txt|txt|txt|txt] || drag and drop,TABLE || var:dragAndDrop
+        e.g. ENGC102/7.0, ENGC102/7.0
+[   2 bundles /   2 modules]  dragAndDrop :: noTable || drag and drop,body+txt,blkL || var:dragAndDrop
+        e.g. ENGJ301/3.0, XGF9004/14.0
+[   2 bundles /   1 modules]  dragAndDrop :: T2x2[txt|txt*2] || drag and drop,TABLE,tab n+txt || var:dragAndDrop
+        e.g. FRFUN06/3.0, FRFUN06/4.0
+[   2 bundles /   1 modules]  dragAndDrop :: T2x2[txt|txt*2] || drag and drop,TABLE,tab n || var:dragAndDrop
+        e.g. FRFUN06/9.0, FRFUN06/9.0
+[   2 bundles /   2 modules]  dragAndDrop :: noTable || drag and drop,body || var:dragAndDrop
+        e.g. HIS1005/9.1, HIS1007/3.1
+[   2 bundles /   2 modules]  dragAndDrop :: noTable || drag and drop+txt,drag and drop || extra:dragAndDrop || var:dragAndDrop
+        e.g. HIS1006/1.2, HIS1008/1.2
+[   2 bundles /   2 modules]  dragAndDrop :: T5x2[txt|txt*5] || drag and drop,TABLE || var:dragAndDrop
+        e.g. MXDB302/8.0, MXFL302/5.0
+[   2 bundles /   2 modules]  dragAndDrop :: noTable || drag and drop,button+txt*2 || var:dragAndDrop
+        e.g. MXDI103/1.0, MXFUN03/0.0
+[   2 bundles /   1 modules]  dragAndDrop :: T1x5[-|-|-|-|-] || drag and drop,TABLE,button+txt || var:dragAndDrop
+        e.g. MXDI103/3.0, MXDI103/6.0
+[   2 bundles /   1 modules]  dragAndDrop :: T2x10[txt|txt|txt|txt|txt|txt|txt|txt|txt|txt*2] || drag and drop,TABLE || var:dragAndDrop
+        e.g. MXDI103/5.0, MXDI103/2.0
+
+TOTAL declining bundles: 900 across 750 shapes

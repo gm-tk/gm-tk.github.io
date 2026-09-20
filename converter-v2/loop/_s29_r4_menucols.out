@@ -1,0 +1,104 @@
+paired overview pages with a gold menu 451; gold NON-tabs (plain) 438, tabs 13
+gold plain shell overall : [('col-12', 209), ('col-md-12.col-12.paddingR | col-md-6.col', 60), ('OFFSET', 52), ('PADLR', 38), ('EMPTY', 20), ('PADRR', 18), ('COL6x2', 12), ('SINGLE8', 8)]
+Claude shell on those    : [('col-12', 226), ('col-md-12.col-12.paddingR | col-md-6.col', 113), ('PADLR', 36), ('OFFSET', 35), ('SINGLE8', 22), ('EMPTY', 5), ('COL6x2', 1)]
+paired (gold, Claude)    : [(('col-12', 'col-12'), 208), (('col-md-12.col-12.paddingR | col-md-6.col', 'col-md-12.col-12.paddingR | col-md-6.col'), 60), (('OFFSET', 'OFFSET'), 31), (('PADLR', 'PADLR'), 28), (('PADRR', 'col-md-12.col-12.paddingR | col-md-6.col'), 18), (('EMPTY', 'col-12'), 13), (('OFFSET', 'col-md-12.col-12.paddingR | col-md-6.col'), 10), (('COL6x2', 'col-md-12.col-12.paddingR | col-md-6.col'), 10), (('SINGLE8', 'SINGLE8'), 7), (('OFFSET', 'SINGLE8'), 6), (('PADLR', 'col-md-12.col-12.paddingR | col-md-6.col'), 5), (('col-md-12.col-12 | col-md-6.col-12 | col', 'col-md-12.col-12.paddingR | col-md-6.col'), 4)]
+
+GOLD plain-menu shell per group (n = overview pages) and Claude's shell on the same pages:
+  subject        1-10 Blended Literacy              n= 92 agree= 65  gold col-md-12.col-12.paddingR | col-md-6.col 0.65 / PADRR 0.20 / col-12 0.05  Claude col-md-12.col-12.paddingR | col-md-6.col 0.95 / col-12 0.05
+  subject        NCEA1                              n= 68 agree= 63  gold col-12 0.91 / EMPTY 0.06 / div 0.03             Claude col-12 0.99 / EMPTY 0.01
+  subject        1-10 English                       n= 51 agree= 40  gold OFFSET 0.57 / col-12 0.29 / col-md-12.col-12 | col-md-6.col-12.paddi 0.06  Claude OFFSET 0.59 / col-12 0.27 / col-md-12.col-12.paddingR | col-md-6.col 0.10
+  subject        1-10 Mathematics                   n= 44 agree= 32  gold col-12 0.68 / OFFSET 0.16 / EMPTY 0.09          Claude col-12 0.68 / SINGLE8 0.11 / col-md-12.col-12.paddingR | col-md-6.col 0.11
+  subject        Leaving to Learn                   n= 32 agree= 22  gold col-12 0.50 / COL6x2 0.16 / SINGLE8 0.16        Claude col-12 0.62 / SINGLE8 0.19 / col-md-12.col-12.paddingR | col-md-6.col 0.16
+  subject        Online Safety (OS9000)             n= 28 agree= 28  gold col-12 0.96 / SINGLE8 0.04                      Claude col-12 0.96 / SINGLE8 0.04
+  subject        ConnectED                          n= 22 agree= 11  gold PADLR 0.32 / col-12 0.27 / BANNER+PADLR 0.18    Claude PADLR 0.59 / col-12 0.32 / EMPTY 0.05
+  subject        1-10 Writing (MiW)                 n= 21 agree= 21  gold col-12 1.00                                     Claude col-12 1.00
+  subject        1-10 Health and PE                 n= 16 agree= 16  gold PADLR 0.94 / col-12 0.06                        Claude PADLR 0.94 / col-12 0.06
+  subject        Te Marautanga o Aotearoa TMoA      n= 14 agree=  8  gold col-12 0.57 / EMPTY 0.43                        Claude col-12 1.00
+  subject        ANZH                               n= 12 agree=  3  gold OFFSET 0.33 / PADLR 0.25 / col-12 0.25          Claude col-md-12.col-12.paddingR | col-md-6.col 0.58 / col-12 0.33 / SINGLE8 0.08
+  subject        Te ara Whakapuawa -Wellbeing       n=  8 agree=  8  gold PADLR 1.00                                      Claude PADLR 1.00
+  subject        EXPlore                            n=  6 agree=  2  gold PADLR 0.67 / col-12 0.33                        Claude SINGLE8 0.67 / col-12 0.33
+  subject        1-10 Languages                     n=  6 agree=  5  gold col-12 0.67 / SINGLE8 0.33                      Claude col-12 0.83 / SINGLE8 0.17
+  subject        1-10 Arts                          n=  5 agree=  0  gold OFFSET 1.00                                     Claude col-md-12.col-12.paddingR | col-md-6.col 0.60 / SINGLE8 0.40
+  subject        1-10 Social Science                n=  5 agree=  5  gold col-12 0.60 / OFFSET 0.40                       Claude col-12 0.60 / OFFSET 0.40
+  subject        1-10 Science                       n=  4 agree=  4  gold col-12 1.00                                     Claude col-12 1.00
+  subject        1-10 Technology                    n=  4 agree=  2  gold col-12 0.50 / OFFSET 0.50                       Claude col-12 0.50 / EMPTY 0.25 / SINGLE8 0.25
+  subject+phase  1-10 Blended Literacy|BLL1         n= 55 agree= 34  gold col-md-12.col-12.paddingR | col-md-6.col 0.62 / PADRR 0.24 / COL6x2 0.07  Claude col-md-12.col-12.paddingR | col-md-6.col 1.00
+  subject+phase  1-10 Blended Literacy|BLL2         n= 35 agree= 29  gold col-md-12.col-12.paddingR | col-md-6.col 0.74 / PADRR 0.14 / col-12 0.09  Claude col-md-12.col-12.paddingR | col-md-6.col 0.91 / col-12 0.09
+  subject+phase  1-10 Writing (MiW)|WJFUN1          n= 10 agree= 10  gold col-12 1.00                                     Claude col-12 1.00
+  subject+phase  NCEA1|AGH1                         n=  9 agree=  9  gold col-12 1.00                                     Claude col-12 1.00
+  subject+phase  Leaving to Learn|XDLS9             n=  9 agree=  9  gold col-12 1.00                                     Claude col-12 1.00
+  subject+phase  1-10 English|ENFUN0                n=  8 agree=  6  gold OFFSET 0.88 / col-md-6.offset-md-0.col-12.paddingR 0.12  Claude OFFSET 0.88 / SINGLE8 0.12
+  subject+phase  NCEA1|PHE1                         n=  8 agree=  8  gold col-12 1.00                                     Claude col-12 1.00
+  subject+phase  Te Marautanga o Aotearoa TMoA|TRR1 n=  7 agree=  2  gold EMPTY 0.71 / col-12 0.29                        Claude col-12 1.00
+  subject+phase  NCEA1|HIS1                         n=  6 agree=  3  gold EMPTY 0.67 / col-12 0.33                        Claude col-12 0.83 / EMPTY 0.17
+  subject+phase  NCEA1|PES1                         n=  6 agree=  6  gold col-12 1.00                                     Claude col-12 1.00
+  subject+phase  Te ara Whakapuawa -Wellbeing|TWHA9 n=  6 agree=  6  gold PADLR 1.00                                      Claude PADLR 1.00
+  subject+phase  1-10 Writing (MiW)|WJFUN2          n=  6 agree=  6  gold col-12 1.00                                     Claude col-12 1.00
+  subject+phase  1-10 Arts|ARFUN0                   n=  5 agree=  0  gold OFFSET 1.00                                     Claude col-md-12.col-12.paddingR | col-md-6.col 0.60 / SINGLE8 0.40
+  subject+phase  NCEA1|ART1                         n=  5 agree=  3  gold col-12 0.60 / div 0.40                          Claude col-12 1.00
+  subject+phase  EXPlore|EXPFUN0                    n=  5 agree=  1  gold PADLR 0.80 / col-12 0.20                        Claude SINGLE8 0.80 / col-12 0.20
+  subject+phase  NCEA1|HES1                         n=  5 agree=  5  gold col-12 1.00                                     Claude col-12 1.00
+  subject+phase  NCEA1|PWY1                         n=  5 agree=  5  gold col-12 1.00                                     Claude col-12 1.00
+  subject+phase  1-10 Writing (MiW)|WJFUN3          n=  5 agree=  5  gold col-12 1.00                                     Claude col-12 1.00
+  subject+phase  Leaving to Learn|XGF9              n=  5 agree=  0  gold COL6x2 0.80 / EMPTY 0.20                        Claude col-md-12.col-12.paddingR | col-md-6.col 0.80 / col-12 0.20
+  subject+phase  Leaving to Learn|XLP0              n=  5 agree=  5  gold SINGLE8 1.00                                    Claude SINGLE8 1.00
+  subject+phase  ANZH|ANZH1                         n=  4 agree=  0  gold PADLR 0.50 / OFFSET 0.25 / col-md-6.offset-md-0.col-12 0.25  Claude col-md-12.col-12.paddingR | col-md-6.col 1.00
+  subject+phase  ANZH|ANZH3                         n=  4 agree=  3  gold col-12 0.75 / OFFSET 0.25                       Claude col-12 0.75 / SINGLE8 0.25
+  subject+phase  NCEA1|CBI1                         n=  4 agree=  4  gold col-12 1.00                                     Claude col-12 1.00
+  subject+phase  1-10 English|ENGC2                 n=  4 agree=  3  gold col-12 0.50 / div 0.25 / OFFSET 0.25            Claude OFFSET 0.50 / col-12 0.50
+  subject+phase  1-10 Mathematics|MXEX3             n=  4 agree=  2  gold col-12 0.50 / EMPTY 0.50                        Claude col-12 0.50 / SINGLE8 0.50
+  subject+phase  1-10 Mathematics|MXFL1             n=  4 agree=  2  gold COL6x2 0.50 / col-12 0.50                       Claude col-md-12.col-12.paddingR | col-md-6.col 0.50 / col-12 0.50
+  subject+phase  Te Marautanga o Aotearoa TMoA|PNR1 n=  4 agree=  4  gold col-12 1.00                                     Claude col-12 1.00
+  subject+phase  NCEA1|COM1                         n=  3 agree=  3  gold col-12 1.00                                     Claude col-12 1.00
+  subject+phase  NCEA1|DAN1                         n=  3 agree=  3  gold col-12 1.00                                     Claude col-12 1.00
+  subject+phase  1-10 English|ENGI1                 n=  3 agree=  1  gold OFFSET 0.33 / COL6x2 0.33 / SINGLE12 0.33       Claude OFFSET 1.00
+  subject+phase  1-10 English|ENGI2                 n=  3 agree=  3  gold OFFSET 1.00                                     Claude OFFSET 1.00
+  subject+phase  1-10 English|ENGI3                 n=  3 agree=  3  gold OFFSET 1.00                                     Claude OFFSET 1.00
+  subject+phase  1-10 English|ENGI4                 n=  3 agree=  3  gold OFFSET 1.00                                     Claude OFFSET 1.00
+  subject+phase  1-10 English|ENGS4                 n=  3 agree=  2  gold col-12 1.00                                     Claude col-12 0.67 / COL6x2 0.33
+  subject+phase  1-10 Health and PE|HPFUN1          n=  3 agree=  3  gold PADLR 1.00                                      Claude PADLR 1.00
+  subject+phase  1-10 Health and PE|HPFUN2          n=  3 agree=  3  gold PADLR 1.00                                      Claude PADLR 1.00
+  subject+phase  1-10 Health and PE|HPFUN3          n=  3 agree=  3  gold PADLR 1.00                                      Claude PADLR 1.00
+  subject+phase  1-10 Health and PE|HPFUN4          n=  3 agree=  3  gold PADLR 1.00                                      Claude PADLR 1.00
+  subject+phase  1-10 Health and PE|HPFUN9          n=  3 agree=  3  gold PADLR 1.00                                      Claude PADLR 1.00
+  subject+phase  1-10 Mathematics|MXDB3             n=  3 agree=  2  gold col-12 0.67 / EMPTY 0.33                        Claude col-12 0.67 / SINGLE8 0.33
+  subject+phase  1-10 Mathematics|MXDI1             n=  3 agree=  3  gold col-12 1.00                                     Claude col-12 1.00
+  subject+phase  1-10 Mathematics|MXFL2             n=  3 agree=  2  gold col-12 0.67 / PADLR 0.33                        Claude col-12 0.67 / col-md-12.col-12.paddingR | col-md-6.col 0.33
+  subject+phase  1-10 Mathematics|MXFU3             n=  3 agree=  2  gold col-12 0.67 / EMPTY 0.33                        Claude col-12 0.67 / SINGLE8 0.33
+  subject+phase  1-10 Mathematics|MXFUN0            n=  3 agree=  0  gold OFFSET 1.00                                     Claude EMPTY 0.67 / SINGLE8 0.33
+  subject+phase  Leaving to Learn|XMES1             n=  3 agree=  2  gold col-12 0.67 / EMPTY 0.33                        Claude col-12 1.00
+  subject+phase  Leaving to Learn|XTAS1             n=  3 agree=  3  gold col-12 1.00                                     Claude col-12 1.00
+  template       Standard                           n=322 agree=256  gold col-12 0.54 / col-md-12.col-12.paddingR | col-md-6.col 0.16 / OFFSET 0.10  Claude col-12 0.57 / col-md-12.col-12.paddingR | col-md-6.col 0.31 / OFFSET 0.08
+  template       Fundamentals                       n= 59 agree= 47  gold col-12 0.41 / OFFSET 0.31 / PADLR 0.25          Claude col-12 0.41 / PADLR 0.25 / OFFSET 0.14
+  template       Inquiry                            n= 43 agree= 24  gold PADLR 0.42 / col-md-12.col-12.paddingR | col-md-6.col 0.16 / BANNER+PADLR 0.09  Claude PADLR 0.49 / col-md-12.col-12.paddingR | col-md-6.col 0.26 / col-12 0.14
+  template       Bilingual                          n= 14 agree=  8  gold col-12 0.57 / EMPTY 0.43                        Claude col-12 1.00
+
+DISAGREEMENTS (gold shell != Claude shell), by (gold, Claude) with modules:
+  gold PADRR            Claude col-md-12.col-12.paddingR | col-md-6.col n= 18  BLL125 BLL134 BLL135 BLL141 BLL142 BLL143 BLL144 BLL152 BLL160 BLL161 BLL162 BLL163 BLL166 BLL236 BLL237 BLL241 BLL244 BLL245
+  gold EMPTY            Claude col-12           n= 13  HIS1006 HIS1007 HIS1008 TRR102 TRR103 TRR106 TRR108 TRR114 TRR304 XGF9001 XMES103 XMES201 XMES203
+  gold OFFSET           Claude col-md-12.col-12.paddingR | col-md-6.col n= 10  ANZH101 ANZH203 ANZH401 ARFUN02 ARFUN03 ARFUN05 ENGR101 ENGR201 MXEX201 MXEX202
+  gold COL6x2           Claude col-md-12.col-12.paddingR | col-md-6.col n= 10  BLL110 BLL120 BLL121 BLL172 MXFL101 MXFL102 XGF9002 XGF9003 XGF9004 XGF9006
+  gold OFFSET           Claude SINGLE8          n=  6  ANZH302 ARFUN01 ARFUN04 ENFUN07 MXFUN01 TEFUN07
+  gold PADLR            Claude col-md-12.col-12.paddingR | col-md-6.col n=  5  ANZH104 ANZH105 ANZH205 CEDO301 MXFL202
+  gold col-md-12.col-12 | col-md-6.col-12 | col Claude col-md-12.col-12.paddingR | col-md-6.col n=  4  BLL174 BLL175 BLL176 BLL177
+  gold BANNER+PADLR     Claude PADLR            n=  4  CEDK102 CEDT404 CEDW101 CEDW201
+  gold PADLR            Claude SINGLE8          n=  4  EXPFUN02 EXPFUN03 EXPFUN04 EXPFUN05
+  gold EMPTY            Claude SINGLE8          n=  4  MXDB301 MXEX301 MXEX301 MXFU302
+  gold div              Claude col-12           n=  3  ANZH404 ART1004 ART1005
+  gold col-md-12.col-12 | col-md-6.col-12.paddi Claude col-md-12.col-12.paddingR | col-md-6.col n=  3  ENGC301 ENGC302 ENGC401
+  gold OFFSET           Claude EMPTY            n=  3  MXFUN02 MXFUN03 TEFUN02
+  gold OFFSET           Claude PADLR            n=  2  CEDT104 CEDT208
+  gold col-md-6.offset-md-0.col-12 Claude col-md-12.col-12.paddingR | col-md-6.col n=  1  ANZH103
+  gold EMPTY            Claude col-md-12.col-12.paddingR | col-md-6.col n=  1  BLL240
+  gold col-md-12.col-12 | col-md-6.col-12.paddi Claude PADLR            n=  1  CEDK101
+  gold PADLR            Claude col-12           n=  1  CEDK501
+  gold col-md-6.col-12.paddingR Claude EMPTY            n=  1  CEDO204
+  gold EMPTY            Claude PADLR            n=  1  CEDT101
+  gold col-md-6.offset-md-0.col-12.paddingR Claude OFFSET           n=  1  ENFUN09
+  gold div              Claude OFFSET           n=  1  ENGC201
+  gold COL6x2           Claude OFFSET           n=  1  ENGI102
+  gold SINGLE12         Claude OFFSET           n=  1  ENGI103
+  gold col-12           Claude COL6x2           n=  1  ENGS404
+  gold SINGLE8          Claude col-12           n=  1  GEWHA
+  gold COL6x2           Claude SINGLE8          n=  1  XWHA01
+  gold col-md-8.col-sm-12 | col-md-6.col-sm-12  Claude col-md-12.col-12.paddingR | col-md-6.col n=  1  XWHA02

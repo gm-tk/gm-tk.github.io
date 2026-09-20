@@ -1,0 +1,667 @@
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+PHE1007: identical 10 / changed 0
+PHE1008: identical 6 / changed 0
+PNR101: identical 2 / changed 0
+PNR102: identical 3 / changed 0
+PNR104: identical 3 / changed 0
+PNR107: identical 3 / changed 0
+PWY1001: identical 10 / changed 0
+PWY1002: identical 10 / changed 0
+PWY1007: identical 9 / changed 0
+PWY1008: identical 10 / changed 0
+PWY1009: identical 9 / changed 0
+PWYWHA1: identical 1 / changed 0
+SCBI301: identical 9 / changed 0
+SCCH301: identical 9 / changed 0
+SCES201: identical 5 / changed 0
+SCFUN01: identical 1 / changed 0
+SCPH301: identical 9 / changed 0
+SPA1004: identical 3 / changed 0
+SSCI205: identical 10 / changed 0
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+SSOG101: identical 8 / changed 0
+SSOG103: identical 7 / changed 0
+SSOG301: identical 8 / changed 0
+  ~ TEDC401_1_0.html: -36 +44
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <h3>Metadata matching</h3>
+     - <td>Match the metadata to what it tells you: / (mix up 2nd column) / <b>Metadata</b></td>
+     - <td><b>What it tells you</b></td>
+     - <td>File name</td>
+     - <td>What the file is</td>
+     - <td>Date created</td>
+     - <td>When it was made</td>
+     - <td>Tags</td>
+     - <td>What it relates to</td>
+     - <td>Author</td>
+     - <td>Who made it</td>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Orphan sub-tag [data marker] outside an i
+     - <p>“Tino pai, you’ll be a metadata master in no time!”</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="TEDC401-01-05" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - </table>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="TEDC401-01-06" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <h3>Metadata matching</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="TEDC401-01-05" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: dragAndDrop — Activity 1E — see TED
+     + <th>Match the metadata to what it tells you: / (mix up 2nd column) / <b>Metadata</b></th>
+     + <th><b>What it tells you</b></th>
+     + <td>File name</td>
+     + <td>What the file is</td>
+     + <td>Date created</td>
+     + <td>When it was made</td>
+     + <td>Tags</td>
+     + <td>What it relates to</td>
+     + <td>Author</td>
+     + <td>Who made it</td>
+     + <p>“Tino pai, you’ll be a metadata master in no time!”</p>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="TEDC401-01-06" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <tr>
+     + </tr>
+     + … 24 more added
+  ~ TEDC401_2_0.html: -49 +40
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [selectionBox] marker — no conte
+     - <h3>The frustration test</h3>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="TEDC401-02-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: selectionBox — Activity (inline) — 
+     - <th> [Body] Think about a time when an app or website annoyed you. What went wrong? / [checkbox] / [Select all
+     - <th> [RHSImage] ‘avatar’ ‘Jo’ [speech bubble ] “Bad design isn’t random, it happens when designers don’t under
+     - <div class="bubble-basic no-hover bubble-right"><p>Before we design anything, we need to understand how people
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="27" data-cv2-ref="TEDC401-02-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="27" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #27: tabs (ideally each 'landing tab' ha
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="31" data-cv2-ref="TEDC401-02-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="31" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #31: tabs + speechBubble — Activity 2C —
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="34" data-cv2-ref="TEDC401-02-04" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="34" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #34: shapeHover (with circles (bolded ) 
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="36" data-cv2-ref="TEDC401-02-05" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="36" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #36: dragAndDrop + speechBubble + carous
+     - <div class="row speechBubble" layout="speech">
+     - <div class="col-md-2 offset-md-0 col-12 paddingR"><img class="img-fluid bubble-img" src="https://placehold.co/
+     - <div class="col-md-6 col-6">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="39" data-cv2-ref="TEDC401-02-06" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #39: unclassified — Activity (inline) — 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="40" data-cv2-ref="TEDC401-02-07" style="border: 8px s
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="40" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #40: speechBubble — Activity (inline) — 
+     - <div style="font-size: 0.95em">
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="41" data-cv2-ref="TEDC401-02-08" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="41" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - … 9 more removed
+     + <h3>The frustration test</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="TEDC401-02-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: selectionBox + speechBubble — Activ
+     + <th> [Body] Think about a time when an app or website annoyed you. What went wrong? / [checkbox] / [Select all
+     + <th> [RHSImage] ‘avatar’ ‘Jo’ [speech bubble ] “Bad design isn’t random, it happens when designers don’t under
+     + <p>Before we design anything, we need to understand how people actually use an interface. Why do some feel eas
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="TEDC401-02-02" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: tabs (ideally each 'landing tab' ha
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="29" data-cv2-ref="TEDC401-02-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="29" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #29: tabs + speechBubble — Activity 2C —
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="32" data-cv2-ref="TEDC401-02-04" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="32" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #32: shapeHover (with circles (bolded ) 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="34" data-cv2-ref="TEDC401-02-05" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="34" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #34: dragAndDrop + speechBubble + carous
+     + <p>Handsome Business Man Set Stock Illustration - Download Image Now - Men, Characters, Variation - iStock</p>
+     + … 20 more added
+  ~ TEDC401_3_0.html: -93 +83
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="44" data-cv2-ref="TEDC401-03-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="44" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #44: unclassified + speechBubble + speec
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <h3>Sort + rank challenge</h3>
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> Students get a list of twelve words and have to sort them into 4 category (drag and drop) / [Body] Use wh
+     - <th><b>Accessibility</b></th>
+     - <th><b>Performance</b></th>
+     - <th><b>Connectivity</b></th>
+     - </tr>
+     - <tr>
+     - <td></td>
+     - <td></td>
+     - <td></td>
+     - <td></td>
+     - </tr>
+     - </table>
+     - <p>Words to drag and drop:</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [mix these up, correct answers in red
+     - <li>Main action stands out clearly</li>
+     - <li>Strong colour contrast</li>
+     - <li>No autoplay videos</li>
+     - <li>Cloud-saved files</li>
+     - <li>Touch-friendly spacing</li>
+     - <li>Requires Wi-Fi to load feed</li>
+     - <p>need internet or device connectivity</p>
+     - <li>Large text for first-time users</li>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: 🡪 Hierarchy + Accessibility</p>
+     - <li>Large media (pictures or videos) slows loading</li>
+     - <li>Hidden navigation</li>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: 🡪 Hierarchy + Accessibility</p>
+     - <li>Giant heading that takes up screen</li>
+     - <li>Tiny text</li>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: 🡪 Hierarchy + Accessibility</p>
+     - <li>Background location always on</li>
+     - <div class="bubble-basic no-hover bubble-right"><p>Now it’s time to take all your learning to the next level. 
+     - … 53 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="42" data-cv2-ref="TEDC401-03-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="42" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #42: unclassified + speechBubble + speec
+     + <h3>Sort + rank challenge</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="43" data-cv2-ref="TEDC401-03-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: 🡪 Hierarchy + Accessibility<br />🡪 
+     + <div class="cv2-interactive" data-cv2-index="43" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #43: dragAndDrop + speechBubble ((as a s
+     + <th> Students get a list of twelve words and have to sort them into 4 category (drag and drop) / [Body] Use wh
+     + <th><b>Accessibility</b></th>
+     + <th><b>Performance</b></th>
+     + <th><b>Connectivity</b></th>
+     + <td></td>
+     + <td></td>
+     + <p>Words to drag and drop:</p>
+     + <li>Main action stands out clearly</li>
+     + <li>Strong colour contrast</li>
+     + <li>No autoplay videos</li>
+     + <li>Cloud-saved files</li>
+     + … 63 more added
+  ~ TEDC401_4_0.html: -14 +14
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="73" data-cv2-ref="TEDC401-04-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="73" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #73: tabs — Activity (inline) — see TEDC
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="74" data-cv2-ref="TEDC401-04-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="74" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #74: dragAndDrop + speechBubble (matchin
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="77" data-cv2-ref="TEDC401-04-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="77" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #77: accordion — Activity (inline) — see
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="80" data-cv2-ref="TEDC401-04-04" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #80: unclassified + tabs + speechBubble 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="83" data-cv2-ref="TEDC401-04-05" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="83" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #83: multiChoiceQuiz (go to) — Activity 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="70" data-cv2-ref="TEDC401-04-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="70" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #70: tabs — Activity (inline) — see TEDC
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="71" data-cv2-ref="TEDC401-04-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="71" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #71: dragAndDrop + speechBubble (matchin
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="74" data-cv2-ref="TEDC401-04-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="74" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #74: accordion — Activity (inline) — see
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="77" data-cv2-ref="TEDC401-04-04" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="77" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #77: unclassified + tabs + speechBubble 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="80" data-cv2-ref="TEDC401-04-05" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #80: multiChoiceQuiz (go to) — Activity 
+  ~ TEDC401_5_0.html: -14 +14
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="87" data-cv2-ref="TEDC401-05-01" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #87: selectionBox + speechBubble + tabs 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="88" data-cv2-ref="TEDC401-05-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="88" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #88: tabs + speechBubble — Activity 5B —
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="90" data-cv2-ref="TEDC401-05-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="90" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #90: multiChoiceQuiz — Activity (inline)
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="92" data-cv2-ref="TEDC401-05-04" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="92" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #92: unclassified + speechBubble — Activ
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="93" data-cv2-ref="TEDC401-05-05" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="93" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #93: selectionBox — Activity (inline) — 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="84" data-cv2-ref="TEDC401-05-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="84" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #84: selectionBox + speechBubble + tabs 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="85" data-cv2-ref="TEDC401-05-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="85" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #85: tabs + speechBubble — Activity 5B —
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="87" data-cv2-ref="TEDC401-05-03" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #87: multiChoiceQuiz — Activity (inline)
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="89" data-cv2-ref="TEDC401-05-04" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="89" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #89: unclassified + speechBubble — Activ
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="90" data-cv2-ref="TEDC401-05-05" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="90" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #90: selectionBox — Activity (inline) — 
+  ~ TEDC401_6_0.html: -46 +40
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="96" data-cv2-ref="TEDC401-06-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="96" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #96: speechBubble + speechBubble — Activ
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [multiChoiceQuiz] marker — no co
+     - <h3>How responsible are you?</h3>
+     - <th> [checkboxes] / <b>Self‑check 1: What could go wrong?</b> / So … what could go wrong if you don’t think ca
+     - <th> [checkboxes] / <b>Self‑check 2: Password safety</b> / Which of the following describe a strong password? 
+     - <th> [multiple-choice] / <b>Self-check 3:</b> <b>Backup scenario:</b> You just finished your prototype. Sudden
+     - <th> [multiple-choice] / <b>Self-check 4: Permissions and access</b> / Which option is the most responsible ch
+     - <th> [multiple-choice] / <b>Self-check 5: Attribution detective</b> / You used images from the internet in you
+     - <div class="bubble-basic no-hover bubble-right"><p>If your work isn’t protected, saved, and credited … it’s no
+     - <div class="row flipCardsContainer">
+     - <div class="col-md-6 col-12 paddingLR">
+     - <div class="flipCard">
+     - <div class="front"><img class="img-fluid" src="https://placehold.co/400x400?text=vector-vignette-vectorstyle-i
+     - <div class="back"><p>A strong design isn’t enough on its own. Designers must explain:</p><ul><li>how the desig
+     - <div class="col-md-6 col-12 paddingLR">
+     - <div class="flipCard">
+     - <div class="front"><img class="img-fluid" src="https://placehold.co/400x400?text=image-that-represent-idea-bra
+     - <div class="back"><ul><li>Prototype Version 2</li><li>Data visualisation (chart)</li><li>Design explanation (v
+     - </div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Activty] 6B (2 parts)<br />[cl
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - </table>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row speechBubble" layout="speech">
+     - … 6 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="93" data-cv2-ref="TEDC401-06-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="93" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #93: speechBubble + speechBubble — Activ
+     + <h3>How responsible are you?</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="95" data-cv2-ref="TEDC401-06-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Activty] 6B (2 parts)<br />[clickdro
+     + <div class="cv2-interactive" data-cv2-index="95" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #95: multiChoiceQuiz + speechBubble + fl
+     + <div style="font-size: 0.95em">
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th> [checkboxes] / <b>Self‑check 1: What could go wrong?</b> / So … what could go wrong if you don’t think ca
+     + <th> [checkboxes] / <b>Self‑check 2: Password safety</b> / Which of the following describe a strong password? 
+     + <th> [multiple-choice] / <b>Self-check 3:</b> <b>Backup scenario:</b> You just finished your prototype. Sudden
+     + <th> [multiple-choice] / <b>Self-check 4: Permissions and access</b> / Which option is the most responsible ch
+     + … 20 more added
+TEDC401: identical 2 / changed 6
+  ~ TEDC402_7_0.html: -76 +70
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [multiChoiceQuiz] marker — no co
+     - <h3>Efficiency in action</h3>
+     - <div class="cv2-interactive bilingual-unbuilt">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th> [H3] <b>#1. Searching a list</b> / [Body] Scenario: Tina has a sorted list of astronaut heights. She want
+     - <th> [H3] <b>#2. Guess the number (searching efficiently)</b> / [Body] Scenario: Tina is thinking of a number 
+     - <th> [H3] <b>#3.Astronaut min/max challenge</b> / [Body] Which algorithm correctly finds the tallest astronaut
+     - <th> [H3] <b>#4.</b> <b>Filtering for safety</b> / [Body] Scenario: Tina needs to flag astronauts who are <i>o
+     - </tr>
+     - </table>
+     - <div class="bubble-basic no-hover bubble-right"><p>Efficient algorithms don’t just work, they work <i>smart</i
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="100" data-cv2-ref="TEDC402-07-01" style="border: 8px 
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="101" data-cv2-ref="TEDC402-07-02" style="border: 8px 
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <h3>Guided practise</h3>
+     - <div class="activity interactive" number="7C">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="106" data-cv2-ref="TEDC402-07-03" style="border: 8px 
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="106" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #106: dragAndDrop — Activity (inline) — 
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Auto</p>
+     - <p>You’re building the vocabulary of a real problem-solver.</p>
+     - <p>Part C</p>
+     - <p><b>Identify the Decision Point</b></p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="107" data-cv2-ref="TEDC402-07-04" style="border: 8px 
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="107" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #107: dropDown — Activity (inline) — see
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="109" data-cv2-ref="TEDC402-07-05" style="border: 8px 
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="109" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #109: clickDrop (for instructions, journ
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="110" data-cv2-ref="TEDC402-07-06" style="border: 8px 
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #110: speechBubble — Activity (inline) —
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="111" data-cv2-ref="TEDC402-07-07" style="border: 8px 
+     - … 36 more removed
+     + <h3>Efficiency in action</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="98" data-cv2-ref="TEDC402-07-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="98" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #98: multiChoiceQuiz — Activity 6A — see
+     + <th> [H3] <b>#1. Searching a list</b> / [Body] Scenario: Tina has a sorted list of astronaut heights. She want
+     + <th> [H3] <b>#2. Guess the number (searching efficiently)</b> / [Body] Scenario: Tina is thinking of a number 
+     + <th> [H3] <b>#3.Astronaut min/max challenge</b> / [Body] Which algorithm correctly finds the tallest astronaut
+     + <th> [H3] <b>#4.</b> <b>Filtering for safety</b> / [Body] Scenario: Tina needs to flag astronauts who are <i>o
+     + <div class="bubble-basic no-hover bubble-top"><p>Efficient algorithms don’t just work, they work <i>smart</i>.
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="100" data-cv2-ref="TEDC402-07-02" style="border: 8px 
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="101" data-cv2-ref="TEDC402-07-03" style="border: 8px 
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <h3>Guided practise</h3>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="105" data-cv2-ref="TEDC402-07-04" style="border: 8px 
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Auto</p>
+     + <div class="cv2-interactive" data-cv2-index="105" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #105: dragAndDrop — Activity 6B — see TE
+     + … 50 more added
+  ~ TEDC402_8_0.html: -17 +17
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="122" data-cv2-ref="TEDC402-08-01" style="border: 8px 
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="123" data-cv2-ref="TEDC402-08-02" style="border: 8px 
+     - <div class="cv2-interactive" data-cv2-index="123" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #123: tabs — Activity (inline) — see TED
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="127" data-cv2-ref="TEDC402-08-03" style="border: 8px 
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #127: tabs — Activity (inline) — see TED
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="128" data-cv2-ref="TEDC402-08-04" style="border: 8px 
+     - <div class="cv2-interactive" data-cv2-index="128" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #128: sketcher + sketcher — Activity (in
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="131" data-cv2-ref="TEDC402-08-05" style="border: 8px 
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #131: tabs — Activity (inline) — see TED
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="132" data-cv2-ref="TEDC402-08-06" style="border: 8px 
+     - <div class="cv2-interactive" data-cv2-index="132" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #132: clickDrop — Activity (inline) — se
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="134" data-cv2-ref="TEDC402-08-07" style="border: 8px 
+     - <div class="cv2-interactive" data-cv2-index="134" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #134: unclassified — Activity (inline) —
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="121" data-cv2-ref="TEDC402-08-01" style="border: 8px 
+     + <div class="cv2-interactive" data-cv2-index="121" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #121: tabs — Activity (inline) — see TED
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="122" data-cv2-ref="TEDC402-08-02" style="border: 8px 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="126" data-cv2-ref="TEDC402-08-03" style="border: 8px 
+     + <div class="cv2-interactive" data-cv2-index="126" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #126: tabs — Activity (inline) — see TED
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="127" data-cv2-ref="TEDC402-08-04" style="border: 8px 
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #127: sketcher + sketcher — Activity (in
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="130" data-cv2-ref="TEDC402-08-05" style="border: 8px 
+     + <div class="cv2-interactive" data-cv2-index="130" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #130: tabs — Activity (inline) — see TED
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="131" data-cv2-ref="TEDC402-08-06" style="border: 8px 
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #131: clickDrop — Activity (inline) — se
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="133" data-cv2-ref="TEDC402-08-07" style="border: 8px 
+     + <div class="cv2-interactive" data-cv2-index="133" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #133: unclassified — Activity (inline) —
+  ~ TEDC402_9_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="138" data-cv2-ref="TEDC402-09-01" style="border: 8px 
+     - <div class="cv2-interactive" data-cv2-index="138" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #138: hint (sliders) — Activity (inline)
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="141" data-cv2-ref="TEDC402-09-02" style="border: 8px 
+     - <div class="cv2-interactive" data-cv2-index="141" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #141: multiChoiceQuiz — Activity 8D — se
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="137" data-cv2-ref="TEDC402-09-01" style="border: 8px 
+     + <div class="cv2-interactive" data-cv2-index="137" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #137: hint (sliders) — Activity (inline)
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="140" data-cv2-ref="TEDC402-09-02" style="border: 8px 
+     + <div class="cv2-interactive" data-cv2-index="140" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #140: multiChoiceQuiz — Activity 8D — se
+  ~ TEDC402_8_1.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="142" data-cv2-ref="TEDC402-10-01" style="border: 8px 
+     - <div class="cv2-interactive" data-cv2-index="142" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #142: dropDown — Activity (inline) — see
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="141" data-cv2-ref="TEDC402-10-01" style="border: 8px 
+     + <div class="cv2-interactive" data-cv2-index="141" style="border: 3px dashed #d9480f; background: #fff4e6; padd
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #141: dropDown — Activity (inline) — see
+TEDC402: identical 7 / changed 4
+TEFUN01: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+  ~ TEFUN05_0_0.html: -41 +42
+     - <h3>Which hat?</h3>
+     - <p>Which hat would help you answer these questions to refine and improve a mug cover design? If you are not su
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [Developer please mix these images up
+     - <div class="row speechBubble" layout="speech">
+     - <div class="col-md-2 offset-md-0 col-12 paddingR"><img class="img-fluid bubble-img" src="https://placehold.co/
+     - <div class="col-md-6 col-6">
+     - <div class="bubble-basic no-hover bubble-right">
+     - <div>
+     - <p>Will Koro’s day be better when I give him my mug cover?</p>
+     - <p>What could go wrong? Could the mug cover be damaged easily?</p>
+     - <div class="row speechBubble" layout="thought">
+     - <div class="col-12">
+     - <div class="bubble-basic no-hover bubble-top">
+     - <div>
+     - <p>Instead of a mug cover what is the craziest solution I can think of?</p>
+     - <p>[Insert image white hat from] <a href="https://www.debonogroup.com/services/core-programs/six-thinking-hats
+     - <p>What materials do I have that I could use to make a mug cover?</p>
+     - <div class="row speechBubble" layout="thought">
+     - <div class="col-12">
+     - <div class="bubble-basic no-hover bubble-top"><p>How will I make the mug cover? What steps will I take?</p></d
+     - <div class="row speechBubble" layout="thought">
+     - <div class="col-12">
+     - <div class="bubble-basic no-hover bubble-top"><p>What colour mug cover would make Koro the happiest?</p></div>
+     - </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Image<br />developer please put
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="TEFUN05-00-01" style="border: 8px so
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: multiChoiceQuiz + dropDown + dropDow
+     - </div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="TEFUN05-00-02" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: multiChoiceQuiz (go to) — Activity (
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - … 1 more removed
+     + <h3>Which hat?</h3>
+     + <p>Which hat would help you answer these questions to refine and improve a mug cover design? If you are not su
+     + <div class="dragAndDrop images" layout="standard">
+     + <div class="row">
+     + <div class="col-7 questionContainer">
+     + <div class="question"><p>Will Koro’s day be better when I give him my mug cover?</p></div>
+     + <div class="question"><p>What could go wrong? Could the mug cover be damaged easily?</p></div>
+     + <div class="question"><p>Instead of a mug cover what is the craziest solution I can think of?</p></div>
+     + <div class="question"><p>What materials do I have that I could use to make a mug cover?</p></div>
+     + <div class="question"><p>How will I make the mug cover? What steps will I take?</p></div>
+     + <div class="question"><p>What colour mug cover would make Koro the happiest?</p></div>
+     + <div class="col-5 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + <div class="drop" option="5"></div>
+     + <div class="drop" option="6"></div>
+     + <div class="dragContainer">
+     + … 22 more added
+TEFUN05: identical 0 / changed 1
+TEFUN06: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+TRR107: identical 3 / changed 0
+TRR108: identical 3 / changed 0
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR116: identical 5 / changed 0
+TRR203: identical 4 / changed 0
+TRR301: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+TWHA906: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+WJFUN105: identical 1 / changed 0
+WJFUN106: identical 1 / changed 0
+WJFUN107: identical 1 / changed 0
+WJFUN108: identical 1 / changed 0
+  ~ WJFUN109_0_0.html: -34 +43
+     - <h3>Fill the Te Anau library!</h3>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Make a drag and drop where all of the
+     - <p>While we are in Te Anau we can write to entertain, inform or persuade about the area. Click on the books an
+     - <th>Entertain</th>
+     - <th>Inform</th>
+     - <th>Persuade</th>
+     - <td> MScopilot 365 with the prompt - Make a cartoon book cover with the title Going on a hike </td>
+     - <td> MScopilot 365 with the prompt - Make a cartoon book cover with the title Facts about Lake Te Anau </td>
+     - <td> MScopilot 365 with the prompt - Make a cartoon book cover with the title Facts keep the lake clean </td>
+     - <tr>
+     - <td> MScopilot 365 with the prompt - Make a cartoon book cover with the title A day on the Lake </td>
+     - <td> MScopilot 365 with the prompt - Make a cartoon book cover with the title Building a boat </td>
+     - <td> MScopilot 365 with the prompt - Make a cartoon book cover with the title We should visit the takehē </td>
+     - </tr>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="WJFUN109-00-04" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [dragAndDrop] marker — no conten
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - </tr>
+     - <tr>
+     - </tr>
+     - </table>
+     - <div class="button">Reset</div>
+     - <div class="button">Check answers</div>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="WJFUN109-00-05" style="border: 8px 
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <h3>Fill the Te Anau library!</h3>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>While we are in Te Anau we can write to entertain, inform or persuade about the area. Click on the books an
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="WJFUN109-00-04" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Make a drag and drop where all of the
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: dragAndDrop — Activity 1B — see WJFU
+     + <div class="table-responsive">
+     + <table class="table table-bordered">
+     + <tr>
+     + <th>Entertain</th>
+     + <th>Inform</th>
+     + <th>Persuade</th>
+     + </tr>
+     + <tr>
+     + <td> MScopilot 365 with the prompt - Make a cartoon book cover with the title Going on a hike </td>
+     + <td> MScopilot 365 with the prompt - Make a cartoon book cover with the title Facts about Lake Te Anau </td>
+     + <td> MScopilot 365 with the prompt - Make a cartoon book cover with the title Facts keep the lake clean </td>
+     + … 23 more added
+WJFUN109: identical 0 / changed 1
+WJFUN110: identical 1 / changed 0
+WJFUN112: identical 1 / changed 0
+WJFUN113: identical 1 / changed 0
+WJFUN115: identical 1 / changed 0
+WJFUN116: identical 1 / changed 0
+WJFUN205: identical 1 / changed 0
+WJFUN206: identical 1 / changed 0
+WJFUN208: identical 1 / changed 0
+WJFUN210: identical 1 / changed 0
+WJFUN211: identical 1 / changed 0
+WJFUN212: identical 1 / changed 0
+WJFUN304: identical 1 / changed 0
+WJFUN305: identical 1 / changed 0
+WJFUN306: identical 1 / changed 0
+WJFUN307: identical 1 / changed 0
+WJFUN308: identical 1 / changed 0
+XDLS501: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+XDLS901: identical 5 / changed 0
+XDLS902: identical 8 / changed 0
+XDLS903: identical 8 / changed 0
+XDLS904: identical 8 / changed 0
+XDLS905: identical 8 / changed 0
+XDLS906: identical 8 / changed 0
+XDLS908: identical 9 / changed 0
+XDLS909: identical 5 / changed 0
+XDLS911: identical 2 / changed 0
+XDLS912: identical 6 / changed 0
+XFUN01: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+XGF9001: identical 7 / changed 0
+XGF9002: identical 10 / changed 0
+XGF9003: identical 6 / changed 0
+XGF9004: identical 18 / changed 0
+XGF9006: identical 8 / changed 0
+XLP01: identical 5 / changed 0
+XLP02: identical 7 / changed 0
+XLP03: identical 6 / changed 0
+XLP04: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+XLP06: identical 3 / changed 0
+XMES101: identical 9 / changed 0
+XMES102: identical 6 / changed 0
+XMES103: identical 6 / changed 0
+XMES201: identical 6 / changed 0
+XMES203: identical 6 / changed 0
+XTAS101: identical 5 / changed 0
+XTAS102: identical 6 / changed 0
+XTAS103: identical 7 / changed 0
+XWHA01: identical 2 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 500 / changed 12 / missing 0 over 122 modules
+CHANGED: TEDC401/TEDC401_1_0.html TEDC401/TEDC401_2_0.html TEDC401/TEDC401_3_0.html TEDC401/TEDC401_4_0.html TEDC401/TEDC401_5_0.html TEDC401/TEDC401_6_0.html TEDC402/TEDC402_7_0.html TEDC402/TEDC402_8_0.html TEDC402/TEDC402_9_0.html TEDC402/TEDC402_8_1.html TEFUN05/TEFUN05_0_0.html WJFUN109/WJFUN109_0_0.html

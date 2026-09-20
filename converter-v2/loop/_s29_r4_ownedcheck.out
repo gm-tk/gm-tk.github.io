@@ -1,0 +1,15 @@
+AGH1004	1.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:IN next:table	«Knowledge Self-check»
+AGH1004	5.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«Knowledge Check Sorting Activity»
+COM1006	5.0	dragAndDrop   	GOLD head:h3 act:out next:neither                	CLAUDE head:h3 act:out next:table	«HOW TO EXPLAIN FLOW-ON EFFECTS?»
+ENGI401	2.0	reorder       	GOLD head:h5 act:IN next:neither                 	CLAUDE head:h5 act:out next:table	«Books»
+TEDC401	1.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«**Metadata matching**»
+TEDC401	2.0	selectionBox  	GOLD head:h3 act:IN next:widget:selectionBox     	CLAUDE head:h3 act:out next:table	«**The frustration test**»
+TEDC401	3.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«**Sort + rank challenge**»
+TEDC401	6.0	multiChoiceQuiz	GOLD head:h3 act:IN next:widget:mcqOptions       	CLAUDE head:h3 act:out next:table	«**How responsible are you?**»
+TEDC402	7.0	multiChoiceQuiz	GOLD head:h3 act:IN next:widget:mcqOptions       	CLAUDE head:h3 act:out next:table	«**Efficiency in action**»
+TEDC402	7.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:reorder          	CLAUDE head:h3 act:out next:table	«**Guided practise**»
+TEFUN05	0.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:neither	«Which hat?»
+WJFUN109	0.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«Fill the Te Anau library!»
+WJFUN109	0.0	dragAndDrop   	GOLD head:h3 act:IN next:widget:dragAndDrop      	CLAUDE head:h3 act:out next:table	«Who is the letter for?»
+XGF9003	1.2	dragAndDrop   	GOLD head:h3 act:out next:widget:dragAndDrop     	CLAUDE head:h4 act:out next:table	«Mind detective»
+XMES203	1.0	dragAndDrop   	GOLD head:ABSENT                                 	CLAUDE head:ABSENT	«»

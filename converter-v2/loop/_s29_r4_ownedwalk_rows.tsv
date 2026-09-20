@@ -1,0 +1,193 @@
+AGH1004	1.0	dragAndDrop	h p T		«[Interactive Drag and drop matching activity]»	after«»	cell0«»	head«Knowledge Self-check»	owner«[Interactive: activity]#»
+AGH1004	5.0	dragAndDrop	h T		«[Interactive: drag and drop]»	after«»	cell0«»	head«Knowledge Check Sorting Activity»	owner«(synthetic)#»
+AGH1005	2.0	dragAndDrop	h p p p p h p p		«[interactive: drag and drop]»	after«»	cell0«»	head«Match the label to the correct part of the plant.»	owner«(synthetic)#»
+AGH1006	4.0	radioQuiz	h p p p p p I X		«[interactive: true/false]»	after«»	cell0«»	head«Knowledge CheckTrue/False»	owner«(synthetic)#»
+ARFUN02	0.0	unclassified	e h p h p p p h		«[Interactive elements Activity 3C] [Please see the»	after«»	cell0«»	head«How to Use Your Soundboard»	owner«[Interactive elements Activity#3C»
+ARFUN04	0.0	multiChoiceQuiz	h p h p p p h X		«[create visual quiz with images and words]»	after«»	cell0«»	head«**Give it a try**»	owner«[Activity 3G] [H3]#3G»
+ARFUN04	0.0	dragAndDrop	h p p p p p p p		«[create a drag and drop]»	after«»	cell0«»	head«**Types of Space and Techniques to Create Space**»	owner«[Activity 4G] [H3]#4G»
+ARFUN04	0.0	radioQuiz	h p p p p p h p		«[Create true or false quiz]»	after«»	cell0«»	head«**Unity in art**»	owner«[Activity 4O] [H3]#4O»
+ART1005	0.0	unclassified	I p e p h p e T		«[Activity 2D]»	after«Activity 2d»	cell0«»	head«**Activity 3 Exploring Skyscape**»	owner«[Activity 2D]#2D»
+ART1005	0.0	carousel	X		«[Insert item 7 - Skyscape carousel 3]»	after«»	cell0«»	head«»	owner«[Activity 3A]#3A»
+ART1005	0.0	unclassified	p h e p e T		«[Activity 1C]»	after«Activity 1c»	cell0«»	head«**Activity 2 Watch the video “Exploring New Zealand’s Artist»	owner«[Activity 1C]#1C»
+BLL127	1.0	dragAndDrop	E		«[drag and drop]»	after«»	cell0«»	head«»	owner«[Activity 1E]#1E»
+BLL133	1.0	dragAndDrop	e X		«[drop and drag] Can we make something like this pl»	after«»	cell0«»	head«»	owner«[Activity 1C] Making Words#1C»
+BLL140	0.0	dragAndDrop	e X		«[drop and drag] Can we make something like this pl»	after«»	cell0«»	head«»	owner«[Activity 3D]#3D»
+BLL140	0.0	dragAndDrop	e X		«[drop and drag] Can we make something like this pl»	after«»	cell0«»	head«»	owner«[Activity 4D]#4D»
+BLL140	0.0	dragAndDrop	e X		«[drop and drag] Can we make something like this pl»	after«»	cell0«»	head«»	owner«[Activity 5D]#5D»
+BLL140	0.0	dragAndDrop	e X		«[drop and drag] Can we make something like this pl»	after«»	cell0«»	head«»	owner«[Activity 6D]#6D»
+BLL140	0.0	dragAndDrop	e X		«[drop and drag] Can we make something like this pl»	after«»	cell0«»	head«»	owner«[Activity 7D]#7D»
+BLL147	1.1	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»	head«»	owner«[Activity 1C]#1C»
+BLL151	2.0	dragAndDrop	X		«[Drag and drop]»	after«Can we keep the ‘ack’ stuck an»	cell0«»	head«»	owner«[Activity 2C]#2C»
+BLL163	1.0	dropDown	E		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»	head«»	owner«[Activity 1E]#1E»
+BLL164	1.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»	head«»	owner«[Activity 1C]#1C»
+BLL165	1.1	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»	head«»	owner«[Activity 2A]#2A»
+BLL173	1.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»	head«»	owner«[Activity 1C]#1C»
+BLL174	1.1	selfCheck	X		«[self check] Please insert images 1 - 8 from the b»	after«SPELD_SA_Set_7_A_wet_cat-DS.pd»	cell0«»	head«»	owner«[Activity 2E]#2E»
+BLL175	1.0	dropDown	E		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»	head«»	owner«[Activity 1E]#1E»
+BLL176	1.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»	head«»	owner«[Activity 1D]#1D»
+BLL213	2.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»	head«»	owner«[Activity 2A]#2A»
+BLL214	1.0	selfCheck	X		«[self check] The correct order is shown below. But»	after«»	cell0«»	head«»	owner«[Activity 1E]#1E»
+BLL214	2.0	dropDown	X		«[upload to dropbox] Where ākonga can upload some o»	after«»	cell0«»	head«»	owner«[Activity 2A]#2A»
+BLL217	1.0	dragAndDrop	e X		«[drop and drag] Can we make something like this pl»	after«»	cell0«»	head«»	owner«[Activity 1D]#1D»
+BLL220	0.0	dragAndDrop	e X		«[drop and drag] Can we make something like this pl»	after«»	cell0«»	head«»	owner«[Activity 1C]#1C»
+BLLR202	4.0	unclassified	p p p p p p p p		«[Activity 4D]»	after«Writing a summary»	cell0«»	head«»	owner«[Activity 4D]#4D»
+CBI1005	5.0	dropDown	X		«[button to upload learning journal to dropbox]»	after«Upload Learning Journal»	cell0«»	head«»	owner«[Activity]#»
+CBI1005	10.0	dropDown	E		«[can you set up an assessment dropbox for this top»	after«»	cell0«»	head«»	owner«[Activity]#»
+CEDO105	1.0	unclassified	h p e h p I I T		«[ACTIVITY 1A]»	after«»	cell0«»	head«What can you move?»	owner«[ACTIVITY 1A]#1A»
+CEDO202	0.0	unclassified	h h e p p p e p		«[Insert Right click Tab – Bringing the seasons to »	after«»	cell0«»	head«Bringing the seasons to life»	owner«[Activity 3B]#3B»
+CEDR501	8.0	unclassified	e p p e h p T		«[Activity 7C]»	after«Rinse and repeat»	cell0«»	head«Preferences»	owner«[Activity 7C]#7C»
+COM1006	5.0	dragAndDrop	h p p p p h p T		«[Create a drag and drop activity for the content g»	after«»	cell0«»	head«HOW TO EXPLAIN FLOW-ON EFFECTS?»	owner«[Activity 4A]#4A»
+DTC1004	6.0	dropDown	X		«[Drop Box]»	after«DTC1004 Journal»	cell0«»	head«»	owner«[Activity]#»
+ENFUN01	0.0	multiChoiceQuiz	h p e X		«[Multiple-Choice Quiz]»	after«https://docs.google.com/docume»	cell0«»	head«Growing Audience Awareness»	owner«[Activity 3]#3»
+ENFUN01	0.0	multiChoiceQuiz	I X		«[Multiple-Choice Quiz]»	after«**https://docs.google.com/docu»	cell0«»	head«»	owner«[Activity 3]#3A»
+ENFUN02	0.0	multiChoiceQuiz	I X		«[Multi choice Quiz]»	after«https://docs.google.com/docume»	cell0«»	head«»	owner«[Activity 4]#4A»
+ENFUN03	0.0	multiChoiceQuiz	h p I X		«[Quiz]»	after«https://docs.google.com/docume»	cell0«»	head«In summary»	owner«[Activity 2E]#2E»
+ENFUN03	0.0	multiChoiceQuiz	h p I X		«[Quiz]»	after«https://docs.google.com/docume»	cell0«»	head«In summary»	owner«[Activity 3E]#3E»
+ENFUN03	0.0	multiChoiceQuiz	h p		«[Quiz]»	after«https://docs.google.com/docume»	cell0«»	head«In summary»	owner«[Activity 4C]#4C»
+ENFUN04	0.0	multiChoiceQuiz	h p I X		«[Multiple-Choice Quiz]»	after«https://docs.google.com/docume»	cell0«»	head«In Summary …»	owner«[Activity 4]#4»
+ENFUN05	0.0	unclassified	e p h T		«[Activity 1]»	after«»	cell0«»	head«With punctuation»	owner«[Activity 1]#1B»
+ENFUN08	0.0	unclassified	e p I p p p p p		«[Activity 1]»	after«»	cell0«»	head«»	owner«[Activity 1]#1A»
+ENGC202	8.0	dropDown	X		«[upload to dropbox]»	after«»	cell0«»	head«»	owner«[Activity 8B]#8B»
+ENGC204	4.0	unclassified	e p p p e h p p		«[Activity 4A]»	after«»	cell0«»	head«Materials:»	owner«[Activity 4A]#4A»
+ENGC301	2.0	unclassified	e p p I p p p p		«[Activity 2A]»	after«»	cell0«»	head«»	owner«[Activity 2A]#2A»
+ENGC301	7.0	multiChoiceQuiz	X		«[Quiz]»	after«https://docs.google.com/docume»	cell0«»	head«»	owner«[Activity 7A]#7A»
+ENGC401	2.0	unclassified	e p p p p p p p		«[Activity 2B]»	after«»	cell0«»	head«»	owner«[Activity 2B]#2B»
+ENGC403	4.2	dropDown	E		«[insert dropbox]»	after«»	cell0«»	head«»	owner«[Insert activity 4.2.D]#4.2»
+ENGI102	4.0	carousel	X		«[Insert PDF in carousel]»	after«https://instructionalseries.tk»	cell0«»	head«»	owner«[Activity 2A]#2A»
+ENGI102	12.0	dropDown	X		«[Drop box button]»	after«»	cell0«»	head«»	owner«[Activity 6A]#6A»
+ENGI202	2.0	unclassified	h p p p p p e h		«[Activity 2A]»	after«»	cell0«»	head«The Story of Rona»	owner«[Activity 2A]#2A»
+ENGI301	3.0	dropDown	E		«[Upload to Dropbox]»	after«»	cell0«»	head«»	owner«[Activity]#»
+ENGI303	3.0	modal	X		«[image like this as a modal]»	after«https://drive.google.com/file/»	cell0«»	head«»	owner«[activity 3D]#3D»
+ENGI303	6.0	unclassified	e p p p e h T		«[Activity 6A]»	after«»	cell0«»	head«Past tense»	owner«[Activity 6A]#6A»
+ENGI303	6.0	unclassified	e p p p p p p e		«[Activity 6c]»	after«»	cell0«»	head«»	owner«[Activity 6c]#6C»
+ENGI401	2.0	reorder	h T		«[reorder interactive] currently in correct order»	after«»	cell0«»	head«Books»	owner«[Activity 2B]#2B»
+ENGI405	6.0	unclassified	p p e h p p e T		«[Activity 6A]»	after«My text study»	cell0«»	head«Literary essay assessment»	owner«[Activity 6A]#6A»
+ENGJ201	4.0	multiChoiceQuiz	E		«[Button] [Quiz]»	after«**https://docs.google.com/docu»	cell0«»	head«»	owner«[Activity 5B]#5B»
+ENGJ301	7.0	dropDown	E		«[Go to Journal] [Upload to Dropbox]»	after«»	cell0«»	head«»	owner«[Activity 7E]#7E»
+ENGJ302	4.0	unclassified	I I I I I I p p		«[Activity 3B – auto-marking] – Activity like this »	after«»	cell0«»	head«»	owner«[Activity 3B – auto-marking] –#3B»
+ENGJ302	8.0	dropDown	E		«[Upload to Dropbox]»	after«»	cell0«»	head«»	owner«[Activity 7D]#7D»
+ENGJ403	2.1	dropDown	h		«[insert dropbox formative work]»	after«Response Sheet 2»	cell0«»	head«Ka pai! Great work!»	owner«[Insert Activity 2C]#2C»
+ENGJ403	3.1	dropDown	h		«[insert dropbox formative work]»	after«Response sheet 3»	cell0«»	head«You are going well!»	owner«[Insert Activity 3C]#3C»
+ENGJ403	4.0	dropDown	h		«[insert dropbox formative work]»	after«Response sheet 4»	cell0«»	head«Ka pai! Great work!»	owner«[Insert Activity 4A]#4A»
+ENGJ403	5.0	dropDown	h		«[insert formative work dropbox with audio and visu»	after«»	cell0«»	head«Great work! You are doing really well.»	owner«[Insert Activity 5A]#5A»
+ENGJ403	7.0	dropDown	h e p		«[add a button to the working towards dropbox – for»	after«»	cell0«»	head«Congratulations! Ngā mihi nui. You have completed this modul»	owner«[insert Activity 7A]#7A»
+ENGR202	7.0	dropDown	p I I p e e		«[Activity drop box] Dropbox»	after«»	cell0«»	head«»	owner«[Alert RHS of activity box]#»
+ENGS202	3.0	unclassified	e p p p I e I p		«[Activity 3A]»	after«»	cell0«»	head«»	owner«[Activity 3A]#3A»
+ENGS401	5.0	unclassified	e p p h e T		«[Activity 5B]»	after«»	cell0«»	head«Judge’s scorecard»	owner«[Activity 5B]#5B»
+ENGS404	2.0	dropDown	h		«[add a button to the working towards dropbox- form»	after«»	cell0«»	head«Ka pai, you are going well.»	owner«[insert Activity 2C]#2C»
+ENGS404	3.1	dropDown	h		«[add a button to the working towards dropbox- form»	after«»	cell0«»	head«Ka pai, you are going well.»	owner«[Insert Activity 3D]#3D»
+ENGS404	5.0	dropDown	h p		«[add a button to the working towards dropbox- form»	after«»	cell0«»	head«Nice work!»	owner«[insert activity 5D]#5D»
+ENGS404	6.1	dropDown	h p		«[add a button to the working towards dropbox- form»	after«»	cell0«»	head«Ka pai, you are going well.»	owner«[insert Activity 6B]#6B»
+ENGS404	7.0	dropDown	h		«[add a button to the working towards dropbox- form»	after«»	cell0«»	head«E pai ana tō haere, you are going well!»	owner«[insert Activity 7B]#7B»
+ENO2060	1.0	dropDown	h p		«[add a button to the practice dropbox- formative w»	after«»	cell0«»	head«Ka pai, great work.»	owner«[Insert Activity 1C]#1C»
+EXIP901	2.0	multiChoiceQuiz	h p I p p p p p		«[Interactive quiz 2]»	after«»	cell0«»	head«Sophie’s essential questions»	owner«[Interactive x2] Create the fo#2»
+FRFUN08	7.0	multiChoiceQuiz	X		«[Multichoice Quiz - autocorrect]»	after«»	cell0«»	head«»	owner«[Activity 1A]#1A»
+HES1002	4.0	dragAndDrop	E		«[drag and drop] [Dev – two columns please, one hea»	after«»	cell0«»	head«»	owner«[Individual activity] [H3]#3»
+HES1002	5.0	reorder	h p I e e e e e		«[Reorder interactive]»	after«»	cell0«»	head«Most effective»	owner«[Individual activity – this ac#»
+HES1007	2.0	multiChoiceQuiz	h p p p p p e ?		«[Quiz instructions]»	after«Read the scenario then answer »	cell0«»	head«Scenario»	owner«[Activity 2A] [H3]#2A»
+HIS1002	2.0	dropDown	h p p p p I p I		«[Dropdown Quiz Autocheck]»	after«»	cell0«»	head«Actions and Responses»	owner«[Activity: Embedded] 1A#1A»
+HIS1002	19.0	unclassified	h p p p p p p e		«[Activity 10B]»	after«»	cell0«»	head«Causation»	owner«[Activity 10B]#10B»
+MXDB102	3.0	selfCheck	X		«[self check check boxes]»	after«»	cell0«»	head«»	owner«[Activity 3A]#3A»
+MXDB102	5.0	selfCheck	X		«[self check check boxes]»	after«»	cell0«»	head«»	owner«[Activity 5A]#5A»
+MXDB102	8.0	selfCheck	X		«[self check]»	after«»	cell0«»	head«»	owner«[Activity 8A]#8A»
+MXDI201	2.0	unclassified	p e e e e e e h		«[Activity 2E]»	after«Part 1 Expanding Numbers»	cell0«»	head«2E part 2 Expanding form»	owner«[Activity 2E]#2E»
+MXDI201	4.0	unclassified	p p e p e p e e		«[Activity 4D]»	after«Compensation challenges»	cell0«»	head«»	owner«[Activity 4D]#4D»
+MXDI202	3.0	unclassified	p p p p p p e h		«[Activity 3H]»	after«Baldwin Street summary»	cell0«»	head«How Baldwin Street compares to other steep streets»	owner«[Activity 3H]#3H»
+MXEO201	2.0	dragAndDrop	E		«[Drag and Drop] Could the white boxes with measure»	after«»	cell0«»	head«»	owner«[Activity 1F]#1F»
+MXEO201	4.0	dragAndDrop	X		«[Drag and Drop] Can the shapes please be to the ri»	after«»	cell0«»	head«»	owner«[Activity 2A]#2A»
+MXEX201	1.0	unclassified	h p e h p p p p		«[Activity 1A]»	after«»	cell0«»	head«Famous Places»	owner«[Activity 1A]#1A»
+MXFL101	2.0	dragAndDrop	X		«[drop and drag]»	after«»	cell0«»	head«»	owner«[Activity 2B]#2B»
+MXFL101	3.5	dragAndDrop	X		«[Drag and drop]»	after«»	cell0«»	head«»	owner«[Activity 9B]#9B»
+MXFL302	6.0	unclassified	p e h p I I e I		«[Activity 6C]»	after«Multiplying a fraction by a wh»	cell0«»	head«Halving recipes»	owner«[Activity 6C]#6C»
+MXFU201	1.0	carousel	X		«[slideshow]»	after«Telling the Time: Half Past th»	cell0«»	head«»	owner«[Activity 1C]#1C»
+MXFU301	9.0	unclassified	p e h p p I T		«[Activity 8C]»	after«Independent and dependent even»	cell0«»	head«Asking questions for investigations»	owner«[Activity 8C]#8C»
+MXFU302	1.0	unclassified	p p p I p p p I		«[Activity 1B]»	after«Analysing Dot Plots»	cell0«»	head«»	owner«[Activity 1B]#1B»
+MXFU402	6.0	unclassified	h p h p I T		«[Activity 6A]»	after«»	cell0«»	head«Displaying the data»	owner«[Activity 6A]#6A»
+MXFUN01	2.0	dragAndDrop	X		«[Drag and Drop] Can this be created so that there »	after«»	cell0«»	head«»	owner«[Activity Body]#»
+MXFUN03	0.0	dragAndDrop	h I e e h I e e		«[Drag and Drop] Could these please be recreated. F»	after«»	cell0«»	head«The pencil case is»	owner«[Activity body]#»
+OSGM201	2.0	typing	E		«[type the answer]»	after«Type some fun gaming nicknames»	cell0«»	head«»	owner«[Activity 2C]#2C»
+OSSC401	3.0	carousel	X		«[dropdown quiz – image carousel] Can there be a ca»	after«https://docs.google.com/presen»	cell0«»	head«»	owner«[Activity 3A]#3A»
+PES1005	11.0	unclassified	I h p p T		«[activity 10A]»	after«Solar eclipses.»	cell0«»	head«**Lunar Eclipse**»	owner«[activity 10A]#10A»
+PHE1003	4.0	dropDown	X		«[Insert item 21 - drop down quiz]»	after«Leadership strategies activity»	cell0«»	head«»	owner«[Activity 3] Time to practise #3»
+PWY1001	2.3.0	unclassified	I h p p T		«[Merged content – Merged item 1: PWO1007: Lesson 0»	after«https://tekura.desire2learn.co»	cell0«»	head«Being trained and supervised»	owner«[Merged content – Merged item #1»
+SCES201	4.0	dropDown	e e e X		«[activity 4a dropdown body text]»	after«Whai is a traditional Māori ga»	cell0«»	head«»	owner«[activity 4a image]#4A»
+SCES201	4.0	dropDown	e I X		«[activity 4b dropdown body text]»	after«Learn to make a star out of ha»	cell0«»	head«»	owner«[activity 4b image]#4B»
+SCES201	4.0	dropDown	e e X		«[activity 4c dropdown body text]»	after«Mū tōrere is a board game inve»	cell0«»	head«»	owner«[activity 4c image]#4C»
+SCES201	4.0	dropDown	e X		«[activity 4d dropdown body text]»	after«Manu tukutuku are traditional »	cell0«»	head«»	owner«[activity 4d image]#4D»
+SSFUN02	0.0	interactive	X		«[Interactive] please put this image beside activit»	after«https://www.mychillybin.co.nz/»	cell0«»	head«»	owner«[Activity 2C]#2C»
+SSFUN02	0.0	interactive	X		«[Interactive] Please include this image inside the»	after«https://upload.wikimedia.org/w»	cell0«»	head«»	owner«[Activity 4B]#4B»
+SSFUN07	2.0	flipCard	X		«[Insert flip cards]»	after«»	cell0«»	head«»	owner«[Activity 2B]#2B»
+SSFUN08	0.0	interactive	X		«[Interactive] Please create a button for a link to»	after«: https://teara.govt.nz/en/mar»	cell0«»	head«»	owner«[Activity embedded]#»
+TEDC401	1.0	dragAndDrop	h T		«[drag and drop]»	after«»	cell0«»	head«**Metadata matching**»	owner«[Activity ] 1E#1E»
+TEDC401	2.0	selectionBox	h T		«[checkbox]»	after«»	cell0«»	head«**The frustration test**»	owner«[Activity] 2A#2A»
+TEDC401	3.0	dragAndDrop	h T		«[Drag and drop (as a self-marking quiz)]»	after«»	cell0«»	head«**Sort + rank challenge**»	owner«[Activity] 3B#3B»
+TEDC401	3.0	unclassified	I h p T		«[Activity] 3D»	after«»	cell0«»	head«Sorting the design thinking steps»	owner«[Activity] 3D#3D»
+TEDC401	3.0	multiChoiceQuiz	h X		«[self check quiz]»	after«»	cell0«»	head«**Hierarchy check-up**»	owner«[Activity] 3G#3G»
+TEDC401	4.0	unclassified	e h T		«[Activity] 4A»	after«»	cell0«»	head«**From sketch to screen | From wireframe to prototype**»	owner«[Activity] 4A#4A»
+TEDC401	4.0	unclassified	h h p e T		«[Activity] 4C (note: this activity has 3 parts)»	after«»	cell0«»	head«**Your turn: build your prototype**»	owner«[Activity] 4C (note: this acti#4C»
+TEDC401	6.0	multiChoiceQuiz	h T		«[mcqsomeselected and multi-choice] (CS: is it poss»	after«»	cell0«»	head«**How responsible are you?**»	owner«[Activity] 6A#6A»
+TEDC402	3.0	dragAndDrop	h p p X		«[drag and drop matching]»	after«»	cell0«»	head«**FDE matching meanings**»	owner«[Activity]#2D»
+TEDC402	6.0	dragAndDrop	h p ?		«[drag and drop]»	after«»	cell0«»	head«**Match the chart to the data**»	owner«[Activity]#5B»
+TEDC402	6.0	dropDown	h p X		«[clickdrops + PDF modals + drop box]»	after«»	cell0«»	head«**Your turn: Create your visualisation**»	owner«[Activity]#5E»
+TEDC402	7.0	multiChoiceQuiz	h T		«[multi-choice]»	after«»	cell0«»	head«**Efficiency in action**»	owner«[Activity]#6A»
+TEDC402	7.0	dragAndDrop	h T		«[radio quiz + drag and drop]»	after«»	cell0«»	head«**Guided practise**»	owner«[Activity]#6B»
+TEDC402	8.0	dragAndDrop	h X		«[2 x drag and drop]»	after«»	cell0«»	head«**Smooth as smoothies**»	owner«[Activity]#7A»
+TEFUN02	0.0	dragAndDrop	h p I p p p p p		«[Drop and Drag AutoCheck]»	after«»	cell0«»	head«Create a brief»	owner«[ACTIVITY 3A]#3A»
+TEFUN02	0.0	multiChoiceQuiz	h p I p p p p p		«[go to quiz] [trigger engagement]»	after«»	cell0«»	head«Presentation power»	owner«[ACTIVITY 3D]#3D»
+TEFUN05	0.0	dragAndDrop	h p I T		«[Embed Drop and Drag AutoCheck Activity]»	after«»	cell0«»	head«Which hat?»	owner«[ACTIVITY 1B]#1B»
+TEFUN05	0.0	dragAndDrop	h p e ?		«[Embed Drop and Drag AutoCheck Activity] [trigger »	after«»	cell0«»	head«The right improvement?»	owner«[ACTIVITY 3A]#3A»
+TEFUN05	0.0	multiChoiceQuiz	h p I p p p p p		«[Go to quiz] [trigger engagement]»	after«»	cell0«»	head«Which design?»	owner«[ACTIVITY 4A]#4A»
+WJFUN106	0.0	multiChoiceQuiz	X		«[Multichoice]»	after«»	cell0«»	head«»	owner«[Activity: embedded]#»
+WJFUN109	0.0	dragAndDrop	h e I p T		«[drag and drop]»	after«»	cell0«»	head«Fill the Te Anau library!»	owner«[Activity 1B]#1B»
+WJFUN109	0.0	dragAndDrop	h p I T		«[Activity 2B][drag and drop]»	after«»	cell0«»	head«Who is the letter for?»	owner«[Activity 2A]#2A»
+WJFUN116	0.0	typing	X		«[Typing] [reset]»	after«»	cell0«»	head«»	owner«[Activity 2A]#2A»
+WJFUN211	0.0	dropDown	h p p p p p ?		«[Dropdown quiz – Auto check] [Please arrange this »	after«»	cell0«»	head«**Part One: Choose the Best Language**»	owner«[Activity 1C]#1C»
+WJFUN304	0.0	multiChoiceQuiz	h p p ?		«[multi choice questions 1-6] [short answer autoche»	after«»	cell0«»	head«Identify the voice»	owner«[Activity 3A]#3A»
+XDLS902	1.0	clickDrop	X		«[Click Drop 4]»	after«**Compare**»	cell0«»	head«»	owner«[Activity]#1C»
+XDLS902	1.0	clickDrop	X		«[Click Drop 5]»	after«**Judge**»	cell0«»	head«»	owner«[Activity]#1D»
+XDLS902	1.0	clickDrop	X		«[Click Drop 5]»	after«**Create**»	cell0«»	head«»	owner«[Activity]#1E»
+XDLS902	2.0	clickDrop	X		«[Click Drop 2]»	after«**Explain:**»	cell0«»	head«»	owner«[Activity]#2A»
+XDLS902	2.0	clickDrop	X		«[Click Drop 4]»	after«**Compare**»	cell0«»	head«»	owner«[Activity]#2C»
+XDLS902	2.0	clickDrop	X		«[Click Drop 5]»	after«**Judge**»	cell0«»	head«»	owner«[Activity]#2D»
+XDLS902	2.0	clickDrop	X		«[Click Drop 5]»	after«**Create**»	cell0«»	head«»	owner«[Activity]#2E»
+XDLS902	3.0	clickDrop	X		«[Click Drop 2]»	after«**Explain:**»	cell0«»	head«»	owner«[Activity]#3A»
+XDLS902	3.0	clickDrop	X		«[Click Drop 3]»	after«**Do:**»	cell0«»	head«»	owner«[Activity]#3B»
+XDLS902	3.0	clickDrop	X		«[Click Drop 4]»	after«**Compare**»	cell0«»	head«»	owner«[Activity]#3C»
+XDLS902	3.0	clickDrop	X		«[Click Drop 5]»	after«**Judge**»	cell0«»	head«»	owner«[Activity]#3D»
+XDLS902	3.0	clickDrop	X		«[Click Drop 5]»	after«**Create**»	cell0«»	head«»	owner«[Activity]#3E»
+XDLS902	4.0	clickDrop	X		«[Click Drop 2]»	after«**Explain:**»	cell0«»	head«»	owner«[Activity]#4A»
+XDLS902	4.0	clickDrop	X		«[Click Drop 3]»	after«**Do:**»	cell0«»	head«»	owner«[Activity]#4B»
+XDLS902	4.0	clickDrop	X		«[Click Drop 4]»	after«**Compare**»	cell0«»	head«»	owner«[Activity]#5C»
+XDLS902	4.0	clickDrop	X		«[Click Drop 5]»	after«**Judge**»	cell0«»	head«»	owner«[Activity]#4D»
+XDLS902	5.0	clickDrop	X		«[Click Drop 2]»	after«**Explain:**»	cell0«»	head«»	owner«[Activity]#5A»
+XDLS902	5.0	clickDrop	X		«[Click Drop 3]»	after«**Do:**»	cell0«»	head«»	owner«[Activity]#5B»
+XDLS902	5.0	clickDrop	X		«[Click Drop 4]»	after«**Compare**»	cell0«»	head«»	owner«[Activity]#5C»
+XDLS902	5.0	clickDrop	X		«[Click Drop 5]»	after«**Judge**»	cell0«»	head«»	owner«[Activity]#5D»
+XDLS902	5.0	clickDrop	X		«[Click Drop 5]»	after«**Create**»	cell0«»	head«»	owner«[Activity]#1E»
+XDLS902	6.0	clickDrop	X		«[Click Drop 3]»	after«**Do:**»	cell0«»	head«»	owner«[Activity]#6B»
+XDLS902	6.0	clickDrop	X		«[Click Drop 4]»	after«**Compare**»	cell0«»	head«»	owner«[Activity]#6C»
+XDLS902	6.0	clickDrop	X		«[Click Drop 5]»	after«**Judge**»	cell0«»	head«»	owner«[Activity]#6D»
+XDLS902	7.0	clickDrop	X		«[Click Drop 2]»	after«**Explain:**»	cell0«»	head«»	owner«takes learner to this or simil#»
+XDLS902	7.0	clickDrop	X		«[Click Drop 3]»	after«**Do:**»	cell0«»	head«»	owner«[Activity]#1B»
+XDLS902	7.0	clickDrop	X		«[Click Drop 4]»	after«**Compare**»	cell0«»	head«»	owner«[Activity]#1C»
+XDLS902	7.0	clickDrop	X		«[Click Drop 5]»	after«**Judge**»	cell0«»	head«»	owner«[Activity]#1D»
+XDLS902	7.0	clickDrop	X		«[Click Drop 5]»	after«**Create**»	cell0«»	head«»	owner«[Activity]#1E»
+XDLS909	1.0	clickDrop	X		«[Click Drop 5] Judge»	after«»	cell0«»	head«»	owner«[Activity] 1C#1C»
+XDLS909	3.0	clickDrop	X		«[Click Drop 5] Judge»	after«»	cell0«»	head«»	owner«[Activity] 3C#3C»
+XGF9001	5.0	unclassified	p h p T		«[Activity 8B]»	after«My creative expression»	cell0«»	head«Your turn»	owner«[Activity 8B]#8B»
+XGF9002	4.0	multiChoiceQuiz	h p X		«[Insert multichoice with pop-outs for feedback]»	after«»	cell0«»	head«1. Which space best supports a gifted child’s learning and w»	owner«[Activity 4A]#4A»
+XGF9003	1.2	dragAndDrop	h p p p p p T		«[Insert drag and drop]»	after«»	cell0«»	head«Mind detective»	owner«[Activity 4C] [H3]#4C»
+XGF9004	8.0	multiChoiceQuiz	h p p ?		«[Insert interactive multichoice quiz. Correct answ»	after«»	cell0«»	head«Questions»	owner«[Activity 7C]#7C»
+XGF9004	9.0	unclassified	p h p T		«[Activity 1E]»	after«Match the terms»	cell0«»	head«Instructions:»	owner«[Activity 1E]#1E»
+XMES101	1.0	dropDown	X		«[camera and video dropbox buttons]»	after«»	cell0«»	head«»	owner«[Activity 1D]#1D»
+XMES101	7.0	dropDown	X		«[insert dropbox icon]»	after«Upload them to the dropbox.»	cell0«»	head«»	owner«[Activity 7C]#7C»
+XMES103	4.0	dropDown	X		«[Dropbox Button] camera, video.»	after«»	cell0«»	head«»	owner«[Activity 4A]#4A»
+XMES201	1.0	dropDown	X		«[insert dropbox icon for microphone and video]»	after«»	cell0«»	head«»	owner«[Activity1E]#1E»
+XMES201	2.0	dropDown	X		«[insert dropbox link for microphone and video].»	after«»	cell0«»	head«»	owner«[Activity 2B]#2B»
+XMES203	1.0	dragAndDrop	e T		«[insert drag and drop. Dev team create images with»	after«»	cell0«»	head«»	owner«[Activity 1A]#1A»
+XMES203	2.0	dropDown	X		«[insert dropbox icon for microphone and video]»	after«»	cell0«»	head«»	owner«[Activity 2F]#2F»
+XTAS102	3.0	dropDown	X		«[insert dropbox icon for photographs and video]»	after«»	cell0«»	head«»	owner«[Activity 3B]#3B»
+XTAS102	5.0	dropDown	X		«[insert dropbox icon for photographs and video]»	after«»	cell0«»	head«»	owner«[Activity 5B]#5B»
+XTAS103	1.0	dropDown	X		«[insert dropbox icon for photographs]»	after«»	cell0«»	head«»	owner«[Activity]#»
+XTAS103	2.0	dropDown	X		«[insert dropbox icon for photographs]»	after«»	cell0«»	head«»	owner«[Activity2A]#2A»
+XTAS103	2.0	dropDown	X		«[insert dropbox icon for photographs]»	after«»	cell0«»	head«»	owner«[Activity 2B]#2C»

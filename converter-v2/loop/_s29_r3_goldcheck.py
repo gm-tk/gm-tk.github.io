@@ -32,7 +32,8 @@ def report(page, htext):
     nxt = "widget:" + w.group(1) if wpos < tpos else ("table" if t else "neither")
     return f"head:{m.group(1)} act:{'IN' if depth > 0 else 'out'} next:{nxt}"
 rows = []
-for line in open(os.path.join(HERE, "_s29_r3_headwalk_T.log"), encoding="utf-8", errors="replace"):
+SRC = sys.argv[1] if len(sys.argv) > 1 else "_s29_r3_headwalk_T.log"
+for line in open(os.path.join(HERE, SRC), encoding="utf-8", errors="replace"):
     f = line.rstrip("\n").split("\t")
     if len(f) < 9 or not f[3].endswith("T"): continue
     code, label, typ, htext = f[0], f[1], f[2], re.sub(r"^head«|»$", "", f[8])

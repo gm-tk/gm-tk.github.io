@@ -3086,12 +3086,31 @@ class InteractiveScanner {
 		if (!cfg || cfg.enabled === false) return;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "HEADTABLE_OFF"]) return;
 		if (!(cfg.types ?? []).includes(bundle.type)) return;
-		if (bundle.activityOwner !== undefined || (bundle.extraTypes ?? []).length) return;
+		if ((bundle.extraTypes ?? []).length) return;
 		if ((bundle.tables ?? []).length) return;
 		const inv = items[i];
 		if ((bundle.memberItems ?? []).some((m) => m !== inv)) return;
 		const headTags = new Set((cfg.heading_tags ?? ["h1", "h2", "h3", "h4", "h5", "h6", "heading"]).map((t) => String(t).toLowerCase()));
+		// ROUND 413 — the OWNED half (data owned_bundles; env HEADTABLEOWNED_OFF): a real `[Activity N]` opener (or the
+		// r402 synthetic owner) already owns the bundle and its walk still ended at the heading — the box shipped EMPTY.
+		// The owner stays; the heading + prose are appended to its lead. An opener with its own title tail, or a lead
+		// that already holds a heading, is left alone — under the lead loop's first-line-is-the-title rule the
+		// heading after the invocation would otherwise demote to prose.
+		const owned = bundle.activityOwner !== undefined;
+		const oc = cfg.owned_bundles;
+		const ocOn = !!oc && oc.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[oc.env || "HEADTABLEOWNED_OFF"]);
+		if (owned) {
+			if (!ocOn) return;
+			// the tail is the writer's title unless it is empty, the box's id, or the bare id the r306
+			// owner_id_from_tail rule recovers later in the scan (`[Activity] **6A**`)
+			const tail = String(bundle.activityOwner.blackAfter ?? "").replace(/[*\s]+/g, "");
+			if (tail && tail.toUpperCase() !== String(bundle.activityId ?? "").toUpperCase() && !/^\d{1,2}[A-Za-z]?$/.test(tail)) return;
+			if ((bundle.activityLeadItems ?? []).some((x) => x && x.type === "tag" && headTags.has(String(x.parse?.primary?.tag ?? "").toLowerCase()))) return;
+		}
 		const betweenTags = new Set((cfg.between_tags ?? ["body", "list"]).map((t) => String(t).toLowerCase()));
+		// ROUND 413: a media element between the heading and the table (`[image]` — WJFUN109 1B) is the box's own lead media (the r364 rule renders it inside the box)
+		const betweenMedia = new Set(((ocOn && oc.between_media_tags) || []).map((t) => String(t).toLowerCase()));
 		const maxBetween = cfg.max_between ?? 6;
 		const isBlank = (x) => x.type === "black" && !String(x.text ?? "").trim();
 		// the walk must have stopped AT a heading (blank lines aside)
@@ -3114,14 +3133,17 @@ class InteractiveScanner {
 			if (x.type !== "tag") return;
 			const p = x.parse?.primary;
 			if (!p) { if (x.parse?.class === "instruction" || x.parse?.instructionFragment) instr.push(x); continue; }
-			if (p.directive === "ELEMENT" && betweenTags.has(String(p.tag ?? "").toLowerCase())) continue;
+			if (p.directive === "ELEMENT" && (betweenTags.has(String(p.tag ?? "").toLowerCase()) || betweenMedia.has(String(p.tag ?? "").toLowerCase()))) continue;
 			return;
 		}
 		if (tIdx < 0) return;
 		// the owner form: a synthetic bare owner (the r402 shape), the heading + prose as the lead,
 		// instruction spans as the bundle's instructions, the walk resumed at the table
-		bundle.activityOwner = { type: "tag", parse: { tags: [], numbers: [], primary: null }, blackAfter: "", _headTableOwner: true };
-		bundle.activityLeadItems = items.slice(j, tIdx).filter((x) => !instr.includes(x));
+		if (!owned) bundle.activityOwner = { type: "tag", parse: { tags: [], numbers: [], primary: null }, blackAfter: "", _headTableOwner: true };
+		// the heading goes FIRST so it is the box's <h3> under the lead loop's first-line-is-the-title rule; an owned
+		// bundle's existing lead (the r402 element, a prose line) follows it, then the prose after the heading
+		const post = items.slice(j, tIdx).filter((x) => !instr.includes(x));
+		bundle.activityLeadItems = [post[0], ...(owned ? (bundle.activityLeadItems ?? []) : []), ...post.slice(1)];
 		bundle._headTableOwner = true;
 		for (const x of instr) this.#collectMember(bundle, x, run);
 		bundle.endIndex = this.#swallowMembers(bundle, items, tIdx, headingTerminates, absolute, run, normaliser);

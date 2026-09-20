@@ -1,0 +1,62 @@
+GOLD activity boxes by inner widget → wrapper width (share of col-md-12):
+  none                       gold n=4559  col-md-12 0.06  col-md-8 0.83  col-12 0.07   | Claude n=3122 col-md-12 0.00 col-md-8 1.00
+  multiChoiceQuiz            gold n= 375  col-md-12 0.05  col-md-8 0.89  col-12 0.00   | Claude n=   6 col-md-12 0.00 col-md-8 0.83
+  carousel                   gold n= 359  col-md-12 0.04  col-md-8 0.91  col-12 0.02   | Claude n= 166 col-md-12 0.00 col-md-8 1.00
+  dragAndDrop:column         gold n= 343  col-md-12 0.19  col-md-8 0.59  col-12 0.09   | Claude n=  23 col-md-12 0.00 col-md-8 1.00
+  dragAndDrop:standard       gold n= 321  col-md-12 0.10  col-md-8 0.77  col-12 0.08   | Claude n=  68 col-md-12 0.00 col-md-8 0.93
+  table                      gold n= 217  col-md-12 0.03  col-md-8 0.86  col-12 0.00   | Claude n=  24 col-md-12 0.00 col-md-8 1.00
+  clickDrop                  gold n= 208  col-md-12 0.03  col-md-8 0.88  col-12 0.03   | Claude n=  56 col-md-12 0.00 col-md-8 1.00
+  accordion                  gold n= 167  col-md-12 0.04  col-md-8 0.88  col-12 0.03   | Claude n=  73 col-md-12 0.00 col-md-8 1.00
+  flipCard                   gold n= 129  col-md-12 0.08  col-md-8 0.72  col-12 0.05   | Claude n=  34 col-md-12 0.00 col-md-8 0.97
+  dragAndDrop:FIB            gold n=  99  col-md-12 0.00  col-md-8 0.88  col-12 0.04   | Claude n=   0 col-md-12 0.00 col-md-8 0.00
+  dropQuiz                   gold n=  99  col-md-12 0.05  col-md-8 0.79  col-12 0.02   | Claude n=   6 col-md-12 0.00 col-md-8 1.00
+  dragAndDrop:scatter        gold n=  90  col-md-12 0.21  col-md-8 0.63  col-12 0.06   | Claude n=   0 col-md-12 0.00 col-md-8 0.00
+  tabs                       gold n=  79  col-md-12 0.08  col-md-8 0.89  col-12 0.00   | Claude n=  12 col-md-12 0.00 col-md-8 1.00
+  typing:standard            gold n=  75  col-md-12 0.01  col-md-8 0.96  col-12 0.00   | Claude n=   0 col-md-12 0.00 col-md-8 0.00
+  typing:paragraph           gold n=  69  col-md-12 0.07  col-md-8 0.91  col-12 0.00   | Claude n=   0 col-md-12 0.00 col-md-8 0.00
+  reorder:re-standard        gold n=  67  col-md-12 0.04  col-md-8 0.85  col-12 0.01   | Claude n=   0 col-md-12 0.00 col-md-8 0.00
+  dropQuiz:paragraph         gold n=  63  col-md-12 0.03  col-md-8 0.87  col-12 0.06   | Claude n=  10 col-md-12 0.00 col-md-8 1.00
+  wordDrag:standardAudio     gold n=  58  col-md-12 0.00  col-md-8 0.72  col-12 0.00   | Claude n=   0 col-md-12 0.00 col-md-8 0.00
+  selectionBox               gold n=  53  col-md-12 0.00  col-md-8 1.00  col-12 0.00   | Claude n=   0 col-md-12 0.00 col-md-8 0.00
+  typing:standardNoBorder    gold n=  50  col-md-12 0.10  col-md-8 0.88  col-12 0.02   | Claude n=   0 col-md-12 0.00 col-md-8 0.00
+  selfCheck                  gold n=  45  col-md-12 0.00  col-md-8 0.98  col-12 0.02   | Claude n=   0 col-md-12 0.00 col-md-8 0.00
+  speechBubble:speech        gold n=  39  col-md-12 0.05  col-md-8 0.95  col-12 0.00   | Claude n=  40 col-md-12 0.00 col-md-8 1.00
+  multiChoiceQuiz:image      gold n=  33  col-md-12 0.06  col-md-8 0.82  col-12 0.06   | Claude n=   0 col-md-12 0.00 col-md-8 0.00
+  reorder:re-sentence        gold n=  33  col-md-12 0.03  col-md-8 0.91  col-12 0.03   | Claude n=   0 col-md-12 0.00 col-md-8 0.00
+
+PAIRED by number (gold kind, gold wrap, Claude wrap):
+   2347  none                   gold col-md-8   Claude col-md-8
+    402  dragAndDrop            gold col-md-8   Claude col-md-8
+    258  carousel               gold col-md-8   Claude col-md-8
+    236  none                   gold col-12     Claude col-md-8
+    212  multiChoiceQuiz        gold col-md-8   Claude col-md-8
+    167  none                   gold other      Claude col-md-8
+    166  none                   gold col-md-12  Claude col-md-8
+    137  table                  gold col-md-8   Claude col-md-8
+    130  typing                 gold col-md-8   Claude col-md-8
+    114  clickDrop              gold col-md-8   Claude col-md-8
+    105  accordion              gold col-md-8   Claude col-md-8
+     92  dragAndDrop            gold col-md-12  Claude col-md-8
+     86  dropQuiz               gold col-md-8   Claude col-md-8
+     70  flipCard               gold col-md-8   Claude col-md-8
+     63  dragAndDrop            gold other      Claude col-md-8
+     58  reorder                gold col-md-8   Claude col-md-8
+     52  wordDrag               gold col-md-8   Claude col-md-8
+     50  dragAndDrop            gold col-12     Claude col-md-8
+     43  tabs                   gold col-md-8   Claude col-md-8
+     30  selectionBox           gold col-md-8   Claude col-md-8
+     30  speechBubble           gold col-md-8   Claude col-md-8
+     21  selfCheck              gold col-md-8   Claude col-md-8
+     18  flipCard               gold other      Claude col-md-8
+     18  table                  gold other      Claude col-md-8
+
+PAIRED per template (template, gold kind, gold wrap, Claude wrap) where gold col-md-12:
+    138  Standard      none                   gold col-md-12  Claude col-md-8
+     84  Standard      dragAndDrop            gold col-md-12  Claude col-md-8
+     24  Fundamentals  none                   gold col-md-12  Claude col-md-8
+     10  Standard      multiChoiceQuiz        gold col-md-12  Claude col-md-8
+      9  Standard      typing                 gold col-md-12  Claude col-md-8
+      8  Standard      carousel               gold col-md-12  Claude col-md-8
+      8  Standard      flipCard               gold col-md-12  Claude col-md-8
+      6  Inquiry       dragAndDrop            gold col-md-12  Claude col-md-8
+      6  Standard      reorder                gold col-md-12  Claude col-md-8

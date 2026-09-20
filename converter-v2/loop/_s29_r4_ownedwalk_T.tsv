@@ -1,0 +1,15 @@
+AGH1004	1.0	dragAndDrop	h p T		«[Interactive Drag and drop matching activity]»	after«»	cell0«»	head«Knowledge Self-check»	owner«[Interactive: activity]#»
+AGH1004	5.0	dragAndDrop	h T		«[Interactive: drag and drop]»	after«»	cell0«»	head«Knowledge Check Sorting Activity»	owner«(synthetic)#»
+COM1006	5.0	dragAndDrop	h p p p p h p T		«[Create a drag and drop activity for the content g»	after«»	cell0«»	head«HOW TO EXPLAIN FLOW-ON EFFECTS?»	owner«[Activity 4A]#4A»
+ENGI401	2.0	reorder	h T		«[reorder interactive] currently in correct order»	after«»	cell0«»	head«Books»	owner«[Activity 2B]#2B»
+TEDC401	1.0	dragAndDrop	h T		«[drag and drop]»	after«»	cell0«»	head«**Metadata matching**»	owner«[Activity ] 1E#1E»
+TEDC401	2.0	selectionBox	h T		«[checkbox]»	after«»	cell0«»	head«**The frustration test**»	owner«[Activity] 2A#2A»
+TEDC401	3.0	dragAndDrop	h T		«[Drag and drop (as a self-marking quiz)]»	after«»	cell0«»	head«**Sort + rank challenge**»	owner«[Activity] 3B#3B»
+TEDC401	6.0	multiChoiceQuiz	h T		«[mcqsomeselected and multi-choice] (CS: is it poss»	after«»	cell0«»	head«**How responsible are you?**»	owner«[Activity] 6A#6A»
+TEDC402	7.0	multiChoiceQuiz	h T		«[multi-choice]»	after«»	cell0«»	head«**Efficiency in action**»	owner«[Activity]#6A»
+TEDC402	7.0	dragAndDrop	h T		«[radio quiz + drag and drop]»	after«»	cell0«»	head«**Guided practise**»	owner«[Activity]#6B»
+TEFUN05	0.0	dragAndDrop	h p I T		«[Embed Drop and Drag AutoCheck Activity]»	after«»	cell0«»	head«Which hat?»	owner«[ACTIVITY 1B]#1B»
+WJFUN109	0.0	dragAndDrop	h e I p T		«[drag and drop]»	after«»	cell0«»	head«Fill the Te Anau library!»	owner«[Activity 1B]#1B»
+WJFUN109	0.0	dragAndDrop	h p I T		«[Activity 2B][drag and drop]»	after«»	cell0«»	head«Who is the letter for?»	owner«[Activity 2A]#2A»
+XGF9003	1.2	dragAndDrop	h p p p p p T		«[Insert drag and drop]»	after«»	cell0«»	head«Mind detective»	owner«[Activity 4C] [H3]#4C»
+XMES203	1.0	dragAndDrop	e T		«[insert drag and drop. Dev team create images with»	after«»	cell0«»	head«»	owner«[Activity 1A]#1A»

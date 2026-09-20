@@ -1,0 +1,18 @@
+TYPE            BUILT  DECLINED  MODULES  COVERAGE
+dragAndDrop       109       900      326   10.8%
+clickDrop         235       343      125   40.7%
+carousel          676       308      185   68.7%
+accordion         509       293      131   63.5%
+flipCard          291       254      146   53.4%
+modal             197       170       68   53.7%
+selfCheck           0       163       72   0.0%
+tabs               57       117       61   32.8%
+speechBubble      715        63       39   91.9%
+hint               49        53       14   48.0%
+slider              0        52       33   0.0%
+infoTrigger         0        42       25   0.0%
+shapeHover          2        30       18   6.3%
+hintSlider         41        18       16   69.5%
+glossary            1         2        2   33.3%
+TOTAL            2882      2808          50.7%
+records -> /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_r271_variations.json 5690

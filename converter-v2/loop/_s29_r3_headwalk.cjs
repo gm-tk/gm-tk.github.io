@@ -43,9 +43,12 @@ async function main() {
     for (const b of (bundles || [])) {
       if (!TASK.has(b.type)) continue;
       const tables = (b.tables || []).length; const mem = (b.memberItems || []).length;
-      if (tables > 0 || mem > 1 || b.activityOwner) continue;
+      const ownedMode = !!process.env.HEADWALK_OWNED;
+      if (tables > 0 || mem > 1 || (ownedMode ? !b.activityOwner : !!b.activityOwner)) continue;
       const inv = (b.memberItems && b.memberItems[0]) || items[b.startIndex];
       let i = items.indexOf(inv); if (i < 0) i = b.startIndex ?? -1; if (i < 0) continue;
+      let pv = i - 1; while (pv >= 0 && kindOf(items[pv]) === "") pv--;
+      const prevK = pv >= 0 ? kindOf(items[pv]) + (items[pv].consumedBy !== undefined ? "!" : "") : "^";
       const seq = []; let j = i + 1, steps = 0, tableIdx = -1; let hText = "";
       while (j < items.length && steps < 8) {
         const k = kindOf(items[j]); j++;
@@ -59,7 +62,7 @@ async function main() {
       const tbl = tableIdx >= 0 ? items[tableIdx] : null;
       const cell0 = tbl && tbl.rows && tbl.rows[0] && tbl.rows[0][0] ? clip(typeof tbl.rows[0][0] === "string" ? tbl.rows[0][0] : (tbl.rows[0][0].text || JSON.stringify(tbl.rows[0][0])), 40) : "";
       const dims = tbl && tbl.rows ? `${tbl.rows.length}x${(tbl.rows[0] || []).length}` : "";
-      rows.push({ code: curCode, page: label, type: b.type, shape, inv: clip(inv && inv.text, 50), after: clip(inv && inv.blackAfter, 30), dims, cell0, hText });
+      rows.push({ code: curCode, page: label, type: b.type, shape, inv: clip(inv && inv.text, 50), after: clip(inv && inv.blackAfter, 30), dims, cell0, hText, owner: b.activityOwner ? clip(b.activityOwner.text || "(synthetic)", 30) + "#" + (b.activityId || "") : "", prevK });
     }
     return bundles;
   };
@@ -76,7 +79,7 @@ async function main() {
     if (!prep.ok) continue;
     try { await PageAssembler.AssembleModule(run, norm); } catch (e) { _l(`${code}: ASSEMBLE ERROR ${e && e.message}`); }
   }
-  for (const r of rows) _l(`${r.code}\t${r.page}\t${r.type}\t${r.shape}\t${r.dims}\t«${r.inv}»\tafter«${r.after}»\tcell0«${r.cell0}»\thead«${r.hText}»`);
+  for (const r of rows) _l(`${r.code}\t${r.page}\t${r.type}\t${r.shape}\t${r.dims}\t«${r.inv}»\tafter«${r.after}»\tcell0«${r.cell0}»\thead«${r.hText}»\towner«${r.owner}»\tprev«${r.prevK}»`);
   const by = new Map(), bs = new Map();
   for (const r of rows) { const k = r.type + " | " + r.shape; by.set(k, (by.get(k) || 0) + 1); bs.set(r.shape, (bs.get(r.shape) || 0) + 1); }
   _l(`SUMMARY empty task bundles ${rows.length} modules ${new Set(rows.map((r) => r.code)).size} pages ${new Set(rows.map((r) => r.code + "/" + r.page)).size}`);

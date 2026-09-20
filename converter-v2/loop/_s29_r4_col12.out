@@ -1,0 +1,77 @@
+gold col-md-12 sites 3659 on 1297 pages / 425 modules; Claude sites 1100
+
+GOLD by (context, first child):
+    909  row.carousel             div.item
+    460  row(plain)               div.activity
+    230  row.carousel.carouselBor div.item
+    200  row(plain)               h3
+    173  row(plain)               p
+    173  row(plain)               div.row
+    166  row(plain)               h4
+    131  row(plain)               div.dragAndDrop
+    102  clickDropContent         div.item
+     83  row(plain)               h2
+     82  row.selectionBox         ol
+     65  row.carousel.margB0      div.item
+     64  row.speechBubble         div.bubble-basic
+     62  row(plain)               div.whakatauki
+     55  row(plain)               img
+     39  row(plain)               div.table-responsive
+     38  other                    div.typing
+     37  row(plain)               h5
+     34  row(plain)               div.typing
+     31  row(plain)               div.dropQuiz
+     29  row(plain)               div.multiChoiceQuiz
+     27  other                    div.row
+
+GOLD by context, per template:
+   1359  Standard       row(plain)
+    697  Standard       row.carousel
+    254  Fundamentals   row(plain)
+    220  Inquiry        row(plain)
+    161  Standard       other
+    140  Standard       row.carousel.carouselBor
+    124  Inquiry        row.carousel
+    104  Inquiry        clickDropContent
+     66  Standard       row.selectionBox
+     65  Standard       row.speechBubble
+     65  Standard       row.carousel.margB0
+     65  Bilingual      row(plain)
+     60  Fundamentals   row.carousel
+     41  Fundamentals   row.carousel.carouselBor
+     41  Inquiry        row.carousel.carouselBor
+     30  Bilingual      row.carousel
+
+GOLD by context, per subject (top):
+    324  1-10 English                   row(plain)
+    312  1-10 Blended Literacy          row.carousel
+    279  1-10 Blended Literacy          row(plain)
+    271  1-10 Mathematics               row(plain)
+    227  Leaving to Learn               row(plain)
+    188  NCEA1                          row(plain)
+    152  Leaving to Learn               row.carousel
+    150  Online Safety (OS9000)         row(plain)
+    141  ConnectED                      row(plain)
+    103  1-10 Blended Literacy          clickDropContent
+     98  1-10 Mathematics               row.carousel
+     94  1-10 English                   row.carousel
+     65  1-10 Blended Literacy          row.carousel.margB0
+     65  Te Marautanga o Aotearoa TMoA  row(plain)
+     63  1-10 Blended Literacy          other
+     60  ANZH                           row(plain)
+     52  1-10 Writing (MiW)             row(plain)
+     48  ConnectED                      row.carousel
+     45  NCEA1                          row.carousel
+     42  1-10 Blended Literacy          row.carousel.carouselBor
+
+CLAUDE by (context, first child):
+    696  row.carousel             div.item
+    181  row(plain)               h4
+     76  row(plain)               div.cv2-interactive
+     70  row(plain)               p
+     24  row(plain)               div.tab-pane
+     11  row(plain)               div.dragAndDrop
+      9  other                    img
+      7  row(plain)               img
+      7  other                    h4
+      6  row(plain)               div.col-md-6
