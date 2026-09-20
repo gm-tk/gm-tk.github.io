@@ -454,6 +454,13 @@ class ActivitiesBuilder {
 		const scCfg = tpl.activity_wrapper.super_content;
 		const withNote = supervisorNote && scCfg && scCfg.enabled !== false;
 		const numAttr = id ? Utils.FillTemplate(tpl.activity_wrapper.number_attr, { activityId: id }) : "";
+		// ROUND 417 — a tile-grid PANEL anchor (it._r307PanelId, ContentConverter.#cdTilePrepass)
+		// takes the BARE box form when tile_grid.panel_no_inner_row is on; the supervisor-note
+		// box keeps its own two-child structure regardless.
+		const pnrCfg = tpl.interactive_builders?.clickDrop?.tile_grid?.panel_no_inner_row;
+		const panelBare = !!it._r307PanelId && !!pnrCfg && pnrCfg.enabled !== false
+			&& !!tpl.activity_wrapper.open_bare
+			&& !(typeof process !== "undefined" && process.env && process.env[pnrCfg.env || "CDPANELROW_OFF"]);
 		if (withNote) {
 			out.push(`<div class="activity${modifiers}${scCfg.activity_class}"${numAttr}>`);
 			out.push(scCfg.panel_open);
@@ -494,6 +501,13 @@ class ActivitiesBuilder {
 			if (noteBody) out.push(...deItal(ListsAndRuns.renderBlackText(noteBody, run, supervisorNote.block?.links)));
 			out.push(scCfg.panel_close);
 			out.push(scCfg.content_open);
+		} else if (panelBare) {
+			// ROUND 417 — the r307 tile-grid PANEL holds its content DIRECTLY: the gold's
+			// `<div class="clickDropContent activity dropbox" number="2A">` opens straight
+			// onto its <h3> / <p> / video (144 / 145 gold panels on XDLS902–906 + 909),
+			// while the standard wrapper put an inner row > col-12 inside every panel.
+			// Data interactive_builders.clickDrop.tile_grid.panel_no_inner_row; env CDPANELROW_OFF.
+			out.push(Utils.FillTemplate(tpl.activity_wrapper.open_bare, { modifiers, numberAttr: numAttr }));
 		} else {
 			out.push(Utils.FillTemplate(tpl.activity_wrapper.open, { modifiers, numberAttr: numAttr }));
 		}
@@ -531,7 +545,7 @@ class ActivitiesBuilder {
 		// promoted, the words the writer put after the bracket are. Data
 		// activity_wrapper.standalone_title_heading.embedded_free_text; env EMBTITLE_OFF.
 		const embTitle = renderBlack && !tailIsId ? String(it._embeddedTitle ?? "").trim() : "";
-		stack.push({ tag: "activity", close: tpl.activity_wrapper.close, mode: "activity",
+		stack.push({ tag: "activity", close: panelBare ? tpl.activity_wrapper.close_bare : tpl.activity_wrapper.close, mode: "activity",
 			hasContent: false, titledOpener: it._r307PanelId ? true : ((it.blackAfter ?? "").trim().length > 0 || !!embTitle), id,
 			idHeading: !!it._idHeading });   // ROUND 364: opened by an id-carrying heading (InteractiveScanner.#idHeadingOpeners)
 		if (embTitle) {

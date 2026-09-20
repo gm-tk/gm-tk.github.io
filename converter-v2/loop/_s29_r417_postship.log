@@ -1,0 +1,65 @@
+[21:23:10] run_all_gates.sh
+  rc=0
+13:— selftest: DETECTION (an injected divergence must be flagged) —
+16:  ✓ dynamic differ SEES a real option divergence (imageMode P vs D)
+17:RESULT: PASS (entry parity holds)
+23:pairs skipped (parse error): 0
+85:=== structural defect audit ===
+87:STRUCTURALLY CLEAN pages (zero structural defects): 2504/2548 = 98.3%
+88:pages WITH >=1 structural defect: 44
+90:== defect CLASS ranking (total occurrences | pages affected) ==
+91:  A_literal_tag_leak                         73 occ |   44 pages
+93:== modules with the most structural defects (top 25) ==
+94:  GENO901     16  {'A_literal_tag_leak': 16}
+95:  DTC1005     14  {'A_literal_tag_leak': 14}
+96:  PWY1009      4  {'A_literal_tag_leak': 4}
+97:  MUS1004      4  {'A_literal_tag_leak': 4}
+98:  XGF9004      2  {'A_literal_tag_leak': 2}
+99:  TRR116       2  {'A_literal_tag_leak': 2}
+100:  MXS1004      2  {'A_literal_tag_leak': 2}
+101:  MXFU302      2  {'A_literal_tag_leak': 2}
+102:  HIS1005      2  {'A_literal_tag_leak': 2}
+103:  ENGI102      2  {'A_literal_tag_leak': 2}
+104:  ENFUN09      2  {'A_literal_tag_leak': 2}
+105:  CBI1008      2  {'A_literal_tag_leak': 2}
+106:  TRR304       1  {'A_literal_tag_leak': 1}
+107:  TRR106       1  {'A_literal_tag_leak': 1}
+108:  TRR102       1  {'A_literal_tag_leak': 1}
+109:  TEFUN07      1  {'A_literal_tag_leak': 1}
+110:  SSFUN05      1  {'A_literal_tag_leak': 1}
+111:  MXFUN01      1  {'A_literal_tag_leak': 1}
+112:  MXEO301      1  {'A_literal_tag_leak': 1}
+113:  MXDI201      1  {'A_literal_tag_leak': 1}
+114:  JPN1004      1  {'A_literal_tag_leak': 1}
+115:  HIS1006      1  {'A_literal_tag_leak': 1}
+116:  HIS1002      1  {'A_literal_tag_leak': 1}
+117:  HIS1001      1  {'A_literal_tag_leak': 1}
+118:  ENGS404      1  {'A_literal_tag_leak': 1}
+121:  GENO901_7_3.html            16  {'A_literal_tag_leak': 16}
+122:  DTC1005_1_0.html             5  {'A_literal_tag_leak': 5}
+123:  PWY1009_1_1_0.html           4  {'A_literal_tag_leak': 4}
+124:  XGF9004_7_0.html             2  {'A_literal_tag_leak': 2}
+125:  TRR116_9_0.html              2  {'A_literal_tag_leak': 2}
+[21:27:03] skeleton state (--json) + delta vs r416
+  rc=0
+OLD pairs 2349  SCAFFOLD 53.9284%  RAW 38.000%  >=50 1415  >=75 238  >=90 20
+NEW pairs 2349  SCAFFOLD 54.1231%  RAW 38.142%  >=50 1438  >=75 238  >=90 20
+delta SCAFFOLD +0.1947pp  RAW +0.142pp  >=50 +23  >=75 +0  >=90 +0
+[21:28:27] gatecheck verdict vs gate_baseline.json (r416 values)
+  rc=2
+[21:28:30] selftests
+  rc=0  PASS/GREEN lines: 46  FAIL lines: 0
+[21:29:42] feature index
+  rc=0
+  ok   SAFETY: feature "flipCard" resolves to 258 modules (non-empty)
+  ok   SAFETY: feature "clickDrop" resolves to 191 modules (non-empty)
+SELFTEST build_feature_index: GREEN
+[21:29:57] ship ledger check
+[ledger] last full ship: round 416 (2026-09-20T08:52:12Z); scoped ships since: 1 (cadence 8, hard 16)
+  OK — a full-ship backstop is not yet due (7 scoped ship(s) of headroom).
+[21:29:57] DIFF MINER (§1d — after every regeneration)
+  miner rc=0
+pairs 2349 / modules 483 / parse errors 0 / diff lines 263974 / classes 8886 (CANDIDATE 182, below floor 8424) in 87.5 s
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_diff_miner.json
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/DIFF_QUEUE.md
+[21:31:30] POSTSHIP_DONE

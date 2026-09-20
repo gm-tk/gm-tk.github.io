@@ -1,0 +1,177 @@
+
+== subject|template: gold col class (top) vs Claude (top), n >= 10 ==
+  ('Standard', 'NCEA1')                    plain        gold n= 706  col-12                 0.93 | claude n= 572  col-12                 1.00
+  ('Standard', '1-10 Mathematics')         interactive  gold n= 627  col-12                 0.86 | claude n= 485  col-12                 1.00
+  ('Standard', '1-10 Mathematics')         plain        gold n= 552  col-12                 0.95 | claude n= 693  col-12                 1.00
+  ('Standard', '1-10 Blended Literacy')    plain        gold n= 492  col-12                 0.91 | claude n= 633  col-12                 1.00
+  ('Standard', 'Leaving to Learn')         plain        gold n= 466  col-12                 0.55 | claude n= 470  col-12                 1.00
+  ('Standard', '1-10 English')             plain        gold n= 440  col-12                 0.90 | claude n= 455  col-12                 1.00
+  ('Standard', 'NCEA1')                    interactive  gold n= 411  col-12                 0.75 | claude n= 252  col-12                 1.00
+  ('Standard', '1-10 Blended Literacy')    interactive  gold n= 396  col-12                 0.82 | claude n= 261  col-12                 1.00
+  ('Standard', '1-10 English')             interactive  gold n= 386  col-12                 0.83 | claude n= 303  col-12                 1.00
+  ('Inquiry', '1-10 Blended Literacy')     plain        gold n= 369  col-12                 0.90 | claude n= 368  col-12                 1.00
+  ('Standard', 'Leaving to Learn')         interactive  gold n= 206  col-12                 0.89 | claude n= 132  col-12                 1.00
+  ('Inquiry', 'ConnectED')                 plain        gold n= 199  col-12                 0.89 | claude n= 187  col-12                 1.00
+  ('Bilingual', 'Te Marautanga o Aotearoa  interactive  gold n= 162  col-12                 0.83 | claude n=  93  col-12                 1.00
+  ('Standard', 'Online Safety (OS9000)')   interactive  gold n= 160  col-12                 0.66 | claude n= 122  col-12                 1.00
+  ('Fundamentals', '1-10 Writing (MiW)')   interactive  gold n= 157  col-12                 0.73 | claude n= 113  col-12                 1.00
+  ('Inquiry', '1-10 Blended Literacy')     interactive  gold n= 155  col-12                 0.81 | claude n= 109  col-12                 1.00
+  ('Fundamentals', '1-10 Languages')       interactive  gold n= 137  col-12                 0.93 | claude n=  91  col-12                 1.00
+  ('Standard', 'ANZH')                     plain        gold n= 117  col-12                 0.84 | claude n= 171  col-12                 1.00
+  ('Fundamentals', '1-10 Mathematics')     plain        gold n= 115  col-12                 1.00 | claude n=  67  col-12                 1.00
+  ('Inquiry', 'Te ara Whakapuawa -Wellbein plain        gold n= 111  col-12                 0.76 | claude n=  48  col-12                 1.00
+  ('Standard', '1-10 Languages')           interactive  gold n= 102  col-12                 0.89 | claude n=  23  col-12                 1.00
+  ('Fundamentals', '1-10 English')         interactive  gold n=  92  col-12 col-md-8        0.45 | claude n=  76  col-12                 1.00
+  ('Inquiry', 'Leaving to Learn')          plain        gold n=  84  (no row>col)           0.69 | claude n=  76  col-12                 1.00  <-- DIFFERS
+  ('Fundamentals', '1-10 Health and PE')   interactive  gold n=  76  col-12                 0.84 | claude n=   5  col-12                 1.00
+  ('Standard', 'ConnectED')                interactive  gold n=  74  col-12                 0.84 | claude n=  46  col-12                 1.00
+  ('Bilingual', 'Te Marautanga o Aotearoa  plain        gold n=  72  col-12                 0.83 | claude n=   7  col-12                 1.00
+  ('Standard', '1-10 Technology')          interactive  gold n=  66  col-12                 0.98 | claude n=  37  col-12                 1.00
+  ('Inquiry', 'ConnectED')                 interactive  gold n=  57  col-12                 0.88 | claude n=  39  col-12                 1.00
+  ('Standard', 'ConnectED')                plain        gold n=  57  col-12                 0.95 | claude n=  39  col-12                 1.00
+  ('Standard', '1-10 Science')             interactive  gold n=  49  col-12                 0.80 | claude n=  42  col-12                 1.00
+  ('Fundamentals', '1-10 Technology')      plain        gold n=  47  col-12                 0.98 | claude n=  22  col-12                 1.00
+  ('Fundamentals', '1-10 Social Science')  plain        gold n=  46  col-12                 0.96 | claude n=  92  col-12                 1.00
+  ('Fundamentals', '1-10 Writing (MiW)')   plain        gold n=  45  col-12                 0.89 | claude n=  61  col-12                 1.00
+  ('Inquiry', 'Te ara Whakapuawa -Wellbein interactive  gold n=  40  col-12                 0.97 | claude n=  16  col-12                 1.00
+  ('Fundamentals', '1-10 Health and PE')   plain        gold n=  39  col-12                 0.95 | claude n=  52  col-12                 1.00
+  ('Fundamentals', '1-10 Social Science')  interactive  gold n=  37  col-12                 0.68 | claude n=  16  col-12                 1.00
+  ('Standard', 'Online Safety (OS9000)')   plain        gold n=  36  col-12                 0.89 | claude n=  59  col-12                 1.00
+  ('Standard', '1-10 Science')             plain        gold n=  33  col-12                 0.88 | claude n=  43  col-12                 1.00
+  ('Standard', '1-10 Social Science')      plain        gold n=  33  col-12                 0.97 | claude n=  38  col-12                 1.00
+  ('Standard', '1-10 Technology')          plain        gold n=  32  col-12                 0.91 | claude n=  29  col-12                 1.00
+  ('Standard', '1-10 Languages')           plain        gold n=  26  col-12                 0.77 | claude n=   6  col-12                 1.00
+  ('Fundamentals', '1-10 English')         plain        gold n=  25  col-12                 0.80 | claude n=  37  col-12                 1.00
+  ('Standard', 'EXPlore')                  plain        gold n=  25  col-12                 1.00 | claude n=   9  col-12                 1.00
+  ('Standard', '1-10 Social Science')      interactive  gold n=  25  col-12                 0.88 | claude n=  34  col-12                 1.00
+  ('Standard', 'ANZH')                     interactive  gold n=  23  col-12                 0.65 | claude n=  45  col-12                 1.00
+  ('Standard', '1-10 Health and PE')       interactive  gold n=  19  col-12                 0.79 | claude n=  12  col-12                 1.00
+  ('Fundamentals', '1-10 Arts')            plain        gold n=  18  col-12                 1.00 | claude n=  31  col-12                 1.00
+  ('Inquiry', 'EXPlore')                   plain        gold n=  18  col-12                 1.00 | claude n=  24  col-12                 1.00
+  ('Fundamentals', '1-10 Technology')      interactive  gold n=  16  col-12                 0.81 | claude n=  25  col-12                 1.00
+  ('Fundamentals', '1-10 Mathematics')     interactive  gold n=  15  col-12                 1.00 | claude n=  35  col-12                 1.00
+  ('Fundamentals', '1-10 Arts')            interactive  gold n=  13  col-12                 1.00 | claude n=  36  col-12                 1.00
+  ('Standard', 'EXPlore')                  interactive  gold n=  13  col-12                 1.00 | claude n=   7  col-12                 1.00
+
+== family prefix: gold col class (top) vs Claude (top), n >= 10 ==
+  BLL                                      plain        gold n= 822  col-12                 0.91 | claude n= 963  col-12                 1.00
+  BLL                                      interactive  gold n= 512  col-12                 0.84 | claude n= 339  col-12                 1.00
+  XDLS                                     plain        gold n= 341  (no row>col)           0.69 | claude n= 330  col-12                 1.00  <-- DIFFERS
+  MXFL                                     interactive  gold n= 190  col-12                 0.81 | claude n= 139  col-12                 1.00
+  HIS                                      plain        gold n= 173  col-12                 0.96 | claude n= 250  col-12                 1.00
+  WJFUN                                    interactive  gold n= 157  col-12                 0.73 | claude n= 113  col-12                 1.00
+  MXFL                                     plain        gold n= 149  col-12                 0.93 | claude n= 266  col-12                 1.00
+  MXDI                                     interactive  gold n= 146  col-12                 0.93 | claude n= 112  col-12                 1.00
+  TRR                                      interactive  gold n= 142  col-12                 0.91 | claude n=  74  col-12                 1.00
+  MXFU                                     interactive  gold n= 125  col-12                 0.86 | claude n= 126  col-12                 1.00
+  ENGI                                     plain        gold n= 121  col-12                 0.93 | claude n= 118  col-12                 1.00
+  ANZH                                     plain        gold n= 117  col-12                 0.84 | claude n= 171  col-12                 1.00
+  MXFUN                                    plain        gold n= 115  col-12                 1.00 | claude n=  67  col-12                 1.00
+  ENGC                                     plain        gold n= 115  col-12                 0.95 | claude n= 116  col-12                 1.00
+  CEDT                                     plain        gold n= 114  col-12                 0.84 | claude n=  82  col-12                 1.00
+  MXFU                                     plain        gold n= 103  col-12                 0.98 | claude n= 122  col-12                 1.00
+  MXDB                                     plain        gold n= 100  col-12                 1.00 | claude n=  65  col-12                 1.00
+  ENGC                                     interactive  gold n=  94  col-12                 0.77 | claude n=  74  col-12                 1.00
+  ENFUN                                    interactive  gold n=  92  col-12 col-md-8        0.45 | claude n=  76  col-12                 1.00
+  AGH                                      plain        gold n=  92  col-12                 1.00 | claude n=  66  col-12                 1.00
+  ENGI                                     interactive  gold n=  91  col-12                 0.98 | claude n=  83  col-12                 1.00
+  TWHA                                     plain        gold n=  84  col-12                 1.00 | claude n=  38  col-12                 1.00
+  ENGS                                     plain        gold n=  82  col-12                 0.79 | claude n=  84  col-12                 1.00
+  HES                                      plain        gold n=  80  col-12                 1.00 | claude n=  49  col-12                 1.00
+  MXDI                                     plain        gold n=  77  col-12                 0.96 | claude n= 123  col-12                 1.00
+  MXEO                                     interactive  gold n=  77  col-12                 0.77 | claude n=  36  col-12                 1.00
+  HPFUN                                    interactive  gold n=  76  col-12                 0.84 | claude n=   5  col-12                 1.00
+  AGH                                      interactive  gold n=  76  col-12                 0.86 | claude n=  62  col-12                 1.00
+  CHI                                      plain        gold n=  76  col-12                 0.95 | claude n=   0  -                      0.00
+  XMES                                     plain        gold n=  75  col-12                 0.83 | claude n=  93  col-12                 1.00
+  XGF                                      interactive  gold n=  72  col-12                 0.96 | claude n=  55  col-12                 1.00
+  XMES                                     interactive  gold n=  71  col-12                 0.83 | claude n=  30  col-12                 1.00
+  TRR                                      plain        gold n=  69  col-12                 0.86 | claude n=   7  col-12                 1.00
+  ENGJ                                     interactive  gold n=  69  col-12                 0.90 | claude n=  44  col-12                 1.00
+  ENGS                                     interactive  gold n=  68  col-12                 0.69 | claude n=  49  col-12                 1.00
+  FRNO                                     interactive  gold n=  68  col-12                 0.87 | claude n=  12  col-12                 1.00
+  PES                                      plain        gold n=  68  col-12                 0.84 | claude n=  53  col-12                 1.00
+  CHFUN                                    interactive  gold n=  66  col-12                 0.97 | claude n=  58  col-12                 1.00
+  TEDC                                     interactive  gold n=  66  col-12                 0.98 | claude n=  37  col-12                 1.00
+  MXEO                                     plain        gold n=  65  col-12                 0.86 | claude n=  72  col-12                 1.00
+  ENGR                                     interactive  gold n=  64  col-12                 0.81 | claude n=  53  col-12                 1.00
+  ENGJ                                     plain        gold n=  63  col-12                 0.90 | claude n=  78  col-12                 1.00
+  FRFUN                                    interactive  gold n=  59  col-12                 1.00 | claude n=  31  col-12                 1.00
+  ENGR                                     plain        gold n=  59  col-12                 0.92 | claude n=  59  col-12                 1.00
+  MXEX                                     plain        gold n=  58  col-12                 0.95 | claude n=  45  col-12                 1.00
+  XGF                                      plain        gold n=  57  col-12                 1.00 | claude n=  66  col-12                 1.00
+  PWY                                      interactive  gold n=  56  col-12                 0.86 | claude n=  15  col-12                 1.00
+  CEDO                                     plain        gold n=  52  col-12                 0.96 | claude n=  38  col-12                 1.00
+  SSFUN                                    plain        gold n=  50  col-12                 0.96 | claude n=  94  col-12                 1.00
+  CEDO                                     interactive  gold n=  50  col-12                 0.94 | claude n=  30  col-12                 1.00
+  MXDB                                     interactive  gold n=  50  col-12                 0.98 | claude n=  57  col-12                 1.00
+  TEFUN                                    plain        gold n=  47  col-12                 0.98 | claude n=  22  col-12                 1.00
+  PES                                      interactive  gold n=  46  col-md-12              0.52 | claude n=  13  col-12                 1.00
+  WJFUN                                    plain        gold n=  45  col-12                 0.89 | claude n=  61  col-12                 1.00
+  SSFUN                                    interactive  gold n=  44  col-12                 0.73 | claude n=  21  col-12                 1.00
+  HIS                                      interactive  gold n=  44  col-12                 0.70 | claude n=  39  col-12                 1.00
+  CEDW                                     plain        gold n=  42  col-12                 0.93 | claude n=  42  col-12                 1.00
+  PHE                                      interactive  gold n=  41  col-12                 0.95 | claude n=  20  col-12                 1.00
+  XTAS                                     interactive  gold n=  41  col-12                 0.88 | claude n=  31  col-12                 1.00
+  HPFUN                                    plain        gold n=  39  col-12                 0.95 | claude n=  52  col-12                 1.00
+  BLLR                                     plain        gold n=  39  col-12                 0.67 | claude n=  38  col-12                 1.00
+  BLLR                                     interactive  gold n=  39  col-12                 0.59 | claude n=  31  col-12                 1.00
+  MXEX                                     interactive  gold n=  39  col-12                 0.95 | claude n=  15  col-12                 1.00
+  XTAS                                     plain        gold n=  39  col-12                 0.95 | claude n=  43  col-12                 1.00
+  TWHA                                     interactive  gold n=  36  col-12                 0.97 | claude n=  13  col-12                 1.00
+  OSOH                                     interactive  gold n=  36  col-12                 0.97 | claude n=  23  col-12                 1.00
+  PHE                                      plain        gold n=  36  col-12                 0.97 | claude n=  24  col-12                 1.00
+  CBI                                      interactive  gold n=  34  col-12                 0.79 | claude n=  21  col-12                 1.00
+  GENO                                     interactive  gold n=  34  col-12                 0.94 | claude n=  11  col-12                 1.00
+  CEDT                                     interactive  gold n=  32  col-12                 0.72 | claude n=  22  col-12                 1.00
+  OSAI                                     interactive  gold n=  32  col-12                 0.50 | claude n=  25  col-12                 1.00
+  TEDC                                     plain        gold n=  32  col-12                 0.91 | claude n=  29  col-12                 1.00
+  XLP                                      plain        gold n=  32  col-12                 0.81 | claude n=  10  col-12                 1.00
+  ART                                      plain        gold n=  31  col-12                 0.94 | claude n=  30  col-12                 1.00
+  OSBY                                     interactive  gold n=  30  col-12                 0.47 | claude n=  26  col-12                 1.00
+  CEDK                                     plain        gold n=  28  col-12                 0.93 | claude n=  34  col-12                 1.00
+  PWY                                      plain        gold n=  28  col-12                 0.93 | claude n=   6  col-12                 1.00
+  TWHK                                     plain        gold n=  27  (no row>col)           1.00 | claude n=  10  col-12                 1.00  <-- DIFFERS
+  ENFUN                                    plain        gold n=  25  col-12                 0.80 | claude n=  37  col-12                 1.00
+  ANZH                                     interactive  gold n=  23  col-12                 0.65 | claude n=  45  col-12                 1.00
+  CEDK                                     interactive  gold n=  22  col-12                 1.00 | claude n=  12  col-12                 1.00
+  OSGM                                     interactive  gold n=  21  col-12                 0.67 | claude n=  16  col-12                 1.00
+  SCCH                                     interactive  gold n=  21  col-12                 0.76 | claude n=  10  col-12                 1.00
+  PNR                                      interactive  gold n=  20  col-12 col-md-12       0.40 | claude n=  19  col-12                 1.00
+  CEDR                                     plain        gold n=  20  col-12                 1.00 | claude n=  30  col-12                 1.00
+  CEDW                                     interactive  gold n=  19  col-12                 0.63 | claude n=  10  col-12                 1.00
+  EXPFUN                                   plain        gold n=  19  col-12                 1.00 | claude n=  24  col-12                 1.00
+  HPRE                                     interactive  gold n=  19  col-12                 0.79 | claude n=  12  col-12                 1.00
+  MXS                                      interactive  gold n=  19  col-12                 1.00 | claude n=  17  col-12                 1.00
+  ARFUN                                    plain        gold n=  18  col-12                 1.00 | claude n=  31  col-12                 1.00
+  XDLS                                     interactive  gold n=  18  col-12                 0.94 | claude n=  15  col-12                 1.00
+  COM                                      interactive  gold n=  18  col-12                 0.72 | claude n=  10  col-12                 1.00
+  JPN                                      interactive  gold n=  18  col-12 col-md-8        0.50 | claude n=  16  col-12                 1.00
+  OSSC                                     interactive  gold n=  18  col-12                 0.44 | claude n=  11  col-12                 1.00
+  COM                                      plain        gold n=  17  col-12                 1.00 | claude n=  16  col-12                 1.00
+  TEFUN                                    interactive  gold n=  16  col-12                 0.81 | claude n=  25  col-12                 1.00
+  DAN                                      plain        gold n=  16  col-12                 1.00 | claude n=  11  col-12                 1.00
+  FRNO                                     plain        gold n=  16  col-12                 0.62 | claude n=   0  -                      0.00
+  SSCI                                     plain        gold n=  16  col-12                 1.00 | claude n=  14  col-12                 1.00
+  MXFUN                                    interactive  gold n=  15  col-12                 1.00 | claude n=  35  col-12                 1.00
+  CHI                                      interactive  gold n=  15  col-12                 0.53 | claude n=   0  -                      0.00
+  EXBP                                     plain        gold n=  14  col-12                 1.00 | claude n=   5  col-12                 1.00
+  ARFUN                                    interactive  gold n=  13  col-12                 1.00 | claude n=  36  col-12                 1.00
+  CBI                                      plain        gold n=  13  col-12                 1.00 | claude n=  14  col-12                 1.00
+  GEO                                      interactive  gold n=  13  col-12                 1.00 | claude n=   2  col-12                 1.00
+  JPN                                      plain        gold n=  13  col-12                 0.77 | claude n=  17  col-12                 1.00
+  SSOG                                     plain        gold n=  13  col-12                 0.92 | claude n=  22  col-12                 1.00
+  JPFUN                                    interactive  gold n=  12  col-12                 0.33 | claude n=   2  col-12                 1.00
+  ENG                                      plain        gold n=  12  (no row>col)           0.75 | claude n=   0  -                      0.00
+  OSSM                                     interactive  gold n=  12  col-12                 1.00 | claude n=  10  col-12                 1.00
+  SSCI                                     interactive  gold n=  12  col-12                 0.92 | claude n=  12  col-12                 1.00
+  DTC                                      plain        gold n=  11  col-12                 1.00 | claude n=   5  col-12                 1.00
+  HES                                      interactive  gold n=  11  col-12                 0.82 | claude n=  12  col-12                 1.00
+  OSAH                                     interactive  gold n=  11  col-12                 0.64 | claude n=  11  col-12                 1.00
+  EXIP                                     plain        gold n=  10  col-12                 1.00 | claude n=   4  col-12                 1.00
+  GENO                                     plain        gold n=  10  col-12                 1.00 | claude n=   6  col-12                 1.00
+  GEO                                      plain        gold n=  10  col-12                 1.00 | claude n=   6  col-12                 1.00
+  MUS                                      plain        gold n=  10  col-12                 0.70 | claude n=   0  -                      0.00
+  SCBI                                     interactive  gold n=  10  col-12                 0.90 | claude n=  11  col-12                 1.00
+  SCPH                                     interactive  gold n=  10  col-12                 1.00 | claude n=   9  col-12                 1.00
+  SCPH                                     plain        gold n=  10  col-12                 1.00 | claude n=  10  col-12                 1.00

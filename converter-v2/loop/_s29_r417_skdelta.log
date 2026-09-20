@@ -1,0 +1,36 @@
+OLD pairs 2349  SCAFFOLD 53.9284%  RAW 38.000%  >=50 1415  >=75 238  >=90 20
+NEW pairs 2349  SCAFFOLD 54.1231%  RAW 38.142%  >=50 1438  >=75 238  >=90 20
+delta SCAFFOLD +0.1947pp  RAW +0.142pp  >=50 +23  >=75 +0  >=90 +0
+movers 30 (up 30 / down 0), pp-sum +457.4
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  XDLS903    XDLS903_7_0.html           37.9 ->   64.9  (+27.1)
+  XDLS904    XDLS904_4_0.html           42.3 ->   66.9  (+24.6)
+  XDLS903    XDLS903_6_0.html           37.6 ->   62.1  (+24.5)
+  XDLS904    XDLS904_1_0.html           40.3 ->   62.8  (+22.5)
+  XDLS903    XDLS903_5_0.html           39.6 ->   62.0  (+22.4)
+  XDLS903    XDLS903_3_0.html           43.2 ->   65.2  (+22.0)
+  XDLS903    XDLS903_4_0.html           41.1 ->   61.9  (+20.8)
+  XDLS905    XDLS905_3_0.html           44.3 ->   63.9  (+19.6)
+  XDLS904    XDLS904_3_0.html           40.8 ->   60.1  (+19.3)
+  XDLS905    XDLS905_5_0.html           47.7 ->   66.4  (+18.7)
+  XDLS902    XDLS902_1_0.html           36.6 ->   54.7  (+18.1)
+  XDLS906    XDLS906_6_0.html           44.9 ->   62.5  (+17.6)
+  XDLS906    XDLS906_2_0.html           50.4 ->   67.6  (+17.1)
+  XDLS903    XDLS903_2_0.html           42.5 ->   58.4  (+15.8)
+  XDLS906    XDLS906_7_0.html           47.0 ->   62.4  (+15.4)
+  XDLS904    XDLS904_2_0.html           41.0 ->   55.9  (+14.9)
+  XDLS905    XDLS905_1_0.html           43.2 ->   57.5  (+14.2)
+  XDLS906    XDLS906_1_0.html           44.8 ->   58.8  (+14.0)
+  XDLS906    XDLS906_4_0.html           47.2 ->   59.8  (+12.7)
+  XDLS904    XDLS904_6_0.html           44.6 ->   57.3  (+12.6)
+  XDLS902    XDLS902_7_0.html           36.5 ->   47.8  (+11.3)
+  XDLS902    XDLS902_2_0.html           38.8 ->   50.0  (+11.2)
+  XDLS905    XDLS905_2_0.html           51.2 ->   60.9  (+9.6)
+  XDLS905    XDLS905_7_0.html           45.9 ->   55.5  (+9.6)
+  XDLS905    XDLS905_6_0.html           46.8 ->   56.1  (+9.4)
+  XDLS902    XDLS902_5_0.html           40.4 ->   49.7  (+9.3)
+  XDLS902    XDLS902_6_0.html           36.4 ->   44.6  (+8.1)
+  XDLS904    XDLS904_7_0.html           47.3 ->   55.0  (+7.7)
+  XDLS902    XDLS902_3_0.html           36.5 ->   40.8  (+4.3)
+  XDLS902    XDLS902_4_0.html           39.6 ->   42.2  (+2.6)

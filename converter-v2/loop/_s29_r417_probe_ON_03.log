@@ -1,0 +1,2013 @@
+PHE1005: identical 6 / changed 0
+PHE1006: identical 6 / changed 0
+PHE1007: identical 10 / changed 0
+PHE1008: identical 6 / changed 0
+PNR101: identical 2 / changed 0
+PNR102: identical 3 / changed 0
+PNR104: identical 3 / changed 0
+PNR107: identical 3 / changed 0
+PWY1001: identical 10 / changed 0
+PWY1002: identical 10 / changed 0
+PWY1007: identical 9 / changed 0
+PWY1008: identical 10 / changed 0
+PWY1009: identical 9 / changed 0
+PWYWHA1: identical 1 / changed 0
+SCBI301: identical 9 / changed 0
+SCCH301: identical 9 / changed 0
+SCES201: identical 5 / changed 0
+SCFUN01: identical 1 / changed 0
+SCPH301: identical 9 / changed 0
+SPA1004: identical 3 / changed 0
+SSCI205: identical 10 / changed 0
+SSFUN01: identical 1 / changed 0
+SSFUN02: identical 1 / changed 0
+SSFUN03: identical 1 / changed 0
+SSFUN05: identical 1 / changed 0
+SSFUN06: identical 1 / changed 0
+SSFUN07: identical 5 / changed 0
+SSFUN08: identical 1 / changed 0
+SSOG101: identical 8 / changed 0
+SSOG103: identical 7 / changed 0
+SSOG301: identical 8 / changed 0
+TEDC401: identical 8 / changed 0
+TEDC402: identical 11 / changed 0
+TEFUN01: identical 1 / changed 0
+TEFUN02: identical 1 / changed 0
+TEFUN03: identical 1 / changed 0
+TEFUN04: identical 1 / changed 0
+TEFUN05: identical 1 / changed 0
+TEFUN06: identical 1 / changed 0
+TEFUN07: identical 1 / changed 0
+TEFUN08: identical 1 / changed 0
+TRR102: identical 6 / changed 0
+TRR103: identical 4 / changed 0
+TRR104: prep refused (no-wt)
+TRR105: prep refused (no-wt)
+TRR106: identical 2 / changed 0
+TRR107: identical 3 / changed 0
+TRR108: identical 3 / changed 0
+TRR109: identical 6 / changed 0
+TRR111: identical 6 / changed 0
+TRR112: identical 5 / changed 0
+TRR113: identical 5 / changed 0
+TRR114: identical 4 / changed 0
+TRR115: prep refused (no-wt)
+TRR116: identical 5 / changed 0
+TRR203: identical 4 / changed 0
+TRR301: identical 4 / changed 0
+TRR304: identical 3 / changed 0
+TWHA901: identical 1 / changed 0
+TWHA902: identical 1 / changed 0
+TWHA903: identical 1 / changed 0
+TWHA904: identical 1 / changed 0
+TWHA905: identical 1 / changed 0
+TWHA906: identical 1 / changed 0
+TWHK901: identical 1 / changed 0
+TWHK903: identical 1 / changed 0
+WJFUN105: identical 1 / changed 0
+WJFUN106: identical 1 / changed 0
+WJFUN107: identical 1 / changed 0
+WJFUN108: identical 1 / changed 0
+WJFUN109: identical 1 / changed 0
+WJFUN110: identical 1 / changed 0
+WJFUN112: identical 1 / changed 0
+WJFUN113: identical 1 / changed 0
+WJFUN115: identical 1 / changed 0
+WJFUN116: identical 1 / changed 0
+WJFUN205: identical 1 / changed 0
+WJFUN206: identical 1 / changed 0
+WJFUN208: identical 1 / changed 0
+WJFUN210: identical 1 / changed 0
+WJFUN211: identical 1 / changed 0
+WJFUN212: identical 1 / changed 0
+WJFUN304: identical 1 / changed 0
+WJFUN305: identical 1 / changed 0
+WJFUN306: identical 1 / changed 0
+WJFUN307: identical 1 / changed 0
+WJFUN308: identical 1 / changed 0
+XDLS501: identical 8 / changed 0
+XDLS502: identical 5 / changed 0
+XDLS901: identical 5 / changed 0
+  ~ XDLS902_1_0.html: -63 +39
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn some moves and perform them in the right order</h3>
+     - <p>Learn a some moves that need to be done in order. You can learn a part of the Tangaroa sequence or you migh
+     - <p>Choose a moves that inspires you through discussions with your Hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner).</p>
+     - <p>Ākonga have chosen lots of different movements to remember from a mau rakau to refining surf moves.</p>
+     - <p>Once you have learned your movement sequence show or tell us how it went.</p>
+     - <p>As a start you can try this:-</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/WCDRkTDtsFM" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Your Kaiako would love to see your progress.</p>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>What is happening when your muscles hurt a bit?</h3>
+     - <p>Watch the video below with your Hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) and discuss with them how exercise works your muscles and why this is a good thing.</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/2tM1LFFxeKg" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Explain what you have found to your Kaiako.</p>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your Hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     - <p>[Video <b><a href="https://www.youtube.com/watch?v=6In-lfiK30s" target="_blank">https://www.youtube.com/wat
+     - <p>Share your Te Whare Tapa Whā journey with your Kaiako.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Movement vs Sitting</h3>
+     - <p>Compare difference between people who move a lot and people who do not. Create a VENN diagram to show your 
+     - … 23 more removed
+     + <h3>Learn some moves and perform them in the right order</h3>
+     + <p>Learn a some moves that need to be done in order. You can learn a part of the Tangaroa sequence or you migh
+     + <p>Choose a moves that inspires you through discussions with your Hoa ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + <p>(learning partner).</p>
+     + <p>Ākonga have chosen lots of different movements to remember from a mau rakau to refining surf moves.</p>
+     + <p>Once you have learned your movement sequence show or tell us how it went.</p>
+     + <p>As a start you can try this:-</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/WCDRkTDtsFM" loading="lazy" title="YouTube video player" frameborde
+     + <p>Your Kaiako would love to see your progress.</p>
+     + <h3>What is happening when your muscles hurt a bit?</h3>
+     + <p>Watch the video below with your Hoa ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + <p>(learning partner) and discuss with them how exercise works your muscles and why this is a good thing.</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/2tM1LFFxeKg" loading="lazy" title="YouTube video player" frameborde
+     + <p>Explain what you have found to your Kaiako.</p>
+     + <h3>Add to your routine</h3>
+     + <p>With your Hoa ako</p>
+     + … 19 more added
+  ~ XDLS902_2_0.html: -57 +33
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn what is healthy and what is not.</h3>
+     - <p>You and your Hoa Ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) will need to visit a supermarket. You can either go to the supermarket or visit one onli
+     - <p>Your Kaiako would love to see your choices.</p>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Why eat lots of colours?</h3>
+     - <p>Watch the video below with your Hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) and discuss with them ways you could “eat the rainbow” and why this is a good thing.</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/LbC_v90WTn4" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Explain what you have found to your Kaiako.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add food to your routine; make, grow or eat healthy.</h3>
+     - <p>With your Hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     - <p>[Video <b><a href="https://www.youtube.com/watch?v=6In-lfiK30s" target="_blank">https://www.youtube.com/wat
+     - <p>Share your Te Whare Tapa Whā journey with your Kaiako.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Eating variety vs Eating a few foods</h3>
+     - <p>Compare difference between people who eat lots of different food groups and colours and people who do not. 
+     - <p>[Video <a href="https://www.youtube.com/watch?v=lnalI7eVQsQ" target="_blank">https://www.youtube.com/watch?
+     - <p>Share your findings with your Kaiako.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - … 17 more removed
+     + <h3>Learn what is healthy and what is not.</h3>
+     + <p>You and your Hoa Ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + <p>(learning partner) will need to visit a supermarket. You can either go to the supermarket or visit one onli
+     + <p>Your Kaiako would love to see your choices.</p>
+     + <h3>Why eat lots of colours?</h3>
+     + <p>Watch the video below with your Hoa ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + <p>(learning partner) and discuss with them ways you could “eat the rainbow” and why this is a good thing.</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/LbC_v90WTn4" loading="lazy" title="YouTube video player" frameborde
+     + <p>Explain what you have found to your Kaiako.</p>
+     + <h3>Add food to your routine; make, grow or eat healthy.</h3>
+     + <p>With your Hoa ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     + <p>[Video <b><a href="https://www.youtube.com/watch?v=6In-lfiK30s" target="_blank">https://www.youtube.com/wat
+     + <p>Share your Te Whare Tapa Whā journey with your Kaiako.</p>
+     + <h3>Eating variety vs Eating a few foods</h3>
+     + <p>Compare difference between people who eat lots of different food groups and colours and people who do not. 
+     + … 13 more added
+  ~ XDLS902_3_0.html: -55 +31
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn the six steps to good sleep.</h3>
+     - <p>With your Hoa Ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) review the flip cards under the “Routine” tab above. Learn the six steps to good sleep.<
+     - <p>Tell your Kaiako the steps they need to take if they want to sleep well.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Why sleep?</h3>
+     - <p>Review the introduction and safety tabs above. Explain to your Kaiako why sleep is so important</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add a Sleep Routine to your life</h3>
+     - <p>With your Hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     - <p>[Video <b><a href="https://www.youtube.com/watch?v=6In-lfiK30s" target="_blank">https://www.youtube.com/wat
+     - <p>Share your Te Whare Tapa Whā journey with your Kaiako.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>People who get good sleep vs People who have interrupted sleep</h3>
+     - <p>Compare difference between people who get good sleep to people who have interrupted sleep. Create a VENN di
+     - <p>[Video <a href="https://www.youtube.com/watch?v=lnalI7eVQsQ" target="_blank">https://www.youtube.com/watch?
+     - <p>Share your findings with your Kaiako.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Do kiwi children get enough sleep?</h3>
+     - <p>Toddlers need 11-14 hours sleep. 3-5 year olds need 10-13 hours sleep. 6-12 year olds need 9-12 hours sleep
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) and make a judgement about how much sleep kiwi kids and or teenagers get. You could thin
+     - <p>If reading the graph below the amounts are percentages. For example 72% of Asian Boys get enough sleep. Thi
+     - … 15 more removed
+     + <h3>Learn the six steps to good sleep.</h3>
+     + <p>With your Hoa Ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + <p>(learning partner) review the flip cards under the “Routine” tab above. Learn the six steps to good sleep.<
+     + <p>Tell your Kaiako the steps they need to take if they want to sleep well.</p>
+     + <h3>Why sleep?</h3>
+     + <p>Review the introduction and safety tabs above. Explain to your Kaiako why sleep is so important</p>
+     + <h3>Add a Sleep Routine to your life</h3>
+     + <p>With your Hoa ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     + <p>[Video <b><a href="https://www.youtube.com/watch?v=6In-lfiK30s" target="_blank">https://www.youtube.com/wat
+     + <p>Share your Te Whare Tapa Whā journey with your Kaiako.</p>
+     + <h3>People who get good sleep vs People who have interrupted sleep</h3>
+     + <p>Compare difference between people who get good sleep to people who have interrupted sleep. Create a VENN di
+     + <p>[Video <a href="https://www.youtube.com/watch?v=lnalI7eVQsQ" target="_blank">https://www.youtube.com/watch?
+     + <p>Share your findings with your Kaiako.</p>
+     + <h3>Do kiwi children get enough sleep?</h3>
+     + <p>Toddlers need 11-14 hours sleep. 3-5 year olds need 10-13 hours sleep. 6-12 year olds need 9-12 hours sleep
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + … 11 more added
+  ~ XDLS902_4_0.html: -48 +24
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn parts of the body</h3>
+     - <p>It is important that you know the parts of the body that change during puberty. Here is a worksheet to help
+     - <p>[Link to a copy of for ākonga to download and print <a href="https://www.twinkl.co.nz/resource/t2-s-115-how
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>How our bodies react to puberty?</h3>
+     - <p>Watch the introduction video, find a documentary or read a book on the changes you go through during pubert
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your Hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     - <p>[Video <b><a href="https://www.youtube.com/watch?v=6In-lfiK30s" target="_blank">https://www.youtube.com/wat
+     - <p>Share your Te Whare Tapa Whā journey with your Kaiako.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Gender changes</h3>
+     - <p>Compare the changes different genders go through during puberty.</p>
+     - <p>Share your findings with your Kaiako.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Should people going through puberty start school later?</h3>
+     - <p>Watch this video and judge if you think teenagers should be encouraged to sleep in longer?</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/Bw_3Q6CRxGA" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your judgments with your Kaiako.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - … 8 more removed
+     + <h3>Learn parts of the body</h3>
+     + <p>It is important that you know the parts of the body that change during puberty. Here is a worksheet to help
+     + <p>[Link to a copy of for ākonga to download and print <a href="https://www.twinkl.co.nz/resource/t2-s-115-how
+     + <h3>How our bodies react to puberty?</h3>
+     + <p>Watch the introduction video, find a documentary or read a book on the changes you go through during pubert
+     + <h3>Add to your routine</h3>
+     + <p>With your Hoa ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     + <p>[Video <b><a href="https://www.youtube.com/watch?v=6In-lfiK30s" target="_blank">https://www.youtube.com/wat
+     + <p>Share your Te Whare Tapa Whā journey with your Kaiako.</p>
+     + <h3>Gender changes</h3>
+     + <p>Compare the changes different genders go through during puberty.</p>
+     + <p>Share your findings with your Kaiako.</p>
+     + <h3>Should people going through puberty start school later?</h3>
+     + <p>Watch this video and judge if you think teenagers should be encouraged to sleep in longer?</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/Bw_3Q6CRxGA" loading="lazy" title="YouTube video player" frameborde
+     + <p>Share your judgments with your Kaiako.</p>
+     + <h3>Create</h3>
+     + … 4 more added
+  ~ XDLS902_5_0.html: -43 +19
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn parts of the body</h3>
+     - <p>It is important that you know the parts of the body.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>What is a sexual health checkup?</h3>
+     - <p>Why should people go for a checkup regularly once they start having sex?</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your Hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     - <p>[Video <b><a href="https://www.youtube.com/watch?v=6In-lfiK30s" target="_blank">https://www.youtube.com/wat
+     - <p>Share your Te Whare Tapa Whā journey with your Kaiako.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Risk vs Safety</h3>
+     - <p>Like many other things in life sex can be safe; emotionally and physically. It can also be risky. Compare t
+     - <p>Share your findings with your Kaiako.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Why are less kiwis getting pregnant in their teenage years than in the past?</h3>
+     - <p>In the 1960’s New Zealand doctors started prescribing contraception so people could stop pregnancies. Since
+     - <p>Share your judgments with your Kaiako.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Create</h3>
+     - <p>Create a poster, website or other resource to teach people about their bodies and sex.</p>
+     - … 3 more removed
+     + <h3>Learn parts of the body</h3>
+     + <p>It is important that you know the parts of the body.</p>
+     + <h3>What is a sexual health checkup?</h3>
+     + <p>Why should people go for a checkup regularly once they start having sex?</p>
+     + <h3>Add to your routine</h3>
+     + <p>With your Hoa ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     + <p>[Video <b><a href="https://www.youtube.com/watch?v=6In-lfiK30s" target="_blank">https://www.youtube.com/wat
+     + <p>Share your Te Whare Tapa Whā journey with your Kaiako.</p>
+     + <h3>Risk vs Safety</h3>
+     + <p>Like many other things in life sex can be safe; emotionally and physically. It can also be risky. Compare t
+     + <p>Share your findings with your Kaiako.</p>
+     + <h3>Why are less kiwis getting pregnant in their teenage years than in the past?</h3>
+     + <p>In the 1960’s New Zealand doctors started prescribing contraception so people could stop pregnancies. Since
+     + <p>Share your judgments with your Kaiako.</p>
+     + <h3>Create</h3>
+     + <p>Create a poster, website or other resource to teach people about their bodies and sex.</p>
+     + <p>Share your creations with your Kaiako.</p>
+  ~ XDLS902_6_0.html: -54 +30
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn your rights and responsibilities at work</h3>
+     - <p>Learn about your rights and responsibilities as a worker. You need to learn these by heart as you will use 
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/zKaMtbiQ9Io" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>How to keep safe at work</h3>
+     - <p><b>Think about a workplace you would like to join. How would you keep yourself safe? You can find more info
+     - <a href="https://www.worksafe.govt.nz/topic-and-industry/" target="_blank"><div class="externalButton">Go to w
+     - <p>Explain to your Kaiako how people can keep safe at work.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your Hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     - <p>[Video <b><a href="https://www.youtube.com/watch?v=6In-lfiK30s" target="_blank">https://www.youtube.com/wat
+     - <p>Share your Te Whare Tapa Whā journey with your Kaiako.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Safe vs Unsafe</h3>
+     - <p>Make a VENN diagram comparing safe and unsafe work practices. You may want to focus on one job or industry.
+     - <a href="https://www.worksafe.govt.nz/topic-and-industry/" target="_blank"><div class="externalButton">Go to w
+     - <p>[Video <a href="https://www.youtube.com/watch?v=lnalI7eVQsQ" target="_blank">https://www.youtube.com/watch?
+     - <p>Share your findings with your Kaiako.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Are kiwis safe on the roads?</h3>
+     - <p>Look at this graph with your Hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - … 14 more removed
+     + <h3>Learn your rights and responsibilities at work</h3>
+     + <p>Learn about your rights and responsibilities as a worker. You need to learn these by heart as you will use 
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/zKaMtbiQ9Io" loading="lazy" title="YouTube video player" frameborde
+     + <h3>How to keep safe at work</h3>
+     + <p><b>Think about a workplace you would like to join. How would you keep yourself safe? You can find more info
+     + <a href="https://www.worksafe.govt.nz/topic-and-industry/" target="_blank"><div class="externalButton">Go to w
+     + <p>Explain to your Kaiako how people can keep safe at work.</p>
+     + <h3>Add to your routine</h3>
+     + <p>With your Hoa ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     + <p>[Video <b><a href="https://www.youtube.com/watch?v=6In-lfiK30s" target="_blank">https://www.youtube.com/wat
+     + <p>Share your Te Whare Tapa Whā journey with your Kaiako.</p>
+     + <h3>Safe vs Unsafe</h3>
+     + <p>Make a VENN diagram comparing safe and unsafe work practices. You may want to focus on one job or industry.
+     + <a href="https://www.worksafe.govt.nz/topic-and-industry/" target="_blank"><div class="externalButton">Go to w
+     + <p>[Video <a href="https://www.youtube.com/watch?v=lnalI7eVQsQ" target="_blank">https://www.youtube.com/watch?
+     + <p>Share your findings with your Kaiako.</p>
+     + <h3>Are kiwis safe on the roads?</h3>
+     + … 10 more added
+  ~ XDLS902_7_0.html: -57 +37
+     - <h3>Needs Vs Wants</h3>
+     - <p>Play Stand Tall.</p>
+     - <a href="https://ihc-standtall.com/" target="_blank"><div class="externalButton">Go to website</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: ] Stand Tall Budgetting Game</p>
+     - <p>With the help of your Hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) put your needs and your wants on separate cards or sticky notes. Test your ability to so
+     - <p>If you do not want to make your own you can colour and use this worksheet:-</p>
+     - <a href="https://www.twinkl.co.nz/resource/cfe-c-021-needs-and-wants-activity" target="_blank"><div class="ext
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your Hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     - <p>[Video <b><a href="https://www.youtube.com/watch?v=6In-lfiK30s" target="_blank">https://www.youtube.com/wat
+     - <p>Share your Te Whare Tapa Whā journey with your Kaiako.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Needs vs Wants</h3>
+     - <p>If you have not already played Stand Tall give it a go.</p>
+     - <a href="https://ihc-standtall.com/" target="_blank"><div class="externalButton">Go to website</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: ] Stand Tall Budgeting Game</p>
+     - <p>Test your ability to sort your needs from your wants by making a VENN diagram.</p>
+     - <p>[Video <a href="https://www.youtube.com/watch?v=lnalI7eVQsQ" target="_blank">https://www.youtube.com/watch?
+     - <p>Share your findings with your Kaiako.</p>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>How safe are our <b>roads?</b></h3>
+     - <p>Look at this graph with your Hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) and make a judgement about homelessness in New Zealand.</p>
+     - … 17 more removed
+     + <h3>Needs Vs Wants</h3>
+     + <p>Play Stand Tall.</p>
+     + <a href="https://ihc-standtall.com/" target="_blank"><div class="externalButton">Go to website</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: ] Stand Tall Budgetting Game</p>
+     + <p>With the help of your Hoa ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + <p>(learning partner) put your needs and your wants on separate cards or sticky notes. Test your ability to so
+     + <p>If you do not want to make your own you can colour and use this worksheet:-</p>
+     + <a href="https://www.twinkl.co.nz/resource/cfe-c-021-needs-and-wants-activity" target="_blank"><div class="ext
+     + <h3>Add to your routine</h3>
+     + <p>With your Hoa ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     + <p>[Video <b><a href="https://www.youtube.com/watch?v=6In-lfiK30s" target="_blank">https://www.youtube.com/wat
+     + <p>Share your Te Whare Tapa Whā journey with your Kaiako.</p>
+     + <h3>Needs vs Wants</h3>
+     + <p>If you have not already played Stand Tall give it a go.</p>
+     + <a href="https://ihc-standtall.com/" target="_blank"><div class="externalButton">Go to website</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: ] Stand Tall Budgeting Game</p>
+     + <p>Test your ability to sort your needs from your wants by making a VENN diagram.</p>
+     + … 17 more added
+XDLS902: identical 1 / changed 7
+  ~ XDLS903_2_0.html: -63 +39
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn karakia Mō Te Kai</h3>
+     - <p>Here is a karakia mō te kai again for you to learn by heart.</p>
+     - <p>You may choose to learn a different blessing, prayer or mindfulness practice that fits with your beliefs an
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/Co2N0AL_UCY" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Your kaiako would love to hear you express your gratitude for your food.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Why?</h3>
+     - <p>Watch the video below with your hua ako and discuss with them ways you could “eat the rainbow” and why this
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/LbC_v90WTn4" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Explain what you have found to your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add food to your routine; make, grow or eat healthy.</h3>
+     - <p>With your hua ako, review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Eating fast vs eating mindfully</h3>
+     - <p>Compare people who take time to eat food in a calm way and those who eat while doing other things such as w
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/lnalI7eVQsQ" loading="lazy" title="YouTube video player" frameborde
+     - … 23 more removed
+     + <h5>Learn karakia Mō Te Kai</h5>
+     + <p>Here is a karakia mō te kai again for you to learn by heart.</p>
+     + <p>You may choose to learn a different blessing, prayer or mindfulness practice that fits with your beliefs an
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/Co2N0AL_UCY" loading="lazy" title="YouTube video player" frameborde
+     + <p>Your kaiako would love to hear you express your gratitude for your food.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Why?</h5>
+     + <p>Watch the video below with your hua ako and discuss with them ways you could “eat the rainbow” and why this
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/LbC_v90WTn4" loading="lazy" title="YouTube video player" frameborde
+     + <p>Explain what you have found to your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Add food to your routine; make, grow or eat healthy.</h5>
+     + <p>With your hua ako, review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     + <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     + … 19 more added
+  ~ XDLS903_3_0.html: -59 +35
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn to meditate</h3>
+     - <p>Learn to sit still and pay attention to everything around you for a period of time. The sun, the wind, the 
+     - <p>Learn to do this by heart through regular practise. This will give you a way to calm yourself.</p>
+     - <p>If you want someone to talk you through how to be mindful watch this video.</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/3iUf73v92lI" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Why should you feed your wairua?</h3>
+     - <p>Review the lessons above. Explain to your kaiako why looking after your wairua is so important.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add activities that strengthen your wairua</h3>
+     - <p>With your hua ako, review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>People who look after their wairua vs people who do things that don’t feel right for them</h3>
+     - <p>Compare the difference between people who look after their wairua vs people who do things that don’t feel r
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/lnalI7eVQsQ" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your findings with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - … 19 more removed
+     + <h3>Learn to meditate</h3>
+     + <p>Learn to sit still and pay attention to everything around you for a period of time. The sun, the wind, the 
+     + <p>Learn to do this by heart through regular practise. This will give you a way to calm yourself.</p>
+     + <p>If you want someone to talk you through how to be mindful watch this video.</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/3iUf73v92lI" loading="lazy" title="YouTube video player" frameborde
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Why should you feed your wairua?</h5>
+     + <p>Review the lessons above. Explain to your kaiako why looking after your wairua is so important.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Add activities that strengthen your wairua</h5>
+     + <p>With your hua ako, review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     + <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h3>People who look after their wairua vs people who do things that don’t feel right for them</h3>
+     + … 15 more added
+  ~ XDLS903_4_0.html: -62 +38
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn to be nice to yourself</h3>
+     - <p>Make and I am a flower listing positive things about yourself. Learn some I am statements by heart to use w
+     - <img class="img-fluid" src="https://placehold.co/800x450?text=iStock-1364464559" alt="I Am Affirmations Chamom
+     - <!-- <img class="img-fluid" src="images/iStock-1364464559.jpg" alt="I Am Affirmations Chamomile Flower Self Lo
+     - <p>Share your I am flower with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>How to be nice to yourself?</h3>
+     - <p>Reflect on the lesson. Explain how you can be nicer to yourself.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your hua ako, review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Being nice to yourself vs being harsh on yourself.</h3>
+     - <p>What does it feel like to be nice to yourself compared to being harsh on yourself?</p>
+     - <p>Create a Venn diagram to explain your findings.</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/lnalI7eVQsQ" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your findings with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - … 22 more removed
+     + <h5>Learn to be nice to yourself</h5>
+     + <p>Make and I am a flower listing positive things about yourself. Learn some I am statements by heart to use w
+     + <img class="img-fluid" src="https://placehold.co/800x450?text=iStock-1364464559" alt="I Am Affirmations Chamom
+     + <!-- <img class="img-fluid" src="images/iStock-1364464559.jpg" alt="I Am Affirmations Chamomile Flower Self Lo
+     + <p>Share your I am flower with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>How to be nice to yourself?</h5>
+     + <p>Reflect on the lesson. Explain how you can be nicer to yourself.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h3>Add to your routine</h3>
+     + <p>With your hua ako, review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     + <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Being nice to yourself vs being harsh on yourself.</h5>
+     + <p>What does it feel like to be nice to yourself compared to being harsh on yourself?</p>
+     + … 18 more added
+  ~ XDLS903_5_0.html: -62 +38
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn names</h3>
+     - <p>To make connections it can be useful to learn the names of pets, people and or places that are important to
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/w8zn9a2Rwwg" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Why is connection important?</h3>
+     - <p>Explain why you think it important to experience connection.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your hua ako, review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Disconnected vs Connected</h3>
+     - <p>Compare how it feels to be connected compared to disconnected. You might think of an animal you are connect
+     - <p>Create a Venn diagram to show your findings.</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/lnalI7eVQsQ" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your findings with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - … 22 more removed
+     + <h3>Learn names</h3>
+     + <p>To make connections it can be useful to learn the names of pets, people and or places that are important to
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/w8zn9a2Rwwg" loading="lazy" title="YouTube video player" frameborde
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h3>Why is connection important?</h3>
+     + <p>Explain why you think it important to experience connection.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h3>Add to your routine</h3>
+     + <p>With your hua ako, review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     + <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h3>Disconnected vs Connected</h3>
+     + <p>Compare how it feels to be connected compared to disconnected. You might think of an animal you are connect
+     + <p>Create a Venn diagram to show your findings.</p>
+     + … 18 more added
+  ~ XDLS903_6_0.html: -58 +34
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn whakataka by heart</h3>
+     - <p>Learn whakataka by heart and think about safety messages you think should be passed down and remembered.</p
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/gHGsfFBeK4Q" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Keeping your wairua safe at work</h3>
+     - <p>Explain why to keep us safe and well the places we work need to think about every part of us. This includes
+     - <p>Explain to your kaiako how people can keep safe at work.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your hoa ako, review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>] Workplaces that could feel good for you vs Workplace that could feel negative for you</h3>
+     - <p>This video teaches us about wairua. Sir Mason Durie explains that wairua is felt; a feeling; rather than so
+     - <p>Think about what work environments and situations that you think would feed your wairua? Share your finding
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - … 18 more removed
+     + <h3>Learn whakataka by heart</h3>
+     + <p>Learn whakataka by heart and think about safety messages you think should be passed down and remembered.</p
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/gHGsfFBeK4Q" loading="lazy" title="YouTube video player" frameborde
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h3>Keeping your wairua safe at work</h3>
+     + <p>Explain why to keep us safe and well the places we work need to think about every part of us. This includes
+     + <p>Explain to your kaiako how people can keep safe at work.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h3>Add to your routine</h3>
+     + <p>With your hoa ako, review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     + <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h3>] Workplaces that could feel good for you vs Workplace that could feel negative for you</h3>
+     + <p>This video teaches us about wairua. Sir Mason Durie explains that wairua is felt; a feeling; rather than so
+     + … 14 more added
+  ~ XDLS903_7_0.html: -56 +32
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn some ways to be kind.</h3>
+     - <p>Learn some ways to be kind to others by playing acts of kindness bingo with your hua ako.</p>
+     - <a href="https://www.twinkl.co.nz/resource/acts-of-kindness-bingo-au-t-1632906826" target="_blank"><div class=
+     - <p>Share your learning with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>How do you show manaakitanga?</h3>
+     - <p>Explain how you show kindness towards others. How do you respect and support guests who come into your scho
+     - <p>Explain to your kaiako what manaakitanga looks like in your life?</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your hua ako, review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Giving vs receiving</h3>
+     - <p>How do you feel when you give? How do you feel when others give to you? Create a poster to explain how we f
+     - <p>Share your findings with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - … 16 more removed
+     + <h3>Learn some ways to be kind.</h3>
+     + <p>Learn some ways to be kind to others by playing acts of kindness bingo with your hua ako.</p>
+     + <a href="https://www.twinkl.co.nz/resource/acts-of-kindness-bingo-au-t-1632906826" target="_blank"><div class=
+     + <p>Share your learning with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h3>How do you show manaakitanga?</h3>
+     + <p>Explain how you show kindness towards others. How do you respect and support guests who come into your scho
+     + <p>Explain to your kaiako what manaakitanga looks like in your life?</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h3>Add to your routine</h3>
+     + <p>With your hua ako, review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     + <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h3>Giving vs receiving</h3>
+     + <p>How do you feel when you give? How do you feel when others give to you? Create a poster to explain how we f
+     + … 12 more added
+XDLS903: identical 2 / changed 6
+  ~ XDLS904_1_0.html: -93 +69
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn some moves with your whānau and perform them in the right order</h3>
+     - <p>In this activity, you and your whānau will learn by heart a sequence of moves that need to be done in order
+     - <p>Ākonga (students) have chosen lots of different movements to remember, from a mau rakau (traditional Māori 
+     - <h5>Steps to complete the activity:</h5>
+     - <ol>
+     - <li><b>Choose your moves:</b> Select a sequence of moves that your whānau finds inspiring. This could be anyth
+     - <li><b>Learn the sequence:</b> Practise the moves together until everyone knows them by heart.</li>
+     - <li><b>Show or tell:</b> Once you have learned your movement sequence, show or tell your kaiako (teacher) how 
+     - <li><b>Have a dance off:</b> As a fun start, you could find a song everyone loves and have a dance off. Here a
+     - </ol>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/EYDDtTJ6TtQ" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <h5>There are lots of ways of learning these moves by heart. Here are some suggestions:</h5>
+     - <ul>
+     - <li></li>
+     - </ul>
+     - <p>Repetition:</p>
+     - <ul>
+     - <li>Practice the moves regularly to help everyone remember them.</li>
+     - </ul>
+     - <p>Engagement:</p>
+     - <ul>
+     - <li>Make learning the moves fun and engaging by turning it into a game or challenge.</li>
+     - </ul>
+     - <p>Visual aids:</p>
+     - <ul>
+     - <li>Use videos or step-by-step guides to help everyone learn the moves.</li>
+     - </ul>
+     - <p>Practise:</p>
+     - <ul>
+     - <li>Encourage whānau members to practise the moves in everyday situations, like during family gatherings or fr
+     - </ul>
+     - <p>Your kaiako would love to see your progress.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - … 53 more removed
+     + <h5>Learn some moves with your whānau and perform them in the right order</h5>
+     + <p>In this activity, you and your whānau will learn by heart a sequence of moves that need to be done in order
+     + <p>Ākonga (students) have chosen lots of different movements to remember, from a mau rakau (traditional Māori 
+     + <h5>Steps to complete the activity:</h5>
+     + <ol>
+     + <li><b>Choose your moves:</b> Select a sequence of moves that your whānau finds inspiring. This could be anyth
+     + <li><b>Learn the sequence:</b> Practise the moves together until everyone knows them by heart.</li>
+     + <li><b>Show or tell:</b> Once you have learned your movement sequence, show or tell your kaiako (teacher) how 
+     + <li><b>Have a dance off:</b> As a fun start, you could find a song everyone loves and have a dance off. Here a
+     + </ol>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/EYDDtTJ6TtQ" loading="lazy" title="YouTube video player" frameborde
+     + <h5>There are lots of ways of learning these moves by heart. Here are some suggestions:</h5>
+     + <ul>
+     + <li></li>
+     + </ul>
+     + <p>Repetition:</p>
+     + <ul>
+     + <li>Practice the moves regularly to help everyone remember them.</li>
+     + </ul>
+     + … 49 more added
+  ~ XDLS904_2_0.html: -81 +57
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn to identify healthy and unhealthy food options</h3>
+     - <p>In this activity, you and your whānau will learn by heart how to identify healthy and unhealthy food option
+     - <p>Steps to complete the activity:</p>
+     - <ol>
+     - <li><b>Visit a supermarket or collect food:</b> Go to a supermarket or gather food from natural sources like r
+     - <li><b>Inventory your food:</b> Look through the cupboards and the food you have collected.</li>
+     - <li><b>Sort the food:</b> Categorise the food into healthy and unhealthy options.</li>
+     - <li><b>Discuss your choices:</b> Talk with your whānau about why certain foods are considered healthy or unhea
+     - <li><b>Share with your kaiako:</b> Your kaiako would love to see your choices and hear about your learning pro
+     - </ol>
+     - <p>There are lots of ways of learning to identify healthy and unhealthy food options by heart. Here are some s
+     - <ul>
+     - <li><b>Repetition:</b> Regularly review the food items and their categories to help everyone remember.</li>
+     - <li><b>Engagement:</b> Use fun activities or discussions to make learning about food choices engaging.</li>
+     - <li><b>Visual aids:</b> Create charts or posters that display healthy and unhealthy food options prominently i
+     - <li><b>Practise:</b> Encourage whānau members to practise identifying healthy and unhealthy foods during meals
+     - </ul>
+     - <p>By learning to identify healthy and unhealthy food options by heart, you can make better choices for your w
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Why feed the whānau healthy food?</h3>
+     - <p>Explain why you and your whānau should eat healthier.</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/XMcab1MFaLc" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Explain what you have found to your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add food to your routine; make, grow or eat healthy.</h3>
+     - <p>With your whānau review your Te Whare Tapa Whā. You may choose one of your actions to do or add more action
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - … 41 more removed
+     + <h5>Learn to identify healthy and unhealthy food options</h5>
+     + <p>In this activity, you and your whānau will learn by heart how to identify healthy and unhealthy food option
+     + <p>Steps to complete the activity:</p>
+     + <ol>
+     + <li><b>Visit a supermarket or collect food:</b> Go to a supermarket or gather food from natural sources like r
+     + <li><b>Inventory your food:</b> Look through the cupboards and the food you have collected.</li>
+     + <li><b>Sort the food:</b> Categorise the food into healthy and unhealthy options.</li>
+     + <li><b>Discuss your choices:</b> Talk with your whānau about why certain foods are considered healthy or unhea
+     + <li><b>Share with your kaiako:</b> Your kaiako would love to see your choices and hear about your learning pro
+     + </ol>
+     + <p>There are lots of ways of learning to identify healthy and unhealthy food options by heart. Here are some s
+     + <ul>
+     + <li><b>Repetition:</b> Regularly review the food items and their categories to help everyone remember.</li>
+     + <li><b>Engagement:</b> Use fun activities or discussions to make learning about food choices engaging.</li>
+     + <li><b>Visual aids:</b> Create charts or posters that display healthy and unhealthy food options prominently i
+     + <li><b>Practise:</b> Encourage whānau members to practise identifying healthy and unhealthy foods during meals
+     + </ul>
+     + <p>By learning to identify healthy and unhealthy food options by heart, you can make better choices for your w
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + … 37 more added
+  ~ XDLS904_3_0.html: -79 +55
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn</h3>
+     - <p>In this activity, you will learn by heart the various holidays and traditions that are important to your wh
+     - <ol>
+     - <li>New Year’s Day: January 1</li>
+     - <li>Waitangi Day: February 6</li>
+     - <li>Good Friday: Date varies (Friday before Easter Sunday)</li>
+     - <li>Easter Monday: Date varies (Monday after Easter Sunday)</li>
+     - <li>Anzac Day: April 25</li>
+     - <li>King’s Birthday: First Monday in June</li>
+     - <li>Matariki: Date varies (usually in June or July)</li>
+     - <li>Labour Day: Fourth Monday in October</li>
+     - <li>Christmas Day: December 25</li>
+     - <li>Boxing Day: December 26</li>
+     - </ol>
+     - <p>There are lots of ways of learning about these holidays and traditions by heart.</p>
+     - <p>Here are some suggestions:</p>
+     - <ul>
+     - <li><b>Repetition:</b> Go over the dates and significance of each holiday regularly.</li>
+     - <li><b>Engagement:</b> Use activities or discussions that make learning these dates fun and engaging.</li>
+     - <li><b>Visual Aids:</b> Create posters or charts that display the holidays prominently in your home.</li>
+     - <li><b>Practise:</b> Encourage whānau members to remember and discuss these holidays in everyday conversations
+     - </ul>
+     - <p>By learning these holidays and traditions by heart, you can ensure that they are celebrated and remembered 
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Why celebrate?</h3>
+     - <p>Explain the importance of celebrations to your whānau. Share your thoughts with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add a celebration to your life</h3>
+     - <p>With your whānau review your Te Whare Tapa Whā. You may choose one of your actions to do or add more action
+     - <div class="videoSection ratio ratio-16x9">
+     - … 39 more removed
+     + <h5>Learn</h5>
+     + <p>In this activity, you will learn by heart the various holidays and traditions that are important to your wh
+     + <ol>
+     + <li>New Year’s Day: January 1</li>
+     + <li>Waitangi Day: February 6</li>
+     + <li>Good Friday: Date varies (Friday before Easter Sunday)</li>
+     + <li>Easter Monday: Date varies (Monday after Easter Sunday)</li>
+     + <li>Anzac Day: April 25</li>
+     + <li>King’s Birthday: First Monday in June</li>
+     + <li>Matariki: Date varies (usually in June or July)</li>
+     + <li>Labour Day: Fourth Monday in October</li>
+     + <li>Christmas Day: December 25</li>
+     + <li>Boxing Day: December 26</li>
+     + </ol>
+     + <p>There are lots of ways of learning about these holidays and traditions by heart.</p>
+     + <p>Here are some suggestions:</p>
+     + <ul>
+     + <li><b>Repetition:</b> Go over the dates and significance of each holiday regularly.</li>
+     + <li><b>Engagement:</b> Use activities or discussions that make learning these dates fun and engaging.</li>
+     + <li><b>Visual Aids:</b> Create posters or charts that display the holidays prominently in your home.</li>
+     + … 35 more added
+  ~ XDLS904_4_0.html: -67 +43
+     - <h3>Learn your whānau rules</h3>
+     - <p>In this activity, you will learn how to create and learn whānau rules. Here are some steps to help you navi
+     - <ol>
+     - <li><b>Gather everyone:</b> Make sure all whānau members are present for the discussion.</li>
+     - <li><b>Open communication:</b> Encourage everyone to share their thoughts and feelings openly.</li>
+     - <li><b>Define acceptable behaviour:</b> Discuss what behaviours are acceptable and what are not.</li>
+     - <li><b>Set clear expectations:</b> Make sure everyone understands the rules and the reasons behind them.</li>
+     - <li><b>Regular check-ins:</b> Schedule regular whānau meetings to review and adjust the rules as needed.</li>
+     - </ol>
+     - <p>There are lots of ways of learning rules by heart. Here are some suggestions:</p>
+     - <ul>
+     - <li><b>Repetition:</b> Go over the rules regularly to help everyone remember them.</li>
+     - <li><b>Engagement:</b> Use activities or discussions that make learning the rules fun and engaging.</li>
+     - <li><b>Visual aids:</b> Create posters or charts that display the rules prominently in your home.</li>
+     - <li><b>Practise:</b> Encourage whānau members to practise the rules in everyday situations.</li>
+     - </ul>
+     - <p>Remember, these rules should evolve as your whānau grows and changes. How often do you think your whānau sh
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Why focus on you?</h3>
+     - <p>Explain to a friend or whānau member why you need to develop knowledge of who you are. Why do you need more
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your hoa ako review your Te Whare Tapa Whā. You may choose one of your actions to do or add more actio
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Mood changes: Pre puberty vs puberty</h3>
+     - … 27 more removed
+     + <h5>Learn your whānau rules</h5>
+     + <p>In this activity, you will learn how to create and learn whānau rules. Here are some steps to help you navi
+     + <ol>
+     + <li><b>Gather everyone:</b> Make sure all whānau members are present for the discussion.</li>
+     + <li><b>Open communication:</b> Encourage everyone to share their thoughts and feelings openly.</li>
+     + <li><b>Define acceptable behaviour:</b> Discuss what behaviours are acceptable and what are not.</li>
+     + <li><b>Set clear expectations:</b> Make sure everyone understands the rules and the reasons behind them.</li>
+     + <li><b>Regular check-ins:</b> Schedule regular whānau meetings to review and adjust the rules as needed.</li>
+     + </ol>
+     + <p>There are lots of ways of learning rules by heart. Here are some suggestions:</p>
+     + <ul>
+     + <li><b>Repetition:</b> Go over the rules regularly to help everyone remember them.</li>
+     + <li><b>Engagement:</b> Use activities or discussions that make learning the rules fun and engaging.</li>
+     + <li><b>Visual aids:</b> Create posters or charts that display the rules prominently in your home.</li>
+     + <li><b>Practise:</b> Encourage whānau members to practise the rules in everyday situations.</li>
+     + </ul>
+     + <p>Remember, these rules should evolve as your whānau grows and changes. How often do you think your whānau sh
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Why focus on you?</h5>
+     + … 23 more added
+  ~ XDLS904_6_0.html: -106 +82
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn your ikigai by heart</h3>
+     - <p>Review the video on ikigai. Learn to express your ikigai to others by learning it off by heart. Learning to
+     - <p>Once you have learned yours by heart you could also learn the ikigai of other people in your whānau so you 
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/DCf4XNEBq6k" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>What is ikigai</h3>
+     - <p>Ikigai is a tricky concept. Explain the concept to your kaiako. You can use words, videos or images.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your hoa ako review your Te Whare Tapa Whā. You may choose one of your actions to do or add more actio
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Do we achieve work/life balance as a whānau</h3>
+     - <p>Compare the work everyone in your whānau does. Is it fair? Could some people do a little more and some peop
+     - <p>Share your findings with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - … 66 more removed
+     + <h5>Learn your ikigai by heart</h5>
+     + <p>Review the video on ikigai. Learn to express your ikigai to others by learning it off by heart. Learning to
+     + <p>Once you have learned yours by heart you could also learn the ikigai of other people in your whānau so you 
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/DCf4XNEBq6k" loading="lazy" title="YouTube video player" frameborde
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>What is ikigai</h5>
+     + <p>Ikigai is a tricky concept. Explain the concept to your kaiako. You can use words, videos or images.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Add to your routine</h5>
+     + <p>With your hoa ako review your Te Whare Tapa Whā. You may choose one of your actions to do or add more actio
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     + <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Do we achieve work/life balance as a whānau</h5>
+     + <p>Compare the work everyone in your whānau does. Is it fair? Could some people do a little more and some peop
+     + … 62 more added
+  ~ XDLS904_7_0.html: -66 +42
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn to estimate costs and add amounts together.</h3>
+     - <p>To stick to a budget it is important to know roughly how much the items you need and want cost. The more yo
+     - <p>Write a small list of items your whānau need. Guess (estimate) the cost. Check online or while shopping the
+     - <p>Add up the cost of buying the list of items.</p>
+     - <p>Share your learning with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>How my whānau budgets?</h3>
+     - <p>Have a conversation with your whānau about how they budget. Explain to your kaiako how your whānau budgets.
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your whānau, review your Te Whare Tapa Whā. You may choose one of your actions to do or add more actio
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>How my whānau budget vs choices I would make if I was in charge of the budget.</h3>
+     - <p>If your whānau are brave enough, take control of the whānau budget for a month as the young people in the l
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Do Aotearoa New Zealand households pay too much for things we need?</h3>
+     - … 26 more removed
+     + <h5>Learn to estimate costs and add amounts together.</h5>
+     + <p>To stick to a budget it is important to know roughly how much the items you need and want cost. The more yo
+     + <p>Write a small list of items your whānau need. Guess (estimate) the cost. Check online or while shopping the
+     + <p>Add up the cost of buying the list of items.</p>
+     + <p>Share your learning with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>How my whānau budgets?</h5>
+     + <p>Have a conversation with your whānau about how they budget. Explain to your kaiako how your whānau budgets.
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Add to your routine</h5>
+     + <p>With your whānau, review your Te Whare Tapa Whā. You may choose one of your actions to do or add more actio
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     + <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>How my whānau budget vs choices I would make if I was in charge of the budget.</h5>
+     + <p>If your whānau are brave enough, take control of the whānau budget for a month as the young people in the l
+     + … 22 more added
+XDLS904: identical 2 / changed 6
+  ~ XDLS905_1_0.html: -68 +44
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn some moves and perform them in the right order</h3>
+     - <p>Learn some moves that need to be done in order. You can choose lots of different movements to remember from
+     - <p>Discuss what movement sequence might suit you with your hoa <span class="infoTrigger" info="learning partne
+     - <p>If you were inspired by Dylan you could try practising this wheelchair rugby drill (you don’t need a wheelc
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/nizZkb01RuE" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Once you have learned your movement sequence show or tell us how it went.</p>
+     - <p>Your kaiako would love to see your progress.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>How does the mind benefit from exercise?</h3>
+     - <p>Review the lesson and discuss with your hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) how the brain benefits from exercise.</p>
+     - <p>Explain what you have found to your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Exercise vs no exercise</h3>
+     - … 28 more removed
+     + <h5>Learn some moves and perform them in the right order</h5>
+     + <p>Learn some moves that need to be done in order. You can choose lots of different movements to remember from
+     + <p>Discuss what movement sequence might suit you with your hoa <span class="infoTrigger" info="learning partne
+     + <p>If you were inspired by Dylan you could try practising this wheelchair rugby drill (you don’t need a wheelc
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/nizZkb01RuE" loading="lazy" title="YouTube video player" frameborde
+     + <p>Once you have learned your movement sequence show or tell us how it went.</p>
+     + <p>Your kaiako would love to see your progress.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>How does the mind benefit from exercise?</h5>
+     + <p>Review the lesson and discuss with your hoa ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + <p>(learning partner) how the brain benefits from exercise.</p>
+     + <p>Explain what you have found to your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Add to your routine</h5>
+     + <p>With your hoa ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + … 24 more added
+  ~ XDLS905_2_0.html: -60 +36
+     - <h3>Learn how to add variety to your diet.</h3>
+     - <p>The magic number to learn is 30. To be healthy, physically and mentally, you should eat 30 different types 
+     - <p>Share your learning with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Why eat a variety of plants each week?</h3>
+     - <p>Why should people eat 30 different plant foods each week?</p>
+     - <p>Explain what you have found to your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add food to your routine; make, grow or eat healthy.</h3>
+     - <p>With your hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Eating plants vs eating processed foods</h3>
+     - <p>With your hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) discuss what it feels like to feed your brain processed foods and what it feels like to 
+     - <p>Share your ideas with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - … 20 more removed
+     + <h5>Learn how to add variety to your diet.</h5>
+     + <p>The magic number to learn is 30. To be healthy, physically and mentally, you should eat 30 different types 
+     + <p>Share your learning with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Why eat a variety of plants each week?</h5>
+     + <p>Why should people eat 30 different plant foods each week?</p>
+     + <p>Explain what you have found to your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Add food to your routine; make, grow or eat healthy.</h5>
+     + <p>With your hoa ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     + <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Eating plants vs eating processed foods</h5>
+     + … 16 more added
+  ~ XDLS905_3_0.html: -60 +36
+     - <h3>Learn non-sleep deep rest</h3>
+     - <p>You can practise non-sleep deep rest by following guided instructions or remembering the steps.</p>
+     - <p>Here is a guided video. Practise enough with the video so you can enter a deep rest on your own without the
+     - <p>Share your experience with your kaiako.</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/7Br3vRfu5D8" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Why sleep?</h3>
+     - <p>Review the lesson and explain why sleep is so important. Share your thoughts with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add sleep or rest to your routine.</h3>
+     - <p>With your hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Sleeping well vs tired</h3>
+     - <p>With your hoa ako discuss what it feels like to be tired compared to what it feels like to have a good nigh
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/dqONk48l5vY" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Do I get enough sleep?</h3>
+     - … 20 more removed
+     + <h5>Learn non-sleep deep rest</h5>
+     + <p>You can practise non-sleep deep rest by following guided instructions or remembering the steps.</p>
+     + <p>Here is a guided video. Practise enough with the video so you can enter a deep rest on your own without the
+     + <p>Share your experience with your kaiako.</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/7Br3vRfu5D8" loading="lazy" title="YouTube video player" frameborde
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Why sleep?</h5>
+     + <p>Review the lesson and explain why sleep is so important. Share your thoughts with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Add sleep or rest to your routine.</h5>
+     + <p>With your hoa ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     + <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + … 16 more added
+  ~ XDLS905_5_0.html: -66 +42
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn healthy friendship routines.</h3>
+     - <p>Add a friendship routine to your life. Maybe you could organise to meet someone for coffee once a month? Pe
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Who are the people important to you in your life?</h3>
+     - <ul>
+     - <li></li>
+     - </ul>
+     - <p>Who can you talk to when things go right or wrong?</p>
+     - <ul>
+     - <li>What are their qualities?</li>
+     - <li>What do you like about them?</li>
+     - </ul>
+     - <p>Maybe you could introduce your kaiako to your support group. You could introduce them through: photos, vide
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Healthy vs unhealthy relationships</h3>
+     - <p>Healthy relationships are great for our wellbeing. Unhealthy relationships can be very bad.</p>
+     - … 26 more removed
+     + <h5>Learn healthy friendship routines.</h5>
+     + <p>Add a friendship routine to your life. Maybe you could organise to meet someone for coffee once a month? Pe
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Who are the people important to you in your life?</h5>
+     + <ul>
+     + <li></li>
+     + </ul>
+     + <p>Who can you talk to when things go right or wrong?</p>
+     + <ul>
+     + <li>What are their qualities?</li>
+     + <li>What do you like about them?</li>
+     + </ul>
+     + <p>Maybe you could introduce your kaiako to your support group. You could introduce them through: photos, vide
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Add to your routine</h5>
+     + <p>With your hoa ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     + … 22 more added
+  ~ XDLS905_6_0.html: -61 +39
+     - <h3>Learn to express your strengths.</h3>
+     - <p>Think about your strengths. They may come from your ancestors and your role in your community as Vaipuna Si
+     - <p>Find a way of remembering your strengths by heart. You may learn to represent your strengths as a symbol or
+     - <p>Share your strengths with your kaiako.</p>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Why is resilience important to getting a job done?</h3>
+     - <p>Explain to your kaiako why resilience is important. How does it help people finish jobs?</p>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Focus on strengths vs focus on weaknesses</h3>
+     - <p>Have you been around someone who seems to understand your strengths? Have you been around someone who point
+     - <p>Maybe this someone is you. Maybe some days you see what you can do and other days you see what you cannot d
+     - <p>Maybe this someone is an ancestor who you think about and who reminds you of the strengths that live in you
+     - <p>Compare what it is like for people to highlight strengths compared to highlighting weaknesses.</p>
+     - <p>Share your findings with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - </div>
+     - … 21 more removed
+     + <h5>Learn to express your strengths.</h5>
+     + <p>Think about your strengths. They may come from your ancestors and your role in your community as Vaipuna Si
+     + <p>Find a way of remembering your strengths by heart. You may learn to represent your strengths as a symbol or
+     + <p>Share your strengths with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Why is resilience important to getting a job done?</h5>
+     + <p>Explain to your kaiako why resilience is important. How does it help people finish jobs?</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Add to your routine</h5>
+     + <p>With your hoa ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + <p>(learning partner) review your Te Whare Tapa Whā. You may choose one of your actions to do or add more acti
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     + <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Focus on strengths vs focus on weaknesses</h5>
+     + … 19 more added
+  ~ XDLS905_7_0.html: -57 +33
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn to estimate costs and add amounts together</h3>
+     - <p>To stick to a budget it is important to know roughly how much the items you need and want cost. The more yo
+     - <p>Share your learning with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>How can people save money?</h3>
+     - <p>Have a conversation with your hoa ako</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     - <p>(learning partner) about cost-saving methods. Give your budget saving advice to your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your whānau review your Te Whare Tapa Whā. You may choose one of your actions to do or add more action
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Not enough vs enough</h3>
+     - <p>What impact does money have on stress levels? Think about a person with enough money to pay for housing, fo
+     - <p>Share your thoughts with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - … 17 more removed
+     + <h5>Learn to estimate costs and add amounts together</h5>
+     + <p>To stick to a budget it is important to know roughly how much the items you need and want cost. The more yo
+     + <p>Share your learning with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>How can people save money?</h5>
+     + <p>Have a conversation with your hoa ako</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: [hover]</p>
+     + <p>(learning partner) about cost-saving methods. Give your budget saving advice to your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Add to your routine</h5>
+     + <p>With your whānau review your Te Whare Tapa Whā. You may choose one of your actions to do or add more action
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     + <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Not enough vs enough</h5>
+     + <p>What impact does money have on stress levels? Think about a person with enough money to pay for housing, fo
+     + … 13 more added
+XDLS905: identical 2 / changed 6
+  ~ XDLS906_1_0.html: -63 +39
+     - <div class="row">
+     - <div class="col-12">
+     - <h3><span class="infoTrigger" info="woven fish">Raranga Ika</span></h3>
+     - <p>In this lesson we will learn how to make a <span class="infoTrigger" info="fish">ika</span> out of <span cl
+     - <p>To show respect to nature we need to learn how to gather harakeke correctly. Your hoa ako can watch this vi
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/_2tU-Q_paRs" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Once you, or your learning partner, has gathered your harakeke you are ready to make your ika.</p>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: [video] with no URL found — add the video
+     - <p>Raranga Ika – How to make a simple fish out of flax (://www.youtube.com/watch?v=Cop_PaofNw4).</p>
+     - <p>You can give this one to someone special to bring some nature into their life. Keep making ika for all your
+     - <p>Your kaiako would love to see your ika.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>How does your well-being improve when you let nature come into your life?</h3>
+     - <p>Review this lesson and discuss with your hoa <span class="infoTrigger" info="learning partner">ako</span> h
+     - <p>Explain what you have found to your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your hoa <span class="infoTrigger" info="learning partner">ako</span> review your Te Whare Tapa Whā. Y
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Natural vs man-made</h3>
+     - <p>Compare the difference between how you feel in nature compared to how you feel in man-made spaces. Survey p
+     - … 23 more removed
+     + <h5><span class="infoTrigger" info="woven fish">Raranga Ika</span></h5>
+     + <p>In this lesson we will learn how to make a <span class="infoTrigger" info="fish">ika</span> out of <span cl
+     + <p>To show respect to nature we need to learn how to gather harakeke correctly. Your hoa ako can watch this vi
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/_2tU-Q_paRs" loading="lazy" title="YouTube video player" frameborde
+     + <p>Once you, or your learning partner, has gathered your harakeke you are ready to make your ika.</p>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: [video] with no URL found — add the video
+     + <p>Raranga Ika – How to make a simple fish out of flax (://www.youtube.com/watch?v=Cop_PaofNw4).</p>
+     + <p>You can give this one to someone special to bring some nature into their life. Keep making ika for all your
+     + <p>Your kaiako would love to see your ika.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>How does your well-being improve when you let nature come into your life?</h5>
+     + <p>Review this lesson and discuss with your hoa <span class="infoTrigger" info="learning partner">ako</span> h
+     + <p>Explain what you have found to your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Add to your routine</h5>
+     + <p>With your hoa <span class="infoTrigger" info="learning partner">ako</span> review your Te Whare Tapa Whā. Y
+     + <div class="videoSection ratio ratio-16x9">
+     + … 19 more added
+  ~ XDLS906_2_0.html: -60 +36
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add local plants to your diet.</h3>
+     - <p>Learn the names of local plants in your area. Go for a walk with someone who knows a lot about plants or wi
+     - <p>If using a smart phone to identify plants here is a useful video.</p>
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/SGAV1LTPKws" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your learning with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <h5>Why eat a variety of plants for the planet?</h5>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <p>Should people eat a plant-based diet?</p>
+     - <p>Explain what you have found to your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add food to your routine: make, grow or eat healthy.</h3>
+     - <p>With your hoa ako review your Te Whare Tapa Whā. You may choose one of your actions to do or add more actio
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Eating local vs eating foods grown and made far away</h3>
+     - <p>With your hoa ako discuss the pros and cons of eating local food compared to food grown far away.</p>
+     - <p>Share your pros and cons with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - … 20 more removed
+     + <h5>Add local plants to your diet.</h5>
+     + <p>Learn the names of local plants in your area. Go for a walk with someone who knows a lot about plants or wi
+     + <p>If using a smart phone to identify plants here is a useful video.</p>
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/SGAV1LTPKws" loading="lazy" title="YouTube video player" frameborde
+     + <p>Share your learning with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Why eat a variety of plants for the planet?</h5>
+     + <p>Should people eat a plant-based diet?</p>
+     + <p>Explain what you have found to your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Add food to your routine: make, grow or eat healthy.</h5>
+     + <p>With your hoa ako review your Te Whare Tapa Whā. You may choose one of your actions to do or add more actio
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     + <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + … 16 more added
+  ~ XDLS906_4_0.html: -56 +32
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Swap a bad habit for a good habit.</h3>
+     - <p>We have found out that we can change our habits. Talk to your hoa <span class="infoTrigger" info="learning 
+     - <p>Your kaiako would love to see your attempt to change your habits. Did it work for you?</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Explain the circadian rhythm and how it impacts your sleep patterns.</h3>
+     - <p>Review this lesson and discuss the circadian rhythm with your hoa <span class="infoTrigger" info="learning 
+     - <p>Explain what you have found to your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your hoa ako review your Te Whare Tapa Whā. You may choose one of your actions to do or add more actio
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your Kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Natural vs man made sleep patterns</h3>
+     - <p>Compare the difference between when you might sleep if you lived without electricity, screens and lights to
+     - <p>Share your findings with your kaiako. They will be fascinated to hear your story.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - … 16 more removed
+     + <h5>Swap a bad habit for a good habit.</h5>
+     + <p>We have found out that we can change our habits. Talk to your hoa <span class="infoTrigger" info="learning 
+     + <p>Your kaiako would love to see your attempt to change your habits. Did it work for you?</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Explain the circadian rhythm and how it impacts your sleep patterns.</h5>
+     + <p>Review this lesson and discuss the circadian rhythm with your hoa <span class="infoTrigger" info="learning 
+     + <p>Explain what you have found to your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Add to your routine</h5>
+     + <p>With your hoa ako review your Te Whare Tapa Whā. You may choose one of your actions to do or add more actio
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     + <p>Share your Te Whare Tapa Whā journey with your Kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Natural vs man made sleep patterns</h5>
+     + <p>Compare the difference between when you might sleep if you lived without electricity, screens and lights to
+     + <p>Share your findings with your kaiako. They will be fascinated to hear your story.</p>
+     + … 12 more added
+  ~ XDLS906_6_0.html: -60 +36
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn directions.</h3>
+     - <p>If we are going to take ourselves places rather than be driven, we will need to learn the directions to get
+     - <p>With your hoa <span class="infoTrigger" info="learning partner">ako</span> decide where you want to be able
+     - <p>Your kaiako would love to see your journey.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Explain why it is good to walk, pedal or push your way to work.</h3>
+     - <p>Review this lesson and discuss why people should move to get to work. Your hoa <span class="infoTrigger" in
+     - <p>Explain what you have found to your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your hoa ako review your Te Whare Tapa Whā. You may choose one of your actions to do or add more actio
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Taking the car vs moving your body to get to work.</h3>
+     - <p>Compare the difference between taking a car and using your body to get around. You might even try both whil
+     - <p>Share your findings with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - … 20 more removed
+     + <h5>Learn directions.</h5>
+     + <p>If we are going to take ourselves places rather than be driven, we will need to learn the directions to get
+     + <p>With your hoa <span class="infoTrigger" info="learning partner">ako</span> decide where you want to be able
+     + <p>Your kaiako would love to see your journey.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Explain why it is good to walk, pedal or push your way to work.</h5>
+     + <p>Review this lesson and discuss why people should move to get to work. Your hoa <span class="infoTrigger" in
+     + <p>Explain what you have found to your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Add to your routine</h5>
+     + <p>With your hoa ako review your Te Whare Tapa Whā. You may choose one of your actions to do or add more actio
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     + <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Taking the car vs moving your body to get to work.</h5>
+     + <p>Compare the difference between taking a car and using your body to get around. You might even try both whil
+     + … 16 more added
+  ~ XDLS906_7_0.html: -58 +34
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Learn to meet your basic needs while creating.</h3>
+     - <p>It can be really easy to forget to drink or eat. It can be easy to forget to move off the screen in time to
+     - <p>With your hoa <span class="infoTrigger" info="learning partner">ako</span> decide some routines you need to
+     - <p>Your kaiako would love to hear how you got on.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Explain how to keep healthy as a creative.</h3>
+     - <p>Review this lesson and discuss how you can stay healthy as a streamer, coder or creative. Your hoa <span cl
+     - <p>Explain what you have found to your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Add to your routine</h3>
+     - <p>With your hoa ako review your Te Whare Tapa Whā. You may choose one of your actions to do or add more actio
+     - <div class="videoSection ratio ratio-16x9">
+     - <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     - </div>
+     - <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-12">
+     - <h3>Taking the car vs moving your body to get to work.</h3>
+     - <p>Compare the difference between taking a car and using your body to get around. You might even try both whil
+     - <p>Share your findings with your kaiako.</p>
+     - <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - </div>
+     - </div>
+     - <div class="row">
+     - … 18 more removed
+     + <h5>Learn to meet your basic needs while creating.</h5>
+     + <p>It can be really easy to forget to drink or eat. It can be easy to forget to move off the screen in time to
+     + <p>With your hoa <span class="infoTrigger" info="learning partner">ako</span> decide some routines you need to
+     + <p>Your kaiako would love to hear how you got on.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Explain how to keep healthy as a creative.</h5>
+     + <p>Review this lesson and discuss how you can stay healthy as a streamer, coder or creative. Your hoa <span cl
+     + <p>Explain what you have found to your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Add to your routine</h5>
+     + <p>With your hoa ako review your Te Whare Tapa Whā. You may choose one of your actions to do or add more actio
+     + <div class="videoSection ratio ratio-16x9">
+     + <iframe src="https://www.youtube.com/embed/6In-lfiK30s" loading="lazy" title="YouTube video player" frameborde
+     + <p>Share your Te Whare Tapa Whā journey with your kaiako.</p>
+     + <a href="" target="_blank"><div class="button">Upload to dropbox</div></a>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     + <h5>Taking the car vs moving your body to get to work.</h5>
+     + <p>Compare the difference between taking a car and using your body to get around. You might even try both whil
+     + … 14 more added
+XDLS906: identical 3 / changed 5
+XDLS908: identical 9 / changed 0
+XDLS909: identical 5 / changed 0
+XDLS911: identical 2 / changed 0
+XDLS912: identical 6 / changed 0
+XFUN01: identical 1 / changed 0
+XFUN02: identical 7 / changed 0
+XGF9001: identical 7 / changed 0
+XGF9002: identical 10 / changed 0
+XGF9003: identical 6 / changed 0
+XGF9004: identical 18 / changed 0
+XGF9006: identical 8 / changed 0
+XLP01: identical 5 / changed 0
+XLP02: identical 7 / changed 0
+XLP03: identical 6 / changed 0
+XLP04: identical 5 / changed 0
+XLP05: identical 6 / changed 0
+XLP06: identical 3 / changed 0
+XMES101: identical 9 / changed 0
+XMES102: identical 6 / changed 0
+XMES103: identical 6 / changed 0
+XMES201: identical 6 / changed 0
+XMES203: identical 6 / changed 0
+XTAS101: identical 5 / changed 0
+XTAS102: identical 6 / changed 0
+XTAS103: identical 7 / changed 0
+XWHA01: identical 2 / changed 0
+XWHA02: identical 6 / changed 0
+
+TOTAL: identical 482 / changed 30 / missing 0 over 122 modules
+CHANGED: XDLS902/XDLS902_1_0.html XDLS902/XDLS902_2_0.html XDLS902/XDLS902_3_0.html XDLS902/XDLS902_4_0.html XDLS902/XDLS902_5_0.html XDLS902/XDLS902_6_0.html XDLS902/XDLS902_7_0.html XDLS903/XDLS903_2_0.html XDLS903/XDLS903_3_0.html XDLS903/XDLS903_4_0.html XDLS903/XDLS903_5_0.html XDLS903/XDLS903_6_0.html XDLS903/XDLS903_7_0.html XDLS904/XDLS904_1_0.html XDLS904/XDLS904_2_0.html XDLS904/XDLS904_3_0.html XDLS904/XDLS904_4_0.html XDLS904/XDLS904_6_0.html XDLS904/XDLS904_7_0.html XDLS905/XDLS905_1_0.html XDLS905/XDLS905_2_0.html XDLS905/XDLS905_3_0.html XDLS905/XDLS905_5_0.html XDLS905/XDLS905_6_0.html XDLS905/XDLS905_7_0.html XDLS906/XDLS906_1_0.html XDLS906/XDLS906_2_0.html XDLS906/XDLS906_4_0.html XDLS906/XDLS906_6_0.html XDLS906/XDLS906_7_0.html

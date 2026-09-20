@@ -812,6 +812,9 @@
 	"activity_wrapper": {
 		"open": "<div class=\"activity{modifiers}\"{numberAttr}><div class=\"row\"><div class=\"col-12\">",
 		"close": "</div></div></div>",
+		"open_bare": "<div class=\"activity{modifiers}\"{numberAttr}>",
+		"close_bare": "</div>",
+		"_doc_bare": "ROUND 417 — the BARE box form (no inner row > col-12): used by the r307 tile-grid PANEL when interactive_builders.clickDrop.tile_grid.panel_no_inner_row is on — the gold's clickDropContent activity dropbox panel holds its content directly (144 / 145 on XDLS902-906 + 909). Every other box keeps open / close.",
 		"number_attr": " number=\"{activityId}\"",
 		"super_content": {
 			"enabled": true,
@@ -2560,6 +2563,11 @@
 				"panel_class_prefix": "clickDropContent ",
 				"anchor_id_from_tail": true,
 				"released_url_button": true,
+				"panel_no_inner_row": {
+					"enabled": true,
+					"env": "CDPANELROW_OFF",
+					"_doc": "ROUND 417 (the autonomous loop's session 29 Round 8) — THE PANEL HOLDS ITS CONTENT DIRECTLY. The r307 tile-grid PANEL anchor ([Activity] **2A** on a qualifying choice page, tagged _r307PanelId by the pre-pass) opened through the standard activity_wrapper.open, so every panel carried an inner row > col-12; the gold's <div class=\"clickDropContent activity dropbox\" number=\"2A\"> holds its <h3> / <p> / video DIRECTLY — measured 144 / 145 gold panels on XDLS902 / 903 / 904 / 905 / 906 / 909 (_s29_r8_boxcol.py + _s29_r8_xdlsrow.py) while Claude wrapped all 179 on 35 pages / 5 modules. ON: ActivitiesBuilder.activityOpen emits activity_wrapper.open_bare and pushes close_bare for a panel anchor on the standard (non-supervisor-note) path; the r307 pairing post-pass reads only the opening tag, so the clickDropContent prefix lands unchanged. OFF (env CDPANELROW_OFF or enabled:false) = the r416 output byte-for-byte."
+				},
 				"row_open": "<div class=\"row\">\n<div class=\"col-md-8 col-12 choicePage choiceHeightMatch\">",
 				"row_close": "</div>\n</div>",
 				"tile": "<div class=\"choice clickDrop dropBox col-md-4 col-6\">\n<div class=\"choiceImg\">\n<div class=\"iconCentral iconD\" iconType=\"{iconType}\"></div>\n</div>\n<div class=\"choiceText\">\n<h5>{label}</h5>\n</div>\n</div>",

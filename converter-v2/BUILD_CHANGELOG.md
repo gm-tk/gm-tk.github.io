@@ -1,5 +1,37 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-20 (round 417, build 260619.88) — THE XDLS CHOICE-PAGE PANEL HOLDS ITS CONTENT DIRECTLY: the r307 `clickDropContent activity dropbox` panel without the inner `row > col-12` (the autonomous loop's session 29 Round 8; SCOPED regeneration of the 5 XDLS modules — scoped ship #1 since the r416 FULL; every protected gate HELD-or-IMPROVED: skeleton 53.928 → 54.123 % (+0.1947pp), ≥50 1415 → 1438)
+
+### 1. WHAT CHANGED
+
+**The class.** The r307 tile-grid PANEL — the `[Activity] **2A**` anchor a choice-page tile reveals, tagged `_r307PanelId` by `ContentConverter.#cdTilePrepass` — opened through the standard `activity_wrapper.open` (`<div class="activity…" number="2A"><div class="row"><div class="col-12">`), so every panel carried an inner `row > col-12`; the gold's `<div class="clickDropContent activity dropbox" number="2A">` holds its `<h3>` / `<p>` / video DIRECTLY (XDLS903.02 L120–145 vs Claude XDLS903_2_0 L132–172). Each panel = 2 extra skeleton lines (`div.row`, `div.col-12`) on every lesson page of the family.
+
+**Measured** (`outputs/_s29_r8_boxcol.py` — the activity box's first col class gold vs Claude, per subject|template and per family; `_s29_r8_xdlsrow.py` per module): the ONE real difference in the whole census is the XDLS family — `(Inquiry, Leaving to Learn)` plain boxes gold `(no row>col)` 0.69 of 84, the XDLS family 0.69 of 341; every other group's gold is `col-12` ≥ 0.55 with Claude's col-12 already right. Decomposed: the gold's `clickDropContent activity` panels hold their content directly on **144 / 145** (XDLS902 5 / 5, 903 35 / 35, 904 34 / 35, 905 34 / 34, 906 35 / 35, 909 21 / 22) while Claude wrapped ALL 179 panels (902 41, 903 36, 904 36, 905 36, 906 30); the family's PLAIN boxes are a 7 / 7 tie (not the class); the gold's minority `row.clickDropContent.noBorder > col-12.col-md-8 > activity.dropbox` form (XDLS902 37, one page each on 903–906) is a different wrapper either way. Claude ships no panels on XDLS909 (the r307 decline). An intake-free class (the r307 XDLS90x family, all pre-intake).
+
+**The fix (DATA OVER CODE).** `interactive_builders.clickDrop.tile_grid.panel_no_inner_row {enabled, env CDPANELROW_OFF}` + `activity_wrapper.open_bare` / `close_bare` (`<div class="activity{modifiers}"{numberAttr}>` / `</div>`): in `ActivitiesBuilder.activityOpen` a `_r307PanelId`-tagged opener on the standard (non-supervisor-note) path emits the bare open and pushes the bare close; the supervisor-note box keeps its own two-child structure; every other box is byte-identical. The r307 pairing post-pass (`#cdTilePair`) and the r305 dropbox post-pass read only the opening tag / a balanced div span, so `clickDropContent ` and `dropbox` land unchanged. OFF (`CDPANELROW_OFF` or `enabled:false`) = the r416 output byte-for-byte.
+
+### 2. PROOF
+
+- `_s29_r417_probe_run.sh` (the r410 harness over all 494 Claude-dir modules, 4 shards): **OFF (`CDPANELROW_OFF`) = disk 2555 / 2555**; **ON = 30 pages / 5 modules** (XDLS902 / 903 / 904 / 905 / 906 — `_affected_r417.txt`); the diff on every ON page is exactly the `<div class="row"><div class="col-12">` … `</div></div>` pair leaving each panel.
+- `_s29_r417_pagescore.py` (the gate's own `match()` on the probe's ON pages BEFORE regenerating): **30 paired pages, 30 up / 0 down, SCAFFOLD pp-sum +457.4 (mean +15.25pp per page), RAW +332.4** — XDLS903_7_0 +27.1, XDLS904_4_0 +24.6, XDLS903_6_0 +24.5; the smallest XDLS902_4_0 +2.6 (the gold's row-form page).
+- SCOPED regeneration (`_s29_r417_regen.sh`: the 5 + the 12-module spot-check sample, 3 `_regen_safe.sh` batches, all rc 0): `_content_manifest.py fresh` **0 truly stale** (5 affected regenerated, 486 unaffected byte-identical); `_scoped_spotcheck.py verify` **12 / 12 byte-identical under the fix**.
+- `scoped_ship.sh --affected _affected_r417.txt --toggle CDPANELROW_OFF --no-regen --commit --round 417` (`_s29_r417_scoped_ship.log`): toggle present, containment **5 changed ⊆ 5 affected**, the exact decomposition gate proof — skeleton 53.93 → 54.12 IMPROVED, ≥50 1415 → 1438 IMPROVED, every other row HELD; the fast-loop baseline PATCHED (2349 pages), the content manifest refreshed, the ledger **scoped #1 since the r416 FULL** (7 of headroom).
+- `run_all_gates.sh` (`_s29_r417_gates.log`): every row HELD-or-IMPROVED; every verifier RESULT ✓ identical to r416 (flipCard divergence 0, speechBubble ✓, modal 13 groups defect 0, mtkQuiz 17 shells ✓, math 323 / 323, menulabels 99 ✓, dragAndDrop 21 ✓); entry parity PASS; index-sync 33 / 28. `_gatecheck.py` refuses on the mtime staleness of the 489 untouched modules (the r302 class — `_content_manifest.py fresh` is the authority, 0 truly stale).
+- `_s29_skdelta.py _s29_r416_sk_final.json _s29_r417_sk_final.json --affected _affected_r417.txt`: **30 movers, 30 up / 0 down, 0 outside the affected set; 0 pages added / gone**.
+- 16 selftests GREEN (46 PASS / GREEN lines, 0 FAIL); feature index `--rehtml` / `--merge` / `--selftest` GREEN.
+- DIFF MINER re-mined on the r417 corpus (`_diff_miner_s29_r417.log`): **181 → 182 CANDIDATE rows** — two new XDLS-family rows surfaced by the panel's inner lines leaving: #1035 `activity EXTRA … › a` (23 pages / 4 modules — the r308 per-`[dropbox]` upload button, one per panel where the gold consolidates to one per page; the XDLS501 over-emit named at r308) and #1036 `activity SUBSTITUTED div.col-12.col-md-8 › activity.dropbox` (21 pages / 4 modules — the gold's minority `row.clickDropContent.noBorder` wrapper form); both recorded for the next PICK pass. The pre-round queue is `_diff_queue_pre_r417.md`.
+
+### 3. PROTECTED GATES (all HELD-or-IMPROVED — `_s29_r417_gates.log`, `_s29_r417_scoped_ship.log`)
+
+- **Skeleton (PRIMARY)**: SCAFFOLD **53.928 → 54.123 % (+0.1947pp)**; ≥50 **1415 → 1438 (+23)**, ≥75 **238**, ≥90 **20** EXACT; RAW **38.000 → 38.142 %**; 2349 pairs, skipped 0 (state `outputs/_s29_r417_sk_final.json`).
+- **compare_structure** exact **14168** / EXTRA **186** / MISSING **683** / row-wrap **23** EXACT; **body_compare** 54 / 5 / 190 / 247 EXACT; **defect** clean 2504 / 2548 = 98.27 %, leak 73 / 44 EXACT; tags **9557 / 9557**.
+- Plateau (§4): **+0.1947pp — the window RESETS (0 of 3)**.
+
+### 4. RECORDED, NOT TAKEN (the Round 8 PICK pass — `LOOP_STATE.md`)
+
+- DIFF_QUEUE #4 (title MISSING h1, 246 pages) = the gold's Te Reo lesson titles in NO WT (class C, the r198 record); GENO901 (16 `[Hintslider front/back]` leaks on one page) and DTC1005 (14 black-typed tags in one section) = single-module cases under the chrome floor; #32 / #33 / #34 module-menu rows = rewritten menu text / pairing artefacts; #589 (MISSING inner row in `activity.interactive`, MiW 0.91) — the WJFUN gold box col is `col-12` on 0.73, Claude already right.
+- The XDLS family's two new miner rows above (the per-panel upload button 23 / 4; the `row.clickDropContent.noBorder` wrapper 21 / 4) — the next PICK pass's candidates.
+
 ## 2026-09-20 (round 416, build 260619.87) — THE ACTIVITY TITLE TYPED INSIDE THE RED SPAN: `[Activity 2A] Concrete poems` all red is the box's `<h3>` (the autonomous loop's session 29 Round 7; THE FULL REGENERATION of all 494 gated dirs — the ledger's backstop after seven scoped ships, 0 stale, the manifest diff = the probe's 44 pages exactly, NO residue from r409–r415; every protected gate HELD-or-IMPROVED, `--accept-named` neither used nor needed)
 
 ### 1. WHAT CHANGED
