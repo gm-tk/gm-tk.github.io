@@ -668,6 +668,37 @@ class DocxExtractor {
 	};
 
 	/**
+	 * ROUND 424 (session 31) — IS THIS DOCUMENT THE ACTIVITY-TABLE DIALECT?
+	 * The XOTP reader family carries no red tags at all: its structure is one
+	 * two-column table whose header row reads "Section heading | Text/Activity"
+	 * (the table opens with a merged title row, so the header may be the second
+	 * row — `scan_rows`). True when any table's first `scan_rows` rows hold a
+	 * row whose first two non-empty cells fold to that header pair. Measured
+	 * over all 762 corpus docx: exactly the 12 XOTP Writers Templates.
+	 * Same test as the parsed-text tab's OutputFormatter.ACTIVITY_TABLE_NOTICE
+	 * (round 409). Data: Input_Doc_Rules.input_shapes.activity_table.
+	 * Env: ACTTABLE_OFF.
+	 *
+	 * @param {Object[]} blocks
+	 * @param {Object} rules - Input_Doc_Rules.json (defaults to loaded)
+	 * @returns {boolean}
+	 */
+	static IsActivityTableDoc(blocks, rules = DataService.Data.InputDocRules) {
+		const cfg = rules?.input_shapes?.activity_table;
+		if (!cfg || cfg.enabled === false || !Array.isArray(blocks)) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "ACTTABLE_OFF"]) return false;
+		const want = (cfg.header ?? []).map((h) => Utils.Fold(h).replace(/[*_]/g, "").replace(/\s+/g, " ").trim());
+		if (want.length < 2) return false;
+		const scan = Math.max(1, cfg.scan_rows ?? 3);
+		const fold = (c) => Utils.Fold(String(c ?? "")).replace(/[*_]/g, "").replace(/\s+/g, " ").trim();
+		return blocks.some((b) => b && b.kind === "table" && Array.isArray(b.rows)
+			&& b.rows.slice(0, scan).some((row) => {
+				const cells = (Array.isArray(row) ? row : []).map(fold).filter((c) => c.length);
+				return cells.length >= 2 && cells[0] === want[0] && cells[1] === want[1];
+			}));
+	};
+
+	/**
 	 * Is this document a Writers Template at all? True when any block is a
 	 * recognised content start, OR the fallback applies (a red span
 	 * resolving to a structural directive — bare-[H1] openers).

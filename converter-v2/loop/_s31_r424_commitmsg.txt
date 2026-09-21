@@ -1,0 +1,23 @@
+Round 424: the activity-table Writers Template is recognised — the twelve XOTP reader documents are refused by name until their adapter ships (ACTTABLE_OFF; output-inert)
+
+The autonomous loop's session 31 Round 2 — the spec's Round 1 (recognition) for the XOTP
+family, LOOP_INTAKE 2026-09-19 §7 item 4. XOTPB08-13 / XOTPG01 / XOTPG03-06 / XOTPO01 carry no
+square-bracket red tags: the structure lives in one two-column table whose header row is
+"Section heading | Text/Activity". LooksLikeWritersTemplate said no, PrepareRun returned
+no-wt, and the harness reported the misleading "no Writers Template (no content opener
+found)".
+
+The fix (data): Input_Doc_Rules.input_shapes.activity_table + DocxExtractor.IsActivityTableDoc
+(the r409 ACTIVITY_TABLE_NOTICE test); in PrepareRun, when the standard chain finds no WT, such
+a document IS the WT — its module code resolves from the filename and, with adapter.enabled
+false, the run returns the data-driven "unsupported" refusal by name (the MTK / TRR route:
+batch_convert "refused by design", the App's summary).
+
+Measured over all 762 docx: exactly the 12 XOTP Writers Templates. Consulted only when no
+upload is a WT, so the built corpus is byte-identical (probe ON 2559 / 2559); no regeneration;
+entry parity PASS; 17 selftests green; every gate as at r423. Next: the adapter round
+(text only); the reader book needs Chris (no XOTP module has a Media List).
+
+Build 260619.95. Loop mirror + checksums refreshed.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

@@ -1,0 +1,29 @@
+== docx scanned 762; IsActivityTableDoc fired on 12 ==
+XOTPB08	Standard	XOTPB08 Writers Template.docx
+XOTPB09	Standard	XOTPB09 Writers Template.docx
+XOTPB10	Standard	XOTPB10 Writers Template.docx
+XOTPB11	Standard	XOTPB11 Writers Template.docx
+XOTPB12	Standard	XOTPB12 Writers Template.docx
+XOTPB13	Standard	XOTPB13 Writers Template.docx
+XOTPG01	Standard	XOTPG01 Writers Template.docx
+XOTPG03	Standard	XOTPG03 Writers Template.docx
+XOTPG04	Standard	XOTPG04 Writers Template.docx
+XOTPG05	Standard	XOTPG05 Writers Template.docx
+XOTPG06	Standard	XOTPG06 Writers Template.docx
+XOTPO01	Standard	XOTPO01 Writers Template.docx
+
+== PrepareRun on every module with an activity-table doc or previously refused (XOTP*, PMT101, TRR115) ==
+XOTPB08	Standard	ok=false	reason=unsupported	code=XOTPB08	label=Activity-table Writers Template (the XOTP reader family — a 
+XOTPB09	Standard	ok=false	reason=unsupported	code=XOTPB09	label=Activity-table Writers Template (the XOTP reader family — a 
+XOTPB10	Standard	ok=false	reason=unsupported	code=XOTPB10	label=Activity-table Writers Template (the XOTP reader family — a 
+XOTPB11	Standard	ok=false	reason=unsupported	code=XOTPB11	label=Activity-table Writers Template (the XOTP reader family — a 
+XOTPB12	Standard	ok=false	reason=unsupported	code=XOTPB12	label=Activity-table Writers Template (the XOTP reader family — a 
+XOTPB13	Standard	ok=false	reason=unsupported	code=XOTPB13	label=Activity-table Writers Template (the XOTP reader family — a 
+XOTPG01	Standard	ok=false	reason=unsupported	code=XOTPG01	label=Activity-table Writers Template (the XOTP reader family — a 
+XOTPG03	Standard	ok=false	reason=unsupported	code=XOTPG03	label=Activity-table Writers Template (the XOTP reader family — a 
+XOTPG04	Standard	ok=false	reason=unsupported	code=XOTPG04	label=Activity-table Writers Template (the XOTP reader family — a 
+XOTPG05	Standard	ok=false	reason=unsupported	code=XOTPG05	label=Activity-table Writers Template (the XOTP reader family — a 
+XOTPG06	Standard	ok=false	reason=unsupported	code=XOTPG06	label=Activity-table Writers Template (the XOTP reader family — a 
+XOTPO01	Standard	ok=false	reason=unsupported	code=XOTPO01	label=Activity-table Writers Template (the XOTP reader family — a 
+PMT101	Bilingual	ok=true	reason=-	code=PMT101	label=-
+TRR115	Bilingual	ok=false	reason=no-wt	code=null	label=-

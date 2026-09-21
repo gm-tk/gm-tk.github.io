@@ -371,6 +371,17 @@ class ModuleResolver {
 			if (isWt && !wt) wt = d;
 			if (mediaTable && !mediaSource) mediaSource = { ...d, mediaTable };
 		}
+		// ROUND 424 — the ACTIVITY-TABLE dialect (the XOTP reader family: no red
+		// tags, the structure in a "Section heading | Text/Activity" table). When
+		// the standard chain found no Writers Template, such a document IS the
+		// WT; it is refused by name below until its adapter is enabled. Measured:
+		// exactly the 12 XOTP docx corpus-wide, so every other run is untouched.
+		// Data: Input_Doc_Rules.input_shapes.activity_table · Env: ACTTABLE_OFF.
+		let activityTable = false;
+		if (!wt) {
+			const at = docs.find((d) => DocxExtractor.IsActivityTableDoc(d.doc.blocks));
+			if (at) { wt = at; activityTable = true; }
+		}
 		if (!wt) return { ok: false, reason: "no-wt", wt: null, mediaSource };
 
 		// ---- module identity + rules (this exact order is load-bearing — see the ORDER note in this method's JSDoc above) ----
@@ -383,6 +394,20 @@ class ModuleResolver {
 		});
 		run.metadata = wt.doc.metadata ?? {};   // front-matter info fields
 		run.mtkFlag = !!wt.doc.mtkFlag;   // the docx's own bilingual/Te-Reo signature flag, set independently of whatever the Style Anchor Registry resolved for this module -> feeds reoMode below
+		// ROUND 424 — the activity-table WT is refused BY NAME (the data-driven
+		// "unsupported" route the App and the batch harness already render)
+		// until input_shapes.activity_table.adapter is enabled; the module code
+		// above is kept so the summary names the module.
+		if (activityTable) {
+			const atCfg = DataService.Data.InputDocRules.input_shapes.activity_table;
+			const adapterOn = atCfg.adapter && atCfg.adapter.enabled === true
+				&& !(typeof process !== "undefined" && process.env && process.env[atCfg.adapter.env || "ACTTABLEADAPT_OFF"]);
+			if (!adapterOn) {
+				run.AddNote("info", "ModuleResolver",
+					`${run.moduleCode ?? "This document"}: activity-table Writers Template recognised (round 424) — the adapter is not enabled, nothing converted.`);
+				return { ok: false, reason: "unsupported", unsupported: { label: atCfg.label, action: atCfg.action }, wt, mediaSource };
+			}
+		}
 		run.resolvedRules = this.Resolve(run.moduleCode, run);
 
 		// ---- REFERENCE-MODULE override (ROUND 249) --------------------------

@@ -1,5 +1,24 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-21 (round 424, build 260619.95) — THE ACTIVITY-TABLE WRITERS TEMPLATE IS RECOGNISED: the twelve XOTP reader modules stop being "unrecognised documents" and are refused BY NAME until their adapter ships (the spec's Round 1 — recognition, output-inert; the autonomous loop's session 31 Round 2; no regeneration, the corpus byte-identical 2559 / 2559)
+
+### 1. WHAT CHANGED
+
+**The gap.** The 12 XOTP documents (XOTPB08–13, XOTPG01, XOTPG03–06, XOTPO01 — the 19 Sept intake's largest no-build group) carry NO square-bracket red tags: their structure lives in one two-column table whose header row reads `Section heading | Text/Activity` (`00-NEW_NEW_NEW/_SPEC__XOTP_Activity_Table_Template.md` — "a Writers Template in a different dialect"). `LooksLikeWritersTemplate` (a content-start red span) said no, so `ModuleResolver.PrepareRun` returned `no-wt` and the batch harness reported the misleading *"no Writers Template (no content opener found)"* — the same words a random non-template docx gets. Session 28 Task 2 (r409) had already corrected the parsed-text tab's message; the converter side was untouched.
+
+**The fix (DATA OVER CODE; the spec's §3.1 / §6 round 1).** `Input_Doc_Rules.input_shapes.activity_table {enabled, env ACTTABLE_OFF, header [section heading, text/activity], scan_rows 3, label, action, adapter {enabled false, env ACTTABLEADAPT_OFF}}` + `DocxExtractor.IsActivityTableDoc(blocks)` (any table whose first `scan_rows` rows hold a row whose first two non-empty cells fold to the header pair — the table opens with a merged title row, so the header is the second row; the same test as `OutputFormatter.ACTIVITY_TABLE_NOTICE`). In `PrepareRun`, when the standard chain found no WT, such a document IS the WT: the module code resolves from its filename as usual, and — with `adapter.enabled` false — the run returns the data-driven `unsupported` refusal (`{label, action}`, the route the MTK / TRR pathway already uses), which `batch_convert.cjs` reports as *"refused by design: Activity-table Writers Template …"* and the App renders in the conversion summary, with a run note naming the module. Nothing is converted until the adapter round flips `adapter.enabled`.
+
+### 2. PROOF
+
+- MEASURED (`outputs/_s31_r424_attable.cjs` over all 762 corpus docx): the header pair exists in EXACTLY the 12 XOTP Writers Templates and in no other document — the detector is exact. `PrepareRun` on the 12: `ok=false reason=unsupported`, module code resolved (XOTPB08 … XOTPO01), the label set; PMT101 (r423) still `ok=true`; TRR115 unchanged (`no-wt`, pre-existing).
+- The detector is consulted only when no upload is a Writers Template by the standard chain, which never happens on a built module, so the change is output-inert by construction: `_s31_r424_probe_run.sh ON` = **2559 / 2559 identical, changed 0** over all 495 Claude-dir modules; no regeneration (none needed — no page changed); `_verify_entry_parity.cjs --selftest` PASS (the refusal lives inside the one shared prep choke point); 17 selftests GREEN (50 / 0); `_check_index_sync.cjs` OK.
+
+### 3. PROTECTED GATES — every gate as at r423 (the corpus byte-identical; `_s31_r423_gates.log` stands)
+
+- Skeleton (PRIMARY) SCAFFOLD **54.1703 % @ 2353 pairs**, ≥50 1442 / ≥75 238 / ≥90 20, RAW 38.193 %; compare_structure 14255 / 186 / 689 / 23; body 55 / 5 / 190 / 248; clean 2508 / 2552; leak 73 / 44; tags 9557 / 9557; every verifier EXACT — unchanged.
+- Plateau (§4): no engine round moved a metric (output-inert by design); the window stays at 0 of 3 (r423 a recognition round behind it).
+- Recorded: the spec's Round 2 (the adapter, text only — the section-heading lexicon in data, the synthetic tag stream, the per-variant page boundary, the `CS:` build-vs-note split; the 7 modules whose payload is fully in the text first) is the next round; Round 3 (the reader book — the carousel images and the picture / sentence matching) NEEDS CHRIS: all twelve have no Media List, and XOTPB08's matching sentences exist only as a pasted picture.
+
 ## 2026-09-21 (round 423, build 260619.94) — A PAGE-BOUNDARY MARKER TYPED AS A TABLE ROW IS A PARAGRAPH: PMT101, the MTK "Te Aka Taumatua" template written as ONE table, now converts (the 19 Sept intake's one real recognition gap; the autonomous loop's session 31 Round 1; SCOPED regeneration of the 1 newly-recognised module, the probe proving all 494 others byte-identical)
 
 ### 1. WHAT CHANGED

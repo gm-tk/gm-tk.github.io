@@ -365,8 +365,25 @@
 	"input_shapes": {
 		"separate": "Two files: one docx containing a [TITLE BAR] (the WT), one docx whose only substance is the media table (the media list).",
 		"combined": "One docx containing both the [TITLE BAR] content and a media table.",
-		"classification_rule": "Per uploaded file: has content_start fragment → WT; has media table but no content start → media list; has both → combined. Neither → red flag in summary (unrecognised document).",
-		"no_media_list": "If no media table is found anywhere, still generate the acknowledgements block (standing items + per-lesson designer-media check lines) and surface a clear summary warning."
+		"classification_rule": "Per uploaded file: has content_start fragment → WT; has media table but no content start → media list; has both → combined. Neither → red flag in summary (unrecognised document). ROUND 424: a docx with no content start whose table opens with the two-cell header 'Section heading | Text/Activity' is the ACTIVITY-TABLE dialect (activity_table below) — a Writers Template in a different dialect, recognised as the WT and, until the adapter ships, refused BY NAME instead of falling into 'unrecognised'.",
+		"no_media_list": "If no media table is found anywhere, still generate the acknowledgements block (standing items + per-lesson designer-media check lines) and surface a clear summary warning.",
+		"activity_table": {
+			"enabled": true,
+			"env": "ACTTABLE_OFF",
+			"header": [
+				"section heading",
+				"text/activity"
+			],
+			"scan_rows": 3,
+			"label": "Activity-table Writers Template (the XOTP reader family — a 'Section heading | Text/Activity' table, no red tags)",
+			"action": "Recognised as a Writers Template in the ACTIVITY-TABLE dialect: the left cell of each row (Overview / Introduction / Online book / Questions / a bare activity number …) carries the structure that red tags carry in the standard template. The adapter that turns that table into PageForge's tag stream is not enabled yet (input_shapes.activity_table.adapter) — nothing converted; see 00-NEW_NEW_NEW/_SPEC__XOTP_Activity_Table_Template.md.",
+			"adapter": {
+				"enabled": false,
+				"env": "ACTTABLEADAPT_OFF",
+				"_note": "The spec's Round 2 (the adapter, text only) flips this on; until then recognition alone routes the family to the named refusal above."
+			},
+			"_note": "ROUND 424 (session 31 Round 2 — the XOTP recognition round, LOOP_INTAKE 2026-09-19 §7 item 4, spec 00-NEW_NEW_NEW/_SPEC__XOTP_Activity_Table_Template.md §3.1 / §6 round 1). The twelve XOTP documents (XOTPB08–13, XOTPG01, XOTPG03–06, XOTPO01) carry NO square-bracket red tags; the structure lives in one two-column table whose header row is 'Section heading | Text/Activity' (the table opens with a merged title row, so the header is the SECOND row — scan_rows). MEASURED (outputs/_s31_r424_attable.cjs over all 762 docx): the header pair exists in exactly the 12 XOTP Writers Templates and nowhere else in the corpus, so the detector is exact and output-inert for every existing module by construction. DocxExtractor.IsActivityTableDoc reads it; ModuleResolver.PrepareRun takes such a document as the WT when the standard chain found none, and — with adapter.enabled false — returns the data-driven 'unsupported' refusal (label / action above) that batch_convert reports as 'refused by design' and the App renders in the summary, in place of the misleading 'no Writers Template (no content opener found)'. Same header test as pageforge-site/js/formatter.js OutputFormatter.ACTIVITY_TABLE_NOTICE (round 409, the parsed-text tab). Env ACTTABLE_OFF reverts to the pre-424 'no-wt' path."
+		}
 	},
 	"media_list_preamble": {
 		"enabled": true,
