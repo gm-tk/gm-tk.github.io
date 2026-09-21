@@ -50,10 +50,28 @@ byte-identical (`cmp`), and every session's health check confirms this "Amended"
    §16, the round-284 lesson).
 
 Then run `bash _MIGRATION/verify_after_transfer.sh` once. It must say PASS before anything else
-(it checks the five symlinks and the engine checksums). If it fails, stop and report — do not
-regenerate anything on a broken tree. **One exception: a census FAIL whose only cause is that
-the gold-module / docx counts have GROWN is not a broken tree — it is the INTAKE TRIGGER (§1f,
-Round 0d), and Round 0d runs before any PICK.**
+(six checks: the five symlinks, the engine and gate-tool checksums, the corpus census, the two
+git repos, the toolchain). If it fails, stop and report — do not regenerate anything on a broken
+tree. **Three census exceptions:**
+- a census FAIL whose only cause is that the gold-module, gold-page or docx counts have GROWN
+  is not a broken tree — it is the INTAKE TRIGGER (§1f, Round 0d). Round 0d runs before any
+  PICK and BEFORE the miner check (do not re-mine a pre-intake corpus; Round 0d re-mines) — but
+  an in-flight or built-but-inert round named in `LOOP_STATE.md` is finished (or toggled OFF and
+  proven byte-identical) FIRST, so the intake's full regeneration runs on a proven engine state;
+- a Claude-dir / Claude-page mismatch that equals the change the last shipped round records
+  (e.g. r425 shipping = +12 dirs / +24 pages) is a stale `expect` value in
+  `_MIGRATION/verify_after_transfer.sh` lines 76–80 — update it (dated comment, `.pre-rNNN.bak`)
+  and continue; it is neither an intake trigger nor a broken tree;
+- a count that FELL is never an intake trigger: stop and report — unless the last STOPPED entry
+  or handover names the parked / removed file, in which case update the `expect` value the same
+  way and continue.
+
+**Then run the other three intake checks (§1f triggers (b)–(d)), one command each:** the gold
+dirs with no Claude dir (`comm -23` of the two dir listings) against the §2 no-build list; any
+Writers Template / Media List docx newer than its module's `_run.json`
+(`find 01-Finalized_Modules_ -name "*.docx" -newer <that module's _run.json>`); the two staging
+areas (`ls`) against the latest `00-NEW_NEW_NEW/_INTAKE_AUDIT_<date>.md`. Any hit not already
+recorded → Round 0d.
 
 Then note the KB repo's HEAD (`git -C 00-Other-TK-Resources/htmlconvertor-kb log -1 --oneline`)
 against the commit `KB_AMALGAMATION_STATUS.md` names as last checked: if it has moved, read the
@@ -72,10 +90,24 @@ is pre-intake. Current (22 September 2026, build 260619.96):
 | Writers Template / Media List docx | 619 | **762** |
 | skeleton paired pages | 1,956 | **2,353** |
 
-**552 gold dirs against 495 Claude dirs is CORRECT, not a fault.** 19 modules have no Claude
-build (§2): the 12 XOTP modules until the r425 adapter is enabled, and 7 with no Writers
-Template at all. A gold-only dir is the expected state for them. After r425 ships the figures
-become 507 dirs / 2,583 pages / 2,377 pairs — update this table at that finalise.
+**552 gold dirs against 495 Claude dirs is CORRECT, not a fault — but the gap is 57, not 19.**
+19 are the September intake's no-builds (§2): the 12 XOTP modules until the r425 adapter is
+enabled, and 7 with no Writers Template at all. **The other 38 are PRE-INTAKE modules that hold
+a Writers Template and its `_parsed.txt` but have never produced a Claude build** (the pre-intake
+gap was already 454 − 416 = 38; found by the 22 Sept review's adversarial check — 20 of them were
+refused at round 285 and their empty dirs removed, the "r285 ghost-directory class" of the r308
+changelog entry, the others never attempted; the per-module cause was never recorded; they are on
+no other list, and a full regeneration never reaches them because `_batch_plan.py` enumerates
+Claude dirs): BLL243 BLL247 BLL250 BLL255 BLL256 BLL257 BLL260 BLL261 BLL264 BLL265 BLL266 BLL270 BLL271
+BLL272 BLL273 BLL274 BLL275 BLL276 CEDK401 CEDO201 CEDO402 CEDR101 CEDR203 CEDR401 CEDT102 CEDW303
+HPRE301 OSSM501 SSCI104 SSEA203 SSOG105 TRR110 TWHK902 TWHK907 TWHR905 TWHR907 TWHT903 XMES202.
+**They are the first Round 0d job** (§1f, Phases 2 and 5–7 only — they are already placed and
+already in the registries): convert them by explicit code list, record every refusal by cause,
+re-base the gates by population. Until that round runs, §1f trigger (b) treats these 38 as
+RECORDED (this list) and does not fire on them. A gold-only dir is the expected state for a
+recorded no-build. After r425 ships the figures become 507 dirs / 2,583 pages / 2,377 pairs —
+update this table AND `_MIGRATION/verify_after_transfer.sh` lines 77–78 (`expect` values, a
+dated comment, `.pre-r425.bak` kept) at that finalise.
 
 ## 1. The measure of success — and the honest ceiling
 
@@ -96,9 +128,11 @@ score as "X% of achievable" alongside the raw number. Commit the tool and its fi
 (`outputs/_ceiling_r0.json`) before Round 1. This round changes NO converter output.
 
 **The ceiling was re-measured on 20 September 2026 (session 29, `outputs/_ceiling_r410.{json,md,log}`):
-scaffold 90.9 % (loose 93.5 %) on 2,290 paired pages, full-scope 86.7 %.** Every report quotes
-"% of achievable" against **90.9 %** (the earlier 91.6 % / 91.9 % figures were the 1,956-pair
-corpus). `COVERAGE_DASHBOARD.md` was regenerated the same day. **Both are re-run as part of every
+scaffold 90.9 % (loose 93.5 %) on 2,290 paired pages, full-scope 86.7 %.** (2,290 is the
+ceiling's own population — paired pages whose module has a parsed Writers Template; the skeleton
+gate's 2,353 includes 9 modules the ceiling skips.) Every report quotes "% of achievable" against
+**90.9 %** (the earlier 91.6 % / 91.9 % figures were the 1,956-pair corpus).
+`CONVERTER_V2/outputs/COVERAGE_DASHBOARD.md` was regenerated the same day. **Both are re-run as part of every
 intake (§1f Round 0d)** — an intake changes the denominator, and a "% of achievable" quoted
 against a pre-intake ceiling is wrong.
 
@@ -223,15 +257,14 @@ a few pages being applied where it does not belong; neither of these can over-re
    together — a candidate under this rule.)
 
 **Cadence.** Re-run the miner at the start of every session and after every full
-regeneration (it reads 2 × ~2,100 pages; keep it under the timeout by sharding if needed).
-`DIFF_QUEUE.md` is committed each time. The PICK step (§3) reads it FIRST.
-(It now reads 2 × ~2,555 pages, not 2 × ~2,100 — budget accordingly; a full mine took ~134 s on
-19 Sept.)
+regeneration (it reads 2 × ~2,560 pages — a full mine took ~134 s on 19 Sept and 90 s on 21
+Sept; shard if it nears the timeout). `DIFF_QUEUE.md` is committed each time. The PICK step
+(§3) reads it FIRST — by section, since it is ≈ 130 KB (§5d).
 
 ## 1e. PROVING HOLD-OR-IMPROVE ACROSS THE SEPTEMBER INTAKE (20 September 2026) — read before judging any gate
 
 On 19 September 2026 the corpus grew by 98 gold modules and 78 Claude builds: skeleton pairs
-**1,956 → 2,349**, compare_structure matched **13,794 → 15,668**, body/defect pages
+**1,956 → 2,349** (2,353 today, after r423), compare_structure matched **13,794 → 15,668**, body/defect pages
 **2,102 → 2,606**. **Every gate absolute therefore moved and every rate fell, with no regression
 behind any of it.** `gate_baseline.json` has been re-based to the whole population and
 `_gatecheck.py` reports PASS, but anyone comparing a live number to a figure quoted in a
@@ -250,7 +283,7 @@ reproduced round 407 exactly:
 | structurally clean | 2079 / 2102 = 98.91 % | **identical** |
 
 The structural argument underneath it is stronger than the table: `_content_manifest.py fresh`
-confirmed all 413 pre-existing modules **byte-identical**, and identical bytes cannot produce
+confirmed the pre-existing modules (413 in the manifest) **byte-identical**, and identical bytes cannot produce
 different metrics. Reach for the manifest first — it is one command and it settles the question
 outright.
 
@@ -273,19 +306,37 @@ bring into the pipeline, and re-assesses and re-prioritises the pending queue. R
 procedure, reconstructed from the two intakes' records (`00-NEW_NEW_NEW/_INTAKE_AUDIT_2026-09-19.md`,
 `NEW_MODULES__Intake_2026-08-03.md`, `LOOP_INTAKE__2026-09-19_98_Modules.md`, the r408 scripts
 `outputs/_s28_t1_*`, the changelog entries r253 / r264 / r265 / r408 / "FULL CORPUS REGENERATION +
-INTAKE RE-BASELINE"). Every tool it names exists on disk (verified 22 Sept 2026).
+INTAKE RE-BASELINE"). Every tool it names exists on disk (verified 22 Sept 2026) except the
+copies it tells you to create (`outputs/_intake_split.cjs`, the `_intake_<date>_*` scripts).
 
-**The trigger (checked at every session start, §0).** Any of: (a) `verify_after_transfer.sh`'s
-census FAILS and the only figures off are gold dirs / gold pages / docx GROWN; (b) a gold module
-dir under `01-Finalized_Modules_/*/` has no Claude dir and is not on the recorded no-build list
-(§2 + the latest `LOOP_INTAKE` §5); (c) a docx or human page in an existing gold dir is NEWER than
-the module's `_run.json`; (d) module folders are waiting in a staging area
-(`00-NEW_NEW_NEW/NEW_MODULES/`, `new-html-files-and-wt/`) that are not in the gold folders. Write
-the delta list (codes, where found, what each folder holds) to `outputs/_intake_<date>_delta.txt`
-before anything else. Round 0d then runs BEFORE any PICK. It is ONE round for the ledger (a
-FULL ship, counter → 0) but it has eight phases, each logged as a line in `LOOP_STATE.md` as it
-completes, so a session that dies mid-intake resumes at the phase, not the start. It may take a
-whole session; that is budgeted.
+**The trigger (checked at every session start, §0 — (a) by the verify script, (b)–(d) by the
+three one-line checks §0 lists).** Any of: (a) `verify_after_transfer.sh`'s census FAILS and the
+only figures off are gold dirs / gold pages / docx GROWN; (b) a gold module dir under
+`01-Finalized_Modules_/*/` has no Claude dir and is not on the recorded no-build list (the §2
+bullet — the 38 pre-intake never-converted modules plus the 19 intake no-builds — or the latest
+`LOOP_INTAKE` §5); (c) a Writers Template / Media List docx in an existing gold dir that HAS a
+Claude build is NEWER than that module's `_run.json` (a newer human page alone is not a trigger —
+note it under "Needs Chris" at the next STOP); (d) a module folder in a staging area
+(`00-NEW_NEW_NEW/NEW_MODULES/+_FINALIZED_+/`, `new-html-files-and-wt/`) that is not in the gold
+folders AND is not already dispositioned in the latest `00-NEW_NEW_NEW/_INTAKE_AUDIT_<date>.md`
+(placed / no source / needs Chris / rejected). **Today every leftover in both areas is
+dispositioned** — the seven `+_UNSURE_+` folders (DVCFUN02–5, ENGI205, MPT1004, SCBI202, SCES302,
+TEAFUN01–05, XOPTB11) and `new-html-files-and-wt/`'s remnants (SCBI202, SCFUN09, `new-new/`
+SCES201 / SCES302: no human HTML on the server) are NOT a trigger; only a folder newer than that
+audit is, and a Round 0d that places or refuses a staging folder records it in its own audit so
+the trigger cannot re-fire on it. Write the delta list — every gold dir under
+`01-Finalized_Modules_/*/` whose code is NOT a key of `data/Module_Structure_Index.json`
+`module_meta` (the registry built at the last intake; it carries every gold code including the
+no-build ones — `ls -d 01-Finalized_Modules_/*/*/ | xargs -n1 basename` against the
+`module_meta` keys, under WSL), plus any docx newer than its module's `_run.json`, plus any
+undispositioned staging folder — with where each was found and what it holds, to
+`outputs/_intake_<date>_delta.txt` before anything else (Phase 4 rebuilds the index, so this
+reference list self-updates). Round 0d then runs BEFORE any
+PICK (after any in-flight round is finished or toggled OFF — §0). It is ONE ledger record (a FULL
+ship, counter → 0) but TWO changelog entries and two round numbers — `intake-<date>` for the
+regeneration + re-base, `r<NNN>` for the registry rebuild — and it has eight phases, each logged
+as a line in `LOOP_STATE.md` as it completes, so a session that dies mid-intake resumes at the
+phase, not the start. It may take a whole session; that is budgeted.
 
 **What Round 0d may touch under `01-Finalized_Modules_` (the one exception to §2's read-only
 rule):** it may ADD — place a new module's folder, write `_parsed.txt` beside its docx, rename a
@@ -297,25 +348,32 @@ precedents did).
 **Phase 1 — provenance, classification, placement** (skip what is already done when Chris has
 placed the folders himself).
 - Record where each new module came from (`00-NEW_NEW_NEW/_INTAKE_AUDIT_<date>.md`: the 19 Sept
-  audit is the template — Part 1 what each docx IS, Part 4 placement).
+  audit is the template — Part 1 what is missing, Part 2 what each docx is and was renamed to,
+  Part 4 placement).
 - Classify every Word file BY CONTENT, never by its name: `DocxExtractor.LooksLikeWritersTemplate`
   picks the Writers Template, `MediaListParser.FindMediaTable` the Media List (the engine does the
-  same at run time, `ModuleResolver.PrepareRun`). Rename to the corpus form — `{CODE} Writers
+  same at run time, `ModuleResolver.PrepareRun`) — via `outputs/_intake_classify.cjs <dir>`
+  (write it once: load the engine under `--require ./_deflate_raw_polyfill.cjs`, call the two
+  functions per docx, print `path<TAB>WT|ML|WT+ML|neither`; the 19 Sept `_docx_classify.json`
+  is the expected output shape; keep it for the next intake). Rename to the corpus form — `{CODE} Writers
   Template.docx` / `{CODE} Media List.docx` / `{CODE} Writers Template + Media List.docx`, human
   pages to `{CODE}_{lesson}_{part}.html` (`00-NEW_NEW_NEW/_KB_RULE__Page_Filename_Tails.md`) —
-  logging every rename to `_RENAME_LOG_<date>.tsv` (folder / old / new / rule). A module with no
+  logging every rename to `00-NEW_NEW_NEW/_RENAME_LOG_<date>.tsv` (`# folder	old	new	rule`, the
+  19 Sept file's format). A module with no
   Writers Template is NOT placed: it is recorded (no source — needs Chris). A broken docx
   (truncated, unopenable) is recorded, not renamed.
 - Placement: the template folder is read from the module's OWN human HTML body container class —
   `container-fluid` → Standard, `fundamentals container-fluid` → Fundamentals,
   `inquiry container-fluid` → Inquiry, `container-fluid reoTranslate` → Bilingual — cross-checked
   against where its siblings sit. **Only those four folders exist**: `TEMPLATE_DIRS` is hard-coded
-  in `reference/tests/_corpus.py`, `outputs/_corpus.py` and `outputs/corpus.cjs`, and a fifth
-  folder would be read as one module named after the folder (the reason XOTP sits in Standard).
-  A module with no human HTML defaults to Standard and is flagged for Chris (the r128 precedent).
-  Move the folder into `01-Finalized_Modules_/{Template}/{CODE}/`, verify the file count, log to
-  `_MOVE_LOG_<date>.tsv`. Chris's "FUN → Fundamentals" rule applies to NEW modules only; an
-  existing FUN module stays where its gold was built.
+  in `reference/tests/_corpus.py`, `reference/tests/corpus.cjs`, `outputs/_corpus.py` and
+  `outputs/corpus.cjs`, and a fifth folder would be read as one module named after the folder
+  (the reason XOTP sits in Standard). A module with no human HTML defaults to Standard and is
+  flagged for Chris (the r128 precedent). Move the folder into
+  `01-Finalized_Modules_/{Template}/{CODE}/`, verify the file count, log to
+  `00-NEW_NEW_NEW/_MOVE_LOG_<date>.tsv` (`# code	template	files` — the path
+  `outputs/_s28_t1_mine_sar.cjs` reads). Chris's "FUN → Fundamentals" rule applies to NEW modules
+  only; an existing FUN module stays where its gold was built.
 - Parsed text: `node CONVERTER_V2/outputs/parse_docx.cjs "<dir>/<CODE> Writers Template.docx"
   "<dir>/<CODE> Writers Template_parsed.txt"` (and the Media List), under WSL (its deps live in
   the WSL home: `$PF_NODE_MODULES`, default `$HOME/pfdeps/node_modules`). Prove it byte-identical
@@ -327,8 +385,8 @@ placed the folders himself).
   `corpus.mdir` falls back to a FLAT `01-Claude_Modules_/{CODE}` when the nested dir is absent
   (trap 5). Never pre-create one for a module with no Writers Template.
 - Convert the new modules by explicit CODE list (the no-argument default converts only
-  `compare_set.txt`, which contains none of them), in batches of ≤ 11 with a long wall:
-  `cd CONVERTER_V2/reference/tests && REGEN_TIMEOUT=600 ./_regen_safe.sh <≤ 11 CODES>` (wraps
+  `compare_set.txt`, which contains none of them), in batches of ≤ 11 with a long wall, under
+  WSL: `cd CONVERTER_V2/reference/tests && REGEN_TIMEOUT=600 ./_regen_safe.sh <≤ 11 CODES>` (wraps
   `STUB_OEMBED=1 timeout $REGEN_TIMEOUT node --require ./_deflate_raw_polyfill.cjs batch_convert.cjs … --force`).
   `batch_convert.cjs` deletes and rewrites each output dir, so an `EPERM … rmdir` on the first
   module means delete permission is missing on the folder — a precondition, not a converter error.
@@ -342,10 +400,47 @@ placed the folders himself).
 - A changed docx for an EXISTING module (trigger (c)) regenerates that module in this phase; a
   changed human page is recorded for Chris (see the exception above).
 
-**Phase 3 — the registries, ALL in the same round (the r263 stale-registry trap: an index rebuilt
-without its sibling registries shipped a missing-menu bug).** The r408 recipe, scripts in
-`outputs/_s28_t1_*` (generalise their module lists; keep the new copies as `_intake_<date>_*`):
-1. Snapshot the nine registries to `outputs/_intake_<date>_pre/` (the OFF state for the probe).
+**Phase 3 — the FULL regeneration and its proofs, on the UNCHANGED registries** (authorised by
+the §7 message; this is the periodic backstop, so the scoped-ship counter resets to 0). The
+order matters: the 19 Sept precedent regenerated and re-based FIRST, with no engine, data or
+registry change, so the pre-existing proof is pure — then rebuilt the registries as their own
+round (r408). Reversing it makes the "pre-existing EXACT" proof impossible, because a registry
+rebuild moves pages (r408 moved 103 modules).
+- `_batch_plan.py` (WSL) emits LIGHT lines of up to 22 codes, which are NOT reliable (§6): either
+  run its lines with the r416 pattern (`outputs/_s29_r416_fullship_par.sh` — each line rewritten
+  to `timeout 900 … batch_convert.cjs … --force`, 4 workers, safe under WSL; the "never in
+  parallel" line in `_regen_safe.sh`'s header is the stale 45-second-wall note) or re-split any
+  line over 11 codes before `REGEN_TIMEOUT=600 ./_regen_safe.sh …`. Then `./_stalecheck.sh` → 0
+  stale (it names every stale dir; regen exactly them and re-check).
+- `_content_manifest.py fresh --affected outputs/_intake_<date>_affected.txt` (the new modules)
+  → every module OUTSIDE that list byte-identical to the shipped manifest (identical bytes cannot
+  move a metric — the strongest proof, one command); `_content_manifest.py changed` must list
+  exactly the new codes.
+- `./run_all_gates.sh > ../../outputs/_intake_<date>_gates.log 2>&1`, then `_gatecheck.py
+  skeleton defect` AND `_gatecheck.py cs bc` (never trust a cached row). Every verifier RESULT ✓.
+- **SPLIT BY POPULATION (§1e).** Score the pre-existing subset and the new batch separately
+  (generalise `outputs/_s28_t1_split.cjs` to take the new-module list; keep it as
+  `outputs/_intake_split.cjs` so the next intake has it). The pre-existing subset must reproduce
+  the last shipped round EXACTLY on every decomposable gate; the new batch's own figures are
+  named. A rate that fell is arithmetic, not regression.
+- Re-base `gate_baseline.json` to the whole population (every field, `skeleton.pairs` included)
+  with a `_meta._note_intake_<date>` that states the split; `_fastloop_snapshot.py`;
+  `_content_manifest.py snapshot`; `_ship_ledger.py record-full --round intake-<date> --build <AppVersion>`.
+  Mirror `gate_baseline.json` (§3 step 7).
+- Note in the handover which new modules carry a widget type that has a verifier: the verifiers'
+  module sets are fixed lists and do not grow by themselves — extending one is a queued tooling
+  round, listed in the round order.
+
+**Phase 4 — the registries, ALL in the same round, as its own ledgered round `r<NNN>` (the r263
+stale-registry trap: an index rebuilt without its sibling registries shipped a missing-menu
+bug).** The r408 recipe, scripts in `outputs/_s28_t1_*` (generalise their module lists; keep the
+new copies as `_intake_<date>_*`):
+1. Snapshot the nine registries — `data/Module_Structure_Index.json`,
+   `Granular_Scaffold_Registry.json`, `Style_Anchor_Registry.json`,
+   `Style_Anchor_Registry_Majority_And_Deviations.json`, `Menu_Scaffold_Registry.json`,
+   `Html_Convention_Registry.json`, `Overview_Menu_Heading_Lexicon.json`,
+   `Module_Feature_Index.json`, `Scaffold_Consensus.json` — to `outputs/_intake_<date>_pre/`
+   (the OFF state for the probe; the r408 list in `outputs/_s28_t1_pre/`).
 2. `build_granular_registry.py --shard K 8` × 8 under WSL → `--merge` → `--selftest`
    (`Module_Structure_Index.json` `module_meta` gains every new code with subject /
    template_type / phase / series / dev_order; `Granular_Scaffold_Registry.json`). A prefix the
@@ -365,35 +460,19 @@ without its sibling registries shipped a missing-menu bug).** The r408 recipe, s
    `--merge` → `--selftest`; re-pin the cascade / parity selftests if a pin moved; every selftest
    green. Say explicitly which registry could NOT be rebuilt and why (the r408 entry names
    `Style_Anchor_Registry_Majority_And_Deviations` as a Stage-1 artefact left alone).
-5. Prove before regenerating: the in-memory A/B probe over every module (OFF = the `_pre`
+5. Prove, then ship SCOPED: the in-memory A/B probe over every module (OFF = the `_pre`
    registries swapped in = disk byte-identical; ON = the changed pages and their module list →
-   `outputs/_intake_<date>_affected.txt`), the gate's own `match()` pre-score on the ON pages.
-
-**Phase 4 — the FULL regeneration and its proofs** (authorised by the §7 message; this is the
-periodic backstop, so the scoped-ship counter resets to 0).
-- `_batch_plan.py` (WSL) → its lines run as batches of ~11 (`REGEN_TIMEOUT=600 ./_regen_safe.sh …`
-  or the r416 pattern `outputs/_s29_r416_fullship_par.sh`, 4 workers); `./_stalecheck.sh` → 0
-  stale (it names every stale dir; regen exactly them and re-check).
-- `_content_manifest.py fresh` → every PRE-EXISTING module byte-identical (identical bytes cannot
-  move a metric — this is the strongest proof and it is one command).
-- `./run_all_gates.sh > ../../outputs/_intake_<date>_gates.log 2>&1`, then `_gatecheck.py
-  skeleton defect` AND `_gatecheck.py cs bc` (never trust a cached row). Every verifier RESULT ✓.
-- **SPLIT BY POPULATION (§1e).** Score the pre-existing subset and the new batch separately
-  (generalise `outputs/_s28_t1_split.cjs` to take the new-module list; keep it as
-  `outputs/_intake_split.cjs` so the next intake has it). The pre-existing subset must reproduce
-  the last shipped round EXACTLY on every decomposable gate; the new batch's own figures are
-  named. A rate that fell is arithmetic, not regression.
-- Re-base `gate_baseline.json` to the whole population (every field, `skeleton.pairs` included)
-  with a `_meta._note_intake_<date>` that states the split; `_fastloop_snapshot.py`;
-  `_content_manifest.py snapshot`; `_ship_ledger.py record-full --round intake-<date> --build <AppVersion>`.
-  Mirror `gate_baseline.json` (§3 step 7).
-- Note in the handover which new modules carry a widget type that has a verifier: the verifiers'
-  module sets are fixed lists and do not grow by themselves — extending one is a queued tooling
-  round, listed in the round order.
+   `outputs/_intake_<date>_r<NNN>_affected.txt`), the gate's own `match()` pre-score on the ON
+   pages; then `scoped_ship.sh --affected <that list> --toggle <the registry toggle> --round <NNN>`
+   with its named delta (the r408 form: 103 modules, movers 197 up / 76 down, the unaffected pairs
+   EXACT). The registry round's movement is ITS entry's named delta, never folded into the intake's
+   population re-base.
 
 **Phase 5 — the instruments the intake voids.** In this order, all under WSL: the ceiling
-(`outputs/_measure_ceiling.py` → `_ceiling_r<NNN>.{json,md,log}`; quote the new "% of achievable"
-denominator in §1 and in every later report); the coverage dashboard (`outputs/_s29_dashboard_run.sh`
+(`outputs/_measure_ceiling.py --baseline outputs/<the current sk_final>.json --json
+outputs/_ceiling_r<NNN>.json --md outputs/_ceiling_r<NNN>.md > outputs/_ceiling_r<NNN>.log 2>&1`
+— its defaults write `_ceiling_r0.*` against `_r313_sk_final.json`; quote the new "% of
+achievable" denominator in §1 and in every later report); the coverage dashboard (`outputs/_s29_dashboard_run.sh`
 pattern: the r271 variation census + the r286 decline recorder in 16 shards, then
 `_coverage_dashboard.py --refresh`); the DIFF MINER twice — full (`_diff_miner.py` →
 `DIFF_QUEUE.md`) and scoped over the new modules alone (`_diff_miner.py <CODES>` →
@@ -408,8 +487,8 @@ round. (2) `OPERATING_GUIDE.md` §9 / §14 baselines. (3) This file's §0 census
 no-build bullet. (4) `_MIGRATION/verify_after_transfer.sh` lines 76–82 (`expect` values, a dated
 comment, `.pre-<date>.bak` kept) — the intake session of 19 Sept did not, and the next health
 check read as a broken tree. (5) `_MIGRATION/CHECKSUMS__engine.txt` / `CHECKSUMS__gates.txt` after
-the feature index. (6) `LOOP_STATE.md`: the census line at the top, Position (LAST FULL =
-intake-<date>; the no-build count and where the list is), the Round-log line
+the feature index. (6) `LOOP_STATE.md`: the session-start note's census figures and the Position
+section's corpus bullet (LAST FULL = intake-<date>; the no-build count and where the list is), the Round-log line
 "0d · intake <date> · N modules · converted / refused by cause · gates re-based", the "Needs
 Chris" lines the intake raised. (7) `NEW_MODULES__Intake_<date>.md` (the 3 Aug format: results,
 gate numbers, findings) and **`LOOP_INTAKE__<date>_<N>_Modules.md`** at the folder root, the
@@ -445,10 +524,12 @@ best next round is; the queue is re-ranked, not appended to:
    starts with" line; the first ordinary PICK after Round 0d takes item (a) unless the miner's
    chrome-first rule outranks it with a bigger derivable class.
 
-**Phase 8 — the stop.** Round 0d ends with the §5 report: the census before → after, the split
-table, the refusals by cause, the re-ranked order, the needs-Chris lines it added, the push
-block. If the session's budget is spent, the next session's Round 1 is the top of the re-ranked
-order; if not, the loop continues into it at once.
+**Phase 8 — the record.** Round 0d ends with a §5-shaped summary written into its Round-log line
+and the handover's §1: the census before → after, the split table, the refusals by cause, the
+re-ranked order, the needs-Chris lines it added. The session does NOT stop for it — the §5 report
+and the push block are given only when §4 says stop (§5c). If the session's budget is spent, the
+next session's Round 1 is the top of the re-ranked order; if not, the loop continues into it at
+once.
 
 ## 2. What this loop is authorised to do (Chris, 14 September 2026)
 
@@ -456,9 +537,10 @@ order; if not, the loop continues into it at once.
   for every round of the loop, scoped by the OPERATING_GUIDE.md §0a / §0b rules: rebuild every module the
   fix touches PLUS the whole family of the tag or widget type it touches (the working half as
   well as the broken half). A full-corpus regeneration is allowed when a change is corpus-wide
-  (skeleton / footer / menu scaffold / acks / tag normalisation) and at the §10a cadence (every
-  8 scoped ships, hard stop 16). State the resolved module list and its size in the log before
-  each rebuild.
+  (skeleton / footer / menu scaffold / acks / tag normalisation) and at the OPERATING_GUIDE.md
+  §10a cadence (every 8 scoped ships, hard stop 16) — and in Round 0d (§1f Phase 3), which the
+  §7 message authorises by name and which resets the cadence counter. State the resolved module
+  list and its size in the log before each rebuild.
 - **Declines.** A class may be DECLINED without asking Chris when the r182 solidify procedure
   says so: the measured share of the corpus that follows the candidate rule is below 0.60, or it
   is a tie, or there is no derivable discriminator. Record the measurement in the changelog
@@ -489,7 +571,7 @@ order; if not, the loop continues into it at once.
   additions (the human gold is read-only, forever); reading the gold as a converter INPUT (Level
   0 guardrail); any per-module
   `if (code === …)` special case (DATA OVER CODE); disabling a new rule to silence a verifier
-  (§0a: debug until both populations build).
+  (OPERATING_GUIDE.md §0a: debug until both populations build).
 - **The modules with no Claude build are NOT converter faults — do not "fix" them by inventing
   a source.** 12 XOTP modules (`XOTPB08–13`, `XOTPG01`, `XOTPG03–06`, `XOTPO01`) are refused
   until the r425 activity-table adapter is enabled (built and proven on the twelve on 21 Sept,
@@ -497,7 +579,12 @@ order; if not, the loop continues into it at once.
   `00-NEW_NEW_NEW/_SPEC__XOTP_Activity_Table_Template.md`; their reader book and the XOTPB
   Overview text are open needs-Chris items). Seven (`GER1003–1007`, `SAM1005`, `SAM1006`) **have
   no Writers Template at all**; nothing the converter can do will ever build them, and chasing
-  them is wasted work. `PMT101` converts since r423 (the table-row page markers). A refused
+  them is wasted work. `PMT101` converts since r423 (the table-row page markers). **And 38
+  PRE-INTAKE modules hold a Writers Template but were never converted** (the §0 list: the
+  BLL243–BLL276 block, CEDK401, CEDO201, CEDO402, CEDR101, CEDR203, CEDR401, CEDT102, CEDW303,
+  HPRE301, OSSM501, SSCI104, SSEA203, SSOG105, TRR110, TWHK902, TWHK907, TWHR905, TWHR907,
+  TWHT903, XMES202) — their first conversion is a Round 0d job (§0); until it runs they count as
+  RECORDED no-builds, and once it has run each is either converted or recorded by cause. A refused
   module's empty Claude dir is deliberately absent so no ghost directory skews pairing (the r285
   trap) — **do not recreate one.** An intake (§1f) records every new no-build module in its
   handover under one of these three headings (recognition gap with a spec / no source / needs
@@ -521,8 +608,10 @@ order; if not, the loop continues into it at once.
 Each round is bounded so an interruption loses at most one round of work.
 
 1. **PICK.** Read **`DIFF_QUEUE.md` first** (§1d — re-run the miner if it is older than the
-   corpus), then the NOT CAPTURED rows of `KB_AMALGAMATION_STATUS.md`, then
-   `reference/tests/_coverage_dashboard.py` (under WSL) / the `STOCKTAKE__Track.md` backlog,
+   corpus) — BY SECTION, it is ≈ 130 KB: `grep -n "^## "`, then the Summary and the CANDIDATE
+   rows of the ranked table by `sed -n` range — then the NOT CAPTURED rows of
+   `KB_AMALGAMATION_STATUS.md`, then `outputs/_coverage_dashboard.py --refresh` (under WSL; it
+   writes `CONVERTER_V2/outputs/COVERAGE_DASHBOARD.md`) / the `STOCKTAKE__Track.md` backlog,
    then the latest intake's §7 round order and `LOOP_STATE.md`'s "Follow-up candidates".
    Choose the top candidate: chrome regions before body, KB rows first within an area (§1c),
    then the largest derivable population, skipping anything listed under "Declined classes"
@@ -540,8 +629,8 @@ Each round is bounded so an interruption loses at most one round of work.
    DOWN, and was held back rather than shipped.
 2. **TRIANGULATE** three named modules for the class — raw WT → human gold → Claude output, side
    by side, the literal text (Decision Framework, "SHOW THE WRITERS-TEMPLATE EVIDENCE").
-3. **MEASURE corpus-wide before coding** (§5 step 2) with a probe in `outputs/` that scans ALL
-   Writers Templates — remember the §16 trap: a filter on `/media list/` hides the 286 combined
+3. **MEASURE corpus-wide before coding** (OPERATING_GUIDE.md §5 step 2) with a probe in
+   `outputs/` that scans ALL Writers Templates — remember the OPERATING_GUIDE.md §16 trap: a filter on `/media list/` hides the 286 combined
    `Writers Template + Media List.docx` files. Report the share PER template family and subject
    family, not just the total (§1b). Classify: A1 / A2 / B-i / B-ii / C. Only B and C
    (instructions) are actionable. If the target is gold-derived and the share is < 0.60 or tied
@@ -551,20 +640,23 @@ Each round is bounded so an interruption loses at most one round of work.
    are the precedents), never a corpus-wide rule.
 4. **IMPLEMENT** behind a data flag in `data/*.json` AND an env toggle `<NAME>_OFF`. Edit data
    files with the Edit tool only (they are tab-indented; never `json.dumps` them).
-5. **REBUILD** the affected set + the tag/type family (§0a/§0b) with `batch_convert.cjs` run
-   directly under WSL — the form every round since r410 has used:
+5. **REBUILD** the affected set + the tag/type family (OPERATING_GUIDE.md §0a/§0b) with
+   `batch_convert.cjs` run directly under WSL — the form every round since r410 has used:
    `cd CONVERTER_V2/reference/tests && STUB_OEMBED=1 node --require ./_deflate_raw_polyfill.cjs batch_convert.cjs <codes> --force`
    — `scoped_ship.sh --affected <list> --toggle <NAME>_OFF --round N` for a scoped ship, and the
    OPERATING_GUIDE.md §10 recipe for a FULL regeneration (batches of ~11 modules; a batch that
-   fails on the oembed-cache write race is re-run singly). `_regen_safe.sh` only with
-   `REGEN_TIMEOUT` set (§6). Keep each command under the 30-minute shell timeout and write
-   progress to a file so nothing is lost. Prove freshness (under WSL):
+   fails on the oembed-cache write race is re-run singly). Which form: direct `batch_convert.cjs`
+   for ≤ 11 codes; `REGEN_TIMEOUT=600 ./_regen_safe.sh` when you want the rc-124 split and the
+   freshness post-check; `outputs/_s29_r416_fullship_par.sh` for a FULL regen (4 parallel workers,
+   safe under WSL — the "never in parallel" line in `_regen_safe.sh`'s header is the stale
+   45-second-wall note). Keep each command under the 30-minute shell timeout and write progress
+   to a file so nothing is lost. Prove freshness (under WSL):
    `_content_manifest.py fresh --affected <list>` → 0 truly stale.
 6. **PROVE** with `_ab.py <TOGGLE>_OFF=1 <codes>` (the toggle-OFF corpus must be byte-identical
    on every untouched module), then the gates: `bash run_all_gates.sh`, plus the verifier of any
    widget touched, over its WHOLE family. Every gate holds-or-improves, `pairs skipped (parse
    error)` is 0, all selftests green.
-   - If a gate regresses: **debug, never revert** (§0a). Up to **three** repair attempts inside
+   - If a gate regresses: **debug, never revert** (OPERATING_GUIDE.md §0a). Up to **three** repair attempts inside
      the round. After the third failure, toggle the round OFF, prove byte-identity with the
      pre-round corpus, record the class as "BLOCKED — needs Chris" in `LOOP_STATE.md` with the
      evidence, and move to the next class. Blocked is not the same as declined.
@@ -577,19 +669,28 @@ Each round is bounded so an interruption loses at most one round of work.
    - A verifier's RESULT line must read ✓ at its recorded baseline and ✗ only above it (the r348
      form). A round may not ship while any RESULT line is red; "red at the standing baseline" is
      not a state the loop is allowed to learn to ignore.
-7. **FINALISE** (§12): prepend the `BUILD_CHANGELOG.md` entry, bump `Config.js AppVersion`,
+7. **FINALISE** (OPERATING_GUIDE.md §12): prepend the `BUILD_CHANGELOG.md` entry, bump `Config.js AppVersion`,
    update `OPERATING_GUIDE.md` §14 if a baseline or toggle changed, refresh `gate_baseline.json`
    (every field — `skeleton.pairs` included) and the feature index (`build_feature_index.cjs`)
    after any regeneration, **mirror every changed loop artefact — `gate_baseline.json`,
    `run_all_gates.sh`, `_corpus.py`, any new verifier, `LOOP_STATE.md`, `KB_AMALGAMATION_STATUS.md`,
-   `DIFF_QUEUE.md`, `COVERAGE_DASHBOARD.md`, this file — into `pageforge-site/converter-v2/loop/`
-   and prove the mirror byte-identical (`cmp`)**: `CONVERTER_V2/reference/tests/` is NOT in git,
-   so the mirror is the gate tooling's only committed copy (22 Sept 2026: the committed baseline
-   was found twelve rounds behind the live one). Then `git add` + `git commit` in
-   `pageforge-site`. Then append the round's one-line result to `LOOP_STATE.md`
+   `DIFF_QUEUE.md`, `outputs/COVERAGE_DASHBOARD.md`, this file, and the command copies
+   (`.claude/skills/*/SKILL.md` → `loop/_skills/<name>.SKILL.md`, `.claude/settings.json` →
+   `loop/_settings/`, `.claude/hooks/*` → `loop/_hooks/`) — into `pageforge-site/converter-v2/loop/`
+   and prove the mirror byte-identical (`cmp`)**:
+   `CONVERTER_V2/reference/tests/` is NOT in git, so the mirror is the gate tooling's only
+   committed copy (22 Sept 2026: the committed baseline was found twelve rounds behind the live
+   one). If the round changed the Claude dir or page count, update the `expect` values at
+   `_MIGRATION/verify_after_transfer.sh` lines 76–80 the same way (dated comment,
+   `.pre-r<NNN>.bak`) — the next health check reads a stale value as a broken tree. When the
+   round just finalised is the one §0 item 7 or the §0 census table names (today r425), update
+   those two places in the same commit (item 7 → "no round in flight — see LOOP_STATE.md"). Then `git add`
+   + `git commit` in `pageforge-site`. Then move the round's PICK + what-shipped sections to
+   `LOOP_STATE_ARCHIVE.md` (§5d) and append the round's one-line result to `LOOP_STATE.md`
    ("r314 · class X · shipped/declined/blocked · scaffold 49.94→50.02 · pages moved N").
 
-Never chain a skeleton score from a state file that a scoped regeneration has left stale (§16):
+Never chain a skeleton score from a state file that a scoped regeneration has left stale
+(OPERATING_GUIDE.md §16):
 refresh the state after every scoped regen, and run a fresh full score when one fits.
 
 ## 4. When to stop (any one of these ends the loop)
@@ -598,20 +699,23 @@ refresh the state after every scoped regen, and run a fresh full score when one 
   corpus, and has no candidate row left (chrome floor 10 modules, body floor 20 pages, each
   judged per template/subject group); `KB_AMALGAMATION_STATUS.md` has no NOT CAPTURED row
   left with ≥ 20 in-scope pages; and the dashboard backlog has no derivable class ≥ 20 pages.
-  **Any exhaustion verdict reached before 19 September 2026 is VOID**, for the same reason the
-  sessions 15–18 verdicts are: the corpus gained 98 modules and 24 family bases the queue had
-  never seen, and re-mining on 19 Sept moved it 168 → 188 candidate rows (183 after round 408).
-  Exhaustion may only be declared on a miner run over the POST-intake corpus.
+  **Any exhaustion verdict reached before the latest Round 0d (§1f) is VOID** — today that means
+  before 19 September 2026 — for the same reason the sessions 15–18 verdicts are: the corpus
+  gained 98 modules and 24 family bases the queue had never seen, and re-mining on 19 Sept moved
+  it 168 → 188 candidate rows (183 after round 408). Exhaustion may only be declared on a miner
+  run over the POST-intake corpus. A "do not re-measure" note in `LOOP_STATE.md` is likewise VOID
+  after an intake.
   Everything remaining is class C (editorial) or is in "Declined classes". This is the GOOD
   ending — but it may only be declared with the miner's output quoted in the report. The
   session 15–18 verdicts, reached without the miner, do not count.
   **AND (22 Sept 2026 review):** every item in the latest intake handover's recommended round
   order (`LOOP_INTAKE__*.md` §7), in `LOOP_STATE.md`'s "Follow-up candidates" section and in its
   "Needs Chris" list has been dispositioned in writing; **an exhaustion verdict is PROVISIONAL
-  until the session has spent one PICK pass on a lane it has not used this session** — the lanes
-  are: the miner's rows; the KB queue; a content-level re-read of the hand-off boxes on disk;
-  the recognition / no-build list; per-family registry rows (§1d exception 1); the loss ledger's
-  largest family — and the STOPPED entry names the lanes and instruments tried. (Nine exhaustion
+  until the session has spent one PICK pass on at least one lane OTHER THAN the miner's rows that
+  it has not used this session** — the lanes are: the miner's rows; the KB queue; a content-level
+  re-read of the hand-off boxes on disk; the recognition / no-build list; per-family registry rows
+  (§1d exception 1); the loss ledger's largest family — if every lane has been tried this
+  session, the verdict stands, and the STOPPED entry names all six with what each found. (Nine exhaustion
   stops in eighteen sessions to 21 Sept 2026; each of the five miner-quoted ones — s21, s22, s24,
   s25, s30 — was followed within two sessions by 7–11 shipped rounds and +0.29 to +0.34pp found
   on a lane the stopping session had not tried; s30 stopped with two items still recorded in the
@@ -635,10 +739,12 @@ refresh the state after every scoped regen, and run a fresh full score when one 
   regeneration), do not start it: finish that round's PICK and measurement, record them in
   `LOOP_STATE.md`, and stop — the sessions 11–12 pattern.
 - **Widget-BUILD rounds (Chris's D10-3).** A build round is invisible to the skeleton score by
-  design (A1: a writer-tagged widget is judged on its own verifier), so: (a) the plateau "moved"
-  test is the type's *Still a box* count on `COVERAGE_DASHBOARD.md`, regenerated at the start of
-  every build round and again after its regeneration — ≥ 20 sites converted from hand-off box to
-  built widget is progress; (b) the §3 step-3 solidify test does not apply — the writer's tag is
+  design (A1: a writer-tagged widget is judged on its own verifier; one widget type per kickoff,
+  largest un-built population first — D10-3), so: (a) the plateau "moved" test is the type's
+  *Still a box* count on `outputs/COVERAGE_DASHBOARD.md`, regenerated with
+  `outputs/_coverage_dashboard.py --refresh` at the start of every build round and again after
+  its regeneration (a stale dashboard cannot be the test) — ≥ 20 sites converted from hand-off
+  box to built widget is progress; (b) the §3 step-3 solidify test does not apply — the writer's tag is
   the target — while the 20-page floor applies per authoring SHAPE family within the type; (c)
   exhaustion counts the dashboard's un-built widget rows as queue classes.
 - **Blocked.** Two classes in a row end BLOCKED (§3 step 6). Something systemic is wrong; stop.
@@ -681,7 +787,7 @@ session seamless: the conversation is disposable, the state file is not.
 `LOOP_STATE.md`'s `## Needs Chris — open decisions` section — date raised, the question, what it
 holds up in pages — oldest first. A STOPPED entry or a round record points at that list and
 never restates it; a session that raises a new item appends one line; a decision strikes its
-line. `/loop-decisions` reads that list first; `/loop-review` re-checks it (3g).
+line. `/loop-decisions` reads that list first; `/loop-review` re-checks it (the skill's step 3g).
 
 ## 5c. NEVER end the turn to wait (added 15 Sept 2026 — the "continue once the gates finish" stall)
 
@@ -720,7 +826,8 @@ because the files were smaller then. **The fix is in the files, not the model.**
   finalise step; only the one-line Round-log entry stays hot. NEVER read it whole: `grep -n '^## '`,
   then `sed -n 'a,bp'`.
 - `DIFF_QUEUE.md` — the miner writes the summary, census, chrome facts, the ranked table (top 100 +
-  every candidate) and the top-25 candidate details here (≈120 KB); everything else goes to
+  every candidate) and the top-25 candidate details here (≈130 KB — over the whole-read cap below,
+  so it is read BY SECTION, §3 step 1); everything else goes to
   `CONVERTER_V2/outputs/_diff_queue_details.md` (≈600 KB), which is NEVER read whole — grep a rank.
 - A STOPPED entry ≤ 1,500 characters. A Round-log line ≤ 500. A "Next session starts with" line
   ≤ 800. A Decisions-from-Chris block records the decision, not the conversation.
@@ -759,7 +866,8 @@ STOP procedure (§7) immediately so the session ends with the state saved rather
   the previous run. On 19 September that showed exact-chain down 419 when it was actually up
   1,631 — a false regression verdict that took an hour to unpick. **Always run `cs bc` before
   believing those two rows.**
-- Never run a single command longer than ~10 minutes; batch the corpus.
+- Size every command to finish well inside the 30-minute shell timeout — aim for ≤ 10 minutes;
+  batch the corpus (a 900 s per-batch wall is the ceiling, not the target).
 - Write `LOOP_STATE.md` before and after every round; a new session resumes from it.
 - Commit after every round, so a crash loses at most one round.
 - Keep console output small: write big results to files under `CONVERTER_V2/outputs/` and print
@@ -780,7 +888,8 @@ STOP procedure (§7) immediately so the session ends with the state saved rather
   put the python inside the `wsl` call; never remove the hook to get past it.
 - **Context diet (added 14 Sept 2026 after the first run filled 1M of context in an hour).**
   `OPERATING_GUIDE.md` (the converter guide — it WAS `CLAUDE.md` until 21 Sept 2026, when its 1.3 MB was found to be auto-loaded into context after every compaction, thrashing the loop; the real `CLAUDE.md` is now a 4 KB pointer) is ~1.3 MB and `BUILD_CHANGELOG.md` ~2 MB — never read either whole. Read
-  OPERATING_GUIDE.md §0–§6, §9, §10, §12, §16 by line range (grep the `## ` headings first) and only the
+  OPERATING_GUIDE.md §0, §5, §9, §10, §12, §16 (the §0 item 1 list; §2 DATA OVER CODE and §6
+  conventions once) by line range (grep the `## ` headings first) and only the
   top 3–4 changelog entries. Read gold/Claude pages with `grep`/`sed -n` ranges, never whole
   files. Prefer `head`/`wc`/counts over dumping lists. **After every automatic context
   compaction, follow the §5d post-compaction re-read exactly** — bounded, by section, never a whole
@@ -824,11 +933,12 @@ lost and so the health check can compare it with the skill body mechanically (`$
 the placeholder `/loop-start` fills with the budget Chris typed; it is kept literally in both
 copies so they are byte-identical):
 
-> Continue the PageForge autonomous loop in this folder. Start with a health check: `git status` in pageforge-site, `bash _MIGRATION/verify_after_transfer.sh` (must PASS — except that a census FAIL whose only cause is that the gold-module or docx counts have GROWN is the INTAKE TRIGGER: new human-developer modules have arrived, so do Round 0d per LOOP__Autonomous_Rounds.md §1f FIRST — build their Claude equivalents, re-base every instrument, write the intake handover and re-prioritise the queue — before any PICK), delete every stale git lock in pageforge-site (`.git/index.lock`, `.git/HEAD.lock`, `.git/next-index-*.lock`, `.git/objects/maintenance.lock`, and any `.git/objects/*/tmp_obj_*`), `wc -c LOOP_STATE.md DIFF_QUEUE.md` — LOOP_STATE.md over 100 KB → condense/archive per §5d BEFORE anything else (over 160 KB = health check FAILED until fixed); never read any file over 100 KB whole (LOOP_STATE_ARCHIVE.md and outputs/_diff_queue_details.md are grep-only); confirm LOOP__Autonomous_Rounds.md still carries its "Amended:" header line (if not, an older copy has overwritten it — restore it from the mirror's git history before doing anything else); and note the KB repo's HEAD against KB_AMALGAMATION_STATUS.md. Then read LOOP__Autonomous_Rounds.md and LOOP_STATE.md — if LOOP_STATE.md does not exist, do Round 0 and Round 0b first. Reconcile git with the state file: any uncommitted engine or data files belong to the round LOOP_STATE.md names as in progress — never git checkout or git restore them; check them against that round's PICK, finish or toggle OFF, and continue from the step the state file shows; if the Position section names a built-but-inert round, finishing it is Round 1. Honour every entry under "Decisions from Chris" and never re-ask them; the open ones are in the "Needs Chris" list. THE DIFF MINER (§1d) IS MANDATORY: if reference/tests/_diff_miner.py or DIFF_QUEUE.md does not exist, or DIFF_QUEUE.md is older than the corpus, do Round 0c FIRST — build/re-run the miner, commit DIFF_QUEUE.md — and take the PICK from it (chrome regions first: module-code chip, title, module menu, crumbs/side-nav, footer). Any exhaustion verdict reached before 19 September 2026 and any "do not re-measure" note in LOOP_STATE.md are VOID; exhaustion may only be declared under §4's full test — the miner's queue quoted, the intake's §7 list and the follow-up list dispositioned, and one PICK pass spent on a lane this session has not used. BEFORE JUDGING ANY GATE READ §1e: when a gate looks worse, split it by population or run _content_manifest.py fresh; never stop on a plateau or a regression you have not split. Never call python or python3 from the Bash tool on this machine (the Windows Store stub hangs 30 minutes; the settings hook now refuses it) — every Python and gate runs under WSL; _gatecheck.py prints CACHED rows for gates it did not run, so run `cs bc` before believing the compare_structure or body_compare lines. This message carries the code REGENERATE CORPUS for every round of the loop, scoped by the §0a/§0b family rules in OPERATING_GUIDE.md (the converter guide; CLAUDE.md is only a pointer to it), and for the intake round's full regeneration. Budget for this session: $ARGUMENTS — if that is blank, 12 rounds or 10 hours, whichever comes first. RUN UNINTERRUPTED (§5c): never end your turn to wait for gates, regenerations, verifiers or background commands — run them in the foreground with a long timeout or poll them until done; never ask me whether to continue; a blocked item ends the round, not the session — record it and move to the next class. Follow the §6 context-diet rules: never read OPERATING_GUIDE.md or BUILD_CHANGELOG.md whole, and after every automatic compaction do ONLY the bounded §5d re-read and log the compaction as one line in LOOP_STATE.md. Update LOOP_STATE.md before and after every round, mirror the loop artefacts and commit after every round, never push. Stop only when §4 says so; then give me the §5 plain-English report with the copy-and-paste push block, and end LOOP_STATE.md with a "Next session starts with:" line.
+> Continue the PageForge autonomous loop in this folder. Start with a health check: `git status` in pageforge-site, `bash _MIGRATION/verify_after_transfer.sh` (must PASS — except that a census FAIL whose only cause is that the gold-module, gold-page or docx counts have GROWN is the INTAKE TRIGGER: new human-developer modules have arrived, so do Round 0d per LOOP__Autonomous_Rounds.md §1f — build their Claude equivalents, re-base every instrument, write the intake handover and re-prioritise the queue — before any PICK and before the miner check, but AFTER finishing or toggling OFF any in-flight or built-but-inert round; a Claude-dir or Claude-page count off by exactly what the last shipped round records is a stale expect value in that script — fix it and continue; then run the §0 intake checks (b)–(d)), delete every stale git lock in pageforge-site (`.git/index.lock`, `.git/HEAD.lock`, `.git/next-index-*.lock`, `.git/objects/maintenance.lock`, and any `.git/objects/*/tmp_obj_*`), `wc -c LOOP_STATE.md DIFF_QUEUE.md` — LOOP_STATE.md over 100 KB → condense/archive per §5d BEFORE anything else (over 160 KB = health check FAILED until fixed); never read any file over 100 KB whole (LOOP_STATE_ARCHIVE.md and outputs/_diff_queue_details.md are grep-only); confirm `grep -c '^\*\*Amended:\*\*' LOOP__Autonomous_Rounds.md` prints 1 (if not, an older copy has overwritten it — find the newest mirror version that has the header with `git -C pageforge-site log -S'**Amended:**' --oneline -- converter-v2/loop/LOOP__Autonomous_Rounds.md`, `git show <hash>:converter-v2/loop/LOOP__Autonomous_Rounds.md`, diff it against the live file and merge the lost sections IN — never replace the whole file — before doing anything else); and note the KB repo's HEAD against KB_AMALGAMATION_STATUS.md. Then read LOOP__Autonomous_Rounds.md and LOOP_STATE.md — if LOOP_STATE.md does not exist, do Round 0 and Round 0b first. Reconcile git with the state file: any uncommitted engine or data files belong to the round LOOP_STATE.md names as in progress — never git checkout or git restore them; check them against that round's PICK, finish or toggle OFF, and continue from the step the state file shows; if the Position section names a round as LAST BUILT, SHIPPED INERT (a DECLINED-INERT round is not it), finishing it is Round 1 — the "Next session starts with" line names the round and the order. Honour every entry under "Decisions from Chris" and never re-ask them; the open ones are in the "Needs Chris" list. THE DIFF MINER (§1d) IS MANDATORY: if reference/tests/_diff_miner.py or DIFF_QUEUE.md does not exist, or DIFF_QUEUE.md is older than the corpus (and no intake round is due — an intake outranks this check and re-mines in its Phase 5), do Round 0c FIRST — build/re-run the miner, commit DIFF_QUEUE.md — and take the PICK from it (chrome regions first: module-code chip, title, module menu, crumbs/side-nav, footer). Any exhaustion verdict reached before the latest intake round (today: before 19 September 2026) and any "do not re-measure" note in LOOP_STATE.md are VOID; exhaustion may only be declared under §4's full test — the miner's queue quoted, the intake's §7 list and the follow-up list dispositioned, and one PICK pass spent on a lane other than the miner's rows that this session has not used (if every lane has been tried, the verdict stands and the STOPPED entry names them all). BEFORE JUDGING ANY GATE READ §1e: when a gate looks worse, split it by population or run _content_manifest.py fresh; never stop on a plateau or a regression you have not split. Never call python or python3 from the Bash tool on this machine (the Windows Store stub hangs 30 minutes; the settings hook now refuses it) — every Python and gate runs under WSL; _gatecheck.py prints CACHED rows for gates it did not run, so run `cs bc` before believing the compare_structure or body_compare lines. This message carries the code REGENERATE CORPUS for every round of the loop, scoped by the §0a/§0b family rules in OPERATING_GUIDE.md (the converter guide; CLAUDE.md is only a pointer to it), and for the intake round's full regeneration. Budget for this session: $ARGUMENTS — if that is blank, 12 rounds or 10 hours, whichever comes first. RUN UNINTERRUPTED (§5c): never end your turn to wait for gates, regenerations, verifiers or background commands — run them in the foreground with a long timeout or poll them until done; never ask me whether to continue; a blocked item ends the round, not the session — record it and move to the next class. Follow the §6 context-diet rules: never read OPERATING_GUIDE.md or BUILD_CHANGELOG.md whole, and after every automatic compaction do ONLY the bounded §5d re-read and log the compaction as one line in LOOP_STATE.md. Update LOOP_STATE.md before and after every round, mirror the loop artefacts and commit after every round, never push. Stop only when §4 says so; then give me the §5 plain-English report with the copy-and-paste push block, and end LOOP_STATE.md with a "Next session starts with:" line.
 
 **The mechanical check** (the health check of every session and of every `/loop-review`):
 `diff <(sed -n 's/^> Continue the PageForge/Continue the PageForge/p' LOOP__Autonomous_Rounds.md) <(sed -n '6p' .claude/skills/loop-start/SKILL.md)`
-must print nothing.
+must print nothing, and `grep -c '^\*\*Amended:\*\*' LOOP__Autonomous_Rounds.md` must print 1
+(an unanchored grep for "Amended:" also matches the quoted message above and proves nothing).
 
 **The standard STOP message** (Chris pastes this into a running session to end it cleanly; it
 lets whatever is running finish rather than cutting it off):
