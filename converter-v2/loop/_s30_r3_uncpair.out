@@ -1,0 +1,57 @@
+unclassified one-table bundles: 905
+by (width, red?, url?) → the gold widget holding the first data cell (n >= 15):
+  ('2', 'red', 'text')       n= 119 absent=55(35m) table-responsive=15(9m) questionContainer=8(7m) dragAndDrop=7(6m) multiChoiceQuiz=6(6m) activity=6(6m)
+  ('2', 'plain', 'text')     n= 110 absent=31(22m) questionContainer=17(11m) dragAndDrop=16(15m) table-responsive=14(13m) ddContainer=8(8m) memoryGame=6(3m)
+  ('3', 'plain', 'text')     n= 110 flipCard=29(10m) table-responsive=18(16m) absent=14(13m) dragAndDrop=14(12m) radioQuiz=10(8m) activity=8(4m)
+  ('2', 'red', 'url')        n=  82 absent=63(39m) dragAndDrop=5(4m) activity=4(4m) table-responsive=3(2m) typing=2(2m) hintSlider=1(1m)
+  ('4', 'plain', 'text')     n=  77 table-responsive=34(28m) absent=11(10m) memoryGame=8(8m) carousel=4(4m) multiChoiceQuiz=4(3m) flipCard=3(3m)
+  ('3', 'red', 'url')        n=  59 absent=44(33m) table-responsive=4(4m) multiChoiceQuiz=3(3m) dragAndDrop=3(3m) flipCard=2(2m) radioQuiz=1(1m)
+  ('3', 'red', 'text')       n=  38 absent=14(13m) multiChoiceQuiz=4(4m) dragAndDrop=4(4m) table-responsive=3(2m) carousel=3(3m) tabs=2(2m)
+  ('5', 'plain', 'text')     n=  28 table-responsive=14(13m) absent=6(6m) multiChoiceQuiz=4(2m) dragAndDrop=3(3m) bingo=1(1m)
+  ('1', 'plain', 'text')     n=  27 absent=10(9m) activity=4(3m) questionContainer=4(1m) reorder=3(2m) dragAndDrop=2(2m) table-responsive=2(1m)
+  ('2', 'n/a')               n=  25 (no textual cell)=25(0m)
+  ('4', 'red', 'text')       n=  23 absent=10(9m) table-responsive=4(4m) activity=3(3m) dragAndDrop=2(2m) memoryGame=1(1m) accordion=1(1m)
+  ('2', 'plain', 'url')      n=  18 absent=13(9m) dragAndDrop=3(2m) multiChoiceQuiz=1(1m) flipCard=1(1m)
+  ('3', 'n/a')               n=  16 (no textual cell)=16(0m)
+  ('4', 'red', 'url')        n=  15 absent=10(10m) table-responsive=3(3m) activity=1(1m) multiChoiceQuiz=1(1m)
+examples:
+  (('7', 'plain', 'text'), 'absent'): AGH1001 p1.0: «[Interactive]» 3x7 [Bananas | Woolen hats | Leather | Milk | Butter | Cheese | W]
+  (('2', 'plain', 'text'), 'dragAndDrop'): AGH1001 p1.0: «[Interactive]» 10x2 [Dairy | Pip fruit] | AGH1004 p2.0: «[interactive embedded activity» 4x2 [ | Rolling hills and slopes]
+  (('1', 'red', 'text'), 'absent'): AGH1001 p2.0: «» 1x1 [] | BLL236 p2.0: «» 10x1 [Megan _________, “This is boring, do I h]
+  (('4', 'plain', 'text'), 'absent'): AGH1001 p4.0: «[Interactive]» 2x4 [Coldest season / Matariki celebration of | Warmer weather / ] | BLL155 p1.0: «» 3x4 [good | waits | Pookee | stands]
+  (('2', 'plain', 'text'), 'carousel'): AGH1001 p5.0: «[Activity: Embedded]» 5x2 [ | Grapes are pruned during winter when the]
+  (('2', 'plain', 'text'), 'multiChoiceQuiz'): AGH1003 p2.0: «[Activity: Embedded]» 11x2 [Water holding capacity | ] | ENGJ402 p6.0: «» 8x2 [• **Contemporary** lyric poems follow a  | True/**False**]
+  (('3', 'plain', 'text'), 'table-responsive'): AGH1003 p3.0: «» 5x3 [Topdressing | Topdressing planes apply fertiliser over | She] | BLL112 p2.0: «» 3x3 [pan | spin | pip]
+  (('3', 'plain', 'text'), 'accordion'): AGH1003 p4.0: «[Activity: Embedded][Mix and m» 5x3 [Green Manure | Growing crops and then putting them back | ] | MXEX101 p2.0: «[Activity embedded]» 4x3 [Teaching Patterns using Natural Material]
+  (('4', 'plain', 'text'), 'free'): AGH1007 p2.0: «[Activity:Embedded]» 5x4 [Cattle |  | Pig | ] | BLL237 p1.0: «» 3x4 [know | fault | toes | talking]
+  (('2', 'plain', 'text'), 'questionContainer'): AGH1007 p3.0: «[Activity: Embedded]» 10x2 [Teeth | Physical digestion of food through chewi] | ANZH205 p1.0: «» 9x2 [Rangatira | Leader or chief.]
+  (('3', 'red', 'text'), 'multiChoiceQuiz'): AGH1007 p4.0: «[Activity: Embedded]» 11x3 [ | Silage | YES] | BLL174 p1.0: «» 9x3 [grub | [source image of an insect grub] | grab]
+  (('2', 'red', 'text'), 'dragAndDrop'): AGH1007 p5.0: «[Activity: Embedded]» 6x2 [ | Ewe pregnant with singles] | ANZH203 p4.0: «[Interactive] Please create a » 5x2 [While in New Zealand, Cook and his crew  | Cook and his stor]
+  (('2', 'plain', 'text'), 'ddContainer'): AGH1007 p8.0: «[Activity: Embedded]» 3x2 [Skin and mucous act as first layer of de | Neutrophils destr] | AGH1008 p4.0: «[Activity: Embedded]» 8x2 [Chromosomes | the allele that is always shown if prese]
+  (('3', 'red', 'text'), 'tabs'): AGH1007 p9.0: «[Activity: Embedded]» 6x3 [Facial Eczema | Fungi | ] | MXDB102 p10.0: «» 7x3 [ | triangle | tapatoru]
+  (('4', 'plain', 'text'), 'tabs'): AGH1008 p2.0: «[Activity: Embedded] Mix and M» 4x4 [ENERGY | Measured in MJ of ME/kg/DM. Excess energ | Used for] | BLL174 p1.0: «» 3x4 [clouds | soaking | thinks | enters]
+  (('2', 'plain', 'text'), 'accordion'): AGH1008 p3.0: «» 4x2 [Set Stocking | Cows, or sheep, are divided into mobs an]
+  (('3', 'plain', 'text'), 'absent'): AGH1009 p7.0: «[Activity: Embedded]» 3x3 [**Different** | **The Same** | **Different**] | ANZH304 p3.0: «[Interactive] Please create a » 2x3 [The Crown was going to take complete con | An honest mistake]
+  (('2', 'plain', 'text'), 'absent'): ANZH104 p1.0: «[Activity- embedded] Drag and » 2x2 [Toys / Games / Movies / Travel / TV | Food / Water / Shelter] | ANZH302 p3.0: «[Interactive] Please create a » 10x2 [Better job opportunities | Unskilled manual work]
+  (('5', 'plain', 'text'), 'absent'): ANZH104 p3.0: «» 2x5 [Jersey | Shoes | Coat | Scarf | Shorts] | CEDW501 p3.0: «» 3x5 [**Tuahine** / *Sister of a male (used wh | **Tungāne** / *Br]
+  (('3', 'plain', 'text'), 'speechBubble'): ANZH104 p6.0: «» 4x3 [tarakihi | kererū | Eel] | ENGR202 p1.0: «» 17x3 [Puny |  | x]
+  (('2', 'plain', 'text'), 'flipCard'): ANZH105 p5.0: «[Interactive» 6x2 [What is it? | Helmet]
+  (('2', 'plain', 'text'), 'tabs'): ANZH303 p3.0: «[Interactive] Drag and drop ac» 4x2 [Mana Tupuna | Inherited and unseen power from the mana]
+  (('3', 'plain', 'text'), 'radioQuiz'): ANZH303 p3.0: «[Interactive] Create a true/fa» 5x3 [Mana in Te ao Māori is interconnected to | ✓ | ] | BLL232 p2.0: «» 6x3 [“I love fish and chips!” said James exci | correct | ]
+  (('4', 'plain', 'url'), 'absent'): ANZH304 p3.0: «» 2x4 [**Text:** The Treaty had to be translate | Henry Williams / ] | MXFL201 p6.0: «[interactive activity] flip ca» 3x4 [https://www.istockphoto.com/photo/skylin | https://www.istoc]
+  (('2', 'plain', 'text'), 'dropDown'): ANZH304 p4.0: «[Interactive] Please create a » 6x2 [Where? | Wairau Valley, South Island.]
+  (('3', 'plain', 'url'), 'questionContainer'): ANZH404 p3.0: «[Interactive] Please create a » 4x3 [The 1889/90 Kauhanganui parliament | Image: https://teara.go]
+  (('3', 'red', 'url'), 'absent'): ANZHFUN05 p0.0: «[Activity]» 3x3 [**Keep the Statue** | **Remove the Statue** | **Add to the S] | BLL110 p0.0: «» 3x3 [https://www.istockphoto.com/vector/blue- | https://www.istoc]
+  (('3', 'red', 'text'), 'absent'): ARFUN02 p0.0: «» 3x3 [**Comparison** [Item 35] / It’s like run | **Comparison:** [] | BLL137 p1.0: «» 2x3 [ |  | Can we have a collection of 8 ‘b’ and 8’]
+  (('3', 'plain', 'text'), 'dragAndDrop'): ARFUN04 p0.0: «» 4x3 [1. Symmetrical balance | Both sides appear identical, resemb] | BLL160 p0.0: «» 4x3 [bath | thanks | three]
+  (('3', 'plain', 'url'), 'absent'): BLL110 p0.0: «» 3x3 [https://www.istockphoto.com/vector/illus | https://www.istoc] | BLL110 p0.0: «» 3x3 [https://www.istockphoto.com/vector/illus | https://www.istoc]
+  (('2', 'plain', 'url'), 'absent'): BLL110 p0.0: «» 4x2 [https://www.istockphoto.com/vector/smili | https://www.istoc] | BLL110 p0.0: «» 4x2 [https://www.istockphoto.com/vector/happy | https://www.istoc]
+  (('5', 'plain', 'text'), 'table-responsive'): BLL113 p1.0: «» 3x5 [ | pan | sit |  | spin] | BLL114 p2.0: «» 3x5 [tap | pan | snap |  | sits]
+  (('4', 'plain', 'text'), 'ddContainer'): BLL114 p2.0: «» 4x4 [ants | Audio of a/n/t/s | snap | Audio of snap s/n/a/p]
+  (('5', 'red', 'text'), 'flipCard'): BLL115 p1.0: «» 3x5 [spat | pats | snaps | tip | at]
+  (('5', 'plain', 'text'), 'dragAndDrop'): BLL117 p1.0: «» 3x5 [Pat | pants | snaps |  | ants] | BLL136 p1.0: «» 6x5 [Can I have __________ cups?]
+  (('4', 'plain', 'url'), 'table-responsive'): BLL117 p2.0: «» 4x4 [ants | https://www.istockphoto.com/photo/marchi | tins | htt] | MXDB201 p3.0: «» 3x4 [1 litre paint | 2 litre paint | 5 litre paint | 10 litre pai]
+  (('4', 'plain', 'text'), 'table-responsive'): BLL121 p2.0: «» 2x4 [cap | kicks | mat | track] | BLL133 p1.0: «» 2x4 [plum | was | drip | snack]
+  (('3', 'plain', 'text'), 'flipCard'): BLL126 p1.0: «» 3x3 [has | dent | stand] | BLL140 p0.0: «» 3x3 [nail | paid | tail]
+  (('4', 'plain', 'text'), 'memoryGame'): BLL127 p1.0: «» 4x4 [track | stamp | did | track] | BLL137 p1.1: «» 4x4 [lack | landx | letx | laptop]
+  (('3', 'red', 'url'), 'radioQuiz'): BLL127 p2.0: «» 6x3 [The kids did a tap. |  | Correct answer: Thumbs up]

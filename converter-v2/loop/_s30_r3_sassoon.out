@@ -1,0 +1,39 @@
+GOLD sassoon usage — pages by prefix: [('BLL', 147), ('TRR', 41), ('PMT', 3), ('BLLR', 3), ('XMES', 2), ('ENFUN', 1), ('WJFUN', 1), ('CEDK', 1), ('CEDO', 1), ('CEDR', 1), ('CEDW', 1), ('XTAS', 1)]
+modules by prefix: [('BLL', 91), ('TRR', 11), ('BLLR', 3), ('PMT', 1), ('ENFUN', 1), ('WJFUN', 1), ('CEDK', 1), ('CEDO', 1), ('CEDR', 1), ('CEDW', 1), ('XMES', 1), ('XTAS', 1)]
+text kinds: [(('BLL', 'whole', 'word'), 2180), (('BLL', 'whole', 'letter'), 1477), (('BLL', 'whole', 'sentence'), 416), (('BLL', 'whole', 'phrase'), 307), (('TRR', 'inner', 'letter'), 197), (('TRR', 'whole', 'word'), 125), (('BLL', 'inner', 'letter'), 91), (('TRR', 'whole', 'phrase'), 40), (('BLL', 'inner', 'word'), 37), (('TRR', 'inner', 'word'), 35), (('TRR', 'whole', 'letter'), 31), (('BLLR', 'whole', 'word'), 29), (('TRR', 'whole', 'sentence'), 24), (('BLLR', 'whole', 'sentence'), 20), (('WJFUN', 'whole', 'letter'), 19), (('XMES', 'whole', 'word'), 12)]
+BLOCK elements by (prefix, tag, box): whole-sas / inner-sas / none — contexts where sassoon (whole or inner) >= 0.60 and n >= 20:
+  ('BLL', 'li', 'multiChoiceQuiz')                   n=   39 sas 1.00 {'whole-sas': 39}
+  ('BLL', 'h3', 'flipCard')                          n=  293 sas 0.80 {'whole-sas': 235, 'none': 58}
+  ('TRR', 'h4', 'carousel')                          n=   23 sas 0.78 {'whole-sas': 18, 'none': 5}
+  ('BLL', 'p', 'typing')                             n=   50 sas 0.70 {'whole-sas': 35, 'none': 15}
+  ('BLL', 'p', 'bingo')                              n= 1363 sas 0.68 {'whole-sas': 925, 'none': 438}
+  ('XMES', 'h5', 'flipCard')                         n=   21 sas 0.67 {'none': 7, 'whole-sas': 14}
+  ('BLL', 'p', 'memoryGame')                         n=  352 sas 0.62 {'none': 135, 'whole-sas': 201, 'inner-sas': 16}
+  ('BLL', 'h4', 'flipCard')                          n=  573 sas 0.60 {'whole-sas': 341, 'none': 232}
+  ('BLL', 'p', 'reorder')                            n=  296 sas 0.45 {'whole-sas': 134, 'none': 162}
+  ('BLL', 'h4', 'dragAndDrop')                       n=   20 sas 0.40 {'whole-sas': 8, 'none': 12}
+  ('BLL', 'h4', 'carousel')                          n=   38 sas 0.37 {'none': 24, 'whole-sas': 14}
+  ('BLL', 'td', 'table-responsive')                  n= 2543 sas 0.32 {'none': 1722, 'inner-sas': 72, 'whole-sas': 749}
+  ('BLL', 'h3', 'dragAndDrop')                       n=   38 sas 0.32 {'none': 26, 'whole-sas': 12}
+  ('BLL', 'p', 'dragAndDrop')                        n= 2486 sas 0.31 {'none': 1715, 'whole-sas': 762, 'inner-sas': 9}
+INNER spans (prefix, span/b, parent, box) top 20:
+  ('BLL', 'inner-span', 'p', 'activity')                  63  e.g. ['I', 'I', 'ck']
+  ('TRR', 'inner-span', 'b', 'body')                      56  e.g. ['i', 'i', 'a']
+  ('TRR', 'inner-span', 'span', 'body')                   42  e.g. ['Ee', 'Ee', 'Ee']
+  ('TRR', 'inner-span', 'b', 'activity')                  38  e.g. ['i', 'i', 'a']
+  ('BLL', 'inner-span', 'li', 'activity')                 23  e.g. ['‘g’', '‘g’', '‘g’']
+  ('PMT', 'inner-span', 'b', 'carousel')                  20  e.g. ['Tūmatauenga', 'Tāne-Mahuta', 'Whakapapa']
+  ('TRR', 'inner-span', 'i', 'activity')                  20  e.g. ['U', 'U', 'u']
+  ('TRR', 'inner-span', 'b', 'carousel')                  19  e.g. ['tiakarete', 'pia', 'hiamo']
+  ('BLL', 'inner-span', 'p', 'alertActivity')             17  e.g. ['‘g’', '/g/', '‘j’']
+  ('BLL', 'inner-span', 'p', 'memoryGame')                16  e.g. ['tail', 'tail', 'snail']
+  ('TRR', 'inner-span', 'br', 'body')                     14  e.g. ['Āta whakarongo ki tō whaea.', 'Āta whakarongo ki tō whaea.', 'Atama']
+  ('BLL', 'inner-span', 'p', 'dragAndDrop')               9  e.g. ['hilarious', 'cold', 'tiny']
+  ('TRR', 'inner-span', 'i', 'speechBubble')              8  e.g. ['u', 'U', 'u']
+  ('TRR', 'inner-span', 'b', 'multiChoiceQuiz')           8  e.g. ['kie', 'tie', 'hie']
+  ('BLL', 'inner-span', 'span', 'activity')               8  e.g. ['‘g’', '‘g’', '‘j’']
+  ('TRR', 'inner-span', 'div', 'wordSelect')              6  e.g. ['i', 'u', 'u']
+  ('TRR', 'inner-span', 'p', 'activity')                  6  e.g. ['u', 'u', 'u']
+  ('TRR', 'inner-span', 'i', 'body')                      6  e.g. ['o', 'u', 'e']
+  ('TRR', 'inner-b', 'h3', 'activity')                    4  e.g. ['u', 'u', 'ao']
+  ('ENFUN', 'inner-span', 'h4', 'accordion')              4  e.g. ['I', 'I', 'I']

@@ -1,0 +1,35 @@
+GOLD alertActivity boxes on the paired pages: 546
+  [('absent', 200), ('short', 125), ('claude:alertActivity', 47), ('claude:alert solid', 44), ('claude:alert', 43), ('claude:cv2-interactive', 35), ('claude:activity', 30), ('claude:free-text', 16), ('claude:super-content', 4), ('claude:alert top', 2)]
+  gold column: [('col-12 col-md-4 offset-md-0', 259), ('col-6 col-md-4 offset-3 offset-md-0', 77), ('col-12 col-md-3 offset-md-0', 75), ('col-12 col-md-4', 35), ('col-6 col-md-3 offset-3 offset-md-0', 24), ('col-4', 23)]
+by prefix (n >= 10):
+  BLL      n=  72 claude:alertActivity=0.40 claude:alert solid=0.28 absent=0.25 claude:alert=0.06
+  HIS      n=  36 absent=0.44 claude:activity=0.25 claude:alert solid=0.14 claude:cv2-interactive=0.08
+  ANZH     n=  26 absent=0.58 claude:alertActivity=0.31 claude:activity=0.08 claude:alert=0.04
+  MXFL     n=  19 absent=0.63 claude:alert solid=0.16 claude:alertActivity=0.05 claude:alert=0.05
+  TRR      n=  17 absent=0.47 claude:cv2-interactive=0.24 claude:activity=0.24 claude:free-text=0.06
+  SSFUN    n=  14 absent=0.50 claude:alertActivity=0.21 claude:free-text=0.14 claude:alert=0.14
+  TEDC     n=  13 absent=0.38 claude:cv2-interactive=0.31 claude:alert=0.23 claude:free-text=0.08
+  AGH      n=  12 absent=0.75 claude:cv2-interactive=0.17 claude:free-text=0.08
+  XGF      n=  12 absent=0.58 claude:alert=0.25 claude:free-text=0.08 claude:activity=0.08
+  FRNO     n=  11 claude:cv2-interactive=0.91 absent=0.09
+  ENGS     n=  10 absent=0.50 claude:cv2-interactive=0.20 claude:alert=0.20 claude:free-text=0.10
+  MXFU     n=  10 absent=0.70 claude:free-text=0.10 claude:alertActivity=0.10 claude:cv2-interactive=0.10
+by (template, subject) (n >= 15):
+  ('Standard', 'NCEA1')                                n=  89 absent=0.52 claude:alert solid=0.18 claude:activity=0.11 claude:alert=0.08
+  ('Standard', '1-10 Mathematics')                     n=  57 absent=0.56 claude:alert solid=0.12 claude:cv2-interactive=0.11 claude:alertActivity=0.07
+  ('Inquiry', '1-10 Blended Literacy')                 n=  40 claude:alert solid=0.47 absent=0.28 claude:alertActivity=0.25
+  ('Standard', '1-10 English')                         n=  39 absent=0.49 claude:activity=0.18 claude:alert=0.13 claude:cv2-interactive=0.08
+  ('Standard', '1-10 Blended Literacy')                n=  32 claude:alertActivity=0.59 absent=0.22 claude:alert=0.12 claude:super-content=0.03
+  ('Standard', 'ANZH')                                 n=  26 absent=0.58 claude:alertActivity=0.31 claude:activity=0.08 claude:alert=0.04
+  ('Standard', 'Leaving to Learn')                     n=  22 absent=0.64 claude:alert=0.27 claude:free-text=0.05 claude:activity=0.05
+  ('Bilingual', 'Te Marautanga o Aotearoa TMoA')       n=  19 absent=0.42 claude:activity=0.26 claude:cv2-interactive=0.26 claude:free-text=0.05
+examples:
+  [claude:activity] PNR104 PNR104_1_0.html: «i ētahi wā ka kite koe i te tau, 4 e tuhia ana ki tētahi atu» | TRR109 TRR109_1_0.html: «he rōpū kupu te rerenga kōrero e hono ana ki te whakaputa i » | TRR109 TRR109_2_0.html: «me mutu katoa ngā rerenga kōrero i tētahi tohutuhi. all sent» | TRR112 TRR112_3_0.html: «i whakaaro rānei koe ka puta he pikitia o tētahi hōiho mō te»
+  [claude:cv2-interactive] PNR107 PNR107_1_0.html: «kua tākaro poro tātai tau koe? he rawe te kēmu poro tātai ta» | TRR102 TRR102_2_0.html: «titiro ki tētahi atu āhua motuhake mō te 'pūriki a'. look at» | TRR102 TRR102_3_0.html: «mēnā e tika ana tō pupuri i tō pene, ka māmā ake te tuhi. ho» | TRR106 TRR106_2_0.html: «titiro ki te pikitia, ā, tirohia mēnā kei te tika te nōhanga»
+  [absent] TRR103 TRR103_2_0.html: «ka māmā ake tō tuhi mēnā e tika ana tō pupuri i tō pene. hol» | TRR103 TRR103_3_0.html: «ka māmā ake tō tuhi mēnā e tika ana tō pupuri i tō pene. hol» | TRR109 TRR109_2_0.html: «he uaua pea te wehe i ngā oro ae me ai nā te mea he āhua ōri» | TRR109 TRR109_3_0.html: «he tino ōrite ngā oro o ngā oropuare pūrua 'au' me te 'ou'. »
+  [claude:free-text] TRR116 TRR116_0_0.html: «ko te tauākī he rerenga kōrero e whakamōhio mai ana i tētahi» | HPFUN402 HPFUN402_0_0.html: «note: if you do not have access to a basketball and hoop, th» | SSFUN01 SSFUN01_0_0.html: «as you watch the videos, think about the following questions» | SSFUN02 SSFUN02_0_0.html: «if you are unsure how to write a paragraph for social scienc»
+  [claude:alert] HPFUN202 HPFUN202_0_0.html: «one activity can make someone feel frustrated, while the sam» | SSFUN02 SSFUN02_0_0.html: «keen to know more about te reo māori? have a look at this us» | SSFUN03 SSFUN03_0_0.html: «extra fun want to try and make your own map using symbols? d» | XFUN02 XFUN02_5_0.html: «tips to make reminders helpful use reminders for bedtime, wa»
+  [claude:super-content] MXFUN01 MXFUN01_3_0.html: «to continue practising number and place value knowledge, you» | MXFUN01 MXFUN01_5_0.html: «the fraction wall helps your ākonga see and understand fract» | BLL142 BLL142_1_1.html: «‘peek’ means to take a quick look, as in ‘can i have a peek’» | ENGI201 ENGI201_3_0.html: «encourage your ākonga to access the discussion board and par»
+  [claude:alertActivity] SSFUN01 SSFUN01_0_0.html: «empathy means that we try to understand and care how someone» | SSFUN01 SSFUN01_0_0.html: «being actively involved in our community can help us appreci» | SSFUN01 SSFUN01_0_0.html: «what is kindness? what does it mean to you and what actions » | TEFUN04 TEFUN04_0_0.html: «this hands-on activity is optional! if you do choose to comp»
+  [claude:alert solid] BLL110 BLL110_0_0.html: «when a letter is written as ‘s’ we want you to say its name.» | BLL110 BLL110_0_0.html: «when a letter is written as ‘a’ we want you to say its name.» | BLL110 BLL110_0_0.html: «when a letter is written as ‘t’ we want you to say its name.» | BLL110 BLL110_0_0.html: «when a letter is written as ‘p’ we want you to say its name.»
+  [claude:alert top] DTC1005 DTC1005_20_0.html: «take your time to complete the response sheet in as much det» | MXFL301 MXFL301_2_0.html: «when we work out distances, we sometimes say ‘as the crow fl»

@@ -1,0 +1,53 @@
+dragAndDrop one-table bundles: 612
+by (width, red?, url?) → the gold widget holding the first data cell (n >= 15):
+  ('2', 'red', 'text')       n= 106 absent=43(27m) questionContainer=28(20m) dragAndDrop=19(17m) free=6(6m) ddContainer=3(3m) multiChoiceQuiz=2(2m)
+  ('2', 'plain', 'text')     n= 106 absent=28(20m) questionContainer=21(19m) dragAndDrop=20(19m) free=14(9m) ddContainer=10(9m) accordion=3(3m)
+  ('2', 'red', 'url')        n=  61 absent=43(35m) dragAndDrop=7(7m) questionContainer=3(3m) ddContainer=3(3m) multiChoiceQuiz=2(2m) radioQuiz=1(1m)
+  ('3', 'red', 'text')       n=  52 absent=20(18m) dragAndDrop=12(11m) questionContainer=9(9m) table-responsive=2(1m) free=2(2m) ddContainer=2(2m)
+  ('3', 'red', 'url')        n=  49 absent=16(15m) dragAndDrop=12(12m) ddContainer=10(3m) questionContainer=3(3m) free=2(2m) accordion=2(2m)
+  ('2', 'n/a')               n=  33 (no textual cell)=33(0m)
+  ('4', 'red', 'text')       n=  32 absent=11(9m) dragAndDrop=7(7m) questionContainer=7(5m) table-responsive=2(2m) typing=1(1m) speechBubble=1(1m)
+  ('3', 'plain', 'text')     n=  31 dragAndDrop=14(12m) absent=5(4m) flipCard=2(2m) free=2(2m) questionContainer=1(1m) radioQuiz=1(1m)
+  ('2', 'plain', 'url')      n=  24 absent=17(15m) dragAndDrop=5(5m) ddContainer=1(1m) multiChoiceQuiz=1(1m)
+  ('4', 'plain', 'text')     n=  15 dragAndDrop=8(7m) absent=4(4m) memoryGame=1(1m) questionContainer=1(1m) wordSelect=1(1m)
+examples:
+  (('2', 'red', 'text'), 'dragAndDrop'): AGH1001 p2.0: «[Interactive activity: drag an» 8x2 [Seafood | 2.1 billion] | CEDT501 p6.0: «[Drag and drop]» 4x2 [Thank you for your help. | Na, all good.]
+  (('5', 'plain', 'text'), 'dragAndDrop'): AGH1004 p6.0: «[interactive: flowchart drag a» 1x5 [] | COM1005 p5.0: «[Please create a drag and drop» 5x5 [Superannuation | GST | Residential Care | Health & Safety at]
+  (('2', 'plain', 'text'), 'absent'): AGH1005 p3.0: «[interactive: drag and drop]» 7x2 [ | **Upper epidermis:** outer protective la] | ARFUN03 p0.0: «[Insert drag and drop activity» 2x2 [Run / Skip / Hop / Walk / Crawl / Roll | Bend / Reach / Push]
+  (('3', 'plain', 'text'), 'questionContainer'): AGH1005 p5.0: «[interactive: drag and drop]» 7x3 [**Photosynthesis:** / H²O + CO² + Chloro |  | Water travels ]
+  (('2', 'plain', 'text'), 'questionContainer'): AGH1005 p6.0: «[interactive: drag and drop]» 6x2 [B | **Phosphorus:** Older leaves will turn y] | BLL157 p1.1: «[Drag and drop] Can we make on» 6x2 [look | book]
+  (('4', 'plain', 'text'), 'absent'): AGH1006 p3.0: «[interactive: drag and drop] T» 1x4 [] | HIS1006 p7.0: «[please create a drag and drop» 3x4 [Racism and targeting by law enforcement | July 23rd–27th 196]
+  (('2', 'plain', 'text'), 'dragAndDrop'): ANZH105 p2.0: «[Interactive: Drag and Drop-Mu» 6x2 [Riding horses to school. | Taking a car to school.] | BLL210 p0.0: «[drag and drop] the words are » 6x2 [bee | wave]
+  (('2', 'red', 'text'), 'absent'): ARFUN02 p0.0: «[Interactive drag and drop act» 4x2 [Nguru: A nose flute [Item 42] / audio] | Tuba [Item 43] /aud] | CHFUN05 p0.0: «[drag and drop]» 4x2 [• From a friend: 请给我(qǐng gěi wǒ) | **苹果** **píngguǒ** / **电]
+  (('2', 'plain', 'text'), 'free'): ARFUN03 p0.0: «[Insert MTK Quiz – trigger eng» 4x2 [tinana parts | The parts of your tinana you use when yo] | ARFUN03 p0.0: «[Insert MTK Quiz – trigger eng» 8x2 [Non-locomotor | A movement that does not travel and stay]
+  (('3', 'red', 'url'), 'absent'): BLL111 p1.0: «[drop and drag]» 7x3 [p | https://www.istockphoto.com/photo/pig-gm | https://www.i] | BLL121 p1.0: «[drop and drag]» 8x3 [c | https://www.istockphoto.com/photo/cat-in | https://www.i]
+  (('2', 'red', 'url'), 'absent'): BLL112 p1.0: «[Drop and Drag]» 7x2 [https://www.istockphoto.com/photo/africa | sit] | BLL113 p2.0: «[drop and drag] Can we muddle » 10x2 [[Audio] cat | [audio] hat]
+  (('2', 'plain', 'url'), 'dragAndDrop'): BLL125 p1.0: «[Drag and Drop] Can we make th» 5x2 [https://www.istockphoto.com/photo/cheese | pack] | BLL161 p1.1: «[Drag and drop] These are in t» 7x2 [https://www.istockphoto.com/photo/playfu | woof]
+  (('2', 'plain', 'url'), 'absent'): BLL130 p0.0: «[drag and drop] Can we jumble » 6x2 [dog | https://www.istockphoto.com/photo/a-tric] | BLL130 p0.0: «[drag and drop] Can we jumble » 7x2 [ | https://www.istockphoto.com/photo/forest]
+  (('5', 'red', 'text'), 'table-responsive'): BLL132 p2.0: «[drag and drop]» 6x5 [Sant the _____ felt hot.] | HIS1002 p3.0: «[Can you please make a drag an» 9x5 [[Kiwi image + Label below] / **Aotearoa  |  | location in Te]
+  (('1', 'plain', 'text'), 'reorder'): BLL134 p2.0: «[Drag and drop] Can we mix the» 7x1 [He got a drink from a jug.] | BLL143 p1.0: «[Drag and drop] Can we mix the» 8x1 [Clinton Green has a sack in the back.]
+  (('5', 'red', 'text'), 'dragAndDrop'): BLL137 p1.1: «[drag and drop]» 4x5 [They saw the _________ pig stuck in the ] | ENGC102 p7.0: «[drag and drop] The words are » 1x5 []
+  (('2', 'red', 'url'), 'radioQuiz'): BLL143 p1.0: «[Activity 1E] [Drag and Drop]» 6x2 [What can you do? | Where can you do?]
+  (('6', 'red', 'text'), 'absent'): BLL143 p1.1: «[drag and drop]» 8x6 [A big gum _____ is on a _____. [tree, hi] | ENGS302 p2.0: «[drag and drop – can we create» 2x6 [Answer One / Two boys (Romeo and Ed) sit | Answer Two / A se]
+  (('3', 'plain', 'text'), 'dragAndDrop'): BLL147 p1.0: «[Interactive activity – drag a» 2x3 [Green apples / Red apples | carrots | Ham / Loaf / Eggs / Ja] | BLL220 p0.0: «[drag and drop] Can we make th» 5x3 [rain | day | make]
+  (('3', 'red', 'text'), 'dragAndDrop'): BLL151 p1.0: «[drag and drop]» 4x3 [Words that end in d or t make a /id/ sou | Adding ‘ed’ to wo] | BLL240 p1.5: «[drag and drop – auto check] W» 5x3 [hear | pear | pearl]
+  (('1', 'red', 'text'), 'absent'): BLL151 p2.0: «[drag and drop] Can we make th» 7x1 [Dad said, “Creep.” Zack crept.] | BLL217 p1.0: «[drag and drop]» 6x1 [I saw Dad take it to the toilet .]
+  (('2', 'plain', 'text'), 'ddContainer'): BLL157 p1.1: «[Drag and Drop] Can we make on» 5x2 [he’s | he is] | BLL216 p1.0: «[drag and drop] Are we able to» 8x2 [un | lucky]
+  (('3', 'plain', 'url'), 'absent'): BLL160 p0.0: «[Drag and Drop] These are alre» 5x3 [https://www.istockphoto.com/photo/blot-o | https://www.istoc] | BLL170 p0.0: «[drag and drop] The images are» 4x3 [https://www.istockphoto.com/vector/red-l | https://www.istoc]
+  (('3', 'red', 'text'), 'absent'): BLL162 p1.0: «[drag and drop]» 4x3 [Words that end in d or t make a /id/ sou | Adding ‘ed’ to wo] | CEDO301 p3.0: «[Drag and drop interactive]» 2x3 [**Mahoe** / [Image] Media item 24 / [Pla | **Ngaio** / [Imag]
+  (('2', 'red', 'text'), 'bingo'): BLL167 p1.1: «[drag and drop]» 10x2 [I’m a sound often made by an owl. What a | hoot]
+  (('1', 'red', 'text'), 'activity'): BLL171 p2.0: «[drag and drop] Can we make th» 4x1 [Bump went the car as it hit the lamp.]
+  (('2', 'red', 'text'), 'ddContainer'): BLL173 p1.1: «[drag and drop]» 10x2 [I’m something you do when you no longer  | stop] | BLL175 p1.0: «[drag and drop/self check] Cor» 6x2 [Collar | Around a dog's neck.]
+  (('2', 'red', 'text'), 'questionContainer'): BLL174 p1.1: «[drag and drop]Correct answers» 6x2 [Collar | Around a dog's neck.] | BLL253 p1.0: «[drag and drop + autocheck]» 6x2 [possible | [correct] Can happen]
+  (('2', 'red', 'url'), 'free'): BLL216 p2.0: «[drag and drop] Can we create » 7x2 [fullstop | exclamation mark]
+  (('4', 'plain', 'text'), 'dragAndDrop'): BLL230 p0.0: «[drag and drop] Can we make th» 5x4 [too | new | bruise | blue] | CEDO501 p2.1: «[Drag and drop]» 1x4 []
+  (('2', 'plain', 'url'), 'ddContainer'): BLL230 p0.0: «[drag and drop] The image and » 7x2 [https://www.istockphoto.com/photo/tiny-n | toes]
+  (('3', 'red', 'url'), 'ddContainer'): BLL230 p0.0: «[drag and drop] Can we please » 7x3 [ | https://www.istockphoto.com/photo/black- | phone] | BLL230 p0.0: «[drag and drop] Can we please » 7x3 [ | https://www.istockphoto.com/photo/rope-w | knot]
+  (('3', 'red', 'url'), 'dragAndDrop'): BLL236 p1.0: «[drag and drop] The words in t» 9x3 [cold | https://www.istockphoto.com/photo/latina | chilly] | BLL237 p1.0: «[drag and drop] The words in t» 9x3 [laugh | https://www.istockphoto.com/photo/laugh- | giggle]
+  (('4', 'red', 'url'), 'questionContainer'): BLL242 p1.0: «[Drag and drop] Please use the» 7x4 [https://media.istockphoto.com/id/1492358 | Where – a word th]
+  (('2', 'red', 'url'), 'questionContainer'): BLL244 p1.0: «[drag and drop] Please jumble » 11x2 [https://media.istockphoto.com/id/1622168 | The grizzly bear ] | ENGS201 p4.0: «[Drag and Drop Image – scrambl» 5x2 [Peter Parker was on a school trip. He wa | [image] https://e]
+  (('3', 'red', 'text'), 'questionContainer'): BLL245 p2.0: «[drag and drop + autocheck] Ca» 10x3 [[audio] | Beam | Smile in a very happy way.] | BLL251 p2.0: «[drag and drop + autocheck] Ca» 7x3 [[arriving] | arriving | Getting to a place.]
+  (('3', 'plain', 'text'), 'absent'): BLL253 p1.0: «[drag and drop]» 2x3 [poisonous / humourous / dangerous / moun | cloudy / windy / ] | MXEX202 p5.0: «[Drag and Drop]» 2x3 [• $10 note / • A drawing pin / • A piece | • Bottle of shamp]
+  (('3', 'red', 'text'), 'table-responsive'): BLL254 p1.0: «[drag and drop + autocheck] Ca» 11x3 [[science] | science | sci / [correct] ence] | BLL254 p2.0: «[drag and drop + autocheck] Ca» 13x3 [[gadgets] | gadgets | [correct] Small tools or devices that ]
+  (('2', 'red', 'text'), 'wordSelect'): BLLR201 p3.0: «[drag and drop]» 9x2 [formed | formed]
+  (('5', 'red', 'text'), 'absent'): BLLR202 p1.1: «[drag and drop + radio interac» 4x5 [Q1 | Found at top of the third page | [AV 3] | [AV 4] / [cor] | ENGR102 p5.0: «[Activity 4B drag and drop]» 2x5 [[H4]thr / [Image] three / [Body] three / | [H4] shr / [Image]

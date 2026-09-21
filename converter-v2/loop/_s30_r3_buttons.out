@@ -1,0 +1,128 @@
+GOLD buttons on the paired pages → on Claude's page as:
+  {'absent': 11160, 'other': 2135, 'button': 1651}
+  other-markup detail: [('other:p', 843), ('other:inline', 676), ('other:b', 186), ('other:a', 178), ('other:th', 73), ('other:td', 52), ('other:h4', 49), ('other:h3', 30), ('other:i', 29), ('other:span.infoTrigger', 5), ('other:h2', 4), ('other:h5', 4)]
+by text family:
+  other          {'absent': 9462, 'other': 1593, 'button': 837}
+  journal        {'other': 277, 'button': 43, 'absent': 860}
+  upload         {'absent': 412, 'button': 545, 'other': 170}
+  goto/open/…    {'absent': 215, 'button': 55, 'other': 61}
+  quiz           {'absent': 92, 'button': 169, 'other': 20}
+  download       {'absent': 87, 'button': 1, 'other': 8}
+  watch          {'absent': 32, 'button': 1, 'other': 6}
+by (template, subject) n >= 30 — button / other / absent:
+  ('Standard', '1-10 Mathematics')                     n=2913 button 0.06 other 0.14 absent 0.80
+  ('Standard', 'NCEA1')                                n=2199 button 0.06 other 0.14 absent 0.81
+  ('Standard', '1-10 Blended Literacy')                n=1534 button 0.16 other 0.04 absent 0.81
+  ('Standard', '1-10 English')                         n=1457 button 0.12 other 0.16 absent 0.72
+  ('Standard', 'Leaving to Learn')                     n= 839 button 0.24 other 0.15 absent 0.62
+  ('Bilingual', 'Te Marautanga o Aotearoa TMoA')       n= 788 button 0.00 other 0.00 absent 1.00
+  ('Inquiry', '1-10 Blended Literacy')                 n= 637 button 0.32 other 0.14 absent 0.55
+  ('Standard', 'Online Safety (OS9000)')               n= 597 button 0.14 other 0.15 absent 0.71
+  ('Fundamentals', '1-10 Mathematics')                 n= 496 button 0.04 other 0.16 absent 0.80
+  ('Fundamentals', '1-10 Writing (MiW)')               n= 426 button 0.20 other 0.21 absent 0.58
+  ('Inquiry', 'ConnectED')                             n= 324 button 0.06 other 0.22 absent 0.73
+  ('Standard', 'ConnectED')                            n= 301 button 0.07 other 0.14 absent 0.79
+  ('Standard', '1-10 Technology')                      n= 280 button 0.01 other 0.37 absent 0.62
+  ('Standard', '1-10 Languages')                       n= 254 button 0.06 other 0.17 absent 0.77
+  ('Fundamentals', '1-10 Languages')                   n= 244 button 0.04 other 0.18 absent 0.77
+  ('Standard', 'ANZH')                                 n= 242 button 0.07 other 0.18 absent 0.75
+  ('Fundamentals', '1-10 Health and PE')               n= 188 button 0.13 other 0.20 absent 0.68
+  ('Inquiry', 'Te ara Whakapuawa -Wellbeing')          n= 184 button 0.21 other 0.22 absent 0.58
+  ('Fundamentals', '1-10 Social Science')              n= 152 button 0.12 other 0.16 absent 0.72
+  ('Fundamentals', '1-10 English')                     n= 151 button 0.14 other 0.15 absent 0.71
+  ('Standard', '1-10 Science')                         n= 130 button 0.24 other 0.51 absent 0.25
+  ('Fundamentals', '1-10 Technology')                  n= 119 button 0.34 other 0.31 absent 0.34
+  ('Fundamentals', '1-10 Arts')                        n= 103 button 0.16 other 0.53 absent 0.31
+  ('Standard', '1-10 Social Science')                  n=  99 button 0.15 other 0.09 absent 0.76
+  ('Standard', 'EXPlore')                              n=  91 button 0.13 other 0.22 absent 0.65
+  ('Inquiry', 'Leaving to Learn')                      n=  72 button 0.22 other 0.04 absent 0.74
+  ('Standard', '1-10 Health and PE')                   n=  44 button 0.09 other 0.07 absent 0.84
+Claude buttons the gold lacks (by family): {'goto/open/…': 471, 'upload': 285, 'quiz': 68, 'watch': 21, 'other': 938, 'journal': 356, 'download': 28}
+examples (gold button, Claude has the text as other markup):
+  [other:p]
+    TRR112 TRR112_2_0.html: «Ngā Kiwi Pages»
+    TRR112 TRR112_3_0.html: «Ngā Kiwi Pages»
+    TRR112 TRR112_4_0.html: «Ngā Kiwi Pages»
+    ARFUN04 ARFUN04_0_0.html: «Colour»
+    ARFUN04 ARFUN04_0_0.html: «Colour»
+    ARFUN04 ARFUN04_0_0.html: «Value»
+  [other:a]
+    ARFUN01 ARFUN01_0_0.html: «Go to quiz»
+    ARFUN01 ARFUN01_0_0.html: «Go to quiz»
+    ARFUN01 ARFUN01_0_0.html: «Go to quiz»
+    MXFUN03 MXFUN03_0_0.html: «Go to quiz»
+    TEFUN02 TEFUN02_0_0.html: «Go to quiz»
+    TEFUN03 TEFUN03_0_0.html: «Go to quiz»
+  [other:inline]
+    ARFUN03 ARFUN03_0_0.html: «Check answers»
+    ARFUN03 ARFUN03_0_0.html: «Check answers»
+    ARFUN03 ARFUN03_0_0.html: «Check answers»
+    ARFUN03 ARFUN03_0_0.html: «Check answers»
+    ARFUN04 ARFUN04_0_0.html: «Techniques and conventions»
+    ARFUN04 ARFUN04_0_0.html: «Techniques and conventions»
+  [other:h2]
+    ARFUN04 ARFUN04_0_0.html: «Line»
+    ARFUN04 ARFUN04_0_0.html: «Line»
+    ARFUN04 ARFUN04_0_0.html: «Line»
+    ARFUN04 ARFUN04_0_0.html: «Line»
+  [other:b]
+    ARFUN04 ARFUN04_0_0.html: «Shape and form»
+    ARFUN04 ARFUN04_0_0.html: «Space»
+    ARFUN04 ARFUN04_0_0.html: «Drawing»
+    ARFUN04 ARFUN04_0_0.html: «Painting»
+    ARFUN04 ARFUN04_0_0.html: «Collage»
+    ARFUN04 ARFUN04_0_0.html: «Shape»
+  [other:h4]
+    ARFUN04 ARFUN04_0_0.html: «Texture»
+    ARFUN04 ARFUN04_0_0.html: «Contrast»
+    ARFUN04 ARFUN04_0_0.html: «Texture»
+    ARFUN04 ARFUN04_0_0.html: «Form»
+    ARFUN04 ARFUN04_0_0.html: «Texture»
+    ARFUN04 ARFUN04_0_0.html: «Contrast»
+  [other:h5]
+    ARFUN04 ARFUN04_0_0.html: «Balance»
+    ARFUN04 ARFUN04_0_0.html: «Balance»
+    ARFUN04 ARFUN04_0_0.html: «Balance»
+    ARFUN04 ARFUN04_0_0.html: «Balance»
+  [other:li]
+    ARFUN04 ARFUN04_0_0.html: «Movement»
+    ARFUN04 ARFUN04_0_0.html: «Movement»
+    TEDC402 TEDC402_4_0.html: «3»
+    XLP05 XLP05_5_0.html: «Overcomplicating the design»
+  [other:th]
+    CHFUN05 CHFUN05_0_0.html: «Q1 Why?»
+    CHFUN05 CHFUN05_0_0.html: «Q2 Why?»
+    CHFUN05 CHFUN05_0_0.html: «Q3 Why?»
+    CHFUN05 CHFUN05_0_0.html: «Q4 Why?»
+    ENGI401 ENGI401_6_0.html: «Simile»
+    ENGI401 ENGI401_6_0.html: «Metaphor»
+  [other:h3]
+    SSFUN02 SSFUN02_0_0.html: «Te Ara»
+    TEFUN08 TEFUN08_0_0.html: «Code Avengers»
+    TEFUN08 TEFUN08_0_0.html: «Code Avengers»
+    TEFUN08 TEFUN08_0_0.html: «Code Avengers»
+    CEDW201 CEDW201_0_0.html: «Word art»
+    AGH1007 AGH1007_4_0.html: «The Amazing Cow: An introduction to ruminant digestive syste»
+  [other:i]
+    SSFUN02 SSFUN02_0_0.html: «Country schooling»
+    ANZH105 ANZH105_1_0.html: «Nelly in Aotearoa»
+    ANZH303 ANZH303_1_0.html: «He kakano ahau»
+    BLLR202 BLLR202_4_0.html: «Show»
+    ENGI103 ENGI103_1_0.html: «The Boys in the Waka Ama»
+    ENGI103 ENGI103_3_0.html: «The Boys in Waka Ama»
+  [other:span.infoTrigger]
+    ENGC403 ENGC403_0_0.html: «Debate»
+    ENGC403 ENGC403_0_0.html: «Claim»
+    ENGC403 ENGC403_0_0.html: «Evidence»
+    ENGC403 ENGC403_0_0.html: «Reasoning»
+    ENGC403 ENGC403_0_0.html: «Persuasive»
+  [other:td]
+    ENGI302 ENGI302_2_0.html: «Rona and the Moon»
+    ENGR302 ENGR302_5_0.html: «Personal background»
+    ENGR302 ENGR302_5_0.html: «Cultural and social»
+    ENGR302 ENGR302_5_0.html: «Education and information»
+    ENGR302 ENGR302_5_0.html: «Individual beliefs and values»
+    ENGR302 ENGR302_5_0.html: «Emotions»
+  [other:span]
+    ENGI401 ENGI401_9_0.html: «Report writing»
+    XMES101 XMES101_5_0.html: «STOP and GO»

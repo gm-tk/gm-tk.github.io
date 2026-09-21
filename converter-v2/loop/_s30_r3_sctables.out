@@ -1,0 +1,70 @@
+non-letter [Self check] tables: 66 in 40 modules
+by kind: Counter({'answer-table(red)': 61, 'no-red': 5})
+by width: [(3, 25), (2, 23), (8, 4), (1, 4), (6, 3), (5, 3), (4, 3), (9, 1)]
+per module: MXDI103 {'answer-table(red)': 10}, BLL124 {'no-red': 1, 'answer-table(red)': 3}, MXDB202 {'answer-table(red)': 4}, BLL145 {'answer-table(red)': 3}, ENGC102 {'answer-table(red)': 3}, ENFUN04 {'answer-table(red)': 2}, BLL115 {'answer-table(red)': 2}, BLL125 {'answer-table(red)': 1, 'no-red': 1}, BLL155 {'answer-table(red)': 2}, BLL214 {'answer-table(red)': 2}, BLL223 {'answer-table(red)': 2}, TEDC401 {'answer-table(red)': 2}, BLL120 {'no-red': 1}, BLL220 {'answer-table(red)': 1}, BLL112 {'answer-table(red)': 1}, BLL113 {'answer-table(red)': 1}, BLL122 {'answer-table(red)': 1}, BLL131 {'no-red': 1}, BLL133 {'answer-table(red)': 1}, BLL135 {'answer-table(red)': 1}, BLL141 {'answer-table(red)': 1}, BLL142 {'answer-table(red)': 1}, BLL152 {'answer-table(red)': 1}, BLL154 {'answer-table(red)': 1}, BLL156 {'answer-table(red)': 1}, BLL162 {'answer-table(red)': 1}, BLL163 {'no-red': 1}, BLL165 {'answer-table(red)': 1}, BLL172 {'answer-table(red)': 1}, BLL173 {'answer-table(red)': 1}, BLL212 {'answer-table(red)': 1}, BLL217 {'answer-table(red)': 1}, BLL232 {'answer-table(red)': 1}, BLL235 {'answer-table(red)': 1}, BLL237 {'answer-table(red)': 1}, BLL252 {'answer-table(red)': 1}, BLL263 {'answer-table(red)': 1}, ENGJ102 {'answer-table(red)': 1}, MXFL202 {'answer-table(red)': 1}, SCES201 {'answer-table(red)': 1}
+  ENFUN04  3x2 red= 2 answer-table(red)  hdr«Root word provided | Answer to pop up w» lead«» gold={'multiChoiceQuiz': 6, 'dropQuiz': 2, 'dropDown': 9, 'selfCheck': 1}
+  ENFUN04  3x2 red= 2 answer-table(red)  hdr«Phrase for the sel | List to come up up» lead«» gold={'multiChoiceQuiz': 6, 'dropQuiz': 2, 'dropDown': 9, 'selfCheck': 1}
+  BLL120   2x6 red= 0 no-red             hdr«sack | tick | sat | pat | pin | sock» lead«Find and highlight the words that end in ck /k/.» gold={'bingo': 14, 'multiChoiceQuiz': 7, 'memoryGame': 1}
+  BLL220   7x3 red= 9 answer-table(red)  hdr«Images | Audios | Self check boxes» lead«Can we make something like this please.  The correct boxes h» gold={'radioQuiz': 6}
+  BLL112   4x2 red= 4 answer-table(red)  hdr«https://www.istock | t  a  p / t a  p  » lead«Can we leave a gap where the red letter is for the ākonga to» gold={'typing': 4}
+  BLL113   1x8 red= 4 answer-table(red)  hdr«the | the | het | that | the | eht | the | there» lead«Click on the word ‘the’.» gold={'wordSelect': 3}
+  BLL115   6x3 red= 7 answer-table(red)  hdr«sip | https://www.istock | sit» lead«Correct answers are in red» gold={'multiChoiceQuiz': 2}
+  BLL115   1x8 red= 4 answer-table(red)  hdr«and | an | and | and | ant | a | an | and» lead«Click on the word ‘and’.» gold={'multiChoiceQuiz': 2}
+  BLL122   4x2 red= 6 answer-table(red)  hdr«https://www.istock | a  n  t s / a n t » lead«Can we leave a gap where the red letter is for the ākonga to» gold={'typing': 4}
+  BLL124   1x5 red= 0 no-red             hdr«in | rat | a | A | cap.» lead«Answers - A rat in a cap, A cat in a hat, A hen in a hat, Ha» gold={'memoryGame': 1, 'multiChoiceQuiz': 2}
+  BLL124   2x2 red= 2 answer-table(red)  hdr«**Question Mark Co | **Exclamation Mark» lead«Answers are in red below. But please have all statements out» gold={'memoryGame': 1, 'multiChoiceQuiz': 2}
+  BLL124   6x2 red=12 answer-table(red)  hdr«track | [IMAGE: image15.pn» lead«Below shows the correct answer, please muddle up. Also ensur» gold={'memoryGame': 1, 'multiChoiceQuiz': 2}
+  BLL124   2x4 red= 1 answer-table(red)  hdr«drip | rest | hand | track» lead«I have highlighted the correct answer.» gold={'memoryGame': 1, 'multiChoiceQuiz': 2}
+  BLL125   5x4 red= 5 answer-table(red)  hdr«https://www.istock | sack | snack | stack» lead«Correct answers are in red» gold={'multiChoiceQuiz': 2, 'memoryGame': 1, 'dropQuiz': 1, 'dropDown': 4}
+  BLL125   2x5 red= 0 no-red             hdr«not | no | not | hot | not» lead«» gold={'multiChoiceQuiz': 2, 'memoryGame': 1, 'dropQuiz': 1, 'dropDown': 4}
+  BLL131   1x4 red= 0 no-red             hdr«https://www.istock | https://www.istock | https://www.istock» lead«Highlighted boxes are the ones that that ākonga needs to cli» gold={'multiChoiceQuiz': 1}
+  BLL133   6x3 red= 6 answer-table(red)  hdr«hog | https://www.istock | hug» lead«Correct answers are in red» gold={'multiChoiceQuiz': 3}
+  BLL135   5x3 red= 5 answer-table(red)  hdr«https://www.istock | desk | dent» lead«Correct answers are in red» gold={'multiChoiceQuiz': 1, 'wordSelect': 2}
+  BLL141   6x3 red= 6 answer-table(red)  hdr«stuck | https://www.istock | stick» lead«Correct answers are in red» gold={'multiChoiceQuiz': 1, 'wordSelect': 1}
+  BLL142   4x2 red= 4 answer-table(red)  hdr«https://www.istock | T  r  uck / T r  u» lead«Can we leave a gap where the red letter is for the ākonga to» gold={'memoryGame': 1, 'typing': 4, 'radioQuiz': 1}
+  BLL145   1x8 red= 3 answer-table(red)  hdr«all | al | ill | all | lay | the | all | hey» lead«Click on the word ‘all’.» gold={'bingo': 3, 'wordSelect': 1, 'typing': 1, 'dropQuiz': 1, 'dropDown': 1, 'multiChoiceQuiz': 1}
+  BLL145   1x8 red= 3 answer-table(red)  hdr«yhw | why | hey | yyh | why | eht | why | the» lead«Click on the word ‘why’.» gold={'bingo': 3, 'wordSelect': 1, 'typing': 1, 'dropQuiz': 1, 'dropDown': 1, 'multiChoiceQuiz': 1}
+  BLL145   5x3 red=10 answer-table(red)  hdr«[source image: of  | trail | trale» lead«Correct answers are in red» gold={'bingo': 3, 'wordSelect': 1, 'typing': 1, 'dropQuiz': 1, 'dropDown': 1, 'multiChoiceQuiz': 1}
+  BLL152   6x3 red= 8 answer-table(red)  hdr«Orignial word | Suffix ‘s’ | Suffix ‘ing’» lead«students to be able to type in the missing fields please. Ma» gold={'typing': 1, 'multiChoiceQuiz': 1, 'wordSelect': 1, 'reorder': 4}
+  BLL154   2x2 red= 2 answer-table(red)  hdr«Real words | Alien words» lead«🔴[RED TEXT] please have words outside of table so that they » gold={'reorder': 1, 'typing': 1, 'wordSelect': 1, 'multiChoiceQuiz': 1}
+  BLL155   2x2 red= 2 answer-table(red)  hdr«Ending in ‘ck’ wor | ‘K’ words» lead«🔴[RED TEXT] please have the pictures outside of table so tha» gold={}
+  BLL155   2x2 red= 2 answer-table(red)  hdr«Long vowel (open s | Short vowel (close» lead«Can set this up so students can check whether they are corre» gold={}
+  BLL156   10x3 red=14 answer-table(red)  hdr«Original word | Add suffix ed | Add suffix ing» lead«allow students to type in the correct answers into the boxes» gold={'typing': 1, 'bingo': 2, 'wordSelect': 2}
+  BLL162   6x3 red= 6 answer-table(red)  hdr«crash | https://www.istock | crush» lead«Correct answers are in red» gold={'memoryGame': 1, 'multiChoiceQuiz': 1}
+  BLL163   5x2 red= 0 no-red             hdr«Irregular words | Regular words» lead«See if you can work out which words are irregular and which » gold={'dropQuiz': 1, 'dropDown': 4}
+  BLL165   7x2 red= 6 answer-table(red)  hdr«**Words** | **Similar Words**» lead«words in red are the correct answers. Have them outside of t» gold={'multiChoiceQuiz': 2}
+  BLL172   6x3 red= 6 answer-table(red)  hdr«toenails | https://www.istock | tonals» lead«Correct answers are in red» gold={'multiChoiceQuiz': 1}
+  BLL173   6x3 red=12 answer-table(red)  hdr«form | [source image of f | forklift» lead«Correct answers are in red» gold={'multiChoiceQuiz': 2, 'wordSelect': 1}
+  BLL212   5x3 red=10 answer-table(red)  hdr«Word | How many syllables | Where is the sylla» lead«Now see if you can identify where these words syllable break» gold={'multiChoiceQuiz': 1}
+  BLL214   8x2 red= 7 answer-table(red)  hdr«Word | Definition» lead«The correct order is shown below. But if you can please mix » gold={'multiChoiceQuiz': 1}
+  BLL214   6x3 red=10 answer-table(red)  hdr«Word | How many syllables | Where is the sylla» lead«Now see if you can identify where these words syllable break» gold={'multiChoiceQuiz': 1}
+  BLL217   6x3 red= 6 answer-table(red)  hdr«huge | https://www.istock | hug» lead«Correct answers are in red» gold={'multiChoiceQuiz': 6}
+  BLL223   6x3 red= 6 answer-table(red)  hdr«mistike | https://www.istock | mistake» lead«Correct answers are in red» gold={'multiChoiceQuiz': 5, 'typing': 1, 'reorder': 5}
+  BLL223   4x5 red= 4 answer-table(red)  hdr«__[audios]__  [LIN | https://www.istock | https://www.istock» lead«The correct answer is highlighted in yellow» gold={'multiChoiceQuiz': 5, 'typing': 1, 'reorder': 5}
+  BLL232   6x3 red= 6 answer-table(red)  hdr«shadow | https://www.istock | sadow» lead«Correct answers are in red» gold={'radioQuiz': 1, 'multiChoiceQuiz': 1}
+  BLL235   8x3 red= 8 answer-table(red)  hdr«players | https://www.istock | plyers» lead«Correct answers are in red» gold={'bingo': 1, 'multiChoiceQuiz': 1}
+  BLL237   8x3 red= 8 answer-table(red)  hdr«mouth | https://www.istock | moth» lead«Correct answers are in red» gold={'multiChoiceQuiz': 1}
+  BLL252   9x3 red= 9 answer-table(red)  hdr«https://www.shutte | crumbs | [crums]» lead«Incorrect answers in highlighted red» gold={'multiChoiceQuiz': 2, 'typing': 2}
+  BLL263   9x3 red= 9 answer-table(red)  hdr«https://www.istock | stream  [correct a | stram» lead«» gold={'selfCheck': 2, 'dropQuiz': 2, 'dropDown': 12, 'typing': 1, 'multiChoiceQuiz': 1}
+  ENGC102  4x1 red= 1 answer-table(red)  hdr«The cable cars did» lead«Correct answer is in red» gold={'multiChoiceQuiz': 2, 'typing': 1, 'dropQuiz': 3, 'dropDown': 15, 'radioQuiz': 1}
+  ENGC102  7x2 red= 7 answer-table(red)  hdr«Questions | Answers» lead«Answers are in red (can we make allowances for answers to al» gold={'multiChoiceQuiz': 2, 'typing': 1, 'dropQuiz': 3, 'dropDown': 15, 'radioQuiz': 1}
+  ENGC102  6x2 red= 6 answer-table(red)  hdr«Where is a glossar | Start of a book. /» lead«🔴[RED TEXT] Answers are in red.» gold={'multiChoiceQuiz': 2, 'typing': 1, 'dropQuiz': 3, 'dropDown': 15, 'radioQuiz': 1}
+  ENGJ102  1x1 red= 1 answer-table(red)  hdr«I  /  love  / stor» lead«answers are in red.» gold={'wordSelect': 4, 'multiChoiceQuiz': 1}
+  MXDB202  4x2 red= 3 answer-table(red)  hdr«Moai A is 4 metres» lead«Answers are in red» gold={'typing': 17, 'dropQuiz': 2, 'dropDown': 10}
+  MXDB202  4x2 red= 3 answer-table(red)  hdr«Moai E is 8 feet t» lead«Answers are in red» gold={'typing': 17, 'dropQuiz': 2, 'dropDown': 10}
+  MXDB202  2x6 red= 2 answer-table(red)  hdr«1st layer | 2nd layer | 3rd layer | 4th layer | 5th layer | » lead«If we continue to build our tower, how many blocks will be i» gold={'typing': 17, 'dropQuiz': 2, 'dropDown': 10}
+  MXDB202  3x9 red= 6 answer-table(red)  hdr«Shape number | 1 | 2 | 3 | 4 | 5 | 6 | **10** | **14**» lead«Answers are in red» gold={'typing': 17, 'dropQuiz': 2, 'dropDown': 10}
+  MXDI103  5x2 red= 5 answer-table(red)  hdr«[IMAGE: image7.png | Correct answer:  /» lead«» gold={'reorder': 4, 'typing': 21, 'memoryGame': 1}
+  MXDI103  10x3 red=18 answer-table(red)  hdr«Just before (1 les | Number | Just after (1 more» lead«Correct answers are in red.» gold={'reorder': 4, 'typing': 21, 'memoryGame': 1}
+  MXDI103  6x2 red= 6 answer-table(red)  hdr«[IMAGE: image7.png | Correct answer:  /» lead«» gold={'reorder': 4, 'typing': 21, 'memoryGame': 1}
+  MXDI103  6x2 red= 6 answer-table(red)  hdr«ono tekau mā tahi | 81» lead«Correct answers are in red.» gold={'reorder': 4, 'typing': 21, 'memoryGame': 1}
+  MXDI103  8x2 red= 7 answer-table(red)  hdr«100 + 40 + 3 | 143» lead«» gold={'reorder': 4, 'typing': 21, 'memoryGame': 1}
+  MXDI103  8x2 red= 7 answer-table(red)  hdr«143 | 100 + 40 + 3» lead«» gold={'reorder': 4, 'typing': 21, 'memoryGame': 1}
+  MXDI103  3x3 red= 3 answer-table(red)  hdr«What is the value » lead«(correct answers are in red)» gold={'reorder': 4, 'typing': 21, 'memoryGame': 1}
+  MXDI103  3x3 red= 3 answer-table(red)  hdr«What is the value » lead«(correct answers are in red)» gold={'reorder': 4, 'typing': 21, 'memoryGame': 1}
+  MXDI103  3x3 red= 3 answer-table(red)  hdr«What is the value » lead«(correct answers are in red)» gold={'reorder': 4, 'typing': 21, 'memoryGame': 1}
+  MXDI103  3x3 red= 3 answer-table(red)  hdr«What is the value » lead«(correct answers are in red)» gold={'reorder': 4, 'typing': 21, 'memoryGame': 1}
+  MXFL202  3x6 red=10 answer-table(red)  hdr« | *Cat* | *Dog* | *Guinea Pig* | *Rabbit* | *Goldfish*» lead«Answers in red» gold={'typing': 4, 'multiChoiceQuiz': 3, 'dropQuiz': 3, 'dropDown': 23}
+  SCES201  8x2 red= 2 answer-table(red)  hdr«[column title]  Te | [column title]  En» lead«[self check]» gold={'radioQuiz': 1, 'memoryGame': 1, 'dropQuiz': 2, 'dropDown': 16}
+  TEDC401  1x1 red= 1 answer-table(red)  hdr«S  elf-marking qui» lead«» gold={'multiChoiceQuiz': 11, 'radioQuiz': 2, 'reorder': 1}
+  TEDC401  1x1 red= 1 answer-table(red)  hdr«First, upload both» lead«» gold={'multiChoiceQuiz': 11, 'radioQuiz': 2, 'reorder': 1}

@@ -1,0 +1,36 @@
+TWO-COLUMN ROWS (a main + a side column, widths summing to 12) — padding tokens, gold vs Claude
+GOLD rows 2744
+    1126 0.41  ('main-first', 'main-plain', 'side-plain')
+     465 0.17  ('main-first', 'main-plain', 'side+pad')
+     389 0.14  ('main-first', 'main+pad', 'side+pad')
+     296 0.11  ('side-first', 'main+pad', 'side+pad')
+     216 0.08  ('side-first', 'main-plain', 'side-plain')
+     126 0.05  ('side-first', 'main-plain', 'side+pad')
+      84 0.03  ('main-first', 'main+pad', 'side-plain')
+      42 0.02  ('side-first', 'main+pad', 'side-plain')
+CLAUDE rows 185
+     185 1.00  ('main-first', 'main-plain', 'side-plain')
+GOLD by the side column's content kind (n >= 20): main+pad share
+   ?                          gold n=2744 main+pad 0.30 side+pad 0.47 | claude n= 185 main+pad 0.00
+GOLD by (template, subject) (n >= 20): main+pad share | Claude
+   ('Standard', 'NCEA1')                                gold n= 433 main+pad 0.23 | claude n=   4 main+pad 0.00
+   ('Standard', '1-10 Mathematics')                     gold n= 427 main+pad 0.20 | claude n=  24 main+pad 0.00
+   ('Standard', '1-10 English')                         gold n= 295 main+pad 0.30 | claude n=  12 main+pad 0.00
+   ('Standard', '1-10 Blended Literacy')                gold n= 272 main+pad 0.55 | claude n=  32 main+pad 0.00
+   ('Standard', 'Online Safety (OS9000)')               gold n= 201 main+pad 0.22 | claude n=   3 main+pad 0.00
+   ('Standard', 'Leaving to Learn')                     gold n= 189 main+pad 0.26 | claude n=   9 main+pad 0.00
+   ('Fundamentals', '1-10 Writing (MiW)')               gold n= 183 main+pad 0.78 | claude n=   9 main+pad 0.00
+   ('Standard', 'ConnectED')                            gold n= 122 main+pad 0.25 | claude n=   0 main+pad 0.00
+   ('Bilingual', 'Te Marautanga o Aotearoa TMoA')       gold n=  99 main+pad 0.18 | claude n=   1 main+pad 0.00
+   ('Standard', 'ANZH')                                 gold n=  55 main+pad 0.09 | claude n=  28 main+pad 0.00
+   ('Fundamentals', '1-10 Health and PE')               gold n=  47 main+pad 0.17 | claude n=   0 main+pad 0.00
+   ('Standard', '1-10 Languages')                       gold n=  44 main+pad 0.36 | claude n=   1 main+pad 0.00
+   ('Inquiry', 'Leaving to Learn')                      gold n=  41 main+pad 0.12 | claude n=   0 main+pad 0.00
+   ('Standard', '1-10 Technology')                      gold n=  40 main+pad 0.10 | claude n=   0 main+pad 0.00
+   ('Fundamentals', '1-10 English')                     gold n=  38 main+pad 0.16 | claude n=   0 main+pad 0.00
+   ('Fundamentals', '1-10 Social Science')              gold n=  37 main+pad 0.03 | claude n=   4 main+pad 0.00
+   ('Standard', '1-10 Social Science')                  gold n=  37 main+pad 0.03 | claude n=   2 main+pad 0.00
+   ('Inquiry', 'ConnectED')                             gold n=  34 main+pad 0.29 | claude n=   2 main+pad 0.00
+   ('Fundamentals', '1-10 Technology')                  gold n=  24 main+pad 0.04 | claude n=   6 main+pad 0.00
+   ('Standard', 'EXPlore')                              gold n=  22 main+pad 0.41 | claude n=   5 main+pad 0.00
+   ('Standard', '1-10 Science')                         gold n=  21 main+pad 0.33 | claude n=   5 main+pad 0.00

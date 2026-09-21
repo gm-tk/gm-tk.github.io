@@ -83,6 +83,27 @@ class ModuleResolver {
 			if (m) candidates.push({ code: m[1], from: `filename "${name}"` });
 		}
 
+		// 1b) ROUND 421 — a filename's LEADING token that the structure index KNOWS is the module
+		// code, whatever its shape: the corpus carries codes the regex cannot name (CHWHA / GEWHA
+		// have no digits, ANZHFUN05 has seven letters, PWYWHA1 one digit — and its front matter
+		// mentions PWY1000, so it used to convert AS PWY1000). Only when the regex found nothing
+		// in the filenames, so every module the regex already names keeps its path; the
+		// front-matter regex below stays the last resort. Data Input_Doc_Rules
+		// .module_code_detection.registry_token; env CODEREG_OFF.
+		const regCfg = DataService.Data.InputDocRules?.module_code_detection?.registry_token;
+		const regOn = regCfg && regCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[regCfg.env || "CODEREG_OFF"]);
+		if (regOn && !candidates.length) {
+			const known = DataService.Data.ModuleStructureIndex?.module_meta ?? {};
+			const sepRx = new RegExp(regCfg.separators || "[\\s_.\\-]+");
+			for (const name of filenames) {
+				const tok = String(name).split(sepRx).filter(Boolean)[0]?.toUpperCase() ?? "";
+				if (tok.length >= (regCfg.min_length ?? 3) && Object.prototype.hasOwnProperty.call(known, tok)) {
+					candidates.push({ code: tok, from: `filename "${name}" (a registry-known code)` });
+				}
+			}
+		}
+
 		// 2) front-matter "Module code:" line or early code mention
 		for (const b of allBlocks.slice(0, 40)) {
 			if (b.kind !== "para") continue;

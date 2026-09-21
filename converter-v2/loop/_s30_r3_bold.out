@@ -1,0 +1,88 @@
+CLAUDE bold on the paired pages → on the gold: {'absent': 4679, 'stripped(inline)': 2343, 'kept': 7867, 'stripped(whole)': 2071, 'heading': 2399}
+by context (parent, whole/part, box) n >= 30 — kept / heading / stripped / absent:
+  ('p', 'part', 'body')                            n= 2820 kept 0.60 heading 0.05 stripped 0.17 absent 0.18
+  ('td', 'part', 'table-responsive')               n= 2222 kept 0.41 heading 0.11 stripped 0.25 absent 0.23
+  ('p', 'whole', 'body')                           n= 2137 kept 0.34 heading 0.14 stripped 0.19 absent 0.33
+  ('td', 'whole', 'table-responsive')              n= 1610 kept 0.26 heading 0.17 stripped 0.35 absent 0.22
+  ('p', 'whole', 'cv2-interactive')                n=  986 kept 0.18 heading 0.23 stripped 0.18 absent 0.41
+  ('p', 'whole', 'activity')                       n=  984 kept 0.21 heading 0.14 stripped 0.28 absent 0.38
+  ('th', 'whole', 'table-responsive')              n=  933 kept 0.13 heading 0.13 stripped 0.46 absent 0.29
+  ('th', 'part', 'table-responsive')               n=  925 kept 0.41 heading 0.17 stripped 0.21 absent 0.21
+  ('li', 'whole', 'body')                          n=  825 kept 0.64 heading 0.03 stripped 0.16 absent 0.17
+  ('p', 'part', 'activity')                        n=  789 kept 0.52 heading 0.03 stripped 0.20 absent 0.25
+  ('p', 'part', 'cv2-interactive')                 n=  431 kept 0.45 heading 0.13 stripped 0.18 absent 0.24
+  ('p', 'whole', 'carousel')                       n=  326 kept 0.40 heading 0.27 stripped 0.21 absent 0.12
+  ('li', 'whole', 'cv2-interactive')               n=  315 kept 0.20 heading 0.10 stripped 0.34 absent 0.35
+  ('p', 'whole', 'flipCard')                       n=  277 kept 0.30 heading 0.48 stripped 0.12 absent 0.10
+  ('li', 'part', 'body')                           n=  276 kept 0.58 heading 0.02 stripped 0.21 absent 0.18
+  ('p', 'part', 'accordion')                       n=  269 kept 0.72 heading 0.00 stripped 0.05 absent 0.23
+  ('li', 'whole', 'activity')                      n=  265 kept 0.71 heading 0.03 stripped 0.17 absent 0.09
+  ('p', 'whole', 'tabs')                           n=  242 kept 0.47 heading 0.18 stripped 0.08 absent 0.27
+  ('p', 'whole', 'alert')                          n=  204 kept 0.56 heading 0.12 stripped 0.12 absent 0.20
+  ('p', 'part', 'flipCard')                        n=  202 kept 0.33 heading 0.06 stripped 0.51 absent 0.09
+  ('p', 'part', 'carousel')                        n=  177 kept 0.79 heading 0.02 stripped 0.10 absent 0.10
+  ('p', 'whole', 'accordion')                      n=  154 kept 0.51 heading 0.21 stripped 0.16 absent 0.12
+  ('p', 'part', 'alert')                           n=  146 kept 0.72 heading 0.00 stripped 0.14 absent 0.14
+  ('li', 'part', 'activity')                       n=  146 kept 0.51 heading 0.01 stripped 0.22 absent 0.25
+  ('p', 'whole', 'moduleMenu')                     n=  141 kept 0.21 heading 0.11 stripped 0.10 absent 0.59
+  ('li', 'part', 'tabs')                           n=  137 kept 0.41 heading 0.00 stripped 0.24 absent 0.35
+  ('li', 'part', 'accordion')                      n=  128 kept 0.14 heading 0.02 stripped 0.73 absent 0.12
+  ('li', 'whole', 'tabs')                          n=  109 kept 0.55 heading 0.01 stripped 0.32 absent 0.12
+  ('h4', 'whole', 'flipCard')                      n=  101 kept 0.14 heading 0.76 stripped 0.03 absent 0.07
+  ('li', 'part', 'cv2-interactive')                n=   96 kept 0.42 heading 0.00 stripped 0.24 absent 0.34
+  ('h4', 'whole', 'accordion')                     n=   94 kept 0.02 heading 0.72 stripped 0.16 absent 0.10
+  ('li', 'whole', 'carousel')                      n=   92 kept 0.39 heading 0.20 stripped 0.15 absent 0.26
+  ('h4', 'whole', 'carousel')                      n=   76 kept 0.09 heading 0.57 stripped 0.16 absent 0.18
+  ('li', 'whole', 'flipCard')                      n=   69 kept 0.78 heading 0.01 stripped 0.19 absent 0.01
+  ('li', 'whole', 'accordion')                     n=   64 kept 0.70 heading 0.00 stripped 0.23 absent 0.06
+  ('li', 'whole', 'alert')                         n=   63 kept 0.79 heading 0.16 stripped 0.03 absent 0.02
+  ('li', 'part', 'moduleMenu')                     n=   56 kept 0.46 heading 0.05 stripped 0.32 absent 0.16
+  ('li', 'whole', 'moduleMenu')                    n=   51 kept 0.29 heading 0.00 stripped 0.25 absent 0.45
+  ('h4', 'whole', 'alert')                         n=   47 kept 0.02 heading 0.38 stripped 0.23 absent 0.36
+  ('h3', 'whole', 'body')                          n=   45 kept 0.31 heading 0.40 stripped 0.18 absent 0.11
+  ('p', 'part', 'tabs')                            n=   45 kept 0.60 heading 0.02 stripped 0.20 absent 0.18
+  ('li', 'part', 'alert')                          n=   36 kept 0.69 heading 0.00 stripped 0.22 absent 0.08
+  ('h5', 'whole', 'body')                          n=   35 kept 0.17 heading 0.43 stripped 0.11 absent 0.29
+by (template, subject) n >= 50:
+  ('Standard', 'NCEA1')                                n= 3033 kept 0.34 heading 0.12 stripped 0.26 absent 0.28
+  ('Standard', 'Leaving to Learn')                     n= 2098 kept 0.46 heading 0.12 stripped 0.20 absent 0.23
+  ('Standard', '1-10 Mathematics')                     n= 2036 kept 0.29 heading 0.09 stripped 0.27 absent 0.35
+  ('Standard', '1-10 English')                         n= 1727 kept 0.58 heading 0.11 stripped 0.19 absent 0.12
+  ('Bilingual', 'Te Marautanga o Aotearoa TMoA')       n= 1656 kept 0.23 heading 0.18 stripped 0.23 absent 0.36
+  ('Standard', 'ConnectED')                            n= 1132 kept 0.40 heading 0.25 stripped 0.22 absent 0.14
+  ('Standard', 'Online Safety (OS9000)')               n= 1058 kept 0.65 heading 0.08 stripped 0.18 absent 0.09
+  ('Standard', '1-10 Technology')                      n= 1034 kept 0.46 heading 0.14 stripped 0.25 absent 0.15
+  ('Standard', '1-10 Blended Literacy')                n=  921 kept 0.47 heading 0.05 stripped 0.24 absent 0.24
+  ('Fundamentals', '1-10 Languages')                   n=  816 kept 0.38 heading 0.08 stripped 0.36 absent 0.18
+  ('Fundamentals', '1-10 Arts')                        n=  495 kept 0.06 heading 0.05 stripped 0.11 absent 0.78
+  ('Standard', '1-10 Languages')                       n=  494 kept 0.39 heading 0.19 stripped 0.26 absent 0.16
+  ('Inquiry', 'ConnectED')                             n=  446 kept 0.37 heading 0.17 stripped 0.25 absent 0.21
+  ('Fundamentals', '1-10 Technology')                  n=  374 kept 0.60 heading 0.18 stripped 0.12 absent 0.10
+  ('Fundamentals', '1-10 Writing (MiW)')               n=  320 kept 0.56 heading 0.04 stripped 0.20 absent 0.20
+  ('Fundamentals', '1-10 English')                     n=  259 kept 0.62 heading 0.10 stripped 0.17 absent 0.11
+  ('Inquiry', 'Te ara Whakapuawa -Wellbeing')          n=  238 kept 0.59 heading 0.11 stripped 0.18 absent 0.11
+  ('Standard', 'ANZH')                                 n=  203 kept 0.28 heading 0.14 stripped 0.25 absent 0.33
+  ('Fundamentals', '1-10 Health and PE')               n=  179 kept 0.46 heading 0.25 stripped 0.22 absent 0.07
+  ('Fundamentals', '1-10 Social Science')              n=  171 kept 0.39 heading 0.08 stripped 0.23 absent 0.29
+  ('Inquiry', '1-10 Blended Literacy')                 n=  135 kept 0.13 heading 0.17 stripped 0.18 absent 0.53
+  ('Standard', '1-10 Science')                         n=  113 kept 0.79 heading 0.05 stripped 0.14 absent 0.02
+  ('Standard', '1-10 Social Science')                  n=   83 kept 0.33 heading 0.02 stripped 0.05 absent 0.60
+  ('Inquiry', 'Leaving to Learn')                      n=   62 kept 0.13 heading 0.23 stripped 0.45 absent 0.19
+  ('Fundamentals', '1-10 Mathematics')                 n=   58 kept 0.19 heading 0.03 stripped 0.12 absent 0.66
+  ('Fundamentals', 'Leaving to Learn')                 n=   51 kept 0.43 heading 0.18 stripped 0.25 absent 0.14
+REVERSE — gold bold Claude lacks, by context (top 12): [(('p', 'whole', 'activity'), 1043), (('p', 'part', 'body'), 761), (('p', 'whole', 'body'), 632), (('td', 'whole', 'table-responsive'), 539), (('p', 'part', 'activity'), 434), (('p', 'whole', 'tabs'), 420), (('p', 'whole', 'carousel'), 283), (('p', 'whole', 'accordion'), 220), (('li', 'whole', 'body'), 212), (('p', 'whole', 'alert'), 173), (('p', 'whole', 'moduleMenu'), 170), (('li', 'whole', 'activity'), 146)]
+examples (stripped):
+  ('p', 'whole', 'body'): PNR101 PNR101_0_0.html: «Module Introduction» in p. | PNR102 PNR102_0_0.html: «Module Introduction» in p. | PNR104 PNR104_0_0.html: «Module Introduction» in p.
+  ('p', 'whole', 'activity'): PNR107 PNR107_2_0.html: «6 + 1 = 7» in p. | PNR107 PNR107_2_0.html: «6 + 1 = 7» in p. | TRR108 TRR108_1_0.html: «☐ Activity 1A:» in p.
+  ('td', 'part', 'table-responsive'): TRR102 TRR102_1_0.html: «Activity» in td. | TRR102 TRR102_1_0.html: «Titiro ki te rārangi o raro iho nei,» in td. | TRR102 TRR102_1_0.html: «īpakongia ētahi mahi ngahau i te rārangi i raro ne» in td.
+  ('p', 'part', 'body'): TRR102 TRR102_2_0.html: «Te rōpū ako o te» in p. | TRR102 TRR102_2_0.html: «group’s learning guide» in p. | TRR103 TRR103_1_0.html: «roa» in p.
+  ('li', 'whole', 'body'): TRR102 TRR102_4_0.html: «I te tīmatanga o te rerenga kōrero.» in li. | TRR102 TRR102_4_0.html: «I te tīmatanga o te kupu ingoa tangata.» in li. | TRR102 TRR102_4_0.html: «I te tīmatanga o te ingoa wāhi.» in li.
+  ('p', 'part', 'activity'): TRR109 TRR109_1_0.html: «, kāore he tohutō» in p. | TRR112 TRR112_3_0.html: «kupu huarite» in p. | TRR112 TRR112_3_0.html: «kupu huarite,» in p.
+  ('th', 'part', 'table-responsive'): TRR116 TRR116_0_0.html: «Kei te ________ ahau.» in th. | TRR116 TRR116_7_0.html: «tohu pātai» in th. | TRR116 TRR116_7_0.html: «tohu pātai» in th.
+  ('td', 'whole', 'table-responsive'): TRR116 TRR116_7_0.html: «unu» in td. | TRR116 TRR116_7_0.html: «huri» in td. | TRR116 TRR116_7_0.html: «toro» in td.
+  ('p', 'whole', 'cv2-interactive'): TRR304 TRR304_2_0.html: «Tohaina Tō Mahi!» in p. | ARFUN04 ARFUN04_0_0.html: «Shape and form» in p. | ARFUN04 ARFUN04_0_0.html: «Painting» in p.
+  ('p', 'part', 'cv2-interactive'): ANZHFUN05 MODULE_0_0.html: «history of the text message» in p. | ARFUN04 ARFUN04_0_0.html: «painting» in p. | CHFUN05 CHFUN05_0_0.html: «wǒ bù xǐhuan yú» in p.
+  ('li', 'part', 'body'): ARFUN02 ARFUN02_0_0.html: «blue circles,» in li. | ARFUN04 ARFUN04_0_0.html: «geometric» in li. | CHFUN05 CHFUN05_0_0.html: «wǒ yào shuǐ» in li.
+  ('th', 'whole', 'table-responsive'): ARFUN02 ARFUN02_0_0.html: «Low Pitch» in th. | ARFUN02 ARFUN02_0_0.html: «Medium Pitch» in th. | ARFUN02 ARFUN02_0_0.html: «High Pitch» in th.
+  ('li', 'whole', 'cv2-interactive'): ARFUN04 ARFUN04_0_0.html: «A wooden table –» in li. | ARFUN04 ARFUN04_0_0.html: «Contrast:» in li. | ARFUN04 ARFUN04_0_0.html: «Starburst» in li.
+  ('p', 'whole', 'flipCard'): CHFUN05 CHFUN05_0_0.html: «wǒ hěn hǎo, nǐ ne?» in p. | CHFUN05 CHFUN05_0_0.html: «nǐ shì xuéshēng.» in p. | CHFUN05 CHFUN05_0_0.html: «nǐ shì xuéshēng ma?» in p.

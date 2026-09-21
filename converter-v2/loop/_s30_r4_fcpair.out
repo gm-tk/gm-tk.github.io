@@ -1,0 +1,50 @@
+flipCard one-table bundles: 322
+by (width, red?, url?) → the gold widget holding the first data cell (n >= 15):
+  ('4', 'red', 'url')        n=  55 absent=28(21m) flipCard=26(14m) wordHighlighter=1(1m)
+  ('2', 'red', 'text')       n=  46 absent=27(16m) flipCard=10(9m) tabs=3(3m) free=2(2m) hintSlider=1(1m) accordion=1(1m)
+  ('4', 'red', 'text')       n=  36 absent=23(14m) flipCard=9(8m) hintSlider=2(2m) free=2(2m)
+  ('3', 'red', 'url')        n=  34 absent=25(20m) flipCard=7(6m) carousel=1(1m) free=1(1m)
+  ('2', 'plain', 'text')     n=  25 flipCard=11(9m) absent=8(7m) table-responsive=2(1m) accordion=2(2m) tabs=1(1m) clickDrop=1(1m)
+  ('3', 'red', 'text')       n=  25 absent=18(13m) flipCard=5(4m) activity=2(2m)
+  ('2', 'red', 'url')        n=  18 absent=16(14m) flipCard=2(2m)
+examples:
+  (('2', 'plain', 'text'), 'absent'): AGH1006 p2.0: «[interactive: Flipcard]» 3x2 [ | **Sowing methods:** Seeds are sown into ] | ARFUN04 p0.0: «[insert flip cards]» 5x2 [1. Focal Point | a. The area in an artwork that captures ]
+  (('2', 'plain', 'text'), 'table-responsive'): AGH1006 p2.0: «[Interactive: Infographic type» 6x2 [ | **Preparation of Cutting:** Use sharp, c] | AGH1006 p2.0: «[Interactive: Infographic type» 6x2 [ | **Selecting Scion:** Choose a plant or b]
+  (('2', 'plain', 'text'), 'accordion'): AGH1006 p6.0: «[interactive: flipcard]» 3x2 [ | **Mechanical Weed Control:** Involves us] | AGH1009 p1.0: «[interactive: flip card]» 3x2 [ | **Cultural recognition (Cultural recogni]
+  (('2', 'plain', 'text'), 'tabs'): AGH1006 p8.0: «[interactive: flip cards]» 2x2 [ | **Sucking pests:** Aphids, whitefly, thr]
+  (('2', 'plain', 'text'), 'flipCard'): ANZH205 p3.0: «[Activity: flip cards]» 6x2 [• How was the treaty transported? | Te Tiriti o Waitangi was] | CEDO202 p0.0: «[insert the below table as fli» 8x2 [Some animals hibernate during winter to  | Make a shape with]
+  (('2', 'red', 'text'), 'absent'): ARFUN02 p0.0: «[Create Flip cards] [ Please a» 3x2 [Image of a [Item 12] Rabbit/ ‘Hippity Ho | Image of a [Item ] | BLLR202 p1.1: «[flipcards]» 3x2 [ea | break / great / steak]
+  (('3', 'red', 'text'), 'absent'): ARFUN02 p0.0: «[Insert the images as flip car» 3x3 [[Item 26] Drum | [Item 27] Horse neighing | [Item 28] Mouse ] | ENGI405 p5.0: «[add interactive flip cards wi» 2x3 [A Cute Bird Wearing Large Glasses Holdin | Character Reading]
+  (('2', 'red', 'url'), 'absent'): BLL114 p1.0: «[Flip card]» 8x2 [https://www.istockphoto.com/vector/house | House / 1 syllabl] | CEDO301 p6.0: «[Flipcards]» 3x2 [[image] / Traditional Aboriginal healing | Aboriginal people]
+  (('4', 'plain', 'url'), 'absent'): BLL162 p1.0: «[Flip cards] The picture is ne» 4x4 [th | https://www.istockphoto.com/vector/13-nu | f | https://]
+  (('3', 'plain', 'text'), 'activity'): BLL171 p2.0: «[flip cards]» 3x3 [If animals could talk, which one do you  | Do you think panc]
+  (('2', 'plain', 'url'), 'absent'): BLL172 p1.0: «[flip cards]» 6x2 [ai | https://www.istockphoto.com/vector/rain-]
+  (('4', 'plain', 'url'), 'memoryGame'): BLL225 p1.0: «[flip cards]» 4x4 [https://www.istockphoto.com/vector/sauce | pancakes | https:]
+  (('3', 'plain', 'text'), 'flipCard'): BLL226 p1.0: «[flip cards]» 3x3 [What do you think chickens think about? | If you could have ] | BLL240 p1.1: «[Flipcards]» 3x3 [whirl | whizz | whole]
+  (('3', 'plain', 'text'), 'table-responsive'): BLL230 p0.0: «[flipcards]» 4x3 [grow | drown | snow]
+  (('4', 'red', 'url'), 'flipCard'): BLL236 p1.0: «[flipcards] Can we have the so» 13x4 [[flipcard 1] | oa | https://www.istockphoto.com/photo/toast-] | BLL237 p1.0: «[flipcards] Can we have the so» 13x4 [[flipcard 1] | oa | https://www.istockphoto.com/photo/westha]
+  (('3', 'plain', 'text'), 'ddContainer'): BLL240 p1.3: «[Flipcards] Can we create flip» 3x3 [fudge | ledge | hedge] | BLL240 p1.6: «[Flipcards] Can we create flip» 2x3 [sphere | interfere | nowhere]
+  (('3', 'plain', 'text'), 'dragAndDrop'): BLL240 p1.5: «[Flipcards] Can we create flip» 3x3 [wear | spear | year]
+  (('4', 'red', 'url'), 'absent'): BLL242 p1.0: «[Flipcards]» 5x4 [https://media.istockphoto.com/id/2232286 | Deer – animal. / ] | CEDR501 p3.0: «[Flipcards]» 2x4 [[Front] To organise your thoughts / Imag | [Front] To keep t]
+  (('3', 'red', 'url'), 'flipCard'): BLLR202 p3.0: «[flipcards] Please arrange in » 7x3 [observant | https://www.istockphoto.com/photo/little | Good ] | BLLR203 p3.0: «[flipcards] Please arrange in » 7x3 [rangers | https://www.istockphoto.com/photo/forest | People ]
+  (('6', 'red', 'url'), 'absent'): CEDK102 p0.0: «[Flip cards]» 3x6 [] | ENGJ202 p4.0: «[flip cards]» 2x6 [Back | Things we hear (sounds like...) / *Examp | Things we ]
+  (('3', 'red', 'url'), 'absent'): CEDK501 p7.0: «[Flipcards]» 2x3 [[Reverse] / • Completing a group project | [Reverse] / • Col] | CEDK501 p10.0: «[Flipcards]» 4x3 [[Back] / Invite others to share their id | [Back] / Give eve]
+  (('3', 'red', 'text'), 'flipCard'): CEDK501 p6.1: «[Flipcards] [Question on back,» 2x3 [What does showing effort mean? / [Revers | How can I support] | CEDT501 p7.0: «[Flipcards]» 1x3 []
+  (('3', 'plain', 'url'), 'flipCard'): CEDO102 p0.0: «[Flip Cards] – Can we please h» 7x3 [https://www.istockphoto.com/photo/flound | **Concealing colo] | SSFUN03 p0.0: «[insert flip card] Developer, » 2x3 [This map shows natural features of an ar | This map shows wh]
+  (('2', 'plain', 'url'), 'flipCard'): CEDO102 p0.0: «[Flip Cards]» 4x2 [https://www.istockphoto.com/photo/damage | The water in the ]
+  (('5', 'red', 'url'), 'absent'): CEDO501 p2.0: «[Flipchart]» 2x5 [[Back] / Money paid for the hours you wo | [Back] / A fixed ] | CEDO501 p2.1: «[Flipchart]» 2x5 [[Back] / Payments from the government th | [Back] / Money th]
+  (('4', 'red', 'text'), 'absent'): CEDR501 p3.0: «[Flipcards] (please use the sa» 2x4 [[Front] **To organise your thoughts** /  | [Front] **To keep] | CEDW501 p3.0: «[Flipchart] [Audio of the kupu» 4x4 [[Back of flipcard] / **Tūpuna/tīpuna** / | [Back of flipcard]
+  (('5', 'red', 'text'), 'absent'): CEDW501 p3.0: «[Flipcards] [Audio of the kupu» 6x5 [[Back of flipcard] / **Tamaiti** / A chi | [Back of flipcard] | ENGI102 p4.0: «[flip cards]» 1x5 []
+  (('4', 'red', 'text'), 'flipCard'): CHFUN05 p0.0: «[flipcard] [body]» 2x4 [Back | *I’m good. And you?* | *He likes basketball. What abo] | ENFUN08 p0.0: «[flipcards]» 2x4 [Back | Isn’t it incredible how video games can  | Can you re]
+  (('5', 'red', 'url'), 'flipCard'): CHFUN05 p0.0: «[flipcard]» 2x5 [Back | *my book* | *your friend* | *his teacher* | *her cat*] | ENGI303 p4.0: «[flipcard]» 2x5 [Back | Success comes from working hard, not luc | Overcoming]
+  (('4', 'red', 'url'), 'wordHighlighter'): CHFUN07 p0.0: «[flipcards] [word highlighter]» 2x4 [Back | 这只猫比那只猫大。 / zhè zhī māo bǐ nà zhī māo dà | 我比你高。 / wǒ]
+  (('8', 'red', 'text'), 'flipCard'): ENFUN01 p0.0: «[Flip Cards] [Emojis sourced f» 2x8 [😀 | This story made me feel **excited** and  | 😢 | This stor] | ENFUN01 p0.0: «[Flip Cards] [Emojis sourced f» 2x8 [😀 | This story made me feel **excited** and  | 😢 | This stor]
+  (('2', 'red', 'url'), 'flipCard'): ENFUN01 p0.0: «[Flip cards]» 4x2 [https://pixabay.com/photos/reading-bed-f | Harry is reading ] | TEFUN08 p0.0: «[Flipcard interactive]» 4x2 [You ask Mum for some juice to drink. [im | Mum has run out o]
+  (('4', 'plain', 'text'), 'free'): ENFUN01 p0.0: «[Flip Cards]» 4x4 [Back | Entertain | Persuade | Entertain] | PES1003 p1.0: «[Flip card] -» 2x4 [Gas | Liquid | Solid | Plasma]
+  (('4', 'plain', 'text'), 'dragAndDrop'): ENFUN02 p0.0: «[flipcard]» 2x4 [Isolation | Freedom | Nature’s beauty | Journey and explorat]
+  (('2', 'red', 'text'), 'hintSlider'): ENFUN03 p0.0: «[Flip Card]» 7x2 [When I saw the delicious cake on the des | Complex Sentence]
+  (('4', 'plain', 'text'), 'hintSlider'): ENFUN05 p0.0: «[Flip Card]» 2x4 [Sarah is a talented singer; she has won  | My best friend (w]
+  (('4', 'plain', 'text'), 'flipCard'): ENFUN07 p0.0: «[Flip Cards]» 2x4 [Point – the main idea. | Evidence – examples, preferably in ] | ENFUN09 p0.0: «[flipcard]» 2x4 [Details about how they felt or things th | Identify any redu]
+  (('4', 'red', 'text'), 'hintSlider'): ENFUN08 p0.0: «[flipcards]» 2x4 [Back | He is a shining star. | The classroom was a loud zoo.] | MXFL302 p1.0: «[flip cards]» 5x4 [At the beginning of a sentence. | **T**he computer was switc]
+  (('4', 'red', 'text'), 'free'): ENGC201 p3.0: «[Flip cards]» 6x4 [Back | Open question | Open question | Closed question] | ENGC301 p2.0: «[FlipCard]» 4x4 [Back | Alliteration | Alliteration | Alliteration]
+  (('2', 'red', 'text'), 'flipCard'): ENGC206 p1.0: «[Flip card activity] [First co» 6x2 [Put the food in the pan. / (Not precise) | Add the chopped v] | HPRE203 p5.0: «[flip cards] x 4» 4x2 [Facing: [image] blind girl.png / [h5] As | Lily asks Ashley,]
