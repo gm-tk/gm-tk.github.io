@@ -1,0 +1,23 @@
+[gatecheck] running skeleton (full corpus)…
+[gatecheck] running defect (full corpus)…
+
+FULL-REGEN GATE VERDICT — live full corpus vs committed gate_baseline.json (round 424, build 260619.95)
+  metric                                 baseline       live     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  54.17      54.23     +0.06  IMPROVED
+  skeleton pages >=50%                       1442       1463       +21  IMPROVED
+  skeleton pages >=75%                        238        238         0  HELD
+  compare_structure exact chain             14255      14318       +63  IMPROVED
+  compare_structure EXTRA container           186        186         0  HELD
+  compare_structure missing container         689        689         0  HELD
+  body_compare ANY breakdown                  248        251        +3  REGRESSED
+  defect structurally-clean %               98.28      98.29     +0.01  IMPROVED
+  literal-[tag] leak (occ)                     73         73         0  HELD
+  literal-[tag] leak (pages)                   44         44         0  HELD
+
+  (Run the 3 verifier gates separately — tags / flipCard / speechBubble via run_all_gates.sh.)
+
+RESULT: REGRESSED — body_compare ANY breakdown
+  NOTE: body_compare is the ONLY regression and the PRIMARY skeleton IMPROVED — this MAY be a
+  documented net-positive (the MEASUREMENT MANDATE judges a structural change on the skeleton).
+  CONFIRM THE CAUSE before shipping:  ./_ab.py <TOGGLE>=1 <the regressed pages' modules>

@@ -1,0 +1,62 @@
+SKELETON STRUCTURAL MATCH — 2 paired pages (text-immune, 100% of structure)
+
+pairs skipped (parse error): 0
+RAW match (full structure, incl. widget internals): mean 47.5%
+   ^ low because Phase-1 widgets are by-design PLACEHOLDERS vs the human's built widgets.
+
+SCAFFOLD match (widgets collapsed to one marker — the Phase-1 target: rows/cols/
+activities/sections + widget POSITIONS): mean 66.6%  median 72.6%
+  pages >=  95% SCAFFOLD match:    0 ( 0.0%)
+  pages >=  90% SCAFFOLD match:    0 ( 0.0%)
+  pages >=  75% SCAFFOLD match:    0 ( 0.0%)
+  pages >=  50% SCAFFOLD match:    2 (100.0%)
+  pages <  50% scaffold match: 0
+
+== per-module mean SCAFFOLD match (worst 25) ==
+  XOTPG04    66.6%  (2 pages)
+
+== worst individual pages by SCAFFOLD match (top 20) ==
+  XOTPG04_2_0.html           scaffold  60.5%  (raw   46%)
+  XOTPG04_1_0.html           scaffold  72.6%  (raw   49%)
+
+============================================================
+WORST-PAGE SCAFFOLD DIFFS (human → claude, widgets=WIDGET)
+============================================================
+
+#### XOTPG04_2_0.html  —  61% scaffold match ####
+--- human
++++ claude
+@@ -13,3 +13,3 @@
+           div.item
+-            ┌ 4× repeated block of 2:
++            ┌ 3× repeated block of 2:
+               h3
+@@ -17,2 +17,5 @@
+               p
++            h3
++              span
++            h5
+             ul
+@@ -22,4 +25,3 @@
+           div.item
+-            ┌ 2× repeated:
+-              p
++            p
+             p
+@@ -33,22 +35,3 @@
+             b
+-          div.table-responsive
+-            table.table.table-bordered
+-              tr
+-                td
+-                  b
+-              ┌ 2× repeated:
+-                tr
+-                  ┌ 3× repeated:
+-                    td
+-          div.table-responsive
+-            table.table.table-bordered
+-              ┌ 7× repeated:
+-                tr
+-                  ┌ 3× repeated:
+-                    td

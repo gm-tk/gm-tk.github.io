@@ -1,0 +1,32 @@
+======================================================================
+ SCOPED SHIP — affected=../../outputs/_affected_r425.txt (12 modules), toggle=ACTTABLEADAPT_OFF
+======================================================================
+[0] toggle-exists invariant (ACTTABLEADAPT_OFF)
+    OK — ACTTABLEADAPT_OFF found in app/js (the last-shipped corpus == this toggle OFF).
+
+[1] content-hash 0-stale (mtime false-alarm defeated)
+[content-manifest] content-hash 0-stale vs _content_manifest.txt
+  affected set: 12 module(s) (must be freshly regenerated)
+  unaffected  : 492 module(s) (must be byte-identical to the manifest; mtime IGNORED)
+  OK — 0 truly stale. 12 affected regenerated; the untouched corpus is byte-identical to the manifest (mtime false-alarm defeated).
+
+[2] containment — actually-changed modules must be a subset of the affected set
+    OK — 12 changed module(s) are a subset of 12 affected (the true set ⊆ the detector set).
+
+[3] completeness spot-check (a mis-specified P is caught here)
+[spotcheck] verifying 12 non-affected modules regenerated WITH the fix ON
+  OK — all 12 sampled non-affected modules are BYTE-IDENTICAL under the fix (P's no-op claim holds on the sample).
+
+[4] exact gate proof (decomposition vs the last-ship baseline)
+!! BASELINE is STALE — 1 UNAFFECTED module(s) were regenerated AFTER the baseline snapshot, so their baseline contribution is wrong (e.g. PMT101).
+      fix:  ./ship.sh   (full 0-stale regen + refresh), or python3 _fastloop_snapshot.py if already fresh
+>> Refusing to report deltas off a stale baseline. Override: --allow-stale-baseline
+
+
+[5] baseline NOT refreshed (no --commit). To make this the new shipped state, re-run with --commit.
+
+[6] periodic full-ship backstop cadence
+[ledger] last full ship: round 416 (2026-09-20T08:52:12Z); scoped ships since: 7 (cadence 8, hard 16)
+  OK — a full-ship backstop is not yet due (1 scoped ship(s) of headroom).
+
+SCOPED SHIP: FAILED — see the log above.

@@ -857,6 +857,24 @@ class DocxExtractor {
 				// `<h3><span>Overview</span></h3>`, 24 / 24 pages) — data overview_label_from_cell
 				const lab = ad.overview_label_from_cell !== false ? plain(leftLines[0] ?? "") : "";
 				if (lab && !/^\*\*/.test(String(overview[0] ?? "").trim())) overview.unshift(`**${lab}**`);
+				// the success-criteria items after an "I can:" label are typed as PLAIN paragraphs in the
+				// cell (no numPr) — the gold lists them (<ul><li>, 12 / 12 pages; KB 01B / constraint 23),
+				// so they take the corpus bullet prefix up to the next bold label or the first long prose
+				// line, and renderBlackText groups them into one <ul> — data overview_list_after_label (r425)
+				const ol = ad.overview_list_after_label;
+				if (ol && ol.enabled !== false) {
+					const labRe = re(ol.label_match ?? "^i can\\s*:?$");
+					const stopW = ol.stop_min_words ?? 16;
+					const bp = rules.formatting_markers?.bullet_prefix ?? "• ";
+					let listing = false;
+					overview = overview.map((l) => {
+						const t = String(l ?? "").trim();
+						if (labRe.test(fold(t))) { listing = true; return l; }
+						if (!listing) return l;
+						if (/^\*\*/.test(t) || paren(t) || isCs(t) || plain(t).split(/\s+/).length >= stopW || /^\s*•\s/.test(t)) { listing = false; return l; }
+						return `${bp}${t}`;
+					});
+				}
 				continue;
 			}
 			ensurePage(links);

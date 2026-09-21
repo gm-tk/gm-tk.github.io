@@ -1,0 +1,166 @@
+{
+ "pages": 24,
+ "skipped_parse_errors": 0,
+ "scaffold_mean": 0.6028064438552082,
+ "raw_mean": 0.42794445336641324,
+ "per_page": [
+  {
+   "module": "XOTPB08",
+   "page": "XOTPB08_2_0.html",
+   "scaffold": 0.0847457627118644,
+   "raw": 0.0821917808219178
+  },
+  {
+   "module": "XOTPB09",
+   "page": "XOTPB09_2_0.html",
+   "scaffold": 0.38333333333333336,
+   "raw": 0.32432432432432434
+  },
+  {
+   "module": "XOTPB12",
+   "page": "XOTPB12_2_0.html",
+   "scaffold": 0.48,
+   "raw": 0.39490445859872614
+  },
+  {
+   "module": "XOTPB13",
+   "page": "XOTPB13_2_0.html",
+   "scaffold": 0.5166666666666667,
+   "raw": 0.43243243243243246
+  },
+  {
+   "module": "XOTPB10",
+   "page": "XOTPB10_2_0.html",
+   "scaffold": 0.5254237288135594,
+   "raw": 0.4383561643835616
+  },
+  {
+   "module": "XOTPB11",
+   "page": "XOTPB11_2_0.html",
+   "scaffold": 0.5254237288135594,
+   "raw": 0.4383561643835616
+  },
+  {
+   "module": "XOTPG06",
+   "page": "XOTPG06_2_0.html",
+   "scaffold": 0.5477707006369427,
+   "raw": 0.42424242424242425
+  },
+  {
+   "module": "XOTPO01",
+   "page": "XOTPO01_2_0.html",
+   "scaffold": 0.5512820512820513,
+   "raw": 0.4263959390862944
+  },
+  {
+   "module": "XOTPG01",
+   "page": "XOTPG01_2_0.html",
+   "scaffold": 0.6013071895424836,
+   "raw": 0.46153846153846156
+  },
+  {
+   "module": "XOTPG03",
+   "page": "XOTPG03_2_0.html",
+   "scaffold": 0.6052631578947368,
+   "raw": 0.4639175257731959
+  },
+  {
+   "module": "XOTPG04",
+   "page": "XOTPG04_2_0.html",
+   "scaffold": 0.6052631578947368,
+   "raw": 0.4639175257731959
+  },
+  {
+   "module": "XOTPG05",
+   "page": "XOTPG05_2_0.html",
+   "scaffold": 0.6052631578947368,
+   "raw": 0.4639175257731959
+  },
+  {
+   "module": "XOTPB08",
+   "page": "XOTPB08_1_0.html",
+   "scaffold": 0.6268656716417911,
+   "raw": 0.42
+  },
+  {
+   "module": "XOTPB10",
+   "page": "XOTPB10_1_0.html",
+   "scaffold": 0.6518518518518519,
+   "raw": 0.3813953488372093
+  },
+  {
+   "module": "XOTPO01",
+   "page": "XOTPO01_1_0.html",
+   "scaffold": 0.6754966887417219,
+   "raw": 0.46788990825688076
+  },
+  {
+   "module": "XOTPB09",
+   "page": "XOTPB09_1_0.html",
+   "scaffold": 0.6911764705882353,
+   "raw": 0.46078431372549017
+  },
+  {
+   "module": "XOTPG06",
+   "page": "XOTPG06_1_0.html",
+   "scaffold": 0.7080745341614907,
+   "raw": 0.4769874476987448
+  },
+  {
+   "module": "XOTPB13",
+   "page": "XOTPB13_1_0.html",
+   "scaffold": 0.7164179104477612,
+   "raw": 0.423963133640553
+  },
+  {
+   "module": "XOTPG01",
+   "page": "XOTPG01_1_0.html",
+   "scaffold": 0.7261146496815286,
+   "raw": 0.4851063829787234
+  },
+  {
+   "module": "XOTPG03",
+   "page": "XOTPG03_1_0.html",
+   "scaffold": 0.7261146496815286,
+   "raw": 0.4851063829787234
+  },
+  {
+   "module": "XOTPG04",
+   "page": "XOTPG04_1_0.html",
+   "scaffold": 0.7261146496815286,
+   "raw": 0.4851063829787234
+  },
+  {
+   "module": "XOTPG05",
+   "page": "XOTPG05_1_0.html",
+   "scaffold": 0.7261146496815286,
+   "raw": 0.4851063829787234
+  },
+  {
+   "module": "XOTPB12",
+   "page": "XOTPB12_1_0.html",
+   "scaffold": 0.7299270072992701,
+   "raw": 0.44954128440366975
+  },
+  {
+   "module": "XOTPB11",
+   "page": "XOTPB11_1_0.html",
+   "scaffold": 0.7313432835820896,
+   "raw": 0.4351851851851852
+  }
+ ],
+ "per_module_scaffold_mean": {
+  "XOTPB08": 0.35580571717682774,
+  "XOTPB09": 0.5372549019607843,
+  "XOTPB10": 0.5886377903327056,
+  "XOTPB11": 0.6283835061978245,
+  "XOTPB12": 0.604963503649635,
+  "XOTPB13": 0.6165422885572139,
+  "XOTPG01": 0.6637109196120061,
+  "XOTPG03": 0.6656889037881327,
+  "XOTPG04": 0.6656889037881327,
+  "XOTPG05": 0.6656889037881327,
+  "XOTPG06": 0.6279226173992167,
+  "XOTPO01": 0.6133893700118866
+ }
+}

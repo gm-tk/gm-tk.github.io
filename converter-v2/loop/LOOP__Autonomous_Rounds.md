@@ -45,7 +45,8 @@ byte-identical (`cmp`), and every session's health check confirms this "Amended"
    rebuilt the registries (r408) and fixed the XOTP parsed-text message (r409); round 410 was
    finished by session 29. **CHECK FOR AN IN-FLIGHT ROUND BEFORE PICKING ANYTHING:** the
    Position section and the "Next session starts with" line of `LOOP_STATE.md` say whether a
-   round is in flight or built-but-inert (today: r425 shipped inert — finishing it is Round 1).
+   round is in flight or built-but-inert (today: no round in flight — see LOOP_STATE.md; r425 was
+   finished by session 33 on 22 September 2026).
    Never `git checkout` an in-flight round's files away without deciding (OPERATING_GUIDE.md
    §16, the round-284 lesson).
 
@@ -59,7 +60,7 @@ tree. **Three census exceptions:**
   an in-flight or built-but-inert round named in `LOOP_STATE.md` is finished (or toggled OFF and
   proven byte-identical) FIRST, so the intake's full regeneration runs on a proven engine state;
 - a Claude-dir / Claude-page mismatch that equals the change the last shipped round records
-  (e.g. r425 shipping = +12 dirs / +24 pages) is a stale `expect` value in
+  (e.g. r425 shipping on 22 Sept 2026 = +12 dirs / +24 pages) is a stale `expect` value in
   `_MIGRATION/verify_after_transfer.sh` lines 76–80 — update it (dated comment, `.pre-rNNN.bak`)
   and continue; it is neither an intake trigger nor a broken tree;
 - a count that FELL is never an intake trigger: stop and report — unless the last STOPPED entry
@@ -80,19 +81,19 @@ header.
 
 **The census it prints changed on 19–20 September 2026** (the 98-module intake) and again on
 21 September (PMT101 converts, r423); any older figure in `LOOP_STATE.md` or a changelog entry
-is pre-intake. Current (22 September 2026, build 260619.96):
+is pre-intake. Current (22 September 2026, build 260619.97 — r425 finished, the 12 XOTP modules IN):
 
 | | before the intake | now |
 |---|---:|---:|
-| Claude module dirs | 416 | **495** |
-| Claude pages | 2,109 | **2,559** |
+| Claude module dirs | 416 | **507** |
+| Claude pages | 2,109 | **2,583** |
 | gold dirs | 454 | **552** |
 | Writers Template / Media List docx | 619 | **762** |
-| skeleton paired pages | 1,956 | **2,353** |
+| skeleton paired pages | 1,956 | **2,377** |
 
-**552 gold dirs against 495 Claude dirs is CORRECT, not a fault — but the gap is 57, not 19.**
-19 are the September intake's no-builds (§2): the 12 XOTP modules until the r425 adapter is
-enabled, and 7 with no Writers Template at all. **The other 38 are PRE-INTAKE modules that hold
+**552 gold dirs against 507 Claude dirs is CORRECT, not a fault — but the gap is 45, not 7.**
+7 are the September intake's no-builds (§2): the modules with no Writers Template at all (the 12
+XOTP modules joined the corpus when r425 finished on 22 September 2026, session 33 Round 1). **The other 38 are PRE-INTAKE modules that hold
 a Writers Template and its `_parsed.txt` but have never produced a Claude build** (the pre-intake
 gap was already 454 − 416 = 38; found by the 22 Sept review's adversarial check — 20 of them were
 refused at round 285 and their empty dirs removed, the "r285 ghost-directory class" of the r308
@@ -105,9 +106,8 @@ HPRE301 OSSM501 SSCI104 SSEA203 SSOG105 TRR110 TWHK902 TWHK907 TWHR905 TWHR907 T
 already in the registries): convert them by explicit code list, record every refusal by cause,
 re-base the gates by population. Until that round runs, §1f trigger (b) treats these 38 as
 RECORDED (this list) and does not fire on them. A gold-only dir is the expected state for a
-recorded no-build. After r425 ships the figures become 507 dirs / 2,583 pages / 2,377 pairs —
-update this table AND `_MIGRATION/verify_after_transfer.sh` lines 77–78 (`expect` values, a
-dated comment, `.pre-r425.bak` kept) at that finalise.
+recorded no-build. (r425 finished 22 September 2026: the table above and
+`_MIGRATION/verify_after_transfer.sh` lines 77–78 were updated at that finalise, `.pre-s33.bak` kept.)
 
 ## 1. The measure of success — and the honest ceiling
 

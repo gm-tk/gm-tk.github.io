@@ -1,0 +1,1 @@
+STUB_OEMBED=1 timeout 900 node --require ./_deflate_raw_polyfill.cjs batch_convert.cjs HIS1006 HIS1007 HIS1008 HPFUN101 HPFUN102 HPFUN103 HPFUN201 HPFUN202 HPFUN203 HPFUN301 HPFUN302 --force

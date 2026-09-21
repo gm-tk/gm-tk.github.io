@@ -378,9 +378,9 @@
 			"label": "Activity-table Writers Template (the XOTP reader family — a 'Section heading | Text/Activity' table, no red tags)",
 			"action": "Recognised as a Writers Template in the ACTIVITY-TABLE dialect: the left cell of each row (Overview / Introduction / Online book / Questions / a bare activity number …) carries the structure that red tags carry in the standard template. The adapter that turns that table into PageForge's tag stream is not enabled yet (input_shapes.activity_table.adapter) — nothing converted; see 00-NEW_NEW_NEW/_SPEC__XOTP_Activity_Table_Template.md.",
 			"adapter": {
-				"enabled": false,
+				"enabled": true,
 				"env": "ACTTABLEADAPT_OFF",
-				"_shipped_inert": "SESSION 31 STOP (2026-09-21): the adapter is BUILT and proven on the 12 XOTP modules (build 5: 24 pages, means 35.6–63.1 %, every family convention verified on XOTPG04_1_0) but the round's A/B probe / scoped ship / gate suite were not run before the loop was stopped — shipped OFF so the corpus stays at the r424 proven state (2559 / 495). The next loop flips this to true and finishes r425 from the LOOP_STATE.md handover.",
+				"_shipped_inert": "SESSION 31 STOP (2026-09-21): the adapter is BUILT and proven on the 12 XOTP modules (build 5: 24 pages, means 35.6–63.1 %, every family convention verified on XOTPG04_1_0) but the round's A/B probe / scoped ship / gate suite were not run before the loop was stopped — shipped OFF so the corpus stays at the r424 proven state (2559 / 495). ENABLED 2026-09-22 (session 33 Round 1): r425 finished from the LOOP_STATE.md handover — the 12 rebuilt byte-identical to build 5, the I-can list (overview_list_after_label) added, the A/B probe over all 507 modules (OFF = disk 2559 / 2559 with the 12 refused; ON = 2583 / 2583), the FULL regeneration backstop, the 2353 -> 2377 re-base.",
 				"_note": "ROUND 425 (session 31 Round 3 — the spec's Round 2: the adapter, text only). DocxExtractor.AdaptActivityTable turns the activity table into the synthetic red-tag paragraph stream the whole existing pipeline already speaks (TITLE BAR / LESSON N / Lesson Overview / H2 / H3 / Body / alert / Activity / the widget invocations / button / End page), so no builder, no menu shell and no page-splitter rule is new. The mapping is DATA: the section lexicon below (left-cell text → role), the widget hints (row text → invocation tag), the page-break rule and the instruction handling. The reader book (carousel images, the picture / sentence matching payload, the acks credits) is NOT in any of the twelve documents — those widgets ship as the standard hand-off placeholders (spec §4, needs Chris: a Media List for the family).",
 				"title_patterns": [
 					"^code\\s+([a-z]{2,6}\\d{2,4}[a-z]?\\d*)\\s*title:\\s*(.+)$",
@@ -413,6 +413,12 @@
 				"questions_title_default": "Story questions",
 				"questions_title_max_words": 4,
 				"overview_label_from_cell": true,
+				"overview_list_after_label": {
+					"enabled": true,
+					"label_match": "^i can\\s*:?$",
+					"stop_min_words": 16,
+					"_note": "ROUND 425 finish (session 33 Round 1, 2026-09-22): the Overview cell's success-criteria items are typed as PLAIN paragraphs (no numPr, no style — verified in the docx of XOTPG04 / G01 / O01), so they reached the two-column item menu as five <p> lines; the gold ships them as <ul><li> on every page that has them (6 modules / 12 pages, 12 / 12) and the KB fixes the form — 01B_MODULE_MENUS_FOOTER (`<h5>I can:</h5>` + `<ul><li>`), constraint 23. The lines after a label matching label_match (folded) up to the next bold label or the first line of >= stop_min_words words take the corpus bullet prefix, so ListsAndRuns.renderBlackText groups them into ONE <ul>. The B-series Overview cells hold only the external Google-Doc link (needs Chris) and never match. Off with the adapter (ACTTABLEADAPT_OFF) or enabled: false."
+				},
 				"questions_title_as_lead": true,
 				"questions_list": "numbered",
 				"activity_box": "bare",
