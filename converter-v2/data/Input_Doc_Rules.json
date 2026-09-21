@@ -380,7 +380,65 @@
 			"adapter": {
 				"enabled": false,
 				"env": "ACTTABLEADAPT_OFF",
-				"_note": "The spec's Round 2 (the adapter, text only) flips this on; until then recognition alone routes the family to the named refusal above."
+				"_shipped_inert": "SESSION 31 STOP (2026-09-21): the adapter is BUILT and proven on the 12 XOTP modules (build 5: 24 pages, means 35.6–63.1 %, every family convention verified on XOTPG04_1_0) but the round's A/B probe / scoped ship / gate suite were not run before the loop was stopped — shipped OFF so the corpus stays at the r424 proven state (2559 / 495). The next loop flips this to true and finishes r425 from the LOOP_STATE.md handover.",
+				"_note": "ROUND 425 (session 31 Round 3 — the spec's Round 2: the adapter, text only). DocxExtractor.AdaptActivityTable turns the activity table into the synthetic red-tag paragraph stream the whole existing pipeline already speaks (TITLE BAR / LESSON N / Lesson Overview / H2 / H3 / Body / alert / Activity / the widget invocations / button / End page), so no builder, no menu shell and no page-splitter rule is new. The mapping is DATA: the section lexicon below (left-cell text → role), the widget hints (row text → invocation tag), the page-break rule and the instruction handling. The reader book (carousel images, the picture / sentence matching payload, the acks credits) is NOT in any of the twelve documents — those widgets ship as the standard hand-off placeholders (spec §4, needs Chris: a Media List for the family).",
+				"title_patterns": [
+					"^code\\s+([a-z]{2,6}\\d{2,4}[a-z]?\\d*)\\s*title:\\s*(.+)$",
+					"^([a-z]{2,6}\\d{2,4}[a-z]?\\d*)\\s+(.+)$"
+				],
+				"sections": [
+					{ "match": "^overview", "role": "overview" },
+					{ "match": "^introduction", "role": "introduction" },
+					{ "match": "^online book", "role": "online_book" },
+					{ "match": "^questions", "role": "questions" },
+					{ "match": "^share with your", "role": "share", "terminal_after": false },
+					{ "match": "^quiz", "role": "skip", "terminal": true },
+					{ "match": "^i can\\b", "role": "skip" },
+					{ "match": "^(\\d+[a-z]?)\\b", "role": "activity" },
+					{ "match": "\\b(\\d+[a-z]?)\\s*$", "role": "activity" }
+				],
+				"_sections_note": "Tested in order against the FOLDED left cell (bold / underline markers and parenthetical notes removed, lines joined by ' / '); the first match wins; a row matching nothing is emitted as an [Activity] too (a section heading with no number — the G writers' 'Word Challenge' / 'Sequence Activity' rows carry their number on a second line, caught by the trailing-number pattern). The Quiz row and its nested 'I can' table are the D2L self-assessment quiz — never a page (spec §3.2); recorded in the run notes. The Quiz row is TERMINAL: the extractor flattens the nested 'I can' table's six rows into the outer table after it, so nothing after the Quiz row is read.",
+				"no_overview_page": true,
+				"page_title": "module",
+				"_page_title_note": "Every gold XOTP page's own h1 repeats the module title (XOTPG04_1_0 / _2_0: two identical `My Drum Kit` spans), so the adapted pages skip the PageSplitter heading harvest (which would take the Introduction [H2]) and the SkeletonBuilder module-title fallback applies.",
+				"_no_overview_page_note": "The gold's first file is 1_0 — there is no overview page; the writer's Overview row is the lesson-page module menu. The splitter's RR-4 normally merges a title-bar-only opening segment forward AS the overview (label 0.0); with this flag the segment folds into lesson 1 as a LESSON page (PageSplitter, run.noOverviewPage), so the files pair with the gold's 1_0 / 2_0 and the title still resolves from the title-bar item riding on page 1.",
+				"widget_hints": [
+					{ "match": "flip (box|boxes|card|cards)", "tag": "flip cards" },
+					{ "match": "think bubble|speech bubble|what.?s next", "tag": "speech bubble" },
+					{ "match": "tick box|odd one out", "tag": "multi choice" },
+					{ "match": "drag and drop|matching|fill the gaps|rhym|sequence", "tag": "drag and drop" }
+				],
+				"_widget_hints_note": "Matched in order over the folded text of the WHOLE row (left + right cells) — the section heading decides the widget, a CS: line only confirms it (spec §3.4: the six G / O modules carry no CS: line at all). No hint → a plain [Activity] box (Kei a koe, the Syllable Count / Word Challenge charts, whose gold is a table the writer only linked).",
+				"online_book_questions_split": "^(instruction:?|talk about the story|use these questions)",
+				"questions_title_default": "Story questions",
+				"questions_title_max_words": 4,
+				"overview_label_from_cell": true,
+				"questions_title_as_lead": true,
+				"questions_list": "numbered",
+				"activity_box": "bare",
+				"lesson_title_repeats_module": true,
+				"_family_note": "The XOTP family's page conventions, measured over the 24 gold pages (outputs/_s31_r425_goldcensus.py): the Story-Questions alert's title is the callout's own lead (`callouts.by_tag.alert.variants` fixes it at h3 with no inner row and a col-md-9 column) and its questions are the writer's DECIMAL list (the docx numId → decimal; a table cell carries no numFmt, so the extractor marks every cell list `• ` — `questions_list: numbered` restores `1. ` and renderBlackText builds the <ol>, 11 / 12 gold); every activity box holds its content DIRECTLY (63 / 63 — `activity_box: bare` → run.activityBoxBare → activity_wrapper.open_bare); the lesson h1 repeats the module title (23 / 24 pages carry two identical `<h1><span>` — `lesson_title_repeats_module` → run.lessonTitleRepeatsModule, honoured where the registry h1_count asks for 2); a writer [H2] keeps its digit (keep_writer_digit.digits_by_prefix.2 += XOTP). Not taken: the gold's body `<h2><span>` wrapper (the corpus no_span_rule), the acks on the LAST page (the KB puts it on the overview — the first page here), the I-can items as a <ul> (plain paragraphs in the docx, the human's editorial bullets).",
+				"title_line_max_words": 6,
+				"title_line_reject": "^(cs:|to cs:|instruction|\\(|answer|use |possible )",
+				"strip_line_prefixes": [
+					"instruction:"
+				],
+				"button_line_pattern": "\\bbutton\\b",
+				"button_split": "\\bbutton\\b",
+				"_button_note": "The Share row's 'Upload to dropbox button         Go to assessment quiz button' line: every label ends in the word 'button', so the line splits on that word and each part becomes one [button] (the r305 dropbox post-pass then adds the box's class token from the 'dropbox' label).",
+				"page_break": {
+					"lettered": "lesson-digit-change",
+					"bare_numbers_break_after": 3
+				},
+				"_page_break_note": "Spec §3.3: no [End page] anywhere, yet every module ships exactly two pages. Lettered labels (the G / O variant: 1A 1B 1C 2A 2B 2C) break where the lesson digit changes — derivable from the labels themselves; bare numbers (the B variant: 1 2 3 4 5) break after row 3 (verified on all six B modules). The overview row's content is repeated as each lesson page's [Lesson Overview] block — the writer's '(dropdown at top right)' is the lesson-page module menu, and the gold has no overview page.",
+				"lesson_overview_tag": "Lesson Overview",
+				"alert_tag": "alert",
+				"heading_pair_separator": " | ",
+				"parenthetical_as_instruction": true,
+				"cs_line_pattern": "^(to\\s+)?cs\\s*:",
+				"cs_lines_as_instruction": true,
+				"_cs_line_note": "A row line opening `CS:` / `To CS:` is the writer's note to Creative Services (`CS: Create a drag and drop activity:`) — emitted as a RED span so the standard instruction path renders the Writers Note; it never becomes body prose.",
+				"_parenthetical_note": "A line that is wholly parenthetical — '(Answers in order: Look, seeds, …)', '(Please position the think bubble above the photo at left)' — is the writer's instruction to the developer, never page text: it is emitted as a red bracket-less span, which the normaliser classifies as an instruction and the r219 note scheme surfaces as a gate-invisible Writers Note. A 'CS:' / 'To CS:' line stays a plain paragraph: the r219 addressee-prefix scheme already renders it as a Writers Note (spec §3.4's two editorial CS: lines therefore survive as notes, exactly as the spec asks)."
 			},
 			"_note": "ROUND 424 (session 31 Round 2 — the XOTP recognition round, LOOP_INTAKE 2026-09-19 §7 item 4, spec 00-NEW_NEW_NEW/_SPEC__XOTP_Activity_Table_Template.md §3.1 / §6 round 1). The twelve XOTP documents (XOTPB08–13, XOTPG01, XOTPG03–06, XOTPO01) carry NO square-bracket red tags; the structure lives in one two-column table whose header row is 'Section heading | Text/Activity' (the table opens with a merged title row, so the header is the SECOND row — scan_rows). MEASURED (outputs/_s31_r424_attable.cjs over all 762 docx): the header pair exists in exactly the 12 XOTP Writers Templates and nowhere else in the corpus, so the detector is exact and output-inert for every existing module by construction. DocxExtractor.IsActivityTableDoc reads it; ModuleResolver.PrepareRun takes such a document as the WT when the standard chain found none, and — with adapter.enabled false — returns the data-driven 'unsupported' refusal (label / action above) that batch_convert reports as 'refused by design' and the App renders in the summary, in place of the misleading 'no Writers Template (no content opener found)'. Same header test as pageforge-site/js/formatter.js OutputFormatter.ACTIVITY_TABLE_NOTICE (round 409, the parsed-text tab). Env ACTTABLE_OFF reverts to the pre-424 'no-wt' path."
 		}

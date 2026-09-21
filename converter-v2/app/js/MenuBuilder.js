@@ -121,6 +121,25 @@ class MenuBuilder {
 		return this.#inquiryFamilyFor(run, page);
 	}
 
+	/**
+	 * ROUND 425 (the autonomous loop's session 31 Round 3 — the XOTP activity-table adapter). The two-column
+	 * FAMILY for this page: the r359 Inquiry family (overviews of Inquiry-template modules), else the ITEM
+	 * family — a module whose code starts with one of menu.two_col_li.item_family.code_prefixes, on EVERY page
+	 * (the XOTP modules have no overview page; their lesson menu is the same two-column form: `col-md-6
+	 * col-sm-12 > div.item` columns, `h3><span` labels, the trailing prose in the right column — 24 / 24 gold
+	 * pages). A family carries its own shell / heading templates / left_match; the composer treats both alike.
+	 */
+	static #familyFor(run, page) {
+		const inq = this.#inquiryFamilyFor(run, page);
+		if (inq) return inq;
+		const cfg = DataService.Data.EmitTemplates?.menu?.two_col_li?.item_family;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "ITEMMENU_OFF"]) return null;
+		const code = String(run?.moduleCode || "").toUpperCase();
+		if (!(cfg.code_prefixes ?? []).some((p) => code.startsWith(String(p).toUpperCase()))) return null;
+		return cfg;
+	}
+
 	static menuTypeFor(page, run) {
 		const base = this.#menuTypeForBase(page, run);
 		// ROUND 359: an Inquiry overview always carries its menu (KB 06 §3.4) — a registry 'none' verdict (CEDW101 / CEDW201 /
@@ -392,7 +411,7 @@ class MenuBuilder {
 		// 'flat' convention gave it one col-md-8 column), the banner family is off (ConnectED|1-3's mined banner_h4_span),
 		// the left headings are h4>span and the shell is two_col_inquiry (paddingR | paddingL, no banner). The ENG offset
 		// family and a tabs menu are untouched. See #inquiryFamilyFor.
-		const inqCfg = this.#inquiryFamilyFor(run, page);
+		const inqCfg = this.#familyFor(run, page);   // r425: the Inquiry family OR the item family
 		const inqFamily = !!inqCfg && !engFamily && archetype !== "tabs";
 		if (inqFamily) { archetype = "two_col_li"; bannerFamily = false; }
 		// THE CURRICULUM-LINE SPLIT, GENERALISED TO EVERY OTHER two_col_li FAMILY
@@ -409,7 +428,7 @@ class MenuBuilder {
 			&& tpl.two_col_li.curriculum_split_all !== false
 			&& !(typeof process !== "undefined" && process.env && process.env.CURRICSPLIT_OFF);
 
-		const out = { kind: menuType, archetype, engFamily, bannerFamily, inquiryFamily: inqFamily, bannerLabel: "", tab1: "", tab2: "", content: "", left: "", right: "", tab1Cols: null, tab2Cols: null };
+		const out = { kind: menuType, archetype, engFamily, bannerFamily, inquiryFamily: inqFamily, familyShell: (inqFamily && inqCfg.shell) || null, bannerLabel: "", tab1: "", tab2: "", content: "", left: "", right: "", tab1Cols: null, tab2Cols: null };
 
 		// OVERVIEW TABS-MENU PANE-1 TWO-COLUMN LAYOUT (e.g. module ENGJ402). The
 		// two-column transforms above are all gated to archetype === "two_col_li",
@@ -491,6 +510,7 @@ class MenuBuilder {
 			&& this.#extraTabRow(run, bhrRaw));
 
 		// walk: heading tag → bucket decision; following content joins it
+		let famLastLabel = false;   // r425: the item family — set once the LAST left label (Do) has opened; trailing prose then goes right
 		let bucket = archetype === "tabs" ? "tab1"
 			: (archetype === "two_col_li" ? "right" : "content");
 		const push = (html) => {
@@ -600,9 +620,13 @@ class MenuBuilder {
 							const label = bold[1].includes("|")
 								? bold[1].split("|").pop().trim() : bold[1].trim();
 							const folded = Utils.Fold(label);
-							if (isLabel(folded)) continue;   // section label → consumed
-							const left = cfg.left_match.some((m) => folded.startsWith(m));
+							// r425: a family's own left_match (the item family's "overview") outranks the consume vocabulary
+							const famLeft = (inqFamily && Array.isArray(inqCfg.left_match)) ? inqCfg.left_match : null;
+							const famHit = !!famLeft && famLeft.some((m) => folded.startsWith(m));
+							if (isLabel(folded) && !famHit) continue;   // section label → consumed
+							const left = famHit || (famLeft ?? cfg.left_match).some((m) => folded.startsWith(m));
 							const right = (cfg.right_match ?? []).some((m) => folded.includes(m));
+							if (famLeft && left) famLastLabel = folded.startsWith(String(famLeft[famLeft.length - 1]));   // r425: past the last left label?
 							if (left || right) {
 								flushText();   // emit the prior bucket's buffered bullets before switching column
 								bucket = left ? "left" : "right";
@@ -611,6 +635,14 @@ class MenuBuilder {
 									{ heading: Utils.EscapeHtml(label) }));
 								continue;
 							}
+						}
+						// r425: the item family's TRAILING PROSE — a long unlabelled paragraph after the left column's
+						// labels moves to the right column (the gold's `col-md-6 col-sm-12 > div.item` right pane holds
+						// the Overview row's closing paragraphs; the short "I can" items stay left).
+						if (inqFamily && inqCfg.trailing_prose_right && bucket === "left" && famLastLabel && line.trim()
+							&& !/^\*\*/.test(line.trim())
+							&& line.trim().split(/\s+/).length >= (inqCfg.trailing_prose_min_words ?? 12)) {
+							flushText(); bucket = "right";
 						}
 						if (line.trim()) textBuf.push(line);   // buffer (grouped at the next label / heading / end)
 					}

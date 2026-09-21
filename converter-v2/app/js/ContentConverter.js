@@ -1353,6 +1353,7 @@ class ContentConverter {
 		// to open, then resets it back to empty.
 		// Data flag: body_region.content_row_open, the '{rowClass}' template slot
 		let nextRowClass = "";
+		let nextColClass = "";   // ROUND 425 — a one-shot section column class (a callout variant's `column`)
 		// ROUND 333: the index in `parts` of the most recently opened content row, so the
 		// positional side-alert routing below can look at the FIRST block of the row it is
 		// about to pair with (an activity box vs plain content). Set by the lazy row open only.
@@ -1369,8 +1370,8 @@ class ContentConverter {
 			if (!rowOpen && ownSpanClose === null) {
 				lastRowOpenIdx = parts.length;
 				parts.push(Utils.FillTemplate(tpl.body_region.content_row_open,
-					{ contentColClass: tpl.body_region.content_col_class_default, rowClass: nextRowClass }));
-				rowOpen = true; nextRowClass = "";
+					{ contentColClass: nextColClass || tpl.body_region.content_col_class_default, rowClass: nextRowClass }));
+				rowOpen = true; nextRowClass = ""; nextColClass = "";
 			}
 			parts.push(...content);
 		};
@@ -3562,6 +3563,7 @@ class ContentConverter {
 					const spans = this.#explicitCloseAhead(bodyItems, i, primary.tag) || wrapStructured;
 					const _r387Parts = this.#calloutOpen(it, bodyItems, i, stack, run, spans, wrapStructured);
 					const _r388BoxOpen = _r387Parts.find((p) => typeof p === "string" && /^\s*<div class="/.test(p)) ?? "";
+					if (!rowOpen) nextColClass = ContentConverter.#calloutColumn(primary.tag, run) ?? "";   // r425: the variant's column
 					emit(..._r387Parts);
 					if (!spans) {
 						// strict BOXED callout: the box is already complete — fresh row next.
@@ -8333,6 +8335,36 @@ class ContentConverter {
 		return false;
 	}
 
+	/**
+	 * ROUND 425 — A CALLOUT DEF VARIANT BY MODULE-CODE PREFIX. A def may carry `variants: [{ code_prefixes, env,
+	 * open, close, wrap_content, lead_element, column }]`; the first variant whose prefix matches the run's module
+	 * code overlays the def (the r399 kb_form swap generalised to a family). `lead_element` on a variant is FIXED
+	 * (the group convention does not override it); `column` is the section column class the callout's row opens
+	 * with (ContentConverter's lazy row open reads it through #calloutColumn). The activity-table family's alert:
+	 * no inner row > col-12, an h3 lead, a `col-md-9 col-12` column (12 / 12 gold alerts, 10 / 12 col-md-9).
+	 */
+	static #calloutVariant(def, run) {
+		if (!def || !Array.isArray(def.variants) || !def.variants.length) return def;
+		const code = String(run?.moduleCode || "").toUpperCase();
+		for (const v of def.variants) {
+			if (!v || v.enabled === false) continue;
+			if (v.env && typeof process !== "undefined" && process.env && process.env[v.env]) continue;
+			if (!(v.code_prefixes ?? []).some((p) => code.startsWith(String(p).toUpperCase()))) continue;
+			const out = Object.assign({}, def);
+			for (const k of ["open", "close", "wrap_content", "lead_element", "column"]) if (v[k] !== undefined) out[k] = v[k];
+			if (v.lead_element !== undefined) out._variantLead = true;
+			return out;
+		}
+		return def;
+	}
+
+	/** ROUND 425 — the section column class a callout tag's variant asks for (null = the default). */
+	static #calloutColumn(tag, run) {
+		const tpl = DataService.Data.EmitTemplates;
+		const def = ContentConverter.#calloutVariant(tpl.callouts?.by_tag?.[tag], run);
+		return def && def.column ? String(def.column) : null;
+	}
+
 	static #calloutOpen(it, bodyItems, i, stack, run, spans, wrapStructured = false) {
 		const tpl = DataService.Data.EmitTemplates;
 		const tag = it.parse.primary.tag;
@@ -8386,6 +8418,7 @@ class ContentConverter {
 			def = Object.assign({}, def, { open: _kbf.open, close: _kbf.close ?? def.close,
 				wrap_content: _kbf.wrap_content ?? def.wrap_content });
 		}
+		def = ContentConverter.#calloutVariant(def, run);   // ROUND 425 — a family variant by module-code prefix
 		// A "[side alert]" tag renders as an alertActivity box sitting in a SIDE column
 		// (found on module BLL210): it has no "alert" CSS class, no inner "row>col-12" wrap,
 		// and no h4-styled lead line — its content is just direct "<p>" elements inside the
@@ -8433,7 +8466,7 @@ class ContentConverter {
 		// refined by the module's GROUP convention where measured
 		// (Html_Convention_Registry callout_lead); others keep a bold <p>
 		const leadEl = def.lead_element
-			? (run.conventions?.calloutLead || def.lead_element) : null;
+			? (def._variantLead ? def.lead_element : (run.conventions?.calloutLead || def.lead_element)) : null;   // r425: a variant's lead is fixed
 		const leadHtml = (text) => leadEl
 			? `<${leadEl}>${ListsAndRuns.inlineMarkup(text)}</${leadEl}>`
 			: `<p><b>${ListsAndRuns.inlineMarkup(text)}</b></p>`;

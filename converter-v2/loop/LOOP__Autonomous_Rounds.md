@@ -1,7 +1,7 @@
 # LOOP__Autonomous_Rounds.md — the standing instructions for an unattended PageForge improvement loop
 
 **Who reads this:** a Claude Code session started in `FINAL_MODULE_DATA` (this folder) by Chris.
-**What it does:** runs the disciplined round from `CONVERTER_V2/CLAUDE.md` §5 over and over —
+**What it does:** runs the disciplined round from `CONVERTER_V2/OPERATING_GUIDE.md` §5 over and over —
 pick the largest measured class of mismatch, fix it, rebuild what the fix touches, prove every
 protected gate held or improved, write the changelog, commit — and only stops on the rules in §4.
 **Written:** 14 September 2026 (after round 313, build 260618.84). This is a STANDING file, not a
@@ -11,7 +11,7 @@ kickoff: do not delete it. Update it when the loop's rules change.
 
 ## 0. Read first, in this order (no exceptions)
 
-1. `CONVERTER_V2/CLAUDE.md` — the operating guide. §0 (regeneration is opt-in — see §2 below for
+1. `CONVERTER_V2/OPERATING_GUIDE.md` — the operating guide. §0 (regeneration is opt-in — see §2 below for
    what this loop is authorised to do), §5 the loop, §9 the gates, §10 the regeneration recipe,
    §12 the finalise ritual, §16 the gotchas.
 2. `CONVERTER_V2/BUILD_CHANGELOG.md` — the top 3–4 entries: the current baselines are there.
@@ -40,7 +40,7 @@ kickoff: do not delete it. Update it when the loop's rules change.
    uncommitted with the corpus rolled back to the shipped state.
    **CHECK FOR AN IN-FLIGHT ROUND BEFORE PICKING ANYTHING.** `LOOP_STATE.md` carries the
    handover block. Either finish round 410 from that state or revert its five files
-   deliberately — never `git checkout` them away without deciding (CLAUDE.md §16, the round-284
+   deliberately — never `git checkout` them away without deciding (OPERATING_GUIDE.md §16, the round-284
    lesson).
 
 Then run `bash _MIGRATION/verify_after_transfer.sh` once. It must say PASS before anything else
@@ -63,7 +63,7 @@ build at all (§2), so a gold-only dir is the expected state for them.
 
 ## 1. The measure of success — and the honest ceiling
 
-The scorecard is the existing protected-gate set (CLAUDE.md §9): the skeleton SCAFFOLD mean and
+The scorecard is the existing protected-gate set (OPERATING_GUIDE.md §9): the skeleton SCAFFOLD mean and
 its ≥50 / ≥75 / ≥90 buckets (PRIMARY), % structurally clean, literal-tag leak, compare_structure
 exact/EXTRA/missing, body_compare, tags 9557/9557, and every widget verifier at divergence /
 defect 0. Every round must hold-or-improve all of them (the A1 exception in the Decision
@@ -96,13 +96,13 @@ order; the first source that has a rule for the element wins:
 1. **The knowledge base (§0 item 4).** A front-facing CL decision, a `00_MASTER_INSTRUCTIONS`
    constraint, or a `14_SUBJECT_GLOBAL_PARAMETERS` family rule that covers the element, within
    its stated scope (subject / template / level / series). This outranks the module's own gold
-   — the gold predates the rule. This generalises the recorded doc-14 exception in CLAUDE.md §6
+   — the gold predates the rule. This generalises the recorded doc-14 exception in OPERATING_GUIDE.md §6
    (`Subject_Global_Parameters.json` `overrides_gold`) to the whole KB.
 2. **The previously-developed sibling.** The specific earlier module of the same series and
    template (`Module_Structure_Index.json` `module_meta`: subject / template_type / phase /
    series / dev_order; `Precedence_Cascade.json` levels 2–5). A module inherits its sibling's
    structure unless the KB or its own gold says otherwise.
-3. **This module's own gold** (CLAUDE.md §6 Level 0) — for everything 1 and 2 are silent on.
+3. **This module's own gold** (OPERATING_GUIDE.md §6 Level 0) — for everything 1 and 2 are silent on.
 4. **Template / subject consensus** (`Granular_Scaffold_Registry.json`, solidify share ≥ 0.60),
    then the corpus — only when the module has no gold of its own.
 
@@ -236,7 +236,7 @@ stop on a plateau that is really a denominator change.
 ## 2. What this loop is authorised to do (Chris, 14 September 2026)
 
 - **Regeneration.** The message that started this session carries the code `REGENERATE CORPUS`
-  for every round of the loop, scoped by the CLAUDE.md §0a / §0b rules: rebuild every module the
+  for every round of the loop, scoped by the OPERATING_GUIDE.md §0a / §0b rules: rebuild every module the
   fix touches PLUS the whole family of the tag or widget type it touches (the working half as
   well as the broken half). A full-corpus regeneration is allowed when a change is corpus-wide
   (skeleton / footer / menu scaffold / acks / tag normalisation) and at the §10a cadence (every
@@ -247,7 +247,7 @@ stop on a plateau that is really a denominator change.
   is a tie, or there is no derivable discriminator. Record the measurement in the changelog
   entry and in `LOOP_STATE.md` under "Declined classes"; never re-attempt a declined class in
   this loop unless new evidence is named.
-- **Git.** Commit `pageforge-site` at the end of every shipped round (CLAUDE.md §16). NEVER push
+- **Git.** Commit `pageforge-site` at the end of every shipped round (OPERATING_GUIDE.md §16). NEVER push
   and NEVER `git checkout` / `git restore` a file without proving it is committed. The final
   report gives Chris the copy-and-paste push block.
 - **Not authorised:** editing anything under `01-Finalized_Modules_` (the human gold is
@@ -324,7 +324,7 @@ Each round is bounded so an interruption loses at most one round of work.
      pre-round corpus, record the class as "BLOCKED — needs Chris" in `LOOP_STATE.md` with the
      evidence, and move to the next class. Blocked is not the same as declined.
 7. **FINALISE** (§12): prepend the `BUILD_CHANGELOG.md` entry, bump `Config.js AppVersion`,
-   update `CLAUDE.md` §14 if a baseline or toggle changed, refresh `gate_baseline.json` and the
+   update `OPERATING_GUIDE.md` §14 if a baseline or toggle changed, refresh `gate_baseline.json` and the
    feature index (`build_feature_index.cjs`) after any regeneration, `git add` + `git commit` in
    `pageforge-site`. Then append the round's one-line result to `LOOP_STATE.md`
    ("r314 · class X · shipped/declined/blocked · scaffold 49.94→50.02 · pages moved N").
@@ -467,8 +467,8 @@ STOP procedure (§7) immediately so the session ends with the state saved rather
 - Keep console output small: write big results to files under `CONVERTER_V2/outputs/` and print
   the summary line only.
 - **Context diet (added 14 Sept 2026 after the first run filled 1M of context in an hour).**
-  `CLAUDE.md` is ~970 KB and `BUILD_CHANGELOG.md` ~2 MB — never read either whole. Read
-  CLAUDE.md §0–§6, §9, §10, §12, §16 by line range (grep the `## ` headings first) and only the
+  `OPERATING_GUIDE.md` (the converter guide — it WAS `CLAUDE.md` until 21 Sept 2026, when its 1.3 MB was found to be auto-loaded into context after every compaction, thrashing the loop; the real `CLAUDE.md` is now a 4 KB pointer) is ~1.3 MB and `BUILD_CHANGELOG.md` ~2 MB — never read either whole. Read
+  OPERATING_GUIDE.md §0–§6, §9, §10, §12, §16 by line range (grep the `## ` headings first) and only the
   top 3–4 changelog entries. Read gold/Claude pages with `grep`/`sed -n` ranges, never whole
   files. Prefer `head`/`wc`/counts over dumping lists. **After every automatic context
   compaction, follow the §5d post-compaction re-read exactly** — bounded, by section, never a whole
@@ -522,12 +522,12 @@ kept in this file so it can never be lost:
 > The "exhaustion" verdicts of sessions 15–18 and any "do not re-measure" note in LOOP_STATE.md
 > are VOID — they predate the miner; exhaustion may only be declared with the miner's empty
 > queue quoted. This message carries the code REGENERATE CORPUS for every round
-> of the loop, scoped by the §0a/§0b family rules in CLAUDE.md. Budget for this session: 12
+> of the loop, scoped by the §0a/§0b family rules in OPERATING_GUIDE.md. Budget for this session: 12
 > rounds or 10 hours, whichever comes first. RUN UNINTERRUPTED (§5c): never end your turn to
 > wait for gates, regenerations, verifiers or background commands — run them in the foreground
 > with a long timeout or poll them until done; never ask me whether to continue; a blocked item
 > ends the round, not the session — record it and move to the next class. Follow the §6
-> context-diet rules: never read CLAUDE.md or BUILD_CHANGELOG.md whole, and after every automatic
+> context-diet rules: never read OPERATING_GUIDE.md or BUILD_CHANGELOG.md whole, and after every automatic
 > compaction do ONLY the bounded §5d re-read (sections by line range, never a whole file; the
 > thrash breaker applies). Update LOOP_STATE.md
 > before and after every round and commit after every round, never push. Stop only when §4 says

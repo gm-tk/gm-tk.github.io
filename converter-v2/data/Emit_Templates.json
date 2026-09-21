@@ -625,7 +625,17 @@
 				"open": "<div class=\"alert{modifiers}\">",
 				"close": "</div>",
 				"lead_element": "h4",
-				"wrap_content": true
+				"wrap_content": true,
+				"variants": [
+					{
+						"code_prefixes": ["XOTP"],
+						"env": "ACTTABLEADAPT_OFF",
+						"lead_element": "h3",
+						"wrap_content": false,
+						"column": "col-md-9 col-12",
+						"_doc": "ROUND 425 (the autonomous loop's session 31 Round 3 — the XOTP activity-table adapter). The family's Story-Questions alert holds `<h3>` + `<p>` + `<ol>` DIRECTLY (no inner row > col-12) in a `col-md-9 col-12` section column: 12 / 12 gold alerts on the 24 XOTP pages (h3 12 / 12, no inner row 12 / 12, col-md-9 10 / 12, ol 11 / 12 — outputs/_s31_r425_goldcensus.py). A variant is matched by module-code prefix (ContentConverter.#calloutVariant, the r399 kb_form swap generalised to a family); its lead_element is FIXED against the group convention; `column` is read by the lazy row open. OFF (ACTTABLEADAPT_OFF) = the module is refused (r424), so the variant never fires without the adapter."
+					}
+				]
 			},
 			"side alert": {
 				"open": "<div class=\"alertActivity\">",
@@ -3289,6 +3299,8 @@
 			"two_col_li": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"row\">\n{banner}<div class=\"col-md-6 col-12 paddingR\">\n{leftContent}\n</div>\n<div class=\"col-md-6 col-12 paddingR\">\n{rightContent}\n</div>\n</div>\n</div>",
 			"two_col_offset": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"row\">\n<div class=\"col-md-6 offset-md-0 col-12\">\n{leftContent}\n</div>\n<div class=\"col-md-6 offset-md-0 col-12\">\n{rightContent}\n</div>\n</div>\n</div>",
 			"two_col_inquiry": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"row\">\n<div class=\"col-md-6 col-12 paddingR\">\n{leftContent}\n</div>\n<div class=\"col-md-6 col-12 paddingL\">\n{rightContent}\n</div>\n</div>\n</div>",
+			"two_col_item": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"row\">\n<div class=\"col-md-6 col-sm-12\">\n<div class=\"item\">\n{leftContent}\n</div>\n</div>\n<div class=\"col-md-6 col-sm-12\">\n<div class=\"item\">\n{rightContent}\n</div>\n</div>\n</div>\n</div>",
+			"_two_col_item_note": "ROUND 425 — the ITEM two-column menu (the XOTP activity-table family): NO banner, `col-md-6 col-sm-12 > div.item` left + right (24 / 24 gold pages, outputs/_s31_r425_goldcensus.py). Selected by SkeletonBuilder when content.menu.familyShell names it (menu.two_col_li.item_family.shell).",
 			"_two_col_inquiry_note": "ROUND 359 — the INQUIRY two-column overview menu (KB 06 §3.4): NO banner, `col-md-6 col-12 paddingR` left + `col-md-6 col-12 paddingL` right. Selected by SkeletonBuilder when content.menu.inquiryFamily is true (menu.two_col_li.inquiry_family). The BLL `two_col_li` shell (banner + paddingR ×2) and the ENG `two_col_offset` shell are untouched.",
 			"_two_col_offset_note": "ROUND 81 — the ENG/offset two_col family (convention banner_h4_span:false): NO banner, both columns 'col-md-6 offset-md-0 col-12' (NOT paddingR). Selected by SkeletonBuilder when content.menu.engFamily is true. The BLL-family 'two_col_li' shell (banner + paddingR) is left byte-identical.",
 			"tabs_two_col": "<div id=\"module-menu-content\" class=\"moduleMenu\">\n<div class=\"row\">\n<div class=\"tabs col-12\">\n<ul class=\"nav nav-tabs\">\n<li><a>Overview</a></li>{tab2Nav}{extraNav}\n</ul>\n<div class=\"tab-content\">\n<div class=\"tab-pane\">\n<div class=\"row\">\n{tab1Cols}\n</div>\n</div>{tab2Pane}{extraPanes}\n</div>\n</div>\n</div>\n</div>",
@@ -3559,6 +3571,18 @@
 				"how will i know"
 			],
 			"bold_label_note": "Writers often mark the module LI/SC labels as BOLD lines (**Whāinga Ako | Learning Intentions**) rather than [H] tags — the menu builder treats a standalone bold line matching left_match/right_match as that column heading, using the ENGLISH part of a piped reo|english label (human BLL155-0.0 shows plain-English h5s).",
+			"item_family": {
+				"enabled": true,
+				"env": "ITEMMENU_OFF",
+				"code_prefixes": ["XOTP"],
+				"shell": "two_col_item",
+				"left_heading": "<h3><span>{heading}</span></h3>",
+				"right_heading": "<h3><span>{heading}</span></h3>",
+				"left_match": ["overview", "understand", "know", "do"],
+				"trailing_prose_right": true,
+				"trailing_prose_min_words": 16,
+				"_doc": "ROUND 425 (the autonomous loop's session 31 Round 3 — the XOTP activity-table adapter; outputs/_s31_r425_goldcensus.py over the 24 gold pages). The XOTP reader modules have NO overview page; every lesson page carries the same two-column menu: `col-md-6 col-sm-12 > div.item` left + right (24 / 24), the left pane `<h3><span>Overview</span></h3>` + its paragraph then Understand / Know / Do as `h3><span` (17 / 24 all-h3, 7 / 24 h3 + h4) with the `I can:` items, the right pane the Overview row's closing paragraphs (the kaiako / reading instructions, the bold assessment-quiz reminder). The family is matched by module-code prefix on EVERY page (MenuBuilder.#familyFor — the r359 Inquiry family's sibling; the composer treats both alike): its own left_match lets the row's `**Overview**` label (the adapter emits the Overview row's left-cell label first, `overview_label_from_cell`) open the left column instead of being consumed as a section label, and a long (≥ trailing_prose_min_words) unlabelled paragraph after the labels moves to the right column (the short `I can` items stay left). D10-9's `<h5>I can:</h5>` label stands (the gold's `<p>` is the recorded override); the gold's `<ul>` for the I-can items is the human's editorial bullets (plain paragraphs in the docx) — not taken. OFF (ITEMMENU_OFF, or ACTTABLEADAPT_OFF which refuses the module) = the BLL banner two_col_li form the mined convention gave these pages."
+			},
 			"inquiry_family": {
 				"enabled": true,
 				"env": "INQFAMILY_OFF",
@@ -5684,7 +5708,10 @@
 						"ENGFUN",
 						"TWHA",
 						"BLL2",
-						"TEFUN"
+						"TEFUN",
+						"XOTPB",
+						"XOTPG",
+						"XOTPO"
 					],
 					"4": [
 						"ENGJ",

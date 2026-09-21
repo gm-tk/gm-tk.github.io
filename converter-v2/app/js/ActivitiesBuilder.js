@@ -462,9 +462,13 @@ class ActivitiesBuilder {
 		// takes the BARE box form when tile_grid.panel_no_inner_row is on; the supervisor-note
 		// box keeps its own two-child structure regardless.
 		const pnrCfg = tpl.interactive_builders?.clickDrop?.tile_grid?.panel_no_inner_row;
-		const panelBare = !!it._r307PanelId && !!pnrCfg && pnrCfg.enabled !== false
+		const panelBare = (!!it._r307PanelId && !!pnrCfg && pnrCfg.enabled !== false
 			&& !!tpl.activity_wrapper.open_bare
-			&& !(typeof process !== "undefined" && process.env && process.env[pnrCfg.env || "CDPANELROW_OFF"]);
+			&& !(typeof process !== "undefined" && process.env && process.env[pnrCfg.env || "CDPANELROW_OFF"]))
+			// ROUND 425 — the activity-table adapter's family (XOTP): every gold box holds its content
+			// DIRECTLY (63 / 63 boxes on the 24 gold pages); the adapter sets run.activityBoxBare from
+			// input_shapes.activity_table.adapter.activity_box === "bare" (env ACTTABLEADAPT_OFF).
+			|| (!!run?.activityBoxBare && !!tpl.activity_wrapper.open_bare && !!tpl.activity_wrapper.close_bare);
 		if (withNote) {
 			out.push(`<div class="activity${modifiers}${scCfg.activity_class}"${numAttr}>`);
 			out.push(scCfg.panel_open);

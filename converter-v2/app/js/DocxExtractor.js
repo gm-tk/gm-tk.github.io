@@ -699,6 +699,247 @@ class DocxExtractor {
 	};
 
 	/**
+	 * ROUND 425 (session 31) — THE ACTIVITY-TABLE ADAPTER: turns the XOTP
+	 * reader family's "Section heading | Text/Activity" table into the
+	 * synthetic red-tag paragraph stream the whole existing pipeline already
+	 * speaks, so no builder, menu shell or page-splitter rule is new. The
+	 * mapping is DATA (Input_Doc_Rules.input_shapes.activity_table.adapter):
+	 *   - the title row → [TITLE BAR] + the title;
+	 *   - the Overview row → each lesson page's [Lesson Overview] block (the
+	 *     writer's "(dropdown at top right)" IS the lesson-page module menu;
+	 *     the gold has no overview page);
+	 *   - Introduction → [H2] + [Body]; Online book → [Carousel] (+ the story
+	 *     questions when the writer put them in the same row); Questions →
+	 *     [alert] [H3] + the numbered lines (the r337 <ol>);
+	 *   - a numbered row → [Activity N] (lettered) / a bare [Activity] (the
+	 *     r400 positional letter), the section heading as [H2] when the row
+	 *     also carries its own title, [H3], the instruction line, the widget
+	 *     invocation the section's words name (widget_hints — the heading
+	 *     decides, a CS: line only confirms), then the payload;
+	 *   - Share with your kaiako → [Activity] [H3] + the two [button]s (the
+	 *     r305 dropbox post-pass adds the class token);
+	 *   - Quiz + the nested "I can" table → nothing (the D2L self-assessment
+	 *     quiz, spec §3.2), recorded in a note;
+	 *   - the page break: lettered labels break where the lesson digit
+	 *     changes, bare numbers after the data-declared row (spec §3.3).
+	 * A wholly parenthetical line is the writer's instruction to the
+	 * developer — emitted as a red bracket-less span (an instruction to the
+	 * normaliser, a Writers Note on the page, gate-invisible); a CS: line stays
+	 * a plain paragraph for the r219 addressee-prefix scheme. The reader book
+	 * (carousel images, matching sentences, credits) is in none of the
+	 * documents: those widgets ship as the standard hand-off placeholders.
+	 * Called from ModuleResolver.PrepareRun for a document IsActivityTableDoc
+	 * accepted; every other document never reaches it. Env: ACTTABLEADAPT_OFF.
+	 *
+	 * @param {Object[]} blocks - the extracted blocks (one table carries the module)
+	 * @param {TagNormaliser|null} normaliser - unused today (the stream is literal)
+	 * @param {ConversionRun|null} run - note surfacing
+	 * @returns {Object[]} the adapted block list (the same array when nothing applies)
+	 */
+	static AdaptActivityTable(blocks, normaliser, run = null) {
+		const rules = DataService?.Data?.InputDocRules;
+		const cfg = rules?.input_shapes?.activity_table;
+		const ad = cfg?.adapter;
+		if (!cfg || !ad || ad.enabled !== true || !Array.isArray(blocks)) return blocks;
+		if (typeof process !== "undefined" && process.env && process.env[ad.env || "ACTTABLEADAPT_OFF"]) return blocks;
+		const ti = blocks.findIndex((b) => b && b.kind === "table" && this.IsActivityTableDoc([b], rules));
+		if (ti < 0) return blocks;
+		const tbl = blocks[ti];
+		const brk = rules.table_markers?.in_cell_line_break ?? " / ";
+		const RED = (s) => `\u{1f534}[RED TEXT] ${s} [/RED TEXT]\u{1f534}`;
+		const TAG = (t) => RED(`[${t}]`);
+		const fold = (s) => Utils.Fold(String(s ?? "")).replace(/[*_]/g, "").replace(/\s+/g, " ").trim();
+		const plain = (s) => String(s ?? "").replace(/\*\*|__/g, "").replace(/\s+/g, " ").trim();
+		const lines = (cell) => String(cell ?? "").split(brk).map((s) => s.trim()).filter(Boolean);
+		const re = (p, f = "i") => new RegExp(p, f);
+		const sep = ad.heading_pair_separator ?? " | ";
+		const titleReject = re(ad.title_line_reject ?? "^(cs:|to cs:|instruction|\\()");
+		const titleMaxW = ad.title_line_max_words ?? 6;
+		const stripPrefixes = (ad.strip_line_prefixes ?? ["instruction:"]).map((p) => fold(p));
+		const paren = (s) => /^\(.*\)$/.test(plain(s));
+		const isCs = (s) => re(ad.cs_line_pattern ?? "^(to\\s+)?cs\\s*:").test(plain(s));
+		const isImage = (s) => /^\[IMAGE:/i.test(String(s).trim());
+		const instructionLine = (s) => stripPrefixes.some((p) => fold(s).startsWith(p));
+		const stripInstruction = (s) => {
+			const f = fold(s); const p = stripPrefixes.find((x) => f.startsWith(x));
+			if (!p) return s;
+			return String(s).replace(re("^\\s*(\\*\\*)?" + p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*(\\*\\*)?\\s*"), "").trim();
+		};
+		const isTitleLine = (s, maxW = titleMaxW) => {
+			const t = plain(s);
+			if (!t || titleReject.test(fold(t)) || isImage(t)) return false;
+			if (/[.:;]$/.test(t)) return false;
+			return t.split(/\s+/).length <= maxW;
+		};
+		const leftInstr = re(ad.instruction_line_pattern ?? "^(insert|create|reproduce|please)\\b");
+		// ---- the rows ---------------------------------------------------------
+		const rows = tbl.rows ?? [];
+		const want = (cfg.header ?? []).map((h) => fold(h));
+		const hdr = rows.findIndex((r) => { const c = (r ?? []).map(fold).filter(Boolean); return c.length >= 2 && c[0] === want[0] && c[1] === want[1]; });
+		if (hdr < 0) return blocks;
+		let title = "";
+		for (let r = 0; r < hdr && !title; r++) {
+			const t = plain((rows[r] ?? []).filter((c) => String(c ?? "").trim()).join(" "));
+			for (const p of (ad.title_patterns ?? [])) { const m = re(p).exec(t); if (m && m[2]) { title = m[2].trim(); break; } }
+			if (!title && t) title = t;
+		}
+		const out = [];
+		const push = (text, links) => out.push({ kind: "para", text, links: (links ?? []).slice(), wtPage: tbl.wtPage, list: "", listLevel: 0 });
+		push(TAG("TITLE BAR") + (title ? `**${title}**` : ""), tbl.links);
+		let overview = [], overviewLinks = [];
+		let lessonNo = 0, bareCount = 0, skipped = 0, activities = 0, pageOpen = false;
+		const breakAfter = ad.page_break?.bare_numbers_break_after ?? 3;
+		const openLesson = (n, links) => {
+			if (pageOpen) push(TAG("End page"), []);
+			lessonNo = n; pageOpen = true;
+			push(TAG(`LESSON ${n}`), []);
+			if (overview.length) {
+				push(TAG(ad.lesson_overview_tag ?? "Lesson Overview"), overviewLinks);
+				for (const l of overview) push(l, overviewLinks);
+			}
+		};
+		const ensurePage = (links) => { if (!pageOpen) openLesson(1, links); };
+		const emitBody = (ls, links, first = true) => {
+			for (const l of ls) {
+				if (fold(l) === "instruction:" || fold(l) === "instruction") continue;
+				if (paren(l) && ad.parenthetical_as_instruction !== false) { push(RED(plain(l)), links); continue; }
+				const s = stripInstruction(l);
+				if (!s) continue;
+				// a `CS:` / `To CS:` line is the writer's note to Creative Services — a RED span, so the
+				// standard instruction path renders it as the Writers Note (data cs_lines_as_instruction)
+				if (isCs(s) && ad.cs_lines_as_instruction !== false) { push(RED(plain(s)), links); continue; }
+				if (first && !isImage(s) && !isCs(s)) { push(TAG("Body") + s, links); first = false; }
+				else push(s, links);
+			}
+			return first;
+		};
+		const emitQuestions = (ls, links) => {
+			const qs = ls.filter((l) => !/^instruction:?$/.test(fold(l)));
+			let t = ad.questions_title_default ?? "Story questions";
+			if (qs.length && isTitleLine(qs[0], ad.questions_title_max_words ?? 4)) t = plain(qs.shift());
+			// the title rides the alert tag as its embedded lead (the callout's own lead element — the family's
+			// alert variant fixes it at h3) unless questions_title_as_lead is false; the extractor marks every
+			// cell list "• " (a cell carries no numFmt), so questions_list "numbered" restores the writer's
+			// decimal list (verified in the docx: numId → decimal) and renderBlackText builds the <ol>
+			const asLead = ad.questions_title_as_lead !== false;
+			push(asLead ? RED(`[${ad.alert_tag ?? "alert"}] ${t}`) : TAG(ad.alert_tag ?? "alert"), links);   // the lead INSIDE the span
+			if (!asLead) push(TAG("H3") + t, links);
+			const numbered = ad.questions_list === "numbered";
+			emitBody(numbered ? qs.map((l) => String(l).replace(/^\s*\u2022\s+/, "1. ")) : qs, links);
+			push(TAG("End alert"), links);
+		};
+		const hintFor = (text) => {
+			const f = fold(text);
+			for (const h of (ad.widget_hints ?? [])) if (re(h.match).test(f)) return h.tag;
+			return null;
+		};
+		for (let r = hdr + 1; r < rows.length; r++) {
+			const cells = (rows[r] ?? []).map((c) => String(c ?? ""));
+			const nonEmpty = cells.filter((c) => c.trim());
+			if (!nonEmpty.length) continue;
+			const links = tbl.rowLinks?.[r] ?? [];
+			const left = cells.length >= 2 ? cells[0] : "";
+			const right = cells.length >= 2 ? cells.slice(1).join(brk) : cells[0];
+			const leftLines = lines(left).filter((l) => !paren(l));
+			const leftFold = leftLines.map(fold).join(" / ");
+			let sec = null;
+			for (const s of (ad.sections ?? [])) { if (re(s.match).test(leftFold)) { sec = s; break; } }
+			const role = sec?.role ?? null;
+			if (role === "skip") {
+				skipped++;
+				if (sec.terminal) { skipped += rows.length - r - 1; break; }   // the nested "I can" rows follow the Quiz row
+				continue;
+			}
+			const rightLines = lines(right);
+			if (role === "overview") {
+				overview = rightLines.slice(); overviewLinks = links;
+				// the row's own left-cell label ("Overview") leads the menu as a bold label (the gold's first
+				// `<h3><span>Overview</span></h3>`, 24 / 24 pages) — data overview_label_from_cell
+				const lab = ad.overview_label_from_cell !== false ? plain(leftLines[0] ?? "") : "";
+				if (lab && !/^\*\*/.test(String(overview[0] ?? "").trim())) overview.unshift(`**${lab}**`);
+				continue;
+			}
+			ensurePage(links);
+			if (role === "introduction") {
+				push(TAG("H2") + leftLines.map(plain).join(sep), links);
+				emitBody(rightLines, links);
+				continue;
+			}
+			if (role === "online_book") {
+				const splitRe = re(ad.online_book_questions_split ?? "^instruction");
+				const k = rightLines.findIndex((l) => splitRe.test(fold(l)));
+				const before = k < 0 ? rightLines : rightLines.slice(0, k);
+				const after = k < 0 ? [] : rightLines.slice(k);
+				push(TAG("Carousel"), links);
+				for (const l of before) push(paren(l) ? RED(plain(l)) : l, links);
+				if (after.length) emitQuestions(after, links);
+				continue;
+			}
+			if (role === "questions") { emitQuestions(rightLines, links); continue; }
+			if (role === "share") {
+				push(TAG("Activity"), links);
+				push(TAG("H3") + leftLines.map(plain).join(sep), links);
+				const btnRe = re(ad.button_line_pattern ?? "\\bbutton\\b");
+				const body = [], buttons = [];
+				for (const l of rightLines) {
+					const t = String(l).replace(/\*\*|__|\*/g, "").trim();
+					if (btnRe.test(t)) {
+						// "Upload to dropbox button   Go to assessment quiz button" → one [button] per label
+						for (const part of t.split(re(ad.button_split ?? "\\bbutton\\b", "i"))) {
+							const lab = part.replace(/\s+/g, " ").trim();
+							if (lab) buttons.push(lab);
+						}
+					} else body.push(l);
+				}
+				emitBody(body, links);
+				for (const b of buttons) push(TAG("button") + " " + b, links);
+				continue;
+			}
+			// ---- an activity row (numbered, or a section heading with no role) ----
+			const labelLine = leftLines.find((l) => /^\d+[a-z]?$/i.test(plain(l)));
+			let label = labelLine ? plain(labelLine).toUpperCase() : null;
+			if (!label) { const m = /^(\d+[a-z]?)\b/i.exec(plain(leftLines[0] ?? "")); if (m) label = m[1].toUpperCase(); }
+			const headingLines = leftLines.filter((l) => l !== labelLine && !/^\d+[a-z]?\b\s*$/i.test(plain(l)) && !leftInstr.test(fold(l)));
+			const leftInstrLines = leftLines.filter((l) => leftInstr.test(fold(l)));
+			const leftHeading = headingLines.map((l) => plain(l).replace(/^\d+[a-z]?\s+/i, "")).filter(Boolean).join(sep);
+			const lettered = !!label && /[a-z]$/i.test(label);
+			if (lettered) {
+				const digit = parseInt(label, 10);
+				if (digit > lessonNo) openLesson(digit, links);
+			} else if (label) {
+				bareCount++;
+				if (bareCount === breakAfter + 1) openLesson(lessonNo + 1, links);
+			}
+			const rest = rightLines.slice();
+			let rightTitle = null;
+			if (rest.length && isTitleLine(rest[0])) rightTitle = plain(rest.shift());
+			let h3 = null;
+			if (leftHeading && rightTitle) { push(TAG("H2") + leftHeading, links); h3 = rightTitle; }
+			else h3 = rightTitle || leftHeading || null;
+			push(lettered ? TAG(`Activity ${label}`) : TAG("Activity"), links);
+			activities++;
+			if (h3) push(TAG("H3") + h3, links);
+			for (const l of leftInstrLines) push(RED(plain(l)), links);
+			const widget = hintFor(left + brk + right);
+			const instr = rest.filter((l) => instructionLine(l));
+			const payload = rest.filter((l) => !instructionLine(l));
+			let first = emitBody(instr, links, true);
+			if (widget) push(TAG(widget), links);
+			emitBody(payload, links, first && !widget);
+		}
+		if (!pageOpen) {
+			run?.AddNote("warn", "DocxExtractor", "Activity-table template: no body row recognised — the document was left as extracted.");
+			return blocks;
+		}
+		push(TAG("End page"), []);
+		run?.AddNote("info", "DocxExtractor",
+			`Activity-table template adapted (round 425): ${activities} activity box(es) over ${lessonNo} page(s), the Overview row as each page's menu, `
+			+ `${skipped} row(s) not emitted (the Quiz / 'I can' self-assessment rows are the D2L quiz, never a page); the reader book's images and matching `
+			+ `sentences are not in the document — those widgets ship as hand-off boxes. Env ${ad.env || "ACTTABLEADAPT_OFF"} reverts.`);
+		return [...blocks.slice(0, ti), ...out, ...blocks.slice(ti + 1)];
+	};
+
+	/**
 	 * Is this document a Writers Template at all? True when any block is a
 	 * recognised content start, OR the fallback applies (a red span
 	 * resolving to a structural directive — bare-[H1] openers).

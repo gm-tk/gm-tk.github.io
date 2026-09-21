@@ -407,6 +407,20 @@ class ModuleResolver {
 					`${run.moduleCode ?? "This document"}: activity-table Writers Template recognised (round 424) — the adapter is not enabled, nothing converted.`);
 				return { ok: false, reason: "unsupported", unsupported: { label: atCfg.label, action: atCfg.action }, wt, mediaSource };
 			}
+			// ROUND 425 — the adapter: the table becomes the synthetic red-tag
+			// stream (TITLE BAR / LESSON N / Lesson Overview / H2 / H3 / Body /
+			// alert / Activity / widget invocations / button / End page) and the
+			// standard pipeline runs unchanged behind it. Env ACTTABLEADAPT_OFF.
+			const adapted = DocxExtractor.AdaptActivityTable(wt.doc.blocks, normaliser, run);
+			if (adapted === wt.doc.blocks) {
+				return { ok: false, reason: "unsupported", unsupported: { label: atCfg.label, action: atCfg.action }, wt, mediaSource };
+			}
+			wt.doc.blocks = adapted;
+			wt.doc.hasContentStart = true;
+			run.noOverviewPage = atCfg.adapter.no_overview_page === true;   // the splitter's RR-4 folds the title bar into lesson 1
+			run.pageTitleFromModule = atCfg.adapter.page_title === "module";   // the splitter skips the heading harvest (round 425)
+			run.activityBoxBare = atCfg.adapter.activity_box === "bare";   // ActivitiesBuilder: the box holds its content directly (round 425)
+			run.lessonTitleRepeatsModule = atCfg.adapter.lesson_title_repeats_module === true;   // SkeletonBuilder: the second lesson h1 (round 425)
 		}
 		run.resolvedRules = this.Resolve(run.moduleCode, run);
 

@@ -1,0 +1,82 @@
+=== ../../../01-Finalized_Modules_/Standard/XOTPG04/XOTPG04_1_0.html  (81 lines)
+body.container-fluid
+  div#header
+    div#module-code
+      h1
+    ┌ 2× repeated:
+      h1
+        span
+    div#module-head-buttons
+      div#module-menu-button.btn1.circle-button
+    div#module-menu-content.moduleMenu
+      div.row
+        div.col-md-6.col-sm-12
+          div.item
+            ┌ 4× repeated block of 2:
+              h3
+                span
+              p
+            ul
+              ┌ 5× repeated:
+                li
+        div.col-md-6.col-sm-12
+          div.item
+            ┌ 2× repeated:
+              p
+            p
+              b
+  div#body
+    div.row
+      div.col-12.col-md-8
+        h2
+          span
+    div.row
+      div.col-12.col-md-8
+        p
+    WIDGET
+    div.row
+      div.col-12.col-md-9
+        div.alert
+          h3
+          p
+          ol
+            ┌ 4× repeated:
+              li
+    ┌ 2× repeated:
+      br
+    div.row
+      div.col-12.col-md-8
+        h2
+          span
+    div.row
+      div.col-12.col-md-8
+        div.activity.interactive[number=1A]
+          h3
+          p
+          WIDGET
+          p
+    div.row
+      div.col-12.col-md-8
+        div.activity.interactive[number=1B]
+          h3
+          p
+            b
+          WIDGET
+    div.row
+      div.col-12.col-md-8
+        div.activity[number=1C]
+          h3
+          p
+          div.table-responsive
+            table.table.table-bordered.td-hover
+              ┌ 2× repeated:
+                tr
+                  ┌ 3× repeated:
+                    td
+          p
+    div#footer
+      ul.footer-nav.inquiry-nav
+        li
+          a#next-lesson
+        li
+          a.home-nav

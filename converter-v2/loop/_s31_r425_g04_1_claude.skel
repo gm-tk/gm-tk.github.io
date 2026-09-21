@@ -1,0 +1,71 @@
+=== ../../../01-Claude_Modules_/Standard/XOTPG04/XOTPG04_1_0.html  (70 lines)
+body.container-fluid
+  div#header
+    div#module-code
+      h1
+    ┌ 2× repeated:
+      h1
+        span
+    div#module-head-buttons
+      div#module-menu-button.btn1.circle-button
+    div#module-menu-content.moduleMenu
+      div.row
+        div.col-md-6.col-sm-12
+          div.item
+            h3
+              span
+            h5
+        div.col-md-6.col-sm-12
+          div.item
+            ┌ 9× repeated:
+              p
+            p
+              b
+  div#body
+    div.row
+      div.col-12.col-md-8
+        h2
+        p
+        WIDGET
+    div.row
+      div.col-12.col-md-9
+        div.alert
+          h3
+          p
+          ol
+            ┌ 4× repeated:
+              li
+    div.row
+      div.col-12.col-md-8
+        h2
+    div.row
+      div.col-12.col-md-8
+        div.activity.interactive[number=1A]
+          h3
+          p
+          WIDGET
+    div.row
+      div.col-12.col-md-8
+        div.activity.interactive[number=1B]
+          h3
+          p
+          WIDGET
+    div.row
+      div.col-12.col-md-8
+        div.activity[number=1C]
+          h3
+          p
+          p
+            b
+          ┌ 2× repeated:
+            p
+  div#footer
+    ul.footer-nav.inquiry-nav
+      li
+        a#next-lesson
+      li
+        a.home-nav
+  div.row
+    div.col-12.col-md-8
+      div.acks.acksTemplate
+        WIDGET

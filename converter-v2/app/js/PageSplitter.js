@@ -865,6 +865,11 @@ class PageSplitter {
 		// Lesson 2: …"); bare [LESSON] tags then leave number/title empty.
 		for (const p of pages) {
 			if (p.isOverview) continue;
+			// ROUND 425 (the activity-table adapter): the adapted stream's pages carry the MODULE title as
+			// their own — the gold's lesson h1 repeats the module title on every XOTP page — so the
+			// heading harvest is skipped and the SkeletonBuilder fallback applies. Set by ModuleResolver
+			// from `input_shapes.activity_table.adapter.page_title === "module"`; env ACTTABLEADAPT_OFF.
+			if (run && run.pageTitleFromModule) continue;
 			// ROUND 344 (D10-1 sibling — KB c79 hygiene): a header title never carries a writer's
 			// markdown marker. Strip every `*` from the [LESSON] payload BEFORE the label /
 			// bare-number tests below (so `**3**` reads as the bare number it is and takes the
@@ -1026,12 +1031,29 @@ class PageSplitter {
 			// forward into lesson 1; it needs to stay as its own separate
 			// page even though it has no items of its own.
 			if (!hasBody && !seenIntro && !(reoPage && first.isOverview)) {
-				run.AddNote("warn", "PageSplitter",
-					"Overview segment had headings only — merged forward into the first lesson page (RR-4).");
-				pages[1].items = [...first.items, ...pages[1].items];
-				pages[1].isOverview = true;
-				pages[1].lessonLabel = first.lessonLabel ?? pages[1].lessonLabel;
-				pages.shift();
+				if (run.noOverviewPage) {
+					// ROUND 425 — a module that ships NO overview page (the
+					// activity-table family: the writer's Overview row is the
+					// lesson-page menu, and the gold's first file is 1_0). The
+					// title-bar-only opening segment folds into lesson 1 AS A
+					// LESSON page — its own label and chrome kept, the title-bar
+					// item riding along so the header title still resolves
+					// (PageAssembler reads pageProducts[0] when no overview exists).
+					// Set only by the adapter path (Input_Doc_Rules
+					// input_shapes.activity_table.adapter.no_overview_page); env
+					// ACTTABLEADAPT_OFF reverts with the rest of the adapter.
+					run.AddNote("info", "PageSplitter",
+						"Title-bar-only opening segment folded into lesson 1 as a lesson page — this module has no overview page (round 425).");
+					pages[1].items = [...first.items, ...pages[1].items];
+					pages.shift();
+				} else {
+					run.AddNote("warn", "PageSplitter",
+						"Overview segment had headings only — merged forward into the first lesson page (RR-4).");
+					pages[1].items = [...first.items, ...pages[1].items];
+					pages[1].isOverview = true;
+					pages[1].lessonLabel = first.lessonLabel ?? pages[1].lessonLabel;
+					pages.shift();
+				}
 			}
 		}
 

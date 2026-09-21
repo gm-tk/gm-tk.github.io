@@ -717,6 +717,12 @@ class SkeletonBuilder {
 			if (!pairTitles && run.teReoTitle && wanted > 1 && !lthSuppress && !distinctSuppress) titles.push(run.teReoTitle);
 			const cap = pairTitles ? Math.max(wanted, pairTitles.length) : wanted;
 			while (titles.length > cap) titles.pop();
+			// ROUND 425 — the activity-table adapter's family (XOTP): a lesson page with no title of its own
+			// and no Te Reo title repeats the MODULE title as its lesson h1 where the registry's h1_count
+			// asks for two (23 / 24 gold pages carry two identical `<h1><span>` titles). The adapter sets
+			// run.lessonTitleRepeatsModule from adapter.lesson_title_repeats_module (env ACTTABLEADAPT_OFF).
+			if (run.lessonTitleRepeatsModule && !pairTitles && titles.length === 1 && titles[0]
+				&& titles.filter(Boolean).length < wanted) titles.push(titles[0]);
 			if (titles.filter(Boolean).length < wanted) {
 				run.AddNote("info", "SkeletonBuilder",
 					`Page ${page.lessonLabel}: h1_count wants ${wanted} title(s) but the source provided ${titles.filter(Boolean).length} — emitted what exists.`);
@@ -807,7 +813,7 @@ class SkeletonBuilder {
 				: (content.menu.funLiCols && content.menu.funLiCols.length)
 					? "fundamentals_li"
 					: content.menu.archetype === "two_col_li"
-						? (content.menu.engFamily ? "two_col_offset" : (content.menu.inquiryFamily ? "two_col_inquiry" : "two_col_li"))   // r359: the Inquiry two-column shell
+						? (content.menu.engFamily ? "two_col_offset" : (content.menu.inquiryFamily ? ((content.menu.familyShell && tpl.menu.shells[content.menu.familyShell]) ? content.menu.familyShell : "two_col_inquiry") : "two_col_li"))   // r359: the Inquiry two-column shell; r425: a family names its own
 						: (content.menu.kind === "tabs"
 							? (content.menu.tab1Cols ? "tabs_two_col" : "tabs") : "simplified");
 			const shell = tpl.menu.shells[shellKey];
