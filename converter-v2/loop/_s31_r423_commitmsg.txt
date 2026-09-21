@@ -1,0 +1,29 @@
+Round 423: a page-boundary marker typed as a table row is a paragraph — PMT101, the one-table MTK template, now converts (ROWMARKER_OFF)
+
+The autonomous loop's session 31 Round 1. The session-30 exhaustion verdict was valid in form
+but left two recorded recognition items from the 19 Sept intake handover un-started; this is the
+first (LOOP_INTAKE §7 item 3). PMT101's Writers Template is the same MTK "Te Aka Taumatua"
+bilingual dialect as PNR107, but its writer kept the whole module in ONE English | Maori table
+and typed [MODULE CONTENT: PAGE 1] / [END OF PAGE] / [LESSON N CONTENT] / [END OF DROP DOWN MENU]
+as rows, so DocxExtractor.IsContentStart (paragraphs only) never saw a content start and
+PrepareRun refused the module as "no Writers Template".
+
+The fix (data): Input_Doc_Rules.content_start.table_row_boundary_markers + DocxExtractor.
+PromoteTableRowMarkers, called first in ModuleResolver.PrepareRun's classify loop: a table row
+whose non-empty cells are each exactly one red span resolving to page / end page / lesson
+content / end dropdown splits the table there and the marker becomes a paragraph; an all-blank
+slice (the writer's spacer rows) is dropped rather than emitted as an empty table (it tripped
+the splitter's AR-5 on the first build). Every other document gets the same array back.
+
+Measured over all 762 docx: the trigger fires on PMT101 alone (9 rows); the 19 MTK
+[TITLE BAR] | [TITLE BAR] rows are content rows and stay. Probe OFF = disk 2555 / 2555 with
+PMT101 refused; ON = 2559 / 2559. PMT101: no build -> 4 pages at 32.9 % mean scaffold (overview
+66.7 %), the Bilingual siblings' band. SCOPED regeneration of the 1 + a 12-module spot-check
+(0 stale, 12 / 12; scoped #6 since the r416 FULL). The population grew 2349 -> 2353 pairs:
+skeleton 54.2065 -> 54.1703 % is pure population arithmetic — 0 movers on the pre-existing
+pairs (_s29_skdelta.py), >=50 1441 -> 1442; cs / body / defect re-based (+85 / +6 / +1 / +4
+clean, all PMT101's own pages); every verifier exact; 17 selftests green; miner 182 -> 184.
+
+Build 260619.94. Loop mirror + LOOP_STATE.md (condensed to 75 KB) + checksums refreshed.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

@@ -25,7 +25,18 @@
 			"content for drop down menu",
 			"content for drop-down menu"
 		],
-		"_fragments_dropdown_note": "ROUND 212 (PNR101 family): the new MTK 'Te Aka Taumatua' bilingual template opens at [Content for DROP DOWN MENU] — recognised as a content start so the menu/overview is not trimmed as front matter. Kept in its OWN list (not content_start_fragments) so env REODROPMENU_OFF can revert the whole round faithfully. Measured: the exact bracketed marker exists in EXACTLY PNR101/102/104 corpus-wide."
+		"_fragments_dropdown_note": "ROUND 212 (PNR101 family): the new MTK 'Te Aka Taumatua' bilingual template opens at [Content for DROP DOWN MENU] — recognised as a content start so the menu/overview is not trimmed as front matter. Kept in its OWN list (not content_start_fragments) so env REODROPMENU_OFF can revert the whole round faithfully. Measured: the exact bracketed marker exists in EXACTLY PNR101/102/104 corpus-wide.",
+		"table_row_boundary_markers": {
+			"enabled": true,
+			"env": "ROWMARKER_OFF",
+			"promote_tags": [
+				"page",
+				"end page",
+				"lesson content",
+				"end dropdown"
+			],
+			"_note": "ROUND 423 (session 31 — PMT101, the MTK 'Te Aka Taumatua' template written as ONE table). PNR107 and the other 18 MTK modules carry the page / lesson boundary markers ([MODULE CONTENT: PAGE 1], [END OF PAGE], [LESSON N CONTENT], [END OF DROP DOWN MENU]) as PARAGRAPHS between one bilingual table per page; PMT101's writer kept the whole module in one English ║ Māori table and typed those markers as ROWS (the left cell holds the red span, the right cell is empty). IsContentStart reads paragraphs only, so no content start was ever seen and the module was refused as 'no Writers Template' (the 19 Sept intake's one real recognition gap). DocxExtractor.PromoteTableRowMarkers runs first in ModuleResolver.PrepareRun's classify loop (the ONE shared prep choke point — entry parity by construction) and splits a table at every row whose non-empty cells are each exactly ONE red span resolving to a promote_tags canonical and nothing else, emitting the marker as a paraBlock between the two table halves — which turns PMT101's block stream into exactly PNR107's shape; recognition, TrimFrontMatter, the r212 drop-down rescue, the page splitter and the bilingual handlers are all unchanged. MEASURED (outputs/_s31_r1_rowmarkers.cjs over all 545 docx-bearing gold modules, 762 docx incl. the combined WT + Media List files): marker-only rows resolving to these four canonicals exist in EXACTLY PMT101 (9 rows: page 1, end page 4, lesson content 3, end dropdown 1) and in no other document — every other block list is returned as the SAME array, a byte-identical no-op by construction. NOT promoted, deliberately: the [TITLE BAR] ║ [TITLE BAR] rows (19 MTK modules — a content row the bilingual path already reads; 'title bar' is absent from promote_tags), and any row carrying a marker beside other text (ENGS202's page-opener table, the r306 fence). Env ROWMARKER_OFF reverts."
+		}
 	},
 	"front_matter_blocks_documentation": [
 		"MTK WRITERS TEMPLATE / WRITERS TEMPLATE title block",

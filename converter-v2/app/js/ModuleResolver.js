@@ -360,6 +360,12 @@ class ModuleResolver {
 		let wt = null;
 		let mediaSource = null;
 		for (const d of docs) {
+			// ROUND 423 — a page-boundary marker typed as a table ROW (PMT101's
+			// one-table MTK template) becomes the paragraph the recogniser and
+			// the page splitter expect; the SAME array comes back for every
+			// other document (measured: PMT101 alone), so the load-bearing
+			// order below is untouched. Env ROWMARKER_OFF reverts.
+			d.doc.blocks = DocxExtractor.PromoteTableRowMarkers(d.doc.blocks, normaliser, run);
 			const mediaTable = MediaListParser.FindMediaTable(d.doc.blocks);
 			const isWt = DocxExtractor.LooksLikeWritersTemplate(d.doc.blocks, normaliser);
 			if (isWt && !wt) wt = d;

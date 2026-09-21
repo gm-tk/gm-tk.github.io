@@ -1,0 +1,418 @@
+== (a) how the boundary markers resolve ==
+[MODULE CONTENT: PAGE 1]	-> tag=page	directive=PAGE_BOUNDARY	class=tag
+[MODULE CONTENT: PAGE 2]	-> tag=page	directive=PAGE_BOUNDARY	class=tag
+[END OF PAGE]	-> tag=end page	directive=PAGE_BOUNDARY	class=tag
+[END PAGE]	-> tag=end page	directive=PAGE_BOUNDARY	class=tag
+[LESSON 1 CONTENT]	-> tag=lesson content	directive=SECTION_MARKER	class=tag
+[LESSON 2 CONTENT]	-> tag=lesson content	directive=SECTION_MARKER	class=tag
+[END OF DROPDOWN MENU]	-> tag=end dropdown	directive=CONTAINER_CLOSE	class=tag
+[END OF DROP DOWN MENU]	-> tag=end dropdown	directive=CONTAINER_CLOSE	class=tag
+[Content for DROP DOWN MENU]	-> tag=dropdown	directive=INTERACTIVE	class=tag
+[END OF MODULE]	-> tag=end other	directive=CONTAINER_CLOSE	class=tag
+[TITLE BAR]	-> tag=title bar	directive=SECTION_MARKER	class=tag
+[Fundamental content]	-> tag=lesson content	directive=SECTION_MARKER	class=tag
+[Fundamental 1 code]	-> tag=lesson content	directive=SECTION_MARKER	class=tag
+
+== (b) marker-only table rows — modules scanned 545 ==
+BLL113	Standard	BLL113 Writers Template + Media List.docx	WT=true	claude=true	tables=9	markerRows=5	audio/ELEMENT+audio/ELEMENT×5
+BLL115	Standard	BLL115 Writers Template + Media List.docx	WT=true	claude=true	tables=8	markerRows=1	audio/ELEMENT×1
+BLL211	Standard	BLL211 Writers Template + Media List.docx	WT=true	claude=true	tables=4	markerRows=7	typing quiz/INTERACTIVE×4, hint slider/INTERACTIVE×3
+BLL265	Standard	BLL265 Writers Template.docx	WT=true	claude=false	tables=7	markerRows=1	answer/SUBTAG×1
+BLL266	Standard	BLL266 Writers Template.docx	WT=true	claude=false	tables=5	markerRows=1	answer/SUBTAG×1
+BLL272	Standard	BLL272 Writers Template.docx	WT=true	claude=false	tables=8	markerRows=1	data marker/SUBTAG+image/ELEMENT×1
+BLL273	Standard	BLL273 Writers Template.docx	WT=true	claude=false	tables=7	markerRows=1	data marker/SUBTAG+image/ELEMENT×1
+BLL274	Standard	BLL274 Writers Template.docx	WT=true	claude=false	tables=8	markerRows=2	data marker/SUBTAG+image/ELEMENT×1, data marker/SUBTAG×1
+CBI1005	Standard	CBI1005 Writers Template + Media List.docx	WT=true	claude=true	tables=16	markerRows=6	shape n/SUBTAG+shape n/SUBTAG×2, shape n/SUBTAG+shape n/SUBTAG+shape n/SUBTAG×4
+CEDO105	Standard	CEDO105 Writers Template + Media List.docx	WT=true	claude=true	tables=16	markerRows=5	image/ELEMENT+data marker/SUBTAG×5
+CEDT501	Standard	CEDT501 Writers Template.docx	WT=true	claude=true	tables=83	markerRows=1	shape n/SUBTAG×1
+CHI1004	Standard	CHI1004 Writers Template + Media List.docx	WT=true	claude=true	tables=12	markerRows=1	image/ELEMENT+image/ELEMENT×1
+ENGC204	Standard	ENGC204 Writers Template.docx	WT=true	claude=true	tables=39	markerRows=2	image/ELEMENT+image/ELEMENT+image/ELEMENT+image/ELEMENT×2
+ENGI302	Standard	ENGI302 Writers Template + Media List.docx	WT=true	claude=true	tables=18	markerRows=1	carousel/INTERACTIVE×1
+ENGR101	Standard	ENGR101 Writers Template + Media List.docx	WT=true	claude=true	tables=37	markerRows=1	audio/ELEMENT+hint slider/INTERACTIVE×1
+ENGS101	Standard	ENGS101 Writers Template + Media List.docx	WT=true	claude=true	tables=9	markerRows=3	image/ELEMENT+body/ELEMENT×3
+ENGS201	Standard	ENGS201 Writers Template + Media List.docx	WT=true	claude=true	tables=38	markerRows=1	button/ELEMENT×1
+ENO2060	Standard	ENO2060 Writers Template.docx	WT=true	claude=true	tables=9	markerRows=2	front/SUBTAG×1, back/SUBTAG×1
+FRNO901	Standard	FRNO901 Writers Template.docx	WT=true	claude=true	tables=60	markerRows=8	data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG×1, back/SUBTAG+back/SUBTAG+back/SUBTAG+back/SUBTAG+back/SUBTAG×1, back/SUBTAG+back/SUBTAG+back/SUBTAG×3, back/SUBTAG×1, video/ELEMENT+video/ELEMENT+video/ELEMENT+video/ELEMENT×1, data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG×1
+FRNO902	Standard	FRNO902 Writers Template.docx	WT=true	claude=true	tables=106	markerRows=1	data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG×1
+HIS1002	Standard	HIS1002 Writers Template + Media List.docx	WT=true	claude=true	tables=12	markerRows=3	h4/ELEMENT+h4/ELEMENT+h4/ELEMENT×1, h4/ELEMENT+h4/ELEMENT×2
+HPRE301	Standard	HPRE301 Writers Template.docx	WT=true	claude=false	tables=9	markerRows=1	shape n/SUBTAG+body/ELEMENT×1
+MXFL203	Standard	MXFL203 Writers Template + Media List.docx	WT=true	claude=true	tables=40	markerRows=1	image/ELEMENT+image/ELEMENT+image/ELEMENT+image/ELEMENT+image/ELEMENT×1
+MXFU302	Standard	MXFU302 Writers Template + Media List.docx	WT=true	claude=true	tables=32	markerRows=2	accordion/INTERACTIVE×2
+OSAH401	Standard	OSAH401 Writers Template.docx	WT=true	claude=true	tables=22	markerRows=1	front/SUBTAG+back/SUBTAG×1
+OSAH501	Standard	OSAH501 Writers Template.docx	WT=true	claude=true	tables=25	markerRows=1	front/SUBTAG+back/SUBTAG+front/SUBTAG+back/SUBTAG×1
+OSBY501	Standard	OSBY501 Writers Template.docx	WT=true	claude=true	tables=34	markerRows=2	drag and drop/INTERACTIVE×1, data marker/SUBTAG+reorder/INTERACTIVE+answer/SUBTAG×1
+OSGM201	Standard	OSGM201 Writers Template.docx	WT=true	claude=true	tables=18	markerRows=1	button/ELEMENT×1
+OSGM401	Standard	OSGM401 Writers Template.docx	WT=true	claude=true	tables=23	markerRows=2	shape hover/INTERACTIVE×1, front/SUBTAG+back/SUBTAG+front/SUBTAG+back/SUBTAG×1
+OSOH501	Standard	OSOH501 Writers Template.docx	WT=true	claude=true	tables=25	markerRows=5	question/SUBTAG+answer/SUBTAG×1, front/SUBTAG+back/SUBTAG+front/SUBTAG+back/SUBTAG×4
+OSSC401	Standard	OSSC401 Writers Template.docx	WT=true	claude=true	tables=23	markerRows=1	speech bubble/INTERACTIVE+speech bubble/INTERACTIVE×1
+OSSC501	Standard	OSSC501 Writers Template.docx	WT=true	claude=true	tables=19	markerRows=5	front/SUBTAG+back/SUBTAG×4, data marker/SUBTAG+reorder/INTERACTIVE×1
+PES1005	Standard	PES1005 Writers Template + Media List.docx	WT=true	claude=true	tables=9	markerRows=1	image/ELEMENT+image/ELEMENT+image/ELEMENT×1
+PWY1007	Standard	PWY1007 Writers Template.docx	WT=true	claude=true	tables=33	markerRows=2	memory game/INTERACTIVE+memory game/INTERACTIVE×1, image/ELEMENT×1
+SSCI104	Standard	SSCI104 Writers Template.docx	WT=true	claude=false	tables=54	markerRows=2	front/SUBTAG+slide n/SUBTAG×1, front/SUBTAG+drop/SUBTAG×1
+SSOG103	Standard	SSOG103 Writers Template.docx	WT=true	claude=true	tables=20	markerRows=8	audio button/ELEMENT×8
+TEDC401	Standard	TEDC401 Writers Template.docx	WT=true	claude=true	tables=95	markerRows=1	drag and drop/INTERACTIVE×1
+TEDC402	Standard	TEDC402 Writers Template.docx	WT=true	claude=true	tables=125	markerRows=1	flip card/INTERACTIVE×1
+XGF9002	Standard	XGF9002 Writers Template.docx	WT=true	claude=true	tables=18	markerRows=1	h3/ELEMENT+h3/ELEMENT×1
+XGF9004	Standard	XGF9004 Writers Template.docx	WT=true	claude=true	tables=43	markerRows=1	h3/ELEMENT+h3/ELEMENT×1
+XLP01	Standard	XLP01 Writers Template + Media List.docx	WT=true	claude=true	tables=25	markerRows=1	activity/CONTAINER_OPEN+activity/CONTAINER_OPEN+activity/CONTAINER_OPEN+activity/CONTAINER_OPEN×1
+XMES202	Standard	XMES202 Writers Template.docx	WT=true	claude=false	tables=65	markerRows=3	text box/ELEMENT+text box/ELEMENT+text box/ELEMENT+text box/ELEMENT×3
+XMES203	Standard	XMES203 Writers Template.docx	WT=true	claude=true	tables=46	markerRows=5	text box/ELEMENT+text box/ELEMENT×4, text box/ELEMENT+text box/ELEMENT+text box/ELEMENT+text box/ELEMENT+text box/ELEMENT×1
+BLL250	Inquiry	BLL250 Writers Template.docx	WT=true	claude=false	tables=19	markerRows=2	audio/ELEMENT+image/ELEMENT+correct/SUBTAG×2
+BLL260	Inquiry	BLL260 Writers Template.docx	WT=true	claude=false	tables=59	markerRows=3	audio/ELEMENT+image/ELEMENT+correct/SUBTAG×3
+CEDK102	Inquiry	CEDK102 Writers Template + Media List.docx	WT=true	claude=true	tables=20	markerRows=1	click drop/INTERACTIVE+click drop/INTERACTIVE+click drop/INTERACTIVE×1
+CEDO204	Inquiry	CEDO204 Writers Template + Media List.docx	WT=true	claude=true	tables=7	markerRows=1	data marker/SUBTAG+image/ELEMENT×1
+EXPFUN04	Inquiry	EXPFUN04 Writers Template + Media List.docx	WT=true	claude=true	tables=32	markerRows=6	image/ELEMENT+image/ELEMENT+image/ELEMENT×6
+EXPFUN05	Inquiry	EXPFUN05 Writers Template + Media List.docx	WT=true	claude=true	tables=33	markerRows=6	image/ELEMENT+image/ELEMENT+image/ELEMENT×6
+GEWHA	Inquiry	GEWHA Writers Template.docx	WT=true	claude=true	tables=6	markerRows=1	front/SUBTAG+back/SUBTAG×1
+TWHK902	Inquiry	TWHK902 Writers Template + Media List.docx	WT=true	claude=false	tables=22	markerRows=2	activity/CONTAINER_OPEN+activity/CONTAINER_OPEN×1, activity/CONTAINER_OPEN×1
+CHFUN01	Fundamentals	CHFUN01 Writers Template.docx	WT=true	claude=true	tables=9	markerRows=1	h4/ELEMENT+body/ELEMENT×1
+CHFUN08	Fundamentals	CHFUN08 Writers Template.docx	WT=true	claude=true	tables=21	markerRows=1	table/ELEMENT×1
+FRFUN08	Fundamentals	FRFUN08 Writers Template.docx	WT=true	claude=true	tables=15	markerRows=2	body/ELEMENT+body/ELEMENT+body/ELEMENT×1, image/ELEMENT+image/ELEMENT+image/ELEMENT×1
+SSFUN01	Fundamentals	SSFUN01 Writers Template + Media List.docx	WT=true	claude=true	tables=10	markerRows=1	mcq/INTERACTIVE×1
+TEFUN03	Fundamentals	TEFUN03 Writers Template + Media List.docx	WT=true	claude=true	tables=16	markerRows=1	image/ELEMENT+image/ELEMENT+image/ELEMENT×1
+WJFUN105	Fundamentals	WJFUN105 Writers Template.docx	WT=true	claude=true	tables=4	markerRows=1	image/ELEMENT+image/ELEMENT×1
+WJFUN106	Fundamentals	WJFUN106 Writers Template.docx	WT=true	claude=true	tables=6	markerRows=3	image/ELEMENT+image/ELEMENT+image/ELEMENT×1, front/SUBTAG+back/SUBTAG×1, image/ELEMENT+correct/SUBTAG×1
+WJFUN107	Fundamentals	WJFUN107 Writers Template.docx	WT=true	claude=true	tables=11	markerRows=3	shape n/SUBTAG+shape n/SUBTAG+shape n/SUBTAG×1, image/ELEMENT+image/ELEMENT+image/ELEMENT×1, mcq/INTERACTIVE+correct/SUBTAG×1
+WJFUN108	Fundamentals	WJFUN108 Writers Template.docx	WT=true	claude=true	tables=6	markerRows=1	image/ELEMENT+image/ELEMENT+image/ELEMENT×1
+WJFUN208	Fundamentals	WJFUN208 Writers Template.docx	WT=true	claude=true	tables=16	markerRows=5	shape n/SUBTAG+shape n/SUBTAG×1, body/ELEMENT+body/ELEMENT+body/ELEMENT×4
+WJFUN211	Fundamentals	WJFUN211 Writers Template.docx	WT=true	claude=true	tables=8	markerRows=1	shape n/SUBTAG+shape n/SUBTAG×1
+WJFUN304	Fundamentals	WJFUN304 Writers Template.docx	WT=true	claude=true	tables=22	markerRows=11	shape n/SUBTAG×11
+WJFUN305	Fundamentals	WJFUN305 Writers Template.docx	WT=true	claude=true	tables=17	markerRows=1	shape n/SUBTAG+shape n/SUBTAG×1
+WJFUN306	Fundamentals	WJFUN306 Writers Template.docx	WT=true	claude=true	tables=16	markerRows=1	shape n/SUBTAG+shape n/SUBTAG×1
+WJFUN307	Fundamentals	WJFUN307 Writers Template.docx	WT=true	claude=true	tables=15	markerRows=1	shape n/SUBTAG+shape n/SUBTAG×1
+WJFUN308	Fundamentals	WJFUN308 Writers Template.docx	WT=true	claude=true	tables=12	markerRows=1	shape n/SUBTAG+shape n/SUBTAG×1
+PMT101	Bilingual	PMT101 Writers Template.docx	WT=false	claude=false	tables=5	markerRows=20	body/ELEMENT+body/ELEMENT×2, end dropdown/CONTAINER_CLOSE×1, page/PAGE_BOUNDARY×1, end page/PAGE_BOUNDARY×4, lesson content/SECTION_MARKER×3, important/CONTAINER_OPEN×2, checklist/INTERACTIVE×4, dropdown/INTERACTIVE×2, end other/CONTAINER_CLOSE×1
+PNR101	Bilingual	PNR101 Writers Template.docx	WT=true	claude=true	tables=24	markerRows=3	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1, flip card/INTERACTIVE×1, important/CONTAINER_OPEN×1
+PNR102	Bilingual	PNR102 Writers Template.docx	WT=true	claude=true	tables=24	markerRows=2	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1, drag and drop/INTERACTIVE×1
+PNR104	Bilingual	PNR104 Writers Template.docx	WT=true	claude=true	tables=21	markerRows=3	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1, radio quiz/INTERACTIVE×1, important/CONTAINER_OPEN×1
+PNR107	Bilingual	PNR107 Writers Template.docx	WT=true	claude=true	tables=26	markerRows=4	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1, side alert/CONTAINER_OPEN×1, dropdown/INTERACTIVE×1, h3/ELEMENT+h3/ELEMENT×1
+TRR102	Bilingual	TRR102 Writers Template.docx	WT=true	claude=true	tables=74	markerRows=15	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1, typing quiz/INTERACTIVE×1, audio button/ELEMENT×1, dropdown/INTERACTIVE×1, mcq/INTERACTIVE×2, side alert/CONTAINER_OPEN×1, drag and drop/INTERACTIVE×3, word select/INTERACTIVE×2, memory game/INTERACTIVE×1, activity/CONTAINER_OPEN×2
+TRR103	Bilingual	TRR103 Writers Template.docx	WT=true	claude=true	tables=55	markerRows=2	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1, word select/INTERACTIVE×1
+TRR106	Bilingual	TRR106 Writers Template.docx	WT=true	claude=true	tables=33	markerRows=5	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1, h2/ELEMENT+h2/ELEMENT×2, word select/INTERACTIVE×1, drag and drop/INTERACTIVE×1
+TRR107	Bilingual	TRR107 Writers Template.docx	WT=true	claude=true	tables=23	markerRows=1	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1
+TRR108	Bilingual	TRR108 Writers Template.docx	WT=true	claude=true	tables=20	markerRows=1	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1
+TRR109	Bilingual	TRR109 Writers Template.docx	WT=true	claude=true	tables=87	markerRows=1	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1
+TRR110	Bilingual	TRR110 Writers Template.docx	WT=true	claude=false	tables=65	markerRows=13	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1, activity/CONTAINER_OPEN×11, interactive/INTERACTIVE×1
+TRR111	Bilingual	TRR111 Writers Template.docx	WT=true	claude=true	tables=72	markerRows=17	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1, activity/CONTAINER_OPEN×15, audio/ELEMENT×1
+TRR112	Bilingual	TRR112 Writers Template.docx	WT=true	claude=true	tables=70	markerRows=3	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1, side alert/CONTAINER_OPEN×2
+TRR113	Bilingual	TRR113 Writers Template.docx	WT=true	claude=true	tables=74	markerRows=2	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1, activity/CONTAINER_OPEN×1
+TRR114	Bilingual	TRR114 Writers Template.docx	WT=true	claude=true	tables=28	markerRows=1	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1
+TRR115	Bilingual	TRR115 Writers Template.docx	WT=false	claude=true	tables=22	markerRows=1	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1
+TRR116	Bilingual	TRR116 Writers Template.docx	WT=true	claude=true	tables=104	markerRows=39	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1, activity/CONTAINER_OPEN×37, carousel/INTERACTIVE×1
+TRR203	Bilingual	TRR203 Writers Template.docx	WT=true	claude=true	tables=28	markerRows=3	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1, typing quiz/INTERACTIVE+typing quiz/INTERACTIVE×2
+TRR301	Bilingual	TRR301 Writers Template.docx	WT=true	claude=true	tables=49	markerRows=3	title bar/SECTION_MARKER+title bar/SECTION_MARKER×1, important/CONTAINER_OPEN+important/CONTAINER_OPEN×2
+
+== (c) marker kinds over all marker-only rows ==
+activity/CONTAINER_OPEN	67
+title bar/SECTION_MARKER+title bar/SECTION_MARKER	19
+image/ELEMENT+image/ELEMENT+image/ELEMENT	18
+shape n/SUBTAG	12
+audio button/ELEMENT	9
+shape n/SUBTAG+shape n/SUBTAG	8
+front/SUBTAG+back/SUBTAG	7
+drag and drop/INTERACTIVE	7
+front/SUBTAG+back/SUBTAG+front/SUBTAG+back/SUBTAG	6
+audio/ELEMENT+audio/ELEMENT	5
+typing quiz/INTERACTIVE	5
+shape n/SUBTAG+shape n/SUBTAG+shape n/SUBTAG	5
+image/ELEMENT+data marker/SUBTAG	5
+audio/ELEMENT+image/ELEMENT+correct/SUBTAG	5
+body/ELEMENT+body/ELEMENT+body/ELEMENT	5
+data marker/SUBTAG+image/ELEMENT	4
+text box/ELEMENT+text box/ELEMENT	4
+end page/PAGE_BOUNDARY	4
+important/CONTAINER_OPEN	4
+checklist/INTERACTIVE	4
+dropdown/INTERACTIVE	4
+side alert/CONTAINER_OPEN	4
+word select/INTERACTIVE	4
+hint slider/INTERACTIVE	3
+image/ELEMENT+body/ELEMENT	3
+back/SUBTAG+back/SUBTAG+back/SUBTAG	3
+h3/ELEMENT+h3/ELEMENT	3
+text box/ELEMENT+text box/ELEMENT+text box/ELEMENT+text box/ELEMENT	3
+mcq/INTERACTIVE	3
+lesson content/SECTION_MARKER	3
+audio/ELEMENT	2
+answer/SUBTAG	2
+image/ELEMENT+image/ELEMENT	2
+image/ELEMENT+image/ELEMENT+image/ELEMENT+image/ELEMENT	2
+carousel/INTERACTIVE	2
+button/ELEMENT	2
+back/SUBTAG	2
+h4/ELEMENT+h4/ELEMENT	2
+accordion/INTERACTIVE	2
+flip card/INTERACTIVE	2
+body/ELEMENT+body/ELEMENT	2
+h2/ELEMENT+h2/ELEMENT	2
+typing quiz/INTERACTIVE+typing quiz/INTERACTIVE	2
+important/CONTAINER_OPEN+important/CONTAINER_OPEN	2
+data marker/SUBTAG	1
+audio/ELEMENT+hint slider/INTERACTIVE	1
+front/SUBTAG	1
+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG	1
+back/SUBTAG+back/SUBTAG+back/SUBTAG+back/SUBTAG+back/SUBTAG	1
+video/ELEMENT+video/ELEMENT+video/ELEMENT+video/ELEMENT	1
+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG	1
+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG+data marker/SUBTAG	1
+h4/ELEMENT+h4/ELEMENT+h4/ELEMENT	1
+shape n/SUBTAG+body/ELEMENT	1
+image/ELEMENT+image/ELEMENT+image/ELEMENT+image/ELEMENT+image/ELEMENT	1
+data marker/SUBTAG+reorder/INTERACTIVE+answer/SUBTAG	1
+shape hover/INTERACTIVE	1
+question/SUBTAG+answer/SUBTAG	1
+speech bubble/INTERACTIVE+speech bubble/INTERACTIVE	1
+data marker/SUBTAG+reorder/INTERACTIVE	1
+memory game/INTERACTIVE+memory game/INTERACTIVE	1
+image/ELEMENT	1
+front/SUBTAG+slide n/SUBTAG	1
+front/SUBTAG+drop/SUBTAG	1
+activity/CONTAINER_OPEN+activity/CONTAINER_OPEN+activity/CONTAINER_OPEN+activity/CONTAINER_OPEN	1
+text box/ELEMENT+text box/ELEMENT+text box/ELEMENT+text box/ELEMENT+text box/ELEMENT	1
+click drop/INTERACTIVE+click drop/INTERACTIVE+click drop/INTERACTIVE	1
+activity/CONTAINER_OPEN+activity/CONTAINER_OPEN	1
+h4/ELEMENT+body/ELEMENT	1
+table/ELEMENT	1
+image/ELEMENT+correct/SUBTAG	1
+mcq/INTERACTIVE+correct/SUBTAG	1
+end dropdown/CONTAINER_CLOSE	1
+page/PAGE_BOUNDARY	1
+end other/CONTAINER_CLOSE	1
+radio quiz/INTERACTIVE	1
+memory game/INTERACTIVE	1
+interactive/INTERACTIVE	1
+
+== (d) docx NOT accepted as a Writers Template today ==
+AGH1007	Standard	AGH1007 Media List.docx	claude=true	tables=1	markerRows=0
+ANZH302	Standard	ANZH302 Learning Journal.docx	claude=true	tables=40	markerRows=0
+BLL222	Standard	BLL222 Media List.docx	claude=true	tables=1	markerRows=0
+BLL223	Standard	BLL223 Media List.docx	claude=true	tables=1	markerRows=0
+BLL224	Standard	BLL224 Media List.docx	claude=true	tables=1	markerRows=0
+BLL225	Standard	BLL225 Media List.docx	claude=true	tables=1	markerRows=0
+BLL226	Standard	BLL226 Media List.docx	claude=true	tables=1	markerRows=0
+BLL227	Standard	BLL227 Media List.docx	claude=true	tables=1	markerRows=0
+BLL231	Standard	BLL231 Media List.docx	claude=true	tables=1	markerRows=0
+BLL232	Standard	BLL232 Media List.docx	claude=true	tables=1	markerRows=0
+BLL233	Standard	BLL233 Media List.docx	claude=true	tables=1	markerRows=0
+BLL234	Standard	BLL234 Media List.docx	claude=true	tables=1	markerRows=0
+BLL235	Standard	BLL235 Media List.docx	claude=true	tables=1	markerRows=0
+BLL236	Standard	BLL236 Media List.docx	claude=true	tables=1	markerRows=0
+BLL237	Standard	BLL237 Media List.docx	claude=true	tables=1	markerRows=0
+BLL241	Standard	BLL241 Media List.docx	claude=true	tables=1	markerRows=0
+BLL242	Standard	BLL242 Media List.docx	claude=true	tables=1	markerRows=0
+BLL243	Standard	BLL243 Media List.docx	claude=false	tables=1	markerRows=0
+BLL244	Standard	BLL244 Media List.docx	claude=true	tables=1	markerRows=0
+BLL245	Standard	BLL245 Media List.docx	claude=true	tables=1	markerRows=0
+BLL246	Standard	BLL246 Media List.docx	claude=true	tables=1	markerRows=0
+BLL247	Standard	BLL247 Media List.docx	claude=false	tables=1	markerRows=0
+BLL251	Standard	BLL251 Media List.docx	claude=true	tables=1	markerRows=0
+BLL252	Standard	BLL252 Media List.docx	claude=true	tables=1	markerRows=0
+BLL253	Standard	BLL253 Media List.docx	claude=true	tables=1	markerRows=0
+BLL254	Standard	BLL254 Media List.docx	claude=true	tables=1	markerRows=0
+BLL255	Standard	BLL255 Media List.docx	claude=false	tables=1	markerRows=0
+BLL256	Standard	BLL256 Media List.docx	claude=false	tables=1	markerRows=0
+BLL257	Standard	BLL257 Media List.docx	claude=false	tables=1	markerRows=0
+BLL261	Standard	BLL261 Media List.docx	claude=false	tables=1	markerRows=0
+BLL262	Standard	BLL262 Media List.docx	claude=true	tables=1	markerRows=0
+BLL263	Standard	BLL263 Media List.docx	claude=true	tables=1	markerRows=0
+BLL264	Standard	BLL264 Media List.docx	claude=false	tables=1	markerRows=0
+BLL265	Standard	BLL265 Media List.docx	claude=false	tables=1	markerRows=0
+BLL266	Standard	BLL266 Media List.docx	claude=false	tables=1	markerRows=0
+BLL271	Standard	BLL271 Media List.docx	claude=false	tables=1	markerRows=0
+BLL272	Standard	BLL272 Media List.docx	claude=false	tables=1	markerRows=0
+BLL273	Standard	BLL273 Media List.docx	claude=false	tables=1	markerRows=0
+BLL274	Standard	BLL274 Media List.docx	claude=false	tables=1	markerRows=0
+BLL275	Standard	BLL275 Media List.docx	claude=false	tables=1	markerRows=0
+BLL276	Standard	BLL276 Media List.docx	claude=false	tables=1	markerRows=0
+BLLR201	Standard	BLLR201 Media List.docx	claude=true	tables=1	markerRows=0
+BLLR202	Standard	BLLR202 Media List.docx	claude=true	tables=1	markerRows=0
+BLLR203	Standard	BLLR203 Media List.docx	claude=true	tables=1	markerRows=0
+CEDO501	Standard	CEDO501 Media List.docx	claude=true	tables=7	markerRows=0
+CEDO502	Standard	CEDO502 Media List.docx	claude=true	tables=8	markerRows=0
+CEDR501	Standard	CEDR501 Media List.docx	claude=true	tables=9	markerRows=0
+CEDT501	Standard	CEDT501 Media List.docx	claude=true	tables=11	markerRows=0
+CEDW501	Standard	CEDW501 Media List.docx	claude=true	tables=7	markerRows=0
+ENGC204	Standard	ENGC204 Media List.docx	claude=true	tables=1	markerRows=0
+ENGC206	Standard	ENGC206 Media List.docx	claude=true	tables=1	markerRows=0
+ENGC403	Standard	ENGC403 Media List.docx	claude=true	tables=1	markerRows=0
+ENGI400	Standard	ENGI400 Media List.docx	claude=true	tables=1	markerRows=0
+ENGI405	Standard	ENGI405 Media List.docx	claude=true	tables=1	markerRows=0
+ENGJ403	Standard	ENGJ403 Media List.docx	claude=true	tables=1	markerRows=0
+ENGS404	Standard	ENGS404 Media List (Exploring narratives 2nd proof additions).docx	claude=true	tables=1	markerRows=0
+ENGS404	Standard	ENGS404 Media List (additions).docx	claude=true	tables=1	markerRows=0
+ENGS404	Standard	ENGS404 Media List.docx	claude=true	tables=1	markerRows=0
+ENGS405	Standard	ENGS405 Media List.docx	claude=true	tables=1	markerRows=0
+ENO2060	Standard	ENO2060 Media List.docx	claude=true	tables=1	markerRows=0
+FRNO901	Standard	FRNO901 Media List.docx	claude=true	tables=1	markerRows=0
+FRNO902	Standard	FRNO902 Media List.docx	claude=true	tables=1	markerRows=0
+GENO901	Standard	GENO901 Media List.docx	claude=true	tables=1	markerRows=0
+HES1003	Standard	HES1003 Media List.docx	claude=true	tables=1	markerRows=0
+HES1007	Standard	HES1007 Media List.docx	claude=true	tables=3	markerRows=0
+HPRE203	Standard	HPRE203 Media List.docx	claude=true	tables=1	markerRows=0
+HPRE301	Standard	HPRE301 Media List.docx	claude=false	tables=1	markerRows=0
+MXFU402	Standard	MXFU402 Media List.docx	claude=true	tables=1	markerRows=0
+OSAH301	Standard	OSAH301 Media List.docx	claude=true	tables=1	markerRows=0
+OSAH401	Standard	OSAH401 Media List.docx	claude=true	tables=1	markerRows=0
+OSAH501	Standard	OSAH501 Media List.docx	claude=true	tables=1	markerRows=0
+OSAI101	Standard	OSAI101 Media List.docx	claude=true	tables=1	markerRows=0
+OSAI201	Standard	OSAI201 Media List.docx	claude=true	tables=1	markerRows=0
+OSAI301	Standard	OSAI301 Media List.docx	claude=true	tables=1	markerRows=0
+OSAI401	Standard	OSAI401 Media List.docx	claude=true	tables=1	markerRows=0
+OSAI501	Standard	OSAI501 Media List.docx	claude=true	tables=1	markerRows=0
+OSBY101	Standard	OSBY101 Media List.docx	claude=true	tables=1	markerRows=0
+OSBY201	Standard	OSBY201 Media List.docx	claude=true	tables=1	markerRows=0
+OSBY301	Standard	OSBY301 Media List.docx	claude=true	tables=1	markerRows=0
+OSBY401	Standard	OSBY401 Media List.docx	claude=true	tables=1	markerRows=0
+OSBY501	Standard	OSBY501 Media List.docx	claude=true	tables=1	markerRows=0
+OSGM101	Standard	OSGM101 Media List.docx	claude=true	tables=1	markerRows=0
+OSGM201	Standard	OSGM201 Media List.docx	claude=true	tables=1	markerRows=0
+OSGM301	Standard	OSGM301 Media List.docx	claude=true	tables=1	markerRows=0
+OSGM401	Standard	OSGM401 Media List.docx	claude=true	tables=1	markerRows=0
+OSGM501	Standard	OSGM501 Media List.docx	claude=true	tables=1	markerRows=0
+OSOH101	Standard	OSOH101 Media List.docx	claude=true	tables=1	markerRows=0
+OSOH201	Standard	OSOH201 Media List.docx	claude=true	tables=1	markerRows=0
+OSOH301	Standard	OSOH301 Media List.docx	claude=true	tables=1	markerRows=0
+OSOH401	Standard	OSOH401 Media List.docx	claude=true	tables=1	markerRows=0
+OSOH501	Standard	OSOH501 Media List.docx	claude=true	tables=1	markerRows=0
+OSSC301	Standard	OSSC301 Media List.docx	claude=true	tables=1	markerRows=0
+OSSC401	Standard	OSSC401 Media List.docx	claude=true	tables=1	markerRows=0
+OSSC501	Standard	OSSC501 Media List.docx	claude=true	tables=1	markerRows=0
+OSSM301	Standard	OSSM301 Media List.docx	claude=true	tables=1	markerRows=0
+OSSM401	Standard	OSSM401 Media List.docx	claude=true	tables=1	markerRows=0
+OSSM501	Standard	OSSM501 Media List.docx	claude=false	tables=1	markerRows=0
+PWY1001	Standard	PWY1001 Media List.docx	claude=true	tables=4	markerRows=0
+PWY1002	Standard	PWY1002 Media List.docx	claude=true	tables=9	markerRows=0
+PWY1007	Standard	PWY1007 Media List.docx	claude=true	tables=4	markerRows=0
+PWY1008	Standard	PWY1008 Media List.docx	claude=true	tables=3	markerRows=0
+PWY1009	Standard	PWY1009 Media List.docx	claude=true	tables=3	markerRows=0
+PWYWHA1	Standard	PWYWHA1 Media List.docx	claude=true	tables=1	markerRows=0
+SCBI301	Standard	SCBI301 Media List.docx	claude=true	tables=1	markerRows=0
+SCCH301	Standard	SCCH301 Media List.docx	claude=true	tables=1	markerRows=0
+SCES201	Standard	SCES201 Media List.docx	claude=true	tables=1	markerRows=0
+SCPH301	Standard	SCPH301 Media List.docx	claude=true	tables=1	markerRows=0
+SSCI104	Standard	SSCI104 Media List.docx	claude=false	tables=1	markerRows=0
+SSCI205	Standard	SSCI205 Media List.docx	claude=true	tables=1	markerRows=0
+SSEA203	Standard	SSEA203 Media List.docx	claude=false	tables=1	markerRows=0
+SSOG103	Standard	SSOG103 Media List.docx	claude=true	tables=1	markerRows=0
+SSOG105	Standard	SSOG105 Media List.docx	claude=false	tables=1	markerRows=0
+TEDC401	Standard	TEDC401 Media List.docx	claude=true	tables=1	markerRows=0
+TEDC402	Standard	TEDC402 Media List.docx	claude=true	tables=1	markerRows=0
+XDLS501	Standard	XDLS501 Media List.docx	claude=true	tables=1	markerRows=0
+XDLS502	Standard	XDLS502 Media List.docx	claude=true	tables=1	markerRows=0
+XDLS902	Standard	XDLS902 Media List.docx	claude=true	tables=1	markerRows=0
+XDLS904	Standard	XDLS904 Media List.docx	claude=true	tables=1	markerRows=0
+XDLS905	Standard	XDLS905 Media List.docx	claude=true	tables=1	markerRows=0
+XDLS906	Standard	XDLS906 Media List.docx	claude=true	tables=1	markerRows=0
+XDLS908	Standard	XDLS908 Media List.docx	claude=true	tables=1	markerRows=0
+XDLS911	Standard	XDLS911 Media List.docx	claude=true	tables=1	markerRows=0
+XDLS912	Standard	XDLS912 Media List.docx	claude=true	tables=1	markerRows=0
+XGF9001	Standard	XGF9001 Media List.docx	claude=true	tables=1	markerRows=0
+XGF9002	Standard	XGF9002 Media List.docx	claude=true	tables=1	markerRows=0
+XGF9003	Standard	XGF9003 Media List.docx	claude=true	tables=1	markerRows=0
+XGF9004	Standard	XGF9004 Media List.docx	claude=true	tables=1	markerRows=0
+XGF9006	Standard	XGF9006 Media List.docx	claude=true	tables=1	markerRows=0
+XLP03	Standard	XLP03 Media List.docx	claude=true	tables=1	markerRows=0
+XLP04	Standard	XLP04 Media List.docx	claude=true	tables=1	markerRows=0
+XLP06	Standard	XLP06 Media List.docx	claude=true	tables=1	markerRows=0
+XMES201	Standard	XMES201 Media List.docx	claude=true	tables=1	markerRows=0
+XMES202	Standard	XMES202 Media List.docx	claude=false	tables=1	markerRows=0
+XMES203	Standard	XMES203 Media List.docx	claude=true	tables=1	markerRows=0
+XOTPB08	Standard	XOTPB08 Writers Template.docx	claude=false	tables=1	markerRows=0
+XOTPB09	Standard	XOTPB09 Writers Template.docx	claude=false	tables=1	markerRows=0
+XOTPB10	Standard	XOTPB10 Writers Template.docx	claude=false	tables=1	markerRows=0
+XOTPB11	Standard	XOTPB11 Writers Template.docx	claude=false	tables=1	markerRows=0
+XOTPB12	Standard	XOTPB12 Writers Template.docx	claude=false	tables=1	markerRows=0
+XOTPB13	Standard	XOTPB13 Writers Template.docx	claude=false	tables=1	markerRows=0
+XOTPG01	Standard	XOTPG01 Writers Template.docx	claude=false	tables=1	markerRows=0
+XOTPG03	Standard	XOTPG03 Writers Template.docx	claude=false	tables=1	markerRows=0
+XOTPG04	Standard	XOTPG04 Writers Template.docx	claude=false	tables=1	markerRows=0
+XOTPG05	Standard	XOTPG05 Writers Template.docx	claude=false	tables=1	markerRows=0
+XOTPG06	Standard	XOTPG06 Writers Template.docx	claude=false	tables=1	markerRows=0
+XOTPO01	Standard	XOTPO01 Writers Template.docx	claude=false	tables=1	markerRows=0
+XTAS101	Standard	XTAS101 Media List.docx	claude=true	tables=1	markerRows=0
+XTAS102	Standard	XTAS102 Media List.docx	claude=true	tables=1	markerRows=0
+XTAS103	Standard	XTAS103 Media List.docx	claude=true	tables=1	markerRows=0
+BLL230	Inquiry	BLL230 Media List.docx	claude=true	tables=1	markerRows=0
+BLL240	Inquiry	BLL240 Media List.docx	claude=true	tables=1	markerRows=0
+BLL250	Inquiry	BLL250 Media List.docx	claude=false	tables=1	markerRows=0
+BLL260	Inquiry	BLL260 Media List.docx	claude=false	tables=1	markerRows=0
+BLL270	Inquiry	BLL270 Media List.docx	claude=false	tables=1	markerRows=0
+CEDK501	Inquiry	CEDK501 Media List.docx	claude=true	tables=9	markerRows=0
+CHWHA	Inquiry	CHWHA Media List.docx	claude=true	tables=1	markerRows=0
+GEWHA	Inquiry	GEWHA Media List.docx	claude=true	tables=1	markerRows=0
+TWHA906	Inquiry	TWHA906 Media List.docx	claude=true	tables=1	markerRows=0
+TWHK907	Inquiry	TWHK907 Media List.docx	claude=false	tables=1	markerRows=0
+XDLS901	Inquiry	XDLS901 Media List.docx	claude=true	tables=1	markerRows=0
+XDLS903	Inquiry	XDLS903 Media List.docx	claude=true	tables=1	markerRows=0
+XDLS909	Inquiry	XDLS909 Media List.docx	claude=true	tables=1	markerRows=0
+CHFUN01	Fundamentals	CHFUN01 Media List.docx	claude=true	tables=1	markerRows=0
+CHFUN04	Fundamentals	CHFUN04 Media List.docx	claude=true	tables=1	markerRows=0
+CHFUN05	Fundamentals	CHFUN05 Media List.docx	claude=true	tables=1	markerRows=0
+CHFUN06	Fundamentals	CHFUN06 Media List.docx	claude=true	tables=1	markerRows=0
+CHFUN07	Fundamentals	CHFUN07 Media List.docx	claude=true	tables=1	markerRows=0
+CHFUN08	Fundamentals	CHFUN08 Media List.docx	claude=true	tables=1	markerRows=0
+FRFUN06	Fundamentals	FRFUN06 Media List.docx	claude=true	tables=1	markerRows=0
+FRFUN07	Fundamentals	FRFUN07 Media List.docx	claude=true	tables=1	markerRows=0
+FRFUN08	Fundamentals	FRFUN08 Media List.docx	claude=true	tables=1	markerRows=0
+HPFUN101	Fundamentals	HPFUN101 Media List.docx	claude=true	tables=1	markerRows=0
+HPFUN102	Fundamentals	HPFUN102 Media List.docx	claude=true	tables=1	markerRows=0
+HPFUN103	Fundamentals	HPFUN103 Media List.docx	claude=true	tables=1	markerRows=0
+HPFUN201	Fundamentals	HPFUN201 Media List.docx	claude=true	tables=1	markerRows=0
+HPFUN202	Fundamentals	HPFUN202 Media List.docx	claude=true	tables=1	markerRows=0
+HPFUN203	Fundamentals	HPFUN203 Media List.docx	claude=true	tables=1	markerRows=0
+HPFUN301	Fundamentals	HPFUN301 Media List.docx	claude=true	tables=1	markerRows=0
+HPFUN302	Fundamentals	HPFUN302 Media List.docx	claude=true	tables=1	markerRows=0
+HPFUN303	Fundamentals	HPFUN303 Media List.docx	claude=true	tables=1	markerRows=0
+HPFUN401	Fundamentals	HPFUN401 Media List.docx	claude=true	tables=1	markerRows=0
+HPFUN402	Fundamentals	HPFUN402 Media List.docx	claude=true	tables=1	markerRows=0
+HPFUN403	Fundamentals	HPFUN403 Media List.docx	claude=true	tables=1	markerRows=0
+HPFUN901	Fundamentals	HPFUN901 Media List.docx	claude=true	tables=1	markerRows=0
+HPFUN902	Fundamentals	HPFUN902 Media List.docx	claude=true	tables=1	markerRows=0
+HPFUN903	Fundamentals	HPFUN903 Media List.docx	claude=true	tables=1	markerRows=0
+JPFUN01	Fundamentals	JPFUN01 Media List.docx	claude=true	tables=1	markerRows=0
+JPFUN02	Fundamentals	JPFUN02 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN105	Fundamentals	WJFUN105 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN106	Fundamentals	WJFUN106 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN107	Fundamentals	WJFUN107 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN108	Fundamentals	WJFUN108 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN109	Fundamentals	WJFUN109 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN110	Fundamentals	WJFUN110 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN112	Fundamentals	WJFUN112 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN113	Fundamentals	WJFUN113 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN115	Fundamentals	WJFUN115 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN116	Fundamentals	WJFUN116 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN205	Fundamentals	WJFUN205 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN206	Fundamentals	WJFUN206 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN208	Fundamentals	WJFUN208 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN210	Fundamentals	WJFUN210 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN211	Fundamentals	WJFUN211 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN212	Fundamentals	WJFUN212 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN304	Fundamentals	WJFUN304 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN305	Fundamentals	WJFUN305 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN306	Fundamentals	WJFUN306 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN307	Fundamentals	WJFUN307 Media List.docx	claude=true	tables=1	markerRows=0
+WJFUN308	Fundamentals	WJFUN308 Media List.docx	claude=true	tables=1	markerRows=0
+XFUN02	Fundamentals	XFUN02 Media List.docx	claude=true	tables=1	markerRows=0
+PMT101	Bilingual	PMT101 Media List.docx	claude=false	tables=1	markerRows=0
+PMT101	Bilingual	PMT101 Writers Template.docx	claude=false	tables=5	markerRows=20
+PNR101	Bilingual	PNR101 Media List.docx	claude=true	tables=1	markerRows=0
+PNR102	Bilingual	PNR102 Media List.docx	claude=true	tables=1	markerRows=0
+PNR104	Bilingual	PNR104 Media List.docx	claude=true	tables=1	markerRows=0
+TRR102	Bilingual	TRR102 Media List.docx	claude=true	tables=1	markerRows=0
+TRR103	Bilingual	TRR103 Media List.docx	claude=true	tables=1	markerRows=0
+TRR104	Bilingual	TRR104 Media List.docx	claude=true	tables=1	markerRows=0
+TRR105	Bilingual	TRR105 Media List.docx	claude=true	tables=1	markerRows=0
+TRR106	Bilingual	TRR106 Media List.docx	claude=true	tables=1	markerRows=0
+TRR107	Bilingual	TRR107 Media List.docx	claude=true	tables=1	markerRows=0
+TRR108	Bilingual	TRR108 Media List.docx	claude=true	tables=1	markerRows=0
+TRR109	Bilingual	TRR109 Media List.docx	claude=true	tables=1	markerRows=0
+TRR110	Bilingual	TRR110 Media List.docx	claude=false	tables=1	markerRows=0
+TRR111	Bilingual	TRR111 Media List.docx	claude=true	tables=1	markerRows=0
+TRR112	Bilingual	TRR112 Media List.docx	claude=true	tables=1	markerRows=0
+TRR113	Bilingual	TRR113 Media List.docx	claude=true	tables=1	markerRows=0
+TRR114	Bilingual	TRR114 Media List.docx	claude=true	tables=1	markerRows=0
+TRR115	Bilingual	TRR115 Writers Template.docx	claude=true	tables=22	markerRows=1
+TRR116	Bilingual	TRR116 Media List.docx	claude=true	tables=1	markerRows=0
+TRR203	Bilingual	TRR203 Media List.docx	claude=true	tables=1	markerRows=0
+TRR301	Bilingual	TRR301 Media List.docx	claude=true	tables=1	markerRows=0
+TRR304	Bilingual	TRR304 Media List.docx	claude=true	tables=1	markerRows=0

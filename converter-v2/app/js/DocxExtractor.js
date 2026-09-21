@@ -570,6 +570,104 @@ class DocxExtractor {
 	};
 
 	/**
+	 * ROUND 423 (session 31) — PAGE-BOUNDARY MARKERS TYPED AS TABLE ROWS ARE
+	 * PARAGRAPHS (PMT101, the MTK "Te Aka Taumatua" template written as ONE
+	 * table).
+	 *
+	 * WHY: PNR107 and the other MTK bilingual modules carry [MODULE CONTENT:
+	 * PAGE 1] / [END OF PAGE] / [LESSON N CONTENT] / [END OF DROP DOWN MENU]
+	 * as paragraphs BETWEEN one English ║ Māori table per page. PMT101's
+	 * writer kept the whole module in one table and typed those markers as
+	 * rows (the red span alone in the left cell, the right cell empty), so
+	 * IsContentStart — paragraphs only — never saw a content start and the
+	 * module was refused as "no Writers Template". Splitting the table at
+	 * each such row and emitting the marker as a paraBlock turns PMT101's
+	 * block stream into exactly PNR107's shape; recognition, the trim, the
+	 * r212 drop-down rescue, the page splitter and the bilingual handlers
+	 * then run unchanged.
+	 *
+	 * SCOPE (measured, outputs/_s31_r1_rowmarkers.cjs, all 545 docx-bearing
+	 * gold modules): a row qualifies only when EVERY non-empty cell is
+	 * exactly one red span resolving to a promote_tags canonical and nothing
+	 * else. That fires on PMT101 alone (9 rows). The [TITLE BAR] ║ [TITLE BAR]
+	 * rows of the 19 MTK modules are content rows and "title bar" is not a
+	 * promote tag; a marker beside other cell text (ENGS202's page-opener
+	 * table) never qualifies. Every untouched document gets the SAME array
+	 * back — a no-op by construction.
+	 *
+	 * Data: Input_Doc_Rules.content_start.table_row_boundary_markers.
+	 * Env: ROWMARKER_OFF.
+	 *
+	 * @param {Object[]} blocks - extracted blocks (tables carry .rows / .rowLinks)
+	 * @param {TagNormaliser|null} normaliser - resolves the cell spans (required)
+	 * @param {ConversionRun|null} run - note surfacing
+	 * @returns {Object[]} the same array when nothing qualifies, else a new list
+	 */
+	static PromoteTableRowMarkers(blocks, normaliser, run = null) {
+		const cfg = DataService?.Data?.InputDocRules?.content_start?.table_row_boundary_markers;
+		if (!normaliser || !cfg || cfg.enabled === false || !Array.isArray(blocks)) return blocks;
+		const envKey = cfg.env || "ROWMARKER_OFF";
+		if (typeof process !== "undefined" && process.env && process.env[envKey]) return blocks;
+		const tags = new Set(cfg.promote_tags ?? []);
+		if (!tags.size || !blocks.some((b) => b && b.kind === "table")) return blocks;
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const tm = DataService.Data.InputDocRules.table_markers;
+		// the marker text of a qualifying row, else null
+		const markerOf = (cells) => {
+			let text = null;
+			for (const c of cells) {
+				const s = String(c ?? "").trim();
+				if (!s) continue;
+				const spans = [...s.matchAll(RED)];
+				if (spans.length !== 1 || s.replace(RED, "").replace(/[\s*_]/g, "")) return null;
+				const primary = normaliser.Parse(spans[0][1]).primary;
+				if (!primary || !tags.has(primary.tag)) return null;
+				text = text ?? s;
+			}
+			return text;
+		};
+		// a slice of the table between two markers; null when every row in the
+		// slice is blank (the writer's spacer rows around a marker are not
+		// content — emitted as a table they would stand between an [END OF
+		// PAGE] and the next [LESSON N CONTENT] and trip the splitter's AR-5)
+		const subTable = (src, from, to) => {
+			const rows = src.rows.slice(from, to);
+			if (!rows.some((cells) => (cells ?? []).some((c) => String(c ?? "").trim()))) return null;
+			const rowLinks = (src.rowLinks ?? []).slice(from, to);
+			const blk = {
+				kind: "table", rows, rowLinks, links: rowLinks.flat(), wtPage: src.wtPage,
+				text: [tm.open, ...rows.map((cells) => `${tm.row_prefix}${cells.join(tm.column_separator)}`), tm.close].join("\n"),
+			};
+			if (src.cellMarks) blk.cellMarks = src.cellMarks.slice(from, to);
+			return blk;
+		};
+		let promoted = 0;
+		const out = [];
+		for (const b of blocks) {
+			if (!b || b.kind !== "table" || !Array.isArray(b.rows)) { out.push(b); continue; }
+			const cuts = [];
+			b.rows.forEach((cells, i) => {
+				const text = Array.isArray(cells) ? markerOf(cells) : null;
+				if (text) cuts.push([i, text]);
+			});
+			if (!cuts.length) { out.push(b); continue; }
+			let from = 0;
+			const push = (blk) => { if (blk) out.push(blk); };
+			for (const [i, text] of cuts) {
+				if (i > from) push(subTable(b, from, i));
+				out.push({ kind: "para", text, links: [], wtPage: b.wtPage, list: "", listLevel: 0 });
+				from = i + 1;
+				promoted++;
+			}
+			if (from < b.rows.length) push(subTable(b, from, b.rows.length));
+		}
+		if (!promoted) return blocks;
+		run?.AddNote("info", "DocxExtractor",
+			`${promoted} page-boundary marker(s) typed as table rows promoted to paragraphs — the one-table MTK template (round 423; env ${envKey} reverts).`);
+		return out;
+	};
+
+	/**
 	 * Is this document a Writers Template at all? True when any block is a
 	 * recognised content start, OR the fallback applies (a red span
 	 * resolving to a structural directive — bare-[H1] openers).

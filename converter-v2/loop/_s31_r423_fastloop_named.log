@@ -1,0 +1,24 @@
+re-scoring 13 affected module(s): ART1006 BLL141 BLL142 CEDK102 CEDO501 MXFU202 OSAI201 OSOH101 PMT101 PNR104 TEFUN03 XDLS912 XWHA01
+baseline taken: 2026-09-21T06:18:10Z
+(unaffected modules unchanged by construction — corpus aggregate moves by exactly the affected-set delta)
+
+  metric                                 baseline        new     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  54.21      54.17     -0.04  REGRESSED
+  skeleton pages >=50%                       1441       1442        +1  IMPROVED
+  skeleton pages >=75%                        238        238         0  HELD
+  compare_structure exact chain             14170      14255       +85  IMPROVED
+  compare_structure EXTRA container           186        186         0  HELD
+  compare_structure missing container         683        689        +6  REGRESSED
+  body_compare ANY breakdown                  247        248        +1  REGRESSED
+  defect structurally-clean %               98.27      98.28     +0.00  IMPROVED
+  literal-[tag] leak (occ)                     73         73         0  HELD
+  literal-[tag] leak (pages)                   44         44         0  HELD
+
+  context (no pass/fail): sk_pages: 2349->2353  cs_matched: 16458->16557  body_pages: 2548->2552  df_total: 2548->2552  df_clean: 2504->2508
+
+RESULT: MOVED, ACCEPTED AS NAMED — skeleton SCAFFOLD mean %, compare_structure missing container, body_compare ANY breakdown
+        Every mover was named on the command line and must be decomposed in the
+        round's changelog entry (which page, which mechanism). Recorded in the manifest.
+[commit] fast-loop baseline PATCHED (2353 pages) + content manifest refreshed — this is now the shipped state the next inner loop measures against.
+[commit] recorded accepted named movement: skeleton SCAFFOLD mean %, compare_structure missing container, body_compare ANY breakdown
