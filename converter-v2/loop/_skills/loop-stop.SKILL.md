@@ -1,0 +1,5 @@
+---
+description: Stop the running PageForge loop cleanly at the next logical point (lets running work finish, saves LOOP_STATE.md, commits, reports). Chris types /loop-stop in the running session.
+disable-model-invocation: true
+---
+STOP THE LOOP at the next logical point, without interrupting anything already running: let any regeneration, gate or verifier that is in progress finish, then do not start any new round, class or rebuild. If the current round's remaining steps can be finished and proven in under 10 minutes, finish and commit the round; otherwise switch its toggle OFF so the corpus is back to its last proven state, and leave its work uncommitted-but-described. Then: (1) record every decision I gave you this session under "## Decisions from Chris" in LOOP_STATE.md; (2) update LOOP_STATE.md with exactly where the loop is — round, class, step, shipped / declined / blocked, anything uncommitted — and end it with a "Next session starts with:" line; (3) commit everything finished in pageforge-site; (4) give me the §5 plain-English report with the push block; (5) confirm in one sentence that it is safe to close this session.
