@@ -1,0 +1,820 @@
+GER1002: identical 3 / changed 0
+GEWHA: identical 1 / changed 0
+HES1002: identical 7 / changed 0
+HES1003: identical 9 / changed 0
+HES1004: identical 5 / changed 0
+HES1005: identical 9 / changed 0
+HES1006: identical 8 / changed 0
+HES1007: identical 10 / changed 0
+HIS1001: identical 8 / changed 0
+HIS1002: identical 21 / changed 0
+HIS1003: identical 11 / changed 0
+HIS1004: identical 11 / changed 0
+HIS1005: identical 15 / changed 0
+HIS1006: identical 15 / changed 0
+HIS1007: identical 7 / changed 0
+HIS1008: identical 12 / changed 0
+HPFUN101: identical 1 / changed 0
+HPFUN102: identical 1 / changed 0
+HPFUN103: identical 1 / changed 0
+HPFUN201: identical 1 / changed 0
+HPFUN202: identical 1 / changed 0
+HPFUN203: identical 1 / changed 0
+HPFUN301: identical 1 / changed 0
+HPFUN302: identical 1 / changed 0
+HPFUN303: identical 1 / changed 0
+HPFUN401: identical 1 / changed 0
+HPFUN402: identical 1 / changed 0
+HPFUN403: identical 1 / changed 0
+HPFUN901: identical 1 / changed 0
+HPFUN902: identical 1 / changed 0
+HPFUN903: identical 1 / changed 0
+HPRE203: identical 8 / changed 0
+  ~ JPFUN01_0_0.html: -63 +63
+     - <div class="tab-pane"><p>I can:</p><p>• select the right greeting and bow appropriately</p><p>• choose the cor
+     - <p>In Japanese, the way you say someone’s name is really important. It shows how you respect other people and 
+     - <p>[san], 〜せんせい</p>
+     - <p>[sensei], 〜くん</p>
+     - <p>] [kun], or 〜ちゃん</p>
+     - <li>and how adding お</li>
+     - <p>[o] (like in おなまえ</p>
+     - <li>❌ わたしはジョンさんです。</li>
+     - <li>❌ せんせいトムです。</li>
+     - <div class="accContent"><p>• When you introduce yourself don’t use the honorific for yourself. Just say わたしはジョ
+     - <li>When you are talking about a teacher, do not use their first name. ‘Sensei’ comes after the surname. In th
+     - <h3>Using the お[o] to be more polite.</h3>
+     - <p>In Japanese, small changes to words can show respect and politeness. One way this happens is by adding お [o
+     - <li>なまえ (namae) → おなまえ (onamae) = your name (polite)</li>
+     - <p>Adding お [o] makes the word more respectful. It shows that you want to speak politely. In Japanese culture,
+     - <p>You will often hear お [o] in polite questions, like when asking someone’s name. These small language choice
+     - <div class="accHead"><h4>More examples of お [o] in polite language</h4></div>
+     - <td>You will often hear <b>お</b> [o] added to everyday words to make them more polite when talking about someo
+     - <td>• なまえ (namae) →</td>
+     - <td>おなまえ (onamae)</td>
+     - <td>• ちゃ (cha) →</td>
+     - <td>おちゃ (ocha)</td>
+     - <td>• みず (mizu)</td>
+     - <td>おみず （omizu)</td>
+     - <td>Other times you will see <b>お</b> [o] in set polite expressions</td>
+     - <td>• おはよう ございます(ohayou gozaimsu)</td>
+     - <td>• おねがいします / (onegai shimasu)</td>
+     - <td>• おつかれさまです / (otsukaresama desu)</td>
+     - <p>Another important milestone is turning 20 (はたち, hatachi), when young people celebrate becoming adults. The 
+     - <p>For example, if someone compliments you by saying 「日本語がじょうずですね」</p>
+     - <p>Nihongo ga jouzu desu ne meaning ‘Your Japanese is skillful’, an appropriate or common response is 「いいえ、まだま
+     - <p>Person A: 日本ごがじょうずですね</p>
+     - <p>Person B1: いいえ、まだまだです</p>
+     - <p>B2: ありがとうございます</p>
+     - <p>B3: はい、じょうずです</p>
+     - <td>いいえ、まだまだです。 / [Hinfo trigger] Iie, madamada desu.</td>
+     - <td>ありがとうございます。 / [Hinfo trigger] Arigatou gozaimasu.</td>
+     - <td>はい、（とても）じょうずです。 / [Hinfo trigger] Hai (totemo) jouzu desu.</td>
+     - <td>わたしはちょっとできます。 / [Hinfo trigger] Watashi wa chotto dekimasu.</td>
+     - <td>ちょっとだけできます。 / [Hinfo trigger] Chotto dake dekimasu.</td>
+     - … 23 more removed
+     + <div class="tab-pane"><p>I can:</p><p>• select the right greeting and bow appropriately</p><p>• choose the cor
+     + <p>In Japanese, the way you say someone’s name is really important. It shows how you respect other people and 
+     + <p>[san], 〜<span class="jp-text">せんせい</span></p>
+     + <p>[sensei], 〜<span class="jp-text">くん</span></p>
+     + <p>] [kun], or 〜<span class="jp-text">ちゃん</span></p>
+     + <li>and how adding <span class="jp-text">お</span></li>
+     + <p>[o] (like in <span class="jp-text">おなまえ</span></p>
+     + <li>❌ <span class="jp-text">わたしはジョンさんです。</span></li>
+     + <li>❌ <span class="jp-text">せんせいトムです。</span></li>
+     + <div class="accContent"><p>• When you introduce yourself don’t use the honorific for yourself. Just say <span 
+     + <li>When you are talking about a teacher, do not use their first name. ‘Sensei’ comes after the surname. In th
+     + <h3>Using the <span class="jp-text">お</span>[o] to be more polite.</h3>
+     + <p>In Japanese, small changes to words can show respect and politeness. One way this happens is by adding <spa
+     + <li><span class="jp-text">なまえ</span> (namae) → <span class="jp-text">おなまえ</span> (onamae) = your name (polite)
+     + <p>Adding <span class="jp-text">お</span> [o] makes the word more respectful. It shows that you want to speak p
+     + <p>You will often hear <span class="jp-text">お</span> [o] in polite questions, like when asking someone’s name
+     + <div class="accHead"><h4>More examples of <span class="jp-text">お</span> [o] in polite language</h4></div>
+     + <td>You will often hear <b><span class="jp-text">お</span></b> [o] added to everyday words to make them more po
+     + <td>• <span class="jp-text">なまえ</span> (namae) →</td>
+     + <td><span class="jp-text">おなまえ</span> (onamae)</td>
+     + … 43 more added
+JPFUN01: identical 0 / changed 1
+  ~ JPFUN02_0_0.html: -78 +78
+     - <td>はじめまして。よろしくおねがいします。
+     - Nice to meet you. Please take care of me. / おはようございます。
+     - Good morning. / こんにちは！
+     - Hello / Good afternoon! / こんばんは。
+     - Good evening. / きょうもよろしくおねがいします。
+     - <td>すみません、もういちど おねがいします。
+     - Once more please. / ゆっくりはなしてください。
+     - Please speak slowly. / どういういみですか。
+     - What does that mean? / にほんごでなんといいますか。
+     - How do you say this in Japanese? / えいごでなんといいますか。 / Eigo de nan to iimasu ka? / How do you say this in English?
+     - <td>はい、わかりました。
+     - Yes, I understood. / いいえ、まだわかりません。
+     - No, I don’t understand yet. / はい、おわりました。
+     - Yes, done / finished. / いいえ、まだおわってません。
+     - No, not yet done / finished. / ちょっとまってください。
+     - Please wait a moment. / しつもんがあります。
+     - I have a question. / すみません
+     - Excuse me / そうですね。 / Sou desu ne. / That’s right / なるほど！ / Naruhodo! / I see/ that makes sense!</td>
+     - <td><b>しあわせです。</b> / Shiawase desu. / I’m happy. / <b>おもしろいです。</b>
+     - That’s interesting. / <b>むずかしいです。</b>
+     - It’s difficult. / <b>すごいですね。</b>
+     - That’s amazing. / ほんとうですか。
+     - Really? / たのしかったです。 / <i>Tanoshikatta desu.</i> / It was enjoyable. / [Video] <a href="https://www.youtube.com
+     - <td><b>ありがとうございました。</b>
+     - Thank you very much. / <b>またらいしゅう。</b>
+     - See you next week. / <b>またあした。よろしくおねがいします。</b> / <i>Mata ashita. Yoroshiku onegaishimasu.</i>
+     - See you tomorrow, please take care of me again. / <b>これからもがんばります。</b>
+     - <th> [Back] こんばんは！<i>Konbanwa!</i></th>
+     - <td> [Back] ゆっくりはなしてください<b>。</b><i>Yukkuri hanashite kudasai.</i></td>
+     - <td> [Back] Happy はにほんごでなんといいますか。Happy wa <i>Nihongo de nan to iimasu ka?</i></td>
+     - <td> [Back] ちょっとまってください。<i>Chotto matte kudasai.</i></td>
+     - <td> [Back] ほんとうですか。<i>Hontou desu ka?</i></td>
+     - <td> [Back] これからもがんばります。<i>Kore kara mo ganbarimasu.</i></td>
+     - <td>1. すみません、もう いちど おねがいします。 / Sumimasen, mou ichido onegaishimasu</td>
+     - <td>2. もう すこし ゆっくり いって ください。 / Mou sukoshi yukkuri itte kudasai</td>
+     - <td>3. ちょっと まって ください。 / Chotto matte kudasai</td>
+     - <td>4. （Noun）ですか？ / (Noun) desu ka ?</td>
+     - <td>5. （English word）は にほんご で なん と いいます か？ / (English word) wa Nihongo de nan to iimasu ka</td>
+     - <td>6. えっと。。。 / Etto….</td>
+     - <td>7. （Adjective）です ね！ かわいい です ね。 / (Adjective) desu ne! eg Kawaii desu ne.</td>
+     - … 38 more removed
+     + <td><span class="jp-text">はじめまして。よろしくおねがいします。</span>
+     + Nice to meet you. Please take care of me. / <span class="jp-text">おはようございます。</span>
+     + Good morning. / <span class="jp-text">こんにちは！</span>
+     + Hello / Good afternoon! / <span class="jp-text">こんばんは。</span>
+     + Good evening. / <span class="jp-text">きょうもよろしくおねがいします。</span>
+     + <td><span class="jp-text">すみません、もういちど おねがいします。</span>
+     + Once more please. / <span class="jp-text">ゆっくりはなしてください。</span>
+     + Please speak slowly. / <span class="jp-text">どういういみですか。</span>
+     + What does that mean? / <span class="jp-text">にほんごでなんといいますか。</span>
+     + How do you say this in Japanese? / <span class="jp-text">えいごでなんといいますか。</span> / Eigo de nan to iimasu ka? / Ho
+     + <td><span class="jp-text">はい、わかりました。</span>
+     + Yes, I understood. / <span class="jp-text">いいえ、まだわかりません。</span>
+     + No, I don’t understand yet. / <span class="jp-text">はい、おわりました。</span>
+     + Yes, done / finished. / <span class="jp-text">いいえ、まだおわってません。</span>
+     + No, not yet done / finished. / <span class="jp-text">ちょっとまってください。</span>
+     + Please wait a moment. / <span class="jp-text">しつもんがあります。</span>
+     + I have a question. / <span class="jp-text">すみません</span>
+     + Excuse me / <span class="jp-text">そうですね。</span> / Sou desu ne. / That’s right / <span class="jp-text">なるほど！</s
+     + <td><b><span class="jp-text">しあわせです。</span></b> / Shiawase desu. / I’m happy. / <b><span class="jp-text">おもしろい
+     + That’s interesting. / <b><span class="jp-text">むずかしいです。</span></b>
+     + … 58 more added
+JPFUN02: identical 0 / changed 1
+  ~ JPN1004_0_0.html: -14 +14
+     - <h1><span>JAP1004 School Life in Japan 日本の学校のせいかつ</span></h1>
+     - <li>Focus on form: grammar patterns and sentence order: permission, verbs of wearing, reasons using から, positi
+     - <li>identify, describe and explain the cultural practices and customs observed in a Japanese school – せんぱい・こうは
+     - <h3>Tuakana Teina and the せんぱい・こうはい Relationship</h3>
+     - <p>The tuakana teina relationship is like a buddy system. It encourages learning from each other. This means y
+     - <h3>: Activity 1 しつもん Questions</h3>
+     - <li>せんぱい・こうはい relationship describes a family relationship. F</li>
+     - <li>せんぱい means someone who is admired or looked up to (love interest). F</li>
+     - <li>せんぱい means someone who is a member of a school, organisation or company <b>before</b> you. T</li>
+     - <li>せんぱい can only be used with males. F</li>
+     - <li>「先輩」せん in kanji means ‘before’ and ぱい in kanji means ‘have the same ambition’. T</li>
+     - <li>こうはい is the opposite meaning of せんぱい。 T</li>
+     - <li>I can call someone by their name followed by こうはい e.g. なお こうはい！ F</li>
+     - <li>せんぱい is overly used in anime. T</li>
+     + <h1><span>JAP1004 School Life in Japan <span class="jp-text">日本の学校のせいかつ</span></span></h1>
+     + <li>Focus on form: grammar patterns and sentence order: permission, verbs of wearing, reasons using <span clas
+     + <li>identify, describe and explain the cultural practices and customs observed in a Japanese school – <span cl
+     + <h3>Tuakana Teina and the <span class="jp-text">せんぱい・こうはい</span> Relationship</h3>
+     + <p>The tuakana teina relationship is like a buddy system. It encourages learning from each other. This means y
+     + <h3>: Activity 1 <span class="jp-text">しつもん </span>Questions</h3>
+     + <li><span class="jp-text">せんぱい・こうはい</span> relationship describes a family relationship. F</li>
+     + <li><span class="jp-text">せんぱい </span>means someone who is admired or looked up to (love interest). F</li>
+     + <li><span class="jp-text">せんぱい</span> means someone who is a member of a school, organisation or company <b>be
+     + <li><span class="jp-text">せんぱい</span> can only be used with males. F</li>
+     + <li><span class="jp-text">「先輩」せん </span>in kanji means ‘before’ and <span class="jp-text">ぱい</span> in kanji m
+     + <li><span class="jp-text">こうはい </span>is the opposite meaning of <span class="jp-text">せんぱい。</span> T</li>
+     + <li>I can call someone by their name followed by <span class="jp-text">こうはい </span>e.g. <span class="jp-text">
+     + <li><span class="jp-text">せんぱい </span>is overly used in anime. T</li>
+  ~ JPN1004_1_0.html: -106 +106
+     - <h1><span>１日目 （いちにちめ）DAY 1</span></h1>
+     - <h3>Day 1 Lesson 1 Title: 1日目 日本の学校 Japanese School</h3>
+     - <a href="" target="_blank"><div class="button">: ききましょう！Listen to Track 1:</div></a>
+     - <h3>たんご VOCABULARY</h3>
+     - <p>どうぞよろしく Please treat me well/I am pleased/“I’m relying on you”</p>
+     - <p>こちらこそ My pleasure</p>
+     - <p>はじまります Starts</p>
+     - <p>ちがいます Is different to</p>
+     - <p>いちがっき Term one</p>
+     - <p>なるほど I see/Of course</p>
+     - <p>たいへん！！ That’s terrible/tough</p>
+     - <p>たとえば For example,</p>
+     - <p>とか …. and so on…</p>
+     - <p>おくれてはいけません。 You are not allowed to be late</p>
+     - <p>ほうそう Wrapping, packaging</p>
+     - <p>ごみ Rubbish</p>
+     - <p>しんじられない Unbelievable!！</p>
+     - <p>つくって くれます Makes it (for us)</p>
+     - <p>じぶん の One’s own</p>
+     - <p>めんどくさい Bothersome/hōhā</p>
+     - <p>ごぜんちゅう Morning time</p>
+     - <p>ばいてん Kiosk</p>
+     - <p>しょくどう Cafeteria</p>
+     - <p>ジャンクフード Junk food</p>
+     - <p>ごぜんちゅう Morning time</p>
+     - <p>そうじ Clean</p>
+     - <p class="captionText">高校生（こうこうせい） は じてんしゃ で 学校（がっこう） に 行きます。</p>
+     - <p class="captionText">高校生（こうこうせい）の おべんとう。A high school student&#39;s lunch.</p>
+     - <p>KAZU あしたから アナヘラさんは わたしの どうきゅうせいに なります ね。</p>
+     - <p>ANAHERA <b>どうぞよろしく</b>。”Please treat me well”/I am pleased・ かず せんぱい！(laughing)</p>
+     - <p>KAZU <b>こちらこそ</b>。My pleasure.</p>
+     - <p>ANAHERA 学校 （がっこう）は なんじ から はじまります か。</p>
+     - <p>KAZU 八時半（はちじはん） に はじまります。</p>
+     - <p>ANAHERA 八時半（はちじはん)???!!! はやい ですね。</p>
+     - <p>KAZU そう ですか? <b>はやくない ですよ</b>。 it’s not so early。 わたしと いっしょに じてんしゃ で</p>
+     - <p>行きましょう（いきましょう）。</p>
+     - <p>ANAHERA いい ですよ。 みんなは じてんしゃ で 行きます （いきます）か。</p>
+     - <p>KAZU ちがいます。 友だち （ともだち）は バス や でんしゃ で 行きます（いきます）。</p>
+     - <p>ANAHERA そうですか。 ええと、 かずさん の 学校（がっこう） で は テスト は <b>おおい</b>lots of/many ですか。</p>
+     - <p>KAZU いちがっき に いっかい。。。。</p>
+     - … 66 more removed
+     + <h1><span>１<span class="jp-text">日目 （いちにちめ）</span>DAY 1</span></h1>
+     + <h3>Day 1 Lesson 1 Title: 1<span class="jp-text">日目 日本の学校 </span>Japanese School</h3>
+     + <a href="" target="_blank"><div class="button">: <span class="jp-text">ききましょう！</span>Listen to Track 1:</div><
+     + <h3><span class="jp-text">たんご </span>VOCABULARY</h3>
+     + <p><span class="jp-text">どうぞよろしく</span> Please treat me well/I am pleased/“I’m relying on you”</p>
+     + <p><span class="jp-text">こちらこそ</span> My pleasure</p>
+     + <p><span class="jp-text">はじまります</span> Starts</p>
+     + <p><span class="jp-text">ちがいます</span> Is different to</p>
+     + <p><span class="jp-text">いちがっき</span> Term one</p>
+     + <p><span class="jp-text">なるほど</span> I see/Of course</p>
+     + <p><span class="jp-text">たいへん！！</span> That’s terrible/tough</p>
+     + <p><span class="jp-text">たとえば</span> For example,</p>
+     + <p><span class="jp-text">とか</span> …. and so on…</p>
+     + <p><span class="jp-text">おくれてはいけません。</span> You are not allowed to be late</p>
+     + <p><span class="jp-text">ほうそう</span> Wrapping, packaging</p>
+     + <p><span class="jp-text">ごみ</span> Rubbish</p>
+     + <p><span class="jp-text">しんじられない</span> Unbelievable!！</p>
+     + <p><span class="jp-text">つくって くれます</span> Makes it (for us)</p>
+     + <p><span class="jp-text">じぶん の</span> One’s own</p>
+     + <p><span class="jp-text">めんどくさい</span> Bothersome/hōhā</p>
+     + … 86 more added
+  ~ JPN1004_2_0.html: -120 +120
+     - <h1><span>2日目 （ふつかめ）DAY 2</span></h1>
+     - <li>reading and writing the new kanji: 学、校、先、生、中、小、大、行、私、高、友</li>
+     - <h3>Day 2 Lesson 2 Title: ２日目 学校（がっこう）の じかんわり School Timetable</h3>
+     - <p><b>高校（こうこう）の一日（いちにち）のスケジュール</b></p>
+     - <th>じかんめ</th>
+     - <th>じかん</th>
+     - <th>月</th>
+     - <th>火</th>
+     - <th>水</th>
+     - <th>木</th>
+     - <th>金</th>
+     - <td><b>ホームルーム</b></td>
+     - <td>れきし</td>
+     - <td>日本語</td>
+     - <td>すうがく</td>
+     - <td>こてん</td>
+     - <td>げんだいぶん</td>
+     - <td>すうがく</td>
+     - <td>たいいく</td>
+     - <td>れきし</td>
+     - <td>すうがく</td>
+     - <td>すうがく</td>
+     - <td>日本し</td>
+     - <td>げんだいぶん</td>
+     - <td>えいご</td>
+     - <td>えいご</td>
+     - <td>れきし</td>
+     - <td>こてん</td>
+     - <td>ちがく</td>
+     - <td>じょうほう</td>
+     - <td>ほけん</td>
+     - <td>じょうほう</td>
+     - <td><b>ひるやすみ</b></td>
+     - <td>げんだいぶん</td>
+     - <td>すうがく</td>
+     - <td>日本し</td>
+     - <td>日本語</td>
+     - <td>たいいく</td>
+     - <td>えいご</td>
+     - <td>こてん</td>
+     - … 80 more removed
+     + <h1><span>2<span class="jp-text">日目 （ふつかめ）</span>DAY 2</span></h1>
+     + <li>reading and writing the new kanji: <span class="jp-text">学、校、先、生、中、小、大、行、私、高、友</span></li>
+     + <h3>Day 2 Lesson 2 Title: ２<span class="jp-text">日目 学校（がっこう）の じかんわり </span>School Timetable</h3>
+     + <p><b><span class="jp-text">高校（こうこう）の一日（いちにち）のスケジュール</span></b></p>
+     + <th><span class="jp-text">じかんめ</span></th>
+     + <th><span class="jp-text">じかん</span></th>
+     + <th><span class="jp-text">月</span></th>
+     + <th><span class="jp-text">火</span></th>
+     + <th><span class="jp-text">水</span></th>
+     + <th><span class="jp-text">木</span></th>
+     + <th><span class="jp-text">金</span></th>
+     + <td><b><span class="jp-text">ホームルーム</span></b></td>
+     + <td><span class="jp-text">れきし</span></td>
+     + <td><span class="jp-text">日本語</span></td>
+     + <td><span class="jp-text">すうがく</span></td>
+     + <td><span class="jp-text">こてん</span></td>
+     + <td><span class="jp-text">げんだいぶん</span></td>
+     + <td><span class="jp-text">すうがく</span></td>
+     + <td><span class="jp-text">たいいく</span></td>
+     + <td><span class="jp-text">れきし</span></td>
+     + … 100 more added
+  ~ JPN1004_3_0.html: -89 +89
+     - <h1><span>3日目 （みっかめ）DAY ３</span></h1>
+     - <h3>Day 3 Lesson 3 Title: 3日目 せいふく School uniform</h3>
+     - <p>えみさん と けんじさん は せいふく を きて います。Emi and Kenji are wearing the school uniform. Note: they are wearing indoor sh
+     - <p>: Activity 3A ききましょう！ Listening</p>
+     - <p>: ききましょう！Listen to Track 2:</p>
+     - <p><b>KENJI:</b> ワイシャツ を きます。 ネクタイ を しめます。 ズボン を はきます。あおい ブレザー を きます。... パソコン を もちます。しろい <b>うわばき indoor shoes<
+     - <p><b>EMI:</b> しろい ブラウス を きます。 むらさき の ネクタイ を しめます。 ニットベスト を きます。 ネイビーと むらさき チェック スカート を はきます。 しろい くつした を はきます。
+     - <p>しろい <b>うわばき</b> <b>indoor shoes</b> も はきます。 パソコン を もちます。</p>
+     - <h3>学校（がっこう） の せいふく School uniform</h3>
+     - <th> [Caption] 小学生（しょうがくせい）の せいふく / Primary school uniform (private school).</th>
+     - <td> [Caption] 中学生（ちゅうがくせい）の せいふく / Junior high school uniform.</td>
+     - <td> [Caption] 高校生（こうこうせい）の せいふく / High school uniform.</td>
+     - <td> [Caption] 学校（がっこう） の いりぐち で くつを ぬぎます。うわばき を はきます。Take off shoes at the school entrance. Put on indoor sho
+     - <td> [Caption] せいふく の かばん も あります！ There is also a bag as part of the uniform!</td>
+     - <h3>ジェンダーレス せいふく Genderless unoforms</h3>
+     - <h3>: Activity 3B ジェンダーレス せいふく の トレンド Genderless uniform trends</h3>
+     - <div class="accContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1437120630" alt="
+     - <div class="accContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-181153397" alt=""
+     - <div class="accContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1412656568" alt="
+     - <div class="accContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1392944438" alt="
+     - <div class="accContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-498252412" alt=""
+     - <div class="accContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1160178983" alt="
+     - <p>: Activity 3C Joining Sentences using the て form of the verb</p>
+     - <p>Join these pairs of sentences together using the <b>て</b> form of the first verb and ～<b>て います</b> for the 
+     - <li>ブラウスを きます。 ズボン を はきます。</li>
+     - <p>ブラウスを きて、 ズボン を はいて います。 I am wearing a blouse and trousers/pants.</p>
+     - <li>くつした を はきます。 あおい くつ を はきます。</li>
+     - <p>くつした を はいて、 あおい くつ を はいて います。 I am wearing socks and blue shoes.</p>
+     - <li>せいふく を きます 。 ぼうし を かぶります。</li>
+     - <p>せいふく を きて、 ぼうし を かぶって います。 I am wearing (my) uniform and a hat.</p>
+     - <li>ネクタイを しめます。 ワイシャツを きます。</li>
+     - <p>ネクタイを しめて、ワイシャツを きて います。 I am wearing a necktie and a white shirt.</p>
+     - <li>めがね を かけます。 バッジ を つけます。</li>
+     - <p>めがね を かけて、 バッジ を つけて います。 I am wearing glasses and a badge.</p>
+     - <li>くつを ぬぎます。 スリッパを はきます。</li>
+     - <p>くつを ぬいで 、スリッパ を はいて います。 I am taking off my shoes and putting on some slippers.</p>
+     - <td><b>おくれて</b> be late は いけません。</td>
+     - <td>あさ に <b>学校（がっこう）までに</b> until school スニーカーを はいて も いい です。</td>
+     - <td><b>けしょう</b> makeup を して は いけません。</td>
+     - <td>ひるやすみ に <b>きょうしつ の なか で</b> inside the classroom たべて も いいです。</td>
+     - … 49 more removed
+     + <h1><span>3<span class="jp-text">日目 （みっかめ）</span>DAY ３</span></h1>
+     + <h3>Day 3 Lesson 3 Title: 3<span class="jp-text">日目 せいふく </span>School uniform</h3>
+     + <p><span class="jp-text">えみさん と けんじさん は せいふく を きて います。</span>Emi and Kenji are wearing the school uniform. Not
+     + <p>: Activity 3A <span class="jp-text">ききましょう！ </span>Listening</p>
+     + <p>: <span class="jp-text">ききましょう！</span>Listen to Track 2:</p>
+     + <p><b>KENJI:</b> <span class="jp-text">ワイシャツ を きます。 ネクタイ を しめます。 ズボン を はきます。あおい ブレザー を きます。... パソコン を もちます。しろい
+     + <p><b>EMI:</b> <span class="jp-text">しろい ブラウス を きます。 むらさき の ネクタイ を しめます。 ニットベスト を きます。 ネイビーと むらさき チェック スカート を 
+     + <p><span class="jp-text">しろい </span><b><span class="jp-text">うわばき</span></b> <b>indoor shoes</b> <span class="
+     + <h3><span class="jp-text">学校（がっこう） の せいふく </span>School uniform</h3>
+     + <th> [Caption] <span class="jp-text">小学生（しょうがくせい）の せいふく</span> / Primary school uniform (private school).</th>
+     + <td> [Caption] <span class="jp-text">中学生（ちゅうがくせい）の せいふく</span> / Junior high school uniform.</td>
+     + <td> [Caption] <span class="jp-text">高校生（こうこうせい）の せいふく</span> / High school uniform.</td>
+     + <td> [Caption] <span class="jp-text">学校（がっこう） の いりぐち で くつを ぬぎます。うわばき を はきます。</span>Take off shoes at the schoo
+     + <td> [Caption] <span class="jp-text">せいふく の かばん も あります！ </span>There is also a bag as part of the uniform!</td
+     + <h3><span class="jp-text">ジェンダーレス せいふく</span> Genderless unoforms</h3>
+     + <h3>: Activity 3B <span class="jp-text">ジェンダーレス せいふく の トレンド </span>Genderless uniform trends</h3>
+     + <div class="accContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1437120630" alt="
+     + <div class="accContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-181153397" alt=""
+     + <div class="accContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1412656568" alt="
+     + <div class="accContent"><img class="img-fluid" src="https://placehold.co/600x400?text=iStock-1392944438" alt="
+     + … 69 more added
+  ~ JPN1004_4_0.html: -73 +73
+     - <h1><span>4日目 （よっかめ）DAY 4</span></h1>
+     - <li>Expressing reasons using から</li>
+     - <h3>Day 4 Lesson 4 Title: 4日目 いってらっしゃい！ Have a great day!</h3>
+     - <a href="" target="_blank"><div class="button">: ききましょう！Listen to Track 3:</div></a>
+     - <h3>たんご VOCABULARY</h3>
+     - <p>じゅんび しました。 Prepared</p>
+     - <p>いちばん たいせつな もの Most important thing</p>
+     - <p>みた Casual form of みました</p>
+     - <p>かさ Umbrella</p>
+     - <p>き を つけて Take care</p>
+     - <p>Sachiko： かず！ もう 時間（じかん）です。</p>
+     - <p>Kazu： は～～い！ アナへラさんは？</p>
+     - <p>Anahera： はい！。。。げんかん に まって います。</p>
+     - <p>Sachiko： もう <b>じゅんび しました</b> prepared ね。でも、ちょっと まって！</p>
+     - <p>おべんとう もって います か。</p>
+     - <p>Anahera： ああ、まだ です。。。。。すみません、ありがとう ございます。</p>
+     - <p>Sachiko： <b>いちばん たいせつなもの</b> most important thing です。はい、かず、どうぞ！</p>
+     - <p>かばん に いれて！</p>
+     - <p>Kazu： おかあさん、ありがとう！</p>
+     - <p>Sachiko： てんきよほう <b>みた</b>？ casual form of みました。ごご に あめ が ふります から、 <b>かさ</b> umbrella を もって いって。。。</p>
+     - <p>Anahera： あのう。。。じてんしゃに のりながら、かさ を もちます か。</p>
+     - <p>Kazu： そう です よ。 だいじょうぶ です。 行きましょう！</p>
+     - <p>Anahera： さようなら、 おかあさん。</p>
+     - <p>Sachiko： アナヘラさん「 い ーってー きーまーす。」</p>
+     - <p>Anahera： いーってー きーまーす。</p>
+     - <p>Sachiko: いって らっしゃい！ き を つけて ね!</p>
+     - <p>Kazu： いって きます！</p>
+     - <h4><b>Cultural Point ぶんか の ポイント</b></h4>
+     - <p>Greetings and farewells to and from the house are very important cultural expressions to learn if you don’t
+     - <h3>から Because</h3>
+     - <p>When you want to express a reason you use から. In the conversation you heard Sachiko say：</p>
+     - <p>ごご に あめ が ふります <b>から</b>、 かさ を もって いって。。。</p>
+     - <p>れい Examples:</p>
+     - <li>さむい です <b>から</b>、あたらしい セーター を かいます。</li>
+     - <li>あに は えいが が すき です <b>から</b>、よく いっしょに えいが に 行きます（いきます）。</li>
+     - <p>Note the sentence order: REASON sentence + から + RESULT sentence</p>
+     - <p>The reason goes first in the sentence. Then から, and lastly the result sentence. This is often the opposite 
+     - <p>から is a good way to develop what you want to write or say. Using it means you can expand on basic informati
+     - <h3>なぜ and どうして ASKING ‘WHY?’</h3>
+     - <p>なぜ and どうして both mean ‘why’ and go at the start of a sentence. Be careful, because they are used in very di
+     - … 33 more removed
+     + <h1><span>4<span class="jp-text">日目 （よっかめ）</span>DAY 4</span></h1>
+     + <li>Expressing reasons using <span class="jp-text">から</span></li>
+     + <h3>Day 4 Lesson 4 Title: 4<span class="jp-text">日目 いってらっしゃい！</span> Have a great day!</h3>
+     + <a href="" target="_blank"><div class="button">: <span class="jp-text">ききましょう！</span>Listen to Track 3:</div><
+     + <h3><span class="jp-text">たんご</span> VOCABULARY</h3>
+     + <p><span class="jp-text">じゅんび しました。</span> Prepared</p>
+     + <p><span class="jp-text">いちばん たいせつな もの</span> Most important thing</p>
+     + <p><span class="jp-text">みた</span> Casual form of <span class="jp-text">みました</span></p>
+     + <p><span class="jp-text">かさ</span> Umbrella</p>
+     + <p><span class="jp-text">き を つけて</span> Take care</p>
+     + <p>Sachiko： <span class="jp-text">かず！ もう 時間（じかん）です。</span></p>
+     + <p>Kazu： <span class="jp-text">は～～い！ アナへラさんは？</span></p>
+     + <p>Anahera： <span class="jp-text">はい！。。。げんかん に まって います。</span></p>
+     + <p>Sachiko： <span class="jp-text">もう </span><b><span class="jp-text">じゅんび しました</span></b> prepared <span class
+     + <p><span class="jp-text">おべんとう もって います か。</span></p>
+     + <p>Anahera： <span class="jp-text">ああ、まだ です。。。。。すみません、ありがとう ございます。</span></p>
+     + <p>Sachiko： <b><span class="jp-text">いちばん たいせつなもの</span></b> most important thing <span class="jp-text">です。はい、
+     + <p><span class="jp-text">かばん に いれて！</span></p>
+     + <p>Kazu： <span class="jp-text">おかあさん、ありがとう！</span></p>
+     + <p>Sachiko： <span class="jp-text">てんきよほう </span><b><span class="jp-text">みた</span></b>？ casual form of <span c
+     + … 53 more added
+  ~ JPN1004_5_0.html: -154 +154
+     - <h1><span>5日目 （いつかめ）DAY ５</span></h1>
+     - <li>giving instructions in the classroom using ～てください</li>
+     - <h3>Day 5 Lesson 5 Title: 5日目 じゅぎょう が はじまります。Class begins</h3>
+     - <p>Kazu and Anahera ride their bicycles to school. Anahera is surprised that she doesn’t need a bicycle helmet
+     - <p>! ドキドキ！！Anahera’s heart is thumping!</p>
+     - <a href="" target="_blank"><div class="button">: ききましょう！Listen to Track ４:</div></a>
+     - <h3>たんご VOCABULARY</h3>
+     - <p>きりつ Stand</p>
+     - <p>れい Bow</p>
+     - <p>ちゃくせき Sit down</p>
+     - <p>すこし だけ Only a little</p>
+     - <p>がんばって いきたい と おもって います。 I want to do my best.</p>
+     - <p>おきます To put</p>
+     - <p>学年 （がくねん） School year</p>
+     - <p>おたがい に がんばりましょう ね。 Together, let’s do our best.</p>
+     - <p>まず Firstly</p>
+     - <p>えいかいわ English conversation</p>
+     - <p>きょうかしょ Textbook</p>
+     - <p>ページ Page</p>
+     - <p class="captionText">みなさんは よく きいて います。Everyone is listening well.</p>
+     - <p>Anahera soon arrives at school. Kazu shows her to her class. Students gather around Anahera and shyly try o
+     - <p>Class leader Mika: <b>きりつ</b>！ Stand !</p>
+     - <p>Class leader Mika: <b>れい</b> Bow.</p>
+     - <p>Yamada Sensei: みなさん、おはよう ございます。</p>
+     - <p>Whole class: おはよう ございます。</p>
+     - <p>Class leader Mika: <b>ちゃくせき</b> Sit down.</p>
+     - <p>Yamada Sensei: じゃ、今日（きょう）は あたらしい りゅうがくせい が きました。</p>
+     - <p>アナヘラさん、 いい ですか。 じこしょうかい を して ください。</p>
+     - <p>Anahera: はい。 みなさん、 こんにちは。</p>
+     - <p>じこしょうかい を します。。。。nervous pause …</p>
+     - <p>はじめまして。</p>
+     - <p>私（わたし） は アナヘラ です。</p>
+     - <p>ニュージーランド から きました。</p>
+     - <p>ニュージーランド の マオリ人 です。</p>
+     - <p>私（わたし）の なまえ は えいご で ANGEL です。</p>
+     - <p>私（わたし）は マオリ語 と 英語 （えいご）を はなします。</p>
+     - <p>日本語（にほんご） も すこし できます。</p>
+     - <p>すみません。日本語（にほんご）が 下手（へた） です。</p>
+     - <p>。。 ええと。。 あのう。。。。nervous pause….</p>
+     - <p><b>すこし だけ</b> only a little 日本語 を はなします。</p>
+     - … 114 more removed
+     + <h1><span>5<span class="jp-text">日目 （いつかめ）</span>DAY ５</span></h1>
+     + <li>giving instructions in the classroom using ～<span class="jp-text">てください</span></li>
+     + <h3>Day 5 Lesson 5 Title: 5<span class="jp-text">日目 じゅぎょう が はじまります。</span>Class begins</h3>
+     + <p>Kazu and Anahera ride their bicycles to school. Anahera is surprised that she doesn’t need a bicycle helmet
+     + <p>! <span class="jp-text">ドキドキ！！</span>Anahera’s heart is thumping!</p>
+     + <a href="" target="_blank"><div class="button">: <span class="jp-text">ききましょう！</span>Listen to Track ４:</div><
+     + <h3><span class="jp-text">たんご</span> VOCABULARY</h3>
+     + <p><span class="jp-text">きりつ</span> Stand</p>
+     + <p><span class="jp-text">れい</span> Bow</p>
+     + <p><span class="jp-text">ちゃくせき</span> Sit down</p>
+     + <p><span class="jp-text">すこし だけ</span> Only a little</p>
+     + <p><span class="jp-text">がんばって いきたい と おもって います。</span> I want to do my best.</p>
+     + <p><span class="jp-text">おきます</span> To put</p>
+     + <p><span class="jp-text">学年 （がくねん）</span> School year</p>
+     + <p><span class="jp-text">おたがい に がんばりましょう ね。</span> Together, let’s do our best.</p>
+     + <p><span class="jp-text">まず</span> Firstly</p>
+     + <p><span class="jp-text">えいかいわ</span> English conversation</p>
+     + <p><span class="jp-text">きょうかしょ</span> Textbook</p>
+     + <p><span class="jp-text">ページ</span> Page</p>
+     + <p class="captionText"><span class="jp-text">みなさんは よく きいて います。</span>Everyone is listening well.</p>
+     + … 134 more added
+  ~ JPN1004_6_0.html: -125 +125
+     - <h1><span>6日目 （むいかめ）DAY 6</span></h1>
+     - <h3>Day 6 Lesson 6 Title: 6日目 えんそく の かいわ School trip discussion</h3>
+     - <p class="captionText">にっこう の ふたらさん じんじゃ Nikko’s Futarasan Shrine</p>
+     - <h3>たんご VOCABULARY</h3>
+     - <p>えんそく School trip</p>
+     - <p>やった！ Yay!</p>
+     - <p>せき Seat</p>
+     - <p>～について About</p>
+     - <p>ちょうし Condition (of body)</p>
+     - <p>～たい と おもいます。 Would like to</p>
+     - <p>～と いいました。 (He/She.....) said</p>
+     - <p>だめです。 You may not.</p>
+     - <p>じゃんけん Paper, scissors, rock</p>
+     - <p>かちました。 I won.</p>
+     - <p>みえます Can see</p>
+     - <p>まど がわ Window side</p>
+     - <p>うるさい！ Noisy! Stop everyone!</p>
+     - <p>じぶんの Own</p>
+     - <p>それから After that</p>
+     - <p>クイズ Quiz</p>
+     - <p>そう しましょう！ Let&#39;s do that!</p>
+     - <p><b>けんじ (せんぱい）</b> 今年（ことし）の <b>えんそくS</b>chool trip は にっこう に 行きます（いきます）。</p>
+     - <p><b>みなさん</b> <b>やった！！</b> Yay！</p>
+     - <p><b>けんじ (せんぱい）</b> ゴールデンウイーク の 五月 二日 に 行きます（いきます）。 バスの</p>
+     - <p><b>せきS</b>eats に <b>ついて はなしましょう。L</b>et’s talk about</p>
+     - <p><b>そら</b> 私（わたし） は <b>ちょうし</b>condition が わるく なります から、まえ の せき に すわり<b>たい と おもいますW</b>ould like to。</p>
+     - <p><b>たかお</b> ぼく は うしろ の せき が すき です。 私（わたし） は タマ 先生</p>
+     - <p>の となり に すわり たい です。</p>
+     - <p><b>タマ 先生</b> ぼく？？ 日本語 （にほんご）は はなしません。</p>
+     - <p><b>たかお</b> ＯＫです！ うしろ 。。。 “behind, back SHEETO”</p>
+     - <p><b>タマ先生</b> OK ！Yes！ You may sit next to me!</p>
+     - <p><b>たかお</b> 「私（わたし） の となり に すわって も いい ！」 <b>と いいました。He said</b></p>
+     - <p><b>みか</b> 私（わたし） は アナヘラさん の となり に すわりたい です。</p>
+     - <p><b>アナヘラ</b> いいですよ！</p>
+     - <p><b>みか</b> <b>やった！</b>Yay! れん さん は？</p>
+     - <p><b>れん</b> えいご を はなしたい ですから、 私（わたし）も アナヘラさん の となり に すわりたい 。。。。 いい ですか。</p>
+     - <p><b>みか</b> <b>だめ です Y</b>ou may not。 <b>じゃ、R</b>ight then<b>, じゃんけん P</b>aper, scissors, rock を しましょう。</p>
+     - <p><b>れん</b> はい！ さいしょ は グー じゃんけんポン！ 。。。。<b>かちました！</b>I won!</p>
+     - <p><b>ゆま</b> けしき が <b>みえます</b> Can see から、 私（わたし） は <b>まど がわ W</b>indow side に</p>
+     - <p>すわり たい です。</p>
+     - … 85 more removed
+     + <h1><span>6<span class="jp-text">日目 （むいかめ）</span>DAY 6</span></h1>
+     + <h3>Day 6 Lesson 6 Title: 6<span class="jp-text">日目 えんそく の かいわ </span>School trip discussion</h3>
+     + <p class="captionText"><span class="jp-text">にっこう の ふたらさん じんじゃ </span>Nikko’s Futarasan Shrine</p>
+     + <h3><span class="jp-text">たんご </span>VOCABULARY</h3>
+     + <p><span class="jp-text">えんそく</span> School trip</p>
+     + <p><span class="jp-text">やった！</span> Yay!</p>
+     + <p><span class="jp-text">せき</span> Seat</p>
+     + <p>～<span class="jp-text">について</span> About</p>
+     + <p><span class="jp-text">ちょうし</span> Condition (of body)</p>
+     + <p>～<span class="jp-text">たい と おもいます。</span> Would like to</p>
+     + <p>～<span class="jp-text">と いいました。 </span>(He/She.....) said</p>
+     + <p><span class="jp-text">だめです。</span> You may not.</p>
+     + <p><span class="jp-text">じゃんけん</span> Paper, scissors, rock</p>
+     + <p><span class="jp-text">かちました。</span> I won.</p>
+     + <p><span class="jp-text">みえます</span> Can see</p>
+     + <p><span class="jp-text">まど がわ</span> Window side</p>
+     + <p><span class="jp-text">うるさい！</span> Noisy! Stop everyone!</p>
+     + <p><span class="jp-text">じぶんの</span> Own</p>
+     + <p><span class="jp-text">それから</span> After that</p>
+     + <p><span class="jp-text">クイズ</span> Quiz</p>
+     + … 105 more added
+  ~ JPN1004_7_0.html: -17 +17
+     - <h1><span>7日目 （なのかめ）DAY 7</span></h1>
+     - <h3>Day 7 Lesson 7 Title: 7日目 にっこう Nikko</h3>
+     - <li>There is a famous Japanese saying: にっこを みなければ けっこ と いうな which translates as ‘Don’t say “magnificent” until
+     - <h3>たんご VOCABULARY</h3>
+     - <p>keep つくります</p>
+     - <p>keep きこえます</p>
+     - <h3>けんぶつ しましょう！ Let’s go see!</h3>
+     - <p class="captionText">いろはざか This is the name of the steep winding road that leads from the town of Nikko to C
+     - <p>You have already learned about counters or classifiers like まい、ほん and so on. The counter for small animals 
+     - <p>いっぴき One (animal).</p>
+     - <p>にひき Two (animals).</p>
+     - <p>さんびき Three (animals).</p>
+     - <p>よんひき Four (animals).</p>
+     - <p>ねこが いっぴき います。</p>
+     - <p>私（わたし）の となり に います。</p>
+     - <h3>: Activity 7A よみましょう！Let’s read about Nikko!</h3>
+     - <p><b>7日目 (なのかめ） の おわり End of Day 7</b></p>
+     + <h1><span>7<span class="jp-text">日目 （なのかめ）</span>DAY 7</span></h1>
+     + <h3>Day 7 Lesson 7 Title: 7<span class="jp-text">日目 にっこう </span>Nikko</h3>
+     + <li>There is a famous Japanese saying: <span class="jp-text">にっこを みなければ けっこ と いうな </span>which translates as ‘
+     + <h3><span class="jp-text">たんご </span>VOCABULARY</h3>
+     + <p>keep <span class="jp-text">つくります</span></p>
+     + <p>keep <span class="jp-text">きこえます</span></p>
+     + <h3><span class="jp-text">けんぶつ しましょう！ </span>Let’s go see!</h3>
+     + <p class="captionText"><span class="jp-text">いろはざか</span> This is the name of the steep winding road that lead
+     + <p>You have already learned about counters or classifiers like <span class="jp-text">まい、ほん</span> and so on. T
+     + <p><span class="jp-text">いっぴき</span> One (animal).</p>
+     + <p><span class="jp-text">にひき</span> Two (animals).</p>
+     + <p><span class="jp-text">さんびき</span> Three (animals).</p>
+     + <p><span class="jp-text">よんひき</span> Four (animals).</p>
+     + <p><span class="jp-text">ねこが いっぴき います。</span></p>
+     + <p><span class="jp-text">私（わたし）の となり に います。</span></p>
+     + <h3>: Activity 7A <span class="jp-text">よみましょう！</span>Let’s read about Nikko!</h3>
+     + <p><b>7<span class="jp-text">日目 (なのかめ） の おわり</span> End of Day 7</b></p>
+  ~ JPN1004_8_0.html: -66 +66
+     - <h1><span>8日目 （ようかめ）DAY 8</span></h1>
+     - <h3>Day 8 Lesson 8 Title: 8日目 えんそく レポート Trip report</h3>
+     - <p class="captionText">生と（せいと） は とりい の まえ に たって、 しゃしんを とって います。</p>
+     - <p>にっこう <b>に ついて</b> About レポート</p>
+     - <p>きのう、 でんしゃ と バス で にっこう に 行きました (いきました）。</p>
+     - <p><b>さいしょに</b> At first、あさ、 六時半（ろくじはん） に おきて、 かず と いっしょ に じてんしゃ で 学校（がっこう）に 行きました（いきました）。てんき は はれ で よかった です。と
+     - <p>バスの 中（なか）で みなさんと タマ先生（せんせい） と えいご の うた を うたったり、 えいご と 日本語（にほんご）の クイズ を したり しました。 とても おもしろくて、たのしかった です。</p>
+     - <p>十時半（じゅうじはん） に にっこう に つきました。入口（いりぐち） に とても きれい な <b>とおり</b>archway to shrine が ありました。 <b>まず</b>Firstly、 <b>と
+     - <p>とても <b>うつくしかった です</b>was beautiful。 とくがわ いえみつさん は おじいさんの いえやす<b>の ため に</b> for １６４６年（ねん）に つくりました。</p>
+     - <p><b>それから</b> After that、さんびき の <b>さるM</b>onkeys の <b>ちょうこくS</b>culpture も 見ました（みました)。</p>
+     - <p><b>そのあと</b> Afterwards、<b>いろはざか</b> Irohazuka Road を のぼって、 <b>ちゅうぜんじこ</b>Lake Chuuzenji に 行きました。 ちゅうぜんじこ は 
+     - <p><b>つぎ N</b>ext、そこ で みかさん と おべんとう を たべました。 みかさん の おべんとう は おにぎり で、私（わたし） の おべんとう は サンドイッチ と <b>とりにくC</b>hicke
+     - <p>です。</p>
+     - <p>おべんとう <b>の あと</b>after、 <b>けごん の たき</b> Kegon waterfalls を 見ました（みました）。 たくさん の 水（みず） が <b>おちて いました W</b>as f
+     - <p>あって、 とても <b>すばらしかった ですW</b>as wonderful。</p>
+     - <p><b>さいごに</b> Finally、四時（よじ）<b>ごろA</b>bout に バスで かえりました。バスの 中（なか）で 日本語（にほんご）で 友だち（ともだち）と はなしたり、 しゃしん を とったりして
+     - <th>Present tense い adjectives</th>
+     - <th>Chop off the い</th>
+     - <th><b>Past tense い adjectives</b> / add かった です。</th>
+     - <td>たのしい</td>
+     - <td>たのし</td>
+     - <td>たのしかった です。 It was fun.</td>
+     - <td>さむい</td>
+     - <td>さむ</td>
+     - <td>さむかった です。 It was cold.</td>
+     - <td>おいしい</td>
+     - <td>おいし</td>
+     - <td>おいしかった です。 It was delicious.</td>
+     - <td>おもしろい</td>
+     - <td>おもしろ</td>
+     - <td>おもしろかった です。 It was interesting.</td>
+     - <th>Present tense な adjectives</th>
+     - <th><b>Past tense な adjectives</b> / Just add でした。</th>
+     - <td>きれい</td>
+     - <td>きれい</td>
+     - <td>きれい でした。 It was pretty/clean.</td>
+     - <td>じょうず</td>
+     - <td>じょうず</td>
+     - <td>じょうず でした。 It was skillful.</td>
+     - <p>You can join sentences in Japanese by changing the ending of the first sentence into a て form. See this tab
+     - … 26 more removed
+     + <h1><span>8<span class="jp-text">日目 （ようかめ）</span>DAY 8</span></h1>
+     + <h3>Day 8 Lesson 8 Title: 8<span class="jp-text">日目 えんそく レポート </span>Trip report</h3>
+     + <p class="captionText"><span class="jp-text">生と（せいと） は とりい の まえ に たって、 しゃしんを とって います。</span></p>
+     + <p><span class="jp-text">にっこう </span><b><span class="jp-text">に ついて</span></b> About <span class="jp-text">レポー
+     + <p><span class="jp-text">きのう、 でんしゃ と バス で にっこう に 行きました (いきました）。</span></p>
+     + <p><b><span class="jp-text">さいしょに</span></b> At first、<span class="jp-text">あさ、 六時半（ろくじはん） に おきて、 かず と いっしょ に 
+     + <p><span class="jp-text">バスの 中（なか）で みなさんと タマ先生（せんせい） と えいご の うた を うたったり、 えいご と 日本語（にほんご）の クイズ を したり しました。 とても 
+     + <p><span class="jp-text">十時半（じゅうじはん） に にっこう に つきました。入口（いりぐち） に とても きれい な</span> <b><span class="jp-text">とおり</
+     + <p><span class="jp-text">とても</span> <b><span class="jp-text">うつくしかった です</span></b>was beautiful。 <span class="
+     + <p><b><span class="jp-text">それから</span></b> After that、<span class="jp-text">さんびき の </span><b><span class="jp-
+     + <p><b><span class="jp-text">そのあと</span></b> Afterwards、<b><span class="jp-text">いろはざか</span></b> Irohazuka Roa
+     + <p><b><span class="jp-text">つぎ </span>N</b>ext、<span class="jp-text">そこ で みかさん と おべんとう を たべました。 みかさん の おべんとう は
+     + <p><span class="jp-text">です。</span></p>
+     + <p><span class="jp-text">おべんとう</span> <b><span class="jp-text">の あと</span></b>after、 <b><span class="jp-text">
+     + <p><span class="jp-text">あって、 とても</span> <b><span class="jp-text">すばらしかった です</span>W</b>as wonderful。</p>
+     + <p><b><span class="jp-text">さいごに</span></b> Finally、<span class="jp-text">四時（よじ）</span><b><span class="jp-text
+     + <th>Present tense <span class="jp-text">い</span> adjectives</th>
+     + <th>Chop off the <span class="jp-text">い</span></th>
+     + <th><b>Past tense <span class="jp-text">い</span> adjectives</b> / add <span class="jp-text">かった です。</span></th
+     + <td><span class="jp-text">たのしい</span></td>
+     + … 46 more added
+  ~ JPN1004_9_0.html: -20 +20
+     - <h1><span>9日目 （ここのかめ）DAY 9</span></h1>
+     - <h3>Day 9 Lesson 9 Title: 9日目 ふくしゅう しましょう！Let&#39;s review！</h3>
+     - <p>Activity 9A なに を きて います か。What are they wearing?</p>
+     - <th>１．二人（ふたり） は しろい シャツ を きて＿、ネイビーと ライトブルー の ネクタイ を して 、くろい ズボン を はいて います。 / Answers to select from： / はいて / き
+     - <td>２．ともえさん は ピアス と ネックレス を つけて 、 くろい セーターを きて 、ちょいろ の ブレザーを __きて___います。 かっこいい ですね！ / Answers to select from：
+     - はいて / きて / つけて / かぶって</td>
+     - <td>３．ハエさん は ピンク の めがね を かけて 、しろい Tシャツ を きて 、しろ と くろ の ズボンを はいて います。 / Answers to select from： / きて / かけて / はい
+     - <h3>Activity 9C 私（わたし）の さくぶん My written passage</h3>
+     - <p>Now it is your turn to write a passage of your choice. Use the content of this module to help you. This is 
+     - <td>Language features/structures you could include： / • ですから to express a reason / • より to show comparison / •
+     - <h3>Activity 9C 私（わたし）の さくぶん My Written Passage</h3>
+     - <p>Now it is your turn to write a passage of your choice. Use the content of this module to help you. This is 
+     - <li>ですから to express a reason</li>
+     - <li>より to show comparison</li>
+     - <li>～たいです to say what you want to do</li>
+     - <li>～て to join sentences</li>
+     - <li>～ながら to express doing two actions at the same time</li>
+     - <li>～たり、～たりします to express doing a variety of things (etc).</li>
+     - <li>～て も いい です。and ～ては いけません to express rules and permission.</li>
+     - <p><b>9日目 (ここのかめ） の おわり End of Day 9</b></p>
+     + <h1><span>9<span class="jp-text">日目 （ここのかめ）</span>DAY 9</span></h1>
+     + <h3>Day 9 Lesson 9 Title: 9<span class="jp-text">日目 ふくしゅう しましょう！</span>Let&#39;s review！</h3>
+     + <p>Activity 9A <span class="jp-text">なに を きて います か。</span>What are they wearing?</p>
+     + <th>１．<span class="jp-text">二人（ふたり） は しろい シャツ を きて＿、ネイビーと ライトブルー の ネクタイ を して 、くろい ズボン を はいて います。</span> / Answ
+     + <td>２．<span class="jp-text">ともえさん は ピアス と ネックレス を つけて 、 くろい セーターを きて 、ちょいろ の ブレザーを</span> __<span class="jp-te
+     + <span class="jp-text">はいて / きて / つけて / かぶって</span></td>
+     + <td>３．<span class="jp-text">ハエさん は ピンク の めがね を かけて 、しろい</span> T<span class="jp-text">シャツ を きて 、しろ と くろ の ズボンを
+     + <h3>Activity 9C <span class="jp-text">私（わたし）の さくぶん </span>My written passage</h3>
+     + <p>Now it is your turn to write a passage of your choice. Use the content of this module to help you. This is 
+     + <td>Language features/structures you could include： / • <span class="jp-text">ですから</span> to express a reason 
+     + <h3>Activity 9C <span class="jp-text">私（わたし）の さくぶん </span>My Written Passage</h3>
+     + <p>Now it is your turn to write a passage of your choice. Use the content of this module to help you. This is 
+     + <li><span class="jp-text">ですから</span> to express a reason</li>
+     + <li><span class="jp-text">より</span> to show comparison</li>
+     + <li>～<span class="jp-text">たいです</span> to say what you want to do</li>
+     + <li>～<span class="jp-text">て</span> to join sentences</li>
+     + <li>～<span class="jp-text">ながら</span> to express doing two actions at the same time</li>
+     + <li>～<span class="jp-text">たり、～たりします</span> to express doing a variety of things (etc).</li>
+     + <li>～<span class="jp-text">て も いい です。</span>and ～<span class="jp-text">ては いけません</span> to express rules and pe
+     + <p><b>9<span class="jp-text">日目 (ここのかめ） の おわり</span> End of Day 9</b></p>
+  ~ JPN1004_10_0.html: -11 +11
+     - <h1><span>10日目 （とおかめ）DAY 10</span></h1>
+     - <h3>Day 10 Lesson 10 Title: 10日目 かんがえましょう！ Let’s reflect!</h3>
+     - <h3>Module JAP1004 School Life in Japan 日本の学校のせいかつ | Te whaioranga kura i Hapani</h3>
+     - <td>• Explore the practice of expressions said when leaving the house. / • Learn about a typical school day an
+     - <td>• Review ～て form of verbs. / • Use ～て form verbs to allow and refuse permission. / • School subject vocabu
+     - <td>• Learn to read and write the kanji related to school 学、校、先、生、中、小、大、行、私、高、友。 / • Use kanji in a passage ab
+     - <p>Activity 10B かんがえましょう！</p>
+     - <p><b>いき を ふかくすったり、 ついたり して ください。</b></p>
+     - <h3>Activity 10B かんがえましょう！</h3>
+     - <td>Email my 日本語 の 先生 and ask ________________ / _______________________ / _______________________ / _________
+     - <p><b>10日目 (とおかめ） の おわり End of Day 10 よく できました！ Well done!</b></p>
+     + <h1><span>10<span class="jp-text">日目 （とおかめ）</span>DAY 10</span></h1>
+     + <h3>Day 10 Lesson 10 Title: 10<span class="jp-text">日目 かんがえましょう！ </span>Let’s reflect!</h3>
+     + <h3>Module JAP1004 School Life in Japan <span class="jp-text">日本の学校のせいかつ</span> | Te whaioranga kura i Hapani<
+     + <td>• Explore the practice of expressions said when leaving the house. / • Learn about a typical school day an
+     + <td>• Review ～<span class="jp-text">て</span> form of verbs. / • Use ～<span class="jp-text">て</span> form verbs
+     + <td>• Learn to read and write the kanji related to school <span class="jp-text">学、校、先、生、中、小、大、行、私、高、友。</span> 
+     + <p>Activity 10B <span class="jp-text">かんがえましょう！</span></p>
+     + <p><b><span class="jp-text">いき を ふかくすったり、 ついたり して ください。</span></b></p>
+     + <h3>Activity 10B <span class="jp-text">かんがえましょう！</span></h3>
+     + <td>Email my <span class="jp-text">日本語 の 先生</span> and ask ________________ / _______________________ / ______
+     + <p><b>10<span class="jp-text">日目 (とおかめ） の おわり</span> End of Day 10 <span class="jp-text">よく できました！</span> Well
+JPN1004: identical 0 / changed 11
+MUS1004: identical 11 / changed 0
+MUS1006: identical 4 / changed 0
+MXDB102: identical 12 / changed 0
+MXDB201: identical 7 / changed 0
+MXDB202: identical 6 / changed 0
+MXDB301: identical 8 / changed 0
+MXDB302: identical 10 / changed 0
+MXDI101: identical 11 / changed 0
+MXDI102: identical 5 / changed 0
+MXDI103: identical 10 / changed 0
+MXDI201: identical 11 / changed 0
+MXDI202: identical 12 / changed 0
+MXDI301: identical 5 / changed 0
+MXEO102: identical 5 / changed 0
+MXEO201: identical 10 / changed 0
+MXEO202: identical 9 / changed 0
+MXEO301: identical 11 / changed 0
+MXEO401: identical 7 / changed 0
+MXEX101: identical 7 / changed 0
+MXEX201: identical 6 / changed 0
+MXEX202: identical 7 / changed 0
+MXEX301: identical 8 / changed 0
+MXEX302: identical 8 / changed 0
+MXEX401: identical 7 / changed 0
+MXFL101: identical 12 / changed 0
+MXFL102: identical 9 / changed 0
+MXFL103: identical 8 / changed 0
+MXFL104: identical 6 / changed 0
+MXFL201: identical 10 / changed 0
+  ~ MXFL202_7_0.html: -1 +1
+     - <p>Origami Black Cat 動物折り紙 (<a href="https://www.youtube.com/watch?v=Lma76RE1NWQ)" target="_blank">https://www
+     + <p>Origami Black Cat <span class="jp-text">動物折り紙</span> (<a href="https://www.youtube.com/watch?v=Lma76RE1NWQ)
+MXFL202: identical 5 / changed 1
+MXFL203: identical 12 / changed 0
+MXFL204: identical 12 / changed 0
+MXFL301: identical 10 / changed 0
+MXFL302: identical 10 / changed 0
+MXFL401: identical 8 / changed 0
+MXFU201: identical 10 / changed 0
+MXFU202: identical 11 / changed 0
+MXFU301: identical 12 / changed 0
+MXFU302: identical 10 / changed 0
+MXFU401: identical 7 / changed 0
+MXFU402: identical 8 / changed 0
+MXFUN01: identical 19 / changed 0
+MXFUN02: identical 1 / changed 0
+MXFUN03: identical 1 / changed 0
+MXS1004: identical 9 / changed 0
+OSAH301: identical 4 / changed 0
+OSAH401: identical 5 / changed 0
+OSAH501: identical 6 / changed 0
+OSAI101: identical 3 / changed 0
+OSAI201: identical 4 / changed 0
+OSAI301: identical 4 / changed 0
+OSAI401: identical 5 / changed 0
+OSAI501: identical 6 / changed 0
+OSBY101: identical 4 / changed 0
+OSBY201: identical 4 / changed 0
+OSBY301: identical 4 / changed 0
+OSBY401: identical 5 / changed 0
+OSBY501: identical 6 / changed 0
+OSGM101: identical 3 / changed 0
+OSGM201: identical 4 / changed 0
+OSGM301: identical 4 / changed 0
+OSGM401: identical 5 / changed 0
+OSGM501: identical 6 / changed 0
+OSOH101: identical 4 / changed 0
+OSOH201: identical 4 / changed 0
+OSOH301: identical 4 / changed 0
+OSOH401: identical 5 / changed 0
+OSOH501: identical 6 / changed 0
+OSSC301: identical 4 / changed 0
+OSSC401: identical 5 / changed 0
+OSSC501: identical 6 / changed 0
+OSSM301: identical 5 / changed 0
+OSSM401: identical 5 / changed 0
+PES1001: identical 10 / changed 0
+PES1002: identical 11 / changed 0
+PES1003: identical 11 / changed 0
+PES1004: identical 11 / changed 0
+PES1005: identical 12 / changed 0
+PES1007: identical 12 / changed 0
+PES1008: identical 19 / changed 0
+PHE1001: identical 5 / changed 0
+PHE1002: identical 4 / changed 0
+PHE1003: identical 11 / changed 0
+PHE1004: identical 4 / changed 0
+
+TOTAL: identical 802 / changed 14 / missing 0 over 119 modules
+CHANGED: JPFUN01/JPFUN01_0_0.html JPFUN02/JPFUN02_0_0.html JPN1004/JPN1004_0_0.html JPN1004/JPN1004_1_0.html JPN1004/JPN1004_2_0.html JPN1004/JPN1004_3_0.html JPN1004/JPN1004_4_0.html JPN1004/JPN1004_5_0.html JPN1004/JPN1004_6_0.html JPN1004/JPN1004_7_0.html JPN1004/JPN1004_8_0.html JPN1004/JPN1004_9_0.html JPN1004/JPN1004_10_0.html MXFL202/MXFL202_7_0.html

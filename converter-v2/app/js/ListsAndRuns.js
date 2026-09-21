@@ -982,6 +982,125 @@ class ListsAndRuns {
 		});
 		return pieces.map((p) => (p.live ? listify(p.s) : p.s)).join("");
 	};
+
+	/**
+	 * THE LANGUAGE-FONT WRAP (ROUND 419 — KB constraint 92 / CL-0093, 13 September
+	 * 2026: the language-font classes `jp-text` / `ch-text` / `pinyin` are MANDATORY on
+	 * every occurrence, and the conversion applies them — not the designer afterwards).
+	 * This is the CJK half: every RUN of Chinese / Japanese text on the page is wrapped
+	 * `<span class="ch-text">…</span>` / `<span class="jp-text">…</span>`. A full-page
+	 * post-pass at the LinkTextDisplay seam (the caller stops at the acks block — the
+	 * gold leaves its acknowledgement credits bare), so every emitter is covered at one
+	 * seam: the header <h1> title span (the KB's nested form), the module menu, prose,
+	 * lists, table cells, callouts, built widgets and the hand-off boxes alike.
+	 *   - a RUN = blocks of CJK characters (Han, kana, CJK punctuation, fullwidth forms)
+	 *     joined by internal whitespace and by the ASCII brackets / slashes / stops that
+	 *     sit BETWEEN two CJK blocks (the KB's `他(她)是我的(哥哥/弟弟/姐姐/妹妹`),
+	 *     starting and ending on a CJK character, and holding at least one Han or kana
+	 *     character — a punctuation-only stretch is never a run (measured: the gold's
+	 *     4,600 spans start / end on a CJK character 4,525 / 4,424 times);
+	 *   - the CLASS: a run holding any kana is Japanese regardless of the module; a
+	 *     Han-only run takes the MODULE's language (data module_language, longest
+	 *     code-prefix match); a Han-only run in a module with no language is left bare
+	 *     (the KB says raise a Red Flag rather than guess — that half is not built);
+	 *   - VERBATIM: <script> / <style> / <title> and the cv2-note / cv2-comment
+	 *     developer quotes (data skip_zones); a text segment already inside an element
+	 *     carrying one of the three classes is never re-wrapped (idempotent).
+	 * Only the TEXT between tags is ever touched — attributes, tags and entities are
+	 * copied through. Data Emit_Templates.body_region.language_fonts; env LANGFONT_OFF.
+	 *
+	 * @param {string} html - one finished page's HTML (before the acks block)
+	 * @param {object} run  - the conversion run (run.moduleCode decides the language)
+	 * @returns {string} the HTML with every CJK run wrapped in its language class
+	 */
+	static LanguageFontWrap(html, run) {
+		const cfg = DataService.Data.EmitTemplates?.body_region?.language_fonts;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "LANGFONT_OFF"]) return html;
+		const s = String(html ?? "");
+		if (!s) return s;
+		const classes = cfg.classes ?? { ch: "ch-text", jp: "jp-text", pinyin: "pinyin" };
+		const CJK = cfg.cjk_chars ?? "\\u3040-\\u30ff\\u3400-\\u4dbf\\u4e00-\\u9fff\\uf900-\\ufaff\\uff00-\\uffef\\u3000-\\u303f";
+		const HAN = cfg.han_chars ?? "\\u3400-\\u4dbf\\u4e00-\\u9fff\\uf900-\\ufaff";
+		const KANA = cfg.kana_chars ?? "\\u3040-\\u30ff";
+		const JOIN = cfg.internal_joiners ?? "\\s\\u00a0()\\[\\]/.,:;!?…\\-";
+		// cheap gate: no Han / kana on the page → nothing to do (the fullwidth / CJK
+		// punctuation ranges alone never make a run)
+		const anyRe = new RegExp("[" + HAN + KANA + "]", "u");
+		if (!anyRe.test(s)) return s;
+		// a run: CJK block (joiners CJK block)* — the joiners are consumed only when a
+		// CJK block follows, so a run never ends on a space or an ASCII stop
+		const runRe = new RegExp("[" + CJK + "]+(?:[" + JOIN + "]+[" + CJK + "]+)*", "gu");
+		const hanRe = new RegExp("[" + HAN + "]", "u");
+		const kanaRe = new RegExp("[" + KANA + "]", "u");
+		// the module's language (longest code-prefix match)
+		const code = String(run?.moduleCode ?? "").toUpperCase();
+		let modLang = null, best = -1;
+		for (const [p, lang] of Object.entries(cfg.module_language ?? {})) {
+			const P = String(p).toUpperCase();
+			if (code.startsWith(P) && P.length > best) { best = P.length; modLang = lang; }
+		}
+		const kanaJp = cfg.kana_is_japanese !== false;
+		const hanNeedsMod = cfg.han_needs_module_language !== false;
+		const wrapper = cfg.wrapper || "span";
+		const langOf = (runText) => {
+			if (kanaJp && kanaRe.test(runText)) return "jp";
+			if (modLang) return modLang;
+			return hanNeedsMod ? null : "ch";
+		};
+		// a run STARTS on a Han / kana character or an opening bracket / quote — a leading
+		// CJK colon / comma / stop / tilde belongs to the text before it (the gold's spans
+		// start on a character 4,331 : 64; `Sachiko： かず` keeps the colon outside)
+		const openers = cfg.lead_open_chars ?? "「『（【〈《〔［｛“‘";
+		const headRe = new RegExp("^[^" + HAN + KANA + openers.replace(/[\]\\^-]/g, "\\$&") + "]+", "u");
+		const wrapSeg = (seg) => seg.replace(runRe, (m) => {
+			if (!hanRe.test(m) && !kanaRe.test(m)) return m;     // punctuation-only stretch
+			const lang = langOf(m);
+			if (!lang || !classes[lang]) return m;
+			const hm = headRe.exec(m);
+			const lead = hm ? hm[0] : "", body = hm ? m.slice(hm[0].length) : m;
+			if (!body) return m;
+			return `${lead}<${wrapper} class="${classes[lang]}">${body}</${wrapper}>`;
+		});
+		// ---- walk the page: tags copied through, text segments wrapped -------------
+		const zones = (cfg.skip_zones ?? []).map(([o, c]) => ({ open: new RegExp(o), close: String(c) }));
+		const langCls = new Set(Object.values(classes));
+		const tagRe = /<[^>]*>/g;
+		let out = "", i = 0, m;
+		let inLang = null;            // { tag, depth } while inside an element carrying a language class
+		while ((m = tagRe.exec(s))) {
+			const j = m.index, tag = m[0];
+			if (j > i) out += inLang ? s.slice(i, j) : wrapSeg(s.slice(i, j));
+			// a verbatim zone opens here → copy through to its closer
+			const z = zones.find((zz) => zz.open.test(tag) && tag.search(zz.open) === 0);
+			if (z && !inLang) {
+				const k = s.indexOf(z.close, j + tag.length);
+				const end = k < 0 ? s.length : k + z.close.length;
+				out += s.slice(j, end);
+				i = end; tagRe.lastIndex = end;
+				continue;
+			}
+			out += tag;
+			i = j + tag.length;
+			// track an element that already carries a language class (never re-wrap inside it)
+			const tm = /^<(\/?)([a-zA-Z][a-zA-Z0-9-]*)/.exec(tag);
+			if (tm) {
+				const closing = tm[1] === "/", name = tm[2].toLowerCase();
+				const selfClosing = /\/\s*>$/.test(tag) || /^(?:br|img|hr|input|meta|link|source|wbr|area|base|col)$/.test(name);
+				if (inLang) {
+					if (name === inLang.tag && !selfClosing) {
+						inLang.depth += closing ? -1 : 1;
+						if (inLang.depth === 0) inLang = null;
+					}
+				} else if (!closing && !selfClosing) {
+					const cm = /\sclass="([^"]*)"/.exec(tag);
+					if (cm && cm[1].split(/\s+/).some((c) => langCls.has(c))) inLang = { tag: name, depth: 1 };
+				}
+			}
+		}
+		if (i < s.length) out += inLang ? s.slice(i) : wrapSeg(s.slice(i));
+		return out;
+	};
 }
 
 // Node test-harness hook; browsers ignore it.

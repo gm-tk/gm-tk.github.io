@@ -1,0 +1,26 @@
+OLD pairs 2349  SCAFFOLD 54.1860%  RAW 38.204%  >=50 1439  >=75 238  >=90 20
+NEW pairs 2349  SCAFFOLD 54.2072%  RAW 38.227%  >=50 1441  >=75 238  >=90 20
+delta SCAFFOLD +0.0212pp  RAW +0.023pp  >=50 +2  >=75 +0  >=90 +0
+movers 20 (up 13 / down 7), pp-sum +49.7
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  CHFUN08    CHFUN08_0_0.html           38.5 ->   68.6  (+30.1)
+  JPN1004    JPN1004_8_0.html           40.8 ->   51.1  (+10.3)
+  JPN1004    JPN1004_7_0.html           45.0 ->   53.3  (+8.3)
+  CHI1005    CHI1005_0_0.html           53.2 ->   61.0  (+7.8)
+  CHFUN05    CHFUN05_0_0.html           41.7 ->   48.2  (+6.5)
+  JPFUN01    JPFUN01_0_0.html            9.3 ->   13.7  (+4.3)
+  JPN1004    JPN1004_3_0.html           33.0 ->   36.2  (+3.2)
+  CHFUN07    CHFUN07_0_0.html           45.8 ->   47.0  (+1.2)
+  CHFUN06    CHFUN06_0_0.html           54.1 ->   54.9  (+0.9)
+  JPN1004    JPN1004_6_0.html           32.7 ->   33.5  (+0.7)
+  JPN1004    JPN1004_2_0.html           42.8 ->   43.5  (+0.7)
+  CHI1004    CHI1004_9_0.html           35.7 ->   36.4  (+0.6)
+  CHFUN01    CHFUN01_0_0.html           71.8 ->   72.3  (+0.5)
+  JPN1004    JPN1004_5_0.html           25.5 ->   25.2  (-0.4)
+  CHFUN04    CHFUN04_0_0.html           78.9 ->   78.3  (-0.6)
+  JPN1004    JPN1004_10_0.html          33.5 ->   30.8  (-2.7)
+  JPN1004    JPN1004_1_0.html           37.5 ->   33.2  (-4.3)
+  JPN1004    JPN1004_4_0.html           38.6 ->   33.6  (-4.9)
+  JPN1004    JPN1004_0_0.html           51.7 ->   46.6  (-5.1)
+  JPN1004    JPN1004_9_0.html           36.3 ->   28.8  (-7.4)

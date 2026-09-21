@@ -1,0 +1,74 @@
+SESSION 30 ROUND 1 PROBE — the language-font wrap (KB constraint 92 / CL-0093) over the gate's pairing
+modules with any CJK run or lang span on a paired page: 19
+
+per module: pages | GOLD runs wrapped / unwrapped (consensus) | gold runs derivable (in Claude text) | CLAUDE runs wrapped / unwrapped | pinyin gold / derivable / Claude | kinds | carriers
+  JPN1004   pages g11/c11 | gold 2068/10 (1.00) | deriv 1847 (wrapped 1842) | claude 0/2190 | pinyin 0/0/0 | kana g2007 c2084 | {'jp-text': 2068} | {'span': 2054, 'apan': 11, 'p': 3} | gold parents {'span': 1916, 'br': 66, 'b': 48, 'u': 23, 'apan': 11} | claude parents {'p': 1201, 'td': 416, 'b': 304, 'li': 139, 'h3': 67}
+  CHFUN05   pages g1/c1 | gold 1091/29 (0.97) | deriv 1033 (wrapped 1011) | claude 0/1136 | pinyin 940/918/0 | kana g0 c0 | {'ch-text': 1091} | {'span': 1070, 'p': 21} | gold parents {'span': 1091, 'p': 29} | claude parents {'b': 422, 'li': 394, 'p': 151, 'td': 69, 'h4': 57}
+  CHI1003   pages g9/c1 | gold 632/9 (0.99) | deriv 4 (wrapped 4) | claude 0/5 | pinyin 356/0/0 | kana g0 c0 | {'ch-text': 632} | {'span': 606, 'strong': 26} | gold parents {'span': 602, 'strong': 26, 'br': 9, 'p': 4} | claude parents {'li': 4, 'p': 1}
+  CHI1004   pages g8/c1 | gold 547/3 (0.99) | deriv 0 (wrapped 0) | claude 0/21 | pinyin 209/3/0 | kana g0 c0 | {'ch-text': 547} | {'span': 547} | gold parents {'span': 530, 'u': 17, 'p': 3} | claude parents {'td': 21}
+  CHI1005   pages g8/c2 | gold 468/5 (0.99) | deriv 1 (wrapped 1) | claude 0/15 | pinyin 147/1/0 | kana g0 c0 | {'ch-text': 468} | {'span': 460, 'p': 8} | gold parents {'span': 454, 'p': 8, 'u': 6, 'li': 5} | claude parents {'th': 14, 'p': 1}
+  JPFUN02   pages g1/c1 | gold 220/2 (0.99) | deriv 76 (wrapped 75) | claude 0/93 | pinyin 0/0/0 | kana g222 c93 | {'jp-text': 220} | {'span': 205, 'p': 15} | gold parents {'span': 205, 'p': 11, 'br': 3, 'td': 1, 'input': 1} | claude parents {'td': 74, 'p': 10, 'b': 8, 'th': 1}
+  CHFUN07   pages g1/c1 | gold 145/2 (0.99) | deriv 121 (wrapped 119) | claude 0/119 | pinyin 105/99/0 | kana g0 c0 | {'ch-text': 145} | {'span': 145} | gold parents {'span': 145, 'p': 2} | claude parents {'td': 53, 'li': 29, 'p': 27, 'th': 10}
+  CHFUN08   pages g1/c1 | gold 103/0 (1.00) | deriv 82 (wrapped 82) | claude 0/88 | pinyin 38/22/0 | kana g0 c0 | {'ch-text': 103} | {'span': 103} | gold parents {'span': 103} | claude parents {'td': 59, 'th': 13, 'li': 13, 'p': 3}
+  JPFUN01   pages g1/c1 | gold 76/0 (1.00) | deriv 66 (wrapped 66) | claude 0/67 | pinyin 0/0/0 | kana g76 c67 | {'jp-text': 76} | {'span': 76} | gold parents {'span': 76} | claude parents {'p': 27, 'td': 27, 'li': 6, 'th': 3, 'b': 2}
+  CHFUN06   pages g1/c1 | gold 44/3 (0.94) | deriv 27 (wrapped 24) | claude 0/53 | pinyin 1/0/0 | kana g0 c0 | {'ch-text': 44} | {'li': 26, 'span': 18} | gold parents {'span': 44, 'p': 3} | claude parents {'li': 42, 'p': 5, 'th': 3, 'td': 3}
+  CHFUN04   pages g1/c1 | gold 28/1 (0.97) | deriv 5 (wrapped 4) | claude 0/5 | pinyin 28/4/0 | kana g0 c0 | {'ch-text': 28} | {'span': 28} | gold parents {'span': 28, 'b': 1} | claude parents {'b': 5}
+  CHWHA     pages g1/c1 | gold 9/1 (0.90) | deriv 8 (wrapped 7) | claude 0/12 | pinyin 0/0/0 | kana g0 c0 | {'ch-text': 9} | {'span': 9} | gold parents {'span': 10} | claude parents {'td': 4, 'b': 2, 'th': 2, 'title': 1, 'span': 1}
+  CHFUN01   pages g1/c1 | gold 6/2 (0.75) | deriv 6 (wrapped 6) | claude 0/6 | pinyin 6/6/0 | kana g0 c0 | {'ch-text': 6} | {'span': 6} | gold parents {'span': 6, 'p': 2} | claude parents {'b': 6}
+  AGH1005   pages g1/c0 | gold 0/4 (0.00) | deriv 0 (wrapped 0) | claude 0/0 | pinyin 0/0/0 | kana g0 c0 | {} | {} | gold parents {'p': 4} | claude parents {}
+  TWHA902   pages g1/c0 | gold 0/1 (0.00) | deriv 0 (wrapped 0) | claude 0/0 | pinyin 0/0/0 | kana g0 c0 | {} | {} | gold parents {'p': 1} | claude parents {}
+  ENGS202   pages g1/c0 | gold 0/1 (0.00) | deriv 0 (wrapped 0) | claude 0/0 | pinyin 0/0/0 | kana g0 c0 | {} | {} | gold parents {'p': 1} | claude parents {}
+  MXFL202   pages g1/c2 | gold 0/1 (0.00) | deriv 1 (wrapped 0) | claude 0/2 | pinyin 0/0/0 | kana g1 c2 | {} | {} | gold parents {'p': 1} | claude parents {'p': 2}
+  SCBI301   pages g1/c0 | gold 0/1 (0.00) | deriv 0 (wrapped 0) | claude 0/0 | pinyin 0/0/0 | kana g0 c0 | {} | {} | gold parents {'p': 1} | claude parents {}
+  MXFU302   pages g0/c0 | gold 0/0 (0.00) | deriv 0 (wrapped 0) | claude 0/0 | pinyin 0/0/0 | kana g0 c0 | {} | {} | gold parents {} | claude parents {}
+
+TOTAL gold runs 5512 wrapped 5437 / unwrapped 75 (consensus 0.99); derivable 3277 (wrapped 3241); Claude runs 3812 wrapped 0 unwrapped 3812 on 26 pages / 14 modules; pinyin gold 1830 derivable 1053 Claude 0
+
+per page (modules with Claude runs):
+  CHFUN01 CHFUN01_0_0.html ~ CHFUN01_0_0.html: gold 8 (w6/u2, deriv 6) claude 6 (w0) pinyin 6/6/0 kinds {'ch-text': 6} gparents {'span': 6, 'p': 2} cparents {'b': 6}
+  CHFUN04 CHFUN04_0_0.html ~ CHFUN04_0_0.html: gold 29 (w28/u1, deriv 5) claude 5 (w0) pinyin 28/4/0 kinds {'ch-text': 28} gparents {'span': 28, 'b': 1} cparents {'b': 5}
+  CHFUN05 CHFUN05_0_0.html ~ CHFUN05_0_0.html: gold 1120 (w1091/u29, deriv 1033) claude 1136 (w0) pinyin 940/918/0 kinds {'ch-text': 1091} gparents {'span': 1091, 'p': 29} cparents {'b': 422, 'li': 394, 'p': 151, 'td': 69}
+  CHFUN06 CHFUN06_0_0.html ~ CHFUN06_0_0.html: gold 47 (w44/u3, deriv 27) claude 53 (w0) pinyin 1/0/0 kinds {'ch-text': 44} gparents {'span': 44, 'p': 3} cparents {'li': 42, 'p': 5, 'th': 3, 'td': 3}
+  CHFUN07 CHFUN07_0_0.html ~ CHFUN07_0_0.html: gold 147 (w145/u2, deriv 121) claude 119 (w0) pinyin 105/99/0 kinds {'ch-text': 145} gparents {'span': 145, 'p': 2} cparents {'td': 53, 'li': 29, 'p': 27, 'th': 10}
+  CHFUN08 CHFUN08_0_0.html ~ CHFUN08_0_0.html: gold 103 (w103/u0, deriv 82) claude 88 (w0) pinyin 38/22/0 kinds {'ch-text': 103} gparents {'span': 103} cparents {'td': 59, 'th': 13, 'li': 13, 'p': 3}
+  CHI1003 CHI1003_0_0.html ~ CHI1003_0_0.html: gold 4 (w4/u0, deriv 4) claude 5 (w0) pinyin 0/0/0 kinds {'ch-text': 4} gparents {'span': 4} cparents {'li': 4, 'p': 1}
+  CHI1003 CHI1003_1_0.html ~ CHI1003_1_0.html: gold 141 (w136/u5, deriv 0) claude 0 (w0) pinyin 81/0/0 kinds {'ch-text': 136} gparents {'span': 124, 'strong': 12, 'br': 5} cparents {}
+  CHI1003 CHI1003_2_0.html ~ CHI1003_2_0.html: gold 125 (w125/u0, deriv 0) claude 0 (w0) pinyin 75/0/0 kinds {'ch-text': 125} gparents {'span': 112, 'strong': 12, 'br': 1} cparents {}
+  CHI1003 CHI1003_3_0.html ~ CHI1003_3_0.html: gold 60 (w60/u0, deriv 0) claude 0 (w0) pinyin 58/0/0 kinds {'ch-text': 60} gparents {'span': 60} cparents {}
+  CHI1003 CHI1003_4_0.html ~ CHI1003_4_0.html: gold 90 (w90/u0, deriv 0) claude 0 (w0) pinyin 43/0/0 kinds {'ch-text': 90} gparents {'span': 86, 'br': 2, 'strong': 2} cparents {}
+  CHI1003 CHI1003_5_0.html ~ CHI1003_5_0.html: gold 35 (w35/u0, deriv 0) claude 0 (w0) pinyin 86/0/0 kinds {'ch-text': 35} gparents {'span': 35} cparents {}
+  CHI1003 CHI1003_6_0.html ~ CHI1003_6_0.html: gold 167 (w167/u0, deriv 0) claude 0 (w0) pinyin 5/0/0 kinds {'ch-text': 167} gparents {'span': 166, 'br': 1} cparents {}
+  CHI1003 CHI1003_7_0.html ~ CHI1003_7_0.html: gold 6 (w6/u0, deriv 0) claude 0 (w0) pinyin 0/0/0 kinds {'ch-text': 6} gparents {'span': 6} cparents {}
+  CHI1003 CHI1003_8_0.html ~ CHI1003_8_0.html: gold 13 (w9/u4, deriv 0) claude 0 (w0) pinyin 8/0/0 kinds {'ch-text': 9} gparents {'span': 9, 'p': 4} cparents {}
+  CHI1004 CHI1004_2_0.html ~ CHI1004_2_0.html: gold 53 (w53/u0, deriv 0) claude 0 (w0) pinyin 40/0/0 kinds {'ch-text': 53} gparents {'span': 53} cparents {}
+  CHI1004 CHI1004_3_0.html ~ CHI1004_3_0.html: gold 20 (w20/u0, deriv 0) claude 0 (w0) pinyin 2/0/0 kinds {'ch-text': 20} gparents {'span': 20} cparents {}
+  CHI1004 CHI1004_4_0.html ~ CHI1004_4_0.html: gold 56 (w56/u0, deriv 0) claude 0 (w0) pinyin 32/0/0 kinds {'ch-text': 56} gparents {'span': 56} cparents {}
+  CHI1004 CHI1004_5_0.html ~ CHI1004_5_0.html: gold 76 (w76/u0, deriv 0) claude 0 (w0) pinyin 11/0/0 kinds {'ch-text': 76} gparents {'span': 76} cparents {}
+  CHI1004 CHI1004_6_0.html ~ CHI1004_6_0.html: gold 103 (w101/u2, deriv 0) claude 0 (w0) pinyin 20/0/0 kinds {'ch-text': 101} gparents {'span': 101, 'p': 2} cparents {}
+  CHI1004 CHI1004_7_0.html ~ CHI1004_7_0.html: gold 144 (w144/u0, deriv 0) claude 0 (w0) pinyin 31/0/0 kinds {'ch-text': 144} gparents {'span': 127, 'u': 17} cparents {}
+  CHI1004 CHI1004_8_0.html ~ CHI1004_8_0.html: gold 44 (w43/u1, deriv 0) claude 0 (w0) pinyin 36/0/0 kinds {'ch-text': 43} gparents {'span': 43, 'p': 1} cparents {}
+  CHI1004 CHI1004_9_0.html ~ CHI1004_9_0_Vocabulary.html: gold 54 (w54/u0, deriv 0) claude 21 (w0) pinyin 37/3/0 kinds {'ch-text': 54} gparents {'span': 54} cparents {'td': 21}
+  CHI1005 CHI1005_0_0.html ~ CHI1005_0_0.html: gold 1 (w1/u0, deriv 1) claude 1 (w0) pinyin 1/1/0 kinds {'ch-text': 1} gparents {'span': 1} cparents {'p': 1}
+  CHI1005 CHI1005_1_0.html ~ CHI1005_1_0.html: gold 52 (w52/u0, deriv 0) claude 0 (w0) pinyin 21/0/0 kinds {'ch-text': 52} gparents {'span': 52} cparents {}
+  CHI1005 CHI1005_2_0.html ~ CHI1005_2_0.html: gold 139 (w139/u0, deriv 0) claude 0 (w0) pinyin 33/0/0 kinds {'ch-text': 139} gparents {'span': 139} cparents {}
+  CHI1005 CHI1005_3_0.html ~ CHI1005_3_0.html: gold 66 (w66/u0, deriv 0) claude 0 (w0) pinyin 26/0/0 kinds {'ch-text': 66} gparents {'span': 60, 'u': 6} cparents {}
+  CHI1005 CHI1005_4_0.html ~ CHI1005_4_0.html: gold 37 (w37/u0, deriv 0) claude 0 (w0) pinyin 13/0/0 kinds {'ch-text': 37} gparents {'span': 29, 'p': 8} cparents {}
+  CHI1005 CHI1005_5_0.html ~ CHI1005_5_0.html: gold 42 (w42/u0, deriv 0) claude 0 (w0) pinyin 18/0/0 kinds {'ch-text': 42} gparents {'span': 42} cparents {}
+  CHI1005 CHI1005_6_0.html ~ CHI1005_6_0.html: gold 109 (w104/u5, deriv 0) claude 0 (w0) pinyin 25/0/0 kinds {'ch-text': 104} gparents {'span': 104, 'li': 5} cparents {}
+  CHI1005 CHI1005_7_0.html ~ CHI1005_7_0.html: gold 27 (w27/u0, deriv 0) claude 14 (w0) pinyin 10/0/0 kinds {'ch-text': 27} gparents {'span': 27} cparents {'th': 14}
+  CHWHA MODULE_0_0.html ~ CHWHA_0_0.html: gold 10 (w9/u1, deriv 8) claude 12 (w0) pinyin 0/0/0 kinds {'ch-text': 9} gparents {'span': 10} cparents {'td': 4, 'b': 2, 'th': 2, 'title': 1}
+  JPFUN01 JPFUN01_0_0.html ~ JPFUN01_0_0.html: gold 76 (w76/u0, deriv 66) claude 67 (w0) pinyin 0/0/0 kinds {'jp-text': 76} gparents {'span': 76} cparents {'p': 27, 'td': 27, 'li': 6, 'th': 3}
+  JPFUN02 JPFUN02_0_0.html ~ JPFUN02_0_0.html: gold 222 (w220/u2, deriv 76) claude 93 (w0) pinyin 0/0/0 kinds {'jp-text': 220} gparents {'span': 205, 'p': 11, 'br': 3, 'td': 1} cparents {'td': 74, 'p': 10, 'b': 8, 'th': 1}
+  JPN1004 JPN1004_0_0.html ~ JPN1004_0_0.html: gold 5 (w5/u0, deriv 5) claude 30 (w0) pinyin 0/0/0 kinds {'jp-text': 5} gparents {'span': 5} cparents {'li': 13, 'p': 13, 'h3': 2, 'title': 1}
+  JPN1004 JPN1004_1_0.html ~ JPN1004_1_0.html: gold 336 (w336/u0, deriv 306) claude 335 (w0) pinyin 0/0/0 kinds {'jp-text': 336} gparents {'span': 331, 'p': 3, 'apan': 1, 'u': 1} cparents {'p': 261, 'b': 37, 'li': 16, 'td': 12}
+  JPN1004 JPN1004_2_0.html ~ JPN1004_2_0.html: gold 165 (w165/u0, deriv 113) claude 161 (w0) pinyin 0/0/0 kinds {'jp-text': 165} gparents {'span': 161, 'apan': 2, 'br': 2} cparents {'p': 69, 'td': 53, 'th': 16, 'b': 11}
+  JPN1004 JPN1004_3_0.html ~ JPN1004_3_0.html: gold 193 (w193/u0, deriv 177) claude 247 (w0) pinyin 0/0/0 kinds {'jp-text': 193} gparents {'span': 192, 'apan': 1} cparents {'p': 93, 'td': 78, 'li': 36, 'b': 25}
+  JPN1004 JPN1004_4_0.html ~ JPN1004_4_0.html: gold 146 (w146/u0, deriv 132) claude 196 (w0) pinyin 0/0/0 kinds {'jp-text': 146} gparents {'span': 129, 'b': 15, 'apan': 1, 'u': 1} cparents {'p': 79, 'td': 65, 'b': 38, 'li': 6}
+  JPN1004 JPN1004_5_0.html ~ JPN1004_5_0.html: gold 409 (w408/u1, deriv 371) claude 402 (w0) pinyin 0/0/0 kinds {'jp-text': 408} gparents {'span': 320, 'br': 60, 'u': 18, 'b': 9} cparents {'p': 236, 'td': 66, 'b': 51, 'li': 34}
+  JPN1004 JPN1004_6_0.html ~ JPN1004_6_0.html: gold 404 (w404/u0, deriv 390) claude 411 (w0) pinyin 0/0/0 kinds {'jp-text': 404} gparents {'span': 395, 'b': 7, 'apan': 1, 'input': 1} cparents {'p': 264, 'b': 79, 'td': 34, 'li': 24}
+  JPN1004 JPN1004_7_0.html ~ JPN1004_7_0.html: gold 52 (w48/u4, deriv 16) claude 24 (w0) pinyin 0/0/0 kinds {'jp-text': 48} gparents {'span': 38, 'b': 6, 'td': 4, 'u': 3} cparents {'p': 14, 'h3': 4, 'b': 4, 'span': 1}
+  JPN1004 JPN1004_8_0.html ~ JPN1004_8_0.html: gold 259 (w259/u0, deriv 253) claude 276 (w0) pinyin 0/0/0 kinds {'jp-text': 259} gparents {'span': 253, 'b': 5, 'apan': 1} cparents {'p': 167, 'td': 57, 'b': 41, 'th': 6}
+  JPN1004 JPN1004_9_0.html ~ JPN1004_9_0.html: gold 96 (w96/u0, deriv 76) claude 83 (w0) pinyin 0/0/0 kinds {'jp-text': 96} gparents {'span': 91, 'br': 4, 'apan': 1} cparents {'td': 44, 'th': 16, 'li': 8, 'b': 6}
+  JPN1004 JPN1004_10_0.html ~ JPN1004_10_0.html: gold 13 (w8/u5, deriv 8) claude 25 (w0) pinyin 0/0/0 kinds {'jp-text': 8} gparents {'b': 6, 'p': 5, 'apan': 1, 'span': 1} cparents {'b': 12, 'td': 7, 'h3': 4, 'span': 1}
+  MXFL202 MXFL202_0_0.html ~ MXFL202_0.0.html: gold 0 (w0/u0, deriv 0) claude 1 (w0) pinyin 0/0/0 kinds {} gparents {} cparents {'p': 1}
+  MXFL202 MXFL202_7_0.html ~ MXFL202_7.0.html: gold 1 (w0/u1, deriv 1) claude 1 (w0) pinyin 0/0/0 kinds {} gparents {'p': 1} cparents {'p': 1}

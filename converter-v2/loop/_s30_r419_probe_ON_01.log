@@ -1,0 +1,461 @@
+CEDK102: identical 1 / changed 0
+CEDK501: identical 14 / changed 0
+CEDO102: identical 1 / changed 0
+CEDO105: identical 6 / changed 0
+CEDO202: identical 1 / changed 0
+CEDO204: identical 1 / changed 0
+CEDO301: identical 6 / changed 0
+CEDO501: identical 16 / changed 0
+CEDO502: identical 10 / changed 0
+CEDR201: identical 1 / changed 0
+CEDR204: identical 1 / changed 0
+CEDR301: identical 1 / changed 0
+CEDR302: identical 1 / changed 0
+CEDR501: identical 11 / changed 0
+CEDT101: identical 1 / changed 0
+CEDT104: identical 1 / changed 0
+CEDT201: identical 1 / changed 0
+CEDT202: identical 1 / changed 0
+CEDT203: identical 1 / changed 0
+CEDT204: identical 1 / changed 0
+CEDT207: identical 8 / changed 0
+CEDT208: identical 1 / changed 0
+CEDT301: identical 7 / changed 0
+CEDT404: identical 1 / changed 0
+CEDT501: identical 15 / changed 0
+CEDW101: identical 1 / changed 0
+CEDW201: identical 1 / changed 0
+CEDW501: identical 13 / changed 0
+  ~ CHFUN01_0_0.html: -6 +6
+     - <p>In Chinese, people sometimes say things about your weight that might sound rude in English, but they are ac
+     - <td><b>1. 小胖 (xiǎo pàng) — “Little Chubby”</b></td>
+     - <td><b>2. 小傻瓜 (xiǎo shǎguā) — “Little Silly One”</b></td>
+     - <td><b>3. 肉肉 (ròuròu) — “Little Soft One / Little Meaty One”</b></td>
+     - <td><b>4. 小猪 (xiǎo zhū) — “Little Piggy”</b></td>
+     - <td><b>5. 猪头 (zhū tóu) — “Pig Head”</b></td>
+     + <p>In Chinese, people sometimes say things about your weight that might sound rude in English, but they are ac
+     + <td><b>1. <span class="ch-text">小胖</span> (xiǎo pàng) — “Little Chubby”</b></td>
+     + <td><b>2. <span class="ch-text">小傻瓜</span> (xiǎo shǎguā) — “Little Silly One”</b></td>
+     + <td><b>3. <span class="ch-text">肉肉</span> (ròuròu) — “Little Soft One / Little Meaty One”</b></td>
+     + <td><b>4. <span class="ch-text">小猪</span> (xiǎo zhū) — “Little Piggy”</b></td>
+     + <td><b>5. <span class="ch-text">猪头</span> (zhū tóu) — “Pig Head”</b></td>
+CHFUN01: identical 0 / changed 1
+  ~ CHFUN04_0_0.html: -5 +5
+     - <li><b>哥哥 (gēge)</b> — older brother</li>
+     - <li><b>姐姐 (jiějie)</b> — older sister</li>
+     - <li><b>叔叔 (shūshu)</b> — uncle (man older than your parents’ age group)</li>
+     - <li><b>阿姨 (āyí)</b> — auntie (woman older than your parents’ age group)</li>
+     - <p>If you give someone a <b>red envelope (红包 hóngbāo)</b> at Chinese New Year, it’s a great choice because <b>
+     + <li><b><span class="ch-text">哥哥</span> (gēge)</b> — older brother</li>
+     + <li><b><span class="ch-text">姐姐</span> (jiějie)</b> — older sister</li>
+     + <li><b><span class="ch-text">叔叔</span> (shūshu)</b> — uncle (man older than your parents’ age group)</li>
+     + <li><b><span class="ch-text">阿姨</span> (āyí)</b> — auntie (woman older than your parents’ age group)</li>
+     + <p>If you give someone a <b>red envelope (<span class="ch-text">红包</span> hóngbāo)</b> at Chinese New Year, it
+CHFUN04: identical 0 / changed 1
+  ~ CHFUN05_0_0.html: -676 +676
+     - <li>use 呢 (ne) correctly in short exchanges to ask about people, objects, or preferences</li>
+     - <li>understand that 的(de) is added after a pronoun to form simple possessive expressions</li>
+     - <li>understand that 吗 (ma)is added to the end of a statement to turn it into a yes–no question</li>
+     - <li>understand that 不 (bù) is placed before a verb to express negation in simple sentences</li>
+     - <li>understand that 和(hé) is used to link nouns and noun phrases in simple sentences</li>
+     - <li>use 要(yào) and 想(xiǎng) accurately in short, familiar interactions to communicate wants, needs, and polite
+     - <li>recognise that 有(yǒu) is used to express possession (“to have”) and existence (“there is/are”)</li>
+     - <li>to use [subject] + 很 + adjective to describe people, places, and things naturally in Chinese.</li>
+     - <li>use 呢 (ne) correctly in short interactions to ask about someone or something</li>
+     - <li>form basic possessive expressions using 的(de)</li>
+     - <li>create my own yes–no questions by adding 吗(ma) to the end of a statement</li>
+     - <li>understand simple negative sentences using 不(bù) in familiar situations</li>
+     - <li>create simple sentences using 和 (hé) to join two nouns</li>
+     - <li>choose between 要(yào) and 想(xiǎng) to create clear, appropriate sentences in everyday situations</li>
+     - <li>use 有(yǒu) to say what I have and what exists in a place</li>
+     - <li>use 很 as a connector in simple descriptive sentences.</li>
+     - <li>to use 又(yòu) … 又(yòu) … to describe someone or something with two similar qualities</li>
+     - <li>use 的 (de) to link describing words with nouns to make clear noun phrases</li>
+     - <li>use 只 (zhī) as the standard measure word (MW) for most animals</li>
+     - <li>use 这 (zhè) and 那 (nà) with counters to say “this ___” and “that ___.”</li>
+     - <li>understand that 大(dà) and 小 (xiǎo) can describe age or maturity, not only physical size</li>
+     - <li>understand that 会 (huì) can be used to talk about future actions or events</li>
+     - <li>use 了 (le) after a verb to show that an action is complete</li>
+     - <li>use 了 (le) after a verb to show that an action is complete</li>
+     - <li>understand that 要(yào) can mean “ought to,” “must,” or show a strong desire to do something</li>
+     - <li>understand that 不 (bù) is the basic negation word, while 没 / 没有 (méi / méiyǒu) are used to say something d
+     - <li>use 在 (zài) to show where people or objects are located, and 不在 (bùzài) to say someone or something is not
+     - <li>use 正在 (zhèngzài) to show that an action is happening right now</li>
+     - <li>use 跟 (gēn) to say who you did an activity with</li>
+     - <li>use 请给我 (qǐng gěi wǒ) to politely ask for something</li>
+     - <li>use可以(kě yǐ) and 能(néng) to express possibility or permission in simple sentences</li>
+     - <li>use 比 (bǐ) to compare two people, objects, or things</li>
+     - <li>use directional words like 来 (lái), 去 (qù), and 回 (huí) to show movement toward or away from the speaker</
+     - <li>use these particles 吧 (ba) and 呢 (ne) to make suggestions, gentle statements, or friendly questions sound 
+     - <li>use sequencing words like 先 (xiān), 再 (zài), and 然后 (ránhòu) to describe the order of actions</li>
+     - <li>use 的时候(de shíhou) to talk about when something happens or during a certain time</li>
+     - <li>use 觉得 (juéde) to express personal thoughts, feelings, or reactions</li>
+     - <li>understand that 想 (xiǎng) can express thoughts, opinions, or mental activity</li>
+     - <li>use 因为 (yīn wèi) … 所以 (suǒ yǐ) at the beginning of a clause to explain reasons and results</li>
+     - <li>use 从 (cóng )… 到(dào) … to talk about movement or time from one point to another.</li>
+     - … 636 more removed
+     + <li>use <span class="ch-text">呢</span> (ne) correctly in short exchanges to ask about people, objects, or pref
+     + <li>understand that <span class="ch-text">的</span>(de) is added after a pronoun to form simple possessive expr
+     + <li>understand that <span class="ch-text">吗</span> (ma)is added to the end of a statement to turn it into a ye
+     + <li>understand that <span class="ch-text">不</span> (bù) is placed before a verb to express negation in simple 
+     + <li>understand that <span class="ch-text">和</span>(hé) is used to link nouns and noun phrases in simple senten
+     + <li>use <span class="ch-text">要</span>(yào) and <span class="ch-text">想</span>(xiǎng) accurately in short, fam
+     + <li>recognise that <span class="ch-text">有</span>(yǒu) is used to express possession (“to have”) and existence
+     + <li>to use [subject] + <span class="ch-text">很</span> + adjective to describe people, places, and things natur
+     + <li>use <span class="ch-text">呢</span> (ne) correctly in short interactions to ask about someone or something<
+     + <li>form basic possessive expressions using <span class="ch-text">的</span>(de)</li>
+     + <li>create my own yes–no questions by adding <span class="ch-text">吗</span>(ma) to the end of a statement</li>
+     + <li>understand simple negative sentences using <span class="ch-text">不</span>(bù) in familiar situations</li>
+     + <li>create simple sentences using <span class="ch-text">和</span> (hé) to join two nouns</li>
+     + <li>choose between <span class="ch-text">要</span>(yào) and <span class="ch-text">想</span>(xiǎng) to create cle
+     + <li>use <span class="ch-text">有</span>(yǒu) to say what I have and what exists in a place</li>
+     + <li>use <span class="ch-text">很</span> as a connector in simple descriptive sentences.</li>
+     + <li>to use <span class="ch-text">又</span>(yòu) … <span class="ch-text">又</span>(yòu) … to describe someone or 
+     + <li>use <span class="ch-text">的</span> (de) to link describing words with nouns to make clear noun phrases</li
+     + <li>use <span class="ch-text">只</span> (zhī) as the standard measure word (MW) for most animals</li>
+     + <li>use <span class="ch-text">这</span> (zhè) and <span class="ch-text">那</span> (nà) with counters to say “thi
+     + … 656 more added
+CHFUN05: identical 0 / changed 1
+  ~ CHFUN06_0_0.html: -23 +23
+     - <th> [video] [media 6] [sketcher] / <a href="https://www.youtube.com/watch?v=5HhUCiF6Eto" target="_blank">http
+     - <th> [video] [media 7] [sketcher] / <a href="https://www.youtube.com/watch?v=dsRQ45_gXLw" target="_blank">http
+     - <th>• [video] [media 8] [sketcher] / <a href="https://www.youtube.com/watch?v=Z4JZYxhdV74" target="_blank">htt
+     - <li>火 (huǒ) (fire) + 山 (shān) (mountain) = 火山</li>
+     - <li>人 (rén) (person) + 鱼 (yú) (fish) = 人鱼</li>
+     - <li>五 (wǔ) (five) + 月 (yuè) (month/moon) = 五月</li>
+     - <li>生 (shēng) (birth) + 日 (rì) (day) = 生日</li>
+     - <li>电 (diàn) (electricity) + 脑 (nǎo) (brain) = 电脑</li>
+     - <p>Choose from these 女，日，父，马，巴，月</p>
+     - <li>妈 [女，马]</li>
+     - <li>爸 [父，巴]</li>
+     - <li>明 [日，月]</li>
+     - <p>There are two answers for each one. 好，国，爸，四，岁，你</p>
+     - <td>好，你</td>
+     - <td>爸，岁</td>
+     - <td>国，四</td>
+     - <li>Radicals often give a clue about meaning. For example, the 氵 (water) radical appears in characters connect
+     - <li>河, 风, 海, 湖</li>
+     - <li>吃，听，羊， 叫</li>
+     - <li>林、板、树、白</li>
+     - <li>车，妈、姐、妹</li>
+     - <li>秋 骑 炒 妙 秒</li>
+     - <li>饺 馆 饭 汉 较</li>
+     + <th> [video] [media 6] [sketcher] / <a href="https://www.youtube.com/watch?v=5HhUCiF6Eto" target="_blank">http
+     + <th> [video] [media 7] [sketcher] / <a href="https://www.youtube.com/watch?v=dsRQ45_gXLw" target="_blank">http
+     + <th>• [video] [media 8] [sketcher] / <a href="https://www.youtube.com/watch?v=Z4JZYxhdV74" target="_blank">htt
+     + <li><span class="ch-text">火</span> (huǒ) (fire) + <span class="ch-text">山</span> (shān) (mountain) = <span cla
+     + <li><span class="ch-text">人</span> (rén) (person) + <span class="ch-text">鱼</span> (yú) (fish) = <span class="
+     + <li><span class="ch-text">五</span> (wǔ) (five) + <span class="ch-text">月</span> (yuè) (month/moon) = <span cla
+     + <li><span class="ch-text">生</span> (shēng) (birth) + <span class="ch-text">日</span> (rì) (day) = <span class="
+     + <li><span class="ch-text">电</span> (diàn) (electricity) + <span class="ch-text">脑</span> (nǎo) (brain) = <span
+     + <p>Choose from these <span class="ch-text">女，日，父，马，巴，月</span></p>
+     + <li><span class="ch-text">妈 [女，马</span>]</li>
+     + <li><span class="ch-text">爸 [父，巴</span>]</li>
+     + <li><span class="ch-text">明 [日，月</span>]</li>
+     + <p>There are two answers for each one. <span class="ch-text">好，国，爸，四，岁，你</span></p>
+     + <td><span class="ch-text">好，你</span></td>
+     + <td><span class="ch-text">爸，岁</span></td>
+     + <td><span class="ch-text">国，四</span></td>
+     + <li>Radicals often give a clue about meaning. For example, the <span class="ch-text">氵</span> (water) radical 
+     + <li><span class="ch-text">河, 风, 海, 湖</span></li>
+     + <li><span class="ch-text">吃，听，羊， 叫</span></li>
+     + <li><span class="ch-text">林、板、树、白</span></li>
+     + … 3 more added
+CHFUN06: identical 0 / changed 1
+  ~ CHFUN07_0_0.html: -72 +72
+     - <li>to understand that Chinese shows past and future using time words and particles like 了, not by changing th
+     - <li>to understand that Chinese uses the structure A 比(bǐ) B + adjective to make comparisons.</li>
+     - <li>make comparison sentences using the pattern A 比 (bǐ)B + adjective.</li>
+     - <td> [audio] [media item 1] <a href="https://mytekuraschool.sharepoint.com/:w:/s/TeAraWhakamua381/IQD8KEgd62qo
+     - <td> [track 3] 七 qī seven / [track 4] 请 qǐng please</td>
+     - <td> [track 5] 人 rén person / [track 6] 日 rì day/sun</td>
+     - <td> [track 7] 菜 cài vegetable/food</td>
+     - <td> [track 8] 哥 gē older brother / [track 9] 个 gè measure word</td>
+     - <td> [track 10] 女 nǚ girl / female</td>
+     - <td>我Wǒ</td>
+     - <td>今天jīntiān today</td>
+     - <td>吃米饭chī mǐfàn eat rice</td>
+     - <td>他Tā He</td>
+     - <td>八点bā diǎn 8 o’clock</td>
+     - <td>去学校qù xuéxiào go to school</td>
+     - <li>我们 Wǒmen We / 昨天zuótiān yesterday / 看 电影kàn diànyǐng watched a movie</li>
+     - <li>我 Wǒ I / 周末 zhōumò on the weekend/ 玩 游戏wán yóuxì play games.</li>
+     - <li>王明 Wáng Míng</li>
+     - <li>李小华 Lǐ Xiǎohuá</li>
+     - <li>陈家伟 Chén Jiāwěi</li>
+     - <li>二〇二四年 十月 一日</li>
+     - <li>星期三 早上 八点</li>
+     - <li>明天 下午 五点半</li>
+     - <li>中国 北京 博物馆</li>
+     - <p>(b)新西兰 奥克兰 皇后街 一百九十一号</p>
+     - <th>二〇二四年 / Èr líng èr sì nián 2024</th>
+     - <th>十月 / shí yuè / October</th>
+     - <th>十五日 / shíwǔ rì / 15th</th>
+     - <td>星期三 / Xīngqīsān / Wednesday</td>
+     - <td>上午 / Shàngwǔ / morning</td>
+     - <td>八点三十分 / bā diǎn sānshí fēn / 8:30</td>
+     - <td>王 / Wáng (family name) / Wang</td>
+     - <td>老师 / Lǎoshī / Teacher</td>
+     - <th>什么shénme what</th>
+     - <th>几jǐ (question word for numbers)</th>
+     - <th>哪儿nǎr where</th>
+     - <td>你在吃 [hover trigger] 苹果 ( object ) 。 / nǐ zài chī píngguǒ / You are eating an apple</td>
+     - <td>你有 [hover trigger] 三 ( number ) 本书。 / nǐ yǒu sān běn shū / You have three books</td>
+     - <td>他在 [hover trigger] 家 ( place ) 。 / tā zài jiā / He is at home</td>
+     - <td>你在吃什么？ / nǐ zài chī shénme? / What are you eating?</td>
+     - … 32 more removed
+     + <li>to understand that Chinese shows past and future using time words and particles like <span class="ch-text"
+     + <li>to understand that Chinese uses the structure A <span class="ch-text">比</span>(bǐ) B + adjective to make c
+     + <li>make comparison sentences using the pattern A <span class="ch-text">比</span> (bǐ)B + adjective.</li>
+     + <td> [audio] [media item 1] <a href="https://mytekuraschool.sharepoint.com/:w:/s/TeAraWhakamua381/IQD8KEgd62qo
+     + <td> [track 3] <span class="ch-text">七</span> qī seven / [track 4] <span class="ch-text">请</span> qǐng please<
+     + <td> [track 5] <span class="ch-text">人</span> rén person / [track 6] <span class="ch-text">日</span> rì day/sun
+     + <td> [track 7] <span class="ch-text">菜</span> cài vegetable/food</td>
+     + <td> [track 8] <span class="ch-text">哥</span> gē older brother / [track 9] <span class="ch-text">个</span> gè m
+     + <td> [track 10] <span class="ch-text">女</span> nǚ girl / female</td>
+     + <td><span class="ch-text">我</span>Wǒ</td>
+     + <td><span class="ch-text">今天</span>jīntiān today</td>
+     + <td><span class="ch-text">吃米饭</span>chī mǐfàn eat rice</td>
+     + <td><span class="ch-text">他</span>Tā He</td>
+     + <td><span class="ch-text">八点</span>bā diǎn 8 o’clock</td>
+     + <td><span class="ch-text">去学校</span>qù xuéxiào go to school</td>
+     + <li><span class="ch-text">我们</span> Wǒmen We / <span class="ch-text">昨天</span>zuótiān yesterday / <span class=
+     + <li><span class="ch-text">我</span> Wǒ I / <span class="ch-text">周末</span> zhōumò on the weekend/ <span class="
+     + <li><span class="ch-text">王明</span> Wáng Míng</li>
+     + <li><span class="ch-text">李小华</span> Lǐ Xiǎohuá</li>
+     + <li><span class="ch-text">陈家伟</span> Chén Jiāwěi</li>
+     + … 52 more added
+CHFUN07: identical 0 / changed 1
+  ~ CHFUN08_0_0.html: -71 +71
+     - <th>mā 妈</th>
+     - <th>Má 麻</th>
+     - <th>Mǎ 马</th>
+     - <th>Mà 骂</th>
+     - <td>十一</td>
+     - <td>一十一</td>
+     - <td>十二</td>
+     - <td>一十二</td>
+     - <td>十三</td>
+     - <td>一十三</td>
+     - <td>十四</td>
+     - <td>一十四</td>
+     - <td>十五</td>
+     - <td>一十五</td>
+     - <td>十六</td>
+     - <td>一十六</td>
+     - <td>十七</td>
+     - <td>一十七</td>
+     - <td>十八</td>
+     - <td>一十八</td>
+     - <td>十九</td>
+     - <td>一十九</td>
+     - <td>十四</td>
+     - <td>十九</td>
+     - <td>十六</td>
+     - <p>In Chinese, age sentences don’t use “is,” “am,” or “are.” You simply say the person, the number, and 岁 (suì
+     - <td>她十岁 (tā shí suì) — She 10 yearsold.</td>
+     - <td>我十二岁 (wǒ shí’èr suì) — I 12 yearsold.</td>
+     - <td>他十五岁 (tā shíwǔ suì) — He 15 yearsold.</td>
+     - <p>我十二岁 (wǒ shí èr suì) I am 12 yearsold.</p>
+     - <td>我</td>
+     - <td>早上</td>
+     - <td>坐公共汽车</td>
+     - <td>去学校</td>
+     - <td>上课</td>
+     - <th>我们 / wǒmen / We</th>
+     - <th>晚上 / wǎnshang / in the evening</th>
+     - <th>坐公共汽车 / zuò gōnggòng qìchē / take the bus</th>
+     - <th>去商店 / qù shāngdiàn / go to the shop</th>
+     - <th>买东西 / mǎi dōngxi / buy things</th>
+     - … 31 more removed
+     + <th>mā <span class="ch-text">妈</span></th>
+     + <th>Má <span class="ch-text">麻</span></th>
+     + <th>Mǎ <span class="ch-text">马</span></th>
+     + <th>Mà <span class="ch-text">骂</span></th>
+     + <td><span class="ch-text">十一</span></td>
+     + <td><span class="ch-text">一十一</span></td>
+     + <td><span class="ch-text">十二</span></td>
+     + <td><span class="ch-text">一十二</span></td>
+     + <td><span class="ch-text">十三</span></td>
+     + <td><span class="ch-text">一十三</span></td>
+     + <td><span class="ch-text">十四</span></td>
+     + <td><span class="ch-text">一十四</span></td>
+     + <td><span class="ch-text">十五</span></td>
+     + <td><span class="ch-text">一十五</span></td>
+     + <td><span class="ch-text">十六</span></td>
+     + <td><span class="ch-text">一十六</span></td>
+     + <td><span class="ch-text">十七</span></td>
+     + <td><span class="ch-text">一十七</span></td>
+     + <td><span class="ch-text">十八</span></td>
+     + <td><span class="ch-text">一十八</span></td>
+     + … 51 more added
+CHFUN08: identical 0 / changed 1
+  ~ CHI1003_0_0.html: -2 +2
+     - <li>how to compare with the structures &quot;比&quot; and “没有...那么”</li>
+     - <li>compare in Chinese using the &quot;比&quot; structure</li>
+     + <li>how to compare with the structures &quot;<span class="ch-text">比</span>&quot; and “<span class="ch-text">没
+     + <li>compare in Chinese using the &quot;<span class="ch-text">比</span>&quot; structure</li>
+CHI1003: identical 8 / changed 1
+  ~ CHI1004_0_0.html: -27 +27
+     - <p>in Chinese by adding &quot; 吗&quot; or &quot;了吗&quot; at the end of the sentence.</p>
+     - <th><b>Example:</b> / Sam在河里游泳了。Sam zài hé lǐ yóuyǒng le. Sam swam in the river.</th>
+     - <td><b>Question words to use:</b> / (在哪里/zài nǎlǐ?) / <b>Your answer:</b> / Sam在哪里游泳了？ Sam zài nǎlǐ yóuyǒng le
+     - <li>河里有什么？ Hélǐ yǒu shénme? What is in the river?</li>
+     - <li>谁带弟弟去钓鱼？ Shéi dài dìdi qǜ diào yǘ?</li>
+     - <li>他们钓了多长时间？ Tāmen diàole duō cháng</li>
+     - <li>午饭你们吃了什么？ Wǔfàn nǐmen chīle shénme? What did you all eat for lunch?</li>
+     - <li>下午Sam在哪儿看书？ Xiàwǔ Sam zài nǎr kàn</li>
+     - <li>爸爸买了什么？ Bàba mǎile shénme? What did Dad</li>
+     - <li>昨天的晚饭怎么样？ Zuótiān de wǎnfàn zěnmèyàng?</li>
+     - <li>昨天Sam 玩得好不好？ Zuótiān Sam wán de hǎo bù hǎo? Did Sam have fun yesterday?</li>
+     - <li>下星期天Sam 要和爸爸做什么？ Xià xīngqītiān Sam yào hé bàba zuò shénme?</li>
+     - <p>王西的星期天Wang Xi&#39;s Weekend</p>
+     - <p>星期天上午，王西去商店给妈妈买礼物。因为妈妈下个月过生日。妈妈的生日是七月十号。冬天的天气很冷，所以他给妈妈买了一件毛衣。这件毛衣是绿色的，是妈妈最喜欢的颜色。他觉得妈妈穿一定很漂亮。</p>
+     - <p>星期天下午，王西去小明家打乒乓球。王西最喜欢打乒乓球，他打得非常好。小明没有王西打得好。他们玩得很开心。</p>
+     - <p>You: 王西，你星期天做什么了？</p>
+     - <p>王西: 我去商店给妈妈买了生日礼物。</p>
+     - <p>You: 你妈妈的生日是几月几号？</p>
+     - <p>王西: 她的生日是七月十号。</p>
+     - <p>You: 你买了什么？</p>
+     - <p>王西: 我买了一件绿色的毛衣。</p>
+     - <p>You: 你下午做什么了？</p>
+     - <p>王西: 我下午去了小明家。我们打乒乓球了。</p>
+     - <p>You: 小明打得怎么样？</p>
+     - <p>王西: 小明没有我打得好。</p>
+     - <p>You: 我也会打乒乓球。我们明天去打乒乓球怎么样？</p>
+     - <p>王西: 好，明天我们一起去打乒乓球。</p>
+     + <p>in Chinese by adding &quot; <span class="ch-text">吗</span>&quot; or &quot;<span class="ch-text">了吗</span>&q
+     + <th><b>Example:</b> / Sam<span class="ch-text">在河里游泳了。</span>Sam zài hé lǐ yóuyǒng le. Sam swam in the river.<
+     + <td><b>Question words to use:</b> / (<span class="ch-text">在哪里</span>/zài nǎlǐ?) / <b>Your answer:</b> / Sam<s
+     + <li><span class="ch-text">河里有什么？</span> Hélǐ yǒu shénme? What is in the river?</li>
+     + <li><span class="ch-text">谁带弟弟去钓鱼？</span> Shéi dài dìdi qǜ diào yǘ?</li>
+     + <li><span class="ch-text">他们钓了多长时间？</span> Tāmen diàole duō cháng</li>
+     + <li><span class="ch-text">午饭你们吃了什么？</span> Wǔfàn nǐmen chīle shénme? What did you all eat for lunch?</li>
+     + <li><span class="ch-text">下午</span>Sam<span class="ch-text">在哪儿看书？</span> Xiàwǔ Sam zài nǎr kàn</li>
+     + <li><span class="ch-text">爸爸买了什么？</span> Bàba mǎile shénme? What did Dad</li>
+     + <li><span class="ch-text">昨天的晚饭怎么样？</span> Zuótiān de wǎnfàn zěnmèyàng?</li>
+     + <li><span class="ch-text">昨天</span>Sam <span class="ch-text">玩得好不好？</span> Zuótiān Sam wán de hǎo bù hǎo? Did 
+     + <li><span class="ch-text">下星期天</span>Sam <span class="ch-text">要和爸爸做什么？</span> Xià xīngqītiān Sam yào hé bàba 
+     + <p><span class="ch-text">王西的星期天</span>Wang Xi&#39;s Weekend</p>
+     + <p><span class="ch-text">星期天上午，王西去商店给妈妈买礼物。因为妈妈下个月过生日。妈妈的生日是七月十号。冬天的天气很冷，所以他给妈妈买了一件毛衣。这件毛衣是绿色的，是妈妈最喜欢的颜色。他觉得妈妈
+     + <p><span class="ch-text">星期天下午，王西去小明家打乒乓球。王西最喜欢打乒乓球，他打得非常好。小明没有王西打得好。他们玩得很开心。</span></p>
+     + <p>You: <span class="ch-text">王西，你星期天做什么了？</span></p>
+     + <p><span class="ch-text">王西: 我去商店给妈妈买了生日礼物。</span></p>
+     + <p>You: <span class="ch-text">你妈妈的生日是几月几号？</span></p>
+     + <p><span class="ch-text">王西: 她的生日是七月十号。</span></p>
+     + <p>You: <span class="ch-text">你买了什么？</span></p>
+     + … 7 more added
+  ~ CHI1004_9_0.html: -3 +3
+     - <td>• 星期天上午王西去哪儿了? / Xīngqítiān shàngwǔ Wáng Xī qǜ nǎr le? / 2.妈妈的生日是几月几号？ / Māma de shēngrì shì jǐ yuè jǐ hào
+     - <td>• 星期天上午王西去哪儿了? / Xīngqítiān shàngwǔ Wáng Xī qǜ nǎr le? / • 妈妈的生日是几月几号？ / Māma de shēngrì shì jǐ yuè jǐ hào
+     - <td>• 七月是冬天. / Qī yuè shì dōngtiān. / • 他星期天下午去了小明家. / Tā xīngqítiān xiàwǔ qǜ le Xiǎo Míng jiā. / • 小明没有王西打得好。
+     + <td>• <span class="ch-text">星期天上午王西去哪儿了</span>? / Xīngqítiān shàngwǔ Wáng Xī qǜ nǎr le? / 2.<span class="ch-te
+     + <td>• <span class="ch-text">星期天上午王西去哪儿了</span>? / Xīngqítiān shàngwǔ Wáng Xī qǜ nǎr le? / • <span class="ch-te
+     + <td>• <span class="ch-text">七月是冬天</span>. / Qī yuè shì dōngtiān. / • <span class="ch-text">他星期天下午去了小明家</span>.
+CHI1004: identical 8 / changed 2
+  ~ CHI1005_0_0.html: -1 +1
+     - <p>There&#39;s an old saying in China that also encourages people to take risks; 失败乃成功之母 (Shībài nǎi chénggōng
+     + <p>There&#39;s an old saying in China that also encourages people to take risks; <span class="ch-text">失败乃成功之母
+  ~ CHI1005_7_0.html: -7 +7
+     - <th> [Create 8A and 8B] / 8A Writing practice / Paul has just received an email from his friend Xiăo Xīn/小新, w
+     - 你好！谢谢你的信。
+     - 我每天都很忙。（我早上七点起床）。(吃了早饭以后我上学）。
+     - 我每天有五节课。（上午三节，下午两节）。（下午1点我在学校吃午饭）。
+     - 我最喜欢过周末, 因为（我有很多时间玩儿）。
+     - 我有时候和同学（踢足球)，有时候（去游泳）。
+     - 你周末（喜欢干什么）？给我写信。（再见）！
+     + <th> [Create 8A and 8B] / 8A Writing practice / Paul has just received an email from his friend Xiăo Xīn/<span
+     + 你好！谢谢你的信。
+     + 我每天都很忙。（我早上七点起床）。(吃了早饭以后我上学）。
+     + 我每天有五节课。（上午三节，下午两节）。（下午</span>1<span class="ch-text">点我在学校吃午饭）。
+     + 我最喜欢过周末, 因为（我有很多时间玩儿）。
+     + 我有时候和同学（踢足球)，有时候（去游泳）。
+     + 你周末（喜欢干什么）？给我写信。（再见）！</span>
+CHI1005: identical 6 / changed 2
+CHWHA: identical 1 / changed 0
+COM1002: identical 9 / changed 0
+COM1005: identical 8 / changed 0
+COM1006: identical 10 / changed 0
+DAN1003: identical 10 / changed 0
+DAN1004: identical 4 / changed 0
+DAN1006: identical 4 / changed 0
+DTC1004: identical 8 / changed 0
+DTC1005: identical 21 / changed 0
+ENFUN01: identical 1 / changed 0
+ENFUN02: identical 1 / changed 0
+ENFUN03: identical 1 / changed 0
+ENFUN04: identical 1 / changed 0
+ENFUN05: identical 1 / changed 0
+ENFUN07: identical 1 / changed 0
+ENFUN08: identical 1 / changed 0
+ENFUN09: identical 1 / changed 0
+ENG1004: identical 8 / changed 0
+ENG1005: identical 6 / changed 0
+ENG1007: identical 1 / changed 0
+ENGC101: identical 6 / changed 0
+ENGC102: identical 8 / changed 0
+ENGC201: identical 7 / changed 0
+ENGC202: identical 9 / changed 0
+ENGC204: identical 7 / changed 0
+ENGC206: identical 8 / changed 0
+ENGC301: identical 8 / changed 0
+ENGC302: identical 8 / changed 0
+ENGC401: identical 8 / changed 0
+ENGC403: identical 16 / changed 0
+ENGFUN02: identical 5 / changed 0
+ENGI101: identical 4 / changed 0
+ENGI102: identical 7 / changed 0
+ENGI103: identical 7 / changed 0
+ENGI201: identical 5 / changed 0
+ENGI202: identical 7 / changed 0
+ENGI203: identical 11 / changed 0
+ENGI301: identical 6 / changed 0
+ENGI302: identical 7 / changed 0
+ENGI303: identical 7 / changed 0
+ENGI400: identical 4 / changed 0
+ENGI401: identical 12 / changed 0
+ENGI405: identical 8 / changed 0
+ENGJ101: identical 5 / changed 0
+ENGJ102: identical 6 / changed 0
+ENGJ201: identical 7 / changed 0
+ENGJ202: identical 6 / changed 0
+ENGJ301: identical 8 / changed 0
+ENGJ302: identical 10 / changed 0
+ENGJ402: identical 9 / changed 0
+ENGJ403: identical 10 / changed 0
+ENGR101: identical 8 / changed 0
+ENGR102: identical 7 / changed 0
+ENGR201: identical 7 / changed 0
+ENGR202: identical 8 / changed 0
+ENGR301: identical 9 / changed 0
+ENGR302: identical 8 / changed 0
+ENGS101: identical 6 / changed 0
+ENGS102: identical 7 / changed 0
+ENGS201: identical 9 / changed 0
+ENGS202: identical 7 / changed 0
+ENGS301: identical 8 / changed 0
+ENGS302: identical 7 / changed 0
+ENGS401: identical 7 / changed 0
+ENGS404: identical 12 / changed 0
+ENGS405: identical 1 / changed 0
+ENO2060: identical 6 / changed 0
+EXBP901: identical 6 / changed 0
+EXIP901: identical 6 / changed 0
+EXPFUN02: identical 1 / changed 0
+EXPFUN03: identical 1 / changed 0
+EXPFUN04: identical 1 / changed 0
+EXPFUN05: identical 1 / changed 0
+EXPFUN06: identical 1 / changed 0
+EXPFUN07: identical 1 / changed 0
+FRFUN06: identical 10 / changed 0
+FRFUN07: identical 9 / changed 0
+FRFUN08: identical 11 / changed 0
+FRNO901: identical 9 / changed 0
+FRNO902: identical 9 / changed 0
+GENO901: identical 23 / changed 0
+GEO1004: identical 3 / changed 0
+GEO1005: identical 7 / changed 0
+GEO1006: identical 4 / changed 0
+
+TOTAL: identical 700 / changed 11 / missing 0 over 121 modules
+CHANGED: CHFUN01/CHFUN01_0_0.html CHFUN04/CHFUN04_0_0.html CHFUN05/CHFUN05_0_0.html CHFUN06/CHFUN06_0_0.html CHFUN07/CHFUN07_0_0.html CHFUN08/CHFUN08_0_0.html CHI1003/CHI1003_0_0.html CHI1004/CHI1004_0_0.html CHI1004/CHI1004_9_0.html CHI1005/CHI1005_0_0.html CHI1005/CHI1005_7_0.html

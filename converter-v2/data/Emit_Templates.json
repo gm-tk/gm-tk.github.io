@@ -5458,6 +5458,41 @@
 		"content_row_open": "<div class=\"row{rowClass}\">\n<div class=\"{contentColClass}\">",
 		"content_row_close": "</div>\n</div>",
 		"content_col_class_default": "col-md-8 col-12",
+		"language_fonts": {
+			"_doc": "ROUND 419 (the autonomous loop's session 30 Round 1) — KB constraint 92 / CL-0093 (13 Sept 2026, locked admin): the language-font classes `jp-text` / `ch-text` / `pinyin` are MANDATORY on every occurrence and the conversion applies them. THE CJK HALF: every run of Chinese / Japanese text on the page is wrapped `<span class=\"ch-text\">…</span>` / `<span class=\"jp-text\">…</span>` (ListsAndRuns.LanguageFontWrap at the PageAssembler whole-page seam — after LinkTextDisplay, before MathReplace, the pre-acks slice only like every other text pass; the gold leaves its acks CJK bare 23 / 25). A RUN = blocks of CJK characters (Han, kana, CJK punctuation, fullwidth forms — `cjk_chars`) joined by internal whitespace and by the ASCII brackets / slashes / stops that sit BETWEEN two CJK blocks (`internal_joiners` — the KB's `他(她)是我的(哥哥/弟弟/姐姐/妹妹`), trimmed to start and end on a CJK character, and holding at least one Han or kana character (a punctuation-only stretch is never a run). The CLASS: a run holding any kana is Japanese regardless of the module (`kana_is_japanese`); a Han-only run takes the MODULE's language from `module_language` (longest code-prefix match on run.moduleCode); a Han-only run in a module with no language entry is left bare (`han_needs_module_language` — the KB's Red-Flag half is not built: the corpus has 5 such runs on 4 non-language modules, all acks / video titles the gold also leaves bare). Verbatim zones (`skip_zones`, opener → closer): <script>, <style>, <title>, the cv2-note / cv2-comment developer quotes; a text segment already inside an element carrying one of `classes` is never re-wrapped (idempotent; a future builder that emits the class keeps it). The hand-off boxes ARE wrapped (the developer builds the widget from them; the skeleton collapses them). MEASURED (outputs/_s30_r1_langfont.py / _s30_r1_langspans.py, the gate's pairing): the gold wraps 5,437 of 5,512 CJK runs = 0.99 (carrier span 98 %, text-only, in every context — td 1,271 / p 1,005 / li 389 / b 206 / h3–h5 224 — the <b> OUTSIDE the span); Claude shipped 3,812 runs bare on 26 pages / 14 modules (JPN1004, CHFUN01/04–08, JPFUN01/02, CHI1003–1005, CHWHA, MXFL202). Pinyin is the next round (its own detector: the non-macron tone marks + the pairing rule). Env LANGFONT_OFF restores the bare runs.",
+			"enabled": true,
+			"env": "LANGFONT_OFF",
+			"wrapper": "span",
+			"classes": {
+				"ch": "ch-text",
+				"jp": "jp-text",
+				"pinyin": "pinyin"
+			},
+			"module_language": {
+				"CHI": "ch",
+				"CHIFUN": "ch",
+				"CHFUN": "ch",
+				"CHWHA": "ch",
+				"JPN": "jp",
+				"JPNFUN": "jp",
+				"JPFUN": "jp",
+				"JAP": "jp",
+				"JAPFUN": "jp"
+			},
+			"kana_is_japanese": true,
+			"han_needs_module_language": true,
+			"cjk_chars": "\\u3040-\\u30ff\\u3400-\\u4dbf\\u4e00-\\u9fff\\uf900-\\ufaff\\uff00-\\uffef\\u3000-\\u303f",
+			"han_chars": "\\u3400-\\u4dbf\\u4e00-\\u9fff\\uf900-\\ufaff",
+			"kana_chars": "\\u3040-\\u30ff",
+			"internal_joiners": "\\s\\u00a0()\\[\\]/.,:;!?…\\-",
+			"skip_zones": [
+				["<script\\b", "</script>"],
+				["<style\\b", "</style>"],
+				["<title\\b", "</title>"],
+				["<p class=\"cv2-note\"", "</p>"],
+				["<p class=\"cv2-comment\"", "</p>"]
+			]
+		},
 		"merge_adjacent_lists": {
 			"_doc": "ROUND 392 (the autonomous loop's session 26 Round 6 — the r391 miner row #4286 decomposed; the census outputs/_s26_r392_adjul.py). A writer's bullet run split into two sibling `<ul>`s by an item that rendered nothing (a bullet's trailing inline `[link to X]` marker, a consumed item, an image between bullets) — Claude shipped 106 adjacent `</ul> <ul>` pairs on 54 pages / 34 modules in the live body; the gold ships 3 on 3 pages (0.97 one list). `ListsAndRuns.MergeAdjacentLists`, a full-page post-pass at the r337 seam (after TypedNumberList, before LinkTextDisplay; body only; the same verbatim zones — cv2 dumps, notes, the listed built widgets): a bare `</ul>` followed only by whitespace and a bare `<ul>` joins into one list. `ol` deliberately NOT listed (202 Claude pairs / gold 0 — a restart at 1 is a new numbered list; measure first). OFF = the r391 output.",
 			"enabled": true,

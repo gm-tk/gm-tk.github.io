@@ -432,9 +432,13 @@ class PageAssembler {
 								DataService.Data.InputDocRules?.emoji_strip?.disclosure ?? "",
 								run, "diagnostic"))));
 						const ai = tidied.indexOf("<div class=\"acks");
+						// ROUND 419 (KB constraint 92 / CL-0093): every CJK run takes its language-font class
+						// (ListsAndRuns.LanguageFontWrap; data body_region.language_fonts; env LANGFONT_OFF) —
+						// after the link-text pass, the pre-acks slice only (the gold's acks credits stay bare).
+						const langWrap = (seg) => ListsAndRuns.LanguageFontWrap(ListsAndRuns.LinkTextDisplay(seg), run);
 						const passed = ai < 0
-							? ListsAndRuns.LinkTextDisplay(deEmoji(tidied))
-							: ListsAndRuns.LinkTextDisplay(deEmoji(tidied.slice(0, ai))) + tidied.slice(ai);
+							? langWrap(deEmoji(tidied))
+							: langWrap(deEmoji(tidied.slice(0, ai))) + tidied.slice(ai);
 						// ROUND 346 (Chris's D10-7): the equation sentinels become their MathML LAST, after every
 						// text pass (none of them may touch the markup), and a page that now carries a <math>
 						// gains the mathJax body class (the gold's per-page form). Data Input_Doc_Rules.math.

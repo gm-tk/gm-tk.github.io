@@ -1,0 +1,68 @@
+totals {'ch-text': 3253, 'cjk_with_asciipunct': 183, 'cjk_with_cjkpunct': 1916, 'cjk_with_space': 284, 'pinyin': 2116, 'cjk_with_digit': 13, 'cjk_with_latin': 14, 'jp-text': 1320}
+carrier {('ch-text', 'span'): 3206, ('pinyin', 'span'): 2066, ('jp-text', 'span'): 1298, ('ch-text', 'strong'): 26, ('pinyin', 'td'): 24, ('pinyin', 'b'): 20, ('ch-text', 'p'): 12, ('jp-text', 'apan'): 10, ('jp-text', 'p'): 9, ('ch-text', 'li'): 6, ('pinyin', 'p'): 4, ('ch-text', 'div'): 3}
+parent {('ch-text', 'td'): 1271, ('ch-text', 'p'): 1005, ('pinyin', 'td'): 732, ('jp-text', 'td'): 730, ('pinyin', 'br'): 471, ('ch-text', 'li'): 389, ('jp-text', 'p'): 333, ('pinyin', 'p'): 313, ('pinyin', 'li'): 272, ('ch-text', 'b'): 206, ('pinyin', 'b'): 142, ('ch-text', 'br'): 115, ('jp-text', 'li'): 100, ('ch-text', 'h4'): 91, ('pinyin', 'h4'): 78, ('jp-text', 'h3'): 55, ('ch-text', 'h3'): 41, ('ch-text', 'h5'): 37, ('pinyin', 'span'): 32, ('ch-text', 'span'): 30}
+kids {('ch-text', ()): 3191, ('pinyin', ()): 2054, ('jp-text', ()): 1116, ('jp-text', ('span',)): 119, ('ch-text', ('span',)): 45, ('pinyin', ('span',)): 38, ('jp-text', ('b',)): 30, ('jp-text', ('input',)): 18, ('jp-text', ('br',)): 14, ('jp-text', ('u',)): 12, ('pinyin', ('strong',)): 11, ('pinyin', ('br',)): 10}
+nonCJK chars inside ch/jp spans: {' ': 8909, '\t': 203, '\n': 184, ':': 99, '.': 55, '(': 34, ')': 33, '/': 29, 'e': 26, ',': 23, 'r': 21, 'o': 20, 'n': 17, 's': 16, '?': 15, 'd': 14, 'i': 12, '1': 9, 'a': 9, 'u': 9, '!': 7, 'c': 7, '…': 6, 't': 6, 'F': 6, '0': 5, 'C': 5, 'h': 5, 'k': 5, 'Y': 5, '7': 4, '6': 4, '2': 3, 'R': 3, 'U': 3, 'w': 3, 'l': 3, '4': 3, 'm': 3, '3': 2}
+edges: {('start', 'cjk'): 4525, ('end', 'cjk'): 4424, ('end', "':'"): 87, ('end', "')'"): 17, ('end', "'?'"): 11, ('start', "'('"): 7, ('start', "','"): 5, ('start', "':'"): 5, ('end', "'.'"): 4, ('end', "'!'"): 3, ('end', "'s'"): 3, ('end', "'…'"): 2, ('start', "'.'"): 2, ('start', "'['"): 2, ('start', "'…'"): 2, ('end', "','"): 1, ('start', "'“'"): 1, ('end', "'”'"): 1, ('start', "'M'"): 1, ('end', "'t'"): 1}
+pinyin chars {'tone_nonmacron': 6975, 'macron': 1892, 'has_nonmacron_tone': 1897, 'no_tone_at_all': 85, 'macron_only': 134}; words {'multiword': 1142, 'ends_punct': 642, 'single': 974}; parents {'td': 732, 'br': 471, 'p': 313, 'li': 272, 'b': 142, 'h4': 78, 'span': 32, 'h3': 30, 'tr': 24, 'div': 8}
+examples (no-HanKana ch/jp spans; pinyin spans with no non-macron tone):
+  CHI1003 | CHI1003_10_0_Texts.html | pinyin-no-nonmacron-tone | Ann:
+  CHI1003 | CHI1003_10_0_Texts.html | pinyin-no-nonmacron-tone | Ann:
+  CHI1003 | CHI1003_10_0_Texts.html | pinyin-no-nonmacron-tone | Ann:
+  CHI1003 | CHI1003_10_0_Texts.html | pinyin-no-nonmacron-tone | Ann:
+  CHI1003 | CHI1003_10_0_Texts.html | pinyin-no-nonmacron-tone | Ann:
+  CHI1003 | CHI1003_10_0_Texts.html | pinyin-no-nonmacron-tone | Ann:
+  CHI1003 | CHI1003_10_0_Texts.html | pinyin-no-nonmacron-tone | Ann:
+  CHI1003 | CHI1003_10_0_Texts.html | pinyin-no-nonmacron-tone | Ann:
+  CHI1003 | CHI1003_10_0_Texts.html | pinyin-no-nonmacron-tone | Ann:
+  CHI1003 | CHI1003_10_0_Texts.html | pinyin-no-nonmacron-tone | Ann:
+  CHI1003 | CHI1003_10_0_Texts.html | pinyin-no-nonmacron-tone | Ann:
+  CHI1003 | CHI1003_10_0_Texts.html | pinyin-no-nonmacron-tone | Ann:
+  CHI1003 | CHI1003_10_0_Texts.html | pinyin-no-nonmacron-tone | Ann:
+  CHI1003 | CHI1003_1_0.html | pinyin-no-nonmacron-tone | zhū
+  CHI1003 | CHI1003_1_0.html | pinyin-no-nonmacron-tone | jī
+  CHI1003 | CHI1003_1_0.html | pinyin-no-nonmacron-tone | jī
+  CHI1003 | CHI1003_1_0.html | pinyin-no-nonmacron-tone | zhū
+  CHI1003 | CHI1003_1_0.html | pinyin-no-nonmacron-tone | zhū
+  CHI1003 | CHI1003_1_0.html | pinyin-no-nonmacron-tone | chūshēng
+  CHI1003 | CHI1003_2_0.html | pinyin-no-nonmacron-tone | Xīngqīyī
+  CHI1003 | CHI1003_2_0.html | pinyin-no-nonmacron-tone | Xīngqīsān
+  CHI1003 | CHI1003_3_0.html | pinyin-no-nonmacron-tone | chūntiān
+  CHI1003 | CHI1003_3_0.html | pinyin-no-nonmacron-tone | qiūtiān
+  CHI1003 | CHI1003_3_0.html | pinyin-no-nonmacron-tone | dōngtiān
+  CHI1003 | CHI1003_3_0.html | pinyin-no-nonmacron-tone | chūntiān
+  CHI1003 | CHI1003_3_0.html | pinyin-no-nonmacron-tone | qiūtiān
+  CHI1003 | CHI1003_3_0.html | pinyin-no-nonmacron-tone | dōngtiān
+  CHI1003 | CHI1003_3_0.html | pinyin-no-nonmacron-tone | yīntiān
+  CHI1003 | CHI1003_3_0.html | pinyin-no-nonmacron-tone | guāfēng
+  CHI1003 | CHI1003_3_0.html | pinyin-no-nonmacron-tone | Jīntiān yīntiān.
+  CHI1003 | CHI1003_3_0.html | pinyin-no-nonmacron-tone | Jīntiān yīntiān.
+  CHI1003 | CHI1003_3_0.html | pinyin-no-nonmacron-tone | Jīntiān yīntiān.
+  CHI1003 | CHI1003_3_0.html | pinyin-no-nonmacron-tone | Jīntiān yīntiān.
+  CHI1003 | CHI1003_3_0.html | pinyin-no-nonmacron-tone | Jīntiān yīntiān.
+  CHI1003 | CHI1003_5_0.html | pinyin-no-nonmacron-tone | Guā fēng le.
+  CHI1003 | CHI1003_6_0.html | ch-text | 。
+  CHI1003 | CHI1003_6_0.html | ch-text | 。
+  CHI1003 | CHI1003_6_0.html | ch-text | ？
+  CHI1003 | CHI1003_6_0.html | ch-text | ？
+  CHI1003 | CHI1003_6_0.html | ch-text | ？
+  CHI1004 | CHI1004_6_0.html | ch-text | ？
+  CHI1004 | CHI1004_6_0.html | ch-text | ？
+  CHI1005 | CHI1005_2_0.html | ch-text | ，
+  CHI1005 | CHI1005_2_0.html | ch-text | :
+  CHI1005 | CHI1005_2_0.html | ch-text | :
+  CHI1005 | CHI1005_2_0.html | ch-text | :
+  CHI1005 | CHI1005_2_0.html | ch-text | :
+  CHI1005 | CHI1005_2_0.html | ch-text | :
+  CHI1005 | CHI1005_7_0.html | ch-text | 。
+  CHI1005 | CHI1005_7_0.html | ch-text | 。
+  CHI1005 | CHI1005_7_0.html | ch-text | 。
+  CHI1005 | CHI1005_7_0.html | ch-text | 。
+  CHI1005 | CHI1005_7_0.html | ch-text | ？
+  CHI1005 | CHI1005_7_0.html | ch-text | ？
+  CHI1005 | CHI1005_7_0.html | ch-text | ？
+  CHI1005 | CHI1005_7_0.html | ch-text | 。
+  CHFUN05 | CHFUN05_0_0.html | ch-text | 。
+  CHFUN05 | CHFUN05_0_0.html | ch-text | ？
+  CHFUN05 | CHFUN05_0_0.html | ch-text | ，
+  CHFUN05 | CHFUN05_0_0.html | ch-text | 。
