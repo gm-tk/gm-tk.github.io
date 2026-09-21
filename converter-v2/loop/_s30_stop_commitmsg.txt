@@ -1,0 +1,23 @@
+Session 30 stop (§4 EXHAUSTION): the Round 6 PICK-pass record (the widget lane re-read by content) — loop mirror + README
+
+The autonomous loop's session 30 ended at ≈19:10 NZST on the §4 EXHAUSTION rule, declared with
+the miner's queue quoted: DIFF_QUEUE.md (18:27, the r421 corpus = the current corpus; r422
+changed no page) = 182 CANDIDATE rows, every one dispositioned; the KB queue (§D) has no NOT
+CAPTURED row with >= 20 in-scope pages (row 92's ch / jp half captured by r419, pinyin 7 pages);
+and the dashboard backlog — the D10-3 widget lane — re-read BY CONTENT from the disk boxes in
+Rounds 3 and 6 (unclassified / dragAndDrop / selfCheck / modal / carousel / accordion / flipCard
+/ clickDrop bundles dumped through the live scanner and joined to the disk truth): no un-built
+authoring family >= 20 sites at gold >= 0.60 remains outside the quiz-engine types (the s17 / s18
+open question).
+
+Six rounds in 3 h 35: r419 the language-font wrap (+0.0212pp, >=50 +2), r420 the letter-grid
+bingo (D10-3's selfCheck shape 1, the new gate _verify_bingo.cjs), r421 the registry-known module
+code, r422 the FRFUN06 side-tab dialect built + measured but shipped inert (under the floor —
+Chris's call), Rounds 3 / 6 PICK passes (fifteen instruments, nothing at the floor). Skeleton
+54.186 -> 54.2065% (59.6% of the 90.9% ceiling), >=50 1439 -> 1441, cs exact 14168 -> 14170,
+every other gate EXACT, 17 selftests GREEN. Build 260619.93; the corpus is r422 (= r421 bytes).
+LOOP_STATE.md carries the STOPPED entry, the session's decisions (none numbered), the condensed
+sections (the s29 instruments / Round 10 and the s30 Round 5 / 6 sections archived) and the
+"Next session starts with:" line.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

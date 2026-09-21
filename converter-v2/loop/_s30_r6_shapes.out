@@ -1,0 +1,44 @@
+== carousel: bundles 921 in 334 modules; un-built boxes on disk 269 in 165 modules
+     81 bundles /  33 mods  [mixed]  tag:carousel table | T1 M0   e.g. AGH1003 p2.0 «[Carousel of images]»
+     13 bundles /  13 mods  [all-unbuilt]  tag:carousel tag:embed black tag:? black | T0 M1   e.g. BLL152 p1.0 «[carousel]»
+     12 bundles /   9 mods  [mixed]  tag:carousel table tag:body | T1 M0   e.g. BLL157 p1.1 «[rolling banner]»
+      8 bundles /   7 mods  [mixed]  tag:carousel tag:videox2 | T0 M2   e.g. ENGC403 p10.0 «[insert video carousel]»
+      6 bundles /   5 mods  [mixed]  tag:carousel tag:videox3 | T0 M3   e.g. BLL116 p1.0 «[Carousel]»
+      5 bundles /   5 mods  [mixed]  tag:carousel | T0 M1   e.g. ANZH205 p6.0 «[PDF slideshow and Audio player from TKI]»
+      5 bundles /   5 mods  [mixed]  tag:carousel | T0 M0   e.g. ART1005 p0.0 «[Insert item 7 - Skyscape carousel 3]»
+      5 bundles /   5 mods  [mixed]  tag:carousel tag:videox4 | T0 M4   e.g. BLL110 p0.0 «[carousel]»
+      5 bundles /   5 mods  [all-unbuilt]  tag:carousel tag:embed black tag:?x2 | T0 M1   e.g. BLL123 p1.0 «[carousel]»
+      4 bundles /   4 mods  [mixed]  tag:carousel table black | T1 M0   e.g. AGH1005 p6.0 «[interactive: carousel of images + captions]»
+== accordion: bundles 721 in 210 modules; un-built boxes on disk 257 in 120 modules
+     44 bundles /  22 mods  [mixed]  tag:accordion table | T1 M0   e.g. AGH1006 p2.0 «[Interactive: Accordion] * Note to developer – ple»
+     27 bundles /  19 mods  [all-unbuilt]  tag:accordion table | T1 M0   e.g. CEDK102 p0.0 «[Accordion] could each be a different colour pleas»
+      6 bundles /   4 mods  [mixed]  tag:accordion blackx6 | T0 M0   e.g. ENGC102 p2.0 «[Accordion]»
+      5 bundles /   4 mods  [mixed]  tag:accordion black | T0 M0   e.g. AGH1006 p4.0 «[interactive: Accordion] Merged content: HTO 1102 »
+      4 bundles /   4 mods  [mixed]  tag:accordion blackx5 | T0 M0   e.g. AGH1009 p6.0 «[interactive: accordion]»
+      4 bundles /   1 mods  [mixed]  tag:accordion tag:h3 table tag:accordion | T1 M0 +extra   e.g. CEDR501 p6.0 «[Accordion 3]»
+      4 bundles /   3 mods  [mixed]  tag:accordionx2 tag:body tag:accordion tag:body tag:accordion tag:body | T0 M0 +extra   e.g. ENG1004 p3.0 «[Accordion]»
+      4 bundles /   3 mods  [mixed]  tag:accordion | T0 M0   e.g. HIS1006 p9.0 «[please embed the following sources in accordion t»
+      3 bundles /   2 mods  [mixed]  tag:accordion blackx4 | T0 M0   e.g. AGH1009 p4.0 «[interactive: accordion under bold headings]»
+      3 bundles /   3 mods  [all-unbuilt]  tag:accordion blackx5 | T0 M0   e.g. BLL122 p2.0 «[accordion]»
+== flipCard: bundles 491 in 223 modules; un-built boxes on disk 206 in 128 modules
+    117 bundles /  43 mods  [mixed]  table | T1 M0   e.g. AGH1006 p2.0 «»
+     28 bundles /  25 mods  [all-unbuilt]  table | T1 M0   e.g. ARFUN02 p0.0 «»
+      7 bundles /   5 mods  [mixed]  tablex2 | T2 M0   e.g. ENFUN08 p0.0 «»
+      6 bundles /   6 mods  [mixed]  table | T1 M1   e.g. ENFUN01 p0.0 «»
+      5 bundles /   1 mods  [mixed]  tag:h3 | T0 M0   e.g. XGF9002 p0.0 «[Front] [H3]»
+      4 bundles /   4 mods  [mixed]   | T0 M0   e.g. CEDR501 p5.0 «»
+      4 bundles /   4 mods  [mixed]  tag:body table | T1 M0   e.g. CHFUN05 p0.0 «[body]»
+      3 bundles /   3 mods  [mixed]  table blackx2 | T1 M0   e.g. AGH1006 p2.0 «»
+      3 bundles /   1 mods  [mixed]  tag:? table | T1 M1   e.g. ENFUN01 p0.0 «]»
+      3 bundles /   1 mods  [mixed]  tag:h3 tag:image | T0 M1   e.g. OSAI401 p3.0 «[front][H3]»
+== clickDrop: bundles 713 in 165 modules; un-built boxes on disk 299 in 112 modules
+    143 bundles /   6 mods  [mixed]  tag:image | T0 M0   e.g. XDLS901 p1.0 «[Image Compare from LS global edits]»
+     38 bundles /  22 mods  [mixed]  table | T1 M0   e.g. BLLR201 p2.0 «»
+     35 bundles /  22 mods  [all-unbuilt]  table | T1 M0   e.g. CEDO501 p7.0 «»
+     23 bundles /   4 mods  [mixed]  tag:image | T0 M0 +extra   e.g. XDLS901 p1.0 «[Image Learn by heart icon from LS global edits]»
+     14 bundles /   4 mods  [mixed]   | T0 M0   e.g. BLLR201 p1.1 «»
+      7 bundles /   1 mods  [mixed]  black | T0 M0   e.g. ARFUN04 p0.0 «»
+      6 bundles /   2 mods  [all-unbuilt]   | T0 M0   e.g. HES1006 p7.0 «»
+      5 bundles /   4 mods  [mixed]  table | T1 M3   e.g. CEDK102 p0.0 «»
+      5 bundles /   4 mods  [mixed]  table | T1 M1   e.g. ENGI401 p2.0 «»
+      5 bundles /   2 mods  [mixed]  tag:? | T0 M0   e.g. XDLS901 p1.0 «[dev – Two Images Explain and Do from LS global ed»

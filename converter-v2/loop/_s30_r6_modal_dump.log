@@ -1,0 +1,638 @@
+
+=== XGF9004 page 5.0 modal #undefined modifier="" extraTypes=["dragAndDrop"] owner=[Activity 4C]
+  items (5): openers 0 / members 5
+    [tag modal/INTERACTIVE cls=tag] text«[pop-out:» after«sight, smell, taste, touch, hearing»
+    [tag ? cls=noise] text«]» after«to help us decide if something is true or not. If someone is deaf, the»
+    [black] «In the quiz below there are sentences that tell us something. How do we know if it’s true »
+    [tag drag and drop/INTERACTIVE cls=tag] text«[Insert drag and drop match the statement]» after«»
+    [table 0x0] 
+  tables: 1; media: []; instructions: []
+
+=== XGF9004 page 9.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal","modal"] owner=-
+  items (22): openers 0 / members 22
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«*Philosophy looks at the really big questions – about life, values, an»
+    [black] «b. facts about numbers and animals.»
+    [black] «2. Philosophers use»
+    [black] «a. calculators and rulers to solve problems.»
+    [black] «b. questions and thinking to explore ideas.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«*The main tool of a philosopher is a good question, not a gadget.*»
+    [black] «3. Socratic questioning means asking»
+    [black] «a. when lunch is or how tall something is.»
+    [black] «b. why and what if.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«*Asking “why” or “what if” helps us go deeper, instead of stopping at »
+    [black] «4. Philosophy helps us understand»
+    [black] «a. spelling words and sports scores.»
+    [black] «b. life, choices, and fairness.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«*Philosophy isn’t about memorising facts – it's about understanding li»
+    [black] «5. Everyday life is full of»
+    [black] «a. questions that make us think.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«*Even simple situations – like sharing, rules, or telling the truth – »
+    [black] «b. answers that never change.»
+    [black] «6. Asking big questions makes us more»
+    [black] «a. sleepy and forgetful.»
+    [black] «b. thoughtful and aware.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«*When we ask big questions, we notice more and reflect more deeply abo»
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 9.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal","modal","modal","modal"] owner=-
+  items (15): openers 0 / members 15
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Fairness can depend on need. Sometimes equal isn’t the same as fair.»
+    [black] «An ākonga (student) gets extra time on a test because they need help focusing.»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Fairness can mean giving people what they need so they can have the sa»
+    [black] «One person always gets to pick the game you play when you are with your friends.»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Fairness often means sharing decisions or taking turns.»
+    [black] «A kaiako (teacher) gives harder work to some ākonga because they are ready for more of a c»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Fairness can involve matching tasks to abilities, not treating everyon»
+    [black] «Everyone has to wait their turn to use the computer.»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Following agreed rules helps make things fair for everyone.»
+    [black] «A sports team only lets the fastest players join.»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Fairness can include giving everyone a chance, not just the most skill»
+    [black] «One child gets a ride to school because they live far away.»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Fairness sometimes means giving everyone a chance, not just the most s»
+    [black] «A brother and sister are asked to tidy up their rooms. One finishes quickly and gets lots »
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Praise should recognise effort as well as speed.»
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 9.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal","modal","modal"] owner=-
+  items (13): openers 0 / members 13
+    [tag modal/INTERACTIVE cls=tag] text«[pop-out]» after«Fairness starts with respect – recognising the value of each person.»
+    [black] «same»
+    [tag modal/INTERACTIVE cls=tag] text«[pop-out]» after«Sometimes fairness means everyone gets the same.»
+    [black] «need»
+    [tag modal/INTERACTIVE cls=tag] text«[pop-out]» after«At other times, fairness means giving people what they need to succeed»
+    [black] «dignity»
+    [tag modal/INTERACTIVE cls=tag] text«[pop-out]» after«Treating others with dignity means recognising their worth, even when »
+    [black] «voice»
+    [tag modal/INTERACTIVE cls=tag] text«[pop-out]» after«Listening to each voice ensures everyone has a chance to be heard.»
+    [black] «unfairness»
+    [tag modal/INTERACTIVE cls=tag] text«[pop-out]» after«Fairness also means noticing when something feels unjust or unequal.»
+    [black] «equality»
+    [tag modal/INTERACTIVE cls=tag] text«[pop-out]» after«Philosophers debate whether fairness is about equality (everyone has t»
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 10.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal","modal","modal","modal","modal","modal","modal","modal"] owner=-
+  items (26): openers 0 / members 26
+    [black] «1. The Earth orbits the sun.»
+    [tag modal/INTERACTIVE cls=tag] text«[True] [Pop-out]» after«This is supported by scientific evidence.»
+    [black] «2. Dreams are real experiences while you sleep.»
+    [tag modal/INTERACTIVE cls=tag] text«[True] [Pop-out]» after«They are real experiences, but not the same as physical reality.»
+    [black] «3. A unicorn lives in the forest.»
+    [tag modal/INTERACTIVE cls=tag] text«[False] [Pop-out]» after«No evidence supports this.»
+    [black] «4. Deep oceans may still have animals we haven’t discovered»
+    [tag modal/INTERACTIVE cls=tag] text«[Needs more evidence] [Pop-out]» after«Scientists keep discovering new species, but we don’t yet know everyth»
+    [black] «5. The Pacific Ocean is bigger than the Atlantic Ocean.»
+    [tag modal/INTERACTIVE cls=tag] text«[True] [Pop-out]» after«Maps and measurement confirm this.»
+    [black] «6. You can breathe underwater without equipment.»
+    [tag modal/INTERACTIVE cls=tag] text«[False] [Pop-out]» after«Scientific evidence confirms humans cannot survive this way.»
+    [black] «7. Some cultures believe ancestors guide the living.»
+    [tag modal/INTERACTIVE cls=tag] text«[True] [Pop-out]» after«Truth can also be spiritual or cultural, not only scientific.»
+    [black] «8. Robots will one day be smarter than humans.»
+    [tag modal/INTERACTIVE cls=tag] text«[Needs more evidence] [Pop-out]» after«It might happen, but no one can say for certain yet.»
+    [black] «9. All people see colours in the same way.»
+    [tag modal/INTERACTIVE cls=tag] text«[False] [Pop-out]» after«Some people are colour-blind, so truth can depend on perspective.»
+    [black] «10. Two plus two equals four.»
+    [tag modal/INTERACTIVE cls=tag] text«[True] [Pop-out]» after«This is a mathematical fact.»
+    [black] «11. Life exists on other planets.»
+    [tag modal/INTERACTIVE cls=tag] text«[Needs more evidence] [Pop-out]» after«We haven’t found clear proof yet, but scientists are still searching.»
+    [black] «12. Everyone dreams in colour.»
+    [tag modal/INTERACTIVE cls=tag] text«[Needs more evidence] [Pop-out]» after«Some people say they dream in colour, others in black and white – we d»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«How tricky was it to decide where to put each statement? Which ones we»
+    [tag button/ELEMENT cls=tag] text«[Go to journal]» after«»
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 11.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal","modal"] owner=-
+  items (29): openers 0 / members 29
+    [black] «1. “It’s like a snake.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«His answer makes sense from his perspective, but it isn’t the whole tr»
+    [black] «1. “It’s like a tree.”»
+    [black] «1. “It’s like a wall.”»
+    [black] «1. Another blind man touched the ear and said:»
+    [black] «1. “It’s like a rope.”»
+    [black] «1. “It’s like a fan.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«Each person’s perspective gives a part of the story.»
+    [black] «1. “It’s like a spear.”»
+    [black] «1. A blind man touched the leg and said:»
+    [black] «1. “It’s like a rope.”»
+    [black] «1. “It’s like a tree.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«From his view, the elephant seemed strong and solid like a tree trunk.»
+    [black] «1. “It’s like a wall.”»
+    [black] «1. Another man touched the side and said:»
+    [black] «1. “It’s like a spear.”»
+    [black] «1. “It’s like a fan.”»
+    [black] «1. “It’s like a wall.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«He wasn’t wrong – it felt like that to him, but he only felt part of t»
+    [black] «1. The man who touched the tusk said:»
+    [black] «1. “It’s like a fan.”»
+    [black] «1. “It’s like a spear.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«Sharp and hard, the tusk gave him a very different idea and perspectiv»
+    [black] «1. “It’s like a snake.”»
+    [black] «1. Finally, the man who touched the tail said:»
+    [black] «1. “It’s like a rope.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«His truth was limited to what he felt – but together, their individual»
+    [black] «1. “It’s like a snake.”»
+    [black] «1. “It’s like a tree.”»
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 12.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal","modal","modal","modal"] owner=[Activity 6A]
+  items (16): openers 0 / members 16
+    [black] «1. If you study, then you will learn something.»
+    [tag modal/INTERACTIVE cls=tag] text«[Logical] [Pop-out]» after«Studying usually leads to learning – this makes sense.»
+    [black] «2. If the sun sets, then it will be daytime.»
+    [tag modal/INTERACTIVE cls=tag] text«[Not logical] [Pop-out]» after«Sunset leads to night, not to daytime.»
+    [black] «3. If someone is kind, then they will always agree with you.»
+    [tag modal/INTERACTIVE cls=tag] text«[Not logical] [Pop-out]» after«Kindness doesn’t always mean agreement.»
+    [black] «4. If I practise my sport regularly, then I’ll probably improve.»
+    [tag modal/INTERACTIVE cls=tag] text«[Logical] [Pop-out]» after«Practise usually improves skills.»
+    [black] «5. If I failed one maths test, then I’ll never be good at maths.»
+    [tag modal/INTERACTIVE cls=tag] text«[Not logical] [Pop-out]» after«One result doesn’t mean you can’t improve with effort and support.»
+    [black] «6. If it’s cold outside, then I should wear a jacket.»
+    [tag modal/INTERACTIVE cls=tag] text«[Logical] [Pop-out]» after«Jackets help us stay warm.»
+    [black] «7. If my best friend didn’t text me back straight away, they must be mad at me.»
+    [tag modal/INTERACTIVE cls=tag] text«[Logical] [Pop-out]» after«There could be many other reasons – they might be busy or asleep.»
+    [black] «8. If I forget my homework once, then the kaiako will always think I’m lazy.»
+    [tag modal/INTERACTIVE cls=tag] text«[Not logical] [Pop-out]» after«One mistake doesn’t prove a permanent trait.»
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 12.0 modal #undefined modifier="insert with boxes to type . on the last " extraTypes=["modal","modal","modal","modal","modal","modal","modal","modal","modal","modal","modal","modal"] owner=[Activity 6B]
+  items (25): openers 0 / members 25
+    [tag modal/INTERACTIVE cls=tag] text«[Insert interactive with boxes to type answers. On the last box, a pop» after«»
+    [black] «1. 2, 4, 6, 8, ______»
+    [tag modal/INTERACTIVE cls=tag] text«[10] [Pop-out]» after«The numbers increase by 2 each time.»
+    [black] «2. 1, 2, 4, 8, ______»
+    [tag modal/INTERACTIVE cls=tag] text«[16] [Pop-out]» after«The numbers double each time.»
+    [black] «3. 5, 10, 15, 20, ______»
+    [tag modal/INTERACTIVE cls=tag] text«[25] [Pop-out]» after«The numbers increase by 5 each time.»
+    [black] «4. 100, 90, 80, 70, _____»
+    [tag modal/INTERACTIVE cls=tag] text«[60] [Pop-out]» after«The numbers decrease by 10 each time.»
+    [black] «5. A, C, E, G, _______»
+    [tag modal/INTERACTIVE cls=tag] text«[L] [Pop-out]» after«The letters miss one each time.»
+    [black] «6. 3, 6, 9, 12, _______»
+    [tag modal/INTERACTIVE cls=tag] text«[15] [Pop-out]» after«The numbers increase by 3 each time – multiples of 3.»
+    [black] «7. Monday, Wednesday, Friday, ______»
+    [tag modal/INTERACTIVE cls=tag] text«[Sunday] [Pop-out]» after«Every second day is missed out.»
+    [black] «8. Circle, Square, Triangle, Circle, Square, _______»
+    [tag modal/INTERACTIVE cls=tag] text«[Triangle] [Pop-out]» after«The pattern repeats each of the three shapes.»
+    [black] «9. 2, 6, 12, 20, _______»
+    [tag modal/INTERACTIVE cls=tag] text«[30] [Pop-out]» after«Each term is the product of two consecutive whole numbers: 1×2=2, 2×3=»
+    [black] «10. A, E, I, M, _____»
+    [tag modal/INTERACTIVE cls=tag] text«[Q] [Pop-out]» after«These are letters moving forward by +4 positions in the alphabet: A (+»
+    [black] «11. 1, 4, 9, 16, _____»
+    [tag modal/INTERACTIVE cls=tag] text«[25] [Pop-out]» after«These are square numbers: 1², 2², 3², 4², so next is 5² = 25.»
+    [black] «12. 2, 4, 8, 14, 22, _____»
+    [tag modal/INTERACTIVE cls=tag] text«[32] [Pop-out]» after«Each term increases by consecutive numbers: +2, +4, +6, +8, +10... so »
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 12.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal","modal","modal","modal"] owner=-
+  items (15): openers 0 / members 15
+    [tag modal/INTERACTIVE cls=tag] text«[Logical] [Pop-out]» after«Cause and effect – fragile things can break when they fall.»
+    [black] «2. If I say the word “banana”, then I will turn into a banana.»
+    [tag modal/INTERACTIVE cls=tag] text«[Silly] [Pop-out]» after«Words don’t change reality like that.»
+    [black] «3. If you go outside in heavy rain without an umbrella, you’ll probably get wet.»
+    [tag modal/INTERACTIVE cls=tag] text«[Logical] [Pop-out]» after«Evidence supports this – rain makes things wet.»
+    [black] «4. If I wear socks on my hands, then I will be able to fly.»
+    [tag modal/INTERACTIVE cls=tag] text«[Silly] [Pop-out]» after«Socks don’t give us flying powers.»
+    [black] «5. If you study for a test, then you might do better.»
+    [tag modal/INTERACTIVE cls=tag] text«[Logical] [Pop-out]» after«Practise and preparation usually improve performance.»
+    [black] «6. If I call myself a robot, then I don’t need to sleep.»
+    [tag modal/INTERACTIVE cls=tag] text«[Silly] [Pop-out]» after«Being human means we still need sleep, no matter what we call ourselve»
+    [black] «7. If you put ice in the sun, it will melt.»
+    [tag modal/INTERACTIVE cls=tag] text«[Logical] [Pop-out]» after«Heat causes ice to melt.»
+    [black] «8. If I read this sentence out loud, then everyone in the world will suddenly dance.»
+    [tag modal/INTERACTIVE cls=tag] text«[Silly] [Pop-out]» after«Funny, but there is no evidence it could happen.»
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 13.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal","modal","modal","modal"] owner=-
+  items (15): openers 0 / members 15
+    [tag modal/INTERACTIVE cls=tag] text«[Need] [Pop-out]» after«Essential for survival.»
+    [black] «• A new phone»
+    [tag modal/INTERACTIVE cls=tag] text«[Want] [Pop-out]» after«Not necessary for survival.»
+    [black] «• Shelter»
+    [tag modal/INTERACTIVE cls=tag] text«[Need] [Pop-out]» after«Protection and safety.»
+    [black] «• Friendship»
+    [tag modal/INTERACTIVE cls=tag] text«[Need] [Pop-out]» after«Humans need connection and belonging.»
+    [black] «• Ice cream»
+    [tag modal/INTERACTIVE cls=tag] text«[Want] [Pop-out]» after«Nice to have, but not essential.»
+    [black] «• Education»
+    [tag modal/INTERACTIVE cls=tag] text«[Need] [Pop-out]» after«Necessary for opportunities and growth.»
+    [black] «• Designer clothes»
+    [tag modal/INTERACTIVE cls=tag] text«[Want] [Pop-out]» after«Useful clothes are a need, but brands are not.»
+    [black] «• Love and care»
+    [tag modal/INTERACTIVE cls=tag] text«[Need] [Pop-out]» after«Emotional well-being is essential.»
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 14.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal","modal"] owner=-
+  items (27): openers 0 / members 27
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out feedback]» after«*Sometimes worries make our imagination run wild! Have you ever imagin»
+    [black] «1. Because he wanted to play a game.»
+    [black] «1. What makes people feel safe in new situations?»
+    [black] «1. Friends or family.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out feedback]» after«*We often feel braver when we are not alone. How do you think people w»
+    [black] «1. Running away.»
+    [black] «1. Pretending nothing is happening.»
+    [black] «1. Which is true about bravery?»
+    [black] «1. Being brave means you are never scared.»
+    [black] «1. Being brave means doing something even when you feel scared.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out feedback]» after«*Courage doesn’t mean we don’t feel fear – it means we choose to act k»
+    [black] «1. Being brave means knowing everything.»
+    [black] «1. What do worries often do?»
+    [black] «1. Make things feel bigger or scarier than they really are.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out feedback]» after«*Worries can grow in our minds like shadows. How can we tell the diffe»
+    [black] «1. Make us laugh.»
+    [black] «1. Help us feel calm.»
+    [black] «1. What helped the boy in the story?»
+    [black] «1. Going in alone.»
+    [black] «1. Having his mum with him.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out feedback]» after«*Sometimes just having someone beside us makes all the difference. Who»
+    [black] «1. Running home.»
+    [black] «1. How can we deal with worries?»
+    [black] «1. Talk to someone we trust.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out feedback]» after«*Sharing worries often makes them smaller. Why do you think telling so»
+    [black] «1. Keep them secret.»
+    [black] «1. Try never to think about them.»
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 14.0 modal #undefined modifier="in brackets - when the answer is , could" extraTypes=["modal","modal","modal","modal","modal","modal"] owner=-
+  items (25): openers 0 / members 25
+    [tag modal/INTERACTIVE cls=tag] text«[Correct answer in brackets – when the answer is correct, could a pop-» after«»
+    [black] «1. Nikolai sees a turtle stuck on the beach.»
+    [black] «• Ignore it, because he is busy.»
+    [black] «• Help the turtle back to the water.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«The right thing to do is to help.»
+    [black] «1. Nikolai wonders if he should wait until tomorrow to help an old friend.»
+    [black] «• Help right now.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«The best time is the present.»
+    [black] «• Help tomorrow.»
+    [black] «1. Nikolai is with his friend who needs comfort.»
+    [black] «• Leave to find someone more “important’.»
+    [black] «• Stay and listen.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«The most important one is the person you are with.»
+    [black] «1. Nikolai is planting seeds in the garden.»
+    [black] «• Think only about the harvest years away.»
+    [black] «• Focus on planting carefully now.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«Pay attention to the present moment.»
+    [black] «1. Nikolai sees two animals fighting.»
+    [black] «• Step in kindly to separate them.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct][Pop-out]» after«Do good for the one next to you.»
+    [black] «• Walk away and let them hurt each other.»
+    [black] «1. Nikolai is asked when he will act to help his neighbours.»
+    [black] «• Today.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«Now is the best time.»
+    [black] «• Someday in the future.»
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 14.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal","modal"] owner=-
+  items (11): openers 0 / members 11
+    [tag modal/INTERACTIVE cls=tag] text«[False] [Pop-out feedback]» after«Her garden brightened the lives of many people, not just her own.»
+    [black] «1. Small acts, like planting flowers, can bring joy to others.»
+    [tag modal/INTERACTIVE cls=tag] text«[True] [Pop-out feedback]» after«Exactly! Even little things can change how people feel.»
+    [black] «1. It takes something big and dramatic to change people’s hearts.»
+    [tag modal/INTERACTIVE cls=tag] text«[False] [Pop-out feedback]» after«Lydia shows that small, steady acts of kindness can have a powerful ef»
+    [black] «1. Lydia’s letters showed she cared about her family.»
+    [tag modal/INTERACTIVE cls=tag] text«[True] [Pop-out feedback]» after«Her letters were full of love and hope for her family.»
+    [black] «1. People ignored Lydia’s garden.»
+    [tag modal/INTERACTIVE cls=tag] text«[False] [Pop-out feedback]» after«The garden became a bright spot that many people noticed and enjoyed.»
+    [black] «1. Even in hard times, beauty and kindness can give people hope.»
+    [tag modal/INTERACTIVE cls=tag] text«[True] [Pop-out feedback]» after«Yes – this is one of the big ideas of the story.»
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 15.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal"] owner=-
+  items (18): openers 0 / members 18
+    [black] «1. Having enough to share.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«Why is sharing important?»
+    [black] «1. What matters more when playing?»
+    [black] «1. Winning every time.»
+    [black] «1. Having fun with friends.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«Does winning always make you happy?»
+    [black] «1. What matters more when someone is talking?»
+    [black] «1. Listening carefully.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«Why is it important to listen carefully to others?»
+    [black] «1. Talking over them.»
+    [black] «1. What matters more when choosing a game?»
+    [black] «1. Picking only your favourite.»
+    [black] «1. Choosing something everyone enjoys.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«How does including everyone make the game better?»
+    [black] «1. What matters more when helping at home?»
+    [black] «1. Doing it quickly.»
+    [black] «1. Doing your best.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«Why might effort matter more than speed?»
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 15.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal","modal","modal"] owner=-
+  items (33): openers 0 / members 33
+    [black] «1. Share your food.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«How does sharing show fairness and kindness?»
+    [black] «1. Ignore it.»
+    [black] «1. Scenario 2: You forgot your homework. What should you do?»
+    [black] «1. Pretend you did it.»
+    [black] «1. Tell the kaiako the truth.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«Why is honesty important, even when it’s hard?»
+    [black] «1. Blame a sibling.»
+    [black] «1. Scenario 3: Someone new joins your game. What should you do?»
+    [black] «1. Tell them to go away.»
+    [black] «1. Let them join in.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«How does including others make a game better?»
+    [black] «1. Ignore them.»
+    [black] «1. Scenario 4: You see a friend struggling to carry books. What should you do?»
+    [black] «1. Offer to help them.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«What happens when we choose to help others?»
+    [black] «1. Walk past them.»
+    [black] «1. Tease them.»
+    [black] «1. Scenario 5: You accidentally bump into someone, and they fall. What should you do?»
+    [black] «1. Say sorry.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«How does saying sorry help fix mistakes?»
+    [black] «1. Run away.»
+    [black] «1. Blame them.»
+    [black] «1. Scenario 7: There are only two swings, but three people want a turn. What should you do»
+    [black] «1. Push in front.»
+    [black] «1. Take turns.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«How does fairness help everyone feel included?»
+    [black] «1. Tell the others to wait while you stay on longer.»
+    [black] «1. Scenario 8: During a board game, you will a number, but no one sees it. What should you»
+    [black] «1. Say the number that helps you win.»
+    [black] «1. Roll again secretly»
+    [black] «1. Tell the number you actually rolled.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«Why is fairness important in games as well as in life?»
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 15.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal","modal","modal","modal"] owner=-
+  items (15): openers 0 / members 15
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Is it ever okay not to tell the truth? What if honesty could cause har»
+    [black] «1. It’s better to be popular than kind.»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«What if kindness makes you unpopular? Which one matters more in the lo»
+    [black] «1. Rules are always fair.»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Who makes the rules, and why? Can rules sometimes be unfair and need t»
+    [black] «1. Adults always know best.»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Can children sometimes see things more clearly? When might adults be w»
+    [black] «1. Winning is more important than learning.»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«What do you really gain from winning? What do you gain from learning?»
+    [black] «1. Fairness means everyone gets the same.»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Is giving everyone the same always fair? What if someone needs more he»
+    [black] «1. You should always follow instructions.»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«What if the instructions are unfair or harmful? When is it right to qu»
+    [black] «1. Money makes people happier.»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Can money really buy happiness? What else might make life meaningful?»
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 16.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal"] owner=-
+  items (10): openers 0 / members 10
+    [black] «1. Being kind is always important.»
+    [tag modal/INTERACTIVE cls=tag] text«[True] [Pop-out]» after«Can kindness ever be tricky? How might it look different in some situa»
+    [black] «1. Sharing makes everyone happy.»
+    [tag modal/INTERACTIVE cls=tag] text«[True] [Pop-out]» after«Does sharing always make everyone happy? What else might matter?»
+    [black] «1. It’s okay to be mean sometimes.»
+    [tag modal/INTERACTIVE cls=tag] text«[False] [Pop-out]» after«How can being mean affect others?»
+    [black] «1. Helping friends is better than only thinking about yourself.»
+    [tag modal/INTERACTIVE cls=tag] text«[True] [Pop-out]» after«How does helping others help yourself too?»
+    [black] «1. Everyone can be a good friend.»
+    [tag modal/INTERACTIVE cls=tag] text«[True] [Pop-out]» after«What makes a good friend?»
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 16.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal","modal","modal","modal"] owner=-
+  items (38): openers 0 / members 38
+    [black] «1. Wait until they have finished.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«Why is patience important when sharing things at home?»
+    [black] «1. Sneak onto the computer when they are not looking.»
+    [black] «1. You’re doing schoolwork, but you notice your pet is hungry. What is the best choice?»
+    [black] «a. Keep working and ignore the pet.»
+    [black] «b. Tell someone else, even if they are busy.»
+    [black] «c. Stop and feed your pet.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«Why is it important to care for others, even when you are busy?»
+    [black] «1. You forgot to do part of your online lesson. What should you do?»
+    [black] «a. Tell your kaiako the truth.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«Why does honesty help build trust, even online?»
+    [black] «b. Pretend you did it.»
+    [black] «c. Blame the technology.»
+    [black] «1. Your brother or sister wants to watch TV, but you’d rather listen to music. What is the»
+    [black] «a. Take the remote and turn on your music.»
+    [black] «b. Let them have their way every time.»
+    [black] «c. Take turns.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«How does taking turns show respect?»
+    [black] «1. Your friend is upset because their puzzle is too hard. What should you do?»
+    [black] «a. Tell them to give up.»
+    [black] «b. Offer to help them try again.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«How can helping others feel good for you too?»
+    [black] «c. Tease them for not finishing.»
+    [black] «1. Someone sends you a message in a group chat that feels unkind. What is the best way to »
+    [black] «a. Send back something mean.»
+    [black] «b. Ignore it and talk to someone you trust.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«Why can walking away or asking for help be the stronger choice?»
+    [black] «c. Keep the mean message going.»
+    [black] «1. You promised to help with chores, but you have been asked to go outside to play a game.»
+    [black] «a. Ignore the chores and go outside and join in the game.»
+    [black] «b. Do the chores first, then go and join in the game.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«Why does keeping promises matter?»
+    [black] «c. Hope someone else does them for you.»
+    [black] «1. You find money down the back of the couch. What is the best choice?»
+    [black] «a. Keep it for yourself.»
+    [black] «b. Hide it somewhere.»
+    [black] «c. Find the person it belongs to and give it back to them.»
+    [tag modal/INTERACTIVE cls=tag] text«[Correct] [Pop-out]» after«Why is returning something that is not yours the honest choice?»
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 17.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal","modal"] owner=-
+  items (12): openers 0 / members 12
+    [black] «1. “Fairness means everyone gets the same.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Is giving everyone the same always fair? What if someone needs more he»
+    [black] «1. “Responsibility means doing what you are told.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Can responsibility also mean making your own decisions?»
+    [black] «1. “Empathy is more important than rules.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Can following rules and showing empathy ever conflict?»
+    [black] «1. “Adults always know what’s best.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Can children sometimes see things more clearly?»
+    [black] «1. “Justice is the same as punishment.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«What else might justice include besides punishment?»
+    [black] «1. “Helping others makes the world better.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Are there limits to helping? How do we decide?»
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 17.0 modal #undefined modifier="" extraTypes=["modal","modal","modal"] owner=-
+  items (8): openers 0 / members 8
+    [black] «1. “Freedom means doing whatever you want.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Does freedom need limits? How does your freedom affect others?»
+    [black] «1. “We are only responsible for ourselves.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Do we also have responsibilities to others – like family, friends, or »
+    [black] «1. “If something is legal, it is always right.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Can laws ever be unfair? What examples can you think of?»
+    [black] «10. “Peace is more important than truth.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Is it ever better to stay silent to avoid conflict, or is truth always»
+  tables: 0; media: []; instructions: []
+
+=== XGF9004 page 17.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal"] owner=-
+  items (10): openers 0 / members 10
+    [black] «11. “Beauty is only about how things look.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Can something be beautiful because of how it makes us feel or what it »
+    [black] «12. “Nature has value only if people can use it.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Does nature have value even if we don’t use it?»
+    [black] «13. “Art is valuable only if it is expensive.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Can art have value in other ways – like inspiring us or expressing ide»
+    [black] «14. “Beauty is the same for everyone.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Do all people see beauty the same way? What makes it different?»
+    [black] «15. “Things only have value if they are useful.”»
+    [tag modal/INTERACTIVE cls=tag] text«[Pop-out]» after«Can something be valuable because of memories, emotions, or meaning in»
+  tables: 0; media: []; instructions: []
+
+=== MXDI102 page 1.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal","modal"] owner=[Activity 1D]
+  items (13): openers 0 / members 13
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 1]» after«»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 1 Image]» after«»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«Look around your house, section and/or neighbourhood to find and take »
+    [tag button/ELEMENT cls=tag] text«[button]» after«Go to journal.»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 2]» after«»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 2 Image]» after«»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«Practise splitting a group of objects in half or cutting things in hal»
+    [tag button/ELEMENT cls=tag] text«[button]» after«Go to journal.»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 3]» after«»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 3 Image]» after«»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«Read or listen to the following story.»
+    [tag video/ELEMENT cls=tag] text«[Video]» after«Give Me Half! by Stuart J. Murphy (https://www.youtube.com/watch?v=hVa»
+    [tag ? cls=instruction] text«Start at 0.26» after«»
+  tables: 0; media: ["https://www.youtube.com/watch?v=hVaxiJB6Fls"]; instructions: ["Start at 0.26"]
+
+=== MXDI102 page 2.0 modal #undefined modifier="" extraTypes=["modal","modal","modal"] owner=[Activity 2D]
+  items (6): openers 0 / members 6
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 1]» after«»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 1 Image]» after«»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«Find and take photos of things that have been cut or split into quarte»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 2]» after«»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 2 Image]» after«»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«Practise splitting a group of objects into quarters. These could be bl»
+  tables: 0; media: []; instructions: []
+
+=== MXDI102 page 3.0 modal #undefined modifier="" extraTypes=["modal","modal","modal"] owner=[Activity 3C]
+  items (8): openers 0 / members 8
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 1]» after«»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 1 Image]» after«»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«Find and take photos of things that have been cut or split into quarte»
+    [tag button/ELEMENT cls=tag] text«[Button]» after«Go to journal.»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 2]» after«»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 2 Image]» after«»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«Practice splitting a group of objects into thirds. These could be bloc»
+    [tag button/ELEMENT cls=tag] text«[Button]» after«Go to journal.»
+  tables: 0; media: []; instructions: []
+
+=== MXDI102 page 4.0 modal #undefined modifier="" extraTypes=["modal","modal","modal","modal","modal"] owner=[Activity 4D]
+  items (12): openers 0 / members 12
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 1]» after«»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 1 Image]» after«»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«Find and make a recipe that uses fractions in it. Upload photos of you»
+    [tag button/ELEMENT cls=tag] text«[Button]» after«Go to journal.»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 2]» after«»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 2 Image]» after«»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«Start with a full sheet of newspaper. Turn the music up and dance only»
+    [tag button/ELEMENT cls=tag] text«[Button]» after«Go to journal.»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 3]» after«»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 3 Image]» after«»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«Create some shapes with playdough and practise cutting them up into eq»
+    [tag button/ELEMENT cls=tag] text«[Button]» after«Go to journal.»
+  tables: 0; media: []; instructions: []
+
+=== ENGI401 page 6.0 modal #undefined modifier="" extraTypes=[] owner=-
+  items (1): openers 0 / members 1
+    [table 0x0] 
+  tables: 1; media: ["https://docs.google.com/presentation/d/1EyqTuohvU6"]; instructions: []
+
+=== ENGI401 page 6.0 modal #undefined modifier="" extraTypes=[] owner=-
+  items (4): openers 0 / members 4
+    [tag modal/INTERACTIVE cls=tag] text«[Modal]» after«Congratulations! You have now completed this module!»
+    [tag image/ELEMENT cls=tag] text«[image]» after«https://www.istockphoto.com/photo/happy-birthday-dog-singing-gm4747990»
+    [tag button/ELEMENT cls=tag] text«[button]» after«No»
+    [tag ? cls=instruction] text«link back to the landing page Lesson 5» after«»
+  tables: 0; media: ["https://www.istockphoto.com/photo/happy-birthday-d"]; instructions: ["link back to the landing page Lesson 5"]
+
+=== ENGI401 page 8.0 modal #undefined modifier="" extraTypes=[] owner=-
+  items (1): openers 0 / members 1
+    [table 0x0] 
+  tables: 1; media: ["https://drive.google.com/file/d/1KjdX6AIiGlfB4iT2n","https://www.twinkl.co.nz/resource/t-l-53899-diary-"]; instructions: []
+
+=== ENGI401 page 8.0 modal #undefined modifier="" extraTypes=[] owner=-
+  items (4): openers 0 / members 4
+    [tag modal/INTERACTIVE cls=tag] text«[Modal]» after«Congratulations! You have now completed this module!»
+    [tag image/ELEMENT cls=tag] text«[image]» after«https://www.istockphoto.com/photo/happy-birthday-dog-singing-gm4747990»
+    [tag button/ELEMENT cls=tag] text«[button]» after«No»
+    [tag ? cls=instruction] text«link back to the landing page Lesson 5» after«»
+  tables: 0; media: ["https://www.istockphoto.com/photo/happy-birthday-d"]; instructions: ["link back to the landing page Lesson 5"]
+
+=== ENGI401 page 9.0 modal #undefined modifier="" extraTypes=[] owner=-
+  items (1): openers 0 / members 1
+    [table 0x0] 
+  tables: 1; media: ["https://drive.google.com/file/d/1UMetCbI1KJWai8A1B","https://www.twinkl.co.nz/resource/au-t2-e-41486-te"]; instructions: []
+
+=== ENGI401 page 10.0 modal #undefined modifier="" extraTypes=[] owner=-
+  items (1): openers 0 / members 1
+    [table 0x0] 
+  tables: 1; media: ["https://drive.google.com/file/d/1ZtuQMbYom3OucDBrq","https://www.twinkl.co.nz/resource/features-of-an-b"]; instructions: []
+
+=== ENGI401 page 11.0 modal #undefined modifier="" extraTypes=[] owner=-
+  items (5): openers 0 / members 5
+    [tag modal/INTERACTIVE cls=tag] text«[Modal]» after«Congratulations! You have now completed this module!»
+    [tag image/ELEMENT cls=tag] text«[image]» after«https://www.istockphoto.com/photo/happy-birthday-dog-singing-gm4747990»
+    [tag button/ELEMENT cls=tag] text«[button]» after«No»
+    [tag ? cls=instruction] text«link back to the landing page Lesson 5» after«»
+    [tag ? cls=instruction] text«Note- I have added the twinkl specific resource links to the writer’s » after«»
+  tables: 0; media: ["https://www.istockphoto.com/photo/happy-birthday-d"]; instructions: ["link back to the landing page Lesson 5","Note- I have added the twinkl specific resource links to the"]
+
+=== MXDI101 page 1.2 modal #undefined modifier="" extraTypes=["modal","modal"] owner=[Activity 1D]
+  items (10): openers 0 / members 10
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 1 Image]» after«»
+    [tag h3/ELEMENT cls=tag] text«[H3]» after«Threading Beads»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«Thread some beads onto a string in patterns of two. Use this to practi»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 2 Image]» after«»
+    [tag h3/ELEMENT cls=tag] text«[H3]» after«Building Blocks»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«Build a tower with blocks, changing colour every 2 blocks. Practise co»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal image 3]» after«»
+    [tag h3/ELEMENT cls=tag] text«[H3]» after«Stepping Stones»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«Draw some stepping stones outside with chalk. Write numbers in the ste»
+    [tag button/ELEMENT cls=tag] text«[Button]» after«Go to Journal»
+  tables: 0; media: []; instructions: []
+
+=== MXDI101 page 1.3 modal #undefined modifier="" extraTypes=["modal","modal"] owner=[Activity 2D]
+  items (11): openers 0 / members 11
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 1 Image]» after«»
+    [tag h3/ELEMENT cls=tag] text«[H3]» after«5 Fingers»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«Paint or draw around your hand lots of times. Practise counting in 5 t»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 2 Image]» after«»
+    [tag h3/ELEMENT cls=tag] text«[H3]» after«Lots of Ladybugs»
+    [tag body/ELEMENT cls=tag] text«[body]» after«Listen to the story ‘Lots of Ladybugs’ to practise counting in fives.»
+    [tag video/ELEMENT cls=tag] text«[video]» after«Lots of Ladybugs Counting in Fives - Read aloud with Skip Counting (ht»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 3 Image]» after«»
+    [tag h3/ELEMENT cls=tag] text«[H3]» after«Exploring outside»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«Go outside and gather a collection of items and group these together i»
+    [tag button/ELEMENT cls=tag] text«[Button]» after«Go to Journal»
+  tables: 0; media: ["https://www.youtube.com/watch?v=Sr3Yjvvh8h0"]; instructions: []
+
+=== MXDI101 page 1.4 modal #undefined modifier="" extraTypes=["modal","modal"] owner=[Activity 3C]
+  items (10): openers 0 / members 10
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 1 Image]» after«»
+    [tag h3/ELEMENT cls=tag] text«[H3]» after«Building towers»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«Build several different towers with blocks that have ten blocks in eac»
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 2 Image]» after«»
+    [tag h3/ELEMENT cls=tag] text«[H3]» after«Make a Path»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«Draw with chalk outside or create a paper path. Skip counting in 10s, »
+    [tag modal/INTERACTIVE cls=tag] text«[Modal 3 Image]» after«»
+    [tag h3/ELEMENT cls=tag] text«[H3]» after«My whānau and friends»
+    [tag body/ELEMENT cls=tag] text«[Body]» after«Skip count in 10s to work out how many fingers there are altogether wi»
+    [tag button/ELEMENT cls=tag] text«[Button]» after«Go to Journal»
+  tables: 0; media: []; instructions: []
+
+=== HIS1001 page 8.0 modal #undefined modifier="coloured box or" extraTypes=[] owner=-
+  items (3): openers 0 / members 3
+    [tag modal/INTERACTIVE cls=tag] text«[Important – important coloured box or Modal]» after«»
+    [black] «In this lesson, you will learn about some of the events in the lives of the Armih Aelon Ke»
+    [tag image/ELEMENT cls=tag] text«[Image link: https://en.wikipedia.org/wiki/Flag_of_the_Marshall_Island» after«»
+  tables: 0; media: []; instructions: []
+
+=== HIS1001 page 9.0 modal #undefined modifier="coloured box or" extraTypes=[] owner=-
+  items (4): openers 0 / members 4
+    [tag modal/INTERACTIVE cls=tag] text«[Important – important coloured box or Modal]» after«»
+    [tag image/ELEMENT cls=tag] text«[Image link: https://en.wikipedia.org/wiki/A%E1%B9%89angu]» after«»
+    [black] «In this lesson, you will learn about some of the events in the lives of the First National»
+    [tag body/ELEMENT cls=tag] text«[Body Text]» after«»
+  tables: 0; media: []; instructions: []
+
+=== HIS1001 page 10.0 modal #undefined modifier="or box, not" extraTypes=[] owner=-
+  items (4): openers 0 / members 4
+    [tag modal/INTERACTIVE cls=tag] text«[Important or modal box, not alert box]» after«»
+    [tag ? cls=instruction] text«A positive outcome from the PTBT was a steep decline in the amount of » after«»
+    [tag image/ELEMENT cls=tag] text«[Image link: https://en.wikipedia.org/wiki/Partial_Nuclear_Test_Ban_Tr» after«»
+    [tag ? cls=instruction] text«However, France and China did not agree to join the PTBT. This rejecti» after«»
+  tables: 0; media: []; instructions: ["A positive outcome from the PTBT was a steep decline in the ","However, France and China did not agree to join the PTBT. Th"]
