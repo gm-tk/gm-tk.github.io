@@ -281,8 +281,11 @@ class SkeletonBuilder {
 		// ---- footer -----------------------------------------------------------
 		// When this page actually built an INQUIRY layout (content.inquiryActive), use the inquiry-specific footer nav CSS class instead of this page type's default.
 		const inqCfg = tpl.body_region?.inquiry_tabs;
+		// ROUND 422 — a side-tab page (content.inquiryFlavour) takes its flavour's body class and
+		// footer class (the FRFUN family's `fundamentals container-fluid noPhase` + `fundamentals-nav`).
+		const inqFlav = (content.inquiryFlavour && inqCfg?.side_tab_nav?.flavours) ? inqCfg.side_tab_nav.flavours[content.inquiryFlavour] : null;
 		const footer = this.#buildFooter({ run, pageType, isFinal, prevHref, nextHref,
-			footerClassOverride: content.inquiryActive && inqCfg ? inqCfg.footer_class : null,
+			footerClassOverride: content.inquiryActive && inqCfg ? ((inqFlav && inqFlav.footer_class) || inqCfg.footer_class) : null,
 			// A CED-subject inquiry page whose registry produced no footer links at all (a
 			// single-file CED module has an empty footer by default) falls back instead to a
 			// fixed home/prev/next nav shell so navigation never disappears. Scoped to
@@ -296,7 +299,7 @@ class SkeletonBuilder {
 		const mode = TemplateModeResolver.Resolve(rules.body_class, run);
 		// When this page actually built an INQUIRY layout, force the body class to the inquiry container shell ("inquiry container-fluid").
 		if (content.inquiryActive && inqCfg) {
-			mode.bodyClass = inqCfg.body_class || "inquiry container-fluid";
+			mode.bodyClass = (inqFlav && inqFlav.body_class) || inqCfg.body_class || "inquiry container-fluid";
 		} else if (inqCfg && inqCfg.body_class_requires_build !== false
 			&& !(typeof process !== "undefined" && process.env && process.env.INQBODY_OFF)
 			&& /\binquiry\b/.test(mode.bodyClass)) {

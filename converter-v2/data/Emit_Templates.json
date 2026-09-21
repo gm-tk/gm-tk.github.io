@@ -5403,6 +5403,30 @@
 				"next"
 			],
 			"_footer_nav_doc": "ROUND 102 — the FIXED inquiry footer nav shell (the human ships an identical home/prev/next `ul.footer-nav.inquiry-nav` on every inquiry page). SkeletonBuilder emits it for a firing CED page (content.cedInquiry) ONLY when the registry produced NO footer links (single-file CED → footer_links 'none' → empty footer) — so a round-100 BLL module that already carries registry footer links is byte-unchanged. The hrefs render empty (single page), matching the human.",
+			"side_tab_nav": {
+				"_doc": "ROUND 422 (the autonomous loop's session 30 Round 5). THE SIDE-TAB-NAVIGATION FUNDAMENTALS DIALECT (the FRFUN family — FRFUN06 / 07 / 08, 28 lesson pages; the s28 'multi-file level-page renderer' follow-up; KB 14.1 / 06 §3.3). The writer authors each lesson page as `[Side tab navigation]` + a ONE-COLUMN TABLE of the tab labels (the crumb list), then one `[Side tab navigation] <label>` per panel (the label typed black OR inside the red span) + `[Title] [H2]` + the panel's content. The lexicon reads `[Side tab navigation]` as `tab n`, so the r100 BLL inquiry mode fired on it — but the base walk only knows `[Tab N]`: a labelled nav tag has no N, so its label was dropped and NO panel opened (2 empty crumbs, 3 panels, the label table rendered as a table). The gold: `body.fundamentals.container-fluid.noPhase` + `div.phases` (the N labels, the first `showing`, phase 1..N) + one `div.fundamentalsPanel[phase]` per tab (the first `showing`), no module menu, the `footer-nav fundamentals-nav` footer (28 / 28 lesson pages of the family; the HPFUN `[New tab]` form with labels). This dialect: a page with >= min_labelled labelled nav tags (nav_tag_pattern on the tag text) fires side-tab mode (the shared inquiry machinery runs): the bare nav tag + its label table are CONSUMED (label_table: every cell <= label_max_words words); each labelled nav tag opens a panel with that label (its black text, else the red text after the tag words); PanelsBuilder builds N unified crumbs + N panels (no synthetic Introduction — the writer's first tab IS it; a non-empty lead segment before the first tab is prepended to panel 1) from the `flavour` templates; SkeletonBuilder takes the flavour's body_class / footer_class and, with lesson_menu 'none', drops the module menu. Env SIDETABNAV_OFF restores the r100 path. SHIPPED INERT (enabled: false — the r369 / r404 precedent): measured on the r421 corpus the in-page side-tab shape is FRFUN06 ALONE — FRFUN07 / 08 author their side tabs as PAGE navigation (one lesson per page, a plain fundamentals body) — so the class is 10 pages / 1 module, under the 20-page body floor; the build scored 8 up / 2 down, +34.7pp-sum (FRFUN06_4_0 +12.0, _1_0 +5.7; _7_0 −11.4 = its Emergent page pairs against a Novice gold). ENABLING IT IS CHRIS'S CALL (a below-floor family dialect whose renderer now exists): set enabled true, regenerate FRFUN06.",
+				"enabled": false,
+				"env": "SIDETABNAV_OFF",
+				"nav_tag_pattern": "side\\s*tab\\s*navigation",
+				"min_labelled": 3,
+				"label_table": true,
+				"label_max_words": 4,
+				"flavour": "fundamentals",
+				"flavours": {
+					"fundamentals": {
+						"crumbs_open": "<div class=\"phases\">",
+						"crumb_item": "<div{showing} phase=\"{n}\"><p>{label}</p></div>",
+						"crumb_showing_attr": " class=\"showing\"",
+						"crumbs_close": "</div>",
+						"panel_open": "<div class=\"fundamentalsPanel{showing}\" phase=\"{n}\">",
+						"panel_showing_class": " showing",
+						"panel_close": "</div>",
+						"body_class": "fundamentals container-fluid noPhase",
+						"footer_class": "footer-nav fundamentals-nav",
+						"lesson_menu": "none"
+					}
+				}
+			},
 			"body_class": "inquiry container-fluid",
 			"body_class_requires_build": true,
 			"_body_class_requires_build_doc": "ROUND 107 (Chris — anchor_compare template over-fire) — couples the `inquiry` body token to an actually-built inquiry page. The registry stamps `container-fluid inquiry` as a whole-SUBJECT default (ConnectED, Blended Literacy, *WHA), so every lesson page of those subjects inherited `inquiry` though the human ships it ONLY on the crumbs/inquiryPanel landing and leaves every lesson page plain `container-fluid`. Measured invariant (whole corpus): HUMAN inquiry-body⟺inquiry-build (55 build, only 7 body-without-build, 0 build-without-body); CLAUDE violated it on 77 pages. SkeletonBuilder strips the `inquiry` token when the page is NOT content.inquiryActive; fundamentals/mathJax/reoTranslate untouched; a page that DOES build inquiry keeps it via the inquiryActive override. Env INQBODY_OFF reverts to the raw registry token.",

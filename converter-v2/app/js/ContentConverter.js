@@ -1208,7 +1208,48 @@ class ContentConverter {
 			&& _labeledTabs === 0
 			&& _emptyOpeners >= (_hlCfg.min_openers ?? 6)
 			&& _trueOpeners >= (_hlCfg.min_true_openers ?? 2);
-		const inquiryMode = _bllInquiry || _headingLabelOn;
+		// ROUND 422 — THE SIDE-TAB-NAVIGATION FUNDAMENTALS DIALECT (the FRFUN family). `[Side tab
+		// navigation]` parses as `tab n`, so the r100 mode fired on these pages, but the base walk
+		// below only knows `[Tab N]`: a labelled nav tag carries no N, so its label was dropped and
+		// no panel opened. In side-tab mode every LABELLED nav tag opens a panel (its black text, else
+		// the red text after the tag words, is the label), the bare nav tag + its one-column label
+		// table are consumed, and PanelsBuilder builds N unified crumbs + N panels from the flavour's
+		// templates (the gold's `div.phases` + `div.fundamentalsPanel[phase]`, body `fundamentals
+		// container-fluid noPhase`, the fundamentals footer, no module menu).
+		// Data inquiry_tabs.side_tab_nav; env SIDETABNAV_OFF.
+		const _stCfg = inqCfg && inqCfg.side_tab_nav;
+		const _stOn = !!inqCfg && inqCfg.enabled !== false && !!_stCfg && _stCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.INQUIRYTABS_OFF)
+			&& !(typeof process !== "undefined" && process.env && process.env[_stCfg.env || "SIDETABNAV_OFF"]);
+		const _navRe = _stOn ? new RegExp(_stCfg.nav_tag_pattern || "side\\s*tab\\s*navigation", "i") : null;
+		const isNavItem = (it) => !!_navRe && isTabItem(it) && _navRe.test(String(it.text || ""));
+		const navLabelOf = (it) => {
+			const black = String(it.blackAfter || "").replace(/\*/g, "").trim();
+			if (black) return black;
+			// the label typed inside the red span: the tag text minus its bracketed words
+			return String(it.text || "").replace(/\[[^\]]*\]/g, " ").replace(/\*/g, "").replace(/\s+/g, " ").trim();
+		};
+		const _navItems = _stOn ? bodyItems.filter(isNavItem) : [];
+		const _navLabelled = _navItems.filter((it) => navLabelOf(it).length > 0).length;
+		const sideTabMode = _stOn && _navLabelled >= (_stCfg.min_labelled ?? 3);
+		// the bare nav tag's label TABLE (every cell a short label) is the crumb list — consumed, never rendered
+		const sideTabSkip = new Set();
+		if (sideTabMode && _stCfg.label_table !== false) {
+			const maxW = _stCfg.label_max_words ?? 4;
+			for (let k = 0; k < bodyItems.length; k++) {
+				const it = bodyItems[k];
+				if (!isNavItem(it) || navLabelOf(it)) continue;
+				let j = k + 1;
+				while (j < bodyItems.length && bodyItems[j].type === "black" && !String(bodyItems[j].text || "").trim()) j++;
+				const nx = bodyItems[j];
+				const rows = nx && nx.type === "table" ? ((nx.block && nx.block.rows) || nx.rows || []) : null;
+				const cells = rows ? rows.flat().map((c) => String(c ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\*/g, "").trim()).filter(Boolean) : null;
+				if (cells && cells.length && cells.every((c) => c.split(/\s+/).length <= maxW)) { sideTabSkip.add(it); sideTabSkip.add(nx); }
+				else sideTabSkip.add(it);   // a bare nav tag with no table renders nothing either
+			}
+		}
+		let sideTabCount = 0;
+		const inquiryMode = _bllInquiry || _headingLabelOn || sideTabMode;
 		const INQ_SENTINEL = (inqCfg && inqCfg.sentinel) || "<!--CV2_INQPANEL-->";
 		// The CED subject group has its own INQUIRY [Page N]-SPLIT variant (modules CEDK101,
 		// CEDT404): these carry a PURE labelled `[Tab N]` crumb-list (with NO empty openers at
@@ -2632,6 +2673,8 @@ class ContentConverter {
 			}
 
 			if (it.type === "table") {
+				// ROUND 422 — the side-tab dialect's label table (the crumb list) is consumed, never rendered.
+				if (sideTabMode && sideTabSkip.has(it)) continue;
 				// THE XDLS900 NAV-LAYOUT TABLES (ROUND 226). A table claimed by the choice-page
 				// tile build (_choiceLabelTable — the [Tab Nav Layout] one-column category list)
 				// contributes its category names as the tile labels and renders nothing itself.
@@ -3778,6 +3821,25 @@ class ContentConverter {
 						if (it.blackAfter.trim()) emit(...actDeBold(ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links)));
 						break;
 					}
+					// ROUND 422 — SIDE-TAB mode (the FRFUN family, see the detection above): a LABELLED
+					// `[Side tab navigation] <label>` opens the next panel with that label (an open activity
+					// is closed first, as the empty-opener recovery below does); the bare nav tag renders
+					// nothing (its label table is skipped in the table branch).
+					if (sideTabMode && isNavItem(it)) {
+						if (sideTabSkip.has(it)) break;
+						const label = navLabelOf(it);
+						if (!label) break;
+						while (stack.length && stack[stack.length - 1].tag === "activity") {
+							emit(stack.pop().close);
+							if (!stack.length) breakRow();
+						}
+						if (stack.length) break;              // inside a real container — never split it
+						breakRow();
+						parts.push(INQ_SENTINEL);
+						inquiryLabels[++sideTabCount] = label;
+						pageLabelHold = "";
+						break;
+					}
 					// A top-level INQUIRY EMPTY `[Tab N]` panel opener that is reached while an
 					// ACTIVITY is still open closes that activity FIRST — writers put the next
 					// panel's opener directly after the previous panel's last activity, which has no
@@ -4159,7 +4221,9 @@ class ContentConverter {
 		const finalBody0 = PanelsBuilder.inquiryPanels(bodyHtml,
 			{ on: inquiryMode, sentinel: INQ_SENTINEL, labels: inquiryLabels,
 				cedMode: cedInquiryMode, cedLabels: cedInq.labels, headingLabel: _headingLabelOn,
-				sectionMode: secInquiryMode, sectionLabels: secInq.labels });
+				sectionMode: secInquiryMode, sectionLabels: secInq.labels,
+				// ROUND 422 — the side-tab dialect: N unified crumbs + N panels from the flavour's templates
+				sideTabMode, sideTabFlavour: sideTabMode ? (_stCfg.flavour || "fundamentals") : null });
 		// ROUND 385: the panel's first own heading is h2 (both panel kinds exist by now); the inquiry
 		// flags below read the PRE-post-pass comparison so the post-pass can never flip them.
 		// ROUND 398: the widget-embedded videos take the module's `icon` class too (MediaBuilder.videoIconPostpass —
@@ -4170,7 +4234,15 @@ class ContentConverter {
 		// CED firing flags the fixed inquiry footer-nav shell (a single-file CED page has no
 		// registry footer links of its own, so SkeletonBuilder would otherwise emit an empty
 		// #footer). Scoped specifically to CED so the BLL family's footers stay byte-unchanged.
-		return { bodyHtml: finalBody, menu, titleBar, inquiryActive,
+		// ROUND 422 — a side-tab page that built its panels carries the flavour: SkeletonBuilder takes
+		// the flavour's body class / footer class, and a lesson page whose flavour says `lesson_menu:
+		// "none"` ships no module menu (the gold's FRFUN lesson pages carry none).
+		const sideTabActive = sideTabMode && finalBody0 !== bodyHtml;
+		const inquiryFlavour = sideTabActive ? (_stCfg.flavour || "fundamentals") : null;
+		const flav = inquiryFlavour ? (_stCfg.flavours || {})[inquiryFlavour] : null;
+		const menuOut = (flav && flav.lesson_menu === "none" && !page.isOverview && menu && menu.kind !== "none")
+			? { kind: "none" } : menu;
+		return { bodyHtml: finalBody, menu: menuOut, titleBar, inquiryActive, inquiryFlavour,
 			cedInquiry: cedInquiryMode && finalBody0 !== bodyHtml };
 	};
 

@@ -1,0 +1,27 @@
+Round 422 (DECLINED-INERT): the side-tab-navigation fundamentals dialect (FRFUN06) — built, measured, shipped enabled:false (SIDETABNAV_OFF)
+
+The autonomous loop's session 30 Round 5 — the s28 "multi-file level-page renderer" follow-up
+from the miner's F23. FRFUN06 authors each lesson page as [Side tab navigation] + a one-column
+table of tab labels, then one [Side tab navigation] <label> per panel (the label typed black or
+inside the red span) + [Title] [H2] + content. The lexicon reads the tag as `tab n`, so the r100
+inquiry mode fired on these pages, but the base walk knows only [Tab N]: every label was dropped
+and no panel opened (two empty crumbs, three panels, the label table rendered as a table).
+
+The build: inquiry_tabs.side_tab_nav (+ flavours.fundamentals) — ContentConverter's side-tab
+mode (>= 3 labelled nav tags; the bare tag + its label table consumed; each labelled tag closes
+an open activity, pushes the panel sentinel and records its label), PanelsBuilder.inquiryPanels'
+sideTabMode branch (N unified phases + N fundamentalsPanels, the first showing, from the flavour
+templates — the gold's div.phases + div.fundamentalsPanel[phase]), SkeletonBuilder's flavour body
+class (fundamentals container-fluid noPhase) / footer class (fundamentals-nav) and lesson_menu
+none. Measured in memory: FRFUN06 10 / 10 pages, 8 up / 2 down, +34.7pp-sum (FRFUN06_4_0 +12.0);
+FRFUN07 / 08 unchanged — their side tabs are page navigation over plain fundamentals bodies.
+
+Shipped INERT (enabled: false, the r369 / r404 precedent): 10 pages / 1 module is under the
+20-page floor. Enabling it is Chris's call (set enabled: true, regenerate FRFUN06). The corpus is
+byte-identical to r421 (the probe 2555 / 2555; the manifest unchanged); the 16 verifier selftests
++ the skeleton selftest GREEN, entry parity PASS, index sync OK; no regeneration, every gate as
+at r421.
+
+Build 260619.93. Changelog, CLAUDE.md §11/§14, gate_baseline.json build/round, loop mirror + README.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

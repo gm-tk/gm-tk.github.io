@@ -636,13 +636,39 @@ class PanelsBuilder {
 	 *
 	 * Data: body_region.inquiry_tabs.
 	 */
-	static inquiryPanels(body, { on, sentinel, labels, cedMode, cedLabels, headingLabel, sectionMode, sectionLabels } = {}) {
+	static inquiryPanels(body, { on, sentinel, labels, cedMode, cedLabels, headingLabel, sectionMode, sectionLabels, sideTabMode, sideTabFlavour } = {}) {
 		const cfg = DataService.Data.EmitTemplates.body_region.inquiry_tabs;
 		const sent = sentinel || (cfg && cfg.sentinel) || "<!--CV2_INQPANEL-->";
 		if (!(on || cedMode || sectionMode) || !cfg || cfg.enabled === false || !body.includes(sent)) return body.split(sent).join("");
 		const segs = body.split(sent);
 		const intro = segs[0].trim();
 		const panelSegs = segs.slice(1).map((s) => s.trim());
+		// ROUND 422 — SIDE-TAB mode (the FRFUN family's `[Side tab navigation] <label>` panels; see
+		// ContentConverter's detection): N UNIFIED crumbs (the writer's own labels — the first IS the
+		// Introduction, so no synthetic intro crumb) and N panels, the first of each `showing`, numbered
+		// phase 1..N, built from the flavour's templates (inquiry_tabs.side_tab_nav.flavours — the
+		// fundamentals flavour = the gold's `div.phases` + `div.fundamentalsPanel[phase]`). A non-empty
+		// lead segment before the first tab is prepended to panel 1 (the CED allSegs rule), so nothing
+		// the writer typed is lost.
+		if (sideTabMode) {
+			const st = cfg.side_tab_nav || {};
+			const fl = (st.flavours || {})[sideTabFlavour || st.flavour || "fundamentals"] || {};
+			const lab = labels || {};
+			const n = panelSegs.length;
+			if (!n) return body.split(sent).join("");
+			const crumbs = [fl.crumbs_open || cfg.crumbs_open];
+			for (let i = 0; i < n; i++)
+				crumbs.push(Utils.FillTemplate(fl.crumb_item || cfg.crumb_item, {
+					n: String(i + 1), label: lab[i + 1] || "", showing: i === 0 ? (fl.crumb_showing_attr ?? " class=\"showing\"") : "" }));
+			crumbs.push(fl.crumbs_close || cfg.crumbs_close);
+			const panels = [];
+			for (let i = 0; i < n; i++) {
+				const seg = (i === 0 && intro) ? intro + "\n" + panelSegs[0] : panelSegs[i];
+				panels.push(Utils.FillTemplate(fl.panel_open || cfg.panel_open, { n: String(i + 1), showing: i === 0 ? (fl.panel_showing_class ?? " showing") : "" })
+					+ "\n" + seg + "\n" + (fl.panel_close || cfg.panel_close));
+			}
+			return crumbs.join("\n") + "\n" + panels.join("\n");
+		}
 		// ROUND 361 — SECTION-NAV mode (the EXPlore "Navigation with N sections" dialect; see
 		// PanelsBuilder.detectInquirySections): segment 0 — everything BEFORE the first sentinel (the
 		// overview's learning-intention rows) — stays OUTSIDE the scaffold; then N+1 UNIFIED crumbs
