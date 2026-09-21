@@ -162,7 +162,10 @@ class InteractiveBuilder {
 					html = this.#glossary({ bundle, tpl, renderInline });
 					break;
 				case "selfCheck":   // a numbered question-list form → <p class="sCQuestion"> + a free-text sCText/textarea pair
-					html = this.#selfCheck({ bundle, tpl, renderInline });
+					// ROUND 420 — the LETTER-GRID BINGO form (the BLL family's `[Self check]` + a table of letters)
+					// runs FIRST; the r69 question-list form where it declines.
+					html = this.#letterGridBingo({ bundle, tpl, renderInline, run })
+						?? this.#selfCheck({ bundle, tpl, renderInline });
 					break;
 				case "dragAndDrop": // the narrow N:N text-matching case only (layout=standard)
 					// ROUND 350 — the image-pair form runs ONLY where the r69 text form declined (the r276 order);
@@ -738,6 +741,148 @@ class InteractiveBuilder {
 	 * @param {function} [args.renderInline] - inline-markup renderer (bold/italic/links); identity if omitted
 	 * @returns {string|null} the built selfCheck HTML, or null to keep the orange placeholder
 	 */
+	/**
+	 * ROUND 420 — THE LETTER-GRID BINGO (Chris's D10-3 build lane; the autonomous loop's session 30 Round 2 — the
+	 * selfCheck type's largest un-built authoring SHAPE family, 55 tables / ≈ 28 bundles in 9 BLL modules).
+	 *
+	 * THE SHAPE. The Blended Literacy writers author a phonics self-check as `[Self check] Click on the lower case
+	 * letter ‘s’.` followed by a TABLE of single letters, the CORRECT cells typed in red — usually twice in one activity
+	 * (the lower-case grid, then the capital grid), with the writer's `[Add an audio that when they click/hover on the
+	 * letter it says the name of the letter …]` request and an `**Alphabet Audio** [LINK]` line after each. The r69
+	 * question-list builder declined every one of them on the table. The gold builds the KB's BINGO (03E COMP_04):
+	 *   <div class="bingo col-12"><div class="bingoContainer" grid="4">
+	 *     <div class="number" value="correct"><p class="sassoonI-text">s</p></div> … </div>
+	 *   <div class="row"><div class="activityButton reset-btn">Reset</div><div class="activityButton hidden check-btn">Check</div></div></div>
+	 * (74 letter grids of the gold's 96 bingos: grid 12 cells → 4, 9 → 3; `bingo col-12` 90 / 96; the button row 95 / 96;
+	 * the cell `p.sassoonI-text` 53 / 74 — the family's Sassoon Infant font; 39 of them carry the developer's snipped
+	 * audio as a `span.audioTrigger`, which the package cannot supply — the writer's request rides as the red Writers
+	 * Note after the widget instead, the r214 / r350 form).
+	 *
+	 * CONSERVATIVE (never half-build): fires only when every table in the bundle is a letter grid (every non-empty
+	 * cell ≤ max_cell_chars letters / digits once the red markers and bold marks are stripped, ≥ min_cells cells),
+	 * every extra type is selfCheck itself (the second grid), every tag member is a selfCheck invocation or the audio
+	 * ELEMENT request, and each table follows its own invocation whose black text is the lead. Per table: the lead
+	 * `<p>` + the bingo — the cells row-major from the writer's table; value="correct" on the RED cells, or (none
+	 * marked) on the cells equal to the letter quoted in the lead; neither → decline. `grid` from the cell count.
+	 * The read tracker sees every member read (the members rule then places nothing else); the audio request and
+	 * the link line go to bundle.instructions. Data interactive_builders.selfCheck.letter_grid_bingo; env BINGO_OFF.
+	 *
+	 * @param {object} args
+	 * @param {object} args.bundle - the captured interactive (opener/member items — see file header)
+	 * @param {object} args.tpl - the selfCheck templates (Emit_Templates.json interactive_builders.selfCheck)
+	 * @param {function} [args.renderInline] - inline-markup renderer (bold/italic/links); identity if omitted
+	 * @param {object} [args.run] - run context (run.moduleCode decides the cell class)
+	 * @returns {string|null} the built bingo HTML (lead + widget per grid), or null to try the next form
+	 */
+	static #letterGridBingo({ bundle, tpl, renderInline, run }) {
+		const cfg = tpl?.letter_grid_bingo;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "BINGO_OFF"]) return null;
+		if (typeof process !== "undefined" && process.env && process.env.SELFCHECK_OFF) return null;
+		if ((bundle?.extraTypes ?? []).some((t) => t !== "selfCheck")) return null;
+		const tables = bundle?.tables ?? [];
+		if (!tables.length) return null;
+		const inline = renderInline ?? ((s) => s);
+		const maxChars = cfg.max_cell_chars ?? 2, minCells = cfg.min_cells ?? 4;
+		const plain = (c) => this.#cellText(c).replace(/[*_]+/g, "").trim();
+		const isLetter = (t) => new RegExp("^[\\p{L}\\p{N}]{1," + maxChars + "}$", "u").test(t);
+		// ---- walk the members: each table takes the nearest preceding selfCheck invocation's black text as its lead
+		const members = [...(bundle?.openerItems ?? []), ...(bundle?.memberItems ?? [])];
+		const grids = [];
+		const notes = [];
+		const assetRe = new RegExp(cfg.asset_note_pattern ?? "audio|sound|record|link", "i");
+		let lead = null;
+		for (const m of members) {
+			if (!m) continue;
+			if (m.type === "table") {
+				const rows = (m.block?.rows ?? []).filter((r) => Array.isArray(r));
+				if (!tables.includes(m.block) || !rows.length) return null;
+				const cells = [];
+				for (const r of rows) for (const c of r) {
+					const t = plain(c);
+					if (!t) continue;                                    // a ragged / empty cell is absent
+					if (!isLetter(t)) return null;                       // a word / sentence cell → not a letter grid
+					cells.push({ text: t, red: this.#hasRedText(c) });
+				}
+				if (cells.length < minCells) return null;
+				if (lead === null) return null;                          // a grid with no invocation lead → not this shape
+				grids.push({ lead, cells });
+				lead = null;
+				continue;
+			}
+			if (m.type === "tag") {
+				const p = m.parse?.primary;
+				const txt = String(m.text ?? "");
+				if (p?.directive === "INTERACTIVE") {                    // the [Self check] invocation → its black text is the lead
+					const after = String(m.blackAfter ?? "").trim();
+					if (!after) return null;
+					lead = after;
+					continue;
+				}
+				if (p?.tag === "audio" || (this.#hasRedText(txt) && assetRe.test(txt))) {   // the writer's audio request → the note
+					const t = this.#cellText(txt).replace(/^\[|\]$/g, "").trim();
+					if (t) notes.push(t);
+					continue;
+				}
+				return null;                                             // any other tag → not this shape
+			}
+			const txt = String(m.text ?? "").trim();
+			if (!txt) continue;
+			if (assetRe.test(txt) || /https?:\/\//.test(txt)) {          // the `**Alphabet Audio** [LINK]` line → the note (with its url)
+				const urls = (bundle?.media ?? []).map((x) => x?.target ?? x?.text ?? "").filter((u) => /^https?:\/\//.test(String(u)));
+				const clean = this.#cellText(txt).replace(/[*_]+/g, "").trim();
+				notes.push(urls.length && !/https?:\/\//.test(clean) ? `${clean}: ${urls.join(" ")}` : clean);
+				continue;
+			}
+			return null;                                                 // other prose inside the bundle → not this shape (the box keeps it)
+		}
+		if (!grids.length || grids.length !== tables.length) return null;
+		// ---- the correct cells: the writer's red, else the letter quoted in the lead
+		const quoteRe = new RegExp(cfg.lead_quote_pattern ?? "[‘'\"“]\\s*(\\S{1,2})\\s*[’'\"”]", "u");
+		const from = cfg.correct_from ?? ["red", "lead_quote"];
+		for (const g of grids) {
+			let correct = new Set();
+			if (from.includes("red")) g.cells.forEach((c, i) => { if (c.red) correct.add(i); });
+			if (!correct.size && from.includes("lead_quote")) {
+				const q = quoteRe.exec(g.lead);
+				if (q) g.cells.forEach((c, i) => { if (c.text === q[1]) correct.add(i); });
+			}
+			if (!correct.size) return null;                              // no derivable answer → never guess
+			g.correct = correct;
+		}
+		// ---- emit
+		const code = String(run?.moduleCode ?? "").toUpperCase();
+		let cellCls = "";
+		for (const [p, cls] of Object.entries(cfg.cell_class_by_prefix ?? {})) {
+			if (code.startsWith(String(p).toUpperCase()) && cls) cellCls = ` class="${cls}"`;
+		}
+		const out = [];
+		for (const g of grids) {
+			const n = g.cells.length;
+			const grid = (cfg.grid_by_cells ?? {})[String(n)] ?? cfg.grid_default ?? 4;
+			out.push(Utils.FillTemplate(cfg.lead, { lead: inline(g.lead) }));
+			out.push(cfg.open);
+			out.push(Utils.FillTemplate(cfg.container_open, { grid }));
+			g.cells.forEach((c, i) => out.push(Utils.FillTemplate(cfg.cell, {
+				value: g.correct.has(i) ? (cfg.cell_correct_attr ?? " value=\"correct\"") : "",
+				cls: cellCls,
+				text: Utils.EscapeHtml(c.text),
+			})));
+			out.push(cfg.container_close);
+			if (cfg.buttons) out.push(cfg.buttons);
+			out.push(cfg.close);
+		}
+		if (notes.length) {
+			const seen = new Set(bundle.instructions ?? []);
+			bundle.instructions = [...(bundle.instructions ?? [])];
+			for (const n of notes) {
+				const t = (cfg.note_prefix ?? "") + n;
+				if (!seen.has(t)) { bundle.instructions.push(t); seen.add(t); }
+			}
+		}
+		return out.join("\n");
+	}
+
 	static #selfCheck({ bundle, tpl, renderInline }) {
 		if (typeof process !== "undefined" && process.env && process.env.SELFCHECK_OFF) return null;
 		if ((bundle?.tables ?? []).length) return null;          // image-matching table form → keep placeholder

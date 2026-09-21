@@ -1,0 +1,38 @@
+GOLD bingo widgets: 96 on 32 pages / 28 modules
+  per module: BLL120 14, BLL110 12, BLL130 12, BLL150 9, BLL127 5, BLL134 5, BLL160 4, BLL166 4, BLL270 3, BLL145 3, MXFU202 3, BLL140 2, BLL170 2, BLL156 2, BLL245 2, BLL251 2, TRR113 1, WJFUN212 1, BLL136 1, BLL164 1, BLL167 1, BLL213 1, BLL235 1, BLL246 1, BLL256 1, BLL265 1, BLL276 1, MXEO301 1
+  grid: [('4', 58), ('6', 18), ('3', 14), ('8', 2), ('10', 2), ('7', 1), ('9', 1)]
+  cells: [(12, 53), (30, 14), (9, 12), (16, 4), (36, 3), (24, 3), (8, 2), (6, 1), (28, 1), (35, 1)]
+  correct: [(6, 30), (5, 15), (4, 12), (30, 12), (3, 11), (24, 3), (2, 3), (10, 3), (36, 1), (7, 1)]
+  letters-only cells: Counter({True: 74, False: 22})
+  wrapper: [('bingo col-12', 90), ('autoCheck bingo col-12', 2), ('bingo col-12 sassoonI-text', 1), ('bingo col-12 noCheck', 1), ('bingo row', 1), ('bingo col-12 margB2', 1)]
+  h4 card title: Counter({False: 92, True: 4}); button row: Counter({True: 95, False: 1})
+  box: [('activity alertPadding interactive', 45), ('activity interactive', 35), ('activity alertPadding', 12), ('activity', 2), ('activity dropbox interactive', 2)]
+  outer col: [('col-12', 96)]
+  cell forms: [('p', 653), ('p.sassoonI-text>span.audioTrigger[audioName]', 468), ('p.sassoonI-text', 325), ('p.sassoon-text>span.audioTrigger[audioName]', 132), ('img.img-fluid', 24), ('p.white-text', 20), ('img.img-fluid.margB0', 12)]
+  audioName patterns: [('Name-X', 598), ('Name-pX', 1), ('NameDX', 1)]
+  sample rows:
+    TRR113 TRR113_3.0.html grid=3 cells=12 correct=4 box=activity interactive#3A col=col-12 texts=['ui', 'ai', 'ue', 'oi', 'ui', 'ui', 'ua', 'uu', 'ue', 'oi', 'oa', 'ui']
+    WJFUN212 WJFUN212_0_0.html grid=6 cells=36 correct=36 box=activity interactive#2D col=col-12 texts=['Strolled', 'Chatted', 'Chewed', 'Wept', 'sipped', 'Chilly', 'Strode', 'Discussed', 'Swallowed', 'Sobbed', 'gulped', 'Cool']
+    BLL110 BLL110.html grid=4 cells=12 correct=6 box=activity alertPadding#1C col=col-12 texts=['s', 'o', 's', 'o', 'w', 'p', 's', 's', 's', 'c', 'p', 's']
+    BLL110 BLL110.html grid=4 cells=12 correct=6 box=activity alertPadding#1C col=col-12 texts=['S', 'O', 'S', 'W', 'P', 'C', 'S', 'S', 'S', 'W', 'P', 'S']
+    BLL110 BLL110.html grid=4 cells=12 correct=5 box=activity alertPadding#2D col=col-12 texts=['g', 'd', 'a', 'h', 'a', 'a', 'c', 'a', 's', 'o', 'a', 's']
+    BLL110 BLL110.html grid=4 cells=12 correct=5 box=activity alertPadding#2D col=col-12 texts=['A', 'S', 'A', 'H', 'A', 'A', 'D', 'G', 'D', 'A', 'N', 'S']
+    BLL110 BLL110.html grid=4 cells=12 correct=6 box=activity alertPadding#3D col=col-12 texts=['t', 'l', 'k', 't', 'f', 't', 's', 't', 't', 'l', 't', 'o']
+    BLL110 BLL110.html grid=4 cells=12 correct=5 box=activity alertPadding#3D col=col-12 texts=['L', 'T', 'T', 'F', 'F', 'T', 'W', 'T', 'R', 'F', 'L', 'T']
+
+WT `[Self check]` tags followed by a table (parsed WTs, all modules):
+  tags 182; with a table 113 (letter grid 55 / other 58); no table 69
+  cell counts: cells=6:2, cells=12:57, cells=8:10, cells=18:11, cells=5:1, cells=4:6, cells=20:2, cells=10:3, cells=15:3, cells=40:1, cells=30:2, cells=14:2, cells=16:2, cells=24:2, cells=27:2, cells=1:1, cells=7:6
+  per module (tags / with table / letter grid): BLL120 15/15/14, BLL110 12/12/12, BLL130 12/12/12, MXDI103 12/8/0, BLL150 6/6/6, BLL160 4/4/4, BLL124 6/4/0, BLL113 3/3/2, BLL145 4/3/0, MXDB202 12/3/0, ENFUN04 2/2/0, BLL140 2/2/2, BLL170 2/2/2, BLL115 2/2/0, BLL125 2/2/0, BLL154 3/2/1, BLL155 4/2/0, BLL214 3/2/0, BLL223 2/2/0, ENGC102 2/2/0, BLL112 1/1/0, BLL122 1/1/0, BLL131 1/1/0, BLL133 1/1/0, BLL135 1/1/0, BLL141 1/1/0, BLL142 1/1/0, BLL152 1/1/0, BLL156 4/1/0, BLL162 1/1/0, BLL163 3/1/0, BLL165 1/1/0, BLL172 1/1/0, BLL173 2/1/0, BLL212 2/1/0, BLL217 1/1/0, BLL232 1/1/0, BLL235 1/1/0, BLL237 1/1/0, BLL252 1/1/0, BLL263 1/1/0, ENGJ102 2/1/0, SCES201 2/1/0, WJFUN113 1/0/0, WJFUN210 1/0/0, WJFUN212 3/0/0, BLL117 1/0/0, BLL123 2/0/0, BLL127 1/0/0, BLL136 1/0/0, BLL143 1/0/0, BLL144 1/0/0, BLL153 2/0/0, BLL157 1/0/0, BLL164 3/0/0, BLL166 1/0/0, BLL174 3/0/0, BLL175 2/0/0, BLL176 3/0/0, BLL213 3/0/0, BLL222 1/0/0, BLL245 1/0/0, BLL251 1/0/0, MXDB102 2/0/0, MXEO202 1/0/0, MXEO401 4/0/0
+    ENFUN04:  | cells 6 red 2 letters=False → ['Root word provided', 'Answer to pop up when they click ‘check’', 'Play', 'playful, player, playing, replay, unplayful, replaying', 'Honest', 'dishonest, honesty, dishonesty, honestness']
+    ENFUN04:  | cells 6 red 2 letters=False → ['Phrase for the self-check box', 'List to come up upon ‘check’ being clicked', 'List all the synonyms you can think of for the word **big****.**', 'Large Huge Enormous Massive Giant Immense Gigantic / Colossal Mammoth Substantial Grand Vast Oversized Bulky Mighty Towering Tremendous Jumbo Whopping / Monumental', 'List all the synonyms you can think of for the word **yum****.**', 'Delicious Tasty Delectable Scrumptious Mouthwatering Flavourful Savoury Yummy Appetising Palatable Luscious / Toothsome Succulent Heavenly Tantalising Satisfying Tempting Irresistible Exquisite Drool-worthy']
+    BLL110: Click on the lower case letter ‘s’. | cells 12 red 6 letters=True → ['s', 'o', 's', 'o', 's', 'w', 'p', 's']
+    BLL110: Click on the capital letter ‘S’. | cells 12 red 7 letters=True → ['S', 'C', 'Z', 'S', 'S', 'P', 'A', 'S']
+    BLL110: Click on the lower case letter ‘a’. | cells 12 red 0 letters=True → ['d', 'a', 'h', 'a', 'a', 'g', 'a', 'c']
+    BLL110: Click on the capital letter ‘A’. | cells 12 red 0 letters=True → ['C', 'A', 'O', 'H', 'A', 'A', 'A', 'D']
+    BLL110: Click on the lower case letter ‘t’ | cells 12 red 0 letters=True → ['t', 'l', 'k', 't', 'f', 't', 's', 't']
+    BLL110: Click on the capital letter ‘T’ | cells 12 red 0 letters=True → ['L', 'T', 'T', 'F', 'L', 'T', 'W', 'T']
+    BLL110: Click on the lowercase letter ‘p’. | cells 12 red 6 letters=True → ['d', 'p', 't', 'p', 'p', 'k', 'o', 'n']
+    BLL110: Click on the capital letter ‘P’. | cells 12 red 7 letters=True → ['P', 'P', 'P', 'D', 'P', 'O', 'T', 'P']
+    BLL110: Click on the lower case letter ‘i’. | cells 12 red 6 letters=True → ['i', 'h', 'c', 'i', 'i', 'n', 'o', 'i']
+    BLL110: Click on the capital letter ‘I’. | cells 12 red 7 letters=True → ['I', 'L', 'I', 'I', 'M', 'I', 'T', 'J']

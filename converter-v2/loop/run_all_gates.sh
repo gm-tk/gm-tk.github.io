@@ -53,4 +53,9 @@ run "menu-label verifier (c23 / 01B)" env STUB_OEMBED=1 node --require ./_deflat
 # set covers both forms: the image-pair table (BLL146 gold-exact, BLL112 with its asset note, ENFUN04, CHFUN05, BLL266, MXFUN03 x2,
 # BLL244 sentences) and the r69 text form (ENGJ102, ARFUN03, ENFUN01). Protected: defect 0.
 run "dragAndDrop verifier (03B)" env STUB_OEMBED=1 node --require ./_deflate_raw_polyfill.cjs _verify_dragdrop.cjs BLL146 BLL112 ENFUN04 CHFUN05 BLL266 MXFUN03 BLL244 ENGJ102 ARFUN03 ENFUN01 ENGI203 BLL220 ENFUN08 ENGR201
+# bingo verifier (round 420 — Chris's D10-3, the selfCheck type's LETTER-GRID form → the KB 03E bingo): every BUILT grid is the
+# 03E form — a `div.bingo` wrapper, a `bingoContainer` with a positive integer grid, ≥ 4 cells each a <p> with text, at least one
+# value="correct" cell, the Reset / Check row, no raw [tag] / red marker in a cell. The set = the nine BLL modules whose WTs carry
+# the letter grid (BLL113 / BLL154 build none by design — word grids and a tile shape). Protected: defect 0.
+run "bingo verifier (03E)" env STUB_OEMBED=1 node --require ./_deflate_raw_polyfill.cjs _verify_bingo.cjs BLL110 BLL120 BLL130 BLL140 BLL150 BLL160 BLL170 BLL113 BLL154
 echo "=== gate suite complete ==="

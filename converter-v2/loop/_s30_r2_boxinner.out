@@ -1,0 +1,27 @@
+GOLD activity boxes by class kind → inner shape
+  interactive    n= 3201  bare 0.03  row>col 0.96  {'row>col': 3074, 'bare': 112, 'div.col-12.col-md-8': 9, 'div.super-content': 2, 'div.autoCheck.dragAndDrop': 1}
+  alertPadding   n= 1077  bare 0.07  row>col 0.92  {'row>col': 994, 'bare': 78, 'div.super-content': 3, 'div.col-12.col-md-12': 1, 'div.activity-icon': 1}
+  plain          n= 3474  bare 0.11  row>col 0.89  {'row>col': 3077, 'bare': 383, 'div.col-12.col-md-8': 8, 'div.col-12.super-content-button': 3, 'div.col-12.col-md-12': 2}
+CLAUDE activity boxes by class kind → inner shape
+  interactive    n= 2473  bare 0.00  row>col 1.00  {'row>col': 2473}
+  plain          n= 4338  bare 0.04  row>col 0.96  {'row>col': 4160, 'bare': 178}
+GOLD alertPadding boxes per (template, subject) n >= 10
+  ('Standard', '1-10 Mathematics')                        n= 207 bare 0.01 row>col 0.99
+  ('Standard', '1-10 English')                            n= 139 bare 0.03 row>col 0.95
+  ('Inquiry', '1-10 Blended Literacy')                    n= 136 bare 0.21 row>col 0.79
+  ('Standard', 'NCEA1')                                   n= 134 bare 0.08 row>col 0.92
+  ('Standard', '1-10 Blended Literacy')                   n=  83 bare 0.01 row>col 0.98
+  ('Standard', 'Leaving to Learn')                        n=  60 bare 0.00 row>col 1.00
+  ('Inquiry', 'ConnectED')                                n=  50 bare 0.04 row>col 0.96
+  ('Bilingual', 'Te Marautanga o Aotearoa TMoA')          n=  49 bare 0.02 row>col 0.96
+  ('Standard', 'ANZH')                                    n=  40 bare 0.38 row>col 0.62
+  ('Fundamentals', '1-10 Writing (MiW)')                  n=  22 bare 0.00 row>col 1.00
+  ('Fundamentals', '1-10 Health and PE')                  n=  21 bare 0.00 row>col 1.00
+  ('Fundamentals', '1-10 Social Science')                 n=  15 bare 0.07 row>col 0.93
+  ('Standard', '1-10 Technology')                         n=  15 bare 0.00 row>col 1.00
+  ('Standard', 'ConnectED')                               n=  12 bare 0.00 row>col 1.00
+  ('Standard', '1-10 Languages')                          n=  12 bare 0.08 row>col 0.92
+  ('Fundamentals', '1-10 English')                        n=  11 bare 0.00 row>col 1.00
+  ('Standard', 'EXPlore')                                 n=  11 bare 0.00 row>col 1.00
+  ('Standard', 'Online Safety (OS9000)')                  n=  11 bare 0.09 row>col 0.91
+  ('Standard', '1-10 Social Science')                     n=  10 bare 0.00 row>col 1.00

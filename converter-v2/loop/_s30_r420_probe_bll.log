@@ -1,0 +1,453 @@
+  ~ BLL110_0_0.html: -355 +259
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL110-00-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: selfCheck + selfCheck — Activity 1C 
+     - <p>Click on the lower case letter ‘s’.</p>
+     - <th> s </th>
+     - <th>o</th>
+     - <th> s </th>
+     - <th>o</th>
+     - <th> s </th>
+     - <th>w</th>
+     - <td>p</td>
+     - <td> s </td>
+     - <td> s </td>
+     - <td>c</td>
+     - <td>d</td>
+     - <td> s </td>
+     - <p><b>Alphabet Audio</b></p>
+     - <p>Click on the capital letter ‘S’.</p>
+     - <th> S </th>
+     - <th>C</th>
+     - <th>Z</th>
+     - <th> S </th>
+     - <th> S </th>
+     - <th>P</th>
+     - <td>A</td>
+     - <td> S </td>
+     - <td> S </td>
+     - <td>G</td>
+     - <td> S </td>
+     - <td> S </td>
+     - <p><b>Alphabet Audio</b></p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL110-00-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="BLL110-00-04" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="BLL110-00-05" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: selfCheck + selfCheck — Activity 4 —
+     - … 315 more removed
+     + <p>Click on the lower case letter ‘s’.</p>
+     + <div class="bingo col-12">
+     + <div class="bingoContainer" grid="4">
+     + <div class="number" value="correct"><p class="sassoonI-text">s</p></div>
+     + <div class="number"><p class="sassoonI-text">o</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">s</p></div>
+     + <div class="number"><p class="sassoonI-text">o</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">s</p></div>
+     + <div class="number"><p class="sassoonI-text">w</p></div>
+     + <div class="number"><p class="sassoonI-text">p</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">s</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">s</p></div>
+     + <div class="number"><p class="sassoonI-text">c</p></div>
+     + <div class="number"><p class="sassoonI-text">d</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">s</p></div>
+     + <div class="row">
+     + <div class="activityButton reset-btn">Reset</div>
+     + <div class="activityButton hidden check-btn">Check</div>
+     + <p>Click on the capital letter ‘S’.</p>
+     + <div class="bingo col-12">
+     + … 239 more added
+BLL110: identical 0 / changed 1
+  ~ BLL120_0_0.html: -451 +311
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="BLL120-00-01" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: selfCheck + selfCheck — Activity 1C 
+     - <ol>
+     - <li>Click on the lower case letter ‘c’.</li>
+     - </ol>
+     - <th>c</th>
+     - <th>o</th>
+     - <th>s</th>
+     - <th>o</th>
+     - <th>P</th>
+     - <th>w</th>
+     - <td>x</td>
+     - <td>D</td>
+     - <td>f</td>
+     - <p><b>Alphabet Audio</b></p>
+     - <ol>
+     - <li>Click on the capital letter ‘C’.</li>
+     - </ol>
+     - <th>B</th>
+     - <th>C</th>
+     - <th>Z</th>
+     - <th>S</th>
+     - <th>H</th>
+     - <th>P</th>
+     - <td>I</td>
+     - <td>X</td>
+     - <td>C</td>
+     - <td>G</td>
+     - <td>C</td>
+     - <td>S</td>
+     - <p><b>Alphabet Audio</b></p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL120-00-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="BLL120-00-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="BLL120-00-04" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - … 411 more removed
+     + <p>1. Click on the lower case letter ‘c’.</p>
+     + <div class="bingo col-12">
+     + <div class="bingoContainer" grid="4">
+     + <div class="number" value="correct"><p class="sassoonI-text">c</p></div>
+     + <div class="number"><p class="sassoonI-text">o</p></div>
+     + <div class="number"><p class="sassoonI-text">s</p></div>
+     + <div class="number"><p class="sassoonI-text">o</p></div>
+     + <div class="number"><p class="sassoonI-text">P</p></div>
+     + <div class="number"><p class="sassoonI-text">w</p></div>
+     + <div class="number"><p class="sassoonI-text">p</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">c</p></div>
+     + <div class="number"><p class="sassoonI-text">x</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">c</p></div>
+     + <div class="number"><p class="sassoonI-text">D</p></div>
+     + <div class="number"><p class="sassoonI-text">f</p></div>
+     + <div class="row">
+     + <div class="activityButton reset-btn">Reset</div>
+     + <div class="activityButton hidden check-btn">Check</div>
+     + <p>2. Click on the capital letter ‘C’.</p>
+     + <div class="bingo col-12">
+     + … 291 more added
+BLL120: identical 0 / changed 1
+  ~ BLL130_0_0.html: -352 +256
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL130-00-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: selfCheck + selfCheck — Activity 1C 
+     - <p>Click on the lowercase letter ‘g’</p>
+     - <th> g </th>
+     - <th>b</th>
+     - <th> g </th>
+     - <th>o</th>
+     - <th> g </th>
+     - <th>p</th>
+     - <td>p</td>
+     - <td> g </td>
+     - <td> g </td>
+     - <td>a</td>
+     - <td>d</td>
+     - <td> g </td>
+     - <p><b>Alphabet Audio</b></p>
+     - <p>Click on the capital letter ‘G’</p>
+     - <th>P</th>
+     - <th> G </th>
+     - <th>D</th>
+     - <th>Q</th>
+     - <th> G </th>
+     - <th>P</th>
+     - <td>A</td>
+     - <td> G </td>
+     - <td> G </td>
+     - <td>B</td>
+     - <td>C</td>
+     - <td> G </td>
+     - <p><b>Alphabet Audio</b></p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL130-00-03" style="border: 8px sol
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="BLL130-00-04" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="BLL130-00-05" style="border: 8px sol
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="BLL130-00-06" style="border: 8px sol
+     - <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: selfCheck + selfCheck — Activity 2D 
+     - <p>Click on the lower case letter ‘o’</p>
+     - … 312 more removed
+     + <p>Click on the lowercase letter ‘g’</p>
+     + <div class="bingo col-12">
+     + <div class="bingoContainer" grid="4">
+     + <div class="number" value="correct"><p class="sassoonI-text">g</p></div>
+     + <div class="number"><p class="sassoonI-text">b</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">g</p></div>
+     + <div class="number"><p class="sassoonI-text">o</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">g</p></div>
+     + <div class="number"><p class="sassoonI-text">p</p></div>
+     + <div class="number"><p class="sassoonI-text">p</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">g</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">g</p></div>
+     + <div class="number"><p class="sassoonI-text">a</p></div>
+     + <div class="number"><p class="sassoonI-text">d</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">g</p></div>
+     + <div class="activityButton reset-btn">Reset</div>
+     + <div class="activityButton hidden check-btn">Check</div>
+     + <p>Click on the capital letter ‘G’</p>
+     + <div class="bingo col-12">
+     + <div class="bingoContainer" grid="4">
+     + … 236 more added
+BLL130: identical 0 / changed 1
+  ~ BLL150_0_0.html: -192 +144
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="BLL150-00-01" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: selfCheck + selfCheck — Activity 1C 
+     - <p>Click on the lowercase letter ‘z’.</p>
+     - <th>s</th>
+     - <th>w</th>
+     - <th> z </th>
+     - <th> z </th>
+     - <th>f</th>
+     - <th> z </th>
+     - <td> z </td>
+     - <td>v</td>
+     - <td> z </td>
+     - <td>s</td>
+     - <td> n </td>
+     - <td>y</td>
+     - <p><b>Alphabet Audio</b></p>
+     - <p>Click on the capital letter ‘Z’.</p>
+     - <th> Z </th>
+     - <th>L</th>
+     - <th> Z </th>
+     - <th>S</th>
+     - <th> Z </th>
+     - <th> Z </th>
+     - <td> Z </td>
+     - <td>R</td>
+     - <td>G</td>
+     - <td>W</td>
+     - <td>N</td>
+     - <td> Z </td>
+     - <p><b>Alphabet Audio</b></p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL150-00-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL150-00-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="BLL150-00-04" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: selfCheck + selfCheck — Activity 2D 
+     - … 152 more removed
+     + <p>Click on the lowercase letter ‘z’.</p>
+     + <div class="bingo col-12">
+     + <div class="bingoContainer" grid="4">
+     + <div class="number"><p class="sassoonI-text">s</p></div>
+     + <div class="number"><p class="sassoonI-text">w</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">z</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">z</p></div>
+     + <div class="number"><p class="sassoonI-text">f</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">z</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">z</p></div>
+     + <div class="number"><p class="sassoonI-text">v</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">z</p></div>
+     + <div class="number"><p class="sassoonI-text">s</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">n</p></div>
+     + <div class="number"><p class="sassoonI-text">y</p></div>
+     + <div class="row">
+     + <div class="activityButton reset-btn">Reset</div>
+     + <div class="activityButton hidden check-btn">Check</div>
+     + <p>Click on the capital letter ‘Z’.</p>
+     + <div class="bingo col-12">
+     + … 124 more added
+BLL150: identical 0 / changed 1
+  ~ BLL160_0_0.html: -145 +113
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL160-00-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: selfCheck + selfCheck — Activity 1C 
+     - <p>Click on the lowercase letter ‘y’.</p>
+     - <th>p</th>
+     - <th>b</th>
+     - <th> y </th>
+     - <th> y </th>
+     - <th>d</th>
+     - <th> y </th>
+     - <td> y </td>
+     - <td>d</td>
+     - <td> y </td>
+     - <td>p</td>
+     - <td> y </td>
+     - <td>b</td>
+     - <p><b>Alphabet Audio</b></p>
+     - <p>Click on the capital letter ‘Y’.</p>
+     - <th> Y </th>
+     - <th>O</th>
+     - <th> Y </th>
+     - <th>D</th>
+     - <th> Y </th>
+     - <th> Y </th>
+     - <td> Y </td>
+     - <td>R</td>
+     - <td>G</td>
+     - <td>O</td>
+     - <td>C</td>
+     - <td> Y </td>
+     - <p><b>Alphabet audio</b></p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL160-00-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="BLL160-00-04" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="BLL160-00-05" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: selfCheck + selfCheck — Activity 2D 
+     - … 105 more removed
+     + <p>Click on the lowercase letter ‘y’.</p>
+     + <div class="bingo col-12">
+     + <div class="bingoContainer" grid="4">
+     + <div class="number"><p class="sassoonI-text">p</p></div>
+     + <div class="number"><p class="sassoonI-text">b</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">y</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">y</p></div>
+     + <div class="number"><p class="sassoonI-text">d</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">y</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">y</p></div>
+     + <div class="number"><p class="sassoonI-text">d</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">y</p></div>
+     + <div class="number"><p class="sassoonI-text">p</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">y</p></div>
+     + <div class="number"><p class="sassoonI-text">b</p></div>
+     + <div class="row">
+     + <div class="activityButton reset-btn">Reset</div>
+     + <div class="activityButton hidden check-btn">Check</div>
+     + <p>Click on the capital letter ‘Y’.</p>
+     + <div class="bingo col-12">
+     + … 93 more added
+BLL160: identical 0 / changed 1
+BLL113: identical 3 / changed 0
+  ~ BLL140_0_0.html: -94 +78
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="BLL140-00-01" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: selfCheck + selfCheck — Activity 1C 
+     - <p>Click on the lowercase letter ‘j’</p>
+     - <th>g</th>
+     - <th>p</th>
+     - <th> j </th>
+     - <th> j </th>
+     - <th>i</th>
+     - <th> j </th>
+     - <td> j </td>
+     - <td>d</td>
+     - <td> j </td>
+     - <td>t</td>
+     - <td> j </td>
+     - <td>y</td>
+     - <p><b>Alphabet audio</b></p>
+     - <p>Click on the capital letter ‘J’</p>
+     - <th> J </th>
+     - <th>L</th>
+     - <th> J </th>
+     - <th>S</th>
+     - <th> J </th>
+     - <th> J </th>
+     - <td> J </td>
+     - <td>I</td>
+     - <td>G</td>
+     - <td>W</td>
+     - <td>C</td>
+     - <td> J </td>
+     - <p><b>Alphabet audio</b></p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL140-00-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL140-00-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="BLL140-00-04" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="BLL140-00-05" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - … 54 more removed
+     + <p>Click on the lowercase letter ‘j’</p>
+     + <div class="bingo col-12">
+     + <div class="bingoContainer" grid="4">
+     + <div class="number"><p class="sassoonI-text">g</p></div>
+     + <div class="number"><p class="sassoonI-text">p</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">j</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">j</p></div>
+     + <div class="number"><p class="sassoonI-text">i</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">j</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">j</p></div>
+     + <div class="number"><p class="sassoonI-text">d</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">j</p></div>
+     + <div class="number"><p class="sassoonI-text">t</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">j</p></div>
+     + <div class="number"><p class="sassoonI-text">y</p></div>
+     + <div class="row">
+     + <div class="activityButton reset-btn">Reset</div>
+     + <div class="activityButton hidden check-btn">Check</div>
+     + <p>Click on the capital letter ‘J’</p>
+     + <div class="bingo col-12">
+     + … 58 more added
+BLL140: identical 0 / changed 1
+  ~ BLL170_0_0.html: -102 +86
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="BLL170-00-01" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: selfCheck + selfCheck — Activity 1C 
+     - <p>Click on the lowercase letter ‘q’</p>
+     - <th>p</th>
+     - <th>b</th>
+     - <th> q </th>
+     - <th> q </th>
+     - <th>d</th>
+     - <th> q </th>
+     - <td> q </td>
+     - <td>d</td>
+     - <td> q </td>
+     - <td>p</td>
+     - <td> q </td>
+     - <td>b</td>
+     - <p><b>Alphabet Audio</b></p>
+     - <p>Click on the capital letter ‘Q’</p>
+     - <th> Q </th>
+     - <th>O</th>
+     - <th> Q </th>
+     - <th>D</th>
+     - <th> Q </th>
+     - <th> Q </th>
+     - <td> Q </td>
+     - <td>R</td>
+     - <td>G</td>
+     - <td>O</td>
+     - <td>C</td>
+     - <td> Q </td>
+     - <p><b>Alphabet Audio</b></p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="BLL170-00-02" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="BLL170-00-03" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="BLL170-00-04" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="BLL170-00-05" style="border: 8px sol
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - … 62 more removed
+     + <p>Click on the lowercase letter ‘q’</p>
+     + <div class="bingo col-12">
+     + <div class="bingoContainer" grid="4">
+     + <div class="number"><p class="sassoonI-text">p</p></div>
+     + <div class="number"><p class="sassoonI-text">b</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">q</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">q</p></div>
+     + <div class="number"><p class="sassoonI-text">d</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">q</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">q</p></div>
+     + <div class="number"><p class="sassoonI-text">d</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">q</p></div>
+     + <div class="number"><p class="sassoonI-text">p</p></div>
+     + <div class="number" value="correct"><p class="sassoonI-text">q</p></div>
+     + <div class="number"><p class="sassoonI-text">b</p></div>
+     + <div class="row">
+     + <div class="activityButton reset-btn">Reset</div>
+     + <div class="activityButton hidden check-btn">Check</div>
+     + <p>Click on the capital letter ‘Q’</p>
+     + <div class="bingo col-12">
+     + … 66 more added
+BLL170: identical 0 / changed 1
+BLL154: identical 3 / changed 0
+
+TOTAL: identical 6 / changed 7 / missing 0 over 9 modules
+CHANGED: BLL110/BLL110_0_0.html BLL120/BLL120_0_0.html BLL130/BLL130_0_0.html BLL150/BLL150_0_0.html BLL160/BLL160_0_0.html BLL140/BLL140_0_0.html BLL170/BLL170_0_0.html

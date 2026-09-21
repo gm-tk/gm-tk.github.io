@@ -1,0 +1,336 @@
+records: 11428
+keys of a record: built, code, decideBranch, decideLine, decideWhy, feat, foreign, index, nSubstantive, page, shape, trace, traceWhy, type
+
+== unclassified: declines 1600 / shapes 117 / modules 314
+    161 sites /  90 mods  MULTI-TABLE x2
+     87 sites /  39 mods  table 6x2
+     65 sites /  29 mods  table 1x2
+     59 sites /  31 mods  table 4x3
+     55 sites /  28 mods  table 3x3
+     53 sites /  35 mods  table 4x2
+     53 sites /  28 mods  no-table: prose/other (black x0, ownTags 0, heads 0)
+     52 sites /  27 mods  table 5x2
+   reasons: ? (1600)
+
+== dragAndDrop: declines 1301 / shapes 97 / modules 342
+    177 sites /  95 mods  no-table: prose/other (black x0, ownTags 0, heads 0)
+    107 sites /  50 mods  MULTI-TABLE x2
+     85 sites /  55 mods  table 5x2
+     72 sites /  52 mods  table 6x2
+     62 sites /  38 mods  table 4x2
+     50 sites /  37 mods  table 7x2
+     45 sites /  29 mods  table 5x3
+     38 sites /  18 mods  table 2x2
+   reasons: ? (1301)
+
+== carousel: declines 1268 / shapes 108 / modules 356
+    366 sites / 161 mods  no-table: prose/other (black x0, ownTags 1, heads 0)
+     84 sites /  52 mods  no-table: prose/other (black x1, ownTags 1, heads 0)
+     63 sites /  37 mods  no-table: prose/other (black x2, ownTags 1, heads 0)
+     46 sites /  17 mods  table 1x2
+     42 sites /  19 mods  table 3x2
+     39 sites /  18 mods  table 4x2
+     34 sites /  21 mods  no-table: prose/other (black x3, ownTags 1, heads 0)
+     33 sites /  21 mods  MULTI-TABLE x2
+   reasons: ? (1268)
+
+== accordion: declines 1034 / shapes 104 / modules 230
+    106 sites /  44 mods  no-table: own tag with labels x3
+     87 sites /  40 mods  no-table: own tag with labels x2
+     59 sites /  29 mods  no-table: prose/other (black x0, ownTags 1, heads 0)
+     47 sites /  22 mods  no-table: bare own tag x2
+     44 sites /  27 mods  no-table: prose/other (black x5, ownTags 1, heads 0)
+     39 sites /   5 mods  table 2x3
+     32 sites /  21 mods  no-table: own tag with labels x4
+     31 sites /  19 mods  no-table: prose/other (black x6, ownTags 1, heads 0)
+   reasons: ? (1034)
+
+== speechBubble: declines 1028 / shapes 54 / modules 139
+    426 sites /  61 mods  no-table: prose/other (black x0, ownTags 1, heads 0)
+    184 sites /  36 mods  table 1x2
+     61 sites /  20 mods  no-table: own tag with labels x2
+     58 sites /  12 mods  no-table: bare own tag x2
+     52 sites /  22 mods  no-table: prose/other (black x1, ownTags 1, heads 0)
+     23 sites /   8 mods  table 2x3
+     20 sites /  13 mods  no-table: own tag with labels x3
+     20 sites /   7 mods  table 1x1
+   reasons: ? (1028)
+
+== clickDrop: declines 872 / shapes 97 / modules 183
+    183 sites /  32 mods  no-table: prose/other (black x0, ownTags 1, heads 0)
+     62 sites /  16 mods  no-table: own tag with labels x2
+     62 sites /  31 mods  no-table: bare own tag x2
+     33 sites /  11 mods  no-table: prose/other (black x1, ownTags 1, heads 0)
+     31 sites /  14 mods  no-table: own tag with labels x6
+     25 sites /  18 mods  no-table: own tag with labels x3
+     23 sites /  11 mods  no-table: own tag with labels x5
+     23 sites /   3 mods  no-table: prose/other (black x1, ownTags 1, heads 1)
+   reasons: ? (872)
+
+== dropDown: declines 735 / shapes 69 / modules 219
+    427 sites / 132 mods  no-table: prose/other (black x0, ownTags 1, heads 0)
+     31 sites /  23 mods  no-table: prose/other (black x1, ownTags 1, heads 0)
+     18 sites /   9 mods  no-table: bare own tag x2
+     15 sites /   7 mods  table 1x1
+     14 sites /   7 mods  no-table: prose/other (black x4, ownTags 1, heads 0)
+     13 sites /  11 mods  no-table: prose/other (black x7, ownTags 1, heads 0)
+     12 sites /   8 mods  no-table: prose/other (black x3, ownTags 1, heads 0)
+     12 sites /   8 mods  table 1x2
+   reasons: ? (735)
+
+== flipCard: declines 667 / shapes 94 / modules 240
+     70 sites /  34 mods  table 2x4
+     46 sites /  33 mods  table 2x3
+     32 sites /  20 mods  no-table: prose/other (black x0, ownTags 1, heads 0)
+     31 sites /  21 mods  table 4x4
+     23 sites /  11 mods  table 3x3
+     22 sites /   5 mods  no-table: prose/other (black x0, ownTags 1, heads 1)
+     21 sites /  12 mods  MULTI-TABLE x2
+     20 sites /  12 mods  no-table: bare own tag x2
+   reasons: ? (667)
+
+== modal: declines 511 / shapes 58 / modules 110
+     89 sites /  36 mods  no-table: prose/other (black x0, ownTags 1, heads 0)
+     77 sites /  11 mods  no-table: bare own tag x2
+     38 sites /   7 mods  no-table: own tag with labels x5
+     38 sites /   4 mods  no-table: bare own tag x3
+     24 sites /   9 mods  no-table: own tag with labels x3
+     21 sites /   6 mods  no-table: own tag with labels x4
+     18 sites /   5 mods  no-table: bare own tag x6
+     17 sites /   6 mods  no-table: own tag with labels x12
+   reasons: ? (511)
+
+== multiChoiceQuiz: declines 510 / shapes 89 / modules 181
+     95 sites /  47 mods  no-table: prose/other (black x0, ownTags 0, heads 0)
+     23 sites /  12 mods  no-table: prose/other (black x1, ownTags 0, heads 0)
+     23 sites /  14 mods  no-table: prose/other (black x4, ownTags 0, heads 0)
+     21 sites /  13 mods  MULTI-TABLE x2
+     20 sites /  13 mods  no-table: prose/other (black x5, ownTags 0, heads 0)
+     19 sites /  10 mods  no-table: prose/other (black x20, ownTags 0, heads 0)
+     14 sites /  10 mods  no-table: prose/other (black x12, ownTags 0, heads 0)
+     12 sites /  10 mods  no-table: prose/other (black x6, ownTags 0, heads 0)
+   reasons: ? (510)
+
+== typing: declines 328 / shapes 69 / modules 86
+     47 sites /  23 mods  no-table: prose/other (black x0, ownTags 0, heads 0)
+     26 sites /  14 mods  MULTI-TABLE x2
+     14 sites /   6 mods  table 3x2
+     14 sites /  11 mods  table 4x2
+     14 sites /   6 mods  table 1x1
+     13 sites /   9 mods  no-table: prose/other (black x1, ownTags 0, heads 0)
+     13 sites /  10 mods  table 6x2
+     11 sites /   7 mods  no-table: prose/other (black x7, ownTags 0, heads 0)
+   reasons: ? (328)
+
+== tabs: declines 217 / shapes 59 / modules 89
+     23 sites /  12 mods  MULTI-TABLE x2
+     19 sites /   8 mods  table 2x4
+     17 sites /   6 mods  table 2x3
+     14 sites /  11 mods  no-table: own tag with labels x3
+     11 sites /   9 mods  no-table: bare own tag x2
+      8 sites /   4 mods  no-table: prose/other (black x0, ownTags 1, heads 1)
+      7 sites /   5 mods  no-table: prose/other (black x0, ownTags 1, heads 0)
+      7 sites /   5 mods  no-table: own tag with labels x2
+   reasons: ? (217)
+
+== selfCheck: declines 215 / shapes 42 / modules 72
+     36 sites /   9 mods  MULTI-TABLE x2
+     27 sites /  16 mods  no-table: prose/other (black x0, ownTags 0, heads 0)
+     14 sites /  11 mods  table 6x3
+     12 sites /   5 mods  table 8x2
+     12 sites /   9 mods  no-table: prose/other (black x5, ownTags 0, heads 0)
+     11 sites /   8 mods  no-table: prose/other (black x1, ownTags 0, heads 0)
+      9 sites /   4 mods  table 6x2
+      8 sites /   4 mods  no-table: prose/other (black x3, ownTags 0, heads 0)
+   reasons: ? (215)
+
+== interactive: declines 205 / shapes 31 / modules 29
+     83 sites /  17 mods  no-table: prose/other (black x0, ownTags 0, heads 0)
+     35 sites /  10 mods  no-table: prose/other (black x1, ownTags 0, heads 0)
+     14 sites /   9 mods  no-table: prose/other (black x6, ownTags 0, heads 0)
+     11 sites /   8 mods  no-table: prose/other (black x2, ownTags 0, heads 0)
+     11 sites /   9 mods  no-table: prose/other (black x5, ownTags 0, heads 0)
+     11 sites /   7 mods  no-table: prose/other (black x4, ownTags 0, heads 0)
+      5 sites /   4 mods  no-table: prose/other (black x3, ownTags 0, heads 0)
+      4 sites /   4 mods  no-table: prose/other (black x7, ownTags 0, heads 0)
+   reasons: ? (205)
+
+== hint: declines 133 / shapes 16 / modules 20
+     99 sites /  13 mods  no-table: prose/other (black x0, ownTags 0, heads 0)
+      5 sites /   3 mods  no-table: prose/other (black x3, ownTags 0, heads 0)
+      4 sites /   2 mods  no-table: prose/other (black x4, ownTags 0, heads 0)
+      3 sites /   2 mods  no-table: prose/other (black x6, ownTags 0, heads 0)
+      3 sites /   1 mods  MULTI-TABLE x2
+      2 sites /   2 mods  no-table: prose/other (black x1, ownTags 0, heads 0)
+      2 sites /   2 mods  no-table: prose/other (black x5, ownTags 0, heads 0)
+      2 sites /   1 mods  table 6x2
+   reasons: ? (133)
+
+== reorder: declines 123 / shapes 46 / modules 64
+     11 sites /   7 mods  no-table: prose/other (black x0, ownTags 0, heads 0)
+      9 sites /   7 mods  table 7x2
+      8 sites /   5 mods  no-table: prose/other (black x4, ownTags 0, heads 0)
+      5 sites /   3 mods  table 9x2
+      5 sites /   4 mods  table 8x2
+      5 sites /   4 mods  table 6x2
+      4 sites /   3 mods  table 1x4
+      4 sites /   3 mods  no-table: prose/other (black x1, ownTags 0, heads 0)
+   reasons: ? (123)
+
+== selectionBox: declines 116 / shapes 31 / modules 39
+     19 sites /   6 mods  no-table: prose/other (black x0, ownTags 0, heads 0)
+     12 sites /   4 mods  MULTI-TABLE x2
+     11 sites /   5 mods  no-table: prose/other (black x1, ownTags 0, heads 0)
+      9 sites /   2 mods  no-table: prose/other (black x3, ownTags 0, heads 0)
+      7 sites /   4 mods  no-table: prose/other (black x4, ownTags 0, heads 0)
+      5 sites /   3 mods  table 2x2
+      5 sites /   3 mods  no-table: prose/other (black x6, ownTags 0, heads 0)
+      4 sites /   3 mods  no-table: prose/other (black x7, ownTags 0, heads 0)
+   reasons: ? (116)
+
+== radioQuiz: declines 106 / shapes 46 / modules 60
+      7 sites /   6 mods  no-table: prose/other (black x0, ownTags 0, heads 0)
+      7 sites /   2 mods  table 7x4
+      6 sites /   5 mods  table 7x3
+      4 sites /   3 mods  table 5x2
+      4 sites /   4 mods  table 6x3
+      4 sites /   3 mods  table 11x3
+      4 sites /   3 mods  no-table: prose/other (black x1, ownTags 0, heads 0)
+      3 sites /   2 mods  table 6x2
+   reasons: ? (106)
+
+== slider: declines 72 / shapes 29 / modules 33
+     11 sites /   6 mods  no-table: prose/other (black x1, ownTags 0, heads 0)
+      7 sites /   2 mods  table 4x2
+      5 sites /   2 mods  table 7x1
+      4 sites /   3 mods  table 1x2
+      4 sites /   1 mods  table 6x1
+      4 sites /   1 mods  table 5x2
+      3 sites /   2 mods  no-table: prose/other (black x1, ownTags 0, heads 1)
+      2 sites /   2 mods  no-table: prose/other (black x0, ownTags 0, heads 0)
+   reasons: ? (72)
+
+== hintSlider: declines 69 / shapes 20 / modules 38
+     28 sites /  16 mods  no-table: prose/other (black x0, ownTags 0, heads 0)
+      6 sites /   3 mods  table 5x2
+      5 sites /   4 mods  table 7x2
+      5 sites /   4 mods  table 6x2
+      4 sites /   3 mods  table 6x3
+      3 sites /   2 mods  table 8x2
+      2 sites /   1 mods  table 12x2
+      2 sites /   2 mods  no-table: prose/other (black x1, ownTags 0, heads 0)
+   reasons: ? (69)
+
+== infoTrigger: declines 55 / shapes 20 / modules 25
+     28 sites /  12 mods  table 1x2
+      3 sites /   3 mods  table 3x2
+      3 sites /   2 mods  table 9x3
+      2 sites /   2 mods  table 7x3
+      2 sites /   2 mods  table 4x2
+      2 sites /   1 mods  table 2x3
+      2 sites /   1 mods  table 2x2
+      1 sites /   1 mods  table 7x2
+   reasons: ? (55)
+
+== memoryGame: declines 55 / shapes 24 / modules 39
+      9 sites /   6 mods  table 4x4
+      8 sites /   6 mods  table 6x2
+      5 sites /   3 mods  table 3x4
+      4 sites /   3 mods  table 10x2
+      4 sites /   4 mods  table 7x2
+      3 sites /   2 mods  no-table: prose/other (black x1, ownTags 0, heads 0)
+      2 sites /   1 mods  table 8x2
+      2 sites /   1 mods  table 2x6
+   reasons: ? (55)
+
+== shapeHover: declines 38 / shapes 21 / modules 18
+      6 sites /   4 mods  no-table: prose/other (black x5, ownTags 0, heads 0)
+      4 sites /   4 mods  no-table: prose/other (black x0, ownTags 0, heads 0)
+      4 sites /   2 mods  table 5x2
+      3 sites /   2 mods  table 4x5
+      2 sites /   1 mods  table 2x3
+      2 sites /   2 mods  no-table: repeating [H*] x4
+      2 sites /   1 mods  table 7x2
+      2 sites /   1 mods  no-table: prose/other (black x9, ownTags 0, heads 1)
+   reasons: ? (38)
+
+== sketcher: declines 33 / shapes 9 / modules 19
+     14 sites /  12 mods  no-table: prose/other (black x0, ownTags 0, heads 0)
+      6 sites /   2 mods  no-table: prose/other (black x1, ownTags 0, heads 0)
+      3 sites /   2 mods  table 4x2
+      3 sites /   1 mods  table 1x1
+      2 sites /   1 mods  no-table: prose/other (black x5, ownTags 0, heads 0)
+      2 sites /   1 mods  no-table: prose/other (black x23, ownTags 0, heads 0)
+      1 sites /   1 mods  no-table: prose/other (black x6, ownTags 0, heads 0)
+      1 sites /   1 mods  table 1x5
+   reasons: ? (33)
+
+== wordDrag: declines 31 / shapes 5 / modules 9
+     24 sites /   7 mods  no-table: prose/other (black x0, ownTags 0, heads 0)
+      4 sites /   1 mods  no-table: prose/other (black x2, ownTags 0, heads 0)
+      1 sites /   1 mods  MULTI-TABLE x2
+      1 sites /   1 mods  no-table: prose/other (black x4, ownTags 0, heads 0)
+      1 sites /   1 mods  no-table: prose/other (black x1, ownTags 0, heads 0)
+   reasons: ? (31)
+
+== wordFind: declines 31 / shapes 15 / modules 21
+     10 sites /   7 mods  no-table: prose/other (black x0, ownTags 0, heads 0)
+      6 sites /   5 mods  no-table: prose/other (black x1, ownTags 0, heads 0)
+      2 sites /   1 mods  table 1x3
+      2 sites /   1 mods  table 2x2
+      1 sites /   1 mods  table 1x6
+      1 sites /   1 mods  no-table: prose/other (black x8, ownTags 0, heads 0)
+      1 sites /   1 mods  no-table: prose/other (black x2, ownTags 0, heads 0)
+      1 sites /   1 mods  no-table: prose/other (black x11, ownTags 0, heads 0)
+   reasons: ? (31)
+
+== crossword: declines 26 / shapes 17 / modules 21
+      5 sites /   3 mods  no-table: prose/other (black x0, ownTags 0, heads 0)
+      3 sites /   2 mods  table 10x2
+      2 sites /   2 mods  table 7x2
+      2 sites /   1 mods  table 17x3
+      2 sites /   1 mods  no-table: prose/other (black x18, ownTags 0, heads 0)
+      1 sites /   1 mods  table 4x2
+      1 sites /   1 mods  no-table: prose/other (black x17, ownTags 0, heads 0)
+      1 sites /   1 mods  no-table: prose/other (black x7, ownTags 0, heads 0)
+   reasons: ? (26)
+
+== timeline: declines 19 / shapes 14 / modules 14
+      4 sites /   2 mods  MULTI-TABLE x2
+      2 sites /   2 mods  table 2x3
+      2 sites /   1 mods  table 2x4
+      1 sites /   1 mods  table 3x5
+      1 sites /   1 mods  table 2x5
+      1 sites /   1 mods  table 2x6
+      1 sites /   1 mods  no-table: prose/other (black x3, ownTags 0, heads 0)
+      1 sites /   1 mods  no-table: prose/other (black x1, ownTags 0, heads 0)
+   reasons: ? (19)
+
+== clickingOrder: declines 16 / shapes 8 / modules 10
+      5 sites /   4 mods  table 3x4
+      3 sites /   2 mods  table 2x3
+      2 sites /   1 mods  table 6x2
+      2 sites /   1 mods  table 5x7
+      1 sites /   1 mods  no-table: prose/other (black x1, ownTags 0, heads 0)
+      1 sites /   1 mods  table 9x2
+      1 sites /   1 mods  table 10x2
+      1 sites /   1 mods  no-table: prose/other (black x2, ownTags 0, heads 0)
+   reasons: ? (16)
+
+== wordSelect: declines 10 / shapes 5 / modules 8
+      5 sites /   4 mods  table 3x4
+      2 sites /   2 mods  table 3x3
+      1 sites /   1 mods  table 3x2
+      1 sites /   1 mods  table 2x3
+      1 sites /   1 mods  table 5x2
+   reasons: ? (10)
+
+== glossary: declines 3 / shapes 3 / modules 3
+      1 sites /   1 mods  no-table: prose/other (black x5, ownTags 0, heads 0)
+      1 sites /   1 mods  no-table: prose/other (black x0, ownTags 0, heads 0)
+      1 sites /   1 mods  table 12x3
+   reasons: ? (3)
+
+== puzzle: declines 1 / shapes 1 / modules 1
+      1 sites /   1 mods  no-table: prose/other (black x7, ownTags 0, heads 0)
+   reasons: ? (1)

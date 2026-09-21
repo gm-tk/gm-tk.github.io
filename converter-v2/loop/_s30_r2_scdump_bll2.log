@@ -1,0 +1,24 @@
+
+=== BLL113 page 1.0 selfCheck #undefined modifier="" extraTypes=["selfCheck","selfCheck"] owner=-
+  items (6): openers 0 / members 6
+    [tag typing quiz/INTERACTIVE cls=tag] text«[self check]» after«Click on the word ‘on’.»
+    [table 0x0] 
+    [tag typing quiz/INTERACTIVE cls=tag] text«[self check]» after«Click on the word ‘the’.»
+    [table 0x0] 
+    [tag typing quiz/INTERACTIVE cls=tag] text«[self check]» after«Click on the word ‘a’.»
+    [table 0x0] 
+  tables: 3; media: []; instructions: []
+
+=== BLL154 page 1.0 selfCheck #undefined modifier="" extraTypes=[] owner=[Activity 1C]
+  items (3): openers 0 / members 3
+    [tag typing quiz/INTERACTIVE cls=tag] text«[self check]» after«»
+    [tag ? cls=instruction] text«please have words outside of table so that they can be dragged and dro» after«»
+    [table 0x0] 
+  tables: 1; media: []; instructions: ["please have words outside of table so that they can be dragg"]
+
+=== BLL154 page 1.1 selfCheck #undefined modifier="" extraTypes=[] owner=[Activity 2A]
+  items (3): openers 0 / members 3
+    [tag typing quiz/INTERACTIVE cls=tag] text«[self check]Can you create letter tiles (letters in boxes). Students w» after«»
+    [tag ? cls=instruction] text«Letter tiles -» after«w e n t s b a d l m p coo»
+    [table 0x0] 
+  tables: 1; media: []; instructions: ["Letter tiles -"]

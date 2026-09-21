@@ -1,0 +1,183 @@
+
+=== BLL110 page 0.0 selfCheck #undefined modifier="" extraTypes=["selfCheck"] owner=[Activity 1C]
+  items (8): openers 0 / members 8
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«Click on the lower case letter ‘s’.»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«Click on the capital letter ‘S’.»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+  tables: 2; media: ["https://drive.google.com/drive/u/0/folders/1lbRV5P"]; instructions: []
+
+=== BLL110 page 0.0 selfCheck #undefined modifier="" extraTypes=["selfCheck"] owner=[Activity 4]
+  items (8): openers 0 / members 8
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«Click on the lower case letter ‘a’.»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«Click on the capital letter ‘A’.»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+  tables: 2; media: ["https://drive.google.com/drive/u/0/folders/1lbRV5P"]; instructions: []
+
+=== BLL110 page 0.0 selfCheck #undefined modifier="" extraTypes=["selfCheck"] owner=[Activity 3D]
+  items (8): openers 0 / members 8
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«Click on the lower case letter ‘t’»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«Click on the capital letter ‘T’»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+  tables: 2; media: ["https://drive.google.com/drive/u/0/folders/1lbRV5P"]; instructions: []
+
+=== BLL110 page 0.0 selfCheck #undefined modifier="" extraTypes=["selfCheck"] owner=[Activity 4D]
+  items (8): openers 0 / members 8
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«Click on the lowercase letter ‘p’.»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«Click on the capital letter ‘P’.»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+  tables: 2; media: ["https://drive.google.com/drive/u/0/folders/1lbRV5P"]; instructions: []
+
+=== BLL110 page 0.0 selfCheck #undefined modifier="" extraTypes=["selfCheck"] owner=[Activity 5D]
+  items (8): openers 0 / members 8
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«Click on the lower case letter ‘i’.»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«Click on the capital letter ‘I’.»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+  tables: 2; media: ["https://drive.google.com/drive/u/0/folders/1lbRV5P"]; instructions: []
+
+=== BLL110 page 0.0 selfCheck #undefined modifier="" extraTypes=["selfCheck"] owner=[Activity 6D]
+  items (8): openers 0 / members 8
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«Click on the lower case letter ‘n’.»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«Click on the capital letter ‘N’.»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+  tables: 2; media: ["https://drive.google.com/drive/u/0/folders/1lbRV5P"]; instructions: []
+
+=== BLL120 page 0.0 selfCheck #undefined modifier="" extraTypes=["selfCheck"] owner=[Activity 1C]
+  items (8): openers 0 / members 8
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«1. Click on the lower case letter ‘c’.»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«2. Click on the capital letter ‘C’.»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+  tables: 2; media: ["https://drive.google.com/drive/u/0/folders/1lbRV5P"]; instructions: []
+
+=== BLL120 page 0.0 selfCheck #undefined modifier="" extraTypes=["selfCheck"] owner=[Activity 2D]
+  items (8): openers 0 / members 8
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«1. Click on the lower case letter ‘k’»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«2. Click on the capital letter ‘K’»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+  tables: 2; media: ["https://drive.google.com/drive/u/0/folders/1lbRV5P"]; instructions: []
+
+=== BLL120 page 0.0 selfCheck #undefined modifier="" extraTypes=["selfCheck"] owner=-
+  items (16): openers 0 / members 16
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check activity] Show ‘check’ for cap, cup, and car.» after«»
+    [tag body/ELEMENT cls=tag] text«[body] 2.» after«Use your knowledge from the previous two lessons to click on the words»
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check activity] Show ‘check’ for kangaroo, key, and kite.» after«»
+    [black] «Kite https://www.istockphoto.com/vector/a-kite-in-a-trendy-doodle-style-gm1370869199-44032»
+    [black] «Cap https://www.istockphoto.com/vector/set-of-color-illustrations-with-a-blue-denim-baseba»
+    [black] «Car»
+    [black] «https://www.istockphoto.com/vector/compact-city-car-four-angle-set-car-side-back-and-front»
+    [black] «Key https://www.istockphoto.com/vector/key-line-icon-thin-line-design-vector-icon-gm106696»
+    [black] «Kangaroo»
+    [black] «https://www.istockphoto.com/photo/red-kangaroo-on-white-gm641171366-116093835?searchscope=»
+    [black] «Cup»
+    [black] «https://www.istockphoto.com/photo/white-mug-isolated-gm821282266-132797579?searchscope=ima»
+    [tag image/ELEMENT cls=tag] text«[image]» after«»
+    [black] «https://www.istockphoto.com/vector/set-of-letter-ck-s-gm1711568589-539788677?searchscope=i»
+    [tag body/ELEMENT cls=tag] text«[body]» after«Click on the image.»
+    [tag image/ELEMENT cls=tag] text«[audio when clicked on the image –» after«I am the digraph ck, this means I am made up of two letters that make »
+  tables: 0; media: ["https://www.istockphoto.com/vector/a-kite-in-a-tre","https://www.istockphoto.com/vector/set-of-color-il","https://www.istockphoto.com/vector/compact-city-ca","https://www.istockphoto.com/vector/key-line-icon-t","https://www.istockphoto.com/photo/red-kangaroo-on-","https://www.istockphoto.com/photo/white-mug-isolat","https://www.istockphoto.com/vector/set-of-letter-c"]; instructions: []
+
+=== BLL120 page 0.0 selfCheck #undefined modifier="" extraTypes=[] owner=[Activity 3D]
+  items (3): openers 0 / members 3
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«Find and highlight the words that end in ck /k/.»
+    [tag ? cls=instruction] text«[Place a check ✅when these words are correctly highlighted by the ākon» after«»
+    [table 0x0] 
+  tables: 1; media: []; instructions: ["[Place a check ✅when these words are correctly highlighted b"]
+
+=== BLL120 page 0.0 selfCheck #undefined modifier="" extraTypes=["selfCheck"] owner=[Activity 4D]
+  items (8): openers 0 / members 8
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«1. Click on the lowercase letter ‘e’.»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«2. Click on the capital letter ‘E’»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+  tables: 2; media: ["https://drive.google.com/drive/u/0/folders/1lbRV5P"]; instructions: []
+
+=== BLL120 page 0.0 selfCheck #undefined modifier="" extraTypes=["selfCheck"] owner=[Activity 5D]
+  items (8): openers 0 / members 8
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«1. Click on the lowercase letter ‘h’»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«2. Click on the capital letter ‘H’»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+  tables: 2; media: ["https://drive.google.com/drive/u/0/folders/1lbRV5P"]; instructions: []
+
+=== BLL120 page 0.0 selfCheck #undefined modifier="" extraTypes=["selfCheck"] owner=[Activity 6D]
+  items (8): openers 0 / members 8
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«1. Click on the lowercase letter ‘r’.»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«2. Click on the capital letter ‘R’.»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+  tables: 2; media: ["https://drive.google.com/drive/u/0/folders/1lbRV5P"]; instructions: []
+
+=== BLL120 page 0.0 selfCheck #undefined modifier="" extraTypes=["selfCheck"] owner=[Activity 7D]
+  items (8): openers 0 / members 8
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«1. Click on the lowercase letter ‘m’»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«2. Click on the capital letter ‘M’»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+  tables: 2; media: ["https://drive.google.com/drive/u/0/folders/1lbRV5P"]; instructions: []
+
+=== BLL120 page 0.0 selfCheck #undefined modifier="" extraTypes=["selfCheck"] owner=[Activity 8D]
+  items (8): openers 0 / members 8
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«1. Click on the lowercase letter ‘d’»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+    [tag typing quiz/INTERACTIVE cls=tag] text«[Self check]» after«2. Click on the capital letter ‘D’»
+    [table 0x0] 
+    [tag audio/ELEMENT cls=tag] text«[Add an audio that when they click/hover on the letter it says the nam» after«»
+    [black] «**Alphabet Audio**»
+  tables: 2; media: ["https://drive.google.com/drive/u/0/folders/1lbRV5P"]; instructions: []

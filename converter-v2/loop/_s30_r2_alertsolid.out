@@ -1,0 +1,218 @@
+SESSION 30 ROUND 2 — div.alert.solid on Claude's paired pages → the gold box's class for the same text
+TOTAL Claude alert-solid boxes matched: 295; absent (text not in the gold page) 207; short-text skipped 21
+gold class ladder for the matched boxes:
+    143  alert
+     44  alertActivity
+     22  alert solid
+     19  activity alertPadding
+     18  alert top
+     15  alert blank
+      9  activity dropbox
+      8  whakatauki
+      5  activity
+      4  activity alertPadding dropbox
+      2  activity interactive
+      2  alert paddingL top
+      1  alert important
+      1  activity alertPadding super-content-button
+      1  activity dropbox paddingR
+      1  alertActivity paddingL
+
+per module: gold classes | WT tag counts (important / alert solid / alert other)
+  ENGC403   {'cl_short': 2, 'alert': 4, 'absent': 25, 'activity dropbox': 3} | WT important 4 / alert solid 0 / alert other 0
+  ANZH401   {'activity alertPadding': 18, 'absent': 5, 'activity alertPadding dropbox': 3, 'alert': 1, 'activity dropbox': 3} | WT important 30 / alert solid 0 / alert other 30
+  MXS1004   {'alert top': 5, 'alert solid': 5, 'absent': 7, 'alert': 1} | WT important 0 / alert solid 19 / alert other 0
+  CEDT501   {'absent': 11, 'alert top': 2, 'alert': 4} | WT important 23 / alert solid 0 / alert other 11
+  MXEX401   {'absent': 11, 'alertActivity': 3, 'alert blank': 1} | WT important 11 / alert solid 4 / alert other 1
+  HIS1005   {'absent': 10, 'alertActivity': 3, 'alert': 1} | WT important 14 / alert solid 0 / alert other 21
+  MXFL401   {'alertActivity': 1, 'absent': 8, 'activity dropbox paddingR': 1, 'activity': 1, 'alert': 1, 'alertActivity paddingL': 1} | WT important 4 / alert solid 5 / alert other 3
+  CEDO502   {'absent': 4, 'alert': 8} | WT important 14 / alert solid 0 / alert other 18
+  MXFU401   {'alert': 2, 'absent': 8, 'activity alertPadding': 1} | WT important 9 / alert solid 1 / alert other 2
+  TRR114    {'cl_short': 6, 'absent': 1, 'alert': 3} | WT important 0 / alert solid 16 / alert other 0
+  XDLS501   {'whakatauki': 1, 'absent': 9} | WT important 13 / alert solid 0 / alert other 0
+  AGH1006   {'alert': 8, 'absent': 1} | WT important 2 / alert solid 9 / alert other 0
+  AGH1009   {'alert': 2, 'absent': 2, 'alert solid': 5} | WT important 0 / alert solid 9 / alert other 0
+  CBI1004   {'alert': 9} | WT important 0 / alert solid 9 / alert other 3
+  ENG1004   {'absent': 1, 'alertActivity': 6, 'alert': 2} | WT important 9 / alert solid 0 / alert other 8
+  SSOG301   {'absent': 9} | WT important 6 / alert solid 0 / alert other 1
+  AGH1005   {'alert': 6, 'absent': 2} | WT important 0 / alert solid 8 / alert other 0
+  CBI1005   {'alert': 8} | WT important 0 / alert solid 8 / alert other 1
+  HIS1006   {'alert top': 1, 'absent': 5, 'activity': 1, 'alertActivity': 1} | WT important 14 / alert solid 0 / alert other 15
+  MXEO401   {'absent': 5, 'alert top': 1, 'alert': 2} | WT important 4 / alert solid 2 / alert other 3
+  BLL120    {'alertActivity': 7} | WT important 7 / alert solid 0 / alert other 4
+  CEDT104   {'absent': 3, 'alert': 3, 'alertActivity': 1} | WT important 0 / alert solid 7 / alert other 1
+  AGH1004   {'alert': 6, 'activity interactive': 1} | WT important 0 / alert solid 7 / alert other 0
+  CEDW501   {'absent': 2, 'alert': 4, 'whakatauki': 1} | WT important 8 / alert solid 0 / alert other 8
+  DAN1003   {'absent': 6, 'alert': 1} | WT important 0 / alert solid 8 / alert other 0
+  TRR107    {'cl_short': 3, 'absent': 3} | WT important 0 / alert solid 0 / alert other 0
+  TRR108    {'cl_short': 3, 'alert': 3} | WT important 0 / alert solid 0 / alert other 0
+  BLL130    {'alertActivity': 6} | WT important 6 / alert solid 0 / alert other 0
+  AGH1001   {'alert': 4, 'absent': 1, 'alert blank': 1} | WT important 1 / alert solid 5 / alert other 1
+  AGH1002   {'whakatauki': 1, 'absent': 1, 'alert': 4} | WT important 6 / alert solid 0 / alert other 0
+  ENGJ403   {'absent': 4, 'alert': 2} | WT important 0 / alert solid 0 / alert other 0
+  JPN1004   {'whakatauki': 1, 'alert': 5} | WT important 0 / alert solid 0 / alert other 6
+  ENFUN04   {'alert': 2, 'absent': 3} | WT important 5 / alert solid 0 / alert other 5
+  BLL110    {'alertActivity': 5} | WT important 5 / alert solid 0 / alert other 0
+  CBI1009   {'cl_short': 4, 'absent': 1} | WT important 0 / alert solid 5 / alert other 0
+  CEDR501   {'alert': 5} | WT important 6 / alert solid 0 / alert other 30
+  HIS1007   {'absent': 2, 'alert blank': 2, 'alert': 1} | WT important 5 / alert solid 0 / alert other 9
+  HIS1008   {'alert blank': 3, 'alertActivity': 1, 'activity': 1} | WT important 6 / alert solid 0 / alert other 11
+  MXEX302   {'absent': 5} | WT important 2 / alert solid 4 / alert other 1
+  MXFUN02   {'absent': 4} | WT important 2 / alert solid 1 / alert other 7
+  SSFUN03   {'alert blank': 2, 'alert top': 1, 'absent': 1} | WT important 0 / alert solid 0 / alert other 2
+  XFUN02    {'alert': 4} | WT important 4 / alert solid 0 / alert other 2
+  BLL140    {'alert': 4} | WT important 5 / alert solid 0 / alert other 0
+  ENGI303   {'alert blank': 1, 'absent': 3} | WT important 5 / alert solid 0 / alert other 2
+  ENGR201   {'alert': 2, 'absent': 1, 'alert blank': 1} | WT important 8 / alert solid 0 / alert other 2
+  XDLS908   {'absent': 1, 'alert': 3} | WT important 4 / alert solid 0 / alert other 9
+  XGF9006   {'absent': 1, 'alert': 1, 'alert solid': 2} | WT important 0 / alert solid 0 / alert other 34
+  AGH1007   {'alert': 1, 'alert top': 1, 'activity dropbox': 1} | WT important 4 / alert solid 0 / alert other 0
+  ENG1005   {'absent': 3} | WT important 9 / alert solid 0 / alert other 8
+  GEO1006   {'alert top': 2, 'absent': 1} | WT important 3 / alert solid 0 / alert other 0
+  MXDB201   {'alert solid': 2, 'alertActivity': 1} | WT important 3 / alert solid 0 / alert other 0
+  PHE1008   {'absent': 2, 'activity': 1} | WT important 0 / alert solid 3 / alert other 0
+  TRR203    {'cl_short': 1, 'alert': 1} | WT important 0 / alert solid 0 / alert other 0
+  TRR304    {'cl_short': 1, 'absent': 1} | WT important 0 / alert solid 0 / alert other 0
+  BLL230    {'alertActivity': 1, 'activity alertPadding super-content-button': 1} | WT important 2 / alert solid 0 / alert other 0
+  CEDK102   {'alert': 1, 'alert solid': 1} | WT important 1 / alert solid 1 / alert other 0
+  CEDR204   {'alertActivity': 1, 'alert': 1} | WT important 2 / alert solid 0 / alert other 1
+  AGH1003   {'alert top': 1, 'alert': 1} | WT important 2 / alert solid 0 / alert other 0
+  AGH1008   {'alert top': 1, 'alert paddingL top': 1} | WT important 4 / alert solid 0 / alert other 0
+  CEDO501   {'absent': 1, 'alert': 1} | WT important 2 / alert solid 0 / alert other 13
+  COM1002   {'absent': 2} | WT important 0 / alert solid 2 / alert other 0
+  DAN1004   {'alert': 1, 'absent': 1} | WT important 0 / alert solid 2 / alert other 0
+  DTC1004   {'alertActivity': 2} | WT important 1 / alert solid 0 / alert other 2
+  ENGI103   {'absent': 1, 'cl_short': 1} | WT important 3 / alert solid 0 / alert other 0
+  ENGI401   {'alert': 2} | WT important 3 / alert solid 0 / alert other 5
+  ENGS101   {'alert': 2} | WT important 0 / alert solid 0 / alert other 9
+  ENGS401   {'absent': 2} | WT important 2 / alert solid 0 / alert other 1
+  GEO1005   {'alert top': 2} | WT important 1 / alert solid 0 / alert other 0
+  MXDB202   {'alert solid': 1, 'alert': 1} | WT important 2 / alert solid 0 / alert other 1
+  MXDI103   {'alert': 2} | WT important 2 / alert solid 0 / alert other 0
+  MXFL102   {'alertActivity': 1, 'absent': 1} | WT important 2 / alert solid 0 / alert other 0
+  MXFL202   {'alert solid': 1, 'absent': 1} | WT important 0 / alert solid 1 / alert other 1
+  MXFL301   {'alertActivity': 1, 'alert top': 1} | WT important 1 / alert solid 1 / alert other 4
+  MXFU302   {'alert solid': 2} | WT important 0 / alert solid 2 / alert other 4
+  PHE1003   {'absent': 1, 'alert': 1} | WT important 5 / alert solid 0 / alert other 0
+  XGF9001   {'absent': 2} | WT important 0 / alert solid 0 / alert other 28
+  TRR102    {'activity alertPadding dropbox': 1} | WT important 0 / alert solid 0 / alert other 0
+  TRR106    {'alert important': 1} | WT important 1 / alert solid 0 / alert other 0
+  ANZHFUN05 {'absent': 1} | WT important 1 / alert solid 0 / alert other 2
+  ARFUN01   {'absent': 1} | WT important 0 / alert solid 0 / alert other 0
+  ENFUN09   {'alert blank': 1} | WT important 1 / alert solid 0 / alert other 2
+  MXFUN03   {'absent': 1} | WT important 4 / alert solid 0 / alert other 8
+  SSFUN01   {'alert': 1} | WT important 0 / alert solid 0 / alert other 13
+  SSFUN05   {'activity interactive': 1} | WT important 1 / alert solid 0 / alert other 5
+  WJFUN206  {'alert solid': 1} | WT important 1 / alert solid 0 / alert other 4
+  WJFUN304  {'absent': 1} | WT important 1 / alert solid 0 / alert other 1
+  BLL170    {'alert': 1} | WT important 2 / alert solid 0 / alert other 0
+  CEDO102   {'alert': 1} | WT important 1 / alert solid 0 / alert other 0
+  CEDT101   {'alert': 1} | WT important 1 / alert solid 0 / alert other 0
+  CEDT207   {'absent': 1} | WT important 2 / alert solid 0 / alert other 4
+  CEDT404   {'whakatauki': 1} | WT important 1 / alert solid 0 / alert other 3
+  XDLS901   {'whakatauki': 1} | WT important 1 / alert solid 0 / alert other 9
+  XDLS903   {'alert': 1} | WT important 1 / alert solid 0 / alert other 0
+  ANZH103   {'absent': 1} | WT important 1 / alert solid 0 / alert other 0
+  ANZH203   {'activity dropbox': 1} | WT important 1 / alert solid 0 / alert other 2
+  ANZH303   {'activity dropbox': 1} | WT important 1 / alert solid 0 / alert other 16
+  ANZH304   {'absent': 1} | WT important 1 / alert solid 0 / alert other 15
+  BLL177    {'alertActivity': 1} | WT important 1 / alert solid 0 / alert other 0
+  BLLR201   {'absent': 1} | WT important 0 / alert solid 1 / alert other 1
+  BLLR202   {'absent': 1} | WT important 0 / alert solid 1 / alert other 2
+  CHI1003   {'whakatauki': 1} | WT important 0 / alert solid 0 / alert other 0
+  CHI1004   {'whakatauki': 1} | WT important 0 / alert solid 0 / alert other 0
+  CHI1005   {'absent': 1} | WT important 0 / alert solid 0 / alert other 0
+  COM1006   {'absent': 1} | WT important 0 / alert solid 1 / alert other 0
+  DTC1005   {'alert': 1} | WT important 2 / alert solid 0 / alert other 5
+  ENGC101   {'alert solid': 1} | WT important 1 / alert solid 0 / alert other 6
+  ENGI202   {'alert paddingL top': 1} | WT important 1 / alert solid 0 / alert other 8
+  ENGJ301   {'alertActivity': 1} | WT important 1 / alert solid 0 / alert other 0
+  ENGJ402   {'alert solid': 1} | WT important 1 / alert solid 0 / alert other 0
+  ENGR101   {'absent': 1} | WT important 4 / alert solid 0 / alert other 4
+  ENGS102   {'absent': 1} | WT important 3 / alert solid 0 / alert other 6
+  ENGS201   {'activity': 1} | WT important 3 / alert solid 0 / alert other 3
+  ENGS404   {'alert': 1} | WT important 2 / alert solid 0 / alert other 0
+  ENO2060   {'alertActivity': 1} | WT important 0 / alert solid 0 / alert other 1
+  EXBP901   {'absent': 1} | WT important 1 / alert solid 0 / alert other 11
+  EXIP901   {'alert': 1} | WT important 2 / alert solid 0 / alert other 16
+  GEO1004   {'absent': 1} | WT important 0 / alert solid 0 / alert other 0
+  HES1002   {'absent': 1} | WT important 1 / alert solid 0 / alert other 3
+  HIS1002   {'absent': 1} | WT important 1 / alert solid 0 / alert other 6
+  MUS1004   {'alert': 1} | WT important 1 / alert solid 0 / alert other 0
+  MXDB102   {'alert blank': 1} | WT important 1 / alert solid 0 / alert other 0
+  MXDI101   {'absent': 1} | WT important 1 / alert solid 0 / alert other 0
+  MXEO301   {'absent': 1} | WT important 0 / alert solid 0 / alert other 5
+  MXEX201   {'absent': 1} | WT important 0 / alert solid 0 / alert other 2
+  MXEX202   {'absent': 1} | WT important 1 / alert solid 0 / alert other 3
+  OSOH101   {'alert': 1} | WT important 1 / alert solid 0 / alert other 8
+  OSOH401   {'alert blank': 1} | WT important 1 / alert solid 0 / alert other 3
+  PES1008   {'alert blank': 1} | WT important 1 / alert solid 0 / alert other 0
+  PHE1004   {'absent': 1} | WT important 1 / alert solid 0 / alert other 1
+  XDLS902   {'alert': 1} | WT important 1 / alert solid 0 / alert other 0
+  XTAS102   {'alert': 1} | WT important 1 / alert solid 0 / alert other 1
+
+examples:
+  [activity alertPadding dropbox]
+    TRR102 TRR102_1_0.html: «remember to show your kaiako the fun things you do at home. you can se»
+    ANZH401 ANZH401_5_0.html: «in the wairau affray both sides of the conflict held different perspec»
+    ANZH401 ANZH401_5_0.html: «go to your journal and share your answers with your kaiako. make sure »
+    ANZH401 ANZH401_5_0.html: «now is a good time to share your mahi with you kaiako by uploading you»
+  [alert important]
+    TRR106 TRR106_2_0.html: «te reo maōri english translation ka mau te wehi! ka mau te wehi! you h»
+  [alert]
+    TRR108 TRR108_1_0.html: «kia maumahara koe»
+    TRR108 TRR108_1_0.html: «kia maumahara koe»
+    TRR108 TRR108_1_0.html: «kia maumahara koe»
+    TRR114 TRR114_1_0.html: «kia maumahara koe»
+  [alert blank]
+    ENFUN09 ENFUN09_0_0.html: «i sat on my bed, mindlessly looking at my phone. my thumb flicked auto»
+    SSFUN03 SSFUN03_0_0.html: «in the past, people used maps drawn on paper and in books called atlas»
+    SSFUN03 SSFUN03_0_0.html: «80% of the world’s population lives in the northern hemisphere.»
+    AGH1001 AGH1001_4_0.html: «for māori, the year was divided into different seasons, months and nig»
+  [alert top]
+    SSFUN03 SSFUN03_0_0.html: «can you think of, or know a saying to remember the compass points? sha»
+    AGH1003 AGH1003_3_0.html: «remember: regardless of the production type, unless it is a liquid fer»
+    AGH1007 AGH1007_6_0.html: «an egg that “dies” before the sperm reach it cannot be fertilised and »
+    AGH1008 AGH1008_1_0.html: «manaakitanga can be defined as “the process of showing respect and car»
+  [activity interactive]
+    SSFUN05 SSFUN05_0_0.html: «use the drag and drop tool to move the answers into the correct column»
+    AGH1004 AGH1004_2_0.html: «what do you notice about the terrain? where do the mountainous areas l»
+  [alert solid]
+    WJFUN206 WJFUN206_0_0.html: «clauses tell ideas. phrases add extra detail. find the phrase»
+    CEDK102 CEDK102_0_0.html: «ka pai! you have completed this module. you have learned how to take a»
+    AGH1009 AGH1009_4_0.html: «key points: freshwater is significant to new zealanders for a variety »
+    AGH1009 AGH1009_5_0.html: «agricultural and horticultural production releases greenhouse gases, i»
+  [alertActivity]
+    BLL110 BLL110_0_0.html: «when a letter is written as ‘s’ we want you to say its name. when it i»
+    BLL110 BLL110_0_0.html: «when a letter is written as ‘a’ we want you to say its name. when it i»
+    BLL110 BLL110_0_0.html: «when a letter is written as ‘t’ we want you to say its name. when it i»
+    BLL110 BLL110_0_0.html: «when a letter is written as ‘p’ we want you to say its name. when it i»
+  [activity alertPadding super-content-button]
+    BLL230 BLL230_0_0.html: «can we put a table inside an important box? /au/ /al/ /aw/ /au/ never »
+  [whakatauki]
+    CEDT404 CEDT404_0_0.html: «e koekoe te tūī, e ketekete te kākā, e kūkū te kererū. there is unity »
+    XDLS901 XDLS901_4_0.html: «whāia te iti kahurangi ki te tūohu koe me he maunga teitei. seek the t»
+    AGH1002 AGH1002_1_0.html: «te toto o tetangatahe kai, teorangao tetangata, he whenua, he oneone w»
+    CEDW501 CEDW501_6_0.html: «mā te huruhuru ka rere te manu. adorn the bird with feathers so it can»
+  [activity dropbox]
+    AGH1007 AGH1007_9_0.html: «complete the checkpoint once you have finished all activities in the l»
+    ANZH203 ANZH203_6_0.html: «well done! you have completed this module. now is a good time to share»
+    ANZH303 ANZH303_6_0.html: «upload your completed learning journal to the dropbox for your kaiako »
+    ANZH401 ANZH401_11_0.html: «because of actions taken by the polynesian panthers the dawn raids sto»
+  [alert paddingL top]
+    AGH1008 AGH1008_4_0.html: «a trait is a characteristic, or feature, that a farmer wants livestock»
+    ENGI202 ENGI202_1_0.html: «tamaiti ākonga i te kāinga, tau ai i te marae. a child educated to be »
+  [activity alertPadding]
+    ANZH401 ANZH401_1_0.html: «watch this short film. it shows how aotearoa new zealand’s immigration»
+    ANZH401 ANZH401_3_0.html: «the video also includes perspectives that are different to those of wa»
+    ANZH401 ANZH401_4_0.html: «here is an example to help you with this activity: the item of evidenc»
+    ANZH401 ANZH401_4_0.html: «go to your journal and share with your kaiako which item of evidence y»
+  [activity]
+    ENGS201 ENGS201_3_0.html: «winston wanted to be a successful person. so he started going to all h»
+    HIS1006 HIS1006_10_0.html: «you are now more prepared for externally assessed achievement standard»
+    HIS1008 HIS1008_5_0.html: «next steps now that you have a very thorough knowledge of the signific»
+    MXFL401 MXFL401_5_0.html: «note: this activity is an important numeracy task that will help you t»
+  [activity dropbox paddingR]
+    MXFL401 MXFL401_3_0.html: «checkpoint – this is your first checkpoint where you will submit the w»
+  [alertActivity paddingL]
+    MXFL401 MXFL401_6_0.html: «note: this activity is an important numeracy task that will help you t»

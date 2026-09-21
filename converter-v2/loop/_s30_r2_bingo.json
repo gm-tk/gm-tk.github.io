@@ -1,0 +1,3132 @@
+[
+{
+"code": "TRR113",
+"page": "TRR113_3.0.html",
+"grid": "3",
+"cells": 12,
+"correct": 4,
+"forms": {
+"p": 12
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": true,
+"btn": true,
+"box": "activity interactive",
+"num": "3A",
+"col": "col-12",
+"texts": [
+"ui",
+"ai",
+"ue",
+"oi",
+"ui",
+"ui",
+"ua",
+"uu",
+"ue",
+"oi",
+"oa",
+"ui"
+]
+},
+{
+"code": "WJFUN212",
+"page": "WJFUN212_0_0.html",
+"grid": "6",
+"cells": 36,
+"correct": 36,
+"forms": {
+"p": 36
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "2D",
+"col": "col-12",
+"texts": [
+"Strolled",
+"Chatted",
+"Chewed",
+"Wept",
+"sipped",
+"Chilly",
+"Strode",
+"Discussed",
+"Swallowed",
+"Sobbed",
+"gulped",
+"Cool"
+]
+},
+{
+"code": "BLL110",
+"page": "BLL110.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoon-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding",
+"num": "1C",
+"col": "col-12",
+"texts": [
+"s",
+"o",
+"s",
+"o",
+"w",
+"p",
+"s",
+"s",
+"s",
+"c",
+"p",
+"s"
+]
+},
+{
+"code": "BLL110",
+"page": "BLL110.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoon-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 11,
+"Name-pX": 1
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding",
+"num": "1C",
+"col": "col-12",
+"texts": [
+"S",
+"O",
+"S",
+"W",
+"P",
+"C",
+"S",
+"S",
+"S",
+"W",
+"P",
+"S"
+]
+},
+{
+"code": "BLL110",
+"page": "BLL110.html",
+"grid": "4",
+"cells": 12,
+"correct": 5,
+"forms": {
+"p.sassoon-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding",
+"num": "2D",
+"col": "col-12",
+"texts": [
+"g",
+"d",
+"a",
+"h",
+"a",
+"a",
+"c",
+"a",
+"s",
+"o",
+"a",
+"s"
+]
+},
+{
+"code": "BLL110",
+"page": "BLL110.html",
+"grid": "4",
+"cells": 12,
+"correct": 5,
+"forms": {
+"p.sassoon-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding",
+"num": "2D",
+"col": "col-12",
+"texts": [
+"A",
+"S",
+"A",
+"H",
+"A",
+"A",
+"D",
+"G",
+"D",
+"A",
+"N",
+"S"
+]
+},
+{
+"code": "BLL110",
+"page": "BLL110.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoon-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding",
+"num": "3D",
+"col": "col-12",
+"texts": [
+"t",
+"l",
+"k",
+"t",
+"f",
+"t",
+"s",
+"t",
+"t",
+"l",
+"t",
+"o"
+]
+},
+{
+"code": "BLL110",
+"page": "BLL110.html",
+"grid": "4",
+"cells": 12,
+"correct": 5,
+"forms": {
+"p.sassoon-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding",
+"num": "3D",
+"col": "col-12",
+"texts": [
+"L",
+"T",
+"T",
+"F",
+"F",
+"T",
+"W",
+"T",
+"R",
+"F",
+"L",
+"T"
+]
+},
+{
+"code": "BLL110",
+"page": "BLL110.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoon-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding",
+"num": "4D",
+"col": "col-12",
+"texts": [
+"d",
+"p",
+"t",
+"p",
+"p",
+"k",
+"o",
+"n",
+"p",
+"d",
+"p",
+"p"
+]
+},
+{
+"code": "BLL110",
+"page": "BLL110.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoon-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding",
+"num": "4D",
+"col": "col-12",
+"texts": [
+"P",
+"P",
+"R",
+"D",
+"P",
+"O",
+"T",
+"P",
+"R",
+"P",
+"G",
+"P"
+]
+},
+{
+"code": "BLL110",
+"page": "BLL110.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoon-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding",
+"num": "5D",
+"col": "col-12",
+"texts": [
+"i",
+"h",
+"c",
+"i",
+"i",
+"n",
+"o",
+"i",
+"l",
+"i",
+"s",
+"i"
+]
+},
+{
+"code": "BLL110",
+"page": "BLL110.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding",
+"num": "5D",
+"col": "col-12",
+"texts": [
+"L",
+"I",
+"S",
+"I",
+"I",
+"N",
+"O",
+"I",
+"I",
+"H",
+"C",
+"I"
+]
+},
+{
+"code": "BLL110",
+"page": "BLL110.html",
+"grid": "4",
+"cells": 12,
+"correct": 5,
+"forms": {
+"p.sassoon-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding",
+"num": "6D",
+"col": "col-12",
+"texts": [
+"o",
+"n",
+"r",
+"a",
+"a",
+"n",
+"n",
+"m",
+"n",
+"d",
+"b",
+"n"
+]
+},
+{
+"code": "BLL110",
+"page": "BLL110.html",
+"grid": "4",
+"cells": 12,
+"correct": 4,
+"forms": {
+"p.sassoon-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding",
+"num": "6D",
+"col": "col-12",
+"texts": [
+"A",
+"N",
+"N",
+"M",
+"N",
+"D",
+"R",
+"A",
+"R",
+"A",
+"A",
+"N"
+]
+},
+{
+"code": "BLL120",
+"page": "BLL120.html",
+"grid": "4",
+"cells": 12,
+"correct": 5,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "1C",
+"col": "col-12",
+"texts": [
+"c",
+"o",
+"s",
+"o",
+"c",
+"w",
+"p",
+"x",
+"c",
+"c",
+"c",
+"f"
+]
+},
+{
+"code": "BLL120",
+"page": "BLL120.html",
+"grid": "4",
+"cells": 12,
+"correct": 5,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "1C",
+"col": "col-12",
+"texts": [
+"C",
+"B",
+"Z",
+"S",
+"H",
+"P",
+"C",
+"C",
+"X",
+"C",
+"S",
+"C"
+]
+},
+{
+"code": "BLL120",
+"page": "BLL120.html",
+"grid": "4",
+"cells": 12,
+"correct": 4,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "2D",
+"col": "col-12",
+"texts": [
+"k",
+"i",
+"h",
+"i",
+"k",
+"g",
+"p",
+"c",
+"a",
+"k",
+"e",
+"k"
+]
+},
+{
+"code": "BLL120",
+"page": "BLL120.html",
+"grid": "4",
+"cells": 12,
+"correct": 3,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 11,
+"NameDX": 1
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "2D",
+"col": "col-12",
+"texts": [
+"D",
+"A",
+"K",
+"H",
+"K",
+"F",
+"A",
+"D",
+"K",
+"H",
+"T",
+"D"
+]
+},
+{
+"code": "BLL120",
+"page": "BLL120.html",
+"grid": "4",
+"cells": 12,
+"correct": 4,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "4D",
+"col": "col-12",
+"texts": [
+"e",
+"h",
+"e",
+"e",
+"t",
+"e",
+"o",
+"i",
+"l",
+"f",
+"n",
+"i"
+]
+},
+{
+"code": "BLL120",
+"page": "BLL120.html",
+"grid": "4",
+"cells": 12,
+"correct": 4,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "4D",
+"col": "col-12",
+"texts": [
+"E",
+"L",
+"E",
+"I",
+"T",
+"P",
+"H",
+"J",
+"P",
+"I",
+"E",
+"E"
+]
+},
+{
+"code": "BLL120",
+"page": "BLL120.html",
+"grid": "4",
+"cells": 12,
+"correct": 3,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "5D",
+"col": "col-12",
+"texts": [
+"c",
+"f",
+"u",
+"h",
+"p",
+"h",
+"a",
+"n",
+"h",
+"e",
+"p",
+"p"
+]
+},
+{
+"code": "BLL120",
+"page": "BLL120.html",
+"grid": "4",
+"cells": 12,
+"correct": 4,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "5D",
+"col": "col-12",
+"texts": [
+"H",
+"P",
+"F",
+"H",
+"P",
+"A",
+"T",
+"H",
+"S",
+"E",
+"H",
+"F"
+]
+},
+{
+"code": "BLL120",
+"page": "BLL120.html",
+"grid": "4",
+"cells": 12,
+"correct": 4,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "6D",
+"col": "col-12",
+"texts": [
+"r",
+"n",
+"r",
+"a",
+"r",
+"n",
+"m",
+"f",
+"n",
+"b",
+"d",
+"r"
+]
+},
+{
+"code": "BLL120",
+"page": "BLL120.html",
+"grid": "4",
+"cells": 12,
+"correct": 5,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "6D",
+"col": "col-12",
+"texts": [
+"N",
+"R",
+"N",
+"N",
+"R",
+"T",
+"R",
+"A",
+"R",
+"H",
+"N",
+"R"
+]
+},
+{
+"code": "BLL120",
+"page": "BLL120.html",
+"grid": "4",
+"cells": 12,
+"correct": 5,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "7D",
+"col": "col-12",
+"texts": [
+"m",
+"r",
+"u",
+"m",
+"h",
+"i",
+"e",
+"m",
+"s",
+"m",
+"p",
+"m"
+]
+},
+{
+"code": "BLL120",
+"page": "BLL120.html",
+"grid": "4",
+"cells": 12,
+"correct": 4,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "7D",
+"col": "col-12",
+"texts": [
+"A",
+"M",
+"E",
+"H",
+"C",
+"N",
+"M",
+"I",
+"M",
+"K",
+"I",
+"M"
+]
+},
+{
+"code": "BLL120",
+"page": "BLL120.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "8D",
+"col": "col-12",
+"texts": [
+"d",
+"l",
+"k",
+"d",
+"f",
+"d",
+"s",
+"d",
+"d",
+"l",
+"d",
+"o"
+]
+},
+{
+"code": "BLL120",
+"page": "BLL120.html",
+"grid": "4",
+"cells": 12,
+"correct": 4,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "8D",
+"col": "col-12",
+"texts": [
+"L",
+"T",
+"D",
+"F",
+"L",
+"D",
+"W",
+"D",
+"R",
+"T",
+"D",
+"P"
+]
+},
+{
+"code": "BLL130",
+"page": "BLL130.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "1C",
+"col": "col-12",
+"texts": [
+"g",
+"b",
+"g",
+"o",
+"g",
+"p",
+"p",
+"g",
+"g",
+"a",
+"d",
+"g"
+]
+},
+{
+"code": "BLL130",
+"page": "BLL130.html",
+"grid": "4",
+"cells": 12,
+"correct": 5,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "1C",
+"col": "col-12",
+"texts": [
+"P",
+"G",
+"D",
+"Q",
+"G",
+"P",
+"A",
+"G",
+"G",
+"B",
+"C",
+"G"
+]
+},
+{
+"code": "BLL130",
+"page": "BLL130.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "2D",
+"col": "col-12",
+"texts": [
+"c",
+"o",
+"o",
+"o",
+"a",
+"o",
+"a",
+"g",
+"o",
+"d",
+"o",
+"a"
+]
+},
+{
+"code": "BLL130",
+"page": "BLL130.html",
+"grid": "4",
+"cells": 12,
+"correct": 5,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "2D",
+"col": "col-12",
+"texts": [
+"O",
+"P",
+"S",
+"O",
+"O",
+"G",
+"D",
+"C",
+"O",
+"D",
+"C",
+"O"
+]
+},
+{
+"code": "BLL130",
+"page": "BLL130.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "3D",
+"col": "col-12",
+"texts": [
+"o",
+"u",
+"u",
+"u",
+"w",
+"u",
+"y",
+"v",
+"u",
+"v",
+"a",
+"u"
+]
+},
+{
+"code": "BLL130",
+"page": "BLL130.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "3D",
+"col": "col-12",
+"texts": [
+"U",
+"V",
+"U",
+"P",
+"U",
+"V",
+"U",
+"Y",
+"S",
+"U",
+"W",
+"U"
+]
+},
+{
+"code": "BLL130",
+"page": "BLL130.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "4D",
+"col": "col-12",
+"texts": [
+"l",
+"l",
+"t",
+"h",
+"l",
+"l",
+"l",
+"t",
+"d",
+"k",
+"l",
+"k"
+]
+},
+{
+"code": "BLL130",
+"page": "BLL130.html",
+"grid": "4",
+"cells": 12,
+"correct": 5,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "4D",
+"col": "col-12",
+"texts": [
+"L",
+"L",
+"I",
+"L",
+"L",
+"F",
+"B",
+"I",
+"T",
+"L",
+"T",
+"F"
+]
+},
+{
+"code": "BLL130",
+"page": "BLL130.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "5D",
+"col": "col-12",
+"texts": [
+"t",
+"l",
+"f",
+"f",
+"t",
+"p",
+"f",
+"f",
+"b",
+"f",
+"l",
+"f"
+]
+},
+{
+"code": "BLL130",
+"page": "BLL130.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "5D",
+"col": "col-12",
+"texts": [
+"T",
+"F",
+"F",
+"R",
+"F",
+"F",
+"D",
+"L",
+"F",
+"T",
+"F",
+"L"
+]
+},
+{
+"code": "BLL130",
+"page": "BLL130.html",
+"grid": "4",
+"cells": 12,
+"correct": 5,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "6D",
+"col": "col-12",
+"texts": [
+"g",
+"b",
+"b",
+"b",
+"d",
+"p",
+"b",
+"d",
+"g",
+"p",
+"a",
+"b"
+]
+},
+{
+"code": "BLL130",
+"page": "BLL130.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "6D",
+"col": "col-12",
+"texts": [
+"B",
+"D",
+"B",
+"B",
+"R",
+"B",
+"B",
+"G",
+"D",
+"R",
+"B",
+"L"
+]
+},
+{
+"code": "BLL140",
+"page": "BLL140.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "1C",
+"col": "col-12",
+"texts": [
+"g",
+"p",
+"j",
+"j",
+"i",
+"j",
+"j",
+"d",
+"j",
+"t",
+"j",
+"y"
+]
+},
+{
+"code": "BLL140",
+"page": "BLL140.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "1C",
+"col": "col-12",
+"texts": [
+"J",
+"L",
+"J",
+"S",
+"J",
+"J",
+"J",
+"I",
+"G",
+"W",
+"C",
+"J"
+]
+},
+{
+"code": "BLL150",
+"page": "BLL150.html",
+"grid": "4",
+"cells": 12,
+"correct": 5,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "1C",
+"col": "col-12",
+"texts": [
+"s",
+"w",
+"z",
+"z",
+"f",
+"z",
+"z",
+"v",
+"z",
+"s",
+"n",
+"y"
+]
+},
+{
+"code": "BLL150",
+"page": "BLL150.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "1C",
+"col": "col-12",
+"texts": [
+"Z",
+"L",
+"Z",
+"S",
+"Z",
+"Z",
+"Z",
+"R",
+"G",
+"W",
+"N",
+"Z"
+]
+},
+{
+"code": "BLL150",
+"page": "BLL150.html",
+"grid": "3",
+"cells": 6,
+"correct": 4,
+"forms": {
+"img.img-fluid": 6
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "1F",
+"col": "col-12",
+"texts": [
+"",
+"",
+"",
+"",
+"",
+""
+]
+},
+{
+"code": "BLL150",
+"page": "BLL150.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "2D",
+"col": "col-12",
+"texts": [
+"n",
+"w",
+"z",
+"w",
+"w",
+"w",
+"m",
+"v",
+"w",
+"w",
+"u",
+"y"
+]
+},
+{
+"code": "BLL150",
+"page": "BLL150.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "2D",
+"col": "col-12",
+"texts": [
+"W",
+"L",
+"W",
+"S",
+"W",
+"Z",
+"Z",
+"W",
+"G",
+"W",
+"N",
+"W"
+]
+},
+{
+"code": "BLL150",
+"page": "BLL150.html",
+"grid": "3",
+"cells": 9,
+"correct": 6,
+"forms": {
+"img.img-fluid": 9
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "2G",
+"col": "col-12",
+"texts": [
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+""
+]
+},
+{
+"code": "BLL150",
+"page": "BLL150.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "3D",
+"col": "col-12",
+"texts": [
+"v",
+"n",
+"z",
+"v",
+"v",
+"s",
+"m",
+"v",
+"v",
+"v",
+"u",
+"y"
+]
+},
+{
+"code": "BLL150",
+"page": "BLL150.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "3D",
+"col": "col-12",
+"texts": [
+"V",
+"L",
+"V",
+"S",
+"V",
+"Z",
+"V",
+"W",
+"G",
+"V",
+"N",
+"V"
+]
+},
+{
+"code": "BLL150",
+"page": "BLL150.html",
+"grid": "3",
+"cells": 9,
+"correct": 5,
+"forms": {
+"img.img-fluid": 9
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "3G",
+"col": "col-12",
+"texts": [
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+""
+]
+},
+{
+"code": "BLL160",
+"page": "BLL160.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "1C",
+"col": "col-12",
+"texts": [
+"p",
+"b",
+"y",
+"y",
+"d",
+"y",
+"y",
+"d",
+"y",
+"p",
+"y",
+"b"
+]
+},
+{
+"code": "BLL160",
+"page": "BLL160.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "1C",
+"col": "col-12",
+"texts": [
+"Y",
+"O",
+"Y",
+"D",
+"Y",
+"Y",
+"Y",
+"R",
+"G",
+"O",
+"C",
+"Y"
+]
+},
+{
+"code": "BLL160",
+"page": "BLL160.html",
+"grid": "4",
+"cells": 12,
+"correct": 7,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "2D",
+"col": "col-12",
+"texts": [
+"t",
+"x",
+"z",
+"x",
+"w",
+"x",
+"x",
+"v",
+"x",
+"x",
+"x",
+"y"
+]
+},
+{
+"code": "BLL160",
+"page": "BLL160.html",
+"grid": "4",
+"cells": 12,
+"correct": 5,
+"forms": {
+"p.sassoonI-text>span.audioTrigger[audioName]": 12
+},
+"letters": true,
+"audio": {
+"Name-X": 12
+},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "2D",
+"col": "col-12",
+"texts": [
+"W",
+"T",
+"X",
+"K",
+"X",
+"X",
+"Z",
+"X",
+"S",
+"X",
+"N",
+"W"
+]
+},
+{
+"code": "BLL170",
+"page": "BLL170.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text": 12
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "1C",
+"col": "col-12",
+"texts": [
+"p",
+"b",
+"q",
+"q",
+"d",
+"q",
+"q",
+"d",
+"q",
+"p",
+"q",
+"b"
+]
+},
+{
+"code": "BLL170",
+"page": "BLL170.html",
+"grid": "4",
+"cells": 12,
+"correct": 6,
+"forms": {
+"p.sassoonI-text": 12
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "1C",
+"col": "col-12",
+"texts": [
+"Q",
+"O",
+"Q",
+"D",
+"Q",
+"Q",
+"Q",
+"R",
+"G",
+"O",
+"C",
+"Q"
+]
+},
+{
+"code": "BLL270",
+"page": "BLL270.html",
+"grid": "6",
+"cells": 30,
+"correct": 30,
+"forms": {
+"p": 30
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "2B",
+"col": "col-12",
+"texts": [
+"tu",
+"wo",
+"hā",
+"to",
+"na",
+"pō",
+"ma",
+"tā",
+"me",
+"ko",
+"ke",
+"ti"
+]
+},
+{
+"code": "BLL270",
+"page": "BLL270.html",
+"grid": "6",
+"cells": 24,
+"correct": 24,
+"forms": {
+"p": 24
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "3B",
+"col": "col-12",
+"texts": [
+"ra",
+"nga",
+"ngi",
+"whe",
+"rā",
+"ru",
+"nge",
+"ri",
+"whā",
+"rō",
+"whu",
+"ngu"
+]
+},
+{
+"code": "BLL270",
+"page": "BLL270.html",
+"grid": "6",
+"cells": 24,
+"correct": 24,
+"forms": {
+"p": 24
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "4B",
+"col": "col-12",
+"texts": [
+"au",
+"ae",
+"ei",
+"ai",
+"eo",
+"ao",
+"ea",
+"io",
+"ie",
+"oi",
+"au",
+"iu"
+]
+},
+{
+"code": "BLL127",
+"page": "BLL127-02.html",
+"grid": "6",
+"cells": 30,
+"correct": 25,
+"forms": {
+"p.sassoonI-text": 29,
+"p": 1
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "1C",
+"col": "col-12",
+"texts": [
+"tent",
+"band",
+"cats",
+"red",
+"pin",
+"map",
+"stack",
+"pin",
+"red",
+"map",
+"band",
+"pants"
+]
+},
+{
+"code": "BLL127",
+"page": "BLL127-02.html",
+"grid": "3",
+"cells": 9,
+"correct": 3,
+"forms": {
+"p.sassoonI-text": 9
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "1D",
+"col": "col-12",
+"texts": [
+"a",
+"t",
+"m",
+"n",
+"o",
+"u",
+"h",
+"c",
+"e"
+]
+},
+{
+"code": "BLL127",
+"page": "BLL127-02.html",
+"grid": "3",
+"cells": 9,
+"correct": 3,
+"forms": {
+"p.sassoonI-text": 9
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "1D",
+"col": "col-12",
+"texts": [
+"s",
+"t",
+"g",
+"n",
+"w",
+"u",
+"b",
+"c",
+"a"
+]
+},
+{
+"code": "BLL127",
+"page": "BLL127-02.html",
+"grid": "3",
+"cells": 9,
+"correct": 3,
+"forms": {
+"p.sassoonI-text": 8,
+"p": 1
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "1D",
+"col": "col-12",
+"texts": [
+"y",
+"t",
+"f",
+"f",
+"w",
+"u",
+"o",
+"c",
+"a"
+]
+},
+{
+"code": "BLL127",
+"page": "BLL127-02.html",
+"grid": "3",
+"cells": 9,
+"correct": 2,
+"forms": {
+"p.sassoonI-text": 9
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "1D",
+"col": "col-12",
+"texts": [
+"s",
+"t",
+"n",
+"m",
+"w",
+"u",
+"k",
+"o",
+"y"
+]
+},
+{
+"code": "BLL134",
+"page": "BLL134-02.html",
+"grid": "6",
+"cells": 36,
+"correct": 30,
+"forms": {
+"img.img-fluid.margB0": 6,
+"p.sassoonI-text": 30
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "1C",
+"col": "col-12",
+"texts": [
+"",
+"",
+"",
+"",
+"",
+"",
+"list",
+"nut",
+"silk",
+"mug",
+"sip",
+"luck"
+]
+},
+{
+"code": "BLL134",
+"page": "BLL134-03.html",
+"grid": "3",
+"cells": 9,
+"correct": 3,
+"forms": {
+"p.sassoonI-text": 9
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "2B",
+"col": "col-12",
+"texts": [
+"a",
+"t",
+"m",
+"n",
+"o",
+"u",
+"h",
+"c",
+"e"
+]
+},
+{
+"code": "BLL134",
+"page": "BLL134-03.html",
+"grid": "3",
+"cells": 9,
+"correct": 3,
+"forms": {
+"p.sassoonI-text": 9
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "2B",
+"col": "col-12",
+"texts": [
+"s",
+"t",
+"g",
+"n",
+"w",
+"u",
+"b",
+"c",
+"a"
+]
+},
+{
+"code": "BLL134",
+"page": "BLL134-03.html",
+"grid": "3",
+"cells": 9,
+"correct": 3,
+"forms": {
+"p.sassoonI-text": 9
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "2B",
+"col": "col-12",
+"texts": [
+"y",
+"t",
+"g",
+"n",
+"w",
+"u",
+"o",
+"c",
+"a"
+]
+},
+{
+"code": "BLL134",
+"page": "BLL134-03.html",
+"grid": "3",
+"cells": 9,
+"correct": 2,
+"forms": {
+"p.sassoonI-text": 9
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "2B",
+"col": "col-12",
+"texts": [
+"s",
+"t",
+"n",
+"m",
+"w",
+"u",
+"k",
+"o",
+"a"
+]
+},
+{
+"code": "BLL136",
+"page": "BLL136-02.html",
+"grid": "6",
+"cells": 36,
+"correct": 30,
+"forms": {
+"img.img-fluid.margB0": 6,
+"p.sassoonI-text": 30
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "1A",
+"col": "col-12",
+"texts": [
+"",
+"",
+"",
+"",
+"",
+"",
+"desk",
+"ant",
+"silk",
+"snack",
+"drink",
+"what"
+]
+},
+{
+"code": "BLL145",
+"page": "BLL145-1.0.html",
+"grid": "8",
+"cells": 8,
+"correct": 3,
+"forms": {
+"p.sassoonI-text": 8
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": true,
+"btn": true,
+"box": "activity interactive",
+"num": "1A",
+"col": "col-12",
+"texts": [
+"all",
+"al",
+"ill",
+"all",
+"lay",
+"the",
+"all",
+"hey"
+]
+},
+{
+"code": "BLL145",
+"page": "BLL145-1.0.html",
+"grid": "8",
+"cells": 8,
+"correct": 3,
+"forms": {
+"p.sassoonI-text": 7,
+"p": 1
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": true,
+"btn": true,
+"box": "activity interactive",
+"num": "1A",
+"col": "col-12",
+"texts": [
+"yhw",
+"why",
+"hey",
+"yyh",
+"why",
+"eht",
+"why",
+"the"
+]
+},
+{
+"code": "BLL145",
+"page": "BLL145-2.0.html",
+"grid": "6",
+"cells": 30,
+"correct": 10,
+"forms": {
+"p.sassoonI-text": 30
+},
+"letters": false,
+"audio": {},
+"wrap": "autoCheck bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "2A",
+"col": "col-12",
+"texts": [
+"lid",
+"run",
+"tip",
+"skid",
+"skid",
+"back",
+"tip",
+"left",
+"see",
+"cross",
+"truck",
+"spill"
+]
+},
+{
+"code": "BLL156",
+"page": "BLL156-2.0.html",
+"grid": "3",
+"cells": 9,
+"correct": 4,
+"forms": {
+"p.sassoonI-text": 9
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "2A",
+"col": "col-12",
+"texts": [
+"a",
+"t",
+"w",
+"n",
+"o",
+"u",
+"h",
+"c",
+"e"
+]
+},
+{
+"code": "BLL156",
+"page": "BLL156-2.0.html",
+"grid": "3",
+"cells": 9,
+"correct": 2,
+"forms": {
+"p.sassoonI-text": 9
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "2A",
+"col": "col-12",
+"texts": [
+"g",
+"t",
+"m",
+"n",
+"o",
+"u",
+"h",
+"c",
+"e"
+]
+},
+{
+"code": "BLL164",
+"page": "BLL164-2.0.html",
+"grid": "6",
+"cells": 30,
+"correct": 30,
+"forms": {
+"p": 30
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "2B",
+"col": "col-12",
+"texts": [
+"am",
+"bin",
+"not",
+"can",
+"had",
+"will",
+"had",
+"will",
+"that",
+"cool",
+"shed",
+"mess"
+]
+},
+{
+"code": "BLL166",
+"page": "BLL166-1.0.html",
+"grid": "6",
+"cells": 30,
+"correct": 26,
+"forms": {
+"p.sassoonI-text": 30
+},
+"letters": false,
+"audio": {},
+"wrap": "autoCheck bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "1A",
+"col": "col-12",
+"texts": [
+"wings",
+"six",
+"socks",
+"sandy",
+"chips",
+"moon",
+"sandy",
+"six",
+"moon",
+"chips",
+"wings",
+"teeth"
+]
+},
+{
+"code": "BLL166",
+"page": "BLL166-2.0.html",
+"grid": "4",
+"cells": 16,
+"correct": 3,
+"forms": {
+"p.sassoonI-text": 16
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "2B",
+"col": "col-12",
+"texts": [
+"f",
+"h",
+"p",
+"s",
+"a",
+"w",
+"g",
+"k",
+"e",
+"r",
+"y",
+"m"
+]
+},
+{
+"code": "BLL166",
+"page": "BLL166-2.0.html",
+"grid": "4",
+"cells": 16,
+"correct": 4,
+"forms": {
+"p.sassoonI-text": 16
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "2B",
+"col": "col-12",
+"texts": [
+"f",
+"n",
+"p",
+"s",
+"a",
+"j",
+"g",
+"d",
+"e",
+"r",
+"y",
+"m"
+]
+},
+{
+"code": "BLL166",
+"page": "BLL166-2.0.html",
+"grid": "4",
+"cells": 16,
+"correct": 6,
+"forms": {
+"p.sassoonI-text": 16
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "2B",
+"col": "col-12",
+"texts": [
+"l",
+"d",
+"p",
+"s",
+"a",
+"i",
+"g",
+"t",
+"e",
+"t",
+"y",
+"m"
+]
+},
+{
+"code": "BLL167",
+"page": "BLL167-2.0.html",
+"grid": "6",
+"cells": 30,
+"correct": 30,
+"forms": {
+"p": 30
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "2A",
+"col": "col-12",
+"texts": [
+"teeth",
+"roast",
+"lunch",
+"fatty",
+"porch",
+"sitting",
+"moon",
+"soap",
+"main",
+"hoot",
+"magpie",
+"shops"
+]
+},
+{
+"code": "BLL213",
+"page": "BLL213-2.0.html",
+"grid": "4",
+"cells": 28,
+"correct": 28,
+"forms": {
+"p": 28
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity",
+"num": "2E",
+"col": "col-12",
+"texts": [
+"got",
+"wet",
+"out",
+"log",
+"cool",
+"feet",
+"took",
+"late",
+"swim",
+"damp",
+"tune",
+"ride"
+]
+},
+{
+"code": "BLL235",
+"page": "BLL235-1.0.html",
+"grid": "6",
+"cells": 30,
+"correct": 30,
+"forms": {
+"p": 30
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "1E",
+"col": "col-12",
+"texts": [
+"played",
+"half",
+"lasted",
+"quarter",
+"outside",
+"helpful",
+"kindness",
+"second",
+"crowd",
+"phone",
+"they",
+"bushes"
+]
+},
+{
+"code": "BLL245",
+"page": "BLL245-01.html",
+"grid": "7",
+"cells": 35,
+"correct": 31,
+"forms": {
+"p": 35
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12 sassoonI-text",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "1B",
+"col": "col-12",
+"texts": [
+"bridge",
+"match",
+"whistle",
+"wheel",
+"sphere",
+"chair",
+"pearl",
+"match",
+"pearl",
+"chair",
+"hedgehog",
+"bridge"
+]
+},
+{
+"code": "BLL245",
+"page": "BLL245-01.html",
+"grid": "6",
+"cells": 30,
+"correct": 30,
+"forms": {
+"p": 30
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "1E",
+"col": "col-12",
+"texts": [
+"what",
+"catch",
+"edge",
+"year",
+"fudge",
+"watch",
+"pair",
+"cheer",
+"hear",
+"stairs",
+"when",
+"fridge"
+]
+},
+{
+"code": "BLL246",
+"page": "BLL246_2.0.html",
+"grid": "4",
+"cells": 30,
+"correct": 30,
+"forms": {
+"p": 30
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity dropbox interactive",
+"num": "2E",
+"col": "col-12",
+"texts": [
+"the",
+"dancing",
+"town",
+"to",
+"dog",
+"cheers",
+"is",
+"next",
+"queen",
+"look",
+"parade",
+"large"
+]
+},
+{
+"code": "BLL251",
+"page": "BLL251_1_0.html",
+"grid": "6",
+"cells": 30,
+"correct": 30,
+"forms": {
+"p": 30
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12 noCheck",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "1A",
+"col": "col-12",
+"texts": [
+"comb",
+"cough",
+"because",
+"thought",
+"thumb",
+"always",
+"naughty",
+"different",
+"sleigh",
+"scene",
+"scissors",
+"caught"
+]
+},
+{
+"code": "BLL251",
+"page": "BLL251_1_0.html",
+"grid": "6",
+"cells": 30,
+"correct": 30,
+"forms": {
+"p": 30
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity",
+"num": "1D",
+"col": "col-12",
+"texts": [
+"comb",
+"cough",
+"because",
+"thought",
+"thumb",
+"always",
+"naughty",
+"different",
+"sleigh",
+"scene",
+"scissors",
+"caught"
+]
+},
+{
+"code": "BLL256",
+"page": "BLL256_1.0.html",
+"grid": "6",
+"cells": 30,
+"correct": 30,
+"forms": {
+"p": 30
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "1C",
+"col": "col-12",
+"texts": [
+"naughty",
+"rough",
+"though",
+"fought",
+"descend",
+"through",
+"freight",
+"ascend",
+"weight",
+"debt",
+"scientist",
+"scenic"
+]
+},
+{
+"code": "BLL265",
+"page": "BLL265_1_0.html",
+"grid": "6",
+"cells": 24,
+"correct": 24,
+"forms": {
+"p": 24
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo row",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "1D",
+"col": "col-12",
+"texts": [
+"Helpful",
+"Fearless",
+"Quickly",
+"Dislike",
+"Incorrect",
+"Redo",
+"Careful",
+"Careless",
+"Carefully",
+"Disagree",
+"Incomplete",
+"Replay"
+]
+},
+{
+"code": "BLL276",
+"page": "BLL276_2_0.html",
+"grid": "6",
+"cells": 30,
+"correct": 30,
+"forms": {
+"p": 30
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity dropbox interactive",
+"num": "2A",
+"col": "col-12",
+"texts": [
+"koroua",
+"ruri",
+"whero",
+"hoa",
+"poaka",
+"ika",
+"tūru",
+"kanohi",
+"pukapuka",
+"mīti",
+"pene rākau",
+"waha"
+]
+},
+{
+"code": "MXEO301",
+"page": "MXEO301_1.0.html",
+"grid": "9",
+"cells": 81,
+"correct": 32,
+"forms": {
+"p": 81
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": true,
+"btn": true,
+"box": "activity interactive",
+"num": "1B",
+"col": "col-12",
+"texts": [
+"4",
+"6",
+"8",
+"9",
+"10",
+"12",
+"14",
+"15",
+"16",
+"18",
+"20",
+"2"
+]
+},
+{
+"code": "MXFU202",
+"page": "MXFU202_2.0.html",
+"grid": "4",
+"cells": 16,
+"correct": 6,
+"forms": {
+"p": 16
+},
+"letters": false,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity interactive",
+"num": "2D",
+"col": "col-12",
+"texts": [
+"1928",
+"1933",
+"1940",
+"1955",
+"1962",
+"1968",
+"1973",
+"1982",
+"1992",
+"2001",
+"2008",
+"2010"
+]
+},
+{
+"code": "MXFU202",
+"page": "MXFU202_7.0.html",
+"grid": "10",
+"cells": 30,
+"correct": 10,
+"forms": {
+"p": 30
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12",
+"h4": false,
+"btn": true,
+"box": "activity alertPadding interactive",
+"num": "7C",
+"col": "col-12",
+"texts": [
+"1",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10",
+"11",
+"12"
+]
+},
+{
+"code": "MXFU202",
+"page": "MXFU202_7.0.html",
+"grid": "10",
+"cells": 60,
+"correct": 10,
+"forms": {
+"p": 40,
+"p.white-text": 20
+},
+"letters": true,
+"audio": {},
+"wrap": "bingo col-12 margB2",
+"h4": false,
+"btn": false,
+"box": "activity interactive",
+"num": "7D",
+"col": "col-12",
+"texts": [
+"1",
+"2",
+"3",
+"4",
+"5",
+"6",
+"7",
+"8",
+"9",
+"10",
+"11",
+"12"
+]
+}
+]

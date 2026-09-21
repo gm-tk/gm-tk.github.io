@@ -1541,6 +1541,38 @@
 		},
 		"selfCheck": {
 			"enabled": true,
+			"letter_grid_bingo": {
+				"_doc": "ROUND 420 (the autonomous loop's session 30 Round 2 — Chris's D10-3 build lane, the selfCheck type's largest un-built authoring SHAPE family). THE LETTER-GRID BINGO: the BLL family's `[Self check] Click on the lower case letter ‘s’.` + a TABLE of single letters with the CORRECT cells typed in red (55 tables in 9 modules — BLL120 14, BLL110 12, BLL130 12, BLL150 6, BLL160 4, BLL113 / BLL140 / BLL170 2, BLL154 1 — ≈ 28 bundles, each holding the lower-case and the capital grid, the writer's `[Add an audio that when they click/hover on the letter it says the name of the letter…]` ELEMENT tag and the `**Alphabet Audio** [LINK]` line; outputs/_s30_r2_bingo.py, _s30_r2_scdump.cjs). The gold builds the KB's BINGO (03E COMP_04): `div.bingo.col-12 > div.bingoContainer[grid=N] > div.number[value=correct] > p` + the `row > activityButton reset-btn / activityButton hidden check-btn` row — 74 letter grids of the gold's 96 bingos; grid 12 cells → 4 (52 / 53), 9 → 3 (12 / 13), 16 → 4; the wrapper `bingo col-12` 90 / 96; the button row 95 / 96; no h4 card title 92 / 96; the cell `p.sassoonI-text` 53 / 74 (39 of them with a `span.audioTrigger` — the developer's snipped alphabet audio, NOT emitted here: the package cannot supply the asset, so the writer's audio request and the link ride as the red Writers Note after the widget, the r214 / r350 form). Tried BEFORE the r69 question-list form; fires only when EVERY table in the bundle is a letter grid (every non-empty cell ≤ max_cell_chars letters / digits once the red markers and bold marks are stripped; ≥ min_cells cells), every extra type is selfCheck itself (the second grid), and each table follows its own `[Self check]` invocation whose black text is the lead; per table → `lead` + the bingo: the cells row-major from the writer's table, value=\"correct\" on the RED cells or, when the writer marked none, on the cells equal to the letter quoted in the lead (`correct_from`; neither → decline, never half-built); `grid` from the cell count (grid_by_cells, else grid_default); the cell class by module-code prefix (cell_class_by_prefix — the BLL family's Sassoon Infant; plain <p> = the KB form elsewhere). The box takes `.interactive` through interactive_widget_types (bingo is listed). Verifier reference/tests/_verify_bingo.cjs (protected, defect 0). Env BINGO_OFF keeps the hand-off box.",
+				"enabled": true,
+				"env": "BINGO_OFF",
+				"max_cell_chars": 2,
+				"min_cells": 4,
+				"grid_by_cells": {
+					"6": 3,
+					"9": 3,
+					"12": 4,
+					"16": 4
+				},
+				"grid_default": 4,
+				"lead": "<p>{lead}</p>",
+				"open": "<div class=\"bingo col-12\">",
+				"container_open": "<div class=\"bingoContainer\" grid=\"{grid}\">",
+				"cell": "<div class=\"number\"{value}><p{cls}>{text}</p></div>",
+				"cell_correct_attr": " value=\"correct\"",
+				"container_close": "</div>",
+				"buttons": "<div class=\"row\">\n<div class=\"activityButton reset-btn\">Reset</div>\n<div class=\"activityButton hidden check-btn\">Check</div>\n</div>",
+				"close": "</div>",
+				"cell_class_by_prefix": {
+					"BLL": "sassoonI-text"
+				},
+				"correct_from": [
+					"red",
+					"lead_quote"
+				],
+				"lead_quote_pattern": "[‘'\"“]\\s*(\\S{1,2})\\s*[’'\"”]",
+				"asset_note_pattern": "audio|sound|record|link",
+				"note_prefix": "Developer asset (from the writer): "
+			},
 			"open": "<div class=\"selfCheck\">",
 			"row": "<p class=\"sCQuestion\">{question}</p>\n<div class=\"sCText\" checkOn=\"\">\n<textarea rows=\"2\" placeholder=\"Type here\"></textarea>\n</div>",
 			"close": "</div>",
