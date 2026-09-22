@@ -143,45 +143,11 @@
 
 ## Sessions 23 / 24 / 26 / 27 — every shipped round (engine r370–r376, r377–r386, r387–r397, r398–) — each PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md under 'Session N — Round M PICK (engine rXXX) + what shipped' (grep the engine number); the one-line summaries are in the Round log below.
 
-## Session 25 — Round 1 DECLINED on measurement (no engine r387 — the minor-heading row break) — its PICK + verdict are in LOOP_STATE_ARCHIVE.md ('Session 25 — Round 1 PICK (the minor-heading row break) + DECLINED verdict'); the one-line summary is in the Round log below.
+## Session 25 / 26 / 27 per-round records (the s25 minor-heading DECLINE and loss ledger, the s26 Round-12 PICK pass, the s27 Round 3 / 4 PICK passes) → LOOP_STATE_ARCHIVE.md — grep the session number and round there; every verdict stands. (Pointer lines merged at the 2026-09-23 session 36 §5d condense #3.)
 
-## Session 25 — Round 2 PICK pass: THE LOSS LEDGER (`_s25_losspp.py` / `_s25_ledger.py` / `_s25_pwhere.py` / `_s25_swallow.py`) — every lost point of the skeleton mean attributed to a family; no round started; full text in LOOP_STATE_ARCHIVE.md ('Session 25 — Round 2 (archived …)'); the one-line summary is in the Round log below.
 
-## Session 26 — Round 12 PICK pass (no engine change — the budget's last round): five classes measured, none taken (the flip group's parent column by card count, the wholly-bold paragraph, the activity box's inner `row › col-12`, the col-12 inner rows, the speech bubble's character image) — instruments `_s26_r398_*.py`; the summary is the s26-r12 Round-log line below.
+## Session 29 / 30 per-round records (the s29 post-intake instrument re-measurements and engine r411–r418 with its Round-10 PICK pass; the s30 engine r419–r422 with its Round-3 and Round-6 PICK passes) → LOOP_STATE_ARCHIVE.md — grep the engine number there; every verdict stands. (Pointer lines merged at the 2026-09-23 session 36 §5d condense #3.)
 
-## Session 27 — Round 3 + Round 4 PICK passes (no engine change; 19 Sept ≈10:55 → 12:35 NZST) → LOOP_STATE_ARCHIVE.md 'Session 27 — Round 3 / Round 4 PICK passes (verbatim, archived at the 2026-09-20 session 29 §5d condense)'. R3: eight classes measured on the r399 corpus, none at the floor (`_s27_r3_alerttag.py` / `_sidepad.py` / `_imgside.py` / `_headprefix.py` / `_grid2.py` / `_h4.py` / `_emptyalert.py` / `_alerthead.py`). R4: the D10-3 build lane measured to its floor (dragAndDrop 795 declines / 663 signatures; no type has an un-built dialect ≥ 20 sites) and the `<br>` follow-up CLOSED (`_s27_r4_brseries.py` / `_goldbr.py` / `_brjoin.py`). The one-line summaries are the s27-r3 / s27-r4 Round-log lines below.
-
-## Session 29 — instruments re-measured on the post-intake corpus (20 Sept ≈15:05 → 15:15, after r410) → LOOP_STATE_ARCHIVE.md 'Session 29 — instruments re-measured (archived at the session 30 stop)': the ceiling 90.9 % (2290 pairs, `_ceiling_r410`), the coverage dashboard (interactive coverage 50.5 %, no builder: infoTrigger / selfCheck / slider).
-
-## Session 29 — Round 2 (engine r411) — the tile dialect's menu takes the gold's ROW+COL tabs shell — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 29 — Round 2 PICK (engine r411) + what shipped'; the one-line summary is the s29-r2 Round-log line below.
-
-## Session 29 — Round 3 (engine r412) — the heading-then-table shape after an empty typed-widget invocation takes the owner form — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 29 — Round 3 PICK (engine r412) + what shipped'; the one-line summary is the s29-r3 Round-log line below.
-
-## Session 29 — Round 4 (engine r413) — the OWNED half of the r412 class (the r407-recorded item completed) — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 29 — Round 4 PICK (engine r413) + what shipped'; the one-line summary is the s29-r4 Round-log line below.
-
-## Session 29 — Round 5 (engine r414) — THE NESTED ACTIVITY BOX: the synthetic widget box suppressed inside an open activity box — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 29 — Round 5 PICK (engine r414) + what shipped'; the one-line summary is the s29-r5 Round-log line below.
-
-## Session 29 — Round 6 (engine r415) — THE OWNED HEADING-LED BUNDLE WITH NO TABLE: the empty writer-owned box takes its section — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 29 — Round 6 PICK (engine r415) + what shipped'; the one-line summary is the s29-r6 Round-log line below.
-
-## Session 29 — Round 7 (engine r416) — THE ACTIVITY TITLE TYPED INSIDE THE RED SPAN + the FULL-regeneration backstop — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 29 — Round 7 PICK (engine r416) + what shipped'; the one-line summary is the s29-r7 Round-log line below.
-
-## Session 29 — Round 8 (engine r417) — THE XDLS CHOICE-PAGE PANEL HOLDS ITS CONTENT DIRECTLY — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 29 — Round 8 PICK (engine r417) + what shipped'; the one-line summary is the s29-r8 Round-log line below.
-
-## Session 29 — Round 9 (engine r418) — THE FIRST TILE PANEL TAKES THE `row.clickDropContent.noBorder` FORM + the r417 title-pin repair — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 29 — Round 9 PICK (engine r418) + what shipped'; the one-line summary is the s29-r9 Round-log line below.
-
-## Session 29 — Round 10 PICK pass (no engine change; 20 Sept ≈22:05 → 22:43, ended by `/loop-stop`) — four censuses on the r418 corpus, nothing at the floor → LOOP_STATE_ARCHIVE.md 'Session 29 — Round 10 PICK pass (archived at the session 30 stop)'; the one-line summary is the s29-r10 Round-log line.
-
-## Session 30 — Round 1 (engine r419) — THE LANGUAGE-FONT WRAP: every CJK run takes `span.ch-text` / `span.jp-text` (KB constraint 92 / CL-0093, the CJK half) — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 30 — Round 1 PICK (engine r419) + what shipped'; the one-line summary is the s30-r1 Round-log line below.
-
-## Session 30 — Round 2 (engine r420) — THE LETTER-GRID BINGO: the BLL family's `[Self check]` + a table of letters builds the KB's 03E bingo (D10-3, the selfCheck kickoff's shape 1) — SHIPPED; the PICK (with the three declined measurements: pinyin below floor, `div.alert.solid` KB-correct, the widened wrapper per built layout) + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 30 — Round 2 PICK (engine r420) + what shipped'; the one-line summary is the s30-r2 Round-log line below.
-
-## Session 30 — Round 3 PICK pass (no engine change; 21 Sept ≈17:40 → 18:05) — nine instruments on the r420 corpus, nothing at the floor → LOOP_STATE_ARCHIVE.md 'Session 30 — Round 3 PICK pass (archived at the r421 finalise)'; the one-line summary is the s30-r3 Round-log line below.
-
-## Session 30 — Round 4 (engine r421) — THE REGISTRY-KNOWN MODULE CODE (CHWHA / GEWHA / ANZHFUN05 / PWYWHA1 resolve through the structure index) — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 30 — Round 4 PICK (engine r421) + what shipped'; the one-line summary is the s30-r4 Round-log line below.
-
-## Session 30 — Round 5 (engine r422, DECLINED-INERT, no regen) — THE SIDE-TAB-NAVIGATION FUNDAMENTALS DIALECT (FRFUN06) — BUILT, MEASURED, SHIPPED INERT (`enabled: false`; 10 pages / 1 module under the floor; enabling it is Chris's call) — SUPERSEDED 22 Sept: authorised by rule (D12-1 → LOOP §1d exception 1), enabled as the next session's Round 2; Needs Chris #13 struck → LOOP_STATE_ARCHIVE.md 'Session 30 — Round 5 (engine r422) DECLINED-INERT (archived at the session 30 stop)'; the one-line summary is the s30-r5 Round-log line below.
-
-## Session 30 — Round 6 PICK pass (no engine change; 21 Sept ≈18:50 → 19:05) — the D10-3 widget lane re-read by CONTENT from the disk boxes, nothing at the floor → LOOP_STATE_ARCHIVE.md 'Session 30 — Round 6 PICK pass (archived at the session 30 stop)'; the one-line summary is the s30-r6 Round-log line below.
 
 ## Session 31 — Round 1 (engine r423) — A PAGE-BOUNDARY MARKER TYPED AS A TABLE ROW IS A PARAGRAPH: PMT101, the one-table MTK template, now converts (the intake's §7 item 3) — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 31 — Round 1 PICK (engine r423) + what shipped'; the one-line summary is the s31-r1 Round-log line below.
 
