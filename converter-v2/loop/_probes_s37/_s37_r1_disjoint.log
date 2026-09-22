@@ -1,0 +1,33 @@
+THE 'DISJOINT' ACTIVITY BOXES — 3047
+============================================================================================
+   Claude HAND-OFF box, gold has no widget markup (gold wrote it out   1062  mods  319
+   Claude HAND-OFF box vs a BUILT gold widget (D10-3 / Needs Chris #4   873  mods  296
+   neither side has widget markup — a genuine text difference           640  mods  223
+   both sides have widget markup — different build, same slot           267  mods  147
+   gold BUILT a widget, Claude built none and no hand-off box           205  mods  124
+
+  Claude HAND-OFF box, gold has no widget markup (gold wrote it out as prose)
+     AGH1004 AGH1004_6_0.html «fromgrasstoglass» gold 7 / claude 5 elems
+     AGH1008 AGH1008_5_0.html «artificialinsemination» gold 3 / claude 22 elems
+     ANZH104 ANZH104_3_0.html «clothingwordfind» gold 2 / claude 2 elems
+     ANZH104 ANZH104_6_0.html «findingfood» gold 6 / claude 3 elems
+  Claude HAND-OFF box vs a BUILT gold widget (D10-3 / Needs Chris #4)
+     AGH1008 AGH1008_3_0.html «grazingsystems» gold 4 / claude 8 elems
+     ANZH301 ANZH301_3_0.html «adominantpakehaperspec» gold 7 / claude 13 elems
+     ANZH301 ANZH301_10_0.html «summativeassessmenttas» gold 17 / claude 6 elems
+     ANZH304 ANZH304_6_0.html «summarisingcausesandco» gold 26 / claude 32 elems
+  neither side has widget markup — a genuine text difference
+     AGH1002 AGH1002_2_0.html «calculatingsoiltype» gold 5 / claude 7 elems
+     AGH1004 AGH1004_1_0.html «knowledgeselfcheck» gold 19 / claude 16 elems
+     ANZH101 ANZH101_2_0.html «retellingthestory» gold 4 / claude 4 elems
+     ANZH101 ANZH101_2_0.html «tessellations» gold 4 / claude 5 elems
+  both sides have widget markup — different build, same slot
+     ANZH105 ANZH105_1_0.html «multichoicelearning» gold 9 / claude 11 elems
+     ANZH303 ANZH303_5_0.html «thesymbolismoftekaraot» gold 23 / claude 14 elems
+     ANZH304 ANZH304_1_0.html «extendyourlearning» gold 3 / claude 2 elems
+     ANZH404 ANZH404_2_0.html «insidethesystem» gold 11 / claude 10 elems
+  gold BUILT a widget, Claude built none and no hand-off box
+     ANZH104 ANZH104_2_0.html «myhome» gold 2 / claude 2 elems
+     ANZH301 ANZH301_1_0.html «postwarblues» gold 25 / claude 2 elems
+     ANZH303 ANZH303_4_0.html «causesandconsequences» gold 16 / claude 15 elems
+     ANZH304 ANZH304_1_0.html «missionaries» gold 8 / claude 5 elems

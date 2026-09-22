@@ -1,0 +1,82 @@
+================================================================================================
+UNCLASSIFIED HAND-OFFS — DOES THE WRITER NAME THE TYPE?  (1085 boxes on disk)
+================================================================================================
+   (the opener was not located in the WT dump)                  469   = 43.2 %
+   no known alias anywhere in the opener window                 398   = 36.7 %
+   the writer NAMES a known widget type in the free text        218   = 20.1 %
+
+   modules with at least one nameable box: 129;  with none: 90
+
+   the type the writer's free text names:
+      flip card                   58   modules   27
+      drag and drop               35   modules   29
+      word select                 35   modules   30
+      memory game                 13   modules   13
+      sketcher                    10   modules   10
+      typing quiz                  9   modules    5
+      radio quiz                   7   modules    7
+      mcq                          7   modules    6
+      carousel                     5   modules    4
+      info trigger                 4   modules    3
+      click drop                   4   modules    4
+      accordion                    4   modules    4
+      hint slider                  4   modules    4
+      speech bubble                4   modules    4
+      slider                       3   modules    3
+      crossword                    3   modules    3
+      dropdown                     3   modules    3
+      word find                    2   modules    2
+      reorder                      2   modules    2
+      modal                        2   modules    2
+      checklist                    1   modules    1
+      timeline                     1   modules    1
+      hint                         1   modules    1
+      glossary                     1   modules    1
+
+   examples (nameable):
+      TEFUN03 TEFUN03_0_0.html «Activity 1B» -> alias «flip cards»
+      TEFUN03 TEFUN03_0_0.html «Activity 2A» -> alias «flipcards»
+      BLL140 BLL140_0_0.html «Activity 3F» -> alias «flip cards»
+      BLL140 BLL140_0_0.html «Activity 4F» -> alias «flip cards»
+      ARFUN02 ARFUN02_0_0.html «Activity 3A» -> alias «drag and drop»
+      ENFUN09 ENFUN09_0_0.html «Activity 3» -> alias «drag and drop»
+      HPFUN103 HPFUN103_0_0.html «Activity 3A» -> alias «drag and drop»
+      HPFUN403 HPFUN403_0_0.html «Activity 1A» -> alias «drag and drop»
+      BLL270 BLL270_0_0.html «Activity 2B» -> alias «highlight»
+      BLL270 BLL270_0_0.html «Activity 3B» -> alias «highlight»
+      BLL270 BLL270_0_0.html «Activity 4B» -> alias «highlight»
+      CEDR204 CEDR204_0_0.html «Activity 3A» -> alias «highlight»
+      BLL130 BLL130_0_0.html «Activity 2A» -> alias «memory game»
+      BLL230 BLL230_0_0.html «Activity 7G» -> alias «memory»
+      BLL114 BLL114_2_0.html «Activity 2E» -> alias «memory game»
+      BLL117 BLL117_2_0.html «Activity 2D» -> alias «memory game»
+      ARFUN04 ARFUN04_0_0.html «Activity 1» -> alias «draw»
+      BLL230 BLL230_0_0.html «Activity 3E» -> alias «drawing»
+      BLL112 BLL112_2_0.html «Activity 2E» -> alias «drawing»
+      ENGI103 ENGI103_6_0.html «Activity 6C» -> alias «draw»
+      BLL110 BLL110_0_0.html «Activity 2F» -> alias «self check»
+      BLL110 BLL110_0_0.html «Activity 3G» -> alias «self check»
+      BLL110 BLL110_0_0.html «Activity 4G» -> alias «self check»
+      BLL110 BLL110_0_0.html «Activity 5G» -> alias «self check»
+      ENFUN03 ENFUN03_0_0.html «Activity 4A» -> alias «radio»
+      ENFUN05 ENFUN05_0_0.html «Activity 3» -> alias «radio»
+      ENGC301 ENGC301_3_0.html «Activity 3B» -> alias «radio»
+      ENGJ402 ENGJ402_6_0.html «Activity 6A» -> alias «true false»
+      MXFUN01 MXFUN01_6_4.html «Activity 3E» -> alias «multichoice»
+      MXFUN01 MXFUN01_6_5.html «Activity 4E» -> alias «quiz»
+      MXFUN03 MXFUN03_0_0.html «Activity 2C» -> alias «multichoice»
+      WJFUN206 WJFUN206_0_0.html «Activity 1C» -> alias «quiz»
+
+   examples (NOT nameable — what the window actually says):
+      ARFUN04 ARFUN04_0_0.html «Activity 4J»: [Activity 4J] [/RED TEXT]🔴**Why balance matters:** Balance is essential in art as it guides the viewer's eye a
+      ENFUN01 ENFUN01_0_0.html «Activity 2»: [Activity 2] [/RED TEXT]🔴 🔴[RED TEXT] [Activity Heading] [/RED TEXT]🔴Retelling a Story 🔴[RED TEXT] [Body] [/RE
+      ENFUN03 ENFUN03_0_0.html «Activity 1D»: [Activity [/RED TEXT]🔴🔴[RED TEXT] 1D [/RED TEXT]🔴🔴[RED TEXT] ] [/RED TEXT]🔴 🔴[RED TEXT] [Activity Heading] [/R
+      ENFUN07 ENFUN07_0_0.html «Activity 3»: [Activity 3] [/RED TEXT]🔴 🔴[RED TEXT] [Activity Heading] [/RED TEXT]🔴Make your own paragraph 🔴[RED TEXT] [body
+      ENFUN08 ENFUN08_0_0.html «Activity 4»: [Activity 4] [/RED TEXT]🔴 🔴[RED TEXT] [Activity heading] [/RED TEXT]🔴What sound? 🔴[RED TEXT] [body] [/RED TEXT
+      ENFUN08 ENFUN08_0_0.html «Activity 6»: [Activity 6] [/RED TEXT]🔴 🔴[RED TEXT] [Activity heading] [/RED TEXT]🔴The meaning behind the phrase 🔴[RED TEXT]
+      ENFUN09 ENFUN09_0_0.html «Activity 2»: [Activity 2] [/RED TEXT]🔴 🔴[RED TEXT] [Activity Heading] [/RED TEXT]🔴 Writing a draft ┌───
+      ENFUN09 ENFUN09_0_0.html «Activity 4»: [Activity 4] [/RED TEXT]🔴 🔴[RED TEXT] [Activity Heading] [/RED TEXT]🔴Reading your draft ┌───
+      ENFUN09 ENFUN09_0_0.html «Activity 5»: [Activity 5] [/RED TEXT]🔴 🔴[RED TEXT] [Activity Heading] [/RED TEXT]🔴Publishing ┌───
+      MXFUN01 MXFUN01_3_0.html «Activity 2C»: [Activity 2C] [/RED TEXT]🔴 🔴[RED TEXT] [H3] [/RED TEXT]🔴Write the correct number 🔴[RED TEXT] [Activity body] [
+      MXFUN01 MXFUN01_5_0.html «Activity 4C»: [Activity 4C] [/RED TEXT]🔴 🔴[RED TEXT] [H3] [/RED TEXT]🔴Fractions of amounts 🔴[RED TEXT] [body] [/RED TEXT]🔴Fi
+      MXFUN01 MXFUN01_6_2.html «Activity 1H»: [Activity 1H] [/RED TEXT]🔴 🔴[RED TEXT] [H3] [/RED TEXT]🔴Rounding whole numbers 🔴[RED TEXT] [Activity body] Rou

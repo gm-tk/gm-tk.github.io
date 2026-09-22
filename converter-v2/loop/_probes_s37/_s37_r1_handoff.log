@@ -1,0 +1,60 @@
+HAND-OFF BOXES WHOSE GOLD BUILT NO WIDGET — 1062
+==============================================================================
+   draganddrop                          414   modules  213
+   unclassified                         326   modules  153
+   typing                                69   modules   37
+   reorder                               51   modules   40
+   selfcheck                             33   modules   21
+   carousel                              23   modules   11
+   memorygame                            21   modules   16
+   interactive                           16   modules    8
+   slider                                16   modules   15
+   accordion                             15   modules   11
+   dropdown                              10   modules   10
+   clickdrop                              8   modules    5
+   wordfind                               7   modules    7
+   tabs                                   6   modules    6
+   multichoicequiz                        6   modules    6
+   timeline                               6   modules    5
+   flipcard                               5   modules    5
+   worddrag                               5   modules    3
+   radioquiz                              5   modules    3
+   crossword                              4   modules    4
+   sketcher                               4   modules    4
+   clickingorder                          3   modules    2
+   modal                                  2   modules    2
+   wordselect                             2   modules    2
+   selectionbox                           2   modules    2
+
+  draganddrop
+     AGH1004 AGH1004_6_0.html «fromgrasstoglass»
+     ARFUN02 ARFUN02_0_0.html «pitchhouoro»
+     BLL111 BLL111_1_0.html «matchtheletters»
+  unclassified
+     ANZH104 ANZH104_3_0.html «clothingwordfind»
+     ANZH104 ANZH104_6_0.html «findingfood»
+     ANZH205 ANZH205_1_0.html «ngkupunuiimportantword»
+  typing
+     BLL244 BLL244_2_0.html «writingquestions»
+     BLL246 BLL246_1_0.html «matchthecorrectconjunc»
+     BLL252 BLL252_1_0.html «expandingthewords»
+  reorder
+     BLL243 BLL243_1_1.html «orderingsentences»
+     BLL244 BLL244_1_0.html «sentencebuilding»
+     BLL256 BLL256_1_0.html «sentencebuilding»
+  selfcheck
+     BLL117 BLL117_1_0.html «heartwords»
+     BLL145 BLL145_1_0.html «heartwords»
+     BLL145 BLL145_1_0.html «heartwords»
+  carousel
+     BLL110 BLL110_0_0.html «soundguess»
+     BLL110 BLL110_0_0.html «soundguess»
+     BLL110 BLL110_0_0.html «soundguess»
+  memorygame
+     BLL265 BLL265_1_1.html «memorygame»
+     BLL272 BLL272_1_0.html «memorygame»
+     BLL274 BLL274_2_0.html «memorygame»
+  interactive
+     AGH1008 AGH1008_5_0.html «artificialinsemination»
+     ANZH203 ANZH203_3_0.html «culturalexchangespaint»
+     ANZH301 ANZH301_1_0.html «thinkingaboutopportuni»

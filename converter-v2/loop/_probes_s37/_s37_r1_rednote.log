@@ -1,0 +1,32 @@
+================================================================================================
+THE MANDATED RED-NOTE FAMILY ON THE PAIRED POPULATION (2500 paired pages)
+================================================================================================
+   Claude paired elements              204150
+   ... of them red-note elements        11321   = 5.55 % of everything Claude emits
+   gold paired elements                248915
+   ... of them red-note elements         1604   = 0.64 % (the human resolves and removes them)
+   paired pages carrying at least one    2196   = 87.8 % of paired pages
+   on those pages, the red-note share of the page: median 5.7 %, 90th pct 13.3 %, max 43.5 %
+
+   by prefix:
+      writers note                          6899   modules  518
+      designer/developer to do              2594   modules  509
+      red flag                              1594   modules  324
+      note from {author}                     234   modules   84
+
+   the 15 heaviest modules (red-note elements on paired pages):
+      CEDT104          123
+      MXDB302          114
+      MXFU201          106
+      ARFUN04          104
+      TEDC402          101
+      MXFU202           95
+      MXDI201           93
+      FRFUN06           91
+      BLL110            84
+      MXFL302           81
+      CEDO502           79
+      ENGC403           76
+      HIS1002           75
+      EXBP901           73
+      EXIP901           72

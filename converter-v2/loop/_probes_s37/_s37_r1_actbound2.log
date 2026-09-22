@@ -1,0 +1,89 @@
+========================================================================================================
+ACTIVITY-BOX BOUNDARY, MEASURED AS A BOUNDARY — 4616 paired boxes matched by title
+========================================================================================================
+   both ends / disjoint — not a single-seam defect                  3300   modules  407
+   box ends LATE (Claude runs on past the gold's end)                762   modules  267
+   box ends EARLY (Claude stops short of the gold's end)             294   modules  126
+   identical                                                         236   modules  131
+   same text, DIFFERENT paragraph split (not a boundary defect)       20   modules   17
+   box starts EARLY (Claude reaches back before the gold's start)      4   modules    3
+
+   the paragraph-split forms (same text both sides), top 12:
+      gold 2 -> claude 3             5
+      gold 3 -> claude 2             4
+      gold 8 -> claude 9             3
+      gold 6 -> claude 7             1
+      gold 5 -> claude 6             1
+      gold 2 -> claude 7             1
+      gold 4 -> claude 2             1
+      gold 20 -> claude 23           1
+      gold 7 -> claude 6             1
+      gold 9 -> claude 10            1
+      gold 2 -> claude 1             1
+
+--------------------------------------------------------------------------------------------------------
+BOX ENDS LATE (CLAUDE RUNS ON PAST THE GOLD'S END) — 762 boxes
+   the WRITER TAG at the seam:
+      (seam text not found in the WT dump)           580   modules  235
+      body                                            49   modules   43
+      image                                           25   modules   20
+      button                                          14   modules   10
+      side tab n                                       9   modules    1
+      interactive activity                             9   modules    2
+      drop and drag                                    8   modules    3
+      image n                                          7   modules    1
+      h3                                               6   modules    4
+      body text                                        6   modules    4
+      audio button                                     5   modules    3
+      activity                                         4   modules    2
+      e.g. [body]:
+         BLL112 BLL112_1_0.html «decodingwords»  seam «writersnotecanwemakesomethingliketheseplease»
+         BLL114 BLL114_1_0.html «decodingwords»  seam «writersnotecanwemakesomethinglikethisplease»
+         BLL125 BLL125_1_0.html «rhymingwords»  seam «writersnotecanwemakethewordsdraggableplease»
+         BLL126 BLL126_1_0.html «decodingwords»  seam «writersnotecanwemakesomethinglikethisplease»
+      e.g. [image]:
+         ANZH101 ANZH101_2_0.html «readingforunderstanding»  seam «gotoyourjournalhttpstearagovtnzenphotograph2»
+         ANZH105 ANZH105_4_0.html «storyretell»  seam «storiesofourancestorscanalsobesharedthrougha»
+         BLL130 BLL130_0_0.html «readingwords»  seam «writersnotecanwejumblethepicturesupsotheyare»
+         BLL152 BLL152_1_0.html «readingrevision»  seam «writersnotethestoryzachidfromdadcanbefoundin»
+      e.g. [button]:
+         BLLR202 BLLR202_3_1.html «startthenarrativeorganis»  seam «wellrevisitthisactivityattheendofthestorysoy»
+         BLLR203 BLLR203_5_0.html «reflectingonlearning»  seam «kapaiuploadyourcompletedworktothedropboxdesi»
+         ENGI202 ENGI202_3_0.html «mathsminutecookislands»  seam «gotoyourjournalthelegendofmtaitutakipleasecl»
+         ENGI202 ENGI202_3_0.html «mathsminutesamoa»  seam «gotoyourjournalthelegendofsinaandtunapleasew»
+
+--------------------------------------------------------------------------------------------------------
+BOX ENDS EARLY (CLAUDE STOPS SHORT OF THE GOLD'S END) — 294 boxes
+   the WRITER TAG at the seam:
+      (seam text not found in the WT dump)           142   modules   76
+      h3                                              24   modules    9
+      body                                            17   modules   13
+      activity n                                      11   modules    7
+      h2                                               8   modules    4
+      image                                            6   modules    6
+      video n                                          5   modules    4
+      interactive activity                             5   modules    3
+      alert                                            4   modules    3
+      video                                            4   modules    3
+      side alert                                       3   modules    3
+      end of alert box                                 3   modules    3
+      e.g. [h3]:
+         ANZH404 ANZH404_3_0.html «evaluatingresponses»  seam «gotoyourjournal»
+         CEDO202 CEDO202_0_0.html «whathaveyoulearnt»  seam «trytellingsomeoneyoursupervisoryourfriendsor»
+         CEDO202 CEDO202_0_0.html «whathaveyoulearnt»  seam «tryexplainingtosomeoneyoursupervisoryourfrie»
+         CEDR204 CEDR204_0_0.html «createacomposition»  seam «clickonthefruitcardsandplacethemintheboxesbe»
+      e.g. [body]:
+         BLL140 BLL140_0_0.html «vowelteamoa»  seam «whentwovowelsgooutwalkingthefirstonedoesthet»
+         BLL140 BLL140_0_0.html «vowelteamie»  seam «whentwovowelsgooutwalkingthefirstonedoesthet»
+         BLL140 BLL140_0_0.html «vowelteamee»  seam «whentwovowelsgooutwalkingthefirstonedoesthet»
+         BLL165 BLL165_1_1.html «createapicture»  seam «wordsboxfishyelpflashrushesbunchchipsshoppin»
+      e.g. [activity n]:
+         ANZH301 ANZH301_4_0.html «fleetoffootfilmstripcomp»  seam «gotoyourjournal»
+         ANZH301 ANZH301_9_0.html «culturalcentresandcreati»  seam «prepareapowerpointslideliketheslidebelowthat»
+         BLL115 BLL115_1_0.html «writingthewords»  seam «getapenandpaperorawhiteboardreadywhenyouarer»
+         BLL120 BLL120_0_0.html «selfcheckactivity»  seam «someofthesepicturesstartwiththeesoundandsome»
+
+--------------------------------------------------------------------------------------------------------
+BOX STARTS EARLY (CLAUDE REACHES BACK BEFORE THE GOLD'S START) — 4 boxes
+   the WRITER TAG at the seam:
+      (seam text not found in the WT dump)             4   modules    3

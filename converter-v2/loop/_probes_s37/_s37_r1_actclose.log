@@ -1,0 +1,164 @@
+====================================================================================================
+ACTIVITY-BOX BOUNDARY, KEYED ON THE WRITER'S TAG  (session 37 Round 1 PICK)
+====================================================================================================
+   over-capture (Claude's box runs on)            2361
+   under-capture (Claude's box ends early)        1614
+   same size, different content                    362
+   box identical                                   243
+   module with NO Writers Template dump             15
+
+----------------------------------------------------------------------------------------------------
+A. CLAUDE'S BOX ENDS EARLY — the writer tag immediately before the FIRST LOST element
+   (this is the shape that closed the box; the gold kept going)
+----------------------------------------------------------------------------------------------------
+   writer tag before the lost text               boxes   modules
+   (the lost text is not in the WT dump)           866       284
+   body                                            125        87
+   activity n                                       75        56
+   h3                                               62        30
+   image                                            46        38
+   activity heading                                 28        15
+   drag and drop                                    22        19
+   h2                                               18        10
+   interactive activity                             14         8
+   autocheck                                        12         4
+   body text                                         9         7
+   video n                                           8         4
+   accordion                                         8         8
+   activity heading h3                               8         6
+   activity                                          8         4
+   h4                                                8         4
+   end accordion                                     6         6
+   video                                             6         5
+   show answer                                       6         4
+   button                                            5         5
+   reorder                                           5         5
+   multichoice quiz                                  5         3
+   dropdown quiz                                     5         5
+   alert                                             4         3
+   flip cards                                        4         4
+   draganddrop                                       4         3
+   heading                                           4         1
+   interactive                                       3         3
+
+----------------------------------------------------------------------------------------------------
+B. CLAUDE'S BOX RUNS ON — the writer tag immediately before the FIRST EXTRA element
+   (this is the shape the HUMAN treated as a closer and Claude did not)
+----------------------------------------------------------------------------------------------------
+   writer tag before the extra text              boxes   modules
+   (the extra text is not in the WT dump)         1099       318
+   activity n                                      395       138
+   body                                            236       152
+   h3                                              127        49
+   image                                            93        60
+   carousel                                         23        20
+   h2                                               23        13
+   body text                                        23         8
+   self check                                       21         8
+   activity heading                                 20        11
+   important side note                              17         1
+   drag and drop                                    13        11
+   h4                                               12         6
+   video                                            11        11
+   side tab n                                       11         1
+   activity heading h3                              10         8
+   activity box                                      9         4
+   activity                                          8         6
+   modal n image                                     7         3
+   embed book n                                      6         6
+   image n                                           6         5
+   audio n                                           6         2
+   interactive activity                              6         2
+   reset                                             6         2
+   audio button                                      5         3
+   accordion                                         5         5
+   button                                            5         4
+   activity body                                     5         4
+
+examples — A (ends early), the top shapes:
+  [body]
+     BLL140 BLL140_0_0.html «vowelteamoa» -> lost «whentwovowelsgooutwalkingthefirstonedoes»
+     BLL140 BLL140_0_0.html «vowelteamie» -> lost «whentwovowelsgooutwalkingthefirstonedoes»
+     BLL140 BLL140_0_0.html «vowelteamee» -> lost «whentwovowelsgooutwalkingthefirstonedoes»
+     BLL141 BLL141_1_0.html «decodabletext» -> lost «aruruissometimesknownasamorepork»
+     BLL141 BLL141_2_0.html «orderingsentences» -> lost «jimhasabunwithredjaminit»
+  [activity n]
+     ANZH301 ANZH301_9_0.html «culturalcentresandcreative» -> lost «prepareapowerpointslideliketheslidebelow»
+     BLL116 BLL116_2_0.html «artsandcraftswithtins» -> lost «chooseoneormoreofthefollowingartandcraft»
+     BLL120 BLL120_0_0.html «optionalactivities» -> lost «chooseoneormoreoftheseactivitiestodoclic»
+     BLL136 BLL136_1_0.html «picnicartsandcrafts» -> lost «chooseoneormoreofthefollowingartandcraft»
+     BLL144 BLL144_1_1.html «campingartsandcrafts» -> lost «chooseoneormoreofthefollowingartandcraft»
+  [h3]
+     AGH1004 AGH1004_6_0.html «fromgrasstoglass» -> lost «milkingoccurs12timesdailyonfarmsacrossne»
+     CEDK102 CEDK102_0_0.html «adayinthelifeofmypet» -> lost «lookatthesephotosandcaptionsforadayinthe»
+     CEDO105 CEDO105_1_0.html «whatcanyoumove» -> lost «rolloverthebodypartsbelowreadorhaveanadu»
+     CEDO402 CEDO402_0_0.html «reactiontimes» -> lost «trythisquickactivitytotestyourreactionti»
+     CEDO501 CEDO501_1_0.html «understandinglifestages» -> lost «whataretianasmainsourcesofincome»
+  [image]
+     ANZH304 ANZH304_1_0.html «differentperspectives» -> lost «readorusethetexttospeechfunctiontofollow»
+     BLL120 BLL120_0_0.html «buildtheletter» -> lost «chooseoneofthefollowingideastobuildthele»
+     BLL165 BLL165_1_1.html «createyourownsuperhero» -> lost «thinkaboutwhatspecialpowersorskillsyours»
+     BLL177 BLL177_2_0.html «readingmultisyllabicwords» -> lost «rememberthatarisanrcontrolledvowel»
+     BLL240 BLL240_1_6.html «readthewords» -> lost «wordsmakingtheairsound»
+  [activity heading]
+     ENFUN07 ENFUN07_0_0.html «puttingideastogether» -> lost «lookatthepicturesclickanddragtheonesthat»
+     ENFUN07 ENFUN07_0_0.html «makeyourownparagraph» -> lost «hereisanexampleofasimpleparagraph»
+     ENFUN08 ENFUN08_0_0.html «puttingittogether» -> lost «readthepoemcavebyselinapowellandtickwhic»
+     ENFUN08 ENFUN08_0_0.html «puttingittogether» -> lost «readthepoemgivingmyfatherfrightsbyashlei»
+     ENFUN08 ENFUN08_0_0.html «whichwordcreatesrhythm» -> lost «selectthebestwordtoendthesesentencestofi»
+  [drag and drop]
+     BLL132 BLL132_2_0.html «clozeactivity» -> lost «santthefelthot»
+     BLL137 BLL137_1_1.html «clozeactivity» -> lost «theysawthepigstuckinthemud»
+     BLL143 BLL143_1_0.html «orderingsentences» -> lost «atruckisontheroad»
+     BLL143 BLL143_1_1.html «clozeactivity» -> lost «abiggumisona»
+     BLL167 BLL167_1_1.html «whatami» -> lost «imasoundoftenmadebyanowlwhatami»
+  [h2]
+     ANZH404 ANZH404_3_0.html «matchingup» -> lost «the1860kohimaramaconference»
+     CEDK102 CEDK102_0_0.html «whatsthepurpose» -> lost «whatdoyouthinkthepurposeofthesephotosare»
+     CEDK102 CEDK102_0_0.html «supervisornote» -> lost «encourageyourkongalearnertothinkcreative»
+     CEDK102 CEDK102_0_0.html «writingcaptions» -> lost «acaptionisashortsentenceorphrasethatdesc»
+     CEDK102 CEDK102_0_0.html «avatarmemory» -> lost «sometimespeoplecreateavatarstomatchtheir»
+
+examples — B (runs on), the top shapes:
+  [activity n]
+     ANZH101 ANZH101_2_0.html «tessellations» -> extra «letsusewhalestohelpuslearnabouttessellat»
+     ANZH301 ANZH301_3_0.html «adominantpakehaperspective» -> extra «notepleasereadthissourceinthecontextofth»
+     ANZH301 ANZH301_8_0.html «sourceevaluation» -> extra «inthestudyofourhistoriesweusedifferentty»
+     ANZH304 ANZH304_5_0.html «thestoryoferueramaihipatuo» -> extra «erueramaihipatuonethestoryofagreatrangat»
+     ANZH304 ANZH304_6_0.html «myviewversusahistoriansvie» -> extra «youaregoingtowatchavideointerviewwithhis»
+  [body]
+     AGH1008 AGH1008_3_0.html «grazingsystems» -> extra «pastoralfarmersneedtoensurethatthefeedre»
+     ANZH301 ANZH301_1_0.html «thinkingaboutopportunities» -> extra «inthisvenndiagramyouaregoingtoselectfrom»
+     ANZH404 ANZH404_4_0.html «peelingbackthelayers» -> extra «considertheindividualsandgroupsyoulearne»
+     BLL110 BLL110_0_0.html «writingtheletters» -> extra «httpstekuradesire2learncomcontentenforce»
+     BLL110 BLL110_0_0.html «writingthelettera» -> extra «httpstekuradesire2learncomcontentenforce»
+  [h3]
+     AGH1004 AGH1004_1_0.html «knowledgeselfcheck» -> extra «mountainrangeslakewanakahotanddrysummers»
+     ANZH101 ANZH101_3_0.html «introduceyourself» -> extra «clickonthelinktocreateyourownpepehapepeh»
+     ANZH104 ANZH104_4_0.html «designatrap» -> extra «designatrapforaneel»
+     ANZH105 ANZH105_1_0.html «multichoicelearning» -> extra «havealookatwherenellyandhernewfriendsfam»
+     ANZH303 ANZH303_1_0.html «manainmusic» -> extra «whichaspectofmanaishighlightedinthiswaia»
+  [image]
+     ANZH105 ANZH105_4_0.html «storyretell» -> extra «storiesofourancestorscanalsobesharedthro»
+     BLL110 BLL110_0_0.html «buildtheletter» -> extra «usingsomematerialssuchasplaydoughblocksm»
+     BLL110 BLL110_0_0.html «buildtheletter» -> extra «usingsomematerialssuchasplaydoughblocksm»
+     BLL110 BLL110_0_0.html «buildtheletter» -> extra «usingsomematerialssuchasplaydoughblocksm»
+     BLL110 BLL110_0_0.html «buildtheletter» -> extra «usingsomematerialssuchasplaydoughblocksm»
+  [carousel]
+     BLL113 BLL113_1_0.html «reading» -> extra «writersnotethestorysitcanbefoundinset1th»
+     BLL123 BLL123_1_0.html «reading» -> extra «writersnotethestoryantsatthetipcanbefoun»
+     BLL143 BLL143_1_1.html «decodabletext» -> extra «writersnoteinset4embedbook1areweabletoem»
+     BLL144 BLL144_1_1.html «decodabletext» -> extra «writersnoteinset4embedbook1areweabletoem»
+     BLL147 BLL147_1_0.html «readingrevision» -> extra «writersnotethestorystuckinarutcanbefound»
+  [h2]
+     BLL220 BLL220_0_0.html «supervisornote» -> extra «somekonganeedmorepracticethanotherswhenl»
+     BLL220 BLL220_0_0.html «supervisornote» -> extra «somekonganeedmorepracticethanotherswhenl»
+     BLL230 BLL230_0_0.html «supervisornote» -> extra «somekonganeedmorepracticethanotherswhenl»
+     BLLR202 BLLR202_3_0.html «usecontextclues» -> extra «writersnotepleaseplacekwhaiavatarontheri»
+     CEDK401 CEDK401_0_0.html «scanningandinferenceskills» -> extra «mahingakaiistheoriginalfoodproductionpro»
+  [body text]
+     HES1007 HES1007_2_0.html «checkpoint» -> extra «gotoquiz»
+     HPRE203 HPRE203_3_0.html «empathygivenandreceived» -> extra «gotojournal»
+     HPRE203 HPRE203_5_0.html «assumptions» -> extra «foreachslideclickthestopwatchandspendone»
+     MXDI201 MXDI201_1_0.html «identifyingplacevalue» -> extra «389172942807»
+     MXDI201 MXDI201_2_0.html «fourdigitnumbers» -> extra «lookatnumbersbelowthatarerepresentedbypl»

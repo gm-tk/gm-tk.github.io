@@ -1,0 +1,107 @@
+====================================================================================================
+THE UN-HONOURED [Activity N] OPENER — 395 boxes
+====================================================================================================
+
+(a) the opener's LITERAL form (digits folded to #):
+   Activity #C                           87
+   Activity #B                           78
+   Activity #A                           76
+   Activity #D                           65
+   Activity #E                           32
+   Activity #F                           22
+   Activity #G                           18
+   Activity #H                            5
+   Activity #a                            3
+   Activity #I                            3
+   Activity #c                            1
+   Activity #d                            1
+   Activity #J                            1
+   Activity #                             1
+
+(b) what sits BETWEEN the opener and the text Claude wrongly kept in the previous box:
+   NOTHING between them — a BARE opener with its text inline        395
+
+(c) did Claude build the gold's NEXT box at all?
+   Claude DID build the gold's next box (mis-bounded, not lost)     259
+   Claude did NOT build the gold's next box (the activity is LOST)    76
+   the gold has no further titled box on the page                    60
+
+(d) boxes on the page, gold vs Claude (top forms):
+   gold 5 boxes / claude 5              106
+   gold 47 boxes / claude 47             25
+   gold 67 boxes / claude 64             21
+   gold 36 boxes / claude 36             17
+   gold 4 boxes / claude 4               16
+   gold 42 boxes / claude 42             14
+   gold 6 boxes / claude 5               11
+   gold 44 boxes / claude 44             10
+   gold 15 boxes / claude 15              9
+   gold 3 boxes / claude 3                9
+   gold 10 boxes / claude 4               9
+   gold 5 boxes / claude 4                8
+
+examples by opener form:
+  [Activity #C]
+     BLL113 BLL113_1_0.html «writingheartwords» extra «saythelettersasyouwritetheworda»
+     BLL120 BLL120_0_0.html «findtheletterc» extra «1clickonthelowercaseletterc»
+     BLL121 BLL121_2_0.html «createasentence» extra «listentothesentencedraganddropthew»
+     BLL124 BLL124_1_0.html «crossword» extra «nowthatyouhaverereadhatsitistimeto»
+     BLL132 BLL132_1_0.html «writingwords» extra «getapenandpaperorawhiteboardreadyw»
+     BLL134 BLL134_1_0.html «rollandread» extra «clickonthediceandreadoneofthewords»
+  [Activity #B]
+     ANZH301 ANZH301_3_0.html «adominantpakehaperspec» extra «notepleasereadthissourceintheconte»
+     ANZH304 ANZH304_6_0.html «myviewversusahistorian» extra «youaregoingtowatchavideointervieww»
+     BLL110 BLL110_0_0.html «soundguess» extra «allofthesethingsstartwiththesameso»
+     BLL110 BLL110_0_0.html «soundguess» extra «allofthesethingsstartwiththesameso»
+     BLL110 BLL110_0_0.html «soundguess» extra «allofthesethingsstartwiththesameso»
+     BLL110 BLL110_0_0.html «soundguess» extra «allofthesethingsstartwiththesameso»
+  [Activity #A]
+     ANZH301 ANZH301_8_0.html «sourceevaluation» extra «inthestudyofourhistoriesweusediffe»
+     ANZH304 ANZH304_5_0.html «thestoryoferueramaihip» extra «erueramaihipatuonethestoryofagreat»
+     BLL115 BLL115_2_0.html «heartwords» extra «sofarwehavelearned3heartwordsathea»
+     BLL116 BLL116_1_0.html «howmanysounds» extra «whenwearelearningtoreadwordswesoun»
+     BLL120 BLL120_0_0.html «mysterysoundbox» extra «listencloselytothesoundsinthismyst»
+     BLL121 BLL121_2_0.html «speedreading» extra «readthesewordstimeyourselftoseeify»
+  [Activity #D]
+     ANZH101 ANZH101_2_0.html «tessellations» extra «letsusewhalestohelpuslearnabouttes»
+     BLL120 BLL120_0_0.html «findtheletterk» extra «1clickonthelowercaseletterk»
+     BLL120 BLL120_0_0.html «findthelettere» extra «1clickonthelowercaselettere»
+     BLL120 BLL120_0_0.html «findtheletterh» extra «1clickonthelowercaseletterh»
+     BLL120 BLL120_0_0.html «findtheletterr» extra «1clickonthelowercaseletterr»
+     BLL120 BLL120_0_0.html «findtheletterm» extra «1clickonthelowercaseletterm»
+  [Activity #E]
+     BLL111 BLL111_1_0.html «writethewords» extra «getapenandpaperorawhiteboardreadyw»
+     BLL114 BLL114_1_0.html «rereadsanttheant» extra «startbyrereadingsanttheantbeforeyo»
+     BLL122 BLL122_1_0.html «writetheheartwords» extra «getapenandpaperorawhiteboardreadyw»
+     BLL125 BLL125_2_0.html «vocabularyactivities» extra «clickoneachoftheseimagesandthenfol»
+     BLL142 BLL142_1_0.html «writethewords» extra «getapenandpaperorawhiteboardreadyw»
+     BLL144 BLL144_1_0.html «punctuationspeechmarks» extra «httpswwwistockphotocomvectorsetofq»
+  [Activity #F]
+     BLL120 BLL120_0_0.html «writingthelettere» extra «watchthissmallvideotoseehowwewrite»
+     BLL120 BLL120_0_0.html «writingtheletterm» extra «watchthissmallvideotoseehowwewrite»
+     BLL120 BLL120_0_0.html «writingtheletterd» extra «watchthissmallvideotoseehowwewrite»
+     BLL160 BLL160_0_0.html «writingtheletterx» extra «watchthissmallvideotoseehowwewrite»
+     BLL170 BLL170_0_0.html «writethewords» extra «getapenandpaperorawhiteboardreadyw»
+     BLL170 BLL170_0_0.html «writethewords» extra «getapenandpaperorawhiteboardreadyw»
+
+WT context samples (opener -> the text Claude kept in the PREVIOUS box):
+   ANZH101 ANZH101_2_0.html
+      WT: [Activity 2D] [/RED TEXT]🔴 Tessellations Let’s use whales to help us learn about tessellations. A tessellation is a pattern that re
+   ANZH301 ANZH301_3_0.html
+      WT: [Activity 3B] [/RED TEXT]🔴 Read the extract below about the Hunn Report of 1961 and answer the following questions in your journal. *Note: Please read this source in the context of the early 1960s. It is highly unlikely vi
+   ANZH301 ANZH301_8_0.html
+      WT: [Activity 8A] [/RED TEXT]🔴 In the study of our histories, we use different types of information to develop our unders
+   ANZH304 ANZH304_5_0.html
+      WT: [Activity 5A] [/RED TEXT]🔴 Listen to the following journal story of Eruera Maihi Patuone. You can follow-along with the text of the journal too. 🔴[RED TEXT] [Please embed the text and the audio for this journal story] [/RED TEXT]🔴__Er
+   ANZH304 ANZH304_6_0.html
+      WT: [Activity 6B] [/RED TEXT]🔴 You are going to watch a video interview with historian Anne Salmond. In the clip that you
+   BLL110 BLL110_0_0.html
+      WT: [Activity 6G] [/RED TEXT]🔴Self-check activity: 🔴[RED TEXT] [Body] [/RED TEXT]🔴Click on on the pictures that start with the /n/ sound: ┌
+   BLL110 BLL110_0_0.html
+      WT: [Activity 4H] [/RED TEXT]🔴Optional Activities 🔴[RED TEXT] [body] [/RED TEXT]🔴Choose one or more of these activities to do. Click on the
+   BLL110 BLL110_0_0.html
+      WT: [Activity 2B] [/RED TEXT]🔴Sound guess … 🔴[RED TEXT] [Body] [/RED TEXT]🔴All of these things start with the same sound. What is tha
+   BLL110 BLL110_0_0.html
+      WT: [Activity 4H] [/RED TEXT]🔴Optional Activities 🔴[RED TEXT] [body] [/RED TEXT]🔴Choose one or more of these activities to do. Click on the
+   BLL110 BLL110_0_0.html
+      WT: [Activity 2B] [/RED TEXT]🔴Sound guess … 🔴[RED TEXT] [Body] [/RED TEXT]🔴All of these things start with the same sound. What is tha
