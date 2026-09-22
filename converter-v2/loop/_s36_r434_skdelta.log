@@ -1,0 +1,9 @@
+OLD pairs 2491  SCAFFOLD 54.5311%  RAW 38.362%  >=50 1546  >=75 256  >=90 23
+NEW pairs 2491  SCAFFOLD 54.5349%  RAW 38.365%  >=50 1547  >=75 256  >=90 23
+delta SCAFFOLD +0.0039pp  RAW +0.003pp  >=50 +1  >=75 +0  >=90 +0
+movers 3 (up 3 / down 0), pp-sum +9.6
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  ARFUN05    ARFUN05_0_0.html           35.7 ->   40.0  (+4.3)
+  ARFUN02    ARFUN02_0_0.html           20.4 ->   23.1  (+2.7)
+  ARFUN03    ARFUN03_0_0.html           49.6 ->   52.2  (+2.6)

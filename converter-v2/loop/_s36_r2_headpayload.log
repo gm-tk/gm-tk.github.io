@@ -1,0 +1,147 @@
+red spans 159171; with a colon in the first bracket 3283; head-matched with a payload-spawned PRIMARY of another tag: 139 (modules 42)
+by head tag -> primary:
+    34  activity -> carousel (embedded)
+          TWHA904: [interactive: carousel + captions]
+          TWHK903: [interactive: carousel images + captions]
+          TWHK903: [interactive: carousel + captions]
+          TWHK903: [interactive: carousel + captions]
+    11  activity -> flip card (embedded)
+          TWHK901: [interactive: Flip Card. Title: Ways we can help]
+          TWHK903: [interactive: Flip cards – Image on the front + description on the back. Place these in ti
+          AGH1006: [Interactive: Infographic type or Flip card]
+          AGH1006: [Interactive: Infographic type or Flip card]
+    10  activity -> image (embedded)
+          TWHK903: [interactive: Image in centre of page with pop outs around the image of the mistakes liste
+          TWHT903: [Interactive: Match images to statements]
+          AGH1004: [Interactive: Match the correct picture to its water use image]
+          AGH1005: [interactive: images and captions as a flowchart]
+     7  button -> dropdown (embedded)
+          CEDR101: [Button: Dropbox - Creative Services, please make a button here that leads to the same dro
+          CEDR101: [Button: Dropbox - Creative Services, please make a button here that leads to the same dro
+          CEDR101: [Button: Dropbox - Creative Services, please make a button here that leads to the same dro
+          CEDR101: [Button: Dropbox - Creative Services, please make a button here that leads to the same dro
+     7  activity -> drag and drop (embedded)
+          AGH1004: [interactive: flowchart drag and drop]
+          AGH1006: [interactive: sentence drag and drop or drop-down box]
+          AGH1006: [interactive: See drag and drop activity below] *Note to developer – Please change title t
+          ANZH205: [Activity: Embedded – Vertical Drag and Drop]
+     7  activity -> accordion (embedded)
+          AGH1009: [interactive: side by side accordion or similar]
+          AGH1009: [interactive: accordion under bold headings]
+          AGH1009: [Interactive: accordion under bold headings]
+          AGH1009: [interactive: accordion under bold headings]
+     6  activity -> dropdown (embedded)
+          TWHA902: [Interactive: Dropdown quiz]
+          TWHA902: [interactive: Drop down options]
+          TWHA902: [Interactive: drop down box]
+          AGH1005: [interactive: Drop down menu]
+     6  activity -> video (head)
+          TWHK901: [Interactive: Video: Sustainable Development Goals]
+          TWHK901: [interactive: video: Te Kahu]
+          TWHK902: [interactive: video: Young climate activists]
+          TWHK902: [Interactive: Video: Causes and Effects of Climate Change]
+     5  activity -> mcq (embedded)
+          ARFUN01: [Activity: Emotions – MKT Quiz] Engagement trigger
+          ARFUN01: [ACTIVITY: MKT Quiz : Culture in the arts]
+          ARFUN01: [ACTIVITY: MKT Quiz: Who came before us?] [Trigger engagement]
+          ARFUN01: [ACTIVITY: MKT Quiz: Making change] [Trigger engagement]
+     4  activity -> checklist (embedded)
+          TWHA903: [interactive: Knowledge checklist/Tick boxes]
+          TWHA903: [interactive: Knowledge checklist/ Yes/No]
+          TWHA904: [interactive: Knowledge checklist: Y/N boxes]
+          TWHA904: [interactive: Knowledge checklist: Y/N boxes]
+     4  activity -> list (embedded)
+          AGH1006: [interactive: brainstorm/list]
+          AGH1006: [interactive: brainstorm or list]
+          AGH1009: [interactive: List the 3 ways nitrogen are introduced]
+          AGH1009: [interactive: List 2 ways in box]
+     4  activity -> click drop (embedded)
+          XLP01: [interactive: click and drop down]
+          XLP01: [interactive: accordion click and drop]
+          XMES103: [interactive: Dev team, can you make these into tiles like a flip card? If not please make
+          XMES103: [interactive: Click and drop with images and captions]
+     3  external link -> embed (embedded)
+          CEDK501: [URL: https://www.nzqa.govt.nz/nqfdocs/units/pdf/28089.pdf]
+          CEDW501: [URL: https://www.nzqa.govt.nz/nqfdocs/units/pdf/28090.pdf] (Version 4)
+          CEDW501: [URL: https://www.nzqa.govt.nz/nqfdocs/units/pdf/496.pdf]
+     3  activity -> video (embedded)
+          TWHA902: [interactive: Video – The art of listening]
+          TWHK901: [interactive: video – Biomass Energy]
+          XMES102: [interactive: video – Me on the Map] [audio animation]
+     2  activity -> drag and drop (payload)
+          TEFUN01: [Activity: interactive: Drag and drop]
+          TEFUN04: [Activity: interactive: Drag and drop]
+     2  activity -> typing quiz (embedded)
+          TWHA902: [Activity: Typing the answer]
+          TWHT903: [interactive: Activity 3A Self Check]
+     2  activity -> radio quiz (embedded)
+          AGH1004: [Interactive: True or False Quiz]
+          AGH1007: [Interactive: True or False Quiz]
+     2  alert -> dropdown (embedded)
+          ENGI202: [Alert: Inside this dropdown box]
+          ENGI202: [Alert: Inside this dropdown box]
+     2  activity -> modal (embedded)
+          XLP01: [interactive: insert pop out boxes on click]
+          XLP02: [interactive: Flowchart. Pop out on click]
+     1  activity -> word find (exact)
+          TRR106: [Activity: Embedded] [Word Find]
+     1  activity -> drag and drop (exact)
+          TRR106: [Activity: Embedded] [Drag and Drop]
+     1  title bar -> audio (embedded)
+          ARFUN02: [Title: Puoro me te Oro| Music and Sound]
+     1  activity -> image (exact)
+          SSFUN08: [interactive: please position next to poem] [Image]
+     1  video -> carousel (embedded)
+          TWHA905: [Insert video: carousel of both videos]
+     1  activity -> slider (embedded)
+          TWHK903: [interactive: insert Slider] Activity 9A
+     1  activity -> reorder (embedded)
+          AGH1006: [interactive: Ordering/Matching to the image]
+     1  activity -> tabs (embedded)
+          AGH1006: [interactive: Tabs, example 2] Taken from
+     1  activity -> crossword (exact)
+          ANZH205: [Activity: Interactive Crossword]
+     1  data marker -> body (embedded)
+          CBI1004: [definition: Body cells, not reproductive cells.]
+     1  front -> speech bubble (embedded)
+          CEDR501: [Front: Please put each of the front questions inside a speech bubble]
+     1  data marker -> speech bubble (embedded)
+          ENGJ301: [definition: conversation between two or more characters]
+     1  button -> sketcher (embedded)
+          TEDC402: [Button: go to Sketcher tool]
+     1  external link -> video (embedded)
+          XDLS908: [link: https://www.youtube.com/watch?v=x6AU6KbicIc]
+     1  activity -> word find (embedded)
+          XGF9001: [Interactive: word search – please create from the list below]
+     1  activity -> speech bubble (embedded)
+          XLP01: [interactive: thought bubbles with speech on hover. Please add these words in circular rot
+     1  activity -> carousel (head)
+          XMES102: [Interactive: carousel: Activity 4F: Parts of your house]
+     1  activity -> timeline (embedded)
+          XMES103: [interactive: Timeline with ability for photos to be dragged and dropped]
+by module (top 25):
+    15  AGH1006
+    11  XLP01
+    10  AGH1005
+    10  AGH1009
+     9  XMES103
+     6  CEDR101
+     6  TWHK903
+     6  TWHT903
+     6  XLP02
+     5  TWHA902
+     5  TWHK901
+     4  ARFUN01
+     4  AGH1004
+     3  TWHA904
+     3  TWHK902
+     3  XMES102
+     2  TRR106
+     2  TWHA903
+     2  AGH1007
+     2  ANZH205
+     2  CEDW501
+     2  ENGI202
+     2  TEDC402
+     1  ARFUN02
+     1  SSFUN08

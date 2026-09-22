@@ -5323,6 +5323,44 @@ class ContentConverter {
 	 * Data: body_region.fundamentals_panels.phase_text.code_content_delimiter
 	 * Env: CODEPHASE_OFF (reverts the whole dialect — OFF corpus byte-identical)
 	 */
+	/**
+	 * ROUND 434 — the index of the FIRST fundamentals PHASE delimiter in a page's item stream, or -1.
+	 *
+	 * Used to bound the overview's menu/body boundary: the module menu is the front matter, so a
+	 * mid-document `[Title]` alias that sits INSIDE phase 1 cannot be it (the ARFUN family opens each
+	 * phase with `[Phase one content begins]` and then writes `[H1] Phase one:` + `[Title] <the phase
+	 * title>`; that `[Title]` was taking the whole module introduction into #module-menu-content while
+	 * the gold keeps it in div.introduction). This reads the SAME data patterns the phase-text pre-pass
+	 * in Convert() uses — the bracketed opener (ARFUN), the bare red span (ENFUN), the code-content
+	 * marker (MXFUN, round 433) and the plain black "Phase N" line (TEFUN) — so the two can never
+	 * disagree about where phase 1 begins. Env FUNDPHASE_OFF (the whole phase mechanism) disables it.
+	 */
+	static #firstPhaseDelimiterIdx(items, run) {
+		const fp = DataService.Data.EmitTemplates?.body_region?.fundamentals_panels?.phase_text;
+		if (!fp || fp.enabled === false) return -1;
+		if (typeof process !== "undefined" && process.env && process.env.FUNDPHASE_OFF) return -1;
+		if (!/(^|\s)fundamentals(\s|$)/.test(run?.resolvedRules?.body_class || "")) return -1;
+		const lineRe = new RegExp(fp.delimiter_pattern || "^phase\\s+\\d+$", "i");
+		const brRe = fp.bracketed_delimiter && fp.bracketed_delimiter.enabled !== false && fp.bracketed_delimiter.opener_pattern
+			? new RegExp(fp.bracketed_delimiter.opener_pattern, "i") : null;
+		const ccRe = fp.code_content_delimiter && fp.code_content_delimiter.enabled !== false && fp.code_content_delimiter.marker_pattern
+			? new RegExp(fp.code_content_delimiter.marker_pattern, "i") : null;
+		for (let k = 0; k < items.length; k++) {
+			const it = items[k];
+			if (it.type === "black") {
+				if (String(it.text || "").split("\n").some((l) => lineRe.test(l.trim()))) return k;
+				continue;
+			}
+			if (it.type !== "tag" || it.parse?.primary) continue;
+			if (it.parse?.class !== "noise" && it.parse?.class !== "instruction") continue;
+			const folded = (it.parse?.folded ?? "").trim();
+			if (lineRe.test(folded)) return k;
+			if (brRe && brRe.test(folded)) return k;
+			if (ccRe && ccRe.test(folded)) return k;
+		}
+		return -1;
+	};
+
 	static #codePhasePrepass(page, run) {
 		const cfg = DataService.Data.EmitTemplates?.body_region?.fundamentals_panels?.phase_text?.code_content_delimiter;
 		if (!cfg || cfg.enabled === false) return false;
@@ -5415,6 +5453,36 @@ class ContentConverter {
 		// and side tabs consumed BEFORE the boundary search below (a repeated `[Title]` must never
 		// become the overview's intro marker). Env CODEPHASE_OFF.
 		this.#codePhasePrepass(page, run);
+		// ROUND 434 — THE WRITER'S PHASE-TILE LABELS (the ARFUN family): on a fundamentals-class page a
+		// title-bar alias whose payload is "Phase <ordinal>" (`[Title: Phase one] Emoji for thumb nail`,
+		// the lines after `[Insert links to the 4 individual phases]`) is the label of a phaseLink tile
+		// PanelsBuilder generates — never the page opener, never the overview's intro marker, rendered
+		// nowhere. A black line of the same form (ARFUN04) is consumed too. Data
+		// fundamentals_panels.phase_nav_tiles.writer_tile_labels; env PHASETILELABEL_OFF.
+		{
+			const wtl = DataService.Data.EmitTemplates?.body_region?.fundamentals_panels?.phase_nav_tiles?.writer_tile_labels;
+			const wtlOn = !!wtl && wtl.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[wtl.env || "PHASETILELABEL_OFF"])
+				&& /(^|\s)fundamentals(\s|$)/.test(run?.resolvedRules?.body_class || "");
+			if (wtlOn) {
+				const payRe = new RegExp(wtl.payload_pattern || "^phase\\s+(?:one|two|three|four|five|six|seven|eight|\\d+)\\b", "i");
+				const blackRe = wtl.black_line_pattern ? new RegExp(wtl.black_line_pattern, "i") : null;
+				let marked = 0;
+				for (const it of items) {
+					if (it.type === "tag" && it.parse?.primary?.tag === "title bar" && it.consumedBy === undefined) {
+						const frag = String(it.parse.primary.fragment || "");
+						const colon = frag.indexOf(":");
+						const payload = colon >= 0 ? frag.slice(colon + 1).trim() : "";
+						if (payload && payRe.test(payload)) { it._phaseTileLabel = true; marked++; }
+					} else if (blackRe && it.type === "black" && it.consumedBy === undefined) {
+						const ls = String(it.text || "").split("\n").map((l) => l.trim()).filter(Boolean);
+						if (ls.length && ls.every((l) => blackRe.test(l))) { it._phaseTileLabel = true; marked++; }
+					}
+				}
+				if (marked) run.AddNote?.("info", "ContentConverter",
+					`${marked} writer phase-tile label line(s) ("[Title: Phase N] …") consumed — the phaseLink tiles are generated (phase_nav_tiles.writer_tile_labels).`);
+			}
+		}
 
 		// find the boundary markers.
 		// The menu/body boundary on the overview is [MODULE INTRODUCTION] —
@@ -5430,9 +5498,38 @@ class ContentConverter {
 			introIdx = items.findIndex((it) => {
 				if (it.type !== "tag" || it.parse.primary?.tag !== "title bar") return false;
 				if (it._codePhaseConsume) return false;   // ROUND 433 — a per-phase `[Title]` repeat is not the intro marker
+				if (it._phaseTileLabel) return false;   // ROUND 434 — a `[Title: Phase N]` tile label is not the intro marker
 				if (!seenOpener) { seenOpener = true; return false; }   // the page opener itself
 				return true;                                            // first MID-doc alias
 			});
+			// ROUND 434 — the menu is the FRONT MATTER: on a fundamentals page a mid-document `[Title]`
+			// alias that sits INSIDE phase 1 is that phase's own title, not the menu/body boundary (the
+			// ARFUN family writes `[Phase one content begins]` → `[H1] Phase one:` → `[Title] …`, and the
+			// whole module introduction was landing in #module-menu-content while the gold keeps it in
+			// div.introduction). With no boundary before the first phase break the page ships the empty
+			// menu shell its registry row asks for — the MXFUN03 / gold form. Env PHASETILELABEL_OFF.
+			const _wtlCfg = DataService.Data.EmitTemplates?.body_region?.fundamentals_panels?.phase_nav_tiles?.writer_tile_labels;
+			const _boundOn = !!_wtlCfg && _wtlCfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[_wtlCfg.env || "PHASETILELABEL_OFF"]);
+			// …but only when the writer marked NO overview region at or ahead of that alias. An
+			// `[Overview]` title-bar alias there means the front matter IS the menu (the ENFUN / HPFUN
+			// family's `menu.fundamentals_overview_li` capture reads it through this very index), so the
+			// boundary stands. It is tested against the ALIAS, not against the first phase break: the
+			// ENFUN dialect's opening red "Phase 1" span sits BEFORE its `[Overview]` marker. The ARFUN
+			// family has no overview alias at all — its front matter is the module introduction, and its
+			// first mid-document `[Title]` sits inside phase 1.
+			if (_boundOn && introIdx > 0) {
+				const pd = this.#firstPhaseDelimiterIdx(items, run);
+				const excl = _wtlCfg?.menu_bound_exclude_alias_words ?? ["overview"];
+				const _frontOverview = items.slice(0, introIdx + 1).some((x) => x.type === "tag"
+					&& x.parse?.primary?.tag === "title bar"
+					&& excl.some((w) => Utils.Fold(String(x.parse.primary.fragment ?? "")).includes(String(w).toLowerCase())));
+				if (pd >= 0 && introIdx > pd && !_frontOverview) {
+					run.AddNote?.("info", "ContentConverter",
+						"The mid-document [Title] alias sits inside phase 1 — not the menu boundary; the introduction stays in the body (phase_nav_tiles.writer_tile_labels).");
+					introIdx = -1;
+				}
+			}
 		}
 		// FUNDAMENTALS front-matter [Overview] WALT/I-can block routing to the MODULE MENU
 		// (module HPFUN903 is the reference example for this). When the menu/body boundary
@@ -5902,6 +5999,7 @@ class ContentConverter {
 			if (loiAlias && i === overviewIdx) continue;   // ROUND 432 — the lesson page's [Overview] alias is the menu marker, never its title
 			if (tbConsumed.has(i)) continue;   // already absorbed into the header title above
 			if (it._codePhaseConsume) continue;   // ROUND 433 — a per-phase front-matter repeat / a `[Side tab N]` renders nowhere (CODEPHASE_OFF)
+			if (it._phaseTileLabel) continue;   // ROUND 434 — a writer phase-tile label renders nowhere (PHASETILELABEL_OFF)
 
 			// ---- the title bar feeds the header, never the body ----------
 			if (it.type === "tag" && it.parse.primary?.tag === "title bar"

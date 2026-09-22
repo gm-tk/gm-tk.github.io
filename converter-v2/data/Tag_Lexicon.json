@@ -107,6 +107,11 @@
 		"tag_count": 84,
 		"alias_count": 377,
 		"suffix_container_close": true,
+		"head_section_marker_owns_payload": {
+			"enabled": true,
+			"env": "TITLEPAYLOAD_OFF",
+			"_note": "ROUND 434 (the autonomous loop, session 36 Round 2, riding along with the ARFUN phase-tile dialect). When the FIRST alias hit of a fragment came from its HEAD (the text before the colon) and that tag is a SECTION_MARKER (`[Title: …]`, `[Overview: …]`, `[Introduction: …]`), the payload is the marker's own TEXT — the multi-pass never re-scans it for embedded aliases. ARFUN02's `[Title: Puoro me te Oro| Music and Sound]` had resolved to `audio` (the embedded alias 'sound', ELEMENT 6 outranking SECTION_MARKER 3), so the module lost its title and the first `[Title: Phase one]` tile label became the page's h1. Measured over every red span with a colon (3,283 of 159,171; _s36_r2_headpayload.cjs): 139 head-matched spans spawn a higher-ranked payload tag, 138 of them the DESIGNED activity + widget compound (`[interactive: carousel + captions]`) which this rule leaves untouched (their head is a CONTAINER_OPEN), and exactly one a SECTION_MARKER head — this one. Env TITLEPAYLOAD_OFF reverts (HEADPAYLOAD_OFF is round 303's accordion member rule — a different toggle; this one was renamed after the r434 OFF probe caught the collision on EXBP901 / XDLS902)."
+		},
 		"unresolved_marker_retag": {
 			"enabled": true,
 			"_note": "ROUND 266 (CHFUN01, 'SEPARATE UNBUILT INTERACTIVE'). A span that resolved NO tags at all but opens with a known quiz-family marker is RETAGGED as the listed canonical INTERACTIVE, so the writer's quiz opens its own bundle (an honest hand-off box) instead of leaking as an instruction note + loose body text. CONTAINMENT BY CONSTRUCTION: only zero-tag spans are touched — every span that already resolves anything ([dropquiz][autocheck] -> typing quiz on ~8 modules) is byte-unchanged. Measured live over all corpus WTs (the dropquiz census, r266): the zero-tag population is CHFUN01/04, HPRE203 x2, OSAI501, OSGM301, OSGM501, OSOH101, OSSM301 — their golds build dropDown/mcq quizzes at those spots. Env toggle: DROPQUIZ_OFF.",

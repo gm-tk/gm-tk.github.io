@@ -355,10 +355,24 @@ class TagNormaliser {
 		// 4. alias match with multi-match (container + child compounds)
 		const tags = [];
 		let remaining = f;
+		// ROUND 434 — a SECTION_MARKER matched on the HEAD ("[Title: Puoro me te Oro| Music and
+		// Sound]") owns its payload: the text after the colon is the marker's own title, never
+		// re-scanned for embedded aliases (that span had resolved to `audio` on the word "sound"
+		// and ARFUN02 lost its title). The activity + widget compound ("[interactive: carousel +
+		// captions]", a CONTAINER_OPEN head) keeps its multi-pass. Data Tag_Lexicon
+		// _meta.head_section_marker_owns_payload; env TITLEPAYLOAD_OFF (HEADPAYLOAD_OFF is round 303's accordion toggle — a different rule).
+		const hsp = this.#lexicon?._meta?.head_section_marker_owns_payload;
+		const hspOn = !!hsp && hsp.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[hsp.env || "TITLEPAYLOAD_OFF"]);
 		for (let pass = 0; pass < 3; pass++) {
 			const r = this.#matchOne(remaining);
 			if (!r) break;
 			tags.push({ tag: r.canon, directive: r.directive, how: r.how, fragment, alias: r.alias });
+			if (hspOn && pass === 0 && r.how === "head" && r.directive === "SECTION_MARKER") {
+				const colon = remaining.indexOf(":");
+				remaining = colon >= 0 ? Utils.StripChars(remaining.slice(colon + 1).replace(/\s+/g, " ").trim(), " .;,:|-") : "";
+				break;   // the payload is the marker's text — it becomes the remainder
+			}
 			// delete the matched alias text and retry on the remainder —
 			// if the alias text isn't literally present (denumbered match),
 			// there is nothing left to scan: stop (mirrors normaliser.py)
