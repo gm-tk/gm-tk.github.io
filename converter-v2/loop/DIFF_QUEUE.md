@@ -1,6 +1,6 @@
 # DIFF_QUEUE.md — the diff miner's ranked class queue (LOOP__Autonomous_Rounds.md §1d)
 
-**Produced:** 2026-09-22 19:24 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD 72fa0db; Claude corpus 545 dirs). **Population:** the skeleton gate's own — 2491 paired pages / 533 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 90.1 s.
+**Produced:** 2026-09-22 22:48 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD 1cc1b36; Claude corpus 545 dirs). **Population:** the skeleton gate's own — 2491 paired pages / 533 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 91.0 s.
 
 **What a row is.** One CLASS = (region, parent element, gold form, Claude form, direction) over every differing skeleton line of every paired page — the same lines, labels, widget collapse and difflib alignment the PRIMARY gate scores (each element its own line so it can be quoted). Direction: MISSING = gold has it, Claude lacks it; EXTRA = Claude has it, gold lacks it; SUBSTITUTED = same position, different tag / class / wrapper; MOVED = same text, different place. Consensus = of the gold pages in the group where the region exists, the share carrying the gold form (for EXTRA: the share NOT carrying Claude's form). Derivable = the gold line's text is in the module's parsed Writers Template (round-110 tolerance); structure-only differences are always derivable.
 
@@ -8,17 +8,17 @@
 
 ## Summary
 
-- differing skeleton lines: 280106 — by direction {'MISSING': 149964, 'SUBSTITUTED': 25414, 'EXTRA': 95863, 'MOVED': 8865}
-- by region: {'module-code': 23, 'title': 393, 'header': 6, 'module-menu': 14134, 'phases-nav': 74, 'crumbs': 133, 'footer': 2583, 'acks': 1386, 'activity': 101697, 'body': 158071, 'root': 1606}
-- classes: 9370 — CANDIDATE 198, below floor 8870, the rest below consensus / not derivable
+- differing skeleton lines: 279815 — by direction {'MISSING': 149885, 'SUBSTITUTED': 25346, 'EXTRA': 95738, 'MOVED': 8846}
+- by region: {'module-code': 23, 'title': 393, 'header': 6, 'module-menu': 13447, 'phases-nav': 72, 'crumbs': 104, 'footer': 2581, 'acks': 1386, 'activity': 101845, 'body': 158354, 'root': 1604}
+- classes: 9318 — CANDIDATE 198, below floor 8818, the rest below consensus / not derivable
 
 ## Completeness census — the repeating chrome (§1d item 4)
 
 | region | pages with region | gold items | gold items in WT | Claude items | derivable misses | pages with misses | modules with misses | status |
 |---|---|---|---|---|---|---|---|---|
-| module-menu | 1546 | 17500 | 16160 | 12679 | 5655 | 747 | 210 | CANDIDATE (verify by eye — text presence, not position) |
-| crumbs | 62 | 387 | 371 | 342 | 100 | 32 | 28 | CANDIDATE (verify by eye — text presence, not position) |
-| phases-nav | 90 | 356 | 323 | 305 | 71 | 33 | 25 | CANDIDATE (verify by eye — text presence, not position) |
+| module-menu | 1546 | 17500 | 16160 | 12050 | 5655 | 747 | 210 | CANDIDATE (verify by eye — text presence, not position) |
+| crumbs | 60 | 387 | 371 | 318 | 100 | 32 | 28 | CANDIDATE (verify by eye — text presence, not position) |
+| phases-nav | 90 | 356 | 323 | 313 | 63 | 31 | 23 | CANDIDATE (verify by eye — text presence, not position) |
 | footer | 15 | 74 | 58 | 0 | 58 | 15 | 7 | BELOW FLOOR |
 
 - **module-menu** by template: Fundamentals 12m/22p/89 misses; Inquiry 32m/54p/396 misses; Standard 166m/671p/5170 misses
@@ -26,12 +26,12 @@
   - MXFL202 MXFL202_2_0.html: gold 53 items (51 in WT) / Claude 0 — 51 derivable misses, e.g. h3 «Understand» · span «Understand»
   - MXFL202 MXFL202_4_0.html: gold 53 items (51 in WT) / Claude 0 — 51 derivable misses, e.g. h3 «Understand» · span «Understand»
   - MXFL202 MXFL202_6_0.html: gold 53 items (51 in WT) / Claude 0 — 51 derivable misses, e.g. h3 «Understand» · span «Understand»
-- **crumbs** by template: Fundamentals 0m/0p/0 misses; Inquiry 26m/26p/68 misses; Standard 2m/6p/32 misses
+- **crumbs** by template: Inquiry 26m/26p/68 misses; Standard 2m/6p/32 misses
   - BLL240 BLL240_1_0.html: gold 8 items (8 in WT) / Claude 0 — 8 derivable misses, e.g. p «Introduction» · p «wh»
   - CEDK501 CEDK501_0_0.html: gold 8 items (7 in WT) / Claude 0 — 7 derivable misses, e.g. p «Dream it, plan it, do it» · p «Costing it out: budgeting for success»
   - CEDT207 CEDT207_0_0.html: gold 7 items (6 in WT) / Claude 0 — 6 derivable misses, e.g. p «Introduction» · p «About Me»
   - CEDT301 CEDT301_6_0.html: gold 7 items (6 in WT) / Claude 0 — 6 derivable misses, e.g. p «Intro» · p «Mauri»
-- **phases-nav** by template: Fundamentals 24m/32p/67 misses; Standard 1m/1p/4 misses
+- **phases-nav** by template: Fundamentals 22m/30p/59 misses; Standard 1m/1p/4 misses
   - ANZHFUN05 ANZHFUN05_0_0.html: gold 4 items (4 in WT) / Claude 0 — 4 derivable misses, e.g. p «Phase 1» · p «Phase 2»
   - ARFUN04 ARFUN04_0_0.html: gold 4 items (4 in WT) / Claude 0 — 4 derivable misses, e.g. p «Phase 1» · p «Phase 2»
   - FRFUN06 FRFUN06_6_0.html: gold 6 items (6 in WT) / Claude 6 — 4 derivable misses, e.g. p «Handwriting è» · p «Handwriting ê â î ô û»
@@ -70,41 +70,40 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 | F20 | MISSING | `header:chip` | 3 | 3 | 0.97 | 0.97 | — | BELOW FLOOR |
 | F21 | EXTRA | `header:title-h1-count=3` | 1 | 1 | 0.00 | 1.00 | — | BELOW FLOOR |
 | F22 | EXTRA | `header:chip=lesson-number(00)` | 1 | 1 | 0.00 | 1.00 | — | BELOW FLOOR |
-| F23 | MISSING | `nav:phases` | 10 | 10 | 0.04 | 0.04 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
+| F23 | MISSING | `nav:phases` | 8 | 8 | 0.04 | 0.04 | — | BELOW FLOOR |
 | F24 | MISSING | `nav:crumbs` | 5 | 5 | 0.02 | 0.02 | — | BELOW FLOOR |
-| F25 | EXTRA | `nav:crumbs` | 2 | 2 | 0.02 | 0.98 | — | BELOW FLOOR |
-| F26 | MISSING | `footer:inside-body` | 186 | 138 | 0.07 | 0.07 | subject+ptype=1-10 Languages/overview c=0.62 n=10 | CANDIDATE |
-| F27 | EXTRA | `footer:links=prev-lesson,next-lesson,home-nav` | 283 | 128 | 0.60 | 0.40 | template+ptype=Standard/overview c=0.97 n=13 | CANDIDATE |
-| F28 | EXTRA | `footer:links=next-lesson,home-nav` | 112 | 110 | 0.12 | 0.88 | template=Fundamentals c=0.99 n=10 | CANDIDATE |
-| F29 | EXTRA | `footer:link=next-lesson` | 134 | 82 | 0.82 | 0.18 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
-| F30 | EXTRA | `footer:links=prev-lesson,home-nav` | 77 | 77 | 0.14 | 0.86 | subject=1-10 English c=0.90 n=12 | CANDIDATE |
-| F31 | MISSING | `footer:links=home-nav,next-lesson` | 70 | 69 | 0.03 | 0.03 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
-| F32 | MISSING | `footer:link=next-lesson` | 67 | 67 | 0.82 | 0.82 | template=Bilingual c=0.86 n=10 | CANDIDATE |
-| F33 | MISSING | `footer:links=prev-lesson,next-lesson,home-nav` | 68 | 65 | 0.60 | 0.60 | template+ptype=Bilingual/lesson c=0.82 n=10 | CANDIDATE |
-| F34 | MISSING | `footer:links=prev-lesson,home-nav` | 91 | 61 | 0.14 | 0.14 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
-| F35 | MISSING | `footer:links=home-nav,prev-lesson,next-lesson` | 122 | 57 | 0.05 | 0.05 | subject+ptype=1-10 Health and PE/overview c=0.71 n=12 | CANDIDATE |
-| F36 | EXTRA | `footer:link=prev-lesson` | 56 | 39 | 0.80 | 0.20 | template+ptype=Standard/overview c=0.97 n=13 | CANDIDATE |
-| F37 | MISSING | `footer:link=prev-lesson` | 31 | 30 | 0.80 | 0.80 | template+ptype=Standard/lesson c=0.98 n=14 | CANDIDATE |
-| F38 | MISSING | `footer:ul=footer-nav` | 87 | 29 | 0.83 | 0.83 | ptype=lesson c=0.88 n=19 | CANDIDATE |
-| F39 | MISSING | `footer:links=home-nav` | 36 | 23 | 0.04 | 0.04 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
-| F40 | EXTRA | `footer:ul=footer-nav inquiry-nav` | 78 | 22 | 0.14 | 0.85 | ptype=lesson c=0.89 n=19 | CANDIDATE |
-| F41 | MISSING | `footer:links=next-lesson,home-nav` | 20 | 20 | 0.12 | 0.12 | subject+ptype=NCEA1/overview c=0.80 n=10 | CANDIDATE |
-| F42 | EXTRA | `footer:ul=footer-nav` | 22 | 14 | 0.83 | 0.17 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
-| F43 | EXTRA | `footer:ul=footer-nav fundamentals-nav` | 16 | 9 | 0.02 | 0.98 | — | BELOW FLOOR |
-| F44 | MISSING | `footer:ul=footer-nav fundamentals-nav` | 8 | 8 | 0.02 | 0.02 | — | BELOW FLOOR |
-| F45 | MISSING | `footer:links=home-nav,prev-lesson` | 7 | 7 | 0.00 | 0.00 | — | BELOW FLOOR |
-| F46 | EXTRA | `footer:link=home-nav` | 11 | 5 | 1.00 | 0.00 | — | BELOW FLOOR |
-| F47 | MISSING | `footer:links=prev-lesson,home-nav,next-lesson` | 30 | 4 | 0.01 | 0.01 | — | BELOW FLOOR |
-| F48 | MISSING | `footer:link=other` | 20 | 4 | 0.01 | 0.01 | — | BELOW FLOOR |
-| F49 | MISSING | `footer:ul=footer-nav inquiry-nav` | 11 | 4 | 0.14 | 0.14 | — | BELOW FLOOR |
-| F50 | MISSING | `footer:links=prev-lesson,other,next-lesson,home-nav` | 14 | 3 | 0.01 | 0.01 | — | BELOW FLOOR |
-| F51 | EXTRA | `footer:present` | 9 | 3 | 1.00 | 0.00 | — | BELOW FLOOR |
-| F52 | MISSING | `footer:links=other,next-lesson,home-nav` | 3 | 3 | 0.00 | 0.00 | — | BELOW FLOOR |
-| F53 | EXTRA | `footer:links=home-nav` | 3 | 3 | 0.04 | 0.96 | — | BELOW FLOOR |
-| F54 | MISSING | `footer:links=prev-lesson,other,home-nav` | 2 | 2 | 0.00 | 0.00 | — | BELOW FLOOR |
-| F55 | MISSING | `footer:links=other,home-nav` | 1 | 1 | 0.00 | 0.00 | — | BELOW FLOOR |
-| F56 | MISSING | `footer:links=prev-lesson,next-lesson` | 1 | 1 | 0.00 | 0.00 | — | BELOW FLOOR |
-| F57 | MISSING | `footer:links=none` | 1 | 1 | 0.00 | 0.00 | — | BELOW FLOOR |
+| F25 | MISSING | `footer:inside-body` | 186 | 138 | 0.07 | 0.07 | subject+ptype=1-10 Languages/overview c=0.62 n=10 | CANDIDATE |
+| F26 | EXTRA | `footer:links=prev-lesson,next-lesson,home-nav` | 283 | 128 | 0.60 | 0.40 | template+ptype=Standard/overview c=0.97 n=13 | CANDIDATE |
+| F27 | EXTRA | `footer:links=next-lesson,home-nav` | 112 | 110 | 0.12 | 0.88 | template=Fundamentals c=0.99 n=10 | CANDIDATE |
+| F28 | EXTRA | `footer:link=next-lesson` | 134 | 82 | 0.82 | 0.18 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
+| F29 | EXTRA | `footer:links=prev-lesson,home-nav` | 77 | 77 | 0.14 | 0.86 | subject=1-10 English c=0.90 n=12 | CANDIDATE |
+| F30 | MISSING | `footer:links=home-nav,next-lesson` | 70 | 69 | 0.03 | 0.03 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
+| F31 | MISSING | `footer:link=next-lesson` | 67 | 67 | 0.82 | 0.82 | template=Bilingual c=0.86 n=10 | CANDIDATE |
+| F32 | MISSING | `footer:links=prev-lesson,next-lesson,home-nav` | 68 | 65 | 0.60 | 0.60 | template+ptype=Bilingual/lesson c=0.82 n=10 | CANDIDATE |
+| F33 | MISSING | `footer:links=prev-lesson,home-nav` | 91 | 61 | 0.14 | 0.14 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
+| F34 | MISSING | `footer:links=home-nav,prev-lesson,next-lesson` | 122 | 57 | 0.05 | 0.05 | subject+ptype=1-10 Health and PE/overview c=0.71 n=12 | CANDIDATE |
+| F35 | EXTRA | `footer:link=prev-lesson` | 56 | 39 | 0.80 | 0.20 | template+ptype=Standard/overview c=0.97 n=13 | CANDIDATE |
+| F36 | MISSING | `footer:link=prev-lesson` | 31 | 30 | 0.80 | 0.80 | template+ptype=Standard/lesson c=0.98 n=14 | CANDIDATE |
+| F37 | MISSING | `footer:ul=footer-nav` | 85 | 27 | 0.83 | 0.83 | ptype=lesson c=0.88 n=19 | CANDIDATE |
+| F38 | MISSING | `footer:links=home-nav` | 36 | 23 | 0.04 | 0.04 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
+| F39 | EXTRA | `footer:ul=footer-nav inquiry-nav` | 76 | 20 | 0.14 | 0.85 | ptype=lesson c=0.89 n=19 | CANDIDATE |
+| F40 | MISSING | `footer:links=next-lesson,home-nav` | 20 | 20 | 0.12 | 0.12 | subject+ptype=NCEA1/overview c=0.80 n=10 | CANDIDATE |
+| F41 | EXTRA | `footer:ul=footer-nav` | 22 | 14 | 0.83 | 0.17 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
+| F42 | EXTRA | `footer:ul=footer-nav fundamentals-nav` | 16 | 9 | 0.02 | 0.98 | — | BELOW FLOOR |
+| F43 | MISSING | `footer:ul=footer-nav fundamentals-nav` | 8 | 8 | 0.02 | 0.02 | — | BELOW FLOOR |
+| F44 | MISSING | `footer:links=home-nav,prev-lesson` | 7 | 7 | 0.00 | 0.00 | — | BELOW FLOOR |
+| F45 | EXTRA | `footer:link=home-nav` | 11 | 5 | 1.00 | 0.00 | — | BELOW FLOOR |
+| F46 | MISSING | `footer:links=prev-lesson,home-nav,next-lesson` | 30 | 4 | 0.01 | 0.01 | — | BELOW FLOOR |
+| F47 | MISSING | `footer:link=other` | 20 | 4 | 0.01 | 0.01 | — | BELOW FLOOR |
+| F48 | MISSING | `footer:ul=footer-nav inquiry-nav` | 11 | 4 | 0.14 | 0.14 | — | BELOW FLOOR |
+| F49 | MISSING | `footer:links=prev-lesson,other,next-lesson,home-nav` | 14 | 3 | 0.01 | 0.01 | — | BELOW FLOOR |
+| F50 | EXTRA | `footer:present` | 9 | 3 | 1.00 | 0.00 | — | BELOW FLOOR |
+| F51 | MISSING | `footer:links=other,next-lesson,home-nav` | 3 | 3 | 0.00 | 0.00 | — | BELOW FLOOR |
+| F52 | EXTRA | `footer:links=home-nav` | 3 | 3 | 0.04 | 0.96 | — | BELOW FLOOR |
+| F53 | MISSING | `footer:links=prev-lesson,other,home-nav` | 2 | 2 | 0.00 | 0.00 | — | BELOW FLOOR |
+| F54 | MISSING | `footer:links=other,home-nav` | 1 | 1 | 0.00 | 0.00 | — | BELOW FLOOR |
+| F55 | MISSING | `footer:links=prev-lesson,next-lesson` | 1 | 1 | 0.00 | 0.00 | — | BELOW FLOOR |
+| F56 | MISSING | `footer:links=none` | 1 | 1 | 0.00 | 0.00 | — | BELOW FLOOR |
 
 ### F1 · MISSING `header:title-h1-count=2` — CANDIDATE (pages 284 / modules 131)
 - by template+ptype: Standard/overview 57m/57p gold 0.64 Claude 0.53 c=0.64; Standard/lesson 40m/160p gold 0.12 Claude 0.03 c=0.12; Fundamentals/overview 29m/29p gold 0.69 Claude 0.38 c=0.69; Inquiry/overview 8m/8p gold 0.58 Claude 0.48 c=0.58; Bilingual/overview 6m/6p gold 1.00 Claude 0.70 c=1.00; Bilingual/lesson 6m/18p gold 1.00 Claude 0.70 c=1.00; Inquiry/lesson 3m/6p gold 0.14 Claude 0.02 c=0.14
@@ -186,7 +185,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 - **BLL173** BLL173_1_0.html ↔ BLL173-01.html: gold ['header:chip', 'header:chip=decimal-number', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=lesson-number', 'header:title-h1-count=1']
 - modules: BLL171, BLL172, BLL173, CEDR501, ENGJ101, ENGS101, ENO2060, MXDI102, PNR102, PNR104, PNR107, XDLS501, XLP01, XLP05, XTAS101, XTAS103
 
-### F26 · MISSING `footer:inside-body` — CANDIDATE (pages 186 / modules 138)
+### F25 · MISSING `footer:inside-body` — CANDIDATE (pages 186 / modules 138)
 - by template+ptype: Standard/lesson 75m/103p gold 0.06 Claude 0.00 c=0.06; Standard/overview 47m/47p gold 0.13 Claude 0.00 c=0.13; Fundamentals/overview 19m/19p gold 0.23 Claude 0.00 c=0.23; Inquiry/overview 10m/10p gold 0.17 Claude 0.00 c=0.17; Inquiry/lesson 2m/2p gold 0.04 Claude 0.00 c=0.04; Fundamentals/lesson 2m/3p gold 0.08 Claude 0.00 c=0.08; Bilingual/lesson 1m/1p gold 0.02 Claude 0.00 c=0.02; Bilingual/overview 1m/1p gold 0.05 Claude 0.00 c=0.05
 - by subject: 1-10 Blended Literacy 35m/46p gold 0.14 Claude 0.00 c=0.14; Leaving to Learn 20m/27p gold 0.11 Claude 0.00 c=0.11; 1-10 English 16m/22p gold 0.06 Claude 0.00 c=0.06; 1-10 Mathematics 15m/28p gold 0.08 Claude 0.00 c=0.08; NCEA1 12m/18p gold 0.03 Claude 0.00 c=0.03; 1-10 Languages 11m/12p gold 0.18 Claude 0.00 c=0.18; 1-10 Social Science 5m/5p gold 0.08 Claude 0.00 c=0.08; Te ara Whakapuawa -Wellbeing 5m/5p gold 0.39 Claude 0.00 c=0.39
 - **ANZH101** ANZH101_0_0.html ↔ ANZH101_0.0.html: gold ['footer:inside-body', 'footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav']
@@ -194,7 +193,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 - **ANZH302** ANZH302_3_0.html ↔ ANZH302_3_0.html: gold ['footer:inside-body', 'footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=prev-lesson,next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=prev-lesson,next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav']
 - modules: ANZH101, ANZH103, ANZH302, ARFUN02, ARFUN03, ARFUN04, ARFUN05, BLL113, BLL120, BLL122, BLL124, BLL125, BLL130, BLL145, BLL154, BLL156, BLL162, BLL164, BLL165, BLL166, BLL171, BLL173, BLL211, BLL212 …
 
-### F27 · EXTRA `footer:links=prev-lesson,next-lesson,home-nav` — CANDIDATE (pages 283 / modules 128)
+### F26 · EXTRA `footer:links=prev-lesson,next-lesson,home-nav` — CANDIDATE (pages 283 / modules 128)
 - by template+ptype: Standard/lesson 71m/199p gold 0.74 Claude 0.83 c=0.26; Inquiry/overview 32m/32p gold 0.13 Claude 0.67 c=0.87; Fundamentals/overview 13m/13p gold 0.05 Claude 0.20 c=0.95; Standard/overview 13m/13p gold 0.03 Claude 0.05 c=0.97; Inquiry/lesson 6m/16p gold 0.53 Claude 0.84 c=0.47; Bilingual/lesson 2m/2p gold 0.82 Claude 0.69 c=0.18; Fundamentals/lesson 1m/8p gold 0.69 Claude 0.89 c=0.31
 - by subject: NCEA1 33m/57p gold 0.74 Claude 0.82 c=0.26; ConnectED 17m/23p gold 0.64 Claude 0.82 c=0.36; 1-10 Blended Literacy 14m/17p gold 0.42 Claude 0.42 c=0.58; 1-10 Health and PE 12m/12p gold 0.56 Claude 0.89 c=0.44; Leaving to Learn 10m/39p gold 0.47 Claude 0.62 c=0.53; 1-10 English 9m/35p gold 0.64 Claude 0.72 c=0.36; 1-10 Mathematics 9m/52p gold 0.62 Claude 0.77 c=0.38; Te ara Whakapuawa -Wellbeing 6m/6p gold 0.00 Claude 0.46 c=1.00
 - **AGH1008** AGH1008_8_0.html ↔ AGH1008.08.html: gold ['footer:link=home-nav', 'footer:link=prev-lesson', 'footer:links=prev-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=prev-lesson,next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav']
@@ -202,7 +201,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 - **ANZH404** ANZH404_1_0.html ↔ ANZH404_1.0.html: gold ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=prev-lesson,home-nav,next-lesson', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=prev-lesson,next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav']
 - modules: AGH1008, ANZH401, ANZH404, ANZHFUN05, ART1002, BLL120, BLL140, BLL150, BLL170, BLL175, BLL210, BLL220, BLL230, BLL240, BLL250, BLL260, BLL270, BLLR202, BLLR203, CBI1004, CBI1005, CBI1008, CBI1009, CEDK101 …
 
-### F28 · EXTRA `footer:links=next-lesson,home-nav` — CANDIDATE (pages 112 / modules 110)
+### F27 · EXTRA `footer:links=next-lesson,home-nav` — CANDIDATE (pages 112 / modules 110)
 - by template+ptype: Standard/overview 75m/75p gold 0.77 Claude 0.95 c=0.23; Standard/lesson 14m/15p gold 0.01 Claude 0.01 c=0.99; Fundamentals/overview 10m/10p gold 0.01 Claude 0.14 c=0.99; Inquiry/overview 9m/9p gold 0.02 Claude 0.15 c=0.98; Bilingual/overview 3m/3p gold 0.85 Claude 1.00 c=0.15
 - by subject: Leaving to Learn 39m/40p gold 0.08 Claude 0.25 c=0.92; NCEA1 14m/15p gold 0.11 Claude 0.12 c=0.89; 1-10 Mathematics 13m/13p gold 0.07 Claude 0.11 c=0.93; Online Safety (OS9000) 9m/9p gold 0.15 Claude 0.21 c=0.85; 1-10 English 8m/8p gold 0.11 Claude 0.13 c=0.89; 1-10 Blended Literacy 6m/6p gold 0.29 Claude 0.29 c=0.71; ConnectED 6m/6p gold 0.06 Claude 0.10 c=0.94; 1-10 Social Science 6m/6p gold 0.13 Claude 0.23 c=0.87
 - **ANZH401** ANZH401_0_0.html ↔ ANZH401_0.0.html: gold ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=home-nav,next-lesson', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav']
@@ -210,7 +209,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 - **ART1004** ART1004_0_0.html ↔ ART1004_4.0.html: gold ['footer:link=home-nav', 'footer:link=prev-lesson', 'footer:links=prev-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav']
 - modules: ANZH401, ANZH404, ART1004, ART1005, BLL114, BLL116, BLL174, BLL175, BLL176, BLL177, CEDO301, CEDT102, CEDT104, CEDT207, CEDT208, CEDT301, COM1002, ENG1004, ENGFUN02, ENGI101, ENGI102, ENGJ101, ENGJ102, ENGJ301 …
 
-### F30 · EXTRA `footer:links=prev-lesson,home-nav` — CANDIDATE (pages 77 / modules 77)
+### F29 · EXTRA `footer:links=prev-lesson,home-nav` — CANDIDATE (pages 77 / modules 77)
 - by template+ptype: Standard/lesson 61m/61p gold 0.17 Claude 0.16 c=0.83; Bilingual/lesson 11m/11p gold 0.15 Claude 0.31 c=0.85; Inquiry/lesson 3m/3p gold 0.22 Claude 0.16 c=0.78; Fundamentals/lesson 2m/2p gold 0.06 Claude 0.11 c=0.94
 - by subject: 1-10 Blended Literacy 20m/20p gold 0.23 Claude 0.29 c=0.77; 1-10 English 12m/12p gold 0.10 Claude 0.13 c=0.90; Te Marautanga o Aotearoa TMoA 11m/11p gold 0.11 Claude 0.23 c=0.89; NCEA1 8m/8p gold 0.11 Claude 0.06 c=0.89; 1-10 Mathematics 8m/8p gold 0.09 Claude 0.11 c=0.91; ANZH 5m/5p gold 0.08 Claude 0.13 c=0.92; Leaving to Learn 4m/4p gold 0.31 Claude 0.13 c=0.69; ConnectED 3m/3p gold 0.05 Claude 0.07 c=0.95
 - **AGH1004** AGH1004_6_0.html ↔ AGH1004.07.html: gold ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=prev-lesson,next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=prev-lesson', 'footer:links=prev-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav']
@@ -218,7 +217,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 - **ANZH103** ANZH103_1_0.html ↔ ANZH103_3_0.html: gold ['footer:inside-body', 'footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=prev-lesson,next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=prev-lesson', 'footer:links=prev-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav']
 - modules: AGH1004, AGH1009, ANZH103, ANZH205, ANZH301, ANZH302, ANZH303, BLL141, BLL146, BLL151, BLL157, BLL167, BLL171, BLL176, BLL177, BLL224, BLL225, BLL226, BLL227, BLL231, BLL234, BLL236, BLL237, BLL266 …
 
-### F32 · MISSING `footer:link=next-lesson` — CANDIDATE (pages 67 / modules 67)
+### F31 · MISSING `footer:link=next-lesson` — CANDIDATE (pages 67 / modules 67)
 - by template+ptype: Standard/lesson 52m/52p gold 0.82 Claude 0.84 c=0.82; Bilingual/lesson 10m/10p gold 0.82 Claude 0.69 c=0.82; Inquiry/lesson 2m/2p gold 0.69 Claude 0.84 c=0.69; Inquiry/overview 2m/2p gold 0.77 Claude 0.85 c=0.77; Fundamentals/lesson 1m/1p gold 0.69 Claude 0.89 c=0.69
 - by subject: 1-10 Blended Literacy 19m/19p gold 0.75 Claude 0.71 c=0.75; Te Marautanga o Aotearoa TMoA 10m/10p gold 0.86 Claude 0.77 c=0.86; 1-10 English 8m/8p gold 0.86 Claude 0.85 c=0.86; 1-10 Mathematics 7m/7p gold 0.90 Claude 0.88 c=0.90; NCEA1 6m/6p gold 0.88 Claude 0.94 c=0.88; ANZH 5m/5p gold 0.91 Claude 0.87 c=0.91; ConnectED 3m/3p gold 0.93 Claude 0.93 c=0.93; Leaving to Learn 3m/3p gold 0.64 Claude 0.87 c=0.64
 - **AGH1004** AGH1004_6_0.html ↔ AGH1004.07.html: gold ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=prev-lesson,next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=prev-lesson', 'footer:links=prev-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav']
@@ -226,7 +225,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 - **ANZH103** ANZH103_1_0.html ↔ ANZH103_3_0.html: gold ['footer:inside-body', 'footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=prev-lesson,next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=prev-lesson', 'footer:links=prev-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav']
 - modules: AGH1004, AGH1009, ANZH103, ANZH205, ANZH301, ANZH302, ANZH303, BLL141, BLL146, BLL151, BLL157, BLL167, BLL171, BLL176, BLL177, BLL224, BLL225, BLL226, BLL227, BLL231, BLL234, BLL236, BLL237, BLL266 …
 
-### F33 · MISSING `footer:links=prev-lesson,next-lesson,home-nav` — CANDIDATE (pages 68 / modules 65)
+### F32 · MISSING `footer:links=prev-lesson,next-lesson,home-nav` — CANDIDATE (pages 68 / modules 65)
 - by template+ptype: Standard/lesson 47m/47p gold 0.74 Claude 0.83 c=0.74; Bilingual/lesson 10m/10p gold 0.82 Claude 0.69 c=0.82; Standard/overview 5m/5p gold 0.03 Claude 0.05 c=0.03; Bilingual/overview 3m/3p gold 0.15 Claude 0.00 c=0.15; Inquiry/lesson 1m/1p gold 0.53 Claude 0.84 c=0.53; Fundamentals/lesson 1m/1p gold 0.69 Claude 0.89 c=0.69; Fundamentals/overview 1m/1p gold 0.05 Claude 0.20 c=0.05
 - by subject: 1-10 Blended Literacy 17m/17p gold 0.42 Claude 0.42 c=0.42; NCEA1 11m/12p gold 0.74 Claude 0.82 c=0.74; Te Marautanga o Aotearoa TMoA 11m/13p gold 0.65 Claude 0.52 c=0.65; 1-10 English 7m/7p gold 0.64 Claude 0.72 c=0.64; ANZH 5m/5p gold 0.61 Claude 0.74 c=0.61; Leaving to Learn 4m/4p gold 0.47 Claude 0.62 c=0.47; 1-10 Mathematics 3m/3p gold 0.62 Claude 0.77 c=0.62; ConnectED 2m/2p gold 0.64 Claude 0.82 c=0.64
 - **AGH1004** AGH1004_6_0.html ↔ AGH1004.07.html: gold ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=prev-lesson,next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=prev-lesson', 'footer:links=prev-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav']
@@ -234,7 +233,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 - **ANZH103** ANZH103_1_0.html ↔ ANZH103_3_0.html: gold ['footer:inside-body', 'footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=prev-lesson,next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=prev-lesson', 'footer:links=prev-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav']
 - modules: AGH1004, AGH1009, ANZH103, ANZH205, ANZH301, ANZH302, ANZH303, ART1005, BLL141, BLL146, BLL151, BLL157, BLL167, BLL171, BLL224, BLL225, BLL226, BLL227, BLL231, BLL234, BLL236, BLL237, BLL266, BLL274 …
 
-### F35 · MISSING `footer:links=home-nav,prev-lesson,next-lesson` — CANDIDATE (pages 122 / modules 57)
+### F34 · MISSING `footer:links=home-nav,prev-lesson,next-lesson` — CANDIDATE (pages 122 / modules 57)
 - by template+ptype: Inquiry/overview 32m/32p gold 0.57 Claude 0.03 c=0.57; Fundamentals/overview 12m/12p gold 0.15 Claude 0.00 c=0.15; Standard/lesson 11m/76p gold 0.04 Claude 0.00 c=0.04; Inquiry/lesson 2m/2p gold 0.04 Claude 0.00 c=0.04
 - by subject: ConnectED 17m/17p gold 0.17 Claude 0.02 c=0.17; 1-10 Health and PE 12m/12p gold 0.33 Claude 0.00 c=0.33; 1-10 Blended Literacy 8m/8p gold 0.02 Claude 0.00 c=0.02; Te ara Whakapuawa -Wellbeing 8m/8p gold 0.61 Claude 0.00 c=0.61; 1-10 English 5m/32p gold 0.09 Claude 0.00 c=0.09; 1-10 Mathematics 5m/40p gold 0.12 Claude 0.00 c=0.12; EXPlore 1m/1p gold 0.07 Claude 0.00 c=0.07; Online Safety (OS9000) 1m/4p gold 0.03 Claude 0.00 c=0.03
 - **BLL170** BLL170_0_0.html ↔ BLL170.html: gold ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=home-nav,prev-lesson,next-lesson', 'footer:present', 'footer:ul=footer-nav inquiry-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=prev-lesson,next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav inquiry-nav']
@@ -242,7 +241,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 - **BLL220** BLL220_0_0.html ↔ BLL220.html: gold ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=home-nav,prev-lesson,next-lesson', 'footer:present', 'footer:ul=footer-nav inquiry-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=prev-lesson,next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav inquiry-nav']
 - modules: BLL170, BLL210, BLL220, BLL230, BLL240, BLL250, BLL260, BLL270, CEDK101, CEDK102, CEDK401, CEDK501, CEDO102, CEDO201, CEDO202, CEDO204, CEDO402, CEDR101, CEDR204, CEDT102, CEDT104, CEDT207, CEDT208, CEDT301 …
 
-### F36 · EXTRA `footer:link=prev-lesson` — CANDIDATE (pages 56 / modules 39)
+### F35 · EXTRA `footer:link=prev-lesson` — CANDIDATE (pages 56 / modules 39)
 - by template+ptype: Standard/lesson 15m/20p gold 0.98 Claude 0.98 c=0.02; Standard/overview 13m/13p gold 0.03 Claude 0.05 c=0.97; Inquiry/overview 5m/5p gold 0.72 Claude 0.70 c=0.28; Inquiry/lesson 3m/6p gold 0.88 Claude 1.00 c=0.12; Fundamentals/overview 1m/1p gold 0.20 Claude 0.20 c=0.80; Fundamentals/lesson 1m/9p gold 0.75 Claude 1.00 c=0.25; Bilingual/lesson 1m/2p gold 0.97 Claude 1.00 c=0.03
 - by subject: NCEA1 14m/18p gold 0.86 Claude 0.88 c=0.14; 1-10 Blended Literacy 10m/10p gold 0.68 Claude 0.71 c=0.32; ConnectED 3m/3p gold 0.91 Claude 0.90 c=0.09; EXPlore 3m/3p gold 0.73 Claude 0.93 c=0.27; 1-10 Mathematics 2m/2p gold 0.88 Claude 0.88 c=0.12; Leaving to Learn 2m/6p gold 0.78 Claude 0.75 c=0.22; ANZH 1m/1p gold 0.86 Claude 0.87 c=0.14; 1-10 English 1m/1p gold 0.84 Claude 0.85 c=0.15
 - **ANZHFUN05** ANZHFUN05_0_0.html ↔ ANZHFUN05_0_0.html: gold ['footer:link=home-nav', 'footer:links=home-nav', 'footer:present', 'footer:ul=footer-nav fundamentals-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=prev-lesson,next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav fundamentals-nav']
@@ -250,7 +249,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 - **BLL140** BLL140_0_0.html ↔ BLL140.html: gold ['footer:link=home-nav', 'footer:links=home-nav', 'footer:present', 'footer:ul=footer-nav inquiry-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=prev-lesson,next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav inquiry-nav']
 - modules: ANZHFUN05, BLL120, BLL140, BLL150, BLL175, BLL176, BLL177, BLL240, BLL271, BLLR202, BLLR203, CBI1005, CBI1008, CBI1009, CEDK501, CEDR401, CEDT207, CHI1003, CHI1004, CHI1005, COM1005, ENGFUN02, ENGR102, EXBP901 …
 
-### F37 · MISSING `footer:link=prev-lesson` — CANDIDATE (pages 31 / modules 30)
+### F36 · MISSING `footer:link=prev-lesson` — CANDIDATE (pages 31 / modules 30)
 - by template+ptype: Standard/lesson 14m/14p gold 0.98 Claude 0.98 c=0.98; Standard/overview 7m/7p gold 0.03 Claude 0.05 c=0.03; Inquiry/overview 6m/6p gold 0.72 Claude 0.70 c=0.72; Bilingual/overview 3m/3p gold 0.15 Claude 0.00 c=0.15; Fundamentals/overview 1m/1p gold 0.20 Claude 0.20 c=0.20
 - by subject: Leaving to Learn 13m/13p gold 0.78 Claude 0.75 c=0.78; NCEA1 6m/7p gold 0.86 Claude 0.88 c=0.86; ConnectED 4m/4p gold 0.91 Claude 0.90 c=0.91; Te Marautanga o Aotearoa TMoA 3m/3p gold 0.77 Claude 0.75 c=0.77; Te ara Whakapuawa -Wellbeing 2m/2p gold 0.61 Claude 0.46 c=0.61; 1-10 Mathematics 1m/1p gold 0.88 Claude 0.88 c=0.88; 1-10 Social Science 1m/1p gold 0.77 Claude 0.77 c=0.77
 - **ART1004** ART1004_0_0.html ↔ ART1004_4.0.html: gold ['footer:link=home-nav', 'footer:link=prev-lesson', 'footer:links=prev-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav']
@@ -258,23 +257,23 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 - **CEDT102** CEDT102_0_0.html ↔ CEDT102.html: gold ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=home-nav,prev-lesson,next-lesson', 'footer:present', 'footer:ul=footer-nav inquiry-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav inquiry-nav']
 - modules: ART1004, ART1005, CEDT102, CEDT104, CEDT207, CEDT208, COM1002, ENG1004, GER1002, MXFL101, PES1002, SSFUN02, TRR112, TRR113, TRR116, TWHK902, TWHK907, XGF9001, XOTPB08, XOTPB09, XOTPB10, XOTPB11, XOTPB12, XOTPB13 …
 
-### F38 · MISSING `footer:ul=footer-nav` — CANDIDATE (pages 87 / modules 29)
-- by template+ptype: Standard/lesson 16m/46p gold 0.88 Claude 0.86 c=0.88; Standard/overview 12m/12p gold 0.74 Claude 0.71 c=0.74; Fundamentals/overview 9m/9p gold 0.48 Claude 0.46 c=0.48; Inquiry/overview 3m/3p gold 0.12 Claude 0.08 c=0.12; Inquiry/lesson 3m/17p gold 0.96 Claude 0.61 c=0.96
-- by subject: 1-10 Blended Literacy 13m/44p gold 0.14 Claude 0.00 c=0.14; 1-10 Technology 5m/5p gold 0.88 Claude 0.68 c=0.88; ConnectED 4m/21p gold 0.81 Claude 0.64 c=0.81; EXPlore 2m/5p gold 0.53 Claude 0.27 c=0.53; 1-10 Mathematics 2m/2p gold 0.98 Claude 0.99 c=0.98; 1-10 Health and PE 1m/1p gold 0.69 Claude 0.67 c=0.69; NCEA1 1m/8p gold 1.00 Claude 0.98 c=1.00; 1-10 Writing (MiW) 1m/1p gold 0.62 Claude 0.71 c=0.62
+### F37 · MISSING `footer:ul=footer-nav` — CANDIDATE (pages 85 / modules 27)
+- by template+ptype: Standard/lesson 16m/46p gold 0.88 Claude 0.86 c=0.88; Standard/overview 12m/12p gold 0.74 Claude 0.71 c=0.74; Fundamentals/overview 7m/7p gold 0.48 Claude 0.48 c=0.48; Inquiry/overview 3m/3p gold 0.12 Claude 0.08 c=0.12; Inquiry/lesson 3m/17p gold 0.96 Claude 0.61 c=0.96
+- by subject: 1-10 Blended Literacy 13m/44p gold 0.14 Claude 0.00 c=0.14; 1-10 Technology 5m/5p gold 0.88 Claude 0.68 c=0.88; ConnectED 4m/21p gold 0.81 Claude 0.64 c=0.81; EXPlore 2m/5p gold 0.53 Claude 0.27 c=0.53; 1-10 Health and PE 1m/1p gold 0.69 Claude 0.67 c=0.69; NCEA1 1m/8p gold 1.00 Claude 0.98 c=1.00; 1-10 Writing (MiW) 1m/1p gold 0.62 Claude 0.71 c=0.62
 - **BLL121** BLL121_0_0.html ↔ BLL121-01.html: gold ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav inquiry-nav']
 - **BLL172** BLL172_0_0.html ↔ BLL172-00.html: gold ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav inquiry-nav']
 - **BLL174** BLL174_0_0.html ↔ BLL174-00.html: gold ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=home-nav,next-lesson', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav inquiry-nav']
-- modules: BLL121, BLL172, BLL174, BLL175, BLL176, BLL177, BLL236, BLL237, BLL240, BLL241, BLL243, BLL244, BLL245, CEDR501, CEDT207, CEDT301, CEDW101, EXBP901, EXIP901, HPFUN301, MXFUN02, MXFUN03, MXS1004, TEFUN01 …
+- modules: BLL121, BLL172, BLL174, BLL175, BLL176, BLL177, BLL236, BLL237, BLL240, BLL241, BLL243, BLL244, BLL245, CEDR501, CEDT207, CEDT301, CEDW101, EXBP901, EXIP901, HPFUN301, MXS1004, TEFUN01, TEFUN02, TEFUN05 …
 
-### F40 · EXTRA `footer:ul=footer-nav inquiry-nav` — CANDIDATE (pages 78 / modules 22)
-- by template+ptype: Standard/lesson 16m/43p gold 0.12 Claude 0.14 c=0.88; Standard/overview 13m/13p gold 0.26 Claude 0.29 c=0.74; Inquiry/overview 3m/3p gold 0.88 Claude 0.92 c=0.12; Inquiry/lesson 3m/17p gold 0.04 Claude 0.39 c=0.96; Fundamentals/overview 2m/2p gold 0.00 Claude 0.03 c=1.00
-- by subject: 1-10 Blended Literacy 13m/44p gold 0.86 Claude 1.00 c=0.14; ConnectED 4m/21p gold 0.19 Claude 0.36 c=0.81; EXPlore 2m/5p gold 0.47 Claude 0.73 c=0.53; 1-10 Mathematics 2m/2p gold 0.02 Claude 0.01 c=0.98; Leaving to Learn 1m/6p gold 0.12 Claude 0.14 c=0.88
+### F39 · EXTRA `footer:ul=footer-nav inquiry-nav` — CANDIDATE (pages 76 / modules 20)
+- by template+ptype: Standard/lesson 16m/43p gold 0.12 Claude 0.14 c=0.88; Standard/overview 13m/13p gold 0.26 Claude 0.29 c=0.74; Inquiry/overview 3m/3p gold 0.88 Claude 0.92 c=0.12; Inquiry/lesson 3m/17p gold 0.04 Claude 0.39 c=0.96
+- by subject: 1-10 Blended Literacy 13m/44p gold 0.86 Claude 1.00 c=0.14; ConnectED 4m/21p gold 0.19 Claude 0.36 c=0.81; EXPlore 2m/5p gold 0.47 Claude 0.73 c=0.53; Leaving to Learn 1m/6p gold 0.12 Claude 0.14 c=0.88
 - **BLL121** BLL121_0_0.html ↔ BLL121-01.html: gold ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav inquiry-nav']
 - **BLL172** BLL172_0_0.html ↔ BLL172-00.html: gold ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav inquiry-nav']
 - **BLL174** BLL174_0_0.html ↔ BLL174-00.html: gold ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=home-nav,next-lesson', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav inquiry-nav']
-- modules: BLL121, BLL172, BLL174, BLL175, BLL176, BLL177, BLL236, BLL237, BLL240, BLL241, BLL243, BLL244, BLL245, CEDR501, CEDT207, CEDT301, CEDW101, EXBP901, EXIP901, MXFUN02, MXFUN03, XWHA02
+- modules: BLL121, BLL172, BLL174, BLL175, BLL176, BLL177, BLL236, BLL237, BLL240, BLL241, BLL243, BLL244, BLL245, CEDR501, CEDT207, CEDT301, CEDW101, EXBP901, EXIP901, XWHA02
 
-### F41 · MISSING `footer:links=next-lesson,home-nav` — CANDIDATE (pages 20 / modules 20)
+### F40 · MISSING `footer:links=next-lesson,home-nav` — CANDIDATE (pages 20 / modules 20)
 - by template+ptype: Standard/overview 12m/12p gold 0.77 Claude 0.95 c=0.77; Standard/lesson 5m/5p gold 0.01 Claude 0.01 c=0.01; Inquiry/lesson 2m/2p gold 0.04 Claude 0.00 c=0.04; Inquiry/overview 1m/1p gold 0.02 Claude 0.15 c=0.02
 - by subject: NCEA1 11m/11p gold 0.11 Claude 0.12 c=0.11; 1-10 Blended Literacy 6m/6p gold 0.29 Claude 0.29 c=0.29; ConnectED 2m/2p gold 0.06 Claude 0.10 c=0.06; 1-10 English 1m/1p gold 0.11 Claude 0.13 c=0.11
 - **BLL175** BLL175_1_1.html ↔ BLL175-02.html: gold ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:links=next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav'] · Claude ['footer:link=home-nav', 'footer:link=next-lesson', 'footer:link=prev-lesson', 'footer:links=prev-lesson,next-lesson,home-nav', 'footer:present', 'footer:ul=footer-nav inquiry-nav']
@@ -321,8 +320,8 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 | 32 | header | MISSING | `div#header` | `p` | `—` | 3 | 1 | 0.00 of 2491 | — | 0.00 | yes | BELOW FLOOR |
 | 33 | header | SUBSTITUTED | `div#header` | `div.titlebar` | `h1>span` | 2 | 1 | 0.00 of 2491 | — | structure | yes | BELOW FLOOR |
 | 34 | header | SUBSTITUTED | `div#header` | `div#header` | `div#module-code` | 1 | 1 | 0.00 of 2491 | — | structure | yes | BELOW FLOOR |
-| 35 | module-menu | MISSING | `ul` | `li` | `—` | 138 | 86 | 0.10 of 2491 | — | 0.85 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
-| 36 | module-menu | SUBSTITUTED | `div.col-12.col-md-6.paddingR` | `p` | `h5` | 86 | 86 | 0.06 of 2491 | subject+ptype=1-10 Health and PE/overview c=0.82 n=14 | structure | yes | CANDIDATE |
+| 35 | module-menu | SUBSTITUTED | `div.col-12.col-md-6.paddingR` | `p` | `h5` | 86 | 86 | 0.06 of 2491 | subject+ptype=1-10 Health and PE/overview c=0.82 n=14 | structure | yes | CANDIDATE |
+| 36 | module-menu | MISSING | `ul` | `li` | `—` | 136 | 84 | 0.10 of 2491 | — | 0.84 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
 | 37 | module-menu | MISSING | `div.col-12.col-md-8` | `ul` | `—` | 194 | 53 | 0.29 of 2491 | subject+ptype=1-10 English/lesson c=0.72 n=10 | 0.91 | — | CANDIDATE |
 | 38 | module-menu | MISSING | `div.col-12.col-md-8` | `h5` | `—` | 197 | 48 | 0.24 of 2491 | subject+ptype=1-10 English/lesson c=0.64 n=13 | 0.83 | — | CANDIDATE |
 | 39 | module-menu | MISSING | `div.col-12.col-md-8` | `p` | `—` | 209 | 46 | 0.09 of 2491 | — | 0.83 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
@@ -354,11 +353,11 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 | 65 | module-menu | SUBSTITUTED | `div.col-12.col-md-6.paddingR` | `h4>span` | `h5>span` | 16 | 16 | 0.03 of 2491 | — | structure | yes | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
 | 66 | module-menu | EXTRA | `div.row` | `—` | `div.col-12.col-md-8` | 97 | 15 | 0.67 of 2491 | subject=1-10 Mathematics c=0.77 n=12 | structure | — | CANDIDATE |
 | 67 | module-menu | MISSING | `div.col-12.col-md-6.offset-md-0` | `ul` | `—` | 79 | 15 | 0.02 of 2491 | — | 0.90 | yes | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
-| 68 | module-menu | EXTRA | `div.row` | `—` | `div.col-12.col-md-6.offset-md-0` | 31 | 15 | 0.95 of 2491 | era=Refresh c=0.95 n=15 | structure | yes | CANDIDATE |
-| 69 | module-menu | SUBSTITUTED | `div.col-12.col-md-6.paddingR` | `ul` | `p>b` | 15 | 15 | 0.06 of 2491 | subject+ptype=1-10 Blended Literacy/overview c=0.71 n=14 | structure | yes | CANDIDATE |
-| 70 | module-menu | EXTRA | `div.row` | `—` | `div.col-12.col-md-12.paddingR` | 16 | 14 | 0.96 of 2491 | template=Standard c=0.96 n=14 | structure | yes | CANDIDATE |
-| 71 | module-menu | MISSING | `div#module-menu-content.moduleMenu` | `ul` | `—` | 88 | 13 | 0.04 of 2491 | — | 0.91 | yes | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
-| 72 | module-menu | SUBSTITUTED | `div#module-menu-content.moduleMenu` | `h5` | `div.row` | 82 | 13 | 0.03 of 2491 | — | structure | yes | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
+| 68 | module-menu | SUBSTITUTED | `div.col-12.col-md-6.paddingR` | `ul` | `p>b` | 15 | 15 | 0.06 of 2491 | subject+ptype=1-10 Blended Literacy/overview c=0.71 n=14 | structure | yes | CANDIDATE |
+| 69 | module-menu | EXTRA | `div.row` | `—` | `div.col-12.col-md-12.paddingR` | 16 | 14 | 0.96 of 2491 | template=Standard c=0.96 n=14 | structure | yes | CANDIDATE |
+| 70 | module-menu | MISSING | `div#module-menu-content.moduleMenu` | `ul` | `—` | 88 | 13 | 0.04 of 2491 | — | 0.91 | yes | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
+| 71 | module-menu | SUBSTITUTED | `div#module-menu-content.moduleMenu` | `h5` | `div.row` | 82 | 13 | 0.03 of 2491 | — | structure | yes | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
+| 72 | module-menu | EXTRA | `div.row` | `—` | `div.col-12.col-md-6.offset-md-0` | 29 | 13 | 0.95 of 2491 | era=Refresh c=0.95 n=13 | structure | yes | CANDIDATE |
 | 73 | module-menu | EXTRA | `div.col-12.col-md-6.paddingL` | `—` | `h5` | 13 | 13 | 1.00 of 2491 | era=Refresh c=1.00 n=13 | structure | yes | CANDIDATE |
 | 74 | module-menu | SUBSTITUTED | `div#module-menu-content.moduleMenu` | `div.item` | `div.row` | 82 | 12 | 0.03 of 2491 | — | structure | yes | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
 | 75 | module-menu | SUBSTITUTED | `div.row` | `div.col-12.col-md-6.offset-md-0` | `div.col-12.col-md-8` | 75 | 12 | 0.05 of 2491 | — | structure | yes | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
@@ -386,177 +385,177 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 | 97 | module-menu | MISSING | `div.row` | `div.col-12.col-md-6.paddingR` | `—` | 12 | 8 | 0.07 of 2491 | — | 1.00 | yes | BELOW FLOOR |
 | 98 | module-menu | SUBSTITUTED | `div.col-12.col-md-6.offset-md-0` | `h3>span` | `h4>span` | 11 | 8 | 0.04 of 2491 | — | structure | yes | BELOW FLOOR |
 | 99 | module-menu | EXTRA | `div.col-12.col-md-6.paddingR` | `—` | `ul` | 8 | 8 | 1.00 of 2491 | — | structure | yes | BELOW FLOOR |
-| 100 | module-menu | SUBSTITUTED | `div.col-12.col-md-6.offset-md-0.paddingR` | `p` | `h5` | 8 | 8 | 0.01 of 2491 | — | structure | yes | BELOW FLOOR |
-| 432 | crumbs | MISSING | `div.crumbs` | `div` | `—` | 17 | 14 | 0.02 of 2484 | template+ptype=Inquiry/overview c=0.62 n=10 | 0.93 | yes | CANDIDATE |
-| 461 | footer | MISSING | `ul.footer-nav` | `li>a#next-lesson` | `—` | 98 | 61 | 0.71 of 2491 | subject+ptype=1-10 Mathematics/overview c=0.93 n=13 | structure | yes | CANDIDATE |
-| 462 | footer | MISSING | `ul.footer-nav` | `li>a.home-nav` | `—` | 100 | 57 | 0.83 of 2491 | subject=1-10 English c=1.00 n=13 | structure | yes | CANDIDATE |
-| 463 | footer | MISSING | `li>a#next-lesson` | `a#next-lesson` | `—` | 52 | 52 | 0.82 of 2491 | template=Bilingual c=0.86 n=10 | structure | yes | CANDIDATE |
-| 464 | footer | MISSING | `ul.footer-nav.inquiry-nav` | `li>a.home-nav` | `—` | 56 | 51 | 0.14 of 2491 | subject+ptype=1-10 Blended Literacy/overview c=0.88 n=23 | structure | yes | CANDIDATE |
-| 466 | footer | EXTRA | `ul.footer-nav.inquiry-nav` | `—` | `li>a.home-nav` | 31 | 31 | 0.85 of 2491 | era=Refresh c=0.85 n=31 | structure | yes | CANDIDATE |
-| 469 | footer | SUBSTITUTED | `div#footer` | `ul.footer-nav.inquiry-nav` | `li>a#next-lesson` | 22 | 22 | 0.14 of 2491 | subject+ptype=1-10 Blended Literacy/overview c=0.88 n=15 | structure | yes | CANDIDATE |
-| 470 | footer | MISSING | `ul.footer-nav` | `li>a#prev-lesson` | `—` | 37 | 20 | 0.70 of 2491 | template+ptype=Standard/lesson c=0.87 n=14 | structure | yes | CANDIDATE |
-| 471 | footer | SUBSTITUTED | `div#footer` | `ul.footer-nav` | `ul.footer-nav.inquiry-nav` | 67 | 19 | 0.82 of 2491 | ptype=lesson c=0.87 n=16 | structure | yes | CANDIDATE |
-| 472 | footer | SUBSTITUTED | `ul.footer-nav.inquiry-nav` | `li>a#next-lesson` | `li>a.home-nav` | 18 | 18 | 0.11 of 2491 | subject+ptype=1-10 Blended Literacy/overview c=0.86 n=15 | structure | yes | CANDIDATE |
-| 473 | footer | EXTRA | `div#footer` | `—` | `ul.footer-nav.inquiry-nav` | 18 | 16 | 0.85 of 2491 | template=Standard c=0.86 n=13 | structure | yes | CANDIDATE |
-| 474 | footer | SUBSTITUTED | `div#footer` | `ul.footer-nav` | `ul.footer-nav` | 17 | 16 | 0.82 of 2491 | ptype=lesson c=0.87 n=11 | structure | yes | CANDIDATE |
-| 475 | footer | MISSING | `li>a.home-nav` | `a.home-nav` | `—` | 25 | 14 | 1.00 of 2491 | era=Refresh c=1.00 n=14 | structure | yes | CANDIDATE |
-| 477 | footer | EXTRA | `ul.footer-nav.fundamentals-nav` | `—` | `li>a.home-nav` | 21 | 12 | 0.98 of 2491 | era=Refresh c=0.98 n=12 | structure | yes | CANDIDATE |
-| 479 | footer | SUBSTITUTED | `ul.footer-nav` | `li>a#next-lesson` | `li>a#next-lesson` | 13 | 12 | 0.71 of 2491 | ptype=lesson c=0.75 n=10 | structure | yes | CANDIDATE |
-| 481 | footer | MISSING | `ul.footer-nav.inquiry-nav` | `li>a#prev-lesson` | `—` | 12 | 12 | 0.10 of 2491 | template+ptype=Inquiry/overview c=0.70 n=10 | structure | yes | CANDIDATE |
-| 482 | footer | SUBSTITUTED | `ul.footer-nav` | `li>a.home-nav` | `li>a.home-nav` | 13 | 11 | 0.83 of 2491 | era=Refresh c=0.83 n=11 | structure | yes | CANDIDATE |
-| 485 | footer | MISSING | `div#footer` | `ul.footer-nav` | `—` | 10 | 10 | 0.82 of 2491 | era=Refresh c=0.82 n=10 | structure | yes | CANDIDATE |
-| 572 | acks | SUBSTITUTED | `div.col-12.col-md-8` | `div.acks` | `div.acks.acksTemplate` | 104 | 104 | 0.15 of 2491 | template+ptype=Inquiry/overview c=0.80 n=40 | structure | yes | CANDIDATE |
-| 602 | activity | MISSING | `div.col-12` | `p` | `—` | 775 | 378 | 0.30 of 2484 | template+ptype=Inquiry/overview c=0.78 n=39 | 0.80 | — | CANDIDATE |
-| 603 | activity | EXTRA | `div.col-12` | `—` | `p` | 593 | 298 | 0.87 of 2484 | subject=ANZH c=0.99 n=32 | structure | — | CANDIDATE |
-| 604 | activity | MISSING | `div.col-12` | `WIDGET` | `—` | 406 | 257 | 0.18 of 2484 | template+ptype=Inquiry/overview c=0.65 n=26 | structure | — | CANDIDATE |
-| 606 | activity | MISSING | `div.col-12` | `a` | `—` | 452 | 234 | 0.29 of 2484 | template+ptype=Inquiry/overview c=0.73 n=26 | 0.64 | — | CANDIDATE |
-| 607 | activity | EXTRA | `div.col-12` | `—` | `WIDGET` | 348 | 213 | 0.82 of 2484 | subject=NCEA1 c=0.94 n=35 | structure | — | CANDIDATE |
-| 608 | activity | MOVED | `div.col-12` | `p` | `p` | 316 | 212 | 0.19 of 2484 | template+ptype=Inquiry/overview c=0.75 n=23 | structure | — | CANDIDATE |
-| 609 | activity | MISSING | `div.col-12` | `h3` | `—` | 390 | 199 | 0.31 of 2484 | template+ptype=Fundamentals/overview c=0.85 n=30 | 0.69 | — | CANDIDATE |
-| 610 | activity | SUBSTITUTED | `div.col-12.col-md-8` | `div.activity.interactive[number=*]` | `div.activity[number=*]` | 273 | 188 | 0.44 of 2484 | subject+ptype=1-10 Blended Literacy/lesson c=0.73 n=66 | structure | yes | CANDIDATE |
-| 612 | activity | MISSING | `div.activity.interactive[number=*]` | `div.row` | `—` | 288 | 166 | 0.12 of 2484 | template+ptype=Fundamentals/overview c=0.65 n=35 | 0.93 | yes | CANDIDATE |
-| 613 | activity | EXTRA | `div.col-12` | `—` | `img.img-fluid` | 250 | 154 | 0.97 of 2484 | subject+ptype=1-10 English/lesson c=0.99 n=22 | structure | — | CANDIDATE |
-| 614 | activity | MOVED | `div.col-12` | `p` | `p` | 155 | 124 | 0.15 of 2484 | template+ptype=Inquiry/overview c=0.75 n=21 | structure | — | CANDIDATE |
-| 615 | activity | EXTRA | `div.row` | `—` | `div.col-12` | 165 | 123 | 0.83 of 2484 | template=Standard c=0.87 n=132 | structure | — | CANDIDATE |
-| 617 | activity | EXTRA | `div.col-12` | `—` | `p>a` | 137 | 113 | 1.00 of 2484 | subject+ptype=1-10 Blended Literacy/lesson c=1.00 n=37 | structure | — | CANDIDATE |
-| 621 | activity | EXTRA | `div.activity[number=*]` | `—` | `div.row` | 148 | 105 | 0.94 of 2484 | subject=1-10 English c=0.98 n=23 | structure | yes | CANDIDATE |
-| 623 | activity | SUBSTITUTED | `div.col-12` | `p` | `p` | 130 | 97 | 0.75 of 2484 | subject+ptype=1-10 Blended Literacy/lesson c=0.93 n=21 | structure | — | CANDIDATE |
-| 626 | activity | SUBSTITUTED | `div.col-12.col-md-8` | `div.activity[number=*]` | `div.activity.interactive[number=*]` | 119 | 87 | 0.47 of 2484 | subject+ptype=1-10 Blended Literacy/lesson c=0.82 n=24 | structure | yes | CANDIDATE |
-| 628 | activity | EXTRA | `div.col-12` | `—` | `ol` | 133 | 86 | 0.96 of 2484 | subject=1-10 Mathematics c=0.98 n=31 | structure | — | CANDIDATE |
-| 629 | activity | EXTRA | `div.col-12` | `—` | `p>b` | 128 | 86 | 0.97 of 2484 | template=Standard c=0.98 n=94 | structure | — | CANDIDATE |
-| 630 | activity | SUBSTITUTED | `div.col-12.col-md-8` | `div.activity[number=*]` | `div.activity[number=*]` | 117 | 85 | 0.47 of 2484 | subject+ptype=1-10 Mathematics/lesson c=0.68 n=23 | structure | yes | CANDIDATE |
-| 631 | activity | EXTRA | `div.col-12` | `—` | `h3` | 106 | 85 | 0.86 of 2484 | template=Standard c=0.92 n=68 | structure | — | CANDIDATE |
-| 633 | activity | EXTRA | `p>b` | `—` | `b` | 107 | 82 | 0.92 of 2484 | template=Standard c=0.94 n=70 | structure | — | CANDIDATE |
-| 635 | activity | EXTRA | `div.col-12` | `—` | `ul` | 103 | 79 | 0.93 of 2484 | template=Standard c=0.96 n=85 | structure | — | CANDIDATE |
-| 638 | activity | EXTRA | `div.activity.interactive[number=*]` | `—` | `div.row` | 91 | 77 | 0.65 of 2484 | template=Standard c=0.68 n=73 | structure | yes | CANDIDATE |
-| 639 | activity | EXTRA | `p>a` | `—` | `a` | 89 | 75 | 0.98 of 2484 | subject+ptype=1-10 Blended Literacy/lesson c=1.00 n=32 | structure | — | CANDIDATE |
-| 640 | activity | EXTRA | `div.col-12` | `—` | `a` | 98 | 74 | 0.71 of 2484 | template=Standard c=0.73 n=81 | structure | — | CANDIDATE |
-| 641 | activity | MOVED | `div.col-12` | `h3` | `h3` | 102 | 72 | 0.14 of 2484 | template+ptype=Bilingual/lesson c=0.75 n=21 | structure | — | CANDIDATE |
-| 642 | activity | SUBSTITUTED | `div.col-12` | `WIDGET` | `p` | 86 | 71 | 0.59 of 2484 | subject+ptype=1-10 Mathematics/lesson c=0.78 n=31 | structure | — | CANDIDATE |
-| 643 | activity | SUBSTITUTED | `div.col-12.col-md-8` | `div.activity.interactive[number=*]` | `div.activity.interactive[number=*]` | 95 | 70 | 0.44 of 2484 | subject+ptype=1-10 Mathematics/lesson c=0.65 n=21 | structure | yes | CANDIDATE |
-| 645 | activity | EXTRA | `a` | `—` | `div.button` | 89 | 68 | 0.77 of 2484 | ptype=overview c=0.86 n=20 | structure | yes | CANDIDATE |
-| 650 | activity | SUBSTITUTED | `div.col-12` | `p` | `WIDGET` | 73 | 62 | 0.75 of 2484 | template+ptype=Standard/lesson c=0.88 n=51 | structure | — | CANDIDATE |
-| 654 | activity | EXTRA | `div.col-12.col-md-8` | `—` | `div.activity[number=*]` | 69 | 59 | 0.95 of 2484 | template=Standard c=0.98 n=55 | structure | yes | CANDIDATE |
-| 655 | activity | EXTRA | `div.col-12` | `—` | `h4.goJournal` | 130 | 56 | 0.95 of 2484 | series=HIS10 c=1.00 n=32 | structure | — | CANDIDATE |
-| 656 | activity | SUBSTITUTED | `div.col-12` | `a` | `h4.goJournal` | 118 | 55 | 0.55 of 2484 | series=HIS10 c=0.83 n=20 | structure | — | CANDIDATE |
-| 657 | activity | EXTRA | `ol` | `—` | `li` | 71 | 55 | 0.96 of 2484 | template=Standard c=0.97 n=54 | structure | — | CANDIDATE |
-| 659 | activity | SUBSTITUTED | `div.col-12` | `a` | `p` | 74 | 53 | 0.55 of 2484 | subject+ptype=1-10 Mathematics/lesson c=0.80 n=20 | structure | — | CANDIDATE |
-| 661 | activity | EXTRA | `div.col-12` | `—` | `p>i` | 57 | 51 | 0.98 of 2484 | template=Standard c=0.98 n=48 | structure | — | CANDIDATE |
-| 666 | activity | SUBSTITUTED | `div.col-12` | `WIDGET` | `div.row` | 50 | 48 | 0.59 of 2484 | ptype=lesson c=0.69 n=38 | structure | — | CANDIDATE |
-| 679 | activity | EXTRA | `p>i` | `—` | `i` | 49 | 41 | 0.89 of 2484 | template=Standard c=0.89 n=44 | structure | — | CANDIDATE |
-| 682 | activity | EXTRA | `a` | `—` | `div.externalButton` | 50 | 39 | 0.91 of 2484 | template=Standard c=0.92 n=36 | structure | — | CANDIDATE |
-| 691 | activity | EXTRA | `div.col-12` | `—` | `div.icon.ratio.ratio-16x9.videoSection` | 50 | 35 | 0.98 of 2484 | template=Standard c=0.98 n=42 | structure | yes | CANDIDATE |
-| 693 | activity | SUBSTITUTED | `div.col-12` | `a` | `WIDGET` | 41 | 35 | 0.55 of 2484 | template+ptype=Standard/lesson c=0.65 n=37 | structure | — | CANDIDATE |
-| 694 | activity | EXTRA | `p` | `—` | `b` | 42 | 34 | 0.96 of 2484 | template=Standard c=0.96 n=37 | structure | — | CANDIDATE |
-| 695 | activity | EXTRA | `div.col-12` | `—` | `audio.audioPlayer.icon` | 53 | 33 | 1.00 of 2484 | template=Bilingual c=1.00 n=24 | structure | yes | CANDIDATE |
-| 697 | activity | EXTRA | `ul` | `—` | `li` | 34 | 33 | 0.93 of 2484 | template=Standard c=0.95 n=27 | structure | — | CANDIDATE |
-| 698 | activity | SUBSTITUTED | `div.col-12` | `h3` | `WIDGET` | 39 | 32 | 0.76 of 2484 | template+ptype=Standard/lesson c=0.89 n=27 | structure | — | CANDIDATE |
-| 700 | activity | EXTRA | `div.col-12.col-md-8` | `—` | `div.activity.interactive[number=*]` | 34 | 32 | 0.89 of 2484 | template=Standard c=0.92 n=26 | structure | yes | CANDIDATE |
-| 707 | activity | SUBSTITUTED | `div.row` | `div.col-12` | `div.col-12.col-md-8` | 33 | 30 | 0.78 of 2484 | ptype=lesson c=0.92 n=24 | structure | — | CANDIDATE |
-| 712 | activity | SUBSTITUTED | `div.row` | `div.col-12` | `WIDGET` | 29 | 28 | 0.78 of 2484 | ptype=lesson c=0.92 n=21 | structure | — | CANDIDATE |
-| 715 | activity | EXTRA | `div.col-12` | `—` | `div.ratio.ratio-16x9.videoSection` | 40 | 26 | 0.95 of 2484 | template=Standard c=0.96 n=30 | structure | yes | CANDIDATE |
-| 722 | activity | SUBSTITUTED | `div.col-12` | `WIDGET` | `ol` | 27 | 25 | 0.59 of 2484 | ptype=lesson c=0.69 n=22 | structure | — | CANDIDATE |
-| 724 | activity | EXTRA | `div.icon.ratio.ratio-16x9.videoSection` | `—` | `iframe` | 28 | 24 | 0.99 of 2484 | template=Standard c=0.99 n=21 | structure | yes | CANDIDATE |
-| 726 | activity | SUBSTITUTED | `div.activity.interactive[number=*]` | `div.row` | `WIDGET` | 27 | 24 | 0.55 of 2484 | ptype=lesson c=0.63 n=22 | structure | yes | CANDIDATE |
-| 729 | activity | EXTRA | `div.col-12` | `—` | `h5` | 27 | 23 | 0.99 of 2484 | template=Standard c=0.99 n=22 | structure | — | CANDIDATE |
-| 737 | activity | SUBSTITUTED | `div.row` | `div.col-12` | `div.row` | 23 | 22 | 0.78 of 2484 | era=Refresh c=0.78 n=23 | structure | — | CANDIDATE |
-| 760 | activity | SUBSTITUTED | `div.row` | `div.col-12` | `div.button` | 21 | 19 | 0.78 of 2484 | era=Refresh c=0.78 n=21 | structure | yes | CANDIDATE |
-| 764 | activity | EXTRA | `div.col-12` | `—` | `div.button` | 29 | 18 | 1.00 of 2484 | template=Standard c=1.00 n=25 | structure | yes | CANDIDATE |
-| 765 | activity | EXTRA | `div.ratio.ratio-16x9.videoSection` | `—` | `iframe` | 22 | 18 | 0.97 of 2484 | ptype=lesson c=0.97 n=21 | structure | yes | CANDIDATE |
-| 766 | activity | EXTRA | `div.col-12` | `—` | `div.TKmodal` | 21 | 18 | 1.00 of 2484 | era=Refresh c=1.00 n=21 | structure | — | CANDIDATE |
-| 770 | activity | SUBSTITUTED | `div.col-12` | `h3` | `h3` | 25 | 17 | 0.76 of 2484 | template+ptype=Standard/lesson c=0.89 n=20 | structure | — | CANDIDATE |
-| 777 | activity | SUBSTITUTED | `div.col-12` | `p` | `p>b` | 22 | 16 | 0.75 of 2484 | era=Refresh c=0.75 n=22 | structure | — | CANDIDATE |
-| 805 | activity | SUBSTITUTED | `div.col-12` | `p` | `h4.goJournal` | 22 | 13 | 0.75 of 2484 | template+ptype=Standard/lesson c=0.88 n=21 | structure | — | CANDIDATE |
-| 907 | activity | MISSING | `div.col-12.col-md-8` | `div.activity.dropbox[number=*]` | `—` | 23 | 8 | 0.03 of 2484 | series=XDLS90 c=0.68 n=20 | 0.96 | yes | CANDIDATE |
-| 1104 | activity | EXTRA | `div.activity.clickDropContent.dropbox[nu` | `—` | `a` | 23 | 4 | 1.00 of 2484 | era=Refresh c=1.00 n=23 | structure | yes | CANDIDATE |
-| 1105 | activity | EXTRA | `div.activity.dropbox[number=*]` | `—` | `a` | 21 | 4 | 0.99 of 2484 | era=Refresh c=0.99 n=21 | structure | yes | CANDIDATE |
-| 4029 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p` | 1108 | 417 | 0.82 of 2484 | subject+ptype=1-10 Blended Literacy/lesson c=0.99 n=26 | structure | — | CANDIDATE |
-| 4030 | body | EXTRA | `div#body` | `—` | `div.row` | 1424 | 392 | 0.73 of 2484 | subject+ptype=1-10 Blended Literacy/overview c=1.00 n=31 | structure | — | CANDIDATE |
-| 4031 | body | MISSING | `div#body` | `div.row` | `—` | 1396 | 356 | 0.34 of 2484 | series=CEDO50 c=0.76 n=20 | 0.86 | — | CANDIDATE |
-| 4032 | body | MISSING | `div.col-12.col-md-8` | `p` | `—` | 619 | 294 | 0.26 of 2484 | template+ptype=Fundamentals/overview c=0.91 n=45 | 0.82 | — | CANDIDATE |
-| 4033 | body | EXTRA | `div.col-12.col-md-8` | `—` | `img.img-fluid` | 572 | 260 | 0.96 of 2484 | template+ptype=Standard/overview c=1.00 n=26 | structure | — | CANDIDATE |
-| 4034 | body | EXTRA | `div.col-12.col-md-8` | `—` | `WIDGET` | 397 | 243 | 0.93 of 2484 | subject+ptype=NCEA1/lesson c=0.99 n=50 | structure | — | CANDIDATE |
-| 4035 | body | MOVED | `div.col-12.col-md-8` | `p` | `p` | 345 | 218 | 0.18 of 2484 | template+ptype=Fundamentals/overview c=0.84 n=40 | structure | — | CANDIDATE |
-| 4036 | body | EXTRA | `div.row` | `—` | `div.col-12.col-md-8` | 293 | 207 | 0.84 of 2484 | subject+ptype=1-10 Blended Literacy/lesson c=0.97 n=28 | structure | — | CANDIDATE |
-| 4037 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>b` | 333 | 206 | 0.97 of 2484 | subject=1-10 Blended Literacy c=1.00 n=45 | structure | — | CANDIDATE |
-| 4038 | body | SUBSTITUTED | `div.row` | `div.col-12` | `div.col-12.col-md-8` | 332 | 192 | 0.55 of 2484 | subject+ptype=1-10 Blended Literacy/overview c=0.96 n=67 | structure | — | CANDIDATE |
-| 4039 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h3` | 304 | 191 | 0.89 of 2484 | subject+ptype=1-10 Blended Literacy/overview c=1.00 n=20 | structure | — | CANDIDATE |
-| 4040 | body | EXTRA | `div.col-12.col-md-8` | `—` | `ul` | 299 | 184 | 0.95 of 2484 | subject=1-10 Mathematics c=0.98 n=21 | structure | — | CANDIDATE |
-| 4042 | body | MISSING | `div.row` | `div.col-12.col-md-8` | `—` | 319 | 177 | 0.29 of 2484 | template+ptype=Fundamentals/overview c=0.94 n=20 | 0.94 | — | CANDIDATE |
-| 4043 | body | MISSING | `div.col-12.col-md-8` | `WIDGET` | `—` | 270 | 176 | 0.19 of 2484 | template+ptype=Fundamentals/overview c=0.65 n=31 | structure | — | CANDIDATE |
-| 4045 | body | EXTRA | `div.col-12.col-md-8` | `—` | `a` | 238 | 159 | 0.98 of 2484 | subject+ptype=ConnectED/lesson c=1.00 n=28 | structure | — | CANDIDATE |
-| 4046 | body | MISSING | `div.col-12.col-md-8` | `h3` | `—` | 239 | 153 | 0.18 of 2484 | template+ptype=Fundamentals/overview c=0.75 n=21 | 0.89 | — | CANDIDATE |
-| 4049 | body | EXTRA | `p>b` | `—` | `b` | 192 | 124 | 0.94 of 2484 | subject=1-10 Mathematics c=0.97 n=33 | structure | — | CANDIDATE |
-| 4050 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.ratio.ratio-16x9.videoSection` | 181 | 119 | 0.93 of 2484 | subject=NCEA1 c=0.98 n=20 | structure | yes | CANDIDATE |
-| 4051 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>a` | 175 | 118 | 0.99 of 2484 | subject=1-10 English c=1.00 n=20 | structure | — | CANDIDATE |
-| 4052 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.table-responsive` | 170 | 118 | 0.98 of 2484 | subject+ptype=1-10 English/lesson c=0.99 n=21 | structure | — | CANDIDATE |
-| 4056 | body | EXTRA | `a` | `—` | `div.button` | 181 | 110 | 0.97 of 2484 | subject=NCEA1 c=0.98 n=38 | structure | — | CANDIDATE |
-| 4060 | body | MOVED | `div.col-12.col-md-8` | `p` | `p` | 133 | 97 | 0.16 of 2484 | template+ptype=Inquiry/overview c=0.60 n=20 | structure | — | CANDIDATE |
-| 4064 | body | EXTRA | `div.table-responsive` | `—` | `table.table.table-bordered` | 139 | 93 | 0.96 of 2484 | subject=NCEA1 c=0.97 n=28 | structure | yes | CANDIDATE |
-| 4065 | body | EXTRA | `p` | `—` | `b` | 119 | 93 | 0.93 of 2484 | subject=NCEA1 c=0.96 n=29 | structure | — | CANDIDATE |
-| 4068 | body | EXTRA | `div.col-12.col-md-8` | `—` | `ol` | 110 | 84 | 0.99 of 2484 | template=Standard c=0.99 n=87 | structure | — | CANDIDATE |
-| 4070 | body | SUBSTITUTED | `div.icon.ratio.ratio-16x9.videoSection` | `iframe.embed-responsive-item` | `iframe` | 214 | 82 | 0.19 of 2484 | series=PES10 c=0.68 n=35 | structure | yes | CANDIDATE |
-| 4071 | body | EXTRA | `p>i` | `—` | `i` | 108 | 81 | 0.97 of 2484 | subject+ptype=1-10 Blended Literacy/overview c=1.00 n=26 | structure | — | CANDIDATE |
-| 4073 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>i` | 106 | 77 | 0.98 of 2484 | subject=NCEA1 c=0.99 n=26 | structure | — | CANDIDATE |
-| 4075 | body | EXTRA | `div.col-12.col-md-8` | `—` | `audio.audioPlayer.icon` | 129 | 75 | 1.00 of 2484 | ptype=overview c=1.00 n=36 | structure | yes | CANDIDATE |
-| 4076 | body | SUBSTITUTED | `div#body` | `div.row` | `WIDGET` | 123 | 75 | 0.94 of 2484 | subject=Online Safety (OS9000) c=1.00 n=27 | structure | — | CANDIDATE |
-| 4077 | body | EXTRA | `p>a` | `—` | `a` | 101 | 75 | 0.99 of 2484 | template=Standard c=1.00 n=77 | structure | — | CANDIDATE |
-| 4078 | body | EXTRA | `div.row` | `—` | `div.col-12` | 136 | 74 | 0.71 of 2484 | subject=ANZH c=0.74 n=21 | structure | — | CANDIDATE |
-| 4082 | body | MOVED | `div.col-12.col-md-8` | `h3` | `h3` | 83 | 70 | 0.11 of 2484 | template+ptype=Fundamentals/overview c=0.67 n=23 | structure | — | CANDIDATE |
-| 4088 | body | EXTRA | `div.fundamentalsPanel` | `—` | `div.row` | 73 | 68 | 0.98 of 2484 | era=Refresh c=0.98 n=73 | structure | — | CANDIDATE |
-| 4093 | body | EXTRA | `a` | `—` | `div.externalButton` | 92 | 66 | 0.92 of 2484 | template=Standard c=0.93 n=78 | structure | — | CANDIDATE |
-| 4094 | body | EXTRA | `table.table.table-bordered` | `—` | `tr` | 90 | 66 | 0.98 of 2484 | template=Standard c=0.98 n=77 | structure | yes | CANDIDATE |
-| 4097 | body | EXTRA | `div.col-12` | `—` | `p` | 100 | 63 | 0.92 of 2484 | template=Standard c=0.94 n=82 | structure | — | CANDIDATE |
-| 4100 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h4` | 73 | 63 | 0.94 of 2484 | template=Standard c=0.95 n=35 | structure | — | CANDIDATE |
-| 4102 | body | EXTRA | `ul` | `—` | `li` | 70 | 60 | 0.95 of 2484 | template=Standard c=0.96 n=49 | structure | — | CANDIDATE |
-| 4103 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `div.col-12.col-md-8` | 69 | 60 | 0.98 of 2484 | ptype=lesson c=0.99 n=42 | structure | — | CANDIDATE |
-| 4104 | body | EXTRA | `div.ratio.ratio-16x9.videoSection` | `—` | `iframe` | 75 | 57 | 0.92 of 2484 | template=Standard c=0.93 n=55 | structure | yes | CANDIDATE |
-| 4105 | body | EXTRA | `div.alert` | `—` | `div.row` | 72 | 57 | 0.91 of 2484 | template=Standard c=0.92 n=51 | structure | — | CANDIDATE |
-| 4108 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `p` | 69 | 54 | 0.84 of 2484 | template+ptype=Standard/lesson c=0.84 n=48 | structure | — | CANDIDATE |
-| 4109 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `div.activity[number=*]` | 60 | 53 | 0.84 of 2484 | template+ptype=Standard/lesson c=0.84 n=52 | structure | yes | CANDIDATE |
-| 4112 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.alert` | 65 | 50 | 0.90 of 2484 | template=Standard c=0.91 n=49 | structure | — | CANDIDATE |
-| 4116 | body | EXTRA | `tr` | `—` | `td` | 55 | 48 | 0.94 of 2484 | template=Standard c=0.95 n=50 | structure | — | CANDIDATE |
-| 4117 | body | EXTRA | `div.row` | `—` | `div.col-12.col-md-6` | 71 | 47 | 0.99 of 2484 | subject=Online Safety (OS9000) c=1.00 n=26 | structure | — | CANDIDATE |
-| 4120 | body | EXTRA | `div.inquiryPanel` | `—` | `div.row` | 47 | 46 | 0.99 of 2484 | era=Refresh c=0.99 n=47 | structure | — | CANDIDATE |
-| 4124 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.icon.ratio.ratio-16x9.videoSection` | 62 | 44 | 0.92 of 2484 | template=Standard c=0.93 n=54 | structure | yes | CANDIDATE |
-| 4128 | body | EXTRA | `div#body` | `—` | `WIDGET` | 77 | 43 | 0.93 of 2484 | era=Refresh c=0.93 n=77 | structure | — | CANDIDATE |
-| 4130 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `WIDGET` | 46 | 43 | 0.98 of 2484 | ptype=lesson c=0.99 n=38 | structure | — | CANDIDATE |
-| 4134 | body | MISSING | `div#body` | `div.fundamentalsPanel` | `—` | 46 | 40 | 0.02 of 2484 | template+ptype=Fundamentals/overview c=0.60 n=39 | 0.98 | yes | CANDIDATE |
-| 4135 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `WIDGET` | 41 | 40 | 0.84 of 2484 | template+ptype=Standard/lesson c=0.84 n=24 | structure | — | CANDIDATE |
-| 4141 | body | EXTRA | `div#body` | `—` | `div.row.supervisor` | 48 | 38 | 0.90 of 2484 | ptype=lesson c=0.91 n=41 | structure | yes | CANDIDATE |
-| 4142 | body | EXTRA | `p` | `—` | `i` | 44 | 38 | 0.96 of 2484 | template=Standard c=0.97 n=40 | structure | — | CANDIDATE |
-| 4143 | body | EXTRA | `div.alert.solid` | `—` | `div.row` | 49 | 37 | 0.99 of 2484 | template=Standard c=0.99 n=42 | structure | yes | CANDIDATE |
-| 4145 | body | MISSING | `div#body` | `div.inquiryPanel` | `—` | 40 | 37 | 0.02 of 2484 | template+ptype=Inquiry/overview c=0.62 n=33 | 0.92 | — | CANDIDATE |
-| 4149 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>span.infoTrigger` | 38 | 34 | 0.87 of 2484 | template=Standard c=0.87 n=32 | structure | — | CANDIDATE |
-| 4150 | body | EXTRA | `tr` | `—` | `th` | 37 | 34 | 0.99 of 2484 | template=Standard c=1.00 n=33 | structure | — | CANDIDATE |
-| 4151 | body | EXTRA | `div.row` | `—` | `div.col-12.col-md-4.offset-md-0` | 34 | 34 | 0.80 of 2484 | template=Standard c=0.81 n=21 | structure | — | CANDIDATE |
-| 4154 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h5` | 40 | 33 | 0.99 of 2484 | subject=NCEA1 c=0.99 n=20 | structure | — | CANDIDATE |
-| 4156 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h4.goJournal` | 40 | 32 | 1.00 of 2484 | template=Standard c=1.00 n=38 | structure | — | CANDIDATE |
-| 4162 | body | EXTRA | `div.icon.ratio.ratio-16x9.videoSection` | `—` | `iframe` | 38 | 31 | 0.97 of 2484 | template=Standard c=0.98 n=33 | structure | yes | CANDIDATE |
-| 4165 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `div.row` | 32 | 31 | 0.98 of 2484 | era=Refresh c=0.98 n=32 | structure | — | CANDIDATE |
-| 4166 | body | EXTRA | `div#body` | `—` | `div.inquiryPanel` | 31 | 31 | 0.98 of 2484 | era=Refresh c=0.98 n=31 | structure | — | CANDIDATE |
-| 4167 | body | EXTRA | `div#body` | `—` | `div.fundamentalsPanel` | 37 | 30 | 0.98 of 2484 | era=Refresh c=0.98 n=37 | structure | yes | CANDIDATE |
-| 4171 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.flipCardsContainer.row` | 33 | 30 | 0.93 of 2484 | template=Standard c=0.94 n=27 | structure | — | CANDIDATE |
-| 4176 | body | EXTRA | `div.introduction` | `—` | `div.row` | 28 | 28 | 0.99 of 2484 | era=Refresh c=0.99 n=28 | structure | — | CANDIDATE |
-| 4178 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.clickDropContent` | 32 | 27 | 0.94 of 2484 | template=Standard c=0.94 n=29 | structure | — | CANDIDATE |
-| 4179 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `img.img-fluid` | 28 | 27 | 0.84 of 2484 | era=Refresh c=0.84 n=28 | structure | — | CANDIDATE |
-| 4185 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `div.col-12.col-md-6` | 33 | 26 | 0.98 of 2484 | ptype=lesson c=0.99 n=29 | structure | — | CANDIDATE |
-| 4189 | body | EXTRA | `div.row` | `—` | `div.col-12.col-md-4` | 32 | 25 | 0.95 of 2484 | template=Standard c=0.95 n=26 | structure | — | CANDIDATE |
-| 4190 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.alert.solid` | 31 | 25 | 0.99 of 2484 | template=Standard c=0.99 n=25 | structure | yes | CANDIDATE |
-| 4191 | body | EXTRA | `div.inquiryPanel.showing` | `—` | `div.row` | 27 | 25 | 0.99 of 2484 | era=Refresh c=0.99 n=27 | structure | yes | CANDIDATE |
-| 4199 | body | EXTRA | `p>span.infoTrigger` | `—` | `span.infoTrigger` | 23 | 23 | 0.95 of 2484 | era=Refresh c=0.95 n=23 | structure | — | CANDIDATE |
-| 4204 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `div.activity.interactive[number=*]` | 24 | 22 | 0.84 of 2484 | template+ptype=Standard/lesson c=0.84 n=22 | structure | yes | CANDIDATE |
-| 4205 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h2` | 23 | 22 | 0.98 of 2484 | era=Refresh c=0.98 n=23 | structure | — | CANDIDATE |
-| 4206 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `h3` | 23 | 22 | 0.84 of 2484 | template+ptype=Standard/lesson c=0.84 n=21 | structure | — | CANDIDATE |
-| 4207 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `p` | 23 | 22 | 0.98 of 2484 | era=Refresh c=0.98 n=23 | structure | — | CANDIDATE |
-| 4218 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `div.alert` | 28 | 20 | 0.84 of 2484 | era=Refresh c=0.84 n=28 | structure | — | CANDIDATE |
-| 4230 | body | EXTRA | `div.col-12.col-md-6` | `—` | `img.img-fluid` | 23 | 19 | 0.99 of 2484 | template=Standard c=0.99 n=22 | structure | — | CANDIDATE |
-| 4234 | body | EXTRA | `div.flipCardsContainer.row` | `—` | `div.col-12.col-md-4.paddingLR` | 20 | 19 | 0.97 of 2484 | era=Refresh c=0.97 n=20 | structure | — | CANDIDATE |
-| 4247 | body | SUBSTITUTED | `div#body` | `div.row` | `div.table-responsive` | 23 | 17 | 0.94 of 2484 | ptype=lesson c=0.98 n=21 | structure | — | CANDIDATE |
-| 4282 | body | EXTRA | `div.col-12.col-md-6` | `—` | `p` | 23 | 14 | 1.00 of 2484 | ptype=lesson c=1.00 n=21 | structure | — | CANDIDATE |
-| 4355 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `div.button` | 23 | 10 | 0.98 of 2484 | ptype=lesson c=0.99 n=22 | structure | — | CANDIDATE |
-| 9299 | root | EXTRA | `body.container-fluid` | `—` | `div.row` | 274 | 274 | 0.88 of 2491 | subject+ptype=1-10 Mathematics/overview c=0.97 n=33 | structure | — | CANDIDATE |
-| 9303 | root | SUBSTITUTED | `#root` | `body` | `body.container-fluid` | 138 | 15 | 0.06 of 2491 | series=PWY10 c=1.00 n=44 | structure | yes | CANDIDATE |
+| 100 | module-menu | SUBSTITUTED | `div.row` | `div.col-12.col-md-6.offset-md-0.paddingR` | `div.col-12.col-md-8` | 8 | 8 | 0.01 of 2491 | — | structure | yes | BELOW FLOOR |
+| 425 | crumbs | MISSING | `div.crumbs` | `div` | `—` | 17 | 14 | 0.02 of 2484 | template+ptype=Inquiry/overview c=0.62 n=10 | 0.93 | yes | CANDIDATE |
+| 450 | footer | MISSING | `ul.footer-nav` | `li>a#next-lesson` | `—` | 98 | 61 | 0.71 of 2491 | subject+ptype=1-10 Mathematics/overview c=0.93 n=13 | structure | yes | CANDIDATE |
+| 451 | footer | MISSING | `ul.footer-nav` | `li>a.home-nav` | `—` | 100 | 57 | 0.83 of 2491 | subject=1-10 English c=1.00 n=13 | structure | yes | CANDIDATE |
+| 452 | footer | MISSING | `li>a#next-lesson` | `a#next-lesson` | `—` | 52 | 52 | 0.82 of 2491 | template=Bilingual c=0.86 n=10 | structure | yes | CANDIDATE |
+| 453 | footer | MISSING | `ul.footer-nav.inquiry-nav` | `li>a.home-nav` | `—` | 56 | 51 | 0.14 of 2491 | subject+ptype=1-10 Blended Literacy/overview c=0.88 n=23 | structure | yes | CANDIDATE |
+| 455 | footer | EXTRA | `ul.footer-nav.inquiry-nav` | `—` | `li>a.home-nav` | 31 | 31 | 0.85 of 2491 | era=Refresh c=0.85 n=31 | structure | yes | CANDIDATE |
+| 458 | footer | SUBSTITUTED | `div#footer` | `ul.footer-nav.inquiry-nav` | `li>a#next-lesson` | 22 | 22 | 0.14 of 2491 | subject+ptype=1-10 Blended Literacy/overview c=0.88 n=15 | structure | yes | CANDIDATE |
+| 459 | footer | MISSING | `ul.footer-nav` | `li>a#prev-lesson` | `—` | 37 | 20 | 0.70 of 2491 | template+ptype=Standard/lesson c=0.87 n=14 | structure | yes | CANDIDATE |
+| 460 | footer | SUBSTITUTED | `ul.footer-nav.inquiry-nav` | `li>a#next-lesson` | `li>a.home-nav` | 18 | 18 | 0.11 of 2491 | subject+ptype=1-10 Blended Literacy/overview c=0.86 n=15 | structure | yes | CANDIDATE |
+| 461 | footer | SUBSTITUTED | `div#footer` | `ul.footer-nav` | `ul.footer-nav.inquiry-nav` | 65 | 17 | 0.82 of 2491 | ptype=lesson c=0.87 n=16 | structure | yes | CANDIDATE |
+| 462 | footer | EXTRA | `div#footer` | `—` | `ul.footer-nav.inquiry-nav` | 18 | 16 | 0.85 of 2491 | template=Standard c=0.86 n=13 | structure | yes | CANDIDATE |
+| 463 | footer | SUBSTITUTED | `div#footer` | `ul.footer-nav` | `ul.footer-nav` | 17 | 16 | 0.82 of 2491 | ptype=lesson c=0.87 n=11 | structure | yes | CANDIDATE |
+| 464 | footer | MISSING | `li>a.home-nav` | `a.home-nav` | `—` | 25 | 14 | 1.00 of 2491 | era=Refresh c=1.00 n=14 | structure | yes | CANDIDATE |
+| 466 | footer | EXTRA | `ul.footer-nav.fundamentals-nav` | `—` | `li>a.home-nav` | 21 | 12 | 0.98 of 2491 | era=Refresh c=0.98 n=12 | structure | yes | CANDIDATE |
+| 468 | footer | SUBSTITUTED | `ul.footer-nav` | `li>a#next-lesson` | `li>a#next-lesson` | 13 | 12 | 0.71 of 2491 | ptype=lesson c=0.75 n=10 | structure | yes | CANDIDATE |
+| 470 | footer | MISSING | `ul.footer-nav.inquiry-nav` | `li>a#prev-lesson` | `—` | 12 | 12 | 0.10 of 2491 | template+ptype=Inquiry/overview c=0.70 n=10 | structure | yes | CANDIDATE |
+| 471 | footer | SUBSTITUTED | `ul.footer-nav` | `li>a.home-nav` | `li>a.home-nav` | 13 | 11 | 0.83 of 2491 | era=Refresh c=0.83 n=11 | structure | yes | CANDIDATE |
+| 474 | footer | MISSING | `div#footer` | `ul.footer-nav` | `—` | 10 | 10 | 0.82 of 2491 | era=Refresh c=0.82 n=10 | structure | yes | CANDIDATE |
+| 561 | acks | SUBSTITUTED | `div.col-12.col-md-8` | `div.acks` | `div.acks.acksTemplate` | 104 | 104 | 0.15 of 2491 | template+ptype=Inquiry/overview c=0.80 n=40 | structure | yes | CANDIDATE |
+| 591 | activity | MISSING | `div.col-12` | `p` | `—` | 775 | 378 | 0.30 of 2484 | template+ptype=Inquiry/overview c=0.78 n=39 | 0.80 | — | CANDIDATE |
+| 592 | activity | EXTRA | `div.col-12` | `—` | `p` | 593 | 298 | 0.87 of 2484 | subject=ANZH c=0.99 n=32 | structure | — | CANDIDATE |
+| 593 | activity | MISSING | `div.col-12` | `WIDGET` | `—` | 407 | 258 | 0.18 of 2484 | template+ptype=Inquiry/overview c=0.65 n=26 | structure | — | CANDIDATE |
+| 595 | activity | MISSING | `div.col-12` | `a` | `—` | 451 | 233 | 0.29 of 2484 | template+ptype=Inquiry/overview c=0.73 n=26 | 0.64 | — | CANDIDATE |
+| 596 | activity | EXTRA | `div.col-12` | `—` | `WIDGET` | 347 | 212 | 0.82 of 2484 | subject=NCEA1 c=0.94 n=35 | structure | — | CANDIDATE |
+| 597 | activity | MOVED | `div.col-12` | `p` | `p` | 316 | 212 | 0.19 of 2484 | template+ptype=Inquiry/overview c=0.75 n=23 | structure | — | CANDIDATE |
+| 598 | activity | MISSING | `div.col-12` | `h3` | `—` | 390 | 199 | 0.31 of 2484 | template+ptype=Fundamentals/overview c=0.85 n=30 | 0.69 | — | CANDIDATE |
+| 599 | activity | SUBSTITUTED | `div.col-12.col-md-8` | `div.activity.interactive[number=*]` | `div.activity[number=*]` | 274 | 189 | 0.44 of 2484 | template=Fundamentals c=0.73 n=20 | structure | yes | CANDIDATE |
+| 601 | activity | MISSING | `div.activity.interactive[number=*]` | `div.row` | `—` | 288 | 166 | 0.12 of 2484 | template+ptype=Fundamentals/overview c=0.65 n=35 | 0.93 | yes | CANDIDATE |
+| 602 | activity | EXTRA | `div.col-12` | `—` | `img.img-fluid` | 250 | 154 | 0.97 of 2484 | subject+ptype=1-10 English/lesson c=0.99 n=22 | structure | — | CANDIDATE |
+| 603 | activity | MOVED | `div.col-12` | `p` | `p` | 156 | 125 | 0.15 of 2484 | template+ptype=Inquiry/overview c=0.75 n=21 | structure | — | CANDIDATE |
+| 604 | activity | EXTRA | `div.row` | `—` | `div.col-12` | 164 | 122 | 0.83 of 2484 | template=Standard c=0.87 n=132 | structure | — | CANDIDATE |
+| 606 | activity | EXTRA | `div.col-12` | `—` | `p>a` | 137 | 113 | 1.00 of 2484 | subject+ptype=1-10 Blended Literacy/lesson c=1.00 n=37 | structure | — | CANDIDATE |
+| 609 | activity | EXTRA | `div.activity[number=*]` | `—` | `div.row` | 149 | 106 | 0.94 of 2484 | subject=1-10 English c=0.98 n=23 | structure | yes | CANDIDATE |
+| 613 | activity | SUBSTITUTED | `div.col-12` | `p` | `p` | 129 | 96 | 0.75 of 2484 | subject+ptype=1-10 Blended Literacy/lesson c=0.93 n=21 | structure | — | CANDIDATE |
+| 615 | activity | SUBSTITUTED | `div.col-12.col-md-8` | `div.activity[number=*]` | `div.activity.interactive[number=*]` | 119 | 87 | 0.47 of 2484 | subject+ptype=1-10 Blended Literacy/lesson c=0.82 n=24 | structure | yes | CANDIDATE |
+| 617 | activity | EXTRA | `div.col-12` | `—` | `ol` | 133 | 86 | 0.96 of 2484 | subject=1-10 Mathematics c=0.98 n=31 | structure | — | CANDIDATE |
+| 618 | activity | EXTRA | `div.col-12` | `—` | `p>b` | 128 | 86 | 0.97 of 2484 | template=Standard c=0.98 n=94 | structure | — | CANDIDATE |
+| 620 | activity | SUBSTITUTED | `div.col-12.col-md-8` | `div.activity[number=*]` | `div.activity[number=*]` | 117 | 85 | 0.47 of 2484 | subject+ptype=1-10 Mathematics/lesson c=0.68 n=23 | structure | yes | CANDIDATE |
+| 621 | activity | EXTRA | `div.col-12` | `—` | `h3` | 105 | 84 | 0.86 of 2484 | template=Standard c=0.92 n=68 | structure | — | CANDIDATE |
+| 622 | activity | EXTRA | `p>b` | `—` | `b` | 107 | 82 | 0.92 of 2484 | template=Standard c=0.94 n=70 | structure | — | CANDIDATE |
+| 624 | activity | EXTRA | `div.col-12` | `—` | `ul` | 103 | 79 | 0.93 of 2484 | template=Standard c=0.96 n=85 | structure | — | CANDIDATE |
+| 626 | activity | EXTRA | `div.activity.interactive[number=*]` | `—` | `div.row` | 92 | 78 | 0.65 of 2484 | template=Standard c=0.68 n=73 | structure | yes | CANDIDATE |
+| 628 | activity | EXTRA | `p>a` | `—` | `a` | 89 | 75 | 0.98 of 2484 | subject+ptype=1-10 Blended Literacy/lesson c=1.00 n=32 | structure | — | CANDIDATE |
+| 629 | activity | EXTRA | `div.col-12` | `—` | `a` | 98 | 74 | 0.71 of 2484 | template=Standard c=0.73 n=81 | structure | — | CANDIDATE |
+| 630 | activity | MOVED | `div.col-12` | `h3` | `h3` | 101 | 71 | 0.22 of 2484 | template+ptype=Bilingual/lesson c=0.75 n=21 | structure | — | CANDIDATE |
+| 631 | activity | SUBSTITUTED | `div.col-12` | `WIDGET` | `p` | 86 | 71 | 0.59 of 2484 | subject+ptype=1-10 Mathematics/lesson c=0.78 n=31 | structure | — | CANDIDATE |
+| 632 | activity | SUBSTITUTED | `div.col-12.col-md-8` | `div.activity.interactive[number=*]` | `div.activity.interactive[number=*]` | 95 | 70 | 0.44 of 2484 | subject+ptype=1-10 Mathematics/lesson c=0.65 n=21 | structure | yes | CANDIDATE |
+| 634 | activity | EXTRA | `a` | `—` | `div.button` | 89 | 68 | 0.77 of 2484 | ptype=overview c=0.86 n=20 | structure | yes | CANDIDATE |
+| 639 | activity | SUBSTITUTED | `div.col-12` | `p` | `WIDGET` | 73 | 62 | 0.75 of 2484 | template+ptype=Standard/lesson c=0.88 n=51 | structure | — | CANDIDATE |
+| 643 | activity | EXTRA | `div.col-12.col-md-8` | `—` | `div.activity[number=*]` | 69 | 59 | 0.95 of 2484 | template=Standard c=0.98 n=55 | structure | yes | CANDIDATE |
+| 644 | activity | EXTRA | `div.col-12` | `—` | `h4.goJournal` | 130 | 56 | 0.95 of 2484 | series=HIS10 c=1.00 n=32 | structure | — | CANDIDATE |
+| 645 | activity | SUBSTITUTED | `div.col-12` | `a` | `h4.goJournal` | 118 | 55 | 0.55 of 2484 | series=HIS10 c=0.83 n=20 | structure | — | CANDIDATE |
+| 646 | activity | EXTRA | `ol` | `—` | `li` | 71 | 55 | 0.96 of 2484 | template=Standard c=0.97 n=54 | structure | — | CANDIDATE |
+| 648 | activity | SUBSTITUTED | `div.col-12` | `a` | `p` | 74 | 53 | 0.55 of 2484 | subject+ptype=1-10 Mathematics/lesson c=0.80 n=20 | structure | — | CANDIDATE |
+| 650 | activity | EXTRA | `div.col-12` | `—` | `p>i` | 57 | 51 | 0.98 of 2484 | template=Standard c=0.98 n=48 | structure | — | CANDIDATE |
+| 656 | activity | SUBSTITUTED | `div.col-12` | `WIDGET` | `div.row` | 49 | 47 | 0.59 of 2484 | ptype=lesson c=0.69 n=38 | structure | — | CANDIDATE |
+| 668 | activity | EXTRA | `p>i` | `—` | `i` | 49 | 41 | 0.89 of 2484 | template=Standard c=0.89 n=44 | structure | — | CANDIDATE |
+| 671 | activity | EXTRA | `a` | `—` | `div.externalButton` | 50 | 39 | 0.91 of 2484 | template=Standard c=0.92 n=36 | structure | — | CANDIDATE |
+| 680 | activity | EXTRA | `div.col-12` | `—` | `div.icon.ratio.ratio-16x9.videoSection` | 50 | 35 | 0.98 of 2484 | template=Standard c=0.98 n=42 | structure | yes | CANDIDATE |
+| 682 | activity | SUBSTITUTED | `div.col-12` | `a` | `WIDGET` | 41 | 35 | 0.55 of 2484 | template+ptype=Standard/lesson c=0.65 n=37 | structure | — | CANDIDATE |
+| 683 | activity | EXTRA | `p` | `—` | `b` | 42 | 34 | 0.96 of 2484 | template=Standard c=0.96 n=37 | structure | — | CANDIDATE |
+| 684 | activity | EXTRA | `div.col-12` | `—` | `audio.audioPlayer.icon` | 53 | 33 | 1.00 of 2484 | template=Bilingual c=1.00 n=24 | structure | yes | CANDIDATE |
+| 686 | activity | EXTRA | `ul` | `—` | `li` | 34 | 33 | 0.93 of 2484 | template=Standard c=0.95 n=27 | structure | — | CANDIDATE |
+| 687 | activity | SUBSTITUTED | `div.col-12` | `h3` | `WIDGET` | 39 | 32 | 0.76 of 2484 | template+ptype=Standard/lesson c=0.89 n=27 | structure | — | CANDIDATE |
+| 689 | activity | EXTRA | `div.col-12.col-md-8` | `—` | `div.activity.interactive[number=*]` | 34 | 32 | 0.89 of 2484 | template=Standard c=0.92 n=26 | structure | yes | CANDIDATE |
+| 697 | activity | SUBSTITUTED | `div.row` | `div.col-12` | `div.col-12.col-md-8` | 32 | 29 | 0.78 of 2484 | ptype=lesson c=0.92 n=24 | structure | — | CANDIDATE |
+| 701 | activity | SUBSTITUTED | `div.row` | `div.col-12` | `WIDGET` | 29 | 28 | 0.78 of 2484 | ptype=lesson c=0.92 n=21 | structure | — | CANDIDATE |
+| 704 | activity | EXTRA | `div.col-12` | `—` | `div.ratio.ratio-16x9.videoSection` | 40 | 26 | 0.95 of 2484 | template=Standard c=0.96 n=30 | structure | yes | CANDIDATE |
+| 711 | activity | SUBSTITUTED | `div.col-12` | `WIDGET` | `ol` | 27 | 25 | 0.59 of 2484 | ptype=lesson c=0.69 n=22 | structure | — | CANDIDATE |
+| 713 | activity | EXTRA | `div.icon.ratio.ratio-16x9.videoSection` | `—` | `iframe` | 28 | 24 | 0.99 of 2484 | template=Standard c=0.99 n=21 | structure | yes | CANDIDATE |
+| 715 | activity | SUBSTITUTED | `div.activity.interactive[number=*]` | `div.row` | `WIDGET` | 27 | 24 | 0.55 of 2484 | ptype=lesson c=0.63 n=22 | structure | yes | CANDIDATE |
+| 718 | activity | EXTRA | `div.col-12` | `—` | `h5` | 27 | 23 | 0.99 of 2484 | template=Standard c=0.99 n=22 | structure | — | CANDIDATE |
+| 731 | activity | SUBSTITUTED | `div.row` | `div.col-12` | `div.row` | 22 | 21 | 0.78 of 2484 | era=Refresh c=0.78 n=22 | structure | — | CANDIDATE |
+| 749 | activity | SUBSTITUTED | `div.row` | `div.col-12` | `div.button` | 21 | 19 | 0.78 of 2484 | era=Refresh c=0.78 n=21 | structure | yes | CANDIDATE |
+| 753 | activity | EXTRA | `div.col-12` | `—` | `div.button` | 29 | 18 | 1.00 of 2484 | template=Standard c=1.00 n=25 | structure | yes | CANDIDATE |
+| 754 | activity | EXTRA | `div.ratio.ratio-16x9.videoSection` | `—` | `iframe` | 22 | 18 | 0.97 of 2484 | ptype=lesson c=0.97 n=21 | structure | yes | CANDIDATE |
+| 755 | activity | EXTRA | `div.col-12` | `—` | `div.TKmodal` | 21 | 18 | 1.00 of 2484 | era=Refresh c=1.00 n=21 | structure | — | CANDIDATE |
+| 759 | activity | SUBSTITUTED | `div.col-12` | `h3` | `h3` | 25 | 17 | 0.76 of 2484 | template+ptype=Standard/lesson c=0.89 n=20 | structure | — | CANDIDATE |
+| 766 | activity | SUBSTITUTED | `div.col-12` | `p` | `p>b` | 22 | 16 | 0.75 of 2484 | era=Refresh c=0.75 n=22 | structure | — | CANDIDATE |
+| 795 | activity | SUBSTITUTED | `div.col-12` | `p` | `h4.goJournal` | 22 | 13 | 0.75 of 2484 | template+ptype=Standard/lesson c=0.88 n=21 | structure | — | CANDIDATE |
+| 896 | activity | MISSING | `div.col-12.col-md-8` | `div.activity.dropbox[number=*]` | `—` | 23 | 8 | 0.03 of 2484 | series=XDLS90 c=0.68 n=20 | 0.96 | yes | CANDIDATE |
+| 1093 | activity | EXTRA | `div.activity.clickDropContent.dropbox[nu` | `—` | `a` | 23 | 4 | 1.00 of 2484 | era=Refresh c=1.00 n=23 | structure | yes | CANDIDATE |
+| 1094 | activity | EXTRA | `div.activity.dropbox[number=*]` | `—` | `a` | 21 | 4 | 0.99 of 2484 | era=Refresh c=0.99 n=21 | structure | yes | CANDIDATE |
+| 4015 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p` | 1107 | 416 | 0.82 of 2484 | subject+ptype=1-10 Blended Literacy/lesson c=0.99 n=26 | structure | — | CANDIDATE |
+| 4016 | body | EXTRA | `div#body` | `—` | `div.row` | 1424 | 392 | 0.73 of 2484 | subject+ptype=1-10 Blended Literacy/overview c=1.00 n=31 | structure | — | CANDIDATE |
+| 4017 | body | MISSING | `div#body` | `div.row` | `—` | 1396 | 356 | 0.34 of 2484 | series=CEDO50 c=0.76 n=20 | 0.86 | — | CANDIDATE |
+| 4018 | body | MISSING | `div.col-12.col-md-8` | `p` | `—` | 619 | 294 | 0.26 of 2484 | template+ptype=Fundamentals/overview c=0.91 n=45 | 0.82 | — | CANDIDATE |
+| 4019 | body | EXTRA | `div.col-12.col-md-8` | `—` | `img.img-fluid` | 571 | 259 | 0.96 of 2484 | template+ptype=Standard/overview c=1.00 n=26 | structure | — | CANDIDATE |
+| 4020 | body | EXTRA | `div.col-12.col-md-8` | `—` | `WIDGET` | 397 | 243 | 0.93 of 2484 | subject+ptype=NCEA1/lesson c=0.99 n=50 | structure | — | CANDIDATE |
+| 4021 | body | MOVED | `div.col-12.col-md-8` | `p` | `p` | 347 | 220 | 0.18 of 2484 | template+ptype=Fundamentals/overview c=0.84 n=42 | structure | — | CANDIDATE |
+| 4022 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>b` | 333 | 206 | 0.97 of 2484 | subject=1-10 Blended Literacy c=1.00 n=45 | structure | — | CANDIDATE |
+| 4023 | body | EXTRA | `div.row` | `—` | `div.col-12.col-md-8` | 292 | 206 | 0.84 of 2484 | subject+ptype=1-10 Blended Literacy/lesson c=0.97 n=28 | structure | — | CANDIDATE |
+| 4024 | body | SUBSTITUTED | `div.row` | `div.col-12` | `div.col-12.col-md-8` | 332 | 192 | 0.55 of 2484 | subject+ptype=1-10 Blended Literacy/overview c=0.96 n=67 | structure | — | CANDIDATE |
+| 4025 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h3` | 303 | 190 | 0.82 of 2484 | subject+ptype=1-10 Blended Literacy/overview c=1.00 n=20 | structure | — | CANDIDATE |
+| 4026 | body | EXTRA | `div.col-12.col-md-8` | `—` | `ul` | 299 | 184 | 0.95 of 2484 | subject=1-10 Mathematics c=0.98 n=21 | structure | — | CANDIDATE |
+| 4028 | body | MISSING | `div.row` | `div.col-12.col-md-8` | `—` | 318 | 176 | 0.29 of 2484 | template=Fundamentals c=0.78 n=23 | 0.94 | — | CANDIDATE |
+| 4029 | body | MISSING | `div.col-12.col-md-8` | `WIDGET` | `—` | 270 | 176 | 0.19 of 2484 | template+ptype=Fundamentals/overview c=0.65 n=31 | structure | — | CANDIDATE |
+| 4031 | body | EXTRA | `div.col-12.col-md-8` | `—` | `a` | 238 | 159 | 0.98 of 2484 | subject+ptype=ConnectED/lesson c=1.00 n=28 | structure | — | CANDIDATE |
+| 4032 | body | MISSING | `div.col-12.col-md-8` | `h3` | `—` | 239 | 153 | 0.18 of 2484 | template+ptype=Fundamentals/overview c=0.75 n=21 | 0.89 | — | CANDIDATE |
+| 4035 | body | EXTRA | `p>b` | `—` | `b` | 193 | 125 | 0.94 of 2484 | subject=1-10 Mathematics c=0.97 n=34 | structure | — | CANDIDATE |
+| 4036 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.ratio.ratio-16x9.videoSection` | 181 | 119 | 0.93 of 2484 | subject=NCEA1 c=0.98 n=20 | structure | yes | CANDIDATE |
+| 4038 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>a` | 175 | 118 | 0.99 of 2484 | subject=1-10 English c=1.00 n=20 | structure | — | CANDIDATE |
+| 4039 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.table-responsive` | 170 | 118 | 0.98 of 2484 | subject+ptype=1-10 English/lesson c=0.99 n=21 | structure | — | CANDIDATE |
+| 4043 | body | EXTRA | `a` | `—` | `div.button` | 180 | 109 | 0.97 of 2484 | subject=NCEA1 c=0.98 n=38 | structure | — | CANDIDATE |
+| 4046 | body | MOVED | `div.col-12.col-md-8` | `p` | `p` | 133 | 97 | 0.16 of 2484 | template+ptype=Inquiry/overview c=0.60 n=20 | structure | — | CANDIDATE |
+| 4050 | body | EXTRA | `div.table-responsive` | `—` | `table.table.table-bordered` | 139 | 93 | 0.96 of 2484 | subject=NCEA1 c=0.97 n=28 | structure | yes | CANDIDATE |
+| 4051 | body | EXTRA | `p` | `—` | `b` | 119 | 93 | 0.93 of 2484 | subject=NCEA1 c=0.96 n=29 | structure | — | CANDIDATE |
+| 4054 | body | EXTRA | `div.col-12.col-md-8` | `—` | `ol` | 110 | 84 | 0.99 of 2484 | template=Standard c=0.99 n=87 | structure | — | CANDIDATE |
+| 4056 | body | SUBSTITUTED | `div.icon.ratio.ratio-16x9.videoSection` | `iframe.embed-responsive-item` | `iframe` | 214 | 82 | 0.19 of 2484 | series=PES10 c=0.68 n=35 | structure | yes | CANDIDATE |
+| 4057 | body | EXTRA | `p>i` | `—` | `i` | 108 | 81 | 0.97 of 2484 | subject+ptype=1-10 Blended Literacy/overview c=1.00 n=26 | structure | — | CANDIDATE |
+| 4059 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>i` | 106 | 77 | 0.98 of 2484 | subject=NCEA1 c=0.99 n=26 | structure | — | CANDIDATE |
+| 4060 | body | EXTRA | `p>a` | `—` | `a` | 102 | 76 | 0.99 of 2484 | template=Standard c=1.00 n=77 | structure | — | CANDIDATE |
+| 4062 | body | EXTRA | `div.col-12.col-md-8` | `—` | `audio.audioPlayer.icon` | 129 | 75 | 1.00 of 2484 | ptype=overview c=1.00 n=36 | structure | yes | CANDIDATE |
+| 4063 | body | SUBSTITUTED | `div#body` | `div.row` | `WIDGET` | 123 | 75 | 0.94 of 2484 | subject=Online Safety (OS9000) c=1.00 n=27 | structure | — | CANDIDATE |
+| 4065 | body | EXTRA | `div.row` | `—` | `div.col-12` | 136 | 74 | 0.71 of 2484 | subject=ANZH c=0.74 n=21 | structure | — | CANDIDATE |
+| 4068 | body | MOVED | `div.col-12.col-md-8` | `h3` | `h3` | 83 | 70 | 0.11 of 2484 | template+ptype=Fundamentals/overview c=0.67 n=23 | structure | — | CANDIDATE |
+| 4070 | body | EXTRA | `div.fundamentalsPanel` | `—` | `div.row` | 74 | 69 | 0.99 of 2484 | era=Refresh c=0.99 n=74 | structure | — | CANDIDATE |
+| 4079 | body | EXTRA | `a` | `—` | `div.externalButton` | 92 | 66 | 0.92 of 2484 | template=Standard c=0.93 n=78 | structure | — | CANDIDATE |
+| 4080 | body | EXTRA | `table.table.table-bordered` | `—` | `tr` | 90 | 66 | 0.98 of 2484 | template=Standard c=0.98 n=77 | structure | yes | CANDIDATE |
+| 4084 | body | EXTRA | `div.col-12` | `—` | `p` | 100 | 63 | 0.92 of 2484 | template=Standard c=0.94 n=82 | structure | — | CANDIDATE |
+| 4087 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h4` | 73 | 63 | 0.94 of 2484 | template=Standard c=0.95 n=35 | structure | — | CANDIDATE |
+| 4088 | body | EXTRA | `ul` | `—` | `li` | 70 | 60 | 0.95 of 2484 | template=Standard c=0.96 n=49 | structure | — | CANDIDATE |
+| 4089 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `div.col-12.col-md-8` | 68 | 59 | 0.98 of 2484 | ptype=lesson c=0.99 n=42 | structure | — | CANDIDATE |
+| 4090 | body | EXTRA | `div.ratio.ratio-16x9.videoSection` | `—` | `iframe` | 76 | 58 | 0.92 of 2484 | template=Standard c=0.93 n=55 | structure | yes | CANDIDATE |
+| 4091 | body | EXTRA | `div.alert` | `—` | `div.row` | 72 | 57 | 0.91 of 2484 | template=Standard c=0.92 n=51 | structure | — | CANDIDATE |
+| 4094 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `p` | 68 | 53 | 0.84 of 2484 | template+ptype=Standard/lesson c=0.84 n=48 | structure | — | CANDIDATE |
+| 4095 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `div.activity[number=*]` | 60 | 53 | 0.84 of 2484 | template+ptype=Standard/lesson c=0.84 n=52 | structure | yes | CANDIDATE |
+| 4099 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.alert` | 64 | 49 | 0.90 of 2484 | template=Standard c=0.91 n=49 | structure | — | CANDIDATE |
+| 4102 | body | EXTRA | `tr` | `—` | `td` | 55 | 48 | 0.94 of 2484 | template=Standard c=0.95 n=50 | structure | — | CANDIDATE |
+| 4103 | body | EXTRA | `div.row` | `—` | `div.col-12.col-md-6` | 71 | 47 | 0.99 of 2484 | subject=Online Safety (OS9000) c=1.00 n=26 | structure | — | CANDIDATE |
+| 4106 | body | EXTRA | `div.inquiryPanel` | `—` | `div.row` | 47 | 46 | 0.99 of 2484 | era=Refresh c=0.99 n=47 | structure | — | CANDIDATE |
+| 4110 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.icon.ratio.ratio-16x9.videoSection` | 62 | 44 | 0.92 of 2484 | template=Standard c=0.93 n=54 | structure | yes | CANDIDATE |
+| 4114 | body | EXTRA | `div#body` | `—` | `WIDGET` | 77 | 43 | 0.93 of 2484 | era=Refresh c=0.93 n=77 | structure | — | CANDIDATE |
+| 4116 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `WIDGET` | 46 | 43 | 0.98 of 2484 | ptype=lesson c=0.99 n=38 | structure | — | CANDIDATE |
+| 4120 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `WIDGET` | 41 | 40 | 0.84 of 2484 | template+ptype=Standard/lesson c=0.84 n=24 | structure | — | CANDIDATE |
+| 4123 | body | MISSING | `div#body` | `div.fundamentalsPanel` | `—` | 45 | 39 | 0.02 of 2484 | template+ptype=Fundamentals/overview c=0.60 n=38 | 0.98 | yes | CANDIDATE |
+| 4128 | body | EXTRA | `div#body` | `—` | `div.row.supervisor` | 48 | 38 | 0.90 of 2484 | ptype=lesson c=0.91 n=41 | structure | yes | CANDIDATE |
+| 4129 | body | EXTRA | `p` | `—` | `i` | 44 | 38 | 0.96 of 2484 | template=Standard c=0.97 n=40 | structure | — | CANDIDATE |
+| 4130 | body | EXTRA | `div.alert.solid` | `—` | `div.row` | 49 | 37 | 0.99 of 2484 | template=Standard c=0.99 n=42 | structure | yes | CANDIDATE |
+| 4131 | body | MISSING | `div#body` | `div.inquiryPanel` | `—` | 40 | 37 | 0.02 of 2484 | template+ptype=Inquiry/overview c=0.62 n=33 | 0.92 | — | CANDIDATE |
+| 4135 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>span.infoTrigger` | 38 | 34 | 0.87 of 2484 | template=Standard c=0.87 n=32 | structure | — | CANDIDATE |
+| 4136 | body | EXTRA | `tr` | `—` | `th` | 37 | 34 | 0.99 of 2484 | template=Standard c=1.00 n=33 | structure | — | CANDIDATE |
+| 4137 | body | EXTRA | `div.row` | `—` | `div.col-12.col-md-4.offset-md-0` | 34 | 34 | 0.80 of 2484 | template=Standard c=0.81 n=21 | structure | — | CANDIDATE |
+| 4140 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h5` | 40 | 33 | 0.99 of 2484 | subject=NCEA1 c=0.99 n=20 | structure | — | CANDIDATE |
+| 4142 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h4.goJournal` | 40 | 32 | 1.00 of 2484 | template=Standard c=1.00 n=38 | structure | — | CANDIDATE |
+| 4149 | body | EXTRA | `div.icon.ratio.ratio-16x9.videoSection` | `—` | `iframe` | 38 | 31 | 0.97 of 2484 | template=Standard c=0.98 n=33 | structure | yes | CANDIDATE |
+| 4150 | body | EXTRA | `div#body` | `—` | `div.fundamentalsPanel` | 38 | 31 | 0.98 of 2484 | era=Refresh c=0.98 n=38 | structure | yes | CANDIDATE |
+| 4155 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.flipCardsContainer.row` | 33 | 30 | 0.93 of 2484 | template=Standard c=0.94 n=27 | structure | — | CANDIDATE |
+| 4157 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `div.row` | 31 | 30 | 0.98 of 2484 | era=Refresh c=0.98 n=31 | structure | — | CANDIDATE |
+| 4158 | body | EXTRA | `div#body` | `—` | `div.inquiryPanel` | 30 | 30 | 0.98 of 2484 | era=Refresh c=0.98 n=30 | structure | — | CANDIDATE |
+| 4162 | body | EXTRA | `div.introduction` | `—` | `div.row` | 28 | 28 | 0.99 of 2484 | era=Refresh c=0.99 n=28 | structure | — | CANDIDATE |
+| 4165 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `img.img-fluid` | 28 | 27 | 0.84 of 2484 | era=Refresh c=0.84 n=28 | structure | — | CANDIDATE |
+| 4170 | body | EXTRA | `div.row` | `—` | `div.col-12.col-md-4` | 33 | 26 | 0.95 of 2484 | template=Standard c=0.95 n=26 | structure | — | CANDIDATE |
+| 4171 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `div.col-12.col-md-6` | 33 | 26 | 0.98 of 2484 | ptype=lesson c=0.99 n=29 | structure | — | CANDIDATE |
+| 4172 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.clickDropContent` | 31 | 26 | 0.94 of 2484 | template=Standard c=0.94 n=29 | structure | — | CANDIDATE |
+| 4176 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.alert.solid` | 31 | 25 | 0.99 of 2484 | template=Standard c=0.99 n=25 | structure | yes | CANDIDATE |
+| 4177 | body | EXTRA | `div.inquiryPanel.showing` | `—` | `div.row` | 27 | 25 | 0.99 of 2484 | era=Refresh c=0.99 n=27 | structure | yes | CANDIDATE |
+| 4186 | body | EXTRA | `p>span.infoTrigger` | `—` | `span.infoTrigger` | 23 | 23 | 0.95 of 2484 | era=Refresh c=0.95 n=23 | structure | — | CANDIDATE |
+| 4189 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `div.activity.interactive[number=*]` | 24 | 22 | 0.84 of 2484 | template+ptype=Standard/lesson c=0.84 n=22 | structure | yes | CANDIDATE |
+| 4190 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h2` | 23 | 22 | 0.98 of 2484 | era=Refresh c=0.98 n=23 | structure | — | CANDIDATE |
+| 4191 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `h3` | 23 | 22 | 0.84 of 2484 | template+ptype=Standard/lesson c=0.84 n=21 | structure | — | CANDIDATE |
+| 4192 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `p` | 23 | 22 | 0.98 of 2484 | era=Refresh c=0.98 n=23 | structure | — | CANDIDATE |
+| 4205 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `div.alert` | 28 | 20 | 0.84 of 2484 | era=Refresh c=0.84 n=28 | structure | — | CANDIDATE |
+| 4215 | body | EXTRA | `div.col-12.col-md-6` | `—` | `img.img-fluid` | 23 | 19 | 0.99 of 2484 | template=Standard c=0.99 n=22 | structure | — | CANDIDATE |
+| 4220 | body | EXTRA | `div.flipCardsContainer.row` | `—` | `div.col-12.col-md-4.paddingLR` | 20 | 19 | 0.97 of 2484 | era=Refresh c=0.97 n=20 | structure | — | CANDIDATE |
+| 4232 | body | SUBSTITUTED | `div#body` | `div.row` | `div.table-responsive` | 23 | 17 | 0.94 of 2484 | ptype=lesson c=0.98 n=21 | structure | — | CANDIDATE |
+| 4268 | body | EXTRA | `div.col-12.col-md-6` | `—` | `p` | 23 | 14 | 1.00 of 2484 | ptype=lesson c=1.00 n=21 | structure | — | CANDIDATE |
+| 4342 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `div.button` | 23 | 10 | 0.98 of 2484 | ptype=lesson c=0.99 n=22 | structure | — | CANDIDATE |
+| 9248 | root | EXTRA | `body.container-fluid` | `—` | `div.row` | 274 | 274 | 0.88 of 2491 | subject+ptype=1-10 Mathematics/overview c=0.97 n=33 | structure | — | CANDIDATE |
+| 9252 | root | SUBSTITUTED | `#root` | `body` | `body.container-fluid` | 138 | 15 | 0.06 of 2491 | series=PWY10 c=1.00 n=44 | structure | yes | CANDIDATE |
 
 ## Details — in the companion file `CONVERTER_V2/outputs/_diff_queue_details.md`
 Every CANDIDATE and every top-40 row has three quoted examples (WT / gold / Claude) there, plus the
@@ -604,7 +603,7 @@ candidates' detail blocks are repeated below for convenience.
   - Claude: `h1  «Module»`
 - modules: AGH1005, ANZH302, BLL246, BLL271, BLL272, BLL273, BLL274, BLL276, CEDO105, ENGFUN02, ENGI103, FRFUN06, HIS1002, PWY1002, SSFUN07, WJFUN105, WJFUN116, XDLS904, XDLS906, XFUN02, XOTPB08
 
-### #36 · module-menu · SUBSTITUTED · `div.col-12.col-md-6.paddingR` › gold `p` vs Claude `h5` — CANDIDATE
+### #35 · module-menu · SUBSTITUTED · `div.col-12.col-md-6.paddingR` › gold `p` vs Claude `h5` — CANDIDATE
 - pages 86 / modules 86 / lines 155; consensus (all) 0.06 of 2491 gold pages with the region; derivable structure-only (0 lines with no WT source)
 - by template: Standard 62m/62p c=0.05; Fundamentals 14m/14p c=0.12; Inquiry 10m/10p c=0.38
 - by subject: 1-10 Blended Literacy 72m/72p c=0.25; 1-10 Health and PE 14m/14p c=0.39
@@ -911,25 +910,7 @@ candidates' detail blocks are repeated below for convenience.
   - Claude: `div.col-12.col-md-8  «We are learning:»`
 - modules: CEDO105, ENGI102, ENGI103, MXDB301, MXDB302, MXDI301, MXEX101, MXEX301, MXEX302, MXFL204, MXFU201, MXFU202, MXFU301, MXFU302, MXFU402
 
-### #68 · module-menu · EXTRA · `div.row` › gold `—` vs Claude `div.col-12.col-md-6.offset-md-0` — CANDIDATE
-- pages 31 / modules 15 / lines 31; consensus (all) 0.95 of 2491 gold pages with the region; derivable structure-only (0 lines with no WT source)
-- by template: Standard 13m/29p c=0.95; Fundamentals 2m/2p c=0.95
-- by subject: 1-10 English 11m/27p c=0.90; 1-10 Mathematics 2m/2p c=0.94; 1-10 Social Science 2m/2p c=0.67
-- by era: Refresh 15m/31p c=0.95
-- authority (§1b): 1 — KB rule (verify the hit's scope)
-  - KB: 06_TEMPLATE_RECOGNITION.md:158 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
-- **ENGC101** ENGC101_0_0.html ↔ ENGC101_0.0.html (structure, derivable=True)
-  - gold: `—`
-  - Claude: `div.col-12.col-md-6.offset-md-0  «In this module, we delve into the diverse tools and techniques we use to communicate effectively in various contexts. Fr»`
-- **ENGC102** ENGC102_0_0.html ↔ ENGC102_0.0.html (structure, derivable=True)
-  - gold: `—`
-  - Claude: `div.col-12.col-md-6.offset-md-0  «Learning Intentions»`
-- **ENGC201** ENGC201_0_0.html ↔ ENGC201_0.0.html (structure, derivable=True)
-  - gold: `—`
-  - Claude: `div.col-12.col-md-6.offset-md-0  «Learning Intentions»`
-- modules: ENGC101, ENGC102, ENGC201, ENGI103, ENGI201, ENGI202, ENGI203, ENGI400, ENGJ102, ENGS202, ENGS301, MXFUN02, MXFUN03, SSOG101, SSOG105
-
-### #69 · module-menu · SUBSTITUTED · `div.col-12.col-md-6.paddingR` › gold `ul` vs Claude `p>b` — CANDIDATE
+### #68 · module-menu · SUBSTITUTED · `div.col-12.col-md-6.paddingR` › gold `ul` vs Claude `p>b` — CANDIDATE
 - pages 15 / modules 15 / lines 15; consensus (all) 0.06 of 2491 gold pages with the region; derivable structure-only (0 lines with no WT source)
 - by template: Standard 12m/12p c=0.05; Inquiry 3m/3p c=0.39
 - by subject: 1-10 Blended Literacy 14m/14p c=0.25; Te ara Whakapuawa -Wellbeing 1m/1p c=1.00
@@ -947,7 +928,7 @@ candidates' detail blocks are repeated below for convenience.
   - Claude: `p  «Students interpret texts by drawing on various elements and recognise different perspectives, sharing their own opinions»`
 - modules: BLL125, BLL126, BLL127, BLL136, BLL137, BLL140, BLL141, BLL143, BLL146, BLL147, BLL150, BLL151, BLL153, BLL154, TWHT903
 
-### #70 · module-menu · EXTRA · `div.row` › gold `—` vs Claude `div.col-12.col-md-12.paddingR` — CANDIDATE
+### #69 · module-menu · EXTRA · `div.row` › gold `—` vs Claude `div.col-12.col-md-12.paddingR` — CANDIDATE
 - pages 16 / modules 14 / lines 16; consensus (all) 0.96 of 2491 gold pages with the region; derivable structure-only (0 lines with no WT source)
 - by template: Standard 14m/16p c=0.96
 - by subject: 1-10 Blended Literacy 12m/12p c=0.80; EXPlore 2m/4p c=1.00
@@ -964,6 +945,24 @@ candidates' detail blocks are repeated below for convenience.
   - gold: `—`
   - Claude: `div.col-12.col-md-12.paddingR  «Overview»`
 - modules: BLL112, BLL113, BLL125, BLL141, BLL142, BLL143, BLL144, BLL162, BLL163, BLL166, BLL236, BLL237, EXBP901, EXIP901
+
+### #72 · module-menu · EXTRA · `div.row` › gold `—` vs Claude `div.col-12.col-md-6.offset-md-0` — CANDIDATE
+- pages 29 / modules 13 / lines 29; consensus (all) 0.95 of 2491 gold pages with the region; derivable structure-only (0 lines with no WT source)
+- by template: Standard 13m/29p c=0.95
+- by subject: 1-10 English 11m/27p c=0.90; 1-10 Social Science 2m/2p c=0.67
+- by era: Refresh 13m/29p c=0.95
+- authority (§1b): 1 — KB rule (verify the hit's scope)
+  - KB: 06_TEMPLATE_RECOGNITION.md:158 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
+- **ENGC101** ENGC101_0_0.html ↔ ENGC101_0.0.html (structure, derivable=True)
+  - gold: `—`
+  - Claude: `div.col-12.col-md-6.offset-md-0  «In this module, we delve into the diverse tools and techniques we use to communicate effectively in various contexts. Fr»`
+- **ENGC102** ENGC102_0_0.html ↔ ENGC102_0.0.html (structure, derivable=True)
+  - gold: `—`
+  - Claude: `div.col-12.col-md-6.offset-md-0  «Learning Intentions»`
+- **ENGC201** ENGC201_0_0.html ↔ ENGC201_0.0.html (structure, derivable=True)
+  - gold: `—`
+  - Claude: `div.col-12.col-md-6.offset-md-0  «Learning Intentions»`
+- modules: ENGC101, ENGC102, ENGC201, ENGI103, ENGI201, ENGI202, ENGI203, ENGI400, ENGJ102, ENGS202, ENGS301, SSOG101, SSOG105
 
 ### #73 · module-menu · EXTRA · `div.col-12.col-md-6.paddingL` › gold `—` vs Claude `h5` — CANDIDATE
 - pages 13 / modules 13 / lines 29; consensus (all) 1.00 of 2491 gold pages with the region; derivable structure-only (0 lines with no WT source)

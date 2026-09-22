@@ -847,6 +847,12 @@ class ContentConverter {
 			&& (it.parse?.class === "noise" || it.parse?.class === "instruction")
 			&& it.consumedBy === undefined
 			&& phaseTextRe.test((it.parse?.folded ?? "").trim());
+		// ROUND 433 — the MXFUN code-content phase dialect: #codePhasePrepass (run before the
+		// partition) flagged each `[<CODE> Content - PHASE N]` marker (N ≥ 2) and the first
+		// non-intro `[Page N]` opener as a phase break; they take the red-span path below.
+		// Env CODEPHASE_OFF (the pre-pass never flags anything).
+		const isCodePhaseBreak = (it) => !!page._codePhase && it.type === "tag" && it.consumedBy === undefined
+			&& !it._codePhaseConsume && (it._codePhaseBreak === true || (typeof it._codePhase === "number" && it._codePhase >= 2));
 		// The ARFUN fundamentals subject group marks phase boundaries with BRACKETED red
 		// instruction spans — a third distinct convention, different from both TEFUN's plain
 		// black "Phase N" line and ENFUN's bare (bracket-less) red span handled above.
@@ -1000,7 +1006,7 @@ class ContentConverter {
 		const phaseLineCount = bodyItems.reduce((n, it) =>
 			(it.type === "black" && it.consumedBy === undefined)
 				? n + String(it.text || "").split("\n").filter((ln) => phaseTextRe.test(ln.trim()) || isTaLine(ln)).length
-				: n + ((isRedPhaseItem(it) || isBracketOpener(it) || isBracketCloser(it) || taKindOf(it) || isAccBreak(it)) ? 1 : 0), 0);
+				: n + ((isRedPhaseItem(it) || isBracketOpener(it) || isBracketCloser(it) || taKindOf(it) || isAccBreak(it) || isCodePhaseBreak(it)) ? 1 : 0), 0);
 		// SCOPE to the SINGLE-FILE fundamentals page model (the phase-panel template is single-file:
 		// the whole module — all phases — on one page). MXFUN01 is multi-file (page_model "multi-file",
 		// 19 pages) → excluded, matching the human; every TEFUN level is single-file. (phaseLineCount>=2
@@ -1031,7 +1037,7 @@ class ContentConverter {
 				// net). The BRACKETED opener/closer forms (ARFUN) take exactly the same path
 				// (and likewise, none of the 4 ARFUN modules carry trailing text either — same
 				// safety net).
-				if (isRedPhaseItem(bi) || isBracketOpener(bi) || isBracketCloser(bi)) {
+				if (isRedPhaseItem(bi) || isBracketOpener(bi) || isBracketCloser(bi) || isCodePhaseBreak(bi)) {
 					const repl = [{ type: "phasebreak" }];
 					if (bi.blackAfter && bi.blackAfter.trim()) repl.push({ type: "black", text: bi.blackAfter, block: bi.block });
 					bodyItems.splice(k, 1, ...repl);
@@ -1195,7 +1201,7 @@ class ContentConverter {
 			&& _labeledTabs >= (_pgCfg.min_labeled ?? 3)
 			&& _emptyOpeners >= (_pgCfg.min_empty ?? 1)
 			&& _pageOpeners >= (_pgCfg.min_page_openers ?? 3);
-		const _bllInquiry = !!inqCfg && inqCfg.enabled !== false
+		const _bllInquiry = !!inqCfg && inqCfg.enabled !== false && !page._codePhase   // ROUND 433 — never on a code-content phase page (CODEPHASE_OFF)
 			&& !(typeof process !== "undefined" && process.env && process.env.INQUIRYTABS_OFF)
 			&& ((_emptyOpeners >= 2 && (_labeledTabs >= 3 || _sideTabsInstr)) || _pageDelimited);
 		// The TWHA/TWHK HEADING-LABEL family is a third shape again: EMPTY [Tab N] openers with
@@ -1232,7 +1238,7 @@ class ContentConverter {
 		// approach used for the fundamentals single-page detection earlier in this file.
 		const _singleFile = run?.resolvedRules?.page_model !== "multi-file";
 		const _hlCfg = inqCfg && inqCfg.heading_label;
-		const _headingLabelOn = !!inqCfg && inqCfg.enabled !== false
+		const _headingLabelOn = !!inqCfg && inqCfg.enabled !== false && !page._codePhase   // ROUND 433
 			&& !(typeof process !== "undefined" && process.env && process.env.INQUIRYTABS_OFF)
 			&& !!_hlCfg && _hlCfg.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env.HEADINGLABEL_OFF)
@@ -1263,7 +1269,7 @@ class ContentConverter {
 		};
 		const _navItems = _stOn ? bodyItems.filter(isNavItem) : [];
 		const _navLabelled = _navItems.filter((it) => navLabelOf(it).length > 0).length;
-		const sideTabMode = _stOn && _navLabelled >= (_stCfg.min_labelled ?? 3);
+		const sideTabMode = _stOn && !page._codePhase && _navLabelled >= (_stCfg.min_labelled ?? 3);   // ROUND 433 — never on a code-content phase page
 		// the bare nav tag's label TABLE (every cell a short label) is the crumb list — consumed, never rendered
 		const sideTabSkip = new Set();
 		if (sideTabMode && _stCfg.label_table !== false) {
@@ -1298,7 +1304,7 @@ class ContentConverter {
 		// `outputs/_probe_cedpage.cjs`). This is mutually exclusive with the BLL `inquiryMode`
 		// above, because that one specifically requires EMPTY openers, and CED has none.
 		// Data flag: body_region.inquiry_tabs.page_split   Env toggle: CEDPAGE_OFF
-		const cedInq = PanelsBuilder.detectInquiryCed(page, tpl);
+		const cedInq = page._codePhase ? { on: false, labels: [] } : PanelsBuilder.detectInquiryCed(page, tpl);   // ROUND 433 — never on a code-content phase page (CODEPHASE_OFF)
 		const cedInquiryMode = cedInq.on;
 		// ROUND 361 — the EXPlore "Navigation with N sections" inquiry dialect (EXPFUN02–05):
 		// PanelsBuilder.detectInquirySections flags the instruction and its section openers; the body
@@ -5280,6 +5286,116 @@ class ContentConverter {
 	};
 
 	/**
+	 * ROUND 433 (the autonomous loop, session 36 Round 1 — LOOP §1d exception 1, the MXFUN
+	 * family dialect): THE MXFUN CODE-CONTENT PHASE DIALECT.
+	 *
+	 * The MXFUN02 / MXFUN03 Writers Templates author ONE single-file Fundamentals module as
+	 * four phases. Each phase opens with a red marker of the form `[MXFUN203 Content -
+	 * PHASE 2]` (the per-phase deliverable code + "Content - PHASE N") and then REPEATS the
+	 * module's front matter — `[Fundamental 1 code] MXFUN203`, `[Title] Measurement`,
+	 * `[Fundamental content]` — before its `[Page N]` + `[Side tab N] label` sections; an
+	 * `[Intro page]` / `[Front page]` … `[End page]` block before `[Page 1]` is the module
+	 * introduction. The human's page (2 / 2) is the ordinary fundamentals PHASES shell —
+	 * div.phases, div.introduction (the intro page's paragraphs + the phaseLink tile row),
+	 * one div.fundamentalsPanel per phase with its pages FLAT inside (no sub-panels, no
+	 * crumbs), the side-tab labels rendered nowhere (the h1s are the writer's own
+	 * `[Lesson N title H1]` headings), the overview menu an empty simplified shell.
+	 *
+	 * Without this pre-pass three mechanisms mis-fired at once: #partitionItems took the
+	 * SECOND `[Title]` (Phase 2's repeat) as the overview's intro marker, so the whole of
+	 * Phase 1 landed in #module-menu-content (the s35 / s36 menu-overrun census's two largest
+	 * rows, 32 + 31 elements); the labelled side tabs plus ≥ 3 `[Page N]` openers fired the
+	 * r100 `_pageDelimited` inquiry mode (11 crumbs + inquiryPanels); and the `\btab\b`
+	 * fundamentals sentinel wrapped every side tab in its own fundamentalsPanel.
+	 *
+	 * This runs on page.items BEFORE the partition (the intro-marker search must skip the
+	 * repeats). It fires only on a fundamentals-class, single-file page carrying at least one
+	 * marker with N ≥ 2, and marks: every marker `_codePhase = N` (an N = 1 marker is
+	 * consumed — the first phase opens at the first NON-intro `[Page N]` opener, which is
+	 * flagged `_codePhaseBreak`); the front-matter repeats that follow each marker
+	 * (consume_repeat_tags — the page's FIRST title bar is kept as the header opener); and
+	 * every `[Side tab N]` tag (side_tab_pattern) — all `_codePhaseConsume`, rendered
+	 * nowhere. #partitionItems skips consumed items; the phase-text pre-pass turns the breaks
+	 * into phasebreak items; the r100 / CED / heading-label / side-tab-nav inquiry modes are
+	 * vetoed on a code-phase page (`page._codePhase`). MXFUN01 (a bare `[PHASE N]` marker) is
+	 * multi-file and untouched; SCES201's `[phase N]` are table cells inside a widget (never
+	 * a tag item). Exactly 2 of 762 Writers Templates carry the marker (measured 22 Sept 2026).
+	 * Data: body_region.fundamentals_panels.phase_text.code_content_delimiter
+	 * Env: CODEPHASE_OFF (reverts the whole dialect — OFF corpus byte-identical)
+	 */
+	static #codePhasePrepass(page, run) {
+		const cfg = DataService.Data.EmitTemplates?.body_region?.fundamentals_panels?.phase_text?.code_content_delimiter;
+		if (!cfg || cfg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "CODEPHASE_OFF"]) return false;
+		if (!/(^|\s)fundamentals(\s|$)/.test(run?.resolvedRules?.body_class || "")) return false;
+		if (run?.resolvedRules?.page_model !== "single-file") return false;
+		const items = page.items || [];
+		const markerRe = new RegExp(cfg.marker_pattern || "^\\[?\\s*[a-z]{2,6}\\d{2,4}\\s+content\\s*[-:]\\s*phase\\s+(\\d+)\\s*\\]?$", "i");
+		const introRe = new RegExp(cfg.intro_page_pattern || "^\\[?\\s*(?:intro|front)\\s*page\\s*\\]?$", "i");
+		const sideRe = new RegExp(cfg.side_tab_pattern || "^\\s*side\\s*tabs?\\b", "i");
+		const repeatTags = new Set(cfg.consume_repeat_tags || ["lesson content", "title bar"]);
+		const foldOf = (it) => (it.parse?.folded ?? Utils.Fold(String(it.text || ""))).trim();
+		const markers = [];
+		for (let k = 0; k < items.length; k++) {
+			const it = items[k];
+			if (it.type !== "tag" || it.parse?.primary || it.consumedBy !== undefined) continue;
+			if (it.parse?.class !== "noise" && it.parse?.class !== "instruction") continue;
+			const m = markerRe.exec(foldOf(it));
+			if (m) markers.push({ k, n: parseInt(m[1], 10) });
+		}
+		if (!markers.length || !markers.some((m) => m.n >= 2)) return false;
+		const isPageOpener = (it) => it.type === "tag" && it.parse?.primary?.directive === "PAGE_BOUNDARY"
+			&& it.parse?.primary?.tag === "page";
+		// the first NON-intro page opener is where phase 1 begins (the intro page before it is the introduction)
+		const firstBreak = items.findIndex((it) => isPageOpener(it) && !introRe.test(foldOf(it)) && !introRe.test(Utils.Fold(String(it.text || ""))));
+		if (firstBreak < 0) return false;
+		const firstTb = items.findIndex((y) => y.type === "tag" && y.parse?.primary?.tag === "title bar");
+		for (const m of markers) {
+			const it = items[m.k];
+			it._codePhase = m.n;
+			// an N = 1 marker (or any marker sitting before the first page opener) is consumed — the
+			// first break is that page opener, so the intro page stays in the introduction segment
+			if (m.n < 2 || m.k < firstBreak) it._codePhaseConsume = true;
+			// the per-phase front-matter repeats: the run of section markers / title bars right after the marker
+			let seenTitle = false;
+			for (let j = m.k + 1; j < items.length; j++) {
+				const x = items[j];
+				if (x.type === "black" && !String(x.text || "").trim()) continue;   // blank lines
+				if (x.type !== "tag" || !x.parse?.primary || !repeatTags.has(x.parse.primary.tag)) break;
+				if (x.parse.primary.tag === "title bar") {
+					if (seenTitle) break;
+					seenTitle = true;
+					if (j === firstTb) continue;   // the page's FIRST title bar is the header opener — keep it
+				}
+				x._codePhaseConsume = true;
+			}
+		}
+		// a `[Fundamental 1 code]` line BEFORE the first marker (MXFUN03's opener) is a repeat too
+		for (let k = 0; k < Math.min(firstBreak, items.length); k++) {
+			const it = items[k];
+			if (it.type === "tag" && it.parse?.primary?.tag === "lesson content" && /\bcode\b/.test(foldOf(it))) it._codePhaseConsume = true;
+		}
+		items[firstBreak]._codePhaseBreak = true;
+		// the `[Intro page]` / `[Front page]` opener renders nothing (a `front` SUBTAG would otherwise
+		// print an orphan flag — MXFUN02 carries one per phase); its `[End page]` is an ordinary break
+		for (const it of items) {
+			if (it.type === "tag" && it.consumedBy === undefined && introRe.test(Utils.Fold(String(it.text || "")))) it._codePhaseConsume = true;
+		}
+		if (cfg.consume_side_tabs !== false) {
+			for (const it of items) {
+				if (it.type !== "tag" || it.consumedBy !== undefined) continue;
+				if (!/\btab\b/i.test(it.parse?.primary?.tag || "")) continue;
+				const bare = String(it.text || "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").replace(/^\s*\[/, "").trim();
+				if (sideRe.test(bare)) it._codePhaseConsume = true;
+			}
+		}
+		page._codePhase = true;
+		run.AddNote?.("info", "ContentConverter",
+			`Code-content phase dialect: ${markers.length} phase marker(s) (phases ${markers.map((m) => m.n).join(", ")}) — the front-matter repeats and side tabs consumed, the phases shell built (fundamentals_panels.phase_text.code_content_delimiter).`);
+		return true;
+	};
+
+	/**
 	 * Splits a page's items three ways:
 	 *  - titleBar: the [TITLE BAR] payload → header titles (English | Te Reo)
 	 *  - menuItems: overview pre-introduction section, or the lesson's
@@ -5295,6 +5411,10 @@ class ContentConverter {
 		const titleBar = { english: "", teReo: "" };
 		const menuItems = [];
 		const bodyItems = [];
+		// ROUND 433 — the MXFUN code-content phase dialect marks the per-phase front-matter repeats
+		// and side tabs consumed BEFORE the boundary search below (a repeated `[Title]` must never
+		// become the overview's intro marker). Env CODEPHASE_OFF.
+		this.#codePhasePrepass(page, run);
 
 		// find the boundary markers.
 		// The menu/body boundary on the overview is [MODULE INTRODUCTION] —
@@ -5309,6 +5429,7 @@ class ContentConverter {
 			let seenOpener = false;
 			introIdx = items.findIndex((it) => {
 				if (it.type !== "tag" || it.parse.primary?.tag !== "title bar") return false;
+				if (it._codePhaseConsume) return false;   // ROUND 433 — a per-phase `[Title]` repeat is not the intro marker
 				if (!seenOpener) { seenOpener = true; return false; }   // the page opener itself
 				return true;                                            // first MID-doc alias
 			});
@@ -5780,6 +5901,7 @@ class ContentConverter {
 			if (i === funAliasIdx) continue;
 			if (loiAlias && i === overviewIdx) continue;   // ROUND 432 — the lesson page's [Overview] alias is the menu marker, never its title
 			if (tbConsumed.has(i)) continue;   // already absorbed into the header title above
+			if (it._codePhaseConsume) continue;   // ROUND 433 — a per-phase front-matter repeat / a `[Side tab N]` renders nowhere (CODEPHASE_OFF)
 
 			// ---- the title bar feeds the header, never the body ----------
 			if (it.type === "tag" && it.parse.primary?.tag === "title bar"

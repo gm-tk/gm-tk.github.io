@@ -1160,6 +1160,14 @@ class InteractiveScanner {
 		if (br && br.enabled !== false && br.scanner_hard_terminator !== false && br.opener_pattern
 			&& !(typeof process !== "undefined" && process.env && process.env.FUNPANBRACKET_OFF)
 			&& new RegExp(br.opener_pattern, "i").test(folded)) return true;
+		// ROUND 433 — the MXFUN code-content phase marker (`[MXFUN402 Content - PHASE 4]`) is a
+		// hard terminator too: without it the widget open at the end of Phase 3 swallowed the
+		// Phase 4 marker as a member and the fourth panel never opened (MXFUN02). Same gate as the
+		// two forms above. Data fundamentals_panels.phase_text.code_content_delimiter; env CODEPHASE_OFF.
+		const cc = fp.code_content_delimiter;
+		if (cc && cc.enabled !== false && cc.scanner_hard_terminator !== false && cc.marker_pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[cc.env || "CODEPHASE_OFF"])
+			&& new RegExp(cc.marker_pattern, "i").test(folded)) return true;
 		return false;
 	};
 

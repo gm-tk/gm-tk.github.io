@@ -1,0 +1,75 @@
+(a) [Lesson Overview] markers WITH trailing text on the marker line: 42 (modules 13)
+   gold=absent claude=absent            20
+   gold=menu claude=absent              11
+   gold=nopage claude=absent             7
+   gold=menu claude=body                 2
+   gold=body claude=body                 1
+   gold=menu claude=menu                 1
+   by template family:
+      Inquiry        {'gold=body claude=body': 1, 'gold=absent claude=absent': 1}
+      Standard       {'gold=absent claude=absent': 19, 'gold=menu claude=absent': 11, 'gold=nopage claude=absent': 7, 'gold=menu claude=body': 2, 'gold=menu claude=menu': 1}
+   by prefix (top 25):
+      HIS      {'gold=menu claude=absent': 6, 'gold=absent claude=absent': 5, 'gold=menu claude=body': 2}
+      MXDI     {'gold=absent claude=absent': 8, 'gold=menu claude=absent': 2}
+      CEDW     {'gold=absent claude=absent': 3, 'gold=menu claude=absent': 2, 'gold=menu claude=menu': 1}
+      XGF      {'gold=nopage claude=absent': 5}
+      HES      {'gold=absent claude=absent': 2}
+      CEDR     {'gold=body claude=body': 1}
+      CEDT     {'gold=absent claude=absent': 1}
+      AGH      {'gold=nopage claude=absent': 1}
+      GEO      {'gold=nopage claude=absent': 1}
+      MXFL     {'gold=menu claude=absent': 1}
+      MXFU     {'gold=absent claude=absent': 1}
+
+(b) an [Alert box] as the first tagged line after the marker (before [Lesson content] / a heading): 22 (modules 3)
+   gold=menu claude=body                19
+   gold=nopage claude=nopage             2
+   gold=absent claude=body               1
+   by template family:
+      Fundamentals   {'gold=nopage claude=nopage': 2}
+      Standard       {'gold=menu claude=body': 19, 'gold=absent claude=body': 1}
+   by prefix (top 25):
+      HIS      {'gold=menu claude=body': 19, 'gold=absent claude=body': 1}
+      SSFUN    {'gold=nopage claude=nopage': 2}
+
+examples:
+  ALERT gold=absent claude=body
+     HIS1004 L3: In this lesson you are learning about the external factors/long-term c
+  ALERT gold=menu claude=body
+     HIS1003 L1: In this lesson you are learning to understand the whakapapa of the Uni
+     HIS1003 L2: In this lesson you are learning to understand that there are different
+     HIS1003 L3: In this lesson you are learning to understand that different external 
+     HIS1003 L4: In this lesson you are learning to understand the whakapapa of the uni
+     HIS1003 L5: In this lesson you are learning to use different narratives to add to 
+     HIS1003 L6: In this lesson you are learning to develop your understanding of how t
+  ALERT gold=nopage claude=nopage
+     SSFUN02 L2: Fun School Fact #2: The world’s largest school
+     SSFUN02 L4: 
+  gold=absent claude=absent
+     CEDT207 L0: In this lesson we will look at different patterns and symbols in art a
+     CEDW501 L1: Te ao Māori worldview: seeing the world through Māori eyes
+     CEDW501 L2: Hauroa: what affects our wellbeing?
+     CEDW501 L5: Steps to Strengthening my Hauora
+     HES1005 L3: This lesson will cover some nutrition basics.
+     HES1005 L4: This lesson will cover some basics in relationships and sexuality.
+  gold=body claude=body
+     CEDR203 L0: In this lesson you will learn about kaitiakitanga and how it helps us 
+  gold=menu claude=absent
+     CEDW501 L3: Connections Across Time: what is whakapapa?
+     CEDW501 L8: Produce, Implement, and Reflect (US496)
+     HIS1003 L1: What are the origins of the United Nations Organisation and the Univer
+     HIS1003 L2: This lesson covers the whakapapa of protest in Aotearoa New Zealand.
+     HIS1003 L3: Exploring the broader perspective: external factors: changing attitude
+     HIS1003 L6: A big idea of history: historical narratives are constructed from a ra
+  gold=menu claude=body
+     HIS1003 L4: The whakapapa of the Union Movement in Aotearoa New Zealand
+     HIS1004 L2: The whakapapa of apartheid in South Africa
+  gold=menu claude=menu
+     CEDW501 L7: Tracking and Reflecting
+  gold=nopage claude=absent
+     AGH1004 L2: We are learning to ...
+     GEO1005 L2: This lesson will introduce you to features of the Canterbury Plains
+     XGF9001 L0: unique challenges. Sometimes, school feels too slow. Sometimes, people
+     XGF9001 L0: finding your tribe is so important! It is all about connecting with li
+     XGF9001 L0: Sometimes things don’t go the way we planned. We might feel frustrated
+     XGF9001 L0: Every person has a spark  –  something that excites and inspires them.

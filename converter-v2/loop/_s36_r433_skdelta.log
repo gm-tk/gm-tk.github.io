@@ -1,0 +1,8 @@
+OLD pairs 2491  SCAFFOLD 54.5220%  RAW 38.358%  >=50 1546  >=75 256  >=90 23
+NEW pairs 2491  SCAFFOLD 54.5311%  RAW 38.362%  >=50 1546  >=75 256  >=90 23
+delta SCAFFOLD +0.0090pp  RAW +0.004pp  >=50 +0  >=75 +0  >=90 +0
+movers 2 (up 2 / down 0), pp-sum +22.5
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  MXFUN03    MXFUN03_0_0.html            8.1 ->   28.4  (+20.3)
+  MXFUN02    MXFUN02_0_0.html            5.8 ->    8.0  (+2.2)
