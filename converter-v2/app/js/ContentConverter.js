@@ -5429,9 +5429,26 @@ class ContentConverter {
 			const colonOn = !!colonCfg && colonCfg.enabled !== false
 				&& !(typeof process !== "undefined" && process.env && process.env[colonCfg.env ?? "INQFAMILY_OFF"])
 				&& (colonCfg.inquiry_only === false || !!MenuBuilder.inquiryFamilyFor(run, page));   // scoped to the Inquiry family this round (the Standard / tabs overviews are a queued class)
-			const matchesLabel = (f) => labels.some((l) =>
-				f === l || f.startsWith(l + " ") || f.endsWith(" " + l) || f.includes(" " + l + " ")
-				|| (colonOn && (f === l + ":" || f.startsWith(l + ": ") || f.startsWith(l + ":"))));
+			// ROUND 431 — a SINGLE-WORD label ("do" / "know" / "understand") is a section label only at the START of the
+			// heading or as the whole heading: the inner-word test read `Why do birds build nests?` / `What do I know?` /
+			// `Reflect: What can you do …` as the "Do" / "Know" sections and moved page-1 blocks into the menu (CEDO204,
+			// TWHK901, CEDR302). Multi-word labels keep the inner / trailing tests. Data menu.overview_section_labels_word_start;
+			// env MENUWORD_OFF.
+			const wsCfg = DataService.Data.EmitTemplates.menu.overview_section_labels_word_start;
+			const wsOn = !!wsCfg && wsCfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[wsCfg.env ?? "MENUWORD_OFF"]);
+			const wsMin = (wsCfg && wsCfg.min_words_for_inner) || 2;
+			const innerOk = (l) => !wsOn || l.trim().split(/\s+/).length >= wsMin;
+			// the labels are tested against a PUNCTUATION-FREE fold too (`He aha tāku hei tīmata? | What do I need to get
+			// started?` → `he aha taku hei timata what do i need to get started`): the fold keeps `?` / `|` / `.`, so the
+			// multi-word labels never matched the bilingual-pair headings and the inner-word "do" was matching them by accident
+			const wsPlain = (f) => wsOn ? f.replace(/[^a-z0-9À-ɏ ]+/g, " ").replace(/\s+/g, " ").trim() : f;
+			const matchesLabel = (f) => labels.some((l) => {
+				const fp = wsPlain(f);
+				return f === l || f.startsWith(l + " ") || fp === l || fp.startsWith(l + " ")
+					|| (innerOk(l) && (f.endsWith(" " + l) || f.includes(" " + l + " ") || fp.endsWith(" " + l) || fp.includes(" " + l + " ")))
+					|| (colonOn && (f === l + ":" || f.startsWith(l + ": ") || f.startsWith(l + ":")));
+			});
 			// An inquiry-mode `[Tab N]` opener ENDS the overview menu region: the inquiry
 			// panels that follow it are body content, not menu content. Without this check,
 			// the LAST menu-section heading found would leave the inMenu flag stuck at true,

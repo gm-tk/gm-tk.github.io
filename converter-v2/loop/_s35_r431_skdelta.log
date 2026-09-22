@@ -1,0 +1,26 @@
+OLD pairs 2491  SCAFFOLD 54.3617%  RAW 38.227%  >=50 1537  >=75 254  >=90 23
+NEW pairs 2491  SCAFFOLD 54.4248%  RAW 38.294%  >=50 1540  >=75 255  >=90 23
+delta SCAFFOLD +0.0630pp  RAW +0.067pp  >=50 +3  >=75 +1  >=90 +0
+movers 20 (up 16 / down 4), pp-sum +134.3
+movers outside the affected set: 0 []
+new-only pages: 3  gone pages: 3
+  GEO1004    GEO1004_0_0.html           45.0 ->   70.4  (+25.4)
+  COM1002    COM1002_0_0.html           55.0 ->   74.5  (+19.5)
+  DAN1004    DAN1004_0_0.html           55.7 ->   71.7  (+16.0)
+  COM1005    COM1005_0_0.html           54.1 ->   67.9  (+13.9)
+  ANZH104    ANZH104_0_0.html           60.6 ->   71.6  (+11.0)
+  COM1006    COM1006_0_0.html           67.7 ->   77.6  (+9.8)
+  MXDI101    MXDI101_0_0.html           46.2 ->   55.3  (+9.2)
+  CEDO204    CEDO204_0_0.html           28.7 ->   36.3  (+7.6)
+  DAN1003    DAN1003_0_0.html           50.0 ->   56.5  (+6.5)
+  MXEO201    MXEO201_0_0.html           75.9 ->   80.9  (+5.0)
+  CBI1009    CBI1009_0_0.html           60.5 ->   64.4  (+3.9)
+  COM1002    COM1002_1_0.html           43.8 ->   47.5  (+3.7)
+  ART1006    ART1006_0_0.html           43.8 ->   47.1  (+3.2)
+  MXFL103    MXFL103_0_0.html           50.6 ->   53.5  (+2.9)
+  MUS1004    MUS1004_0_0.html           66.7 ->   69.2  (+2.6)
+  HIS1007    HIS1007_0_0.html           60.6 ->   63.0  (+2.4)
+  TWHK901    TWHK901_0_0.html           25.7 ->   25.7  (-0.0)
+  MUS1006    MUS1006_1_0.html           74.1 ->   72.7  (-1.3)
+  GEO1004    GEO1004_1_0.html           69.8 ->   66.7  (-3.1)
+  XGF9004    XGF9004_0_0.html           37.7 ->   34.0  (-3.7)
