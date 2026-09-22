@@ -1,6 +1,6 @@
 # DIFF_QUEUE.md — the diff miner's ranked class queue (LOOP__Autonomous_Rounds.md §1d)
 
-**Produced:** 2026-09-22 12:21 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD bb68be6; Claude corpus 545 dirs). **Population:** the skeleton gate's own — 2491 paired pages / 533 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 96.0 s.
+**Produced:** 2026-09-22 12:52 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD c254225; Claude corpus 545 dirs). **Population:** the skeleton gate's own — 2491 paired pages / 533 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 87.5 s.
 
 **What a row is.** One CLASS = (region, parent element, gold form, Claude form, direction) over every differing skeleton line of every paired page — the same lines, labels, widget collapse and difflib alignment the PRIMARY gate scores (each element its own line so it can be quoted). Direction: MISSING = gold has it, Claude lacks it; EXTRA = Claude has it, gold lacks it; SUBSTITUTED = same position, different tag / class / wrapper; MOVED = same text, different place. Consensus = of the gold pages in the group where the region exists, the share carrying the gold form (for EXTRA: the share NOT carrying Claude's form). Derivable = the gold line's text is in the module's parsed Writers Template (round-110 tolerance); structure-only differences are always derivable.
 
@@ -50,19 +50,19 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 |---|---|---|---|---|---|---|---|---|
 | F1 | MISSING | `header:title-h1-count=2` | 285 | 132 | 0.25 | 0.25 | subject+ptype=Online Safety (OS9000)/overview c=0.93 n=12 | CANDIDATE |
 | F2 | EXTRA | `header:title-h1-count=1` | 282 | 129 | 0.75 | 0.25 | subject+ptype=Online Safety (OS9000)/overview c=0.93 n=12 | CANDIDATE |
-| F3 | EXTRA | `header:chip=decimal-number` | 237 | 62 | 0.55 | 0.45 | subject=1-10 Blended Literacy c=0.61 n=16 | CANDIDATE |
-| F4 | MISSING | `header:chip=decimal-number` | 119 | 52 | 0.55 | 0.55 | subject=NCEA1 c=0.81 n=10 | CANDIDATE |
-| F5 | MISSING | `header:chip=lesson-number` | 202 | 43 | 0.20 | 0.20 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
-| F6 | MISSING | `header:chip=module-code` | 79 | 42 | 0.18 | 0.18 | template+ptype=Standard/overview c=0.73 n=13 | CANDIDATE |
-| F7 | EXTRA | `header:menu-content` | 64 | 36 | 0.75 | 0.25 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
-| F8 | EXTRA | `header:chip=lesson-number` | 83 | 35 | 0.20 | 0.80 | era=Refresh c=0.80 n=35 | CANDIDATE |
-| F9 | EXTRA | `header:head-buttons` | 59 | 34 | 0.77 | 0.23 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
-| F10 | EXTRA | `header:chip=module-code` | 32 | 32 | 0.18 | 0.82 | template=Standard c=0.85 n=16 | CANDIDATE |
-| F11 | EXTRA | `header:chip=other` | 80 | 28 | 0.05 | 0.95 | ptype=lesson c=0.99 n=15 | CANDIDATE |
-| F12 | EXTRA | `header:title-h1-count=2` | 28 | 27 | 0.25 | 0.75 | template=Standard c=0.80 n=21 | CANDIDATE |
-| F13 | MISSING | `header:title-h1-count=1` | 25 | 24 | 0.75 | 0.75 | template=Standard c=0.80 n=19 | CANDIDATE |
-| F14 | MISSING | `header:head-buttons` | 45 | 23 | 0.77 | 0.77 | template=Standard c=0.78 n=14 | CANDIDATE |
-| F15 | MISSING | `header:chip=other` | 28 | 17 | 0.05 | 0.05 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
+| F3 | EXTRA | `header:chip=decimal-number` | 215 | 51 | 0.55 | 0.45 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
+| F4 | MISSING | `header:chip=module-code` | 79 | 42 | 0.18 | 0.18 | template+ptype=Standard/overview c=0.73 n=13 | CANDIDATE |
+| F5 | EXTRA | `header:menu-content` | 64 | 36 | 0.75 | 0.25 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
+| F6 | EXTRA | `header:head-buttons` | 59 | 34 | 0.77 | 0.23 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
+| F7 | MISSING | `header:chip=decimal-number` | 81 | 33 | 0.55 | 0.55 | subject=NCEA1 c=0.81 n=10 | CANDIDATE |
+| F8 | MISSING | `header:chip=lesson-number` | 180 | 32 | 0.20 | 0.20 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
+| F9 | EXTRA | `header:chip=module-code` | 32 | 32 | 0.18 | 0.82 | template=Standard c=0.85 n=16 | CANDIDATE |
+| F10 | EXTRA | `header:chip=other` | 80 | 28 | 0.05 | 0.95 | ptype=lesson c=0.99 n=15 | CANDIDATE |
+| F11 | EXTRA | `header:title-h1-count=2` | 28 | 27 | 0.25 | 0.75 | template=Standard c=0.80 n=21 | CANDIDATE |
+| F12 | MISSING | `header:title-h1-count=1` | 25 | 24 | 0.75 | 0.75 | template=Standard c=0.80 n=19 | CANDIDATE |
+| F13 | MISSING | `header:head-buttons` | 45 | 23 | 0.77 | 0.77 | template=Standard c=0.78 n=14 | CANDIDATE |
+| F14 | MISSING | `header:chip=other` | 28 | 17 | 0.05 | 0.05 | — | BELOW CONSENSUS (no group ≥ 0.60 at the floor) |
+| F15 | EXTRA | `header:chip=lesson-number` | 45 | 16 | 0.20 | 0.80 | era=Refresh c=0.80 n=16 | CANDIDATE |
 | F16 | EXTRA | `header:chip` | 8 | 8 | 0.97 | 0.03 | — | BELOW FLOOR |
 | F17 | MISSING | `header:menu-content` | 7 | 6 | 0.75 | 0.75 | — | BELOW FLOOR |
 | F18 | MISSING | `header:title-h1-count=3` | 6 | 6 | 0.00 | 0.00 | — | BELOW FLOOR |
@@ -122,23 +122,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 - **ANZH104** ANZH104_4_0.html ↔ ANZH104_04.0.html: gold ['header:chip', 'header:chip=decimal-number', 'header:title-h1-count=2'] · Claude ['header:chip', 'header:chip=decimal-number', 'header:title-h1-count=1']
 - modules: ANZH101, ANZH103, ANZH104, ANZH301, ANZH401, ANZH404, ARFUN02, ARFUN03, ARFUN04, ARFUN05, ART1006, CEDK102, CEDK501, CEDO202, CEDO502, CEDR204, CEDT301, CHI1004, CHI1005, CHWHA, DTC1005, ENFUN01, ENFUN02, ENFUN03 …
 
-### F3 · EXTRA `header:chip=decimal-number` — CANDIDATE (pages 237 / modules 62)
-- by template+ptype: Standard/lesson 53m/202p gold 0.69 Claude 0.74 c=0.31; Inquiry/lesson 7m/25p gold 0.49 Claude 1.00 c=0.51; Bilingual/lesson 2m/10p gold 0.67 Claude 0.84 c=0.33
-- by subject: 1-10 Blended Literacy 16m/37p gold 0.39 Claude 0.36 c=0.61; 1-10 English 9m/41p gold 0.60 Claude 0.69 c=0.40; NCEA1 8m/24p gold 0.81 Claude 0.79 c=0.19; Leaving to Learn 8m/38p gold 0.38 Claude 0.49 c=0.62; 1-10 Mathematics 5m/18p gold 0.72 Claude 0.74 c=0.28; ANZH 4m/19p gold 0.46 Claude 0.66 c=0.54; ConnectED 3m/3p gold 0.66 Claude 0.68 c=0.34; 1-10 Languages 2m/11p gold 0.48 Claude 0.63 c=0.52
-- **ANZH101** ANZH101_1_0.html ↔ ANZH101_1.0.html: gold ['header:chip', 'header:chip=lesson-number', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=2'] · Claude ['header:chip', 'header:chip=decimal-number', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1']
-- **ANZH103** ANZH103_1_0.html ↔ ANZH103_3_0.html: gold ['header:chip', 'header:chip=lesson-number', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=decimal-number', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1']
-- **ANZH203** ANZH203_1_0.html ↔ ANZH203_1.0.html: gold ['header:chip', 'header:chip=lesson-number', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=decimal-number', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1']
-- modules: ANZH101, ANZH103, ANZH203, ANZH302, BLL236, BLL240, BLL253, BLL255, BLL261, BLL262, BLL263, BLL264, BLL265, BLL266, BLL271, BLL272, BLL273, BLL274, BLL275, BLL276, CEDK501, CEDT207, CEDT301, CHI1004 …
-
-### F4 · MISSING `header:chip=decimal-number` — CANDIDATE (pages 119 / modules 52)
-- by template+ptype: Standard/lesson 41m/107p gold 0.69 Claude 0.74 c=0.69; Standard/overview 6m/6p gold 0.02 Claude 0.00 c=0.02; Bilingual/overview 3m/3p gold 0.15 Claude 0.00 c=0.15; Inquiry/overview 2m/2p gold 0.03 Claude 0.00 c=0.03; Fundamentals/overview 1m/1p gold 0.01 Claude 0.00 c=0.01
-- by subject: 1-10 Blended Literacy 24m/46p gold 0.39 Claude 0.36 c=0.39; NCEA1 10m/35p gold 0.81 Claude 0.79 c=0.81; 1-10 Mathematics 6m/10p gold 0.72 Claude 0.74 c=0.72; Leaving to Learn 4m/12p gold 0.38 Claude 0.49 c=0.38; Te Marautanga o Aotearoa TMoA 3m/3p gold 0.54 Claude 0.63 c=0.54; 1-10 English 2m/9p gold 0.60 Claude 0.69 c=0.60; ConnectED 1m/1p gold 0.66 Claude 0.68 c=0.66; 1-10 Languages 1m/1p gold 0.48 Claude 0.63 c=0.48
-- **ART1004** ART1004_0_0.html ↔ ART1004_4.0.html: gold ['header:chip', 'header:chip=decimal-number', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=module-code', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=0']
-- **ART1005** ART1005_0_0.html ↔ ART1005_3.0.html: gold ['header:chip', 'header:chip=decimal-number', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=module-code', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=0']
-- **BLL141** BLL141_1_0.html ↔ BLL141-1.0.html: gold ['header:chip', 'header:chip=decimal-number', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=lesson-number', 'header:title-h1-count=1']
-- modules: ART1004, ART1005, BLL141, BLL142, BLL143, BLL144, BLL145, BLL146, BLL147, BLL151, BLL152, BLL154, BLL156, BLL157, BLL161, BLL162, BLL163, BLL164, BLL165, BLL166, BLL167, BLL171, BLL172, BLL173 …
-
-### F6 · MISSING `header:chip=module-code` — CANDIDATE (pages 79 / modules 42)
+### F4 · MISSING `header:chip=module-code` — CANDIDATE (pages 79 / modules 42)
 - by template+ptype: Standard/lesson 20m/46p gold 0.04 Claude 0.01 c=0.04; Standard/overview 13m/13p gold 0.73 Claude 0.73 c=0.73; Bilingual/lesson 5m/16p gold 0.31 Claude 0.05 c=0.31; Inquiry/lesson 3m/3p gold 0.06 Claude 0.00 c=0.06; Inquiry/overview 1m/1p gold 0.40 Claude 0.52 c=0.40
 - by subject: 1-10 Blended Literacy 15m/15p gold 0.07 Claude 0.03 c=0.07; NCEA1 6m/6p gold 0.14 Claude 0.14 c=0.14; 1-10 Mathematics 5m/18p gold 0.16 Claude 0.11 c=0.16; Te Marautanga o Aotearoa TMoA 5m/16p gold 0.44 Claude 0.28 c=0.44; Leaving to Learn 3m/5p gold 0.22 Claude 0.25 c=0.22; ConnectED 2m/2p gold 0.10 Claude 0.10 c=0.10; 1-10 English 2m/2p gold 0.13 Claude 0.13 c=0.13; EXPlore 2m/2p gold 0.27 Claude 0.13 c=0.27
 - **ANZH401** ANZH401_1_0.html ↔ ANZH401_1.0.html: gold ['header:chip', 'header:chip=module-code', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=2'] · Claude ['header:chip', 'header:chip=other', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1']
@@ -146,15 +130,15 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 - **BLL172** BLL172_0_0.html ↔ BLL172-00.html: gold ['header:chip', 'header:chip=module-code', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=other', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1']
 - modules: ANZH401, BLL170, BLL172, BLL174, BLL175, BLL176, BLL177, BLL240, BLL252, BLL253, BLL265, BLL266, BLL271, BLL273, BLL274, BLL276, CEDK501, CEDT207, CHI1004, ENGR102, ENGS401, EXBP901, EXIP901, GEO1004 …
 
-### F8 · EXTRA `header:chip=lesson-number` — CANDIDATE (pages 83 / modules 35)
-- by template+ptype: Standard/lesson 32m/77p gold 0.26 Claude 0.20 c=0.74; Bilingual/lesson 3m/6p gold 0.02 Claude 0.12 c=0.98
-- by subject: 1-10 Blended Literacy 22m/44p gold 0.26 Claude 0.29 c=0.74; Leaving to Learn 5m/15p gold 0.35 Claude 0.26 c=0.65; Te Marautanga o Aotearoa TMoA 3m/6p gold 0.01 Claude 0.09 c=0.99; 1-10 English 2m/9p gold 0.23 Claude 0.16 c=0.77; ConnectED 1m/1p gold 0.06 Claude 0.07 c=0.94; NCEA1 1m/5p gold 0.04 Claude 0.02 c=0.95; 1-10 Mathematics 1m/3p gold 0.10 Claude 0.11 c=0.90
-- **BLL141** BLL141_1_0.html ↔ BLL141-1.0.html: gold ['header:chip', 'header:chip=decimal-number', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=lesson-number', 'header:title-h1-count=1']
-- **BLL142** BLL142_1_0.html ↔ BLL142-1.0.html: gold ['header:chip', 'header:chip=decimal-number', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=lesson-number', 'header:title-h1-count=1']
-- **BLL143** BLL143_1_0.html ↔ BLL143-1.0.html: gold ['header:chip', 'header:chip=decimal-number', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=lesson-number', 'header:title-h1-count=1']
-- modules: BLL141, BLL142, BLL143, BLL144, BLL145, BLL146, BLL147, BLL151, BLL152, BLL154, BLL156, BLL157, BLL161, BLL162, BLL163, BLL164, BLL165, BLL166, BLL167, BLL171, BLL172, BLL173, CEDR501, ENGJ101 …
+### F7 · MISSING `header:chip=decimal-number` — CANDIDATE (pages 81 / modules 33)
+- by template+ptype: Standard/lesson 22m/69p gold 0.69 Claude 0.75 c=0.69; Standard/overview 6m/6p gold 0.02 Claude 0.00 c=0.02; Bilingual/overview 3m/3p gold 0.15 Claude 0.00 c=0.15; Inquiry/overview 2m/2p gold 0.03 Claude 0.00 c=0.03; Fundamentals/overview 1m/1p gold 0.01 Claude 0.00 c=0.01
+- by subject: NCEA1 10m/35p gold 0.81 Claude 0.79 c=0.81; 1-10 Mathematics 6m/10p gold 0.72 Claude 0.74 c=0.72; 1-10 Blended Literacy 5m/8p gold 0.39 Claude 0.41 c=0.39; Leaving to Learn 4m/12p gold 0.38 Claude 0.49 c=0.38; Te Marautanga o Aotearoa TMoA 3m/3p gold 0.54 Claude 0.63 c=0.54; 1-10 English 2m/9p gold 0.60 Claude 0.69 c=0.60; ConnectED 1m/1p gold 0.66 Claude 0.68 c=0.66; 1-10 Languages 1m/1p gold 0.48 Claude 0.63 c=0.48
+- **ART1004** ART1004_0_0.html ↔ ART1004_4.0.html: gold ['header:chip', 'header:chip=decimal-number', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=module-code', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=0']
+- **ART1005** ART1005_0_0.html ↔ ART1005_3.0.html: gold ['header:chip', 'header:chip=decimal-number', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=module-code', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=0']
+- **BLL171** BLL171_1_0.html ↔ BLL171-1.0.html: gold ['header:chip', 'header:chip=decimal-number', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=lesson-number', 'header:title-h1-count=1']
+- modules: ART1004, ART1005, BLL171, BLL172, BLL173, BLL240, BLLR203, CEDR501, COM1002, ENG1004, ENGFUN02, ENGJ101, ENGS101, FRFUN06, GEO1004, MXDB301, MXDI102, MXEO301, MXEX301, MXFL302, MXFU302, PWY1001, PWY1002, PWY1008 …
 
-### F10 · EXTRA `header:chip=module-code` — CANDIDATE (pages 32 / modules 32)
+### F9 · EXTRA `header:chip=module-code` — CANDIDATE (pages 32 / modules 32)
 - by template+ptype: Standard/overview 12m/12p gold 0.73 Claude 0.73 c=0.27; Inquiry/overview 8m/8p gold 0.40 Claude 0.52 c=0.60; Fundamentals/overview 5m/5p gold 0.64 Claude 0.70 c=0.36; Standard/lesson 4m/4p gold 0.04 Claude 0.01 c=0.96; Bilingual/overview 3m/3p gold 0.85 Claude 1.00 c=0.15
 - by subject: Leaving to Learn 11m/11p gold 0.22 Claude 0.25 c=0.78; NCEA1 7m/7p gold 0.14 Claude 0.14 c=0.86; ConnectED 3m/3p gold 0.10 Claude 0.10 c=0.90; Te Marautanga o Aotearoa TMoA 3m/3p gold 0.44 Claude 0.28 c=0.56; 1-10 Health and PE 2m/2p gold 0.42 Claude 0.47 c=0.58; 1-10 Social Science 2m/2p gold 0.22 Claude 0.23 c=0.78; 1-10 Blended Literacy 1m/1p gold 0.07 Claude 0.03 c=0.93; 1-10 Languages 1m/1p gold 0.23 Claude 0.25 c=0.77
 - **ART1004** ART1004_0_0.html ↔ ART1004_4.0.html: gold ['header:chip', 'header:chip=decimal-number', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=module-code', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=0']
@@ -162,7 +146,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 - **BLL240** BLL240_0_0.html ↔ BLL240-0.0.html: gold ['header:chip', 'header:chip=decimal-number', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=module-code', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1']
 - modules: ART1004, ART1005, BLL240, CEDK401, CEDO402, CEDR401, COM1002, ENG1004, ENGFUN02, FRFUN06, GEO1004, GER1002, HPFUN201, HPFUN302, MXDB201, OSOH101, SSFUN01, SSFUN07, TRR112, TRR113, TRR116, XDLS901, XDLS902, XDLS903 …
 
-### F11 · EXTRA `header:chip=other` — CANDIDATE (pages 80 / modules 28)
+### F10 · EXTRA `header:chip=other` — CANDIDATE (pages 80 / modules 28)
 - by template+ptype: Standard/lesson 15m/67p gold 0.01 Claude 0.04 c=0.99; Standard/overview 13m/13p gold 0.25 Claude 0.27 c=0.75
 - by subject: 1-10 Blended Literacy 14m/14p gold 0.26 Claude 0.29 c=0.74; 1-10 Mathematics 5m/7p gold 0.00 Claude 0.02 c=1.00; NCEA1 4m/29p gold 0.01 Claude 0.05 c=0.99; 1-10 Social Science 3m/17p gold 0.00 Claude 0.28 c=1.00; ANZH 1m/12p gold 0.07 Claude 0.20 c=0.94; Leaving to Learn 1m/1p gold 0.04 Claude 0.00 c=0.96
 - **ANZH401** ANZH401_1_0.html ↔ ANZH401_1.0.html: gold ['header:chip', 'header:chip=module-code', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=2'] · Claude ['header:chip', 'header:chip=other', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1']
@@ -170,7 +154,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 - **BLL174** BLL174_0_0.html ↔ BLL174-00.html: gold ['header:chip', 'header:chip=module-code', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=other', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1']
 - modules: ANZH401, BLL172, BLL174, BLL175, BLL176, BLL177, BLL252, BLL253, BLL265, BLL266, BLL271, BLL273, BLL274, BLL276, BLLR203, MXDB301, MXEO301, MXEX301, MXFL302, MXFU302, PWY1001, PWY1002, PWY1008, PWY1009 …
 
-### F12 · EXTRA `header:title-h1-count=2` — CANDIDATE (pages 28 / modules 27)
+### F11 · EXTRA `header:title-h1-count=2` — CANDIDATE (pages 28 / modules 27)
 - by template+ptype: Standard/overview 18m/18p gold 0.63 Claude 0.53 c=0.37; Standard/lesson 4m/4p gold 0.12 Claude 0.03 c=0.88; Fundamentals/overview 4m/4p gold 0.69 Claude 0.38 c=0.31; Inquiry/overview 2m/2p gold 0.58 Claude 0.48 c=0.42
 - by subject: NCEA1 7m/7p gold 0.20 Claude 0.11 c=0.80; 1-10 Blended Literacy 6m/6p gold 0.01 Claude 0.03 c=0.99; Leaving to Learn 5m/5p gold 0.33 Claude 0.25 c=0.68; 1-10 Languages 3m/3p gold 0.28 Claude 0.23 c=0.72; 1-10 Writing (MiW) 2m/2p gold 0.62 Claude 0.52 c=0.38; ANZH 1m/2p gold 0.49 Claude 0.17 c=0.51; ConnectED 1m/1p gold 0.28 Claude 0.23 c=0.72; 1-10 English 1m/1p gold 0.18 Claude 0.09 c=0.82
 - **ANZH302** ANZH302_0_0.html ↔ ANZH302_0_0.html: gold ['header:chip', 'header:chip=module-code', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=module-code', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=2']
@@ -178,7 +162,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 - **BLL271** BLL271_0_0.html ↔ BLL271_0_0.html: gold ['header:chip', 'header:chip=module-code', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=other', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=2']
 - modules: ANZH302, BLL246, BLL271, BLL272, BLL273, BLL274, BLL276, CEDO105, ENGFUN02, ENGI103, FRFUN06, GENO901, GEWHA, HIS1002, JPN1004, PHE1004, PWY1002, PWYWHA1, SPA1004, SSFUN07, WJFUN105, WJFUN116, XDLS904, XDLS906 …
 
-### F13 · MISSING `header:title-h1-count=1` — CANDIDATE (pages 25 / modules 24)
+### F12 · MISSING `header:title-h1-count=1` — CANDIDATE (pages 25 / modules 24)
 - by template+ptype: Standard/overview 16m/16p gold 0.35 Claude 0.46 c=0.35; Standard/lesson 4m/4p gold 0.88 Claude 0.97 c=0.88; Fundamentals/overview 4m/4p gold 0.31 Claude 0.59 c=0.31; Inquiry/overview 1m/1p gold 0.38 Claude 0.52 c=0.38
 - by subject: NCEA1 6m/6p gold 0.80 Claude 0.88 c=0.80; 1-10 Blended Literacy 6m/6p gold 0.99 Claude 0.97 c=0.99; Leaving to Learn 5m/5p gold 0.68 Claude 0.75 c=0.68; 1-10 Writing (MiW) 2m/2p gold 0.38 Claude 0.48 c=0.38; ANZH 1m/2p gold 0.51 Claude 0.83 c=0.51; ConnectED 1m/1p gold 0.72 Claude 0.77 c=0.72; 1-10 English 1m/1p gold 0.82 Claude 0.91 c=0.82; 1-10 Languages 1m/1p gold 0.68 Claude 0.77 c=0.68
 - **ANZH302** ANZH302_0_0.html ↔ ANZH302_0_0.html: gold ['header:chip', 'header:chip=module-code', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=module-code', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=2']
@@ -186,13 +170,21 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 - **ART1005** ART1005_0_0.html ↔ ART1005_3.0.html: gold ['header:chip', 'header:chip=decimal-number', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=module-code', 'header:head-buttons', 'header:menu-content', 'header:title-h1-count=0']
 - modules: ANZH302, ART1004, ART1005, BLL246, BLL271, BLL272, BLL273, BLL274, BLL276, CEDO105, ENGFUN02, ENGI103, FRFUN06, HIS1002, PWY1002, PWYWHA1, SSFUN07, WJFUN105, WJFUN116, XDLS904, XDLS906, XFUN02, XGF9004, XOTPB08
 
-### F14 · MISSING `header:head-buttons` — CANDIDATE (pages 45 / modules 23)
+### F13 · MISSING `header:head-buttons` — CANDIDATE (pages 45 / modules 23)
 - by template+ptype: Standard/lesson 12m/19p gold 0.75 Claude 0.75 c=0.75; Bilingual/lesson 7m/20p gold 0.33 Claude 0.00 c=0.33; Standard/overview 3m/3p gold 0.98 Claude 0.99 c=0.98; Inquiry/lesson 2m/3p gold 0.71 Claude 0.69 c=0.71
 - by subject: Te Marautanga o Aotearoa TMoA 7m/20p gold 0.46 Claude 0.25 c=0.46; 1-10 Blended Literacy 5m/10p gold 0.46 Claude 0.43 c=0.46; NCEA1 5m/5p gold 0.73 Claude 0.75 c=0.73; ConnectED 2m/3p gold 0.77 Claude 0.88 c=0.77; Leaving to Learn 2m/4p gold 0.90 Claude 0.89 c=0.90; EXPlore 1m/1p gold 1.00 Claude 0.93 c=1.00; 1-10 Mathematics 1m/2p gold 0.78 Claude 0.78 c=0.78
 - **BLL114** BLL114_1_0.html ↔ BLL114-02.html: gold ['header:chip', 'header:chip=lesson-number', 'header:head-buttons', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=lesson-number', 'header:title-h1-count=1']
 - **BLL116** BLL116_1_0.html ↔ BLL116-02.html: gold ['header:chip', 'header:chip=lesson-number', 'header:head-buttons', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=lesson-number', 'header:title-h1-count=1']
-- **BLL153** BLL153_1_0.html ↔ BLL153-1.0.html: gold ['header:chip', 'header:chip=lesson-number', 'header:head-buttons', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=lesson-number', 'header:title-h1-count=1']
+- **BLL153** BLL153_1_0.html ↔ BLL153-1.0.html: gold ['header:chip', 'header:chip=lesson-number', 'header:head-buttons', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=decimal-number', 'header:title-h1-count=1']
 - modules: BLL114, BLL116, BLL153, BLL236, BLL272, CEDT207, CEDT301, EXPFUN07, GEO1004, HES1002, HES1006, MUS1004, MXFL401, PMT101, PNR101, PNR102, PNR104, PNR107, PWYWHA1, TRR109, TRR110, XGF9004, XLP06
+
+### F15 · EXTRA `header:chip=lesson-number` — CANDIDATE (pages 45 / modules 16)
+- by template+ptype: Standard/lesson 13m/39p gold 0.26 Claude 0.19 c=0.74; Bilingual/lesson 3m/6p gold 0.02 Claude 0.12 c=0.98
+- by subject: Leaving to Learn 5m/15p gold 0.35 Claude 0.26 c=0.65; 1-10 Blended Literacy 3m/6p gold 0.26 Claude 0.24 c=0.74; Te Marautanga o Aotearoa TMoA 3m/6p gold 0.01 Claude 0.09 c=0.99; 1-10 English 2m/9p gold 0.23 Claude 0.16 c=0.77; ConnectED 1m/1p gold 0.06 Claude 0.07 c=0.94; NCEA1 1m/5p gold 0.04 Claude 0.02 c=0.95; 1-10 Mathematics 1m/3p gold 0.10 Claude 0.11 c=0.90
+- **BLL171** BLL171_1_0.html ↔ BLL171-1.0.html: gold ['header:chip', 'header:chip=decimal-number', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=lesson-number', 'header:title-h1-count=1']
+- **BLL172** BLL172_1_0.html ↔ BLL172-01.html: gold ['header:chip', 'header:chip=decimal-number', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=lesson-number', 'header:title-h1-count=1']
+- **BLL173** BLL173_1_0.html ↔ BLL173-01.html: gold ['header:chip', 'header:chip=decimal-number', 'header:title-h1-count=1'] · Claude ['header:chip', 'header:chip=lesson-number', 'header:title-h1-count=1']
+- modules: BLL171, BLL172, BLL173, CEDR501, ENGJ101, ENGS101, ENO2060, MXDI102, PNR102, PNR104, PNR107, XDLS501, XLP01, XLP05, XTAS101, XTAS103
 
 ### F23 · MISSING `nav:crumbs` — CANDIDATE (pages 23 / modules 23)
 - by template+ptype: Inquiry/overview 20m/20p gold 0.87 Claude 0.53 c=0.87; Inquiry/lesson 2m/2p gold 0.04 Claude 0.00 c=0.04; Standard/lesson 1m/1p gold 0.00 Claude 0.00 c=0.00
