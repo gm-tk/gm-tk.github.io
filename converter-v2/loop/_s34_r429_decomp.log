@@ -1,0 +1,37 @@
+compare_structure per module (matched / exact / EXTRA / missing): baseline -> new
+  BLL170     10/  10/  0/  0 ->   11/  11/  0/  0   delta +1/+1/+0/+0
+  CBI1004    97/  73/  2/  0 ->   97/  73/  2/  0   delta +0/+0/+0/+0
+  CEDK102    43/  41/  0/  0 ->   43/  41/  0/  0   delta +0/+0/+0/+0
+  CEDR204    42/  35/  2/  2 ->   41/  34/  2/  2   delta -1/-1/+0/+0
+  CEDW101    18/  18/  0/  0 ->   22/  22/  0/  0   delta +4/+4/+0/+0
+  MXFUN02     2/   2/  0/  0 ->    2/   2/  0/  0   delta +0/+0/+0/+0
+  MXFUN03    12/  12/  0/  0 ->   12/  12/  0/  0   delta +0/+0/+0/+0
+  TWHA902    38/  34/  0/  0 ->   40/  36/  0/  0   delta +2/+2/+0/+0
+  TWHK907    42/  42/  0/  0 ->   43/  43/  0/  0   delta +1/+1/+0/+0
+  TWHR905    27/  25/  0/  2 ->   32/  26/  0/  2   delta +5/+1/+0/+0
+  TWHR907    12/  12/  0/  0 ->   15/  15/  0/  0   delta +3/+3/+0/+0
+  TOTAL delta matched/exact/EXTRA/missing: +15/+11/+0/+0
+
+skeleton per page (scaffold): baseline -> new, the affected modules
+  BLL170   BLL170_0_0.html           60.7 ->  60.7   +0.0
+  CBI1004  CBI1004_0_0.html          70.8 ->  70.8   +0.0
+  CBI1004  CBI1004_10_0.html         52.4 ->  52.4   +0.0
+  CBI1004  CBI1004_1_0.html          64.7 ->  64.7   +0.0
+  CBI1004  CBI1004_2_0.html          61.9 ->  61.9   +0.0
+  CBI1004  CBI1004_3_0.html          48.6 ->  48.6   +0.0
+  CBI1004  CBI1004_4_0.html          66.7 ->  66.7   +0.0
+  CBI1004  CBI1004_5_0.html          38.8 ->  38.8   +0.0
+  CBI1004  CBI1004_6_0.html          53.1 ->  53.1   +0.0
+  CBI1004  CBI1004_7_0.html          74.3 ->  74.3   +0.0
+  CBI1004  CBI1004_8_0.html          71.3 ->  71.3   +0.0
+  CBI1004  CBI1004_9_0.html          57.5 ->  57.5   +0.0
+  CEDK102  CEDK102_0_0.html          41.5 ->  41.8   +0.3
+  CEDR204  CEDR204_0_0.html          37.3 ->  37.6   +0.3
+  CEDW101  CEDW101_0_0.html          69.7 ->  70.1   +0.4
+  MXFUN02  MXFUN02_0_0.html           5.8 ->   5.8   +0.0
+  MXFUN03  MXFUN03_0_0.html           8.1 ->   8.1   +0.0
+  TWHA902  TWHA902_0_0.html          26.8 ->  27.5   +0.7
+  TWHK907  TWHK907_0_0.html          40.3 ->  40.8   +0.5
+  TWHR905  TWHR905_0_0.html          12.2 ->  49.1  +36.9
+  TWHR907  TWHR907_0_0.html          39.1 ->  33.7   -5.4
+  up 6 / down 1, pp-sum +33.6

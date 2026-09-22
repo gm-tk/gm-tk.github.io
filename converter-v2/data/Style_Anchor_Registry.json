@@ -6853,10 +6853,14 @@
 							"TWHR901",
 							"TWHR902",
 							"TWHR903",
-							"TWHR904"
+							"TWHR904",
+							"TWHR905",
+							"TWHR907"
 						],
 						"delta": {
-							"template_phase": "combo"
+							"template_phase": "combo",
+							"page_model": "single-file",
+							"_r429_note": "ROUND 429 (2026-09-22): TWHR905 / TWHR907 added as members (the 22 Sept intake's two TWHR golds — the four July members have no gold on disk) and the level is single-file: both golds are ONE Inquiry page (TWHR905.html, TWHR907 Growing Leadership.html — crumbs + inquiryPanel), as every TWHK9 / TWHT9 / TWHA9 gold is; without the row TWHR907 resolved multi-file and no inquiry mode could fire on it."
 						}
 					}
 				}

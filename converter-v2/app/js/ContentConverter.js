@@ -1130,7 +1130,14 @@ class ContentConverter {
 		// the scanner, so they never reach here) AND a confirming signal: a `[Tab N] <label>`
 		// crumb-list (≥3 labelled) OR a "side tabs" instruction. The label-list is the robust
 		// primary signal (the instruction text is classified as a CS note and is awkward to read).
-		const _tabItems = bodyItems.filter(isTabItem);
+		// ROUND 429 — a `[Tabs]` WIDGET's consumed `[Tab]` members are the widget's, never this mode's openers
+		// (TWHR907 / TWHK907: three consumed members counted as "empty openers" and fired the mode on a page whose
+		// real openers carry no digit — 2 panels with an empty crumb where the gold has 4 / 5). Data
+		// inquiry_tabs.openers_unconsumed_only; env INQCONSUMED_OFF (the r100 count of every tab item).
+		const _uoCfg = inqCfg && inqCfg.openers_unconsumed_only;
+		const _unconsumedOnly = !!_uoCfg && _uoCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_uoCfg.env || "INQCONSUMED_OFF"]);
+		const _tabItems = bodyItems.filter((it) => isTabItem(it) && (!_unconsumedOnly || it.consumedBy === undefined));
 		const _labeledTabs = _tabItems.filter((it) => (it.blackAfter || "").trim().length > 0).length;
 		// EMPTY `[Tab N]` openers are the inquiry PANEL openers; a mis-captured `[tabs]`
 		// WIDGET's orphan tabs carry CONTENT (labelled), so requiring ≥2 EMPTY openers
@@ -4108,6 +4115,27 @@ class ContentConverter {
 					if (inquiryMode && !stack.length && isTabItem(it)) {
 						const n = (String(it.text).match(/tab\s*(\d+)/i) || [])[1];
 						const label = (it.blackAfter || "").replace(/\*/g, "").trim();
+						// ROUND 429 — a labelled tab whose bracket carries NO number is an OPENER, not a list entry: the
+						// writer typed the index outside the bracket (`[New tab] 2`, TWHK907 — an empty opener) or named the
+						// panel there (`[New side tab] Values`, TWHR907 — the panel takes that label). The r100 form
+						// captured both as labels with no index and opened nothing. Data
+						// inquiry_tabs.openers_unconsumed_only.nodigit_labelled_opens; env INQCONSUMED_OFF.
+						// scoped to the r100 (BLL-form) mode on a SINGLE-FILE page: the r422 side-tab mode has its own openers and the
+						// EX multi-file family (EXBP901 / EXIP901, `[New side tab]` per sub-page) is the r112-deferred structure
+						const _ndOn = _unconsumedOnly && _bllInquiry && !sideTabMode && _singleFile && !!_uoCfg && _uoCfg.nodigit_labelled_opens !== false;
+						if (label && !n && _ndOn) {
+							while (stack.length && stack[stack.length - 1].tag === "activity") {
+								emit(stack.pop().close);
+								if (!stack.length) breakRow();
+							}
+							if (!stack.length) {
+								breakRow();
+								parts.push(INQ_SENTINEL);
+								if (!/^\d+[a-z]?$/i.test(label)) inquiryLabels[parts.filter((x) => x === INQ_SENTINEL).length] = label;
+								pageLabelHold = "";
+								break;
+							}
+						}
 						if (label) { if (n) inquiryLabels[n] = label; break; }
 						// SYMMETRIC de-duplication for the BLL hybrid `[Tab N]`/`[page N]` boundary
 						// (modules BLL210 and BLL130): writers order the pair EITHER as
@@ -4468,6 +4496,8 @@ class ContentConverter {
 				// ROUND 428 — the Inquiry-template fallback shell: the openers' own labels, the writer's crumb
 				// list, the intro label for the module's code prefix (the CED golds say "Intro")
 				fallbackMode: inqFallbackMode, fallbackLabels: fbLabels, fallbackList: fbListLabels,
+				// ROUND 429 — the empty-intro fold applies to single-file pages only (the EX multi-file family is the r112-deferred structure)
+				foldEmptyIntro: _singleFile,
 				fallbackIntroLabel: (() => {
 					if (!inqFallbackMode) return null;
 					const byP = (_fbCfg && _fbCfg.intro_label_by_prefix) || {};

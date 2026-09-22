@@ -637,7 +637,7 @@ class PanelsBuilder {
 	 * Data: body_region.inquiry_tabs.
 	 */
 	static inquiryPanels(body, { on, sentinel, labels, cedMode, cedLabels, headingLabel, sectionMode, sectionLabels, sideTabMode, sideTabFlavour,
-		fallbackMode, fallbackLabels, fallbackList, fallbackIntroLabel } = {}) {
+		fallbackMode, fallbackLabels, fallbackList, fallbackIntroLabel, foldEmptyIntro } = {}) {
 		const cfg = DataService.Data.EmitTemplates.body_region.inquiry_tabs;
 		const sent = sentinel || (cfg && cfg.sentinel) || "<!--CV2_INQPANEL-->";
 		if (!(on || cedMode || sectionMode || fallbackMode) || !cfg || cfg.enabled === false || !body.includes(sent)) return body.split(sent).join("");
@@ -657,7 +657,12 @@ class PanelsBuilder {
 			const fb = cfg.template_fallback || {};
 			const textOf = (html) => String(html || "").replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
 			const hasMedia = (html) => /<(img|iframe|video|audio|table)\b/i.test(String(html || ""));
-			const hasIntro = !!intro && (textOf(intro).length >= (fb.intro_min_chars ?? 40) || /<h[1-6]\b/i.test(intro) || hasMedia(intro));
+			// ROUND 429: writers' notes and red flags in the lead segment are not content (TWHR907's DEV note before its
+			// `[New side tab] Introduction` — the gold's Introduction panel starts at that opener)
+			const _eif = cfg.empty_intro_folds || {};
+			const _notesNotContent = _eif.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[_eif.env || "INQEMPTYINTRO_OFF"]);
+			const introBody = _notesNotContent ? String(intro || "").replace(/<p class="cv2-note"[^>]*>[\s\S]*?<\/p>/g, "") : String(intro || "");
+			const hasIntro = !!intro && (textOf(introBody).length >= (fb.intro_min_chars ?? 40) || /<h[1-6]\b/i.test(introBody) || hasMedia(introBody));
 			let allSegs = hasIntro ? [intro, ...panelSegs]
 				: (intro && panelSegs.length ? [intro + "\n" + panelSegs[0], ...panelSegs.slice(1)] : panelSegs.slice());
 			while (allSegs.length > 1 && !textOf(allSegs[allSegs.length - 1]) && !hasMedia(allSegs[allSegs.length - 1])) allSegs.pop();
@@ -688,7 +693,7 @@ class PanelsBuilder {
 				const k = hasIntro ? i - 1 : i;
 				const o = k >= 0 ? (own[k] || "") : "";
 				if (o && !/^(module\s+)?intro(duction)?$/i.test(o)) return o;
-				if (i === 0 && !hasIntro && !o) return introLabel;
+				if (i === 0 && !hasIntro && (!o || _notesNotContent)) return introLabel;   // the first opener IS the introduction (a bare opener; r429: an intro-worded one too)
 				return firstHeading(allSegs[i]) || o || (i === 0 ? introLabel : "");
 			};
 			const crumbs = [cfg.crumbs_open];
@@ -809,9 +814,43 @@ class PanelsBuilder {
 			return crumbs.join("\n") + "\n" + panels.join("\n");
 		}
 		const lab = labels || {};
+		// ROUND 429 — an EMPTY lead segment (no text, no media — writers' notes and red flags are not content: the
+		// writer's first opener IS the introduction — CEDK102 / CEDR204 / TWHA902's `[TAB 1]` at the very start,
+		// TWHR907's `[New side tab] Introduction` after a DEV note) is not a panel: it folds into the first opener's
+		// panel, which takes crumb 1 (the list's label for index 1, else intro_label) and the panels run 1..N, as
+		// the gold's do; a lead segment with content keeps the synthetic intro panel exactly as before. An empty
+		// crumb takes its panel's first title heading (the r111 rule; heading_fallback).
+		// Data inquiry_tabs.empty_intro_folds; env INQEMPTYINTRO_OFF.
+		const eif = cfg.empty_intro_folds || {};
+		const _foldOn = foldEmptyIntro !== false && eif.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[eif.env || "INQEMPTYINTRO_OFF"]);
+		const _stripNotes = (html) => String(html || "").replace(/<p class="cv2-note"[^>]*>[\s\S]*?<\/p>/g, "");
+		const _introEmpty = !_stripNotes(intro).replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").trim()
+			&& !/<(img|iframe|video|audio|table)\b/i.test(String(intro || ""));
+		const _firstTitle = (html) => {
+			if (eif.heading_fallback === false) return "";
+			for (const m of String(html || "").matchAll(/<h[1-6][^>]*>([\s\S]*?)<\/h[1-6]>/gi)) {
+				const txt = m[1].replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
+				if (!txt || /[:：…]\s*$/.test(txt) || /^\d+[a-z]?$/i.test(txt)) continue;
+				return txt.split(/\s*\|\s*/)[0].trim();
+			}
+			return "";
+		};
+		if (_foldOn && _introEmpty && panelSegs.length) {
+			const ps = cfg.page_split || {};
+			const segs2 = intro ? [intro + "\n" + panelSegs[0], ...panelSegs.slice(1)] : panelSegs.slice();
+			const crumbs = [cfg.crumbs_open];
+			for (let i = 0; i < segs2.length; i++)
+				crumbs.push(Utils.FillTemplate(ps.crumb_item || cfg.crumb_item, {
+					n: String(i + 1), label: lab[i + 1] || (i === 0 ? (cfg.intro_label || "Introduction") : _firstTitle(segs2[i])), showing: i === 0 ? " class=\"showing\"" : "" }));
+			crumbs.push(cfg.crumbs_close);
+			const panels = [];
+			for (let i = 0; i < segs2.length; i++)
+				panels.push(Utils.FillTemplate(ps.panel_open || cfg.panel_open, { n: String(i + 1), showing: i === 0 ? " showing" : "" }) + "\n" + segs2[i] + "\n" + cfg.panel_close);
+			return crumbs.join("\n") + "\n" + panels.join("\n");
+		}
 		const crumbs = [cfg.crumbs_open, Utils.FillTemplate(cfg.crumb_intro, { label: cfg.intro_label || "Introduction" })];
 		for (let i = 0; i < panelSegs.length; i++)
-			crumbs.push(Utils.FillTemplate(cfg.crumb_item, { n: String(i + 1), label: lab[i + 1] || "" }));
+			crumbs.push(Utils.FillTemplate(cfg.crumb_item, { n: String(i + 1), label: lab[i + 1] || (_foldOn ? _firstTitle(panelSegs[i]) : "") }));   // ROUND 429: an empty crumb takes its panel's first title heading
 		crumbs.push(cfg.crumbs_close);
 		const panels = [cfg.panel_intro_open + "\n" + intro + "\n" + cfg.panel_close];
 		for (let i = 0; i < panelSegs.length; i++)

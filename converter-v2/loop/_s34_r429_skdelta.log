@@ -1,0 +1,13 @@
+OLD pairs 2491  SCAFFOLD 54.3468%  RAW 38.217%  >=50 1536  >=75 254  >=90 23
+NEW pairs 2491  SCAFFOLD 54.3603%  RAW 38.225%  >=50 1536  >=75 254  >=90 23
+delta SCAFFOLD +0.0135pp  RAW +0.007pp  >=50 +0  >=75 +0  >=90 +0
+movers 7 (up 6 / down 1), pp-sum +33.6
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  TWHR905    TWHR905_0_0.html           12.2 ->   49.1  (+36.9)
+  TWHA902    TWHA902_0_0.html           26.8 ->   27.5  (+0.7)
+  TWHK907    TWHK907_0_0.html           40.3 ->   40.8  (+0.5)
+  CEDW101    CEDW101_0_0.html           69.7 ->   70.1  (+0.4)
+  CEDK102    CEDK102_0_0.html           41.5 ->   41.8  (+0.3)
+  CEDR204    CEDR204_0_0.html           37.3 ->   37.6  (+0.3)
+  TWHR907    TWHR907_0_0.html           39.1 ->   33.7  (-5.4)

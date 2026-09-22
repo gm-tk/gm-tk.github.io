@@ -5463,6 +5463,18 @@
 				"intro_label": "Introduction"
 			},
 			"recover_consumed_openers": true,
+			"openers_unconsumed_only": {
+				"enabled": true,
+				"env": "INQCONSUMED_OFF",
+				"nodigit_labelled_opens": true,
+				"_doc_nodigit": "ROUND 429: `nodigit_labelled_opens` — in the r100 body branch a LABELLED tab whose bracket carries no number is an OPENER, not a crumb-list entry: `[New tab] 2` (TWHK907 — the index typed outside the bracket; a bare number is no label, the panel's heading decides) and `[New side tab] Values` (TWHR907 — the panel takes that label, inquiryLabels[<panel index>]). The r100 form captured both as labels with no index (inquiryLabels[n] needs a digit) and opened nothing — 2 panels with an empty crumb where the gold has 4 / 5. Same env INQCONSUMED_OFF.",
+				"_doc": "ROUND 429 (the autonomous loop's session 34 Round 4, 2026-09-22 — the r428 census's PANELS-DIFF pages; KB 06 lines 169 / 171). The r100 detection counted EVERY `tab n` item on the page, so a `[Tabs]` WIDGET's consumed `[Tab]` members (TWHR907 items 115 / 123 / 151, TWHK907) counted as EMPTY panel openers and the mode fired on a page whose real openers are labelled `[New side tab] Values` / `[New tab] 2` items with no digit — captured as labels with no index, opening nothing: 2 panels with an empty crumb where the gold has 4 / 5. With this flag `_tabItems` (and so `_labeledTabs` / `_emptyOpeners` / `_trueOpeners`) counts UNCONSUMED tab items only — a widget's members are the widget's; the mode no longer fires on those pages and the r428 template_fallback takes them (its tab_opener_patterns accept `[New side tab]` / `[New tab]`). Measured: the mode's firing set changes on exactly TWHR907 and TWHK907 (the OFF probe byte-identical elsewhere). Env INQCONSUMED_OFF restores the r100 count."
+			},
+			"empty_intro_folds": {
+				"enabled": true,
+				"env": "INQEMPTYINTRO_OFF",
+				"_doc": "ROUND 429 (the autonomous loop's session 34 Round 4, 2026-09-22). The r100 default build always prepended a synthetic `Introduction` intro panel (crumb_intro + panel_intro_open, rel=\"intro\") holding the lead segment before the first opener. On CEDK102 / CEDR204 / TWHA902 the writer's FIRST opener IS the introduction (`[TAB 1] Introduction` in the crumb list, an empty `[TAB 1]` opener at the very start), so the lead segment is EMPTY and Claude built N + 1 panels — an empty first panel — where the gold has N. With this flag a lead segment with no text and no media is not a panel: the first opener's panel takes crumb 1 with the list's own label for index 1 (else intro_label) and the panels are numbered 1..N (the r428 fallback's hasIntro rule applied to the r100 build). A lead segment with content keeps the intro panel exactly as before. Env INQEMPTYINTRO_OFF restores the synthetic intro."
+			},
 			"template_fallback": {
 				"enabled": true,
 				"env": "INQFALLBACK_OFF",

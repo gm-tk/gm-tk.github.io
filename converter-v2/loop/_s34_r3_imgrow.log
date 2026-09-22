@@ -1,0 +1,15 @@
+gold image rows (>=2 image-only columns, any depth): 1171 on 484 pages
+by column count: {15: 4, 5: 55, 6: 30, 2: 407, 3: 528, 4: 89, 8: 9, 7: 29, 10: 12, 13: 1, 17: 1, 12: 2, 43: 1, 36: 1, 24: 1, 9: 1}
+top width patterns:
+    182  col-4 | col-4 | col-4
+     45  col | col | col
+     44  col-md-4 col-12 | col-md-4 col-12 | col-md-4 col-12
+     38  col-md-4 col-12 paddingLR | col-md-4 col-12 paddingLR | col-md-4 col-12 paddingLR
+     37  col-md-6 offset-md-0 col-12 | col-md-6 offset-md-0 col-12
+     35  col-md-6 col-12 | col-md-6 col-12
+     31  col-md-6 col-12 paddingR | col-md-6 col-12 paddingL
+     31  col-1 | col-1 | col-1
+     29  col-md-6 offset-md-0 col-12 paddingL | col-md-6 offset-md-0 col-12 paddingL
+     25  col-md-4 offset-md-0 col-12 | col-md-4 offset-md-0 col-12 | col-md-4 offset-md-0 col-12
+paired Claude page: images CONSECUTIVE in one column 8 / scattered 222 / inside a widget 29 / not all present 912
+examples (consecutive): [('CEDT208', '/mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/reference/tests/../../../01-Finalized_Modules_/Inquiry/CEDT208/CEDT208 Patterns Of The Pacific.html', 4, ['col-md-3 offset-md-0 col-12 paddingL', 'col-md-3 offset-md-0 col-12 paddingL', 'col-md-3 offset-md-0 col-12 paddingL', 'col-md-3 offset-md-0 col-12 paddingL']), ('ENGJ301', '/mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/reference/tests/../../../01-Finalized_Modules_/Standard/ENGJ301/ENGJ301_0.0.html', 2, ['col-md-10 col-12', 'col-md-6 col-12']), ('MXDI101', '/mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/reference/tests/../../../01-Finalized_Modules_/Standard/MXDI101/MXDI101_6.0.html', 2, ['col-12', 'col-md-9 col-12']), ('MXEO201', '/mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/reference/tests/../../../01-Finalized_Modules_/Standard/MXEO201/MXEO201_03.0.html', 2, ['col-md-6 col-12', 'col-md-6 col-12']), ('MXFU402', '/mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/reference/tests/../../../01-Finalized_Modules_/Standard/MXFU402/MXFU402_2.0.html', 2, ['col-md-8 col-12 ', 'col-md-8 col-12 offset-md-2']), ('OSGM201', '/mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/reference/tests/../../../01-Finalized_Modules_/Standard/OSGM201/OSGM201_3.0.html', 3, ['col-md-4 offset-md-0 col-12 paddingL', 'col-md-4 offset-md-0 col-12 paddingL', 'col-md-4 offset-md-0 col-12 paddingL']), ('SSCI104', '/mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/reference/tests/../../../01-Finalized_Modules_/Standard/SSCI104/SSCI104-3.0.html', 2, ['col', 'col']), ('XTAS101', '/mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/reference/tests/../../../01-Finalized_Modules_/Standard/XTAS101/XTAS101_1.0.html', 2, ['col-6 paddingR', 'col-6 paddingL'])]
