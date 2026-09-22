@@ -1,0 +1,112 @@
+[Body]-tagged runs inside a lesson's overview block: 120 (modules 19)
+   gold=body claude=body                56
+   gold=body claude=menu                24
+   gold=absent claude=absent            16
+   gold=absent claude=body              15
+   gold=absent claude=menu               7
+   gold=menu claude=menu                 2
+by position in the block:
+   tail (after the list)    gold=body claude=body                 48
+   tail (after the list)    gold=body claude=menu                 18
+   tail (after the list)    gold=absent claude=body               15
+   tail (after the list)    gold=absent claude=absent             14
+   lead (before the list)   gold=body claude=body                  8
+   tail (after the list)    gold=absent claude=menu                7
+   lead (before the list)   gold=body claude=menu                  6
+   lead (before the list)   gold=absent claude=absent              2
+   lead (before the list)   gold=menu claude=menu                  1
+   tail (after the list)    gold=menu claude=menu                  1
+PAGES per (position, gold, claude) — and how many of those runs THEMSELVES start with a WALT / SC lead line:
+   tail (after the list)    gold=body   claude=body   pages  28  runs  48  WALT-lead runs 0
+   tail (after the list)    gold=body   claude=menu   pages  17  runs  18  WALT-lead runs 0
+   tail (after the list)    gold=absent claude=body   pages  11  runs  15  WALT-lead runs 0
+   tail (after the list)    gold=absent claude=absent pages   9  runs  14  WALT-lead runs 0
+   tail (after the list)    gold=absent claude=menu   pages   7  runs   7  WALT-lead runs 0
+   lead (before the list)   gold=body   claude=menu   pages   6  runs   6  WALT-lead runs 0
+   lead (before the list)   gold=body   claude=body   pages   5  runs   8  WALT-lead runs 0
+   lead (before the list)   gold=absent claude=absent pages   2  runs   2  WALT-lead runs 0
+   lead (before the list)   gold=menu   claude=menu   pages   1  runs   1  WALT-lead runs 0
+   tail (after the list)    gold=menu   claude=menu   pages   1  runs   1  WALT-lead runs 0
+the pages that would MOVE (claude=menu today):
+   lead (before the list)   gold=body   : MXEO202/MXEO202_1_0.html MXEO202/MXEO202_2_0.html MXEO202/MXEO202_3_0.html MXEO202/MXEO202_4_0.html MXEO202/MXEO202_5_0.html MXEO202/MXEO202_6_0.html
+   lead (before the list)   gold=menu   : XDLS901/XDLS901_4_0.html
+   tail (after the list)    gold=absent : XDLS903/XDLS903_1_0.html XDLS904/XDLS904_6_0.html XDLS904/XDLS904_7_0.html XDLS906/XDLS906_4_0.html XDLS906/XDLS906_5_0.html XDLS906/XDLS906_6_0.html 
+   tail (after the list)    gold=body   : ENGC403/ENGC403_4_0.html GEO1005/GEO1005_5_0.html XDLS903/XDLS903_2_0.html XDLS903/XDLS903_3_0.html XDLS903/XDLS903_4_0.html XDLS903/XDLS903_5_0.html 
+   tail (after the list)    gold=menu   : XDLS903/XDLS903_2_0.html
+by module (top 20):
+   XDLS908    16
+   SSOG105    15
+   XDLS903    15
+   XDLS906    15
+   MXEO202    10
+   XDLS904    9
+   CEDK501    8
+   XLP04      8
+   CEDO501    5
+   ENGC403    4
+   XDLS905    3
+   CEDT501    2
+   ENGI102    2
+   MXS1004    2
+   OSGM401    2
+   CEDT207    1
+   ENGS404    1
+   GEO1005    1
+   XDLS901    1
+examples:
+  lead (before the list) | gold=absent claude=absent
+     ENGI102 ENGI102_4_0.html: Traditional tales come from cultures all over the world. Our stories t
+     ENGI102 ENGI102_6_0.html: We have been enjoying traditional stories from Aotearoa New Zealand an
+  lead (before the list) | gold=body claude=body
+     CEDT207 CEDT207_2_0.html: Create your own ‘I can’t imagine life without’ OR ‘I am’ poster by dra
+     MXEO202 MXEO202_2_0.html: Below is the link to a website where you can explore making different 
+     MXEO202 MXEO202_6_0.html: For a longer video with more detail, watch this.
+     MXEO202 MXEO202_6_0.html: Drag and drop the correct type of transformation next to each image.
+     SSOG105 SSOG105_3_0.html: Think about the clues Sam has found:
+     SSOG105 SSOG105_4_0.html: Tap on the images to find out about different holiday dates.
+  lead (before the list) | gold=body claude=menu
+     MXEO202 MXEO202_1_0.html: In this lesson, you will learn about the properties of 2D shapes and t
+     MXEO202 MXEO202_2_0.html: Polygons all have angles.  An angle is made when two straight lines me
+     MXEO202 MXEO202_3_0.html: In this lesson you will learn about the properties of triangles and th
+     MXEO202 MXEO202_4_0.html: In this lesson you will learn about perimeter. When you create your mo
+     MXEO202 MXEO202_5_0.html: In this lesson you will learn about area. When you create your mosaic 
+     MXEO202 MXEO202_6_0.html: In this lesson, you will learn about three different types of shape tr
+  lead (before the list) | gold=menu claude=menu
+     XDLS901 XDLS901_4_0.html: This lesson is about connecting your learning from Lesson 1, 2 and 3. 
+  tail (after the list) | gold=absent claude=absent
+     CEDK501 CEDK501_5_0.html: The whakataukī above explains the idea that success in a team comes fr
+     CEDK501 CEDK501_5_0.html: Teams can thrive when they show respect to one another and work togeth
+     CEDK501 CEDK501_5_0.html: Whether you are studying or working, there will be times when you need
+     CEDK501 CEDK501_5_1.html: The whakataukī above explains the idea that success in a team comes fr
+     CEDK501 CEDK501_5_1.html: Teams can thrive when they show respect to one another and work togeth
+     CEDK501 CEDK501_5_1.html: Whether you are studying or working, there will be times when you need
+  tail (after the list) | gold=absent claude=body
+     MXS1004 MXS1004_5_0.html: Example: Height of 5-year-olds vs height of 15-year-olds.
+     MXS1004 MXS1004_5_0.html: When there is more variation in the data, we are less sure that our sa
+     XDLS903 XDLS903_6_0.html: Welcome to lesson six. We are learning how to keep our wairua safe at 
+     XDLS903 XDLS903_7_0.html: Welcome to lesson seven. We are learning about how we can give to ours
+     XDLS904 XDLS904_1_0.html: Welcome to lesson one. We are learning how to move with our whānau.  M
+     XDLS904 XDLS904_1_0.html: Below there are three tabs.  Can you see them?  One says Introduction,
+  tail (after the list) | gold=absent claude=menu
+     XDLS903 XDLS903_1_0.html: Welcome to lesson one. In this lesson we are learning about poi.
+     XDLS904 XDLS904_6_0.html: Welcome to lesson six.  We are learning how we can find meaningful wor
+     XDLS904 XDLS904_7_0.html: Welcome to lesson seven.  We are learning how to budget well as a whān
+     XDLS906 XDLS906_4_0.html: Welcome to lesson five. We are learning about natural cycles that our 
+     XDLS906 XDLS906_5_0.html: Welcome to lesson 4. In this lesson we are going to make connections w
+     XDLS906 XDLS906_6_0.html: Welcome to lesson seven. We are learning how people-powered ways of mo
+  tail (after the list) | gold=body claude=body
+     CEDO501 CEDO501_2_0.html: Money can come from many different sources and not all of it is earned
+     CEDO501 CEDO501_3_0.html: In this lesson, you’ll learn how to search the internet effectively an
+     CEDT501 CEDT501_5_0.html: How you talk with others can either bring you closer or cause conflict
+     ENGC403 ENGC403_4_0.html: Below are the two options for you to choose from. It is recommended th
+     ENGS404 ENGS404_4_0.html: Match the weak verb with a more interesting and vivid verb that has a 
+     MXEO202 MXEO202_2_0.html: Now you have experimented with making angles and understanding the dif
+  tail (after the list) | gold=body claude=menu
+     ENGC403 ENGC403_4_0.html: There are a range of ways to debate in a formal situation. There is a 
+     GEO1005 GEO1005_5_0.html: In Māori traditional pūrākau stories, Tāwhirimātea was the atua (god o
+     XDLS903 XDLS903_2_0.html: Welcome to Lesson 2. In this lesson we are learning about mindful eati
+     XDLS903 XDLS903_3_0.html: Welcome to Lesson 3. In this lesson we are learning about wairua; our 
+     XDLS903 XDLS903_4_0.html: Welcome to lesson 4. In this lesson we are going to learn how to know 
+     XDLS903 XDLS903_5_0.html: Welcome to lesson 5. We are learning about celebrating our people, pet
+  tail (after the list) | gold=menu claude=menu
+     XDLS903 XDLS903_2_0.html: You will be able to select different ways of showing your understandin

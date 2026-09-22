@@ -3242,6 +3242,14 @@
 				"list",
 				"sub head"
 			],
+			"body_ends_section": {
+				"enabled": true,
+				"env": "MENUBODY_OFF",
+				"tags": [
+					"body"
+				],
+				"_doc": "ROUND 435 (the autonomous loop, session 36 Round 3): THE LESSON MENU ENDS AT THE WRITER'S `[Body]`. Inside a lesson's overview block the writer sometimes types a `[Body]`-tagged run — 'Welcome to lesson six. We are learning how to keep our wairua safe…', 'In this lesson you will learn about the properties of 2D shapes…'. The section-stop above lists `body` among its menu-safe tags, so those runs rode into #module-menu-content (31 runs on ~30 pages: XDLS903 / 904 / 906 / 908, MXEO202 ×6, ENGC403, GEO1005, XDLS901 — the s35 / s36 menu-overrun census's remaining family rows). MEASURED over every paired lesson page (outputs/_s36_r3_bodylead.py / _bodylead2.py): 120 such runs on 19 modules; the gold places them in the BODY 80 times and in the MENU 2 (XDLS901_4_0's lead, XDLS903_2_0's tail — that page also carries a gold-body one), the other 38 absent → 0.976, well above the r182 floor. Decisive safety fact: NONE of the 120 is itself the WALT / SC lead line (0 WALT-lead runs in every bucket), so this can never decapitate a menu block. With this flag on, a tag listed in `tags` is NOT menu-safe: it ends the section-stop's run, and everything from it onward is ordinary body. Only the SECTION-STOP path consults this (the marked `[Lesson Overview]` form); the r432 implicit block builds its own index set and is untouched. Env MENUBODY_OFF reverts (OFF corpus byte-identical, probed)."
+			},
 			"note": "Round 147 (Chris, review queue 1 — menu under-populated 240pp/82m). SECTION-STOP lesson-menu capture, coupled with the same round's PAGE-ROLE-AWARE Menu_Scaffold_Registry re-mine (derive_menu_type.cjs; MENUREG_OFF). The r114 region (LO → first heading) absorbs everything in between, but the CED NCEA family writes [Lesson Overview] → [alert.top] printable-resources + [Button]s → [Lesson content] → WALT → [H2], and the human keeps the alert/buttons in #body with only the WALT in the menu (CEDO501 1.0–6.0). With this flag the menu absorbs two CONTIGUOUS TEXT sections — the [Lesson Overview] intro run + the [Lesson content] section — each running only over black text and menu_section_safe_tags; ANY other tag (alert, button, image, interactive, heading) ends its section and stays body. Pages whose whole region is already pure text (the r114 population) are byte-identical by construction. Env MENUSTOP_OFF reverts to the plain r114 range."
 		},
 		"fundamentals_overview_li": {

@@ -5903,7 +5903,17 @@ class ContentConverter {
 			// them as "skip over, don't stop for" here keeps that existing behaviour
 			// byte-identical. Only a genuinely STRUCTURAL tag (an alert, a button, an image,
 			// an interactive widget, a heading, and so on) actually ends a section.
-			const textish = (x) => {
+			// ROUND 435 — the lesson menu ENDS at the writer's `[Body]`. A `[Body]`-tagged run inside the
+			// overview block ("Welcome to lesson six. We are learning…") is the lesson's body opening, not
+			// menu content: the gold places such a run in `#body` on 80 of the 82 it renders (0.976, 120
+			// runs / 19 modules — outputs/_s36_r3_bodylead.py), and NONE of the 120 is itself the WALT / SC
+			// lead line, so ending the section here can never decapitate the block. Data
+			// menu.lesson_menu_section_stop.body_ends_section; env MENUBODY_OFF.
+			const _beCfg = stopCfg.body_ends_section;
+			const _beOn = !!_beCfg && _beCfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[_beCfg.env || "MENUBODY_OFF"]);
+			const _beTags = new Set(_beOn ? (_beCfg.tags ?? ["body"]) : []);
+			const textishNoBodyStop = (x) => {
 				if (x.type === "black") return true;
 				if (x.type !== "tag") return false;                       // image/table blocks stop
 				const p = x.parse?.primary;
@@ -5911,16 +5921,44 @@ class ContentConverter {
 				if (x.parse?.class === "instruction" || x.parse?.class === "noise") return true;
 				return safe.has(p.tag);
 			};
-			menuIdxSet = new Set();
-			for (let j = overviewIdx + 1; j < lessonMenuEnd; j++) {     // section A: the LO intro
-				if (j === contentIdx) break;                            // LC opens its own section
-				if (!textish(items[j])) break;                          // a structural tag ends it
-				menuIdxSet.add(j);
-			}
-			if (contentIdx > overviewIdx && contentIdx < lessonMenuEnd) {
-				for (let j = contentIdx + 1; j < lessonMenuEnd; j++) {  // section B: [Lesson content]
-					if (!textish(items[j])) break;
-					menuIdxSet.add(j);
+			const textish = (x) => {
+				if (x.type === "tag" && _beTags.has(x.parse?.primary?.tag)) return false;   // ROUND 435 — `[Body]` ends the menu section
+				return textishNoBodyStop(x);
+			};
+			const buildSet = (bodyStops) => {
+				const ok = (x) => (bodyStops ? textish(x) : textishNoBodyStop(x));
+				const out = new Set();
+				for (let j = overviewIdx + 1; j < lessonMenuEnd; j++) {     // section A: the LO intro
+					if (j === contentIdx) break;                            // LC opens its own section
+					if (!ok(items[j])) break;                               // a structural tag ends it
+					out.add(j);
+				}
+				if (contentIdx > overviewIdx && contentIdx < lessonMenuEnd) {
+					for (let j = contentIdx + 1; j < lessonMenuEnd; j++) {  // section B: [Lesson content]
+						if (!ok(items[j])) break;
+						out.add(j);
+					}
+				}
+				return out;
+			};
+			menuIdxSet = buildSet(true);
+			// ROUND 435 — NEVER LEAVE THE MENU LEAD-LESS. On a page where the writer's `[Body]` run comes
+			// BEFORE the WALT / SC block (XDLS901 lesson 4: two scene-setting paragraphs, then "We are
+			// learning:"), stopping at that `[Body]` would take the whole block out of the menu with it —
+			// the very thing this rule exists to protect. When the body-stopped section holds no lead line
+			// and the un-stopped one does, keep the un-stopped section. Same shape as the `intentOn`
+			// "never regress to an empty menu" guard above. Data menu.lesson_overview_implicit.lead_pattern.
+			if (_beOn && menuIdxSet.size >= 0) {
+				const _leadRe = new RegExp(DataService.Data.EmitTemplates.menu?.lesson_overview_implicit?.lead_pattern
+					?? "^(we are learning|learning intentions?|you will show|how will i know|i can\\b|success criteria)", "i");
+				const _hasLead = (set) => [...set].some((j) => {
+					const x = items[j];
+					const t = x.type === "black" ? String(x.text || "") : `${this.#norm.RenderText(x.text) || ""} ${x.blackAfter || ""}`;
+					return t.split("\n").some((ln) => _leadRe.test(ln.replace(/\*/g, "").trim()));
+				});
+				if (!_hasLead(menuIdxSet)) {
+					const alt = buildSet(false);
+					if (_hasLead(alt)) menuIdxSet = alt;
 				}
 			}
 		}
