@@ -1,0 +1,99 @@
+paired OVERVIEW menus with >= 3 content children on both sides: 453
+   gold=li  claude=li          397
+   gold=li  claude=p            28
+   gold=p   claude=p            10
+   gold=tie claude=li            7
+   gold=p   claude=li            7
+   gold=li  claude=tie           3
+   gold=tie claude=p             1
+
+by SUBJECT family (modules; only families with a gold=li or a disagreement):
+   1-10 Blended Literacy              {'gold=li  claude=li ': 109, 'gold=tie claude=li ': 1, 'gold=p   claude=li ': 1}
+   NCEA1                              {'gold=li  claude=li ': 49, 'gold=p   claude=p  ': 8, 'gold=li  claude=p  ': 6, 'gold=li  claude=tie': 3, 'gold=p   claude=li ': 2, 'gold=tie claude=li ': 1}
+   1-10 English                       {'gold=li  claude=li ': 49, 'gold=li  claude=p  ': 2, 'gold=tie claude=li ': 1}
+   1-10 Mathematics                   {'gold=li  claude=li ': 31, 'gold=li  claude=p  ': 5, 'gold=tie claude=p  ': 1}
+   ConnectED                          {'gold=li  claude=li ': 26, 'gold=li  claude=p  ': 8, 'gold=tie claude=li ': 1, 'gold=p   claude=li ': 1}
+   Leaving to Learn                   {'gold=li  claude=li ': 22, 'gold=li  claude=p  ': 6, 'gold=p   claude=p  ': 2, 'gold=p   claude=li ': 1}
+   Online Safety (OS9000)             {'gold=li  claude=li ': 23, 'gold=tie claude=li ': 3, 'gold=p   claude=li ': 2}
+   1-10 Writing (MiW)                 {'gold=li  claude=li ': 21}
+   1-10 Health and PE                 {'gold=li  claude=li ': 17}
+   ANZH                               {'gold=li  claude=li ': 12}
+   Te ara Whakapuawa -Wellbeing       {'gold=li  claude=li ': 12}
+   1-10 Languages                     {'gold=li  claude=li ': 9}
+   1-10 Social Science                {'gold=li  claude=li ': 7}
+   Te Marautanga o Aotearoa TMoA      {'gold=li  claude=li ': 4}
+   1-10 Science                       {'gold=li  claude=li ': 4}
+   1-10 Technology                    {'gold=li  claude=p  ': 1, 'gold=li  claude=li ': 1}
+   EXPlore                            {'gold=li  claude=li ': 1}
+
+by CODE PREFIX (only prefixes where the gold prefers li):
+   BLL      li-golds 106 of 108   {'gold=li  claude=li ': 106, 'gold=tie claude=li ': 1, 'gold=p   claude=li ': 1}
+   WJFUN    li-golds 21 of 21   {'gold=li  claude=li ': 21}
+   HPFUN    li-golds 15 of 15   {'gold=li  claude=li ': 15}
+   ANZH     li-golds 12 of 12   {'gold=li  claude=li ': 12}
+   CEDT     li-golds 11 of 12   {'gold=li  claude=li ': 9, 'gold=li  claude=p  ': 2, 'gold=p   claude=li ': 1}
+   ENGI     li-golds 11 of 12   {'gold=li  claude=li ': 11, 'gold=tie claude=li ': 1}
+   ENGC     li-golds 10 of 10   {'gold=li  claude=li ': 10}
+   MXFL     li-golds 10 of 10   {'gold=li  claude=li ': 10}
+   CEDO     li-golds  9 of  9   {'gold=li  claude=li ': 7, 'gold=li  claude=p  ': 2}
+   ENGS     li-golds  9 of  9   {'gold=li  claude=li ': 9}
+   AGH      li-golds  8 of  9   {'gold=li  claude=li ': 5, 'gold=li  claude=tie': 2, 'gold=p   claude=p  ': 1, 'gold=li  claude=p  ': 1}
+   ENFUN    li-golds  8 of  8   {'gold=li  claude=li ': 8}
+   ENGJ     li-golds  8 of  8   {'gold=li  claude=li ': 7, 'gold=li  claude=p  ': 1}
+   PHE      li-golds  8 of  8   {'gold=li  claude=li ': 8}
+   XDLS     li-golds  8 of 10   {'gold=li  claude=p  ': 6, 'gold=li  claude=li ': 2, 'gold=p   claude=li ': 1, 'gold=p   claude=p  ': 1}
+   CEDR     li-golds  7 of  8   {'gold=li  claude=li ': 5, 'gold=li  claude=p  ': 2, 'gold=tie claude=li ': 1}
+   PES      li-golds  7 of  7   {'gold=li  claude=li ': 6, 'gold=li  claude=tie': 1}
+   CHFUN    li-golds  6 of  6   {'gold=li  claude=li ': 6}
+   HIS      li-golds  6 of  6   {'gold=li  claude=li ': 5, 'gold=li  claude=p  ': 1}
+   MXDI     li-golds  6 of  6   {'gold=li  claude=li ': 5, 'gold=li  claude=p  ': 1}
+   TWHA     li-golds  6 of  6   {'gold=li  claude=li ': 6}
+   XMES     li-golds  6 of  6   {'gold=li  claude=li ': 6}
+   ENGR     li-golds  5 of  5   {'gold=li  claude=li ': 4, 'gold=li  claude=p  ': 1}
+   MXDB     li-golds  5 of  5   {'gold=li  claude=li ': 4, 'gold=li  claude=p  ': 1}
+   MXEO     li-golds  5 of  5   {'gold=li  claude=li ': 4, 'gold=li  claude=p  ': 1}
+   MXEX     li-golds  5 of  5   {'gold=li  claude=li ': 4, 'gold=li  claude=p  ': 1}
+   MXFU     li-golds  5 of  6   {'gold=li  claude=li ': 4, 'gold=li  claude=p  ': 1, 'gold=tie claude=p  ': 1}
+   OSAI     li-golds  5 of  5   {'gold=li  claude=li ': 5}
+   PWY      li-golds  5 of  5   {'gold=li  claude=li ': 5}
+   XLP      li-golds  5 of  5   {'gold=li  claude=li ': 5}
+   CBI      li-golds  4 of  4   {'gold=li  claude=p  ': 2, 'gold=li  claude=li ': 2}
+   CEDK     li-golds  4 of  4   {'gold=li  claude=li ': 3, 'gold=li  claude=p  ': 1}
+   OSBY     li-golds  4 of  4   {'gold=li  claude=li ': 4}
+   OSGM     li-golds  4 of  5   {'gold=li  claude=li ': 4, 'gold=p   claude=li ': 1}
+   PNR      li-golds  4 of  4   {'gold=li  claude=li ': 4}
+   SSOG     li-golds  4 of  4   {'gold=li  claude=li ': 4}
+   XGF      li-golds  4 of  4   {'gold=li  claude=li ': 4}
+   ART      li-golds  3 of  3   {'gold=li  claude=li ': 3}
+   BLLR     li-golds  3 of  3   {'gold=li  claude=li ': 3}
+   CEDW     li-golds  3 of  3   {'gold=li  claude=li ': 2, 'gold=li  claude=p  ': 1}
+   COM      li-golds  3 of  3   {'gold=li  claude=li ': 2, 'gold=li  claude=p  ': 1}
+   DAN      li-golds  3 of  3   {'gold=li  claude=li ': 3}
+   GEO      li-golds  3 of  3   {'gold=li  claude=li ': 3}
+   OSSC     li-golds  3 of  3   {'gold=li  claude=li ': 3}
+   OSSM     li-golds  3 of  3   {'gold=li  claude=li ': 3}
+   TWHK     li-golds  3 of  3   {'gold=li  claude=li ': 3}
+   XTAS     li-golds  3 of  3   {'gold=li  claude=li ': 3}
+   DTC      li-golds  2 of  2   {'gold=li  claude=li ': 2}
+   FRNO     li-golds  2 of  2   {'gold=li  claude=li ': 2}
+   HPRE     li-golds  2 of  2   {'gold=li  claude=li ': 2}
+   OSAH     li-golds  2 of  3   {'gold=li  claude=li ': 2, 'gold=p   claude=li ': 1}
+   OSOH     li-golds  2 of  5   {'gold=tie claude=li ': 3, 'gold=li  claude=li ': 2}
+   SSCI     li-golds  2 of  2   {'gold=li  claude=li ': 2}
+   TEDC     li-golds  2 of  2   {'gold=li  claude=p  ': 1, 'gold=li  claude=li ': 1}
+   TWHR     li-golds  2 of  2   {'gold=li  claude=li ': 2}
+   XFUN     li-golds  2 of  2   {'gold=li  claude=li ': 2}
+   ENO      li-golds  1 of  1   {'gold=li  claude=li ': 1}
+   EXPFUN   li-golds  1 of  1   {'gold=li  claude=li ': 1}
+   GENO     li-golds  1 of  1   {'gold=li  claude=li ': 1}
+   GER      li-golds  1 of  1   {'gold=li  claude=p  ': 1}
+   JPN      li-golds  1 of  1   {'gold=li  claude=li ': 1}
+   MUS      li-golds  1 of  1   {'gold=li  claude=li ': 1}
+   MXS      li-golds  1 of  1   {'gold=li  claude=li ': 1}
+   SCBI     li-golds  1 of  1   {'gold=li  claude=li ': 1}
+   SCCH     li-golds  1 of  1   {'gold=li  claude=li ': 1}
+   SCES     li-golds  1 of  1   {'gold=li  claude=li ': 1}
+   SCPH     li-golds  1 of  1   {'gold=li  claude=li ': 1}
+   SPA      li-golds  1 of  1   {'gold=li  claude=li ': 1}
+   SSEA     li-golds  1 of  1   {'gold=li  claude=li ': 1}
+   TWHT     li-golds  1 of  1   {'gold=li  claude=li ': 1}

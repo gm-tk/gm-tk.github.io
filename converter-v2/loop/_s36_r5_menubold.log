@@ -1,0 +1,138 @@
+bold-labelled lines inside an overview's menu region: 1143
+   gold=absent claude=absent           483   modules 237
+   gold=h5     claude=h5               183   modules 139
+   gold=p      claude=p                147   modules 97
+   gold=absent claude=p                 86   modules 58
+   gold=h5     claude=absent            60   modules 39
+   gold=absent claude=h5                54   modules 47
+   gold=h4     claude=h5                34   modules 34
+   gold=li     claude=p                 29   modules 20
+   gold=h3     claude=h5                17   modules 15
+   gold=h5     claude=h4                14   modules 14
+   gold=p      claude=absent            12   modules 11
+   gold=h4     claude=absent             8   modules 8
+   gold=p      claude=h5                 4   modules 4
+   gold=h3     claude=h4                 2   modules 2
+   gold=li     claude=h4                 2   modules 2
+   gold=li     claude=li                 2   modules 1
+   gold=li     claude=h5                 2   modules 2
+   gold=h4     claude=h4                 1   modules 1
+   gold=p      claude=h4                 1   modules 1
+   gold=absent claude=h4                 1   modules 1
+   gold=li     claude=absent             1   modules 1
+
+the labels themselves (top 15):
+   whāinga ako |                250
+   whakamaheretia tō wā |       172
+   understand                   152
+   know                         81
+   do                           45
+   animation script             45
+   oral language                25
+   reading                      25
+   writing                      25
+   submission checklist         24
+   aromatawai | assessment for learning 9
+   example                      7
+   paearu angitu                6
+   for example                  5
+   note                         4
+
+examples:
+  gold=absent claude=absent
+     AGH1005: **Unlocking Plant Magic** Exploring plant growth and processes in Aotearoa, New Z
+     AGH1005: **Wetemaukatia te Tipu Mīharo** Ko te tūhura i te tipu me te tukanga i Aotearoa.
+     AGH1006: **Green Mastery** Managing plant processes
+     AGH1006: **Te whakatō tipu kākāriki** Te whakahaere hātepe ahumāra
+     AGH1009: **NCEA** Level 1 External
+  gold=absent claude=h4
+     HIS1002: **Whāinga Ako |** **Learning Intentions**
+  gold=absent claude=h5
+     ANZH302: **Whakamaheretia tō wā |** **Planning your time**
+     ART1005: **Whāinga Ako |** **Learning Intentions**
+     ART1005: **Whakamaheretia tō wā |** **Planning your time**
+     BLL131: **Whāinga Ako |** **Learning Intentions**
+     BLL134: **Whāinga Ako |** **Learning Intentions**
+  gold=absent claude=p
+     ART1003: **You can work towards** **standards in other modules, including:**
+     BLL110: **Understand** ✅Awaiting new curriculum
+     BLL111: **Understand** ✅Awaiting the new curriculum
+     BLL112: **Understand** ✅Awaiting the new curriculum
+     BLL113: **Understand** *Awaiting the new curriculum*
+  gold=h3 claude=h4
+     ANZH101: **Whāinga Ako |** **Learning Intentions**
+     MXFL202: **Whāinga Ako |** **Learning Intentions**
+  gold=h3 claude=h5
+     ANZH301: **Whāinga Ako |** **Learning Intentions**
+     ANZH302: **Whāinga Ako |** **Learning Intentions**
+     ENGC101: **Whāinga Ako |** **Learning Intentions**
+     ENGI101: **Whāinga Ako |** **Learning Intentions**
+     ENGI102: **Whāinga Ako |** **Learning Intentions**
+  gold=h4 claude=absent
+     BLL124: **Whāinga Ako |** **Learning Intentions**
+     CEDR101: **Whāinga Ako |** **Learning Intentions**
+     CEDR401: **Whāinga Ako |** **Learning Intentions**
+     COM1005: **Whakamaheretia tō wā |** **Planning your time**
+     EXPFUN02: **Whāinga Ako |** **Learning Intentions**
+  gold=h4 claude=h4
+     ANZH203: **Whāinga Ako |** **Learning Intentions**
+  gold=h4 claude=h5
+     BLL110: **Whāinga Ako |** **Learning Intentions**
+     BLL111: **Whāinga Ako |** **Learning Intentions**
+     BLL112: **Whāinga Ako |** **Learning Intentions**
+     BLL113: **Whāinga Ako |** **Learning Intentions**
+     BLL114: **Whāinga Ako |** **Learning Intentions**
+  gold=h5 claude=absent
+     CBI1004: **Whāinga Ako |** **Learning Intentions**
+     CBI1004: **Whakamaheretia tō wā |** **Planning your time**
+     CBI1005: **Whāinga Ako |** **Learning Intentions**
+     CBI1005: **Whakamaheretia tō wā |** **Planning your time**
+     CBI1008: **Whāinga Ako |** **Learning Intentions**
+  gold=h5 claude=h4
+     ANZH104: **Whāinga Ako |** **Learning Intentions**
+     ANZH105: **Whāinga Ako |** **Learning Intentions**
+     ANZH205: **Whāinga Ako |** **Learning Intentions**
+     MXDB102: **Whāinga Ako |** **Learning Intentions**
+     MXEX201: **Whāinga Ako |** **Learning Intentions**
+  gold=h5 claude=h5
+     AGH1001: **Whāinga Ako |** **Learning Intentions**
+     AGH1001: **Whakamaheretia tō wā |** **Planning your time**
+     AGH1002: **Whāinga Ako |** **Learning Intentions**
+     AGH1002: **Whakamaheretia tō wā |** **Planning your time**
+     AGH1003: **Whāinga Ako |** **Learning Intentions**
+  gold=li claude=absent
+     XMES203: **Living world** All living things need food, water, air, and rest to su
+  gold=li claude=h4
+     MXEX401: **Whāinga Ako |** **Learning Intentions**
+     XMES203: **Whāinga Ako |** **Learning Intentions**
+  gold=li claude=h5
+     XMES201: **Whāinga Ako |** **Learning Intentions**
+     XMES202: **Whāinga Ako |** **Learning Intentions**
+  gold=li claude=li
+     WJFUN305: **Tab 1** Audience, Purpose & Reaction
+     WJFUN305: **Tab 2** Form, Genre and Style
+  gold=li claude=p
+     AGH1002: **Understand** *Primary producers manage life processes and the growin
+     AGH1002: **Know** *Explore the interrelationship between primary producti
+     AGH1002: **Do** *Utilise discipline specific language and graphics used
+     AGH1007: **Do** *Explore how life processes affect primary production.*
+     AGH1008: **Do** *Explore how life processes affect primary production.*
+  gold=p claude=absent
+     ENGR302: **Know** ***Ideas within, across, and beyond texts***
+     ENGR302: **Do** ***Critical*** ***a******nalysis***
+     MXFU402: **Know** Probability | Tūponotanga
+     OSAH301: **Aromatawai | Assessment for Learning** Complete the self-assessment quiz at the end of the mod
+     OSAH501: **Aromatawai | Assessment for Learning** Complete the self-assessment quiz at the end of the mod
+  gold=p claude=h4
+     ENGR201: **Whāinga Ako |** **Learning Intentions**
+  gold=p claude=h5
+     MXFU201: **Whāinga Ako |** **Learning Intentions**
+     MXFU302: **Whāinga Ako |** **Learning Intentions**
+     MXFU401: **Whāinga Ako |** **Learning Intentions**
+     XWHA02: **Do** Ākonga will be given choice to
+  gold=p claude=p
+     AGH1003: **Understand** *Primary producers manage life processes and the growin
+     AGH1003: **Know** *Explore the interrelationship between primary producti
+     AGH1003: **Do** *Utilise discipline specific language and graphics used
+     AGH1007: **Understand** *Primary producers manage life processes and the growin
+     AGH1007: **Know** *Primary producers manage life processes through manage
