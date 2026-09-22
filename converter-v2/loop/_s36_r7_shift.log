@@ -1,0 +1,55 @@
+title-matched boxes with an equal count and exactly ONE element swapped: 184
+   gold p@last    <->  claude p@last               108   modules  79
+   gold p@middle  <->  claude p@middle              21   modules  17
+   gold h4@last    <->  claude p@last               16   modules  11
+   gold p@middle  <->  claude p@last                12   modules  11
+   gold p@last    <->  claude p@middle               7   modules   5
+   gold li@middle  <->  claude li@middle             5   modules   5
+   gold h4@last    <->  claude h4@last               5   modules   2
+   gold p@middle  <->  claude h4@last                2   modules   2
+   gold h4@last    <->  claude p@middle              1   modules   1
+   gold h5@last    <->  claude p@last                1   modules   1
+   gold h3@middle  <->  claude p@last                1   modules   1
+   gold p@first   <->  claude p@first                1   modules   1
+   gold li@middle  <->  claude p@last                1   modules   1
+   gold p@first   <->  claude p@middle               1   modules   1
+   gold p@last    <->  claude h4@last                1   modules   1
+   gold li@last    <->  claude p@last                1   modules   1
+
+examples (the top patterns):
+  gold p@last    <->  claude p@last
+     ANZH104 ANZH104_3_0.html «clothingwordfind» : gold «In the word find, click on the first and» / claude «⚙ INTERACTIVE (un-built) #2: unclassifie»
+     ARFUN02 ARFUN02_0_0.html «whathaveilearnedheahaakuia» : gold «Designer note: Please add a description.» / claude «Designer/Developer To Do: create this qu»
+     ARFUN02 ARFUN02_0_0.html «whathaveilearnedheahaakuia» : gold «Check your understanding of the differen» / claude «Designer/Developer To Do: create this qu»
+     BLL111 BLL111_1_0.html «decodingwords» : gold «Click on each box to see what words you » / claude «Writers Note: Can we make something like»
+     BLL114 BLL114_2_0.html «writethesentences» : gold «Get a pen and paper or a whiteboard read» / claude «Get a pen and paper or a whiteboard read»
+  gold p@middle  <->  claude p@middle
+     ANZH304 ANZH304_3_0.html «discussion» : gold «Use the information from the slides abov» / claude «Use the information from the slides abov»
+     BLL150 BLL150_0_0.html «vowelteamoo» : gold «'oo' (look) makes a short sound so when » / claude «‘oo’ (look) makes a short sound so when »
+     BLL170 BLL170_0_0.html «vowelteamou» : gold «In this section we will be learning abou» / claude «In this section we will be learning abou»
+     BLL170 BLL170_0_0.html «vowelteamoi» : gold «In this section we will be learning abou» / claude «In this section we will be learning abou»
+     BLL170 BLL170_0_0.html «letterteamue» : gold «In this section we will be learning abou» / claude «In this section we will be learning abou»
+  gold h4@last    <->  claude p@last
+     BLL252 BLL252_1_0.html «expandingthewords» : gold «shouldn't» / claude «⚙ INTERACTIVE (un-built) #4: typing — Ac»
+     BLL276 BLL276_1_0.html «exploringtheworldofanimals» : gold «ra / ki / ra / ki» / claude «⚙ INTERACTIVE (un-built) #3: unclassifie»
+     CEDK501 CEDK501_1_0.html «refiningyourgoal» : gold «Go to your response sheet» / claude «Designer/Developer To Do: Wire this butt»
+     CEDO402 CEDO402_0_0.html «howclosewereyou» : gold «Go to your journal» / claude «Designer/Developer To Do: Wire this butt»
+     CEDO402 CEDO402_0_0.html «dstcalculations» : gold «Go to your journal» / claude «Designer/Developer To Do: Wire this butt»
+  gold p@middle  <->  claude p@last
+     BLL112 BLL112_2_0.html «vocabularyactivities» : gold «These activities are all about the word » / claude «Writers Note: Can we add an arrow pointi»
+     BLL274 BLL274_2_0.html «tereodictionary» : gold «Designer note: audio to come» / claude «⚙ INTERACTIVE (un-built) #8: unclassifie»
+     BLL275 BLL275_2_0.html «yourchoice» : gold «Choose one or more of the following acti» / claude «Writers Note: Is it possible to create o»
+     BLL276 BLL276_2_0.html «tereodictionary» : gold «Designer note: audio to come» / claude «⚙ INTERACTIVE (un-built) #8: unclassifie»
+     CEDT501 CEDT501_6_0.html «wordchoices» : gold «Informal» / claude «⚙ INTERACTIVE (un-built) #26: dragAndDro»
+  gold p@last    <->  claude p@middle
+     CEDW201 CEDW201_0_0.html «createacomic» : gold «You can use one of the comic book layout» / claude «Writers Note: Comic frame in journal»
+     MXFU302 MXFU302_1_0.html «analysingtimeseriesgraphs» : gold «New Zealand continued to increase the nu» / claude «Writers Note: New Zealand continued to i»
+     MXFU302 MXFU302_9_0.html «findingthegradientofthelin» : gold «Designer note: Need to correct format of» / claude «⚙ INTERACTIVE (un-built) #19: dragAndDro»
+     MXFU302 MXFU302_9_0.html «findingthenegativeslopeoft» : gold «Designer note: Need to correct format of» / claude «⚙ INTERACTIVE (un-built) #20: dragAndDro»
+     WJFUN115 WJFUN115_0_0.html «matchtheadjective» : gold «delicious» / claude «⚙ INTERACTIVE (un-built) #3: dragAndDrop»
+  gold li@middle  <->  claude li@middle
+     ENGI303 ENGI303_1_0.html «mainevents» : gold «what Piper is doing» / claude «wWhat Piper is doing»
+     HPRE301 HPRE301_4_0.html «practiseexplainingfeelings» : gold «express a feeling you have recently expe» / claude «express a feeling you have recently expe»
+     MXDI202 MXDI202_5_0.html «designandcreateamarblerun» : gold «Time how long it takes for the marble or» / claude «Time how long it takes for the marble or»
+     MXFL101 MXFL101_3_7.html «lilypads» : gold «Ākonga has to jump on the numbers in ord» / claude «Ākonga has to jump on the numbers in ord»
+     XOTPG03 XOTPG03_2_0.html «keiakoeyourturn» : gold «Make your own instrument. You could use » / claude «Craftbased: make your own instrument. Yo»

@@ -1,0 +1,30 @@
+paired pages whose GOLD has panels: shells matched (within 1) 131
+
+A. the gold has panels, CLAUDE HAS NONE — the shell never built: 20 pages / 20 modules
+   ANZHFUN05  Fundamentals    1 pages   ANZHFUN05_0_0.html(g4)
+   BLL240     Inquiry         1 pages   BLL240_1_0.html(g8)
+   CEDK501    Inquiry         1 pages   CEDK501_0_0.html(g8)
+   CEDR201    Inquiry         1 pages   CEDR201_0_0.html(g6)
+   CEDR301    Inquiry         1 pages   CEDR301_0_0.html(g6)
+   CEDR302    Inquiry         1 pages   CEDR302_0_0.html(g6)
+   CEDT201    Inquiry         1 pages   CEDT201_0_0.html(g6)
+   CEDT202    Inquiry         1 pages   CEDT202_0_0.html(g6)
+   CEDT203    Inquiry         1 pages   CEDT203_0_0.html(g6)
+   CEDT204    Inquiry         1 pages   CEDT204_0_0.html(g6)
+   CEDT207    Inquiry         1 pages   CEDT207_0_0.html(g7)
+   CEDT301    Inquiry         1 pages   CEDT301_6_0.html(g7)
+   CEDW303    Inquiry         1 pages   CEDW303_0_0.html(g6)
+   EXIP901    Standard        1 pages   EXIP901_4_0.html(g6)
+   FRFUN07    Fundamentals    1 pages   FRFUN07_0_0.html(g2)
+   FRFUN08    Fundamentals    1 pages   FRFUN08_0_0.html(g2)
+   JPFUN01    Fundamentals    1 pages   JPFUN01_0_0.html(g2)
+   JPFUN02    Fundamentals    1 pages   JPFUN02_0_0.html(g2)
+   MXFUN01    Fundamentals    1 pages   MXFUN01_0_0.html(g4)
+   SSFUN07    Standard        1 pages   SSFUN07_2_0.html(g4)
+
+B. both have panels but the COUNT differs by >= 2: 7 pages / 5 modules
+   EXBP901    Standard        3 pages   EXBP901_1_0.html(g6/c3) EXBP901_3_0.html(g6/c3) EXBP901_4_0.html(g5/c2)
+   ARFUN04    Fundamentals    1 pages   ARFUN04_0_0.html(g4/c21)
+   CEDO402    Inquiry         1 pages   CEDO402_0_0.html(g6/c3)
+   EXIP901    Standard        1 pages   EXIP901_2_0.html(g5/c3)
+   TWHK902    Inquiry         1 pages   TWHK902_0_0.html(g5/c3)

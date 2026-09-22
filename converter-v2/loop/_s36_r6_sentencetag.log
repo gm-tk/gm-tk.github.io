@@ -1,0 +1,97 @@
+bracket fragments of >= 5 words, no addressee prefix, resolved only by the EMBEDDED alias fallback: 5657
+   image              ELEMENT             1213   modules 183
+   activity           CONTAINER_OPEN       452   modules 129
+   drag and drop      INTERACTIVE          361   modules   0
+   button             ELEMENT              338   modules  58
+   info trigger       INTERACTIVE          302   modules   0
+   click drop         INTERACTIVE          277   modules   0
+   video              ELEMENT              252   modules  63
+   dropdown           INTERACTIVE          186   modules  47
+   speech bubble      INTERACTIVE          174   modules   0
+   flip card          INTERACTIVE          164   modules   0
+   data marker        SUBTAG               160   modules   0
+   typing quiz        INTERACTIVE          115   modules   0
+   audio              ELEMENT              107   modules  46
+   correct            SUBTAG               105   modules  39
+   external link      INLINE               104   modules   0
+   answer             SUBTAG               102   modules  45
+   alert              CONTAINER_OPEN        97   modules  53
+   mcq                INTERACTIVE           97   modules  53
+   carousel           INTERACTIVE           94   modules  59
+   modal              INTERACTIVE           93   modules  18
+   body               ELEMENT               88   modules  45
+   shape n            SUBTAG                67   modules   0
+   accordion          INTERACTIVE           64   modules  35
+   embed              ELEMENT               49   modules  25
+
+examples:
+  image|ELEMENT                      (modules 183)
+     ARFUN01: [Text for link: Phase one: Who I am [Use image for thumb nail]
+     ARFUN01: [Text for link: Phase two: Who we are [Use image for thumb nail]
+     ARFUN01: [Insert image two for click drop]
+     ARFUN01: [Insert image three for click drop]
+  drag and drop|INTERACTIVE          (modules 138)
+     ARFUN03: [Insert drag and drop activity – words drop into tables, correct answers below]
+     ARFUN03: [Insert drag and drop – sentences to match the pictures]
+     ARFUN04: [Activity 1C drag and drop]
+     ARFUN04: [create drag and drop activity that matches the feelings with the description]
+  activity|CONTAINER_OPEN            (modules 129)
+     TRR114: [Activity Box Wide (For Interactives) A picture with boxes for the following wo]
+     TRR114: [Activity Box Wide (For Interactives) A picture with boxes for the following wo]
+     ARFUN01: [Activity: Emotions – MKT Quiz]
+     ARFUN01: [ACTIVITY: MKT Quiz : Culture in the arts]
+  data marker|SUBTAG                 (modules 63)
+     ARFUN01: [Insert links to the 4 individual phases – side by side across screen]
+     ARFUN01: [make the word culture bold]
+     ARFUN02: [musical term with its correct definition:]
+     ARFUN04: [create hover-over: A term that means a strong contrast between light and dark.]
+  info trigger|INTERACTIVE           (modules 63)
+     ARFUN02: [Hover definition: A small flute made from wood, bone, or stone]
+     ARFUN02: [Hover definition: A chord is when you play three or more notes at the same tim]
+     ENFUN01: [hover trigger: the way the writing sounds]
+     ENFUN01: [hover trigger: serious or casual]
+  video|ELEMENT                      (modules 63)
+     ARFUN03: [Insert example video - Repetition]
+     ARFUN04: [they are the same video but I am not sure which one is the original. CS to dec]
+     ARFUN04: [Start at 0.44. Finish before video cuts out]
+     ARFUN04: [they are the same video but I am not sure which one is the original. CS to dec]
+  carousel|INTERACTIVE               (modules 59)
+     ARFUN02: [Insert an image or series of images relating to a wide range of music (includi]
+     ARFUN02: [Please insert carousel of video examples below]
+     ARFUN04: [insert items # 15: carousel]
+     ARFUN04: [create a carousel with names and pictures]
+  button|ELEMENT                     (modules 58)
+     SSFUN01: [please add a button to link to SSFUN07: Enterprise when available]
+     TEFUN01: [Box to type answer, buttons for file upload, audio, video. Teacher marked.]
+     TEFUN03: [Box to type answer, buttons for file upload, audio, video. Teacher marked.]
+     TEFUN03: [Box to type answer, buttons for file upload, audio, video. Teacher marked.]
+  alert|CONTAINER_OPEN               (modules 53)
+     ARFUN01: [Insert as alert box on right hand side]
+     ARFUN01: [Insert in an alert box]
+     ARFUN02: [Insert as alert box on right hand side]
+     ARFUN03: [Insert as alert box on right hand side]
+  mcq|INTERACTIVE                    (modules 53)
+     ARFUN01: [End of MTK Quiz content]
+     ARFUN03: [insert multi choice activity with images]
+     ARFUN04: [Insert quiz to match elements with their definitions]
+     ARFUN04: [create a tick box quiz]
+  flip card|INTERACTIVE              (modules 53)
+     ARFUN01: [Insert flip cards with the following images and text]
+     ARFUN02: [Insert the images as flip cards]
+     ARFUN03: [Insert images with flip card text]
+     ARFUN03: [Flip card text for above image]
+  dropdown|INTERACTIVE               (modules 47)
+     PMT101: [Content for DROP DOWN MENU]
+     PNR101: [Content for DROP DOWN MENU]
+     PNR102: [Content for DROP DOWN MENU]
+     PNR102: [END OF DROP DOWN MENU]
+  audio|ELEMENT                      (modules 46)
+     TRR114: [Each syllable will need to be snipped from Audio]
+     TRR114: [Each syllable will need to be snipped from Audio]
+     TRR114: [There will be an audio for them to listen to.]
+     TRR114: [There will be an audio for them to listen to.]
+  speech bubble|INTERACTIVE          (modules 46)
+     SCFUN01: [speech bubble 1 to left of image]
+     SCFUN01: [speech bubble 2 to right of image]
+     TEFUN01: [Hover trigger 2– In Alex’s speech bubble]
+     TEFUN01: [Hover trigger 3– In Alex’s speech bubble]

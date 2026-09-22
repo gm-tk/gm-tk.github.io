@@ -1,0 +1,28 @@
+paired activity boxes matched by title: 4617
+   claude's box has MORE (over-capture)        2410   modules 387
+   claude's box has LESS (under-capture)       1572   modules 347
+   same size, different content                 392   modules 214
+   box IDENTICAL in content                     243   modules   0
+
+examples:
+  claude's box has LESS (under-capture)
+     AGH1004 AGH1004_6_0.html box «fromgrasstoglass» gold 7 / claude 5
+     ANZH104 ANZH104_6_0.html box «findingfood» gold 6 / claude 3
+     ANZH105 ANZH105_2_0.html box «backintheday» gold 7 / claude 6
+     ANZH203 ANZH203_3_0.html box «tupaiapmichart» gold 6 / claude 3
+     ANZH301 ANZH301_1_0.html box «postwarblues» gold 25 / claude 2
+     ANZH301 ANZH301_2_0.html box «integrationorsegregation» gold 8 / claude 6
+  claude's box has MORE (over-capture)
+     AGH1002 AGH1002_2_0.html box «calculatingsoiltype» gold 5 / claude 7
+     AGH1004 AGH1004_1_0.html box «knowledgeselfcheck» gold 19 / claude 17
+     AGH1004 AGH1004_1_0.html box «knowledgeselfcheck» gold 11 / claude 17
+     AGH1008 AGH1008_3_0.html box «grazingsystems» gold 4 / claude 8
+     AGH1008 AGH1008_5_0.html box «artificialinsemination» gold 3 / claude 22
+     ANZH101 ANZH101_2_0.html box «readingforunderstanding» gold 7 / claude 16
+  same size, different content
+     ANZH101 ANZH101_2_0.html box «retellingthestory» gold 4 / claude 4
+     ANZH104 ANZH104_2_0.html box «myhome» gold 2 / claude 2
+     ANZH104 ANZH104_3_0.html box «clothingwordfind» gold 2 / claude 2
+     ANZH301 ANZH301_6_0.html box «yourculturalgroup» gold 11 / claude 11
+     ANZH303 ANZH303_2_0.html box «processinginformation» gold 32 / claude 32
+     ANZH304 ANZH304_1_0.html box «missionaries» gold 8 / claude 6
