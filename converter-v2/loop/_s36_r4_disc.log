@@ -1,0 +1,39 @@
+paired LESSON pages with an EMPTY Claude menu, in modules that have a substantial gold overview menu: 412
+   gold's OWN lesson menu     | no lesson section found in the WT          108
+   gold's OWN lesson menu     | WT: NO menu source at all                   56
+   gold REPEATS the overview  | WT: NO menu source at all                   53
+   gold PARTLY                | no lesson section found in the WT           46
+   gold's OWN lesson menu     | WT: an [Overview] marker                    40
+   gold REPEATS the overview  | no lesson section found in the WT           34
+   gold REPEATS the overview  | WT: a WALT / SC lead, no marker             20
+   gold REPEATS the overview  | WT: an [Overview] marker                    19
+   gold PARTLY                | WT: NO menu source at all                   15
+   gold PARTLY                | WT: an [Overview] marker                    11
+   gold PARTLY                | WT: a WALT / SC lead, no marker              5
+   gold's OWN lesson menu     | WT: a WALT / SC lead, no marker              5
+
+examples:
+  gold PARTLY | WT: NO menu source at all
+     CEDT501 CEDT501_1_1.html, ENGR202 ENGR202_1_0.html, ENGR202 ENGR202_2_0.html, ENGR202 ENGR202_4_0.html, ENGR202 ENGR202_5_0.html
+  gold PARTLY | WT: a WALT / SC lead, no marker
+     ANZH404 ANZH404_1_0.html, ANZH404 ANZH404_2_0.html, ANZH404 ANZH404_3_0.html, ENGS101 ENGS101_4_0.html, GEO1006 GEO1006_1_0.html
+  gold PARTLY | WT: an [Overview] marker
+     CEDW501 CEDW501_2_1.html, CEDW501 CEDW501_3_1.html, CEDW501 CEDW501_7_2.html, ENGS404 ENGS404_3_1.html, ENGS404 ENGS404_4_0.html
+  gold PARTLY | no lesson section found in the WT
+     CBI1009 CBI1009_2_0.html, CEDK501 CEDK501_9_0.html, CEDO105 CEDO105_1_0.html, CEDO105 CEDO105_3_0.html, CEDO105 CEDO105_4_0.html
+  gold REPEATS the overview | WT: NO menu source at all
+     ANZH203 ANZH203_2_0.html, ANZH203 ANZH203_3_0.html, ANZH203 ANZH203_4_0.html, ANZH203 ANZH203_6_0.html, BLL240 BLL240_1_0.html
+  gold REPEATS the overview | WT: a WALT / SC lead, no marker
+     ANZH401 ANZH401_1_0.html, ANZH401 ANZH401_2_0.html, ANZH401 ANZH401_3_0.html, ANZH401 ANZH401_4_0.html, ANZH401 ANZH401_5_0.html
+  gold REPEATS the overview | WT: an [Overview] marker
+     PWY1001 PWY1001_1_1.html, PWY1001 PWY1001_1_2_0.html, PWY1001 PWY1001_1_3_0.html, PWY1001 PWY1001_2_3_0.html, PWY1001 PWY1001_3_2_0.html
+  gold REPEATS the overview | no lesson section found in the WT
+     ANZH103 ANZH103_1_0.html, ANZH203 ANZH203_1_0.html, ANZH401 ANZH401_13_0.html, CEDT207 CEDT207_5_0.html, ENGC403 ENGC403_12_0.html
+  gold's OWN lesson menu | WT: NO menu source at all
+     BLL115 BLL115_1_0.html, BLL123 BLL123_1_0.html, BLL124 BLL124_1_0.html, BLL125 BLL125_1_0.html, BLL132 BLL132_1_0.html
+  gold's OWN lesson menu | WT: a WALT / SC lead, no marker
+     CBI1008 CBI1008_1_0.html, CEDK501 CEDK501_6_1.html, ENGC206 ENGC206_4_0.html, MXEX202 MXEX202_3_0.html, XDLS902 XDLS902_2_0.html
+  gold's OWN lesson menu | WT: an [Overview] marker
+     BLLR201 BLLR201_2_0.html, BLLR202 BLLR202_1_1.html, BLLR202 BLLR202_3_1.html, BLLR202 BLLR202_5_1.html, BLLR203 BLLR203_1_1.html
+  gold's OWN lesson menu | no lesson section found in the WT
+     ART1006 ART1006_2_0.html, ART1006 ART1006_3_1.html, ART1006 ART1006_4_0.html, BLL131 BLL131_1_0.html, BLL274 BLL274_1_0.html

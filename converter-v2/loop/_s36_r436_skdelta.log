@@ -1,0 +1,34 @@
+OLD pairs 2491  SCAFFOLD 54.5579%  RAW 38.380%  >=50 1548  >=75 256  >=90 23
+NEW pairs 2491  SCAFFOLD 54.6077%  RAW 38.418%  >=50 1549  >=75 256  >=90 23
+delta SCAFFOLD +0.0498pp  RAW +0.038pp  >=50 +1  >=75 +0  >=90 +0
+movers 28 (up 27 / down 1), pp-sum +110.9
+movers outside the affected set: 0 []
+new-only pages: 3  gone pages: 3
+  CEDW501    CEDW501_3_1.html           54.8 ->   63.9  (+9.1)
+  CEDT501    CEDT501_1_1.html           51.5 ->   59.0  (+7.5)
+  CEDW501    CEDW501_2_1.html           39.3 ->   46.4  (+7.1)
+  BLLR202    BLLR202_3_1.html           77.3 ->   84.3  (+7.0)
+  HIS1008    HIS1008_1_2.html           61.6 ->   68.3  (+6.6)
+  CEDT501    CEDT501_3_1.html           38.1 ->   44.0  (+5.9)
+  CEDT501    CEDT501_6_1.html           65.5 ->   71.4  (+5.9)
+  HIS1005    HIS1005_5_1.html           61.0 ->   66.7  (+5.6)
+  BLLR202    BLLR202_1_1.html           40.7 ->   45.8  (+5.1)
+  XTAS103    XTAS103_3_1.html           59.9 ->   64.2  (+4.4)
+  XMES202    XMES202_1_1.html           65.6 ->   69.8  (+4.2)
+  HIS1007    HIS1007_4_1.html           66.2 ->   70.4  (+4.1)
+  PWY1001    PWY1001_1_1.html           44.7 ->   48.7  (+4.0)
+  HIS1005    HIS1005_6_1.html           53.2 ->   56.9  (+3.7)
+  HIS1008    HIS1008_2_1.html           55.8 ->   59.5  (+3.7)
+  HIS1005    HIS1005_10_1.html          69.2 ->   72.7  (+3.5)
+  CEDT501    CEDT501_5_1.html           44.4 ->   47.9  (+3.5)
+  HIS1007    HIS1007_3_1.html           46.7 ->   49.8  (+3.1)
+  HIS1008    HIS1008_3_1.html           56.3 ->   59.2  (+2.9)
+  HIS1005    HIS1005_9_1.html           45.3 ->   48.1  (+2.8)
+  XTAS103    XTAS103_2_1.html           63.1 ->   65.7  (+2.6)
+  GENO901    GENO901_3_2.html           30.8 ->   33.3  (+2.6)
+  BLLR203    BLLR203_1_1.html           48.0 ->   50.4  (+2.5)
+  ENGS404    ENGS404_3_1.html           47.2 ->   49.4  (+2.3)
+  ENGI405    ENGI405_4_1.html           43.4 ->   45.6  (+2.2)
+  CEDW501    CEDW501_7_2.html           31.7 ->   33.0  (+1.3)
+  BLLR202    BLLR202_5_1.html           62.8 ->   63.1  (+0.3)
+  CEDK501    CEDK501_5_1.html           42.9 ->   40.3  (-2.6)

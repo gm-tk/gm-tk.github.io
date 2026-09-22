@@ -1,0 +1,47 @@
+paired LESSON pages of modules with a substantial gold overview menu: 1352
+   gold menu is the lesson's own      | claude has its own                 526
+   gold menu partly the overview's    | claude has its own                 223
+   gold menu is the lesson's own      | claude EMPTY                       209
+   gold REPEATS the overview menu     | claude repeats too                 134
+   gold REPEATS the overview menu     | claude EMPTY                       126
+   gold menu partly the overview's    | claude EMPTY                        77
+   gold REPEATS the overview menu     | claude has its own                  37
+   gold menu partly the overview's    | claude repeats too                  17
+   gold menu is the lesson's own      | claude repeats too                   3
+
+by template family:
+   Fundamentals   {'gold menu pa|claude has its own': 2, 'gold REPEATS|claude repeats too': 2, 'gold REPEATS|claude has its own': 1}
+   Inquiry        {'gold menu is|claude EMPTY': 18, 'gold menu is|claude has its own': 16, 'gold REPEATS|claude EMPTY': 7, 'gold menu pa|claude EMPTY': 1}
+   Standard       {'gold menu is|claude has its own': 510, 'gold menu pa|claude has its own': 221, 'gold menu is|claude EMPTY': 191, 'gold REPEATS|claude repeats too': 132}
+
+THE CLASS — gold repeats the overview menu, Claude's lesson menu is EMPTY: 126 pages / 30 modules
+   ANZH401    12 pages  (Standard)
+   HPRE301    12 pages  (Standard)
+   ENGC102     7 pages  (Standard)
+   MXFL101     7 pages  (Standard)
+   MXFL102     7 pages  (Standard)
+   SSOG105     7 pages  (Standard)
+   MXDB201     6 pages  (Standard)
+   MXFU202     6 pages  (Standard)
+   ANZH203     5 pages  (Standard)
+   MXFL202     5 pages  (Standard)
+   PWY1001     5 pages  (Standard)
+   PWY1002     5 pages  (Standard)
+   PWY1007     5 pages  (Standard)
+   ENGJ101     4 pages  (Standard)
+   PWY1008     4 pages  (Standard)
+   PWY1009     4 pages  (Standard)
+   SSOG103     4 pages  (Standard)
+   ANZH404     3 pages  (Standard)
+   CEDT207     3 pages  (Inquiry)
+   CEDT301     3 pages  (Inquiry)
+   XLP05       3 pages  (Standard)
+   ANZH103     1 pages  (Standard)
+   BLL240      1 pages  (Inquiry)
+   CEDO301     1 pages  (Standard)
+   ENGC403     1 pages  (Standard)
+   HES1002     1 pages  (Standard)
+   MXEX302     1 pages  (Standard)
+   XDLS502     1 pages  (Standard)
+   XGF9004     1 pages  (Standard)
+   XWHA01      1 pages  (Standard)

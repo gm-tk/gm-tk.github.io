@@ -1,0 +1,28 @@
+paired CONTINUATION pages (part >= 1) whose lesson's first page has a gold menu: 42
+   gold REPEATS the lesson's menu | claude EMPTY                    21
+   gold continuation menu EMPTY too                                  7
+   gold has a DIFFERENT menu      | claude EMPTY                     7
+   gold PARTLY                    | claude EMPTY                     2
+   gold REPEATS the lesson's menu | claude has one                   2
+   gold PARTLY                    | claude has one                   2
+   gold has a DIFFERENT menu      | claude has one                   1
+
+THE CLASS — the gold repeats the lesson's menu on the continuation page, Claude's is EMPTY: 21 pages / 10 modules
+   CEDT501     4  CEDT501_1_1.html CEDT501_3_1.html CEDT501_5_1.html CEDT501_6_1.html
+   HIS1005     4  HIS1005_10_1.html HIS1005_5_1.html HIS1005_6_1.html HIS1005_9_1.html
+   HIS1008     3  HIS1008_1_2.html HIS1008_2_1.html HIS1008_3_1.html
+   CEDW501     2  CEDW501_2_1.html CEDW501_3_1.html
+   HIS1007     2  HIS1007_3_1.html HIS1007_4_1.html
+   XTAS103     2  XTAS103_2_1.html XTAS103_3_1.html
+   BLLR202     1  BLLR202_3_1.html
+   ENGS404     1  ENGS404_3_1.html
+   MXFL101     1  MXFL101_2_1.html
+   XMES202     1  XMES202_1_1.html
+
+examples:
+  gold PARTLY|claude EMPTY                       CEDK501 CEDK501_5_1.html, PWY1001 PWY1001_1_1.html
+  gold PARTLY|claude has one                     ENGC403 ENGC403_4_2.html, ENGJ403 ENGJ403_3_1.html
+  gold REPEATS the lesson's menu|claude EMPTY    BLLR202 BLLR202_3_1.html, CEDT501 CEDT501_1_1.html, CEDT501 CEDT501_3_1.html, CEDT501 CEDT501_5_1.html, CEDT501 CEDT501_6_1.html
+  gold REPEATS the lesson's menu|claude has one  ENGC403 ENGC403_3_1.html, ENGJ403 ENGJ403_2_1.html
+  gold has a DIFFERENT menu|claude EMPTY         BLL240 BLL240_1_2.html, BLL240 BLL240_1_3.html, BLL240 BLL240_1_4.html, BLL240 BLL240_1_5.html, BLL240 BLL240_1_6.html
+  gold has a DIFFERENT menu|claude has one       ENGS404 ENGS404_6_1.html

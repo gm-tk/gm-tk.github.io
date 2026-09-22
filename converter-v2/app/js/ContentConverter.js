@@ -734,6 +734,38 @@ class ContentConverter {
 		ListsAndRuns.coalesceBlackRuns(menuItems);
 		ListsAndRuns.coalesceBlackRuns(bodyItems);
 
+		// ROUND 436 — THE LESSON CONTINUATION PAGE INHERITS ITS LESSON'S MENU. A writer who splits one
+		// lesson across pages writes `[Lesson 3.0] Tools – show and not tell` then `[Lesson 3.1] Show and
+		// not tell continued`; the lesson's `[Lesson Overview]` block sits at the lesson's START, so the
+		// menu was built on the first page and every continuation page shipped the empty shell. KB 01B
+		// makes a lesson page's simplified menu that LESSON's overview block, and a continuation page is
+		// part of the same lesson (the corpus agrees at 0.66 — 0.77 once BLL240's dual-build pairing is
+		// set aside; 21 empty pages across 10 modules). The items are stored per lesson as SHALLOW COPIES
+		// so no per-page state (consumed flags, `_funLi`, the round-432 marks) is ever shared between
+		// pages. Data menu.lesson_continuation_inherits; env CONTMENU_OFF.
+		{
+			const ciCfg = tpl.menu?.lesson_continuation_inherits;
+			const ciOn = !!ciCfg && ciCfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[ciCfg.env || "CONTMENU_OFF"])
+				&& !page.isOverview && menuType !== "none"
+				// the CEDO family is the measured counter-example: 6 of its 6 continuation pages
+				// carry NO menu in the gold, and none of them is in the class's gain set (r373's
+				// `exclude_code_prefixes` pattern)
+				&& !(ciCfg.exclude_code_prefixes ?? []).some((p) => String(run?.moduleCode || "").toUpperCase().startsWith(String(p).toUpperCase()));
+			const lm = ciOn ? new RegExp(ciCfg.label_pattern || "^(\\d+)\\.(\\d+)$").exec(String(page.lessonLabel ?? "")) : null;
+			if (lm) {
+				const major = lm[1], part = parseInt(lm[2], 10);
+				run._lessonMenuItems = run._lessonMenuItems || {};
+				if (part === 0) {
+					if (menuItems.length) run._lessonMenuItems[major] = menuItems.map((it) => ({ ...it }));
+				} else if (!menuItems.length && (run._lessonMenuItems[major] || []).length) {
+					for (const it of run._lessonMenuItems[major]) menuItems.push({ ...it });
+					run.AddNote?.("info", "ContentConverter",
+						`Page ${page.lessonLabel}: the lesson's simplified menu inherited from page ${major}.0 — a continuation page belongs to the same lesson (KB 01B; menu.lesson_continuation_inherits).`);
+				}
+			}
+		}
+
 		// ---- body --------------------------------------------------------
 		// THE ROW MANAGER — one structure per row, the dominant gold-standard
 		// convention (51% of all human rows hold exactly one direct child,
