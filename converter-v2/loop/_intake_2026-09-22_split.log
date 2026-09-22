@@ -1,0 +1,55 @@
+== PRE-EXISTING population (must equal the last shipped round EXACTLY)
+  skeleton: pairs 2377  SCAFFOLD 0.5425  >=50 1464  >=75 238
+  compare_structure: matched 16620  exact 14318  EXTRA 186  missing 689  row-wrap None
+  body_compare: pages 2576  ANY 251
+  defect: clean 2532 / 2576 = 98.29 %  leak 73 occ / 44 pages
+== NEW batch (its own figures)
+  skeleton: pairs 114  SCAFFOLD 0.5142  >=50 67  >=75 16
+  compare_structure: matched 1004  exact 813  EXTRA 8  missing 84  row-wrap None
+  body_compare: pages 160  ANY 14
+  defect: clean 158 / 160 = 98.75 %  leak 2 occ / 2 pages
+== WHOLE population (the re-based absolutes)
+  skeleton: pairs 2491  SCAFFOLD 0.5412  >=50 1531  >=75 254
+  compare_structure: matched 17624  exact 15131  EXTRA 194  missing 773  row-wrap None
+  body_compare: pages 2736  ANY 265
+  defect: clean 2690 / 2736 = 98.32 %  leak 75 occ / 46 pages
+== pre-existing pages vs _s33_r422_sk_final.json: movers 0
+== NEW batch per module (skeleton mean / pairs; body ANY; leak pages)
+  BLL243   sk   60.8 % /  3 pairs   bodyANY 0   leak-pages 0
+  BLL247   sk   67.3 % /  3 pairs   bodyANY 0   leak-pages 0
+  BLL250   sk    4.9 % /  1 pairs   bodyANY 2   leak-pages 0
+  BLL255   sk   73.6 % /  3 pairs   bodyANY 0   leak-pages 0
+  BLL256   sk   68.2 % /  3 pairs   bodyANY 0   leak-pages 0
+  BLL257   sk   66.3 % /  3 pairs   bodyANY 0   leak-pages 0
+  BLL260   sk    3.2 % /  1 pairs   bodyANY 3   leak-pages 2
+  BLL261   sk   39.0 % /  3 pairs   bodyANY 0   leak-pages 0
+  BLL264   sk   48.3 % /  3 pairs   bodyANY 0   leak-pages 0
+  BLL265   sk   59.4 % /  3 pairs   bodyANY 1   leak-pages 0
+  BLL266   sk   66.7 % /  3 pairs   bodyANY 1   leak-pages 0
+  BLL270   sk    5.2 % /  1 pairs   bodyANY 1   leak-pages 0
+  BLL271   sk   42.4 % /  3 pairs   bodyANY 0   leak-pages 0
+  BLL272   sk   65.0 % /  3 pairs   bodyANY 0   leak-pages 0
+  BLL273   sk   69.5 % /  3 pairs   bodyANY 0   leak-pages 0
+  BLL274   sk   39.7 % /  3 pairs   bodyANY 0   leak-pages 0
+  BLL275   sk   41.2 % /  3 pairs   bodyANY 0   leak-pages 0
+  BLL276   sk   39.0 % /  3 pairs   bodyANY 0   leak-pages 0
+  CEDK401  sk    5.7 % /  1 pairs   bodyANY 0   leak-pages 0
+  CEDO201  sk   19.7 % /  1 pairs   bodyANY 0   leak-pages 0
+  CEDO402  sk   18.2 % /  1 pairs   bodyANY 1   leak-pages 0
+  CEDR101  sk    9.8 % /  1 pairs   bodyANY 0   leak-pages 0
+  CEDR203  sk   13.4 % /  1 pairs   bodyANY 1   leak-pages 0
+  CEDR401  sk    8.3 % /  1 pairs   bodyANY 1   leak-pages 0
+  CEDT102  sk   13.9 % /  1 pairs   bodyANY 0   leak-pages 0
+  CEDW303  sk    0.0 % /  0 pairs   bodyANY 0   leak-pages 0
+  HPRE301  sk   65.8 % / 13 pairs   bodyANY 0   leak-pages 0
+  OSSM501  sk   61.8 % /  6 pairs   bodyANY 1   leak-pages 0
+  SSCI104  sk   49.5 % /  7 pairs   bodyANY 0   leak-pages 0
+  SSEA203  sk   63.1 % /  7 pairs   bodyANY 0   leak-pages 0
+  SSOG105  sk   50.3 % /  8 pairs   bodyANY 0   leak-pages 0
+  TRR110   sk   43.3 % /  6 pairs   bodyANY 1   leak-pages 0
+  TWHK902  sk   11.0 % /  1 pairs   bodyANY 1   leak-pages 0
+  TWHK907  sk   40.3 % /  1 pairs   bodyANY 0   leak-pages 0
+  TWHR905  sk   12.2 % /  1 pairs   bodyANY 0   leak-pages 0
+  TWHR907  sk   39.1 % /  1 pairs   bodyANY 0   leak-pages 0
+  TWHT903  sk    5.4 % /  1 pairs   bodyANY 0   leak-pages 0
+  XMES202  sk   62.3 % /  7 pairs   bodyANY 0   leak-pages 0

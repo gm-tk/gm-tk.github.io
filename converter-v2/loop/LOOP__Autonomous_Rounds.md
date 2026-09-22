@@ -81,33 +81,23 @@ header.
 
 **The census it prints changed on 19–20 September 2026** (the 98-module intake) and again on
 21 September (PMT101 converts, r423); any older figure in `LOOP_STATE.md` or a changelog entry
-is pre-intake. Current (22 September 2026, build 260619.97 — r425 finished, the 12 XOTP modules IN):
+is pre-intake. Current (22 September 2026, build 260619.98 — after the 22 Sept Round 0d: the 12 XOTP modules and the 38 pre-intake never-converted modules are IN):
 
 | | before the intake | now |
 |---|---:|---:|
-| Claude module dirs | 416 | **507** |
-| Claude pages | 2,109 | **2,583** |
+| Claude module dirs | 416 | **545** |
+| Claude pages | 2,109 | **2,744** |
 | gold dirs | 454 | **552** |
 | Writers Template / Media List docx | 619 | **762** |
-| skeleton paired pages | 1,956 | **2,377** |
+| skeleton paired pages | 1,956 | **2,491** |
 
-**552 gold dirs against 507 Claude dirs is CORRECT, not a fault — but the gap is 45, not 7.**
-7 are the September intake's no-builds (§2): the modules with no Writers Template at all (the 12
-XOTP modules joined the corpus when r425 finished on 22 September 2026, session 33 Round 1). **The other 38 are PRE-INTAKE modules that hold
-a Writers Template and its `_parsed.txt` but have never produced a Claude build** (the pre-intake
-gap was already 454 − 416 = 38; found by the 22 Sept review's adversarial check — 20 of them were
-refused at round 285 and their empty dirs removed, the "r285 ghost-directory class" of the r308
-changelog entry, the others never attempted; the per-module cause was never recorded; they are on
-no other list, and a full regeneration never reaches them because `_batch_plan.py` enumerates
-Claude dirs): BLL243 BLL247 BLL250 BLL255 BLL256 BLL257 BLL260 BLL261 BLL264 BLL265 BLL266 BLL270 BLL271
-BLL272 BLL273 BLL274 BLL275 BLL276 CEDK401 CEDO201 CEDO402 CEDR101 CEDR203 CEDR401 CEDT102 CEDW303
-HPRE301 OSSM501 SSCI104 SSEA203 SSOG105 TRR110 TWHK902 TWHK907 TWHR905 TWHR907 TWHT903 XMES202.
-**They are the first Round 0d job** (§1f, Phases 2 and 5–7 only — they are already placed and
-already in the registries): convert them by explicit code list, record every refusal by cause,
-re-base the gates by population. Until that round runs, §1f trigger (b) treats these 38 as
-RECORDED (this list) and does not fire on them. A gold-only dir is the expected state for a
-recorded no-build. (r425 finished 22 September 2026: the table above and
-`_MIGRATION/verify_after_transfer.sh` lines 77–78 were updated at that finalise, `.pre-s33.bak` kept.)
+**552 gold dirs against 545 Claude dirs is CORRECT, not a fault — the gap is exactly the 7 with no source.**
+The 7 (`GER1003–1007`, `SAM1005`, `SAM1006`) have no Writers Template at all (§2). The 12 XOTP modules joined the
+corpus when r425 finished (22 Sept 2026, session 33 Round 1) and **the 38 pre-intake never-converted modules
+joined at the 22 Sept Round 0d (session 33 Round 3: 38 / 38 converted, 0 refused — `LOOP_INTAKE__2026-09-22_38_Modules.md`)**.
+Three Claude dirs (`TRR104`, `TRR105`, `TRR115`) hold only a `_run.json` (no Writers Template / a pre-existing refusal)
+and are not pairs. A gold-only dir is the expected state for a recorded no-build. The table above and
+`_MIGRATION/verify_after_transfer.sh` lines 77–78 are updated at every finalise that changes them (`.pre-<tag>.bak` kept).
 
 ## 1. The measure of success — and the honest ceiling
 
@@ -573,18 +563,18 @@ once.
   `if (code === …)` special case (DATA OVER CODE); disabling a new rule to silence a verifier
   (OPERATING_GUIDE.md §0a: debug until both populations build).
 - **The modules with no Claude build are NOT converter faults — do not "fix" them by inventing
-  a source.** 12 XOTP modules (`XOTPB08–13`, `XOTPG01`, `XOTPG03–06`, `XOTPO01`) are refused
-  until the r425 activity-table adapter is enabled (built and proven on the twelve on 21 Sept,
-  `Input_Doc_Rules.input_shapes.activity_table.adapter.enabled: false`; the spec is
+  a source.** The 12 XOTP modules (`XOTPB08–13`, `XOTPG01`, `XOTPG03–06`, `XOTPO01`) convert
+  since r425 finished on 22 Sept (the activity-table adapter enabled,
+  `Input_Doc_Rules.input_shapes.activity_table.adapter.enabled: true`; the spec is
   `00-NEW_NEW_NEW/_SPEC__XOTP_Activity_Table_Template.md`; their reader book and the XOTPB
   Overview text are open needs-Chris items). Seven (`GER1003–1007`, `SAM1005`, `SAM1006`) **have
   no Writers Template at all**; nothing the converter can do will ever build them, and chasing
-  them is wasted work. `PMT101` converts since r423 (the table-row page markers). **And 38
-  PRE-INTAKE modules hold a Writers Template but were never converted** (the §0 list: the
-  BLL243–BLL276 block, CEDK401, CEDO201, CEDO402, CEDR101, CEDR203, CEDR401, CEDT102, CEDW303,
-  HPRE301, OSSM501, SSCI104, SSEA203, SSOG105, TRR110, TWHK902, TWHK907, TWHR905, TWHR907,
-  TWHT903, XMES202) — their first conversion is a Round 0d job (§0); until it runs they count as
-  RECORDED no-builds, and once it has run each is either converted or recorded by cause. A refused
+  them is wasted work. `PMT101` converts since r423 (the table-row page markers). **The 38
+  PRE-INTAKE modules that held a Writers Template but were never converted** (the BLL243–BLL276
+  block, CEDK401, CEDO201, CEDO402, CEDR101, CEDR203, CEDR401, CEDT102, CEDW303, HPRE301, OSSM501,
+  SSCI104, SSEA203, SSOG105, TRR110, TWHK902, TWHK907, TWHR905, TWHR907, TWHT903, XMES202) were
+  converted at the 22 Sept 2026 Round 0d (session 33 Round 3): 38 / 38 built, 0 refused — they are
+  ordinary corpus members now (`LOOP_INTAKE__2026-09-22_38_Modules.md`). A refused
   module's empty Claude dir is deliberately absent so no ghost directory skews pairing (the r285
   trap) — **do not recreate one.** An intake (§1f) records every new no-build module in its
   handover under one of these three headings (recognition gap with a spec / no source / needs

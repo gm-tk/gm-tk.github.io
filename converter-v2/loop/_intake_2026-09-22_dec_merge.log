@@ -1,0 +1,38 @@
+
+=== 11465 captured bundles / 4036 built ===
+
+  CAPTURED    BUILT  DECLINED  MODULES  TYPE
+      1602        0      1602      314  unclassified
+      1320      136      1184      354  dragAndDrop
+       872      286       586      183  clickDrop
+       515       12       503      187  multiChoiceQuiz
+      1279      869       410      368  carousel
+      1034      640       394      230  accordion
+       735      341       394      219  dropDown
+       672      341       331      246  flipCard
+       328        0       328       86  typing
+       511      280       231      110  modal
+       206        0       206       30  interactive
+       215       26       189       72  selfCheck
+       217       72       145       89  tabs
+       123        0       123       64  reorder
+      1027      911       116      145  speechBubble
+       115        0       115       39  selectionBox
+       106        0       106       60  radioQuiz
+        72        0        72       33  slider
+       128       71        57       20  hint
+        56        0        56       26  infoTrigger
+        55        0        55       39  memoryGame
+        38        2        36       18  shapeHover
+        33        0        33       19  sketcher
+        31        0        31        9  wordDrag
+        31        0        31       21  wordFind
+        26        0        26       21  crossword
+        69       48        21       38  hintSlider
+        19        0        19       14  timeline
+        16        0        16       10  clickingOrder
+        10        0        10        8  wordSelect
+         3        1         2        3  glossary
+         1        0         1        1  puzzle
+
+records -> /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_r286_declines.json 11465

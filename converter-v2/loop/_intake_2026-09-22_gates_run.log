@@ -1,0 +1,58 @@
+[11:24:49] run_all_gates.sh
+  rc=0
+17:RESULT: PASS (entry parity holds)
+23:pairs skipped (parse error): 0
+27:SCAFFOLD match (widgets collapsed to one marker — the Phase-1 target: rows/cols/
+30:  pages >=  90% SCAFFOLD match:   23 ( 0.9%)
+31:  pages >=  75% SCAFFOLD match:  254 (10.2%)
+32:  pages >=  50% SCAFFOLD match: 1531 (61.5%)
+87:STRUCTURALLY CLEAN pages (zero structural defects): 2690/2736 = 98.3%
+91:  A_literal_tag_leak                         75 occ |   46 pages
+146:  exact wrapper chain:         15131  (85.9%)
+148:  claude EXTRA container:        194  (1.1%)  ← over-nesting
+149:  claude MISSING container:      773  (4.4%)
+150:  row wrap missing:               23  (0.1%)
+161:  OVER-CAPTURE (a widget ate body the human keeps free): 57 pages
+162:  RUNAWAY ABSORPTION (one widget absorbed >=4 types):     5 pages
+163:  EMPTY interactive container:                            206 pages
+164:  pages with ANY breakdown flag:                          265
+217:TOTAL 9557 | HANDLED 9557 (100.00%) | REAL FAILURES 0 (0.00%)
+256:RESULT: divergence 0 ✓ (protected). exact/copy-edit/defect are a tracked baseline — diff vs gate_baseline.json.flipcard, hold-or-improve.
+279:RESULT: every built bubble is human-matched, writer-faithful (gold-subst) or at its recorded baseline ✓ (4 recorded in gate_baseline.json.speech
+290:RESULT: every built pop-out is well-formed ✓
+303:RESULT: every MTK quiz shell is the KB shell ✓
+319:RESULT: every Word equation ships as MathML ✓
+333:RESULT: every lesson-menu label is the KB's <h5> form ✓
+352:RESULT: every built dragAndDrop is the KB 03B form ✓
+374:RESULT: every built bingo grid is the KB 03E form ✓
+[11:30:47] skeleton state + delta vs r422e
+  rc=0
+OLD pairs 2377  SCAFFOLD 54.2466%  RAW 38.249%  >=50 1464  >=75 238  >=90 20
+NEW pairs 2491  SCAFFOLD 54.1172%  RAW 38.049%  >=50 1531  >=75 254  >=90 23
+delta SCAFFOLD -0.1294pp  RAW -0.199pp  >=50 +67  >=75 +16  >=90 +3
+movers 0 (up 0 / down 0), pp-sum +0.0
+movers outside the affected set: 0 []
+new-only pages: 114  gone pages: 0
+[11:32:51] gatecheck cs bc, then skeleton defect
+  rc=1
+  metric                                 baseline       live     delta  verdict
+  skeleton SCAFFOLD mean %                  54.25      54.12     -0.13  REGRESSED
+  skeleton pages >=50%                       1464       1531       +67  IMPROVED
+  skeleton pages >=75%                        238        254       +16  IMPROVED
+  compare_structure exact chain             14318      15131      +813  IMPROVED
+  compare_structure EXTRA container           186        194        +8  REGRESSED
+  compare_structure missing container         689        773       +84  REGRESSED
+  body_compare ANY breakdown                  251        265       +14  REGRESSED
+  defect structurally-clean %               98.29      98.32     +0.03  IMPROVED
+  literal-[tag] leak (occ)                     73         75        +2  REGRESSED
+  literal-[tag] leak (pages)                   44         46        +2  REGRESSED
+RESULT: REGRESSED — skeleton SCAFFOLD mean %, compare_structure EXTRA container, compare_structure missing container, body_compare ANY breakdown, literal-[tag] leak (occ), literal-[tag] leak (pages)
+[11:37:23] ledger record-full + snapshots
+[ledger] recorded FULL ship (round intake-2026-09-22); scoped-since counter reset to 0.
+  snapshot rc=0
+  (context: sk_pages=2491  cs_matched=17624  body_pages=2736  df_total=2736  df_clean=2690)
+  manifest rc=0
+[content-manifest] wrote 2744 pages / 542 modules -> /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_content_manifest.txt
+[11:41:39] selftests
+  PASS/GREEN: 49  FAIL: 0
+[11:44:36] GATES_DONE

@@ -1,0 +1,28 @@
+[11:46:20] ceiling
+  rc=0
+  BASELINE _intake_2026-09-22_sk_final.json: SCAFFOLD 54.117% = 59.4% of achievable (band 57.8%–59.4%); RAW 38.049% = 43.7% of achievable; per-page mean 59.9%
+  outlier pages (net ≥ 50%, ≥ 8 blocks): 69
+  wrote _ceiling_intake_2026-09-22.json
+  wrote _ceiling_intake_2026-09-22.md
+[11:47:56] dashboard
+  rc=0
+coverage 50.7% · scaffold 54.25% · clean 98.3% · 21 classes ranked
+WARN: skeleton state predates the newest engine change (2026-09-22) — its rows may lag.
+WARN: feature index predates the newest engine change (2026-09-22) — its rows may lag.
+[11:51:00] DASH_DONE
+[11:51:00] DIFF MINER full
+  rc=0
+pairs 2491 / modules 533 / parse errors 0 / diff lines 283631 / classes 9367 (CANDIDATE 190, below floor 8878) in 110.4 s
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_diff_miner.json
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/DIFF_QUEUE.md
+[11:52:58] DIFF MINER scoped (the 38)
+  rc=0
+pairs 115 / modules 38 / parse errors 0 / diff lines 18610 / classes 1380 (CANDIDATE 11, below floor 1358) in 9.8 s
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_diff_miner_scoped.json
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_diff_miner_scoped.md
+avin_mcgruddy 4801109 Sep 22 11:53 ../../outputs/_diff_miner_scoped.json
+avin_mcgruddy   42160 Sep 22 11:53 ../../outputs/_diff_miner_scoped.md
+[11:53:10] feature index
+  rc=0
+SELFTEST build_feature_index: GREEN
+[11:53:29] INSTRUMENTS_DONE

@@ -1,23 +1,23 @@
 # PageForge — corpus discrepancy dashboard
 
-_Generated 2026-09-20 15:12 · corpus 520 modules / 2548 pages_
+_Generated 2026-09-22 11:54 · corpus 534 modules / 2736 pages_
 
 **What this is.** Every remaining difference between our HTML and the human's, measured across the whole library and ranked by how many modules it costs. Use it to choose the next round. It changes nothing — it only reports.
 
 ## ⚠ Freshness
 
-- body_compare predates the newest engine change (2026-09-20) — its rows may lag.
-- feature index predates the newest engine change (2026-09-20) — its rows may lag.
+- **Census is stale** — the interactive census predates the newest engine/data change (2026-09-22 vs 2026-09-22) — coverage is UNDER-reported until it is rebuilt.
+- body_compare predates the newest engine change (2026-09-22) — its rows may lag.
 
 ## 1. The two numbers that matter
 
-**Interactive coverage — 50.5%** (2877 of 5693 writer-tagged widgets actually build).
-The other 2816 ship as a hand-off box. This is what a tester sees when they say the conversion looks unfinished, and it is invisible to the protected gates by design.
+**Interactive coverage — 50.7%** (2902 of 5723 writer-tagged widgets actually build).
+The other 2821 ship as a hand-off box. This is what a tester sees when they say the conversion looks unfinished, and it is invisible to the protected gates by design.
 
-**Page scaffold match — 53.8% mean** (1406 of 2349 pages at 50%+, 236 at 75%+).
+**Page scaffold match — 54.1% mean** (1531 of 2491 pages at 50%+, 254 at 75%+).
 The protected primary gate. It measures page structure with widget internals collapsed, so it moves very little while coverage is the real gap.
 
-**Structurally clean — 98.3%** (44 pages carry a visible defect)  ·  **body breakdown — 248 pages** (the protected body gate).
+**Structurally clean — 98.3%** (46 pages carry a visible defect)  ·  **body breakdown — 265 pages** (the protected body gate).
 
 ## 2. The ranked queue
 
@@ -27,44 +27,44 @@ Body rows use `body_compare.py`'s own thresholds, so this table and the protecte
 
 | # | Class | Modules | Pages | Unlock | Shapes | Regen | What it is |
 |---|---|--:|--:|--:|--:|--:|---|
-| 1 | un-built dragAndDrop | 331 | 654 | 907 | 741 | 357 (35% skipped) | Writers tagged 1010 dragAndDrop widgets; 907 ship as a hand-off box instead of a built widget. |
-| 2 | content lost vs the human (advisory) | 225 | 523 | 523 | — | — | The human page carries 3+ body blocks ours does not, without tripping the over-capture rule — content is going missing by some other route. |
-| 3 | un-built carousel | 186 | 244 | 309 | 244 | 385 (30% skipped) | Writers tagged 985 carousel widgets; 309 ship as a hand-off box instead of a built widget. |
-| 4 | un-built flipCard | 146 | 204 | 254 | 216 | 259 (53% skipped) | Writers tagged 545 flipCard widgets; 254 ship as a hand-off box instead of a built widget. |
-| 5 | un-built accordion | 131 | 213 | 293 | 254 | 248 (55% skipped) | Writers tagged 802 accordion widgets; 293 ship as a hand-off box instead of a built widget. |
-| 6 | empty widget box | 130 | 190 | 190 | — | — | A hand-off box was emitted with nothing in it. |
+| 1 | un-built dragAndDrop | 338 | 667 | 919 | 771 | 357 (35% skipped) | Writers tagged 1029 dragAndDrop widgets; 919 ship as a hand-off box instead of a built widget. |
+| 2 | content lost vs the human (advisory) | 241 | 540 | 540 | — | — | The human page carries 3+ body blocks ours does not, without tripping the over-capture rule — content is going missing by some other route. |
+| 3 | un-built carousel | 197 | 255 | 320 | 246 | 386 (30% skipped) | Writers tagged 996 carousel widgets; 320 ship as a hand-off box instead of a built widget. |
+| 4 | un-built flipCard | 152 | 210 | 260 | 217 | 259 (53% skipped) | Writers tagged 550 flipCard widgets; 260 ship as a hand-off box instead of a built widget. |
+| 5 | empty widget box | 143 | 206 | 206 | — | — | A hand-off box was emitted with nothing in it. |
+| 6 | un-built accordion | 131 | 213 | 293 | 254 | 248 (55% skipped) | Writers tagged 802 accordion widgets; 293 ship as a hand-off box instead of a built widget. |
 | 7 | un-built clickDrop | 125 | 191 | 343 | 250 | 191 (65% skipped) | Writers tagged 578 clickDrop widgets; 343 ship as a hand-off box instead of a built widget. |
-| 8 | page scaffold under 25% | 84 | 111 | 111 | — | — | The page's overall structure barely resembles the human's — these are the pages a tester screenshots. |
-| 9 | un-built selfCheck | 72 | 104 | 163 | 105 | 237 (57% skipped) | Writers tagged 163 selfCheck widgets; 163 ship as a hand-off box instead of a built widget. |
+| 8 | page scaffold under 25% | 102 | 130 | 130 | — | — | The page's overall structure barely resembles the human's — these are the pages a tester screenshots. |
+| 9 | un-built selfCheck | 71 | 103 | 137 | 103 | 237 (57% skipped) | Writers tagged 163 selfCheck widgets; 137 ship as a hand-off box instead of a built widget. |
 | 10 | un-built modal | 68 | 103 | 170 | 141 | 126 (77% skipped) | Writers tagged 367 modal widgets; 170 ship as a hand-off box instead of a built widget. |
 | 11 | un-built tabs | 61 | 97 | 117 | 107 | 104 (81% skipped) | Writers tagged 174 tabs widgets; 117 ship as a hand-off box instead of a built widget. |
-| 12 | widget over-capture | 43 | 54 | 54 | — | — | A widget's capture ran past its boundary and swallowed body the human keeps free (gate rule: 40%+ of the page in one widget, 400+ chars, 3+ blocks lost). |
-| 13 | un-built speechBubble | 39 | 49 | 63 | 47 | 150 (73% skipped) | Writers tagged 779 speechBubble widgets; 63 ship as a hand-off box instead of a built widget. |
+| 12 | widget over-capture | 46 | 57 | 57 | — | — | A widget's capture ran past its boundary and swallowed body the human keeps free (gate rule: 40%+ of the page in one widget, 400+ chars, 3+ blocks lost). |
+| 13 | un-built speechBubble | 45 | 55 | 69 | 48 | 150 (73% skipped) | Writers tagged 778 speechBubble widgets; 69 ship as a hand-off box instead of a built widget. |
 | 14 | un-built slider | 33 | 44 | 52 | 42 | 39 (93% skipped) | Writers tagged 52 slider widgets; 52 ship as a hand-off box instead of a built widget. |
-| 15 | A_literal_tag_leak | 31 | 44 | 73 | — | — | Raw writer markup like [H2] is visible as text on the finished page. |
-| 16 | un-built infoTrigger | 25 | 34 | 42 | 36 | 273 (51% skipped) | Writers tagged 42 infoTrigger widgets; 42 ship as a hand-off box instead of a built widget. |
+| 15 | A_literal_tag_leak | 32 | 46 | 75 | — | — | Raw writer markup like [H2] is visible as text on the finished page. |
+| 16 | un-built infoTrigger | 26 | 35 | 43 | 37 | 276 (50% skipped) | Writers tagged 43 infoTrigger widgets; 43 ship as a hand-off box instead of a built widget. |
 | 17 | un-built shapeHover | 18 | 27 | 30 | 28 | 17 (97% skipped) | Writers tagged 32 shapeHover widgets; 30 ship as a hand-off box instead of a built widget. |
-| 18 | un-built hintSlider | 16 | 17 | 18 | 17 | 48 (91% skipped) | Writers tagged 59 hintSlider widgets; 18 ship as a hand-off box instead of a built widget. |
-| 19 | un-built hint | 14 | 20 | 53 | 24 | 28 (95% skipped) | Writers tagged 102 hint widgets; 53 ship as a hand-off box instead of a built widget. |
-| 20 | runaway absorption | 6 | 6 | 6 | — | — | One widget absorbed four or more different widget types — a capture that never found a terminator. |
+| 18 | un-built hintSlider | 16 | 17 | 18 | 17 | 51 (91% skipped) | Writers tagged 59 hintSlider widgets; 18 ship as a hand-off box instead of a built widget. |
+| 19 | un-built hint | 14 | 20 | 48 | 22 | 28 (95% skipped) | Writers tagged 97 hint widgets; 48 ship as a hand-off box instead of a built widget. |
+| 20 | runaway absorption | 5 | 5 | 5 | — | — | One widget absorbed four or more different widget types — a capture that never found a terminator. |
 | 21 | un-built glossary | 2 | 2 | 2 | 2 | 4 (99% skipped) | Writers tagged 3 glossary widgets; 2 ship as a hand-off box instead of a built widget. |
 
 ## 3. Interactive coverage by widget type
 
 | Type | Built | Total | Coverage | Declined | Distinct shapes | Modules |
 |---|--:|--:|--:|--:|--:|--:|
-| dragAndDrop | 103 | 1010 | 10.2% | 907 | 741 | 331 |
+| dragAndDrop | 110 | 1029 | 10.7% | 919 | 771 | 338 |
 | clickDrop | 235 | 578 | 40.7% | 343 | 250 | 125 |
-| carousel | 676 | 985 | 68.6% | 309 | 244 | 186 |
+| carousel | 676 | 996 | 67.9% | 320 | 246 | 197 |
 | accordion | 509 | 802 | 63.5% | 293 | 254 | 131 |
-| flipCard | 291 | 545 | 53.4% | 254 | 216 | 146 |
+| flipCard | 290 | 550 | 52.7% | 260 | 217 | 152 |
 | modal | 197 | 367 | 53.7% | 170 | 141 | 68 |
-| selfCheck | 0 | 163 | 0.0% | 163 | 105 | 72 |
+| selfCheck | 26 | 163 | 16.0% | 137 | 103 | 71 |
 | tabs | 57 | 174 | 32.8% | 117 | 107 | 61 |
-| speechBubble | 716 | 779 | 91.9% | 63 | 47 | 39 |
-| hint | 49 | 102 | 48.0% | 53 | 24 | 14 |
+| speechBubble | 709 | 778 | 91.1% | 69 | 48 | 45 |
 | slider | 0 | 52 | 0.0% | 52 | 42 | 33 |
-| infoTrigger | 0 | 42 | 0.0% | 42 | 36 | 25 |
+| hint | 49 | 97 | 50.5% | 48 | 22 | 14 |
+| infoTrigger | 0 | 43 | 0.0% | 43 | 37 | 26 |
 | shapeHover | 2 | 32 | 6.2% | 30 | 28 | 18 |
 | hintSlider | 41 | 59 | 69.5% | 18 | 17 | 16 |
 | glossary | 1 | 3 | 33.3% | 2 | 2 | 2 |
@@ -77,13 +77,14 @@ A blocker is something a builder almost never accepts. Every shape carrying it f
 
 | Inside | The builder refuses | Declines | Builds | Build rate |
 |---|---|--:|--:|--:|
-| dragAndDrop | `(a captured TABLE)` | 635 | 103 | 14% |
-| dragAndDrop | `button+txt` | 90 | 9 | 9% |
+| dragAndDrop | `(a captured TABLE)` | 651 | 110 | 14% |
+| dragAndDrop | `button+txt` | 95 | 9 | 9% |
 | carousel | `embed` | 59 | 1 | 2% |
 | clickDrop | `video:yt` | 37 | 6 | 14% |
 | dragAndDrop | `audio` | 25 | 0 | 0% |
+| dragAndDrop | `answer` | 25 | 0 | 0% |
 
-**No builder at all: infoTrigger, selfCheck, slider** — 257 tagged widgets with no code path whatsoever. The single largest untouched block in the corpus.
+**No builder at all: infoTrigger, slider** — 95 tagged widgets with no code path whatsoever. The single largest untouched block in the corpus.
 
 ## 5. Worst pages right now
 
@@ -92,30 +93,30 @@ Lowest structural match in the library, with the likeliest cause attached. These
 | Module | Page | Scaffold | Likely cause |
 |---|---|--:|---|
 | MXFUN01 | MXFUN01_0_0.html | 0.7% | 1 content blocks missing |
+| BLL260 | BLL260_6_1.html | 3.2% | widget over-capture; 1 empty widget boxes |
 | BLL240 | BLL240_1_0.html | 4.5% | structural — inspect |
+| BLL250 | BLL250_2_5.html | 4.9% | widget over-capture; 1 empty widget boxes |
+| BLL270 | BLL270_2_0.html | 5.2% | widget over-capture; 1 empty widget boxes |
+| TWHT903 | TWHT903_1_0.html | 5.4% | widget over-capture |
+| CEDK401 | CEDK401_2_0.html | 5.7% | widget over-capture |
 | MXFUN02 | MXFUN02_0_0.html | 5.8% | widget over-capture; 1 empty widget boxes |
 | JPFUN02 | JPFUN02_0_0.html | 6.0% | 47 content blocks missing; widget over-capture |
 | SSFUN07 | SSFUN07_2_0.html | 6.1% | widget over-capture |
 | CEDT104 | CEDT104_0_0.html | 7.0% | widget over-capture; 2 empty widget boxes |
 | CEDT301 | CEDT301_6_0.html | 7.4% | widget over-capture |
 | MXFUN03 | MXFUN03_0_0.html | 8.1% | widget over-capture; 1 empty widget boxes |
+| CEDR401 | CEDR401_1_0.html | 8.3% | widget over-capture; 8 empty widget boxes |
+| XOTPB08 | XOTPB08_2_0.html | 8.5% | widget over-capture |
+| ANZHFUN05 | ANZHFUN05_0_0.html | 9.1% | widget over-capture |
 | TWHK901 | TWHK901_0_0.html | 9.3% | 24 content blocks missing; widget over-capture |
-| JPFUN01 | JPFUN01_0_0.html | 9.3% | widget over-capture |
 | TRR304 | TRR304_3_0.html | 9.5% | widget over-capture |
+| CEDR101 | CEDR101_1_0.html | 9.8% | widget over-capture |
 | ARFUN04 | ARFUN04_0_0.html | 9.8% | widget over-capture; 1 empty widget boxes |
-| TWHA905 | TWHA905_0_0.html | 10.4% | widget over-capture |
-| EXIP901 | EXIP901_4_0.html | 10.5% | widget over-capture |
+| TWHA905 | TWHA905_0_0.html | 10.5% | widget over-capture |
+| EXIP901 | EXIP901_4_0.html | 10.6% | widget over-capture |
 | XDLS911 | XDLS911_1_0.html | 10.8% | widget over-capture |
-| ANZHFUN05 | MODULE_0_0.html | 11.0% | widget over-capture |
+| TWHK902 | TWHK902_0_0.html | 11.0% | 19 content blocks missing; widget over-capture; 1 empty widget boxes |
 | EXPFUN05 | EXPFUN05_0_0.html | 11.1% | widget over-capture |
-| TRR116 | TRR116_0_0.html | 12.1% | widget over-capture |
-| MXDB301 | MXDB301_3_0.html | 12.1% | 4 content blocks missing; widget over-capture |
-| TEDC401 | TEDC401_3_0.html | 12.2% | widget over-capture; 1 empty widget boxes |
-| ENGJ302 | ENGJ302_1_0.html | 12.3% | 15 content blocks missing |
-| CHI1004 | CHI1004_7_0.html | 13.0% | structural — inspect |
-| ENGFUN02 | ENGFUN02_1_0.html | 13.4% | structural — inspect |
-| CEDW201 | CEDW201_0_0.html | 13.8% | 1 un-built widgets |
-| CEDT207 | CEDT207_0_0.html | 14.2% | 3 content blocks missing |
 
 ## 6. How to use this
 
