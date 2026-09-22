@@ -1,0 +1,43 @@
+lesson pages with a gold-menu element in Claude's body: 104; elements 321; modules 30
+by WT form (elements):
+  none (no WALT text in the section head)             211  pages 70  modules 18
+  none+LC                                              37  pages 17  modules 5
+  OV+table+LC                                          36  pages 4  modules 1
+  LO+LC                                                12  pages 4  modules 4
+  OV+LC                                                10  pages 2  modules 1
+  none                                                  8  pages 3  modules 3
+  OV                                                    3  pages 1  modules 1
+  LO                                                    3  pages 2  modules 2
+  OV+LC (no WALT text in the section head)              1  pages 1  modules 1
+Claude menu region empty on 103 of 104 pages
+by module:
+  TEDC401     45  {'OV+table+LC': 36, 'none (no WALT text in the section head)': 8, 'OV+LC (no WALT text in the section head)': 1}
+  TEDC402     42  {'none (no WALT text in the section head)': 42}
+  XGF9002     35  {'none (no WALT text in the section head)': 32, 'none': 3}
+  FRNO901     33  {'none (no WALT text in the section head)': 33}
+  MXEX101     21  {'none (no WALT text in the section head)': 21}
+  PES1004     20  {'none (no WALT text in the section head)': 20}
+  XGF9006     15  {'none (no WALT text in the section head)': 15}
+  XDLS902     14  {'none+LC': 14}
+  XDLS904     11  {'none+LC': 11}
+  CEDT501     10  {'OV+LC': 10}
+  PES1002     10  {'none (no WALT text in the section head)': 10}
+  HIS1003      7  {'none (no WALT text in the section head)': 7}
+  ENGC206      6  {'none (no WALT text in the section head)': 3, 'OV': 3}
+  HIS1004      6  {'none (no WALT text in the section head)': 6}
+  XDLS903      6  {'none+LC': 6}
+  XLP01        5  {'none+LC': 5}
+  CEDT207      4  {'LO+LC': 4}
+  GEO1005      4  {'none (no WALT text in the section head)': 2, 'none': 2}
+  GEO1006      4  {'none+LC': 1, 'LO+LC': 3}
+  PES1001      4  {'LO+LC': 4}
+  CBI1008      3  {'none': 3}
+  CBI1009      3  {'none (no WALT text in the section head)': 3}
+  MXS1004      3  {'none (no WALT text in the section head)': 3}
+  SSEA203      2  {'none (no WALT text in the section head)': 2}
+  XDLS909      2  {'none (no WALT text in the section head)': 2}
+  XLP04        2  {'LO': 2}
+  ENGS404      1  {'LO': 1}
+  GENO901      1  {'none (no WALT text in the section head)': 1}
+  MXDI202      1  {'none (no WALT text in the section head)': 1}
+  PWY1001      1  {'LO+LC': 1}

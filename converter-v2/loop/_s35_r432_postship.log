@@ -1,0 +1,79 @@
+[19:15:32] run_all_gates.sh
+  rc=0
+13:— selftest: DETECTION (an injected divergence must be flagged) —
+16:  ✓ dynamic differ SEES a real option divergence (imageMode P vs D)
+17:RESULT: PASS (entry parity holds)
+23:pairs skipped (parse error): 0
+87:STRUCTURALLY CLEAN pages (zero structural defects): 2646/2691 = 98.3%
+91:  A_literal_tag_leak                         75 occ |   45 pages
+94:  GENO901     16  {'A_literal_tag_leak': 16}
+95:  DTC1005     14  {'A_literal_tag_leak': 14}
+96:  PWY1009      4  {'A_literal_tag_leak': 4}
+97:  MUS1004      4  {'A_literal_tag_leak': 4}
+98:  XGF9004      2  {'A_literal_tag_leak': 2}
+99:  TRR116       2  {'A_literal_tag_leak': 2}
+100:  MXS1004      2  {'A_literal_tag_leak': 2}
+101:  MXFU302      2  {'A_literal_tag_leak': 2}
+102:  HIS1005      2  {'A_literal_tag_leak': 2}
+103:  ENGI102      2  {'A_literal_tag_leak': 2}
+104:  ENFUN09      2  {'A_literal_tag_leak': 2}
+105:  CBI1008      2  {'A_literal_tag_leak': 2}
+106:  BLL260       2  {'A_literal_tag_leak': 2}
+107:  TRR304       1  {'A_literal_tag_leak': 1}
+108:  TRR106       1  {'A_literal_tag_leak': 1}
+109:  TRR102       1  {'A_literal_tag_leak': 1}
+110:  TEFUN07      1  {'A_literal_tag_leak': 1}
+111:  SSFUN05      1  {'A_literal_tag_leak': 1}
+112:  MXFUN01      1  {'A_literal_tag_leak': 1}
+113:  MXEO301      1  {'A_literal_tag_leak': 1}
+114:  MXDI201      1  {'A_literal_tag_leak': 1}
+115:  JPN1004      1  {'A_literal_tag_leak': 1}
+116:  HIS1006      1  {'A_literal_tag_leak': 1}
+117:  HIS1002      1  {'A_literal_tag_leak': 1}
+118:  HIS1001      1  {'A_literal_tag_leak': 1}
+121:  GENO901_7_3.html            16  {'A_literal_tag_leak': 16}
+122:  DTC1005_1_0.html             5  {'A_literal_tag_leak': 5}
+123:  PWY1009_1_1_0.html           4  {'A_literal_tag_leak': 4}
+124:  XGF9004_7_0.html             2  {'A_literal_tag_leak': 2}
+125:  TRR116_9_0.html              2  {'A_literal_tag_leak': 2}
+126:  ENGI102_0_0.html             2  {'A_literal_tag_leak': 2}
+127:  ENFUN09_0_0.html             2  {'A_literal_tag_leak': 2}
+128:  DTC1005_16_0.html            2  {'A_literal_tag_leak': 2}
+129:  DTC1005_13_0.html            2  {'A_literal_tag_leak': 2}
+[19:19:43] skeleton state (--json) + delta vs r431
+  rc=0
+OLD pairs 2491  SCAFFOLD 54.4248%  RAW 38.294%  >=50 1540  >=75 255  >=90 23
+NEW pairs 2491  SCAFFOLD 54.5220%  RAW 38.358%  >=50 1546  >=75 256  >=90 23
+delta SCAFFOLD +0.0972pp  RAW +0.064pp  >=50 +6  >=75 +1  >=90 +0
+movers 50 (up 49 / down 1), pp-sum +254.8
+movers outside the affected set: 0 []
+new-only pages: 1  gone pages: 1
+  PES1004    PES1004_2_0.html           51.8 ->   65.9  (+14.1)
+  FRNO901    FRNO901_8_0.html           58.7 ->   70.8  (+12.1)
+  TEDC402    TEDC402_9_0.html           30.8 ->   42.7  (+11.9)
+  FRNO901    FRNO901_7_0.html           61.3 ->   71.6  (+10.3)
+  PWY1001    PWY1001_2_1_0.html         44.2 ->   54.4  (+10.3)
+  PES1002    PES1002_8_0.html           52.1 ->   62.2  (+10.1)
+  PES1004    PES1004_6_0.html           54.7 ->   64.7  (+10.0)
+  CEDT501    CEDT501_6_0.html           50.5 ->   60.2  (+9.7)
+  PES1002    PES1002_5_0.html           54.3 ->   63.9  (+9.7)
+  PES1004    PES1004_5_0.html           60.2 ->   68.9  (+8.7)
+  CEDT501    CEDT501_3_0.html           46.0 ->   54.5  (+8.5)
+  PES1004    PES1004_3_0.html           55.4 ->   63.9  (+8.5)
+  PES1002    PES1002_6_0.html           55.0 ->   63.4  (+8.4)
+  PES1004    PES1004_8_0.html           40.0 ->   48.3  (+8.3)
+[19:21:11] gatecheck verdict vs gate_baseline.json (intake values)
+  rc=2
+[19:21:14] selftests
+  rc=0  PASS/GREEN lines: 49  FAIL lines: 0
+[19:22:27] feature index
+  rc=0
+SELFTEST build_feature_index: GREEN
+[19:22:42] ship ledger check
+  OK — a full-ship backstop is not yet due (1 scoped ship(s) of headroom).
+[19:22:42] DIFF MINER (§1d — after every regeneration)
+  miner rc=0
+pairs 2491 / modules 533 / parse errors 0 / diff lines 280106 / classes 9370 (CANDIDATE 198, below floor 8870) in 90.1 s
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_diff_miner.json
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/DIFF_QUEUE.md
+[19:24:18] POSTSHIP_DONE

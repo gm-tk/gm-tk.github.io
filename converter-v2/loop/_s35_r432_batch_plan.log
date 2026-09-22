@@ -1,0 +1,7 @@
+# 27 gated dirs  (VERY_HEAVY 1 / HEAVY 14 / LIGHT 12)
+./_regen_safe.sh XGF9006
+./_regen_safe.sh CEDK501 CEDT501 ENGI301 HPFUN101 MXDB102 MXFL202 MXS1004 PES1002 PES1004 XDLS902 XDLS903
+./_regen_safe.sh XDLS904 XDLS906 XLP01
+./_regen_safe.sh BLL125 BLL216 BLL252 CBI1008 ENGC206 FRNO901 GENO901 GEO1005 PWY1001 TEDC402 TWHK907 WJFUN106
+# 4 batch(es) — run EACH in its own call (45s wall is shared; never parallel/looped).
+# then:  ./_stalecheck.sh        # MUST report 0 stale

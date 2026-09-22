@@ -1,0 +1,84 @@
+lesson pages with a WALT / SC lead element on the gold page, by (gold region, Claude region):
+  ('gold-menu', 'claude-menu') pages  810  modules 159
+  ('gold-menu', 'claude-none') pages  347  modules  99
+  ('gold-menu', 'claude-body') pages   95  modules  36
+  ('gold-both', 'claude-body') pages   41  modules  15
+  ('gold-body', 'claude-body') pages   25  modules  18
+  ('gold-both', 'claude-menu') pages   17  modules  11
+  ('gold-body', 'claude-none') pages   13  modules  11
+  ('gold-both', 'claude-both') pages   10  modules   8
+  ('gold-both', 'claude-none') pages    8  modules   4
+  ('gold-menu', 'claude-both') pages    6  modules   5
+  Bilingual: gold-body/claude-body=10, gold-body/claude-none=8
+  Fundamentals: gold-menu/claude-none=6, gold-menu/claude-menu=5, gold-body/claude-body=1
+  Inquiry: gold-menu/claude-none=24, gold-menu/claude-menu=13, gold-menu/claude-body=4, gold-both/claude-body=1
+  Standard: gold-menu/claude-menu=792, gold-menu/claude-none=317, gold-menu/claude-body=91, gold-both/claude-body=40, gold-both/claude-menu=17, gold-body/claude-body=14, gold-both/claude-both=10, gold-both/claude-none=8, gold-menu/claude-both=6, gold-body/claude-none=5
+=== per PREFIX (letters of the code): gold-menu-only / gold-body-only / gold-both pages ===
+  ENGC     pages   70  menu 0.96  body 0.00  both 0.04
+  ENGI     pages   67  menu 0.94  body 0.00  both 0.06
+  AGH      pages   65  menu 1.00  body 0.00  both 0.00
+  XDLS     pages   64  menu 0.89  body 0.02  both 0.09
+  ANZH     pages   59  menu 0.81  body 0.00  both 0.19
+  PES      pages   58  menu 1.00  body 0.00  both 0.00
+  ENGS     pages   54  menu 0.98  body 0.00  both 0.02
+  MXFL     pages   52  menu 0.98  body 0.02  both 0.00
+  HIS      pages   51  menu 0.96  body 0.00  both 0.04
+  ENGJ     pages   47  menu 0.87  body 0.00  both 0.13
+  ENGR     pages   41  menu 0.98  body 0.00  both 0.02
+  MXFU     pages   41  menu 0.98  body 0.00  both 0.02
+  PWY      pages   39  menu 0.97  body 0.00  both 0.03
+  XMES     pages   33  menu 0.97  body 0.00  both 0.03
+  MXDB     pages   25  menu 0.96  body 0.04  both 0.00
+  XGF      pages   25  menu 0.64  body 0.36  both 0.00
+  MXEO     pages   24  menu 1.00  body 0.00  both 0.00
+  CEDT     pages   22  menu 0.95  body 0.00  both 0.05
+  CBI      pages   22  menu 1.00  body 0.00  both 0.00
+  CEDO     pages   20  menu 0.95  body 0.05  both 0.00
+  XLP      pages   20  menu 0.95  body 0.00  both 0.05
+  BLL      pages   19  menu 0.74  body 0.26  both 0.00
+  HPRE     pages   19  menu 0.53  body 0.00  both 0.47
+  BLLR     pages   18  menu 0.94  body 0.00  both 0.06
+  COM      pages   18  menu 1.00  body 0.00  both 0.00
+  HES      pages   18  menu 1.00  body 0.00  both 0.00
+  OSBY     pages   18  menu 1.00  body 0.00  both 0.00
+  OSOH     pages   18  menu 1.00  body 0.00  both 0.00
+  OSAI     pages   17  menu 0.82  body 0.00  both 0.18
+  OSGM     pages   17  menu 1.00  body 0.00  both 0.00
+  SSOG     pages   17  menu 0.35  body 0.00  both 0.65
+  FRNO     pages   16  menu 1.00  body 0.00  both 0.00
+  MXEX     pages   15  menu 1.00  body 0.00  both 0.00
+  SSCI     pages   15  menu 0.93  body 0.00  both 0.07
+  TRR      pages   14  menu 0.00  body 1.00  both 0.00
+  MXDI     pages   14  menu 1.00  body 0.00  both 0.00
+  TEDC     pages   14  menu 0.79  body 0.00  both 0.21
+  OSSM     pages   13  menu 1.00  body 0.00  both 0.00
+  OSAH     pages   12  menu 1.00  body 0.00  both 0.00
+  OSSC     pages   12  menu 1.00  body 0.00  both 0.00
+  XOTPB    pages   12  menu 0.83  body 0.00  both 0.17
+  XTAS     pages   12  menu 0.92  body 0.08  both 0.00
+  CEDK     pages   10  menu 1.00  body 0.00  both 0.00
+  JPN      pages   10  menu 0.90  body 0.00  both 0.10
+  XOTPG    pages   10  menu 1.00  body 0.00  both 0.00
+  GEO      pages    9  menu 1.00  body 0.00  both 0.00
+  CEDR     pages    8  menu 1.00  body 0.00  both 0.00
+  CEDW     pages    8  menu 1.00  body 0.00  both 0.00
+  GENO     pages    8  menu 0.88  body 0.00  both 0.12
+  MXS      pages    8  menu 1.00  body 0.00  both 0.00
+  SCBI     pages    8  menu 1.00  body 0.00  both 0.00
+  SCCH     pages    8  menu 1.00  body 0.00  both 0.00
+  SCPH     pages    8  menu 1.00  body 0.00  both 0.00
+  MXFUN    pages    6  menu 1.00  body 0.00  both 0.00
+  XFUN     pages    5  menu 1.00  body 0.00  both 0.00
+  ENO      pages    5  menu 1.00  body 0.00  both 0.00
+  SSEA     pages    5  menu 1.00  body 0.00  both 0.00
+  PNR      pages    4  menu 0.00  body 1.00  both 0.00
+  EXBP     pages    4  menu 0.50  body 0.00  both 0.50
+  EXIP     pages    4  menu 0.75  body 0.00  both 0.25
+  SCES     pages    4  menu 1.00  body 0.00  both 0.00
+  CHI      pages    3  menu 1.00  body 0.00  both 0.00
+  ENG      pages    2  menu 0.50  body 0.00  both 0.50
+  GER      pages    2  menu 0.50  body 0.00  both 0.50
+  SPA      pages    2  menu 1.00  body 0.00  both 0.00
+  XOTPO    pages    2  menu 1.00  body 0.00  both 0.00
+  FRFUN    pages    1  menu 0.00  body 1.00  both 0.00
+  XWHA     pages    1  menu 1.00  body 0.00  both 0.00
