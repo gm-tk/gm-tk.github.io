@@ -1,0 +1,7 @@
+OLD pairs 2491  SCAFFOLD 54.1172%  RAW 38.049%  >=50 1531  >=75 254  >=90 23
+NEW pairs 2491  SCAFFOLD 54.1406%  RAW 38.069%  >=50 1531  >=75 254  >=90 23
+delta SCAFFOLD +0.0234pp  RAW +0.020pp  >=50 +0  >=75 +0  >=90 +0
+movers 1 (up 0 / down 1), pp-sum -6.5
+movers outside the affected set: 1 ['CEDO402']
+new-only pages: 7  gone pages: 7
+  CEDO402    CEDO402_0_0.html           18.2 ->   11.8  (-6.5)

@@ -1,0 +1,5 @@
+[spotcheck] sample of 12 NON-affected modules (seed 426) -> _scoped_spotcheck_sample.txt
+  AGH1002 ARFUN01 BLL137 BLL170 BLL176 CHFUN05 CHI1003 ENFUN04 ENGI202 TEFUN07 WJFUN116 WJFUN305
+
+Regenerate them WITH THE FIX ON (default env, NO *_OFF), then run `verify`:
+  python3 _batch_plan.py --codes AGH1002 ARFUN01 BLL137 BLL170 BLL176 CHFUN05 CHI1003 ENFUN04 ENGI202 TEFUN07 WJFUN116 WJFUN305

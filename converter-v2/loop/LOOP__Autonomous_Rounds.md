@@ -81,12 +81,12 @@ header.
 
 **The census it prints changed on 19–20 September 2026** (the 98-module intake) and again on
 21 September (PMT101 converts, r423); any older figure in `LOOP_STATE.md` or a changelog entry
-is pre-intake. Current (22 September 2026, build 260619.98 — after the 22 Sept Round 0d: the 12 XOTP modules and the 38 pre-intake never-converted modules are IN):
+is pre-intake. Current (22 September 2026, build 260619.99 — after the 22 Sept Round 0d and r426: the 12 XOTP modules and the 38 pre-intake never-converted modules are IN; r426 folded 45 over-split pages into 8 single pages):
 
 | | before the intake | now |
 |---|---:|---:|
 | Claude module dirs | 416 | **545** |
-| Claude pages | 2,109 | **2,744** |
+| Claude pages | 2,109 | **2,699** |
 | gold dirs | 454 | **552** |
 | Writers Template / Media List docx | 619 | **762** |
 | skeleton paired pages | 1,956 | **2,491** |

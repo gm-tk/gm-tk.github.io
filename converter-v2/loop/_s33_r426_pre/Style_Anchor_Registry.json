@@ -409,12 +409,8 @@
 							"page_model_exceptions": [
 								"BLL210",
 								"BLL220",
-								"BLL230",
-								"BLL250",
-								"BLL260",
-								"BLL270"
-							],
-							"_r426_note": "ROUND 426 (2026-09-22, the loop's session 33 Round 4): BLL250 / BLL260 / BLL270 added — the x0 parent modules of the BLL2 level, one gold page each (BLL250.html / BLL260.html / BLL270.html), exactly as BLL210 / 220 / 230 and the seven BLL1 parents (10 / 10 of the family's x0 golds are single-file). Never members, so the r408 miner never listed them; found by the 22 Sept intake (Claude had split them into 8 / 13 / 5 lesson pages)."
+								"BLL230"
+							]
 						}
 					}
 				}
@@ -2314,14 +2310,11 @@
 					},
 					"CEDK4": {
 						"members": [
-							"CEDK401",
 							"CEDK402",
 							"CEDK403"
 						],
 						"delta": {
 							"template_phase": "9-10",
-							"page_model": "single-file",
-							"_r426_note": "ROUND 426 (2026-09-22): CEDK401 added as a member (its gold is ONE page, CEDK401 Food Sustainability.html — the CEDK1 form); the level had no page_model so the default split it into 12 pages at the 22 Sept intake. CEDK402 / 403 have no gold in the corpus.",
 							"h1_count": {
 								"overview": "1",
 								"lesson": "1"
@@ -2463,9 +2456,7 @@
 							"CEDO402"
 						],
 						"delta": {
-							"template_phase": "9-10",
-							"page_model": "single-file",
-							"_r426_note": "ROUND 426 (2026-09-22): CEDO402's gold is ONE page (CEDO402.html, an inquiry page); the level had no page_model so the global default (multi-file) split it into 6 pages at the 22 Sept intake."
+							"template_phase": "9-10"
 						}
 					}
 				}
@@ -2495,16 +2486,6 @@
 					}
 				},
 				"levels": {
-					"CEDR1": {
-						"members": [
-							"CEDR101"
-						],
-						"delta": {
-							"template_phase": "1-3",
-							"page_model": "single-file",
-							"_r426_note": "ROUND 426 (2026-09-22): a new level — CEDR101's gold is ONE page; with no CEDR1 level the resolver fell to the highest level (CEDR5, multi-file) and split it into 2 pages at the 22 Sept intake."
-						}
-					},
 					"CEDR2": {
 						"members": [
 							"CEDR201",
@@ -2569,16 +2550,6 @@
 								"final": "—"
 							},
 							"page_model": "single-file"
-						}
-					},
-					"CEDR4": {
-						"members": [
-							"CEDR401"
-						],
-						"delta": {
-							"template_phase": "9-10",
-							"page_model": "single-file",
-							"_r426_note": "ROUND 426 (2026-09-22): a new level — CEDR401's gold is ONE page; with no CEDR4 level the resolver fell to CEDR5 (multi-file) and split it into 2 pages at the 22 Sept intake."
 						}
 					},
 					"CEDR5": {
@@ -6851,13 +6822,10 @@
 				"levels": {
 					"TWHT9": {
 						"members": [
-							"TWHT901",
-							"TWHT903"
+							"TWHT901"
 						],
 						"delta": {
-							"template_phase": "combo",
-							"page_model": "single-file",
-							"_r426_note": "ROUND 426 (2026-09-22): TWHT903 added (its gold is ONE page; the sibling base TWHK9 is single-file); the level had no page_model so the default split it into 5 pages at the 22 Sept intake."
+							"template_phase": "combo"
 						}
 					}
 				}
