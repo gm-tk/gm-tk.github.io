@@ -1,0 +1,39 @@
+compare_structure per module (matched / exact / EXTRA / missing): baseline -> new
+  BLL250     17/   8/  0/  0 ->   14/  13/  0/  0   delta -3/+5/+0/+0
+  BLL260     26/  13/  0/  0 ->   21/  20/  0/  0   delta -5/+7/+0/+0
+  CEDK401   100/  83/  0/ 16 ->  107/  90/  0/ 16   delta +7/+7/+0/+0
+  CEDO201    35/  35/  0/  0 ->   41/  41/  0/  0   delta +6/+6/+0/+0
+  CEDO204     0/   0/  0/  0 ->    0/   0/  0/  0   delta +0/+0/+0/+0
+  CEDO402    27/  26/  1/  0 ->   27/  26/  1/  0   delta +0/+0/+0/+0
+  CEDR101    51/  46/  0/  1 ->   51/  48/  0/  1   delta +0/+2/+0/+0
+  CEDR203    23/   6/  3/  2 ->   27/  10/  3/  2   delta +4/+4/+0/+0
+  CEDR401    41/  41/  0/  0 ->   46/  46/  0/  0   delta +5/+5/+0/+0
+  CEDT102    19/  19/  0/  0 ->   22/  22/  0/  0   delta +3/+3/+0/+0
+  CEDT104    51/  33/  3/  1 ->   54/  36/  3/  1   delta +3/+3/+0/+0
+  CEDT208    16/  15/  0/  1 ->   20/  19/  0/  1   delta +4/+4/+0/+0
+  CEDW201    18/  17/  1/  0 ->   24/  23/  1/  0   delta +6/+6/+0/+0
+  TWHA905    32/  22/  1/  2 ->   34/  24/  1/  2   delta +2/+2/+0/+0
+  TWHK901    61/  47/  0/ 13 ->   63/  49/  0/ 13   delta +2/+2/+0/+0
+  TWHK902    27/  27/  0/  0 ->   28/  28/  0/  0   delta +1/+1/+0/+0
+  TWHT903    35/  35/  0/  0 ->   37/  37/  0/  0   delta +2/+2/+0/+0
+  TOTAL delta matched/exact/EXTRA/missing: +37/+59/+0/+0
+
+skeleton per page (scaffold): baseline -> new, the affected modules
+  BLL250   BLL250_0_0.html            6.7 ->  54.1  +47.4
+  BLL260   BLL260_0_0.html            7.3 ->  36.6  +29.3
+  CEDK401  CEDK401_0_0.html          10.1 ->  35.2  +25.1
+  CEDO201  CEDO201_0_0.html          19.7 ->  67.8  +48.1
+  CEDO204  CEDO204_0_0.html          17.0 ->  28.7  +11.7
+  CEDO402  CEDO402_0_0.html          11.8 ->  34.3  +22.5
+  CEDR101  CEDR101_0_0.html          11.0 ->  68.1  +57.1
+  CEDR203  CEDR203_0_0.html          13.4 ->  32.3  +18.9
+  CEDR401  CEDR401_0_0.html           9.7 ->  40.6  +30.9
+  CEDT102  CEDT102_0_0.html          13.9 ->  42.3  +28.4
+  CEDT104  CEDT104_0_0.html           7.0 ->  24.6  +17.7
+  CEDT208  CEDT208_0_0.html          14.9 ->  58.3  +43.4
+  CEDW201  CEDW201_0_0.html          13.7 ->  48.6  +34.9
+  TWHA905  TWHA905_0_0.html          10.5 ->  30.2  +19.7
+  TWHK901  TWHK901_0_0.html           9.3 ->  25.7  +16.3
+  TWHK902  TWHK902_0_0.html          11.0 ->  32.8  +21.8
+  TWHT903  TWHT903_0_0.html          12.6 ->  52.9  +40.3
+  up 17 / down 0, pp-sum +513.6

@@ -1,0 +1,23 @@
+OLD pairs 2491  SCAFFOLD 54.1406%  RAW 38.069%  >=50 1531  >=75 254  >=90 23
+NEW pairs 2491  SCAFFOLD 54.3468%  RAW 38.217%  >=50 1536  >=75 254  >=90 23
+delta SCAFFOLD +0.2062pp  RAW +0.148pp  >=50 +5  >=75 +0  >=90 +0
+movers 17 (up 17 / down 0), pp-sum +513.6
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  CEDR101    CEDR101_0_0.html           11.0 ->   68.1  (+57.1)
+  CEDO201    CEDO201_0_0.html           19.7 ->   67.8  (+48.1)
+  BLL250     BLL250_0_0.html             6.7 ->   54.1  (+47.4)
+  CEDT208    CEDT208_0_0.html           14.9 ->   58.3  (+43.4)
+  TWHT903    TWHT903_0_0.html           12.6 ->   52.9  (+40.3)
+  CEDW201    CEDW201_0_0.html           13.7 ->   48.6  (+34.9)
+  CEDR401    CEDR401_0_0.html            9.7 ->   40.6  (+30.9)
+  BLL260     BLL260_0_0.html             7.3 ->   36.6  (+29.3)
+  CEDT102    CEDT102_0_0.html           13.9 ->   42.3  (+28.4)
+  CEDK401    CEDK401_0_0.html           10.1 ->   35.2  (+25.1)
+  CEDO402    CEDO402_0_0.html           11.8 ->   34.3  (+22.5)
+  TWHK902    TWHK902_0_0.html           11.0 ->   32.8  (+21.8)
+  TWHA905    TWHA905_0_0.html           10.5 ->   30.2  (+19.7)
+  CEDR203    CEDR203_0_0.html           13.4 ->   32.3  (+18.9)
+  CEDT104    CEDT104_0_0.html            7.0 ->   24.6  (+17.7)
+  TWHK901    TWHK901_0_0.html            9.3 ->   25.7  (+16.3)
+  CEDO204    CEDO204_0_0.html           17.0 ->   28.7  (+11.7)

@@ -1249,7 +1249,7 @@ class ContentConverter {
 			}
 		}
 		let sideTabCount = 0;
-		const inquiryMode = _bllInquiry || _headingLabelOn || sideTabMode;
+		const inquiryMode0 = _bllInquiry || _headingLabelOn || sideTabMode;   // ROUND 428: the effective `inquiryMode` is settled after the fallback check below
 		const INQ_SENTINEL = (inqCfg && inqCfg.sentinel) || "<!--CV2_INQPANEL-->";
 		// The CED subject group has its own INQUIRY [Page N]-SPLIT variant (modules CEDK101,
 		// CEDT404): these carry a PURE labelled `[Tab N]` crumb-list (with NO empty openers at
@@ -1277,7 +1277,7 @@ class ContentConverter {
 		// Data flag: inquiry_tabs.section_nav   Env toggle: SECTIONNAV_OFF
 		// The detector reads the BODY partition as the loop below will walk it (bodyItems — black runs
 		// already merged), not page.items, so that its flags land on the very objects the loop visits.
-		const secInq = (!inquiryMode && !cedInquiryMode && _singleFile)
+		const secInq = (!inquiryMode0 && !cedInquiryMode && _singleFile)
 			? PanelsBuilder.detectInquirySections({ items: bodyItems }, tpl) : { on: false, labels: [] };
 		const secInquiryMode = secInq.on;
 		// An opener typed in BLACK (`TAB NAV 1: Learner` on EXPFUN03 / EXPFUN05) sits INSIDE a merged black
@@ -1306,6 +1306,171 @@ class ContentConverter {
 				bodyItems.splice(k, 1, ...repl);
 			}
 		}
+		// ROUND 428 — THE INQUIRY-TEMPLATE FALLBACK SHELL (the autonomous loop's session 34 Round 2, 22 Sept
+		// 2026; the diff miner's rows #4158 `body MISSING div.inquiryPanel` 37 / 34, #9363 `root body.inquiry`
+		// 27 / 26, #435 `crumbs MISSING` 21 / 18; KB 06_TEMPLATE_RECOGNITION.md lines 63 / 169 / 171 — the
+		// Inquiry template's navigation IS `div.crumbs` → `div.inquiryPanel[rel]`). The inquiry shell census
+		// (outputs/_s34_r2_inqshell.py): of the 72 gold pages that carry the shell, Claude built it on 32 and
+		// MISSED it on 40 — 31 registry-known Inquiry modules' single pages whose Writers Templates delimit
+		// their panels in dialects none of the five modes above accept (_s34_r2_inqdialects.py): a labelled
+		// `[Tab N] label` LIST followed by labelled REPEATED openers (BLL250 / 260, CEDR101 / 401), labelled
+		// openers with no list (CEDR203, CEDT208, CEDW201, TWHR907's `[New side tab] Values`), the label typed
+		// INSIDE the red span (`[Tab 2 – Scenario]`, `[Insert Right click tab – ‘The seasons’]` — CEDO201,
+		// TWHA905 / 904 / 902, CEDO202) and SECTION markers — `[LESSON N] LABEL` (CEDK401), `[LESSON N]` + an
+		// `[H2] Lesson N: label` (TWHK901 / 902, TWHT903), `[Lesson N content] label` (CEDT104), `[page N]`
+		// (CEDT102, CEDO204). When the module's Module_Structure_Index template_type is Inquiry, the page is
+		// single-file and NONE of the five modes fired, every top-level opener below pushes the panel sentinel
+		// and PanelsBuilder.inquiryPanels (fallbackMode) builds the shell: the labels come from the writer's
+		// list, the opener's own words, or the panel's first heading (the r111 form). The lead content before
+		// the first opener is the intro panel when it is real (intro_min_chars / a heading).
+		// Data: inquiry_tabs.template_fallback   Env toggle: INQFALLBACK_OFF (INQUIRYTABS_OFF covers it too)
+		const _fbCfg = inqCfg && inqCfg.template_fallback;
+		const _fbTT = String(DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")]?.template_type ?? "");
+		const _fbOn = !!inqCfg && inqCfg.enabled !== false && !!_fbCfg && _fbCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.INQUIRYTABS_OFF)
+			&& !(typeof process !== "undefined" && process.env && process.env[_fbCfg.env || "INQFALLBACK_OFF"])
+			&& _singleFile && !cedInquiryMode && !secInquiryMode
+			&& (!inquiryMode0 || (_bllInquiry && _trueOpeners === 0 && !_pageDelimited && !_headingLabelOn && !sideTabMode))
+			&& (_fbCfg.template_types || ["Inquiry"]).map(String).includes(_fbTT);
+		const fbList = new Set();       // the writer's crumb LIST items (their labels captured; they render nothing)
+		const fbListLabels = [];        // the list's labels in order (aligned with the PANELS, intro first)
+		const fbLabels = [];            // one label per opener in document order ("" → the panel's first heading)
+		const _fbWords = new RegExp((_fbCfg && _fbCfg.strip_label_words) || "^(?:insert|right|click|new|side|tab|nav|navigation|lesson|page|content|module|introduction|s)\\b", "i");
+		const _fbPrefix = new RegExp((_fbCfg && _fbCfg.strip_label_prefix) || "^\\s*lesson\\s*\\d+\\s*[:.\\-–—]?\\s*", "i");
+		const _fbMaxW = (_fbCfg && _fbCfg.label_max_words) ?? 8;
+		const fbClean = (s) => {
+			let t = String(s || "").replace(/\*/g, "").replace(/[‘’“”"']/g, "").replace(/\s+/g, " ").trim();
+			t = t.split(/\s*\|\s*/)[0].trim();          // the English part of a bilingual label (the r111 rule)
+			t = t.replace(_fbPrefix, "").trim();
+			// an ALL-CAPS label folds to sentence case (the r327 title rule; the gold's "People produce food")
+			if (t && t === t.toUpperCase() && /[A-Z]{3,}/.test(t)) t = t.charAt(0) + t.slice(1).toLowerCase();
+			return t;
+		};
+		// the words inside the red span with the tag's own words stripped: `[Tab 2 – Scenario]` → Scenario,
+		// `[Insert Right click tab – ‘The seasons’]` → The seasons, `[LESSON 6] A COMMUNITY INITIATIVE` → A community
+		// initiative; `[Tab 1: MODULE INTRODUCTION]` and `[Lesson 3A]` strip to nothing (the panel's heading decides)
+		const fbInnerLabel = (it) => {
+			let inner = String(it.text || "").replace(/\[\/?RED TEXT\]|\u{1f534}/gu, "");
+			const m = /\[([^\]]*)\]\s*(.*)$/s.exec(inner);
+			let inside = m ? m[1] : inner;
+			const after = m ? m[2] : "";
+			inside = inside.replace(/[‘’“”"']/g, " ").replace(/[:–—\-.]/g, " ").replace(/\s+/g, " ").trim();
+			const words = inside.split(" ").filter(Boolean);
+			// a DESCRIPTIVE bracket (`[Tab 1: MODULE INTRODUCTION]`) that strips to nothing names no label — the words
+			// after it are the panel's title, not its crumb; a bare `[Tab 1] Biotechnology` / `[LESSON 6] A COMMUNITY
+			// INITIATIVE` takes the words typed after the bracket inside the red span
+			const descriptive = words.some((w) => !/^(tab|lesson|page)$/i.test(w) && !/^\d+[a-z]?$/i.test(w));
+			while (words.length && (_fbWords.test(words[0]) || /^\d+[a-z]?$/i.test(words[0]))) words.shift();
+			const lab = fbClean(words.join(" "));
+			if (lab) return lab;
+			if (descriptive) return "";
+			const tail = fbClean(String(after || "").split(/\n/)[0]);
+			return tail && tail.split(" ").length <= _fbMaxW && !/^(lesson|page|tab)\b/i.test(tail) && !/^\d+[a-z]?$/i.test(tail) ? tail : "";
+		};
+		// the opener's own label: the words inside its red span first (`[Tab 2 – Scenario] neolithic flint` — the
+		// black tail there is content), else a SHORT black tail (`[Tab 2] Silent b`, `[LESSON 1] PEOPLE PRODUCE FOOD`)
+		const fbOwnLabel = (it) => {
+			const inner = fbInnerLabel(it);
+			if (inner) return inner;
+			const black = fbClean(String(it.blackAfter || "").split(/\n/)[0]);
+			return black && black.split(" ").length <= _fbMaxW ? black : "";
+		};
+		// a tab item OPENS a panel only in one of the writer's panel-opener forms (tab_opener_patterns — `[Tab N …]`,
+		// `[New side tab]`, `[Insert Right click tab – …]`); `[Template tab here]` / `[Work mat tab here]` are instructions
+		const _fbOpenRes = ((_fbCfg && _fbCfg.tab_opener_patterns) || ["^\\s*tab\\s*\\d", "^\\s*new\\s+side\\s+tab", "^\\s*insert\\s+right\\s+(?:click\\s+)?tab", "^\\s*side\\s*tab"]).map((p) => new RegExp(p, "i"));
+		const fbBracket = (it) => { const m = /\[([^\]]*)\]/.exec(String(it.text || "").replace(/\[\/?RED TEXT\]|\u{1f534}/gu, "")); return (m ? m[1] : String(it.text || "")).trim(); };
+		const isFbTabAny = (it) => it.type === "tag" && isTabItem(it) && _fbOpenRes.some((re) => re.test(fbBracket(it)));
+		const isFbTab = (it) => isFbTabAny(it) && it.consumedBy === undefined;     // an opener is never a widget member
+		const isFbBoundary = (it) => it.type === "tag" && it.consumedBy === undefined
+			&& it.parse?.primary?.directive === "PAGE_BOUNDARY" && /^(lesson|page)$/i.test(it.parse?.primary?.tag || "")
+			&& /\d/.test(String(it.text || ""));
+		const isFbContent = (it) => it.type === "tag" && it.consumedBy === undefined
+			&& it.parse?.primary?.directive === "SECTION_MARKER" && /^lesson content$/i.test(it.parse?.primary?.tag || "");
+		const fbSuppress = new Set();   // a `tabs` bundle the scanner made of the writer's bare crumb list — never a widget
+		const fbFold = (s) => fbClean(s).toLowerCase().replace(/[^a-z0-9āēīōū]+/g, " ").trim();
+		const isFbListHeading = (it) => it.type === "tag" && it.consumedBy === undefined
+			&& /^h[1-3]$/i.test(it.parse?.primary?.tag || "") && !!fbListLabels.length
+			&& fbListLabels.some((l) => l && fbFold(l) === fbFold(it.blackAfter));
+		let fbUseContent = false;
+		let fbUseHeadings = false;
+		let fbOpenerCount = 0;
+		if (_fbOn) {
+			// the writer's crumb LIST = the first run of >= list_min consecutive labelled [Tab N] items (blank
+			// black runs between them allowed) — the r100 capture: its labels are the crumbs, the items render
+			// nothing. The scanner sometimes reads that bare list as a `[tabs]` WIDGET (CEDT208, CEDR203): a
+			// consumed item counts when its bundle is a `tabs` bundle whose members are ONLY labelled tabs and
+			// blanks — the r102 consumed-crumb-list precedent — and that bundle is then suppressed.
+			const listMin = (_fbCfg.list_min ?? 3);
+			// a bare-list member: a labelled tab, a blank, the `[Side Tabs]` opener itself, or ONE trailing heading the
+			// scanner swallowed after the list (CEDW201's `[H2] Introduction`) — released back to the body when the list is taken
+			const listMember = (m) => (isFbTabAny(m) && !!fbOwnLabel(m)) || (m.type === "black" && !String(m.text || "").trim())
+				|| (m.type === "tag" && /^tabs$/i.test(m.parse?.primary?.tag || "") && !String(m.blackAfter || "").trim());
+			const swallowedHeading = (m) => m.type === "tag" && /^h[1-4]$/i.test(m.parse?.primary?.tag || "");
+			const bareListBundle = (it) => {
+				if (it.consumedBy === undefined) return true;
+				const b = bundles[it.consumedBy];
+				if (!b || b.type !== "tabs" || !(b.memberItems || []).length) return false;
+				const mem = b.memberItems || [];
+				const odd = mem.filter((m) => !listMember(m));
+				return odd.length === 0 || (odd.length === 1 && odd[0] === mem[mem.length - 1] && swallowedHeading(odd[0]));
+			};
+			let seq = [];
+			const flushSeq = () => {
+				if (seq.length >= listMin && !fbList.size)
+					for (const r of seq) {
+						fbList.add(r); fbListLabels.push(fbOwnLabel(r)); r._inquiryCrumb = true;
+						if (r.consumedBy !== undefined && !fbSuppress.has(r.consumedBy)) {
+							fbSuppress.add(r.consumedBy);
+							for (const m of (bundles[r.consumedBy]?.memberItems || [])) if (swallowedHeading(m)) m.consumedBy = undefined;   // the heading flows through the body path
+						}
+					}
+				seq = [];
+			};
+			for (const it of bodyItems) {
+				if (isFbTabAny(it) && fbOwnLabel(it) && bareListBundle(it)) { seq.push(it); continue; }
+				if (it.type === "black" && !String(it.text || "").trim()) continue;
+				flushSeq();
+				if (fbList.size) break;
+			}
+			flushSeq();
+			const nTabs = bodyItems.filter((it) => isFbTab(it) && !fbList.has(it)).length;
+			const nBoundary = bodyItems.filter(isFbBoundary).length;
+			// `[Lesson N content]` markers open panels only when the page has neither tab openers nor
+			// `[LESSON N]` / `[page N]` boundaries of its own (CEDT104's form)
+			fbUseContent = nTabs < 2 && nBoundary < 2;
+			// with a crumb LIST in hand, a top-level heading that repeats one of its labels is a panel opener too (CEDW201)
+			fbUseHeadings = fbListLabels.length >= listMin && (nTabs + nBoundary) < fbListLabels.length - 1;
+			fbOpenerCount = nTabs + nBoundary + (fbUseContent ? bodyItems.filter(isFbContent).length : 0) + (fbUseHeadings ? bodyItems.filter(isFbListHeading).length : 0);
+		}
+		const inqFallbackMode = _fbOn && fbOpenerCount >= (_fbCfg.min_openers ?? 2);
+		// the r100 mode that fired on a "side tabs" instruction with LABELLED tabs only (no empty opener — CEDR401,
+		// CEDR101: it captures labels and opens NO panel) yields to the fallback, which reads those labels as its list
+		const inquiryMode = inquiryMode0 && !inqFallbackMode;
+		const fbIsOpener = (it) => inqFallbackMode && ((isFbTab(it) && !fbList.has(it)) || isFbBoundary(it) || (fbUseContent && isFbContent(it)) || (fbUseHeadings && isFbListHeading(it)));
+		// open a panel at an opener: a `[Tab N] label` directly followed by its `[page N]` (or the reverse —
+		// BLL250's every panel) is ONE opener, so a sentinel with nothing rendered after it is reused and
+		// only its empty label is filled in
+		// a `[Tab N] label` and its `[page N]` twin are ONE opener whichever comes first (BLL250 / BLL260 write both on
+		// every panel, sometimes with a writer note between them): the second of the pair only fills an empty label
+		let fbLastKind = "";
+		const fbOpen = (label, kind) => {
+			if (kind && fbLastKind && kind !== fbLastKind) {
+				if (label && !fbLabels[fbLabels.length - 1]) fbLabels[fbLabels.length - 1] = label;
+				fbLastKind = "";
+				return;
+			}
+			const lastS = parts.lastIndexOf(INQ_SENTINEL);
+			if (lastS >= 0 && !parts.slice(lastS + 1).join("").trim()) {
+				if (label && !fbLabels[fbLabels.length - 1]) fbLabels[fbLabels.length - 1] = label;
+				return;
+			}
+			// a REPEATED label (`[Tab 6] thr` typed twice — BLL260; CEDO201's second `[Tab 5] Antibacterial`) continues its panel
+			if (label && fbLabels.some((l) => l && l.toLowerCase() === label.toLowerCase())) return;
+			breakRow();
+			parts.push(INQ_SENTINEL);
+			fbLabels.push(label || "");
+			fbLastKind = kind || "";
+		};
 		// SIDE-ALERT PAIRING: in the human-built output, a RIGHT-positioned alert box sits
 		// side-by-side with the content that follows it, sharing one row (an 8-column content
 		// block next to a 4-column alert block), rather than sitting in its own separate row
@@ -2048,6 +2213,12 @@ class ContentConverter {
 				// env CEDCONSUMED_OFF empties out `suppressBundles`, so the widget renders exactly
 				// as it would have without any of this CED handling.
 				if (bundle && cedInq.suppressBundles && cedInq.suppressBundles.has(it.consumedBy)) {
+					bundle._emitted = true;
+					continue;
+				}
+				// ROUND 428 — the fallback shell's consumed crumb list (a `tabs` bundle made of the writer's bare
+				// labelled `[Tab N]` list): its labels are the crumbs, the widget never renders (the r102 rule above).
+				if (bundle && fbSuppress.has(it.consumedBy)) {
 					bundle._emitted = true;
 					continue;
 				}
@@ -2970,6 +3141,16 @@ class ContentConverter {
 
 			switch (primary.directive) {
 				case "ELEMENT": {
+					// ROUND 428 — the Inquiry-template FALLBACK shell: a top-level heading whose text IS one of the
+					// writer's crumb-list labels opens that panel (CEDW201: `[Side Tabs]` list + an `[H2] Legends` per
+					// section, the `[End page]` closers gone from the stream); the heading then renders inside it.
+					if (fbIsOpener(it) && isFbListHeading(it)) {
+						while (stack.length && stack[stack.length - 1].tag === "activity") {
+							emit(stack.pop().close);
+							if (!stack.length) breakRow();
+						}
+						if (!stack.length) { fbOpen(fbClean(it.blackAfter), "page"); pageLabelHold = ""; headingHold = false; }
+					}
 					// row kind: headings start (and may share) a row; plain
 					// text-family elements behave as text runs; media and
 					// everything else stand alone (data: body_region.row_rule)
@@ -3621,6 +3802,21 @@ class ContentConverter {
 				}
 
 				case "SECTION_MARKER": {
+					// ROUND 428 — the Inquiry-template FALLBACK shell: on a page with no `[LESSON N]` / `[page N]`
+					// boundaries of its own, a top-level `[Lesson N content] label` marker opens a panel (CEDT104's
+					// form); beside real boundaries it stays the plain region label it always was. Env INQFALLBACK_OFF.
+					if (fbIsOpener(it)) {
+						while (stack.length && stack[stack.length - 1].tag === "activity") {
+							emit(stack.pop().close);
+							if (!stack.length) breakRow();
+						}
+						if (!stack.length) {
+							fbOpen(fbOwnLabel(it), "page");
+							pageLabelHold = "";
+							headingHold = false;
+							break;
+						}
+					}
 					// MID-document title-bar aliases ([Title]/[Introduction])
 					// are headings, never section breaks (page-boundary rule
 					// 4) — and a [Title] that only repeats the module name is
@@ -3665,6 +3861,23 @@ class ContentConverter {
 						breakRow();
 						parts.push(FUND_LESSON_SENTINEL);
 						break;
+					}
+					// ROUND 428 — the Inquiry-template FALLBACK shell: a top-level `[LESSON N]` / `[page N]`
+					// boundary (one carrying a digit) opens a panel — an open activity is closed first, as the
+					// CED split below does; inside a real container the boundary keeps its ordinary section-break
+					// meaning. The opener's own label (`[LESSON 6] A COMMUNITY INITIATIVE`) is the crumb; an
+					// unlabelled one takes the panel's first heading in PanelsBuilder. Env INQFALLBACK_OFF.
+					if (fbIsOpener(it)) {
+						while (stack.length && stack[stack.length - 1].tag === "activity") {
+							emit(stack.pop().close);
+							if (!stack.length) breakRow();
+						}
+						if (!stack.length) {
+							fbOpen(fbOwnLabel(it), "page");
+							pageLabelHold = "";
+							headingHold = false;
+							break;
+						}
 					}
 					// INQUIRY CED [Page N]-split: a top-level `[page N]` opener is a PANEL boundary.
 					// Close any still-open activity first (writers put the next panel's `[page N]`
@@ -3862,6 +4075,32 @@ class ContentConverter {
 							emit(stack.pop().close);
 							if (!stack.length) breakRow();
 						}
+					}
+					// ROUND 428 — the Inquiry-template FALLBACK shell: every unconsumed `[Tab N …]` item that is
+					// not part of the writer's crumb LIST opens a panel, whatever its label form (the black tail
+					// `[Tab 2] Silent b`, the words inside the red span `[Tab 2 – Scenario]` / `[Insert Right
+					// click tab – ‘The seasons’]`, or a bare `[Tab 3]` that takes its panel's first heading);
+					// the list's own items render nothing (their labels are the crumbs). A black tail too long
+					// to be a label is the panel's opening content and is rendered as such. Env INQFALLBACK_OFF.
+					if (inqFallbackMode && isFbTab(it)) {
+						if (fbList.has(it)) break;
+						while (stack.length && stack[stack.length - 1].tag === "activity") {
+							emit(stack.pop().close);
+							if (!stack.length) breakRow();
+						}
+						if (stack.length) break;   // inside a real container — never split it; the tag renders nothing
+						const _fbLab = fbOwnLabel(it);
+						fbOpen(_fbLab, "tab");
+						pageLabelHold = "";
+						headingHold = false;
+						const _fbTail = String(it.blackAfter || "").trim();
+						if (_fbTail) {
+							const _fbLines = _fbTail.split(/\n/);
+							// the first line WAS the label → only the lines after it are content
+							const _fbRest = (fbClean(_fbLines[0]) === _fbLab && _fbLab) ? _fbLines.slice(1).join("\n").trim() : _fbTail;
+							if (_fbRest) emit(...actDeBold(ListsAndRuns.renderBlackText(_fbRest, run, it.block?.links)));
+						}
+						break;
 					}
 					// INQUIRY: a `[Tab N] <label>` list entry (one that also carries a label) simply
 					// CAPTURES the crumb-trail label and renders nothing further; an EMPTY `[Tab N]`
@@ -4225,14 +4464,27 @@ class ContentConverter {
 				cedMode: cedInquiryMode, cedLabels: cedInq.labels, headingLabel: _headingLabelOn,
 				sectionMode: secInquiryMode, sectionLabels: secInq.labels,
 				// ROUND 422 — the side-tab dialect: N unified crumbs + N panels from the flavour's templates
-				sideTabMode, sideTabFlavour: sideTabMode ? (_stCfg.flavour || "fundamentals") : null });
+				sideTabMode, sideTabFlavour: sideTabMode ? (_stCfg.flavour || "fundamentals") : null,
+				// ROUND 428 — the Inquiry-template fallback shell: the openers' own labels, the writer's crumb
+				// list, the intro label for the module's code prefix (the CED golds say "Intro")
+				fallbackMode: inqFallbackMode, fallbackLabels: fbLabels, fallbackList: fbListLabels,
+				fallbackIntroLabel: (() => {
+					if (!inqFallbackMode) return null;
+					const byP = (_fbCfg && _fbCfg.intro_label_by_prefix) || {};
+					const code = String(run?.moduleCode || "").toUpperCase();
+					let best = null;
+					for (const k of Object.keys(byP)) if (code.startsWith(k.toUpperCase()) && (!best || k.length > best.length)) best = k;
+					return best ? byP[best] : ((_fbCfg && _fbCfg.intro_label) || null);
+				})() });
 		// ROUND 385: the panel's first own heading is h2 (both panel kinds exist by now); the inquiry
 		// flags below read the PRE-post-pass comparison so the post-pass can never flip them.
 		// ROUND 398: the widget-embedded videos take the module's `icon` class too (MediaBuilder.videoIconPostpass —
 		// the r200 rule's recorded follow-up; runs LAST so every emitter's videoSection is covered at one seam; a
 		// class-token change only, so nothing below it can be affected).
 		const finalBody = MediaBuilder.videoIconPostpass(PanelsBuilder.panelTitleLevelPostpass(finalBody0, run), run);
-		const inquiryActive = (inquiryMode || cedInquiryMode || secInquiryMode) && finalBody0 !== bodyHtml;
+		// ROUND 428 — a fallback-shell page that built its panels is an inquiry page too (the body class and
+		// the inquiry footer class follow, as for every other mode; its footer LINKS stay the registry's own).
+		const inquiryActive = (inquiryMode || cedInquiryMode || secInquiryMode || inqFallbackMode) && finalBody0 !== bodyHtml;
 		// CED firing flags the fixed inquiry footer-nav shell (a single-file CED page has no
 		// registry footer links of its own, so SkeletonBuilder would otherwise emit an empty
 		// #footer). Scoped specifically to CED so the BLL family's footers stay byte-unchanged.

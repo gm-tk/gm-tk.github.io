@@ -1,0 +1,80 @@
+gold pages with the inquiry shell: 72 {'SHELL-OK': 25, 'SHELL-MISSING': 40, 'PANELS-DIFF': 7}
+by template: {'Inquiry': {'SHELL-OK': 25, 'SHELL-MISSING': 31, 'PANELS-DIFF': 7}, 'Standard': {'SHELL-MISSING': 9}}
+
+template     code      gold page              bucket         gold(cr/pan) claude(cr/pan) gbody/cbody           cpages WT[Tab] lab/emp side
+Inquiry      BLL110    BLL110.html            SHELL-OK       10/7          7/7         inquiry container-flui  1     12/0    Y
+Inquiry      BLL120    BLL120.html            SHELL-OK       17/9          9/9         inquiry container-flui  1     16/0    Y
+Inquiry      BLL130    BLL130.html            SHELL-OK        7/7          7/7         inquiry container-flui  1     11/0    Y
+Inquiry      BLL140    BLL140.html            SHELL-OK        8/8          8/8         inquiry container-flui  1      8/0    Y
+Inquiry      BLL150    BLL150.html            SHELL-OK        6/6          6/6         inquiry container-flui  1      8/0    Y
+Inquiry      BLL160    BLL160.html            SHELL-OK        6/6          6/6         inquiry container-flui  1      9/0    Y
+Inquiry      BLL170    BLL170.html            SHELL-OK       18/7          7/7         inquiry container-flui  1     10/0    Y
+Inquiry      BLL210    BLL210.html            SHELL-OK       20/9          9/9         inquiry container-flui  1     14/0    Y
+Inquiry      BLL220    BLL220.html            SHELL-OK        6/6          6/6         inquiry container-flui  1      6/0    Y
+Inquiry      BLL230    BLL230.html            SHELL-OK        8/8          8/8         inquiry container-flui  1     13/0    Y
+Inquiry      BLL240    BLL240 claude.html     SHELL-MISSING  26/8          0/0         inquiry container-flui  9     14/0    Y
+Inquiry      BLL240    BLL240.html            SHELL-MISSING   8/8          0/0         inquiry container-flui  9     14/0    Y
+Inquiry      BLL250    BLL250.html            SHELL-MISSING  71/6          0/0         inquiry container-flui  1     11/0    
+Inquiry      BLL260    BLL260.html            SHELL-MISSING   7/7          0/0         inquiry container-flui  1      7/0    Y
+Inquiry      BLL270    BLL270.html            SHELL-OK        5/5          5/5         inquiry container-flui  1      5/0    Y
+Inquiry      CEDK101   CEDK101_0.html         SHELL-OK       14/6          6/6         inquiry container-flui  1      6/0    Y
+Inquiry      CEDK102   CEDK102.html           PANELS-DIFF     6/6          7/7         inquiry container-flui  1     11/0    
+Inquiry      CEDK401   CEDK401 Food Sustainab SHELL-MISSING   9/9          0/0         inquiry container-flui  1      0/0    
+Inquiry      CEDK501   CEDK501 Kia Mahitahi – SHELL-MISSING   8/8          0/0         inquiry container-flui 14      0/0    
+Inquiry      CEDO102   CEDO102_0.0.html       SHELL-OK       10/6          6/6         inquiry container-flui  1      6/0    Y
+Inquiry      CEDO201   CEDO201_0.0.html       SHELL-MISSING  23/6          0/0         inquiry container-flui  1      1/0    
+Inquiry      CEDO202   CEDO202_0.0.html       PANELS-DIFF    25/10         9/9         inquiry container-flui  1      0/0    
+Inquiry      CEDO204   CEDO204_0_0.html       SHELL-MISSING  15/6          0/0         inquiry container-flui  1      0/0    
+Inquiry      CEDO402   CEDO402_0.0.html       SHELL-MISSING  18/6          0/0         inquiry container-flui  1      0/0    Y
+Inquiry      CEDR101   CEDR101 Who's leading  SHELL-MISSING  16/8          0/0         inquiry container-flui  1     16/0    Y
+Inquiry      CEDR201   CEDR201 Mixing Colours SHELL-MISSING   6/6          0/0         inquiry container-flui  1      0/0    
+Inquiry      CEDR203   CEDR203_0.0.html       SHELL-MISSING  13/5          0/0         inquiry container-flui  1      5/0    Y
+Inquiry      CEDR204   CEDR204 STOMP.html     PANELS-DIFF     6/6          7/7         inquiry container-flui  1     12/0    
+Inquiry      CEDR301   CEDR301 People Making  SHELL-MISSING   6/6          0/0         inquiry container-flui  1      0/0    
+Inquiry      CEDR302   CEDR302 Light and No L SHELL-MISSING   6/6          0/0         inquiry container-flui  1      0/0    
+Inquiry      CEDR401   CEDR401 Leadership and SHELL-MISSING   6/6          0/0         inquiry container-flui  1     11/0    Y
+Inquiry      CEDT101   CEDT101 Who’s at my ta SHELL-OK        5/5          5/5         inquiry container-flui  1      0/0    Y
+Inquiry      CEDT102   CEDT102.html           SHELL-MISSING   9/5          0/0         inquiry container-flui  1      0/0    Y
+Inquiry      CEDT104   CEDT104 Waiata In Moti SHELL-MISSING  25/8          0/0         inquiry container-flui  1      0/0    
+Inquiry      CEDT201   CEDT201 Let’s Make Som SHELL-MISSING   6/6          0/0         inquiry container-flui  1      0/0    
+Inquiry      CEDT202   CEDT202 Chemical React SHELL-MISSING   6/6          0/0         inquiry container-flui  1      0/0    
+Inquiry      CEDT203   CEDT203 My Pepeha.html SHELL-MISSING   6/6          0/0         inquiry container-flui  1      0/0    
+Inquiry      CEDT204   CEDT204 Geometry and A SHELL-MISSING   6/6          0/0         inquiry container-flui  1      0/0    
+Inquiry      CEDT207   CEDT207 Me, my selfie  SHELL-MISSING  20/7          0/0         inquiry container-flui  8      3/0    Y
+Inquiry      CEDT208   CEDT208 Patterns Of Th SHELL-MISSING  14/4          0/0         inquiry container-flui  1      4/0    Y
+Inquiry      CEDT301   CEDT301 My place and m SHELL-MISSING  16/7          0/0         inquiry container-flui  7      0/0    Y
+Inquiry      CEDT404   CEDT404.html           SHELL-OK        6/6          6/6         inquiry container-flui  1      6/0    Y
+Inquiry      CEDW101   CEDW101 Manaakitanga.h SHELL-OK        5/5          5/5         inquiry container-flui  1      5/0    Y
+Inquiry      CEDW201   CEDW201 The Language o SHELL-MISSING   5/5          0/0         inquiry container-flui  1      5/0    Y
+Inquiry      CEDW303   CEDW303 Talking about  SHELL-MISSING  11/6          0/0         inquiry container-flui  1      0/0    
+Inquiry      EXPFUN02  EXPFUN02_0.0.html      SHELL-OK       10/7          7/7         inquiry container-flui  1      0/0    
+Inquiry      EXPFUN03  EXPFUN03_0.0.html      SHELL-OK       29/7          7/7         inquiry container-flui  1      0/0    
+Inquiry      EXPFUN04  EXPFUN04_0.0.html      SHELL-OK       10/7          7/7         inquiry container-flui  1      0/0    
+Inquiry      EXPFUN05  EXPFUN05_0.0.html      SHELL-OK       10/7          7/7         inquiry container-flui  1      0/0    
+Inquiry      EXPFUN06  EXPFUN06_0.html        SHELL-OK       25/4          4/4         inquiry container-flui  1      3/0    
+Inquiry      TWHA901   TWHA901 Be a Learner.h SHELL-OK       33/11        11/11        inquiry container-flui  1     10/0    
+Inquiry      TWHA902   TWHA902 Be a Communica PANELS-DIFF    18/9          5/5         inquiry container-flui  1      6/0    
+Inquiry      TWHA903   TWHA903 The world arou SHELL-OK        9/5          5/5         inquiry container-flui  1      4/0    
+Inquiry      TWHA904   TWHA904 The Way We Mov PANELS-DIFF    10/7          6/6         inquiry container-flui  1      0/0    
+Inquiry      TWHA905   TWHA905 The way we mak SHELL-MISSING  11/7          0/0         inquiry container-flui  1      0/0    
+Inquiry      TWHA906   TWHA906 Whakamana and  SHELL-OK       10/7          7/7         inquiry container-flui  1      3/0    Y
+Inquiry      TWHK901   TWHK901.html           SHELL-MISSING   8/5          0/0         inquiry container-flui  1      0/0    Y
+Inquiry      TWHK902   TWHK902_0.0.html       SHELL-MISSING   9/5          0/0         inquiry container-flui  1      3/0    Y
+Inquiry      TWHK903   TWHK903_Digital_Citize SHELL-OK       42/9          9/9         inquiry container-flui  1      9/0    
+Inquiry      TWHK907   TWHK907.html           PANELS-DIFF     9/5          2/2         inquiry container-flui  1      1/0    
+Inquiry      TWHR905   TWHR905.html           SHELL-MISSING   9/5          0/0         inquiry container-flui  1      0/0    Y
+Inquiry      TWHR907   TWHR907 Growing Leader PANELS-DIFF     8/4          2/2         inquiry container-flui  1      0/0    Y
+Inquiry      TWHT903   TWHT903.html           SHELL-MISSING  12/5          0/0         inquiry container-flui  1      0/0    
+Standard     EXBP901   EXBP901_0.1.html       SHELL-MISSING  12/6          0/0         inquiry container-flui  6      0/0    Y
+Standard     EXBP901   EXBP901_0.2.html       SHELL-MISSING   6/6          0/0         inquiry container-flui  6      0/0    Y
+Standard     EXBP901   EXBP901_0.3.html       SHELL-MISSING   5/5          0/0         inquiry container-flui  6      0/0    Y
+Standard     EXBP901   EXBP901_0.4.html       SHELL-MISSING   5/5          0/0         inquiry container-flui  6      0/0    Y
+Standard     EXIP901   EXIP901_0.1.html       SHELL-MISSING   5/5          0/0         inquiry container-flui  6      0/0    Y
+Standard     EXIP901   EXIP901_0.2.html       SHELL-MISSING   6/6          0/0         inquiry container-flui  6      0/0    Y
+Standard     EXIP901   EXIP901_0.3.html       SHELL-MISSING   4/4          0/0         inquiry container-flui  6      0/0    Y
+Standard     EXIP901   EXIP901_0.4.html       SHELL-MISSING   5/5          0/0         inquiry container-flui  6      0/0    Y
+Standard     EXIP901   EXIP901_0.5.html       SHELL-MISSING   4/4          0/0         inquiry container-flui  6      0/0    Y
+
+SHELL-MISSING by WT shape: {'labelled': 11, 'no-tabs': 29}
+SHELL-MISSING body class: {'container-fluid': 39, 'container-fluid mathJax': 1}
+SHELL-OK body class: {'inquiry container-fluid': 25}

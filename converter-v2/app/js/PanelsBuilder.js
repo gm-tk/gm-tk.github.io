@@ -636,13 +636,71 @@ class PanelsBuilder {
 	 *
 	 * Data: body_region.inquiry_tabs.
 	 */
-	static inquiryPanels(body, { on, sentinel, labels, cedMode, cedLabels, headingLabel, sectionMode, sectionLabels, sideTabMode, sideTabFlavour } = {}) {
+	static inquiryPanels(body, { on, sentinel, labels, cedMode, cedLabels, headingLabel, sectionMode, sectionLabels, sideTabMode, sideTabFlavour,
+		fallbackMode, fallbackLabels, fallbackList, fallbackIntroLabel } = {}) {
 		const cfg = DataService.Data.EmitTemplates.body_region.inquiry_tabs;
 		const sent = sentinel || (cfg && cfg.sentinel) || "<!--CV2_INQPANEL-->";
-		if (!(on || cedMode || sectionMode) || !cfg || cfg.enabled === false || !body.includes(sent)) return body.split(sent).join("");
+		if (!(on || cedMode || sectionMode || fallbackMode) || !cfg || cfg.enabled === false || !body.includes(sent)) return body.split(sent).join("");
 		const segs = body.split(sent);
 		const intro = segs[0].trim();
 		const panelSegs = segs.slice(1).map((s) => s.trim());
+		// ROUND 428 — THE INQUIRY-TEMPLATE FALLBACK SHELL (ContentConverter's inqFallbackMode; data
+		// inquiry_tabs.template_fallback; env INQFALLBACK_OFF). The r111 heading-label build with the labels
+		// supplied per panel: the lead segment before the first opener is its own intro panel when it holds
+		// real content (intro_min_chars of text, or a heading) and is folded into panel 1 otherwise; every
+		// panel's crumb is the writer's list entry for that panel (the list is aligned with the panels, its
+		// first entry the intro), else the opener's own label, else the panel's first heading (the English
+		// part before ' | ', a leading "Lesson N:" stripped), else — for panel 1 only — the intro label.
+		// A trailing segment with no text and no media (a `[Lesson content]` marker at the very end) is dropped.
+		if (fallbackMode) {
+			const ps = cfg.page_split || {};
+			const fb = cfg.template_fallback || {};
+			const textOf = (html) => String(html || "").replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
+			const hasMedia = (html) => /<(img|iframe|video|audio|table)\b/i.test(String(html || ""));
+			const hasIntro = !!intro && (textOf(intro).length >= (fb.intro_min_chars ?? 40) || /<h[1-6]\b/i.test(intro) || hasMedia(intro));
+			let allSegs = hasIntro ? [intro, ...panelSegs]
+				: (intro && panelSegs.length ? [intro + "\n" + panelSegs[0], ...panelSegs.slice(1)] : panelSegs.slice());
+			while (allSegs.length > 1 && !textOf(allSegs[allSegs.length - 1]) && !hasMedia(allSegs[allSegs.length - 1])) allSegs.pop();
+			const n = allSegs.length;
+			if (!n) return body.split(sent).join("");
+			const prefixRe = new RegExp(fb.strip_label_prefix || "^\\s*lesson\\s*\\d+\\s*[:.\\-–—]?\\s*", "i");
+			// the panel's first heading that is a TITLE — a lead-in label ending in a colon ("We are learning to:",
+			// the r349 menu-label form) or a "Lesson N" digit alone is skipped for the next heading
+			const firstHeading = (html) => {
+				for (const m of String(html || "").matchAll(/<h[1-6][^>]*>([\s\S]*?)<\/h[1-6]>/gi)) {
+					const txt = m[1].replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
+					if (!txt || /[:：…]\s*$/.test(txt)) continue;
+					const eng = txt.split(/\s*\|\s*/)[0].trim();
+					let lab = eng.replace(prefixRe, "").trim() || eng;
+					if (/^\d+[a-z]?$/i.test(lab)) continue;
+					// an ALL-CAPS heading folds to sentence case (the r327 title rule — the crumb reads "Hauora", not "HAUORA")
+					if (lab === lab.toUpperCase() && /[A-Z]{3,}/.test(lab)) lab = lab.charAt(0) + lab.slice(1).toLowerCase();
+					return lab;
+				}
+				return "";
+			};
+			const own = fallbackLabels || [];
+			const list = fallbackList || [];
+			const introLabel = fallbackIntroLabel || fb.intro_label || cfg.intro_label || "Introduction";
+			const labelFor = (i) => {
+				if (hasIntro && i === 0) return list[0] || introLabel;
+				if (list[i]) return list[i];
+				const k = hasIntro ? i - 1 : i;
+				const o = k >= 0 ? (own[k] || "") : "";
+				if (o && !/^(module\s+)?intro(duction)?$/i.test(o)) return o;
+				if (i === 0 && !hasIntro && !o) return introLabel;
+				return firstHeading(allSegs[i]) || o || (i === 0 ? introLabel : "");
+			};
+			const crumbs = [cfg.crumbs_open];
+			for (let i = 0; i < n; i++)
+				crumbs.push(Utils.FillTemplate(ps.crumb_item || cfg.crumb_item, {
+					n: String(i + 1), label: labelFor(i), showing: i === 0 ? " class=\"showing\"" : "" }));
+			crumbs.push(cfg.crumbs_close);
+			const panels = [];
+			for (let i = 0; i < n; i++)
+				panels.push(Utils.FillTemplate(ps.panel_open || cfg.panel_open, { n: String(i + 1), showing: i === 0 ? " showing" : "" }) + "\n" + allSegs[i] + "\n" + cfg.panel_close);
+			return crumbs.join("\n") + "\n" + panels.join("\n");
+		}
 		// ROUND 422 — SIDE-TAB mode (the FRFUN family's `[Side tab navigation] <label>` panels; see
 		// ContentConverter's detection): N UNIFIED crumbs (the writer's own labels — the first IS the
 		// Introduction, so no synthetic intro crumb) and N panels, the first of each `showing`, numbered
