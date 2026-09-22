@@ -1,0 +1,19 @@
+family   modules  GOLD panels' first heading                 CLAUDE panels' first heading
+BLL1       7     {'h3': 27, 'h2': 22, 'none': 1}              {'h3': 34, 'h2': 15, 'none': 1}
+BLL2       7     {'h2': 42, 'h3': 7}                          {'h2': 27, 'h3': 14}
+CEDK       4     {'h3': 9, 'h2': 8, 'h4': 8, 'none': 3, 'h1': 1} {'h2': 19, 'none': 1}
+CEDO       5     {'h2': 25, 'h3': 6, 'none': 3}               {'h2': 26, 'h3': 2, 'none': 1}
+CEDR       4     {'h3': 14, 'h2': 10}                         {'h2': 14, 'h3': 9}
+CEDT       7     {'h2': 28, 'h3': 9, 'none': 4, 'h4': 1}      {'h2': 23, 'h3': 3, 'h4': 1}
+CEDW       2     {'h2': 9, 'h3': 1}                           {'h2': 10}
+EXBP       1     {'h2': 11, 'h3': 5, 'none': 1}               {'h3': 7, 'none': 1}
+EXIP       1     {'h2': 8, 'h3': 5, 'none': 2}                {'h3': 4, 'none': 2}
+EXPFUN     5     {'h2': 23, 'h3': 9}                          {'h2': 29, 'none': 3}
+TWHA       6     {'h2': 33, 'h3': 9, 'none': 3, 'h4': 1}      {'h2': 36, 'none': 3}
+TWHK       4     {'h3': 10, 'h2': 9, 'h4': 4, 'none': 1}      {'h2': 18, 'none': 1, 'h3': 1}
+TWHR       2     {'h3': 5, 'h2': 3, 'h5': 1}                  {'h2': 5}
+TWHT       1     {'h3': 3, 'h2': 2}                           {'h2': 5}
+ALL gold: {'h2': 233, 'h3': 119, 'none': 18, 'h4': 14, 'h1': 1, 'h5': 1}
+
+panel first-heading level mismatches (family, gold, Claude) by panel: {('EXPFUN', 'h3', 'h2'): 9, ('BLL2', 'h2', 'h3'): 8, ('BLL1', 'h2', 'h3'): 7, ('CEDK', 'h4', 'h2'): 7, ('CEDO', 'h3', 'h2'): 5, ('CEDR', 'h3', 'h2'): 5, ('TWHK', 'h3', 'h2'): 5, ('EXBP', 'h2', 'h3'): 4, ('TWHA', 'h3', 'h2'): 3, ('TWHK', 'h4', 'h2'): 3, ('TWHT', 'h3', 'h2'): 3, ('CEDK', 'h3', 'h2'): 2, ('CEDO', 'h2', 'h3'): 2, ('CEDT', 'h3', 'h2'): 2, ('CEDT', 'h2', 'h3'): 2, ('TWHR', 'h3', 'h2'): 2, ('CEDK', 'h1', 'h2'): 1, ('CEDR', 'h2', 'h3'): 1, ('CEDT', 'h4', 'h2'): 1, ('CEDW', 'h3', 'h2'): 1, ('TWHA', 'h4', 'h2'): 1, ('EXIP', 'h2', 'h3'): 1} 
+pages with a mismatch: 33

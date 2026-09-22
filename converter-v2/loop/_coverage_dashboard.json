@@ -1,28 +1,29 @@
 {
- "generated": "2026-09-20 15:12",
+ "generated": "2026-09-22 15:18",
  "warnings": [
-  "body_compare predates the newest engine change (2026-09-20) \u2014 its rows may lag.",
-  "feature index predates the newest engine change (2026-09-20) \u2014 its rows may lag."
+  "skeleton state predates the newest engine change (2026-09-22) \u2014 its rows may lag.",
+  "body_compare predates the newest engine change (2026-09-22) \u2014 its rows may lag.",
+  "feature index predates the newest engine change (2026-09-22) \u2014 its rows may lag."
  ],
  "headline": {
-  "bundles": 5693,
-  "built": 2877,
-  "pages": 2548,
-  "clean": 2504,
-  "modules": 520,
-  "body_any": 248,
-  "paired": 2349,
-  "scaffold_mean": 53.78911333652021,
-  "ge50": 1406,
-  "ge75": 236,
-  "skeleton_state": "_r410_sk_final.json"
+  "bundles": 5719,
+  "built": 2902,
+  "pages": 2691,
+  "clean": 2646,
+  "modules": 534,
+  "body_any": 262,
+  "paired": 2491,
+  "scaffold_mean": 54.346798622822014,
+  "ge50": 1536,
+  "ge75": 254,
+  "skeleton_state": "_r428_sk_final.json"
  },
  "types": {
   "carousel": {
    "built": 676,
-   "total": 985,
-   "declined_shapes": 244,
-   "modules": 356,
+   "total": 996,
+   "declined_shapes": 246,
+   "modules": 368,
    "declined_modules": [
     "AGH1001",
     "AGH1003",
@@ -176,7 +177,6 @@
     "SSCI205",
     "SSFUN01",
     "SSFUN07",
-    "TEDC401",
     "TEDC402",
     "TEFUN05",
     "TRR102",
@@ -206,6 +206,18 @@
     "XMES103",
     "XMES201",
     "XMES202",
+    "XOTPB08",
+    "XOTPB09",
+    "XOTPB10",
+    "XOTPB11",
+    "XOTPB12",
+    "XOTPB13",
+    "XOTPG01",
+    "XOTPG03",
+    "XOTPG04",
+    "XOTPG05",
+    "XOTPG06",
+    "XOTPO01",
     "XTAS101",
     "XTAS102",
     "XTAS103",
@@ -213,10 +225,10 @@
    ]
   },
   "dragAndDrop": {
-   "built": 103,
-   "total": 1010,
-   "declined_shapes": 741,
-   "modules": 341,
+   "built": 110,
+   "total": 1029,
+   "declined_shapes": 771,
+   "modules": 353,
    "declined_modules": [
     "AGH1001",
     "AGH1004",
@@ -400,7 +412,6 @@
     "ENGS401",
     "ENGS404",
     "ENO2060",
-    "EXBP901",
     "FRFUN06",
     "FRFUN07",
     "FRFUN08",
@@ -414,7 +425,6 @@
     "HIS1006",
     "HIS1007",
     "HIS1008",
-    "HPFUN302",
     "HPFUN303",
     "HPRE203",
     "HPRE301",
@@ -498,14 +508,11 @@
     "TEFUN02",
     "TEFUN04",
     "TEFUN05",
-    "TEFUN06",
     "TEFUN07",
     "TEFUN08",
     "TRR102",
     "TRR106",
     "TWHA902",
-    "TWHA904",
-    "TWHA905",
     "TWHK901",
     "TWHK902",
     "TWHK903",
@@ -546,18 +553,29 @@
     "XMES201",
     "XMES202",
     "XMES203",
+    "XOTPB08",
+    "XOTPB09",
+    "XOTPB10",
+    "XOTPB11",
+    "XOTPB12",
+    "XOTPB13",
+    "XOTPG01",
+    "XOTPG03",
+    "XOTPG04",
+    "XOTPG05",
+    "XOTPG06",
+    "XOTPO01",
     "XTAS101",
     "XTAS102",
     "XTAS103"
    ]
   },
   "selfCheck": {
-   "built": 0,
+   "built": 26,
    "total": 163,
-   "declined_shapes": 105,
+   "declined_shapes": 103,
    "modules": 72,
    "declined_modules": [
-    "BLL110",
     "BLL112",
     "BLL113",
     "BLL115",
@@ -841,10 +859,10 @@
    ]
   },
   "flipCard": {
-   "built": 291,
-   "total": 545,
-   "declined_shapes": 216,
-   "modules": 240,
+   "built": 290,
+   "total": 550,
+   "declined_shapes": 217,
+   "modules": 246,
    "declined_modules": [
     "AGH1006",
     "AGH1009",
@@ -990,6 +1008,12 @@
     "XMES102",
     "XMES103",
     "XMES201",
+    "XOTPB08",
+    "XOTPB09",
+    "XOTPB10",
+    "XOTPB11",
+    "XOTPB12",
+    "XOTPB13",
     "XTAS103",
     "XWHA02"
    ]
@@ -1134,10 +1158,10 @@
    ]
   },
   "speechBubble": {
-   "built": 716,
-   "total": 779,
-   "declined_shapes": 47,
-   "modules": 139,
+   "built": 709,
+   "total": 778,
+   "declined_shapes": 48,
+   "modules": 145,
    "declined_modules": [
     "ANZH205",
     "ANZH303",
@@ -1177,30 +1201,32 @@
     "XDLS909",
     "XGF9001",
     "XMES102",
+    "XOTPB08",
+    "XOTPB09",
+    "XOTPB10",
+    "XOTPB11",
+    "XOTPB12",
+    "XOTPB13",
     "XWHA02"
    ]
   },
   "tabs": {
    "built": 57,
-   "total": 174,
-   "declined_shapes": 107,
-   "modules": 89,
+   "total": 170,
+   "declined_shapes": 104,
+   "modules": 85,
    "declined_modules": [
     "AGH1006",
     "ANZH404",
     "BLL236",
     "CBI1004",
-    "CEDK401",
     "CEDO301",
     "CEDO402",
     "CEDO501",
     "CEDO502",
-    "CEDR203",
     "CEDT102",
     "CEDT207",
-    "CEDT208",
     "CEDW101",
-    "CEDW201",
     "DTC1004",
     "ENFUN01",
     "ENGC403",
@@ -1292,8 +1318,8 @@
   },
   "hint": {
    "built": 49,
-   "total": 102,
-   "declined_shapes": 24,
+   "total": 97,
+   "declined_shapes": 22,
    "modules": 20,
    "declined_modules": [
     "BLL253",
@@ -1314,9 +1340,9 @@
   },
   "infoTrigger": {
    "built": 0,
-   "total": 42,
-   "declined_shapes": 36,
-   "modules": 25,
+   "total": 43,
+   "declined_shapes": 37,
+   "modules": 26,
    "declined_modules": [
     "AGH1002",
     "AGH1007",
@@ -1340,6 +1366,7 @@
     "JPFUN01",
     "MXFL202",
     "OSAI101",
+    "PMT101",
     "SCES201",
     "SSOG103",
     "TEDC402"
@@ -1410,16 +1437,16 @@
   {
    "type": "dragAndDrop",
    "token": "(a captured TABLE)",
-   "declined": 635,
-   "built": 103,
-   "build_rate": 0.14
+   "declined": 651,
+   "built": 110,
+   "build_rate": 0.145
   },
   {
    "type": "dragAndDrop",
    "token": "button+txt",
-   "declined": 90,
+   "declined": 95,
    "built": 9,
-   "build_rate": 0.091
+   "build_rate": 0.087
   },
   {
    "type": "carousel",
@@ -1441,29 +1468,36 @@
    "declined": 25,
    "built": 0,
    "build_rate": 0.0
+  },
+  {
+   "type": "dragAndDrop",
+   "token": "answer",
+   "declined": 25,
+   "built": 0,
+   "build_rate": 0.0
   }
  ],
  "queue": [
   {
    "class": "un-built dragAndDrop",
    "kind": "interactive",
-   "plain": "Writers tagged 1010 dragAndDrop widgets; 907 ship as a hand-off box instead of a built widget.",
-   "modules": 331,
-   "pages": 654,
-   "occurrences": 907,
-   "shapes": 741,
+   "plain": "Writers tagged 1029 dragAndDrop widgets; 919 ship as a hand-off box instead of a built widget.",
+   "modules": 338,
+   "pages": 653,
+   "occurrences": 919,
+   "shapes": 771,
    "regen_modules": 357,
    "regen_saving_pct": 35,
-   "note": "builder covers 103/1010 (10%)",
+   "note": "builder covers 110/1029 (10%)",
    "rank": 1
   },
   {
    "class": "content lost vs the human (advisory)",
    "kind": "body",
    "plain": "The human page carries 3+ body blocks ours does not, without tripping the over-capture rule \u2014 content is going missing by some other route.",
-   "modules": 225,
-   "pages": 523,
-   "occurrences": 523,
+   "modules": 232,
+   "pages": 531,
+   "occurrences": 531,
    "shapes": null,
    "regen_modules": null,
    "regen_saving_pct": null,
@@ -1474,54 +1508,54 @@
   {
    "class": "un-built carousel",
    "kind": "interactive",
-   "plain": "Writers tagged 985 carousel widgets; 309 ship as a hand-off box instead of a built widget.",
-   "modules": 186,
-   "pages": 244,
-   "occurrences": 309,
-   "shapes": 244,
-   "regen_modules": 385,
+   "plain": "Writers tagged 996 carousel widgets; 320 ship as a hand-off box instead of a built widget.",
+   "modules": 197,
+   "pages": 254,
+   "occurrences": 320,
+   "shapes": 246,
+   "regen_modules": 386,
    "regen_saving_pct": 30,
-   "note": "builder covers 676/985 (68%)",
+   "note": "builder covers 676/996 (67%)",
    "rank": 3
   },
   {
    "class": "un-built flipCard",
    "kind": "interactive",
-   "plain": "Writers tagged 545 flipCard widgets; 254 ship as a hand-off box instead of a built widget.",
-   "modules": 146,
-   "pages": 204,
-   "occurrences": 254,
-   "shapes": 216,
+   "plain": "Writers tagged 550 flipCard widgets; 260 ship as a hand-off box instead of a built widget.",
+   "modules": 152,
+   "pages": 205,
+   "occurrences": 260,
+   "shapes": 217,
    "regen_modules": 259,
    "regen_saving_pct": 53,
-   "note": "builder covers 291/545 (53%)",
+   "note": "builder covers 290/550 (52%)",
    "rank": 4
+  },
+  {
+   "class": "empty widget box",
+   "kind": "body",
+   "plain": "A hand-off box was emitted with nothing in it.",
+   "modules": 143,
+   "pages": 203,
+   "occurrences": 203,
+   "shapes": null,
+   "regen_modules": null,
+   "regen_saving_pct": null,
+   "note": "often a capture that found its marker but no members",
+   "advisory": false,
+   "rank": 5
   },
   {
    "class": "un-built accordion",
    "kind": "interactive",
    "plain": "Writers tagged 802 accordion widgets; 293 ship as a hand-off box instead of a built widget.",
    "modules": 131,
-   "pages": 213,
+   "pages": 212,
    "occurrences": 293,
    "shapes": 254,
    "regen_modules": 248,
    "regen_saving_pct": 55,
    "note": "builder covers 509/802 (63%)",
-   "rank": 5
-  },
-  {
-   "class": "empty widget box",
-   "kind": "body",
-   "plain": "A hand-off box was emitted with nothing in it.",
-   "modules": 130,
-   "pages": 190,
-   "occurrences": 190,
-   "shapes": null,
-   "regen_modules": null,
-   "regen_saving_pct": null,
-   "note": "often a capture that found its marker but no members",
-   "advisory": false,
    "rank": 6
   },
   {
@@ -1529,7 +1563,7 @@
    "kind": "interactive",
    "plain": "Writers tagged 578 clickDrop widgets; 343 ship as a hand-off box instead of a built widget.",
    "modules": 125,
-   "pages": 191,
+   "pages": 181,
    "occurrences": 343,
    "shapes": 250,
    "regen_modules": 191,
@@ -1541,9 +1575,9 @@
    "class": "page scaffold under 25%",
    "kind": "scaffold",
    "plain": "The page's overall structure barely resembles the human's \u2014 these are the pages a tester screenshots.",
-   "modules": 84,
-   "pages": 111,
-   "occurrences": 111,
+   "modules": 85,
+   "pages": 113,
+   "occurrences": 113,
    "shapes": null,
    "regen_modules": null,
    "regen_saving_pct": null,
@@ -1553,14 +1587,14 @@
   {
    "class": "un-built selfCheck",
    "kind": "interactive",
-   "plain": "Writers tagged 163 selfCheck widgets; 163 ship as a hand-off box instead of a built widget.",
-   "modules": 72,
-   "pages": 104,
-   "occurrences": 163,
-   "shapes": 105,
+   "plain": "Writers tagged 163 selfCheck widgets; 137 ship as a hand-off box instead of a built widget.",
+   "modules": 71,
+   "pages": 103,
+   "occurrences": 137,
+   "shapes": 103,
    "regen_modules": 237,
    "regen_saving_pct": 57,
-   "note": "NO BUILDER EXISTS for this type \u2014 the largest single kind of gap",
+   "note": "builder covers 26/163 (15%)",
    "rank": 9
   },
   {
@@ -1579,41 +1613,41 @@
   {
    "class": "un-built tabs",
    "kind": "interactive",
-   "plain": "Writers tagged 174 tabs widgets; 117 ship as a hand-off box instead of a built widget.",
-   "modules": 61,
-   "pages": 97,
-   "occurrences": 117,
-   "shapes": 107,
+   "plain": "Writers tagged 170 tabs widgets; 113 ship as a hand-off box instead of a built widget.",
+   "modules": 57,
+   "pages": 93,
+   "occurrences": 113,
+   "shapes": 104,
    "regen_modules": 104,
    "regen_saving_pct": 81,
-   "note": "builder covers 57/174 (32%)",
+   "note": "builder covers 57/170 (33%)",
    "rank": 11
+  },
+  {
+   "class": "un-built speechBubble",
+   "kind": "interactive",
+   "plain": "Writers tagged 778 speechBubble widgets; 69 ship as a hand-off box instead of a built widget.",
+   "modules": 45,
+   "pages": 55,
+   "occurrences": 69,
+   "shapes": 48,
+   "regen_modules": 150,
+   "regen_saving_pct": 73,
+   "note": "builder covers 709/778 (91%)",
+   "rank": 12
   },
   {
    "class": "widget over-capture",
    "kind": "body",
    "plain": "A widget's capture ran past its boundary and swallowed body the human keeps free (gate rule: 40%+ of the page in one widget, 400+ chars, 3+ blocks lost).",
-   "modules": 43,
-   "pages": 54,
-   "occurrences": 54,
+   "modules": 45,
+   "pages": 56,
+   "occurrences": 56,
    "shapes": null,
    "regen_modules": null,
    "regen_saving_pct": null,
    "note": "boundary class \u2014 one widget family per round",
    "advisory": false,
-   "rank": 12
-  },
-  {
-   "class": "un-built speechBubble",
-   "kind": "interactive",
-   "plain": "Writers tagged 779 speechBubble widgets; 63 ship as a hand-off box instead of a built widget.",
-   "modules": 39,
-   "pages": 49,
-   "occurrences": 63,
-   "shapes": 47,
-   "regen_modules": 150,
-   "regen_saving_pct": 73,
-   "note": "builder covers 716/779 (91%)",
    "rank": 13
   },
   {
@@ -1633,9 +1667,9 @@
    "class": "A_literal_tag_leak",
    "kind": "defect",
    "plain": "Raw writer markup like [H2] is visible as text on the finished page.",
-   "modules": 31,
-   "pages": 44,
-   "occurrences": 73,
+   "modules": 32,
+   "pages": 45,
+   "occurrences": 75,
    "shapes": null,
    "regen_modules": null,
    "regen_saving_pct": null,
@@ -1645,13 +1679,13 @@
   {
    "class": "un-built infoTrigger",
    "kind": "interactive",
-   "plain": "Writers tagged 42 infoTrigger widgets; 42 ship as a hand-off box instead of a built widget.",
-   "modules": 25,
-   "pages": 34,
-   "occurrences": 42,
-   "shapes": 36,
-   "regen_modules": 273,
-   "regen_saving_pct": 51,
+   "plain": "Writers tagged 43 infoTrigger widgets; 43 ship as a hand-off box instead of a built widget.",
+   "modules": 26,
+   "pages": 35,
+   "occurrences": 43,
+   "shapes": 37,
+   "regen_modules": 276,
+   "regen_saving_pct": 50,
    "note": "NO BUILDER EXISTS for this type \u2014 the largest single kind of gap",
    "rank": 16
   },
@@ -1676,7 +1710,7 @@
    "pages": 17,
    "occurrences": 18,
    "shapes": 17,
-   "regen_modules": 48,
+   "regen_modules": 51,
    "regen_saving_pct": 91,
    "note": "builder covers 41/59 (69%)",
    "rank": 18
@@ -1684,23 +1718,23 @@
   {
    "class": "un-built hint",
    "kind": "interactive",
-   "plain": "Writers tagged 102 hint widgets; 53 ship as a hand-off box instead of a built widget.",
+   "plain": "Writers tagged 97 hint widgets; 48 ship as a hand-off box instead of a built widget.",
    "modules": 14,
    "pages": 20,
-   "occurrences": 53,
-   "shapes": 24,
+   "occurrences": 48,
+   "shapes": 22,
    "regen_modules": 28,
    "regen_saving_pct": 95,
-   "note": "builder covers 49/102 (48%)",
+   "note": "builder covers 49/97 (50%)",
    "rank": 19
   },
   {
    "class": "runaway absorption",
    "kind": "body",
    "plain": "One widget absorbed four or more different widget types \u2014 a capture that never found a terminator.",
-   "modules": 6,
-   "pages": 6,
-   "occurrences": 6,
+   "modules": 5,
+   "pages": 5,
+   "occurrences": 5,
    "shapes": null,
    "regen_modules": null,
    "regen_saving_pct": null,
@@ -1754,12 +1788,6 @@
    "likely_cause": "widget over-capture"
   },
   {
-   "module": "CEDT104",
-   "page": "CEDT104_0_0.html",
-   "scaffold": 7.0,
-   "likely_cause": "widget over-capture; 2 empty widget boxes"
-  },
-  {
    "module": "CEDT301",
    "page": "CEDT301_6_0.html",
    "scaffold": 7.4,
@@ -1772,15 +1800,15 @@
    "likely_cause": "widget over-capture; 1 empty widget boxes"
   },
   {
-   "module": "TWHK901",
-   "page": "TWHK901_0_0.html",
-   "scaffold": 9.3,
-   "likely_cause": "24 content blocks missing; widget over-capture"
+   "module": "XOTPB08",
+   "page": "XOTPB08_2_0.html",
+   "scaffold": 8.5,
+   "likely_cause": "widget over-capture"
   },
   {
-   "module": "JPFUN01",
-   "page": "JPFUN01_0_0.html",
-   "scaffold": 9.3,
+   "module": "ANZHFUN05",
+   "page": "ANZHFUN05_0_0.html",
+   "scaffold": 9.1,
    "likely_cause": "widget over-capture"
   },
   {
@@ -1796,15 +1824,9 @@
    "likely_cause": "widget over-capture; 1 empty widget boxes"
   },
   {
-   "module": "TWHA905",
-   "page": "TWHA905_0_0.html",
-   "scaffold": 10.4,
-   "likely_cause": "widget over-capture"
-  },
-  {
    "module": "EXIP901",
    "page": "EXIP901_4_0.html",
-   "scaffold": 10.5,
+   "scaffold": 10.6,
    "likely_cause": "widget over-capture"
   },
   {
@@ -1814,16 +1836,16 @@
    "likely_cause": "widget over-capture"
   },
   {
-   "module": "ANZHFUN05",
-   "page": "MODULE_0_0.html",
-   "scaffold": 11.0,
-   "likely_cause": "widget over-capture"
-  },
-  {
    "module": "EXPFUN05",
    "page": "EXPFUN05_0_0.html",
    "scaffold": 11.1,
    "likely_cause": "widget over-capture"
+  },
+  {
+   "module": "MXDB301",
+   "page": "MXDB301_3_0.html",
+   "scaffold": 12.0,
+   "likely_cause": "4 content blocks missing; widget over-capture"
   },
   {
    "module": "TRR116",
@@ -1832,16 +1854,10 @@
    "likely_cause": "widget over-capture"
   },
   {
-   "module": "MXDB301",
-   "page": "MXDB301_3_0.html",
-   "scaffold": 12.1,
-   "likely_cause": "4 content blocks missing; widget over-capture"
-  },
-  {
-   "module": "TEDC401",
-   "page": "TEDC401_3_0.html",
+   "module": "TWHR905",
+   "page": "TWHR905_0_0.html",
    "scaffold": 12.2,
-   "likely_cause": "widget over-capture; 1 empty widget boxes"
+   "likely_cause": "19 content blocks missing; widget over-capture"
   },
   {
    "module": "ENGJ302",
@@ -1856,22 +1872,40 @@
    "likely_cause": "structural \u2014 inspect"
   },
   {
+   "module": "TEDC401",
+   "page": "TEDC401_3_0.html",
+   "scaffold": 13.4,
+   "likely_cause": "widget over-capture; 1 empty widget boxes"
+  },
+  {
    "module": "ENGFUN02",
    "page": "ENGFUN02_1_0.html",
    "scaffold": 13.4,
    "likely_cause": "structural \u2014 inspect"
   },
   {
-   "module": "CEDW201",
-   "page": "CEDW201_0_0.html",
+   "module": "JPFUN01",
+   "page": "JPFUN01_0_0.html",
+   "scaffold": 13.7,
+   "likely_cause": "widget over-capture"
+  },
+  {
+   "module": "PWYWHA1",
+   "page": "PWYWHA1_0_0.html",
    "scaffold": 13.8,
-   "likely_cause": "1 un-built widgets"
+   "likely_cause": "12 content blocks missing; widget over-capture"
   },
   {
    "module": "CEDT207",
    "page": "CEDT207_0_0.html",
    "scaffold": 14.2,
    "likely_cause": "3 content blocks missing"
+  },
+  {
+   "module": "MXDI103",
+   "page": "MXDI103_8_0.html",
+   "scaffold": 14.4,
+   "likely_cause": "1 content blocks missing; widget over-capture"
   }
  ]
 }
