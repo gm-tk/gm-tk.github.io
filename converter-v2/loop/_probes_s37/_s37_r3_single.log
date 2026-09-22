@@ -1,0 +1,64 @@
+SINGLE-PAGE MODULES (one page in BOTH builds) — 136 paired pages / 136 modules
+========================================================================================
+
+   what the GOLD's footer carries:
+      (none)                       71   = 0.52
+      prev-lesson,next-lesson      64   = 0.47
+      next-lesson                   1   = 0.01
+
+   what CLAUDE's footer carries:
+      prev-lesson,next-lesson      61   = 0.45
+      (none)                       61   = 0.45
+      next-lesson                  14   = 0.10
+
+   paired:
+      gold (none)                 | claude (none)          59  mods  59
+      gold prev-lesson,next-lesson | claude prev-lesson,next-lesson   54  mods  54
+      gold prev-lesson,next-lesson | claude next-lesson     8  mods   8
+      gold (none)                 | claude prev-lesson,next-lesson    7  mods   7
+      gold (none)                 | claude next-lesson      5  mods   5
+      gold prev-lesson,next-lesson | claude (none)          2  mods   2
+      gold next-lesson            | claude next-lesson      1  mods   1
+
+   by template:
+      Fundamentals    75
+           gold (none)                 | claude (none)         52
+           gold prev-lesson,next-lesson | claude prev-lesson,next-lesson  15
+           gold (none)                 | claude next-lesson     5
+      Inquiry         59
+           gold prev-lesson,next-lesson | claude prev-lesson,next-lesson  38
+           gold prev-lesson,next-lesson | claude next-lesson    7
+           gold (none)                 | claude (none)          7
+      Standard         2
+           gold (none)                 | claude prev-lesson,next-lesson   1
+           gold prev-lesson,next-lesson | claude prev-lesson,next-lesson   1
+
+   examples:
+   gold (none)                 | claude (none)
+      ARFUN01 ARFUN01_0_0.html (Fundamentals)
+      ARFUN02 ARFUN02_0_0.html (Fundamentals)
+      ARFUN03 ARFUN03_0_0.html (Fundamentals)
+      ARFUN05 ARFUN05_0_0.html (Fundamentals)
+      CHFUN01 CHFUN01_0_0.html (Fundamentals)
+      CHFUN04 CHFUN04_0_0.html (Fundamentals)
+   gold prev-lesson,next-lesson | claude prev-lesson,next-lesson
+      BLL110 BLL110_0_0.html (Inquiry)
+      BLL130 BLL130_0_0.html (Inquiry)
+      BLL160 BLL160_0_0.html (Inquiry)
+      BLL170 BLL170_0_0.html (Inquiry)
+      BLL210 BLL210_0_0.html (Inquiry)
+      BLL220 BLL220_0_0.html (Inquiry)
+   gold prev-lesson,next-lesson | claude next-lesson
+      CEDT102 CEDT102_0_0.html (Inquiry)
+      CEDT104 CEDT104_0_0.html (Inquiry)
+      CEDT201 CEDT201_0_0.html (Inquiry)
+      CEDT202 CEDT202_0_0.html (Inquiry)
+      CEDT203 CEDT203_0_0.html (Inquiry)
+      CEDT204 CEDT204_0_0.html (Inquiry)
+   gold (none)                 | claude prev-lesson,next-lesson
+      ANZHFUN05 ANZHFUN05_0_0.html (Fundamentals)
+      BLL120 BLL120_0_0.html (Inquiry)
+      BLL140 BLL140_0_0.html (Inquiry)
+      BLL150 BLL150_0_0.html (Inquiry)
+      CEDR401 CEDR401_0_0.html (Inquiry)
+      CEDW303 CEDW303_0_0.html (Inquiry)

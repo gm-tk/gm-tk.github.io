@@ -1,0 +1,58 @@
+GOLD BUILT A WIDGET, CLAUDE BUILT NOTHING AND FLAGGED NOTHING — 205 boxes
+============================================================================================
+   quiz                       54  mods   40
+   carousel                   48  mods   39
+   dragDrop                   34  mods   22
+   clickDrop                  25  mods   18
+   accordion                  16  mods   15
+   flipCard                   10  mods    8
+   speechBubble               10  mods    7
+   modal                       7  mods    7
+   tabs                        1  mods    1
+
+   cross-tabbed with the Writers Template:
+   carousel | NO widget-ish WT tag near the title                             32  mods  31
+   quiz | NO widget-ish WT tag near the title                                 30  mods  23
+   dragDrop | NO widget-ish WT tag near the title                             23  mods  18
+   quiz | a widget-ish WT tag IS near the title                               19  mods  16
+   clickDrop | NO widget-ish WT tag near the title                            15  mods  11
+   accordion | NO widget-ish WT tag near the title                            12  mods  12
+   carousel | a widget-ish WT tag IS near the title                           10  mods   9
+   speechBubble | NO widget-ish WT tag near the title                         10  mods   7
+   dragDrop | a widget-ish WT tag IS near the title                           10  mods   6
+   clickDrop | a widget-ish WT tag IS near the title                           9  mods   7
+   flipCard | a widget-ish WT tag IS near the title                            7  mods   5
+   carousel | (title not found in the WT)                                      6  mods   4
+   quiz | (title not found in the WT)                                          5  mods   4
+   modal | NO widget-ish WT tag near the title                                 4  mods   4
+
+  carousel | NO widget-ish WT tag near the title
+     ANZH303 ANZH303_4_0.html «causesandconsequences»
+     ANZH304 ANZH304_5_0.html «thestoryoferueramaihipat»
+     BLL140 BLL140_0_0.html «supervisornote»
+     BLL146 BLL146_1_0.html «dictatedsentences»
+  quiz | NO widget-ish WT tag near the title
+     ANZH304 ANZH304_1_0.html «missionaries»
+     BLL133 BLL133_2_0.html «questionmarks»
+     CEDT208 CEDT208_0_0.html «rotation»
+     ENGC102 ENGC102_5_0.html «creatinglabels»
+  dragDrop | NO widget-ish WT tag near the title
+     ANZH104 ANZH104_2_0.html «myhome»
+     CEDO201 CEDO201_0_0.html «honeycombpuzzle»
+     CEDT404 CEDT404_0_0.html «drawacomic»
+     DAN1003 DAN1003_2_0.html «researchingthegenres»
+  quiz | a widget-ish WT tag IS near the title
+     ANZH301 ANZH301_1_0.html «postwarblues»
+     BLL125 BLL125_2_0.html «whatwordismissing»
+     BLL163 BLL163_1_1.html «chooseyourownadventure»
+     ENGC301 ENGC301_2_0.html «addingalliteration»
+  clickDrop | NO widget-ish WT tag near the title
+     BLL134 BLL134_1_0.html «findthesounds»
+     BLL145 BLL145_1_0.html «dividingwordsintosyllabl»
+     BLL251 BLL251_2_0.html «supervisornote»
+     CEDO102 CEDO102_0_0.html «gridreferences»
+  accordion | NO widget-ish WT tag near the title
+     ANZH404 ANZH404_5_0.html «perseveranceandtinoranga»
+     BLL114 BLL114_2_0.html «writethesentences»
+     BLL230 BLL230_0_0.html «otherlongvowelosounds»
+     BLL252 BLL252_2_0.html «supervisornote»

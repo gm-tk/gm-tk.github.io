@@ -1,0 +1,101 @@
+========================================================================================================
+THE FOOTER'S NAVIGATION LINK SET — 2497 paired pages, 2254 agree (90.3 %), 243 differ
+========================================================================================================
+
+the MISMATCH forms, most common first:
+   gold prev-lesson,home-nav                   | claude prev-lesson,n    80
+   gold prev-lesson,next-lesson,home-nav       | claude prev-lesson,h    63
+   gold next-lesson,home-nav                   | claude prev-lesson,n    24
+   gold home-nav                               | claude prev-lesson,n    20
+   gold prev-lesson,next-lesson,home-nav       | claude next-lesson,h    20
+   gold home-nav                               | claude next-lesson,h    15
+   gold prev-lesson,home-nav                   | claude next-lesson,h    13
+   gold next-lesson,home-nav                   | claude prev-lesson,h     2
+   gold home-nav                               | claude prev-lesson,h     2
+   gold prev-lesson,next-lesson,home-nav       | claude home-nav          2
+   gold prev-lesson,next-lesson                | claude prev-lesson,n     1
+   gold (none)                                 | claude home-nav          1
+
+BY PAGE POSITION (the positional hypothesis):
+
+   overview               525 pages, 467 agree (89 %)
+        AGREE next-lesson,home-nav                                     345
+        AGREE prev-lesson,next-lesson,home-nav                          62
+        AGREE home-nav                                                  60
+        gold prev-lesson,next-lesson,home-nav | claude next-lesson,h    18
+        gold home-nav | claude next-lesson,home-nav                     15
+        gold next-lesson,home-nav | claude prev-lesson,next-lesson,h    13
+
+   FIRST lesson page      394 pages, 379 agree (96 %)
+        AGREE prev-lesson,next-lesson,home-nav                         361
+        AGREE next-lesson,home-nav                                      13
+        gold prev-lesson,home-nav | claude prev-lesson,next-lesson,h     7
+        AGREE prev-lesson,home-nav                                       5
+        gold next-lesson,home-nav | claude prev-lesson,next-lesson,h     4
+        gold home-nav | claude prev-lesson,next-lesson,home-nav          2
+
+   middle page           1188 pages, 1131 agree (95 %)
+        AGREE prev-lesson,next-lesson,home-nav                        1129
+        gold prev-lesson,home-nav | claude prev-lesson,next-lesson,h    40
+        gold home-nav | claude prev-lesson,next-lesson,home-nav          9
+        gold next-lesson,home-nav | claude prev-lesson,next-lesson,h     6
+        AGREE prev-lesson,home-nav                                       2
+        gold prev-lesson,next-lesson,home-nav | claude prev-lesson,h     1
+
+   LAST page              390 pages, 277 agree (71 %)
+        AGREE prev-lesson,home-nav                                     248
+        gold prev-lesson,next-lesson,home-nav | claude prev-lesson,h    61
+        gold prev-lesson,home-nav | claude prev-lesson,next-lesson,h    32
+        AGREE prev-lesson,next-lesson,home-nav                          29
+        gold prev-lesson,home-nav | claude next-lesson,home-nav         12
+        gold next-lesson,home-nav | claude prev-lesson,home-nav          2
+
+BY TEMPLATE (mismatches only):
+   Standard          175 mismatched
+        gold prev-lesson,home-nav | claude prev-lesson,next-lesson,h    72
+        gold prev-lesson,next-lesson,home-nav | claude prev-lesson,h    50
+        gold next-lesson,home-nav | claude prev-lesson,next-lesson,h    21
+   Inquiry            33 mismatched
+        gold home-nav | claude prev-lesson,next-lesson,home-nav          8
+        gold prev-lesson,next-lesson,home-nav | claude next-lesson,h     8
+        gold prev-lesson,home-nav | claude prev-lesson,next-lesson,h     7
+   Fundamentals       21 mismatched
+        gold home-nav | claude prev-lesson,next-lesson,home-nav          9
+        gold home-nav | claude next-lesson,home-nav                      8
+        gold home-nav | claude prev-lesson,home-nav                      1
+   Bilingual          14 mismatched
+        gold prev-lesson,next-lesson,home-nav | claude prev-lesson,h    10
+        gold prev-lesson,next-lesson,home-nav | claude next-lesson,h     3
+        gold prev-lesson,home-nav | claude prev-lesson,next-lesson,h     1
+
+examples:
+  gold prev-lesson,home-nav                   | claude prev-lesson,next-lesson,home-nav
+     AGH1008 AGH1008_8_0.html (LAST page, Standard)
+     ART1002 ART1002_5_0.html (LAST page, Standard)
+     BLLR202 BLLR202_5_1.html (LAST page, Standard)
+     BLLR203 BLLR203_5_0.html (LAST page, Standard)
+  gold prev-lesson,next-lesson,home-nav       | claude prev-lesson,home-nav
+     AGH1004 AGH1004_6_0.html (LAST page, Standard)
+     AGH1009 AGH1009_9_0.html (LAST page, Standard)
+     ANZH103 ANZH103_1_0.html (FIRST lesson page, Standard)
+     ANZH205 ANZH205_6_0.html (LAST page, Standard)
+  gold next-lesson,home-nav                   | claude prev-lesson,next-lesson,home-nav
+     BLL175 BLL175_1_1.html (LAST page, Standard)
+     BLL240 BLL240_0_0.html (overview, Inquiry)
+     BLLR202 BLLR202_0_0.html (overview, Standard)
+     BLLR203 BLLR203_0_0.html (overview, Standard)
+  gold home-nav                               | claude prev-lesson,next-lesson,home-nav
+     ANZHFUN05 ANZHFUN05_0_0.html (overview, Fundamentals)
+     BLL120 BLL120_0_0.html (overview, Inquiry)
+     BLL140 BLL140_0_0.html (overview, Inquiry)
+     BLL150 BLL150_0_0.html (overview, Inquiry)
+  gold prev-lesson,next-lesson,home-nav       | claude next-lesson,home-nav
+     ART1005 ART1005_0_0.html (overview, Standard)
+     CEDT102 CEDT102_0_0.html (overview, Inquiry)
+     CEDT104 CEDT104_0_0.html (overview, Inquiry)
+     CEDT201 CEDT201_0_0.html (overview, Inquiry)
+  gold home-nav                               | claude next-lesson,home-nav
+     ENGFUN02 ENGFUN02_0_0.html (overview, Inquiry)
+     FRFUN06 FRFUN06_0_0.html (overview, Fundamentals)
+     FRFUN07 FRFUN07_0_0.html (overview, Fundamentals)
+     FRFUN08 FRFUN08_0_0.html (overview, Fundamentals)

@@ -1,0 +1,27 @@
+PAGES WHERE CLAUDE EMITS next-lesson AND THE GOLD DOES NOT — 128
+========================================================================================
+   same page count  — a genuine footer difference                   80
+   GOLD has more pages                                              29
+   CLAUDE HAS MORE PAGES than the gold  — a page-split difference   19
+
+  same page count  — a genuine footer difference
+     ANZHFUN05 ANZHFUN05_0_0.html (claude 1 pages / gold 1)
+     BLL120 BLL120_0_0.html (claude 1 pages / gold 1)
+     BLL140 BLL140_0_0.html (claude 1 pages / gold 1)
+     BLL150 BLL150_0_0.html (claude 1 pages / gold 1)
+     CBI1004 CBI1004_10_0.html (claude 11 pages / gold 11)
+     CBI1005 CBI1005_10_0.html (claude 11 pages / gold 11)
+  GOLD has more pages
+     ART1004 ART1004_0_0.html (claude 1 pages / gold 5)
+     CBI1008 CBI1008_2_0.html (claude 3 pages / gold 7)
+     CBI1009 CBI1009_3_0.html (claude 4 pages / gold 5)
+     CEDR203 CEDR203_0_0.html (claude 1 pages / gold 11)
+     CHI1003 CHI1003_8_0.html (claude 9 pages / gold 11)
+     CHI1004 CHI1004_8_0.html (claude 10 pages / gold 12)
+  CLAUDE HAS MORE PAGES than the gold  — a page-split difference
+     AGH1008 AGH1008_8_0.html (claude 10 pages / gold 9)
+     ART1002 ART1002_5_0.html (claude 8 pages / gold 3)
+     BLLR202 BLLR202_5_1.html (claude 12 pages / gold 7)
+     BLLR203 BLLR203_5_0.html (claude 10 pages / gold 7)
+     CEDO301 CEDO301_4_0.html (claude 6 pages / gold 5)
+     COM1006 COM1006_9_0.html (claude 10 pages / gold 9)
