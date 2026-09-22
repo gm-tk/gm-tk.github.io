@@ -244,6 +244,46 @@ class ModuleResolver {
 					if (applied) path.push(`template ${tt}`);
 				}
 			}
+			// CODE-PREFIX DELTAS (ROUND 427 — the autonomous loop's session 33 Round 5, the diff
+			// miner's chrome facts F3 / F8: the lesson chip's FORM). A registry level is keyed by
+			// the hundreds digit, but a family's convention can turn on the TENS digit: the BLL14x /
+			// 15x / 16x golds carry a DECIMAL lesson chip ("1.0") under a level whose delta says
+			// padded ("01"), and the BLL26x / 27x golds carry the padded chip under a level whose
+			// base says decimal — 31 modules, each sub-series ≥ 0.83 uniform. `prefix_deltas` is a
+			// SIXTH, optional tier at a base or a level: {"<code prefix>": {field: value}}, the
+			// LONGEST matching prefix wins, overlaid after the level AND template deltas. Unlike the
+			// other tiers an object-valued field is merged PER KEY, so a row may say only
+			// {module_code: {lesson: "decimal"}} and leave the overview form alone (the Inquiry
+			// parent BLL140's template-delta `overview: absent` still stands under the BLL14 row).
+			// Data flag: StyleRegistry._meta.code_prefix_deltas.enabled. Env toggle:
+			// PREFIXDELTA_OFF (the level's value stands for every module).
+			const pd = REG._meta?.code_prefix_deltas;
+			const pdOn = pd && pd.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[pd.env || "PREFIXDELTA_OFF"]);
+			if (pdOn) {
+				const upperCode = code.toUpperCase();
+				const pick = (map) => {
+					if (!map || typeof map !== "object") return null;
+					let bestKey = null;
+					for (const k of Object.keys(map)) {
+						if (k.startsWith("_")) continue;
+						if (upperCode.startsWith(k.toUpperCase()) && (!bestKey || k.length > bestKey.length)) bestKey = k;
+					}
+					return bestKey ? [bestKey, map[bestKey]] : null;
+				};
+				const isObj = (v) => v && typeof v === "object" && !Array.isArray(v);
+				for (const hit of [pick(base.prefix_deltas), pick(level?.prefix_deltas)]) {
+					if (!hit) continue;
+					const [key, tier] = hit;
+					const src = structuredClone(tier ?? {});
+					for (const [f, v] of Object.entries(src)) {
+						if (f.startsWith("_")) continue;
+						if (isObj(v) && isObj(rules[f])) rules[f] = { ...rules[f], ...v };
+						else rules[f] = v;
+					}
+					path.push(`prefix ${key}`);
+				}
+			}
 			// EVIDENCE FLOOR (rule 2 above). A base whose registry members
 			// include NO gold-built module on disk (Module_Structure_Index —
 			// the SCCH base lists only the phantom "SCCH301") mined its

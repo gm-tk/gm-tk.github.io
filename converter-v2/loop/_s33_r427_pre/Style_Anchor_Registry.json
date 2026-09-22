@@ -42,11 +42,6 @@
 			"source": "Module_Structure_Index.module_meta.<code>.template_type",
 			"_doc": "ROUND 357 (the autonomous loop's session-19 Round 1, 2026-09-17 — the diff miner's first chrome class, DIFF_QUEUE F15 / F14: the #module-code chip's PRESENCE). A FIFTH, optional cascade tier at a base or a level: {\"<template_type>\": {field: value}} — Standard / Inquiry / Fundamentals / Bilingual, the 01-Finalized_Modules_ folder names — overlaid AFTER the level delta (so it outranks it) when the module's template type is known from Module_Structure_Index.module_meta (the same index the evidence floor reads); a module the index does not know gets NO template delta and keeps the level's value, exactly as before this round. WHY: a mined level can hold two template families the human built differently — the BLL1 level is the seven INQUIRY parents (BLL110 … BLL170: no chip in 6 of their 7 golds) plus their 56 STANDARD children (a chip on every page); CEDO1 is CEDO102 (Inquiry, no chip) beside CEDO105 (Standard, chip); the EXPFUN base is five Inquiry modules (no chip) beside EXPFUN07 (Standard, chip). Pattern fields resolve as WHOLE objects here too; unknown literals are skipped as in every tier. Measured: outputs/_measure_r357_chip.py."
 		},
-		"code_prefix_deltas": {
-			"enabled": true,
-			"env": "PREFIXDELTA_OFF",
-			"_doc": "ROUND 427 (the autonomous loop's session 33 Round 5, 2026-09-22 — the diff miner's chrome facts F3 / F8: the lesson chip's FORM). A registry level is keyed by the hundreds digit, but a family's convention can turn on the TENS digit: measured over every BLL gold lesson page (outputs/_s33_r5 chip census), BLL11x / 12x / 13x carry the padded chip (01), BLL14x / 15x / 16x the DECIMAL chip (1.0 — 7 / 7, 5 / 6, 7 / 7 modules) under the BLL1 level whose delta says padded-number, BLL21x–25x decimal, and BLL26x / 27x the PADDED chip (6 / 6, 6 / 6) under the BLL2 level whose base says decimal; BLL17x is 5 padded / 2 decimal and stays. `prefix_deltas` is a SIXTH, optional tier at a base or a level — {\"<code prefix>\": {field: value}} — the LONGEST matching prefix wins, overlaid after the level and template deltas by ModuleResolver.Resolve; an object-valued field is merged PER KEY so a row names only the key that differs (module_code.lesson) and the overview form and the Inquiry parents' template-delta `absent` stand. Class: 31 modules / ≈ 62 lesson pages; gate-neutral by design (the chip is TEXT inside the same div#module-code > h1 — the skeleton ignores it; the miner's chrome facts F3 / F8 are the verifier). Env PREFIXDELTA_OFF or enabled false restores the level's value for every module."
-		},
 		"module_code_to_level": {
 			"rule": "The hundreds digit of the numeric part of a module code gives the phase/level; letter prefixes override.",
 			"map": {
@@ -317,12 +312,6 @@
 							"BLL176",
 							"BLL177"
 						],
-						"prefix_deltas": {
-							"_note": "ROUND 427 (2026-09-22): the BLL14x / 15x / 16x sub-series carry the DECIMAL lesson chip (BLL141-1.0.html: <h1>1.0</h1>) where the level says padded-number (01) — 19 of 20 golds; BLL11x–13x and BLL17x keep the level's padded form.",
-							"BLL14": { "module_code": { "lesson": "decimal" } },
-							"BLL15": { "module_code": { "lesson": "decimal" } },
-							"BLL16": { "module_code": { "lesson": "decimal" } }
-						},
 						"template_deltas": {
 							"Inquiry": {
 								"footer_links": {
@@ -405,11 +394,6 @@
 							"BLL252",
 							"BLL254"
 						],
-						"prefix_deltas": {
-							"_note": "ROUND 427 (2026-09-22): the BLL26x / 27x sub-series carry the PADDED lesson chip (BLL261_1.0.html: <h1>01</h1>) where the base says decimal (1.0) — 12 of 12 golds; BLL21x–25x keep decimal (BLL240 / 253 / 255 are the padded minority there).",
-							"BLL26": { "module_code": { "lesson": "padded-number" } },
-							"BLL27": { "module_code": { "lesson": "padded-number" } }
-						},
 						"template_deltas": {
 							"Inquiry": {
 								"footer_links": {

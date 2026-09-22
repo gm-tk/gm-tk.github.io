@@ -1,0 +1,64 @@
+SKELETON STRUCTURAL MATCH — 2491 paired pages (text-immune, 100% of structure)
+
+pairs skipped (parse error): 0
+RAW match (full structure, incl. widget internals): mean 38.1%
+   ^ low because Phase-1 widgets are by-design PLACEHOLDERS vs the human's built widgets.
+
+SCAFFOLD match (widgets collapsed to one marker — the Phase-1 target: rows/cols/
+activities/sections + widget POSITIONS): mean 54.1%  median 55.3%
+  pages >=  95% SCAFFOLD match:    9 ( 0.4%)
+  pages >=  90% SCAFFOLD match:   23 ( 0.9%)
+  pages >=  75% SCAFFOLD match:  254 (10.2%)
+  pages >=  50% SCAFFOLD match: 1531 (61.5%)
+  pages <  50% scaffold match: 960
+
+== per-module mean SCAFFOLD match (worst 25) ==
+  MXFUN02     5.8%  (1 pages)
+  JPFUN02     6.0%  (1 pages)
+  BLL250      6.7%  (1 pages)
+  CEDT104     7.0%  (1 pages)
+  BLL260      7.3%  (1 pages)
+  MXFUN03     8.1%  (1 pages)
+  ANZHFUN05   9.1%  (1 pages)
+  TWHK901     9.3%  (1 pages)
+  CEDR401     9.7%  (1 pages)
+  ARFUN04     9.8%  (1 pages)
+  CEDK401    10.1%  (1 pages)
+  TWHA905    10.5%  (1 pages)
+  CEDR101    11.0%  (1 pages)
+  TWHK902    11.0%  (1 pages)
+  EXPFUN05   11.1%  (1 pages)
+  CEDO402    11.8%  (1 pages)
+  TWHR905    12.2%  (1 pages)
+  TWHT903    12.6%  (1 pages)
+  CEDR203    13.4%  (1 pages)
+  JPFUN01    13.7%  (1 pages)
+  CEDW201    13.7%  (1 pages)
+  PWYWHA1    13.8%  (1 pages)
+  CEDT102    13.9%  (1 pages)
+  EXPFUN03   14.8%  (1 pages)
+  TEFUN03    14.9%  (1 pages)
+
+== worst individual pages by SCAFFOLD match (top 20) ==
+  MXFUN01_0_0.html           scaffold   0.7%  (raw    1%)
+  BLL240_1_0.html            scaffold   4.5%  (raw    3%)
+  MXFUN02_0_0.html           scaffold   5.8%  (raw    4%)
+  JPFUN02_0_0.html           scaffold   6.0%  (raw    5%)
+  SSFUN07_2_0.html           scaffold   6.1%  (raw    5%)
+  BLL250_0_0.html            scaffold   6.7%  (raw    6%)
+  CEDT104_0_0.html           scaffold   7.0%  (raw    8%)
+  BLL260_0_0.html            scaffold   7.3%  (raw    7%)
+  CEDT301_6_0.html           scaffold   7.4%  (raw    6%)
+  MXFUN03_0_0.html           scaffold   8.1%  (raw    6%)
+  XOTPB08_2_0.html           scaffold   8.5%  (raw    8%)
+  ANZHFUN05_0_0.html         scaffold   9.1%  (raw   11%)
+  TWHK901_0_0.html           scaffold   9.3%  (raw   11%)
+  TRR304_3_0.html            scaffold   9.5%  (raw    9%)
+  CEDR401_0_0.html           scaffold   9.7%  (raw   10%)
+  ARFUN04_0_0.html           scaffold   9.8%  (raw    6%)
+  CEDK401_0_0.html           scaffold  10.1%  (raw    9%)
+  TWHA905_0_0.html           scaffold  10.5%  (raw    8%)
+  EXIP901_4_0.html           scaffold  10.6%  (raw    8%)
+  XDLS911_1_0.html           scaffold  10.8%  (raw    6%)
+
+wrote ../../outputs/_s33_r427_sk_final.json

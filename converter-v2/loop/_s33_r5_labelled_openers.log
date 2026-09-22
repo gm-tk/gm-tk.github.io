@@ -1,0 +1,63 @@
+/mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_s33_r5_labelled_openers.py:8: SyntaxWarning: "\[" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\["? A raw string is also an option.
+  TAB = re.compile("\[RED TEXT\]\s*\[\s*tab\s*(\d+)\s*\]\s*\[/RED TEXT\]\s*🔴?\s*(.*)$", re.I)
+modules with a labelled [Tab N] crumb list (>= 3): 51
+
+== the DIALECT: list >= 3, EMPTY openers < 2, repeated-label openers >= 2
+  BLL250   Inquiry     list  6 empty 0 repeated  5 other  0 | gold  1 pages crumbs=1 panels=6 body=inquiry container-fluid | Claude  1 pages crumbs=0 panels=0
+  CEDR101  Inquiry     list  8 empty 0 repeated  8 other  0 | gold  1 pages crumbs=1 panels=8 body=inquiry container-fluid | Claude  1 pages crumbs=0 panels=0
+  CEDR401  Inquiry     list  6 empty 0 repeated  5 other  0 | gold  1 pages crumbs=1 panels=6 body=inquiry container-fluid | Claude  1 pages crumbs=0 panels=0
+
+== by template: {'Inquiry': 3}
+== gold single-page with crumbs among them: 3 / Claude already with crumbs: 0
+
+== the r100 form for comparison: list >= 3 and EMPTY openers >= 2
+  BLL110   Inquiry     list  6 empty  6 repeated  0 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=1
+  BLL120   Inquiry     list  8 empty  8 repeated  0 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=1
+  BLL130   Inquiry     list  6 empty  4 repeated  1 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=1
+  BLL150   Inquiry     list  5 empty  3 repeated  0 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=1
+  BLL160   Inquiry     list  5 empty  4 repeated  0 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=1
+  BLL170   Inquiry     list  5 empty  5 repeated  0 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=1
+  BLL210   Inquiry     list  8 empty  6 repeated  0 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=1
+  BLL230   Inquiry     list  7 empty  6 repeated  0 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=1
+  BLL240   Inquiry     list  8 empty  3 repeated  3 other  0 | gold 10p crumbs=1 | Claude  9p crumbs=0
+  CEDK102  Inquiry     list  6 empty  5 repeated  0 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=1
+  CEDR204  Inquiry     list  6 empty  6 repeated  0 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=1
+  ENGS404  Standard    list  3 empty  3 repeated  0 other  0 | gold 12p crumbs=0 | Claude 12p crumbs=0
+  XGF9004  Standard    list  7 empty  5 repeated 15 other  0 | gold  7p crumbs=0 | Claude 18p crumbs=0
+
+== the rest (list >= 3, no dialect match):
+  BLL140   Inquiry     list  7 empty 1 repeated 0 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=1
+  BLL220   Inquiry     list  5 empty 1 repeated 0 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=1
+  BLL236   Standard    list  3 empty 0 repeated 0 other  2 | gold  3p crumbs=0 | Claude  3p crumbs=0
+  BLL242   Standard    list  4 empty 0 repeated 0 other  0 | gold  3p crumbs=0 | Claude  3p crumbs=0
+  BLL252   Standard    list  4 empty 0 repeated 0 other  0 | gold  3p crumbs=0 | Claude  3p crumbs=0
+  BLL256   Standard    list  4 empty 0 repeated 0 other  0 | gold  3p crumbs=0 | Claude  3p crumbs=0
+  BLL260   Inquiry     list  7 empty 0 repeated 0 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=0
+  CBI1004  Standard    list  3 empty 0 repeated 0 other  3 | gold 11p crumbs=0 | Claude 11p crumbs=0
+  CEDK101  Inquiry     list  6 empty 0 repeated 0 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=1
+  CEDO102  Inquiry     list  6 empty 0 repeated 0 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=1
+  CEDO301  Standard    list  5 empty 0 repeated 0 other  0 | gold  5p crumbs=0 | Claude  6p crumbs=0
+  CEDR203  Inquiry     list  5 empty 0 repeated 0 other  0 | gold 11p crumbs=1 | Claude  1p crumbs=0
+  CEDT208  Inquiry     list  4 empty 0 repeated 0 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=0
+  CEDT404  Inquiry     list  6 empty 0 repeated 0 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=1
+  CEDW101  Inquiry     list  5 empty 0 repeated 0 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=1
+  CEDW201  Inquiry     list  5 empty 0 repeated 0 other  0 | gold  1p crumbs=1 | Claude  1p crumbs=0
+  ENO2060  Standard    list  4 empty 0 repeated 0 other  0 | gold  7p crumbs=0 | Claude  6p crumbs=0
+  GENO901  Standard    list  5 empty 0 repeated 0 other  0 | gold  9p crumbs=0 | Claude 23p crumbs=0
+  GEO1004  Standard    list  3 empty 0 repeated 0 other  0 | gold  5p crumbs=0 | Claude  3p crumbs=0
+  HPFUN401 Fundamentals list  6 empty 0 repeated 0 other  0 | gold  1p crumbs=0 | Claude  1p crumbs=0
+  HPRE301  Standard    list  3 empty 0 repeated 0 other  0 | gold 13p crumbs=0 | Claude 13p crumbs=0
+  JPFUN01  Fundamentals list  4 empty 0 repeated 0 other  0 | gold  1p crumbs=0 | Claude  1p crumbs=0
+  MXDB202  Standard    list  3 empty 0 repeated 1 other  5 | gold  6p crumbs=0 | Claude  6p crumbs=0
+  MXDI201  Standard    list  4 empty 0 repeated 0 other  0 | gold 11p crumbs=0 | Claude 11p crumbs=0
+  MXEO301  Standard    list  3 empty 0 repeated 0 other  0 | gold 10p crumbs=0 | Claude 11p crumbs=0
+  MXFL301  Standard    list  3 empty 0 repeated 0 other  0 | gold 11p crumbs=0 | Claude 10p crumbs=0
+  MXFU301  Standard    list  3 empty 0 repeated 0 other  3 | gold 11p crumbs=0 | Claude 12p crumbs=0
+  OSAI401  Standard    list  6 empty 0 repeated 0 other  2 | gold  5p crumbs=0 | Claude  5p crumbs=0
+  OSAI501  Standard    list  5 empty 0 repeated 0 other  0 | gold  6p crumbs=0 | Claude  6p crumbs=0
+  OSBY501  Standard    list  5 empty 0 repeated 0 other  0 | gold  6p crumbs=0 | Claude  6p crumbs=0
+  OSOH501  Standard    list  9 empty 0 repeated 0 other  0 | gold  6p crumbs=0 | Claude  6p crumbs=0
+  SSEA203  Standard    list  3 empty 0 repeated 0 other  0 | gold  7p crumbs=0 | Claude  7p crumbs=0
+  SSFUN03  Fundamentals list  7 empty 0 repeated 0 other  0 | gold  1p crumbs=0 | Claude  1p crumbs=0
+  SSOG105  Standard    list  6 empty 0 repeated 0 other  0 | gold  8p crumbs=0 | Claude  8p crumbs=0
+  XGF9002  Standard    list  6 empty 1 repeated 0 other  0 | gold 10p crumbs=0 | Claude 10p crumbs=0

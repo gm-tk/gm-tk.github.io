@@ -1,0 +1,52 @@
+LIVENESS ok — bare KEEP_ATTR attribute scores; valued attr still renders
+DETECTION ok — a raising pair is COUNTED (loud), not silently dropped
+BODY READER ok — a body-less page and an unclosed-body page score as the well-formed page
+SELFTEST PASS
+SELFTEST _verify_flipcard.cjs LIVENESS: built TOTAL 15 on CEDO102 PASS
+SELFTEST _verify_flipcard.cjs DETECTION: defect signal 0 -> 30 under mangled gold — PASS
+SELFTEST _verify_flipcard.cjs: GREEN
+SELFTEST _verify_speechbubble.cjs LIVENESS: built TOTAL 8 on OSAH501 PASS
+SELFTEST _verify_speechbubble.cjs DETECTION: defect signal 2 -> 4 with an INJECTED malformed build — PASS
+SELFTEST _verify_speechbubble.cjs: GREEN
+SELFTEST _verify_accordion.cjs LIVENESS: built TOTAL 7 on OSAH501 CEDW501 PASS
+SELFTEST _verify_accordion.cjs DETECTION: defect signal 0 -> 3 with an INJECTED malformed build — PASS
+SELFTEST _verify_accordion.cjs: GREEN
+SELFTEST _verify_tabs.cjs LIVENESS: built TOTAL 12 on HES1003 PASS
+SELFTEST _verify_tabs.cjs DETECTION: defect signal 10 -> 24 under mangled gold — PASS
+SELFTEST _verify_tabs.cjs: GREEN
+SELFTEST _verify_clickdrop.cjs LIVENESS: built TOTAL 2 on BLL237 PASS
+SELFTEST _verify_clickdrop.cjs DETECTION: defect signal 0 -> 5 with an INJECTED malformed build — PASS
+SELFTEST _verify_clickdrop.cjs: GREEN
+SELFTEST _verify_dropdown.cjs LIVENESS: built TOTAL 3 on BLL273 MXFU301 PASS
+SELFTEST _verify_dropdown.cjs DETECTION: defect signal 0 -> 4 with an INJECTED malformed build — PASS
+SELFTEST _verify_dropdown.cjs: GREEN
+SELFTEST _verify_modal.cjs LIVENESS: built TOTAL 4 on OSOH501 MXFU301 PASS
+SELFTEST _verify_modal.cjs DETECTION: defect signal 0 -> 8 with an INJECTED malformed build — PASS
+SELFTEST _verify_modal.cjs: GREEN
+SELFTEST _verify_mtkquiz.cjs LIVENESS: built TOTAL 5 on TEFUN06 SCCH301 PASS
+SELFTEST _verify_mtkquiz.cjs DETECTION: defect signal 0 -> 4 with an INJECTED malformed build — PASS
+SELFTEST _verify_mtkquiz.cjs: GREEN
+SELFTEST _verify_hintslider.cjs LIVENESS: built TOTAL 16 on OSBY201 PASS
+SELFTEST _verify_hintslider.cjs DETECTION: defect signal 0 -> 16 under mangled gold — PASS
+SELFTEST _verify_hintslider.cjs: GREEN
+SELFTEST _verify_image_carousel.cjs LIVENESS: built TOTAL 1 on OSGM501 PASS
+SELFTEST _verify_image_carousel.cjs DETECTION: defect signal 0 -> 10 under mangled gold — PASS
+SELFTEST _verify_image_carousel.cjs: GREEN
+SELFTEST _verify_carousel.cjs LIVENESS: built TOTAL 9 on BLL117 BLL210 PASS
+SELFTEST _verify_carousel.cjs DETECTION: defect signal 0 -> 23 under mangled gold — PASS
+SELFTEST _verify_carousel.cjs: GREEN
+SELFTEST _verify_intextract.cjs LIVENESS: built TOTAL 5 on OSBY201 PASS
+SELFTEST _verify_intextract.cjs DETECTION: mangled corpus -> rc 1, BYTE-DIFF reported — PASS
+SELFTEST _verify_intextract.cjs: GREEN
+SELFTEST _verify_math.cjs LIVENESS: built TOTAL 69 on MXDI301 PASS
+SELFTEST _verify_math.cjs DETECTION: defect signal 0 -> 2 with an INJECTED malformed build — PASS
+SELFTEST _verify_math.cjs: GREEN
+SELFTEST _verify_menulabels.cjs LIVENESS: built TOTAL 16 on ENGC401 PASS
+SELFTEST _verify_menulabels.cjs DETECTION: defect signal 0 -> 2 with an INJECTED malformed build — PASS
+SELFTEST _verify_menulabels.cjs: GREEN
+SELFTEST _verify_dragdrop.cjs LIVENESS: built TOTAL 5 on BLL146 ENGJ102 ENGI203 PASS
+SELFTEST _verify_dragdrop.cjs DETECTION: defect signal 0 -> 10 with an INJECTED malformed build — PASS
+SELFTEST _verify_dragdrop.cjs: GREEN
+SELFTEST _verify_bingo.cjs LIVENESS: built TOTAL 12 on BLL110 PASS
+SELFTEST _verify_bingo.cjs DETECTION: defect signal 0 -> 2 with an INJECTED malformed build — PASS
+SELFTEST _verify_bingo.cjs: GREEN
