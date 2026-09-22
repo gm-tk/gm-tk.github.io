@@ -5516,6 +5516,104 @@ class ContentConverter {
 		const contentIdx = items.findIndex((it) => it.type === "tag"
 			&& it.parse.primary?.tag === "lesson content");
 
+		// ROUND 432 — THE LESSON PAGE'S UNMARKED WALT / SC BLOCK IS ITS MENU (KB 01B; the gold's menu holds the
+		// lead on 1,258 lesson pages vs its body alone on 38). With no [Lesson Overview] marker (nor the r148
+		// bare red lead): (a) an `[Overview]` title-bar alias among the opening items is the marker — consumed,
+		// never the page title (TEDC402, ENGC206, CEDT501); else (b) the first WALT / SC lead item reached
+		// through opening items only (blank lines, instructions, the lesson heading, `[Lesson content]`, an
+		// empty body tag) starts the block (FRNO901's bare `We are learning:` after the `[H2]`, PES1004's after
+		// the `[H1] LESSON …`); `overviewIdx` becomes the item BEFORE it so the existing section-stop and the
+		// first-heading end bound the block unchanged. Data menu.lesson_overview_implicit; env LESSONWALT_OFF.
+		let loiAlias = false, loiLeadFirst = false, loiImplicit = false, loiSet = null;
+		{
+			const loiCfg = DataService.Data.EmitTemplates.menu?.lesson_overview_implicit;
+			const loiOn = !!loiCfg && loiCfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[loiCfg.env ?? "LESSONWALT_OFF"])
+				&& !page.isOverview && menuType !== "none" && overviewIdx < 0;
+			if (loiOn) {
+				const leadRe = new RegExp(loiCfg.lead_pattern
+					?? "^(we are learning|learning intentions?|you will show|how will i know|i can\\b|success criteria|wh[aā]inga ako|paearu angitu)", "i");
+				const aliasWords = new Set((loiCfg.alias_words ?? ["overview"]).map(String));
+				const maxScan = Math.min(items.length, loiCfg.max_scan_items ?? 14);
+				const maxBlock = loiCfg.max_block_items ?? 24;
+				const leadMaxW = loiCfg.lead_max_words ?? 8;
+				const openTags = new Set(loiCfg.opening_tags ?? ["title bar", "h1", "h2", "lesson content", "page", "body", "sub head"]);
+				const listRe = /^\s*(?:[•\-–—*·o]|\d+[.)]|[a-z][.)])\s+/i;
+				const foldT = (t) => Utils.Fold(String(t || "")).replace(/[*_]/g, "").trim();
+				const textOf = (x) => x.type === "black" ? String(x.text || "")
+					: (x.type === "tag" ? (String(x.blackAfter || "").trim() || this.#norm.RenderText(x.text) || "") : "");
+				// a LEAD line: short ("We are learning:", "You will show your understanding by:"), never a prose sentence
+				// ("We are learning what an event is. You will show …" — COM1006)
+				const isLeadLine = (line) => { const f = foldT(line); return !!f && leadRe.test(f) && f.split(/\s+/).length <= leadMaxW; };
+				const isListLine = (line) => listRe.test(String(line || ""));
+				const isLead = (x) => (x.type === "black" || (x.type === "tag" && (!x.parse?.primary || openTags.has(x.parse.primary.tag) || /^h[1-6]$/.test(x.parse.primary.tag))))
+					&& isLeadLine(textOf(x).split(/\n/)[0]);
+				// a BLOCK member: blank, a lead line, a list line, a black run whose every line is lead / list, a list tag
+				const isMember = (x) => {
+					if (x.type === "black") {
+						const lines = String(x.text || "").split(/\n/).map((l) => l.trim()).filter(Boolean);
+						return !lines.length || lines.every((l) => isLeadLine(l) || isListLine(l));
+					}
+					if (x.type !== "tag") return false;
+					const p = x.parse?.primary;
+					if (!p) return x.parse?.class === "instruction" || x.parse?.class === "noise";
+					if (p.tag === "list") return true;
+					if (["body", "sub head", "h3", "h4", "h5"].includes(p.tag)) {
+						const lines = String(x.blackAfter || "").split(/\n/).map((l) => l.trim()).filter(Boolean);
+						const own = this.#norm.RenderText(x.text) || "";
+						return (isLeadLine(own) || !own.trim()) && lines.every((l) => isLeadLine(l) || isListLine(l));
+					}
+					return false;
+				};
+				const buildSet = (start) => {
+					const set = new Set(); let leads = 0, lists = 0;
+					for (let j = start; j < Math.min(items.length, start + maxBlock); j++) {
+						const x = items[j];
+						if (!isMember(x)) break;
+						set.add(j);
+						const txt = x.type === "black" ? String(x.text || "") : (String(x.blackAfter || "") + "\n" + (x.parse?.primary ? (this.#norm.RenderText(x.text) || "") : ""));
+						for (const l of txt.split(/\n/)) { if (isLeadLine(l)) leads++; else if (isListLine(l.trim())) lists++; }
+						if (x.type === "tag" && x.parse?.primary?.tag === "list") lists++;
+					}
+					return (leads >= 1 && lists >= 1) ? set : null;
+				};
+				// (a) an EMPTY [Overview] alias among the opening items, followed by the block
+				let aIdx = -1;
+				for (let k = 0; k < maxScan; k++) {
+					const x = items[k];
+					if (x.type === "tag" && x.parse?.primary?.tag === "title bar" && aliasWords.has(String(x.parse.primary.fragment ?? ""))
+						&& !String(x.blackAfter || "").trim()) { aIdx = k; break; }
+				}
+				if (aIdx >= 0) {
+					const set = buildSet(aIdx + 1);
+					if (set) { overviewIdx = aIdx; loiAlias = true; loiSet = set; }
+				}
+				if (!loiSet) {
+					// (b) the first lead item reached through opening items only
+					const opening = (x) => {
+						if (x.type === "black") return !String(x.text || "").trim();
+						if (x.type !== "tag") return false;
+						const p = x.parse?.primary;
+						if (!p) return true;                                                   // an unresolved red span
+						if (x.parse?.class === "instruction" || x.parse?.class === "noise") return true;
+						if (!openTags.has(p.tag)) return false;
+						return p.tag !== "body" || !String(x.blackAfter || "").trim();         // a body tag only when empty
+					};
+					for (let k = 0; k < maxScan; k++) {
+						const x = items[k];
+						if (isLead(x)) {
+							const set = buildSet(k);
+							if (set) { overviewIdx = k > 0 ? k - 1 : 0; loiLeadFirst = (k === 0); loiImplicit = true; loiSet = set; }
+							break;
+						}
+						if (!opening(x)) break;
+					}
+				}
+				if (loiSet) run.AddNote("info", "ContentConverter",
+					`Lesson menu taken from the ${loiAlias ? "[Overview] alias" : "unmarked WALT / SC block"} at the lesson's start (menu.lesson_overview_implicit).`);
+			}
+		}
+
 		// Where does the lesson menu END? The [Lesson Overview] block ("We are
 		// learning:" / "I can:" + bullets) is bounded by [Lesson content] WHEN the
 		// writer includes it. But MANY lessons omit [Lesson content] and go straight
@@ -5608,6 +5706,7 @@ class ContentConverter {
 				}
 			}
 		}
+		if (loiSet) { menuIdxSet = loiSet; lessonMenuEnd = Math.max(...loiSet) + 1; }   // ROUND 432 — the implicit block's own bounds
 
 		// Tracks items that the TITLE-BAR branch below absorbed as extra title sources — for
 		// example an adjacent Te Reo black text line, or a pipe-separated-half red sibling
@@ -5679,6 +5778,7 @@ class ContentConverter {
 			// can never accidentally re-purpose this already-consumed alias as the page's
 			// header title.
 			if (i === funAliasIdx) continue;
+			if (loiAlias && i === overviewIdx) continue;   // ROUND 432 — the lesson page's [Overview] alias is the menu marker, never its title
 			if (tbConsumed.has(i)) continue;   // already absorbed into the header title above
 
 			// ---- the title bar feeds the header, never the body ----------
@@ -6073,7 +6173,7 @@ class ContentConverter {
 				// Section marker tags carry no render content of their own (also skip the
 				// "[Lesson content]" marker itself here, now that the menu region extends
 				// past it)
-				if (i === overviewIdx || (intentOn && i === contentIdx)) continue;
+				if ((i === overviewIdx && !loiImplicit) || (intentOn && i === contentIdx)) continue;   // ROUND 432 — the implicit block has no marker item to skip
 				if (menuIdxSet && !menuIdxSet.has(i)) { bodyItems.push(it); continue; }
 				menuItems.push(it);
 				continue;
