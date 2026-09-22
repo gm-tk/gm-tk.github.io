@@ -1139,6 +1139,31 @@ class ContentConverter {
 			&& !(typeof process !== "undefined" && process.env && process.env[_uoCfg.env || "INQCONSUMED_OFF"]);
 		const _tabItems = bodyItems.filter((it) => isTabItem(it) && (!_unconsumedOnly || it.consumedBy === undefined));
 		const _labeledTabs = _tabItems.filter((it) => (it.blackAfter || "").trim().length > 0).length;
+		// ROUND 430 — a labelled `[Tab N] label` (a DIGIT in the bracket, a black-tail label) that comes AFTER the
+		// first true opener (the first empty, non-closer `[Tab N]` with a real parse) is a BODY OPENER carrying its
+		// own label (TWHA902's `[Tab 4] Body language` / `[Tab 6]` / `[Tab 9]`, released from a flip-card / carousel
+		// capture by opener_stops_capture), not a crumb-list entry. The heading-label family's zero test discounts
+		// them, so the released openers do not flip the family's mode; every other count keeps its r100 meaning
+		// (the `[New tab] 2` no-digit form stays the r429 rule's; `[Template tab here] url` has no digit). The r120
+		// hybrid's `[page N]` twin (BLL130 `[page 6]` + `[Tab 6] The letter b`, BLL240) is a label, never an opener.
+		// Data inquiry_tabs.openers_unconsumed_only.labelled_body_opens; env INQOPENER2_OFF.
+		const _lbOn = _unconsumedOnly && !!_uoCfg && _uoCfg.labelled_body_opens === true
+			&& !(typeof process !== "undefined" && process.env && process.env[_uoCfg.labelled_body_env || "INQOPENER2_OFF"])
+			&& run?.resolvedRules?.page_model !== "multi-file"   // the same registry scope as the r428 fallback and the r430 scanner stop: a known Inquiry module
+			&& ((inqCfg.opener_stops_capture && inqCfg.opener_stops_capture.template_types) || ["Inquiry"]).map(String)
+				.includes(String(DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")]?.template_type ?? ""));
+		const _lbPageTwin = (it) => {
+			const idx = bodyItems.indexOf(it);
+			const _isPage = (x) => !!x && x.type === "tag" && x.parse?.primary?.directive === "PAGE_BOUNDARY" && /\bpage\b/i.test(x.parse?.primary?.tag || "");
+			let a = idx - 1; while (a >= 0 && bodyItems[a].type === "black" && !String(bodyItems[a].text || "").trim()) a--;
+			let b = idx + 1; while (b < bodyItems.length && bodyItems[b].type === "black" && !String(bodyItems[b].text || "").trim()) b++;
+			return _isPage(bodyItems[a]) || _isPage(bodyItems[b]);
+		};
+		const _firstTrueIdx = _lbOn ? _tabItems.findIndex((it) => !!it.parse?.primary && !(it.blackAfter || "").trim()
+			&& it.parse.primary.directive !== "CONTAINER_CLOSE") : -1;
+		const _bodyOpenerItems = new Set((_lbOn && _firstTrueIdx >= 0) ? _tabItems.slice(_firstTrueIdx + 1).filter((it) =>
+			(it.blackAfter || "").trim().length > 0 && /^\s*tab\s*\d/i.test(String(it.text || "").replace(/\[\/?RED TEXT\]|\u{1f534}|^\s*\[/gu, ""))
+			&& it.consumedBy === undefined && !_lbPageTwin(it)) : []);
 		// EMPTY `[Tab N]` openers are the inquiry PANEL openers; a mis-captured `[tabs]`
 		// WIDGET's orphan tabs carry CONTENT (labelled), so requiring ≥2 EMPTY openers
 		// excludes them (MXDB202) while the BLL inquiry pages (6-7 empty openers) fire.
@@ -1385,6 +1410,12 @@ class ContentConverter {
 		// a tab item OPENS a panel only in one of the writer's panel-opener forms (tab_opener_patterns — `[Tab N …]`,
 		// `[New side tab]`, `[Insert Right click tab – …]`); `[Template tab here]` / `[Work mat tab here]` are instructions
 		const _fbOpenRes = ((_fbCfg && _fbCfg.tab_opener_patterns) || ["^\\s*tab\\s*\\d", "^\\s*new\\s+side\\s+tab", "^\\s*insert\\s+right\\s+(?:click\\s+)?tab", "^\\s*side\\s*tab"]).map((p) => new RegExp(p, "i"));
+		// ROUND 430 — `[New tab] <label>` (no "side") is an opener too: TWHR905's four labelled openers rendered as
+		// bare paragraphs inside panel 1 (1 panel vs the gold's 5). Data template_fallback.new_tab_opener; env INQOPENER2_OFF.
+		const _ntCfg = _fbCfg && _fbCfg.new_tab_opener;
+		if (_ntCfg && _ntCfg.enabled !== false && _ntCfg.pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[_ntCfg.env || "INQOPENER2_OFF"]))
+			_fbOpenRes.push(new RegExp(_ntCfg.pattern, "i"));
 		const fbBracket = (it) => { const m = /\[([^\]]*)\]/.exec(String(it.text || "").replace(/\[\/?RED TEXT\]|\u{1f534}/gu, "")); return (m ? m[1] : String(it.text || "")).trim(); };
 		const isFbTabAny = (it) => it.type === "tag" && isTabItem(it) && _fbOpenRes.some((re) => re.test(fbBracket(it)));
 		const isFbTab = (it) => isFbTabAny(it) && it.consumedBy === undefined;     // an opener is never a widget member
@@ -3158,6 +3189,19 @@ class ContentConverter {
 						}
 						if (!stack.length) { fbOpen(fbClean(it.blackAfter), "page"); pageLabelHold = ""; headingHold = false; }
 					}
+					// ROUND 430 — a CO-TAGGED opener `[Tab 5] [H3] Using technology` (TWHA902: the heading tag wins the
+					// primary, so the r100 count never saw the tab) opens its panel in the r100 / heading-label modes
+					// and the heading then renders inside it as the panel's first heading (its crumb, by the r111 rule).
+					// Data inquiry_tabs.openers_unconsumed_only.labelled_body_opens; env INQOPENER2_OFF.
+					if (_lbOn && inquiryMode && (_bllInquiry || _headingLabelOn) && !sideTabMode && it.consumedBy === undefined
+						&& /^h[1-6]$/i.test(primary.tag || "") && (it.parse?.tags || []).some((t) => /^tab n$/i.test(String(t.tag || "")))
+						&& /\[\s*tab\s*\d+\s*\]/i.test(String(it.text || ""))) {
+						while (stack.length && stack[stack.length - 1].tag === "activity") {
+							emit(stack.pop().close);
+							if (!stack.length) breakRow();
+						}
+						if (!stack.length) { breakRow(); parts.push(INQ_SENTINEL); pageLabelHold = ""; }
+					}
 					// row kind: headings start (and may share) a row; plain
 					// text-family elements behave as text runs; media and
 					// everything else stand alone (data: body_region.row_rule)
@@ -4074,7 +4118,10 @@ class ContentConverter {
 					// only ever closes an ACTIVITY (never a real container or callout box). Uses the
 					// same `inquiryMode` gate and INQRECOVER_OFF toggle as the related recovery logic
 					// elsewhere in this file.
-					if (inquiryMode && isTabItem(it) && !(it.blackAfter || "").trim()
+					// ROUND 430 — a LABELLED body opener (labelled_body_opens: the heading-label family's `[Tab N] label`
+					// after the first true opener, released by opener_stops_capture) closes an open activity the same way.
+					const _lbOpener = inquiryMode && (_bllInquiry || _headingLabelOn) && !sideTabMode && _bodyOpenerItems.has(it);
+					if (inquiryMode && isTabItem(it) && (!(it.blackAfter || "").trim() || _lbOpener)
 						&& inqCfg.recover_consumed_openers !== false
 						&& !(typeof process !== "undefined" && process.env && process.env.INQRECOVER_OFF)
 						&& stack.length && stack[stack.length - 1].tag === "activity") {
@@ -4135,6 +4182,33 @@ class ContentConverter {
 								pageLabelHold = "";
 								break;
 							}
+						}
+						// ROUND 430 — a LABELLED `[Tab N] label` AFTER the first true opener is a body opener carrying its own
+						// label (labelled_body_opens; TWHA902's `[Tab 4] Body language` / `[Tab 6] Artistic expression` /
+						// `[Tab 9] Know your audience`): the heading-label family's crumb derives from the panel's first
+						// heading, and its gold opens the panel with `<h3>label</h3>` — so the label is emitted as that
+						// heading. An open activity was closed above; inside a real container the tag renders nothing.
+						// Env INQOPENER2_OFF.
+						if (label && n && _lbOpener) {
+							if (!stack.length) {
+								// the opener's own label: the words inside its red span first (`[Tab 2 – Scenario] neolithic flint`
+								// — the black tail there is content), else a SHORT black tail (`[Tab 4] Body language`) — the
+								// r428 fbOwnLabel rule; a tail that is not the label is the panel's opening content
+								const _lbLab = fbOwnLabel(it) || label;
+								breakRow();
+								parts.push(INQ_SENTINEL);
+								inquiryLabels[parts.filter((x) => x === INQ_SENTINEL).length] = _lbLab;
+								const _lbTail = String(it.blackAfter || "").trim();
+								const _lbLines = _lbTail.split(/\n/);
+								const _lbRest = (fbClean(_lbLines[0]) === _lbLab) ? _lbLines.slice(1).join("\n").trim() : _lbTail;
+								// the label opens the panel as its h3 unless the writer typed a heading of their own next
+								let _nx = i + 1; while (_nx < bodyItems.length && bodyItems[_nx].type === "black" && !String(bodyItems[_nx].text || "").trim()) _nx++;
+								const _nxTag = bodyItems[_nx] && bodyItems[_nx].type === "tag" ? String(bodyItems[_nx].parse?.primary?.tag || "") : "";
+								if (!_lbRest && !/^(h[1-6]|heading)$/i.test(_nxTag)) emit(`<h3>${ListsAndRuns.inlineMarkup(_lbLab)}</h3>`);
+								if (_lbRest) emit(...actDeBold(ListsAndRuns.renderBlackText(_lbRest, run, it.block?.links)));
+								pageLabelHold = "";
+							}
+							break;
 						}
 						if (label) { if (n) inquiryLabels[n] = label; break; }
 						// SYMMETRIC de-duplication for the BLL hybrid `[Tab N]`/`[page N]` boundary

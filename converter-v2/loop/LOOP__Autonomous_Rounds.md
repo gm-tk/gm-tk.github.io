@@ -92,7 +92,7 @@ header.
 
 **The census it prints changed on 19–20 September 2026** (the 98-module intake) and again on
 21 September (PMT101 converts, r423); any older figure in `LOOP_STATE.md` or a changelog entry
-is pre-intake. Current (22 September 2026, build 260620.02 — after the 22 Sept Round 0d and r426–r429: the 12 XOTP modules and the 38 pre-intake never-converted modules are IN; r426 folded 45 over-split pages into 8 single pages; r427 changed chip text only):
+is pre-intake. Current (22 September 2026, build 260620.03 — after the 22 Sept Round 0d and r426–r430: the 12 XOTP modules and the 38 pre-intake never-converted modules are IN; r426 folded 45 over-split pages into 8 single pages; r427 changed chip text only):
 
 | | before the intake | now |
 |---|---:|---:|

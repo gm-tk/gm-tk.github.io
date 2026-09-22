@@ -1078,6 +1078,48 @@ class InteractiveScanner {
 	 * @param {ConversionRun} run
 	 * @returns {boolean}
 	 */
+	/** ROUND 430 (the autonomous loop's session 35 Round 1) — is this item an INQUIRY PANEL OPENER
+	 *  that must END the open bundle's member capture? The opener resolves to the `tab n` SUBTAG
+	 *  (`[Tab N]`, `[New tab]`, `[New side tab]`, `[Insert Right click tab – …]`; never the
+	 *  `end tab n` CONTAINER_CLOSE, which already terminates). #swallowMembers stops at the bank's
+	 *  absolute terminators, CONTAINER_CLOSE, PAGE_BOUNDARY and h2–h5 — never at a sub-tag — so an
+	 *  un-closed carousel / flip-card capture ran THROUGH the next opener and took the whole panel
+	 *  (CEDR401 `[Tab 5] Surprises in the data` up to `[Tab 6]`; TWHA902's `[Tab 4]` / `[Tab 6]` /
+	 *  `[Tab 9]`); the r101 recovery handles only a TRAILING empty opener. Gated to a registry-known
+	 *  Inquiry module (`module_meta.template_type`, the r428 fallback's own scope) on a single-file
+	 *  page, and never to a real `[tabs]` widget (its `[Tab N]` are its members). Data
+	 *  inquiry_tabs.opener_stops_capture; env INQOPENER2_OFF.
+	 *
+	 * @param {Object} it - a page item
+	 * @param {Object} bundle - the open bundle
+	 * @param {ConversionRun} run
+	 * @returns {boolean}
+	 */
+	static #inquiryOpenerMarker(it, bundle, run) {
+		const cfg = DataService.Data.EmitTemplates?.body_region?.inquiry_tabs?.opener_stops_capture;
+		if (!cfg || cfg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "INQOPENER2_OFF"]) return false;
+		if (!it || it.type !== "tag") return false;
+		const p = it.parse?.primary;
+		if (!p || p.directive !== "SUBTAG") return false;
+		const tag = String(p.tag || "");
+		if (!/\btab\b/i.test(tag) || /^end\b/i.test(tag)) return false;
+		if (bundle && (bundle.type === "tabs" || bundle.canonTag === "tabs")) return false;
+		// a panel OPENER carries a digit (`[Tab 5]`), a label (`[New tab] Organisation for school`, `[Tab 4] Body
+		// language`, `[Tab 2 – Scenario]`) or the `new … tab` form; a BARE `[Tab]` is a `[Tabs]` widget's member
+		// (TWHR907's third tab inside a drop-down capture) and never a boundary
+		const inner = String(it.text || "").replace(/\[\/?RED TEXT\]|\u{1f534}/gu, "");
+		const br = /\[([^\]]*)\]\s*(.*)$/s.exec(inner);
+		const bracket = br ? br[1] : inner, tail = br ? br[2] : "";
+		const labelled = !!String(it.blackAfter || "").trim() || !!tail.replace(/\[[^\]]*\]/g, "").trim()
+			|| /[A-Za-z]/.test(bracket.replace(/\b(?:tab|tabs|new|side|insert|right|click)\b/gi, "").replace(/\d/g, ""));
+		if (!/\d/.test(bracket) && !labelled && !/\bnew\b/i.test(bracket)) return false;
+		const tt = String(DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")]?.template_type ?? "");
+		if (!(cfg.template_types || ["Inquiry"]).map(String).includes(tt)) return false;
+		if (cfg.single_file_only !== false && run?.resolvedRules?.page_model === "multi-file") return false;
+		return true;
+	};
+
 	static #tilePageMarker(it, run) {
 		const tp = DataService.Data.EmitTemplates?.body_region?.fundamentals_panels?.tile_pages;
 		if (!tp || tp.enabled === false || tp.scanner_hard_terminator === false) return false;
@@ -2053,6 +2095,12 @@ class InteractiveScanner {
 			// registry row. Data fundamentals_panels.tile_pages.scanner_hard_terminator;
 			// env TILEPAGE_OFF.
 			if (this.#tilePageMarker(next, run)) break;
+			// ROUND 430 — an INQUIRY PANEL OPENER (`[Tab N]` / `[New tab]` / `[New side tab]`, the
+			// `tab n` SUBTAG) is a HARD terminator of every NON-`tabs` bundle on a registry-known
+			// Inquiry module's single-file page: an un-closed carousel / flip-card capture ran
+			// THROUGH the next opener and took the whole panel with it (CEDR401 `[Tab 5]`, TWHA902
+			// `[Tab 4]` / `[Tab 6]` / `[Tab 9]`). Data inquiry_tabs.opener_stops_capture; env INQOPENER2_OFF.
+			if (this.#inquiryOpenerMarker(next, bundle, run)) break;
 			// A suppressed numbered/bare accordion invocation is a fundamentals PHASE BOUNDARY on
 			// a gated page (accordion-as-phases): a HARD terminator, never a member — no bundle may
 			// swallow a phase delimiter (the same principle as the other phase-delimiter checks

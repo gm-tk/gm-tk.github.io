@@ -1,0 +1,79 @@
+=== gold-only crumb labels on PANELS-DIFF pages, by where the text sits on Claude's page ===
+  in-body                    22
+  in-text (not an element)   17
+  SWALLOWED-in-box           5
+  nowhere                    4
+
+== CEDK401
+   CEDK401_0_0.html       in-body                    «Food sustainability»
+   CEDK401_0_0.html       in-body                    «Community initiative»
+== CEDO202
+   CEDO202_0_0.html       in-text (not an element)   «Intro»
+   CEDO202_0_0.html       in-body                    «The seasons»
+   CEDO202_0_0.html       in-text (not an element)   «Exploring winter»
+   CEDO202_0_0.html       in-text (not an element)   «Creating and sharing your dance»
+== CEDO204
+   CEDO204_0_0.html       in-body                    «Designing structures»
+== CEDO402
+   CEDO402_0_0.html       in-text (not an element)   «Intro: History/Culture»
+   CEDO402_0_0.html       in-text (not an element)   «Hauora»
+   CEDO402_0_0.html       in-body                    «Timing a race»
+   CEDO402_0_0.html       in-body                    «Calculating time»
+   CEDO402_0_0.html       in-body                    «DST triangle»
+   CEDO402_0_0.html       SWALLOWED-in-box           «Plan of action»
+== CEDR401
+   CEDR401_0_0.html       SWALLOWED-in-box           «Surprises in the data»
+== CEDT104
+   CEDT104_0_0.html       nowhere                    «Waiata moves»
+   CEDT104_0_0.html       in-text (not an element)   «Pepeha»
+   CEDT104_0_0.html       in-body                    «Waiata time»
+   CEDT104_0_0.html       in-body                    «Waiata poi»
+   CEDT104_0_0.html       in-body                    «Rākau»
+   CEDT104_0_0.html       in-text (not an element)   «Learn the lyrics»
+== TWHA902
+   TWHA902_0_0.html       nowhere                    «Listening, speaking, reading, writing»
+   TWHA902_0_0.html       SWALLOWED-in-box           «Body language»
+   TWHA902_0_0.html       in-body                    «Using technology»
+   TWHA902_0_0.html       SWALLOWED-in-box           «Artistic expression»
+   TWHA902_0_0.html       in-body                    «Feedback»
+   TWHA902_0_0.html       SWALLOWED-in-box           «Know your audience»
+== TWHA904
+   TWHA904_0_0.html       in-text (not an element)   «Scenario»
+   TWHA904_0_0.html       nowhere                    «Reflection»
+   TWHA904_0_0.html       in-text (not an element)   «The way we move»
+== TWHA905
+   TWHA905_0_0.html       in-body                    «Think like a social scientist»
+   TWHA905_0_0.html       in-body                    «Think like a scientist»
+   TWHA905_0_0.html       in-body                    «Think like a mathematician»
+   TWHA905_0_0.html       in-body                    «Think like an innovator»
+   TWHA905_0_0.html       nowhere                    «Reflection»
+== TWHK901
+   TWHK901_0_0.html       in-body                    «What is sustainability?»
+   TWHK901_0_0.html       in-text (not an element)   «Mātauranga Māori»
+   TWHK901_0_0.html       in-text (not an element)   «My role in the 4 R's of sustainability»
+== TWHK902
+   TWHK902_0_0.html       in-text (not an element)   «Climate»
+   TWHK902_0_0.html       in-text (not an element)   «Maramataka»
+   TWHK902_0_0.html       in-text (not an element)   «Impacts»
+   TWHK902_0_0.html       in-text (not an element)   «Action»
+== TWHK907
+   TWHK907_0_0.html       in-body                    «Volunteering»
+   TWHK907_0_0.html       in-text (not an element)   «Mahi tahi and hononga»
+   TWHK907_0_0.html       in-text (not an element)   «Learning through hāpori»
+== TWHR905
+   TWHR905_0_0.html       in-body                    «Organisation for school»
+   TWHR905_0_0.html       in-body                    «Making a learning timetable»
+   TWHR905_0_0.html       in-body                    «Prioritising time»
+   TWHR905_0_0.html       in-body                    «Taking breaks»
+
+=== corpus-wide: writer opener lines inside a Claude hand-off box (every page) ===
+modules with ≥ 1 swallowed opener: 4 — openers swallowed: 9
+   CEDR401    CEDR401_0_0.html         «Surprises in the data»
+   CEDR401    CEDR401_0_0.html         «Surprises in the data»
+   GENO901    GENO901_7_3.html         «welche? means which?»
+   SSOG301    SSOG301_6_0.html         «Referendums»
+   XLP06      XLP06_2_0.html           «Sparklers»
+   XLP06      XLP06_2_0.html           «Zones of regulation»
+   XLP06      XLP06_2_0.html           «Te ara whakamana»
+   XLP06      XLP06_2_0.html           «Books to support emotional understandings»
+   XLP06      XLP06_2_0.html           «Online mindfulness resources to support self regul»

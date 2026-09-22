@@ -1,0 +1,7 @@
+changed paired pages 6: up 2 / down 1 / same 3; SCAFFOLD pp-sum +3.6 (mean +0.61pp per page); RAW pp-sum +5.5
+  CEDR401 CEDR401_0_0.html scaffold 40.6 -> 40.2 (-0.4)   raw 26.5 -> 28.0 (+1.4)
+  BLL260 BLL260_0_0.html scaffold 36.6 -> 36.6 (+0.0)   raw 28.5 -> 28.5 (+0.0)
+  CEDR204 CEDR204_0_0.html scaffold 37.6 -> 37.6 (+0.0)   raw 23.4 -> 23.5 (+0.0)
+  TWHK902 TWHK902_0_0.html scaffold 32.8 -> 32.8 (+0.0)   raw 29.0 -> 30.2 (+1.2)
+  TWHR905 TWHR905_0_0.html scaffold 49.1 -> 50.6 (+1.5)   raw 30.9 -> 32.7 (+1.8)
+  TWHA902 TWHA902_0_0.html scaffold 27.5 -> 29.9 (+2.5)   raw 18.3 -> 19.3 (+1.0)

@@ -1,0 +1,17 @@
+compare_structure per module (matched / exact / EXTRA / missing): baseline -> new
+  BLL260     21/  20/  0/  0 ->   21/  20/  0/  0   delta +0/+0/+0/+0
+  CEDR204    41/  34/  2/  2 ->   41/  34/  2/  2   delta +0/+0/+0/+0
+  CEDR401    50/  50/  0/  0 ->   50/  50/  0/  0   delta +0/+0/+0/+0
+  TWHA902    50/  46/  0/  0 ->   50/  46/  0/  0   delta +0/+0/+0/+0
+  TWHK902    29/  28/  0/  0 ->   29/  28/  0/  0   delta +0/+0/+0/+0
+  TWHR905    32/  30/  0/  2 ->   32/  30/  0/  2   delta +0/+0/+0/+0
+  TOTAL delta matched/exact/EXTRA/missing: +0/+0/+0/+0
+
+skeleton per page (scaffold): baseline -> new, the affected modules
+  BLL260   BLL260_0_0.html           36.6 ->  36.6   +0.0
+  CEDR204  CEDR204_0_0.html          37.6 ->  37.6   +0.0
+  CEDR401  CEDR401_0_0.html          40.2 ->  40.2   +0.0
+  TWHA902  TWHA902_0_0.html          29.9 ->  29.9   +0.0
+  TWHK902  TWHK902_0_0.html          32.8 ->  32.8   +0.0
+  TWHR905  TWHR905_0_0.html          50.6 ->  50.6   +0.0
+  up 0 / down 0, pp-sum +0.0
