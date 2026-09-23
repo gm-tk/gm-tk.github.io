@@ -1,8 +1,8 @@
 {
   "_meta": {
     "purpose": "Committed PROTECTED-gate baseline (efficiency lever 2). The shared corpus DRIFTS between sessions so the BUILD_CHANGELOG absolutes never line up exactly — without a committed baseline the only rigorous proof of hold-or-improve is a second full A/B regen pass (~8m/round). Diff THIS after a regen instead. Refresh it (and the build/round) every shipped round, AFTER the gates pass.",
-    "build": "260620.28",
-    "round": 458,
+    "build": "260620.29",
+    "round": 459,
     "date": "2026-09-24",
     "_round92_note": "Round 92 (ENGS302-01: side-alert-box-in-table + dragAndDrop activity wrapper / data-table capture / phantom-journal-button fix). Verified on a FULL 0-stale tightened regen vs the round-91 committed baseline (which matched the fast-loop baseline exactly: over 42 / any 181). PRIMARY skeleton IMPROVED (pages>=50% 524->539 +15, >=75% 65->70 +5, mean 47.8->48.2, median 49.3->49.8); compare_structure exact 5893->5902 (+9) / missing 261->252 (-9) / EXTRA 142 HELD; structural-clean 1290->1291 (95.0->95.1%) / leak 254->253 (-1) / leak pages 68->67 (-1); tags 9557/9557; flipCard divergence 0 (37/13/10/14); speechBubble defect 0. body_compare any 181->184 (+3) — the +3 over-capture (ENGC201-06, ENGR101-05, MXDB301-03) is the UNAVOIDABLE cost of capturing the dragAndDrop/activity DATA TABLE into the widget (the user's explicit fix): those tables ARE the widget's data the human BUILDS, but body_compare cannot credit Claude's un-built placeholder, and for these 3 the human keeps the table free. Net-positive per the MEASUREMENT MANDATE (judge a structural change FIRST on the skeleton, which improved +15) + the NET-POSITIVE convention. _round91_note: round 91 (ENGS302 emphasis-bullets/caption/media-url/lesson-name) shipped +1 skeleton / +1 compare exact / +2 missing.",
     "corpus": {
@@ -106,6 +106,7 @@
     "_note_r407": "Round 407: the heading-led numbered opener takes the owner form too (56 pages / 24 modules; SCOPED regeneration of the 24, scoped ship #2 since the r405 full). Skeleton 54.025 -> 54.084 (+0.0583pp; 38 movers 32 up / 6 down, named), >=50 1176 -> 1181, >=75 200 -> 202, >=90 18, RAW 38.012 -> 38.022; compare_structure exact 11779 (the text-matched pool 13813 -> 13794) / 172 / 626; body_compare over-capture 42, runaway 4 -> 5 (ENGI202_2_0, named), EMPTY 173 -> 170, ANY 218 -> 216; every other gate EXACT; every verifier RESULT identical to r406.",
     "_note_intake_2026_09_19": "INTAKE RE-BASELINE 2026-09-19 (the 98-module September intake + a FULL corpus regeneration, no engine change). The POPULATION GREW: skeleton pairs 1956 -> 2349, cs matched 13794 -> 15668, body/defect pages 2102 -> 2606, gated dirs 484. Every absolute below therefore moves, and the rate metrics fall, WITHOUT any regression. PROOF, measured by splitting each gate by population: the PRE-EXISTING modules reproduce the round-407 baseline EXACTLY -- skeleton 54.084% / >=50 1181 / >=75 202 / >=90 18; compare_structure exact 11779 / EXTRA 172 / missing 626 / row-wrap 23; body_compare runaway 5 / empty_container 170; leak 26 occ / 23 pages; clean 2079/2102 = 98.91%. _content_manifest.py fresh confirmed all 413 pre-existing modules BYTE-IDENTICAL to the manifest, so identical bytes cannot yield different metrics. All verifier gates matched baseline exactly: tags 9557/9557 0 failures, flipCard 61 (32/11/18) divergence 0, speechBubble defect 4, math 323/323 defect 0, menulabels 91 defect 0, dragAndDrop 21 defect 0, modal defect 0, mtkQuiz defect 0, entry parity PASS. The 98 new modules contribute the whole delta; 78 of them converted, 20 cannot yet (12 XOTP dialect, 7 with no Writers Template, PMT101's table-only opener).",
     "_note_s40_r12_full": "Session 40 Round 12 (2026-09-24; no engine change — the ship ledger's FULL backstop): all 545 regenerated with the r452 engine, 542 / 542 modules byte-identical to the scoped-shipped manifest, every number in this file re-proved EXACT on the full corpus (skeleton 54.7484 @ 2477, 0 movers). Ledger record-full --round 452 -> scoped #0.",
+    "_note_r459": "Round 459 (session 41 Round 7, 2026-09-24; the page-model lane) — THE MODULE INTRODUCTION STAYS ON THE OVERVIEW: AR-1 now also recognises the introduction typed BLACK, glued to another tag, behind a CS instruction tag, or as a heading ([H2] Introduction / [H1] **INTRODUCTION** / [H3] **MODULE INTRODUCTION**) — page_split.intro_cluster_forms, INTROFORM_OFF — and a lesson heading after a merged introduction opens its page (the r456 opener on that overview). SCOPED ship #6 since the r452 FULL: 17 modules, pages 2691 -> 2675, pairs 2518 -> 2524. SCAFFOLD 54.9291 -> 54.9376 (+0.0085pp; the pre-existing pairs +0.0264pp), >=50 1578 -> 1581, >=75 270 -> 275, >=90 24 -> 25; cs matched 18925 -> 19467, exact 16282 -> 16719 (+437); body ANY 240 -> 239. NAMED: cs EXTRA 199 -> 208 and missing 860 -> 896 (all on the +542 newly compared introduction elements — HIS1002 +167 / +32 missing), clean 2637/2683 -> 2621/2667 (98.28: the 16 removed pages were all clean; unclean held at 46); dips COM1005_0_0 -10.8 / DAN1003_0_0 -6.8 (their humans render the introduction inside a module-menu tab — no #body), COM1006_2_0 -9.4, XDLS501_4 -4.8; lost pair TEDC402-9.0 (the old intro page; the overview rose 59.0 -> 81.6). _fastloop_diff --accept-named, outputs/_r459_fastloop_named.log.",
     "_note_r458": "Round 458 (session 41 Round 6, 2026-09-24; the page-model lane — the over-split census) — A PLACEMENT NOTE IS NOT A PAGE BOUNDARY: '[Kōwhai Avatar – right hand side of the page]', '[Insert bookworm on right side of page …]' (BLLR201–203), '[Create two new colour boxes to go on the side of the page …]' (ART1006) and HIS1001's 'on the left of the whole page' no longer open pages (r245 lesson_boundary_guard.deny_position_pattern, POSNOTE_OFF). SCOPED ship #5 since the r452 FULL: 5 modules, pages 2700 -> 2691, pairs 2519 -> 2518 (ART1006_4.0 lost — that module's human restructured its pages). SCAFFOLD 54.8967 -> 54.9291 (+0.0324pp; the pre-existing pairs +46.1 pp-sum, 0 dips), >=50 1577 -> 1578; cs exact 16045 -> 16282 (+237, matched +261). NAMED: cs missing 847 -> 860 (+13 on the +261 newly matched BLLR elements), clean 2646/2692 -> 2637/2683 (98.29: the 9 removed pages were all clean; unclean held at 46). _fastloop_diff --accept-named, outputs/_r458_fastloop_named.log.",
     "_note_r457": "Round 457 (session 41 Round 5, 2026-09-24; the page-model lane — the over-split census) — THE SECTION-LABEL MARKER IS NOT A PAGE BOUNDARY: the inline '[lesson title]' label (PES1008 ×8) and the red '[Lesson Summary]' label before a short summary (HIS1002 ×9 of 10, MXFU402 ×2) no longer open a page (r245's lesson_boundary_guard deny_marker_pattern / deny_short_marker_pattern, LABELMARK_OFF); HIS1002's FIRST summary stays a boundary (lesson 2 has no marker of its own). SCOPED ship #4 since the r452 FULL: 3 modules, pages 2717 -> 2700, pairs 2520 -> 2519. SCAFFOLD 54.8705 -> 54.8967 (+0.0263pp; 9 up / 5 down ≤ 2.6), >=50 1575 -> 1577; cs exact 16024 -> 16045. NAMED: cs missing 840 -> 847 (+7 on +28 newly matched summary / menu elements), body ANY 239 -> 240 (PES1008_7_0: a pre-existing widget over-capture now visible because gold 7.0 pairs with its true page), clean 2663/2709 -> 2646/2692 (98.30 -> 98.29 — the 17 removed pages were all clean; the unclean count held at 46). _fastloop_diff --accept-named, outputs/_r457_fastloop_named.log.",
     "_note_r456": "Round 456 (session 41 Round 4, 2026-09-24; the recognition lane — the under-split census of Round 1) — THE MID-PAGE LESSON HEADING OPENS ITS LESSON PAGE: a lesson opened by a heading ('[H1] Lesson Four: …', '[H2] Lesson 2 …') or a black '[LESSON 5]' / 'LESSON 3' line with no [End page] before it was merged into the page before; PageSplitter now opens page N.0 there (page_split.mid_page_lesson_heading, MIDLESSON_OFF). SCOPED ship #3 since the r452 FULL: 22 modules, pages 2676 -> 2717, pairs 2487 -> 2520 (+37 new at a 53.9 mean, 4 lost to the gate's content pairing). SCAFFOLD 54.7680 -> 54.8705 (+0.1025pp; the pre-existing pairs +0.1177pp), >=50 1549 -> 1575, >=75 265 -> 270, >=90 23 -> 24; cs exact 15855 -> 16024, missing 840 held. NAMED: body ANY 238 -> 239 (the same flagged widgets moved with their content to renumbered / split pages — PHE1003 net +1), clean 2623/2668 -> 2663/2709 (98.31 -> 98.30: 40 of the 41 new pages clean; the 41st is CBI1008's split leaking page), leak 75 occ held / pages 45 -> 46 (CBI1008's page with 2 leak occurrences is now two pages with one each). _fastloop_diff --accept-named, outputs/_r456_fastloop_named.log.",
@@ -156,13 +157,14 @@
     "_note_r408": "Round 408 (session 28 Task 1): the mined registries rebuilt over the 552-module gold corpus (Module_Structure_Index / Granular / 24 new Style-Anchor bases + floor-flip corrections / Menu / Convention / lexicon / feature index / legacy consensus; data/Subject_Prefix_Map.json PROPOSED). SCOPED regeneration of the 103 modules the probe named (OFF = pre snapshot 2613/2613; scoped ship #1 since the 19 Sept full). Skeleton 53.134 -> 53.680 (+0.5455pp; 275 movers 197 up / 76 down, 0 outside the set, the 1813 unaffected pairs EXACT), >=50 1378 -> 1398, >=75 228 -> 236, >=90 19 -> 20, RAW 37.487 -> 37.884; compare_structure exact 13410 -> 14091 (the text-matched pool 15668 -> 16414) / EXTRA 184 -> 186 / MISSING 685 -> 690 (inside five newly single-file WJFUN / JPFUN modules) / row-wrap 23; body_compare over-capture 54 (the 19 Sept fast-loop snapshot's own value — the re-base had carried r407's 42; corrected here), runaway 6, EMPTY 192 -> 190, ANY 250 -> 248; defect clean 2504/2548 = 98.27 (58 clean WJFUN / JPFUN extra pages left the population; defect pages 44 / leak 73 EXACT); every verifier EXACT."
   },
   "skeleton": {
-    "mean_scaffold_pct": 54.93,
+    "mean_scaffold_pct": 54.94,
     "median_scaffold_pct": 56.0,
-    "pages_ge_50": 1578,
-    "pages_ge_75": 270,
-    "pages_ge_90": 24,
-    "raw_mean_pct": 38.92,
-    "pairs": 2518,
+    "pages_ge_50": 1581,
+    "pages_ge_75": 275,
+    "pages_ge_90": 25,
+    "raw_mean_pct": 38.93,
+    "pairs": 2524,
+    "_note_r459_state": "r459 (the introduction on the overview): SCAFFOLD 54.9291 @ 2518 -> 54.9376 @ 2524 (+0.0085pp; pre-existing +0.0264pp), RAW 38.917 -> 38.934; 27 new-only / 21 gone Claude pages, 0 movers outside the affected set. outputs/_r459_sk_final.json, _r459_skdelta.log, _r459_prescore2.log, _r459_split.py.",
     "_note_r458_state": "r458 (the placement note): SCAFFOLD 54.8967 @ 2519 -> 54.9291 @ 2518 (+0.0324pp), RAW 38.896 -> 38.917; the pre-existing pairs +46.1 pp-sum with 0 dips by gold page (outputs/_r458_split.py); 0 movers outside the affected set. outputs/_r458_sk_final.json, _r458_skdelta.log, _r458_prescore.log.",
     "_note_r457_state": "r457 (the section-label marker): SCAFFOLD 54.8705 @ 2520 -> 54.8967 @ 2519 (+0.0263pp), RAW 38.878 -> 38.896; movers 14 (9 up / 5 down), pp-sum +16.5, 6 new-only / 7 gone Claude pages, 0 outside the affected set; the one lost pair PES1008_3.0 (the human splits lesson 3 into 3.0 / 3.1). outputs/_r457_sk_final.json, _r457_skdelta.log, _r457_prescore2.log.",
     "_note_r456_state": "r456 (the mid-page lesson heading): SCAFFOLD 54.7680 @ 2487 -> 54.8705 @ 2520 (+0.1025pp; the pre-existing population +0.1177pp), RAW 38.726 -> 38.878; movers 40 (29 up / 11 down, 5 of the downs re-pairings — MXDI301_02.0, GEO1004_1_0, MXDB301_6.0, COM1005_3_0, MXFL202_5.0), pp-sum +266.7; 42 new-only / 9 gone Claude pages; 0 movers outside the affected set. outputs/_r456_sk_final.json, _r456_skdelta.log, _r456_prescore.log, _r456_split.py.",
@@ -257,9 +259,9 @@
     "_note_r408": "Round 408: SCAFFOLD 53.1341 -> 53.6797 (+0.5455pp; 275 movers, 197 up / 76 down, pp-sum +725.6 — GEO1006_3_0 -11.3, GEO1004_1_0 -9.4, ENGS404_6_1 -8.2, PWY1001_2_3_0 -7.0, CHI1003_8_0 -5.0), >=50 1398, >=75 236, >=90 20; RAW 37.487 -> 37.884; 2349 pairs / 0 skipped. State outputs/_s28_t1_sk_final.json."
   },
   "compare_structure": {
-    "exact_chain": 16282,
-    "claude_extra_container": 199,
-    "claude_missing_container": 860,
+    "exact_chain": 16719,
+    "claude_extra_container": 208,
+    "claude_missing_container": 896,
     "row_wrap_missing": 24,
     "_note_r453": "r453: matched 18178 -> 18463 (+285 restored TRR overview / lesson elements); exact 15657 -> 15855; EXTRA 199 held; missing 796 -> 840 (+44 — all on the newly compared restored content: TRR304 lesson 1 +28 on +148 matched, the six overview introductions +2 each; the modules whose page set did not change moved +0); row-wrap 24 held. NAMED.",
     "_note_r352": "Round 352: exact 11464 → 11607 (+143, the restored sections); missing 607 → 617 NAMED — the 44 pages whose carousel reverts to the honest hand-off box (a trailing [video]/[image], words between slide tables, a leading heading) no longer show the gold's row.carousel container. Hold-or-improve from here.",
@@ -302,8 +304,8 @@
     "_note_r408": "Round 408: exact 13410 -> 14091 (pool 15668 -> 16414), EXTRA 184 -> 186 (WJFUN206), MISSING 685 -> 690 (JPFUN01 / WJFUN108 / WJFUN109 +1, WJFUN304 +2), row-wrap 23; every unaffected module EXACT."
   },
   "body_compare": {
-    "any_breakdown": 240,
-    "over_capture": 62,
+    "any_breakdown": 239,
+    "over_capture": 61,
     "runaway": 5,
     "empty_container": 176,
     "_note_r453": "r453: pages 2658 -> 2668; ANY 237 -> 238 (+1 TRR108_0_0 over-capture 0.88 — the restored introduction table carries the writer's [Tabs: Can these tabs please be an option at the top of the page …] request, so the scanner hands it off as a tabs widget (A1, the r235 hand-off box); before r453 the whole introduction was trimmed). over 58 -> 59, runaway 5, empty 176. NAMED.",
@@ -346,9 +348,9 @@
     "_note_r408": "Round 408: over-capture 54 (the 19 Sept fast-loop snapshot value; gate_baseline had carried r407's 42), runaway 6, EMPTY 192 -> 190, ANY 250 -> 248 (WJFUN304); every unaffected module EXACT."
   },
   "structural_defect": {
-    "clean_pages": 2637,
-    "total_pages": 2683,
-    "clean_pct": 98.29,
+    "clean_pages": 2621,
+    "total_pages": 2667,
+    "clean_pct": 98.28,
     "literal_tag_leak_occ": 75,
     "leak_pages": 46,
     "_note_r453": "r453: 2613/2658 -> 2623/2668 clean (the 10 restored pages are clean); leak 75 occ / 45 pages HELD.",

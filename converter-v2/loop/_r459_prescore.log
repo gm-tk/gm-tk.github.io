@@ -1,0 +1,185 @@
+
+## ART1006: pairs 3 -> 5
+   ART1006_0.0.html         OLD ART1006_0_0.html    47.1  NEW ART1006_0_0.html    47.1 (raw  53.7)
+   ART1006_1.0.html         OLD ART1006_2_0.html    29.6  NEW ART1006_1_0.html    29.6 (raw  21.2)
+   ART1006_2.0.html         OLD —                    ——  NEW ART1006_2_0.html    22.5 (raw  22.5)
+   ART1006_3.0.html         OLD ART1006_4_0.html    43.8  NEW ART1006_3_0.html    43.8 (raw  41.1)
+   ART1006_4.0.html         OLD —                    ——  NEW ART1006_4_0.html    19.5 (raw  15.7)
+   module sum 120.4 over 3 -> 162.4 over 5  (mean 40.1 -> 32.5)
+
+## CBI1009: pairs 4 -> 4
+   CBI1009_0_0.html         OLD CBI1009_0_0.html    64.4  NEW CBI1009_0_0.html    71.2 (raw  50.6)
+   CBI1009_1_0.html         OLD CBI1009_2_0.html    27.4  NEW CBI1009_1_0.html    27.4 (raw  19.0)
+   CBI1009_3_0.html         OLD CBI1009_3_0.html    23.8  NEW CBI1009_3_0.html    23.8 (raw  15.6)
+   CBI1009_4_0.html         OLD CBI1009_4_0.html    34.1  NEW CBI1009_4_0.html    34.1 (raw  31.1)
+   module sum 149.6 over 4 -> 156.4 over 4  (mean 37.4 -> 39.1)
+
+## COM1005: pairs 7 -> 9
+   COM1005_0_0.html         OLD COM1005_0_0.html    67.9  NEW COM1005_0_0.html    57.1 (raw  48.0)
+   COM1005_1_0.html         OLD COM1005_2_0.html    56.0  NEW COM1005_1_0.html    56.0 (raw  52.6)
+   COM1005_2_0.html         OLD —                    ——  NEW COM1005_2_0.html    30.0 (raw  19.3)
+   COM1005_3_0.html         OLD COM1005_4_0.html    46.6  NEW COM1005_3_0.html    48.7 (raw  43.9)
+   COM1005_4_0.html         OLD COM1005_5_0.html    46.4  NEW COM1005_4_0.html    46.4 (raw  31.0)
+   COM1005_5_0.html         OLD COM1005_6_0.html    60.1  NEW COM1005_5_0.html    60.1 (raw  63.1)
+   COM1005_6_0.html         OLD COM1005_7_0.html    47.9  NEW COM1005_6_0.html    47.9 (raw  33.3)
+   COM1005_7_0.html         OLD COM1005_8_0.html    56.2  NEW COM1005_7_0.html    56.2 (raw  30.7)
+   COM1005_8_0.html         OLD —                    ——  NEW COM1005_8_0.html    56.1 (raw  21.1)
+   module sum 381.2 over 7 -> 458.6 over 9  (mean 54.5 -> 51.0)
+
+## COM1006: pairs 8 -> 9
+   COM1006_0_0.html         OLD COM1006_0_0.html    77.6  NEW COM1006_0_0.html    80.0 (raw  58.3)
+   COM1006_1_0.html         OLD COM1006_1_0.html    65.6  NEW COM1006_1_0.html    72.7 (raw  63.4)
+   COM1006_2_0.html         OLD COM1006_2_0.html    58.1  NEW COM1006_2_0.html    48.7 (raw  41.1)
+   COM1006_3_0.html         OLD COM1006_3_0.html    48.8  NEW COM1006_3_0.html    54.9 (raw  38.8)
+   COM1006_4_0.html         OLD COM1006_5_0.html    48.8  NEW COM1006_4_0.html    48.8 (raw  40.6)
+   COM1006_5_0.html         OLD COM1006_6_0.html    55.2  NEW COM1006_5_0.html    55.2 (raw  46.4)
+   COM1006_6_0.html         OLD —                    ——  NEW COM1006_6_0.html    76.2 (raw  55.9)
+   COM1006_7_0.html         OLD COM1006_8_0.html    66.7  NEW COM1006_7_0.html    66.7 (raw  66.7)
+   COM1006_8_0.html         OLD COM1006_9_0.html    65.6  NEW COM1006_8_0.html    65.6 (raw  65.6)
+   module sum 486.4 over 8 -> 568.7 over 9  (mean 60.8 -> 63.2)
+
+## DAN1003: pairs 9 -> 9
+   DAN1003_0_0.html         OLD DAN1003_0_0.html    56.5  NEW DAN1003_0_0.html    49.7 (raw  41.9)
+   DAN1003_1_0.html         OLD DAN1003_2_0.html    62.6  NEW DAN1003_1_0.html    62.6 (raw  62.6)
+   DAN1003_2_0.html         OLD DAN1003_3_0.html    58.1  NEW DAN1003_2_0.html    58.1 (raw  58.1)
+   DAN1003_3_0.html         OLD DAN1003_4_0.html    59.3  NEW DAN1003_3_0.html    59.3 (raw  59.3)
+   DAN1003_4_0.html         OLD DAN1003_5_0.html    67.4  NEW DAN1003_4_0.html    67.4 (raw  67.4)
+   DAN1003_6_0.html         OLD DAN1003_6_0.html    56.2  NEW DAN1003_5_0.html    56.2 (raw  45.0)
+   DAN1003_7_0.html         OLD DAN1003_7_0.html    55.8  NEW DAN1003_6_0.html    55.8 (raw  55.8)
+   DAN1003_8_0.html         OLD DAN1003_8_0.html    56.4  NEW DAN1003_7_0.html    56.4 (raw  51.2)
+   DAN1003_9_0.html         OLD DAN1003_9_0.html    57.1  NEW DAN1003_8_0.html    57.1 (raw  45.9)
+   module sum 529.4 over 9 -> 522.6 over 9  (mean 58.8 -> 58.1)
+
+## DAN1004: pairs 9 -> 7
+   DAN1004_0_0.html         OLD DAN1004_0_0.html    71.7  NEW DAN1004_0_0.html    45.7 (raw  42.5)
+   DAN1004_1_0.html         OLD DAN1004_1_0.html    43.1  NEW —                    ——
+   DAN1004_2_0.html         OLD DAN1004_2_0.html    56.7  NEW —                    ——
+   DAN1004_3_0.html         OLD DAN1004_3_0.html    70.3  NEW DAN1004_1_0.html    70.3 (raw  70.3)
+   DAN1004_4_0.html         OLD DAN1004_4_0.html    64.7  NEW DAN1004_4_0.html    64.7 (raw  64.7)
+   DAN1004_5_0.html         OLD DAN1004_5_0.html    59.4  NEW DAN1004_5_0.html    59.4 (raw  59.4)
+   DAN1004_6_0.html         OLD DAN1004_6_0.html    63.9  NEW DAN1004_6_0.html    63.9 (raw  63.9)
+   DAN1004_7_0.html         OLD DAN1004_7_0.html    59.7  NEW DAN1004_7_0.html    59.7 (raw  55.6)
+   DAN1004_8_0.html         OLD DAN1004_9_0.html    57.1  NEW DAN1004_9_0.html    57.1 (raw  35.0)
+   module sum 546.6 over 9 -> 420.8 over 7  (mean 60.7 -> 60.1)
+
+## ENGR102: pairs 6 -> 6
+   ENGR102_00.0.html        OLD ENGR102_1_0.html    43.9  NEW ENGR102_0_0.html    48.2 (raw  27.0)
+   ENGR102_01.0.html        OLD ENGR102_2_0.html    60.3  NEW ENGR102_1_0.html    60.3 (raw  42.0)
+   ENGR102_02.0.html        OLD ENGR102_3_0.html    36.1  NEW ENGR102_2_0.html    36.1 (raw  18.6)
+   ENGR102_03.0.html        OLD ENGR102_4_0.html    31.2  NEW ENGR102_3_0.html    31.2 (raw  26.9)
+   ENGR102_04.0.html        OLD ENGR102_5_0.html    26.2  NEW ENGR102_4_0.html    26.2 (raw  23.2)
+   ENGR102_05.0.html        OLD ENGR102_6_0.html    51.5  NEW ENGR102_5_0.html    51.5 (raw  28.3)
+   module sum 249.1 over 6 -> 253.4 over 6  (mean 41.5 -> 42.2)
+
+## GEO1004: pairs 3 -> 3
+   GEO1004_0_0.html         OLD GEO1004_0_0.html    70.4  NEW GEO1004_0_0.html    70.4 (raw  47.6)
+   GEO1004_1_0.html         OLD GEO1004_2_0.html    52.5  NEW GEO1004_1_0.html    52.5 (raw  33.1)
+   GEO1004_3_0.html         OLD GEO1004_3_0.html    66.0  NEW GEO1004_3_0.html    66.0 (raw  41.6)
+   module sum 188.8 over 3 -> 188.8 over 3  (mean 62.9 -> 62.9)
+
+## HES1006: pairs 6 -> 7
+   HES1006_0.0.html         OLD HES1006_0_0.html    69.6  NEW HES1006_0_0.html    69.6 (raw  53.3)
+   HES1006_1.0.html         OLD HES1006_2_0.html    55.3  NEW HES1006_1_0.html    57.4 (raw  42.9)
+   HES1006_2.0.html         OLD HES1006_3_0.html    59.4  NEW HES1006_2_0.html    59.4 (raw  42.0)
+   HES1006_3.0.html         OLD —                    ——  NEW HES1006_3_0.html    59.3 (raw  49.0)
+   HES1006_4.0.html         OLD HES1006_5_0.html    51.4  NEW HES1006_4_0.html    51.4 (raw  51.4)
+   HES1006_5.0.html         OLD HES1006_6_0.html    64.6  NEW HES1006_5_0.html    64.6 (raw  37.3)
+   HES1006_6.0.html         OLD HES1006_7_0.html    70.7  NEW HES1006_6_0.html    70.7 (raw  25.5)
+   module sum 371.0 over 6 -> 432.3 over 7  (mean 61.8 -> 61.8)
+
+## HIS1002: pairs 11 -> 11
+   HIS1002-0.0.html         OLD HIS1002_0_0.html    56.0  NEW HIS1002_0_0.html    56.0 (raw  32.0)
+   HIS1002-1.0.html         OLD HIS1002_2_0.html    61.3  NEW HIS1002_1_0.html    61.3 (raw  48.7)
+   HIS1002-10.0.html        OLD HIS1002_11_0.html   15.8  NEW HIS1002_10_0.html   15.8 (raw  12.0)
+   HIS1002-2.0.html         OLD HIS1002_3_0.html    32.9  NEW HIS1002_2_0.html    32.9 (raw  22.7)
+   HIS1002-3.0.html         OLD HIS1002_4_0.html    60.0  NEW HIS1002_3_0.html    60.0 (raw  34.5)
+   HIS1002-4.0.html         OLD HIS1002_5_0.html    41.4  NEW HIS1002_4_0.html    46.0 (raw  35.2)
+   HIS1002-5.0.html         OLD HIS1002_6_0.html    55.6  NEW HIS1002_5_0.html    54.1 (raw  46.9)
+   HIS1002-6.0.html         OLD HIS1002_7_0.html    45.8  NEW HIS1002_6_0.html    45.8 (raw  38.3)
+   HIS1002-7.0.html         OLD HIS1002_8_0.html    34.0  NEW HIS1002_7_0.html    34.7 (raw  27.3)
+   HIS1002-8.0.html         OLD HIS1002_9_0.html    69.4  NEW HIS1002_8_0.html    69.4 (raw  46.3)
+   HIS1002-9.0.html         OLD HIS1002_10_0.html   50.3  NEW HIS1002_9_0.html    50.3 (raw  30.0)
+   module sum 522.5 over 11 -> 526.3 over 11  (mean 47.5 -> 47.8)
+
+## MUS1004: pairs 10 -> 10
+   MUS1004_0_0.html         OLD MUS1004_0_0.html    69.2  NEW MUS1004_0_0.html    76.2 (raw  42.6)
+   MUS1004_1_0.html         OLD MUS1004_2_0.html    68.2  NEW MUS1004_1_0.html    68.2 (raw  41.8)
+   MUS1004_1_1.html         OLD MUS1004_3_0.html    38.1  NEW MUS1004_2_0.html    38.1 (raw  27.6)
+   MUS1004_2_0.html         OLD MUS1004_4_0.html    53.3  NEW MUS1004_3_0.html    53.3 (raw  53.3)
+   MUS1004_3_0.html         OLD MUS1004_5_0.html    64.4  NEW MUS1004_4_0.html    64.4 (raw  53.5)
+   MUS1004_4_0.html         OLD MUS1004_6_0.html    49.8  NEW MUS1004_5_0.html    49.8 (raw  47.4)
+   MUS1004_5_0.html         OLD MUS1004_7_0.html    38.8  NEW MUS1004_6_0.html    38.8 (raw  36.2)
+   MUS1004_6_0.html         OLD MUS1004_8_0.html    44.7  NEW MUS1004_7_0.html    44.7 (raw  41.7)
+   MUS1004_7_0.html         OLD MUS1004_9_0.html    25.5  NEW MUS1004_8_0.html    25.5 (raw  22.9)
+   MUS1004_8_0.html         OLD MUS1004_10_0.html   61.3  NEW MUS1004_9_0.html    61.3 (raw  39.6)
+   module sum 513.4 over 10 -> 520.3 over 10  (mean 51.3 -> 52.0)
+
+## MXDI101: pairs 9 -> 9
+   MXDI101_0.0.html         OLD MXDI101_0_0.html    55.3  NEW MXDI101_0_0.html    64.2 (raw  39.8)
+   MXDI101_1.0.html         OLD MXDI101_1_2.html    44.9  NEW MXDI101_2_0.html    44.9 (raw  29.6)
+   MXDI101_2.0.html         OLD MXDI101_1_3.html    32.4  NEW MXDI101_3_0.html    32.4 (raw  22.3)
+   MXDI101_3.0.html         OLD MXDI101_1_4.html    54.8  NEW MXDI101_4_0.html    54.8 (raw  23.1)
+   MXDI101_4.0.html         OLD MXDI101_1_5.html    58.4  NEW MXDI101_5_0.html    58.4 (raw  27.6)
+   MXDI101_5.0.html         OLD MXDI101_1_6.html    56.5  NEW MXDI101_6_0.html    56.5 (raw  30.2)
+   MXDI101_6.0.html         OLD MXDI101_1_7.html    42.9  NEW MXDI101_7_0.html    42.9 (raw  10.5)
+   MXDI101_7.0.html         OLD MXDI101_1_8.html    48.2  NEW MXDI101_8_0.html    48.2 (raw  41.9)
+   MXDI101_8.0.html         OLD MXDI101_1_9.html    50.0  NEW MXDI101_9_0.html    50.0 (raw  26.8)
+   module sum 443.6 over 9 -> 452.4 over 9  (mean 49.3 -> 50.3)
+
+## MXEO201: pairs 9 -> 9
+   MXEO201_00.0.html        OLD MXEO201_0_0.html    80.9  NEW MXEO201_0_0.html    92.3 (raw  48.6)
+   MXEO201_01.0.html        OLD MXEO201_2_0.html    66.7  NEW MXEO201_1_0.html    66.7 (raw  35.8)
+   MXEO201_01.1.html        OLD MXEO201_3_0.html    72.5  NEW MXEO201_2_0.html    72.5 (raw  71.7)
+   MXEO201_02.0.html        OLD MXEO201_4_0.html    70.7  NEW MXEO201_3_0.html    70.7 (raw  65.5)
+   MXEO201_02.1.html        OLD MXEO201_5_0.html    78.3  NEW MXEO201_4_0.html    78.3 (raw  58.3)
+   MXEO201_03.0.html        OLD MXEO201_6_0.html    47.1  NEW MXEO201_5_0.html    47.1 (raw  22.8)
+   MXEO201_03.1.html        OLD MXEO201_7_0.html    77.1  NEW MXEO201_6_0.html    77.1 (raw  68.2)
+   MXEO201_04.0.html        OLD MXEO201_8_0.html    72.0  NEW MXEO201_7_0.html    72.0 (raw  63.4)
+   MXEO201_04.1.html        OLD MXEO201_9_0.html    81.5  NEW MXEO201_8_0.html    81.5 (raw  50.6)
+   module sum 646.7 over 9 -> 658.1 over 9  (mean 71.9 -> 73.1)
+
+## PES1005: pairs 10 -> 11
+   PES1005_0.0.html         OLD PES1005_0_0.html    78.3  NEW PES1005_0_0.html    78.3 (raw  38.7)
+   PES1005_1.0.html         OLD PES1005_2_0.html    60.1  NEW PES1005_1_0.html    60.1 (raw  60.1)
+   PES1005_10.0.html        OLD PES1005_11_0.html   55.7  NEW PES1005_10_0.html   55.7 (raw  35.5)
+   PES1005_2.0.html         OLD PES1005_3_0.html    66.0  NEW PES1005_2_0.html    66.0 (raw  66.0)
+   PES1005_3.0.html         OLD —                    ——  NEW PES1005_3_0.html    76.0 (raw  66.7)
+   PES1005_4.0.html         OLD PES1005_5_0.html    54.2  NEW PES1005_4_0.html    54.2 (raw  47.1)
+   PES1005_5.0.html         OLD PES1005_6_0.html    59.4  NEW PES1005_5_0.html    65.3 (raw  60.3)
+   PES1005_6.0.html         OLD PES1005_7_0.html    75.4  NEW PES1005_6_0.html    75.4 (raw  53.0)
+   PES1005_7.0.html         OLD PES1005_8_0.html    61.0  NEW PES1005_7_0.html    61.0 (raw  56.2)
+   PES1005_8.0.html         OLD PES1005_9_0.html    63.5  NEW PES1005_8_0.html    63.5 (raw  55.3)
+   PES1005_9.0.html         OLD PES1005_10_0.html   49.6  NEW PES1005_9_0.html    51.1 (raw  40.8)
+   module sum 623.2 over 10 -> 706.6 over 11  (mean 62.3 -> 64.2)
+
+## TEDC402: pairs 10 -> 9
+   TEDC402-1.0.html         OLD TEDC402_2_0.html    30.7  NEW TEDC402_1_0.html    29.3 (raw  16.2)
+   TEDC402-2.0.html         OLD TEDC402_3_0.html    49.7  NEW TEDC402_2_0.html    49.7 (raw  24.6)
+   TEDC402-3.0.html         OLD TEDC402_4_0.html    44.6  NEW TEDC402_3_0.html    44.6 (raw  23.5)
+   TEDC402-4.0.html         OLD TEDC402_5_0.html    32.2  NEW TEDC402_4_0.html    32.5 (raw  18.0)
+   TEDC402-5.0.html         OLD TEDC402_6_0.html    36.3  NEW TEDC402_5_0.html    36.3 (raw  18.4)
+   TEDC402-6.0.html         OLD TEDC402_7_0.html    45.6  NEW TEDC402_6_0.html    45.6 (raw  26.6)
+   TEDC402-7.0.html         OLD TEDC402_8_0.html    35.9  NEW TEDC402_7_0.html    35.9 (raw  21.2)
+   TEDC402-8.0.html         OLD TEDC402_9_0.html    42.7  NEW TEDC402_8_0.html    42.7 (raw  25.2)
+   TEDC402-9.0.html         OLD TEDC402_1_0.html    58.5  NEW —                    ——
+   TEDC402.html             OLD TEDC402_0_0.html    59.0  NEW TEDC402_0_0.html    81.6 (raw  37.6)
+   module sum 435.2 over 10 -> 398.2 over 9  (mean 43.5 -> 44.2)
+
+## XDLS501: pairs 4 -> 4
+   XDLS501.00.html          OLD XDLS501_1_0.html    41.2  NEW XDLS501_0_0.html    43.5 (raw  38.6)
+   XDLS501.01.html          OLD XDLS501_2_0.html    31.1  NEW XDLS501_1_0.html    31.1 (raw  24.4)
+   XDLS501.03.html          OLD XDLS501_3_0.html    30.6  NEW XDLS501_2_0.html    30.6 (raw  23.5)
+   XDLS501.04.html          OLD XDLS501_4_0.html    21.2  NEW XDLS501_4_0.html    16.4 (raw   9.4)
+   module sum 124.1 over 4 -> 121.6 over 4  (mean 31.0 -> 30.4)
+
+## XFUN02: pairs 6 -> 6
+   XFUN02.00.html           OLD XFUN02_0_0.html     54.5  NEW XFUN02_0_0.html     54.5 (raw  62.2)
+   XFUN02.01.html           OLD XFUN02_2_0.html     60.0  NEW XFUN02_1_0.html     60.0 (raw  38.8)
+   XFUN02.02.html           OLD XFUN02_3_0.html     71.5  NEW XFUN02_2_0.html     71.5 (raw  52.0)
+   XFUN02.03.html           OLD XFUN02_4_0.html     59.3  NEW XFUN02_3_0.html     59.3 (raw  33.6)
+   XFUN02.04.html           OLD XFUN02_5_0.html     59.4  NEW XFUN02_4_0.html     59.4 (raw  46.9)
+   XFUN02.05.html           OLD XFUN02_6_0.html     65.1  NEW XFUN02_5_0.html     65.1 (raw  50.6)
+   module sum 369.8 over 6 -> 369.8 over 6  (mean 61.6 -> 61.6)
+
+changed modules: pairs 124 -> 128; pp-sum 6700.8 -> 6917.5 (+216.7)
+corpus: 54.9291 % @ 2518 -> ≈ 54.9279 % @ 2522  (-0.0012pp);  >=50 +1, >=75 +4

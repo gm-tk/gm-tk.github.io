@@ -1,0 +1,24 @@
+re-scoring 29 affected module(s): ART1003 ART1006 BLL216 BLL264 BLL275 BLL276 CBI1009 CHFUN05 COM1005 COM1006 DAN1003 DAN1004 ENGI201 ENGJ403 ENGR102 ENGS404 GEO1004 HES1006 HIS1002 HPFUN303 MUS1004 MXDI101 MXEO201 PES1005 SSFUN06 TEDC402 TWHA902 XDLS501 XFUN02
+baseline taken: 2026-09-23T22:27:58Z
+(unaffected modules unchanged by construction — corpus aggregate moves by exactly the affected-set delta)
+
+  metric                                 baseline        new     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  54.93      54.94     +0.01  IMPROVED
+  skeleton pages >=50%                       1578       1581        +3  IMPROVED
+  skeleton pages >=75%                        270        275        +5  IMPROVED
+  compare_structure exact chain             16282      16719      +437  IMPROVED
+  compare_structure EXTRA container           199        208        +9  REGRESSED
+  compare_structure missing container         860        896       +36  REGRESSED
+  body_compare ANY breakdown                  240        239        -1  IMPROVED
+  defect structurally-clean %               98.29      98.28     -0.01  REGRESSED
+  literal-[tag] leak (occ)                     75         75         0  HELD
+  literal-[tag] leak (pages)                   46         46         0  HELD
+
+  context (no pass/fail): sk_pages: 2518->2524  cs_matched: 18925->19467  body_pages: 2683->2667  df_total: 2683->2667  df_clean: 2637->2621
+
+RESULT: MOVED, ACCEPTED AS NAMED — compare_structure EXTRA container, compare_structure missing container, defect structurally-clean %
+        Every mover was named on the command line and must be decomposed in the
+        round's changelog entry (which page, which mechanism). Recorded in the manifest.
+[commit] fast-loop baseline PATCHED (2524 pages) + content manifest refreshed — this is now the shipped state the next inner loop measures against.
+[commit] recorded accepted named movement: compare_structure EXTRA container, compare_structure missing container, defect structurally-clean %
