@@ -78,3 +78,47 @@ def gate_mods(root):
     """mods(root) minus the compare exclusions — the population every scored gate measures."""
     ex = excluded()
     return [c for c in mods(root) if c not in ex]
+
+# ---------------------------------------------------------------------------------------------------------------------
+# ROUND 440 (Chris's decision D13-6, 2026-09-23): WHICH GOLD PAGES a module's pairing may use. Five gold folders hold
+# two builds (a single-file tabbed page AND split pages) plus one stray Claude-made file; compare_gold_pages.txt names
+# the gold file(s) each is scored against. Every pairing path calls gold_pages() on its gold listing — pairs() (the
+# skeleton gate and the miner), compare_structure.py and body_compare.py — so all gates see one population.
+# Env GOLDPAGES_OFF=1 ignores the file (every gold .html, the pre-r440 pairing).
+GOLD_PAGES_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "compare_gold_pages.txt")
+
+def _gold_rules():
+    """{code: [(verb, argument)]} from compare_gold_pages.txt; empty when the file is absent or GOLDPAGES_OFF is set."""
+    if os.environ.get("GOLDPAGES_OFF"):
+        return {}
+    rules = {}
+    try:
+        with open(GOLD_PAGES_FILE, encoding="utf-8") as f:
+            for ln in f:
+                ln = ln.split("#", 1)[0].strip()
+                parts = ln.split(None, 2)
+                if len(parts) == 3:
+                    rules.setdefault(parts[0], []).append((parts[1].lower(), parts[2].strip()))
+    except FileNotFoundError:
+        pass
+    return rules
+
+def gold_pages(code, files):
+    """Filter a module's gold .html basenames: drop every `exclude`, then keep only the `only` files when any are
+    named. Order is preserved; a module with no rule gets its listing back unchanged."""
+    r = _gold_rules().get(code)
+    if not r:
+        return list(files)
+    excl = {a for v, a in r if v == "exclude"}
+    only = {a for v, a in r if v == "only"}
+    out = [f for f in files if f not in excl]
+    return [f for f in out if f in only] if only else out
+
+def gold_pins(code):
+    """[(claude_file, gold_file)] from the module's `pin` lines — pairs() pairs them before its content match."""
+    out = []
+    for v, a in _gold_rules().get(code, []):
+        if v == "pin" and "=" in a:
+            c, g = (s.strip() for s in a.split("=", 1))
+            out.append((c, g))
+    return out

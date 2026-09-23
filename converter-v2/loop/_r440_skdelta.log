@@ -1,0 +1,11 @@
+OLD pairs 2491  SCAFFOLD 54.6077%  RAW 38.418%  >=50 1549  >=75 256  >=90 23
+NEW pairs 2470  SCAFFOLD 54.7442%  RAW 38.524%  >=50 1543  >=75 256  >=90 23
+delta SCAFFOLD +0.1365pp  RAW +0.105pp  >=50 -6  >=75 +0  >=90 +0
+movers 5 (up 4 / down 1), pp-sum +94.1
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 21
+  CEDK501    CEDK501_0_0.html           25.0 ->   72.1  (+47.1)
+  CEDT301    CEDT301_6_0.html            7.4 ->   35.0  (+27.6)
+  CEDT207    CEDT207_0_0.html           14.2 ->   30.9  (+16.6)
+  MXFUN01    MXFUN01_0_0.html            0.7 ->    5.5  (+4.8)
+  BLL240     BLL240_0_0.html            60.8 ->   58.8  (-2.0)

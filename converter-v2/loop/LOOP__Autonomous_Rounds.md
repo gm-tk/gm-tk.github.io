@@ -92,15 +92,15 @@ header.
 
 **The census it prints changed on 19–20 September 2026** (the 98-module intake) and again on
 21 September (PMT101 converts, r423); any older figure in `LOOP_STATE.md` or a changelog entry
-is pre-intake. Current (23 September 2026, build 260620.09 — after the 22 Sept Round 0d and r426–r436: the 12 XOTP modules and the 38 pre-intake never-converted modules are IN; r426 folded 45 over-split pages into 8 single pages; r427 changed chip text only):
+is pre-intake. Current (23 September 2026, build 260620.11 — after the 22 Sept Round 0d and r426–r440: the 12 XOTP modules and the 38 pre-intake never-converted modules are IN; r426 folded 45 over-split pages into 8 single pages; r427 changed chip text only; r440 (D13-6) built MXFUN01 / BLL240 / CEDT207 as one page each and re-paired the five dual-build golds — 2,699 → 2,666 pages, 2,491 → 2,470 pairs):
 
 | | before the intake | now |
 |---|---:|---:|
 | Claude module dirs | 416 | **545** |
-| Claude pages | 2,109 | **2,699** |
+| Claude pages | 2,109 | **2,666** |
 | gold dirs | 454 | **552** |
 | Writers Template / Media List docx | 619 | **762** |
-| skeleton paired pages | 1,956 | **2,491** |
+| skeleton paired pages | 1,956 | **2,470** |
 
 **552 gold dirs against 545 Claude dirs is CORRECT, not a fault — the gap is exactly the 7 with no source.**
 The 7 (`GER1003–1007`, `SAM1005`, `SAM1006`) have no Writers Template at all (§2). The 12 XOTP modules joined the

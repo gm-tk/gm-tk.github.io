@@ -1,0 +1,29 @@
+# compare_gold_pages.txt — WHICH GOLD PAGES a module's scored pairing may use (ROUND 440, Chris's decision D13-6, 2026-09-23).
+#
+# Most gold folders hold one build of the module, and every .html in them is a page of it. Five hold TWO builds —
+# a single-file tabbed page AND a set of split pages — and the gates used to pair Claude's pages against both at
+# once, so the single file (the whole module on one page) was scored against one Claude lesson page (0.7–25 %).
+# Chris answered "the tabbed one-page version is real" (DECISIONS__Pending_2026-09-23.md, D13-6).
+#
+# One rule per line:  CODE  VERB  FILENAME   (the filename is the rest of the line; it may contain spaces)
+#   only     — the module is scored against the named gold file(s) ONLY (repeat the line for several)
+#   exclude  — the named gold file never enters the pairing
+#   pin      — `CLAUDE_FILE = GOLD_FILE`: pair these two before the content match runs (pairs() only)
+# Read by _corpus.gold_pages() / _corpus.gold_pins(): _discrepancy_audit.pairs() (the skeleton gate and the miner),
+# compare_structure.py and body_compare.py. Env GOLDPAGES_OFF=1 ignores this file (every gold .html, the pre-r440 pairing).
+
+# (a) the modules whose students got the one-page tabbed version — PageForge builds them single-file too
+MXFUN01  only  MXFUN01.html
+BLL240   only  BLL240.html
+CEDT207  only  CEDT207 Me, my selfie and I.html
+
+# (a, the caveat) CEDT301 — D13-6 said build it single-file UNLESS the single-file build scores clearly worse, and it
+# did (45.0 % against the single gold vs 57.7 % split-to-split — outputs/_r440_prescore.log). It stays split, so its
+# split build is scored against its split gold; the single file never pairs with one of its lesson pages (it did, 7.4 %).
+CEDT301  exclude  CEDT301 My place and me.html
+
+# (c) CEDK501 stays split: its single file is an unfilled "Heading / Body" template, never a build of the module
+CEDK501  exclude  CEDK501 Kia Mahitahi – Idea to Action.html
+
+# (d) a Claude-made file that was left in the gold folder — never gold, excluded everywhere
+BLL240   exclude  BLL240 claude.html

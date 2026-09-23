@@ -1,0 +1,43 @@
+MXFUN01  ON MXFUN01_0_0.html     <-> MXFUN01.html                         scaffold   5.5  raw   2.8
+         gold_pages() keeps: ['MXFUN01.html']
+BLL240   ON BLL240_0_0.html      <-> BLL240.html                          scaffold  58.8  raw  37.2
+         gold_pages() keeps: ['BLL240.html']
+CEDT207  ON CEDT207_0_0.html     <-> CEDT207 Me, my selfie and I.html     scaffold  30.9  raw  24.8
+         gold_pages() keeps: ['CEDT207 Me, my selfie and I.html']
+CEDT301  ON CEDT301_0_0.html     <-> CEDT301 My place and me.html         scaffold  45.0  raw  37.3
+         gold_pages() keeps: ['CEDT301 My place and me.html']
+----------------------------------------------------------------------------------------------------
+CEDK501 NEW (compare_gold_pages.txt): 11 pairs
+   CEDK501_0_0.html     <-> CEDK501_0.0.html                               72.1
+   CEDK501_1_0.html     <-> CEDK501_1.0.html                               52.8
+   CEDK501_2_0.html     <-> CEDK501_2.0.html                               42.7
+   CEDK501_3_1.html     <-> CEDK501_3.1.html                               30.9
+   CEDK501_5_0.html     <-> CEDK501_3.0.html                               46.1
+   CEDK501_5_1.html     <-> CEDK501_5.1.html                               40.3
+   CEDK501_6_0.html     <-> CEDK501_4.0.html                               49.1
+   CEDK501_6_1.html     <-> CEDK501_6.1.html                               39.8
+   CEDK501_7_0.html     <-> CEDK501_5.0.html                               64.8
+   CEDK501_9_0.html     <-> CEDK501_7.0.html                               63.5
+   CEDK501_10_0.html    <-> CEDK501_6.0.html                               60.7
+   mean 51.15
+CEDK501 OLD (GOLDPAGES_OFF=1): 12 pairs
+   CEDK501_0_0.html     <-> CEDK501 Kia Mahitahi – Idea to Action.html     25.0
+   CEDK501_1_0.html     <-> CEDK501_1.0.html                               52.8
+   CEDK501_2_0.html     <-> CEDK501_2.0.html                               42.7
+   CEDK501_3_1.html     <-> CEDK501_3.1.html                               30.9
+   CEDK501_5_0.html     <-> CEDK501_3.0.html                               46.1
+   CEDK501_5_1.html     <-> CEDK501_5.1.html                               40.3
+   CEDK501_6_0.html     <-> CEDK501_4.0.html                               49.1
+   CEDK501_6_1.html     <-> CEDK501_6.1.html                               39.8
+   CEDK501_7_0.html     <-> CEDK501_5.0.html                               64.8
+   CEDK501_8_0.html     <-> CEDK501_0.0.html                               42.7
+   CEDK501_9_0.html     <-> CEDK501_7.0.html                               63.5
+   CEDK501_10_0.html    <-> CEDK501_6.0.html                               60.7
+   mean 46.53
+----------------------------------------------------------------------------------------------------
+the five, OLD: 41 pairs, mean 44.90
+the five, NEW: 15 pairs, mean 46.86
+corpus SCAFFOLD: 54.6077 % @ 2491  ->  54.7220 % @ 2465   (+0.1143pp)
+   >= 50: 1549 -> 1538
+   >= 75: 256 -> 255
+   >= 90: 23 -> 23

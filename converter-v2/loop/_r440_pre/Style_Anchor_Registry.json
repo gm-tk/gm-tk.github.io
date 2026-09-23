@@ -428,10 +428,8 @@
 								"BLL230",
 								"BLL250",
 								"BLL260",
-								"BLL270",
-								"BLL240"
+								"BLL270"
 							],
-							"_r440_note": "ROUND 440 (2026-09-23, the loop's session 39 Round 2; Chris's decision D13-6): BLL240 ADDED — the last BLL2 x0 parent. Its gold folder holds BLL240.html (the one-page tabbed build students got), a split set BLL240-0.0 … -7.0, and a stray Claude-made 'BLL240 claude.html'; the split set had kept it multi-file. Now 11 / 11 of the family's x0 parents build single-file, and the gates pair BLL240 against BLL240.html alone (reference/tests/compare_gold_pages.txt, which also excludes 'BLL240 claude.html'). Reversal: outputs/_r440_pre/Style_Anchor_Registry.json.",
 							"_r426_note": "ROUND 426 (2026-09-22, the loop's session 33 Round 4): BLL250 / BLL260 / BLL270 added — the x0 parent modules of the BLL2 level, one gold page each (BLL250.html / BLL260.html / BLL270.html), exactly as BLL210 / 220 / 230 and the seven BLL1 parents (10 / 10 of the family's x0 golds are single-file). Never members, so the r408 miner never listed them; found by the 22 Sept intake (Claude had split them into 8 / 13 / 5 lesson pages)."
 						}
 					}
@@ -1467,8 +1465,9 @@
 								"final": "prev+home"
 							},
 							"page_model": "single-file",
-							"page_model_exceptions": [],
-							"_r440_note": "ROUND 440 (2026-09-23, the loop's session 39 Round 2; Chris's decision D13-6 — 'the tabbed one-page version is real'): MXFUN01 REMOVED from the exceptions. Its gold folder holds two builds, MXFUN01.html (one tabbed Fundamentals page, the form students got) and MXFUN01_0.0 … _7.0 (a split set); the exception had been mined from the split set. It now builds single-file like every other MXFUN module, and the gates pair it against MXFUN01.html alone (reference/tests/compare_gold_pages.txt). Reversal: outputs/_r440_pre/Style_Anchor_Registry.json."
+							"page_model_exceptions": [
+								"MXFUN01"
+							]
 						}
 					},
 					"MXFUN1": {
@@ -2685,8 +2684,9 @@
 								"final": "—"
 							},
 							"page_model": "single-file",
-							"page_model_exceptions": [],
-							"_r440_note": "ROUND 440 (2026-09-23, the loop's session 39 Round 2; Chris's decision D13-6): CEDT207 REMOVED from the exceptions. Its gold folder holds 'CEDT207 Me, my selfie and I.html' (the one-page tabbed Inquiry build students got) and a split set CEDT207_0.0 … _6.0; the exception had been mined from the split set. It now builds single-file like its level, and the gates pair it against the single file alone (reference/tests/compare_gold_pages.txt). Reversal: outputs/_r440_pre/Style_Anchor_Registry.json."
+							"page_model_exceptions": [
+								"CEDT207"
+							]
 						}
 					},
 					"CEDT3": {
@@ -2719,8 +2719,7 @@
 								"lesson": "prev+next+home",
 								"final": "—"
 							},
-							"page_model": "multi-file",
-							"_r440_note": "ROUND 440 (2026-09-23, the loop's session 39 Round 2; Chris's decision D13-6 and ITS CAVEAT): KEPT multi-file. The level's only gold is CEDT301 (CEDT302 / 303 have none), whose folder holds 'CEDT301 My place and me.html' (one tabbed Inquiry page) beside a split set CEDT301_0.0 … _7.0. D13-6 said: build it single-file, but 'if the single-file build scores clearly worse there, record it rather than force it'. It did — the single-file build scored 45.0 % SCAFFOLD against the single gold (outputs/_r440_prescore.log) where the split build scores 57.7 % against the split gold (67.7 % without the old single-file mis-pair) — so the row was NOT changed and the finding is on LOOP_STATE.md's Needs Chris list. The gates now pair CEDT301 split-to-split, its single-file gold excluded (reference/tests/compare_gold_pages.txt)."
+							"page_model": "multi-file"
 						}
 					},
 					"CEDT4": {

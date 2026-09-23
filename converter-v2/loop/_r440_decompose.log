@@ -1,0 +1,18 @@
+module   |  sk pairs |       sk mean |    >=50 |    >=75 |  cs exact |   EXTRA | missing |  df clean/total
+MXFUN01  |   7 ->   1 |  36.6 ->   5.5 |  3 ->  0 |  0 ->  0 |  51 -> 103 |  0 ->  0 |  0 ->  2 |  18/19 -> 0/1   
+         pages OLD: MXFUN01_0_0.html 0.7, MXFUN01_6_2.html 27.4, MXFUN01_6_4.html 36.4, MXFUN01_5_0.html 38.2, MXFUN01_2_0.html 50.0, MXFUN01_3_0.html 50.9, MXFUN01_4_0.html 52.2
+         pages NEW: MXFUN01_0_0.html 5.5
+BLL240   |   9 ->   1 |  47.1 ->  58.8 |  5 ->  1 |  0 ->  0 |   2 ->  14 |  0 ->  1 |  0 ->  0 |    9/9 -> 1/1   
+         pages OLD: BLL240_1_0.html 4.5, BLL240_1_1.html 41.7, BLL240_1_2.html 49.2, BLL240_1_7.html 49.3, BLL240_1_6.html 52.8, BLL240_1_3.html 53.8, BLL240_1_4.html 55.7, BLL240_1_5.html 56.1, BLL240_0_0.html 60.8
+         pages NEW: BLL240_0_0.html 58.8
+CEDT207  |   7 ->   1 |  36.7 ->  30.9 |  0 ->  0 |  0 ->  0 |   1 ->  18 |  0 ->  3 |  0 ->  0 |    8/8 -> 1/1   
+         pages OLD: CEDT207_0_0.html 14.2, CEDT207_2_0.html 33.2, CEDT207_3_0.html 33.8, CEDT207_4_0.html 40.9, CEDT207_5_0.html 41.0, CEDT207_7_0.html 46.5, CEDT207_6_0.html 47.2
+         pages NEW: CEDT207_0_0.html 30.9
+CEDT301  |   6 ->   6 |  57.7 ->  62.2 |  5 ->  5 |  1 ->  1 |   0 ->   0 |  0 ->  0 |  0 ->  0 |    7/7 -> 7/7   
+         pages OLD: CEDT301_6_0.html 7.4, CEDT301_3_0.html 59.4, CEDT301_5_0.html 64.0, CEDT301_2_0.html 67.1, CEDT301_4_0.html 67.2, CEDT301_0_0.html 80.8
+         pages NEW: CEDT301_6_0.html 35.0, CEDT301_3_0.html 59.4, CEDT301_5_0.html 64.0, CEDT301_2_0.html 67.1, CEDT301_4_0.html 67.2, CEDT301_0_0.html 80.8
+CEDK501  |  12 ->  11 |  46.5 ->  51.2 |  4 ->  5 |  0 ->  0 |  69 ->  69 |  0 ->  0 |  0 ->  0 |  14/14 -> 14/14 
+         pages OLD: CEDK501_0_0.html 25.0, CEDK501_3_1.html 30.9, CEDK501_6_1.html 39.8, CEDK501_5_1.html 40.3, CEDK501_2_0.html 42.7, CEDK501_8_0.html 42.7, CEDK501_5_0.html 46.1, CEDK501_6_0.html 49.1, CEDK501_1_0.html 52.8, CEDK501_10_0.html 60.7, CEDK501_9_0.html 63.5, CEDK501_7_0.html 64.8
+         pages NEW: CEDK501_3_1.html 30.9, CEDK501_6_1.html 39.8, CEDK501_5_1.html 40.3, CEDK501_2_0.html 42.7, CEDK501_5_0.html 46.1, CEDK501_6_0.html 49.1, CEDK501_1_0.html 52.8, CEDK501_10_0.html 60.7, CEDK501_9_0.html 63.5, CEDK501_7_0.html 64.8, CEDK501_0_0.html 72.1
+TOTAL    | sk: 41 -> 20 (-21) | b50: 17 -> 11 (-6) | b75: 1 -> 1 (+0) | ex: 123 -> 204 (+81) | xt: 0 -> 4 (+4) | mi: 0 -> 2 (+2)
+defect corpus: clean 2646/2691 = 98.328 %  (the new corpus figure is in the scoped-ship log)

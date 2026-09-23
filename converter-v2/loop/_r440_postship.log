@@ -1,0 +1,61 @@
+[16:01:01] run_all_gates.sh
+  rc=0
+13:— selftest: DETECTION (an injected divergence must be flagged) —
+16:  ✓ dynamic differ SEES a real option divergence (imageMode P vs D)
+17:RESULT: PASS (entry parity holds)
+23:pairs skipped (parse error): 0
+87:STRUCTURALLY CLEAN pages (zero structural defects): 2613/2658 = 98.3%
+91:  A_literal_tag_leak                         75 occ |   45 pages
+94:  GENO901     16  {'A_literal_tag_leak': 16}
+95:  DTC1005     14  {'A_literal_tag_leak': 14}
+96:  PWY1009      4  {'A_literal_tag_leak': 4}
+97:  MUS1004      4  {'A_literal_tag_leak': 4}
+98:  XGF9004      2  {'A_literal_tag_leak': 2}
+99:  TRR116       2  {'A_literal_tag_leak': 2}
+100:  MXS1004      2  {'A_literal_tag_leak': 2}
+101:  MXFU302      2  {'A_literal_tag_leak': 2}
+102:  HIS1005      2  {'A_literal_tag_leak': 2}
+103:  ENGI102      2  {'A_literal_tag_leak': 2}
+104:  ENFUN09      2  {'A_literal_tag_leak': 2}
+105:  CBI1008      2  {'A_literal_tag_leak': 2}
+106:  BLL260       2  {'A_literal_tag_leak': 2}
+107:  TRR304       1  {'A_literal_tag_leak': 1}
+108:  TRR106       1  {'A_literal_tag_leak': 1}
+109:  TRR102       1  {'A_literal_tag_leak': 1}
+110:  TEFUN07      1  {'A_literal_tag_leak': 1}
+111:  SSFUN05      1  {'A_literal_tag_leak': 1}
+112:  MXFUN01      1  {'A_literal_tag_leak': 1}
+113:  MXEO301      1  {'A_literal_tag_leak': 1}
+114:  MXDI201      1  {'A_literal_tag_leak': 1}
+115:  JPN1004      1  {'A_literal_tag_leak': 1}
+116:  HIS1006      1  {'A_literal_tag_leak': 1}
+117:  HIS1002      1  {'A_literal_tag_leak': 1}
+[16:04:42] skeleton state (--json) + delta vs r439
+  rc=0
+OLD pairs 2491  SCAFFOLD 54.6077%  RAW 38.418%  >=50 1549  >=75 256  >=90 23
+NEW pairs 2470  SCAFFOLD 54.7442%  RAW 38.524%  >=50 1543  >=75 256  >=90 23
+delta SCAFFOLD +0.1365pp  RAW +0.105pp  >=50 -6  >=75 +0  >=90 +0
+movers 5 (up 4 / down 1), pp-sum +94.1
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 21
+  CEDK501    CEDK501_0_0.html           25.0 ->   72.1  (+47.1)
+  CEDT301    CEDT301_6_0.html            7.4 ->   35.0  (+27.6)
+  CEDT207    CEDT207_0_0.html           14.2 ->   30.9  (+16.6)
+  MXFUN01    MXFUN01_0_0.html            0.7 ->    5.5  (+4.8)
+  BLL240     BLL240_0_0.html            60.8 ->   58.8  (-2.0)
+[16:06:01] gatecheck: cs bc FIRST (never trust a cached row), then skeleton defect
+  rc=2
+  rc=2
+[16:06:06] ship ledger check
+[ledger] last full ship: round 433 (2026-09-22T10:42:01Z); scoped ships since: 5 (cadence 8, hard 16)
+  OK — a full-ship backstop is not yet due (3 scoped ship(s) of headroom).
+  (the scoped ship already patched the fast-loop baseline and refreshed the content manifest)
+[16:06:06] selftests
+  rc=0  PASS/GREEN lines: 49  FAIL lines: 0
+[16:07:17] feature index
+  rc=0
+SELFTEST build_feature_index: GREEN
+[16:07:28] DIFF MINER (§1d — after every regeneration)
+  miner rc=0
+tail: cannot open '../../outputs/_diff_miner_r440.log' for reading: No such file or directory
+[16:08:57] POSTSHIP_DONE
