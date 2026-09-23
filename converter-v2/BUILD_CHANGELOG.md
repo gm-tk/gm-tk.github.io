@@ -1,5 +1,25 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-23 (round 444, build 260620.15) — THE ACTIVITY NUMBERS ARE FULLY CONSECUTIVE: every lesson page's activity boxes are numbered in order (r369 switched ON) — Chris's decision D13-7 (Option C, chosen against the recommendation), shipped as THE FULL-REGENERATION BACKSTOP; a NAMED OVERRIDE of the pages whose gold keeps a writer's number — the loop's session 39 Round 6
+
+### 1. WHAT CHANGED
+
+Round 369 built the page-level normaliser (`ContentConverter.#pageNumberNormalise`: on a lesson page with lettered boxes, a box whose digit differs from the page's majority digit takes it, and a repeated or non-letter id takes the next free letter — `5A, 5A` → `5A 5B`, `4A, 4B, 2A` → `4A 4B 4C`; the KB's rule, KB 00B l.187 + constraints 62 / 65, and the gold's own convention at 0.86) and shipped it OFF because its probe measured a skeleton dip. Chris chose **Option C — fully consecutive everywhere** (D13-7), accepting the dip as a named override and the side-effect that a writer's instruction citing a number ("complete activity 4C") can point at a renumbered box. `Emit_Templates.json` `activity_wrapper.page_number_normalise.enabled` → **true** (env `NUMNORM_OFF`, byte-identical OFF). The decision allowed a variant with a smaller dip if it kept the consecutive order: the letters-only variant (`majority_digit` off) measured −0.032pp instead of −0.044pp but leaves a stale writer digit in place (`4A, 4B, 2A` stays), so it is NOT consecutive and did not ship (`outputs/_r444v2_prescore.log`).
+
+### 2. PROOF — THE FULL REGENERATION (the ledger's backstop, due at scoped #8)
+
+- **In-memory A/B** (`outputs/_r444_probe_run.sh`): OFF (`NUMNORM_OFF=1`) = **2666 / 2666 identical**; ON = **297 pages / 142 modules** (the r369 probe measured 279 / 136 on the pre-intake corpus). Pre-score (`_r444_prescore.log`, every mover named): 123 movers, **51 up / 72 down, −109.3pp-sum**, ≥50 −5.
+- **FULL regeneration** (`_r444_fullship_par.sh`: 42 batches, 4 workers, all rc 0): `_stalecheck.sh` **0 stale**; `_content_manifest.py fresh` the 400 unaffected modules **byte-identical**; `changed` = **exactly the 142** the probe named (diff 0). `_ship_ledger.py record-full --round 444` (counter 0, 8 of headroom); the fast-loop baseline re-snapshotted; the content manifest re-snapshotted (2666 pages / 542 modules).
+- **Post-ship** (`_r444_postship.sh`): `run_all_gates.sh` rc 0, every verifier RESULT ✓; the skeleton delta vs r443 **−0.0441pp — exactly the pre-score** (51 up / 72 down, 0 movers outside the 142); `_gatecheck.py` (a FULL ship, so it runs): compare_structure / body_compare HELD EXACTLY, the skeleton rows REGRESSED by exactly the named override; 49 selftests GREEN; feature index GREEN; the miner (2476 pairs, 9297 classes, **197 CANDIDATE**).
+
+**The dip, named.** The largest: ENGC206_5_0 62.3 → 39.0, MXFL203_2_0 75.5 → 60.2, XTAS102_2_0 60.7 → 46.4, ENGJ102_4_0 64.1 → 51.6, ENGS401_4_0 66.1 → 56.0 — pages whose gold KEEPS a writer's digit or gap letter that the consecutive rule replaces (the 0.14 of gold that is not consecutive), and pairs the gate makes across different page numbers (Claude 5_0 ↔ gold 3_0) where the writer's stale digit happened to match the gold. The rises are the pages whose gold IS consecutive (OSOH301_2_0 57.7 → 76.9, MXFU202_9_0 28.6 → 40.1, MXFU401_3_0 35.1 → 44.4 …). Every mover is in `_r444_prescore.log`; D13-7 accepts them as a NAMED OVERRIDE.
+
+### 3. PROTECTED GATES — RE-BASED (a named override, D13-7)
+
+- **Skeleton (PRIMARY)**: SCAFFOLD **54.7729 % @ 2476 pairs** (−0.0441pp NAMED), median 55.8; ≥50 **1543** (−5 NAMED), ≥75 **261**, ≥90 **23**; RAW 38.708 %; pairs skipped 0. 54.773 / 91.2 = **60.1 % of achievable**.
+- **compare_structure** 15657 / 199 / 796 / 24; **body_compare** 56 / 5 / 201 / 260; **structurally clean** 2613 / 2658 = 98.31 %; **leak** 75 / 45 — all EXACT; **tags 9557 / 9557**; every verifier RESULT ✓.
+- Plateau (§4): a decided named override, not a skeleton-seeking PICK — it neither counts nor resets; the window stays **0 of 3**. LAST FULL = **r444**, ledger counter 0.
+
 ## 2026-09-23 (round 443, build 260620.14) — THE XOTP FAMILY'S FLAGGED GAPS: the reader-book modules now say visibly what the Writers Template cannot supply — a red "credit needed" To Do in every empty acknowledgements group, the family's own "All illustrations ©" line, and a red "paste the overview from the linked Google Doc" To Do in place of the bare link label — Chris's decisions D13-14 + D13-15 (D13-11 dispositioned), the loop's session 39 Round 5
 
 ### 1. WHAT CHANGED
