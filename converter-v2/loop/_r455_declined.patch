@@ -1,0 +1,161 @@
+diff --git a/converter-v2/app/js/BilingualBuilder.js b/converter-v2/app/js/BilingualBuilder.js
+index 737a1c2..8977eca 100644
+--- a/converter-v2/app/js/BilingualBuilder.js
++++ b/converter-v2/app/js/BilingualBuilder.js
+@@ -778,6 +778,21 @@ class BilingualBuilder {
+ 	// markers / 8 TRR modules). The red-run markers are stripped before the test, and the marker
+ 	// row itself ships as the writer's own note (a gate-invisible cv2-note) — never as a stray
+ 	// "Word select" paragraph. Data: dual_language.activity_marker_red. Env toggle: ACTMARKRED_OFF.
++	/** ROUND 455 — is this the MTK `Activity NX:` SECTION table (KB 07B)? An English | Māori header
++	 *  table whose FIRST content row's English cell (red-run markers and ** stripped) is the label
++	 *  ("Activity 1A:", "Activity 6.1:") — cfg.label_match. */
++	static isSectionLabelTable(block, cfg) {
++		if (!this.bilingualHeader(block)) return false;
++		const rows = block?.rows ?? [];
++		const re = new RegExp(cfg?.label_match ?? "^(activity|ngohe)\\s*\\d+(\\.\\d+|\\s*[a-z])?\\s*:?$", "i");
++		for (let r = 1; r < rows.length; r++) {
++			const c0 = this.#stripRed(rows[r]?.[0]).replace(/\*/g, "").replace(/\s+/g, " ").trim();
++			if (!c0) continue;
++			return re.test(c0);
++		}
++		return false;
++	};
++
+ 	/** ROUND 454 — true when the table is an activity marker ONLY through a red-wrapped
+ 	 *  [Activity: Embedded] cell (the pre-r454 test declines it): the caller wraps and numbers
+ 	 *  exactly these boxes, leaving every pre-existing activity path untouched. */
+@@ -843,19 +858,26 @@ class BilingualBuilder {
+ 	 * @param {TagNormaliser} norm - resolves `[Tag]` markers found in cells
+ 	 * @returns {string|null} the rendered activity container HTML, or null when there's nothing to render
+ 	 */
+-	static bilingualActivity(blocks, run, norm) {
++	static bilingualActivity(blocks, run, norm, opts = null) {
+ 		const cfg = DataService.Data.EmitTemplates.elements?.dual_language;
+ 		if (!cfg || cfg.enabled === false || !blocks || !blocks.length) return null;
+ 		const mRe = this.activityMarkerRe, nRe = this.activityNumRe;
+ 		let number = "";
+ 		const out = [];
++		// ROUND 455 — the section-box caller (opts): the label row is recognised through the red-run /
++		// ** markers (opts.labelRe) and lifted to the number the caller assigns; the English | Māori
++		// header row is skipped in any column casing ("Te Reo Māori" included)
++		const isLabel = (c0) => !!opts?.labelRe
++			&& opts.labelRe.test(this.#stripRed(c0).replace(/\*/g, "").replace(/\s+/g, " ").trim());
+ 		for (const block of blocks) {
+ 			const rows = block?.rows ?? [];
+-			for (const row of rows) for (const c of row) { const nm = String(c ?? "").match(nRe); if (nm && !number) number = nm[1]; }
++			if (!opts) for (const row of rows) for (const c of row) { const nm = String(c ?? "").match(nRe); if (nm && !number) number = nm[1]; }
+ 			if (this.bilingualHeader(block) || this.isActivityMarker(block)) {
+-				for (const row of rows) {
++				for (const [ri, row] of rows.entries()) {
+ 					const c0 = String(row[0] ?? ""), c1 = String(row[1] ?? "");
+ 					if (nRe.test(c0.trim()) || /^english$/i.test(Utils.Fold(c0).trim())) continue;
++					if (opts && ri === 0 && this.bilingualHeader(block)) continue;
++					if (isLabel(c0)) continue;
+ 					// ROUND 454 — a red-wrapped marker row is the writer's widget request: their note, not a paragraph
+ 					if (this.#redMarkerOn() && !mRe.test(c0) && mRe.test(this.#stripRed(c0))) {
+ 						out.push(NotesAndComments.redFlag(this.#stripRed(c0), run, "cs"));
+@@ -863,8 +885,19 @@ class BilingualBuilder {
+ 					}
+ 					const R = this.bilingualSplit(c1.replace(mRe, "").replace(/^\s*\[[^\]]*\]\s*$/, ""), run, norm);
+ 					const E = this.bilingualSplit(c0.replace(mRe, "").replace(/^\s*\[[^\]]*\]\s*$/, ""), run, norm);
+-					for (const p of R.text) out.push(this.langAttr(p, "reo"));
+-					for (const p of E.text) out.push(this.langAttr(p, "eng"));
++					if (opts) {
++						// ROUND 455 — element-wise Māori-then-English pairs (the human's order), the section's
++						// [H2] title at the KB's h3 (opts.titleLevel)
++						const lv = (h) => opts.titleLevel ? String(h).replace(/^<h2(?=[\s>])/, `<h${opts.titleLevel}`).replace(/<\/h2>$/, `</h${opts.titleLevel}>`) : h;
++						const n = Math.max(R.text.length, E.text.length);
++						for (let k = 0; k < n; k++) {
++							if (k < R.text.length) out.push(this.langAttr(lv(R.text[k]), "reo"));
++							if (k < E.text.length) out.push(this.langAttr(lv(E.text[k]), "eng"));
++						}
++					} else {
++						for (const p of R.text) out.push(this.langAttr(p, "reo"));
++						for (const p of E.text) out.push(this.langAttr(p, "eng"));
++					}
+ 					for (const m of (R.media.length ? R.media : E.media)) out.push(m);
+ 				}
+ 			} else {
+@@ -873,7 +906,8 @@ class BilingualBuilder {
+ 		}
+ 		if (!out.length) return null;
+ 		const num = number ? ` number="${number}"` : "";
+-		return `<div class="activity interactive"${num}>\n<div class="row">\n<div class="col-12">\n${out.join("\n")}\n</div>\n</div>\n</div>`;
++		const cls = (opts && !opts.interactive) ? "activity" : "activity interactive";   // ROUND 455 — KB 07B: interactive only with a widget
++		return `<div class="${cls}"${num}>\n<div class="row">\n<div class="col-12">\n${out.join("\n")}\n</div>\n</div>\n</div>`;
+ 	};
+ 
+ 	/**
+diff --git a/converter-v2/app/js/ContentConverter.js b/converter-v2/app/js/ContentConverter.js
+index 1b74f38..4b1dd88 100644
+--- a/converter-v2/app/js/ContentConverter.js
++++ b/converter-v2/app/js/ContentConverter.js
+@@ -2999,6 +2999,47 @@ class ContentConverter {
+ 					const sec = BilingualBuilder.bilingualSection(bodyItems, i, run, bundles, this.#norm,
+ 						(b) => this.#interactivePlaceholder(b, run, { handoffOnly: true }));
+ 					if (sec) { breakRow(); parts.push(sec.html); markContent(); this.#closeSpanWrap(stack, emit, breakRow); i = sec.next - 1; continue; }
++					// ROUND 455 (the autonomous loop's session 41 Round 3) — THE `Activity NX:` SECTION TABLE IS
++					// THE ACTIVITY BOX (KB 07B "Activity Structure"). The MTK label table (English | Te Reo header,
++					// `Activity 1A: | Ngohe 1A:`, the [H2] title, the body) and the widget / data tables after it
++					// (the red [Activity: Embedded] instructions + its grid) are ONE box — `row > col-md-8 >
++					// div.activity[.interactive][number] > row > col-12`, the label lifted to the number, the title
++					// an h3 — not the prose row bilingualTable would make of the label table. Gathers the label
++					// table + every following unconsumed table up to the next label table, another English|Māori
++					// table, a callout or a non-table item. Data dual_language.activity_section_box; env ACTSECTION_OFF.
++					{
++						const asb = dlCfg?.activity_section_box;
++						const asbOn = asb && asb.enabled !== false
++							&& !(typeof process !== "undefined" && process.env && process.env[asb.env ?? "ACTSECTION_OFF"]);
++						if (asbOn && BilingualBuilder.isSectionLabelTable(it.block, asb)) {
++							const blocks = [it.block];
++							let hasWidget = false;
++							let j = i + 1;
++							while (j < bodyItems.length) {
++								const nx = bodyItems[j];
++								if (nx.type !== "table" || nx.consumedBy !== undefined || nx._consumed) break;
++								if (BilingualBuilder.bilingualHeader(nx.block) || BilingualBuilder.isCalloutTable(nx.block, this.#norm)) break;
++								hasWidget = true;
++								blocks.push(nx.block); nx._consumed = true; j++;
++							}
++							// skip_when_widget_owned: a section whose widget the scanner already owns (the very next
++							// item is a consumed bundle — TRR102) gathers only its prose; the human keeps that prose
++							// as a body row and boxes the widget alone, so no box here
++							const owned = !hasWidget && asb.skip_when_widget_owned !== false
++								&& bodyItems[i + 1] && bodyItems[i + 1].consumedBy !== undefined;
++							let act = !owned ? BilingualBuilder.bilingualActivity(blocks, run, this.#norm,
++								{ labelRe: new RegExp(asb.label_match, "i"), interactive: hasWidget, titleLevel: asb.title_level ?? 3 }) : null;
++							if (!act) for (let q = i + 1; q < j; q++) bodyItems[q]._consumed = false;
++							if (act) {
++								if (asb.number !== false && page?.lessonNumber != null) {
++									const k = (parts.join("\n").match(/<div class="activity[\s"]/g) || []).length + 1;
++									act = act.replace(/^<div class="activity( interactive)?"/, `<div class="activity$1" number="${page.lessonNumber}.${k}"`);
++								}
++								act = `<div class="row">\n<div class="col-md-8 col-12">\n${act}\n</div>\n</div>`;
++								breakRow(); parts.push(act); markContent(); this.#closeSpanWrap(stack, emit, breakRow); i = j - 1; continue;
++							}
++						}
++					}
+ 					const bil = BilingualBuilder.bilingualTable(it.block, run, this.#norm,
+ 						it._reoModuleContent === true);
+ 					if (bil) { breakRow(); parts.push(bil); markContent(); this.#closeSpanWrap(stack, emit, breakRow); continue; }
+diff --git a/converter-v2/data/Emit_Templates.json b/converter-v2/data/Emit_Templates.json
+index 75bc1ba..2594e21 100644
+--- a/converter-v2/data/Emit_Templates.json
++++ b/converter-v2/data/Emit_Templates.json
+@@ -198,6 +198,16 @@
+ 				"heading_lead": "<h5>{text}</h5>",
+ 				"checkbox_bullet": true
+ 			},
++			"activity_section_box": {
++				"enabled": true,
++				"env": "ACTSECTION_OFF",
++				"label_match": "^(activity|ngohe)\\s*\\d+(\\.\\d+|\\s*[a-z])?\\s*:?$",
++				"title_level": 3,
++				"number": true,
++				"skip_when_widget_owned": true,
++				"_doc_skip_when_widget_owned": "No box for a section whose very next item is a widget the InteractiveScanner already owns (a consumed bundle — TRR102, whose bracketed [Activity: Embedded] [ Word Select] types the scanner recognises): the gather holds only the prose, and that human keeps the prose as a body row and boxes the widget alone (TRR102 1.0–5.0). Measured three ways (outputs/_r455_prescore*.log): box every section — TRR102's five pages −3 to −17; box only sections that gathered a widget — TRR103's widget-less sections (the human boxes them, e.g. 1.4 'Let's have fun') fell; this rule keeps both.",
++				"_doc": "ROUND 455 (the autonomous loop's session 41 Round 3; KB 07B 'Activity Structure'). The MTK `Activity NX:` SECTION table — an English | Māori header table whose first content row is the label (red-run markers and ** stripped: 'Activity 1A:', 'Activity 6.1:') — and the unconsumed widget / data tables after it (the red [Activity: Embedded] instructions + its grid) are ONE activity box: `row > col-md-8 > div.activity[.interactive][number] > row > col-12`, the label lifted to the number (the page's lesson number + the box's position, consecutive — D13-7, the KB's decimal form), the [H2] title at h3 (title_level), reo/eng pairs element-wise, `interactive` only when a widget / data table was gathered (KB 07B). Before: bilingualTable rendered the label table as a prose row (the label as a paragraph) and r454 boxed only the embedded part. The gather stops at another English | Māori table, a callout table or a non-table item. ContentConverter's reoMode table branch (before bilingualTable); BilingualBuilder.isSectionLabelTable / bilingualActivity(opts). Env ACTSECTION_OFF reverts (byte-identical)."
++			},
+ 			"activity_marker_red": {
+ 				"enabled": true,
+ 				"env": "ACTMARKRED_OFF",
