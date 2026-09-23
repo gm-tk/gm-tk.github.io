@@ -1,6 +1,6 @@
 # DIFF_QUEUE.md — the diff miner's ranked class queue (LOOP__Autonomous_Rounds.md §1d)
 
-**Produced:** 2026-09-23 00:43 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD f4e46ae; Claude corpus 545 dirs). **Population:** the skeleton gate's own — 2491 paired pages / 533 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 90.0 s.
+**Produced:** 2026-09-23 15:38 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD 1f82ec6; Claude corpus 545 dirs). **Population:** the skeleton gate's own — 2491 paired pages / 533 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 104.5 s.
 
 **What a row is.** One CLASS = (region, parent element, gold form, Claude form, direction) over every differing skeleton line of every paired page — the same lines, labels, widget collapse and difflib alignment the PRIMARY gate scores (each element its own line so it can be quoted). Direction: MISSING = gold has it, Claude lacks it; EXTRA = Claude has it, gold lacks it; SUBSTITUTED = same position, different tag / class / wrapper; MOVED = same text, different place. Consensus = of the gold pages in the group where the region exists, the share carrying the gold form (for EXTRA: the share NOT carrying Claude's form). Derivable = the gold line's text is in the module's parsed Writers Template (round-110 tolerance); structure-only differences are always derivable.
 
@@ -608,7 +608,7 @@ candidates' detail blocks are repeated below for convenience.
 - by subject: 1-10 Blended Literacy 72m/72p c=0.25; 1-10 Health and PE 14m/14p c=0.39
 - by era: Refresh 86m/86p c=0.06
 - authority (§1b): 1 — KB rule (verify the hit's scope)
-  - KB: 06_TEMPLATE_RECOGNITION.md:158 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
+  - KB: 06_TEMPLATE_RECOGNITION.md:160 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
 - **BLL111** BLL111_0_0.html ↔ BLL111-01.html (structure, derivable=True)
   - gold: `p  «We are learning:»`
   - Claude: `h5  «Ākonga will:»`
@@ -663,7 +663,7 @@ candidates' detail blocks are repeated below for convenience.
 - by subject: 1-10 Blended Literacy 17m/17p c=0.76; ANZH 7m/10p c=1.00; 1-10 Mathematics 7m/18p c=1.00; 1-10 English 4m/4p c=1.00; Leaving to Learn 4m/4p c=1.00; EXPlore 2m/5p c=1.00
 - by era: Refresh 43m/63p c=0.97
 - authority (§1b): 1 — KB rule (verify the hit's scope)
-  - KB: 06_TEMPLATE_RECOGNITION.md:158 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
+  - KB: 06_TEMPLATE_RECOGNITION.md:160 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
 - **ANZH101** ANZH101_0_0.html ↔ ANZH101_0.0.html (structure, derivable=True)
   - gold: `—`
   - Claude: `div.col-12.col-md-6.paddingR  «Understand»`
@@ -681,7 +681,7 @@ candidates' detail blocks are repeated below for convenience.
 - by subject: 1-10 Health and PE 14m/14p c=0.39; ConnectED 10m/10p c=0.12; Te ara Whakapuawa -Wellbeing 6m/6p c=0.85; 1-10 Blended Literacy 5m/5p c=0.01; Leaving to Learn 4m/4p c=0.02; ANZH 2m/2p c=0.02
 - by era: Refresh 43m/43p c=0.03
 - authority (§1b): 1 — KB rule (verify the hit's scope)
-  - KB: 06_TEMPLATE_RECOGNITION.md:158 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
+  - KB: 06_TEMPLATE_RECOGNITION.md:160 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
 - **ANZH105** ANZH105_0_0.html ↔ ANZH105_00.0.html (structure, derivable=True)
   - gold: `p  «Ākonga will:»`
   - Claude: `h5  «Ākonga will:»`
@@ -699,7 +699,7 @@ candidates' detail blocks are repeated below for convenience.
 - by subject: 1-10 Blended Literacy 24m/24p c=0.22; ConnectED 5m/5p c=0.11; EXPlore 5m/8p c=0.00; ANZH 2m/2p c=0.00; 1-10 Mathematics 2m/10p c=0.04; NCEA1 1m/4p c=0.00
 - by era: Refresh 39m/53p c=0.04
 - authority (§1b): 1 — KB rule (verify the hit's scope)
-  - KB: 06_TEMPLATE_RECOGNITION.md:158 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
+  - KB: 06_TEMPLATE_RECOGNITION.md:160 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
 - **ANZH104** ANZH104_0_0.html ↔ ANZH104_00.0.html (content, derivable=True)
   - gold: `p  «Māori history is the foundational and continuous history of Aotearoa New Zealand.»`
   - Claude: `—`
@@ -736,7 +736,7 @@ candidates' detail blocks are repeated below for convenience.
 - by subject: 1-10 Blended Literacy 22m/22p c=1.00; ANZH 1m/1p c=1.00
 - by era: Refresh 23m/23p c=1.00
 - authority (§1b): 1 — KB rule (verify the hit's scope)
-  - KB: 06_TEMPLATE_RECOGNITION.md:158 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
+  - KB: 06_TEMPLATE_RECOGNITION.md:160 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
 - **ANZH104** ANZH104_0_0.html ↔ ANZH104_00.0.html (structure, derivable=True)
   - gold: `—`
   - Claude: `p  «[MODULE INTRODUCTION]»`
@@ -808,7 +808,7 @@ candidates' detail blocks are repeated below for convenience.
 - by subject: 1-10 Blended Literacy 8m/8p c=0.78; ConnectED 4m/4p c=0.89; 1-10 English 3m/3p c=1.00; ANZH 2m/2p c=1.00; 1-10 Mathematics 1m/1p c=0.95; Leaving to Learn 1m/1p c=1.00
 - by era: Refresh 19m/19p c=0.96
 - authority (§1b): 1 — KB rule (verify the hit's scope)
-  - KB: 06_TEMPLATE_RECOGNITION.md:158 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
+  - KB: 06_TEMPLATE_RECOGNITION.md:160 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
 - **ANZH104** ANZH104_0_0.html ↔ ANZH104_00.0.html (structure, derivable=True)
   - gold: `—`
   - Claude: `p  «IROO292»`
@@ -843,7 +843,7 @@ candidates' detail blocks are repeated below for convenience.
 - by subject: 1-10 English 15m/16p c=0.94; 1-10 Social Science 2m/2p c=1.00; 1-10 Mathematics 1m/6p c=1.00
 - by era: Refresh 18m/24p c=0.99
 - authority (§1b): 1 — KB rule (verify the hit's scope)
-  - KB: 06_TEMPLATE_RECOGNITION.md:158 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
+  - KB: 06_TEMPLATE_RECOGNITION.md:160 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
 - **ENGC101** ENGC101_0_0.html ↔ ENGC101_0.0.html (structure, derivable=True)
   - gold: `—`
   - Claude: `p  «Communication depends on shared codes and conventions.»`
@@ -895,7 +895,7 @@ candidates' detail blocks are repeated below for convenience.
 - by subject: 1-10 Blended Literacy 14m/14p c=0.25; Te ara Whakapuawa -Wellbeing 1m/1p c=1.00
 - by era: Refresh 15m/15p c=0.06
 - authority (§1b): 1 — KB rule (verify the hit's scope)
-  - KB: 06_TEMPLATE_RECOGNITION.md:158 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
+  - KB: 06_TEMPLATE_RECOGNITION.md:160 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
 - **BLL125** BLL125_0_0.html ↔ BLL125-01.html (structure, derivable=True)
   - gold: `ul  «Ākonga can use their basic literacy capability and can read fluently and accurately. They engage with a variety of writt»`
   - Claude: `p  «Students interpret texts by drawing on various elements and recognise different perspectives, sharing their own opinions»`
@@ -913,7 +913,7 @@ candidates' detail blocks are repeated below for convenience.
 - by subject: 1-10 Blended Literacy 12m/12p c=0.80; EXPlore 2m/4p c=1.00
 - by era: Refresh 14m/16p c=0.96
 - authority (§1b): 1 — KB rule (verify the hit's scope)
-  - KB: 06_TEMPLATE_RECOGNITION.md:158 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
+  - KB: 06_TEMPLATE_RECOGNITION.md:160 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
 - **BLL112** BLL112_0_0.html ↔ BLL112-01.html (structure, derivable=True)
   - gold: `—`
   - Claude: `div.col-12.col-md-12.paddingR  «Overview»`
@@ -931,7 +931,7 @@ candidates' detail blocks are repeated below for convenience.
 - by subject: 1-10 English 11m/27p c=0.90; 1-10 Social Science 2m/2p c=0.67
 - by era: Refresh 13m/29p c=0.95
 - authority (§1b): 1 — KB rule (verify the hit's scope)
-  - KB: 06_TEMPLATE_RECOGNITION.md:158 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
+  - KB: 06_TEMPLATE_RECOGNITION.md:160 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
 - **ENGC101** ENGC101_0_0.html ↔ ENGC101_0.0.html (structure, derivable=True)
   - gold: `—`
   - Claude: `div.col-12.col-md-6.offset-md-0  «In this module, we delve into the diverse tools and techniques we use to communicate effectively in various contexts. Fr»`
@@ -949,7 +949,7 @@ candidates' detail blocks are repeated below for convenience.
 - by subject: ConnectED 7m/7p c=1.00; Te ara Whakapuawa -Wellbeing 5m/5p c=0.92; 1-10 Health and PE 1m/1p c=1.00
 - by era: Refresh 13m/13p c=1.00
 - authority (§1b): 1 — KB rule (verify the hit's scope)
-  - KB: 06_TEMPLATE_RECOGNITION.md:158 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
+  - KB: 06_TEMPLATE_RECOGNITION.md:160 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
 - **CEDK401** CEDK401_0_0.html ↔ CEDK401 Food Sustainability.html (structure, derivable=True)
   - gold: `—`
   - Claude: `h5  «AROMATAWAI»`
@@ -967,7 +967,7 @@ candidates' detail blocks are repeated below for convenience.
 - by subject: 1-10 Blended Literacy 5m/5p c=1.00; EXPlore 2m/4p c=1.00; ANZH 1m/1p c=1.00; 1-10 English 1m/1p c=1.00; 1-10 Health and PE 1m/1p c=1.00; 1-10 Mathematics 1m/1p c=0.95
 - by era: Refresh 12m/14p c=0.99
 - authority (§1b): 1 — KB rule (verify the hit's scope)
-  - KB: 06_TEMPLATE_RECOGNITION.md:158 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
+  - KB: 06_TEMPLATE_RECOGNITION.md:160 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
 - **ANZH401** ANZH401_0_0.html ↔ ANZH401_0.0.html (structure, derivable=True)
   - gold: `—`
   - Claude: `h5  «Whakamaheretia tō wā | Planning your time»`
@@ -1002,7 +1002,7 @@ candidates' detail blocks are repeated below for convenience.
 - by subject: ConnectED 6m/6p c=1.00; Te ara Whakapuawa -Wellbeing 5m/5p c=0.85
 - by era: Refresh 11m/11p c=1.00
 - authority (§1b): 1 — KB rule (verify the hit's scope)
-  - KB: 06_TEMPLATE_RECOGNITION.md:158 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
+  - KB: 06_TEMPLATE_RECOGNITION.md:160 — **Module menu:** Two-column layout (`col-md-6 col-12 paddingR` + `col-md-6 col-12 paddingL`).
 - **CEDK401** CEDK401_0_0.html ↔ CEDK401 Food Sustainability.html (structure, derivable=True)
   - gold: `—`
   - Claude: `p  «in your area or create your own community initiative based around sustainable food production. For whichever option you »`

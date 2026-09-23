@@ -1,0 +1,9 @@
+== index sync
+INDEX/MANIFEST SYNC: OK — 33 browser files, 28 node engine files, app/js disk set in sync.
+== entry parity
+  ✓ dynamic differ SEES a real option divergence (imageMode P vs D)
+RESULT: PASS (entry parity holds)
+== JS regression
+  heading_family           19
+  tag_in_instruction_line  5
+Failing sections:

@@ -39,16 +39,18 @@
       },
       "conventions": [
         {
-          "name": "Sassoon writing font on read/interact text",
+          "name": "Writing font (writeFont, Playwrite NZ Basic) on read/interact text",
           "kind": "choice",
           "keywords": [
             "font",
-            "sassoon",
-            "writing font"
+            "writeFont",
+            "writing font",
+            "sassoon"
           ],
           "component_owner": "03/05 (font hook)",
-          "cross_reference": "refresh_sassoon_font.html",
-          "detail": "Any interactive/text the ākonga reads or interacts with uses the writing font refresh_sassoon_font.html. Ensure specifically: single-storey a, capital I reads as a capital I, single-storey g (these ākonga are just learning to read and write — the letters they read must match the letters they write; l and I are confusing when identical)."
+          "cross_reference": "writeFont.html",
+          "_r439_note": "Renamed 23 Sept 2026 (claude-audit Phase 2; KB CL-0109, constraint 93): the writing font is writeFont (Playwrite NZ Basic); the sassoon classes of refresh_sassoon_font.html are legacy — valid on the server, never emitted in a new build, never removed. Inert here (master_enabled false); the live emitter is Emit_Templates interactive_builders.selfCheck.letter_grid_bingo.cell_class_by_prefix (WRITEFONT_OFF).",
+          "detail": "Any interactive/text the ākonga reads or interacts with uses the writing font writeFont (writeFont.html, Playwrite NZ Basic). Ensure specifically: single-storey a, capital I reads as a capital I, single-storey g (these ākonga are just learning to read and write — the letters they read must match the letters they write; l and I are confusing when identical)."
         },
         {
           "name": "Page-1 animated-person intro (deferred)",
@@ -1191,7 +1193,7 @@
             "inherit"
           ],
           "cross_reference": "§14.7 / §14.11",
-          "detail": "The BLL conventions (Sassoon font, elkonin boxes, .dropbox carve-out, etc.) are scoped to BLL and do not automatically bind BLLR. Where a BLLR module needs a BLL convention it must be recorded HERE explicitly or raised as a Red Flag. Parameters incomplete — prefer a built BLLR sibling (Mode B) where one exists; Red Flag any BLLR convention this section does not yet cover rather than inferring from §14.7."
+          "detail": "The BLL conventions (writing font, elkonin boxes, .dropbox carve-out, etc.) are scoped to BLL and do not automatically bind BLLR. Where a BLLR module needs a BLL convention it must be recorded HERE explicitly or raised as a Red Flag. Parameters incomplete — prefer a built BLLR sibling (Mode B) where one exists; Red Flag any BLLR convention this section does not yet cover rather than inferring from §14.7."
         },
         {
           "name": "Bookworm avatar by module-code range (deferred art + audio)",

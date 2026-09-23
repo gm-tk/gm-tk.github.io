@@ -1573,7 +1573,14 @@
 				"buttons": "<div class=\"row\">\n<div class=\"activityButton reset-btn\">Reset</div>\n<div class=\"activityButton hidden check-btn\">Check</div>\n</div>",
 				"close": "</div>",
 				"cell_class_by_prefix": {
-					"BLL": "sassoonI-text"
+					"BLL": "writeFont"
+				},
+				"_doc_r439_writefont": "ROUND 439 (23 Sept 2026 — the claude-audit kickoff NEW_SESSION_MESSAGE__claude-audit_Approved_Changes.md, Phase 2; KB CL-0109, constraint 93: the writing font is `writeFont` (Playwrite NZ Basic), the sassoon classes are legacy — valid on the server, never emitted in a new build). The BLL cell class moves from the r420 `sassoonI-text` (mined from the pre-September gold) to `writeFont`, the class the design team made the default (Teams 2–4 Sept 2026) and the September builds already carry (WJFUN108 / WJFUN210). The 7 bingo pages (BLL110–BLL170 `_0_0`) are a NAMED KB OVERRIDE of their gold (§1b; _meta.gold_override_policy). env WRITEFONT_OFF restores the legacy map below byte-for-byte.",
+				"legacy_cell_class": {
+					"env": "WRITEFONT_OFF",
+					"cell_class_by_prefix": {
+						"BLL": "sassoonI-text"
+					}
 				},
 				"correct_from": [
 					"red",

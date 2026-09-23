@@ -853,7 +853,11 @@ class InteractiveBuilder {
 		// ---- emit
 		const code = String(run?.moduleCode ?? "").toUpperCase();
 		let cellCls = "";
-		for (const [p, cls] of Object.entries(cfg.cell_class_by_prefix ?? {})) {
+		// ROUND 439: the writing font is writeFont (KB CL-0109); env named by legacy_cell_class.env (WRITEFONT_OFF) restores the r420 map.
+		const legacyCls = cfg.legacy_cell_class;
+		const clsMap = (legacyCls && typeof process !== "undefined" && process.env && process.env[legacyCls.env || "WRITEFONT_OFF"])
+			? legacyCls.cell_class_by_prefix : cfg.cell_class_by_prefix;
+		for (const [p, cls] of Object.entries(clsMap ?? {})) {
 			if (code.startsWith(String(p).toUpperCase()) && cls) cellCls = ` class="${cls}"`;
 		}
 		const out = [];

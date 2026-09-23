@@ -122,6 +122,15 @@
 					"directive": "INTERACTIVE"
 				}
 			]
+		},
+		"_pending_style_directive_writing_font": {
+			"_doc": "ROUND 439 (claude-audit Phase 2; KB CL-0109, constraint 93). The KB now normalises `[writing font]` / `[handwriting font]` / `[write font]` to `writing_font` = add class `writeFont` to the tagged element. RECORDED ONLY, NOT A TAG ENTRY: the lexicon has no STYLE directive that adds a class to the next element (INLINE_FORMAT only renders the black text plain), and an alias here would be LIVE — the matcher's embedded pass would catch CEDR501's writer instruction `[Put in handwriting font.]` and silently swallow it. 0 corpus WTs use the tag itself. Building it needs a STYLE directive (tag → class on the following element) — a future round.",
+			"aliases": [
+				"writing font",
+				"handwriting font",
+				"write font"
+			],
+			"target_class": "writeFont"
 		}
 	},
 	"tags": {
