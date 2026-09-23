@@ -1,0 +1,16 @@
+  13 gold OWN-TAB                claude pane:tab1      no-instr :: BLL247 BLL253 BLL271 BLL272 BLL273 BLL274 BLL276 BLLR201 BLLR202 ENGC204 ENGC206 ENGC403 GENO901
+   9 gold no-tabs-menu           claude no-tabs-menu   no-instr :: BLL240 BLL241 BLL242 BLL245 BLL246 BLL252 BLL256 BLL260 BLL270
+   8 gold OWN-TAB                claude pane:tab1      INSTR-Info :: BLL261 BLL262 BLLR203 FRNO902 HPRE203 SCBI301 SCES201 SCPH301
+   6 gold pane:Information       claude pane:tab1      INSTR-Info :: BLL263 BLL264 BLL266 HPRE301 SSCI104 SSCI205
+   5 gold pane:tab1              claude pane:tab1      no-instr :: ENGS405 FRNO901 SSEA203 WJFUN109 WJFUN110
+   4 gold pane:Information       claude pane:tab1      no-instr :: BLL251 BLL255 BLL257 BLL275
+   4 gold OWN-TAB                claude none           no-instr :: WJFUN112 WJFUN113 WJFUN115 WJFUN116
+   3 gold no-tabs-menu           claude no-tabs-menu   INSTR-Info :: BLL244 SSOG103 SSOG105
+   3 gold none                   claude pane:tab1      INSTR-Info :: ENO2060 TEDC401 TEDC402
+   2 gold pane:Information       claude pane:Information no-instr :: ENGJ403 ENGS404
+   2 gold pane:tab1              claude none           no-instr :: WJFUN305 WJFUN307
+   1 gold none                   claude pane:tab1      no-instr :: BLL243
+   1 gold pane:Knowledge and Practices claude pane:tab1      no-instr :: BLL250
+   1 gold none                   claude no-tabs-menu   no-instr :: BLL254
+   1 gold OWN-TAB                claude none           INSTR-Info :: BLL265
+   1 gold OWN-TAB                claude OWN-TAB        INSTR-Info :: SCCH301

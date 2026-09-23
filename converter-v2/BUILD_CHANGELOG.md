@@ -1,5 +1,27 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (round 460, build 260620.30) — KNOWLEDGE AND PRACTICES ARE THEIR OWN OVERVIEW TABS (KB constraint 67 / CL-0040): in a tabbed overview menu the writer's Knowledge and Practices sections now each get their own nav tab, in the KB's canonical order Overview → Knowledge → Practices → Information → Standards, and the Information tab those moves leave empty is removed — the loop's session 41 Round 8 (the loss-ledger / content re-read lane → the KB queue); THE LEDGER'S FULL-SHIP BACKSTOP
+
+### 1. WHAT CHANGED
+
+**The find** (`outputs/_s41_r8_lost.py` → 3.0 % of the Writers-Template text the human carries is on no Claude page; the WJFUN / science / language rows led to the module menu; `outputs/_s41_r8_kppane.py`): 36 tabbed-archetype overviews whose Knowledge / Practices sections sat inside Claude's Overview pane (or its Information pane), while the gold moves them out — 21 into their own nav tabs, 10 into Information. KB constraint 67 (CL-0040, Universal; KB 10 §2 "whenever the overview menu IS tabbed its tab composition follows the canonical set") makes them their own tabs; the r263 mechanism (`menu.extra_tabs.curriculum_tabs`) only fired for a registry row naming the section (`SCCH|7-8`).
+
+**The fix** (`MenuBuilder` promotion + `SkeletonBuilder` shell order; data `Emit_Templates.menu.extra_tabs.curriculum_tabs.kb_canonical` {labels, heading_pattern, drop_empty_tab2, exclude_subjects}; env **`KPTABS_OFF`**, byte-identical OFF): a heading whose folded text IS the section heading (`^(year N |level N )?(knowledge|practices?):?$` — never "Learning intentions – Cultural knowledge") opens a canonical Knowledge / Practices tab titled by canon (`<h4><span>Knowledge</span></h4>`, never the writer's "Knowledge:"); the tab LEADS (it renders before the Information slot); an Information tab the promotions emptied is dropped (the KB omission rule). Excluded: subject **BLL** (CL-0040 leaves the open BLL263 D2 overview tab-split question untouched) and **WJFUN** (the r410 tile dialect — its K / P headings never reach the menu walk; a follow-up).
+
+### 2. PROOF
+
+- In-memory A/B (`outputs/_r460_probe_run.sh`): OFF 3217 / 3217 identical; ON 28 pages / 19 modules (BLLR201-203, ENGC204 / 206 / 403, ENGS405, ENO2060, FRNO901 / 902, GENO901, HPRE203 / 301, SCBI301, SCES201, SCPH301, SSCI104, SSCI205 ×10 pages — its lesson pages carry the module menu, SSEA203).
+- **The skeleton SCAFFOLD is blind to this BY DESIGN**: the module menu's `div.tabs` collapses to one WIDGET line, so the pre-score reads +0.0 on every page. The menu-only evidence (`outputs/_r460_rawmenu.py`, the `#module-menu-content` subtree's skeleton vs gold): **20 up / 7 down, menu pp-sum +262.8; RAW skeleton pp-sum +77.8** (BLLR202 / 203 63 → 96, SCPH301 53 → 93, SCBI301 63 → 89, ENGC204 59 → 89, HPRE203 56 → 88, GENO901 32 → 64; SSCI205's Information-pane gold still rises 72 → 86). The first ON probe put the tabs AFTER Information (ENGC403 menu-only −9): repaired in-round with the `lead` order.
+- NAMED KB overrides (the gold keeps K / P in tab 1 or drops them; KB rank 1 outranks it, LOOP §1b): SSCI104 (menu-only 71 → 40), ENGS405 (79 → 56), SSEA203 (58 → 47), ENO2060 (49 → 38); FRNO902 27 ← 32 is the repeat-collapse artefact (its two new panes share one shape and collapse to "2× repeated"); BLLR201 / ENGC206 −0.3 / −0.9.
+- **THE FULL REGENERATION** (`outputs/_r460_fullship_par.sh`, 42 batches, 4 workers, every rc 0): stale 0; `_content_manifest.py fresh --affected` the 19 → **0 truly stale; the 523 unaffected byte-identical to the manifest**. Ledger `record-full --round 460`: scoped-since reset to 0.
+
+### 3. PROTECTED GATES
+
+- Skeleton **54.9376 % @ 2524 → 54.9376 % @ 2524 (+0.0000pp — EXACT, 0 movers)**; ≥50 1581, ≥75 275, ≥90 25; **RAW 38.934 → 38.967 (+0.033pp)**.
+- compare_structure 16719 / 208 / 896 / 24 EXACT; body_compare 61 / 5 / 176 / 239 EXACT; clean 2621 / 2667 EXACT; leak 75 / 46 EXACT; tags 9557; selftests 50 PASS; index GREEN; the miner 197 CANDIDATE @ 2524.
+- `_verify_menulabels.cjs` over the 19: ENO2060 title-above-label 4 on its LESSON pages — pre-existing (identical under `KPTABS_OFF`; only ENO2060_0_0 changed), recorded as its per-module baseline (the r359 precedent); every other module 0.
+- Plateau (§4): the PICK predicted a small skeleton move before the WIDGET collapse was found; it delivered +0.0000pp → counted as NOT moving (conservative): **1 of 3**.
+
 ## 2026-09-24 (round 459, build 260620.29) — THE MODULE INTRODUCTION STAYS ON THE OVERVIEW: the introduction the writer marks black, glues to an image tag, puts behind a CS note, or writes as an `[H2] Introduction` heading no longer ships as its own page 1.0 — the human keeps it on the overview and its page 1 is lesson 1 — the loop's session 41 Round 7 (the page-model lane)
 
 ### 1. WHAT CHANGED

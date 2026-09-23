@@ -3539,7 +3539,22 @@
 			"curriculum_tabs": {
 				"enabled": true,
 				"_doc": "ROUND 263 (module SCCH302 — the missing-menu report; sibling SCCH301's gold is the reference). The new-era Science curriculum sections (Knowledge / Practices) are their OWN nav tabs in the built sibling (SCCH301: Overview | Knowledge | Practices — NO Information tab), but the r238 tab_map routes those headings to tab 1, where the r206 promotion (tab2-routed only) could never see them. THREE row/section-scoped extensions, all reverted by env XTABCURRIC_OFF: (1) a section whose sections entry carries any_bucket:true is checked for promotion from ANY routed bucket, not just tab2 (sections without the key behave exactly as before — construction-proof inert); (2) a sections entry may carry its own heading_element (the SCCH form is <h4><span>, the r206 assessment default stays <h5>); (3) a registry row carrying _drop_empty_tab2:true drops the shell's Information nav item + empty pane when every section promoted away and no tab-2 content remains (row-scoped — every other tabs menu keeps its Information tab byte-identically via the {tab2Nav}/{tab2Pane} shell slots' defaults).",
-				"env": "XTABCURRIC_OFF"
+				"env": "XTABCURRIC_OFF",
+				"kb_canonical": {
+					"enabled": true,
+					"env": "KPTABS_OFF",
+					"_doc": "ROUND 460 (the autonomous loop's session 41 Round 8, 24 Sept 2026 — KB constraint 67 / CL-0040, Universal; KB 10 §2: whenever the overview menu IS tabbed its composition follows the canonical content-driven set Overview → Knowledge → Practices → Information → Standards). The r263 promotion above fired only for a registry row that names the section (SCCH|7-8), so 36 tabbed overviews kept their Knowledge / Practices sections inside the Overview pane. Under the KB the two sections are ALWAYS their own nav tabs in the tabbed archetype: a module whose registry row does not name the section takes the canonical label from `labels`, but only for a heading whose folded text matches `heading_pattern` (the section heading itself — never a heading that merely CONTAINS the word, e.g. 'Learning intentions – Cultural knowledge'). `drop_empty_tab2` applies the KB omission rule (absent content → remove BOTH the <li> and the pane; never synthesise) to the Information tab those promotions empty. `exclude_subjects` = the subject letter prefixes the KB's own reconciliation leaves on their archetype: BLL (CL-0040 does NOT touch the open BLL263 D2 overview tab-split question) and WJFUN (the r410 tile-page dialect, whose K / P headings never reach the menu walk). Measured: outputs/_s41_r8_kppane.py. Env KPTABS_OFF reverts to the r263 registry-only behaviour.",
+					"labels": {
+						"knowledge": "Knowledge",
+						"practices": "Practices"
+					},
+					"heading_pattern": "^(?:year\\s+\\d+\\s+|level\\s+\\d+\\s+)?(?:knowledge|practices?)\\s*:?$",
+					"drop_empty_tab2": true,
+					"exclude_subjects": [
+						"BLL",
+						"WJFUN"
+					]
+				}
 			},
 			"registry": {
 				"_note": "GENERATED from the 2026-07-10 promote census (outputs/_measure_tabpromote.py). Row = a subject|phase group whose human golds SOLIDLY promote the section; value = the tab LABEL. groups keyed like tabs_pane1_two_col.registry (subject letters | resolved template_phase); series = per-module overrides, only for deviants (none recorded).",

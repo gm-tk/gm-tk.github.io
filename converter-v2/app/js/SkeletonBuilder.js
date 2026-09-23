@@ -839,14 +839,25 @@ class SkeletonBuilder {
 				// {extraNav}/{extraPanes} shell slots. Both slots fill with ""
 				// when no tab was promoted, leaving the two-tab shells
 				// byte-identical to their pre-slot form. Data: menu.extra_tabs.
-				const xt = content.menu.extraTabs ?? [];
+				const xtAll = content.menu.extraTabs ?? [];
 				const xtCfg = tpl.menu.extra_tabs ?? {};
-				const extraNav = xt.map((t) => Utils.FillTemplate(
+				// ROUND 460 (KB c67 order — Overview → Knowledge → Practices →
+				// Information → Standards; env KPTABS_OFF upstream): a tab MenuBuilder
+				// marked `lead` (the canonical Knowledge / Practices tabs) renders
+				// BEFORE the Information slot; every other extra tab keeps its place
+				// after it, so a menu with no lead tab is byte-identical.
+				const xt = xtAll.filter((t) => !t.lead);
+				const xtLead = xtAll.filter((t) => t.lead);
+				const navOf = (list) => list.map((t) => Utils.FillTemplate(
 					xtCfg.nav_item_template ?? "\n<li><a>{label}</a></li>",
 					{ label: Utils.EscapeHtml(t.label) })).join("");
-				const extraPanes = xt.map((t) => Utils.FillTemplate(
+				const panesOf = (list) => list.map((t) => Utils.FillTemplate(
 					xtCfg.pane_template ?? "\n<div class=\"tab-pane\">\n<div class=\"row\">\n<div class=\"{col}\">\n{content}\n</div>\n</div>\n</div>",
 					{ col: xtCfg.pane_col ?? "col-md-8 col-12", content: t.html })).join("");
+				const extraNav = navOf(xt);
+				const extraPanes = panesOf(xt);
+				const leadNav = navOf(xtLead);
+				const leadPanes = panesOf(xtLead);
 				// ROUND 263 (curriculum tabs — module SCCH302): the tabs shells'
 				// Information nav item + pane are now {tab2Nav}/{tab2Pane} slots.
 				// The defaults below reconstruct the previously hard-wired strings
@@ -856,12 +867,12 @@ class SkeletonBuilder {
 				// promoted away — SCCH301's Overview | Knowledge | Practices form)
 				// fills them empty. Data: menu.tab2_nav_item + menu.tab2_pane_template.
 				const dropT2 = content.menu.dropTab2 === true;
-				const tab2Nav = dropT2 ? "" : Utils.FillTemplate(
+				const tab2Nav = leadNav + (dropT2 ? "" : Utils.FillTemplate(
 					tpl.menu.tab2_nav_item ?? "\n<li><a>{tab2Label}</a></li>",
-					{ tab2Label: Utils.EscapeHtml(content.menu.tab2Label ?? "Information") });
-				const tab2Pane = dropT2 ? "" : Utils.FillTemplate(
+					{ tab2Label: Utils.EscapeHtml(content.menu.tab2Label ?? "Information") }));
+				const tab2Pane = leadPanes + (dropT2 ? "" : Utils.FillTemplate(
 					tpl.menu.tab2_pane_template ?? "\n<div class=\"tab-pane\">\n<div class=\"row\">\n{tab2Body}\n</div>\n</div>",
-					{ tab2Body });
+					{ tab2Body }));
 				parts.push(Utils.FillTemplate(shell, {
 					// the reo_tabs / writer_tabs shells' two slots (ROUNDS 212 + 221)
 					navItems: content.menu.wtNav ?? content.menu.reoNav ?? "",

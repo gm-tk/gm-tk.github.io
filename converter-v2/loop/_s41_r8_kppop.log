@@ -1,0 +1,101 @@
+  30 BOTH IN-PANE (counter)
+  22 GOLD-TAB, claude in-pane
+   5 GOLD-TAB, claude has no heading
+   4 claude in-pane, gold none
+   2 gold in-pane, claude none
+   1 BOTH-TAB
+
+BLL     {'BOTH IN-PANE (counter)': 18, 'GOLD-TAB, claude in-pane': 10, 'claude in-pane, gold none': 1, 'GOLD-TAB, claude has no heading': 1}
+BLLR    {'GOLD-TAB, claude in-pane': 3}
+ENGC    {'GOLD-TAB, claude in-pane': 3}
+ENGJ    {'BOTH IN-PANE (counter)': 1}
+ENGS    {'BOTH IN-PANE (counter)': 2}
+ENO     {'claude in-pane, gold none': 1}
+FRNO    {'BOTH IN-PANE (counter)': 1, 'GOLD-TAB, claude in-pane': 1}
+GENO    {'GOLD-TAB, claude in-pane': 1}
+HPRE    {'GOLD-TAB, claude in-pane': 1, 'BOTH IN-PANE (counter)': 1}
+SCBI    {'GOLD-TAB, claude in-pane': 1}
+SCCH    {'BOTH-TAB': 1}
+SCES    {'GOLD-TAB, claude in-pane': 1}
+SCPH    {'GOLD-TAB, claude in-pane': 1}
+SSCI    {'BOTH IN-PANE (counter)': 2}
+SSEA    {'BOTH IN-PANE (counter)': 1}
+SSOG    {'BOTH IN-PANE (counter)': 2}
+TEDC    {'claude in-pane, gold none': 2}
+WJFUN   {'BOTH IN-PANE (counter)': 2, 'GOLD-TAB, claude has no heading': 4, 'gold in-pane, claude none': 2}
+
+== BOTH IN-PANE (counter)
+   BLL240  gold=[] claude=[] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL241  gold=[] claude=[] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL242  gold=[] claude=[] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL244  gold=[] claude=[] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL245  gold=[] claude=[] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL246  gold=[] claude=[] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL250  gold=['Learning Intentions and Success Criteria', 'Knowledge and Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL251  gold=['Overview', 'Information'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL252  gold=[] claude=[] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL255  gold=['Overview', 'Information'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL256  gold=[] claude=[] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL257  gold=['Overview', 'Information'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL260  gold=[] claude=[] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL263  gold=['Overview', 'Information'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL264  gold=['Overview', 'Information'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL266  gold=['Overview', 'Information'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL270  gold=[] claude=[] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL275  gold=['Overview', 'Information'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   ENGJ403  gold=['Overview', 'Information'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   ENGS404  gold=['Overview', 'Information'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   ENGS405  gold=['Overview', 'Information'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   FRNO901  gold=['Overview'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   HPRE301  gold=['Overview', 'Information'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   SSCI104  gold=['Overview', 'Information'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['practices']
+   SSCI205  gold=['Overview', 'Information'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   SSEA203  gold=['Overview', 'Information'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   SSOG103  gold=[] claude=[] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   SSOG105  gold=[] claude=[] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   WJFUN109  gold=['Overview', 'Purpose', 'Audience'] claude=['Overview', 'Purpose', 'Audience'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   WJFUN110  gold=['Overview', 'Purpose', 'Audience'] claude=['Overview', 'Purpose', 'Audience'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+
+== GOLD-TAB, claude in-pane
+   BLL243  gold=['Knowledge', 'Practices', 'Learning intentions'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=[]
+   BLL247  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL253  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL261  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL262  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL271  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL272  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL273  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL274  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLL276  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLLR201  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLLR202  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   BLLR203  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   ENGC204  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   ENGC206  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   ENGC403  gold=['Overview', 'Knowledge', 'Practices', 'Information', 'Aromatawai | Assessment for Learning'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   FRNO902  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   GENO901  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   HPRE203  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   SCBI301  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   SCES201  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+   SCPH301  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+
+== claude in-pane, gold none
+   BLL254  gold=['Overview', 'Learning'] claude=[] ch=['knowledge', 'practices'] gh=[]
+   ENO2060  gold=['Overview', 'Information'] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=[]
+   TEDC401  gold=[] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=[]
+   TEDC402  gold=[] claude=['Overview', 'Information'] ch=['knowledge', 'practices'] gh=[]
+
+== GOLD-TAB, claude has no heading
+   BLL265  gold=['Overview', 'Knowledge', 'Information'] claude=['Overview', 'Information'] ch=[] gh=['knowledge', 'practices']
+   WJFUN112  gold=['Overview', 'Knowledge', 'Practices', 'Purpose', 'Audience'] claude=['Overview', 'Purpose', 'Audience'] ch=[] gh=['knowledge', 'practices']
+   WJFUN113  gold=['Knowledge', 'Practices', 'Parts of speech', 'Language features'] claude=['Overview', 'Parts of speech', 'Language features'] ch=[] gh=['knowledge', 'practices']
+   WJFUN115  gold=['Overview', 'Knowledge', 'Practices', 'Language choices', 'Language features 1', 'Language features 2'] claude=['Overview', 'Language choices', 'Language features 1', 'Language features 2'] ch=[] gh=['knowledge', 'practices']
+   WJFUN116  gold=['Overview', 'Knowledge', 'Practices', 'Language choices', 'Language features 1', 'Language features 2'] claude=['Overview', 'Language choices', 'Language features', 'Language features 2'] ch=[] gh=['knowledge', 'practices']
+
+== BOTH-TAB
+   SCCH301  gold=['Overview', 'Knowledge', 'Practices'] claude=['Overview', 'Knowledge', 'Practices'] ch=['knowledge', 'practices'] gh=['knowledge', 'practices']
+
+== gold in-pane, claude none
+   WJFUN305  gold=['Overview', 'Audience, Purpose & Reaction', 'Form, Genre and Style'] claude=['Overview', 'Audience, Purpose & Reaction', 'Form, Genre and Style'] ch=[] gh=['knowledge', 'practices']
+   WJFUN307  gold=['Learning Intentions', 'Choosing words', 'Language features'] claude=['Overview', 'Choosing words for effect', 'Language features'] ch=[] gh=['knowledge', 'practices']
