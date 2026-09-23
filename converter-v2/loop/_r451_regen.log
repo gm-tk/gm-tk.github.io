@@ -1,0 +1,19 @@
+[03:50:33] spot-check plan
+  BLL112 BLL142 BLL144 CBI1005 CEDW201 COM1005 DTC1004 ENGC102 ENGI101 ENGR302 OSAI501 SSFUN07
+
+Regenerate them WITH THE FIX ON (default env, NO *_OFF), then run `verify`:
+  python3 _batch_plan.py --codes BLL112 BLL142 BLL144 CBI1005 CEDW201 COM1005 DTC1004 ENGC102 ENGI101 ENGR302 OSAI501 SSFUN07
+sample: BLL112 BLL142 BLL144 CBI1005 CEDW201 COM1005 DTC1004 ENGC102 ENGI101 ENGR302 OSAI501 SSFUN07
+[03:50:34] 35 modules -> batches of 11
+  _r451_regen_batch_03 rc=0 OK — 2 module(s) regenerated fresh.
+  _r451_regen_batch_00 rc=0 OK — 11 module(s) regenerated fresh.
+  _r451_regen_batch_01 rc=0 OK — 11 module(s) regenerated fresh.
+  _r451_regen_batch_02 rc=0 OK — 11 module(s) regenerated fresh.
+[03:51:59] fresh check
+  affected set: 23 module(s) (must be freshly regenerated)
+  unaffected  : 522 module(s) (must be byte-identical to the manifest; mtime IGNORED)
+  !! NOT REGENERATED — 3 affected module(s) older than the source edit (truly stale): TRR104 TRR105 TRR115
+     => regen them:  python3 _batch_plan.py --codes TRR104 TRR105 TRR115
+[spotcheck] verifying 12 non-affected modules regenerated WITH the fix ON
+  OK — all 12 sampled non-affected modules are BYTE-IDENTICAL under the fix (P's no-op claim holds on the sample).
+[03:52:11] done

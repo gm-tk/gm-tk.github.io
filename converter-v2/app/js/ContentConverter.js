@@ -2994,7 +2994,10 @@ class ContentConverter {
 					// per-table handlers below get a chance to fire) so the section can absorb its
 					// own content tables and widget bundles as a whole.
 					// Data flag: dual_language.section_grouping   Env toggle: REONEST_OFF
-					const sec = BilingualBuilder.bilingualSection(bodyItems, i, run, bundles, this.#norm);
+					// ROUND 451: a consumed bundle takes the standard hand-off box (hand-off only, no build) —
+					// section_grouping.bundle_handoff, env BILHANDOFF_OFF.
+					const sec = BilingualBuilder.bilingualSection(bodyItems, i, run, bundles, this.#norm,
+						(b) => this.#interactivePlaceholder(b, run, { handoffOnly: true }));
 					if (sec) { breakRow(); parts.push(sec.html); markContent(); this.#closeSpanWrap(stack, emit, breakRow); i = sec.next - 1; continue; }
 					const bil = BilingualBuilder.bilingualTable(it.block, run, this.#norm,
 						it._reoModuleContent === true);
@@ -9821,13 +9824,14 @@ class ContentConverter {
 			|| [...bundle.openerItems, ...bundle.memberItems].some((it) => this.#bundleItemHasText(it));
 	}
 
-	static #interactivePlaceholder(bundle, run) {
+	static #interactivePlaceholder(bundle, run, opts = null) {
 		// FIRST: can we build this interactive for REAL? The InteractiveBuilder
 		// handles the small set of "easy" widgets we fully understand. It returns
 		// finished HTML, or null when the captured data is ambiguous — in which
 		// case we fall straight through to the honest orange placeholder below.
 		// (Markup lives in data/Emit_Templates.json → interactive_builders.)
-		const built = InteractiveBuilder.Build({
+		// ROUND 451: opts.handoffOnly (the bilingual keystone section's bundles) skips the build.
+		const built = opts?.handoffOnly ? null : InteractiveBuilder.Build({
 			bundle,
 			run,
 			templates: DataService.Data.EmitTemplates.interactive_builders,

@@ -1,6 +1,6 @@
 # PageForge — corpus discrepancy dashboard
 
-_Generated 2026-09-24 03:08 · corpus 534 modules / 2658 pages_
+_Generated 2026-09-24 03:38 · corpus 534 modules / 2658 pages_
 
 **What this is.** Every remaining difference between our HTML and the human's, measured across the whole library and ranked by how many modules it costs. Use it to choose the next round. It changes nothing — it only reports.
 
@@ -8,6 +8,7 @@ _Generated 2026-09-24 03:08 · corpus 534 modules / 2658 pages_
 
 - skeleton state predates the newest engine change (2026-09-24) — its rows may lag.
 - body_compare predates the newest engine change (2026-09-24) — its rows may lag.
+- feature index predates the newest engine change (2026-09-24) — its rows may lag.
 
 ## 1. The two numbers that matter
 

@@ -1,5 +1,27 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (round 451, build 260620.22) — THE BILINGUAL SECTION'S WIDGET BUNDLE TAKES THE STANDARD HAND-OFF BOX: a widget inside a Te Reo keystone section no longer ships as an empty table — it gets the same hand-off box (banner, the `data-cv2-index` its `_interactives.txt` entry names, every member) as every other un-built widget — the loop's session 40 Round 8 (the dashboard lane; the body gate's "empty widget box" row split)
+
+### 1. WHAT CHANGED
+
+`BilingualBuilder.bilingualSection` (the r135 keystone section) rendered a widget bundle it consumed as ONE bare `cv2-interactive bilingual-unbuilt` box holding `TablesAndGrids.contentTable(<the bundle's FIRST member>.block)`. When the writer's `[Activity: Embedded] …` tag line leads the bundle (76 of the 134 Bilingual bundles), that is an **EMPTY `<table>`** — 61 of them on 23 pages / 9 TRR modules, 62 of the 328 placeholders body_compare counts as empty (`outputs/_s40_r8_empty.py`). Every later member (the reo/eng heading + instruction table, the audio / item data table) rendered nothing, and the box carried no `data-cv2-index` although `{CODE}_interactives.txt` says "Placeholder marker: data-cv2-index=N". Bundles OUTSIDE a section already took the standard box.
+
+- **Now:** the section asks the converter for the standard box — `ContentConverter.#interactivePlaceholder(bundle, run, { handoffOnly: true })`, passed in as a callback. `handoffOnly` skips `InteractiveBuilder.Build` (a bilingual widget is not built here — that is a later D10-3 kickoff); everything after it (the empty-bundle guard, notes-before, the r235 collapsible extract box with its reference code) is the standard path, byte for byte.
+- Data `Emit_Templates.elements.dual_language.section_grouping.bundle_handoff` {enabled: true}; env **`BILHANDOFF_OFF`** (byte-identical OFF).
+- Triangulation: TRR109 1.0 (a radio quiz — WT tag + H3/Body table + 10-item audio table; gold a built radioQuiz, commented out; Claude a banner box + an EMPTY table), TRR113 0.0 (a drag-and-drop; the gold ships no activity; Claude an EMPTY table), TRR301 1.0–3.0 (gold builds dragAndDrop / multiChoiceQuiz / dropQuiz / accordion; Claude 30 first-member dumps). The gold does not decide a hand-off (it builds, omits or comments out) — A1, judged on the hand-off (r235).
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules (`outputs/_r451_probe_run.sh`, the r448 harness — pages AND worklists): **OFF 3208 / 3208 identical**; **ON 50 files / 15 modules changed** (PNR101 / 102 / 104 / 107, TRR107–114, TRR203 / 301 / 304) — 95 `bilingual-unbuilt` boxes → 95 standard `cv2-int-ref` boxes (one box per bundle either way), empty tables 61 → **0**, "no content captured" flags 1 → 1.
+- Scoped regeneration: the 23 Bilingual-template modules (§0a whole type; TRR104 / 105 / 115 are no-source dirs that write only `_run.json`) + the 12-module spot-check sample, `_r451_regen.sh`; `_content_manifest.py fresh` 0 truly stale; the disk = the probe's ON files 75 / 75; the spot-check 12 / 12 byte-identical.
+- `scoped_ship.sh --toggle BILHANDOFF_OFF --round 451`: PASS (containment 15 ⊆ 20; decomposition-proven).
+
+### 3. PROTECTED GATES
+
+- Skeleton SCAFFOLD **54.7407 % @ 2477 — +0.0000pp, 0 movers** (a `cv2-interactive` subtree is one WIDGET line); ≥50 1542, ≥75 260, ≥90 23. RAW 38.695 → 38.644 % (−0.051pp — the hand-off box internals RAW reads; not a protected gate, NAMED).
+- cs 15657 / 199 / 796 / 24 held. **body ANY breakdown 260 → 237 (−23), EMPTY 200 → 176**; over-capture **57 → 58 NAMED: TRR301_3_0** — its box was EMPTY (0 member characters, the unclassified bundle's 4,327 characters invisible on the page) and now shows them (62 % of the page; lost blocks 30 before and after): the page moves from the EMPTY flag to the OVER-CAPTURE flag, counted once in ANY either way; the capture itself is a scanner follow-up (one page, below floor). Clean 2613 / 2658, leak 75 / 45 held; every verifier ✓; selftests 50 PASS / GREEN, 0 FAIL; the miner 195 CANDIDATE (unchanged).
+- Plateau (§4): the PICK declared it skeleton-neutral by design and it moved the body gate (improved) — neither counts nor resets; **1 of 3**. Ledger: scoped **#6** since the r444 FULL (2 of headroom).
+
 ## 2026-09-24 (round 450, build 260620.21) — THE CLAUDE-AUDIT PHASE 3b: the inert subject-parameters refresh — the HPE, Languages, BLLR, MiW and Pathways families now record what the September 2026 KB update delivered (characters, icons, phrase images, bookworms, bookshelf, kea, writing process, personas) — output-inert, no regeneration — the loop's session 40 Round 7 (Chris-approved kickoff; Phase 3 measured and declined in Round 5)
 
 ### 1. WHAT CHANGED

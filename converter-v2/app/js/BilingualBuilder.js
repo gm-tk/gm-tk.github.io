@@ -441,9 +441,10 @@ class BilingualBuilder {
 	 * @param {ConversionRun} run - the current run
 	 * @param {Object[]} bundles - captured interactive-widget bundles (indexed by consumedBy)
 	 * @param {TagNormaliser} norm - resolves any `[Tag]` markers found in cells
+	 * @param {Function} [handoff] - ROUND 451: (bundle) => the converter's standard hand-off box HTML for a consumed bundle
 	 * @returns {{html: string, next: number}|null} the rendered section HTML plus the index to resume scanning from, or null when item `i` doesn't open a section (or the feature is disabled)
 	 */
-	static bilingualSection(bodyItems, i, run, bundles, norm) {
+	static bilingualSection(bodyItems, i, run, bundles, norm, handoff = null) {
 		const cfg = DataService.Data.EmitTemplates.elements?.dual_language;
 		const scfg = cfg && cfg.section_grouping;
 		if (!scfg || scfg.enabled === false
@@ -504,7 +505,15 @@ class BilingualBuilder {
 				const b = bundles && bundles[nx.consumedBy];
 				if (b && !b._emitted) {
 					b._emitted = true;
-					inner.push(`<div class="cv2-interactive bilingual-unbuilt">\n${TablesAndGrids.contentTable(nx.block, run, true, norm)}\n</div>`);
+					// ROUND 451: the bundle takes the converter's STANDARD hand-off box (banner, the
+					// data-cv2-index its _interactives.txt entry names, every member dumped) instead of
+					// contentTable(<first member>) — an EMPTY <table> when the writer's [Activity: Embedded]
+					// tag line leads. Data section_grouping.bundle_handoff; env BILHANDOFF_OFF.
+					const hoCfg = scfg.bundle_handoff;
+					const hoOn = typeof handoff === "function" && !!hoCfg && hoCfg.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env.BILHANDOFF_OFF);
+					const box = hoOn ? handoff(b) : null;
+					inner.push(box || `<div class="cv2-interactive bilingual-unbuilt">\n${TablesAndGrids.contentTable(nx.block, run, true, norm)}\n</div>`);
 					hasWidget = true;
 				}
 				continue;   // a member of an already-emitted bundle renders nothing here

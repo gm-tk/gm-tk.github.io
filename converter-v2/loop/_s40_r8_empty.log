@@ -1,0 +1,85 @@
+empty placeholders 328 on 200 pages / 142 modules
+by banner type: [('(none)', 77), ('unclassified', 61), ('dragAndDrop', 35), ('clickDrop', 19), ('clickDrop (with embedded)', 19), ('flipCard', 13), ('multiChoiceQuiz', 11), ('accordion', 11), ('selfCheck', 10), ('carousel', 9), ('wordDrag', 7), ('typing', 4), ('tabs (insert)', 4), ('modal', 3), ('clickDrop (for)', 3), ('dragAndDrop (- self-marking)', 3), ('crossword', 2), ('dropDown', 2), ('dragAndDrop (please insert the detailed on this google doc, i have shared this as anyone can enter)', 2), ('carousel (insert)', 2), ('clickDrop (with embedded image)', 2), ('clickDrop (create)', 1), ('carousel (insert ...see)', 1), ('carousel (insert or)', 1), ('tabs', 1)]
+by module prefix: [('TRR', 62), ('BLL', 60), ('XDLS', 31), ('CEDR', 16), ('WJFUN', 14), ('MXFL', 13), ('ENGC', 11), ('MXDI', 10), ('XGF', 10), ('HES', 7), ('HIS', 7), ('AGH', 5), ('CEDT', 5), ('ENGI', 5), ('MXDB', 5), ('PHE', 5), ('TEDC', 5), ('GENO', 4), ('MXEO', 4), ('XOTPB', 4), ('ANZH', 3), ('BLLR', 3), ('FRFUN', 3), ('GER', 3), ('MXFU', 3)]
+by member chars (bucket of 10): [(0, 137), (10, 72), (20, 63), (30, 56)]
+with a cv2-note / cv2-comment: 51
+--- AGH1005/AGH1005_2_0.html | dragAndDrop  | chars 24
+   TEXT: AGH1005-INT-02-01-dragAndDrop ▼ ⚙ INTERACTIVE (un-built) #5: dragAndDrop — Activity (inline) — see AGH1005_interactives.txt Phloem Epidermis Xylem Pith
+--- ARFUN04/ARFUN04_0_0.html | clickDrop (create)  | chars 36
+   TEXT: ARFUN04-INT-00-28-clickDrop ▼ ⚙ INTERACTIVE (un-built) #35: clickDrop (create) — Activity (inline) — see ARFUN04_interactives.txt Watch Watch this video about balance.
+--- BLL113/BLL113_1_0.html | unclassified  | chars 36
+   TEXT: BLL113-INT-01-03-unclassified ▼ ⚙ INTERACTIVE (un-built) #4: unclassified — Activity 1F — see BLL113_interactives.txt in at sat pin ant pan sit spin tip spat tap pat
+--- BLL122/BLL122_1_0.html | unclassified  | chars 10
+   TEXT: BLL122-INT-01-04-unclassified ▼ ⚙ INTERACTIVE (un-built) #4: unclassified — Activity 1E — see BLL122_interactives.txt the on a is he
+--- BLL132/BLL132_1_0.html | unclassified  | chars 27
+   TEXT: BLL132-INT-01-02-unclassified ▼ ⚙ INTERACTIVE (un-built) #2: unclassified — Activity 1D — see BLL132_interactives.txt and on I he is to the a was of his out
+--- BLL156/BLL156_1_1.html | unclassified  | chars 38
+   TEXT: BLL156-INT-02-01-unclassified ▼ ⚙ INTERACTIVE (un-built) #6: unclassified — Activity 2A — see BLL156_interactives.txt when f t w p i o a h e l q f m b g n go f t w p i o a h e l q f m b g n
+--- BLL210/BLL210_0_0.html | dragAndDrop  | chars 38
+   TEXT: BLL210-INT-00-02-dragAndDrop ▼ Writers Note: Just note the repeats of letters please. ⚙ INTERACTIVE (un-built) #3: dragAndDrop — Activity 1C — see BLL210_interactives.txt [audio 1] cry, dry, fly, sty, fry, spy
+--- BLL217/BLL217_1_0.html | dragAndDrop  | chars 0
+   TEXT: BLL217-INT-01-03-dragAndDrop ▼ ⚙ INTERACTIVE (un-built) #3: dragAndDrop — Activity 1D — see BLL217_interactives.txt
+--- BLL260/BLL260_0_0.html | wordDrag  | chars 30
+   TEXT: BLL260-INT-00-06-wordDrag ▼ Writers Note: [General note to the designer] Audio must be spilt for each word Please allow letter tiles to be used more than once for repeated letters. All words use the same number of sound boxes. Each consonant blend (e.g. ‘spr’) counts as one sound and should go into 
+--- BLLR201/BLLR201_1_1.html | clickDrop  | chars 17
+   TEXT: BLLR201-INT-02-04-clickDrop ▼ ⚙ INTERACTIVE (un-built) #10: clickDrop — Activity (inline) — see BLLR201_interactives.txt The Observologist
+--- CEDR204/CEDR204_0_0.html | dragAndDrop  | chars 5
+   TEXT: CEDR204-INT-00-06-dragAndDrop ▼ Writers Note: There is no right answer for this so they need to be able to be dropped and moved around in any of the spaces below. Can spaces like this please be created for the cards to be placed into. THank you ⚙ INTERACTIVE (un-built) #10: dragAndDrop — Activity (i
+--- CEDR401/CEDR401_0_0.html | accordion  | chars 20
+   TEXT: CEDR401-INT-00-17-accordion ▼ ⚙ INTERACTIVE (un-built) #24: accordion — Activity (inline) — see CEDR401_interactives.txt See our ideas below:
+--- ENGC102/ENGC102_7_0.html | dragAndDrop  | chars 17
+   TEXT: ENGC102-INT-07-02-dragAndDrop ▼ ⚙ INTERACTIVE (un-built) #19: dragAndDrop — Activity (inline) — see ENGC102_interactives.txt sat see shut star sun
+--- ENGC403/ENGC403_7_0.html | tabs (insert)  | chars 8
+   TEXT: ENGC403-INT-07-03-tabs ▼ ⚙ INTERACTIVE (un-built) #22: tabs (insert) — Activity 4.1B — see ENGC403_interactives.txt Achieved
+--- EXBP901/EXBP901_3_0.html | dropDown  | chars 32
+   TEXT: EXBP901-INT-03-01-dropDown ▼ ⚙ INTERACTIVE (un-built) #5: dropDown — Activity (inline) — see EXBP901_interactives.txt Upload your journal. FUNdamentals
+--- GENO901/GENO901_5_2.html | typing  | chars 19
+   TEXT: GENO901-INT-13-02-typing ▼ ⚙ INTERACTIVE (un-built) #43: typing — Activity (inline) — see GENO901_interactives.txt 5F Writing practice
+--- HES1006/HES1006_7_0.html | clickDrop (for)  | chars 27
+   TEXT: HES1006-INT-07-05-clickDrop ▼ ⚙ INTERACTIVE (un-built) #9: clickDrop (for) — Activity (inline) — see HES1006_interactives.txt Sexuality and Relationships
+--- HIS1007/HIS1007_3_1.html | dragAndDrop (please insert the detailed on this google doc, i have shared this as anyone can enter)  | chars 15
+   TEXT: HIS1007-INT-04-01-dragAndDrop ▼ ⚙ INTERACTIVE (un-built) #3: dragAndDrop (please insert the detailed on this google doc, i have shared this as anyone can enter) — Activity (inline) — see HIS1007_interactives.txt Dred Scott.docx
+--- MXDB302/MXDB302_9_0.html | dragAndDrop (- self-marking)  | chars 25
+   TEXT: MXDB302-INT-09-02-dragAndDrop ▼ ⚙ INTERACTIVE (un-built) #63: dragAndDrop (- self-marking) — Activity 9A — see MXDB302_interactives.txt 10% 25% 20% 40% 30% 75% 50% 100%
+--- MXDI202/MXDI202_3_0.html | unclassified  | chars 22
+   TEXT: MXDI202-INT-03-03-unclassified ▼ ⚙ INTERACTIVE (un-built) #7: unclassified — Activity 3E — see MXDI202_interactives.txt [button] Go to journal
+--- MXFL101/MXFL101_2_0.html | unclassified  | chars 0
+   TEXT: MXFL101-INT-02-01-unclassified ▼ Writers Note: Are we able to cut/snip out 20 lollies from these images so they are individual and then the ākonga can drop and drag them on the ‘slice’? ⚙ INTERACTIVE (un-built) #3: unclassified — Activity 2A — see MXFL101_interactives.txt
+--- MXFL203/MXFL203_4_0.html | unclassified  | chars 31
+   TEXT: MXFL203-INT-04-03-unclassified ▼ ⚙ INTERACTIVE (un-built) #16: unclassified — Activity (inline) — see MXFL203_interactives.txt 1/2 3/6 6/8 3/4 4/5 8/10 1/4 2/8 2/5 1/3
+--- MXFUN02/MXFUN02_0_0.html | dragAndDrop  | chars 18
+   TEXT: MXFUN02-INT-00-11-dragAndDrop ▼ ⚙ INTERACTIVE (un-built) #16: dragAndDrop — Activity (inline) — see MXFUN02_interactives.txt Check answers Reset
+--- PHE1003/PHE1003_7_0.html | multiChoiceQuiz  | chars 22
+   TEXT: PHE1003-INT-07-01-multiChoiceQuiz ▼ ⚙ INTERACTIVE (un-built) #14: multiChoiceQuiz — Activity 37 — see PHE1003_interactives.txt Drag and Drop Activity
+--- SSFUN01/SSFUN01_0_0.html | carousel (insert)  | chars 28
+   TEXT: SSFUN01-INT-00-11-carousel ▼ ⚙ INTERACTIVE (un-built) #11: carousel (insert) — Activity 4D — see SSFUN01_interactives.txt https://youtu.be/oROsbaxWH0M
+--- TEFUN06/TEFUN06_0_0.html | clickDrop  | chars 28
+   TEXT: TEFUN06-INT-00-05-clickDrop ▼ ⚙ INTERACTIVE (un-built) #13: clickDrop — Activity (inline) — see TEFUN06_interactives.txt Compare your ideas with ours
+--- TRR109/TRR109_1_0.html |  | chars 0
+   TEXT: 
+--- TRR109/TRR109_3_0.html |  | chars 0
+   TEXT: 
+--- TRR109/TRR109_5_0.html |  | chars 0
+   TEXT: 
+--- TRR112/TRR112_2_0.html |  | chars 0
+   TEXT: 
+--- TRR112/TRR112_5_0.html |  | chars 0
+   TEXT: 
+--- TRR113/TRR113_3_0.html |  | chars 0
+   TEXT: 
+--- TRR114/TRR114_2_0.html |  | chars 0
+   TEXT: 
+--- WJFUN106/WJFUN106_0_0.html | selfCheck  | chars 18
+   TEXT: WJFUN106-INT-00-04-selfCheck ▼ ⚙ INTERACTIVE (un-built) #10: selfCheck — Activity (inline) — see WJFUN106_interactives.txt We went to Wānaka.
+--- WJFUN304/WJFUN304_0_0.html |  | chars 14
+   TEXT: [typeable box]
+--- XDLS901/XDLS901_1_0.html | clickDrop  | chars 15
+   TEXT: XDLS901-INT-01-02-clickDrop ▼ Writers Note: [dev – Two Images Explain and Do from LS global edits] ⚙ INTERACTIVE (un-built) #8: clickDrop — Activity 2 — see XDLS901_interactives.txt Explain and doo
+--- XDLS903/XDLS903_1_0.html | clickDrop (with embedded)  | chars 5
+   TEXT: XDLS903-INT-01-05-clickDrop ▼ ⚙ INTERACTIVE (un-built) #6: clickDrop (with embedded) — Activity 1E — see XDLS903_interactives.txt Judge
+--- XDLS905/XDLS905_4_0.html | clickDrop (with embedded)  | chars 7
+   TEXT: XDLS905-INT-04-05-clickDrop ▼ ⚙ INTERACTIVE (un-built) #28: clickDrop (with embedded) — Activity 4D — see XDLS905_interactives.txt Compare
+--- XDLS906/XDLS906_5_0.html | clickDrop (with embedded)  | chars 8
+   TEXT: XDLS906-INT-05-02-clickDrop ▼ ⚙ INTERACTIVE (un-built) #36: clickDrop (with embedded) — Activity 2 — see XDLS906_interactives.txt Explain:
+--- XGF9002/XGF9002_0_0.html | flipCard  | chars 9
+   TEXT: XGF9002-INT-00-06-flipCard ▼ ⚙ INTERACTIVE (un-built) #6: flipCard — Activity (inline) — see XGF9002_interactives.txt Tāhurangi

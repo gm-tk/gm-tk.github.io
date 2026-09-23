@@ -1,0 +1,22 @@
+first member of a bundle: {'table': 58, 'tag/para': 76}
+TOTAL {'bundles': 134, 'bundles_with_bilingual_rows': 104, 'cells': 476, 'claude': 208, 'gold': 247, 'gold_not_claude': 100}
+  PMT101: bundles 1 with-rows 1 cells 2 claude 2 gold 2 gold-not-claude 0
+  PNR101: bundles 8 with-rows 4 cells 16 claude 7 gold 7 gold-not-claude 1
+  PNR102: bundles 3 with-rows 1 cells 3 claude 0 gold 2 gold-not-claude 2
+  PNR104: bundles 4 with-rows 2 cells 11 claude 9 gold 9 gold-not-claude 0
+  PNR107: bundles 7 with-rows 2 cells 11 claude 7 gold 5 gold-not-claude 0
+  TRR102: bundles 15 with-rows 15 cells 59 claude 52 gold 28 gold-not-claude 0
+  TRR103: bundles 4 with-rows 3 cells 10 claude 6 gold 1 gold-not-claude 0
+  TRR106: bundles 3 with-rows 3 cells 10 claude 7 gold 4 gold-not-claude 0
+  TRR107: bundles 3 with-rows 0 cells 0 claude 0 gold 0 gold-not-claude 0
+  TRR108: bundles 3 with-rows 0 cells 0 claude 0 gold 0 gold-not-claude 0
+  TRR109: bundles 25 with-rows 24 cells 91 claude 5 gold 63 gold-not-claude 58
+  TRR110: bundles 5 with-rows 4 cells 16 claude 16 gold 16 gold-not-claude 0
+  TRR111: bundles 1 with-rows 1 cells 3 claude 3 gold 3 gold-not-claude 0
+  TRR112: bundles 13 with-rows 13 cells 47 claude 2 gold 13 gold-not-claude 11
+  TRR113: bundles 14 with-rows 14 cells 54 claude 0 gold 10 gold-not-claude 10
+  TRR114: bundles 5 with-rows 1 cells 2 claude 0 gold 0 gold-not-claude 0
+  TRR116: bundles 4 with-rows 4 cells 14 claude 12 gold 12 gold-not-claude 0
+  TRR203: bundles 2 with-rows 1 cells 14 claude 4 gold 11 gold-not-claude 7
+  TRR301: bundles 12 with-rows 11 cells 113 claude 76 gold 61 gold-not-claude 11
+  TRR304: bundles 2 with-rows 0 cells 0 claude 0 gold 0 gold-not-claude 0

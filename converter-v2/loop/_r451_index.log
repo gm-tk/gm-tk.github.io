@@ -1,0 +1,26 @@
+rehtml: refreshed the output side for 552 modules — now run --merge
+feature index -> /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/data/Module_Feature_Index.json
+  552 modules, 143 distinct features
+  acks                      542 modules
+  heading                   542 modules
+  list                      542 modules
+  menu                      542 modules
+  body                      530 modules
+  title bar                 527 modules
+  note                      526 modules
+  activity                  522 modules
+  handoff                   522 modules
+  end page                  522 modules
+  h2                        517 modules
+  button                    516 modules
+  ok   LIVENESS: index holds 552 modules (>300)
+  ok   LIVENESS: 531/552 modules carry WT tags (>80%)
+  ok   DETECTION: OSSC401 (a carousel module) is in the carousel scope
+  ok   DETECTION: CHFUN01 (the r266 carousel module) is in the carousel scope
+  ok   DETECTION: the carousel scope EXCLUDES 166 modules (a scope that selected everything would be useless)
+  ok   SAFETY: feature "carousel" resolves to 376 modules (non-empty)
+  ok   SAFETY: feature "accordion" resolves to 248 modules (non-empty)
+  ok   SAFETY: feature "speechBubble" resolves to 150 modules (non-empty)
+  ok   SAFETY: feature "flipCard" resolves to 258 modules (non-empty)
+  ok   SAFETY: feature "clickDrop" resolves to 191 modules (non-empty)
+SELFTEST build_feature_index: GREEN

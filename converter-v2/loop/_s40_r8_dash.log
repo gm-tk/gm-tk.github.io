@@ -1,0 +1,3 @@
+FATAL: the interactive census predates the newest engine/data change (2026-09-24 vs 2026-09-24) — coverage is UNDER-reported until it is rebuilt.
+  Rebuild: _measure_r271_variations.cjs --shard K 16 (x16), then --merge.
+  Override with --allow-stale.
