@@ -7435,6 +7435,40 @@ class ContentConverter {
 	}
 
 	/**
+	 * The URL a plain [Button] takes from the IMMEDIATELY-FOLLOWING item (the
+	 * buttons.absorb_following_url rule — see the button branch): that item is not
+	 * consumed, not structural, and its whole content is one http(s) URL (a bare URL,
+	 * or its first link with no other text); a VIDEO URL is the video's embed, never the
+	 * button's href (ROUND 339, buttons.video_destination / VIDBTN_OFF). Returns "" when
+	 * the rule is off (BTNURL_OFF) or nothing qualifies. Pure — the caller consumes.
+	 * ROUND 447: extracted verbatim from the button branch so #goJournalTail's walk can
+	 * ask the same question (a journal-label variant WITH its link keeps the linked
+	 * button) without a second copy of the discriminator to drift.
+	 */
+	static #followingButtonUrl(nxt) {
+		const tpl = DataService.Data.EmitTemplates;
+		const auRule = tpl.buttons.absorb_following_url;
+		const auOn = auRule && auRule.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.BTNURL_OFF);
+		if (!auOn || !nxt || nxt._consumed || nxt.consumedBy !== undefined) return "";
+		const nraw = String(nxt.blackAfter ?? "").replace(/\*/g, "").trim();
+		const nlink = nxt.block?.links?.[0];
+		const nDir = nxt.parse?.primary?.directive;
+		const nIsStruct = nDir && ["CONTAINER_OPEN", "CONTAINER_CLOSE",
+			"PAGE_BOUNDARY", "SECTION_MARKER", "INTERACTIVE"].includes(nDir);
+		const nurl = /^https?:\/\/\S+$/.test(nraw) ? nraw
+			: (nlink?.target && /^https?:\/\//.test(nlink.target)
+				&& (nraw === "" || nraw === nlink.target) ? nlink.target : "");
+		// ROUND 339: a VIDEO URL on the following item is that video's embed, never
+		// this button's href (buttons.video_destination; env VIDBTN_OFF)
+		const vdc = tpl.buttons.video_destination;
+		const noVideoAbsorb = vdc && vdc.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[vdc.env ?? "VIDBTN_OFF"])
+			&& nurl && new RegExp(vdc.host_match ?? "youtube\\.com/(?:watch\\?|shorts/|embed/)|youtu\\.be/|vimeo\\.com/(?:video/)?\\d", "i").test(nurl);
+		return nurl && !nIsStruct && !noVideoAbsorb ? nurl : "";
+	};
+
+	/**
 	 * GO-TO-JOURNAL TAIL ABSORB (ROUND 239 — Dev-Feedback R2, B4; SCCH302-03
 	 * activity 3D / 4A). A bundle-owned activity box closes at its widget's end,
 	 * so a writer's "[button] Go to Journal" sitting AFTER the widget's own end
@@ -7459,17 +7493,29 @@ class ContentConverter {
 		const aliasRe = new RegExp(gjCfg.raw_match, "i");
 		const h4 = () => [Utils.FillTemplate(gjCfg.form,
 			{ label: Utils.EscapeHtml(gjCfg.label ?? "Go to your journal") })];
-		const isGoJournal = (c) => {
+		// ROUND 447 (D13-5): the journal-label VARIANTS count in the WALK below (a free
+		// button after the widget, still inside the box) — variantOf returns true for round
+		// 239's own match, else the Utils.GoJournalVariant verdict ({kind: "pure"} /
+		// {kind: "sentence"}, whose <p> is rendered before the heading). The MEMBER branch
+		// stays on round 239's exact match (isGoJournal): the scanner keeps only those in a
+		// bundle and the builders skip only those, so every widget bundle and build is
+		// byte-identical to round 446 — measured: widening the scanner's test changed which
+		// items a speech bubble kept and un-built seven TEDC401 bubbles. Env JOURNALVAR_OFF.
+		const variantOf = (c) => {
 			const p = c.type === "tag" ? c.parse?.primary : null;
-			if (!p || p.directive !== "ELEMENT" || p.tag !== "button") return false;
+			if (!p || p.directive !== "ELEMENT" || p.tag !== "button") return null;
 			const url = c.block?.links?.[0]?.target
 				?? ((c.blackAfter ?? "").match(/https?:\/\/[^\s\]]+/)?.[0] ?? "");
-			if (url) return false;
+			if (url) return null;
 			const explicit = (this.#norm.RenderText(c.text) || "").replace(/\*/g, "").trim()
 				|| (c.blackAfter || "").replace(/\*/g, "").trim();
-			return (explicit && lblRe.test(explicit))
-				|| aliasRe.test(Utils.Fold(String(c.text ?? "")).trim());
+			if ((explicit && lblRe.test(explicit))
+				|| aliasRe.test(Utils.Fold(String(c.text ?? "")).trim())) return true;
+			return Utils.GoJournalVariant(gjCfg, c.text, c.blackAfter, this.#norm.RenderText(c.text));
 		};
+		const isGoJournal = (c) => variantOf(c) === true;
+		const withSentence = (v, c) => (v && v !== true && v.kind === "sentence"
+			? [...ListsAndRuns.renderBlackText(v.sentence, run, c.block?.links), ...h4()] : h4());
 		// A go-to-journal [button] the widget's member walk CAPTURED as a trailing
 		// member (a writer's 4A shape: no [end click and drop], so the button rode
 		// into the bundle like an Undo/Reset control) still ships its h4 inside the
@@ -7498,7 +7544,11 @@ class ContentConverter {
 			// a stray unconsumed widget end tag ([end click and drop]) — already closed
 			if (p && p.directive === "CONTAINER_CLOSE" && p.tag !== "end activity"
 				&& !/\bactivity\b/i.test(p.tag ?? "")) continue;
-			if (p && p.directive === "ELEMENT" && p.tag === "button" && isGoJournal(c)) {
+			// a round-447 VARIANT whose link follows it stays a linked button (the button
+			// branch's own following-URL absorb takes it); round 239's match is unchanged
+			const _gjv0 = p && p.directive === "ELEMENT" && p.tag === "button" ? variantOf(c) : null;
+			const _gjv = _gjv0 && _gjv0 !== true && this.#followingButtonUrl(bodyItems[j + 1]) ? null : _gjv0;
+			if (_gjv) {
 				c._consumed = true;
 				// ROUND 273 — the DOUBLE-EMIT fix. Marking the absorbed button "_consumed"
 				// is NOT enough on its own: the main loop has no general "_consumed" guard
@@ -7519,7 +7569,7 @@ class ContentConverter {
 					&& !(typeof process !== "undefined" && process.env && process.env.GOJOURNALDUP_OFF)) {
 					c._goJournalAbsorbed = true;
 				}
-				return h4();
+				return withSentence(_gjv, c);
 			}
 			break;   // the first real item was not a go-to-journal button — stop
 		}
@@ -8644,31 +8694,35 @@ class ContentConverter {
 			// by the main loop's usual "_consumed" check.
 			// Data flags: buttons.absorb_following_url, buttons.button_linked
 			// Env toggle: BTNURL_OFF
-			const auRule = tpl.buttons.absorb_following_url;
-			const auOn = auRule && auRule.enabled !== false
-				&& !(typeof process !== "undefined" && process.env && process.env.BTNURL_OFF);
-			if (auOn && key === "button" && !dropboxFired && !url) {
+			if (key === "button" && !dropboxFired && !url) {
 				const nxt = bodyItems[i + 1];
-				if (nxt && !nxt._consumed && nxt.consumedBy === undefined) {
-					const nraw = String(nxt.blackAfter ?? "").replace(/\*/g, "").trim();
-					const nlink = nxt.block?.links?.[0];
-					const nDir = nxt.parse?.primary?.directive;
-					const nIsStruct = nDir && ["CONTAINER_OPEN", "CONTAINER_CLOSE",
-						"PAGE_BOUNDARY", "SECTION_MARKER", "INTERACTIVE"].includes(nDir);
-					const nurl = /^https?:\/\/\S+$/.test(nraw) ? nraw
-						: (nlink?.target && /^https?:\/\//.test(nlink.target)
-							&& (nraw === "" || nraw === nlink.target) ? nlink.target : "");
-					// ROUND 339: a VIDEO URL on the following item is that video's embed, never
-					// this button's href (buttons.video_destination; env VIDBTN_OFF)
-					const vdc = tpl.buttons.video_destination;
-					const noVideoAbsorb = vdc && vdc.enabled !== false
-						&& !(typeof process !== "undefined" && process.env && process.env[vdc.env ?? "VIDBTN_OFF"])
-						&& nurl && new RegExp(vdc.host_match ?? "youtube\\.com/(?:watch\\?|shorts/|embed/)|youtu\\.be/|vimeo\\.com/(?:video/)?\\d", "i").test(nurl);
-					if (nurl && !nIsStruct && !noVideoAbsorb) {
-						url = nurl;
-						form = tpl.buttons.button_linked.form;
-						nxt._consumed = true;
+				const nurl = this.#followingButtonUrl(nxt);   // "" unless the rule is on (BTNURL_OFF)
+				if (nurl) {
+					url = nurl;
+					form = tpl.buttons.button_linked.form;
+					nxt._consumed = true;
+				}
+			}
+			// ROUND 447 (Chris's D13-5) — EVERY journal-label variant on a writer's [Button]
+			// ships round 239's heading: "Learning journal.", "[Button – go to learning
+			// journal]", a label split over the red-text seam, and a whole instruction, whose
+			// sentence stays as a <p> BEFORE the heading (the gold's order). Placed AFTER the
+			// following-URL absorb on purpose: a journal button the writer gave a link (MXDB302's
+			// "[link to Learning Journal] https://docs…" on the next line) keeps its linked
+			// button, exactly as round 239 never fires with a URL. Utils.GoJournalVariant is the
+			// shared test (free buttons only — see its comment).
+			// Data flag: buttons.go_journal.variants_d13_5   Env toggle: JOURNALVAR_OFF
+			const gjv = tpl.buttons.go_journal;
+			if (gjv && gjv.enabled !== false && key === "button" && !url && !dropboxFired
+				&& !(typeof process !== "undefined" && process.env && process.env.GOJOURNAL_OFF)) {
+				const _v = Utils.GoJournalVariant(gjv, it.text, it.blackAfter, this.#norm.RenderText(it.text));
+				if (_v) {
+					if (_v.kind === "sentence") {
+						out.push(...ListsAndRuns.renderBlackText(_v.sentence, run, it.block?.links));
 					}
+					out.push(Utils.FillTemplate(gjv.form,
+						{ label: Utils.EscapeHtml(gjv.label ?? "Go to your journal") }));
+					return out;
 				}
 			}
 			// A "[button]" tag whose RAW in-bracket text contains the word "download" (for

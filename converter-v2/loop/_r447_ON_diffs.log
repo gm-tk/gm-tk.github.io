@@ -1,0 +1,942 @@
+  ~ AGH1001_4_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Complete activity 4A and 4B in your Learners Journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Complete activity 4A and 4B in your Learners Journal</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+AGH1001: identical 5 / changed 1
+  ~ AGH1003_4_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Go to your leaners journal and complete activity 4X</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+AGH1003: identical 8 / changed 1
+  ~ AGH1004_1_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Complete activity 1A in your learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Complete activity 1A in your learning journal</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ AGH1004_2_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Complete activity 2B in your learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Complete activity 2B in your learning journal</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ AGH1004_3_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Complete activity 3B in your learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Complete activity 3B in your learning journal</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+AGH1004: identical 4 / changed 3
+  ~ AGH1005_3_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Complete activity 3A in your learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Complete activity 3A in your learning journal.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ AGH1005_4_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Complete activity 4A in your learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Complete activity 4A in your learning journal.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ AGH1005_5_0.html: -6 +2
+     - <a href="" target="_blank"><div class="button">Complete activity 5A in your learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <p>Complete activity 5A in your learning journal.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+AGH1005: identical 6 / changed 3
+  ~ AGH1006_1_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Complete activity 1A in your learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Complete activity 1A in your learning journal.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ AGH1006_2_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Complete activity 2A in your learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Complete activity 2A in your learning journal.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ AGH1006_4_0.html: -6 +2
+     - <a href="" target="_blank"><div class="button">Complete activity 3A in your learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <p>Complete activity 3A in your learning journal.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ AGH1006_5_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Complete activity 4A and 4B in your learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Complete activity 4A and 4B in your learning journal.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ AGH1006_6_0.html: -4 +4
+     - <a href="" target="_blank"><div class="button">Complete activity 5A in your learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Complete activity 5B in your learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Complete activity 5A in your learning journal.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete activity 5B in your learning journal.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ AGH1006_8_0.html: -5 +5
+     - <a href="" target="_blank"><div class="button">Complete activity 6A in your learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Complete activity 6B in your learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <p>Key points from the lesson:</p>
+     + <p>Complete activity 6A in your learning journal.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete activity 6B in your learning journal.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4>Key points from the lesson:</h4>
+AGH1006: identical 4 / changed 6
+  ~ AGH1009_2_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Complete activity 2A in your learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Complete activity 2A in your learning journal</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+AGH1009: identical 9 / changed 1
+  ~ ANZH203_3_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Journal button</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+ANZH203: identical 6 / changed 1
+  ~ ANZH304_1_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to journal button</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+ANZH304: identical 6 / changed 1
+  ~ CBI1005_2_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Learning journal</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+CBI1005: identical 10 / changed 1
+  ~ CBI1008_1_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Click the button to open the journal and complete Assignment 1a
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p><b>Click the button to open the journal and complete Assignment 1a</b> Carbon: The Element of Life</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ CBI1008_2_0.html: -8 +8
+     - <a href="" target="_blank"><div class="button">Click the button to open the learning journal and complete Assi
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to journal and complete assignment 4a: Combustion</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to journal and complete Assignment 4A: Conservation of matte
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Click the button to open the journal and complete Assignment 5A
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p><b>Click the button to open the learning journal and complete Assignment 2A</b> Carbon: The Element of Life
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p><b>Go to journal and complete assignment 4a: Combustion</b></p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p><b>Go to journal and complete Assignment 4A: Conservation of matter and chemical reactions.</b></p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p><b>Click the button to open the journal and complete Assignment 5A</b> Effects of Combustion.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+CBI1008: identical 1 / changed 2
+  ~ CBI1009_2_0.html: -4 +4
+     - <a href="" target="_blank"><div class="button">Click the button to open the learning journal and complete Teac
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Click the button to open the learning journal and complete Teac
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p><b>Click the button to open the learning journal and complete</b> Teacher-marked assignment 1: Ions in aque
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p><b>Click the button to open the learning journal and complete Teacher-marked assignment 2: CBI1009 Applying
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ CBI1009_3_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Click the button to open the learning journal and complete Teac
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Click the button to open the learning journal and complete Teacher-marked Assignment 4 CBI1009 – Chemical C
+     + <h4 class="goJournal">Go to your journal</h4>
+CBI1009: identical 2 / changed 2
+  ~ CEDO204_0_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+CEDO204: identical 0 / changed 1
+  ~ CEDO402_0_0.html: -12 +6
+     - <a href="" target="_blank"><div class="button">Go to learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+CEDO402: identical 0 / changed 1
+  ~ CEDR101_0_0.html: -32 +16
+     - <a href="" target="_blank"><div class="button">Go to learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h2 class="goJournal">Go to your journal</h2>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+CEDR101: identical 0 / changed 1
+  ~ CEDR203_0_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Go to your journal to add your final thoughts and reflections</
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Go to your journal to add your final thoughts and reflections.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+CEDR203: identical 0 / changed 1
+  ~ COM1002_6_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">to Learning Journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Go to your journal can complete Activity 6A</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+COM1002: identical 8 / changed 1
+  ~ ENGI400_2_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ ENGI400_3_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+ENGI400: identical 2 / changed 2
+  ~ ENGI401_7_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">(same journal as Lesson 6)</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>(same journal as Lesson 6)</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ ENGI401_8_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">(creative writing journal as in 6 &amp;7)</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>(creative writing journal as in 6 &amp;7)</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+ENGI401: identical 10 / changed 2
+  ~ ENGI405_5_0.html: -4 +2
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+ENGI405: identical 7 / changed 1
+  ~ ENGJ402_3_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Learning Journal button that links with journal 1 for this module</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+ENGJ402: identical 8 / changed 1
+  ~ ENGR301_7_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+ENGR301: identical 8 / changed 1
+  ~ ENGS201_3_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>go to journal end page</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+ENGS201: identical 8 / changed 1
+  ~ EXBP901_1_0.html: -8 +7
+     - <a href="" target="_blank"><div class="button">- The ‘Go to Journal’ button takes you to your learning journal
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal. Complete activity 1A Mindmap</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>- The ‘Go to Journal’ button takes you to your learning journal – this is the place where you will capture 
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete activity 1A Mindmap.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete Activity 1B KWL chart – What do I know about my topic, what do I want to know?</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ EXBP901_2_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ EXBP901_3_0.html: -10 +8
+     - <a href="" target="_blank"><div class="button">Journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 2C learning intentions</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 2D success criteria</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 2F</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete Activity 2C learning intentions.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete Activity 2D success criteria.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete Activity 2F.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ EXBP901_4_0.html: -4 +4
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 4A</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 4B Peer feedback</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Complete Activity 4A.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete Activity 4B Peer feedback.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ EXBP901_5_0.html: -6 +6
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 4C Structure of your showcase</div><
+     - <a href="" target="_blank"><div class="button">Journal. Activity 4D Complete the details of your showcase afte
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 4E Reflection</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Complete Activity 4C Structure of your showcase.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Activity 4D Complete the details of your showcase after confirming the details with your kaimanaaki.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete Activity 4E Reflection.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+EXBP901: identical 1 / changed 5
+  ~ EXIP901_1_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">The ‘Go to Journal’ button takes you to your learning journal –
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>The ‘Go to Journal’ button takes you to your learning journal – this is the place where you will capture al
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ EXIP901_2_0.html: -4 +4
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 1A Mindmap</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 1B My topic and essential questions<
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Complete Activity 1A Mindmap.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete Activity 1B My topic and essential questions.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ EXIP901_4_0.html: -10 +10
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 2A Learning Goals</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 2B Learning Intentions</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 2C Success Criteria</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 2D Timeline</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 2E Mentor</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Complete Activity 2A Learning Goals.</p>
+     + <p>Complete Activity 2B Learning Intentions.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete Activity 2C Success Criteria.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete Activity 2D Timeline.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete Activity 2E Mentor.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ EXIP901_5_0.html: -14 +14
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 3A Keeping track</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal. Complete 3B Challenges and motivators</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 4A Structure of your showcase</div><
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 4B Showcase method</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 4C Peer feedback</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 4D Details of my showcase – after co
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal. Complete Activity 4E Reflection</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Complete Activity 3A Keeping track.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete 3B Challenges and motivators</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete Activity 4A Structure of your showcase.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete Activity 4B Showcase method.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete Activity 4C Peer feedback.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete Activity 4D Details of my showcase – after confirming the details with your kaimanaaki!</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Complete Activity 4E Reflection.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+EXIP901: identical 2 / changed 4
+  ~ EXPFUN02_0_0.html: -12 +6
+     - <a href="" target="_blank"><div class="button">Learning Journal [</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning Journal [</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning Journal [</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning Journal [</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning Journal [</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning Journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+EXPFUN02: identical 0 / changed 1
+  ~ EXPFUN05_0_0.html: -10 +5
+     - <a href="" target="_blank"><div class="button">Learning journal. [</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning journal. [</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning journal. [</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning journal. [</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning journal. [</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+EXPFUN05: identical 0 / changed 1
+  ~ GEO1006_3_0.html: -4 +2
+     - <a href="" target="_blank"><div class="button">Go to</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+GEO1006: identical 3 / changed 1
+  ~ HES1002_1_0.html: -4 +2
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ HES1002_2_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ HES1002_4_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Go to your journal and complete activity 4A, I statements.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ HES1002_5_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Go to your journal and complete activity 5A.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ HES1002_6_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Go to your journal and complete activity 5B Sexuality RAFT</div
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Go to your journal and complete activity 5B Sexuality RAFT.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+HES1002: identical 2 / changed 5
+  ~ HES1005_1_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ HES1005_2_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ HES1005_3_0.html: -4 +2
+     - <a href="" target="_blank"><div class="button">Go to Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ HES1005_5_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ HES1005_6_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ HES1005_7_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ HES1005_8_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+HES1005: identical 2 / changed 7
+  ~ HIS1005_9_1.html: -2 +1
+     - <a href="" target="_blank"><div class="button">G</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+HIS1005: identical 14 / changed 1
+  ~ HPRE203_3_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">G</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ HPRE203_4_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">G</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ HPRE203_5_0.html: -4 +2
+     - <a href="" target="_blank"><div class="button">G</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">G</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+HPRE203: identical 5 / changed 3
+  ~ MXDB302_1_0.html: -1 +2
+     - <a href="https://docs.google.com/document/d/1Qb1gEQVmKKlPwtN8_HrZnk7oQC05lvict0T5NtkWmBo/edit" target="_blank"
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <a href="https://docs.google.com/document/d/1Qb1gEQVmKKlPwtN8_HrZnk7oQC05lvict0T5NtkWmBo/edit" target="_blank"
+  ~ MXDB302_2_0.html: -4 +2
+     - <a href="" target="_blank"><div class="button">Go to learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXDB302_3_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXDB302_4_0.html: -4 +2
+     - <a href="" target="_blank"><div class="button">Go to learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXDB302_5_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXDB302_7_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXDB302_8_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+MXDB302: identical 3 / changed 7
+  ~ MXDI201_2_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXDI201_3_0.html: -6 +3
+     - <a href="" target="_blank"><div class="button">Go to</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXDI201_4_0.html: -4 +2
+     - <a href="" target="_blank"><div class="button">Go to</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXDI201_5_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXDI201_6_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXDI201_7_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXDI201_8_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXDI201_9_0.html: -4 +2
+     - <a href="" target="_blank"><div class="button">Go to</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+MXDI201: identical 3 / changed 8
+  ~ MXEX401_6_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+MXEX401: identical 6 / changed 1
+  ~ MXFL203_1_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFL203_2_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFL203_3_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFL203_4_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFL203_6_0.html: -4 +2
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFL203_8_0.html: -6 +3
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFL203_9_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFL203_10_0.html: -4 +2
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFL203_11_0.html: -6 +3
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+MXFL203: identical 3 / changed 9
+  ~ MXFL204_3_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">G</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+MXFL204: identical 11 / changed 1
+  ~ MXFL302_3_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+MXFL302: identical 9 / changed 1
+  ~ MXFU201_1_0.html: -4 +2
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFU201_2_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFU201_3_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFU201_4_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFU201_5_0.html: -6 +3
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFU201_8_0.html: -10 +3
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFU201_9_0.html: -4 +2
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+MXFU201: identical 3 / changed 7
+  ~ MXFU202_1_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFU202_2_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFU202_3_0.html: -6 +1
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - </div>
+     - </div>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFU202_4_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFU202_5_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Learning Journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFU202_6_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFU202_8_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Learning journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+MXFU202: identical 4 / changed 7
+  ~ MXFU301_3_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to journal,</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+MXFU301: identical 11 / changed 1
+  ~ MXFU302_1_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ MXFU302_9_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+MXFU302: identical 8 / changed 2
+  ~ PES1001_1_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to Learning Journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ PES1001_5_0.html: -6 +6
+     - <a href="" target="_blank"><div class="button">Go to your learning journal to complete this practical activity
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Learning Journal activity 5C – checkpoint review Go to your lea
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to your learning journal to complete this activity</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Go to your learning journal to complete this practical activity.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Learning Journal activity 5C – checkpoint review Go to your learning journal to complete this practical act
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Go to your learning journal to complete this activity.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ PES1001_7_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Go to your learning journal to complete this activity</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Go to your learning journal to complete this activity.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ PES1001_10_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Go to your learning journal to complete this activity</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Go to your learning journal to complete this activity.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+PES1001: identical 6 / changed 4
+  ~ PES1002_10_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Go to your journal to complete this activity</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Go to your journal to complete this activity</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+PES1002: identical 10 / changed 1
+  ~ PES1005_11_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Go to your journal to complete this activity</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Go to your journal to complete this activity</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+PES1005: identical 11 / changed 1
+  ~ PHE1001_2_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ PHE1001_3_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ PHE1001_4_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+PHE1001: identical 2 / changed 3
+  ~ PHE1005_3_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ PHE1005_5_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+PHE1005: identical 4 / changed 2
+  ~ PHE1006_2_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ PHE1006_3_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ PHE1006_5_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+PHE1006: identical 3 / changed 3
+  ~ PHE1007_9_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Go to journal. Complete activity 9A</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Complete activity 9A.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+PHE1007: identical 9 / changed 1
+  ~ PHE1008_1_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Go to your journal and complete Activity 1</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Go to your journal and complete Activity 1.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ PHE1008_2_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Go to your journal and complete Activity 2</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Go to your journal and complete Activity 2.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ PHE1008_3_0.html: -4 +4
+     - <a href="" target="_blank"><div class="button">Go to your journal and complete Activity 3</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Go to your journal and complete activity 4</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Go to your journal and complete Activity 3.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Go to your journal and complete activity 4.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ PHE1008_4_0.html: -4 +4
+     - <a href="" target="_blank"><div class="button">Journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Go to your journal and complete activity 4b.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <p>Go to your journal and complete activity 4c.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ PHE1008_5_0.html: -2 +2
+     - <a href="" target="_blank"><div class="button">Go to journal and complete activity 6</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <p>Go to journal and complete activity 6.</p>
+     + <h4 class="goJournal">Go to your journal</h4>
+PHE1008: identical 1 / changed 5
+  ~ PWY1002_2_2_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+PWY1002: identical 9 / changed 1
+  ~ SSCI104_3_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">G</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+SSCI104: identical 6 / changed 1
+  ~ TEDC402_6_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+TEDC402: identical 10 / changed 1
+  ~ XGF9004_14_0.html: -5 +5
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="https://www.istockphoto.com/vector/man-flying-forward-with-arms-open-excited-person-floating-in-sky-g
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-1889902988" alt="Man Flyin
+     + <!-- <img class="img-fluid" loading="lazy" src="images/iStock-1889902988.jpg" alt="Man Flying Forward with Arm
+     + <h4 class="goJournal">Go to your journal</h4>
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ XGF9004_15_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ XGF9004_16_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+  ~ XGF9004_17_0.html: -2 +1
+     - <a href="" target="_blank"><div class="button">Go to your journal</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <h4 class="goJournal">Go to your journal</h4>
+XGF9004: identical 14 / changed 4
+
+TOTAL: identical 287 / changed 134 / missing 0 over 53 modules
+CHANGED: AGH1001/AGH1001_4_0.html AGH1003/AGH1003_4_0.html AGH1004/AGH1004_1_0.html AGH1004/AGH1004_2_0.html AGH1004/AGH1004_3_0.html AGH1005/AGH1005_3_0.html AGH1005/AGH1005_4_0.html AGH1005/AGH1005_5_0.html AGH1006/AGH1006_1_0.html AGH1006/AGH1006_2_0.html AGH1006/AGH1006_4_0.html AGH1006/AGH1006_5_0.html AGH1006/AGH1006_6_0.html AGH1006/AGH1006_8_0.html AGH1009/AGH1009_2_0.html ANZH203/ANZH203_3_0.html ANZH304/ANZH304_1_0.html CBI1005/CBI1005_2_0.html CBI1008/CBI1008_1_0.html CBI1008/CBI1008_2_0.html CBI1009/CBI1009_2_0.html CBI1009/CBI1009_3_0.html CEDO204/CEDO204_0_0.html CEDO402/CEDO402_0_0.html CEDR101/CEDR101_0_0.html CEDR203/CEDR203_0_0.html COM1002/COM1002_6_0.html ENGI400/ENGI400_2_0.html ENGI400/ENGI400_3_0.html ENGI401/ENGI401_7_0.html ENGI401/ENGI401_8_0.html ENGI405/ENGI405_5_0.html ENGJ402/ENGJ402_3_0.html ENGR301/ENGR301_7_0.html ENGS201/ENGS201_3_0.html EXBP901/EXBP901_1_0.html EXBP901/EXBP901_2_0.html EXBP901/EXBP901_3_0.html EXBP901/EXBP901_4_0.html EXBP901/EXBP901_5_0.html EXIP901/EXIP901_1_0.html EXIP901/EXIP901_2_0.html EXIP901/EXIP901_4_0.html EXIP901/EXIP901_5_0.html EXPFUN02/EXPFUN02_0_0.html EXPFUN05/EXPFUN05_0_0.html GEO1006/GEO1006_3_0.html HES1002/HES1002_1_0.html HES1002/HES1002_2_0.html HES1002/HES1002_4_0.html HES1002/HES1002_5_0.html HES1002/HES1002_6_0.html HES1005/HES1005_1_0.html HES1005/HES1005_2_0.html HES1005/HES1005_3_0.html HES1005/HES1005_5_0.html HES1005/HES1005_6_0.html HES1005/HES1005_7_0.html HES1005/HES1005_8_0.html HIS1005/HIS1005_9_1.html HPRE203/HPRE203_3_0.html HPRE203/HPRE203_4_0.html HPRE203/HPRE203_5_0.html MXDB302/MXDB302_1_0.html MXDB302/MXDB302_2_0.html MXDB302/MXDB302_3_0.html MXDB302/MXDB302_4_0.html MXDB302/MXDB302_5_0.html MXDB302/MXDB302_7_0.html MXDB302/MXDB302_8_0.html MXDI201/MXDI201_2_0.html MXDI201/MXDI201_3_0.html MXDI201/MXDI201_4_0.html MXDI201/MXDI201_5_0.html MXDI201/MXDI201_6_0.html MXDI201/MXDI201_7_0.html MXDI201/MXDI201_8_0.html MXDI201/MXDI201_9_0.html MXEX401/MXEX401_6_0.html MXFL203/MXFL203_1_0.html MXFL203/MXFL203_2_0.html MXFL203/MXFL203_3_0.html MXFL203/MXFL203_4_0.html MXFL203/MXFL203_6_0.html MXFL203/MXFL203_8_0.html MXFL203/MXFL203_9_0.html MXFL203/MXFL203_10_0.html MXFL203/MXFL203_11_0.html MXFL204/MXFL204_3_0.html MXFL302/MXFL302_3_0.html MXFU201/MXFU201_1_0.html MXFU201/MXFU201_2_0.html MXFU201/MXFU201_3_0.html MXFU201/MXFU201_4_0.html MXFU201/MXFU201_5_0.html MXFU201/MXFU201_8_0.html MXFU201/MXFU201_9_0.html MXFU202/MXFU202_1_0.html MXFU202/MXFU202_2_0.html MXFU202/MXFU202_3_0.html MXFU202/MXFU202_4_0.html MXFU202/MXFU202_5_0.html MXFU202/MXFU202_6_0.html MXFU202/MXFU202_8_0.html MXFU301/MXFU301_3_0.html MXFU302/MXFU302_1_0.html MXFU302/MXFU302_9_0.html PES1001/PES1001_1_0.html PES1001/PES1001_5_0.html PES1001/PES1001_7_0.html PES1001/PES1001_10_0.html PES1002/PES1002_10_0.html PES1005/PES1005_11_0.html PHE1001/PHE1001_2_0.html PHE1001/PHE1001_3_0.html PHE1001/PHE1001_4_0.html PHE1005/PHE1005_3_0.html PHE1005/PHE1005_5_0.html PHE1006/PHE1006_2_0.html PHE1006/PHE1006_3_0.html PHE1006/PHE1006_5_0.html PHE1007/PHE1007_9_0.html PHE1008/PHE1008_1_0.html PHE1008/PHE1008_2_0.html PHE1008/PHE1008_3_0.html PHE1008/PHE1008_4_0.html PHE1008/PHE1008_5_0.html PWY1002/PWY1002_2_2_0.html SSCI104/SSCI104_3_0.html TEDC402/TEDC402_6_0.html XGF9004/XGF9004_14_0.html XGF9004/XGF9004_15_0.html XGF9004/XGF9004_16_0.html XGF9004/XGF9004_17_0.html

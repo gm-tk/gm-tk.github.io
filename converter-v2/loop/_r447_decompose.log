@@ -1,0 +1,9 @@
+baseline mean 54.7726 @ 2476  ->  now 54.7409 @ 2477  (-0.0317pp)
+COMMON 2475 pairs: 54.7655 -> 54.7372  (-0.0283pp)  <- the like-for-like move
+NEW pair ('PWY1002', 'PWY1002_2_2_0.html'): scaffold 53.9
+NEW pair ('HES1005', 'HES1005_4_0.html'): scaffold 64.7
+GONE pair ('HES1005', 'HES1005_5_0.html'): scaffold 72.2
+movers on the common pairs: 52 up / 59 down
+>=50: 1542 -> 1542  (common only: -1)
+>=75: 261 -> 260  (common only: -1)
+>=90: 23 -> 23  (common only: +0)

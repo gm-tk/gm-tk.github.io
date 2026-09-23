@@ -247,6 +247,78 @@ class Utils {
 		}
 		return results;
 	};
+
+	// =======================================================================
+	// ROUND 447 — THE JOURNAL-BUTTON VARIANTS (Chris's decision D13-5)
+	// =======================================================================
+
+	/**
+	 * Is this writer [Button] a JOURNAL button that round 239's exact
+	 * "go to (your) journal" test missed? Chris's D13-5 (Option B): every
+	 * journal-label variant on a writer's [Button] is the journal element and
+	 * ships r239's <h4 class="goJournal">, never a green button; a label that is
+	 * a whole instruction keeps that sentence as a <p>; a journal is never
+	 * invented where the writer typed no [Button].
+	 *
+	 * The label is read the three ways writers type it: in the black text after
+	 * the tag ("[Button] Learning journal."), inside the span ("[Button – go to
+	 * learning journal]", "[Button for Journal]", "[insert go to journal
+	 * button]"), and split over the red-text seam ("[button] Go to" + "journal").
+	 * Never fires with a URL (a linked button keeps its link — r239's rule) or on
+	 * a download / upload / dropbox / .docx label (their own buttons).
+	 *
+	 * It is called for FREE buttons only — ContentConverter's button branch and
+	 * the walk of #goJournalTail (a button after a widget, still inside its box).
+	 * The bundle side (the scanner's section break, #goJournalTail's member
+	 * branch, the builders' member skips) keeps round 239's exact patterns, so
+	 * no widget bundle or build moves: widening the scanner's test was measured
+	 * to change which items a speech bubble keeps (seven TEDC401 bubbles fell
+	 * back to hand-off boxes), and a variant button is released from a bundle
+	 * exactly as before, then rendered here.
+	 *
+	 * Data: EmitTemplates.buttons.go_journal.variants_d13_5   Env: JOURNALVAR_OFF
+	 *
+	 * @param {Object} gj - EmitTemplates.buttons.go_journal
+	 * @param {string} rawText - the item's tag text (the bracket span plus any same-run label)
+	 * @param {string} after - the item's black text after the tag
+	 * @param {string|null} [textLabel] - the caller's rendered in-tag label, when it has one
+	 * @returns {null|{kind: "pure"}|{kind: "sentence", sentence: string}}
+	 */
+	static GoJournalVariant(gj, rawText, after, textLabel = null) {
+		const v = gj?.variants_d13_5;
+		if (!gj || gj.enabled === false || !v || v.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[v.env ?? "JOURNALVAR_OFF"]) return null;
+		const unRed = (s) => String(s ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ")
+			.replace(/\s+/g, " ").trim();
+		const plain = (s) => unRed(s).replace(/\*/g, "").replace(/\s+/g, " ").trim();
+		const raw = String(rawText ?? ""), aRaw = unRed(after), a = plain(after);
+		if (/https?:\/\//i.test(a) || /https?:\/\//i.test(raw)) return null;
+		const pure = new RegExp(v.pure_match, "i");
+		const head = new RegExp(v.button_head, "i");
+		// from the spans, keep only a span that names a button or the journal — another
+		// tag on the same line is never label text ("[go to journal] [end page]", ENGS201)
+		const tRaw = textLabel != null && plain(textLabel) ? unRed(textLabel)
+			: unRed(unRed(raw).replace(/\[([^[\]]*)\]/g, (m, inner) => (/button|journal/i.test(inner) ? ` ${inner} ` : " ")))
+				.replace(head, "");
+		const t = plain(tRaw);
+		const both = [t, a].filter(Boolean).join(" ");
+		if (!new RegExp(v.journal_word, "i").test(both) || new RegExp(v.exclude, "i").test(both)) return null;
+		if (pure.test(both) || (!a && pure.test(t))) return { kind: "pure" };
+		if (v.sentences === false) return null;
+		// the sentence the button carried: the black tail after a pure in-tag label
+		// ("[Button] Journal" + "Go to your journal and complete activity 4a."), else the
+		// one label there is; a tail is never folded into a non-journal in-tag label (it
+		// belongs to a later tag — "[Button] … journal. [H2]" + the heading's text)
+		let src = null;
+		if (a && t) src = pure.test(t) ? aRaw : (new RegExp(v.journal_word, "i").test(t) ? tRaw : null);
+		else src = a ? aRaw : tRaw;
+		if (!src || !plain(src)) return null;
+		// "Journal. Complete Activity 4E Reflection." — the leading label is the heading
+		const lead = new RegExp(v.sentence_lead, "i");
+		const stripped = plain(src).replace(lead, "");
+		const sentence = stripped !== plain(src) && stripped ? stripped : src;
+		return { kind: "sentence", sentence };
+	};
 }
 
 // Node test-harness hook: the browser ignores this (module is undefined);

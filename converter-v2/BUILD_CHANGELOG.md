@@ -1,5 +1,41 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (round 447, build 260620.18) — THE JOURNAL BUTTON: every journal-label variant on a writer's [Button] now ships the house `<h4 class="goJournal">Go to your journal</h4>`, and a button that carried a whole instruction keeps that sentence as a `<p>` before it — Chris's decision D13-5 (Option B), the loop's session 40 Round 1
+
+### 1. WHAT CHANGED
+
+Round 239 turned a writer's `[Button]` into the design team's templated `<h4 class="goJournal">` only when its label folded to exactly "go to (your / the) journal". Chris decided D13-5 **Option B — standardise every journal button the writer asked for, never invent one**. The writer types the label many other ways, and each used to ship a green `<a href=""><div class="button">…</div></a>` plus a red "wire this button's link" To Do:
+
+- in the black text — `[Button] Learning journal.`, `[button] Go to learning journal.`, `[Button] Journal`;
+- in the span — `[Button – go to learning journal]` (CEDR101 ×12), `[Button for Journal]`, `[insert go to journal button]`, `[Button] [Go to journal]`, `[go to journal] [end page]`;
+- split over the red-text seam — `[button] Go to` + `journal` (13 green "Go to" buttons), `[button] G` + `o to journal` (7 green "G" buttons);
+- as a whole instruction — `[Button] Complete activity 3A in your learning journal.` (AGH1004 / 1005 / 1006), `Journal. Complete Activity 4E Reflection.` (EXBP901 / EXIP901), `[Button] Journal` + `Go to your journal and complete activity 4a.` (HES1002), `Click the button to open the learning journal and complete Assignment 2A …` (CBI1005 / CBI1009).
+
+**Now** each ships r239's heading; a sentence label keeps its sentence as a `<p>` **before** the heading — the gold's own order (AGH1005: `<p>Complete activity 3A in your learning journal.</p>` then the journal element) — with a leading "Journal." / "Go to journal." label stripped (`sentence_lead`). `Emit_Templates.json` `buttons.go_journal.variants_d13_5` (env **`JOURNALVAR_OFF`**); the test is ONE function, `Utils.GoJournalVariant`, called by `ContentConverter`'s button branch and by `#goJournalTail`'s walk (a journal button after a widget, still inside its activity box).
+
+**Guards (each one found by this round's probes):**
+- **Never inside a widget bundle.** The first ON probe also widened the scanner's `#isGoJournalButton` and the builders' member skips; that changed which items a speech bubble keeps and **un-built seven TEDC401 bubbles** (their hand-off boxes came back with the raw `[Button] Go to your journal.` inside). The bundle side (the scanner's section break, `#goJournalTail`'s member branch, `InteractiveBuilder`'s member skips) now keeps r239's exact test, so a variant is released from a bundle exactly as before and rendered by the button branch — **every widget bundle and build is byte-identical to r446**.
+- **Never with a link.** A variant followed by its journal URL (MXDB302 `[Button] Go to learning journal.` + `[link to Learning Journal] https://docs…`) keeps the linked button, as r239 never fires with a URL: the variant test runs AFTER the following-URL absorb, whose discriminator is extracted verbatim into `#followingButtonUrl` so `#goJournalTail`'s walk asks the same question (the OFF probe proves the refactor byte-identical).
+- **Never on another button's label** — download / upload / dropbox / `.docx` (their own rules); and a black tail after a non-journal in-tag label belongs to a later tag, never to the label.
+- **Only the button's own spans are label text** — `[go to journal] [end page]` (ENGS201) first rendered "go to journal end page" as a sentence; the span label now keeps only a span naming a button or the journal.
+- **NOT done (not authorised):** a journal element where the writer typed no `[Button]` (Option C).
+
+### 2. PROOF
+
+- **The widened census** (`outputs/_s40_r447_journal_census.py` / `.log`, every paired module's parsed WT): r239 already 1,289 tags; **new 135 pure + 134 sentence = 269 tags / 60 modules** (Standard 228 / 52, Inquiry 41 / 8); excluded 64. The engine's own view (`_s40_r447_itemdiag.cjs`, a ConvertPage hook): 481 journal-mentioning `[button]` items on those modules.
+- **In-memory A/B** (`_r447_probe_run.sh`): OFF (`JOURNALVAR_OFF=1`) = **2666 / 2666 identical** (after every repair, including the `#followingButtonUrl` extraction); ON = **133 pages / 53 modules**. **Word-loss check** (`_r447_wordloss.py`): **0 writer words lost** on the 133 pages; no new literal `[tag]` text on any of them.
+- **Explained side effects:** XGF9004_14_0 — `[Go to journal.]` used to take the NEXT line's iStock URL as its href (a "Go to website" button, the image lost); it now ships the heading and the image comes back. AGH1006_8_0 — "Key points from the lesson:" becomes the gold's `<h4>` like the module's other pages: an earlier EMPTY alert let the r61 alert-title regex backtrack across elements and swallow it; the new sentence `<p>` ends that match first (the regex fragility is a follow-up).
+- **Pre-score** (`_r447_prescore.py`): 111 movers, 51 up / 60 down. **By the gold's own journal form** (`_r447_moverform.py`): **h4 golds 17 up / 5 down (+6.8pp-sum)**; **green-button golds 29 up / 52 down (−79.1) — the named override D13-5 chose** ("the older series need not match their green-button gold"); no journal element 5 / 3 (−3.5). The h4-gold downs named (`_r447_companion.py`): ENGI405_5_0 −6.1 — Claude's whole lesson 5 is paired with gold sub-page 5.2 and already carried more `h4.goJournal` (10) than that sub-page (8), so the two new ones cannot match; MXEX401_6_0 −8.7 (a no-journal gold: the lost button aligned with an unrelated gold button); ENGI401_8_0 −1.1, SSCI104_3_0 −1.0, MXFU202_3_0 −0.6 (position-free overlap +1.3), MXFU202_2_0 −0.4.
+- **SCOPED regeneration** (`_r447_regen.sh`, the 53 + a 12-module spot-check, seed 447, six batches of ≤ 11, 4 in parallel): all rc 0; `_content_manifest.py fresh` **0 truly stale**, the 489 untouched byte-identical; spot-check 12 / 12. `scoped_ship.sh --toggle JOURNALVAR_OFF --round 447`: containment 53 ⊆ 53; skeleton −0.03 / ≥75 −1 → `_fastloop_diff.py --accept-named "skeleton SCAFFOLD mean,skeleton pages >=75%" --commit` (`_r447_fastloop_named.log`): **MOVED, ACCEPTED AS NAMED**; every other gate HELD EXACTLY. Ledger: **scoped #3 since the r444 FULL**.
+- **The decomposition** (`_r447_decompose.py`): 54.7726 @ 2476 → **54.7409 % @ 2477** (−0.0317pp); on the **2,475 common pairs −0.0283pp** (52 up / 59 down); **+1 pair PWY1002_2_2_0 ↔ PWY1002_2_1 (53.9)** — the page now pairs by content because its heading is the gold's own `h4.goJournal`; **HES1005 re-paired** — gold 4.0 was matched to Claude 5_0 and is now matched to Claude 4_0 (64.7).
+- **Post-ship** (`_r447_postship.sh`): `run_all_gates.sh` rc 0, every verifier RESULT ✓; the fresh skeleton state = the decomposition, **0 movers outside the 53**; 49 selftests GREEN; feature index GREEN; **the miner 197 → 195 CANDIDATE** (2477 pairs). (`_gatecheck.py` refuses after a scoped regeneration by design — the mtime check; the scoped ship's step [4] re-ran compare_structure and body_compare fresh.)
+
+### 3. PROTECTED GATES
+
+- **Skeleton (PRIMARY)**: SCAFFOLD **54.7409 % @ 2477 pairs** (−0.0317pp NAMED — the D13-5 override on the green-button golds), median 55.7; ≥50 **1542** (=), ≥75 **260** (−1 NAMED), ≥90 **23**; RAW 38.689 %.
+- **compare_structure** 15657 / 199 / 796 / 24; **body_compare** 56 / 5 / 201 / 260; **structurally clean** 2613 / 2658; **leak** 75 / 45 — all EXACT; **tags 9557 / 9557**; every verifier RESULT ✓.
+- Plateau (§4): a decided override with a named move — neither counts nor resets; **0 of 3**.
+
 ## 2026-09-23 (round 446, build 260620.17) — THE SPEECH-BUBBLE CHARACTER PLACEHOLDER: in the Online Safety and TEDC families a text-only bubble whose writer named no picture now carries the KB's grey "Character" placeholder and a red To Do — Chris's decision D13-9 part 2; part 1 measured — the loop's session 39 Round 8
 
 ### 1. WHAT CHANGED

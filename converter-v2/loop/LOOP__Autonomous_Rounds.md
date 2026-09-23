@@ -100,7 +100,7 @@ is pre-intake. Current (23 September 2026, build 260620.13 — after the 22 Sept
 | Claude pages | 2,109 | **2,666** |
 | gold dirs | 454 | **552** |
 | Writers Template / Media List docx | 619 | **762** |
-| skeleton paired pages | 1,956 | **2,476** |
+| skeleton paired pages | 1,956 | **2,477** (r447, 24 Sept: +1 — PWY1002_2_2_0 pairs by content once its journal heading is the gold's own) |
 
 **552 gold dirs against 545 Claude dirs is CORRECT, not a fault — the gap is exactly the 7 with no source.**
 The 7 (`GER1003–1007`, `SAM1005`, `SAM1006`) have no Writers Template at all (§2). The 12 XOTP modules joined the

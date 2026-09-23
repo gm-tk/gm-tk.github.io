@@ -1,0 +1,820 @@
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button] Go to your journal	after=	link=
+ITEM	TEDC402	?	tag=body	dir=ELEMENT	text=[Body]	after=Then write a short explanation of why you chose that position in your journal. *Note: There is no right or wrong answer,	link=
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button] Go to your journal	after=	link=
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button] Go to your journal	after=	link=
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button] Go to your journal	after=	link=
+ITEM	TEDC402	?	tag=body	dir=ELEMENT	text=[body]	after=In your journal, answer these two questions. • Choose one everyday action (e.g., typing a letter, taking a photo, openin	link=https://www.istockphoto.com/vector/young-beautiful-student-w
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button] Go to your journal	after=	link=https://www.istockphoto.com/vector/young-beautiful-student-w
+ITEM	TEDC402	?	tag=h3	dir=ELEMENT	text=(journal) [H3]	after=**Your turn: explore your operating system**	link=https://www.istockphoto.com/vector/young-beautiful-student-w
+ITEM	TEDC402	?	tag=body	dir=ELEMENT	text=[Body	after=] Complete the following tasks on your device: • **Find your system information.** (OS version, storage, memory). • **Lo	link=https://www.istockphoto.com/vector/young-beautiful-student-w
+ITEM	TEDC402	?	tag=body	dir=ELEMENT	text=[Body]	after=In your journal, complete the following: **Binary** 1.Convert these into binary (use 8-bit format): • 3 • 9 • 12. Then w	link=https://www.istockphoto.com/vector/young-beautiful-student-w
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button] Go to your journal	after=	link=https://www.istockphoto.com/vector/young-beautiful-student-w
+ITEM	TEDC402	?	tag=body	dir=ELEMENT	text=[Body]	after=**Scenario:** A school wants to understand student wellbeing. But the dataset has: • missing sleep values • steps record	link=https://www.istockphoto.com/vector/young-beautiful-student-w
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button] Go to your journal	after=	link=
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button: go to journal]	after=	link=
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button: go to journal]	after=	link=
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button: Go to your journal]	after=	link=
+ITEM	TEDC402	?	tag=click drop	dir=INTERACTIVE	text=[activity choice.clickdrop for instructions, journal to complete]	after=	link=https://www.istockphoto.com/vector/young-beautiful-student-w
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button: go to journal]	after=	link=
+ITEM	TEDC402	?	tag=sketcher	dir=INTERACTIVE	text=[Sketcher]	after=Step 4. In your journal, explain: • what your algorithm does • why this task is useful • how it connects to your data st	link=https://www.istockphoto.com/vector/young-beautiful-student-w
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button: go to journal]	after=	link=
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button: Go to journal]	after=	link=https://www.istockphoto.com/vector/young-beautiful-student-w
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button: go to your journal]	after=	link=
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button: go to journal]	after=	link=
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button: go to your journal]	after=	link=
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button: go to your journal]	after=	link=
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button: go to your journal]	after=	link=
+ITEM	TEDC402	?	tag=button	dir=ELEMENT	text=[Button: Go to your journal]	after=	link=
+TEDC402: identical 11 / changed 0
+ITEM	CEDR101	?	tag=body	dir=ELEMENT	text=[body]	after=When you have practised a stick game, you can show your kaiako how clever you are. You can put a video or a sound file i	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button]	after=Download learning journal.	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to learning journal.	link=
+ITEM	CEDR101	?	tag=supervisor note	dir=CONTAINER_OPEN	text=[Supervisor button RHS]	after=This tab is a great choice if your child is learning to take turns in games. Playing often gives them opportunities to b	link=
+ITEM	CEDR101	?	tag=body	dir=ELEMENT	text=[body]	after=Share your best idea about leaders and followers with your kaiako. Choose some great words to describe what they do. You	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to learning journal.	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button – Go to learning journal]	after=	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button – go to learning journal]	after=	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button – go to learning journal]	after=	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button – go to learning journal]	after=	link=
+ITEM	CEDR101	?	tag=body	dir=ELEMENT	text=[body]	after=Share your best idea about leaders and followers with your kaiako. Choose some great words to describe what they do. You	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button – go to learning journal]	after=	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button – go to learning journal]	after=	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button – go to learning journal]	after=	link=
+ITEM	CEDR101	?	tag=body	dir=ELEMENT	text=[body]	after=Share your best idea about leaders and followers with your kaiako. Choose some great words to describe what they do. You	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button – go to learning journal]	after=	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button – go to learning journal]	after=	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button – go to learning journal]	after=	link=
+ITEM	CEDR101	?	tag=body	dir=ELEMENT	text=[body]	after=Share your best idea about leaders and followers with your teacher. Choose some great words to describe what they do. Yo	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button – go to learning journal]	after=	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button – go to learning journal]	after=	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button – go to learning journal]	after=	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button – go to learning journal]	after=	link=
+ITEM	CEDR101	?	tag=body	dir=ELEMENT	text=[body]	after=Share your best idea about leaders and followers with your kaiako. Choose some great words to describe what they do. You	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button – go to learning journal]	after=	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button – go to learning journal]	after=	link=
+ITEM	CEDR101	?	tag=button	dir=ELEMENT	text=[Button – go to learning journal]	after=	link=
+CEDR101: identical 1 / changed 0
+ITEM	MXFL203	?	tag=body	dir=ELEMENT	text=[Body text]	after=Ākonga will complete a variety of embedded activities and quizzes. They will also complete a learning journal for kaiako	link=
+ITEM	MXFL203	?	tag=button	dir=ELEMENT	text=[button]	after=Download learning journal.	link=
+ITEM	MXFL203	?	tag=body	dir=ELEMENT	text=[body text]	after=Go to your learning journal to answer a few questions about the history of A&P shows.	link=
+ITEM	MXFL203	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFL203	?	tag=body	dir=ELEMENT	text=[body text]	after=Using the calendars from activity 2D, answer the following questions in your learning journal.	link=
+ITEM	MXFL203	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFL203	?	tag=body	dir=ELEMENT	text=[body text]	after=Go to your learning journal and demonstrate your understanding of these words.	link=
+ITEM	MXFL203	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal	link=
+ITEM	MXFL203	?	tag=body	dir=ELEMENT	text=[body text]	after=Go to your learning journal to complete a kaiako-marked task about fractions.	link=
+ITEM	MXFL203	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFL203	?	tag=body	dir=ELEMENT	text=[body]	after=In your journal, identify the numbers that are not equivalent to others.	link=
+ITEM	MXFL203	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFL203	?	tag=body	dir=ELEMENT	text=[body text]	after=For the following activity go to your learning journal. Use the three different digits to make a number between the rang	link=
+ITEM	MXFL203	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFL203	?	tag=body	dir=ELEMENT	text=[body text]	after=Once you have completed the interactive activities, go to your learning journal to complete the kaiako-marked task for d	link=
+ITEM	MXFL203	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFL203	?	tag=body	dir=ELEMENT	text=[body]	after=Complete the kaiako-marked task in your learning journal, showing your understanding of fractions and decimals when usin	link=
+ITEM	MXFL203	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFL203	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFL203	?	tag=body	dir=ELEMENT	text=[body]	after=Using your knowledge about measurement go to your learning journal and complete some word problems. Remember when solvin	link=
+ITEM	MXFL203	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFL203	?	tag=body	dir=ELEMENT	text=[Body]	after=It is now time to share all the learning you have completed so far with your kaiako. Do this by uploading your journal t	link=
+ITEM	MXFL203	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFL203	?	tag=body	dir=ELEMENT	text=[body text]	after=Complete the word problems about money in your learning journal.	link=
+ITEM	MXFL203	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFL203	?	tag=body	dir=ELEMENT	text=[body text]	after=Look at the table below showing the results of a show jumping competition. Use this table to answer the questions in you	link=
+ITEM	MXFL203	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFL203	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFL203	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFL203	?	tag=body	dir=ELEMENT	text=[body text]	after=Roll a 6-sided dice 100 times. For each roll, record what number is rolled in your learning journal. This can be done us	link=
+ITEM	MXFL203	?	tag=button	dir=ELEMENT	text=[Button]	after=Learning journal.	link=
+ITEM	MXFL203	?	tag=body	dir=ELEMENT	text=[body text]	after=Choose one of the games above, or design an idea of your own. Record the idea for your game in your learning journal. Ta	link=
+ITEM	MXFL203	?	tag=body	dir=ELEMENT	text=[body text]	after=Build the game using materials that you can find around home, this might be out of cardboard boxes, lose parts. Take pho	link=
+ITEM	MXFL203	?	tag=body	dir=ELEMENT	text=[body text]	after=Test out your game on members of your whānau or friends. Is the game too easy? Does the game work the way you intended? 	link=
+ITEM	MXFL203	?	tag=button	dir=ELEMENT	text=[Button]	after=Learning journal.	link=
+ITEM	MXFL203	?	tag=body	dir=ELEMENT	text=[Body]	after=Ka pai! Well done for completing this module. You have practised many mathematical skills within the context of regional	link=
+MXFL203: identical 12 / changed 0
+ITEM	MXFU201	?	tag=body	dir=ELEMENT	text=[body text]	after=Look at the following digital and analogue clocks. Match the times on both clocks to the time written in words. Complete	link=
+ITEM	MXFU201	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU201	?	tag=body	dir=ELEMENT	text=[body text]	after=Move the hands on this analogue clock to represent the times below. Then accurately record the same times in your learni	link=
+ITEM	MXFU201	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU201	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU201	?	tag=body	dir=ELEMENT	text=[body text]	after=Airlines use 24-hour time to avoid confusion about what time an aeroplane will depart. Read the aeroplane departure tabl	link=
+ITEM	MXFU201	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU201	?	tag=body	dir=ELEMENT	text=[body text]	after=Charli, Sonny and Kora are waiting for their trains. Read their statements about their destinations and train, then the 	link=
+ITEM	MXFU201	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU201	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU201	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU201	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU201	?	tag=body	dir=ELEMENT	text=[body text]	after=Download your graph (or take a screenshot) and upload the graph to your learning journal.	link=
+ITEM	MXFU201	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU201	?	tag=body	dir=ELEMENT	text=[body text]	after=Try to make your clock measure 1 minute accurately. What changes do you need to make? Then try to make your clock measur	link=
+ITEM	MXFU201	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU201	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU201	?	tag=body	dir=ELEMENT	text=[body text]	after=Record your results on the chart in your learning journal.	link=
+ITEM	MXFU201	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU201	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU201	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU201	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU201	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU201	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+MXFU201: identical 10 / changed 0
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[Button for Journal]	after=- The ‘Go to Journal’ button takes you to your learning journal – this is the place where you will capture all of your i	link=
+ITEM	EXBP901	?	tag=body	dir=ELEMENT	text=[Insert consistent text that goes with downloading a journal for the first time]	after=	link=
+ITEM	EXBP901	?	tag=h3	dir=ELEMENT	text=[H3]	after=Activity: Now it is time to brainstorm your own ideas by creating a mindmap in your journal. Have fun!	link=
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[Button]	after=Journal. Complete activity 1A Mindmap.	link=
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[button] Journal.	after=Complete Activity 1B KWL chart – What do I know about my topic, what do I want to know?	link=
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[Button]	after=Journal.	link=
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[button]	after=Upload journal to dropbox.	link=
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[Add button]	after=Journal	link=
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[Button]	after=Journal.	link=
+ITEM	EXBP901	?	tag=dropdown	dir=INTERACTIVE	text=[button to dropbox]	after=Upload your journal.	link=
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[Button]	after=Journal. Complete Activity 2C learning intentions.	link=
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[button]	after=Journal. Complete Activity 2D success criteria.	link=
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[button]	after=Journal	link=
+ITEM	EXBP901	?	tag=body	dir=ELEMENT	text=[body]	after=Go to your journal and write the name of your mentor and a bit about them. Outline how you will connect with them throug	link=
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[Add button to journal]	after=Journal. Complete Activity 2F.	link=
+ITEM	EXBP901	?	tag=body	dir=ELEMENT	text=[Body]	after=Congratulations on completing the Plan It stage of your Project Learning Cycle. Before you submit your Project Proposal 	link=
+ITEM	EXBP901	?	tag=body	dir=ELEMENT	text=[Body]	after=You have your itinerary (Project Proposal) prepared in your learning journal (Activities 2A–2F). You have an idea of the	link=
+ITEM	EXBP901	?	tag=body	dir=ELEMENT	text=[Body]	after=Take a look at your questions in Activity 2A of your learning journal. How are you going to find information to help you	link=
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[Add button]	after=Go to journal.	link=
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[Add button]	after=Go to journal.	link=
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[add button go to journal]	after=Journal. Complete Activity 4A.	link=
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[Button]	after=Journal. Complete Activity 4B Peer feedback.	link=
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[button]	after=Journal. Complete Activity 4C Structure of your showcase.	link=
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[button]	after=Journal. Activity 4D Complete the details of your showcase after confirming the details with your kaimanaaki.	link=
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[button]	after=Upload to journal.	link=
+ITEM	EXBP901	?	tag=button	dir=ELEMENT	text=[button]	after=Journal. Complete Activity 4E Reflection.	link=
+EXBP901: identical 6 / changed 0
+ITEM	EXIP901	?	tag=button	dir=ELEMENT	text=[Button for Journal]	after=The ‘Go to Journal’ button takes you to your learning journal – this is the place where you will capture all of your ide	link=
+ITEM	EXIP901	?	tag=body	dir=ELEMENT	text=[Insert consistent text that goes with downloading a journal for the first time]	after=	link=
+ITEM	EXIP901	?	tag=h3	dir=ELEMENT	text=[H3]	after=Activity: Now it is time to brainstorm your own ideas by creating a mindmap in your journal. Have fun!	link=
+ITEM	EXIP901	?	tag=button	dir=ELEMENT	text=[Button]	after=Journal. Complete Activity 1A Mindmap.	link=
+ITEM	EXIP901	?	tag=button	dir=ELEMENT	text=[Add button]	after=Journal. Complete Activity 1B My topic and essential questions.	link=
+ITEM	EXIP901	?	tag=body	dir=ELEMENT	text=[Body]	after=You are on an adventure and while ideas are great; you need a solid plan too! An effective plan will be an important par	link=
+ITEM	EXIP901	?	tag=body	dir=ELEMENT	text=[Body]	after=Go to your journal and complete the Learning Goals activity. Your kaimanaaki can give you feedback on these goals before	link=
+ITEM	EXIP901	?	tag=button	dir=ELEMENT	text=[Button]	after=Journal. Complete Activity 2A Learning Goals.	link=
+ITEM	EXIP901	?	tag=dropdown	dir=INTERACTIVE	text=[button to dropbox]	after=Upload your journal.	link=
+ITEM	EXIP901	?	tag=button	dir=ELEMENT	text=[Button]	after=Journal. Complete Activity 2B Learning Intentions.	link=
+ITEM	EXIP901	?	tag=button	dir=ELEMENT	text=[button]	after=Journal. Complete Activity 2C Success Criteria.	link=
+ITEM	EXIP901	?	tag=button	dir=ELEMENT	text=[button]	after=Journal. Complete Activity 2D Timeline.	link=
+ITEM	EXIP901	?	tag=body	dir=ELEMENT	text=[body]	after=Go to your journal and write the name of your mentor/s and a bit about them. Outline how you will connect with them thro	link=
+ITEM	EXIP901	?	tag=button	dir=ELEMENT	text=[Button]	after=Journal. Complete Activity 2E Mentor.	link=
+ITEM	EXIP901	?	tag=body	dir=ELEMENT	text=[Body]	after=Wow! You have completed a lot of work to get to this point, ka mau te wehi. The following activity will help you check y	link=
+ITEM	EXIP901	?	tag=body	dir=ELEMENT	text=[Body]	after=Check off the activities you have completed in your journal. Be proud of what you have done.	link=
+ITEM	EXIP901	?	tag=body	dir=ELEMENT	text=[Body]	after=Stop! Submit your journal to your kaimanaaki and wait for feedback. While you’re waiting, get outside and enjoy the outd	link=
+ITEM	EXIP901	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	EXIP901	?	tag=accordion	dir=INTERACTIVE	text=[accordion]	after=Keeping track in your journal	link=
+ITEM	EXIP901	?	tag=button	dir=ELEMENT	text=[button]	after=Journal. Complete Activity 3A Keeping track.	link=
+ITEM	EXIP901	?	tag=alert	dir=CONTAINER_OPEN	text=[Alert RHC]	after=Remember to keep revisiting your project planning with Learning Goals, Learning Intentions and Success Criteria, as well	link=
+ITEM	EXIP901	?	tag=button	dir=ELEMENT	text=[Add button]	after=Journal. Complete 3B Challenges and motivators	link=
+ITEM	EXIP901	?	tag=button	dir=ELEMENT	text=[button]	after=Journal. Complete Activity 4A Structure of your showcase.	link=
+ITEM	EXIP901	?	tag=body	dir=ELEMENT	text=[Body]	after=In your journal write down the ideas you have for how to present your showcase.	link=
+ITEM	EXIP901	?	tag=button	dir=ELEMENT	text=[button]	after=Journal. Complete Activity 4B Showcase method.	link=
+ITEM	EXIP901	?	tag=button	dir=ELEMENT	text=[Button]	after=Journal. Complete Activity 4C Peer feedback.	link=
+ITEM	EXIP901	?	tag=button	dir=ELEMENT	text=[button]	after=Journal. Complete Activity 4D Details of my showcase – after confirming the details with your kaimanaaki!	link=
+ITEM	EXIP901	?	tag=button	dir=ELEMENT	text=[button]	after=Journal. Complete Activity 4E Reflection.	link=
+EXIP901: identical 6 / changed 0
+ITEM	AGH1005	?	tag=h3	dir=ELEMENT	text=[H3]	after=**Learning Journal**	link=
+ITEM	AGH1005	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 1A in your learning journal. [H2]	after=**Hononga | Connections**	link=
+ITEM	AGH1005	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 1A in your learning journal.	after=	link=
+ITEM	AGH1005	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 2A in your learning journal.	after=	link=
+ITEM	AGH1005	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 2B and 2C in your learning journal.	after=	link=
+ITEM	AGH1005	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 3A in your learning journal.	after=	link=
+ITEM	AGH1005	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 4A in your learning journal.	after=	link=
+ITEM	AGH1005	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 5A in your learning journal.	after=	link=
+ITEM	AGH1005	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 6A in your learning journal.	after=	link=
+ITEM	AGH1005	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 7A in your learning journal	after=	link=
+ITEM	AGH1005	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 8A in your learning journal.	after=	link=
+AGH1005: identical 9 / changed 0
+ITEM	MXDB302	?	tag=body	dir=ELEMENT	text=[body]	after=Think about how you got on with these tasks. Do you need to go back and review the videos before you move on to the task	link=
+ITEM	MXDB302	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to learning journal.	link=
+ITEM	MXDB302	?	tag=external link	dir=INLINE	text=[link to Learning Journal]	after=https://docs.google.com/document/d/1Qb1gEQVmKKlPwtN8_HrZnk7oQC05lvict0T5NtkWmBo/edit	link=https://docs.google.com/document/d/1Qb1gEQVmKKlPwtN8_HrZnk7o
+ITEM	MXDB302	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to learning journal.	link=
+ITEM	MXDB302	?	tag=external link	dir=INLINE	text=[Link to task in Learning Journal]	after=https://drive.google.com/file/d/1gXfCR8rmqeapRxWxAH_sQMoOEFjQt7sC/view?usp=drive_link	link=https://drive.google.com/file/d/1gXfCR8rmqeapRxWxAH_sQMoOEFj
+ITEM	MXDB302	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to learning journal.	link=
+ITEM	MXDB302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to learning journal.	link=
+ITEM	MXDB302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to learning journal.	link=
+ITEM	MXDB302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to learning journal.	link=
+ITEM	MXDB302	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to learning journal.	link=
+ITEM	MXDB302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to learning journal.	link=
+ITEM	MXDB302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXDB302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to learning journal.	link=
+ITEM	MXDB302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to learning journal.	link=
+ITEM	MXDB302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+MXDB302: identical 10 / changed 0
+ITEM	MXFU202	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal	link=
+ITEM	MXFU202	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal	link=
+ITEM	MXFU202	?	tag=body	dir=ELEMENT	text=[body text]	after=Read ‘Our First Olympians’ from the May 2020 School Journal to your supervisor. Then answer the following questions in y	link=
+ITEM	MXFU202	?	tag=carousel	dir=INTERACTIVE	text=[Insert as a carousel to ready across the screen: pdf text]	after=https://instructionalseries.tki.org.nz/Instructional-Series/School-Journal/School-Journal-Level-2-May-2020/Our-First-Oly	link=https://instructionalseries.tki.org.nz/Instructional-Series/
+ITEM	MXFU202	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal	link=
+ITEM	MXFU202	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU202	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal	link=
+ITEM	MXFU202	?	tag=button	dir=ELEMENT	text=[button]	after=Learning Journal	link=
+ITEM	MXFU202	?	tag=body	dir=ELEMENT	text=[body text]	after=Read and solve the following problems using column addition in your learning journal.	link=
+ITEM	MXFU202	?	tag=body	dir=ELEMENT	text=[body text]	after=Use column addition to solve the following addition problems. Complete your working in your learning journal.	link=
+ITEM	MXFU202	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal	link=
+ITEM	MXFU202	?	tag=body	dir=ELEMENT	text=[Body text]	after=The following table shows multiples of 3 up to 60. In your learning journal colour all the multiples of 6. What do you n	link=
+ITEM	MXFU202	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU202	?	tag=body	dir=ELEMENT	text=[body text]	after=Look at the following Archery events. Use column multiplication to work out how many arrows were shot in each event. Com	link=
+ITEM	MXFU202	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+ITEM	MXFU202	?	tag=button	dir=ELEMENT	text=[button]	after=Learning journal.	link=
+MXFU202: identical 11 / changed 0
+ITEM	AGH1006	?	tag=h3	dir=ELEMENT	text=[H3]	after=**Learning Journal**	link=
+ITEM	AGH1006	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 1A in your learning journal.	after=	link=
+ITEM	AGH1006	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 2A in your learning journal.	after=	link=
+ITEM	AGH1006	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 2B in your learning journal.	after=	link=
+ITEM	AGH1006	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 3A in your learning journal.	after=	link=
+ITEM	AGH1006	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 4A and 4B in your learning journal.	after=	link=
+ITEM	AGH1006	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 5A in your learning journal.	after=	link=
+ITEM	AGH1006	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 5B in your learning journal.	after=	link=
+ITEM	AGH1006	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 6A in your learning journal.	after=	link=
+ITEM	AGH1006	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 6B in your learning journal.	after=	link=
+AGH1006: identical 10 / changed 0
+ITEM	HES1005	?	tag=body	dir=ELEMENT	text=[Body]	after=Click on the Learning journal button below and complete task 2A to reflect on your observations of the value of manaakit	link=
+ITEM	HES1005	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to Learning journal.	link=
+ITEM	HES1005	?	tag=click drop	dir=INTERACTIVE	text=[Click Drop secondary] [Insert media item 16]	after=Gratitude Journal	link=
+ITEM	HES1005	?	tag=body	dir=ELEMENT	text=[Body]	after=A gratitude journal is a type of journal where you write down things that you are thankful for or appreciate in your lif	link=
+ITEM	HES1005	?	tag=body	dir=ELEMENT	text=[Body]	after=Click on the Learning journal button below and complete task 2B.	link=
+ITEM	HES1005	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to Learning journal.	link=
+ITEM	HES1005	?	tag=body	dir=ELEMENT	text=[Body]	after=Click on the Learning journal button below and complete task 3A.	link=
+ITEM	HES1005	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to Learning journal.	link=
+ITEM	HES1005	?	tag=body	dir=ELEMENT	text=[Body]	after=Make a wall of love with nine speech bubbles. Ask yourself, family members and/or friends what love means to them. Each 	link=
+ITEM	HES1005	?	tag=body	dir=ELEMENT	text=[Body]	after=Place these sentences into the column where you think they belong. Get a friend or family member to do it too. Discuss w	link=
+ITEM	HES1005	?	tag=body	dir=ELEMENT	text=[Body]	after=Click on the Learning journal button below and complete task 3B.	link=
+ITEM	HES1005	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to Learning journal.	link=
+ITEM	HES1005	?	tag=body	dir=ELEMENT	text=[Body]	after=Click on the Learning journal button below and complete task 4A.	link=
+ITEM	HES1005	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to Learning journal.	link=
+ITEM	HES1005	?	tag=body	dir=ELEMENT	text=[Body]	after=Click on the Learning journal button below and complete task 5A.	link=
+ITEM	HES1005	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to Learning journal.	link=
+ITEM	HES1005	?	tag=body	dir=ELEMENT	text=[Body]	after=Click on the Learning journal button below and complete task 6A.	link=
+ITEM	HES1005	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to Learning journal.	link=
+ITEM	HES1005	?	tag=body	dir=ELEMENT	text=[Body]	after=Click on the Learning journal button below and complete task 7A.	link=
+ITEM	HES1005	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to Learning journal.	link=
+ITEM	HES1005	?	tag=body	dir=ELEMENT	text=[Body]	after=Click on the Learning journal button below and complete task 7B.	link=
+ITEM	HES1005	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to Learning journal.	link=
+HES1005: identical 9 / changed 0
+ITEM	PHE1008	?	tag=activity	dir=CONTAINER_OPEN	text=[Journal activity] title:	after=Nature and me	link=
+ITEM	PHE1008	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to your journal and complete Activity 1.	link=
+ITEM	PHE1008	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to your journal and complete Activity 2.	link=
+ITEM	PHE1008	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to your journal and complete Activity 3.	link=
+ITEM	PHE1008	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to your journal and complete activity 4.	link=
+ITEM	PHE1008	?	tag=body	dir=ELEMENT	text=[Body]	after=In recent years, there has been a growing awareness from journalists, athletes and fans of the need for increased visibi	link=
+ITEM	PHE1008	?	tag=button	dir=ELEMENT	text=[Button] Journal	after=Go to your journal and complete activity 4a.	link=
+ITEM	PHE1008	?	tag=button	dir=ELEMENT	text=[Button] Journal	after=Go to your journal and complete activity 4b.	link=
+ITEM	PHE1008	?	tag=button	dir=ELEMENT	text=[Button] Journal	after=Go to your journal and complete activity 4c.	link=
+ITEM	PHE1008	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal and complete activity 6.	link=
+PHE1008: identical 6 / changed 0
+ITEM	CEDO402	?	tag=body	dir=ELEMENT	text=[Body]	after=Record your answers in your learning journal.	link=
+ITEM	CEDO402	?	tag=button	dir=ELEMENT	text=[Button]	after=*Go to learning journal.*	link=
+ITEM	CEDO402	?	tag=important	dir=CONTAINER_OPEN	text=[Important note]	after=*Click on the link which will take you back to your learning journal to fill this in.*	link=
+ITEM	CEDO402	?	tag=button	dir=ELEMENT	text=[Button]	after=*Go to learning journal.*	link=
+ITEM	CEDO402	?	tag=button	dir=ELEMENT	text=[Button]	after=*Go to learning journal.*	link=
+ITEM	CEDO402	?	tag=button	dir=ELEMENT	text=[Button]	after=*Go to learning journal.*	link=
+ITEM	CEDO402	?	tag=button	dir=ELEMENT	text=[Button]	after=*Go to learning journal.*	link=
+ITEM	CEDO402	?	tag=button	dir=ELEMENT	text=[Button]	after=*Go to learning journal.*	link=
+ITEM	CEDO402	?	tag=important	dir=CONTAINER_OPEN	text=[Important note]	after=*Click on the link which will take you back to your learning journal in Google docs to fill this in. You may also decide	link=
+ITEM	CEDO402	?	tag=button	dir=ELEMENT	text=[Button]	after=*Go to learning journal.*	link=
+ITEM	CEDO402	?	tag=important	dir=CONTAINER_OPEN	text=[Important note]	after=Click on the link which will take you back to your learning journal in Google docs to fill the final activity for this m	link=
+CEDO402: identical 1 / changed 0
+ITEM	AGH1004	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 1A in your learning journal	after=	link=
+ITEM	AGH1004	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 2A in your learning journal	after=	link=
+ITEM	AGH1004	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 2B in your learning journal	after=	link=
+ITEM	AGH1004	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 3A in your learning journal.	after=	link=
+ITEM	AGH1004	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 3B in your learning journal	after=	link=
+ITEM	AGH1004	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 4A in your learning journal.	after=	link=
+ITEM	AGH1004	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 5A in your learning journal.	after=	link=
+AGH1004: identical 7 / changed 0
+ITEM	ENGI203	?	tag=button	dir=ELEMENT	text=[Button] Go to journal	after=https://docs.google.com/document/d/1dSEdHQF9SUr3j_IrGp5drkRoP3X8YZCEQcFftN-LYhU/edit?usp=sharing	link=https://docs.google.com/document/d/1dSEdHQF9SUr3j_IrGp5drkRo
+ITEM	ENGI203	?	tag=button	dir=ELEMENT	text=[Button] Go to journal	after=https://docs.google.com/document/d/1dSEdHQF9SUr3j_IrGp5drkRoP3X8YZCEQcFftN-LYhU/edit?usp=sharing	link=https://docs.google.com/document/d/1dSEdHQF9SUr3j_IrGp5drkRo
+ITEM	ENGI203	?	tag=button	dir=ELEMENT	text=[Button] Go to journal.	after=https://docs.google.com/document/d/1dSEdHQF9SUr3j_IrGp5drkRoP3X8YZCEQcFftN-LYhU/edit?usp=sharing	link=https://docs.google.com/document/d/1dSEdHQF9SUr3j_IrGp5drkRo
+ITEM	ENGI203	?	tag=button	dir=ELEMENT	text=[Button] Go to journal	after=https://docs.google.com/document/d/1dSEdHQF9SUr3j_IrGp5drkRoP3X8YZCEQcFftN-LYhU/edit?usp=sharing	link=https://docs.google.com/document/d/1dSEdHQF9SUr3j_IrGp5drkRo
+ITEM	ENGI203	?	tag=button	dir=ELEMENT	text=[Button] Go to journal	after=https://docs.google.com/document/d/1dSEdHQF9SUr3j_IrGp5drkRoP3X8YZCEQcFftN-LYhU/edit?usp=sharing	link=https://docs.google.com/document/d/1dSEdHQF9SUr3j_IrGp5drkRo
+ITEM	ENGI203	?	tag=button	dir=ELEMENT	text=[Button] Go to journal.	after=https://docs.google.com/document/d/1dSEdHQF9SUr3j_IrGp5drkRoP3X8YZCEQcFftN-LYhU/edit?usp=sharing	link=https://docs.google.com/document/d/1dSEdHQF9SUr3j_IrGp5drkRo
+ITEM	ENGI203	?	tag=button	dir=ELEMENT	text=[Button] Go to journal	after=https://docs.google.com/document/d/1dSEdHQF9SUr3j_IrGp5drkRoP3X8YZCEQcFftN-LYhU/edit?usp=sharing	link=https://docs.google.com/document/d/1dSEdHQF9SUr3j_IrGp5drkRo
+ENGI203: identical 11 / changed 0
+ITEM	EXPFUN02	?	tag=body	dir=ELEMENT	text=[body]	after=Sione puts his Learning Intentions in the table in his Learning Journal. He works out what ‘success’ looks like and writ	link=
+ITEM	EXPFUN02	?	tag=button	dir=ELEMENT	text=[Button]	after=Learning Journal [	link=
+ITEM	EXPFUN02	?	tag=body	dir=ELEMENT	text=[body]	after=Poppy puts her Learning Intentions in the table in her Learning Journal. She works out what ‘success’ looks like and wri	link=
+ITEM	EXPFUN02	?	tag=body	dir=ELEMENT	text=[body]	after=Huia puts her Learning Intentions in the table in her Learning Journal. She works out what ‘success’ looks like and writ	link=
+ITEM	EXPFUN02	?	tag=body	dir=ELEMENT	text=[body]	after=Sione puts his Learning Intentions in the table in his Learning Journal. He works out what ‘success’ looks like and writ	link=
+ITEM	EXPFUN02	?	tag=button	dir=ELEMENT	text=[Button]	after=Learning Journal [	link=
+ITEM	EXPFUN02	?	tag=body	dir=ELEMENT	text=[body]	after=Poppy puts her Learning Intentions in the table in her Learning Journal. She works out what ‘success’ looks like and wri	link=
+ITEM	EXPFUN02	?	tag=body	dir=ELEMENT	text=[body]	after=Huia puts her Learning Intentions in the table in her Learning Journal. She works out what ‘success’ looks like and writ	link=
+ITEM	EXPFUN02	?	tag=body	dir=ELEMENT	text=[body]	after=Sione puts his Learning Intentions in the table in his Learning Journal. He works out what ‘success’ looks like and writ	link=
+ITEM	EXPFUN02	?	tag=button	dir=ELEMENT	text=[Button]	after=Learning Journal [	link=
+ITEM	EXPFUN02	?	tag=body	dir=ELEMENT	text=[body]	after=Poppy puts her Learning Intentions in the table in her Learning Journal. She works out what ‘success’ looks like and wri	link=
+ITEM	EXPFUN02	?	tag=body	dir=ELEMENT	text=[body]	after=Huia puts her Learning Intentions in the table in her Learning Journal. She works out what ‘success’ looks like and writ	link=
+ITEM	EXPFUN02	?	tag=body	dir=ELEMENT	text=[body]	after=Sione puts his Learning Intentions in the table in his Learning Journal. He works out what ‘success’ looks like and writ	link=
+ITEM	EXPFUN02	?	tag=button	dir=ELEMENT	text=[Button]	after=Learning Journal [	link=
+ITEM	EXPFUN02	?	tag=body	dir=ELEMENT	text=[body]	after=Poppy puts her Learning Intentions in the table in her Learning Journal. She works out what ‘success’ looks like and wri	link=
+ITEM	EXPFUN02	?	tag=body	dir=ELEMENT	text=[body]	after=Huia puts her Learning Intentions in the table in her Learning Journal. She works out what ‘success’ looks like and writ	link=
+ITEM	EXPFUN02	?	tag=body	dir=ELEMENT	text=[body]	after=Sione puts his Learning Intentions in the table in his Learning Journal. He works out what ‘success’ looks like and writ	link=
+ITEM	EXPFUN02	?	tag=button	dir=ELEMENT	text=[Button]	after=Learning Journal [	link=
+ITEM	EXPFUN02	?	tag=body	dir=ELEMENT	text=[body]	after=Poppy puts her Learning Intentions in the table in her Learning Journal. She works out what ‘success’ looks like and wri	link=
+ITEM	EXPFUN02	?	tag=body	dir=ELEMENT	text=[body]	after=Huia puts her Learning Intentions in the table in her Learning Journal. She works out what ‘success’ looks like and writ	link=
+ITEM	EXPFUN02	?	tag=body	dir=ELEMENT	text=[body]	after=Sione puts his Learning Intentions in the table in his Learning Journal. He works out what ‘success’ looks like and writ	link=
+ITEM	EXPFUN02	?	tag=button	dir=ELEMENT	text=[Button]	after=Learning Journal	link=
+EXPFUN02: identical 1 / changed 0
+ITEM	CBI1008	?	tag=button	dir=ELEMENT	text=[Button]	after=**Click the button to open the journal and complete Assignment 1a** Carbon: The Element of Life	link=
+ITEM	CBI1008	?	tag=button	dir=ELEMENT	text=[Button]	after=**Click the button to open the learning journal and complete Assignment 2A** Carbon: The Element of Life	link=
+ITEM	CBI1008	?	tag=button	dir=ELEMENT	text=[Button]	after=**Go to journal and complete assignment 4a: Combustion**	link=
+ITEM	CBI1008	?	tag=button	dir=ELEMENT	text=[Button]	after=**Go to journal and complete Assignment 4A: Conservation of matter and chemical reactions.**	link=
+ITEM	CBI1008	?	tag=button	dir=ELEMENT	text=[Button]	after=**Click the button to open the journal and complete Assignment 5A** Effects of Combustion.	link=
+CBI1008: identical 3 / changed 0
+ITEM	PES1001	?	tag=body	dir=ELEMENT	text=[Body text]	after=*You must complete the Learning Journal activities and submit your Learning Journal when prompted, to get feedback from 	link=
+ITEM	PES1001	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to Learning Journal	link=
+ITEM	PES1001	?	tag=button	dir=ELEMENT	text=[Button] Go to your learning journal to complete this practical activity.	after=	link=
+ITEM	PES1001	?	tag=button	dir=ELEMENT	text=Learning Journal activity 5C – checkpoint review [Button] Go to your learning journal to complete this practical activit	after=	link=
+ITEM	PES1001	?	tag=button	dir=ELEMENT	text=[Button] Go to your learning journal to complete this activity.	after=	link=
+ITEM	PES1001	?	tag=button	dir=ELEMENT	text=[Button] Go to your learning journal to complete this activity.	after=	link=
+ITEM	PES1001	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to your learning journal to complete this activity.	link=
+PES1001: identical 10 / changed 0
+ITEM	EXPFUN05	?	tag=body	dir=ELEMENT	text=[body]	after=Shaz knows she now needs to figure out what success looks like for this goal. She starts by putting her Learning Intenti	link=
+ITEM	EXPFUN05	?	tag=button	dir=ELEMENT	text=[Button]	after=Learning journal. [	link=
+ITEM	EXPFUN05	?	tag=body	dir=ELEMENT	text=[body]	after=Tipene knows he now needs to figure out what success looks like for this goal. He starts by putting his Learning Intenti	link=
+ITEM	EXPFUN05	?	tag=body	dir=ELEMENT	text=[body]	after=Edmund knows he now needs to figure out what success looks like for this goal. He starts by putting his Learning Intenti	link=
+ITEM	EXPFUN05	?	tag=body	dir=ELEMENT	text=[body]	after=Shaz knows she now needs to figure out what success looks like for this goal. She starts by putting her Learning Intenti	link=
+ITEM	EXPFUN05	?	tag=body	dir=ELEMENT	text=[body]	after=Tipene knows he now needs to figure out what success looks like for this goal. He starts by putting his Learning Intenti	link=
+ITEM	EXPFUN05	?	tag=body	dir=ELEMENT	text=[body]	after=Edmund knows he now needs to figure out what success looks like for this goal. He starts by putting his Learning Intenti	link=
+ITEM	EXPFUN05	?	tag=body	dir=ELEMENT	text=[body]	after=Shaz knows she now needs to figure out what success looks like for this goal. She starts by putting her Learning Intenti	link=
+ITEM	EXPFUN05	?	tag=button	dir=ELEMENT	text=[Button]	after=Learning journal. [	link=
+ITEM	EXPFUN05	?	tag=body	dir=ELEMENT	text=[body]	after=Tipene knows he now needs to figure out what success looks like for this goal. He starts by putting his Learning Intenti	link=
+ITEM	EXPFUN05	?	tag=body	dir=ELEMENT	text=[body]	after=Edmund knows he now needs to figure out what success looks like for this goal. He starts by putting his Learning Intenti	link=
+ITEM	EXPFUN05	?	tag=body	dir=ELEMENT	text=[body]	after=Shaz knows she now needs to figure out what success looks like for this goal. She starts by putting her Learning Intenti	link=
+ITEM	EXPFUN05	?	tag=button	dir=ELEMENT	text=[Button]	after=Learning journal. [	link=
+ITEM	EXPFUN05	?	tag=body	dir=ELEMENT	text=[body]	after=Tipene knows he now needs to figure out what success looks like for this goal. He starts by putting her Learning Intenti	link=
+ITEM	EXPFUN05	?	tag=body	dir=ELEMENT	text=[body]	after=Edmund knows he now needs to figure out what success looks like for this goal. He starts by putting his Learning Intenti	link=
+ITEM	EXPFUN05	?	tag=body	dir=ELEMENT	text=[body]	after=Shaz knows she now needs to figure out what success looks like for this goal. She starts by putting her Learning Intenti	link=
+ITEM	EXPFUN05	?	tag=button	dir=ELEMENT	text=[Button]	after=Learning journal. [	link=
+ITEM	EXPFUN05	?	tag=body	dir=ELEMENT	text=[body]	after=Tipene knows he now needs to figure out what success looks like for this goal. He starts by putting his Learning Intenti	link=
+ITEM	EXPFUN05	?	tag=body	dir=ELEMENT	text=[body]	after=Edmund knows he now needs to figure out what success looks like for this goal. He starts by putting his Learning Intenti	link=
+ITEM	EXPFUN05	?	tag=body	dir=ELEMENT	text=[body]	after=Shaz knows she now needs to figure out what success looks like for this goal. She starts by putting her Learning Intenti	link=
+ITEM	EXPFUN05	?	tag=button	dir=ELEMENT	text=[Button]	after=Learning journal. [	link=
+EXPFUN05: identical 1 / changed 0
+ITEM	PHE1007	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal. Complete activity 1A and 1B.	link=
+ITEM	PHE1007	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal. Complete activity 2A.	link=
+ITEM	PHE1007	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal. Complete activities 4A and 4B.	link=
+ITEM	PHE1007	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal. Complete activity 7A.	link=
+ITEM	PHE1007	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal. Complete activity 9A.	link=
+PHE1007: identical 10 / changed 0
+ITEM	DAN1004	?	tag=button	dir=ELEMENT	text=[Button]	after=Learning journal.	link=https://docs.google.com/document/d/1qFYYatD7D0GOfNmZKpOlebhE
+ITEM	DAN1004	?	tag=button	dir=ELEMENT	text=[Button]	after=Learning journal..	link=https://docs.google.com/document/d/1qFYYatD7D0GOfNmZKpOlebhE
+ITEM	DAN1004	?	tag=button	dir=ELEMENT	text=[Button]	after=Learning journal.	link=https://docs.google.com/document/d/1qFYYatD7D0GOfNmZKpOlebhE
+ITEM	DAN1004	?	tag=button	dir=ELEMENT	text=[Button]	after=Learning journal.	link=https://docs.google.com/document/d/1qFYYatD7D0GOfNmZKpOlebhE
+ITEM	DAN1004	?	tag=button	dir=ELEMENT	text=[Button]	after=Learning journal for your own record.	link=https://docs.google.com/document/d/1qFYYatD7D0GOfNmZKpOlebhE
+DAN1004: identical 4 / changed 0
+ITEM	HES1002	?	tag=button	dir=ELEMENT	text=[Button] [Go to journal]	after=	link=
+ITEM	HES1002	?	tag=button	dir=ELEMENT	text=[Button] [Go to journal]	after=	link=
+ITEM	HES1002	?	tag=button	dir=ELEMENT	text=[Button] [Go to journal]	after=	link=
+ITEM	HES1002	?	tag=button	dir=ELEMENT	text=[Button] [Go to journal]	after=	link=
+ITEM	HES1002	?	tag=button	dir=ELEMENT	text=[Button] Journal	after=Go to your journal and complete activity 4A, I statements.	link=
+ITEM	HES1002	?	tag=button	dir=ELEMENT	text=[Button] Journal	after=Go to your journal and complete activity 5A.	link=
+ITEM	HES1002	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to your journal and complete activity 5B Sexuality RAFT.	link=
+ITEM	HES1002	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to your journal and complete activity 6A Mindfulness.	link=
+HES1002: identical 7 / changed 0
+ITEM	PWY1002	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	PWY1002	?	tag=body	dir=ELEMENT	text=[Body]	after=Visit the journal to complete this activity.	link=
+ITEM	PWY1002	?	tag=button	dir=ELEMENT	text=[Button]	after=Journal	link=
+PWY1002: identical 10 / changed 0
+ITEM	JPN1004	?	tag=button	dir=ELEMENT	text=[Button] Go to journal	after=	link=
+ITEM	JPN1004	?	tag=button	dir=ELEMENT	text=[Button] Go to journal	after=	link=
+ITEM	JPN1004	?	tag=body	dir=ELEMENT	text=[Body Text]	after=Draw your own daily timetable in your journal. Include your break time and lunchtime and any (after school) club activit	link=
+ITEM	JPN1004	?	tag=button	dir=ELEMENT	text=[Button] Go to journal	after=	link=
+ITEM	JPN1004	?	tag=button	dir=ELEMENT	text=[Button] Go to journal	after=	link=
+ITEM	JPN1004	?	tag=body	dir=ELEMENT	text=[Body Text]	after=In your journal, you will write a passage about what you wear daily. If you attend school, you might want to write about	link=
+ITEM	JPN1004	?	tag=button	dir=ELEMENT	text=[Button] Go to journal	after=	link=
+ITEM	JPN1004	?	tag=button	dir=ELEMENT	text=[Button] Go to journal	after=	link=
+ITEM	JPN1004	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	JPN1004	?	tag=activity	dir=CONTAINER_OPEN	text=[Journal Activity]	after=	link=
+ITEM	JPN1004	?	tag=button	dir=ELEMENT	text=[Button] Go to journal	after=	link=
+ITEM	JPN1004	?	tag=activity	dir=CONTAINER_OPEN	text=[Journal Activity]	after=	link=
+ITEM	JPN1004	?	tag=button	dir=ELEMENT	text=[Button] Go to journal	after=	link=
+ITEM	JPN1004	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to the Journal	link=
+ITEM	JPN1004	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	JPN1004	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to dropbox. Upload your completed journal for Module JAP1004.	link=
+JPN1004: identical 11 / changed 0
+ITEM	AGH1009	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 1A in your journal	after=	link=
+ITEM	AGH1009	?	tag=button	dir=ELEMENT	text=[Button] Complete activity 2A in your learning journal	after=	link=
+ITEM	AGH1009	?	tag=activity	dir=CONTAINER_OPEN	text=[Go to your learning journal and complete activity 3A]	after=	link=
+ITEM	AGH1009	?	tag=activity	dir=CONTAINER_OPEN	text=[Go to your learning journal and complete activity 4A and 4B]	after=	link=
+ITEM	AGH1009	?	tag=activity	dir=CONTAINER_OPEN	text=[Go to your learning journal and complete activity 5A]	after=	link=
+ITEM	AGH1009	?	tag=activity	dir=CONTAINER_OPEN	text=[Go to your learning journal and complete activity 6A]	after=	link=
+ITEM	AGH1009	?	tag=activity	dir=CONTAINER_OPEN	text=[Go to your learning journal and complete activity 6B]	after=	link=
+ITEM	AGH1009	?	tag=activity	dir=CONTAINER_OPEN	text=[Go to your journal and complete activity 7A]	after=	link=
+ITEM	AGH1009	?	tag=activity	dir=CONTAINER_OPEN	text=[Go to your learners journal and complete activity 8A]	after=	link=
+ITEM	AGH1009	?	tag=activity	dir=CONTAINER_OPEN	text=[Go to your learners journal and complete activity 9A and 9B]	after=	link=
+AGH1009: identical 10 / changed 0
+ITEM	ENGS301	?	tag=body	dir=ELEMENT	text=[Body]	after=Using the same interactive maps, answer the following questions in your journal.	link=
+ITEM	ENGS301	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	ENGS301	?	tag=button	dir=ELEMENT	text=[Go to journal]	after=	link=
+ITEM	ENGS301	?	tag=body	dir=ELEMENT	text=[Body]	after=Look at the image below from *Kōwhai and the Giants*. In your journal, **write one descriptive sentence for each of the 	link=
+ITEM	ENGS301	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to Journal	link=
+ITEM	ENGS301	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ENGS301: identical 8 / changed 0
+ITEM	MXDI201	?	tag=body	dir=ELEMENT	text=[Body text]	after=Throughout this module you will have the opportunity to complete several different interactive activities. There is also	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button] Go to journal	after=	link=
+ITEM	MXDI201	?	tag=body	dir=ELEMENT	text=[body text]	after=Look carefully at the following pictures. Each picture has three parts, hundreds, tens and ones. What number does each p	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button] Go to journal	after=	link=
+ITEM	MXDI201	?	tag=body	dir=ELEMENT	text=[body text] L	after=ook carefully at the expanded form numbers. Then, in your journal, write what the number will look like in digits.	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button] Go to	after=journal	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button] Go to	after=journal	link=
+ITEM	MXDI201	?	tag=body	dir=ELEMENT	text=[body text]	after=Use split addition to answer the following word problems. Show your working in your learning journal. For this strategy 	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button] Go to	after=journal	link=
+ITEM	MXDI201	?	tag=body	dir=ELEMENT	text=[body text]	after=Sir Cumference had difficulty adding the number of the King’s guests until he started to order the guests in place value	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button] Go to	after=journal	link=
+ITEM	MXDI201	?	tag=body	dir=ELEMENT	text=[body text]	after=When rounding numbers, the smaller the digit the closer the rounded number is to the actual number. Look at the table be	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button] Go to	after=journal	link=
+ITEM	MXDI201	?	tag=body	dir=ELEMENT	text=[body text]	after=Look at the following word problems, use the round and compensate strategy to solve the problem. If you are unsure of th	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button] Go to	after=journal	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button] Go to	after=journal	link=
+ITEM	MXDI201	?	tag=body	dir=ELEMENT	text=[Body]	after=It’s now time to share all the learning you have completed so far with your kaiako. Upload your journal to the dropbox u	link=
+ITEM	MXDI201	?	tag=body	dir=ELEMENT	text=[body text]	after=*A Place for Zero* is a story about the number zero. He feels left out because he doesn’t feel like he has a place. The 	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button]	after=learning journal	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button] Go to	after=journal	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button]	after=learning journal	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button] Go to	after=journal	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button] Go to journal	after=	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button] Go to journal	after=	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button] Go to	after=journal	link=
+ITEM	MXDI201	?	tag=body	dir=ELEMENT	text=[Body]	after=It’s time to share your learning with your kaiako again by uploading your journal to the dropbox.	link=
+ITEM	MXDI201	?	tag=body	dir=ELEMENT	text=[body text]	after=On the hundreds square in your journal choose to either skip count in your five and 10s OR three and sixes OR fours and 	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button] Go to	after=journal	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button] Go to	after=journal	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button] Go to	after=journal	link=
+ITEM	MXDI201	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	MXDI201	?	tag=body	dir=ELEMENT	text=[body text]	after=Ka pai, well done on all of your mahi, you have now completed MXDI201. Make sure you send your completed learning journa	link=
+MXDI201: identical 11 / changed 0
+ITEM	MXFU302	?	tag=body	dir=ELEMENT	text=[Body]	after=In your learning journal, you will find data presented in different ways. Look over the graphs and answer the questions.	link=
+ITEM	MXFU302	?	tag=button	dir=ELEMENT	text=[Button - Go to the Learning Journal]	after=	link=
+ITEM	MXFU302	?	tag=body	dir=ELEMENT	text=[Body]	after=Tama plays three games of tennis in a tournament. He has an equal chance of winning each game. In your journal, create a	link=
+ITEM	MXFU302	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal.	link=
+ITEM	MXFU302	?	tag=body	dir=ELEMENT	text=[Body]	after=This is a table of a basketball player’s scores in the first five games. Complete the tasks in your journal based on the	link=
+ITEM	MXFU302	?	tag=button	dir=ELEMENT	text=[Button] Go to journal.	after=	link=
+ITEM	MXFU302	?	tag=body	dir=ELEMENT	text=[Body]	after=In your journal, answer the following questions about this graph:	link=
+ITEM	MXFU302	?	tag=button	dir=ELEMENT	text=[Button - Go to the Learning Journal]	after=	link=
+MXFU302: identical 10 / changed 0
+PWY1007: identical 9 / changed 0
+PWY1008: identical 10 / changed 0
+ITEM	SSCI104	?	tag=body	dir=ELEMENT	text=[body]	after=Click the button to complete the same task 1B in your journal.	link=
+ITEM	SSCI104	?	tag=button	dir=ELEMENT	text=[button] G	after=o to journal https://mytekuraschool.sharepoint.com/:w:/s/TeAraWhakamua381/IQCRvoAd-YgnT7rYDDV8Z0cTAcIv8ws-32Ej7jvYGQ_m4g	link=https://mytekuraschool.sharepoint.com/:w:/s/TeAraWhakamua381
+ITEM	SSCI104	?	tag=button	dir=ELEMENT	text=[go to journal]	after=Y2 Learning Journal SSHG101 Unearth Life in the Stone Age.docx	link=https://mytekuraschool.sharepoint.com/:w:/s/TeAraWhakamua381
+ITEM	SSCI104	?	tag=body	dir=ELEMENT	text=[body]	after=Next, go to your journal and write **two simple sentences** and **two compound sentences** on any topic you choose.	link=
+ITEM	SSCI104	?	tag=button	dir=ELEMENT	text=[button] G	after=o to journal	link=
+ITEM	SSCI104	?	tag=button	dir=ELEMENT	text=[button] G	after=o to journal	link=
+ITEM	SSCI104	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	SSCI104	?	tag=body	dir=ELEMENT	text=[Body]	after=This is your last task for your journal. Please check your mahi (work) with your supervisor and then submit your journal	link=
+SSCI104: identical 7 / changed 0
+ITEM	CEDO204	?	tag=button	dir=ELEMENT	text=[Button]	after=Download Journal	link=
+ITEM	CEDO204	?	tag=body	dir=ELEMENT	text=[body text]	after=You will be answering some questions about beavers in your journal. Before you start, let’s practice writing sentences t	link=
+ITEM	CEDO204	?	tag=body	dir=ELEMENT	text=[body text]	after=Go to your journal to answer some questions about beavers. When writing your answers, use full sentences and remember to	link=
+ITEM	CEDO204	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	CEDO204	?	tag=body	dir=ELEMENT	text=[body text]	after=Share your photos and experiences in your journal.	link=
+ITEM	CEDO204	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	CEDO204	?	tag=body	dir=ELEMENT	text=[body text]	after=Now complete the measurement activities in your journal.	link=
+ITEM	CEDO204	?	tag=button	dir=ELEMENT	text=[button]	after=Go to Journal	link=
+ITEM	CEDO204	?	tag=body	dir=ELEMENT	text=[body text]	after=Take a photo of your completed activity and add it to your journal.	link=
+ITEM	CEDO204	?	tag=button	dir=ELEMENT	text=[button]	after=Journal	link=
+ITEM	CEDO204	?	tag=button	dir=ELEMENT	text=[button]	after=Go to Journal	link=
+ITEM	CEDO204	?	tag=body	dir=ELEMENT	text=[body text]	after=Now it is time to share your learning with your kaiako (teacher). Upload your Journal to dropbox.	link=
+CEDO204: identical 1 / changed 0
+ITEM	CEDR203	?	tag=supervisor note	dir=CONTAINER_OPEN	text=[Insert Supervisor Notes]	after=This module offers a lot of choice for your ākonga . Encourage them to complete at least three of the activities in Aote	link=
+ITEM	CEDR203	?	tag=alert	dir=CONTAINER_OPEN	text=[Alert]	after=Are you already an Eco-leader in your community? Do you already have a lot of prior knowledge or learning about eco-lead	link=
+ITEM	CEDR203	?	tag=button	dir=ELEMENT	text=[Go to Journal]	after=	link=
+ITEM	CEDR203	?	tag=page	dir=PAGE_BOUNDARY	text=[Page 2] [Note to developer. I’m not sure how this will work, but can it be a tile with basic details on the front and i	after=	link=
+ITEM	CEDR203	?	tag=button	dir=ELEMENT	text=[Go to Journal]	after=	link=
+ITEM	CEDR203	?	tag=embed	dir=ELEMENT	text=[Embed Journal article]	after=The Plastic-free Challenge https://instructionalseries.tki.org.nz/Instructional-Series/School-Journal/School-Journal-Lev	link=https://instructionalseries.tki.org.nz/Instructional-Series/
+ITEM	CEDR203	?	tag=button	dir=ELEMENT	text=[Go to Journal]	after=	link=
+ITEM	CEDR203	?	tag=button	dir=ELEMENT	text=[Go to Journal]	after=	link=
+ITEM	CEDR203	?	tag=button	dir=ELEMENT	text=[Go to Journal]	after=	link=
+ITEM	CEDR203	?	tag=button	dir=ELEMENT	text=[Go to Journal]	after=	link=
+ITEM	CEDR203	?	tag=modal	dir=INTERACTIVE	text=[Tile/Modal 6] [Note for developer – this is another journal we have requested the MoE to be able to use. Text to come. 	after=	link=
+ITEM	CEDR203	?	tag=audio	dir=ELEMENT	text=[Embed audio]	after=https://instructionalseries.tki.org.nz/Instructional-Series/School-Journal/School-Journal-Level-2-October-2013/Kaitiaki-	link=https://instructionalseries.tki.org.nz/Instructional-Series/
+ITEM	CEDR203	?	tag=button	dir=ELEMENT	text=[Go to Journal]	after=	link=
+ITEM	CEDR203	?	tag=button	dir=ELEMENT	text=[Go to Journal]	after=	link=
+ITEM	CEDR203	?	tag=embed	dir=ELEMENT	text=[Embed text from:]	after=https://instructionalseries.tki.org.nz/Instructional-Series/Junior-Journal-CHAPTERS/Junior-Journal-49-Level-2-2014/Our-G	link=https://instructionalseries.tki.org.nz/Instructional-Series/
+ITEM	CEDR203	?	tag=embed	dir=ELEMENT	text=[Embed audio from:]	after=https://instructionalseries.tki.org.nz/Instructional-Series/Junior-Journal-CHAPTERS/Junior-Journal-49-Level-2-2014/Our-G	link=https://instructionalseries.tki.org.nz/Instructional-Series/
+ITEM	CEDR203	?	tag=button	dir=ELEMENT	text=[Go to Journal]	after=	link=
+ITEM	CEDR203	?	tag=button	dir=ELEMENT	text=[Go to Journal]	after=	link=
+ITEM	CEDR203	?	tag=button	dir=ELEMENT	text=[Go to Journal]	after=	link=
+ITEM	CEDR203	?	tag=button	dir=ELEMENT	text=[Go to Journal]	after=	link=
+ITEM	CEDR203	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to your journal to add your final thoughts and reflections.	link=
+CEDR203: identical 1 / changed 0
+ITEM	CEDR204	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	CEDR204	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	CEDR204	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	CEDR204	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	CEDR204	?	tag=activity	dir=CONTAINER_OPEN	text=[Activity body]	after=Once you've completed your showcase piece, answer the reflection questions in your journal.	link=
+ITEM	CEDR204	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+CEDR204: identical 1 / changed 0
+ITEM	CEDT208	?	tag=body	dir=ELEMENT	text=[Body]	after=In the school journal ‘Ngatu – Keeping the Tradition Alive’ Megan and Lita are cousins who belong to the Tongan communit	link=
+ITEM	CEDT208	?	tag=embed	dir=ELEMENT	text=[embed school journal and include the audio option please]	after=https://instructionalseries.tki.org.nz/Instructional-Series/School-Journal/School-Journal-Level-2-June-2018/Ngatu-Keepin	link=https://instructionalseries.tki.org.nz/Instructional-Series/
+ITEM	CEDT208	?	tag=button	dir=ELEMENT	text=[Go to Journal]	after=	link=
+ITEM	CEDT208	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	CEDT208	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	CEDT208	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	CEDT208	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to Journal	link=
+ITEM	CEDT208	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to Journal	link=
+ITEM	CEDT208	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	CEDT208	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+CEDT208: identical 1 / changed 0
+ITEM	AGH1001	?	tag=activity	dir=CONTAINER_OPEN	text=[Complete activity 1A in your Learners Journal]	after=	link=
+ITEM	AGH1001	?	tag=activity	dir=CONTAINER_OPEN	text=[Watch these videos and complete the activity 2A and 2B in your learning journal]	after=	link=
+ITEM	AGH1001	?	tag=activity	dir=CONTAINER_OPEN	text=[Go to your learning journal and complete activity 3A]	after=	link=
+ITEM	AGH1001	?	tag=button	dir=ELEMENT	text=[Button: Complete activity 4A and 4B in your Learners Journal]	after=	link=
+ITEM	AGH1001	?	tag=activity	dir=CONTAINER_OPEN	text=[Complete activity 5A and 5B in your Learners Journal]	after=	link=
+AGH1001: identical 6 / changed 0
+ITEM	ANZH203	?	tag=external link	dir=INLINE	text=[Link]	after=https://instructionalseries.tki.org.nz/Instructional-Series/School-Journal/School-Journal-Level-4-May-2016/Captain-Cook-	link=https://instructionalseries.tki.org.nz/Instructional-Series/
+ITEM	ANZH203	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	ANZH203	?	tag=body	dir=ELEMENT	text=[Body]	after=Answer these questions in your journal so your kaiako can see how you worked them out.	link=
+ITEM	ANZH203	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	ANZH203	?	tag=image	dir=ELEMENT	text=[Image]	after=Snip from https://instructionalseries.tki.org.nz/Instructional-Series/School-Journal/School-Journal-Level-3-August-2019/	link=https://instructionalseries.tki.org.nz/Instructional-Series/
+ITEM	ANZH203	?	tag=body	dir=ELEMENT	text=[Body]	after=Think about the information you have learned about Tupaia from different sources in this module so far. Complete a PMI c	link=
+ITEM	ANZH203	?	tag=button	dir=ELEMENT	text=[Add button] Journal button	after=	link=
+ITEM	ANZH203	?	tag=button	dir=ELEMENT	text=[Add button]	after=Go to journal	link=
+ITEM	ANZH203	?	tag=body	dir=ELEMENT	text=[Body]	after=Read the following journal article and complete the source analysis activity in your journal.	link=
+ITEM	ANZH203	?	tag=external link	dir=INLINE	text=[Link]	after=https://instructionalseries.tki.org.nz/Instructional-Series/School-Journal/School-Journal-Level-2-June-2018/Painted-Hoe	link=https://instructionalseries.tki.org.nz/Instructional-Series/
+ITEM	ANZH203	?	tag=body	dir=ELEMENT	text=[Body]	after=You will find this document in your journal which will help you to analyse this source.	link=
+ITEM	ANZH203	?	tag=button	dir=ELEMENT	text=[Add button] Go to journal	after=	link=
+ITEM	ANZH203	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	ANZH203	?	tag=body	dir=ELEMENT	text=[Body]	after=Go to your journal to find the source analysis template to complete for one of the images above.	link=
+ITEM	ANZH203	?	tag=button	dir=ELEMENT	text=[Add button] Go to journal	after=	link=
+ITEM	ANZH203	?	tag=important	dir=CONTAINER_OPEN	text=[Important]	after=Well done! You have completed this module. Now is a good time to share everything you have done with you kaiako by uploa	link=
+ANZH203: identical 7 / changed 0
+ITEM	ANZH304	?	tag=button	dir=ELEMENT	text=[Add buttons]	after=Download journal	link=
+ITEM	ANZH304	?	tag=button	dir=ELEMENT	text=[Add button]	after=Go to Journal	link=
+ITEM	ANZH304	?	tag=embed	dir=ELEMENT	text=[Please embed this journal story (as in ANZHFUN01 phase 2]	after=	link=
+ITEM	ANZH304	?	tag=external link	dir=INLINE	text=[Link]	after=https://instructionalseries.tki.org.nz/Instructional-Series/School-Journal/School-Journal-Level-4-November-2016/Te-Kura-	link=https://instructionalseries.tki.org.nz/Instructional-Series/
+ITEM	ANZH304	?	tag=button	dir=ELEMENT	text=[Add button] Go to journal button	after=	link=
+ITEM	ANZH304	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	ANZH304	?	tag=image	dir=ELEMENT	text=[Insert this table so that ākonga can copy the images and text into their journals]	after=	link=
+ITEM	ANZH304	?	tag=button	dir=ELEMENT	text=[Add button] Go to Journal	after=	link=
+ITEM	ANZH304	?	tag=button	dir=ELEMENT	text=[Add button]	after=Go to journal	link=
+ITEM	ANZH304	?	tag=button	dir=ELEMENT	text=[Add button] Go to journal	after=	link=
+ITEM	ANZH304	?	tag=button	dir=ELEMENT	text=[Add button] Go to journal	after=	link=
+ITEM	ANZH304	?	tag=button	dir=ELEMENT	text=[Add buttons]	after=Go to Journal and Upload to drop-box.	link=
+ITEM	ANZH304	?	tag=audio	dir=ELEMENT	text=[Please embed the text and the audio for this journal story]	after=Eruera Maihi Patuone: The Story of a Great Rangatira / School Journal Level 4 June 2022 / School Journal / Instructional	link=https://instructionalseries.tki.org.nz/Instructional-Series/
+ITEM	ANZH304	?	tag=alert	dir=CONTAINER_OPEN	text=[Alert box: Lesson summary]	after=You can interpret a journal story source that includes different historical evidence (including Māori perspectives) to l	link=
+ITEM	ANZH304	?	tag=button	dir=ELEMENT	text=[Add button] Go to journal	after=	link=
+ITEM	ANZH304	?	tag=button	dir=ELEMENT	text=[Add button] Go to journal	after=	link=
+ITEM	ANZH304	?	tag=button	dir=ELEMENT	text=[Add button] Go to journal	after=	link=
+ANZH304: identical 7 / changed 0
+ITEM	CBI1005	?	tag=activity	dir=CONTAINER_OPEN	text=[activity 2A]	after=Go to your learning journal and complete activity 2A.	link=
+ITEM	CBI1005	?	tag=button	dir=ELEMENT	text=[button with link to learning journal]	after=Learning journal	link=
+ITEM	CBI1005	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	CBI1005	?	tag=body	dir=ELEMENT	text=[body]	after=Go to your journal and complete Activity 5B.	link=
+ITEM	CBI1005	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	CBI1005	?	tag=body	dir=ELEMENT	text=[body]	after=Submit your journal to the dropbox	link=
+ITEM	CBI1005	?	tag=dropdown	dir=INTERACTIVE	text=[button to upload learning journal to dropbox]	after=Upload Learning Journal	link=
+CBI1005: identical 11 / changed 0
+ITEM	CBI1009	?	tag=button	dir=ELEMENT	text=[Button]	after=**Click the button to open the learning journal and complete** Teacher-marked assignment 1: Ions in aqueous solution.	link=
+ITEM	CBI1009	?	tag=button	dir=ELEMENT	text=[Button]	after=**Click the button to open the learning journal and complete Teacher-marked assignment 2: CBI1009 Applying the solubilit	link=
+ITEM	CBI1009	?	tag=button	dir=ELEMENT	text=[Button]	after=**Click the button to open the learning journal and complete Teacher-marked Assignment 3 CBI1009 – Chemical reaction**	link=
+ITEM	CBI1009	?	tag=button	dir=ELEMENT	text=[Button]	after=Click the button to open the learning journal and complete Teacher-marked Assignment 4 CBI1009 – Chemical Conservation o	link=
+CBI1009: identical 4 / changed 0
+ITEM	COM1002	?	tag=button	dir=ELEMENT	text=[Button] to Learning Journal	after=Go to your journal can complete Activity 6A	link=
+COM1002: identical 9 / changed 0
+ITEM	COM1006	?	tag=activity	dir=CONTAINER_OPEN	text=[Activity 3A]	after=Go to your Journal and complete activity 3A.	link=
+ITEM	COM1006	?	tag=external link	dir=INLINE	text=[Create a link to go to the journal. Below is a link to the journal activities I have written.]	after=	link=
+ITEM	COM1006	?	tag=activity	dir=CONTAINER_OPEN	text=[Activity 4B]	after=It’s your turn now to attempt a full explanation of flow-on effects. Go to your Journal and complete activity 4B.	link=
+ITEM	COM1006	?	tag=external link	dir=INLINE	text=[Create a link to go to the journal. Below is the link to journal]	after=	link=
+ITEM	COM1006	?	tag=activity	dir=CONTAINER_OPEN	text=[Activity 5B]	after=It is your turn now to explain the flow-on effects of a decision made by a business to. Go to your journal and complete 	link=
+ITEM	COM1006	?	tag=external link	dir=INLINE	text=[Create a link to go to the journal. Below is the link to journal.]	after=	link=
+ITEM	COM1006	?	tag=activity	dir=CONTAINER_OPEN	text=[Activity 7A]	after=Based on the case study given above, go to your Journal and complete activity 7A.	link=
+ITEM	COM1006	?	tag=external link	dir=INLINE	text=[Create a link to go to the journal. Below is the link to journal.]	after=	link=
+ITEM	COM1006	?	tag=button	dir=ELEMENT	text=[Button: Learning Journal] Please create a link for the dropbox here for the students to upload their learning journal. 	after=	link=
+ITEM	COM1006	?	tag=button	dir=ELEMENT	text=[Button: Teacher-marked activity] Please create a link for the dropbox here for the students to upload their teacher-mar	after=	link=
+COM1006: identical 10 / changed 0
+ITEM	ENGC102	?	tag=body	dir=ELEMENT	text=[body]	after=Go to your journal to complete some fiction versus nonfiction activities.	link=
+ITEM	ENGC102	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	ENGC102	?	tag=body	dir=ELEMENT	text=[Body]	after=Go to your journal to match some more headings to a paragraph.	link=
+ITEM	ENGC102	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	ENGC102	?	tag=body	dir=ELEMENT	text=[Body]	after=Go to your journal to answer some more questions about reading a table of contents.	link=
+ITEM	ENGC102	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	ENGC102	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	ENGC102	?	tag=body	dir=ELEMENT	text=[body]	after=Go to your journal to complete an activity that compares photographs and illustrations.	link=
+ITEM	ENGC102	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	ENGC102	?	tag=body	dir=ELEMENT	text=[body]	after=Go to your journal to do some more activities of matching captions to their picture.	link=
+ITEM	ENGC102	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	ENGC102	?	tag=body	dir=ELEMENT	text=[Body]	after=Upload a photo of your timeline into your journal.	link=
+ITEM	ENGC102	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	ENGC102	?	tag=body	dir=ELEMENT	text=[Body]	after=In your journal you will need to record five facts that you have learned about bikes, as well as labelling the different	link=
+ITEM	ENGC102	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	ENGC102	?	tag=body	dir=ELEMENT	text=[body]	after=You can draw your dragon trap or you can create it out of materials and then take a photo of it. Once your drawing or cr	link=
+ITEM	ENGC102	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	ENGC102	?	tag=body	dir=ELEMENT	text=[Body]	after=In your journal write a glossary for the highlighted words.	link=
+ITEM	ENGC102	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	ENGC102	?	tag=body	dir=ELEMENT	text=[Body]	after=Think about your favourite animal, or an animal you know lots of things about. In your journal write a nonfiction paragr	link=
+ITEM	ENGC102	?	tag=body	dir=ELEMENT	text=[Body]	after=Go to your journal to complete an activity on alphabetical ordering.	link=
+ITEM	ENGC102	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	ENGC102	?	tag=body	dir=ELEMENT	text=[Body]	after=Go to your journal to complete another activity using an index.	link=
+ITEM	ENGC102	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	ENGC102	?	tag=body	dir=ELEMENT	text=[Body]	after=Once you are happy with your draft and have fixed any error, you are now ready to make your own book. Think about what p	link=
+ITEM	ENGC102	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	ENGC102	?	tag=body	dir=ELEMENT	text=[body]	after=Congratulations on completing your module. I am sure you have learned alot about how a nonfiction text is structured! Up	link=
+ENGC102: identical 8 / changed 0
+ITEM	ENGC201	?	tag=body	dir=ELEMENT	text=[body]	after=Watch this video if you would like instructions on how to add your avatar into your journal.	link=
+ITEM	ENGC201	?	tag=external link	dir=INLINE	text=[link to journal]	after=Go to journal https://docs.google.com/document/d/1nSQ-mwdxDYhLiBvhXpHFsNjqoN5xrJXDtY85-ItndMw/edit?usp=sharing	link=https://docs.google.com/document/d/1nSQ-mwdxDYhLiBvhXpHFsNjq
+ITEM	ENGC201	?	tag=image	dir=ELEMENT	text=[image] First two pages of PDF	after=https://instructionalseries.tki.org.nz/Instructional-Series/School-Journal/School-Journal-Level-2-November-2016/Lost-in-	link=https://instructionalseries.tki.org.nz/Instructional-Series/
+ITEM	ENGC201	?	tag=body	dir=ELEMENT	text=[body]	after=Select one of the comics from the resources provided. In your **journal**, answer the following:	link=
+ITEM	ENGC201	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal https://docs.google.com/document/d/1nSQ-mwdxDYhLiBvhXpHFsNjqoN5xrJXDtY85-ItndMw/edit?usp=sharing	link=https://docs.google.com/document/d/1nSQ-mwdxDYhLiBvhXpHFsNjq
+ITEM	ENGC201	?	tag=external link	dir=INLINE	text=[link to journal]	after=Go to journal https://docs.google.com/document/d/1nSQ-mwdxDYhLiBvhXpHFsNjqoN5xrJXDtY85-ItndMw/edit?usp=sharing	link=https://docs.google.com/document/d/1nSQ-mwdxDYhLiBvhXpHFsNjq
+ENGC201: identical 7 / changed 0
+ITEM	ENGC302	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal.	link=
+ITEM	ENGC302	?	tag=external link	dir=INLINE	text=[link to journal]	after=https://docs.google.com/document/d/1pinbUpdSeqX8y9tpA6sBpAHSPDWshH3ZZBD0Bk9Eoxg/edit#heading=h.2ov2im2x1ary	link=https://docs.google.com/document/d/1pinbUpdSeqX8y9tpA6sBpAHS
+ENGC302: identical 8 / changed 0
+ITEM	ENGI405	?	tag=body	dir=ELEMENT	text=[body]	after=Go to your journal and complete the activity on how our views can change.	link=
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=https://mytekuraschool.sharepoint.com/:w:/s/TeAraWhakamua381
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	ENGI405	?	tag=body	dir=ELEMENT	text=[body]	after=Go to your journal and complete activity 3A.	link=
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	ENGI405	?	tag=body	dir=ELEMENT	text=[body]	after=Test how well you can remember the parts of a paragraph by completing the activity in your journal.	link=
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	ENGI405	?	tag=body	dir=ELEMENT	text=[body]	after=Now see how much you have understood about essay structure. Go to your journal and complete the activity there.	link=
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	ENGI405	?	tag=activity	dir=CONTAINER_OPEN	text=[Activity 5B]	after=Journal activity	link=
+ITEM	ENGI405	?	tag=body	dir=ELEMENT	text=[Body]	after=Go to your journal and complete the author table there.	link=
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	ENGI405	?	tag=body	dir=ELEMENT	text=[body]	after=Skim to the first line in chapter one “Did you see her?” Answer the questions in your journal.	link=
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	ENGI405	?	tag=body	dir=ELEMENT	text=[body]	after=Use your journal to complete the rest of this activity.	link=
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	ENGI405	?	tag=body	dir=ELEMENT	text=[body]	after=Complete the context check table in your journal.	link=
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[insert go to journal button]	after=	link=
+ITEM	ENGI405	?	tag=body	dir=ELEMENT	text=[body]	after=This is a whole text, but often titles can tell us a lot about the story before you read it. Go to your journal and comp	link=
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	ENGI405	?	tag=body	dir=ELEMENT	text=[body]	after=What do you notice about the features of text in this story? Go to your journal and add quick notes and quotes from the 	link=
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[insert go to journal button]	after=	link=
+ITEM	ENGI405	?	tag=body	dir=ELEMENT	text=[body]	after=The following activities all help you to explore the ideas in the text in more depth. Look at the options and then choos	link=
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[Button] Go to journal	after=	link=
+ITEM	ENGI405	?	tag=body	dir=ELEMENT	text=[body]	after=Now you can write a paragraph for this text. Choose one of the questions below, then write your paragraph answer to that	link=
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	ENGI405	?	tag=body	dir=ELEMENT	text=[body]	after=Go to your journal and complete a PEER paragraph using one of the questions above.	link=
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[Button] Go to journal	after=	link=
+ITEM	ENGI405	?	tag=body	dir=ELEMENT	text=[body]	after=Go to your journal to see the personal response tasks for this text. You can choose:	link=
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	ENGI405	?	tag=body	dir=ELEMENT	text=[body]	after=Use your journal activities to help you identify context, features of text, and make personal interpretations and connec	link=
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ITEM	ENGI405	?	tag=body	dir=ELEMENT	text=[body]	after=Go to your journal to complete the final tasks for this module. Then submit your work to your kaiako.	link=
+ITEM	ENGI405	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal	link=
+ENGI405: identical 8 / changed 0
+ITEM	ENGR202	?	tag=body	dir=ELEMENT	text=[Body]	after=Take a photo of your illustrations and then go to your journal to paste your illustration in the space provided before a	link=
+ITEM	ENGR202	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal.	link=
+ITEM	ENGR202	?	tag=body	dir=ELEMENT	text=[body]	after=Take a photo of your advertisement and upload it into your journal.	link=
+ITEM	ENGR202	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal.	link=
+ITEM	ENGR202	?	tag=body	dir=ELEMENT	text=[Body]	after=Share your artwork with your supervisor and then complete these answers in your learning journal.	link=
+ITEM	ENGR202	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal.	link=
+ITEM	ENGR202	?	tag=button	dir=ELEMENT	text=[Button]	after=Add journal.	link=
+ENGR202: identical 8 / changed 0
+ITEM	HIS1005	?	tag=activity	dir=CONTAINER_OPEN	text=[Activity 1A]	after=Your journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[Add button] Go to journal	after=	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add Button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[Add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[Add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[Add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[Add Button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button] G	after=o to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[Add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+ITEM	HIS1005	?	tag=button	dir=ELEMENT	text=[add button]	after=Go to journal	link=
+HIS1005: identical 15 / changed 0
+ITEM	HIS1007	?	tag=button	dir=ELEMENT	text=[add button] Download journal.	after=	link=
+ITEM	HIS1007	?	tag=button	dir=ELEMENT	text=[add button] Go to journal.	after=	link=
+ITEM	HIS1007	?	tag=button	dir=ELEMENT	text=[add button] Go to journal.	after=	link=
+ITEM	HIS1007	?	tag=button	dir=ELEMENT	text=[add button] Go to journal	after=	link=
+ITEM	HIS1007	?	tag=button	dir=ELEMENT	text=[add button] Go to journal.	after=	link=
+ITEM	HIS1007	?	tag=button	dir=ELEMENT	text=[add button] Go to journal.	after=	link=
+ITEM	HIS1007	?	tag=button	dir=ELEMENT	text=[Add button] Go to journal.	after=	link=
+ITEM	HIS1007	?	tag=button	dir=ELEMENT	text=[Add Button] Go to journal.	after=	link=
+ITEM	HIS1007	?	tag=button	dir=ELEMENT	text=[add button] Go to journal.	after=	link=
+ITEM	HIS1007	?	tag=button	dir=ELEMENT	text=[add button] Go to journal.	after=	link=
+ITEM	HIS1007	?	tag=button	dir=ELEMENT	text=[add button] Go to journal.	after=	link=
+ITEM	HIS1007	?	tag=button	dir=ELEMENT	text=[add button] Go to journal.	after=	link=
+ITEM	HIS1007	?	tag=button	dir=ELEMENT	text=[add button] Go to journal.	after=	link=
+ITEM	HIS1007	?	tag=button	dir=ELEMENT	text=[Add button] Go to journal.	after=	link=
+ITEM	HIS1007	?	tag=button	dir=ELEMENT	text=[add button] Go to journal.	after=	link=
+ITEM	HIS1007	?	tag=button	dir=ELEMENT	text=[add button] Go to journal.	after=	link=
+HIS1007: identical 7 / changed 0
+ITEM	MXEO102	?	tag=button	dir=ELEMENT	text=[Button- Download journal]	after=	link=
+ITEM	MXEO102	?	tag=button	dir=ELEMENT	text=[Button- Go to journal ]	after=	link=
+ITEM	MXEO102	?	tag=button	dir=ELEMENT	text=[Button] Go to journal [Button]	after=Upload to Dropbox	link=
+MXEO102: identical 5 / changed 0
+ITEM	MXEX101	?	tag=button	dir=ELEMENT	text=[Button]	after=**Click the button below to go to the learning journal.**	link=
+MXEX101: identical 7 / changed 0
+ITEM	MXEX401	?	tag=button	dir=ELEMENT	text=[Button]	after=*Go to* learning journal	link=https://docs.google.com/document/d/1CelXKkIZOiLcuIqsq7hkAyV_
+ITEM	MXEX401	?	tag=important	dir=CONTAINER_OPEN	text=[Important note]	after=*Click on the button which will take you to a learning journal in google docs. You need to make a copy of it to save in 	link=
+ITEM	MXEX401	?	tag=button	dir=ELEMENT	text=[Button]	after=*Go to* learning journal	link=https://docs.google.com/document/d/1CelXKkIZOiLcuIqsq7hkAyV_
+ITEM	MXEX401	?	tag=important	dir=CONTAINER_OPEN	text=[Important note]	after=*Click on the link which will take you back to your learning journal in google docs. (You may also decide to go back to 	link=
+ITEM	MXEX401	?	tag=body	dir=ELEMENT	text=[Body]	after=Go back to your learning journal to complete the questions about area and perimeter of triangles.	link=
+ITEM	MXEX401	?	tag=button	dir=ELEMENT	text=[Button]	after=*Go to* learning journal	link=https://docs.google.com/document/d/1CelXKkIZOiLcuIqsq7hkAyV_
+ITEM	MXEX401	?	tag=important	dir=CONTAINER_OPEN	text=[Important note]	after=*Click on the link which will take you back to your learning journal in google docs. (You may also decide to go back to 	link=
+ITEM	MXEX401	?	tag=body	dir=ELEMENT	text=[Body]	after=*This is an area where you can choose what activity you do. It may depend on the equipment you have at home or your inte	link=
+ITEM	MXEX401	?	tag=button	dir=ELEMENT	text=[Button]	after=*Go to* learning journal to upload a picture to show your kaiako which optional activity you chose to do.	link=https://docs.google.com/document/d/1CelXKkIZOiLcuIqsq7hkAyV_
+ITEM	MXEX401	?	tag=button	dir=ELEMENT	text=[Button]	after=*Go to* learning journal	link=https://docs.google.com/document/d/1CelXKkIZOiLcuIqsq7hkAyV_
+ITEM	MXEX401	?	tag=important	dir=CONTAINER_OPEN	text=[Important note]	after=Click on the link which will take you back to your learning journal in google docs to fill this in. (You may also decide	link=
+ITEM	MXEX401	?	tag=button	dir=ELEMENT	text=[Button]	after=*Go to* learning journal	link=https://docs.google.com/document/d/1CelXKkIZOiLcuIqsq7hkAyV_
+ITEM	MXEX401	?	tag=button	dir=ELEMENT	text=[Button]	after=*Go to* learning journal	link=https://docs.google.com/document/d/1CelXKkIZOiLcuIqsq7hkAyV_
+ITEM	MXEX401	?	tag=important	dir=CONTAINER_OPEN	text=[Important note]	after=Click on the link which will take you back to your learning journal in google docs to fill this in. (You may also decide	link=
+ITEM	MXEX401	?	tag=button	dir=ELEMENT	text=[Button]	after=*Go to* learning journal	link=https://docs.google.com/document/d/1CelXKkIZOiLcuIqsq7hkAyV_
+ITEM	MXEX401	?	tag=important	dir=CONTAINER_OPEN	text=[Important note]	after=Click on the link which will take you back to your learning journal in google docs to fill this in. (You may also decide	link=
+ITEM	MXEX401	?	tag=button	dir=ELEMENT	text=[Button]	after=*Go to* learning journal	link=https://docs.google.com/document/d/1CelXKkIZOiLcuIqsq7hkAyV_
+ITEM	MXEX401	?	tag=button	dir=ELEMENT	text=[Button]	after=*Go to learning journal.*	link=
+MXEX401: identical 7 / changed 0
+ITEM	MXFL204	?	tag=body	dir=ELEMENT	text=[body text]	after=Match the following words to their definitions in your learning journal.	link=
+ITEM	MXFL204	?	tag=button	dir=ELEMENT	text=[button]	after=download learning journal	link=
+ITEM	MXFL204	?	tag=button	dir=ELEMENT	text=[button]	after=go to journal	link=
+ITEM	MXFL204	?	tag=button	dir=ELEMENT	text=[button] G	after=o to journal	link=
+ITEM	MXFL204	?	tag=body	dir=ELEMENT	text=[body text]	after=Archer wanted to display his results on a bar chart. Use the data from Archer’s tally chart to complete the bar chart in	link=
+ITEM	MXFL204	?	tag=button	dir=ELEMENT	text=[button]	after=go to journal	link=
+ITEM	MXFL204	?	tag=body	dir=ELEMENT	text=[body text]	after=At the zoo Olive saw a total of 200 people stop and look at the different animals. She displayed her data on a pie chart	link=
+ITEM	MXFL204	?	tag=button	dir=ELEMENT	text=[button]	after=go to journal	link=
+ITEM	MXFL204	?	tag=button	dir=ELEMENT	text=[button]	after=go to journal	link=
+ITEM	MXFL204	?	tag=button	dir=ELEMENT	text=[button]	after=go to journal	link=
+ITEM	MXFL204	?	tag=button	dir=ELEMENT	text=[button]	after=go to journal	link=
+ITEM	MXFL204	?	tag=body	dir=ELEMENT	text=[body text]	after=Paige created a graph to show the data she discovered about wild cat sleep times. She made some mistakes on the graph. I	link=
+ITEM	MXFL204	?	tag=button	dir=ELEMENT	text=[button]	after=go to journal	link=
+ITEM	MXFL204	?	tag=body	dir=ELEMENT	text=[body text]	after=Use the wild cat sleep time data to complete the graph correctly. Use the grid provided in your learning journal or crea	link=
+ITEM	MXFL204	?	tag=button	dir=ELEMENT	text=[button]	after=go to journal	link=
+ITEM	MXFL204	?	tag=body	dir=ELEMENT	text=[body text]	after=You now need to complete your own statistical investigation about something that interests you. Complete each stage in y	link=
+ITEM	MXFL204	?	tag=button	dir=ELEMENT	text=[button]	after=go to journal	link=
+ITEM	MXFL204	?	tag=body	dir=ELEMENT	text=[body text]	after=What types of animals interest you? What questions do you have about animals? Thorough this module there have been sever	link=
+ITEM	MXFL204	?	tag=body	dir=ELEMENT	text=[body text]	after=Have you created survey or interview questions? If you have upload them into your learning journal.	link=
+MXFL204: identical 12 / changed 0
+ITEM	MXFL302	?	tag=button	dir=ELEMENT	text=[button]	after=Download journal.	link=
+ITEM	MXFL302	?	tag=external link	dir=INLINE	text=[link for learning journal]	after=https://docs.google.com/document/d/1zWIna6EsVocqAz-AQJET6xY4Hv8fnrSQtyqO27Br-F0/edit?usp=sharing	link=https://docs.google.com/document/d/1zWIna6EsVocqAz-AQJET6xY4
+ITEM	MXFL302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXFL302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXFL302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to learning journal.	link=
+ITEM	MXFL302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXFL302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXFL302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXFL302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXFL302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXFL302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXFL302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXFL302	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+MXFL302: identical 10 / changed 0
+ITEM	MXFU301	?	tag=button	dir=ELEMENT	text=[button]	after=Download journal.	link=
+ITEM	MXFU301	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXFU301	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal,	link=
+ITEM	MXFU301	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXFU301	?	tag=body	dir=ELEMENT	text=[body]	after=Download your learning journal as a .doc file and upload it to the dropbox so your kaiako can check your progress so far	link=
+ITEM	MXFU301	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXFU301	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXFU301	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXFU301	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXFU301	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXFU301	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXFU301	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXFU301	?	tag=body	dir=ELEMENT	text=[body]	after=Download your learning journal as a .doc file and upload it to the dropbox so your kaiako can check your progress so far	link=
+ITEM	MXFU301	?	tag=body	dir=ELEMENT	text=[body]	after=Click on each of the buttons below to select a probability investigation. When you have decided on your option, go to yo	link=
+ITEM	MXFU301	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+MXFU301: identical 12 / changed 0
+ITEM	MXS1004	?	tag=button	dir=ELEMENT	text=[button]	after=Go to journal.	link=
+ITEM	MXS1004	?	tag=h5	dir=ELEMENT	text=[H5]	after=Complete your Learning journal and submit it to the dropbox below.	link=
+MXS1004: identical 9 / changed 0
+ITEM	PES1002	?	tag=body	dir=ELEMENT	text=[Body text]	after=*You must complete the journal activities and submit your journal when prompted, to get feedback from your kaiako (teach	link=
+ITEM	PES1002	?	tag=activity	dir=CONTAINER_OPEN	text=[activity] 6B	after=New Zealand’s forests: Go to your journal to complete this activity.	link=
+ITEM	PES1002	?	tag=activity	dir=CONTAINER_OPEN	text=[activity] 7B	after=Local effects of deforestation in Aotearoa. Go to your journal to complete this activity.	link=
+ITEM	PES1002	?	tag=activity	dir=CONTAINER_OPEN	text=[Activity] Identify the mined resources in your life. Go to your Learning Journal to complete this activity. Use this we	after=https://notyourgrandfathersmining.ca/minerals-in-your-life	link=https://notyourgrandfathersmining.ca/minerals-in-your-life
+ITEM	PES1002	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to your journal to complete this activity	link=
+PES1002: identical 11 / changed 0
+ITEM	PES1005	?	tag=body	dir=ELEMENT	text=[Body text]	after=*You must complete the journal activities and submit your journal when prompted, to get feedback from your teacher. You 	link=
+ITEM	PES1005	?	tag=activity	dir=CONTAINER_OPEN	text=[activity] 1A	after=Go to your journal to complete this activity.	link=
+ITEM	PES1005	?	tag=activity	dir=CONTAINER_OPEN	text=[activity] 2A	after=Go to your journal to complete this activity.	link=
+ITEM	PES1005	?	tag=activity	dir=CONTAINER_OPEN	text=[activity]	after=Go to your journal to complete this activity	link=
+ITEM	PES1005	?	tag=activity	dir=CONTAINER_OPEN	text=[activity] 6B	after=Go to your journal to complete this activity	link=
+ITEM	PES1005	?	tag=activity	dir=CONTAINER_OPEN	text=[activity 9A]	after=Go to your journal to complete this activity	link=
+ITEM	PES1005	?	tag=activity	dir=CONTAINER_OPEN	text=[Activity 10B]	after=Got to your journal to complete this activity.	link=
+ITEM	PES1005	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to your journal to complete this activity	link=
+PES1005: identical 12 / changed 0
+ITEM	PWY1001	?	tag=alert	dir=CONTAINER_OPEN	text=[Alert]	after=**Note:** For this task you are not expected to purchase formal clothes. This activity is about planning, budgeting, and	link=https://www.istockphoto.com/photo/woman-promoting-sustainabl
+ITEM	PWY1001	?	tag=button	dir=ELEMENT	text=[Button]	after=Go to journal	link=https://www.istockphoto.com/photo/woman-promoting-sustainabl
+PWY1001: identical 10 / changed 0
+PWY1009: identical 9 / changed 0
+
+TOTAL: identical 465 / changed 0 / missing 0 over 60 modules
