@@ -197,6 +197,46 @@
 				"heading_section": "<h4><span>{text}</span></h4>",
 				"heading_lead": "<h5>{text}</h5>",
 				"checkbox_bullet": true
+			},
+			"overview_table_tabs": {
+				"enabled": true,
+				"env": "REOOVTABS_OFF",
+				"_doc": "ROUND 453 (the autonomous loop's session 41 Round 1 — the TRR family; KB 07A §4 'Module Menu Tabs' + the 07D §19.1 / §19.2 skeletons). Once Input_Doc_Rules.content_start.table_title_bar_opener keeps the table-cell [TITLE BAR], an MTK overview page holds the writer's overview TABLES: the title-bar table ([H2] Overview), then one table per menu role ([H1] Strand / Dispositions / Key objectives / Critical Point / Learning Intentions — or the [H2] Key objectives / Information dialect of TRR109–113), then the [H1] TRR900 / Module Introduction table, which is BODY (KB: 'Body content of overview page'). ContentConverter.#partitionItems captures the title-bar table and every following table whose first heading row matches a role (untagged black lines between them stay body; a tag item or a non-role table ends the run); MenuBuilder.#reoOverviewTabs composes one tab per role on the round-212 reo_tabs shell: the role heading is the nav label (the KB label below when given, else the writer's heading) and is not repeated in the pane (render_heading: the Learning Intentions <h4><span>); the KB 5-TAB DEFAULT merges a Critical Point table into the Key objectives pane before it ('When in doubt: default to 5 tabs'; the WT offers no discriminator — TRR107 / TRR304's six-tab golds are named overrides); heading rows → reo/eng pairs (section_heading_match → <h4><span>, else <h5>; the Overview pane keeps the writer's bold, KB 'h5 with b'); body rows → BilingualBuilder.bilingualSplit pairs; a pane with a two_column_match heading is the KB's two-column Learning Intentions layout, split at the first column_split_match heading once the left column has content (KB: right column = Planning / What do I need / Connections). Env REOOVTABS_OFF reverts to the body rendering.",
+				"roles": [
+					{ "role": "overview", "match": "^(overview|tirohanga whanui)\\b", "label": { "eng": "Overview", "reo": "Tirohanga whānui" } },
+					{ "role": "strand", "match": "^(nga )?(strands?|whenu)\\b", "label": { "eng": "Strand", "reo": "Whenu" } },
+					{ "role": "dispositions", "match": "^(dispositions|toi mokopuna)\\b", "label": { "eng": "Dispositions", "reo": "Toi mokopuna" } },
+					{ "role": "key_objectives", "match": "^(key objectives|nga whainga matua)\\b", "label": { "eng": "Key objectives", "reo": "Ngā whāinga matua" } },
+					{ "role": "critical", "match": "^(critical point|kia mataara)\\b", "label": { "eng": "Critical Point of Learning", "reo": "Kia Mataara" } },
+					{ "role": "learning_intentions", "match": "^(learning intentions|nga whainga ako)\\b", "label": { "eng": "Information", "reo": "Kia mataara" }, "render_heading": true },
+					{ "role": "information", "match": "^(information|mohiohio)\\b" }
+				],
+				"untagged_roles": [
+					"strand",
+					"dispositions",
+					"key_objectives"
+				],
+				"_doc_untagged_roles": "A table whose first content row carries NO [H] tag may still open a role pane when its text names one of these roles (TRR304: 'Ngā Whenu Ngā Toi Mokopuna Ngā Whāinga Matua / Strands Dispositions', typed untagged); the row is the label only. Overview / Information / Learning Intentions are never matched untagged — those words open ordinary prose too.",
+				"merge_critical_into_previous": true,
+				"intro_match": "^[a-z]{2,5}\\d{3}$",
+				"_doc_intro_match": "The table that ends the menu run is the overview's BODY introduction (KB 07A §2 'Module Introduction … Body content of overview page'); when its first heading row is the course code alone ([H1] TRR900 in all 13 modules) it has no English|Māori header row, so it is flagged _reoModuleContent and takes the round-212 header-less bilingual unfold (BilingualBuilder.bilingualTable forceNoHeader) instead of the raw bilingual-unbuilt table dump with its literal [H1] / [Body] tags.",
+				"overview_label": { "eng": "Overview", "reo": "Tirohanga whānui" },
+				"overview_heading_inline": true,
+				"section_heading_match": "^(learning intentions|success criteria|nga whainga ako|paeru angitu)\\b",
+				"two_column_match": "^(learning intentions|success criteria|planning your time|what do i need|nga whainga ako|paeru angitu|whakamaheretia|he aha taku)",
+				"column_split_match": "^(planning your time|what do i need to get started|whakamaheretia|he aha taku hei timata)",
+				"drop_tokens": [
+					"[Checklist]",
+					"[Rārangi Tirotiro]"
+				],
+				"nav_item": "\n<li><a><span reo>{reo}</span><span eng>{eng}</span></a></li>",
+				"pane_template": "\n<div class=\"tab-pane\">\n<div class=\"row\">\n{cols}\n</div>\n</div>",
+				"col_template": "<div class=\"{cls}\">\n{content}\n</div>",
+				"col_single": "col-md-8 col-12",
+				"col_pane": "col-md-6 offset-md-0 col-12 paddingR",
+				"col_split": "col-md-6 offset-md-0 col-12 paddingL",
+				"heading_section": "<h4><span>{text}</span></h4>",
+				"heading_lead": "<h5>{text}</h5>"
 			}
 		},
 		"heading": {

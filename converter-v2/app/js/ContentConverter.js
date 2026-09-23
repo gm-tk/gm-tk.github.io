@@ -6056,12 +6056,70 @@ class ContentConverter {
 			}
 		}
 
+		// MTK OVERVIEW-TABLE TABS (ROUND 453 — the TRR family; KB 07A §4 + 07D §19.1).
+		// Once round 453 keeps the table-cell [TITLE BAR] (DocxExtractor.TrimFrontMatter),
+		// the MTK overview page holds the writer's overview TABLES: the title-bar table
+		// ([H2] Overview), then one table per menu section ([H1] Strand / Dispositions /
+		// Key objectives / Critical Point / Learning Intentions — or the [H2] Key
+		// objectives / Information dialect of TRR109–113). The KB makes them the module
+		// menu's tabs; the [H1] TRR900 / Module Introduction table after them is BODY.
+		// Captured here: the title-bar table and every following table whose first
+		// heading row is a recognised menu ROLE (overview_table_tabs.roles), skipping
+		// untagged black lines between them (they stay body); the first tag item or a
+		// non-role table ends the run. MenuBuilder.#reoOverviewTabs composes them.
+		// Data: elements.dual_language.overview_table_tabs. Env toggle: REOOVTABS_OFF.
+		let otIdxSet = null;
+		{
+			const otCfg = DataService.Data.EmitTemplates.elements?.dual_language?.overview_table_tabs;
+			const otOn = otCfg && otCfg.enabled !== false && !ddIdxSet
+				&& !(typeof process !== "undefined" && process.env && process.env[otCfg.env ?? "REOOVTABS_OFF"])
+				&& page.isOverview && menuType !== "none" && MenuBuilder.isReoModule(run);
+			if (otOn) {
+				const role = (tbl) => MenuBuilder.reoOverviewTableRole(tbl, this.#norm, otCfg);
+				const si = items.findIndex((x) => x.type === "table" && role(x)?.titleBar);
+				if (si >= 0) {
+					otIdxSet = new Set();
+					for (let j = si; j < items.length; j++) {
+						const x = items[j];
+						if (x.type === "table") {
+							const r = role(x);
+							if (!r || (j > si && !r.role)) break;   // a non-role table (the [H1] TRR900 introduction) ends the menu
+							x._reoOverviewTab = true;
+							menuItems.push(x);
+							otIdxSet.add(j);
+							continue;
+						}
+						if (x.type === "tag") break;             // [End Page] / a paragraph [H1] / a lesson marker
+						// an untagged black line between the tables stays body content
+					}
+					if (!otIdxSet.size) otIdxSet = null;
+					// The [H1] TRR900 (course-code) introduction table after the menu is BODY (KB 07A §2):
+					// it carries no English|Māori header row, so it takes the round-212 header-less
+					// bilingual unfold (_reoModuleContent → BilingualBuilder.bilingualTable forceNoHeader)
+					// instead of the raw bilingual-unbuilt dump. It may follow a paragraph heading
+					// (TRR103 / 106: "[H1] TRR103 The vowels: Ee | …"), so scan on to the page boundary.
+					if (otIdxSet && otCfg.intro_match) {
+						const introRe = new RegExp(otCfg.intro_match, "i");
+						for (let j = Math.max(...otIdxSet) + 1; j < items.length; j++) {
+							const x = items[j];
+							if (x.type === "tag" && x.parse?.primary?.directive === "PAGE_BOUNDARY") break;
+							if (x.type !== "table") continue;
+							const r = role(x);
+							if (r?.first && introRe.test(r.first)) { x._reoModuleContent = true; break; }
+						}
+					}
+				}
+			}
+		}
+
 		for (let i = 0; i < items.length; i++) {
 			const it = items[i];
 
 			// items captured by the MTK drop-down-menu section above (ROUND 212):
 			// the table is already on the menu side; the markers render nothing
 			if (ddIdxSet && ddIdxSet.has(i)) continue;
+			// ROUND 453 — an MTK overview table captured for the menu tabs above
+			if (otIdxSet && otIdxSet.has(i)) continue;
 
 			// The fundamentals "[Overview]" alias tag is CONSUMED (skipped entirely) once its
 			// WALT/I-can region has already been captured for the menu above — the human

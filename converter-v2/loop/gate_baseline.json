@@ -1,8 +1,8 @@
 {
   "_meta": {
     "purpose": "Committed PROTECTED-gate baseline (efficiency lever 2). The shared corpus DRIFTS between sessions so the BUILD_CHANGELOG absolutes never line up exactly — without a committed baseline the only rigorous proof of hold-or-improve is a second full A/B regen pass (~8m/round). Diff THIS after a regen instead. Refresh it (and the build/round) every shipped round, AFTER the gates pass.",
-    "build": "260620.23",
-    "round": 452,
+    "build": "260620.24",
+    "round": 453,
     "date": "2026-09-24",
     "_round92_note": "Round 92 (ENGS302-01: side-alert-box-in-table + dragAndDrop activity wrapper / data-table capture / phantom-journal-button fix). Verified on a FULL 0-stale tightened regen vs the round-91 committed baseline (which matched the fast-loop baseline exactly: over 42 / any 181). PRIMARY skeleton IMPROVED (pages>=50% 524->539 +15, >=75% 65->70 +5, mean 47.8->48.2, median 49.3->49.8); compare_structure exact 5893->5902 (+9) / missing 261->252 (-9) / EXTRA 142 HELD; structural-clean 1290->1291 (95.0->95.1%) / leak 254->253 (-1) / leak pages 68->67 (-1); tags 9557/9557; flipCard divergence 0 (37/13/10/14); speechBubble defect 0. body_compare any 181->184 (+3) — the +3 over-capture (ENGC201-06, ENGR101-05, MXDB301-03) is the UNAVOIDABLE cost of capturing the dragAndDrop/activity DATA TABLE into the widget (the user's explicit fix): those tables ARE the widget's data the human BUILDS, but body_compare cannot credit Claude's un-built placeholder, and for these 3 the human keeps the table free. Net-positive per the MEASUREMENT MANDATE (judge a structural change FIRST on the skeleton, which improved +15) + the NET-POSITIVE convention. _round91_note: round 91 (ENGS302 emphasis-bullets/caption/media-url/lesson-name) shipped +1 skeleton / +1 compare exact / +2 missing.",
     "corpus": {
@@ -106,6 +106,7 @@
     "_note_r407": "Round 407: the heading-led numbered opener takes the owner form too (56 pages / 24 modules; SCOPED regeneration of the 24, scoped ship #2 since the r405 full). Skeleton 54.025 -> 54.084 (+0.0583pp; 38 movers 32 up / 6 down, named), >=50 1176 -> 1181, >=75 200 -> 202, >=90 18, RAW 38.012 -> 38.022; compare_structure exact 11779 (the text-matched pool 13813 -> 13794) / 172 / 626; body_compare over-capture 42, runaway 4 -> 5 (ENGI202_2_0, named), EMPTY 173 -> 170, ANY 218 -> 216; every other gate EXACT; every verifier RESULT identical to r406.",
     "_note_intake_2026_09_19": "INTAKE RE-BASELINE 2026-09-19 (the 98-module September intake + a FULL corpus regeneration, no engine change). The POPULATION GREW: skeleton pairs 1956 -> 2349, cs matched 13794 -> 15668, body/defect pages 2102 -> 2606, gated dirs 484. Every absolute below therefore moves, and the rate metrics fall, WITHOUT any regression. PROOF, measured by splitting each gate by population: the PRE-EXISTING modules reproduce the round-407 baseline EXACTLY -- skeleton 54.084% / >=50 1181 / >=75 202 / >=90 18; compare_structure exact 11779 / EXTRA 172 / missing 626 / row-wrap 23; body_compare runaway 5 / empty_container 170; leak 26 occ / 23 pages; clean 2079/2102 = 98.91%. _content_manifest.py fresh confirmed all 413 pre-existing modules BYTE-IDENTICAL to the manifest, so identical bytes cannot yield different metrics. All verifier gates matched baseline exactly: tags 9557/9557 0 failures, flipCard 61 (32/11/18) divergence 0, speechBubble defect 4, math 323/323 defect 0, menulabels 91 defect 0, dragAndDrop 21 defect 0, modal defect 0, mtkQuiz defect 0, entry parity PASS. The 98 new modules contribute the whole delta; 78 of them converted, 20 cannot yet (12 XOTP dialect, 7 with no Writers Template, PMT101's table-only opener).",
     "_note_s40_r12_full": "Session 40 Round 12 (2026-09-24; no engine change — the ship ledger's FULL backstop): all 545 regenerated with the r452 engine, 542 / 542 modules byte-identical to the scoped-shipped manifest, every number in this file re-proved EXACT on the full corpus (skeleton 54.7484 @ 2477, 0 movers). Ledger record-full --round 452 -> scoped #0.",
+    "_note_r453": "Round 453 (session 41 Round 1, 2026-09-24; the loss ledger's lowest large family + the recognition lane) — THE TABLE-CELL TITLE BAR OPENS THE DOCUMENT + THE MTK OVERVIEW-TABLE TABS (KB 07A §4 / 07D §19.1): the TRR family types its [TITLE BAR] inside a bilingual table cell the content-start chain never read, so the overview tables (and TRR116 lessons 1–4, TRR107 lesson 1, TRR304 lesson 1) were trimmed as front matter; now kept and composed into the KB 5-tab bilingual menu, the [H1] TRR900 introduction unfolded as body. TABLETB_OFF / REOOVTABS_OFF. SCOPED ship #1 since the r452 FULL (the 20 Bilingual modules + 12 spot-check): 13 modules / 59 files changed, 10 pages NEW. POPULATION 2477 -> 2487 pairs (§1e): the PRE-EXISTING 2477 pairs 54.7484 -> 54.7695 (+0.0211pp; 12 up / 2 down — TRR107_1.0 / 2.0 NAMED, the gold lesson pages are EMPTY shells); the whole population 54.7079 (-0.0405pp = the 10 restored pages entering at a 39.4 % mean); >=50 1544 -> 1549, >=75 260 -> 265. cs matched 18178 -> 18463: exact 15657 -> 15855, missing 796 -> 840 (+44, every one on the +285 newly compared restored elements; no pre-existing element lost its container); body ANY 237 -> 238 (+1 TRR108_0_0 — its introduction holds the writer's own [Tabs: …] widget request, a hand-off box, A1); clean 2613/2658 -> 2623/2668; leak 75/45 HELD. Accepted as NAMED (_fastloop_diff --accept-named, outputs/_r453_fastloop_named.log; the split outputs/_r453_popsplit.log / _r453_split3.log).",
     "_note_r452": "Round 452 (session 40 Round 9, 2026-09-24; Chris's D13-5 — never add a journal button the writer did not ask for): a label-less bracket keyed `button` whose words are a writer instruction ships its words as a Writers Note instead of an invented blank-href \"Go to your journal\" + To Do (buttons.journal_default_guard, JDEFGUARD_OFF; 3208 / 3208 OFF; ON 43 files / 29 modules). SCOPED regeneration of the 29, scoped ship #7 since the r444 FULL. SCAFFOLD +0.0077pp, >=50 +2; cs / body / clean / leak EXACT; every verifier green.",
     "_note_r451": "Round 451 (session 40 Round 8, 2026-09-24; the dashboard lane — the body gate's empty-widget row): a widget bundle a Te Reo keystone section consumes takes the converter's standard hand-off box (#interactivePlaceholder, hand-off only) instead of contentTable(<its first member>) — 61 empty <table> boxes -> 0. BILHANDOFF_OFF byte-identical (3208 / 3208); ON 50 files / 15 Bilingual modules; SCOPED regeneration of the 23 Bilingual modules, scoped ship #6 since the r444 FULL. SCAFFOLD 54.7407 +0.0000pp, cs EXACT, body 260 -> 237 (over-capture +1 NAMED TRR301_3_0), clean / leak EXACT, every verifier green. (_meta build / round had stood at r446 through r447–r450; refreshed here.)",
     "_note_r449": "Round 449 (session 40 Round 4, 2026-09-24; Chris decision D13-4 — the typing quiz, shape 1): an un-built typing bundle whose question lines carry the writer's RED answer (inline, at the line's end, or on the next paragraph) builds the KB 03D text-only typing quiz (Emit_Templates interactive_builders.typing NEW, env TYPING_OFF; InteractiveBuilder case typing + #typing); never half-builds (a table, a merged bundle, a foreign tag, a red instruction inside a line, an answer-less line after the questions, a key-label / question answer, < 2 answers -> the hand-off box stays). 8 quizzes / 57 inputs on 8 pages / 7 modules (55 answers = a gold answer=); SCOPED regeneration of the 7 (scoped #5 since the r444 FULL). Skeleton -0.0002pp NAMED (FRFUN08_3_0); cs 15657 / 199 / 796 / 24, body 57 / 5 / 200 / 260, clean 2613 / 2658, leak 75 / 45 — EXACT; the new typing verifier defect 0 (run_all_gates.sh); every verifier RESULT ok; 50 selftests GREEN.",
@@ -151,13 +152,14 @@
     "_note_r408": "Round 408 (session 28 Task 1): the mined registries rebuilt over the 552-module gold corpus (Module_Structure_Index / Granular / 24 new Style-Anchor bases + floor-flip corrections / Menu / Convention / lexicon / feature index / legacy consensus; data/Subject_Prefix_Map.json PROPOSED). SCOPED regeneration of the 103 modules the probe named (OFF = pre snapshot 2613/2613; scoped ship #1 since the 19 Sept full). Skeleton 53.134 -> 53.680 (+0.5455pp; 275 movers 197 up / 76 down, 0 outside the set, the 1813 unaffected pairs EXACT), >=50 1378 -> 1398, >=75 228 -> 236, >=90 19 -> 20, RAW 37.487 -> 37.884; compare_structure exact 13410 -> 14091 (the text-matched pool 15668 -> 16414) / EXTRA 184 -> 186 / MISSING 685 -> 690 (inside five newly single-file WJFUN / JPFUN modules) / row-wrap 23; body_compare over-capture 54 (the 19 Sept fast-loop snapshot's own value — the re-base had carried r407's 42; corrected here), runaway 6, EMPTY 192 -> 190, ANY 250 -> 248; defect clean 2504/2548 = 98.27 (58 clean WJFUN / JPFUN extra pages left the population; defect pages 44 / leak 73 EXACT); every verifier EXACT."
   },
   "skeleton": {
-    "mean_scaffold_pct": 54.75,
-    "median_scaffold_pct": 55.7,
-    "pages_ge_50": 1544,
-    "pages_ge_75": 260,
+    "mean_scaffold_pct": 54.71,
+    "median_scaffold_pct": 55.8,
+    "pages_ge_50": 1549,
+    "pages_ge_75": 265,
     "pages_ge_90": 23,
-    "raw_mean_pct": 38.6,
-    "pairs": 2477,
+    "raw_mean_pct": 38.7,
+    "pairs": 2487,
+    "_note_r453_state": "r453 (the table-cell title bar + the MTK overview-table tabs): pairs 2477 -> 2487 (+10 restored TRR pages). PRE-EXISTING population 54.7484 -> 54.7695 (+0.0211pp); whole 54.7079. Movers 14 (12 up / 2 down, pp-sum +217.3 incl. the re-paired overviews); 0 outside the affected set. outputs/_r453_sk_final.json, _r453_skdelta.log, _r453_popsplit.log.",
     "_note_r452_state": "r452 (the invented journal button, D13-5): SCAFFOLD 54.7407 -> 54.7484 (+0.0077pp; 40 movers, 35 up / 5 down — HIS1006_11_0 -0.5, HIS1007_4_1 -0.4, HIS1005_10_1 -0.3, HIS1008_1_0 -0.2, HIS1008_2_0 -0.2 NAMED: the invented button had paired with the HIS golds' own green journal button); >=50 1542 -> 1544; >=75 / >=90 unchanged; RAW 38.644 -> 38.649. State outputs/_r452_sk_final.json.",
     "_note_r451_state": "r451 (the bilingual section bundle hand-off box): SCAFFOLD 54.7407 page-for-page = r449 / r450 (0 movers — a cv2 subtree is one WIDGET line); >=50 / >=75 / >=90 unchanged; RAW 38.695 -> 38.644 (-0.051pp, the hand-off internals RAW reads, NAMED). State outputs/_r451_sk_final.json.",
     "_note_r449_state":"r449 (the typing quiz shape 1): SCAFFOLD 54.7409 -> 54.7407 (-0.0002pp, ONE page NAMED — FRFUN08_3_0 59.5 -> 59.1: its two lead paragraphs, inside the collapsed hand-off box until now, render just before the built widget); >=50 / >=75 / >=90 unchanged; RAW 38.690 -> 38.695. State outputs/_r449_sk_final.json.",
@@ -247,10 +249,11 @@
     "_note_r408": "Round 408: SCAFFOLD 53.1341 -> 53.6797 (+0.5455pp; 275 movers, 197 up / 76 down, pp-sum +725.6 — GEO1006_3_0 -11.3, GEO1004_1_0 -9.4, ENGS404_6_1 -8.2, PWY1001_2_3_0 -7.0, CHI1003_8_0 -5.0), >=50 1398, >=75 236, >=90 20; RAW 37.487 -> 37.884; 2349 pairs / 0 skipped. State outputs/_s28_t1_sk_final.json."
   },
   "compare_structure": {
-    "exact_chain": 15657,
+    "exact_chain": 15855,
     "claude_extra_container": 199,
-    "claude_missing_container": 796,
+    "claude_missing_container": 840,
     "row_wrap_missing": 24,
+    "_note_r453": "r453: matched 18178 -> 18463 (+285 restored TRR overview / lesson elements); exact 15657 -> 15855; EXTRA 199 held; missing 796 -> 840 (+44 — all on the newly compared restored content: TRR304 lesson 1 +28 on +148 matched, the six overview introductions +2 each; the modules whose page set did not change moved +0); row-wrap 24 held. NAMED.",
     "_note_r352": "Round 352: exact 11464 → 11607 (+143, the restored sections); missing 607 → 617 NAMED — the 44 pages whose carousel reverts to the honest hand-off box (a trailing [video]/[image], words between slide tables, a leading heading) no longer show the gold's row.carousel container. Hold-or-improve from here.",
     "_note_r356": "Round 356: exact 11607 → 11617 (+10, the restored paragraphs the gold has); EXTRA 175 / missing 617 EXACT.",
     "_note_r361": "Round 361: exact wrapper chain 11617 → 11645 (the EXPFUN02–05 crumbs / panel wrappers now match).",
@@ -291,10 +294,11 @@
     "_note_r408": "Round 408: exact 13410 -> 14091 (pool 15668 -> 16414), EXTRA 184 -> 186 (WJFUN206), MISSING 685 -> 690 (JPFUN01 / WJFUN108 / WJFUN109 +1, WJFUN304 +2), row-wrap 23; every unaffected module EXACT."
   },
   "body_compare": {
-    "any_breakdown": 237,
-    "over_capture": 58,
+    "any_breakdown": 238,
+    "over_capture": 59,
     "runaway": 5,
     "empty_container": 176,
+    "_note_r453": "r453: pages 2658 -> 2668; ANY 237 -> 238 (+1 TRR108_0_0 over-capture 0.88 — the restored introduction table carries the writer's [Tabs: Can these tabs please be an option at the top of the page …] request, so the scanner hands it off as a tabs widget (A1, the r235 hand-off box); before r453 the whole introduction was trimmed). over 58 -> 59, runaway 5, empty 176. NAMED.",
     "_note_r451": "Round 451 (session 40 Round 8, 2026-09-24; the bilingual section bundle takes the standard hand-off box, BILHANDOFF_OFF): any_breakdown 260 -> 237 and empty_container 200 -> 176 (IMPROVED — the 61 empty <table> boxes on 23 TRR pages now carry their bundle's members); over_capture 57 -> 58 NAMED — TRR301_3_0, whose box was EMPTY (0 member characters) and now shows the unclassified bundle's 4,327 characters (62 % of the page; lost blocks 30 before and after): the page moved from the EMPTY flag to the OVER-CAPTURE flag, counted once in any_breakdown either way. outputs/_r451_scoped_ship.log, outputs/_r451_gates.log.",
     "_note_r448":"Round 448 (the D13-4 answer-key carry-through): over_capture 56 -> 57 NAMED — PHE1007_9_0, whose un-built typing box now shows the writer's red answers (its text 1,958 -> 2,070 chars), so the box / page ratio crossed the 0.40 line (0.39 -> 0.40, lost blocks 3 unchanged); EMPTY 201 -> 200 (better) — MXEO301_5_0's box was under 40 chars until its red answers were restored. any_breakdown 260 HELD. Every change is inside a hand-off box (outputs/_r448_outsidebox.py: 0 pages differ outside one); outputs/_r448_bodyflags.log.",
     "_note_r352": "Round 352: 180 → 182 NAMED — OVER-CAPTURE 42 → 43 (ENGI301 2.0) and EMPTY container +1 (ENGJ201 5.0): two reverted carousels whose eaten content now sits in an honest box the gate reads as over-capture; the silent deletion it replaces was invisible to the gate. Hold-or-improve from here.",
@@ -334,11 +338,12 @@
     "_note_r408": "Round 408: over-capture 54 (the 19 Sept fast-loop snapshot value; gate_baseline had carried r407's 42), runaway 6, EMPTY 192 -> 190, ANY 250 -> 248 (WJFUN304); every unaffected module EXACT."
   },
   "structural_defect": {
-    "clean_pages": 2613,
-    "total_pages": 2658,
+    "clean_pages": 2623,
+    "total_pages": 2668,
     "clean_pct": 98.31,
     "literal_tag_leak_occ": 75,
     "leak_pages": 45,
+    "_note_r453": "r453: 2613/2658 -> 2623/2668 clean (the 10 restored pages are clean); leak 75 occ / 45 pages HELD.",
     "_note_r370": "Round 370: 2080/2103 -> 2079/2102 — the corpus is one page shorter (MXEX101's phantom page); leak 26 / 23 EXACT.",
     "_note_intake": "pre-existing subset EXACT: clean 2079/2102 = 98.91%, leak 26 occ / 23 pages. New batch adds 47 occ / 21 pages (GENO901 16, DTC1005 14 the largest).",
     "_note_r440": "Round 440: clean 2613 / 2658 = 98.31 (-0.02, arithmetic: 36 clean split pages of MXFUN01 / BLL240 / CEDT207 replaced by 3 single pages, MXFUN01 carrying its one pre-existing literal-tag leak), leak 75 occ / 45 pages EXACT.",

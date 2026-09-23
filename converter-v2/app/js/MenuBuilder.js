@@ -328,6 +328,22 @@ class MenuBuilder {
 			}
 		}
 
+		// MTK OVERVIEW-TABLE TABS (ROUND 453 — the TRR family; KB 07A §4 + 07D §19.1).
+		// ContentConverter's #partitionItems captured the writer's overview tables
+		// (the table-cell [TITLE BAR] table + one table per menu role) as
+		// "_reoOverviewTab"; compose them into the KB's bilingual tabs menu on the
+		// same reo_tabs shell round 212 uses. Never declines once tables were captured.
+		// Data: elements.dual_language.overview_table_tabs. Env toggle: REOOVTABS_OFF
+		// (disables the upstream capture, so this branch is never reached when set).
+		if (menuItems.some((it) => it._reoOverviewTab)) {
+			const otCfg = DataService.Data.EmitTemplates.elements?.dual_language?.overview_table_tabs ?? {};
+			const ot = this.#reoOverviewTabs(menuItems, run, norm, otCfg);
+			run.AddNote("info", "MenuBuilder",
+				`MTK overview menu composed from the writer's overview tables (${ot.count} tabs: ${ot.labels.join(" | ")}; KB 07A §4; round 453).`);
+			return { kind: menuType, archetype: "reo_tabs", reoNav: ot.nav, reoPanes: ot.panes,
+				tab1: "", tab2: "", content: "", left: "", right: "" };
+		}
+
 		// WRITER-AUTHORED MENU TAB PARTITION (ROUND 221 — module ENGJ403, Chris).
 		// The NEWEST Writers-Template era authors the overview menu's tab layout
 		// EXPLICITLY: a "[please set up as two tabs …][tab 1 – please title as
@@ -1881,6 +1897,228 @@ class MenuBuilder {
 				{ cols: colsHtml });
 		}).join("");
 		return { nav, panes: panesHtml };
+	};
+
+	/**
+	 * Reads one MTK overview table's ROLE (ROUND 453 — the TRR family). Walks the
+	 * rows (English = column 1, Māori = column 2; the PR1 / PR2 review columns are
+	 * ignored, KB 07A §2), skipping the "English | Māori" divider row, notes a
+	 * [TITLE BAR] row, and matches the FIRST heading row's text (English, then
+	 * Māori) against overview_table_tabs.roles (Overview / Strand / Dispositions /
+	 * Key objectives / Critical Point / Learning Intentions / Information).
+	 *
+	 * @param {Object} tbl - a table item (tbl.block.rows)
+	 * @param {TagNormaliser} norm - unused today (kept for the call shape)
+	 * @param {Object} cfg - the overview_table_tabs data block
+	 * @returns {{titleBar: boolean, role: string|null, def: Object|null}|null}
+	 *   null = not an overview table at all (no title bar, first content row not a role heading)
+	 */
+	static reoOverviewTableRole(tbl, norm, cfg) {
+		const rows = tbl?.block?.rows ?? [];
+		let titleBar = false;
+		for (const row of rows) {
+			if (!Array.isArray(row) || !row.length) continue;
+			const E = this.#mtkLead(row[0]), R = this.#mtkLead(row[1]);
+			const tags = [...E.tags, ...R.tags].map((t) => this.#mtkFold(t));
+			if (tags.includes("title bar")) { titleBar = true; continue; }
+			if (this.#mtkDivider(E, R)) continue;
+			if (!E.text && !R.text && !tags.length) continue;
+			const lvl = this.#mtkLevel(tags);
+			const def = lvl !== null ? this.#mtkRole(E.text, R.text, cfg)
+				: (!tags.length ? this.#mtkUntaggedRole(E.text, R.text, cfg) : null);
+			if (def) return { titleBar, role: def.role, def };
+			// no role: report the first heading's folded text (the [H1] TRR900 introduction table)
+			const first = lvl !== null ? this.#mtkFold(TablesAndGrids.cellParts(E.text || R.text)[0] ?? "") : null;
+			return (titleBar || first !== null) ? { titleBar, role: null, def: null, first } : null;
+		}
+		return titleBar ? { titleBar, role: null, def: null } : null;
+	};
+
+	// ---- the MTK overview-table helpers (ROUND 453) --------------------------
+	static #mtkLead(cell) {
+		let t = String(cell ?? "").replace(/\u{1f534}/gu, "").replace(/\[\/?RED TEXT\]/g, "").trim();
+		const tags = [];
+		let m;
+		// leading [tags], and a leading "/" line separator between them ("[H3] / [Body] In the first …", TRR103)
+		while ((m = t.match(/^(?:\[([^\]]*)\]|\/)\s*/))) { if (m[1] !== undefined) tags.push(m[1].trim()); t = t.slice(m[0].length); }
+		return { tags, text: t.trim(), raw: String(cell ?? "") };
+	};
+	static #mtkFold(s) {
+		return Utils.Fold(String(s ?? "").replace(/\*/g, " ")).replace(/\s+/g, " ").trim();
+	};
+	static #mtkLevel(foldedTags) {
+		for (const t of foldedTags) { const m = t.match(/^h\s*(\d)$/); if (m) return parseInt(m[1], 10); }
+		return null;
+	};
+	static #mtkDivider(E, R) {
+		const e = this.#mtkFold(E.text), r = this.#mtkFold(R.text);
+		return !E.tags.length && !R.tags.length && (e || r)
+			&& (e === "english" || e === "") && (r === "maori" || r === "te reo maori" || r === "");
+	};
+	static #mtkRole(engText, reoText, cfg) {
+		const first = (s) => this.#mtkFold(TablesAndGrids.cellParts(s)[0] ?? "");
+		const e = first(engText), r = first(reoText);
+		for (const def of cfg.roles ?? []) {
+			const re = new RegExp(def.match, "i");
+			if ((e && re.test(e)) || (r && re.test(r))) return def;
+		}
+		return null;
+	};
+	// an UNTAGGED label row may name only the untagged_roles (TRR304 types "Ngā Whenu Ngā Toi
+	// Mokopuna Ngā Whāinga Matua / Strands Dispositions" with no [H] tag) — never Overview /
+	// Information, whose words open ordinary prose too
+	static #mtkUntaggedRole(engText, reoText, cfg) {
+		const def = this.#mtkRole(engText, reoText, cfg);
+		return def && (cfg.untagged_roles ?? []).includes(def.role) ? def : null;
+	};
+
+	/**
+	 * Composes the MTK overview menu from the writer's overview TABLES (ROUND 453
+	 * — the TRR family; KB 07A §4 "Module Menu Tabs" + the 07D §19.1 skeleton).
+	 *
+	 * ONE TAB PER ROLE, in the writer's order:
+	 *  - a table's first heading row names its role and is the tab's nav label only
+	 *    (the role's KB label when overview_table_tabs.roles gives one, else the
+	 *    writer's own heading) — it is NOT repeated inside the pane, except for a
+	 *    role with render_heading (Learning Intentions: the KB's `<h4><span>`);
+	 *    the label row's later "/"-lines ("Learning focuses on") render as body;
+	 *  - the KB's 5-TAB DEFAULT: a Critical Point table directly after the Key
+	 *    objectives pane continues THAT pane (its heading not rendered; its [H2]s
+	 *    are the pane's h5s) — merge_critical_into_previous;
+	 *  - inside the Overview (title-bar) table a later role heading opens its own
+	 *    pane (TRR112 types Key objectives / LI / SC inside the title-bar table);
+	 *  - every other heading row → a reo/eng PAIR: section_heading_match (Learning
+	 *    Intentions / Success Criteria) → heading_section `<h4><span>`, else
+	 *    heading_lead `<h5>` — the Overview pane keeps the writer's bold (`<h5><b>`,
+	 *    KB), the other panes plain text;
+	 *  - body rows → BilingualBuilder.bilingualSplit pairs, Māori first; a
+	 *    "[Checklist]" token is dropped and ☒ / ☐ lines become bullets (the human
+	 *    keeps both — TRR114);
+	 *  - a pane holding any two_column_match heading is the KB's two-column
+	 *    Learning-Intentions layout (col_pane paddingR | col_split paddingL), split
+	 *    at the first column_split_match heading once the left column has content;
+	 *    every other pane is col_single.
+	 *
+	 * @returns {{nav: string, panes: string, count: number, labels: string[]}}
+	 */
+	static #reoOverviewTabs(menuItems, run, norm, cfg) {
+		const tables = menuItems.filter((it) => it._reoOverviewTab);
+		const sectionRe = new RegExp(cfg.section_heading_match ?? "^(learning intentions|success criteria)\\b", "i");
+		const splitRe = new RegExp(cfg.column_split_match ?? "^(planning your time|what do i need)", "i");
+		const twoColRe = new RegExp(cfg.two_column_match ?? "^(learning intentions|success criteria|planning your time)", "i");
+		const clean = (s) => String(s ?? "").replace(/\*\*/g, "").replace(/^\*+|\*+$/g, "").trim();
+		const firstPart = (s) => TablesAndGrids.cellParts(s)[0] ?? "";
+		const restParts = (s) => TablesAndGrids.cellParts(s).slice(1).join(" / ");
+		const pre = (cell) => {
+			let c = String(cell ?? "");
+			for (const tok of cfg.drop_tokens ?? []) c = c.split(tok).join("");
+			return c.replace(/[☒☐]\s*/gu, "• ");
+		};
+		const panes = [];
+		let pane = null, col = null;
+		const newPane = (role, label) => {
+			pane = { role, label, cols: [[]], twoCol: false };
+			col = pane.cols[0];
+			panes.push(pane);
+		};
+		const pushPair = (reoHtml, engHtml) => {
+			if (reoHtml) col.push(BilingualBuilder.langAttr(reoHtml, "reo"));
+			if (engHtml) col.push(BilingualBuilder.langAttr(engHtml, "eng"));
+		};
+		const pushBody = (reoCell, engCell) => {
+			const Rr = BilingualBuilder.bilingualSplit(pre(reoCell), run, norm);
+			const Ee = BilingualBuilder.bilingualSplit(pre(engCell), run, norm);
+			const n = Math.max(Rr.text.length, Ee.text.length);
+			for (let k = 0; k < n; k++) pushPair(Rr.text[k], Ee.text[k]);
+			for (const m of (Rr.media.length ? Rr.media : Ee.media)) col.push(m);
+		};
+		const pushHeading = (E, R) => {
+			const eT = firstPart(E.text), rT = firstPart(R.text);
+			const eF = this.#mtkFold(eT), rF = this.#mtkFold(rT);
+			if (twoColRe.test(eF) || twoColRe.test(rF)) pane.twoCol = true;
+			if (pane.cols.length === 1 && col.length && (splitRe.test(eF) || splitRe.test(rF))) {
+				pane.cols.push([]);
+				col = pane.cols[1];
+			}
+			const tpl = (sectionRe.test(eF) || sectionRe.test(rF))
+				? (cfg.heading_section ?? "<h4><span>{text}</span></h4>")
+				: (cfg.heading_lead ?? "<h5>{text}</h5>");
+			const txt = (s) => (pane.role === "overview" && cfg.overview_heading_inline !== false)
+				? ListsAndRuns.inlineMarkup(String(s).trim())
+				: Utils.EscapeHtml(clean(s));
+			pushPair(rT ? Utils.FillTemplate(tpl, { text: txt(rT) }) : "", eT ? Utils.FillTemplate(tpl, { text: txt(eT) }) : "");
+			const eRest = restParts(E.text), rRest = restParts(R.text);
+			if (eRest || rRest) pushBody(rRest, eRest);
+		};
+		const labelOf = (def, E, R) => def?.label
+			? { eng: def.label.eng, reo: def.label.reo }
+			: { eng: clean(firstPart(E.text)).replace(/:\s*$/, ""), reo: clean(firstPart(R.text)).replace(/:\s*$/, "") };
+
+		for (const tbl of tables) {
+			let tableLabelSeen = false;
+			for (const row of tbl.block?.rows ?? []) {
+				if (!Array.isArray(row) || !row.length) continue;
+				const E = this.#mtkLead(row[0]), R = this.#mtkLead(row[1]);
+				const tags = [...E.tags, ...R.tags].map((t) => this.#mtkFold(t));
+				if (tags.includes("title bar")) continue;
+				if (this.#mtkDivider(E, R)) continue;
+				const lvl = this.#mtkLevel(tags);
+				const isHeading = lvl !== null && (E.text || R.text);
+				// the table's first content row may be an UNTAGGED role label (TRR304): it opens the
+				// pane like a heading does; its later "/"-parts are the writer's label text, not body
+				const untagged = !isHeading && !tableLabelSeen && !tags.length && (E.text || R.text)
+					? this.#mtkUntaggedRole(E.text, R.text, cfg) : null;
+				if (untagged) {
+					tableLabelSeen = true;
+					newPane(untagged.role, labelOf(untagged, E, R));
+					continue;
+				}
+				if (isHeading) {
+					const def = (!tableLabelSeen || pane?.role === "overview") ? this.#mtkRole(E.text, R.text, cfg) : null;
+					const opening = def && (!tableLabelSeen || def.role !== "overview");
+					tableLabelSeen = true;
+					if (opening) {
+						if (def.role === "critical" && cfg.merge_critical_into_previous !== false
+							&& pane && pane.role === "key_objectives") {
+							const eRest = restParts(E.text), rRest = restParts(R.text);
+							if (eRest || rRest) pushBody(rRest, eRest);
+							continue;   // KB 5-tab: Critical Point continues the Key objectives pane
+						}
+						newPane(def.role, labelOf(def, E, R));
+						if (def.render_heading) pushHeading(E, R);
+						else {
+							const eRest = restParts(E.text), rRest = restParts(R.text);
+							if (eRest || rRest) pushBody(rRest, eRest);
+						}
+						continue;
+					}
+					if (!pane) newPane("overview", cfg.overview_label ?? { eng: "Overview", reo: "Tirohanga whānui" });
+					pushHeading(E, R);
+					continue;
+				}
+				if (!E.text && !R.text) continue;
+				if (!pane) newPane("overview", cfg.overview_label ?? { eng: "Overview", reo: "Tirohanga whānui" });
+				pushBody(row.length > 1 ? row[1] : "", row[0]);
+			}
+		}
+		if (!panes.length) newPane("overview", cfg.overview_label ?? { eng: "Overview", reo: "Tirohanga whānui" });
+
+		const colTpl = cfg.col_template ?? "<div class=\"{cls}\">\n{content}\n</div>";
+		const nav = panes.map((p) => Utils.FillTemplate(
+			cfg.nav_item ?? "\n<li><a><span reo>{reo}</span><span eng>{eng}</span></a></li>",
+			{ reo: Utils.EscapeHtml(p.label.reo ?? ""), eng: Utils.EscapeHtml(p.label.eng ?? "") })).join("");
+		const panesHtml = panes.map((p) => {
+			const colsHtml = p.cols.map((c, ci) => Utils.FillTemplate(colTpl, {
+				cls: !p.twoCol ? (cfg.col_single ?? "col-md-8 col-12")
+					: (ci === 0 ? (cfg.col_pane ?? "col-md-6 offset-md-0 col-12 paddingR")
+						: (cfg.col_split ?? "col-md-6 offset-md-0 col-12 paddingL")),
+				content: c.join("\n"),
+			})).join("\n");
+			return Utils.FillTemplate(
+				cfg.pane_template ?? "\n<div class=\"tab-pane\">\n<div class=\"row\">\n{cols}\n</div>\n</div>",
+				{ cols: colsHtml });
+		}).join("");
+		return { nav, panes: panesHtml, count: panes.length, labels: panes.map((p) => p.label.eng) };
 	};
 
 	/**

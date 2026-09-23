@@ -1,0 +1,20 @@
+OLD pairs 2477  SCAFFOLD 54.7484%  RAW 38.649%  >=50 1544  >=75 260  >=90 23
+NEW pairs 2487  SCAFFOLD 54.7079%  RAW 38.676%  >=50 1549  >=75 265  >=90 23
+delta SCAFFOLD -0.0405pp  RAW +0.027pp  >=50 +5  >=75 +5  >=90 +0
+movers 14 (up 12 / down 2), pp-sum +217.3
+movers outside the affected set: 0 []
+new-only pages: 10  gone pages: 0
+  TRR116     TRR116_0_0.html            12.1 ->   83.3  (+71.3)
+  TRR113     TRR113_0_0.html            32.0 ->   72.7  (+40.7)
+  TRR107     TRR107_0_0.html            39.1 ->   63.0  (+23.9)
+  TRR102     TRR102_0_0.html            69.1 ->   89.9  (+20.8)
+  TRR111     TRR111_0_0.html            67.6 ->   86.4  (+18.7)
+  TRR106     TRR106_0_0.html            62.3 ->   76.2  (+13.9)
+  TRR114     TRR114_0_0.html            44.4 ->   58.3  (+13.9)
+  TRR112     TRR112_0_0.html            30.1 ->   41.2  (+11.2)
+  TRR103     TRR103_0_0.html            61.3 ->   70.9  (+9.6)
+  TRR109     TRR109_0_0.html            55.4 ->   62.7  (+7.3)
+  TRR108     TRR108_0_0.html            45.8 ->   50.9  (+5.1)
+  TRR110     TRR110_0_0.html            74.3 ->   78.3  (+4.0)
+  TRR114     TRR114_1_0.html            33.5 ->   33.4  (-0.0)
+  TRR107     TRR107_2_0.html            40.9 ->   17.9  (-23.0)

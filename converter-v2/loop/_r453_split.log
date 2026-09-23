@@ -1,0 +1,25 @@
+cs row keys: ['module', 'pages', 'matched', 'exact_chain', 'wrapper_set', 'claude_extra_container', 'claude_missing_container', 'row_wrap_missing', 'other_chain_diff', 'examples', 'rows_ratio', 'content_match_share', 'acks']
+bc row keys: ['page', 'module', 'over_capture', 'biggest_widget_chars', 'multi_type', 'n_widgets', 'empty_widgets', 'claude_free_blocks', 'human_free_blocks', 'lost_blocks', 'biggest_banner']
+
+page                                        matched exact extra missing
+{"module": "TRR106", "pages": "3/3 NEW        +34   +30    +0    +4
+{"module": "TRR107", "pages": "4/6 NEW         +2    +0    +0    +2
+{"module": "TRR108", "pages": "3/3 EXIST       +4    +2    +0    +2
+{"module": "TRR109", "pages": "6/6 EXIST      +10   +10    +0    +0
+{"module": "TRR112", "pages": "6/7 NEW         +2    +0    +0    +2
+{"module": "TRR113", "pages": "6/6 NEW         +4    +2    +0    +2
+{"module": "TRR114", "pages": "4/6 EXIST      +15   +13    +0    +2
+{"module": "TRR116", "pages": "10/ NEW         +6    +0    +0    +2
+{"module": "TRR304", "pages": "3/5 GONE       -32   -24    +0    -2
+{"module": "TRR304", "pages": "4/5 NEW       +180  +109    +0   +30
+TOTAL EXIST: matched +29 exact +25 extra +0 missing +4
+TOTAL NEW: matched +228 exact +141 extra +0 missing +42
+TOTAL GONE: matched -32 exact -24 extra +0 missing -2
+
+body_compare broken pages:
+  TRR102/TRR102_0_0.html                   EXIST  0 -> 1  over=1.0 widget=936 lost=13 multi=0 empty=0
+  TRR103/TRR103_0_0.html                   EXIST  0 -> 1  over=0.95 widget=742 lost=7 multi=0 empty=0
+  TRR107/TRR107_0_0.html                   EXIST  0 -> 1  over=0.81 widget=1586 lost=9 multi=0 empty=0
+  TRR108/TRR108_0_0.html                   EXIST  0 -> 1  over=0.88 widget=1724 lost=29 multi=1 empty=0
+  TRR111/TRR111_0_0.html                   EXIST  0 -> 1  over=1.0 widget=1409 lost=21 multi=0 empty=0
+  TRR112/TRR112_0_0.html                   EXIST  0 -> 1  over=1.0 widget=1100 lost=24 multi=0 empty=0

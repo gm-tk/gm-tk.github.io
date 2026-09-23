@@ -1,0 +1,22 @@
+cs row keys: ['module', 'pages', 'matched', 'exact_chain', 'wrapper_set', 'claude_extra_container', 'claude_missing_container', 'row_wrap_missing', 'other_chain_diff', 'examples', 'rows_ratio', 'content_match_share', 'acks']
+bc row keys: ['page', 'module', 'over_capture', 'biggest_widget_chars', 'multi_type', 'n_widgets', 'empty_widgets', 'claude_free_blocks', 'human_free_blocks', 'lost_blocks', 'biggest_banner']
+
+page                                        matched exact extra missing
+TRR102                             EXIST      +12   +12    +0    +0
+TRR103                             EXIST       +4    +4    +0    +0
+TRR106                             EXIST      +39   +35    +0    +4
+TRR107                             EXIST      +13   +11    +0    +2
+TRR108                             EXIST       +4    +2    +0    +2
+TRR109                             EXIST      +10   +10    +0    +0
+TRR111                             EXIST      +15   +15    +0    +0
+TRR112                             EXIST       +6    +0    +0    +2
+TRR113                             EXIST       +4    +2    +0    +2
+TRR114                             EXIST      +24   +22    +0    +2
+TRR116                             EXIST       +6    +0    +0    +2
+TRR304                             EXIST     +148   +85    +0   +28
+TOTAL EXIST: matched +285 exact +198 extra +0 missing +44
+TOTAL NEW: matched +0 exact +0 extra +0 missing +0
+TOTAL GONE: matched +0 exact +0 extra +0 missing +0
+
+body_compare broken pages:
+  TRR108/TRR108_0_0.html                   EXIST  0 -> 1  over=0.88 widget=1724 lost=29 multi=1 empty=0

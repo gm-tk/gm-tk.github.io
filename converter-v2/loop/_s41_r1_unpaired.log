@@ -1,0 +1,573 @@
+unpaired gold pages 353 modules 109
+pages derivable>=0.5: 162  of them held by a Claude page (>=0.5 of shingles): 155
+
+## ARFUN04 unpaired=49 derivable=45 held-by-claude=45
+   ARFUN04_1.00.html            shingles=  102 der=0.70 held=0.89 in ARFUN04_0_0.html
+   ARFUN04_1.01.html            shingles=  104 der=0.56 held=0.64 in ARFUN04_0_0.html
+   ARFUN04_1.02.html            shingles=  429 der=0.54 held=0.66 in ARFUN04_0_0.html
+   ARFUN04_1.03.html            shingles=  349 der=0.69 held=0.76 in ARFUN04_0_0.html
+   ARFUN04_1.04.html            shingles=  303 der=0.54 held=0.83 in ARFUN04_0_0.html
+   ARFUN04_1.05.html            shingles=  157 der=0.73 held=0.85 in ARFUN04_0_0.html
+   ARFUN04_1.06.html            shingles=  154 der=0.73 held=0.84 in ARFUN04_0_0.html
+   ARFUN04_1.07.html            shingles=   52 der=0.69 held=0.81 in ARFUN04_0_0.html
+   ARFUN04_1.08.html            shingles=   73 der=0.78 held=0.86 in ARFUN04_0_0.html
+   ARFUN04_1.09.html            shingles=   99 der=0.84 held=0.90 in ARFUN04_0_0.html
+   ARFUN04_2.00.html            shingles=  206 der=0.59 held=0.86 in ARFUN04_0_0.html
+   ARFUN04_2.01.html            shingles=  243 der=0.74 held=0.90 in ARFUN04_0_0.html
+   ARFUN04_2.02.html            shingles=  225 der=0.43 held=0.82 in ARFUN04_0_0.html
+   ARFUN04_2.03.html            shingles=  146 der=0.64 held=0.92 in ARFUN04_0_0.html
+   ARFUN04_2.04.html            shingles=  198 der=0.63 held=0.85 in ARFUN04_0_0.html
+   ARFUN04_2.05.html            shingles=  184 der=0.55 held=0.66 in ARFUN04_0_0.html
+   ARFUN04_2.06.html            shingles=  190 der=0.62 held=0.72 in ARFUN04_0_0.html
+   ARFUN04_2.07.html            shingles=  283 der=0.76 held=0.89 in ARFUN04_0_0.html
+   ARFUN04_2.08.html            shingles=  339 der=0.66 held=0.87 in ARFUN04_0_0.html
+   ARFUN04_3.00.html            shingles=  364 der=0.63 held=0.81 in ARFUN04_0_0.html
+   ARFUN04_3.01.html            shingles=  337 der=0.76 held=0.89 in ARFUN04_0_0.html
+   ARFUN04_3.02.html            shingles=  352 der=0.79 held=0.87 in ARFUN04_0_0.html
+   ARFUN04_3.03.html            shingles=  273 der=0.58 held=0.70 in ARFUN04_0_0.html
+   ARFUN04_3.04.html            shingles=  282 der=0.73 held=0.93 in ARFUN04_0_0.html
+   ARFUN04_3.05.html            shingles=  529 der=0.78 held=0.83 in ARFUN04_0_0.html
+   ARFUN04_3.06.html            shingles=  419 der=0.62 held=0.72 in ARFUN04_0_0.html
+   ARFUN04_3.07.html            shingles=  232 der=0.56 held=0.66 in ARFUN04_0_0.html
+   ARFUN04_3.08.html            shingles=  278 der=0.43 held=0.69 in ARFUN04_0_0.html
+   ARFUN04_3.09.html            shingles=  337 der=0.44 held=0.51 in ARFUN04_0_0.html
+   ARFUN04_3.10.html            shingles=  346 der=0.56 held=0.75 in ARFUN04_0_0.html
+   ARFUN04_3.11.html            shingles=  350 der=0.58 held=0.70 in ARFUN04_0_0.html
+   ARFUN04_3.12.html            shingles=  427 der=0.67 held=0.76 in ARFUN04_0_0.html
+   ARFUN04_3.13.html            shingles=  315 der=0.53 held=0.56 in ARFUN04_0_0.html
+   ARFUN04_4.00.html            shingles=  231 der=0.71 held=0.74 in ARFUN04_0_0.html
+   ARFUN04_4.01.html            shingles=  270 der=0.64 held=0.78 in ARFUN04_0_0.html
+   ARFUN04_4.02.html            shingles=  312 der=0.62 held=0.89 in ARFUN04_0_0.html
+   ARFUN04_4.03.html            shingles=  327 der=0.64 held=0.85 in ARFUN04_0_0.html
+   ARFUN04_4.04.html            shingles=  290 der=0.84 held=0.95 in ARFUN04_0_0.html
+   ARFUN04_4.05.html            shingles=  494 der=0.60 held=0.75 in ARFUN04_0_0.html
+   ARFUN04_4.06.html            shingles=  565 der=0.75 held=0.78 in ARFUN04_0_0.html
+   ARFUN04_4.07.html            shingles=  272 der=0.49 held=0.54 in ARFUN04_0_0.html
+   ARFUN04_4.08.html            shingles=  306 der=0.58 held=0.88 in ARFUN04_0_0.html
+   ARFUN04_4.09.html            shingles=  314 der=0.60 held=0.66 in ARFUN04_0_0.html
+   ARFUN04_4.10.html            shingles=  335 der=0.59 held=0.78 in ARFUN04_0_0.html
+   ARFUN04_4.11.html            shingles=  338 der=0.67 held=0.78 in ARFUN04_0_0.html
+   ARFUN04_4.12.html            shingles=  335 der=0.66 held=0.71 in ARFUN04_0_0.html
+   ARFUN04_4.13.html            shingles=  316 der=0.61 held=0.77 in ARFUN04_0_0.html
+   ARFUN04_4.14.html            shingles=  332 der=0.66 held=0.73 in ARFUN04_0_0.html
+   ARFUN04_4.15.html            shingles=  500 der=0.77 held=0.89 in ARFUN04_0_0.html
+
+## CEDR203 unpaired=10 derivable=10 held-by-claude=10
+   CEDR203_1.10_Halfmoon-Bay-Eco-leaders.html shingles=  216 der=0.81 held=0.81 in CEDR203_0_0.html
+   CEDR203_1.1_Kids-Restore-the-Kepler.html shingles=  247 der=0.85 held=0.91 in CEDR203_0_0.html
+   CEDR203_1.2_The-Plastic-free-Challenge.html shingles=  195 der=0.84 held=0.84 in CEDR203_0_0.html
+   CEDR203_1.3_Kaupapa-Kereru.html shingles=  232 der=0.75 held=0.85 in CEDR203_0_0.html
+   CEDR203_1.4_Seed-Savers.html shingles=  232 der=0.69 held=0.71 in CEDR203_0_0.html
+   CEDR203_1.5_Kids-Greening-Taupo.html shingles=   54 der=0.63 held=0.72 in CEDR203_0_0.html
+   CEDR203_1.6_Kaitiaki-of-the-Stream.html shingles=   81 der=0.84 held=0.88 in CEDR203_0_0.html
+   CEDR203_1.7_Young-Ocean-Explorers.html shingles=  103 der=0.70 held=0.87 in CEDR203_0_0.html
+   CEDR203_1.8_Our-Gifted-Garden.html shingles=  292 der=0.78 held=0.78 in CEDR203_0_0.html
+   CEDR203_1.9_George-W.html    shingles=  233 der=0.75 held=0.79 in CEDR203_0_0.html
+
+## XGF9001 unpaired=8 derivable=8 held-by-claude=8
+   XGF9001-00.0.html            shingles= 1303 der=0.83 held=0.91 in XGF9001_0_0.html
+   XGF9001-01.0.html            shingles=  138 der=0.91 held=0.91 in XGF9001_2_0.html
+   XGF9001-01.2.html            shingles= 2042 der=0.76 held=0.85 in XGF9001_2_0.html
+   XGF9001-01.3.html            shingles= 2455 der=0.71 held=0.86 in XGF9001_2_0.html
+   XGF9001-02.1.html            shingles=  903 der=0.76 held=0.83 in XGF9001_3_0.html
+   XGF9001-03.2.html            shingles= 1579 der=0.79 held=0.94 in XGF9001_4_0.html
+   XGF9001-04.0.html            shingles=  136 der=0.94 held=0.85 in XGF9001_5_0.html
+   XGF9001-05.0.html            shingles=  143 der=0.95 held=0.55 in XGF9001_6_0.html
+
+## MXFL302 unpaired=7 derivable=7 held-by-claude=7
+   MXFL302_01.0.html            shingles= 1511 der=0.70 held=0.78 in MXFL302_1_0.html
+   MXFL302_02.0.html            shingles=  779 der=0.70 held=0.82 in MXFL302_2_0.html
+   MXFL302_02.2.html            shingles=  591 der=0.65 held=0.74 in MXFL302_2_0.html
+   MXFL302_03.0.html            shingles=  411 der=0.76 held=0.85 in MXFL302_3_0.html
+   MXFL302_04.0.html            shingles=  729 der=0.54 held=0.63 in MXFL302_4_0.html
+   MXFL302_06.1.html            shingles=  940 der=0.76 held=0.79 in MXFL302_6_0.html
+   MXFL302_07.1.html            shingles= 1331 der=0.53 held=0.53 in MXFL302_7_0.html
+
+## XDLS908 unpaired=7 derivable=7 held-by-claude=7
+   XDLS908_3.0.html             shingles=  250 der=0.85 held=0.91 in XDLS908_3_0.html
+   XDLS908_3.2.html             shingles=  568 der=0.74 held=0.79 in XDLS908_3_0.html
+   XDLS908_3.3.html             shingles=  759 der=0.67 held=0.80 in XDLS908_3_0.html
+   XDLS908_4.0 .html            shingles=  313 der=0.81 held=0.96 in XDLS908_4_0.html
+   XDLS908_5.1.html             shingles=  966 der=0.56 held=0.61 in XDLS908_5_0.html
+   XDLS908_5.2.html             shingles=  476 der=0.73 held=0.79 in XDLS908_5_0.html
+   XDLS908_6.0 .html            shingles=  690 der=0.75 held=0.80 in XDLS908_6_0.html
+
+## XMES201 unpaired=6 derivable=6 held-by-claude=6
+   XMES201_0.0.html             shingles=  980 der=0.87 held=0.90 in XMES201_0_0.html
+   XMES201_1.0.html             shingles= 1023 der=0.58 held=0.71 in XMES201_1_0.html
+   XMES201_2.0.html             shingles= 1810 der=0.72 held=0.83 in XMES201_2_0.html
+   XMES201_3.0.html             shingles= 1073 der=0.62 held=0.78 in XMES201_3_0.html
+   XMES201_4.0.html             shingles=  736 der=0.66 held=0.81 in XMES201_4_0.html
+   XMES201_5.0.html             shingles=  589 der=0.61 held=0.74 in XMES201_5_0.html
+
+## DAN1004 unpaired=5 derivable=5 held-by-claude=5
+   DAN1004_2_0.html             shingles=  131 der=0.65 held=0.81 in DAN1004_1_0.html
+   DAN1004_3_0.html             shingles=  199 der=0.74 held=0.80 in DAN1004_2_0.html
+   DAN1004_4_0.html             shingles=  208 der=0.72 held=0.79 in DAN1004_2_0.html
+   DAN1004_5_0.html             shingles=  211 der=0.70 held=0.75 in DAN1004_2_0.html
+   DAN1004_6_0.html             shingles=  204 der=0.67 held=0.81 in DAN1004_2_0.html
+
+## CBI1008 unpaired=4 derivable=4 held-by-claude=4
+   CBI1008_2_0.html             shingles= 2155 der=0.79 held=0.88 in CBI1008_2_0.html
+   CBI1008_3_0.html             shingles=  785 der=0.70 held=0.79 in CBI1008_2_0.html
+   CBI1008_3_1.html             shingles=  761 der=0.77 held=0.82 in CBI1008_2_0.html
+   CBI1008_4_0.html             shingles= 1296 der=0.76 held=0.82 in CBI1008_2_0.html
+
+## DAN1006 unpaired=6 derivable=4 held-by-claude=3
+   DAN1006_1_0.html             shingles=  393 der=0.77 held=0.92 in DAN1006_1_0.html
+   DAN1006_2_0.html             shingles=  257 der=0.72 held=0.43 in DAN1006_1_0.html
+   DAN1006_4_0.html             shingles=   90 der=0.68 held=0.73 in DAN1006_1_0.html
+   DAN1006_6_0.html             shingles=  235 der=0.62 held=0.66 in DAN1006_2_0.html
+   DAN1006_7_0.html             shingles=  319 der=0.02 held=0.02 in DAN1006_2_0.html
+   DAN1006_9_0.html             shingles=  342 der=0.07 held=0.04 in DAN1006_0_0.html
+
+## MXFU201 unpaired=4 derivable=4 held-by-claude=4
+   MXFU201_1.1.html             shingles=  280 der=0.70 held=0.81 in MXFU201_1_0.html
+   MXFU201_1.2.html             shingles=  385 der=0.51 held=0.56 in MXFU201_1_0.html
+   MXFU201_2.1.html             shingles=  758 der=0.61 held=0.78 in MXFU201_2_0.html
+   MXFU201_6.0.html             shingles=  607 der=0.69 held=0.73 in MXFU201_6_0.html
+
+## BLL171 unpaired=3 derivable=3 held-by-claude=3
+   BLL171-00.html               shingles=  351 der=0.84 held=0.91 in BLL171_0_0.html
+   BLL171-01.html               shingles=  449 der=0.77 held=0.69 in BLL171_1_0.html
+   BLL171-02.html               shingles=  869 der=0.77 held=0.74 in BLL171_2_0.html
+
+## BLL244 unpaired=3 derivable=3 held-by-claude=3
+   BLL244-0.0.html              shingles= 1230 der=0.59 held=0.61 in BLL244_0_0.html
+   BLL244-01.html               shingles=  809 der=0.67 held=0.77 in BLL244_1_0.html
+   BLL244-02.html               shingles= 1112 der=0.70 held=0.76 in BLL244_2_0.html
+
+## CEDO502 unpaired=3 derivable=3 held-by-claude=3
+   CEDO502_1_1.html             shingles=  487 der=0.59 held=0.64 in CEDO502_1_0.html
+   CEDO502_3_0.html             shingles= 1343 der=0.70 held=0.80 in CEDO502_3_0.html
+   CEDO502_4_0.html             shingles=  645 der=0.74 held=0.82 in CEDO502_4_0.html
+
+## TRR116 unpaired=5 derivable=3 held-by-claude=0
+   TRR116_0_0.html              shingles= 2038 der=0.38 held=0.09 in TRR116_0_0.html
+   TRR116_1_0.html              shingles=  728 der=0.54 held=0.01 in TRR116_0_0.html
+   TRR116_2_0.html              shingles=  769 der=0.46 held=0.02 in TRR116_8_0.html
+   TRR116_3_0.html              shingles=  671 der=0.54 held=0.01 in TRR116_0_0.html
+   TRR116_4_0.html              shingles=  924 der=0.57 held=0.01 in TRR116_9_0.html
+
+## ENGI101 unpaired=3 derivable=2 held-by-claude=2
+   ENGI101_1.0.html             shingles=  324 der=0.51 held=0.73 in ENGI101_1_0.html
+   ENGI101_4.0.html             shingles=  422 der=0.66 held=0.70 in ENGI101_1_1.html
+   ENGI101_6.0.html             shingles= 1191 der=0.28 held=0.22 in ENGI101_1_2.html
+
+## GEO1006 unpaired=3 derivable=2 held-by-claude=2
+   GEO1006_3_0.html             shingles=  962 der=0.81 held=0.87 in GEO1006_3_0.html
+   GEO1006_4_1.html             shingles=  892 der=0.71 held=0.77 in GEO1006_3_0.html
+   GEO1006_5_0.html             shingles= 1455 der=0.46 held=0.41 in GEO1006_3_0.html
+
+## MXDI102 unpaired=4 derivable=2 held-by-claude=2
+   MXDI102_1.0.html             shingles=  337 der=0.64 held=0.72 in MXDI102_1_0.html
+   MXDI102_4.0.html             shingles=  295 der=0.37 held=0.54 in MXDI102_2_0.html
+   MXDI102_5.0.html             shingles=  311 der=0.50 held=0.77 in MXDI102_3_0.html
+   MXDI102_7.0.html             shingles=  379 der=0.41 held=0.73 in MXDI102_4_0.html
+
+## MXDI202 unpaired=9 derivable=2 held-by-claude=2
+   MXDI202_0.0 proof 1.html     shingles=  502 der=0.54 held=0.60 in MXDI202_0_0.html
+   MXDI202_1.0 proof 1.html     shingles= 1351 der=0.28 held=0.32 in MXDI202_1_0.html
+   MXDI202_2.0 proof 1.html     shingles= 1284 der=0.37 held=0.43 in MXDI202_2_0.html
+   MXDI202_3.0 proof 1.html     shingles=  983 der=0.44 held=0.45 in MXDI202_3_0.html
+   MXDI202_5.0 proof 1.html     shingles=  851 der=0.41 held=0.47 in MXDI202_6_0.html
+   MXDI202_5.0.html             shingles=  853 der=0.41 held=0.46 in MXDI202_6_0.html
+   MXDI202_7.0 proof 1.html     shingles=  900 der=0.58 held=0.66 in MXDI202_8_0.html
+   MXDI202_8.0.html             shingles=  504 der=0.36 held=0.51 in MXDI202_10_0.html
+   MXDI202_9.0.html             shingles= 2369 der=0.25 held=0.21 in MXDI202_11_0.html
+
+## MXEX101 unpaired=2 derivable=2 held-by-claude=2
+   MXEX101_1.0.html             shingles=  364 der=0.68 held=0.71 in MXEX101_1_0.html
+   MXEX101_1.1.html             shingles=  237 der=0.70 held=0.70 in MXEX101_1_0.html
+
+## MXEX201 unpaired=2 derivable=2 held-by-claude=2
+   MXEX201_3.0.html             shingles=  167 der=0.64 held=0.64 in MXEX201_3_0.html
+   MXEX201_5.0.html             shingles=  402 der=0.71 held=0.76 in MXEX201_4_0.html
+
+## MXFL202 unpaired=2 derivable=2 held-by-claude=2
+   MXFL202_3.0.html             shingles= 1554 der=0.84 held=0.92 in MXFL202_2_0.html
+   MXFL202_4.0.html             shingles= 1229 der=0.76 held=0.88 in MXFL202_4_0.html
+
+## PHE1003 unpaired=3 derivable=2 held-by-claude=2
+   PHE1003_3.1.html             shingles= 1498 der=0.77 held=0.77 in PHE1003_3_0.html
+   PHE1003_4.0.html             shingles=  860 der=0.87 held=0.91 in PHE1003_5_0.html
+   PHE1003_5.2.html             shingles= 1147 der=0.06 held=0.07 in PHE1003_9_0.html
+
+## ANZH101 unpaired=2 derivable=1 held-by-claude=1
+   ANZH101_3.0.html             shingles=  528 der=0.64 held=0.73 in ANZH101_3_0.html
+   ANZH101_5.0.html             shingles=  677 der=0.00 held=0.00 in ANZH101_3_0.html
+
+## ANZH203 unpaired=1 derivable=1 held-by-claude=1
+   ANZH203_2.0.html             shingles=  536 der=0.80 held=0.83 in ANZH203_2_0.html
+
+## ART1004 unpaired=4 derivable=1 held-by-claude=0
+   ART1004_0.0.html             shingles=  722 der=0.53 held=0.04 in ART1004_0_0.html
+   ART1004_1.0.html             shingles=  388 der=0.47 held=0.45 in ART1004_0_0.html
+   ART1004_2.0.html             shingles= 1405 der=0.32 held=0.33 in ART1004_0_0.html
+   ART1004_3.0.html             shingles=  374 der=0.44 held=0.47 in ART1004_0_0.html
+
+## ART1005 unpaired=4 derivable=1 held-by-claude=1
+   ART1005_0.0.html             shingles= 1140 der=0.52 held=0.59 in ART1005_0_0.html
+   ART1005_1.0.html             shingles=  481 der=0.45 held=0.40 in ART1005_0_0.html
+   ART1005_2.0.html             shingles=  369 der=0.37 held=0.37 in ART1005_0_0.html
+   ART1005_4.0.html             shingles= 1156 der=0.05 held=0.08 in ART1005_0_0.html
+
+## BLL153 unpaired=3 derivable=1 held-by-claude=1
+   BLL153-0.0.html              shingles=  397 der=0.47 held=0.49 in BLL153_0_0.html
+   BLL153-02.html               shingles=  577 der=0.66 held=0.69 in BLL153_1_0.html
+   BLL153-03.html               shingles= 1014 der=0.33 held=0.36 in BLL153_1_1.html
+
+## CBI1009 unpaired=2 derivable=1 held-by-claude=1
+   CBI1009_2_0.html             shingles=  652 der=0.48 held=0.54 in CBI1009_2_0.html
+   CBI1009_3_0.html             shingles= 1633 der=0.75 held=0.80 in CBI1009_3_0.html
+
+## CEDT301 unpaired=2 derivable=1 held-by-claude=1
+   CEDT301_5.0.html             shingles=  191 der=0.51 held=0.58 in CEDT301_6_0.html
+   CEDT301_7.0.html             shingles= 1331 der=0.48 held=0.41 in CEDT301_6_0.html
+
+## COM1002 unpaired=1 derivable=1 held-by-claude=1
+   COM1002_7_0.html             shingles=  784 der=0.71 held=0.85 in COM1002_8_0.html
+
+## COM1006 unpaired=1 derivable=1 held-by-claude=1
+   COM1006_6_0.html             shingles=  573 der=0.78 held=0.71 in COM1006_7_0.html
+
+## DTC1005 unpaired=12 derivable=1 held-by-claude=1
+   DTC1005_2_1.html             shingles= 1430 der=0.00 held=0.00 in 
+   DTC1005_2_2.html             shingles= 1558 der=0.00 held=0.00 in 
+   DTC1005_2_3.html             shingles=  816 der=0.00 held=0.00 in 
+   DTC1005_2_4.html             shingles=  947 der=0.04 held=0.04 in DTC1005_5_0.html
+   DTC1005_3_1.html             shingles=  700 der=0.00 held=0.00 in 
+   DTC1005_3_2.html             shingles=  611 der=0.04 held=0.03 in DTC1005_20_0.html
+   DTC1005_3_3.html             shingles= 1147 der=0.00 held=0.00 in 
+   DTC1005_3_4.html             shingles=  476 der=0.00 held=0.00 in 
+   DTC1005_3_5.html             shingles=  760 der=0.06 held=0.06 in DTC1005_11_0.html
+   DTC1005_5_1.html             shingles=  427 der=0.00 held=0.00 in 
+   DTC1005_5_2.html             shingles=  407 der=0.00 held=0.00 in 
+   DTC1005_5_3.html             shingles=  280 der=0.90 held=0.91 in DTC1005_16_0.html
+
+## ENGI405 unpaired=1 derivable=1 held-by-claude=1
+   ENGI405_5.1.html             shingles=  533 der=0.59 held=0.73 in ENGI405_5_0.html
+
+## ENGR302 unpaired=1 derivable=1 held-by-claude=1
+   ENGR302_2.0.html             shingles=  527 der=0.67 held=0.70 in ENGR302_1_0.html
+
+## ENGS302 unpaired=1 derivable=1 held-by-claude=1
+   ENGS302_7.0.html             shingles= 1214 der=0.67 held=0.75 in ENGS302_6_0.html
+
+## ENO2060 unpaired=1 derivable=1 held-by-claude=1
+   ENO2060_3_0.html             shingles=  639 der=0.51 held=0.86 in ENO2060_2_0.html
+
+## GER1002 unpaired=7 derivable=1 held-by-claude=0
+   GER1002_3_0.html             shingles= 1253 der=0.40 held=0.27 in GER1002_2_0.html
+   GER1002_4_0.html             shingles=  901 der=0.53 held=0.33 in GER1002_0_0.html
+   GER1002_5_0.html             shingles= 1271 der=0.34 held=0.24 in GER1002_0_0.html
+   GER1002_6_0.html             shingles=  788 der=0.37 held=0.38 in GER1002_0_0.html
+   GER1002_7_0.html             shingles= 1074 der=0.34 held=0.28 in GER1002_0_0.html
+   GER1002_8_0.html             shingles= 1122 der=0.26 held=0.27 in GER1002_0_0.html
+   GER1002_9_0.html             shingles= 1609 der=0.37 held=0.26 in GER1002_0_0.html
+
+## HES1003 unpaired=1 derivable=1 held-by-claude=1
+   HES1003_8.0.html             shingles=  302 der=0.60 held=0.61 in HES1003_8_0.html
+
+## HES1006 unpaired=1 derivable=1 held-by-claude=1
+   HES1006_3.0.html             shingles=  193 der=0.73 held=0.82 in HES1006_4_0.html
+
+## HIS1003 unpaired=1 derivable=1 held-by-claude=1
+   HIS1003_9.0.html             shingles=  707 der=0.50 held=0.51 in HIS1003_9_0.html
+
+## HIS1004 unpaired=3 derivable=1 held-by-claude=1
+   HIS1004_10.1.html            shingles= 1205 der=0.66 held=0.64 in HIS1004_10_0.html
+   HIS1004_10.2.html            shingles= 2210 der=0.24 held=0.18 in HIS1004_10_0.html
+   HIS1004_7.0.html             shingles= 2230 der=0.46 held=0.48 in HIS1004_7_0.html
+
+## MUS1004 unpaired=1 derivable=1 held-by-claude=1
+   MUS1004_5_1.html             shingles=  576 der=0.52 held=0.56 in MUS1004_7_0.html
+
+## MXEO102 unpaired=4 derivable=1 held-by-claude=0
+   MXEO102_01.1.html            shingles=  679 der=0.03 held=0.03 in MXEO102_1_0.html
+   MXEO102_02.1.html            shingles=  102 der=0.16 held=0.16 in MXEO102_2_0.html
+   MXEO102_05.0.html            shingles=  316 der=0.52 held=0.43 in MXEO102_3_0.html
+   MXEO102_06.0.html            shingles= 1003 der=0.03 held=0.04 in MXEO102_0_0.html
+
+## MXEX202 unpaired=2 derivable=1 held-by-claude=1
+   MXEX202_3.0.html             shingles=   46 der=0.35 held=0.59 in MXEX202_2_0.html
+   MXEX202_7.0.html             shingles=  160 der=0.88 held=0.89 in MXEX202_6_0.html
+
+## MXFL301 unpaired=1 derivable=1 held-by-claude=1
+   MXFL301_02.0_OLD.html        shingles= 1784 der=0.62 held=0.75 in MXFL301_2_0.html
+
+## PES1001 unpaired=1 derivable=1 held-by-claude=1
+   PES1001_6.0.html             shingles=  502 der=0.79 held=0.90 in PES1001_5_0.html
+
+## PES1005 unpaired=1 derivable=1 held-by-claude=1
+   PES1005_3.0.html             shingles=  388 der=0.57 held=0.78 in PES1005_4_0.html
+
+## PHE1007 unpaired=1 derivable=1 held-by-claude=1
+   PHE1007_8.0.html             shingles= 1265 der=0.74 held=0.85 in PHE1007_7_0.html
+
+## PNR101 unpaired=1 derivable=1 held-by-claude=1
+   PNR101_1_0.html              shingles=  755 der=0.71 held=0.69 in PNR101_1_0.html
+
+## PWY1007 unpaired=1 derivable=1 held-by-claude=1
+   PWY1007_2_1.html             shingles=  490 der=0.58 held=0.62 in PWY1007_4_0.html
+
+## PWY1008 unpaired=1 derivable=1 held-by-claude=1
+   PWY1008_2_1.html             shingles=  567 der=0.74 held=0.88 in PWY1008_2_1_0.html
+
+## PWY1009 unpaired=1 derivable=1 held-by-claude=1
+   PWY1009_2_1.html             shingles=  825 der=0.82 held=0.75 in PWY1009_2_2_0.html
+
+## SSOG101 unpaired=1 derivable=1 held-by-claude=1
+   SSOG101_1.0.html             shingles=  332 der=0.71 held=0.73 in SSOG101_1_0.html
+
+## TEDC401 unpaired=1 derivable=1 held-by-claude=1
+   TEDC401-7.0.html             shingles=  202 der=0.87 held=0.89 in TEDC401_6_1.html
+
+## XGF9003 unpaired=1 derivable=1 held-by-claude=1
+   XGF9003-01.0.html            shingles=  909 der=0.60 held=0.74 in XGF9003_0_0.html
+
+## XTAS101 unpaired=1 derivable=1 held-by-claude=1
+   XTAS101_1.0 .html            shingles= 1382 der=0.73 held=0.84 in XTAS101_1_0.html
+
+## ANZH103 unpaired=5 derivable=0 held-by-claude=0
+   ANZH103_1_0.html             shingles=  598 der=0.39 held=0.35 in ANZH103_1_0.html
+   ANZH103_2_0.html             shingles=  435 der=0.37 held=0.34 in ANZH103_1_0.html
+   ANZH103_4_0.html             shingles=  437 der=0.26 held=0.22 in ANZH103_1_0.html
+   ANZH103_5_0.html             shingles=  416 der=0.25 held=0.19 in ANZH103_1_0.html
+   ANZH103_6_0.html             shingles= 1258 der=0.11 held=0.09 in ANZH103_1_0.html
+
+## ANZH105 unpaired=1 derivable=0 held-by-claude=0
+   ANZH105_07.0.html            shingles=  833 der=0.27 held=0.29 in ANZH105_0_0.html
+
+## ANZH205 unpaired=1 derivable=0 held-by-claude=0
+   ANZH205_07.0.html            shingles=  540 der=0.12 held=0.12 in ANZH205_0_0.html
+
+## ANZH302 unpaired=1 derivable=0 held-by-claude=0
+   ANZH302_11_0.html            shingles= 1689 der=0.01 held=0.01 in ANZH302_0_0.html
+
+## ART1003 unpaired=4 derivable=0 held-by-claude=0
+   ART1003_1.0.html             shingles= 1434 der=0.09 held=0.09 in ART1003_0_0.html
+   ART1003_2.0.html             shingles=  835 der=0.20 held=0.21 in ART1003_0_0.html
+   ART1003_3.0.html             shingles=  464 der=0.22 held=0.24 in ART1003_0_0.html
+   ART1003_4.0.html             shingles= 1058 der=0.20 held=0.21 in ART1003_0_0.html
+
+## ART1006 unpaired=1 derivable=0 held-by-claude=0
+   ART1006_2.0.html             shingles= 1933 der=0.02 held=0.01 in ART1006_2_0.html
+
+## BLL136 unpaired=1 derivable=0 held-by-claude=0
+   BLL136-02.html               shingles=  396 der=0.48 held=0.54 in BLL136_1_0.html
+
+## BLL237 unpaired=1 derivable=0 held-by-claude=0
+   BLL237-2.0_acks.html         shingles= 1288 der=0.15 held=0.32 in BLL237_0_0.html
+
+## CEDO301 unpaired=1 derivable=0 held-by-claude=0
+   CEDO301_1.0.html             shingles=  518 der=0.01 held=0.01 in CEDO301_3_0.html
+
+## CHI1003 unpaired=2 derivable=0 held-by-claude=0
+   CHI1003_10_0_Texts.html      shingles=  551 der=0.00 held=0.00 in 
+   CHI1003_9_0_Vocabulary.html  shingles=  174 der=0.00 held=0.00 in 
+
+## CHI1004 unpaired=3 derivable=0 held-by-claude=0
+   CHI1004_10_0_Texts.html      shingles=  665 der=0.01 held=0.01 in CHI1004_0_0.html
+   CHI1004_11_0_Audio.html      shingles=   96 der=0.00 held=0.00 in 
+   CHI1004_1_0.html             shingles= 1235 der=0.00 held=0.01 in CHI1004_0_0.html
+
+## CHI1005 unpaired=4 derivable=0 held-by-claude=0
+   CHI1005_10_0_Texts.html      shingles=  502 der=0.00 held=0.00 in 
+   CHI1005_11_0_Audio.html      shingles=   76 der=0.00 held=0.00 in 
+   CHI1005_8_0.html             shingles=  577 der=0.21 held=0.18 in CHI1005_7_0.html
+   CHI1005_9_0_Vocabulary.html  shingles=  150 der=0.00 held=0.00 in 
+
+## COM1005 unpaired=1 derivable=0 held-by-claude=0
+   COM1005_4_0.html             shingles=  739 der=0.20 held=0.21 in COM1005_3_0.html
+
+## DAN1003 unpaired=1 derivable=0 held-by-claude=0
+   DAN1003_5_0.html             shingles=   79 der=0.37 held=0.39 in DAN1003_6_0.html
+
+## ENG1004 unpaired=1 derivable=0 held-by-claude=0
+   ENG1004_0.0.html             shingles=  648 der=0.37 held=0.37 in ENG1004_0_0.html
+
+## ENG1005 unpaired=3 derivable=0 held-by-claude=0
+   ENG1005_0.1.html             shingles= 1605 der=0.00 held=0.00 in 
+   ENG1005_0.2.html             shingles=  788 der=0.02 held=0.02 in ENG1005_0_0.html
+   ENG1005_0.3.html             shingles=  304 der=0.00 held=0.00 in ENG1005_0_0.html
+
+## ENG1007 unpaired=4 derivable=0 held-by-claude=0
+   ENG1007_0.1.html             shingles= 1010 der=0.09 held=0.09 in ENG1007_0_0.html
+   ENG1007_0.2.html             shingles=  234 der=0.00 held=0.00 in 
+   ENG1007_0.3.html             shingles=  354 der=0.00 held=0.00 in 
+   ENG1007_0.4.html             shingles=  863 der=0.00 held=0.01 in ENG1007_0_0.html
+
+## ENGC403 unpaired=2 derivable=0 held-by-claude=0
+   ENGC403_5_0.html             shingles=  285 der=0.20 held=0.24 in ENGC403_4_0.html
+   ENGC403_5_1.html             shingles=  171 der=0.06 held=0.08 in ENGC403_4_0.html
+
+## ENGFUN02 unpaired=1 derivable=0 held-by-claude=0
+   ENGFUN02_0.0.html            shingles=   42 der=0.00 held=0.00 in 
+
+## ENGI301 unpaired=1 derivable=0 held-by-claude=0
+   ENGI301_5.0.html             shingles=  329 der=0.41 held=0.45 in ENGI301_4_0.html
+
+## ENGI401 unpaired=2 derivable=0 held-by-claude=0
+   ENGI401_6.0.html             shingles=   47 der=0.13 held=0.13 in ENGI401_5_0.html
+   ENGI401_7.0.html             shingles= 1463 der=0.17 held=0.21 in ENGI401_0_0.html
+
+## ENGJ201 unpaired=1 derivable=0 held-by-claude=0
+   ENGJ201_7.0.html             shingles= 1648 der=0.31 held=0.23 in ENGJ201_0_0.html
+
+## ENGS405 unpaired=19 derivable=0 held-by-claude=0
+   ENGS405_1_0.html             shingles=  883 der=0.00 held=0.00 in ENGS405_0_0.html
+   ENGS405_1_1.html             shingles=  704 der=0.00 held=0.00 in ENGS405_0_0.html
+   ENGS405_1_2.html             shingles=  727 der=0.00 held=0.00 in ENGS405_0_0.html
+   ENGS405_1_3.html             shingles= 1338 der=0.00 held=0.00 in ENGS405_0_0.html
+   ENGS405_1_4.html             shingles=  152 der=0.00 held=0.01 in ENGS405_0_0.html
+   ENGS405_2_0.html             shingles=  361 der=0.00 held=0.00 in ENGS405_0_0.html
+   ENGS405_2_1.html             shingles=  400 der=0.00 held=0.00 in ENGS405_0_0.html
+   ENGS405_2_2.html             shingles=  696 der=0.00 held=0.00 in ENGS405_0_0.html
+   ENGS405_2_3.html             shingles= 1129 der=0.00 held=0.00 in ENGS405_0_0.html
+   ENGS405_2_4.html             shingles=  223 der=0.00 held=0.00 in ENGS405_0_0.html
+   ENGS405_3_0.html             shingles=  755 der=0.00 held=0.00 in ENGS405_0_0.html
+   ENGS405_3_1.html             shingles=  442 der=0.00 held=0.00 in ENGS405_0_0.html
+   ENGS405_3_2.html             shingles=  769 der=0.00 held=0.00 in ENGS405_0_0.html
+   ENGS405_3_3.html             shingles=  252 der=0.03 held=0.00 in 
+   ENGS405_3_4.html             shingles=  299 der=0.00 held=0.00 in 
+   ENGS405_4_0.html             shingles=  471 der=0.00 held=0.00 in ENGS405_0_0.html
+   ENGS405_4_1.html             shingles=  322 der=0.00 held=0.00 in ENGS405_0_0.html
+   ENGS405_4_2.html             shingles=  453 der=0.00 held=0.00 in ENGS405_0_0.html
+   ENGS405_4_3.html             shingles=  191 der=0.00 held=0.00 in 
+
+## EXBP901 unpaired=7 derivable=0 held-by-claude=0
+   EXBP901_0.4.html             shingles= 3749 der=0.23 held=0.17 in EXBP901_5_0.html
+   EXBP901_0.9.html             shingles=  175 der=0.00 held=0.00 in 
+   EXBP901_1.0.html             shingles= 1127 der=0.00 held=0.00 in 
+   EXBP901_2.0.html             shingles=   24 der=0.00 held=0.00 in 
+   EXBP901_2.1.html             shingles= 1123 der=0.00 held=0.00 in 
+   EXBP901_2.2.html             shingles= 1177 der=0.00 held=0.00 in EXBP901_5_0.html
+   EXBP901_2.3.html             shingles=  990 der=0.00 held=0.00 in 
+
+## EXIP901 unpaired=2 derivable=0 held-by-claude=0
+   EXIP901_0.4.html             shingles= 2891 der=0.49 held=0.54 in EXIP901_5_0.html
+   EXIP901_0.5.html             shingles= 1726 der=0.03 held=0.03 in EXIP901_5_0.html
+
+## FRFUN06 unpaired=1 derivable=0 held-by-claude=0
+   FRFUN06_0_0.html             shingles= 1284 der=0.08 held=0.19 in FRFUN06_0_0.html
+
+## GEO1004 unpaired=1 derivable=0 held-by-claude=0
+   GEO1004_3_0.html             shingles=  754 der=0.20 held=0.25 in GEO1004_0_0.html
+
+## HES1002 unpaired=5 derivable=0 held-by-claude=0
+   HES1002_10_0.html            shingles= 1566 der=0.00 held=0.00 in 
+   HES1002_11_0.html            shingles=  916 der=0.03 held=0.03 in HES1002_1_0.html
+   HES1002_3_0.html             shingles=  338 der=0.00 held=0.00 in 
+   HES1002_8_0.html             shingles=   82 der=0.00 held=0.00 in 
+   HES1002_9_0.html             shingles= 1839 der=0.00 held=0.00 in HES1002_4_0.html
+
+## HIS1001 unpaired=3 derivable=0 held-by-claude=0
+   HIS1001-1.0.html             shingles=  970 der=0.17 held=0.00 in HIS1001_4_0.html
+   HIS1001-2.0.html             shingles= 1603 der=0.09 held=0.09 in HIS1001_0_0.html
+   HIS1001-6.0.html             shingles= 1149 der=0.00 held=0.00 in HIS1001_4_0.html
+
+## MUS1006 unpaired=1 derivable=0 held-by-claude=0
+   MUS1006_1_0.html             shingles=  190 der=0.22 held=0.22 in MUS1006_3_0.html
+
+## MXDB301 unpaired=3 derivable=0 held-by-claude=0
+   MXDB301_3.0.html             shingles=  728 der=0.02 held=0.02 in MXDB301_4_0_0.html
+   MXDB301_7.0.html             shingles=  535 der=0.00 held=0.00 in MXDB301_7_0.html
+   MXDB301_8.0.html             shingles= 1522 der=0.09 held=0.06 in MXDB301_0_0.html
+
+## MXDI301 unpaired=4 derivable=0 held-by-claude=0
+   MXDI301_01.0.html            shingles=  994 der=0.46 held=0.46 in MXDI301_1_0.html
+   MXDI301_03.0.html            shingles= 1113 der=0.32 held=0.34 in MXDI301_3_0.html
+   MXDI301_05.0.html            shingles=  566 der=0.29 held=0.38 in MXDI301_5_0.html
+   MXDI301_08.0.html            shingles=  606 der=0.20 held=0.11 in MXDI301_7_0.html
+
+## MXEO202 unpaired=1 derivable=0 held-by-claude=0
+   MXEO202_01.0.html            shingles=  161 der=0.42 held=0.43 in MXEO202_0_0.html
+
+## MXEX301 unpaired=2 derivable=0 held-by-claude=0
+   MXEX301_05.1.html            shingles=  592 der=0.00 held=0.01 in MXEX301_5_0_0.html
+   MXEX301_06.0.html            shingles=  413 der=0.10 held=0.20 in MXEX301_6_0.html
+
+## MXFL101 unpaired=2 derivable=0 held-by-claude=0
+   MXFL101_10.1.html            shingles=  351 der=0.13 held=0.13 in MXFL101_0_0.html
+   MXFL101_10.2.html            shingles=  911 der=0.05 held=0.05 in MXFL101_0_0.html
+
+## MXFL102 unpaired=1 derivable=0 held-by-claude=0
+   MXFL102_7.0.html             shingles=  517 der=0.13 held=0.09 in MXFL102_7_0.html
+
+## MXFL103 unpaired=2 derivable=0 held-by-claude=0
+   MXFL103_5.0.html             shingles=  611 der=0.07 held=0.07 in MXFL103_1_4.html
+   MXFL103_7.0.html             shingles= 1376 der=0.28 held=0.32 in MXFL103_0_0.html
+
+## MXFL203 unpaired=1 derivable=0 held-by-claude=0
+   MXFL203_10.0.html            shingles= 2326 der=0.29 held=0.21 in MXFL203_11_0.html
+
+## MXFL204 unpaired=1 derivable=0 held-by-claude=0
+   MXFL204_3.1.html             shingles=  545 der=0.00 held=0.00 in MXFL204_5_0.html
+
+## MXFU302 unpaired=2 derivable=0 held-by-claude=0
+   MXFU302_10.0.html            shingles=  675 der=0.03 held=0.07 in MXFU302_9_0.html
+   MXFU302_7.0.html             shingles=  239 der=0.00 held=0.00 in MXFU302_1_0.html
+
+## MXS1004 unpaired=1 derivable=0 held-by-claude=0
+   MXS1004_9_0.html             shingles= 3010 der=0.17 held=0.14 in MXS1004_8_0.html
+
+## PES1007 unpaired=1 derivable=0 held-by-claude=0
+   PES1007_10.0.html            shingles= 1245 der=0.03 held=0.02 in PES1007_0_0.html
+
+## SPA1004 unpaired=12 derivable=0 held-by-claude=0
+   SPA1004_10_0.html            shingles= 2603 der=0.00 held=0.00 in SPA1004_0_0.html
+   SPA1004_11_0.html            shingles= 1047 der=0.00 held=0.00 in SPA1004_0_0.html
+   SPA1004_12_0.html            shingles= 1935 der=0.39 held=0.40 in SPA1004_3_0.html
+   SPA1004_13_0_Audio.html      shingles=  108 der=0.00 held=0.00 in 
+   SPA1004_14_0_Vocabulary.html shingles= 1110 der=0.00 held=0.00 in 
+   SPA1004_2_0.html             shingles= 1324 der=0.00 held=0.00 in SPA1004_0_0.html
+   SPA1004_4_0.html             shingles= 1971 der=0.00 held=0.00 in SPA1004_0_0.html
+   SPA1004_5_0.html             shingles= 1226 der=0.00 held=0.00 in SPA1004_0_0.html
+   SPA1004_6_0.html             shingles= 1446 der=0.00 held=0.00 in SPA1004_0_0.html
+   SPA1004_7_0.html             shingles= 2187 der=0.00 held=0.00 in SPA1004_0_0.html
+   SPA1004_8_0.html             shingles= 1034 der=0.01 held=0.01 in SPA1004_0_0.html
+   SPA1004_9_0.html             shingles= 1224 der=0.00 held=0.00 in SPA1004_0_0.html
+
+## SSOG301 unpaired=1 derivable=0 held-by-claude=0
+   SSOG301_05.0.html            shingles=    0 der=0.00 held=0.00 in 
+
+## TRR104 unpaired=4 derivable=0 held-by-claude=0
+   TRR104_0.0.html              shingles= 1135 der=0.00 held=0.00 in 
+   TRR104_1.0.html              shingles=  855 der=0.00 held=0.00 in 
+   TRR104_2.0.html              shingles= 1002 der=0.01 held=0.00 in 
+   TRR104_3.0.html              shingles= 2078 der=0.01 held=0.00 in 
+
+## TRR105 unpaired=3 derivable=0 held-by-claude=0
+   TRR105_0.0.html              shingles= 1112 der=0.00 held=0.00 in 
+   TRR105_1.0.html              shingles=  786 der=0.00 held=0.00 in 
+   TRR105_2.0.html              shingles= 1349 der=0.02 held=0.00 in 
+
+## TRR106 unpaired=1 derivable=0 held-by-claude=0
+   TRR106_1.0.html              shingles= 1118 der=0.48 held=0.00 in TRR106_2_0.html
+
+## TRR107 unpaired=3 derivable=0 held-by-claude=0
+   TRR107_0.0.html              shingles= 1467 der=0.00 held=0.00 in TRR107_0_0.html
+   TRR107_4.0.html              shingles=    3 der=0.00 held=0.00 in 
+   TRR107_5.0.html              shingles=   19 der=0.00 held=0.21 in TRR107_0_0.html
+
+## TRR112 unpaired=2 derivable=0 held-by-claude=0
+   TRR112_0.0.html              shingles= 1552 der=0.00 held=0.00 in TRR112_5_0.html
+   TRR112_6.0.html              shingles=  195 der=0.00 held=0.06 in TRR112_0_0.html
+
+## TRR113 unpaired=1 derivable=0 held-by-claude=0
+   TRR113_0.0.html              shingles= 1518 der=0.00 held=0.00 in TRR113_5_0.html
+
+## TRR114 unpaired=2 derivable=0 held-by-claude=0
+   TRR114_4.0.html              shingles=  769 der=0.00 held=0.00 in 
+   TRR114_5.0.html              shingles= 1419 der=0.00 held=0.01 in TRR114_0_0.html
+
+## TRR115 unpaired=4 derivable=0 held-by-claude=0
+   TRR115_0.0.html              shingles= 1748 der=0.00 held=0.00 in 
+   TRR115_1.0.html              shingles=  817 der=0.00 held=0.00 in 
+   TRR115_2.0.html              shingles= 1031 der=0.00 held=0.00 in 
+   TRR115_3.0.html              shingles= 1230 der=0.00 held=0.00 in 
+
+## TRR304 unpaired=2 derivable=0 held-by-claude=0
+   TRR304_1.0.html              shingles= 2199 der=0.00 held=0.03 in TRR304_2_0.html
+   TRR304_2.0.html              shingles= 2173 der=0.00 held=0.64 in TRR304_2_0.html

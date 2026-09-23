@@ -1052,6 +1052,32 @@ class DocxExtractor {
 				}
 			}
 		}
+
+		// ROUND 453 (the autonomous loop's session 41 Round 1) — THE TABLE-CELL
+		// TITLE BAR OPENS THE DOCUMENT. The MTK bilingual template (the TRR family)
+		// types its [TITLE BAR] inside a bilingual TABLE cell, which the chain above
+		// never reads, so the document opened LATER — at [LESSON 1 CONTENT], a later
+		// paragraph tag, or (no start at all) the fallback's first paragraph tag —
+		// and the whole overview (and in TRR116 / TRR107 / TRR304 whole lessons) was
+		// trimmed as front matter. A table whose cell holds a red span resolving to
+		// "title bar" BEFORE the start found here opens the document instead. The
+		// drop-down template (PNR, TRR203 / 301) already opens before its title-bar
+		// table, so it is untouched.
+		// Data: content_start.table_title_bar_opener. Env toggle: TABLETB_OFF.
+		const ttbCfg = DataService.Data.InputDocRules.content_start?.table_title_bar_opener;
+		if (ttbCfg?.enabled && normaliser
+			&& !(typeof process !== "undefined" && process.env && process.env[ttbCfg.env ?? "TABLETB_OFF"])) {
+			const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+			const ttb = blocks.findIndex((b) => b.kind === "table"
+				&& (b.rows ?? []).some((row) => row.some((cell) =>
+					[...String(cell ?? "").matchAll(RED)].some((m) =>
+						normaliser.Parse(m[1]).primary?.tag === "title bar"))));
+			if (ttb >= 0 && (start < 0 || ttb < start)) {
+				run?.AddNote("info", "DocxExtractor",
+					"Content opened at the [TITLE BAR] typed inside a table cell (the MTK bilingual template) — the overview tables before the first paragraph-level start are content, not front matter (round 453).");
+				start = ttb;
+			}
+		}
 		if (start >= 0) result = blocks.slice(start);
 
 		// last chance (data rule content_start_fallback_directives): the
