@@ -590,12 +590,13 @@ once.
   trap) — **do not recreate one.** An intake (§1f) records every new no-build module in its
   handover under one of these three headings (recognition gap with a spec / no source / needs
   Chris) and never as a defect.
-- **The subject labels are PROPOSED, not final.** `data/Subject_Prefix_Map.json` (round 408)
-  assigns a subject to 30 module-code prefixes that had no learning-area folder. Chris has not
-  yet approved the Languages split (CHI/GER/JPN/SAM/SPA under NCEA1 vs a single Languages
-  label). Treat the labels as a grouping convenience; **do not build a rule that depends on one
-  being correct**, and do not re-litigate them — they are one data edit plus a registry
-  re-merge when he decides.
+- **The subject labels: the LANGUAGE split is CONFIRMED, the rest is PROPOSED.** `data/Subject_Prefix_Map.json`
+  (round 408) assigns a subject to 30 module-code prefixes that had no learning-area folder. Chris
+  confirmed the Languages split on 23 Sept 2026 (D13-12, recorded at r441): CHI / GER / JPN / SAM / SPA
+  → "NCEA1", CHFUN / FRFUN / JPFUN / FRNO / GENO / CHWHA / GEWHA → "1-10 Languages" (the file's
+  `_meta.confirmed` list) — a subject-keyed rule MAY depend on those. Every other row (WJFUN
+  "1-10 Writing (MiW)", PWY / PWYWHA "NCEA1", …) is still PROPOSED: treat it as a grouping
+  convenience, **do not build a rule that depends on one being correct**, and do not re-litigate it.
 - **The division of labour with interactive sessions (Chris, 20 September 2026).** An
   interactive session does only what the loop cannot do for itself — a registry rebuild after
   an intake, the parsed-text process, the example-module UI. **Converter rounds belong to the

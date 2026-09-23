@@ -2,7 +2,7 @@
 	"_meta": {
 		"purpose": "Module-code PREFIX -> subject label, for the prefixes the All_Template_Reports learning-area folders do NOT file. build_granular_registry.py build_subject_map() reads the report folders FIRST (the standing source — a report-derived label is never overridden here) and then fills the remaining gaps from `prefixes` below. The merged map is written into Module_Structure_Index.json (_meta.subject_map + every module_meta.subject) and Granular_Scaffold_Registry.json (_meta._subject_map, the cascade's subject grouping). The subject label is what the HTML Generator's Reference-module Subject filter shows; a prefix absent from both sources keeps a blank subject (shown under 'All subjects', never offered as a filter entry — Gavin: no 'Unclassified').",
 		"created": "2026-09-20 (session 28, Task 1 — the 98-module September intake's registry rebuild)",
-		"status": "PROPOSED — awaiting Chris's approval (session 28 report). Labels follow the library's existing precedent: a code filed under `Online > NCEA1` on the server is 'NCEA1' whatever its learning area (AGH / ART / HES / HIS / PES / PHE / PWO are already filed that way); a Te ara Tipu (Primary) learning area is its '1-10 <area>' folder name; the Style_Anchor_Registry's existing '1-10 Languages' subject (r265, CHFUN) takes the Phase 1-4 language families. Change a label here and re-run `python3 build_granular_registry.py --merge` — the label is output-inert for the current corpus (the cascade's engine application is OFF, and no shipped subject-keyed rule names these labels), so no regeneration follows a relabel.",
+		"status": "PARTLY CONFIRMED (ROUND 441, 23 Sept 2026 — Chris's decision D13-12, 'Option A: confirm the proposed split'): the two LANGUAGE decision points below are CONFIRMED — CHI / GER / JPN / SAM / SPA → 'NCEA1' and CHFUN / FRFUN / JPFUN / FRNO / GENO / CHWHA / GEWHA → '1-10 Languages' (the `confirmed` list); subject-keyed rules MAY depend on those labels from now on. The question Chris answered covered the language split only, so the 'writing' (WJFUN) and 'pathways' (PWY / PWYWHA) points and every other row stay PROPOSED — do not build a rule that depends on one of them. Originally: PROPOSED — awaiting Chris's approval (session 28 report). Labels follow the library's existing precedent: a code filed under `Online > NCEA1` on the server is 'NCEA1' whatever its learning area (AGH / ART / HES / HIS / PES / PHE / PWO are already filed that way); a Te ara Tipu (Primary) learning area is its '1-10 <area>' folder name; the Style_Anchor_Registry's existing '1-10 Languages' subject (r265, CHFUN) takes the Phase 1-4 language families. Change a label here and re-run `python3 build_granular_registry.py --merge` — the label is output-inert for the current corpus (the cascade's engine application is OFF, and no shipped subject-keyed rule names these labels), so no regeneration follows a relabel.",
 		"evidence": {
 			"server_map": "00_Server_Module_Map.md — CBI1000 / CHI1000 / COM1000 / DAN1000 / DTC1000 / GEO1000 / GER1000 / JPN1000 / MUS1000 / MXS1000 / SAM1000 / SPA1000 all sit under `Online > NCEA1`; SCBI under `Te ara Tipu (Primary) > 1-10 Science` beside SCCH; HPRE under `1-10 Health and PE`; SSEA under `1-10 Social Science`; TEDC under `1-10 Technology`; BLLR beside BLL under `1-10 Blended Literacy`.",
 			"doc14": "Subject_Global_Parameters.json families: §14.4 Languages cohort (CHI / FRE / SAM / GER / JAP / SPA + the FUN spellings), §14.10 MiW 'My Te Kura Writing' (codes begin WJ — a family of its own, not English and not Languages), §14.5 Pathways (PWO / PADO / PATH — PWO is filed NCEA1 in the Style_Anchor_Registry).",
@@ -13,6 +13,24 @@
 			"whakatau_modules": "CHWHA / GEWHA proposed with the Phase 1-4 language families ('1-10 Languages'); alternative: with their NCEA1 course prefixes.",
 			"writing": "WJFUN proposed as its own label '1-10 Writing (MiW)' (doc-14 §14.10). Alternative '1-10 English' — NOT recommended without measurement: it would switch on the English-keyed rules (the r405 journal box, the 4-card side-column exclusion) for 21 modules whose gold was never measured for them.",
 			"pathways": "PWY / PWYWHA proposed 'NCEA1' (PWO's existing filing); alternative a new 'Pathways' label."
+		},
+		"confirmed": {
+			"_doc": "ROUND 441 (Chris's decision D13-12, 23 Sept 2026; LOOP_STATE.md 'Decisions from Chris (session 38)'). These prefixes' labels are DECIDED; the rest of `prefixes` is still PROPOSED. Documentation only — build_granular_registry.py reads `prefixes`, and the engine does not load this file.",
+			"decision": "D13-12",
+			"prefixes": [
+				"CHI",
+				"GER",
+				"JPN",
+				"SAM",
+				"SPA",
+				"CHFUN",
+				"FRFUN",
+				"JPFUN",
+				"FRNO",
+				"GENO",
+				"CHWHA",
+				"GEWHA"
+			]
 		}
 	},
 	"prefixes": {

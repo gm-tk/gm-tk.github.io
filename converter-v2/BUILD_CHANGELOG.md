@@ -1,5 +1,15 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-23 (round 441, build 260620.12) — THE LANGUAGE SUBJECT LABELS ARE CONFIRMED: `Subject_Prefix_Map.json`'s language split is Chris's decision now, not a proposal — Chris's D13-12, the loop's session 39 Round 3 (output-inert, no regeneration)
+
+### 1. WHAT CHANGED
+
+Round 408 gave 30 module-code prefixes with no learning-area folder a PROPOSED subject label, and the loop was told never to build a rule on one. Chris answered the language question on 23 Sept (D13-12, "Option A: confirm the proposed split"): the NCEA-level language courses **CHI / GER / JPN / SAM / SPA stay "NCEA1"**, and the beginner / novice / welcome language modules **CHFUN / FRFUN / JPFUN / FRNO / GENO / CHWHA / GEWHA are "1-10 Languages"**. `data/Subject_Prefix_Map.json` `_meta.status` now reads PARTLY CONFIRMED and a new `_meta.confirmed` block lists the twelve prefixes; `LOOP__Autonomous_Rounds.md` §2 says a subject-keyed rule MAY depend on those labels. **Only the language split was confirmed** — the question Chris answered covered nothing else — so the `writing` (WJFUN) and `pathways` (PWY / PWYWHA) decision points and every other row stay PROPOSED, and the §2 "do not build a rule on it" rule still covers them.
+
+### 2. PROOF — output-inert by construction
+
+The engine's loader (`app/js/_modules.json` `data_map`, 19 files) does not load `Subject_Prefix_Map.json`; the only reader is `reference/tests/build_granular_registry.py`, which reads `prefixes` (unchanged). No regeneration; `_content_manifest.py diff` → **IDENTICAL, 0 pages differ**. Every gate is the r440 baseline by construction (SCAFFOLD 54.7442 % @ 2470; cs 15657 / 199 / 796 / 24; body 56 / 5 / 201 / 260; clean 2613 / 2658; leak 75 / 45). Plateau: a registry-status round, gate-neutral by design — neither counts nor resets (0 of 3).
+
 ## 2026-09-23 (round 440, build 260620.11) — THE DUAL-BUILD GOLDS: five gold folders held two builds of the same module (a one-page tabbed page AND a split set); the gates now score each module against the build Chris confirmed students got, and PageForge builds MXFUN01 / BLL240 / CEDT207 as that one page — Chris's decision D13-6, the loop's session 39 Round 2 (a gate-population re-base, labelled)
 
 ### 1. WHAT CHANGED
