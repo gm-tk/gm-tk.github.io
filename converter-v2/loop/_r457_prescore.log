@@ -1,0 +1,43 @@
+
+## HIS1002: pairs 11 -> 11
+   HIS1002-0.0.html         OLD HIS1002_0_0.html    56.0  NEW HIS1002_0_0.html    56.0 (raw  30.9)
+   HIS1002-1.0.html         OLD HIS1002_2_0.html    61.3  NEW HIS1002_1_0.html    27.7 (raw  22.5)
+   HIS1002-10.0.html        OLD HIS1002_19_0.html   16.1  NEW HIS1002_10_0.html   15.8 (raw  12.0)
+   HIS1002-2.0.html         OLD HIS1002_3_0.html    33.5  NEW HIS1002_2_0.html    21.2 (raw  16.6)
+   HIS1002-3.0.html         OLD HIS1002_5_0.html    62.6  NEW HIS1002_3_0.html    60.0 (raw  34.5)
+   HIS1002-4.0.html         OLD HIS1002_7_0.html    40.9  NEW HIS1002_4_0.html    46.0 (raw  35.2)
+   HIS1002-5.0.html         OLD HIS1002_9_0.html    55.5  NEW HIS1002_5_0.html    54.1 (raw  46.9)
+   HIS1002-6.0.html         OLD HIS1002_11_0.html   45.5  NEW HIS1002_6_0.html    45.8 (raw  38.3)
+   HIS1002-7.0.html         OLD HIS1002_13_0.html   34.5  NEW HIS1002_7_0.html    34.7 (raw  27.3)
+   HIS1002-8.0.html         OLD HIS1002_15_0.html   68.7  NEW HIS1002_8_0.html    69.4 (raw  46.3)
+   HIS1002-9.0.html         OLD HIS1002_17_0.html   51.7  NEW HIS1002_9_0.html    50.3 (raw  30.0)
+   module sum 526.3 over 11 -> 481.0 over 11  (mean 47.8 -> 43.7)
+
+## MXFU402: pairs 8 -> 8
+   MXFU402_0.0.html         OLD MXFU402_0_0.html    62.7  NEW MXFU402_0_0.html    62.7 (raw  56.2)
+   MXFU402_1.0.html         OLD MXFU402_1_0.html    51.2  NEW MXFU402_1_0.html    51.2 (raw  37.5)
+   MXFU402_2.0.html         OLD MXFU402_2_0.html    30.9  NEW MXFU402_2_0.html    31.3 (raw  20.5)
+   MXFU402_3.0.html         OLD MXFU402_3_0.html    45.6  NEW MXFU402_3_0.html    45.5 (raw  27.2)
+   MXFU402_4.0.html         OLD MXFU402_4_0.html    16.4  NEW MXFU402_4_0.html    16.4 (raw  13.7)
+   MXFU402_5.0.html         OLD MXFU402_5_0.html    57.4  NEW MXFU402_5_0.html    57.4 (raw  39.3)
+   MXFU402_6.0.html         OLD MXFU402_6_0.html    49.8  NEW MXFU402_6_0.html    49.8 (raw  39.1)
+   MXFU402_7.0.html         OLD MXFU402_7_0.html    51.1  NEW MXFU402_7_0.html    51.1 (raw  53.5)
+   module sum 365.1 over 8 -> 365.3 over 8  (mean 45.6 -> 45.7)
+
+## PES1008: pairs 12 -> 11
+   PES1008_0.0.html         OLD PES1008_0_0.html    81.5  NEW PES1008_0_0.html    81.5 (raw  61.3)
+   PES1008_1.0.html         OLD PES1008_1_0.html    46.0  NEW PES1008_1_0.html    46.0 (raw  49.5)
+   PES1008_10.html          OLD PES1008_18_0.html   51.9  NEW PES1008_10_0.html   51.9 (raw  24.6)
+   PES1008_2.0.html         OLD PES1008_3_0.html    40.2  NEW PES1008_2_0.html    40.0 (raw  31.9)
+   PES1008_3.0.html         OLD PES1008_4_0.html    40.3  NEW —                    ——
+   PES1008_3.1.html         OLD PES1008_5_0.html    27.8  NEW PES1008_3_0.html    32.9 (raw  21.3)
+   PES1008_4.0.html         OLD PES1008_7_0.html    37.4  NEW PES1008_4_0.html    41.2 (raw  38.6)
+   PES1008_5.0.html         OLD PES1008_10_0.html   36.7  NEW PES1008_5_0.html    44.8 (raw  44.8)
+   PES1008_6.0.html         OLD PES1008_8_0.html    31.2  NEW PES1008_6_0.html    41.3 (raw  28.2)
+   PES1008_7.0.html         OLD PES1008_6_0.html    35.1  NEW PES1008_7_0.html    50.7 (raw  24.9)
+   PES1008_8.0.html         OLD PES1008_15_0.html   28.7  NEW PES1008_8_0.html    34.8 (raw  16.7)
+   PES1008_9.0.html         OLD PES1008_17_0.html   43.5  NEW PES1008_9_0.html    50.0 (raw  44.8)
+   module sum 500.1 over 12 -> 515.0 over 11  (mean 41.7 -> 46.8)
+
+changed modules: pairs 31 -> 30; pp-sum 1391.5 -> 1361.4 (-30.1)
+corpus: 54.8705 % @ 2520 -> ≈ 54.8803 % @ 2519  (+0.0098pp);  >=50 +1, >=75 +0

@@ -97,10 +97,10 @@ is pre-intake. Current (23 September 2026, build 260620.13 — after the 22 Sept
 | | before the intake | now |
 |---|---:|---:|
 | Claude module dirs | 416 | **545** |
-| Claude pages | 2,109 | **2,717** (r456, 24 Sept: +41 — the mid-page lesson heading opens its page, 22 modules; r453: +10 — the TRR table-cell title bar) |
+| Claude pages | 2,109 | **2,700** (r457, 24 Sept: −17 — the section-label marker no longer splits HIS1002 / PES1008; r456: +41 — the mid-page lesson heading opens its page, 22 modules; r453: +10 — the TRR table-cell title bar) |
 | gold dirs | 454 | **552** |
 | Writers Template / Media List docx | 619 | **762** |
-| skeleton paired pages | 1,956 | **2,520** (r456, 24 Sept: +33 net — 37 new lesson pages, 4 lost to content pairing; r453: +10 — the restored TRR pages; r447: +1 — PWY1002_2_2_0 pairs by content once its journal heading is the gold's own) |
+| skeleton paired pages | 1,956 | **2,519** (r457: −1 — PES1008's lesson 3 is one page, the human's 3.0 / 3.1 split; r456, 24 Sept: +33 net — 37 new lesson pages, 4 lost to content pairing; r453: +10 — the restored TRR pages; r447: +1 — PWY1002_2_2_0 pairs by content once its journal heading is the gold's own) |
 
 **552 gold dirs against 545 Claude dirs is CORRECT, not a fault — the gap is exactly the 7 with no source.**
 The 7 (`GER1003–1007`, `SAM1005`, `SAM1006`) have no Writers Template at all (§2). The 12 XOTP modules joined the

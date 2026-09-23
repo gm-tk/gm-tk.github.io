@@ -6280,7 +6280,11 @@
 			"instruction_guard": true,
 			"instruction_dominant_min_words": 8,
 			"deny_lead_pattern": "\\b(?:rollover|roll over|hover|mouseover)\\b",
-			"foreign_code_pattern": "\\b[A-Z]{2,5}\\d{3,4}\\b"
+			"foreign_code_pattern": "\\b[A-Z]{2,5}\\d{3,4}\\b",
+			"deny_marker_pattern": "^\\[\\s*lesson\\s+title\\s*\\]",
+			"deny_short_marker_pattern": "^\\[\\s*lesson\\s+summary\\s*\\]",
+			"deny_short_marker_max_items": 12,
+			"_doc_deny_marker_pattern": "ROUND 457 (the autonomous loop's session 41 Round 5) — a SECTION LABEL is not a page boundary. (1) deny_marker_pattern, unconditional: the inline '[lesson title]' label ('[H2] *Lesson 2* [lesson title] *Heat Capacity Calculations*', PES1008 ×8) names the title of the lesson it sits in — the human keeps one page per lesson (PES1008 gold 12 / 19 built). (2) deny_short_marker_pattern: a red '[Lesson Summary]' label before the lesson's own '[H3] Lesson Summary' heading (HIS1002 ×10, MXFU402 ×2, CEDK401 ×3) is part of the lesson when the next page boundary follows within deny_short_marker_max_items items (the summary is short); when a whole run of content follows it stays a boundary — HIS1002's FIRST summary is where lesson 2 (typed with no marker of its own) begins, and denying it merged lessons 1 + 2 (gold 1.0 61.3 → 27.7 on the first probe). Round 245 listed both forms among the 'genuine' embedded markers without a gold check; census outputs/_s41_r5_embedmark_0*.log. A denied span stays in the page (the guard's deny path), exactly like an instruction-dominant span. Env LABELMARK_OFF."
 		}
 	},
 	"formatter": {

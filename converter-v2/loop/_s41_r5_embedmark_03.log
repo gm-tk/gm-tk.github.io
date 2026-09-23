@@ -1,0 +1,45 @@
+## Bilingual TRR203 gold_html=4 claude_pages=4 embedded=1
+   [MODULE CONTENT: PAGE 1] (no page)
+## Bilingual TRR301 gold_html=4 claude_pages=4 embedded=1
+   [MODULE CONTENT: PAGE 1] (no page)
+## Bilingual TRR304 gold_html=5 claude_pages=4 embedded=1
+   [MODULE CONTENT;PAGE 1] (no page)
+## Fundamentals SCFUN01 gold_html=1 claude_pages=1 embedded=1
+   [4 tiles, click to go the page. Tiles are Phase 1, (no page)
+## Fundamentals TEFUN05 gold_html=1 claude_pages=1 embedded=1
+   [page ends] (no page)
+## Fundamentals WJFUN107 gold_html=1 claude_pages=1 embedded=2
+   [page ends] (no page)
+   [page ends] (no page)
+## Fundamentals WJFUN305 gold_html=1 claude_pages=1 embedded=1
+   [Prompt: Educational information report about Tham (no page)
+## Inquiry XDLS903 gold_html=8 claude_pages=8 embedded=1
+   [Sticky Nav Layout with the following repeat on EV (no page)
+## Standard TEDC401 gold_html=8 claude_pages=8 embedded=1
+   [Final Page] (no page)
+## Standard TEDC402 gold_html=10 claude_pages=11 embedded=1
+   [Final Page] (no page)
+## Standard XDLS904 gold_html=8 claude_pages=8 embedded=1
+   [Sticky Nav Layout with the following repeat on EV (no page)
+## Standard XDLS905 gold_html=8 claude_pages=8 embedded=1
+   [Sticky Nav Layout with the following repeat on EV (no page)
+## Standard XDLS906 gold_html=8 claude_pages=8 embedded=1
+   [Sticky Nav Layout with the following repeat on EV (no page)
+## Standard XDLS908 gold_html=19 claude_pages=9 embedded=1
+   [Sticky Nav Layout with the following - Repeat on  (no page)
+## Standard XLP05 gold_html=5 claude_pages=6 embedded=1
+   [Intro Page] (no page)
+## Standard XMES202 gold_html=7 claude_pages=7 embedded=1
+   [insert page break] (no page)
+
+BY MARKER (folded, digits→N):
+    4 spans /  4 modules / opens 0: [sticky nav layout with the following re  [XDLS903 XDLS904 XDLS905 XDLS906]
+    3 spans /  2 modules / opens 0: [page ends]  [TEFUN05 WJFUN107]
+    2 spans /  2 modules / opens 0: [module content: page N]  [TRR203 TRR301]
+    2 spans /  2 modules / opens 0: [final page]  [TEDC401 TEDC402]
+    1 spans /  1 modules / opens 0: [module content;page N]  [TRR304]
+    1 spans /  1 modules / opens 0: [N tiles, click to go the page. tiles ar  [SCFUN01]
+    1 spans /  1 modules / opens 0: [prompt: educational information report   [WJFUN305]
+    1 spans /  1 modules / opens 0: [sticky nav layout with the following -   [XDLS908]
+    1 spans /  1 modules / opens 0: [intro page]  [XLP05]
+    1 spans /  1 modules / opens 0: [insert page break]  [XMES202]

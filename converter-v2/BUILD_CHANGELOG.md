@@ -1,5 +1,28 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (round 457, build 260620.27) — THE SECTION-LABEL MARKER IS NOT A PAGE BOUNDARY: the writer's inline `[lesson title]` label and a red `[Lesson Summary]` label before a short summary no longer cut the lesson into extra pages — the loop's session 41 Round 5 (the page-model lane: the over-split census)
+
+### 1. WHAT CHANGED
+
+**The find.** The census of modules where Claude builds MORE pages than the human (PES1008 19 / 12, HIS1002 21 / 11, …) showed the pattern big page / tiny page / big page. PES1008's tiny pages are each lesson's menu block — the line `[H2] *Lesson 2* [lesson title] *Heat Capacity Calculations*` carries an inline `[lesson title]` label that parses as an embedded `lesson` PAGE_BOUNDARY, so the lesson body opened a new page. HIS1002's tiny pages are its summaries: a red `[Lesson Summary]` label before `[H3] Lesson Summary` opened a page holding just the summary (2–10 items) before the next `[LESSON N]`. The embedded-marker census (`outputs/_s41_r5_embedmark.cjs` → `_s41_r5_embedmark_0*.log`): `[lesson summary]` 12 spans (HIS1002, MXFU402) + 3 (CEDK401, single-file), `[lesson title]` 8 (PES1008). Round 245's guard listed both among the "genuine" embedded markers without a gold check.
+
+**The fix** (the r245 `PageSplitter` lesson_boundary_guard; data `Emit_Templates.page_split.lesson_boundary_guard.deny_marker_pattern` / `deny_short_marker_pattern` / `deny_short_marker_max_items`; env **`LABELMARK_OFF`**, byte-identical OFF): `[lesson title]` is denied as a boundary unconditionally (it names the title of the lesson it sits in); `[Lesson Summary]` is denied when the next page boundary follows within 12 items (a short summary is part of its lesson). A denied span stays in the page — the guard's existing deny path.
+- In-round repair: the first probe denied the summary label everywhere and merged HIS1002's lessons 1 + 2 (gold 1.0 61.3 → 27.7) — the writer never typed a marker for lesson 2, so its FIRST `[Lesson Summary]` is where lesson 2 begins (115 items follow); the short-run lookahead keeps that one.
+
+### 2. PROOF
+
+- In-memory A/B (`outputs/_r457_probe_run.sh`): OFF identical; ON 24 pages / 3 modules (HIS1002, MXFU402, PES1008).
+- Pre-score with re-pairing (`_r457_prescore.py` → `_r457_prescore2.log`, split `_r457_split.py`): the pre-existing pairs +51.6 pp-sum (12 up / 7 dips ≤ 2.6); 1 lost pair — PES1008_3.0 (the human splits lesson 3 into 3.0 / 3.1; Claude now ships one lesson-3 page).
+- Scoped regeneration of the 3 + the spot-check (`_r457_regen.sh`): 0 truly stale, 12 / 12; disk = probe 34 / 34; `scoped_ship.sh --toggle LABELMARK_OFF --round 457`: containment 3 ⊆ 3; three movers committed NAMED (`_fastloop_diff --accept-named`).
+
+### 3. PROTECTED GATES
+
+- Skeleton **54.8705 % @ 2520 → 54.8967 % @ 2519 (+0.0263pp)**; ≥50 1575 → **1577**, ≥75 270, ≥90 24; RAW 38.878 → 38.896; 14 movers (9 up / 5 down, the downs ≤ 2.6 — HIS1002 3.0 / 9.0 / 2.0 / 7.0 / 10.0, the summaries now in-page); 0 outside the affected set.
+- compare_structure: matched 18636 → 18664, **exact 16024 → 16045**, EXTRA 199, **missing 840 → 847 (+7 NAMED — on the +28 newly matched summary / menu elements: HIS1002 +3 / +3, PES1008 +25 / +4)**, row-wrap 24.
+- body_compare: pages 2709 → 2692; **ANY 239 → 240 (+1 NAMED — PES1008_7_0**: its widget's over-capture (index 9) is pre-existing; before this round gold 7.0 paired with Claude's lesson-6 page, so the flag was not visible).
+- Structurally clean **2663 / 2709 → 2646 / 2692 (98.30 → 98.29 %, NAMED)** — the 17 removed pages were all clean; the unclean count held at 46. Leak 75 / 46 held. tags 9557 / 9557; every verifier ✓; selftests 50 PASS; index GREEN; the miner 196 CANDIDATE @ 2519.
+- Plateau (§4): predicted a move, delivered +0.0263pp — the window stays reset (0 of 3). Ledger: scoped **#4** since the r452 FULL.
+
 ## 2026-09-24 (round 456, build 260620.26) — THE MID-PAGE LESSON HEADING OPENS ITS LESSON PAGE: a lesson the writer starts with a heading (`[H1] Lesson Four: …`, `[H2] Lesson 2 The Negative Powers of 10`) or a black `[LESSON 5]` line — with no `[End page]` before it — gets its own page instead of being merged into the page before — the loop's session 41 Round 4 (the recognition lane: Round 1's under-split census). (Round 455 was built, probed and DECLINED — see LOOP_STATE.md; no engine change shipped under that number.)
 
 ### 1. WHAT CHANGED

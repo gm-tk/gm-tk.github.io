@@ -1,0 +1,97 @@
+## Bilingual PMT101 gold_html=4 claude_pages=4 embedded=1
+   [MODULE CONTENT: PAGE 1] (no page)
+## Bilingual PNR101 gold_html=3 claude_pages=2 embedded=1
+   [MODULE CONTENT: PAGE 1] (no page)
+## Bilingual PNR102 gold_html=3 claude_pages=3 embedded=1
+   [MODULE CONTENT: PAGE 1] (no page)
+## Bilingual PNR104 gold_html=3 claude_pages=3 embedded=1
+   [MODULE CONTENT: PAGE 1] (no page)
+## Bilingual PNR107 gold_html=3 claude_pages=3 embedded=1
+   [MODULE CONTENT: PAGE 1] (no page)
+## Fundamentals JPFUN01 gold_html=1 claude_pages=1 embedded=7
+   [Novice Page 1] (no page)
+   [Novice Page 2] (no page)
+   [Novice Page 3] (no page)
+   [Emergent Page 1] (no page)
+   [Emergent Page 2] (no page)
+   [Emergent Page 3] (no page)
+## Fundamentals MXFUN03 gold_html=1 claude_pages=1 embedded=1
+   [Intro page] (no page)
+## Standard HES1002 gold_html=12 claude_pages=8 embedded=2
+   [LESSON ONE] (no page)
+   [LESSON THREE] (no page)
+## Standard HIS1001 gold_html=11 claude_pages=8 embedded=2
+   [So you have the cartoon on the left of the whole  (no page)
+   [Can you please make a map of Te Moananui-ā-Kiwa w (no page)
+## Standard HIS1002 gold_html=11 claude_pages=21 embedded=10
+   [Lesson Summary] (no page)
+   [Lesson Summary] (no page)
+   [Lesson Summary] (no page)
+   [Lesson Summary] (no page)
+   [Lesson Summary] (no page)
+   [Lesson Summary] (no page)
+## Standard HIS1005 gold_html=15 claude_pages=15 embedded=6
+   [Rollover for mana: If you are not familiar with m (no page)
+   [Next Page –New Page 5.1] (no page)
+   [Next Page –New Page 6.1] (no page)
+   [Rollover for narrative: Go to fundamental lesson  (no page)
+   [Next Page – New Page 9.1] (no page)
+   [New Page –Next Page 10.1] (no page)
+## Standard HIS1006 gold_html=5 claude_pages=15 embedded=5
+   [Rollover for mana: If you are not familiar with m (no page)
+   [Next Page] (no page)
+   [Next Page] (2.1) (no page)
+   [Next Page - New Page 3.1] (no page)
+   [this source has the complaint pages in white but  (no page)
+## Standard HIS1007 gold_html=7 claude_pages=7 embedded=3
+   [Rollover for narrative: Go to fundamental lesson  (no page)
+   [Next Page – New Page 3.1] (no page)
+   [New Page – Next Page 4.1] (no page)
+## Standard HIS1008 gold_html=10 claude_pages=12 embedded=4
+   [Rollover for mana: If you are not familiar with m (no page)
+   [Next Page] (no page)
+   [Next Page] (2.1) (no page)
+   [Next Page – New Page 3.1] (no page)
+## Standard MXEX302 gold_html=8 claude_pages=8 embedded=1
+   [Lesson Title H1] (no page)
+## Standard MXFU402 gold_html=8 claude_pages=8 embedded=2
+   [Lesson summary] (no page)
+   [Lesson summary] (no page)
+## Standard PES1004 gold_html=11 claude_pages=11 embedded=1
+   [PHO1011 lesson 5.1-5.3 ] (no page)
+## Standard PES1007 gold_html=11 claude_pages=12 embedded=1
+   [from the what of linked lesson below] (no page)
+## Standard PES1008 gold_html=12 claude_pages=19 embedded=11
+   [PHO1053 Lesson 4] (no page)
+   [lesson title] (no page)
+   [lesson title] (no page)
+   [lesson title] (no page)
+   [from PHO1031 Lesson 6] (no page)
+   [lesson title] (no page)
+
+BY MARKER (folded, digits→N):
+   12 spans /  2 modules / opens 0: [lesson summary]  [HIS1002 MXFU402]
+    8 spans /  1 modules / opens 0: [lesson title]  [PES1008]
+    5 spans /  5 modules / opens 0: [module content: page N]  [PMT101 PNR101 PNR102 PNR104 PNR107]
+    4 spans /  1 modules / opens 0: [emergent page N]  [JPFUN01]
+    4 spans /  4 modules / opens 0: [next page - new page N.N]  [HIS1005 HIS1006 HIS1007 HIS1008]
+    3 spans /  1 modules / opens 0: [novice page N]  [JPFUN01]
+    3 spans /  3 modules / opens 0: [rollover for mana: if you are not famil  [HIS1005 HIS1006 HIS1008]
+    2 spans /  1 modules / opens 0: [next page -new page N.N]  [HIS1005]
+    2 spans /  2 modules / opens 0: [rollover for narrative: go to fundament  [HIS1005 HIS1007]
+    2 spans /  2 modules / opens 0: [next page]  [HIS1006 HIS1008]
+    2 spans /  2 modules / opens 0: [next page] (N.N)  [HIS1006 HIS1008]
+    1 spans /  1 modules / opens 0: [intro page]  [MXFUN03]
+    1 spans /  1 modules / opens 0: [lesson one]  [HES1002]
+    1 spans /  1 modules / opens 0: [lesson three]  [HES1002]
+    1 spans /  1 modules / opens 0: [so you have the cartoon on the left of   [HIS1001]
+    1 spans /  1 modules / opens 0: [can you please make a map of te moananu  [HIS1001]
+    1 spans /  1 modules / opens 0: [new page -next page N.N]  [HIS1005]
+    1 spans /  1 modules / opens 0: [this source has the complaint pages in   [HIS1006]
+    1 spans /  1 modules / opens 0: [new page - next page N.N]  [HIS1007]
+    1 spans /  1 modules / opens 0: [lesson title hN]  [MXEX302]
+    1 spans /  1 modules / opens 0: [phoN lesson N.N-N.N ]  [PES1004]
+    1 spans /  1 modules / opens 0: [from the what of linked lesson below]  [PES1007]
+    1 spans /  1 modules / opens 0: [phoN lesson N]  [PES1008]
+    1 spans /  1 modules / opens 0: [from phoN lesson N]  [PES1008]
+    1 spans /  1 modules / opens 0: [copy phoN lesson N]  [PES1008]

@@ -607,6 +607,29 @@ class PageSplitter {
 						const _lead = _at > 0 ? _raw.slice(0, _at) : "";
 						if (_lead && new RegExp(_lbgCfg.deny_lead_pattern, "i").test(_lead)) _deny = true;
 					}
+					// ROUND 457 (the autonomous loop's session 41 Round 5) — A SECTION LABEL. The
+					// writer's "[Lesson Summary]" (HIS1002, MXFU402 — a red label before the lesson's
+					// own "[H3] Lesson Summary" heading) and the inline "[lesson title]" (PES1008 —
+					// "[H2] *Lesson 2* [lesson title] *Heat Capacity Calculations*") name a PART of
+					// the lesson, not a new one; the human keeps both on the lesson page (HIS1002 11
+					// pages, PES1008 12, where they opened 21 and 19). Data
+					// lesson_boundary_guard.deny_marker_pattern; env LABELMARK_OFF.
+					const _lmOn = !(typeof process !== "undefined" && process.env && process.env.LABELMARK_OFF);
+					if (!_deny && _lmOn && _lbgCfg.deny_marker_pattern
+						&& new RegExp(_lbgCfg.deny_marker_pattern, "i").test(_folded.trim())) _deny = true;
+					// the summary label is a boundary only when a whole run of content follows it (HIS1002's
+					// first "[Lesson Summary]" is where lesson 2 — typed with no marker of its own — begins);
+					// before a short summary and the next marker it is part of the lesson
+					if (!_deny && _lmOn && _lbgCfg.deny_short_marker_pattern
+						&& new RegExp(_lbgCfg.deny_short_marker_pattern, "i").test(_folded.trim())) {
+						const _max = _lbgCfg.deny_short_marker_max_items ?? 12;
+						let _n = 0, _hit = false;
+						for (let q = i + 1; q < items.length && _n <= _max; q++, _n++) {
+							const x = items[q];
+							if (x.type === "tag" && x.parse?.primary?.directive === "PAGE_BOUNDARY") { _hit = true; break; }
+						}
+						if (_hit || _n < _max) _deny = true;
+					}
 					if (_deny) {
 						run.AddNote("info", "PageSplitter",
 							`"${_folded.trim().slice(0, 60)}" mentions ${tag} inside a writer instruction — not a page boundary (lesson_boundary_guard).`);

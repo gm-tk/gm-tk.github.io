@@ -1,0 +1,20 @@
+OLD pairs 2520  SCAFFOLD 54.8705%  RAW 38.878%  >=50 1575  >=75 270  >=90 24
+NEW pairs 2519  SCAFFOLD 54.8967%  RAW 38.896%  >=50 1577  >=75 270  >=90 24
+delta SCAFFOLD +0.0263pp  RAW +0.017pp  >=50 +2  >=75 +0  >=90 +0
+movers 14 (up 9 / down 5), pp-sum +16.5
+movers outside the affected set: 0 []
+new-only pages: 6  gone pages: 7
+  PES1008    PES1008_5_0.html           27.8 ->   44.8  (+17.1)
+  PES1008    PES1008_10_0.html          36.7 ->   51.9  (+15.1)
+  HIS1002    HIS1002_9_0.html           55.5 ->   69.4  (+13.9)
+  PES1008    PES1008_7_0.html           37.4 ->   50.7  (+13.4)
+  PES1008    PES1008_6_0.html           35.1 ->   41.3  (+6.2)
+  HIS1002    HIS1002_7_0.html           40.9 ->   45.8  (+4.9)
+  PES1008    PES1008_8_0.html           31.2 ->   34.8  (+3.6)
+  PES1008    PES1008_4_0.html           40.3 ->   41.2  (+0.9)
+  MXFU402    MXFU402_2_0.html           30.9 ->   31.3  (+0.4)
+  MXFU402    MXFU402_3_0.html           45.6 ->   45.5  (-0.1)
+  HIS1002    HIS1002_3_0.html           33.5 ->   32.9  (-0.6)
+  PES1008    PES1008_3_0.html           40.2 ->   32.9  (-7.3)
+  HIS1002    HIS1002_5_0.html           62.6 ->   41.4  (-21.2)
+  HIS1002    HIS1002_11_0.html          45.5 ->   15.8  (-29.7)

@@ -1,0 +1,36 @@
+## Standard ART1006 gold_html=5 claude_pages=6 embedded=1
+   [Create two new colour boxes to go on the side of  (no page)
+## Standard BLL175 gold_html=3 claude_pages=4 embedded=1
+   [from page 4 of Niskisha is a champ] (no page)
+## Standard BLL261 gold_html=3 claude_pages=3 embedded=1
+   [Lesson Two] (no page)
+## Standard BLL262 gold_html=3 claude_pages=3 embedded=1
+   [Lesson Two] (no page)
+## Standard BLL263 gold_html=3 claude_pages=3 embedded=1
+   [Lesson Two] (no page)
+## Standard BLL264 gold_html=3 claude_pages=3 embedded=1
+   [Lesson Two] (no page)
+## Standard BLL265 gold_html=3 claude_pages=4 embedded=1
+   [Lesson Two] (no page)
+## Standard BLLR201 gold_html=7 claude_pages=8 embedded=1
+   [Kōwhai Avatar – right hand side of the page] (no page)
+## Standard BLLR202 gold_html=7 claude_pages=12 embedded=5
+   [Kōwhai Avatar – right hand side of the page] (no page)
+   [Kōwhai Avatar – right hand side of the page] (no page)
+   [Insert bookworm on right side of page pulling a p (no page)
+   [Insert bookworm avatar on right hand side of the  (no page)
+   [Insert bookworm on right side of page with a part (no page)
+## Standard BLLR203 gold_html=7 claude_pages=10 embedded=3
+   [Kōwhai Avatar – right hand side of the page] (no page)
+   [Insert bookworm on right side of page] (no page)
+   [Insert bookworm on right side of page pulling a p (no page)
+
+BY MARKER (folded, digits→N):
+    5 spans /  5 modules / opens 0: [lesson two]  [BLL261 BLL262 BLL263 BLL264 BLL265]
+    4 spans /  3 modules / opens 0: [kowhai avatar - right hand side of the   [BLLR201 BLLR202 BLLR203]
+    2 spans /  2 modules / opens 0: [insert bookworm on right side of page p  [BLLR202 BLLR203]
+    1 spans /  1 modules / opens 0: [create two new colour boxes to go on th  [ART1006]
+    1 spans /  1 modules / opens 0: [from page N of niskisha is a champ]  [BLL175]
+    1 spans /  1 modules / opens 0: [insert bookworm avatar on right hand si  [BLLR202]
+    1 spans /  1 modules / opens 0: [insert bookworm on right side of page w  [BLLR202]
+    1 spans /  1 modules / opens 0: [insert bookworm on right side of page]  [BLLR203]
