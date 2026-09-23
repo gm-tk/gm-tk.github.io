@@ -1,5 +1,26 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (round 459, build 260620.29) — THE MODULE INTRODUCTION STAYS ON THE OVERVIEW: the introduction the writer marks black, glues to an image tag, puts behind a CS note, or writes as an `[H2] Introduction` heading no longer ships as its own page 1.0 — the human keeps it on the overview and its page 1 is lesson 1 — the loop's session 41 Round 7 (the page-model lane)
+
+### 1. WHAT CHANGED
+
+**The find** (`outputs/_s41_r7_intro.cjs` → `_s41_r7_intro_0*.log`, every module with the live splitter): 17 modules whose Claude page 1.0 is the module introduction while the human's page 1 is lesson 1 and the human's overview holds 0.5–0.95 of that page's text. AR-1 ("a stray `[end page]` on the OVERVIEW is disregarded when the next tag span is an introduction-cluster marker") reads only a resolved `[MODULE INTRODUCTION]` / title-bar alias / supervisor-note TAG as the first tag after the break. Four writer forms slipped past: the marker typed BLACK (`**[MODULE INTRODUCTION]**` HIS1002, ART1006, PES1005, TEDC402), glued to another tag (`[MODULE INTRODUCTION] [insert image]` GEO1004, MUS1004, XFUN02 — the span resolves to image), behind a CS / unresolved instruction tag (ENGR102), and the heading form (`[H2] Introduction`, `[H1] **INTRODUCTION**`, `[H3] **MODULE INTRODUCTION**`, `[H2] **Introduction:** Precipitation Reactions` — CBI1009, COM1005, COM1006, DAN1003, DAN1004, MXDI101).
+
+**The fix** (`PageSplitter.Split` AR-1 overview peek; data `Emit_Templates.page_split.intro_cluster_forms` {black_pattern, embedded_pattern, heading_pattern, heading_tags, skip_unresolved_tags}; env **`INTROFORM_OFF`**, byte-identical OFF): the peek recognises those forms (unresolved / instruction tags are looked past; `Lesson 1: Introduction to …` never matches). **In-round repair:** DAN1004 types its introduction and lesson 1 with no `[End page]` between them, so lessons 1–2 fell onto the overview (overview −26, two pairs lost) — a merged introduction now marks the overview, and the r456 mid-page lesson opener may fire on THAT overview only (`Lesson One: …` opens 1.0).
+
+### 2. PROOF
+
+- In-memory A/B (`outputs/_r459_probe_run.sh`): OFF identical; ON 135 pages / 17 modules (ART1006, CBI1009, COM1005, COM1006, DAN1003, DAN1004, ENGR102, GEO1004, HES1006, HIS1002, MUS1004, MXDI101, MXEO201, PES1005, TEDC402, XDLS501, XFUN02).
+- Pre-score with re-pairing (`_r459_prescore.py` → `_r459_prescore2.log`, split `_r459_split.py`): +351 pp-sum in the 17; **the pre-existing pairs +70.0 pp-sum (19 up / 6 down)**, 7 new pairs (mean 48.5), 1 lost.
+- Scoped regeneration of the 17 + the spot-check (`_r459_regen.sh`): 0 truly stale, 12 / 12; disk = probe 152 / 152; `scoped_ship.sh --toggle INTROFORM_OFF --round 459`: containment 17 ⊆ 17; three movers committed NAMED.
+
+### 3. PROTECTED GATES
+
+- Skeleton **54.9291 % @ 2518 → 54.9376 % @ 2524 (+0.0085pp; the pre-existing population +0.0264pp)**; **≥50 1578 → 1581**, **≥75 270 → 275**, ≥90 24 → 25; RAW 38.917 → 38.934; 0 movers outside the affected set. Named dips: COM1005_0_0 −10.8 and DAN1003_0_0 −6.8 (those humans render the introduction inside a module-menu tab — COM1005's overview has no `#body` — so the merged intro lands in a different container), COM1006_2_0 −9.4, XDLS501_4 −4.8, HIS1002 5.0 −1.5, TEDC402 1.0 −1.4; lost pair TEDC402-9.0 (the old intro page was paired with it; TEDC402's overview rose 59.0 → 81.6).
+- compare_structure: matched 18925 → 19467; **exact 16282 → 16719 (+437)**; **EXTRA 199 → 208 (+9 NAMED)** and **missing 860 → 896 (+36 NAMED)** — all on the +542 newly compared introduction elements (HIS1002 +167 matched / +32 missing; EXTRA ≤ 4 per module); row-wrap 24.
+- body_compare: pages 2683 → 2667, **ANY 240 → 239**. Structurally clean **2637 / 2683 → 2621 / 2667 (98.28 %, NAMED)** — the 16 removed pages were all clean; unclean held at 46. Leak 75 / 46 held. tags 9557 / 9557; every verifier ✓; selftests 50 PASS; index GREEN; the miner 197 CANDIDATE @ 2524.
+- Plateau (§4): read on the pre-existing population (§1e), +0.0264pp with ≥50 +3 / ≥75 +5 — moved; the window stays reset. Ledger: scoped **#6** since the r452 FULL (2 of headroom).
+
 ## 2026-09-24 (round 458, build 260620.28) — A PLACEMENT NOTE IS NOT A PAGE BOUNDARY: a writer's note saying where something goes on the page ("[Kōwhai Avatar – right hand side of the page]", "[Insert bookworm on right side of page …]") no longer cuts the lesson into an extra page — the loop's session 41 Round 6 (the over-split census, continued)
 
 ### 1. WHAT CHANGED

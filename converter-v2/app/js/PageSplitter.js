@@ -851,7 +851,7 @@ class PageSplitter {
 			}
 
 			// ---- ROUND 456: a mid-page lesson heading / black [LESSON N] line opens its page ----
-			if (!closed && _midOpeners.has(i) && current && !current.isOverview) {
+			if (!closed && _midOpeners.has(i) && current && (!current.isOverview || current._introMerged)) {
 				const c = _midOpeners.get(i);
 				if (c.n > lessonOrdinal) {
 					lessonOrdinal = c.n;
@@ -909,10 +909,29 @@ class PageSplitter {
 					const _cpm = DataService.Data.EmitTemplates.body_region?.choice_page_tiles;
 					const _cpmOn = _cpm && _cpm.enabled !== false && _cpm.merge_into_overview !== false
 						&& !(typeof process !== "undefined" && process.env && process.env.CHOICEMERGE_OFF);
+					// ROUND 459 (the autonomous loop's session 41 Round 7) — THE INTRODUCTION'S OTHER WRITER
+					// FORMS: a BLACK "**[MODULE INTRODUCTION]**" line (HIS1002, ART1006, PES1005), the marker
+					// glued to another tag ("[MODULE INTRODUCTION] [insert image]" GEO1004, MUS1004), a CS /
+					// unresolved instruction tag in front of it (ENGR102), and the heading form ("[H2]
+					// Introduction", "[H1] **INTRODUCTION**", "[H3] **MODULE INTRODUCTION**" — CBI1009,
+					// COM1005 / 1006, DAN1003 / 1004, MXDI101). The human keeps the introduction on 0.0 in
+					// every one (its page 1 is lesson 1). Data page_split.intro_cluster_forms; env INTROFORM_OFF.
+					const _icf = DataService.Data.EmitTemplates.page_split?.intro_cluster_forms;
+					const _icfOn = !!_icf && _icf.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[_icf.env ?? "INTROFORM_OFF"]);
+					const _icfClean = (s) => String(s ?? "").replace(/\u{1f534}/gu, "").replace(/\[\/?RED TEXT\]/g, "").replace(/\*/g, "").replace(/\s+/g, " ").trim();
 					for (let k = i; k < Math.min(i + 4, items.length); k++) {
 						const peek = items[k];
-						if (peek.type !== "tag") continue;
-						introNext = INTRO_TAGS.has(peek.parse.primary?.tag);
+						if (peek.type !== "tag") {
+							if (_icfOn && peek.type === "black" && new RegExp(_icf.black_pattern, "i").test(_icfClean(peek.text))) { introNext = true; break; }
+							continue;
+						}
+						if (_icfOn && _icf.skip_unresolved_tags !== false
+							&& (!peek.parse?.primary?.tag || peek.parse?.class === "instruction")) continue;
+						introNext = INTRO_TAGS.has(peek.parse.primary?.tag)
+							|| (_icfOn && new RegExp(_icf.embedded_pattern, "i").test(String(peek.text ?? "")))
+							|| (_icfOn && (_icf.heading_tags ?? ["h1", "h2", "h3"]).includes(peek.parse.primary?.tag)
+								&& new RegExp(_icf.heading_pattern, "i").test(_icfClean(peek.blackAfter || (peek.parse?.remainders ?? []).join(" "))));
 						choiceNext = _cpmOn && new RegExp(_cpm.opener_pattern
 							?? "^\\[\\s*lesson choice page\\s*\\]", "i")
 							.test((peek.parse?.folded ?? "").trim());
@@ -922,6 +941,10 @@ class PageSplitter {
 						run.AddNote("info", "PageSplitter", choiceNext
 							? "[end page] on the overview disregarded — the [LESSON Choice page] tile navigation stays on page 0.0 (choice_page_tiles.merge_into_overview)."
 							: "[end page] on the overview disregarded — an introduction-cluster marker follows ([Title]/[Introduction]/[supervisor note]; AR-1 generalised).");
+						// ROUND 459 — the overview now holds a merged introduction: a lesson heading after it
+						// (DAN1004's "[H1] Lesson One: …" with no [End page] between) opens its lesson page
+						// (the r456 mid-page opener, allowed on this overview only)
+						if (_icfOn && introNext) current._introMerged = true;
 						closed = false;
 						current.items.push(it);
 						continue;
