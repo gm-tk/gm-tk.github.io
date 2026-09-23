@@ -27,5 +27,5 @@ echo "[$(date +%T)] feature index"
 { node --require ./_deflate_raw_polyfill.cjs build_feature_index.cjs --rehtml; node --require ./_deflate_raw_polyfill.cjs build_feature_index.cjs --merge; node --require ./_deflate_raw_polyfill.cjs build_feature_index.cjs --selftest; } > $O/_r447_index.log 2>&1; echo "  rc=$?"; tail -1 $O/_r447_index.log
 echo "[$(date +%T)] DIFF MINER (§1d — after every regeneration)"
 cp ../../../DIFF_QUEUE.md $O/_diff_queue_pre_r447.md
-python3 _diff_miner.py > $O/_diff_miner_r447.log 2>&1; echo "  miner rc=$?"; tail -3 $O/_diff_miner_r445.log | cut -c1-200
+python3 _diff_miner.py > $O/_diff_miner_r447.log 2>&1; echo "  miner rc=$?"; tail -3 $O/_diff_miner_r447.log | cut -c1-200
 echo "[$(date +%T)] POSTSHIP_DONE"

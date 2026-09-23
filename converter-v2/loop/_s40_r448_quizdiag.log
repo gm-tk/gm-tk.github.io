@@ -1,0 +1,100 @@
+BUNDLE BLL244 #3 reorder built=false act=1D
+   tag	cls=tag	tag=reorder	dir=INTERACTIVE	text=[reorder] Please note there are two possible correct answers for each sentence.	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=instruction	tag=-	dir=-	text=The art table was covered with paint, brushes and paper.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=The art table was covered with paint, paper and brushes.	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=instruction	tag=-	dir=-	text=The chickens, sheep and cows slept under the stars.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=The chickens, cows and sheep slept under the stars.	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Rain, wind and thunder filled the sky during the storm.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Rain, thunder and wind filled the sky during the storm.	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Aroha kept crayons, rulers and stickers in her pencil case.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Aroha kept crayons, stickers and rulers in her pencil case.	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=instruction	tag=-	dir=-	text=In the treasure chest lay coins, silver, jewels and a golden crown.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=In the treasure chest lay silver, coins, jewels and a golden crown.	after=	
+BUNDLE BLL244 #6 typing built=false act=2D
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[type the answer + autocheck]	after=	
+   tag	cls=noise	tag=-	dir=-	text=What	after=game are Zack and Kev playing at the local school?	
+   tag	cls=noise	tag=-	dir=-	text=Where	after=does the music seem to be coming from?	
+   tag	cls=noise	tag=-	dir=-	text=Who	after=thinks the music sounds like Dan?	
+   tag	cls=noise	tag=-	dir=-	text=When	after=do Zack and Kev meet up to play together?	
+   tag	cls=noise	tag=-	dir=-	text=How	after=does Kev feel when the ball goes through the hoop?	
+   tag	cls=noise	tag=-	dir=-	text=Why	after=does Zack glare at Kev?	
+BLL244: identical 3 / changed 0
+BUNDLE ARFUN04 #5 multiChoiceQuiz built=false act=1D
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Insert quiz to match elements with their definitions] [Activity 1D]	after=	
+   black	cls=-	tag=-	dir=-	text=**Quiz: Match each term with its definition:**	after=	
+   black	cls=-	tag=-	dir=-	text=1. **Primary colours:** The main colours that can’t be made by mixing other colours (Red, Blue, Yellow)	after=	
+   black	cls=-	tag=-	dir=-	text=1. **Secondary colours:** Colours that are made by mixing two primary colours together (Orange, Green, Purple)	after=	
+   black	cls=-	tag=-	dir=-	text=1. **Warm colours:** Colours that feel like sunshine and warmth (Red, Orange, Yellow)	after=	
+   black	cls=-	tag=-	dir=-	text=1. **Cool colours:** Colours that feel like water and calmness (Blue, Green, Purple)	after=	
+BUNDLE ARFUN04 #11 selectionBox built=false act=1I
+   tag	cls=tag	tag=checklist	dir=INTERACTIVE	text=[create tick boxes] [insert item # 25 & 26: Photos] Symmetrical	after=https://www.istockphoto.com/photo/morpho-butterfly-a-blue-butterfly-from-south-america-gm988209044-267959729?s	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/close-up-of-traditional-transom-on-the-wall-of-ancient-building-during-the-r	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/chocorua-lake-new-hampshire-gm857110548-141220391	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/abstract-architectural-features-symmetry-bridge-close-up-gm1941296592-556624	after=	
+   tag	cls=noise	tag=-	dir=-	text=Asymmetrical	after=https://www.istockphoto.com/photo/exactness-gm492190492-76173903	
+   black	cls=-	tag=-	dir=-	text=https://media.istockphoto.com/id/2152723452/photo/macro-photograph-of-a-drawing-of-a-brown-withering-leaf-of-a	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/green-leather-texture-or-background-gm1154912245-314216574	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/wavelet-landscape-in-blue-and-yellow-gm2162755910-583131176	after=	
+   black	cls=-	tag=-	dir=-	text=How does the balance make you feel? Does the artwork feel calm or more active because of how the objects are p	after=	
+BUNDLE ARFUN04 #20 multiChoiceQuiz built=false act=2H
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[create a quiz/ answer in bold]	after=	
+   black	cls=-	tag=-	dir=-	text=1. **What does the term "value" mean in art?** *a. The size of an artwork.*	after=	
+   tag	cls=instruction	tag=-	dir=-	text=b. How light or dark a colour is.	after=*c. The shape of an object.* *d. The style of painting.*	
+BUNDLE ARFUN04 #31 multiChoiceQuiz built=false act=3G
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[create visual quiz with images and words]	after=	
+BUNDLE ARFUN04 #37 multiChoiceQuiz built=false act=3M
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Multiple Choice Questions]	after=	
+   black	cls=-	tag=-	dir=-	text=1. **What does contrast in art mean?**	after=	
+   black	cls=-	tag=-	dir=-	text=1. When everything looks the same.	after=	
+   black	cls=-	tag=-	dir=-	text=1. When two things are very different from each other.	after=	
+   black	cls=-	tag=-	dir=-	text=1. When an artwork has many colours.	after=	
+   black	cls=-	tag=-	dir=-	text=1. When shapes are arranged symmetrically. Correct Answer: B	after=	[{"text":"Correct Answer: B","kind":"hl"}]
+   black	cls=-	tag=-	dir=-	text=1. **Which of the following is an example of contrast related to colour?**	after=	
+   black	cls=-	tag=-	dir=-	text=1. Light colours next to dark colours.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Shapes of the same size.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Smooth textures only.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Straight lines only. Correct Answer: A	after=	[{"text":"Correct Answer: A","kind":"hl"}]
+   black	cls=-	tag=-	dir=-	text=1. **How can contrast be shown with shapes?**	after=	
+   black	cls=-	tag=-	dir=-	text=1. By using only circular shapes.	after=	
+   black	cls=-	tag=-	dir=-	text=1. By placing big shapes next to small shapes.	after=	
+   black	cls=-	tag=-	dir=-	text=1. By keeping all shapes the same size.	after=	
+   black	cls=-	tag=-	dir=-	text=1. By using only one type of shape. Correct Answer: B	after=	[{"text":"Correct Answer: B","kind":"hl"}]
+   black	cls=-	tag=-	dir=-	text=1. **What type of contrast involves rough and smooth areas?**	after=	
+   black	cls=-	tag=-	dir=-	text=1. Colour contrast.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Shape contrast.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Texture contrast.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Line contrast. Correct Answer: C	after=	[{"text":"Correct Answer: C","kind":"hl"}]
+BUNDLE ARFUN04 #39 multiChoiceQuiz built=false act=3N
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[create a drop-down quiz]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Read each statement below and decide whether it relates to contrast or emphasis. Click on the correct answe	after=	
+   black	cls=-	tag=-	dir=-	text=1. **Colour:** Light colours next to dark colours or warm colours next to cool colours. **Answer:** __________	after=	[{"text":"(Contrast","kind":"hl"}]
+   black	cls=-	tag=-	dir=-	text=1. **Shape:** Big shapes next to small shapes. **Answer:** __________ (Contrast/Emphasis)	after=	[{"text":"Contrast","kind":"hl"}]
+   black	cls=-	tag=-	dir=-	text=1. **Texture:** Rough areas next to smooth areas. **Answer:** __________ (Contrast/Emphasis)	after=	[{"text":"Contrast","kind":"hl"}]
+   black	cls=-	tag=-	dir=-	text=1. **Focal Point:** This is where the viewer's eye is naturally drawn. It can be a bright colour or an interes	after=	[{"text":"Emphasis","kind":"hl"}]
+   black	cls=-	tag=-	dir=-	text=1. **Contrast:** Using differences in colour or size to highlight important areas. **Answer:** __________ (Con	after=	[{"text":"Contrast","kind":"hl"}]
+   black	cls=-	tag=-	dir=-	text=1. **Placement:** Positioning elements in a way that directs attention to a specific area. **Answer:** _______	after=	[{"text":"Emphasis","kind":"hl"}]
+BUNDLE ARFUN04 #62 multiChoiceQuiz built=false act=4K
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[create a multichoice section]	after=Complete the following multichoice questions	
+   black	cls=-	tag=-	dir=-	text=**1. What is symmetrical balance?** a. Both sides look the same, like a mirror image. b. The two sides are dif	after=	
+   black	cls=-	tag=-	dir=-	text=**2. What is an example of symmetrical balance?** a. A butterfly’s wings. b. One side with a big object and th	after=	
+   black	cls=-	tag=-	dir=-	text=**3. What is asymmetrical balance?** a. Both sides look the same, like a mirror image. b. The two sides are di	after=	
+   black	cls=-	tag=-	dir=-	text=**4. What is an example of asymmetrical balance?** a. A butterfly’s wings. b. A flower or a wheel with spokes.	after=	
+   black	cls=-	tag=-	dir=-	text=**5. What is radial balance?** a. Both sides look the same, like a mirror image. b. The two sides are differen	after=	
+   black	cls=-	tag=-	dir=-	text=**6. What is an example of radial balance?** a. A butterfly’s wings. b. A flower or a wheel with spokes. c. On	after=	
+BUNDLE ARFUN04 #64 multiChoiceQuiz built=false act=4L
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[create a tick box quiz] [answers are highlighted]	after=	
+   black	cls=-	tag=-	dir=-	text=Tick the correct answer:	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[],[]],[[],[{"text":"b. When two things are very different from each other.","kind":"hl"}]],[[],[{"text":"a. Light colours next to dark colours.","kind":"hl"}
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[{"text":"b. By placing big shapes next to small shapes.","kind":"hl"}]]]
+   black	cls=-	tag=-	dir=-	text=4. What type of contrast involves rough and smooth areas?	after=	
+   black	cls=-	tag=-	dir=-	text=a. Colour contrast b. Shape contrast c. Texture contrast d. Line contrast	after=	[{"text":"c. Texture contrast","kind":"hl"}]
+BUNDLE ARFUN04 #68 radioQuiz built=false act=4O
+   tag	cls=tag	tag=radio quiz	dir=INTERACTIVE	text=[Create true or false quiz]	after=	
+ARFUN04: identical 1 / changed 0
+
+TOTAL: identical 4 / changed 0 / missing 0 over 2 modules

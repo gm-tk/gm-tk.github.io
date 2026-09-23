@@ -248,6 +248,104 @@ class Utils {
 		return results;
 	};
 
+	/**
+	 * How many times `needle` occurs in `hay` (overlapping occurrences counted — the
+	 * same walk MarkAnswers uses to find the nth one). ROUND 448.
+	 */
+	static CountOccurrences(hay, needle) {
+		const h = String(hay ?? ""), n = String(needle ?? "");
+		if (!n) return 0;
+		let c = 0;
+		for (let k = h.indexOf(n); k >= 0; k = h.indexOf(n, k + 1)) c++;
+		return c;
+	};
+
+	/**
+	 * ROUND 448 (Chris's D13-4 carry-through) — put the writer's answer marks back into
+	 * the text of an un-built quiz's hand-off: `glyph` (the parser's own ✅ "correct answer"
+	 * marker) goes immediately before each marked phrase. `marks` are the extractor's r309
+	 * side-channel entries ({text, kind, nth}); `nth` picks which occurrence when the phrase
+	 * appears more than once (the last one when the markup split an occurrence). When the
+	 * text is only PART of its source block (`base`), a mark is placed only if it falls
+	 * inside this part — the rest belong to the block's other items.
+	 *
+	 * @param {string} text - the text to mark
+	 * @param {Array<{text:string, nth?:number}>} marks
+	 * @param {string} [glyph]
+	 * @param {string|null} [base] - the whole source-block text `text` was cut from
+	 * @returns {string}
+	 */
+	static MarkAnswers(text, marks, glyph = "✅", base = null, afterListMarker = false) {
+		const s = String(text ?? "");
+		if (!s.trim() || !Array.isArray(marks) || !marks.length) return s;
+		// afterListMarker (the HTML box): a mark that starts ON a line's list marker ("b. When…",
+		// "1. Straight…", "• Yes") takes the glyph AFTER the marker, so the rendered list keeps
+		// the item — the parser's own "✅b." form would stop it reading as a list item
+		const listShift = (p, str) => {
+			if (!afterListMarker) return p;
+			const ls = str.lastIndexOf("\n", p - 1) + 1;
+			const lm = str.slice(ls).match(/^\s*(?:\d+[.)]|[A-Za-z][.)]|[•●▪◦*-])\s+/);
+			return lm && p < ls + lm[0].length ? ls + lm[0].length : p;
+		};
+		const core = s.trim(), lead = s.length - s.trimStart().length;
+		const b = base == null ? core : String(base);
+		let off = base == null ? 0 : b.indexOf(core);
+		const within = off >= 0;
+		if (!within) off = 0;
+		const at = new Set();
+		for (const m of marks) {
+			const t = String(m?.text ?? "").trim();
+			if (!t) continue;
+			const hay = within ? b : core;
+			const occ = [];
+			for (let k = hay.indexOf(t); k >= 0; k = hay.indexOf(t, k + 1)) occ.push(k);
+			if (!occ.length) continue;
+			const pos = occ[Math.min(Number.isInteger(m.nth) ? m.nth : 0, occ.length - 1)];
+			if (within && (pos < off || pos + t.length > off + core.length)) continue;   // another item's mark
+			at.add(listShift(lead + pos - off, s));
+		}
+		let out = s;
+		for (const p of [...at].sort((x, y) => y - x)) out = out.slice(0, p) + glyph + out.slice(p);
+		return out;
+	};
+
+	/**
+	 * ROUND 448 — the answer-key carry-through's own switch for ONE bundle: the config
+	 * (EmitTemplates.interactive_placeholder.answer_key_d13_4) when it is on (env
+	 * ANSWERKEY_OFF) and the bundle is a quiz-engine type, else null. Shared by the
+	 * hand-off box (ContentConverter) and the worklist (ManifestBuilder).
+	 */
+	static AnswerKeyConfig(cfg, bundle) {
+		if (!cfg || cfg.enabled === false || !bundle) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "ANSWERKEY_OFF"]) return null;
+		const types = [bundle.type, ...(bundle.extraTypes ?? [])];
+		return types.some((t) => (cfg.types ?? []).includes(t)) ? cfg : null;
+	};
+
+	/**
+	 * ROUND 448 — the marks the carry-through ticks: the kinds in cfg.mark_kinds (default
+	 * highlight only) and, for a highlight, only the colours in cfg.highlight_colours when
+	 * listed (the parser ticks YELLOW only — js/formatter.js).
+	 */
+	static AnswerKeyMarks(cfg, marks) {
+		const kinds = cfg?.mark_kinds ?? ["hl"];
+		const cols = cfg?.highlight_colours;
+		return (marks ?? []).filter((mk) => kinds.includes(mk?.kind)
+			&& (mk.kind !== "hl" || !Array.isArray(cols) || cols.includes(mk.color)));
+	};
+
+	/**
+	 * ROUND 448 — how a red 'noise' fragment inside a quiz renders in its hand-off:
+	 * "skip" (no letter or digit — a stray "]"), "plain" (a label / media note —
+	 * "Answers:", "(image)"), else "answer" (the writer's red answer word — ticked).
+	 */
+	static AnswerKeyRedWord(cfg, words) {
+		const w = String(words ?? "").replace(/\s+/g, " ").trim();
+		if (!w || new RegExp(cfg?.red_answer_skip ?? "^[^\\p{L}\\p{N}]*$", "u").test(w)) return "skip";
+		if (cfg?.red_answer_plain && new RegExp(cfg.red_answer_plain, "iu").test(w)) return "plain";
+		return "answer";
+	};
+
 	// =======================================================================
 	// ROUND 447 — THE JOURNAL-BUTTON VARIANTS (Chris's decision D13-5)
 	// =======================================================================

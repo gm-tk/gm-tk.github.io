@@ -1,0 +1,2138 @@
+AGH1001: identical 6 / changed 0
+BUNDLE AGH1002 #5 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Interactive: Quiz]	after=	
+AGH1002: identical 7 / changed 0
+BUNDLE AGH1003 #7 dropDown built=false act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Drop down boxes]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+AGH1003: identical 9 / changed 0
+BUNDLE AGH1004 #6 radioQuiz built=false act=-
+   tag	cls=tag	tag=radio quiz	dir=INTERACTIVE	text=[Interactive: True or False Quiz]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+AGH1004: identical 7 / changed 0
+BUNDLE AGH1005 #2 radioQuiz built=false act=-
+   tag	cls=tag	tag=radio quiz	dir=INTERACTIVE	text=[Radio quiz]	after=Tick the following words that are mentioned above: Tick ✔	
+   black	cls=-	tag=-	dir=-	text=1. Responsibility – social, financial, environmental□	after=	
+   black	cls=-	tag=-	dir=-	text=1. Pono – integrity towards the whenua (land)□	after=	
+   black	cls=-	tag=-	dir=-	text=1. Whanaungatanga – relationships between land and people□	after=	
+   black	cls=-	tag=-	dir=-	text=1. Burning rubbish fires or burying rubbish□	after=	
+   black	cls=-	tag=-	dir=-	text=1. Protection – kaitiakitanga□	after=	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[Button] Complete activity 1A in your learning journal.	after=	
+BUNDLE AGH1005 #4 dropDown built=false act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[interactive: Drop down menu]	after=	
+BUNDLE AGH1005 #13 dropDown built=false act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[interactive: drop down box with descriptions]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   black	cls=-	tag=-	dir=-	text=Getting the correct amount of nutrients in the soil is a balancing act for many growers.	after=	
+   black	cls=-	tag=-	dir=-	text=Have a go at identifying the nutrient deficiencies in these leaves.	after=	
+   black	cls=-	tag=-	dir=-	text=Drag and drop the correct description to the leaf:	after=	
+AGH1005: identical 9 / changed 0
+BUNDLE AGH1006 #3 reorder built=false act=-
+   tag	cls=tag	tag=reorder	dir=INTERACTIVE	text=[interactive: Ordering/Matching to the image] * Note to developer – please use the most appropriate interactiv	after=	
+   black	cls=-	tag=-	dir=-	text=Order these plantings in alignment with the phases of the moon.	after=	
+   black	cls=-	tag=-	dir=-	text=Waxing	after=	
+   black	cls=-	tag=-	dir=-	text=Waning	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+BUNDLE AGH1006 #8 dropDown built=false act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropdown Quiz Paragraph]	after=When propagating plants from a cutting, aim for plants that are ________ free and healthy. Look for the new __	
+   tag	cls=noise	tag=-	dir=-	text=Answers:	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[Button] Complete activity 2B in your learning journal.	after=	
+BUNDLE AGH1006 #13 radioQuiz built=false act=-
+   tag	cls=tag	tag=radio quiz	dir=INTERACTIVE	text=[interactive: true/false]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Glasshouses are less productive than open air cropping.□	after=	
+   black	cls=-	tag=-	dir=-	text=1. Consumer demand is driving the market for more productive and sustainable crops.□	after=	
+   black	cls=-	tag=-	dir=-	text=1. The price of producing crops means more productive methods are necessary.□	after=	
+   black	cls=-	tag=-	dir=-	text=1. Glasshouses make it more difficult to control plant growth. □	after=	
+   black	cls=-	tag=-	dir=-	text=1. Aspects of m anaakitanga are seen in the relationship between workers and owners.□	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Answers: 1. False, 2. True, 3. True, 4. False, 5. True	after=	
+BUNDLE AGH1006 #18 radioQuiz built=false act=-
+   tag	cls=tag	tag=radio quiz	dir=INTERACTIVE	text=[interactive: True/false]	after=	
+   black	cls=-	tag=-	dir=-	text=Key concepts to remember when pruning:	after=	
+   black	cls=-	tag=-	dir=-	text=1. Remove dead, damaged or diseased branches.□	after=	
+   black	cls=-	tag=-	dir=-	text=1. Remove secondary branches with a spacing of 60 cm between them. □	after=	
+   black	cls=-	tag=-	dir=-	text=1. On secondary branches prune above the 3rd node.□	after=	
+   black	cls=-	tag=-	dir=-	text=1. Prune all year round.□	after=	
+   black	cls=-	tag=-	dir=-	text=1. Cut off healthy wood.□	after=	
+   black	cls=-	tag=-	dir=-	text=1. Pruning back to an outward-facing bud will produce new growth away from the plant centre.□	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Answers: 1. True, 2. True, 3. True, 4. False, 5. False, 6. True	after=	
+BUNDLE AGH1006 #27 radioQuiz built=false act=-
+   tag	cls=tag	tag=radio quiz	dir=INTERACTIVE	text=[interactive: True/False]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Certain genetic traits in plants make them more resistant to pests and diseases.□	after=	
+   black	cls=-	tag=-	dir=-	text=1. Mulching around plants spreads diseases.□	after=	
+   black	cls=-	tag=-	dir=-	text=1. Diseases such as PSA in kiwifruit can be spread through tools and equipment.□	after=	
+   black	cls=-	tag=-	dir=-	text=1. Fruit pests can travel from country to country.□	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Answers: 1. T, 2. T, 3. F, 4. T, 5. T.	after=	
+AGH1006: identical 10 / changed 0
+BUNDLE AGH1007 #10 radioQuiz built=false act=-
+   tag	cls=tag	tag=radio quiz	dir=INTERACTIVE	text=[Interactive: True or False Quiz]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+AGH1007: identical 10 / changed 0
+AGH1008: identical 10 / changed 0
+AGH1009: identical 10 / changed 0
+ANZH101: identical 4 / changed 0
+BUNDLE ANZH103 #2 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox]	after=Upload your treaty or invitation to the dropbox for your kaiako to see.	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=	
+   tag	cls=noise	tag=-	dir=-	text=MEDIA LIST	after=	
+   tag	cls=noise	tag=-	dir=-	text=SUBMISSION CHECKLIST	after=	
+   tag	cls=noise	tag=-	dir=-	text=Have you:	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=instruction	tag=-	dir=-	text=received approval for this resource from your curriculum leader	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=instruction	tag=-	dir=-	text=specified a red tag for every component in this document	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=instruction	tag=-	dir=-	text=checked the resource code is correct	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=instruction	tag=-	dir=-	text=checked punctuation, spelling and grammar are correct	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=instruction	tag=-	dir=-	text=checked activities against the answers	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=instruction	tag=-	dir=-	text=checked that the hyperlinks work	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=instruction	tag=-	dir=-	text=compiled all the media files separately, with the same file names as the titles	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=instruction	tag=-	dir=-	text=completed the Media list	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=instruction	tag=-	dir=-	text=completed and submitted the metadata form	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=instruction	tag=-	dir=-	text=included audio or video scripts, and illustration briefs, (if applicable)? (Please supply these separately, do	after=	
+   tag	cls=instruction	tag=-	dir=-	text=MTK WRITER’S TEMPLATE	after=	
+   tag	cls=instruction	tag=-	dir=-	text=When writing, please:	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=instruction	tag=-	dir=-	text=specify a tag before each element by using square brackets and red font as shown	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=instruction	tag=-	dir=-	text=refrain from changing the font, the font size, or colour, other than the ones already defined in this document	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=instruction	tag=-	dir=-	text=don’t attempt to add to, or change, the layout of this document. The designers need clear, linear text to foll	after=	
+   tag	cls=noise	tag=-	dir=-	text=For text:	after=	
+BUNDLE ANZH103 #3 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Quiz]	after=or	
+   tag	cls=instruction	tag=-	dir=-	text=[Discussion]	after=or	
+BUNDLE ANZH103 #4 dropDown built=false act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox]	after=Indicate whether the content is to be developed into a Quiz, Discussion, or Dropbox item.	
+   tag	cls=noise	tag=-	dir=-	text=For media:	after=	
+   tag	cls=instruction	tag=-	dir=-	text=If you don’t have specific media to supply, just define the tag type and describe what you would like. Your de	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Supply all media files separately, with the same file name as the title. Please don’t embed images in this doc	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Please consider usage rights when sourcing media. Refer to the Copyright FAQ.	after=	
+   tag	cls=tag	tag=video	dir=ELEMENT	text=[Video]	after=Video title; video caption. (Include URL in brackets).	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[Image]	after=Image title; image caption. (Include source in brackets.)	
+ANZH103: identical 2 / changed 0
+ANZH104: identical 8 / changed 0
+BUNDLE ANZH105 #5 selectionBox built=false act=4A
+   tag	cls=tag	tag=checklist	dir=INTERACTIVE	text=[Checklist]	after=	
+   black	cls=-	tag=-	dir=-	text=1. A boat.	after=	
+   black	cls=-	tag=-	dir=-	text=1. A fish.	after=	
+   black	cls=-	tag=-	dir=-	text=1. A person.	after=	
+   black	cls=-	tag=-	dir=-	text=1. A star.	after=	
+   black	cls=-	tag=-	dir=-	text=1. The Sun.	after=	
+   black	cls=-	tag=-	dir=-	text=1. A compass.	after=	
+   black	cls=-	tag=-	dir=-	text=1. How many eyes can you spy?	after=	
+ANZH105: identical 8 / changed 0
+BUNDLE ANZH203 #1 multiChoiceQuiz built=false act=1A
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Activity – Multichoice Quiz] 1A	after=Comprehension activity	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Answer the following questions to show your understanding of Tasman’s voyage:	
+   black	cls=-	tag=-	dir=-	text=1. What nationality was Abel Tasman?	after=	
+   black	cls=-	tag=-	dir=-	text=1. French	after=	
+   black	cls=-	tag=-	dir=-	text=1. **Dutch**	after=	
+   black	cls=-	tag=-	dir=-	text=1. English	after=	
+   black	cls=-	tag=-	dir=-	text=1. American	after=	
+   black	cls=-	tag=-	dir=-	text=1. What was used to make the trumpet-like sound from the waka?	after=	
+   black	cls=-	tag=-	dir=-	text=1. A trumpet	after=	
+   black	cls=-	tag=-	dir=-	text=1. A gun	after=	
+   black	cls=-	tag=-	dir=-	text=1. **A shell**	after=	
+   black	cls=-	tag=-	dir=-	text=1. A flute	after=	
+   black	cls=-	tag=-	dir=-	text=1. What were the *Heemskerck* and the *Zeehaen?*	after=	
+   black	cls=-	tag=-	dir=-	text=1. **Ships**	after=	
+   black	cls=-	tag=-	dir=-	text=1. Chiefs	after=	
+   black	cls=-	tag=-	dir=-	text=1. Sailors	after=	
+   black	cls=-	tag=-	dir=-	text=1. Mountains	after=	
+   black	cls=-	tag=-	dir=-	text=1. Abel Tasman sailed to Aotearoa New Zealand in the:	after=	
+   black	cls=-	tag=-	dir=-	text=1. 16th century	after=	
+   black	cls=-	tag=-	dir=-	text=1. **17th century**	after=	
+   black	cls=-	tag=-	dir=-	text=1. 18th century	after=	
+   black	cls=-	tag=-	dir=-	text=1. 19th century	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Did you find the last question tricky? If you want to learn more about numbering centuries correctly, you can 	
+ANZH203: identical 7 / changed 0
+BUNDLE ANZH205 #5 selectionBox built=false act=-
+   tag	cls=tag	tag=checklist	dir=INTERACTIVE	text=[Checkbox]	after=Was Te Kemara for or against signing the treaty?	
+   black	cls=-	tag=-	dir=-	text=• Against	after=	
+   tag	cls=tag	tag=data marker	dir=SUBTAG	text=[Label]	after=Rewa	
+BUNDLE ANZH205 #7 selectionBox built=false act=-
+   tag	cls=tag	tag=checklist	dir=INTERACTIVE	text=[Checkbox]	after=Was Rewa for or against signing the treaty?	
+   black	cls=-	tag=-	dir=-	text=• Against	after=	
+   tag	cls=tag	tag=data marker	dir=SUBTAG	text=[Label]	after=Tāmati Wāka Nene	
+BUNDLE ANZH205 #9 selectionBox built=false act=-
+   tag	cls=tag	tag=checklist	dir=INTERACTIVE	text=[Checkbox]	after=Was Tāmati Wāka Nene for or against signing the treaty?	
+   black	cls=-	tag=-	dir=-	text=• For	after=	
+   tag	cls=tag	tag=data marker	dir=SUBTAG	text=[Label]	after=Te Ruki Kawiti	
+BUNDLE ANZH205 #11 selectionBox built=false act=-
+   tag	cls=tag	tag=checklist	dir=INTERACTIVE	text=[Checkbox]	after=Was Te Ruki Kawiti for or against signing the treaty?	
+   black	cls=-	tag=-	dir=-	text=• Against	after=	
+   tag	cls=tag	tag=data marker	dir=SUBTAG	text=[Label]	after=Hone Heke	
+BUNDLE ANZH205 #13 selectionBox built=false act=-
+   tag	cls=tag	tag=checklist	dir=INTERACTIVE	text=[Checkbox]	after=Was Hone Heke for or against signing the treaty?	
+   black	cls=-	tag=-	dir=-	text=• For	after=	
+   tag	cls=tag	tag=data marker	dir=SUBTAG	text=[Label]	after=Patuone	
+BUNDLE ANZH205 #15 selectionBox built=false act=-
+   tag	cls=tag	tag=checklist	dir=INTERACTIVE	text=[Checkbox]	after=Was Patuone for or against signing the treaty?	
+   black	cls=-	tag=-	dir=-	text=• For	after=	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[[Image and Audio player from TKI]	after=Te Tiriti o Waitangi (Page 7 (first box) (CS Can you please cut snippets and add audio files to match)	
+ANZH205: identical 7 / changed 0
+ANZH301: identical 11 / changed 0
+ANZH302: identical 11 / changed 0
+BUNDLE ANZH303 #1 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Go to quiz]	after=	
+ANZH303: identical 7 / changed 0
+ANZH304: identical 7 / changed 0
+BUNDLE ANZH401 #1 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Add button- Quiz]	after=Go to quiz button	
+BUNDLE ANZH401 #6 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Add button- Quiz]	after=Go to quiz button	
+ANZH401: identical 14 / changed 0
+ANZH404: identical 7 / changed 0
+BUNDLE ANZHFUN05 #2 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox]	after=Upload your document or an image of your handwritten example to the dropbox	
+   black	cls=-	tag=-	dir=-	text=**GREEN BOX AROUND THE FOLLOWING**	after=	
+BUNDLE ANZHFUN05 #3 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox]	after=Upload this document to the dropbox for your kaiako to give you feedback.	
+   black	cls=-	tag=-	dir=-	text=**YELLOW BOX AROUND THE FOLLOWING**	after=	
+BUNDLE ANZHFUN05 #4 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox]	after=Upload this document to the dropbox for your kaiako to give you feedback.	
+   black	cls=-	tag=-	dir=-	text=**PURPLE BOX AROUND THE FOLLOWING**	after=	
+BUNDLE ANZHFUN05 #5 dropDown built=false act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox]	after=Upload this document to the dropbox for your kaiako to give you feedback.	
+   tag	cls=tag	tag=heading	dir=ELEMENT	text=[H]	after=Commemorations: understanding context	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=When you learn more about the motivation and intent behind a statue or memorial, you may develop a different u	
+   black	cls=-	tag=-	dir=-	text=In earlier fundamentals activities, you have explored one of history’s Big Ideas: continuity and change. This 	after=	
+BUNDLE ANZHFUN05 #8 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox]	after=Upload to the dropbox	
+ANZHFUN05: identical 1 / changed 0
+BUNDLE ARFUN01 #2 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Activity: Emotions – MKT Quiz] Engagement trigger	after=	
+   black	cls=-	tag=-	dir=-	text=1. Put on a timer for five minutes.	after=	
+   black	cls=-	tag=-	dir=-	text=2. During these five minutes put on some music you like and move your body and dance to the music.	after=	
+   black	cls=-	tag=-	dir=-	text=3. Write how you felt before you started and how you felt during and after.	after=	
+   black	cls=-	tag=-	dir=-	text=You might like to use the pictures above to help you think of some words about how you feel.	after=	
+   black	cls=-	tag=-	dir=-	text=Note: There is no right or wrong answer! That is the special thing about the arts – everyone can have their ow	after=	
+   tag	cls=instruction	tag=-	dir=-	text=[Hover on unique: Special just to you.]	after=response.	
+BUNDLE ARFUN01 #4 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[ACTIVITY: MKT Quiz : Culture in the arts]	after=	
+   black	cls=-	tag=-	dir=-	text=Write a short answer response to share what you think about the questions below.	after=	
+   black	cls=-	tag=-	dir=-	text=1. What arts are related to my culture?	after=	
+   black	cls=-	tag=-	dir=-	text=1. What arts have I seen, heard or done that relate to Aotearoa New Zealand culture?	after=	
+   black	cls=-	tag=-	dir=-	text=1. What other cultures have I seen expressed through the arts?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Why do I think the arts are important to culture?	after=	
+   tag	cls=tag	tag=engagement quiz button	dir=ELEMENT	text=[Insert text box for student response – Engagement trigger]	after=	
+   tag	cls=instruction	tag=-	dir=-	text=[When a student presses send/enter provide this notification: Well done! Have a look at what another ākonga ha	after=	
+BUNDLE ARFUN01 #6 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[ACTIVITY: MKT Quiz: Who came before us?] [Trigger engagement]	after=	
+   black	cls=-	tag=-	dir=-	text=Write a short response about the questions you discussed and note down what YOU think.	after=	
+   black	cls=-	tag=-	dir=-	text=1. How do you think art connects to history?	after=	
+   black	cls=-	tag=-	dir=-	text=1. How do you think the arts can share stories?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Do you know any examples of arts that communicate something about a time and place in the past?	after=	
+   tag	cls=tag	tag=engagement quiz button	dir=ELEMENT	text=[Insert text box for student response – Engagement trigger]	after=	
+   tag	cls=instruction	tag=-	dir=-	text=[When a student presses send/enter provide this notification: Well done! Have a look at what another ākonga ha	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Art is like a time machine because it can show us what life was like a long time ago. When you listen to music	after=	
+   tag	cls=instruction	tag=-	dir=-	text=An example is old buildings. When you see castles or temples from a long time ago, they tell you about the peo	after=	
+BUNDLE ARFUN01 #8 dropDown built=false act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Drop down text for image one]	after=Banksy is a famous artist who keeps his identity somewhat a mystery. He makes political statements about confl	
+BUNDLE ARFUN01 #10 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[ACTIVITY: MKT Quiz: Making change] [Trigger engagement]	after=	
+   black	cls=-	tag=-	dir=-	text=Write a short response about the questions you discussed and what you think.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Why do you think it might be easier to explore difficult topics through the arts?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Do you think the arts could make change in society or the world? Why or why not?	after=	
+   black	cls=-	tag=-	dir=-	text=1. What is an important issue to you?	after=	
+   tag	cls=tag	tag=engagement quiz button	dir=ELEMENT	text=[Insert text box for student response – Engagement trigger]	after=	
+   tag	cls=instruction	tag=-	dir=-	text=[When a student presses send/enter provide this notification: Well done! Have a look at what another ākonga ha	after=	
+   tag	cls=instruction	tag=-	dir=-	text=When you create art about a hard topic, it can start conversations. Like if someone sees your artwork or watch	after=	
+   tag	cls=instruction	tag=-	dir=-	text=I think the arts can make a change in society. They can spread messages, make people feel something and they m	after=	
+   tag	cls=instruction	tag=-	dir=-	text=For me, an important issue is bullying. It's just not right when people are mean for no reason.	after=	
+ARFUN01: identical 1 / changed 0
+BUNDLE ARFUN02 #9 multiChoiceQuiz built=false act=3D
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Activity 3D] [MTK autograded multchoice quiz] [Trigger Engagement] [H3]	after=What Have I Learned? He aha aku i ako ai?	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[body]	after=Check your understanding of the different elements of music by completing this short quiz.	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[button]	after=Go to quiz.	
+   black	cls=-	tag=-	dir=-	text=1. Which word means "how an instrument sounds special and different"? a) Timbre b) Loud c) Fast d) Quiet	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct Answer: a) Timbre]	after=	
+   black	cls=-	tag=-	dir=-	text=1. If a guitar and a piano play the same note, why do they sound different? a) Because of their timbre b) Beca	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct Answer: a) Because of their timbre]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Which instrument makes a soft, gentle sound like a bird? a) Kōauau b) Drums c) Triangle d) Guitar	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct Answer: a) Kōauau]	after=	
+   black	cls=-	tag=-	dir=-	text=1. What happens when you play the xylophone? a) It makes bright, sparkly sounds b) It makes deep, rumbling sou	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct Answer: a) It makes bright, sparkly sounds]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Which word best describes how a piano sounds? a) Warm and rich b) Squeaky and sharp c) Buzzing d) Like thun	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct Answer: a) Warm and rich]	after=	
+ARFUN02: identical 1 / changed 0
+BUNDLE ARFUN03 #8 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[insert multi choice activity with images]	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/fijian-dancer-gm458116127-15582172	after=	
+   black	cls=-	tag=-	dir=-	text=The dancer’s focus is the audience.	after=	
+   black	cls=-	tag=-	dir=-	text=The dancer's focus is his foot.	after=	
+   black	cls=-	tag=-	dir=-	text=The dancers focus is towards his movement .	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct answer]	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/tender-elegant-young-people-ballet-dancers-making-beautiful-performance-on-s	after=	
+   black	cls=-	tag=-	dir=-	text=The dancer's focus is on the audience.	after=	
+   black	cls=-	tag=-	dir=-	text=The dancer's focus is in a variety of directions .	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct answer]	after=	
+   black	cls=-	tag=-	dir=-	text=The dancer's focus is on their elbows.	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/man-and-woman-in-flamenco-costume-performing-a-dance-outdoors-gm1361414016-4	after=	
+   black	cls=-	tag=-	dir=-	text=The dancer's focus is on the audience.	after=	
+   black	cls=-	tag=-	dir=-	text=The dancer's focus is on their right foot.	after=	
+   black	cls=-	tag=-	dir=-	text=The dancer's focus is towards one another .	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct answer]	after=	
+ARFUN03: identical 1 / changed 0
+BUNDLE ARFUN04 #5 multiChoiceQuiz built=false act=1D
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Insert quiz to match elements with their definitions] [Activity 1D]	after=	
+   black	cls=-	tag=-	dir=-	text=**Quiz: Match each term with its definition:**	after=	
+   black	cls=-	tag=-	dir=-	text=1. **Primary colours:** The main colours that can’t be made by mixing other colours (Red, Blue, Yellow)	after=	
+   black	cls=-	tag=-	dir=-	text=1. **Secondary colours:** Colours that are made by mixing two primary colours together (Orange, Green, Purple)	after=	
+   black	cls=-	tag=-	dir=-	text=1. **Warm colours:** Colours that feel like sunshine and warmth (Red, Orange, Yellow)	after=	
+   black	cls=-	tag=-	dir=-	text=1. **Cool colours:** Colours that feel like water and calmness (Blue, Green, Purple)	after=	
+BUNDLE ARFUN04 #11 selectionBox built=false act=1I
+   tag	cls=tag	tag=checklist	dir=INTERACTIVE	text=[create tick boxes] [insert item # 25 & 26: Photos] Symmetrical	after=https://www.istockphoto.com/photo/morpho-butterfly-a-blue-butterfly-from-south-america-gm988209044-267959729?s	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/close-up-of-traditional-transom-on-the-wall-of-ancient-building-during-the-r	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/chocorua-lake-new-hampshire-gm857110548-141220391	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/abstract-architectural-features-symmetry-bridge-close-up-gm1941296592-556624	after=	
+   tag	cls=noise	tag=-	dir=-	text=Asymmetrical	after=https://www.istockphoto.com/photo/exactness-gm492190492-76173903	
+   black	cls=-	tag=-	dir=-	text=https://media.istockphoto.com/id/2152723452/photo/macro-photograph-of-a-drawing-of-a-brown-withering-leaf-of-a	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/green-leather-texture-or-background-gm1154912245-314216574	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/wavelet-landscape-in-blue-and-yellow-gm2162755910-583131176	after=	
+   black	cls=-	tag=-	dir=-	text=How does the balance make you feel? Does the artwork feel calm or more active because of how the objects are p	after=	
+BUNDLE ARFUN04 #20 multiChoiceQuiz built=false act=2H
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[create a quiz/ answer in bold]	after=	
+   black	cls=-	tag=-	dir=-	text=1. **What does the term "value" mean in art?** *a. The size of an artwork.*	after=	
+   tag	cls=instruction	tag=-	dir=-	text=b. How light or dark a colour is.	after=*c. The shape of an object.* *d. The style of painting.*	
+BUNDLE ARFUN04 #31 multiChoiceQuiz built=false act=3G
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[create visual quiz with images and words]	after=	
+BUNDLE ARFUN04 #37 multiChoiceQuiz built=false act=3M
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Multiple Choice Questions]	after=	
+   black	cls=-	tag=-	dir=-	text=1. **What does contrast in art mean?**	after=	
+   black	cls=-	tag=-	dir=-	text=1. When everything looks the same.	after=	
+   black	cls=-	tag=-	dir=-	text=1. When two things are very different from each other.	after=	
+   black	cls=-	tag=-	dir=-	text=1. When an artwork has many colours.	after=	
+   black	cls=-	tag=-	dir=-	text=1. When shapes are arranged symmetrically. Correct Answer: B	after=	[{"text":"Correct Answer: B","kind":"hl"}]
+   black	cls=-	tag=-	dir=-	text=1. **Which of the following is an example of contrast related to colour?**	after=	
+   black	cls=-	tag=-	dir=-	text=1. Light colours next to dark colours.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Shapes of the same size.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Smooth textures only.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Straight lines only. Correct Answer: A	after=	[{"text":"Correct Answer: A","kind":"hl"}]
+   black	cls=-	tag=-	dir=-	text=1. **How can contrast be shown with shapes?**	after=	
+   black	cls=-	tag=-	dir=-	text=1. By using only circular shapes.	after=	
+   black	cls=-	tag=-	dir=-	text=1. By placing big shapes next to small shapes.	after=	
+   black	cls=-	tag=-	dir=-	text=1. By keeping all shapes the same size.	after=	
+   black	cls=-	tag=-	dir=-	text=1. By using only one type of shape. Correct Answer: B	after=	[{"text":"Correct Answer: B","kind":"hl"}]
+   black	cls=-	tag=-	dir=-	text=1. **What type of contrast involves rough and smooth areas?**	after=	
+   black	cls=-	tag=-	dir=-	text=1. Colour contrast.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Shape contrast.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Texture contrast.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Line contrast. Correct Answer: C	after=	[{"text":"Correct Answer: C","kind":"hl"}]
+BUNDLE ARFUN04 #39 multiChoiceQuiz built=false act=3N
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[create a drop-down quiz]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Read each statement below and decide whether it relates to contrast or emphasis. Click on the correct answe	after=	
+   black	cls=-	tag=-	dir=-	text=1. **Colour:** Light colours next to dark colours or warm colours next to cool colours. **Answer:** __________	after=	[{"text":"(Contrast","kind":"hl"}]
+   black	cls=-	tag=-	dir=-	text=1. **Shape:** Big shapes next to small shapes. **Answer:** __________ (Contrast/Emphasis)	after=	[{"text":"Contrast","kind":"hl"}]
+   black	cls=-	tag=-	dir=-	text=1. **Texture:** Rough areas next to smooth areas. **Answer:** __________ (Contrast/Emphasis)	after=	[{"text":"Contrast","kind":"hl"}]
+   black	cls=-	tag=-	dir=-	text=1. **Focal Point:** This is where the viewer's eye is naturally drawn. It can be a bright colour or an interes	after=	[{"text":"Emphasis","kind":"hl"}]
+   black	cls=-	tag=-	dir=-	text=1. **Contrast:** Using differences in colour or size to highlight important areas. **Answer:** __________ (Con	after=	[{"text":"Contrast","kind":"hl"}]
+   black	cls=-	tag=-	dir=-	text=1. **Placement:** Positioning elements in a way that directs attention to a specific area. **Answer:** _______	after=	[{"text":"Emphasis","kind":"hl"}]
+BUNDLE ARFUN04 #62 multiChoiceQuiz built=false act=4K
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[create a multichoice section]	after=Complete the following multichoice questions	
+   black	cls=-	tag=-	dir=-	text=**1. What is symmetrical balance?** a. Both sides look the same, like a mirror image. b. The two sides are dif	after=	
+   black	cls=-	tag=-	dir=-	text=**2. What is an example of symmetrical balance?** a. A butterfly’s wings. b. One side with a big object and th	after=	
+   black	cls=-	tag=-	dir=-	text=**3. What is asymmetrical balance?** a. Both sides look the same, like a mirror image. b. The two sides are di	after=	
+   black	cls=-	tag=-	dir=-	text=**4. What is an example of asymmetrical balance?** a. A butterfly’s wings. b. A flower or a wheel with spokes.	after=	
+   black	cls=-	tag=-	dir=-	text=**5. What is radial balance?** a. Both sides look the same, like a mirror image. b. The two sides are differen	after=	
+   black	cls=-	tag=-	dir=-	text=**6. What is an example of radial balance?** a. A butterfly’s wings. b. A flower or a wheel with spokes. c. On	after=	
+BUNDLE ARFUN04 #64 multiChoiceQuiz built=false act=4L
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[create a tick box quiz] [answers are highlighted]	after=	
+   black	cls=-	tag=-	dir=-	text=Tick the correct answer:	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[],[]],[[],[{"text":"b. When two things are very different from each other.","kind":"hl"}]],[[],[{"text":"a. Light colours next to dark colours.","kind":"hl"}
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[{"text":"b. By placing big shapes next to small shapes.","kind":"hl"}]]]
+   black	cls=-	tag=-	dir=-	text=4. What type of contrast involves rough and smooth areas?	after=	
+   black	cls=-	tag=-	dir=-	text=a. Colour contrast b. Shape contrast c. Texture contrast d. Line contrast	after=	[{"text":"c. Texture contrast","kind":"hl"}]
+BUNDLE ARFUN04 #68 radioQuiz built=false act=4O
+   tag	cls=tag	tag=radio quiz	dir=INTERACTIVE	text=[Create true or false quiz]	after=	
+ARFUN04: identical 1 / changed 0
+BUNDLE ARFUN05 #2 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Insert multi choice quiz]	after=	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[Insert image]	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/actors-acting-in-the-theater-stage-gm1890143074-553855293?searchscope=image%	after=	
+   black	cls=-	tag=-	dir=-	text=They are equal.	after=	
+   black	cls=-	tag=-	dir=-	text=The performer lowest on the floor.	after=	
+   black	cls=-	tag=-	dir=-	text=The performer holding the actor on the floor.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct]	after=	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[Insert image]	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/actors-with-a-professor-preparing-a-performance-gm1488833514-513887329?searc	after=	
+   black	cls=-	tag=-	dir=-	text=The woman on the tall chair.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct]	after=	
+   black	cls=-	tag=-	dir=-	text=The man.	after=	
+   black	cls=-	tag=-	dir=-	text=The lady on the floor.	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/two-female-drama-students-at-performing-arts-school-in-studio-improvisation-	after=	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[Insert image]	after=	
+   black	cls=-	tag=-	dir=-	text=The performer who has their head in her hands.	after=	
+   black	cls=-	tag=-	dir=-	text=The performer on the left.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct]	after=	
+BUNDLE ARFUN05 #4 multiChoiceQuiz built=false act=3
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Insert activity – Multichoice answer]	after=	
+   black	cls=-	tag=-	dir=-	text=Click on who you think the focus is on in each picture and why.:	after=	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[insert image]	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/tourist-in-new-york-times-square-gm1182533024-332101728?searchscope=image%2C	after=	
+   black	cls=-	tag=-	dir=-	text=On the girl in the middle as she is the only one who is still while everyone moves.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct]	after=	
+   black	cls=-	tag=-	dir=-	text=Everyone who is moving.	after=	
+   tag	cls=tag	tag=data marker	dir=SUBTAG	text=[Incorrect]	after=	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[insert image]	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/shocked-young-man-pointing-to-a-large-group-of-people-talking-gm1215582660-3	after=	
+   black	cls=-	tag=-	dir=-	text=The girl in the yellow jumper because she looks like she is having an interesting conversation.	after=	
+   tag	cls=tag	tag=data marker	dir=SUBTAG	text=[incorrect]	after=	
+   black	cls=-	tag=-	dir=-	text=The man at the front as he is closer to the audience and looking at the audience while everyone else looks awa	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[insert image]	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/studio-portrait-of-a-young-businessman-sitting-on-a-chair-alongside-candidat	after=	
+   black	cls=-	tag=-	dir=-	text=The man with the tie because he is the first one in the row.	after=	
+   tag	cls=tag	tag=data marker	dir=SUBTAG	text=[Incorrect]	after=	
+   black	cls=-	tag=-	dir=-	text=The man in the middle as he is sitting on a higher level to everyone else and the other actors are looking at 	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct]	after=	
+BUNDLE ARFUN05 #6 multiChoiceQuiz built=false act=3A
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[activity – insert multichoice quiz]	after=	
+   black	cls=-	tag=-	dir=-	text=How would you use the drama techniques to show the audience you are in the below settings?	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Hover on drama techniques: Voice, body, movement, space.]	after=	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[insert image]	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/basement-in-disorder-gm1366975407-437359988?searchscope=image%2Cfilm	after=	
+   black	cls=-	tag=-	dir=-	text=Move about quickly and taking large strides.	after=	
+   tag	cls=tag	tag=data marker	dir=SUBTAG	text=[incorrect]	after=	
+   black	cls=-	tag=-	dir=-	text=Moving somewhat slowly and carefully, occasionally lifting the leg high to step as if stepping over something.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct]	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/mysterious-blue-toned-forest-pathway-footpath-in-the-dark-foggy-autumnal-col	after=	
+   black	cls=-	tag=-	dir=-	text=Moving slowly, avoiding sudden movements, and looking around frequently and checking behind you.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct]	after=	
+   black	cls=-	tag=-	dir=-	text=Skipping joyfully, while waving and smiling.	after=	
+   tag	cls=tag	tag=data marker	dir=SUBTAG	text=[incorrect]	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/new-bouncy-castle-gm1168417088-322612609?searchscope=image%2Cfilm	after=	
+   black	cls=-	tag=-	dir=-	text=Jumping up and down and smiling.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=	
+   black	cls=-	tag=-	dir=-	text=Tip toeing and moving slowly.	after=	
+   tag	cls=tag	tag=data marker	dir=SUBTAG	text=[incorrect]	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/maldives-island-gm1442179368-481642124?searchscope=image%2Cfilm	after=	
+   black	cls=-	tag=-	dir=-	text=Running quickly around the stage, occasionally and abruptly jumping to one side and into forward rolls, stoppi	after=	
+   tag	cls=tag	tag=data marker	dir=SUBTAG	text=[incorrect]	after=	
+   black	cls=-	tag=-	dir=-	text=Laying down relaxed, occasionally getting up and walking to one side of the stage and looking down at your fee	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=	
+BUNDLE ARFUN05 #8 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Insert activity – multichoice quiz]	after=	
+   black	cls=-	tag=-	dir=-	text=Look at the pictures and select the stage directions for the performers.	after=	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[Insert image]	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/young-dancer-performing-on-a-theater-stage-gm1089116368-292164502?searchscop	after=	
+   black	cls=-	tag=-	dir=-	text=The performer is upstage centre.	after=	
+   tag	cls=tag	tag=data marker	dir=SUBTAG	text=[Incorrect]	after=	
+   black	cls=-	tag=-	dir=-	text=The performer is downstage centre.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct]	after=	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[Insert image]	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/actor-on-stage-gm184132462-16767830?searchscope=image%2Cfilm	after=	
+   black	cls=-	tag=-	dir=-	text=The performer is upstage centre.	after=	
+   tag	cls=tag	tag=data marker	dir=SUBTAG	text=[Incorrect]	after=	
+   black	cls=-	tag=-	dir=-	text=The performer is downstage centre.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct]	after=	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[Insert image]	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/group-of-theater-stage-performers-rehearsing-on-stage-gm1480011142-507815991	after=	
+   black	cls=-	tag=-	dir=-	text=The performer in the red pants is stage left.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=	
+   black	cls=-	tag=-	dir=-	text=The performer in the red pants is stage right.	after=	
+   tag	cls=tag	tag=data marker	dir=SUBTAG	text=[incorrect]	after=	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[Insert image]	after=	
+   black	cls=-	tag=-	dir=-	text=https://www.istockphoto.com/photo/group-of-theater-stage-performers-checking-texts-and-rehearsing-gm1480010339	after=	
+   black	cls=-	tag=-	dir=-	text=The performer in the red pants is upstage.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=	
+   black	cls=-	tag=-	dir=-	text=The performer in the red pants is downstage.	after=	
+   tag	cls=tag	tag=data marker	dir=SUBTAG	text=[incorrect]	after=	
+ARFUN05: identical 1 / changed 0
+ART1002: identical 8 / changed 0
+ART1003: identical 1 / changed 0
+BUNDLE ART1004 #2 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Please create a Dropbox for this information to be submitted.)	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[body text]	after=**Well done! Label the activities from Task 3 and submit to dropbox**	
+   tag	cls=instruction	tag=-	dir=-	text=[CS please create appropriate Dropbox]	after=	
+ART1004: identical 1 / changed 0
+ART1005: identical 1 / changed 0
+ART1006: identical 6 / changed 0
+BLL110: identical 1 / changed 0
+BLL111: identical 3 / changed 0
+BLL112: identical 3 / changed 0
+BLL113: identical 3 / changed 0
+BLL114: identical 3 / changed 0
+BLL115: identical 3 / changed 0
+BLL116: identical 3 / changed 0
+BLL117: identical 3 / changed 0
+BLL120: identical 1 / changed 0
+BLL121: identical 3 / changed 0
+BLL122: identical 3 / changed 0
+BUNDLE BLL123 #6 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL123 #10 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL123 #11 dropDown built=true act=2E
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+   black	cls=-	tag=-	dir=-	text=Congratulations on completing Module 3. You are now ready to start Module 4. Go back to the landing page and c	after=	
+BLL123: identical 3 / changed 0
+BUNDLE BLL124 #2 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL124 #8 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL124 #10 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL124 #14 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+   black	cls=-	tag=-	dir=-	text=Congratulations on completing Module 4. You are now ready to start Module 5. Go back to the landing page and c	after=	
+BLL124: identical 3 / changed 0
+BLL125: identical 3 / changed 0
+BLL126: identical 3 / changed 0
+BLL127: identical 3 / changed 0
+BLL130: identical 1 / changed 0
+BLL131: identical 3 / changed 0
+BLL132: identical 3 / changed 0
+BLL133: identical 3 / changed 0
+BLL134: identical 3 / changed 0
+BLL135: identical 3 / changed 0
+BLL136: identical 2 / changed 0
+BLL137: identical 3 / changed 0
+BLL140: identical 1 / changed 0
+BUNDLE BLL141 #6 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BUNDLE BLL141 #9 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BUNDLE BLL141 #12 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Congratulations on completing Module 1. You are now ready to start Module 2. Go back to the landing page and c	
+BLL141: identical 3 / changed 0
+BUNDLE BLL142 #5 dropDown built=true act=2E
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Congratulations on completing Module 3. You are now ready to start Module 4. Go back to the landing page and c	
+BLL142: identical 3 / changed 0
+BUNDLE BLL143 #5 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL143 #8 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL143 #10 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BLL143: identical 3 / changed 0
+BUNDLE BLL144 #2 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BLL144: identical 3 / changed 0
+BUNDLE BLL145 #9 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Congratulations on completing Module 5. Tino pai, you are tracking so well! You are now ready to start Module 	
+BLL145: identical 3 / changed 0
+BUNDLE BLL146 #7 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BLL146: identical 3 / changed 0
+BUNDLE BLL147 #2 multiChoiceQuiz built=false act=1C
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Multiple choice quiz] Correct answers are in read.	after=	
+   black	cls=-	tag=-	dir=-	text=Who lends a jeep to Jon and Lee?	after=	
+   black	cls=-	tag=-	dir=-	text=1. A) Bill	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=noise	tag=-	dir=-	text=B) Allan	after=	
+   black	cls=-	tag=-	dir=-	text=1. C) Lee	after=	
+   black	cls=-	tag=-	dir=-	text=1. D) A stranger	after=	
+   black	cls=-	tag=-	dir=-	text=What happens after Jon and Lee set off in the jeep?	after=	
+   black	cls=-	tag=-	dir=-	text=1. A) They stop for gas.	after=	
+   black	cls=-	tag=-	dir=-	text=1. B) They drive into a city.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=C) They encounter deep ruts in the road.	after=	
+   black	cls=-	tag=-	dir=-	text=1. D) They go to a party.	after=	
+   black	cls=-	tag=-	dir=-	text=What happens when it begins to rain?	after=	
+   black	cls=-	tag=-	dir=-	text=1. A) The jeep runs smoothly.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=B) The jeep skids and gets stuck in the mud.	after=	
+   black	cls=-	tag=-	dir=-	text=1. C) Jon and Lee find shelter.	after=	
+   black	cls=-	tag=-	dir=-	text=1. D) They turn back.	after=	
+   black	cls=-	tag=-	dir=-	text=What does Jon try to do when the jeep gets stuck?	after=	
+   black	cls=-	tag=-	dir=-	text=1. A) Fix the engine.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=B) Get the jeep back on the road.	after=	
+   black	cls=-	tag=-	dir=-	text=1. C) Call for help.	after=	
+   black	cls=-	tag=-	dir=-	text=1. D) Change a tire.	after=	
+   black	cls=-	tag=-	dir=-	text=What do Jon and Lee do while they wait for help?	after=	
+   black	cls=-	tag=-	dir=-	text=1. A) Sing	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=noise	tag=-	dir=-	text=B) Sleep	after=	
+   black	cls=-	tag=-	dir=-	text=1. C) Laugh	after=	
+   black	cls=-	tag=-	dir=-	text=1. D) Scream	after=	
+   black	cls=-	tag=-	dir=-	text=Who stops to help Jon and Lee?	after=	
+   black	cls=-	tag=-	dir=-	text=1. A) A police officer	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=noise	tag=-	dir=-	text=B) Bill	after=	
+   black	cls=-	tag=-	dir=-	text=1. C) A random driver	after=	
+   black	cls=-	tag=-	dir=-	text=1. D) Allan	after=	
+   black	cls=-	tag=-	dir=-	text=What does Bill ask Jon and Lee when he arrives?	after=	
+   black	cls=-	tag=-	dir=-	text=1. A) "Where are you going?"	after=	
+   black	cls=-	tag=-	dir=-	text=1. B) "What happened to the jeep?"	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=C) "Do you need a hand?"	after=	
+   black	cls=-	tag=-	dir=-	text=1. D) "Are you lost?"	after=	
+   black	cls=-	tag=-	dir=-	text=What do Jon and Lee do after Bill helps them?	after=	
+   black	cls=-	tag=-	dir=-	text=1. A) They go shopping.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=B) They set off again.	after=	
+   black	cls=-	tag=-	dir=-	text=1. C) They buy a new jeep.	after=	
+   black	cls=-	tag=-	dir=-	text=1. D) They get petrol.	after=	
+BUNDLE BLL147 #6 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL147 #7 dropDown built=true act=1C
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL147 #10 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BLL147: identical 3 / changed 0
+BLL150: identical 1 / changed 0
+BUNDLE BLL151 #6 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BLL151: identical 3 / changed 0
+BUNDLE BLL152 #3 multiChoiceQuiz built=false act=1C
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Multiple choice quiz] Correct answers are in read.	after=	
+   black	cls=-	tag=-	dir=-	text=1. What did Dad tell Zac to do first?	after=	
+   black	cls=-	tag=-	dir=-	text=A) Sit	after=	
+   tag	cls=noise	tag=-	dir=-	text=B) Run	after=	
+   black	cls=-	tag=-	dir=-	text=C) Creep	after=	
+   black	cls=-	tag=-	dir=-	text=1. What did Zac do after Dad said, “Run”?	after=	
+   black	cls=-	tag=-	dir=-	text=A) He walked.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=B) He ran.	after=	
+   black	cls=-	tag=-	dir=-	text=C) He hid.	after=	
+   black	cls=-	tag=-	dir=-	text=1. When Dad said, “Stand,” what did Zac do?	after=	
+   black	cls=-	tag=-	dir=-	text=A) He sat.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=B) He stood.	after=	
+   black	cls=-	tag=-	dir=-	text=C) He crept.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Which action did Zac take after being told to “Creep”?	after=	
+   black	cls=-	tag=-	dir=-	text=A) He jumped.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=B) He crept.	after=	
+   black	cls=-	tag=-	dir=-	text=C) He ran.	after=	
+   black	cls=-	tag=-	dir=-	text=1. What did Zac do when Dad said, “Sing”?	after=	
+   black	cls=-	tag=-	dir=-	text=A) He sat down.	after=	
+   black	cls=-	tag=-	dir=-	text=B) He hid.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=C) He sang.	after=	
+   black	cls=-	tag=-	dir=-	text=1. What does Dad say when he tells Zac to go to “Bed”?	after=	
+   tag	cls=instruction	tag=-	dir=-	text=A) Zac hid.	after=	
+   black	cls=-	tag=-	dir=-	text=B) Zac ran.	after=	
+   black	cls=-	tag=-	dir=-	text=C) Zac stood.	after=	
+   black	cls=-	tag=-	dir=-	text=1. What did Zac do while he was waiting?	after=	
+   tag	cls=instruction	tag=-	dir=-	text=A) He kept still and waited.	after=	
+   black	cls=-	tag=-	dir=-	text=B) He danced.	after=	
+   black	cls=-	tag=-	dir=-	text=C) He played.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Which sentence uses the present tense correctly?	after=	
+   black	cls=-	tag=-	dir=-	text=A) Dad looked for Zac.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=B) Zac keeps still.	after=	
+   black	cls=-	tag=-	dir=-	text=C) Zac hid behind the tree.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Which of these sentences is true about Zac’s dad?	after=	
+   black	cls=-	tag=-	dir=-	text=• A) He saw Zac.	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=instruction	tag=-	dir=-	text=B) He did not see him.	after=	
+   black	cls=-	tag=-	dir=-	text=• C) He called for help.	after=	
+BUNDLE BLL152 #10 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Congratulations! You have now completed module 2 and ready for the next lesson. Please return to the landing p	
+BLL152: identical 3 / changed 0
+BUNDLE BLL153 #2 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL153 #4 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL153 #9 dropDown built=true act=2E
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Congratulations! You have now completed module 3 and ready for the next lesson. Please return to the landing p	
+BLL153: identical 3 / changed 0
+BUNDLE BLL154 #7 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL154 #9 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL154 #13 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Congratulations! You have now completed module 4 and ready for the next lesson. Please return to the landing p	
+BLL154: identical 3 / changed 0
+BUNDLE BLL155 #6 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL155 #7 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BLL155: identical 3 / changed 0
+BUNDLE BLL156 #10 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Congratulations! You have now completed module 6 and ready for the next lesson. Please return to the landing p	
+BLL156: identical 3 / changed 0
+BLL157: identical 3 / changed 0
+BLL160: identical 1 / changed 0
+BUNDLE BLL161 #6 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BUNDLE BLL161 #9 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Congratulations on completing Module 1. You are now ready to start Module 2. Go back to the landing page and c	
+BLL161: identical 3 / changed 0
+BLL162: identical 3 / changed 0
+BUNDLE BLL163 #5 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL163 #6 dropDown built=true act=1E
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL163 #7 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL163 #10 dropDown built=true act=2E
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Congratulations! You have now completed module 3 and ready for the next lesson. Please return to the landing p	
+BLL163: identical 3 / changed 0
+BUNDLE BLL164 #3 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL164 #5 dropDown built=true act=1C
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL164 #13 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Congratulations! You have now completed module 4 and ready for the next lesson. Please return to the landing p	
+BLL164: identical 3 / changed 0
+BUNDLE BLL165 #1 multiChoiceQuiz built=false act=1B
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Multiple-Choice Quiz/self check] correct answers in red.	after=	
+   black	cls=-	tag=-	dir=-	text=1. **What is Nikisha's superhero name?**	after=	
+   black	cls=-	tag=-	dir=-	text=1. A) The Helper	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=B) The Flash	after=	
+   black	cls=-	tag=-	dir=-	text=1. C) The Runner	after=	
+   black	cls=-	tag=-	dir=-	text=1. D) Super Nikisha	after=	
+   black	cls=-	tag=-	dir=-	text=1. **What does Nikisha like to do the most?**	after=	
+   black	cls=-	tag=-	dir=-	text=1. A) Run fast	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=B) Help others	after=	
+   black	cls=-	tag=-	dir=-	text=1. C) Play games	after=	
+   black	cls=-	tag=-	dir=-	text=1. D) Eat lunch	after=	
+   black	cls=-	tag=-	dir=-	text=1. **What does Nikisha find in her shed?**	after=	
+   black	cls=-	tag=-	dir=-	text=1. A) A pet	after=	
+   black	cls=-	tag=-	dir=-	text=1. B) A big box	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=C) A mess	after=	
+   black	cls=-	tag=-	dir=-	text=1. D) A treasure	after=	
+   black	cls=-	tag=-	dir=-	text=1. **What does The Flash do with the rubbish?**	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=A) Throws it away	after=	
+   black	cls=-	tag=-	dir=-	text=1. B) Keeps it in the shed	after=	
+   black	cls=-	tag=-	dir=-	text=1. C) Gives it to her friends	after=	
+   black	cls=-	tag=-	dir=-	text=1. D) Makes art with it	after=	
+   black	cls=-	tag=-	dir=-	text=1. **What does Nikisha use to clean the shed?**	after=	
+   black	cls=-	tag=-	dir=-	text=1. A) A mop	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=B) A broom	after=	
+   black	cls=-	tag=-	dir=-	text=1. C) A vacuum	after=	
+   black	cls=-	tag=-	dir=-	text=1. D) A cloth	after=	
+   black	cls=-	tag=-	dir=-	text=1. **What happens all of a sudden?**	after=	
+   black	cls=-	tag=-	dir=-	text=1. A) A cat appears	after=	
+   black	cls=-	tag=-	dir=-	text=1. B) Nikisha finds a toy	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=C) There is a loud noise	after=	
+   black	cls=-	tag=-	dir=-	text=1. D) The sun shines brightly	after=	
+   black	cls=-	tag=-	dir=-	text=1. **What does Nikisha think when she hears the noise?**	after=	
+   black	cls=-	tag=-	dir=-	text=1. A) "I should ignore it."	after=	
+   black	cls=-	tag=-	dir=-	text=1. B) "I need to run away."	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=C) "What was that?"	after=	
+   black	cls=-	tag=-	dir=-	text=1. D) "I am scared."	after=	
+   black	cls=-	tag=-	dir=-	text=1. **Who does The Flash rush to help?**	after=	
+   black	cls=-	tag=-	dir=-	text=1. A) A stranger	after=	
+   black	cls=-	tag=-	dir=-	text=1. B) Her friends	after=	
+   black	cls=-	tag=-	dir=-	text=1. C) Someone in need	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=D) We don't know yet	after=	
+BUNDLE BLL165 #4 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL165 #6 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL165 #8 dropDown built=true act=2A
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL165 #12 dropDown built=true act=2E
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Congratulations! You have now completed module 5 and ready for the next lesson. Please return to the landing p	
+BLL165: identical 3 / changed 0
+BLL166: identical 3 / changed 0
+BLL167: identical 3 / changed 0
+BLL170: identical 1 / changed 0
+BUNDLE BLL171 #5 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BLL171: identical 3 / changed 0
+BLL172: identical 3 / changed 0
+BUNDLE BLL173 #1 multiChoiceQuiz built=false act=1A
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Multiple-Choice Quiz] all correct answers are B (in red), but can you muddle up so that some are a, c, d plea	after=	
+   black	cls=-	tag=-	dir=-	text=**1. Why does Tim need to get fit?**	after=	
+   black	cls=-	tag=-	dir=-	text=A) He wants to run a marathon.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=B) He is going on a fun run with his kids.	after=C) He is training for a race. D) He needs to lose weight.	
+   black	cls=-	tag=-	dir=-	text=**2. What types of exercises does Tim do to get fit?**	after=	
+   black	cls=-	tag=-	dir=-	text=A) He only runs.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=B) He swims, runs, jogs, and skips.	after=C) He walks and jogs. D) He only skips.	
+   black	cls=-	tag=-	dir=-	text=**3. What happens at the start of the Fun Run?**	after=	
+   black	cls=-	tag=-	dir=-	text=A) Tim runs alone.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=B) Tim and his kids are at the start line.	after=C) Tim’s kids are already running. D) The race is delayed.	
+   black	cls=-	tag=-	dir=-	text=**4. How does Tim feel as he tries to keep up with his kids?**	after=	
+   black	cls=-	tag=-	dir=-	text=A) He feels happy.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=B) He feels tired and puffs hard.	after=C) He feels confident. D) He feels angry.	
+   black	cls=-	tag=-	dir=-	text=**5. How do Tim’s kids react at the end of the run?**	after=	
+   black	cls=-	tag=-	dir=-	text=A) They ignore Tim.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=B) They wait for him and clap.	after=C) They go home without him. D) They finish first and keep running.	
+   black	cls=-	tag=-	dir=-	text=**6. What does Tim do after the run?**	after=	
+   black	cls=-	tag=-	dir=-	text=A) He feels proud and keeps running.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=B) He flops onto the ground.	after=C) He runs another lap. D) He goes straight to the finish line.	
+   black	cls=-	tag=-	dir=-	text=**7. What do Tim’s kids say to him after the run?**	after=	
+   black	cls=-	tag=-	dir=-	text=A) "Better luck next time!"	after=	
+   tag	cls=instruction	tag=-	dir=-	text=B) "Good on you, Dad!"	after=C) "You need more practice." D) "Try harder next time."	
+BUNDLE BLL173 #3 dropDown built=true act=1C
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL173 #10 dropDown built=true act=2E
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Congratulations on completing Module 2. You are now ready to start Module 3. Go back to the landing page and c	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Congratulations! You have now completed Module 3 and ready for the next lesson. Please return to the landing p	
+BLL173: identical 3 / changed 0
+BUNDLE BLL174 #10 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Congratulations! You have now completed Module 4 and ready for the next lesson. Please return to the landing p	
+BLL174: identical 3 / changed 0
+BUNDLE BLL175 #5 dropDown built=true act=1E
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL175 #9 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL175 #12 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Congratulations! You have now completed Module 5 and ready for the next lesson. Please return to the landing p	
+BLL175: identical 4 / changed 0
+BUNDLE BLL176 #4 dropDown built=true act=1D
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL176 #8 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL176 #11 dropDown built=true act=2E
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Congratulations! You have now completed Module 6 and ready for the next lesson. Please return to the landing p	
+BLL176: identical 3 / changed 0
+BLL177: identical 3 / changed 0
+BLL210: identical 1 / changed 0
+BLL211: identical 3 / changed 0
+BUNDLE BLL212 #2 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL212 #6 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BLL212: identical 3 / changed 0
+BUNDLE BLL213 #5 dropDown built=true act=2A
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BLL213: identical 3 / changed 0
+BUNDLE BLL214 #2 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BUNDLE BLL214 #5 dropDown built=true act=2A
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[upload to dropbox] Where ākonga can upload some of their work, and or show they have participated in this les	after=	
+BLL214: identical 3 / changed 0
+BLL215: identical 3 / changed 0
+BLL216: identical 3 / changed 0
+BLL217: identical 3 / changed 0
+BLL220: identical 1 / changed 0
+BUNDLE BLL221 #7 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[Body]	after=Congratulations on completing Module 1. You are now ready to start Module 2. Go back to the landing page and c	
+BLL221: identical 3 / changed 0
+BLL222: identical 3 / changed 0
+BLL223: identical 3 / changed 0
+BUNDLE BLL224 #8 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BLL224: identical 3 / changed 0
+BLL225: identical 3 / changed 0
+BLL226: identical 3 / changed 0
+BLL227: identical 3 / changed 0
+BLL230: identical 1 / changed 0
+BUNDLE BLL231 #7 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BLL231: identical 3 / changed 0
+BUNDLE BLL232 #9 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BLL232: identical 3 / changed 0
+BLL233: identical 3 / changed 0
+BLL234: identical 3 / changed 0
+BLL235: identical 3 / changed 0
+BLL236: identical 3 / changed 0
+BUNDLE BLL237 #5 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BLL237: identical 3 / changed 0
+BLL240: identical 1 / changed 0
+BUNDLE BLL241 #5 multiChoiceQuiz built=false act=2E
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Multichoice – correct answers are in red]	after=	
+   black	cls=-	tag=-	dir=-	text=1. In the story, Weka says, “I must get home to my nest to check the eggs.”	after=	
+   black	cls=-	tag=-	dir=-	text=How is Weka feeling?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Happy.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=noise	tag=-	dir=-	text=Worried.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Angry.	after=	
+   black	cls=-	tag=-	dir=-	text=1. How do you know Weka feels this way?	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=He is thinking about his eggs.	after=	
+   black	cls=-	tag=-	dir=-	text=1. He is singing loudly.	after=	
+   black	cls=-	tag=-	dir=-	text=1. He is flying above the fog.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Tūī flies up above the fog and makes a plan.	after=	
+   black	cls=-	tag=-	dir=-	text=What does this tell us about Tūī?	after=	
+   black	cls=-	tag=-	dir=-	text=1. He is scared.	after=	
+   black	cls=-	tag=-	dir=-	text=1. He is tired.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=He is helpful.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Which clue from the story helps you know this?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Tūī runs away.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Tūī cannot see the nest.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Tūī sings to guide Weka.	after=	
+   black	cls=-	tag=-	dir=-	text=1. At the end of the story, Weka says, “Ka pai.”	after=	
+   black	cls=-	tag=-	dir=-	text=What can we infer Weka is feeling now?	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=noise	tag=-	dir=-	text=Thankful.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Sad.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Confused.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Why do you think Weka feels this way?	after=	
+   black	cls=-	tag=-	dir=-	text=1. The fog is getting thicker.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=His eggs are safe.	after=	
+   black	cls=-	tag=-	dir=-	text=1. He is still lost.	after=	
+BLL241: identical 3 / changed 0
+BUNDLE BLL242 #5 multiChoiceQuiz built=false act=1D
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Multi-choice quiz] The correct answer is highlighted.	after=	
+   black	cls=-	tag=-	dir=-	text=1. I can (hare,	after=	
+   tag	cls=noise	tag=-	dir=-	text=hear	after=) the music.	
+   black	cls=-	tag=-	dir=-	text=1. The girl had to decide (	after=	
+   tag	cls=noise	tag=-	dir=-	text=which	after=, witch) book she would read first.	
+   black	cls=-	tag=-	dir=-	text=1. The bus (	after=	
+   tag	cls=noise	tag=-	dir=-	text=fare	after=, fair) to the mall cost me six dollars.	
+   black	cls=-	tag=-	dir=-	text=1. My favourite afternoon snack is a fresh, juicy (pair,	after=	
+   tag	cls=noise	tag=-	dir=-	text=pear	after=).	
+   black	cls=-	tag=-	dir=-	text=1. The boy’s (hare,	after=	
+   tag	cls=noise	tag=-	dir=-	text=hair	after=) was blond and curly.	
+   black	cls=-	tag=-	dir=-	text=1. The (dear,	after=	
+   tag	cls=noise	tag=-	dir=-	text=deer	after=) ran into the trees when it spotted us.	
+   black	cls=-	tag=-	dir=-	text=1. Will you please come and stand (hear,	after=	
+   tag	cls=noise	tag=-	dir=-	text=here	after=) with me?	
+   black	cls=-	tag=-	dir=-	text=1. I try to (	after=	
+   tag	cls=noise	tag=-	dir=-	text=wear	after=, where) a different (pear,	
+   tag	cls=noise	tag=-	dir=-	text=pair	after=) of shoes each day.	
+   black	cls=-	tag=-	dir=-	text=1. The (wail,	after=	
+   tag	cls=noise	tag=-	dir=-	text=whale	after=) stayed underwater for over ten minutes.	
+   black	cls=-	tag=-	dir=-	text=1. I tried not to (stair,	after=	
+   tag	cls=noise	tag=-	dir=-	text=stare	after=) but the baby did (	
+   tag	cls=noise	tag=-	dir=-	text=wail	after=, whale) for a long time.	
+BUNDLE BLL242 #7 dropDown built=false act=2B
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Drop down] Can these please be placed beside each other.	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+BUNDLE BLL242 #8 multiChoiceQuiz built=false act=2D
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Multichoice – correct answers are in red]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Lani says, “I cannot wait to see Tinā”. What can we tell about how Lani feels?	after=	
+   black	cls=-	tag=-	dir=-	text=1. She is nervous.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=She is excited.	after=	
+   black	cls=-	tag=-	dir=-	text=1. She is tired.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Lani wears a flower in her hair to the airport. Why does she most likely do this?	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=She wants Tinā to notice her.	after=	
+   black	cls=-	tag=-	dir=-	text=1. She is going to school.	after=	
+   black	cls=-	tag=-	dir=-	text=1. It is raining.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Lani gives Tinā a lei to wear. What does this show about Lani?	after=	
+   black	cls=-	tag=-	dir=-	text=1. She wants to sell the lei.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=She wants to welcome Tinā.	after=	
+   black	cls=-	tag=-	dir=-	text=1. She wants Tinā to carry it.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Tinā says, “This is far bigger than Samoa.” What can we infer about where Tinā is from?	after=	
+   black	cls=-	tag=-	dir=-	text=1. She lives in a very busy city.	after=	
+   black	cls=-	tag=-	dir=-	text=1. She has never travelled before.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=She comes from a smaller place.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Lani holds Tinā’s hand as they go to the car. Why might Lani do this?	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Lani wants to help and care for Tinā.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Tinā cannot walk.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Lani is in a hurry.	after=	
+   black	cls=-	tag=-	dir=-	text=1. From the whole story, what can we infer about Tinā’s visit?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Tinā does not want to stay.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=It is important to Lani and her family.	after=	
+   black	cls=-	tag=-	dir=-	text=1. The visit is very short.	after=	
+BLL242: identical 3 / changed 0
+BUNDLE BLL243 #6 reorder built=false act=2A
+   tag	cls=tag	tag=reorder	dir=INTERACTIVE	text=[reorder]	after=	
+   tag	cls=instruction	tag=-	dir=-	text=This activity is the same as Activity 1D in BLL232 (but with different pictures).	after=	
+   black	cls=-	tag=-	dir=-	text=https://tekura.desire2learn.com/d2l/le/content/78989/viewContent/203166/View	after=	
+   tag	cls=instruction	tag=-	dir=-	text=In Row 1 of the table below are the 7 images to be shown on each tab.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=In row 2, the images in red are the ones to be shown in the ‘click to reveal’ for round 1	after=	
+   tag	cls=instruction	tag=-	dir=-	text=In row 3, the images in red are the ones to be shown in the ‘click to reveal’ for round 2, and so on…...	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Can we mix the order up in the ‘click to reveal’ so they are not in the same order as the 7 images underneath 	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+BUNDLE BLL243 #8 reorder built=false act=2D
+   tag	cls=tag	tag=reorder	dir=INTERACTIVE	text=[reorder] The sentences are currently in the correct order. Please jumble them.	after=	
+   black	cls=-	tag=-	dir=-	text=Kiwi goes out at **midnight** to look for food.	after=	
+   black	cls=-	tag=-	dir=-	text=Kiwi taps the ground with her beak and searches in the dirt.	after=	
+   black	cls=-	tag=-	dir=-	text=Kiwi finds a worm, but dirt goes into her nostrils.	after=	
+   black	cls=-	tag=-	dir=-	text=Kiwi sneezes and the worm falls into the stream.	after=	
+   black	cls=-	tag=-	dir=-	text=Kiwi feels unhappy and wonders who can help.	after=	
+   black	cls=-	tag=-	dir=-	text=Frog appears and suggests searching for food in the water.	after=	
+   black	cls=-	tag=-	dir=-	text=Ruru swoops down and suggests looking for food from above.	after=	
+   black	cls=-	tag=-	dir=-	text=Kiwi decides to return to the track and keep trying her own way.	after=	
+   black	cls=-	tag=-	dir=-	text=The animals discover they all like a midnight roam, even though they hunt differently.	after=	
+BUNDLE BLL243 #9 typing built=false act=-
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[type the answer + autocheck]	after=	
+   tag	cls=noise	tag=-	dir=-	text=Where	after=does the worm land after Kiwi sneezes?	
+   tag	cls=noise	tag=-	dir=-	text=Who	after=swoops down from the sky to speak to Kiwi?	
+   tag	cls=noise	tag=-	dir=-	text=How	after=does Kiwi search for food in the dirt?	
+   tag	cls=noise	tag=-	dir=-	text=What	after=does Kiwi use to search for food?	
+   tag	cls=noise	tag=-	dir=-	text=Why	after=does Kiwi sneeze?	
+   tag	cls=noise	tag=-	dir=-	text=When	after=does Frog appear to talk to Kiwi?	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[body]	after=When you have filled in the correct question word, try answering the questions. You can record your answers to	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[button]	after=Upload to dropbox.	
+   tag	cls=tag	tag=engagement quiz button	dir=ELEMENT	text=[trigger engagement]	after=	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[image]	after=https://www.istockphoto.com/vector/3d-two-party-popper-gm1461683255-495604015?searchscope=image%2Cfilm	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[body]	after=Congratulations on completing this module. You are now ready to start the next module in this set. Go back to 	
+BLL243: identical 3 / changed 0
+BUNDLE BLL244 #3 reorder built=false act=1D
+   tag	cls=tag	tag=reorder	dir=INTERACTIVE	text=[reorder] Please note there are two possible correct answers for each sentence.	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=instruction	tag=-	dir=-	text=The art table was covered with paint, brushes and paper.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=The art table was covered with paint, paper and brushes.	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=instruction	tag=-	dir=-	text=The chickens, sheep and cows slept under the stars.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=The chickens, cows and sheep slept under the stars.	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Rain, wind and thunder filled the sky during the storm.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Rain, thunder and wind filled the sky during the storm.	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Aroha kept crayons, rulers and stickers in her pencil case.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Aroha kept crayons, stickers and rulers in her pencil case.	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=instruction	tag=-	dir=-	text=In the treasure chest lay coins, silver, jewels and a golden crown.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=In the treasure chest lay silver, coins, jewels and a golden crown.	after=	
+BUNDLE BLL244 #6 typing built=false act=2D
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[type the answer + autocheck]	after=	
+   tag	cls=noise	tag=-	dir=-	text=What	after=game are Zack and Kev playing at the local school?	
+   tag	cls=noise	tag=-	dir=-	text=Where	after=does the music seem to be coming from?	
+   tag	cls=noise	tag=-	dir=-	text=Who	after=thinks the music sounds like Dan?	
+   tag	cls=noise	tag=-	dir=-	text=When	after=do Zack and Kev meet up to play together?	
+   tag	cls=noise	tag=-	dir=-	text=How	after=does Kev feel when the ball goes through the hoop?	
+   tag	cls=noise	tag=-	dir=-	text=Why	after=does Zack glare at Kev?	
+BLL244: identical 3 / changed 0
+BUNDLE BLL245 #6 multiChoiceQuiz built=false act=2B
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[dropdown multi choice cloze activity] Correct answers are in red	after=	
+   tag	cls=instruction	tag=-	dir=-	text=[Lily,	after=She] had long brown hair that was usually tied back in a ponytail. Today, [Lily,	
+   tag	cls=noise	tag=-	dir=-	text=she	after=] was wearing a yellow T-shirt, blue shorts. On her feet, [Lily,	
+   tag	cls=noise	tag=-	dir=-	text=she	after=] wore her favourite pink trainers. [Lily,	
+   tag	cls=noise	tag=-	dir=-	text=She	after=] enjoyed running and climbing and [Lily,	
+   tag	cls=noise	tag=-	dir=-	text=she	after=] ran to the jungle gym as soon as it came into sight.	
+   black	cls=-	tag=-	dir=-	text=[	after=	
+   tag	cls=noise	tag=-	dir=-	text=Tane	after=, He] had short curly hair and freckles on his cheeks. [Tane,	
+   tag	cls=noise	tag=-	dir=-	text=He	after=] was taller than most of his friends but [Tane,	
+   tag	cls=noise	tag=-	dir=-	text=he	after=] stood up straight when he walked.	
+BLL245: identical 3 / changed 0
+BUNDLE BLL246 #2 typing built=false act=-
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[type the answer + auto check]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+BLL246: identical 3 / changed 0
+BLL247: identical 3 / changed 0
+BLL250: identical 1 / changed 0
+BUNDLE BLL251 #7 multiChoiceQuiz built=true act=2D
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[multichoice quiz + auto check]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Why does the author use the word neighbourly to describe the characters?	after=	
+   black	cls=-	tag=-	dir=-	text=1. To show the characters live far away	after=	
+   black	cls=-	tag=-	dir=-	text=1. To show the characters are busy	after=	
+   black	cls=-	tag=-	dir=-	text=1. To show the characters are kind and helpful	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct answer]	after=	
+   black	cls=-	tag=-	dir=-	text=1. To show the characters are noisy	after=	
+   black	cls=-	tag=-	dir=-	text=1. How does the word rushes help the reader feel?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Calm and relaxed	after=	
+   black	cls=-	tag=-	dir=-	text=1. Excited and urgent	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct answer]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Sad and worried	after=	
+   black	cls=-	tag=-	dir=-	text=1. Confused	after=	
+   black	cls=-	tag=-	dir=-	text=1. Why does the author describe the food as delicious instead of just saying it is food?	after=	
+   black	cls=-	tag=-	dir=-	text=1. To help the reader imagine the taste and feel hungry	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct answer]	after=	
+   black	cls=-	tag=-	dir=-	text=1. To make the story longer	after=	
+   black	cls=-	tag=-	dir=-	text=1. To explain how to cook	after=	
+   black	cls=-	tag=-	dir=-	text=1. To show the food cost a lot of money	after=	
+   black	cls=-	tag=-	dir=-	text=1. What feeling does the author most likely want the reader to have at the end of the story?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Angry	after=	
+   black	cls=-	tag=-	dir=-	text=1. Lonely	after=	
+   black	cls=-	tag=-	dir=-	text=1. Bored	after=	
+   black	cls=-	tag=-	dir=-	text=1. Warm and happy	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct answer]	after=	
+   black	cls=-	tag=-	dir=-	text=1. What idea does the author want the reader to learn from the way characters share food?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Parties need lots of rules	after=	
+   black	cls=-	tag=-	dir=-	text=1. Food is more important than people	after=	
+   black	cls=-	tag=-	dir=-	text=1. Working together makes things better	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct answer]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Cooking should be quiet	after=	
+BLL251: identical 3 / changed 0
+BUNDLE BLL252 #3 typing built=false act=-
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[drag and drop + type the answer + autocheck]	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Is it possible to have an X that ākonga can repeatedly drag down to cross out the letters that are to be taken	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[],[],[]],[[],[{"text":"no","kind":"hl"}],[]],[[],[{"text":"o","kind":"hl"}],[]],[[],[{"text":"a","kind":"hl"}],[]],[[],[{"text":"i","kind":"hl"}],[]],[[],[{"
+BUNDLE BLL252 #4 typing built=false act=1D
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[type the answer + autocheck]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[],[{"text":"[cannot]","kind":"hl"}]],[[],[{"text":"[I am]","kind":"hl"}]],[[],[{"text":"[did not]","kind":"hl"}]],[[],[{"text":"[they are]","kind":"hl"}]],[[
+BUNDLE BLL252 #10 multiChoiceQuiz built=false act=2E
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[multichoice quiz + auto check]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Why does the poet use sound words like “craaack-craw, click, creak, tweet, tweet”?	after=	
+   black	cls=-	tag=-	dir=-	text=1. To show how quiet the forest is	after=	
+   black	cls=-	tag=-	dir=-	text=1. To help the reader hear the tūī’s song	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct answer]	after=	
+   black	cls=-	tag=-	dir=-	text=1. To make the poem shorter	after=	
+   black	cls=-	tag=-	dir=-	text=1. To tell a true fact about birds	after=	
+   black	cls=-	tag=-	dir=-	text=1. How does the line “The forest is a great green whare” help the reader?	after=	
+   black	cls=-	tag=-	dir=-	text=1. It tells the reader the forest is a real house	after=	
+   black	cls=-	tag=-	dir=-	text=1. It makes the forest sound scary	after=	
+   black	cls=-	tag=-	dir=-	text=1. It helps the reader imagine the forest as a safe place	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct answer]	after=	
+   black	cls=-	tag=-	dir=-	text=1. It teaches how to build a whare	after=	
+   black	cls=-	tag=-	dir=-	text=1. What feeling does the poet most likely want the reader to have about the tūī?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Bored	after=	
+   black	cls=-	tag=-	dir=-	text=1. Annoyed	after=	
+   black	cls=-	tag=-	dir=-	text=1. Angry	after=	
+   black	cls=-	tag=-	dir=-	text=1. Curious and amazed – answer	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct answer]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Why does the poet ask the question “Was that a bell, cellphone, or bird”?	after=	
+   black	cls=-	tag=-	dir=-	text=1. To show the tūī can copy many sounds	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct answer]	after=	
+   black	cls=-	tag=-	dir=-	text=1. To confuse the reader	after=	
+   black	cls=-	tag=-	dir=-	text=1. To test the reader’s memory	after=	
+   black	cls=-	tag=-	dir=-	text=1. To end the poem quickly	after=	
+   black	cls=-	tag=-	dir=-	text=1. What idea does the poet want the reader to think about after reading the poem?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Birds should not live near people	after=	
+   black	cls=-	tag=-	dir=-	text=1. Forests are noisy places	after=	
+   black	cls=-	tag=-	dir=-	text=1. The tūī is clever and special – answer	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct answer]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Cellphones are too loud	after=	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[Image]	after=https://media.istockphoto.com/id/2199939224/vector/party-popper-with-color-confetti-white-background.jpg?s=204	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[body]	after=Congratulations on completing this module. You have done some super learning and are now ready to start workin	
+BLL252: identical 3 / changed 0
+BLL253: identical 3 / changed 0
+BLL254: identical 3 / changed 0
+BUNDLE BLL255 #3 typing built=false act=1C
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[type the answer + auto check]	after=	
+   black	cls=-	tag=-	dir=-	text=Hemi and Aroha explored an old	after=	[{"text":"fort","kind":"green"},{"text":"fought","kind":"green"},{"text":"through","kind":"green"},{"text":"court","kind
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=fort where warriors once	[{"text":"fort","kind":"green"},{"text":"fought","kind":"green"},{"text":"through","kind":"green"},{"text":"court","kind
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=fought long ago. As they walked back	[{"text":"fort","kind":"green"},{"text":"fought","kind":"green"},{"text":"through","kind":"green"},{"text":"court","kind
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=through the neighbourhood, they saw some friends who were playing on a nearby	[{"text":"fort","kind":"green"},{"text":"fought","kind":"green"},{"text":"through","kind":"green"},{"text":"court","kind
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=court. The	[{"text":"fort","kind":"green"},{"text":"fought","kind":"green"},{"text":"through","kind":"green"},{"text":"court","kind
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=eight children had lunch together, and everyone	[{"text":"fort","kind":"green"},{"text":"fought","kind":"green"},{"text":"through","kind":"green"},{"text":"court","kind
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=ate happily. When he had finished eating, Hemi lifted his bag, but the	[{"text":"fort","kind":"green"},{"text":"fought","kind":"green"},{"text":"through","kind":"green"},{"text":"court","kind
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=weight suddenly felt too heavy for him to carry alone. He had to	[{"text":"fort","kind":"green"},{"text":"fought","kind":"green"},{"text":"through","kind":"green"},{"text":"court","kind
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=wait for Aroha to help him	[{"text":"fort","kind":"green"},{"text":"fought","kind":"green"},{"text":"through","kind":"green"},{"text":"court","kind
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=sort out the contents and carry it home. It was a busy day, but Hemi and Aroha both thought about what they ha	[{"text":"fort","kind":"green"},{"text":"fought","kind":"green"},{"text":"through","kind":"green"},{"text":"court","kind
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=seen and agreed it was something special.	[{"text":"fort","kind":"green"},{"text":"fought","kind":"green"},{"text":"through","kind":"green"},{"text":"court","kind
+BUNDLE BLL255 #5 multiChoiceQuiz built=false act=2B
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[multi-choice quiz + autocheck]	after=	
+   black	cls=-	tag=-	dir=-	text=1. I am how you feel when your thoughts are mixed up and it is hard to think clearly. What am I?	after=	
+   black	cls=-	tag=-	dir=-	text=1. risky	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"muddled","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q1]	after=muddled	[{"text":"muddled","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. glumly	after=	
+   black	cls=-	tag=-	dir=-	text=1. I am a loud and busy noise made by lots of people at once. What word am I?	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"hubbub","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q2]	after=hubbub	[{"text":"hubbub","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. pinch	after=	
+   black	cls=-	tag=-	dir=-	text=1. juggle	after=	
+   black	cls=-	tag=-	dir=-	text=1. I describe something that might not be safe and could go wrong. What word am I?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Gloopy	after=	
+   black	cls=-	tag=-	dir=-	text=1. Distracted	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"risky","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q3]	after=risky	[{"text":"risky","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. I describe how someone looks or acts when they feel sad or unhappy. What word am I?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Shrieked	after=	
+   black	cls=-	tag=-	dir=-	text=1. Brainwave	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"glumly","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q4]	after=glumly	[{"text":"glumly","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. I am a sudden clever idea that pops into your head. What word am I?	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"brainwave","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q5]	after=brainwave	[{"text":"brainwave","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. juggle	after=	
+   black	cls=-	tag=-	dir=-	text=1. hubbub	after=	
+   black	cls=-	tag=-	dir=-	text=1. I mean shouting very loudly in a high voice because of shock or surprise. What word am I?	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"shrieked","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q6]	after=shrieked	[{"text":"shrieked","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. glumly	after=	
+   black	cls=-	tag=-	dir=-	text=1. distracted	after=	
+   black	cls=-	tag=-	dir=-	text=1. I describe what happens when you cannot pay attention because something else pulls your focus. What word am	after=	
+   black	cls=-	tag=-	dir=-	text=1. Risky	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"distracted","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q7]	after=distracted	[{"text":"distracted","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. Muddled	after=	
+   black	cls=-	tag=-	dir=-	text=1. I mean taking someone else’s idea and saying it is mine. What word am I?	after=	
+   black	cls=-	tag=-	dir=-	text=1. juggle	after=	
+   black	cls=-	tag=-	dir=-	text=1. shriek	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"pinch","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q8]	after=pinch	[{"text":"pinch","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. I mean keeping several things going at once without dropping them. What word am I?	after=	
+   black	cls=-	tag=-	dir=-	text=1. gloopy	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"juggle","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q9]	after=juggle	[{"text":"juggle","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. Hubbub	after=	
+   black	cls=-	tag=-	dir=-	text=1. I describe something that is thick, sticky and messy. What word am I?	after=	
+   black	cls=-	tag=-	dir=-	text=1. glumly	after=	
+   black	cls=-	tag=-	dir=-	text=1. risky	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"gloopy","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q10]	after=gloopy	[{"text":"gloopy","kind":"green"}]
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[body]	after=Some of these words are tricky, so go back and read the definition with your correct answer. This will help yo	
+BLL255: identical 3 / changed 0
+BUNDLE BLL256 #4 reorder built=false act=1E
+   tag	cls=tag	tag=reorder	dir=INTERACTIVE	text=[reorder] Please note there are some double ups of words and this might need to be taken into account with wha	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=The smile was subtle but everyone noticed it in the end.	[{"text":"The smile was subtle but everyone noticed it in the end.","kind":"green"}]
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=A cold draught filled the room so we closed the door.	[{"text":"A cold draught filled the room so we closed the door.","kind":"green"}]
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=The balloon began to ascend and the crowd pointed to the sky.	[{"text":"The balloon began to ascend and the crowd pointed to the sky.","kind":"green"}]
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=She felt doubt so she asked for help.	[{"text":"She felt doubt so she asked for help.","kind":"green"}]
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=The naughty child laughed but he knew he was in trouble.	[{"text":"The naughty child laughed but he knew he was in trouble.","kind":"green"}]
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=The diver started to descend and bubbles rose to the surface.	[{"text":"The diver started to descend and bubbles rose to the surface.","kind":"green"}]
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=The horse began to neigh, and the farmer came running.	[{"text":"The horse began to neigh, and the farmer came running.","kind":"green"}]
+BUNDLE BLL256 #7 multiChoiceQuiz built=false act=2D
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[multi-choice quiz + autocheck]	after=	
+   black	cls=-	tag=-	dir=-	text=1. What do the words “Try again” on page 27 tell us about Ana?	after=	
+   black	cls=-	tag=-	dir=-	text=1. She is giving up	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"She wants Tidy-Bot to keep learning","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct - Q1]	after=She wants Tidy-Bot to keep learning	[{"text":"She wants Tidy-Bot to keep learning","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. She is angry	after=	
+   black	cls=-	tag=-	dir=-	text=1. She is bored	after=	
+   black	cls=-	tag=-	dir=-	text=1. What clue shows something strange is about to happen at the mall?	after=	
+   black	cls=-	tag=-	dir=-	text=1. The TV is on	after=	
+   black	cls=-	tag=-	dir=-	text=1. The twins are laughing	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"The screen goes blank","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct - Q2]	after=The screen goes blank	[{"text":"The screen goes blank","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. The shop is busy	after=	
+   black	cls=-	tag=-	dir=-	text=1. Why is it surprising that the blenders start working?	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"They are not plugged in","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct - Q3]	after=They are not plugged in	[{"text":"They are not plugged in","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. They are new	after=	
+   black	cls=-	tag=-	dir=-	text=1. They are loud	after=	
+   black	cls=-	tag=-	dir=-	text=1. They are big	after=	
+   black	cls=-	tag=-	dir=-	text=1. What clue shows the machines might be acting on their own?	after=	
+   black	cls=-	tag=-	dir=-	text=1. People are watching them	after=	
+   black	cls=-	tag=-	dir=-	text=1. They only work when plugged in	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"They start and stop by themselves","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct - Q4]	after=They start and stop by themselves	[{"text":"They start and stop by themselves","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. They are broken	after=	
+   black	cls=-	tag=-	dir=-	text=1. What clue shows Tidy-Bot has tried to help at home?	after=	
+   black	cls=-	tag=-	dir=-	text=1. The robot is hiding	after=	
+   black	cls=-	tag=-	dir=-	text=1. The twins are quiet	after=	
+   black	cls=-	tag=-	dir=-	text=1. The lights are off	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"The bench is spotless","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct – Q5]	after=The bench is spotless	[{"text":"The bench is spotless","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. What does the word ‘shrieked’ on page 31 tell us about Mum’s reaction?	after=	
+   black	cls=-	tag=-	dir=-	text=1. She is calm	after=	
+   black	cls=-	tag=-	dir=-	text=1. She is happy	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"She is surprised and shocked","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct – Q6]	after=She is surprised and shocked	[{"text":"She is surprised and shocked","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. She is tired	after=	
+   black	cls=-	tag=-	dir=-	text=1. What does Tidy-Bot putting sheets in the dishwasher show?	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"It is trying to help but is confused","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct – Q7]	after=It is trying to help but is confused	[{"text":"It is trying to help but is confused","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. It is being naughty on purpose	after=	
+   black	cls=-	tag=-	dir=-	text=1. It is broken	after=	
+   black	cls=-	tag=-	dir=-	text=1. It does not listen	after=	
+   black	cls=-	tag=-	dir=-	text=1. What do the final questions in the chapter make you think?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Everything is fixed	after=	
+   black	cls=-	tag=-	dir=-	text=1. The twins are leaving	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"More problems might happen next","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct – Q8]	after=More problems might happen next	[{"text":"More problems might happen next","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. The story has finished	after=	
+BLL256: identical 3 / changed 0
+BLL257: identical 3 / changed 0
+BLL260: identical 1 / changed 0
+BUNDLE BLL261 #5 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Drop-down quiz – auto check] [autoshuffle]	after=	
+   tag	cls=instruction	tag=-	dir=-	text=[Designer note] Create a drop-down cloze activity (see snip below) with one missing word in each sentence. Eac	after=	
+   tag	cls=instruction	tag=-	dir=-	text=[Sentences]	after=**Sentences**	
+   black	cls=-	tag=-	dir=-	text=1. I walked along the __________ outside my house. *(*	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct answer]	after=*street / spring / splash)*	
+   black	cls=-	tag=-	dir=-	text=1. The cat likes to __________ the couch. *(strap / stream /*	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct answer]	after=*scratch)*	
+   black	cls=-	tag=-	dir=-	text=1. We saw frogs __________ into the pond. *(*	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct answer]	after=*spring / shrug / screen)*	
+   black	cls=-	tag=-	dir=-	text=1. Use a __________ to clean the sink. *( straw /*	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct answer]	after=*scrub / throw)*	
+   black	cls=-	tag=-	dir=-	text=1. The bag has a long __________. *(*	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct answer]	after=*strap / shrub / thread)*	
+   black	cls=-	tag=-	dir=-	text=1. Please __________ the paper into small pieces. *( splash /*	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct answer]	after=*shred / sprint)*	
+   black	cls=-	tag=-	dir=-	text=1. I counted to __________ slowly. *( throne /*	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct answer]	after=*three / throw)*	
+   black	cls=-	tag=-	dir=-	text=1. The child made a big __________ in the water. *(*	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct answer]	after=*splash / screen / string)*	
+   black	cls=-	tag=-	dir=-	text=1. The shirt began to __________ in hot water. *( shrug / shrine /*	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Correct answer]	after=*shrink)*	
+BUNDLE BLL261 #7 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BUNDLE BLL261 #8 typing built=false act=2B
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[Dropquiz] with each answer giving feedback instantly [autocheck] [autoshuffle]	after=	
+   black	cls=-	tag=-	dir=-	text=**Key words from** **Staying Afloat** **by Feana Tu’akoi**	after=	
+   black	cls=-	tag=-	dir=-	text=**1. Gear**Grandad put the last of the	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[drop down]	after=**gear** into the boat. (page 2) • A place to fish. • [	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct answer]	after=Equipment or tools. • A type of boat.	
+   black	cls=-	tag=-	dir=-	text=**2. Smug**Vika gave Kele a [	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[drop down]	after=**smug** look. (page 2) • Feeling scared or worried. •	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct answer]	after=Feeling pleased with yourself in an annoying way. • Feeling very tired.	
+   black	cls=-	tag=-	dir=-	text=**3. Glared**Kele	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[drop down]	after=**glared** at her. (page 2) • Looked away quickly. •	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct answer]	after=Looked at someone angrily. • Smiled in a friendly way.	
+   black	cls=-	tag=-	dir=-	text=**4. Scoffed**“You can swim in the swimming pool,”	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[drop down]	after=**scoffed** Vika. (page 2) • Spoke very quietly. •	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct answer]	after=Spoke in a rude or disbelieving way. • Asked a careful question.	
+   black	cls=-	tag=-	dir=-	text=**5. Shoved**Kele	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[drop down]	after=**shoved** his arms into the life jacket. (page 3) • Dropped carefully. •	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct answer]	after=Pushed roughly. • Held gently.	
+   black	cls=-	tag=-	dir=-	text=**6. Tonga**“I bet you didn’t wear one when you were a kid in [	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[drop down]	after=**Tonga**,” he said. (page 3) • A fishing tool. •	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct answer]	after=A country in the Pacific. • A type of boat.	
+   black	cls=-	tag=-	dir=-	text=**7. Village**All the men in the	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[drop down]	after=**village** helped. (page 3) • A large city.	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=• [correct answer]	after=A small community of homes. • A type of island.	
+   black	cls=-	tag=-	dir=-	text=**8. Kupenga**We used a	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[drop down]	after=**kupenga**. (page 3) • A paddle. •	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct answer	after=] A long fishing net. • A rope.	
+   black	cls=-	tag=-	dir=-	text=**9. anchor**He lowered the [	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[drop down]	after=**anchor** over the side. (page 4) • A fishing rod. •	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct answer]	after=A heavy object that stops a boat moving. • A sail.	
+   black	cls=-	tag=-	dir=-	text=**10. Toppled**Kele	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[drop down]	after=**toppled** over the side. (page 6) • Stood very still. • Climbed carefully. •	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q10]	after=Fell over suddenly.	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[button]	after=Reset	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[button]	after=Check answers	
+BLL261: identical 3 / changed 0
+BUNDLE BLL262 #2 typing built=false act=-
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[Dropquiz] [autocheck] [autoshuffle]	after=	
+   tag	cls=instruction	tag=-	dir=-	text=[designer note] Please present this activity as a cloze task with six images, each image paired with two short	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+BUNDLE BLL262 #7 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BUNDLE BLL262 #10 typing built=false act=2A
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[table] [Type the answer] [no answer / all correct]	after=	
+   tag	cls=instruction	tag=-	dir=-	text=[designer note]	after=	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[image] insert the front cover of the text, White Bait season (without any text). A copy of the PDF can be fou	after=	
+   black	cls=-	tag=-	dir=-	text=**https://newzealandcurriculum.tahurangi.education.govt.nz/whitebait-season-purple/5637185089.p**	after=	
+   tag	cls=noise	tag=-	dir=-	text=or	after=	
+   black	cls=-	tag=-	dir=-	text=**in the folder here**	after=	
+   tag	cls=instruction	tag=-	dir=-	text=[Designer note] Please present this activity with a single large image displayed above the questions. Each que	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+BUNDLE BLL262 #12 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BUNDLE BLL262 #13 typing built=false act=2C
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[Dropquiz] with each answer giving feedback instantly [autocheck]	after=	
+   tag	cls=instruction	tag=-	dir=-	text=[Designer note]	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Please create a multi choice activity (see snip below) to be completed before reading the set text.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=For each vocabulary item, present the content in this order:	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=noise	tag=-	dir=-	text=Target word	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Sentence taken directly from the set text	after=	
+   tag	cls=noise	tag=-	dir=-	text=Auto	after=-	
+   tag	cls=instruction	tag=-	dir=-	text=check feedback (correct / incorrect)	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Use the reading font for all text	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Learners must be able to change their answer	after=	
+   black	cls=-	tag=-	dir=-	text=**Key Words from** **Whitebait Season** **by Tracey Cormack**	after=	
+   black	cls=-	tag=-	dir=-	text=1. **season**	after=	
+   black	cls=-	tag=-	dir=-	text=It was seven o’clock. Nathan knew that during the whitebait	after=	
+   tag	cls=tag	tag=format	dir=INLINE_FORMAT	text=[bold]	after=**season**, everyone had to stop fishing by nine o’clock. (page 2)	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct – Q1]	after=A certain time of year. ✅	
+   black	cls=-	tag=-	dir=-	text=1. A time of day.	after=	
+   black	cls=-	tag=-	dir=-	text=1. A type of weather.	after=	
+   black	cls=-	tag=-	dir=-	text=2. **scoop**	after=	
+   black	cls=-	tag=-	dir=-	text=They gathered up the whitebait net, the	after=	
+   tag	cls=tag	tag=format	dir=INLINE_FORMAT	text=[bold]	after=**scoop**, and the bucket. (page 4)	
+   black	cls=-	tag=-	dir=-	text=1. A type of boat.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct – Q2]	after=A tool used to lift or collect things. ✅	
+   black	cls=-	tag=-	dir=-	text=1. A place to stand.	after=	
+   black	cls=-	tag=-	dir=-	text=3. **bucket**	after=	
+   black	cls=-	tag=-	dir=-	text=They gathered up the whitebait net, the scoop, and the	after=	
+   tag	cls=tag	tag=format	dir=INLINE_FORMAT	text=[bold]	after=**bucket**. (page 4)	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct – Q3]	after=A container used to hold things. ✅	
+   black	cls=-	tag=-	dir=-	text=1. A kind of net.	after=	
+   black	cls=-	tag=-	dir=-	text=1. A fishing rule.	after=	
+   black	cls=-	tag=-	dir=-	text=4. **storm**	after=	
+   black	cls=-	tag=-	dir=-	text=“There should be plenty of whitebait after that	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[dropdown	after=**] storm** last night,” said Dad. (page 4)	
+   black	cls=-	tag=-	dir=-	text=1. A type of fishing tool.	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct – Q4]	after=bad weather with wind and rain. ✅	
+   black	cls=-	tag=-	dir=-	text=• a quiet night.	after=	
+   black	cls=-	tag=-	dir=-	text=5. **driftwood**	after=	
+   black	cls=-	tag=-	dir=-	text=He wandered along the beach to look for	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[dropdown]	after=**driftwood**. (page 4)	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct – Q5]	after=Wood that has floated in the water. ✅	
+   black	cls=-	tag=-	dir=-	text=1. Something that grows in the sea.	after=	
+   black	cls=-	tag=-	dir=-	text=1. A fishing rule.	after=	
+   black	cls=-	tag=-	dir=-	text=6. **peered**	after=	
+   black	cls=-	tag=-	dir=-	text=Nathan ran over to the net and	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[dropdown]	after=**peered** inside. (page 5)	
+   black	cls=-	tag=-	dir=-	text=1. Shouted loudly.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Walked away.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct – Q6]	after=Looked closely. ✅	
+   black	cls=-	tag=-	dir=-	text=7. **wriggling**	after=	
+   black	cls=-	tag=-	dir=-	text=There was a handful of	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[dropdown]	after=**wriggling** whitebait in the bottom of the net. (page 5)	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct – Q7] T	after=wisting and moving. ✅	
+   black	cls=-	tag=-	dir=-	text=1. Sleeping quietly.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Staying still.	after=	
+   black	cls=-	tag=-	dir=-	text=8. **scooped**	after=	
+   black	cls=-	tag=-	dir=-	text=Dad	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[dropdown]	after=**scooped** the whitebait into the bucket. (page 6)	
+   black	cls=-	tag=-	dir=-	text=left behind	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct – Q8]	after=Lifted or gathered up. ✅	
+   black	cls=-	tag=-	dir=-	text=1. Dropped carefully.	after=	
+   black	cls=-	tag=-	dir=-	text=9. **gate**	after=	
+   black	cls=-	tag=-	dir=-	text=Pickle, Nathan’s cat, was waiting at the	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[dropdown]	after=**gate**. (page 6)	
+   black	cls=-	tag=-	dir=-	text=1. A fishing rule.	after=	
+   black	cls=-	tag=-	dir=-	text=1. A type of net.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct – Q9]	after=An opening in a fence. ✅	
+   black	cls=-	tag=-	dir=-	text=10. **endangered**	after=	
+   black	cls=-	tag=-	dir=-	text=Two of these fish are	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[dropdown]	after=**endangered**. (page 8)	
+   black	cls=-	tag=-	dir=-	text=1. Safe to catch anytime.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Easy to find.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct – Q10]	after=At risk of dying out. ✅	
+BUNDLE BLL262 #21 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=Dropbox to trigger engagement]	after=	
+BLL262: identical 3 / changed 0
+BUNDLE BLL263 #3 typing built=false act=1D
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[dropquiz] [autocheck] [autoshuffled]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Dad and Nathan stared at the whitebait net	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[drop down ]	after=nice /	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q1]	after=**slowly** / slow / surprised.	
+   black	cls=-	tag=-	dir=-	text=1. The whitebait wriggled	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[drop down ]	after=quick / slow / fast /	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q2]	after=**quickly.**	
+   black	cls=-	tag=-	dir=-	text=1. Dad held the whitebait net	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[drop down ]	after=firm /	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q3]	after=**firmly** / firmer / firmest.	
+BUNDLE BLL263 #5 typing built=false act=-
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[table] [Type the answer] [no answer / all correct]	after=	
+   tag	cls=instruction	tag=-	dir=-	text=[designer note]	after=	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[image] insert the front cover of the text, Helpful (without any text or title). A link to the website can be 	after=	
+   black	cls=-	tag=-	dir=-	text=https://newzealandcurriculum.tahurangi.education.govt.nz/helpful/5637163353.p	after=	
+   tag	cls=noise	tag=-	dir=-	text=or	after=	
+   tag	cls=instruction	tag=-	dir=-	text=A copy of the PDF can be found	after=**in the folder here**	
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[Type the answer] [no answer] [all correct]	after=	
+   tag	cls=instruction	tag=-	dir=-	text=[Designer note] Please present this activity with a single large image displayed above the questions. Each que	after=-	
+   tag	cls=instruction	tag=-	dir=-	text=response field (not auto	after=-	
+   tag	cls=instruction	tag=-	dir=-	text=checked). Please delete the text on the cover page.	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+BUNDLE BLL263 #7 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BUNDLE BLL263 #17 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BLL263: identical 3 / changed 0
+BUNDLE BLL264 #2 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BUNDLE BLL264 #5 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BUNDLE BLL264 #9 typing built=false act=-
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[Type the answer] [no answer] / [all correct]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+BUNDLE BLL264 #15 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BUNDLE BLL264 #17 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[Multi choice activity]	after=	
+   tag	cls=instruction	tag=-	dir=-	text=[Designer note]	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Please create a drop quick activity (see snip below) to be completed AFTER reading the set text.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=For each vocabulary item, present the content in this order:	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Sentence taken directly from the set text	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Dropdown menu placed after the sentence	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Use the reading font for all text	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Akonga must be able to change their answer	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Use the accordion is the activity is too long	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[body]	after=Choose the option that best describes how the language being used in each sentence:	
+   black	cls=-	tag=-	dir=-	text=“Oh … er … ten dollars?” said Tupa. (pg 28)	after=	
+   black	cls=-	tag=-	dir=-	text=☐	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=everyday spoken language (colloquial) ☐ making something bigger than it really is (exaggeration) ☐ saying some	
+   black	cls=-	tag=-	dir=-	text=“The car won’t be here next time.” said Tupa. (pg 29)	after=	
+   black	cls=-	tag=-	dir=-	text=☐ everyday spoken language (colloquial) ☐	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=making something bigger than it really is (exaggeration) ☐ joking by saying the opposite on purpose (sarcasm)	
+   black	cls=-	tag=-	dir=-	text=“What a rip-off!” said Kele. (pg 31)	after=	
+   black	cls=-	tag=-	dir=-	text=☐	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=everyday spoken language (colloquial)	
+   black	cls=-	tag=-	dir=-	text=☐ making something bigger than it really is (exaggeration) ☐ saying something in a joking or funny way (humour	after=	
+   black	cls=-	tag=-	dir=-	text=Dad said (grinning). “See? You should always ask questions. And only deal with people you trust.” (pg 31) ☐ ev	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=saying something in a joking or funny way (humour)	
+   black	cls=-	tag=-	dir=-	text=“.. great big hunks of meat and heaps of noodles (pg 28)	after=	
+   black	cls=-	tag=-	dir=-	text=☐	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=everyday spoken language (colloquial) ☐ making something bigger than it really is (exaggeration) ☐ saying some	
+   black	cls=-	tag=-	dir=-	text=“It is delicious. And it’s only five dollars – what a bargain!” (pg 28) ☐ everyday spoken language (colloquial	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=saying something in a joking or funny way (humour)	
+BLL264: identical 3 / changed 0
+BUNDLE BLL265 #7 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BUNDLE BLL265 #8 typing built=false act=2B
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[Dropquiz] with each answer giving feedback instantly [autocheck] [autoshuffle]	after=	
+   black	cls=-	tag=-	dir=-	text=**Key Words from ‘Power from the Sun’**	after=	
+   black	cls=-	tag=-	dir=-	text=1. **solar energy** The energy from the sun is called **solar energy.**	after=	
+   black	cls=-	tag=-	dir=-	text=What is solar energy?	after=	
+   black	cls=-	tag=-	dir=-	text=• energy made by people •	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q1	after=] energy that comes from the sun • heat from fires	
+   black	cls=-	tag=-	dir=-	text=2. **solar panels** Electricity from the sun can be made by using **solar panels.**	after=	
+   black	cls=-	tag=-	dir=-	text=What are solar panels?	after=	
+   black	cls=-	tag=-	dir=-	text=• windows that let light in •	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q2]	after=flat panels that collect energy from the sun • batteries inside buildings	
+   black	cls=-	tag=-	dir=-	text=3. **electricity** **Electricity** travels through wires to where it can be used.	after=	
+   black	cls=-	tag=-	dir=-	text=What is electricity?	after=	
+   black	cls=-	tag=-	dir=-	text=• light from the sun • water power •	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q3]	after=energy that powers lights and machines	
+   black	cls=-	tag=-	dir=-	text=4. **arrays** The panels are arranged in groups called **arrays.**	after=	
+   black	cls=-	tag=-	dir=-	text=What are arrays in this context?	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q4]	after=groups of solar panels • rows of chairs • types of wires	
+   black	cls=-	tag=-	dir=-	text=5. **kilowatts** Together, they make six [dropdown] **kilowatts** of electricity per hour.	after=	
+   black	cls=-	tag=-	dir=-	text=What are kilowatts?	after=	
+   black	cls=-	tag=-	dir=-	text=• a type of solar panel • a kind of battery	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q5]	after=a measure of power	
+   black	cls=-	tag=-	dir=-	text=6. **renewable energy** Solar energy is a type of **renewable** **energy.**	after=	
+   black	cls=-	tag=-	dir=-	text=What is renewable energy?	after=	
+   black	cls=-	tag=-	dir=-	text=• energy that runs out quickly • energy used only at night •	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q6]	after=energy that will not run out	
+   black	cls=-	tag=-	dir=-	text=7. **hydro electric** power Wind power and **hydroelectric** power also use renewable energy.	after=	
+   black	cls=-	tag=-	dir=-	text=What is hydro electric power?	after=	
+   black	cls=-	tag=-	dir=-	text=•	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q7]	after=power made using moving water • power made from the sun • power from batteries	
+   black	cls=-	tag=-	dir=-	text=8. **energy detectives** About ten students are chosen to be **energy detectives.**	after=	
+   black	cls=-	tag=-	dir=-	text=What could energy detectives be?	after=	
+   black	cls=-	tag=-	dir=-	text=• students who fix wires • police officers •	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q8]	after=students who help save electricity	
+   black	cls=-	tag=-	dir=-	text=9. **monitor** Every class also has an energy **monitor**.	after=	
+   black	cls=-	tag=-	dir=-	text=What is a monitor?	after=	
+   black	cls=-	tag=-	dir=-	text=• a computer screen •	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct Q9]	after=a person who checks something • someone who teaches lessons	
+   black	cls=-	tag=-	dir=-	text=10. **electricity wasted** The students work hard to make sure that electricity isn’t wasted.	after=	
+   black	cls=-	tag=-	dir=-	text=What is wasting energy?	after=	
+   black	cls=-	tag=-	dir=-	text=• saved carefully • [	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=correct Q10]	after=used when it is not needed • sent to other schools	
+BUNDLE BLL265 #12 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BUNDLE BLL265 #14 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BLL265: identical 4 / changed 0
+BUNDLE BLL266 #14 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Dropbox to trigger engagement]	after=	
+BLL266: identical 3 / changed 0
+BUNDLE BLL270 #3 radioQuiz built=false act=1B
+   tag	cls=tag	tag=radio quiz	dir=INTERACTIVE	text=[radio interactive] (instead of a T/F can we please have a comic looking thumbs up or thumbs down sign. If you	after=	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[images]	after=https://media.istockphoto.com/id/2219018528/vector/thumbs-up-hand-emoji-icon-illustration-sign-human-gesture-v	
+   black	cls=-	tag=-	dir=-	text=https://media.istockphoto.com/id/2219018422/vector/gesture-dislike-or-thumb-down-emoji-3d-illustration-bad-don	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[{"text":"[Audiovisual item 3]","kind":"hl"}],[],[]],[[],[],[]],[[],[],[]],[[],[],[]],[[],[],[]],[[],[],[]],[[],[],[]],[[],[],[]],[[],[],[]],[[],[],[]],[[],[]
+BUNDLE BLL270 #5 radioQuiz built=false act=1D
+   tag	cls=tag	tag=radio quiz	dir=INTERACTIVE	text=[radio interactive] (instead of a T/F can we please have a comic looking thumbs up or thumbs down sign. If you	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[{"text":"[Audiovisual item 5]","kind":"hl"}],[],[]],[[],[],[]],[[],[],[]],[[],[],[]],[[],[],[]],[[],[],[]],[[],[],[]],[[],[],[]],[[],[],[]]]
+BUNDLE BLL270 #6 multiChoiceQuiz built=false act=1E
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[multichoice + autocheck]	after=	
+   black	cls=-	tag=-	dir=-	text=1. In te reo Māori there are (two, five,	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=ten [correct answer]	after=, twenty) vowel sounds.	
+   black	cls=-	tag=-	dir=-	text=1. A macron on top of a letter tells me to (say the sound quickly,	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=stretch the sound out [correct answer]	after=, not say the sound).	
+   black	cls=-	tag=-	dir=-	text=1. The vowel ē has a (short,	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=long [correct answer]	after=) vowel sound. I know this because it has a macron.	
+   black	cls=-	tag=-	dir=-	text=1. The vowels a, e, i, o and u all have a (	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=short [correct answer]	after=, long) sound. They are (	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=spoken quickly[correct answer]	after=, stretched out, not spoken).	
+   black	cls=-	tag=-	dir=-	text=1. The vowels ā, ē, ī, ō and ū all have a (short,	after=	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=long[correct answer]	after=) sound. They are (spoken quickly,	
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=stretched out[correct answer]	after=, not spoken).	
+BLL270: identical 1 / changed 0
+BLL271: identical 3 / changed 0
+BUNDLE BLL272 #4 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[multichoice + auto check]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[],[],[]],[[{"text":"pukapuka","kind":"green"}],[{"text":"tēpu","kind":"green"}],[{"text":"pepa","kind":"green"}]],[[],[],[]],[[{"text":"rorohiko pōnaho","kin
+BUNDLE BLL272 #7 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[multichoice]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[],[]],[[{"text":"Ko te pepa tēnei.","kind":"green"}],[{"text":"Kei runga i te tēpu te pukapuka.","kind":"green"}]],[[],[]],[[{"text":"Kei runga i te tēpu te 
+BLL272: identical 3 / changed 0
+BUNDLE BLL273 #8 dropDown built=true act=2B
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[dropdown quiz + auto check]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Someone who is saved from danger is (	after=	[{"text":"rescued","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=rescued, dropped, forgotten).	[{"text":"rescued","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. A person taken away by force has been (invited,	after=	[{"text":"kidnapped","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=kidnapped, helped).	[{"text":"kidnapped","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. Something that burns very hot and bright is (dark, freezing,	after=	[{"text":"blazing","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=blazing).	[{"text":"blazing","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. A person who is very, very angry is (	after=	[{"text":"furious","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=furious, sleepy, bored).	[{"text":"furious","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. To fall over quickly is to (sit, climb	after=	[{"text":"tumble","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=tumble).	[{"text":"tumble","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. Being very, very tired means you are (	after=	[{"text":"exhausted","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=exhausted, excited, full).	[{"text":"exhausted","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. A change into something different means it is (broken, found,	after=	[{"text":"transformed","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=transformed).	[{"text":"transformed","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. Running away fast means you have (walked,	after=	[{"text":"fled","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=fled, waited).	[{"text":"fled","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. A line or path showing where someone has been is a (cloud, hill,	after=	[{"text":"trail","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=trail).	[{"text":"trail","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. If plants appear suddenly, they have (	after=	[{"text":"sprang up","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=sprang up, fallen over, dried out).	[{"text":"sprang up","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. When plants begin to grow, they have (broken, melted,	after=	[{"text":"sprouted","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=sprouted).	[{"text":"sprouted","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. An animal making an angry growling noise is (singing, sleeping,	after=	[{"text":"snarling","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=snarling)	[{"text":"snarling","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. Long, sharp teeth on an animal are called (feathers,	after=	[{"text":"fangs","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=fangs, claws)	[{"text":"fangs","kind":"green"}]
+BLL273: identical 3 / changed 0
+BUNDLE BLL274 #10 multiChoiceQuiz built=false act=2E
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[multichoice + autocheck]	after=	
+   black	cls=-	tag=-	dir=-	text=1. I am a giant bird who is very strong and proud. I hunted other birds and thought I was the best. Who am I?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Kāhu	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"Hōkioi","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=Hōkioi	[{"text":"Hōkioi","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. The chicks	after=	
+   black	cls=-	tag=-	dir=-	text=1. Mātātā	after=	
+   black	cls=-	tag=-	dir=-	text=1. I am smaller, but I used my thinking to stay safe and find food for my young. Who am I?	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"Kāhu","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=Kāhu	[{"text":"Kāhu","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. The chicks	after=	
+   black	cls=-	tag=-	dir=-	text=1. Hōkioi	after=	
+   black	cls=-	tag=-	dir=-	text=1. The kiore	after=	
+   black	cls=-	tag=-	dir=-	text=1. We were waiting at home and feeling very hungry. Who are we?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Hōkioi	after=	
+   black	cls=-	tag=-	dir=-	text=1. Kāhu	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"The chicks","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=The chicks	[{"text":"The chicks","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. The forest animals	after=	
+   black	cls=-	tag=-	dir=-	text=1. I flew higher and higher because I wanted to prove I was the best. Who am I?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Mātātā	after=	
+   black	cls=-	tag=-	dir=-	text=1. The chicks	after=	
+   black	cls=-	tag=-	dir=-	text=1. Kāhu	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"Hōkioi","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=Hōkioi	[{"text":"Hōkioi","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. I saw danger and made a clever plan to escape. Who am I?	after=	
+   black	cls=-	tag=-	dir=-	text=1. The kiore	after=	
+   black	cls=-	tag=-	dir=-	text=1. The chicks	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"Kāhu","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=Kāhu	[{"text":"Kāhu","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. Hōkioi	after=	
+   black	cls=-	tag=-	dir=-	text=1. I did not realise I was alone because I was too focused on winning. Who am I?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Mātātā	after=	
+   black	cls=-	tag=-	dir=-	text=1. The chicks	after=	
+   black	cls=-	tag=-	dir=-	text=1. Kāhu	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"Hōkioi","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=Hōkioi	[{"text":"Hōkioi","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. I caught food after escaping danger and took it back home. Who am I?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Hōkioi	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"Kāhu","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=Kāhu	[{"text":"Kāhu","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. The kiore	after=	
+   black	cls=-	tag=-	dir=-	text=1. Mātātā	after=	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[image]	after=https://www.istockphoto.com/vector/3d-two-party-popper-gm1461683255-495604015?searchscope=image%2Cfilm	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[body]	after=Mahi whakamiharo!	[{"text":"Mahi whakamiharo!","kind":"hl"}]
+   tag	cls=tag	tag=info trigger	dir=INTERACTIVE	text=[HInfo trigger:	after=Fantastic work!	[{"text":"Mahi whakamiharo!","kind":"hl"}]
+   tag	cls=noise	tag=-	dir=-	text=]	after=Take a moment to celebrate completing this fourth module with your supervisor before you move on. Then, go bac	[{"text":"Mahi whakamiharo!","kind":"hl"}]
+BLL274: identical 3 / changed 0
+BUNDLE BLL275 #5 reorder built=false act=1C
+   tag	cls=tag	tag=reorder	dir=INTERACTIVE	text=[reorder + autocheck] Syllables are in the correct order for the answer. Please jumble them so the ākonga rear	after=	
+   tag	cls=tag	tag=data marker	dir=SUBTAG	text=[audiovisual item 12]	after=	[{"text":"[audiovisual item 12]","kind":"hl"}]
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[],[],[{"text":"[AV item 12]","kind":"hl"}]],[[{"text":"kā   re   ti","kind":"green"}],[],[]],[[{"text":"rō   pe   re","kind":"green"}],[],[]],[[{"text":"pi  
+BUNDLE BLL275 #6 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[dropdown quiz + autocheck]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[{"text":"ngā","kind":"green"}],[]],[[{"text":"te","kind":"green"}],[]],[[{"text":"te","kind":"green"}],[]],[[{"text":"te","kind":"green"}],[]],[[{"text":"ngā
+BLL275: identical 3 / changed 0
+BUNDLE BLL276 #6 reorder built=false act=-
+   tag	cls=tag	tag=reorder	dir=INTERACTIVE	text=[reorder + autocheck]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[{"text":"He iti te manu.","kind":"green"}],[]],[[{"text":"He nui te hōiho.","kind":"green"}],[]],[[{"text":"He nui te kau.","kind":"green"}],[]],[[{"text":"H
+BLL276: identical 3 / changed 0
+BUNDLE BLLR201 #17 typing built=false act=1C
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[drag and drop + type the answer]	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Is it possible to have an X that ākonga can repeatedly drag down to cross out the letters that are to be taken	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[],[],[]],[[],[{"text":"wi","kind":"hl"}],[{"text":"I’ll","kind":"green"}]],[[],[{"text":"wi","kind":"hl"}],[{"text":"you’ll","kind":"green"}]],[[],[{"text":"
+BUNDLE BLLR201 #19 radioQuiz built=false act=1D
+   tag	cls=tag	tag=radio quiz	dir=INTERACTIVE	text=[radio interactive] Is it possible to put ‘had’ and ‘would’ at the top (rather than T and F)?	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+BUNDLE BLLR201 #22 dropDown built=true act=2C
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[drop down quiz + autocheck]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[],[{"text":"forms","kind":"green"}]],[[],[{"text":"inform","kind":"green"}]],[[],[{"text":"perform","kind":"green"}]],[[],[{"text":"uniform","kind":"green"}]
+BUNDLE BLLR201 #23 typing built=false act=2D
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[type the answer]	after=	
+   black	cls=-	tag=-	dir=-	text=Look at the word **forming**.	after=	
+   black	cls=-	tag=-	dir=-	text=What is the base word?	after=	[{"text":"form","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=form	[{"text":"form","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=What is the suffix?	after=	[{"text":"ing","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=ing	[{"text":"ing","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=This suffix means *happening now*.	after=	
+   black	cls=-	tag=-	dir=-	text=What do you think the whole word means?	after=	[{"text":"shaping now","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=shaping now	[{"text":"shaping now","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=Look at the word **reform.**	after=	
+   black	cls=-	tag=-	dir=-	text=What is the base word?	after=	[{"text":"form","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=form	[{"text":"form","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=What is the prefix?	after=	[{"text":"re","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=re	[{"text":"re","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=This prefix means *again*.	after=	
+   black	cls=-	tag=-	dir=-	text=What do you think the whole word means?	after=	[{"text":"shape again","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=shape again	[{"text":"shape again","kind":"green"}]
+BUNDLE BLLR201 #41 reorder built=false act=5B
+   tag	cls=tag	tag=reorder	dir=INTERACTIVE	text=[reorder] Sentences are currently in the correct order. Please jumble them.	after=	
+   black	cls=-	tag=-	dir=-	text=A big storm leaves Kit and Dad with a lot of silt to clean up.	after=	
+   black	cls=-	tag=-	dir=-	text=Kit remembers how the storm damaged homes and cut off power and phones.	after=	
+   black	cls=-	tag=-	dir=-	text=Dad finally gets messages, and Kit hears from Casper.	after=	
+   black	cls=-	tag=-	dir=-	text=Casper and his family come with spades and milk to help.	after=	
+   black	cls=-	tag=-	dir=-	text=They work together, share food, and tell stories.	after=	
+   black	cls=-	tag=-	dir=-	text=This shows that people can help each other through hard times because Casper’s family comes to support Kit and	after=	
+BUNDLE BLLR201 #44 dropDown built=true act=5D
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[dropdown quiz]	after=	
+   black	cls=-	tag=-	dir=-	text=1. How is Dad feeling when he sighs and keeps digging?	after=	
+   black	cls=-	tag=-	dir=-	text=The text says (Dad is having a drink,	after=	[{"text":"Dad is sweating and still working","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=Dad is sweating and still working, Dad looks up	[{"text":"Dad is sweating and still working","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=at the clouds.). I know (People look at clouds when they are bored,	after=	[{"text":"people often sigh when they are tired or worried","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=people often sigh when they are tired or worried, digging is usually easy work).	[{"text":"people often sigh when they are tired or worried","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=So I can infer (Dad is excited to keep digging, Dad wants Kit to stop helping,	after=	[{"text":"Dad is tired","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=Dad is tired	[{"text":"Dad is tired","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=and worried but still trying to keep going).	after=	[{"text":"and worried but still trying to keep going","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. What can we infer about Kit when she keeps Philip inside during the storm?	after=	
+   black	cls=-	tag=-	dir=-	text=The text says (Philip is sleeping,	after=	[{"text":"Kit does not let Philip go outside","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=Kit does not let Philip go outside, Philip wants to stay	[{"text":"Kit does not let Philip go outside","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=inside).	after=	
+   black	cls=-	tag=-	dir=-	text=I know (cats always like storms,	after=	[{"text":"storms can be dangerous for pets","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=storms can be dangerous for pets, pets do not need	[{"text":"storms can be dangerous for pets","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=looking after).	after=	
+   black	cls=-	tag=-	dir=-	text=So I can infer (	after=	[{"text":"Kit is caring and protective","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=Kit is caring and protective, Kit is annoyed with Philip, Kit does not like	[{"text":"Kit is caring and protective","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=cats going outside).	after=	
+   black	cls=-	tag=-	dir=-	text=1. Why does Kit add a tiny sun to her drawing?	after=	
+   black	cls=-	tag=-	dir=-	text=The text says (Kit drops her pencils, Dad tells her to draw a sun,	after=	[{"text":"Kit hears from Casper","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=Kit hears from Casper	[{"text":"Kit hears from Casper","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=and then adds a tiny sun).	after=	[{"text":"and then adds a tiny sun","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=I know (	after=	[{"text":"sunshine can be a sign of hope","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=sunshine can be a sign of hope, the weather has already turned hot, people only	[{"text":"sunshine can be a sign of hope","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=draw suns in summer).	after=	
+   black	cls=-	tag=-	dir=-	text=So I can infer (Kit wants to change the weather, Kit has finished the picture,	after=	[{"text":"Kit is starting to feel more hopeful","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=Kit is starting to feel more hopeful).	[{"text":"Kit is starting to feel more hopeful","kind":"green"}]
+BLLR201: identical 8 / changed 0
+BUNDLE BLLR202 #10 dropDown built=false act=2C
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[drop down quiz + autocheck]	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Please arrange this activity over two sections in a carousel – 4 per slide.	after=	
+   tag	cls=tag	tag=slide n	dir=SUBTAG	text=[slide 1]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[],[{"text":"coastal","kind":"green"}]],[[],[{"text":"national","kind":"green"}]],[[],[{"text":"emotional","kind":"green"}]],[[],[{"text":"accidental","kind":
+   tag	cls=tag	tag=slide n	dir=SUBTAG	text=[slide 2]	after=	
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[drop down quiz + autocheck]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[],[{"text":"territorial","kind":"green"}]],[[],[{"text":"industrial","kind":"green"}]],[[],[{"text":"colonial","kind":"green"}]],[[],[{"text":"memorial","kin
+BUNDLE BLLR202 #11 typing built=false act=2D
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[type the answer]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Look at the word **seasonal**.	after=	
+   black	cls=-	tag=-	dir=-	text=1. What is the base word?	after=	[{"text":"season","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=season	[{"text":"season","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. What is the suffix?	after=	[{"text":"al","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=al	[{"text":"al","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. What do you think the whole word means?	after=	[{"text":"bout or connected to seasons.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct] A	after=bout or connected to seasons.	[{"text":"bout or connected to seasons.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. Look at the word **cultural**.	after=	
+   black	cls=-	tag=-	dir=-	text=1. What is the base word?	after=	[{"text":"culture","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=culture	[{"text":"culture","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. What is the suffix?	after=	[{"text":"al","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=al	[{"text":"al","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. What do you think the whole word means?	after=	[{"text":"About or connected to culture.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=About or connected to culture.	[{"text":"About or connected to culture.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. Look at the word **territorial**.	after=	
+   black	cls=-	tag=-	dir=-	text=1. What is the base word?	after=	[{"text":"territory","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=territory	[{"text":"territory","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. What is the suffix?	after=	[{"text":"ial","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=ial	[{"text":"ial","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. What do you think the whole word means?	after=	[{"text":"About or connected to territory.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=About or connected to territory.	[{"text":"About or connected to territory.","kind":"green"}]
+BUNDLE BLLR202 #16 multiChoiceQuiz built=false act=3B
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[multi-choice quiz]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Taylor **mentioned** the sleepover during lunch. What does **mentioned** mean?	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"Talked about briefly.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Q1 – correct]	after=Talked about briefly.	[{"text":"Talked about briefly.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. Shouted loudly.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Kept a secret.	after=	
+   tag	cls=tag	tag=hint	dir=INTERACTIVE	text=[hint button]	after=The clue is *during lunch*. This shows it was just brought up in conversation.	
+   black	cls=-	tag=-	dir=-	text=1. She didn’t like **floury** apples. What does **floury** mean?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Very juicy.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Very hard.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"Soft and dry inside.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Q2 – correct]	after=Soft and dry inside.	[{"text":"Soft and dry inside.","kind":"green"}]
+   tag	cls=tag	tag=hint	dir=INTERACTIVE	text=[hint button]	after=The clue is *apples*. This tells us the floury describes how the apple feels or tastes. It also has the word *	
+   black	cls=-	tag=-	dir=-	text=1. They packed the nail polish away after using it. What does **packed away** mean?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Broke it.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"Put it away and tidied it.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Q3 – correct]	after=Put it away and tidied it.	[{"text":"Put it away and tidied it.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. Lost it.	after=	
+   tag	cls=tag	tag=hint	dir=INTERACTIVE	text=[hint button]	after=The clue is *after using it*. This suggests they finished and tidied up.	
+   black	cls=-	tag=-	dir=-	text=1. She **sighed** and looked down at the floor. What does **sighed** mean?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Laughed loudly.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"Made a long, quiet breath.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Q4 – correct]	after=Made a long, quiet breath.	[{"text":"Made a long, quiet breath.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. Called out.	after=	
+   tag	cls=tag	tag=hint	dir=INTERACTIVE	text=[hint button]	after=The clue *looked down* helps us understand how she was feeling.	
+   black	cls=-	tag=-	dir=-	text=1. Loud **squeals** came from the other room. What does **squeals** mean?	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"High, excited sounds.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[Q5 – correct]	after=High, excited sounds.	[{"text":"High, excited sounds.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. Quiet whispers.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Angry shouting.	after=	
+   tag	cls=tag	tag=hint	dir=INTERACTIVE	text=[hint button]	after=The clues are *loud* and *other room*, helping us imagine the sound. We might also know that pigs can squeal a	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[body]	after=We have made predictions, explored new words and practised using clues to work out meaning. Now, we’re ready t	
+   black	cls=-	tag=-	dir=-	text=• Does my prediction still make sense?	after=	
+   black	cls=-	tag=-	dir=-	text=• What am I learning about the main character?	after=	
+   black	cls=-	tag=-	dir=-	text=• What clues show how they might be feeling?	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Please place kōwhai avatar on the right hand side of the page	after=	
+   tag	cls=tag	tag=speech bubble	dir=INTERACTIVE	text=[speech bubble left + audiovisual item 15]	after=Good readers don’t just read the words. They think about what the text is showing them. It can help us to paus	
+   tag	cls=tag	tag=embed	dir=ELEMENT	text=[embed text] Please only put the first four pages (or the first two double spreads in the download) of the sto	after=https://newzealandcurriculum.tahurangi.education.govt.nz/the-sleepover/5637242077.p	
+BUNDLE BLLR202 #20 reorder built=false act=4A
+   tag	cls=tag	tag=reorder	dir=INTERACTIVE	text=[reorder] The sentences are currently in the correct order. Please shuffle.	after=	
+   black	cls=-	tag=-	dir=-	text=Taylor is invited to a sleepover at Min’s house.	after=	[{"text":"Taylor is invited to a sleepover at Min’s house.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=Taylor worries about what might happen at the sleepover and feels unsure.	after=	[{"text":"Taylor worries about what might happen at the sleepover and feels unsure.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=With support from her mum, Taylor decides to go to the sleepover.	after=	[{"text":"With support from her mum, Taylor decides to go to the sleepover.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=At the sleepover, Taylor keeps to herself to feel comfortable at first.	after=	[{"text":"At the sleepover, Taylor keeps to herself to feel comfortable at first.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=The girls begin their sleepover activities together.	after=	[{"text":"The girls begin their sleepover activities together.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=Min becomes upset when Elly can’t come.	after=	[{"text":"Min becomes upset when Elly can’t come.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=Taylor notices how Min is feeling and comforts her.	after=	[{"text":"Taylor notices how Min is feeling and comforts her.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=The group settles down and the sleepover ends on a positive note.	after=	[{"text":"The group settles down and the sleepover ends on a positive note.","kind":"green"}]
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[body]	after=With the events in order, we can now see how the story unfolds from beginning to end. Our next step is to deci	
+   tag	cls=tag	tag=image	dir=ELEMENT	text=[image]	after=https://www.shutterstock.com/image-photo/woman-highlighting-important-information-wooden-desk-2610346831?track	
+   tag	cls=instruction	tag=-	dir=-	text=Please arrange on the page to complement the text below and add interest rather than dominate the space.	after=	
+   black	cls=-	tag=-	dir=-	text=**Important events** are the ones that help us understand the story. They often:	after=	
+   black	cls=-	tag=-	dir=-	text=• explain the problem	after=	
+   black	cls=-	tag=-	dir=-	text=• show what the characters do	after=	
+   black	cls=-	tag=-	dir=-	text=• help the story move forward	after=	
+   black	cls=-	tag=-	dir=-	text=• show how the story ends.	after=	
+   black	cls=-	tag=-	dir=-	text=**Less important details** might be interesting, but they don’t change what happens in the story.	after=	
+   black	cls=-	tag=-	dir=-	text=This is the same thinking we use when we retell a story using a narrative organiser, where we focus on the key	after=	
+BUNDLE BLLR202 #25 radioQuiz built=false act=4C
+   tag	cls=tag	tag=radio quiz	dir=INTERACTIVE	text=[radio interactive] Single option version [carousel]	after=	
+   tag	cls=tag	tag=slide n	dir=SUBTAG	text=[slide 1]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[],[{"text":"Includes the beginning.","kind":"green"},{"text":"Includes the ending.","kind":"green"},{"text":"Uses important ideas only.","kind":"green"},{"te
+   tag	cls=tag	tag=slide n	dir=SUBTAG	text=[slide 2]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[],[{"text":"Includes the beginning.","kind":"green"},{"text":"Includes the problem.","kind":"green"},{"text":"Includes key actions.","kind":"green"},{"text":
+   tag	cls=tag	tag=slide n	dir=SUBTAG	text=[slide 3]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[],[{"text":"Includes the beginning.","kind":"green"},{"text":"Includes the problem.","kind":"green"},{"text":"Includes the ending.","kind":"green"},{"text":"
+BUNDLE BLLR202 #26 typing built=false act=-
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[type the answer]	after=	
+   black	cls=-	tag=-	dir=-	text=The best summary example above to model my summary on is Summary:	after=	[{"text":"B (allow b as correct too)","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=B (allow b as correct too)	[{"text":"B (allow b as correct too)","kind":"green"}]
+BUNDLE BLLR202 #30 multiChoiceQuiz built=false act=5A
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[multichoice]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Taylor sat on the sofa while the others were in the bedroom painting their nails. What does this show?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Taylor feels confident.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"Taylor feels unsure.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=Taylor feels unsure.	[{"text":"Taylor feels unsure.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. Taylor feels angry.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Taylor asks lots of “what if” questions before the sleepover. What does this show?	after=	
+   black	cls=-	tag=-	dir=-	text=1. She is excited.	after=	
+   black	cls=-	tag=-	dir=-	text=1. She is confused.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"She is worried.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=She is worried.	[{"text":"She is worried.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. Min says she is “OK”, but her head is down and she doesn’t look at anyone. What does this show?	after=	
+   black	cls=-	tag=-	dir=-	text=1. She is happy.	after=	
+   black	cls=-	tag=-	dir=-	text=1. She is bored.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"She is upset.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=She is upset.	[{"text":"She is upset.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. Taylor asks Min if she is alright and sits next to her. What does this show?	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"Taylor is helping.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=Taylor is helping.	[{"text":"Taylor is helping.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. Taylor wants to leave.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Taylor is confused.	after=	
+BUNDLE BLLR202 #32 multiChoiceQuiz built=false act=5C
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[multichoice]	after=	
+   black	cls=-	tag=-	dir=-	text=**Idea:** Taylor is worried. Which evidence fits best?	after=	
+   black	cls=-	tag=-	dir=-	text=1. She eats popcorn.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"She asks lots of ‘what if’ questions.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=She asks lots of ‘what if’ questions.	[{"text":"She asks lots of ‘what if’ questions.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. She sits on the sofa.	after=	
+   black	cls=-	tag=-	dir=-	text=Idea: Min is upset. Which evidence fits best?	after=	
+   black	cls=-	tag=-	dir=-	text=1. She is painting her nails.	after=	
+   black	cls=-	tag=-	dir=-	text=1. She says “What shall we do?”	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"Her head is down and she doesn’t look up.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=Her head is down and she doesn’t look up.	[{"text":"Her head is down and she doesn’t look up.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=Idea: Taylor is a good friend. Which evidence fits best?	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"She puts her arm around Min.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=She puts her arm around Min.	[{"text":"She puts her arm around Min.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. She watches a movie.	after=	
+   black	cls=-	tag=-	dir=-	text=1. She eats popcorn.	after=	
+   black	cls=-	tag=-	dir=-	text=Idea: Taylor is observant. Which evidence fits best?	after=	
+   black	cls=-	tag=-	dir=-	text=1. She asks about Min earlier.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"She notices Min is trying not to cry.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=She notices Min is trying not to cry.	[{"text":"She notices Min is trying not to cry.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. She sits quietly.	after=	
+BLLR202: identical 12 / changed 0
+BUNDLE BLLR203 #4 typing built=false act=1A
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[type the answer]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[],[]],[[],[{"text":"mon","kind":"green"},{"text":"key","kind":"green"}]],[[],[{"text":"hon","kind":"green"},{"text":"ey","kind":"green"}]],[[],[{"text":"chim
+BUNDLE BLLR203 #6 reorder built=false act=1C
+   tag	cls=tag	tag=reorder	dir=INTERACTIVE	text=[reorder]	after=	
+   tag	cls=instruction	tag=-	dir=-	text=Can you please arrange these over two slides in a carousel.	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[],[]],[[],[{"text":"happy","kind":"green"}]],[[],[{"text":"funny","kind":"green"}]],[[],[{"text":"sunny","kind":"green"}]],[[],[{"text":"windy","kind":"green
+BUNDLE BLLR203 #11 typing built=false act=2C
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[autocheck]	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	cellMarks:[[[],[],[{"text":"cartoonist","kind":"green"}]],[[],[{"text":"instructor","kind":"green"}],[]],[[],[{"text":"director","kind":"green"}],[]],[[],[],[{"text":"gui
+BUNDLE BLLR203 #12 typing built=false act=2D
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[type the answer]	after=	
+   black	cls=-	tag=-	dir=-	text=invent →	after=	[{"text":"inventor","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=inventor	[{"text":"inventor","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=visit →	after=	[{"text":"visitor","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=visitor	[{"text":"visitor","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=edit →	after=	[{"text":"editor","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=editor	[{"text":"editor","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=survive →	after=	[{"text":"survivor","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=survivor	[{"text":"survivor","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=conduct →	after=	[{"text":"conductor","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=conductor	[{"text":"conductor","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=guitar →	after=	[{"text":"guitarist","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=guitarist	[{"text":"guitarist","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=cartoon →	after=	[{"text":"cartoonist","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=cartoonist	[{"text":"cartoonist","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=type →	after=	[{"text":"typist","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=typist	[{"text":"typist","kind":"green"}]
+BUNDLE BLLR203 #13 typing built=false act=2E
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[type the answer]	after=	
+   black	cls=-	tag=-	dir=-	text=1. A cartoonist is a person who	after=	[{"text":"draws cartoons","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=draws cartoons.	[{"text":"draws cartoons","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. An inventor is a person who	after=	[{"text":"invents things","kind":"green"},{"text":"invents","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=invents things.	[{"text":"invents things","kind":"green"},{"text":"invents","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=invents.	[{"text":"invents things","kind":"green"},{"text":"invents","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. An actor is a person who	after=	[{"text":"acts","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=acts.	[{"text":"acts","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. An artist is a person who	after=	[{"text":"makes art","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=makes art.	[{"text":"makes art","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. An instructor is a person who	after=	[{"text":"instructs","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=instructs.	[{"text":"instructs","kind":"green"}]
+BUNDLE BLLR203 #18 typing built=false act=3B
+   tag	cls=tag	tag=typing quiz	dir=INTERACTIVE	text=[typing self check]	after=	
+   black	cls=-	tag=-	dir=-	text=**The rangers worked quietly in the bush, protecting the kiwi from stoats.**	after=	
+   black	cls=-	tag=-	dir=-	text=1. Think about these questions:	after=	
+   black	cls=-	tag=-	dir=-	text=1. Where are the rangers?	after=	
+   black	cls=-	tag=-	dir=-	text=1. What are they doing?	after=	
+   black	cls=-	tag=-	dir=-	text=1. What might the stoats be like?	after=	
+   black	cls=-	tag=-	dir=-	text=I can see …	after=	
+   tag	cls=tag	tag=answer	dir=SUBTAG	text=[type answer here]	after=	
+   black	cls=-	tag=-	dir=-	text=The rangers are …	after=	
+   tag	cls=tag	tag=answer	dir=SUBTAG	text=[type answer here]	after=	
+   black	cls=-	tag=-	dir=-	text=It feels …	after=	
+   tag	cls=tag	tag=answer	dir=SUBTAG	text=[type answer here]	after=	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[button]	after=Possible answers	
+   black	cls=-	tag=-	dir=-	text=I can see lots of trees and the rangers walking through the bush.	after=	[{"text":"I can see lots of trees and the rangers walking through the bush.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=The rangers are looking after the kiwi and keeping them safe from the stoats.	after=	[{"text":"The rangers are looking after the kiwi and keeping them safe from the stoats.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=It feels quiet and a bit serious because they are protecting the animals.	after=	[{"text":"It feels quiet and a bit serious because they are protecting the animals.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=**A kiwi scuttled across the clearing and disappeared into the bush.**	after=	
+   black	cls=-	tag=-	dir=-	text=Think about these questions:	after=	
+   black	cls=-	tag=-	dir=-	text=• How is the kiwi moving?	after=	
+   black	cls=-	tag=-	dir=-	text=• Is it fast or slow?	after=	
+   black	cls=-	tag=-	dir=-	text=• Where does it go?	after=	
+   black	cls=-	tag=-	dir=-	text=I can see …	after=	
+   tag	cls=tag	tag=answer	dir=SUBTAG	text=[type answer here]	after=	
+   black	cls=-	tag=-	dir=-	text=The kiwi is …	after=	
+   tag	cls=tag	tag=answer	dir=SUBTAG	text=[type answer here]	after=	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[button]	after=Possible answers	
+   black	cls=-	tag=-	dir=-	text=I can see a kiwi running quickly across the ground.	after=	[{"text":"I can see a kiwi running quickly across the ground.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=The kiwi is moving fast with little steps and hiding in the bush.	after=	[{"text":"The kiwi is moving fast with little steps and hiding in the bush.","kind":"green"}]
+BUNDLE BLLR203 #28 radioQuiz built=false act=5A
+   tag	cls=tag	tag=radio quiz	dir=INTERACTIVE	text=[radio interactive – single option]	after=	
+   black	cls=-	tag=-	dir=-	text=**I felt Nessa grab my arm.**	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"This action shows Nessa might be scared or surprised.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=This action shows Nessa might be scared or surprised.	[{"text":"This action shows Nessa might be scared or surprised.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"This helps the reader understand Nessa’s feelings.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=This helps the reader understand Nessa’s feelings.	[{"text":"This helps the reader understand Nessa’s feelings.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. This shows Nessa is bored.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"This creates a moment of tension.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=This creates a moment of tension.	[{"text":"This creates a moment of tension.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. This tells us Nessa wants to leave immediately.	after=	
+   black	cls=-	tag=-	dir=-	text=**No power, no internet.**	after=	
+   black	cls=-	tag=-	dir=-	text=1. This creates a calm and relaxed mood.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"The short sentence makes the problem feel clear.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=The short sentence makes the problem feel clear.	[{"text":"The short sentence makes the problem feel clear.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"This emphasises that Jack and Nessa are missing the things they usually use for fun.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=This emphasises that Jack and Nessa are missing the things they usually use for fun.	[{"text":"This emphasises that Jack and Nessa are missing the things they usually use for fun.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. This shows the island has everything they want.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"This helps show why Jack and Nessa feel unhappy.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=This helps show why Jack and Nessa feel unhappy.	[{"text":"This helps show why Jack and Nessa feel unhappy.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=**Mum was the alien queen, which she wasn’t too happy about.**	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"This adds humour.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=This adds humour.	[{"text":"This adds humour.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. This shows Mum really is an alien queen.	after=	
+   black	cls=-	tag=-	dir=-	text=1. This creates a serious and frightening mood.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"This continues the children’s imaginative game.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=This continues the children’s imaginative game.	[{"text":"This continues the children’s imaginative game.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"This helps show the family having fun together.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=This helps show the family having fun together.	[{"text":"This helps show the family having fun together.","kind":"green"}]
+   tag	cls=instruction	tag=-	dir=-	text=Please put Kōwhai avatar on right hand side of the page.	after=	
+   tag	cls=tag	tag=speech bubble	dir=INTERACTIVE	text=[speech bubble left + audiovisual item 13]	after=Writers choose words carefully to help readers imagine people, places, and events.	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[body] 1.	after=When you choose an example, think about these questions:	
+   black	cls=-	tag=-	dir=-	text=1. What words stand out?	after=	
+   black	cls=-	tag=-	dir=-	text=1. What do the words help me picture?	after=	
+   black	cls=-	tag=-	dir=-	text=1. What feelings do the words create?	after=	
+   black	cls=-	tag=-	dir=-	text=1. What do they help me understand about the character, setting, or problem?	after=	
+   black	cls=-	tag=-	dir=-	text=Use this sentence frame:	after=	
+   black	cls=-	tag=-	dir=-	text=The words “_____” help me picture _____. They make the story feel _____. This helps me understand that _____.	after=	
+BUNDLE BLLR203 #31 multiChoiceQuiz built=false act=5D
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[multichoice]	after=	
+   black	cls=-	tag=-	dir=-	text=1. The characters begin helping and carrying wood.	after=	
+   black	cls=-	tag=-	dir=-	text=1. They are still unhappy.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"They are starting to adapt to island life.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=They are starting to adapt to island life.	[{"text":"They are starting to adapt to island life.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. They do not understand what to do.	after=	
+   black	cls=-	tag=-	dir=-	text=1. The kiwi scuttled across the clearing.	after=	
+   black	cls=-	tag=-	dir=-	text=1. The kiwi is slow and tired.	after=	
+   black	cls=-	tag=-	dir=-	text=1. The kiwi is not important to the story.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"The kiwi is moving quickly and quietly.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=The kiwi is moving quickly and quietly.	[{"text":"The kiwi is moving quickly and quietly.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. The family laugh and joke together.	after=	
+   black	cls=-	tag=-	dir=-	text=1. The setting is dangerous.	after=	
+   black	cls=-	tag=-	dir=-	text=1.	after=	[{"text":"The mood is becoming more relaxed and positive.","kind":"green"}]
+   tag	cls=tag	tag=correct	dir=SUBTAG	text=[correct]	after=The mood is becoming more relaxed and positive.	[{"text":"The mood is becoming more relaxed and positive.","kind":"green"}]
+   black	cls=-	tag=-	dir=-	text=1. The characters want to leave.	after=	
+BLLR203: identical 10 / changed 0
+BUNDLE CBI1004 #3 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[interactive – multiple choice]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Genetic characteristics are determined by the sequence of bases (As, Ts, Cs and Gs)	after=	
+   black	cls=-	tag=-	dir=-	text=a. True	after=	
+   black	cls=-	tag=-	dir=-	text=b. False	after=	
+   black	cls=-	tag=-	dir=-	text=2. Are human beings more closely related to chimpanzees or bananas?	after=	
+   black	cls=-	tag=-	dir=-	text=a. Chimpanzees	after=	
+   black	cls=-	tag=-	dir=-	text=b. Bananas	after=	
+   black	cls=-	tag=-	dir=-	text=2. Do your nerve cells have the same genetic information as your heart cells?	after=	
+   black	cls=-	tag=-	dir=-	text=A. Yes the DNA is identical	after=	
+   black	cls=-	tag=-	dir=-	text=b. No the DNA is different	after=	
+   black	cls=-	tag=-	dir=-	text=2. Do skin cells from different people have the same genetic information or different genetic information?	after=	
+   black	cls=-	tag=-	dir=-	text=a. The same genetic information	after=	
+   black	cls=-	tag=-	dir=-	text=b. Different genetic information	after=	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[button]	after=Check answers	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[button]	after=Reset	
+   tag	cls=tag	tag=answer	dir=SUBTAG	text=[Answer guide]	after=1. a 2. a 3. a 4. b	
+BUNDLE CBI1004 #4 dropDown built=false act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[Drop down boxes on each blank space with the following words listed]	after=alleles, two, gene, characteristics, base sequence.	
+   black	cls=-	tag=-	dir=-	text=A _________ codes for a characteristic. Different versions of a gene are called __________. Animals and plants	after=	
+   tag	cls=tag	tag=answer	dir=SUBTAG	text=[answer guide]	after=	
+   black	cls=-	tag=-	dir=-	text=A _gene__ codes for a characteristic. Different versions of a gene are called _alleles_____. Animals and plant	after=	
+BUNDLE CBI1004 #7 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[inline interactive – multiple choice]	after=Genotypes and phenotypes	
+   black	cls=-	tag=-	dir=-	text=1. An organism has the genotype Bb. They are	after=	
+   black	cls=-	tag=-	dir=-	text=a. Homozygous dominant	after=	
+   black	cls=-	tag=-	dir=-	text=b. Homozygous recessive	after=	
+   black	cls=-	tag=-	dir=-	text=c. Heterozygous	after=	
+   black	cls=-	tag=-	dir=-	text=2. An organism has the genotype BB. They are	after=	
+   black	cls=-	tag=-	dir=-	text=a. Homozygous dominant	after=	
+   black	cls=-	tag=-	dir=-	text=b. Homozygous recessive	after=	
+   black	cls=-	tag=-	dir=-	text=c. Heterozygous	after=	
+   black	cls=-	tag=-	dir=-	text=3. In guinea pigs, the allele for long hair (L) is dominant and the allele for short hair (l) is recessive.	after=	
+   black	cls=-	tag=-	dir=-	text=A guinea has the genotype LL. What is their phenotype?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Long hair	after=	
+   black	cls=-	tag=-	dir=-	text=1. Short hair	after=	
+   black	cls=-	tag=-	dir=-	text=1. A mixture of long and short hair	after=	
+   black	cls=-	tag=-	dir=-	text=4. A guinea has the genotype Ll. What is their phenotype?	after=	
+   black	cls=-	tag=-	dir=-	text=1. Long hair	after=	
+   black	cls=-	tag=-	dir=-	text=1. Short hair	after=	
+   black	cls=-	tag=-	dir=-	text=1. A mixture of long and short hair	after=	
+   black	cls=-	tag=-	dir=-	text=5. A guinea has the genotype ll. What is their phenotype?	after=	
+   black	cls=-	tag=-	dir=-	text=a. Long hair	after=	
+   black	cls=-	tag=-	dir=-	text=b. Short hair	after=	
+   black	cls=-	tag=-	dir=-	text=c. A mixture of long and short hair	after=	
+   black	cls=-	tag=-	dir=-	text=6. A guinea pig has long hair. What is their genotype?	after=	
+   black	cls=-	tag=-	dir=-	text=a. LL	after=	
+   black	cls=-	tag=-	dir=-	text=b. ll	after=	
+   black	cls=-	tag=-	dir=-	text=c. Ll	after=	
+   black	cls=-	tag=-	dir=-	text=d. Either Ll or LL	after=	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[button]	after=Check answers	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[button]	after=Reset	
+   tag	cls=tag	tag=answer	dir=SUBTAG	text=[answer guide]	after=1. c, 2. a, 3. A 4. A, 5. B, 6. d	
+   tag	cls=tag	tag=answer	dir=SUBTAG	text=[MTK quiz, teacher marked, for engagement. Multi-choice questions auto-marked, written answers marked by teach	after=Review	
+BUNDLE CBI1004 #9 radioQuiz built=false act=-
+   tag	cls=tag	tag=radio quiz	dir=INTERACTIVE	text=[interactive – True/false]	after=	
+   tag	cls=tag	tag=body	dir=ELEMENT	text=[body]	after=Decide whether the following statements are true or false.	
+   black	cls=-	tag=-	dir=-	text=1. Genetic variation refers to differences in genetic information.	after=	
+   black	cls=-	tag=-	dir=-	text=1. When a population of organisms declines, genetic variation increases.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Genetic variation increases the likelihood of populations surviving changes in the environment.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Endangered species are vulnerable to changes in the environment because they have high genetic variation.	after=	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[Button]	after=Check answers	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[button]	after=Reset	
+   tag	cls=tag	tag=answer	dir=SUBTAG	text=[Answer guide]	after=1. T, 2. F, 3. T, 4. F	
+BUNDLE CBI1004 #10 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[interactive – multiple choice question]	after=	
+   black	cls=-	tag=-	dir=-	text=1. Identify the mutation in this section of DNA.	after=	
+   black	cls=-	tag=-	dir=-	text=Original sequence: AATGGTC	after=	
+   black	cls=-	tag=-	dir=-	text=Mutated sequence: ACTGGTC	after=	
+   black	cls=-	tag=-	dir=-	text=1. T has changed to G.	after=	
+   black	cls=-	tag=-	dir=-	text=1. An extra C has been added.	after=	
+   black	cls=-	tag=-	dir=-	text=1. An A has been deleted.	after=	
+   black	cls=-	tag=-	dir=-	text=1. A has changed to C.	after=	
+   black	cls=-	tag=-	dir=-	text=1. Identify the mutation in this section of DNA.	after=	
+   black	cls=-	tag=-	dir=-	text=Original sequence: AATGGTC	after=	
+   black	cls=-	tag=-	dir=-	text=Mutated sequence: AATATATATGGTC	after=	
+   black	cls=-	tag=-	dir=-	text=1. An extra T has been inserted.	after=	
+   black	cls=-	tag=-	dir=-	text=1. There are extra copies of AT inserted.	after=	
+   black	cls=-	tag=-	dir=-	text=1. One G can been deleted.	after=	
+   black	cls=-	tag=-	dir=-	text=1. A c has changed to G.	after=	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[button]	after=Check answer	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[button]	after=Reset	
+   tag	cls=tag	tag=answer	dir=SUBTAG	text=[Answer guide]	after=1. D, 2. B	
+CBI1004: identical 11 / changed 0
+BUNDLE CBI1005 #1 multiChoiceQuiz built=false act=-
+   tag	cls=tag	tag=mcq	dir=INTERACTIVE	text=[interactive quiz]	after=Fill in these Punnett squares and predict the genotypes and phenotypes of the offspring.	
+   black	cls=-	tag=-	dir=-	text=1. A. One parent is heterozygous (Hh) and the other parent is homozygous (hh).	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   black	cls=-	tag=-	dir=-	text=1b. What is the probability that the offspring will have the genotype Hh?	after=	
+   black	cls=-	tag=-	dir=-	text=1. 0%	after=	
+   black	cls=-	tag=-	dir=-	text=1. 25%	after=	
+   black	cls=-	tag=-	dir=-	text=1. 50%	after=	
+   black	cls=-	tag=-	dir=-	text=1. 75%	after=	
+   black	cls=-	tag=-	dir=-	text=1. 100%	after=	
+   black	cls=-	tag=-	dir=-	text=1b. What is the predicted genotype ratio of the offspring?	after=	
+   black	cls=-	tag=-	dir=-	text=1. 1Hh:2Hh:1hh	after=	
+   black	cls=-	tag=-	dir=-	text=1. 1Hh:1hh	after=	
+   black	cls=-	tag=-	dir=-	text=1. 1HH:3hh	after=	
+   black	cls=-	tag=-	dir=-	text=1. 2HH:2hh	after=	
+   black	cls=-	tag=-	dir=-	text=1c. What is the probability that the offspring will show the dominant characteristic?	after=	
+   black	cls=-	tag=-	dir=-	text=1. 0%	after=	
+   black	cls=-	tag=-	dir=-	text=1. 25%	after=	
+   black	cls=-	tag=-	dir=-	text=1. 50%	after=	
+   black	cls=-	tag=-	dir=-	text=1. 75%	after=	
+   black	cls=-	tag=-	dir=-	text=1. 100%	after=	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[button]	after=Check answers	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[button]	after=Reset	
+   black	cls=-	tag=-	dir=-	text=1. One parent is homozygous dominant (TT) and the other parent is homozygous recessive (tt).	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   black	cls=-	tag=-	dir=-	text=2a. What is the probability that the offspring will have the genotype TT?	after=	
+   black	cls=-	tag=-	dir=-	text=1. 0%	after=	
+   black	cls=-	tag=-	dir=-	text=1. 25%	after=	
+   black	cls=-	tag=-	dir=-	text=1. 50%	after=	
+   black	cls=-	tag=-	dir=-	text=1. 75%	after=	
+   black	cls=-	tag=-	dir=-	text=1. 100%	after=	
+   black	cls=-	tag=-	dir=-	text=2b. What is the probability that the offspring will have the genotype Tt?	after=	
+   black	cls=-	tag=-	dir=-	text=1. 0%	after=	
+   black	cls=-	tag=-	dir=-	text=1. 25%	after=	
+   black	cls=-	tag=-	dir=-	text=1. 50%	after=	
+   black	cls=-	tag=-	dir=-	text=1. 75%	after=	
+   black	cls=-	tag=-	dir=-	text=1. 100%	after=	
+   black	cls=-	tag=-	dir=-	text=2c. What is the probability that the offspring will show the dominant characteristic?	after=	
+   black	cls=-	tag=-	dir=-	text=1. 0%	after=	
+   black	cls=-	tag=-	dir=-	text=b. 25%	after=	
+   black	cls=-	tag=-	dir=-	text=c. 50%	after=	
+   black	cls=-	tag=-	dir=-	text=d. 75%	after=	
+   black	cls=-	tag=-	dir=-	text=e. 100%	after=	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[button]	after=Check answers	
+   tag	cls=tag	tag=button	dir=ELEMENT	text=[button]	after=Reset	
+   tag	cls=tag	tag=answer	dir=SUBTAG	text=[Answer guide]	after=	
+   tag	cls=noise	tag=-	dir=-	text=1a.	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=noise	tag=-	dir=-	text=1b. c	after=	
+   tag	cls=noise	tag=-	dir=-	text=1c. b	after=	
+   tag	cls=noise	tag=-	dir=-	text=1d. c	after=	
+   tag	cls=noise	tag=-	dir=-	text=2a.	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=noise	tag=-	dir=-	text=OR	after=	
+   table	cls=-	tag=-	dir=-	text=	after=	
+   tag	cls=noise	tag=-	dir=-	text=2b. a	after=	
+   tag	cls=noise	tag=-	dir=-	text=2c. e	after=	
+   tag	cls=noise	tag=-	dir=-	text=2d. e	after=	
+BUNDLE CBI1005 #7 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[button to upload learning journal to dropbox]	after=Upload Learning Journal	
+BUNDLE CBI1005 #14 dropDown built=true act=-
+   tag	cls=tag	tag=dropdown	dir=INTERACTIVE	text=[can you set up an assessment dropbox for this topic named “CBI1005Y1 Genetics – Assessment AS92022”. There is	after=	
+CBI1005: identical 11 / changed 0
+
+TOTAL: identical 549 / changed 0 / missing 0 over 147 modules

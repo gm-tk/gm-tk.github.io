@@ -1330,6 +1330,30 @@
 		"text_box": "<textarea class=\"form-control\" rows=\"4\" placeholder=\"{placeholder}\"></textarea>"
 	},
 	"interactive_placeholder": {
+		"answer_key_d13_4": {
+			"enabled": true,
+			"env": "ANSWERKEY_OFF",
+			"types": [
+				"multiChoiceQuiz",
+				"typing",
+				"dropDown",
+				"dropQuiz",
+				"radioQuiz",
+				"reorder",
+				"selectionBox"
+			],
+			"glyph": "✅",
+			"mark_kinds": [
+				"hl"
+			],
+			"highlight_colours": [
+				"yellow"
+			],
+			"_doc_mark_kinds": "Only a YELLOW highlight gets the glyph — exactly what the parser ticks (js/formatter.js prefixes a run with ✅ when its highlight is 'yellow'); the extractor records each highlight mark's colour for this (Input_Doc_Rules.answer_marks.occurrence_index, side-channel only). Another colour stays unticked (PWY1001's partly-highlighted 'Shows' is not yellow and the parser never ticked it). The answer-GREEN kind is left unmarked: round 309 measured green marking the OPTIONS themselves on OSAI101, so a tick there would tell the developer the wrong answer.",
+			"red_answer_skip": "^[^\\p{L}\\p{N}]*$",
+			"red_answer_plain": "^(?:answers?|correct answers?|for media|associated media|teacher[- ]marked|\\(?image\\)?|media)\\s*[:.]?$|:$",
+			"_doc": "ROUND 448 (the loop's session 40 Round 2 — Chris's decision D13-4, its carry-through: 'the hand-off box and {CODE}_interactives.txt KEEP the answer marks'). In an UN-BUILT hand-off box of a quiz-engine type (types) and in that bundle's {CODE}_interactives.txt entry: (1) the writer's answer marks — the yellow highlighter / answer-green the extractor has carried on the r309 side-channel (block.marks, block.cellMarks) since round 309 but nothing rendered — get the parser's own correct-answer glyph BEFORE the marked phrase (the _parsed.txt convention, '✅b. When two things are very different from each other.'), placed by the mark's occurrence index (Input_Doc_Rules.answer_marks.occurrence_index — ARFUN04 3N has 'Contrast' twice on one line); (2) the red answer words the writer typed inside the question (BLL244 2D 'What game are Zack and Kev playing…', True / False, 'B) Allan') — red members the classifier calls 'noise', which the box used to drop (it rendered only their black tail, or nothing) — are rendered with the glyph before them; a red fragment with no letter or digit (red_answer_skip — a stray ']' ×81) is skipped, and a label / media note (red_answer_plain — 'Answers:', '(image)', 'Associated media') is rendered plain. The worklist already shows the red words (it prints the whole source paragraph); it gains the glyph on both. MEASURED (outputs/_s40_r448_quizsurvey.py / .log over all 545 modules): 1,201 un-built quiz bundles; 328 bundles / 111 modules carry 1,659 highlight / green marks; 174 bundles / 80 modules carry 1,063 red noise members. Built widgets (the r309 dropDown builds, the built multiChoiceQuiz) are untouched — this is the hand-off only. Expected gate-neutral: the skeleton collapses the box to one widget marker and body_compare excludes widget subtrees. Env ANSWERKEY_OFF reverts the box, the worklist and the extractor's occurrence index together."
+		},
 		"embedded_member_text": {
 			"enabled": true,
 			"env": "MEMBERTEXT_OFF",

@@ -1,0 +1,96 @@
+quiz bundles (dedup) 1554; un-built 1201
+  multiChoiceQuiz bundles  401 | with hl/green marks  123 (662 marks) | with red noise members   54 (221 members)
+  typing          bundles  270 | with hl/green marks  104 (471 marks) | with red noise members   55 (419 members)
+  dropDown        bundles  257 | with hl/green marks   44 (285 marks) | with red noise members   39 (320 members)
+  reorder         bundles  104 | with hl/green marks   16 (77 marks) | with red noise members    6 (15 members)
+  radioQuiz       bundles   89 | with hl/green marks   24 (105 marks) | with red noise members   10 (55 members)
+  selectionBox    bundles   80 | with hl/green marks   17 (59 marks) | with red noise members   10 (33 members)
+modules: marks 111, noise 80, either 160
+red noise texts (top 60):
+    81  ']'
+    32  'True'
+    22  '3'
+    19  'False'
+    16  'Answers:'
+    16  '5'
+    15  'Y.'
+    14  'Yes'
+    14  '4'
+    13  '6'
+    12  'Y'
+    11  '12'
+    10  '(image)'
+    10  '2'
+     9  '8'
+     9  'Option 5'
+     8  'T'
+     8  '9'
+     8  'Option 1'
+     7  '20'
+     7  '16'
+     7  'Option 6'
+     6  '(opinion)'
+     6  '24'
+     6  '7'
+     6  'Option 2'
+     6  'Option 3'
+     6  'N.'
+     5  'Teacher marked'
+     5  '10'
+     5  '-3'
+     5  '300'
+     5  'Linear'
+     5  'Option 7'
+     5  'Answer'
+     4  'N/A'
+     4  '(fact)'
+     4  'B'
+     4  '30'
+     4  '15'
+     4  'short division'
+     4  'true'
+     4  '1/5'
+     4  'A'
+     4  'Option 8'
+     4  'Option 4'
+     4  'Associated media'
+     3  'she'
+     3  'No'
+     3  '18'
+     3  '50'
+     3  '120'
+     3  '45'
+     3  '36'
+     3  '42'
+     3  '60'
+     3  'can'
+     3  'is'
+     3  'multiply'
+     3  '-9'
+noise with an EMPTY black tail (the word alone): 492
+examples by module:
+  AGH1006 ##8 dropDown act=-: Answers: ‖ 
+  ANZH103 ##4 dropDown act=-: For media: ‖ 
+  ARFUN04 ##11 selectionBox act=1I: Asymmetrical ‖ https://www.istockphoto.com/photo/exactn
+  BLL147 ##2 multiChoiceQuiz act=1C: B) Allan ‖  | B) Sleep ‖  | B) Bill ‖ 
+  BLL152 ##3 multiChoiceQuiz act=1C: B) Run ‖ 
+  BLL241 ##5 multiChoiceQuiz act=2E: Worried. ‖  | Thankful. ‖ 
+  BLL242 ##5 multiChoiceQuiz act=1D: hear ‖ ) the music. | which ‖ , witch) book she would read first. | fare ‖ , fair) to the mall cost me six dollars.
+  BLL243 ##9 typing act=-: Where ‖ does the worm land after Kiwi sneezes? | Who ‖ swoops down from the sky to speak to Kiw | How ‖ does Kiwi search for food in the dirt?
+  BLL244 ##6 typing act=2D: What ‖ game are Zack and Kev playing at the loc | Where ‖ does the music seem to be coming from? | Who ‖ thinks the music sounds like Dan?
+  BLL245 ##6 multiChoiceQuiz act=2B: she ‖ ] was wearing a yellow T-shirt, blue sho | she ‖ ] wore her favourite pink trainers. [Lil | She ‖ ] enjoyed running and climbing and [Lily
+  BLL262 ##10 typing act=2A: or ‖ 
+  BLL262 ##13 typing act=2C: Target word ‖  | Auto ‖ -
+  BLL263 ##5 typing act=-: or ‖ 
+  BLL274 ##10 multiChoiceQuiz act=2E: ] ‖ Take a moment to celebrate completing th
+  CBI1005 ##1 multiChoiceQuiz act=-: 1a. ‖  | 1b. c ‖  | 1c. b ‖ 
+  CBI1008 ##1 radioQuiz act=-: T ‖  | F ‖  | T ‖ 
+  CEDT101 ##5 dropDown act=2A: ] ‖  | ] ‖ 
+  CEDT101 ##6 dropDown act=2B: ] ‖ 
+  CEDT101 ##8 dropDown act=2C: ] ‖ 
+  CEDT101 ##10 dropDown act=2E: ] ‖  | ] ‖ 
+  CEDT104 ##9 dropDown act=-: ] ‖ 
+  CEDT104 ##14 dropDown act=-: ] ‖ 
+  CEDT404 ##6 dropDown act=-: N/A ‖  | N/A ‖  | Yes ‖ 
+  CHFUN05 ##58 radioQuiz act=-: 不，没（有） ‖ 
+  CHI1004 ##1 multiChoiceQuiz act=-: simple questions ‖ in Chinese by adding " 吗" or "了吗" at the | ] ‖ 

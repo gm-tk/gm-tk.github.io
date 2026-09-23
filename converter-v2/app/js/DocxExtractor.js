@@ -1930,15 +1930,15 @@ class DocxExtractor {
 				const am = rules.answer_marks;
 				const amOn = am && am.enabled !== false
 					&& !(typeof process !== "undefined" && process.env && process.env.ANSMARK_OFF);
-				let mark = null;
+				let mark = null, markColor = null;
 				if (amOn) {
 					const hl = run.match(/<w:highlight w:val="([^"]+)"/)?.[1];
-					if (hl && !(am.exclude_highlight_values ?? ["none", "white"]).includes(hl)) mark = "hl";
+					if (hl && !(am.exclude_highlight_values ?? ["none", "white"]).includes(hl)) { mark = "hl"; markColor = hl; }
 					else if ((am.green_hex_values ?? ["00b050"]).includes(color)) mark = "green";
 				}
 
 				if (currentLink) links.push({ text, target: currentLink });
-				pieces.push({ text, red, bold, italic, mark, hyper: hyperRed });
+				pieces.push({ text, red, bold, italic, mark, markColor, hyper: hyperRed });
 			}
 		}
 
@@ -2082,14 +2082,34 @@ class DocxExtractor {
 		// pieces (Word fragments one highlighted phrase into several runs; a pure
 		// whitespace gap between two same-kind marked pieces bridges — the red-merge
 		// convention). block.text is untouched — the marks travel beside it.
+		// ROUND 447→448 (Chris's D13-4 carry-through): each mark also records `nth` — how many
+		// times its text already occurred in the paragraph's plain text BEFORE it — so a
+		// consumer can place it when the same words occur twice on one line (ARFUN04 3N: the
+		// label "**Contrast:**" and the answer "(Contrast/Emphasis)"). Side-channel only.
+		// Data: Input_Doc_Rules.answer_marks.occurrence_index   Env toggle: ANSWERKEY_OFF
 		const marks = [];
 		{
-			let cur = null;
-			const flush = () => { if (cur && cur.text.trim()) marks.push({ text: cur.text.trim(), kind: cur.kind }); cur = null; };
+			const nthOn = rules.answer_marks?.occurrence_index !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.ANSWERKEY_OFF);
+			let cur = null, plain = "";
+			const flush = () => {
+				if (cur && cur.text.trim()) {
+					const t = cur.text.trim();
+					const mk = { text: t, kind: cur.kind };
+					if (nthOn) {
+						mk.nth = Utils.CountOccurrences(plain.slice(0, cur.at + (cur.text.length - cur.text.trimStart().length)), t);
+						if (cur.color) mk.color = cur.color;   // the highlight colour (the parser ticks yellow only)
+					}
+					marks.push(mk);
+				}
+				cur = null;
+			};
 			for (const p of pieces) {
+				const at = plain.length;
+				plain += p.text;
 				if (p.mark) {
 					if (cur && cur.kind === p.mark) { cur.text += p.text; continue; }
-					flush(); cur = { text: p.text, kind: p.mark };
+					flush(); cur = { text: p.text, kind: p.mark, at, color: p.markColor ?? null };
 				} else if (cur && /^\s*$/.test(p.text)) cur.text += p.text;
 				else flush();
 			}
@@ -2135,10 +2155,14 @@ class DocxExtractor {
 				const cm = [];
 				for (const pm of cellMatch[0].matchAll(/<w:p[ >][\s\S]*?<\/w:p>/g)) {
 					const block = this.#parseParagraph(pm[0], rels, new Map(), page, rules);
+					// ROUND 448: a mark's nth counts the cell's EARLIER paragraphs too (the cell text
+					// is its paragraphs joined) — computed before this paragraph joins them
+					const before = paras.join(rules.table_markers.in_cell_line_break);
 					if (block.text.trim()) paras.push(block.text.trim());
 					links.push(...block.links);
 					thisRowLinks.push(...block.links);
-					if (block.marks) cm.push(...block.marks);   // the r309 answer-mark side-channel
+					if (block.marks) cm.push(...block.marks.map((mk) => (typeof mk.nth === "number" && before
+						? { ...mk, nth: mk.nth + Utils.CountOccurrences(before, mk.text) } : mk)));   // the r309 answer-mark side-channel
 				}
 				cells.push(paras.join(rules.table_markers.in_cell_line_break));
 				thisRowMarks.push(cm);

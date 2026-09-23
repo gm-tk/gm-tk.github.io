@@ -315,17 +315,47 @@ class ManifestBuilder {
 			// a table (or any multi-line block) keeps its own line breaks
 			for (const ln of s.split("\n")) lines.push(ln.replace(/\s+$/, ""));
 		};
+		// ROUND 448 (Chris's D13-4 carry-through): a QUIZ-type entry keeps the writer's answer
+		// key — the parser's ✅ before each highlighted answer (the r309 side-channel; the red
+		// answer words already show in their own red markers here). Data
+		// interactive_placeholder.answer_key_d13_4; env ANSWERKEY_OFF.
+		const ak = Utils.AnswerKeyConfig(DataService.Data.EmitTemplates.interactive_placeholder?.answer_key_d13_4, b);
 		for (const m of b.memberItems ?? []) {
 			const blk = m.block;
 			if (blk) {
 				if (seen.has(blk)) continue;   // one line per source block, deduped
 				seen.add(blk);
-				push(blk.text ?? "");
+				push(ak ? this.#answerKeyRaw(blk, ak) : (blk.text ?? ""));
 			} else {                            // synthetic member — no source block
 				push(m.type === "black" ? (m.text ?? "") : (m.blackAfter ?? ""));
 			}
 		}
 		return lines;
+	};
+
+	/**
+	 * ROUND 448 — a source block's raw text with the ✅ before each highlighted answer. A
+	 * paragraph is marked in place (Utils.MarkAnswers, by each mark's occurrence index); a
+	 * table is re-serialised from its marked cells in the extractor's own table form
+	 * (Input_Doc_Rules.table_markers) — only when the unmarked re-serialisation reproduces
+	 * block.text EXACTLY, so a table whose text the pipeline changed is never rewritten.
+	 */
+	static #answerKeyRaw(blk, ak) {
+		const text = String(blk.text ?? "");
+		const glyph = ak.glyph ?? "✅";
+		if (blk.kind === "table" && Array.isArray(blk.rows)) {
+			if (!blk.cellMarks) return text;
+			const tm = DataService.Data.InputDocRules?.table_markers;
+			if (!tm) return text;
+			const ser = (rows) => [tm.open, ...rows.map((cells) => `${tm.row_prefix}${cells.join(tm.column_separator)}`), tm.close].join("\n");
+			if (ser(blk.rows) !== text) return text;
+			return ser(blk.rows.map((r, ri) => r.map((cell, ci) => {
+				const mk = Utils.AnswerKeyMarks(ak, blk.cellMarks[ri]?.[ci]);
+				return mk.length ? Utils.MarkAnswers(cell, mk, glyph) : cell;
+			})));
+		}
+		const mk = Utils.AnswerKeyMarks(ak, blk.marks);
+		return mk.length ? Utils.MarkAnswers(text, mk, glyph) : text;
 	};
 }
 

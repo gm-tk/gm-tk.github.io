@@ -1,0 +1,6 @@
+OLD pairs 2477  SCAFFOLD 54.7409%  RAW 38.689%  >=50 1542  >=75 260  >=90 23
+NEW pairs 2477  SCAFFOLD 54.7409%  RAW 38.690%  >=50 1542  >=75 260  >=90 23
+delta SCAFFOLD +0.0000pp  RAW +0.000pp  >=50 +0  >=75 +0  >=90 +0
+movers 0 (up 0 / down 0), pp-sum +0.0
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0

@@ -9756,6 +9756,48 @@ class ContentConverter {
 		return "";
 	}
 
+	/**
+	 * ROUND 448 (D13-4 carry-through) — one member's text in a QUIZ hand-off box with the
+	 * writer's answer key kept: a red 'noise' member (the writer's red answer word, which
+	 * the dump used to drop — BLL244 "What" + "game are Zack and Kev…") renders its words
+	 * ticked, plain when they are a label / media note, not at all when they carry no
+	 * letter or digit; every other member's text gets the ✅ before each highlighted
+	 * answer of its source block (Utils.MarkAnswers, placed within this item's span).
+	 */
+	static #answerKeyText(m, text, ak) {
+		const glyph = ak.glyph ?? "✅";
+		const marked = (t) => {
+			const mk = Utils.AnswerKeyMarks(ak, m.block?.marks);
+			return mk.length ? Utils.MarkAnswers(t, mk, glyph, m.block?.text ?? null, true) : t;
+		};
+		if (m.type === "tag" && m.parse?.class === "noise") {
+			const words = String(m.text ?? "").replace(/\s+/g, " ").trim();
+			const how = Utils.AnswerKeyRedWord(ak, words);
+			if (how !== "skip") {
+				const tail = String(m.blackAfter ?? "").trim() ? marked(String(m.blackAfter)).trim() : "";
+				// a leading list marker stays first ("B) ✅Allan"), so a list keeps the item
+				const lm = words.match(/^(?:\d+[.)]|[A-Za-z][.)]|[•●▪◦*-])\s+/)?.[0] ?? "";
+				const w = how === "answer" ? `${lm}${glyph}${words.slice(lm.length)}` : words;
+				return `${w}${tail ? ` ${tail}` : ""}`;
+			}
+		}
+		return marked(String(text ?? ""));
+	}
+
+	/** ROUND 448 — a quiz hand-off's table with the ✅ before each highlighted cell answer (a shallow copy; the block itself is never touched). */
+	static #answerKeyTable(blk, ak) {
+		if (!blk?.cellMarks || !Array.isArray(blk.rows)) return blk;
+		let any = false;
+		const rows = blk.rows.map((r, ri) => r.map((cell, ci) => {
+			const mk = Utils.AnswerKeyMarks(ak, blk.cellMarks[ri]?.[ci]);
+			if (!mk.length) return cell;
+			const out = Utils.MarkAnswers(cell, mk, ak.glyph ?? "✅");
+			if (out !== cell) any = true;
+			return out;
+		}));
+		return any ? { ...blk, rows } : blk;
+	}
+
 	/** ROUND 401 — does a bundle item carry text the placeholder would render (its own words, or the r342 embedded text)? */
 	static #bundleItemHasText(it) {
 		return String(it.type === "black" ? it.text : (it.blackAfter ?? "")).trim().length > 0
@@ -10001,11 +10043,25 @@ class ContentConverter {
 		// openerItems are only populated for inline (non-activity) bundles;
 		// activity-owned bundles render their openers as activity content
 		// OUTSIDE the box, so the box holds members only
+		// ROUND 448 (Chris's D13-4 carry-through) — a QUIZ-type hand-off keeps the writer's
+		// answer key: the parser's ✅ before each highlighted answer (the r309 side-channel,
+		// placed by its occurrence index), and a red 'noise' member's answer words rendered
+		// (ticked) instead of dropped. Data interactive_placeholder.answer_key_d13_4; env ANSWERKEY_OFF.
+		const ak = Utils.AnswerKeyConfig(DataService.Data.EmitTemplates.interactive_placeholder?.answer_key_d13_4, bundle);
+		let lastBlk = null;   // ROUND 448: the source block of the last dumped line
 		for (const m of [...bundle.openerItems, ...bundle.memberItems]) {
-			if (m.type === "table") { flushText(); parts.push(TablesAndGrids.contentTable(m.block, run, true, this.#norm)); continue; }
-			const text = m.type === "black" ? m.text : (String(m.blackAfter ?? "").trim() ? m.blackAfter : embeddedText(m));   // ROUND 342 — the bracket-line words of an element member
+			if (m.type === "table") { flushText(); lastBlk = null; parts.push(TablesAndGrids.contentTable(ak ? this.#answerKeyTable(m.block, ak) : m.block, run, true, this.#norm)); continue; }
+			let text = m.type === "black" ? m.text : (String(m.blackAfter ?? "").trim() ? m.blackAfter : embeddedText(m));   // ROUND 342 — the bracket-line words of an element member
+			if (ak) {
+				text = this.#answerKeyText(m, text, ak);
+				// a red answer typed at the END of its question line ("2. Name a ball and socket
+				// joint. [red] Hip Shoulder", PHE1007) stays ON that line — its own line would
+				// split the numbered question list
+				if (m.type === "tag" && m.parse?.class === "noise" && m.block && m.block === lastBlk
+					&& textRun.length && text.trim()) { textRun[textRun.length - 1] = `${textRun[textRun.length - 1].replace(/\s+$/, "")} ${text.trim()}`; continue; }
+			}
 			// don't repeat the line already shown as the bundle heading
-			if (text.trim() && text.trim() !== bundle.headingText.trim()) textRun.push(text);
+			if (text.trim() && text.trim() !== bundle.headingText.trim()) { textRun.push(text); lastBlk = m.block ?? null; }
 		}
 		flushText();
 

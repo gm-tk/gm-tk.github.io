@@ -1,5 +1,35 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (round 448, build 260620.19) — THE ANSWER-KEY CARRY-THROUGH: an un-built quiz's hand-off box and its `{CODE}_interactives.txt` entry now keep the writer's answer key — a ✅ before each highlighted answer, and the red answer words the box used to drop — Chris's decision D13-4 (its carry-through), the loop's session 40 Round 2
+
+### 1. WHAT CHANGED
+
+D13-4 authorises building the quiz engines only where the writer marked the answer, and first a scoped round of its own: *"the hand-off box and `{CODE}_interactives.txt` KEEP the answer marks. The ✅ ticks and red answer words must no longer be stripped"*. Two losses, triangulated from the decision report:
+
+- **The highlighted answer.** ARFUN04 4L — the writer highlights the correct option (`✅b. When two things are very different from each other.` in `_parsed.txt`; the parser ticks every YELLOW-highlighted run). Round 309 has carried highlights on a side-channel (`block.marks` / `block.cellMarks`) ever since, but nothing rendered them: 0 ✅ in the box and the worklist.
+- **The red answer words.** BLL244 2D — `🔴What🔴 game are Zack and Kev playing…`; PHE1007 `2. Name a ball and socket joint. 🔴Hip Shoulder🔴`; MXDB302 `Volume = 🔴24🔴 units³`. The classifier calls such a red fragment `noise`, and the box rendered only its black tail — so the answer vanished and, where it ended the line, the tail became a stray paragraph that split the numbered question list (`<p>units³</p>` between single-item `<ol>`s).
+
+**Now**, in an UN-BUILT hand-off of a quiz-engine type (`multiChoiceQuiz`, `typing`, `dropDown`, `dropQuiz`, `radioQuiz`, `reorder`, `selectionBox`):
+- the parser's ✅ goes before each **yellow**-highlighted answer — in the box (after a leading list marker, `b. ✅When…`, so the option list survives) and in the worklist (the parser's own `✅b.` form, table cells re-serialised in the extractor's table form only when that reproduces the block text exactly);
+- a red answer word renders ticked **on its own question line** (`2. Name a ball and socket joint. ✅Hip Shoulder`; `4 cubes x 3 cubes x 2 cubes Volume = ✅24 units³`), a stray `]` is skipped, a label / media note (`Answers:`, `(image)`, `Associated media`) renders plain; the worklist already showed the red words in their markers.
+
+The extractor's marks gain `nth` (the occurrence index — ARFUN04 3N carries "Contrast" twice on a line, the label `**Contrast:**` and the answer `(Contrast/Emphasis)`) and the highlight `color` — side-channel only, not one text byte moves. **Green is left unticked** (round 309 measured green marking the OPTIONS themselves on OSAI101), and so is a non-yellow highlight (PWY1001's partly-highlighted "Shows" — the parser never ticked it). Built widgets (the r309 dropDowns, the built multiChoiceQuiz) are untouched. `Emit_Templates.json` `interactive_placeholder.answer_key_d13_4` + `Input_Doc_Rules.json` `answer_marks.occurrence_index`; env **`ANSWERKEY_OFF`** (box, worklist and extractor together); `Utils.MarkAnswers` / `CountOccurrences` / `AnswerKeyConfig` / `AnswerKeyMarks` / `AnswerKeyRedWord`, `ContentConverter.#answerKeyText` / `#answerKeyTable`, `ManifestBuilder.#answerKeyRaw`.
+
+### 2. PROOF
+
+- **Measured** (`outputs/_s40_r448_quizdiag.cjs` over all 545 modules → `_s40_r448_quizsurvey.py` / `.log`): 1,201 un-built quiz bundles; 328 bundles / 111 modules carry 1,659 highlight / green marks; 174 bundles / 80 modules carry 1,063 red noise members (junk among them: `]` ×81, `Answers:` ×16, `(image)` ×10).
+- **In-memory A/B** (`_r448_probe.cjs` = the r440 probe comparing the `.txt` worklists too): OFF (`ANSWERKEY_OFF=1`) = **3208 / 3208 identical** after every repair; ON = **197 pages + 68 worklists / 118 modules, 2,285 ticks**. **`_r448_outsidebox.py`: 0 pages differ outside a hand-off box.** Word check (`_r448_wordloss.py`): no writer word lost — the tokens it lists are a tick placed inside a token (`他走✅去教室`, `___✅5_____`) or a list marker "1." becoming real list numbering once the list is whole again.
+- **In-round repairs:** (1) a tick before a list marker (`✅b.`) broke the box's list — the tick goes after the marker; (2) a red answer at the end of its line made its own paragraph — it joins its question line; (3) the non-yellow highlight — yellow only, as the parser.
+- **Pre-score** (`_r448_prescore.py`): **0 skeleton movers** (the skeleton collapses a hand-off box to one marker).
+- **SCOPED regeneration** (`_r448_regen.sh`, the 118 + a 12-module spot-check, seed 448, twelve batches ≤ 11): all rc 0; 0 truly stale, the 424 untouched byte-identical; spot-check 12 / 12. `scoped_ship.sh --toggle ANSWERKEY_OFF --round 448 --commit`: **PASS — every protected gate HELD EXACTLY** (containment: 114 page-changed modules ⊆ 118; the other 4 changed their worklist only). Ledger: **scoped #4 since the r444 FULL**.
+- **Post-ship** (`_r448_postship.sh`): `run_all_gates.sh` rc 0, every verifier RESULT ✓; the skeleton page-for-page (0 movers, RAW 38.689 → 38.690 — the boxes' own lists merged); 49 selftests GREEN; feature index GREEN; the miner 195 CANDIDATE (unchanged — it collapses widgets). **body_compare sub-counts, NAMED** (`_r448_bodyflags.py` / `.log`, body_compare's own parse of the OFF and shipped pages): **over-capture 56 → 57** — PHE1007_9_0's typing box now shows its answers (1,958 → 2,070 chars), crossing the 0.40 box / page ratio (0.39 → 0.40) with its lost blocks unchanged at 3; **empty container 201 → 200** (better) — MXEO301_5_0's box was under 40 characters until its red answers came back; any-breakdown 260 HELD. (The post-ship script's miner line tailed the r445 log — fixed in the r447 / r448 copies.)
+
+### 3. PROTECTED GATES
+
+- **Skeleton (PRIMARY)**: SCAFFOLD **54.7409 % @ 2477 pairs** (page-for-page), ≥50 **1542**, ≥75 **260**, ≥90 **23**; RAW 38.690 %.
+- **compare_structure** 15657 / 199 / 796 / 24; **structurally clean** 2613 / 2658; **leak** 75 / 45 — EXACT; **body_compare** over-capture **57** (+1 NAMED) / runaway 5 / empty **200** (−1) / any **260** (held); **tags 9557 / 9557**; every verifier RESULT ✓.
+- Plateau (§4): a hand-off round, gate-neutral by design — neither counts nor resets; **0 of 3**.
+
 ## 2026-09-24 (round 447, build 260620.18) — THE JOURNAL BUTTON: every journal-label variant on a writer's [Button] now ships the house `<h4 class="goJournal">Go to your journal</h4>`, and a button that carried a whole instruction keeps that sentence as a `<p>` before it — Chris's decision D13-5 (Option B), the loop's session 40 Round 1
 
 ### 1. WHAT CHANGED
