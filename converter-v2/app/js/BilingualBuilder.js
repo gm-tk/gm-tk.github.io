@@ -765,8 +765,39 @@ class BilingualBuilder {
 		for (const row of (block?.rows ?? [])) for (const c of row) {
 			const s = String(c ?? "");
 			if (this.activityMarkerRe.test(s) || this.activityNumRe.test(s.trim())) return true;
+			if (this.#redMarkerOn() && this.activityMarkerRe.test(this.#stripRed(s))) return true;
 		}
 		return false;
+	};
+
+	// ROUND 454 (the autonomous loop's session 41 Round 2) — THE RED-WRAPPED [Activity: Embedded]
+	// MARKER. The MTK writer types the marker in the template's red style, so the raw cell reads
+	// "🔴[RED TEXT] [Activity: Embedded] Word select [/RED TEXT]🔴" and the start-anchored
+	// activityMarkerRe never matched: the gather below (KB 07B "Activity Structure") never fired and
+	// the instruction table + its data tables shipped as top-level bilingual-unbuilt dumps (106
+	// markers / 8 TRR modules). The red-run markers are stripped before the test, and the marker
+	// row itself ships as the writer's own note (a gate-invisible cv2-note) — never as a stray
+	// "Word select" paragraph. Data: dual_language.activity_marker_red. Env toggle: ACTMARKRED_OFF.
+	/** ROUND 454 — true when the table is an activity marker ONLY through a red-wrapped
+	 *  [Activity: Embedded] cell (the pre-r454 test declines it): the caller wraps and numbers
+	 *  exactly these boxes, leaving every pre-existing activity path untouched. */
+	static isRedOnlyActivityMarker(block) {
+		if (!this.#redMarkerOn()) return false;
+		let red = false;
+		for (const row of (block?.rows ?? [])) for (const c of row) {
+			const s = String(c ?? "");
+			if (this.activityMarkerRe.test(s) || this.activityNumRe.test(s.trim())) return false;
+			if (this.activityMarkerRe.test(this.#stripRed(s))) red = true;
+		}
+		return red;
+	};
+	static #redMarkerOn() {
+		const c = DataService.Data.EmitTemplates.elements?.dual_language?.activity_marker_red;
+		return !!c && c.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[c.env ?? "ACTMARKRED_OFF"]);
+	};
+	static #stripRed(s) {
+		return String(s ?? "").replace(/\u{1f534}/gu, "").replace(/\[\/?RED TEXT\]/g, "").trim();
 	};
 
 	/**
@@ -825,6 +856,11 @@ class BilingualBuilder {
 				for (const row of rows) {
 					const c0 = String(row[0] ?? ""), c1 = String(row[1] ?? "");
 					if (nRe.test(c0.trim()) || /^english$/i.test(Utils.Fold(c0).trim())) continue;
+					// ROUND 454 — a red-wrapped marker row is the writer's widget request: their note, not a paragraph
+					if (this.#redMarkerOn() && !mRe.test(c0) && mRe.test(this.#stripRed(c0))) {
+						out.push(NotesAndComments.redFlag(this.#stripRed(c0), run, "cs"));
+						continue;
+					}
 					const R = this.bilingualSplit(c1.replace(mRe, "").replace(/^\s*\[[^\]]*\]\s*$/, ""), run, norm);
 					const E = this.bilingualSplit(c0.replace(mRe, "").replace(/^\s*\[[^\]]*\]\s*$/, ""), run, norm);
 					for (const p of R.text) out.push(this.langAttr(p, "reo"));

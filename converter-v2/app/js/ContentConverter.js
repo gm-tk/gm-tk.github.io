@@ -3011,6 +3011,7 @@ class ContentConverter {
 					// other widget, or any non-table item) into ONE "div.activity[number]" — with
 					// the unfolded reo/eng introduction plus any widget placeholders nested inside it.
 					if (BilingualBuilder.isActivityMarker(it.block)) {
+						const redOnly = BilingualBuilder.isRedOnlyActivityMarker(it.block);   // ROUND 454
 						const blocks = [it.block];
 						let j = i + 1;
 						while (j < bodyItems.length) {
@@ -3019,7 +3020,19 @@ class ContentConverter {
 							if (BilingualBuilder.isActivityMarker(nx.block) || BilingualBuilder.bilingualHeader(nx.block) || BilingualBuilder.isCalloutTable(nx.block, this.#norm)) break;
 							blocks.push(nx.block); nx._consumed = true; j++;
 						}
-						const act = BilingualBuilder.bilingualActivity(blocks, run, this.#norm);
+						let act = BilingualBuilder.bilingualActivity(blocks, run, this.#norm);
+						// ROUND 454 — a box opened by the red-wrapped [Activity: Embedded] marker takes the KB 07D
+						// lesson wrapper (row > col-md-8 col-12) and, when it carries no id of its own, the KB 07B
+						// decimal number — the page's lesson number + its position among the page's activity boxes
+						// (consecutive, D13-7). Data dual_language.activity_marker_red.{wrap,number}; env ACTMARKRED_OFF.
+						if (act && redOnly) {
+							const amr = DataService.Data.EmitTemplates.elements?.dual_language?.activity_marker_red ?? {};
+							if (amr.number !== false && page?.lessonNumber != null && !/^<div class="activity[^"]*" number="/.test(act)) {
+								const k = (parts.join("\n").match(/<div class="activity[\s"]/g) || []).length + 1;
+								act = act.replace(/^<div class="activity interactive"/, `<div class="activity interactive" number="${page.lessonNumber}.${k}"`);
+							}
+							if (amr.wrap !== false) act = `<div class="row">\n<div class="col-md-8 col-12">\n${act}\n</div>\n</div>`;
+						}
 						if (act) { breakRow(); parts.push(act); markContent(); this.#closeSpanWrap(stack, emit, breakRow); i = j - 1; continue; }
 					}
 					// A column-aligned IMAGE-row + AUDIO-row table is the phonics "audioImage" grid

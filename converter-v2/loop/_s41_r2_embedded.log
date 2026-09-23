@@ -1,0 +1,22 @@
+PMT101   embedded  13 (own table 0, row 13, right after an Activity-NX label 0) | gold activity.interactive 9 | Claude bilingual-unbuilt boxes 0 | Drag and Drop; Interactive Carousel; ; Word Select; Matching Pairs
+PNR101   embedded   0 (own table 0, row 0, right after an Activity-NX label 0) | gold activity.interactive 5 | Claude bilingual-unbuilt boxes 1 | 
+PNR102   embedded   0 (own table 0, row 0, right after an Activity-NX label 0) | gold activity.interactive 6 | Claude bilingual-unbuilt boxes 2 | 
+PNR104   embedded   0 (own table 0, row 0, right after an Activity-NX label 0) | gold activity.interactive 6 | Claude bilingual-unbuilt boxes 1 | 
+PNR107   embedded   0 (own table 0, row 0, right after an Activity-NX label 0) | gold activity.interactive 5 | Claude bilingual-unbuilt boxes 1 | 
+TRR102   embedded   8 (own table 8, row 0, right after an Activity-NX label 6) | gold activity.interactive 11 | Claude bilingual-unbuilt boxes 21 | [Audio Button Hover]; [Multichoice Quiz]; [ Word Select]; Word Select; Drag and Drop
+TRR103   embedded   8 (own table 8, row 0, right after an Activity-NX label 7) | gold activity.interactive 5 | Claude bilingual-unbuilt boxes 20 | Word select; Memory Game – please c; [Audio Hover Button wi; [Word Select]; Drag and Drop
+TRR106   embedded   3 (own table 3, row 0, right after an Activity-NX label 2) | gold activity.interactive 3 | Claude bilingual-unbuilt boxes 7 | [Word Find] Note to CS; [Drag and Drop] or [Wo; Note to CS – Please cr
+TRR107   embedded   0 (own table 0, row 0, right after an Activity-NX label 0) | gold activity.interactive 0 | Claude bilingual-unbuilt boxes 3 | 
+TRR108   embedded   0 (own table 0, row 0, right after an Activity-NX label 0) | gold activity.interactive 3 | Claude bilingual-unbuilt boxes 1 | 
+TRR109   embedded   0 (own table 0, row 0, right after an Activity-NX label 0) | gold activity.interactive 12 | Claude bilingual-unbuilt boxes 12 | 
+TRR110   embedded  15 (own table 15, row 0, right after an Activity-NX label 0) | gold activity.interactive 14 | Claude bilingual-unbuilt boxes 28 | Wordfind; Radio Quiz with audio; Drag and Drop with Aud; Drag and Drop / [Carou; Audio Drag and Drop no
+TRR111   embedded  18 (own table 18, row 0, right after an Activity-NX label 0) | gold activity.interactive 17 | Claude bilingual-unbuilt boxes 30 | Wordselect; Radio Quiz with audio; Drag and Drop; Radio Quiz; Word select
+TRR112   embedded   1 (own table 1, row 0, right after an Activity-NX label 0) | gold activity.interactive 21 | Claude bilingual-unbuilt boxes 9 | wordfind / Note to CS 
+TRR113   embedded   3 (own table 2, row 1, right after an Activity-NX label 0) | gold activity.interactive 12 | Claude bilingual-unbuilt boxes 12 | Flash cards with auto ; Memory Game; wordfind / Note to CS 
+TRR114   embedded   0 (own table 0, row 0, right after an Activity-NX label 0) | gold activity.interactive 11 | Claude bilingual-unbuilt boxes 2 | 
+TRR115   embedded   0 (own table 0, row 0, right after an Activity-NX label 0) | gold activity.interactive 5 | Claude bilingual-unbuilt boxes 0 | 
+TRR116   embedded  37 (own table 37, row 0, right after an Activity-NX label 35) | gold activity.interactive 41 | Claude bilingual-unbuilt boxes 65 | Drag and Drop; Flipcards; Drop scatter on map??; Memory Game; Audio added to Speech 
+TRR203   embedded   0 (own table 0, row 0, right after an Activity-NX label 0) | gold activity.interactive 6 | Claude bilingual-unbuilt boxes 0 | 
+TRR301   embedded   0 (own table 0, row 0, right after an Activity-NX label 0) | gold activity.interactive 13 | Claude bilingual-unbuilt boxes 0 | 
+TRR304   embedded   0 (own table 0, row 0, right after an Activity-NX label 0) | gold activity.interactive 3 | Claude bilingual-unbuilt boxes 2 | 
+TOTAL {"emb":106,"own":92,"row":14,"afterLabel":50,"gold":208,"claudeBox":217}

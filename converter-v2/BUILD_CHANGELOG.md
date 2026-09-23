@@ -1,5 +1,33 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (round 454, build 260620.25) — THE RED-WRAPPED `[Activity: Embedded]` MARKER: the MTK lesson's widget activity (instructions + data table) becomes the KB 07B `div.activity.interactive[number]` box in its `row > col-md-8` — the existing bilingual activity gather never fired because the writer types the marker in red — the loop's session 41 Round 2 (the r453 follow-up: the TRR lesson pages)
+
+### 1. WHAT CHANGED
+
+**Triangulation.** TRR103 lesson 1: WT table 28 (`Activity 1A:` label, `[H2] The vowels Ee`, the character image, body — an English | Te Reo table), table 29 (`🔴[RED TEXT] [Activity: Embedded] Word select [/RED TEXT]🔴`, `[H3] Activity Instructions` pair, body), table 30 (the 4×5 letter grid). Gold `TRR103_1.0`: the section prose as a body row, then `row > col-md-8 > div.activity.interactive[number=1.1] > row > col-12 > h3 pair + p>b pair + wordSelect`. Claude r453: the prose row, then TWO top-level `bilingual-unbuilt` table dumps.
+
+**Mechanism.** `ContentConverter` already gathers a bilingual ACTIVITY (`BilingualBuilder.isActivityMarker` → the marker table + the widget / data tables after it → `bilingualActivity`, the KB 07B form). `activityMarkerRe` (`^\s*\[\s*activity[:\s]*embedded\s*\]`) is anchored at the cell start — and every MTK cell opens with the red-run marker `🔴[RED TEXT]`. The gather was dead code on the real corpus.
+
+**Size** (`outputs/_s41_r2_embedded.cjs` / `.log`): 106 `[Activity: Embedded]` markers in 8 Bilingual WTs (TRR116 37, TRR111 18, TRR110 15, TRR102 8, TRR103 8, TRR106 3, TRR113 3, TRR112 1); gold `activity interactive` 208 family-wide; Claude `bilingual-unbuilt` boxes 217. The markers inside r135 keystone sections (TRR110 / 111 / 112 / 113) are already boxed through r451's bundle hand-off — the live change is TRR102 / 103 / 106 / 116.
+
+**The fix** (data `Emit_Templates.elements.dual_language.activity_marker_red` {enabled, wrap, number}; env **`ACTMARKRED_OFF`**, byte-identical OFF 3208 / 3208):
+- `isActivityMarker` strips the red-run markers before the marker test; `isRedOnlyActivityMarker` names the boxes opened ONLY that way, so every pre-r454 activity path is untouched;
+- such a box takes the KB 07D lesson wrapper `row > col-md-8 col-12` (`wrap`) and, with no id of its own, the KB 07B decimal number `<lesson>.<k>` — k = its position among the page's activity boxes, consecutive (Chris's D13-7) (`number`);
+- the marker row itself ("Word select", "Memory Game – please create cards …") ships as the writer's own note (`NotesAndComments.redFlag` kind `cs` — a gate-invisible `cv2-note`), never as a stray widget-type paragraph.
+- In-round repair: the first probe (the marker fix alone) built the box bare in `#body` with no number — 15 pages / 4 modules, ALL down (−30.2 pp-sum); the wrapper + number turned it to 14 up / 1 down.
+
+### 2. PROOF
+
+- In-memory A/B (`outputs/_r454_probe_run.sh`): OFF 3208 / 3208 identical; ON 15 pages / 4 modules (TRR102 / 103 / 106 / 116).
+- Pre-score (`_r454_prescore.py`): 14 up / 1 down, pp-sum +149.2.
+- Scoped regeneration of the 20 Bilingual modules + the 12-module spot-check (`_r454_regen.sh`): 0 truly stale, spot-check 12 / 12; `scoped_ship.sh --toggle ACTMARKRED_OFF --round 454 --commit`: **PASS** (containment 4 ⊆ 20; every gate held-or-improved, decomposition-proven).
+
+### 3. PROTECTED GATES
+
+- Skeleton SCAFFOLD **54.7079 → 54.7680 % @ 2487 (+0.0600pp)**; 15 movers, 14 up (TRR116 5.0 +18.4, 7.0 +17.8, 3.0 +17.6, 9.0 +15.0, 2.0 +14.1, 6.0 +13.2, 8.0 +11.1, 1.0 +10.9, 4.0 +2.1; TRR103 3.0 +11.1, 1.0 +10.2, 2.0 +4.3; TRR102 4.0 +5.0; TRR106 1.0 +0.8) / 1 down NAMED — **TRR102_1.0 −2.3** (RAW 25.2 → 24.8): the gold keeps the writer's letter ids (1A … 1E) where KB 07B prefers the decimal form (the r330 precedent — a named KB-over-gold override); ≥50 1549, ≥75 265, ≥90 23 held; RAW 38.676 → 38.726.
+- cs 15855 / 199 / 840 / 24, body 59 / 5 / 176 / 238, clean 2623 / 2668, leak 75 / 45 — all EXACT; every verifier ✓; selftests 50 PASS / GREEN; feature index GREEN; the miner 196 CANDIDATE (279,869 differing lines).
+- Plateau (§4): the PICK predicted a move and it delivered +0.0600pp — the window stays RESET (0 of 3). Ledger: scoped **#2** since the r452 FULL.
+
 ## 2026-09-24 (round 453, build 260620.24) — THE TABLE-CELL TITLE BAR OPENS THE DOCUMENT + THE MTK OVERVIEW-TABLE TABS: the TRR bilingual Writers Template's overview (and TRR116's first four lessons) was silently trimmed as front matter because its `[TITLE BAR]` sits in a table cell; it is now kept and composed into the KB's 5-tab bilingual module menu (KB 07A §4 + 07D §19.1), the course-code introduction unfolding as body — the loop's session 41 Round 1 (the loss ledger's lowest large family + the recognition lane)
 
 ### 1. WHAT CHANGED

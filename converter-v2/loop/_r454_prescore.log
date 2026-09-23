@@ -1,0 +1,17 @@
+TRR116   TRR116_3_0.html      <-> TRR116_3_0.html               25.3 ->  21.3  (-4.0)
+TRR116   TRR116_9_0.html      <-> TRR116_9_0.html               20.3 ->  17.0  (-3.2)
+TRR116   TRR116_6_0.html      <-> TRR116_6_0.html               20.6 ->  17.7  (-2.9)
+TRR116   TRR116_7_0.html      <-> TRR116_7_0.html               16.5 ->  13.8  (-2.8)
+TRR116   TRR116_8_0.html      <-> TRR116_8_0.html               19.0 ->  16.3  (-2.7)
+TRR116   TRR116_1_0.html      <-> TRR116_1_0.html               18.7 ->  16.2  (-2.5)
+TRR102   TRR102_4_0.html      <-> TRR102_4.0.html               28.4 ->  26.0  (-2.4)
+TRR116   TRR116_4_0.html      <-> TRR116_4_0.html               16.4 ->  14.6  (-1.8)
+TRR116   TRR116_2_0.html      <-> TRR116_2_0.html               15.4 ->  13.6  (-1.8)
+TRR103   TRR103_1_0.html      <-> TRR103_1.0.html               27.0 ->  25.9  (-1.2)
+TRR103   TRR103_3_0.html      <-> TRR103_3.0.html               28.7 ->  27.6  (-1.1)
+TRR116   TRR116_5_0.html      <-> TRR116_5_0.html               11.3 ->  10.2  (-1.1)
+TRR102   TRR102_1_0.html      <-> TRR102_1.0.html               41.4 ->  40.3  (-1.1)
+TRR106   TRR106_1_0.html      <-> TRR106_1.0.html               29.9 ->  28.9  (-1.1)
+TRR103   TRR103_2_0.html      <-> TRR103_2.0.html               26.0 ->  25.3  (-0.7)
+movers 15: 0 up / 15 down, pp-sum -30.2  ->  corpus mean ≈ -0.0121pp over 2487 pairs
+>=50 +0   >=75 +0

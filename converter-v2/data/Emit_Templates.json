@@ -198,6 +198,14 @@
 				"heading_lead": "<h5>{text}</h5>",
 				"checkbox_bullet": true
 			},
+			"activity_marker_red": {
+				"enabled": true,
+				"env": "ACTMARKRED_OFF",
+				"wrap": true,
+				"number": true,
+				"_doc_wrap_number": "A box opened by the red-wrapped marker (and only such a box — BilingualBuilder.isRedOnlyActivityMarker; every pre-r454 activity path is untouched) takes the KB 07D lesson wrapper row > col-md-8 col-12 (wrap) and, with no id of its own, the KB 07B decimal number '<lesson>.<k>' — k = its position among the page's activity boxes (number; consecutive, D13-7). The first probe without them: 15 pages / 4 modules all DOWN (the bare box sat directly in #body with no number).",
+				"_doc": "ROUND 454 (the autonomous loop's session 41 Round 2). BilingualBuilder.activityMarkerRe is anchored at the cell start, but the MTK writer types [Activity: Embedded] in the template's red style — the raw cell reads '🔴[RED TEXT] [Activity: Embedded] Word select [/RED TEXT]🔴' — so isActivityMarker never matched and the bilingual activity gather (ContentConverter → BilingualBuilder.bilingualActivity, KB 07B 'Activity Structure': div.activity.interactive[number] > row > col-12) was dead code: the instruction table and its data tables shipped as top-level bilingual-unbuilt dumps. Measured (outputs/_s41_r2_embedded.log): 106 markers in 8 Bilingual WTs (TRR116 37, TRR111 18, TRR110 15, TRR102 8, TRR103 8, TRR106 3, TRR113 3, TRR112 1); gold 'activity interactive' 208 family-wide. NOW: the red-run markers are stripped before the marker test, and the marker row ships as the writer's own note (NotesAndComments.redFlag kind cs — a gate-invisible cv2-note) instead of a stray widget-type paragraph. Env ACTMARKRED_OFF reverts (byte-identical)."
+			},
 			"overview_table_tabs": {
 				"enabled": true,
 				"env": "REOOVTABS_OFF",
