@@ -1,5 +1,24 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-23 (round 445, build 260620.16) — THE TWO-COLUMN COMPARISON TABLE: a table whose header is an opposite pair (pros / cons, advantages / disadvantages, similarities / differences, positive / negative, true / false …) ships `table table-bordered tableFixed` — borders kept, equal columns — Chris's decision D13-2 (Option C), the loop's session 39 Round 7
+
+### 1. WHAT CHANGED
+
+Round 347 built the comparison-table hook and shipped it OFF because the gold's contrast tables split four ways. Chris decided D13-2 **Option C — borders AND equal columns** on TRUE two-column comparison tables only, a named override of KB 05D l.239's "WITHOUT `table-bordered`" (the KB edit is owed under D13-1). `Emit_Templates.json` `elements.table.kb_class_form.comparison`: enabled, class **`table table-bordered tableFixed`**, env **`TBLCOMPARE_OFF`** (its own; `TBLBORDER_OFF` still drops the whole class form). **The lexicon was pruned** of the pairs D13-2 excludes — input / output, question / answer, English / te reo, English / Māori — and of the relations that are not opposites (cause / effect, causes / effects, problem / solution): 31 → 24 pairs. **The match is now WHOLE-WORD** (a plural `s` allowed) in `TablesAndGrids`: the r347 prefix test let `do` match "don't touch" and flagged XTAS102_3_0 (two "don't" columns) as a comparison — caught by this round's census and removed.
+
+### 2. PROOF
+
+- **The population, re-measured** (`outputs/_r445_goldclass.py` / `.log`): **19 tables on 19 pages / 19 modules** (the 16 Sept ≈ 13 predated both intakes) — Positive / Negative Impacts (AGH1003 / AGH1004), Similarities / Differences (AGH1005, SSFUN05), Advantages / Disadvantages (AGH1006, COM1002), Wants / Needs (ANZH104, SSFUN07), Past / Present (ANZH105), Present / Past tense (BLL254, ENGI303), Positive / Negative language (CEDT501, FRNO902, GENO901), Agrees / Disagrees (ENGC403), True / False (MXDB202, XGF9004), Benefits / Risks (OSSM501), Pros / Cons (XDLS908). The paired gold pages carry a two-column table on 5 of them — `table table-bordered` 4, plain `table` 1, never `tableFixed` — which is exactly the override the decision chose.
+- **In-memory A/B** (`_r445_probe_run.sh`): OFF (`TBLCOMPARE_OFF=1`) = **2666 / 2666 identical**; ON = the 19 pages. Pre-score: **1 mover — BLL254_1_0 50.4 → 49.6** (its gold keeps `table-bordered` without `tableFixed`).
+- **SCOPED regeneration** (`_r445_regen.sh`, the 19 + a 12-module spot-check, seed 445): 0 truly stale, `changed` = the 19, spot-check 12 / 12. `scoped_ship.sh`: skeleton −0.0003 / ≥50 −1 — both the one page above — then `_fastloop_diff.py --accept-named "skeleton SCAFFOLD mean,skeleton pages >=50%" --commit` (`_r445_fastloop_named.log`): **MOVED, ACCEPTED AS NAMED**; every other gate HELD EXACTLY. Ledger: scoped #1 since the r444 FULL.
+- **Post-ship** (`_r445_postship.sh`): `run_all_gates.sh` rc 0, every verifier RESULT ✓; skeleton delta vs r444 −0.0003pp, 1 mover, 0 outside the 19; 49 selftests GREEN; feature index GREEN; the miner 197.
+
+### 3. PROTECTED GATES
+
+- **Skeleton (PRIMARY)**: SCAFFOLD **54.7726 % @ 2476 pairs** (−0.0003pp NAMED), median 55.8; ≥50 **1542** (−1 NAMED, BLL254_1_0), ≥75 **261**, ≥90 **23**; RAW 38.708 %.
+- **compare_structure** 15657 / 199 / 796 / 24; **body_compare** 56 / 5 / 201 / 260; **structurally clean** 2613 / 2658; **leak** 75 / 45 — all EXACT; **tags 9557 / 9557**; every verifier RESULT ✓.
+- Plateau (§4): a decided override the PICK declared a tiny gate move — neither counts nor resets; **0 of 3**.
+
 ## 2026-09-23 (round 444, build 260620.15) — THE ACTIVITY NUMBERS ARE FULLY CONSECUTIVE: every lesson page's activity boxes are numbered in order (r369 switched ON) — Chris's decision D13-7 (Option C, chosen against the recommendation), shipped as THE FULL-REGENERATION BACKSTOP; a NAMED OVERRIDE of the pages whose gold keeps a writer's number — the loop's session 39 Round 6
 
 ### 1. WHAT CHANGED

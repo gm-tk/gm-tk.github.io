@@ -98,10 +98,14 @@ class TablesAndGrids {
 		if (cfOn) {
 			let cls = cf.default_class || "table table-bordered";
 			const cmp = cf.comparison;
-			if (cmp && cmp.enabled === true && Array.isArray(cmp.lexicon) && rows.length && rows.every((cells) => cells.length === 2)) {
+			// ROUND 445 (Chris's D13-2): the comparison form is ON with its own env (comparison.env = TBLCOMPARE_OFF)
+			const cmpOn = cmp && cmp.enabled === true && !(typeof process !== "undefined" && process.env && process.env[cmp.env || "TBLCOMPARE_OFF"]);
+			if (cmpOn && Array.isArray(cmp.lexicon) && rows.length && rows.every((cells) => cells.length === 2)) {
 				const fold = (c) => Utils.Fold(String(c ?? "").replace(/<[^>]+>/g, "").replace(/\[[^\]]*\]/g, "").replace(/\*/g, "")).replace(/[^\p{L}' ]+/gu, " ").trim();
 				const [a, b] = rows[0].map(fold);
-				if (cmp.lexicon.some(([x, y]) => (a.startsWith(x) && b.startsWith(y)) || (a.startsWith(y) && b.startsWith(x)))) cls = cmp.class || "table tableFixed";
+				// ROUND 445: a WHOLE-WORD match (plural 's' allowed) — the r347 prefix test let "do" match "don't touch" (XTAS102)
+				const w = (h, x) => h === x || h.startsWith(x + " ") || h === x + "s" || h.startsWith(x + "s ");
+				if (cmp.lexicon.some(([x, y]) => (w(a, x) && w(b, y)) || (w(a, y) && w(b, x)))) cls = cmp.class || "table tableFixed";
 			}
 			open = open.replace(/<table class="table">/, `<table class="${cls}">`);
 		}

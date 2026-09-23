@@ -1,0 +1,22 @@
+AGH1003: identical 8 / changed 1
+AGH1004: identical 6 / changed 1
+AGH1005: identical 8 / changed 1
+AGH1006: identical 9 / changed 1
+ANZH104: identical 7 / changed 1
+ANZH105: identical 7 / changed 1
+BLL254: identical 2 / changed 1
+CEDT501: identical 14 / changed 1
+COM1002: identical 8 / changed 1
+ENGC403: identical 15 / changed 1
+ENGI303: identical 6 / changed 1
+FRNO902: identical 8 / changed 1
+GENO901: identical 22 / changed 1
+MXDB202: identical 5 / changed 1
+OSSM501: identical 5 / changed 1
+SSFUN05: identical 0 / changed 1
+SSFUN07: identical 4 / changed 1
+XDLS908: identical 8 / changed 1
+XGF9004: identical 17 / changed 1
+
+TOTAL: identical 159 / changed 19 / missing 0 over 19 modules
+CHANGED: AGH1003/AGH1003_4_0.html AGH1004/AGH1004_5_0.html AGH1005/AGH1005_1_0.html AGH1006/AGH1006_8_0.html ANZH104/ANZH104_1_0.html ANZH105/ANZH105_2_0.html BLL254/BLL254_1_0.html CEDT501/CEDT501_6_1.html COM1002/COM1002_3_0.html ENGC403/ENGC403_2_0.html ENGI303/ENGI303_6_0.html FRNO902/FRNO902_2_0.html GENO901/GENO901_4_0.html MXDB202/MXDB202_1_0.html OSSM501/OSSM501_1_0.html SSFUN05/SSFUN05_0_0.html SSFUN07/SSFUN07_1_0.html XDLS908/XDLS908_5_0.html XGF9004/XGF9004_14_0.html

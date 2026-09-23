@@ -1,0 +1,7 @@
+OLD pairs 2476  SCAFFOLD 54.7729%  RAW 38.708%  >=50 1543  >=75 261  >=90 23
+NEW pairs 2476  SCAFFOLD 54.7726%  RAW 38.708%  >=50 1542  >=75 261  >=90 23
+delta SCAFFOLD -0.0003pp  RAW -0.000pp  >=50 -1  >=75 +0  >=90 +0
+movers 1 (up 0 / down 1), pp-sum -0.8
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  BLL254     BLL254_1_0.html            50.4 ->   49.6  (-0.8)

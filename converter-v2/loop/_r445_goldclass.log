@@ -1,0 +1,20 @@
+AGH1003/AGH1003_4_0.html     header ['Positive Impacts', 'Negative Impacts'] | gold 2-col tables: —
+AGH1004/AGH1004_5_0.html     header ['Positive Impact', 'Negative Impact'] | gold 2-col tables: —
+AGH1005/AGH1005_1_0.html     header ['Similarities', 'Differences'] | gold 2-col tables: —
+AGH1006/AGH1006_8_0.html     header ['Advantages', 'Disadvantages'] | gold 2-col tables: ['table']
+ANZH104/ANZH104_1_0.html     header ['Wants', 'Needs'] | gold 2-col tables: —
+ANZH105/ANZH105_2_0.html     header ['Past', 'Present'] | gold 2-col tables: —
+BLL254/BLL254_1_0.html       header ['Present tense', 'Past tense'] | gold 2-col tables: ['table table-bordered']
+CEDT501/CEDT501_6_1.html     header ['Positive language', 'Negative language'] | gold 2-col tables: —
+COM1002/COM1002_3_0.html     header ['ADVANTAGES', 'DISADVANTAGES'] | gold 2-col tables: —
+ENGC403/ENGC403_2_0.html     header ['[H3] [Q1]  Agrees with t', '[H3][Q2]  Disagrees with'] | gold 2-col tables: —
+ENGI303/ENGI303_6_0.html     header ['Present tense', 'Past tense  (possible an'] | gold 2-col tables: ['table table-bordered']
+FRNO902/FRNO902_2_0.html     header ['[H4]  Positive', '[H4]  Negative'] | gold 2-col tables: ['table table-bordered', 'table table-bordered']
+GENO901/GENO901_4_0.html     header ['Positive 😊', 'Negative ☹'] | gold 2-col tables: —
+MXDB202/MXDB202_1_0.html     header ['True', 'False'] | gold 2-col tables: —
+OSSM501/OSSM501_1_0.html     header ['[H4]  Benefits', '[H4]  Risks'] | gold 2-col tables: —
+SSFUN05/SSFUN05_0_0.html     header ['Similarities', 'Differences'] | gold 2-col tables: —
+SSFUN07/SSFUN07_1_0.html     header ['NEEDS', 'WANTS'] | gold 2-col tables: —
+XDLS908/XDLS908_5_0.html     header ['Pros ➕', 'Cons ➖'] | gold 2-col tables: —
+XGF9004/XGF9004_14_0.html    header ['[H3]  True', '[H3]  False'] | gold 2-col tables: —
+gold two-column table classes on these pages: {'table': 1, 'table table-bordered': 4}
