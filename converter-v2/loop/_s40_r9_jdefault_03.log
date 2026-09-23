@@ -1,0 +1,50 @@
+JDEF	SCES201	-1	button|Button] [download journal button plus instructions|-|<div class="button downloadBut	[Button] [download journal button plus instructions]		:
+JDEF	SSCI104	-1	button|Go to your journal|-|<div class="button">{label}</d	[choice buttons x2]		black:**Task 1:** Paste your screenshots of your two map pop-ups in your journal so your kaiako can read it too. Explain why y
+JDEF	SSCI104	-1	button|Go to your journal|URL|<div class="button">{label}</d	[embed image button]	https://drive.google.com/drive/folders/1af3DRJOfQ4wf4de8u7u_GxfrYjTJk_j9?usp=drive_link	tag:[go to journal]
+JDEF	SSCI104	-1	button|Go to website|URL|<a href="{url}" target="_blank	[activity button]		table:
+JDEF	SSFUN02	-1	button|Go to your journal|-|<div class="button">{label}</d	[Add button]		tag:Quiz button
+JDEF	SSOG105	-1	audio button||URL|<div class="button audioButton	[Audio button]	https://journalsurf.co.nz/uploads/Nian-the-new-year-monster-audio.mp3	tag:[Activity 5A]
+JDEF	TEDC401	-1	button|Go to your journal|-|<div class="button">{label}</d	[Alert with Buttons linking to each tool below]		table:
+JDEF	TEDC402	-1	button|Go to your journal|-|<div class="button">{label}</d	[clickdrops with button PDF modals]		tag:[H3]
+JDEF	TEFUN05	-1	button|Go to your journal|-|<div class="button">{label}</d	[audio, video, upload button]		tag:[end quiz]
+JDEF	TWHA905	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Button:	https://www.kiwiharvest.org.nz/	tag:]
+JDEF	WJFUN205	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert links/buttons to the individual sections with an image, something like this or use image links that have already		phasebreak:
+JDEF	WJFUN208	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert links/buttons to the 2 tiles as per the following].		phasebreak:
+JDEF	WJFUN211	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Insert links/buttons to the 2 tiles as per the following].		table:
+JDEF	WJFUN211	-1	button|Go to your journal|-|<div class="button">{label}</d	[End activity] [Reset button]		tag:[Body]
+JDEF	WJFUN304	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert links/buttons to the 4 tiles as per global parameters, with the following wording on the tiles; Compound–Complex		phasebreak:
+JDEF	WJFUN304	-1	button|Go to your journal|-|<div class="button">{label}</d	[Check button] [Reset button]		tag:[end activity]
+JDEF	WJFUN304	-1	button|Go to your journal|-|<div class="button">{label}</d	[Check button] [Reset button]		tag:[End activity]
+JDEF	WJFUN304	-1	button|Go to your journal|-|<div class="button">{label}</d	[Check button] [Reset button]		tag:[End activity]
+JDEF	WJFUN305	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert links/buttons to the 2 tiles as per the following]		black:Tab 1: Audience, Purpose & Reaction Tab 2: Form, Genre and Style
+JDEF	WJFUN306	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert links/buttons to the 2 tiles as per the following]		black:Tab 1: Audience and purpose Tab 2: Choosing modes for effect
+JDEF	WJFUN307	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert links/buttons to the 2 tiles as per the following]		tag:[Tab 1]
+JDEF	WJFUN308	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert links/buttons to the 2 tiles as per the following]		black:Choosing words carefully Language features for impact
+JDEF	XDLS902	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Button link:	https://ihc-standtall.com/	tag:] Stand Tall Budgetting Game
+JDEF	XDLS902	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Button link:	https://www.twinkl.co.nz/resource/cfe-c-021-needs-and-wants-activity	tag:takes learner to this or similar activity sheet] Twinkle Needs Vs Wants Activity Sheet
+JDEF	XDLS908	-1	button|Go to your journal|-|<div class="button">{label}</d	[3 buttons - film, camera and microphone]		tag:[End dropbox Activities]
+JDEF	XFUN02	-1	button|insert download|-|<div class="button downloadBut	[insert download button]		tag:[Activity 3A]
+JDEF	XGF9001	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert button to EXPlore once it’s available]		tag:[body]
+JDEF	XGF9002	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Button for external link]	https://www.giftedchildren.org.nz/	tag:[Flipcard 3]
+JDEF	XGF9002	-1	button|Go to your journal|-|<div class="button">{label}</d	[Buttons for external links]		tag:[Button 1] [H3]
+JDEF	XGF9002	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert button to websites]		tag:[Button 1] [H3]
+JDEF	XGF9002	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert buttons to websites – across the page]		tag:[Button 1]
+JDEF	XGF9002	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert buttons to websites]		tag:[Button 1]
+JDEF	XGF9002	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert button to website]		tag:[Button 1]
+JDEF	XGF9002	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert buttons to website]		tag:[Button 1]
+JDEF	XGF9002	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert buttons to websites]		tag:[Button 1] [H3]
+JDEF	XGF9002	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert button to website]		tag:[Button 1]
+JDEF	XGF9002	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert button to website]		tag:[Button 1]
+JDEF	XGF9003	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Button] [Insert link to website]	https://pausebreathesmile.nz/free-resources/	black:• Take regular breaks to refresh your mind and maintain focus over longer periods of time.
+JDEF	XGF9004	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Go to journal.]		tag:[Tab 3] [Image]
+JDEF	XLP01	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Button:	https://monarchreader.com/	tag:]
+JDEF	XLP05	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		tag:Link to pdf
+JDEF	XLP05	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		tag:Link to pdf
+JDEF	XLP05	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		tag:Link to pdf
+JDEF	XLP05	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		tag:Link to pdf
+JDEF	XMES103	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Button:	https://earth.google.com/	tag:]
+JDEF	XMES203	-1	button|Go to website|URL|<a href="{url}" target="_blank	[insert button]	https://earth.google.com/web	tag:[Activity 4A]
+JDEF	XWHA02	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		tag:[Activity]
+JDEF	XWHA02	-1	button|Go to your journal|-|<div class="button">{label}</d	[button]		:
+JDEF	XWHA02	-1	button|Go to your journal|-|<div class="button">{label}</d	[button]		:
+JDEF	XWHA02	-1	button|Go to your journal|-|<div class="button">{label}</d	[button]		:

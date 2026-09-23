@@ -1,0 +1,32 @@
+journal div.button by (pure label, where):
+  pure=True  free                         89
+  pure=True  activity                     81
+  pure=False activity                     42
+  pure=False free                         20
+pure by where: {'activity': 81, 'free': 89}
+pure: 170 sites / 65 modules
+  HIS1005: {'activity': 7, 'free': 5}
+  HIS1007: {'activity': 6, 'free': 4}
+  XGF9002: {'free': 9}
+  MXEX401: {'activity': 8}
+  ENGI203: {'activity': 1, 'free': 6}
+  MXFL401: {'activity': 7}
+  SSOG103: {'activity': 5, 'free': 2}
+  HIS1006: {'activity': 6}
+  CEDT104: {'activity': 4, 'free': 1}
+  CEDW501: {'free': 5}
+  ENGR102: {'free': 5}
+  HIS1008: {'activity': 5}
+  MXFU401: {'activity': 4, 'free': 1}
+  WJFUN304: {'free': 4}
+  DAN1004: {'free': 4}
+  XLP05: {'free': 4}
+  XWHA02: {'free': 4}
+  GER1002: {'activity': 3}
+  MXFL202: {'activity': 3}
+  PHE1003: {'activity': 1, 'free': 2}
+  CEDO502: {'free': 1, 'activity': 1}
+  CEDT501: {'free': 2}
+  ENGI303: {'activity': 2}
+  GEO1006: {'activity': 1, 'free': 1}
+  MXDB301: {'free': 2}

@@ -8753,6 +8753,25 @@ class ContentConverter {
 					.replace(/\*/g, "").replace(/\s+/g, " ").trim();
 				if (dlLabel) { label = dlLabel; form = dlCfg.form; }
 			}
+			// ROUND 452 (Chris's D13-5 — never add a journal button the writer did not ask for): a
+			// bracket keyed `button` whose words are a writer INSTRUCTION ("[Please embed the video
+			// with a play button and image]", "[Check button] [Reset button]") fell to the journal
+			// default. With no URL, the label still that default, and the bracket neither a bare
+			// button tag nor a journal request, the writer's words ship as their Writers Note and no
+			// button is invented. Data buttons.journal_default_guard; env JDEFGUARD_OFF.
+			const jdg = tpl.buttons.journal_default_guard;
+			if (labelDefaulted && !url && key === "button" && label === tpl.buttons.journal_label_default
+				&& jdg && jdg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.JDEFGUARD_OFF)) {
+				const words = String(it.text ?? "").replace(/\*/g, "").replace(/\]\s*\[/g, "; ")
+					.replace(/[\[\]]/g, " ").replace(/\s+/g, " ").trim();
+				if (words && !new RegExp(jdg.bare_match, "i").test(words)
+					&& !new RegExp(jdg.keep_match, "i").test(words)) {
+					out.push(NotesAndComments.redFlag(words, run, "cs"));
+					if (trailing) out.push(...ListsAndRuns.renderBlackText(trailing, run));
+					return out;
+				}
+			}
 			// ROUND 338: an EXTERNAL destination is the KB's externalButton (05D — Internal
 			// `div.button`, External `div.externalButton`; the gold follows it by host), and a
 			// label that fell to the journal default reads "Go to website" / "Go to video"

@@ -1,0 +1,32 @@
+ANZH401: identical 14 / changed 1
+BLL133: identical 3 / changed 1
+CEDO501: identical 16 / changed 1
+CEDT104: identical 1 / changed 1
+CEDT501: identical 15 / changed 1
+CEDW501: identical 13 / changed 1
+ENGC206: identical 8 / changed 1
+ENGS405: identical 1 / changed 1
+GENO901: identical 23 / changed 1
+GEO1006: identical 4 / changed 1
+GER1002: identical 3 / changed 1
+HIS1005: identical 10 / changed 6
+HIS1006: identical 12 / changed 4
+HIS1007: identical 3 / changed 5
+HIS1008: identical 10 / changed 3
+MUS1006: identical 4 / changed 1
+SSCI104: identical 7 / changed 1
+TEDC401: identical 8 / changed 1
+TEDC402: identical 11 / changed 1
+TEFUN05: identical 1 / changed 1
+WJFUN205: identical 1 / changed 1
+WJFUN208: identical 1 / changed 1
+WJFUN211: identical 1 / changed 1
+WJFUN304: identical 1 / changed 1
+WJFUN305: identical 1 / changed 1
+WJFUN306: identical 1 / changed 1
+WJFUN307: identical 1 / changed 1
+WJFUN308: identical 1 / changed 1
+XDLS908: identical 9 / changed 1
+
+TOTAL: identical 184 / changed 43 / missing 0 over 29 modules
+CHANGED: ANZH401/ANZH401_4_0.html BLL133/BLL133_2_0.html CEDO501/CEDO501_5_1.html CEDT104/CEDT104_0_0.html CEDT501/CEDT501_8_0.html CEDW501/CEDW501_3_0.html ENGC206/ENGC206_1_0.html ENGS405/ENGS405_0_0.html GENO901/GENO901_5_0.html GEO1006/GEO1006_3_0.html GER1002/GER1002_2_0.html HIS1005/HIS1005_4_0.html HIS1005/HIS1005_8_0.html HIS1005/HIS1005_9_0.html HIS1005/HIS1005_9_1.html HIS1005/HIS1005_10_0.html HIS1005/HIS1005_10_1.html HIS1006/HIS1006_1_0.html HIS1006/HIS1006_2_0.html HIS1006/HIS1006_2_1.html HIS1006/HIS1006_11_0.html HIS1007/HIS1007_2_0.html HIS1007/HIS1007_3_0.html HIS1007/HIS1007_3_1.html HIS1007/HIS1007_4_0.html HIS1007/HIS1007_4_1.html HIS1008/HIS1008_1_0.html HIS1008/HIS1008_2_0.html HIS1008/HIS1008_2_1.html MUS1006/MUS1006_3_0.html SSCI104/SSCI104_2_0.html TEDC401/TEDC401_4_0.html TEDC402/TEDC402_5_0.html TEFUN05/TEFUN05_0_0.html WJFUN205/WJFUN205_0_0.html WJFUN208/WJFUN208_0_0.html WJFUN211/WJFUN211_0_0.html WJFUN304/WJFUN304_0_0.html WJFUN305/WJFUN305_0_0.html WJFUN306/WJFUN306_0_0.html WJFUN307/WJFUN307_0_0.html WJFUN308/WJFUN308_0_0.html XDLS908/XDLS908_4_0.html

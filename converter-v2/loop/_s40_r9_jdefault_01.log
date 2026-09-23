@@ -1,0 +1,56 @@
+JDEF	CEDK401	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Button] [Interactive Link	https://www.stuff.co.nz/business/farming/300350351/whos-eating-new-zealand	black:You can see how sending our foods overseas has a huge
+JDEF	CEDO501	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Add visuals like this buttons below please. I have created these just like the website.]		table:
+JDEF	CEDO501	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Create button like this and include the link here.]		black:https://www.employment.govt.nz/pay-and-hours/pay-and-wages/minimum-wage/minimum-wage-rates-and-types
+JDEF	CEDO501	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Create a button like this and include the link here.]		black:https://www.workandincome.govt.nz/eligibility/seniors/superannuation/how-much-you-can-get.html
+JDEF	CEDO501	-1	button|Go to your journal|-|<div class="button">{label}</d	[Create and annotate one like this but for the scholarship example. Button below is a screenshot. Please create one too.		tag:[Image is a screenshot from the site.]
+JDEF	CEDO502	-1	button|Go to your journal|-|<div class="button">{label}</d	[button]		:
+JDEF	CEDO502	-1	button|Go to your journal|URL|<a href="{url}" target="_blank	[Button]		black:Āu Whiringa - More Decisions - Lesson 7 - Response sheet.docx
+JDEF	CEDT104	-1	audio button||-|<div class="button audioButton	[Audio button]		black:🗣️ Speak the word
+JDEF	CEDT104	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Please create a poi activity like where the ākonga can earn a star once all boxes are ticked, and a button for hearing 		black:**Poi** **See it:**
+JDEF	CEDT104	-1	button|Go to your journal|URL|<div class="button">{label}</d	[Button]		black:**Say it:** ✅ Tick box – I did it. **Māui** **See it:**
+JDEF	CEDT104	-1	button|Go to your journal|URL|<div class="button">{label}</d	[Button]		black:**Say it:** ✅ Tick box – I did it. **Mātau** **See it:**
+JDEF	CEDT104	-1	button|Go to your journal|URL|<div class="button">{label}</d	[Button]		black:**Say it:** ✅ Tick box – I did it. ⭐️⭐️Ka Pai. (Well done.) ⭐️⭐️ You've learned all the poi words. Ready for the next ac
+JDEF	CEDT104	-1	button|Go to your journal|URL|<div class="button">{label}</d	[Blue Button]		tag:[Tap, click, click]
+JDEF	CEDT104	-1	button|Go to your journal|-|<div class="button">{label}</d	[ Record button. If this is not possible, this item can be removed]		black:**⭐️⭐️⭐️Ka māu te wehi. Awesome. ⭐️⭐️⭐️**
+JDEF	CEDT501	-1	button|Go to your journal|-|<div class="button">{label}</d	[Hyperlink to PDF lesson booklets as there is a PDF provision for this module. There will be TWO buttons here one for th		tag:[H2]
+JDEF	CEDT501	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert button – Include hyperlink to Lesson 5 ‘What’s gets in the way’]		tag:[body]
+JDEF	CEDW501	-1	button|Go to your journal|-|<div class="button">{label}</d	[If possible, can the buttons be updated to align with the imagery used early in the module?]		tag:[H3]
+JDEF	CEDW501	-1	button|Go to your journal|URL|<a href="{url}" target="_blank	[Button]		black:Te Tāute Tāngata - Whakataukī tracker (Lesson 7).docx
+JDEF	CEDW501	-1	button|Go to your journal|URL|<a href="{url}" target="_blank	[Button]		black:Te Tāute Tāngata - mood and emotion tracker (Lesson 7) (1) (1).docx
+JDEF	CEDW501	-1	button|Go to your journal|URL|<a href="{url}" target="_blank	[Button]		black:Te Tāute Tāngata - social wellbeing tracker (Lesson 7).docx
+JDEF	CEDW501	-1	button|Go to your journal|URL|<a href="{url}" target="_blank	[Button]		black:Te Tāute Tāngata - emoji log (Lesson 7).docx
+JDEF	ENFUN01	-1	audio button||URL|<div class="button audioButton	[Audio button- can the audio come when the image is clicked]	https://pixabay.com/sound-effects/applause-cheer-236786/	tag:[H2]
+JDEF	ENFUN02	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Buttons]		table:
+JDEF	ENFUN02	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Buttons]		table:
+JDEF	ENG1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button – ENG1005 Working towards]		tag:[important]
+JDEF	ENGC202	-1	button|Go to your journal|URL|<div class="button">{label}</d	[go to journal]	https://docs.google.com/document/d/17atBvSd0GIJClm11X8JARe6YkdBB2pPB9FfqCqjwJ-o/edit?usp=sharing	:
+JDEF	ENGC206	-1	button|Go to your journal|-|<div class="button">{label}</d	[Check button] [Reset button]		tag:[Activity 1D]
+JDEF	ENGC302	-1	button|Go to your journal|URL|<div class="button">{label}</d	[button link]	https://drive.google.com/file/d/1YAnPBcLNCp-iw_bA100p5RbBN9yplqOC/view?usp=drive_link	tag:[button]
+JDEF	ENGI103	-1	button|Go to your journal|URL|<div class="button">{label}</d	[go to journal]	https://docs.google.com/document/d/1GRiYePE8tpLqd07mmP7V3REqhyEvc_GBt28WolL8wlY/edit	:
+JDEF	ENGI303	-1	button|Go to your journal|URL|<div class="button">{label}</d	[go to journal]	https://docs.google.com/document/d/117I4Wk2J1_KGe8bfe69rtwF76ecHthaLUN7JZpXE04E/edit?usp=sharing	:
+JDEF	ENGI303	-1	button|Go to your journal|URL|<div class="button">{label}</d	[go to journal]	https://docs.google.com/document/d/117I4Wk2J1_KGe8bfe69rtwF76ecHthaLUN7JZpXE04E/edit?tab=t.0	:
+JDEF	ENGI400	-1	button|add learning journal download|-|<div class="button downloadBut	[add learning journal download button]		tag:[H2]
+JDEF	ENGI400	-1	button|Go to website|URL|<a href="{url}" target="_blank	[add go to journal button]		tag:[H2]
+JDEF	ENGI401	-1	button|Go to your journal|URL|<div class="button">{label}</d	[go to journal]	https://docs.google.com/document/d/1lJ8DF7Ax2525IjzJfpnkiBs06-QPskhNJDFPnHcX6vU/edit?usp=sharing	:
+JDEF	ENGJ402	-1	button|Go to your journal|URL|<div class="button">{label}</d	[Learning Journal Button that links to journal one for this module]	https://docs.google.com/document/d/1LEsqs5wbQydpqr3tmZAgw-ZlzNUq_WS58BOp-Wa0oNg/edit?usp=sharing	tag:[Body]
+JDEF	ENGR102	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		:
+JDEF	ENGR102	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		:
+JDEF	ENGR102	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		:
+JDEF	ENGR102	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		:
+JDEF	ENGR102	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		:
+JDEF	ENGR201	-1	audio button||URL|<div class="button audioButton	[audio button]	https://drive.google.com/file/d/19kihUfrjJntPB9yZe15HA-fkaZrsYiB6/view?usp=drive_link	tag:[Carousel] Insert the text page by page, remove back page
+JDEF	ENGR201	-1	audio button||URL|<div class="button audioButton	[audio button]	https://drive.google.com/file/d/1qrikcLXJLDr6fl7ttosMz_OV8wIay5yF/view?usp=drive_link	tag:[carousel]
+JDEF	ENGR201	-1	audio button||URL|<div class="button audioButton	[audio button]	https://drive.google.com/file/d/1-QNWax9N3cUUEWP0IHWsm6wxGR1jOVN9/view?usp=drive_link	tag:[carousel]
+JDEF	ENGR301	-1	button|Go to your journal|URL|<div class="button">{label}</d	[go to journal]	https://docs.google.com/document/d/1_1NhIzkacRbYxrGPXvG0aR_ezfdTmYmK4N3p5rIC1fo/edit	:
+JDEF	ENGS201	-1	button|Go to your journal|URL|<a href="{url}" target="_blank	[image buttons]		table:
+JDEF	ENGS302	-1	button|Download learning journal|-|<div class="button downloadBut	[Download learning journal button]		tag:[Activity ends]
+JDEF	ENGS404	-1	button|insert button for response sheet download|URL|<div class="button downloadBut	[insert button for response sheet download		black:ENGS404 Response Sheet lesson 9.docx Then share your work back with your kaiako using the dropbox button.
+JDEF	ENGS405	-1	button|Go to your journal|-|<div class="button">{label}</d	[insert images with title buttons directly underneath each to link to relevant sections]		table:
+JDEF	EXBP901	-1	button|Go to your journal|URL|<div class="button">{label}</d	[Add button]		tag:[video – create video using this script]
+JDEF	FRFUN08	-1	audio button||URL|<div class="button audioButton	[Audio button = Merged item 1 ] -	https://tekura.desire2learn.com/d2l/le/content/11933/viewContent/119609/View?ou=11933	black:Je veux dire ….( I want to say)
+JDEF	FRFUN08	-1	audio button||-|<div class="button audioButton	[Please create an audiobutton next to each word for the audiovisual item to be available from. ]		black:Merci
+JDEF	GENO901	-1	audio button||-|<div class="button audioButton	[Audio button]		tag:[Repeat from Lesson 3 introduction image AV Character #3 / audio Voice 3 – Lina Hoffmann – German host sister]
+JDEF	GENO901	-1	button|Go to your journal|-|<div class="button">{label}</d	[Keep the multiple-choice question below the video “Tick the correct way to say where you come from” and keep the check 		tag:[H2]
+JDEF	GEO1005	-1	button|Go to website|URL|<a href="{url}" target="_blank	[create Go to website button]	https://kahurumanu.co.nz/atlas	tag:[Embed Activity]
+JDEF	GEO1006	-1	button|Go to your journal|-|<div class="button">{label}</d	[Add Buttons check answers reset ]		tag:[embed activity 1B]
+JDEF	GEO1006	-1	button|Go to your journal|-|<div class="button">{label}</d	[words in red are the correct answers. Insert buttons check answers, reset]		tag:[H3]

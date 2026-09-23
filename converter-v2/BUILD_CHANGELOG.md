@@ -1,5 +1,28 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (round 452, build 260620.23) — A WRITER INSTRUCTION THAT MENTIONS A BUTTON IS NOT A JOURNAL BUTTON: "[Please embed the video with a play button and image]", "[Check button] [Reset button]", "[Insert links/buttons to the 2 tiles …]" no longer ship an invented "Go to your journal" button — the writer's words ship as their Writers Note — Chris's decision D13-5 ("never add one the writer didn't ask for"), the loop's session 40 Round 9 (the r447 follow-up re-measured)
+
+### 1. WHAT CHANGED
+
+The r447 follow-up ("journal buttons inside a widget bundle keep the green button") re-measured (`outputs/_s40_r9_journalbtn.py`): **0** green journal buttons sit inside a hand-off box or a built widget; 170 pure-label green `div.button`s sit free / in activity boxes on 65 modules. A recorder (`outputs/_s40_r9_jdefault.cjs` — a per-process patched ContentConverter copy, the r278 technique) logged every button that SHIPS with a label the writer never typed: **178 / 82 modules, 117 reading "Go to your journal"**. The tag normaliser keys any bracket containing "button" as a `button` ELEMENT — including a writer's instruction ("please embed …" parses as a tag, cue true, instruction-dominant true) — so its label is empty and falls to `buttons.journal_label_default`: a blank-href "Go to your journal" plus a To Do to wire it to the learning journal.
+
+- **Now:** at the button seam — after the r239 / r447 journal forms and the r96 download rule, before the r338 external step — when the label is still the journal default, there is no URL, and the bracket's words (brackets and `*` removed; `] [` joined with "; ") match neither `bare_match` (a PREFIX: the bracket OPENS as a button request — `[Button]`, `[Add button]`, `[Button - click here - link to come]`, `[Insert button to website]`, `[Create check button]`; the default stays, AGH1003's gold ships "Go to journal" for a bare `[Button]`) nor `keep_match` (`journal`), the writer's words ship as their **Writers Note** (`NotesAndComments.redFlag(…, "cs")`, the form "[Please embed the story …]" already takes) and no button is emitted.
+- Data `Emit_Templates.buttons.journal_default_guard` {enabled, bare_match, keep_match}; env **`JDEFGUARD_OFF`** (byte-identical OFF).
+- Triangulation: HIS1005 10A (WT "[please embed this video with a play button and image]" + "[video link]"; gold the video only; Claude the invented button + the video), ENGC206 1.0 ("[Check button] [Reset button]" under a drag-and-drop; gold the built dragAndDrop with its own controls), WJFUN208 0.0 ("[Insert links/buttons to the 2 tiles …]"; gold activityButtons / tile links). The first draft's whole-bracket `bare_match` also took PHE1003's "[Button - click here - link to come]" (a real button request the gold ships; −1.8 on its page) — the prefix form keeps it.
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules (`outputs/_r452_probe_run.sh`, the r448 harness — pages AND worklists): **OFF 3208 / 3208 identical**; **ON 43 files / 29 modules**.
+- Pre-score (`_r452_prescore.py`): 40 movers, 35 up / 5 down, pp-sum +19.1, ≥50 +2.
+- Scoped regeneration of the 29 + the 12-module spot-check (`_r452_regen.sh`); `_content_manifest.py fresh` 0 truly stale; spot-check 12 / 12 identical; the disk = the probe's ON files 227 / 227.
+- `scoped_ship.sh --toggle JDEFGUARD_OFF --round 452`: PASS (decomposition-proven).
+
+### 3. PROTECTED GATES
+
+- Skeleton SCAFFOLD **54.7407 → 54.7484 % @ 2477 (+0.0077pp; 40 movers, 35 up / 5 down, 0 outside the affected set)**; **≥50 1542 → 1544**, ≥75 260, ≥90 23; RAW 38.644 → 38.649. The five dips are NAMED — HIS1006_11_0 −0.5, HIS1007_4_1 −0.4, HIS1005_10_1 −0.3, HIS1008_1_0 −0.2, HIS1008_2_0 −0.2: on each the invented button had paired with one of the HIS golds' own green "Go to journal" buttons, while the writer's bracket at that spot is a video play-button instruction (D13-5 renders a requested journal button as `h4.goJournal`, so a green gold button is never the target).
+- cs 15657 / 199 / 796 / 24, body 58 / 5 / 176 / 237, clean 2613 / 2658, leak 75 / 45 — all EXACT; every verifier ✓; selftests 50 PASS / GREEN, 0 FAIL; the miner 195 CANDIDATE (differing lines 278,074 → 277,989).
+- Plateau (§4): the PICK predicted a move and it delivered +0.0077pp, under the 0.02pp line — counted as NOT moving (conservative; ≥50 +2 noted): **2 of 3**. Ledger: scoped **#7** since the r444 FULL (1 of headroom — the next ship should be the FULL backstop).
+
 ## 2026-09-24 (round 451, build 260620.22) — THE BILINGUAL SECTION'S WIDGET BUNDLE TAKES THE STANDARD HAND-OFF BOX: a widget inside a Te Reo keystone section no longer ships as an empty table — it gets the same hand-off box (banner, the `data-cv2-index` its `_interactives.txt` entry names, every member) as every other un-built widget — the loop's session 40 Round 8 (the dashboard lane; the body gate's "empty widget box" row split)
 
 ### 1. WHAT CHANGED

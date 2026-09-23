@@ -1,0 +1,54 @@
+JDEF	GER1002	-1	button|Go to your journal|-|<div class="button">{label}</d	[create check button]		tag:[body]
+JDEF	GER1002	-1	button|Go to your journal|-|<div class="button">{label}</d	[create a check your answers button]		tag:[content]
+JDEF	GER1002	-1	button|insert from merged item 5 Vocabulary List under that track – just make it a download button, not the text window currently there; title:|-|<div class="button downloadBut	[insert from merged item 5 Vocabulary List under that track – just make it a download button, not the text window curren		tag:Title:
+JDEF	GER1002	-1	button|insert the SECOND table from merged item 6, above download|URL|<div class="button downloadBut	[insert the SECOND table from merged item 6, above download button	https://tekura.desire2learn.com/d2l/le/content/12109/viewContent/124503/View	tag:]
+JDEF	GER1002	-1	button|Go to your journal|-|<div class="button">{label}</d	[create drop-box button]		:
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[this may have to be a button to the external link because the graph is on the Te Ara website]		black:Source: Claudia Orange, ‘Te Tiriti o Waitangi – The Treaty of Waitangi – Dishonouring te Tiriti – 1860 to 1880,’ *Te Ara
+JDEF	HIS1005	-1	audio button||-|<div class="button audioButton	[Interactive –is it possible to have a text to voice function? In which case add an audio button as an option]		black:Auckland Nov. 8th, 1847 Oh Madam, We salute you, our love is great to you, we have not forgotten your words nor your kin
+JDEF	HIS1005	-1	audio button||-|<div class="button audioButton	[Interactive –is it possible to have a text to voice function? In which case add an audio button as an option]		black:From Earl Grey to Governor Grey. Downing Street May 3rd, 1848. Sir, You will inform Te Wherowhero and the other chiefs o
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[embed this video with an image and play button]		tag:[video link]
+JDEF	HIS1005	-1	button|Go to website|URL|<a href="{url}" target="_blank	[embed this article link with this button]		tag:[link]
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[insert play button and image of this video]		tag:[video link]
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed image of the first scene with a play button]		tag:[video link]
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with an image and play button]		tag:[video link]
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with an image and play button]		tag:[video link]
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[embed the video with a play button and image]		tag:[video link]
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed this video with a play button and image]		tag:[video link]
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with a play button and image]		tag:[video link]
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed this video with a play button and image]		tag:[video link]
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed this video with an image and a play button]		tag:[video link]
+JDEF	HIS1006	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed with an image and play button]		tag:[video link]
+JDEF	HIS1006	-1	button|Go to your journal|-|<div class="button">{label}</d	[embed this video with a play button and an image]		tag:[video link]
+JDEF	HIS1006	-1	button|Go to your journal|-|<div class="button">{label}</d	[please add click yes/ no buttons next to the following list, the correct answers are underlined]		black:City authorities talked to boycott leaders The KKK walked the streets of Montgomery Bus companies raised the fare Bombin
+JDEF	HIS1006	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with a play button and image]		tag:[video link]
+JDEF	HIS1006	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with a play button and image]		tag:[video link]
+JDEF	HIS1006	-1	button|Go to your journal|-|<div class="button">{label}</d	[embed the video with an image and play button]		tag:[link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[embed this video with an image and play button]		tag:[video link]
+JDEF	HIS1007	-1	button|Go to website|URL|<a href="{url}" target="_blank	[embed this article link with this button]		tag:[link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[insert play button and image of this video]		tag:[video link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed image of the first scene with a play button]		tag:[video link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with an image and play button]		tag:[video link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with an image and play button]		tag:[video link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[embed the video with a play button and image]		tag:[video link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed this video with a play button and image]		tag:[video link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with a play button and image]		tag:[video link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed this video with a play button and image]		tag:[video link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed this video with an image and a play button]		tag:[video link]
+JDEF	HIS1008	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed with an image and play button]		tag:[video link]
+JDEF	HIS1008	-1	button|Go to your journal|-|<div class="button">{label}</d	[embed this video with a play button and an image]		tag:[video link]
+JDEF	HIS1008	-1	button|Go to your journal|-|<div class="button">{label}</d	[please add click yes/ no buttons next to the following list, the correct answers are underlined]		black:City authorities talked to boycott leaders. The KKK walked the streets of Montgomery. Bus companies raised the fare. Bom
+JDEF	HIS1008	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with a play button and image]		tag:[video link]
+JDEF	HIS1008	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with a play button and image]		tag:[video link]
+JDEF	MUS1006	-1	button|Go to your journal|-|<div class="button">{label}</d	[Can the below pictures be buttons which take students to pages below?]		tag:[image]
+JDEF	MXFU401	-1	button|Go to video|URL|<a href="{url}" target="_blank	[Button] [video 6]	https://www.youtube.com/watch?v=GsfZD4oU7l0	tag:CS: please put “Powerpoint” and “Microsoft word” on the buttons.
+JDEF	MXFU402	-1	button|Go to your journal|URL|<div class="button">{label}</d	[go to journal]	https://mytekuraschool.sharepoint.com/:w:/r/sites/TeAraWhakamua381/_layouts/15/Doc.aspx?sourcedoc=%7BA660BA9B-7580-461B-	tag:[end activity]
+JDEF	PES1001	-1	button|Go to website|URL|<a href="{url}" target="_blank	[button]		black:1. What percentage of the Earth’s water is held in the oceans?
+JDEF	PES1001	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Button (if embedding not possible)] [Website]	https://www.sciencelearn.org.nz/image_maps/3-carbon-cycle	black:1. Where does the carbon cycle begin? • The atmosphere • The ocean surface • **Cycles do not have a beginning** 1. Which
+JDEF	PHE1003	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button - click here - link to come]		tag:[Body]
+JDEF	PHE1003	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button - click here - link to come]		tag:[Body]
+JDEF	PHE1003	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button - click here - link to come]		tag:[Body]
+JDEF	PHE1005	-1	button|Button] [Download Journal|-|<div class="button downloadBut	[Button] [Download Journal]		:
+JDEF	PHE1006	-1	button|Button] [Download Journal|-|<div class="button downloadBut	[Button] [Download Journal]		:
+JDEF	PWY1001	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Button:	https://www.employment.govt.nz/	tag:]:
+JDEF	PWY1002	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Website button] [URL:	https://e-tangata.co.nz/comment-and-analysis/understanding-matauranga-maori/	tag:]
+JDEF	PWY1002	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Button:	https://www.employment.govt.nz/starting-employment/rights-and-responsibilities	tag:]

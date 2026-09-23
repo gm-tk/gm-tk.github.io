@@ -1,0 +1,18 @@
+JDEF	AGH1003	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		tag:[Go to your learning journal and complete activity 5X]
+JDEF	AGH1004	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Button: Weblink]	https://rrcc.co.nz/water-monitoring/	tag:[H3]
+JDEF	AGH1007	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Button – External Link]	https://www.lumendigital.co.nz/staging/TheAmazingCow/	tag:[Body]
+JDEF	ANZH105	-1	button|Go to your journal|URL|<div class="button">{label}</d	[Button]	https://docs.google.com/presentation/d/1UNwzghS-5O_er3Bc-SuTy4D7mSnxW3EC5zNhHF3TfUk/present?slide=id.gf673f7b70e_9_26	tag:[H3]
+JDEF	ANZH303	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Please create button links for each of these sources and label the buttons as shown below]		black:**Source 1 Whaling and Sealing:**
+JDEF	ANZH304	-1	button|Go to your journal|URL|<div class="button">{label}</d	[Add button with link to ANZHFUN05]	*https://tekura.desire2learn.com/d2l/le/content/54417/viewContent/190954/View*	black:1. Answer the following questions about the text. 1. Why do you think missionaries discouraged Māori values of mana, atu
+JDEF	ANZH401	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Button – Source 1] [Image Link]	https://teara.govt.nz/en/document/506/poll-tax-certificate-stub	tag:[Caption for Source 1 Image]
+JDEF	ANZH401	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Button – Source 2] [Image Link]	https://teara.govt.nz/en/photograph/2173/anti-chinese-legislation	tag:[Caption for Source 2 Image]
+JDEF	ANZH401	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Button – Source 3] [Image Link]	https://teara.govt.nz/en/ephemera/2095/new-zealand-company-advertisement	tag:[Caption for Source 3 Image]
+JDEF	ANZH401	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Button – Source 4] [Image Link]	https://teara.govt.nz/en/photograph/1898/the-paddison-family-great-barrier-island1898	tag:[Caption for Source 4 Image]
+JDEF	ANZH401	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Button – Source 5] [Image Link]	https://teara.govt.nz/en/ephemera/1901/new-zealand-wants-domestic-servants	tag:[Caption for Source 5 Image]
+JDEF	ANZH401	-1	button|Go to your journal|-|<div class="button">{label}</d	[Video Image – embed a play button]		:
+JDEF	ANZH404	-1	button|Go to website|URL|<a href="{url}" target="_blank	[Insert button to link to this page]	https://teara.govt.nz/en/maori-prophetic-movements-nga-poropiti/page-6	black:**Source B:**
+JDEF	ANZH404	-1	button|Go to video|URL|<a href="{url}" target="_blank	[Insert button to link to this video]	https://teara.govt.nz/en/video/44607/te-reo-maori-petition-1972	black:**Source D**
+JDEF	BLL133	-1	button|Go to your journal|-|<div class="button">{label}</d	[can we make some ‘yes with a tick’ and ‘no with a cross’ buttons that the ākonga can drag to answer the questions pleas		black:Is the cat in the bag?
+JDEF	BLL140	-1	audio button||URL|<div class="button audioButton	[audio button]		tag:Short vowels say their sound – /a/ /e/ /i/ /o/ /u/
+JDEF	BLL140	-1	audio button||URL|<div class="button audioButton	[audio button]		tag:Long vowels say their name – /ā/ /ē/ /ī/ /ō/ /ū/
+JDEF	BLL210	-1	audio button||URL|<div class="button audioButton	[audio button]		tag:Long vowels say their name – /ā/ /ē/ /ī/ /ō/ /ū/

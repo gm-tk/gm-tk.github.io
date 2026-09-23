@@ -1,0 +1,117 @@
+JDEF	AGH1003	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		tag:[Go to your learning journal and complete activity 5X]
+JDEF	ANZH105	-1	button|Go to your journal|URL|<div class="button">{label}</d	[Button]	https://docs.google.com/presentation/d/1UNwzghS-5O_er3Bc-SuTy4D7mSnxW3EC5zNhHF3TfUk/present?slide=id.gf673f7b70e_9_26	tag:[H3]
+JDEF	ANZH304	-1	button|Go to your journal|URL|<div class="button">{label}</d	[Add button with link to ANZHFUN05]	*https://tekura.desire2learn.com/d2l/le/content/54417/viewContent/190954/View*	black:1. Answer the following questions about the text. 1. Why do you think missionaries discouraged Māori values of mana, atu
+JDEF	ANZH401	-1	button|Go to your journal|-|<div class="button">{label}</d	[Video Image – embed a play button]		:
+JDEF	BLL133	-1	button|Go to your journal|-|<div class="button">{label}</d	[can we make some ‘yes with a tick’ and ‘no with a cross’ buttons that the ākonga can drag to answer the questions pleas		black:Is the cat in the bag?
+JDEF	CEDO501	-1	button|Go to your journal|-|<div class="button">{label}</d	[Create and annotate one like this but for the scholarship example. Button below is a screenshot. Please create one too.		tag:[Image is a screenshot from the site.]
+JDEF	CEDO502	-1	button|Go to your journal|-|<div class="button">{label}</d	[button]		:
+JDEF	CEDO502	-1	button|Go to your journal|URL|<a href="{url}" target="_blank	[Button]		black:Āu Whiringa - More Decisions - Lesson 7 - Response sheet.docx
+JDEF	CEDT104	-1	button|Go to your journal|URL|<div class="button">{label}</d	[Button]		black:**Say it:** ✅ Tick box – I did it. **Māui** **See it:**
+JDEF	CEDT104	-1	button|Go to your journal|URL|<div class="button">{label}</d	[Button]		black:**Say it:** ✅ Tick box – I did it. **Mātau** **See it:**
+JDEF	CEDT104	-1	button|Go to your journal|URL|<div class="button">{label}</d	[Button]		black:**Say it:** ✅ Tick box – I did it. ⭐️⭐️Ka Pai. (Well done.) ⭐️⭐️ You've learned all the poi words. Ready for the next ac
+JDEF	CEDT104	-1	button|Go to your journal|URL|<div class="button">{label}</d	[Blue Button]		tag:[Tap, click, click]
+JDEF	CEDT104	-1	button|Go to your journal|-|<div class="button">{label}</d	[ Record button. If this is not possible, this item can be removed]		black:**⭐️⭐️⭐️Ka māu te wehi. Awesome. ⭐️⭐️⭐️**
+JDEF	CEDT501	-1	button|Go to your journal|-|<div class="button">{label}</d	[Hyperlink to PDF lesson booklets as there is a PDF provision for this module. There will be TWO buttons here one for th		tag:[H2]
+JDEF	CEDT501	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert button – Include hyperlink to Lesson 5 ‘What’s gets in the way’]		tag:[body]
+JDEF	CEDW501	-1	button|Go to your journal|-|<div class="button">{label}</d	[If possible, can the buttons be updated to align with the imagery used early in the module?]		tag:[H3]
+JDEF	CEDW501	-1	button|Go to your journal|URL|<a href="{url}" target="_blank	[Button]		black:Te Tāute Tāngata - Whakataukī tracker (Lesson 7).docx
+JDEF	CEDW501	-1	button|Go to your journal|URL|<a href="{url}" target="_blank	[Button]		black:Te Tāute Tāngata - mood and emotion tracker (Lesson 7) (1) (1).docx
+JDEF	CEDW501	-1	button|Go to your journal|URL|<a href="{url}" target="_blank	[Button]		black:Te Tāute Tāngata - social wellbeing tracker (Lesson 7).docx
+JDEF	CEDW501	-1	button|Go to your journal|URL|<a href="{url}" target="_blank	[Button]		black:Te Tāute Tāngata - emoji log (Lesson 7).docx
+JDEF	ENG1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button – ENG1005 Working towards]		tag:[important]
+JDEF	ENGC202	-1	button|Go to your journal|URL|<div class="button">{label}</d	[go to journal]	https://docs.google.com/document/d/17atBvSd0GIJClm11X8JARe6YkdBB2pPB9FfqCqjwJ-o/edit?usp=sharing	:
+JDEF	ENGC206	-1	button|Go to your journal|-|<div class="button">{label}</d	[Check button] [Reset button]		tag:[Activity 1D]
+JDEF	ENGC302	-1	button|Go to your journal|URL|<div class="button">{label}</d	[button link]	https://drive.google.com/file/d/1YAnPBcLNCp-iw_bA100p5RbBN9yplqOC/view?usp=drive_link	tag:[button]
+JDEF	ENGI103	-1	button|Go to your journal|URL|<div class="button">{label}</d	[go to journal]	https://docs.google.com/document/d/1GRiYePE8tpLqd07mmP7V3REqhyEvc_GBt28WolL8wlY/edit	:
+JDEF	ENGI303	-1	button|Go to your journal|URL|<div class="button">{label}</d	[go to journal]	https://docs.google.com/document/d/117I4Wk2J1_KGe8bfe69rtwF76ecHthaLUN7JZpXE04E/edit?usp=sharing	:
+JDEF	ENGI303	-1	button|Go to your journal|URL|<div class="button">{label}</d	[go to journal]	https://docs.google.com/document/d/117I4Wk2J1_KGe8bfe69rtwF76ecHthaLUN7JZpXE04E/edit?tab=t.0	:
+JDEF	ENGI401	-1	button|Go to your journal|URL|<div class="button">{label}</d	[go to journal]	https://docs.google.com/document/d/1lJ8DF7Ax2525IjzJfpnkiBs06-QPskhNJDFPnHcX6vU/edit?usp=sharing	:
+JDEF	ENGJ402	-1	button|Go to your journal|URL|<div class="button">{label}</d	[Learning Journal Button that links to journal one for this module]	https://docs.google.com/document/d/1LEsqs5wbQydpqr3tmZAgw-ZlzNUq_WS58BOp-Wa0oNg/edit?usp=sharing	tag:[Body]
+JDEF	ENGR102	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		:
+JDEF	ENGR102	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		:
+JDEF	ENGR102	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		:
+JDEF	ENGR102	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		:
+JDEF	ENGR102	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		:
+JDEF	ENGR301	-1	button|Go to your journal|URL|<div class="button">{label}</d	[go to journal]	https://docs.google.com/document/d/1_1NhIzkacRbYxrGPXvG0aR_ezfdTmYmK4N3p5rIC1fo/edit	:
+JDEF	ENGS201	-1	button|Go to your journal|URL|<a href="{url}" target="_blank	[image buttons]		table:
+JDEF	ENGS405	-1	button|Go to your journal|-|<div class="button">{label}</d	[insert images with title buttons directly underneath each to link to relevant sections]		table:
+JDEF	EXBP901	-1	button|Go to your journal|URL|<div class="button">{label}</d	[Add button]		tag:[video – create video using this script]
+JDEF	GENO901	-1	button|Go to your journal|-|<div class="button">{label}</d	[Keep the multiple-choice question below the video “Tick the correct way to say where you come from” and keep the check 		tag:[H2]
+JDEF	GEO1006	-1	button|Go to your journal|-|<div class="button">{label}</d	[Add Buttons check answers reset ]		tag:[embed activity 1B]
+JDEF	GEO1006	-1	button|Go to your journal|-|<div class="button">{label}</d	[words in red are the correct answers. Insert buttons check answers, reset]		tag:[H3]
+JDEF	GER1002	-1	button|Go to your journal|-|<div class="button">{label}</d	[create check button]		tag:[body]
+JDEF	GER1002	-1	button|Go to your journal|-|<div class="button">{label}</d	[create a check your answers button]		tag:[content]
+JDEF	GER1002	-1	button|Go to your journal|-|<div class="button">{label}</d	[create drop-box button]		:
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[this may have to be a button to the external link because the graph is on the Te Ara website]		black:Source: Claudia Orange, ‘Te Tiriti o Waitangi – The Treaty of Waitangi – Dishonouring te Tiriti – 1860 to 1880,’ *Te Ara
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[embed this video with an image and play button]		tag:[video link]
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[insert play button and image of this video]		tag:[video link]
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed image of the first scene with a play button]		tag:[video link]
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with an image and play button]		tag:[video link]
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with an image and play button]		tag:[video link]
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[embed the video with a play button and image]		tag:[video link]
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed this video with a play button and image]		tag:[video link]
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with a play button and image]		tag:[video link]
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed this video with a play button and image]		tag:[video link]
+JDEF	HIS1005	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed this video with an image and a play button]		tag:[video link]
+JDEF	HIS1006	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed with an image and play button]		tag:[video link]
+JDEF	HIS1006	-1	button|Go to your journal|-|<div class="button">{label}</d	[embed this video with a play button and an image]		tag:[video link]
+JDEF	HIS1006	-1	button|Go to your journal|-|<div class="button">{label}</d	[please add click yes/ no buttons next to the following list, the correct answers are underlined]		black:City authorities talked to boycott leaders The KKK walked the streets of Montgomery Bus companies raised the fare Bombin
+JDEF	HIS1006	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with a play button and image]		tag:[video link]
+JDEF	HIS1006	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with a play button and image]		tag:[video link]
+JDEF	HIS1006	-1	button|Go to your journal|-|<div class="button">{label}</d	[embed the video with an image and play button]		tag:[link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[embed this video with an image and play button]		tag:[video link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[insert play button and image of this video]		tag:[video link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed image of the first scene with a play button]		tag:[video link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with an image and play button]		tag:[video link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with an image and play button]		tag:[video link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[embed the video with a play button and image]		tag:[video link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed this video with a play button and image]		tag:[video link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with a play button and image]		tag:[video link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed this video with a play button and image]		tag:[video link]
+JDEF	HIS1007	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed this video with an image and a play button]		tag:[video link]
+JDEF	HIS1008	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed with an image and play button]		tag:[video link]
+JDEF	HIS1008	-1	button|Go to your journal|-|<div class="button">{label}</d	[embed this video with a play button and an image]		tag:[video link]
+JDEF	HIS1008	-1	button|Go to your journal|-|<div class="button">{label}</d	[please add click yes/ no buttons next to the following list, the correct answers are underlined]		black:City authorities talked to boycott leaders. The KKK walked the streets of Montgomery. Bus companies raised the fare. Bom
+JDEF	HIS1008	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with a play button and image]		tag:[video link]
+JDEF	HIS1008	-1	button|Go to your journal|-|<div class="button">{label}</d	[please embed the video with a play button and image]		tag:[video link]
+JDEF	MUS1006	-1	button|Go to your journal|-|<div class="button">{label}</d	[Can the below pictures be buttons which take students to pages below?]		tag:[image]
+JDEF	MXFU402	-1	button|Go to your journal|URL|<div class="button">{label}</d	[go to journal]	https://mytekuraschool.sharepoint.com/:w:/r/sites/TeAraWhakamua381/_layouts/15/Doc.aspx?sourcedoc=%7BA660BA9B-7580-461B-	tag:[end activity]
+JDEF	PHE1003	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button - click here - link to come]		tag:[Body]
+JDEF	PHE1003	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button - click here - link to come]		tag:[Body]
+JDEF	PHE1003	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button - click here - link to come]		tag:[Body]
+JDEF	SSCI104	-1	button|Go to your journal|-|<div class="button">{label}</d	[choice buttons x2]		black:**Task 1:** Paste your screenshots of your two map pop-ups in your journal so your kaiako can read it too. Explain why y
+JDEF	SSCI104	-1	button|Go to your journal|URL|<div class="button">{label}</d	[embed image button]	https://drive.google.com/drive/folders/1af3DRJOfQ4wf4de8u7u_GxfrYjTJk_j9?usp=drive_link	tag:[go to journal]
+JDEF	SSFUN02	-1	button|Go to your journal|-|<div class="button">{label}</d	[Add button]		tag:Quiz button
+JDEF	TEDC401	-1	button|Go to your journal|-|<div class="button">{label}</d	[Alert with Buttons linking to each tool below]		table:
+JDEF	TEDC402	-1	button|Go to your journal|-|<div class="button">{label}</d	[clickdrops with button PDF modals]		tag:[H3]
+JDEF	TEFUN05	-1	button|Go to your journal|-|<div class="button">{label}</d	[audio, video, upload button]		tag:[end quiz]
+JDEF	WJFUN205	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert links/buttons to the individual sections with an image, something like this or use image links that have already		phasebreak:
+JDEF	WJFUN208	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert links/buttons to the 2 tiles as per the following].		phasebreak:
+JDEF	WJFUN211	-1	button|Go to your journal|-|<div class="button">{label}</d	[End activity] [Reset button]		tag:[Body]
+JDEF	WJFUN304	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert links/buttons to the 4 tiles as per global parameters, with the following wording on the tiles; Compound–Complex		phasebreak:
+JDEF	WJFUN304	-1	button|Go to your journal|-|<div class="button">{label}</d	[Check button] [Reset button]		tag:[end activity]
+JDEF	WJFUN304	-1	button|Go to your journal|-|<div class="button">{label}</d	[Check button] [Reset button]		tag:[End activity]
+JDEF	WJFUN304	-1	button|Go to your journal|-|<div class="button">{label}</d	[Check button] [Reset button]		tag:[End activity]
+JDEF	WJFUN305	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert links/buttons to the 2 tiles as per the following]		black:Tab 1: Audience, Purpose & Reaction Tab 2: Form, Genre and Style
+JDEF	WJFUN306	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert links/buttons to the 2 tiles as per the following]		black:Tab 1: Audience and purpose Tab 2: Choosing modes for effect
+JDEF	WJFUN307	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert links/buttons to the 2 tiles as per the following]		tag:[Tab 1]
+JDEF	WJFUN308	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert links/buttons to the 2 tiles as per the following]		black:Choosing words carefully Language features for impact
+JDEF	XDLS908	-1	button|Go to your journal|-|<div class="button">{label}</d	[3 buttons - film, camera and microphone]		tag:[End dropbox Activities]
+JDEF	XGF9001	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert button to EXPlore once it’s available]		tag:[body]
+JDEF	XGF9002	-1	button|Go to your journal|-|<div class="button">{label}</d	[Buttons for external links]		tag:[Button 1] [H3]
+JDEF	XGF9002	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert button to websites]		tag:[Button 1] [H3]
+JDEF	XGF9002	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert buttons to websites – across the page]		tag:[Button 1]
+JDEF	XGF9002	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert buttons to websites]		tag:[Button 1]
+JDEF	XGF9002	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert button to website]		tag:[Button 1]
+JDEF	XGF9002	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert buttons to website]		tag:[Button 1]
+JDEF	XGF9002	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert buttons to websites]		tag:[Button 1] [H3]
+JDEF	XGF9002	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert button to website]		tag:[Button 1]
+JDEF	XGF9002	-1	button|Go to your journal|-|<div class="button">{label}</d	[Insert button to website]		tag:[Button 1]
+JDEF	XLP05	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		tag:Link to pdf
+JDEF	XLP05	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		tag:Link to pdf
+JDEF	XLP05	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		tag:Link to pdf
+JDEF	XLP05	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		tag:Link to pdf
+JDEF	XWHA02	-1	button|Go to your journal|-|<div class="button">{label}</d	[Button]		tag:[Activity]
+JDEF	XWHA02	-1	button|Go to your journal|-|<div class="button">{label}</d	[button]		:
+JDEF	XWHA02	-1	button|Go to your journal|-|<div class="button">{label}</d	[button]		:
+JDEF	XWHA02	-1	button|Go to your journal|-|<div class="button">{label}</d	[button]		:
