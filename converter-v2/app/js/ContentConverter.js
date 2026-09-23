@@ -4509,9 +4509,11 @@ class ContentConverter {
 		// Data flag: Emit_Templates.menu.lesson_repeats_overview {enabled, modules}
 		// Env toggle: MENUREPEAT_OFF
 		const lro = DataService.Data.EmitTemplates.menu?.lesson_repeats_overview;
-		const menuRepeatOn = lro && lro.enabled !== false
-			&& !(typeof process !== "undefined" && process.env && process.env.MENUREPEAT_OFF)
-			&& Array.isArray(lro.modules) && lro.modules.includes(run.moduleCode);
+		// ROUND 442 (Chris's D13-8): a second hand-kept list, modules_d13_8, with its own env (env_d13_8 = MENUREPEAT12_OFF).
+		const _envOn = (n) => typeof process !== "undefined" && process.env && process.env[n];
+		const lroListed = (Array.isArray(lro?.modules) && lro.modules.includes(run.moduleCode))
+			|| (Array.isArray(lro?.modules_d13_8) && lro.modules_d13_8.includes(run.moduleCode) && !_envOn(lro.env_d13_8 || "MENUREPEAT12_OFF"));
+		const menuRepeatOn = lro && lro.enabled !== false && !_envOn("MENUREPEAT_OFF") && lroListed;
 		if (menuRepeatOn && menuType !== "none") {
 			const paneKeys = ["tab1", "tab2", "content", "left", "right"];
 			const isEmpty = (m) => !paneKeys.some((k) => typeof m[k] === "string" && m[k].trim());

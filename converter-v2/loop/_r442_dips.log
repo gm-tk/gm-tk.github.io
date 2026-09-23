@@ -1,0 +1,6 @@
+MXFL202_0_0.html   gold   86 lines | SCAFFOLD  31.0 ->  31.0 | position-free overlap  33.7 ->  33.7 | matched lines 27 -> 27 | RAW  26.2 ->  26.2 | claude lines 88 -> 88
+MXFL202_1_0.html   gold  126 lines | SCAFFOLD  37.8 ->  33.1 | position-free overlap  42.9 ->  46.0 | matched lines 47 -> 50 | RAW  26.3 ->  24.3 | claude lines 123 -> 176
+MXFL202_2_0.html   gold  178 lines | SCAFFOLD  45.5 ->  40.6 | position-free overlap  48.3 ->  50.0 | matched lines 73 -> 76 | RAW  24.2 ->  23.2 | claude lines 143 -> 196
+MXFL202_4_0.html   gold  190 lines | SCAFFOLD  39.7 ->  36.1 | position-free overlap  50.5 ->  55.8 | matched lines 73 -> 76 | RAW  20.8 ->  20.1 | claude lines 178 -> 231
+MXFL202_6_0.html   gold  131 lines | SCAFFOLD  50.5 ->  42.4 | position-free overlap  42.0 ->  45.0 | matched lines 51 -> 54 | RAW  31.6 ->  28.8 | claude lines 71 -> 124
+MXFL202_7_0.html   gold  117 lines | SCAFFOLD  29.3 ->  24.6 | position-free overlap  20.5 ->  22.2 | matched lines 22 -> 25 | RAW  18.5 ->  17.3 | claude lines 33 -> 86

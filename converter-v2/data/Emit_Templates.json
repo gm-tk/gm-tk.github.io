@@ -3222,6 +3222,22 @@
 				"MXDB202",
 				"ANZH101"
 			],
+			"modules_d13_8": [
+				"ANZH203",
+				"ANZH303",
+				"ANZH304",
+				"ENGJ101",
+				"HES1005",
+				"MXDB201",
+				"MXFL101",
+				"MXFL202",
+				"SSCI205",
+				"SSOG103",
+				"XLP05",
+				"XWHA01"
+			],
+			"env_d13_8": "MENUREPEAT12_OFF",
+			"_doc_d13_8": "ROUND 442 (the autonomous loop's session 39 Round 4, 23 Sept 2026 — Chris's decision D13-8, 'Option A: copy the overview for these 12', chosen AGAINST the recommendation). The twelve modules session 24 found whose gold repeats the module-overview menu on its lesson pages join the round-110 hand-kept list: on these modules a lesson page whose own menu would be EMPTY carries the overview's menu, exactly as the three above. It is NOT a rule: the other 18 modules of the s36 126-page class stay declined, and a future module needs a human call. A NAMED override of KB 01B l.223 / KB 10 l.63 and of the session-36 'named KB override' ruling, FOR THESE TWELVE ONLY. Env MENUREPEAT12_OFF drops this list alone (the round-110 three keep repeating), restoring the r441 output byte-for-byte.",
 			"_doc": "ROUND 110 (Chris) — LESSON-MENU REPEAT. A small, measured set of modules repeat the OVERVIEW curriculum (Understand/Know/Do) menu VERBATIM on every lesson page's #module-menu-content (MXFL201_1.0 ≡ _0.0, 26 li). Claude built the curriculum only on the overview and left the lesson menus EMPTY. For a FLAGGED module, ContentConverter stashes the overview's built menu (run.overviewMenu) and reuses it wherever a lesson menu would be EMPTY. PER-MODULE by necessity, MEASURED non-derivable: MXFL201 repeats but MXFL204 — SAME subject×phase, SAME 'simplified' lesson menu-type, indistinguishable WT inputs — does NOT (its lesson menus are empty, already matching Claude); the discriminator is the human's per-module editorial choice (outputs/_measure_menu_population.py: the convert-time signal over-fires 69%). Tight + over-fire-proof: only the listed modules fire, and only where the lesson menu is ALREADY empty (never overrides a populated lesson menu, never fires on a menu_type 'none' page). Menu is #header-scoped → PRIMARY skeleton only. Env MENUREPEAT_OFF reverts."
 		},
 		"lesson_content_in_menu": {

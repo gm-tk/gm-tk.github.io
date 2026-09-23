@@ -1,5 +1,26 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-23 (round 442, build 260620.13) — THE TWELVE LESSON-MENU REPEATERS: on twelve named modules a lesson page whose own menu would be empty now carries the module overview's menu, as their gold does — Chris's decision D13-8 (Option A, chosen against the recommendation), the loop's session 39 Round 4
+
+### 1. WHAT CHANGED
+
+**The decision.** Session 24 found modules whose gold repeats the module-overview (Understand / Know / Do) menu on every lesson page; the loop had declined the whole 126-page class as a pre-KB override (KB 01B l.223 / KB 10 l.63 say a lesson page's menu is that lesson's own block), and recommended leaving the menus empty with a red flag. Chris chose **Option A for twelve named modules**: ANZH203, ANZH303, ANZH304, ENGJ101, HES1005, MXDB201, MXFL101, MXFL202, SSCI205, SSOG103, XLP05, XWHA01. **It is NOT a rule** — the other 18 modules of the 126-page class stay declined, and a future module needs a human call. For these twelve it is a NAMED override of KB 01B / KB 10 and of the session-36 ruling.
+
+**The fix.** The round-110 mechanism already does exactly this for a hand-kept list (MXFL201 / MXDB202 / ANZH101): `ContentConverter` stashes the overview's built menu and reuses it wherever a lesson page's menu would otherwise be EMPTY (never over a populated menu, never on a `menu_type: none` page). `Emit_Templates.json` `menu.lesson_repeats_overview` gains a second list, **`modules_d13_8`** (the twelve), with its own env, **`env_d13_8: MENUREPEAT12_OFF`**; the round-110 check accepts either list (four lines). `MENUREPEAT12_OFF=1` drops the new list alone — the round-110 three keep repeating.
+
+### 2. PROOF
+
+- **In-memory A/B** (`outputs/_r442_probe_run.sh`, all 545 modules): OFF (`MENUREPEAT12_OFF=1`) = **2666 / 2666 identical** to the disk; ON = **72 pages / 11 modules**, all inside the twelve (XWHA01's one lesson page already had a menu). Pre-score with the gate's `match()` (`_r442_prescore.py`): **34 movers, 29 up / 5 down, +183.6pp-sum** — MXDB201_6_0 36.4 → 56.4, ENGJ101_2_0 52.7 → 70.3, ENGJ101_4_0 64.1 → 80.3, MXDB201_2_0 50.3 → 65.6, ENGJ101_3_0 61.4 → 75.6 …
+- **The five dips are all MXFL202** (−3.6 to −8.1: `_1_0`, `_2_0`, `_4_0`, `_6_0`, `_7_0`), and each is NAMED with its companions RISING (`outputs/_r442_dips.log`): the position-free overlap +1.7 to +5.3 (e.g. `_4_0` 50.5 → 55.8) and the matched-line count +3 on every page — Claude's repeated menu adds 53 skeleton lines against a gold lesson menu that aligns with only 3 of them, so SCAFFOLD's length-normalised ratio falls while more of the gold's structure is present. Chris's decision names MXFL202; the dip is the accepted cost of it.
+- **SCOPED regeneration** (`_r442_regen.sh`: the 12 + a 12-module spot-check, seed 442): 0 truly stale; `changed` = exactly the 11; spot-check 12 / 12 identical. `scoped_ship.sh --toggle MENUREPEAT12_OFF --round 442 --commit`: **PASS — skeleton +0.06, ≥50 +4, ≥75 +3 IMPROVED; compare_structure, body_compare, structurally-clean and the leak HELD EXACTLY.**
+- **Post-ship** (`_r442_postship.sh`): `run_all_gates.sh` rc 0, every verifier RESULT ✓; skeleton delta vs r440 **+0.0642pp**, RAW +0.208, 0 movers outside the twelve; **6 lesson pages newly paired** (ANZH203_5_0 77.7, XLP05_4_0 71.8, MXFL101_3_0 / _3_3 / _3_5 / _3_6 36.7–40.6 — pages whose empty menu had left too little to content-match); 49 selftests GREEN; feature index GREEN; the miner (2476 pairs, 9309 classes, **196 CANDIDATE**).
+
+### 3. PROTECTED GATES (all HELD or IMPROVED — `_r442_gates.log`, `_r442_skdelta.log`, `_r442_scoped_ship.log`)
+
+- **Skeleton (PRIMARY)**: SCAFFOLD **54.8084 % @ 2476 pairs** (+0.0642pp; 29 up / 5 down named), median 56.1; ≥50 **1547** (+4), ≥75 **259** (+3), ≥90 **23**; RAW 38.732 %; pairs skipped 0. 54.808 / 91.2 = **60.1 % of achievable**.
+- **compare_structure** 15657 / 199 / 796 / 24 EXACT; **body_compare** 56 / 5 / 201 / 260 EXACT; **structurally clean** 2613 / 2658 = 98.31 % EXACT; **leak** 75 occ / 45 pages EXACT; **tags 9557 / 9557**; every verifier RESULT ✓.
+- Plateau (§4): the PICK predicted a skeleton move (≈ +0.074pp) and delivered +0.0642pp — above the line, the window stays **0 of 3**.
+
 ## 2026-09-23 (round 441, build 260620.12) — THE LANGUAGE SUBJECT LABELS ARE CONFIRMED: `Subject_Prefix_Map.json`'s language split is Chris's decision now, not a proposal — Chris's D13-12, the loop's session 39 Round 3 (output-inert, no regeneration)
 
 ### 1. WHAT CHANGED
