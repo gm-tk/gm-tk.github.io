@@ -1,0 +1,95 @@
+un-built mcq bundles: 401 / modules 183
+
+layout | answer signals -> bundles / modules
+  lines        (no signal)                                72 / 51
+  tags-only    (no signal)                                57 / 39
+  table        (no signal)                                42 / 28
+  lines        bracket                                    28 / 19
+  lines        hl-yellow                                  24 / 15
+  table+lines  (no signal)                                20 / 14
+  table        hl-yellow                                  18 / 10
+  lines        red                                        15 / 12
+  table        hl-other                                   15 / 7
+  table+lines  hl-yellow                                  13 / 6
+  lines        bracket+green                              10 / 7
+  lines        bold-option                                 8 / 7
+  table        bracket                                     7 / 6
+  table        bracket+green                               5 / 4
+  lines        hl-other                                    5 / 2
+  table        key                                         5 / 2
+  tags-only    bracket                                     4 / 3
+  lines        green                                       4 / 3
+  tags-only    hl-yellow                                   3 / 3
+  lines        bracket+hl-other                            3 / 1
+  table+lines  key                                         3 / 3
+  table+lines  red                                         3 / 3
+  lines        key                                         3 / 3
+  lines        bracket+key                                 2 / 2
+  lines        bold-option+hl-yellow+key                   2 / 1
+  table        green                                       2 / 2
+  lines        bracket+green+hl-yellow                     1 / 1
+  lines        bold-option+green                           1 / 1
+  table+lines  bracket+red                                 1 / 1
+  table+lines  bold-option+hl-yellow                       1 / 1
+  table+lines  key+red                                     1 / 1
+  lines        hl-yellow+red                               1 / 1
+  table+lines  hl-other                                    1 / 1
+  table+lines  bracket+hl-other                            1 / 1
+  table        bracket+hl-other                            1 / 1
+  lines        bold-option+bracket+hl-other                1 / 1
+  tags-only    bracket+green                               1 / 1
+  lines        bracket+hl-yellow+key                       1 / 1
+  lines        bold-option+bracket                         1 / 1
+  lines        bracket+green+red                           1 / 1
+
+by signal (a bundle counts once per signal it carries):
+  (none)          191 bundles / 109 modules
+  bracket          72 bundles / 42 modules
+  hl-yellow        68 bundles / 32 modules
+  red              31 bundles / 23 modules
+  hl-other         30 bundles / 13 modules
+  green            28 bundles / 18 modules
+  key              20 bundles / 14 modules
+  bold-option      16 bundles / 13 modules
+
+yellow-highlight bundles 68: announced 'highlight' 8, merged 15, layout Counter({'lines': 32, 'table': 18, 'table+lines': 15, 'tags-only': 3})
+  ARFUN04 #37 3M lines sig=['bold-option', 'hl-yellow', 'key'] ann=[] list=20 q?=0 extra=[]
+  ARFUN04 #39 3N lines sig=['bold-option', 'hl-yellow', 'key'] ann=[] list=7 q?=0 extra=[]
+  ARFUN04 #64 4L table+lines sig=['hl-yellow'] ann=['highlight', 'tick'] list=2 q?=1 extra=[]
+  BLL274 #10 2E lines sig=['bracket', 'green', 'hl-yellow'] ann=[] list=35 q?=7 extra=['infoTrigger']
+  CEDK501 #19 None table sig=['hl-yellow'] ann=[] list=0 q?=0 extra=[]
+  CEDO501 #1 1C table+lines sig=['hl-yellow'] ann=[] list=1 q?=1 extra=[]
+  CEDO501 #6 2A table+lines sig=['hl-yellow'] ann=[] list=4 q?=2 extra=[]
+  CEDO501 #23 5C table+lines sig=['bold-option', 'hl-yellow'] ann=[] list=7 q?=5 extra=[]
+  CEDO502 #19 None lines sig=['hl-yellow'] ann=[] list=2 q?=0 extra=[]
+  CEDR501 #2 1A table sig=['hl-yellow'] ann=[] list=0 q?=0 extra=[]
+  CEDR501 #16 3C lines sig=['hl-yellow'] ann=[] list=0 q?=0 extra=[]
+  CEDR501 #18 3B table sig=['hl-yellow'] ann=[] list=0 q?=0 extra=[]
+  CEDR501 #21 4A table sig=['hl-yellow'] ann=[] list=0 q?=0 extra=[]
+  CEDR501 #24 4C table sig=['hl-yellow'] ann=[] list=0 q?=0 extra=[]
+  CEDT501 #2 3 table sig=['hl-yellow'] ann=[] list=0 q?=0 extra=[]
+  CEDT501 #24 6A table+lines sig=['hl-yellow'] ann=[] list=3 q?=0 extra=[]
+  CEDW501 #34 5B lines sig=['hl-yellow'] ann=[] list=12 q?=3 extra=[]
+  CEDW501 #35 3 lines sig=['hl-yellow'] ann=[] list=12 q?=2 extra=[]
+  CEDW501 #41 3 table sig=['hl-yellow'] ann=[] list=0 q?=0 extra=[]
+  CHI1004 #3 None lines sig=['hl-yellow', 'red'] ann=['green', 'red'] list=28 q?=8 extra=[]
+  ENFUN04 #3 3 lines sig=['hl-yellow'] ann=[] list=12 q?=0 extra=['multiChoiceQuiz', 'multiChoiceQuiz', 'multiChoiceQuiz']
+  ENFUN09 #8 1 table sig=['hl-yellow'] ann=['highlight'] list=0 q?=0 extra=[]
+  ENGJ302 #24 4D lines sig=['hl-yellow'] ann=['highlight'] list=116 q?=24 extra=['multiChoiceQuiz', 'multiChoiceQuiz']
+  ENGR102 #4 1D table+lines sig=['hl-yellow'] ann=[] list=3 q?=1 extra=['speechBubble']
+  ENGR102 #17 2E table+lines sig=['hl-yellow'] ann=[] list=3 q?=1 extra=['speechBubble']
+  ENGR102 #23 3D table+lines sig=['hl-yellow'] ann=[] list=3 q?=1 extra=['speechBubble']
+  ENGR102 #29 4E table+lines sig=['hl-yellow'] ann=[] list=3 q?=1 extra=['speechBubble']
+  ENGR102 #34 5E table+lines sig=['hl-yellow'] ann=[] list=3 q?=1 extra=['speechBubble']
+  ENGR202 #23 5B lines sig=['hl-yellow'] ann=[] list=16 q?=4 extra=[]
+  ENGR302 #7 2A table+lines sig=['hl-yellow'] ann=[] list=0 q?=0 extra=['multiChoiceQuiz']
+  ENGR302 #13 3B lines sig=['hl-yellow'] ann=[] list=0 q?=0 extra=[]
+  ENGR302 #17 3E table+lines sig=['hl-yellow'] ann=[] list=0 q?=0 extra=['multiChoiceQuiz']
+  ENGR302 #30 5F table+lines sig=['hl-yellow'] ann=[] list=0 q?=0 extra=['multiChoiceQuiz']
+  ENGS101 #7 2A lines sig=['hl-yellow'] ann=[] list=5 q?=0 extra=[]
+  FRFUN06 #5 None tags-only sig=['hl-yellow'] ann=[] list=0 q?=0 extra=[]
+  FRFUN06 #14 None lines sig=['hl-yellow'] ann=[] list=0 q?=0 extra=[]
+  FRFUN06 #22 None table sig=['hl-yellow'] ann=['highlight'] list=0 q?=0 extra=[]
+  HIS1002 #10 None lines sig=['bracket', 'hl-yellow', 'key'] ann=[] list=0 q?=0 extra=[]
+  HPRE301 #14 2A lines sig=['bracket', 'hl-yellow'] ann=[] list=0 q?=0 extra=[]
+  MXDB302 #57 8B table+lines sig=['hl-other', 'hl-yellow', 'red'] ann=[] list=9 q?=6 extra=['accordion', 'accordion']

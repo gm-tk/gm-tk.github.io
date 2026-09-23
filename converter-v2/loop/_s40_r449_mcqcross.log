@@ -1,0 +1,121 @@
+ 194  L13176 an answer is never invented
+         116  (none)
+          23  hl-yellow
+          14  red
+           8  bold-option
+           6  bracket
+           5  hl-other
+           4  key
+           3  bracket+hl-other
+ 123  L13127 
+          55  (none)
+          23  hl-yellow
+          16  hl-other
+           8  bracket
+           5  bracket+green
+           5  key
+           3  red
+           2  bracket+red
+  50  L13104 a merged bundle is not this widget
+          20  (none)
+          12  hl-yellow
+           6  bracket
+           3  key
+           2  green
+           2  hl-other+hl-yellow+red
+           2  red
+           1  bracket+green+hl-yellow
+  12  BUILT
+          12  (built)
+  12  L13227 
+           7  bracket
+           5  bracket+green
+   9  L13223 
+           7  bracket
+           1  bracket+green
+           1  bold-option+bracket
+   5  L13186 a mark with nothing to mark
+           3  bracket+green
+           2  green
+   4  L13224 
+           3  bracket
+           1  bracket+hl-yellow
+   2  L13229 every question needs its answer
+           1  bracket+green+red
+           1  bracket
+   1  L13246 a build must never ADD a leak
+           1  bracket
+   1  L13225 
+           1  bracket
+
+== yellow-highlight bundles: announcement + structure ==
+  BLL274#10      L13104 a merged bundle is not this widge lines        announced=False yellow-marks-on-lines=  0 black-lines= 35 extra=['infoTrigger']
+  ENFUN04#3      L13104 a merged bundle is not this widge lines        announced=False yellow-marks-on-lines=  3 black-lines= 17 extra=['multiChoiceQuiz', 'multiChoiceQuiz', 'multiChoiceQuiz']
+  ENGJ302#24     L13104 a merged bundle is not this widge lines        announced=True  yellow-marks-on-lines= 24 black-lines=124 extra=['multiChoiceQuiz', 'multiChoiceQuiz']
+  ENGR102#17     L13104 a merged bundle is not this widge table+lines  announced=False yellow-marks-on-lines=  0 black-lines=  5 extra=['speechBubble']
+  ENGR102#23     L13104 a merged bundle is not this widge table+lines  announced=False yellow-marks-on-lines=  0 black-lines=  5 extra=['speechBubble']
+  ENGR102#29     L13104 a merged bundle is not this widge table+lines  announced=False yellow-marks-on-lines=  0 black-lines=  5 extra=['speechBubble']
+  ENGR102#34     L13104 a merged bundle is not this widge table+lines  announced=False yellow-marks-on-lines=  0 black-lines=  5 extra=['speechBubble']
+  ENGR102#4      L13104 a merged bundle is not this widge table+lines  announced=False yellow-marks-on-lines=  0 black-lines=  4 extra=['speechBubble']
+  ENGR302#17     L13104 a merged bundle is not this widge table+lines  announced=False yellow-marks-on-lines=  0 black-lines=  1 extra=['multiChoiceQuiz']
+  ENGR302#30     L13104 a merged bundle is not this widge table+lines  announced=False yellow-marks-on-lines=  0 black-lines=  1 extra=['multiChoiceQuiz']
+  ENGR302#7      L13104 a merged bundle is not this widge table+lines  announced=False yellow-marks-on-lines=  0 black-lines=  1 extra=['multiChoiceQuiz']
+  MXDB302#57     L13104 a merged bundle is not this widge table+lines  announced=False yellow-marks-on-lines=  6 black-lines= 42 extra=['accordion', 'accordion']
+  MXDB302#60     L13104 a merged bundle is not this widge lines        announced=False yellow-marks-on-lines=  6 black-lines= 31 extra=['accordion', 'accordion']
+  SSFUN07#8      L13104 a merged bundle is not this widge lines        announced=True  yellow-marks-on-lines=  2 black-lines=  6 extra=['multiChoiceQuiz']
+  TEFUN05#6      L13104 a merged bundle is not this widge lines        announced=False yellow-marks-on-lines=  0 black-lines=  4 extra=['dropDown', 'dropDown', 'dropDown', 'dropDown', 'multiChoiceQuiz']
+  ARFUN04#64     L13127                                   table+lines  announced=True  yellow-marks-on-lines=  1 black-lines=  3 extra=[]
+  CEDK501#19     L13127                                   table        announced=False yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  CEDO501#1      L13127                                   table+lines  announced=False yellow-marks-on-lines=  0 black-lines=  1 extra=[]
+  CEDO501#23     L13127                                   table+lines  announced=False yellow-marks-on-lines=  0 black-lines=  8 extra=[]
+  CEDO501#6      L13127                                   table+lines  announced=False yellow-marks-on-lines=  0 black-lines=  8 extra=[]
+  CEDR501#18     L13127                                   table        announced=False yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  CEDR501#2      L13127                                   table        announced=False yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  CEDR501#21     L13127                                   table        announced=False yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  CEDR501#24     L13127                                   table        announced=False yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  CEDT501#2      L13127                                   table        announced=False yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  CEDT501#24     L13127                                   table+lines  announced=False yellow-marks-on-lines=  0 black-lines=  3 extra=[]
+  CEDW501#41     L13127                                   table        announced=False yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  ENFUN09#8      L13127                                   table        announced=True  yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  FRFUN06#22     L13127                                   table        announced=True  yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  MXDI201#24     L13127                                   table        announced=False yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  MXFL203#1      L13127                                   table        announced=False yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  MXFL203#14     L13127                                   table+lines  announced=False yellow-marks-on-lines=  0 black-lines=  1 extra=[]
+  MXFUN03#10     L13127                                   table        announced=True  yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  MXFUN03#17     L13127                                   table        announced=False yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  MXFUN03#24     L13127                                   table        announced=False yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  MXFUN03#30     L13127                                   table        announced=False yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  MXFUN03#31     L13127                                   table        announced=False yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  MXFUN03#6      L13127                                   table        announced=False yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  MXS1004#24     L13127                                   table        announced=True  yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  ARFUN04#37     L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  4 black-lines= 20 extra=[]
+  ARFUN04#39     L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  6 black-lines=  7 extra=[]
+  CEDO502#19     L13176 an answer is never invented       lines        announced=True  yellow-marks-on-lines=  3 black-lines=  5 extra=[]
+  CEDR501#16     L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  3 black-lines=  3 extra=[]
+  CEDW501#34     L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  3 black-lines= 15 extra=[]
+  CEDW501#35     L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  3 black-lines= 15 extra=[]
+  CHI1004#3      L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  0 black-lines= 36 extra=[]
+  ENGR202#23     L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  4 black-lines= 16 extra=[]
+  ENGR302#13     L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  6 black-lines= 13 extra=[]
+  ENGS101#7      L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  5 black-lines=  5 extra=[]
+  FRFUN06#14     L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  1 black-lines=  1 extra=[]
+  FRFUN06#5      L13176 an answer is never invented       tags-only    announced=False yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  HIS1002#10     L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  0 black-lines= 10 extra=[]
+  MXEX302#2      L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines= 10 black-lines= 40 extra=[]
+  MXFL203#31     L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  3 black-lines=  4 extra=[]
+  MXFL203#9      L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  9 black-lines= 39 extra=[]
+  OSBY401#21     L13176 an answer is never invented       tags-only    announced=False yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  SSFUN03#6      L13176 an answer is never invented       tags-only    announced=False yellow-marks-on-lines=  0 black-lines=  0 extra=[]
+  TEFUN01#2      L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  3 black-lines= 12 extra=[]
+  TEFUN01#5      L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  3 black-lines= 11 extra=[]
+  TEFUN01#6      L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  4 black-lines= 15 extra=[]
+  TEFUN01#7      L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  4 black-lines= 20 extra=[]
+  TEFUN03#14     L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  2 black-lines= 12 extra=[]
+  TEFUN04#10     L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  5 black-lines= 25 extra=[]
+  TEFUN04#2      L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  3 black-lines= 12 extra=[]
+  TEFUN04#6      L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  5 black-lines= 20 extra=[]
+  TEFUN04#9      L13176 an answer is never invented       lines        announced=False yellow-marks-on-lines=  5 black-lines= 20 extra=[]
+  TEFUN05#9      L13176 an answer is never invented       lines        announced=True  yellow-marks-on-lines=  5 black-lines= 16 extra=[]
+  HPRE301#14     L13224                                   lines        announced=False yellow-marks-on-lines=  1 black-lines=  1 extra=[]
+
+yellow bundles 68; announced 9; by verdict: Counter({'L13176 an answer is ne': 28, 'L13127 ': 24, 'L13104 a merged bundle': 15, 'L13224 ': 1})

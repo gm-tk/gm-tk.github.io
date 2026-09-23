@@ -1,0 +1,30 @@
+ 11  ('yellow-unannounced', 'many-rows x 2c', 'mark in col [1]')  e.g. ENGR102#4, ENGR102#17, ENGR102#23, ENGR102#29
+  6  ('yellow-unannounced', '1r x 1c', 'mark in col [0]')  e.g. CEDR501#2, CEDR501#18, CEDR501#21, CEDR501#24
+  4  ('bracket', '1r x 1c', 'mark in col [0]')  e.g. XGF9004#17, XGF9004#17, XGF9004#17, XGF9004#17
+  3  ('yellow-unannounced', '1r x 4c', 'mark in col [2]')  e.g. CEDO501#1, CEDO501#23, CEDO501#23
+  3  ('yellow-unannounced', '1r x 4c', 'mark in col [1]')  e.g. CEDO501#6, CEDO501#23, CEDO501#23
+  3  ('yellow-unannounced', 'many-rows x 2c', 'mark in col [0]')  e.g. CEDT501#24, CEDT501#24, CEDT501#24
+  3  ('bracket', 'many-rows x 2c', 'mark in col [1]')  e.g. GENO901#37, OSAI301#14, SSCI205#29
+  2  ('bracket', 'many-rows x 3c', 'mark in col [0, 1, 2]')  e.g. BLL272#4, TEDC401#39
+  2  ('yellow-unannounced', '1r x 4c', 'mark in col [0]')  e.g. CEDO501#1, CEDO501#23
+  2  ('yellow-unannounced', '1r x 3c', 'mark in col [2]')  e.g. CEDO501#6, CEDO501#6
+  2  ('yellow-unannounced', 'many-rows x 2c', 'mark in col [0, 1]')  e.g. ENFUN09#8, MXFUN03#17
+  2  ('bracket', '3r x 3c', 'mark in col [0, 1, 2]')  e.g. ENGC204#12, ENGC204#12
+  2  ('yellow-unannounced', 'many-rows x 3c', 'mark in col [0, 1, 2]')  e.g. ENGR302#17, ENGR302#30
+  1  ('yellow-announced', 'many-rows x 2c', 'mark in col [1]')  e.g. ARFUN04#64
+  1  ('yellow-announced', '1r x 1c', 'mark in col [0]')  e.g. ARFUN04#64
+  1  ('bracket', 'many-rows x 2c', 'mark in col [0, 1]')  e.g. BLL272#7
+  1  ('yellow-unannounced', '1r x 2c', 'mark in col [0, 1]')  e.g. CEDK501#19
+  1  ('yellow-unannounced', '1r x 4c', 'mark in col [3]')  e.g. CEDO501#6
+  1  ('yellow-unannounced', '1r x 3c', 'mark in col [1]')  e.g. CEDO501#6
+  1  ('yellow-unannounced', '3r x 3c', 'mark in col [0, 1, 2]')  e.g. ENGR302#7
+  1  ('yellow-announced', '1r x 3c', 'mark in col [0]')  e.g. FRFUN06#22
+  1  ('bracket', 'many-rows x 5c', 'mark in col [1, 2, 3, 4]')  e.g. HPRE203#42
+  1  ('yellow-unannounced', 'many-rows x 4c', 'mark in col [1, 2, 3]')  e.g. MXDI201#24
+  1  ('yellow-unannounced', '3r x 2c', 'mark in col [0, 1]')  e.g. MXFUN03#10
+  1  ('yellow-announced', 'many-rows x 6c', 'mark in col [1, 2, 3, 4, 5]')  e.g. MXS1004#24
+  1  ('bracket', 'many-rows x 5c', 'mark in col [0, 1, 2, 3, 4]')  e.g. SSEA203#9
+  1  ('bracket', '2r x 3c', 'mark in col [0, 1, 2]')  e.g. SSOG103#14
+  1  ('bracket', '2r x 4c', 'mark in col [0, 1, 2, 3]')  e.g. SSOG103#22
+  1  ('bracket', '1r x 4c', 'mark in col [0, 1, 2, 3]')  e.g. TEDC402#97
+total marked table bundles by signal: Counter({'yellow-unannounced': 40, 'bracket': 17, 'yellow-announced': 4})

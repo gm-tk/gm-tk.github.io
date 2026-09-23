@@ -1,0 +1,413 @@
+MCQWHY	AGH1002#5	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ANZH103#3	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ANZH203#1	1A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ANZH303#1	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ANZH401#1	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ANZH401#6	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ARFUN01#2	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ARFUN01#4	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ARFUN01#6	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ARFUN01#10	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ARFUN02#9	3D	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ARFUN03#8	-	L13223 #multiChoiceQuiz: if (isUrl(q.text) || q.opts.some((o) => isUrl(o.text))) return null;	calls=1	first==
+MCQWHY	ARFUN04#5	1D	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ARFUN04#20	2H	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ARFUN04#31	3G	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ARFUN04#37	3M	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ARFUN04#39	3N	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ARFUN04#62	4K	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ARFUN04#64	4L	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ARFUN05#2	-	L13223 #multiChoiceQuiz: if (isUrl(q.text) || q.opts.some((o) => isUrl(o.text))) return null;	calls=1	first==
+MCQWHY	ARFUN05#4	3	L13223 #multiChoiceQuiz: if (isUrl(q.text) || q.opts.some((o) => isUrl(o.text))) return null;	calls=1	first==
+MCQWHY	ARFUN05#6	3A	L13223 #multiChoiceQuiz: if (isUrl(q.text) || q.opts.some((o) => isUrl(o.text))) return null;	calls=1	first==
+MCQWHY	ARFUN05#8	-	L13223 #multiChoiceQuiz: if (isUrl(q.text) || q.opts.some((o) => isUrl(o.text))) return null;	calls=1	first==
+MCQWHY	BLL147#2	1C	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	BLL152#3	1C	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	BLL165#1	1B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	BLL173#1	1A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	BLL241#5	2E	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	BLL242#5	1D	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	BLL242#8	2D	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	BLL245#6	2B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	BLL251#7	2D	BUILT	calls=1	first==
+MCQWHY	BLL252#10	2E	L13223 #multiChoiceQuiz: if (isUrl(q.text) || q.opts.some((o) => isUrl(o.text))) return null;	calls=1	first==
+MCQWHY	BLL255#5	2B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	BLL256#7	2D	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	BLL261#5	-	L13227 #multiChoiceQuiz: if (q.opts.length > (tpl.max_options ?? 10)) return null;	calls=1	first==
+MCQWHY	BLL264#17	-	L13227 #multiChoiceQuiz: if (q.opts.length > (tpl.max_options ?? 10)) return null;	calls=1	first==
+MCQWHY	BLL270#6	1E	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	BLL272#4	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	BLL272#7	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	BLL274#10	2E	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	BLLR202#16	3B	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	BLLR202#30	5A	L13186 #multiChoiceQuiz: if (!cur || !cur.opts.length) return null;         // a mark with nothing to mark	calls=1	first==
+MCQWHY	BLLR202#32	5C	L13186 #multiChoiceQuiz: if (!cur || !cur.opts.length) return null;         // a mark with nothing to mark	calls=1	first==
+MCQWHY	BLLR203#31	5D	L13227 #multiChoiceQuiz: if (q.opts.length > (tpl.max_options ?? 10)) return null;	calls=1	first==
+MCQWHY	CBI1004#3	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	CBI1004#7	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	CBI1004#10	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	CBI1005#1	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	CEDK102#16	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	CEDK501#19	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	CEDO105#13	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	CEDO202#5	-	BUILT	calls=1	first==
+MCQWHY	CEDO204#13	4A	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	CEDO501#1	1C	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	CEDO501#6	2A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	CEDO501#16	3D	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	CEDO501#23	5C	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	CEDO502#19	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	CEDR501#2	1A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	CEDR501#16	3C	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	CEDR501#18	3B	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	CEDR501#21	4A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	CEDR501#24	4C	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	CEDT501#2	3	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	CEDT501#24	6A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	CEDW501#34	5B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	CEDW501#35	3	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	CEDW501#41	3	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	CHFUN05#8	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	CHFUN06#4	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	CHFUN08#9	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	CHI1004#1	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	CHI1004#3	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	CHWHA#2	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	COM1005#1	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	COM1006#3	2A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	COM1006#5	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	DAN1006#1	-	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	ENFUN01#7	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENFUN01#13	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENFUN01#16	3	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENFUN01#20	3A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENFUN01#24	1	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	ENFUN02#2	3	L13227 #multiChoiceQuiz: if (q.opts.length > (tpl.max_options ?? 10)) return null;	calls=1	first==
+MCQWHY	ENFUN02#16	4A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENFUN02#19	3B	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENFUN03#12	2E	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENFUN03#17	3E	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENFUN03#20	4C	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENFUN04#3	3	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	ENFUN04#12	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENFUN04#19	4	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENFUN05#11	4	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENFUN05#18	4A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENFUN09#8	1	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENFUN09#10	3A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENFUN09#16	3B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENFUN09#21	2C	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENGC102#20	7B	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENGC201#2	1A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENGC201#9	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENGC201#15	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENGC204#12	3A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENGC206#8	3E	BUILT	calls=1	first==
+MCQWHY	ENGC301#16	7A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENGC302#5	3A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENGC302#9	6A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENGI101#6	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENGI103#5	2A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENGI203#2	2A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENGI203#4	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENGI302#1	1	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENGI302#9	2A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENGI303#11	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENGJ201#2	1B	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENGJ201#10	5B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENGJ202#1	1A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENGJ202#6	3B	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENGJ302#7	2D	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	ENGJ302#24	4D	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	ENGR102#4	1D	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	ENGR102#17	2E	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	ENGR102#23	3D	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	ENGR102#29	4E	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	ENGR102#34	5E	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	ENGR201#3	2A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENGR201#16	5B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENGR201#18	6A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENGR202#23	5B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENGR302#4	1D	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	ENGR302#7	2A	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	ENGR302#13	3B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENGR302#17	3E	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	ENGR302#30	5F	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	ENGS101#7	2A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENGS201#9	3A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENGS201#13	4B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	ENGS404#16	5C	BUILT	calls=1	first==
+MCQWHY	ENO2060#15	2D	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	EXIP901#6	2	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	EXIP901#7	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	EXIP901#10	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	FRFUN06#1	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	FRFUN06#2	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	FRFUN06#5	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	FRFUN06#6	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	FRFUN06#10	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	FRFUN06#13	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	FRFUN06#14	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	FRFUN06#21	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	FRFUN06#22	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	FRFUN06#29	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	FRFUN07#9	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	FRFUN07#11	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	FRFUN08#5	4A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	FRFUN08#7	2A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	FRFUN08#8	1A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	FRFUN08#9	2A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	FRFUN08#10	3A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	FRNO901#5	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	FRNO901#7	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	FRNO901#21	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	FRNO901#31	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	FRNO901#37	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	FRNO902#41	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	GENO901#13	-	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	GENO901#30	-	L13223 #multiChoiceQuiz: if (isUrl(q.text) || q.opts.some((o) => isUrl(o.text))) return null;	calls=1	first==
+MCQWHY	GENO901#37	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	GER1002#7	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	GER1002#10	-	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	GER1002#18	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HES1003#1	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HES1007#2	2A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HIS1001#1	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HIS1002#10	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HPFUN101#8	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HPFUN102#8	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HPFUN103#5	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HPFUN201#10	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HPFUN202#7	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HPFUN203#8	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HPFUN301#8	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HPFUN302#10	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HPFUN303#6	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HPFUN401#9	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HPFUN402#10	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HPFUN403#6	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HPFUN901#14	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HPFUN902#8	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HPFUN903#21	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	HPRE203#16	-	L13223 #multiChoiceQuiz: if (isUrl(q.text) || q.opts.some((o) => isUrl(o.text))) return null;	calls=1	first==
+MCQWHY	HPRE203#36	-	L13229 #multiChoiceQuiz: if (!q.opts.some((o) => o.correct)) return null;        // every question needs its answer	calls=1	first==
+MCQWHY	HPRE203#42	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	HPRE301#14	2A	L13224 #multiChoiceQuiz: if (q.opts.some((o) => glued.test(o.text))) return null;	calls=1	first==
+MCQWHY	HPRE301#26	-	BUILT	calls=1	first==
+MCQWHY	HPRE301#41	6A	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	MXDB301#5	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXDB302#45	7A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	MXDB302#52	7E	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	MXDB302#57	8B	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	MXDB302#60	8E	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	MXDI201#2	1B	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXDI201#19	5D	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXDI201#24	6F	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXEO301#9	1.1A	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	MXEO301#31	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	MXEX301#5	2A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXEX301#9	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXEX302#2	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	MXFL202#1	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	MXFL202#10	3B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	MXFL202#15	5B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	MXFL202#17	5C	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFL202#19	6B	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFL203#1	1B	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFL203#6	2A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	MXFL203#9	2E	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	MXFL203#14	4A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFL203#25	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFL203#31	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	MXFL301#39	5F	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFL301#43	6B	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFL301#48	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFL301#54	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFL302#25	4I	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFL302#60	8F	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFL401#2	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	MXFL401#5	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	MXFU301#6	1D	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	MXFU301#16	5B	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	MXFU301#24	7A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFU301#28	7C	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFU302#8	3A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFU402#36	6B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	MXFUN01#30	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFUN01#33	3C	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFUN01#34	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFUN01#42	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFUN02#26	1B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	MXFUN02#27	1C	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	MXFUN03#6	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFUN03#10	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFUN03#13	3A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFUN03#17	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFUN03#24	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFUN03#26	2B	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFUN03#30	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFUN03#31	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXFUN03#32	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	MXFUN03#33	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	MXFUN03#34	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	MXS1004#9	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXS1004#10	-	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	MXS1004#24	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	MXS1004#25	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	OSAI201#11	1C	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	OSAI301#14	3B	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	OSBY101#12	2A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	OSBY101#20	3C	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	OSBY201#20	3C	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	OSBY301#9	3A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	OSBY401#14	3A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	OSBY401#21	4B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	PES1002#2	2B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	PES1004#1	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	PES1008#7	1A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	PHE1001#2	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	PHE1003#14	37	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	PHE1003#16	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	PHE1007#18	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	PHE1008#4	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	PHE1008#6	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	PWY1001#13	1E	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	PWY1001#14	1F	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	PWY1001#15	1G	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	PWY1001#16	1H	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	PWY1001#33	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	PWY1008#2	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	PWY1008#17	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	PWY1009#16	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	PWY1009#18	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	PWY1009#20	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	PWY1009#30	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	SCBI301#8	3B	L13223 #multiChoiceQuiz: if (isUrl(q.text) || q.opts.some((o) => isUrl(o.text))) return null;	calls=1	first==
+MCQWHY	SCPH301#20	7A	L13229 #multiChoiceQuiz: if (!q.opts.some((o) => o.correct)) return null;        // every question needs its answer	calls=1	first==
+MCQWHY	SSCI205#19	4B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	SSCI205#26	5C	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	SSCI205#29	6A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	SSEA203#9	2A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	SSEA203#15	3A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	SSEA203#20	-	BUILT	calls=1	first==
+MCQWHY	SSEA203#23	5C	BUILT	calls=1	first==
+MCQWHY	SSEA203#26	-	L13224 #multiChoiceQuiz: if (q.opts.some((o) => glued.test(o.text))) return null;	calls=1	first==
+MCQWHY	SSFUN01#6	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	SSFUN01#10	-	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	SSFUN03#2	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	SSFUN03#6	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	SSFUN03#9	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	SSFUN03#12	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	SSFUN03#13	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	SSFUN07#1	1B	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	SSFUN07#7	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	SSFUN07#8	-	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	SSFUN07#12	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	SSOG103#7	2B	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	SSOG103#14	4A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	SSOG103#22	5A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	SSOG301#10	-	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	SSOG301#14	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	TEDC401#39	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	TEDC401#45	-	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	TEDC401#59	3G	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	TEDC401#77	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TEDC401#78	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	TEDC401#85	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	TEDC401#93	6A	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	TEDC402#52	3G	L13224 #multiChoiceQuiz: if (q.opts.some((o) => glued.test(o.text))) return null;	calls=1	first==
+MCQWHY	TEDC402#87	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	TEDC402#97	6A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	TEDC402#114	6F	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	TEDC402#139	8D	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	TEFUN01#2	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TEFUN01#5	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TEFUN01#6	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TEFUN01#7	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TEFUN02#2	3D	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TEFUN03#14	3A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TEFUN04#2	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TEFUN04#6	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TEFUN04#9	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TEFUN04#10	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TEFUN05#5	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TEFUN05#6	3B	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	TEFUN05#7	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TEFUN05#9	4A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TEFUN05#10	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TRR102#11	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	TRR102#12	-	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	TWHA906#15	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TWHA906#16	4C	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TWHA906#21	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TWHK901#7	2A	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	TWHK907#7	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TWHK907#15	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TWHK907#20	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TWHK907#23	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TWHR905#3	1A	BUILT	calls=1	first==
+MCQWHY	TWHR905#8	4B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	TWHR907#5	3	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	WJFUN105#3	1B	BUILT	calls=1	first==
+MCQWHY	WJFUN106#9	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	WJFUN106#11	-	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	WJFUN108#9	2B	L13186 #multiChoiceQuiz: if (!cur || !cur.opts.length) return null;         // a mark with nothing to mark	calls=1	first==
+MCQWHY	WJFUN108#11	2C	L13227 #multiChoiceQuiz: if (q.opts.length > (tpl.max_options ?? 10)) return null;	calls=1	first==
+MCQWHY	WJFUN109#6	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	WJFUN109#11	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	WJFUN112#4	1C	L13186 #multiChoiceQuiz: if (!cur || !cur.opts.length) return null;         // a mark with nothing to mark	calls=1	first==
+MCQWHY	WJFUN112#9	2C	L13186 #multiChoiceQuiz: if (!cur || !cur.opts.length) return null;         // a mark with nothing to mark	calls=1	first==
+MCQWHY	WJFUN115#4	1B	L13227 #multiChoiceQuiz: if (q.opts.length > (tpl.max_options ?? 10)) return null;	calls=1	first==
+MCQWHY	WJFUN115#6	1C	L13227 #multiChoiceQuiz: if (q.opts.length > (tpl.max_options ?? 10)) return null;	calls=1	first==
+MCQWHY	WJFUN116#10	1G	L13227 #multiChoiceQuiz: if (q.opts.length > (tpl.max_options ?? 10)) return null;	calls=1	first==
+MCQWHY	WJFUN205#19	3A	L13227 #multiChoiceQuiz: if (q.opts.length > (tpl.max_options ?? 10)) return null;	calls=1	first==
+MCQWHY	WJFUN206#12	-	BUILT	calls=1	first==
+MCQWHY	WJFUN206#18	3A	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	WJFUN210#18	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	WJFUN304#17	3	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	WJFUN304#19	-	L13246 #multiChoiceQuiz: if (this.#mcqLeakGuard(built)) return null;                 // a build must never ADD a leak	calls=1	first==
+MCQWHY	WJFUN304#24	3A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	WJFUN304#27	3B	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	WJFUN304#35	3	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	WJFUN305#9	1D	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	WJFUN305#18	2D	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	WJFUN306#20	2B	L13224 #multiChoiceQuiz: if (q.opts.some((o) => glued.test(o.text))) return null;	calls=1	first==
+MCQWHY	WJFUN307#14	1C	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	WJFUN307#29	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XGF9001#7	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XGF9001#8	-	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	XGF9001#37	6A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XGF9001#38	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XGF9002#9	1B	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	XGF9002#19	4A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XGF9002#26	3	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	XGF9002#27	3	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	XGF9002#29	3B	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	XGF9002#33	6C	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	XGF9002#34	7A	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	XGF9002#38	3	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	XGF9002#40	8C	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	XGF9003#5	2A	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XGF9004#3	-	BUILT	calls=1	first==
+MCQWHY	XGF9004#7	2B	L13227 #multiChoiceQuiz: if (q.opts.length > (tpl.max_options ?? 10)) return null;	calls=1	first==
+MCQWHY	XGF9004#13	-	L13227 #multiChoiceQuiz: if (q.opts.length > (tpl.max_options ?? 10)) return null;	calls=1	first==
+MCQWHY	XGF9004#17	6D	L13127 #multiChoiceQuiz: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+MCQWHY	XGF9004#20	-	BUILT	calls=1	first==
+MCQWHY	XGF9004#22	7C	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XGF9004#25	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XGF9004#32	2B	L13104 #multiChoiceQuiz: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+MCQWHY	XGF9004#41	4C	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XGF9004#48	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XGF9004#52	-	L13227 #multiChoiceQuiz: if (q.opts.length > (tpl.max_options ?? 10)) return null;	calls=1	first==
+MCQWHY	XGF9004#56	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XGF9004#63	-	L13225 #multiChoiceQuiz: if (!q.text || words(q.text) > (tpl.max_question_words ?? 63)) return null;	calls=1	first==
+MCQWHY	XGF9004#65	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XGF9006#11	2C	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XLP05#7	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XLP06#13	-	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XOTPG01#3	1B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XOTPG03#3	1B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XOTPG04#3	1B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XOTPG05#3	1B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XOTPG06#3	1B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
+MCQWHY	XOTPO01#3	1B	L13176 #multiChoiceQuiz: if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented	calls=1	first==
