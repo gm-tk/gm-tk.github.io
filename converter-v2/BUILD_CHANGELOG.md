@@ -1,5 +1,11 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (session 40 Round 12 — no engine change; build 260620.23 unchanged) — THE LEDGER'S FULL-SHIP BACKSTOP: all 545 modules regenerated with the r452 engine reproduce the scoped-shipped corpus byte for byte; the ship ledger is reset
+
+- Scoped #7 since the r444 FULL (cadence 8). `outputs/_s40_r12_fullship_par.sh` (the r444 recipe — `_batch_plan.py`'s 42 weight-aware batches, 4 parallel workers, 900 s wall): all rc 0 in 6.5 minutes; `_stalecheck.sh` 0 stale; `_content_manifest.py fresh` **542 / 542 modules byte-identical** to the manifest the scoped ships left (0 changed — the r447–r452 scoped regenerations missed nothing).
+- `outputs/_s40_r12_postship.sh`: every gate EXACT against the r452 baseline — skeleton **54.7484 % @ 2477, 0 movers**, ≥50 1544, ≥75 260, ≥90 23, RAW 38.649 %; cs 15657 / 199 / 796 / 24; body 58 / 5 / 176 / 237; clean 2613 / 2658; leak 75 / 45; 10 RESULT lines ✓; selftests 50 PASS / GREEN, 0 FAIL; the miner 195 CANDIDATE. (The `_gatecheck.py cs bc` run printed CACHED skeleton rows 54.77 / 1543 / 261 — the known trap; the direct skeleton run and the full-corpus gatecheck both read 54.75 / 1544 / 260.)
+- `_ship_ledger.py record-full --round 452 --build 260620.23` → scoped #0 (8 of headroom); the fast-loop baseline and the content manifest re-snapshotted.
+
 ## 2026-09-24 (round 452, build 260620.23) — A WRITER INSTRUCTION THAT MENTIONS A BUTTON IS NOT A JOURNAL BUTTON: "[Please embed the video with a play button and image]", "[Check button] [Reset button]", "[Insert links/buttons to the 2 tiles …]" no longer ship an invented "Go to your journal" button — the writer's words ship as their Writers Note — Chris's decision D13-5 ("never add one the writer didn't ask for"), the loop's session 40 Round 9 (the r447 follow-up re-measured)
 
 ### 1. WHAT CHANGED
