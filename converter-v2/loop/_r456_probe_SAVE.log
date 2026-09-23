@@ -1,0 +1,25 @@
+ANZH105: identical 6 / changed 3 / missing-on-disk 1
+ANZH205: identical 5 / changed 3 / missing-on-disk 1
+CBI1008: identical 1 / changed 3 / missing-on-disk 2
+CBI1009: identical 2 / changed 3 / missing-on-disk 1
+COM1005: identical 1 / changed 8 / missing-on-disk 2
+DAN1004: identical 0 / changed 5 / missing-on-disk 5
+DAN1006: identical 0 / changed 4 / missing-on-disk 8
+GEO1004: identical 1 / changed 3 / missing-on-disk 1
+GEO1006: identical 2 / changed 3 / missing-on-disk 2
+HES1002: identical 3 / changed 5 / missing-on-disk 1
+HES1003: identical 7 / changed 3 / missing-on-disk 1
+MXDB301: identical 6 / changed 3 / missing-on-disk 1
+MXDI301: identical 0 / changed 6 / missing-on-disk 4
+MXEX301: identical 6 / changed 3 / missing-on-disk 1
+MXFL202: identical 2 / changed 5 / missing-on-disk 1
+MXFU302: identical 7 / changed 4 / missing-on-disk 2
+MXS1004: identical 3 / changed 7 / missing-on-disk 1
+PES1001: identical 7 / changed 4 / missing-on-disk 1
+PHE1003: identical 1 / changed 11 / missing-on-disk 1
+PHE1007: identical 6 / changed 5 / missing-on-disk 1
+SSOG301: identical 5 / changed 4 / missing-on-disk 1
+XGF9001: identical 1 / changed 7 / missing-on-disk 3
+
+TOTAL: identical 72 / changed 102 / missing 42 over 22 modules
+CHANGED: ANZH105/ANZH105_0_0.html ANZH105/ANZH105_7_0.html ANZH105/ANZH105_interactives.txt ANZH205/ANZH205_0_0.html ANZH205/ANZH205_6_0.html ANZH205/ANZH205_interactives.txt CBI1008/CBI1008_0_0.html CBI1008/CBI1008_2_0.html CBI1008/CBI1008_interactives.txt CBI1009/CBI1009_0_0.html CBI1009/CBI1009_3_0.html CBI1009/CBI1009_interactives.txt COM1005/COM1005_0_0.html COM1005/COM1005_2_0.html COM1005/COM1005_3_0.html COM1005/COM1005_5_0.html COM1005/COM1005_6_0.html COM1005/COM1005_7_0.html COM1005/COM1005_8_0.html COM1005/COM1005_interactives.txt DAN1004/DAN1004_0_0.html DAN1004/DAN1004_1_0.html DAN1004/DAN1004_2_0.html DAN1004/DAN1004_9_0.html DAN1004/DAN1004_interactives.txt DAN1006/DAN1006_0_0.html DAN1006/DAN1006_1_0.html DAN1006/DAN1006_2_0.html DAN1006/DAN1006_interactives.txt GEO1004/GEO1004_0_0.html GEO1004/GEO1004_2_0.html GEO1004/GEO1004_interactives.txt GEO1006/GEO1006_0_0.html GEO1006/GEO1006_3_0.html GEO1006/GEO1006_interactives.txt HES1002/HES1002_0_0.html HES1002/HES1002_4_0.html HES1002/HES1002_5_0.html HES1002/HES1002_7_0.html HES1002/HES1002_interactives.txt HES1003/HES1003_0_0.html HES1003/HES1003_8_0.html HES1003/HES1003_interactives.txt MXDB301/MXDB301_0_0.html MXDB301/MXDB301_7_0.html MXDB301/MXDB301_interactives.txt MXDI301/MXDI301_0_0.html MXDI301/MXDI301_1_0.html MXDI301/MXDI301_3_0.html MXDI301/MXDI301_5_0.html MXDI301/MXDI301_7_0.html MXDI301/MXDI301_interactives.txt MXEX301/MXEX301_0_0.html MXEX301/MXEX301_6_0.html MXEX301/MXEX301_interactives.txt MXFL202/MXFL202_0_0.html MXFL202/MXFL202_4_0.html MXFL202/MXFL202_6_0.html MXFL202/MXFL202_7_0.html MXFL202/MXFL202_interactives.txt MXFU302/MXFU302_0_0.html MXFU302/MXFU302_7_0.html MXFU302/MXFU302_9_0.html MXFU302/MXFU302_interactives.txt MXS1004/MXS1004_0_0.html MXS1004/MXS1004_4_0.html MXS1004/MXS1004_5_0.html MXS1004/MXS1004_6_0.html MXS1004/MXS1004_7_0.html MXS1004/MXS1004_8_0.html MXS1004/MXS1004_interactives.txt PES1001/PES1001_0_0.html PES1001/PES1001_5_0.html PES1001/PES1001_9_0.html PES1001/PES1001_interactives.txt PHE1003/PHE1003_0_0.html PHE1003/PHE1003_2_0.html PHE1003/PHE1003_3_0.html PHE1003/PHE1003_4_0.html PHE1003/PHE1003_5_0.html PHE1003/PHE1003_6_0.html PHE1003/PHE1003_7_0.html PHE1003/PHE1003_8_0.html PHE1003/PHE1003_9_0.html PHE1003/PHE1003_10_0.html PHE1003/PHE1003_interactives.txt PHE1007/PHE1007_0_0.html PHE1007/PHE1007_7_0.html PHE1007/PHE1007_9_0.html PHE1007/PHE1007_10_0.html PHE1007/PHE1007_interactives.txt SSOG301/SSOG301_0_0.html SSOG301/SSOG301_6_0.html SSOG301/SSOG301_8_0.html SSOG301/SSOG301_interactives.txt XGF9001/XGF9001_0_0.html XGF9001/XGF9001_2_0.html XGF9001/XGF9001_3_0.html XGF9001/XGF9001_4_0.html XGF9001/XGF9001_5_0.html XGF9001/XGF9001_6_0.html XGF9001/XGF9001_interactives.txt

@@ -1,0 +1,24 @@
+re-scoring 34 affected module(s): ANZH105 ANZH205 ANZHFUN05 CBI1008 CBI1009 CEDK501 CEDO502 CEDT101 CEDT501 CHFUN08 COM1002 COM1005 DAN1004 DAN1006 ENFUN09 GEO1004 GEO1006 HES1002 HES1003 HIS1001 HPRE203 MXDB301 MXDI301 MXEX301 MXFL202 MXFU302 MXS1004 PES1001 PHE1003 PHE1007 PHE1008 SSOG301 XGF9001 XOTPG03
+baseline taken: 2026-09-23T21:06:29Z
+(unaffected modules unchanged by construction — corpus aggregate moves by exactly the affected-set delta)
+
+  metric                                 baseline        new     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  54.77      54.87     +0.10  IMPROVED
+  skeleton pages >=50%                       1549       1575       +26  IMPROVED
+  skeleton pages >=75%                        265        270        +5  IMPROVED
+  compare_structure exact chain             15855      16024      +169  IMPROVED
+  compare_structure EXTRA container           199        199         0  HELD
+  compare_structure missing container         840        840         0  HELD
+  body_compare ANY breakdown                  238        239        +1  REGRESSED
+  defect structurally-clean %               98.31      98.30     -0.01  REGRESSED
+  literal-[tag] leak (occ)                     75         75         0  HELD
+  literal-[tag] leak (pages)                   45         46        +1  REGRESSED
+
+  context (no pass/fail): sk_pages: 2487->2520  cs_matched: 18463->18636  body_pages: 2668->2709  df_total: 2668->2709  df_clean: 2623->2663
+
+RESULT: MOVED, ACCEPTED AS NAMED — body_compare ANY breakdown, defect structurally-clean %, literal-[tag] leak (pages)
+        Every mover was named on the command line and must be decomposed in the
+        round's changelog entry (which page, which mechanism). Recorded in the manifest.
+[commit] fast-loop baseline PATCHED (2520 pages) + content manifest refreshed — this is now the shipped state the next inner loop measures against.
+[commit] recorded accepted named movement: body_compare ANY breakdown, defect structurally-clean %, literal-[tag] leak (pages)

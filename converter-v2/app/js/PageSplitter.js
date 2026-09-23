@@ -239,6 +239,52 @@ class PageSplitter {
 		 * RR-3/AR-2: a page is "empty" when it has no black content, no
 		 * table, and no rendering tag — closing it would emit a blank file.
 		 */
+		// ROUND 456 (the autonomous loop's session 41 Round 4) — THE MID-PAGE LESSON HEADING OPENS
+		// ITS LESSON PAGE. The implicit-page-break branch below harvests a "Lesson N: …" heading only
+		// right after an [end page]; a writer who opens a lesson with the heading alone ("[H1] Lesson
+		// Four: Creating movement…" DAN1004, "[H2] Lesson 2 The Negative Powers of 10" MXDI301, "[H1]
+		// Lesson 3 Carbon Compounds" CBI1008) or with a black "[LESSON 5]" / "LESSON 3" line (MXS1004,
+		// GEO1004 / 1006 — the marker typed without the red style) had that lesson merged into the page
+		// before it; the human starts a page there. PRE-SCAN: candidate items = an h1–h3 heading whose
+		// words open "Lesson <N>" (digits or a number word), or a black line that is exactly
+		// "[LESSON N]" / an upper-case "LESSON N …"; a candidate needs min_items_after items before the
+		// next candidate or page boundary (a lesson LIST on one page is not a set of openers). At run
+		// time it opens page N.0 only on a lesson page (never the overview), off single-file / reoMode
+		// modules, when N is HIGHER than the lesson in effect; the black marker line is consumed.
+		// Data: page_split.mid_page_lesson_heading. Env toggle: MIDLESSON_OFF.
+		const _mlh = DataService.Data.EmitTemplates.page_split?.mid_page_lesson_heading;
+		const _mlhOn = !!_mlh && _mlh.enabled !== false && !singleFile && !reoPage
+			&& !(typeof process !== "undefined" && process.env && process.env[_mlh.env ?? "MIDLESSON_OFF"]);
+		const _midOpeners = new Map();
+		if (_mlhOn) {
+			const WORDS = _mlh.number_words ?? {};
+			const num = (w) => /^\d+$/.test(w) ? parseInt(w, 10) : (WORDS[String(w).toLowerCase()] ?? null);
+			const headRe = new RegExp(_mlh.heading_pattern ?? "^lesson\\s+(\\d+|[a-z]+)\\b\\s*[:.\\-–—]?\\s*(.*)$", "i");
+			const blackRe = new RegExp(_mlh.black_pattern ?? "^(?:\\[\\s*lesson\\s+(\\d+)\\s*\\]|LESSON\\s+(\\d+)\\b.*)$");
+			const cands = [];
+			items.forEach((it, idx) => {
+				if (it.type === "tag" && (_mlh.heading_tags ?? ["h1", "h2", "h3"]).includes(it.parse?.primary?.tag)) {
+					const h = String(it.blackAfter || (it.parse?.remainders ?? []).join(" ")).replace(/\*/g, "").replace(/\s+/g, " ").trim();
+					const m = h.match(headRe);
+					if (m && num(m[1]) != null) cands.push({ idx, n: num(m[1]), title: (m[2] ?? "").trim(), consume: false });
+				} else if (it.type === "black") {
+					const t = String(it.text ?? "").replace(/\u{1f534}/gu, "").replace(/\[\/?RED TEXT\]/g, "").replace(/\*/g, "").replace(/\s+/g, " ").trim();
+					const m = t.match(blackRe);
+					if (m) cands.push({ idx, n: parseInt(m[1] ?? m[2], 10), title: "", consume: true });
+				}
+			});
+			const minAfter = _mlh.min_items_after ?? 3;
+			cands.forEach((c, k) => {
+				// the next candidate with a DIFFERENT number (a "[LESSON 4]" line and its "[H2] Lesson 4 …" echo are one opener)
+				const nx = cands.slice(k + 1).find((d) => d.n !== c.n);
+				let end = nx ? nx.idx : items.length;
+				for (let q = c.idx + 1; q < end; q++) {
+					if (items[q].type === "tag" && items[q].parse?.primary?.directive === "PAGE_BOUNDARY") { end = q; break; }
+				}
+				if (end - c.idx - 1 >= minAfter) _midOpeners.set(c.idx, c);
+			});
+		}
+
 		const currentIsEmpty = () => current && !current.items.some((it) =>
 			it.type === "table"
 			|| (it.type === "black" && it.text.trim())
@@ -771,6 +817,21 @@ class PageSplitter {
 				// the intro arrives; if no intro ever comes, the close stands)
 				closed = true;
 				continue;
+			}
+
+			// ---- ROUND 456: a mid-page lesson heading / black [LESSON N] line opens its page ----
+			if (!closed && _midOpeners.has(i) && current && !current.isOverview) {
+				const c = _midOpeners.get(i);
+				if (c.n > lessonOrdinal) {
+					lessonOrdinal = c.n;
+					pageWithinLesson = 0;
+					open({ lessonNumber: String(c.n), lessonLabel: `${c.n}.0`, pageTitle: c.title, wtPageStart: it.block?.wtPage });
+					run.AddNote("info", "PageSplitter",
+						`Mid-page lesson opener — "${c.consume ? String(it.text ?? "").trim() : "Lesson " + c.n + (c.title ? ": " + c.title : "")}" opened page ${c.n}.0 (page_split.mid_page_lesson_heading).`);
+					if (c.consume) continue;
+					current.items.push(it);
+					continue;
+				}
 			}
 
 			// ---- ordinary item --------------------------------------------

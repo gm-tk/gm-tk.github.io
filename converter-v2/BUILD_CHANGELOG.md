@@ -1,5 +1,32 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (round 456, build 260620.26) — THE MID-PAGE LESSON HEADING OPENS ITS LESSON PAGE: a lesson the writer starts with a heading (`[H1] Lesson Four: …`, `[H2] Lesson 2 The Negative Powers of 10`) or a black `[LESSON 5]` line — with no `[End page]` before it — gets its own page instead of being merged into the page before — the loop's session 41 Round 4 (the recognition lane: Round 1's under-split census). (Round 455 was built, probed and DECLINED — see LOOP_STATE.md; no engine change shipped under that number.)
+
+### 1. WHAT CHANGED
+
+**The find.** Round 1's census of gold pages the gate leaves unpaired named a set of UNDER-SPLIT modules (DAN1004 gold 9 pages / Claude 4, DAN1006 10 / 4, CBI1008 7 / 3, MXDI301 9 / 5, GEO1006 8 / 4). A census with the live splitter over every gold module (`outputs/_s41_r4_midlesson.cjs` → `_s41_r4_midlesson_0*.log`) listed every lesson opener left MID-PAGE with a number higher than its page's own: the heading form (`[H1] Lesson Two: Exploring active verbs for water` DAN1004, `[H2] Lesson two: key features of contemporary dance` DAN1006, `[H1] Lesson 3 Carbon Compounds` CBI1008, `[H2] Lesson 4 Power of the Variable in Writing Rules` MXDI301, `[H2] Lesson 3 The PPDAC Cycle` MXFL202, `[H2] Lesson 8. Algebra and Sports Outcomes` MXFU302) and the black-marker form (`[LESSON 4]` + its `[H2] Lesson 4 Fluvial (River) Processes` echo GEO1006, `LESSON 3` GEO1004, `[LESSON 5]` MXS1004 — the writer's marker typed without the red style, so never a tag).
+
+**Mechanism.** `PageSplitter.Split` opens an implied page after an `[end page]` and harvests its `Lesson N: …` heading (the implicit-page-break branch, verified on ANZH205) — but a lesson heading that arrives while the page is still open was just another heading.
+
+**The fix** (`PageSplitter.Split`; data `Emit_Templates.page_split.mid_page_lesson_heading`; env **`MIDLESSON_OFF`**, byte-identical OFF 3218 / 3218): a PRE-SCAN lists candidate openers — an h1–h3 heading whose words open `Lesson <N>` (digits or a number word, `number_words`) or a black line that is exactly `[LESSON N]` / an upper-case `LESSON N …` — and keeps one only when `min_items_after` (3) items follow before the next candidate with a DIFFERENT number or a page boundary (a lesson LIST on one page is not a set of openers; a `[LESSON 4]` line and its `[H2] Lesson 4 …` echo are one opener). At run time a kept candidate opens page `N.0` (title from the heading) only on a lesson page (never the overview), off single-file and reoMode modules, when N is HIGHER than the lesson in effect; the black marker line is consumed.
+
+**Triangulation.** DAN1004: WT `[End page]` → `[H1] Lesson Three: …` → … `[H1] Lesson Four: …` → `[H1] Lesson Five: …` → `[H1] Lesson Six: …` with no page break; gold `DAN1004_3.0 … 6.0` one page each; Claude r454 one page for lessons 3–7 → now one page each (module mean 50.3 → 60.7 over 4 → 9 pairs). COM1005: the new pages carry the human's own sequence (COVID-19 / Producers / Households / The financial sector …) — its pre-existing INTRODUCTION page still shifts the numbering by one. MXDI301: Claude now ships exactly the gold's nine pages with the gold's titles.
+
+### 2. PROOF
+
+- In-memory A/B (`outputs/_r456_probe_run.sh`): OFF 3218 / 3218 identical; ON 102 pages / 22 modules changed + 42 new files: ANZH105, ANZH205, CBI1008, CBI1009, COM1005, DAN1004, DAN1006, GEO1004, GEO1006, HES1002, HES1003, MXDB301, MXDI301, MXEX301, MXFL202, MXFU302, MXS1004, PES1001, PHE1003, PHE1007, SSOG301, XGF9001.
+- Pre-score with the pairing recomputed on both sides (`_r456_prescore.py` / `.log`, the §1e split `_r456_split.py`): pairs 146 → 179 in the 22; **the pre-existing pairs +245.2 pp-sum (25 up / 5 down)**, 37 new pairs at a 53.9 mean, 4 pairs lost to the gate's content pairing.
+- Scoped regeneration of the 22 + the 12-module spot-check (`_r456_regen.sh`): 0 truly stale, spot-check 12 / 12; the disk = the probe's ON files 216 / 216; `scoped_ship.sh --toggle MIDLESSON_OFF --round 456`: freshness / containment (22 ⊆ 22) / completeness PASS; the decomposition's three movers committed NAMED (`_fastloop_diff --accept-named`).
+
+### 3. PROTECTED GATES
+
+- Skeleton SCAFFOLD **54.7680 → 54.8705 % @ 2487 → 2520 pairs (+0.1025pp; the pre-existing population +0.1177pp)**; **≥50 1549 → 1575 (+26)**, **≥75 265 → 270**, ≥90 23 → 24; RAW 38.726 → 38.878. The per-page dips on pre-existing gold pages are RE-PAIRINGS by the gate's content pairing, NAMED: MXDI301_02.0 −15.2 (gold 01.0 never pairs by content, so Claude's lesson-1 page takes gold 02.0 while the new lesson-2 page — the gold's own title — goes unpaired), GEO1004_1_0 −14.2 (a pre-existing stub page 1.0 and lessons 1–2 merged; the new 3.0 matches the gold's 3.0 at 66.0), MXDB301_6.0 −11.2, COM1005_3_0 −3.4 (the pre-existing INTRODUCTION page shifts the numbering), MXFL202_5.0 −0.8. Lost pairs (content pairing fails on the smaller new pages): COM1005 2.0 / 8.0, GEO1004 2.0, PHE1003 2.0.
+- compare_structure: **exact 15855 → 16024 (+169)**, matched 18463 → 18636, EXTRA 199, missing 840, row-wrap 24 — held.
+- body_compare: pages 2668 → 2709; **ANY 238 → 239 (+1 NAMED)** — the same flagged widgets move with their content to renumbered / split pages (PHE1003's empty-widget flags 10→11, 4→3 / 5, 7→8: net +1; ANZH205_6, MXEX301_6, MXFU302_10 up, HES1003_8, MXFL202_7, MXS1004_6 down); over 59 → 61, runaway 5, empty 176.
+- Structurally clean 2623 / 2668 → **2663 / 2709 (98.31 → 98.30 %, NAMED)**: 40 of the 41 new pages are clean; the 41st is CBI1008's split page. Leak **75 occurrences held; pages 45 → 46 (NAMED)** — CBI1008's page carrying two leak occurrences is now two pages carrying one each.
+- tags 9557 / 9557; every verifier ✓; selftests 50 PASS / GREEN; feature index GREEN; the miner 196 CANDIDATE on 2520 pairs.
+- Plateau (§4): predicted a move, delivered +0.1025pp — the window stays reset (0 of 3). Ledger: scoped **#3** since the r452 FULL.
+
 ## 2026-09-24 (round 454, build 260620.25) — THE RED-WRAPPED `[Activity: Embedded]` MARKER: the MTK lesson's widget activity (instructions + data table) becomes the KB 07B `div.activity.interactive[number]` box in its `row > col-md-8` — the existing bilingual activity gather never fired because the writer types the marker in red — the loop's session 41 Round 2 (the r453 follow-up: the TRR lesson pages)
 
 ### 1. WHAT CHANGED
