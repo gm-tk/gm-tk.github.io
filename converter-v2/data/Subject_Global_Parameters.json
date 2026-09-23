@@ -322,7 +322,7 @@
       "doc_section": "14.8",
       "active": true,
       "overrides_gold": true,
-      "source_updated": "2026-07-09; §14.8 characters refreshed 2026-07-29 (CL-0067)",
+      "source_updated": "2026-07-09; §14.8 characters refreshed 2026-07-29 (CL-0067); §14.8 refreshed 2026-09-24 from KB 910a9cb (CL-0111 — all five characters delivered, the H&S supervisor block, WATER, beyond-two-bubbles; the loop's session 40 Round 7, the claude-audit Phase 3b)",
       "scope": {
         "type": "cohort",
         "label": "H&PE content modules (distinct from H&PE FUNdamentals §14.5)",
@@ -421,8 +421,8 @@
           "detail": "Structure: [automated celebration] [H2] Congratulations! [body] 'Ka pai, you have completed this module about…' [dropbox] [H3] Share your learning [body] [button] Go to your journal [button] Upload to dropbox [alert]/[Image] [Speech bubble] [body] 'If you enjoyed this learning, you may like to explore: … Talk to your kaiako about these and other learning opportunities.'"
         },
         {
-          "name": "Characters in speech bubble + imageCentral (some deferred)",
-          "kind": "deferred_asset",
+          "name": "Characters in speech bubble + imageCentral (all five delivered — CL-0111)",
+          "kind": "asset",
           "keywords": [
             "character",
             "sura",
@@ -432,8 +432,39 @@
             "leila"
           ],
           "component_owner": "04 Overlays (speech bubble)",
-          "detail": "Set: Sura, Afi, Alex, Kai, Leila. Class imageCentral; path 'health and PE characters/phase #/HP_Name_image#_phase_#.png' (e.g. HP_Sura_1_phase_1.png). Currently available: Sura and Alex.",
-          "red_note": "character not yet available — to be created and added (no 2nd-proof sign-off until added)"
+          "detail": "Set: Sura, Afi, Alex, Kai, Leila. Class imageCentral. ALL FIVE ARE DELIVERED for phases 1–4 (CL-0111; server list, September 2026). Full body, poses 1 and 2, for every character in every phase: 'health & PE characters/phase #/HP_{Sura|Afi|Alex|Kai|Leila}_{1|2}_phase_#.png'. Head-only: 'health & PE characters/phase #/head_only/HP_{Name}_3_phase_#.png' (pose 3) and, for most characters, pose 4 ('HP_{Name}_4_phase_#.png') — the head-only set is not uniform, so copy the exact filename from the server list, never construct it: phase 4 Sura has pose 4 only ('head_only/HP_Sura_4_phase_4.png'), and phase 3 also holds 'HP_Afi_3_phase_3.png' in the full-body folder. Pairs: 'health & PE characters/phase 1/combination/Kai and Afi phase 1.png' and 'health & PE characters/phase 1/combination/Sura and Leila phase 1.png' (phase 1 only on the server today). Source: KB 14B §14.8 (23 Sept 2026, claude-audit brief A).",
+          "red_note_retired_cl0111": "character not yet available — to be created and added (no 2nd-proof sign-off until added) — RETIRED by CL-0111: every character is available, so the 2nd-proof hold no longer applies and the note is never emitted."
+        },
+        {
+          "name": "Health and Safety — the supervisor guidance block (CL-0111)",
+          "kind": "structural",
+          "keywords": [
+            "supervisor button",
+            "guidance for supervisors",
+            "health and safety"
+          ],
+          "component_owner": "05 Supervisor Button (constraint 68)",
+          "detail": "Where an activity carries a health-and-safety consideration, the writer supplies a supervisor block (Global Edits HPE, September 2026): [Supervisor Button RHS activity] [H4] Guidance for supervisors [Body] This activity… (state the risk / what they are asked to do) As a supervisor, you can: • support your ākonga to choose an option that aligns with their values, beliefs, and level of comfort • guide learning in a way that reflects your context • select resources or approaches that feel age-appropriate and respectful. Some ākonga may prefer: • general or science-based learning • discussion with a trusted adult • private or reflective approaches. You are encouraged to work alongside your ākonga … [End supervisor button]. It renders with the supervisor-button component, Shape A (activity-bound): <h4>Guidance for supervisors</h4>, the body paragraphs, and each • run as a <ul> list; the writer's wording is copied verbatim, nothing added. Source: KB 14B §14.8."
+        },
+        {
+          "name": "WATER — health-and-safety content forefronted in an alert, never a supervisor note (CL-0111)",
+          "kind": "structural",
+          "keywords": [
+            "water",
+            "safety"
+          ],
+          "component_owner": "04 Overlays (alert)",
+          "detail": "Safety content about water goes in a visible alert in the lesson body, not behind the supervisor button. Source: KB 14B §14.8."
+        },
+        {
+          "name": "Beyond two speech bubbles: faces only; a longer conversation is a carousel (CL-0111)",
+          "kind": "structural",
+          "keywords": [
+            "speech bubble",
+            "conversation"
+          ],
+          "component_owner": "04 Overlays (speech bubble) / COMP_07 Carousel",
+          "detail": "A strip carries at most two speech bubbles; beyond that the characters are shown as faces only (the head-only images), and a conversation longer than two bubbles goes into a slideshow (carousel) — 04_COMP_SEGMENTS_OVERLAYS.md → COMP_07 → Carousel. Source: KB 14B §14.8."
         },
         {
           "name": "Dropbox button label 'Upload to Dropbox'",
@@ -584,7 +615,7 @@
       "doc_section": "14.1",
       "active": false,
       "overrides_gold": true,
-      "source_updated": "2026-08-05",
+      "source_updated": "2026-08-05; refreshed 2026-09-24 from KB 910a9cb (the claude-audit brief A — CL-0112 / CL-0113 delivered assets; the loop's session 40 Round 7, Phase 3b)",
       "roadmap": "Audiovisual Package FINALISED 2026-08-05 (the final 20260511_Language_HTML — asset/tag registry captured below as asset_registry). CHFUN01-07 live in the corpus (no golds beyond the supplied HTML set). Wire after the active four.",
       "scope": {
         "type": "cohort",
@@ -650,7 +681,7 @@
             "audiovisual package icon",
             "language icons"
           ],
-          "detail": "Eight icons: Reading, Listening, Speaking, Writing, Interact, Think, Idea, Linguist. Tag [Audiovisual package Icon <Name>]; files images/Icons/black icons/Language icons_<Name>.jpg (phase-coloured files under images/Icons/phase colour/). The icons are identical throughout the phases and automatically match the module's phase colour — the writer never specifies a colour and the conversion never asks for one."
+          "detail": "Eight icons: Reading, Listening, Speaking, Writing, Interact, Think, Idea, Linguist. Tag [Audiovisual package Icon <Name>]; files are CENTRAL since CL-0112 — Language icons/Language icons_<Name>.jpg (black) plus Language icons/Language icons_<Name> P1.jpg … P4.jpg (phase-coloured), class img-fluid imageCentral; the module-local images/Icons/black icons/ and images/Icons/phase colour/ folders are retired (see asset_registry.icons for the server's mixed-case names). The icons are identical throughout the phases and automatically match the module's phase colour — the writer never specifies a colour and the conversion never asks for one."
         },
         {
           "name": "Sticky nav on every page (deferred setup)",
@@ -688,8 +719,17 @@
             "Idea",
             "Linguist"
           ],
-          "src": "images/Icons/black icons/Language icons_<Name>.jpg",
-          "phase_colour": "automatic — never writer-specified"
+          "src": "Language icons/Language icons_<Name>.jpg",
+          "src_retired_cl0112": "images/Icons/black icons/Language icons_<Name>.jpg (and images/Icons/phase colour/) — the module-local folders are RETIRED by CL-0112; never emit them",
+          "src_phase_variants": "Language icons/Language icons_<Name> P1.jpg … P4.jpg — emit only where the Writers Template names a phase variant",
+          "file_case_exceptions": {
+            "Reading": "black 'Language icons_Reading.jpg'; variants 'Language icons_Reading p1.jpg' … 'p4.jpg' (lower-case p)",
+            "Idea": "black 'Language icons_idea.jpg' (lower-case idea); variants 'Language icons_Idea P1.jpg' … 'P4.jpg' (capital Idea)",
+            "Linguist": "black 'Language icons_linguist.jpg'; variants 'Language icons_linguist P1.jpg' … 'P4.jpg'"
+          },
+          "supplied_form": "<img class=\"img-fluid imageCentral\" loading=\"lazy\" src=\"Language icons/Language icons_Reading.jpg\" alt=\"reading\" />",
+          "phase_colour": "automatic — never writer-specified",
+          "_note_cl0112": "Refreshed 2026-09-24 from KB 14C §2 (CL-0112, the September 2026 central package) — the loop's session 40 Round 7, the claude-audit Phase 3b. Copy file names verbatim (the server's mixed case)."
         },
         "german": {
           "central_folder": "German assets/",
@@ -721,7 +761,8 @@
               "role": "brother",
               "item": 4,
               "form": "vimeo",
-              "id": "1200277175"
+              "id": "1200277175",
+              "note_cl0112": "Felix is the Vimeo character (item 4) only — the two 'Co-pilot test' images of the 31 July draft package (Felix Hoffmann_Co-pilot test.png / _headshot.jpg) are removed from the package; never reference them (KB 14C §3, CL-0112)."
             },
             {
               "name": "Der Lehrer",
@@ -938,6 +979,13 @@
               "istock": "1675300511 (people) + 2207512167 (pets)"
             },
             {
+              "name": "family tree — no numbers",
+              "item": 3,
+              "form": "image",
+              "src": "Spanish assets/Spanish_Family tree_no numbers.jpg",
+              "note": "the same tree without the numbers (server, September 2026; CL-0112) — use it only where the Writers Template asks for the un-numbered tree"
+            },
+            {
               "name": "family portait",
               "item": 4,
               "form": "image",
@@ -973,7 +1021,31 @@
               "src": "Samoan character assets/Adobe Express - nz to samoa.gif",
               "istock": "926176050 (NZ) + 2215778947 (Samoa)"
             }
-          ]
+          ],
+          "phrase_images": {
+            "_doc": "CL-0112 (the September 2026 package — 19 files): central, class=\"img-fluid imageCentral\", alt=\"\" as supplied; each shows the phrase in its filename. Filenames verbatim from the server list ('-' stands for a question mark; the macrons are kept). Refreshed 2026-09-24 from KB 14C §8 (the loop's session 40 Round 7, the claude-audit Phase 3b).",
+            "files": [
+              { "phrase": "Fa'a fetai", "src": "Samoan character assets/Samoan_Fa'a fetai.jpg", "istock": "1162479162" },
+              { "phrase": "Manuia faafetai", "src": "Samoan character assets/Samoan_Manuia faafetai.jpg", "istock": "949402928" },
+              { "phrase": "O a mai oe", "src": "Samoan character assets/Samoan_O a mai oe-.jpg", "istock": "1368170177" },
+              { "phrase": "O lo'u igoa o", "src": "Samoan character assets/Samoan_O lo'u igoa o.jpg", "istock": "1363289818" },
+              { "phrase": "Talofa", "src": "Samoan character assets/Samoan_Talofa.jpg", "istock": "1162479162" },
+              { "phrase": "Tōfā", "src": "Samoan character assets/Samoan_Tōfā.jpg", "istock": "949402928" },
+              { "phrase": "Goodbye", "src": "Samoan character assets/Samoan_Goodbye.jpg" },
+              { "phrase": "Hello", "src": "Samoan character assets/Samoan_Hello.jpg" },
+              { "phrase": "How are you", "src": "Samoan character assets/Samoan_How are you-.jpg" },
+              { "phrase": "My name is", "src": "Samoan character assets/Samoan_My name is.jpg" },
+              { "phrase": "Very well thank you", "src": "Samoan character assets/Samoan_Very well thank you.jpg" },
+              { "phrase": "Taeao Manuia", "src": "Samoan character assets/Samoan_Taeao Manuia.jpg", "istock": "1162479162" },
+              { "phrase": "Manuia le aoauli", "src": "Samoan character assets/Samoan_Manuia le aoauli.jpg", "istock": "949402928" },
+              { "phrase": "Manuia le afiafi", "src": "Samoan character assets/Samoan_Manuia le afiafi.jpg", "istock": "1363289818" },
+              { "phrase": "Manuia le po", "src": "Samoan character assets/Samoan_Manuia le po.jpg", "istock": "1162479162" },
+              { "phrase": "Talofa o lo'u igoa o", "src": "Samoan character assets/Samoan_Talofa o lo'u igoa o.jpg", "istock": "949402928" },
+              { "phrase": "Mālo le soifua", "src": "Samoan character assets/Samoan_Mālo le soifua.jpg", "istock": "949402928" },
+              { "phrase": "Taeao Manuia-19", "src": "Samoan character assets/Samoan_Taeao Manuia-19.jpg", "istock": "1368170177" },
+              { "phrase": "Talofa o a mai oe", "src": "Samoan character assets/Samoan_Talofa o a mai oe-.jpg", "istock": "1162479162" }
+            ]
+          }
         }
       }
     },
@@ -983,7 +1055,7 @@
       "doc_section": "14.2",
       "active": false,
       "overrides_gold": true,
-      "source_updated": "2026-07-09",
+      "source_updated": "2026-07-09; refreshed 2026-09-24 from KB 910a9cb (the claude-audit brief A — CL-0112 / CL-0113 delivered assets; the loop's session 40 Round 7, Phase 3b)",
       "roadmap": "persona identities/images + overview DEFERRED (EDR pending). Level 2 HELD. No corpus presence yet.",
       "scope": {
         "type": "series-level",
@@ -1017,16 +1089,18 @@
           "detail": "Most L1 Pathways modules have three lessons with sub-parts (1.1-1.3, 2.1-2.3, 3.1-3.3); some fewer depending on content. Content is a mixture of refreshed, new, and merged material from the old Pathways course."
         },
         {
-          "name": "Persona tagging pattern (deferred identities/images)",
-          "kind": "deferred_asset",
+          "name": "Persona tagging pattern → the pathwaysPersona component (details DELIVERED — CL-0113)",
+          "kind": "structural",
           "keywords": [
             "persona",
             "audioimage",
             "photograph",
             "transcript"
           ],
-          "red_note": "persona identity + circle image + audio to be confirmed once the EDR is finalised (use a placeholder image meanwhile)",
-          "detail": "Rangatahi personas with a recognisable circle image. Tagging: [Persona box] -> [Audioimage] (play button) -> [Photograph in a circle] -> [Audiovisual item N {name}] (real audio recordings, not AI) -> [Transcript button]. Identities: Section 1 Whai; Section 2 Leilani and Bailey; Section 3 Māia (EDR under development, some images TBC)."
+          "red_note_retired_cl0113": "persona identity + circle image + audio to be confirmed once the EDR is finalised (use a placeholder image meanwhile) — RETIRED by CL-0113: the persona details are delivered.",
+          "component_owner": "refresh_pathwaysPersonas.html (gold PWY1001 / PWY1002 / PWY1007)",
+          "html": "<div class=\"pathwaysPersona\" id=\"whaiIntro\"><div class=\"pathwaysPersonaImage\"><img class=\"img-fluid imageCentral\" src=\"pathwaysPersonas/whai.jpg\" alt=\"\" /><div class=\"pathwaysPersonaText\"><h5>Whai</h5></div></div><div class=\"pathwaysPersonaControls\"><button type=\"button\" class=\"pathwaysPersonaBtn pathwaysPersonaPlay\" aria-label=\"Play audio\" title=\"Play\"></button><button type=\"button\" class=\"pathwaysPersonaBtn pathwaysPersonaTranscript\" aria-label=\"Show transcript\" title=\"Transcript\"></button></div><div class=\"pathwaysPersonaTranscriptContent\"><p class=\"marB0\">Transcript text</p></div></div>",
+          "detail": "Rangatahi personas with a recognisable circle image. Tagging: [Persona box] -> [Audioimage] (play button) -> [Photograph in a circle] -> [Audiovisual item N {name}] (real audio recordings, not AI) -> [Transcript button]. Identities: Section 1 Whai; Section 2 Leilani and Bailey; Section 3 Māia. DELIVERED (CL-0113): central images pathwaysPersonas/whai.jpg, pathwaysPersonas/bailey.jpg, pathwaysPersonas/leilani.jpg, pathwaysPersonas/māia.jpg (pathwaysPersonas/archive/ holds drafts — never reference it); the persona tags build the pathwaysPersona markup. The id names the audio file (id=\"whaiIntro\" plays audio/whaiIntro.mp3); both buttons stay empty; the .pathwaysPersonaText overlay is optional; the component must sit inside a row and a col (e.g. col-md-4 col-6 per persona); noAudio on .pathwaysPersona strips it back to just the circular image. Source: KB 14A §14.2 (23 Sept 2026)."
         },
         {
           "name": "No new-curriculum K/P statements yet (deferred)",
@@ -1174,7 +1248,7 @@
       "doc_section": "14.9",
       "active": false,
       "overrides_gold": true,
-      "source_updated": "2026-07-09",
+      "source_updated": "2026-07-09; refreshed 2026-09-24 from KB 910a9cb (the claude-audit brief A — CL-0112 / CL-0113 delivered assets; the loop's session 40 Round 7, Phase 3b)",
       "roadmap": "parameters explicitly PARTIAL ('Most of the parameters still to come'); bookworm art + audio under development. No corpus presence yet.",
       "scope": {
         "type": "module-series",
@@ -1196,27 +1270,39 @@
           "detail": "The BLL conventions (writing font, elkonin boxes, .dropbox carve-out, etc.) are scoped to BLL and do not automatically bind BLLR. Where a BLLR module needs a BLL convention it must be recorded HERE explicitly or raised as a Red Flag. Parameters incomplete — prefer a built BLLR sibling (Mode B) where one exists; Red Flag any BLLR convention this section does not yet cover rather than inferring from §14.7."
         },
         {
-          "name": "Bookworm avatar by module-code range (deferred art + audio)",
-          "kind": "deferred_asset",
+          "name": "Bookworm avatar by module-code range (art DELIVERED — CL-0113; audio pending)",
+          "kind": "asset",
           "keywords": [
             "bookworm",
             "avatar",
             "character"
           ],
-          "red_note": "bookworm character art still under development; audio/audiovisual to be developed; confirm exact filename casing when assets are delivered",
+          "red_note": "bookworm audio / audiovisual still to be developed (emit ONLY where the Writers Template calls for the bookworm's audio)",
+          "red_note_retired_cl0113": "bookworm character art still under development; confirm exact filename casing when assets are delivered — RETIRED by CL-0113: the art is delivered and the files are lower-case.",
           "html": "<img class=\"img-fluid imageCentral\" loading=\"lazy\" src=\"bookworms/bookworm_1.jpg\" alt=\"Bookworm\" >",
-          "detail": "Cartoon bookworm (plump, energetic — per the AVR form), one per year suite: bookworm_1.jpg = BLLR201-BLLR210 (Year 4); bookworm_2.jpg = BLLR211-BLLR220 (Year 5); bookworm_3.jpg = BLLR221-BLLR230 (Year 6). Folder bookworms/. The source email capitalises the first filename (Bookworm_1.jpg) but its supplied <img> uses lower-case — FOLLOW THE SUPPLIED <img> (lower-case bookworm_N.jpg) and red-note the casing question."
+          "detail": "Cartoon bookworm, one per year suite: bookworm_1.jpg = BLLR201-BLLR210 (Year 4); bookworm_2.jpg = BLLR211-BLLR220 (Year 5); bookworm_3.jpg = BLLR221-BLLR230 (Year 6). Art DELIVERED (CL-0113, September 2026 server list): bookworms/bookworm_1.jpg, bookworms/bookworm_1a.jpg, bookworms/bookworm_2.jpg, bookworms/bookworm_3.jpg — lower-case, which settles the casing question (follow the lower-case <img>; the confirm-the-casing note is dropped). Emit the real <img> for the module's code range, no art To Do note (gold: BLLR201–203 carry bookworms/bookworm_1.jpg). The audio with audiovisual is still to be developed. bookworms/archive/ and bookworms/idk/ are the design team's working files — never reference them. Source: KB 14B2 §14.9 (23 Sept 2026)."
         },
         {
-          "name": "'Secret shelf' + 'Whispering Archives' map — design under construction",
-          "kind": "deferred_asset",
+          "name": "'Secret shelf' — BUILT: the bookshelf component (CL-0113)",
+          "kind": "structural",
           "keywords": [
             "secret shelf",
+            "bookshelf",
+            "book cover"
+          ],
+          "component_owner": "bookshelf.html (gold BLLR202 / BLLR203)",
+          "html": "<div class=\"bookshelf row\"><div class=\"shelf col-md-8 col-12\"><div class=\"bookCover\"><img src=\"images/detective-beans/Cover.jpg\" alt=\"\" class=\"img-fluid\"></div><div class=\"bookCover blank\"><h4>Wild Robot</h4><h5>Peter Brown</h5></div></div><div class=\"bookContainer col-md-8 col-12\"><div class=\"bookContent\"><div class=\"row carousel\"><div class=\"col-md-12 col-12 viewer\"><div class=\"item image\"><div class=\"row\"><div class=\"col-md-8 offset-md-2 col-12\"><img src=\"images/detective-beans/Cover.jpg\" alt=\"\" class=\"img-fluid\"></div></div></div><!-- one item image per page: Cover, First-page, Mid-book, Blurb … --></div></div></div><!-- one bookContent per bookCover, in the same order --></div></div>",
+          "detail": "Book covers sit on a shelf (each cover styled 20 % wide); clicking a cover opens that book's carousel. One bookCover per book (a cover image, or 'bookCover blank' with the title <h4> and author <h5> where there is no cover image), and one bookContent carousel per cover in the same order. Shelf acknowledgement (supplied): 'Photo: Bookshelves with books for children, iStock 1423266435, Getty Images. Used with permission.' The former 'design under construction' red note for the secret shelf is RETIRED. Source: KB 14B2 §14.9."
+        },
+        {
+          "name": "'Whispering Archives' map — design under construction",
+          "kind": "deferred_asset",
+          "keywords": [
             "whispering archives",
             "map"
           ],
           "red_note": "Design is under construction with the development team.",
-          "detail": "Both features are explicitly required to carry a red note, IN PLACE. This is a direct instruction from the design authority (right-but-pending -> 'Designer/Developer To Do:' prefix), NOT a Convertor-detected gap (never 'Red Flag:')."
+          "detail": "Still explicitly required to carry a red note, IN PLACE. A direct instruction from the design authority (right-but-pending -> 'Designer/Developer To Do:' prefix), NOT a Convertor-detected gap (never 'Red Flag:'). (Split from the former 'Secret shelf + Whispering Archives' entry on 2026-09-24 — the shelf is built, CL-0113; the map is not.) Source: KB 14B2 §14.9."
         }
       ]
     },
@@ -1226,7 +1312,7 @@
       "doc_section": "14.10",
       "active": false,
       "overrides_gold": true,
-      "source_updated": "2026-07-09; WJ ledger rules captured 2026-07-29..30 (CL-0058/0059/0060/0063/0065/0066)",
+      "source_updated": "2026-07-09; WJ ledger rules captured 2026-07-29..30 (CL-0058/0059/0060/0063/0065/0066); refreshed 2026-09-24 from KB 910a9cb (the claude-audit brief A — CL-0112 / CL-0113 delivered assets; the loop's session 40 Round 7, Phase 3b)",
       "roadmap": "Kea art + audio under development. No corpus presence yet.",
       "scope": {
         "type": "cohort",
@@ -1272,18 +1358,36 @@
           "detail": "Like other FUNs — intro page then clickable images to specific lessons, any order; side-nav tabs inside each lesson (Maths 1-10 FUNS pattern). Tile images consistent across each phase per FUN topic; all tiles in a FUN the same phase."
         },
         {
-          "name": "Kea character by phase (deferred art + audio)",
-          "kind": "deferred_asset",
+          "name": "Kea character by phase (art DELIVERED — CL-0113; audio pending)",
+          "kind": "asset",
           "keywords": [
             "kea",
             "character",
             "speech bubble",
             "audio"
           ],
-          "red_note": "Kea character art and audio still under development",
+          "red_note": "Kea audio still under development (the speech bubble's audio slot)",
+          "red_note_retired_cl0113": "Kea character art and audio still under development — the ART half RETIRED by CL-0113 (delivered); the audio half stays in red_note.",
+          "red_flag_kea5": "the server lists Kea_5.jpg (capital K) while the built modules write kea_characters/kea_5.jpg — follow the built modules until the design team confirms",
           "html": "<img class=\"img-fluid imageCentral\" loading=\"lazy\" src=\"kea_characters/kea_1.jpg\" alt=\"Kea character\" >",
           "component_owner": "04 Segments/Overlays (speech bubble)",
-          "detail": "Kea features within each lesson, varying slightly by phase (medallion placement / wing colours). Folder kea_characters/; kea_1.jpg / kea_2.jpg / kea_3.jpg per phase. When Kea appears he also has a speech bubble and audio (mechanics stay in 04)."
+          "detail": "Kea features within each lesson, varying slightly by phase (medallion placement / wing colours). Art DELIVERED (CL-0113): kea_characters/kea_1.jpg, kea_2.jpg, kea_3.jpg, kea_4.jpg, Kea_5.jpg, kea_6.jpg, plus the custom pair kea_characters/customKea/kea_formal.jpg, kea_formal_text.jpg, kea_informal.jpg, kea_informal_text.jpg (gold: 21 WJFUN modules). UNRESOLVED filename mismatch: the server lists Kea_5.jpg with a capital K while the built modules write kea_characters/kea_5.jpg (WJFUN108 / 205 / 210 / 212) — record both; follow the built modules (kea_5.jpg) and raise a Red Flag naming the mismatch where kea 5 is used. The server does not say which image belongs to which phase — follow a same-phase sibling module. No art To Do note; the audio is still pending, so the speech bubble's audio slot keeps its note. When Kea appears he also has a speech bubble and audio (mechanics stay in 04). Source: KB 14B2 §14.10 (23 Sept 2026)."
+        },
+        {
+          "name": "Writing process graphic — the writingProcess component (CL-0113)",
+          "kind": "structural",
+          "keywords": [
+            "writing process",
+            "plan",
+            "draft",
+            "revise",
+            "edit",
+            "publish"
+          ],
+          "component_owner": "writingProcess.html (gold ENGC206 / ENGC403 / ENGS404)",
+          "html": "<div class=\"writingProcess\" phase=\"1-yr-1\"></div>",
+          "html_single_stage": "<div class=\"writingProcess singleStage\" stage=\"Plan\"></div>",
+          "detail": "The writing-process graphic is centralised and generated by the template from one empty div — phase values 1-yr-1, 1-yr-23, 2-yr-456, 3-yr-78, 4-yr9-10, 5-NCEA1; a single stage: stage values Plan / Draft / Revise / Edit / Publish / Reflect / Checkpoint / Checkpoint_1 / Checkpoint_2 / Checkpoint_3. The div must sit in its own row (inside a col) or it will bug. The stage images live centrally under 'writing process/phase N/' (e.g. 'writing process/phase 2/plan.png'); never copy them into the module. Source: KB 14B2 §14.10."
         },
         {
           "name": "[MTK Quiz] outranks a co-occurring in-page quiz tag (CL-0058)",

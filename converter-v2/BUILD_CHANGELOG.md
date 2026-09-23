@@ -1,5 +1,27 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (round 450, build 260620.21) — THE CLAUDE-AUDIT PHASE 3b: the inert subject-parameters refresh — the HPE, Languages, BLLR, MiW and Pathways families now record what the September 2026 KB update delivered (characters, icons, phrase images, bookworms, bookshelf, kea, writing process, personas) — output-inert, no regeneration — the loop's session 40 Round 7 (Chris-approved kickoff; Phase 3 measured and declined in Round 5)
+
+### 1. WHAT CHANGED
+
+The claude-audit kickoff (`00-NEW_NEW_NEW/NEW_SESSION_MESSAGE__claude-audit_Approved_Changes.md`) Phase 3b: bring `data/Subject_Global_Parameters.json` (the doc-14 capture, `master_enabled: false`) up to the KB's brief-A changes (KB `910a9cb`, CL-0111 / CL-0112 / CL-0113) — the r244 pattern: data only, no engine path, no data flag, no toggle, no regeneration.
+
+- **§14.8 HPE (CL-0111):** the characters entry is refreshed — **all five delivered** for phases 1–4 (full body poses 1–2, the non-uniform head-only set, the phase-1 pairs), its missing-character To Do note **retired** (kept as `red_note_retired_cl0111`, never emitted); three new conventions: the **Health-and-Safety supervisor guidance block** (Shape A, the writer's wording verbatim), **WATER** safety content in a visible alert (never a supervisor note), **beyond two speech bubbles** faces only and a longer conversation as a carousel.
+- **§14.1 Languages (CL-0112):** the icons are **central** — `Language icons/Language icons_<Name>.jpg` + the `P1`–`P4` variants with the server's mixed case (`Reading p1`, `idea`, `linguist`); the module-local `images/Icons/…` folders retired; the **19 Samoan phrase images** (verbatim file names, their iStock numbers); the **Spanish un-numbered family tree**; the Felix "Co-pilot test" images noted as removed (Felix is the Vimeo character).
+- **§14.9 BLLR (CL-0113):** **bookworm art delivered** (`bookworm_1 / 1a / 2 / 3.jpg`, lower-case — the casing To Do retired; the audio To Do kept); the **secret shelf BUILT** — the `bookshelf` component with its supplied markup and acknowledgement; the **Whispering Archives** map split out and still deferred.
+- **§14.10 MiW (CL-0113):** **kea art delivered** (`kea_1`…`kea_6`, the `customKea/` pair; the server's `Kea_5.jpg` vs the built `kea_5.jpg` recorded as an unresolved mismatch); the audio To Do kept; the **writingProcess** component (phase / singleStage forms, its own row).
+- **§14.2 Pathways (CL-0113):** the persona details **delivered** — the `pathwaysPersona` component (the four images, the markup, `id` = the audio file, `noAudio`), the persona To Do retired.
+
+### 2. PROOF
+
+- **Inertness:** the full-corpus in-memory probe (`_s40_r7_probe_run.sh ON`, the r448 harness — pages AND `_interactives.txt` worklists, all 545 modules) = **3208 / 3208 identical** (the brief's r244-style probe modules PES1007 / BLL210 / TRR203 / PWY1001 / WJFUN210 among them). `master_enabled` stays `false`. JSON valid; the file keeps its two-space indentation and LF.
+- `KB_AMALGAMATION_STATUS.md` rows 0111 / 0112 / 0113 → **CAPTURED-INERT — r450**. The kickoff's progress file gains its Phase 3b line.
+
+### 3. PROTECTED GATES
+
+- No output byte changes → every gate is the ROUND 449 BASELINE by construction: SCAFFOLD **54.7407 % @ 2477**, cs 15657 / 199 / 796 / 24, body 57 / 5 / 200 / 260, clean 2613 / 2658, leak 75 / 45, every verifier ✓.
+- Plateau (§4): output-inert — neither counts nor resets; **1 of 3**.
+
 ## 2026-09-24 (round 449, build 260620.20) — THE TYPING QUIZ, shape 1: where the writer typed each question's answer in red on the question line, the typing hand-off box now builds as the KB's typing quiz (an input at each answer, answer= the writer's red words) — Chris's decision D13-4 (the second quiz type; the multiChoiceQuiz kickoff declined on measurement first), the loop's session 40 Rounds 3–4
 
 ### 1. WHAT CHANGED

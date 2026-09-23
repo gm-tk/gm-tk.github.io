@@ -219,9 +219,9 @@ Front-facing = changes the generated HTML/CSS (constraint 87). Each front-facing
 | 0095 label-prefix strip | FF | c1 / c47 | NOT CAPTURED |
 | 0109 writing font `writeFont` | FF | c93 | LIVE — r439 (`WRITEFONT_OFF`) |
 | 0110 Fundamentals plain intro + panels from `phase="1"` (no `phase="0"`) | FF | template §3.3 | N/A — PageForge already emits the plain-intro majority (claude-audit answer 2) |
-| 0111 HPE supervisor block / WATER alert / characters complete / two-bubble rule | FF | 14.8 | CAPTURED-INERT → claude-audit Phase 3b |
-| 0112 Languages central icons + Samoan phrase images + Spanish un-numbered tree | FF | 14.1 | CAPTURED-INERT → claude-audit Phase 3b |
-| 0113 BLLR bookworms + bookshelf, MiW kea + writingProcess, Pathways personas | FF | 14.9 / 14.10 / 14.2 | CAPTURED-INERT → claude-audit Phase 3b |
+| 0111 HPE supervisor block / WATER alert / characters complete / two-bubble rule | FF | 14.8 | **CAPTURED-INERT — r450 (24 Sept 2026, the claude-audit Phase 3b, loop session 40 Round 7)**: `Subject_Global_Parameters.json` §14.8 — the characters entry refreshed (all five delivered, the missing-character note retired), + the H&S supervisor block, WATER, beyond-two-bubbles; inert (master_enabled false; the full-corpus probe 3208 / 3208 identical) |
+| 0112 Languages central icons + Samoan phrase images + Spanish un-numbered tree | FF | 14.1 | **CAPTURED-INERT — r450**: §14.1 icons central (`Language icons/…`, P1–P4, the server's mixed case; the module-local folders retired), the 19 Samoan phrase images, the Spanish un-numbered tree, the Felix test images noted as removed; inert |
+| 0113 BLLR bookworms + bookshelf, MiW kea + writingProcess, Pathways personas | FF | 14.9 / 14.10 / 14.2 | **CAPTURED-INERT — r450**: §14.9 bookworm art delivered + the bookshelf component (the Whispering Archives map still deferred), §14.10 kea art delivered (the `Kea_5` / `kea_5` mismatch recorded) + the writingProcess component, §14.2 the pathwaysPersona component; inert |
 | 0114 `layout="thought"` named | FF | COMP_09 | LIVE (pre-existing — the `thought bubble` lexicon family) |
 | 0115 equations output MathML, every input form | FF | COMP_12 | PARTIAL — OMML → MathML LIVE (`MATHML_OFF`); LaTeX-text / `[Math]` fractions NOT CAPTURED (future round) |
 
