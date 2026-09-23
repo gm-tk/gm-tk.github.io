@@ -1,0 +1,11 @@
+image-description paragraphs inside built bubbles: 8 on 8 pages / 1 modules
+  TEDC402: 8 leaks on 8 pages (of 59 bubbles)
+by prefix: [('TEDC', 8)]
+  sample: ('TEDC402', 'TEDC402_2_0.html', 'avatar tina', False)
+  sample: ('TEDC402', 'TEDC402_3_0.html', 'avatar tina', False)
+  sample: ('TEDC402', 'TEDC402_4_0.html', 'avatar tina', False)
+  sample: ('TEDC402', 'TEDC402_5_0.html', 'avatar tina', False)
+  sample: ('TEDC402', 'TEDC402_6_0.html', 'avatar tina', False)
+  sample: ('TEDC402', 'TEDC402_7_0.html', 'avatar tina', False)
+  sample: ('TEDC402', 'TEDC402_8_0.html', 'avatar tina', False)
+  sample: ('TEDC402', 'TEDC402_9_0.html', 'avatar tina', False)

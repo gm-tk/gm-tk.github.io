@@ -1,0 +1,20 @@
+[04:48:15] r271 census OFF — 16 shards
+  merge rc=0
+[04:49:26] r271 census ON — 16 shards
+  merge rc=0
+[04:50:37] proof: ON minus the quiz types == OFF
+OFF 5732 records; ON 7286 (1554 quiz); non-quiz identical: true
+  multiChoiceQuiz: 413 Build calls, 12 built, 188 modules
+  dropDown: 598 Build calls, 341 built, 219 modules
+  radioQuiz: 89 Build calls, 0 built, 60 modules
+  reorder: 104 Build calls, 0 built, 65 modules
+  selectionBox: 80 Build calls, 0 built, 39 modules
+  typing: 270 Build calls, 8 built, 85 modules
+[04:50:37] r286 decline recorder — 16 shards
+  merge rc=0
+[04:51:48] dashboard --refresh
+  rc=0
+WARN: skeleton state predates the newest engine change (2026-09-24) — its rows may lag.
+WARN: body_compare predates the newest engine change (2026-09-24) — its rows may lag.
+WARN: feature index predates the newest engine change (2026-09-24) — its rows may lag.
+[04:52:09] DASH_DONE

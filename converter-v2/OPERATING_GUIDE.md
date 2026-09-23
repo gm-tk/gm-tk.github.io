@@ -1088,6 +1088,13 @@ now prints `!! SHARDS MISSING`), and a missing shard under-reports a population 
 bundle (7602) and reports 29.7% coverage; the standing dashboard's denominator is narrower
 and reports ~43%. Quote one tool's before/after, never a figure from each.
 
+**The census counts the quiz engines (session 40 Round 10, 24 Sept 2026 — a measurement-tool round, no engine change).**
+Its `WANT` set now also holds the D13-4 types (multiChoiceQuiz / typing / dropDown / dropQuiz / radioQuiz / reorder /
+selectionBox — `interactive_placeholder.answer_key_d13_4.types`), so the dashboard's §4 widget-round "still a box" test
+reads for them. **The headline coverage RE-BASED 50.8 % (2910 / 5732) → 44.9 % (3271 / 7286) — an instrument change,
+never a loss**: `CENSUS_QUIZ_OFF=1` reproduces the old census, and the non-quiz records are identical record for record
+(`outputs/_s40_r10_dashboard_run.sh`, the proof in its log). Compare coverage across this line only with the same setting.
+
 **Builder-coverage census (round 271).** `outputs/_measure_r271_variations.cjs` walks every module,
 records an authoring-SHAPE signature for every captured non-complex bundle and whether the shipped
 builder built it (`--merge` = the coverage table, `--report <type>` = declining shapes);

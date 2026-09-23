@@ -1,0 +1,6 @@
+('cue', 'gold_has') 3 modules 1 [('HIS1002', 3)]
+('cue', 'gold_lacks') 20 modules 9 [('EXBP901', 5), ('ANZH103', 4), ('MXEO202', 4), ('ANZH203', 2), ('MXFUN01', 1), ('MXFUN03', 1), ('JPN1004', 1), ('MXEX301', 1)]
+('plain', 'gold_has') 25 modules 9 [('ENGJ402', 9), ('PES1002', 5), ('ANZH203', 4), ('PES1005', 2), ('FRFUN08', 1), ('CEDK101', 1), ('CEDK401', 1), ('CEDR401', 1)]
+('plain', 'gold_lacks') 21 modules 12 [('ANZH105', 5), ('PES1002', 3), ('PES1003', 3), ('CEDO301', 2), ('CEDK401', 1), ('CEDR203', 1), ('CBI1004', 1), ('ENG1004', 1)]
+('stock', 'gold_has') 18 modules 10 [('PES1002', 5), ('PES1005', 4), ('XGF9006', 2), ('CEDR203', 1), ('XDLS901', 1), ('ANZH203', 1), ('CEDO301', 1), ('MXDI301', 1)]
+('stock', 'gold_lacks') 90 modules 15 [('TEDC402', 42), ('XDLS901', 9), ('XDLS905', 7), ('XGF9006', 6), ('PES1002', 5), ('XDLS906', 5), ('CEDR203', 4), ('ANZH105', 2)]
