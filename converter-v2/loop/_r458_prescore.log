@@ -1,0 +1,51 @@
+
+## ART1006: pairs 4 -> 3
+   ART1006_0.0.html         OLD ART1006_0_0.html    47.1  NEW ART1006_0_0.html    47.1 (raw  54.4)
+   ART1006_1.0.html         OLD ART1006_2_0.html    29.6  NEW ART1006_2_0.html    29.6 (raw  21.2)
+   ART1006_3.0.html         OLD ART1006_3_1.html    43.8  NEW ART1006_4_0.html    43.8 (raw  41.1)
+   ART1006_4.0.html         OLD ART1006_4_0.html    19.5  NEW —                    ——
+   module sum 139.9 over 4 -> 120.4 over 3  (mean 35.0 -> 40.1)
+
+## BLLR201: pairs 7 -> 7
+   BLLR201_0_0.html         OLD BLLR201_0_0.html    73.5  NEW BLLR201_0_0.html    73.5 (raw  36.4)
+   BLLR201_1_0.html         OLD BLLR201_1_1.html    74.3  NEW BLLR201_1_0.html    74.3 (raw  30.9)
+   BLLR201_1_1.html         OLD BLLR201_2_0.html    51.9  NEW BLLR201_1_1.html    56.3 (raw  29.0)
+   BLLR201_2_0.html         OLD BLLR201_3_0.html    69.4  NEW BLLR201_2_0.html    69.4 (raw  39.9)
+   BLLR201_3_0.html         OLD BLLR201_4_0.html    93.9  NEW BLLR201_3_0.html    93.9 (raw  69.1)
+   BLLR201_4_0.html         OLD BLLR201_5_0.html    75.8  NEW BLLR201_4_0.html    75.8 (raw  59.1)
+   BLLR201_5_0.html         OLD BLLR201_6_0.html    78.1  NEW BLLR201_5_0.html    78.1 (raw  57.8)
+   module sum 516.9 over 7 -> 521.3 over 7  (mean 73.8 -> 74.5)
+
+## BLLR202: pairs 7 -> 7
+   BLLR202_0_0.html         OLD BLLR202_0_0.html    69.4  NEW BLLR202_0_0.html    69.4 (raw  60.8)
+   BLLR202_1_0.html         OLD BLLR202_1_1.html    45.8  NEW BLLR202_1_0.html    60.6 (raw  23.5)
+   BLLR202_2_0.html         OLD BLLR202_2_0.html    44.1  NEW BLLR202_2_0.html    44.1 (raw  26.5)
+   BLLR202_3_0.html         OLD BLLR202_3_0.html    70.8  NEW BLLR202_3_0.html    70.8 (raw  33.2)
+   BLLR202_3_1.html         OLD BLLR202_3_1.html    84.3  NEW BLLR202_3_1.html    86.7 (raw  70.9)
+   BLLR202_4_0.html         OLD BLLR202_4_0.html    64.5  NEW BLLR202_4_0.html    64.5 (raw  41.4)
+   BLLR202_5_0.html         OLD BLLR202_5_1.html    63.1  NEW BLLR202_5_0.html    73.1 (raw  48.6)
+   module sum 442.1 over 7 -> 469.4 over 7  (mean 63.2 -> 67.1)
+
+## BLLR203: pairs 7 -> 7
+   BLLR203_0_0.html         OLD BLLR203_0_0.html    69.3  NEW BLLR203_0_0.html    69.3 (raw  60.3)
+   BLLR203_1_0.html         OLD BLLR203_1_1.html    50.4  NEW BLLR203_1_0.html    56.2 (raw  21.2)
+   BLLR203_2_0.html         OLD BLLR203_2_0.html    42.2  NEW BLLR203_2_0.html    42.2 (raw  28.8)
+   BLLR203_3_0.html         OLD BLLR203_3_0.html    83.1  NEW BLLR203_3_0.html    83.1 (raw  45.3)
+   BLLR203_4_0.html         OLD BLLR203_4_0.html    64.7  NEW BLLR203_4_0.html    64.7 (raw  59.3)
+   BLLR203_4_1.html         OLD BLLR203_4_1_0.html  65.0  NEW BLLR203_4_1_0.html  72.1 (raw  52.2)
+   BLLR203_5_0.html         OLD BLLR203_5_0.html    68.6  NEW BLLR203_5_0.html    68.6 (raw  47.3)
+   module sum 443.2 over 7 -> 456.0 over 7  (mean 63.3 -> 65.1)
+
+## HIS1001: pairs 8 -> 8
+   HIS1001-0.0.html         OLD HIS1001_0_0.html    52.3  NEW HIS1001_0_0.html    52.3 (raw  31.1)
+   HIS1001-10.0.html        OLD HIS1001_10_0.html   26.7  NEW HIS1001_10_0.html   26.7 (raw  18.2)
+   HIS1001-3.0.html         OLD HIS1001_3_0.html    29.1  NEW HIS1001_3_0.html    29.1 (raw  19.6)
+   HIS1001-4.0.html         OLD HIS1001_4_0.html    32.3  NEW HIS1001_4_0.html    32.3 (raw  21.1)
+   HIS1001-5.0.html         OLD HIS1001_5_0.html    32.7  NEW HIS1001_5_0.html    34.3 (raw  27.9)
+   HIS1001-7.0 .html        OLD HIS1001_7_0.html    41.8  NEW HIS1001_7_0.html    41.8 (raw  35.7)
+   HIS1001-8.0.html         OLD HIS1001_8_0.html    29.2  NEW HIS1001_8_0.html    29.2 (raw  27.8)
+   HIS1001-9.0.html         OLD HIS1001_9_0.html    28.3  NEW HIS1001_9_0.html    28.3 (raw  21.7)
+   module sum 272.3 over 8 -> 273.9 over 8  (mean 34.0 -> 34.2)
+
+changed modules: pairs 33 -> 32; pp-sum 1814.5 -> 1841.0 (+26.6)
+corpus: 54.8967 % @ 2519 -> ≈ 54.9291 % @ 2518  (+0.0324pp);  >=50 +1, >=75 +0

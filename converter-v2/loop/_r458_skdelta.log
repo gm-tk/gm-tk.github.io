@@ -1,0 +1,15 @@
+OLD pairs 2519  SCAFFOLD 54.8967%  RAW 38.896%  >=50 1577  >=75 270  >=90 24
+NEW pairs 2518  SCAFFOLD 54.9291%  RAW 38.917%  >=50 1578  >=75 270  >=90 24
+delta SCAFFOLD +0.0324pp  RAW +0.021pp  >=50 +1  >=75 +0  >=90 +0
+movers 9 (up 7 / down 2), pp-sum +43.6
+movers outside the affected set: 0 []
+new-only pages: 4  gone pages: 5
+  BLLR201    BLLR201_3_0.html           69.4 ->   93.9  (+24.5)
+  ART1006    ART1006_4_0.html           19.5 ->   43.8  (+24.4)
+  BLLR201    BLLR201_2_0.html           51.9 ->   69.4  (+17.5)
+  BLLR203    BLLR203_4_1_0.html         65.0 ->   72.1  (+7.1)
+  BLLR202    BLLR202_3_1.html           84.3 ->   86.7  (+2.4)
+  BLLR201    BLLR201_5_0.html           75.8 ->   78.1  (+2.3)
+  HIS1001    HIS1001_5_0.html           32.7 ->   34.3  (+1.6)
+  BLLR201    BLLR201_1_1.html           74.3 ->   56.3  (-18.0)
+  BLLR201    BLLR201_4_0.html           93.9 ->   75.8  (-18.1)

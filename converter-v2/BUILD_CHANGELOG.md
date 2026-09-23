@@ -1,5 +1,26 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (round 458, build 260620.28) — A PLACEMENT NOTE IS NOT A PAGE BOUNDARY: a writer's note saying where something goes on the page ("[Kōwhai Avatar – right hand side of the page]", "[Insert bookworm on right side of page …]") no longer cuts the lesson into an extra page — the loop's session 41 Round 6 (the over-split census, continued)
+
+### 1. WHAT CHANGED
+
+The over-split census (Claude builds more pages than the human: BLLR202 12 / 7, BLLR203 10 / 7, BLLR201 8 / 7) traced the extra pages to the embedded-marker inventory of Round 5 (`outputs/_s41_r5_embedmark_0*.log`): placement notes whose word "page" parses as an embedded `page` PAGE_BOUNDARY — `[Kōwhai Avatar – right hand side of the page]` (BLLR201–203 ×4), `[Insert bookworm on right side of page pulling a p…]` / `[Insert bookworm avatar on right hand side of the …]` (BLLR202 / 203 ×4), `[Create two new colour boxes to go on the side of the page …]` (ART1006), `[So you have the cartoon on the left of the whole page …]` (HIS1001). The r245 guard's instruction test does not catch them (not instruction-dominant, no foreign code, no hover lead).
+
+**The fix** (the r245 `PageSplitter` lesson_boundary_guard; data `Emit_Templates.page_split.lesson_boundary_guard.deny_position_pattern`; env **`POSNOTE_OFF`**, byte-identical OFF): an embedded span whose folded text says `(right|left)( hand) side | side | top | bottom | corner | centre | middle | left | right  of (the) (whole) page` is a POSITION, not a boundary — it stays in the page (the guard's deny path).
+
+### 2. PROOF
+
+- In-memory A/B (`outputs/_r458_probe_run.sh`): OFF identical; ON 29 pages / 5 modules (ART1006, BLLR201, BLLR202, BLLR203, HIS1001).
+- Pre-score with re-pairing (`_r458_prescore.py` / `.log`, split `_r458_split.py`): the pre-existing pairs **+46.1 pp-sum, 7 up / 0 down**; 1 lost pair — ART1006_4.0 (19.5; that module's human restructured it — its 4.0 is a 33 KB "Art Passion Project" page matching none of Claude's task pages).
+- Scoped regeneration of the 5 + the spot-check (`_r458_regen.sh`): 0 truly stale, 12 / 12; disk = probe 40 / 40; `scoped_ship.sh --toggle POSNOTE_OFF --round 458`: containment 5 ⊆ 5; two movers committed NAMED.
+
+### 3. PROTECTED GATES
+
+- Skeleton **54.8967 % @ 2519 → 54.9291 % @ 2518 (+0.0324pp)**; ≥50 1577 → **1578**, ≥75 270, ≥90 24; RAW 38.896 → 38.917; 0 movers outside the affected set.
+- compare_structure: matched 18664 → 18925, **exact 16045 → 16282 (+237)**, EXTRA 199, **missing 847 → 860 (+13 NAMED — on the +261 newly matched BLLR201–203 elements: +4 / +7 / +2)**, row-wrap 24.
+- body_compare 62 / 5 / 176 / **240 held** (pages 2692 → 2683). Structurally clean **2646 / 2692 → 2637 / 2683 (98.29 %, NAMED)** — the 9 removed pages were all clean; unclean held at 46. Leak 75 / 46 held. tags 9557 / 9557; every verifier ✓; selftests 50 PASS; index GREEN; the miner 196 CANDIDATE @ 2518.
+- Plateau (§4): predicted a move, delivered +0.0324pp — the window stays reset. Ledger: scoped **#5** since the r452 FULL.
+
 ## 2026-09-24 (round 457, build 260620.27) — THE SECTION-LABEL MARKER IS NOT A PAGE BOUNDARY: the writer's inline `[lesson title]` label and a red `[Lesson Summary]` label before a short summary no longer cut the lesson into extra pages — the loop's session 41 Round 5 (the page-model lane: the over-split census)
 
 ### 1. WHAT CHANGED

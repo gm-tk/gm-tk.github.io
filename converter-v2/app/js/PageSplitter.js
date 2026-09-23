@@ -614,6 +614,14 @@ class PageSplitter {
 					// the lesson, not a new one; the human keeps both on the lesson page (HIS1002 11
 					// pages, PES1008 12, where they opened 21 and 19). Data
 					// lesson_boundary_guard.deny_marker_pattern; env LABELMARK_OFF.
+					// ROUND 458 (the autonomous loop's session 41 Round 6) — A PLACEMENT NOTE. "[Kōwhai
+					// Avatar – right hand side of the page]", "[Insert bookworm on right side of page …]"
+					// (BLLR201–203), "[Create two new colour boxes to go on the side of …]" (ART1006) say
+					// WHERE on the page something goes — 'page' is a position, not a boundary. Data
+					// lesson_boundary_guard.deny_position_pattern; env POSNOTE_OFF.
+					if (!_deny && _lbgCfg.deny_position_pattern
+						&& !(typeof process !== "undefined" && process.env && process.env.POSNOTE_OFF)
+						&& new RegExp(_lbgCfg.deny_position_pattern, "i").test(_folded)) _deny = true;
 					const _lmOn = !(typeof process !== "undefined" && process.env && process.env.LABELMARK_OFF);
 					if (!_deny && _lmOn && _lbgCfg.deny_marker_pattern
 						&& new RegExp(_lbgCfg.deny_marker_pattern, "i").test(_folded.trim())) _deny = true;
