@@ -58,4 +58,10 @@ run "dragAndDrop verifier (03B)" env STUB_OEMBED=1 node --require ./_deflate_raw
 # value="correct" cell, the Reset / Check row, no raw [tag] / red marker in a cell. The set = the nine BLL modules whose WTs carry
 # the letter grid (BLL113 / BLL154 build none by design — word grids and a tile shape). Protected: defect 0.
 run "bingo verifier (03E)" env STUB_OEMBED=1 node --require ./_deflate_raw_polyfill.cjs _verify_bingo.cjs BLL110 BLL120 BLL130 BLL140 BLL150 BLL160 BLL170 BLL113 BLL154
+# typing verifier (round 449 — Chris's D13-4, the typing quiz shape 1: the writer's red answer on the question line → the KB 03D
+# text-only form): every BUILT typing quiz is div.typing layout="standardNoBorder" > typingContainer > div.row > <p> with question
+# text and >= 1 input (form-control, type text, placeholder "Type here", caseSensitive "false", a non-empty answer=), the reset /
+# checkAnswer hidden / showAnswer hidden row, no writer bracket. The set = the seven modules that build one (r449: 8 quizzes /
+# 57 inputs, 55 equal to a gold answer=). Protected: defect 0.
+run "typing verifier (03D)" env STUB_OEMBED=1 node --require ./_deflate_raw_polyfill.cjs _verify_typing.cjs BLL244 FRFUN08 MXDB302 MXEO301 MXFL301 MXFL302 PHE1007
 echo "=== gate suite complete ==="

@@ -2850,6 +2850,26 @@
 			"max_question_words": 63,
 			"max_option_words": 40
 		},
+		"typing": {
+			"_doc": "ROUND 449 (the loop's session 40 Round 4 — Chris's decision D13-4, the second quiz type after the multiChoiceQuiz kickoff declined on measurement). THE TYPING QUIZ, shape 1: THE WRITER'S RED ANSWER ON THE QUESTION LINE. typing had no builder: every one of its 270 bundles / 85 modules was a hand-off box. MEASURED (outputs/_s40_quizdump.cjs QTYPE=typing, _s40_r450_typingshapes.py / _s40_r450_typingred.py): 211 carry no answer at all (hand-offs by D13-4's never-invent rule); the highlights are mostly the GREEN highlighter, unannounced (outside the r309 fence D13-4 names); the red answer on the question line — inline (BLL244 '[red]What[/red] game are Zack and Kev playing…'), at the line's end (FRFUN08 'Je vais à le cinéma. Answer: [red]au'), or alone on the next paragraph — is 26 single non-table bundles / 15 modules, 178 answers, 137 (77 %) equal to the gold's own answer= values. THE FORM is KB 03D's text-only typing quiz (level 1): div.typing layout=standardNoBorder > div.typingContainer > one div.row per question line holding its <p> with an <input class=form-control type=text answer=… placeholder='Type here' caseSensitive='false' /> at each red answer; then the reset / checkAnswer hidden / showAnswer hidden row (KEPT with autoCheck — 03D). autoCheck from the WRITER's own words (the r305 list). THE BUILD, never half: members grouped by source paragraph; a red 'noise' member is an answer by Utils.AnswerKeyRedWord (r448 — a stray ']' skipped, a label rendered as text); an answer-only paragraph joins the line above; the answer-less paragraphs BEFORE the first question are the lead (rendered before the widget); an answer-less paragraph after it, a red INSTRUCTION inside a question line (MXDB302 types its question 'Rectangle 10cm by 2cm' in red), a table, a merged bundle or any other tag → decline and the honest hand-off box stays. A Word auto-number (the extractor writes '1. ' on every numbered-list paragraph) is stripped; a writer's typed number is kept. An 'answer' that is an answer-key label ('Answer: 15%', 'ANSWER: 125.68') or a question ('weekday?') declines (answer_reject_pattern). Env TYPING_OFF.",
+			"enabled": true,
+			"env": "TYPING_OFF",
+			"group_open": "<div class=\"typing{autocheck}\" layout=\"standardNoBorder\">\n<div class=\"typingContainer\">",
+			"container_close": "</div>",
+			"row": "<div class=\"row\">\n<p>{text}</p>\n</div>",
+			"input": "<input class=\"form-control\" type=\"text\" answer=\"{answer}\" placeholder=\"Type here\" caseSensitive=\"false\" />",
+			"buttons": "<div class=\"row\">\n<div class=\"activityButton reset\">Reset</div>\n<div class=\"activityButton checkAnswer hidden\">Check</div>\n<div class=\"activityButton showAnswer hidden\">Show</div>\n</div>",
+			"group_close": "</div>",
+			"lead": "<p>{text}</p>",
+			"autocheck_class": " autoCheck",
+			"autocheck_words": ["autocheck", "auto check", "auto-check", "automark", "auto mark", "auto-mark", "automarked", "auto marking", "auto-marking", "self-marking", "self marking", "self- marking", "autograded", "auto graded", "auto-graded"],
+			"text_tags": ["body", "paragraph"],
+			"word_number_pattern": "^\\s*\\d+[.)]\\s+",
+			"answer_reject_pattern": "^(?:correct\\s+)?answers?\\s*[:=]|\\?\\s*$",
+			"min_answers": 2,
+			"max_answer_words": 6,
+			"opener_note_min_words": 3
+		},
 		"dropDown": {
 			"_comment": [
 				"dropDown — a select-the-answer quiz. ROUND 287 (Chris): the FIRST builder this",

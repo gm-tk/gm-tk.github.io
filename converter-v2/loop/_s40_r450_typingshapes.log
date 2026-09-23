@@ -1,0 +1,24 @@
+un-built typing bundles 270 / modules 85
+   118 /  45 mod  ('(none)', 'table', 'single', '-')  e.g. BLL246#2, BLL252#3, BLL252#4, BLL262#2, BLL264#9
+    74 /  37 mod  ('(none)', 'lines', 'single', '-')  e.g. BLL255#3, BLL265#8, BLLR201#23, BLLR202#11, BLLR202#26
+    12 /   7 mod  ('red-inline', 'lines', 'single', '-')  e.g. BLL243#9, BLL244#6, FRNO902#38, MXDB302#13, MXDB302#33
+    10 /  10 mod  ('(none)', 'lines', 'merged', '-')  e.g. BLL261#8, BLL263#3, CEDO502#27, CHFUN05#18, ENGR302#21
+     9 /   7 mod  ('(none)', 'table', 'merged', '-')  e.g. CEDO501#2, CEDR501#23, CEDT501#36, FRNO901#47, FRNO902#66
+     9 /   7 mod  ('red-end', 'lines', 'single', '-')  e.g. MXDB302#41, MXEO301#40, MXEO301#42, MXEO401#5, MXFL301#29
+     5 /   4 mod  ('red-inline', 'table', 'single', '-')  e.g. ENGR302#10, MXDB302#31, MXFL301#15, MXFL301#55, MXFU301#11
+     4 /   4 mod  ('red-end', 'table', 'merged', '-')  e.g. BLL263#5, MXFL301#5, MXFL302#9, MXFU301#21
+     4 /   4 mod  ('(none)', 'table', 'single', 'ann-hl')  e.g. OSAH501#3, OSBY501#17, OSGM501#7, OSOH501#14
+     3 /   2 mod  ('red-end', 'lines', 'merged', '-')  e.g. BLL262#13, MXEO301#27, MXEO301#65
+     3 /   2 mod  ('blank', 'lines', 'single', '-')  e.g. FRNO902#21, FRNO902#49, WJFUN116#17
+     3 /   2 mod  ('red-inline', 'table', 'merged', '-')  e.g. MXEO301#7, MXEO301#32, MXFL302#56
+     2 /   2 mod  ('red-end', 'lines', 'single', 'ann-red')  e.g. FRFUN08#3, PHE1007#6
+     2 /   2 mod  ('red-alone', 'table', 'single', '-')  e.g. FRNO902#62, MXFU401#9
+     2 /   2 mod  ('yellow-in', 'lines', 'single', '-')  e.g. GENO901#44, WJFUN212#7
+     2 /   2 mod  ('red-alone', 'lines', 'merged', '-')  e.g. MXEX401#8, MXFL401#13
+     2 /   2 mod  ('red-alone', 'lines', 'single', '-')  e.g. MXFL401#10, MXFU401#6
+     1 /   1 mod  ('red-end', 'table', 'single', '-')  e.g. BLL262#10
+     1 /   1 mod  ('(none)', 'lines', 'single', 'ann-hl')  e.g. GENO901#27
+     1 /   1 mod  ('(none)', 'lines', 'single', 'ann-red')  e.g. HES1006#5
+     1 /   1 mod  ('red-inline', 'lines', 'merged', 'ann-red')  e.g. MXDB302#37
+     1 /   1 mod  ('red-inline', 'lines', 'merged', '-')  e.g. MXFL301#23
+     1 /   1 mod  ('red-alone', 'table', 'merged', '-')  e.g. MXFU401#8

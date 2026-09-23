@@ -1,6 +1,6 @@
 # DIFF_QUEUE.md — the diff miner's ranked class queue (LOOP__Autonomous_Rounds.md §1d)
 
-**Produced:** 2026-09-24 02:21 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD c40c805; Claude corpus 545 dirs). **Population:** the skeleton gate's own — 2477 paired pages / 533 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 91.0 s.
+**Produced:** 2026-09-24 03:05 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD 463b5c2; Claude corpus 545 dirs). **Population:** the skeleton gate's own — 2477 paired pages / 533 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 90.1 s.
 
 **What a row is.** One CLASS = (region, parent element, gold form, Claude form, direction) over every differing skeleton line of every paired page — the same lines, labels, widget collapse and difflib alignment the PRIMARY gate scores (each element its own line so it can be quoted). Direction: MISSING = gold has it, Claude lacks it; EXTRA = Claude has it, gold lacks it; SUBSTITUTED = same position, different tag / class / wrapper; MOVED = same text, different place. Consensus = of the gold pages in the group where the region exists, the share carrying the gold form (for EXTRA: the share NOT carrying Claude's form). Derivable = the gold line's text is in the module's parsed Writers Template (round-110 tolerance); structure-only differences are always derivable.
 
@@ -8,8 +8,8 @@
 
 ## Summary
 
-- differing skeleton lines: 278075 — by direction {'MISSING': 146324, 'SUBSTITUTED': 25643, 'EXTRA': 97099, 'MOVED': 9009}
-- by region: {'module-code': 23, 'title': 389, 'header': 6, 'module-menu': 13312, 'phases-nav': 57, 'crumbs': 57, 'footer': 2561, 'acks': 1384, 'activity': 100629, 'body': 158065, 'root': 1592}
+- differing skeleton lines: 278074 — by direction {'MISSING': 146322, 'SUBSTITUTED': 25644, 'EXTRA': 97099, 'MOVED': 9009}
+- by region: {'module-code': 23, 'title': 389, 'header': 6, 'module-menu': 13312, 'phases-nav': 57, 'crumbs': 57, 'footer': 2561, 'acks': 1384, 'activity': 100628, 'body': 158065, 'root': 1592}
 - classes: 9310 — CANDIDATE 195, below floor 8813, the rest below consensus / not derivable
 
 ## Completeness census — the repeating chrome (§1d item 4)
@@ -405,13 +405,13 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 | 453 | footer | SUBSTITUTED | `ul.footer-nav` | `li>a.home-nav` | `li>a.home-nav` | 12 | 10 | 0.83 of 2477 | era=Refresh c=0.83 n=10 | structure | yes | CANDIDATE |
 | 454 | footer | MISSING | `div#footer` | `ul.footer-nav` | `—` | 11 | 10 | 0.82 of 2477 | era=Refresh c=0.82 n=10 | structure | yes | CANDIDATE |
 | 539 | acks | SUBSTITUTED | `div.col-12.col-md-8` | `div.acks` | `div.acks.acksTemplate` | 105 | 105 | 0.16 of 2477 | template+ptype=Inquiry/overview c=0.82 n=41 | structure | yes | CANDIDATE |
-| 569 | activity | MISSING | `div.col-12` | `p` | `—` | 761 | 377 | 0.30 of 2470 | template+ptype=Inquiry/overview c=0.80 n=40 | 0.81 | — | CANDIDATE |
+| 569 | activity | MISSING | `div.col-12` | `p` | `—` | 760 | 377 | 0.30 of 2470 | template+ptype=Inquiry/overview c=0.80 n=40 | 0.81 | — | CANDIDATE |
 | 570 | activity | EXTRA | `div.col-12` | `—` | `p` | 594 | 301 | 0.88 of 2470 | subject=ANZH c=0.99 n=25 | structure | — | CANDIDATE |
 | 571 | activity | MISSING | `div.col-12` | `WIDGET` | `—` | 416 | 262 | 0.18 of 2470 | template+ptype=Inquiry/overview c=0.67 n=27 | structure | — | CANDIDATE |
 | 573 | activity | MISSING | `div.col-12` | `a` | `—` | 453 | 232 | 0.29 of 2470 | template+ptype=Inquiry/overview c=0.75 n=27 | 0.64 | — | CANDIDATE |
 | 574 | activity | MOVED | `div.col-12` | `p` | `p` | 317 | 212 | 0.19 of 2470 | template+ptype=Inquiry/overview c=0.77 n=25 | structure | — | CANDIDATE |
 | 575 | activity | EXTRA | `div.col-12` | `—` | `WIDGET` | 344 | 211 | 0.82 of 2470 | subject=NCEA1 c=0.94 n=38 | structure | — | CANDIDATE |
-| 576 | activity | MISSING | `div.col-12` | `h3` | `—` | 394 | 199 | 0.31 of 2470 | template+ptype=Fundamentals/overview c=0.85 n=31 | 0.70 | — | CANDIDATE |
+| 576 | activity | MISSING | `div.col-12` | `h3` | `—` | 393 | 199 | 0.31 of 2470 | template+ptype=Fundamentals/overview c=0.85 n=31 | 0.70 | — | CANDIDATE |
 | 577 | activity | SUBSTITUTED | `div.col-12.col-md-8` | `div.activity.interactive[number=*]` | `div.activity[number=*]` | 273 | 189 | 0.44 of 2470 | template=Fundamentals c=0.77 n=20 | structure | yes | CANDIDATE |
 | 579 | activity | MISSING | `div.activity.interactive[number=*]` | `div.row` | `—` | 290 | 169 | 0.12 of 2470 | template+ptype=Fundamentals/overview c=0.65 n=35 | 0.93 | yes | CANDIDATE |
 | 580 | activity | EXTRA | `div.col-12` | `—` | `img.img-fluid` | 247 | 152 | 0.97 of 2470 | subject+ptype=1-10 English/lesson c=0.99 n=22 | structure | — | CANDIDATE |

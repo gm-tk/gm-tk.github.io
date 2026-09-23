@@ -1,0 +1,10 @@
+BLL244: identical 2 / changed 2
+FRFUN08: identical 10 / changed 2
+MXDB302: identical 9 / changed 2
+MXEO301: identical 10 / changed 2
+MXFL301: identical 8 / changed 3
+MXFL302: identical 9 / changed 2
+PHE1007: identical 9 / changed 2
+
+TOTAL: identical 57 / changed 15 / missing 0 over 7 modules
+CHANGED: BLL244/BLL244_2_0.html BLL244/BLL244_interactives.txt FRFUN08/FRFUN08_3_0.html FRFUN08/FRFUN08_interactives.txt MXDB302/MXDB302_5_0.html MXDB302/MXDB302_interactives.txt MXEO301/MXEO301_5_0.html MXEO301/MXEO301_interactives.txt MXFL301/MXFL301_1_0.html MXFL301/MXFL301_4_0.html MXFL301/MXFL301_interactives.txt MXFL302/MXFL302_5_0.html MXFL302/MXFL302_interactives.txt PHE1007/PHE1007_2_0.html PHE1007/PHE1007_interactives.txt

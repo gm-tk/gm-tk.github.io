@@ -151,6 +151,11 @@ class InteractiveBuilder {
 					// ROUND 305 — the first builder this type has ever had.
 					html = this.#multiChoiceQuiz({ bundle, tpl, renderInline });
 					break;
+				case "typing":
+					// ROUND 449 (D13-4) — the first builder this type has ever had: shape 1, the
+					// writer's red answer on the question line → the KB 03D text-only form.
+					html = this.#typing({ bundle, tpl, renderInline });
+					break;
 				case "dropDown":
 					// ROUND 287 — the first builder this type has ever had. FENCED on the
 					// writer's opener naming a dropdown, because the lexicon aliases the
@@ -13262,6 +13267,154 @@ class InteractiveBuilder {
 		// ANY square bracket surviving into a built quiz is a writer marker we failed to
 		// place — the build declines and the honest hand-off box stays (r167/r279).
 		return /\[[^\]\n]{0,120}\]/.test(String(html ?? ""));
+	}
+
+	/* ================================================================== *
+	 *  ROUND 449 — THE TYPING QUIZ, shape 1 (Chris's decision D13-4)
+	 *  ------------------------------------------------------------------
+	 *  The writer types each question as a sentence and puts the answer the
+	 *  learner must type IN RED on the same line — inline (BLL244 "[red]What
+	 *  [/red] game are Zack and Kev playing…"), at the line's end (FRFUN08
+	 *  "Je vais à le cinéma. Answer: [red]au"), or alone on the next paragraph.
+	 *  The classifier calls each such red fragment 'noise'; r448 already
+	 *  decides which are answers (Utils.AnswerKeyRedWord). The build is the KB
+	 *  03D text-only typing quiz: one row per question line, an input at each
+	 *  red answer carrying it as answer=. 77 % of the 178 answers in this
+	 *  shape equal the gold's own answer= values.
+	 *
+	 *  NEVER HALF-BUILDS: a table, a merged bundle, a foreign tag, a red
+	 *  INSTRUCTION inside a question line (MXDB302 colours its question red),
+	 *  an answer-less line after the first question (PHE1007's black "True"),
+	 *  an answer that is a key label or a question, or fewer than min_answers
+	 *  answers → null, and the hand-off box (now carrying the answer key, r448)
+	 *  stays. An answer is never invented.
+	 *
+	 *  Data interactive_builders.typing; env TYPING_OFF.
+	 * ================================================================== */
+	static #typing({ bundle, tpl, renderInline }) {
+		if (!tpl || tpl.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[tpl.env ?? "TYPING_OFF"]) return null;
+		if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget
+		const inline = renderInline ?? ((s) => Utils.EscapeHtml(s));
+		const ak = DataService.Data.EmitTemplates.interactive_placeholder?.answer_key_d13_4 ?? {};
+		const unRed = (s) => String(s ?? "").replace(/\u{1f534}\[\/?RED TEXT\]\u{1f534}/gu, " ");
+		const textTags = tpl.text_tags ?? ["body", "paragraph"];
+		const reject = new RegExp(tpl.answer_reject_pattern ?? "$^", "i");
+		const notes = [];
+
+		/* --- members → lines (one per source paragraph) of text / answer / note segments --- */
+		const lines = [];
+		let cur = null;
+		const lineOf = (m) => {
+			if (!cur || !m.block || cur.blk !== m.block) { cur = { blk: m.block ?? null, list: m.block?.list ?? null, segs: [] }; lines.push(cur); }
+			return cur;
+		};
+		let seenOpener = false;
+		for (const m of bundle?.memberItems ?? []) {
+			if (!m) continue;
+			if (m.type === "table" || m.type === "nested") return null;
+			if (m.type === "black") { lineOf(m).segs.push({ k: "t", t: m.text }); continue; }
+			const p = m.parse?.primary, cls = m.parse?.class;
+			if (!seenOpener && p?.directive === "INTERACTIVE") {   // the widget's own invocation, once
+				seenOpener = true;
+				const words = unRed(m.text).replace(/\[[^\]]*\]/g, " ").replace(/\s+/g, " ").trim();
+				if (words.split(" ").filter(Boolean).length > (tpl.opener_note_min_words ?? 3)) notes.push(unRed(m.text).trim());
+				if (String(m.blackAfter ?? "").trim()) lineOf(m).segs.push({ k: "t", t: m.blackAfter });
+				continue;
+			}
+			if (cls === "noise") {
+				const raw = unRed(m.text);
+				const w = raw.replace(/\s+/g, " ").trim();
+				const how = Utils.AnswerKeyRedWord(ak, w);
+				const L = lineOf(m);
+				if (how === "answer") L.segs.push({ k: "a", t: w, pre: /^\s/.test(raw), post: /\s$/.test(raw) });
+				else if (how === "plain") L.segs.push({ k: "t", t: ` ${w} ` });
+				if (String(m.blackAfter ?? "").trim()) L.segs.push({ k: "t", t: m.blackAfter });
+				continue;
+			}
+			if (cls === "instruction") { lineOf(m).segs.push({ k: "n", t: unRed(m.text).trim() }); continue; }
+			if (p && textTags.includes(p.tag)) {                    // [Body] — the writer's paragraph marker
+				if (String(m.blackAfter ?? "").trim()) lineOf(m).segs.push({ k: "t", t: m.blackAfter });
+				continue;
+			}
+			return null;                                           // any other tag — not ours to place
+		}
+
+		/* --- lines → lead / questions / notes -------------------------------------------- */
+		const hasText = (L) => L.segs.some((s) => s.k === "t" && s.t.replace(/\*/g, "").trim());
+		const hasAns = (L) => L.segs.some((s) => s.k === "a");
+		const merged = [];
+		for (const L of lines) {
+			// an answer-only paragraph (the answer typed on the line BELOW its question) joins that line
+			if (hasAns(L) && !hasText(L) && !L.segs.some((s) => s.k === "n") && merged.length && hasAns(merged[merged.length - 1]) === false
+				&& hasText(merged[merged.length - 1])) { merged[merged.length - 1].segs.push(...L.segs); continue; }
+			merged.push(L);
+		}
+		const lead = [], rows = [];
+		for (const L of merged) {
+			const isNote = L.segs.length && L.segs.every((s) => s.k === "n" || (s.k === "t" && !s.t.trim()));
+			if (isNote) { for (const s of L.segs) if (s.k === "n" && s.t) notes.push(s.t); continue; }
+			if (L.segs.some((s) => s.k === "n")) return null;       // a red instruction INSIDE a line — never guessed
+			if (!hasAns(L)) {
+				if (!hasText(L)) continue;
+				if (rows.length) return null;                        // an answer-less line after the questions
+				// the activity's own heading (the opener line's title) is already the box's heading
+				const plain = Utils.Fold(L.segs.filter((s) => s.k === "t").map((s) => s.t).join(" ").replace(/\*/g, ""));
+				if (bundle?.headingText && plain === Utils.Fold(String(bundle.headingText).replace(/\*/g, ""))) continue;
+				lead.push(L); continue;
+			}
+			rows.push(L);
+		}
+		const answers = rows.flatMap((L) => L.segs.filter((s) => s.k === "a"));
+		if (answers.length < (tpl.min_answers ?? 2)) return null;
+		for (const a of answers) {
+			if (reject.test(a.t)) return null;                       // an answer-key label or a question
+			if (a.t.split(/\s+/).length > (tpl.max_answer_words ?? 6)) return null;
+			if (/[\[\]]/.test(a.t)) return null;
+		}
+
+		/* --- render ---------------------------------------------------------------------- */
+		const wordNo = new RegExp(tpl.word_number_pattern ?? "^\\s*\\d+[.)]\\s+");
+		const textHtml = (t) => {
+			const s = String(t).replace(/\s+/g, " ");
+			const core = s.trim();
+			if (!core) return s ? " " : "";
+			return (/^\s/.test(s) ? " " : "") + inline(core) + (/\s$/.test(s) ? " " : "");
+		};
+		const lineHtml = (L) => {
+			const segs = L.segs.filter((s) => s.k !== "n");
+			// a Word auto-number: the extractor writes "1. " before every numbered-list paragraph
+			if (L.list === "number" && segs[0]?.k === "t") segs[0] = { ...segs[0], t: segs[0].t.replace(wordNo, "") };
+			let out = "";
+			for (const s of segs) {
+				if (s.k === "t") { out += textHtml(s.t); continue; }
+				if (out && !/\s$/.test(out) && s.pre) out += " ";
+				out += Utils.FillTemplate(tpl.input, { answer: Utils.EscapeHtml(s.t) });
+				if (s.post) out += " ";
+			}
+			return out.replace(/\s{2,}/g, " ").trim();
+		};
+		const html = [];
+		for (const L of lead) html.push(Utils.FillTemplate(tpl.lead, { text: lineHtml(L) }));
+		html.push(Utils.FillTemplate(tpl.group_open, { autocheck: this.#typingAutocheck(bundle, tpl) }));
+		for (const L of rows) html.push(Utils.FillTemplate(tpl.row, { text: lineHtml(L) }));
+		html.push(tpl.container_close);
+		html.push(tpl.buttons);
+		html.push(tpl.group_close);
+		const built = html.join("\n");
+		if (this.#mcqLeakGuard(built)) return null;                 // a build must never ADD a leak
+		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
+		bundle.r449Typing = true;                                   // detector / affected-set marker
+		return built;
+	}
+
+	/** ROUND 449 — the typing quiz's autoCheck class, from the WRITER's own words (the r305 / r287 precedent). */
+	static #typingAutocheck(bundle, tpl) {
+		const ws = tpl.autocheck_words ?? [];
+		const head = [...(bundle?.memberItems ?? []).slice(0, 3), ...(bundle?.openerItems ?? [])]
+			.map((m) => String(m?.text ?? "") + " " + String(m?.blackAfter ?? "")).join(" ").toLowerCase()
+			+ " " + (bundle?.instructions ?? []).join(" ").toLowerCase();
+		return ws.some((w) => head.includes(w)) ? (tpl.autocheck_class ?? " autoCheck") : "";
 	}
 }
 

@@ -1,0 +1,101 @@
+TYPWHY	BLL243#9	-	L13340 #typing: return null;                                           // any other tag — not ours to place	calls=1	first==
+TYPWHY	BLL244#6	2D	BUILT	calls=1	first==
+TYPWHY	FRFUN08#3	3A	BUILT	calls=1	first==
+TYPWHY	FRNO902#2	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#4	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#6	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#7	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#9	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#11	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#15	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#16	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#20	-	L13340 #typing: return null;                                           // any other tag — not ours to place	calls=1	first==
+TYPWHY	FRNO902#21	-	L13369 #typing: if (answers.length < (tpl.min_answers ?? 2)) return null;	calls=1	first==
+TYPWHY	FRNO902#23	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#25	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#31	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#33	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#36	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#38	-	L13360 #typing: if (rows.length) return null;                        // an answer-less line after the questions	calls=1	first==
+TYPWHY	FRNO902#40	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#44	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#48	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#49	-	L13369 #typing: if (answers.length < (tpl.min_answers ?? 2)) return null;	calls=1	first==
+TYPWHY	FRNO902#50	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#52	-	L13369 #typing: if (answers.length < (tpl.min_answers ?? 2)) return null;	calls=1	first==
+TYPWHY	FRNO902#54	-	L13340 #typing: return null;                                           // any other tag — not ours to place	calls=1	first==
+TYPWHY	FRNO902#56	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#58	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#59	-	L13369 #typing: if (answers.length < (tpl.min_answers ?? 2)) return null;	calls=1	first==
+TYPWHY	FRNO902#60	-	L13369 #typing: if (answers.length < (tpl.min_answers ?? 2)) return null;	calls=1	first==
+TYPWHY	FRNO902#61	-	L13369 #typing: if (answers.length < (tpl.min_answers ?? 2)) return null;	calls=1	first==
+TYPWHY	FRNO902#62	-	L13340 #typing: return null;                                           // any other tag — not ours to place	calls=1	first==
+TYPWHY	FRNO902#64	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	FRNO902#66	-	L13297 #typing: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+TYPWHY	FRNO902#67	-	L13297 #typing: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+TYPWHY	FRNO902#69	-	L13297 #typing: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+TYPWHY	GENO901#10	-	L13340 #typing: return null;                                           // any other tag — not ours to place	calls=1	first==
+TYPWHY	GENO901#27	3A	L13340 #typing: return null;                                           // any other tag — not ours to place	calls=1	first==
+TYPWHY	GENO901#33	-	L13369 #typing: if (answers.length < (tpl.min_answers ?? 2)) return null;	calls=1	first==
+TYPWHY	GENO901#36	-	L13340 #typing: return null;                                           // any other tag — not ours to place	calls=1	first==
+TYPWHY	GENO901#41	5D	L13340 #typing: return null;                                           // any other tag — not ours to place	calls=1	first==
+TYPWHY	GENO901#43	-	L13369 #typing: if (answers.length < (tpl.min_answers ?? 2)) return null;	calls=1	first==
+TYPWHY	GENO901#44	-	L13340 #typing: return null;                                           // any other tag — not ours to place	calls=1	first==
+TYPWHY	GENO901#47	-	L13357 #typing: if (L.segs.some((s) => s.k === "n")) return null;       // a red instruction INSIDE a line — never guessed	calls=1	first==
+TYPWHY	MXDB302#13	2B	L13357 #typing: if (L.segs.some((s) => s.k === "n")) return null;       // a red instruction INSIDE a line — never guessed	calls=1	first==
+TYPWHY	MXDB302#15	2C	L13340 #typing: return null;                                           // any other tag — not ours to place	calls=1	first==
+TYPWHY	MXDB302#20	2F	L13340 #typing: return null;                                           // any other tag — not ours to place	calls=1	first==
+TYPWHY	MXDB302#31	4B	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	MXDB302#33	5A	BUILT	calls=1	first==
+TYPWHY	MXDB302#35	5B	L13357 #typing: if (L.segs.some((s) => s.k === "n")) return null;       // a red instruction INSIDE a line — never guessed	calls=1	first==
+TYPWHY	MXDB302#37	5C	L13297 #typing: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+TYPWHY	MXDB302#41	6D	L13357 #typing: if (L.segs.some((s) => s.k === "n")) return null;       // a red instruction INSIDE a line — never guessed	calls=1	first==
+TYPWHY	MXDB302#47	7B	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	MXDB302#50	7D	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	MXEO301#5	1B	L13369 #typing: if (answers.length < (tpl.min_answers ?? 2)) return null;	calls=1	first==
+TYPWHY	MXEO301#7	1D	L13297 #typing: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+TYPWHY	MXEO301#19	-	L13357 #typing: if (L.segs.some((s) => s.k === "n")) return null;       // a red instruction INSIDE a line — never guessed	calls=1	first==
+TYPWHY	MXEO301#21	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	MXEO301#27	3D	L13297 #typing: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+TYPWHY	MXEO301#32	4A	L13297 #typing: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+TYPWHY	MXEO301#40	5A	L13360 #typing: if (rows.length) return null;                        // an answer-less line after the questions	calls=1	first==
+TYPWHY	MXEO301#42	5B	BUILT	calls=1	first==
+TYPWHY	MXEO301#45	5.1A	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	MXEO301#47	5.1B	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	MXEO301#57	6C	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	MXEO301#65	7F	L13297 #typing: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+TYPWHY	MXEO401#5	1D	L13371 #typing: if (reject.test(a.t)) return null;                       // an answer-key label or a question	calls=1	first==
+TYPWHY	MXEO401#11	-	L13369 #typing: if (answers.length < (tpl.min_answers ?? 2)) return null;	calls=1	first==
+TYPWHY	MXFL301#2	1C	BUILT	calls=1	first==
+TYPWHY	MXFL301#5	1D	L13297 #typing: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+TYPWHY	MXFL301#10	2C	L13357 #typing: if (L.segs.some((s) => s.k === "n")) return null;       // a red instruction INSIDE a line — never guessed	calls=1	first==
+TYPWHY	MXFL301#15	3A	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	MXFL301#23	-	L13297 #typing: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+TYPWHY	MXFL301#29	4B	BUILT	calls=1	first==
+TYPWHY	MXFL301#44	6C	L13340 #typing: return null;                                           // any other tag — not ours to place	calls=1	first==
+TYPWHY	MXFL301#55	-	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	MXFL302#9	2C	L13297 #typing: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+TYPWHY	MXFL302#13	2H	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	MXFL302#16	3D	L13357 #typing: if (L.segs.some((s) => s.k === "n")) return null;       // a red instruction INSIDE a line — never guessed	calls=1	first==
+TYPWHY	MXFL302#17	3E	L13357 #typing: if (L.segs.some((s) => s.k === "n")) return null;       // a red instruction INSIDE a line — never guessed	calls=1	first==
+TYPWHY	MXFL302#21	4D	L13360 #typing: if (rows.length) return null;                        // an answer-less line after the questions	calls=1	first==
+TYPWHY	MXFL302#22	4F	L13369 #typing: if (answers.length < (tpl.min_answers ?? 2)) return null;	calls=1	first==
+TYPWHY	MXFL302#23	4G	L13297 #typing: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+TYPWHY	MXFL302#29	5B	BUILT	calls=1	first==
+TYPWHY	MXFL302#44	6D	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	MXFL302#56	7D	L13297 #typing: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+TYPWHY	MXFL302#57	8A	L13297 #typing: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+TYPWHY	MXFL401#10	5A	L13369 #typing: if (answers.length < (tpl.min_answers ?? 2)) return null;	calls=1	first==
+TYPWHY	MXFL401#13	6C	L13297 #typing: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+TYPWHY	MXFU301#11	3C	L13340 #typing: return null;                                           // any other tag — not ours to place	calls=1	first==
+TYPWHY	MXFU301#21	6B	L13297 #typing: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+TYPWHY	MXFU301#35	8D	L13357 #typing: if (L.segs.some((s) => s.k === "n")) return null;       // a red instruction INSIDE a line — never guessed	calls=1	first==
+TYPWHY	MXFU401#6	-	L13360 #typing: if (rows.length) return null;                        // an answer-less line after the questions	calls=1	first==
+TYPWHY	MXFU401#8	3A	L13297 #typing: if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget	calls=1	first==
+TYPWHY	MXFU401#9	-	L13340 #typing: return null;                                           // any other tag — not ours to place	calls=1	first==
+TYPWHY	MXFU402#7	2A	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	MXFU402#8	2B	L13315 #typing: if (m.type === "table" || m.type === "nested") return null;	calls=1	first==
+TYPWHY	MXFU402#25	4D	L13360 #typing: if (rows.length) return null;                        // an answer-less line after the questions	calls=1	first==
+TYPWHY	MXFU402#29	5B	L13360 #typing: if (rows.length) return null;                        // an answer-less line after the questions	calls=1	first==
+TYPWHY	PHE1007#6	-	BUILT	calls=1	first==
+TYPWHY	PHE1007#10	3	L13369 #typing: if (answers.length < (tpl.min_answers ?? 2)) return null;	calls=1	first==

@@ -1,0 +1,11 @@
+BLL244 BLL244_2_0.html: 1 typing quiz(zes), 6 input(s), gold-matched 6
+FRFUN08 FRFUN08_3_0.html: 1 typing quiz(zes), 3 input(s), gold-matched 3
+MXDB302 MXDB302_5_0.html: 1 typing quiz(zes), 5 input(s), gold-matched 5
+MXEO301 MXEO301_5_0.html: 1 typing quiz(zes), 5 input(s), gold-matched 5
+MXFL301 MXFL301_1_0.html: 1 typing quiz(zes), 6 input(s), gold-matched 6
+MXFL301 MXFL301_4_0.html: 1 typing quiz(zes), 5 input(s), gold-matched 5
+MXFL302 MXFL302_5_0.html: 1 typing quiz(zes), 19 input(s), gold-matched 19
+PHE1007 PHE1007_2_0.html: 1 typing quiz(zes), 8 input(s), gold-matched 6
+
+TOTAL 8 typing quiz(zes) / 57 input(s): answer = a gold answer 55, no gold match 2, module has no gold typing 0 | DEFECTS 0
+RESULT: defect 0 ✓
