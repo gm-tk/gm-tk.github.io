@@ -1974,6 +1974,17 @@
 				"max_paragraphs": 4,
 				"thought_re": "thought",
 				"layout_thought": "thought",
+				"placeholder_character": {
+					"enabled": true,
+					"env": "SBPLACEHOLDER_OFF",
+					"code_prefixes": ["OS", "TEDC"],
+					"picture_named_re": "istock|shutterstock|avatar|\\bimage\\b|\\bphoto|\\bpicture|\\.(png|jpe?g|gif)\\b",
+					"image_col": "<div class=\"col-3\"><img class=\"img-fluid bubble-img\" alt=\"\" loading=\"lazy\" src=\"https://placehold.co/200x200?text=Character\"></div>",
+					"col_open": "<div class=\"col-md-9 col-sm-8\">",
+					"bubble": "<div class=\"bubble-right no-hover\">{text}</div>",
+					"todo": "add this speech bubble's character picture in place of the grey 'Character' placeholder — the Writers Template names none, and the Online Safety / TEDC bubbles carry their character (Chris's D13-9).",
+					"_doc": "ROUND 446 (the autonomous loop's session 39 Round 8, 23 Sept 2026 — Chris's decision D13-9 part 2, 'Option C: … plus a grey placeholder in Online Safety and TEDC'). In the OS* and TEDC* families only, a TEXT-ONLY bubble (no image, no table, no media) whose writer named NO picture — no picture word (picture_named_re) on its own tag line, where the r354 tag-words note would carry 'avatar Tina … iStock' — takes the avatar form (the narrow builder's col-3 image column + col-md-9 col-sm-8 bubble-right) with the KB 04C placeholder image (never imageCentral), and ONE red Designer/Developer To Do follows the bubble group. Env SBPLACEHOLDER_OFF restores the r445 text-only form byte-for-byte."
+				},
 				"_note": "ROUND 247 (Chris, ENGS404-00 '[insert thought bubble]') — THE TEXT-ONLY BUBBLE(S). A bubble the writer authors with NO character image and NO table ('[insert thought bubble] Where do we find stories? [insert thought bubble] Why are stories important?') had no builder branch at all — the r246 recorded image-less decline class, now built on Chris's directive that ALL basic interactives build (the A1 writer's-tag branch). MEASURED (outputs/_detect_r247.cjs, ALL corpus dirs): 229 bundles / 52 modules, 212 clean; the human library itself ships the text-only bubble form 385 times, and layout=\"thought\" exists in the gold precisely for the thought wording (365 occ / 152 pages, XDLS901 the reference). Emit shape = the measured plurality (col-12; bubble-basic no-hover bubble-top — the side/colour scatter across the 385 is editorial C, this class string is the one data knob). One row per INTERACTIVE invocation member (the same-type merged '[thought bubble] … [thought bubble] …' paragraph ships one bubble each); >1 <p> takes the r104 wrapper <div>; layout follows the writer's own word via thought_re. Never-half-build guards in InteractiveBuilder.#speechBubbleTextOnly. env SBTEXT_OFF reverts the whole branch."
 			},
 			"conversation": {

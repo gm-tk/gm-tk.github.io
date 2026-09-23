@@ -3773,7 +3773,28 @@ class InteractiveBuilder {
 	 * @param {function} [args.renderInline] - inline-markup renderer (bold/italic/links)
 	 * @returns {string|null} the built bubble row(s), or null to keep the placeholder
 	 */
-	static #speechBubbleTextOnly({ bundle, tpl, renderInline }) {
+	/**
+	 * ROUND 446 (Chris's D13-9 part 2) — the placeholder-character decision, shared by the text-only builder and the
+	 * rich composer's image-less bubbles. Returns speechBubble.text_only.placeholder_character when ALL hold: enabled and
+	 * env SBPLACEHOLDER_OFF unset; the module code starts with one of code_prefixes (the OS / TEDC families); the bundle
+	 * names NO picture — no nameable iStock image in its media, no same-block image, and no picture word
+	 * (picture_named_re) on any of its INTERACTIVE tag lines (the "[Image] avatar Tina … iStock" dialect). Else null.
+	 */
+	static #sbPlaceholder(bundle, tpl, run) {
+		const ph = tpl?.text_only?.placeholder_character;
+		if (!ph || ph.enabled === false || !bundle) return null;
+		if (typeof process !== "undefined" && process.env && process.env[ph.env || "SBPLACEHOLDER_OFF"]) return null;
+		const code = String(run?.moduleCode ?? "").toUpperCase();
+		if (!(ph.code_prefixes ?? []).some((p) => code.startsWith(String(p).toUpperCase()))) return null;
+		if (bundle.sameBlockImage) return null;
+		if ((bundle.media ?? []).some((m) => this.#istockFilename(String(m?.target ?? m?.text ?? ""), tpl))) return null;
+		const re = new RegExp(ph.picture_named_re ?? "istock|avatar|\\bimage\\b", "i");
+		const openers = (bundle.memberItems ?? []).filter((m) => m && m.parse?.primary?.directive === "INTERACTIVE");
+		if (openers.some((m) => re.test(String(m.text ?? "")))) return null;
+		return ph;
+	}
+
+	static #speechBubbleTextOnly({ bundle, tpl, renderInline, run }) {
 		const cfg = tpl?.text_only;
 		if (!cfg || cfg.enabled === false || !bundle) return null;
 		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
@@ -3826,17 +3847,24 @@ class InteractiveBuilder {
 		}
 		const inline = renderInline ?? ((s) => s);
 		const layout = thought ? (cfg.layout_thought ?? "thought") : (tpl.layout_attr ?? "speech");
-		return bubbles.map((b) => {
+		// ROUND 446 (Chris's D13-9 part 2): in the OS / TEDC families a text-only bubble whose writer named NO picture on
+		// its tag line takes the avatar form with the KB 04C placeholder image, and one red To Do follows the group.
+		// Data text_only.placeholder_character (code_prefixes, picture_named_re); env SBPLACEHOLDER_OFF.
+		const ph = this.#sbPlaceholder(bundle, tpl, run);
+		const phOn = !!ph;
+		const rows = bubbles.map((b) => {
 			const ps = b.map((t) => `<p>${inline(t)}</p>`).join("\n");
 			const text = b.length > 1 ? `<div>\n${ps}\n</div>` : ps;   // the round-104 multi-<p> wrapper rule
 			return [
 				Utils.FillTemplate(cfg.open ?? tpl.open, { layout }),
-				cfg.col_open,
-				Utils.FillTemplate(cfg.bubble, { text }),
+				...(phOn ? [ph.image_col, ph.col_open] : [cfg.col_open]),
+				Utils.FillTemplate(phOn ? ph.bubble : cfg.bubble, { text }),
 				cfg.col_close,
 				cfg.close ?? tpl.close,
 			].join("\n");
-		}).join("\n");
+		});
+		if (phOn && ph.todo && run) rows.push(NotesAndComments.redFlag(ph.todo, run, "todo"));
+		return rows.join("\n");
 	}
 
 	// =======================================================================
@@ -4412,7 +4440,7 @@ class InteractiveBuilder {
 				].join("\n"));
 			}
 		};
-		let seen = 0;
+		let seen = 0, phUsed = null;   // r446: the placeholder config when any bubble took it
 		for (const b of bubbles) {
 			seen++;
 			if (!live.includes(b)) { flushCasts(seen); continue; }
@@ -4426,10 +4454,14 @@ class InteractiveBuilder {
 					av.close ?? tpl.close,
 				].join("\n"));
 			} else {
+				// ROUND 446 (D13-9 part 2): an image-less bubble in an OS / TEDC bundle that names no picture takes the
+				// placeholder-character avatar form (#sbPlaceholder; env SBPLACEHOLDER_OFF)
+				const ph = this.#sbPlaceholder(bundle, tpl, run);
+				if (ph) phUsed = ph;
 				out.push([
 					Utils.FillTemplate(to.open ?? tpl.open, { layout: b.thought ? (to.layout_thought ?? "thought") : (tpl.layout_attr ?? "speech") }),
-					to.col_open ?? "<div class=\"col-12\">",
-					Utils.FillTemplate(to.bubble ?? "<div class=\"bubble-basic no-hover bubble-top\">{text}</div>", { text }),
+					...(ph ? [ph.image_col, ph.col_open] : [to.col_open ?? "<div class=\"col-12\">"]),
+					Utils.FillTemplate(ph ? ph.bubble : (to.bubble ?? "<div class=\"bubble-basic no-hover bubble-top\">{text}</div>"), { text }),
 					to.col_close ?? "</div>",
 					to.close ?? tpl.close,
 				].join("\n"));
@@ -4440,6 +4472,7 @@ class InteractiveBuilder {
 		// the skipped asset requests / writer instructions surface as the standard red
 		// Writers Note after the widget — ONLY on a successful build (the r242 rule).
 		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...new Set(notes)];
+		if (phUsed && phUsed.todo && run) out.push(NotesAndComments.redFlag(phUsed.todo, run, "todo"));   // r446: ONE To Do per group
 		return out.join("\n");
 	}
 
@@ -4471,7 +4504,7 @@ class InteractiveBuilder {
 		// BEFORE the modifier bail: the writer's benign "[insert thought bubble]" wording
 		// resolves as a modifier, and the image-ambiguity the modifier bail protects
 		// against cannot arise in a media-less bundle. See #speechBubbleTextOnly.
-		const txtOnly = this.#speechBubbleTextOnly({ bundle, tpl, renderInline });
+		const txtOnly = this.#speechBubbleTextOnly({ bundle, tpl, renderInline, run });
 		if (txtOnly) return txtOnly;
 
 		// (1) Only the simple, static bubble. A non-empty modifier marks the

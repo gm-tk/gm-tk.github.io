@@ -1,5 +1,24 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-23 (round 446, build 260620.17) — THE SPEECH-BUBBLE CHARACTER PLACEHOLDER: in the Online Safety and TEDC families a text-only bubble whose writer named no picture now carries the KB's grey "Character" placeholder and a red To Do — Chris's decision D13-9 part 2; part 1 measured — the loop's session 39 Round 8
+
+### 1. WHAT CHANGED
+
+**Part 1 (the writer's picture beside a bubble) — MEASURED, not built** (`outputs/_r446_bubble_drop.py` / `.log`). 211 Writers Template bubble rows carry an iStock picture; **201 already build it in the bubble layout**. The other 10 are built elsewhere on the page (never lost) and split over 7 shapes in 6 modules — e.g. OSOH201's image cell beside a text cell holding TWO `[speech bubble]` tags (the gold builds ONE bubble with two paragraphs), ENFUN01's 4-cell rows — every shape under the floor. Separately, TEDC401 / 402 describe their avatar in a paragraph ("[Image] avatar Tina … iStock title [LINK]"), which surfaces as a Writers Note beside a text-only bubble: a family dialect for a later round.
+
+**Part 2 (THIS ROUND).** `Emit_Templates.json` `interactive_builders.speechBubble.text_only.placeholder_character` (env **`SBPLACEHOLDER_OFF`**), keyed to the code prefixes OS / TEDC. A new `InteractiveBuilder.#sbPlaceholder` decides it for BOTH image-less paths (the r247 text-only builder and the r276 rich composer): the bundle names NO picture — no nameable iStock image in its media, no same-block image, and no picture word on its own tag line (so OSOH201's image-first two-bubble row, and TEDC's "avatar Tina" bubbles, are left alone). Such a bubble takes the avatar form — `col-3` image column + `col-md-9 col-sm-8` `bubble-right no-hover` — with the KB 04C placeholder `<img class="img-fluid bubble-img" alt="" loading="lazy" src="https://placehold.co/200x200?text=Character">` (never `imageCentral`), and ONE red "Designer/Developer To Do: add this speech bubble's character picture …" follows the bubble group.
+
+### 2. PROOF
+
+- **In-memory A/B** (`_r446_probe_run.sh`): OFF (`SBPLACEHOLDER_OFF=1`) = **2666 / 2666 identical**; ON = **17 pages / 9 modules** (OSAI401, OSBY301, OSBY401, OSBY501, OSOH101, OSOH201, OSSC301, TEDC401, TEDC402). Pre-score: **0 skeleton movers** — the skeleton collapses a widget to one marker, so the round is judged on its verifier (rule A1).
+- **SCOPED regeneration** (`_r446_regen.sh`, the 9 + a 12-module spot-check, seed 446): 0 truly stale; `changed` = exactly the 9; spot-check 12 / 12. `scoped_ship.sh --toggle SBPLACEHOLDER_OFF --round 446 --commit`: **PASS — every protected gate HELD EXACTLY**. Ledger: scoped #2 since the r444 FULL.
+- **Post-ship** (trimmed at `/loop-stop`): `run_all_gates.sh` rc 0, every verifier RESULT ✓ — **the speechBubble verifier at its recorded baseline** (62 built; defect 4 recorded) with OSAI401 in its fixture set; 49 selftests GREEN; feature index GREEN. The miner was not re-run: the change is inside widgets the skeleton (and so the miner) collapses, so its queue cannot move.
+
+### 3. PROTECTED GATES (all HELD EXACTLY)
+
+- **Skeleton (PRIMARY)**: SCAFFOLD **54.7726 % @ 2476 pairs** (=), ≥50 **1542**, ≥75 **261**, ≥90 **23**; **compare_structure** 15657 / 199 / 796 / 24; **body_compare** 56 / 5 / 201 / 260; **structurally clean** 2613 / 2658; **leak** 75 / 45; **tags 9557 / 9557**; every verifier RESULT ✓.
+- Plateau (§4): a widget round, gate-neutral by design — neither counts nor resets; **0 of 3**.
+
 ## 2026-09-23 (round 445, build 260620.16) — THE TWO-COLUMN COMPARISON TABLE: a table whose header is an opposite pair (pros / cons, advantages / disadvantages, similarities / differences, positive / negative, true / false …) ships `table table-bordered tableFixed` — borders kept, equal columns — Chris's decision D13-2 (Option C), the loop's session 39 Round 7
 
 ### 1. WHAT CHANGED

@@ -1,0 +1,45 @@
+OS {'wt_rows': 134, 'wt_bubbles': 151, 'wt_rows_with_picture': 119, 'cl_avatar': 87, 'cl_text_only': 128, 'wt_rows_no_picture': 15}
+TEDC {'wt_rows': 41, 'wt_bubbles': 42, 'wt_rows_no_picture': 4, 'wt_rows_with_picture': 37, 'cl_text_only': 71, 'cl_avatar': 56}
+other {'cl_text_only': 661, 'wt_rows': 92, 'wt_bubbles': 125, 'wt_rows_with_picture': 60, 'cl_avatar': 53, 'wt_rows_no_picture': 32}
+
+modules where the WT has picture-bearing bubble rows AND Claude built text-only bubbles:
+  CEDR501    WT rows with picture   1 | Claude text-only   6 / avatar   2
+  CHFUN05    WT rows with picture   9 | Claude text-only   1 / avatar   8
+  ENFUN02    WT rows with picture   3 | Claude text-only   4 / avatar   2
+  ENGR101    WT rows with picture   1 | Claude text-only   8 / avatar   0
+  ENGR301    WT rows with picture   5 | Claude text-only   6 / avatar   2
+  ENGS401    WT rows with picture   6 | Claude text-only   4 / avatar   1
+  GENO901    WT rows with picture   1 | Claude text-only  14 / avatar   1
+  MXFU402    WT rows with picture  16 | Claude text-only   2 / avatar  12
+  OSAH401    WT rows with picture   4 | Claude text-only   3 / avatar   1
+  OSAH501    WT rows with picture   8 | Claude text-only   2 / avatar   6
+  OSAI101    WT rows with picture   3 | Claude text-only   2 / avatar   0
+  OSAI201    WT rows with picture   3 | Claude text-only   2 / avatar   3
+  OSAI301    WT rows with picture   2 | Claude text-only   1 / avatar   4
+  OSAI401    WT rows with picture   6 | Claude text-only  15 / avatar   7
+  OSAI501    WT rows with picture   8 | Claude text-only   3 / avatar   8
+  OSBY101    WT rows with picture   4 | Claude text-only   3 / avatar   1
+  OSBY201    WT rows with picture   4 | Claude text-only   3 / avatar   2
+  OSBY301    WT rows with picture   3 | Claude text-only  10 / avatar   3
+  OSBY401    WT rows with picture   5 | Claude text-only  14 / avatar   5
+  OSBY501    WT rows with picture   5 | Claude text-only   2 / avatar   5
+  OSGM101    WT rows with picture   3 | Claude text-only   1 / avatar   1
+  OSGM201    WT rows with picture   3 | Claude text-only   9 / avatar   0
+  OSGM401    WT rows with picture   5 | Claude text-only   4 / avatar   5
+  OSGM501    WT rows with picture   9 | Claude text-only   4 / avatar   9
+  OSOH101    WT rows with picture   7 | Claude text-only   3 / avatar   5
+  OSOH201    WT rows with picture   2 | Claude text-only  11 / avatar   0
+  OSOH401    WT rows with picture   1 | Claude text-only   9 / avatar   0
+  OSOH501    WT rows with picture   6 | Claude text-only   4 / avatar   5
+  OSSC301    WT rows with picture   1 | Claude text-only  13 / avatar   0
+  OSSC401    WT rows with picture   2 | Claude text-only   4 / avatar   1
+  OSSC501    WT rows with picture   5 | Claude text-only   1 / avatar   3
+  OSSM301    WT rows with picture   3 | Claude text-only   1 / avatar   2
+  OSSM401    WT rows with picture   3 | Claude text-only   2 / avatar   1
+  OSSM501    WT rows with picture   9 | Claude text-only   2 / avatar   5
+  SSCI104    WT rows with picture   5 | Claude text-only   9 / avatar   5
+  TEDC401    WT rows with picture   5 | Claude text-only  27 / avatar  27
+  TEDC402    WT rows with picture  32 | Claude text-only  44 / avatar  29
+  TEFUN01    WT rows with picture   1 | Claude text-only  23 / avatar   0
+  TEFUN04    WT rows with picture   1 | Claude text-only   2 / avatar   0
+modules: 39; WT picture rows in them: 200; Claude text-only in them: 278

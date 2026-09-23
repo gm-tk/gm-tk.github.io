@@ -1,0 +1,21 @@
+rows with a bubble + an iStock picture: {'rows': 211, 'in_bubble': 201, 'elsewhere': 10}
+by family: {('elsewhere', 'other'): 5, ('elsewhere', 'OS'): 5}
+by shape:
+  elsewhere bubbles=1 cells=4 pic_cell=0     3
+  elsewhere bubbles=1 cells=2 pic_cell=1     2
+  elsewhere bubbles=2+ cells=2 pic_cell=0    1
+  elsewhere bubbles=2+ cells=4 pic_cell=1    1
+  elsewhere bubbles=1 cells=2 pic_cell=0     1
+  elsewhere bubbles=1 cells=1 pic_cell=0     1
+  elsewhere bubbles=1 cells=3 pic_cell=1     1
+examples:
+  ENFUN01   elsewhere bubbles=1 cells=4 pic_cell=0 | │ 🔴[RED TEXT] [speech bubble] [/RED TEXT]🔴  / I am planning to visit Whangārei but need to know more about it first. Please help? / 🔴[RED TEXT] [Image
+  ENFUN01   elsewhere bubbles=1 cells=4 pic_cell=0 | │ 🔴[RED TEXT] [speech bubble] [/RED TEXT]🔴 / I can’t decide whether to get a kitten or a puppy. Please help? / 🔴[RED TEXT] [Image]  [/RED TEXT]🔴 / __h
+  ENFUN01   elsewhere bubbles=1 cells=4 pic_cell=0 | │ 🔴[RED TEXT] [speech bubble] [/RED TEXT]🔴 / I want to read a funny story while I drink my coffee. Can you help? / 🔴[RED TEXT] [Image] [/RED TEXT]🔴 / 
+  OSOH101   elsewhere bubbles=1 cells=2 pic_cell=1 | │ 🔴[RED TEXT] [speech bubble]  [/RED TEXT]🔴Oops she did it again! She posted her phone number in the online class. / Privacy Cat Tip #3 / Don’t share 
+  OSOH201   elsewhere bubbles=2+ cells=2 pic_cell=0 | │ 🔴[RED TEXT] [image]  [/RED TEXT]🔴https://www.istockphoto.com/photo/fun-cow-3d-illustration-gm864532370-143429689 ║ 🔴[RED TEXT] [speech bubble]  [/RE
+  OSOH401   elsewhere bubbles=2+ cells=4 pic_cell=1 | │ 🔴[RED TEXT] [speech bubble 2]  [/RED TEXT]🔴 / Me? Yeah, thanks to you, but I wonder what other things could help Billy, Jenny and Betty keep their d
+  OSSM401   elsewhere bubbles=1 cells=2 pic_cell=1 | │ 🔴[RED TEXT] [Speech bubble]  [/RED TEXT]🔴It is tempting to use a filter to iron out those flaws. Stop right there! Each ‘flaw’ in a diamond makes it
+  OSSM401   elsewhere bubbles=1 cells=2 pic_cell=0 | │ 🔴[RED TEXT] image [/RED TEXT]🔴 https://www.istockphoto.com/photo/fun-elephant-3d-illustration-gm613789680-106031753  ║ 🔴[RED TEXT] [speech bubble]  
+  SSCI104   elsewhere bubbles=1 cells=1 pic_cell=0 | │ 🔴[RED TEXT] [speech bubble]  [/RED TEXT]🔴I’m trying to find what historians call chunks of time deep in history. Aha! An ‘age’ is a chunk of time wh
+  SSCI104   elsewhere bubbles=1 cells=3 pic_cell=1 | │ 🔴[RED TEXT] [speech bubble] [/RED TEXT]🔴  / Wow early humans were clever at making things out of what they found in nature. Have a go at the Stone A
