@@ -130,6 +130,15 @@ class NotesAndComments {
 		}
 		run.CountRedFlag();
 		const rf = DataService.Data.EmitTemplates.red_flag;
+		// ROUND 443: a red line that already OPENS with the ledger's To Do prefix is a designer To Do (kind "todo"),
+		// not a writer's note — data red_flag.todo_lead {prefix}; env TODOLEAD_OFF.
+		const tl = rf?.todo_lead;
+		if (tl && tl.enabled !== false && kind === "cs"
+			&& !(typeof process !== "undefined" && process.env && process.env[tl.env || "TODOLEAD_OFF"])) {
+			const lead = String(tl.prefix ?? "Designer/Developer To Do:");
+			const s0 = String(text ?? "").trim();
+			if (lead && s0.toLowerCase().startsWith(lead.toLowerCase())) { text = s0.slice(lead.length).trim(); kind = "todo"; }
+		}
 		// SOURCE-split the prefix. A writer-to-Creative-Services instruction (kind
 		// "cs": a retained note recognised via the Instruction_Cues vocabulary, a
 		// developer-directed question, or an undocumented container-positional note)

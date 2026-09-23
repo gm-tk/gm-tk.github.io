@@ -130,9 +130,21 @@ class AcksBuilder {
 		// per-lesson groups, in page order — every lesson gets its group,
 		// each opened with the spec-mandated lesson-label comment and
 		// closed with the designer-media check line (§8: once per group)
+		// ROUND 443 (Chris's D13-14; KB 05C): a family whose WT never carries its credit line — an EMPTY lesson
+		// group gets a VISIBLE red To Do after its label, and the catch-all takes the family's form. Data:
+		// Acks_Formats.family_credit_flags.rows (keyed by code prefix). Env toggle: XOTPACKS_OFF.
+		const fcf = DataService.Data.AcksFormats.family_credit_flags;
+		const famCode = String(run?.moduleCode ?? "").toUpperCase();
+		const fam = (fcf && fcf.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[fcf.env || "XOTPACKS_OFF"]))
+			? (fcf.rows ?? []).find((r) => (r.code_prefixes ?? []).some((p) => famCode.startsWith(String(p).toUpperCase()))) : null;
 		for (const group of groups) {
 			html.push(g.group_element_open);
 			html.push(Utils.FillTemplate(g.group_label_comment, { lesson: group.label }));
+			if (fam?.empty_group_flag && !(group.entries ?? []).length) {
+				html.push(Utils.FillTemplate(fmt.istock_unverified?.note_form ?? "", {
+					noteClass: fmt.istock_unverified?.note_class ?? "cv2-note", text: Utils.EscapeHtml(fam.empty_group_flag) }));
+			}
 			// DE-DUPLICATE within the lesson group: writers often paste the SAME media
 			// (URL/iStock id) across a lesson's activities and each becomes a media-list
 			// row → an entry. The human acknowledges a given asset ONCE per lesson (e.g.
@@ -152,7 +164,7 @@ class AcksBuilder {
 
 		// catch-all + full copyright statement (fixed closing positions; the copyright
 		// group joins the round-241 template-variant omit — see omitList above)
-		html.push(g.group_element_open, fmt.standing_items.catch_all, g.group_element_close);
+		html.push(g.group_element_open, fam?.catch_all ?? fmt.standing_items.catch_all, g.group_element_close);
 		if (!omitList.includes("copyright_statement")) {
 			html.push(g.group_element_open, fmt.standing_items.copyright_statement, g.group_element_close);
 		}

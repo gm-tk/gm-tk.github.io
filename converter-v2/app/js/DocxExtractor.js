@@ -853,6 +853,17 @@ class DocxExtractor {
 			const rightLines = lines(right);
 			if (role === "overview") {
 				overview = rightLines.slice(); overviewLinks = links;
+				// ROUND 443 (Chris's D13-15): an Overview line that is ONLY a link label to a Google Doc becomes a red
+				// To Do carrying the link — data overview_link_only_todo (env XOTPOVERVIEW_OFF)
+				const olt = ad.overview_link_only_todo;
+				if (olt && olt.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[olt.env || "XOTPOVERVIEW_OFF"])) {
+					const urlRe = re(olt.url_match ?? "docs\\.google\\.com/document");
+					overview = overview.map((l) => {
+						const t = plain(l).trim();
+						const lk = t && (links ?? []).find((k) => k && plain(String(k.text ?? "")).trim() === t && urlRe.test(String(k.target ?? "")));
+						return lk ? RED(String(olt.note ?? "").replace("{url}", String(lk.target))) : l;
+					});
+				}
 				// the row's own left-cell label ("Overview") leads the menu as a bold label (the gold's first
 				// `<h3><span>Overview</span></h3>`, 24 / 24 pages) — data overview_label_from_cell
 				const lab = ad.overview_label_from_cell !== false ? plain(leftLines[0] ?? "") : "";

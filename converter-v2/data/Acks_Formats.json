@@ -159,6 +159,19 @@
   }
  },
 
+ "family_credit_flags": {
+  "enabled": true,
+  "env": "XOTPACKS_OFF",
+  "_doc": "ROUND 443 (the autonomous loop's session 39 Round 5, 23 Sept 2026 — Chris's decision D13-14, Option B 'flagged placeholders'; KB 05C 'Sourcing the acknowledgement entries': where a credit is unavailable, raise a VISIBLE red flag for the developer to complete — not a hidden HTML comment). A family whose Writers Template never carries its credit line: every EMPTY per-lesson acks group (no entry built for it) gets a visible red Designer/Developer To Do after its constraint-73 lesson label, and the catch-all line takes the family's own form. Keyed by code prefix, one row per family. The XOTP reader books: 12 / 12 golds credit the story ('Story: <title> by Anne Russell and Rosemary Emery, © Off The Page. Used with permission.') and close with 'All illustrations © Te Aho o Te Kura Pounamu…'; the WT only links the reader, so the credit cannot be derived. Env XOTPACKS_OFF restores the r442 acks byte-for-byte.",
+  "rows": [
+   {
+    "code_prefixes": ["XOTP"],
+    "empty_group_flag": "credit needed for this lesson's reader book — add the story's credit line in the family form: \"Story: <title> by <author(s)>, © <publisher>. Used with permission.\" (the Writers Template links the book but gives no credit).",
+    "catch_all": "<p>All illustrations © Te Aho o Te Kura Pounamu, Wellington, New Zealand.</p>"
+   }
+  ]
+ },
+
  "istock_unverified": {
   "enabled": true,
   "_note": "ROUND 236 (Chris) — SOURCING HONESTY for iStock TITLES. Without a verified acks file every iStock title is DERIVED from the URL slug (the round-235 istock_slug_title rule, 98% accurate but not confirmed) and the finished line reads exactly like a verified one, so the designer cannot tell which titles were checked against the iStock API and which were inferred. Per Chris: an unverified iStock acknowledgement carries a VISIBLE marker, and the page carries one red designer note explaining why. This is the ACK-TODO contract's third state — the line is COMPLETE (no bracketed slot) but UNCONFIRMED — so it deliberately does NOT take the ackTodo class: it stays a plain <p> exactly like the human's, gaining only the marker character. That keeps it invisible to the skeleton (text-stripped, class unchanged) and keeps its text in compare_structure's acks harvest, while still showing on the page. Ids the file DOES cover are untouched; entries already carrying a visible ❗ (istock-name / asset-id ACK-TODOs) are left alone — they are flagged already. Env ISTOCKUNVERIFIED_OFF.",

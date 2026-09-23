@@ -1,0 +1,18 @@
+OLD pairs 2476  SCAFFOLD 54.8084%  RAW 38.732%  >=50 1547  >=75 259  >=90 23
+NEW pairs 2476  SCAFFOLD 54.8170%  RAW 38.738%  >=50 1548  >=75 261  >=90 23
+delta SCAFFOLD +0.0086pp  RAW +0.006pp  >=50 +1  >=75 +2  >=90 +0
+movers 12 (up 12 / down 0), pp-sum +21.3
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  XOTPB08    XOTPB08_2_0.html            8.5 ->   12.0  (+3.5)
+  XOTPB10    XOTPB10_2_0.html           52.5 ->   54.7  (+2.2)
+  XOTPB11    XOTPB11_2_0.html           52.5 ->   54.7  (+2.2)
+  XOTPB13    XOTPB13_2_0.html           51.7 ->   53.8  (+2.1)
+  XOTPB11    XOTPB11_1_0.html           73.1 ->   75.2  (+2.1)
+  XOTPB13    XOTPB13_1_0.html           71.6 ->   73.7  (+2.0)
+  XOTPB12    XOTPB12_1_0.html           73.0 ->   75.0  (+2.0)
+  XOTPB12    XOTPB12_2_0.html           48.0 ->   50.0  (+2.0)
+  XOTPB10    XOTPB10_1_0.html           65.2 ->   67.2  (+2.0)
+  XOTPB09    XOTPB09_1_0.html           69.1 ->   69.6  (+0.5)
+  XOTPB08    XOTPB08_1_0.html           62.7 ->   63.2  (+0.5)
+  XOTPB09    XOTPB09_2_0.html           38.3 ->   38.7  (+0.3)

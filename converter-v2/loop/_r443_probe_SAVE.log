@@ -1,0 +1,15 @@
+XOTPB08: identical 0 / changed 2
+XOTPB09: identical 0 / changed 2
+XOTPB10: identical 0 / changed 2
+XOTPB11: identical 0 / changed 2
+XOTPB12: identical 0 / changed 2
+XOTPB13: identical 0 / changed 2
+XOTPG01: identical 1 / changed 1
+XOTPG03: identical 1 / changed 1
+XOTPG04: identical 1 / changed 1
+XOTPG05: identical 1 / changed 1
+XOTPG06: identical 1 / changed 1
+XOTPO01: identical 1 / changed 1
+
+TOTAL: identical 6 / changed 18 / missing 0 over 12 modules
+CHANGED: XOTPB08/XOTPB08_1_0.html XOTPB08/XOTPB08_2_0.html XOTPB09/XOTPB09_1_0.html XOTPB09/XOTPB09_2_0.html XOTPB10/XOTPB10_1_0.html XOTPB10/XOTPB10_2_0.html XOTPB11/XOTPB11_1_0.html XOTPB11/XOTPB11_2_0.html XOTPB12/XOTPB12_1_0.html XOTPB12/XOTPB12_2_0.html XOTPB13/XOTPB13_1_0.html XOTPB13/XOTPB13_2_0.html XOTPG01/XOTPG01_1_0.html XOTPG03/XOTPG03_1_0.html XOTPG04/XOTPG04_1_0.html XOTPG05/XOTPG05_1_0.html XOTPG06/XOTPG06_1_0.html XOTPO01/XOTPO01_1_0.html

@@ -419,6 +419,13 @@
 					"stop_min_words": 16,
 					"_note": "ROUND 425 finish (session 33 Round 1, 2026-09-22): the Overview cell's success-criteria items are typed as PLAIN paragraphs (no numPr, no style — verified in the docx of XOTPG04 / G01 / O01), so they reached the two-column item menu as five <p> lines; the gold ships them as <ul><li> on every page that has them (6 modules / 12 pages, 12 / 12) and the KB fixes the form — 01B_MODULE_MENUS_FOOTER (`<h5>I can:</h5>` + `<ul><li>`), constraint 23. The lines after a label matching label_match (folded) up to the next bold label or the first line of >= stop_min_words words take the corpus bullet prefix, so ListsAndRuns.renderBlackText groups them into ONE <ul>. The B-series Overview cells hold only the external Google-Doc link (needs Chris) and never match. Off with the adapter (ACTTABLEADAPT_OFF) or enabled: false."
 				},
+				"overview_link_only_todo": {
+					"enabled": true,
+					"env": "XOTPOVERVIEW_OFF",
+					"url_match": "docs\\.google\\.com/document",
+					"note": "Designer/Developer To Do: paste the overview from the linked Google Doc ({url}) — the Writers Template gives only its link.",
+					"_doc": "ROUND 443 (the autonomous loop's session 39 Round 5, 23 Sept 2026 — Chris's decision D13-15, Option B 'a To Do placeholder', chosen against pasting the text). XOTPB08–13's Overview cell holds 'In this module, ākonga will:' and then ONLY a link — 'Overview Set 2-Emergent' → a Google Doc — so the menu shipped the bare link label as a paragraph. An Overview line whose text is exactly a row link's label, where that link points at a Google Doc (url_match), becomes a red line carrying this note; red_flag.todo_lead renders it under the ledger's 'Designer/Developer To Do:' prefix. The XOTPG wording is NOT reused (its 'I can' goals differ). Env XOTPOVERVIEW_OFF restores the bare label."
+				},
 				"questions_title_as_lead": true,
 				"questions_list": "numbered",
 				"activity_box": "bare",

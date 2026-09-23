@@ -1,5 +1,29 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-23 (round 443, build 260620.14) — THE XOTP FAMILY'S FLAGGED GAPS: the reader-book modules now say visibly what the Writers Template cannot supply — a red "credit needed" To Do in every empty acknowledgements group, the family's own "All illustrations ©" line, and a red "paste the overview from the linked Google Doc" To Do in place of the bare link label — Chris's decisions D13-14 + D13-15 (D13-11 dispositioned), the loop's session 39 Round 5
+
+### 1. WHAT CHANGED
+
+**D13-14 — the acknowledgements (Option B, flagged placeholders; KB 05C: a missing credit is a VISIBLE red flag, never a hidden HTML comment).** All 12 XOTP golds credit the reader book ("Story: <title> by Anne Russell and Rosemary Emery, © Off The Page. Used with permission.") and close with "All illustrations © Te Aho o Te Kura Pounamu, Wellington, New Zealand."; the Writers Template only LINKS the reader, so the credit cannot be derived. Claude shipped each lesson group as nothing but its hidden `<!-- Lesson N.0 -->` label, and the generic "All other images ©" line. New: `Acks_Formats.json` `family_credit_flags` (env **`XOTPACKS_OFF`**) — one row per family keyed by code prefix (XOTP): an EMPTY per-lesson group gets a red `Designer/Developer To Do: credit needed for this lesson's reader book — add the story's credit line in the family form …` after its label (the label comment itself STAYS — KB constraint 73 mandates it), and the catch-all takes the family's "All illustrations ©" form. `AcksBuilder.Build` reads the row.
+
+**D13-15 — the XOTPB Overview (Option B, a To Do placeholder, chosen against pasting the text).** XOTPB08–13's Overview cell is "In this module, ākonga will:" plus ONLY a link, "Overview Set 2-Emergent" → a Google Doc; the menu shipped the bare label as a paragraph. New: `Input_Doc_Rules.json` adapter `overview_link_only_todo` (env **`XOTPOVERVIEW_OFF`**) — `DocxExtractor.AdaptActivityTable` replaces an Overview line whose text is exactly a row link's label, pointing at a Google Doc, with a red line "Designer/Developer To Do: paste the overview from the linked Google Doc (<the URL>) — the Writers Template gives only its link." The XOTPG wording is not reused (its "I can" goals differ). The note-tidy pass places it just under the menu, as it does every note in a menu.
+
+**The prefix (`red_flag.todo_lead`, env `TODOLEAD_OFF`).** A red line rides the writer-note path, so it would have read "Writers Note: Designer/Developer To Do: …". `NotesAndComments.redFlag` now renders a red line that already OPENS with the ledger's To Do prefix as a To Do (kind todo). No Claude page carried a "Writers Note: Designer/Developer To Do:" or "Writers Note: To Do:" line before this round (measured), so it is inert elsewhere — the OFF probe below confirms it.
+
+**D13-11 (XOTPB08's pasted picture) — dispositioned, no change.** Chris accepted the flagged gap (Option B, CLOSED) and allowed an optional sharper note "if the loop touches the XOTP adapter anyway"; XOTPB08's output carries no pasted-picture note to sharpen (its gap is an un-built interactive hand-off box), so nothing was added.
+
+### 2. PROOF
+
+- **In-memory A/B** (`outputs/_r443_probe_run.sh`, all 545 modules): OFF (`XOTPACKS_OFF=1 XOTPOVERVIEW_OFF=1 TODOLEAD_OFF=1`) = **2666 / 2666 identical**; ON = **18 pages / 12 modules**, all XOTP (each module's first page carries the acks; XOTPB08–13's two pages both carry the menu).
+- **SCOPED regeneration** (`_r443_regen.sh`: the 12 + a 12-module spot-check, seed 443): 0 truly stale; `changed` = exactly the 12; spot-check 12 / 12 identical. `scoped_ship.sh --toggle XOTPACKS_OFF --round 443 --commit`: **PASS — skeleton +0.01, ≥50 +1, ≥75 +2 IMPROVED; every other gate HELD EXACTLY.**
+- **Post-ship** (`_r443_postship.sh`): `run_all_gates.sh` rc 0, every verifier RESULT ✓; skeleton delta vs r442 **+0.0086pp, 12 up / 0 down** (the bare link paragraph left the XOTPB menus — the red notes themselves are excluded from every gate by construction, round 72), 0 movers outside the twelve; 49 selftests GREEN; feature index GREEN; the miner 196 CANDIDATE.
+
+### 3. PROTECTED GATES (all HELD or IMPROVED)
+
+- **Skeleton (PRIMARY)**: SCAFFOLD **54.8170 % @ 2476 pairs** (+0.0086pp), median 56.1; ≥50 **1548** (+1), ≥75 **261** (+2), ≥90 **23**; RAW 38.738 %; pairs skipped 0. 54.817 / 91.2 = **60.1 % of achievable**.
+- **compare_structure** 15657 / 199 / 796 / 24; **body_compare** 56 / 5 / 201 / 260; **structurally clean** 2613 / 2658 = 98.31 %; **leak** 75 / 45 — all EXACT; **tags 9557 / 9557**; every verifier RESULT ✓.
+- Plateau (§4): the PICK declared the round gate-neutral by design (red notes are excluded) — it neither counts nor resets; the window stays **0 of 3**.
+
 ## 2026-09-23 (round 442, build 260620.13) — THE TWELVE LESSON-MENU REPEATERS: on twelve named modules a lesson page whose own menu would be empty now carries the module overview's menu, as their gold does — Chris's decision D13-8 (Option A, chosen against the recommendation), the loop's session 39 Round 4
 
 ### 1. WHAT CHANGED
