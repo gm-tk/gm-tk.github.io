@@ -1,5 +1,11 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (session 44 Round 7, build 260620.46 — NO engine change) — THE LEDGER'S FULL-SHIP BACKSTOP: the whole corpus regenerated with the r482 engine is byte-identical to the shipped manifest
+
+- **Why:** eight scoped ships since the r474 FULL (r475–r482; `_ship_ledger.py`: cadence 8 reached). A scoped ship proves only its affected set + a 12-module sample; the backstop proves the whole chain.
+- **Run** (`outputs/_s44_full_regen.sh` — `_batch_plan.py`'s plan, 42 batches, 4 parallel workers under WSL, 01:55 → 02:02): all rc 0; `_stalecheck.sh` 0 stale; **`_content_manifest.py diff`: IDENTICAL — 0 pages differ** (every r475–r482 affected set was complete).
+- **Gates on the fully fresh corpus** (`outputs/_s44_full_postship.sh`): `run_all_gates.sh` rc 0; skeleton **55.3280 % @ 2491**, ≥50 1582, ≥75 275, ≥90 25, RAW 39.237 % — 0 movers vs r482; `_gatecheck.py skeleton defect` (the full skeleton run) **every row HELD**; cs exact 16691 / EXTRA 208 / missing 872, body ANY 238, clean 2587 / 2633, leak 75 / 46 — EXACT (the `cs bc` call printed a CACHED pre-r479 skeleton row, 55.23 — the §6 trap; the full run supersedes it). Ledger `record-full --round 482` (scoped counter 8 → 0); the fast-loop baseline and the content manifest re-snapshotted; 17 selftests + the skeleton selftest green; the feature index green; the miner 195 CANDIDATE.
+
 ## 2026-09-25 (round 482, build 260620.46) — KB 07D: THE BILINGUAL LESSON TITLE KEEPS ITS h2 — the `[H2] Lesson N / Hei Mahi N` title the page's re-level pass demoted to h3 is pinned at the level r137 forces
 
 ### 1. WHAT CHANGED

@@ -1148,6 +1148,7 @@ next rounds.
 ## 14. Current state snapshot (keep in sync with the changelog)
 
 - **LAST FULL (24 Sept 2026, session 40 Round 12 — no engine change):** the ledger backstop regenerated all 545 with the r452 engine — 542 / 542 modules byte-identical, every gate EXACT; ledger scoped #0.
+- **FULL backstop** at `260620.46` (session 44 Round 7, 25 Sept): all 545 modules regenerated, **0 pages differ** from the shipped manifest; every gate HELD; ledger reset (LAST FULL = r482).
 - **Build:** `260620.46` (round 482 — **KB 07D: the bilingual lesson title keeps its h2**; `LESSONPIN_OFF`; scoped #8 since the r474 FULL; 7 modules; skeleton 55.3280 % @ 2491, +0.0024pp).
 - **Build:** `260620.45` (round 481 — **the MTK activity's data rows are one hand-off**; `ACTDATA_OFF`; scoped #7 since the r474 FULL; TRR116; skeleton 55.3255 % @ 2491, +0.0167pp, ≥50 +2).
 - **Build:** `260620.44` (round 480 — **KB 07B: the MTK activity is one box** (TRR family dialect); `ACTLABELBOX_OFF`; scoped #6 since the r474 FULL; 3 modules; skeleton 55.3088 % @ 2491, +0.0611pp, ≥50 +4; cs exact 16691, −80 NAMED pool shrink).
