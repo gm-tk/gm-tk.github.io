@@ -2473,7 +2473,28 @@ class InteractiveScanner {
 				const headingLevels = _mrB.heading_terminates_after_table_levels ?? ["h2", "h3", "h4", "h5"];
 				const isBreak = (_mrB.body_terminates_after_table && p?.tag === "body" && !exempt)
 					|| (_mrB.heading_terminates_after_table && headingLevels.includes(p?.tag) && !hExempt);
-				if (entry?.uses_data_table && isBreak) break;   // section break resumes after the data table
+				// ROUND 492 — THE BREAK IS SCOPED TO THE CURRENT PANEL for a type whose writer delimits NUMBERED panels
+				// (the accordion): a table in an EARLIER panel is that panel's content, so a [Body] / heading right after
+				// the writer's next `[accordion N] Title` is the new panel's own content, not a new section (MXFL301-4.0's
+				// "The box method" — 18 bundles / 11 modules shipped the hand-off box with an empty last panel). Only when
+				// the last numbered delimiter was captured AFTER the last table. Data member_rule.panel_scoped_table_break;
+				// env ACCPANELBREAK_OFF.
+				let tableInPanel = true;
+				const _psb = _mrB.panel_scoped_table_break;
+				const _psbPat = (isBreak && _psb && _psb.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[_psb.env ?? "ACCPANELBREAK_OFF"]))
+					? _psb.types?.[bundle.type] : null;
+				if (_psbPat) {
+					// only the item RIGHT AFTER the writer's new numbered delimiter (the panel's opening [Body] / heading):
+					// once the panel has opened, the ordinary break applies again, so a panel the writer left empty
+					// (OSOH201-1.0's `[Accordion 3] Taha whānau` over the next section) cannot run on past its first item
+					const _re = new RegExp(_psbPat, "i");
+					const _mem = bundle.memberItems ?? [];
+					const _last = _mem[_mem.length - 1];
+					if (_last?.type === "tag" && _re.test(String(_last.text ?? "")
+						.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim())) tableInPanel = false;
+				}
+				if (entry?.uses_data_table && isBreak && tableInPanel) break;   // section break resumes after the data table
 				// ROUND 378 — THE UNCLASSIFIED ACTIVITY RESUMES FREE BODY AT THE [Body] AFTER ITS TABLE
 				// (the autonomous loop's session 24 Round 2). The unclassified activity (an `[Activity N]`
 				// with a data table and no widget keyword — the BLL phonics form) has no boundary-bank

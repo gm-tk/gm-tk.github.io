@@ -1,8 +1,8 @@
 {
   "_meta": {
     "purpose": "Committed PROTECTED-gate baseline (efficiency lever 2). The shared corpus DRIFTS between sessions so the BUILD_CHANGELOG absolutes never line up exactly — without a committed baseline the only rigorous proof of hold-or-improve is a second full A/B regen pass (~8m/round). Diff THIS after a regen instead. Refresh it (and the build/round) every shipped round, AFTER the gates pass.",
-    "build": "260620.54",
-    "round": 491,
+    "build": "260620.55",
+    "round": 492,
     "date": "2026-09-24",
     "_round92_note": "Round 92 (ENGS302-01: side-alert-box-in-table + dragAndDrop activity wrapper / data-table capture / phantom-journal-button fix). Verified on a FULL 0-stale tightened regen vs the round-91 committed baseline (which matched the fast-loop baseline exactly: over 42 / any 181). PRIMARY skeleton IMPROVED (pages>=50% 524->539 +15, >=75% 65->70 +5, mean 47.8->48.2, median 49.3->49.8); compare_structure exact 5893->5902 (+9) / missing 261->252 (-9) / EXTRA 142 HELD; structural-clean 1290->1291 (95.0->95.1%) / leak 254->253 (-1) / leak pages 68->67 (-1); tags 9557/9557; flipCard divergence 0 (37/13/10/14); speechBubble defect 0. body_compare any 181->184 (+3) — the +3 over-capture (ENGC201-06, ENGR101-05, MXDB301-03) is the UNAVOIDABLE cost of capturing the dragAndDrop/activity DATA TABLE into the widget (the user's explicit fix): those tables ARE the widget's data the human BUILDS, but body_compare cannot credit Claude's un-built placeholder, and for these 3 the human keeps the table free. Net-positive per the MEASUREMENT MANDATE (judge a structural change FIRST on the skeleton, which improved +15) + the NET-POSITIVE convention. _round91_note: round 91 (ENGS302 emphasis-bullets/caption/media-url/lesson-name) shipped +1 skeleton / +1 compare exact / +2 missing.",
     "corpus": {
@@ -107,6 +107,7 @@
     "_note_intake_2026_09_19": "INTAKE RE-BASELINE 2026-09-19 (the 98-module September intake + a FULL corpus regeneration, no engine change). The POPULATION GREW: skeleton pairs 1956 -> 2349, cs matched 13794 -> 15668, body/defect pages 2102 -> 2606, gated dirs 484. Every absolute below therefore moves, and the rate metrics fall, WITHOUT any regression. PROOF, measured by splitting each gate by population: the PRE-EXISTING modules reproduce the round-407 baseline EXACTLY -- skeleton 54.084% / >=50 1181 / >=75 202 / >=90 18; compare_structure exact 11779 / EXTRA 172 / missing 626 / row-wrap 23; body_compare runaway 5 / empty_container 170; leak 26 occ / 23 pages; clean 2079/2102 = 98.91%. _content_manifest.py fresh confirmed all 413 pre-existing modules BYTE-IDENTICAL to the manifest, so identical bytes cannot yield different metrics. All verifier gates matched baseline exactly: tags 9557/9557 0 failures, flipCard 61 (32/11/18) divergence 0, speechBubble defect 4, math 323/323 defect 0, menulabels 91 defect 0, dragAndDrop 21 defect 0, modal defect 0, mtkQuiz defect 0, entry parity PASS. The 98 new modules contribute the whole delta; 78 of them converted, 20 cannot yet (12 XOTP dialect, 7 with no Writers Template, PMT101's table-only opener).",
     "_note_s40_r12_full": "Session 40 Round 12 (2026-09-24; no engine change — the ship ledger's FULL backstop): all 545 regenerated with the r452 engine, 542 / 542 modules byte-identical to the scoped-shipped manifest, every number in this file re-proved EXACT on the full corpus (skeleton 54.7484 @ 2477, 0 movers). Ledger record-full --round 452 -> scoped #0.",
     "_note_s45_full": "FULL-SHIP BACKSTOP at build 260620.53 (session 45 Round 10, 2026-09-25, no engine change): all 545 modules regenerated — 0 pages differ from the shipped manifest; skeleton 55.3705 @ 2491 (0 movers), cs / body / clean / leak EXACT; ledger LAST FULL = r490.",
+    "_note_r492": "Round 492 (session 46 Round 2, 2026-09-25) — THE ACCORDION PANEL AFTER A TABLE (ACCPANELBREAK_OFF): 10 modules; Still-a-box 270 -> 257; SCAFFOLD 55.3709 -> 55.3852 @ 2491 (+0.0144pp, 10 up / 3 down NAMED); RAW 39.321 -> 39.340; >=50 1585 -> 1586; cs exact 16702 -> 16700 NAMED (CEDT501 / OSOH301 — moved inside the writer's accordion); body / clean / leak EXACT; scoped #2 since the r490 FULL.",
     "_note_r491": "Round 491 (session 46 Round 1, 2026-09-25) — THE ACCORDION MARKER-CELL TABLE (ACCMARKTABLE_OFF) + the r489 bulleted bold lead (ACCBULLETLEAD_OFF): 15 modules / 19 pages, 24 accordions built (Still-a-box 294 -> 270); SCAFFOLD 55.3705 -> 55.3709 @ 2491 (+0.0004pp, 2 up / 1 down NAMED); RAW 39.285 -> 39.321; cs / body / clean / leak EXACT; accordion verifier 1,263 panels / 180 modules defect 0; scoped #1 since the r490 FULL; scoped_ship PASS.",
     "_note_r490": "Round 490 (session 45 Round 9, 2026-09-25) — THE LESSON OVERVIEW'S WALT ALERT IS MENU CONTENT (LOWALTALERT_OFF): HIS1003 / HIS1004, 20 pages; SCAFFOLD 55.3605 -> 55.3705 @ 2491 (+0.0100pp, 15 up / 5 down NAMED); RAW 39.280 -> 39.285; >=50 1584 -> 1585; cs / body / clean / leak EXACT; scoped #7 since the r482 FULL; scoped_ship PASS. (r489 = the declined accordion prototype, no ship.)",
     "_note_r488": "Round 488 (session 45 Round 5, 2026-09-25) — THE STORY-REFERENCE CAROUSEL SHELL (CARSTORY_OFF): 33 modules / 76 pages, 43 carousels built (Still-a-box 320 -> 277); SCAFFOLD 55.3576 -> 55.3605 @ 2491 (+0.0029pp, 6 up / 3 down NAMED); RAW 39.243 -> 39.280; buckets / cs / body / clean / leak EXACT; scoped #6 since the r482 FULL; scoped_ship PASS. Adjunct _verify_carousel: 8 video-id mismatches identical OFF.",
@@ -185,13 +186,14 @@
     "_note_r408": "Round 408 (session 28 Task 1): the mined registries rebuilt over the 552-module gold corpus (Module_Structure_Index / Granular / 24 new Style-Anchor bases + floor-flip corrections / Menu / Convention / lexicon / feature index / legacy consensus; data/Subject_Prefix_Map.json PROPOSED). SCOPED regeneration of the 103 modules the probe named (OFF = pre snapshot 2613/2613; scoped ship #1 since the 19 Sept full). Skeleton 53.134 -> 53.680 (+0.5455pp; 275 movers 197 up / 76 down, 0 outside the set, the 1813 unaffected pairs EXACT), >=50 1378 -> 1398, >=75 228 -> 236, >=90 19 -> 20, RAW 37.487 -> 37.884; compare_structure exact 13410 -> 14091 (the text-matched pool 15668 -> 16414) / EXTRA 184 -> 186 / MISSING 685 -> 690 (inside five newly single-file WJFUN / JPFUN modules) / row-wrap 23; body_compare over-capture 54 (the 19 Sept fast-loop snapshot's own value — the re-base had carried r407's 42; corrected here), runaway 6, EMPTY 192 -> 190, ANY 250 -> 248; defect clean 2504/2548 = 98.27 (58 clean WJFUN / JPFUN extra pages left the population; defect pages 44 / leak 73 EXACT); every verifier EXACT."
   },
   "skeleton": {
-    "mean_scaffold_pct": 55.37,
+    "mean_scaffold_pct": 55.39,
     "median_scaffold_pct": 56.3,
-    "pages_ge_50": 1585,
+    "pages_ge_50": 1586,
     "pages_ge_75": 277,
     "pages_ge_90": 26,
-    "raw_mean_pct": 39.32,
+    "raw_mean_pct": 39.34,
     "pairs": 2491,
+    "_note_r492_state": "r492 (the accordion panel after a table): SCAFFOLD 55.3852 @ 2491, RAW 39.340; 13 movers (10 up / 3 down NAMED).",
     "_note_r491_state": "r491 (the accordion marker-cell table): SCAFFOLD 55.3709 @ 2491, RAW 39.321; 3 movers (2 up / 1 down NAMED).",
     "_note_r490_state": "r490 (the LO WALT alert): SCAFFOLD 55.3705 @ 2491, RAW 39.285; 20 movers (15 up / 5 down NAMED).",
     "_note_r488_state": "r488 (the story-reference carousel shell): SCAFFOLD 55.3605 @ 2491, RAW 39.280; 9 movers (6 up / 3 down NAMED).",
@@ -309,7 +311,7 @@
     "_note_r408": "Round 408: SCAFFOLD 53.1341 -> 53.6797 (+0.5455pp; 275 movers, 197 up / 76 down, pp-sum +725.6 — GEO1006_3_0 -11.3, GEO1004_1_0 -9.4, ENGS404_6_1 -8.2, PWY1001_2_3_0 -7.0, CHI1003_8_0 -5.0), >=50 1398, >=75 236, >=90 20; RAW 37.487 -> 37.884; 2349 pairs / 0 skipped. State outputs/_s28_t1_sk_final.json."
   },
   "compare_structure": {
-    "exact_chain": 16702,
+    "exact_chain": 16700,
     "claude_extra_container": 198,
     "claude_missing_container": 878,
     "row_wrap_missing": 24,

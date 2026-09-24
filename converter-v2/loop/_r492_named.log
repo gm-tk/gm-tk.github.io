@@ -1,0 +1,17 @@
+r492 NAMED: compare_structure exact chain -2 (matched -2) = CEDT501 -1 / OSOH301 -1 (_s46_csdelta.py)
+CEDT501 {'matched': -1, 'exact_chain': -1}
+OSOH301 {'matched': -1, 'exact_chain': -1}
+done
+the moved free blocks and where the GOLD keeps them (_s46_freemoved.py _r492_off _r492_on):
+CEDT501/CEDT501_2_0.html: 1 free blocks left the free body
+    'Even the person doing the bullying is affected. They may face conseque'  gold: div.accordion > div.accContent
+CEDT501/CEDT501_5_0.html: 7 free blocks left the free body
+    'Sometimes when people feel ignored or frustrated, they react in ways t'  gold: div.accordion > div.accContent
+    '[AI animation]  AI Animation Audio-Script template -Lesson 5 - Wiremu.'  gold: (not in gold)
+    'Include the animation and the text'  gold: (not in gold)
+    'I’d been waiting ages at Papakura Skatepark, standing near the ramp wi'  gold: div.accContent > div.clickDropContent
+    'I marched straight up to the ramp and snapped, “Oi, are you blind? I’v'  gold: div.accContent > div.clickDropContent
+    'One of the guys muttered something back, but I didn’t give him a chanc'  gold: div.accContent > div.clickDropContent
+    'In this final skate park scene, notice how Wiremu explains what he wan'  gold: div.row > div.col-md-8.col-12
+OSOH301/OSOH301_1_0.html: 1 free blocks left the free body
+    'To get the most out of your online learning it is important to connect'  gold: div.row > div.col-md-8.col-12

@@ -4,7 +4,7 @@ panels), located in the module's gold by _s46_goldloc: accordion head / other co
 import os, re, sys, html, collections
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from _s46_goldloc import locate, fold
-ON = "_r491_on"; CLA = "/mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/01-Claude_Modules_"
+ON = (sys.argv[1] if len(sys.argv) > 1 else "_r491_on"); CLA = "/mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/01-Claude_Modules_"
 HEAD = re.compile(r'<div class="accHead"><h4>(.*?)</h4></div>', re.S)
 def claude_disk(code, fn):
     for t in os.listdir(CLA):

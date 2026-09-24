@@ -1,0 +1,3 @@
+OSOH201/OSOH201_1_0.html: gold 357 lines | position-free overlap OLD(r491) 144 / 164  NEW(r492) 115 / 128  (Δ -29) | widget lines gold {'WIDGET': 32} OLD {'WIDGET': 19} NEW {'WIDGET': 10}
+MXFL301/MXFL301_7_0.html: gold 171 lines | position-free overlap OLD(r491) 107 / 150  NEW(r492) 106 / 149  (Δ -1) | widget lines gold {'WIDGET': 11} OLD {'WIDGET': 5} NEW {'WIDGET': 5}
+CEDR501/CEDR501_3_0.html: gold 96 lines | position-free overlap OLD(r491) 83 / 244  NEW(r492) 83 / 241  (Δ +0) | widget lines gold {'WIDGET': 7} OLD {'WIDGET': 24} NEW {'WIDGET': 24}

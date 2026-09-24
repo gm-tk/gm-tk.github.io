@@ -1,0 +1,36 @@
+CEDR501: built 11 panels [exact 9, copy-edit 2, dev-edit 0, defect 0] | human 25 | ✓ exact/copy-edit/dev-edit only
+CEDT501: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 16 | no builds
+ENGJ102: built 5 panels [exact 3, copy-edit 2, dev-edit 0, defect 0] | human 6 | ✓ exact/copy-edit/dev-edit only
+ENGR302: built 6 panels [exact 0, copy-edit 1, dev-edit 5, defect 0] | human 7 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Simplify 16/30
+   dev-diverged: Simplify 15/300
+   dev-restructured: Voice 2
+   dev-diverged: Voice 3
+   dev-restructured: Voice 4
+🟠 [ModuleResolver] Multiple module-code candidates found (MXDB302, MXO421) — using MXDB302 from filename "MXDB302 Writers Template + Media List.docx".
+MXDB302: built 16 panels [exact 0, copy-edit 9, dev-edit 7, defect 0] | human 39 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Rectangles and Squares
+   dev-restructured: Examples
+   dev-restructured: Examples
+   dev-restructured: Examples
+   dev-restructured: Examples
+   dev-restructured: The Fraction Approach
+   dev-restructured: The Decimal Approach
+MXFL301: built 30 panels [exact 1, copy-edit 19, dev-edit 10, defect 0] | human 28 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Coordinates
+   dev-restructured: The 1 % method
+   dev-diverged: Reducing to 1%
+   dev-diverged: Using a formula
+   dev-rewrote: John's plan: Japan
+   dev-diverged: Hana's plan: London
+   dev-diverged: Pania's plan: Hawaii
+   dev-diverged: Ariki's plan: Florida, USA
+   dev-diverged: Kiri's plan: Kenya
+   dev-rewrote: The standard algorithm
+MXFU301: built 5 panels [exact 1, copy-edit 4, dev-edit 0, defect 0] | human 10 | ✓ exact/copy-edit/dev-edit only
+OSOH201: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+OSOH301: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+PWY1002: built 13 panels [exact 8, copy-edit 5, dev-edit 0, defect 0] | human 22 | ✓ exact/copy-edit/dev-edit only
+
+TOTAL: 86 panels built across 7 module(s).
+RESULT: every built panel matches the human (exact / copy-edit / developer edit) ✓

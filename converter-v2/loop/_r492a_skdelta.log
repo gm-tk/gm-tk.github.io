@@ -1,0 +1,20 @@
+OLD pairs 2491  SCAFFOLD 55.3709%  RAW 39.321%  >=50 1585  >=75 277  >=90 26
+NEW pairs 2491  SCAFFOLD 55.3851%  RAW 39.345%  >=50 1586  >=75 277  >=90 26
+delta SCAFFOLD +0.0142pp  RAW +0.024pp  >=50 +1  >=75 +0  >=90 +0
+movers 14 (up 12 / down 2), pp-sum +35.4
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  CEDR501    CEDR501_6_0.html           39.5 ->   51.8  (+12.4)
+  CEDT501    CEDT501_5_0.html           50.3 ->   54.7  (+4.4)
+  PWY1002    PWY1002_2_1_0.html         60.8 ->   64.7  (+3.9)
+  ENGR302    ENGR302_5_0.html           45.0 ->   48.8  (+3.8)
+  MXDB302    MXDB302_7_0.html           41.4 ->   44.5  (+3.2)
+  MXFL301    MXFL301_6_0.html           59.9 ->   62.6  (+2.7)
+  MXFU301    MXFU301_3_0.html           32.5 ->   35.1  (+2.6)
+  ENGJ102    ENGJ102_2_0.html           56.9 ->   58.9  (+2.0)
+  MXFL301    MXFL301_4_0.html           60.7 ->   62.7  (+2.0)
+  OSOH301    OSOH301_1_0.html           47.1 ->   48.7  (+1.6)
+  CEDR501    CEDR501_3_0.html           43.1 ->   43.8  (+0.7)
+  CEDT501    CEDT501_2_0.html           53.4 ->   53.6  (+0.2)
+  MXFL301    MXFL301_7_0.html           54.9 ->   54.5  (-0.3)
+  OSOH201    OSOH201_1_0.html           40.7 ->   37.0  (-3.7)
