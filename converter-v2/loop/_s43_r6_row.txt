@@ -1,0 +1,1 @@
+| `_s43_r6_caption.py` / `_s43_r6_capprec.py` / `_s43_r6_{caption,capprec}.log` | `CONVERTER_V2/outputs/` | **Session 43 Round 6 (a PICK pass, no engine change)** — KB c41 `captionText`: the gold's captions matched to Claude's (487 on paired pages) and the precision of a positional rule (2–3 % — DECLINED); the pasted-picture file names (the KB's generic form). |

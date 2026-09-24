@@ -1,0 +1,32 @@
+words | gold form | Claude plain p after img | modules | examples
+1-6   | absent         |   449 (0.55) |  140 | AGH1003: «benefits of organic fertilisers» ;; ANZH103: «creative services please source suitable image» ;; ANZH103: «creative services please source suitable im
+1-6   | p plain        |   184 (0.22) |   67 | ANZH203: «abel tasman» ;; ARFUN05: «examples of gestures include» ;; ART1002: «click on the video to begin»
+1-6   | h4             |    45 (0.05) |   25 | AGH1003: «benefits of adding organic matter» ;; AGH1006: «seed sowing process» ;; ANZH404: «example 3 ihumātao»
+1-6   | p              |    36 (0.04) |   10 | BLL120: «sock» ;; BLL120: «stick» ;; BLL170: «sam and nat went out»
+1-6   | li             |    32 (0.04) |    5 | ENGI102: «cinderella» ;; ENGI102: «sleeping beauty» ;; ENGI102: «jack and the beanstalk»
+1-6   | p.captionText  |    23 (0.03) |    9 | CBI1008: «diamond» ;; CBI1008: «carbon fibres» ;; ENGJ402: «poet william wordsworth»
+1-6   | h3             |    22 (0.03) |   11 | AGH1007: «june mid july» ;; ENGC206: «lets get started» ;; EXPFUN03: «be a learner»
+1-6   | td             |    14 (0.02) |    1 | ENGR102: «boat» ;; ENGR102: «toe» ;; ENGR102: «bow»
+1-6   | h5             |    13 (0.02) |    8 | AGH1001: «for example» ;; ENFUN09: «you can also» ;; ENGI405: «thinking questions»
+1-6   | th             |     2 (0.00) |    2 | ART1006: «1» ;; OSAI101: «ai cannot»
+1-6   | h1             |     1 (0.00) |    1 | XDLS903: «poi»
+7-15  | absent         |   291 (0.48) |  139 | AGH1002: «click on the horizons below to find out more about» ;; AGH1008: «growing plants have a greater digestibility than f» ;; ANZH103: «people choose to do 
+7-15  | p plain        |   272 (0.44) |  128 | AGH1003: «this can also be shown in a table form below» ;; AGH1008: «farmers shear the sheep to remove the wool» ;; ANZH203: «view of the attack on abel tasmans
+7-15  | p.captionText  |    14 (0.02) |    8 | ANZHFUN05: «people asked not to leave paddington bears and san» ;; GEO1005: «the val di chiana alluvial plain italy» ;; HIS1001: «marino morris for the good of 
+7-15  | p              |    10 (0.02) |    6 | ARFUN03: «here is another example of dancers doing contrasti» ;; HIS1002: «source james lynch taranaki daily news 1985» ;; MXDI202: «sphere like a basketball or
+7-15  | li             |     9 (0.01) |    3 | AGH1008: «they get more nutrients from the food and less is » ;; HES1003: «great for finding simple answers to difficult ques» ;; XDLS908: «looking towards the 
+7-15  | h4             |     8 (0.01) |    5 | MXEO301: «step 1 identify the parts of the equation» ;; OSGM401: «not all games are made for everyone» ;; PES1004: «the following is a graph of coconut oil bein
+7-15  | td             |     7 (0.01) |    3 | CEDR501: «videos or podcasts may suit sketchnotes or timelin» ;; CEDR501: «articles or websites may suit cornell notes or sum» ;; MXFU301: «step 3 count the fav
+7-15  | h3             |     1 (0.00) |    1 | ENGR202: «roar into fun with leo the lion toy»
+16-30 | p plain        |   312 (0.64) |  169 | AGH1002: «the percentage of sand is along the bottom of the » ;; AGH1002: «then move onto the next largest percentage in this» ;; AGH1002: «at this point you sh
+16-30 | absent         |   158 (0.32) |  101 | AGH1002: «crumbs vary in size but crumbs between 1 5mm is co» ;; AGH1008: «farmers vaccinate cattle against clostridial disea» ;; ANZH101: «place images above i
+16-30 | p.captionText  |    13 (0.03) |    6 | ANZH401: «this new zealand company poster shows that by 1848» ;; CBI1008: «the electrostatic attraction by nuclei of the atom» ;; DAN1006: «this photo is of foo
+16-30 | td             |     3 (0.01) |    3 | CEDR501: «class discussions or group wānanga may suit summar» ;; DTC1005: «use camera movement intentionally panning and tilt» ;; MXFU301: «step 2 count the pos
+16-30 | p              |     2 (0.00) |    2 | BLL144: «jim can see a red dog with a long tail the dog is » ;; PWY1001: «choose one behaviour from the list reflect on how »
+16-30 | li             |     1 (0.00) |    1 | BLL164: «think of a sound choose a sound you hear often it »
+31+   | p plain        |   490 (0.72) |  202 | AGH1002: «for some māori soil health is shown by its ability» ;; AGH1002: «the grid inside the triangle is used to determine » ;; AGH1002: «you can now see the 
+31+   | absent         |   175 (0.26) |   96 | AGH1003: «a kaitaiki is a guardian and could be a person or » ;; AGH1003: «adding lime makes acid soils less acidic most new » ;; AGH1007: «cows sows and hinds 
+31+   | p.captionText  |     5 (0.01) |    4 | ANZH303: «eruera maihi patuone was the eldest son of tapua l» ;; CBI1004: «in this image the parent had one chromosome with d» ;; PES1001: «these kaitiaki are c
+31+   | p              |     5 (0.01) |    3 | BLL220: «troy joined his mate roy at the playground troy an» ;; BLL230: «tom the farmer has a brown cow the cow is not like» ;; MXFL201: «marlborough wairau is 
+31+   | th             |     1 (0.00) |    1 | CEDK501: «talia is a 16 year old student who works part time»
+31+   | td             |     1 (0.00) |    1 | XTAS102: «do you know what this means it tells us that no fo»
