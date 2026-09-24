@@ -1,0 +1,48 @@
+======================================================================
+ SCOPED SHIP — affected=../../outputs/_affected_r487.txt (12 modules), toggle=HOVERNAMED_OFF
+======================================================================
+[0] toggle-exists invariant (HOVERNAMED_OFF)
+    OK — HOVERNAMED_OFF found in app/js (the last-shipped corpus == this toggle OFF).
+
+[1] content-hash 0-stale (mtime false-alarm defeated)
+[content-manifest] content-hash 0-stale vs _content_manifest.txt
+  affected set: 12 module(s) (must be freshly regenerated)
+  unaffected  : 531 module(s) (must be byte-identical to the manifest; mtime IGNORED)
+  OK — 0 truly stale. 12 affected regenerated; the untouched corpus is byte-identical to the manifest (mtime false-alarm defeated).
+
+[2] containment — actually-changed modules must be a subset of the affected set
+    OK — 12 changed module(s) are a subset of 12 affected (the true set ⊆ the detector set).
+
+[3] completeness spot-check (a mis-specified P is caught here)
+[spotcheck] verifying 12 non-affected modules regenerated WITH the fix ON
+  OK — all 12 sampled non-affected modules are BYTE-IDENTICAL under the fix (P's no-op claim holds on the sample).
+
+[4] exact gate proof (decomposition vs the last-ship baseline)
+re-scoring 24 affected module(s): ANZH304 ANZH401 ARFUN01 ARFUN02 ARFUN03 BLL166 BLL231 BLL244 CEDO201 CEDO202 CEDT501 CHFUN07 DAN1004 ENGI202 EXPFUN03 HIS1001 HIS1002 HIS1005 HIS1006 HIS1007 HIS1008 MXDI102 OSSC301 SSFUN05
+baseline taken: 2026-09-24T17:46:45Z
+(unaffected modules unchanged by construction — corpus aggregate moves by exactly the affected-set delta)
+
+  metric                                 baseline        new     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  55.35      55.36     +0.01  IMPROVED
+  skeleton pages >=50%                       1582       1584        +2  IMPROVED
+  skeleton pages >=75%                        277        277         0  HELD
+  compare_structure exact chain             16701      16702        +1  IMPROVED
+  compare_structure EXTRA container           198        198         0  HELD
+  compare_structure missing container         878        878         0  HELD
+  body_compare ANY breakdown                  238        238         0  HELD
+  defect structurally-clean %               98.25      98.25      0.00  HELD
+  literal-[tag] leak (occ)                     75         75         0  HELD
+  literal-[tag] leak (pages)                   46         46         0  HELD
+
+  context (no pass/fail): sk_pages: 2491->2491  cs_matched: 19459->19460  body_pages: 2633->2633  df_total: 2633->2633  df_clean: 2587->2587
+
+RESULT: PASS — every protected gate held-or-improved corpus-wide (exact, decomposition-proven).
+[commit] fast-loop baseline PATCHED (2491 pages) + content manifest refreshed — this is now the shipped state the next inner loop measures against.
+
+[6] periodic full-ship backstop cadence
+[ledger] last full ship: round 482 (2026-09-24T14:17:19Z); scoped ships since: 5 (cadence 8, hard 16)
+  OK — a full-ship backstop is not yet due (3 scoped ship(s) of headroom).
+
+SCOPED SHIP: PASS — only the affected set changed, the rest is byte-identical, and every protected
+gate held-or-improved (exact, decomposition-proven). Finalise (changelog + AppVersion + CLAUDE.md).

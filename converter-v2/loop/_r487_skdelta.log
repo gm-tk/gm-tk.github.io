@@ -1,0 +1,31 @@
+OLD pairs 2491  SCAFFOLD 55.3485%  RAW 39.234%  >=50 1582  >=75 277  >=90 26
+NEW pairs 2491  SCAFFOLD 55.3576%  RAW 39.243%  >=50 1584  >=75 277  >=90 26
+delta SCAFFOLD +0.0091pp  RAW +0.009pp  >=50 +2  >=75 +0  >=90 +0
+movers 25 (up 17 / down 8), pp-sum +22.8
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  HIS1005    HIS1005_1_0.html           46.6 ->   51.5  (+4.9)
+  HIS1008    HIS1008_3_1.html           59.2 ->   64.0  (+4.8)
+  HIS1002    HIS1002_7_0.html           34.7 ->   38.0  (+3.3)
+  HIS1005    HIS1005_4_0.html           48.3 ->   50.2  (+1.8)
+  HIS1005    HIS1005_3_0.html           53.3 ->   55.1  (+1.8)
+  HIS1007    HIS1007_1_0.html           46.9 ->   48.6  (+1.8)
+  HIS1005    HIS1005_7_0.html           58.7 ->   60.4  (+1.7)
+  HIS1006    HIS1006_8_0.html           71.8 ->   73.5  (+1.7)
+  HIS1005    HIS1005_6_0.html           63.9 ->   65.3  (+1.4)
+  HIS1002    HIS1002_9_0.html           50.3 ->   51.3  (+1.0)
+  ARFUN03    ARFUN03_0_0.html           52.2 ->   53.2  (+0.9)
+  ANZH401    ANZH401_11_0.html          22.5 ->   23.3  (+0.8)
+  HIS1005    HIS1005_6_1.html           56.9 ->   57.5  (+0.5)
+  HIS1008    HIS1008_7_0.html           57.9 ->   58.4  (+0.5)
+  HIS1005    HIS1005_2_0.html           29.8 ->   30.2  (+0.4)
+  HIS1002    HIS1002_6_0.html           45.8 ->   46.1  (+0.3)
+  CEDO202    CEDO202_0_0.html           45.8 ->   45.9  (+0.2)
+  HIS1002    HIS1002_5_0.html           54.1 ->   54.0  (-0.1)
+  HIS1001    HIS1001_8_0.html           29.2 ->   29.0  (-0.2)
+  HIS1002    HIS1002_2_0.html           32.9 ->   32.4  (-0.4)
+  HIS1005    HIS1005_5_0.html           54.3 ->   53.7  (-0.6)
+  HIS1005    HIS1005_0_0.html           40.4 ->   39.6  (-0.9)
+  HIS1006    HIS1006_11_0.html          44.3 ->   43.3  (-0.9)
+  ARFUN01    ARFUN01_0_0.html           46.6 ->   45.6  (-1.0)
+  HIS1001    HIS1001_10_0.html          26.7 ->   25.7  (-1.0)

@@ -1840,7 +1840,8 @@ class Config {
 	// ROUND 484 (260620.48): KB c38 FOR THE QUIZ TYPES (session 44 Round 9) — the template autoCheck post-pass covers multiChoiceQuiz / dropQuiz / typing / radioQuiz / wordSelect (the class only). Env TPLAUTOQUIZ_OFF.
 	// ROUND 485 (260620.49): THE TITLE BAR'S LANGUAGE-BOUNDARY SPLIT (session 44 Round 11) — an English run then a Māori run with no separator ships as the two header h1 spans (ContentConverter.#bilingualLangSplit). Env TITLELANGSPLIT_OFF.
 	// ROUND 486 (260620.50): KB 01F THE WRITER'S QUOTE IS p.quoteText + p.quoteAck (session 45 Round 1) — no wrapper div, the attribution its own paragraph, the box holding only the quote (ContentConverter.#quoteKbForm). Env QUOTEFORM_OFF.
-	static AppVersion = "260620.50";
+	// ROUND 487 (260620.51): THE UNQUOTED NAMED HOVER ANCHOR (session 45 Round 2) — [rollover definition for TERM: DEF] weaves onto TERM (InteractiveScanner.#weaveHoverDefinition) instead of being dropped. Env HOVERNAMED_OFF.
+	static AppVersion = "260620.51";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

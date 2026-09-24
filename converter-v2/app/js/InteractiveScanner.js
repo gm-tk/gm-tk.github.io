@@ -3790,6 +3790,61 @@ class InteractiveScanner {
 		// not found in the host, fall back to the plain last-word append (unchanged).
 		const qm = rawMarker.match(/^\[[^\]:]*?['‘"]([^'’"‘\]]+)['’"]/);
 		const quotedAnchor = qm ? qm[1].trim() : "";
+		// ROUND 487 (the autonomous loop's session 45 Round 2) — THE UNQUOTED NAMED ANCHOR. The writer names the
+		// hovered word WITHOUT quotes — "[Rollover definition for supreme: …]" typed on its own line after the
+		// paragraph (HIS1005), "[Hover on identities: …]" inline after the word (ARFUN01), "[roll over definition
+		// mamae: …]" (HIS1006). The historical append put the sentinel after the host's LAST word; a host that ends a
+		// sentence has none, so inlineMarkup dropped the definition (writer content lost). The named TERM is found in
+		// the nearest `lookback` text items (whole word, case-insensitive, never inside an earlier woven definition) —
+		// its FIRST occurrence for a standalone definition line, its LAST for an inline marker. No TERM / no match →
+		// the unchanged historical path. Data elements.hover_definition_inline.named_anchor   Env HOVERNAMED_OFF
+		const _na = cfg.named_anchor;
+		let namedHost = null, namedBase = "", namedAt = -1;
+		if (!quotedAnchor && !leadingAnchor && _na && _na.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_na.env ?? "HOVERNAMED_OFF"])) {
+			let term = "";
+			for (const p of (_na.patterns ?? [])) {
+				const m = new RegExp(p, "iu").exec(rawMarker);
+				if (m && m[1] && /\p{L}/u.test(m[1])) { term = m[1].replace(/\s+/g, " ").trim(); break; }
+			}
+			if (term && _na.strip_lead_article !== false) term = term.replace(/^(?:the|a|an)\s+/i, "");
+			if (term && /\p{L}/u.test(term)) {
+				const esc = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\s+/g, "\\s+");
+				const termRe = new RegExp(`(?<![\\p{L}\\p{M}\\p{N}])${esc}(?![\\p{L}\\p{M}\\p{N}])`, "giu");
+				const inSentinel = (s, at) => s.lastIndexOf(IT0, at) > s.lastIndexOf(IT1, at);
+				// an INLINE marker (the nearest text shares its source paragraph) searches only that paragraph — a
+				// term the writer mistyped (ARFUN05 "setting. [hover on time: Where is the story taking place?]")
+				// must not reach back into another bullet; only a STANDALONE definition line looks back.
+				let budget = _na.lookback ?? 3, first = true, inlineMarker = false;
+				for (let h2 = i - 1; h2 >= 0 && budget > 0; h2--) {
+					const cand = items[h2];
+					if (!cand || cand.type === "table") break;
+					const ctext = cand.type === "black" ? cand.text : cand.blackAfter;
+					if (!String(ctext ?? "").trim()) continue;
+					if (first) { inlineMarker = cand.block !== undefined && cand.block === it.block; first = false; }
+					else if (inlineMarker) break;
+					budget--;
+					if (InteractiveScanner.#urlTailHost(ctext)) break;
+					let s = String(ctext ?? "").replace(/\s+$/, "");            // = hostBase (declared below)
+					if (leadOrphan) s = s.replace(/\s*\[\s*$/, "");
+					const hits = [];
+					termRe.lastIndex = 0;
+					let m;
+					while ((m = termRe.exec(s)) !== null) {
+						let e = m.index + m[0].length;
+						while (e < s.length && /[*_]/.test(s[e])) e++;
+						// never inside an earlier woven definition, never a word that already carries one
+						if (!inSentinel(s, m.index) && s[e] !== IT0) hits.push({ m, e });
+						if (termRe.lastIndex === m.index) termRe.lastIndex++;
+					}
+					if (!hits.length) continue;
+					const occ = inlineMarker ? (_na.inline_occurrence ?? "last") : (_na.standalone_occurrence ?? "first");
+					const pick = occ === "first" ? hits[0] : hits[hits.length - 1];
+					namedHost = cand; namedBase = s; namedAt = pick.e;   // after a closing ** / * so a bold anchor wraps whole
+					break;
+				}
+			}
+		}
 		// what rejoins the line after the woven span: the sentence TAIL (attached directly, e.g.
 		// a ".") then the following black continuation (space-separated).
 		// For the ANCHOR-BEFORE-BRACKET form (A3 above), the hovered word was lifted off the marker
@@ -3830,6 +3885,29 @@ class InteractiveScanner {
 			}
 			return base + append;
 		};
+		// ROUND 487: the unquoted named anchor found (see above) — weave onto THAT word. An inline marker's
+		// continuation rejoins its own host exactly as the historical path does; a standalone definition line's
+		// own trailing text stays its own paragraph (never glued onto a foreign one).
+		if (namedHost) {
+			const woven = namedBase.slice(0, namedAt) + sentinel + namedBase.slice(namedAt);
+			const rest = tail + (blackCont ? ` ${blackCont}` : "");
+			const setT = (x, t) => { if (x.type === "black") x.text = t; else x.blackAfter = t; };
+			const standalone = !(namedHost.block !== undefined && namedHost.block === it.block);
+			if (namedHost === host && !standalone) {
+				setT(namedHost, woven + rest);
+				it.type = "black"; it.text = ""; it.blackAfter = "";
+			} else {
+				setT(namedHost, woven);
+				if (!standalone && host && host !== namedHost && rest.trim()) {
+					setT(host, hostBase(host.type === "black" ? host.text : host.blackAfter) + rest);
+					it.type = "black"; it.text = ""; it.blackAfter = "";
+				} else {
+					it.type = "black"; it.text = rest.trim(); it.blackAfter = "";
+				}
+			}
+			if (consumeNext) { contItem.type = "black"; contItem.text = ""; contItem.blackAfter = ""; }
+			return true;
+		}
 		if (host && host.type === "black") {
 			host.text = weaveInto(hostBase(host.text));
 		} else if (host) {

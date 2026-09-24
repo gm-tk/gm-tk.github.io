@@ -1,5 +1,29 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 487, build 260620.51) — THE UNQUOTED NAMED HOVER ANCHOR: `[Rollover definition for TERM: DEF]` / `[Hover on TERM: DEF]` / `[roll over definition TERM: DEF]` weaves onto TERM instead of being dropped
+
+### 1. WHAT CHANGED
+
+**The find** (session 45 Round 2 — the HIS1 family view, `span.infoTrigger` MISSING 57 lines / 21 pages / 7 modules, traced on HIS1005 with `_probe_infotrigger.cjs`): the writer's standalone `[Rollover definition for supreme: Ultimate or final.]` line (typed after the paragraph that contains "supreme") resolves to the `info trigger` tag; `InteractiveScanner.#weaveHoverDefinition` recovers the definition, but honours only a QUOTED named anchor (r222c — `[hover info ‘pitch’: …]`), so the sentinel was appended after the host paragraph's LAST word — which ends in a full stop — and `inlineMarkup` found no word and **silently dropped the definition** (writer content lost; the gold wraps "supreme"). Inline markers whose named word was not the last one before them were anchored on the wrong word (ARFUN02 "elements" for "components", DAN1004 "state" for "surging").
+
+**Measured** (`_s45_r2_hover.py` — every hover / rollover marker in every scored WT, by shape, the def matched whitespace-free against every `info=` attribute): the `for / on / of TERM:` form 104 markers / 14 modules — the gold builds 47 that Claude dropped, both 41, neither 14; the `definition TERM:` form 17 / 4 — gold-only 8. HIS1005 23, HIS1002 12, HIS1006 5, HIS1008 4, ARFUN05 3, ARFUN01 / 03 2, CEDO202 2, HIS1001 / 1007 1.
+
+**The fix:** the named TERM (data `patterns[]` group 1, a leading the / a / an stripped) is searched — whole word, case-insensitive, never inside an earlier woven definition, never a word that already carries one — in the nearest 3 text items when the marker stands on its own line (a different source paragraph; the sentinel lands after its FIRST occurrence — the gold's HIS1005 "supreme"), and ONLY in its own paragraph when the marker is inline (after its LAST occurrence — the word just before it; ARFUN05's writer typo `setting. [hover on time: …]` keeps the historical placement on "setting" instead of reaching back into the "time" bullet); after any closing `**` / `*` so a bold anchor wraps whole. A standalone definition line's own trailing text stays its own paragraph. A quoted or lifted anchor keeps its path; no TERM / no match → the unchanged historical append. Data `Emit_Templates.elements.hover_definition_inline.named_anchor`; env **`HOVERNAMED_OFF`**, byte-identical OFF.
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 0 pages changed**; ON **30 pages / 12 modules** (ANZH401 ARFUN01 ARFUN02 ARFUN03 CEDO202 DAN1004 HIS1001 HIS1002 HIS1005 HIS1006 HIS1007 HIS1008): **infoTrigger spans +70** (HIS1005 5 → 33, HIS1002 1 → 13, HIS1006 0 → 9, HIS1008 0 → 4, HIS1001 1 → 3, HIS1007 3 → 5, CEDO202 11 → 13, ARFUN01 / 03 +1); four modules re-anchor a span onto the writer-named word (ARFUN02 components, DAN1004 surging, ANZH401 pūrakau without its full stop). No new literal marker text on any page. Regeneration + 12-module spot-check clean; **`scoped_ship.sh` PASS**.
+
+### 3. PROTECTED GATES
+
+- Skeleton **55.3485 % → 55.3576 % @ 2491 (+0.0091pp)**, RAW 39.234 → 39.243 %; **≥50 1582 → 1584 (+2: HIS1005_1_0 46.6 → 51.5, HIS1005_4_0 48.3 → 50.2)**, ≥75 277, ≥90 26; 25 movers, **17 up / 8 down NAMED**, each with its position-free companion (`_r487_companion.py`): ARFUN01_0_0 −1.0 (overlap +1), HIS1001_10_0 −1.0 (+1), HIS1006_11_0 −1.0 (+3 — it gains the gold's own three hovers), HIS1005_5_0 −0.6 (+2), HIS1002_2_0 −0.5 (+1), HIS1001_8_0 −0.2 (+1), HIS1002_5_0 −0.1 (+4); HIS1005_0_0 −0.8 (overlap ±0): the gold's overview omits the writer's three tagged rollovers — a writer-tagged element, the gold's omission a NAMED override (c14: the writer's tag decides the component).
+- compare_structure exact **16701 → 16702**, EXTRA 198 / missing 878 / row-wrap 24 EXACT; body 238 / clean 2587 / 2633 / leak 75 / 46 EXACT; tags 9557 / 9557; every verifier RESULT line ✓; selftests 50 green / 0 fail; the miner 195 CANDIDATE.
+- Plateau (§4): +0.0091pp (< 0.02) but ≥50 +2 — a protected bucket moved: neither counts nor resets; **0 of 3**.
+
+**Recorded, not built:** the COLON-inline hover markers with no named term (`[Hover definition: DEF]` after the word) — the gold builds 94 that Claude does not, spread over 20+ modules at 2–8 each (AGH1007 8, SSFUN03 / CEDR203 6, AGH1002 / AGH1009 / SCES201 5 …) — a separate class for its own measure.
+
+**Ledger:** scoped #5 since the r482 FULL · data `elements.hover_definition_inline.named_anchor` · env `HOVERNAMED_OFF` · code `InteractiveScanner.#weaveHoverDefinition` · tools `_s45_r2_{hover,pick}.py`, `_r487_companion.py`, `_s45_{regen,postship}.sh`, `_r487_finalise.py` · session 45 Round 2.
+
 ## 2026-09-25 (round 486, build 260620.50) — KB 01F / 05D THE WRITER'S QUOTE IS `p.quoteText` + `p.quoteAck`: no wrapper div, the attribution its own paragraph, the quote box holding only the quote
 
 ### 1. WHAT CHANGED

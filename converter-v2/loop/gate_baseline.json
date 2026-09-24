@@ -1,8 +1,8 @@
 {
   "_meta": {
     "purpose": "Committed PROTECTED-gate baseline (efficiency lever 2). The shared corpus DRIFTS between sessions so the BUILD_CHANGELOG absolutes never line up exactly — without a committed baseline the only rigorous proof of hold-or-improve is a second full A/B regen pass (~8m/round). Diff THIS after a regen instead. Refresh it (and the build/round) every shipped round, AFTER the gates pass.",
-    "build": "260620.50",
-    "round": 486,
+    "build": "260620.51",
+    "round": 487,
     "date": "2026-09-24",
     "_round92_note": "Round 92 (ENGS302-01: side-alert-box-in-table + dragAndDrop activity wrapper / data-table capture / phantom-journal-button fix). Verified on a FULL 0-stale tightened regen vs the round-91 committed baseline (which matched the fast-loop baseline exactly: over 42 / any 181). PRIMARY skeleton IMPROVED (pages>=50% 524->539 +15, >=75% 65->70 +5, mean 47.8->48.2, median 49.3->49.8); compare_structure exact 5893->5902 (+9) / missing 261->252 (-9) / EXTRA 142 HELD; structural-clean 1290->1291 (95.0->95.1%) / leak 254->253 (-1) / leak pages 68->67 (-1); tags 9557/9557; flipCard divergence 0 (37/13/10/14); speechBubble defect 0. body_compare any 181->184 (+3) — the +3 over-capture (ENGC201-06, ENGR101-05, MXDB301-03) is the UNAVOIDABLE cost of capturing the dragAndDrop/activity DATA TABLE into the widget (the user's explicit fix): those tables ARE the widget's data the human BUILDS, but body_compare cannot credit Claude's un-built placeholder, and for these 3 the human keeps the table free. Net-positive per the MEASUREMENT MANDATE (judge a structural change FIRST on the skeleton, which improved +15) + the NET-POSITIVE convention. _round91_note: round 91 (ENGS302 emphasis-bullets/caption/media-url/lesson-name) shipped +1 skeleton / +1 compare exact / +2 missing.",
     "corpus": {
@@ -106,6 +106,7 @@
     "_note_r407": "Round 407: the heading-led numbered opener takes the owner form too (56 pages / 24 modules; SCOPED regeneration of the 24, scoped ship #2 since the r405 full). Skeleton 54.025 -> 54.084 (+0.0583pp; 38 movers 32 up / 6 down, named), >=50 1176 -> 1181, >=75 200 -> 202, >=90 18, RAW 38.012 -> 38.022; compare_structure exact 11779 (the text-matched pool 13813 -> 13794) / 172 / 626; body_compare over-capture 42, runaway 4 -> 5 (ENGI202_2_0, named), EMPTY 173 -> 170, ANY 218 -> 216; every other gate EXACT; every verifier RESULT identical to r406.",
     "_note_intake_2026_09_19": "INTAKE RE-BASELINE 2026-09-19 (the 98-module September intake + a FULL corpus regeneration, no engine change). The POPULATION GREW: skeleton pairs 1956 -> 2349, cs matched 13794 -> 15668, body/defect pages 2102 -> 2606, gated dirs 484. Every absolute below therefore moves, and the rate metrics fall, WITHOUT any regression. PROOF, measured by splitting each gate by population: the PRE-EXISTING modules reproduce the round-407 baseline EXACTLY -- skeleton 54.084% / >=50 1181 / >=75 202 / >=90 18; compare_structure exact 11779 / EXTRA 172 / missing 626 / row-wrap 23; body_compare runaway 5 / empty_container 170; leak 26 occ / 23 pages; clean 2079/2102 = 98.91%. _content_manifest.py fresh confirmed all 413 pre-existing modules BYTE-IDENTICAL to the manifest, so identical bytes cannot yield different metrics. All verifier gates matched baseline exactly: tags 9557/9557 0 failures, flipCard 61 (32/11/18) divergence 0, speechBubble defect 4, math 323/323 defect 0, menulabels 91 defect 0, dragAndDrop 21 defect 0, modal defect 0, mtkQuiz defect 0, entry parity PASS. The 98 new modules contribute the whole delta; 78 of them converted, 20 cannot yet (12 XOTP dialect, 7 with no Writers Template, PMT101's table-only opener).",
     "_note_s40_r12_full": "Session 40 Round 12 (2026-09-24; no engine change — the ship ledger's FULL backstop): all 545 regenerated with the r452 engine, 542 / 542 modules byte-identical to the scoped-shipped manifest, every number in this file re-proved EXACT on the full corpus (skeleton 54.7484 @ 2477, 0 movers). Ledger record-full --round 452 -> scoped #0.",
+    "_note_r487": "Round 487 (session 45 Round 2, 2026-09-25) — THE UNQUOTED NAMED HOVER ANCHOR (HOVERNAMED_OFF): 12 modules / 30 pages, +70 infoTrigger spans; SCAFFOLD 55.3485 -> 55.3576 @ 2491 (+0.0091pp, 17 up / 8 down NAMED); RAW 39.234 -> 39.243; >=50 1582 -> 1584; cs exact 16701 -> 16702; body / clean / leak EXACT; scoped #5 since the r482 FULL; scoped_ship PASS.",
     "_note_r486": "Round 486 (session 45 Round 1, 2026-09-25) — KB 01F THE WRITER'S QUOTE IS p.quoteText + p.quoteAck (QUOTEFORM_OFF): 16 modules / 19 pages; SCAFFOLD 55.3463 -> 55.3485 @ 2491 (+0.0021pp, 13 up / 4 down NAMED); RAW 39.231 -> 39.234; buckets EXACT; cs exact 16691 -> 16701, EXTRA 208 -> 198, missing 872 -> 878 NAMED (a reclassification: 4 already-mismatched blocks EXTRA -> MISSING + 2 newly matched, 0 blocks left EXACT — outputs/_r486_csblocks.log); body / clean / leak EXACT; scoped #4 since the r482 FULL. Also: pages_ge_90 25 -> 26 corrects the r485 finalise, which left the >=90 bucket at its r484 value.",
     "_note_r485": "Round 485 (session 44 Round 11, 2026-09-25) — THE TITLE BAR LANGUAGE-BOUNDARY SPLIT (TITLELANGSPLIT_OFF): 9 modules / 18 pages; SCAFFOLD 55.3280 -> 55.3463 @ 2491 (+0.0184pp, 7 up / 0 down); RAW 39.224 -> 39.231; >=75 275 -> 277; >=90 25 -> 26; cs / body / clean / leak EXACT; scoped #3 since the r482 FULL; scoped_ship PASS.",
     "_note_r484": "Round 484 (session 44 Round 9, 2026-09-25) — KB c38 FOR THE QUIZ TYPES (TPLAUTOQUIZ_OFF): 7 modules / 7 pages, 6 multiChoiceQuiz + 2 dropQuiz -> autoCheck; every gate EXACT (skeleton-blind); scoped #2 since the r482 FULL; scoped_ship PASS.",
@@ -180,13 +181,14 @@
     "_note_r408": "Round 408 (session 28 Task 1): the mined registries rebuilt over the 552-module gold corpus (Module_Structure_Index / Granular / 24 new Style-Anchor bases + floor-flip corrections / Menu / Convention / lexicon / feature index / legacy consensus; data/Subject_Prefix_Map.json PROPOSED). SCOPED regeneration of the 103 modules the probe named (OFF = pre snapshot 2613/2613; scoped ship #1 since the 19 Sept full). Skeleton 53.134 -> 53.680 (+0.5455pp; 275 movers 197 up / 76 down, 0 outside the set, the 1813 unaffected pairs EXACT), >=50 1378 -> 1398, >=75 228 -> 236, >=90 19 -> 20, RAW 37.487 -> 37.884; compare_structure exact 13410 -> 14091 (the text-matched pool 15668 -> 16414) / EXTRA 184 -> 186 / MISSING 685 -> 690 (inside five newly single-file WJFUN / JPFUN modules) / row-wrap 23; body_compare over-capture 54 (the 19 Sept fast-loop snapshot's own value — the re-base had carried r407's 42; corrected here), runaway 6, EMPTY 192 -> 190, ANY 250 -> 248; defect clean 2504/2548 = 98.27 (58 clean WJFUN / JPFUN extra pages left the population; defect pages 44 / leak 73 EXACT); every verifier EXACT."
   },
   "skeleton": {
-    "mean_scaffold_pct": 55.35,
+    "mean_scaffold_pct": 55.36,
     "median_scaffold_pct": 56.3,
-    "pages_ge_50": 1582,
+    "pages_ge_50": 1584,
     "pages_ge_75": 277,
     "pages_ge_90": 26,
-    "raw_mean_pct": 39.23,
+    "raw_mean_pct": 39.24,
     "pairs": 2491,
+    "_note_r487_state": "r487 (the unquoted named hover anchor): SCAFFOLD 55.3576 @ 2491, RAW 39.243; 25 movers (17 up / 8 down NAMED).",
     "_note_r486_state": "r486 (the KB quote form): SCAFFOLD 55.3485 @ 2491, RAW 39.234; 17 movers (13 up / 4 down NAMED).",
     "_note_r485_state": "r485 (the title-bar language split): SCAFFOLD 55.3463 @ 2491, RAW 39.231; 7 movers (7 up / 0 down).",
     "_note_r482_state": "r482 (the bilingual lesson title h2): SCAFFOLD 55.3280 @ 2491, RAW 39.237; 11 movers (9 up / 2 down).",
@@ -300,7 +302,7 @@
     "_note_r408": "Round 408: SCAFFOLD 53.1341 -> 53.6797 (+0.5455pp; 275 movers, 197 up / 76 down, pp-sum +725.6 — GEO1006_3_0 -11.3, GEO1004_1_0 -9.4, ENGS404_6_1 -8.2, PWY1001_2_3_0 -7.0, CHI1003_8_0 -5.0), >=50 1398, >=75 236, >=90 20; RAW 37.487 -> 37.884; 2349 pairs / 0 skipped. State outputs/_s28_t1_sk_final.json."
   },
   "compare_structure": {
-    "exact_chain": 16701,
+    "exact_chain": 16702,
     "claude_extra_container": 198,
     "claude_missing_container": 878,
     "row_wrap_missing": 24,

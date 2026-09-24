@@ -420,6 +420,19 @@
 		},
 		"hover_definition_inline": {
 			"enabled": true,
+			"named_anchor": {
+				"enabled": true,
+				"env": "HOVERNAMED_OFF",
+				"patterns": [
+					"^\\[\\s*(?:hover(?:\\s*info(?:rmation)?)?|roll\\s*-?\\s*over|rollover|mouse\\s*-?\\s*over|mouseover)\\s*(?:-?\\s*over)?\\s*(?:definition|def|text|info)?\\s*(?:for|on|of)\\s+([^:\\]\\[]{1,40}?)\\s*:",
+					"^\\[\\s*(?:hover(?:\\s*info(?:rmation)?)?|roll\\s*-?\\s*over|rollover|mouse\\s*-?\\s*over|mouseover)\\s*(?:-?\\s*over)?\\s*(?:definition|def)(?:\\s*[-–]\\s*|\\s+)([^:\\]\\[]{1,40}?)\\s*:"
+				],
+				"strip_lead_article": true,
+				"lookback": 3,
+				"standalone_occurrence": "first",
+				"inline_occurrence": "last",
+				"_doc": "ROUND 487 (the autonomous loop's session 45 Round 2) — THE UNQUOTED NAMED ANCHOR. The writer names the hovered word in the marker head WITHOUT quotes: `[Rollover definition for supreme: Ultimate or final.]` (HIS1005 — typed on its own line after the paragraph), `[Hover on identities: Who we are.]` (ARFUN01 — inline, after the word), `[roll over definition mamae: painful, sore, hurt]` (HIS1006). The r222c weave honoured only a QUOTED named anchor (`[hover info ‘pitch’: …]`), so these were appended after the host's LAST word — and a host that ends a sentence has no word there, so inlineMarkup dropped the definition silently (writer content lost). Measured (outputs/_s45_r2_hover.py, every hover / rollover marker in every scored WT, the def matched whitespace-free against every info= attribute): the `for / on / of TERM:` form 104 markers / 14 modules (the gold builds 47 Claude dropped), the `definition TERM:` form 17 / 4 (8). ON: the TERM (patterns[] group 1; a leading the / a / an stripped) is searched — whole word, case-insensitive, never inside an earlier woven definition, never a word that already carries one — in the nearest `lookback` text-carrying items when the marker stands on its own line, and ONLY in its own paragraph when it is inline (the nearest text shares its source paragraph: ARFUN05's 'setting. [hover on time: Where is the story taking place?]' — a writer typo — keeps the historical placement on 'setting' instead of reaching back into the 'time' bullet); the sentinel lands after its FIRST occurrence when the marker stands on its own line (a different source paragraph — the gold's HIS1005 'supreme'), after its LAST when the marker is inline in the same paragraph (the word just before it); after any closing ** / * markup so a bold anchor wraps whole. A marker with a lifted leading anchor (A3) or a quoted anchor keeps its own path; no TERM, or no match in the lookback → the unchanged historical append. A standalone marker's own trailing text stays its own paragraph (never glued onto a foreign one). Env HOVERNAMED_OFF reverts."
+			},
 			"head_pattern": "^\\[\\s*(?:hover(?:\\s*info(?:rmation)?)?|roll\\s*-?\\s*over|rollover|mouse\\s*-?\\s*over|mouseover)\\b",
 			"skip_if_tag_keyword": "\\btrigger\\b",
 			"split_bracket": {
