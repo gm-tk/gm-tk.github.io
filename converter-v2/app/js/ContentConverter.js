@@ -5351,6 +5351,37 @@ class ContentConverter {
 		return null;
 	};
 
+	/**
+	 * ROUND 485 (the autonomous loop's session-44 Round 11) — the LANGUAGE-BOUNDARY split, the last fallback after the case split:
+	 * an English run then a Māori run with no separator at all ("Online Bullying Whakaweti ā-ipurangi", "Scams Ngā Tāware" — the
+	 * writer set the two runs apart only by highlighting the Te Reo). Splits before the LONGEST tail of words that are all
+	 * Māori-lettered (no b c d f j l q s v x y z) and carry a macron (require_macron), the head holding ≥ 1 non-Māori letter; then the
+	 * two-language guard. Data header.title_split.lang_boundary_split {enabled, env, require_macron}; env TITLELANGSPLIT_OFF.
+	 */
+	static #bilingualLangSplit(payload) {
+		const cfg = DataService.Data.EmitTemplates.header.title_split?.lang_boundary_split;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "TITLELANGSPLIT_OFF"]) return null;
+		if (this.#titleHasOtherSep(payload) || /[:：]/.test(payload)) return null;
+		const words = String(payload).split(/\s+/).filter(Boolean);
+		if (words.length < 2) return null;
+		const letters = (w) => w.replace(/[^A-Za-zĀĒĪŌŪāēīōū]/g, "");
+		const maoriWord = (w) => !!letters(w) && !/[bcdfjlqsvxyz]/i.test(letters(w));
+		for (let k = 1; k < words.length; k++) {
+			const tail = words.slice(k);
+			if (!tail.every(maoriWord)) continue;
+			// the Te Reo title opens with a capital (CHI1005's English "routine" is Māori-lettered but lower-case)
+			if (cfg.tail_upper_first !== false && !/^[^A-Za-zĀĒĪŌŪāēīōū]*[A-ZĀĒĪŌŪ]/.test(tail[0])) continue;
+			if (cfg.require_macron !== false && !/[āēīōūĀĒĪŌŪ]/.test(tail.join(" "))) return null;
+			// a Māori NAME inside an English title ("Exploring Te Ika a Māui") runs far longer than its head — a pair does not
+			if (tail.length > (cfg.max_tail_ratio ?? 3) * k) return null;
+			const head = words.slice(0, k).join(" ");
+			if (!/[bcdfjlqsvxyz]/i.test(letters(head))) return null;
+			return this.#bilingualTwoLangGuard([head.trim(), tail.join(" ").trim()]);
+		}
+		return null;
+	};
+
 	static #bilingualCaseSplit(payload) {
 		const cfg = DataService.Data.EmitTemplates.header.title_split ?? {};
 		if (!cfg.bilingual_marker_split?.case_transition) return null;
@@ -6347,7 +6378,7 @@ class ContentConverter {
 				else if (/\n/.test(payload)) parts = payload.split(/\n+/);
 				else if (/\S {2,}\S/.test(payload)) parts = payload.split(/ {2,}/);
 				else parts = this.#bilingualPunctSplit(payload) ?? this.#bilingualDashSplit(payload)
-					?? this.#bilingualCharSplit(payload) ?? this.#bilingualCaseSplit(payload) ?? [payload];
+					?? this.#bilingualCharSplit(payload) ?? this.#bilingualCaseSplit(payload) ?? this.#bilingualLangSplit(payload) ?? [payload];
 				parts = parts.map((s) => s.trim()).filter(Boolean);
 				// Sometimes a writer leaves the template's own boilerplate prompt text
 				// ('MODULE TITLE TE REO' or 'MODULE TITLE') GLUED directly onto the title

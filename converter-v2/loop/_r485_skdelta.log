@@ -1,0 +1,13 @@
+OLD pairs 2491  SCAFFOLD 55.3280%  RAW 39.224%  >=50 1582  >=75 275  >=90 25
+NEW pairs 2491  SCAFFOLD 55.3463%  RAW 39.231%  >=50 1582  >=75 277  >=90 26
+delta SCAFFOLD +0.0184pp  RAW +0.007pp  >=50 +0  >=75 +2  >=90 +1
+movers 7 (up 7 / down 0), pp-sum +45.7
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  GEO1004    GEO1004_0_0.html           70.4 ->   80.0  (+9.6)
+  OSSC301    OSSC301_0_0.html           88.9 ->   96.9  (+8.0)
+  OSSM301    OSSM301_0_0.html           81.2 ->   88.6  (+7.4)
+  XMES203    XMES203_0_0.html           72.0 ->   78.9  (+6.9)
+  OSBY301    OSBY301_0_0.html           58.2 ->   65.0  (+6.8)
+  XDLS901    XDLS901_0_0.html           37.0 ->   43.0  (+6.1)
+  TWHK901    TWHK901_0_0.html           25.6 ->   26.6  (+0.9)

@@ -3393,6 +3393,15 @@
 		"tooltip_text_default": "Overview",
 		"tooltip_rule": "menu_button_tooltip yes → attribute present; no/none → absent.",
 		"title_split": {
+			"lang_boundary_split": {
+				"enabled": true,
+				"env": "TITLELANGSPLIT_OFF",
+				"require_macron": true,
+				"tail_upper_first": true,
+				"max_tail_ratio": 3,
+				"_guards_doc": "tail_upper_first: the Te Reo half opens with a capital (CHI1005 'Daily routine Ngā mahi o ia rā' — 'routine' is Māori-lettered but lower-case); max_tail_ratio: a Māori NAME inside an English title runs far longer than its head ('Exploring Te Ika a Māui', ENGS101 — the gold keeps it one title), so a tail over 3x the head's word count never splits.",
+				"_doc": "ROUND 485 (the autonomous loop's session-44 Round 11) — the LAST fallback of the title-bar split chain (after the case split): an English run then a Māori run with no separator ('Online Bullying Whakaweti ā-ipurangi', 'Scams Ngā Tāware', 'Social Media Pāhopori' — the writer set the Te Reo apart only by highlighting it) splits before the longest tail of all-Māori-lettered words (no b c d f j l q s v x y z) that carries a macron, the head holding a non-Māori letter; then the two-language guard. The gold ships the pair as two h1 spans (KB c79's bilingual pair; 06 / 07D). ContentConverter.#bilingualLangSplit. Env TITLELANGSPLIT_OFF = the r484 output."
+			},
 			"rule": "The [TITLE BAR] payload yields the header h1 titles. Chain: (1) strip a leading module-code token (writers often prepend it — OSAI201's payload starts 'OSAI …'); (2) split English|Te Reo on a pipe; else (3) on a line break; else (4) on a run of 2+ spaces (the OSAI201 separator); else (5) the BILINGUAL PARALLEL-PUNCT split below; else one title.",
 			"evidence": "Gold OSAI201-00: payload 'OSAI AI Digital Citizenship  Kirirarautanga Matihiko AI' → <h1><span>AI Digital Citizenship</span></h1> + <h1><span>Kirirarautanga Matihiko AI</span></h1>.",
 			"placeholder_titles": [

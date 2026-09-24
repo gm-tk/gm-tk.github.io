@@ -1838,7 +1838,8 @@ class Config {
 	// ROUND 482 (260620.46): KB 07D THE BILINGUAL LESSON TITLE KEEPS ITS h2 (session 44 Round 6) — the r371 writer-digit marker pins the r137 title level through the re-level pass. Env LESSONPIN_OFF.
 	// ROUND 483 (260620.47): KB c38 AUTOCHECK ON THE 1-3 / 4-6 / ECH TEMPLATES (session 44 Round 8) — SkeletonBuilder's #templateAutoCheck gives every built dragAndDrop on those pages autoCheck + only the Reset button. Env TPLAUTOCHECK_OFF.
 	// ROUND 484 (260620.48): KB c38 FOR THE QUIZ TYPES (session 44 Round 9) — the template autoCheck post-pass covers multiChoiceQuiz / dropQuiz / typing / radioQuiz / wordSelect (the class only). Env TPLAUTOQUIZ_OFF.
-	static AppVersion = "260620.48";
+	// ROUND 485 (260620.49): THE TITLE BAR'S LANGUAGE-BOUNDARY SPLIT (session 44 Round 11) — an English run then a Māori run with no separator ships as the two header h1 spans (ContentConverter.#bilingualLangSplit). Env TITLELANGSPLIT_OFF.
+	static AppVersion = "260620.49";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

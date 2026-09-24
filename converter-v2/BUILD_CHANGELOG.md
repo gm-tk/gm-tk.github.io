@@ -1,5 +1,25 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 485, build 260620.49) — THE TITLE BAR'S LANGUAGE-BOUNDARY SPLIT: an English run then a Māori run typed with no separator ("Online Bullying Whakaweti ā-ipurangi") ships as the two header `<h1><span>`s
+
+### 1. WHAT CHANGED
+
+**The find** (session 44 Round 11 — the miner's CHROME row #4, `title MISSING h1>span`, re-read by module on the Online Safety overviews): the writer typed the bilingual pair with NO separator, the Te Reo run only highlighted (`*Online Bullying* ✅*Whakaweti ā-ipurangi*`, `*OSSC301 Scams* ✅*Ngā Tāware*`, `*OSSM301 Social Media* ✅*Pāhopori*`, GEO1004 / TWHK901 / XDLS901 / XMES203 / MXEX101 likewise); the title-bar chain (pipe / line break / 2+ spaces / punctuation / dash / character / ALL-CAPS case) never splits at the English → Māori word boundary, so Claude shipped ONE joined span where the gold ships two. (The row's other shapes stay class C: the unfilled `MODULE TITLE TE REO` placeholder — OSBY101 / 201; English-only title bars whose Te Reo title the gold takes from the series — OSAH501 / OSAI501 / OSBY501 / OSGM201 / OSGM501 / OSSC501.)
+
+**The fix:** `ContentConverter.#bilingualLangSplit`, the LAST fallback of the chain: split before the longest tail of words that are all Māori-lettered (no b c d f j l q s v x y z), open with a capital and carry a macron, the head holding a non-Māori letter and the tail no longer than 3× the head; then the two-language guard. Data `header.title_split.lang_boundary_split` {enabled, env, require_macron, tail_upper_first, max_tail_ratio 3}; env **`TITLELANGSPLIT_OFF`**, byte-identical OFF. Two over-fires found by the prototype probe and guarded: CHI1005's lower-case Māori-lettered English "routine"; ENGS101's "Exploring Te Ika a Māui" (a place name — the gold keeps one title).
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 3222 / 3222 identical**; ON 18 pages / 9 modules (CHI1005 GEO1004 MXEX101 OSBY301 OSSC301 OSSM301 TWHK901 XDLS901 XMES203 — CHI1005 outside the scored population by D14-21; its lesson pages' module-title fallback is now the English title alone, c79's single-h1 fallback). Regeneration + 12-module spot-check clean; **`scoped_ship.sh` PASS**.
+
+### 3. PROTECTED GATES
+
+- Skeleton **55.3280 % → 55.3463 % @ 2491 (+0.0184pp)**, RAW 39.224 → 39.231 %; ≥50 1582; **≥75 275 → 277 (+2: GEO1004_0_0 70.4 → 80.0, XMES203_0_0 72.0 → 78.9)**; **≥90 25 → 26 (OSSC301_0_0 88.9 → 96.9)**; 7 movers, **7 up / 0 down** (pp-sum +45.7; OSSM301 +7.4, OSBY301 +6.8, XDLS901 +6.1, TWHK901 +0.9).
+- compare_structure / body / clean / leak EXACT; every verifier RESULT line ✓; selftests green; the miner 195 CANDIDATE.
+- Plateau (§4): +0.0184pp (< 0.02) but ≥75 +2 / ≥90 +1 — protected buckets moved: neither counts nor resets; **0 of 3**.
+
+**Ledger:** scoped #3 since the r482 FULL · data `header.title_split.lang_boundary_split` · env `TITLELANGSPLIT_OFF` · code `ContentConverter.#bilingualLangSplit` · tools `_s44_r11_pick.py`, `_r485_{regen,postship}.sh`, `_r485_finalise.py` · session 44 Round 11.
+
 ## 2026-09-25 (round 484, build 260620.48) — KB CONSTRAINT 38 FOR THE QUIZ TYPES: on the 1-3 / 4-6 / ECH templates the built multiChoiceQuiz / dropQuiz (and typing / radioQuiz / wordSelect) carry `autoCheck` too
 
 ### 1. WHAT CHANGED

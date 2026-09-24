@@ -1,0 +1,72 @@
+changed (OFF): 0 pages / 0 modules — 
+changed (ON): 18 pages / 9 modules — CHI1005 GEO1004 MXEX101 OSBY301 OSSC301 OSSM301 TWHK901 XDLS901 XMES203 
+
+## CHI1005: pairs 8 -> 8
+   CHI1005_0_0.html         OLD CHI1005_0_0.html    61.0  NEW CHI1005_0_0.html    67.5 (raw  51.3)
+   CHI1005_1_0.html         OLD CHI1005_1_0.html    32.6  NEW CHI1005_1_0.html    29.6 (raw  22.0)
+   CHI1005_2_0.html         OLD CHI1005_2_0.html    18.0  NEW CHI1005_2_0.html    16.2 (raw   9.3)
+   CHI1005_3_0.html         OLD CHI1005_3_0.html    26.8  NEW CHI1005_3_0.html    24.2 (raw  14.0)
+   CHI1005_4_0.html         OLD CHI1005_4_0.html    34.1  NEW CHI1005_4_0.html    30.8 (raw  24.8)
+   CHI1005_5_0.html         OLD CHI1005_5_0.html    32.1  NEW CHI1005_5_0.html    29.0 (raw  17.4)
+   CHI1005_6_0.html         OLD CHI1005_6_0.html    22.9  NEW CHI1005_6_0.html    20.7 (raw  15.8)
+   CHI1005_7_0.html         OLD CHI1005_7_0.html    55.8  NEW CHI1005_7_0.html    50.6 (raw  33.6)
+   module sum 283.4 over 8 -> 268.6 over 8  (mean 35.4 -> 33.6)
+
+## GEO1004: pairs 3 -> 3
+   GEO1004_0_0.html         OLD GEO1004_0_0.html    70.4  NEW GEO1004_0_0.html    80.0 (raw  51.2)
+   GEO1004_1_0.html         OLD GEO1004_1_0.html    52.5  NEW GEO1004_1_0.html    52.5 (raw  33.1)
+   GEO1004_3_0.html         OLD GEO1004_3_0.html    66.0  NEW GEO1004_3_0.html    66.0 (raw  41.6)
+   module sum 188.8 over 3 -> 198.5 over 3  (mean 62.9 -> 66.2)
+
+## MXEX101: pairs 5 -> 5
+   MXEX101_0.0.html         OLD MXEX101_5_0.html    50.8  NEW MXEX101_5_0.html    50.8 (raw  38.0)
+   MXEX101_1.2.html         OLD MXEX101_1_0.html    36.5  NEW MXEX101_1_0.html    36.5 (raw  27.8)
+   MXEX101_2.0.html         OLD MXEX101_2_0.html    43.3  NEW MXEX101_2_0.html    43.3 (raw  34.4)
+   MXEX101_3.0.html         OLD MXEX101_4_0.html    44.2  NEW MXEX101_4_0.html    44.2 (raw  42.2)
+   MXEX101_4.0.html         OLD MXEX101_6_0.html    36.8  NEW MXEX101_6_0.html    36.8 (raw  13.9)
+   module sum 211.7 over 5 -> 211.7 over 5  (mean 42.3 -> 42.3)
+
+## OSBY301: pairs 4 -> 4
+   OSBY301-00.html          OLD OSBY301_0_0.html    58.2  NEW OSBY301_0_0.html    65.0 (raw  51.0)
+   OSBY301-01.html          OLD OSBY301_1_0.html    75.9  NEW OSBY301_1_0.html    75.9 (raw  42.8)
+   OSBY301-02.html          OLD OSBY301_2_0.html    69.2  NEW OSBY301_2_0.html    69.2 (raw  45.1)
+   OSBY301-03.html          OLD OSBY301_3_0.html    66.2  NEW OSBY301_3_0.html    66.2 (raw  51.0)
+   module sum 269.5 over 4 -> 276.3 over 4  (mean 67.4 -> 69.1)
+
+## OSSC301: pairs 4 -> 4
+   OSSC301_0_0.html         OLD OSSC301_0_0.html    88.9  NEW OSSC301_0_0.html    96.9 (raw  66.7)
+   OSSC301_0_1.html         OLD OSSC301_1_0.html    69.5  NEW OSSC301_1_0.html    69.5 (raw  28.1)
+   OSSC301_0_2.html         OLD OSSC301_2_0.html    76.8  NEW OSSC301_2_0.html    76.8 (raw  31.2)
+   OSSC301_0_3.html         OLD OSSC301_3_0.html    48.6  NEW OSSC301_3_0.html    48.6 (raw  57.1)
+   module sum 283.8 over 4 -> 291.8 over 4  (mean 70.9 -> 72.9)
+
+## OSSM301: pairs 5 -> 5
+   OSSM301-00.html          OLD OSSM301_0_0.html    81.2  NEW OSSM301_0_0.html    88.6 (raw  80.0)
+   OSSM301-01.html          OLD OSSM301_1_0.html    76.3  NEW OSSM301_1_0.html    76.3 (raw  44.2)
+   OSSM301-02.html          OLD OSSM301_2_0.html    51.0  NEW OSSM301_2_0.html    51.0 (raw  34.8)
+   OSSM301-03.html          OLD OSSM301_3_0.html    91.4  NEW OSSM301_3_0.html    91.4 (raw  38.0)
+   OSSM301-04.html          OLD OSSM301_4_0.html    82.5  NEW OSSM301_4_0.html    82.5 (raw  67.3)
+   module sum 382.3 over 5 -> 389.7 over 5  (mean 76.5 -> 77.9)
+
+## TWHK901: pairs 1 -> 1
+   TWHK901.html             OLD TWHK901_0_0.html    25.6  NEW TWHK901_0_0.html    26.6 (raw  22.4)
+   module sum 25.6 over 1 -> 26.6 over 1  (mean 25.6 -> 26.6)
+
+## XDLS901: pairs 5 -> 5
+   XDLS901.00.html          OLD XDLS901_0_0.html    37.0  NEW XDLS901_0_0.html    43.0 (raw  39.6)
+   XDLS901.01.html          OLD XDLS901_1_0.html    21.5  NEW XDLS901_1_0.html    21.5 (raw  15.1)
+   XDLS901.02.html          OLD XDLS901_2_0.html    40.5  NEW XDLS901_2_0.html    40.5 (raw  24.9)
+   XDLS901.03.html          OLD XDLS901_3_0.html    34.5  NEW XDLS901_3_0.html    34.5 (raw  25.4)
+   XDLS901.04.html          OLD XDLS901_4_0.html    38.8  NEW XDLS901_4_0.html    38.8 (raw  23.9)
+   module sum 172.3 over 5 -> 178.4 over 5  (mean 34.5 -> 35.7)
+
+## XMES203: pairs 5 -> 5
+   XMES203_0_0.html         OLD XMES203_0_0.html    72.0  NEW XMES203_0_0.html    78.9 (raw  59.9)
+   XMES203_1_0.html         OLD XMES203_1_0.html    35.5  NEW XMES203_1_0.html    35.5 (raw  21.5)
+   XMES203_2_0.html         OLD XMES203_2_0.html    64.8  NEW XMES203_2_0.html    64.8 (raw  47.6)
+   XMES203_3_0.html         OLD XMES203_3_0.html    46.5  NEW XMES203_3_0.html    46.5 (raw  23.4)
+   XMES203_4_0.html         OLD XMES203_4_0.html    74.0  NEW XMES203_4_0.html    74.0 (raw  44.3)
+   module sum 292.7 over 5 -> 299.7 over 5  (mean 58.5 -> 59.9)
+
+changed modules: pairs 40 -> 40; pp-sum 2110.2 -> 2141.1 (+30.9)
+corpus: 55.3280 % @ 2491 -> ≈ 55.3404 % @ 2491  (+0.0124pp);  >=50 +0, >=75 +2
