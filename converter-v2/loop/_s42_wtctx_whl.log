@@ -1,0 +1,122 @@
+body:widget:wordHighlighter -> body:free: 394 blocks; WT line not found 0
+   77 blk   31 pg  23 mod  [no widget tag within 40 | body]  fam: WJFUN 27, MXEO 12, ENFUN 8, ENGR 8, ENGJ 6
+        ENFUN03 ENFUN03_0_0.html no widget tag within 40 | body “Simple sentences can be a good choice when we are writing for a young ”
+        ENFUN04 ENFUN04_0_0.html no widget tag within 40 | body “When choosing words for our writing, it is important to spell them cor”
+        ENFUN05 ENFUN05_0_0.html no widget tag within 40 | body “Click on each of the punctuation names to learn more about them.”
+   31 blk   13 pg  11 mod  [no widget tag within 40 | (no tag within 8 lines)]  fam: WJFUN 9, MXDI 8, ENGS 5, MXEO 3, ENGR 2
+        BLLR202 BLLR202_4_0.html no widget tag within 40 | (no tag within “Min is excited to have her friends over for a sleepover. When Elly can”
+        ENFUN05 ENFUN05_0_0.html no widget tag within 40 | (no tag within “To show that something belongs to someone or something, add an apostro”
+        ENGJ301 ENGJ301_5_0.html no widget tag within 40 | (no tag within “Hemi spotted Moana by the slide, a challenge sparkling in his eyes. "R”
+   15 blk    2 pg   2 mod  [WIDGET-TAG highlight -2 | word highlighter]  fam: WJFUN 15
+        WJFUN115 WJFUN115_0_0.html WIDGET-TAG highlight -2 | word highlight “Watch the video below to learn more about adjectives.”
+        WJFUN116 WJFUN116_0_0.html WIDGET-TAG highlight -2 | word highlight “This tells a different story from:”
+   14 blk    2 pg   2 mod  [WIDGET-TAG highlight -8 | h4]  fam: WJFUN 14
+        WJFUN115 WJFUN115_0_0.html WIDGET-TAG highlight -8 | h4  (line -6) “Explain exactly what they mean.”
+        WJFUN116 WJFUN116_0_0.html WIDGET-TAG highlight -8 | h4  (line -6) “Create rhythm and flow.”
+    9 blk    2 pg   2 mod  [WIDGET-TAG highlight -10 | h4]  fam: WJFUN 9
+        WJFUN115 WJFUN115_0_0.html WIDGET-TAG highlight -10 | h4  (line -6) “Help readers remember important ideas.”
+        WJFUN116 WJFUN116_0_0.html WIDGET-TAG highlight -10 | h4 “Writers use adverbs to:”
+    8 blk    2 pg   2 mod  [WIDGET-TAG highlight -6 | h4]  fam: WJFUN 8
+        WJFUN115 WJFUN115_0_0.html WIDGET-TAG highlight -6 | h4  (line -2) “To make writing more enjoyable to read.”
+        WJFUN116 WJFUN116_0_0.html WIDGET-TAG highlight -6 | h4  (line -4) “Make phrases more memorable.”
+    7 blk    2 pg   2 mod  [WIDGET-TAG highlight -0 | word highlighter]  fam: WJFUN 7
+        WJFUN107 WJFUN107_0_0.html WIDGET-TAG highlight -0 | word highlight “I went fly fishing in the Ashburton River because I wanted to catch a ”
+        WJFUN116 WJFUN116_0_0.html WIDGET-TAG highlight -0 | word highlight “buzz went the bee”
+    7 blk    2 pg   2 mod  [WIDGET-TAG highlight -4 | h4]  fam: WJFUN 7
+        WJFUN115 WJFUN115_0_0.html WIDGET-TAG highlight -4 | h4  (line -2) “To help readers create pictures in their minds.”
+        WJFUN116 WJFUN116_0_0.html WIDGET-TAG highlight -4 | h4 “Why do writers use synonyms?”
+    6 blk    1 pg   1 mod  [no widget tag within 40 | table]  fam: CHFUN 6
+        CHFUN08 CHFUN08_0_0.html no widget tag within 40 | table  (line - “我问你 wǒ wèn nǐ I ask you.”
+    6 blk    5 pg   5 mod  [no widget tag within 40 | h3]  fam: WJFUN 4, ENFUN 1, HPRE 1
+        ENFUN05 ENFUN05_0_0.html no widget tag within 40 | h3 “Where should capital letters go?”
+        HPRE301 HPRE301_11_0.html no widget tag within 40 | h3 “Step 1: State the key numbers”
+        WJFUN116 WJFUN116_0_0.html no widget tag within 40 | h3 “Adding detail with phrases”
+    6 blk    2 pg   2 mod  [WIDGET-TAG highlight -12 | h4]  fam: WJFUN 6
+        WJFUN115 WJFUN115_0_0.html WIDGET-TAG highlight -12 | h4  (line -8) “Make poems and songs more fun to read aloud.”
+        WJFUN116 WJFUN116_0_0.html WIDGET-TAG highlight -12 | h4  (line -6) “Make stories feel more realistic.”
+    5 blk    2 pg   2 mod  [no widget tag within 40 | image]  fam: ENGR 3, ENFUN 2
+        ENFUN07 ENFUN07_0_0.html no widget tag within 40 | image “It was Anna’s first day at her new school, and she was feeling nervous”
+        ENGR202 ENGR202_3_0.html no widget tag within 40 | image  (line - “Roar into fun with Leo the Lion toy!”
+    5 blk    4 pg   3 mod  [no widget tag within 40 | hover trigger]  fam: ENGJ 3, ENGI 2
+        ENGI301 ENGI301_3_0.html no widget tag within 40 | hover trigger  “Joseph travelled around the world for boxing tournaments. In 2010, he ”
+        ENGI302 ENGI302_5_0.html no widget tag within 40 | hover trigger  “Once upon a time, in a quaint village, lived a kind-hearted girl named”
+        ENGJ301 ENGJ301_2_0.html no widget tag within 40 | hover trigger  “Kahu stood in front of the mirror and surveyed the reflection. His wea”
+    5 blk    1 pg   1 mod  [no widget tag within 40 | rollover definition]  fam: ENGS 5
+        ENGS101 ENGS101_4_0.html no widget tag within 40 | rollover defin “"If it rains, we will stay inside."”
+    5 blk    2 pg   2 mod  [no widget tag within 40 | h2]  fam: WJFUN 4, HIS 1
+        HIS1001 HIS1001_5_0.html no widget tag within 40 | h2  (line -8) “Source: Science | Victory, Chicago Tribune, 11 August 1945.”
+        WJFUN116 WJFUN116_0_0.html no widget tag within 40 | h2 “Using adverbs to improve our writing”
+    5 blk    2 pg   2 mod  [WIDGET-TAG highlight -2 | body]  fam: WJFUN 4, MXEX 1
+        MXEX302 MXEX302_2_0.html WIDGET-TAG highlight -2 | body “We use comparison investigative questions because they help us to:”
+        WJFUN304 WJFUN304_0_0.html WIDGET-TAG highlight -2 | body “Analyse this model by hovering over the highlighted sections.”
+    5 blk    2 pg   2 mod  [WIDGET-TAG highlight -2 | h4]  fam: WJFUN 5
+        WJFUN115 WJFUN115_0_0.html WIDGET-TAG highlight -2 | h4 “Why do writers add detail?”
+        WJFUN116 WJFUN116_0_0.html WIDGET-TAG highlight -2 | h4 “Why do writers use alliteration?”
+    5 blk    2 pg   2 mod  [WIDGET-TAG highlight -14 | h4]  fam: WJFUN 5
+        WJFUN115 WJFUN115_0_0.html WIDGET-TAG highlight -14 | h4  (line -8) “Bring a scene to life.”
+        WJFUN116 WJFUN116_0_0.html WIDGET-TAG highlight -14 | h4  (line -4) “Help readers imagine what is happening.”
+    5 blk    1 pg   1 mod  [no widget tag within 40 | correct answer]  fam: WJFUN 5
+        WJFUN206 WJFUN206_0_0.html no widget tag within 40 | correct answer “Near the harbour boats moved across the water. (wrong)”
+    4 blk    3 pg   3 mod  [no widget tag within 40 | h5]  fam: ENFUN 4
+        ENFUN01 ENFUN01_0_0.html no widget tag within 40 | h5 “Why is knowing about author’s purpose important?”
+        ENFUN05 ENFUN05_0_0.html no widget tag within 40 | h5 “Apostrophes for contractions”
+        ENFUN08 ENFUN08_0_0.html no widget tag within 40 | h5 “Can you think of two things that are alike?”
+    4 blk    1 pg   1 mod  [no widget tag within 40 | image + body]  fam: ENFUN 4
+        ENFUN08 ENFUN08_0_0.html no widget tag within 40 | image + body “The tree was like a skyscraper.”
+    4 blk    3 pg   3 mod  [WIDGET-TAG highlight -3 | body]  fam: WJFUN 4
+        WJFUN116 WJFUN116_0_0.html WIDGET-TAG highlight -3 | body “The sentences on the right give the reader more information about the ”
+        WJFUN206 WJFUN206_0_0.html WIDGET-TAG highlight -3 | body “The comma helps the sentence flow clearly.”
+        WJFUN304 WJFUN304_0_0.html WIDGET-TAG highlight -3 | body  (line -1 “A blue highlight shows compound or compound–complex sentence structure”
+    3 blk    2 pg   2 mod  [WIDGET-TAG highlight -12 | (no tag within 8 lines)]  fam: WJFUN 2, BLLR 1
+        BLLR201 BLLR201_5_0.html WIDGET-TAG highlight -12 | (no tag withi “ends with a supported conclusion about the story”
+        WJFUN116 WJFUN116_0_0.html WIDGET-TAG highlight -12 | (no tag withi “Remember: alliteration is about the sound at the beginning of words, n”
+    3 blk    2 pg   2 mod  [WIDGET-TAG highlight -10 | body]  fam: WJFUN 2, BLLR 1
+        BLLR202 BLLR202_4_0.html WIDGET-TAG highlight -10 | body  (line - “This story shows that friendships can help people when they feel upset”
+        WJFUN116 WJFUN116_0_0.html WIDGET-TAG highlight -10 | body  (line - “help readers create a picture in their minds”
+    3 blk    2 pg   1 mod  [WIDGET-TAG highlight -3 | word highlighter]  fam: ENGR 3
+        ENGR301 ENGR301_5_0.html WIDGET-TAG highlight -3 | word highlight “Kuia used to show me the sunrise on a visit to her house in Opotiki ne”
+    3 blk    1 pg   1 mod  [WIDGET-TAG highlight -0 | highlight + highlight]  fam: MXEX 3
+        MXEX302 MXEX302_2_0.html WIDGET-TAG highlight -0 | highlight + hi “Is there a difference in the favourite sports of students who actively”
+    3 blk    1 pg   1 mod  [no widget tag within 40 | clickdrop]  fam: OSSC 3
+        OSSC401 OSSC401_2_0.html no widget tag within 40 | clickdrop  (li “False or inaccurate information by mistake. Getting the facts wrong un”
+    3 blk    1 pg   1 mod  [no widget tag within 40 | h 🔴🔴 3 🔴🔴]  fam: WJFUN 3
+        WJFUN115 WJFUN115_0_0.html no widget tag within 40 | h 🔴🔴 3 🔴🔴 “Adverbs describe actions”
+    3 blk    1 pg   1 mod  [no widget tag within 40 | body + h 🔴🔴 over 🔴🔴 t 🔴🔴 rigger 🔴🔴]  fam: WJFUN 3
+        WJFUN212 WJFUN212_0_0.html no widget tag within 40 | body + h 🔴🔴 ov “The cool breeze swept over the ocean.”
+    3 blk    1 pg   1 mod  [WIDGET-TAG highlight -3 | italics]  fam: WJFUN 3
+        WJFUN304 WJFUN304_0_0.html WIDGET-TAG highlight -3 | italics  (line “A green highlight shows expanded detail using phrases.”
+    3 blk    1 pg   1 mod  [WIDGET-TAG highlight -4 | italics]  fam: WJFUN 3
+        WJFUN304 WJFUN304_0_0.html WIDGET-TAG highlight -4 | italics  (line “A purple highlight shows precise verbs or noun phrases.”
+    2 blk    1 pg   1 mod  [WIDGET-TAG highlight -0 | green highlight]  fam: BLLR 2
+        BLLR202 BLLR202_4_0.html WIDGET-TAG highlight -0 | green highligh “This shows the problem in the story. It explains what goes wrong for M”
+    2 blk    2 pg   2 mod  [no widget tag within 40 | h1]  fam: ENFUN 1, WJFUN 1
+        ENFUN05 ENFUN05_0_0.html no widget tag within 40 | h1 “Full stops, capital letters, exclamation marks”
+        WJFUN115 WJFUN115_0_0.html no widget tag within 40 | h1 “Language Features – Repetition And Similes”
+    2 blk    1 pg   1 mod  [no widget tag within 40 | body + image: image23.png]  fam: ENGJ 2
+        ENGJ301 ENGJ301_3_0.html no widget tag within 40 | body + image:  “There are many everyday words you can use to describe position – left,”
+    2 blk    1 pg   1 mod  [no widget tag within 40 | please have the following annotation bes]  fam: HIS 2
+        HIS1001 HIS1001_5_0.html no widget tag within 40 | please have th “Focus Question: What were the perspectives of people living in 1945 on”
+    2 blk    1 pg   1 mod  [no widget tag within 40 | alert solid + image]  fam: MXEO 2
+        MXEO401 MXEO401_3_0.html no widget tag within 40 | alert solid +  “If you have a variable that is thought to "cause" the other variable O”
+    2 blk    1 pg   1 mod  [WIDGET-TAG highlight -0 | word highlight + word highlight  🔴🔴 stop 🔴🔴]  fam: WJFUN 2
+        WJFUN109 WJFUN109_0_0.html WIDGET-TAG highlight -0 | word highlight “A poster about feeding farm animals in Te Anau for children and famili”
+    2 blk    2 pg   2 mod  [WIDGET-TAG highlight -2 | word highlighter + word highlighter]  fam: WJFUN 2
+        WJFUN115 WJFUN115_0_0.html WIDGET-TAG highlight -2 | word highlight “The second sentence gives us much more detail because the writer has c”
+        WJFUN116 WJFUN116_0_0.html WIDGET-TAG highlight -2 | word highlight “Now look at this example:”
+    2 blk    2 pg   2 mod  [WIDGET-TAG highlight -2 | body + word highlighter]  fam: WJFUN 2
+        WJFUN115 WJFUN115_0_0.html WIDGET-TAG highlight -2 | body + word hi “More examples of adjectives are:”
+        WJFUN116 WJFUN116_0_0.html WIDGET-TAG highlight -2 | body + word hi “Writers often add phrases to a sentence to make their meaning clearer ”
+    2 blk    1 pg   1 mod  [WIDGET-TAG highlight -14 | (no tag within 8 lines)]  fam: WJFUN 2
+        WJFUN115 WJFUN115_0_0.html WIDGET-TAG highlight -14 | (no tag withi “Watch the video below to make sure you understand alliteration and see”
+    2 blk    1 pg   1 mod  [WIDGET-TAG highlight -0 | body + text highlighter]  fam: WJFUN 2
+        WJFUN115 WJFUN115_0_0.html WIDGET-TAG highlight -0 | body + text hi “Onomatopoeia is when a word sounds like the noise it describes. When w”
+    2 blk    1 pg   1 mod  [WIDGET-TAG highlight -4 | body]  fam: WJFUN 2
+        WJFUN115 WJFUN115_0_0.html WIDGET-TAG highlight -4 | body “Without onomatopoeia:”
+    2 blk    2 pg   2 mod  [WIDGET-TAG highlight -6 | body]  fam: WJFUN 2
+        WJFUN115 WJFUN115_0_0.html WIDGET-TAG highlight -6 | body  (line -2 “The tractor drove across the field.”
+        WJFUN116 WJFUN116_0_0.html WIDGET-TAG highlight -6 | body “Good writers choose their words carefully. By using synonyms, they can”
+    2 blk    2 pg   2 mod  [WIDGET-TAG highlight -16 | (no tag within 8 lines)]  fam: WJFUN 2
+        WJFUN115 WJFUN115_0_0.html WIDGET-TAG highlight -16 | (no tag withi “Help readers feel like they are part of the action.”
+        WJFUN116 WJFUN116_0_0.html WIDGET-TAG highlight -16 | (no tag withi “Let's learn more about synonyms by watching the video below.”
+    2 blk    1 pg   1 mod  [WIDGET-TAG highlight -2 | text highlighter + text highlighter]  fam: WJFUN 2
+        WJFUN115 WJFUN115_0_0.html WIDGET-TAG highlight -2 | text highlight “Notice how the words or phrases are repeated to make them stand out.”

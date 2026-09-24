@@ -168,7 +168,7 @@ def coarse(r):
 def wt_shingles(hd):
     txt = ""
     for f in os.listdir(hd) if os.path.isdir(hd) else []:
-        if f.endswith("_parsed.txt") and "media list_parsed" not in f.lower():
+        if f.endswith("_parsed.txt") and ("media list_parsed" not in f.lower() or "writers template" in f.lower()):   # the combined WT + ML file is a WT (OPERATING_GUIDE §16)
             txt += " " + open(os.path.join(hd, f), encoding="utf-8", errors="replace").read()
     txt = re.sub(r"🔴|\[/?RED TEXT\]", " ", txt); txt = re.sub(r"\[[^\]]{0,60}\]", " ", txt)
     w = norm(txt).split()

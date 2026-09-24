@@ -19,7 +19,7 @@ TAG = re.compile(r"\[([^\]\[]{1,60})\]")
 def wt_lines(hd):
     out = []
     for f in sorted(os.listdir(hd)) if os.path.isdir(hd) else []:
-        if f.endswith("_parsed.txt") and "media list_parsed" not in f.lower():
+        if f.endswith("_parsed.txt") and ("media list_parsed" not in f.lower() or "writers template" in f.lower()):   # the combined WT + ML file is a WT (OPERATING_GUIDE §16)
             out += open(os.path.join(hd, f), encoding="utf-8", errors="replace").read().splitlines()
     return out
 def tags_of(line):
@@ -32,6 +32,14 @@ for code in sorted(_corpus.gate_mods(CLAUDE)):
     if codes and code not in codes: continue
     hd = _corpus.mdir(HUMAN, code); f0 = re.match(r"[A-Z]+", code).group(0)
     W = wt_lines(hd); Wn = [PC.norm(re.sub(r"🔴|\[/?RED TEXT\]|\[[^\]]{0,60}\]", " ", l)) for l in W]
+    # ABSENT mode: the module's every Claude block + its hand-off worklist ({CODE}_interactives.txt)
+    cdir = _corpus.mdir(CLAUDE, code); allc = set(); handoff = ""
+    if CB == "ABSENT" and os.path.isdir(cdir):
+        for f in os.listdir(cdir):
+            if f.endswith(".html"):
+                for b in PC.parse(os.path.join(cdir, f)): allc.add(b[1]); allc.add("\x00" + b[1][:40])
+            elif f.endswith("_interactives.txt"):
+                handoff += " " + PC.norm(open(os.path.join(cdir, f), encoding="utf-8", errors="replace").read())
     for _, cp, hp in DA.pairs(code):
         G = [b for b in PC.parse(hp) if PC.keep(b[1])]; C = [b for b in PC.parse(cp) if PC.keep(b[1])]
         cmap = collections.defaultdict(list)
@@ -39,8 +47,13 @@ for code in sorted(_corpus.gate_mods(CLAUDE)):
         for tag, t, raw, greg in G:
             if not PC.coarse(greg).startswith(GA): continue
             cr = cmap.get(t) or (cmap.get("\x00" + t[:40]) if len(t) >= 40 else None)
-            if not cr or any(PC.coarse(r) == PC.coarse(greg) for r in cr): continue
-            if not any(PC.coarse(r).startswith(CB) for r in cr): continue
+            if CB == "ABSENT":
+                if cr or t in allc or (len(t) >= 40 and ("\x00" + t[:40]) in allc): continue
+                # a Claude page may carry it with different wording: skip blocks whose 40-char head is anywhere in the module's pages
+                inh = t[:40] in handoff
+            else:
+                if not cr or any(PC.coarse(r) == PC.coarse(greg) for r in cr): continue
+                if not any(PC.coarse(r).startswith(CB) for r in cr): continue
             total += 1
             key = t[:40]; li = next((i for i, n in enumerate(Wn) if key and key in n), None)
             if li is None:
@@ -51,6 +64,13 @@ for code in sorted(_corpus.gate_mods(CLAUDE)):
                     tg = tags_of(W[j])
                     if tg: k = (" + ".join(tg[:2])) + ("" if j == li else f"  (line -{li - j})"); break
                 k = k or "(no tag within 8 lines)"
+                # the widget's OWN tag word within 40 lines above (an opener several items up the run)
+                wword = {"accordion": "accordion", "tabs": "tab", "wordHighlighter": "highlight", "carousel": "carousel",
+                         "flipCard": "flip", "clickDrop": "click", "dropDown": "drop", "multiChoiceQuiz": "quiz"}.get(GA.split("widget:")[-1], None) if "widget:" in GA else None
+                if wword:
+                    hit = next((li - j for j in range(li, max(-1, li - 41), -1) if any(wword in t for t in tags_of(W[j]))), None)
+                    k = (f"WIDGET-TAG {wword} -{hit}" if hit is not None else "no widget tag within 40") + " | " + k
+            if CB == "ABSENT": k = ("IN-HANDOFF | " if inh else "DROPPED | ") + k
             kk = re.sub(r"\s+\(line -\d+\)$", "", k)
             agg[kk] += 1; pages[kk].add(f"{code}/{os.path.basename(cp)}"); mods[kk].add(code); fam[kk][f0] += 1
             if len(ex[kk]) < 5 and all(e[0] != code for e in ex[kk]): ex[kk].append((code, os.path.basename(cp), k, raw[:70]))

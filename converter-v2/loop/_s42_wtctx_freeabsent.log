@@ -1,0 +1,148 @@
+body:free -> ABSENT: 7645 blocks; WT line not found 5219
+ 5133 blk 1219 pg 393 mod  [DROPPED | (text not in WT)]  fam: HIS 371, MXFL 246, AGH 232, XGF 232, MXFU 230
+        AGH1001 AGH1001_0_0.html DROPPED | (text not in WT) “This module will cover:”
+        AGH1002 AGH1002_1_0.html DROPPED | (text not in WT) “Soils also take a long time to form. Two key processes which produce s”
+        AGH1003 AGH1003_0_0.html DROPPED | (text not in WT) “This module explores the ways farmers and growers do this on various p”
+  266 blk  159 pg 112 mod  [DROPPED | body]  fam: HPFUN 18, XLP 17, AGH 15, MXEO 15, CEDO 14
+        AGH1005 AGH1005_1_0.html DROPPED | body “Healthy nature, healthy land, healthy people. When the environment and”
+        AGH1006 AGH1006_1_0.html DROPPED | body “The Mauri Model was introduced as a way of understanding the important”
+        AGH1008 AGH1008_5_0.html DROPPED | body  (line -8) “The technician inserts one gloved arm into the rectum of the cow. This”
+  126 blk    8 pg   4 mod  [IN-HANDOFF | image + image]  fam: XDLS 65, SSCI 42, OSOH 16, XTAS 3
+        OSOH201 OSOH201_1_0.html IN-HANDOFF | image + image “Work where it helps you to do schoolwork”
+        SSCI104 SSCI104_1_0.html IN-HANDOFF | image + image “Egyptians finished the Great Pyramid, one of the world's oldest and la”
+        XDLS912 XDLS912_1_0.html IN-HANDOFF | image + image “Pick up any rubbish.”
+  112 blk   50 pg  40 mod  [DROPPED | (no tag within 8 lines)]  fam: HIS 22, MXEO 14, MXFU 13, CEDK 11, XLP 10
+        AGH1001 AGH1001_3_0.html DROPPED | (no tag within 8 lines) “People disappear from sight, but the land remains.”
+        AGH1003 AGH1003_4_0.html DROPPED | (no tag within 8 lines) “Farmers need to be careful when applying effluent. Over application, e”
+        AGH1005 AGH1005_8_0.html DROPPED | (no tag within 8 lines) “Pollination of flowering plant.”
+   86 blk   19 pg  17 mod  [IN-HANDOFF | (text not in WT)]  fam: TRR 69, OSSC 4, SSCI 3, AGH 2, MXFL 2
+        AGH1001 AGH1001_2_0.html IN-HANDOFF | (text not in WT) “Advances in research and technology increase production and promote ou”
+        AGH1002 AGH1002_3_0.html IN-HANDOFF | (text not in WT) “C = carbon, H = Hydrogen, O = Oxygen”
+        BLLR203 BLLR203_5_0.html IN-HANDOFF | (text not in WT) “The words “_____” help me picture _____.They make the story feel _____”
+   76 blk   13 pg  12 mod  [IN-HANDOFF | image]  fam: XMES 17, OSOH 14, XFUN 11, OSGM 7, OSAH 6
+        CEDK501 CEDK501_6_1.html IN-HANDOFF | image  (line -4) “When you said ... did you mean ... ?”
+        CEDO502 CEDO502_1_1.html IN-HANDOFF | image “Kōrero 3: Tawa's story”
+        OSAH401 OSAH401_1_0.html IN-HANDOFF | image  (line -1) “Any harmful behaviour or action online even if it happens once.”
+   74 blk   20 pg  17 mod  [DROPPED | image]  fam: XMES 20, CEDO 13, ENFUN 12, MXDI 4, OSAI 4
+        AGH1009 AGH1009_5_0.html DROPPED | image “Note to developer – can you make this interactive? If so, yes please.”
+        CEDK501 CEDK501_6_1.html DROPPED | image  (line -4) “Can you explain what you meant by ... ?”
+        CEDO502 CEDO502_1_1.html DROPPED | image  (line -6) “A student loan to study or learn skills that can get you a better job.”
+   69 blk    8 pg   7 mod  [DROPPED | table]  fam: FRNO 23, JPFUN 12, PWY 12, TEDC 11, ENGI 7
+        AGH1008 AGH1008_7_0.html DROPPED | table  (line -3) “Blowfly: Blowflies cause huge problems in the sheep industry as they c”
+        ENGI401 ENGI401_2_0.html DROPPED | table  (line -4) “Title of the source”
+        FRNO902 FRNO902_6_0.html DROPPED | table  (line -4) “Elle a les cheveux raides.”
+   52 blk   29 pg  21 mod  [DROPPED | body text]  fam: HPFUN 17, MXFU 12, MXDI 6, HIS 3, MUS 3
+        DAN1003 DAN1003_2_0.html DROPPED | body text  (line -4) “a movement or shape you see repeated throughout”
+        DAN1004 DAN1004_1_0.html DROPPED | body text  (line -2) “In this lesson you will explore verbs related to water and create your”
+        DTC1005 DTC1005_0_0.html DROPPED | body text  (line -4) “Develop a digital technologies outcome”
+   51 blk   39 pg  28 mod  [DROPPED | h2]  fam: HIS 16, PES 4, CBI 3, ENGJ 3, MXEO 3
+        AGH1005 AGH1005_8_0.html DROPPED | h2 “How plants flower and produce fruit”
+        ANZH104 ANZH104_6_0.html DROPPED | h2  (line -3) “Woman worked together”
+        ANZH301 ANZH301_9_0.html DROPPED | h2 “Tūranga Hou: a new place to stand”
+   47 blk    9 pg   5 mod  [DROPPED | h3 + body]  fam: ENGFUN 40, ENFUN 3, TEDC 3, SSFUN 1
+        ENFUN07 ENFUN07_0_0.html DROPPED | h3 + body “At the top of the hamburger is the top bun.”
+        ENGFUN02 ENGFUN02_0_0.html DROPPED | h3 + body “Definition: An extreme close-up, or an ECU, is when the camera is zoom”
+        SSFUN07 SSFUN07_2_0.html DROPPED | h3 + body “Challenges: environmental degradation”
+   43 blk   22 pg  20 mod  [DROPPED | h3]  fam: CEDK 10, ARFUN 8, TEDC 4, AGH 2, ART 2
+        AGH1005 AGH1005_3_0.html DROPPED | h3  (line -4) “There are many leaf parts that are crucial in photosynthesis including”
+        AGH1009 AGH1009_7_0.html DROPPED | h3  (line -2) “For example; over applying nitrogen based fertiliser can increase the ”
+        ANZH404 ANZH404_3_0.html DROPPED | h3 “The Kauhanganui parliament”
+   39 blk    5 pg   5 mod  [IN-HANDOFF | click drop]  fam: OSOH 23, ENGI 12, OSGM 4
+        ENGI301 ENGI301_1_0.html IN-HANDOFF | click drop  (line -4) “Laura Langman holds the record for the most caps in Silver Ferns histo”
+        OSGM301 OSGM301_2_0.html IN-HANDOFF | click drop “Taha wairua – spiritual wellbeing”
+        OSGM401 OSGM401_1_0.html IN-HANDOFF | click drop “Taha wairua – spiritual wellbeing”
+   29 blk    5 pg   4 mod  [IN-HANDOFF | clickdrop]  fam: ENGI 18, OSOH 11
+        ENGI203 ENGI203_2_0.html IN-HANDOFF | clickdrop  (line -5) “Read the headings and the first line of paragraphs.”
+        ENGI401 ENGI401_2_0.html IN-HANDOFF | clickdrop  (line -4) “General search: octopuses”
+        OSOH101 OSOH101_2_0.html IN-HANDOFF | clickdrop  (line -3) “Te Kura agrees to:”
+   28 blk   15 pg  13 mod  [IN-HANDOFF | (no tag within 8 lines)]  fam: MXEX 6, OSAH 5, XDLS 4, HIS 3, MXFU 3
+        AGH1005 AGH1005_6_0.html IN-HANDOFF | (no tag within 8 lines) “Description: Loss of turgor pressure, leading to drooping.”
+        CEDO502 CEDO502_1_1.html IN-HANDOFF | (no tag within 8 lines) “Start getting penalty fees or overdue notices”
+        HES1003 HES1003_4_0.html IN-HANDOFF | (no tag within 8 lines) “I have been invited to a party tonight, should I go?”
+   28 blk   20 pg  17 mod  [IN-HANDOFF | body]  fam: ENGJ 4, MXDI 3, PWY 3, CEDO 2, COM 2
+        ANZH302 ANZH302_3_0.html IN-HANDOFF | body “Watch the following video:”
+        CEDO502 CEDO502_1_1.html IN-HANDOFF | body  (line -8) “Borrow more money to cover old debts”
+        COM1005 COM1005_2_0.html IN-HANDOFF | body  (line -4) “the secondary sector”
+   27 blk    1 pg   1 mod  [IN-HANDOFF | interactive: drop down box with descript]  fam: AGH 27
+        AGH1005 AGH1005_6_0.html IN-HANDOFF | interactive: drop down box  “Description: Yellowing of leaves, typically starting from the tips or ”
+   24 blk    6 pg   2 mod  [DROPPED | pathways persona + leilani]  fam: PWY 24
+        PWY1008 PWY1008_3_3_0.html DROPPED | pathways persona + leilani “During this module I learned how to take part in an informal interview”
+        PWY1009 PWY1009_0_0.html DROPPED | pathways persona + leilani “Mālō e lelei, it’s me, Leilani. I’m so excited – I’ve just been offere”
+   24 blk    1 pg   1 mod  [DROPPED | clickdrops 2 x 3]  fam: TEDC 24
+        TEDC402 TEDC402_7_0.html DROPPED | clickdrops 2 x 3  (line -3) “Instructions run in the order you write them. If the order is wrong, t”
+   23 blk    1 pg   1 mod  [DROPPED | page overview]  fam: CHFUN 23
+        CHFUN05 CHFUN05_0_0.html DROPPED | page overview  (line -2) “We are learning to:”
+   21 blk    5 pg   5 mod  [IN-HANDOFF | image + body]  fam: OSBY 8, TEFUN 8, OSGM 4, ENFUN 1
+        ENFUN02 ENFUN02_0_0.html IN-HANDOFF | image + body “We communicate because we have something to say. We have something to ”
+        OSBY401 OSBY401_3_0.html IN-HANDOFF | image + body “If the post or comment is still somewhere online, delete it if you can”
+        OSBY501 OSBY501_3_0.html IN-HANDOFF | image + body “If the post or comment is still somewhere online, delete it if you can”
+   18 blk    4 pg   2 mod  [DROPPED | click drops]  fam: TEDC 18
+        TEDC401 TEDC401_1_0.html DROPPED | click drops  (line -4) “Access → Who can open it?”
+        TEDC402 TEDC402_2_0.html DROPPED | click drops  (line -4) “Data bus – moves data”
+   18 blk    1 pg   1 mod  [IN-HANDOFF | image + speech bubble]  fam: TEDC 18
+        TEDC401 TEDC401_2_0.html IN-HANDOFF | image + speech bubble  (lin “groups related items together”
+   17 blk    1 pg   1 mod  [IN-HANDOFF | image + h5]  fam: SSOG 17
+        SSOG103 SSOG103_1_0.html IN-HANDOFF | image + h5 “Belonging with whānau”
+   15 blk    4 pg   4 mod  [IN-HANDOFF | h3 + body]  fam: TEDC 8, CEDO 3, ENGC 2, ENGS 2
+        CEDO501 CEDO501_3_1.html IN-HANDOFF | h3 + body “Understanding hyperlinks”
+        ENGC204 ENGC204_2_0.html IN-HANDOFF | h3 + body “Personal pronouns are words like your, we, us, and they. These words s”
+        ENGS201 ENGS201_4_0.html IN-HANDOFF | h3 + body “The best thing about writing fiction is that you can change anything b”
+   15 blk    2 pg   1 mod  [IN-HANDOFF | accordion]  fam: MXEX 15
+        MXEX302 MXEX302_2_0.html IN-HANDOFF | accordion  (line -4) “Make your questions quick and straightforward. Long, complicated quest”
+   15 blk    2 pg   2 mod  [DROPPED | body + body]  fam: TEDC 14, PMT 1
+        PMT101 PMT101_1_0.html DROPPED | body + body “Me tiaki, me manaaki i ō tātou whanaunga.”
+        TEDC402 TEDC402_1_0.html DROPPED | body + body “Data is raw information collected about something. It might be:”
+   15 blk    1 pg   1 mod  [DROPPED | bold + end bold]  fam: WJFUN 15
+        WJFUN304 WJFUN304_0_0.html DROPPED | bold + end bold “Main clause 1: Hokianga Harbour is wide and peaceful”
+   14 blk    5 pg   5 mod  [DROPPED | click drop]  fam: OSBY 10, FRFUN 2, DTC 1, OSOH 1
+        DTC1005 DTC1005_18_0.html DROPPED | click drop “Fair Use – Copyright on YouTube”
+        FRFUN06 FRFUN06_8_0.html DROPPED | click drop  (line -3) “Sentence 1 is missing an accent. Sentence 2 is the correct version of ”
+        OSBY201 OSBY201_1_0.html DROPPED | click drop  (line -4) “I don't want to play anymore because they said I was dumb.”
+   14 blk    2 pg   2 mod  [IN-HANDOFF | clickdrop text 1 + clickdrop text 2]  fam: PWY 14
+        PWY1008 PWY1008_1_2_0.html IN-HANDOFF | clickdrop text 1 + clickdro “Leads the conversation.”
+        PWY1009 PWY1009_3_1_0.html IN-HANDOFF | clickdrop text 1 + clickdro “an official government website”
+   13 blk    9 pg   9 mod  [DROPPED | h4]  fam: WJFUN 3, HPRE 2, MXS 2, ANZH 1, ENGI 1
+        ANZH101 ANZH101_2_0.html DROPPED | h4  (line -4) “Paikea, the whale rider”
+        ENGI203 ENGI203_1_0.html DROPPED | h4 “What is a time capsule?”
+        HPRE301 HPRE301_7_0.html DROPPED | h4 “Describe (What do we see?)”
+   13 blk    4 pg   2 mod  [DROPPED | image + image]  fam: XDLS 7, PES 6
+        PES1005 PES1005_2_0.html DROPPED | image + image “A polynesian explorer uses a wave chart and the stars.”
+        XDLS912 XDLS912_4_0.html DROPPED | image + image “Put some water on your toothbrush and turn off the tap.”
+   13 blk    2 pg   1 mod  [DROPPED | clickdrops]  fam: TEDC 13
+        TEDC402 TEDC402_6_0.html DROPPED | clickdrops  (line -4) “Check if it's missing”
+   12 blk    2 pg   2 mod  [IN-HANDOFF | timeline]  fam: OSSM 9, OSAH 3
+        OSAH501 OSAH501_2_0.html IN-HANDOFF | timeline  (line -2) “The Law Commission publishes a report recommending stronger protection”
+        OSSM401 OSSM401_1_0.html IN-HANDOFF | timeline  (line -4) “Oversharing personal details (before privacy settings were common).”
+   11 blk    7 pg   5 mod  [DROPPED | insert video]  fam: GEO 5, ENGC 4, SSFUN 2
+        ENGC403 ENGC403_9_0.html DROPPED | insert video  (line -3) “He uses good intonation.”
+        GEO1004 GEO1004_1_0.html DROPPED | insert video “Watch this short video clip by the Hawke’s Bay Regional Council about ”
+        GEO1005 GEO1005_1_0.html DROPPED | insert video “A Māori creation story”
+   11 blk    4 pg   1 mod  [DROPPED | generic table]  fam: HES 11
+        HES1007 HES1007_1_0.html DROPPED | generic table  (line -3) “Factors are just things, components, aspects, and considerations. Fact”
+   11 blk    1 pg   1 mod  [IN-HANDOFF | audiovisual item 5: whai + audioimage]  fam: PWY 11
+        PWY1001 PWY1001_1_3_0.html IN-HANDOFF | audiovisual item 5: whai +  “This week, I was able to take part in some work experience at a wareho”
+   10 blk    1 pg   1 mod  [IN-HANDOFF | front + hover]  fam: OSOH 10
+        OSOH201 OSOH201_1_0.html IN-HANDOFF | front + hover “Use kind and respectful language.”
+   10 blk    1 pg   1 mod  [DROPPED | external link + dispositions button]  fam: OSSC 10
+        OSSC401 OSSC401_4_0.html DROPPED | external link + dispositions b “Netsafe has a strategy called Re:Scam (https://rescam.org/) where you ”
+   10 blk    1 pg   1 mod  [IN-HANDOFF | audio button]  fam: SSCI 10
+        SSCI104 SSCI104_3_0.html IN-HANDOFF | audio button “I am Rocko, and I am thinking like an archaeologist. Here are my findi”
+    9 blk    5 pg   5 mod  [DROPPED | module introduction]  fam: AGH 5, HES 2, SSFUN 2
+        AGH1004 AGH1004_0_0.html DROPPED | module introduction  (line -4) “In this module you will learn:”
+        AGH1005 AGH1005_0_0.html DROPPED | module introduction  (line -2) “It’s important that you fully understand these processes and that they”
+        AGH1009 AGH1009_0_0.html DROPPED | module introduction  (line -2) “Welcome to this module on sustainable practices within agricultural an”
+    9 blk    3 pg   3 mod  [IN-HANDOFF | h3]  fam: TEDC 7, ARFUN 1, WJFUN 1
+        ARFUN03 ARFUN03_0_0.html IN-HANDOFF | h3 “Give it a try: Beat and Rhythm”
+        TEDC402 TEDC402_4_0.html IN-HANDOFF | h3  (line -3) “Here's a dataset about everyday wellbeing – sleep, steps, and screen t”
+        WJFUN306 WJFUN306_0_0.html IN-HANDOFF | h3  (line -2) “Communication choice”
+    9 blk    5 pg   5 mod  [DROPPED | whakatauki]  fam: CEDO 2, CEDT 2, ENGC 2, SSCI 2, SCES 1
+        CEDO105 CEDO105_0_0.html DROPPED | whakatauki “"Mauri tū, mauri ora"”
+        CEDT501 CEDT501_8_0.html DROPPED | whakatauki “Ko te kai a te rangatira, he kōrero.”
+        ENGC206 ENGC206_0_0.html DROPPED | whakatauki “Tino kai, tino ora te kōpū”
+    9 blk    9 pg   8 mod  [DROPPED | title]  fam: OSGM 2, SSCI 2, DAN 1, FRFUN 1, GER 1
+        DAN1004 DAN1004_7_0.html DROPPED | title “See some video examples below of how dancers have done this.”
+        FRFUN08 FRFUN08_5_0.html DROPPED | title “We can explore word order using colours to describe objects.”
+        GER1002 GER1002_2_0.html DROPPED | title “Schneller, höher, weiter”
+    9 blk    3 pg   2 mod  [DROPPED | highlight text]  fam: XGF 8, MXFL 1
+        MXFL401 MXFL401_2_0.html DROPPED | highlight text “If you are not able to convert a percentage into a decimal in your hea”
+        XGF9003 XGF9003_1_2.html DROPPED | highlight text “Next, you will learn how to break problems into smaller parts, think c”

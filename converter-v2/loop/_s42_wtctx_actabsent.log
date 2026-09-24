@@ -1,0 +1,146 @@
+body:activity -> ABSENT: 8041 blocks; WT line not found 5508
+ 5145 blk 1318 pg 419 mod  [DROPPED | (text not in WT)]  fam: XDLS 462, TRR 380, BLL 308, HIS 284, AGH 232
+        AGH1001 AGH1001_1_0.html DROPPED | (text not in WT) “What are primary products?”
+        AGH1002 AGH1002_2_0.html DROPPED | (text not in WT) “Soil practical – Texture by sedimentation”
+        AGH1003 AGH1003_2_0.html DROPPED | (text not in WT) “Soil properties review”
+  363 blk   51 pg  27 mod  [IN-HANDOFF | (text not in WT)]  fam: TRR 312, TEDC 19, ENGR 9, MXDI 5, BLL 3
+        ANZH301 ANZH301_5_0.html IN-HANDOFF | (text not in WT) “Both for and against”
+        ARFUN01 ARFUN01_0_0.html IN-HANDOFF | (text not in WT) “Culture in the arts”
+        BLL121 BLL121_2_0.html IN-HANDOFF | (text not in WT) “Rick kicks. He kicks a hat. Rick kicks a tank.”
+  221 blk  151 pg 106 mod  [DROPPED | body]  fam: BLL 43, XDLS 36, WJFUN 13, CHFUN 11, SSCI 11
+        AGH1001 AGH1001_3_0.html DROPPED | body  (line -2) “Māori creation story”
+        AGH1008 AGH1008_1_0.html DROPPED | body  (line -2) “Manaakitanga in practice”
+        ANZH101 ANZH101_1_0.html DROPPED | body “The First People to Aotearoa”
+  116 blk   38 pg  34 mod  [IN-HANDOFF | body]  fam: SSOG 46, CEDW 11, BLL 9, CHFUN 8, CEDK 6
+        ANZH104 ANZH104_1_0.html IN-HANDOFF | body “What do we need to survive?”
+        BLL154 BLL154_1_0.html IN-HANDOFF | body “Complete this crossword. Look at the picture clues to help you sound o”
+        BLL167 BLL167_1_0.html IN-HANDOFF | body  (line -4) “'hel' is a closed syllable because the vowel is trapped between two co”
+  115 blk   43 pg  34 mod  [DROPPED | (no tag within 8 lines)]  fam: HIS 30, WJFUN 21, BLL 13, ENGR 11, MXFU 6
+        AGH1002 AGH1002_2_0.html DROPPED | (no tag within 8 lines) “Go to your learning journal and complete activity 2B.”
+        ANZH404 ANZH404_6_0.html DROPPED | (no tag within 8 lines) “What are some examples of inside, outside and alongside the system and”
+        ART1006 ART1006_4_0.html DROPPED | (no tag within 8 lines) “Feedback from Others.”
+   73 blk   14 pg   9 mod  [IN-HANDOFF | body + body]  fam: TRR 44, TEFUN 11, ENGI 6, ENGS 5, PNR 4
+        ENGI103 ENGI103_3_0.html IN-HANDOFF | body + body “What is your proud moment about?”
+        ENGR101 ENGR101_6_0.html IN-HANDOFF | body + body “It is your turn to write your own headline.”
+        ENGS102 ENGS102_6_0.html IN-HANDOFF | body + body “Support your student by asking if there are any parts that they were u”
+   68 blk   22 pg  19 mod  [IN-HANDOFF | (no tag within 8 lines)]  fam: ENGS 14, XLP 14, MXFL 9, MXDI 7, MXDB 6
+        ANZH301 ANZH301_10_0.html IN-HANDOFF | (no tag within 8 lines) “Was having more independence in the ‘new village’/city seen as a good ”
+        CBI1009 CBI1009_3_0.html IN-HANDOFF | (no tag within 8 lines) “Drag and drop the colour of an aqueous solution. Note: The solution of”
+        CEDK501 CEDK501_6_0.html IN-HANDOFF | (no tag within 8 lines) “To attain Achievement:”
+   65 blk   45 pg  35 mod  [DROPPED | h3]  fam: MXDI 9, WJFUN 9, BLL 6, HIS 6, DAN 5
+        ANZH401 ANZH401_9_0.html DROPPED | h3  (line -2) “New Zealand Census data shows fewer than 2,200 other Pacific Island pe”
+        ART1004 ART1004_0_0.html DROPPED | h3 “Investigating exhibitions”
+        ART1005 ART1005_0_0.html DROPPED | h3 “Plan 2 x A4 portrait format compositions”
+   65 blk    9 pg   6 mod  [IN-HANDOFF | h3 + body]  fam: PNR 37, TEDC 22, ENGI 4, BLL 2
+        BLL242 BLL242_1_1.html IN-HANDOFF | h3 + body “Tinā is a Samoan word that is used to show respect and care. In Samoan”
+        ENGI401 ENGI401_6_0.html IN-HANDOFF | h3 + body “When human qualities or actions are given to non-human things, like ob”
+        PNR104 PNR104_2_0.html IN-HANDOFF | h3 + body “Ka pai rawa atu!”
+   50 blk   32 pg  17 mod  [DROPPED | body text]  fam: MXDI 18, HPFUN 14, DAN 7, ENGS 4, MXFU 3
+        ART1006 ART1006_1_0.html DROPPED | body text  (line -2) “Write down: what makes you happy, things that you are passionate about”
+        DAN1004 DAN1004_3_0.html DROPPED | body text  (line -4) “I have used the dance element of:”
+        DAN1006 DAN1006_7_0.html DROPPED | body text  (line -2) “Performance reflection”
+   49 blk    2 pg   1 mod  [IN-HANDOFF | images]  fam: XFUN 49
+        XFUN02 XFUN02_4_0.html IN-HANDOFF | images “On a Phone or Tablet”
+   44 blk    7 pg   6 mod  [IN-HANDOFF | body + go to journal]  fam: ENGS 25, MXFU 10, ENGC 7, ENGI 2
+        ENGC204 ENGC204_2_0.html IN-HANDOFF | body + go to journal “The following sentences are not written in the correct tense for instr”
+        ENGI401 ENGI401_4_0.html IN-HANDOFF | body + go to journal “Create your own fact file about the significant event you have chosen.”
+        ENGS102 ENGS102_6_0.html IN-HANDOFF | body + go to journal “Add your published copy into your journal.”
+   40 blk   12 pg   5 mod  [DROPPED | body + body]  fam: TRR 39, PNR 1
+        PNR107 PNR107_2_0.html DROPPED | body + body “Titiro ki raro nei, ki ētahi atu huarahi anō e taea ai te hanga te tau”
+        TRR106 TRR106_1_0.html DROPPED | body + body “Kei hea te oro?”
+        TRR110 TRR110_1_0.html DROPPED | body + body “Kimihia, ā, pāwhiritia te oropuare pūrua ea i roto i ngā rōpū kei raro”
+   39 blk    7 pg   6 mod  [IN-HANDOFF | image]  fam: BLL 19, MXFU 8, XMES 6, ENGI 3, ENGS 3
+        BLL223 BLL223_2_0.html IN-HANDOFF | image “o s i y n”
+        BLL237 BLL237_1_0.html IN-HANDOFF | image  (line -2) “r, t, e, i, w”
+        ENGI303 ENGI303_3_0.html IN-HANDOFF | image “My room was a mess.”
+   32 blk    7 pg   6 mod  [IN-HANDOFF | body + image]  fam: ENGR 12, CEDO 5, CEDR 5, ENGC 5, ENFUN 4
+        CEDO502 CEDO502_5_0.html IN-HANDOFF | body + image “Fold a piece of paper in half and have a pen ready.”
+        CEDR501 CEDR501_8_0.html IN-HANDOFF | body + image “Before deciding which note-taking methods you prefer, try them out usi”
+        ENFUN09 ENFUN09_0_0.html IN-HANDOFF | body + image “Now that you have planned your idea, it is time to start writing.”
+   32 blk   20 pg   7 mod  [IN-HANDOFF | autocheck]  fam: FRNO 21, PWY 10, GEWHA 1
+        FRNO901 FRNO901_6_0.html IN-HANDOFF | autocheck “Find the days of the week”
+        FRNO902 FRNO902_1_0.html IN-HANDOFF | autocheck “Match the family member”
+        GEWHA GEWHA_0_0.html IN-HANDOFF | autocheck “Match the English meaning”
+   32 blk    6 pg   6 mod  [IN-HANDOFF | image + image]  fam: XMES 17, XDLS 13, MXFL 1, XTAS 1
+        MXFL204 MXFL204_8_0.html IN-HANDOFF | image + image “Cavalier King Charles Spaniel”
+        XDLS912 XDLS912_4_0.html IN-HANDOFF | image + image “Put on your underwear.”
+        XMES103 XMES103_2_0.html IN-HANDOFF | image + image “Who has the longest foot?”
+   30 blk    1 pg   1 mod  [IN-HANDOFF | reorder- drag and drop + 🔴🔴 dropquiz]  fam: TEDC 30
+        TEDC402 TEDC402_7_0.html IN-HANDOFF | reorder- drag and drop + 🔴🔴 “Before you write code, you need to understand the flow of a program. T”
+   26 blk   23 pg  18 mod  [DROPPED | h2]  fam: ART 5, PES 5, XDLS 5, SSFUN 4, AGH 2
+        AGH1005 AGH1005_8_0.html DROPPED | h2 “How plants flower and produce fruit”
+        AGH1008 AGH1008_2_0.html DROPPED | h2 “Digestability and components of feed”
+        ART1002 ART1002_1_0.html DROPPED | h2 “Make another layer of colour”
+   25 blk    7 pg   4 mod  [IN-HANDOFF | learning journal + body]  fam: PWY 25
+        PWY1002 PWY1002_1_3_0.html IN-HANDOFF | learning journal + body “Who you can relate to”
+        PWY1007 PWY1007_3_0.html IN-HANDOFF | learning journal + body “In your learning journal, complete the following activity:”
+        PWY1008 PWY1008_2_1_0.html IN-HANDOFF | learning journal + body “Building your interview notes”
+   23 blk   18 pg   9 mod  [DROPPED | button]  fam: DAN 6, CEDO 5, MUS 4, CBI 2, HIS 2
+        AGH1004 AGH1004_2_0.html DROPPED | button “New Zealand Topographical Map”
+        CBI1009 CBI1009_1_0.html DROPPED | button “Ions in aqueous solution”
+        CEDK501 CEDK501_5_0.html DROPPED | button “Click here to access a blank version of this template.”
+   20 blk    6 pg   5 mod  [IN-HANDOFF | activity heading + body]  fam: ENGC 8, ENGS 8, ENGR 4
+        ENGC202 ENGC202_8_0.html IN-HANDOFF | activity heading + body “Planning and drafting”
+        ENGC204 ENGC204_6_0.html IN-HANDOFF | activity heading + body “Answer some questions on how you did in the module.”
+        ENGR101 ENGR101_4_0.html IN-HANDOFF | activity heading + body “It’s your turn to write some interview questions in your journal.”
+   19 blk    3 pg   1 mod  [IN-HANDOFF | learning jo 🔴🔴 ur 🔴🔴 nal + image]  fam: PWY 19
+        PWY1008 PWY1008_1_3_0.html IN-HANDOFF | learning jo 🔴🔴 ur 🔴🔴 nal +  “Plan an interview outfit”
+   18 blk   10 pg   9 mod  [DROPPED | h4]  fam: OSSM 5, WJFUN 3, XDLS 3, AGH 2, ART 2
+        AGH1004 AGH1004_3_0.html DROPPED | h4 “A year in a kiwifruit orchard”
+        ART1005 ART1005_0_0.html DROPPED | h4 “Exploring New Zealand’s Artistic Landscape”
+        BLL244 BLL244_2_0.html DROPPED | h4 “Basketball vocabulary”
+   18 blk    1 pg   1 mod  [IN-HANDOFF | body + item 62]  fam: PNR 18
+        PNR101 PNR101_1_0.html IN-HANDOFF | body + item 62 “Kua mutu tō mahi i ēnei akoranga katoa e pā ana ki te tau, tahi. Whaka”
+   18 blk    2 pg   1 mod  [IN-HANDOFF | a is correct + a is correct]  fam: TEDC 18
+        TEDC402 TEDC402_5_0.html IN-HANDOFF | a is correct + a is correct “Prompt: "What is the most important thing my chart is telling the view”
+   17 blk   13 pg   6 mod  [DROPPED | activity]  fam: PES 12, ANZH 2, DTC 2, PHE 1
+        ANZH205 ANZH205_4_0.html DROPPED | activity “Iwi in my Rohe”
+        DTC1004 DTC1004_1_0.html DROPPED | activity  (line -2) “Head to your journal and complete section 1.”
+        PES1001 PES1001_5_0.html DROPPED | activity “Melting ice on land”
+   16 blk    6 pg   3 mod  [DROPPED | h3 + h3]  fam: TRR 10, PNR 6
+        PNR101 PNR101_1_0.html DROPPED | h3 + h3 “Kimihia te tau 1”
+        PNR104 PNR104_2_0.html DROPPED | h3 + h3 “Kimihia te rōpū takiwhā.”
+        TRR110 TRR110_1_0.html DROPPED | h3 + h3 “Rapua ngā 'ea' katoa”
+   16 blk    2 pg   2 mod  [IN-HANDOFF | checklist]  fam: WJFUN 10, TEDC 6
+        TEDC401 TEDC401_5_0.html IN-HANDOFF | checklist “My changes respond to real feedback.”
+        WJFUN206 WJFUN206_0_0.html IN-HANDOFF | checklist  (line -2) “Before you submit, check:”
+   15 blk    1 pg   1 mod  [IN-HANDOFF | clickdrop 1 + h3]  fam: CEDK 15
+        CEDK501 CEDK501_2_0.html IN-HANDOFF | clickdrop 1 + h3 “Ko Wairua ahau. I’m Wairua. I’m 17 years old and I live in Hastings. M”
+   15 blk    1 pg   1 mod  [IN-HANDOFF | clickdrops or tabs]  fam: TEDC 15
+        TEDC402 TEDC402_5_0.html IN-HANDOFF | clickdrops or tabs  (line - “Choose an appropriate chart type”
+   14 blk    4 pg   1 mod  [IN-HANDOFF | dropbox + trigger engagement]  fam: PWY 14
+        PWY1001 PWY1001_1_0.html IN-HANDOFF | dropbox + trigger engagemen “Go to your journal”
+   14 blk    6 pg   1 mod  [IN-HANDOFF | autocheck + body]  fam: PWY 14
+        PWY1002 PWY1002_1_1_0.html IN-HANDOFF | autocheck + body “Check your understanding”
+   14 blk    1 pg   1 mod  [IN-HANDOFF | transcript]  fam: PWY 14
+        PWY1009 PWY1009_2_2_0.html IN-HANDOFF | transcript  (line -3) “Hannah notices that several plants were sold at lower prices than expe”
+   13 blk    2 pg   2 mod  [IN-HANDOFF | h5 + h5]  fam: ENGC 12, OSSM 1
+        ENGC204 ENGC204_4_0.html IN-HANDOFF | h5 + h5  (line -1) “Fold a piece of paper in half.”
+        OSSM501 OSSM501_3_0.html IN-HANDOFF | h5 + h5 “Social comparison risk”
+   13 blk    2 pg   1 mod  [IN-HANDOFF | journal + h3]  fam: TEDC 13
+        TEDC402 TEDC402_7_0.html IN-HANDOFF | journal + h3 “Practice lab 1: Debug the rocket-fuel calculator”
+   12 blk    5 pg   5 mod  [IN-HANDOFF | button]  fam: ENFUN 6, TEDC 3, AGH 2, SSOG 1
+        AGH1005 AGH1005_8_0.html IN-HANDOFF | button “Complete activity 8A in your learning journal. Once you have completed”
+        AGH1009 AGH1009_1_0.html IN-HANDOFF | button “Complete activity 1A in your journal.”
+        ENFUN08 ENFUN08_0_0.html IN-HANDOFF | button  (line -3) “Raining cats and dogs – Raining very heavily.”
+   12 blk    5 pg   4 mod  [IN-HANDOFF | interactive activity]  fam: MXFL 7, MXDB 2, MXFU 2, HPFUN 1
+        HPFUN301 HPFUN301_0_0.html IN-HANDOFF | interactive activity “Drag and drop the following statements into the correct column:”
+        MXDB301 MXDB301_1_0.html IN-HANDOFF | interactive activity “Understanding data in a graph”
+        MXFL201 MXFL201_7_0.html IN-HANDOFF | interactive activity  (line “Queenstown adventure holiday”
+   12 blk    1 pg   1 mod  [IN-HANDOFF | show answer + show answer]  fam: OSAH 12
+        OSAH501 OSAH501_5_0.html IN-HANDOFF | show answer + show answer “Emotional wellbeing: Victims may experience anxiety, stress or depress”
+   12 blk    6 pg   4 mod  [IN-HANDOFF | h3 + h3]  fam: TRR 9, PNR 3
+        PNR104 PNR104_1_0.html IN-HANDOFF | h3 + h3 “E hia ngā waewae?”
+        PNR107 PNR107_1_0.html IN-HANDOFF | h3 + h3 “Te tūhura tau ā-tuimotu”
+        TRR106 TRR106_1_0.html IN-HANDOFF | h3 + h3 “Te rōpū ako o te kiwi”
+   12 blk    1 pg   1 mod  [DROPPED | body + alert]  fam: TEDC 12
+        TEDC401 TEDC401_6_0.html DROPPED | body + alert “To show your learning from the task you can (choose one):”
+   12 blk    3 pg   1 mod  [DROPPED | activity + h3]  fam: TEDC 12
+        TEDC402 TEDC402_3_0.html DROPPED | activity + h3 “Match each action to the OS layer that handles it.”
+   12 blk    1 pg   1 mod  [IN-HANDOFF | h1 + body]  fam: TRR 12
+        TRR114 TRR114_3_0.html IN-HANDOFF | h1 + body “Hīkoi haere i ngā tiriti ō tō kāinga me tētahi pakeke, ka kimi ingoa M”
+   12 blk    1 pg   1 mod  [IN-HANDOFF | insert rating scale]  fam: XFUN 12
+        XFUN02 XFUN02_3_0.html IN-HANDOFF | insert rating scale  (line  “You move very little during the week.”
+   11 blk    2 pg   2 mod  [IN-HANDOFF | activity 3a]  fam: CEDR 8, ANZH 3
+        ANZH304 ANZH304_3_0.html IN-HANDOFF | activity 3a  (line -7) “January 1840, Hobson arrived in the Bay of Islands with orders from th”
+        CEDR501 CEDR501_4_0.html IN-HANDOFF | activity 3a  (line -3) “You have $80 to spend on an interview outfit.”

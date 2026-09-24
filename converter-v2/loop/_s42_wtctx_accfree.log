@@ -1,0 +1,143 @@
+body:widget:accordion -> body:free: 1131 blocks; WT line not found 66
+  221 blk   44 pg  32 mod  [no widget tag within 40 | body]  fam: ENGFUN 89, ENGJ 12, MXFL 11, ENGR 10, SSOG 10
+        AGH1004 AGH1004_2_0.html no widget tag within 40 | body  (line -2 “Intensive farming is farming where high numbers of animals or crop pla”
+        AGH1006 AGH1006_6_0.html no widget tag within 40 | body “Cultural control of weeds involves the use of machinery and cultivatio”
+        BLL254 BLL254_1_0.html no widget tag within 40 | body “It can sometimes be hard to hear the r in brought, especially if someo”
+  116 blk   26 pg  21 mod  [no widget tag within 40 | (no tag within 8 lines)]  fam: SCPH 22, XGF 20, XTAS 17, ENGJ 8, MXEX 7
+        CEDR501 CEDR501_6_0.html no widget tag within 40 | (no tag within “Using slang, filler words, or casual talk”
+        CEDT501 CEDT501_8_0.html no widget tag within 40 | (no tag within “Actively listen to what is being said by others”
+        ENGJ402 ENGJ402_2_0.html no widget tag within 40 | (no tag within “The rule of the Horatian ode's rhyming scheme is that whatever rhyming”
+   66 blk    5 pg   4 mod  [(text not in WT)]  fam: TEFUN 57, TEDC 7, CHFUN 1, ENGJ 1
+        CHFUN05 CHFUN05_0_0.html (text not in WT) “他走来。 tā zǒu lái He walks (toward me).”
+        ENGJ402 ENGJ402_2_0.html (text not in WT) “Strophe: A stanza of two lines (known as a couplet) or four lines (kno”
+        TEDC401 TEDC401_1_0.html (text not in WT) “Some permissions allow apps to run tasks in the background, which can ”
+   56 blk   17 pg  11 mod  [no widget tag within 40 | h3]  fam: XGF 31, MUS 12, AGH 3, SSOG 3, TEFUN 2
+        AGH1006 AGH1006_6_0.html no widget tag within 40 | h3  (line -2) “Biological control involves the introduction of natural enemies, such ”
+        ARFUN02 ARFUN02_0_0.html no widget tag within 40 | h3  (line -2) “Example: "Imperial March" from Star Wars.”
+        ENGJ402 ENGJ402_7_0.html no widget tag within 40 | h3 “Song lyrics and their connection to lyric poetry”
+   35 blk    2 pg   2 mod  [no widget tag within 40 | h3 + h3]  fam: XGF 27, CEDO 8
+        CEDO501 CEDO501_4_1.html no widget tag within 40 | h3 + h3 “At different stages of your life the amount of tax you pay may change.”
+        XGF9002 XGF9002_0_0.html no widget tag within 40 | h3 + h3 “Māori perspective (te ao Māori)”
+   18 blk    9 pg   7 mod  [WIDGET-TAG accordion -12 | body]  fam: TEDC 7, MXFL 5, BLL 3, XGF 2, HPRE 1
+        BLL253 BLL253_2_0.html WIDGET-TAG accordion -12 | body  (line - “Te Puke grows a lot of kiwifruit.”
+        HPRE301 HPRE301_11_0.html WIDGET-TAG accordion -12 | body “Researchers sort social media use into different types based on how it”
+        MXFL301 MXFL301_4_0.html WIDGET-TAG accordion -12 | body “You can even use this method to solve larger problems. Watch the clip ”
+   18 blk    2 pg   2 mod  [no widget tag within 40 | body + body]  fam: CEDO 16, TEFUN 2
+        CEDO501 CEDO501_8_0.html no widget tag within 40 | body + body “When your income goes down, it's important to reduce the impact on you”
+        TEFUN01 TEFUN01_0_0.html no widget tag within 40 | body + body  ( “Write down a list of questions you could ask Alex to understand their ”
+   17 blk   10 pg   9 mod  [WIDGET-TAG accordion -8 | body]  fam: ENGJ 6, ENFUN 3, XDLS 3, MXFL 2, CEDW 1
+        CEDW501 CEDW501_2_1.html WIDGET-TAG accordion -8 | body “Here are her responses to similar pātai.”
+        ENFUN04 ENFUN04_0_0.html WIDGET-TAG accordion -8 | body  (line -2 “Ask your supervisor to write down what you say. Then draw your word.”
+        ENGJ302 ENGJ302_5_0.html WIDGET-TAG accordion -8 | body “The title, Acrostic Poem indicates the poem should be in an acrostic f”
+   16 blk   14 pg  11 mod  [WIDGET-TAG accordion -6 | body]  fam: ENFUN 3, MXFL 3, XDLS 3, CEDR 2, CEDW 1
+        CEDR501 CEDR501_3_0.html WIDGET-TAG accordion -6 | body “In this video you’ll see how the Cornell method works. It splits your ”
+        CEDW501 CEDW501_2_1.html WIDGET-TAG accordion -6 | body “Here are some responses to pātai (questions) that show how the flu aff”
+        ENFUN04 ENFUN04_0_0.html WIDGET-TAG accordion -6 | body “Talk about what the word you chose means.”
+   15 blk    2 pg   2 mod  [no widget tag within 40 | back + body]  fam: XGF 11, OSAI 4
+        OSAI401 OSAI401_3_0.html no widget tag within 40 | back + body “Generative AI (GenAI) can help with writing by suggesting ideas, fixin”
+        XGF9002 XGF9002_0_0.html no widget tag within 40 | back + body “Te Kura offers dual enrollment for ākonga who still attend their face-”
+   14 blk    4 pg   3 mod  [no widget tag within 40 | table]  fam: AGH 8, PES 5, CHFUN 1
+        AGH1008 AGH1008_3_0.html no widget tag within 40 | table  (line - “Tough fibrous feed which is usually fed as a supplementary feed during”
+        CHFUN05 CHFUN05_0_0.html no widget tag within 40 | table  (line - “我坐车去学校。 Wǒ zuò chē qù xuéxiào. I go to school by car.”
+        PES1004 PES1004_8_0.html no widget tag within 40 | table  (line - “Independent variable (units)”
+   14 blk    1 pg   1 mod  [WIDGET-TAG accordion -6 | image + body]  fam: CEDR 14
+        CEDR501 CEDR501_6_0.html WIDGET-TAG accordion -6 | image + body   “To improve your clarity and confidence:”
+   13 blk   10 pg   9 mod  [WIDGET-TAG accordion -10 | body]  fam: BLL 3, MXFL 3, XDLS 2, XGF 2, CEDR 1
+        BLL253 BLL253_2_0.html WIDGET-TAG accordion -10 | body  (line - “The Gore Trout is smaller than a real trout.”
+        CEDR501 CEDR501_3_0.html WIDGET-TAG accordion -10 | body “Here is an example of the Cornell method:”
+        MXFL301 MXFL301_6_0.html WIDGET-TAG accordion -10 | body “With practice, you can become good enough to not need the number line.”
+   10 blk    9 pg   6 mod  [WIDGET-TAG accordion -4 | body]  fam: XDLS 8, CEDR 1, GEO 1
+        CEDR501 CEDR501_3_0.html WIDGET-TAG accordion -4 | body “The outline method is a simple way to take notes by starting with main”
+        GEO1006 GEO1006_1_0.html WIDGET-TAG accordion -4 | body “Glaciers form when there is an interaction between climate processes a”
+        XDLS903 XDLS903_1_0.html WIDGET-TAG accordion -4 | body “Movement is a big part of many spiritual rituals around the world.”
+   10 blk    5 pg   5 mod  [no widget tag within 40 | image]  fam: XMES 4, ENGC 2, MXFL 2, ENGJ 1, PES 1
+        ENGC401 ENGC401_2_0.html no widget tag within 40 | image “Over the shoulder shot”
+        ENGJ402 ENGJ402_2_0.html no widget tag within 40 | image “Poet Francisco X. Alarcón”
+        MXFL104 MXFL104_4_0.html no widget tag within 40 | image “For example, you started walking when the clock reads 9 o’clock.”
+    9 blk    5 pg   5 mod  [no widget tag within 40 | h4]  fam: WJFUN 4, AGH 2, ANZH 2, CEDO 1
+        AGH1004 AGH1004_2_0.html no widget tag within 40 | h4 “Semi-intensive Farming”
+        ANZH101 ANZH101_2_0.html no widget tag within 40 | h4 “Ranginui and Papatūānuku”
+        CEDO502 CEDO502_3_0.html no widget tag within 40 | h4 “Banks versus finance companies”
+    9 blk    8 pg   6 mod  [WIDGET-TAG accordion -20 | body]  fam: MXFL 5, CEDO 1, GEO 1, XDLS 1, XGF 1
+        CEDO501 CEDO501_2_1.html WIDGET-TAG accordion -20 | body “Listen to Teina tell his story about needing the Sole Parent Support.”
+        GEO1006 GEO1006_1_0.html WIDGET-TAG accordion -20 | body  (line - “The Canterbury Plains were formed from the interaction of the glacial ”
+        MXFL301 MXFL301_2_0.html WIDGET-TAG accordion -20 | body “When working with distance, the important fact to remember is 1,000 me”
+    9 blk    1 pg   1 mod  [no widget tag within 40 | image: image67.png + image]  fam: MXDB 9
+        MXDB301 MXDB301_1_0.html no widget tag within 40 | image: image67 “Below is a table of the different kinds of cracker packaging. Read the”
+    8 blk    5 pg   5 mod  [WIDGET-TAG accordion -16 | body]  fam: BLL 3, CEDO 2, HPRE 1, MXFL 1, XGF 1
+        BLL253 BLL253_2_0.html WIDGET-TAG accordion -16 | body  (line - “Giant food sculptures help attract tourists.”
+        CEDO501 CEDO501_2_1.html WIDGET-TAG accordion -16 | body “Here are three different situations showing how Student Allowance elig”
+        HPRE301 HPRE301_11_0.html WIDGET-TAG accordion -16 | body  (line - “This helps show how social media affects people's wellbeing, not just ”
+    8 blk    1 pg   1 mod  [no widget tag within 40 | image + image]  fam: ENGJ 8
+        ENGJ402 ENGJ402_7_0.html no widget tag within 40 | image + image “'Firework' by Katy Perry:”
+    8 blk    1 pg   1 mod  [WIDGET-TAG accordion -4 | h5 + h5]  fam: MXDB 8
+        MXDB302 MXDB302_7_0.html WIDGET-TAG accordion -4 | h5 + h5 “Step 1: Estimate by Rounding”
+    8 blk    1 pg   1 mod  [WIDGET-TAG accordion -7 | h3 + image]  fam: TEDC 8
+        TEDC401 TEDC401_3_0.html WIDGET-TAG accordion -7 | h3 + image “Step 2: Create a wireframe (Ideate 🡪 Prototype)”
+    7 blk    5 pg   5 mod  [WIDGET-TAG accordion -14 | body]  fam: BLL 3, HPRE 1, MXFU 1, PWY 1, XDLS 1
+        BLL253 BLL253_2_0.html WIDGET-TAG accordion -14 | body  (line - “Kaikōura is famous for apples.”
+        HPRE301 HPRE301_11_0.html WIDGET-TAG accordion -14 | body  (line - “This helps them understand the impact of social media, not just the ti”
+        MXFU301 MXFU301_6_0.html WIDGET-TAG accordion -14 | body  (line - “20 balloons in the bag makes 20 possible outcomes”
+    7 blk    5 pg   5 mod  [WIDGET-TAG accordion -18 | body]  fam: CEDR 2, MXFL 2, GEO 1, XDLS 1, XGF 1
+        CEDR501 CEDR501_3_0.html WIDGET-TAG accordion -18 | body  (line - “How to use it”
+        GEO1006 GEO1006_1_0.html WIDGET-TAG accordion -18 | body “As glaciers reach lower altitudes, temperatures rise and the ice begin”
+        MXFL301 MXFL301_3_0.html WIDGET-TAG accordion -18 | body “A percentage is a way of showing a part of something out of 100. It is”
+    7 blk    7 pg   5 mod  [WIDGET-TAG accordion -2 | body]  fam: MXFL 3, ENGJ 1, ENGR 1, MXEO 1, PWY 1
+        ENGJ102 ENGJ102_2_0.html WIDGET-TAG accordion -2 | body “Once you have chosen your theme, brainstorm a list of words that relat”
+        ENGR302 ENGR302_5_0.html WIDGET-TAG accordion -2 | body “Study these three images to learn more about the father.”
+        MXEO301 MXEO301_4_0.html WIDGET-TAG accordion -2 | body “To multiply and divide negative numbers, you follow a similar rule to ”
+    7 blk    7 pg   5 mod  [WIDGET-TAG accordion -24 | body]  fam: MXFL 4, ENGR 1, MXDB 1, XDLS 1
+        ENGR302 ENGR302_5_0.html WIDGET-TAG accordion -24 | body “The final illustration in the father’s voice shows the same scene you ”
+        MXDB302 MXDB302_4_0.html WIDGET-TAG accordion -24 | body “This table tells you the relationship between the number of cabbages p”
+        MXFL301 MXFL301_2_0.html WIDGET-TAG accordion -24 | body  (line - “For example, 2530 metres is turned into 2530.0 ÷ 1,000 = three moves t”
+    6 blk    2 pg   2 mod  [WIDGET-TAG accordion -7 | body]  fam: CEDR 5, MXFL 1
+        CEDR501 CEDR501_6_0.html WIDGET-TAG accordion -7 | body  (line -1 “To sound clear and confident:”
+        MXFL301 MXFL301_4_0.html WIDGET-TAG accordion -7 | body  (line -5 “Step 3: Multiply 5 × 6 = 30 This is 5 tens so put the 0 into the grid ”
+    6 blk    2 pg   2 mod  [no widget tag within 40 | video link]  fam: HIS 6
+        HIS1005 HIS1005_9_1.html no widget tag within 40 | video link  (l “The 13th Amendment – abolished slavery.”
+        HIS1007 HIS1007_3_1.html no widget tag within 40 | video link  (l “The 13th Amendment – abolished slavery.”
+    6 blk    5 pg   3 mod  [WIDGET-TAG accordion -22 | body]  fam: MXFL 3, XDLS 2, XLP 1
+        MXFL301 MXFL301_2_0.html WIDGET-TAG accordion -22 | body  (line - “To convert metres into kilometres, we divide by 1,000. This means inse”
+        XDLS901 XDLS901_2_0.html WIDGET-TAG accordion -22 | body “19-year-old Awatea is a dedicated kapa haka performer from the close-k”
+        XLP05 XLP05_4_0.html WIDGET-TAG accordion -22 | body “Guided breathing exercises can help calm the nervous system and reduce”
+    6 blk    1 pg   1 mod  [no widget tag within 40 | item 85 + video]  fam: PMT 6
+        PMT101 PMT101_2_0.html no widget tag within 40 | item 85 + vide “Kei te hanga whare koe? Ka tope rākau, ā, ka whakatō rākau anō?”
+    6 blk    1 pg   1 mod  [no widget tag within 40 | title]  fam: SSFUN 6
+        SSFUN01 SSFUN01_0_0.html no widget tag within 40 | title “Kids Restore the Kepler”
+    6 blk    1 pg   1 mod  [no widget tag within 40 | clickdrop text]  fam: XDLS 6
+        XDLS901 XDLS901_3_0.html no widget tag within 40 | clickdrop text “You can commit to doing your best in class, on a team, or in a club.”
+    5 blk    1 pg   1 mod  [WIDGET-TAG accordion -7 | ai animation + body]  fam: CEDT 5
+        CEDT501 CEDT501_5_0.html WIDGET-TAG accordion -7 | ai animation + “I'd been waiting ages at Papakura Skatepark, just hanging back near th”
+    5 blk    5 pg   3 mod  [WIDGET-TAG accordion -26 | body]  fam: MXFL 3, MXDB 1, XDLS 1
+        MXDB302 MXDB302_4_0.html WIDGET-TAG accordion -26 | body  (line - “If 4 cabbages are planted, how many carrots will also be planted? If y”
+        MXFL301 MXFL301_2_0.html WIDGET-TAG accordion -26 | body  (line - “The final 0 in our number is not needed, so our final answer is 2.53 k”
+        XDLS901 XDLS901_2_0.html WIDGET-TAG accordion -26 | body  (line - “When she's not on stage, she finds joy in the simple pleasures of her ”
+    5 blk    4 pg   3 mod  [WIDGET-TAG accordion -28 | body]  fam: MXFL 4, XLP 1
+        MXFL301 MXFL301_3_0.html WIDGET-TAG accordion -28 | body  (line - “We can also see from this data that if we enjoy live musical shows and”
+        MXFL302 MXFL302_6_0.html WIDGET-TAG accordion -28 | body  (line - “Step 1: Turn the mixed numbers into improper fractions → 4 × 3 = 12 + ”
+        XLP05 XLP05_4_0.html WIDGET-TAG accordion -28 | body “A short walk or other physical activity outside, or even through the h”
+    5 blk    3 pg   1 mod  [WIDGET-TAG accordion -9 | body]  fam: MXFL 5
+        MXFL301 MXFL301_4_0.html WIDGET-TAG accordion -9 | body  (line -7 “Step 5: Add up the components to get your final answer → 1200 + 300 + ”
+    5 blk    1 pg   1 mod  [no widget tag within 40 | click and drop]  fam: SCPH 5
+        SCPH301 SCPH301_3_0.html no widget tag within 40 | click and drop “This experiment shows how warmer liquids rise and cooler liquids sink.”
+    5 blk    1 pg   1 mod  [no widget tag within 40 | italics + end italics]  fam: WJFUN 5
+        WJFUN304 WJFUN304_0_0.html no widget tag within 40 | italics + end  “The waka glided across the harbour.”
+    5 blk    1 pg   1 mod  [WIDGET-TAG accordion -2 | insert click and drop accordion]  fam: XLP 5
+        XLP03 XLP03_5_0.html WIDGET-TAG accordion -2 | insert click a “Soft and hard objects”
+    5 blk    1 pg   1 mod  [WIDGET-TAG accordion -6 | insert click and drop accordion]  fam: XLP 5
+        XLP03 XLP03_5_0.html WIDGET-TAG accordion -6 | insert click a “soft fabric (felt, cotton) vs. rough sandpaper.”
+    4 blk    2 pg   2 mod  [no widget tag within 40 | h2]  fam: ARFUN 3, COM 1
+        ARFUN02 ARFUN02_0_0.html no widget tag within 40 | h2 “How to understand it:”
+        COM1005 COM1005_7_0.html no widget tag within 40 | h2  (line -6) “Foreign exchange market”
+    4 blk    2 pg   2 mod  [WIDGET-TAG accordion -6 | h5]  fam: BLL 3, MXFL 1
+        BLL253 BLL253_2_0.html WIDGET-TAG accordion -6 | h5 “Decide whether each of these sentences are TRUE or FALSE.”
+        MXFL301 MXFL301_3_0.html WIDGET-TAG accordion -6 | h5 “Applying this understanding”
+    4 blk    3 pg   3 mod  [WIDGET-TAG accordion -18 | (no tag within 8 lines)]  fam: BLL 2, PES 1, XGF 1
+        BLL253 BLL253_2_0.html WIDGET-TAG accordion -18 | (no tag withi “The Cromwell fruit sculpture shows fruit that is all grown today.”
+        PES1008 PES1008_1_0.html WIDGET-TAG accordion -18 | (no tag withi “Other uses include: thermal energy storage for heaters, cooling system”
+        XGF9001 XGF9001_7_0.html WIDGET-TAG accordion -18 | (no tag withi “Remind myself of past successes.”
+    4 blk    1 pg   1 mod  [WIDGET-TAG accordion -25 | image]  fam: CEDO 4
+        CEDO501 CEDO501_2_1.html WIDGET-TAG accordion -25 | image “Kōrero 1: Teina's story”
+    4 blk    2 pg   2 mod  [WIDGET-TAG accordion -21 | image]  fam: CEDO 3, HES 1
+        CEDO501 CEDO501_2_1.html WIDGET-TAG accordion -21 | image “Kōrero 2: Ngaire's story”
+        HES1007 HES1007_9_0.html WIDGET-TAG accordion -21 | image  (line  “Jordan is hosting a pre-formal party. Her parents are conscious about ”

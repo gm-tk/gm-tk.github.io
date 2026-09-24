@@ -1,0 +1,103 @@
+body:free:side -> body:free: 149 blocks; WT line not found 2
+   20 blk    7 pg   6 mod  [(no tag within 8 lines)]  fam: HIS 7, AGH 5, PES 5, WJFUN 2, ENGC 1
+        AGH1002 AGH1002_1_0.html (no tag within 8 lines) “Smaller particles of bedrock. Mainly clay.”
+        ENGC204 ENGC204_5_0.html (no tag within 8 lines) “What I already know:”
+        HIS1002 HIS1002_10_0.html (no tag within 8 lines) “Atmospheric nuclear devices”
+   18 blk   10 pg   6 mod  [caption]  fam: HIS 15, SCPH 2, CBI 1
+        CBI1005 CBI1005_3_0.html caption “Albinism is a condition where a person has very light skin, hair and e”
+        HIS1005 HIS1005_9_0.html caption “John Trumbull's painting (1819), Declaration of Independence, depictin”
+        HIS1006 HIS1006_9_0.html caption “This famously iconic image was taken by New Zealand Herald press photo”
+   15 blk    1 pg   1 mod  [hover trigger]  fam: TEFUN 15
+        TEFUN01 TEFUN01_0_0.html hover trigger  (line -4) “As a stakeholder, what makes you interested in, or affected by, this p”
+   14 blk    6 pg   4 mod  [image]  fam: AGH 4, MXDI 4, ENGC 3, PES 3
+        AGH1002 AGH1002_3_0.html image  (line -5) “Absorbed from the air through small cells on the underside of the leav”
+        ENGC204 ENGC204_2_0.html image  (line -5) “The kitchen was covered with flour.”
+        MXDI202 MXDI202_9_0.html image  (line -2) “Sphere: Like a basketball or a globe.”
+    9 blk    7 pg   7 mod  [body]  fam: TEFUN 2, WJFUN 2, CEDO 1, ENGR 1, MXFUN 1
+        CEDO502 CEDO502_5_0.html body “Rua thinks back over what she did. She remembers choosing her topic, d”
+        ENGR202 ENGR202_3_0.html body “Images of the product”
+        MXFUN01 MXFUN01_0_0.html body “A percentage is an amount out of 100.”
+    5 blk    2 pg   2 mod  [interactive image]  fam: AGH 5
+        AGH1002 AGH1002_1_0.html interactive image  (line -7) “A combination of decayed (broken down) and undecayed (not broken down)”
+        AGH1009 AGH1009_3_0.html interactive image  (line -5) “The canopy has trees with large leaves. When it rains these leaves tak”
+    5 blk    1 pg   1 mod  [images + hover captions + caption text]  fam: ENGJ 5
+        ENGJ302 ENGJ302_3_0.html images + hover captions + caption text   “Patterns on a zebra.”
+    4 blk    1 pg   1 mod  [h3 + image]  fam: CEDO 4
+        CEDO501 CEDO501_2_0.html h3 + image “Earned income is money you make by working. It can come from:”
+    4 blk    1 pg   1 mod  [table]  fam: ENGI 4
+        ENGI103 ENGI103_1_0.html table  (line -4) “First, I woke up and got out of bed.”
+    4 blk    1 pg   1 mod  [h5 + image]  fam: ENGI 4
+        ENGI303 ENGI303_6_0.html h5 + image “Learning a new skill”
+    4 blk    2 pg   2 mod  [image caption]  fam: HIS 4
+        HIS1001 HIS1001_8_0.html image caption “Neimony Netwon, Bombing for mankind.”
+        HIS1008 HIS1008_3_0.html image caption “Photograph of Eugene "Bull" Connor from the 1960 Annual Report publish”
+    4 blk    1 pg   1 mod  [insert icons ms icons or similar]  fam: WJFUN 4
+        WJFUN210 WJFUN210_0_0.html insert icons ms icons or similar  (line  “What do you see?”
+    3 blk    1 pg   1 mod  [insert image to lhs of two sample senten]  fam: WJFUN 3
+        WJFUN307 WJFUN307_0_0.html insert image to lhs of two sample senten “"The wetlands are important."”
+    2 blk    2 pg   2 mod  [caption for image]  fam: ANZH 1, HIS 1
+        ANZH401 ANZH401_4_0.html caption for image “This New Zealand Company poster shows that by 1848 the company was no ”
+        HIS1008 HIS1008_3_0.html caption for image  (line -2) “This primary source photograph was taken May 4, 1963, Birmingham, Alab”
+    2 blk    1 pg   1 mod  [body + hover: happens regularly. for example, e]  fam: CEDK 2
+        CEDK501 CEDK501_5_0.html body + hover: happens regularly. for exa “Sorted is New Zealand's free, independent money guide. It empowers New”
+    2 blk    2 pg   2 mod  [h2]  fam: DTC 1, HIS 1
+        DTC1005 DTC1005_1_0.html h2 “Digital Outcome Domain of your choice”
+        HIS1002 HIS1002_10_0.html h2  (line -8) “Dropped from an aeroplane onto cities”
+    2 blk    1 pg   1 mod  [side by side]  fam: WJFUN 2
+        WJFUN113 WJFUN113_0_0.html side by side  (line -3) “Kea was in the lake.”
+    2 blk    1 pg   1 mod  [insert image to the left of the 2 exampl]  fam: WJFUN 2
+        WJFUN305 WJFUN305_0_0.html insert image to the left of the 2 exampl “Example 1 "The Kauaeranga Valley offers a range of walking tracks thro”
+    2 blk    1 pg   1 mod  [insert image to the lhs of the two sampl]  fam: WJFUN 2
+        WJFUN307 WJFUN307_0_0.html insert image to the lhs of the two sampl “Visit Thames. There are things to see.”
+    2 blk    1 pg   1 mod  [insert image to lhs of the next two sent]  fam: WJFUN 2
+        WJFUN307 WJFUN307_0_0.html insert image to lhs of the next two sent “For example, a writer could describe a walking track as good, interest”
+    2 blk    1 pg   1 mod  [(text not in WT)]  fam: XDLS 2
+        XDLS902 XDLS902_0_0.html (text not in WT) “Sexuality and physical wellbeing”
+    1 blk    1 pg   1 mod  [image with caption]  fam: AGH 1
+        AGH1009 AGH1009_5_0.html image with caption  (line -4) “This chart shows the greenhouse gas emission in Aotearoa New Zealand. ”
+    1 blk    1 pg   1 mod  [alert + alert]  fam: CEDR 1
+        CEDR501 CEDR501_7_0.html alert + alert “Applying for a Gateway placement or work experience opportunity.”
+    1 blk    1 pg   1 mod  [h3 + body]  fam: ENGJ 1
+        ENGJ202 ENGJ202_5_0.html h3 + body “Rhyme is when words sound the same at the end. For example 'cat' and '”
+    1 blk    1 pg   1 mod  [image + image]  fam: ENGR 1
+        ENGR202 ENGR202_3_0.html image + image  (line -1) “Happy people using the product”
+    1 blk    1 pg   1 mod  [image: image59.png]  fam: ENGS 1
+        ENGS302 ENGS302_2_0.html image: image59.png  (line -2) “Romeo: a curious young boy who wants to make friends.”
+    1 blk    1 pg   1 mod  [image: image62.png]  fam: ENGS 1
+        ENGS302 ENGS302_2_0.html image: image62.png  (line -2) “Polly: a girl who seems uninterested at first but gradually opens up.”
+    1 blk    1 pg   1 mod  [insert screen capture, cropped like the  + image: image60.png]  fam: ENGS 1
+        ENGS302 ENGS302_2_0.html insert screen capture, cropped like the  “Ed: Romeo’s younger brother who mostly watches quietly and reads his b”
+    1 blk    1 pg   1 mod  [insert image]  fam: GEO 1
+        GEO1005 GEO1005_1_0.html insert image “The Val di Chiana, alluvial plain, Italy”
+    1 blk    1 pg   1 mod  [insert media item  🔴🔴 19 🔴🔴]  fam: HPFUN 1
+        HPFUN902 HPFUN902_0_0.html insert media item  🔴🔴 19 🔴🔴 “Fishing: always fish with an adult nearby. Stay back from slippery edg”
+    1 blk    1 pg   1 mod  [insert media item 🔴🔴 20 🔴🔴]  fam: HPFUN 1
+        HPFUN902 HPFUN902_0_0.html insert media item 🔴🔴 20 🔴🔴 “Boating: always wear a life jacket, even if you're a good swimmer. Sit”
+    1 blk    1 pg   1 mod  [insert media item  🔴🔴 21 🔴🔴]  fam: HPFUN 1
+        HPFUN902 HPFUN902_0_0.html insert media item  🔴🔴 21 🔴🔴 “Swimming: swim with a buddy and make sure an adult is watching. Check ”
+    1 blk    1 pg   1 mod  [body text]  fam: MXDI 1
+        MXDI202 MXDI202_9_0.html body text  (line -4) “Cube: Like a dice or a Rubik’s cube.”
+    1 blk    1 pg   1 mod  [caption text]  fam: OSGM 1
+        OSGM201 OSGM201_3_0.html caption text “Pause and reflect: Would I say or do this if my parent or kaiako was h”
+    1 blk    1 pg   1 mod  [insert table]  fam: PHE 1
+        PHE1008 PHE1008_1_0.html insert table  (line -4) “Papatūānuku and Ranginui”
+    1 blk    1 pg   1 mod  [audio visual item 2]  fam: SSCI 1
+        SSCI205 SSCI205_5_0.html audio visual item 2 “My name is Leon. I wake up early each day to train with other boys in ”
+    1 blk    1 pg   1 mod  [audio visual item 3]  fam: SSCI 1
+        SSCI205 SSCI205_5_0.html audio visual item 3 “My name is Thaleia. I exercise to stay strong and learn how to manage ”
+    1 blk    1 pg   1 mod  [audiovisual item 8]  fam: SSCI 1
+        SSCI205 SSCI205_7_0.html audiovisual item 8 “My tasks were very hard, but I did not give up. Perseverance matters.”
+    1 blk    1 pg   1 mod  [audiovisual item 9]  fam: SSCI 1
+        SSCI205 SSCI205_7_0.html audiovisual item 9 “I survived by planning carefully instead of rushing in. Clever thinkin”
+    1 blk    1 pg   1 mod  [audiovisual item 10]  fam: SSCI 1
+        SSCI205 SSCI205_7_0.html audiovisual item 10 “My journey was long and full of challenges. I survived by planning and”
+    1 blk    1 pg   1 mod  [box 1:]  fam: SSFUN 1
+        SSFUN01 SSFUN01_0_0.html box 1: “Books are better than movies.”
+    1 blk    1 pg   1 mod  [box 2:]  fam: SSFUN 1
+        SSFUN01 SSFUN01_0_0.html box 2: “Playing outside is better than playing video games.”
+    1 blk    1 pg   1 mod  [box 3:]  fam: SSFUN 1
+        SSFUN01 SSFUN01_0_0.html box 3: “Every child should play a sport.”
+    1 blk    1 pg   1 mod  [box 4:]  fam: SSFUN 1
+        SSFUN01 SSFUN01_0_0.html box 4: “We should eat ice cream every day.”
+    1 blk    1 pg   1 mod  [box 5:]  fam: SSFUN 1
+        SSFUN01 SSFUN01_0_0.html box 5: “Sunny days are better than rainy days.”
