@@ -1,0 +1,45 @@
+CBI1004: identical 11 / changed 1
+CBI1005: identical 11 / changed 1
+CBI1008: identical 5 / changed 1
+CBI1009: identical 4 / changed 1
+CHI1003: identical 9 / changed 1
+CHI1004: identical 10 / changed 1
+CHI1005: identical 8 / changed 1
+COM1002: identical 9 / changed 1
+COM1005: identical 9 / changed 1
+COM1006: identical 9 / changed 1
+DAN1003: identical 9 / changed 1
+DAN1004: identical 9 / changed 1
+DAN1006: identical 11 / changed 1
+DTC1004: identical 8 / changed 1
+DTC1005: identical 21 / changed 1
+ENGC403: identical 16 / changed 1
+ENGJ202: identical 6 / changed 1
+ENGJ301: identical 8 / changed 1
+ENGJ402: identical 9 / changed 1
+ENGR301: identical 9 / changed 1
+ENGR302: identical 8 / changed 1
+GEO1004: identical 3 / changed 1
+GEO1005: identical 7 / changed 1
+GEO1006: identical 6 / changed 1
+GER1002: identical 3 / changed 1
+JPN1004: identical 11 / changed 1
+MUS1004: identical 10 / changed 1
+MUS1006: identical 4 / changed 1
+MXDB301: identical 9 / changed 1
+MXDI201: identical 11 / changed 1
+MXDI301: identical 9 / changed 1
+MXEO102: identical 5 / changed 1
+MXEX301: identical 9 / changed 1
+MXFL104: identical 6 / changed 1
+MXFL203: identical 12 / changed 1
+MXFL401: identical 8 / changed 1
+MXFU302: identical 12 / changed 1
+MXS1004: identical 10 / changed 1
+OSOH201: identical 4 / changed 1
+PWY1002: identical 10 / changed 1
+PWY1008: identical 10 / changed 1
+SPA1004: identical 3 / changed 1
+
+TOTAL: identical 361 / changed 42 / missing 0 over 42 modules
+CHANGED: CBI1004/CBI1004_0_0.html CBI1005/CBI1005_0_0.html CBI1008/CBI1008_0_0.html CBI1009/CBI1009_0_0.html CHI1003/CHI1003_0_0.html CHI1004/CHI1004_1_0.html CHI1005/CHI1005_0_0.html COM1002/COM1002_0_0.html COM1005/COM1005_0_0.html COM1006/COM1006_0_0.html DAN1003/DAN1003_0_0.html DAN1004/DAN1004_0_0.html DAN1006/DAN1006_0_0.html DTC1004/DTC1004_0_0.html DTC1005/DTC1005_0_0.html ENGC403/ENGC403_0_0.html ENGJ202/ENGJ202_0_0.html ENGJ301/ENGJ301_0_0.html ENGJ402/ENGJ402_0_0.html ENGR301/ENGR301_0_0.html ENGR302/ENGR302_0_0.html GEO1004/GEO1004_0_0.html GEO1005/GEO1005_0_0.html GEO1006/GEO1006_0_0.html GER1002/GER1002_0_0.html JPN1004/JPN1004_0_0.html MUS1004/MUS1004_0_0.html MUS1006/MUS1006_1_0.html MXDB301/MXDB301_0_0.html MXDI201/MXDI201_0_0.html MXDI301/MXDI301_0_0.html MXEO102/MXEO102_0_0.html MXEX301/MXEX301_0_0.html MXFL104/MXFL104_0_0.html MXFL203/MXFL203_0_0.html MXFL401/MXFL401_0_0.html MXFU302/MXFU302_0_0.html MXS1004/MXS1004_0_0.html OSOH201/OSOH201_0_0.html PWY1002/PWY1002_0_0.html PWY1008/PWY1008_0_0.html SPA1004/SPA1004_0_0.html

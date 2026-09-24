@@ -521,6 +521,18 @@ class MenuBuilder {
 			&& !(kpCfg.exclude_subjects ?? []).some((x) => String(x).toUpperCase() === kpSubj)
 			? new RegExp(kpCfg.heading_pattern, "i") : null;
 		let kpPromoted = false;
+		// ROUND 467 (KB constraint 67 / 01B; data
+		// menu.extra_tabs.curriculum_tabs.kb_canonical.standards; env STDTAB_OFF):
+		// the TABBED overview's assessment section is the canonical Standards tab
+		// even where the registry has no row for this module's subject|phase (a
+		// row still decides its own label). Independent of KPTABS_OFF.
+		const stdRaw = kpCfg?.standards;
+		const stdCfg = stdRaw && stdRaw.enabled !== false
+			&& !(typeof process !== "undefined" && process.env
+				&& (process.env[stdRaw.env ?? "STDTAB_OFF"] || process.env.XTABCURRIC_OFF))
+			&& !(stdRaw.exclude_subjects ?? []).some((x) => String(x).toUpperCase() === kpSubj)
+			? stdRaw : null;
+		let stdPromoted = false;
 
 		// GENERAL BILINGUAL MENU-HEADING REDUCE (the r206 follow-up). The writer
 		// types menu subsection headings bilingually ("Whakamaheretia tō wā |
@@ -782,15 +794,20 @@ class MenuBuilder {
 					// default stays <h5>).
 					const curricOn = xtCfg && xtCfg.curriculum_tabs?.enabled !== false
 						&& !(typeof process !== "undefined" && process.env && process.env.XTABCURRIC_OFF);
-					if (xtRow || kpRe) {
+					if (xtRow || kpRe || stdCfg) {
 						let sec = this.#extraTabSection(hFold, xtCfg);
 						let xtLabel = sec && xtRow ? xtRow[sec] : undefined;
 						// ROUND 460: the KB canonical Knowledge / Practices tab for a
 						// module whose registry row does not name the section.
-						let kpHit = false;
+						let kpHit = false, stdHit = false;
 						if (!xtLabel && kpRe && kpRe.test(hFold.trim())) {
 							const kSec = hFold.includes("knowledge") ? "knowledge" : "practices";
 							if (kpCfg.labels?.[kSec]) { sec = kSec; xtLabel = kpCfg.labels[kSec]; kpHit = true; }
+						}
+						// ROUND 467: the KB canonical Standards tab (the tab-2 assessment
+						// section) for a module whose registry row does not name it.
+						if (!xtLabel && !kpHit && stdCfg && sec === "assessment" && bucket === "tab2") {
+							xtLabel = stdCfg.label || "Standards"; stdPromoted = true; stdHit = true;
 						}
 						if (sec && xtLabel
 							&& (bucket === "tab2" || (curricOn && xtCfg.sections?.[sec]?.any_bucket))) {
@@ -814,6 +831,7 @@ class MenuBuilder {
 							if (split) for (const p of split.pieces) push(p);
 							run.AddNote("info", "MenuBuilder",
 								kpHit ? `Menu section "${hText}" promoted to its own "${xtLabel}" nav tab (KB c67 canonical tab set; curriculum_tabs.kb_canonical).`
+									: stdHit ? `Menu section "${hText}" promoted to its own "${xtLabel}" nav tab (KB c67 canonical Standards tab; curriculum_tabs.kb_canonical.standards).`
 									: `Menu section "${hText}" promoted to its own "${xtLabel}" nav tab (menu.extra_tabs registry).`);
 							continue;
 						}
@@ -1180,6 +1198,13 @@ class MenuBuilder {
 			out.dropTab2 = true;
 			run.AddNote("info", "MenuBuilder",
 				"Empty Information tab dropped — the KB c67 omission rule after the canonical Knowledge / Practices promotions (curriculum_tabs.kb_canonical).");
+		} else if (out.extraTabs && stdPromoted && stdCfg.drop_empty_tab2
+			&& !(out.tab2 && out.tab2.trim())) {
+			// ROUND 467 (KB c67 omission rule; env STDTAB_OFF): the Information tab
+			// the canonical Standards promotion emptied is dropped.
+			out.dropTab2 = true;
+			run.AddNote("info", "MenuBuilder",
+				"Empty Information tab dropped — the KB c67 omission rule after the canonical Standards promotion (curriculum_tabs.kb_canonical.standards).");
 		}
 		// LESSON-MENU "Learning intentions" LABEL (ROUND 222 — module ENGJ403;
 		// Chris's lesson-menu report). The human developers open a LESSON page's

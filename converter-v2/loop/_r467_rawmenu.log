@@ -1,0 +1,44 @@
+CBI1004/CBI1004_0_0.html       raw  39.2 ->  40.4   menu-only  43.3 ->  45.5  UP
+CBI1005/CBI1005_0_0.html       raw  42.3 ->  43.5   menu-only  44.9 ->  47.3  UP
+CBI1008/CBI1008_0_0.html       raw  45.0 ->  47.1   menu-only  52.6 ->  56.4  UP
+CBI1009/CBI1009_0_0.html       raw  48.1 ->  50.8   menu-only  51.1 ->  55.9  UP
+CHI1003/CHI1003_0_0.html       raw  45.0 ->  51.8   menu-only  47.1 ->  59.2  UP
+CHI1004/CHI1004_1_0.html       raw  45.6 ->  49.7   menu-only  30.6 ->  38.5  UP
+CHI1005/CHI1005_0_0.html       raw  41.5 ->  48.5   menu-only  34.8 ->  48.5  UP
+COM1002/COM1002_0_0.html       raw  42.2 ->  47.9   menu-only  43.8 ->  53.7  UP
+COM1005/COM1005_0_0.html       raw  48.0 ->  53.1   menu-only  54.0 ->  62.0  UP
+COM1006/COM1006_0_0.html       raw  58.3 ->  62.0   menu-only  60.6 ->  66.7  UP
+DAN1003/DAN1003_0_0.html       raw  41.3 ->  43.3   menu-only  47.0 ->  51.3  UP
+DAN1004/DAN1004_0_0.html       raw  54.5 ->  60.2   menu-only  54.4 ->  54.3  DOWN
+DAN1006/DAN1006_0_0.html       raw  63.8 ->  67.0   menu-only  70.2 ->  75.2  UP
+DTC1004/DTC1004_0_0.html       raw  46.5 ->  49.2   menu-only  57.9 ->  62.9  UP
+DTC1005/DTC1005_0_0.html       raw  47.6 ->  50.4   menu-only  68.0 ->  73.8  UP
+ENGC403/ENGC403_0_0.html       raw  57.1 ->  58.7   menu-only  73.7 ->  78.6  UP
+ENGJ202/ENGJ202_0_0.html       raw  67.7 ->  65.7   menu-only  88.7 ->  84.0  DOWN
+ENGJ301/ENGJ301_0_0.html       raw  47.5 ->  42.6   menu-only  70.6 ->  58.4  DOWN
+ENGJ402/ENGJ402_0_0.html       raw  58.2 ->  56.3   menu-only  80.0 ->  75.3  DOWN
+ENGR301/ENGR301_0_0.html       raw  59.7 ->  57.8   menu-only  74.5 ->  70.8  DOWN
+ENGR302/ENGR302_0_0.html       raw  52.3 ->  51.4   menu-only  62.1 ->  60.0  DOWN
+GEO1004/GEO1004_0_0.html       raw  47.6 ->  48.8   menu-only  50.8 ->  52.6  UP
+GEO1005/GEO1005_0_0.html       raw  38.0 ->  39.4   menu-only  34.5 ->  37.2  UP
+GEO1006/GEO1006_0_0.html       raw  42.0 ->  43.2   menu-only  46.4 ->  48.7  UP
+GER1002/GER1002_0_0.html       raw  47.4 ->  54.8   menu-only  39.4 ->  50.8  UP
+JPN1004/JPN1004_0_0.html       raw  45.1 ->  48.8   menu-only  64.2 ->  71.1  UP
+MUS1004/MUS1004_0_0.html       raw  42.6 ->  44.2   menu-only  46.7 ->  49.4  UP
+MUS1006/MUS1006_1_0.html       raw  69.7 ->  78.9   menu-only  70.4 ->  84.2  UP
+MXDB301/MXDB301_0_0.html       raw  36.5 ->  35.2   menu-only  42.2 ->  39.7  DOWN
+MXDI201/MXDI201_0_0.html       raw  32.3 ->  31.4   menu-only  56.1 ->  52.7  DOWN
+MXDI301/MXDI301_0_0.html       raw  40.2 ->  38.7   menu-only  38.1 ->  35.7  DOWN
+MXEO102/MXEO102_0_0.html       raw  36.2 ->  34.9   menu-only  52.1 ->  48.5  DOWN
+MXEX301/MXEX301_0_0.html       raw  44.9 ->  43.5   menu-only  49.2 ->  46.6  DOWN
+MXFL104/MXFL104_0_0.html       raw  36.1 ->  34.5   menu-only  46.5 ->  42.7  DOWN
+MXFL203/MXFL203_0_0.html       raw  30.4 ->  29.3   menu-only  48.4 ->  44.2  DOWN
+MXFL401/MXFL401_0_0.html       raw  59.6 ->  54.2   menu-only  72.3 ->  62.7  DOWN
+MXFU302/MXFU302_0_0.html       raw  54.0 ->  52.6   menu-only  55.8 ->  53.3  DOWN
+MXS1004/MXS1004_0_0.html       raw  35.1 ->  37.2   menu-only  42.9 ->  47.0  UP
+OSOH201/OSOH201_0_0.html       raw  67.0 ->  65.1   menu-only  68.9 ->  62.5  DOWN
+PWY1002/PWY1002_0_0.html       raw  57.9 ->  57.9   menu-only  61.4 ->  61.4  
+PWY1008/PWY1008_0_0.html       raw  36.7 ->  36.7   menu-only  55.3 ->  55.3  
+SPA1004/SPA1004_0_0.html       raw  45.3 ->  55.1   menu-only  43.7 ->  59.2  UP
+
+menu-only: 24 up / 16 down; raw pp-sum +65.6; menu pp-sum +88.8

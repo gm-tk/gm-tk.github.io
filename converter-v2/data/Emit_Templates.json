@@ -3577,7 +3577,15 @@
 					"exclude_subjects": [
 						"BLL",
 						"WJFUN"
-					]
+					],
+					"standards": {
+						"_doc": "ROUND 467 (the autonomous loop's session-42 Round 4, 2026-09-24 — KB constraint 67 / CL-0040 + 01B 'THE FIVE CANONICAL PANELS'; the placement census P1). In the TABBED overview archetype the writer's assessment section (`[H2] Aromatawai | Assessment for Learning`, routed to tab 2) is the canonical Standards/Assessment tab — 01B: 'For the last tab, use Standards (the dominant corpus label) unless the uploaded reference clearly uses Assessment; the internal heading is \"Assessment for Learning\" either way' — even where menu.extra_tabs.registry has no row for the module's subject|phase (the 10 July registry predates the September-intake NCEA families). A registry row still decides its own label (MXEX|9-10 / SSOG|7-8 / XMES|4-6 = Assessment). Measured: 27 modules whose gold carries a Standards tab Claude folded into Information (outputs/_s42_r4_navtabs.log); 49 already matched through the registry. drop_empty_tab2 = the c67 omission rule for the Information tab the promotion empties (the PWY golds are Overview > Standards). exclude_subjects keeps a subject on its registry-only behaviour.",
+						"enabled": true,
+						"env": "STDTAB_OFF",
+						"label": "Standards",
+						"drop_empty_tab2": true,
+						"exclude_subjects": []
+					}
 				}
 			},
 			"registry": {
