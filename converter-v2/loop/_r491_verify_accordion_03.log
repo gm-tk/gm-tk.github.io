@@ -1,0 +1,209 @@
+🟠 [ModuleResolver] Multiple module-code candidates found (PWY1007, PW1003) — using PWY1007 from filename "PWY1007 Writers Template.docx".
+PWY1007: built 5 panels [exact 0, copy-edit 0, dev-edit 5, defect 0] | human 16 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Suburb
+   dev-diverged: Town
+   dev-diverged: City
+   dev-diverged: Region
+   dev-restructured: Postcode
+PWY1008: built 13 panels [exact 13, copy-edit 0, dev-edit 0, defect 0] | human 18 | ✓ exact/copy-edit/dev-edit only
+🟠 [ModuleResolver] Multiple module-code candidates found (PWY1009, LGO1007) — using PWY1009 from filename "PWY1009 Writers Template.docx".
+PWY1009: built 15 panels [exact 15, copy-edit 0, dev-edit 0, defect 0] | human 21 | ✓ exact/copy-edit/dev-edit only
+🟠 [ModuleResolver] Multiple module-code candidates found (PWYWHA1, PWY1000) — using PWYWHA1 from filename "PWYWHA1 Writers Template.docx" (a registry-known code).
+PWYWHA1: built 3 panels [exact 0, copy-edit 3, dev-edit 0, defect 0] | human 4 | ✓ exact/copy-edit/dev-edit only
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+SCBI301: built 7 panels [exact 4, copy-edit 1, dev-edit 2, defect 0] | human 8 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Option 1: identifying adaptations
+   dev-restructured: Option 2: design an organism
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+SCCH301: built 12 panels [exact 10, copy-edit 2, dev-edit 0, defect 0] | human 16 | ✓ exact/copy-edit/dev-edit only
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+SCES201: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 6 | no builds
+🟠 [ModuleResolver] SCPH301: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+SCPH301: built 4 panels [exact 1, copy-edit 3, dev-edit 0, defect 0] | human 10 | ✓ exact/copy-edit/dev-edit only
+🟢 [ModuleResolver] SSCI104 is not in the registry members — inherited from its level SSCI3 (sibling rule).
+SSCI104: built 12 panels [exact 0, copy-edit 4, dev-edit 8, defect 0] | human 19 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Tip 1
+   dev-diverged: Tip 2
+   dev-restructured: Tip 3
+   dev-restructured: Tip 4
+   dev-diverged: Tip 5
+   dev-diverged: Tip 6
+   dev-restructured: Tip 7
+   dev-diverged: Tip 8
+🟠 [ModuleResolver] SSEA203: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+SSEA203: built 5 panels [exact 1, copy-edit 4, dev-edit 0, defect 0] | human 6 | ✓ exact/copy-edit/dev-edit only
+🟠 [ModuleResolver] Multiple module-code candidates found (SSFUN03, GYO1002) — using SSFUN03 from filename "SSFUN03 Writers Template + Media List.docx".
+SSFUN03: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 8 | no builds
+SSOG103: built 6 panels [exact 0, copy-edit 0, dev-edit 6, defect 0] | human 4 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: 1.Look for belonging clues
+   dev-restructured: 2. Make your belonging collage
+   dev-restructured: 3. Take a photo
+   dev-restructured: 4. Explain your collage
+   dev-diverged: Counting
+   dev-diverged: Adding
+🟢 [ModuleResolver] SSOG105 is not in the registry members — inherited from its level SSOG1 (sibling rule).
+SSOG105: built 3 panels [exact 2, copy-edit 1, dev-edit 0, defect 0] | human 4 | ✓ exact/copy-edit/dev-edit only
+🟠 [ModuleResolver] TEDC401: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+TEDC401: built 2 panels [exact 0, copy-edit 0, dev-edit 2, defect 0] | human 18 | ✓ exact/copy-edit/dev-edit only
+   dev-rewrote: Responsible digital practice #1. Strong passwords
+   dev-restructured: Always attribute
+🟠 [ModuleResolver] TEDC402: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Page-layout table dissolved into 12 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 4 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 14 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 4 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+TEDC402: built 4 panels [exact 0, copy-edit 0, dev-edit 4, defect 0] | human 17 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Step 1
+   dev-restructured: Step 2
+   dev-restructured: Step 3
+   dev-restructured: Step 4
+TEFUN08: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 3 | ✓ exact/copy-edit/dev-edit only
+🟢 [DocxExtractor] Content opened at the [TITLE BAR] typed inside a table cell (the MTK bilingual template) — the overview tables before the first paragraph-level start are content, not front matter (round 453).
+TRR304: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (TWHA906, TWHO903) — using TWHA906 from filename "TWHA906 Writers Template.docx".
+TWHA906: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 7 | no builds
+🟢 [ModuleResolver] TWHK902 is not in the registry members — inherited from its level TWHK9 (sibling rule).
+TWHK902: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 4 | no builds
+🟢 [ModuleResolver] TWHK907 is not in the registry members — inherited from its level TWHK9 (sibling rule).
+TWHK907: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 7 | no builds
+WJFUN109: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 4 | no builds
+WJFUN110: built 3 panels [exact 0, copy-edit 3, dev-edit 0, defect 0] | human 4 | ✓ exact/copy-edit/dev-edit only
+WJFUN206: built 4 panels [exact 0, copy-edit 4, dev-edit 0, defect 0] | human 6 | ✓ exact/copy-edit/dev-edit only
+WJFUN210: built 4 panels [exact 0, copy-edit 4, dev-edit 0, defect 0] | human 5 | ✓ exact/copy-edit/dev-edit only
+WJFUN212: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 6 | no builds
+WJFUN304: built 7 panels [exact 0, copy-edit 3, dev-edit 4, defect 0] | human 20 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Colon (:) examples (adds detail / explanation / emphasis)
+   dev-restructured: Semicolon examples (;) (links closely related ideas)
+   dev-rewrote: Check this model answer
+   dev-restructured: Explaining your choices
+🟠 [ModuleResolver] Multiple module-code candidates found (WJFUN306, WJFUN205) — using WJFUN306 from filename "WJFUN306 Writers Template.docx".
+WJFUN306: built 12 panels [exact 3, copy-edit 9, dev-edit 0, defect 0] | human 13 | ✓ exact/copy-edit/dev-edit only
+WJFUN307: built 3 panels [exact 3, copy-edit 0, dev-edit 0, defect 0] | human 4 | ✓ exact/copy-edit/dev-edit only
+XDLS501: built 2 panels [exact 0, copy-edit 0, dev-edit 2, defect 0] | human 1 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Public Space
+   dev-diverged: Whakamana Poses
+XDLS502: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 5 | no builds
+XDLS901: built 13 panels [exact 1, copy-edit 5, dev-edit 7, defect 0] | human 25 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Jason
+   dev-diverged: Te Ramanui
+   dev-diverged: Molly and Gabes
+   dev-diverged: Kirsty
+   dev-diverged: Jolt dance company
+   dev-restructured: 2. Setting goals
+   dev-restructured: 3. Asking for help
+XDLS902: built 15 panels [exact 0, copy-edit 3, dev-edit 12, defect 0] | human 23 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Move
+   dev-restructured: Slowly increase the amount of exercise you do
+   dev-restructured: Find a reason to exercise regularly
+   dev-restructured: Yummy Kai
+   dev-restructured: Avoid highly processed foods.
+   dev-restructured: Eat the rainbow
+   dev-restructured: Sleep to stay well
+   dev-restructured: Sleep and safety
+   dev-rewrote: Introduction
+   dev-restructured: Worksafe
+   dev-restructured: Akakoa pēhea tō kōrero kia haumaru tonu: Speak up, be safe
+   dev-restructured: Practice speaking up.
+XDLS903: built 19 panels [exact 4, copy-edit 15, dev-edit 0, defect 0] | human 22 | ✓ exact/copy-edit/dev-edit only
+XDLS904: built 17 panels [exact 2, copy-edit 15, dev-edit 0, defect 0] | human 25 | ✓ exact/copy-edit/dev-edit only
+XDLS905: built 18 panels [exact 9, copy-edit 9, dev-edit 0, defect 0] | human 22 | ✓ exact/copy-edit/dev-edit only
+XDLS906: built 17 panels [exact 8, copy-edit 9, dev-edit 0, defect 0] | human 22 | ✓ exact/copy-edit/dev-edit only
+🟠 [ModuleResolver] Multiple module-code candidates found (XDLS909, XDLS5909) — using XDLS909 from filename "XDLS909 Writers Template.docx".
+XDLS909: built 3 panels [exact 1, copy-edit 2, dev-edit 0, defect 0] | human 39 | ✓ exact/copy-edit/dev-edit only
+XDLS911: built 10 panels [exact 0, copy-edit 0, dev-edit 10, defect 0] | human 7 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: US 29302 (Version 3)
+   dev-diverged: US 29303 (Version 3)
+   dev-restructured: Unit Standard 29300 (Version 3)
+   dev-restructured: Unit standard 29301 (version 3)
+   dev-restructured: Unit Standard 29306 (Version 3)
+   dev-diverged: Unit Standard US 29304 (Version 4)
+   dev-diverged: You will tell us a bit about your family history.
+   dev-restructured: Tikanga Concepts
+   dev-restructured: US 29309 (Version 3)
+   dev-restructured: Unit Standard 29305 (Version 3)
+XGF9001: built 48 panels [exact 12, copy-edit 30, dev-edit 6, defect 0] | human 79 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Te ao Māori.
+   dev-restructured: Pasifika cultures.
+   dev-restructured: Step 1 Track your energy levels
+   dev-restructured: Step 2 Record your observations
+   dev-restructured: Step 3 Reflect on your learning energy
+   dev-restructured: Start your map:
+🟢 [ModuleResolver] XGF9002 is not in the registry members — inherited from its level XGF9 (sibling rule).
+XGF9002: built 6 panels [exact 4, copy-edit 2, dev-edit 0, defect 0] | human 24 | ✓ exact/copy-edit/dev-edit only
+XGF9003: built 22 panels [exact 7, copy-edit 2, dev-edit 13, defect 0] | human 35 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Take a photo
+   dev-restructured: Set the scene
+   dev-restructured: Clear the space
+   dev-restructured: Sort items
+   dev-restructured: Clean
+   dev-restructured: Organise
+   dev-restructured: Dispose of unwanted items
+   dev-restructured: Reflect and maintain
+   dev-restructured: Materials needed
+   dev-restructured: Urgent and important
+   dev-restructured: Important but not urgent
+   dev-restructured: Urgent but not important
+   dev-restructured: Not urgent and not Important
+XGF9004: built 2 panels [exact 0, copy-edit 0, dev-edit 2, defect 0] | human 35 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: 1. I grow on trees.
+   dev-diverged: 5. Doctors say I keep you healthy.
+XGF9006: built 4 panels [exact 1, copy-edit 3, dev-edit 0, defect 0] | human 25 | ✓ exact/copy-edit/dev-edit only
+XLP02: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 5 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (XLP03, XFUN03) — using XLP03 from filename "XLP03 Writers Template.docx".
+XLP03: built 6 panels [exact 0, copy-edit 0, dev-edit 6, defect 0] | human 9 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Special need
+   dev-diverged: Autism
+   dev-diverged: ADHD
+   dev-diverged: Visual
+   dev-diverged: Hearing
+   dev-diverged: Intellectual
+🟠 [ModuleResolver] Multiple module-code candidates found (XLP04, XFUN03) — using XLP04 from filename "XLP04 Writers Template.docx".
+XLP04: built 21 panels [exact 4, copy-edit 6, dev-edit 11, defect 0] | human 20 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Usage tips :
+   dev-diverged: Materials
+   dev-diverged: Activity
+   dev-diverged: Materials
+   dev-diverged: Activity
+   dev-diverged: Materials
+   dev-diverged: Activity
+   dev-diverged: Materials
+   dev-diverged: Activity
+   dev-diverged: Materials
+   dev-diverged: Activity
+🟠 [ModuleResolver] Multiple module-code candidates found (XLP05, XFUN09) — using XLP05 from filename "XLP05 Writers Template + Media List.docx".
+XLP05: built 7 panels [exact 5, copy-edit 2, dev-edit 0, defect 0] | human 17 | ✓ exact/copy-edit/dev-edit only
+XMES101: built 7 panels [exact 0, copy-edit 0, dev-edit 7, defect 0] | human 1 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Find some materials.
+   dev-diverged: Colour them up.
+   dev-restructured: Make your name
+   dev-restructured: Match with you photo.
+   dev-diverged: Find the materials.
+   dev-restructured: Write your name.
+   dev-restructured: Ready, set, go!
+XMES103: built 2 panels [exact 0, copy-edit 2, dev-edit 0, defect 0] | human 6 | ✓ exact/copy-edit/dev-edit only
+XMES201: built 2 panels [exact 1, copy-edit 0, dev-edit 1, defect 0] | human 14 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Instructions :
+🟢 [ModuleResolver] XMES202 is not in the registry members — inherited from its level XMES2 (sibling rule).
+XMES202: built 7 panels [exact 2, copy-edit 2, dev-edit 3, defect 0] | human 25 | ✓ exact/copy-edit/dev-edit only
+   dev-rewrote: Parts of a plant dance
+   dev-restructured: X-axis (horizontal)
+   dev-restructured: Y-axis (vertical)
+XMES203: built 1 panels [exact 0, copy-edit 0, dev-edit 1, defect 0] | human 23 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Discuss these questions
+XTAS101: built 3 panels [exact 0, copy-edit 3, dev-edit 0, defect 0] | human 28 | ✓ exact/copy-edit/dev-edit only
+XTAS102: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 9 | no builds
+XTAS103: built 2 panels [exact 0, copy-edit 1, dev-edit 1, defect 0] | human 12 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: How to play:
+XWHA02: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+
+TOTAL: 379 panels built across 44 module(s).
+RESULT: every built panel matches the human (exact / copy-edit / developer edit) ✓

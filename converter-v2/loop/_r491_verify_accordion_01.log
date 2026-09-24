@@ -1,0 +1,250 @@
+CEDR401: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 13 | no builds
+CEDR501: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 25 | ✓ exact/copy-edit/dev-edit only
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+CEDT101: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 3 | no builds
+CEDT208: built 5 panels [exact 2, copy-edit 2, dev-edit 1, defect 0] | human 6 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Paper and paintaint
+CEDT301: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 8 | no builds
+CEDT404: built 8 panels [exact 1, copy-edit 5, dev-edit 2, defect 0] | human 11 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Game Setup
+   dev-restructured: Scoring and victory conditions:
+CEDT501: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 16 | no builds
+CEDW101: built 3 panels [exact 0, copy-edit 2, dev-edit 1, defect 0] | human 4 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Reuse means finding ways to use things again instead of throwing them 
+🟠 [ModuleResolver] Multiple module-code candidates found (CEDW501, MA000) — using CEDW501 from filename "CEDW501 Writers Template.docx".
+CEDW501: built 1 panels [exact 0, copy-edit 0, dev-edit 1, defect 0] | human 7 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Questions
+CHFUN01: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 6 | no builds
+CHFUN05: built 48 panels [exact 10, copy-edit 8, dev-edit 30, defect 0] | human 46 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: 有 (yǒu) to have (Possession)
+   dev-restructured: 有 (yǒu) there is …(existence)
+   dev-restructured: Full simple sentences using 这 (zhè) and 那 (nà）
+   dev-restructured: Using 大 (dà) to mean "older"
+   dev-restructured: Using 小 (xiǎo) to mean "younger"
+   dev-restructured: Saying what you or others will do using 会(huì)
+   dev-restructured: 会(huì) as future prediction
+   dev-restructured: Completed actions with 了(le)
+   dev-restructured: 了(le) can show a change in the situation
+   dev-restructured: 了(le) can show an action that has been happening for a period of time 
+   dev-restructured: More 'Duration' words if you are interested
+   dev-restructured: Subject + 要(yào) + Verb
+   dev-restructured: 要 (yào) vs 会(huì) Comparison
+   dev-restructured: 不 (bù) — the basic negation word
+   dev-restructured: 没 / 没有 (méi / méiyǒu) — used for past actions that did NOT happen
+   dev-restructured: Using 在(zài) to show location
+   dev-restructured: Using 不在(bú zài) to show someone/something is not present
+   dev-restructured: Both 可以(kě yǐ) and 能(néng) can work
+   dev-restructured: 来 (lái) come toward the speaker
+   dev-restructured: 去 (qù) away from the speaker
+   dev-restructured: 回 (huí) returning to a place
+   dev-restructured: 吧 (ba): soften suggestions, requests, or statements.
+   dev-restructured: 呢 (ne): soften questions or keep a conversation going.
+   dev-restructured: Action + 的时候(de shíhou) + main action
+   dev-restructured: Time word + 的时候(de shíhou) + main action
+   dev-restructured: 想 (xiǎng) (for thinking)
+   dev-restructured: 🚗 坐 (zuò) to sit / ride in a vehicle
+   dev-restructured: 🚴 骑 (qí) — to ride on top of something
+   dev-restructured: Places: Using 从 (cóng )… 到(dào)
+   dev-restructured: Time: Using 从 (cóng )… 到(dào)
+CHFUN07: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (COM1005, ECO1001) — using COM1005 from filename "COM1005 Writers Template + Media List.docx".
+COM1005: built 2 panels [exact 0, copy-edit 0, dev-edit 2, defect 0] | human 5 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: EXPORTS
+   dev-diverged: IMPORTS
+ENFUN02: built 3 panels [exact 3, copy-edit 0, dev-edit 0, defect 0] | human 4 | ✓ exact/copy-edit/dev-edit only
+ENFUN03: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 11 | no builds
+ENFUN04: built 4 panels [exact 0, copy-edit 0, dev-edit 4, defect 0] | human 4 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Nouns
+   dev-diverged: Verbs
+   dev-diverged: Adjectives
+   dev-diverged: Adverbs
+ENFUN05: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 7 | no builds
+ENFUN07: built 10 panels [exact 0, copy-edit 0, dev-edit 10, defect 0] | human 1 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Sentence for accordion
+   dev-diverged: Seeing the Lions
+   dev-diverged: Eating Lunch at the Zoo
+   dev-diverged: Watching the Monkeys
+   dev-diverged: Going Home from the Zoo
+   dev-diverged: Accordion heading
+   dev-diverged: Beginning a new idea
+   dev-diverged: Changing the scene or time
+   dev-diverged: Introducing a new character or person
+   dev-diverged: Showing something Important
+ENFUN09: built 11 panels [exact 9, copy-edit 0, dev-edit 2, defect 0] | human 11 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Accordion heading
+   dev-restructured: Stage Five: Publishing and Reflection
+🟠 [ModuleResolver] Multiple module-code candidates found (ENG1004, ENG1001) — using ENG1004 from filename "ENG1004 Writers Template + Media List.docx".
+ENG1004: built 31 panels [exact 0, copy-edit 0, dev-edit 31, defect 0] | human 1 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Achieved
+   dev-diverged: Achievement with Merit
+   dev-diverged: Achievement with Excellence
+   dev-diverged: Checkpoint 2
+   dev-diverged: Checkpoint 2
+   dev-diverged: Checkpoint 2
+   dev-diverged: Repetition
+   dev-diverged: Vocabulary
+   dev-diverged: Change in tense
+   dev-diverged: Tone
+   dev-diverged: Code-switching
+   dev-diverged: Register
+   dev-diverged: Point of View:
+   dev-diverged: Positioning of reader
+   dev-diverged: Parallel structure.:
+   dev-diverged: Questions and answers.:
+   dev-diverged: Rhetorical questions.:
+   dev-diverged: Passive and active voice.:
+   dev-diverged: Sentence construction:
+   dev-diverged: Listing of:
+   dev-diverged: Comparative techniques
+   dev-diverged: Sound Devices
+   dev-diverged: Euphemism
+   dev-diverged: Hyperbole
+   dev-diverged: Allusion
+   dev-diverged: Cliché and colloquialism
+   dev-diverged: Pun:
+   dev-diverged: Antithesis/Juxtaposition/Oxymoron
+   dev-diverged: Highlighting the negative aspect of something, sometimes used for humo
+   dev-diverged: Imagery
+   dev-diverged: Connotation
+🟠 [ModuleResolver] Multiple module-code candidates found (ENG1005, EN1001) — using ENG1005 from filename "ENG1005 Writers Template + Media List.docx".
+ENG1005: built 5 panels [exact 0, copy-edit 0, dev-edit 5, defect 0] | human 1 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Achieved
+   dev-diverged: Achievement with Merit
+   dev-diverged: Achievement with Excellence
+   dev-diverged: Checkpoint 3
+   dev-diverged: Checkpoint 3
+🟠 [ModuleResolver] Multiple module-code candidates found (ENG1007, EN1001) — using ENG1007 from filename "ENG1007 Writers Template.docx".
+ENG1007: built 6 panels [exact 0, copy-edit 0, dev-edit 6, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Achieved
+   dev-diverged: Achievement with Merit
+   dev-diverged: Achievement with Excellence
+   dev-restructured: Identify
+   dev-diverged: Describe
+   dev-diverged: Explain
+ENGC101: built 5 panels [exact 1, copy-edit 0, dev-edit 4, defect 0] | human 6 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Speech marks
+   dev-restructured: Exclamation mark.
+   dev-restructured: Question mark.
+   dev-restructured: Three dots (ellipses)
+ENGC102: built 7 panels [exact 0, copy-edit 2, dev-edit 5, defect 0] | human 5 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Brainstorming a topic
+   dev-restructured: Making a plan
+   dev-restructured: Writing an introduction
+   dev-restructured: Writing an introduction
+   dev-restructured: Writing an introduction
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGC204, ENWO307) — using ENGC204 from filename "ENGC204 Writers Template.docx".
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+ENGC204: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 10 | ✓ exact/copy-edit/dev-edit only
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGC206, ENO304) — using ENGC206 from filename "ENGC206 Writers Template.docx".
+ENGC206: built 2 panels [exact 1, copy-edit 1, dev-edit 0, defect 0] | human 3 | ✓ exact/copy-edit/dev-edit only
+ENGC403: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 8 | no builds
+ENGFUN02: built 6 panels [exact 0, copy-edit 0, dev-edit 6, defect 0] | human 11 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Key Light
+   dev-diverged: Fill Light
+   dev-diverged: Backlight
+   dev-diverged: Natural lights (sometimes called practical lights)
+   dev-diverged: Soft Lighting
+   dev-diverged: Hard Lighting
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI103, EN000) — using ENGI103 from filename "ENGI103 Writers Template + Media List.docx".
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+ENGI103: built 5 panels [exact 3, copy-edit 0, dev-edit 2, defect 0] | human 9 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Sentence for accordion
+   dev-restructured: Eating lunch at the Zoo
+ENGI201: built 7 panels [exact 0, copy-edit 5, dev-edit 2, defect 0] | human 32 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Kilikiti – A brief story about Samoan Cricket
+   dev-restructured: Kilikiti – A brief story about Samoan Cricket
+ENGI202: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI303, EN000) — using ENGI303 from filename "ENGI303 Writers Template + Media List.docx".
+ENGI303: built 6 panels [exact 2, copy-edit 4, dev-edit 0, defect 0] | human 7 | ✓ exact/copy-edit/dev-edit only
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI400, ENO509) — using ENGI400 from filename "ENGI400 Writers Template.docx".
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+ENGI400: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 2 | no builds
+ENGI405: built 16 panels [exact 3, copy-edit 8, dev-edit 5, defect 0] | human 14 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Setting
+   dev-restructured: Characters
+   dev-diverged: Misinformation, disinformation, and malinformation
+   dev-restructured: Step four: identify the author's purpose
+   dev-restructured: ] Text recommendations
+ENGJ101: built 6 panels [exact 3, copy-edit 3, dev-edit 0, defect 0] | human 7 | ✓ exact/copy-edit/dev-edit only
+ENGJ102: built 3 panels [exact 2, copy-edit 1, dev-edit 0, defect 0] | human 6 | ✓ exact/copy-edit/dev-edit only
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGJ301, EN000) — using ENGJ301 from filename "ENGJ301 Writers Template + Media List.docx".
+ENGJ301: built 4 panels [exact 2, copy-edit 2, dev-edit 0, defect 0] | human 20 | ✓ exact/copy-edit/dev-edit only
+ENGJ302: built 24 panels [exact 0, copy-edit 23, dev-edit 1, defect 0] | human 25 | ✓ exact/copy-edit/dev-edit only
+   dev-rewrote: Publish
+ENGJ402: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 21 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGR201, EN000) — using ENGR201 from filename "ENGR201 Writers Template + Media List.docx".
+ENGR201: built 3 panels [exact 3, copy-edit 0, dev-edit 0, defect 0] | human 5 | ✓ exact/copy-edit/dev-edit only
+ENGR202: built 8 panels [exact 2, copy-edit 1, dev-edit 5, defect 0] | human 15 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Choose Your Subject
+   dev-restructured: Gather Information
+   dev-restructured: Organise Your Ideas
+   dev-restructured: Design Your Infographic or Poster
+   dev-restructured: Review and Share
+ENGR302: built 4 panels [exact 0, copy-edit 0, dev-edit 4, defect 0] | human 7 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Simplify 16/30
+   dev-diverged: Simplify 15/300
+   dev-diverged: Voice 3
+   dev-restructured: Voice 4
+ENGS101: built 9 panels [exact 5, copy-edit 3, dev-edit 1, defect 0] | human 20 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Practice
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGS201, EN000) — using ENGS201 from filename "ENGS201 Writers Template + Media List.docx".
+ENGS201: built 8 panels [exact 0, copy-edit 0, dev-edit 8, defect 0] | human 3 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Opening
+   dev-diverged: Problem
+   dev-restructured: Climax
+   dev-diverged: Resolution
+   dev-diverged: Opening
+   dev-diverged: Early life
+   dev-diverged: Achievements
+   dev-diverged: Conclusion
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGS202, EN000) — using ENGS202 from filename "ENGS202 Writers Template + Media List.docx".
+ENGS202: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 3 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGS401, EN000) — using ENGS401 from filename "ENGS401 Writers Template + Media List.docx".
+ENGS401: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 13 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGS404, ENO000) — using ENGS404 from filename "ENGS404 Writers Template.docx".
+ENGS404: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+ENO2060: built 14 panels [exact 0, copy-edit 14, dev-edit 0, defect 0] | human 16 | ✓ exact/copy-edit/dev-edit only
+🟠 [ModuleResolver] Multiple module-code candidates found (EXBP901, EXIP902) — using EXBP901 from filename "EXBP901 Writers Template + Media List.docx".
+EXBP901: built 6 panels [exact 0, copy-edit 1, dev-edit 5, defect 0] | human 43 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Be a Learner
+   dev-diverged: Be a Communicator
+   dev-diverged: Be a Thinker
+   dev-restructured: Folders on Google Drive
+   dev-restructured: Motivation
+EXIP901: built 3 panels [exact 2, copy-edit 1, dev-edit 0, defect 0] | human 12 | ✓ exact/copy-edit/dev-edit only
+EXPFUN02: built 10 panels [exact 1, copy-edit 9, dev-edit 0, defect 0] | human 15 | ✓ exact/copy-edit/dev-edit only
+EXPFUN03: built 18 panels [exact 0, copy-edit 0, dev-edit 18, defect 0] | human 24 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Learning Goals and Learning Intentions
+   dev-restructured: Success Criteria
+   dev-diverged: Success Criteria Phase Three
+   dev-restructured: Learning Goals and Learning Intentions
+   dev-restructured: Success Criteria
+   dev-restructured: Success Criteria Phase Three
+   dev-restructured: Learning Goals and Learning Intentions
+   dev-restructured: Success Criteria
+   dev-restructured: Success Criteria Phase Three
+   dev-restructured: Learning Goals and Learning Intentions
+   dev-restructured: Success Criteria
+   dev-restructured: Success Criteria Phase Three
+   dev-restructured: Learning Goals and Learning Intentions
+   dev-restructured: Success Criteria
+   dev-restructured: Success Criteria Phase Three
+   dev-restructured: Learning Goals and Learning Intentions
+   dev-restructured: Success Criteria
+   dev-restructured: Success Criteria Phase Three
+EXPFUN04: built 6 panels [exact 0, copy-edit 6, dev-edit 0, defect 0] | human 15 | ✓ exact/copy-edit/dev-edit only
+EXPFUN05: built 6 panels [exact 0, copy-edit 0, dev-edit 6, defect 0] | human 15 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Success Criteria Phase Five
+   dev-restructured: Success Criteria Phase Five
+   dev-restructured: Success Criteria Phase Five
+   dev-restructured: Success Criteria Phase Five
+   dev-restructured: Success Criteria Phase Five
+   dev-restructured: Success Criteria Phase Three
+🟠 [ModuleResolver] FRFUN06: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+FRFUN06: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 7 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (FRNO901, FRO101) — using FRNO901 from filename "FRNO901 Writers Template.docx".
+FRNO901: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 4 | no builds
+
+TOTAL: 325 panels built across 39 module(s).
+RESULT: every built panel matches the human (exact / copy-edit / developer edit) ✓

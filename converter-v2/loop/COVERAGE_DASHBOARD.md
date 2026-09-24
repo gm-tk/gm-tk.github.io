@@ -1,6 +1,6 @@
 # PageForge — corpus discrepancy dashboard
 
-_Generated 2026-09-25 07:18 · corpus 535 modules / 2633 pages_
+_Generated 2026-09-25 10:45 · corpus 535 modules / 2633 pages_
 
 **What this is.** Every remaining difference between our HTML and the human's, measured across the whole library and ranked by how many modules it costs. Use it to choose the next round. It changes nothing — it only reports.
 
@@ -11,10 +11,10 @@ _Generated 2026-09-25 07:18 · corpus 535 modules / 2633 pages_
 
 ## 1. The two numbers that matter
 
-**Interactive coverage — 45.2%** (3298 of 7290 writer-tagged widgets actually build).
-The other 3992 ship as a hand-off box. This is what a tester sees when they say the conversion looks unfinished, and it is invisible to the protected gates by design.
+**Interactive coverage — 45.6%** (3322 of 7290 writer-tagged widgets actually build).
+The other 3968 ship as a hand-off box. This is what a tester sees when they say the conversion looks unfinished, and it is invisible to the protected gates by design.
 
-**Page scaffold match — 55.4% mean** (1584 of 2491 pages at 50%+, 277 at 75%+).
+**Page scaffold match — 55.4% mean** (1585 of 2491 pages at 50%+, 277 at 75%+).
 The protected primary gate. It measures page structure with widget internals collapsed, so it moves very little while coverage is the real gap.
 
 **Structurally clean — 98.3%** (46 pages carry a visible defect)  ·  **body breakdown — 238 pages** (the protected body gate).
@@ -33,13 +33,13 @@ Body rows use `body_compare.py`'s own thresholds, so this table and the protecte
 | 4 | un-built carousel | 180 | 214 | 277 | 230 | 386 (30% skipped) | Writers tagged 999 carousel widgets; 277 ship as a hand-off box instead of a built widget. |
 | 5 | un-built flipCard | 152 | 200 | 261 | 218 | 259 (53% skipped) | Writers tagged 551 flipCard widgets; 261 ship as a hand-off box instead of a built widget. |
 | 6 | un-built dropDown | 134 | 204 | 260 | 212 | 264 (52% skipped) | Writers tagged 601 dropDown widgets; 260 ship as a hand-off box instead of a built widget. |
-| 7 | un-built accordion | 132 | 213 | 294 | 255 | 248 (55% skipped) | Writers tagged 804 accordion widgets; 294 ship as a hand-off box instead of a built widget. |
-| 8 | empty widget box | 131 | 175 | 175 | — | — | A hand-off box was emitted with nothing in it. |
-| 9 | un-built clickDrop | 126 | 181 | 346 | 252 | 191 (65% skipped) | Writers tagged 581 clickDrop widgets; 346 ship as a hand-off box instead of a built widget. |
+| 7 | empty widget box | 131 | 175 | 175 | — | — | A hand-off box was emitted with nothing in it. |
+| 8 | un-built clickDrop | 126 | 181 | 346 | 252 | 191 (65% skipped) | Writers tagged 581 clickDrop widgets; 346 ship as a hand-off box instead of a built widget. |
+| 9 | un-built accordion | 124 | 196 | 270 | 233 | 248 (55% skipped) | Writers tagged 804 accordion widgets; 270 ship as a hand-off box instead of a built widget. |
 | 10 | un-built typing | 82 | 168 | 261 | 232 | 237 (57% skipped) | Writers tagged 269 typing widgets; 261 ship as a hand-off box instead of a built widget. |
 | 11 | un-built modal | 71 | 108 | 184 | 150 | 126 (77% skipped) | Writers tagged 367 modal widgets; 184 ship as a hand-off box instead of a built widget. |
 | 12 | un-built selfCheck | 71 | 103 | 137 | 103 | 237 (57% skipped) | Writers tagged 163 selfCheck widgets; 137 ship as a hand-off box instead of a built widget. |
-| 13 | page scaffold under 25% | 71 | 93 | 93 | — | — | The page's overall structure barely resembles the human's — these are the pages a tester screenshots. |
+| 13 | page scaffold under 25% | 71 | 92 | 92 | — | — | The page's overall structure barely resembles the human's — these are the pages a tester screenshots. |
 | 14 | un-built reorder | 65 | 88 | 104 | 98 | 75 (86% skipped) | Writers tagged 104 reorder widgets; 104 ship as a hand-off box instead of a built widget. |
 | 15 | un-built radioQuiz | 60 | 74 | 89 | 84 | 73 (87% skipped) | Writers tagged 89 radioQuiz widgets; 89 ship as a hand-off box instead of a built widget. |
 | 16 | un-built tabs | 58 | 94 | 113 | 105 | 104 (81% skipped) | Writers tagged 170 tabs widgets; 113 ship as a hand-off box instead of a built widget. |
@@ -62,8 +62,8 @@ Body rows use `body_compare.py`'s own thresholds, so this table and the protecte
 | dragAndDrop | 110 | 1033 | 10.6% | 923 | 774 | 338 |
 | multiChoiceQuiz | 12 | 413 | 2.9% | 401 | 330 | 183 |
 | clickDrop | 235 | 581 | 40.4% | 346 | 252 | 126 |
-| accordion | 510 | 804 | 63.4% | 294 | 255 | 132 |
 | carousel | 722 | 999 | 72.3% | 277 | 230 | 180 |
+| accordion | 534 | 804 | 66.4% | 270 | 233 | 124 |
 | flipCard | 290 | 551 | 52.6% | 261 | 218 | 152 |
 | typing | 8 | 269 | 3.0% | 261 | 232 | 82 |
 | dropDown | 341 | 601 | 56.7% | 260 | 212 | 134 |

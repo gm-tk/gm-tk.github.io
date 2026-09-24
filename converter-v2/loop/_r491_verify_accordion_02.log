@@ -1,0 +1,229 @@
+FRNO902: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 9 | no builds
+GEO1004: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 9 | ✓ exact/copy-edit/dev-edit only
+🟠 [ModuleResolver] Multiple module-code candidates found (GER1002, GER1000) — using GER1002 from filename "GER1002 Writers Template + Media List.docx".
+GER1002: built 6 panels [exact 0, copy-edit 4, dev-edit 2, defect 0] | human 14 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: VOKABELECKE
+   dev-restructured: VOKABELECKE
+HES1004: built 7 panels [exact 0, copy-edit 0, dev-edit 7, defect 0] | human 1 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Step 1
+   dev-diverged: Step 2
+   dev-diverged: Step 3
+   dev-diverged: Step 4
+   dev-diverged: Step 5
+   dev-restructured: Step 6
+   dev-diverged: Step 7
+HES1007: built 4 panels [exact 0, copy-edit 1, dev-edit 3, defect 0] | human 24 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Personal factors:
+   dev-restructured: Interpersonal factors:
+   dev-restructured: Societal factors:
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1002, HS1002) — using HIS1002 from filename "HIS1002 Writers Template + Media List.docx".
+HIS1002: built 2 panels [exact 0, copy-edit 0, dev-edit 2, defect 0] | human 9 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: The Rationale for Nuclear Acquisition
+   dev-restructured: Building an Independent Nuclear Force
+HIS1005: built 1 panels [exact 0, copy-edit 0, dev-edit 1, defect 0] | human 9 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Was it Slavery?
+HIS1006: built 4 panels [exact 0, copy-edit 0, dev-edit 4, defect 0] | human 1 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Little Rock Paragraphs.docx
+   dev-diverged: Source A – Police Report
+   dev-diverged: Source B – Boycott Leaflet
+   dev-diverged: Source C – Interview with a Black Women
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1007, HIS1000) — using HIS1007 from filename "HIS1007 Writers Template.docx".
+HIS1007: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 5 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1008, HIS1000) — using HIS1008 from filename "HIS1008 Writers Template + Media List.docx".
+HIS1008: built 4 panels [exact 0, copy-edit 0, dev-edit 4, defect 0] | human 6 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Little Rock Paragraphs.docx
+   dev-restructured: Source A – Police report
+   dev-diverged: Source B – Boycott leaflet
+   dev-diverged: Source C – Interview with a black women
+HPFUN402: built 10 panels [exact 4, copy-edit 6, dev-edit 0, defect 0] | human 12 | ✓ exact/copy-edit/dev-edit only
+HPFUN403: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 11 | no builds
+HPFUN901: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 2 | no builds
+HPFUN903: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 14 | no builds
+🟠 [ModuleResolver] HPRE301: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+HPRE301: built 40 panels [exact 18, copy-edit 17, dev-edit 5, defect 0] | human 47 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Kai's role model, Mila
+   dev-restructured: Alex's role model, Aunty Mere
+   dev-restructured: How might these visual features influence people's choices without the
+   dev-diverged: Feeling your feelings
+   dev-restructured: Noticing harm
+🟠 [ModuleResolver] Multiple module-code candidates found (JPFUN01, JP000) — using JPFUN01 from filename "JPFUN01 Writers Template.docx".
+JPFUN01: built 2 panels [exact 0, copy-edit 2, dev-edit 0, defect 0] | human 5 | ✓ exact/copy-edit/dev-edit only
+🟠 [ModuleResolver] Multiple module-code candidates found (JPFUN02, JP000) — using JPFUN02 from filename "JPFUN02 Writers Template.docx".
+JPFUN02: built 6 panels [exact 2, copy-edit 2, dev-edit 2, defect 0] | human 17 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Listening strategy tips
+   dev-diverged: Listening strategy tips
+🟠 [ModuleResolver] Multiple module-code candidates found (JPN1004, JAP1000) — using JPN1004 from filename "JPN1004 Writers Template + Media List.docx".
+JPN1004: built 8 panels [exact 0, copy-edit 4, dev-edit 4, defect 0] | human 21 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Title
+   dev-restructured: Things that can be tightened.
+   dev-restructured: Clothing worn above the waist.
+   dev-restructured: Clothing pulled on below the waist.
+🟠 [ModuleResolver] Multiple module-code candidates found (MUS1004, MUS1001) — using MUS1004 from filename "MUS1004 Writers Template + Media List.docx".
+MUS1004: built 6 panels [exact 0, copy-edit 0, dev-edit 6, defect 0] | human 7 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Type of time
+   dev-restructured: Simple duple
+   dev-restructured: Simple triple
+   dev-restructured: Compound Duple
+   dev-restructured: Compound triple
+   dev-restructured: Simple Quadruple
+🟠 [ModuleResolver] Multiple module-code candidates found (MXDB302, MXO421) — using MXDB302 from filename "MXDB302 Writers Template + Media List.docx".
+MXDB302: built 16 panels [exact 0, copy-edit 9, dev-edit 7, defect 0] | human 39 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Rectangles and Squares
+   dev-restructured: Examples
+   dev-restructured: Examples
+   dev-restructured: Examples
+   dev-restructured: Examples
+   dev-restructured: The Fraction Approach
+   dev-restructured: The Decimal Approach
+MXDI202: built 3 panels [exact 0, copy-edit 0, dev-edit 3, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: 1
+   dev-diverged: 2
+   dev-diverged: 3
+MXEO202: built 9 panels [exact 2, copy-edit 2, dev-edit 5, defect 0] | human 13 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Step 1:
+   dev-restructured: Step 2:
+   dev-restructured: Step 4:
+   dev-restructured: Step 5:
+   dev-restructured: Step 6:
+🟠 [ModuleResolver] Multiple module-code candidates found (MXEO301, MXO332) — using MXEO301 from filename "MXEO301 Writers Template + Media List.docx".
+MXEO301: built 16 panels [exact 1, copy-edit 9, dev-edit 6, defect 0] | human 37 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Factor trees
+   dev-diverged: Using a systematic list
+   dev-diverged: Using prime factorisation
+   dev-restructured: Squared and cubic numbers
+   dev-restructured: Adding and subtracting without the number line
+   dev-diverged: Crack the code
+🟠 [ModuleResolver] Multiple module-code candidates found (MXEX301, MXO323) — using MXEX301 from filename "MXEX301 Writers Template + Media List.docx".
+MXEX301: built 7 panels [exact 0, copy-edit 1, dev-edit 6, defect 0] | human 20 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Sharing equally.
+   dev-restructured: Inverse of Multiplication .
+   dev-restructured: There are three main parts in a division equation ( dividend, divisor,
+   dev-restructured: Remainders : Sometimes things don't divide evenly, so you might have l
+   dev-restructured: Zero in division :
+   dev-restructured: Proportional Adjustment
+MXEX302: built 24 panels [exact 0, copy-edit 0, dev-edit 24, defect 0] | human 1 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Be clear
+   dev-restructured: Keep it short
+   dev-diverged: Stay neutral
+   dev-diverged: Be specific
+   dev-diverged: Choose the right structure
+   dev-diverged: Stay relevant
+   dev-diverged: explore differences
+   dev-diverged: understand patterns
+   dev-diverged: make informed decisions
+   dev-diverged: identify connections
+   dev-diverged: understand influences
+   dev-diverged: make predictions
+   dev-diverged: define the purpose
+   dev-diverged: identify your target audience
+   dev-diverged: design the questions
+   dev-diverged: decide on a distribution method
+   dev-diverged: plan for data tecording
+   dev-restructured: pilot the survey
+   dev-diverged: Define the purpose
+   dev-diverged: Identify your observation area
+   dev-diverged: Plan the observation method
+   dev-diverged: Set the observation duration
+   dev-diverged: Prepare an observation schedule
+   dev-diverged: Create an observation checklist
+🟠 [ModuleResolver] Multiple module-code candidates found (MXEX401, MXO421) — using MXEX401 from filename "MXEX401 Writers Template + Media List.docx".
+MXEX401: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 9 | no builds
+MXFL103: built 4 panels [exact 3, copy-edit 1, dev-edit 0, defect 0] | human 5 | ✓ exact/copy-edit/dev-edit only
+MXFL201: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 8 | no builds
+MXFL202: built 5 panels [exact 0, copy-edit 5, dev-edit 0, defect 0] | human 7 | ✓ exact/copy-edit/dev-edit only
+MXFL204: built 6 panels [exact 0, copy-edit 0, dev-edit 6, defect 0] | human 6 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: The problem
+   dev-restructured: 7B Your planning
+   dev-diverged: Your data
+   dev-diverged: Analysing your data
+   dev-diverged: Your conclusion
+   dev-diverged: presentation
+MXFL301: built 24 panels [exact 0, copy-edit 15, dev-edit 9, defect 0] | human 28 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Coordinates
+   dev-restructured: The 1 % method
+   dev-diverged: Reducing to 1%
+   dev-diverged: Using a formula
+   dev-rewrote: John's plan: Japan
+   dev-diverged: Hana's plan: London
+   dev-diverged: Pania's plan: Hawaii
+   dev-diverged: Ariki's plan: Florida, USA
+   dev-diverged: Kiri's plan: Kenya
+MXFL302: built 22 panels [exact 2, copy-edit 15, dev-edit 5, defect 0] | human 26 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Linear Pattern
+   dev-diverged: Example
+   dev-diverged: Example
+   dev-diverged: Measuring elapsed time using a T chart
+   dev-diverged: Measuring elapsed time using a timeline
+MXFU201: built 3 panels [exact 0, copy-edit 0, dev-edit 3, defect 0] | human 4 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Tossing a Coin
+   dev-restructured: Rolling a Dice
+   dev-restructured: Marbles in a Bag
+MXFU301: built 3 panels [exact 1, copy-edit 2, dev-edit 0, defect 0] | human 10 | ✓ exact/copy-edit/dev-edit only
+MXFU302: built 3 panels [exact 1, copy-edit 2, dev-edit 0, defect 0] | human 9 | ✓ exact/copy-edit/dev-edit only
+🟠 [ModuleResolver] Multiple module-code candidates found (MXFU401, MX000) — using MXFU401 from filename "MXFU401 Writers Template + Media List.docx".
+MXFU401: built 1 panels [exact 0, copy-edit 0, dev-edit 1, defect 0] | human 18 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Watch the following videos to see 8 different equations solved using a
+OSAH501: built 6 panels [exact 0, copy-edit 6, dev-edit 0, defect 0] | human 13 | ✓ exact/copy-edit/dev-edit only
+OSAI201: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 6 | no builds
+OSAI301: built 4 panels [exact 3, copy-edit 0, dev-edit 1, defect 0] | human 5 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Saving Time
+OSAI501: built 18 panels [exact 11, copy-edit 6, dev-edit 1, defect 0] | human 19 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: When AI Is not appropriate
+OSBY301: built 5 panels [exact 1, copy-edit 1, dev-edit 3, defect 0] | human 6 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Intent to Harm
+   dev-restructured: Power Imbalance
+   dev-restructured: Emotional Impact
+OSBY401: built 6 panels [exact 5, copy-edit 1, dev-edit 0, defect 0] | human 7 | ✓ exact/copy-edit/dev-edit only
+OSBY501: built 6 panels [exact 3, copy-edit 3, dev-edit 0, defect 0] | human 18 | ✓ exact/copy-edit/dev-edit only
+OSGM501: built 4 panels [exact 2, copy-edit 2, dev-edit 0, defect 0] | human 5 | ✓ exact/copy-edit/dev-edit only
+OSOH201: built 1 panels [exact 0, copy-edit 0, dev-edit 1, defect 0] | human 1 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Taha wairua – online learning values
+OSOH301: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 1 | no builds
+OSOH501: built 4 panels [exact 0, copy-edit 3, dev-edit 1, defect 0] | human 5 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Taha whānau – wocial wellbeing
+OSSC301: built 3 panels [exact 0, copy-edit 0, dev-edit 3, defect 0] | human 4 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: front Netsafe
+   dev-restructured: front Cert NZ
+   dev-restructured: front NZ Police
+OSSC401: built 8 panels [exact 0, copy-edit 1, dev-edit 7, defect 0] | human 9 | ✓ exact/copy-edit/dev-edit only
+   dev-rewrote: Clickbait
+   dev-rewrote: Misleading headings
+   dev-rewrote: Satire
+   dev-rewrote: Bad journalism
+   dev-rewrote: Incorrect facts
+   dev-rewrote: Commercial agenda
+   dev-rewrote: Unconscious bias
+🟢 [ModuleResolver] OSSC501 is not in the registry members — inherited from its level OSSC4 (sibling rule).
+OSSC501: built 3 panels [exact 2, copy-edit 1, dev-edit 0, defect 0] | human 9 | ✓ exact/copy-edit/dev-edit only
+OSSM401: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 7 | no builds
+PHE1003: built 12 panels [exact 0, copy-edit 0, dev-edit 12, defect 0] | human 13 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Tuākana/Tēina
+   dev-restructured: Kuleana/Tautua
+   dev-restructured: Effective communication
+   dev-restructured: Whakarongo
+   dev-restructured: Whanaungatanga
+   dev-restructured: Problem Solving
+   dev-restructured: Cooperation
+   dev-restructured: Le Vā
+   dev-restructured: Alofa/Aroha/Ofa/Aloha
+   dev-restructured: Ako
+   dev-restructured: Rangatiratanga
+   dev-restructured: Manaakitanga
+PHE1006: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 6 | no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (PHE1007, PEO1042) — using PHE1007 from filename "PHE1007 Writers Template + Media List.docx".
+PHE1007: built 21 panels [exact 9, copy-edit 10, dev-edit 2, defect 0] | human 24 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Goal Setting
+   dev-restructured: Self talk
+🟠 [ModuleResolver] Multiple module-code candidates found (PWY1001, PWO1007) — using PWY1001 from filename "PWY1001 Writers Template.docx".
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+PWY1001: built 5 panels [exact 1, copy-edit 4, dev-edit 0, defect 0] | human 12 | ✓ exact/copy-edit/dev-edit only
+PWY1002: built 11 panels [exact 7, copy-edit 4, dev-edit 0, defect 0] | human 22 | ✓ exact/copy-edit/dev-edit only
+
+TOTAL: 364 panels built across 45 module(s).
+RESULT: every built panel matches the human (exact / copy-edit / developer edit) ✓

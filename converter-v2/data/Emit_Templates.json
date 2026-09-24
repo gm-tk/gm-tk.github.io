@@ -1919,6 +1919,29 @@
 		"accordion": {
 			"panel_delimiters": {
 				"enabled": true,
+				"bullet_bold_lead": {
+					"enabled": true,
+					"env": "ACCBULLETLEAD_OFF",
+					"pattern": "^(?:[•·▪◦‣]\\s*)?\\*\\*(.+?)\\*\\*\\s*(?:[:：]|[–—-](?=\\s))?\\s*([\\s\\S]*)$",
+					"_doc": "ROUND 491 ride-along (prototyped as r489 in the autonomous loop's session 45 Round 6, declined under the floor alone and saved as a patch; shipped with r491's marker-cell table — WHY_UNBUILT__accordion.md item 1 / reason 2b). The r278 D4 bold-lead panel dialect (`**Heading:** body` lines) required the line to OPEN with the bold marks and took only a colon as the separator, so the writer's bulleted form — `• **Weed suppression** – If there are plants growing…` × 5 under `[Interactive: accordion under bold headings]` (AGH1009 6.0) — refused, and the accordion shipped as the hand-off box. ON: an optional leading bullet character and a spaced en / em dash (or hyphen) as the separator, the dash dropped from the panel body. Every other D4 rule is unchanged (every member a black text line, ≥ min_bold_panels leads, every panel non-empty, head ≤ head_max_words). Env ACCBULLETLEAD_OFF = the r278 pattern."
+				},
+				"marker_table": {
+					"enabled": true,
+					"env": "ACCMARKTABLE_OFF",
+					"head_pattern": "^\\[\\s*(?:start\\s+of\\s+)?accord(?:io|ia)n\\s*(?:title\\s*|heading\\s*|panel\\s*)?(\\d+|one|two|three|four|five|six|seven|eight|nine|ten)(?:\\s*front)?\\s*[:.]?\\s*\\]\\s*([\\s\\S]*)$",
+					"bare_head_pattern": "^\\[\\s*accord(?:io|ia)n\\s*\\]$",
+					"heading_pattern": "^\\[\\s*(?:heading\\s*)?h([2-6])\\s*\\]\\s*([\\s\\S]*)$",
+					"body_pattern": "^\\[\\s*(?:accord(?:io|ia)n\\s*(?:\\d+\\s*)?(?:text|content|body|back)(?:\\s*\\d+)?|drop\\s*-?\\s*down\\s*(?:text|information|info)(?:\\s*\\d+)?|body(?:\\s*text)?)\\s*[:.]?\\s*\\]\\s*([\\s\\S]*)$",
+					"image_pattern": "^\\[?\\s*(?:(?:rhs|lhs|left|right)\\s+)?(?:insert\\s+)?image\\b",
+					"closer_pattern": "^[\\]\\)]?\\s*$",
+					"note_pattern": "^\\[?\\s*(?:cs|dev(?:\\s+team)?|note|nb)\\b",
+					"instruction_min_words": 6,
+					"head_max_words": 16,
+					"min_panels": 2,
+					"min_panels_numbered": 1,
+					"label_row_keywords": ["images?", "instructions?", "headings?", "content", "titles?", "text", "body", "panels?", "topics?", "descriptions?"],
+					"_doc": "ROUND 491 (the autonomous loop's session 46 Round 1 — WHY_UNBUILT__accordion.md item 2, with item 3's column-label row). The writer lays the accordion out in a TABLE and types their OWN panel markers inside the cells — `[Accordion N]` / `[Hn]` (a title) and `[Accordion N text]` / `[drop down text N]` / `[Body]` / `[Dropdown information]` (a body) — in four layouts: alternating title / text rows (PWY1009, CEDK102), a row of titles over a row of texts paired by column (PWY1008), a title cell beside its body cell (PWY1009-3.3, XMES101), one whole panel per cell (TEDC401, MXEX301 `[Accordion] 1 **Title** / [Body] …`). The r278 D2 reading (first cell = heading) refused every one; the human built the accordion from exactly those markers (PWY1009 ×3, PWY1008, CEDK102, TEDC401, MXEX301, PWYWHA1 — `_s46_goldloc.py`). InteractiveBuilder.#accMarkerTablePanels, tried LAST in #accResolvePanels (D5, after D1–D4 decline), so every accordion that built before is byte-identical by construction. head_pattern / bare_head_pattern (the MXEX301 `[Accordion]` + a red `1`) / heading_pattern name a TITLE marker (group 1 = its number, the last group = a title typed inside the marker's own red span); body_pattern a BODY marker (its number must agree with its title's); image_pattern an image (its URL → the panel image by the r278 name rule; no URL → an asset-request red note); closer_pattern the stray `]` / `)` span that closes an `[Image: iStock: … ]`; note_pattern a developer cue (`Dev team please add:`, `[CS note: …]`) and any unbracketed red sentence of instruction_min_words+ words (SSOG103's `Could the Coin images please be muddled up …`) → a red note after the widget; words typed INSIDE a body marker's red span (`[Body text] Can this be placed onto the scroll please.`) → a note too. The writer's flip-card slip `[Accordion 8 front]` / `[Accordion 6 back]` (PWY1009) reads as title / body. ANY other red span (a hover trigger, an `[Alert]`, a `[table]`, a speech-bubble spec) keeps the box. A panel still without text (a title and perhaps its picture — PWY1007) waits for its body in a later cell of the row or the cell below. min_panels_numbered: one panel stands on the writer's own numbered marker (the D1 rule); an [Hn]-only table needs min_panels. label_row_keywords: a first row of column labels (`Images | Instructions`) — or a wholly red one (CHFUN01 `Heading [h4] | Content [body]`) — is peeled first; with no marker in the rest, the ordinary D2 reading is tried on it (item 3). min_panels: at least two panels. Env ACCMARKTABLE_OFF = the r490 bytes."
+				},
 				"_note": "ROUND 278 — the PANEL DELIMITER VOCABULARY, tried LAST after the strict paths and both modes of the r246 rich fallback, so it is strictly additive and the 253 pre-round builds are byte-identical by construction. Panels resolve from an ordered vocabulary, each derivation gold-verified: D1 [accordion N] widened to the word/ordinal spellings, a heading-less panel taking its head from its own first [H2]-[H6]; D2 a captured TABLE, ONE ROW = ONE PANEL (head = a short first cell, else the content cell's BOLD LEAD); D3 a repeating same-level heading; D4 repeating BOLD-LEAD black lines. min_panels 1 for the explicit D1 (56.5% of gold accordions have one panel) but 2 for the inferred D2/D3/D4, so one table row is never guessed into an accordion. Env ACCPANELS_OFF.",
 				"title_members": {
 					"enabled": true,

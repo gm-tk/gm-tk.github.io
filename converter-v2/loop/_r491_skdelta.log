@@ -1,0 +1,9 @@
+OLD pairs 2491  SCAFFOLD 55.3705%  RAW 39.285%  >=50 1585  >=75 277  >=90 26
+NEW pairs 2491  SCAFFOLD 55.3709%  RAW 39.321%  >=50 1585  >=75 277  >=90 26
+delta SCAFFOLD +0.0004pp  RAW +0.036pp  >=50 +0  >=75 +0  >=90 +0
+movers 3 (up 2 / down 1), pp-sum +0.9
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  XMES101    XMES101_6_0.html           63.4 ->   64.0  (+0.6)
+  SSOG103    SSOG103_1_0.html           46.9 ->   47.4  (+0.5)
+  SSOG105    SSOG105_1_0.html           49.2 ->   49.0  (-0.2)

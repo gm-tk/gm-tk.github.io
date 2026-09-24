@@ -1843,7 +1843,8 @@ class Config {
 	// ROUND 487 (260620.51): THE UNQUOTED NAMED HOVER ANCHOR (session 45 Round 2) — [rollover definition for TERM: DEF] weaves onto TERM (InteractiveScanner.#weaveHoverDefinition) instead of being dropped. Env HOVERNAMED_OFF.
 	// ROUND 488 (260620.52): THE STORY-REFERENCE CAROUSEL SHELL (session 45 Round 5) — a carousel whose members are the writer's [embed book N] / [embed story] reference builds the r126 shell + a To Do (InteractiveBuilder.#carouselStoryShell). Env CARSTORY_OFF.
 	// ROUND 490 (260620.53): THE LESSON OVERVIEW'S WALT ALERT IS MENU CONTENT (session 45 Round 9) — an alert in a [Lesson Overview] block whose text opens with a learning-intentions lead joins the lesson menu as its sentence (the r147 section-stop). Env LOWALTALERT_OFF.
-	static AppVersion = "260620.53";
+	// ROUND 491 (260620.54): THE ACCORDION MARKER-CELL TABLE (session 46 Round 1) — an accordion laid out in a table whose cells carry the writer's own panel markers builds from them (D5 in #accResolvePanels) + the column-label row + the r489 bulleted bold lead. Env ACCMARKTABLE_OFF / ACCBULLETLEAD_OFF.
+	static AppVersion = "260620.54";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -1,0 +1,3 @@
+SSOG105/SSOG105_1_0.html: gold 212 lines | position-free overlap OLD(r490) 125 / 138  NEW(r491) 126 / 139  (Δ +1) | widget lines gold {'WIDGET': 8} OLD {'WIDGET': 8} NEW {'WIDGET': 8}
+XMES101/XMES101_6_0.html: gold 120 lines | position-free overlap OLD(r490) 94 / 112  NEW(r491) 95 / 113  (Δ +1) | widget lines gold {'WIDGET': 4} OLD {'WIDGET': 5} NEW {'WIDGET': 5}
+SSOG103/SSOG103_1_0.html: gold 270 lines | position-free overlap OLD(r490) 116 / 124  NEW(r491) 117 / 125  (Δ +1) | widget lines gold {'WIDGET': 11} OLD {'WIDGET': 3} NEW {'WIDGET': 3}

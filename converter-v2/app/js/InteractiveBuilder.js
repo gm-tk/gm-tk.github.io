@@ -2302,7 +2302,7 @@ class InteractiveBuilder {
 			&& !(typeof process !== "undefined" && process.env && process.env.ACCLEADIN_OFF))
 			? cfg.lead_before_first_panel : null;
 		const lead = [];
-		const panels = this.#accResolvePanels(parts, cfg, tpl, leadCfg ? lead : null);
+		const panels = this.#accResolvePanels(parts, cfg, tpl, leadCfg ? lead : null, notes);
 		if (!panels || panels.length < (cfg.min_panels ?? 1)) return null;
 
 		// (3) Render through the SHARED panel renderer, so this fallback and the
@@ -2914,7 +2914,7 @@ class InteractiveBuilder {
 	 * lines) and taking the first that yields a panel with a heading. Returns
 	 * `[{ head, parts }]` for #accRenderPanels, or null.
 	 */
-	static #accResolvePanels(parts, cfg, tpl, lead = null) {
+	static #accResolvePanels(parts, cfg, tpl, lead = null, notes = null) {
 		const substantive = parts.filter((p) => p.role !== "note");
 		if (!substantive.length) return null;
 
@@ -2987,18 +2987,269 @@ class InteractiveBuilder {
 				for (const l of String(p.text).split("\n")) if (l.trim()) lines.push(l);
 			}
 			if (lines.length >= (cfg.min_bold_panels ?? 2)) {
-				const panels = [];
-				let cur = null;
-				for (const l of lines) {
-					const lead = this.#accBoldLead(l, cfg);
-					if (lead) { cur = { head: lead.head, parts: [] }; panels.push(cur); if (lead.rest) cur.parts.push({ p: lead.rest }); continue; }
-					if (!cur) continue;                              // an intro line before the first panel
-					if (!this.#accPushPart(cur.parts, { role: "text", text: l })) return null;
+				// ROUND 491 (ride-along — the session-45 r489 prototype) — the BULLETED bold lead ("• **Weed suppression** – If
+				// there are…", AGH1009 6.0; WHY_UNBUILT__accordion item 1 / reason 2b), read ONLY as a fallback after the r278 reading (the line must OPEN with the bold marks,
+				// colon separator) yields no valid panels — so every accordion the r278 reading builds is byte-identical
+				// (a bulleted bold line INSIDE a panel body must never become a new panel: XLP04 4.0's Materials / Activity).
+				// Data panel_delimiters.bullet_bold_lead {enabled, env, pattern}; env ACCBULLETLEAD_OFF.
+				const bbl = cfg.bullet_bold_lead;
+				const bblOn = bbl && bbl.enabled !== false && bbl.pattern
+					&& !(typeof process !== "undefined" && process.env && process.env[bbl.env ?? "ACCBULLETLEAD_OFF"]);
+				for (const bulleted of (bblOn ? [false, true] : [false])) {
+					const panels = [];
+					let cur = null, bad = false;
+					for (const l of lines) {
+						const lead = this.#accBoldLead(l, cfg, bulleted);
+						if (lead) { cur = { head: lead.head, parts: [] }; panels.push(cur); if (lead.rest) cur.parts.push({ p: lead.rest }); continue; }
+						if (!cur) continue;                              // an intro line before the first panel
+						if (!this.#accPushPart(cur.parts, { role: "text", text: l })) { bad = true; break; }
+					}
+					if (bad) { if (!bulleted) continue; return null; }
+					if (panels.length >= (cfg.min_bold_panels ?? 2) && panels.every((p) => p.head && p.parts.length)) return panels;
 				}
-				if (panels.length >= (cfg.min_bold_panels ?? 2) && panels.every((p) => p.head && p.parts.length)) return panels;
+			}
+		}
+
+		// ---- D5: ROUND 491 — the writer's OWN panel markers INSIDE the table cells ----
+		// Tried LAST (after D1–D4 have all declined), so every accordion that built before this round is
+		// byte-identical by construction. The table must be the widget: text parts may only come BEFORE it
+		// (the accordion's lead, rendered above it — the r289 rule); anything after it keeps the box.
+		const mt = cfg.marker_table;
+		if (tables.length === 1 && mt && mt.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[mt.env ?? "ACCMARKTABLE_OFF"])) {
+			const ti = parts.indexOf(tables[0]);
+			const others = substantive.filter((p) => p !== tables[0]);
+			if (others.every((p) => p.role === "text" && parts.indexOf(p) < ti) && (!others.length || lead)) {
+				const panels = this.#accMarkerTablePanels(tables[0].item, cfg, tpl, notes);
+				if (panels && panels.length) {
+					for (const p of others) lead.push(p);
+					return panels;
+				}
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * ROUND 491 — THE MARKER-CELL TABLE (WHY_UNBUILT__accordion.md item 2, with item 3's column-label row).
+	 *
+	 * The r278 D2 reading takes a table ONE WAY: a short first cell is the panel heading, the rest its body.
+	 * Many writers instead lay the accordion out in a table and type their OWN panel markers INSIDE the cells,
+	 * and the human builds the accordion from exactly those markers (measured session 46, `_s46_goldloc.py`):
+	 *   (a) alternating rows   PWY1009-1.3  | [Accordion 1] Employment Relations Act 2000 |
+	 *                                       | [Accordion 1 text] This act covers …        |
+	 *       gold  div.accordion.accKeepOpen > div.accHead > h4 "Employment Relations Act 2000"
+	 *   (b) titles over texts  PWY1008-3.2  | [accordion 1] / Listening carefully | [accordion 2] / Pausing | …
+	 *                                       | [accordion text 1] / Letting the …  | [accordion text 2] / …  | …
+	 *   (c) title | body       PWY1009-3.3  | [accordion 1] / Check the agreement | [accordion text 1] / Find the exact term … |
+	 *   (d) a panel per cell   TEDC401-1.0 / MXEX301-4.0  | [H3] **Permissions in interface design** / [Body] … |
+	 *                                       | [Accordion] 1 **Metric Units of Length** / [Body] The Metric unit … |
+	 * Every cell becomes a stream of MARKERS (the red spans, read by the data patterns: a panel-title marker
+	 * `[Accordion N]` / `[Hn]`, a body marker `[Accordion N text]` / `[drop down text N]` / `[Body]` /
+	 * `[Dropdown information]`, an image marker) and black TEXT. A cell that opens with a title marker opens a
+	 * panel (the title is the marker's own payload or the next text); a cell that opens with body joins the
+	 * head-only panel to its LEFT in the same row, else the head-only panel ABOVE it in the same column, else
+	 * (a one-column table) continues the previous panel. A body-cell `[Hn]` repeating that panel's title is
+	 * dropped (CEDK102's `[Accordion 1] Photo scavenger hunt list:` over `[H5] Photo scavenger hunt list:`).
+	 * A head-less numbered panel takes its heading from its body's bold lead (XMES202 `• **X-axis:** …`).
+	 * An image marker with a URL is the panel image (the r278 name rule); with no URL it is an asset request
+	 * → a red note after the widget (the r278 rule), never content.
+	 * (item 3) A FIRST row of column labels — wholly red, or the label words (`Images | Instructions`,
+	 * CHFUN01's `Heading [h4] | Content [body]`) — is peeled first; when the rest carries no markers, the
+	 * ordinary r278 D2 reading is tried on it (CHFUN01's gold: six panels, the label row gone).
+	 * NEVER HALF-BUILDS: any red span the vocabulary does not name (a hover trigger, a DEV / CS note, a
+	 * speech-bubble spec), a body marker whose number disagrees with its title's, a panel with no heading or
+	 * no body, a heading over head_max_words or holding a tag, or no marker at all → null (the honest box).
+	 * Data interactive_builders.accordion.panel_delimiters.marker_table; env ACCMARKTABLE_OFF.
+	 */
+	static #accMarkerTablePanels(tableItem, cfg, tpl, notes) {
+		const mt = cfg.marker_table;
+		const cellStr = (c) => String(typeof c === "string" ? c : (c?.text ?? ""));
+		let rows = (tableItem?.block?.rows ?? []).filter((r) => Array.isArray(r)).map((r) => r.map(cellStr));
+		if (!rows.length) return null;
+		const headRe = new RegExp(mt.head_pattern, "i"), bareRe = new RegExp(mt.bare_head_pattern, "i");
+		const hRe = new RegExp(mt.heading_pattern, "i"), bodyRe = new RegExp(mt.body_pattern, "i");
+		const imgRe = new RegExp(mt.image_pattern, "i"), closeRe = new RegExp(mt.closer_pattern, "i");
+		const noteRe = mt.note_pattern ? new RegExp(mt.note_pattern, "i") : null;
+		// the column-label first row — never one that carries a panel marker of its own
+		const redSpans = (c) => [...String(c).matchAll(/\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu)].map((x) => x[1].trim());
+		const isMarker = (r) => headRe.test(r) || bareRe.test(r) || bodyRe.test(r) || /^\[\s*accord(?:io|ia)n\b/i.test(r);
+		let peeled = false;
+		if (rows.length > 1 && !rows[0].some((c) => redSpans(c).some(isMarker))
+			&& this.#looksLikeHeaderRow(rows[0].filter((c) => this.#cellText(c)), { header_label_keywords: mt.label_row_keywords })) {
+			rows = rows.slice(1); peeled = true;
+		}
+		const numOf = (s) => (String(s ?? "").match(/\d+/) ?? [null])[0];
+		const clean = (s) => String(s ?? "").replace(/\*\*/g, "").replace(/\s*[:：]\s*$/, "").trim();
+		const maxHead = mt.head_max_words ?? 16;
+		let marked = 0;
+
+		// (1) a cell → its ITEMS: head {text, num, strong, want} · mark (a body marker) {num} · img {url, desc} · text {t}
+		const cellItems = (cell) => {
+			const toks = [];
+			const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+			const pushText = (s) => {
+				// the cell's paragraph separators: " / " (a slash standing alone between spaces) and the line break;
+				// whitespace alone between two red spans is NOT a break (MXEX301's `[Accordion]` + `1`)
+				String(s).split(/\n|(?:^|\s)\/(?=\s|$)/).forEach((seg, j) => {
+					if (j) toks.push({ k: "br" });
+					if (seg.trim()) toks.push({ k: "text", t: seg.trim() });
+				});
+			};
+			let last = 0, m;
+			while ((m = RED.exec(cell)) !== null) {
+				pushText(cell.slice(last, m.index));
+				toks.push({ k: "red", t: m[1].trim() });
+				last = m.index + m[0].length;
+			}
+			pushText(cell.slice(last));
+			const items = [];
+			let wantImg = null;
+			for (let i = 0; i < toks.length; i++) {
+				const t = toks[i];
+				// a line break ends the image's line — unless it has no URL yet and the next line IS one
+				// (SSOG105's `[Image] please use scroll image` / `https://www.istockphoto.com/…`)
+				if (t.k === "br") { if (wantImg && (wantImg.url || !/^https?:\/\/\S+$/.test(toks[i + 1]?.t ?? ""))) wantImg = null; continue; }
+				if (t.k === "text") {
+					if (wantImg) {                                     // the image's own line: its URL, or its description
+						const url = this.#cellMediaUrl(t.t);
+						if (url) wantImg.url = url; else wantImg.desc = [wantImg.desc, t.t].filter(Boolean).join(" ");
+						continue;
+					}
+					const h = items[items.length - 1];
+					if (h && h.k === "head" && h.want) { h.text = clean(t.t); h.want = false; continue; }
+					items.push({ k: "text", t: t.t });
+					continue;
+				}
+				// a red span: it must be a marker the vocabulary names, else the whole table keeps the box
+				const r = t.t;
+				if (closeRe.test(r)) continue;
+				const bracketNum = numOf((r.match(/^\[[^\]]*\]?/) ?? [""])[0]);   // a marker's number — never the body text's
+				let mm;
+				if ((mm = r.match(headRe))) {
+					marked++;
+					const payload = clean(mm[mm.length - 1]);
+					items.push({ k: "head", text: payload, num: numOf(mm[1]), strong: true, want: !payload });
+					wantImg = null;
+					continue;
+				}
+				if (bareRe.test(r) && toks[i + 1]?.k === "red" && /^\d{1,2}$/.test(toks[i + 1].t)) {
+					marked++;
+					items.push({ k: "head", text: "", num: toks[i + 1].t, strong: true, want: true });
+					i++; wantImg = null;
+					continue;
+				}
+				if ((mm = r.match(hRe))) {
+					const payload = clean(mm[mm.length - 1]);
+					items.push({ k: "head", text: payload, num: null, strong: false, want: !payload });
+					wantImg = null;
+					continue;
+				}
+				if ((mm = r.match(bodyRe))) {
+					marked++;
+					items.push({ k: "mark", num: bracketNum });
+					// words typed INSIDE the body marker's red span are the writer's instruction ("[Body text] Can this be
+					// placed onto the scroll please.", SSOG105) → a red note; the body itself is the black text after it
+					const payload = String(mm[mm.length - 1] ?? "").trim();
+					if (payload && notes) notes.push(payload);
+					wantImg = null;
+					continue;
+				}
+				if ((mm = r.match(imgRe))) {
+					wantImg = { k: "img", url: this.#cellMediaUrl(r), desc: "" };
+					items.push(wantImg);
+					continue;
+				}
+				// a developer cue ("Dev team please add:", "[CS note: …]") → a red note after the widget, never content
+				if (noteRe && noteRe.test(r)) { if (notes) notes.push(this.#cellText(r).replace(/^\[|\]$/g, "").trim()); continue; }
+				// an unbracketed red SENTENCE is the writer's instruction (SSOG103's "Could the Coin images please be muddled
+				// up …") — a red note, as the r278 member walk files an instruction span; a short red label still refuses
+				if (!/[[\]]/.test(r) && r.split(/\s+/).length >= (mt.instruction_min_words ?? 6)) { if (notes) notes.push(r); continue; }
+				return null;
+			}
+			return items;
+		};
+
+		const grid = rows.map((r) => r.map((c) => (this.#cellText(c) ? cellItems(c) : [])));
+		if (grid.some((r) => r.some((x) => x === null))) return null;
+		if (!marked) {
+			// (item 3) no marker at all: the ordinary r278 D2 reading on the table with its label row peeled
+			// (CHFUN01's `**3. 肉肉 (ròuròu) — "Little Soft One / Little Meaty One"**` heading runs past r278's 10 words)
+			const plain = peeled ? this.#accTablePanels({ block: { rows } }, { ...cfg, table_head_max_words: maxHead }, tpl) : null;
+			return plain && plain.length >= (cfg.min_inferred_panels ?? 2) ? plain : null;
+		}
+
+		// (2) the grid → panels, pairing a body-first cell with the head-only panel left of it / above it
+		const panels = [];
+		const awaitCol = new Map();
+		const ncols = Math.max(...rows.map((r) => r.length));
+		const attach = (p, it) => {
+			if (it.k === "mark") {
+				if (it.num && p.num && it.num !== p.num) return false;  // "[drop down text 3]" under "[accordion 2]"
+				return true;
+			}
+			if (it.k === "img") {
+				if (it.url) {
+					const fn = this.#accImageFilename(it.url, tpl, cfg);
+					if (!fn) return false;
+					p.parts.push({ img: fn });
+				} else if (it.desc && notes) notes.push(`Image: ${it.desc}`);
+				return true;
+			}
+			if (it.k === "text") { p.hasText = true; return this.#accPushPart(p.parts, { role: "text", text: it.t }); }
+			return false;
+		};
+		for (const gr of grid) {
+			const rowAwait = [];
+			for (let c = 0; c < gr.length; c++) {
+				let items = gr[c];
+				if (!items.length) continue;
+				let target = rowAwait.length ? rowAwait[rowAwait.length - 1]
+					: (awaitCol.get(c) ?? (ncols === 1 && panels.length ? panels[panels.length - 1] : null));
+				if (items[0].k === "head" && !items[0].strong && target && !target.hasText
+					&& Utils.Fold(items[0].text) === Utils.Fold(target.head)) items = items.slice(1);
+				let cur = null;
+				if (!items.length || items[0].k !== "head") {
+					if (!target) return null;                              // body with no panel to join
+					cur = target;
+					const ri = rowAwait.indexOf(target); if (ri > -1) rowAwait.splice(ri, 1);
+					if (awaitCol.get(target.col) === target) awaitCol.delete(target.col);
+				}
+				for (const it of items) {
+					if (it.k === "head") {
+						cur = { head: it.text, num: it.num, want: it.want, col: c, parts: [], strong: it.strong };
+						panels.push(cur);
+						continue;
+					}
+					if (!attach(cur, it)) return null;
+				}
+				// a panel still WITHOUT text (a title, perhaps its picture — PWY1007's `[Accordion 1] / **Suburb** / [Image …]`)
+				// waits for its body in a later cell of this row or below it
+				if (cur && !cur.hasText && cur !== target) { rowAwait.push(cur); awaitCol.set(c, cur); }
+			}
+		}
+
+		// (3) a head-less numbered panel takes its heading from its body's bold lead (item 6's rule, in the table)
+		for (const p of panels) {
+			if (p.head || !p.parts.length || p.parts[0].p === undefined) continue;
+			const lines = String(p.parts[0].p).split("\n");
+			const bbl = cfg.bullet_bold_lead;
+			const lead = this.#accBoldLead(lines[0], cfg) ?? (bbl?.pattern ? this.#accBoldLead(lines[0], cfg, true) : null);
+			if (!lead) return null;
+			p.head = lead.head;
+			const rest = [lead.rest, ...lines.slice(1)].filter((s) => String(s).trim()).join("\n");
+			if (rest.trim()) p.parts[0].p = rest; else p.parts.shift();
+		}
+		const out = [];
+		for (const p of panels) {
+			const head = clean(p.head);
+			if (!head || !p.parts.length) return null;
+			if (head.split(/\s+/).length > maxHead || this.#accHasBracketTag(head) || this.#hasRedText(head)) return null;
+			out.push({ head, parts: p.parts });
+		}
+		// a single panel stands only on the writer's own NUMBERED marker (`[Accordion 1]`, the D1 rule); [Hn]-only needs two
+		if (out.length < (panels.some((p) => p.strong) ? (mt.min_panels_numbered ?? 1) : (mt.min_panels ?? 2))) return null;
+		return out;
 	}
 
 	/**
@@ -3150,9 +3401,11 @@ class InteractiveBuilder {
 	}
 
 	/** ROUND 278 — "**Head:** rest" → { head, rest }, or null when the line has no bold lead. */
-	static #accBoldLead(line, cfg) {
+	static #accBoldLead(line, cfg, bulleted = false) {
 		const t = String(line ?? "").trim();
-		const m = t.match(new RegExp(cfg.bold_lead_pattern ?? "^\\*\\*(.+?)\\*\\*\\s*[:：]?\\s*([\\s\\S]*)$"));
+		// ROUND 489 — `bulleted` = the D4 FALLBACK reading (see the D4 dialect): the pattern of
+		// panel_delimiters.bullet_bold_lead instead of the r278 one.
+		const m = t.match(new RegExp(bulleted ? cfg.bullet_bold_lead.pattern : (cfg.bold_lead_pattern ?? "^\\*\\*(.+?)\\*\\*\\s*[:：]?\\s*([\\s\\S]*)$")));
 		if (!m) return null;
 		const head = String(m[1]).replace(/\s*:\s*$/, "").trim();
 		const maxWords = cfg.head_max_words ?? 14;

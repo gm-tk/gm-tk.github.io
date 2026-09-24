@@ -1,0 +1,129 @@
+🟠 [ModuleResolver] Multiple module-code candidates found (AGH1006, HTO1101) — using AGH1006 from filename "AGH1006 Writers Template + Media List.docx".
+AGH1006: built 12 panels [exact 2, copy-edit 2, dev-edit 8, defect 0] | human 35 | ✓ exact/copy-edit/dev-edit only
+   dev-rewrote: Light
+   dev-restructured: Carbon Dioxide
+   dev-diverged: Quarantine
+   dev-restructured: (Merged content: HTO1103 Plant Management 3. My Te Kura)
+   dev-diverged: Companion Planting
+   dev-restructured: On-site Sanitation
+   dev-diverged: Weed Management
+   dev-diverged: Resistant Varieties
+🟠 [ModuleResolver] Multiple module-code candidates found (AGH1009, PPO1051) — using AGH1009 from filename "AGH1009 Writers Template + Media List.docx".
+AGH1009: built 9 panels [exact 1, copy-edit 3, dev-edit 5, defect 0] | human 41 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Bulbs
+   dev-restructured: Precision fertilisers
+   dev-diverged: Tree planting
+   dev-restructured: Animal feed – amounts and types
+   dev-restructured: Integrated pest management
+ANZH101: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 4 | no builds
+ANZH105: built 3 panels [exact 2, copy-edit 1, dev-edit 0, defect 0] | human 5 | ✓ exact/copy-edit/dev-edit only
+ANZH203: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 4 | no builds
+ANZH205: built 3 panels [exact 0, copy-edit 1, dev-edit 2, defect 0] | human 4 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Learn some Te Reo Māori.
+   dev-rewrote: Learn a Waiata
+BLL112: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 2 | no builds
+BLL116: built 8 panels [exact 0, copy-edit 8, dev-edit 0, defect 0] | human 12 | ✓ exact/copy-edit/dev-edit only
+BLL122: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 2 | no builds
+BLL125: built 1 panels [exact 0, copy-edit 0, dev-edit 1, defect 0] | human 1 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Questions
+BLL126: built 8 panels [exact 0, copy-edit 8, dev-edit 0, defect 0] | human 9 | ✓ exact/copy-edit/dev-edit only
+BLL127: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+BLL141: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+BLL146: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+BLL164: built 3 panels [exact 2, copy-edit 1, dev-edit 0, defect 0] | human 5 | ✓ exact/copy-edit/dev-edit only
+BLL165: built 1 panels [exact 1, copy-edit 0, dev-edit 0, defect 0] | human 6 | ✓ exact/copy-edit/dev-edit only
+BLL172: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+BLL175: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 2 | no builds
+BLL176: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 2 | no builds
+BLL177: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+BLL211: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+🟠 [ModuleResolver] Multiple module-code candidates found (BLL212, BLL182) — using BLL212 from filename "BLL212 Writers Template + Media List.docx".
+BLL212: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+🟠 [ModuleResolver] Multiple module-code candidates found (BLL213, BLL183) — using BLL213 from filename "BLL213 Writers Template + Media List.docx".
+BLL213: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+🟠 [ModuleResolver] Multiple module-code candidates found (BLL214, BLL184) — using BLL214 from filename "BLL214 Writers Template + Media List.docx".
+BLL214: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+BLL215: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+BLL216: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+BLL217: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+BLL222: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 3 | no builds
+BLL226: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+BLL227: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 3 | ✓ exact/copy-edit/dev-edit only
+BLL232: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+BLL234: built 1 panels [exact 1, copy-edit 0, dev-edit 0, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+BLL235: built 2 panels [exact 0, copy-edit 1, dev-edit 1, defect 0] | human 2 | ✓ exact/copy-edit/dev-edit only
+   dev-diverged: Table of suffixes
+BLL236: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 4 | ✓ exact/copy-edit/dev-edit only
+BLL237: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 4 | ✓ exact/copy-edit/dev-edit only
+BLL246: built 1 panels [exact 1, copy-edit 0, dev-edit 0, defect 0] | human 5 | ✓ exact/copy-edit/dev-edit only
+BLL252: built 1 panels [exact 0, copy-edit 1, dev-edit 0, defect 0] | human 3 | ✓ exact/copy-edit/dev-edit only
+🟢 [ModuleResolver] BLL253 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL253: built 8 panels [exact 1, copy-edit 1, dev-edit 6, defect 0] | human 9 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: The Gulls of Sulphur Bay pages 1 and 2
+   dev-restructured: The Gulls of Sulphur Bay pages 3 and 4
+   dev-restructured: The Gulls of Sulphur Bay pages 5 and 6
+   dev-rewrote: Level 2: True or false?
+   dev-rewrote: Level 3: Word hunter
+   dev-rewrote: Level 4: Design challenge
+🟢 [ModuleResolver] BLL255 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL255: built 2 panels [exact 1, copy-edit 0, dev-edit 1, defect 0] | human 3 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: - a factual text
+🟢 [ModuleResolver] BLL257 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL257: built 6 panels [exact 4, copy-edit 1, dev-edit 1, defect 0] | human 7 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Antarctica - a factual text
+🟢 [ModuleResolver] BLL260 is not in the registry members — inherited from its level BLL2 (sibling rule).
+🟢 [ModuleResolver] BLL260 is a recorded page_model exception — using single-file.
+BLL260: built 6 panels [exact 0, copy-edit 6, dev-edit 0, defect 0] | human 7 | ✓ exact/copy-edit/dev-edit only
+🟢 [ModuleResolver] BLL261 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL261: built 5 panels [exact 1, copy-edit 4, dev-edit 0, defect 0] | human 6 | ✓ exact/copy-edit/dev-edit only
+🟢 [ModuleResolver] BLL262 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL262: built 8 panels [exact 2, copy-edit 6, dev-edit 0, defect 0] | human 10 | ✓ exact/copy-edit/dev-edit only
+🟢 [ModuleResolver] BLL263 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL263: built 8 panels [exact 2, copy-edit 6, dev-edit 0, defect 0] | human 9 | ✓ exact/copy-edit/dev-edit only
+🟢 [ModuleResolver] BLL264 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL264: built 5 panels [exact 0, copy-edit 4, dev-edit 1, defect 0] | human 5 | ✓ exact/copy-edit/dev-edit only
+   dev-rewrote: Handy Hint
+🟢 [ModuleResolver] BLL265 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL265: built 3 panels [exact 1, copy-edit 2, dev-edit 0, defect 0] | human 7 | ✓ exact/copy-edit/dev-edit only
+🟢 [ModuleResolver] BLL266 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL266: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 2 | no builds
+🟢 [ModuleResolver] BLL271 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL271: built 2 panels [exact 0, copy-edit 2, dev-edit 0, defect 0] | human 5 | ✓ exact/copy-edit/dev-edit only
+🟢 [ModuleResolver] BLL273 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL273: built 2 panels [exact 0, copy-edit 1, dev-edit 1, defect 0] | human 5 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: N - Z
+🟢 [ModuleResolver] BLL275 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL275: built 2 panels [exact 0, copy-edit 1, dev-edit 1, defect 0] | human 5 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: M - Z
+BLLR201: built 7 panels [exact 0, copy-edit 0, dev-edit 7, defect 0] | human 11 | ✓ exact/copy-edit/dev-edit only
+   dev-rewrote: Narrative organiser
+   dev-rewrote: Narrative organiser modelled example
+   dev-rewrote: Narrative organiser modelled example
+   dev-restructured: A 'l ocate it' question
+   dev-restructured: A 'c onnect the clues' question
+   dev-restructured: A 'r ead between the lines' question
+   dev-restructured: A 'g o beyond' question
+BLLR203: built 3 panels [exact 3, copy-edit 0, dev-edit 0, defect 0] | human 4 | ✓ exact/copy-edit/dev-edit only
+🟠 [ModuleResolver] Multiple module-code candidates found (CBI1004, SCO1091) — using CBI1004 from filename "CBI1004 Writers Template + Media List.docx".
+CBI1004: built 8 panels [exact 7, copy-edit 0, dev-edit 1, defect 0] | human 9 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Random assortment
+CBI1005: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 11 | no builds
+CEDK102: built 5 panels [exact 0, copy-edit 0, dev-edit 5, defect 0] | human 12 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Photo scavenger hunt list
+   dev-restructured: How to be a digital kaitiaki
+   dev-restructured: Keeping your information safe
+   dev-restructured: Telling an adult
+   dev-restructured: Being a good friend online.
+CEDK501: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 6 | no builds
+🟢 [ModuleResolver] CEDO102 is a recorded page_model exception — using single-file.
+CEDO102: built 4 panels [exact 3, copy-edit 1, dev-edit 0, defect 0] | human 5 | ✓ exact/copy-edit/dev-edit only
+CEDO201: built 13 panels [exact 12, copy-edit 1, dev-edit 0, defect 0] | human 14 | ✓ exact/copy-edit/dev-edit only
+CEDO204: built 7 panels [exact 1, copy-edit 6, dev-edit 0, defect 0] | human 12 | ✓ exact/copy-edit/dev-edit only
+CEDO402: built 0 panels [exact 0, copy-edit 0, dev-edit 0, defect 0] | human 4 | no builds
+CEDO501: built 8 panels [exact 2, copy-edit 6, dev-edit 0, defect 0] | human 18 | ✓ exact/copy-edit/dev-edit only
+CEDO502: built 3 panels [exact 0, copy-edit 2, dev-edit 1, defect 0] | human 10 | ✓ exact/copy-edit/dev-edit only
+   dev-restructured: Store cards/Buy Now Pay Later (BNPL) versus credit cards
+CEDR101: built 10 panels [exact 0, copy-edit 10, dev-edit 0, defect 0] | human 11 | ✓ exact/copy-edit/dev-edit only
+
+TOTAL: 195 panels built across 52 module(s).
+RESULT: every built panel matches the human (exact / copy-edit / developer edit) ✓
