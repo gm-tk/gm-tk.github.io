@@ -1155,6 +1155,7 @@ next rounds.
 ## 14. Current state snapshot (keep in sync with the changelog)
 
 - **LAST FULL (24 Sept 2026, session 40 Round 12 — no engine change):** the ledger backstop regenerated all 545 with the r452 engine — 542 / 542 modules byte-identical, every gate EXACT; ledger scoped #0.
+- **FULL backstop** at `260620.53` (session 45 Round 10, 25 Sept): all 545 modules regenerated, **0 pages differ** from the shipped manifest; every gate HELD; ledger reset (LAST FULL = r490).
 - **Build:** `260620.53` (round 490 — **the lesson overview's WALT alert is menu content**; `LOWALTALERT_OFF`; scoped #7 since the r482 FULL; 2 modules / 20 pages; skeleton 55.3705 % @ 2491, +0.0100pp, ≥50 +1).
 - **Build:** `260620.52` (round 488 — **the story-reference carousel shell**; `CARSTORY_OFF`; scoped #6 since the r482 FULL; 33 modules, 43 carousels built — Still-a-box 320 → 277; skeleton 55.3605 % @ 2491, +0.0029pp, RAW +0.037pp).
 - **Build:** `260620.51` (round 487 — **the unquoted named hover anchor**; `HOVERNAMED_OFF`; scoped #5 since the r482 FULL; 12 modules, +70 infoTrigger spans; skeleton 55.3576 % @ 2491, +0.0091pp, ≥50 +2).

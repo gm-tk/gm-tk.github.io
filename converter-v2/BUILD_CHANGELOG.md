@@ -1,5 +1,11 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (session 45 Round 10, build 260620.53 — NO engine change) — THE LEDGER'S FULL-SHIP BACKSTOP: the whole corpus regenerated with the r490 engine is byte-identical to the ship
+
+- **Why:** seven scoped ships since the r482 FULL (r483–r488, r490; the cadence is 8 and the next scoped ship would reach it) — a scoped ship proves only its affected set + a 12-module sample; the backstop proves the whole chain (r486 the quote form, r487 the named hover anchor, r488 the story carousel shell, r490 the LO WALT alert) at once.
+- **Run** (`outputs/_s45_full_regen.sh` — `_batch_plan.py`'s plan, 42 batches, 4 parallel workers under WSL, 08:03 → 08:10): all rc 0; `_stalecheck.sh` 0 stale; **`_content_manifest.py diff`: IDENTICAL — 0 pages differ** from the shipped manifest (all 545 modules).
+- **Gates on the fully fresh corpus** (`outputs/_s45_full_postship.sh`): `run_all_gates.sh` rc 0, every verifier RESULT ✓; skeleton **55.3705 % @ 2491**, ≥50 1585, ≥75 277, ≥90 26, RAW 39.285 % — **0 movers** vs r490; `_gatecheck.py skeleton defect` **PASS** on the 0-stale corpus (the `cs bc` call re-prints CACHED skeleton rows — the documented trap; its own cs / bc rows HELD); selftests 50 green / 0 fail; feature index GREEN; the miner 194 CANDIDATE (byte-identical to r490's queue). Ledger `record-full --round 490 --build 260620.53` → **LAST FULL = r490, scoped #0 (8 of headroom)**; fast-loop baseline re-snapshot; content manifest snapshot.
+
 ## 2026-09-25 (round 490, build 260620.53) — THE LESSON OVERVIEW'S WALT ALERT IS MENU CONTENT: an alert inside a lesson's `[Lesson Overview]` block whose text opens with a learning-intentions lead joins the lesson menu as its plain sentence
 
 ### 1. WHAT CHANGED
