@@ -4450,3 +4450,65 @@ before it 260620.29 (r459 the introduction on the overview — session 41 Round 
 - **Authority:** KB 07B §7 'Activity Structure' (`| Activity 1A: | Ngohe 1A: |` + `[H2]` + `[Body]` → `div.activity number=` holding the reo / eng title + prose; `interactive` when it holds a widget) — §1b rank 1, the gold agrees 47 / 50. Under the 20-page floor (≈ 12 pages / 2 modules): shipped only under §1d exception 1 — a FAMILY dialect (data `families: ["TRR"]`), matching the family's own gold on every page, OFF byte-identical, every other gate held. Predicts a skeleton move on TRR116 / TRR106; plateau: a KB-rule round.
 - **Fix (planned):** (A) the reoMode dispatch, BEFORE `bilingualTable`: a bilingual table whose first content row is an `Activity NX: ║ Ngohe NX:` label pair (bold / red stripped) gathers itself + a following `[Activity: Embedded]` marker table + its spec tables (the existing gather's stops) and renders through `bilingualActivity` (label rows skipped, the number captured through the bold). (B) in `bilingualActivity`, a MARKER table's rows after its leading marker / heading / body rows are the widget's DATA → ONE `cv2-interactive bilingual-unbuilt` hand-off (the whole grid, every column kept) instead of paragraphs. Data `elements.dual_language.act_label_box`; env `ACTLABELBOX_OFF` = the r479 bytes.
 - **What shipped (r480, 260620.44):** `elements.dual_language.act_label_box` (env `ACTLABELBOX_OFF`; code_prefixes TRR, exclude_codes TRR102, intro_h2_level 3, data_rows_handoff false) — the reoMode dispatch gathers the label-intro table + its marker table (+ spec tables) into bilingualActivity(alb): the intro through bilingualRows (interleaved, header skipped, label stripped), its [H2] at h3, the r454 numbering and the 07D wrapper. Four pre-score iterations: the raw row unfold (+0.0192pp, TRR102 −75) → bilingualRows (+0.0512pp) → TRR102 excluded (+0.0702pp) → h3 (+0.0779pp with (B)); the scoped ship's cs exact −80 is the pool shrink of the boxing itself (it stayed −80 with (B) OFF), so (B) — its own effect not separated — is left OFF for its own round. Shipped (A): +0.0611pp, ≥50 +4, 12 up / 2 down; cs exact −80 named.
+
+## Per-round pointer headers, sessions 31 / 33 / 34 / 35 / 36 / 37-r2 / 40 / 41 / 43 (verbatim, s44 §5d condense #2)
+
+## Session 43 — Round 10 PICK (engine r478) — KB c75 FOR THE ACTIVITY'S LEAD PROSE — SHIPPED (finished session 44 Round 1); the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 43 — Round 10 PICK (engine r478) + what shipped'; the one-line summary is the s44-r1 Round-log line below.
+
+## Session 43 — every shipped round (engine r472 / r473 / r474 / r475 / r476 / r477) — each PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md under 'Session 43 — Round N PICK (engine rXXX) + what shipped' (grep the engine number); the six pointer headers → 'Session 43 shipped-round pointer headers (verbatim, s44 §5d condense #1)'; the one-line summaries are the s43 Round-log lines below.
+
+## Session 31 — Round 1 (engine r423) — A PAGE-BOUNDARY MARKER TYPED AS A TABLE ROW IS A PARAGRAPH: PMT101, the one-table MTK template, now converts (the intake's §7 item 3) — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 31 — Round 1 PICK (engine r423) + what shipped'; the one-line summary is the s31-r1 Round-log line below.
+
+## Session 41 — Round 12 PICK (engine r464, WITHDRAWN by D14-21) → LOOP_STATE_ARCHIVE.md 'Session 41 — Round 12 PICK (engine r464, WITHDRAWN by D14-21) (verbatim, s42 §5d condense #1)'.
+
+## Sessions 40 / 41 — every shipped round (engine r447–r449, r451–r454, r460, r461) — each PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md under 'Session N — Round M PICK (engine rXXX) + what shipped' (grep the engine number); the nine pointer headers → 'Session 40 / 41 pointer headers (verbatim, s42 §5d condense #1)'.
+
+## Session 31 — Round 2 (engine r424, output-inert) — THE ACTIVITY-TABLE WRITERS TEMPLATE IS RECOGNISED: the twelve XOTP reader documents are refused BY NAME until their adapter ships (the spec's Round 1) — SHIPPED; the record is in LOOP_STATE_ARCHIVE.md 'Session 31 — Round 2 PICK (engine r424) + what shipped'; the one-line summary is the s31-r2 Round-log line below.
+
+## Session 37 — Round 2 (engine r438 — BUILT, PROBED, DECLINED and REVERTED) — THE WIDGET TYPE THE WRITER NAMED IN THE FREE TEXT — the full PICK is in LOOP_STATE_ARCHIVE.md 'Session 37 — Round 2 (engine r438, DECLINED) + what it found'; the verdict and the never-re-open condition are under Declined classes; the one-line summary is the s37-r2 Round-log line below.
+
+## Session 36 — Round 5 (no engine change — DECLINED on measurement) — THE MODULE MENU'S SECTION CONTENT IS A LIST — the PICK + the verdict are in LOOP_STATE_ARCHIVE.md 'Session 36 — Round 5 (DECLINED …)' and under Declined classes; the one-line summary is the s36-r5 Round-log line below.
+
+## Session 36 — Round 4 (engine r436, build 260620.09) — THE LESSON CONTINUATION PAGE INHERITS ITS LESSON'S MENU — SHIPPED; the PICK (including the DECLINED repeated-module-overview class) + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 36 — Round 4 (engine r436 …) + what shipped'; the one-line summary is the s36-r4 Round-log line below. **→ 2026-09-23 D13-8: the DECLINED repeated-module-overview class is OVERRIDDEN for the twelve s24 modules only (Chris: Option A — extend the round-110 `lesson_repeats_overview.modules` list); the other 18 of the 30 stay declined — see "Decisions from Chris (session 38)".**
+
+## Session 36 — Round 3 (engine r435, build 260620.08) — THE LESSON MENU ENDS AT THE WRITER'S `[Body]` — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 36 — Round 3 (engine r435 …) + what shipped'; the one-line summary is the s36-r3 Round-log line below.
+
+## Session 36 — Round 2 (engine r434, build 260620.07) — THE ARFUN PHASE-TILE LABELS + THE TITLE-BAR PAYLOAD OWNERSHIP — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 36 — Round 2 (engine r434 …) + what shipped'; the one-line summary is the s36-r2 Round-log line below.
+
+## Session 36 — Round 1 (engine r433, build 260620.06) — THE MXFUN CODE-CONTENT PHASE DIALECT + THE FULL-REGENERATION BACKSTOP — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 36 — Round 1 (engine r433 …) + what shipped'; the one-line summary is the s36-r1 Round-log line below.
+
+## Session 35 — Round 3 (engine r432, build 260620.05) — THE LESSON PAGE'S UNMARKED WALT / SC BLOCK IS ITS MENU — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 35 — Round 3 (engine r432 …) + what shipped'; the one-line summary is the s35-r3 Round-log line below.
+
+## Session 35 — Round 2 (engine r431, build 260620.04) — THE OVERVIEW MENU'S INNER-WORD LABEL OVER-FIRE — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 35 — Round 2 (engine r431 …) + what shipped'; the one-line summary is the s35-r2 Round-log line below.
+
+## Session 35 — Round 1 (engine r430, build 260620.03) — THE INQUIRY PANEL OPENER ROBUSTNESS, PART 2 — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 35 — Round 1 (engine r430 …) + what shipped'; the one-line summary is the s35-r1 Round-log line below.
+
+## Session 34 — Round 3 PICK pass (no engine change) and Round 4 (engine r429, build 260620.02) — THE r100 INQUIRY MODE'S OPENER ROBUSTNESS + the TWHR9 row — SHIPPED; the PICK-pass record, the PICK + what-shipped record are in LOOP_STATE_ARCHIVE.md 'Session 34 — Round 3 PICK pass' / 'Session 34 — Round 4 (engine r429 …) + what shipped'; the one-line summaries are the s34-r3 / s34-r4 Round-log lines below.
+
+## Session 34 — Round 2 (engine r428, build 260620.01) — THE INQUIRY-TEMPLATE FALLBACK SHELL — SHIPPED; the PICK-pass record (#4235 declined), the PICK + what-shipped record are in LOOP_STATE_ARCHIVE.md 'Session 34 — Round 2 (engine r428 …) + what shipped'; the one-line summary is the s34-r2 Round-log line below.
+
+## Session 33 — Round 5 (engine r427, crashed after its post-ship suite) and Session 34 — Round 1 (r427 FINISHED at §3 step 7) — THE CODE-PREFIX CHIP DELTAS → LOOP_STATE_ARCHIVE.md 'Session 33 — Round 5 (engine r427 …) + Session 34 — Round 1'; the one-line summary is the s33-r5 / s34-r1 Round-log line below.
+
+## Session 31 — Round 3 (engine r425, BUILT + SHIPPED INERT) and Session 33 — Round 1 (r425 FINISHED) → LOOP_STATE_ARCHIVE.md 'Session 31 — Round 3 … / Session 33 — Round 1 (archived from LOOP_STATE.md 2026-09-22 ≈11:05 NZST, session 33 §5d)' — grep the engine number there.
+
+## Round log s43-r1…r10 (verbatim, s44 §5d condense #2)
+
+- s43-r10 (engine r478, NOT shipped, 24 Sept ≈22:48 → 23:05 real clock) · KB c75 FOR THE ACTIVITY'S LEAD PROSE (the bundle-owned activity's `flushLead`; HES1007 3B's reading list) · BUILT + PROBED (63 hrefs, 43 gold-carried) · scoped ship FAILED on the mean −0.0027pp (16 down / 5 up, no crossing) · TOGGLED OFF at `/loop-stop`, corpus restored (manifest 0 differ), engine + data UNCOMMITTED · plateau 2 of 3 (neither).
+
+- s43-r9 (engine r477, build 260620.41, 24 Sept 22:10 → ≈22:50 real clock) · KB c75 FOR GATHERED BODY TEXT: an activity's / alert's gathered paragraphs keep the writer's links (target exclusion + a 3-character floor after a mid-word 'ā' anchor) · SHIPPED scoped #3, committed NAMED · 38 modules · skeleton +0.0042pp, ≥75 −1 NAMED, cs exact +1 · plateau 2 of 3 (neither).
+
+- s43-r8 (engine r476, build 260620.40, 24 Sept ≈21:40 → 22:10 real clock) · KB c75 FOR BUILT WIDGETS: the writer's links in a widget's prose (measured three ways: all links → 515 asset pointers wrong; +labels → trigger buttons / card faces wrong; prose only → 49 in <p> / <li>) · SHIPPED scoped #2 · 16 pages / 14 modules · skeleton +0.0008pp · plateau 2 of 3 (neither). The in-flight marker was raised late (after the first probe) — a §3 step-1 slip, recorded.
+
+- s43-r7 (engine r475, build 260620.39, 24 Sept ≈21:05 → 21:40 real clock) · KB c75: THE MODULE MENU KEEPS THE WRITER'S INLINE LINKS (two new instruments: the attribute census + the link census) · SHIPPED scoped #1, committed NAMED · 35 pages / 33 modules; gold-kept menu links lost 12 → 2 · skeleton −0.0006pp (4 flat-menu pages NAMED) · plateau 2 of 3 (neither).
+
+- s43-r6 (no engine change, 24 Sept ≈20:52 → 21:10 real clock) · a PICK pass on the KB audit's PARTIAL rows: c41 `captionText` by position DECLINED on precision (2–3 %); pasted-picture file names = the KB's generic form (class C); Phase 3b (inert) recorded · plateau 2 of 3 (neither).
+
+- s43-r5 (engine r474, build 260620.38, 24 Sept ≈20:10 → 20:50 real clock) · KB c52: EVERY iSTOCK IMAGE CARRIES ITS TITLE AS ALT TEXT (the widget-internal images r242 left corpus-inert) · SHIPPED with the FULL backstop (LAST FULL = r474, scoped #0) · 324 pages / 170 modules, alt only; recoverable empty 1,642 → 13 · every gate EXACT · plateau 2 of 3 (neither). The PICK pass before it: PES1 / XDLS9 scoped miners, the AGH red journal-instruction box and the XDLS dropbox dialect — recorded below floor.
+
+- s43-r4 (no engine change, 24 Sept ≈20:00 → 20:25 real clock) · a PICK pass: the content-loss lane by whole unit (`_s43_r4_lostunits.py`: 664 of 87,905 gold-carried WT units lost, 0.8 %, scattered — no class at the floor); the unbracketed supervisor note ≈ 17 notes / 3–5 BLL modules recorded; the Inquiry panel activity box class C · plateau 2 of 3 (neither). **Clock note:** the ≈ times on s43-r3 / condense #2 (20:10 / 20:15) ran ≈ 15 min ahead (the commits: R3 19:5x, condense 19:58).
+
+- s43-r3 (no engine change, 24 Sept 19:55 → 20:10) · a PICK pass: the widget text-loss lane closed below the floor (carousel = video titles the gold keeps in the acks; accordion / clickDrop / speechBubble one-offs; dropDown a census artefact) + census row 55 (LI / SC in Information): Claude KB-correct (01B) for 13 modules, the MTK 07A tab placement 8 modules recorded · plateau 2 of 3 (neither).
+
+- s43-r2 (engine r473, build 260620.37, 24 Sept 19:25 → ≈19:58) · THE MODAL'S SINGLE-LINK BUTTON NEVER SWALLOWS THE WRITER'S WORDS (the media-aware loss census: modal 41 lossy bundles, one mechanism — the r73 single-URL button) · SHIPPED scoped #6 (the 110-module modal family regenerated; 25 pages / 14 modules changed) · 4 lossy → full, 14 → box · skeleton +0.0039pp (12 up / 3 down NAMED) · plateau 2 of 3 (neither).
+
+- s43-r1 (engine r472, build 260620.36, 24 Sept 18:12 → ≈19:25) · THE BUILT FLIP CARD NEVER DROPS THE WRITER'S WORDS (the placement census's `flipCard → ABSENT-inWT` row; CEDO502's four cards shipped as one two-picture card) · SHIPPED scoped #5 (the 246-module family regenerated; 37 pages / 31 modules changed) · flipCard lossy builds 46 → 22, built 290 → 290 · skeleton +0.0032pp (8 up / 1 down) · plateau 2 of 3 (neither).
