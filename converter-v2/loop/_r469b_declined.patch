@@ -1,0 +1,36 @@
+diff --git a/converter-v2/app/js/ContentConverter.js b/converter-v2/app/js/ContentConverter.js
+index 1b74f38..3c24233 100644
+--- a/converter-v2/app/js/ContentConverter.js
++++ b/converter-v2/app/js/ContentConverter.js
+@@ -7539,7 +7539,13 @@ class ContentConverter {
+ 		const noVideoAbsorb = vdc && vdc.enabled !== false
+ 			&& !(typeof process !== "undefined" && process.env && process.env[vdc.env ?? "VIDBTN_OFF"])
+ 			&& nurl && new RegExp(vdc.host_match ?? "youtube\\.com/(?:watch\\?|shorts/|embed/)|youtu\\.be/|vimeo\\.com/(?:video/)?\\d", "i").test(nurl);
+-		return nurl && !nIsStruct && !noVideoAbsorb ? nurl : "";
++		// ROUND 469b (buttons.absorb_following_url.skip_media_tags; env BTNURLMEDIA_OFF): a MEDIA tag's URL is
++		// its own media, never this button's href (the image line used to vanish into the button)
++		const smt = auRule.skip_media_tags;
++		const noMediaAbsorb = smt && smt.enabled !== false
++			&& !(typeof process !== "undefined" && process.env && process.env[smt.env ?? "BTNURLMEDIA_OFF"])
++			&& nxt.type === "tag" && (smt.tags ?? []).includes(nxt.parse?.primary?.tag);
++		return nurl && !nIsStruct && !noVideoAbsorb && !noMediaAbsorb ? nurl : "";
+ 	};
+ 
+ 	/**
+diff --git a/converter-v2/data/Emit_Templates.json b/converter-v2/data/Emit_Templates.json
+index a1fb3e6..15798bf 100644
+--- a/converter-v2/data/Emit_Templates.json
++++ b/converter-v2/data/Emit_Templates.json
+@@ -1310,6 +1310,12 @@
+ 		},
+ 		"absorb_following_url": {
+ 			"enabled": true,
++			"skip_media_tags": {
++				"_doc": "ROUND 469b (the autonomous loop's session 42 Round 7 — the r447 follow-up). The next item's URL is never this button's href when that item is a MEDIA tag (`[Tab 3] [Image] https://istock…` after `[Go to journal.]` — XGF9004_14_0): the absorb consumed the image line and the picture was lost. tags = the resolved primary tags that keep their own URL.",
++				"enabled": true,
++				"env": "BTNURLMEDIA_OFF",
++				"tags": ["image", "images", "audio", "audiovisual", "embed", "video", "gif", "animation"]
++			},
+ 			"_round88_note": "ROUND 88 (Chris, ENGI302-02): a plain [Button] (e.g. 'Go to journal') whose URL sits on the IMMEDIATELY-FOLLOWING standalone bare-URL paragraph is the human's LINKED button — the URL is loaded onto the button as its href, the bare-URL <p> is dropped (human '<a href=URL target=_blank><div class=\"button\">Download journal</div></a>'; verified ENGI302/ENGJ202/SSOG301/MXDI301). Claude rendered '<div class=\"button\">Go to journal</div>' + a separate '<p><a>URL</a></p>'. FIX: #element button branch — when key==='button', the button has NO url of its own, and bodyItems[i+1] is a STANDALONE bare URL (whole content is one http(s) URL, not a tag/element, not consumed), absorb it as the href (buttons.button_linked.form) and mark it _consumed (the loop's round-72 skip drops it). The href VALUE is the WT URL (the human re-points to a fresh copy-doc / generic Drive link — non-derivable editorial); the STRUCTURE + label match. Tight: only the bare-URL-alone next item (same discriminator as round 76), never prose; skipped when the dropbox-orange override fires. Env BTNURL_OFF reverts to the un-linked button + separate bare-URL <p>."
+ 		},
+ 		"button_dropbox": {

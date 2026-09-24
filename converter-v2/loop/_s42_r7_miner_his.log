@@ -1,0 +1,6 @@
+DIFF MINER over 8 modules …
+  … 1/8 modules, 8 pairs, 75 classes [0s]
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_diff_miner_scoped.md (26 KB) + /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_diff_queue_details.md (61 KB)
+pairs 77 / modules 8 / parse errors 0 / diff lines 7422 / classes 774 (CANDIDATE 7, below floor 757) in 4.5 s
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_diff_miner_scoped.json
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_diff_miner_scoped.md

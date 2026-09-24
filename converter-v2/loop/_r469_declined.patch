@@ -1,0 +1,36 @@
+diff --git a/converter-v2/app/js/ContentConverter.js b/converter-v2/app/js/ContentConverter.js
+index 1b74f38..8232a43 100644
+--- a/converter-v2/app/js/ContentConverter.js
++++ b/converter-v2/app/js/ContentConverter.js
+@@ -4872,7 +4872,14 @@ class ContentConverter {
+ 		const maxLen = cfg.max_title_chars ?? 45;
+ 		// first <p> inside a .alert (optionally inside its row>col), promoted ONLY when a
+ 		// following block tag exists after it (`\s*<[^/]` — a closing </div> = the only block).
+-		const re = /(<div class="alert[^"]*">\s*(?:<div class="row">\s*<div class="col[^"]*">\s*)?)<p\b[^>]*>([\s\S]*?)<\/p>(\s*<[^/])/gi;
++		// ROUND 469 (data alert_title_heading.no_cross_p; env ALERTHCROSS_OFF): the title may not contain a
++		// </p> — the lazy match used to run past a paragraph closed by </div> into the NEXT alert and eat its title.
++		const ncp = cfg.no_cross_p;
++		const noCross = !!ncp && ncp.enabled !== false
++			&& !(typeof process !== "undefined" && process.env && process.env[ncp.env ?? "ALERTHCROSS_OFF"]);
++		const re = noCross
++			? /(<div class="alert[^"]*">\s*(?:<div class="row">\s*<div class="col[^"]*">\s*)?)<p\b[^>]*>((?:(?!<\/p>)[\s\S])*?)<\/p>(\s*<[^/])/gi
++			: /(<div class="alert[^"]*">\s*(?:<div class="row">\s*<div class="col[^"]*">\s*)?)<p\b[^>]*>([\s\S]*?)<\/p>(\s*<[^/])/gi;
+ 		return html.replace(re, (full, pre, inner, after) => {
+ 			const text = inner.replace(/<[^>]+>/g, " ").replace(/&[a-z]+;/gi, " ").trim();
+ 			if (!text || text.length > maxLen) return full;
+diff --git a/converter-v2/data/Emit_Templates.json b/converter-v2/data/Emit_Templates.json
+index a1fb3e6..1106cbf 100644
+--- a/converter-v2/data/Emit_Templates.json
++++ b/converter-v2/data/Emit_Templates.json
+@@ -5915,6 +5915,11 @@
+ 			"enabled": true,
+ 			"level": 4,
+ 			"max_title_chars": 45,
++			"no_cross_p": {
++				"_doc": "ROUND 469 (the autonomous loop's session 42 Round 7, 2026-09-24 — the r447 follow-up). The title paragraph may not CONTAIN a `</p>`: the lazy `<p>([\\s\\S]*?)</p>(\\s*<[^/])` used to run past a paragraph closed by `</div>` (an alert whose only paragraph is its body, or an empty red-flag alert) into the NEXT alert, consume that alert's first paragraph, and leave its short title a <p> (AGH1006_8_0 'Key points from the lesson:' until r447). Promotion rules unchanged (max_title_chars, a following block tag).",
++				"enabled": true,
++				"env": "ALERTHCROSS_OFF"
++			},
+ 			"_note": "ROUND 61 — an [alert] callout whose FIRST content line is a SHORT TITLE ('Safety message', 'Key points from today's lesson:') followed by body is rendered by the human as a HEADING inside the alert (<h4>), but Claude left it a <p>. A post-pass (run AFTER re-levelling, like named_headings, so the h4 is not re-levelled) promotes the FIRST <p> inside a .alert to <h{level}> when its text is <= max_title_chars AND a following block exists (a single-block alert is body, untouched). Measured net over the 2,190 human alerts (outputs/_measure_alertheading.py): at <=45 chars + >=2 blocks, WIN 650 (human heading) vs LOSS 58 (human kept <p>) = +592; the heading-first level is dominantly h4 (752 vs h3 117 / h5 82), so level 4 is the corpus default. GATE-SAFE: a <p>->h4 tag change never alters the row/col/activity wrapper chain (compare_structure/body_compare inert, per the round-47 named-heading rule); only the skeleton sees it, moving toward the human. Triangulated OSAI201-03 ('Safety message' -> human <h4>, Claude <p>). Env ALERTH_OFF reverts."
+ 		},
+ 		"heading_relevel": {
