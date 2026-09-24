@@ -1,5 +1,26 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 481, build 260620.45) — THE MTK ACTIVITY'S DATA ROWS ARE ONE HAND-OFF: inside the r480 box, the `[Activity: Embedded]` table's data grid ships whole in one `cv2-interactive` hand-off instead of loose paragraphs that kept only its first two columns
+
+### 1. WHAT CHANGED
+
+**The find** (session 44 Round 3's census, `outputs/_s44_r3_embrows.cjs` / `_s44_r3_actprobe.cjs`): the `[Activity: Embedded]` table's rows after its marker / `[H#]` / `[Body]` rows are the widget's DATA — the nested `Sentence ║ Word choice ║ Picture ║ AudioImage` grids, flip-card `Side 1 Text ║ Side 1 [AudioHover] ║ Side 2` tables, word lists, `Note to CS` lines (3- to 6-column rows). `BilingualBuilder.bilingualActivity` unfolded each row as `p reo` / `p eng` from the FIRST TWO cells only — every third+ cell (the picture, the audio item, the answer) was LOST from the page and the gold's one WIDGET line met a run of Claude paragraphs.
+
+**The fix** (built inert in r480, switched on here): `act_label_box.data_rows_handoff` true — `#markerDataFrom` finds the first data row; from there the whole grid ships as ONE `<div class="cv2-interactive bilingual-unbuilt">` + `TablesAndGrids.contentTable` (every column kept) inside the box — the r451 hand-off form for an un-built widget's data. Own env **`ACTDATA_OFF`** (data `data_env`), byte-identical OFF = the r480 output; `ACTLABELBOX_OFF` reverts both.
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 3222 / 3222 identical**; ON 9 pages / 1 module (TRR116 — the only r480 module whose marker tables carry data rows inside them); pre-scored +41.7 pp-sum (`_r481_prescore.log`).
+- Regeneration of TRR116 + the 12-module spot-check (`_r481_regen.sh`): 0 truly stale, 12 / 12 byte-identical; **`scoped_ship.sh` PASS** — every protected gate held or improved.
+
+### 3. PROTECTED GATES
+
+- Skeleton **55.3088 % → 55.3255 % @ 2491 (+0.0167pp)**, RAW 39.240 → 39.236 %; **≥50 1580 → 1582 (+2)**; ≥75 275; ≥90 25; 9 movers (7 up / 2 down, pp-sum +41.7): TRR116_8_0 +13.3, TRR116_4_0 +10.6, TRR116_6_0 +9.0 (crosses 50), TRR116_9_0 +5.0, TRR116_3_0 +4.9, TRR116_5_0 +3.4, TRR116_7_0 +2.8 (crosses 50); down TRR116_1_0 58.3 → 51.6 (its flip-card / map grids the gold partly shows as visible `audioImage` / `sassoonI-text` lines beside its widgets, which the loose paragraphs happened to align with) and TRR116_2_0 −0.6.
+- compare_structure exact 16691 / EXTRA 208 / missing 872 — EXACT (the rows sat inside `div.activity` before and after, excluded either way); body ANY 238; clean 2587 / 2633; leak 75 / 46 — EXACT; every verifier RESULT line ✓; selftests green; the feature index green; the miner 195 CANDIDATE.
+- Plateau (§4): +0.0167pp (< 0.02) but ≥50 +2 — a protected bucket moved: neither counts nor resets; **0 of 3** stands.
+
+**Ledger:** scoped #7 since the r474 FULL (1 of headroom — the FULL backstop is due at the next ship) · data `elements.dual_language.act_label_box.data_rows_handoff` / `data_env` · env `ACTDATA_OFF` · code `BilingualBuilder.actLabelBoxCfg` / `bilingualActivity` / `#markerDataFrom` · tools `_s44_r4_pick.py`, `_r481_{regen,postship}.sh`, `_r481_finalise.py` · session 44 Round 4.
+
 ## 2026-09-25 (round 480, build 260620.44) — KB 07B "ACTIVITY STRUCTURE" (a §1d TRR FAMILY DIALECT): the MTK activity is ONE box — the `Activity NX: ║ Ngohe NX:` intro table + its `[Activity: Embedded]` table render as one `div.activity`
 
 ### 1. WHAT CHANGED

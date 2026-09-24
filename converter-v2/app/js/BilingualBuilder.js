@@ -957,7 +957,9 @@ class BilingualBuilder {
 		if ((c.exclude_codes ?? []).some((x) => code === String(x).toUpperCase())) return null;
 		return {
 			labelRe: new RegExp(c.label_pattern ?? "^(?:activity|ngohe)\\s*\\d+(?:\\.\\d+)?\\s*[a-z]?\\s*:?$", "i"),
-			dataHandoff: c.data_rows_handoff !== false,
+			// ROUND 481: the data-row hand-off has its own env (ACTDATA_OFF = the r480 output)
+			dataHandoff: c.data_rows_handoff !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[c.data_env ?? "ACTDATA_OFF"]),
 			introH2Level: c.intro_h2_level ?? null,
 		};
 	};

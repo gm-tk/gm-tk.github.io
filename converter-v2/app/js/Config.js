@@ -1834,7 +1834,8 @@ class Config {
 	// ROUND 478 (260620.42): KB c75 FOR THE ACTIVITY'S LEAD PROSE (session 43 Round 10, finished session 44 Round 1). ContentConverter.#leadLinks hands flushLead the owner's + the lead items' links (public web targets, >= 3-character phrases). Env LEADLINKS_OFF.
 	// ROUND 479 (260620.43): KB 07B WHAKATAUKI (session 44 Round 2). The bilingual `[H1] Proverb ║ [H1] Whakataukī` row + its proverb row render as ONE div.whakatauki (BilingualBuilder.#proverbBox). Env PROVERBBOX_OFF.
 	// ROUND 480 (260620.44): KB 07B THE MTK ACTIVITY IS ONE BOX (session 44 Round 3, a TRR family dialect). The `Activity NX: ║ Ngohe NX:` intro table + its [Activity: Embedded] table render as one div.activity (BilingualBuilder.isActLabelTable / bilingualActivity alb). Env ACTLABELBOX_OFF.
-	static AppVersion = "260620.44";
+	// ROUND 481 (260620.45): THE MTK ACTIVITY'S DATA ROWS ARE ONE HAND-OFF (session 44 Round 4) — inside the r480 box the [Activity: Embedded] table's data grid ships whole in one cv2-interactive hand-off (every column kept). Env ACTDATA_OFF.
+	static AppVersion = "260620.45";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -1,0 +1,18 @@
+changed (OFF): 0 pages / 0 modules — 
+changed (ON): 9 pages / 1 modules — TRR116 
+
+## TRR116: pairs 10 -> 10
+   TRR116_0_0.html          OLD TRR116_0_0.html     83.3  NEW TRR116_0_0.html     83.3 (raw  49.5)
+   TRR116_1_0.html          OLD TRR116_1_0.html     58.3  NEW TRR116_1_0.html     51.6 (raw  42.9)
+   TRR116_2_0.html          OLD TRR116_2_0.html     53.8  NEW TRR116_2_0.html     53.1 (raw  36.1)
+   TRR116_3_0.html          OLD TRR116_3_0.html     54.0  NEW TRR116_3_0.html     58.8 (raw  35.9)
+   TRR116_4_0.html          OLD TRR116_4_0.html     26.0  NEW TRR116_4_0.html     36.7 (raw  16.3)
+   TRR116_5_0.html          OLD TRR116_5_0.html     26.5  NEW TRR116_5_0.html     29.8 (raw  19.9)
+   TRR116_6_0.html          OLD TRR116_6_0.html     41.2  NEW TRR116_6_0.html     50.2 (raw  26.7)
+   TRR116_7_0.html          OLD TRR116_7_0.html     47.8  NEW TRR116_7_0.html     50.6 (raw  32.7)
+   TRR116_8_0.html          OLD TRR116_8_0.html     32.6  NEW TRR116_8_0.html     45.9 (raw  22.3)
+   TRR116_9_0.html          OLD TRR116_9_0.html     54.2  NEW TRR116_9_0.html     59.2 (raw  35.5)
+   module sum 477.6 over 10 -> 519.4 over 10  (mean 47.8 -> 51.9)
+
+changed modules: pairs 10 -> 10; pp-sum 477.6 -> 519.4 (+41.7)
+corpus: 55.3088 % @ 2491 -> ≈ 55.3255 % @ 2491  (+0.0167pp);  >=50 +2, >=75 +0
