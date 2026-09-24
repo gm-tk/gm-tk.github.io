@@ -1,0 +1,29 @@
+tag  where     order       gold   claude   claude-pages
+h1   body      reo-first       3       0   
+h2   activity  reo-first      22      11   
+h2   body      reo-first      28       0   
+h3   activity  eng-first       3       0   0
+h3   activity  reo-first     410     169   
+h3   body      reo-first      58     243   
+h4   activity  eng-first       2       0   0
+h4   activity  reo-first      53       0   
+h4   body      eng-first       9       0   0
+h4   body      reo-first      63      95   
+h4   menu      reo-first      75      43   
+h5   activity  eng-first       1       0   0
+h5   activity  reo-first       2       2   
+h5   body      eng-first       0       3   1
+h5   body      reo-first       5       1   
+h5   menu      reo-first     256     183   
+li   activity  eng-first       7       0   0
+li   activity  reo-first      24       0   
+li   body      reo-first      11       0   
+p    activity  eng-first       8      39   8
+p    activity  reo-first    1340     822   
+p    body      eng-first      11      78   17
+p    body      reo-first     394    1438   
+p    menu      reo-first     292     304   
+('p', 'body', 'eng-first') ['PMT101/PMT101_1_0.html', 'PMT101/PMT101_2_0.html', 'PMT101/PMT101_3_0.html', 'TRR102/TRR102_2_0.html', 'TRR102/TRR102_4_0.html', 'TRR103/TRR103_3_0.html', 'TRR107/TRR107_1_0.html', 'TRR109/TRR109_1_0.html', 'TRR109/TRR109_2_0.html', 'TRR111/TRR111_2_0.html']
+('p', 'activity', 'eng-first') ['TRR107/TRR107_2_0.html', 'TRR107/TRR107_3_0.html', 'TRR108/TRR108_1_0.html', 'TRR108/TRR108_2_0.html', 'TRR113/TRR113_2_0.html', 'TRR114/TRR114_1_0.html', 'TRR203/TRR203_1_0.html', 'TRR304/TRR304_3_0.html']
+('h5', 'body', 'eng-first') ['TRR107/TRR107_1_0.html']
+('h3', 'activity', 'eng-first') []
