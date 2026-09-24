@@ -1,0 +1,102 @@
+
+=== carousel: 410 declined / 200 modules
+   258 bundles  177 pg 143 mod  [carouselTableSlides] if (!tables.length)
+         shapes: [('no-table: prose/other (black x0, ownTags 1, heads 0)', 108), ('no-table: prose/other (black x2, ownTags 1, heads 0)', 36), ('no-table: prose/other (black x1, ownTags 1, heads 0)', 35)]  e.g. AGH1001 2.0
+    60 bundles   31 pg  28 mod  [carousel] if (!sameOnly)
+         shapes: [('no-table: prose/other (black x6, ownTags 1, heads 0)', 14), ('no-table: prose/other (black x5, ownTags 1, heads 0)', 10), ('no-table: prose/other (black x7, ownTags 1, heads 0)', 7)]  e.g. BLL110 0.0
+    36 bundles   35 pg  30 mod  [carouselTableSlides] return null; // a heading / image / video / any other tag
+         shapes: [('table 1x2', 5), ('table 6x2', 5), ('table 5x2', 3)]  e.g. BLLR203 1.0
+    23 bundles   15 pg  15 mod  [carouselTableSlides] if (slides.length < (cfg.min_slides ?? tpl.min_slides ?? 2))
+         shapes: [('table 1x1', 5), ('table 1x2', 3), ('table 2x4', 2)]  e.g. FRNO901 5.0
+    17 bundles    6 pg   5 mod  [carouselTableSlides] if (cfg.exclude_reo !== false && MenuBuilder.isReoModule(run))
+         shapes: [('MULTI-TABLE x3', 8), ('MULTI-TABLE x2', 4), ('table 8x4', 1)]  e.g. TRR116 9.0
+    16 bundles   15 pg  15 mod  [carouselTableSlides] return null; // words between the slide tables → not this shape
+         shapes: [('MULTI-TABLE x2', 13), ('MULTI-TABLE x3', 2), ('MULTI-TABLE x5', 1)]  e.g. ENGJ201 5.0
+
+=== accordion: 395 declined / 137 modules
+   273 bundles  170 pg 112 mod  [accordionPanels] if (!panels || panels.length < (cfg.min_panels ?? 1))
+         shapes: [('no-table: prose/other (black x0, ownTags 1, heads 0)', 30), ('table 4x2', 16), ('table 1x2', 15)]  e.g. ENFUN05 0.0
+   113 bundles   63 pg  49 mod  [accordionPanels] if (!parts)
+         shapes: [('no-table: own tag with labels x2', 16), ('no-table: prose/other (black x0, ownTags 1, heads 0)', 11), ('no-table: prose/other (black x5, ownTags 1, heads 0)', 9)]  e.g. ENGC403 2.0
+     7 bundles    5 pg   5 mod  [accordionPanels] if (this.#accLeakGuard(html, cfg))
+         shapes: [('table 7x2', 2), ('table 2x2', 2), ('table 15x3', 1)]  e.g. MUS1004 1.0
+     2 bundles    2 pg   2 mod  [withMembersRead] return null;
+         shapes: [('no-table: own tag with labels x3', 2)]  e.g. BLL246 1.0
+
+=== flipCard: 332 declined / 153 modules
+   166 bundles  119 pg  93 mod  [flipCardCards] if (!cards || !cards.length)
+         shapes: [('table 3x3', 21), ('no-table: prose/other (black x0, ownTags 1, heads 0)', 18), ('table 4x4', 14)]  e.g. BLL240 0.0
+   128 bundles   84 pg  71 mod  [flipCardCards] if (!c.front || !c.back)
+         shapes: [('no-table: prose/other (black x0, ownTags 1, heads 1)', 19), ('no-table: bare own tag x2', 18), ('no-table: prose/other (black x0, ownTags 1, heads 0)', 10)]  e.g. ENFUN05 0.0
+    28 bundles   20 pg  16 mod  [flipCardCards] if (tables.length > 1)
+         shapes: [('MULTI-TABLE x2', 21), ('MULTI-TABLE x5', 3), ('MULTI-TABLE x4', 2)]  e.g. FRFUN08 4.0
+     7 bundles    6 pg   6 mod  [flipCardCards] if (this.#accLeakGuard(c.front, cfg) || this.#accLeakGuard(c.back, cfg))
+         shapes: [('no-table: prose/other (black x13, ownTags 1, heads 0)', 2), ('table 2x3', 2), ('no-table: prose/other (black x6, ownTags 1, heads 1)', 1)]  e.g. XDLS909 0.0
+     3 bundles    3 pg   3 mod  [withMembersRead] return null;
+         shapes: [('table 2x6', 1), ('table 2x5', 1), ('table 3x2', 1)]  e.g. BLL264 1.0
+
+=== clickDrop: 589 declined / 126 modules
+   350 bundles  162 pg 102 mod  [clickDropItems] if (!items)
+         shapes: [('no-table: prose/other (black x0, ownTags 1, heads 0)', 49), ('no-table: prose/other (black x1, ownTags 1, heads 1)', 21), ('no-table: prose/other (black x1, ownTags 1, heads 0)', 19)]  e.g. BLL220 0.0
+   153 bundles   38 pg  20 mod  [clickDropItems] if (!built)
+         shapes: [('no-table: prose/other (black x0, ownTags 1, heads 0)', 116), ('no-table: bare own tag x2', 11), ('no-table: own tag with labels x2', 8)]  e.g. XDLS908 3.0
+    73 bundles   33 pg  25 mod  [clickDropItems] if (!parts)
+         shapes: [('no-table: own tag with labels x2', 29), ('no-table: own tag with labels x5', 8), ('no-table: own tag with labels x3', 4)]  e.g. BLL220 0.0
+     8 bundles    5 pg   5 mod  [clickDropItems] if (this.#accLeakGuard(html, cfg))
+         shapes: [('table 2x2', 3), ('table 7x2', 2), ('no-table: own tag with labels x5', 1)]  e.g. BLL260 0.0
+     5 bundles    3 pg   3 mod  [clickDropItems] if (items.list.length < floor)
+         shapes: [('table 1x2', 4), ('table 2x1', 1)]  e.g. ENGS401 4.0
+
+=== dropDown: 397 declined / 156 modules
+   140 bundles  104 pg  86 mod  [dropDown] if (!body)
+         shapes: [('no-table: prose/other (black x0, ownTags 1, heads 0)', 25), ('no-table: prose/other (black x3, ownTags 1, heads 0)', 8), ('no-table: prose/other (black x4, ownTags 1, heads 0)', 8)]  e.g. ENGS301 5.0
+   137 bundles   94 pg  47 mod  [Build] if (!tpl || tpl.enabled === false)
+         shapes: [('no-table: prose/other (black x0, ownTags 1, heads 0)', 77), ('no-table: bare own tag x2', 7), ('table 5x2', 4)]  e.g. BLL123 1.0
+    99 bundles   87 pg  51 mod  [ddUploadBox] if (!scan)
+         shapes: [('no-table: prose/other (black x0, ownTags 1, heads 0)', 20), ('table 1x1', 16), ('no-table: prose/other (black x1, ownTags 1, heads 0)', 10)]  e.g. ENGC403 2.0
+    21 bundles   19 pg  15 mod  [dropDown] if (!all)
+         shapes: [('no-table: prose/other (black x7, ownTags 1, heads 0)', 3), ('MULTI-TABLE x2', 2), ('no-table: prose/other (black x12, ownTags 1, heads 0)', 2)]  e.g. FRFUN08 2.0
+
+=== modal: 231 declined / 72 modules
+   192 bundles   85 pg  57 mod  [modalSets] if (!sets || sets.length < (cfg.min_modals ?? 1))
+         shapes: [('no-table: own tag with labels x5', 30), ('no-table: prose/other (black x0, ownTags 1, heads 0)', 28), ('no-table: bare own tag x6', 18)]  e.g. BLL150 0.0
+    38 bundles   27 pg  24 mod  [modalSets] if (!parts)
+         shapes: [('no-table: own tag with labels x5', 5), ('no-table: own tag with labels x4', 4), ('no-table: own tag with labels x3', 4)]  e.g. BLL240 0.0
+     1 bundles    1 pg   1 mod  [modalSets] if (this.#accLeakGuard(html, cfg))
+         shapes: [('no-table: own tag with labels x6', 1)]  e.g. BLL121 2.0
+
+=== tabs: 141 declined / 60 modules
+   113 bundles   85 pg  54 mod  [tabsPanes] if (!panes || panes.length < (cfg.min_panes ?? 2))
+         shapes: [('MULTI-TABLE x2', 14), ('no-table: prose/other (black x0, ownTags 1, heads 1)', 8), ('no-table: bare own tag x2', 8)]  e.g. CEDO501 3.1
+    25 bundles   18 pg  14 mod  [tabsPanes] if (!parts)
+         shapes: [('MULTI-TABLE x2', 3), ('no-table: bare own tag x2', 3), ('no-table: own tag with labels x2', 2)]  e.g. XLP06 1.0
+     2 bundles    2 pg   2 mod  [tabsPanes] if (head.split(/\s+/).length > (cfg.label_max_words ?? 6))
+         shapes: [('no-table: own tag with labels x5', 1), ('no-table: own tag with labels x6', 1)]  e.g. XLP06 2.0
+     1 bundles    1 pg   1 mod  [tabsPanes] if (!head || this.#hasRedText(head) || /[\[\]]/.test(head))
+         shapes: [('no-table: own tag with labels x2', 1)]  e.g. DTC1004 2.0
+
+=== selfCheck: 189 declined / 71 modules
+   101 bundles   57 pg  47 mod  [selfCheck] if ((bundle?.tables ?? []).length)
+         shapes: [('table 6x3', 14), ('table 8x2', 12), ('MULTI-TABLE x2', 10)]  e.g. BLL130 0.0
+    43 bundles   28 pg  23 mod  [selfCheck] if (!/^\d+[.)]\s*\S/.test(t))
+         shapes: [('no-table: prose/other (black x0, ownTags 0, heads 0)', 12), ('no-table: prose/other (black x5, ownTags 0, heads 0)', 9), ('no-table: prose/other (black x3, ownTags 0, heads 0)', 6)]  e.g. MXDB102 2.0
+    33 bundles   20 pg  17 mod  [selfCheck] if ((bundle?.media ?? []).length)
+         shapes: [('no-table: prose/other (black x1, ownTags 0, heads 0)', 9), ('no-table: prose/other (black x0, ownTags 0, heads 0)', 6), ('no-table: prose/other (black x10, ownTags 0, heads 0)', 5)]  e.g. BLL222 2.0
+     9 bundles    7 pg   5 mod  [selfCheck] if (questions.length < (tpl.min_rows ?? 2))
+         shapes: [('no-table: prose/other (black x0, ownTags 0, heads 0)', 9)]  e.g. MXDB102 3.0
+     3 bundles    3 pg   3 mod  [selfCheck] if (bundle?.extraTypes && bundle.extraTypes.length)
+         shapes: [('no-table: prose/other (black x7, ownTags 0, heads 0)', 1), ('no-table: prose/other (black x14, ownTags 0, heads 0)', 1), ('no-table: prose/other (black x5, ownTags 0, heads 0)', 1)]  e.g. GENO901 4.0
+
+=== dragAndDrop: 1188 declined / 343 modules
+   245 bundles  204 pg 147 mod  [dragAndDropColumn] if (tables.length !== 1)
+         shapes: [('no-table: prose/other (black x0, ownTags 0, heads 0)', 78), ('MULTI-TABLE x2', 56), ('no-table: prose/other (black x7, ownTags 0, heads 0)', 15)]  e.g. BLL150 0.0
+   209 bundles  182 pg 139 mod  [dragAndDropColumn] if (width < (cfg.min_columns ?? 3))
+         shapes: [('table 6x2', 40), ('table 5x2', 30), ('table 4x2', 29)]  e.g. BLL130 0.0
+   126 bundles  107 pg  98 mod  [dragAndDropColumn] if ((bundle?.media ?? []).length)
+         shapes: [('no-table: prose/other (black x0, ownTags 0, heads 0)', 33), ('MULTI-TABLE x2', 11), ('no-table: prose/other (black x1, ownTags 0, heads 0)', 11)]  e.g. BLL150 0.0
+   101 bundles   78 pg  65 mod  [dragAndDropColumn] if (this.#hasRedText(c))
+         shapes: [('table 7x3', 15), ('table 9x3', 10), ('table 6x3', 8)]  e.g. BLL240 0.0
+   100 bundles   90 pg  62 mod  [dragAndDropColumn] if (bundle?.extraTypes && bundle.extraTypes.length)
+         shapes: [('MULTI-TABLE x2', 14), ('no-table: prose/other (black x0, ownTags 0, heads 0)', 11), ('table 5x2', 6)]  e.g. BLL220 0.0
+    73 bundles   59 pg  36 mod  [dragAndDrop] if (tables.length !== 1)
+         shapes: [('no-table: prose/other (black x0, ownTags 0, heads 0)', 23), ('MULTI-TABLE x2', 21), ('no-table: prose/other (black x7, ownTags 0, heads 0)', 5)]  e.g. BLL123 1.0
