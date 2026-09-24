@@ -99,17 +99,17 @@ is pre-intake. Current (23 September 2026, build 260620.13 — after the 22 Sept
 | | before the intake | now |
 |---|---:|---:|
 | Claude module dirs | 416 | **545** |
-| Claude pages | 2,109 | **2,675** (r459, 24 Sept: −16 — the module introduction stays on the overview, 17 modules; r458: −9 — a placement note no longer splits BLLR201–203 / ART1006 / HIS1001; r457: −17 — the section-label marker no longer splits HIS1002 / PES1008; r456: +41 — the mid-page lesson heading opens its page, 22 modules; r453: +10 — the TRR table-cell title bar) |
+| Claude pages | 2,109 | **2,679** (r470, 24 Sept: +4 — TRR115 converts, its table-cell `[TITLE BAR]` now recognises the Writers Template; r459, 24 Sept: −16 — the module introduction stays on the overview, 17 modules; r458: −9 — a placement note no longer splits BLLR201–203 / ART1006 / HIS1001; r457: −17 — the section-label marker no longer splits HIS1002 / PES1008; r456: +41 — the mid-page lesson heading opens its page, 22 modules; r453: +10 — the TRR table-cell title bar) |
 | gold dirs | 454 | **552** |
 | Writers Template / Media List docx | 619 | **762** |
-| skeleton paired pages | 1,956 | **2,487** (r465, 24 Sept: −37 — CHI1003 / 1004 / 1005 + JPN1004 leave the SCORED population by D14-21, `compare_exclusions.txt`; the dirs and pages stay in the census above; r459: +6 net; r458: −1 — ART1006_4.0; r457: −1 — PES1008's lesson 3 is one page, the human's 3.0 / 3.1 split; r456, 24 Sept: +33 net — 37 new lesson pages, 4 lost to content pairing; r453: +10 — the restored TRR pages; r447: +1 — PWY1002_2_2_0 pairs by content once its journal heading is the gold's own) |
+| skeleton paired pages | 1,956 | **2,491** (r470, 24 Sept: +4 — TRR115's four pages; r465, 24 Sept: −37 — CHI1003 / 1004 / 1005 + JPN1004 leave the SCORED population by D14-21, `compare_exclusions.txt`; the dirs and pages stay in the census above; r459: +6 net; r458: −1 — ART1006_4.0; r457: −1 — PES1008's lesson 3 is one page, the human's 3.0 / 3.1 split; r456, 24 Sept: +33 net — 37 new lesson pages, 4 lost to content pairing; r453: +10 — the restored TRR pages; r447: +1 — PWY1002_2_2_0 pairs by content once its journal heading is the gold's own) |
 
 **552 gold dirs against 545 Claude dirs is CORRECT, not a fault — the gap is exactly the 7 with no source.**
 The 7 (`GER1003–1007`, `SAM1005`, `SAM1006`) have no Writers Template at all (§2). The 12 XOTP modules joined the
 corpus when r425 finished (22 Sept 2026, session 33 Round 1) and **the 38 pre-intake never-converted modules
 joined at the 22 Sept Round 0d (session 33 Round 3: 38 / 38 converted, 0 refused — `LOOP_INTAKE__2026-09-22_38_Modules.md`)**.
-Three Claude dirs (`TRR104`, `TRR105`, `TRR115`) hold only a `_run.json` (no Writers Template / a pre-existing refusal)
-and are not pairs. A gold-only dir is the expected state for a recorded no-build. The table above and
+Two Claude dirs (`TRR104`, `TRR105`) hold only a `_run.json` (no Writers Template — a Media List only)
+and are not pairs (`TRR115` converts since r470, 24 Sept 2026: its table-cell `[TITLE BAR]` now recognises its Writers Template). A gold-only dir is the expected state for a recorded no-build. The table above and
 `_MIGRATION/verify_after_transfer.sh` lines 77–78 are updated at every finalise that changes them (`.pre-<tag>.bak` kept).
 
 ## 1. The measure of success — and the honest ceiling

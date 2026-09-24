@@ -40,6 +40,11 @@
 		"table_title_bar_opener": {
 			"enabled": true,
 			"env": "TABLETB_OFF",
+			"recognise_wt": {
+				"_doc": "ROUND 470 (the autonomous loop's session 42 Round 8, 2026-09-24 — the recognition / no-build lane). LooksLikeWritersTemplate read PARAGRAPH-level red tags only, so a Writers Template that types EVERY tag — its [TITLE BAR] included — inside bilingual table cells (TRR115) was refused as 'no Writers Template' before this opener could run. A table cell whose red span resolves to 'title bar' now identifies the Writers Template too (the same predicate as the opener).",
+				"enabled": true,
+				"env": "TABLETBWT_OFF"
+			},
 			"_doc": "ROUND 453 (the autonomous loop's session 41 Round 1). The MTK bilingual Writers Template (the TRR family) types its [TITLE BAR] inside a bilingual TABLE cell (English ║ Māori, the row right after the Subject / Course / Module Code table). IsContentStart reads paragraphs only, so the chain found a LATER start — [LESSON 1 CONTENT] (TRR102 / 103 / 109 / 111), [LESSON 2 CONTENT] (TRR106 / 304), a later paragraph [TITLE BAR] (TRR110) or, with no standard start, the fallback's first paragraph tag (TRR107 an [Image] in lesson 2, TRR108 [H3] Karakia, TRR112 / 113 the [H1] after [Lesson 1], TRR114 [Alert Solid], TRR116 a [Side Alert] in LESSON 5) — and every block between was trimmed as front matter: the whole overview (Strand / Dispositions / Key objectives / Critical point / Learning intentions / Introduction tables — 0.43–0.90 of each on the gold's 0.0 page) and, in TRR116 / TRR107 / TRR304, whole lessons. NOW: when a TABLE block holds a cell whose red span resolves to the 'title bar' canonical and it sits BEFORE the start the chain (and the r212 drop-down rescue) found — or no start was found — the document opens at that table. Measured over all 529 Writers Templates (outputs/_s41_r1_openers_all.log): the shape exists only in TRR / PNR; PNR101–107 and TRR203 / 301 already open at [Content for DROP DOWN MENU] BEFORE their title-bar table, so they are unchanged by construction; the 13 TRR modules above change. Env TABLETB_OFF reverts (byte-identical)."
 		}
 	},

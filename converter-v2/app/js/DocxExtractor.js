@@ -984,9 +984,21 @@ class DocxExtractor {
 			.content_start_fallback_directives ?? [];
 		if (!normaliser || !fallback.length) return false;
 		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
-		return blocks.some((b) => b.kind === "para"
+		if (blocks.some((b) => b.kind === "para"
 			&& [...b.text.matchAll(RED)].some((m) =>
-				fallback.includes(normaliser.Parse(m[1]).primary?.directive)));
+				fallback.includes(normaliser.Parse(m[1]).primary?.directive)))) return true;
+		// ROUND 470 (data content_start.table_title_bar_opener.recognise_wt; env TABLETBWT_OFF): a Writers
+		// Template that types every tag inside bilingual table cells (TRR115) is recognised by its table-cell
+		// [TITLE BAR] — the r453 opener's own predicate — instead of being refused as 'no Writers Template'.
+		const ttbCfg = DataService.Data.InputDocRules.content_start?.table_title_bar_opener;
+		const rwt = ttbCfg?.recognise_wt;
+		if (!ttbCfg?.enabled || !rwt || rwt.enabled === false
+			|| (typeof process !== "undefined" && process.env
+				&& (process.env[rwt.env ?? "TABLETBWT_OFF"] || process.env[ttbCfg.env ?? "TABLETB_OFF"]))) return false;
+		return blocks.some((b) => b.kind === "table"
+			&& (b.rows ?? []).some((row) => row.some((cell) =>
+				[...String(cell ?? "").matchAll(RED)].some((m) =>
+					normaliser.Parse(m[1]).primary?.tag === "title bar"))));
 	};
 
 	/**

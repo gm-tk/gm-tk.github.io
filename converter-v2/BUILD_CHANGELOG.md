@@ -1,5 +1,28 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (round 470, build 260620.35) — THE TABLE-CELL TITLE BAR RECOGNISES THE WRITERS TEMPLATE: TRR115 CONVERTS — a Writers Template that types every tag, its `[TITLE BAR]` included, inside bilingual table cells is no longer refused as "no Writers Template" — the loop's session 42 Round 8 (the recognition / no-build lane)
+
+### 1. WHAT CHANGED
+
+**The find** (the recognition / no-build lane — the three Claude dirs holding only a `_run.json`): TRR104 / TRR105 have no Writers Template (a Media List only — correct refusals); **TRR115 holds a real Writers Template** (`TRR115 Writers Template.docx`, 146 red tags, the MTK bilingual form) but was refused `no Writers Template (no content opener found)` — on today's engine too (`prep refused (no-wt)`). `DocxExtractor.LooksLikeWritersTemplate` reads PARAGRAPH-level red tags only (a content-start, or a fallback directive), and TRR115 types every tag inside bilingual table cells — its `[TITLE BAR]` included (`│ [TITLE BAR] ║ [TITLE BAR] ║`, then the Overview / Strand / Dispositions / Key objectives / Critical point / Learning intentions tables). So the module was refused before r453's table-cell title-bar opener (`content_start.table_title_bar_opener`) could open it.
+
+**The fix** (`DocxExtractor.LooksLikeWritersTemplate`; data `Input_Doc_Rules.content_start.table_title_bar_opener.recognise_wt` {enabled, env}; env **`TABLETBWT_OFF`**, byte-identical OFF): after the paragraph checks, a TABLE block holding a cell whose red span resolves to `title bar` identifies the Writers Template — r453's own predicate (it is also off whenever `TABLETB_OFF` is). The module then opens at that table exactly as r453 opens TRR102–116.
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules (`outputs/_s42_probe_run.sh r470`): **OFF 3217 / 3217 identical; ON 0 existing pages changed + TRR115's 5 new outputs** (4 pages + `TRR115_interactives.txt`).
+- Regeneration of TRR115 + the 12-module spot-check (`_r470_regen.sh`): 0 truly stale, spot-check 12 / 12 byte-identical. The scoped ship's decomposition flagged the NEW MODULE's own figures (`_r470_scoped_ship.log`); committed NAMED with `_fastloop_diff.py --accept-named` (the r453 precedent, `_r470_fastloop_named.log`; `outputs/_r470_commit_named.sh`).
+- **Population split (§1e):** the pre-existing 2,487 pairs are byte-identical (0 movers, `_r470_skdelta.log`); the new batch = TRR115's four pairs: **TRR115_0_0 55.4 %, _1_0 23.7 %, _2_0 18.6 %, _3_0 21.2 %** (mean 29.7 % — the TRR lesson pages' known level, the r453 follow-up).
+
+### 3. PROTECTED GATES (every movement is TRR115's own new pages — NAMED)
+
+- Skeleton **55.2654 % @ 2487 → 55.2245 % @ 2491 (−0.0410pp = the four new pairs entering below the mean; the pre-existing pairs EXACT)**; **≥50 1575 → 1576** (TRR115_0_0), ≥75 276, ≥90 25; RAW 39.216 → 39.194; median 56.3.
+- compare_structure (531 modules): matched 19457 → 19530; **exact 16709 → 16757 (+48)**; EXTRA 208; **missing 896 → 903 (+7, all on TRR115's newly compared elements)**; row-wrap 24. body_compare 2629 → 2633 pages, ANY 238 / over 61 / runaway 5 / empty 175 EXACT. Structurally clean 2584 / 2629 → **2587 / 2633** (3 of the 4 new pages clean); **literal-tag leak 74 / 45 → 75 / 46 (+1 NAMED: TRR115_1_0 — the writer's own BLACK `[Answer: A]` annotation inside an untagged quiz typed as plain bullets, not a red tag)**; tags 9557; every verifier ✓; selftests 50 PASS / 0 FAIL; feature index GREEN; the miner 197 CANDIDATE @ 2491.
+- Census: Claude pages 2675 → **2679** (`_MIGRATION/verify_after_transfer.sh` line 78, `.pre-r470.bak`; LOOP §0).
+- Plateau (§4): a recognition round — neither counts nor resets: **2 of 3** stands.
+
+**Ledger:** scoped #4 since the r460 FULL · data `Input_Doc_Rules.content_start.table_title_bar_opener.recognise_wt` · env `TABLETBWT_OFF` · code `DocxExtractor.LooksLikeWritersTemplate` · tools `outputs/_r470_{regen,postship,commit_named,checksums}.sh`, `_r470_finalise.py`, `_r470_{scoped_ship,fastloop_named,gates,sk_full,skdelta,selftests,index}.log`, `_r470_sk_final.json`, `_affected_r470.txt` · AppVersion 260620.35.
+
 ## 2026-09-24 (round 467, build 260620.34) — THE STANDARDS TAB (KB constraint 67 / 01B): a tabbed overview's writer section "Aromatawai | Assessment for Learning" is now its own canonical **Standards** tab even where the mined tab registry has no row for the module's subject — where it used to be folded into the Information tab — the loop's session 42 Round 4 (the placement census, §1g, P1)
 
 ### 1. WHAT CHANGED
