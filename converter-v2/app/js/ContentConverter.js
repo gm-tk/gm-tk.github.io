@@ -2606,6 +2606,8 @@ class ContentConverter {
 						// non-bullet paragraphs still emit as separate <p> exactly as before.
 						let titleDone = false;
 						let leadBuf = [];
+						// ROUND 478 (KB c75): the lead's writer links — null when off, and the r477 call is kept byte for byte
+						const leadLinks = this.#leadLinks(bundle);
 						const flushLead = () => {
 							// actDeBold is applied here because the bundle-owned activity's LEAD text (the
 							// writer's own instruction block that comes BEFORE the un-built widget box —
@@ -2614,7 +2616,7 @@ class ContentConverter {
 							// same bold-stripping rule as any other activity body text. The widget box's
 							// own internal member dump (#interactivePlaceholder) is a completely different,
 							// deliberately raw, un-touched hand-off area, and is NOT run through actDeBold.
-							if (leadBuf.length) { emit(...actDeBold(ListsAndRuns.renderBlackText(leadBuf.join("\n"), run))); leadBuf = []; actProse = true; }
+							if (leadBuf.length) { emit(...actDeBold(leadLinks ? ListsAndRuns.renderBlackText(leadBuf.join("\n"), run, leadLinks) : ListsAndRuns.renderBlackText(leadBuf.join("\n"), run))); leadBuf = []; actProse = true; }
 						};
 						const addLead = (raw) => {
 							const text = (raw ?? "").trim();
@@ -9005,6 +9007,11 @@ class ContentConverter {
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "GATHERLINKS_OFF"]) return fallback;
 		const ls = it?._gatheredLinks;
 		if (!ls) return fallback;
+		return this.#weaveableLinks(ls, cfg);
+	}
+
+	/** The r477 filter, shared: drop the links the free-body weave must never carry. */
+	static #weaveableLinks(ls, cfg) {
 		// the r476 target exclusion (ONE pattern, interactive_builders._widget_links.exclude_target_pattern): a picture /
 		// stock / developer-asset / media target is the writer's pointer for the developer, never a learner link — the
 		// first ON run added 73 such hrefs (Drive audio folders, Google Slides decks) the gold never links
@@ -9013,6 +9020,22 @@ class ContentConverter {
 		// a link whose text is a fragment (Word split the run: PES1005's "Te R|ā" linked on the "ā" alone) is never woven
 		const minChars = cfg.min_text_chars ?? 3;
 		return ls.filter((l) => !(skip && skip.test(String(l?.target ?? ""))) && String(l?.text ?? "").trim().length >= minChars);
+	}
+
+	/**
+	 * ROUND 478 (the autonomous loop's session-43 Round 10) — KB constraint 75 ('inline → anchor') FOR THE ACTIVITY'S LEAD.
+	 * A bundle-owned activity's lead prose (the writer's instruction block before the widget box — HES1007-3.0 3B's five
+	 * `__title__ [LINK: url] source` reading lines) is buffered by ConvertPage's `flushLead` and rendered with no links, so
+	 * every writer link in it lost its href. With the flag on: the owner's block links + every non-table lead item's, through
+	 * the r477 filter; off → null (the caller keeps the r477 call). Data body_region.activity_lead_links {enabled, env LEADLINKS_OFF}.
+	 */
+	static #leadLinks(bundle) {
+		const cfg = DataService.Data.EmitTemplates.body_region?.activity_lead_links;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "LEADLINKS_OFF"]) return null;
+		const ls = [...(bundle?.activityOwner?.block?.links ?? [])];
+		for (const l of (bundle?.activityLeadItems ?? [])) if (l && l.type !== "table") ls.push(...(l.block?.links ?? []));
+		return ls.length ? this.#weaveableLinks(ls, cfg) : null;
 	}
 
 	/**

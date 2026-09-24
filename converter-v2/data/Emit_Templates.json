@@ -5390,6 +5390,13 @@
 			"min_text_chars": 3,
 			"_doc": "ROUND 477 (the autonomous loop's session-43 Round 9) — KB constraint 75 ('inline → anchor') FOR GATHERED BODY TEXT. MediaBuilder.gatherFollowing joins a tag line's text with the following black items; the emitters rendering it passed no links (ContentConverter.#element's body default) or only the tag's own (#calloutOpen), so a writer link in a gathered paragraph lost its href (ANZH104-6.0 'Google Lens / Seek by iNaturalist' inside activity 6B; OSBY401's Netsafe 'online contact form' alert). On: gatherFollowing records the gathered items' block.links (the tag's own included) and both emitters weave them (the free-body weave — exact phrase, first occurrence per line, never inside an <a>). Env GATHERLINKS_OFF = the r476 output."
 		},
+		"activity_lead_links": {
+			"enabled": true,
+			"env": "LEADLINKS_OFF",
+			"exclude_targets": true,
+			"min_text_chars": 3,
+			"_doc": "ROUND 478 (the autonomous loop's session-43 Round 10) — KB constraint 75 ('inline → anchor') FOR THE ACTIVITY'S LEAD PROSE. A bundle-owned activity's lead (the writer's instruction block before the widget box) is buffered by ContentConverter.ConvertPage's flushLead and rendered with no links (HES1007-3.0 activity 3B's five reading-list titles lost their hrefs; the gold links each). On: ContentConverter.#leadLinks hands flushLead the owner's block links + every non-table lead item's, through the r477 filter (the r476 target exclusion, >= 3-character text). Env LEADLINKS_OFF = the r477 output."
+		},
 		"open": "<div id=\"body\">",
 		"close": "</div>",
 		"black_leading_tag_strip": [

@@ -1,5 +1,27 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 478, build 260620.42) — KB CONSTRAINT 75 FOR THE ACTIVITY'S LEAD PROSE: a bundle-owned activity's lead (the writer's instruction block before the widget box) keeps the writer's inline links — public web targets, whole-phrase anchors
+
+### 1. WHAT CHANGED
+
+**The find** (session 43 Round 10 — the r475 link census re-run on the r477 corpus, `outputs/_s43_r10_linkdet.py`; traced with `outputs/_s43_r8_linkdbg.cjs HES1007 "Commodifying childhood"`): HES1007-3.0 activity 3B "Energy drink resources" — `[Activity 3B] [H3]` + `[body]` + five `__title__ [LINK: url] source` reading lines + a clickDrop — is a BUNDLE-OWNED activity; its lead prose is buffered by `ContentConverter.ConvertPage`'s `flushLead` and rendered through `renderBlackText(leadBuf.join("\n"), run)` with NO links, so every writer link in it lost its href (the gold links each reading title). A third free-body path beside r477's two (`#element`'s body default, `#calloutOpen`).
+
+**The fix** (`ContentConverter.#leadLinks(bundle)` = the owner's `block.links` + every non-table lead item's `block.links`, through r477's filter — factored out as `#weaveableLinks`: r476's target exclusion (ONE pattern) and a ≥ 3-character phrase floor; `flushLead` passes them to `renderBlackText`; data `Emit_Templates.body_region.activity_lead_links` {enabled, env, exclude_targets, min_text_chars 3}; env **`LEADLINKS_OFF`**, byte-identical OFF — the r477 call is kept byte for byte when the flag is off).
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 3222 / 3222 identical**; ON 21 pages / 13 modules (BLL173 ENFUN08 ENGJ301 ENO2060 HES1007 HIS1003 HIS1004 MXFL203 MXFU201 MXFU202 TWHK901 XDLS912 XTAS101 — `outputs/_affected_r478.txt`, identical in session 43 and session 44); 63 hrefs added, 43 of them links the gold carries, 20 public pages the gold drops; every added `<a>` inside a `<p>` / `<b>` / `<i>` (`_s43_r10_parents.py`).
+- Regeneration of the 13 + the 12-module spot-check (`_r478_regen.sh`): 0 truly stale, 12 / 12 byte-identical; `scoped_ship.sh` containment OK (13 ⊆ 13), every decomposed gate HELD except the mean (−0.0027pp) → committed NAMED (`_r478_commit_named.sh`, `--accept-named "skeleton SCAFFOLD mean"`).
+- Built in session 43, toggled OFF at Chris's `/loop-stop` (the 13 regenerated back, manifest 0 pages differ), finished in session 44 Round 1 with identical measurements.
+
+### 3. PROTECTED GATES
+
+- Skeleton **55.2360 % → 55.2333 % @ 2491 (−0.0027pp, NAMED — §1b "Gates and KB overrides": KB c75 outranks the gold)**, RAW 39.195 → 39.194 %; ≥50 1577; ≥75 275; ≥90 25; 21 movers (5 up / 16 down, pp-sum −6.7), none outside the affected set. Worst: HES1007_8_0 53.0 → 51.3 (the gold keeps HES1007's reading links but as a `<ul><li>` list), MXFL203_10_0 40.9 → 39.4, ENO2060_2_0 41.2 → 40.0 (the writer's public link the gold drops); best XDLS912_5_0 +0.5, MXFU202_6_0 +0.5.
+- compare_structure exact 16759, EXTRA 208, missing 903; body ANY 238; clean 2587 / 2633; leak 75 / 46 — all EXACT; every verifier RESULT line ✓; 17 selftests + the skeleton selftest green (50 PASS / GREEN, 0 FAIL); the feature index green; the miner 197 CANDIDATE.
+- Plateau (§4): a KB-rule round; neither counts nor resets: **2 of 3** stands.
+
+**Ledger:** scoped #4 since the r474 FULL · data `body_region.activity_lead_links` · env `LEADLINKS_OFF` · code `ContentConverter.#leadLinks` / `#weaveableLinks` / `ConvertPage` `flushLead` · tools `_r478_{regen,postship,commit_named,finalise}` · session 44 Round 1.
+
 ## 2026-09-24 (round 477, build 260620.41) — KB CONSTRAINT 75 FOR GATHERED BODY TEXT: a tag line's paragraph and the black paragraphs gathered after it (an activity's body, an alert's content) keep the writer's inline links — public web targets, whole-phrase anchors
 
 ### 1. WHAT CHANGED

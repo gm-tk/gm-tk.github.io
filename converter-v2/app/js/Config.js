@@ -1831,7 +1831,8 @@ class Config {
 	// ROUND 475 (260620.39): KB c75 — THE MODULE MENU KEEPS THE WRITER'S INLINE LINKS (session 43 Round 7). MenuBuilder's text buffers carry their items' block.links into ListsAndRuns.renderBlackText (the free-body weave). Env MENULINKS_OFF.
 	// ROUND 476 (260620.40): KB c75 FOR BUILT WIDGETS (session 43 Round 8). ContentConverter.#interactivePlaceholder's renderBlock weaves the bundle's own public-web links into the widget's prose; renderInline (labels / faces / triggers) stays link-free. Env WIDGETLINKS_OFF.
 	// ROUND 477 (260620.41): KB c75 FOR GATHERED BODY TEXT (session 43 Round 9). MediaBuilder.gatherFollowing records the gathered items' links; #element's body default and the callout content weave them (public web targets, >= 3-character phrases). Env GATHERLINKS_OFF.
-	static AppVersion = "260620.41";
+	// ROUND 478 (260620.42): KB c75 FOR THE ACTIVITY'S LEAD PROSE (session 43 Round 10, finished session 44 Round 1). ContentConverter.#leadLinks hands flushLead the owner's + the lead items' links (public web targets, >= 3-character phrases). Env LEADLINKS_OFF.
+	static AppVersion = "260620.42";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
