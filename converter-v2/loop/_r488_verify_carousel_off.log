@@ -1,0 +1,39 @@
+BLL113: built 1 carousel(s), 4 video slides  ✓ all slide ids match the human
+BLL116: built 2 carousel(s), 6 video slides  ✗ 3 slide id(s) NOT in the human carousels
+BLL123: built 0 carousels (all fell back)
+BLL124: built 0 carousels (all fell back)
+BLL126: built 1 carousel(s), 4 video slides  ✓ all slide ids match the human
+BLL142: built 0 carousels (all fell back)
+BLL143: built 0 carousels (all fell back)
+BLL144: built 1 carousel(s), 3 video slides  ✗ 1 slide id(s) NOT in the human carousels
+BLL145: built 0 carousels (all fell back)
+BLL147: built 0 carousels (all fell back)
+BLL152: built 0 carousels (all fell back)
+BLL153: built 0 carousels (all fell back)
+BLL154: built 0 carousels (all fell back)
+BLL155: built 1 carousel(s), 4 video slides  ✗ 4 slide id(s) NOT in the human carousels
+BLL156: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+BLL161: built 1 carousel(s), 2 video slides  ✓ all slide ids match the human
+BLL162: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+BLL163: built 0 carousels (all fell back)
+BLL164: built 0 carousels (all fell back)
+BLL165: built 0 carousels (all fell back)
+BLL166: built 1 carousel(s), 2 video slides  ✓ all slide ids match the human
+BLL173: built 0 carousels (all fell back)
+BLL174: built 0 carousels (all fell back)
+BLL175: built 0 carousels (all fell back)
+BLL176: built 0 carousels (all fell back)
+BLL211: built 1 carousel(s), 3 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] Multiple module-code candidates found (BLL212, BLL182) — using BLL212 from filename "BLL212 Writers Template + Media List.docx".
+BLL212: built 0 carousels (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (BLL213, BLL183) — using BLL213 from filename "BLL213 Writers Template + Media List.docx".
+BLL213: built 0 carousels (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (BLL214, BLL184) — using BLL214 from filename "BLL214 Writers Template + Media List.docx".
+BLL214: built 0 carousels (all fell back)
+BLL222: built 2 carousel(s), 6 video slides  ✓ all slide ids match the human
+BLL223: built 1 carousel(s), 4 video slides  ✓ all slide ids match the human
+BLL224: built 2 carousel(s), 8 video slides  ✓ all slide ids match the human
+BLL225: built 0 carousels (all fell back)
+
+TOTAL: 16 carousels built across 13 modules, 52 video slides; 8 mismatched slide ids.
+RESULT: mismatches present ✗

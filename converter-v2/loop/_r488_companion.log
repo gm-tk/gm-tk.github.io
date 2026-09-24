@@ -1,0 +1,5 @@
+BLL175:BLL175_2_0.html not paired
+BLL223/BLL223_2_0.html: gold 185 lines | position-free overlap OLD 58 / 61  NEW 59 / 62  (Δ +1) | quote lines gold {'WIDGET': 6} OLD {'WIDGET': 5} NEW {'WIDGET': 5}
+BLL145:BLL145_2_0.html not paired
+BLL175/BLL175_1_1.html: gold 83 lines | position-free overlap OLD 61 / 76  NEW 62 / 77  (Δ +1) | quote lines gold {'WIDGET': 10} OLD {'WIDGET': 5} NEW {'WIDGET': 5}
+BLL145/BLL145_1_1.html: gold 121 lines | position-free overlap OLD 75 / 104  NEW 80 / 117  (Δ +5) | quote lines gold {'WIDGET': 13} OLD {'WIDGET': 5} NEW {'WIDGET': 5}

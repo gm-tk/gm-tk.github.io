@@ -2638,6 +2638,20 @@
 				"caption_close": "</div>",
 				"_note": "ROUND 279 — THE TABLE-SLIDE FALLBACK, tried LAST in #carousel so every dialect above keeps its population byte-for-byte. ONE DATA ROW IS ONE SLIDE (the gold's own rule); a single-row table is one slide per CELL (the r266 form); a leading header/label row is dropped. A cell becomes ordered PARTS through the rich walk's vocabulary, so a table-authored carousel and a member-authored one render identically. min_slides 2 is GOLD-BACKED (a 1-slide carousel is 4 of 1,648 golds = 0.2%). NEVER HALF-BUILDS: no parts, a red developer instruction, too few/many slides, no real content, or a finished carousel still showing a bracketed tag (leak_guard, the r167 rule at this seam). ROUND 284 adds dangling_marker_repair + leak_pattern_dangling — see those keys. Env CARTABLE_OFF."
 			},
+			"story_shell": {
+				"enabled": true,
+				"env": "CARSTORY_OFF",
+				"reference_pattern": "\\bembed\\b[^\\]]{0,40}\\b(?:book|story)\\b",
+				"exclude_pattern": "\\baudio\\b",
+				"run_line_pattern": "\\b(?:story|book|set\\s*\\d|found|https?:)",
+				"run_line_max_words": 16,
+				"run_black_max_words": 4,
+				"title_pattern": "\\b(?:story|book|text)\\b[^‘'\"“]{0,12}[‘'\"“]([^’'\"”]{2,80})[’'\"”]",
+				"set_pattern": "\\bset\\s*\\d+[a-z]?\\b",
+				"request_min_words": 3,
+				"todo_template": "Build this carousel from the pages of the story{title}{set} — one slide per page (the human's form: images/<story title>/<story title>-01.jpg, -02.jpg …); source: {url}",
+				"_doc": "ROUND 488 (the autonomous loop's session 45 Round 5 — WHY_UNBUILT__carousel.md reason 1). The writer asks for a decodable / School Journal STORY to be paged through as a carousel — `[carousel]` + `[embed book 1] Are we able to embed just the story … into a carousel so it's like turning the pages` + `The story ‘Zac hid from Dad’ can be found - (in Set 5)` + the story's PDF link (BLL152 / BLL211 / … the BLL1 / BLL2 phonics families). The human builds `div.row.carousel > viewer > item.image > img` × the story's pages, cut from the PDF by hand (BLL152-2.0) — the page count is nowhere in the WT, so the SLIDES are not derivable, but the SHELL is: since r126 the ordinary-text path (elements.embed_story_carousel) emits exactly that shell for an `[embed story]` line, and a member captured inside a carousel bundle never reached it — 59 of 60 story-carrying carousel bundles shipped as the hand-off box (outputs/_s45_r5_cardump.log, _s45_r5_carshape.py). ON (#carouselStoryShell, dispatched AFTER #carouselRich and before the table-slide last resort, so every existing carousel build is byte-identical): with no table and no merged type, the members from the opener on are walked — a tag whose first bracket matches reference_pattern (and not exclude_pattern) is a story REFERENCE; once one is seen, a tag with no primary tag whose words match run_line_pattern (≤ run_line_max_words words) and a black line of ≤ run_black_max_words words (the link, `(in Set 5)`, `……`) belong to it; the reference run ends at the first other member. It emits the r126 shell (the carousel's own open / close + elements.embed_story_carousel's item and placeholder image) and a `Designer/Developer To Do:` note (todo_template: the story title from title_pattern, the set from set_pattern, the source link — the run's own URL, else the bundle's first non-video media link; NO link → the box is kept). The reference tags' own words (the writer's request) become the Writers Note after the widget (≥ request_min_words). AFTER the run: a black line or a `[body]` renders after the shell through the free-body emitter (the discussion questions), an instruction-class tag is skipped (already the Writers Note), anything else → null (the hand-off box keeps every member). Env CARSTORY_OFF reverts."
+			},
 			"same_type_merge": {
 				"enabled": true,
 				"_note": "ROUND 279 — 'carousel + carousel' in a bundle's extraTypes is only the un-built placeholder LABEL, not a genuinely mixed widget (the r242 accordion finding / r215 tabs self-merge restated). Decides 52 of the 104 extraTypes declines. Env CARSAMETYPE_OFF."

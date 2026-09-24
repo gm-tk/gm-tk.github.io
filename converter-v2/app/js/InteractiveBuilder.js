@@ -8875,12 +8875,130 @@ class InteractiveBuilder {
 		const rich = this.#carouselRich({ bundle, tpl, renderInline, run, renderBlock });
 		if (rich !== null) return rich;
 
+		// ROUND 488 — THE STORY-REFERENCE SHELL, after every strict dialect and the rich fallback have declined (so each
+		// keeps its population byte-for-byte). See #carouselStoryShell. Data carousel.story_shell; env CARSTORY_OFF.
+		const story = this.#carouselStoryShell({ bundle, tpl, run, renderBlock });
+		if (story !== null) return story;
+
 		// TABLE-SLIDE FALLBACK (ROUND 279) — THE LAST RESORT, so every branch above keeps
 		// its own population byte-for-byte. The writer's other big slideshow dialect is a
 		// plain TABLE, and the three table branches above each recognise one narrow shape;
 		// this one reads any of them by the general rule the gold uses — one data ROW is
 		// one slide. See #carouselTableSlides. Data carousel.table_slides; env CARTABLE_OFF.
 		return this.#carouselTableSlides({ bundle, tpl, renderInline, run, renderBlock });
+	}
+
+	/**
+	 * ROUND 488 (the autonomous loop's session 45 Round 5 — WHY_UNBUILT__carousel.md reason 1) — THE STORY-REFERENCE
+	 * CAROUSEL SHELL. The writer asks for a decodable / School Journal story to be paged through as a carousel:
+	 * `[carousel]` + `[embed book 1] Are we able to embed just the story … into a carousel …` + `The story ‘Zac hid
+	 * from Dad’ can be found - (in Set 5)` + the story's PDF link. The human builds the carousel from the story's
+	 * pages, cut from the PDF by hand (BLL152-2.0) — the page count is nowhere in the WT, so the SLIDES are not
+	 * derivable, but the SHELL is, and since r126 the ordinary-text path emits exactly that shell for an
+	 * `[embed story]` line; a member captured inside a carousel bundle never reached it, so 59 of 60 such bundles
+	 * shipped as the hand-off box. This emits the same shell (the carousel's own open / close + the r126 item and
+	 * placeholder image) and a Designer/Developer To Do naming the story, its set and its source link; the
+	 * reference tags' own words (the writer's request) become the Writers Note; the prose AFTER the reference (the
+	 * discussion questions, a `[body]`) renders after the shell (the r352 carousel members form — every carousel
+	 * member is already read by the dispatch's video test, so the generic members rule cannot place it).
+	 * NEVER HALF-BUILDS: a table, a merged type, no story reference, no source link, or any member after the
+	 * reference that is not prose / an instruction → null (the hand-off box keeps every member).
+	 * Data carousel.story_shell   Env toggle: its env (CARSTORY_OFF)
+	 */
+	static #carouselStoryShell({ bundle, tpl, run, renderBlock }) {
+		const cfg = tpl?.story_shell;
+		const env = (typeof process !== "undefined" && process.env) ? process.env : {};
+		if (!cfg || cfg.enabled === false || (cfg.env && env[cfg.env])) return null;
+		if (typeof renderBlock !== "function") return null;
+		const members = bundle?.memberItems ?? [];
+		if (!members.length || (bundle.tables ?? []).length || (bundle.extraTypes ?? []).some((t) => t !== bundle.type)) return null;
+		const RED = /\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu;
+		const plain = (t) => String(t ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ").replace(/\s+/g, " ").trim();
+		const nWords = (t) => plain(t).replace(/https?:\/\/\S+/g, " ").replace(/\[[^\]]*\]/g, " ").split(" ")
+			.filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
+		const refRe = new RegExp(cfg.reference_pattern ?? "\\bembed\\b[^\\]]{0,40}\\b(?:book|story)\\b", "i");
+		const exRe = cfg.exclude_pattern ? new RegExp(cfg.exclude_pattern, "i") : null;
+		const lineRe = new RegExp(cfg.run_line_pattern ?? "\\b(?:story|book|set\\s*\\d|found|https?:)", "i");
+		const urlRe = /https?:\/\/[^\s\]\)"<>]+/g;
+		// the reference run: from the opener on
+		let i = (members[0]?.type === "tag" && members[0].parse?.primary?.directive === "INTERACTIVE") ? 1 : 0;
+		const refItems = [], runTexts = [], urls = [];
+		const takeUrls = (m, t) => {
+			for (const u of String(t ?? "").matchAll(urlRe)) urls.push(u[0]);
+			for (const l of (m?.block?.links ?? [])) if (/^https?:\/\//i.test(String(l?.target ?? ""))) urls.push(l.target);
+		};
+		for (; i < members.length; i++) {
+			const m = members[i];
+			if (!m) continue;
+			if (m.type === "tag") {
+				const text = plain(m.text), after = plain(m.blackAfter);
+				const first = (text.match(/\[[^\]]*\]/)?.[0] ?? "");
+				if (refRe.test(first) && !(exRe && exRe.test(first))) {
+					refItems.push(m); runTexts.push(text + " " + after); takeUrls(m, text + " " + after); continue;
+				}
+				const t = (text + " " + after).trim();
+				// a line naming the story / set / source belongs to the reference — also when it parses as an instruction
+				// (BLL152's "The story ‘Zac hid from Dad’ can be found - (in Set 5)"; it stays the Writers Note as well)
+				const isInstr = m.parse?.class === "instruction" || m.parse?.instructionFragment;
+				if (refItems.length && (!m.parse?.primary || isInstr)
+					&& lineRe.test(t) && nWords(t) <= (cfg.run_line_max_words ?? 16)) {
+					runTexts.push(t); takeUrls(m, t); continue;
+				}
+				break;
+			}
+			if (m.type === "black") {
+				const t = plain(m.text);
+				if (!t) continue;
+				if (refItems.length && nWords(t) <= (cfg.run_black_max_words ?? 4)) { runTexts.push(t); takeUrls(m, t); continue; }
+				break;
+			}
+			break;
+		}
+		if (!refItems.length) return null;
+		const url = urls.find((u) => !/youtu\.?be|youtube\.com|vimeo/i.test(u))
+			?? (bundle.media ?? []).map((x) => String(x?.target ?? "")).find((u) => /^https?:\/\//i.test(u) && !/youtu\.?be|youtube\.com|vimeo/i.test(u))
+			?? "";
+		if (!url) return null;                                                     // no source → keep the box
+		// the members AFTER the reference: prose renders after the shell; an instruction is already the Writers Note
+		const after = [];
+		for (; i < members.length; i++) {
+			const m = members[i];
+			if (!m) continue;
+			if (m.type === "black") {
+				if (!plain(m.text).replace(RED, "").trim()) continue;
+				const r = renderBlock(m.text); if (!r) return null; after.push(r); continue;
+			}
+			if (m.type !== "tag") return null;                                     // a table / a nested widget
+			const parse = m.parse, prim = parse?.primary;
+			if (parse && (parse.class === "instruction" || parse.instructionFragment)) continue;
+			if (String(prim?.tag ?? "").toLowerCase() === "body") {
+				if (!plain(m.blackAfter)) continue;
+				const r = renderBlock(m.blackAfter); if (!r) return null; after.push(r); continue;
+			}
+			return null;                                                           // a heading / media / any other tag
+		}
+		const all = runTexts.join(" ");
+		const title = (all.match(new RegExp(cfg.title_pattern ?? "[‘'\"“]([^’'\"”]{2,80})[’'\"”]", "u")) ?? [])[1]?.trim() ?? "";
+		const set = (all.match(new RegExp(cfg.set_pattern ?? "\\bset\\s*\\d+[a-z]?\\b", "i")) ?? [])[0]?.trim() ?? "";
+		// the writer's request on the reference tags' own lines → the Writers Note after the widget
+		for (const m of refItems) {
+			const w = plain(m.text).replace(/\[[^\]]*\]/g, " ").replace(urlRe, " ").replace(/\s+/g, " ").trim();
+			if (w.split(" ").filter(Boolean).length >= (cfg.request_min_words ?? 3)
+				&& !(bundle.instructions ?? []).some((x) => String(x).includes(w.slice(0, 40))))
+				bundle.instructions = [...(bundle.instructions ?? []), w];
+		}
+		const T = DataService.Data.EmitTemplates;
+		const esc = T.elements?.embed_story_carousel ?? {};
+		const label = esc.placeholder_label ?? "story", fname = esc.placeholder_filename ?? "story.jpg";
+		const img = run?.imageMode === "P"
+			? Utils.FillTemplate(T.image.mode_P.visible, { label }) + Utils.FillTemplate(T.image.mode_P.comment, { filename: fname })
+			: Utils.FillTemplate(T.image.mode_D.visible, { filename: fname });
+		const item = Utils.FillTemplate(esc.item ?? "<div class=\"item image\">\n{image}\n</div>", { image: img });
+		const todo = NotesAndComments.redFlag(Utils.FillTemplate(cfg.todo_template
+			?? "Build this carousel from the pages of the story{title}{set} — one slide per page; source: {url}",
+			{ title: title ? ` ‘${title}’` : "", set: set ? ` (${set})` : "", url }), run, "todo");
+		bundle.r488StoryShell = true;                                              // detector/affected-set marker
+		return [tpl.open, item, tpl.close, todo, ...after.flat()].join("\n");
 	}
 
 	/**

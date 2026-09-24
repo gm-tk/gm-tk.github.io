@@ -1841,7 +1841,8 @@ class Config {
 	// ROUND 485 (260620.49): THE TITLE BAR'S LANGUAGE-BOUNDARY SPLIT (session 44 Round 11) — an English run then a Māori run with no separator ships as the two header h1 spans (ContentConverter.#bilingualLangSplit). Env TITLELANGSPLIT_OFF.
 	// ROUND 486 (260620.50): KB 01F THE WRITER'S QUOTE IS p.quoteText + p.quoteAck (session 45 Round 1) — no wrapper div, the attribution its own paragraph, the box holding only the quote (ContentConverter.#quoteKbForm). Env QUOTEFORM_OFF.
 	// ROUND 487 (260620.51): THE UNQUOTED NAMED HOVER ANCHOR (session 45 Round 2) — [rollover definition for TERM: DEF] weaves onto TERM (InteractiveScanner.#weaveHoverDefinition) instead of being dropped. Env HOVERNAMED_OFF.
-	static AppVersion = "260620.51";
+	// ROUND 488 (260620.52): THE STORY-REFERENCE CAROUSEL SHELL (session 45 Round 5) — a carousel whose members are the writer's [embed book N] / [embed story] reference builds the r126 shell + a To Do (InteractiveBuilder.#carouselStoryShell). Env CARSTORY_OFF.
+	static AppVersion = "260620.52";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
