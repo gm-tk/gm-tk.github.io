@@ -1,0 +1,49 @@
+🟢 [ModuleResolver] ARFUN04 is a recorded page_model exception — using multi-file.
+ARFUN04: built 0 pop-outs (all fell back)
+🟢 [ModuleResolver] BLL110 is a recorded page_model exception — using single-file.
+BLL110: 6 pop-out group(s), 36 trigger(s) [exact 0, copy-edit 0, dev-edit 36, defect 0]  ✓ every pop-out well-formed
+BLL111: 1 pop-out group(s), 6 trigger(s) [exact 0, copy-edit 0, dev-edit 6, defect 0]  ✓ every pop-out well-formed
+BLL112: 1 pop-out group(s), 6 trigger(s) [exact 0, copy-edit 0, dev-edit 6, defect 0]  ✓ every pop-out well-formed
+🟢 [ModuleResolver] BLL120 is a recorded page_model exception — using single-file.
+BLL120: 8 pop-out group(s), 47 trigger(s) [exact 0, copy-edit 0, dev-edit 47, defect 0]  ✓ every pop-out well-formed
+BLL121: built 0 pop-outs (all fell back)
+BLL122: 1 pop-out group(s), 6 trigger(s) [exact 0, copy-edit 0, dev-edit 6, defect 0]  ✓ every pop-out well-formed
+BLL125: 2 pop-out group(s), 6 trigger(s) [exact 0, copy-edit 0, dev-edit 6, defect 0]  ✓ every pop-out well-formed
+🟢 [ModuleResolver] BLL130 is a recorded page_model exception — using single-file.
+BLL130: 6 pop-out group(s), 36 trigger(s) [exact 0, copy-edit 0, dev-edit 36, defect 0]  ✓ every pop-out well-formed
+BLL132: built 0 pop-outs (all fell back)
+🟢 [ModuleResolver] BLL140 is a recorded page_model exception — using single-file.
+BLL140: built 0 pop-outs (all fell back)
+BLL143: 1 pop-out group(s), 6 trigger(s) [exact 0, copy-edit 0, dev-edit 6, defect 0]  ✓ every pop-out well-formed
+BLL146: built 0 pop-outs (all fell back)
+🟢 [ModuleResolver] BLL150 is a recorded page_model exception — using single-file.
+BLL150: built 0 pop-outs (all fell back)
+🟢 [ModuleResolver] BLL160 is a recorded page_model exception — using single-file.
+BLL160: built 0 pop-outs (all fell back)
+BLL161: 1 pop-out group(s), 3 trigger(s) [exact 0, copy-edit 0, dev-edit 3, defect 0]  ✓ every pop-out well-formed
+🟢 [ModuleResolver] BLL170 is a recorded page_model exception — using single-file.
+BLL170: built 0 pop-outs (all fell back)
+BLL171: 1 pop-out group(s), 2 trigger(s) [exact 0, copy-edit 0, dev-edit 2, defect 0]  ✓ every pop-out well-formed
+BLL172: 1 pop-out group(s), 6 trigger(s) [exact 0, copy-edit 0, dev-edit 6, defect 0]  ✓ every pop-out well-formed
+🟢 [ModuleResolver] BLL210 is a recorded page_model exception — using single-file.
+BLL210: built 0 pop-outs (all fell back)
+🟢 [ModuleResolver] BLL240 is a recorded page_model exception — using single-file.
+BLL240: built 0 pop-outs (all fell back)
+🟢 [ModuleResolver] BLL243 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL243: 1 pop-out group(s), 1 trigger(s) [exact 0, copy-edit 0, dev-edit 1, defect 0]  ✓ every pop-out well-formed
+🟢 [ModuleResolver] BLL250 is not in the registry members — inherited from its level BLL2 (sibling rule).
+🟢 [ModuleResolver] BLL250 is a recorded page_model exception — using single-file.
+BLL250: built 0 pop-outs (all fell back)
+BLLR201: 2 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+BLLR202: built 0 pop-outs (all fell back)
+BLLR203: built 0 pop-outs (all fell back)
+CEDK101: built 0 pop-outs (all fell back)
+CEDK102: built 0 pop-outs (all fell back)
+🟢 [ModuleResolver] CEDR203 is not in the registry members — inherited from its level CEDR2 (sibling rule).
+CEDR203: 4 pop-out group(s), 4 trigger(s) [exact 0, copy-edit 0, dev-edit 4, defect 0]  ✓ every pop-out well-formed
+🟢 [ModuleResolver] CEDT102 is not in the registry members — inherited from its level CEDT1 (sibling rule).
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+CEDT102: 3 pop-out group(s), 9 trigger(s) [exact 0, copy-edit 0, dev-edit 9, defect 0]  ✓ every pop-out well-formed
+
+TOTAL: 39 pop-out group(s) across 15 module(s), 174 triggers; exact 0, copy-edit 0, dev-edit 174, defect 0.
+RESULT: every built pop-out is well-formed ✓

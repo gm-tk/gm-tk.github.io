@@ -1,0 +1,52 @@
+OSOH101: 3 pop-out group(s), 1 trigger(s) [exact 0, copy-edit 0, dev-edit 1, defect 0]  ✓ every pop-out well-formed
+OSOH201: 4 pop-out group(s), 1 trigger(s) [exact 0, copy-edit 0, dev-edit 1, defect 0]  ✓ every pop-out well-formed
+OSOH401: 1 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+OSOH501: 1 pop-out group(s), 6 trigger(s) [exact 0, copy-edit 0, dev-edit 6, defect 0]  ✓ every pop-out well-formed
+OSSC301: built 0 pop-outs (all fell back)
+OSSC401: 1 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+OSSM401: 1 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+🟢 [ModuleResolver] OSSM501 is not in the registry members — inherited from its level OSSM4 (sibling rule).
+OSSM501: 1 pop-out group(s), 2 trigger(s) [exact 2, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+PES1008: 2 pop-out group(s), 1 trigger(s) [exact 0, copy-edit 0, dev-edit 1, defect 0]  ✓ every pop-out well-formed
+🟠 [ModuleResolver] Multiple module-code candidates found (PWY1007, PW1003) — using PWY1007 from filename "PWY1007 Writers Template.docx".
+PWY1007: built 0 pop-outs (all fell back)
+PWY1008: built 0 pop-outs (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (PWY1009, LGO1007) — using PWY1009 from filename "PWY1009 Writers Template.docx".
+PWY1009: 1 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+SCES201: built 0 pop-outs (all fell back)
+🟢 [ModuleResolver] SSCI104 is not in the registry members — inherited from its level SSCI3 (sibling rule).
+SSCI104: 2 pop-out group(s), 2 trigger(s) [exact 0, copy-edit 0, dev-edit 2, defect 0]  ✓ every pop-out well-formed
+SSFUN01: built 0 pop-outs (all fell back)
+🟠 [ModuleResolver] TEDC402: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Page-layout table dissolved into 12 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 4 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 14 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 4 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+TEDC402: built 0 pop-outs (all fell back)
+TEFUN03: 3 pop-out group(s), 2 trigger(s) [exact 0, copy-edit 0, dev-edit 2, defect 0]  ✓ every pop-out well-formed
+WJFUN210: built 0 pop-outs (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (WJFUN306, WJFUN205) — using WJFUN306 from filename "WJFUN306 Writers Template.docx".
+WJFUN306: 2 pop-out group(s), 2 trigger(s) [exact 2, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+XDLS905: built 0 pop-outs (all fell back)
+🟢 [ModuleResolver] XGF9002 is not in the registry members — inherited from its level XGF9 (sibling rule).
+XGF9002: built 0 pop-outs (all fell back)
+XGF9003: built 0 pop-outs (all fell back)
+XGF9004: built 0 pop-outs (all fell back)
+XLP01: built 0 pop-outs (all fell back)
+XLP02: built 0 pop-outs (all fell back)
+🟢 [ModuleResolver] XMES202 is not in the registry members — inherited from its level XMES2 (sibling rule).
+XMES202: 1 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+XWHA01: built 0 pop-outs (all fell back)
+
+TOTAL: 23 pop-out group(s) across 13 module(s), 17 triggers; exact 4, copy-edit 0, dev-edit 13, defect 0.
+RESULT: every built pop-out is well-formed ✓

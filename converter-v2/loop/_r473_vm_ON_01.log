@@ -1,0 +1,43 @@
+CEDT208: 1 pop-out group(s), 4 trigger(s) [exact 0, copy-edit 0, dev-edit 4, defect 0]  ✓ every pop-out well-formed
+CEDT301: 3 pop-out group(s), 11 trigger(s) [exact 0, copy-edit 0, dev-edit 11, defect 0]  ✓ every pop-out well-formed
+CEDW101: built 0 pop-outs (all fell back)
+ENFUN03: built 0 pop-outs (all fell back)
+ENFUN07: built 0 pop-outs (all fell back)
+ENFUN09: 1 pop-out group(s), 1 trigger(s) [exact 0, copy-edit 0, dev-edit 1, defect 0]  ✓ every pop-out well-formed
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI103, EN000) — using ENGI103 from filename "ENGI103 Writers Template + Media List.docx".
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+ENGI103: 3 pop-out group(s), 2 trigger(s) [exact 2, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI303, EN000) — using ENGI303 from filename "ENGI303 Writers Template + Media List.docx".
+ENGI303: 1 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI401, EN000) — using ENGI401 from filename "ENGI401 Writers Template + Media List.docx".
+ENGI401: 3 pop-out group(s), 1 trigger(s) [exact 0, copy-edit 0, dev-edit 1, defect 0]  ✓ every pop-out well-formed
+ENGJ101: built 0 pop-outs (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGJ301, EN000) — using ENGJ301 from filename "ENGJ301 Writers Template + Media List.docx".
+ENGJ301: 1 pop-out group(s), 2 trigger(s) [exact 2, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+ENGJ302: built 0 pop-outs (all fell back)
+ENGJ402: built 0 pop-outs (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGR101, EN000) — using ENGR101 from filename "ENGR101 Writers Template + Media List.docx".
+ENGR101: 1 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGR201, EN000) — using ENGR201 from filename "ENGR201 Writers Template + Media List.docx".
+ENGR201: 1 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGR301, EN000) — using ENGR301 from filename "ENGR301 Writers Template + Media List.docx".
+ENGR301: built 0 pop-outs (all fell back)
+ENGR302: 2 pop-out group(s), 4 trigger(s) [exact 3, copy-edit 0, dev-edit 1, defect 0]  ✓ every pop-out well-formed
+ENGS101: 1 pop-out group(s), 1 trigger(s) [exact 0, copy-edit 0, dev-edit 1, defect 0]  ✓ every pop-out well-formed
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGS102, EN000) — using ENGS102 from filename "ENGS102 Writers Template + Media List.docx".
+ENGS102: built 0 pop-outs (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGS201, EN000) — using ENGS201 from filename "ENGS201 Writers Template + Media List.docx".
+ENGS201: 1 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGS301, EN000) — using ENGS301 from filename "ENGS301 Writers Template + Media List.docx".
+ENGS301: 1 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGS401, EN000) — using ENGS401 from filename "ENGS401 Writers Template + Media List.docx".
+ENGS401: 3 pop-out group(s), 2 trigger(s) [exact 0, copy-edit 0, dev-edit 2, defect 0]  ✓ every pop-out well-formed
+🟠 [ModuleResolver] Multiple module-code candidates found (EXBP901, EXIP902) — using EXBP901 from filename "EXBP901 Writers Template + Media List.docx".
+EXBP901: 1 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+EXIP901: 1 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+EXPFUN02: 18 pop-out group(s), 6 trigger(s) [exact 0, copy-edit 0, dev-edit 6, defect 0]  ✓ every pop-out well-formed
+EXPFUN03: 18 pop-out group(s), 5 trigger(s) [exact 0, copy-edit 0, dev-edit 5, defect 0]  ✓ every pop-out well-formed
+EXPFUN04: 6 pop-out group(s), 18 trigger(s) [exact 0, copy-edit 0, dev-edit 18, defect 0]  ✓ every pop-out well-formed
+
+TOTAL: 67 pop-out group(s) across 19 module(s), 57 triggers; exact 7, copy-edit 0, dev-edit 50, defect 0.
+RESULT: every built pop-out is well-formed ✓

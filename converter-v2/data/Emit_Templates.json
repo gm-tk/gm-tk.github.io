@@ -1616,6 +1616,14 @@
 		},
 		"_principle": "PRINCIPLE (anchor_compare two-layer test; reference/Principles_Audit_and_Reconciliation.md). Every builder here builds the widget the WRITER's tag specifies. The human developer's finished widget is the reference ONLY where the writer's tag corresponds to the human's element (Decision-Framework B). Where the human editorially SUBSTITUTED a different element (e.g. writer [flip card] -> human accordion; writer [carousel] left as static images), that substitution is NON-derivable (Decision-Framework A1): build the WRITER's tagged widget anyway and judge it on the widget VERIFIER (_verify_*.cjs, divergence/defect 0), NOT on skeleton-vs-the-human's-substitution. A skeleton dip vs a human substitution is the expected, documented cost (rounds 115/116), not a regression. Never half-build: build cleanly or keep the honest placeholder.",
 		"modal": {
+			"doc_button_text_fence": {
+				"enabled": true,
+				"env": "MODALBTNTEXT_OFF",
+				"min_words": 3,
+				"media_tag_pattern": "\\[\\s*(?:image|img|photo|picture|video|audio|embed|button|link)\\b",
+				"_doc_exempt": "Exempt from the learner text: a member tag matching media_tag_pattern (a picture / video / audio / embed label, a [button] / [link] label — BLLR201-5.0's genuine document button keeps its 'Go to journal'), a writer instruction, and the INVOCATION tag's own line (the round-354 tag-words note already surfaces it as the red Writers Note — OSOH201-3.0).",
+				"_doc": "ROUND 473 (the autonomous loop's session-43 Round 2) — A CONTENT-CARRYING BUNDLE IS NOT A LINK BUTTON, whatever the content (round 311 fenced a heading member only). The r73 single-document button path (exactly one URL → one anchored button) dropped every other member, and the r356 members rule counts a member consumed once it was READ, so PWY1009-2.2 (modals 6 / 7), TEFUN03-0.0 ('AI is a tool', sixteen paragraphs), HIS1005-3.0 (a source's text + two questions), MXFL401-4.0 (the KiwiSaver modal) and BLL240-0.0 (five activity modals, four times) shipped as a single button to the one URL they held — a stock photo, a source link, a website. A member carrying learner text (>= min_words words; not a [image] / [video] / [audio] / [embed] label, not a writer instruction, not the button's own label) sends the bundle on to the round-280 trigger + TKmodal set composer (or its honest box). Env MODALBTNTEXT_OFF = the r472 output."
+			},
 			"modal_sets": {
 				"enabled": true,
 				"filename_istock": "iStock-{id}.jpg",

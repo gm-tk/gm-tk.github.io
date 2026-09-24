@@ -5996,6 +5996,16 @@ class InteractiveBuilder {
 				&& ["h2", "h3", "h4", "h5"].includes(m.parse?.primary?.tag))) return null;
 		const urls = [];
 		const labels = [];
+		// ROUND 473 (interactive_builders.modal.doc_button_text_fence): the LEARNER text the bundle carries — every
+		// black / tag-line part that is not a picture / video / audio label and not a writer instruction. A bundle
+		// that carries any beyond the button's own label is a content modal, not a link button (below).
+		const fence = tpl.doc_button_text_fence;
+		const fenceOn = !!fence && fence.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[fence.env ?? "MODALBTNTEXT_OFF"]);
+		const mediaTag = new RegExp(fence?.media_tag_pattern ?? "\\[\\s*(?:image|img|photo|picture|video|audio|embed|button|link)\\b", "i");
+		// the invocation tag's OWN line is the round-354 tag-words note's territory (it surfaces as the red Writers Note)
+		const invocation = (bundle?.memberItems ?? [])[0]?.type === "tag" ? (bundle.memberItems)[0] : null;
+		const learner = [];
 		for (const m of (bundle?.media ?? [])) {
 			const u = String(m?.target ?? m?.text ?? "");
 			if (/^https?:/.test(u)) urls.push(u);
@@ -6010,6 +6020,8 @@ class InteractiveBuilder {
 			if (mm) urls.push(mm[0]);
 			const rest = txt.replace(/https?:\/\/[^\s\]]+/g, "").replace(/\*/g, "").trim();
 			if (rest) labels.push(rest);
+			if (fenceOn && rest && it !== invocation && !(it?.type === "tag" && (mediaTag.test(String(it?.text ?? ""))
+				|| it?.parse?.class === "instruction" || it?.parse?.class === "noise"))) learner.push(rest.replace(/\s+/g, " ").trim());
 		}
 		// Verified against OSBY201-03: a [video] adjacent to the modal is its OWN
 		// element — the scanner may associate its URL as bundle.media, which made the
@@ -6026,6 +6038,18 @@ class InteractiveBuilder {
 			.find((s) => s && s.length <= (tpl.label_max_chars ?? 70)
 				&& !/^https?:/.test(s) && !/click the button|below/i.test(s));
 		if (!label) label = tpl.default_label ?? "Go to resource";
+		// ROUND 473 — A CONTENT-CARRYING BUNDLE IS NOT A LINK BUTTON, whatever the content (round 311 fenced a heading
+		// member only). This path emits ONE anchored button and drops every other member, and the r356 members rule
+		// counts a member as consumed once it was READ — so PWY1009-2.2's modals 6 / 7, TEFUN03-0.0's "AI is a tool"
+		// (sixteen paragraphs), HIS1005-3.0's source text, MXFL401-4.0's KiwiSaver modal and BLL240's five activity
+		// modals shipped as a single button to the one URL they held (a stock photo, a source link, a website). Any
+		// learner part of min_words+ words beyond the label → fall through to the round-280 set composer.
+		if (fenceOn) {
+			const min = fence.min_words ?? 3;
+			const nw = (s) => String(s).replace(/[^\p{L}\p{N}]+/gu, " ").trim().split(/\s+/).filter(Boolean).length;
+			const lab = String(label).replace(/\s+/g, " ").trim();
+			if (learner.some((s) => s !== lab && nw(s) >= min)) return null;
+		}
 		return Utils.FillTemplate(tpl.form, { url: Utils.EscapeHtml(uniq[0]), label: Utils.EscapeHtml(label) });
 	}
 

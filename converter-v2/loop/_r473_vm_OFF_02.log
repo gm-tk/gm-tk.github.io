@@ -1,0 +1,35 @@
+EXPFUN05: 14 pop-out group(s), 14 trigger(s) [exact 13, copy-edit 1, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+🟠 [ModuleResolver] Multiple module-code candidates found (GER1002, GER1000) — using GER1002 from filename "GER1002 Writers Template + Media List.docx".
+GER1002: 1 pop-out group(s), 1 trigger(s) [exact 0, copy-edit 0, dev-edit 1, defect 0]  ✓ every pop-out well-formed
+HES1005: built 0 pop-outs (all fell back)
+HES1006: built 0 pop-outs (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1001, HS1001) — using HIS1001 from filename "HIS1001 Writers Template.docx".
+HIS1001: built 0 pop-outs (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1002, HS1002) — using HIS1002 from filename "HIS1002 Writers Template + Media List.docx".
+HIS1002: built 0 pop-outs (all fell back)
+HIS1005: 1 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+🟠 [ModuleResolver] HPRE301: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+HPRE301: 1 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+MXDB201: 1 pop-out group(s), 3 trigger(s) [exact 0, copy-edit 0, dev-edit 3, defect 0]  ✓ every pop-out well-formed
+MXDB202: built 0 pop-outs (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (MXDB302, MXO421) — using MXDB302 from filename "MXDB302 Writers Template + Media List.docx".
+MXDB302: 3 pop-out group(s), 3 trigger(s) [exact 0, copy-edit 0, dev-edit 3, defect 0]  ✓ every pop-out well-formed
+MXDI101: built 0 pop-outs (all fell back)
+MXDI102: built 0 pop-outs (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (MXEO301, MXO332) — using MXEO301 from filename "MXEO301 Writers Template + Media List.docx".
+MXEO301: 6 pop-out group(s), 5 trigger(s) [exact 0, copy-edit 0, dev-edit 5, defect 0]  ✓ every pop-out well-formed
+MXEX201: built 0 pop-outs (all fell back)
+MXFL101: 10 pop-out group(s), 38 trigger(s) [exact 0, copy-edit 0, dev-edit 38, defect 0]  ✓ every pop-out well-formed
+MXFL103: 1 pop-out group(s), 6 trigger(s) [exact 0, copy-edit 0, dev-edit 6, defect 0]  ✓ every pop-out well-formed
+MXFL202: built 0 pop-outs (all fell back)
+MXFL301: 7 pop-out group(s), 10 trigger(s) [exact 0, copy-edit 0, dev-edit 10, defect 0]  ✓ every pop-out well-formed
+MXFL302: 6 pop-out group(s), 7 trigger(s) [exact 0, copy-edit 0, dev-edit 7, defect 0]  ✓ every pop-out well-formed
+MXFL401: 1 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+MXFU301: 3 pop-out group(s), 7 trigger(s) [exact 1, copy-edit 0, dev-edit 6, defect 0]  ✓ every pop-out well-formed
+MXFUN01: 1 pop-out group(s), 1 trigger(s) [exact 1, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+OSAH301: built 0 pop-outs (all fell back)
+OSAI401: 1 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+OSBY201: 2 pop-out group(s), 0 trigger(s) [exact 0, copy-edit 0, dev-edit 0, defect 0]  ✓ every pop-out well-formed
+
+TOTAL: 59 pop-out group(s) across 16 module(s), 95 triggers; exact 15, copy-edit 1, dev-edit 79, defect 0.
+RESULT: every built pop-out is well-formed ✓
