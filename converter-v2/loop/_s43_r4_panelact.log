@@ -1,0 +1,107 @@
+body:panel:activity -> body:panel:free: 358 blocks; WT line not found 1
+   75 blk   20 pg  20 mod  [body]  fam: BLL 40, CEDT 13, CEDR 9, TWHK 3, TWHT 3
+        BLL120 BLL120_0_0.html body “Some of these pictures start with the curly c /k/ sound or the kicking”
+        BLL140 BLL140_0_0.html body “Watch these videos to learn more about short and long vowels:”
+        BLL160 BLL160_0_0.html body “The letter ‘y’ is a very special letter. It can work as a consonant, a”
+   47 blk   11 pg  11 mod  [h3]  fam: CEDT 24, TWHR 7, BLL 5, TWHA 5, CEDR 2
+        BLL240 BLL240_0_0.html h3 “Words making the 'ear' sound”
+        CEDK401 CEDK401_0_0.html h3 “The food production process”
+        CEDO202 CEDO202_0_0.html h3  (line -4) “Try telling someone (your supervisor, your friends or someone from you”
+   35 blk    8 pg   8 mod  [(no tag within 8 lines)]  fam: CEDK 17, CEDT 13, TWHK 4, TWHA 1
+        CEDK401 CEDK401_0_0.html (no tag within 8 lines) “Drag and drop the resources needed and actions that people take to the”
+        CEDT104 CEDT104_0_0.html (no tag within 8 lines) “Submit your recording to the dropbox.”
+        CEDT207 CEDT207_0_0.html (no tag within 8 lines) “If your box has a lid you can also fill the box with special taonga an”
+   30 blk    4 pg   4 mod  [body text]  fam: TWHK 14, TWHA 11, CEDO 3, EXBP 2
+        CEDO204 CEDO204_0_0.html body text “Share your photos and experiences in your journal.”
+        EXBP901 EXBP901_1_0.html body text  (line -2) “Now it is your turn to have a go at designing questions for your proje”
+        TWHA906 TWHA906_0_0.html body text “Ka pai, you have completed this lesson about learning styles. During t”
+   14 blk    4 pg   4 mod  [🔴🔴 supervisor note]  fam: BLL 14
+        BLL110 BLL110_0_0.html 🔴🔴 supervisor note “Some students need more practice than others when learning the letters”
+        BLL130 BLL130_0_0.html 🔴🔴 supervisor note “Some ākonga need more practice than others when learning the letters a”
+        BLL140 BLL140_0_0.html 🔴🔴 supervisor note “Some ākonga need more practice than others when learning the letters a”
+   14 blk    1 pg   1 mod  [image: image9.png + activity: typing the answer]  fam: TWHA 14
+        TWHA902 TWHA902_0_0.html image: image9.png + activity: typing the “Which of the following skills did you use while completing your activi”
+   11 blk    1 pg   1 mod  [this checklist corresponds to the activi]  fam: TWHA 11
+        TWHA901 TWHA901_0_0.html this checklist corresponds to the activi “Portfolio reflection”
+    9 blk    3 pg   3 mod  [body + include audio]  fam: BLL 9
+        BLL130 BLL130_0_0.html body + include audio “My name is g, my sound is /g/.”
+        BLL140 BLL140_0_0.html body + include audio “My name is j, my sound is /j/.”
+        BLL150 BLL150_0_0.html body + include audio “My name is z, my sound is /z/.”
+    9 blk    1 pg   1 mod  [h4]  fam: CEDK 9
+        CEDK401 CEDK401_0_0.html h4  (line -4) “The quotation below is an extract from Patricia’s short story Fishing.”
+    9 blk    5 pg   4 mod  [button]  fam: CEDK 4, CEDT 2, EXBP 2, CEDR 1
+        CEDK401 CEDK401_0_0.html button  (line -2) “Explore your ideas further. Think about why seafood is not as abundant”
+        CEDR203 CEDR203_0_0.html button “Go to your journal to add your final thoughts and reflections.”
+        CEDT104 CEDT104_0_0.html button  (line -2) “Let's check what we've learned”
+    9 blk    1 pg   1 mod  [interactive: tick box]  fam: TWHA 9
+        TWHA901 TWHA901_0_0.html interactive: tick box  (line -5) “How would you rate your use of being resilient with your learning?”
+    8 blk    1 pg   1 mod  [image: image35.jpg + interactive: drop down options]  fam: TWHA 8
+        TWHA902 TWHA902_0_0.html image: image35.jpg + interactive: drop d “Noticed others’ body language, such as facial expressions and gestures”
+    7 blk    1 pg   1 mod  [alert]  fam: BLL 7
+        BLL120 BLL120_0_0.html alert  (line -6) “If your ākonga is having difficulty remembering both the name of the l”
+    5 blk    1 pg   1 mod  [supervisor note]  fam: BLL 5
+        BLL260 BLL260_0_0.html supervisor note “Some ākonga need more practice than others when learning consonant ble”
+    5 blk    1 pg   1 mod  [interactive: knowledge checklist/tick bo + image: image2.jpg]  fam: TWHA 5
+        TWHA903 TWHA903_0_0.html interactive: knowledge checklist/tick bo “After reading the weather data, hypothesise which day would be best fo”
+    5 blk    1 pg   1 mod  [h4 + body text]  fam: TWHK 5
+        TWHK907 TWHK907_0_0.html h4 + body text “Te Ranginui-a-Ihu Ngariki Irwin – Te Wairoa Charitable Trust”
+    4 blk    1 pg   1 mod  [end of accordion]  fam: CEDO 4
+        CEDO201 CEDO201_0_0.html end of accordion  (line -2) “Upload a video of your waggle dance to the dropbox at the end of this ”
+    3 blk    1 pg   1 mod  [supervisor button rhs]  fam: CEDK 3
+        CEDK102 CEDK102_0_0.html supervisor button rhs “Encourage your ākonga to take their time and really look at their surr”
+    3 blk    1 pg   1 mod  [end of what needs to go into the image,]  fam: CEDR 3
+        CEDR101 CEDR101_0_0.html end of what needs to go into the image,  “How well did it work? Now that you have tried keeping score with a sco”
+    3 blk    1 pg   1 mod  [alert box for supervisor]  fam: CEDT 3
+        CEDT207 CEDT207_0_0.html alert box for supervisor “Ākonga are more than welcome to create their own layout for this activ”
+    2 blk    1 pg   1 mod  [h5]  fam: BLL 2
+        BLL250 BLL250_0_0.html h5 “augh words that make the /au/ sound”
+    2 blk    1 pg   1 mod  [insert image]  fam: CEDO 2
+        CEDO202 CEDO202_0_0.html insert image  (line -2) “From the findings from your scientific observation, can you tell what ”
+    2 blk    1 pg   1 mod  [insert video]  fam: CEDO 2
+        CEDO202 CEDO202_0_0.html insert video  (line -4) “What words would you use to describe the way the leaves are moving?”
+    2 blk    2 pg   2 mod  [h2]  fam: CEDO 1, TWHA 1
+        CEDO202 CEDO202_0_0.html h2  (line -2) “Practising and rehearsing is an important aspect of dance and movement”
+        TWHA902 TWHA902_0_0.html h2 “Understanding body language”
+    2 blk    1 pg   1 mod  [image 7]  fam: CEDO 2
+        CEDO402 CEDO402_0_0.html image 7  (line -4) “Press stop when the first waka crosses the line.”
+    2 blk    1 pg   1 mod  [go to journal]  fam: CEDR 2
+        CEDR203 CEDR203_0_0.html go to journal  (line -2) “Locate the Eco-leader!”
+    2 blk    1 pg   1 mod  [image]  fam: CEDR 2
+        CEDR401 CEDR401_0_0.html image  (line -4) “Look at the title, the numbers, the dates and the key. Think about wha”
+    2 blk    1 pg   1 mod  [item 52]  fam: CEDT 2
+        CEDT104 CEDT104_0_0.html item 52  (line -2) “Give them a spin.”
+    2 blk    2 pg   2 mod  [end quiz]  fam: EXIP 1, TWHK 1
+        EXIP901 EXIP901_2_0.html end quiz  (line -2) “Go to your journal and start writing down some of your ideas for your ”
+        TWHK907 TWHK907_0_0.html end quiz  (line -8) “A painting of you participating in your hāpori. Include a sentence exp”
+    2 blk    1 pg   1 mod  [body + insert media item 18 as a link]  fam: TWHR 2
+        TWHR905 TWHR905_0_0.html body + insert media item 18 as a link “Your task is to draw up a timetable that suits you and how you like to”
+    1 blk    1 pg   1 mod  [rolling banner]  fam: BLL 1
+        BLL110 BLL110_0_0.html rolling banner  (line -2) “My name is n and my sound is /n/.”
+    1 blk    1 pg   1 mod  [body + include audio 2 here]  fam: BLL 1
+        BLL120 BLL120_0_0.html body + include audio 2 here “Repeat this after me.”
+    1 blk    1 pg   1 mod  [insert audio 13]  fam: BLL 1
+        BLL120 BLL120_0_0.html insert audio 13 “My name is e and my sound is /e/.”
+    1 blk    1 pg   1 mod  [body + insert audio 19]  fam: BLL 1
+        BLL120 BLL120_0_0.html body + insert audio 19  (line -2) “My name is r and my sound is /r/.”
+    1 blk    1 pg   1 mod  [word highlighter]  fam: BLL 1
+        BLL270 BLL270_0_0.html word highlighter  (line -4) “Practise saying the ten te reo Māori vowel sounds. If you need extra h”
+    1 blk    1 pg   1 mod  [🔴🔴 h3]  fam: BLL 1
+        BLL270 BLL270_0_0.html 🔴🔴 h3 “Te reo vowel sounds”
+    1 blk    1 pg   1 mod  [🔴🔴 audiovisual item 6 🔴🔴]  fam: BLL 1
+        BLL270 BLL270_0_0.html 🔴🔴 audiovisual item 6 🔴🔴 “ha he hi ho hu hā hē hī hō hū”
+    1 blk    1 pg   1 mod  [audio 🔴🔴 visual item 7 🔴🔴]  fam: BLL 1
+        BLL270 BLL270_0_0.html audio 🔴🔴 visual item 7 🔴🔴 “ka ke ki ko ku kā kē kī kō kū”
+    1 blk    1 pg   1 mod  [audio 🔴🔴 visual item 8 🔴🔴]  fam: BLL 1
+        BLL270 BLL270_0_0.html audio 🔴🔴 visual item 8 🔴🔴 “ma me mi mo mu mā mē mī mō mū”
+    1 blk    1 pg   1 mod  [audio 🔴🔴 visual item 9 🔴🔴]  fam: BLL 1
+        BLL270 BLL270_0_0.html audio 🔴🔴 visual item 9 🔴🔴 “na ne ni no nu nā nē nī nō nū”
+    1 blk    1 pg   1 mod  [audio 🔴🔴 visual item 10 🔴🔴]  fam: BLL 1
+        BLL270 BLL270_0_0.html audio 🔴🔴 visual item 10 🔴🔴 “pa pe pi po pu pā pē pī pō pū”
+    1 blk    1 pg   1 mod  [audio 🔴🔴 visual item 11 🔴🔴]  fam: BLL 1
+        BLL270 BLL270_0_0.html audio 🔴🔴 visual item 11 🔴🔴 “wa we wi wo wu wā wē wī wō wū”
+    1 blk    1 pg   1 mod  [audio 🔴🔴 visual item 12 🔴🔴]  fam: BLL 1
+        BLL270 BLL270_0_0.html audio 🔴🔴 visual item 12 🔴🔴 “ta te ti to tu tā tē tī tō tū”
+    1 blk    1 pg   1 mod  [audio 🔴🔴 visual item 16 🔴🔴]  fam: BLL 1
+        BLL270 BLL270_0_0.html audio 🔴🔴 visual item 16 🔴🔴 “nga nge ngi ngo ngu ngā ngē ngī ngō ngū”
+    1 blk    1 pg   1 mod  [audio 🔴🔴 visual item 17 🔴🔴]  fam: BLL 1
+        BLL270 BLL270_0_0.html audio 🔴🔴 visual item 17 🔴🔴 “wha whe whi who whu whā whē whī whō whū”
