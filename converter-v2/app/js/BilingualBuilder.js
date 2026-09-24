@@ -397,9 +397,17 @@ class BilingualBuilder {
 		const row = (block?.rows ?? [])[rowIdx];
 		if (!Array.isArray(row) || row.length < 2) return "";
 		const lvl = DataService.Data.EmitTemplates.elements?.dual_language?.section_grouping?.lesson_heading?.title_level || 2;
-		const force = (h) => String(h)
-			.replace(/^(\s*<)h[1-6]\b/i, `$1h${lvl}`)
-			.replace(/<\/h[1-6]>(\s*)$/i, `</h${lvl}>$1`);
+		// ROUND 482 (KB 07D; data lesson_heading.pin_title, env LESSONPIN_OFF): the forced level alone did not survive
+		// ContentConverter.#relevelHeadings (the title ranked as the page's shallowest heading → h3); the r371 writer-digit
+		// marker pins it there (the pass strips the marker)
+		const pc = DataService.Data.EmitTemplates.elements?.dual_language?.section_grouping?.lesson_heading?.pin_title;
+		const pin = !!pc && pc.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[pc.env ?? "LESSONPIN_OFF"]);
+		const force = (h) => {
+			const s = String(h)
+				.replace(/^(\s*<)h[1-6]\b/i, `$1h${lvl}`)
+				.replace(/<\/h[1-6]>(\s*)$/i, `</h${lvl}>$1`);
+			return pin ? s.replace(/^(\s*<h[1-6])\b/i, `$1 data-wd="${lvl}"`) : s;
+		};
 		const R = this.bilingualSplit(row[1], run, norm), E = this.bilingualSplit(row[0], run, norm);
 		const out = [];
 		for (const p of R.text) out.push(this.langAttr(force(p), "reo"));   // Māori FIRST

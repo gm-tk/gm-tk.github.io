@@ -1,5 +1,26 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 482, build 260620.46) — KB 07D: THE BILINGUAL LESSON TITLE KEEPS ITS h2 — the `[H2] Lesson N / Hei Mahi N` title the page's re-level pass demoted to h3 is pinned at the level r137 forces
+
+### 1. WHAT CHANGED
+
+**The find** (session 44 Round 6 — the Bilingual low-module scan, `outputs/_s44_famdiff.py` over TRR304 / TRR301 / TRR115 / TRR107 / TRR203 / PMT101: `body SUBSTITUTED h2 → h3 «Hei Mahi N»`): the gold ships the bilingual lesson title (`Hei Mahi N` / `Ngohe N` + `Lesson N`) at **h2 on 22 / 22** (16 pages / 7 modules); Claude shipped **h3 on 30 / 30** (14 pages). `BilingualBuilder.bilingualLessonTitleHtml` FORCES `section_grouping.lesson_heading.title_level` (2) on the title (r137), but `ContentConverter.#relevelHeadings` (the page's rank normalisation, base h3) still took it as the page's shallowest free heading and mapped it to h3.
+
+**The fix** (KB 07D's MTK lesson skeleton `<h2 reo>{MAORI_LESSON_HEADING}</h2>`; the gold 22 / 22): the title's heading tags carry the transient r371 writer-digit marker `data-wd="<title_level>"`; the re-level pass pins a marked heading at its digit, still counts it in the rank pool (the page's other headings keep their levels) and strips the marker. Data `section_grouping.lesson_heading.pin_title` {enabled, env}; env **`LESSONPIN_OFF`**, byte-identical OFF.
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 3222 / 3222 identical**; ON 18 pages / 7 modules (TRR107 TRR108 TRR114 TRR115 TRR203 TRR301 TRR304 — `outputs/_affected_r482.txt`); no `data-wd` marker in any output.
+- Regeneration of the 7 + the 12-module spot-check (`_r482_regen.sh`): 0 truly stale, 12 / 12 byte-identical; **`scoped_ship.sh` PASS**.
+
+### 3. PROTECTED GATES
+
+- Skeleton **55.3255 % → 55.3280 % @ 2491 (+0.0024pp)**, RAW 39.236 → 39.237 %; ≥50 1582; ≥75 275; ≥90 25; 11 movers (9 up / 2 down, pp-sum +6.1): TRR108_1_0 +3.4, TRR114_2_0 +2.0 …; NAMED: TRR114_3_0 23.3 → 18.9 (the writer repeats the `[H2] Ngohe 3` opener before each activity — three title rows where the gold has one; the two repeats now ship at h2 where the gold's h3 section headings sit), TRR304_1_0 −0.4.
+- compare_structure / body / clean / leak EXACT; every verifier RESULT line ✓; selftests green; the feature index green; the miner 195 CANDIDATE.
+- Plateau (§4): a KB-rule round; neither counts nor resets: **0 of 3**.
+
+**Ledger:** scoped #8 since the r474 FULL — **the FULL backstop is due (cadence 8)** · data `section_grouping.lesson_heading.pin_title` · env `LESSONPIN_OFF` · code `BilingualBuilder.bilingualLessonTitleHtml` · tools `_s44_r6_pick.py`, `_r482_{regen,postship}.sh`, `_r482_finalise.py` · session 44 Round 6.
+
 ## 2026-09-25 (round 481, build 260620.45) — THE MTK ACTIVITY'S DATA ROWS ARE ONE HAND-OFF: inside the r480 box, the `[Activity: Embedded]` table's data grid ships whole in one `cv2-interactive` hand-off instead of loose paragraphs that kept only its first two columns
 
 ### 1. WHAT CHANGED
