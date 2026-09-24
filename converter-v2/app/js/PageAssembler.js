@@ -449,7 +449,9 @@ class PageAssembler {
 							withMath = withMath.replace(/<body class="([^"]*)"/, (m, cls) =>
 								new RegExp("(^|\\s)" + tok + "(\\s|$)").test(cls) ? m : "<body class=\"" + cls + " " + tok + "\"");
 						}
-						return withMath;
+						// ROUND 474 (KB c52): every derivable iStock image alt, LAST (MediaBuilder.FillWidgetAlts;
+						// data elements.image_attrs.widget_alt_postpass; env WIDGETALT_OFF).
+						return MediaBuilder.FillWidgetAlts(withMath, run);
 					})()),
 				kind: "page",
 			});

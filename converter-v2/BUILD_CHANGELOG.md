@@ -1,5 +1,28 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (round 474, build 260620.38) — KB CONSTRAINT 52: EVERY iSTOCK IMAGE CARRIES ITS TITLE AS ALT TEXT — the widget-internal images round 242 left corpus-inert (flip cards, carousels, speech bubbles, accordions, activity boxes) now take the same title as the content images; recoverable iStock images with an empty alt 1,642 → 13 — with THE FULL-REGENERATION BACKSTOP (ledger scoped #6 → 0)
+
+### 1. WHAT CHANGED
+
+**The find** (session 43 Round 5 — `outputs/_s43_r5_alt.py`: every `<img>` on every Claude page by container, iStock id, whether that id's URL — with its slug — is in the module's Writers Template, alt filled / empty): **1,642 iStock images whose title is RECOVERABLE shipped `alt=""`** — flipCard 493 / 74 modules, carousel 427 / 70, activity 243 / 28, speechBubble 236 / 45, accordion 101 / 29, body 85 / 21, tab-pane 26, clickDrop 21, TKmodal 8 — while the standalone content images already carried it (round 240's `MediaBuilder.FinishImg`, which only the content-image path calls; round 242 took the widget-internal images under the rule but recorded them corpus-INERT, the `#assetImage` seam seeing only the filename). The gold fills 0.88 of its iStock alts (14,056 / 15,919). **KB constraint 52 (universal):** "For an iStock image, the preferred alt value is the iStock/Getty API image name — the descriptive title carried in the supplied iStock acknowledgements file or recoverable from the iStock link"; `KB_AMALGAMATION_STATUS.md` row 52 read LIVE on its negative half only.
+
+**The fix** (`MediaBuilder.FillWidgetAlts` + `#istockAltMap`, called LAST in `PageAssembler` after the MathML pass; data `Emit_Templates.elements.image_attrs.widget_alt_postpass` {enabled, env}; env **`WIDGETALT_OFF`**, byte-identical OFF): every `<img … alt="">` whose tag names `iStock-<id>` — the Mode-P placeholder, the commented-out reference, a Mode-D image — takes round 240's title for that id: the VERIFIED `*_istock-acks.txt` title, else the Title-Cased slug of the id's URL anywhere in the module (the Media List items, the Writers Template blocks). No URL and no verified title → the alt stays empty (never invent a description); a non-iStock image is never touched; "stock photo" is stripped (c52's negative half — 0 alts carry it). `FinishImg` itself is unchanged.
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules (`outputs/_s42_probe_run.sh r474`): **OFF 3222 / 3222 identical; ON 324 pages / 170 modules changed.**
+- **THE FULL REGENERATION** (the ledger backstop, due within two scoped ships — `_r474_fullship_par.sh`, 4 workers, 6 min 45 s): `_stalecheck.sh` 0 stale; `_content_manifest.py fresh --affected` (the 170) → **the 373 other modules byte-identical to the manifest**; the changed set = exactly the probe's 170.
+- **Attribute-only, proven page by page:** the 170 modules' pages snapshotted before the regeneration; of 886 pages, 562 identical and **324 changed — every one identical once alt values are blanked** (0 non-alt differences).
+- The alt census after (`_r474_alt_after.log`): recoverable iStock images **filled 1,963 → 3,592, empty 1,642 → 13** (links whose slug the `istock_slug_from_url` pattern does not parse); 3 more filled from a Media-List-only link; `stock photo` in any alt: 0.
+
+### 3. PROTECTED GATES — EXACT (attributes are invisible to every structural gate)
+
+- Skeleton **55.2315 % @ 2491 EXACT** (0 movers), ≥50 1577, ≥75 276, ≥90 25, RAW 39.194 %; compare_structure 16758 / 208 / 903; body 238; clean 2587 / 2633; leak 75 / 46 — `_gatecheck.py cs bc` then `skeleton defect` on the full 0-stale corpus: **every row HELD** (its first run printed a CACHED skeleton row, 54.94 — the §6 trap; the fresh run is 55.23 HELD); every verifier RESULT line identical to r473; 17 selftests + the skeleton selftest green; the feature index green; the miner 197 CANDIDATE @ 2491.
+- **Ledger:** `_ship_ledger.py record-full --round 474` — **LAST FULL = r474, scoped #0** (8 of headroom); the fast-loop baseline re-snapshotted; the content manifest snapshotted (2679 pages / 543 modules).
+- Plateau (§4): a KB-rule round that is skeleton-blind by design (an attribute) — neither counts nor resets: **2 of 3** stands.
+
+**Ledger:** FULL (backstop) · data `elements.image_attrs.widget_alt_postpass` · env `WIDGETALT_OFF` · code `MediaBuilder.FillWidgetAlts` / `#istockAltMap`, `PageAssembler` (the call) · tools `outputs/_s43_r5_alt.py`, `_r474_{fullship_par,postship,checksums}.sh`, `_r474_finalise.py`. **Follow-ups (recorded):** a picture cell whose link the engine lifted out of the cell keeps no iStock id at all (XMES201 / XMES202's `flipCard-image` placeholders — the id would have to be read from the cell's link record); non-iStock images (2,442 body / 1,129 activity …) have no title source by design.
+
 ## 2026-09-24 (round 473, build 260620.37) — THE MODAL'S SINGLE-LINK BUTTON NEVER SWALLOWS THE WRITER'S WORDS: a content-carrying modal is not a link button, whatever its content — 18 modals stop shipping as one bare button with their text gone
 
 ### 1. WHAT CHANGED

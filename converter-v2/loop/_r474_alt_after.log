@@ -1,0 +1,35 @@
+GOLD iStock images: {'filled': 14056, 'EMPTY': 1863}
+container | kind | title | alt | images | modules
+body          | other  | -           | EMPTY  |   2442 |  315
+body          | iStock | recoverable | filled |   1405 |  247
+activity      | other  | -           | EMPTY  |   1129 |  196
+activity      | iStock | recoverable | filled |    640 |  138
+flipCard      | iStock | recoverable | filled |    490 |   74
+carousel      | iStock | recoverable | filled |    426 |   70
+carousel      | other  | -           | EMPTY  |    239 |   89
+speechBubble  | iStock | recoverable | filled |    236 |   45
+table         | iStock | recoverable | filled |    139 |   28
+body          | other  | -           | filled |    134 |   53
+table         | other  | -           | EMPTY  |    116 |   27
+flipCard      | other  | -           | EMPTY  |    116 |   28
+accordion     | iStock | recoverable | filled |    101 |   29
+dragAndDrop   | iStock | recoverable | filled |    100 |   17
+carousel      | iStock | no WT url   | EMPTY  |     89 |   16
+speechBubble  | other  | -           | EMPTY  |     82 |   13
+accordion     | other  | -           | EMPTY  |     61 |   21
+tab-pane      | iStock | recoverable | filled |     26 |    5
+dragAndDrop   | other  | -           | EMPTY  |     25 |    5
+clickDrop     | iStock | recoverable | filled |     21 |    3
+tab-pane      | other  | -           | EMPTY  |     20 |    6
+TKmodal       | other  | -           | EMPTY  |      9 |    4
+TKmodal       | iStock | recoverable | filled |      8 |    5
+flipCard      | iStock | no WT url   | EMPTY  |      8 |    1
+body          | iStock | no WT url   | filled |      8 |    6
+body          | iStock | recoverable | EMPTY  |      4 |    3
+activity      | iStock | recoverable | EMPTY  |      3 |    3
+flipCard      | iStock | recoverable | EMPTY  |      3 |    2
+carousel      | iStock | no WT url   | filled |      3 |    1
+dragAndDrop   | iStock | recoverable | EMPTY  |      1 |    1
+table         | iStock | recoverable | EMPTY  |      1 |    1
+carousel      | iStock | recoverable | EMPTY  |      1 |    1
+body          | iStock | no WT url   | EMPTY  |      1 |    1

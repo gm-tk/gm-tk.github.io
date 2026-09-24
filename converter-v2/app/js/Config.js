@@ -1827,7 +1827,8 @@ class Config {
 	// ROUND 470 (260620.35): THE TABLE-CELL TITLE BAR RECOGNISES THE WRITERS TEMPLATE (session 42 Round 8; the recognition lane). DocxExtractor.LooksLikeWritersTemplate also accepts a table cell whose red span resolves to 'title bar' (r453's predicate), so TRR115 — every tag typed inside bilingual table cells — is no longer refused as 'no Writers Template'. Input_Doc_Rules content_start.table_title_bar_opener.recognise_wt, env TABLETBWT_OFF; TRR115 converts (4 pages); the pre-existing 2487 pairs byte-identical.
 	// ROUND 472 (260620.36): THE BUILT FLIP CARD NEVER DROPS THE WRITER'S WORDS (session 43 Round 1; the placement-census lane). flipCard.text_guard — a lossy dialect build falls through to the composer, a lossy composer build keeps the box; the header row, the stacked face column, the escaped <br>, the spanning note row and the tag-line note's covering test fixed. Env FLIPTEXTGUARD_OFF.
 	// ROUND 473 (260620.37): THE MODAL'S SINGLE-LINK BUTTON NEVER SWALLOWS THE WRITER'S WORDS (session 43 Round 2). interactive_builders.modal.doc_button_text_fence — a content-carrying modal falls through to the round-280 set composer (or its box) instead of shipping as one bare button. Env MODALBTNTEXT_OFF.
-	static AppVersion = "260620.37";
+	// ROUND 474 (260620.38): KB c52 — EVERY iSTOCK IMAGE CARRIES ITS TITLE AS ALT TEXT (session 43 Round 5; the FULL backstop). MediaBuilder.FillWidgetAlts, last in PageAssembler: an <img alt=""> naming iStock-<id> takes the verified acks title, else the module's URL-slug title. Env WIDGETALT_OFF.
+	static AppVersion = "260620.38";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

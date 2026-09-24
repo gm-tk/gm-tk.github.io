@@ -196,6 +196,78 @@ class MediaBuilder {
 	};
 
 	/**
+	 * ROUND 474 (the autonomous loop's session-43 Round 5) — KB CONSTRAINT 52's POSITIVE HALF ON EVERY IMAGE:
+	 * "for an iStock image, the preferred alt value is the iStock/Getty API image name — the descriptive title carried
+	 * in the supplied iStock acknowledgements file or recoverable from the iStock link".
+	 *
+	 * WHY. Round 240's FinishImg fills the alt on the content-image path, where the URL is at hand. Round 242 took the
+	 * widget-internal images (InteractiveBuilder.#assetImage) under the same rule but recorded them corpus-INERT: that
+	 * seam sees only the filename, "so the slug fallback never fires". `outputs/_s43_r5_alt.py` counted the cost —
+	 * ≈ 1,640 iStock images whose title IS recoverable from the module's own link ship `alt=""` (flipCard 493 / 74
+	 * modules, carousel 427 / 70, activity 243, speechBubble 236, accordion 101 …) while the gold fills 0.88 of its
+	 * iStock alts.
+	 *
+	 * THE RULE, once per page, LAST: every `<img … alt="">` (the Mode-P placeholder, the commented-out reference and a
+	 * Mode-D image alike) whose tag names `iStock-<id>` takes round 240's title for that id — the VERIFIED
+	 * *_istock-acks.txt title, else the Title-Cased slug of the id's URL found anywhere in the module (the Media List
+	 * items, the Writers Template blocks). An id with no URL and no verified title keeps "" (never invent a
+	 * description); a non-iStock image is never touched; "stock photo" never reaches an alt (c52's negative half).
+	 * Data elements.image_attrs.widget_alt_postpass {enabled, env WIDGETALT_OFF}.
+	 *
+	 * @param {string} html - one finished page
+	 * @param {ConversionRun} run - the run (istockAcks, mediaItems, wtBlocks)
+	 * @returns {string} the page with every derivable iStock alt filled
+	 */
+	static FillWidgetAlts(html, run) {
+		const base = DataService.Data.EmitTemplates.elements?.image_attrs;
+		const cfg = base?.widget_alt_postpass;
+		if (!base || base.enabled === false || !cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && (process.env[cfg.env ?? "WIDGETALT_OFF"] || process.env.IMGATTRS_OFF)) return html;
+		const titles = this.#istockAltMap(run, cfg);
+		if (!titles.size) return html;
+		return String(html).replace(/<img\b[^>]*>/g, (tag) => {
+			if (!/\balt=""/.test(tag)) return tag;
+			const id = tag.match(/iStock-(\d{6,10})/)?.[1];
+			const title = id ? titles.get(id) : null;
+			return title ? tag.replace(/\balt=""/, `alt="${Utils.EscapeHtml(title)}"`) : tag;
+		});
+	}
+
+	/** ROUND 474 — {iStock id → alt title} for the module (cached on the run): verified acks title > URL-slug title. */
+	static #istockAltMap(run, cfg) {
+		if (run && run._r474AltMap) return run._r474AltMap;
+		const map = new Map();
+		const rx = DataService.Data.AcksFormats?.extraction_regexes ?? {};
+		const st = DataService.Data.AcksFormats?.istock_slug_title ?? {};
+		const strip = new RegExp(cfg.strip_pattern ?? "[\\s.,\\-–—]*\\bstock\\s+(?:photo|image|vector|illustration|video)s?\\b.*$", "i");
+		const urls = [];
+		for (const m of (run?.mediaItems ?? [])) if (m?.url) urls.push(String(m.url));
+		let blob = "";
+		try { blob = JSON.stringify(run?.wtBlocks ?? []); } catch { blob = ""; }
+		for (const u of blob.match(/https?:\/\/(?:www\.)?istockphoto\.com\/[^\s"\\\]<>)]+/gi) ?? []) urls.push(u);
+		for (const url of urls) {
+			let clean = url;
+			try { clean = decodeURIComponent(url); } catch { /* keep raw on bad escapes */ }
+			clean = Utils.Fold(clean).replace(/\s+/g, "-");
+			const id = clean.match(new RegExp(rx.istock_id_from_url ?? "gm-?(\\d{6,10})"))?.[1];
+			if (!id || map.has(id)) continue;
+			let title = run?.istockAcks?.get(id)?.title ?? null;
+			if (!title && rx.istock_slug_from_url) {
+				const slug = clean.match(new RegExp(rx.istock_slug_from_url))?.[1] ?? null;
+				if (slug) title = Utils.TitleCaseWords(slug.split("-").filter(Boolean), st.special_tokens ?? {}, st.lowercase_small_words ?? []);
+			}
+			title = title ? String(title).replace(strip, "").trim() : "";
+			if (title) map.set(id, title);
+		}
+		// ids named only in a verified acks file (no link in the module) still carry their verified title
+		if (run?.istockAcks?.forEach) run.istockAcks.forEach((v, id) => {
+			if (!map.has(id) && v?.title) { const t = String(v.title).replace(strip, "").trim(); if (t) map.set(id, t); }
+		});
+		if (run) run._r474AltMap = map;
+		return map;
+	}
+
+	/**
 	 * Video/audio emitter. A YouTube URL becomes the site's standard embed
 	 * form; any other URL becomes a generic iframe; an audio tag becomes the
 	 * audio player. A writer's own timing/editing note near the media (e.g.

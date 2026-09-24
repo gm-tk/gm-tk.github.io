@@ -1,0 +1,32 @@
+GOLD iStock images: {'filled': 14056, 'EMPTY': 1863}
+container | kind | title | alt | images | modules
+body          | other  | -           | EMPTY  |   2442 |  315
+body          | iStock | recoverable | filled |   1324 |  244
+activity      | other  | -           | EMPTY  |   1129 |  196
+flipCard      | iStock | recoverable | EMPTY  |    493 |   74
+carousel      | iStock | recoverable | EMPTY  |    427 |   70
+activity      | iStock | recoverable | filled |    400 |  123
+activity      | iStock | recoverable | EMPTY  |    243 |   28
+carousel      | other  | -           | EMPTY  |    239 |   89
+speechBubble  | iStock | recoverable | EMPTY  |    236 |   45
+table         | iStock | recoverable | filled |    139 |   28
+body          | other  | -           | filled |    134 |   53
+table         | other  | -           | EMPTY  |    116 |   27
+flipCard      | other  | -           | EMPTY  |    116 |   28
+accordion     | iStock | recoverable | EMPTY  |    101 |   29
+dragAndDrop   | iStock | recoverable | filled |    100 |   17
+carousel      | iStock | no WT url   | EMPTY  |     92 |   17
+body          | iStock | recoverable | EMPTY  |     85 |   21
+speechBubble  | other  | -           | EMPTY  |     82 |   13
+accordion     | other  | -           | EMPTY  |     61 |   21
+tab-pane      | iStock | recoverable | EMPTY  |     26 |    5
+dragAndDrop   | other  | -           | EMPTY  |     25 |    5
+clickDrop     | iStock | recoverable | EMPTY  |     21 |    3
+tab-pane      | other  | -           | EMPTY  |     20 |    6
+TKmodal       | other  | -           | EMPTY  |      9 |    4
+TKmodal       | iStock | recoverable | EMPTY  |      8 |    5
+flipCard      | iStock | no WT url   | EMPTY  |      8 |    1
+body          | iStock | no WT url   | filled |      8 |    6
+dragAndDrop   | iStock | recoverable | EMPTY  |      1 |    1
+table         | iStock | recoverable | EMPTY  |      1 |    1
+body          | iStock | no WT url   | EMPTY  |      1 |    1
