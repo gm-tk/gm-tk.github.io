@@ -1,0 +1,125 @@
+gold TRR116_4_0.html (206 lines)  claude TRR116_4_0.html (198 lines)
+MISSING     title        h1                                       | —                                         «Sight Words» | «»
+EXTRA       body         —                                        | div.row                                   «» | «»
+EXTRA       body         —                                        | WIDGET                                    «» | «»
+EXTRA       activity     —                                        | p                                         «» | «Āta titiro ki ia pū o te kupu. Pāwhiri anake i ngā kupu»
+MISSING     activity     p.center-text.sassoonI-text              | —                                         «hea» | «»
+MOVED       activity     h3                                       | h3                                        «Ngā Tohutohu:» | «Ngā Tohutohu:»
+MOVED       activity     h3                                       | h3                                        «Activity Instructions:» | «Activity Instructions:»
+SUBSTITUTED activity     WIDGET                                   | p                                         «» | «heu»
+EXTRA       activity     —                                        | p                                         «» | «hei»
+EXTRA       body         —                                        | div.row                                   «» | «»
+EXTRA       body         —                                        | WIDGET                                    «» | «»
+MISSING     activity     p.center-text.sassoonI-text              | —                                         «Nō hea?» | «»
+MISSING     activity     h3                                       | —                                         «Ngā Tohutohu:» | «»
+MOVED       activity     h3                                       | h3                                        «Activity Instructions:» | «Activity Instructions:»
+SUBSTITUTED activity     div.row                                  | p                                         «» | «hea ü»
+MISSING     activity     div.col-12.col-md-6.paddingR             | —                                         «» | «»
+EXTRA       activity     —                                        | p                                         «» | «Nō ___ ia?»
+EXTRA       activity     —                                        | p                                         «» | «heo»
+EXTRA       activity     —                                        | p                                         «» | «hea ü»
+EXTRA       activity     —                                        | p                                         «» | «heu»
+EXTRA       activity     —                                        | p                                         «» | «Nō ___ te tama?»
+MISSING     activity     div.col-12.col-md-6.paddingL             | —                                         «» | «»
+EXTRA       activity     —                                        | p                                         «» | «hoe»
+EXTRA       activity     —                                        | p                                         «» | «hea ü»
+EXTRA       activity     —                                        | p                                         «» | «hei»
+EXTRA       activity     —                                        | p                                         «» | «Nō ___ te kōtiro?»
+SUBSTITUTED activity     WIDGET                                   | div.row                                   «» | «»
+SUBSTITUTED activity     div.mt-4.row                             | div.col-12.col-md-8                       «» | «»
+MISSING     activity     div.col-12.col-md-6.paddingR             | —                                         «» | «»
+EXTRA       body         —                                        | p                                         «» | «Activity 4.3:»
+EXTRA       body         —                                        | h3                                        «» | «Kei hea?»
+EXTRA       body         —                                        | h3                                        «» | «Kei hea?»
+EXTRA       body         —                                        | p                                         «» | «I tēnei wā, ka whakamahia te kupu hei ui i te pātai, ‘ ’»
+EXTRA       body         —                                        | p                                         «» | «This time the kupu is used to ask the question,»
+MISSING     activity     div.col-12.col-md-6.paddingL             | —                                         «» | «»
+EXTRA       body         —                                        | h3                                        «» | «Kei hea?»
+EXTRA       body         —                                        | h3                                        «» | «Kei hea?»
+EXTRA       body         —                                        | p                                         «» | «Me whakamahi tātou i tēnei pātai ki te ui kei hea ngā kararehe o te mo»
+EXTRA       body         —                                        | p                                         «» | «Let’s use the question to ask where the sea creatures are.»
+EXTRA       body         —                                        | audio.audioPlayer.icon                    «» | «»
+EXTRA       body         —                                        | audio.audioPlayer.icon                    «» | «»
+EXTRA       body         —                                        | WIDGET                                    «» | «»
+EXTRA       activity     —                                        | p                                         «» | «Tōia ngā pū kia hanga ai te kupu , kātahi kimihia te kararehe o te moa»
+EXTRA       activity     —                                        | p                                         «» | «Drag the letters to make the word then find the sea creature in the pi»
+EXTRA       activity     —                                        | img.img-fluid                             «» | «»
+MISSING     activity     p.center-text.sassoonI-text              | —                                         «Kei hea?» | «»
+EXTRA       activity     —                                        | img.img-fluid                             «» | «»
+SUBSTITUTED activity     h3                                       | img.img-fluid                             «Ngā Tohutohu:» | «»
+MISSING     activity     h3                                       | —                                         «Activity Instructions:» | «»
+EXTRA       activity     —                                        | img.img-fluid                             «» | «»
+SUBSTITUTED activity     div.row                                  | img.img-fluid                             «» | «»
+SUBSTITUTED activity     div.col-12.col-md-12                     | div.row                                   «» | «»
+MISSING     activity     img.img-fluid                            | —                                         «» | «»
+EXTRA       body         —                                        | div.col-12.col-md-8                       «» | «»
+MISSING     activity     div.row                                  | —                                         «» | «»
+MISSING     activity     div.mt-4.row                             | —                                         «» | «»
+SUBSTITUTED activity     div.mt-4.row                             | WIDGET                                    «» | «»
+MISSING     activity     div.col-12                               | —                                         «» | «»
+MISSING     activity     div.mt-4.row                             | —                                         «» | «»
+MISSING     activity     p                                        | —                                         «I tēnei wā ka whakamahia te kupu 'hea' ki te pito whakamutunga o te pā» | «»
+MISSING     activity     p                                        | —                                         «This time the kupu 'hea' is used at the end of the question to as 'Whe» | «»
+MISSING     activity     p.center-text.sassoonI-text              | —                                         «Ki hea?» | «»
+MOVED       activity     p                                        | p                                         «Kia maumahara: me tīmata tonu te rerenga kōrero ki te pūmatua, ā, me m» | «Kia maumahara: me tīmata tonu te rerenga kōrero ki te pūmatua, ā, me m»
+MOVED       activity     p                                        | p                                         «Remember that a sentence always starts with a pūmatua and questions al» | «Remember that a sentence always starts with a pūmatua and questions al»
+MOVED       activity     p                                        | p                                         «Whakamahia ēnei tohu hei āwhina i a koe ki te whakaraupapa tika i ngā » | «Whakamahia ēnei tohu hei āwhina i a koe ki te whakaraupapa tika i ngā »
+MOVED       activity     p                                        | p                                         «Use these as clues to help you put these questions into the correct or» | «Use these as clues to help you put these questions into the correct or»
+MISSING     activity     h3                                       | —                                         «Activity Instructions:» | «»
+MISSING     activity     p                                        | —                                         «Tōia ia wāhanga o te pātai ki te wāhi tika, kātahi ka pāwhiri i te tan» | «»
+MISSING     activity     p                                        | —                                         «Drag each chunk of the question into the correct place, then click on » | «»
+MISSING     activity     div.row                                  | —                                         «» | «»
+MISSING     activity     div.mt-5.row                             | —                                         «» | «»
+MISSING     activity     div.mt-5.row                             | —                                         «» | «»
+MISSING     activity     div.mt-5.row                             | —                                         «» | «»
+MISSING     body         div.row                                  | —                                         «» | «»
+MOVED       activity     h3                                       | h3                                        «He wero tuhinga» | «He wero tuhinga»
+MOVED       activity     h3                                       | h3                                        «A writing challenge» | «A writing challenge»
+MISSING     activity     b                                        | —                                         «Nō hea koe?» | «»
+MISSING     activity     b                                        | —                                         «Where are you from?» | «»
+EXTRA       activity     —                                        | p                                         «» | «te kōtiro»
+MISSING     activity     div.button                               | —                                         «Upload to dropbox» | «»
+EXTRA       activity     —                                        | p                                         «» | «E haere ana»
+MISSING     activity     div.button                               | —                                         «Tukuatu ki te pouaka waihotanga» | «»
+EXTRA       activity     —                                        | p                                         «» | «te wāhine»
+EXTRA       activity     —                                        | p                                         «» | «E haere ana»
+EXTRA       activity     —                                        | p                                         «» | «te tane»
+EXTRA       activity     —                                        | p                                         «» | «E haere ana»
+EXTRA       body         —                                        | div.row                                   «» | «»
+EXTRA       body         —                                        | div.row                                   «» | «»
+
+== tally (region, direction, gold role -> claude role): count
+   16  activity    EXTRA        — -> p
+    5  activity    MOVED        h3 -> h3
+    4  body        EXTRA        — -> div.row
+    4  activity    MISSING      p.center-text.sassoonI-text -> —
+    4  body        EXTRA        — -> h3
+    4  body        EXTRA        — -> p
+    4  activity    MISSING      p -> —
+    4  activity    MOVED        p -> p
+    3  body        EXTRA        — -> WIDGET
+    3  activity    EXTRA        — -> p>b
+    3  activity    MISSING      h3 -> —
+    3  activity    EXTRA        — -> img.img-fluid
+    3  activity    MISSING      div.mt-5.row -> —
+    2  activity    MISSING      div.col-12.col-md-6.paddingR -> —
+    2  activity    MISSING      div.col-12.col-md-6.paddingL -> —
+    2  body        EXTRA        — -> audio.audioPlayer.icon
+    2  activity    MISSING      div.row -> —
+    2  activity    MISSING      div.mt-4.row -> —
+    2  activity    MISSING      b -> —
+    2  activity    MISSING      div.button -> —
+    1  title       MISSING      h1>span -> —
+    1  activity    SUBSTITUTED  WIDGET -> p
+    1  activity    SUBSTITUTED  div.row -> p
+    1  activity    SUBSTITUTED  WIDGET -> div.row
+    1  activity    SUBSTITUTED  div.mt-4.row -> div.col-12.col-md-8
+    1  body        EXTRA        — -> p>b
+    1  activity    SUBSTITUTED  h3 -> img.img-fluid
+    1  activity    SUBSTITUTED  div.row -> img.img-fluid
+    1  activity    SUBSTITUTED  div.col-12.col-md-12 -> div.row
+    1  activity    MISSING      img.img-fluid -> —
+    1  body        EXTRA        — -> div.col-12.col-md-8
+    1  activity    SUBSTITUTED  div.mt-4.row -> WIDGET
+    1  activity    MISSING      div.col-12 -> —
+    1  body        MISSING      div.row -> —

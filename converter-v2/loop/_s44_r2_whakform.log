@@ -1,0 +1,66 @@
+GOLD   PMT101  PMT101_1_0.html    BOX  < div.col-md-8.col-12 < div.row < div  | kids: p p p | next-after-wrapper: —
+CLAUDE PMT101  PMT101_1_0.html    HEAD «Proverb:» < div.col-md-8.col-12 < div.row < div | run: h3 p p p p p p
+GOLD   PNR101  PNR101_1_0.html    BOX  < div.col-md-12.col-12 < div.col-md-8.col-12 < div.row < div  | kids: p p | next-after-wrapper: —
+CLAUDE PNR101  PNR101_0_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p p p h3
+CLAUDE PNR101  PNR101_0_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p p p h3 h3
+CLAUDE PNR101  PNR101_1_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p
+CLAUDE PNR101  PNR101_1_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p
+GOLD   PNR102  PNR102_1_0.html    BOX  < div.col-md-12.col-12 < div.col-md-8.col-12 < div.row < div  | kids: p p | next-after-wrapper: —
+CLAUDE PNR102  PNR102_1_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p
+CLAUDE PNR102  PNR102_1_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p
+GOLD   PNR104  PNR104_1_0.html    BOX  < div.col-md-8.col-12 < div.row < div  | kids: p p | next-after-wrapper: —
+CLAUDE PNR104  PNR104_0_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p
+CLAUDE PNR104  PNR104_0_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p
+GOLD   PNR107  PNR107_0_0.html    BOX  < div.col-md-8.col-12 < div.row < div  | kids: p p | next-after-wrapper: div
+CLAUDE PNR107  PNR107_0_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p p p h3
+CLAUDE PNR107  PNR107_0_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p p p h3 h3
+GOLD   TRR102  TRR102_1.0.html    BOX  < div.col-md-12.col-12 < div.col-md-8.col-12 < div.row < div  | kids: p p p(span,span) | next-after-wrapper: —
+CLAUDE TRR102  TRR102_1_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p p p
+CLAUDE TRR102  TRR102_1_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p p p
+GOLD   TRR103  TRR103_1.0.html    BOX  < div.col-md-12.col-12 < div.col-md-8.col-12 < div.row < div  | kids: p p p(span,span) | next-after-wrapper: —
+CLAUDE TRR103  TRR103_1_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p p p
+CLAUDE TRR103  TRR103_1_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p p p
+GOLD   TRR104  TRR104_1.0.html    BOX  < div.col-md-8.col-12 < div.row < div  | kids: p p p(span,span) | next-after-wrapper: —
+GOLD   TRR105  TRR105_1.0.html    BOX  < div.col-md-12.col-12 < div.col-md-8.col-12 < div.row < div  | kids: p p p(span,span) | next-after-wrapper: —
+GOLD   TRR106  TRR106_1.0.html    BOX  < div.col-md-12.col-12 < div.col-md-8.col-12 < div.row < div  | kids: p p p(span,span) | next-after-wrapper: —
+CLAUDE TRR106  TRR106_1_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p p p
+CLAUDE TRR106  TRR106_1_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p p p
+GOLD   TRR107  TRR107_0.0.html    BOX  < div.col-md-12.col-12 < div.col-md-8.col-12 < div.row < div  | kids: h3 p h3 p | next-after-wrapper: —
+CLAUDE TRR107  TRR107_0_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 h4 h4 p p p
+CLAUDE TRR107  TRR107_0_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 h4 h4 p p p p
+GOLD   TRR108  TRR108_0.0.html    BOX  < div.col-md-12.col-12 < div.col-md-8.col-12 < div.row < div  | kids: p p | next-after-wrapper: img.img-fluid
+CLAUDE TRR108  TRR108_0_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p img.img-fluid
+CLAUDE TRR108  TRR108_0_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p img.img-fluid
+GOLD   TRR109  TRR109_1.0.html    BOX  < div.col-md-8.col-12 < div.row < div  | kids: p p | next-after-wrapper: —
+CLAUDE TRR109  TRR109_1_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p
+CLAUDE TRR109  TRR109_1_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p
+GOLD   TRR110  TRR110_1_0_ea.html BOX  < div.col-md-8.col-12 < div.row < div  | kids: p p | next-after-wrapper: —
+CLAUDE TRR110  TRR110_1_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p
+CLAUDE TRR110  TRR110_1_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p
+GOLD   TRR111  TRR111_1.0.html    BOX  < div.col-md-12.col-12 < div.col-md-8.col-12 < div.row < div  | kids: p p | next-after-wrapper: —
+CLAUDE TRR111  TRR111_1_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p
+CLAUDE TRR111  TRR111_1_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p
+GOLD   TRR112  TRR112_1.0.html    BOX  < div.col-md-12.col-12 < div.col-md-8.col-12 < div.row < div  | kids: p p | next-after-wrapper: —
+CLAUDE TRR112  TRR112_1_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p
+CLAUDE TRR112  TRR112_1_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p
+GOLD   TRR113  TRR113_1.0.html    BOX  < div.col-md-12.col-12 < div.col-md-8.col-12 < div.row < div  | kids: p p | next-after-wrapper: —
+CLAUDE TRR113  TRR113_1_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p
+CLAUDE TRR113  TRR113_1_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p
+GOLD   TRR114  TRR114_1.0.html    BOX  < div.col-md-12.col-12 < div.col-md-8.col-12 < div.row < div  | kids: p p | next-after-wrapper: p
+CLAUDE TRR114  TRR114_0_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p p p img.img-fluid
+CLAUDE TRR114  TRR114_0_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p p p img.img-fluid
+GOLD   TRR115  TRR115_1.0.html    BOX  < div.col-md-12.col-12 < div.col-md-8.col-12 < div.row < div  | kids: p p | next-after-wrapper: —
+CLAUDE TRR115  TRR115_0_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p
+CLAUDE TRR115  TRR115_0_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p
+GOLD   TRR116  TRR116_1_0.html    BOX  < div.col-md-8.col-12 < div.row < div  | kids: p p | next-after-wrapper: —
+CLAUDE TRR116  TRR116_1_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p
+CLAUDE TRR116  TRR116_1_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p
+GOLD   TRR203  TRR203_0.0.html    BOX  < div.col-md-8.col-12 < div.row < div  | kids: p p | next-after-wrapper: div.col-md-4.offset-md-0.col-12
+CLAUDE TRR203  TRR203_0_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p p p img.img-fluid
+CLAUDE TRR203  TRR203_0_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p p p img.img-fluid
+GOLD   TRR301  TRR301_0.0.html    BOX  < div.col-md-8.col-12 < div.row < div  | kids: p p | next-after-wrapper: —
+CLAUDE TRR301  TRR301_0_0.html    HEAD «Whakataukī | Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p
+CLAUDE TRR301  TRR301_0_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p
+GOLD   TRR304  TRR304_0.0.html    BOX  < div.col-md-8.col-12 < div.row < div  | kids: p p | next-after-wrapper: —
+CLAUDE TRR304  TRR304_1_0.html    HEAD «Whakataukī Whakatauākī:» < div.col-md-8.col-12 < div.row < div | run: h3 h3 p p p p p
+CLAUDE TRR304  TRR304_1_0.html    HEAD «Proverb» < div.col-md-8.col-12 < div.row < div | run: h3 p p p p p p

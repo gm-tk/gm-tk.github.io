@@ -1,5 +1,26 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 479, build 260620.43) — KB 07B "WHAKATAUKI / PROVERB": the bilingual proverb table (`[H1] Proverb ║ [H1] Whakataukī`) renders as ONE `div.whakatauki` — the heading row dropped, the proverb (+ its author) inside, commentary after
+
+### 1. WHAT CHANGED
+
+**The find** (session 44 Round 2 — the loss ledger by family re-cut on r478, `outputs/_s44_r2_famloss.py`: TRR1 is the lowest-scoring large family, 68 pages at 41.6 %; its pages triangulated with `outputs/_s44_skdump.py` / `_s44_famdiff.py`): 21 of the 23 Bilingual Writers Templates write the module's proverb as a bilingual table row `[H1] Proverb ║ [H1] Whakataukī | Whakatauākī:` followed by `[Body] <english> ║ [Body] <māori>` (`outputs/_s44_r2_proverb.cjs`; TRR104 / TRR105 have no Claude build). The gold renders a `div.whakatauki` on **23 / 23** Bilingual modules (`outputs/_s44_r2_whakform.py`) with the heading row dropped (22 / 23 — TRR108 keeps it as two h2s); Claude rendered **0**: `h3 reo "Whakataukī | Whakatauākī:"` + `h3 eng "Proverb"` + loose paragraphs — `BilingualBuilder.bilingualContainer` builds the box only for a table led by a `[Whakatauki]` TAG, which these tables never carry, so the row reached `bilingualRows` as ordinary content.
+
+**The fix** (KB 07B §7 "Whakatauki / Proverb": `<div class="whakatauki"><p reo>…</p><p eng>…</p>` + an optional author line; the TRR107 h3 variation named): `BilingualBuilder.bilingualRows` — a row whose folded English cell matches `proverb_box.eng_head_pattern` and Māori cell `reo_head_pattern` (red markers, `[tags]`, bold stripped) is dropped and the NEXT row renders through the new `#proverbBox` as ONE box in the table's own column: the proverb paragraph(s), joined while a quote is still open (TRR203 / TRR304's two-line proverb), bold / italic stripped, Māori first; a trailing short line (≤ 6 words, no terminal punctuation) is the author — in both cells `p > span reo + span eng` (the TRR102 / 103 / 106 gold), one identical name a plain `p` (PMT101); a heading-led cell keeps its heading + paragraphs inside, reo block then eng block (TRR107); any other paragraph is commentary AFTER the box (TRR114's gold); media after that. Data `Emit_Templates.elements.dual_language.proverb_box` {enabled, env, eng_head_pattern, reo_head_pattern, open, close, author_max_words 6}; env **`PROVERBBOX_OFF`**, byte-identical OFF.
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 3222 / 3222 identical**; ON 22 pages / 21 modules (PMT101 PNR101 PNR102 PNR104 PNR107 TRR102 TRR103 TRR106–TRR116 TRR203 TRR301 TRR304 — `outputs/_affected_r479.txt`, the 21 predicted by the WT census exactly; PNR101 twice — its module-content table on 0.0 repeats the proverb).
+- Regeneration of the 21 + the 12-module spot-check (`_r479_regen.sh`): 0 truly stale, 12 / 12 byte-identical; `scoped_ship.sh` containment OK (21 ⊆ 21); its decomposition flagged ≥50 −1 → committed NAMED (`_r479_commit_named.sh`, `--accept-named "skeleton pages >=50%"`).
+
+### 3. PROTECTED GATES
+
+- Skeleton **55.2333 % → 55.2477 % @ 2491 (+0.0144pp)**, RAW 39.194 → 39.200 %; 22 movers (**20 up / 2 down**, pp-sum +35.9), none outside the affected set: PNR107_0_0 +7.8, TRR301_0_0 +5.8, TRR203_0_0 +5.5, TRR110_1_0 +4.7, TRR106_1_0 +2.6, TRR116_1_0 +2.3 …; **≥50 1577 → 1576 — NAMED: TRR108_0_0 50.9 → 49.5** (the one gold, 1 / 23, that keeps the writer's "Whakataukī | Proverb" heading row above its box); TRR114_0_0 63.9 → 63.0 (the gold holds TRR114's proverb on page 1.0); ≥75 275; ≥90 25.
+- compare_structure **exact 16759 → 16771 (+12), missing 903 → 872 (−31)**, EXTRA 208; body ANY 238; clean 2587 / 2633; leak 75 / 46 — held or improved; every verifier RESULT line ✓; 17 selftests + the skeleton selftest green (50 PASS / GREEN, 0 FAIL); the feature index green; the miner 197 CANDIDATE.
+- Plateau (§4): a KB-rule round; neither counts nor resets: **2 of 3** stands.
+
+**Ledger:** scoped #5 since the r474 FULL · data `elements.dual_language.proverb_box` · env `PROVERBBOX_OFF` · code `BilingualBuilder.bilingualRows` / `#proverbCfg` / `#isProverbHead` / `#proverbBox` · tools `_s44_r2_{famloss,actlabel,whakform,pick}.py`, `_s44_r2_proverb.cjs`, `_s44_{skdump,famdiff}.py`, `_r479_{regen,commit_named,postship}.sh`, `_r479_finalise.py` · session 44 Round 2.
+
 ## 2026-09-25 (round 478, build 260620.42) — KB CONSTRAINT 75 FOR THE ACTIVITY'S LEAD PROSE: a bundle-owned activity's lead (the writer's instruction block before the widget box) keeps the writer's inline links — public web targets, whole-phrase anchors
 
 ### 1. WHAT CHANGED

@@ -124,6 +124,16 @@
 				"enabled": true,
 				"_round167_note": "ROUND 167 (Chris, ENGS201-01). In reoMode (a bilingual module OR any module the broad mtkFlag flags), a free-body table that ALL the bilingual handlers decline falls through to a cv2-interactive 'bilingual-unbuilt' placeholder that keeps the raw WT [tag] text BY DESIGN. That is right for an un-built widget/spec table, but a CLEAN STRUCTURAL LAYOUT table (a side-by-side image|body panel, every cell led by a structural [tag]) is NOT a widget — the human renders it as a row>col GRID, and the reoMode path was BYPASSING the layout-table grid that the normal (non-reo) path already runs. So ENGS201-01's 'Origin stories' image|body table shipped as the placeholder and LEAKED [body]/[image] as visible frontend text inside the box. FIX: before the placeholder, try TablesAndGrids.layoutTableGrid (the SAME detector the normal path uses — single-row or all-cells-tagged only, and it BAILS on any widget-member cell tag). A grid is emitted for a clean layout table; a widget/spec/data table still returns null and keeps the placeholder untouched, so no other reoMode table changes and no [tag] is newly exposed. env REOLTABLE_OFF reverts to the always-placeholder behaviour."
 			},
+			"proverb_box": {
+				"enabled": true,
+				"env": "PROVERBBOX_OFF",
+				"eng_head_pattern": "^proverbs?\\s*:?$",
+				"reo_head_pattern": "^(?:whakatauki|whakatauaki)(?:\\s*[|/]?\\s*(?:whakatauki|whakatauaki))?\\s*:?$",
+				"open": "<div class=\"whakatauki\">",
+				"close": "</div>",
+				"author_max_words": 6,
+				"_doc": "ROUND 479 (the autonomous loop's session-44 Round 2) — KB 07B §7 'Whakatauki / Proverb' ('Uses a dedicated component: <div class=\"whakatauki\"><p reo>…</p><p eng>…</p>', the author optional, TRR107's h3 variation named). 21 of the 23 Bilingual Writers Templates write the proverb as a bilingual table row `[H1] Proverb ║ [H1] Whakataukī | Whakatauākī:` + `[Body] <english> ║ [Body] <māori>`; the gold renders a div.whakatauki on 23 / 23 Bilingual modules (heading row dropped), Claude rendered 0 (two h3s + loose paragraphs — bilingualContainer fires only on a leading [Whakatauki] TAG). BilingualBuilder.bilingualRows: a row whose folded English cell matches eng_head_pattern and Māori cell reo_head_pattern (tags, bold, red markers stripped) is dropped and the NEXT row renders as ONE box in the table's own column — the proverb paragraph(s) joined while a quote is open, bold / italic stripped; a trailing short line (<= author_max_words, no terminal punctuation) = the author (both cells → p > span reo + span eng, the TRR102 gold form; one cell → a plain p); a heading-led cell keeps its heading + paragraphs inside, reo block then eng block (TRR107); any other paragraph is commentary AFTER the box (reo / eng interleaved; TRR114); media after that. Measured: outputs/_s44_r2_proverb.cjs, _s44_r2_whakform.py. Env PROVERBBOX_OFF = the r478 output."
+			},
 			"media_in_place": {
 				"enabled": false,
 				"env": "REOMEDIAPOS_OFF",

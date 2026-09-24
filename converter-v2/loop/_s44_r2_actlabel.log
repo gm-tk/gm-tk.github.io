@@ -1,0 +1,41 @@
+table openers over all WTs: {'ACT': 52}
+modules with ACT tables: {'TRR106': 9, 'TRR116': 43}
+ACT followed by an [Activity: Embedded] table: {False: 15, True: 37}
+gold title location: {'free': 3, 'activity': 47, 'absent': 2}
+claude title location: {'free': 50, 'absent': 2}
+(gold, claude, next-is-embedded):
+   ('activity', 'free', True) 34
+   ('activity', 'free', False) 12
+   ('free', 'free', True) 2
+   ('free', 'free', False) 1
+   ('activity', 'absent', False) 1
+   ('absent', 'free', False) 1
+   ('absent', 'absent', True) 1
+per family (gold, claude):
+   TRR1 {('activity', 'free'): 46, ('free', 'free'): 3, ('activity', 'absent'): 1, ('absent', 'free'): 1, ('absent', 'absent'): 1}
+examples gold=activity, claude elsewhere:
+   ('TRR106', 'He whakangahau', False, 'activity', 'free')
+   ('TRR106', 'Te rōpū ako o te kiwi', False, 'activity', 'absent')
+   ('TRR106', 'Tuhi ā ringa', False, 'activity', 'free')
+   ('TRR106', 'He Rotarota', False, 'activity', 'free')
+   ('TRR106', 'Ngā Rerenga rorirori', False, 'activity', 'free')
+   ('TRR116', 'Haere', False, 'activity', 'free')
+   ('TRR116', 'Haere rā', True, 'activity', 'free')
+   ('TRR116', 'Haere atu', True, 'activity', 'free')
+   ('TRR116', 'I haere ahau', True, 'activity', 'free')
+   ('TRR116', 'Pai', False, 'activity', 'free')
+   ('TRR116', 'Ka pai', True, 'activity', 'free')
+   ('TRR116', 'Pai', True, 'activity', 'free')
+   ('TRR116', 'He pai ki ahau', True, 'activity', 'free')
+   ('TRR116', 'Ahau', True, 'activity', 'free')
+   ('TRR116', 'He aha ahau?', True, 'activity', 'free')
+   ('TRR116', 'E pēhea ana ahau?', True, 'activity', 'free')
+   ('TRR116', 'Ahau', True, 'activity', 'free')
+   ('TRR116', 'Hea', True, 'activity', 'free')
+   ('TRR116', 'Nō hea?', True, 'activity', 'free')
+   ('TRR116', 'Kei hea?', True, 'activity', 'free')
+   ('TRR116', 'Ki hea?', True, 'activity', 'free')
+   ('TRR116', 'He wero tuhinga', True, 'activity', 'free')
+   ('TRR116', 'Kei', False, 'activity', 'free')
+   ('TRR116', 'Kei', True, 'activity', 'free')
+   ('TRR116', 'Kei a wai?', True, 'activity', 'free')

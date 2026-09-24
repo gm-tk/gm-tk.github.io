@@ -1,0 +1,317 @@
+gold TRR102_1.0.html 316 | claude TRR102_1_0.html 201
+  0 body.container-fluid.reoTranslate «»                                                            | body.container-fluid.reoTranslate «»
+  1   div#header «»                                                                                 |   div#header «»
+  2     div#module-code «»                                                                          |     div#module-code «»
+  3       h1 «1.0»                                                                                  |       h1 «1.0»
+  4     h1>span «Ngā Oropuare: Aa»                                                                  |     h1>span «Ngā Oropuare: Aa»
+  5       span «Ngā Oropuare: Aa»                                                                   |       span «Ngā Oropuare: Aa»
+  6     h1>span «The vowels: Aa»                                                                    |     h1>span «The vowels: Aa»
+  7       span «The vowels: Aa»                                                                     |       span «The vowels: Aa»
+  8   div#body «»                                                                                   |   div#body «»
+  9     div.row «»                                                                                  |     div.row «»
+ 10       div.col-12.col-md-8 «»                                                                    |       div.col-12.col-md-8 «»
+ 11         div.col-12.col-md-12 «»                                                                 |         h3 «Whakataukī | Whakatauākī:»
+ 12           div.whakatauki «»                                                                     |         h3 «Proverb»
+ 13             p «Ko te reo Māori te kākahu o te whakaaro, te huarah»                              |         p «Ko te reo Māori te kākahu o te whakaaro, te huarah»
+ 14             p «Te reo Māori helps us share our thoughts and find »                              |         p «Te reo Māori helps us share our thoughts and find »
+ 15             p «Tā Hemi Hēnare Sir James Hēnare»                                                 |         p «Tā Hemi Hēnare»
+ 16               span «Tā Hemi Hēnare»                                                             |         p «Sir James Hēnare»
+ 17               span «Sir James Hēnare»                                                           |     div.row «»
+ 18     div.row «»                                                                                  |       div.col-12.col-md-8 «»
+ 19       div.col-12.col-md-8 «»                                                                    |         h3 «Ngā oro o ngā oropuare»
+ 20         h3 «Ngā oro o ngā oropuare»                                                             |         h3 «The vowel sounds»
+ 21         h3 «The vowel sounds»                                                                   |         p «E rua ngā oro o ia oropuare. He oro poto, he oro r»
+ 22         p «E rua ngā oro o ia oropuare. He oro poto, he oro r»                                  |         p «Each vowel has two special sounds. A long sound an»
+ 23         p «Each vowel has two special sounds. A long sound an»                                  |         p «Mēnā ka ako tātou i ēnei oro, ka māmā ake te kōrer»
+ 24         p «Mēnā ka ako tātou i ēnei oro, ka māmā ake te kōrer»                                  |         p «Learning these sounds helps us speak, read and wri»
+ 25         p «Learning these sounds helps us speak, read and wri»                                  |         p «Inā koe i te oro, ka mōhio koe ko tēhea te oropuar»
+ 26         p «Inā koe i te oro, ka mōhio koe ko tēhea te oropuar»                                  |           b «rongo»
+ 27           b «rongo»                                                                             |           b «kite»
+ 28           b «kite»                                                                              |         p «Every time we the sound we know which vowel it is.»
+ 29         p «Every time we the sound we know which vowel it is.»                                  |           b «hear»
+ 30           b «hear»                                                                              |           b «see»
+ 31           b «see»                                                                               |         p «Kia tirohia tātou ki ngā oro o ia oropuare.»
+ 32         p «Kia tirohia tātou ki ngā oro o ia oropuare.»                                         |         p «Let’s have a look at the sounds the vowels make.»
+ 33         p «Let's have a look at the sounds the vowels make.»                                    |         p «Pāwhiria te oropuare kia rangona tōna oro.»
+ 34         p «Pāwhiria te oropuare kia rangona tōna oro.»                                          |         p «Click on the vowel and hear its sound.»
+ 35         p «Click on the vowel and hear its sound.»                                              |         p>b «a e i o u»
+ 36         div.row «»                                                                              |           b «a e i o u»
+ 37           div.col.paddingR «»                                                                   |         p>b «a e i o u»
+ 38             div.audioImage «»                                                                   |           b «a e i o u»
+ 39               div#a short.audioImageOption «»                                                   |         p>b «ā ē ī ō ū»
+ 40                 img.img-fluid «»                                                                |           b «ā ē ī ō ū»
+ 41           div.col.paddingR «»                                                                   |         p>b «ā ē ī ō ū»
+ 42             div.audioImage «»                                                                   |           b «ā ē ī ō ū»
+ 43               div#e short.audioImageOption «»                                                   |     WIDGET «»
+ 44                 img.img-fluid «»                                                                |     WIDGET «»
+ 45           div.col.paddingR «»                                                                   |     WIDGET «»
+ 46             div.audioImage «»                                                                   |     div.row «»
+ 47               div#i short.audioImageOption «»                                                   |       div.col-12.col-md-8 «»
+ 48                 img.img-fluid «»                                                                |         div.row «»
+ 49           div.col.paddingR «»                                                                   |           div.col-12.col-md-4.offset-md-0 «»
+ 50             div.audioImage «»                                                                   |             div.alertActivity «»
+ 51               div#o short.audioImageOption «»                                                   |     div.row «»
+ 52                 img.img-fluid «»                                                                |       div.col-12.col-md-6 «»
+ 53           div.col.paddingR «»                                                                   |         p «Did you know that every word in te reo Maori ends »
+ 54             div.audioImage «»                                                                   |       div.col-12.col-md-6 «»
+ 55               div#u short.audioImageOption «»                                                   |         p «Kei te mōhio koe, ka mutu ia kupu Māori i te oropu»
+ 56                 img.img-fluid «»                                                                |     div.row «»
+ 57         div.row «»                                                                              |       div.col-12.col-md-8 «»
+ 58           div.col.paddingR «»                                                                   |         WIDGET «»
+ 59             div.audioImage «»                                                                   |     WIDGET «»
+ 60               div#a long.audioImageOption «»                                                    |     div.row «»
+ 61                 img.img-fluid «»                                                                |       div.col-12.col-md-8 «»
+ 62           div.col.paddingR «»                                                                   |         h3 «Whakaahuatia ngā oropuare»
+ 63             div.audioImage «»                                                                   |         h3 «Pronouncing the vowels»
+ 64               div#e long.audioImageOption «»                                                    |         p «I aro koe ki ngā nekeneke o tō waha i a koe e whak»
+ 65                 img.img-fluid «»                                                                |         p «Did you notice the way your mouth moves when you c»
+ 66           div.col.paddingR «»                                                                   |         p «I kite koe ka tuwhera tonu tō waha i a koe e whaka»
+ 67             div.audioImage «»                                                                   |         p «Did you notice that your mouth stays open when you»
+ 68               div#i long.audioImageOption «»                                                    |         p «Ka rongo anō koe i tō hā e puta ana i tō waha?»
+ 69                 img.img-fluid «»                                                                |         p «Can you feel your breath going out of your mouth?»
+ 70           div.col.paddingR «»                                                                   |         p «Titiro ki ngā whakaahua i raro nei. Whakamātau ki »
+ 71             div.audioImage «»                                                                   |         p «Look at the photos below. Try to make the same sha»
+ 72               div#o long.audioImageOption «»                                                    |         p «Matapae ko tēhea te oropuare ka puta?»
+ 73                 img.img-fluid «»                                                                |         p «Guess what vowel sound it makes?»
+ 74           div.col.paddingR «»                                                                   |         p «Titiro ki te whakaataata, ā, mātakitaki i tō waha »
+ 75             div.audioImage «»                                                                   |         p «Have a look in the mirror and watch your mouth as »
+ 76               div#u long.audioImageOption «»                                                    |         img.img-fluid «»
+ 77                 img.img-fluid «»                                                                |         img.img-fluid «»
+ 78       div.col-12.col-md-4.offset-md-0.paddingL «»                                               |         img.img-fluid «»
+ 79         div.alert.top «»                                                                        |         img.img-fluid «»
+ 80           div.row «»                                                                            |         img.img-fluid «»
+ 81             div.col-12 «»                                                                       |         img.img-fluid «»
+ 82               p «Kei te mōhio koe, ka mutu ia kupu Māori i te oropu»                            |         img.img-fluid «»
+ 83               p «Did you know that every word in te reo Maori ends »                            |         img.img-fluid «»
+ 84     div.row «»                                                                                  |         img.img-fluid «»
+ 85       div.col-12.col-md-8 «»                                                                    |         img.img-fluid «»
+ 86         div.activity.interactive[number=*] «»                                                   |     WIDGET «»
+ 87           div.row «»                                                                            |     div.row «»
+ 88             div.col-12 «»                                                                       |       div.col-12.col-md-8 «»
+ 89               h3 «He oropuare ahau?»                                                            |         div.row «»
+ 90               h3 «Am I a vowel?»                                                                |           div.col-12.col-md-4.offset-md-0 «»
+ 91               p «He nui ngā oro katoa I tō tatou taiao.»                                        |             div.alertActivity «»
+ 92               p «There are lots of sounds all around us.»                                       |     div.row «»
+ 93               p «Ka taea e koe te tīpako ko ēhea oro he oropuare?»                              |       div.col-12.col-md-6 «»
+ 94               p «Can you work out which sounds are vowels?»                                     |         p «sound open»
+ 95               WIDGET «»                                                                         |           b «Oro =»
+ 96     div.row «»                                                                                  |           b «Puare =»
+ 97       div.col-12.col-md-8 «»                                                                    |         p>b «The word means sounds that are made with our mouth»
+ 98         h3 «Whakaahuatia ngā oropuare»                                                          |           b «oropuare»
+ 99         h3 «Pronouncing the vowels»                                                             |       div.col-12.col-md-6 «»
+100         p «I aro koe ki ngā nekeneke o tō waha i a koe e whak»                                  |         p «sound open»
+101         p «Did you notice the way your mouth moves when you c»                                  |           b «Oro =»
+102         p «I kite koe ka tuwhera tonu tō waha i a koe e whaka»                                  |           b «Puare =»
+103         p «Did you notice that your mouth stays open when you»                                  |         p>b «Ko te kupu e tohu ana i ngā oro ka puta i ō tātou »
+104         p «Ka rongo anō koe i tō hā e puta ana i tō waha?»                                      |           b «oropuare»
+105         p «Can you feel your breath going out of your mouth?»                                   |     div.row «»
+106         p «Titiro ki ngā whakaahua i raro nei. Whakamātau ki »                                  |       div.col-12.col-md-8 «»
+107         p «Look at the photos below. Try to make the same sha»                                  |         div.activity.interactive[number=*] «»
+108         p «Matapae ko tēhea te oropuare ka puta?»                                               |           div.row «»
+109         p «Guess what vowel sound it makes?»                                                    |             div.col-12 «»
+110       div.col-12.col-md-4.offset-md-0.paddingL «»                                               |               h3 «Ngā tohutohu hei mahi»
+111         div.alert.top «»                                                                        |               h3 «Instructions:»
+112           div.row «»                                                                            |               p>b «Whakaahuatia ngā oropuare.»
+113             div.col-12 «»                                                                       |                 b «Whakaahuatia ngā oropuare.»
+114               p>b «sound»                                                                       |               p «Titiro ki te oropuare.»
+115                 b «Oro =»                                                                       |               p «Ka maumahara koe ki tōna oro?»
+116               p>b «open»                                                                        |               p «Whakahuatia te oro, kātahi pāwhiria kia mōhio mēnā»
+117                 b «Puare =»                                                                     |               p>b «Pronouncing the vowels.»
+118               p>b «sound»                                                                       |                 b «Pronouncing the vowels.»
+119                 b «Oro =»                                                                       |               p «Look at the vowel.»
+120               p>b «open»                                                                        |               p «Can you remember its sound?»
+121                 b «Puare =»                                                                     |               p «Say the sound, then click to check if you are righ»
+122               p>b «Ko te kupu e tohu ana i ngā oro ka puta i ō tātou »                          |               WIDGET «»
+123                 b «oropuare»                                                                    |     div.row «»
+124               p>b «The word means sounds that are made with our mouth»                          |       div.col-12.col-md-8 «»
+125                 b «oropuare»                                                                    |         h3 «Ngā āhua oropuare»
+126     div.row «»                                                                                  |         h3 «The vowel shapes»
+127       div.col-12.col-md-12 «»                                                                   |         p>b «He āhua motuhake tō ia oropuare.»
+128         div.flipCardsContainer.row «»                                                           |           b «He āhua motuhake tō ia oropuare.»
+129           div.col.paddingLR «»                                                                  |         p>b «.»
+130             WIDGET «»                                                                           |           b «Every vowel has its own special shape»
+131           div.col.paddingLR «»                                                                  |         p «He mokopuna motuhake hoki koe, ā, ka mōhiotia koe »
+132             WIDGET «»                                                                           |         p «You are special, and people recognise you by the w»
+133           div.col.paddingLR «»                                                                  |         p «He , he anō hoki tō ia oropuare»
+134             WIDGET «»                                                                           |           b «pūmatua»
+135           div.col.paddingLR «»                                                                  |           b «pūiti»
+136             WIDGET «»                                                                           |         p «Each letter has both a and a shape.»
+137           div.col.paddingLR «»                                                                  |           b «capital»
+138             WIDGET «»                                                                           |           b «lowercase»
+139     div.row «»                                                                                  |         p «Kāore te oro e rerekē, ahakoa te āhua. Engari, ka »
+140       div.col-12.col-md-8 «»                                                                    |         p «These two different shapes do not change the sound»
+141         p «Titiro ki te whakaataata, ā, mātakitaki i tō waha »                                  |         p>b «Ka whakamahia te mō ngā kupu nui, pēnei i ngā ingo»
+142         p «Have a look in the mirror and watch your mouth as »                                  |           b «pūmatua»
+143     div.row «»                                                                                  |         p>b «are used for important words like names of people »
+144       div.col-12.col-md-8 «»                                                                    |           b «Capital letters»
+145         div.activity.interactive[number=*] «»                                                   |         p>b «Ka whakamahia te mō ngā kupu atu i ēnei.»
+146           div.row «»                                                                            |           b «pūiti»
+147             div.col-12 «»                                                                       |         p>b «are used for writing everything else.»
+148               h3 «Whakaahuatia ngā oropuare»                                                    |           b «Lowercase letters»
+149               h3 «Pronouncing the vowels»                                                       |         p «Titiro ki ngā oropuare. Titiro ki ngā āhua rerekē.»
+150               p «Titiro ki te oropuare.»                                                        |         p «Look at the vowels. Look at their different shapes»
+151               p «Look at the vowel.»                                                            |         img.img-fluid «»
+152               p «Ka maumahara koe ki tōna oro?»                                                 |         img.img-fluid «»
+153               p «Can you remember its sound?»                                                   |         img.img-fluid «»
+154               p «Whakahuatia te oro, kātahi pāwhiria kia mōhio mēnā»                            |         img.img-fluid «»
+155               p «Say the sound, then click to check if you are righ»                            |         img.img-fluid «»
+156               div.row «»                                                                        |     div.row «»
+157                 div.col.paddingR «»                                                             |       div.col-12.col-md-8 «»
+158                   div.audioImage «»                                                             |         WIDGET «»
+159                     div#a short.audioImageOption «»                                             |     div.row «»
+160                       img.img-fluid «»                                                          |       div.col-12.col-md-8 «»
+161                 div.col.paddingR «»                                                             |         div.alert.solid «»
+162                   div.audioImage «»                                                             |           div.row «»
+163                     div#e short.audioImageOption «»                                             |             div.col-12 «»
+164                       img.img-fluid «»                                                          |               div.table-responsive «»
+165                 div.col.paddingR «»                                                             |                 table.table.table-bordered «»
+166                   div.audioImage «»                                                             |                   tr «»
+167                     div#i short.audioImageOption «»                                             |                     td «Remember to show your kaiako the fun things you do»
+168                       img.img-fluid «»                                                          |                     td «Kia maumahara ki te whakaatu ki tō kaiako i ngā ma»
+169                 div.col.paddingR «»                                                             |                     td «»
+170                   div.audioImage «»                                                             |                     td «»
+171                     div#o short.audioImageOption «»                                             |                   tr «»
+172                       img.img-fluid «»                                                          |                     td «[Item 63] [Image] Kiwi Tohatoha»
+173                 div.col.paddingR «»                                                             |     div.row «»
+174                   div.audioImage «»                                                             |       div.col-12.col-md-8 «»
+175                     div#u short.audioImageOption «»                                             |         WIDGET «»
+176                       img.img-fluid «»                                                          |     div.row «»
+177               div.row «»                                                                        |       div.col-12.col-md-8 «»
+178                 div.col.paddingR «»                                                             |         h3 «He roa he poto rānei»
+179                   div.audioImage «»                                                             |         h3 «Long or short?»
+180                     div#a long.audioImageOption «»                                              |         p «Ka mau pōtae ngā oro puare, koirā te tohutō. Ka to»
+181                       img.img-fluid «»                                                          |         p «We use a to show when the vowel makes a sound. The»
+182                 div.col.paddingR «»                                                             |           b «macron»
+183                   div.audioImage «»                                                             |           b «long»
+184                     div#e long.audioImageOption «»                                              |         p «Ka āwhina te tohutō kia pānui māmā, kia tika te wh»
+185                       img.img-fluid «»                                                          |         p «This helps us when we are reading aloud to pronoun»
+186                 div.col.paddingR «»                                                             |         p «Titiro ki ēnei kupu.»
+187                   div.audioImage «»                                                             |         p «Look at the words below.»
+188                     div#i long.audioImageOption «»                                              |         p «Ka kite koe i ngā rerekētanga?»
+189                       img.img-fluid «»                                                          |         p «Can you see how the macron over the vowel has chan»
+190                 div.col.paddingR «»                                                             |     div.row «»
+191                   div.audioImage «»                                                             |       div.col-12.col-md-8 «»
+192                     div#o long.audioImageOption «»                                              |         WIDGET «»
+193                       img.img-fluid «»                                                          |   div#footer «»
+194                 div.col.paddingR «»                                                             |     ul.footer-nav «»
+195                   div.audioImage «»                                                             |       li>a#prev-lesson «»
+196                     div#u long.audioImageOption «»                                              |         a#prev-lesson «»
+197                       img.img-fluid «»                                                          |       li>a#next-lesson «»
+198     div.row «»                                                                                  |         a#next-lesson «»
+199       div.col-12.col-md-8 «»                                                                    |       li>a.home-nav «»
+200         h3 «Ngā āhua oropuare»                                                                  |         a.home-nav «»
+201         h3 «The vowel shapes»                                                                   | 
+202         p>b «He āhua motuhake tō ia oropuare.»                                                  | 
+203           b «He āhua motuhake tō ia oropuare.»                                                  | 
+204         p>b «Every vowel has its own special shape.»                                            | 
+205           b «Every vowel has its own special shape.»                                            | 
+206         p «He mokopuna motuhake hoki koe, ā, ka mōhiotia koe »                                  | 
+207         p «You are special, and people recognise you by the w»                                  | 
+208         p «He , he anō hoki tō ia oropuare»                                                     | 
+209           b «pūmatua»                                                                           | 
+210           b «pūiti»                                                                             | 
+211         p «Each letter has both a and a shape.»                                                 | 
+212           b «capital»                                                                           | 
+213           b «lowercase»                                                                         | 
+214         p «Kāore te oro e rerekē, ahakoa te āhua. Engari, ka »                                  | 
+215         p «These two different shapes do not change the sound»                                  | 
+216         p>b «Ka whakamahia te mō ngā kupu nui, pēnei i ngā ingo»                                | 
+217           b «pūmatua»                                                                           | 
+218         p>b «are used for important words like names of people »                                | 
+219           b «Capital letters»                                                                   | 
+220         p>b «Ka whakamahia te mō ngā kupu atu i ēnei.»                                          | 
+221           b «pūiti»                                                                             | 
+222         p>b «are used for writing everything else.»                                             | 
+223           b «Lowercase letters»                                                                 | 
+224         p «Titiro ki ngā oropuare. Titiro ki ngā āhua rerekē.»                                  | 
+225         p «Look at the vowels. Look at their different shapes»                                  | 
+226     div.row «»                                                                                  | 
+227       div.col.paddingR «»                                                                       | 
+228         img.img-fluid «»                                                                        | 
+229       div.col.paddingR «»                                                                       | 
+230         img.img-fluid «»                                                                        | 
+231       div.col.paddingR «»                                                                       | 
+232         img.img-fluid «»                                                                        | 
+233       div.col.paddingR «»                                                                       | 
+234         img.img-fluid «»                                                                        | 
+235       div.col.paddingR «»                                                                       | 
+236         img.img-fluid «»                                                                        | 
+237     div.row «»                                                                                  | 
+238       div.col-12.col-md-8 «»                                                                    | 
+239         div.activity.alertPadding.dropbox[number=*] «»                                          | 
+240           div.row «»                                                                            | 
+241             div.col-12 «»                                                                       | 
+242               h3 «Ngā āhua oropuare»                                                            | 
+243               h3 «The vowel shapes»                                                             | 
+244               p>b «Titiro ki te rārangi o raro iho nei, tīpakongia ēt»                          | 
+245                 b «Titiro ki te rārangi o raro iho nei, tīpakongia ēt»                          | 
+246               p>b «Look at the list below and choose some fun ways to»                          | 
+247                 b «Look at the list below and choose some fun ways to»                          | 
+248               WIDGET «»                                                                         | 
+249               p «Kia maumahara ki te whakaatu ki tō kaiako i ngā ma»                            | 
+250               p «Remember to show your kaiako the fun things you do»                            | 
+251               p «Tukua mai he whakaahua, he ataata, me ētahi atu ma»                            | 
+252               p «You can send me photos, videos, or other mahi. Loo»                            | 
+253               a «Upload to dropbox»                                                             | 
+254                 div.button «Upload to dropbox»                                                  | 
+255       div.col-12.col-md-4.offset-md-0 «»                                                        | 
+256         div.alertImage «»                                                                       | 
+257           img.img-fluid «»                                                                      | 
+258     div.row «»                                                                                  | 
+259       div.col-12.col-md-8 «»                                                                    | 
+260         div.activity.interactive[number=*] «»                                                   | 
+261           div.row «»                                                                            | 
+262             div.col-12 «»                                                                       | 
+263               h3 «Rapua ngā oropuare taurite»                                                   | 
+264               h3 «Find the matching vowels»                                                     | 
+265               br «»                                                                             | 
+266               WIDGET «»                                                                         | 
+267     div.row «»                                                                                  | 
+268       div.col-12.col-md-8 «»                                                                    | 
+269         h3 «He roa he poto rānei»                                                               | 
+270         h3 «Long or short?»                                                                     | 
+271         p «Ka mau pōtae ngā oro puare, koirā te tohutō. Ka to»                                  | 
+272         p «We use a to show when the vowel makes a sound. The»                                  | 
+273           b «macron»                                                                            | 
+274           b «long»                                                                              | 
+275         p «Ka āwhina te tohutō kia pānui māmā, kia tika te wh»                                  | 
+276         p «This helps us when we are reading aloud to pronoun»                                  | 
+277         p «Titiro ki ēnei kupu.»                                                                | 
+278         p «Look at the words below.»                                                            | 
+279         p «Ka kite koe i ngā rerekētanga?»                                                      | 
+280         p «Can you see how the macron over the vowel has chan»                                  | 
+281         WIDGET «»                                                                               | 
+282     div.row «»                                                                                  | 
+283       div.col-12.col-md-8 «»                                                                    | 
+284         h3 «He aha tāku i ako ai?»                                                              | 
+285         h3 «What have I learned?»                                                               | 
+286         p «He pū motuhake ngā oropuare. He āhua motuhake, he »                                  | 
+287         p «Vowels are special letters, with their very own sh»                                  | 
+288         p «Mā te ako i ngā oro me ngā āhua, ka māmā te whakah»                                  | 
+289         p «Learning the vowel sounds and shapes helps us pron»                                  | 
+290         p>b «Tirohia mēnā ka maumahara koe!»                                                    | 
+291           b «Tirohia mēnā ka maumahara koe!»                                                    | 
+292         p>b «Let’s see how much you can remember.»                                              | 
+293           b «Let’s see how much you can remember.»                                              | 
+294     div.row «»                                                                                  | 
+295       div.col-12.col-md-8 «»                                                                    | 
+296         div.activity.interactive[number=*] «»                                                   | 
+297           div.row «»                                                                            | 
+298             div.col-12 «»                                                                       | 
+299               h3 «He aha tāku i ako ai?»                                                        | 
+300               h3 «What have I learned?»                                                         | 
+301               p «Whakamātauria ō mōhiotanga mō ngā oropuare. Whakau»                            | 
+302               p «Test your vowel knowledge. Answer the following qu»                            | 
+303               WIDGET «»                                                                         | 
+304               p>b «Tau kē. Kua oti i a koe tēnei akoranga!»                                     | 
+305                 b «Tau kē. Kua oti i a koe tēnei akoranga!»                                     | 
+306               p>b «Tau kē. You have finished!»                                                  | 
+307                 b «Tau kē. You have finished!»                                                  | 
+308   div#footer «»                                                                                 | 
+309     ul.footer-nav «»                                                                            | 
+310       li>a#prev-lesson «»                                                                       | 
+311         a#prev-lesson «»                                                                        | 
+312       li>a#next-lesson «»                                                                       | 
+313         a#next-lesson «»                                                                        | 
+314       li>a.home-nav «»                                                                          | 
+315         a.home-nav «»                                                                           | 

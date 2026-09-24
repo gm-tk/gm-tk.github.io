@@ -216,7 +216,15 @@ class BilingualBuilder {
 		const interleave = !!scfg && scfg.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env.REONEST_OFF);
 		const out = [];
+		const pv = this.#proverbCfg();   // ROUND 479 — null when off
 		for (let r = start; r < rows.length; r++) {
+			// ROUND 479 (KB 07B "Whakatauki / Proverb"): a `[H1] Proverb ║ [H1] Whakataukī` heading row is dropped and the
+			// NEXT row renders as ONE div.whakatauki (proverb + author inside, commentary after). Data
+			// dual_language.proverb_box; env PROVERBBOX_OFF.
+			if (pv && r + 1 < rows.length && this.#isProverbHead(rows[r], pv)) {
+				const box = this.#proverbBox(rows[r + 1], run, norm, pv);
+				if (box) { out.push(...box); r++; continue; }
+			}
 			const reoCell = rows[r][1], engCell = rows[r][0];   // col-2 = Māori, col-1 = English
 			const R = this.bilingualSplit(reoCell, run, norm);
 			const E = this.bilingualSplit(engCell, run, norm);
@@ -1030,6 +1038,88 @@ class BilingualBuilder {
 			return { text, media: media.filter((x, k) => keep[k]), mediaPos: mpos.filter((x, k) => keep[k]) };
 		}
 		return { text, media, mediaPos: mpos };
+	};
+
+	/**
+	 * ROUND 479 (the autonomous loop's session-44 Round 2) — KB 07B "Whakatauki / Proverb". The data block
+	 * dual_language.proverb_box with its two heading patterns compiled, or null when it is off (data flag /
+	 * env PROVERBBOX_OFF).
+	 * @returns {{engRe: RegExp, reoRe: RegExp, open: string, close: string, authorMax: number}|null}
+	 */
+	static #proverbCfg() {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.proverb_box;
+		if (!c || c.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "PROVERBBOX_OFF"])) return null;
+		return {
+			engRe: new RegExp(c.eng_head_pattern ?? "^proverbs?\\s*:?$", "i"),
+			reoRe: new RegExp(c.reo_head_pattern ?? "^(?:whakatauki|whakatauaki)\\s*:?$", "i"),
+			open: c.open ?? "<div class=\"whakatauki\">", close: c.close ?? "</div>",
+			authorMax: c.author_max_words ?? 6,
+		};
+	};
+
+	/** ROUND 479 — is this row the writer's `[H1] Proverb ║ [H1] Whakataukī | Whakatauākī:` heading? (col 1 English, col 2 Māori;
+	 *  red markers, [tags] and bold stripped, diacritics folded) */
+	static #isProverbHead(row, pv) {
+		if (!Array.isArray(row) || row.length < 2) return false;
+		const clean = (s) => Utils.Fold(String(s ?? "").replace(/\u{1f534}|\[\/?RED TEXT\]/gu, "")
+			.replace(/\[[^\]]*\]/g, "").replace(/\*/g, ""));
+		return pv.engRe.test(clean(row[0])) && pv.reoRe.test(clean(row[1]));
+	};
+
+	/**
+	 * ROUND 479 — the proverb ROW (the one after the heading row) as ONE whakatauki box, the gold's form on 23 / 23
+	 * Bilingual modules: the proverb paragraph(s) — joined while a quote is still open (TRR203's two-line proverb) —
+	 * bold / italic stripped, Māori first; a trailing short line (≤ author_max_words, no terminal punctuation) is the
+	 * author (in both cells → `p > span reo + span eng`, the TRR102 gold; in one → a plain p); a heading-led cell keeps
+	 * its heading + paragraphs inside, reo block then eng block (the TRR107 variation KB 07B names); any other
+	 * paragraph is commentary AFTER the box (reo / eng interleaved — TRR114); media after that.
+	 * @returns {string[]|null} the box HTML then the commentary / media fragments, or null when the row holds no text
+	 */
+	static #proverbBox(row, run, norm, pv) {
+		if (!Array.isArray(row) || row.length < 2) return null;
+		const R = this.bilingualSplit(row[1], run, norm), E = this.bilingualSplit(row[0], run, norm);
+		if (!R.text.length && !E.text.length) return null;
+		const plain = (h) => String(h).replace(/<[^>]+>/g, "").replace(/&quot;/g, "\"").replace(/&#0?39;|&apos;/g, "'")
+			.replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
+		const isP = (h) => /^\s*<p[\s>]/i.test(String(h));
+		const isHead = (h) => /^\s*<h[1-6][\s>]/i.test(String(h));
+		const inner = (h) => String(h).replace(/^\s*<p[^>]*>/i, "").replace(/<\/p>\s*$/i, "").trim();
+		const unstyle = (h) => String(h).replace(/<\/?(?:b|strong|i|em)(?:\s[^>]*)?>/gi, "");
+		const quotesOpen = (t) => ((t.replace(/[“”]/g, "\"").match(/"/g) || []).length % 2) === 1;
+		const box = [], after = [];
+		if ((R.text[0] && isHead(R.text[0])) || (E.text[0] && isHead(E.text[0]))) {
+			for (const h of R.text) box.push(this.langAttr(unstyle(h), "reo"));
+			for (const h of E.text) box.push(this.langAttr(unstyle(h), "eng"));
+		} else {
+			const part = (arr) => {
+				if (!arr.length || !isP(arr[0])) return { prov: null, rest: arr.slice() };
+				let i = 1, txt = inner(arr[0]);
+				while (i < arr.length && isP(arr[i]) && quotesOpen(plain(txt))) { txt += " " + inner(arr[i]); i++; }
+				return { prov: `<p>${unstyle(txt)}</p>`, rest: arr.slice(i) };
+			};
+			const r = part(R.text), e = part(E.text);
+			if (!r.prov && !e.prov) return null;
+			if (r.prov) box.push(this.langAttr(r.prov, "reo"));
+			if (e.prov) box.push(this.langAttr(e.prov, "eng"));
+			const short = (h) => isP(h) && plain(h).split(/\s+/).filter(Boolean).length <= pv.authorMax && !/[.?!]["”'’]?$/.test(plain(h));
+			const lastR = r.rest.length && short(r.rest[r.rest.length - 1]) ? r.rest[r.rest.length - 1] : null;
+			const lastE = e.rest.length && short(e.rest[e.rest.length - 1]) ? e.rest[e.rest.length - 1] : null;
+			let author = null;
+			if (lastR && lastE && plain(lastR) === plain(lastE)) author = `<p>${unstyle(inner(lastR))}</p>`;   // one name (PMT101's gold)
+			else if (lastR && lastE) author = `<p><span reo>${unstyle(inner(lastR))}</span><span eng>${unstyle(inner(lastE))}</span></p>`;
+			else if (lastR && !e.rest.length) author = `<p>${unstyle(inner(lastR))}</p>`;
+			else if (lastE && !r.rest.length) author = `<p>${unstyle(inner(lastE))}</p>`;
+			if (author) { box.push(author); if (lastR) r.rest.pop(); if (lastE) e.rest.pop(); }
+			const n = Math.max(r.rest.length, e.rest.length);
+			for (let k = 0; k < n; k++) {
+				if (k < r.rest.length) after.push(this.langAttr(r.rest[k], "reo"));
+				if (k < e.rest.length) after.push(this.langAttr(e.rest[k], "eng"));
+			}
+		}
+		if (!box.length) return null;
+		const media = R.media.length ? R.media : E.media;
+		return [`${pv.open}\n${box.join("\n")}\n${pv.close}`, ...after, ...media];
 	};
 
 	/** ROUND 461 — dual_language.media_in_place is on (data flag; env REOMEDIAPOS_OFF). */

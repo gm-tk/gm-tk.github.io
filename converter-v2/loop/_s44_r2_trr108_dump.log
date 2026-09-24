@@ -1,0 +1,78 @@
+gold TRR108_0.0.html 77 | claude TRR108_0_0.html 37
+  0 body.container-fluid.reoTranslate «»                                                            | body.container-fluid.reoTranslate «»
+  1   div#header «»                                                                                 |   div#header «»
+  2     div#module-code «»                                                                          |     div#module-code «»
+  3       h1 «TRR108»                                                                               |       h1 «TRR108»
+  4     h1>span «Ngā Orokati Tuarua»                                                                |     h1>span «Ngā Orokati Tuarua»
+  5       span «Ngā Orokati Tuarua»                                                                 |       span «Ngā Orokati Tuarua»
+  6     h1>span «Final Consonants»                                                                  |     h1>span «Final Consonants»
+  7       span «Final Consonants»                                                                   |       span «Final Consonants»
+  8     div#module-head-buttons «»                                                                  |     div#module-head-buttons «»
+  9       div#module-menu-button.btn1.circle-button «»                                              |       div#module-menu-button.btn1.circle-button «»
+ 10     div#module-menu-content.moduleMenu «»                                                       |     div#module-menu-content.moduleMenu «»
+ 11       div.row «»                                                                                |       div.row «»
+ 12         WIDGET «»                                                                               |         WIDGET «»
+ 13   div#body «»                                                                                   |   div#body «»
+ 14     div.row «»                                                                                  |     div.row «»
+ 15       div.col-12.col-md-8 «»                                                                    |       div.col-12.col-md-8 «»
+ 16         h1 «TRR900»                                                                             |         WIDGET «»
+ 17         h1 «TRR900»                                                                             |     div.row «»
+ 18         h2 «Kōwae Ako Whakataki»                                                                |       div.col-12.col-md-8 «»
+ 19         h2 «Module Introduction»                                                                |         div.whakatauki «»
+ 20         p «Ka awhi tēnei kōwae i te ako mā te tākaro, mā ngā »                                  |           p «Ko te manu e kai ana i te miro nōna te ngāhere. Ko»
+ 21         p «This module embraces learning through play, using »                                  |           p «The bird that eats the miro berry owns the forest.»
+ 22         p «Ka whakanuia, ka whakamahia hoki te taiao kāinga o»                                  |         img.img-fluid «»
+ 23         p «It values and utilises the child's home environmen»                                  |     div.row «»
+ 24         p «Mā te whakauru i tētahi aronga pāhekoheko, aronga »                                  |       div.col-12.col-md-8 «»
+ 25         p «By incorporating an interactive and holistic appro»                                  |         h3 «Karakia Tīmatanga»
+ 26         p «Ka akiaki i te mokopuna ki te tūhura i ngā momo or»                                  |         img.img-fluid «»
+ 27         p «It encourages mokopuna to explore sounds, language»                                  |   div#footer «»
+ 28     div.row «»                                                                                  |     ul.footer-nav «»
+ 29       div.col-12.col-md-8 «»                                                                    |       li>a#next-lesson «»
+ 30         h2 «Whakataukī | Whakatauākī:»                                                          |         a#next-lesson «»
+ 31         h2 «Proverb»                                                                            |       li>a.home-nav «»
+ 32         div.col-12.col-md-12 «»                                                                 |         a.home-nav «»
+ 33           div.whakatauki «»                                                                     |   div.row «»
+ 34             p «Ko te manu e kai ana i te miro nōna te ngāhere. Ko»                              |     div.col-12.col-md-8 «»
+ 35             p «The bird that eats the miro berry owns the forest.»                              |       div.acks.acksTemplate «»
+ 36         img.img-fluid «»                                                                        |         WIDGET «»
+ 37     div.row «»                                                                                  | 
+ 38       div.col-12.col-md-8 «»                                                                    | 
+ 39         h3 «Karakia Tīmatanga»                                                                  | 
+ 40         h3 «Translation here»                                                                   | 
+ 41         div.col-12.col-md-8.offset-md-2 «»                                                      | 
+ 42           img.img-fluid «»                                                                      | 
+ 43     div.row «»                                                                                  | 
+ 44       div.col-12.col-md-8 «»                                                                    | 
+ 45         h2 «Te Arapū Māori - Ako mā te Tākaro»                                                  | 
+ 46         h2 «Translation here»                                                                   | 
+ 47         p «Ngā huarahi auaha mō ngā mokopuna Tau 1-3»                                           | 
+ 48         p «Translation here»                                                                    | 
+ 49         p.quoteText «"He taonga te reo Māori - tō tātou reo rangatira. »                        | 
+ 50         p.quoteText «Translation here»                                                          | 
+ 51         p «Pāwhiri ngā whakaaro hei tiaki - kia whakamahi ai »                                  | 
+ 52         p «Translation here»                                                                    | 
+ 53         WIDGET «»                                                                               | 
+ 54         div.alert «»                                                                            | 
+ 55           div.row «»                                                                            | 
+ 56             div.col-12 «»                                                                       | 
+ 57               p>b «Ō Whakaaro Kōwhiri (33)»                                                     | 
+ 58                 b «Ō Whakaaro Kōwhiri (33)»                                                     | 
+ 59               p>b «Translation here»                                                            | 
+ 60                 b «Translation here»                                                            | 
+ 61               p «He pai ēnei kōwhiringa! Ēnei whakaaro he whakatōhe»                            | 
+ 62               p «Translation here»                                                              | 
+ 63     div.row «»                                                                                  | 
+ 64       div.col-12.col-md-8 «»                                                                    | 
+ 65         div.row «»                                                                              | 
+ 66           p «Designer note: Phase buttons on side are for funda»                                | 
+ 67           h2 «Te reo translation»                                                               | 
+ 68           h2 «More fun facts»                                                                   | 
+ 69           p «Designer note: Unsure what "written text" in edit »                                | 
+ 70           WIDGET «»                                                                             | 
+ 71   div#footer «»                                                                                 | 
+ 72     ul.footer-nav «»                                                                            | 
+ 73       li>a#next-lesson «»                                                                       | 
+ 74         a#next-lesson «»                                                                        | 
+ 75       li>a.home-nav «»                                                                          | 
+ 76         a.home-nav «»                                                                           | 

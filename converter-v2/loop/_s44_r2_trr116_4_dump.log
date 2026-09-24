@@ -1,0 +1,207 @@
+gold TRR116_4_0.html 206 | claude TRR116_4_0.html 198
+  0 body.container-fluid.reoTranslate «»                                                            | body.container-fluid.reoTranslate «»
+  1   div#header «»                                                                                 |   div#header «»
+  2     div#module-code «»                                                                          |     div#module-code «»
+  3       h1 «4.0»                                                                                  |       h1 «4.0»
+  4     h1>span «Ngā Kupu Āhukahuka»                                                                |     h1>span «Ngā Kupu Āhukahuka»
+  5       span «Ngā Kupu Āhukahuka»                                                                 |       span «Ngā Kupu Āhukahuka»
+  6     h1>span «Sight Words»                                                                       |   div#body «»
+  7       span «Sight Words»                                                                        |     div.row «»
+  8   div#body «»                                                                                   |       div.col-12.col-md-8 «»
+  9     div.row «»                                                                                  |         h3 «Hea»
+ 10       div.col-12.col-md-8 «»                                                                    |         h3 «Hea»
+ 11         div.activity.interactive[number=*] «»                                                   |         p «Ko ngā kupu āhukahuka he kupu ka ako tātou mā te m»
+ 12           div.row «»                                                                            |         p «Kupu āhukahuka are words we learn off by heart, so»
+ 13             div.col-12 «»                                                                       |         p «Ka taea te ako i tētahi kupu mā te titiro ki ia pū»
+ 14               h3 «Hea»                                                                          |         p «We can learn a word by looking at every letter and»
+ 15               p>b «NOTE: please give english for all the activity tit»                          |         p>b «Me ako tātou i te :»
+ 16                 b «NOTE: please give english for all the activity tit»                          |           b «kupu āhukahuka»
+ 17               p «Ko ngā kupu āhukahuka he kupu ka ako tātou mā te m»                            |         p>b «Let’s learn the :»
+ 18               p «Kupu āhukahuka are words we learn off by heart, so»                            |           b «kupu āhukahuka»
+ 19               p «Ka taea te ako i tētahi kupu mā te titiro ki ia pū»                            |         h3 «hea»
+ 20               p «We can learn a word by looking at every letter and»                            |         h3 «hea»
+ 21               p «Me ako tātou i te kupu āhukahuka:»                                             |         audio.audioPlayer.icon «»
+ 22               p «Let's learn the kupu āhukahuka:»                                               |         audio.audioPlayer.icon «»
+ 23               p.center-text.sassoonI-text «hea»                                                 |     WIDGET «»
+ 24                 span.audioButton «»                                                             |     div.row «»
+ 25                 span «hea»                                                                      |       div.col-12.col-md-8 «»
+ 26               h3 «Ngā Tohutohu:»                                                                |         div.activity.interactive[number=*] «»
+ 27               h3 «Activity Instructions:»                                                       |           div.row «»
+ 28               p «Āta titiro ki ia pū o te kupu. Pāwhiri anake i ngā»                            |             div.col-12 «»
+ 29               p «Look carefully at each letter in the word. Click o»                            |               h3 «Ngā Tohutohu:»
+ 30               WIDGET «»                                                                         |               h3 «Activity Instructions:»
+ 31     div.row «»                                                                                  |               p>b «Āta titiro ki ia pū o te kupu. Pāwhiri anake i ngā»
+ 32       div.col-12.col-md-8 «»                                                                    |                 b «‘hea’.»
+ 33         div.activity.interactive[number=*] «»                                                   |               p>b «Look carefully at each letter in the word. Click o»
+ 34           div.row «»                                                                            |                 b «‘hea’»
+ 35             div.col-12 «»                                                                       |               p «Note to CS – please only use the following words a»
+ 36               h3 «Nō hea?»                                                                      |               p «hea ✔»
+ 37               p «He maha ngā wā ka whakamahia te kupu 'hea' i roto »                            |               p «hoa»
+ 38               p «The word 'hea' is used in lots of questions that a»                            |               p «hia»
+ 39               p «Ka whakaatu tātou he pātai tētahi rerenga kōrero m»                            |               p «hua»
+ 40               p «We show that a sentence is a question by using a q»                            |               p «hae»
+ 41               p «Ka whakamahia te kupu 'hea' i tēnei pātai hei ui '»                            |               p «hei»
+ 42               p «The kupu 'hea' is used in this question to ask 'Wh»                            |               p «heo»
+ 43               p.center-text.sassoonI-text «Nō hea?»                                             |               p «heu»
+ 44                 span.audioButton «»                                                             |               p «hei»
+ 45                 span «Nō hea?»                                                                  |     div.row «»
+ 46               p «Me whakamahi tātou i tēnei pātai ki te ui i te tan»                            |       div.col-12.col-md-8 «»
+ 47               p «Let's use the question to ask people where they ar»                            |         h3 «Nō hea?»
+ 48               h3 «Ngā Tohutohu:»                                                                |         h3 «Nō hea?»
+ 49               h3 «Activity Instructions:»                                                       |         p>b «He maha ngā wā ka whakamahia te kupu i roto i ngā »
+ 50               p «Kimihia te kupu kua tuhia tikatia hei whakaoti i t»                            |           b «‘hea’»
+ 51               p «Find the word that is spelt correctly to complete »                            |         p>b «The word is used in lots of questions that ask ‘wh»
+ 52               div.row «»                                                                        |           b «‘hea’»
+ 53                 div.col-12.col-md-6.paddingR «»                                                 |         p «Ka whakaatu tātou he pātai tētahi rerenga kōrero m»
+ 54                   div.audioImage.mb-3 «»                                                        |         p «We show that a sentence is a question by using a q»
+ 55                     div#Nō hea ahau  Nō Wīwī ahau..audioImageOption.playVisible «»              |         p «Ka whakamahia te kupu i tēnei pātai hei ui ‘ ’»
+ 56                       img.img-fluid «»                                                          |           b «‘hea’»
+ 57                   WIDGET «»                                                                     |           b «Nō hea?»
+ 58                 div.col-12.col-md-6.paddingL «»                                                 |         p «The kupu is used in this question to ask ‘»
+ 59                   div.audioImage.mb-3 «»                                                        |           b «‘hea’»
+ 60                     div#Nō hea ahau  Nō Mehiko ahau..audioImageOption.playVisible «»            |           b «Where from?’»
+ 61                       img.img-fluid «»                                                          |         h3 «Nō hea?»
+ 62                   WIDGET «»                                                                     |         h3 «Nō hea?»
+ 63               div.mt-4.row «»                                                                   |         p>b «Me whakamahi tātou i tēnei pātai ki te ui i te tan»
+ 64                 div.col-12.col-md-6.paddingR «»                                                 |           b «nō ‘hea’»
+ 65                   div.audioImage.mb-3 «»                                                        |         p «Let’s use the question to ask people where they ar»
+ 66                     div#Nō hea ahau  Nō Amerika ahau..audioImageOption.playVisible «»           |         audio.audioPlayer.icon «»
+ 67                       img.img-fluid «»                                                          |         audio.audioPlayer.icon «»
+ 68                   WIDGET «»                                                                     |     WIDGET «»
+ 69                 div.col-12.col-md-6.paddingL «»                                                 |     div.row «»
+ 70                   div.audioImage.mb-3 «»                                                        |       div.col-12.col-md-8 «»
+ 71                     div#Nō hea ahau  Nō Hapani ahau..audioImageOption.playVisible «»            |         div.activity.interactive[number=*] «»
+ 72                       img.img-fluid «»                                                          |           div.row «»
+ 73                   WIDGET «»                                                                     |             div.col-12 «»
+ 74     div.row «»                                                                                  |               h3 «Ngā Tohutohu:»
+ 75       div.col-12.col-md-8 «»                                                                    |               h3 «Activity Instructions:»
+ 76         div.activity.interactive[number=*] «»                                                   |               p «Kimihia te kupu kua tuhia tikatia hei whakaoti i t»
+ 77           div.row «»                                                                            |               p «Find the word that is spelt correctly to complete »
+ 78             div.col-12 «»                                                                       |               p «Word choice»
+ 79               h3 «Kei hea?»                                                                     |               p «Sentence»
+ 80               p «I tēnei wā, ka whakamahia te kupu 'hea' hei ui i t»                            |               p «hea ü»
+ 81               p «This time the kupu 'hea' is used to ask the questi»                            |               p «hua»
+ 82               p.center-text.sassoonI-text «Kei hea?»                                            |               p «hoa»
+ 83                 span.audioButton «»                                                             |               p «Nō ____ koe?»
+ 84                 span «Kei hea?»                                                                 |               p «hia»
+ 85               p «Me whakamahi tātou i tēnei pātai ki te ui kei hea »                            |               p «hae»
+ 86               p «Let's use the question to ask where the sea creatu»                            |               p «hea ü»
+ 87               h3 «Ngā Tohutohu:»                                                                |               p «Nō ___ ia?»
+ 88               h3 «Activity Instructions:»                                                       |               p «heo»
+ 89               p «Tōia ngā pū kia hanga ai te kupu hea, kātahi kimih»                            |               p «hea ü»
+ 90               p «Drag the letters to make the word hea, then find t»                            |               p «heu»
+ 91               div.row «»                                                                        |               p «Nō ___ te tama?»
+ 92                 div.col-12.col-md-12 «»                                                         |               p «hoe»
+ 93                   img.img-fluid «»                                                              |               p «hea ü»
+ 94               div.row «»                                                                        |               p «hei»
+ 95                 div.col-12 «»                                                                   |               p «Nō ___ te kōtiro?»
+ 96                   div.row «»                                                                    |     div.row «»
+ 97                     div.col-12.col-md-4 «»                                                      |       div.col-12.col-md-8 «»
+ 98                       img.img-fluid «»                                                          |         p>b «Activity 4.3:»
+ 99                   WIDGET «»                                                                     |           b «Activity 4.3:»
+100               div.mt-4.row «»                                                                   |         h3 «Kei hea?»
+101                 div.col-12 «»                                                                   |         h3 «Kei hea?»
+102                   div.row «»                                                                    |         p «I tēnei wā, ka whakamahia te kupu hei ui i te pāta»
+103                     div.col-12.col-md-4 «»                                                      |           b «‘hea’»
+104                       img.img-fluid «»                                                          |           b «Kei hea?»
+105                   WIDGET «»                                                                     |         p «This time the kupu is used to ask the question,»
+106               div.mt-4.row «»                                                                   |           b «‘hea’»
+107                 div.col-12 «»                                                                   |           b «‘Where is?”»
+108                   div.row «»                                                                    |         h3 «Kei hea?»
+109                     div.col-12.col-md-4 «»                                                      |         h3 «Kei hea?»
+110                       img.img-fluid «»                                                          |         p «Me whakamahi tātou i tēnei pātai ki te ui kei hea »
+111                   WIDGET «»                                                                     |         p «Let’s use the question to ask where the sea creatu»
+112               div.mt-4.row «»                                                                   |         audio.audioPlayer.icon «»
+113                 div.col-12 «»                                                                   |         audio.audioPlayer.icon «»
+114                   div.row «»                                                                    |     WIDGET «»
+115                     div.col-12.col-md-4 «»                                                      |     div.row «»
+116                       img.img-fluid «»                                                          |       div.col-12.col-md-8 «»
+117                   WIDGET «»                                                                     |         div.activity.interactive[number=*] «»
+118     div.row «»                                                                                  |           div.row «»
+119       div.col-12.col-md-8 «»                                                                    |             div.col-12 «»
+120         div.activity.interactive[number=*] «»                                                   |               h3 «Ngā Tohutohu:»
+121           div.row «»                                                                            |               h3 «Activity Instructions:»
+122             div.col-12 «»                                                                       |               p>b «Tōia ngā pū kia hanga ai te kupu , kātahi kimihia »
+123               h3 «Ki hea?»                                                                      |                 b «hea»
+124               p «I tēnei wā ka whakamahia te kupu 'hea' ki te pito »                            |               p>b «Drag the letters to make the word then find the se»
+125               p «This time the kupu 'hea' is used at the end of the»                            |                 b «hea,»
+126               p.center-text.sassoonI-text «Ki hea?»                                             |               img.img-fluid «»
+127                 span.audioButton «»                                                             |               p «Sentence»
+128                 span «Ki hea?»                                                                  |               p «Picture»
+129               p «Kia maumahara: me tīmata tonu te rerenga kōrero ki»                            |               p «Kei _ _ _ te pāpaka?»
+130               p «Remember that a sentence always starts with a pūma»                            |               img.img-fluid «»
+131               p «Whakamahia ēnei tohu hei āwhina i a koe ki te whak»                            |               p «Kei _ _ _ te honu?»
+132               p «Use these as clues to help you put these questions»                            |               img.img-fluid «»
+133               h3 «Ngā Tohutohu:»                                                                |               p «Kei _ _ _ te wheke?»
+134               h3 «Activity Instructions:»                                                       |               img.img-fluid «»
+135               p «Tōia ia wāhanga o te pātai ki te wāhi tika, kātahi»                            |               p «Kei _ _ _ te manaia?»
+136               p «Drag each chunk of the question into the correct p»                            |               img.img-fluid «»
+137               div.row «»                                                                        |     div.row «»
+138                 div.col-12 «»                                                                   |       div.col-12.col-md-8 «»
+139                   div.justify-content-center.row «»                                             |         h3 «Ki hea?»
+140                     div.col-8.col-md-4.text-center «»                                           |         h3 «Ki hea?»
+141                       div.audioImage.mb-3 «»                                                    |         p «I tēnei wā ka whakamahia te kupu ki te pito whakam»
+142                         div#E haere ana ahau kī hea  Hī ika..audioImageOption.playVisible «»    |           b «‘hea’»
+143                         img.img-fluid «»                                                        |           b «Ki hea?»
+144                   WIDGET «»                                                                     |         p «This time the kupu is used at the end of the quest»
+145               div.mt-5.row «»                                                                   |           b «‘hea’»
+146                 div.col-12 «»                                                                   |           b «Where to?»
+147                   div.justify-content-center.row «»                                             |         h3 «Ki hea?»
+148                     div.col-8.col-md-4.text-center «»                                           |         h3 «Ki hea?»
+149                       div.audioImage.mb-3 «»                                                    |         p «Kia maumahara: me tīmata tonu te rerenga kōrero ki»
+150                         div#E haere ana ahau ki hea  Papa tākaro..audioImageOption.playVisible  |         p «Remember that a sentence always starts with a pūma»
+151                         img.img-fluid «»                                                        |         p «Whakamahia ēnei tohu hei āwhina i a koe ki te whak»
+152                   WIDGET «»                                                                     |         p «Use these as clues to help you put these questions»
+153               div.mt-5.row «»                                                                   |         audio.audioPlayer.icon «»
+154                 div.col-12 «»                                                                   |         audio.audioPlayer.icon «»
+155                   div.justify-content-center.row «»                                             |     WIDGET «»
+156                     div.col-8.col-md-4.text-center «»                                           |     div.row «»
+157                       div.audioImage.mb-3 «»                                                    |       div.col-12.col-md-8 «»
+158                         div#E haere ana ahau kī hea  Whare hākinakina.audioImageOption.playVisi |         div.activity.interactive[number=*] «»
+159                         img.img-fluid «»                                                        |           div.row «»
+160                   WIDGET «»                                                                     |             div.col-12 «»
+161               div.mt-5.row «»                                                                   |               h3 «Ngā Tohutohu:»
+162                 div.col-12 «»                                                                   |               h3 «Activity Instructions:»
+163                   div.justify-content-center.row «»                                             |               p «Tōia ia wāhanga o te pātai ki te wāhi tika, kātahi»
+164                     div.col-8.col-md-4.text-center «»                                           |               p «Drag each chunk of the question into the correct p»
+165                       div.audioImage.mb-3 «»                                                    |               p «Chunk 2»
+166                         div#E haere ana ahau kī hea  Whare pukapuka.audioImageOption.playVisibl |               p «Chunk 1»
+167                         img.img-fluid «»                                                        |               p «te tama»
+168                   WIDGET «»                                                                     |               p «E haere ana»
+169     div.row «»                                                                                  |               p «te kōtiro»
+170       div.col-12.col-md-8 «»                                                                    |               p «E haere ana»
+171         div.activity.dropbox[number=*] «»                                                       |               p «te wāhine»
+172           div.row «»                                                                            |               p «E haere ana»
+173             div.col-12 «»                                                                       |               p «te tane»
+174               h3 «He wero tuhinga»                                                              |               p «E haere ana»
+175               h3 «A writing challenge»                                                          |     div.row «»
+176               p «Ko te ako i ngā 'kupu āhukahuka' ehara i te mea ki»                            |       div.col-12.col-md-8 «»
+177               p «Learning a 'sight word' ('kupu āhukahuka') is not »                            |         p>b «Activity 4.5:»
+178               h3 «Ngā Tohutohu Hei Mahi»                                                        |           b «Activity 4.5:»
+179               h3 «Activity Instructions:»                                                       |         h3 «He wero tuhinga»
+180               p «Tīkina he pene me te pepa. Whakamahia te karaka in»                            |         h3 «A writing challenge»
+181               p «Get a pen and paper. Use the stopwatch to time how»                            |         p>b «Ko te ako i ngā ehara i te mea kia mōhio noa ki te»
+182               WIDGET «»                                                                         |           b «'kupu āhukahuka’»
+183               p «I te mea kua parakatihi koe ki te ako mō te kupu '»                            |         p «Learning a ‘ ’ is not just recognising a word when»
+184               p «Now that you have practised learning about the wor»                            |           b «sight word»
+185               p «Tāngia tētahi pikitia, rīkoata rānei i a koe e wha»                            |           b «(‘kupu āhukahuka’)»
+186               p «Draw a picture or record yourself answering the qu»                            |     div.row «»
+187               p>b «Nō hea koe?»                                                                 |       div.col-12.col-md-8 «»
+188                 b «Nō hea koe?»                                                                 |         WIDGET «»
+189               p>b «Where are you from?»                                                         |         WIDGET «»
+190                 b «Where are you from?»                                                         |   div#footer «»
+191               a «Upload to dropbox»                                                             |     ul.footer-nav «»
+192                 div.button «Upload to dropbox»                                                  |       li>a#prev-lesson «»
+193               a «Tukuatu ki te pouaka waihotanga»                                               |         a#prev-lesson «»
+194                 div.button «Tukuatu ki te pouaka waihotanga»                                    |       li>a#next-lesson «»
+195       div.col-12.col-md-4.offset-md-0 «»                                                        |         a#next-lesson «»
+196         div.alertImage «»                                                                       |       li>a.home-nav «»
+197           img.img-fluid «»                                                                      |         a.home-nav «»
+198   div#footer «»                                                                                 | 
+199     ul.footer-nav «»                                                                            | 
+200       li>a#prev-lesson «»                                                                       | 
+201         a#prev-lesson «»                                                                        | 
+202       li>a#next-lesson «»                                                                       | 
+203         a#next-lesson «»                                                                        | 
+204       li>a.home-nav «»                                                                          | 
+205         a.home-nav «»                                                                           | 

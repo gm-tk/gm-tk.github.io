@@ -1,0 +1,51 @@
+pages 74
+  787   50p  17m  body      EXTRA       —                                      -> p                                       e.g. PMT101_1_0.html «» «PMT101 – Activity 1»
+  631   47p  17m  activity  EXTRA       —                                      -> p                                       e.g. PNR101_1_0.html «» «He maha ngā huarahi rerekē hei whakaatu »
+  280   67p  20m  body      MISSING     div.row                                -> —                                       e.g. PMT101_1_0.html «» «»
+  261   35p  13m  activity  EXTRA       —                                      -> img.img-fluid                           e.g. PNR102_1_0.html «» «»
+  257   26p   8m  activity  EXTRA       —                                      -> audio.audioPlayer.icon                  e.g. PNR104_1_0.html «» «»
+  253   52p  19m  body      EXTRA       —                                      -> div.row                                 e.g. PNR101_1_0.html «» «»
+  226   45p  18m  activity  MOVED       p                                      -> p                                       e.g. PMT101_1_0.html «Tēnā, tōia te pikitia e hāngai tika ana » «Tēnā, tōia te pikitia e hāngai tika ana »
+  190   30p  15m  activity  EXTRA       —                                      -> p>b                                     e.g. PNR101_1_0.html «» «Kia tūtaki tātau ki tā tātau tau tuatahi»
+  178   36p  12m  body      EXTRA       —                                      -> p>b                                     e.g. TRR102_1_0.html «» «a e i o u»
+  177   32p  11m  body      EXTRA       —                                      -> img.img-fluid                           e.g. PMT101_1_0.html «» «»
+  153   29p  14m  activity  SUBSTITUTED p                                      -> p                                       e.g. PMT101_1_0.html «Hei whakapūmau i te māramatanga he whana» «Top right»
+  150   32p  13m  activity  MISSING     p                                      -> —                                       e.g. PNR102_2_0.html «Mātaki, whakarongo hoki ki tēnei pūrākau» «»
+  149   61p  19m  activity  MISSING     div.row                                -> —                                       e.g. PMT101_1_0.html «» «»
+  137   21p   9m  body      EXTRA       —                                      -> audio.audioPlayer.icon                  e.g. PMT101_1_0.html «» «»
+  104   40p  17m  body      EXTRA       —                                      -> h3                                      e.g. PMT101_1_0.html «» «: 1.1»
+   95   20p   9m  body      MOVED       p                                      -> p                                       e.g. PMT101_1_0.html «We must care for and nurture our relativ» «We must care for and nurture our relativ»
+   94   37p  14m  activity  MOVED       h3                                     -> h3                                      e.g. PMT101_1_0.html «He whanaunga ngā mea katoa» «He whanaunga ngā mea katoa»
+   91   28p  12m  body      MISSING     p                                      -> —                                       e.g. PMT101_1_0.html «He te whakapapa, he soan me tiaki.» «»
+   83   39p  14m  activity  EXTRA       —                                      -> WIDGET                                  e.g. PNR101_1_0.html «» «»
+   80   40p  16m  activity  MISSING     div.button                             -> —                                       e.g. PMT101_1_0.html «Upload to dropbox» «»
+   76   14p   8m  activity  MOVED       li                                     -> li                                      e.g. PMT101_1_0.html «He whanaunga ngā mea katoa, ngā tāngata,» «He whanaunga ngā mea katoa, ngā tāngata,»
+   72   18p   8m  body      EXTRA       —                                      -> ul                                      e.g. PMT101_1_0.html «» «»
+   68   27p  11m  activity  EXTRA       —                                      -> b                                       e.g. TRR102_1_0.html «» «Whakaahuatia ngā oropuare.»
+   64   22p  11m  activity  EXTRA       —                                      -> h3                                      e.g. PNR107_2_0.html «» «Whakaoti i ngā rōpū takiwhitu»
+   57   15p  10m  activity  MOVED       p>b                                    -> p>b                                     e.g. TRR102_3_0.html «He wā pai tēnei ki te parakatihi tuhi, h» «He wā pai tēnei ki te parakatihi tuhi, h»
+   56   25p  13m  activity  MISSING     h3                                     -> —                                       e.g. PNR101_1_0.html «Te noho hōpuni» «»
+   56   28p   9m  body      EXTRA       —                                      -> WIDGET                                  e.g. TRR102_1_0.html «» «»
+   48   13p   8m  body      EXTRA       —                                      -> h4                                      e.g. PMT101_2_0.html «» «He Mana Taurite»
+   46   19p  14m  body      SUBSTITUTED p                                      -> p                                       e.g. PMT101_1_0.html «Ka manaaki, ka tiaki tātou i a tātou nā » «Nā te whakapapa ka noho whanaunga te mām»
+   43   17p   8m  activity  SUBSTITUTED p                                      -> p>b                                     e.g. TRR103_2_0.html «He rite te tuhi i ahau ki te whai i tēta» «Kapo whakaahua o ngā ara rerekē i paraka»
+   34   12p   9m  body      MOVED       p>b                                    -> p>b                                     e.g. TRR102_1_0.html «Ko te kupu e tohu ana i ngā oro ka puta » «Ko te kupu e tohu ana i ngā oro ka puta »
+   32   16p   7m  body      SUBSTITUTED h2                                     -> h3                                      e.g. TRR108_1_0.html «Hei Mahi 1 – Tōia te oro» «Hei Mahi 1 – Tōia te oro»
+   30   13p   6m  body      EXTRA       —                                      -> b                                       e.g. TRR102_1_0.html «» «Oro =»
+   28   21p   9m  body      MISSING     div.col-12.col-md-4.offset-md-0        -> —                                       e.g. TRR102_1_0.html «» «»
+   27   27p   7m  title     MISSING     h1>span                                -> —                                       e.g. PMT101_1_0.html «Ko Tūmatauenga rāua ko Tāne-Mahuta» «»
+   26   21p  11m  activity  MISSING     WIDGET                                 -> —                                       e.g. PNR101_1_0.html «» «»
+   26    3p   2m  body      MISSING     li                                     -> —                                       e.g. TRR102_4_0.html «At the beginning of place names.» «»
+   26    9p   2m  body      MISSING     img.audioText.img-fluid                -> —                                       e.g. TRR109_1_0.html «» «»
+   24   12p   4m  title     MISSING     span.sassoonI-text                     -> —                                       e.g. TRR103_1_0.html «Ee» «»
+   24    4p   3m  activity  MISSING     br                                     -> —                                       e.g. TRR109_2_0.html «» «»
+   23    5p   4m  activity  MISSING     li                                     -> —                                       e.g. PNR107_2_0.html «Ka taea e au te tautohu i te tau 7.» «»
+   22    6p   5m  body      MISSING     h4                                     -> —                                       e.g. TRR102_4_0.html «Ingoa tāne» «»
+   21   21p   8m  module-menu MISSING     div#module-head-buttons                -> —                                       e.g. PMT101_1_0.html «» «»
+   21    8p   7m  body      MISSING     h3                                     -> —                                       e.g. PMT101_1_0.html «E hono ana ngā mea katoa» «»
+   21    9p   6m  activity  SUBSTITUTED p>b                                    -> p                                       e.g. PMT101_1_0.html «NOTE: Just double check the audio is on » «Second tier right»
+   20   14p   7m  activity  SUBSTITUTED div.activity.interactive[number=*]     -> div.activity.interactive[number=*]      e.g. TRR102_1_0.html «» «»
+   20    6p   2m  activity  MOVED       li>b                                   -> li>b                                    e.g. TRR110_1_0.html «tāngia he pikitia e whakamahi ana i te m» «tāngia he pikitia e whakamahi ana i te m»
+   18   10p   5m  activity  MOVED       p                                      -> p>b                                     e.g. PNR107_2_0.html «6 + 1 = 7» «6 + 1 = 7»
+   18    8p   2m  activity  MISSING     p.center-text.sassoonI-text            -> —                                       e.g. TRR111_3_0.html «p» «»
+   17    7p   4m  activity  MISSING     b                                      -> —                                       e.g. PNR104_1_0.html «all» «»
