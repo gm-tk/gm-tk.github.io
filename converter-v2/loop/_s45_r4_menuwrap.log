@@ -1,0 +1,33 @@
+ALL                          lesson   n=1415  gold bare 0.08  | row->row 1175 (199m)  bare->row 100 (15m)  div:item->row 84 (12m)  row->nomenu 45 (17m)  bare->nomenu 11 (3m)
+ALL                          overview n= 496  gold bare 0.01  | row->row 463 (463m)  tabs->row 17 (17m)  tabs->tabs 7 (7m)  bare->row 4 (3m)  div:item->row 3 (3m)
+NCEA1                        lesson   n= 344  gold bare 0.00  | row->row 314 (43m)  row->nomenu 29 (7m)  bare->nomenu 1 (1m)
+1-10 English                 lesson   n= 278  gold bare 0.04  | row->row 247 (37m)  div:item->row 19 (3m)  bare->row 12 (2m)
+1-10 Mathematics             lesson   n= 224  gold bare 0.42  | row->row 90 (13m)  bare->row 83 (12m)  div:item->row 41 (6m)  bare->nomenu 10 (2m)
+Leaving to Learn             lesson   n= 178  gold bare 0.00  | row->row 177 (41m)  row->nomenu 1 (1m)
+1-10 Blended Literacy        overview n= 112  gold bare 0.00  | row->row 99 (99m)  tabs->row 13 (13m)
+Online Safety (OS9000)       lesson   n= 107  gold bare 0.00  | row->row 107 (29m)
+NCEA1                        overview n=  69  gold bare 0.00  | row->row 69 (69m)
+ConnectED                    lesson   n=  64  gold bare 0.08  | row->row 51 (6m)  row->nomenu 8 (2m)  bare->row 5 (1m)
+ANZH                         lesson   n=  60  gold bare 0.00  | row->row 60 (9m)
+1-10 English                 overview n=  53  gold bare 0.00  | row->row 51 (51m)  tabs->tabs 1 (1m)  row->tabs 1 (1m)
+1-10 Mathematics             overview n=  44  gold bare 0.09  | row->row 37 (37m)  bare->row 4 (3m)  div:item->row 3 (3m)
+1-10 Social Science          lesson   n=  38  gold bare 0.00  | row->row 38 (6m)
+Leaving to Learn             overview n=  33  gold bare 0.00  | row->row 33 (33m)
+1-10 Blended Literacy        lesson   n=  29  gold bare 0.00  | row->row 22 (5m)  row->nomenu 7 (7m)
+ConnectED                    overview n=  29  gold bare 0.00  | row->row 29 (29m)
+Online Safety (OS9000)       overview n=  29  gold bare 0.00  | row->row 29 (29m)
+1-10 Science                 lesson   n=  28  gold bare 0.00  | div:item->row 24 (3m)  row->row 4 (1m)
+1-10 Languages               lesson   n=  24  gold bare 0.00  | row->row 24 (3m)
+Te Marautanga o Aotearoa TMo overview n=  21  gold bare 0.00  | row->row 21 (21m)
+1-10 Writing (MiW)           overview n=  21  gold bare 0.00  | row->row 21 (21m)
+1-10 Health and PE           lesson   n=  19  gold bare 0.00  | row->row 19 (2m)
+1-10 Health and PE           overview n=  17  gold bare 0.00  | row->row 17 (17m)
+
+1-10 Mathematics lessons by series prefix (the letters of the code) and by module:
+  MXDB   n= 25 bare->row 14  row->row 11
+  MXDI   n= 28 row->row 21  bare->row 7
+  MXEO   n= 24 row->row 24
+  MXEX   n= 27 bare->row 16  bare->nomenu 10  row->row 1
+  MXFL   n= 76 div:item->row 41  row->row 33  bare->row 2
+  MXFU   n= 44 bare->row 44
+  per module (gold form counts): {'MXDB201': {'row': 6}, 'MXDB202': {'row': 5}, 'MXDB301': {'bare': 5}, 'MXDB302': {'bare': 9}, 'MXDI201': {'row': 10}, 'MXDI202': {'row': 11}, 'MXDI301': {'bare': 7}, 'MXEO102': {'row': 4}, 'MXEO201': {'row': 4}, 'MXEO202': {'row': 8}, 'MXEO301': {'row': 8}, 'MXEX101': {'bare': 4, 'row': 1}, 'MXEX201': {'bare': 4}, 'MXEX202': {'bare': 6}, 'MXEX301': {'bare': 5}, 'MXEX302': {'bare': 7}, 'MXFL101': {'div:item': 11}, 'MXFL102': {'div:item': 8}, 'MXFL104': {'div:item': 4}, 'MXFL201': {'div:item': 9}, 'MXFL202': {'div:item': 6}, 'MXFL203': {'row': 10}, 'MXFL204': {'bare': 2, 'div:item': 3, 'row': 5}, 'MXFL301': {'row': 9}, 'MXFL302': {'row': 9}, 'MXFU201': {'bare': 8}, 'MXFU202': {'bare': 9}, 'MXFU301': {'bare': 10}, 'MXFU302': {'bare': 10}, 'MXFU402': {'bare': 7}}

@@ -1,0 +1,41 @@
+pages 347
+  984  226p  43m  body      EXTRA       —                                      -> div.row                                 e.g. MXDB102_1_0.html «» «»
+  883  261p  42m  body      MISSING     div.row                                -> —                                       e.g. MXDB102_1_0.html «» «»
+  670  180p  40m  body      EXTRA       —                                      -> p                                       e.g. MXDB201_0_0.html «» «Follow this mathematical journey to disc»
+  445  110p  32m  activity  EXTRA       —                                      -> p                                       e.g. MXDB102_10_0.html «» «Now you know an easy way that you can re»
+  369   88p  26m  body      MISSING     br                                     -> —                                       e.g. MXDB201_0_0.html «» «»
+  302  130p  38m  body      MISSING     p                                      -> —                                       e.g. MXDB102_1_0.html «This section looks at 2D shapes. 2D is s» «»
+  285  143p  20m  module-menu MISSING     ul                                     -> —                                       e.g. MXDB301_1_0.html «» «»
+  270  162p  40m  activity  MISSING     div.button                             -> —                                       e.g. MXDB102_2_0.html «Go to journal» «»
+  267  105p  37m  body      MOVED       p                                      -> p                                       e.g. MXDB102_11_0.html «When you hold your hands like this, your» «When you hold your hands like this, your»
+  251  138p  40m  activity  MISSING     p                                      -> —                                       e.g. MXDB102_1_0.html «Drag the shapes to the correct column to» «»
+  243   46p  10m  module-menu SUBSTITUTED li                                     -> li                                      e.g. MXDB301_1_0.html «interpreting percentages and make compar» «to pose investigative questions that can»
+  229   67p  25m  body      EXTRA       —                                      -> p>b                                     e.g. MXDB301_0_0.html «» «(definition: knowledge) and»
+  208   57p  18m  activity  MISSING     br                                     -> —                                       e.g. MXDB201_1_0.html «» «»
+  201  107p  39m  activity  MISSING     WIDGET                                 -> —                                       e.g. MXDB102_1_0.html «» «»
+  189   79p  32m  activity  MOVED       p                                      -> p                                       e.g. MXDB102_1_0.html «Go to your journal and answer some quest» «Go to your journal and answer some quest»
+  183  117p  40m  activity  MISSING     div.row                                -> —                                       e.g. MXDB102_1_0.html «» «»
+  176  105p  28m  body      EXTRA       —                                      -> img.img-fluid                           e.g. MXDB201_0_0.html «» «»
+  171  101p  37m  body      MISSING     img.img-fluid                          -> —                                       e.g. MXDB102_1_0.html «» «»
+  152  105p  35m  activity  MISSING     a                                      -> —                                       e.g. MXDB102_1_0.html «Download journal» «»
+  150   62p  18m  activity  EXTRA       —                                      -> img.img-fluid                           e.g. MXDB102_7_0.html «» «»
+  147   61p  27m  body      EXTRA       —                                      -> b                                       e.g. MXDB202_3_0.html «» «moai»
+  139   35p   7m  module-menu MISSING     li                                     -> —                                       e.g. MXDB202_0_0.html «Ākonga know that in our number system ea» «»
+  136   87p  33m  activity  MISSING     h3                                     -> —                                       e.g. MXDB102_1_0.html «Match the shape to the name» «»
+  130   72p  13m  module-menu MISSING     h5                                     -> —                                       e.g. MXDB301_6_0.html «You will show your understanding by:» «»
+  118   44p   7m  module-menu MISSING     h3>span                                -> —                                       e.g. MXDB201_1_0.html «Learning Intentions» «»
+  111   72p  28m  body      MISSING     WIDGET                                 -> —                                       e.g. MXDB301_1_0.html «» «»
+  108   20p  12m  activity  EXTRA       —                                      -> li                                      e.g. MXDB201_5_0.html «» «Kotahitanga129 votes»
+  101   72p  28m  activity  SUBSTITUTED div.activity.interactive[number=*]     -> div.activity[number=*]                  e.g. MXDB102_6_0.html «» «»
+   96   38p   8m  module-menu MOVED       li                                     -> li                                      e.g. MXDB302_1_0.html «using whole numbers and decimals to expr» «using whole numbers and decimals to expr»
+   88   46p  27m  activity  MOVED       h3                                     -> h3                                      e.g. MXDB202_1_0.html «Roman numerals» «Roman numerals»
+   87   87p  12m  module-menu EXTRA       —                                      -> div.col-12.col-md-8                     e.g. MXDB301_1_0.html «» «»
+   83   62p  21m  body      MISSING     div.col-12.col-md-4.offset-md-0        -> —                                       e.g. MXDB102_7_0.html «» «»
+   81   11p   7m  body      MISSING     td                                     -> —                                       e.g. MXDI301_1_0.html «1 10» «»
+   79   16p   3m  module-menu MISSING     br                                     -> —                                       e.g. MXEO102_3_0.html «» «»
+   78   63p  27m  activity  EXTRA       —                                      -> div.row                                 e.g. MXDB202_2_0.html «» «»
+   78   59p  12m  module-menu MISSING     p                                      -> —                                       e.g. MXDI201_2_0.html «This lesson will allow you to have the o» «»
+   77   59p  22m  activity  SUBSTITUTED a                                      -> h4.goJournal                            e.g. MXDB102_2_0.html «Go to journal» «Go to your journal»
+   77   18p   8m  body      MISSING     math                                   -> —                                       e.g. MXDB302_7_0.html «» «»
+   76   65p  20m  body      SUBSTITUTED iframe.embed-responsive-item           -> iframe                                  e.g. MXDB102_0_0.html «» «»
+   76   15p  11m  body      EXTRA       —                                      -> th                                      e.g. MXDB301_1_0.html «» «Crackers»

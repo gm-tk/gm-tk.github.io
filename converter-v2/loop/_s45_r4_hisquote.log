@@ -1,0 +1,27 @@
+untagged quote-opening lines — the gold's element:
+    26  quoteText                pages  18  HIS1002 «“[Kaitiakitanga] is the idea that any right over a human or resource c» | HIS1002 «“the great force of history is that we carry it within ourselves.” – J» | HIS1004 «*"Kirk was agonising over this. It was one of the biggest political is»
+    14  ABSENT                   pages   0  HIS1006 «“We come then to the question presented: Does segregation of children » | HIS1006 «“Let the world see what they did to my baby.”» | HIS1006 «“People always say that I didn’t give up my seat because I was tired, »
+     5  p@tab-pane               pages   2  HIS1005 «*“I now saw myself deprived of all chance of returning to my native co» | HIS1005 «*“At last we came* *in sight* *of the island of Barbados* *…* *We were» | HIS1007 «*“The first object which saluted my eyes when I arrived on the coast, »
+     3  p@alert                  pages   3  HIS1002 «“For most Tahitians, a sense of place is rooted in land, which individ» | HIS1002 «“The New Zealand public was outraged that France could carry out such » | HIS1002 «“In the days and weeks after the bombing, the Greenpeace office was fi»
+     2  p@activity               pages   2  HIS1006 «‘E pā tō hau’ is popularly sung by many iwi ensuring that the experien» | HIS1007 «"*Strange Fruit*,” was made famous as a song by jazz singer Billie Hol»
+     1  p@free                   pages   1  HIS1004 «‘Exercising rights’ is what happens when, for example, a community adv»
+     1  h4@activity              pages   1  HIS1004 «***“The 1981 Springbok Tour and protests made New Zealand review its i»
+
+(gold, Claude) pairs:
+    17  ('quoteText', 'p@free')
+     9  ('ABSENT', 'p@free')
+     5  ('quoteText', 'p@alert')
+     5  ('p@tab-pane', 'p@cv2-interactive')
+     3  ('ABSENT', 'p@activity')
+     2  ('p@alert', 'p@alert')
+     2  ('ABSENT', 'p@alert')
+     2  ('p@activity', 'p@activity')
+     2  ('quoteText', 'h4@alert')
+     1  ('p@alert', 'ABSENT')
+     1  ('quoteText', 'p@quoteText')
+     1  ('p@free', 'p@free')
+
+the NEXT line is an attribution — (the quote's gold form, the attribution's gold form):
+     3  ('p@alert', 'quoteAck')
+     2  ('quoteText', 'quoteAck')
+     1  ('p@tab-pane', 'p@tab-pane')

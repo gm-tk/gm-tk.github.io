@@ -1,0 +1,1 @@
+| `_s45_r4_{hisquote,menuwrap,record}.py` / `_s45_r4_{hisquote,menuwrap,mx}.log` | `CONVERTER_V2/outputs/` | **Session 45 Round 4 (2026-09-25) — a PICK pass, no engine change** — the MX scoped miner view, the lesson-menu wrapper census (the MX bare menu DECLINED: KB 01B's row > col-md-8 rule), the HIS untagged-quote sizing (18 pages, below floor). |
