@@ -279,6 +279,10 @@ class InteractiveBuilder {
 		const stripped = String(html).replace(/<!--[\s\S]*?-->/g, " ");
 		const consumed = norm(stripped.replace(/<[^>]+>/g, " ") + " " + [...stripped.matchAll(/\b(?:alt|title)="([^"]*)"/g)].map((m) => m[1]).join(" "));
 		const notes = (bundle.instructions ?? []).map(norm);
+		// ROUND 472 (_tag_words_note.covering_note_min_words): a note too short to carry the words ("[Image]" →
+		// "image") never counts as already covering them — it suppressed SSOG103-2.0's whole request
+		const coverMin = (cfg.covering_note_min_words && !(cfg.covering_env && env[cfg.covering_env])) ? cfg.covering_note_min_words : 0;
+		const covers = (x) => !coverMin || x.split(" ").filter(Boolean).length >= coverMin;
 		for (const t of parts) {
 			const n = norm(t);
 			const w = n.split(" ").filter(Boolean);
@@ -286,7 +290,7 @@ class InteractiveBuilder {
 			for (let i = 0; i + K <= w.length; i++) { tot++; if (consumed.includes(w.slice(i, i + K).join(" "))) hit++; }
 			const present = tot ? hit / tot >= 0.5 : consumed.includes(n);
 			if (present) continue;                                                    // the build carries the words
-			if (notes.some((x) => x.includes(n) || n.includes(x))) continue;          // already a note
+			if (notes.some((x) => covers(x) && (x.includes(n) || n.includes(x)))) continue;   // already a note
 			bundle.instructions = [...(bundle.instructions ?? []), t];
 			notes.push(n);
 		}
@@ -4824,8 +4828,141 @@ class InteractiveBuilder {
 	 */
 	static #flipCard(args) {
 		const built = this.#flipCardDialects(args);
-		if (built !== null) return built;
-		return this.#flipCardCards(args);
+		const guard = this.#flipTextGuardOn(args.tpl);
+		if (!guard) return built !== null ? built : this.#flipCardCards(args);
+		if (built !== null) {
+			if (!this.#flipTextLost(args.bundle, built, args.tpl)) return this.#flipWithNotes(built, args);
+			// ROUND 472: the dialect build lost the writer's words → the composer gets its turn
+			const comp = this.#flipCardCards(args);
+			return (comp !== null && !this.#flipTextLost(args.bundle, comp, args.tpl)) ? this.#flipWithNotes(comp, args) : null;
+		}
+		const comp = this.#flipCardCards(args);
+		if (comp === null || this.#flipTextLost(args.bundle, comp, args.tpl)) return null;
+		return this.#flipWithNotes(comp, args);
+	}
+
+	/**
+	 * ROUND 472 (the autonomous loop's session-43 Round 1) — THE BUILT FLIP CARD NEVER DROPS THE WRITER'S WORDS.
+	 *
+	 * WHY. The census `outputs/_s43_widgetloss.cjs` (the r352 widget text-loss census over all 533 scored modules)
+	 * found 46 BUILT flipCards / 44 pages / 37 modules that lose ≥ 1 run of the writer's learner text — CEDO502-5.0
+	 * the worst: a 2 × 2 table whose every cell is a whole card ("**What is a closed question?** / [Image: iStock …]
+	 * url / [Reverse] / A closed question can be answered …"). The 2-column dialect path took row 1 as a column-label
+	 * header (every cell contains "Image", the red picture label — #looksLikeFlipHeader) and #flipCell returns the
+	 * PICTURE ALONE for any cell that carries one, so ONE card of two pictures shipped and all eight sentences were
+	 * lost; the gold builds four cards (front img + h5, back p). The round-282 composer's T0 reading (one card per
+	 * cell, split at the writer's own back marker) fits that shape exactly, but a dialect build pre-empts it.
+	 *
+	 * THE RULE. Every LEARNER PART of the captured table — a cell split at the writer's " / " and line breaks, red
+	 * spans, [tags], [LINK: …] and URLs removed, at least min_words words — must be present in the build's visible
+	 * text. Exempt: a part carrying a picture reference (it is the picture's label — the gold's alt, XMES201's "dog
+	 * with collar and leash"); a first row whose every non-empty cell is a short column label (≤ header_max_words
+	 * words and #looksLikeFlipHeader — "Text for the outer side | Text for the flipped side"). A dialect build that
+	 * loses a part falls through to the composer; a composer build that loses one keeps the honest hand-off box —
+	 * never a half-built widget. A bundle with no table (the member-authored forms) is left to the round-353
+	 * members rule. Data flipCard.text_guard {enabled, env FLIPTEXTGUARD_OFF, min_words, header_max_words}.
+	 */
+	static #flipTextGuardOn(tpl) {
+		const cfg = tpl?.text_guard;
+		if (!cfg || cfg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "FLIPTEXTGUARD_OFF"]) return false;
+		return true;
+	}
+
+	/** ROUND 472 — true when the built flipCard html is missing a learner part of the bundle's table (see above). */
+	static #flipTextLost(bundle, html, tpl) {
+		const cfg = tpl?.text_guard ?? {};
+		const tables = bundle?.tables ?? [];
+		if (tables.length !== 1) return false;
+		const headerMax = cfg.header_max_words ?? 8;
+		const norm = (s) => String(s ?? "").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+		const visible = this.#flipVisible(html);
+		const RED = /\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu;
+		const words = (s) => norm(String(s ?? "").replace(RED, " ").replace(/\[[^\]]*\]/g, " ").replace(/https?:\/\/\S+/g, " "));
+		const rows = (tables[0].rows ?? []).filter((r) => Array.isArray(r));
+		const first = rows.findIndex((r) => r.some((c) => words(c)));
+		// the column-label row: every non-empty cell is wholly red, or is a SHORT label whose OWN black words name a
+		// face or a role ("Text for the outer side") — a keyword that only sits in a red tag ("(front) / [Image] / The
+		// kiwi is a symbol of New Zealand", SSOG103-4.0) does not make a card row a header
+		const kw = (tpl?.header_contains_keywords && tpl.header_contains_keywords.length) ? tpl.header_contains_keywords : ["front", "back", "image", "text"];
+		const kwRe = new RegExp(`\\b(${kw.join("|")})\\b`, "i");
+		const isHeaderRow = (r) => r.every((c) => {
+			const w = words(c);
+			return !w || this.#isFullyRed(c) || (w.split(" ").length <= headerMax && kwRe.test(w));
+		});
+		const notes = new Set(this.#flipNoteRows(bundle, tpl));
+		for (let i = 0; i < rows.length; i++) {
+			if (i === first && isHeaderRow(rows[i])) continue;                    // the column-label row
+			if (notes.has(rows[i])) continue;                                     // a spanning note row (emitted after the cards)
+			for (const cell of rows[i]) {
+				for (const w of this.#flipLearnerParts(cell, tpl)) if (!visible.includes(w)) return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * ROUND 472 (flipCard.text_guard.note_rows_after) — the table's SPANNING NOTE ROWS: a row that is ONE merged
+	 * cell, all black, in a table at least two cells wide — the writer's closing sentence under the card table
+	 * (AGH1006-2.0 "The graft support material can be removed once the graft is healed …"), not a card. (A card row
+	 * with an empty picture cell — ["", "**LED Light:** …"] — keeps its two cells and is not a note.) Returns the row
+	 * arrays (identity-comparable with the table's rows).
+	 */
+	static #flipNoteRows(bundle, tpl) {
+		if (!tpl?.text_guard?.note_rows_after) return [];
+		const tables = bundle?.tables ?? [];
+		if (tables.length !== 1) return [];
+		const rows = (tables[0].rows ?? []).filter((r) => Array.isArray(r));
+		const width = Math.max(0, ...rows.map((r) => r.length));
+		if (width < 2) return [];
+		return rows.filter((r) => r.length === 1 && this.#cellText(r[0]).trim() && !this.#hasRedText(r[0])
+			&& this.#flipLearnerParts(r[0], tpl).length > 0);
+	}
+
+	/** ROUND 472 — the build + every spanning note row the build left out, as a paragraph after the cards. */
+	static #flipWithNotes(html, { bundle, tpl, renderInline }) {
+		const inline = renderInline ?? ((s) => s);
+		const visible = this.#flipVisible(html);
+		const extra = [];
+		for (const r of this.#flipNoteRows(bundle, tpl)) {
+			if (this.#flipLearnerParts(r[0], tpl).every((w) => visible.includes(w))) continue;
+			extra.push(`<p>${inline(this.#cellText(r[0]))}</p>`);
+		}
+		return extra.length ? [html, ...extra].join("\n") : html;
+	}
+
+	/** ROUND 472 — a built widget's visible text, normalised like #flipLearnerParts (tags and comments out, entities decoded). */
+	static #flipVisible(html) {
+		return String(html ?? "")
+			.replace(/<!--[\s\S]*?-->/g, " ").replace(/<[^>]+>/g, " ")
+			.replace(/&nbsp;/gi, " ").replace(/&amp;/gi, "&").replace(/&lt;/gi, "<").replace(/&gt;/gi, ">")
+			.replace(/&quot;/gi, '"').replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n))
+			.replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
+			.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+	}
+
+	/**
+	 * ROUND 472 — a flipCard table cell's LEARNER PARTS, normalised (lower case, letters and digits only): the cell
+	 * split at the writer's " / " and line breaks; red spans, [tags] and URLs removed; at least text_guard.min_words
+	 * words. A part carrying a picture reference is the picture's own label and is skipped: a URL / file name /
+	 * [LINK:], a bracketed [image] tag, or a red span that names a picture ("[image]", "Image: iStock: …") — the
+	 * engine lifts the link out of the cell, so the label is all that is left of it (XMES202 "[image] fruits on
+	 * white background").
+	 */
+	static #flipLearnerParts(cell, tpl) {
+		const cfg = tpl?.text_guard ?? {};
+		const minWords = cfg.min_words ?? 3;
+		const RED = /\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu;
+		const PIC = new RegExp(cfg.picture_pattern ?? "istockphoto|\\.(?:jpe?g|png|gif|webp|svg)\\b|\\[LINK:|https?:\\/\\/|\\[\\s*(?:image|photo|picture|img)\\b", "i");
+		const PICWORD = new RegExp(cfg.picture_red_pattern ?? "\\b(?:image|images|photo|picture|img|istock|getty|graphic|illustration)\\b", "i");
+		const norm = (s) => String(s ?? "").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+		const out = [];
+		for (const part of String(cell ?? "").split(/\s\/\s|\n/)) {
+			if (PIC.test(part) || [...part.matchAll(RED)].some((m) => PICWORD.test(m[0]))) continue;
+			const w = norm(part.replace(RED, " ").replace(/\[[^\]]*\]/g, " ").replace(/https?:\/\/\S+/g, " "));
+			if (w.split(" ").filter(Boolean).length >= minWords) out.push(w);
+		}
+		return out;
 	}
 
 	/**
@@ -5258,13 +5395,25 @@ class InteractiveBuilder {
 			// one card per COLUMN, its faces named by the label column
 			const fi = rowFaces.indexOf("front"), bi = rowFaces.indexOf("back");
 			if (fi < 0 || bi < 0) return null;
+			// ROUND 472 (flipCard.text_guard.face_column_pairs): EVERY consecutive front / back row pair is a set of
+			// cards — OSAI101-2.0 stacks two pairs (front, back, front, back) and only the first was ever read, so
+			// three cards and their text vanished. A label column that is not clean consecutive pairs keeps the
+			// first-pair reading.
+			let pairs = [[fi, bi]];
+			if (ctx.tpl?.text_guard?.face_column_pairs && this.#flipTextGuardOn(ctx.tpl) && rowFaces.length % 2 === 0
+				&& rowFaces.every((f, i) => f === (i % 2 === 0 ? "front" : "back"))) {
+				pairs = [];
+				for (let i = 0; i + 1 < rowFaces.length; i += 2) pairs.push([i, i + 1]);
+			}
 			const cards = [];
-			for (let c = 0; c < width; c++) {
-				if (!this.#cellText(rows[fi][c]).trim() && !this.#cellText(rows[bi][c]).trim()) continue;
-				const front = this.#flipFaceHtml(rows[fi][c], ctx, "front");
-				const back = this.#flipFaceHtml(rows[bi][c], ctx, "back");
-				if (front === null || back === null) return null;
-				cards.push({ front, back });
+			for (const [pf, pb] of pairs) {
+				for (let c = 0; c < width; c++) {
+					if (!this.#cellText(rows[pf][c]).trim() && !this.#cellText(rows[pb][c]).trim()) continue;
+					const front = this.#flipFaceHtml(rows[pf][c], ctx, "front");
+					const back = this.#flipFaceHtml(rows[pb][c], ctx, "back");
+					if (front === null || back === null) return null;
+					cards.push({ front, back });
+				}
 			}
 			return cards.length >= minExp ? cards : null;
 		}
@@ -12827,6 +12976,24 @@ class InteractiveBuilder {
 			? tpl.header_contains_keywords
 			: ["front", "back", "image", "text"];
 		const re = new RegExp(`\\b(${words.join("|")})\\b`, "i");
+		// ROUND 472 (flipCard.text_guard.header_black_label): a row that carries the writer's LEARNER TEXT is a header
+		// only when its column labels are the cells' own short black words — a keyword that only sits in the writer's
+		// red tags ("[Front] [Image: iStock: …] url / Retail | [Back] Providing good customer service …", PWY1002-3.1;
+		// "Image: iStock: …" in CEDO502-5.0's whole-card cells) does not make a card row a header, so the first card
+		// is no longer thrown away with its words. A row of picture labels alone ("[image] brown rabbit | [image]
+		// brown cat", XMES201-1.0) keeps the old reading — nothing is lost by it.
+		if (tpl?.text_guard?.header_black_label && this.#flipTextGuardOn(tpl)
+			&& cells.every((c) => re.test(this.#cellText(c)))
+			&& cells.some((c) => this.#flipLearnerParts(c, tpl).length)) {
+			const RED = /\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu;
+			const max = tpl.text_guard.header_max_words ?? 8;
+			return cells.every((c) => {
+				if (this.#isFullyRed(c)) return true;
+				const black = String(c ?? "").replace(RED, " ").replace(/https?:\/\/\S+/g, " ").replace(/[*_]/g, " ").trim();
+				const n = black.split(/\s+/).filter(Boolean).length;
+				return n > 0 && n <= max && re.test(black);
+			});
+		}
 		return cells.every((c) => re.test(this.#cellText(c)));
 	}
 
@@ -12871,6 +13038,12 @@ class InteractiveBuilder {
 		// separate image-cell case handled by the whole-card fallback alongside these.)
 		const halves = t.split("<br>").map((x) => this.#cellText(x).trim().toLowerCase());
 		if (halves.length === 2 && halves[0] && halves[0] === halves[1]) return null;
+		// ROUND 472 (flipCard.text_guard.br_after_inline): the inline renderer escapes markup, so the <br> joined in
+		// above shipped as a VISIBLE "&lt;br&gt;" (ENGJ302-3.0 ×91, OSGM201 / OSGM401 / XLP03 …) — render each line,
+		// then join them with the real line break
+		if (tpl?.text_guard?.br_after_inline && this.#flipTextGuardOn(tpl)) {
+			return Utils.FillTemplate(tpl.text, { text: t.split("<br>").map((x) => inline(x)).join("<br>") });
+		}
 		return Utils.FillTemplate(tpl.text, { text: inline(t) });
 	}
 

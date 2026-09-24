@@ -1,0 +1,48 @@
+======================================================================
+ SCOPED SHIP — affected=../../outputs/_affected_r472.txt (246 modules), toggle=FLIPTEXTGUARD_OFF
+======================================================================
+[0] toggle-exists invariant (FLIPTEXTGUARD_OFF)
+    OK — FLIPTEXTGUARD_OFF found in app/js (the last-shipped corpus == this toggle OFF).
+
+[1] content-hash 0-stale (mtime false-alarm defeated)
+[content-manifest] content-hash 0-stale vs _content_manifest.txt
+  affected set: 246 module(s) (must be freshly regenerated)
+  unaffected  : 297 module(s) (must be byte-identical to the manifest; mtime IGNORED)
+  OK — 0 truly stale. 246 affected regenerated; the untouched corpus is byte-identical to the manifest (mtime false-alarm defeated).
+
+[2] containment — actually-changed modules must be a subset of the affected set
+    OK — 31 changed module(s) are a subset of 246 affected (the true set ⊆ the detector set).
+
+[3] completeness spot-check (a mis-specified P is caught here)
+[spotcheck] verifying 12 non-affected modules regenerated WITH the fix ON
+  OK — all 12 sampled non-affected modules are BYTE-IDENTICAL under the fix (P's no-op claim holds on the sample).
+
+[4] exact gate proof (decomposition vs the last-ship baseline)
+re-scoring 258 affected module(s): AGH1006 AGH1009 ANZH103 ANZH203 ANZH205 ANZH303 ARFUN01 ARFUN02 ARFUN03 ARFUN04 BLL114 BLL120 BLL123 BLL127 BLL130 BLL145 BLL153 BLL155 BLL162 BLL166 BLL171 BLL172 BLL224 BLL225 BLL226 BLL230 BLL236 BLL237 BLL240 BLL242 BLL245 BLL247 BLL250 BLL251 BLL254 BLL256 BLL257 BLL260 BLL264 BLL266 BLLR202 BLLR203 CBI1005 CEDK101 CEDK102 CEDK401 CEDK501 CEDO102 CEDO202 CEDO204 CEDO301 CEDO501 CEDO502 CEDR101 CEDR203 CEDR501 CEDT102 CEDT207 CEDT404 CEDT501 CEDW501 CHFUN04 CHFUN05 CHFUN07 COM1002 ENFUN01 ENFUN02 ENFUN03 ENFUN04 ENFUN05 ENFUN07 ENFUN08 ENFUN09 ENGC101 ENGC201 ENGC204 ENGC206 ENGC301 ENGC401 ENGI102 ENGI202 ENGI203 ENGI302 ENGI303 ENGI405 ENGJ101 ENGJ102 ENGJ202 ENGJ301 ENGJ302 ENGJ402 ENGJ403 ENGR102 ENGR201 ENGR202 ENGR301 ENGR302 ENGS101 ENGS102 ENGS201 ENGS202 ENGS301 ENGS302 ENGS401 ENO2060 EXPFUN06 FRFUN06 FRFUN07 FRFUN08 FRNO901 FRNO902 GENO901 GER1002 HES1002 HES1005 HES1006 HIS1008 HPFUN101 HPFUN102 HPFUN201 HPFUN301 HPRE203 HPRE301 JPN1004 MXDB202 MXDB302 MXDI102 MXDI103 MXEO102 MXEO201 MXEO301 MXEX201 MXEX202 MXEX301 MXEX401 MXFL101 MXFL204 MXFL301 MXFL302 MXFU202 MXFU301 MXFU302 MXFU401 MXFU402 MXFUN01 OSAH301 OSAH401 OSAH501 OSAI101 OSAI201 OSAI301 OSAI401 OSAI501 OSBY101 OSBY201 OSBY301 OSBY401 OSBY501 OSGM101 OSGM201 OSGM301 OSGM401 OSGM501 OSOH101 OSOH201 OSOH301 OSOH401 OSOH501 OSSC301 OSSC501 OSSM301 OSSM401 OSSM501 PES1001 PES1003 PES1004 PES1007 PHE1005 PHE1006 PHE1007 PWY1001 PWY1002 PWY1007 PWY1008 PWY1009 PWYWHA1 SCBI301 SCCH301 SCES201 SCFUN01 SCPH301 SSCI104 SSCI205 SSEA203 SSFUN01 SSFUN03 SSFUN07 SSOG101 SSOG103 SSOG105 TEDC401 TEDC402 TEFUN02 TEFUN03 TEFUN04 TEFUN06 TEFUN07 TEFUN08 TWHA901 TWHA902 TWHA906 TWHK901 TWHK902 TWHK903 TWHR905 TWHR907 TWHT903 WJFUN106 WJFUN107 WJFUN108 WJFUN205 WJFUN206 WJFUN210 WJFUN212 WJFUN304 WJFUN305 WJFUN307 XDLS502 XDLS901 XDLS902 XDLS903 XDLS909 XDLS912 XGF9001 XGF9002 XGF9003 XGF9004 XGF9006 XLP01 XLP02 XLP03 XLP04 XLP05 XMES101 XMES102 XMES103 XMES201 XMES202 XMES203 XOTPB08 XOTPB09 XOTPB10 XOTPB11 XOTPB12 XOTPB13 XTAS102 XTAS103 XWHA02
+baseline taken: 2026-09-24T04:09:46Z
+(unaffected modules unchanged by construction — corpus aggregate moves by exactly the affected-set delta)
+
+  metric                                 baseline        new     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  55.22      55.23     +0.00  IMPROVED
+  skeleton pages >=50%                       1576       1576         0  HELD
+  skeleton pages >=75%                        276        276         0  HELD
+  compare_structure exact chain             16757      16757         0  HELD
+  compare_structure EXTRA container           208        208         0  HELD
+  compare_structure missing container         903        903         0  HELD
+  body_compare ANY breakdown                  238        238         0  HELD
+  defect structurally-clean %               98.25      98.25      0.00  HELD
+  literal-[tag] leak (occ)                     75         75         0  HELD
+  literal-[tag] leak (pages)                   46         46         0  HELD
+
+  context (no pass/fail): sk_pages: 2491->2491  cs_matched: 19530->19530  body_pages: 2633->2633  df_total: 2633->2633  df_clean: 2587->2587
+
+RESULT: PASS — every protected gate held-or-improved corpus-wide (exact, decomposition-proven).
+[commit] fast-loop baseline PATCHED (2491 pages) + content manifest refreshed — this is now the shipped state the next inner loop measures against.
+
+[6] periodic full-ship backstop cadence
+[ledger] last full ship: round 460 (2026-09-23T23:37:00Z); scoped ships since: 5 (cadence 8, hard 16)
+  OK — a full-ship backstop is not yet due (3 scoped ship(s) of headroom).
+
+SCOPED SHIP: PASS — only the affected set changed, the rest is byte-identical, and every protected
+gate held-or-improved (exact, decomposition-proven). Finalise (changelog + AppVersion + CLAUDE.md).

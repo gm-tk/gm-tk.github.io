@@ -1,0 +1,162 @@
+🟠 [ModuleResolver] Multiple module-code candidates found (AGH1006, HTO1101) — using AGH1006 from filename "AGH1006 Writers Template + Media List.docx".
+AGH1006: built 34 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+🟠 [ModuleResolver] Multiple module-code candidates found (AGH1009, PPO1051) — using AGH1009 from filename "AGH1009 Writers Template + Media List.docx".
+AGH1009: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ANZH203: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ANZH205: built 10 card-texts [exact 10, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+ANZH303: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ARFUN01: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ARFUN02: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ARFUN03: built 11 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 11] 11 unmatched (baseline)
+   unmatched (overlap 0.15): Look at the pictures to see the body bases; click the pictures to flip them and reveal the body bases to see if what you
+   unmatched (overlap 0.00): Mirroring
+   unmatched (overlap 0.17): is when the dancers do the same thing beside or opposite each other, like they are each other's reflection in a mirror.
+   unmatched (overlap 0.27): In these photos the dancers are mirroring each other.
+   unmatched (overlap 0.00): Shadowing
+   unmatched (overlap 0.23): is when the dancers copy the movement of a dancer as if they are their shadow.
+   unmatched (overlap 0.31): In these photos the dancers are shadowing a dancer in front.
+   unmatched (overlap 0.00): Wāhi: focus
+   unmatched (overlap 0.14): Focus can mean a few things in dance and is important in different ways.
+   unmatched (overlap 0.09): You can say 'the performer is focused', for example they don't laugh or break their performance presence
+   unmatched (overlap 0.13): Focus is also about where the dancer or performer is looking, for example are they looking to the audience or at their m
+🟢 [ModuleResolver] ARFUN04 is a recorded page_model exception — using multi-file.
+ARFUN04: built 14 card-texts [exact 0, copy-edit 8, gold-subst 6, defect 0] all matched ✓
+BLL114: built 9 card-texts [exact 6, copy-edit 0, gold-subst 3, defect 0] all matched ✓
+🟢 [ModuleResolver] BLL120 is a recorded page_model exception — using single-file.
+BLL120: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL123: built 6 card-texts [exact 0, copy-edit 0, gold-subst 6, defect 0] all matched ✓
+BLL127: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL145: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL155: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL162: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL166: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL171: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL172: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL224: built 4 card-texts [exact 4, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+BLL225: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL226: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (BLL230, BLL220) — using BLL230 from filename "BLL230 Writers Template.docx".
+🟢 [ModuleResolver] BLL230 is a recorded page_model exception — using single-file.
+BLL230: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL236: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL237: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL240 is a recorded page_model exception — using single-file.
+BLL240: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+BLL242: built 8 card-texts [exact 7, copy-edit 1, gold-subst 0, defect 0] all matched ✓
+BLL245: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL247 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL247: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL250 is not in the registry members — inherited from its level BLL2 (sibling rule).
+🟢 [ModuleResolver] BLL250 is a recorded page_model exception — using single-file.
+BLL250: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL251: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL254: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL256 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL256: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL257 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL257: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL260 is not in the registry members — inherited from its level BLL2 (sibling rule).
+🟢 [ModuleResolver] BLL260 is a recorded page_model exception — using single-file.
+BLL260: built 18 card-texts [exact 18, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟢 [ModuleResolver] BLL264 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL264: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL266 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL266: built 10 card-texts [exact 10, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+BLLR202: built 2 card-texts [exact 0, copy-edit 2, gold-subst 0, defect 0] all matched ✓
+BLLR203: built 2 card-texts [exact 0, copy-edit 2, gold-subst 0, defect 0] all matched ✓
+CBI1005: built 10 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+CEDK101: built 12 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+CEDK102: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+CEDK401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDK501: built 24 card-texts [exact 21, copy-edit 0, gold-subst 3, defect 0] all matched ✓
+🟢 [ModuleResolver] CEDO102 is a recorded page_model exception — using single-file.
+CEDO102: built 15 card-texts [exact 12, copy-edit 2, gold-subst 0, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.47): Some people catch too many fish from the ocean, and this can upset the balance of life in the coral reef. It's like if w
+CEDO202: built 16 card-texts [exact 16, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+CEDO204: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDO301: built 3 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+CEDO501: built 37 card-texts [exact 37, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+CEDO502: built 9 card-texts [exact 8, copy-edit 1, gold-subst 0, defect 0] all matched ✓
+CEDR101: built 4 card-texts [exact 4, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟢 [ModuleResolver] CEDR203 is not in the registry members — inherited from its level CEDR2 (sibling rule).
+CEDR203: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDR501: built 36 card-texts [exact 4, copy-edit 0, gold-subst 0, defect 32] 32 unmatched (baseline)
+   unmatched (overlap 0.20): To summarise information
+   unmatched (overlap 0.12): E.g., after finishing a section of work or a topic.
+   unmatched (overlap 0.17): To record new information
+   unmatched (overlap 0.07): E.g., during lessons, videos, readings, or presentations.
+   unmatched (overlap 0.20): To revise information
+   unmatched (overlap 0.13): E.g., when studying for tests or assessments.
+   unmatched (overlap 0.20): To recall information
+   unmatched (overlap 0.18): E.g., when you need to remember facts, dates, or steps.
+   unmatched (overlap 0.17): To organise your thoughts
+   unmatched (overlap 0.07): E.g., while planning essays, projects, or speeches.
+   unmatched (overlap 0.14): To keep track of research
+   unmatched (overlap 0.07): E.g., when collecting information from different sources.
+   unmatched (overlap 0.17): To reflect on learning
+   unmatched (overlap 0.07): E.g., after class discussions or practical activities.
+   unmatched (overlap 0.20): To help concentration
+   unmatched (overlap 0.13): E.g., when listening or watching for long periods.
+   unmatched (overlap 0.20): To summarise information
+   unmatched (overlap 0.14): Summarise what you learn about interview techniques or common questions to review later.
+   unmatched (overlap 0.17): To record new information
+   unmatched (overlap 0.14): Take notes while researching the organisation or role to remember key facts you can mention.
+   unmatched (overlap 0.20): To revise information
+   unmatched (overlap 0.08): Revise your notes beforehand to recall examples and experiences that show your skills.
+   unmatched (overlap 0.20): To recall information
+   unmatched (overlap 0.11): Write down details about your achievements or experiences so you can answer questions confidently.
+   unmatched (overlap 0.17): To organise your thoughts
+   unmatched (overlap 0.13): Use notes to plan how you'll explain your strengths and experiences clearly.
+   unmatched (overlap 0.14): To keep track of research
+   unmatched (overlap 0.12): Record what you find on the company website or in the job description.
+   unmatched (overlap 0.17): To reflect on learning
+   unmatched (overlap 0.12): Reflect on past interviews or feedback to identify what to improve next time.
+   unmatched (overlap 0.20): To help concentration
+   unmatched (overlap 0.09): Practise note-taking during mock interviews to stay focused and remember the key points.
+🟢 [ModuleResolver] CEDT102 is not in the registry members — inherited from its level CEDT1 (sibling rule).
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+CEDT102: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDT207: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDT501: built 24 card-texts [exact 24, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (CEDW501, MA000) — using CEDW501 from filename "CEDW501 Writers Template.docx".
+CEDW501: built 90 card-texts [exact 72, copy-edit 13, gold-subst 0, defect 5] 5 unmatched (baseline)
+   unmatched (overlap 0.00): Tupuna/tipuna
+   unmatched (overlap 0.17): Add image like the rest Wahine
+   unmatched (overlap 0.29): Add image like the rest Tāne
+   unmatched (overlap 0.17): Add image like the rest Hungarei
+   unmatched (overlap 0.38): Add image like the rest Ingoa whānau
+CHFUN04: built 4 card-texts [exact 4, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+CHFUN05: built 68 card-texts [exact 63, copy-edit 2, gold-subst 0, defect 3] 3 unmatched (baseline)
+   unmatched (overlap 0.33): 先 xiān first (use the 'get up in the morning' picture)
+   unmatched (overlap 0.45): 再 zài then (use the 'eat breakfast' picture)
+   unmatched (overlap 0.50): 然后 ránhòu *afterwards after that* (use the 'going to school' picture)
+CHFUN07: built 3 card-texts [exact 3, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+COM1002: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ENFUN01: built 18 card-texts [exact 5, copy-edit 12, gold-subst 0, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.29): https://pixabay.com/photos/reading-bed-flashlight-book-read-5069826/ <br>Why is Harry reading?
+ENFUN02: built 7 card-texts [exact 3, copy-edit 0, gold-subst 0, defect 4] 4 unmatched (baseline)
+   unmatched (overlap 0.00): Isolation
+   unmatched (overlap 0.00): Freedom
+   unmatched (overlap 0.00): Nature's beauty
+   unmatched (overlap 0.00): Journey and exploration
+ENFUN03: built 16 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 16] 16 unmatched (baseline)
+   unmatched (overlap 0.06): AND means as well . For example: I love rugby and I love to swim. I saw a monster and he smiled at me. Moana danced and 
+   unmatched (overlap 0.08): BUT changes the direction of a sentence. For example: She likes to sing but she's not very good. The plant is small but 
+   unmatched (overlap 0.03): OR gives a choice For example: You can buy the pink pyjamas or you can buy the black umbrella. Tui could eat lunch or sh
+   unmatched (overlap 0.05): SO tells us what's next For example: She ate her lunch early so by dinner time she was starving. Matiu was kind so he go
+   unmatched (overlap 0.06): When I saw the delicious cake on the dessert table, I couldn't resist having a slice.
+   unmatched (overlap 0.13): Complex Sentence
+   unmatched (overlap 0.10): Māia ran to catch the bus.
+   unmatched (overlap 0.29): Simple Sentence
+   unmatched (overlap 0.06): Hami saved his money, but he decided to splurge on a new video game.
+   unmatched (overlap 0.13): Compound Sentence
+   unmatched (overlap 0.05): While listening to my favourite song, I couldn't help but start dancing around the room.
+   unmatched (overlap 0.13): Complex Sentence
+   unmatched (overlap 0.13): The cat jumped onto the table.
+   unmatched (overlap 0.29): Simple Sentence
+   unmatched (overlap 0.18): The dog barked loudly, and the neighbours complained about the noise.
+   unmatched (overlap 0.13): Compound Sentence
+ENFUN04: built 12 card-texts [exact 12, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+
+TOTAL 548: exact 355, copy-edit 43, gold-subst 18, defect 73, divergence 59.
+RESULT: divergence 59 ✗ — a built card has no human flipCard counterpart; investigate before ship.

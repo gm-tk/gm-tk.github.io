@@ -1,0 +1,237 @@
+🟠 [ModuleResolver] Multiple module-code candidates found (SSOG101, ISTO216) — using SSOG101 from filename "SSOG101 Writers Template + Media List.docx".
+SSOG101: built 32 card-texts [exact 22, copy-edit 1, gold-subst 0, defect 9] 9 unmatched (baseline)
+   unmatched (overlap 0.33): You get a flat tyre on your bike. Call 111?
+   unmatched (overlap 0.27): You scraped your knee playing at the playground. Call 111?
+   unmatched (overlap 0.37): No need to call 111: A trusted adult will be able to help you with most minor bumps and scrapes.
+   unmatched (overlap 0.31): Your sibling is playing with your favourite toy without asking. Call 111?
+   unmatched (overlap 0.22): You are lost in the supermarket. Call 111?
+   unmatched (overlap 0.32): No need to call 111: Go to the front desk, they will call for your parents and will make sure you are safe while you wai
+   unmatched (overlap 0.25): The house across the street is on fire. Call 111?
+   unmatched (overlap 0.19): You are followed home by someone who makes you feel uncomfortable. Call 111?
+   unmatched (overlap 0.37): You see a car crash and someone is badly hurt. Call 111?
+SSOG103: built 28 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+🟢 [ModuleResolver] SSOG105 is not in the registry members — inherited from its level SSOG1 (sibling rule).
+SSOG105: built 16 card-texts [exact 0, copy-edit 8, gold-subst 8, defect 0] all matched ✓
+🟠 [ModuleResolver] TEDC401: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+TEDC401: built 4 card-texts [exact 3, copy-edit 0, gold-subst 0, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.22): Prototype: is or isn't? / Guess before you flip! Prototype IS …
+🟠 [ModuleResolver] TEDC402: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Page-layout table dissolved into 12 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 4 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 14 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 4 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+TEDC402: built 12 card-texts [exact 7, copy-edit 0, gold-subst 0, defect 5] 5 unmatched (baseline)
+   unmatched (overlap 0.53): Version 1: A bar chart starting at zero → looks balanced. (Used Excel to turn this info table into a graph.)
+   unmatched (overlap 0.29): What is an operating system (OS)
+   unmatched (overlap 0.26): An operating system (OS) is the software that manages everything on your device: hardware (CPU, memory, storage, sensors
+   unmatched (overlap 0.06): OS Layers
+   unmatched (overlap 0.16): Operating systems work in layers, from low‑level hardware to the screen you tap. An operating system (OS) is the softwar
+TEFUN02: built 4 card-texts [exact 4, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+TEFUN03: built 20 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 20] 20 unmatched (baseline)
+   unmatched (overlap 0.11): CS Designed versions of Thinkers Keys Brainstorming Brainstorming Come up with multiple ways to find a solution.
+   unmatched (overlap 0.04): How To: Write down or draw as many ideas as you can, no matter how silly or wild they seem. Even if it is only half an i
+   unmatched (overlap 0.05): CS Designed versions of Thinkers Keys Combinations Combinations Blend products into something brand new.
+   unmatched (overlap 0.14): How to: Think about two products that already exist that could make a great product. Take the parts that you think are t
+   unmatched (overlap 0.08): CS Designed versions of Thinkers Keys Improvements Improvements Make an existing product better.
+   unmatched (overlap 0.11): How to: You don't need to start from the beginning! Think of something that already exists. Maybe your end user is alrea
+   unmatched (overlap 0.13): CS Designed versions of Thinkers Keys Challenge Challenge Find an assumption and try to prove it is possible.
+   unmatched (overlap 0.15): How to: Some things are impossible, but what if they weren't? Stretch your brain and see what comes out. Ask yourself, w
+   unmatched (overlap 0.05): CS Designed versions of Thinkers Keys Inventions Inventions Develop unusual ways of doing things.
+   unmatched (overlap 0.13): How to: Think sideways and dream up a device that can solve an everyday problem. First, draw it on a piece of paper or o
+   unmatched (overlap 0.06): CS Designed versions of Thinkers Keys BAR BAR Make it B igger. A dd something else. R eplace a part of it.
+   unmatched (overlap 0.07): How to: Take an object. Think: Can I make this bigger or smaller? Can I add anything to improve my design? What could I 
+   unmatched (overlap 0.11): CS Designed versions of Thinkers Keys Brick Wall Brick Wall Explore what is standing in your way.
+   unmatched (overlap 0.11): How to: Identify what is holding you back from being able to develop your idea or product. Think of as many ways as you 
+   unmatched (overlap 0.07): CS Designed versions of Thinkers Keys In Common In Common Show how two different things are alike.
+   unmatched (overlap 0.11): How to: Take two concepts that seem really different and find what connects them. This will help you to better understan
+   unmatched (overlap 0.09): CS Designed versions of Thinkers Keys Reverse Reverse Flip your thinking.
+   unmatched (overlap 0.15): How to: Are you stuck on a problem? Take the question you have and ask the opposite instead. It might sound silly, but w
+   unmatched (overlap 0.08): CS Designed versions of Thinkers Keys Prediction Prediction Think into the future.
+   unmatched (overlap 0.11): How to: Imagine what the future will look like in 10, 20 or even 100 years from now. What could technology be like then?
+TEFUN06: built 6 card-texts [exact 5, copy-edit 1, gold-subst 0, defect 0] all matched ✓
+TEFUN07: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TEFUN08: built 8 card-texts [exact 2, copy-edit 1, gold-subst 0, defect 5] 5 unmatched (baseline)
+   unmatched (overlap 0.00): Inputs
+   unmatched (overlap 0.00): Outputs
+   unmatched (overlap 0.19): You ask Mum for some juice to drink.
+   unmatched (overlap 0.40): You ask your brother to play catch.
+   unmatched (overlap 0.17): You ask your nana for some cake.
+TWHA901: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TWHA902: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (TWHA906, TWHO903) — using TWHA906 from filename "TWHA906 Writers Template.docx".
+TWHA906: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TWHK901: built 38 card-texts [exact 37, copy-edit 1, gold-subst 0, defect 0] all matched ✓
+🟢 [ModuleResolver] TWHK902 is not in the registry members — inherited from its level TWHK9 (sibling rule).
+TWHK902: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TWHK903: built 8 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+TWHR905: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TWHR907: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TWHT903: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+WJFUN106: built 12 card-texts [exact 12, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+WJFUN107: built 8 card-texts [exact 3, copy-edit 2, gold-subst 0, defect 3] 3 unmatched (baseline)
+   unmatched (overlap 0.40): Maia and Koro planned their hike.
+   unmatched (overlap 0.40): They wanted to climb Mount Sunday.
+   unmatched (overlap 0.57): On Saturday we went hiking.
+WJFUN108: built 6 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 6] 6 unmatched (baseline)
+   unmatched (overlap 0.33): Simple Sentence
+   unmatched (overlap 0.15): I visited the West Coast. The West Coast beach is wild. The South Island mountains are tall.
+   unmatched (overlap 0.33): Compound Sentence
+   unmatched (overlap 0.08): The Punakaiki rocks are famous, and they look like stacks of pancakes. The Franz Josef Glacier is huge, and it moves ver
+   unmatched (overlap 0.33): Complex Sentence
+   unmatched (overlap 0.06): When you visit Lake Matheson, you can see clear reflections of the Southern Alps in the water. Because Shantytown shows 
+WJFUN205: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+WJFUN206: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+WJFUN210: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+WJFUN212: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+WJFUN304: built 4 card-texts [exact 2, copy-edit 0, gold-subst 0, defect 2] 2 unmatched (baseline)
+   unmatched (overlap 0.44): The clouds were bright. bright
+   unmatched (overlap 0.42): The glowing clouds filled the sky. glowing
+WJFUN305: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+WJFUN307: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+XDLS502: built 13 card-texts [exact 0, copy-edit 3, gold-subst 0, defect 10] 10 unmatched (baseline)
+   unmatched (overlap 0.08): Patrick(
+   unmatched (overlap 0.58): He uses the facility of a gym.
+   unmatched (overlap 0.06): Dogs(
+   unmatched (overlap 0.44): These dogs are enjoying the facility of the beach.
+   unmatched (overlap 0.03): Marae(
+   unmatched (overlap 0.46): A marae is a special place culturally, spiritually and for community to come together in support and learning.
+   unmatched (overlap 0.07): 1. Make a list/show/tell about your favourite community facilities . Examples: library, skatepark, swimming pool, park .
+   unmatched (overlap 0.04): 1. Why do you like these facilities?
+   unmatched (overlap 0.05): 1. Think about what facilities are in your community that are not on your list?
+   unmatched (overlap 0.08): 1. What other people can use these other facilities?
+XDLS901: built 16 card-texts [exact 0, copy-edit 4, gold-subst 0, defect 12] 12 unmatched (baseline)
+   unmatched (overlap 0.13): 1. Explore the environment cards The cards show different environments that people work or volunteer in, such as:
+   unmatched (overlap 0.50): 1. indoors
+   unmatched (overlap 0.50): 1. outdoors
+   unmatched (overlap 0.11): 1. Compare and sortort You can now sort the cards into…
+   unmatched (overlap 0.08): 1. "I'd like to work/volunteer here."
+   unmatched (overlap 0.00): 1. "Maybe."
+   unmatched (overlap 0.13): 1. "Not for me."
+   unmatched (overlap 0.09): 1. Reflect and discuss with your hua ako about two environments you liked.
+   unmatched (overlap 0.20): 1. What do you like about this environment?
+   unmatched (overlap 0.24): 1. What kind of jobs or volunteer roles happen here?
+   unmatched (overlap 0.11): 1. What skills or personality traits would be helpful?
+   unmatched (overlap 0.22): Take a photo of your sorted cards and share with your kaiako what you found out about what environment you would like to
+XDLS902: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+XDLS903: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (XDLS909, XDLS5909) — using XDLS909 from filename "XDLS909 Writers Template.docx".
+XDLS909: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XDLS912: built 7 card-texts [exact 7, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+XGF9001: built 48 card-texts [exact 45, copy-edit 3, gold-subst 0, defect 0] all matched ✓
+🟢 [ModuleResolver] XGF9002 is not in the registry members — inherited from its level XGF9 (sibling rule).
+XGF9002: built 48 card-texts [exact 0, copy-edit 12, gold-subst 24, defect 12] 12 unmatched (baseline)
+   unmatched (overlap 0.17): "My child thinks if they can't do a task straight away, it means they are not smart."
+   unmatched (overlap 0.10): Fixed mindset Correct! This belief suggests intelligence is static. Growth mindset This reflects a belief that ability i
+   unmatched (overlap 0.19): "I often say things like 'I love how hard you worked on that'."
+   unmatched (overlap 0.06): Fixed mindset This focuses on effort. Growth mindset Correct! This reinforces persistence.
+   unmatched (overlap 0.12): "My child gives up quickly when something feels challenging."
+   unmatched (overlap 0.09): Fixed mindset Correct! Avoiding challenge is linked to fixed mindset thinking. Growth mindset This response does not ref
+   unmatched (overlap 0.06): "I praise my child mostly for being clever or talented."
+   unmatched (overlap 0.13): Fixed mindset Correct! Talent-only praise can unintentionally fuel perfectionism. Growth mindset This does not align wit
+   unmatched (overlap 0.08): "When my child avoids something new, I assume they just aren't interested."
+   unmatched (overlap 0.10): Fixed mindset Correct! This assumes ability or interest is fixed rather than something that can grow with support. Growt
+   unmatched (overlap 0.13): "When my child becomes very upset about making a mistake, I try to fix the problem quickly, so they don't feel bad."
+   unmatched (overlap 0.10): Fixed mindset Correct! This can unintentionally send the message that mistakes should be avoided, rather than explored a
+XGF9003: built 16 card-texts [exact 15, copy-edit 1, gold-subst 0, defect 0] all matched ✓
+XGF9004: built 53 card-texts [exact 0, copy-edit 0, gold-subst 53, defect 0] all matched ✓
+XGF9006: built 56 card-texts [exact 44, copy-edit 0, gold-subst 12, defect 0] all matched ✓
+XLP01: built 16 card-texts [exact 8, copy-edit 4, gold-subst 0, defect 4] 4 unmatched (baseline)
+   unmatched (overlap 0.11): We will aim to cover each of these parts of learning to read in this module. Each part will be explained, modelled with 
+   unmatched (overlap 0.04): You can use this 'need help' button at any time to ask your ākonga's (student) kaiako (teacher) to help to support you.
+   unmatched (overlap 0.00): Coreboards
+   unmatched (overlap 0.33): AAC device
+XLP02: built 29 card-texts [exact 3, copy-edit 5, gold-subst 0, defect 21] 21 unmatched (baseline)
+   unmatched (overlap 0.50): 1. Writing with adults
+   unmatched (overlap 0.50): 2. Writing by Adults
+   unmatched (overlap 0.50): 3. Writing by myself.
+   unmatched (overlap 0.15): We will aim to cover each of these parts of learning to write in this module.
+   unmatched (overlap 0.10): Each part will be explained, modelled with video or pictures and reinforced with activities for you to try in each lesso
+   unmatched (overlap 0.13): You can use this 'need help' button at any time to ask your ākonga's (student) kaiako (teacher) to help to support you.
+   unmatched (overlap 0.00): Flour
+   unmatched (overlap 0.00): Salt
+   unmatched (overlap 0.03): Playdough or clay
+   unmatched (overlap 0.00): Slime
+   unmatched (overlap 0.00): Sand tray
+   unmatched (overlap 0.00): Kinetic sand
+   unmatched (overlap 0.00): Coloured rice
+   unmatched (overlap 0.00): Shaving foam (unscented)
+   unmatched (overlap 0.00): Paint
+   unmatched (overlap 0.13): Coloured markers and pens
+   unmatched (overlap 0.00): Whiteboard markers
+   unmatched (overlap 0.00): Twinkl resource
+   unmatched (overlap 0.00): Twinkl resource
+   unmatched (overlap 0.00): Twinkl resource
+   unmatched (overlap 0.00): Twinkl resource
+🟠 [ModuleResolver] Multiple module-code candidates found (XLP03, XFUN03) — using XLP03 from filename "XLP03 Writers Template.docx".
+XLP03: built 20 card-texts [exact 6, copy-edit 1, gold-subst 13, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (XLP04, XFUN03) — using XLP04 from filename "XLP04 Writers Template.docx".
+XLP04: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (XLP05, XFUN09) — using XLP05 from filename "XLP05 Writers Template + Media List.docx".
+XLP05: built 8 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+XMES101: built 6 card-texts [exact 1, copy-edit 2, gold-subst 0, defect 3] 3 unmatched (baseline)
+   unmatched (overlap 0.25): Girl with surprised expression
+   unmatched (overlap 0.33): man looking happy
+   unmatched (overlap 0.33): man looking sad
+XMES102: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XMES103: built 18 card-texts [exact 4, copy-edit 1, gold-subst 0, defect 13] 13 unmatched (baseline)
+   unmatched (overlap 0.00): yellow duckling
+   unmatched (overlap 0.00): yellow duckling
+   unmatched (overlap 0.00): yellow duckling
+   unmatched (overlap 0.00): yellow duckling
+   unmatched (overlap 0.00): yellow duckling
+   unmatched (overlap 0.00): Mother duck
+   unmatched (overlap 0.00): Images
+   unmatched (overlap 0.00): Instructions/Captions
+   unmatched (overlap 0.09): paper and art materials
+   unmatched (overlap 0.12): quiet art space
+   unmatched (overlap 0.18): hand tracing on large paper
+   unmatched (overlap 0.05): painted hands
+   unmatched (overlap 0.05): hands blended
+XMES201: built 32 card-texts [exact 18, copy-edit 1, gold-subst 0, defect 13] 13 unmatched (baseline)
+   unmatched (overlap 0.25): Dog dog on white background
+   unmatched (overlap 0.50): Cat tabby cat
+   unmatched (overlap 0.50): Horse chestnut horse
+   unmatched (overlap 0.25): Goat goat on white background
+   unmatched (overlap 0.50): Rabbit soft rabbit
+   unmatched (overlap 0.50): dog eating
+   unmatched (overlap 0.50): rabbit and guinea pig
+   unmatched (overlap 0.00): budgies eating seed
+   unmatched (overlap 0.33): goats and horse eating hay
+   unmatched (overlap 0.50): cat toy
+   unmatched (overlap 0.50): dog toy
+   unmatched (overlap 0.14): bird toy
+   unmatched (overlap 0.20): hamster wheel
+🟢 [ModuleResolver] XMES202 is not in the registry members — inherited from its level XMES2 (sibling rule).
+XMES202: built 15 card-texts [exact 6, copy-edit 3, gold-subst 0, defect 6] 6 unmatched (baseline)
+   unmatched (overlap 0.00): Fruits
+   unmatched (overlap 0.33): crop shelter
+   unmatched (overlap 0.33): seaweed fertiliser
+   unmatched (overlap 0.00): weeding
+   unmatched (overlap 0.09): limp vegetable plants
+   unmatched (overlap 0.05): slug on vegetable
+XMES203: built 12 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+XOTPB08: ERROR Cannot read properties of null (reading 'name')
+XOTPB09: ERROR Cannot read properties of null (reading 'name')
+XOTPB10: ERROR Cannot read properties of null (reading 'name')
+XOTPB11: ERROR Cannot read properties of null (reading 'name')
+XOTPB12: ERROR Cannot read properties of null (reading 'name')
+XOTPB13: ERROR Cannot read properties of null (reading 'name')
+XTAS102: built 3 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+XTAS103: built 8 card-texts [exact 4, copy-edit 0, gold-subst 0, defect 4] 4 unmatched (baseline)
+   unmatched (overlap 0.13): person with book on head
+   unmatched (overlap 0.20): person holding book to face
+   unmatched (overlap 0.11): sitting beside books
+   unmatched (overlap 0.33): person standing in front of books
+XWHA02: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+
+TOTAL 666: exact 294, copy-edit 54, gold-subst 110, defect 149, divergence 59.
+RESULT: divergence 59 ✗ — a built card has no human flipCard counterpart; investigate before ship.

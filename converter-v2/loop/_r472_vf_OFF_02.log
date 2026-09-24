@@ -1,0 +1,135 @@
+MXEX201: built 5 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+🟠 [ModuleResolver] Multiple module-code candidates found (MXEX401, MXO421) — using MXEX401 from filename "MXEX401 Writers Template + Media List.docx".
+MXEX401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFL101: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFL204: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFL301: built 8 card-texts [exact 7, copy-edit 1, gold-subst 0, defect 0] all matched ✓
+MXFL302: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFU202: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFU301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFU302: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFU402: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+MXFUN01: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+OSAH301: built 14 card-texts [exact 11, copy-edit 0, gold-subst 0, defect 3] 3 unmatched (baseline)
+   unmatched (overlap 0.00): Kete 1
+   unmatched (overlap 0.00): Kete 2
+   unmatched (overlap 0.31): I know what the HDCA says about digital harm
+OSAH401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+OSAH501: built 22 card-texts [exact 9, copy-edit 0, gold-subst 12, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.00): COUNCELLORS
+OSAI101: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSAI201: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSAI301: built 12 card-texts [exact 12, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSAI401: built 6 card-texts [exact 0, copy-edit 0, gold-subst 6, defect 0] all matched ✓
+OSAI501: built 22 card-texts [exact 22, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSBY101: built 3 card-texts [exact 3, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSBY201: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSBY301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+OSBY401: built 11 card-texts [exact 11, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSBY501: built 33 card-texts [exact 23, copy-edit 0, gold-subst 10, defect 0] all matched ✓
+OSGM101: built 8 card-texts [exact 8, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSGM201: built 15 card-texts [exact 7, copy-edit 7, gold-subst 0, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.25): Cs: can these two images face each other and merge to create a conversation scene? Taha whānau social wellbeing
+OSGM301: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSGM401: built 27 card-texts [exact 27, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSGM501: built 3 card-texts [exact 3, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSOH101: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSOH201: built 8 card-texts [exact 8, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSOH301: built 12 card-texts [exact 4, copy-edit 7, gold-subst 0, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.56): Don't share your device without permission
+OSOH401: built 4 card-texts [exact 4, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSOH501: built 16 card-texts [exact 16, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSSC301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] OSSC501 is not in the registry members — inherited from its level OSSC4 (sibling rule).
+OSSC501: built 8 card-texts [exact 8, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSSM301: built 12 card-texts [exact 6, copy-edit 6, gold-subst 0, defect 0] all matched ✓
+OSSM401: built 8 card-texts [exact 5, copy-edit 3, gold-subst 0, defect 0] all matched ✓
+🟢 [ModuleResolver] OSSM501 is not in the registry members — inherited from its level OSSM4 (sibling rule).
+OSSM501: built 8 card-texts [exact 8, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+PES1001: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (PES1003, PHO1052) — using PES1003 from filename "PES1003 Writers Template + Media List.docx".
+PES1003: built 14 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+🟠 [ModuleResolver] Multiple module-code candidates found (PES1004, PHO1011) — using PES1004 from filename "PES1004 Writers Template + Media List.docx".
+PES1004: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (PES1007, SCO1013) — using PES1007 from filename "PES1007 Writers Template + Media List.docx".
+PES1007: built 8 card-texts [exact 4, copy-edit 0, gold-subst 4, defect 0] all matched ✓
+PHE1005: built 4 card-texts [exact 0, copy-edit 4, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (PHE1007, PEO1042) — using PHE1007 from filename "PHE1007 Writers Template + Media List.docx".
+PHE1007: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (PWY1001, PWO1007) — using PWY1001 from filename "PWY1001 Writers Template.docx".
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+PWY1001: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+PWY1002: built 21 card-texts [exact 21, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (PWY1007, PW1003) — using PWY1007 from filename "PWY1007 Writers Template.docx".
+PWY1007: built 8 card-texts [exact 8, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+PWY1008: built 12 card-texts [exact 12, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (PWY1009, LGO1007) — using PWY1009 from filename "PWY1009 Writers Template.docx".
+PWY1009: built 8 card-texts [exact 8, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (PWYWHA1, PWY1000) — using PWYWHA1 from filename "PWYWHA1 Writers Template.docx" (a registry-known code).
+PWYWHA1: built 3 card-texts [exact 3, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+SCBI301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+SCCH301: built 3 card-texts [exact 2, copy-edit 0, gold-subst 0, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.21): The moisture inside the popcorn turns into gas and expands, bursting the kernel open. Another good example is a steam en
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+SCES201: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] SCPH301: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+SCPH301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] SSCI104 is not in the registry members — inherited from its level SSCI3 (sibling rule).
+SSCI104: built 7 card-texts [exact 6, copy-edit 1, gold-subst 0, defect 0] all matched ✓
+🟢 [ModuleResolver] SSCI205 is not in the registry members — inherited from its level SSCI3 (sibling rule).
+SSCI205: built 32 card-texts [exact 2, copy-edit 20, gold-subst 0, defect 10] 10 unmatched (baseline)
+   unmatched (overlap 0.50): (front) Women
+   unmatched (overlap 0.50): (front) Metic
+   unmatched (overlap 0.50): (front) Children
+   unmatched (overlap 0.00): (front) Tragedy
+   unmatched (overlap 0.10): (back) Tragedy plays were serious and emotional. They told stories about difficult choices and sad events.
+   unmatched (overlap 0.00): (front) Satire
+   unmatched (overlap 0.11): (back) Satire plays used humour to make people think about problems or behaviour in society.
+   unmatched (overlap 0.50): (front) Wrestling
+   unmatched (overlap 0.50): (front) Pankration
+   unmatched (overlap 0.50): (front) Teamwork
+🟠 [ModuleResolver] SSEA203: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+SSEA203: built 36 card-texts [exact 6, copy-edit 3, gold-subst 0, defect 27] 27 unmatched (baseline)
+   unmatched (overlap 0.40): Price: $30
+   unmatched (overlap 0.16): Size: Fits one person
+   unmatched (overlap 0.04): Features:
+   unmatched (overlap 0.20): Lightweight and easy to carry.
+   unmatched (overlap 0.16): Simple to set up.
+   unmatched (overlap 0.08): Thin material.
+   unmatched (overlap 0.16): Less sturdy in wind.
+   unmatched (overlap 0.04): Appearance:
+   unmatched (overlap 0.24): Brightly coloured, small and dome shaped.
+   unmatched (overlap 0.40): Price: $60
+   unmatched (overlap 0.19): Size: Fits two or three people.
+   unmatched (overlap 0.04): Features:
+   unmatched (overlap 0.06): Waterproof material.
+   unmatched (overlap 0.13): Strong poles for wind.
+   unmatched (overlap 0.06): Ventilation windows.
+   unmatched (overlap 0.13): Easy to pack away.
+   unmatched (overlap 0.04): Appearance:
+   unmatched (overlap 0.38): Outdoor-style colours (shades of green and blue). Classic medium dome shape.
+   unmatched (overlap 0.40): Price: $100
+   unmatched (overlap 0.17): Size: Fits four or five people.
+   unmatched (overlap 0.04): Features:
+   unmatched (overlap 0.11): Fully waterproof and windproof.
+   unmatched (overlap 0.11): Very strong and durable.
+   unmatched (overlap 0.17): Extra space for bags and gear.
+   unmatched (overlap 0.11): Built-in ground sheet.
+   unmatched (overlap 0.04): Appearance:
+   unmatched (overlap 0.31): Earthy colours (dark green, brown). Large tunnel shaped, multi-section design.
+SSFUN01: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (SSFUN03, GYO1002) — using SSFUN03 from filename "SSFUN03 Writers Template + Media List.docx".
+SSFUN03: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟢 [ModuleResolver] SSFUN07 is a recorded page_model exception — using multi-file.
+SSFUN07: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+
+TOTAL 463: exact 316, copy-edit 52, gold-subst 32, defect 44, divergence 19.
+RESULT: divergence 19 ✗ — a built card has no human flipCard counterpart; investigate before ship.
