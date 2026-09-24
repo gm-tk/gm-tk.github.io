@@ -361,6 +361,9 @@ class SkeletonBuilder {
 			&& !(lv && (c.levels ?? []).map((x) => String(x).toLowerCase()).includes(lv))) return html;
 		let out = String(html);
 		for (const [cls, w] of Object.entries(c.widgets ?? {})) {
+			// ROUND 484: a per-widget env (the quiz types' TPLAUTOQUIZ_OFF); `_`-keys are notes
+			if (cls.startsWith("_") || !w || typeof w !== "object") continue;
+			if (w.env && typeof process !== "undefined" && process.env && process.env[w.env]) continue;
 			const openRe = new RegExp(`<div class="(${cls}(?:\\s[^"]*)?)"([^>]*)>`, "g");
 			const hits = [];
 			let m;

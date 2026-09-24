@@ -1,5 +1,19 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 484, build 260620.48) — KB CONSTRAINT 38 FOR THE QUIZ TYPES: on the 1-3 / 4-6 / ECH templates the built multiChoiceQuiz / dropQuiz (and typing / radioQuiz / wordSelect) carry `autoCheck` too
+
+### 1. WHAT CHANGED
+
+**The find** (r483's remainder, `outputs/_s44_r8_autocheck.py`): on 1-3 / 4-6 pages Claude builds 7 multiChoiceQuiz (1 with autoCheck), 5 dropQuiz (3), 1 typing (1). KB 03A lists MCQ / multiChoiceQuiz / Dropdown Quiz / Radio Quiz / Word Select / typing as autoCheck-capable. Claude's quiz builders emit NO Undo / Check row in either form — their own writer-worded autoCheck form (r287 / r449) is the root class alone (BLL273_2_0 / BLL251_2_0 against their plain siblings) — and KB 03D keeps the typing quiz's buttons.
+
+**The fix:** r483's `skeleton.template_autocheck.widgets` gains multiChoiceQuiz / dropQuiz / typing / radioQuiz / wordSelect with empty `drop_buttons` and a per-widget env; `SkeletonBuilder.#templateAutoCheck` skips `_`-keys and honours the per-widget env. Env **`TPLAUTOQUIZ_OFF`** (byte-identical OFF); `TPLAUTOCHECK_OFF` reverts r483 + r484.
+
+### 2. PROOF AND GATES
+
+- In-memory A/B over all 545 modules: **OFF 3222 / 3222 identical**; ON 7 pages / 7 modules (BLLR201 CEDO202 ENGC101 ENGC206 SSEA203 WJFUN105 WJFUN206): 6 multiChoiceQuiz + 2 dropQuiz gain the class. Regeneration + 12-module spot-check clean; **`scoped_ship.sh` PASS**; skeleton 55.3280 % EXACT (0 movers — skeleton-blind), RAW EXACT; cs / body / clean / leak EXACT; every verifier RESULT line ✓; selftests green; the miner 195 CANDIDATE. Plateau: a KB-rule round, skeleton-blind — neither; **0 of 3**.
+
+**Ledger:** scoped #2 since the r482 FULL · data `skeleton.template_autocheck.widgets` (the quiz rows) · env `TPLAUTOQUIZ_OFF` · code `SkeletonBuilder.#templateAutoCheck` · tools `_s44_r9_pick.py`, `_r484_{regen,postship}.sh`, `_r484_finalise.py` · session 44 Round 9.
+
 ## 2026-09-25 (round 483, build 260620.47) — KB CONSTRAINT 38: AUTOCHECK ON THE 1-3 / 4-6 / ECH TEMPLATES — every built drag-and-drop on those pages carries `autoCheck` with only its Reset button (KB 03B)
 
 ### 1. WHAT CHANGED

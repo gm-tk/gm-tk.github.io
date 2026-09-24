@@ -1837,7 +1837,8 @@ class Config {
 	// ROUND 481 (260620.45): THE MTK ACTIVITY'S DATA ROWS ARE ONE HAND-OFF (session 44 Round 4) — inside the r480 box the [Activity: Embedded] table's data grid ships whole in one cv2-interactive hand-off (every column kept). Env ACTDATA_OFF.
 	// ROUND 482 (260620.46): KB 07D THE BILINGUAL LESSON TITLE KEEPS ITS h2 (session 44 Round 6) — the r371 writer-digit marker pins the r137 title level through the re-level pass. Env LESSONPIN_OFF.
 	// ROUND 483 (260620.47): KB c38 AUTOCHECK ON THE 1-3 / 4-6 / ECH TEMPLATES (session 44 Round 8) — SkeletonBuilder's #templateAutoCheck gives every built dragAndDrop on those pages autoCheck + only the Reset button. Env TPLAUTOCHECK_OFF.
-	static AppVersion = "260620.47";
+	// ROUND 484 (260620.48): KB c38 FOR THE QUIZ TYPES (session 44 Round 9) — the template autoCheck post-pass covers multiChoiceQuiz / dropQuiz / typing / radioQuiz / wordSelect (the class only). Env TPLAUTOQUIZ_OFF.
+	static AppVersion = "260620.48";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

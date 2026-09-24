@@ -3150,7 +3150,28 @@
 						"undo",
 						"checkAnswer"
 					]
-				}
+				},
+				"multiChoiceQuiz": {
+					"env": "TPLAUTOQUIZ_OFF",
+					"drop_buttons": []
+				},
+				"dropQuiz": {
+					"env": "TPLAUTOQUIZ_OFF",
+					"drop_buttons": []
+				},
+				"typing": {
+					"env": "TPLAUTOQUIZ_OFF",
+					"drop_buttons": []
+				},
+				"radioQuiz": {
+					"env": "TPLAUTOQUIZ_OFF",
+					"drop_buttons": []
+				},
+				"wordSelect": {
+					"env": "TPLAUTOQUIZ_OFF",
+					"drop_buttons": []
+				},
+				"_quiz_doc": "ROUND 484 (session 44 Round 9) — the c38 remainder: the quiz types KB 03A lists as autoCheck-capable take the class ONLY — Claude's quiz builders emit no Undo / Check row in either form (their own writer-worded autoCheck form, r287 / r449, is the root class alone), and the typing quiz keeps its reset / checkAnswer / showAnswer buttons (KB 03D). Env TPLAUTOQUIZ_OFF = the r483 output."
 			},
 			"_doc": "ROUND 483 (the autonomous loop's session-44 Round 8) \u2014 KB constraint 38 / 03A 'autoCheck Auto-Application': on the three dedicated templates (ECH / 1-3 / 4-6) `autoCheck` MUST be applied to every interactive that supports it, the Undo / Check buttons dropped exactly as the component's 'With autoCheck' example shows (KB 03B dragAndDrop: `class=\"dragAndDrop autoCheck \u2026\"` and the button row reduced to Reset; the free-form area layout never takes it). SkeletonBuilder.BuildPage runs this over the page body once the <html template> (templates) / level (levels) is resolved: every listed widget root without autoCheck gains the class and loses its own drop_buttons. MEASURED (outputs/_s44_r8_autocheck.py): Claude 51 dragAndDrops on 1-3 / 4-6 pages, 0 with autoCheck; the gold on 1-3 348 / 793 (its pre-rule builds). Skeleton-blind (inside the collapsed WIDGET line). The quiz types (12 widgets) are a later round. Env TPLAUTOCHECK_OFF = the r482 output."
 		},
