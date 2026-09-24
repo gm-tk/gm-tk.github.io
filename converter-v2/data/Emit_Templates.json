@@ -124,6 +124,24 @@
 				"enabled": true,
 				"_round167_note": "ROUND 167 (Chris, ENGS201-01). In reoMode (a bilingual module OR any module the broad mtkFlag flags), a free-body table that ALL the bilingual handlers decline falls through to a cv2-interactive 'bilingual-unbuilt' placeholder that keeps the raw WT [tag] text BY DESIGN. That is right for an un-built widget/spec table, but a CLEAN STRUCTURAL LAYOUT table (a side-by-side image|body panel, every cell led by a structural [tag]) is NOT a widget — the human renders it as a row>col GRID, and the reoMode path was BYPASSING the layout-table grid that the normal (non-reo) path already runs. So ENGS201-01's 'Origin stories' image|body table shipped as the placeholder and LEAKED [body]/[image] as visible frontend text inside the box. FIX: before the placeholder, try TablesAndGrids.layoutTableGrid (the SAME detector the normal path uses — single-row or all-cells-tagged only, and it BAILS on any widget-member cell tag). A grid is emitted for a clean layout table; a widget/spec/data table still returns null and keeps the placeholder untouched, so no other reoMode table changes and no [tag] is newly exposed. env REOLTABLE_OFF reverts to the always-placeholder behaviour."
 			},
+			"media_in_place": {
+				"enabled": false,
+				"env": "REOMEDIAPOS_OFF",
+				"_doc": "ROUND 461 (session 41 Round 9). bilingualRows' per-element reo/eng interleave (the r135 keystone) emitted a cell's media embeds (images, audio, video, the r461 audio-image units) AFTER every paragraph of the row; the human puts each one where the writer typed it, between the paragraphs. BilingualBuilder.bilingualSplit now records each embed's position (the count of text elements before it in its cell) and the interleave emits it before the paragraph pair at that position (counted on the stream the media came from, after the same Activity-label / section-id strip). Only the interleave branch (section_grouping ON) changes; the plain unfold keeps its order. Env REOMEDIAPOS_OFF."
+			},
+			"audio_image_tag": {
+				"enabled": true,
+				"env": "AUDIOIMGTAG_OFF",
+				"_doc": "ROUND 461 (the autonomous loop's session 41 Round 9, 24 Sept 2026 — KB 01E / 04B 'Audio Image': `<div class=\"audioImage\"><div id=\"AUDIO_FILENAME\" class=\"audioImageOption\"><img class=\"img-fluid\" …></div></div>`). In a bilingual cell (BilingualBuilder.bilingualSplit) the writer's `[Audio Image]` / `[Audio Image Hover]` / `[AudioImage]` tag line followed by its `[Item N] [Image] desc` and `[Item N] [Audio] name` lines is ONE audio-image unit (id = the audio name, the img = the cell image the converter already builds), where the lexicon's `audioimage` alias of `audio` made it an empty audio player + an image + a second audio player. Units the source runs together (no text between them) share one `div.row`, each unit in the `group_cols` column for the run's size (the gold: 2 → col-md-6 offset-md-0 col-12, 4 → col-md-3 col-6); a lone unit stands bare. A broken shape (no image, or no audio after it) emits exactly the old embeds. Measured: outputs/_s41_r9_audioimg.py (141 tags / 18 modules, 100 in the IA shape). Env AUDIOIMGTAG_OFF.",
+				"tag_pattern": "^\\s*\\[\\s*audio\\s*-?\\s*image(?:\\s+hover)?\\s*\\]\\s*$",
+				"unit_template": "<div class=\"audioImage\">\n<div id=\"{name}\" class=\"audioImageOption\">\n{img}\n</div>\n</div>",
+				"group_cols": {
+					"2": "col-md-6 offset-md-0 col-12",
+					"3": "col-md-4 col-12",
+					"4": "col-md-3 col-6",
+					"default": "col-md-3 col-6"
+				}
+			},
 			"audio_image": {
 				"enabled": false,
 				"_status": "PARKED (default-off) — round 135. The build is CORRECT (matches the human's `row>col paddingR>audioImage>audioImageOption>img` byte-for-byte; TRR102 builds 10 of the 30 clean 2-row grids) BUT it regresses the skeleton (A/B AUDIOIMG_OFF=1 TRR102 = MINUS 1.41): the human NESTS the audioImage grid inside the section's `col-md-8` / `div.activity` (with the lesson heading), while the build emits a BARE top-level `<div class=\"row\">`. The rich structure in the WRONG nesting scores worse than the single cv2 WIDGET marker the skeleton aligned loosely. This is the SAME nesting wall as the boxes + over-capture guard: the bilingual page is richly NESTED (section -> activity -> widget) and any piece built in isolation regresses. The audioImage build (`ContentConverter.#bilingualAudioImage`) + flag stay here as the base; the REAL fix is a HOLISTIC bilingual structural build (row-group the section's heading + grid + widget under one col-md-8 / div.activity, the round-51 row-grouping for reoMode), then the widgets credit. TRR112-style grids (embedded in content tables, not separate 2-row tables) also need the prose+widget split first. env AUDIOIMG_OFF.",

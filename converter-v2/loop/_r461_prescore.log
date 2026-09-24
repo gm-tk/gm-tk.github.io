@@ -1,0 +1,68 @@
+
+## TRR103: pairs 4 -> 4
+   TRR103_0.0.html          OLD TRR103_0_0.html     70.9  NEW TRR103_0_0.html     70.9 (raw  41.3)
+   TRR103_1.0.html          OLD TRR103_1_0.html     37.2  NEW TRR103_1_0.html     37.2 (raw  23.7)
+   TRR103_2.0.html          OLD TRR103_2_0.html     30.3  NEW TRR103_2_0.html     30.3 (raw  20.2)
+   TRR103_3.0.html          OLD TRR103_3_0.html     39.9  NEW TRR103_3_0.html     39.7 (raw  32.6)
+   module sum 178.3 over 4 -> 178.1 over 4  (mean 44.6 -> 44.5)
+
+## TRR109: pairs 6 -> 6
+   TRR109_0.0.html          OLD TRR109_0_0.html     62.7  NEW TRR109_0_0.html     62.7 (raw  52.3)
+   TRR109_1.0.html          OLD TRR109_1_0.html     25.1  NEW TRR109_1_0.html     24.8 (raw  14.3)
+   TRR109_2.0.html          OLD TRR109_2_0.html     45.9  NEW TRR109_2_0.html     45.3 (raw  22.8)
+   TRR109_3.0.html          OLD TRR109_4_0.html     38.0  NEW TRR109_4_0.html     37.4 (raw  19.1)
+   TRR109_4.0.html          OLD TRR109_3_0.html     38.0  NEW TRR109_3_0.html     38.4 (raw  15.1)
+   TRR109_5.0.html          OLD TRR109_5_0.html     51.9  NEW TRR109_5_0.html     51.9 (raw  27.4)
+   module sum 261.7 over 6 -> 260.6 over 6  (mean 43.6 -> 43.4)
+
+## TRR110: pairs 6 -> 6
+   TRR110_0_0_Introduction.html OLD TRR110_0_0.html     78.3  NEW TRR110_0_0.html     78.3 (raw  51.9)
+   TRR110_1_0_ea.html       OLD TRR110_1_0.html     21.5  NEW TRR110_1_0.html     21.1 (raw  12.7)
+   TRR110_2_0_eo.html       OLD TRR110_2_0.html     34.0  NEW TRR110_2_0.html     33.4 (raw  22.0)
+   TRR110_3_0_eu.html       OLD TRR110_3_0.html     29.0  NEW TRR110_3_0.html     28.5 (raw  17.3)
+   TRR110_4_0_ei.html       OLD TRR110_4_0.html     45.1  NEW TRR110_4_0.html     45.0 (raw  28.5)
+   TRR110_5_0_review.html   OLD TRR110_5_0.html     55.8  NEW TRR110_5_0.html     55.8 (raw  33.1)
+   module sum 263.7 over 6 -> 262.1 over 6  (mean 43.9 -> 43.7)
+
+## TRR111: pairs 6 -> 6
+   TRR111_0.0.html          OLD TRR111_0_0.html     86.4  NEW TRR111_0_0.html     86.4 (raw  59.6)
+   TRR111_1.0.html          OLD TRR111_1_0.html     35.7  NEW TRR111_1_0.html     37.3 (raw  28.4)
+   TRR111_2.0.html          OLD TRR111_2_0.html     31.1  NEW TRR111_2_0.html     30.7 (raw  28.6)
+   TRR111_3.0.html          OLD TRR111_3_0.html     35.6  NEW TRR111_3_0.html     38.3 (raw  29.4)
+   TRR111_4.0.html          OLD TRR111_4_0.html     28.0  NEW TRR111_4_0.html     30.7 (raw  18.9)
+   TRR111_5.0.html          OLD TRR111_5_0.html     51.7  NEW TRR111_5_0.html     51.7 (raw  33.0)
+   module sum 268.5 over 6 -> 275.0 over 6  (mean 44.8 -> 45.8)
+
+## TRR112: pairs 6 -> 6
+   TRR112_0.0.html          OLD TRR112_0_0.html     41.2  NEW TRR112_0_0.html     41.2 (raw  31.9)
+   TRR112_1.0.html          OLD TRR112_1_0.html     32.4  NEW TRR112_1_0.html     31.6 (raw  19.2)
+   TRR112_2.0.html          OLD TRR112_2_0.html     22.6  NEW TRR112_2_0.html     38.5 (raw  26.0)
+   TRR112_3.0.html          OLD TRR112_3_0.html     31.1  NEW TRR112_3_0.html     37.7 (raw  21.1)
+   TRR112_4.0.html          OLD TRR112_4_0.html     29.5  NEW TRR112_4_0.html     28.7 (raw  18.8)
+   TRR112_5.0.html          OLD TRR112_5_0.html     58.2  NEW TRR112_5_0.html     58.2 (raw  25.1)
+   module sum 215.2 over 6 -> 235.9 over 6  (mean 35.9 -> 39.3)
+
+## TRR113: pairs 6 -> 6
+   TRR113_0.0.html          OLD TRR113_0_0.html     72.7  NEW TRR113_0_0.html     72.7 (raw  38.3)
+   TRR113_1.0.html          OLD TRR113_1_0.html     33.3  NEW TRR113_1_0.html     32.7 (raw  18.9)
+   TRR113_2.0.html          OLD TRR113_4_0.html     37.3  NEW TRR113_4_0.html     36.4 (raw  21.4)
+   TRR113_3.0.html          OLD TRR113_3_0.html     36.3  NEW TRR113_3_0.html     35.6 (raw  20.0)
+   TRR113_4.0.html          OLD TRR113_2_0.html     39.1  NEW TRR113_2_0.html     42.7 (raw  25.5)
+   TRR113_5.0.html          OLD TRR113_5_0.html     62.0  NEW TRR113_5_0.html     62.0 (raw  22.3)
+   module sum 280.7 over 6 -> 282.0 over 6  (mean 46.8 -> 47.0)
+
+## TRR116: pairs 10 -> 10
+   TRR116_0_0.html          OLD TRR116_0_0.html     83.3  NEW TRR116_0_0.html     83.3 (raw  49.5)
+   TRR116_1_0.html          OLD TRR116_1_0.html     29.6  NEW TRR116_1_0.html     29.5 (raw  22.8)
+   TRR116_2_0.html          OLD TRR116_2_0.html     29.5  NEW TRR116_2_0.html     29.5 (raw  19.6)
+   TRR116_3_0.html          OLD TRR116_3_0.html     42.9  NEW TRR116_3_0.html     42.9 (raw  30.5)
+   TRR116_4_0.html          OLD TRR116_4_0.html     18.5  NEW TRR116_4_0.html     18.5 (raw  12.3)
+   TRR116_5_0.html          OLD TRR116_5_0.html     29.6  NEW TRR116_5_0.html     29.6 (raw  22.8)
+   TRR116_6_0.html          OLD TRR116_6_0.html     33.7  NEW TRR116_6_0.html     33.7 (raw  23.0)
+   TRR116_7_0.html          OLD TRR116_7_0.html     34.3  NEW TRR116_7_0.html     34.3 (raw  24.8)
+   TRR116_8_0.html          OLD TRR116_8_0.html     30.1  NEW TRR116_8_0.html     30.1 (raw  21.0)
+   TRR116_9_0.html          OLD TRR116_9_0.html     35.3  NEW TRR116_9_0.html     35.3 (raw  23.6)
+   module sum 366.8 over 10 -> 366.7 over 10  (mean 36.7 -> 36.7)
+
+changed modules: pairs 44 -> 44; pp-sum 1834.9 -> 1860.4 (+25.6)
+corpus: 54.9291 % @ 2518 -> ≈ 54.9393 % @ 2518  (+0.0102pp);  >=50 +0, >=75 +0

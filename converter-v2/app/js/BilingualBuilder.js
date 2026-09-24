@@ -231,10 +231,26 @@ class BilingualBuilder {
 				});
 				const Rt = strip(R.text), Et = strip(E.text);
 				const n = Math.max(Rt.length, Et.length);
+				// ROUND 461 (data dual_language.media_in_place; env REOMEDIAPOS_OFF): the media
+				// embeds go back IN PLACE — each one before the paragraph pair its cell position
+				// names (counted on the stream it came from, after the same strip) — where they
+				// used to follow every paragraph of the row. The human interleaves them.
+				const mip = this.#mediaInPlaceOn();
+				const useR = R.media.length > 0, src = useR ? R : E;
+				let before = null;
+				if (mip && src.mediaPos && src.media.length) {
+					const kept = [];   // kept[i] = stripped index of the i-th original text element
+					let c = 0;
+					for (const h of src.text) { kept.push(c); if (strip([h]).length) c++; }
+					before = src.mediaPos.map((p) => (p < kept.length ? kept[p] : c));
+				}
+				let mi = 0;
 				for (let k = 0; k < n; k++) {
+					if (before) while (mi < src.media.length && before[mi] <= k) out.push(src.media[mi++]);
 					if (k < Rt.length) out.push(this.langAttr(Rt[k], "reo"));   // Māori element FIRST
 					if (k < Et.length) out.push(this.langAttr(Et[k], "eng"));   // English element SECOND
 				}
+				if (before) { while (mi < src.media.length) out.push(src.media[mi++]); continue; }
 			} else {
 				for (const p of R.text) out.push(this.langAttr(p, "reo"));   // Māori text FIRST
 				for (const p of E.text) out.push(this.langAttr(p, "eng"));   // English text SECOND
@@ -895,18 +911,62 @@ class BilingualBuilder {
 	 */
 	static bilingualSplit(cell, run, norm) {
 		const text = [], media = [], buf = [];
+		// ROUND 461: each media embed remembers how many text elements preceded it in the
+		// cell (mediaPos), so bilingualRows can put it back IN PLACE between the paragraphs
+		// (data dual_language.media_in_place; env REOMEDIAPOS_OFF) instead of after them all.
+		const mpos = [];
+		const pushM = (x) => { media.push(x); mpos.push(text.length); };
 		const flush = () => { if (buf.length) { for (const h of ListsAndRuns.renderBlackText(buf.join("\n"), run)) text.push(h); buf.length = 0; } };
+		// ROUND 461 (KB 01E / 04B "Audio Image"; data dual_language.audio_image_tag; env
+		// AUDIOIMGTAG_OFF): the writer's `[Audio Image]` / `[Audio Image Hover]` tag followed by its
+		// `[Item N] [Image] desc` and `[Item N] [Audio] name` lines is ONE clickable image that plays
+		// its audio — `div.audioImage > div#{name}.audioImageOption > img` — not an audio player,
+		// an image and a second audio player. Units the source runs together (no text between)
+		// share a grid row. A broken shape falls back to exactly the old three embeds.
+		const ai = this.#audioImageCfg();
+		let aiPend = null, aiGroup = 0;
+		const aiUnits = [];   // { at: media index, group, html }
+		const aiFail = () => {
+			if (!aiPend) return;
+			// a continuation (the tag already opened an earlier unit of this run) owes no audio player
+			if (!aiPend.cont) pushM('<audio preload="none" class="audioPlayer icon"></audio>');
+			if (aiPend.imgPart) for (const x of TablesAndGrids.cellImage(aiPend.imgPart, run)) pushM(x);
+			aiPend = null;
+		};
+		const aiName = (p) => p.replace(/\u{1f534}|\[\/?RED TEXT\]/gu, "").replace(/\[[^\]]*\]/g, "").replace(/\*/g, "").replace(/\s+/g, " ").trim();
 		for (const part of TablesAndGrids.cellParts(cell)) {
 			const low = part.toLowerCase();
+			if (ai) {
+				if (ai.re.test(part) && !aiName(part.replace(ai.re, ""))) {
+					aiFail(); flush(); aiPend = { imgPart: null }; continue;
+				}
+				if (aiPend) {
+					const isImg = /\[\s*(?:item[^\]]*\]\s*\[\s*)?(?:image|photo)\s*\]/.test(low);
+					const isAud = /\[\s*(?:item[^\]]*\]\s*\[\s*)?audio\s*\]/.test(low);
+					if (isImg && !aiPend.imgPart) { aiPend.imgPart = part; continue; }
+					if (isAud && aiPend.imgPart && aiName(part)) {
+						const img = TablesAndGrids.cellImage(aiPend.imgPart, run).join("\n");
+						aiUnits.push({ at: media.length, group: aiGroup, html: Utils.FillTemplate(ai.unit,
+							{ name: Utils.EscapeHtml(aiName(part)), img }) });
+						pushM(null);   // the unit's slot — composed into its row below
+						// the tag opens a RUN: a further image + audio pair straight after it (TRR113's
+						// "[AudioImage Hover] u … e") is the next unit of the same row
+						aiPend = { imgPart: null, cont: true }; continue;
+					}
+					if (aiPend.cont && !aiPend.imgPart) aiPend = null;   // the run simply ended
+					else aiFail();
+				}
+				aiGroup++;   // any part that is not a unit's own line ends the current grid row
+			}
 			const m = part.match(/^\[([^\]]+)\]\s*([\s\S]*)$/);
 			let canon = null, rest = part;
 			if (m) { try { canon = norm.Parse(`[${m[1]}]`)?.primary?.tag ?? null; } catch { canon = null; } rest = m[2]; }
 			if (/\[\s*(?:item[^\]]*\]\s*\[\s*)?(?:image|photo)\s*\]/.test(low)) {
-				flush(); for (const x of TablesAndGrids.cellImage(part, run)) media.push(x);
+				flush(); for (const x of TablesAndGrids.cellImage(part, run)) pushM(x);
 			} else if (/\[\s*(?:item[^\]]*\]\s*\[\s*)?audio[^\]]*\]/.test(low)) {
-				flush(); media.push('<audio preload="none" class="audioPlayer icon"></audio>');
+				flush(); pushM('<audio preload="none" class="audioPlayer icon"></audio>');
 			} else if (/\[\s*(?:item[^\]]*\]\s*\[\s*)?video[^\]]*\]/.test(low)) {
-				flush(); media.push('<div class="videoSection ratio ratio-16x9">\n<iframe></iframe>\n</div>');
+				flush(); pushM('<div class="videoSection ratio ratio-16x9">\n<iframe></iframe>\n</div>');
 			} else if (canon && /^(?:h[1-6]|heading|activity heading)$/.test(canon)) {
 				flush();
 				const digit = /^h\d$/.test(canon) ? parseInt(canon[1], 10) : 2;
@@ -932,7 +992,46 @@ class BilingualBuilder {
 			}
 		}
 		flush();
-		return { text, media };
+		if (ai) {
+			aiFail();
+			if (aiUnits.length) {
+				// ROUND 461: a run of units in one group is ONE grid row (the column class by the
+				// run's size — data audio_image_tag.group_cols); a lone unit stands bare.
+				const byGroup = new Map();
+				for (const u of aiUnits) { if (!byGroup.has(u.group)) byGroup.set(u.group, []); byGroup.get(u.group).push(u); }
+				for (const us of byGroup.values()) {
+					if (us.length === 1) { media[us[0].at] = us[0].html; continue; }
+					const col = ai.cols[String(us.length)] ?? ai.cols.default ?? "col-md-3 col-6";
+					media[us[0].at] = `<div class="row">\n${us.map((u) => `<div class="${col}">\n${u.html}\n</div>`).join("\n")}\n</div>`;
+				}
+			}
+			const keep = media.map((x) => x !== null);
+			return { text, media: media.filter((x, k) => keep[k]), mediaPos: mpos.filter((x, k) => keep[k]) };
+		}
+		return { text, media, mediaPos: mpos };
+	};
+
+	/** ROUND 461 — dual_language.media_in_place is on (data flag; env REOMEDIAPOS_OFF). */
+	static #mediaInPlaceOn() {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.media_in_place;
+		return !!c && c.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[c.env ?? "REOMEDIAPOS_OFF"]);
+	};
+
+	/**
+	 * ROUND 461 — the `[Audio Image]` tag config (Emit_Templates.elements.dual_language.
+	 * audio_image_tag), or null when it is off (data flag / env AUDIOIMGTAG_OFF).
+	 * @returns {{re: RegExp, unit: string, cols: Object}|null}
+	 */
+	static #audioImageCfg() {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.audio_image_tag;
+		if (!c || c.enabled === false || !c.tag_pattern
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "AUDIOIMGTAG_OFF"])) return null;
+		return {
+			re: new RegExp(c.tag_pattern, "i"),
+			unit: c.unit_template ?? "<div class=\"audioImage\">\n<div id=\"{name}\" class=\"audioImageOption\">\n{img}\n</div>\n</div>",
+			cols: c.group_cols ?? {},
+		};
 	};
 
 	/**

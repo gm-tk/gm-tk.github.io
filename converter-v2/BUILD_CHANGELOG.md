@@ -1,5 +1,25 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (round 461, build 260620.31) — THE AUDIO-IMAGE UNIT (KB 01E / 04B): in a bilingual lesson the writer's `[Audio Image]` / `[Audio Image Hover]` tag and its image + audio lines now build the clickable picture that plays its sound (`div.audioImage > div#{audio}.audioImageOption > img`), side-by-side units sharing one grid row — where it used to ship an empty audio player, a picture and a second audio player — the loop's session 41 Round 9 (the loss ledger's lowest family, TRR)
+
+### 1. WHAT CHANGED
+
+**The find** (`outputs/_s41_r9_skdiff.py` on the TRR family — 76 pages, mean 40.4 %; `outputs/_s41_r9_audioimg.py`): the gold's `div.audioImage` grids (111 pages / 31 modules; Claude 0). The WT-tagged population: 141 `[Audio Image …]` tags / 18 modules, 100 in the tag → `[Item N] [Image]` → `[Item N] [Audio]` shape, almost all in the TRR bilingual cells. The lexicon's `audioimage` alias of `audio` turned each into three embeds. The r135 table-grid build (`audio_image`, parked) catches only 3 pages (a separate image-row / audio-row table) and stays parked.
+
+**The fix** (`BilingualBuilder.bilingualSplit`; data `Emit_Templates.elements.dual_language.audio_image_tag` {tag_pattern, unit_template, group_cols}; env **`AUDIOIMGTAG_OFF`**, byte-identical OFF): the tag opens a RUN — each following image + audio pair is one unit (id = the writer's audio name; the img = the cell image the converter already builds) until other content breaks it; a run of 2+ units is one `div.row` (2 → `col-md-6 offset-md-0 col-12`, 3 → `col-md-4 col-12`, 4+ → `col-md-3 col-6`, the gold's forms); a broken shape emits exactly the old embeds. In-round repair: TRR113's `[AudioImage Hover]` introduces TWO pairs (u … e) — the run continuation. **Parked in the same round:** `dual_language.media_in_place` (`REOMEDIAPOS_OFF`, enabled:false) — putting each bilingual media embed back between the paragraphs where the writer typed it measured 27 up / 37 down (+8.0 pp-sum over the unit alone; 26 dips with no rising companion — TRR116 / TRR203 / TRR108's gold does not follow the writer's cell order); the code stays as the base.
+
+### 2. PROOF
+
+- In-memory A/B (`outputs/_r461_probe_run.sh`): OFF 3217 / 3217 identical; ON 22 pages / 7 modules (TRR103, TRR109, TRR110, TRR111, TRR112, TRR113, TRR116).
+- Pre-score + companions (`_r461_prescore.py`, `_r461_companion.py` → `_r461_companion_ai.log`): **7 up / 15 down, pp-sum +25.6** — TRR112_2 22.6 → 38.5, TRR112_3 31.1 → 37.7, TRR113 2.0 39.1 → 42.7, TRR111 3 / 4 / 1 +2.7 / +2.6 / +1.6. **Named dips (all ≤ 0.9):** TRR109 1 / 2 / 3-4 and TRR110 1–4 are KB overrides (those golds render the tag as audioTrigger / `img.audioText`, not audioImage — KB 01E rank 1); TRR111_2, TRR113_1 have a rising position-free overlap (the alignment artefact); TRR112_1 / 4, TRR113_3 / 4.0, TRR103_3, TRR116_1 lose ≤ 0.9 because the bilingual cell's media still follows its paragraphs (the parked media_in_place) — the unit's three lines sit where the gold has text.
+- Scoped regeneration of the 7 + the 12-module spot-check (`_r461_regen.sh`): 0 truly stale, 12 / 12 byte-identical; `scoped_ship.sh --toggle AUDIOIMGTAG_OFF --round 461`: **PASS** (exact, decomposition-proven), scoped #1 since the r460 FULL.
+
+### 3. PROTECTED GATES
+
+- Skeleton **54.9376 % → 54.9477 % @ 2524 (+0.0101pp)**; ≥50 1581, ≥75 275, ≥90 25; RAW 38.967 → 38.975; 0 movers outside the affected set.
+- compare_structure 16719 / 208 / 896 / 24 EXACT; body_compare 61 / 5 / 176 / 239 EXACT; clean 2621 / 2667 EXACT; leak 75 / 46 EXACT; tags 9557; every verifier ✓; selftests 50 PASS; index GREEN; the miner 197 CANDIDATE @ 2524.
+- Plateau (§4): the PICK predicted a skeleton move; +0.0101pp is under the 0.02pp line → counted as NOT moving: **2 of 3**.
+
 ## 2026-09-24 (round 460, build 260620.30) — KNOWLEDGE AND PRACTICES ARE THEIR OWN OVERVIEW TABS (KB constraint 67 / CL-0040): in a tabbed overview menu the writer's Knowledge and Practices sections now each get their own nav tab, in the KB's canonical order Overview → Knowledge → Practices → Information → Standards, and the Information tab those moves leave empty is removed — the loop's session 41 Round 8 (the loss-ledger / content re-read lane → the KB queue); THE LEDGER'S FULL-SHIP BACKSTOP
 
 ### 1. WHAT CHANGED

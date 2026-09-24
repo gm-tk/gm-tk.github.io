@@ -1,0 +1,41 @@
+DOWN TRR103/TRR103_3_0.html        <- TRR103_3.0.html        scaffold  39.9 ->  39.7 (-0.2); overlap  47.1 ->  47.1; matched 72 -> 72
+DOWN TRR109/TRR109_1_0.html        <- TRR109_1.0.html        scaffold  25.1 ->  24.8 (-0.3); overlap  31.4 ->  31.4; matched 49 -> 49
+DOWN TRR109/TRR109_2_0.html        <- TRR109_2.0.html        scaffold  45.9 ->  45.3 (-0.6); overlap  41.4 ->  41.9; matched 81 -> 81
+UP   TRR109/TRR109_3_0.html        <- TRR109_4.0.html        scaffold  38.0 ->  38.4 (+0.5); overlap  46.0 ->  46.6; matched 52 -> 54
+DOWN TRR109/TRR109_4_0.html        <- TRR109_3.0.html        scaffold  38.0 ->  37.4 (-0.6); overlap  47.3 ->  47.8; matched 58 -> 58
+DOWN TRR110/TRR110_1_0.html        <- TRR110_1_0_ea.html     scaffold  21.5 ->  21.1 (-0.4); overlap  32.8 ->  32.8; matched 32 -> 32
+DOWN TRR110/TRR110_2_0.html        <- TRR110_2_0_eo.html     scaffold  34.0 ->  33.4 (-0.6); overlap  48.2 ->  48.2; matched 49 -> 49
+DOWN TRR110/TRR110_3_0.html        <- TRR110_3_0_eu.html     scaffold  29.0 ->  28.5 (-0.6); overlap  32.9 ->  33.6; matched 36 -> 36
+DOWN TRR110/TRR110_4_0.html        <- TRR110_4_0_ei.html     scaffold  45.1 ->  45.0 (-0.1); overlap  51.8 ->  51.8; matched 69 -> 70
+UP   TRR111/TRR111_1_0.html        <- TRR111_1.0.html        scaffold  35.7 ->  37.3 (+1.6); overlap  41.9 ->  43.3; matched 80 -> 85
+DOWN TRR111/TRR111_2_0.html        <- TRR111_2.0.html        scaffold  31.1 ->  30.7 (-0.4); overlap  48.4 ->  50.7; matched 57 -> 57
+UP   TRR111/TRR111_3_0.html        <- TRR111_3.0.html        scaffold  35.6 ->  38.3 (+2.7); overlap  50.9 ->  53.1; matched 53 -> 58
+UP   TRR111/TRR111_4_0.html        <- TRR111_4.0.html        scaffold  28.0 ->  30.7 (+2.6); overlap  37.5 ->  39.5; matched 45 -> 50
+DOWN TRR112/TRR112_1_0.html        <- TRR112_1.0.html        scaffold  32.4 ->  31.6 (-0.9); overlap  38.1 ->  37.5; matched 48 -> 48
+UP   TRR112/TRR112_2_0.html        <- TRR112_2.0.html        scaffold  22.6 ->  38.5 (+15.9); overlap  38.4 ->  45.9; matched 30 -> 52
+UP   TRR112/TRR112_3_0.html        <- TRR112_3.0.html        scaffold  31.1 ->  37.7 (+6.6); overlap  40.8 ->  47.7; matched 45 -> 56
+DOWN TRR112/TRR112_4_0.html        <- TRR112_4.0.html        scaffold  29.5 ->  28.7 (-0.8); overlap  30.8 ->  30.8; matched 42 -> 42
+DOWN TRR113/TRR113_1_0.html        <- TRR113_1.0.html        scaffold  33.3 ->  32.7 (-0.7); overlap  46.4 ->  52.2; matched 41 -> 41
+UP   TRR113/TRR113_2_0.html        <- TRR113_4.0.html        scaffold  39.1 ->  42.7 (+3.6); overlap  44.9 ->  51.7; matched 43 -> 48
+DOWN TRR113/TRR113_3_0.html        <- TRR113_3.0.html        scaffold  36.3 ->  35.6 (-0.7); overlap  52.6 ->  51.8; matched 45 -> 45
+DOWN TRR113/TRR113_4_0.html        <- TRR113_2.0.html        scaffold  37.3 ->  36.4 (-0.9); overlap  49.0 ->  48.1; matched 38 -> 38
+DOWN TRR116/TRR116_1_0.html        <- TRR116_1_0.html        scaffold  29.6 ->  29.5 (-0.1); overlap  35.3 ->  35.3; matched 41 -> 41
+
+UP 7 / DOWN 15 / = 0; pp-sum +25.6
+DOWN with a rising companion (artefact, nameable) 6:
+   TRR109/TRR109_2_0.html<-TRR109_2.0.html -0.6 (overlap 41.4->41.9, matched 81->81)
+   TRR109/TRR109_4_0.html<-TRR109_3.0.html -0.6 (overlap 47.3->47.8, matched 58->58)
+   TRR110/TRR110_3_0.html<-TRR110_3_0_eu.html -0.6 (overlap 32.9->33.6, matched 36->36)
+   TRR110/TRR110_4_0.html<-TRR110_4_0_ei.html -0.1 (overlap 51.8->51.8, matched 69->70)
+   TRR111/TRR111_2_0.html<-TRR111_2.0.html -0.4 (overlap 48.4->50.7, matched 57->57)
+   TRR113/TRR113_1_0.html<-TRR113_1.0.html -0.7 (overlap 46.4->52.2, matched 41->41)
+DOWN with NO rising companion (real) 9:
+   TRR103/TRR103_3_0.html<-TRR103_3.0.html -0.2 (overlap 47.1->47.1, matched 72->72)
+   TRR109/TRR109_1_0.html<-TRR109_1.0.html -0.3 (overlap 31.4->31.4, matched 49->49)
+   TRR110/TRR110_1_0.html<-TRR110_1_0_ea.html -0.4 (overlap 32.8->32.8, matched 32->32)
+   TRR110/TRR110_2_0.html<-TRR110_2_0_eo.html -0.6 (overlap 48.2->48.2, matched 49->49)
+   TRR112/TRR112_1_0.html<-TRR112_1.0.html -0.9 (overlap 38.1->37.5, matched 48->48)
+   TRR112/TRR112_4_0.html<-TRR112_4.0.html -0.8 (overlap 30.8->30.8, matched 42->42)
+   TRR113/TRR113_3_0.html<-TRR113_3.0.html -0.7 (overlap 52.6->51.8, matched 45->45)
+   TRR113/TRR113_4_0.html<-TRR113_2.0.html -0.9 (overlap 49.0->48.1, matched 38->38)
+   TRR116/TRR116_1_0.html<-TRR116_1_0.html -0.1 (overlap 35.3->35.3, matched 41->41)
