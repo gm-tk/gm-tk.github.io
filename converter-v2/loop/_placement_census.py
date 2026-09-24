@@ -161,6 +161,18 @@ def keep(t): return len(t) >= 20 or len(t.split()) >= 4
 def jacc(a, b):
     A, B = set(a.split()), set(b.split())
     return len(A & B) / max(1, len(A | B))
+def lis_keep(a):
+    """Indices of one longest strictly increasing subsequence of a (patience sorting with back-pointers)."""
+    import bisect
+    tails, tidx, prev = [], [], [-1] * len(a)
+    for i, x in enumerate(a):
+        k = bisect.bisect_left(tails, x)
+        if k == len(tails): tails.append(x); tidx.append(i)
+        else: tails[k] = x; tidx[k] = i
+        prev[i] = tidx[k - 1] if k > 0 else -1
+    out, i = set(), (tidx[-1] if tidx else -1)
+    while i != -1: out.add(i); i = prev[i]
+    return out
 def coarse(r):
     # the transition key: menu keeps its pane, body keeps kind (+side), panels are folded (panelN -> panel)
     return re.sub(r"panel\d+:", "panel:", r)
@@ -194,6 +206,10 @@ def main():
     CY = collections.defaultdict(collections.Counter)            # claude region totals by family (matched on the page)
     EX = collections.defaultdict(list); HEX = collections.defaultdict(list)
     fates = collections.Counter(); npairs = 0; tmpl_of = {}
+    # the ORDER census (session 42 Round 11)
+    OT = collections.Counter(); OO = collections.Counter(); OP = collections.defaultdict(set); OM = collections.defaultdict(set)
+    OS = collections.defaultdict(set); OSP = collections.defaultdict(set); OSF = collections.defaultdict(collections.Counter)
+    OSE = collections.defaultdict(list); OTG = collections.Counter(); OTGM = collections.defaultdict(set)
     for code in mods:
         hd = _corpus.mdir(HUMAN, code); cd = _corpus.mdir(CLAUDE, code)
         tmpl = os.path.basename(os.path.dirname(os.path.normpath(hd))); tmpl_of[code] = tmpl
@@ -210,6 +226,7 @@ def main():
             used = [False] * len(C); Cset = [set(b[1].split()) for b in C]
             by_t = collections.defaultdict(list); by_p = collections.defaultdict(list)
             for j, (tag, t, raw, reg) in enumerate(C): by_t[t].append(j); by_p[t[:40]].append(j)
+            seq = []   # ORDER census (session 42 Round 11): the matched Claude index of every gold block, in gold order
             for tag, t, raw, greg in G:
                 j = None
                 for pool in (by_t.get(t, []), by_p.get(t[:40], []) if len(t) >= 40 else []):
@@ -226,6 +243,7 @@ def main():
                 GA[fam][coarse(greg)] += 1
                 if j is not None:
                     used[j] = True; creg = C[j][3]
+                    seq.append((j, tag, t, raw, coarse(greg)))
                     a, b = coarse(greg), coarse(creg)
                     GX[fam][a] += 1; CY[fam][b] += 1
                     if a == b: fates["SAME"] += 1; continue
@@ -248,6 +266,18 @@ def main():
                 if tag[0] == "h" and tag[1:].isdigit():
                     HT[key] += 1; HM[key].add(code); HP[key].add(f"{code}/{page}")
                     if len(HEX[key]) < 6: HEX[key].append((code, page, tag, "—", raw))
+            # ORDER: the blocks outside the longest increasing subsequence of Claude positions (in gold order) are the ones
+            # Claude places in a different ORDER; each is recorded with the gold block it should come before.
+            keep_idx = lis_keep([s[0] for s in seq])
+            for q, (j, tag, t, raw, reg) in enumerate(seq):
+                OT[reg] += 1
+                if q in keep_idx: continue
+                OO[reg] += 1; OP[reg].add(f"{code}/{page}"); OM[reg].add(code)
+                nxt = next((seq[r] for r in range(q + 1, len(seq)) if r in keep_idx), None)
+                sig = f"{tag}:{' '.join(t.split()[:5])}"
+                OS[sig].add(code); OSP[sig].add(f"{code}/{page}"); OSF[sig][fam] += 1
+                if len(OSE[sig]) < 3: OSE[sig].append((code, page, raw[:60], (nxt[3][:50] if nxt else "(end)")))
+                tk = (reg, tag); OTG[tk] += 1; OTGM[tk].add(code)
         _cache.clear()
     dt = time.time() - t0
     # ---------------------------------------------------------------- report
@@ -322,6 +352,23 @@ def main():
     for r, n in agg_g.most_common(40):
         mv = moved_from[r]
         L.append(f"| `{r}` | {n} | {n - mv} | {mv} | {(n - mv) / max(1, n):.3f} |")
+    L.append("\n## 5. ORDER — blocks Claude places in a different order than the human (same page; session 42 Round 11)\n")
+    L.append("Every gold block matched on the paired page, in gold order, carries its Claude position; the blocks outside the longest "
+             "increasing subsequence of those positions are the ones in a different ORDER (a whole section moved, an introduction "
+             "after a note, a lead after its list). Regions first, then the recurring blocks by modules (a text that moves in many "
+             "modules is a systematic placement rule; `before` = the gold block it should precede).\n")
+    L.append("| gold region | matched | out of order | share | pages | modules |")
+    L.append("|---|---:|---:|---:|---:|---:|")
+    for r, n in OT.most_common(30):
+        L.append(f"| `{r}` | {n} | {OO[r]} | {OO[r] / max(1, n):.3f} | {len(OP[r])} | {len(OM[r])} |")
+    L.append("\n| block (tag: first words) | modules | pages | families | example: gold places it before … |")
+    L.append("|---|---:|---:|---|---|")
+    for sig in sorted(OS, key=lambda s: (-len(OS[s]), -len(OSP[s])))[:50]:
+        e = OSE[sig][0] if OSE[sig] else ("", "", "", "")
+        L.append(f"| `{sig[:60]}` | {len(OS[sig])} | {len(OSP[sig])} | {', '.join(f'{f} {n}' for f, n in OSF[sig].most_common(4))} | {e[0]} {e[1]}: “{e[2]}” before “{e[3]}” |")
+    L.append("\n| gold region · tag | out-of-order blocks | modules |")
+    L.append("|---|---:|---:|")
+    for tk, n in OTG.most_common(25): L.append(f"| `{tk[0]}` · {tk[1]} | {n} | {len(OTGM[tk])} |")
     L.append("\n## 4. Examples for the 25 largest transitions\n")
     for key in ranked[:25]:
         L.append(f"### `{key[0]}` → `{key[1]}` — {T[key]} blocks / {len(TP[key])} pages / {len(TM[key])} modules")

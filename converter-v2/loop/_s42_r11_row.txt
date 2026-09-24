@@ -1,0 +1,1 @@
+| `_placement_census.py` (+ the ORDER census, section 5) / `_placement_census.{md,log,json}` / `_s42_r11_record.py` | `CONVERTER_V2/outputs/` | **Session 42 Round 11 (a measurement-tool round)** — the placement census gains an ORDER census (the blocks outside the longest increasing subsequence of Claude positions in gold order), re-run on r470. |

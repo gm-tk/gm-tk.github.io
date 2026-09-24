@@ -1,5 +1,13 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (session 42 Round 11 — no engine change; build 260620.35 unchanged) — THE PLACEMENT CENSUS GAINS AN ORDER CENSUS: which blocks the human places in a different ORDER than Claude on the same page (LOOP §1g, D14-S1 — Chris's original BLL110 finding was an order move: the introduction placed after the supervisor note)
+
+**The tool** (`outputs/_placement_census.py`, section 5): every gold block matched on the paired page, in gold order, carries its Claude position; the blocks outside the longest increasing subsequence of those positions are the out-of-order ones (`lis_keep`). Reported by gold region (matched / out of order / share / pages / modules), by recurring block (tag + first five words, by modules — a text that moves in many modules is a systematic rule; with the gold block it should precede) and by region · tag. Caveat recorded in the report: repeated identical texts pair in order, so an extra developer-inserted copy in the gold shifts every later pair (the top row, `h4 "Go to your journal"` 42 modules / 85 pages, is this artefact — ANZH301 1A carries an extra journal heading + "Download journal" button the writer never typed).
+
+**The first order census (r470 corpus, 163,771 gold blocks):** out of order 0.036 of `body:free`, 0.046 of `body:activity`, 0.096 of `menu:Overview` (46 modules — the BLL2xx Knowledge / Practices / LI list order, Needs Chris #22's territory), 0.182 of dragAndDrop internals (the un-built widgets' raw order), 0.236 of `body:alert:side`. No systematic order class reaches the floor: the recurring moves are the journal artefact, BLL menu list items (5–15 modules), the TRR / PMT reo-before-English order of a few activity / menu headings (`Rapua ngā kupu…` before `Find the rhyming words`, `Hei te mutunga o te tau:` before `By the end of the year:` — 3–7 modules) and single-module BLL110 / BLL120 activity paragraphs.
+
+No converter output changed; plateau: neither counts nor resets. Tools `outputs/_placement_census.{py,md,json,log}`, `_s42_r11_record.py`.
+
 ## 2026-09-24 (round 470, build 260620.35) — THE TABLE-CELL TITLE BAR RECOGNISES THE WRITERS TEMPLATE: TRR115 CONVERTS — a Writers Template that types every tag, its `[TITLE BAR]` included, inside bilingual table cells is no longer refused as "no Writers Template" — the loop's session 42 Round 8 (the recognition / no-build lane)
 
 ### 1. WHAT CHANGED
