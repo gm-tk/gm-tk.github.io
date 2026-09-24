@@ -12,7 +12,7 @@ pp = json.load(io.open(os.path.join(OUT, "_diff_miner.json"), encoding="utf-8"))
 rec = next((p for p in pp if p["module"] == code and p["page"] == page), None)
 if not rec: sys.exit("not paired")
 g, _ = dm.page_lines(os.path.join(_corpus.mdir(dm.HUMAN, code), rec["gold"]))
-c, _ = dm.page_lines(os.path.join(_corpus.mdir(dm.CLAUDE, code), page))
+c, _ = dm.page_lines(sys.argv[4] if len(sys.argv) > 4 else os.path.join(_corpus.mdir(dm.CLAUDE, code), page))
 def fmt(l):
     d = getattr(l, "depth", 0) or 0
     return ("  " * min(d, 12) + str(getattr(l, "role", l)) + " «" + str(getattr(l, "text", ""))[:50] + "»")

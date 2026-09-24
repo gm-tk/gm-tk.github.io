@@ -1,0 +1,196 @@
+gold TRR103_1.0.html 195 | claude TRR103_1_0.html 175
+  0 body.container-fluid.reoTranslate «»                                                            | body.container-fluid.reoTranslate «»
+  1   div#header «»                                                                                 |   div#header «»
+  2     div#module-code «»                                                                          |     div#module-code «»
+  3       h1 «1.0»                                                                                  |       h1 «1.0»
+  4     h1>span «Ngā Oropuare: Ee»                                                                  |     h1>span «Ngā Oropuare: Ee»
+  5       span>span.sassoonI-text «Ngā Oropuare:»                                                   |       span «Ngā Oropuare: Ee»
+  6         span.sassoonI-text «Ee»                                                                 |     h1>span «The vowels: Ee»
+  7     h1>span «The vowels: Ee»                                                                    |       span «The vowels: Ee»
+  8       span>span.sassoonI-text «The vowels:»                                                     |   div#body «»
+  9         span.sassoonI-text «Ee»                                                                 |     div.row «»
+ 10   div#body «»                                                                                   |       div.col-12.col-md-8 «»
+ 11     div.row «»                                                                                  |         div.whakatauki «»
+ 12       div.col-12.col-md-8 «»                                                                    |           p «Ko te reo Māori te kākahu o te whakaaro te huarahi»
+ 13         div.col-12.col-md-12 «»                                                                 |           p «Te reo Māori helps us share our thoughts and find »
+ 14           div.whakatauki «»                                                                     |           p «Tā Hemi Hēnare Sir James Hēnare»
+ 15             p «Ko te reo Māori te kākahu o te whakaaro, te huarah»                              |             span «Tā Hemi Hēnare»
+ 16             p «Te reo Māori helps us share our thoughts and find »                              |             span «Sir James Hēnare»
+ 17             p «Tā Hemi Hēnare Sir James Hēnare»                                                 |     div.row «»
+ 18               span «Tā Hemi Hēnare»                                                             |       div.col-12.col-md-8 «»
+ 19               span «Sir James Hēnare»                                                           |         div.activity.interactive[number=*] «»
+ 20     div.row «»                                                                                  |           div.row «»
+ 21       div.col-12.col-md-8 «»                                                                    |             div.col-12 «»
+ 22         h3 «Ngā oropuare Ee»                                                                    |               h2 «Ngā oropuare Ee»
+ 23         h3 «The vowels Ee»                                                                      |               h2 «The vowels Ee»
+ 24         p>i «Kia ora! Ko ahau.»                                                                 |               img.img-fluid «»
+ 25           i>b «Pūriki e»                                                                        |               p>b «Kia ora! Ko ahau.»
+ 26             b «Pūriki e»                                                                        |                 b «Pūriki e»
+ 27         p>i «Kia ora! Ko ahau.»                                                                 |               p>b «Kia ora! Ko ahau.»
+ 28           i>b «Pūriki e»                                                                        |                 b «Pūriki e»
+ 29             b «Pūriki e»                                                                        |               p «I tēnei akoranga, ka ako koe e pā ana ki ahau!»
+ 30         p «I tēnei akoranga ka ako koe mōku!»                                                   |               p «In this lesson, you are going to learn all about m»
+ 31         p «In this lesson, you are going to learn all about m»                                  |               p «E hiahia ana au kia mōhio koe ki ōku oro motuhake »
+ 32         p «E hiahia ana au kia mōhio koe ki ōku oro motuhake »                                  |               p «I want you to know the two special sounds I make.»
+ 33         p «I want you to know the two special sounds I make.»                                   |               p «Ka āwhina ēnei oro i a koe ki te whakarongo me te »
+ 34         p «Ka āwhina ēnei oro i a koe ki te whakarongo me te »                                  |               p «Knowing these will help you when you are listening»
+ 35         p «Knowing these will help you when you are listening»                                  |               p «Ka kite koe i taku āhua, he piko pēnei i te koru? »
+ 36         p «E kite ana koe i taku āhua piko pēnei i te koru? K»                                  |               p «Can you see how I curl like a koru? I want you to »
+ 37         p «Can you see how I curl like a koru? I want you to »                                  |               p «Ahakoa kāore i te tino maha ngā kupu ka tīmata i a»
+ 38         p «Ehara i te mea he maha ngā kupu e tīmata ana ki au»                                  |               p «There aren’t many words that start with me, but yo»
+ 39         p «There aren’t many words that start with me, but yo»                                  |               p «Me tīmata tā tātou kimi i ahau i ēnei kupu:»
+ 40         p «Me tīmata tā tātou kimi i ahau i ngā kupu kei raro»                                  |               p «Let’s start by looking for me in the words below.»
+ 41         p «Let’s start by looking for me in the words below.»                                   |               p «Ka kitea au i ngā wāhi katoa o te kupu — i te tīma»
+ 42         div.row «»                                                                              |               p «You can find me anywhere in a word, at the start, »
+ 43           div.col-12.col-md-4 «»                                                                |               p «Ānō nei, i ētahi wā, ka nui atu i te kotahi au i r»
+ 44             img.img-fluid «»                                                                    |               p «Sometimes there is more than one of me in a word.»
+ 45             p «tepetepe»                                                                        |               img.img-fluid «»
+ 46           div.col-12.col-md-4 «»                                                                |               img.img-fluid «»
+ 47             img.img-fluid «»                                                                    |               img.img-fluid «»
+ 48             p «epaepa»                                                                          |               h3 «Ngā Tohutohu Hei Mahi»
+ 49           div.col-12.col-md-4 «»                                                                |               h3 «Activity Instructions:»
+ 50             img.img-fluid «»                                                                    |               p «Āta titiro ki ngā pū i roto i te pouaka nei. Kimih»
+ 51             p «kete»                                                                            |                 b «Kei hea a ‘e’?»
+ 52         p «Ka kitea au e koe i ngā wāhi katoa o te kupu, i te»                                  |                 b «e»
+ 53         p «You can find me anywhere in a word, at the start, »                                  |               p>b «Where is ‘e’?»
+ 54         p «I ētehi wā neke noa atu tōku kitea i roto i te kup»                                  |                 b «Where is ‘e’?»
+ 55         p «Sometimes there is more than one of me in a word.»                                   |               p>b «Look at the letters in the box below. Find all the»
+ 56       div.col-12.col-md-4.offset-md-0.paddingL «»                                               |                 b «‘e’»
+ 57         img.img-fluid «»                                                                        |               WIDGET «»
+ 58     div.row «»                                                                                  |     div.row «»
+ 59       div.col-12.col-md-8 «»                                                                    |       div.col-12.col-md-8 «»
+ 60         div.activity.interactive[number=*] «»                                                   |         div.activity.interactive[number=*] «»
+ 61           div.row «»                                                                            |           div.row «»
+ 62             div.col-12 «»                                                                       |             div.col-12 «»
+ 63               h3 «Kei hea a ‘e’?»                                                               |               h2 «Te oro o te oropuare poto»
+ 64               h3 «Where is ‘e’?»                                                                |               h2 «The short vowel sound»
+ 65               p>b «Āta titiro ki ngā pū i roto i te pouaka nei. Rapua»                          |               audio.audioPlayer.icon «»
+ 66                 b «e»                                                                           |               img.img-fluid «»
+ 67               p>b «Look at the letters in the box below. Find all the»                          |               audio.audioPlayer.icon «»
+ 68                 b «e»                                                                           |               p «Kāore au i te mau pōtae. Kei te maumahara koe ki t»
+ 69               WIDGET «»                                                                         |               p «I’m not wearing my pōtae. Do you remember what tha»
+ 70     div.row «»                                                                                  |               p «Āe, he tika tāu! He oro poto, he oro tere tōku!»
+ 71       div.col-12.col-md-8 «»                                                                    |               p «You’ve got it, it means my sound is quick and shor»
+ 72         h3 «Te oro poto»                                                                        |               p «Ahakoa kāore i te maha ngā kupu e tīmata ana ki ah»
+ 73         h3 «The short vowel sound»                                                              |               p «Even though there are not many words that start wi»
+ 74         div.row «»                                                                              |               p>b «Whakarongo pīkari! Ka rongo koe i taku oro poto ' »
+ 75           div.col-12.col-md-6.offset-md-0 «»                                                    |                 b «e»
+ 76             div.audioImage «»                                                                   |               p>b «Listen carefully, can you hear my short ‘ ’ sound »
+ 77               div#e short.audioImageOption «»                                                   |                 b «e»
+ 78                 img.img-fluid «»                                                                |               p «Ka rongo hoki koe i ahau kei te mutunga o tētahi o»
+ 79         p «Kāore au i te mau pōtae. Kei te maumahara koe ki t»                                  |               p «Audio Hover Trigger»
+ 80         p «I’m not wearing my pōtae. Do you remember what tha»                                  |               p «Audio Hover Trigger»
+ 81         p «Āe, he tika tāu, he oro poto, he oro tere tōku.»                                     |               img.img-fluid «»
+ 82         p «You’ve got it, it means my sound is quick and shor»                                  |               audio.audioPlayer.icon «»
+ 83         p «Ahakoa kāore i te maha ngā kupu e tīmata ana ki ah»                                  |               img.img-fluid «»
+ 84         p «Even though there are not many words that start wi»                                  |               audio.audioPlayer.icon «»
+ 85         p>b «Āta whakarongo! E rongo ana koe i taku oro poto ' »                                |               img.img-fluid «»
+ 86           b «e»                                                                                 |               audio.audioPlayer.icon «»
+ 87         p>b «Listen carefully, can you hear my short ‘ ’ sound »                                |               h3 «Ngā Tohutohu Hei Mahi»
+ 88           b «e»                                                                                 |               h3 «Activity Instructions:»
+ 89         div.row «»                                                                              |               p>i «He kupu pārekareka a !»
+ 90           div.col-12.col-md-4 «»                                                                |                 i «eke»
+ 91             div.audioImage «»                                                                   |               p «He kupu ka taea te whakamahi mō ngā momo mea rerek»
+ 92               div#Epa.audioImageOption «»                                                       |                 i «eke»
+ 93                 p.imageCaption «Epa»                                                            |                 i «“to ride”»
+ 94                 img.img-fluid «»                                                                |               p «Tākaro i te kēmu kei raro nei kia kite koe i ngā m»
+ 95           div.col-12.col-md-3 «»                                                                |               p>b «The kupu is a fun little word.»
+ 96             div.audioImage «»                                                                   |                 b «eke»
+ 97               div#eke.audioImageOption «»                                                       |               p «It can mean different things, but when joins with »
+ 98                 p.imageCaption «Eke»                                                            |                 b «eke»
+ 99                 img.img-fluid «»                                                                |                 b «‘to ride’»
+100           div.col-12.col-md-4 «»                                                                |               p «Play the game below to see all the fun things I lo»
+101             div.audioImage «»                                                                   |               WIDGET «»
+102               div#eo.audioImageOption «»                                                        |     div.row «»
+103                 p.imageCaption «Eo»                                                             |       div.col-12.col-md-8 «»
+104                 img.img-fluid «»                                                                |         div.row «»
+105     div.row «»                                                                                  |           div.col-12.col-md-4.offset-md-0 «»
+106       div.col-12.col-md-8 «»                                                                    |             div.alertActivity «»
+107         div.activity.alertPadding.dropbox[number=*] «»                                          |     div.row «»
+108           h3 «He kupu pārekareka te kupu eke!»                                                  |       div.col-12.col-md-8 «»
+109           h3 «The kupu eke is a fun little word.»                                               |         WIDGET «»
+110           p «He maha ngā tikanga rerekē o te kupu eke, ka hono »                                |     div.row «»
+111           p «It can mean different things, but when eke joins w»                                |       div.col-12.col-md-8 «»
+112           p «Tākaro i te kēmu kei raro iho nei kia kite koe i n»                                |         div.activity[number=*] «»
+113           p «Play the game below to see all the fun things I lo»                                |           div.row «»
+114           WIDGET «»                                                                             |             div.col-12 «»
+115           h4 «He aha tētahi mea pai rawa atu ki a koe hei eke mā»                               |               h2 «Te oro roa»
+116           h4 «What is your favourite thing to ride?»                                            |               h2 «The long vowel sound»
+117           p «Tāngia he pikitia, kapohia rānei he whakaahua o tē»                                |               p «Kua mau pōtae au ināianei! Ko tōku pōtae he tohutō»
+118           p «Draw pictures or take photos of you riding your fa»                                |                 b «roa»
+119           a «Upload to dropbox»                                                                 |                 b «‘ē’»
+120             div.button «Upload to dropbox»                                                      |               p «Now I’ve got my pōtae on top. My pōtae is called a»
+121           a «Tukuatu ki te pouaka waihotanga»                                                   |                 b «long»
+122             div.button «Tukuatu ki te pouaka waihotanga»                                        |                 b «ē’»
+123       div.col-12.col-md-4.offset-md-0 «»                                                        |               p>b «Anei ētahi kupu ka tīmata ki ahau. Whakarongo pīka»
+124         div.alertActivity «»                                                                    |                 b «‘ē’ roa»
+125           img.img-fluid «»                                                                      |               p>b «Here are some words that begin with me. Listen car»
+126     div.row «»                                                                                  |                 b «long ‘ē’»
+127       div.col-12.col-md-8 «»                                                                    |               audio.audioPlayer.icon «»
+128         h3 «Te oro roa»                                                                         |               img.img-fluid «»
+129         h3 «The long vowel sound»                                                               |               audio.audioPlayer.icon «»
+130         p>b «Kua mau pōtae au ināianei! Ko tōku pōtae he tohutō»                                |     div.row «»
+131           b «ē»                                                                                 |       div.col-12.col-md-8 «»
+132         p «Now I’ve got my pōtae on top. My pōtae is called a»                                  |         WIDGET «»
+133         div.row «»                                                                              |       div.col-12.col-md-4.offset-md-0 «»
+134           div.col-12.col-md-6 «»                                                                |         div.alertActivity «»
+135             div.audioImage «»                                                                   |     div.row «»
+136               div#E long vowel_01.audioImageOption «»                                           |       div.col-12.col-md-8 «»
+137                 img.img-fluid «»                                                                |         p «Ko te tikanga o te kupu ko ‘some’. ēkara – Some ea»
+138         p>b «Anei ētahi kupu ka tīmata ki ahau. Āta whakarongo »                                |           b «‘ētahi’»
+139           b «‘ē’»                                                                               |           b «Ētahi»
+140         p>b «Here are some words that begin with me. Listen car»                                |         p «The word means some. ēkara eagles»
+141           b «long ‘ē’»                                                                          |           b «‘ētahi’»
+142         WIDGET «»                                                                               |           b «Ētahi»
+143         div.alert «»                                                                            |           b «- Some»
+144           div.row «»                                                                            |           b «.»
+145             div.col-12 «»                                                                       |         p «Ko te tikanga o te kupu ko ‘these’. ēkara – These »
+146               p «Ko te tikanga o te kupu ko . – Some eagles.»                                   |           b «‘ēnei’»
+147                 b «‘ētahi’»                                                                     |           b «Ēnei»
+148                 i>b «‘some’»                                                                    |         p «The word means ‘these’. ēkara – eagles.»
+149                   b «‘some’»                                                                    |           b «‘ēnei’»
+150                 b «Ētahi ēkara»                                                                 |           b «Ēnei»
+151               p «The word means . - Some eagles.»                                               |           b «These»
+152                 b «‘ētahi’»                                                                     |     div.row «»
+153                 i>b «‘some’»                                                                    |       div.col-12.col-md-8 «»
+154                   b «‘some’»                                                                    |         WIDGET «»
+155                 b «Ētahi ēkara»                                                                 |     WIDGET «»
+156               p «Ko te tikanga o te kupu ko . – These eagles.»                                  |     div.row «»
+157                 b «‘ēnei’»                                                                      |       div.col-12.col-md-8 «»
+158                 i>b «‘these’»                                                                   |         div.activity[number=*] «»
+159                   b «‘these’»                                                                   |           div.row «»
+160                 b «Ēnei ēkara»                                                                  |             div.col-12 «»
+161               p «The word means . – These eagles.»                                              |               h2 «He whakangahau»
+162                 b «‘ēnei’»                                                                      |               h2 «Let’s have fun»
+163                 i>b «‘these’»                                                                   |               p «Me okioki tātou. Anei tētahi waiata oro puare hei »
+164                   b «‘these’»                                                                   |               p «Let’s take a break. Here is a vowel song to sing a»
+165                 b «Ēnei ēkara»                                                                  |               div.ratio.ratio-16x9.videoSection «»
+166     div.row «»                                                                                  |                 iframe «»
+167       div.col-12.col-md-12 «»                                                                   |   div#footer «»
+168         div.activity.alertPadding.interactive[number=*] «»                                      |     ul.footer-nav «»
+169           div.row «»                                                                            |       li>a#prev-lesson «»
+170             div.col-12 «»                                                                       |         a#prev-lesson «»
+171               h3 «He roa, he poto rānei?»                                                       |       li>a#next-lesson «»
+172               h3 «The long vowel sound»                                                         |         a#next-lesson «»
+173               p «Whakarongo ki te oro tuatahi o ēnei kupu, ka whaka»                            |       li>a.home-nav «»
+174               p «Listen to these words and decide if the first vowe»                            |         a.home-nav «»
+175               WIDGET «»                                                                         | 
+176     div.row «»                                                                                  | 
+177       div.col-12.col-md-8 «»                                                                    | 
+178         div.activity[number=*] «»                                                               | 
+179           div.row «»                                                                            | 
+180             div.col-12 «»                                                                       | 
+181               h3 «He whakangahau»                                                               | 
+182               h3 «Let’s have fun»                                                               | 
+183               p «Me whakatā tātou. Anei tētahi waiata oropuare hei »                            | 
+184               p «Let’s take a break. Here is a vowel song to sing a»                            | 
+185               div.ratio.ratio-16x9.videoSection «»                                              | 
+186                 iframe «»                                                                       | 
+187   div#footer «»                                                                                 | 
+188     ul.footer-nav «»                                                                            | 
+189       li>a#prev-lesson «»                                                                       | 
+190         a#prev-lesson «»                                                                        | 
+191       li>a#next-lesson «»                                                                       | 
+192         a#next-lesson «»                                                                        | 
+193       li>a.home-nav «»                                                                          | 
+194         a.home-nav «»                                                                           | 

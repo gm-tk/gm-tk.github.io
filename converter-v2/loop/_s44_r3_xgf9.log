@@ -1,0 +1,26 @@
+pages 41
+  268   36p   5m  body      EXTRA       —                                      -> div.row                                 e.g. XGF9001_0_0.html «» «»
+  184   32p   5m  body      MISSING     div.row                                -> —                                       e.g. XGF9001_2_0.html «» «»
+  114   26p   5m  body      EXTRA       —                                      -> p                                       e.g. XGF9001_1_0.html «» «Greats and Gripes»
+   89   20p   4m  activity  MOVED       p                                      -> p                                       e.g. XGF9001_2_0.html «Click on the accordion (+ sign) to see h» «Click on the accordion (+ sign) to see h»
+   77    5p   4m  body      MISSING     br                                     -> —                                       e.g. XGF9001_6_0.html «» «»
+   63   17p   4m  body      MOVED       li                                     -> li                                      e.g. XGF9001_2_0.html «What qualities, strengths, and interests» «What qualities, strengths, and interests»
+   62   13p   4m  activity  MOVED       li                                     -> li                                      e.g. XGF9001_6_0.html «Your most common letter will reveal your» «Your most common letter will reveal your»
+   52   19p   5m  activity  MISSING     p                                      -> —                                       e.g. XGF9001_3_0.html «Now is your chance to share who is in yo» «»
+   42    6p   2m  activity  SUBSTITUTED li                                     -> li                                      e.g. XGF9002_2_0.html «Two strengths my child shows in their em» «Two strengths my child shows in their em»
+   41   17p   4m  body      EXTRA       —                                      -> ul                                      e.g. XGF9001_4_0.html «» «»
+   40   14p   5m  body      EXTRA       —                                      -> p>b                                     e.g. XGF9001_3_0.html «» «is so important! It is all about connect»
+   38   19p   5m  activity  MISSING     WIDGET                                 -> —                                       e.g. XGF9001_2_0.html «» «»
+   33   20p   4m  activity  MOVED       h4.goJournal                           -> h4.goJournal                            e.g. XGF9001_3_0.html «Go to your journal» «Go to your journal»
+   31   18p   5m  body      MOVED       p                                      -> p                                       e.g. XGF9001_3_0.html «In this lesson, you'll explore what make» «In this lesson, you’ll explore what make»
+   30   11p   4m  activity  EXTRA       —                                      -> p                                       e.g. XGF9001_3_0.html «» «This activity will help you think about »
+   25   11p   5m  body      MISSING     b                                      -> —                                       e.g. XGF9001_5_0.html «you» «»
+   24   15p   4m  activity  MISSING     div.row                                -> —                                       e.g. XGF9001_2_0.html «» «»
+   22   11p   5m  activity  EXTRA       —                                      -> WIDGET                                  e.g. XGF9001_2_0.html «» «»
+   21   12p   5m  body      MISSING     p                                      -> —                                       e.g. XGF9001_1_0.html «This section of the module is all about » «»
+   20   15p   5m  body      EXTRA       —                                      -> img.img-fluid                           e.g. XGF9001_4_0.html «» «»
+   20    8p   2m  body      EXTRA       —                                      -> div.externalButton                      e.g. XGF9002_0_0.html «» «Tāhurangi»
+   20    4p   1m  activity  MISSING     h5                                     -> —                                       e.g. XGF9002_2_0.html «Scenario 1: “This is too hard! I can’t d» «»
+   19    9p   3m  activity  SUBSTITUTED p                                      -> p                                       e.g. XGF9001_2_0.html «Did you agree with what you found out in» «Choose one of the quizzes below to explo»
+   18   14p   4m  body      EXTRA       —                                      -> WIDGET                                  e.g. XGF9001_8_0.html «» «»
+   17    4p   3m  body      EXTRA       —                                      -> li                                      e.g. XGF9001_8_0.html «» «a way to help your community or protect »

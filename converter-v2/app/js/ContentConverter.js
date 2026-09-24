@@ -3001,6 +3001,35 @@ class ContentConverter {
 					const sec = BilingualBuilder.bilingualSection(bodyItems, i, run, bundles, this.#norm,
 						(b) => this.#interactivePlaceholder(b, run, { handoffOnly: true }));
 					if (sec) { breakRow(); parts.push(sec.html); markContent(); this.#closeSpanWrap(stack, emit, breakRow); i = sec.next - 1; continue; }
+					// ROUND 480 (KB 07B "Activity Structure" — a §1d TRR family dialect): the `Activity NX: ║ Ngohe NX:` intro table
+					// + the [Activity: Embedded] marker table after it (+ its spec tables, the gather below's stops) → ONE activity
+					// box in the KB 07D lesson wrapper, numbered like the r454 boxes (lesson.position). Data
+					// dual_language.act_label_box; env ACTLABELBOX_OFF.
+					const alb = BilingualBuilder.actLabelBoxCfg(run);
+					if (alb && BilingualBuilder.isActLabelTable(it.block, alb)) {
+						const blocks = [it.block];
+						let j = i + 1;
+						const nx0 = bodyItems[j];
+						if (nx0 && nx0.type === "table" && nx0.consumedBy === undefined && !nx0._consumed
+							&& BilingualBuilder.isActivityMarker(nx0.block) && !BilingualBuilder.bilingualHeader(nx0.block)) {
+							blocks.push(nx0.block); nx0._consumed = true; j++;
+							while (j < bodyItems.length) {
+								const nx = bodyItems[j];
+								if (nx.type !== "table" || nx.consumedBy !== undefined || nx._consumed) break;
+								if (BilingualBuilder.isActivityMarker(nx.block) || BilingualBuilder.bilingualHeader(nx.block) || BilingualBuilder.isCalloutTable(nx.block, this.#norm)) break;
+								blocks.push(nx.block); nx._consumed = true; j++;
+							}
+						}
+						let act = BilingualBuilder.bilingualActivity(blocks, run, this.#norm, alb);
+						if (act) {
+							if (page?.lessonNumber != null && !/^<div class="activity[^"]*" number="/.test(act)) {
+								const k = (parts.join("\n").match(/<div class="activity[\s"]/g) || []).length + 1;
+								act = act.replace(/^<div class="(activity[^"]*)"/, `<div class="$1" number="${page.lessonNumber}.${k}"`);
+							}
+							act = `<div class="row">\n<div class="col-md-8 col-12">\n${act}\n</div>\n</div>`;
+							breakRow(); parts.push(act); markContent(); this.#closeSpanWrap(stack, emit, breakRow); i = j - 1; continue;
+						}
+					}
 					const bil = BilingualBuilder.bilingualTable(it.block, run, this.#norm,
 						it._reoModuleContent === true);
 					if (bil) { breakRow(); parts.push(bil); markContent(); this.#closeSpanWrap(stack, emit, breakRow); continue; }

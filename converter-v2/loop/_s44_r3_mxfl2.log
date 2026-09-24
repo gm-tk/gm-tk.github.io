@@ -1,0 +1,26 @@
+pages 38
+  147   15p   2m  module-menu SUBSTITUTED li                                     -> li                                      e.g. MXFL201_1_0.html «read information presented in tables» «read values of money including dollars a»
+  142   32p   4m  body      EXTRA       —                                      -> div.row                                 e.g. MXFL201_1_0.html «» «»
+   95   15p   2m  module-menu MISSING     li                                     -> —                                       e.g. MXFL201_1_0.html «read values of money including dollars a» «»
+   84   24p   4m  body      MISSING     div.row                                -> —                                       e.g. MXFL201_2_0.html «» «»
+   78   15p   2m  module-menu MISSING     br                                     -> —                                       e.g. MXFL201_1_0.html «» «»
+   66   16p   2m  module-menu MISSING     h5                                     -> —                                       e.g. MXFL201_1_0.html «Taurangi | Algebra» «»
+   60   16p   2m  module-menu MISSING     h3>span                                -> —                                       e.g. MXFL201_1_0.html «Understand» «»
+   54   12p   4m  activity  EXTRA       —                                      -> p                                       e.g. MXFL201_4_0.html «» «Auckland Zoo $24»
+   45   15p   2m  module-menu SUBSTITUTED h3>span                                -> li                                      e.g. MXFL201_1_0.html «Learning Intentions» «create and use algorithms for making dec»
+   40   15p   2m  module-menu SUBSTITUTED ul                                     -> li                                      e.g. MXFL201_1_0.html «» «order numbers involving decimals»
+   39   15p   2m  module-menu SUBSTITUTED p                                      -> p                                       e.g. MXFL201_1_0.html «In our number system each place value is» «Mātauranga tau | Number»
+   39   12p   4m  body      EXTRA       —                                      -> p                                       e.g. MXFL201_1_0.html «» «The tables below show how many kilometre»
+   35    7p   3m  body      MISSING     br                                     -> —                                       e.g. MXFL201_1_0.html «» «»
+   34   16p   2m  module-menu MISSING     ul                                     -> —                                       e.g. MXFL201_1_0.html «» «»
+   32   16p   2m  module-menu EXTRA       —                                      -> div.col-12.col-md-6.paddingR            e.g. MXFL201_1_0.html «» «»
+   32   14p   2m  module-menu SUBSTITUTED p                                      -> li                                      e.g. MXFL201_1_0.html «Ākonga will:» «add three-digit numbers»
+   32   12p   4m  activity  MOVED       p                                      -> p                                       e.g. MXFL201_8_0.html «It is now time to calculate the total co» «It is now time to calculate the total co»
+   31   27p   4m  module-menu MISSING     p                                      -> —                                       e.g. MXFL201_1_0.html «Whiria te kaha tūātinitini, whiria te ka» «»
+   29   16p   4m  activity  MISSING     div.button                             -> —                                       e.g. MXFL201_1_0.html «Go to journal» «»
+   26   10p   2m  activity  EXTRA       —                                      -> img.img-fluid                           e.g. MXFL203_1_0.html «» «»
+   25    5p   2m  activity  EXTRA       —                                      -> li                                      e.g. MXFL201_1_0.html «» «Gisborne to Napier to Taupō 215 km + 143»
+   24   11p   4m  body      MISSING     p                                      -> —                                       e.g. MXFL201_2_0.html «While 60% of the Māori population live i» «»
+   24   13p   4m  activity  MISSING     WIDGET                                 -> —                                       e.g. MXFL201_7_0.html «» «»
+   23   16p   4m  activity  MISSING     p                                      -> —                                       e.g. MXFL201_2_0.html «Match the regional Māori tourist activit» «»
+   21   16p   2m  module-menu SUBSTITUTED h5                                     -> h5>span                                 e.g. MXFL201_1_0.html «Mātauranga tau | Number» «Know»

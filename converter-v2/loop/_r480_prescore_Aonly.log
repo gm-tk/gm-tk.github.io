@@ -1,0 +1,29 @@
+
+## TRR103: pairs 4 -> 4
+   TRR103_0.0.html          OLD TRR103_0_0.html     70.9  NEW TRR103_0_0.html     70.9 (raw  41.3)
+   TRR103_1.0.html          OLD TRR103_1_0.html     38.4  NEW TRR103_1_0.html     38.4 (raw  24.2)
+   TRR103_2.0.html          OLD TRR103_2_0.html     40.7  NEW TRR103_2_0.html     40.7 (raw  27.5)
+   TRR103_3.0.html          OLD TRR103_3_0.html     40.5  NEW TRR103_3_0.html     40.5 (raw  31.2)
+   module sum 190.5 over 4 -> 190.5 over 4  (mean 47.6 -> 47.6)
+
+## TRR106: pairs 3 -> 3
+   TRR106_0.0.html          OLD TRR106_0_0.html     76.2  NEW TRR106_0_0.html     76.2 (raw  43.4)
+   TRR106_1.0.html          OLD TRR106_1_0.html     41.6  NEW TRR106_1_0.html     41.6 (raw  18.5)
+   TRR106_2.0.html          OLD TRR106_2_0.html     44.4  NEW TRR106_2_0.html     44.4 (raw  26.2)
+   module sum 162.3 over 3 -> 162.3 over 3  (mean 54.1 -> 54.1)
+
+## TRR116: pairs 10 -> 10
+   TRR116_0_0.html          OLD TRR116_0_0.html     83.3  NEW TRR116_0_0.html     83.3 (raw  49.5)
+   TRR116_1_0.html          OLD TRR116_1_0.html     51.6  NEW TRR116_1_0.html     58.3 (raw  45.1)
+   TRR116_2_0.html          OLD TRR116_2_0.html     53.1  NEW TRR116_2_0.html     53.8 (raw  38.0)
+   TRR116_3_0.html          OLD TRR116_3_0.html     58.8  NEW TRR116_3_0.html     54.0 (raw  38.0)
+   TRR116_4_0.html          OLD TRR116_4_0.html     36.7  NEW TRR116_4_0.html     26.0 (raw  17.2)
+   TRR116_5_0.html          OLD TRR116_5_0.html     29.8  NEW TRR116_5_0.html     26.5 (raw  20.1)
+   TRR116_6_0.html          OLD TRR116_6_0.html     50.2  NEW TRR116_6_0.html     41.2 (raw  27.9)
+   TRR116_7_0.html          OLD TRR116_7_0.html     50.6  NEW TRR116_7_0.html     47.8 (raw  34.6)
+   TRR116_8_0.html          OLD TRR116_8_0.html     45.9  NEW TRR116_8_0.html     32.6 (raw  22.7)
+   TRR116_9_0.html          OLD TRR116_9_0.html     59.2  NEW TRR116_9_0.html     54.2 (raw  36.4)
+   module sum 519.4 over 10 -> 477.6 over 10  (mean 51.9 -> 47.8)
+
+changed modules: pairs 17 -> 17; pp-sum 872.1 -> 830.4 (-41.7)
+corpus: 55.2477 % @ 2491 -> ≈ 55.2310 % @ 2491  (-0.0167pp);  >=50 -2, >=75 +0

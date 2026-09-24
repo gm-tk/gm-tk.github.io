@@ -1,0 +1,940 @@
+PMT101 #7 marker table 88 rows
+   r0 2c:11:OTHER        English ║ Māori
+   r1 2c:11:HEAD         [H1] PMT101 / Tūmatauenga and Tāne-Mahuta / Ko Tūmataue ║ [H1] PMT101 / Tūmatauenga and Tāne-Mahuta / Ko Tūmataue
+   r2 2c:11:HEAD         [H1] Proverb: ║ [H1] Whakatauākī:
+   r3 2c:11:BODY         [Body] “Because of whakapapa, everything in the world i ║ [Body] “Nā te whakapapa ka noho whanaunga ngā mea katoa
+   r4 2c:11:OTHER        English ║ Māori
+   r5 2c:11:OTHER        PMT101 – Activity 1 ║ PMT101 – Hei Mahi 1
+   r6 2c:11:HEAD         [H1]: 1.1 ║ [H1]: 1.1
+   r7 2c:11:HEAD         [H2] Lesson Title: Everything is Connected ║ [H2]: Ingoa Akoranga: E hono ana ngā mea katoa
+   r8 2c:10:OTHER        [Item 3] [Video] Tūmatauenga rāua ko Tāne-Mahuta ║ 
+   r9 2c:11:BODY         [Body] Whakapapa is a treasured inheritance [ Hover def ║ [Body] He taonga tuku iho te whakapapa, he kuru pounamu
+   r10 2c:00:OTHER         ║ 
+   r11 2c:10:MARKER       [Activity: Embedded] Drag and Drop ║ 
+   r12 2c:11:HEAD         [H1] Everything is connected ║ [H1] He whanaunga ngā mea katoa
+   r13 2c:11:BODY         [Body] / Drag the picture that relates correctly to one ║ [Body] / Tēnā, tōia te pikitia e hāngai tika ana ki tēt
+   r14 2c:00:OTHER         ║ 
+   r15 2c:11:OTHER        Picture with audio ║ Text with picture
+   r16 2c:11:OTHER        [Item 13] [Image] Tūmatauenga / [Item 15] [audio] He ur ║ [Item 14] [Image] PMTaiti me te pakeke
+   r17 2c:11:OTHER        [Item 16] [Image] Tāne-Mahuta / [Item 18] [audio] He ur ║ [Item 17] [Image] Ngā manu
+   r18 2c:11:OTHER        [Item 19] [Image] Tūmatauenga / [Item 21] [audio] He te ║ [Item 20] [Image] E tū tahi ana a Tūmatauenga rāua ko T
+   r19 2c:11:OTHER        [Item 22] [Image] Tāne-Mahuta / [Item 24] [audio] He ur ║ [Item 23] [Image] Ngā rākau
+   r20 2c:11:OTHER        [Item 25] [Image] Tāne-Mahuta / [Item 27] [audio] He wh ║ [Item 26] [Image] Kei raro ngā PMTariki i te rākau, e r
+   r21 2c:11:OTHER        [Item 28] [Image] Tūmatauenga / [Item 30] [audio] I pak ║ [Item 29] [Image] Tūmatauenga rāua ko Tāne-Mahuta
+   r22 2c:11:OTHER        [Item 31] [Image] Tāne-Mahuta / [Item 33] [audio] Me ti ║ [Item 32] [Image] Ngā PMTariki e kohi rāpihi ana i te n
+   r23 2c:00:OTHER         ║ 
+   r24 2c:00:OTHER         ║ 
+   r25 2c:11:OTHER        English ║ Māori
+   r26 2c:11:OTHER        PMT101 – Activity 1 ║ PMT101 - Hei Mahi 1
+   r27 2c:11:HEAD         [H1] 1.2 ║ [H1] 1.2
+   r28 2c:11:HEAD         [H2] Lesson Title: Genealogy is a treasure [Hover defin ║ [H2]: Ingoa Akoranga: He Taonga te Whakapapa
+   r29 2c:11:BODY         [Body] Whakapapa is a treasured inheritance. Whakapapa  ║ [Body] Ko te whakapapa he taonga tuku iho. Kāore te wha
+   r30 2c:00:OTHER         ║ 
+   r31 2c:10:MARKER       [Activity: Embedded] Interactive Carousel ║ 
+   r32 2c:11:HEAD         [H1] Genealogy is a treasure ║ [H1] He Taonga te Whakapapa
+   r33 2c:11:BODY         [Body] / Here are some videos that show the care betwee ║ [Body] / Anei ētahi kiriata e whakaatu ana i te manaaki
+   r34 2c:00:OTHER         ║ 
+   r35 2c:10:MARKER       [Activity: Embedded] Interactive Carousel ║ 
+   r36 2c:11:OTHER        Slide 1 ║ Text
+   r37 2c:11:OTHER        [Item 34] [video] Older sibling looking after younger s ║ Nā te whakapapa ka noho whanaunga te tuakana me te tein
+   r38 2c:11:OTHER        Slide 2 ║ Text
+   r39 2c:11:OTHER        [Item 35] [video] Mum caring for children ║ Nā te whakapapa ka noho whanaunga te māmā me āna PMTari
+   r40 2c:11:OTHER        Slide 3 ║ Text
+   r41 2c:11:OTHER        [Item 36] [video] Whānau caring for the children of Tān ║ Nā te whakapapa ka noho whanaunga te tangata me ngā rāk
+   r42 2c:00:OTHER         ║ 
+   r43 2c:11:OTHER        English ║ Māori
+   r44 2c:11:HEAD         [H1] Genealogy is a treasure ║ [H1] He taonga te Whakapapa
+   r45 2c:11:BODY         [Body] Did you know that everything has whakapapa? In a ║ [Body] / Kei te mōhio rānei koe, he whakapapa tō ngā me
+   r46 2c:11:OTHER        [Solid Alert] We care for and look after one another be ║ [Solid Alert] Ka manaaki, ka tiaki tātou i a tātou nā t
+   r47 2c:00:OTHER         ║ 
+   r48 2c:11:MARKER       [Activity: Embedded] ║ Whakapapa Drag and Drop
+   r49 2c:11:HEAD         [H1] Genealogy is a treasure ║ [H1] He taonga te Whakapapa
+   r50 2c:11:BODY         [Body] / Look below at this whakapapa chart and drag th ║ [Body] / Tirohia te mahere whakapapa kei raro iho nei, 
+   r51 2c:10:OTHER        [Item 38] / [ Background image with interactive boxes f ║ 
+   r52 2c:11:OTHER        [Item] [Image with Audio] ║ Position
+   r53 2c:11:OTHER        [Item 39] [Image] Ranginui / [Item 40] [audio] Ranginui ║ Top Left
+   r54 2c:11:OTHER        [Item 41] [Image] Papatūānuku / [Item 42] [audio] Papat ║ Top right
+   r55 2c:11:OTHER        [Item 43] [Image] Tāne-Mahuta / [Item 44] [audio] Tāne- ║ Second tier left
+   r56 2c:11:OTHER        [Item 45] [Image] Tūmatauenga / [Item 46] [audio] Tūmat ║ Second tier right
+   r57 2c:11:OTHER        [Item 47] [Image] Rākau / [Item 48] [audio] Rākau ║ Third tier left under Tāne-Mahuta
+   r58 2c:11:OTHER        [Item 49] [Image] Manu [Item 50] [audio] Manu ║ Third tier right under Tāne-Mahuta
+   r59 2c:11:OTHER        [Item 51] [Image] Tangata [Item 52] [audio] Tangata ║ Third tier under Tūmatauenga
+   r60 2c:00:OTHER         ║ 
+   r61 2c:11:OTHER        English ║ Māori
+   r62 2c:11:OTHER        PMT101 – Activity 3 ║ PMT101 – Hei Mahi 3
+   r63 2c:11:HEAD         [H1] 1.3 ║ [H1] 1.3
+   r64 2c:11:HEAD         [H2] Lesson Title: / All of us together ║ [H2]: Ingoa Akoranga: / Tātou Tātou E!
+   r65 2c:11:BODY         [Body] We have worked hard learning about whakapapa, a  ║ [Body] / Kua kaha tā tātou ako mō te whakapapa, he taon
+   r66 2c:00:OTHER         ║ 
+   r67 2c:11:MARKER       [Activity: Embedded] ║ Memory Game matching pairs
+   r68 2c:11:HEAD         [H1] All of us together! ║ [H1] Tātou Tātou E!
+   r69 2c:11:BODY         [Body] / To firmly establish the understanding that we  ║ [Body] / Hei whakapūmau i te māramatanga he whanaunga t
+   r70 2c:00:OTHER         ║ 
+   r71 2c:00:OTHER         ║ 
+   r72 2c:11:OTHER        Picture with audio ║ Text with picture
+   r73 2c:11:OTHER        [Item 54] [Image] Tāne-Mahuta [Item 55] [audio] Tāne-Ma ║ Rākau
+   r74 2c:11:OTHER        [Item 56] [Image] Tūmatauenga [Item 57] [audio] Tūmatau ║ Tāngata
+   r75 2c:11:OTHER        [Item 58] [Image] Rākau [Item 59] [audio] Rākau ║ Whare
+   r76 2c:11:OTHER        [Item 60] [Image] Manu [Item 61] [audio] Manu ║ Korowai
+   r77 2c:11:OTHER        [Item 62] [Image] Whakapapa [Item 63] [audio] Whakapapa ║ Whanaunga
+   r78 2c:00:OTHER         ║ 
+   r79 2c:10:OTHER        [Alert Solid] ║ 
+   r80 2c:11:BODY         [Body] As Tūmatauenga was victorious in his battle agai ║ [Body] Nā te mea i wikitoria a Tūmatauenga i tana pakan
+   r81 2c:11:HEAD         [H2] What have I learned? ║ [H2] He aha tāku i ako ai?
+   r82 2c:10:OTHER        [Item 65] [Button] [Dropbox Checklist] ║ 
+   r83 2c:11:BODY         [Body] Tick what you have learned about whakapapa: / •  ║ [Body] Tohua ngā mea kua ako koe mō te whakapapa: / • H
+   r84 2c:11:OTHER        English ║ Te Reo Māori
+   r85 2c:11:HEAD         [H2] What have I learned? ║ [H2] He aha tāku i ako ai?
+   r86 2c:10:OTHER        [Item 66] [Button] [Dropbox] ║ 
+   r87 2c:11:BODY         [Body] / Please / Click this button to go directly to y ║ [Body] / Tēnā / Pāwhiria tēnei pātene kia haere tōtika 
+PMT101 #10 marker table 94 rows
+   r0 2c:11:OTHER        English ║ Te Reo Māori
+   r1 2c:11:OTHER        PMT101 – Activity 2 ║ PMT101 – Hei Mahi 2
+   r2 2c:11:HEAD         [H1] 2.1 ║ [H1] 2.1
+   r3 2c:11:HEAD         [H2] Lesson Title: / Authority that comes from the land ║ [H2]: Ingoa Akoranga: / Te Mana mai i te Whenua
+   r4 2c:00:OTHER         ║ 
+   r5 2c:10:OTHER        [Item 68] [Video] Module Introduction ║ 
+   r6 2c:11:BODY         [Body] Our authority is an authority grounded in the la ║ [Body] Ko tō tātou mana, he mana nō roto mai i te whenu
+   r7 2c:00:OTHER         ║ 
+   r8 2c:10:OTHER        Activity: Embedded] Word Select ║ 
+   r9 2c:11:HEAD         [H1] Authority that comes from the land ║ [H1] He mana i te whenua
+   r10 2c:11:BODY         [Body] / Here is an activity to assess your understandi ║ [Body] / Anei tētahi ngohe hei aromatawai i tōu mōhio k
+   r11 2c:00:OTHER         ║ 
+   r12 2c:00:OTHER         ║ 
+   r13 6c:011111:OTHER     ║ karakia ║ Whati i ngā peka ║ Karekau karakia ║ Whakatō tupu ║ Tīhae rau
+   r14 6c:011111:OTHER     ║ Takahī putiputi ║ kohi para ║ Whiu kirihou ║ Kume i ngā tupu taketake ║ Tunu manu
+   r15 6c:011111:OTHER     ║ Puhi manu mō te kore take ║ Whakararu i ngā ōwhanga ║ Tuitui korowai ║ Waiho para ║ Mahi rāranga
+   r16 6c:011111:OTHER     ║ hanga whare ║ Tāhae hēki i ngā ōwhanga ║ Whakakā kāpura ║ Patu paihamu ║ Takahī pakiaka
+   r17 2c:00:OTHER         ║ 
+   r18 2c:00:OTHER         ║ 
+   r19 2c:11:OTHER        English ║ Te Reo Māori
+   r20 2c:11:HEAD         [H1] Authority that comes from the land ║ [H1] He mana i te whenua
+   r21 2c:11:BODY         [Body] / Good, now you know the difference between acti ║ [Body] / Ka pai, kua mōhio koe ināianei ki ngā mahi pai
+   r22 2c:00:OTHER         ║ 
+   r23 2c:11:OTHER        English ║ Te Reo Māori
+   r24 2c:11:OTHER        PMT101 – Activity 2 ║ PMT101 – Hei Mahi 2
+   r25 2c:11:HEAD         [H1] 2.2 ║ [H1] 2.2
+   r26 2c:11:HEAD         [H2] Lesson Title: ║ [H2]: Ingoa Akoranga: / He Mana Taurite
+   r27 2c:11:BODY         [Body] Where does our authority come from? / Because Tū ║ [Body] I ahu mai tō tātou mana i hea? / Nā te mea kua w
+   r28 2c:00:OTHER         ║ 
+   r29 2c:11:MARKER       [Activity: Embedded] ║ Drag and Drop with Audio Hover
+   r30 2c:11:HEAD         [H3] ║ [H3] He Mana Taurite
+   r31 2c:11:BODY         [Body] Look at these instructions below. One word is mi ║ [Body] Titiro ki ēnei tohutohu kei raro nei. Kei te nga
+   r32 2c:00:OTHER         ║ 
+   r33 2c:11:OTHER        [Item 81] [Image] Planting tree ║ Ahakoa i toa a Tūmatauenga me ______ au i te rākau.
+   r34 2c:11:OTHER        tapahi tiaki √ ║ whatikume
+   r35 2c:00:OTHER         ║ 
+   r36 2c:11:OTHER        [Item 82] [Image] Picking up rubbish ║ Ahakoa i toa a Tūmatauenga me ______ au i te para.
+   r37 2c:11:OTHER        whiuwaiho ║ panga hikina √
+   r38 2c:00:OTHER         ║ 
+   r39 2c:11:OTHER        [Item 83] [Image] praying ║ Ahakoa i toa a Tūmatauenga me ______ au i te tuatahi.
+   r40 2c:11:OTHER        karakia √ haparangi ║ whawhaitākaro
+   r41 2c:00:OTHER         ║ 
+   r42 2c:11:OTHER        [Item 84] [Image] birds nest ║ Ahakoa i toa a Tūmatauenga me ______ au i ngā ōwhanga.
+   r43 2c:11:OTHER        whakararuhōhā ║ manaaki √ neke
+   r44 2c:00:OTHER         ║ 
+   r45 2c:00:OTHER         ║ 
+   r46 2c:00:OTHER         ║ 
+   r47 2c:11:OTHER        English ║ Te Reo Māori
+   r48 2c:11:HEAD         [H1] He mana taurite ║ [H1] He mana taurite
+   r49 2c:11:BODY         [Body] / Excellent work! Because of whakapapa, we under ║ [Body] / Tō koi hoki! Nā te whakapapa ka mōhio tātou ki
+   r50 2c:00:OTHER         ║ 
+   r51 2c:11:OTHER        English ║ Te Reo Māori
+   r52 2c:11:OTHER        PMT101 – Activity 2 ║ PMT101 – Hei Mahi 2
+   r53 2c:11:HEAD         [H1] 2.3 ║ [H1] 2.3
+   r54 2c:11:HEAD         [H2] Lesson Title: / He Mana Taurite ║ [H2]: Ingoa Akoranga: / He Mana Taurite
+   r55 2c:11:BODY         [Body] When you are out in the natural world, how will  ║ [Body] I a koe e haere ana i te taiao, ka pēhea āu mahi
+   r56 2c:00:OTHER         ║ 
+   r57 2c:10:MARKER       [Activity: Embedded] Interactive Carousel ║ 
+   r58 2c:11:OTHER        Slide 1 ║ Text
+   r59 2c:11:OTHER        [Item 85] [video] Te hanga whare ║ Kei te hanga whare koe? Ka tope rākau, ā, ka whakatō rā
+   r60 2c:11:OTHER        Slide 2 ║ Text
+   r61 2c:11:OTHER        [Item 86] [video] Te ōwhanga manu ║ Ka kimi koe i tētahi ōwhanga manu. / Ka titiro ki te ōw
+   r62 2c:11:OTHER        Slide 3 ║ Text
+   r63 2c:11:OTHER        [Item 87] [video] Te puta ki te ngāhere ║ Ka puta atu koe ki te ngāhere. / Ka whai i te ara, ā, k
+   r64 2c:00:OTHER         ║ 
+   r65 2c:11:OTHER        English ║ Te Reo Māori
+   r66 2c:11:HEAD         [H1] He mana taurite ║ [H1] He mana taurite
+   r67 2c:11:BODY         [Body] / You have done very well mokopuna. Remember the ║ [Body] / Ka nui te pai o āu mahi mokopuna mā, me maumah
+   r68 2c:00:OTHER         ║ 
+   r69 2c:11:MARKER       [Activity: Embedded] ║ Multi Choice Quiz with Audio
+   r70 2c:11:HEAD         [H1] He taonga te whakapapa ║ [H1] He taonga te whakapapa
+   r71 2c:11:BODY         [Body] / Here is another choice activity to strengthen  ║ [Body] / Anei he ngohe kōwhiringa anō hei whakaū i tō m
+   r72 2c:00:OTHER         ║ 
+   r73 2c:11:OTHER        Audio file with text ║ [hover definition].
+   r74 2c:11:OTHER        [Item 88] [Audio] / Ka tapahia e au tētahi rākau, ā, ka ║ He mana arotahi. He mana taurite √
+   r75 2c:11:OTHER        [Item 89] [Audio] / Ka tapahia e au i ngā rākau maha, k ║ He mana arotahi√ He mana taurite
+   r76 2c:11:OTHER        [Item 90] [Audio] / Ka kohikohi au i ngā huruhuru kua t ║ He mana arotahi. He mana taurite √
+   r77 2c:11:OTHER        [Item 91] [Audio] / Ka whakararuraru au i te ōwhanga ma ║ He mana taurite He mana arotahi √
+   r78 2c:11:OTHER        [Item 92] [Audio] / Ka whakamahi au i te rākau mō te ha ║ He mana taurite √ He mana taurite
+   r79 2c:11:OTHER        [Item 93] [Audio] / Ka tope au i te rākau mō te ngahau  ║ He mana taurite He mana arotahi √
+   r80 2c:00:OTHER         ║ 
+   r81 2c:10:OTHER        [Alert Solid] ║ 
+   r82 2c:11:OTHER        English ║ Te Reo Māori
+   r83 2c:11:BODY         [Body] Because Tūmatauenga was victorious in his battle ║ [Body] Nā te mea i wikitoria a Tūmatauenga i te pakanga
+   r84 2c:00:OTHER         ║ 
+   r85 2c:11:HEAD         [H2] What have I learned? ║ [H2] Kua ako au i te aha?
+   r86 2c:10:OTHER        [Item 95] [Button] [Dropbox Checklist] ║ 
+   r87 2c:11:BODY         [Body] Tick the things that you have learnt about mana  ║ [Body] Tohua ngā mea kua akona e koe mō te mana taurite
+   r88 2c:00:OTHER         ║ 
+   r89 2c:11:OTHER        English ║ Te Reo Māori
+   r90 2c:11:HEAD         [H2] What have I learned? ║ [H2] Kua ako au i te aha?
+   r91 2c:10:OTHER        [Item 95] [Button] [Dropbox Checklist] ║ 
+   r92 2c:11:BODY         [Body] / Please / Click this button to go directly to y ║ [Body] / Tēnā / Pāwhiria tēnei pātene ka haere tōtika k
+   r93 2c:00:OTHER         ║ 
+PMT101 #13 marker table 123 rows
+   r0 2c:11:OTHER        English ║ Te Reo Māori
+   r1 2c:11:OTHER        PMT101 – Activity 3 ║ PMT101 – Hei Mahi 3
+   r2 2c:11:HEAD         [H1] 3.1 ║ [H1] 3.1
+   r3 2c:11:HEAD         [H2] Lesson Title: / The ongoing wellbeing and continui ║ [H2]: Ingoa Akoranga: / Te orangatonutanga o te whakapa
+   r4 2c:11:BODY         [Body] / Whakapapa is a treasured inheritance that show ║ [Body] / Ko te whakapapa he taonga tuku iho e whakaatu 
+   r5 2c:00:OTHER         ║ 
+   r6 2c:10:MARKER       [Activity: Embedded] Word Select ║ 
+   r7 2c:11:HEAD         [H1] The ongoing wellbeing and continuity of whakapapa. ║ [H1] Te orangatonutanga o te whakapapa haere ake nei.
+   r8 2c:11:BODY         [Body] / I am a descendant of Tūmatauenga. The trees ar ║ [Body] / He uri ahau nō Tūmatauenga. Ko ngā rākau he ur
+   r9 2c:00:OTHER         ║ 
+   r10 2c:10:MARKER       [Activity: Embedded] Word Select ║ 
+   r11 2c:11:OTHER        [Item 104] [Image] Child ║ He uri ahau nō ______ .
+   r12 4c:1111:OTHER      Tāwhirimātea ║ Tūmatauenga √ ║ Terina ║ Tāne-Mahuta
+   r13 2c:00:OTHER         ║ 
+   r14 2c:11:OTHER        [Item 105] [Image] Tuakana teina ║ Ko Tāne-Mahuta te ______ o Tūmatauenga.
+   r15 4c:1111:OTHER      tuahine ║ pāpā ║ teina ║ Tuākana √
+   r16 2c:00:OTHER         ║ 
+   r17 2c:00:OTHER         ║ 
+   r18 2c:11:OTHER        [Item 106] [Image] Tree ║ He uri ngā rākau nō ______ .
+   r19 4c:1111:OTHER      Tāwhirimātea ║ Tūmatauenga ║ Terina ║ Tāne-Mahuta √
+   r20 2c:00:OTHER         ║ 
+   r21 2c:11:OTHER        [Item 107] [Image] Bird ║ He uri ngā rākau nō ______ .
+   r22 4c:1111:OTHER      Tūmatauenga ║ Tāwhirimātea ║ Tāne-Mahuta √ ║ Terina
+   r23 2c:00:OTHER         ║ 
+   r24 2c:11:OTHER        [Item 108] [Image] Brothers ║ Ahakoa i toa a Tūmatauenga, he ______ tonu a Tāne-Mahut
+   r25 4c:1111:OTHER      hoa ║ rangatira ║ whānau √ ║ hoariri
+   r26 2c:00:OTHER         ║ 
+   r27 2c:11:OTHER        [Item 109] [Image] forest with birds ║ Nā te whakapapa ka noho ______ ngā mea katoa.
+   r28 4c:1111:OTHER      rerekē ║ whanaunga√ ║ mokemoke ║ harikoa
+   r29 2c:00:OTHER         ║ 
+   r30 2c:11:OTHER        [Item 110] [Image] whare ║ Mēnā ka whakamahi au i te rākau me ______ au i te ngahe
+   r31 4c:1111:OTHER      whare ║ tapahi ║ tiaki √ ║ waiata
+   r32 2c:00:OTHER         ║ 
+   r33 2c:11:OTHER        [Item 111] [Image] balance ║ Me noho ______ te mana.
+   r34 4c:1111:OTHER      taurite ü ║ tere ║ kaha ║ ngoikore
+   r35 2c:00:OTHER         ║ 
+   r36 2c:11:OTHER        [Item 112] [Image] caretaker ║ Ehara te whenua he mea nō te tangata, he ______ noa iho
+   r37 4c:1111:OTHER      rangatira ║ toa ║ mana ║ kaitiaki √
+   r38 2c:00:OTHER         ║ 
+   r39 2c:11:OTHER        [Item 113] [Image] life - tree ║ Mā te whenua tātou e ______ ai.
+   r40 4c:1111:OTHER      toa ║ huna ║ ora √ ║ tangi
+   r41 2c:00:OTHER         ║ 
+   r42 2c:00:OTHER         ║ 
+   r43 2c:11:OTHER        English ║ Te Reo Māori
+   r44 2c:11:HEAD         [H1] Te orangatonutanga o te Whakapapa ║ [H1] Te orangatonutanga o te whakapapa
+   r45 2c:11:BODY         [Body] / Your work is excellent. The Māori worldview is ║ [Body] / He rawe rawa atu āu mahi. Kua tino mau te tiro
+   r46 2c:00:OTHER         ║ 
+   r47 2c:00:OTHER         ║ 
+   r48 2c:11:OTHER        English ║ Te Reo Māori
+   r49 2c:11:OTHER        PMT101 – Activity 3 ║ PMT101 – Hei Mahi 3
+   r50 2c:11:HEAD         [H1] 3.2 ║ [H1] 3.2
+   r51 2c:11:HEAD         [H2] Lesson Title: / The ongoing wellbeing and continui ║ [H2]: Ingoa Akoranga: / Te orangatonutanga o te whakapa
+   r52 2c:11:BODY         [Body] There are many different kinds of people living  ║ [Body] He maha ngā momo tāngata e noho ana ki Aotearoa,
+   r53 2c:00:OTHER         ║ 
+   r54 2c:00:OTHER         ║ 
+   r55 2c:10:MARKER       [Activity: Embedded] Interactive Carousel ║ 
+   r56 2c:11:OTHER        Slide 1 ║ Text
+   r57 2c:11:OTHER        [Item 114] [image] Insect ║ He ngāngara ahau, he uri ahau nō ...
+   r58 2c:00:OTHER         ║ 
+   r59 2c:11:OTHER        Slide 2 ║ Text
+   r60 2c:11:OTHER        [Item 115] [image] Taiwanese ║ Nō ... ahau, e noho ana ki Aotearoa.
+   r61 2c:00:OTHER         ║ 
+   r62 2c:11:OTHER        Slide 3 ║ Text
+   r63 2c:11:OTHER        [Item 116] [image] horse ║ He hōiho ahau, he uri ahau nō ...
+   r64 2c:00:OTHER         ║ 
+   r65 2c:11:OTHER        Slide 4 ║ Text
+   r66 2c:11:OTHER        [Item 117] [image] Indian ║ Nō ... ahau, e noho ana ki Aotearoa.
+   r67 2c:00:OTHER         ║ 
+   r68 2c:00:OTHER         ║ 
+   r69 2c:11:OTHER        English ║ Te Reo Māori
+   r70 2c:11:HEAD         [H1] The ongoing wellbeing and continuity of whakapapa. ║ [H1] Te orangatonutanga o te whakapapa haere ake nei.
+   r71 2c:11:BODY         [Body] / Now do you see? There are so many people, and  ║ [Body] / E kite ana koe ināianei? He maha rawa ngā tāng
+   r72 2c:00:OTHER         ║ 
+   r73 2c:10:MARKER       [Activity: Embedded] Matching Pairs ║ 
+   r74 2c:11:HEAD         [H1] The ongoing wellbeing and continuity of whakapapa. ║ [H1] Te orangatonutanga o te whakapapa haere ake nei.
+   r75 2c:11:BODY         [Body] / In this activity, you will find matching cards ║ [Body] / I tēnei ngohe, ka kimi koe i ngā kāri hoa. Ka 
+   r76 2c:00:OTHER         ║ 
+   r77 2c:11:OTHER        Picture with audio ║ Text with picture
+   r78 2c:11:OTHER        [Item 118] [Image] Tāne-Mahuta [Item 119] [audio] Tāne- ║ Ngāhere
+   r79 2c:11:OTHER        [Item 120] [Image] Tūmatauenga [Item 121] [audio] Tūmat ║ Tāngata
+   r80 2c:11:OTHER        [Item 122] [Image] Whenua [Item 123] [audio] Whenua ║ Mana
+   r81 2c:11:OTHER        [Item 124] [Image] Tangata [Item 125] [audio] Tangata ║ Kaitiaki
+   r82 2c:11:OTHER        [Item 126] [Image] Te Tiriti [Item 127] [audio] Te Tiri ║ Nohotahi
+   r83 2c:11:OTHER        [Item 128] [Image] Whakapapa [Item 129] [audio] Whakapa ║ Whanaunga
+   r84 2c:11:OTHER        [Item 118] [Image] Tāne-Mahuta [Item 119] [audio] Tāne- ║ Ngāhere
+   r85 2c:00:OTHER         ║ 
+   r86 2c:11:HEAD         [H1] / The ongoing wellbeing and continuity of whakapap ║ [H1] / Te orangatonutanga o te whakapapa haere ake nei.
+   r87 2c:11:BODY         [Body] / Now do you see? There are so many people, and  ║ [Body] / E kite ana koe ināianei? He maha rawa ngā tāng
+   r88 2c:00:OTHER         ║ 
+   r89 2c:00:OTHER         ║ 
+   r90 2c:11:OTHER        English ║ Te Reo Māori
+   r91 2c:11:OTHER        PMT101 – Activity 3 ║ PMT101 – Hei Mahi 3
+   r92 2c:11:HEAD         [H1] 3.3 ║ [H1] 3.3
+   r93 2c:11:HEAD         [H2] Lesson Title: / He Tirohanga Māori Te Tiriti ║ [H2]: Ingoa Akoranga: / He Tirohanga Māori Te Tiriti
+   r94 2c:11:BODY         [Body] / In this module we have learned that we as peop ║ [Body] / I tēnei kōwae kua ako tātou he whanaunga tātou
+   r95 2c:00:OTHER         ║ 
+   r96 2c:10:MARKER       [Activity: Embedded] / Multi Choice Quiz with Audio ║ 
+   r97 2c:11:HEAD         [H3] Ko Te Tiriti he Tirohanga Māori ║ [H3] Ko Te Tiriti he Tirohanga Māori
+   r98 2c:11:BODY         [Body] / This activity will help you answer that questi ║ [Body] / Ka āwhina tēnei ngohe i tāu whakautu ki te pāt
+   r99 2c:00:OTHER         ║ 
+   r100 3c:110:OTHER       Audio file ║ Text ║ 
+   r101 5c:11111:OTHER     [Item 138] [Audio] Ka pēhea te pai ā tā tātou nohotahi? ║ Ka pēhea te pai ā tā tātou nohotahi? ║ Manaaki √ ║ Tiaki √ ║ Mana taurite √
+   r102 5c:11111:OTHER     [Item 139] [Audio] Nā te aha ka noho whanau ai ngā mea  ║ Nā te aha ka noho whanau ai ngā mea katoa? ║ Whakapapa √ ║ whāriki ║ hoa
+   r103 5c:11111:OTHER     [Item 140] [Audio] Pēnā he whanaunga ngā mea katoa, me  ║ Mēnā he whanaunga ngā mea katoa, me whai whakaaro au ki ║ kai ║ mana √ ║ toa
+   r104 5c:11111:OTHER     [Item 141] [Audio] Ahakoa i riro i ahau te rangatiratan ║ Ahakoa i riro i ahau te rangatiratanga, tuku iho mai i  ║ whare ║ māmā ║ teina √
+   r105 5c:11111:OTHER     [Item 142] [Audio] Pēnā he whanaunga te ngahere ki a tā ║ Mēnā he whanaunga te ngahere ki a tātou, me aha tātou? ║ whati ║ moumou ║ tiaki √
+   r106 5c:11111:OTHER     [Item 143] [Audio] He whanaunga mātou ki ngā manu, nā r ║ He whanaunga mātou ki ngā manu, me pēhea te nohotahi? ║ Mana taurite√ ║ kaitoa ║ hoariri
+   r107 2c:00:OTHER         ║ 
+   r108 2c:11:OTHER        English ║ Māori
+   r109 2c:11:OTHER        PMT101 – Whakaaro Huritao ║ PMT101 – Whakaaro Huritao
+   r110 2c:11:HEAD         [H1] 3.4 ║ [H1] 3.4
+   r111 2c:11:HEAD         [H2] What have I learned? ║ [H2]: He aha tāku i ako ai?
+   r112 2c:11:BODY         [Body] / Whakapapa is truly alive within us. It is a co ║ [Body] / E ora mārika ana te whakapapa i roto i a tātou
+   r113 2c:00:OTHER         ║ 
+   r114 2c:11:OTHER        English ║ Māori
+   r115 2c:11:HEAD         [H2] What have I learned? ║ [H2] He aha tāku i ako ai?
+   r116 2c:10:OTHER        [Item 144] [Button] [Dropbox Checklist] ║ 
+   r117 2c:11:BODY         [Body] Tick the things that you have learnt about orang ║ [Body] Tohua ngā mea kua akona e koe mō te orangatonuta
+   r118 2c:00:OTHER         ║ 
+   r119 2c:11:HEAD         [H2] What have I learned? ║ [H2] He aha tāku i ako ai?
+   r120 2c:10:OTHER        [Item 145] [Button] [Dropbox] ║ 
+   r121 2c:11:BODY         [Body] / Please / Click this button to go directly to y ║ [Body] / Tēnā / Pāwhiria tēnei pātene kia haere tōtika 
+   r122 2c:00:OTHER         ║ 
+TRR102 #15 marker table 3 rows
+   r0 1c:1:MARKER        [Activity Embedded] [Radio Button Auto Check with Audio
+   r1 4c:1100:HEAD       [H3] Activity Instructions: ║ [H3] Ngā tohutohu hei mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] / Am I a vowel? / There are lots of sounds all a ║ [Body] / He oropuare ahau? / He nui ngā oro katoa I tō  ║  ║ 
+TRR102 #20 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] [Audio Button Hover]
+   r1 4c:1100:HEAD       [H3] Instructions: ║ [H3] Ngā tohutohu hei mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] / Pronouncing the vowels. / Look at the vowel. / ║ [Body] / Whakaahuatia ngā oropuare. / Titiro ki te orop ║  ║ 
+TRR102 #26 marker table 3 rows
+   r0 1c:1:MARKER        [Activity Embedded] [Drop down quiz]
+   r1 4c:1100:HEAD       [H3] Instructions: ║ [H3] Ngā tohutohu hei mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] / Find the matching vowels. / a – E / I / A✔ / e ║ [Body] / Rapua ngā oropuare taurite. / a – E / I / A✔ / ║  ║ 
+TRR102 #35 marker table 2 rows
+   r0 1c:1:MARKER        [Activity: Embedded] [Multichoice Quiz]
+   r1 4c:1100:BODY       [Body] What have I learned? / Test your vowel knowledge ║ [Body] He aha tāku i ako ai? / Whakamātauria ō mōhiotan ║  ║ 
+TRR102 #40 marker table 3 rows
+   r0 1c:1:MARKER        [Activity Embedded] [Wordfind] Note to CS – Please only
+   r1 4c:1100:HEAD       [H3] Instructions: ║ [H3] Ngā tohutohu hei mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] Look at the letters in the box below. Find all t ║ [Body] Ata titiro ki ngā pū i roto i te pouaka. Rapua n ║  ║ 
+TRR102 #43 marker table 3 rows
+   r0 1c:1:MARKER        [Activity Embedded] [Drag and Drop]
+   r1 4c:1100:HEAD       [H3] Instructions: ║ [H3] Ngā tohutohu hei mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] Click on the word to listen to it. / Remember we ║ [Body] Pāwhiritia te kupu kia rongo. / Me maumahara, e  ║  ║ 
+TRR102 #47 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] [ Word Select]
+   r1 4c:1100:HEAD       [H3] Instructions: ║ [H3] Ngā tohutohu hei mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] Look carefully at these words. / All these words ║ [Body] Āta titiro ki ngā kupu. / Ka tīmata ēnei kupu ka ║  ║ 
+TRR102 #57 marker table 3 rows
+   r0 1c:1:MARKER        [Activity Embedded] [Word Select]
+   r1 4c:1100:HEAD       [H3] Instructions: ║ [H3] Ngā tohutohu hei mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] Look carefully at the poem. Can you find all the ║ [Body] Āta titiro ki ngā kupu o te rotarota. Ka taea e  ║  ║ 
+TRR102 #59 marker table 3 rows
+   r0 1c:1:MARKER        [Activity Embedded] [Memory Game]
+   r1 4c:1100:HEAD       [H3] Activity Instructions: ║ [H3] Ngā tohutohu hei mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] Can you find the matching pair of cards? / Make  ║ [Body] Ka taea e koe te kite i ngā kāri takirua ōrite?  ║  ║ 
+TRR102 #67 marker table 3 rows
+   r0 1c:1:MARKER        [Activity:Embedded] Word Select
+   r1 4c:1100:HEAD       [H3] Instructions: ║ [H3] Ngā tohutohu hei mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] Where is ‘A’? / Look for me in the sentences bel ║ [Body] Kei hea a ‘A’? / Kimi i au i ngā rerenga kōrero  ║  ║ 
+TRR102 #71 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop
+   r1 4c:1100:HEAD       [H3] Instructions: ║ [H3] Ngā tohutohu hei mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] Look at these people. They are missing the first ║ [Body] Titiro ki ēnei tāngata. Kua ngaro te pū tuatahi  ║  ║ 
+TRR102 #74 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] [Multiple Choice Image and Audio
+   r1 4c:1100:HEAD       [H3] Instructions: ║ [H3] Ngā tohutohu hei mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] Click on the picture and listen to each person’s ║ [Body] Pāwhiria te pikitia, ā, whakarongo ki te ingoa o ║  ║ 
+TRR102 #86 marker table 4 rows
+   r0 1c:1:MARKER        [Activity:Embedded] [Scatter Drag and Drop]
+   r1 4c:1100:HEAD       [H3] Instructions: ║ [H3] Ngā tohutohu hei mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] Look at the poem and how the words are placed on ║ [Body] Titiro ki te rotarota me te āhua o te takoto o n ║  ║ 
+   r3 1c:1:OTHER         [Arawhana] [he puku momona] / [Arawhana] [he ihu roa] /
+TRR102 #88 marker table 3 rows
+   r0 1c:1:MARKER        [Activity:Embedded] [Drag and Drop with audio]
+   r1 4c:1100:HEAD       [H3] Instructions: ║ [H3] Ngā tohutohu hei mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] Look at these pictures and listen to the sentenc ║ [Body] Titiro ki ēnei pikitia. ā, whakarongo ki ngā rer ║  ║ 
+TRR103 #13 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Word select
+   r1 4c:1100:HEAD       [H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] / Where is ‘e’? / Look at the letters in the box ║ [Body] / Kei hea a ‘e’?Āta titiro ki ngā pū i roto i te ║  ║ 
+TRR103 #16 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Memory Game – please create cards 
+   r1 4c:1100:HEAD       [H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] The kupu eke is a fun little word. / It can mean ║ [Body] He kupu pārekareka a eke! / He kupu ka taea te w ║  ║ 
+TRR103 #28 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] [Audio Hover Button with Auto Chec
+   r1 4c:1100:HEAD       [H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] Listen to these words and decide if the first vo ║ [Body] Whakarongo ki ēnei kupu, ā, tīpako pēnā he oro r ║  ║ 
+TRR103 #38 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] [Word Select]
+   r1 4c:1100:HEAD       [H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] Where is ‘e’? / Look carefully at the poem. Can  ║ [Body] Kei hea a ‘e’? / Āta titiro ki ngā kupu o te rot ║  ║ 
+TRR103 #41 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop
+   r1 4c:1100:HEAD       [H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] Can you remember my favourite words? / Listen ca ║ [Body] Kei te maumahara koe ki āku tino kupu? / Whakaro ║  ║ 
+TRR103 #49 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop
+   r1 4c:1100:HEAD       [H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] Look at these instructions below. They are missi ║ [Body] Titiro ki ēnei tohutohu kei raro nei. Kei te nga ║  ║ 
+TRR103 #55 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Multi Choice Quiz with Audio No te
+   r1 4c:1100:HEAD       [H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] Listen to the sounds below and click on the lett ║ [Body] Whakarongo ki ngā oro kei raro nei. Pāwhiria te  ║  ║ 
+TRR103 #62 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop with Audio Hover
+   r1 4c:1100:HEAD       [H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] Listen to the sentences below. Can you hear the  ║ [Body] Whakarongo ki ngā rerenga kōrero kei raro nei. K ║  ║ 
+TRR106 #15 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] [Word Find] Note to CS – Please on
+   r1 4c:1100:HEAD       [H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] / [TRR102 Ngohe 2A] / Where is ‘u’? / Look at th ║ [Body] Kei hea a ‘u’? / Āta titiro ki ngā pū i roto i t ║  ║ 
+TRR106 #19 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] [Drag and Drop] or [Word Drag] not
+   r1 4c:1100:HEAD       [ H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] [TRR102 Ngohe 4B] / Find the correct letter to m ║ [Body] Kimihia te reta tika hei whakaoti i ēnei kupu. / ║  ║ 
+TRR106 #21 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Note to CS – Please create similar
+   r1 4c:1100:HEAD       [ H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] Listen to the words below. / Where is the long u ║ [Body] Whakarongo ki ngā kupu i raro nei. / Kei hea te  ║  ║ 
+TRR106 #38 marker table 3 rows
+   r0 1c:1:MARKER        [Activity Embedded] [Word Select]
+   r1 4c:1100:HEAD       [ H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] [TRR102 - 3B] / Look carefully at the poem. Can  ║ [Body] Āta titiro ki ngā kupu o te rotarota. Ka taea e  ║  ║ 
+TRR106 #40 marker table 3 rows
+   r0 1c:1:MARKER        [Activity Embedded] [Drag and Drop]
+   r1 4c:1100:HEAD       [ H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi ║  ║ 
+   r2 4c:1100:BODY       [Body] Listen to the sentences below. / Can you hear th ║ [Body] Whakarongo ki ēnei rerenga kōrero i raro nei. /  ║  ║ 
+TRR110 #12 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Wordfind
+   r1 2c:11:HEAD         [H3] Find all the ‘ea’ ║ [H3] Rapua ngā ‘ea’ katoa
+   r2 2c:11:BODY         [Body] Find and click on only the oropuare pūrua ea in  ║ [Body] Kimihia, ā, pāwhiritia te oropuare pūrua ea i ro
+TRR110 #14 marker table 12 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Radio Quiz with audio
+   r1 2c:11:HEAD         [H3] FInd the rhyming words ║ [H3] Rapua ngā kupu e huarite ana
+   r2 2c:11:BODY         [Body] Listen carefully to these words and decide if th ║ [Body] Whakarongo pīkarikari ki ēnei kupu. Kātahi ka wh
+   r3 3c:111:OTHER       Audio ║ Āe ║ Kāhore
+   r4 3c:110:OTHER       [Item 13] [Audio] tea ║ āe ü ║ 
+   r5 3c:101:OTHER       [Item 14] [Audio] tae ║  ║ kāhore ü
+   r6 3c:110:OTHER       [Item 15] [Audio] rea ║ āe ü ║ 
+   r7 3c:101:OTHER       [Item 16] [Audio] roa ║  ║ kāhore ü
+   r8 3c:101:OTHER       [Item 17] [Audio] hei ║  ║ kāhore ü
+   r9 3c:110:OTHER       [Item 18] [Audio] hea ║ āeü ║ 
+   r10 3c:101:OTHER       [Item 19] [Audio] mai ║  ║ kāhore ü
+   r11 3c:110:OTHER       [Item 20] [Audio] mea ║ āe ü ║ 
+TRR110 #17 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop with Audio
+   r1 2c:11:HEAD         [H3] Complete the sentences ║ [H3] Whakaotia ngā rerenga kōrero
+   r2 2c:11:BODY         [Body] Listen carefully to each sentence and drag each  ║ [Body] Āta whakarongo ki ia rerenga kōrero, ā, tōia te 
+TRR110 #26 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop / [Carousel]
+   r1 2c:11:HEAD         [H3] Make the vowel blend ║ [H3] Waihangatia te oropuare pūrua
+   r2 2c:11:BODY         [Body] Find the correct letters to make the oro tōpu eo ║ [Body] Kimihia ngā pū e rua hei hanga i te oropuare pūr
+TRR110 #29 marker table 11 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Audio Drag and Drop note to cs – p
+   r1 2c:11:HEAD         [H3] Find the rhyming words ║ [H3] Rapua ngā kupu e huarite ana
+   r2 2c:11:BODY         [Body] Listen carefully to these kupu. Drag only the ku ║ [Body] Āta whakarongo ki ēnei kupu. Tōia te kupu huarit
+   r3 2c:11:OTHER        Audio ║ To go into the box
+   r4 2c:11:OTHER        [Item 61] [Audio] whea ║ no
+   r5 2c:11:OTHER        [Item 62] [Audio] rua ║ no
+   r6 2c:11:OTHER        [Item 63] [Audio] reo ║ yes
+   r7 2c:11:OTHER        [Item 64] [Audio] wheo ║ yes
+   r8 2c:11:OTHER        [Item 65] [Audio] teo ║ yes
+   r9 2c:11:OTHER        [Item 66] [Audio] pai ║ no
+   r10 2c:11:OTHER        [Item 67] [Audio] peo ║ yes
+TRR110 #31 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Word Select / [Carousel]
+   r1 2c:11:HEAD         [H3] Select the correct word ║ [H3] Tipakotia te kupu tika
+   r2 2c:11:BODY         [Body] Look and listen to the sentences below. Find the ║ [Body] Titiro, whakarongo anō hoki ki ngā rerenga kōrer
+TRR110 #39 marker table 4 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Word select
+   r1 2c:11:HEAD         [H3] Look carefully ║ [H3] Ata Titiro
+   r2 2c:11:BODY         [Body] Sometimes the letters of the oropuare pūrua can  ║ [Body] I ētahi wā ka ōrite tonu te āhua o ngā pū o te o
+   r3 1c:1:OTHER         eu ü / au x / eu ü / eu ü / ou x / eu ü / ue x / eu ü /
+TRR110 #42 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] [AudioHover] Word select / [Carous
+   r1 2c:11:HEAD         [H3] Find the matching word ║ [H3] Rapua te kupu taurite
+   r2 2c:11:BODY         [Body] Listen carefully to these kupu. Select the kupu  ║ [Body] Āta whakarongo ki ēnei kupu. Kōwhiringia ngā kup
+TRR110 #45 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Multi Quiz
+   r1 2c:11:HEAD         [H3] Find the correct word ║ [H3] Rapua te kupu tika
+   r2 2c:11:BODY         [Body] Listen to these sentences. / Choose the correct  ║ [Body] Whakarongo ki ēnei rerenga kōrero. / Tīpakongia 
+TRR110 #52 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Word select.
+   r1 2c:11:HEAD         [H3] Find ‘ei’ ║ [H3] Rapua ngā ‘ei’
+   r2 2c:11:BODY         [Body] Find the oropuare pūrua ei inside the words belo ║ [Body] Kimihia ngā oropuare pūrua ei kei roto i ēnei ku
+TRR110 #55 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Memory Game with audio
+   r1 2c:11:HEAD         [H3] Rhyming pairs ║ [H3] Ngā takirua huarite
+   r2 2c:11:BODY         [Body] Click and listen carefully to find the rhyming p ║ [Body] Pāwhiria, ā āta whakarongo kia kitea ngā hoa hua
+TRR110 #59 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and drop / [Carousel]
+   r1 2c:11:HEAD         [H3] Choose the correct word: ║ [H3] Tīpakotia te kupu tika
+   r2 2c:11:BODY         [Body] Listen to each sentence, then click to select th ║ [Body] Whakarongo ki ēnei rerenga kōrero, ā, pāwhiritia
+TRR110 #72 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Word select note cs – please use a
+   r1 2c:11:HEAD         [H3] Letters and sounds ║ [H3] Ngā pū me ngā oro
+   r2 2c:11:BODY         [Body] Click to listen to the the oropuare pūrua, then  ║ [Body] Pāwhiria kia rongo ai i te oropuare pūrua, ā, tī
+TRR110 #75 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Flipcard with audio
+   r1 2c:11:HEAD         [H3] Find the correct word ║ [H3] Rapua te kupu tika
+   r2 2c:11:BODY         [Body] Look at the words and choose the word that is sp ║ [Body] Titiro ki ēnei kupu, ā, tīpakotia te kupu i tika
+TRR110 #78 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Word order
+   r1 2c:11:HEAD         [H3] Make the sentence ║ [H3] Waihangatia te rerenga kōrero
+   r2 2c:11:BODY         [Body] Listen carefully to the question, then drag the  ║ [Body] Āta whakarongo ki te pātai, kātahi tōia te kupu 
+TRR111 #9 marker table 4 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Wordselect
+   r1 2c:11:HEAD         [H3] Find ‘ia’ ║ [H3] Rapua ngā ‘ia’
+   r2 2c:11:BODY         [Body] Click on the oropuare pūrua ia inside these word ║ [Body] Pāwhiria te oropuare pūrua ia kei roto i ēnei ku
+   r3 1c:1:OTHER         t ia ki / tokoh ia / karaki a / hia ko / Pān ia / ria k
+TRR111 #11 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Radio Quiz with audio
+   r1 2c:11:HEAD         [H3] Find the rhyming words. ║ [H3] Rapua ngā kupu e huarite ana
+   r2 2c:11:BODY         [Body] Listen carefully to these words. Do they rhyme w ║ [Body] Whakarongo pīkarikari ki ēnei kupu. E huarite an
+TRR111 #21 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop
+   r1 2c:11:HEAD         [H3] Finish the sentence ║ [H3] Whakaotia te rerenga kōrero
+   r2 2c:11:BODY         [Body] Find the correct word and drag it into place to  ║ [Body] Kimihia te kupu tika, ā, tōia hei whakaoti tika 
+TRR111 #28 marker table 5 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop
+   r1 2c:11:HEAD         [H3] Make the oropuare pūrua ‘io’ ║ [H3] Hangaia te oropuare pūrua ‘io’
+   r2 2c:11:BODY         [Body] Find the two letters to make the oro tōpu io and ║ [Body] Kimihia ngā pū e rua hei waihanga i te oro tōpū 
+   r3 4c:1111:OTHER      1st io / [Letter 1] [Letter 2] ║ 2nd io / [Letter 1] [Letter 2] ║ 3rd io / [Letter 1] [Letter 2] ║ 4th io / [Letter 1] [Letter 2]
+   r4 4c:1111:OTHER      o ✔ a i ✔ u e ║ e i ✔ r a o ✔ ║ u e o ✔ a i ✔ ║ a o ✔ u i ✔ e
+TRR111 #31 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Radio Quiz
+   r1 2c:11:HEAD         [H3] Find the rhyming words ║ [H3] Rapua ngā kupu e huarite ana
+   r2 2c:11:BODY         [Body] Listen carefully to these kupu. Do these words r ║ [Body] Āta whakarongo ki ēnei kupu. Tōia te kupu e huar
+TRR111 #35 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Word select
+   r1 2c:11:HEAD         [H3] Find the correct word ║ [H3] Rapua te kupu tika
+   r2 2c:11:BODY         [Body] Look at the pictures below. Click on the word th ║ [Body] Titiro ki ngā pikitia kei raro nei. Pāwhiria te 
+TRR111 #41 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Word Select
+   r1 2c:11:HEAD         [H3] Look carefully ║ [H3] Ata titiro
+   r2 2c:11:BODY         [Body] Look at the sentences below. Click on the words  ║ [Body] Titiro ki ēnei rerenga kōrero kei raro nei. Pāwh
+TRR111 #47 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] wordfind / Note to CS – please onl
+   r1 2c:11:HEAD         [H3] Find all the ‘iu’ ║ [H3] Rapua ngā ‘iu’
+   r2 2c:11:BODY         [Body] Find all the oropuare pūrua iu in the group of l ║ [Body] Kimihia nga oropuare pūrua iu kei roto i ngā rōp
+TRR111 #49 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] [Audio Hover]
+   r1 2c:11:HEAD         [H3] Say it aloud ║ [H3] Toai ā - waha
+   r2 2c:11:BODY         [Body] Listen to the first two cards and blend them alo ║ [Body] Whakarongo ki ngā kāri e rua, ā, ka hanumi ā -wa
+TRR111 #52 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and drop with audio BLL114-03
+   r1 2c:11:HEAD         [H3] Find the correct word ║ [H3] Rapua te kupu tika
+   r2 2c:11:BODY         [Body] Listen to the word then find the correct spellin ║ [Body] Whakarongo ki te kupu, kātahi ka kimi i te whaka
+TRR111 #55 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop
+   r1 2c:11:HEAD         [H3] Make the poem ║ [H3] Hangaia te rotarota
+   r2 2c:11:BODY         [Body] Look carefully at each line of the poem. Find th ║ [Body] Āta titiro ki ia rārangi o te rotarota. Kimihia 
+TRR111 #61 marker table 5 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and drop
+   r1 2c:11:HEAD         [H3] Sort the oropuare pūrua ║ [H3] Whakarōpūngia ngā oropuare pūrua
+   r2 2c:11:BODY         [Body] Look carefully at each oropuare pūrua. Drag all  ║ [Body] Āta titiro ki ia oropuare pūrua. Tōia ngā ‘ie’ k
+   r3 2c:11:OTHER        Tick Column / ✔ ║ Cross Column / x
+   r4 2c:11:OTHER        ie / ie / ie / ie / ie / ie ║ io / ei / ia / ii / iu / ae
+TRR111 #63 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Audio Select
+   r1 2c:11:HEAD         [H3] Listen carefully ║ [H3] Ata whakarongo
+   r2 2c:11:BODY         [Body] Look at the word then choose the correct sound t ║ [Body] Titiro ki te kupu, ā, pāwhiria te oro tika e hān
+TRR111 #68 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Word sort
+   r1 2c:11:HEAD         [H3] Complete the word ║ [H3] Whakaotia te kupu
+   r2 2c:11:BODY         [Body] Click to listen and find the missing kūoro at th ║ [Body] Pāwhiri kia rongo i te kupu, ā kimihia te kūoro 
+TRR111 #71 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Word sort BLL113-03 - Blended Lite
+   r1 2c:11:HEAD         [H3] Make the sentence ║ [H3] Hangaia te rerenga kōrero
+   r2 2c:11:BODY         [Body] Listen to the sentence, then sort the words into ║ [Body] Whakarongo ki te rerenga kōrero, kātahi ka whaka
+TRR111 #78 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Multichoice Quiz with audio
+   r1 2c:11:HEAD         [H3] Find the matching sound ║ [H3] Rapua te oro e taurite ana
+   r2 2c:11:BODY         [Body] Find the oropuare pūrua sound that matches these ║ [Body] Kimihia te oro e hāngai ana ki tōna oropuare pūr
+TRR111 #81 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and drop
+   r1 2c:11:HEAD         [H3] Find the food ║ [H3] Rāpua te kai
+   r2 2c:11:BODY         [Body] Mere is hungry. Sort the words below into things ║ [Body] E hiakai ana a Mere. Whakaraupapatia ngā kupu ke
+TRR111 #84 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] word select
+   r1 2c:11:HEAD         [H3] Choose the correct sentence ║ [H3] Kowhiria te rerenga kōrero tika
+   r2 2c:11:BODY         [Body] Look at each picture and click to hear the sente ║ [Body] Titiro ki ia pikitia, ā, pāwhiritia kia rongo i 
+TRR112 #9 marker table 1 rows
+   r0 1c:1:MARKER        [Activity: Embedded] wordfind / Note to CS – please onl
+TRR113 #45 marker table 1 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Flash cards with auto check / Caro
+TRR113 #57 marker table 2 rows
+   r0 1c:1:OTHER         [Item 113] [Image] Tūī
+   r1 1c:1:MARKER        [Activity: Embedded] Memory Game
+TRR113 #70 marker table 1 rows
+   r0 1c:1:MARKER        [Activity: Embedded] wordfind / Note to CS – please onl
+TRR116 #10 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Say goodbye to them by choosing the right kupu t ║ [Body] Kōwhiria te kupu tika hei whakaoti i tāu mihi at
+   r3 3c:111:OTHER       Picture ║ Sentence ║ Word choice
+   r4 5c:11111:OTHER     [Item 9][Image] boy in plane ║ ____ rā, e tama. ║ huri ║ haere ü ║ hara
+   r5 5c:11111:OTHER     [Item 10][Image] bear in plane ║ ____ rā, tetipea. ║ haere ü ║ here ║ hare
+   r6 5c:11111:OTHER     [Item 11][Image] elephant in helicoptor ║ ____ rā, arawhana. ║ haore ║ hera ║ haere ü
+   r7 5c:11111:OTHER     [Item 12][Image] girl in plane ║ ____ rā, e hine. ║ huru ║ haere ü ║ herae
+TRR116 #12 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Flipcards
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Look and listen to these sentences. / Can you te ║ [Body] Titiro, whakarongo ki ēnei rerenga kōrero. / E m
+   r3 3c:111:OTHER       Side 1 Text ║ Side 1 [AudioHover] ║ Side 2
+   r4 3c:111:OTHER       Haere atu kiore! ║ [Item 14][Audio] haere atu kiore ║ [Item 15][Image] chase mouse
+   r5 3c:111:OTHER       Haere atu pūngāwerewere! ║ [Item16][Audio] haere atu pūngāwerewere ║ [Item 17][Image] man and spider
+   r6 3c:111:OTHER       Haere atu ua! ║ [Item18][Audio] haere atu ua ║ [Item 19][Image] girl and rain
+   r7 3c:111:OTHER       Haere atu kurī! ║ [Item 20][Audio] haere atu kurī ║ [Item 21][Image] dog on table
+TRR116 #14 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drop scatter on map??
+   r1 3c:111:HEAD        [H3] Activity Instructions: ║ [H3] Ngā Tohutohu: ║ Ngā tohutohu
+   r2 2c:11:BODY         [Body] Listen to these people talk about where they hav ║ [Body] Whakarongo ki ēnei tāngata e kōrero ana mō ngā w
+   r3 3c:111:OTHER       [Item 22][Image] town map / Text and audiohover file ║ Moveable image ║ Location on map
+   r4 3c:111:OTHER       I haere ahau ki te wharepukapuka. / [Item 23][Audio] i  ║ [Item 24][Image] man with books ║ whare pukapuka
+   r5 3c:111:OTHER       I haere ahau ki te hokomaha. / [Item 25Audio] i haere a ║ [Item26][Image] woman with groceries ║ hokomaha
+   r6 3c:111:OTHER       I haere ahau ki te papa tākaro. / [Item 27][Audio] i ha ║ [Item28][Image] girl with ball ║ papa tākaro/play ground
+   r7 3c:111:OTHER       I haere ahau ki te hohipere. / [Item 29][Audio] i haere ║ [Item30][Image] boy broken arm ║ hohipera
+TRR116 #21 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Drag the correct word to finish each sentence. ║ [Body] Tōia te kupu tika, kia oti pai ai te rerenga kōr
+TRR116 #24 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop
+   r1 2c:11:HEAD         [ H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi
+   r2 2c:11:BODY         [Body] Drag the letters for each of these animals to ma ║ [Body] Tōia ngā pū mō ia kararehe kia oti ai te kupu ‘p
+   r3 3c:011:OTHER        ║ Sentence ║ Letters to sort
+   r4 3c:111:OTHER       [Item 48] [Image] dog ║ He kurī [p] [a] [i] tēnei. ║ o m p t a i
+   r5 3c:111:OTHER       [Item 49] [Image] cat ║ He ngeru [p] [a] [i] tēnei. ║ r i a u n p
+   r6 3c:111:OTHER       [Item 50] [Image] rabbit ║ He rāpeti [p] [a] [i] tēnei. ║ i h e a p k
+   r7 3c:111:OTHER       [Item 51] [Image] taika ║ He taika [p] [a] [i] i tēnei. ║ o a n i w p
+TRR116 #26 marker table 9 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Memory Game
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Let’s play a game. / Match the ‘kai pai’ to the  ║ [Body] Me tākaro kēmu tātou. / Hono atu te ‘kai pai’ ki
+   r3 2c:11:OTHER        Card 1 ║ Card 2
+   r4 2c:11:OTHER        [Item 62] [Image] boy ║ [Item 63] [Image] apple
+   r5 2c:11:OTHER        [Item 64] [Image] girl ║ [Item 65] [Image] watermelon
+   r6 2c:11:OTHER        [Item 66] [Image] monkey ║ [Item 67] [Image] banana
+   r7 2c:11:OTHER        [Item 68] [Image] rabbit ║ [Item 69] [Image] carrot
+   r8 2c:11:OTHER        [Item 70] [Image] boy 2 ║ [Item 71] [Image] icecream
+TRR116 #31 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Audio added to Speech bubble (NCEA
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Listen to the ‘oropuare’ introduce themselves. / ║ [Body] Whakarongo ki ngā ‘oropuare’ e whakamōhio ana ko
+   r3 3c:111:OTHER       Text in speech bubble ║ Audio Hover ║ Correct Picture
+   r4 3c:111:OTHER       Kia ora, ko Pūmatua ‘E’ ahau. ║ [Item 74] [Audio] Kia ora, ko Pūmatua ‘E’ ahau. ║ [Item 75] [Image] Pūmatua ‘E’ waving
+   r5 3c:111:OTHER       Ko Pūriki ‘I’ ahau. ║ [Item 76] [Audio] Ko Pūriki 'I' ahau. ║ [Item 77] [Image] Pūriki 'I'
+   r6 3c:111:OTHER       Tēnā koe, ko Pūriki ‘O’ ahau. ║ [Item 78] [Audio] Tēnā koe, ko Pūriki ‘O’ ahau. ║ [Item 79] [Image] Pūriki ‘O’
+   r7 3c:111:OTHER       Ko Pūmatua ‘A’ ahau. ║ [Item 80] [Audio] Ko Pūmatua ‘A’ ahau. ║ [Item 81] [Image] Pūmatua A
+TRR116 #33 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Flipcard with Audio
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] These animals are trying to hide. / Can you gues ║ [Body] Kei te ngana ēnei kararehe ki te huna. Ka taea e
+TRR116 #36 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and drop
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi
+   r2 2c:11:BODY         [Body] Look at the faces below. / Can you tell how they ║ [Body] Titiro ki ēnei mata kei raro nei. / Ka taea e ko
+   r3 3c:111:OTHER       Picture ║ Text ║ Letters to sort
+   r4 3c:111:OTHER       [Item 94] [Image] happy face ║ He kanohi harikoa _ _ _ _ ║ h u a a
+   r5 3c:111:OTHER       [Item 95] [Image] sad face ║ E pouri ana _ _ _ _ ║ a u a h
+   r6 3c:111:OTHER       [Item 96] [Image] angry face ║ E riri ana _ _ _ _ ║ a a u h
+   r7 3c:111:OTHER       [Item 97] [Image] sleepy face ║ E hiamoe ana _ _ _ _ ║ u h a a
+TRR116 #38 marker table 7 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Word select [AudioHover]
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Look at the animals. Listen to what they are doi ║ [Body] Titiro ki ngā kararehe. Whakarongo ki ā rātou ma
+   r3 6c:111111:OTHER    Sentence ║ Picture ║ Audio hover ║ choice 1 ║ choice 2 ║ choice
+   r4 6c:111111:OTHER    Kei te piki rākau [word] . ║ [Item 98] [Image] monkey tree ║ [Item 99] [Audio] Kei te piki rākau ahau. ║ ahua ║ aahu ║ ahau ü
+   r5 6c:111111:OTHER    Kei te ngaungau [word] . ║ [Item 100] [Image] cow chewing ║ [Item 101] [Audio] Kei te ngaungau ahau. ║ ohua ║ ahaa ║ ahau ü
+   r6 6c:111111:OTHER    Kei te auau [word] . ║ [Item 102] [Image] dog barking ║ [Item 103] [Audio] Kei te auau ahau. ║ ahau ü ║ auha ║ ohau
+TRR116 #44 marker table 4 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Wordfind
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Look carefully at each letter in the word. Click ║ [Body] Āta titiro ki ia pū o te kupu. Pāwhiri anake i n
+   r3 1c:1:OTHER         Note to CS – please only use the following words as opt
+TRR116 #46 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drop and Drag
+   r1 2c:11:HEAD         [ H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Find the word that is spelt correctly to complet ║ [Body] Kimihia te kupu kua tuhia tikatia hei whakaoti i
+   r3 4c:1111:OTHER      Sentence ║ Word choice ║ Picture ║ AudioImage
+   r4 4c:1111:OTHER      Nō ____ koe? ║ hea ü / hua / hoa ║ [Item 107] [Image] French girl ║ [Item] [Audio 108] Nō hea ahau? Nō Wīwī ahau.
+   r5 4c:1111:OTHER      Nō ___ ia? ║ hia / hae / hea ü ║ [Item 109] [Image] Mexican boy ║ [Item 110] [Audio] Nō hea ahau? Nō Mehiko ahau.
+   r6 4c:1111:OTHER      Nō ___ te tama? ║ heo / hea ü / heu ║ [Item 111] [Image] American Boy ║ [Item 112] [Audio] Nō hea ahau? Nō Amerika ahau.
+   r7 4c:1111:OTHER      Nō ___ te kōtiro? ║ hoe / hea ü / hei ║ [Item 113] [Image] Japanese Girl ║ [Item 114] [Audio] Nō hea ahau? Nō Hapani ahau.
+TRR116 #48 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drop and Drag
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Drag the letters to make the word hea, then find ║ [Body] Tōia ngā pū kia hanga ai te kupu hea, kātahi kim
+   r3 3c:111:OTHER       Picture ║ Sentence ║ Letter choice
+   r4 3c:111:OTHER       [Item 117] [Image] crab ║ Kei _ _ _ te pāpaka? ║ hü k m aü eü
+   r5 3c:111:OTHER       [Item 118] [Image] turtle ║ Kei _ _ _ te honu? ║ eü u aü hü t
+   r6 3c:111:OTHER       [Item 119] [Image] octopus ║ Kei _ _ _ te wheke? ║ o aü n eü hü
+   r7 3c:111:OTHER       [Item 120] [Image] seahorse ║ Kei _ _ _ te manaia? ║ aü t h ü u eü
+TRR116 #50 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drop and Drag
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Drag each chunk of the question into the correct ║ [Body] Tōia ia wāhanga o te pātai ki te wāhi tika, kāta
+   r3 5c:11111:OTHER     Chunk 1 ║ Chunk 2 ║ Chunk 3 ║ Picture ║ AudioImage
+   r4 5c:11111:OTHER     E haere ana ║ te tama ║ ki hea? ║ [Item 122] [Image] boy with fishing rod ║ [Item 123] [Audio] E haere ana ahau ki hea? E haere ana
+   r5 5c:11111:OTHER     E haere ana ║ te kōtiro ║ ki hea? ║ [Item 124] [Image] girl with ball ║ [Item 125] [Audio] E haere ana ahau ki hea? E haere ana
+   r6 5c:11111:OTHER     E haere ana ║ te wāhine ║ ki hea? ║ [Item 126] [Image] woman to gym ║ [Item 127] [Audio] E haere ana ahau ki hea? E haere ana
+   r7 5c:11111:OTHER     E haere ana ║ te tane ║ ki hea? ║ [Item 128] [Image] man with books ║ [Item 129] [Audio] E haere ana ahau ki hea? E haere ana
+TRR116 #52 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded]
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi
+   r2 2c:11:BODY         [Body] Get a pen and paper. Use the stopwatch to time h ║ [Body] Tīkina he pene me te pepa. Whakamahia te karaka 
+TRR116 #59 marker table 4 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Word select
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi
+   r2 2c:11:BODY         [Body] Click on the word kei’ in the sentences below. ║ [Body] Pāwhiria te kupu ‘kei’ ki roto i ngā rerenga kōr
+   r3 1c:1:OTHER         Kei hea te kurī? / Kei hea te pea? / Kei hea te ngeru? 
+TRR116 #61 marker table 3 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu
+   r2 2c:11:BODY         [Body] Choose the right word and drag it into place to  ║ [Body] Tīpakongia te kupu tika, ā, tōtakatia ki te wāhi
+TRR116 #63 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Put the chunks of words into the correct order t ║ [Body] Whakaraupapatia ngā wāhanga kupu ki te hanga i t
+   r3 4c:1111:OTHER      Picture ║ Chunk 1 ║ Chunk 2 ║ Chunk 3
+   r4 4c:1111:OTHER      [Item 145] [Image] pen ║ Kei ║ a wai ║ te pene?
+   r5 4c:1111:OTHER      [Item 146] [Image] scissors ║ Kei ║ a wai ║ te kutikuti?
+   r6 4c:1111:OTHER      [Item 147] [Image] felts ║ Kei ║ a wai ║ ngā pene whītau?
+   r7 4c:1111:OTHER      [Item 148] [Image] eraser ║ Kei ║ a wai ║ te rapa?
+TRR116 #65 marker table 10 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Radio Quiz
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Look at the words as you listen to the sentences ║ [Body] Titiro ki ngā kupu i a koe e whakarongo ana ki n
+   r3 4c:1111:OTHER      Sentence ║ [AudioHover] ║ [H2] Statement/ Tauāki ║ [H2] Question /Pātai
+   r4 4c:1110:OTHER      Kei a Mere te pene. ║ [Item 152] [Audio] Kei a Mere te pene. ║ ü ║ 
+   r5 4c:1101:OTHER      Kei a wai te taiaha? ║ [Item 153] [Audio] Kei a wai te taiaha? ║  ║ ü
+   r6 4c:1110:OTHER      Kei a Pīta ngā rare. ║ [Item 154] [Audio] Kei a Pīta ngā rare. ║ ü ║ 
+   r7 4c:1110:OTHER      Kei a Haki te taiaha. ║ [Item 155] [Audio] Kei a Haki te taiaha. ║ ü ║ 
+   r8 4c:1101:OTHER      Kei a wai ngā rare? ║ [Item 156] [Audio] Kei a wai ngā rare? ║  ║ ü
+   r9 4c:1101:OTHER      Kei a wai te pene? ║ [Item 157] [Audio] Kei a wai te pene? ║  ║ ü
+TRR116 #67 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and drop
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu”
+   r2 2c:11:BODY         [Body] Look carefully at the clues in the sentences to  ║ [Body] Āta titiro ki ngā tīwhiri o ngā rerenga kōrero k
+   r3 3c:111:OTHER       Sentence ║ Picture 1 (Drag to picture 2) ║ Picture 2
+   r4 3c:111:OTHER       Kei Kaitaia ahau. ║ [Item 159] [Image] woman ║ [Item 160] [Image] Kaitaia sign
+   r5 3c:111:OTHER       Kei Taupo ahau. ║ [Item 161] [Image] boy ║ [Item 162] [Image] Taupo road sign
+   r6 3c:111:OTHER       Kei Ōtautahi ahau. ║ [Item 163] [Image] girl ║ [Item 164] [Image] Ōtautahi road sign
+   r7 3c:111:OTHER       Kei Kirikiriroa ahau. ║ [Item 165] [Image] man waving ║ [Item 166] [Image] Kirikiriroa sign
+TRR116 #69 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and drop
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Click to hear the sentence, then find the correc ║ [Body] Pāwhiria kia rongo i te rerenga kōrero, ā, kimih
+   r3 3c:111:OTHER       Sentence ║ [AudioHover] ║ Picture
+   r4 3c:111:OTHER       Kei te oma ahau. ║ [Item 167] [Audio] Kei te oma ahau. ║ [Item 168] [Image] girl running
+   r5 3c:111:OTHER       Kei te kauhoe ahau. ║ [Item 169] [Audio] Kei te kauhoe ahau. ║ [Item 170] [Image] boy swimming
+   r6 3c:111:OTHER       Kei te waiata ahau. ║ [Item 171] [Audio] Kei te waiata ahau. ║ [Item 172] [Image] girl singing
+   r7 3c:111:OTHER       Kei te pānui pukapuka ahau. ║ [Item 173] [Audio] Kei te pānui pukapuka ahau. ║ [Item 174] [Image] Boy reading
+TRR116 #74 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi
+   r2 2c:11:BODY         [Body] Drag the correct letters to say Kia ora to all t ║ [Body] Tōia mai ngā reta tika kia kī ai koe Kia ora ki 
+   r3 3c:111:OTHER       Picture ║ Sentence ║ Letter choices
+   r4 3c:111:OTHER       [Item 178] [Image] old man waving ║ __ __ __ ora e koro. ║ a ✔ r t i✔ k✔
+   r5 3c:111:OTHER       [Item 179] [Image] boy waving ║ __ __ __ ora e tama. ║ k✔ h a ✔ u i✔
+   r6 3c:111:OTHER       [Item 180] [Image] girl waving ║ __ __ __ ora e hoa. ║ n i✔ k✔ r a ✔
+   r7 3c:111:OTHER       [Item 181] [Image] family waving ║ __ __ __ ora e te whānau. ║ o a ✔ i✔ k✔ t
+TRR116 #76 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Word select
+   r1 2c:11:HEAD         [ H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Choose the correct word to help encourage these  ║ [Body] Tīpakohia te kupu tika hei akiaki i ēnei tāngata
+   r3 3c:111:OTHER       Picture ║ Word choice ║ Sentence
+   r4 3c:111:OTHER       [Item 182] [Image] boy running ║ Kai / Kea / Kia ✔ ║ _____ horo.
+   r5 3c:111:OTHER       [Item 183] [Image] girl scared with microphone ║ Koi / Kia ✔ / Kei ║ _____ kaha.
+   r6 3c:111:OTHER       [Item 184] [Image] girl climbing wall ║ Kia ✔ / Kua / Koa ║ _____ māia.
+   r7 3c:111:OTHER       [Item 185] [Image] boy studying at desk ║ Kai / Kia ✔ / Kio ║ _____ ū.
+TRR116 #78 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and drop
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Drag each chunk of the sentence into the correct ║ [Body] Tōia ia wāhanga o te rerenga kōrero kia tika tān
+   r3 5c:11111:OTHER     Picture ║ [AudioHover] ║ Chunk 1 ║ Chunk 2 ║ Chunk 3
+   r4 5c:11111:OTHER     [Item 187] [Image] boy waving goodbye ║ [Item 188] [Audio] Kia pai tō wīkene. ║ Kia ║ pai tō ║ wīkene.
+   r5 5c:11111:OTHER     [Item 189] [Image] lady with suitcases ║ [Item 190] [Audio] Kia pai tō hararei. ║ Kia ║ pai tō ║ hararei.
+   r6 5c:11111:OTHER     [Item 191] [Image] man waving ║ [Item 192] [Audio] Kia pai tō mahi. ║ Kia ║ pai tō ║ mahi.
+   r7 5c:11111:OTHER     [Item 193] [Image] man in car ║ [Item 194] [Audio] Kia pai tō haerenga. ║ Kia ║ pai tō ║ haerenga.
+TRR116 #80 marker table 13 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Word Select
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Use the stopwatch to time yourself as you click  ║ [Body] Whakamahia te matawā hei ine i tō wā i a koe e p
+   r3 4c:1111:OTHER      kai ║ kia ✔ ║ kia ✔ ║ koi
+   r4 4c:1111:OTHER      koa ║ hia ║ kai ║ kia ✔
+   r5 4c:1111:OTHER      kia ✔ ║ kai ║ kua ║ kai
+   r6 4c:1111:OTHER      kia ✔ ║ kia ✔ ║ kia ✔ ║ kua
+   r7 4c:1111:OTHER      kei ║ koi ║ hia ║ kia ✔
+   r8 4c:1111:OTHER      kia ✔ ║ kia ✔ ║ kia ✔ ║ kea
+   r9 4c:1111:OTHER      kie ║ kei ║ kie ║ kia ✔
+   r10 4c:1111:OTHER      kia ✔ ║ kia ✔ ║ kea ║ hia
+   r11 4c:1111:OTHER      koi ║ kua ║ kia ✔ ║ koa
+   r12 4c:1111:OTHER      kia ✔ ║ kia ✔ ║ koi ║ kia ✔
+TRR116 #84 marker table 9 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Word select
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Look at this list of words. Select only the word ║ [Body] Titiro ki tēnei rārangi kupu. Kōwhiria ko ngā ku
+   r3 4c:1111:OTHER      hia ✔ ║ hai ║ hai ║ hia ✔
+   r4 4c:1111:OTHER      hoa ║ hua ║ hia ✔ ║ Hua
+   r5 4c:1111:OTHER      hua ║ hia ✔ ║ hie ║ hia ✔
+   r6 4c:1111:OTHER      hia ✔ ║ hea ║ hia ✔ ║ hie
+   r7 4c:1111:OTHER      hia ✔ ║ hoa ║ ahi ║ hai
+   r8 4c:1111:OTHER      hea ║ hia ✔ ║ hoa ║ hia ✔
+TRR116 #88 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Choose the correct letters and drag them into pl ║ [Body] Kōwhiria ngā pū tika, ā, tōia hoki ki ō rātou tū
+   r3 3c:111:OTHER       Picture ║ Sentence ║ letter choices
+   r4 3c:111:OTHER       [Item 198] [Image] 8 Pigs ║ E [h] [i] [a] ngā poaka? ║ t m i ✔ r a✔ h✔
+   r5 3c:111:OTHER       [Item 199] [Image] 6 horses ║ E [h] [i] [a] ngā hōiho? ║ h✔ k a✔ e i ✔ m
+   r6 3c:111:OTHER       [Item 200] [Image] 12 dogs ║ E [h] [i] [a] ngā kurī? ║ i ✔ u h✔ k r a✔
+   r7 3c:111:OTHER       [Item 201] [Image] 9 birds ║ E [h] [i] [a] ngā manu? ║ a✔ k r o i ✔ h✔
+TRR116 #90 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Find the correct word to complete these sentence ║ [Body] Kimihia te kupu tika hei whakaoti i ēnei rerenga
+   r3 5c:11111:OTHER     Picture ║ Sentence ║ Choice 1 ║ Choice 2 ║ Choice 3
+   r4 5c:11111:OTHER     [Item 203] [Image] People in kitchen ║ Toko [word] ngā tamariki? ║ hua ║ hia ✔ ║ hea
+   r5 5c:11111:OTHER     [Item 204] [Image] men digging hangi ║ Toko [word] ngā kaimahi? ║ hia ✔ ║ hie ║ hio
+   r6 5c:11111:OTHER     [Item 205] [Image] 5 women weaving ║ Toko [word] ngā wāhine? ║ hai ║ hia ✔ ║ ahi
+   r7 5c:11111:OTHER     [Item 206] [Image] People at table ║ Toko [word] ngā tangata? ║ hoa ║ hea ║ hia ✔
+TRR116 #92 marker table 9 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Memory Game
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Find the pairs of words are the same at the star ║ [Body] Kimihia ngā kupu takirua e ōrite ana te tīmatang
+   r3 3c:111:OTHER       Card 1 image ║ Card 1 text with image ║ Card 2 text only
+   r4 3c:111:OTHER       [Item 207] [Image] taking off sweater ║ unu ║ unuhia
+   r5 3c:111:OTHER       [Item 208] [Image] child spinning ║ huri ║ hurihia
+   r6 3c:111:OTHER       [Item 209] [Image] man with arms stretched out ║ toro ║ torohia
+   r7 3c:111:OTHER       [Item 210] [Image] child magnifying glass ║ kimi ║ kimihia
+   r8 3c:111:OTHER       [Item 211] [Image] looking at view ║ tiro ║ tirohia
+TRR116 #94 marker table 7 rows
+   r0 1c:1:MARKER        [Activity: Embedded]: Drag and Drop
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi
+   r2 2c:11:BODY         [Body] Find ‘hia’ in each sentence. Then click to selec ║ [Body] Kimihia te kupu ‘hia’ i ia rerenga kōrero. Kātah
+   r3 4c:1111:OTHER      Picture ║ [Image AudioHover] ║ Sentence ║ Match to picture.
+   r4 4c:1111:OTHER      [Item 212] [Image] Hungry girl ║ [Item 213] [Audio] Kei te hiakai ahau. ║ Kei te hia kai ahau. ║ [Item 214] [Image] plate of food
+   r5 4c:1111:OTHER      [Item 215] [Image] sleepy girl ║ [Item 216] [Audio] Kei te hiamoe ahau. ║ Kei te hia moe ahau. ║ [Item 217] [Image] bed
+   r6 4c:1111:OTHER      [Item 218] [Image] thirsty hot woman ║ [Item 219] [Audio] Kei te hiainu ahau. ║ Kei te hia inu ahau. ║ [Item 220] [Image] glass of water
+TRR116 #99 marker table 8 rows
+   r0 1c:1:MARKER        [Activity Embedded] Drag and Drop
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Find the correct letters, then drag them to spel ║ [Body] Kimihia ngā pū tika, kātahi ka tō ki te wāhi tik
+   r3 3c:111:OTHER       Picture ║ Sentence ║ Letter selection
+   r4 3c:111:OTHER       [Item 224] [Image] sad girl ║ Kei te pēhea [letter 1] [letter 2] [letter 3] ? ║ 1st letter k
+   r5 3c:111:OTHER       [Item 225] [Image] happy girl ║ E pēhea ana [letter 1] [letter 2] [letter 3] ? ║ 2nd letter o
+   r6 3c:111:OTHER       [Item 226] [Image] tired girl ║ Kei te pēhea [letter 1] [letter 2] [letter 3] ? ║ 3rd letter e
+   r7 3c:111:OTHER       [Item 227] [Image] angry boy ║ E pēhea ana [letter 1] [letter 2] [letter 3] ? ║ a h i m n p u r t w
+TRR116 #101 marker table 9 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop.
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Place the greeting ‘Tēnā koe’ with the correct n ║ [Body] Tukua te mihi ‘Tēnā koe’ ki te nama o ngā tāngat
+   r3 2c:11:OTHER        Picture ║ Correct match for text .
+   r4 2c:11:OTHER        [Item 229] [Image] 2 children ║ X
+   r5 2c:11:OTHER        [Item 230] [Image] woman waving ║ Tēnā koe
+   r6 2c:11:OTHER        [Item 231] [Image] family ║ X
+   r7 2c:11:OTHER        [Item 232] [Image] boy waving ║ Tēnā koe
+   r8 2c:11:OTHER        [Item 233] [Image] 1 girl ║ Tēnā koe
+TRR116 #103 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded]
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Put these word chunks into the correct order to  ║ [Body] Whakaraupapatia ēnei wāhanga kupu kia tika ai te
+   r3 4c:1111:OTHER      Picture ║ Word chunk 1 ║ Word chunk 2 ║ Word chunk 3
+   r4 4c:1111:OTHER      [Item 235] [Image] boy waving ║ Nō ║ hea ║ koe?
+   r5 4c:1111:OTHER      [Item 236] [Image] girl waving ║ Nō ║ hea ║ koe?
+   r6 4c:1111:OTHER      [Item 237] [Image] woman with groceries ║ Nō ║ hea ║ koe?
+   r7 4c:1111:OTHER      [Item 238] [Image] man waving ║ Nō ║ hea ║ koe?
+TRR116 #105 marker table 13 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Word Select
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Use the stopwatch to time yourself as you click  ║ [Body] Whakamahia te matawā hei ine i tō wā i a koe e p
+   r3 4c:1111:OTHER      kai ║ koa ║ koe ✔ ║ koi
+   r4 4c:1111:OTHER      koa ║ koe ✔ ║ kai ║ koe ✔
+   r5 4c:1111:OTHER      koe ✔ ║ kai ║ koe ✔ ║ kai
+   r6 4c:1111:OTHER      koi ║ koe ✔ ║ koe ✔ ║ koe ✔
+   r7 4c:1111:OTHER      hoa ║ koe ✔ ║ hoa ║ koa
+   r8 4c:1111:OTHER      koe ✔ ║ hoe ║ koa ║ koi
+   r9 4c:1111:OTHER      kie ║ koe ✔ ║ koe ✔ ║ koe ✔
+   r10 4c:1111:OTHER      hoe ║ kia ✔ ║ koe ✔ ║ hoe
+   r11 4c:1111:OTHER      koe ✔ ║ koi ║ hoe ║ koa
+   r12 4c:1111:OTHER      kai ║ koe ✔ ║ koe ✔ ║ koe ✔
+TRR116 #109 marker table 8 rows
+   r0 1c:1:MARKER        [Activity Embedded] Drag and Drop in a [Carousel]
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Find the correct syllable chunk to complete each ║ [Body] Kimihia te wāhanga kūoro tika hei whakaoti i ia 
+   r3 4c:1111:OTHER      Text ║ Choice 1 ║ Choice 2 ║ Choice 3
+   r4 4c:1111:OTHER      kou [missing syllable] ║ toi ║ tou ✔ ║ tuo
+   r5 4c:1111:OTHER      [missing syllable] tou ║ kai ║ koa ║ kou ✔
+   r6 4c:1111:OTHER      kou [missing syllable] ║ tou ✔ ║ toa ║ toe
+   r7 4c:1111:OTHER      [missing syllable] tou ║ kou ✔ ║ koi ║ koa
+TRR116 #111 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi
+   r2 2c:11:BODY         [Body] Find the correct letters to finish spelling thes ║ [Body] Kimihia ngā pū tika hei whakaoti i te tuhi o ēne
+   r3 3c:111:OTHER       Picture ║ Correct match for text . ║ Choices ( note to cs: please have multiples of each let
+   r4 3c:111:OTHER       [Item 243] [Image] group of people 1 ║ Tēna k [o] [u] t [o] [u] ║ o ✔ u✔ a e i n w r m p
+   r5 3c:110:OTHER       [Item 244] [Image] group of people 2 ║ Tēna k [o] [u] t [o] [u] ║ 
+   r6 3c:110:OTHER       [Item 245] [Image] group of people 3 ║ Tēna k [o] [u] t [o] [u] ║ 
+   r7 3c:110:OTHER       [Item 246] [Image] family group ║ Tēna k [o] [u] t [o] [u] ║ 
+TRR116 #113 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Dropdown quiz autoCheck
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Listen to the greeting and find the correct word ║ [Body] Whakarongo ki te mihi, ā, kimihia te kupu tika h
+   r3 5c:11111:OTHER     Sentence ║ [Audio Hover] ║ Option 1 ║ Option 2 ║ Option 3
+   r4 5c:11111:OTHER     Kia ora [word] ║ [Item 247] [Audio] Kia ora koutou ║ kautau ║ koutou ✔ ║ koatoa
+   r5 5c:11111:OTHER     Mōrena [word] ║ [Item 248] [Audio] Mōrena koutou ║ koutou ✔ ║ kuatua ║ koto
+   r6 5c:11111:OTHER     Ahiahi mārie [word] ║ [Item 249] [Audio] Ahiahi mārie koutou ║ kuotuo ║ koutou ✔ ║ koukou
+   r7 5c:11111:OTHER     Haere mai [word] ║ [Item 250] [Audio] Haere mai koutou ║ koatoa ║ kautau ║ koutou ✔
+TRR116 #115 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Drag and Drop
+   r1 2c:11:HEAD         [ H3] Activity Instructions: ║ [H3] Ngā Tohutohu:
+   r2 2c:11:BODY         [Body] Drag the farewells to the pictures where using ‘ ║ [Body] Tōia ngā poroporoaki ki ngā pikitia e tika ana t
+   r3 4c:1111:OTHER      Sentence ║ [AudioHover] ║ Correct pictures ║ Incorrect pictures
+   r4 4c:1111:OTHER      Ka kite koutou. ║ [Item 251] [Audio] Ka kite koutou ║ [Item 252] [Image] group 1 ║ [Item 253] [Image] boy waving
+   r5 4c:1111:OTHER      Haere rā koutou. ║ [Item 254] [Audio] Haere rā koutou ║ [Item 255] [Image] group 2 ║ [Item 256] [Image] oldman waving
+   r6 4c:1111:OTHER      E noho rā koutou. ║ [Item 257] [Audio] E noho rā koutou ║ [Item 258] [Image] people at table ║ [Item 259] [Image] women weaving
+   r7 4c:1111:OTHER      Hei āpōpō koutou. ║ [Item 260] [Audio] Hei āpōpō koutou ║ [Item 261] [Image] group 3 ║ [Item 262] [Image] 2 people waving
+TRR116 #117 marker table 8 rows
+   r0 1c:1:MARKER        [Activity: Embedded] Word Select
+   r1 2c:11:HEAD         [H3] Activity Instructions: ║ [H3] Ngā Tohutohu Hei Mahi
+   r2 2c:11:BODY         [Body] Listen to these sentences, then find and click o ║ [Body] Whakarongo ki ēnei rerenga kōrero, kātahi ka kim
+   r3 2c:11:OTHER        Sentence ║ [AudioHover]
+   r4 2c:11:OTHER        Kei hea koutou ? ║ [Item 263] [Audio] Kei hea koutou?
+   r5 2c:11:OTHER        I haere koutou ki te taone. ║ [Item 264] [Audio] I haere koutou ki te taone.
+   r6 2c:11:OTHER        E aha ana koutou ? ║ [Item 265] [Audio] E aha ana koutou?
+   r7 2c:11:OTHER        Ko tēnei tō koutou kaiako. ║ [Item 266] [Audio] Ko tēnei tō koutou kaiako.
+marker tables: 106
+  2c:11:OTHER          134
+  2c:11:HEAD           116
+  2c:11:BODY           108
+  1c:1:MARKER          103
+  2c:00:OTHER          71
+  3c:111:OTHER         69
+  4c:1111:OTHER        68
+  5c:11111:OTHER       30
+  4c:1100:BODY         27
+  4c:1100:HEAD         26
+  2c:10:OTHER          12
+  2c:10:MARKER         9
+  3c:110:OTHER         8
+  1c:1:OTHER           6
+  2c:11:MARKER         4
+  6c:011111:OTHER      4
+  3c:101:OTHER         4
+  6c:111111:OTHER      4
+  4c:1110:OTHER        3
+  4c:1101:OTHER        3
+  3c:111:HEAD          1
+  3c:011:OTHER         1

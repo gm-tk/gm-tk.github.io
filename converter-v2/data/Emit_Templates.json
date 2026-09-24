@@ -134,6 +134,23 @@
 				"author_max_words": 6,
 				"_doc": "ROUND 479 (the autonomous loop's session-44 Round 2) — KB 07B §7 'Whakatauki / Proverb' ('Uses a dedicated component: <div class=\"whakatauki\"><p reo>…</p><p eng>…</p>', the author optional, TRR107's h3 variation named). 21 of the 23 Bilingual Writers Templates write the proverb as a bilingual table row `[H1] Proverb ║ [H1] Whakataukī | Whakatauākī:` + `[Body] <english> ║ [Body] <māori>`; the gold renders a div.whakatauki on 23 / 23 Bilingual modules (heading row dropped), Claude rendered 0 (two h3s + loose paragraphs — bilingualContainer fires only on a leading [Whakatauki] TAG). BilingualBuilder.bilingualRows: a row whose folded English cell matches eng_head_pattern and Māori cell reo_head_pattern (tags, bold, red markers stripped) is dropped and the NEXT row renders as ONE box in the table's own column — the proverb paragraph(s) joined while a quote is open, bold / italic stripped; a trailing short line (<= author_max_words, no terminal punctuation) = the author (both cells → p > span reo + span eng, the TRR102 gold form; one cell → a plain p); a heading-led cell keeps its heading + paragraphs inside, reo block then eng block (TRR107); any other paragraph is commentary AFTER the box (reo / eng interleaved; TRR114); media after that. Measured: outputs/_s44_r2_proverb.cjs, _s44_r2_whakform.py. Env PROVERBBOX_OFF = the r478 output."
 			},
+			"act_label_box": {
+				"enabled": true,
+				"env": "ACTLABELBOX_OFF",
+				"code_prefixes": [
+					"TRR"
+				],
+				"exclude_codes": [
+					"TRR102"
+				],
+				"_exclude_doc": "TRR102's own gold keeps the intro FREE on 15 of its 22 label tables (boxed 2, mixed 5 — outputs/_s44_r3_actgold2.py): it contradicts KB 07B's form at 0.68, so it keeps the r479 output (§2 (c)); TRR116 43 / 43 boxed, TRR106 5 / 9, TRR103 8 boxed / 5 mixed / 2 free.",
+				"label_pattern": "^(?:activity|ngohe)\\s*\\d+(?:\\.\\d+)?\\s*[a-z]?\\s*:?$",
+				"intro_h2_level": 3,
+				"_intro_h2_level_doc": "KB 07B's box holds the title as <h3 reo> / <h3 eng> (the gold agrees); the writer's [H2] in the intro renders h2 inside the box (the free intro is relevelled to h3 by the page's heading pass, which does not reach inside div.activity) — an h2 from the intro table is emitted at this level.",
+				"data_rows_handoff": false,
+				"_data_rows_handoff_doc": "(B) BUILT, OFF — for its own round: the marker table's data rows as one bilingual-unbuilt hand-off (every column kept — the paragraph unfold reads only the first two) pre-scored +41.7 pp-sum on TRR116 on top of r480; its own gate effect is not yet separated (r480's compare_structure exact −80 is the boxing's pool shrink — it stayed −80 with this OFF). true enables it (BilingualBuilder.bilingualActivity / #markerDataFrom).",
+				"_doc": "ROUND 480 (the autonomous loop's session-44 Round 3) — KB 07B §7 'Activity Structure' (`| Activity 1A: | Ngohe 1A: |` + `[H2]` title + `[Body]` → ONE div.activity number= holding the reo / eng title + prose; `interactive` when it holds a widget), a §1d FAMILY dialect (code_prefixes). TRR116 / TRR106 write each activity as TWO tables — the bilingual intro (`English ║ Te Reo Māori` / `Activity 4E: ║ Ngohe 4E:` / `[H2] title` / `[Body] …`) and the red `[Activity: Embedded] <type>` table (instructions + the widget's data, often a NESTED table); the gold boxes them TOGETHER (the title inside div.activity on 47 / 50 — outputs/_s44_r2_actlabel.py), Claude rendered the intro as free prose and the embedded table as its own box whose data rows bilingualActivity unfolded into loose paragraphs from the first TWO columns only (outputs/_s44_r3_actprobe.cjs, _s44_r3_embrows.cjs — the third+ cells were lost). (A) ContentConverter's reoMode dispatch, BEFORE bilingualTable: a bilingual table whose first content row is a label pair matching label_pattern (bold / red / tags stripped) gathers itself + a following [Activity: Embedded] marker table + its spec tables (the existing gather's stops) into bilingualActivity (label rows skipped, the number read through the bold). (B) data_rows_handoff: in bilingualActivity a MARKER table's rows after its leading marker / heading / body / blank rows are the widget's DATA → ONE cv2-interactive bilingual-unbuilt hand-off (TablesAndGrids.contentTable, every column kept). Env ACTLABELBOX_OFF = the r479 output."
+			},
 			"media_in_place": {
 				"enabled": false,
 				"env": "REOMEDIAPOS_OFF",

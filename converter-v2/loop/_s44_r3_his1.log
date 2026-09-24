@@ -1,0 +1,26 @@
+pages 77
+  334   65p   8m  body      EXTRA       —                                      -> div.row                                 e.g. HIS1001_8_0.html «» «»
+  136   50p   8m  body      MISSING     div.row                                -> —                                       e.g. HIS1001_0_0.html «» «»
+  121   40p   8m  body      EXTRA       —                                      -> p                                       e.g. HIS1001_0_0.html «» «You can see that there are many factors »
+   84   35p   8m  body      MISSING     p                                      -> —                                       e.g. HIS1001_7_0.html «In the wake of the devastation of World » «»
+   83   43p   8m  activity  MISSING     a                                      -> —                                       e.g. HIS1001_5_0.html «Go to journal» «»
+   80   41p   8m  activity  MISSING     div.button                             -> —                                       e.g. HIS1001_3_0.html «Go to journal» «»
+   73   31p   8m  activity  MISSING     p                                      -> —                                       e.g. HIS1001_5_0.html «Look at the cartoon below: Source A. Beg» «»
+   72   36p   7m  activity  EXTRA       —                                      -> p                                       e.g. HIS1002_1_0.html «» «1.»
+   70   38p   7m  body      MOVED       p                                      -> p                                       e.g. HIS1002_1_0.html «None of these sources directly states th» «None of these sources directly states th»
+   57   21p   7m  body      MISSING     span.infoTrigger                       -> —                                       e.g. HIS1002_5_0.html «Hao.» «»
+   52   14p   6m  activity  MOVED       p                                      -> p                                       e.g. HIS1002_2_0.html «Answer the following questions using Sou» «Answer the following questions using Sou»
+   51   32p   6m  body      MISSING     div.col-12.col-md-4.offset-md-0.paddin -> —                                       e.g. HIS1003_3_0.html «» «»
+   50   50p   6m  module-menu SUBSTITUTED div.col-12                             -> div.col-12.col-md-8                     e.g. HIS1001_3_0.html «» «»
+   50   23p   6m  body      EXTRA       —                                      -> img.img-fluid                           e.g. HIS1001_5_0.html «» «»
+   43   25p   6m  activity  SUBSTITUTED a                                      -> h4.goJournal                            e.g. HIS1002_1_0.html «Go to journal» «Go to your journal»
+   43   21p   7m  activity  MISSING     br                                     -> —                                       e.g. HIS1002_2_0.html «» «»
+   41   23p   5m  activity  SUBSTITUTED iframe.embed-responsive-item           -> iframe                                  e.g. HIS1004_8_0.html «» «»
+   32   21p   3m  module-menu MISSING     p                                      -> —                                       e.g. HIS1001_3_0.html «We are learning to:» «»
+   32   27p   7m  activity  EXTRA       —                                      -> h4.goJournal                            e.g. HIS1002_3_0.html «» «Go to your journal»
+   32   21p   7m  body      EXTRA       —                                      -> i                                       e.g. HIS1002_5_0.html «» «Warrior»
+   31   22p   5m  body      SUBSTITUTED iframe.embed-responsive-item           -> iframe                                  e.g. HIS1001_10_0.html «» «»
+   31   15p   7m  body      EXTRA       —                                      -> a                                       e.g. HIS1001_10_0.html «» «https://en.wikipedia.org/wiki/Nuclear_we»
+   31   15p   8m  body      EXTRA       —                                      -> b                                       e.g. HIS1001_10_0.html «» «Hiroshima Days»
+   29   24p   6m  body      MISSING     div.col-12.col-md-8                    -> —                                       e.g. HIS1001_4_0.html «» «»
+   29   23p   7m  body      MISSING     div.col-12.col-md-4.offset-md-0        -> —                                       e.g. HIS1002_1_0.html «» «»

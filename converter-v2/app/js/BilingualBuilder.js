@@ -888,18 +888,36 @@ class BilingualBuilder {
 	 * @param {TagNormaliser} norm - resolves `[Tag]` markers found in cells
 	 * @returns {string|null} the rendered activity container HTML, or null when there's nothing to render
 	 */
-	static bilingualActivity(blocks, run, norm) {
+	static bilingualActivity(blocks, run, norm, alb = null) {
 		const cfg = DataService.Data.EmitTemplates.elements?.dual_language;
 		if (!cfg || cfg.enabled === false || !blocks || !blocks.length) return null;
 		const mRe = this.activityMarkerRe, nRe = this.activityNumRe;
 		let number = "";
 		const out = [];
+		// ROUND 480 (alb = the act_label_box config, a TRR family dialect): the label row is read through the writer's bold / red
+		// markers and dropped (the caller numbers the box, KB 07B decimal); a marker table's DATA rows become one hand-off
+		const albLabel = (c) => !!alb && alb.labelRe.test(this.#albClean(c));
 		for (const block of blocks) {
 			const rows = block?.rows ?? [];
-			for (const row of rows) for (const c of row) { const nm = String(c ?? "").match(nRe); if (nm && !number) number = nm[1]; }
+			if (!alb) for (const row of rows) for (const c of row) { const nm = String(c ?? "").match(nRe); if (nm && !number) number = nm[1]; }
+			const dataFrom = (alb && alb.dataHandoff && this.isActivityMarker(block) && !this.bilingualHeader(block)) ? this.#markerDataFrom(rows) : -1;
+			// ROUND 480: the bilingual INTRO table unfolds inside the box exactly as it does free (bilingualRows — the header row
+			// skipped, reo / eng interleaved per element, the `Activity NX:` label line stripped)
+			if (alb && this.bilingualHeader(block)) {
+				const lv = alb.introH2Level;   // KB 07B: the box's title is an h3
+				for (const h of this.bilingualRows(block, run, undefined, norm))
+					out.push(lv ? String(h).replace(/^(\s*<)h2\b/i, `$1h${lv}`).replace(/<\/h2>(\s*)$/i, `</h${lv}>$1`) : h);
+				continue;
+			}
 			if (this.bilingualHeader(block) || this.isActivityMarker(block)) {
-				for (const row of rows) {
+				for (let ri = 0; ri < rows.length; ri++) {
+					const row = rows[ri];
+					if (dataFrom >= 0 && ri >= dataFrom) {
+						out.push(`<div class="cv2-interactive bilingual-unbuilt">\n${TablesAndGrids.contentTable({ ...block, rows: rows.slice(dataFrom) }, run, true, norm)}\n</div>`);
+						break;
+					}
 					const c0 = String(row[0] ?? ""), c1 = String(row[1] ?? "");
+					if (albLabel(c0) && albLabel(c1)) continue;
 					if (nRe.test(c0.trim()) || /^english$/i.test(Utils.Fold(c0).trim())) continue;
 					// ROUND 454 — a red-wrapped marker row is the writer's widget request: their note, not a paragraph
 					if (this.#redMarkerOn() && !mRe.test(c0) && mRe.test(this.#stripRed(c0))) {
@@ -918,7 +936,68 @@ class BilingualBuilder {
 		}
 		if (!out.length) return null;
 		const num = number ? ` number="${number}"` : "";
-		return `<div class="activity interactive"${num}>\n<div class="row">\n<div class="col-12">\n${out.join("\n")}\n</div>\n</div>\n</div>`;
+		// ROUND 480: an intro-only label box (no widget table followed) is a plain activity
+		const cls = (alb && blocks.length === 1 && !out.some((h) => /cv2-interactive/.test(h))) ? "activity" : "activity interactive";
+		return `<div class="${cls}"${num}>\n<div class="row">\n<div class="col-12">\n${out.join("\n")}\n</div>\n</div>\n</div>`;
+	};
+
+	/**
+	 * ROUND 480 (the autonomous loop's session-44 Round 3) — KB 07B "Activity Structure", a §1d FAMILY dialect. The data block
+	 * dual_language.act_label_box with its label pattern compiled, or null when it is off (data flag / env ACTLABELBOX_OFF) or the
+	 * module is outside its code_prefixes.
+	 * @param {ConversionRun} run - the current run (reads run.moduleCode)
+	 * @returns {{labelRe: RegExp, dataHandoff: boolean}|null}
+	 */
+	static actLabelBoxCfg(run) {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.act_label_box;
+		if (!c || c.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "ACTLABELBOX_OFF"])) return null;
+		const code = String(run?.moduleCode ?? "").toUpperCase();
+		if (!(c.code_prefixes ?? []).some((p) => code.startsWith(String(p).toUpperCase()))) return null;
+		if ((c.exclude_codes ?? []).some((x) => code === String(x).toUpperCase())) return null;
+		return {
+			labelRe: new RegExp(c.label_pattern ?? "^(?:activity|ngohe)\\s*\\d+(?:\\.\\d+)?\\s*[a-z]?\\s*:?$", "i"),
+			dataHandoff: c.data_rows_handoff !== false,
+			introH2Level: c.intro_h2_level ?? null,
+		};
+	};
+
+	/** ROUND 480 — a cell with the writer's red markers, [tags] and bold stripped, whitespace collapsed. */
+	static #albClean(c) {
+		return String(c ?? "").replace(/\u{1f534}|\[\/?RED TEXT\]/gu, "").replace(/\[[^\]]*\]/g, "").replace(/\*/g, "")
+			.replace(/\s+/g, " ").trim();
+	};
+
+	/**
+	 * ROUND 480 — is this the bilingual INTRO of an activity: an English|Māori header row, then a first content row whose two cells
+	 * are the `Activity NX:` / `Ngohe NX:` label pair (read through bold / red markers)?
+	 * @param {Object} block - a table block
+	 * @param {Object} alb - actLabelBoxCfg()
+	 * @returns {boolean}
+	 */
+	static isActLabelTable(block, alb) {
+		if (!alb || !this.bilingualHeader(block)) return false;
+		const row = (block?.rows ?? [])[1];
+		if (!Array.isArray(row) || row.length < 2) return false;
+		return alb.labelRe.test(this.#albClean(row[0])) && alb.labelRe.test(this.#albClean(row[1]));
+	};
+
+	/**
+	 * ROUND 480 — the index of the first DATA row of an `[Activity: Embedded]` marker table: the rows before it are the marker line,
+	 * the `[H#]` instruction headings, the `[Body]` instructions and blank rows; everything from the first other row on is the widget's
+	 * data (word lists, answer grids, the nested sentence | word | picture | audio table). -1 when the table has no data rows.
+	 * @param {string[][]} rows
+	 * @returns {number}
+	 */
+	static #markerDataFrom(rows) {
+		for (let r = 0; r < rows.length; r++) {
+			const cells = (rows[r] || []).map((c) => String(c ?? "").replace(/\u{1f534}|\[\/?RED TEXT\]/gu, "").trim());
+			if (!cells.some(Boolean)) continue;
+			const first = cells.find(Boolean);
+			if (this.activityMarkerRe.test(first) || /^\[\s*(?:h[1-6]|body)\s*\]/i.test(first)) continue;
+			return r;
+		}
+		return -1;
 	};
 
 	/**

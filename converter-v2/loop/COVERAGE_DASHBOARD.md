@@ -1,21 +1,21 @@
 # PageForge — corpus discrepancy dashboard
 
-_Generated 2026-09-24 16:27 · corpus 535 modules / 2633 pages_
+_Generated 2026-09-25 00:39 · corpus 535 modules / 2633 pages_
 
 **What this is.** Every remaining difference between our HTML and the human's, measured across the whole library and ranked by how many modules it costs. Use it to choose the next round. It changes nothing — it only reports.
 
 ## ⚠ Freshness
 
-- skeleton state predates the newest engine change (2026-09-24) — its rows may lag.
-- body_compare predates the newest engine change (2026-09-24) — its rows may lag.
-- feature index predates the newest engine change (2026-09-24) — its rows may lag.
+- skeleton state predates the newest engine change (2026-09-25) — its rows may lag.
+- body_compare predates the newest engine change (2026-09-25) — its rows may lag.
+- feature index predates the newest engine change (2026-09-25) — its rows may lag.
 
 ## 1. The two numbers that matter
 
-**Interactive coverage — 44.8%** (3269 of 7290 writer-tagged widgets actually build).
-The other 4021 ship as a hand-off box. This is what a tester sees when they say the conversion looks unfinished, and it is invisible to the protected gates by design.
+**Interactive coverage — 44.7%** (3255 of 7290 writer-tagged widgets actually build).
+The other 4035 ship as a hand-off box. This is what a tester sees when they say the conversion looks unfinished, and it is invisible to the protected gates by design.
 
-**Page scaffold match — 55.2% mean** (1576 of 2491 pages at 50%+, 276 at 75%+).
+**Page scaffold match — 55.2% mean** (1576 of 2491 pages at 50%+, 275 at 75%+).
 The protected primary gate. It measures page structure with widget internals collapsed, so it moves very little while coverage is the real gap.
 
 **Structurally clean — 98.3%** (46 pages carry a visible defect)  ·  **body breakdown — 238 pages** (the protected body gate).
@@ -38,9 +38,9 @@ Body rows use `body_compare.py`'s own thresholds, so this table and the protecte
 | 8 | empty widget box | 131 | 175 | 175 | — | — | A hand-off box was emitted with nothing in it. |
 | 9 | un-built clickDrop | 126 | 181 | 346 | 252 | 191 (65% skipped) | Writers tagged 581 clickDrop widgets; 346 ship as a hand-off box instead of a built widget. |
 | 10 | un-built typing | 82 | 168 | 261 | 232 | 237 (57% skipped) | Writers tagged 269 typing widgets; 261 ship as a hand-off box instead of a built widget. |
-| 11 | page scaffold under 25% | 75 | 99 | 99 | — | — | The page's overall structure barely resembles the human's — these are the pages a tester screenshots. |
-| 12 | un-built selfCheck | 71 | 103 | 137 | 103 | 237 (57% skipped) | Writers tagged 163 selfCheck widgets; 137 ship as a hand-off box instead of a built widget. |
-| 13 | un-built modal | 68 | 101 | 170 | 136 | 126 (77% skipped) | Writers tagged 367 modal widgets; 170 ship as a hand-off box instead of a built widget. |
+| 11 | page scaffold under 25% | 73 | 96 | 96 | — | — | The page's overall structure barely resembles the human's — these are the pages a tester screenshots. |
+| 12 | un-built modal | 71 | 108 | 184 | 150 | 126 (77% skipped) | Writers tagged 367 modal widgets; 184 ship as a hand-off box instead of a built widget. |
+| 13 | un-built selfCheck | 71 | 103 | 137 | 103 | 237 (57% skipped) | Writers tagged 163 selfCheck widgets; 137 ship as a hand-off box instead of a built widget. |
 | 14 | un-built reorder | 65 | 88 | 104 | 98 | 75 (86% skipped) | Writers tagged 104 reorder widgets; 104 ship as a hand-off box instead of a built widget. |
 | 15 | un-built radioQuiz | 60 | 74 | 89 | 84 | 73 (87% skipped) | Writers tagged 89 radioQuiz widgets; 89 ship as a hand-off box instead of a built widget. |
 | 16 | un-built tabs | 58 | 94 | 113 | 105 | 104 (81% skipped) | Writers tagged 170 tabs widgets; 113 ship as a hand-off box instead of a built widget. |
@@ -68,7 +68,7 @@ Body rows use `body_compare.py`'s own thresholds, so this table and the protecte
 | flipCard | 290 | 551 | 52.6% | 261 | 218 | 152 |
 | typing | 8 | 269 | 3.0% | 261 | 232 | 82 |
 | dropDown | 341 | 601 | 56.7% | 260 | 212 | 134 |
-| modal | 197 | 367 | 53.7% | 170 | 136 | 68 |
+| modal | 183 | 367 | 49.9% | 184 | 150 | 71 |
 | selfCheck | 26 | 163 | 16.0% | 137 | 103 | 71 |
 | tabs | 57 | 170 | 33.5% | 113 | 105 | 58 |
 | reorder | 0 | 104 | 0.0% | 104 | 98 | 65 |
@@ -131,8 +131,8 @@ Lowest structural match in the library, with the likeliest cause attached. These
 | PWYWHA1 | PWYWHA1_0_0.html | 13.8% | 12 content blocks missing; widget over-capture |
 | MXDI103 | MXDI103_8_0.html | 14.4% | 1 content blocks missing; widget over-capture |
 | PES1007 | PES1007_7_0.html | 14.4% | 15 content blocks missing |
+| TEFUN03 | TEFUN03_0_0.html | 14.7% | widget over-capture |
 | EXPFUN03 | EXPFUN03_0_0.html | 14.8% | structural — inspect |
-| TEFUN03 | TEFUN03_0_0.html | 14.9% | widget over-capture |
 | GER1002 | GER1002_2_0.html | 15.0% | widget over-capture; 3 empty widget boxes |
 | ANZH301 | ANZH301_1_0.html | 15.0% | 11 content blocks missing; widget over-capture |
 | MXFL401 | MXFL401_2_0.html | 15.2% | 15 content blocks missing; widget over-capture |
