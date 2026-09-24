@@ -1,0 +1,29 @@
+menu:flat -> body:: 313 blocks; WT line not found 152
+  152 blk   63 pg  25 mod  [(text not in WT)]  fam: CBI 33, MXEX 33, HIS 19, COM 12, ENFUN 11
+        BLL124 BLL124_0_0.html (text not in WT) “Whāinga Ako | Learning Intentions”
+        CBI1008 CBI1008_1_0.html (text not in WT) “We are learning about:”
+        CBI1009 CBI1009_1_0.html (text not in WT) “We are learning about:”
+   65 blk    7 pg   2 mod  [h3 + body]  fam: TEDC 65
+        TEDC401 TEDC401_1_0.html h3 + body “to manage digital files so they are easy to find, use, and share”
+        TEDC402 TEDC402_1_0.html h3 + body “to notice where data appears in everyday life”
+   47 blk   27 pg   8 mod  [(no tag within 8 lines)]  fam: XDLS 14, XGF 14, GEWHA 8, FRNO 5, ENGC 3
+        ENGC206 ENGC206_4_0.html (no tag within 8 lines) “identify the parts of a recipe”
+        FRNO901 FRNO901_2_0.html (no tag within 8 lines) “recognise familiar sounds and patterns in spoken French”
+        GEWHA GEWHA_0_0.html (no tag within 8 lines) “identify some German-speaking countries (e.g., Germany, Austria, Switz”
+   24 blk    5 pg   4 mod  [body]  fam: FRNO 12, FRFUN 7, TEDC 3, SSEA 2
+        FRFUN08 FRFUN08_0_0.html body  (line -2) “how mistakes help us to improve our communication in French,”
+        FRNO901 FRNO901_2_0.html body  (line -2) “to say your name”
+        SSEA203 SSEA203_3_0.html body  (line -2) “In this lesson you are learning to compare prices and think about valu”
+   14 blk    7 pg   1 mod  [insert accordion]  fam: XGF 14
+        XGF9006 XGF9006_1_0.html insert accordion  (line -4) “what Genius Hour is and how it helps us follow our passions”
+    4 blk    2 pg   2 mod  [lesson overview]  fam: ENGS 2, XLP 2
+        ENGS404 ENGS404_4_0.html lesson overview  (line -4) “about tools of creative writing.”
+        XLP04 XLP04_2_0.html lesson overview  (line -4) “to adapt the environment to suit sensory needs by using sensory strate”
+    3 blk    1 pg   1 mod  [lesson 3]  fam: ENGC 3
+        ENGC206 ENGC206_5_0.html lesson 3  (line -6) “to understand how informational texts are organised”
+    2 blk    2 pg   1 mod  [body text]  fam: XDLS 2
+        XDLS909 XDLS909_1_0.html body text  (line -4) “what a census is and how it is used to gather information about the di”
+    1 blk    1 pg   1 mod  [lesson introduction]  fam: XDLS 1
+        XDLS902 XDLS902_2_0.html lesson introduction  (line -8) “how to eat the rainbow.”
+    1 blk    1 pg   1 mod  [alert]  fam: XDLS 1
+        XDLS904 XDLS904_3_0.html alert “This mahi will also help you with your learning for XDLS909 Living in ”

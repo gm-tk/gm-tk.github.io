@@ -1,0 +1,43 @@
+diff --git a/converter-v2/app/js/ContentConverter.js b/converter-v2/app/js/ContentConverter.js
+index 1b74f38..18f37ea 100644
+--- a/converter-v2/app/js/ContentConverter.js
++++ b/converter-v2/app/js/ContentConverter.js
+@@ -5808,6 +5808,12 @@ class ContentConverter {
+ 				const openTags = new Set(loiCfg.opening_tags ?? ["title bar", "h1", "h2", "lesson content", "page", "body", "sub head"]);
+ 				const listRe = /^\s*(?:[•\-–—*·o]|\d+[.)]|[a-z][.)])\s+/i;
+ 				const foldT = (t) => Utils.Fold(String(t || "")).replace(/[*_]/g, "").trim();
++				// ROUND 468 (data lesson_overview_implicit.lead_heading_members; env LESSONWALTH2_OFF): a lead typed
++				// as a top-level heading (`[H2] We are learning about:`) is a block MEMBER too, not only a lead.
++				const lhmCfg = loiCfg.lead_heading_members;
++				const lhmTags = lhmCfg && lhmCfg.enabled !== false
++					&& !(typeof process !== "undefined" && process.env && process.env[lhmCfg.env ?? "LESSONWALTH2_OFF"])
++					? new Set((lhmCfg.tags ?? []).map(String)) : null;
+ 				const textOf = (x) => x.type === "black" ? String(x.text || "")
+ 					: (x.type === "tag" ? (String(x.blackAfter || "").trim() || this.#norm.RenderText(x.text) || "") : "");
+ 				// a LEAD line: short ("We are learning:", "You will show your understanding by:"), never a prose sentence
+@@ -5826,7 +5832,7 @@ class ContentConverter {
+ 					const p = x.parse?.primary;
+ 					if (!p) return x.parse?.class === "instruction" || x.parse?.class === "noise";
+ 					if (p.tag === "list") return true;
+-					if (["body", "sub head", "h3", "h4", "h5"].includes(p.tag)) {
++					if (["body", "sub head", "h3", "h4", "h5"].includes(p.tag) || (lhmTags && lhmTags.has(p.tag))) {
+ 						const lines = String(x.blackAfter || "").split(/\n/).map((l) => l.trim()).filter(Boolean);
+ 						const own = this.#norm.RenderText(x.text) || "";
+ 						return (isLeadLine(own) || !own.trim()) && lines.every((l) => isLeadLine(l) || isListLine(l));
+diff --git a/converter-v2/data/Emit_Templates.json b/converter-v2/data/Emit_Templates.json
+index a1fb3e6..3ea4ef6 100644
+--- a/converter-v2/data/Emit_Templates.json
++++ b/converter-v2/data/Emit_Templates.json
+@@ -3411,6 +3411,12 @@
+ 			"env": "LESSONWALT_OFF",
+ 			"alias_words": ["overview"],
+ 			"lead_pattern": "^(we are learning|learning intentions?|you will show|how will i know|i can\\b|success criteria|wh[aā]inga ako|paearu angitu)",
++			"lead_heading_members": {
++				"_doc": "ROUND 468 (the autonomous loop's session 42 Round 5, 2026-09-24 — the placement census P4, `menu:flat -> body:free`). A WALT / SC lead typed as a TOP-LEVEL heading — `[H2] We are learning about:` / `[H2] You will show your understanding by:` (CBI1008 lessons 1 / 2 / 5) — was found as the lead (isLead accepts any h1-h6) but refused as a block MEMBER (isMember accepted only body / sub head / h3 / h4 / h5), so the block never formed: the lesson menu shipped EMPTY and the WALT / success lists landed in the body as <h3>s, where the gold's menu holds them (<h5> + <ul>). tags = the extra heading tags a member may be when its own text is a lead line and every line after it is a lead or a list line (the h3-h5 rule unchanged).",
++				"enabled": true,
++				"env": "LESSONWALTH2_OFF",
++				"tags": ["h1", "h2", "h6"]
++			},
+ 			"max_scan_items": 14,
+ 			"opening_tags": ["title bar", "h1", "h2", "lesson content", "page", "body", "sub head"],
+ 			"_doc": "ROUND 432 (the autonomous loop's session 35 Round 3, 2026-09-22 — the module-menu chrome region; KB 01B 'Lesson Pages — Simplified Module Menu': the lesson page's menu IS its WALT / SC block, canonical labels whatever the writer's wording). The gold's convention over every paired lesson page carrying a WALT / SC lead element (`outputs/_s35_r3_waltmenu.py`): the lead sits in the gold's MENU on 1,258 pages and in its body alone on 38 (0.97); Claude built the menu on 810 (the [Lesson Overview] path) and left the block in the BODY on 95 pages / 36 modules where the writer marked it `[Overview]` (TEDC402, ENGC206, CEDT501), typed it bare after `[Lesson content]` + the lesson heading (FRNO901) or bare after an `[H1] LESSON …` title (PES1004). On a LESSON page with a menu and NO [Lesson Overview] marker (nor the r148 bare red lead): (a) an `[Overview]` title-bar alias among the opening items is the overview marker (consumed — it is never the page title); else (b) the first WALT / SC lead item (a black line, or a body / heading tag whose text starts with lead_pattern) reached through opening items only (blank lines, instructions, the title bar / lesson heading, `[Lesson content]`, an empty body tag — opening_tags) starts the block, which the r-existing section-stop then bounds (text and menu-safe tags to the first structural item or heading). MenuBuilder's simplified lesson menu renders it exactly as the marked form (the lead → the canonical <h5>, bullets → the list). The TEDC401 / TEDC402 form whose block sits inside a 2-row layout TABLE under the alias is a recorded follow-up (12 pages / 2 modules: the table is not menu-safe, so the section-stop ends before it). Env LESSONWALT_OFF restores the marker-only route."

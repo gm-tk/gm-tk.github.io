@@ -1,0 +1,120 @@
+body:alert -> body:free: 1292 blocks; WT line not found 639
+  639 blk  224 pg 107 mod  [(text not in WT)]  fam: PES 84, HIS 83, ANZH 57, ENFUN 52, TRR 49
+        AGH1001 AGH1001_3_0.html (text not in WT) “Te Wehenga = separation”
+        AGH1002 AGH1002_1_0.html (text not in WT) “Soils form the basis of food production in Aotearoa New Zealand.”
+        AGH1003 AGH1003_2_0.html (text not in WT) “This is why earthworms come to the surface after heavy rain – to escap”
+  222 blk   88 pg  41 mod  [body]  fam: HPRE 38, SSOG 30, FRFUN 22, SSEA 19, ENGS 18
+        BLL252 BLL252_1_0.html body “There are two contractions we can come across often that do not follow”
+        BLL257 BLL257_2_0.html body  (line -2) “Lily and Tom walked through the park on a sunny day.”
+        BLLR201 BLLR201_1_1.html body “The two word phrases ending with have use 've.”
+   62 blk   26 pg  18 mod  [(no tag within 8 lines)]  fam: HPRE 14, CEDO 9, BLL 7, ENGS 7, BLLR 5
+        BLL257 BLL257_2_0.html (no tag within 8 lines) “Lily opened her bag. “Look what I’ve got,” she said. “Mum bought some ”
+        BLLR201 BLLR201_2_0.html (no tag within 8 lines) “We can use these parts to help us spell words and work out what they m”
+        BLLR202 BLLR202_2_0.html (no tag within 8 lines) “In some of these words, the base word ends in y, and the y changes to ”
+   36 blk   10 pg   5 mod  [image]  fam: CEDO 33, CEDR 1, CEDW 1, XLP 1
+        CEDO501 CEDO501_1_0.html image “Kōrero 1: Tiana's experience”
+        CEDO502 CEDO502_5_0.html image “Rua is into skateboarding. She has seen an expensive longboard online ”
+        CEDR501 CEDR501_8_0.html image  (line -5) “Education and events”
+   31 blk    5 pg   1 mod  [alert + h2]  fam: XGF 31
+        XGF9003 XGF9003_0_0.html alert + h2  (line -2) “What do you already know about how the brain works?”
+   28 blk   12 pg   5 mod  [h3]  fam: HPRE 17, HIS 7, XGF 2, ENG 1, ENO 1
+        ENG1007 ENG1007_0_0.html h3 “Assessment conditions”
+        ENO2060 ENO2060_3_0.html h3 “Important notes about visual digital texts”
+        HIS1007 HIS1007_1_0.html h3  (line -2) “You have learned about the Atlantic slave trade. You have learned the ”
+   20 blk    5 pg   4 mod  [h5]  fam: BLLR 18, SSCI 2
+        BLLR201 BLLR201_1_1.html h5 “Contraction spelling rules”
+        BLLR202 BLLR202_2_0.html h5  (line -4) “It often turns words into describing words.”
+        BLLR203 BLLR203_2_0.html h5 “What have we learned?”
+   19 blk    5 pg   3 mod  [body + body]  fam: TRR 19
+        TRR106 TRR106_1_0.html body + body “E mōhio ana koe ko tēhea kupu te ingoa? Me maumahara, mēnā kei te tīma”
+        TRR114 TRR114_1_0.html body + body “Whakamātau anō, kaua e māharahara mēnā ka hē koe!”
+        TRR116 TRR116_5_0.html body + body “Ko te tauākī he rerenga kōrero e whakamōhio mai ana i tētahi mea, e tu”
+   16 blk    4 pg   3 mod  [h3 + body]  fam: CEDO 12, ENGC 3, TEDC 1
+        CEDO502 CEDO502_7_0.html h3 + body “Short-term means what happens right now or within the next few months.”
+        ENGC204 ENGC204_3_0.html h3 + body “Justin Case quick tip!”
+        TEDC401 TEDC401_3_0.html h3 + body “Speak with your kaiako about collaboration opportunities with your cla”
+   15 blk    8 pg   1 mod  [alert rhs + h3]  fam: XGF 15
+        XGF9001 XGF9001_2_0.html alert rhs + h3  (line -2) “What qualities, strengths, and interests make me unique as a gifted āk”
+   14 blk    4 pg   1 mod  [text]  fam: ENGC 14
+        ENGC206 ENGC206_1_0.html text “Precise vocabulary helps the reader understand exactly what to do.”
+   13 blk    5 pg   1 mod  [lesson overview]  fam: XGF 13
+        XGF9001 XGF9001_2_0.html lesson overview  (line -2) “Who am I, and what makes me unique? What inspires me?”
+   11 blk    4 pg   1 mod  [alert.solid + h3]  fam: XGF 11
+        XGF9006 XGF9006_1_0.html alert.solid + h3 “What have we learned?”
+    8 blk    1 pg   1 mod  [please bold the 1 🔴🔴 st 🔴🔴  letter]  fam: ENGC 8
+        ENGC403 ENGC403_5_0.html please bold the 1 🔴🔴 st 🔴🔴  letter  (lin “Pace - our speed of speaking.”
+    8 blk    5 pg   2 mod  [alert + h3]  fam: HPRE 4, SSCI 4
+        HPRE301 HPRE301_1_0.html alert + h3 “Enhancing friendships: HPFUN303”
+        SSCI104 SSCI104_1_0.html alert + h3  (line -2) “Number lines can start from any point or number and go in both directi”
+    8 blk    2 pg   1 mod  [image: image4.png + h3]  fam: HPRE 8
+        HPRE301 HPRE301_9_0.html image: image4.png + h3  (line -4) “I can explain how bullying and harassment can be subtle.”
+    8 blk    1 pg   1 mod  [image + alert]  fam: OSAI 8
+        OSAI101 OSAI101_2_0.html image + alert “Let’s look at the top AI citizenship tips again:”
+    7 blk    4 pg   4 mod  [body text]  fam: GENO 4, HPRE 1, SCES 1, WJFUN 1
+        GENO901 GENO901_3_2.html body text “It is called das Eszett or scharfes S”
+        HPRE203 HPRE203_5_0.html body text “If you need help reading the bar chart then click on this link to watc”
+        SCES201 SCES201_1_0.html body text “Gravity is an invisible force that pulls everything toward each other,”
+    7 blk    1 pg   1 mod  [alert – image]  fam: PWY 7
+        PWY1001 PWY1001_2_3_0.html alert – image “Here is a checklist for the safe use of equipment:”
+    7 blk    3 pg   3 mod  [insert dropbox icon for microphone]  fam: XTAS 7
+        XTAS101 XTAS101_0_0.html insert dropbox icon for microphone  (lin “For example: how was this learning for you?”
+        XTAS102 XTAS102_0_0.html insert dropbox icon for microphone “We might ask you to use your voice to tell us about your learning. The”
+        XTAS103 XTAS103_0_0.html insert dropbox icon for microphone “We might ask you to use your voice to tell us about your learning. The”
+    6 blk    3 pg   3 mod  [h4]  fam: SSEA 3, ENGI 2, HIS 1
+        ENGI405 ENGI405_1_0.html h4  (line -6) “What techniques can I identify?”
+        HIS1007 HIS1007_3_0.html h4  (line -2) “If you want to learn more about how slavery exists in our time, please”
+        SSEA203 SSEA203_2_0.html h4 “Easy way to remember:”
+    6 blk    2 pg   1 mod  [body + item 64]  fam: PMT 6
+        PMT101 PMT101_1_0.html body + item 64 “Nā te mea i wikitoria a Tūmatauenga i tana pakanga ki a Tāne-Mahuta, i”
+    5 blk    1 pg   1 mod  [glossary]  fam: OSAI 5
+        OSAI201 OSAI201_1_0.html glossary  (line -2) “Step-by-step instructions that tell the computer what to do.”
+    5 blk    1 pg   1 mod  [modal]  fam: SSCI 5
+        SSCI104 SSCI104_2_0.html modal “Scientists know where humans came from by studying our DNA. To learn m”
+    4 blk    2 pg   2 mod  [alert + body]  fam: FRNO 4
+        FRNO901 FRNO901_0_0.html alert + body “Use the module activities, the lesson tasks and the FRFUNdamental conn”
+        FRNO902 FRNO902_4_0.html alert + body “some adjectives add e”
+    4 blk    1 pg   1 mod  [insert image 6 + image: image8.png]  fam: XDLS 4
+        XDLS909 XDLS909_3_0.html insert image 6 + image: image8.png  (lin “As an Aotearoa New Zealand citizen, you have responsibilities to:”
+    4 blk    3 pg   2 mod  [highlight text]  fam: XGF 4
+        XGF9001 XGF9001_2_0.html highlight text “Let’s explore what makes you, YOU!”
+        XGF9006 XGF9006_3_0.html highlight text “You are now ready to start learning, exploring, and discovering more a”
+    4 blk    4 pg   1 mod  [body + end alert]  fam: XGF 4
+        XGF9006 XGF9006_1_0.html body + end alert “In this lesson you have learned about what Genius Hour is and why it i”
+    4 blk    1 pg   1 mod  [insert alert box for these simon says di]  fam: XTAS 4
+        XTAS103 XTAS103_2_1.html insert alert box for these simon says di “Simon says, “Walk forwards.””
+    3 blk    1 pg   1 mod  [provide script and audio option]  fam: CEDR 3
+        CEDR501 CEDR501_6_0.html provide script and audio option  (line - “Pānui 1: The mixed-up message”
+    3 blk    1 pg   1 mod  [disposition + external link]  fam: OSSC 3
+        OSSC401 OSSC401_2_0.html disposition + external link  (line -2) “Are the photos real?”
+    3 blk    2 pg   2 mod  [alert]  fam: OSSC 2, OSSM 1
+        OSSC401 OSSC401_3_0.html alert  (line -3) “Act now or your account will be suspended!”
+        OSSM401 OSSM401_2_0.html alert  (line -2) “Recognise the 'rabbit hole' – get a trusted person to help monitor and”
+    3 blk    1 pg   1 mod  [quote]  fam: SSCI 3
+        SSCI104 SSCI104_4_0.html quote “Humanity's greatest strength has always been its ability to thrive tog”
+    3 blk    1 pg   1 mod  [highlight 🔴🔴]  fam: WJFUN 3
+        WJFUN205 WJFUN205_0_0.html highlight 🔴🔴 “Rotorua smells strong because of the sulphur.”
+    2 blk    1 pg   1 mod  [put into two boxes.]  fam: CEDO 2
+        CEDO501 CEDO501_4_1.html put into two boxes.  (line -3) “A student loan is a loan from the government that you use to pay cours”
+    2 blk    1 pg   1 mod  [alert + create something like the image below.]  fam: CEDO 2
+        CEDO502 CEDO502_1_0.html alert + create something like the image  “Interest is the extra money you pay when you borrow money or earn when”
+    2 blk    2 pg   2 mod  [end alert]  fam: ENGC 1, XGF 1
+        ENGC206 ENGC206_5_0.html end alert “Super tip! A food blog is not just instructions, it helps the reader c”
+        XGF9006 XGF9006_3_0.html end alert “You might have already come across big questions in EXPlore or another”
+    2 blk    1 pg   1 mod  [image link]  fam: HIS 2
+        HIS1007 HIS1007_1_0.html image link  (line -2) “On James Cook's first voyage to New Zealand in 1769, scientist Joseph ”
+    2 blk    1 pg   1 mod  [external link video]  fam: OSSC 2
+        OSSC401 OSSC401_1_0.html external link video  (line -2) “Never send explicit photos.”
+    2 blk    1 pg   1 mod  [solid alert + 🔴🔴 item 37 🔴🔴 : image]  fam: PMT 2
+        PMT101 PMT101_1_0.html solid alert + 🔴🔴 item 37 🔴🔴 : image “Ka manaaki, ka tiaki tātou i a tātou nā te mea nā te whakapapa tātou i”
+    2 blk    1 pg   1 mod  [body + item 94]  fam: PMT 2
+        PMT101 PMT101_2_0.html body + item 94 “Nā te mea i wikitoria a Tūmatauenga i te pakanga ki a Tāne-Mahuta, i ā”
+    2 blk    2 pg   2 mod  [alert photo]  fam: PWY 2
+        PWY1001 PWY1001_1_2_0.html alert photo “Your focus determines your reality.”
+        PWY1002 PWY1002_1_2_0.html alert photo “An expectation is a belief or understanding about how someone should b”
+    2 blk    2 pg   2 mod  [h2]  fam: PWY 1, XLP 1
+        PWY1002 PWY1002_2_2_0.html h2  (line -2) “Communication is the process of exchanging information, ideas, thought”
+        XLP06 XLP06_2_0.html h2 “Sleep is so important, it is our superpower”
+    2 blk    1 pg   1 mod  [alert solid + alert solid]  fam: TRR 2
+        TRR114 TRR114_1_0.html alert solid + alert solid “Kia maumahara, he momo kuoro anō kei te reo Māori kāre i te ripanga ne”
+    2 blk    1 pg   1 mod  [alert.solid + h2]  fam: XGF 2
+        XGF9002 XGF9002_0_0.html alert.solid + h2 “Parent/whānau handbook”
