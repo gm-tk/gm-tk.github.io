@@ -1829,7 +1829,8 @@ class Config {
 	// ROUND 473 (260620.37): THE MODAL'S SINGLE-LINK BUTTON NEVER SWALLOWS THE WRITER'S WORDS (session 43 Round 2). interactive_builders.modal.doc_button_text_fence — a content-carrying modal falls through to the round-280 set composer (or its box) instead of shipping as one bare button. Env MODALBTNTEXT_OFF.
 	// ROUND 474 (260620.38): KB c52 — EVERY iSTOCK IMAGE CARRIES ITS TITLE AS ALT TEXT (session 43 Round 5; the FULL backstop). MediaBuilder.FillWidgetAlts, last in PageAssembler: an <img alt=""> naming iStock-<id> takes the verified acks title, else the module's URL-slug title. Env WIDGETALT_OFF.
 	// ROUND 475 (260620.39): KB c75 — THE MODULE MENU KEEPS THE WRITER'S INLINE LINKS (session 43 Round 7). MenuBuilder's text buffers carry their items' block.links into ListsAndRuns.renderBlackText (the free-body weave). Env MENULINKS_OFF.
-	static AppVersion = "260620.39";
+	// ROUND 476 (260620.40): KB c75 FOR BUILT WIDGETS (session 43 Round 8). ContentConverter.#interactivePlaceholder's renderBlock weaves the bundle's own public-web links into the widget's prose; renderInline (labels / faces / triggers) stays link-free. Env WIDGETLINKS_OFF.
+	static AppVersion = "260620.40";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

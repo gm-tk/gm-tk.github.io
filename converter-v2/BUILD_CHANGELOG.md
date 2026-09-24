@@ -1,5 +1,26 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (round 476, build 260620.40) — KB CONSTRAINT 75 FOR BUILT WIDGETS: the writer's inline links in a widget's PROSE (panel bodies, the members' prose around it) keep their href — public web pages only; labels, faces and triggers stay link-free
+
+### 1. WHAT CHANGED
+
+**The find** (session 43 Round 8 — the r475 link census's next path; debug harness `outputs/_s43_r8_linkdbg.cjs`, which hooks `inlineMarkup` / `renderBlackText` on a phrase): AGH1009-7.0's "One example of precision agriculture is the Yara N-Sensor (__Yara N-Sensor – to variably apply nitrogen | Yara New Zealand__ [LINK: yara.co.nz/…])" is rendered by the carousel builder (`#carouselTableSlides` → the widget `renderBlock` callback) with NO links: `ContentConverter.#interactivePlaceholder` handed every widget builder `renderInline` / `renderBlock` callbacks that pass `[]` / `undefined` — the hover-definition stitch is deliberately off inside widgets, and the link weave had been switched off with it. So every writer inline link inside a built widget, or in the prose the round-353 members rule renders around it, lost its href.
+
+**Measured three ways before shipping** (`_s42_probe_run.sh r476 ON / SAVE` + `outputs/_s43_r8_linkprec.py`: every href the ON pages add, by target kind × whether the gold BODY carries the URL): (1) all links, both callbacks — 715 added, **515 on picture / stock / developer-asset hosts the gold never links** (iStock picture labels, Drive audio folders): wrong; (2) those targets excluded (+ YouTube / Vimeo — the gold's YouTube hrefs are acknowledgement credits, its video titles unlinked) — 77 added, but `renderInline` put a link on ENGS101's modal TRIGGER BUTTON and on TEFUN03's flip-card FRONTS (a click would navigate instead of open / flip): wrong; (3) **`renderBlock` only — 49 links on 16 pages / 14 modules, every one inside a `<p>` / `<li>`**: the gold body carries 16 of the URLs (AGH1009's Yara, ANZH205's Te Papa activity book, TWHK902's Count Us In / #ActNow, OSAH501 / OSGM501's Netsafe mailto …); the other 33 are public resources the writer linked (ENGI201's School Journal list in its accordion panels) — NAMED overrides of **KB constraint 75** ("inline → anchor").
+
+**The fix** (`ContentConverter.#widgetLinks` + the `renderBlock` callback in `#interactivePlaceholder`; data `Emit_Templates.interactive_builders._widget_links` {enabled, env, exclude_target_pattern}; env **`WIDGETLINKS_OFF`**, byte-identical OFF): the widget's block prose weaves the bundle's own hyperlinks (every opener / member item's and captured table's `block.links`) except picture / stock / Google-image / Drive / Docs / SharePoint / D2L / media-file / YouTube / Vimeo targets; `renderInline` (labels, faces, triggers) stays link-free; the hover stitch stays off.
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 3222 / 3222 identical; ON 16 pages / 14 modules**; regeneration + the 12-module spot-check (`_r476_regen.sh`): 0 truly stale, 12 / 12 byte-identical; `scoped_ship.sh` **PASS** (14 ⊆ 14).
+
+### 3. PROTECTED GATES
+
+- Skeleton **55.2309 % → 55.2317 % @ 2491 (+0.0008pp)**, RAW 39.192 → 39.191 %; ≥50 1577, ≥75 276, ≥90 25; 1 mover: **AGH1009_7_0 +2.0** (the gold links the same sentence); movers outside the affected set 0; compare_structure / body / clean / leak and every verifier RESULT line IDENTICAL to r475; 17 selftests + the skeleton selftest green; the feature index green; the miner 197 CANDIDATE @ 2491.
+- Plateau (§4): a KB-rule round predicted skeleton-neutral (inside a widget) — +0.0008pp; neither counts nor resets: **2 of 3** stands.
+
+**Ledger:** scoped #2 since the r474 FULL · data `interactive_builders._widget_links` · env `WIDGETLINKS_OFF` · code `ContentConverter.#widgetLinks` / `#interactivePlaceholder` · tools `outputs/_s43_r8_{linkdbg.cjs,linkprec.py}`, `_r476_{regen,postship,checksums}.sh`, `_r476_finalise.py`. **Follow-ups (recorded):** the remaining link paths — activity boxes (ANZH104's Google Lens / Seek), alerts (OSBY401's Netsafe form), table cells (a precision question: 54 gold-kept vs 388 picture-source pointers), flat body sentences not in a widget bundle.
+
 ## 2026-09-24 (round 475, build 260620.39) — KB CONSTRAINT 75 IN THE MODULE MENU: the writer's inline links keep their href — the menu's text buffers now carry their items' hyperlinks into the free-body weave; the NCEA standard pages in the Standards / Information tabs, the modules' glossary and resource links
 
 ### 1. WHAT CHANGED

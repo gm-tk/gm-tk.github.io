@@ -1,6 +1,6 @@
 # DIFF_QUEUE.md — the diff miner's ranked class queue (LOOP__Autonomous_Rounds.md §1d)
 
-**Produced:** 2026-09-24 21:29 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD 050a719; Claude corpus 545 dirs). **Population:** the skeleton gate's own — 2491 paired pages / 530 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 95.0 s.
+**Produced:** 2026-09-24 22:07 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD 6239f7f; Claude corpus 545 dirs). **Population:** the skeleton gate's own — 2491 paired pages / 530 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 90.5 s.
 
 **What a row is.** One CLASS = (region, parent element, gold form, Claude form, direction) over every differing skeleton line of every paired page — the same lines, labels, widget collapse and difflib alignment the PRIMARY gate scores (each element its own line so it can be quoted). Direction: MISSING = gold has it, Claude lacks it; EXTRA = Claude has it, gold lacks it; SUBSTITUTED = same position, different tag / class / wrapper; MOVED = same text, different place. Consensus = of the gold pages in the group where the region exists, the share carrying the gold form (for EXTRA: the share NOT carrying Claude's form). Derivable = the gold line's text is in the module's parsed Writers Template (round-110 tolerance); structure-only differences are always derivable.
 
@@ -8,8 +8,8 @@
 
 ## Summary
 
-- differing skeleton lines: 276111 — by direction {'MISSING': 144518, 'SUBSTITUTED': 25785, 'EXTRA': 96653, 'MOVED': 9155}
-- by region: {'module-code': 23, 'title': 356, 'header': 6, 'module-menu': 13150, 'phases-nav': 57, 'crumbs': 57, 'footer': 2570, 'acks': 1394, 'activity': 98865, 'body': 158037, 'root': 1596}
+- differing skeleton lines: 276110 — by direction {'MISSING': 144517, 'SUBSTITUTED': 25785, 'EXTRA': 96653, 'MOVED': 9155}
+- by region: {'module-code': 23, 'title': 356, 'header': 6, 'module-menu': 13150, 'phases-nav': 57, 'crumbs': 57, 'footer': 2570, 'acks': 1394, 'activity': 98865, 'body': 158036, 'root': 1596}
 - classes: 9363 — CANDIDATE 197, below floor 8866, the rest below consensus / not derivable
 
 ## Completeness census — the repeating chrome (§1d item 4)

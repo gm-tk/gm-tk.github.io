@@ -9914,6 +9914,31 @@ class ContentConverter {
 			|| [...bundle.openerItems, ...bundle.memberItems].some((it) => this.#bundleItemHasText(it));
 	}
 
+	/**
+	 * ROUND 476 — the hyperlinks a widget bundle carries (every opener / member item's block.links, every captured
+	 * table's block.links), for the built widget's inline weave; [] when the flag is off (the r475 output).
+	 * Data interactive_builders._widget_links {enabled, env WIDGETLINKS_OFF}.
+	 */
+	static #widgetLinks(bundle) {
+		const cfg = DataService.Data.EmitTemplates.interactive_builders?._widget_links;
+		if (!cfg || cfg.enabled === false) return [];
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "WIDGETLINKS_OFF"]) return [];
+		const out = [], seen = new Set();
+		// a picture / stock / developer-asset target is the writer's pointer for the developer (the gold links 32 of
+		// 547 such targets inside widgets), never a learner link — measured `outputs/_s43_r8_linkprec.py`
+		const skip = cfg.exclude_target_pattern ? new RegExp(cfg.exclude_target_pattern, "i") : null;
+		const add = (ls) => {
+			for (const l of (ls ?? [])) {
+				const k = `${l?.text}\u0000${l?.target}`;
+				if (!l?.text || !l?.target || seen.has(k) || (skip && skip.test(String(l.target)))) continue;
+				seen.add(k); out.push(l);
+			}
+		};
+		for (const it of [...(bundle?.openerItems ?? []), ...(bundle?.memberItems ?? [])]) add(it?.block?.links);
+		for (const t of (bundle?.tables ?? [])) add(t?.links ?? t?.block?.links);
+		return out;
+	}
+
 	static #interactivePlaceholder(bundle, run, opts = null) {
 		// FIRST: can we build this interactive for REAL? The InteractiveBuilder
 		// handles the small set of "easy" widgets we fully understand. It returns
@@ -9921,10 +9946,20 @@ class ContentConverter {
 		// case we fall straight through to the honest orange placeholder below.
 		// (Markup lives in data/Emit_Templates.json → interactive_builders.)
 		// ROUND 451: opts.handoffOnly (the bilingual keystone section's bundles) skips the build.
+		// ROUND 476 (KB c75 "inline → anchor"; data interactive_builders._widget_links; env WIDGETLINKS_OFF): a built
+		// widget's text — its internals AND the prose the round-353 members rule renders around it — weaves the bundle's
+		// OWN hyperlinks (every member's block.links), the hover-definition stitch staying off exactly as before. Before
+		// it every writer link inside or beside a built widget lost its href (AGH1009-7.0's "Yara N-Sensor" beside a
+		// carousel; the census `outputs/_s43_r7_inlinelinks.py`).
+		const wl = this.#widgetLinks(bundle);
 		const built = opts?.handoffOnly ? null : InteractiveBuilder.Build({
 			bundle,
 			run,
 			templates: DataService.Data.EmitTemplates.interactive_builders,
+			// ROUND 476: renderInline renders a widget's LABELS and FACES (a flip-card front, a modal / accordion trigger, a
+			// button) — a link there would navigate instead of flip / open (TEFUN03's thinker-key cards, ENGS101's modal
+			// button), so it stays link-free; the bundle's links weave into renderBlock's prose only (panel bodies, the
+			// members' prose around the widget).
 			renderInline: (line) => ListsAndRuns.inlineMarkup(line, [], false),   // built-widget internals are deliberately outside the free-body hover-definition weaving scope (see hoverStitch)
 			// The rich-accordion fallback renders panel bodies with the converter's OWN body
 			// machinery so they stay identical to the rest of the page — renderBlock =
@@ -9932,7 +9967,7 @@ class ContentConverter {
 			// renderNested = #interactivePlaceholder for an absorbed nested sub-bundle (for
 			// example a shapeHover widget nested inside another one falls back to its own
 			// honest cv2-interactive placeholder, addressed by its own index).
-			renderBlock: (text) => ListsAndRuns.renderBlackText(text, run, undefined, false),   // built-widget internals are deliberately outside the free-body hover-definition weaving scope
+			renderBlock: (text) => ListsAndRuns.renderBlackText(text, run, wl, false),   // built-widget internals are deliberately outside the free-body hover-definition weaving scope
 			renderNested: (sub) => this.#interactivePlaceholder(sub, run),
 			// The rich-tabs pane renderer needs the kept-table emitter for a captured
 			// data-table member (for example the BLL subject family's letter mats), so the
