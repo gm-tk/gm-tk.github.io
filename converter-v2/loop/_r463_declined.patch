@@ -1,0 +1,44 @@
+diff --git a/converter-v2/app/js/ContentConverter.js b/converter-v2/app/js/ContentConverter.js
+index 1b74f38..39e7021 100644
+--- a/converter-v2/app/js/ContentConverter.js
++++ b/converter-v2/app/js/ContentConverter.js
+@@ -515,10 +515,21 @@ class ContentConverter {
+ 		const out = [];
+ 		// a tile's "We are learning: … I can: …" run (the `[Lesson Overview]` / tile
+ 		// `[Overview]` form, no `[Learning intention for tile]` tag) → li + sc buckets
++		// ROUND 463 (data tile_pages.year_lead; env TILEYEAR_OFF): the writer's "Year 3 Learning
++		// Intention" / "Year 3 Success Criteria" LABEL line opens its side without being a lead —
++		// the pane carries its own canonical title — so the run's lead stays "We are learning:" /
++		// "I can:" (WJFUN116 tile 1: the run shipped in the body and the pane was an empty heading).
++		const yl = cfg.year_lead;
++		const yearOn = yl && yl.enabled !== false
++			&& !(typeof process !== "undefined" && process.env && process.env[yl.env ?? "TILEYEAR_OFF"]);
++		const yLiRe = yearOn ? new RegExp(yl.li_label_pattern, "i") : null;
++		const yScRe = yearOn ? new RegExp(yl.sc_label_pattern, "i") : null;
+ 		const splitLiSc = (lines) => {
+ 			const li = [], sc = []; let side = null;
+ 			for (const ln of lines) {
+ 				const t = ln.trim(); if (!t) continue;
++				if (yLiRe && side === null && yLiRe.test(t)) { side = li; continue; }
++				if (yScRe && side !== null && yScRe.test(t)) { side = sc; continue; }
+ 				if (side === null && liLeadRe.test(t)) side = li;
+ 				else if (scLeadRe.test(t) && !/^[•◦▪]/.test(t)) side = sc;
+ 				if (side === null) return null;   // the run does not open with a learning lead — not a tile LI/SC block
+diff --git a/converter-v2/data/Emit_Templates.json b/converter-v2/data/Emit_Templates.json
+index 6a93e53..53db37a 100644
+--- a/converter-v2/data/Emit_Templates.json
++++ b/converter-v2/data/Emit_Templates.json
+@@ -5505,6 +5505,13 @@
+ 			"tile_pages": {
+ 				"enabled": true,
+ 				"env": "TILEPAGE_OFF",
++				"year_lead": {
++					"enabled": true,
++					"env": "TILEYEAR_OFF",
++					"_doc": "ROUND 463 (the autonomous loop's session 41 Round 11, 24 Sept 2026 — the WJFUN family, §1d exception 1). A tile's `[Lesson Overview]` run whose LI side opens with the writer's LABEL line \"Year 3 Learning Intention(s)\" (and whose SC side opens with \"Year 3 Success Criteria\") was refused by splitLiSc — the label is not `li_lead_pattern` — so the tile's LI / SC shipped in the tile's body as `p` / `ul` and its menu pane was an empty 'Learning Intentions' heading (WJFUN116 tile 1; 11 WJFUN modules carry an empty LI pane). A line matching li_label_pattern opens the LI side WITHOUT becoming its lead (the pane has its own canonical title; the lead stays 'We are learning:'); sc_label_pattern switches to the SC side the same way. Only year / level-prefixed labels — a bare 'Success criteria' lead keeps its r410 meaning. Env TILEYEAR_OFF.",
++					"li_label_pattern": "^(?:year|level)\\s*\\d+\\s+learning\\s+intentions?\\s*:?$",
++					"sc_label_pattern": "^(?:year|level)\\s*\\d+\\s+success\\s+criteria\\s*:?$"
++				},
+ 				"_doc": "ROUND 410 (session 28, Task 3 — the WJFUN 'My Te Kura Writing' FUNdamentals family, 21 modules). THE TILE-PAGE fundamentals dialect: the writer authors ONE single-file module whose lessons are TILES — `[Tile N content]` (or `[Tile N]`) opens each, `[Tile N content ENDS]` closes it; inside a tile `[H1] <title>` names it, `[Overview]` + `[Learning intention for tile]` (a 'We are learning:' lead + bullets) + `[Success criteria for tile]` ('I can:' + bullets) carry its menu pane, `[Lesson content]` opens the body; before the tiles the module's `[Overview]` holds the `[H3] Knowledge Year N` / `[H3] Practices Year N` bullet blocks (the menu's Overview pane, two columns), the `[Introduction content]` prose, an `[Insert links/buttons to the individual tile sections …]` tile table (rendered by the tile row, so consumed) and the `[RHS side tab navigation: for all pages/tiles]` list of `Tab N <label>` lines (the phases nav's labels, consumed). Measured on the 21 golds (outputs/_s28_t3_tiles.py): the distinct `[Tile N …]` count equals the gold's fundamentalsPanel count on 16 / 21 (the `Tab N` list on 15 / 21; both together 19 / 21 — WJFUN105's developer split one tile in two, WJFUN112's nav lists a 'Test' phase without a panel). The gold form: `div.phases` nav labelled with the tab labels, `div.introduction` ending in a `row phaseContainer` of `col-md-3 col-6` phaseLink tiles (h3 label + phaseImg), one `fundamentalsPanel phase=N` per tile opening with the tile title as `<h2>`, and a tabs menu Overview + one pane per tile (ONE `col-md-8 col-12` column: `<h5>Learning Intentions</h5><p>We are learning:</p><ul>…</ul><p>I can:</p><ul>…</ul>`). Rides the r265 level-pages machinery: the pre-pass pushes a phasebreak per tile, synthesizes the tile title as a writer heading (title_writer_level), fills run._levelMenu (PanelsBuilder.#levelPagesNav builds nav + tiles from the registry row; MenuBuilder.#levelTabs composes the panes — the NEW menu.pane_form 'single_col' puts LI + SC in one column). Registry-gated (WJFUN|1-3 / 4-6 / 7-8) + fundamentals body class + single-file; a module with fewer than min_markers distinct tile markers is left exactly as before. Env TILEPAGE_OFF reverts the whole dialect.",
+ 				"marker_pattern": "^\\[tile\\s*(\\d+)(?:\\s+content)?\\]$",
+ 				"marker_ends_pattern": "^\\[tile\\s*\\d+\\s+content\\s+ends\\]$",

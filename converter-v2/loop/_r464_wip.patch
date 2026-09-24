@@ -1,0 +1,44 @@
+diff --git a/converter-v2/app/js/ContentConverter.js b/converter-v2/app/js/ContentConverter.js
+index 1b74f38..9900bd7 100644
+--- a/converter-v2/app/js/ContentConverter.js
++++ b/converter-v2/app/js/ContentConverter.js
+@@ -6783,11 +6783,19 @@ class ContentConverter {
+ 		if (!cfg || cfg.enabled === false || !bl || bl.enabled === false) return;
+ 		if (typeof process !== "undefined" && process.env
+ 			&& (process.env.TODONOTE_OFF || process.env.TODOBLACK_OFF)) return;
++		// ROUND 464 (data black_line.unbracketed; env TODOMERGELINE_OFF): the writer's WHOLE-LINE,
++		// un-bracketed `Merge item 7` — the only content of a CHI1003 / 1004 / 1005 / JPN1004 lesson —
++		// takes the same merge note a bracketed `[Merge item 7]` line does (it shipped as a bare <p>).
++		const ub = bl.unbracketed;
++		const ubRe = ub && ub.enabled !== false && ub.pattern
++			&& !(typeof process !== "undefined" && process.env && process.env[ub.env ?? "TODOMERGELINE_OFF"])
++			? new RegExp(ub.pattern, "i") : null;
+ 		for (const it of bodyItems) {
+ 			if (!it || it.type !== "black" || it.consumedBy !== undefined || it._consumed) continue;
+ 			// the WHOLE line must be the bracket — a marker sitting inside real
+ 			// prose is content, and a bulleted line belongs to its list
+-			if (!/^\s*\[[^\]\n]*\]\s*$/.test(String(it.text ?? ""))) continue;
++			if (!/^\s*\[[^\]\n]*\]\s*$/.test(String(it.text ?? ""))
++				&& !(ubRe && ubRe.test(String(it.text ?? "")))) continue;
+ 			const note = this.#assetTodoNote(it.text, tpl, it.block?.links);
+ 			if (!note) continue;
+ 			it.type = "assettodo";
+diff --git a/converter-v2/data/Emit_Templates.json b/converter-v2/data/Emit_Templates.json
+index 6a93e53..1b3a95a 100644
+--- a/converter-v2/data/Emit_Templates.json
++++ b/converter-v2/data/Emit_Templates.json
+@@ -557,7 +557,13 @@
+ 			"black_line": {
+ 				"enabled": true,
+ 				"_doc": "THE RIDER, and a CORRECTION TO THE CATALOGUE. The catalogue says BLLR201's visible <p>[Audiovisual item 1]</p> is 'a data marker rendered through the normal text path' and can therefore be fixed by the note change. IT CANNOT: measured against the LIVE extractor (outputs/_probe_r300_bllr201.cjs), that block carries NO red span at all — the writer made the bracket the ANCHOR TEXT of a hyperlink to the asset — so it is a BLACK item, never reaches the orphan branch, and prints no flag. It leaks because the gate's own LITERAL_TAG vocabulary in _structural_defect_audit.py does not list 'item'/'audiovisual item'/'merge item', so the 5 visible occurrences corpus-wide are invisible to the leak count (not, as the catalogue says, because of the render path). This rule catches the honest ones: a BLACK item whose ENTIRE text is one of the three families' brackets becomes the same todo note, with any hyperlink target carried in the note text. FIRE POPULATION corpus-wide: EXACTLY 2 (BLLR201_0_0 [Audiovisual item 1], BLLR201_2_0 [audiovisual item 4]). The other three visible occurrences (TRR102/TRR106/TRR109 [Item N]) sit inside BILINGUAL TABLE CELLS beside leaking [Image]/[Body] markers — the standing r167 reoMode class, rendered by the table path, untouched by construction. Env TODOBLACK_OFF reverts the rider alone.",
+-				"whole_line": true
++				"whole_line": true,
++				"unbracketed": {
++					"enabled": false,
++					"env": "TODOMERGELINE_OFF",
++					"_doc": "ROUND 464 (the autonomous loop's session 41 Round 12, 24 Sept 2026 — a recognition round). CHI1003 / CHI1004 / CHI1005 / JPN1004 write every lesson as `[Lesson content]` + ONE black line `Merge item N` (30 lesson pages; the docx holds nothing else — the merged material is outside the input, Needs Chris #21). The whole-bracket test above never saw the un-bracketed line, so it shipped as a bare <p>Merge item 7</p>. A black line that IS `pattern` (the whole line) now takes the merge family's note ('Merged content from another course (item N).') like its bracketed twin. Skeleton-neutral by design (one p for one p). Env TODOMERGELINE_OFF.",
++					"pattern": "^\\s*merge\\s+items?\\s+\\d+(?:\\s*(?:,|and|&)\\s*\\d+)*\\s*\\[?\\s*$"
++				}
+ 			}
+ 		},
+ 		"orphan_instruction_reclass": {

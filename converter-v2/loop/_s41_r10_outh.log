@@ -1,0 +1,97 @@
+  726 (b) a box later
+  379 (c) no box after
+   99 (a2) box opens after 1-2 elements
+   39 (a) box opens right after (0 elements between)
+TRR     {'(b) a box later': 54, '(c) no box after': 55, '(a2) box opens after 1-2 elements': 1}
+HPFUN   {'(b) a box later': 37, '(a2) box opens after 1-2 elements': 5, '(c) no box after': 18}
+WJFUN   {'(b) a box later': 45, '(c) no box after': 4, '(a2) box opens after 1-2 elements': 5, '(a) box opens right after (0 elements between)': 4}
+CHFUN   {'(b) a box later': 48, '(c) no box after': 3}
+XDLS    {'(c) no box after': 8, '(b) a box later': 16, '(a2) box opens after 1-2 elements': 9, '(a) box opens right after (0 elements between)': 6}
+CEDO    {'(b) a box later': 10, '(c) no box after': 24, '(a2) box opens after 1-2 elements': 1}
+AGH     {'(b) a box later': 23, '(c) no box after': 7, '(a2) box opens after 1-2 elements': 1, '(a) box opens right after (0 elements between)': 3}
+PWY     {'(c) no box after': 19, '(a2) box opens after 1-2 elements': 6, '(b) a box later': 9}
+BLL     {'(b) a box later': 31}
+HES     {'(b) a box later': 9, '(a) box opens right after (0 elements between)': 2, '(c) no box after': 20}
+TEDC    {'(a2) box opens after 1-2 elements': 2, '(b) a box later': 21, '(a) box opens right after (0 elements between)': 2, '(c) no box after': 6}
+ENGC    {'(b) a box later': 24, '(a2) box opens after 1-2 elements': 4, '(c) no box after': 1}
+MXFUN   {'(b) a box later': 28}
+XGF     {'(b) a box later': 12, '(c) no box after': 15}
+MXFL    {'(a2) box opens after 1-2 elements': 1, '(b) a box later': 17, '(a) box opens right after (0 elements between)': 2, '(c) no box after': 6}
+FRNO    {'(b) a box later': 5, '(c) no box after': 20}
+HPRE    {'(b) a box later': 16, '(a2) box opens after 1-2 elements': 4, '(c) no box after': 5}
+ENGR    {'(b) a box later': 24}
+PHE     {'(a2) box opens after 1-2 elements': 5, '(c) no box after': 8, '(b) a box later': 11}
+CEDT    {'(b) a box later': 12, '(c) no box after': 6, '(a2) box opens after 1-2 elements': 2}
+OSBY    {'(b) a box later': 7, '(a2) box opens after 1-2 elements': 10, '(c) no box after': 3}
+CEDK    {'(b) a box later': 9, '(a) box opens right after (0 elements between)': 1, '(c) no box after': 9}
+HIS     {'(c) no box after': 9, '(b) a box later': 5, '(a2) box opens after 1-2 elements': 2, '(a) box opens right after (0 elements between)': 3}
+ENFUN   {'(a2) box opens after 1-2 elements': 5, '(b) a box later': 12}
+CEDW    {'(b) a box later': 14, '(c) no box after': 2}
+
+== (b) a box later
+   AGH1001 AGH1001_1_0.html h1: agricultural and horticultural products
+   AGH1001 AGH1001_3_0.html h3: self check true or false
+   AGH1003 AGH1003_2_0.html h1: irrigation systems and production types
+   AGH1003 AGH1003_2_0.html h1: irrigation and primary production in new zealand
+   AGH1003 AGH1003_3_0.html h1: fertiliser application
+   AGH1003 AGH1003_4_0.html h3: benefits of organic matter
+   AGH1003 AGH1003_5_0.html h1: lime and soil properties
+   AGH1003 AGH1003_6_0.html h1: cultivation and the benefits on soil
+   AGH1003 AGH1003_7_0.html h1: drainage systems
+   AGH1003 AGH1003_8_0.html h1: crop rotation case study
+   AGH1004 AGH1004_2_0.html h3: reflective questions
+   AGH1004 AGH1004_3_0.html h4: a year in a kiwifruit orchard
+   AGH1005 AGH1005_2_0.html h4: leaves and buds review
+   AGH1005 AGH1005_6_0.html h3: knowledge self check
+   AGH1005 AGH1005_8_0.html h3: sexual reproduction
+
+== (c) no box after
+   AGH1002 AGH1002_6_0.html h3: organic matter or not
+   AGH1002 AGH1002_6_0.html h1: biological properties of soil
+   AGH1004 AGH1004_5_0.html h3: knowledge check sorting activity
+   AGH1006 AGH1006_1_0.html h3: practical examples
+   AGH1006 AGH1006_3_0.html h3: problem solving scenario
+   AGH1006 AGH1006_6_0.html h3: weed control investigation
+   AGH1009 AGH1009_2_0.html h1: the nitrogen cycle and carbon cycle diagrams
+   ANZH105 ANZH105_5_0.html h3: pictograph of taonga objects
+   ANZH205 ANZH205_6_0.html h1: after te tiriti
+   ANZH401 ANZH401_8_0.html h1: everybody s story
+   ART1004 ART1004_0_0.html h3: how to present your learning
+   BLLR201 BLLR201_3_0.html h3: strategy while you read
+   CBI1004 CBI1004_1_0.html h3: characteristics
+   CBI1004 CBI1004_5_0.html h3: genes and alleles
+   CBI1004 CBI1004_5_0.html h3: proteins
+
+== (a2) box opens after 1-2 elements
+   AGH1004 AGH1004_6_0.html h3: land use change
+   ANZH101 ANZH101_1_0.html h3: ngā kupu nui important words
+   ANZH401 ANZH401_11_0.html h3: mending the hurt
+   ARFUN03 ARFUN03_0_0.html h4: focus activity
+   BLLR201 BLLR201_2_0.html h3: some trickier examples
+   BLLR201 BLLR201_2_0.html h3: some trickier examples
+   BLLR202 BLLR202_2_0.html h3: using sentences
+   BLLR202 BLLR202_5_0.html h3: choosing strong evidence
+   CEDO502 CEDO502_1_1.html h4: manageable or unmanageable
+   CEDT104 CEDT104_0_0.html h4: let s learn our poi waiata
+   CEDT207 CEDT207_0_0.html h4: making baking memories
+   ENFUN01 ENFUN01_0_0.html h4: guess who
+   ENFUN01 ENFUN01_0_0.html h5: let s revise
+   ENFUN01 ENFUN01_0_0.html h5: let s revise
+   ENFUN02 ENFUN02_0_0.html h3: supervisor
+
+== (a) box opens right after (0 elements between)
+   AGH1006 AGH1006_8_0.html h3: advantages and disadvantages
+   AGH1008 AGH1008_4_0.html h3: genetics
+   AGH1008 AGH1008_4_0.html h3: genetics in agriculture
+   ARFUN03 ARFUN03_0_0.html h3: what have i learnt
+   ARFUN03 ARFUN03_0_0.html h3: what have i learnt
+   ARFUN03 ARFUN03_0_0.html h3: what have i learnt
+   ARFUN03 ARFUN03_0_0.html h3: what have i learnt
+   ARFUN05 ARFUN05_0_0.html h4: what have i learnt
+   ARFUN05 ARFUN05_0_0.html h4: what have i learnt
+   ARFUN05 ARFUN05_0_0.html h4: what have i learnt
+   ARFUN05 ARFUN05_0_0.html h5: activity stage directions
+   ARFUN05 ARFUN05_0_0.html h4: what have i learnt
+   CBI1008 CBI1008_1_0.html h3: test your knowledge
+   CEDK401 CEDK401_0_0.html h3: reading log
+   CEDR203 CEDR203_0_0.html h5: eco leaders at te kura

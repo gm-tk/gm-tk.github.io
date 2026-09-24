@@ -1,0 +1,138 @@
+gold boxes opening with <h3>: 7824
+ 3549 OK (h3 in box)
+ 2352 no Claude box with that number
+  791 elsewhere on page
+  556 absent
+  174 before the box (outside)
+  159 inside the hand-off widget raw
+  123 later in box (not first)
+   63 in box as h3
+   57 first <p> in box (not h3)
+
+BLL     miss  232 / 1496  elsewhere on page 109, no Claude box with that number 47, absent 32, before the box (outside) 27, later in box (not first) 14, inside the hand-off widget raw 3
+TRR     miss  220 /  232  no Claude box with that number 144, later in box (not first) 26, elsewhere on page 19, before the box (outside) 16, inside the hand-off widget raw 6, first <p> in box (not h3) 5, absent 4
+MXFL    miss  194 /  342  no Claude box with that number 81, elsewhere on page 79, absent 22, before the box (outside) 5, first <p> in box (not h3) 2, in box as h3 2, inside the hand-off widget raw 2, later in box (not first) 1
+AGH     miss  157 /  159  no Claude box with that number 76, absent 45, elsewhere on page 16, first <p> in box (not h3) 8, later in box (not first) 5, before the box (outside) 4, inside the hand-off widget raw 2, in box as h3 1
+XDLS    miss  141 /  179  no Claude box with that number 89, absent 25, elsewhere on page 19, inside the hand-off widget raw 6, later in box (not first) 2
+MXDI    miss  139 /  225  no Claude box with that number 49, elsewhere on page 45, absent 29, before the box (outside) 10, first <p> in box (not h3) 3, in box as h3 2, later in box (not first) 1
+HIS     miss  123 /  207  elsewhere on page 54, no Claude box with that number 48, absent 12, later in box (not first) 4, before the box (outside) 3, in box as h3 2
+ENGI    miss  102 /  195  no Claude box with that number 58, elsewhere on page 19, absent 10, before the box (outside) 6, inside the hand-off widget raw 5, later in box (not first) 3, in box as h3 1
+MXFU    miss  101 /  231  elsewhere on page 42, no Claude box with that number 32, absent 22, before the box (outside) 2, inside the hand-off widget raw 2, in box as h3 1
+XGF     miss  100 /  138  no Claude box with that number 80, elsewhere on page 15, absent 2, later in box (not first) 2, in box as h3 1
+HPFUN   miss   99 /  106  no Claude box with that number 97, absent 2
+PES     miss   99 /  113  no Claude box with that number 55, absent 16, in box as h3 11, inside the hand-off widget raw 7, later in box (not first) 5, elsewhere on page 4, first <p> in box (not h3) 1
+ANZH    miss   98 /  139  elsewhere on page 36, absent 25, no Claude box with that number 24, before the box (outside) 5, inside the hand-off widget raw 3, in box as h3 3, first <p> in box (not h3) 1, later in box (not first) 1
+TWHA    miss   96 /  119  no Claude box with that number 84, absent 11, elsewhere on page 1
+WJFUN   miss   95 /  196  no Claude box with that number 39, elsewhere on page 17, inside the hand-off widget raw 16, absent 12, before the box (outside) 8, first <p> in box (not h3) 2, later in box (not first) 1
+CHI     miss   91 /   91  no Claude box with that number 91
+MXDB    miss   89 /  142  no Claude box with that number 37, absent 25, elsewhere on page 19, before the box (outside) 3, first <p> in box (not h3) 3, inside the hand-off widget raw 2
+CEDT    miss   87 /  123  no Claude box with that number 50, elsewhere on page 22, absent 15
+FRNO    miss   84 /   84  no Claude box with that number 72, elsewhere on page 7, inside the hand-off widget raw 2, first <p> in box (not h3) 2, before the box (outside) 1
+PWY     miss   84 /   85  no Claude box with that number 73, in box as h3 6, elsewhere on page 2, inside the hand-off widget raw 2, before the box (outside) 1
+ENGC    miss   83 /  207  no Claude box with that number 45, elsewhere on page 22, absent 5, later in box (not first) 3, before the box (outside) 3, inside the hand-off widget raw 3, in box as h3 2
+MXEO    miss   82 /  137  no Claude box with that number 59, elsewhere on page 12, absent 8, inside the hand-off widget raw 2, later in box (not first) 1
+ENGJ    miss   81 /  127  absent 38, no Claude box with that number 14, elsewhere on page 12, before the box (outside) 5, later in box (not first) 4, in box as h3 4, first <p> in box (not h3) 3, inside the hand-off widget raw 1
+MXEX    miss   75 /   97  no Claude box with that number 50, absent 9, elsewhere on page 7, inside the hand-off widget raw 5, before the box (outside) 3, in box as h3 1
+CEDO    miss   73 /  117  no Claude box with that number 43, elsewhere on page 14, absent 10, later in box (not first) 2, before the box (outside) 2, inside the hand-off widget raw 1, first <p> in box (not h3) 1
+HES     miss   73 /   91  no Claude box with that number 40, absent 24, elsewhere on page 3, first <p> in box (not h3) 2, before the box (outside) 2, inside the hand-off widget raw 1, later in box (not first) 1
+PHE     miss   72 /   79  no Claude box with that number 42, absent 20, elsewhere on page 4, in box as h3 2, inside the hand-off widget raw 1, later in box (not first) 1, first <p> in box (not h3) 1, before the box (outside) 1
+ENGR    miss   68 /  119  no Claude box with that number 38, inside the hand-off widget raw 13, absent 5, before the box (outside) 5, later in box (not first) 4, elsewhere on page 3
+ENGS    miss   63 /  132  no Claude box with that number 42, inside the hand-off widget raw 7, absent 6, elsewhere on page 5, later in box (not first) 2, before the box (outside) 1
+XMES    miss   62 /  169  no Claude box with that number 28, elsewhere on page 14, absent 13, before the box (outside) 4, inside the hand-off widget raw 1, first <p> in box (not h3) 1, later in box (not first) 1
+TEDC    miss   61 /   91  no Claude box with that number 30, elsewhere on page 16, inside the hand-off widget raw 10, later in box (not first) 2, before the box (outside) 2, in box as h3 1
+SSFUN   miss   58 /   92  no Claude box with that number 27, absent 13, elsewhere on page 10, later in box (not first) 3, before the box (outside) 2, inside the hand-off widget raw 2, in box as h3 1
+FRFUN   miss   53 /   53  no Claude box with that number 41, inside the hand-off widget raw 7, first <p> in box (not h3) 3, elsewhere on page 1, absent 1
+CBI     miss   49 /   55  no Claude box with that number 21, inside the hand-off widget raw 8, first <p> in box (not h3) 7, absent 7, elsewhere on page 3, before the box (outside) 2, in box as h3 1
+TEFUN   miss   48 /   62  no Claude box with that number 18, first <p> in box (not h3) 10, elsewhere on page 8, absent 7, later in box (not first) 3, inside the hand-off widget raw 1, before the box (outside) 1
+TWHK    miss   45 /   51  no Claude box with that number 27, absent 4, before the box (outside) 4, inside the hand-off widget raw 4, elsewhere on page 3, later in box (not first) 2, first <p> in box (not h3) 1
+GENO    miss   42 /   43  no Claude box with that number 28, inside the hand-off widget raw 4, before the box (outside) 4, elsewhere on page 3, absent 2, in box as h3 1
+MXFUN   miss   40 /   55  no Claude box with that number 23, elsewhere on page 13, absent 2, inside the hand-off widget raw 1, before the box (outside) 1
+ENFUN   miss   39 /  115  absent 12, elsewhere on page 12, no Claude box with that number 7, before the box (outside) 4, later in box (not first) 3, inside the hand-off widget raw 1
+COM     miss   36 /   38  no Claude box with that number 16, absent 13, elsewhere on page 6, before the box (outside) 1
+ART     miss   34 /   34  no Claude box with that number 30, elsewhere on page 4
+CHFUN   miss   32 /   64  no Claude box with that number 28, before the box (outside) 1, elsewhere on page 1, absent 1, in box as h3 1
+CEDK    miss   30 /   57  no Claude box with that number 22, elsewhere on page 4, before the box (outside) 2, later in box (not first) 1, absent 1
+JPN     miss   29 /   31  in box as h3 8, elsewhere on page 7, before the box (outside) 6, inside the hand-off widget raw 4, no Claude box with that number 2, first <p> in box (not h3) 1, absent 1
+CEDW    miss   28 /   59  no Claude box with that number 14, elsewhere on page 10, before the box (outside) 2, absent 1, later in box (not first) 1
+GEO     miss   27 /   28  no Claude box with that number 20, absent 2, in box as h3 2, elsewhere on page 1, later in box (not first) 1, inside the hand-off widget raw 1
+DAN     miss   26 /   30  no Claude box with that number 23, before the box (outside) 1, inside the hand-off widget raw 1, absent 1
+XTAS    miss   26 /   76  elsewhere on page 12, no Claude box with that number 9, before the box (outside) 3, absent 2
+CEDR    miss   25 /   67  no Claude box with that number 16, absent 3, elsewhere on page 3, later in box (not first) 2, before the box (outside) 1
+XLP     miss   24 /   34  no Claude box with that number 20, in box as h3 1, elsewhere on page 1, absent 1, before the box (outside) 1
+ARFUN   miss   22 /   25  before the box (outside) 9, elsewhere on page 4, inside the hand-off widget raw 3, absent 3, no Claude box with that number 2, later in box (not first) 1
+MXS     miss   22 /   22  no Claude box with that number 12, absent 7, inside the hand-off widget raw 2, elsewhere on page 1
+OSOH    miss   19 /   40  elsewhere on page 11, no Claude box with that number 4, before the box (outside) 2, absent 1, inside the hand-off widget raw 1
+EXBP    miss   18 /   18  no Claude box with that number 18
+EXIP    miss   18 /   18  no Claude box with that number 18
+EXPFUN  miss   17 /   19  no Claude box with that number 9, absent 8
+HPRE    miss   17 /   40  elsewhere on page 8, later in box (not first) 5, no Claude box with that number 2, inside the hand-off widget raw 1, absent 1
+SSCI    miss   15 /   44  no Claude box with that number 5, in box as h3 3, elsewhere on page 3, inside the hand-off widget raw 2, absent 1, later in box (not first) 1
+OSBY    miss   14 /   39  elsewhere on page 5, no Claude box with that number 5, inside the hand-off widget raw 1, before the box (outside) 1, absent 1, later in box (not first) 1
+SSOG    miss   14 /   39  no Claude box with that number 5, in box as h3 3, inside the hand-off widget raw 2, absent 2, before the box (outside) 1, later in box (not first) 1
+DTC     miss   13 /   13  no Claude box with that number 7, absent 4, elsewhere on page 1, later in box (not first) 1
+PMT     miss   13 /   13  no Claude box with that number 13
+ENG     miss   12 /   12  no Claude box with that number 12
+MUS     miss   12 /   12  no Claude box with that number 12
+ENO     miss   11 /   16  no Claude box with that number 10, elsewhere on page 1
+SSEA    miss   10 /   23  elsewhere on page 4, no Claude box with that number 3, before the box (outside) 2, later in box (not first) 1
+OSAI    miss    9 /   37  elsewhere on page 4, later in box (not first) 2, no Claude box with that number 2, absent 1
+OSGM    miss    9 /   29  elsewhere on page 4, no Claude box with that number 3, absent 1, later in box (not first) 1
+TWHT    miss    9 /   11  no Claude box with that number 4, before the box (outside) 2, in box as h3 1, inside the hand-off widget raw 1, elsewhere on page 1
+JPFUN   miss    8 /    8  no Claude box with that number 7, absent 1
+SCFUN   miss    8 /    9  no Claude box with that number 4, in box as h3 1, elsewhere on page 1, before the box (outside) 1, absent 1
+
+== no Claude box with that number
+   AGH1001 AGH1001_2_0.html #2C: career pathways video review
+   AGH1001 AGH1001_3_0.html #3C: reflecting on mātauranga māori in agricultural and horticultural scien
+   AGH1001 AGH1001_4_0.html #4F: seasonality and maramataka
+   AGH1002 AGH1002_6_0.html #6A: organic matter or not
+   AGH1002 AGH1002_6_0.html #6B: benefits of organic matter
+   AGH1002 AGH1002_6_0.html #6C: breakdown of organic matter
+   AGH1002 AGH1002_6_0.html #6D: levels of organic matter
+   AGH1002 AGH1002_6_0.html #6E: biological properties of soil
+   AGH1003 AGH1003_2_0.html #2C: soil properties review
+   AGH1003 AGH1003_2_0.html #2D: irrigation and primary production in new zealand
+   AGH1003 AGH1003_3_0.html #3B: soil testing
+   AGH1003 AGH1003_3_0.html #3C: fertiliser application
+
+== elsewhere on page
+   AGH1001 AGH1001_1_0.html #1B: agricultural and horticultural products
+   AGH1001 AGH1001_3_0.html #3A: māori creation story
+   AGH1004 AGH1004_5_0.html #5B: knowledge check sorting activity
+   AGH1005 AGH1005_3_0.html #3A: important factors
+   AGH1005 AGH1005_6_0.html #6A: knowledge self check
+   AGH1005 AGH1005_8_0.html #8A: how plants flower and produce fruit
+   AGH1007 AGH1007_6_0.html #6A: female reproduction review
+   AGH1008 AGH1008_2_0.html #2A: digestability and components of feed
+   AGH1008 AGH1008_3_0.html #3B: grazing systems
+   AGH1008 AGH1008_3_0.html #3C: checkpoint
+   AGH1008 AGH1008_5_0.html #5B: heat detection
+   AGH1008 AGH1008_8_0.html #8C: management practices
+
+== absent
+   AGH1001 AGH1001_1_0.html #1A: what are primary products
+   AGH1001 AGH1001_2_0.html #2A: value of primary products
+   AGH1001 AGH1001_2_0.html #2B: flow diagram from new zealand to the world
+   AGH1001 AGH1001_4_0.html #4B: mix and match
+   AGH1001 AGH1001_4_0.html #4C: timing of mating in new zealand
+   AGH1001 AGH1001_4_0.html #4D: new zealand grass growth
+   AGH1001 AGH1001_4_0.html #4E: seasonality in an orchard
+   AGH1001 AGH1001_5_0.html #5A: farming in new zealand
+   AGH1002 AGH1002_2_0.html #2B: soil practical texture by sedimentation
+   AGH1002 AGH1002_2_0.html #2C: a smashed structure experiment
+   AGH1002 AGH1002_3_0.html #3A: plant growth and light experiment
+   AGH1002 AGH1002_4_0.html #4B: drainage experiment
+
+== before the box (outside)
+   AGH1001 AGH1001_1_0.html #1C: primary products
+   AGH1001 AGH1001_3_0.html #3B: self check true or false
+   AGH1001 AGH1001_5_0.html #5B: management practices on a production system
+   AGH1004 AGH1004_3_0.html #3A: growing degree days
+   ANZH101 ANZH101_1_0.html #1C: ngā kupu nui important words
+   ANZH104 ANZH104_7_0.html #7A: congratulations
+   ANZH205 ANZH205_2_0.html #2A: for or against
+   ANZH304 ANZH304_1_0.html #1A: missionaries
+   ANZH401 ANZH401_7_0.html #7A: following the gold
+   ARFUN03 ARFUN03_0_0.html #1A: what have i learnt
+   ARFUN03 ARFUN03_0_0.html #2A: drag the words into the right spot
+   ARFUN03 ARFUN03_0_0.html #3C: give it a try air pathways

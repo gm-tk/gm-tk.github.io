@@ -1,0 +1,10 @@
+{'other crossed': 499, 'cycles': 9, 'better_swapped': 4}
+   AGH1005: Claude 4<->gold 5 + Claude 5<->gold 4: paired 123.6 / swapped 120.9 (-2.7)
+   DAN1006: Claude 3<->gold 4 + Claude 4<->gold 3: paired 127.9 / swapped 134.2 (+6.3)
+   ENGC403: Claude 5<->gold 7 + Claude 7<->gold 5: paired 126.3 / swapped 77.9 (-48.4)
+   PHE1002: Claude 1<->gold 2 + Claude 2<->gold 1: paired 88.9 / swapped 78.2 (-10.7)
+   TRR109: Claude 3<->gold 4 + Claude 4<->gold 3: paired 75.9 / swapped 83.1 (+7.3)
+   TRR113: Claude 2<->gold 4 + Claude 4<->gold 2: paired 79.0 / swapped 58.8 (-20.3)
+   TRR203: Claude 2<->gold 3 + Claude 3<->gold 2: paired 70.8 / swapped 72.6 (+1.8)
+   XGF9001: Claude 1<->gold 3 + Claude 3<->gold 1: paired 121.7 / swapped 45.0 (-76.7)
+   XMES102: Claude 1<->gold 5 + Claude 5<->gold 1: paired 69.0 / swapped 79.0 (+10.0)

@@ -1,0 +1,66 @@
+BLL     boxes  1525  heading-mismatch   26  gold h3 / claude h3 1499, gold h3 / claude None 15, gold None / claude h3 11  | gold False / claude False 787, gold True / claude True 351, gold True / claude False 314
+MXFL    boxes   312  heading-mismatch   60  gold h3 / claude h3 250, gold h3 / claude None 57, gold None / claude h3 2, gold None / claude None 2  | gold True / claude False 101, gold False / claude False 97, gold True / claude True 85
+XDLS    boxes   296  heading-mismatch   38  gold h3 / claude h3 258, gold h3 / claude None 29, gold h4 / claude None 4, gold h4 / claude h3 4  | gold False / claude False 275, gold True / claude False 11, gold False / claude True 6
+MXFU    boxes   200  heading-mismatch   28  gold h3 / claude h3 172, gold h3 / claude None 27, gold h3 / claude h5 1  | gold True / claude True 77, gold False / claude False 53, gold True / claude False 44
+MXDI    boxes   197  heading-mismatch   21  gold h3 / claude h3 176, gold h3 / claude None 21  | gold True / claude False 69, gold True / claude True 68, gold False / claude False 35
+HIS     boxes   181  heading-mismatch   36  gold h3 / claude h3 145, gold h3 / claude None 34, gold None / claude h3 1, gold h3 / claude h2 1  | gold False / claude False 138, gold True / claude False 19, gold True / claude True 12
+ENGI    boxes   178  heading-mismatch   18  gold h3 / claude h3 159, gold h3 / claude None 14, gold None / claude h3 3, gold h4 / claude None 1  | gold False / claude False 75, gold True / claude True 59, gold True / claude False 27
+ENGC    boxes   177  heading-mismatch   15  gold h3 / claude h3 162, gold h3 / claude None 12, gold h3 / claude h5 2, gold h4 / claude h3 1  | gold False / claude False 70, gold True / claude True 53, gold True / claude False 37
+WJFUN   boxes   172  heading-mismatch   42  gold h3 / claude h3 130, gold h3 / claude None 37, gold h4 / claude h3 4, gold h4 / claude None 1  | gold True / claude True 93, gold True / claude False 46, gold False / claude True 18
+XMES    boxes   155  heading-mismatch    7  gold h3 / claude h3 148, gold h3 / claude None 7  | gold False / claude False 62, gold True / claude False 54, gold True / claude True 28
+TRR     boxes   133  heading-mismatch    9  gold h3 / claude h3 124, gold h3 / claude None 7, gold None / claude h3 1, gold h2 / claude h3 1  | gold True / claude True 106, gold False / claude True 22, gold True / claude False 5
+ANZH    boxes   128  heading-mismatch   33  gold h3 / claude h3 94, gold h3 / claude None 33, gold None / claude None 1  | gold False / claude False 86, gold False / claude True 22, gold True / claude False 14
+ENGS    boxes   123  heading-mismatch   22  gold h3 / claude h3 101, gold h3 / claude None 12, gold h4 / claude h3 6, gold h5 / claude h3 3  | gold False / claude False 55, gold True / claude True 39, gold True / claude False 20
+ENGJ    boxes   117  heading-mismatch   32  gold h3 / claude h3 85, gold h3 / claude None 22, gold h3 / claude h4 6, gold h4 / claude h3 3  | gold False / claude False 44, gold True / claude True 35, gold True / claude False 29
+MXDB    boxes   115  heading-mismatch   38  gold h3 / claude h3 77, gold h3 / claude None 36, gold h3 / claude h5 2  | gold False / claude False 49, gold True / claude True 33, gold False / claude True 21
+AGH     boxes   112  heading-mismatch   85  gold h3 / claude None 85, gold h3 / claude h3 27  | gold True / claude True 40, gold False / claude False 34, gold True / claude False 20
+ENFUN   boxes   111  heading-mismatch   11  gold h3 / claude h3 100, gold h3 / claude None 11  | gold True / claude True 65, gold True / claude False 23, gold False / claude False 14
+ENGR    boxes   110  heading-mismatch   34  gold h3 / claude h3 76, gold h3 / claude None 33, gold h3 / claude h4 1  | gold True / claude True 38, gold False / claude False 35, gold True / claude False 23
+MXEO    boxes   107  heading-mismatch    2  gold h3 / claude h3 105, gold None / claude h3 1, gold h3 / claude None 1  | gold False / claude False 39, gold True / claude False 32, gold True / claude True 31
+XGF     boxes   102  heading-mismatch   10  gold h3 / claude h3 92, gold h3 / claude None 10  | gold True / claude True 37, gold True / claude False 27, gold False / claude False 25
+CEDT    boxes    98  heading-mismatch   20  gold h3 / claude h3 78, gold h3 / claude None 20  | gold False / claude False 61, gold True / claude False 17, gold False / claude True 12
+SSFUN   boxes    85  heading-mismatch   30  gold h3 / claude h3 54, gold h3 / claude None 26, gold h4 / claude None 2, gold None / claude h3 2  | gold False / claude False 35, gold True / claude False 31, gold False / claude True 12
+CEDO    boxes    83  heading-mismatch    8  gold h3 / claude h3 75, gold h3 / claude None 8  | gold False / claude False 35, gold True / claude True 23, gold True / claude False 14
+BLLR    boxes    77  heading-mismatch    0  gold h3 / claude h3 77  | gold False / claude False 38, gold True / claude True 33, gold True / claude False 6
+XTAS    boxes    72  heading-mismatch    1  gold h3 / claude h3 71, gold h3 / claude None 1  | gold False / claude False 27, gold True / claude True 24, gold True / claude False 15
+PES     boxes    65  heading-mismatch   15  gold h3 / claude h3 50, gold h3 / claude None 15  | gold False / claude False 27, gold True / claude False 25, gold True / claude True 11
+TEDC    boxes    64  heading-mismatch   28  gold h3 / claude h3 36, gold h3 / claude None 26, gold h2 / claude None 1, gold h2 / claude h3 1  | gold True / claude True 28, gold True / claude False 21, gold False / claude True 8
+CEDR    boxes    61  heading-mismatch   10  gold h3 / claude h3 50, gold h3 / claude None 5, gold h2 / claude h3 3, gold None / claude h3 2  | gold False / claude False 40, gold True / claude False 8, gold True / claude True 7
+CHFUN   boxes    59  heading-mismatch    5  gold h3 / claude h3 54, gold None / claude h3 5  | gold True / claude True 53, gold False / claude True 5, gold True / claude False 1
+HPFUN   boxes    56  heading-mismatch   23  gold h3 / claude h3 31, gold h3 / claude None 19, gold None / claude h3 4, gold None / claude None 2  | gold True / claude False 32, gold False / claude False 19, gold True / claude True 4
+MXEX    boxes    56  heading-mismatch   16  gold h3 / claude h3 40, gold h3 / claude None 15, gold h4 / claude h3 1  | gold False / claude False 32, gold True / claude False 10, gold True / claude True 9
+HES     boxes    55  heading-mismatch   23  gold h3 / claude h3 32, gold h3 / claude None 23  | gold False / claude False 38, gold True / claude False 7, gold False / claude True 7
+TWHA    boxes    51  heading-mismatch   13  gold h3 / claude h3 38, gold h3 / claude None 13  | gold False / claude False 20, gold True / claude False 18, gold True / claude True 7
+CEDW    boxes    49  heading-mismatch    4  gold h3 / claude h3 45, gold h3 / claude None 3, gold None / claude h3 1  | gold False / claude False 31, gold True / claude False 10, gold True / claude True 7
+MXFUN   boxes    49  heading-mismatch    2  gold h3 / claude h3 47, gold h3 / claude None 2  | gold False / claude False 26, gold False / claude True 10, gold True / claude False 8
+CEDK    boxes    47  heading-mismatch   11  gold h3 / claude h3 36, gold h3 / claude None 6, gold h4 / claude h3 2, gold h2 / claude h3 2  | gold False / claude False 23, gold True / claude False 12, gold True / claude True 9
+TEFUN   boxes    46  heading-mismatch   18  gold h3 / claude h3 28, gold h3 / claude None 18  | gold False / claude False 16, gold False / claude True 15, gold True / claude True 9
+PHE     boxes    42  heading-mismatch   19  gold h3 / claude h3 23, gold h3 / claude None 19  | gold True / claude True 16, gold True / claude False 12, gold False / claude False 11
+SSCI    boxes    40  heading-mismatch    2  gold h3 / claude h3 38, gold h3 / claude None 2  | gold True / claude True 19, gold False / claude False 17, gold True / claude False 3
+HPRE    boxes    39  heading-mismatch    5  gold h3 / claude h3 34, gold h3 / claude None 4, gold h4 / claude h3 1  | gold True / claude True 15, gold False / claude False 15, gold True / claude False 8
+OSOH    boxes    38  heading-mismatch    2  gold h3 / claude h3 36, gold h3 / claude None 2  | gold True / claude True 22, gold True / claude False 11, gold False / claude False 5
+FRFUN   boxes    37  heading-mismatch   35  gold h3 / claude None 35, gold h3 / claude h3 2  | gold True / claude True 29, gold True / claude False 7, gold False / claude False 1
+OSAI    boxes    36  heading-mismatch    0  gold h3 / claude h3 36  | gold True / claude True 24, gold True / claude False 7, gold False / claude False 4
+SSOG    boxes    35  heading-mismatch    4  gold h3 / claude h3 31, gold h3 / claude None 3, gold None / claude h3 1  | gold False / claude False 23, gold True / claude True 8, gold True / claude False 3
+CBI     boxes    34  heading-mismatch   18  gold h3 / claude None 18, gold h3 / claude h3 16  | gold True / claude True 20, gold False / claude False 8, gold True / claude False 5
+OSBY    boxes    34  heading-mismatch    2  gold h3 / claude h3 32, gold h3 / claude None 2  | gold True / claude True 22, gold True / claude False 5, gold False / claude True 4
+TWHK    boxes    33  heading-mismatch    8  gold h3 / claude h3 24, gold h3 / claude None 7, gold None / claude h3 1, gold None / claude None 1  | gold True / claude True 10, gold False / claude False 10, gold False / claude True 7
+XOTPB   boxes    30  heading-mismatch   12  gold h3 / claude h3 18, gold None / claude h3 12  | gold True / claude True 12, gold False / claude False 12, gold True / claude False 6
+XOTPG   boxes    30  heading-mismatch    0  gold h3 / claude h3 30  | gold True / claude True 15, gold False / claude False 15
+ARFUN   boxes    29  heading-mismatch   20  gold h3 / claude None 20, gold h3 / claude h3 8, gold None / claude None 1  | gold False / claude True 13, gold True / claude True 8, gold True / claude False 5
+JPN     boxes    29  heading-mismatch   12  gold h3 / claude h3 17, gold h3 / claude None 12  | gold True / claude True 9, gold True / claude False 8, gold False / claude False 6
+OSGM    boxes    26  heading-mismatch    1  gold h3 / claude h3 25, gold h3 / claude None 1  | gold True / claude True 14, gold True / claude False 5, gold False / claude False 5
+SCCH    boxes    26  heading-mismatch    1  gold h3 / claude h3 25, gold h3 / claude None 1  | gold True / claude False 11, gold True / claude True 10, gold False / claude False 5
+COM     boxes    24  heading-mismatch    6  gold h3 / claude h3 18, gold h3 / claude None 6  | gold True / claude True 9, gold False / claude False 8, gold True / claude False 5
+OSSM    boxes    24  heading-mismatch    0  gold h3 / claude h3 24  | gold True / claude True 16, gold False / claude False 4, gold True / claude False 3
+SSEA    boxes    20  heading-mismatch    2  gold h3 / claude h3 17, gold h3 / claude None 1, gold None / claude h3 1, gold None / claude None 1  | gold True / claude False 7, gold False / claude False 6, gold True / claude True 4
+PWY     boxes    19  heading-mismatch   11  gold h3 / claude None 11, gold h3 / claude h3 8  | gold True / claude True 14, gold False / claude False 3, gold True / claude False 2
+SCBI    boxes    19  heading-mismatch    6  gold h3 / claude h3 13, gold h3 / claude None 6  | gold True / claude True 10, gold False / claude False 8, gold False / claude True 1
+SCPH    boxes    19  heading-mismatch    0  gold h3 / claude h3 19  | gold True / claude True 8, gold False / claude False 8, gold True / claude False 2
+PNR     boxes    18  heading-mismatch    5  gold h2 / claude h2 13, gold h3 / claude h2 5  | gold True / claude True 18
+EXPFUN  boxes    17  heading-mismatch    1  gold h3 / claude h3 16, gold h2 / claude h3 1  | gold False / claude False 17
+GENO    boxes    16  heading-mismatch    9  gold h3 / claude None 9, gold h3 / claude h3 7  | gold True / claude True 10, gold True / claude False 4, gold False / claude False 2
+OSAH    boxes    15  heading-mismatch    1  gold h3 / claude h3 14, gold h3 / claude None 1  | gold True / claude True 10, gold False / claude False 3, gold False / claude True 1
+OSSC    boxes    15  heading-mismatch    1  gold h3 / claude h3 14, gold None / claude h3 1  | gold True / claude True 11, gold True / claude False 3, gold False / claude False 1
+
+ALL: [('gold h3 / claude h3', 5367), ('gold h3 / claude None', 863), ('gold None / claude h3', 51), ('gold h4 / claude h3', 22), ('gold h2 / claude h2', 13), ('gold None / claude None', 11), ('gold h4 / claude None', 9), ('gold h2 / claude h3', 8), ('gold h3 / claude h4', 8), ('gold h3 / claude h5', 6), ('gold h3 / claude h2', 6), ('gold h5 / claude h3', 3)]

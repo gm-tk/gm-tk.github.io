@@ -1,0 +1,28 @@
+UP   CHI1003/CHI1003_1_0.html       <- CHI1003_1_0.html       scaffold  25.3 ->  25.5 (+0.2); overlap  15.1 ->  15.1; matched 19 -> 19
+UP   CHI1003/CHI1003_2_0.html       <- CHI1003_2_0.html       scaffold  16.4 ->  16.5 (+0.1); overlap   9.1 ->   9.1; matched 20 -> 20
+UP   CHI1003/CHI1003_3_0.html       <- CHI1003_3_0.html       scaffold  22.9 ->  23.0 (+0.1); overlap  13.2 ->  13.2; matched 20 -> 20
+UP   CHI1003/CHI1003_4_0.html       <- CHI1003_4_0.html       scaffold  25.5 ->  25.6 (+0.2); overlap  15.0 ->  15.0; matched 20 -> 20
+UP   CHI1003/CHI1003_5_0.html       <- CHI1003_5_0.html       scaffold  17.8 ->  17.9 (+0.1); overlap  10.0 ->  10.0; matched 20 -> 20
+UP   CHI1003/CHI1003_6_0.html       <- CHI1003_6_0.html       scaffold  42.1 ->  42.6 (+0.4); overlap  28.2 ->  28.2; matched 20 -> 20
+UP   CHI1003/CHI1003_7_0.html       <- CHI1003_7_0.html       scaffold  42.1 ->  42.6 (+0.4); overlap  28.2 ->  28.2; matched 20 -> 20
+DOWN CHI1003/CHI1003_8_0.html       <- CHI1003_8_0.html       scaffold  36.2 ->  34.6 (-1.6); overlap  23.5 ->  22.2; matched 19 -> 18
+DOWN CHI1004/CHI1004_3_0.html       <- CHI1004_3_0.html       scaffold  36.2 ->  34.9 (-1.3); overlap  22.1 ->  21.2; matched 23 -> 22
+UP   CHI1004/CHI1004_4_0.html       <- CHI1004_4_0.html       scaffold  32.1 ->  32.4 (+0.2); overlap  19.3 ->  19.3; matched 22 -> 22
+UP   CHI1004/CHI1004_5_0.html       <- CHI1004_5_0.html       scaffold  21.8 ->  21.9 (+0.1); overlap  12.3 ->  12.3; matched 22 -> 22
+UP   CHI1004/CHI1004_6_0.html       <- CHI1004_6_0.html       scaffold  25.3 ->  25.4 (+0.1); overlap  14.6 ->  14.6; matched 22 -> 22
+=    CHI1004/CHI1004_7_0.html       <- CHI1004_7_0.html       scaffold  13.0 ->  13.0 (+0.0); overlap   7.0 ->   7.0; matched 22 -> 22
+DOWN CHI1004/CHI1004_8_0.html       <- CHI1004_8_0.html       scaffold  36.2 ->  34.8 (-1.4); overlap  22.6 ->  21.5; matched 21 -> 20
+UP   CHI1004/CHI1004_9_0.html       <- CHI1004_9_0_Vocabulary.html scaffold  36.4 ->  36.8 (+0.4); overlap  44.4 ->  44.4; matched 16 -> 16
+UP   CHI1005/CHI1005_2_0.html       <- CHI1005_2_0.html       scaffold  18.0 ->  18.1 (+0.1); overlap  10.0 ->  10.0; matched 21 -> 21
+UP   CHI1005/CHI1005_3_0.html       <- CHI1005_3_0.html       scaffold  26.8 ->  27.0 (+0.2); overlap  15.6 ->  15.6; matched 22 -> 22
+UP   CHI1005/CHI1005_4_0.html       <- CHI1005_4_0.html       scaffold  34.1 ->  34.4 (+0.3); overlap  20.8 ->  20.8; matched 22 -> 22
+UP   CHI1005/CHI1005_5_0.html       <- CHI1005_5_0.html       scaffold  32.1 ->  32.4 (+0.2); overlap  19.3 ->  19.3; matched 22 -> 22
+UP   CHI1005/CHI1005_6_0.html       <- CHI1005_6_0.html       scaffold  22.9 ->  23.0 (+0.1); overlap  13.0 ->  13.0; matched 22 -> 22
+UP   CHI1005/CHI1005_7_0.html       <- CHI1005_7_0.html       scaffold  55.8 ->  56.5 (+0.7); overlap  45.5 ->  45.5; matched 24 -> 24
+
+UP 17 / DOWN 3 / = 1; pp-sum -0.3
+DOWN with a rising companion (artefact, nameable) 0:
+DOWN with NO rising companion (real) 3:
+   CHI1003/CHI1003_8_0.html<-CHI1003_8_0.html -1.6 (overlap 23.5->22.2, matched 19->18)
+   CHI1004/CHI1004_3_0.html<-CHI1004_3_0.html -1.3 (overlap 22.1->21.2, matched 23->22)
+   CHI1004/CHI1004_8_0.html<-CHI1004_8_0.html -1.4 (overlap 22.6->21.5, matched 21->20)

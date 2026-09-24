@@ -1,0 +1,59 @@
+diff --git a/converter-v2/app/js/BilingualBuilder.js b/converter-v2/app/js/BilingualBuilder.js
+index c90ce3e..c9f6687 100644
+--- a/converter-v2/app/js/BilingualBuilder.js
++++ b/converter-v2/app/js/BilingualBuilder.js
+@@ -242,15 +242,20 @@ class BilingualBuilder {
+ 					const kept = [];   // kept[i] = stripped index of the i-th original text element
+ 					let c = 0;
+ 					for (const h of src.text) { kept.push(c); if (strip([h]).length) c++; }
+-					before = src.mediaPos.map((p) => (p < kept.length ? kept[p] : c));
++					// ROUND 462 (media_in_place.units_only): only an audio-image unit / its row goes
++					// back in place; every other embed keeps its end-of-row slot (Infinity).
++					const unitsOnly = mip.units_only === true;
++					before = src.mediaPos.map((p, i) => (unitsOnly && !/class="audioImage"/.test(src.media[i]))
++						? Infinity : (p < kept.length ? kept[p] : c));
++					if (!before.some((b) => b !== Infinity)) before = null;
+ 				}
+-				let mi = 0;
++				const done = before ? src.media.map(() => false) : null;
+ 				for (let k = 0; k < n; k++) {
+-					if (before) while (mi < src.media.length && before[mi] <= k) out.push(src.media[mi++]);
++					if (before) src.media.forEach((m, i) => { if (!done[i] && before[i] <= k) { out.push(m); done[i] = true; } });
+ 					if (k < Rt.length) out.push(this.langAttr(Rt[k], "reo"));   // Māori element FIRST
+ 					if (k < Et.length) out.push(this.langAttr(Et[k], "eng"));   // English element SECOND
+ 				}
+-				if (before) { while (mi < src.media.length) out.push(src.media[mi++]); continue; }
++				if (before) { src.media.forEach((m, i) => { if (!done[i]) out.push(m); }); continue; }
+ 			} else {
+ 				for (const p of R.text) out.push(this.langAttr(p, "reo"));   // Māori text FIRST
+ 				for (const p of E.text) out.push(this.langAttr(p, "eng"));   // English text SECOND
+@@ -1011,11 +1016,11 @@ class BilingualBuilder {
+ 		return { text, media, mediaPos: mpos };
+ 	};
+ 
+-	/** ROUND 461 — dual_language.media_in_place is on (data flag; env REOMEDIAPOS_OFF). */
++	/** ROUND 461 — the dual_language.media_in_place config when on (data flag; env REOMEDIAPOS_OFF), else null. */
+ 	static #mediaInPlaceOn() {
+ 		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.media_in_place;
+-		return !!c && c.enabled !== false
+-			&& !(typeof process !== "undefined" && process.env && process.env[c.env ?? "REOMEDIAPOS_OFF"]);
++		return c && c.enabled !== false
++			&& !(typeof process !== "undefined" && process.env && process.env[c.env ?? "REOMEDIAPOS_OFF"]) ? c : null;
+ 	};
+ 
+ 	/**
+diff --git a/converter-v2/data/Emit_Templates.json b/converter-v2/data/Emit_Templates.json
+index 6a93e53..ee31f39 100644
+--- a/converter-v2/data/Emit_Templates.json
++++ b/converter-v2/data/Emit_Templates.json
+@@ -125,7 +125,9 @@
+ 				"_round167_note": "ROUND 167 (Chris, ENGS201-01). In reoMode (a bilingual module OR any module the broad mtkFlag flags), a free-body table that ALL the bilingual handlers decline falls through to a cv2-interactive 'bilingual-unbuilt' placeholder that keeps the raw WT [tag] text BY DESIGN. That is right for an un-built widget/spec table, but a CLEAN STRUCTURAL LAYOUT table (a side-by-side image|body panel, every cell led by a structural [tag]) is NOT a widget — the human renders it as a row>col GRID, and the reoMode path was BYPASSING the layout-table grid that the normal (non-reo) path already runs. So ENGS201-01's 'Origin stories' image|body table shipped as the placeholder and LEAKED [body]/[image] as visible frontend text inside the box. FIX: before the placeholder, try TablesAndGrids.layoutTableGrid (the SAME detector the normal path uses — single-row or all-cells-tagged only, and it BAILS on any widget-member cell tag). A grid is emitted for a clean layout table; a widget/spec/data table still returns null and keeps the placeholder untouched, so no other reoMode table changes and no [tag] is newly exposed. env REOLTABLE_OFF reverts to the always-placeholder behaviour."
+ 			},
+ 			"media_in_place": {
+-				"enabled": false,
++				"enabled": true,
++				"units_only": true,
++				"_units_only_doc": "ROUND 462 (session 41 Round 10 — the r461 follow-up). The full in-place interleave (units_only false) measured 27 up / 37 down: the gold does NOT follow the writer's cell order for images / video (TRR116, TRR203, TRR108). With units_only true ONLY an audio-image unit (or its grid row) goes back where the writer typed it — the TRR111 / 112 / 113 golds place every unit in reading order — and every other embed keeps its end-of-row slot. Env REOMEDIAPOS_OFF reverts both.",
+ 				"env": "REOMEDIAPOS_OFF",
+ 				"_doc": "ROUND 461 (session 41 Round 9). bilingualRows' per-element reo/eng interleave (the r135 keystone) emitted a cell's media embeds (images, audio, video, the r461 audio-image units) AFTER every paragraph of the row; the human puts each one where the writer typed it, between the paragraphs. BilingualBuilder.bilingualSplit now records each embed's position (the count of text elements before it in its cell) and the interleave emits it before the paragraph pair at that position (counted on the stream the media came from, after the same Activity-label / section-id strip). Only the interleave branch (section_grouping ON) changes; the plain unfold keeps its order. Env REOMEDIAPOS_OFF."
+ 			},

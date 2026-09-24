@@ -1,0 +1,162 @@
+gold boxes opening with <h3>: 9700
+ 5552 OK
+ 1956 ABSENT
+ 1153 OUT-H (a heading outside every box)
+  669 RAW (inside the hand-off widget)
+  203 OUT-P (a <p> outside every box)
+  140 BOX-LATER (in a box, not first)
+   15 BOX-P (first <p>, not h3)
+   12 BOX-H (first, other level)
+
+TRR     miss  232 /  295  OUT-H 108, ABSENT 73, RAW 35, BOX-LATER 9, OUT-P 6, BOX-P 1
+AGH     miss  159 /  165  ABSENT 114, OUT-H 32, RAW 6, OUT-P 3, BOX-P 2, BOX-LATER 2
+XDLS    miss  145 /  198  ABSENT 83, OUT-H 39, BOX-LATER 13, RAW 8, BOX-P 1, OUT-P 1
+HPFUN   miss  132 /  172  ABSENT 49, OUT-H 39, OUT-P 26, RAW 9, BOX-LATER 9
+PWY     miss  125 /  126  RAW 68, OUT-H 24, ABSENT 22, OUT-P 11
+WJFUN   miss  125 /  315  OUT-H 51, ABSENT 32, RAW 21, OUT-P 18, BOX-LATER 3
+FRNO    miss  117 /  119  RAW 82, OUT-H 24, ABSENT 11
+MXFL    miss  108 /  383  ABSENT 40, RAW 36, OUT-H 26, OUT-P 3, BOX-LATER 2, BOX-P 1
+TWHA    miss  105 /  149  ABSENT 54, OUT-P 32, RAW 11, OUT-H 8
+BLL     miss  100 / 2082  ABSENT 45, OUT-H 31, BOX-LATER 19, RAW 4, OUT-P 1
+PES     miss   99 /  115  ABSENT 69, OUT-H 14, RAW 14, BOX-LATER 1, BOX-P 1
+ENGR    miss   93 /  151  ABSENT 34, RAW 28, OUT-H 24, OUT-P 3, BOX-LATER 2, BOX-P 2
+CHI     miss   91 /   91  ABSENT 91
+MXDB    miss   91 /  158  ABSENT 61, OUT-H 13, RAW 10, OUT-P 3, BOX-LATER 2, BOX-P 2
+MXEO    miss   89 /  194  ABSENT 49, RAW 24, OUT-H 14, BOX-LATER 1, OUT-P 1
+ENGJ    miss   86 /  155  ABSENT 62, OUT-H 14, BOX-LATER 4, RAW 4, OUT-P 2
+XGF     miss   84 /  158  ABSENT 54, OUT-H 26, BOX-LATER 2, RAW 1, OUT-P 1
+HIS     miss   83 /  219  ABSENT 45, BOX-LATER 18, OUT-H 16, OUT-P 4
+CEDO    miss   82 /  158  ABSENT 35, OUT-H 35, RAW 8, OUT-P 2, BOX-LATER 1, BOX-P 1
+MXDI    miss   82 /  230  ABSENT 64, RAW 7, OUT-H 6, OUT-P 4, BOX-LATER 1
+MXFU    miss   80 /  253  ABSENT 49, OUT-H 14, RAW 13, BOX-LATER 2, OUT-P 2
+HES     miss   76 /   94  ABSENT 41, OUT-H 31, BOX-P 2, RAW 1, BOX-LATER 1
+TEDC    miss   75 /  109  RAW 36, OUT-H 29, ABSENT 7, OUT-P 2, BOX-LATER 1
+PHE     miss   73 /   86  ABSENT 40, OUT-H 24, RAW 6, BOX-LATER 1, BOX-P 1, OUT-P 1
+MXEX    miss   67 /   97  ABSENT 42, OUT-H 15, RAW 8, BOX-LATER 1, OUT-P 1
+GENO    miss   66 /   68  ABSENT 38, RAW 18, OUT-H 9, OUT-P 1
+ANZH    miss   63 /  143  ABSENT 41, OUT-H 13, OUT-P 4, RAW 3, BOX-LATER 2
+CEDT    miss   62 /  123  ABSENT 30, OUT-H 12, OUT-P 8, RAW 6, BOX-H 5, BOX-LATER 1
+FRFUN   miss   62 /   67  RAW 33, ABSENT 14, OUT-H 6, BOX-H 5, OUT-P 4
+ENGC    miss   60 /  242  OUT-H 29, ABSENT 18, RAW 10, OUT-P 2, BOX-LATER 1
+CHFUN   miss   58 /  126  OUT-H 50, ABSENT 7, OUT-P 1
+MXFUN   miss   55 /   95  OUT-H 27, ABSENT 22, OUT-P 6
+SSFUN   miss   55 /  107  ABSENT 36, OUT-H 13, RAW 3, BOX-LATER 3
+ENGI    miss   54 /  201  ABSENT 25, OUT-H 10, RAW 8, BOX-LATER 7, BOX-H 2, OUT-P 1, BOX-P 1
+ENGS    miss   52 /  153  ABSENT 19, RAW 17, OUT-H 14, BOX-LATER 1, OUT-P 1
+TWHK    miss   52 /   70  ABSENT 22, OUT-H 13, RAW 11, OUT-P 5, BOX-LATER 1
+XMES    miss   49 /  181  ABSENT 43, RAW 3, OUT-H 2, OUT-P 1
+CBI     miss   48 /   55  RAW 21, ABSENT 13, OUT-H 9, OUT-P 5
+TEFUN   miss   44 /   78  ABSENT 20, RAW 11, OUT-H 10, OUT-P 3
+ENFUN   miss   43 /  130  OUT-H 17, ABSENT 16, BOX-LATER 5, OUT-P 4, RAW 1
+ART     miss   42 /   42  ABSENT 36, OUT-P 3, BOX-LATER 2, OUT-H 1
+COM     miss   38 /   40  ABSENT 27, OUT-H 9, RAW 1, OUT-P 1
+CEDW    miss   34 /   83  ABSENT 16, OUT-H 16, BOX-LATER 1, OUT-P 1
+CEDK    miss   33 /   72  OUT-H 19, ABSENT 12, OUT-P 2
+HPRE    miss   33 /   68  OUT-H 25, BOX-LATER 6, RAW 1, ABSENT 1
+JPN     miss   30 /   31  ABSENT 14, RAW 12, OUT-H 4
+GEO     miss   29 /   31  ABSENT 20, OUT-H 6, RAW 2, OUT-P 1
+OSBY    miss   25 /   66  OUT-H 20, ABSENT 3, RAW 2
+MXS     miss   24 /   24  ABSENT 17, RAW 4, OUT-H 2, BOX-LATER 1
+CEDR    miss   22 /   69  ABSENT 15, OUT-H 4, OUT-P 2, RAW 1
+DAN     miss   22 /   30  ABSENT 17, OUT-P 3, OUT-H 2
+SSCI    miss   22 /   55  OUT-H 9, ABSENT 7, RAW 5, BOX-LATER 1
+XLP     miss   22 /   34  OUT-H 14, ABSENT 4, OUT-P 3, RAW 1
+ARFUN   miss   19 /   25  OUT-H 7, RAW 5, OUT-P 4, ABSENT 3
+EXBP    miss   18 /   19  ABSENT 15, OUT-H 3
+EXIP    miss   16 /   20  OUT-H 8, ABSENT 7, RAW 1
+SSOG    miss   16 /   42  ABSENT 7, OUT-H 4, BOX-LATER 3, RAW 2
+SCES    miss   15 /   25  OUT-H 10, ABSENT 4, RAW 1
+EXPFUN  miss   14 /   19  ABSENT 14
+ENO     miss   13 /   25  OUT-H 8, ABSENT 4, RAW 1
+MUS     miss   13 /   13  ABSENT 8, OUT-H 5
+OSSC    miss   13 /   27  OUT-H 9, RAW 4
+PMT     miss   13 /   13  OUT-H 7, ABSENT 4, OUT-P 2
+TWHT    miss   13 /   15  ABSENT 6, RAW 4, OUT-H 2, OUT-P 1
+DTC     miss   12 /   13  ABSENT 8, OUT-H 2, RAW 1, OUT-P 1
+ENG     miss   12 /   12  RAW 9, OUT-H 3
+TWHR    miss   12 /   21  OUT-H 12
+XTAS    miss   12 /   78  ABSENT 9, OUT-H 3
+JPFUN   miss   11 /   11  RAW 5, ABSENT 4, OUT-H 2
+OSAI    miss   11 /   43  OUT-H 7, ABSENT 3, BOX-LATER 1
+OSOH    miss   11 /   44  ABSENT 5, OUT-P 4, BOX-LATER 1, RAW 1
+OSSM    miss   10 /   35  OUT-H 8, ABSENT 1, BOX-LATER 1
+
+== ABSENT
+   AGH1001 AGH1001_1_0.html: what are primary products
+   AGH1001 AGH1001_2_0.html: value of primary products
+   AGH1001 AGH1001_2_0.html: flow diagram from new zealand to the world
+   AGH1001 AGH1001_2_0.html: career pathways video review
+   AGH1001 AGH1001_3_0.html: māori creation story
+   AGH1001 AGH1001_3_0.html: reflecting on mātauranga māori in agricultural and horticultural scien
+   AGH1001 AGH1001_4_0.html: new zealand s four seasons
+   AGH1001 AGH1001_4_0.html: mix and match
+   AGH1001 AGH1001_4_0.html: timing of mating in new zealand
+   AGH1001 AGH1001_4_0.html: new zealand grass growth
+   AGH1001 AGH1001_4_0.html: seasonality in an orchard
+   AGH1001 AGH1001_4_0.html: seasonality and maramataka
+   AGH1001 AGH1001_5_0.html: farming in new zealand
+   AGH1002 AGH1002_2_0.html: soil practical texture by sedimentation
+
+== OUT-H (a heading outside every box)
+   AGH1001 AGH1001_1_0.html: agricultural and horticultural products
+   AGH1001 AGH1001_3_0.html: self check true or false
+   AGH1002 AGH1002_6_0.html: organic matter or not
+   AGH1002 AGH1002_6_0.html: biological properties of soil
+   AGH1003 AGH1003_2_0.html: irrigation and primary production in new zealand
+   AGH1003 AGH1003_3_0.html: fertiliser application
+   AGH1003 AGH1003_4_0.html: benefits of organic matter
+   AGH1003 AGH1003_5_0.html: lime and soil properties
+   AGH1003 AGH1003_6_0.html: cultivation and the benefits on soil
+   AGH1003 AGH1003_7_0.html: drainage systems
+   AGH1003 AGH1003_8_0.html: crop rotation case study
+   AGH1004 AGH1004_2_0.html: reflective questions
+   AGH1004 AGH1004_3_0.html: a year in a kiwifruit orchard
+   AGH1004 AGH1004_5_0.html: knowledge check sorting activity
+
+== RAW (inside the hand-off widget)
+   AGH1001 AGH1001_1_0.html: primary products
+   AGH1001 AGH1001_5_0.html: management practices on a production system
+   AGH1002 AGH1002_5_0.html: nutrients
+   AGH1005 AGH1005_1_0.html: mauri model
+   AGH1005 AGH1005_8_0.html: values
+   AGH1009 AGH1009_1_0.html: brainstorm
+   ANZH104 ANZH104_1_0.html: what do we need to survive
+   ANZH105 ANZH105_8_0.html: checklist
+   ANZH203 ANZH203_1_0.html: comprehension activity
+   ARFUN01 ARFUN01_0_0.html: who came before us
+   ARFUN03 ARFUN03_0_0.html: what have i learnt
+   ARFUN03 ARFUN03_0_0.html: what have i learnt
+   ARFUN03 ARFUN03_0_0.html: what have i learnt
+   ARFUN03 ARFUN03_0_0.html: what have i learnt
+
+== OUT-P (a <p> outside every box)
+   AGH1002 AGH1002_4_0.html: drainage experiment
+   AGH1002 AGH1002_6_0.html: levels of organic matter
+   AGH1006 AGH1006_8_0.html: chemical control
+   ANZH103 ANZH103_1_0.html: the treaty documents
+   ANZH104 ANZH104_7_0.html: congratulations
+   ANZH205 ANZH205_2_0.html: for or against
+   ANZH205 ANZH205_7_0.html: congratulations for completing this module
+   ARFUN01 ARFUN01_0_0.html: emotions
+   ARFUN01 ARFUN01_0_0.html: culture in the arts
+   ARFUN03 ARFUN03_0_0.html: drag the words into the right spot
+   ARFUN05 ARFUN05_0_0.html: focus activity
+   ART1002 ART1002_5_0.html: reflections on your work and progress
+   ART1006 ART1006_3_0.html: well done
+   ART1006 ART1006_4_0.html: well done
+
+== BOX-LATER (in a box, not first)
+   AGH1003 AGH1003_8_0.html: true or false
+   AGH1005 AGH1005_6_0.html: nutrient deficiencies
+   ANZH105 ANZH105_4_0.html: i spy with my little eye
+   ANZH105 ANZH105_5_0.html: artefacts
+   ART1005 ART1005_0_0.html: well done
+   ART1005 ART1005_0_0.html: well done
+   BLL114 BLL114_1_0.html: syllables
+   BLL117 BLL117_2_0.html: decodable text
+   BLL120 BLL120_0_0.html: where is the k sound
+   BLL120 BLL120_0_0.html: writing words with the digraph ck
+   BLL120 BLL120_0_0.html: reading words
+   BLL120 BLL120_0_0.html: reading words
+   BLL120 BLL120_0_0.html: reading words
+   BLL120 BLL120_0_0.html: reading words
