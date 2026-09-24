@@ -104,6 +104,21 @@ class MenuBuilder {
 	 * module the index does not know keeps today's path) whose subject is not excluded (the BLL parents' own gold is the
 	 * banner form). Returns the family config or null. Data menu.two_col_li.inquiry_family; env INQFAMILY_OFF (INQMENU_OFF is the r-inquiry-tab rule's own toggle).
 	 */
+	/**
+	 * ROUND 475 (the autonomous loop's session-43 Round 7) — KB constraint 75 ("inline → anchor") IN THE MODULE MENU.
+	 * The menu's text buffers rendered through ListsAndRuns.renderBlackText WITHOUT the items' hyperlinks, so every
+	 * writer inline link in a menu pane lost its href — 52 across ≈ 30 modules (`outputs/_s43_r7_inlinelinks.py`),
+	 * the gold keeping 12 (the NCEA standard pages in the Standards / Information tabs: AGH1009, COM1002, HIS1004,
+	 * MXS1004, PES1001–1004 / 1008 …) and dropping 40 (named overrides of c75). With the flag on, each buffer carries
+	 * its items' block.links into the free-body weave (exact phrase, first occurrence per line, never inside an <a>).
+	 * Data menu.inline_links {enabled, env MENULINKS_OFF}.
+	 */
+	static #menuLinksOn() {
+		const cfg = DataService.Data.EmitTemplates.menu?.inline_links;
+		if (!cfg || cfg.enabled === false) return false;
+		return !(typeof process !== "undefined" && process.env && process.env[cfg.env ?? "MENULINKS_OFF"]);
+	}
+
 	static #inquiryFamilyFor(run, page) {
 		const cfg = DataService.Data.EmitTemplates?.menu?.two_col_li?.inquiry_family;
 		if (!cfg || cfg.enabled === false || !page?.isOverview) return null;
@@ -599,10 +614,17 @@ class MenuBuilder {
 		// being merged together. It's called right before any heading, table,
 		// bucket switch, or consumed label, and once more at the very end.
 		let textBuf = [];
+		// ROUND 475 (KB c75 "inline → anchor"; data menu.inline_links; env MENULINKS_OFF): the buffered items'
+		// own hyperlinks (block.links) travel with their text, so the free-body weave links the writer's phrase in
+		// the menu too — AGH1009's Standards tab "Agricultural and Horticultural Science 1.4" → its NCEA page.
+		const linksOn = MenuBuilder.#menuLinksOn();
+		let linkBuf = [];
+		const bufLinks = (it) => { if (linksOn) for (const l of (it?.block?.links ?? [])) if (l?.text && l?.target) linkBuf.push(l); };
 		const flushText = () => {
 			if (!textBuf.length) return;
-			for (const piece of ListsAndRuns.renderBlackText(textBuf.join("\n"), run)) push(piece);
+			for (const piece of ListsAndRuns.renderBlackText(textBuf.join("\n"), run, linksOn ? linkBuf : [])) push(piece);
 			textBuf = [];
+			linkBuf = [];
 		};
 
 		// The pane/section LABEL heading itself (e.g. "Learning Intentions") is
@@ -688,11 +710,11 @@ class MenuBuilder {
 							&& line.trim().split(/\s+/).length >= (inqCfg.trailing_prose_min_words ?? 12)) {
 							flushText(); bucket = "right";
 						}
-						if (line.trim()) textBuf.push(line);   // buffer (grouped at the next label / heading / end)
+						if (line.trim()) { textBuf.push(line); bufLinks(it); }   // buffer (grouped at the next label / heading / end)
 					}
 					continue;
 				}
-				if (it.text.trim()) textBuf.push(it.text);   // buffer (grouped at the next heading / table / end)
+				if (it.text.trim()) { textBuf.push(it.text); bufLinks(it); }   // buffer (grouped at the next heading / table / end)
 				continue;
 			}
 			if (it.type === "table") { flushText(); push(TablesAndGrids.contentTable(it.block, run, false, norm)); continue; }
@@ -961,13 +983,13 @@ class MenuBuilder {
 			if (!primary && it.parse.class === "instruction") {
 				flushText();
 				push(NotesAndComments.redFlag(it.text, run, "cs"));
-				if (it.blackAfter.trim()) textBuf.push(it.blackAfter);
+				if (it.blackAfter.trim()) { textBuf.push(it.blackAfter); bufLinks(it); }
 				continue;
 			}
 
 			// anything else: render its black content in place
 			const text = it.blackAfter ?? "";
-			if (text.trim()) textBuf.push(text);
+			if (text.trim()) { textBuf.push(text); bufLinks(it); }
 		}
 		flushText();   // emit any trailing buffered bullets
 
@@ -2414,11 +2436,16 @@ class MenuBuilder {
 			: (cfg.heading_element ?? "<h4><span>{heading}</span></h4>");
 		const sections = [{ kind: "other", pieces: [] }];   // pre-heading content bucket
 		let textBuf = [];
+		// ROUND 475 (menu.inline_links; env MENULINKS_OFF): the tab pane's items carry their hyperlinks into the weave
+		const linksOn = MenuBuilder.#menuLinksOn();
+		let linkBuf = [];
+		const bufLinks = (it) => { if (linksOn) for (const l of (it?.block?.links ?? [])) if (l?.text && l?.target) linkBuf.push(l); };
 		const flush = () => {
 			if (!textBuf.length) return;
 			const sec = sections[sections.length - 1];
-			for (const piece of ListsAndRuns.renderBlackText(textBuf.join("\n"), run)) sec.pieces.push(piece);
+			for (const piece of ListsAndRuns.renderBlackText(textBuf.join("\n"), run, linksOn ? linkBuf : [])) sec.pieces.push(piece);
 			textBuf = [];
+			linkBuf = [];
 		};
 		const pushLines = (text) => {
 			const sec = sections[sections.length - 1];
@@ -2437,7 +2464,7 @@ class MenuBuilder {
 		};
 		for (const it of items) {
 			if (it._inquiryCrumb) continue;
-			if (it.type === "black") { pushLines(it.text); continue; }
+			if (it.type === "black") { pushLines(it.text); bufLinks(it); continue; }
 			if (it.type === "table") { flush(); sections[sections.length - 1].pieces.push(TablesAndGrids.contentTable(it.block, run, false, norm)); continue; }
 			const primary = it.parse?.primary;
 			const headingText = (norm.RenderText(it.text) || it.blackAfter || "").replace(/\*/g, "").trim();
@@ -2455,10 +2482,10 @@ class MenuBuilder {
 			if (!primary && it.parse?.class === "instruction") {
 				flush();
 				sections[sections.length - 1].pieces.push(NotesAndComments.redFlag(it.text, run, "cs"));
-				if ((it.blackAfter || "").trim()) pushLines(it.blackAfter);
+				if ((it.blackAfter || "").trim()) { pushLines(it.blackAfter); bufLinks(it); }
 				continue;
 			}
-			if ((it.blackAfter || "").trim()) pushLines(it.blackAfter);
+			if ((it.blackAfter || "").trim()) { pushLines(it.blackAfter); bufLinks(it); }
 		}
 		flush();
 		const secs = sections.filter((s) => s.pieces.length);

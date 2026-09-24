@@ -1,0 +1,12 @@
+ATTRIBUTES THE GOLD CARRIES AND CLAUDE DOES NOT (signature present in both; gold share − Claude share ≥ 0.25)
+weight | signature | attr | gold elems | gold share | Claude elems | Claude share | gold modules | gold values (top) | Claude values (top)
+   1075 | iframe                       | height           |   3687 | 0.29 |   3868 | 0.00 |  170 | '315':1036, '480':10, '410':3 | 
+   1074 | iframe                       | width            |   3687 | 0.29 |   3868 | 0.00 |  170 | '560':1036, '720':8, '100%':6 | 
+    418 | div.accordion                | layout           |   1528 | 0.27 |   1021 | 0.00 |  141 | '':418 | 
+    314 | audio.audioPlayer            | src              |    630 | 1.00 |   1096 | 0.50 |  130 | 'audio/.mp3':53, '':4, 'audio/anga.mp3':4 | 'audio/.mp3':530, 'audio/h.mp4':2
+    259 | audio.audioPlayer            | title            |    630 | 0.91 |   1096 | 0.50 |  125 | '':394, 'Instructions':10, 'max-width:300px':10 | '':545
+
+ATTRIBUTES CLAUDE CARRIES AND THE GOLD DOES NOT (Claude share − gold share ≥ 0.25)
+  20955 | div                          | style            | gold  13342 0.01 | Claude  33958 0.63 | 'min-height: 0; overflow: hidden':5326, 'padding-top: 14px':5326, 'font-size: 0.
+   3635 | img.img-fluid                | loading          | gold  28033 0.31 | Claude   7666 0.78 | 'lazy':5977
+   2832 | iframe                       | loading          | gold   3687 0.24 | Claude   3868 0.97 | 'lazy':3757

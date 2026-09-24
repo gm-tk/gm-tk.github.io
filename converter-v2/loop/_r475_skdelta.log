@@ -1,0 +1,11 @@
+OLD pairs 2491  SCAFFOLD 55.2315%  RAW 39.194%  >=50 1577  >=75 276  >=90 25
+NEW pairs 2491  SCAFFOLD 55.2309%  RAW 39.192%  >=50 1577  >=75 276  >=90 25
+delta SCAFFOLD -0.0006pp  RAW -0.002pp  >=50 +0  >=75 +0  >=90 +0
+movers 5 (up 1 / down 4), pp-sum -1.6
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  MXFUN01    MXFUN01_0_0.html            5.5 ->    5.5  (+0.0)
+  GEO1005    GEO1005_1_0.html           35.5 ->   35.1  (-0.3)
+  XLP03      XLP03_0_0.html             45.1 ->   44.8  (-0.3)
+  ENGI405    ENGI405_0_0.html           70.7 ->   70.3  (-0.4)
+  XLP04      XLP04_0_0.html             57.6 ->   57.1  (-0.5)

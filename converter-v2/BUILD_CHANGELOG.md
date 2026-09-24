@@ -1,5 +1,27 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (round 475, build 260620.39) — KB CONSTRAINT 75 IN THE MODULE MENU: the writer's inline links keep their href — the menu's text buffers now carry their items' hyperlinks into the free-body weave; the NCEA standard pages in the Standards / Information tabs, the modules' glossary and resource links
+
+### 1. WHAT CHANGED
+
+**The find** (session 43 Round 7 — two NEW instruments: the ATTRIBUTE census `outputs/_s43_r7_attrs.py` and the LINK census `_s43_r7_links.py` / `_s43_r7_inlinelinks.py`, which asks for every writer inline link `__words__ [LINK: url]` whether Claude kept the words, the href, or neither, by container × the gold's treatment). Triangulated on AGH1009-0.0's Standards tab ("__Agricultural and Horticultural Science 1.4__ [LINK: ncea.education.govt.nz/…]" → Claude `<p>` without the link; the gold's `<a href … target="_blank">`) and ANZH104-6.0 ("__Google Lens__ / __Seek by iNaturalist__" → plain text inside an activity box). **Mechanism:** `ListsAndRuns.inlineMarkup` weaves each paragraph's `block.links` onto its exact phrase, but several emitters pass NO links — `MenuBuilder`'s menu text buffers (`renderBlackText(textBuf.join("\n"), run)`), table cells (`TablesAndGrids`), built-widget internals (deliberately). **The menu class:** 52 writer inline links lost from the module menus in ≈ 30 modules — the gold keeps 12 (the NCEA standard pages — AGH1009, COM1002, HIS1004, MXS1004 ×2, PES1001–1004, PES1008 — XDLS909, XTAS102) and drops 40 (D2L cross-module links, glossary / vocabulary documents, Drive folders). **KB constraint 75** ("inline → anchor", universal) makes the writer's link the target; the gold's omissions are NAMED overrides.
+
+**The fix** (`MenuBuilder` — the section / tab builder and `#writerTabPane` each keep a link buffer beside their text buffer, filled from the buffered items' `block.links`, passed to `renderBlackText`; data `Emit_Templates.menu.inline_links` {enabled, env}; env **`MENULINKS_OFF`**, byte-identical OFF): the free-body weave (exact phrase, first occurrence per line, never inside an existing `<a>`) now runs on menu text too.
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules (`outputs/_s42_probe_run.sh r475`): **OFF 3222 / 3222 identical; ON 35 pages / 33 modules changed** — every change an added `<a>` on the writer's own phrase (AGH1009's journal "here" and its NCEA standard; GER1002's vocabulary documents and D2L resources; ENGC403 / ENGI405 / ENGS404's ENFUN module links …).
+- Regeneration of the 33 + the 12-module spot-check (`_r475_regen.sh`): 0 truly stale, spot-check 12 / 12 byte-identical; `scoped_ship.sh` containment OK (33 ⊆ 33) and its decomposition flagged the skeleton's −0.0006pp (below); committed NAMED with `_fastloop_diff.py --accept-named` (the r470 precedent — `_r475_fastloop_named.log`). (The post-ship feature-index rebuild rewrote `Module_Feature_Index.json` with identical bytes and a newer mtime; the 33 were regenerated once more before the named commit.)
+- The link census after (`_r475_inlinelinks_after.log`): menu links the gold keeps, lost **12 → 2**; menu links the gold drops, lost 44 → 19 (the rest: the phrase occurs earlier on its line — "here", "activity").
+
+### 3. PROTECTED GATES
+
+- Skeleton **55.2315 % → 55.2309 % @ 2491 (−0.0006pp)**, ≥50 1577, ≥75 276, ≥90 25, RAW 39.194 → 39.192 %; 5 movers, **1 up / 4 down — NAMED (KB c75 over the gold):** GEO1005_1_0 −0.3 (the writer's "GLOSSARY GEO 2.docx" link), XLP03_0_0 −0.3 ("see PDF"), ENGI405_0_0 −0.4 (the ENFUN module list + the Te Kura library link), XLP04_0_0 −0.5 ("Sensory Materials for Home Learning") — flat (untabbed) menus, where the skeleton sees the `<a>` the gold dropped; movers outside the affected set 0.
+- compare_structure 16758 / 208 / 903, body 238, clean 2587 / 2633, leak 75 / 46 — HELD; every verifier RESULT line identical to r474; 17 selftests + the skeleton selftest green; the feature index green; the miner 197 CANDIDATE @ 2491.
+- Plateau (§4): a KB-rule round that predicted no skeleton move (the menu is one WIDGET line except on flat menus) and delivered −0.0006pp NAMED — neither counts nor resets: **2 of 3** stands.
+
+**Ledger:** scoped #1 since the r474 FULL · data `menu.inline_links` · env `MENULINKS_OFF` · code `MenuBuilder` (the two text buffers + `#menuLinksOn`) · tools `outputs/_s43_r7_{attrs,links,inlinelinks,bodylinks}.py`, `_r475_{regen,postship,commit_named,checksums}.sh`, `_r475_finalise.py`. **Follow-ups (recorded):** the same census's other link-dropping paths — activity boxes (33 gold-kept links / 6 modules: ANZH104's Google Lens, CEDT301's Te Ara), free body (30 / 8: AGH1009's Yara N-Sensor, ANZH205's Waitangi Treaty Grounds), alerts (18 / 7: OSBY401's Netsafe form), table cells (54 / 13, but 388 more the gold drops — mostly picture-source pointers, a precision question), widget internals (accordion 6, speechBubble 4); Claude's Bilingual audio players ship no `src` / `title` (551, TRR / PMT — KB 04C's form carries both; the gold names them after the reo phrase).
+
 ## 2026-09-24 (round 474, build 260620.38) — KB CONSTRAINT 52: EVERY iSTOCK IMAGE CARRIES ITS TITLE AS ALT TEXT — the widget-internal images round 242 left corpus-inert (flip cards, carousels, speech bubbles, accordions, activity boxes) now take the same title as the content images; recoverable iStock images with an empty alt 1,642 → 13 — with THE FULL-REGENERATION BACKSTOP (ledger scoped #6 → 0)
 
 ### 1. WHAT CHANGED
