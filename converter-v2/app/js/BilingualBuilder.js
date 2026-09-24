@@ -225,8 +225,12 @@ class BilingualBuilder {
 				// section's activity NUMBER, never a heading — the gold ships a bare-id heading on
 				// 0 of 2,385 pages. Strip it here, the same seam that drops the "Activity NX:" label.
 				const secIdRe = this.sectionIdStripRe();
+				// ROUND 466 (Chris's D14-20): the writer's COURSE-CODE heading (`[H1] TRR900`) is
+				// dropped at the same seam — the gold ships a bare-code heading on 0 Bilingual pages.
+				const codeRe = this.courseCodeStripRe();
 				const strip = (arr) => arr.filter((h) => {
 					const t = String(h).replace(/<[^>]+>/g, "").trim();
+					if (codeRe && /^\s*<h[1-6][\s>]/i.test(String(h)) && codeRe.test(t)) return false;
 					return !this.actLabelRe.test(t) && !(secIdRe && secIdRe.test(t));
 				});
 				const Rt = strip(R.text), Et = strip(E.text);
@@ -313,6 +317,23 @@ class BilingualBuilder {
 		const cfg = this.sectionIdNumberCfg();
 		if (!cfg || cfg.strip_heading === false) return null;
 		return new RegExp(cfg.id_pattern || "^\\s*(\\d{1,2}\\.\\d{1,2})\\s*[:.]?\\s*$");
+	};
+
+	/**
+	 * ROUND 466 (Chris's decision D14-20) — the regex that recognises a rendered
+	 * HEADING whose whole text is a course / module code (`TRR900`), from
+	 * `section_grouping.course_code_heading.code_pattern`; null when the feature
+	 * is off (data `enabled:false` or env COURSECODE_OFF). Only headings are
+	 * dropped — a paragraph that happens to be a code stays.
+	 *
+	 * @returns {RegExp|null}
+	 */
+	static courseCodeStripRe() {
+		const cfg = DataService.Data.EmitTemplates.elements?.dual_language?.section_grouping?.course_code_heading;
+		if (!cfg || cfg.enabled === false) return null;
+		const env = cfg.env || "COURSECODE_OFF";
+		if (typeof process !== "undefined" && process.env && process.env[env]) return null;
+		return new RegExp(cfg.code_pattern || "^\\s*[A-Z]{2,6}\\d{3}\\s*[:.]?\\s*$");
 	};
 
 	/**

@@ -1,5 +1,28 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (round 466, build 260620.33) — THE WRITER'S COURSE-CODE HEADING IS DROPPED (Chris's decision D14-20): the `| [H1] TRR900 | [H1] TRR900 |` row at the head of a bilingual table — the MTK Module Introduction (TRR1 / TRR2 / TRR3, PMT101) and every PNR activity table — no longer ships as a reo / eng heading pair; the human drops it — the loop's session 42 Round 2
+
+### 1. WHAT CHANGED
+
+**The find** (r453, Needs Chris #20): the MTK introduction table the r453 overview restoration brought back opens with the writer's course-code row `[H1] TRR900` (both columns), and Claude rendered it as `<h3 reo>TRR900</h3><h3 eng>TRR900</h3>` above "Kōwae Ako Whakataki / Introduction". Census this round (`grep` over both corpora): **Claude 22 pages / 18 modules** — the introduction of TRR102 / 103 / 106 / 107 / 109–114 / 203 / 301 (two pages) / 304_1 and PMT101_1 (`PMT101` as the code), plus the PNR family's lesson pages, where EVERY activity table opens `| [H1] TRR900 | [H1] TRR900 | / | [H1] 1.1 | …` (PNR101 / 102 / 104 / 107, 42 heading pairs on 8 pages). **Gold: 0 bare-code h2–h6 on every Bilingual page** — 17 of the 18 introductions drop it; TRR108_0.0 keeps it as an `h1` pair (the one NAMED override); the PNR gold carries TRR900 nowhere. KB 07D's skeleton comment says "Typically: course code h1"; Chris (D14-20, 24 Sept 2026): *"Follow the recommended course of action (drop the TRR900 course headings)."*
+
+**The fix** (`BilingualBuilder.bilingualRows`, the r330 section-id seam — the per-element interleave strip that already drops the bare `[H1] 1.1` id and the "Activity NX:" label; new `BilingualBuilder.courseCodeStripRe()`): a rendered HEADING (`h1`–`h6`) whose whole text matches `code_pattern` (`^[A-Z]{2,6}\d{3}[:.]?$`) is dropped; a paragraph that happens to be a code stays; the module-code chip in the header is untouched. Data `Emit_Templates.elements.dual_language.section_grouping.course_code_heading` {enabled, env, code_pattern}; env **`COURSECODE_OFF`** (byte-identical OFF).
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules (`outputs/_s42_probe_run.sh r466`, the r448 harness): **OFF 3217 / 3217 identical; ON = exactly the census — 22 pages / 18 modules**, every diff a pure deletion of the heading pairs (`_r466_on/`), no residual bare-code heading.
+- Pre-score (`_s42_prescore.py r466`): **12 up / 0 down, pp-sum +34.2** — TRR114_0 58.3 → 63.9, PMT101_1 19.7 → 23.8, PNR102_1 60.6 → 64.5, PNR104_2 / _1 +3.6 / +3.5, TRR113_0 +3.1 (72.7 → 75.8, a new ≥75 page), TRR111_0 / TRR107_0 +2.2, TRR301_0 +1.8, TRR203_0 +1.6, PNR107_1 / _2 +1.4 / +1.1; the other 10 changed pages move 0 (the heading sat beside a collapsed widget or at an aligned position).
+- Scoped regeneration of the 18 + the 12-module spot-check (`_r466_regen.sh`, 3 batches): `_content_manifest.py fresh` 0 truly stale (18 affected, 524 untouched byte-identical); spot-check 12 / 12 byte-identical; the disk = the probe's ON files 78 / 78. `scoped_ship.sh --toggle COURSECODE_OFF --round 466`: **PASS** (exact, decomposition-proven), scoped **#2** since the r460 FULL.
+
+### 3. PROTECTED GATES
+
+- Skeleton **55.2517 % → 55.2654 % @ 2487 (+0.0137pp; 12 up / 0 down, 0 movers outside the affected set)**; ≥50 1575, **≥75 275 → 276**, ≥90 25; RAW 39.193 → 39.200.
+- compare_structure 16709 / 208 / 896 / 24 EXACT; body_compare 61 / 5 / 175 / 238 EXACT; clean 2584 / 2629 EXACT; leak 74 / 45 EXACT; tags 9557 / 9557; every verifier RESULT ✓; selftests 50 PASS / 0 FAIL; feature index GREEN; the miner 197 CANDIDATE @ 2487 (`_diff_miner_r466.log`).
+- Plateau (§4): a Chris-decided NAMED override (D14-20) — neither counts nor resets (the r444 / r445 / r447 precedent): **2 of 3** stands.
+- Named override: TRR108_0.0 (the gold keeps the course code as an `h1` pair) — Claude never rendered it there (TRR108's introduction takes another path), so no page dips.
+
+**Ledger:** scoped #2 since the r460 FULL · data `Emit_Templates.elements.dual_language.section_grouping.course_code_heading` · env `COURSECODE_OFF` · code `BilingualBuilder.bilingualRows` / `courseCodeStripRe` · tools `outputs/_s42_probe_run.sh`, `_s42_prescore.py`, `_r466_{regen,postship}.sh`, `_r466_finalise.py`, `_r466_{prescore,scoped_ship,gates,sk_full,skdelta,selftests,index}.log`, `_r466_sk_final.json`, `_affected_r466.txt` · AppVersion 260620.33.
+
 ## 2026-09-24 (round 465, build 260620.32) — THE FOUR `Merge item N` MODULES LEAVE THE COMPARISON SET (Chris's decision D14-21; a GATE-CONFIGURATION round, the r343 / D10-6 precedent — no engine change, no regeneration; every baseline RE-ESTABLISHED on the new population, the +0.304pp recorded as a POPULATION change, never claimed) — the loop's session 42 Round 1
 
 ### 1. WHAT CHANGED, IN ONE LINE
