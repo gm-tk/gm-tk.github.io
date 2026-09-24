@@ -102,7 +102,7 @@ is pre-intake. Current (23 September 2026, build 260620.13 — after the 22 Sept
 | Claude pages | 2,109 | **2,675** (r459, 24 Sept: −16 — the module introduction stays on the overview, 17 modules; r458: −9 — a placement note no longer splits BLLR201–203 / ART1006 / HIS1001; r457: −17 — the section-label marker no longer splits HIS1002 / PES1008; r456: +41 — the mid-page lesson heading opens its page, 22 modules; r453: +10 — the TRR table-cell title bar) |
 | gold dirs | 454 | **552** |
 | Writers Template / Media List docx | 619 | **762** |
-| skeleton paired pages | 1,956 | **2,524** (r459: +6 net; r458: −1 — ART1006_4.0; r457: −1 — PES1008's lesson 3 is one page, the human's 3.0 / 3.1 split; r456, 24 Sept: +33 net — 37 new lesson pages, 4 lost to content pairing; r453: +10 — the restored TRR pages; r447: +1 — PWY1002_2_2_0 pairs by content once its journal heading is the gold's own) |
+| skeleton paired pages | 1,956 | **2,487** (r465, 24 Sept: −37 — CHI1003 / 1004 / 1005 + JPN1004 leave the SCORED population by D14-21, `compare_exclusions.txt`; the dirs and pages stay in the census above; r459: +6 net; r458: −1 — ART1006_4.0; r457: −1 — PES1008's lesson 3 is one page, the human's 3.0 / 3.1 split; r456, 24 Sept: +33 net — 37 new lesson pages, 4 lost to content pairing; r453: +10 — the restored TRR pages; r447: +1 — PWY1002_2_2_0 pairs by content once its journal heading is the gold's own) |
 
 **552 gold dirs against 545 Claude dirs is CORRECT, not a fault — the gap is exactly the 7 with no source.**
 The 7 (`GER1003–1007`, `SAM1005`, `SAM1006`) have no Writers Template at all (§2). The 12 XOTP modules joined the
@@ -135,7 +135,10 @@ scaffold 90.9 % (loose 93.5 %) on 2,290 paired pages, full-scope 86.7 %.** (2,29
 ceiling's own population — paired pages whose module has a parsed Writers Template; the skeleton
 gate's 2,353 includes 9 modules the ceiling skips.) Every report quotes "% of achievable" against
 **90.9 %** (the earlier 91.6 % / 91.9 % figures were the 1,956-pair corpus).
-`CONVERTER_V2/outputs/COVERAGE_DASHBOARD.md` was regenerated the same day. **Both are re-run as part of every
+`CONVERTER_V2/outputs/COVERAGE_DASHBOARD.md` was regenerated the same day. **Re-measured again on 24 September
+2026 (r465, the D14-21 population of 2,487 pairs, `outputs/_ceiling_r465.{json,md,log}`): scaffold 91.7 % (loose
+94.3 %), full-scope 87.4 % — quote "% of achievable" against 91.7 % from r465 on** (r465: 55.25 % = 60.2 %). A change
+to `compare_exclusions.txt` changes the denominator exactly as an intake does. **Both are re-run as part of every
 intake (§1f Round 0d)** — an intake changes the denominator, and a "% of achievable" quoted
 against a pre-intake ceiling is wrong.
 

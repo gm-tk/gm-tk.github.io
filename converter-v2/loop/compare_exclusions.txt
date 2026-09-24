@@ -15,3 +15,10 @@ CEDT202   # CED revision brief
 CEDT203   # CED revision brief
 CEDT204   # CED revision brief
 CEDW303   # CED revision brief (no Claude dir today)
+# ROUND 465 (Chris's decision D14-21, 2026-09-24): "these are no-source so can be ignored for all future stats and comparisons
+# and future development on this PageForge project." Every lesson in these four Writers Templates is a `Merge item N` line —
+# the lesson content is not in the document, so no converter rule can reach the human's page. No round targets them again.
+CHI1003   # no-source — every lesson is a `Merge item N` line; D14-21
+CHI1004   # no-source — every lesson is a `Merge item N` line; D14-21
+CHI1005   # no-source — every lesson is a `Merge item N` line; D14-21
+JPN1004   # no-source — every lesson is a `Merge item N` line; D14-21

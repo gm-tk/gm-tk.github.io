@@ -1,0 +1,29 @@
+  … 25/540 modules, 43 pages, 2s
+  … 50/540 modules, 143 pages, 6s
+  … 75/540 modules, 176 pages, 9s
+  … 100/540 modules, 201 pages, 11s
+  … 125/540 modules, 251 pages, 14s
+  … 150/540 modules, 306 pages, 17s
+  … 175/540 modules, 431 pages, 21s
+  … 200/540 modules, 574 pages, 25s
+  … 225/540 modules, 649 pages, 28s
+  … 250/540 modules, 727 pages, 29s
+  … 275/540 modules, 808 pages, 32s
+  … 300/540 modules, 971 pages, 36s
+  … 325/540 modules, 1178 pages, 40s
+  … 350/540 modules, 1363 pages, 44s
+  … 375/540 modules, 1534 pages, 49s
+  … 400/540 modules, 1782 pages, 55s
+  … 425/540 modules, 2023 pages, 62s
+  … 450/540 modules, 2164 pages, 66s
+  … 475/540 modules, 2350 pages, 71s
+  … 500/540 modules, 2530 pages, 75s
+  … 525/540 modules, 2714 pages, 81s
+CEILING (round 0) — 512 modules, 2751 gold pages, 2414 paired (82s); 203 modules read from 2+ parsed files
+  no WT (skipped): TRR115, ENGJ403, GER1003, GER1004, GER1005, GER1006, GER1007, SAM1005, SAM1006; no WT-like parsed file (skipped): TRR102, TRR103, TRR104, TRR105, TRR107, TRR108, TRR109, TRR111, TRR112, TRR113, TRR203, TRR301, TRR304, XOTPG01, XOTPG03, XOTPG04, XOTPG05, XOTPG06
+  PAIRED scaffold-scope no-source share: mean raw 10.9% → NET 8.3%; pooled raw 10.0% → NET 8.2%
+  CEILING scaffold 91.7% (loose 94.3%) / full 87.4% (loose 89.8%); boilerplate strings 168
+  BASELINE _r465_sk_final.json: SCAFFOLD 55.252% = 60.2% of achievable (band 58.6%–60.2%); RAW 39.193% = 44.8% of achievable; per-page mean 60.7%
+  outlier pages (net ≥ 50%, ≥ 8 blocks): 52
+  wrote _ceiling_r465.json
+  wrote _ceiling_r465.md

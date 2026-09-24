@@ -1,14 +1,14 @@
 {
   "_meta": {
     "purpose": "Committed PROTECTED-gate baseline (efficiency lever 2). The shared corpus DRIFTS between sessions so the BUILD_CHANGELOG absolutes never line up exactly — without a committed baseline the only rigorous proof of hold-or-improve is a second full A/B regen pass (~8m/round). Diff THIS after a regen instead. Refresh it (and the build/round) every shipped round, AFTER the gates pass.",
-    "build": "260620.31",
-    "round": 461,
+    "build": "260620.32",
+    "round": 465,
     "date": "2026-09-24",
     "_round92_note": "Round 92 (ENGS302-01: side-alert-box-in-table + dragAndDrop activity wrapper / data-table capture / phantom-journal-button fix). Verified on a FULL 0-stale tightened regen vs the round-91 committed baseline (which matched the fast-loop baseline exactly: over 42 / any 181). PRIMARY skeleton IMPROVED (pages>=50% 524->539 +15, >=75% 65->70 +5, mean 47.8->48.2, median 49.3->49.8); compare_structure exact 5893->5902 (+9) / missing 261->252 (-9) / EXTRA 142 HELD; structural-clean 1290->1291 (95.0->95.1%) / leak 254->253 (-1) / leak pages 68->67 (-1); tags 9557/9557; flipCard divergence 0 (37/13/10/14); speechBubble defect 0. body_compare any 181->184 (+3) — the +3 over-capture (ENGC201-06, ENGR101-05, MXDB301-03) is the UNAVOIDABLE cost of capturing the dragAndDrop/activity DATA TABLE into the widget (the user's explicit fix): those tables ARE the widget's data the human BUILDS, but body_compare cannot credit Claude's un-built placeholder, and for these 3 the human keeps the table free. Net-positive per the MEASUREMENT MANDATE (judge a structural change FIRST on the skeleton, which improved +15) + the NET-POSITIVE convention. _round91_note: round 91 (ENGS302 emphasis-bullets/caption/media-url/lesson-name) shipped +1 skeleton / +1 compare exact / +2 missing.",
     "corpus": {
-      "claude_pages": 2750,
-      "paired_pages": 2491,
-      "gated_dirs": 534,
+      "claude_pages": 2675,
+      "paired_pages": 2487,
+      "gated_dirs": 530,
       "_note": "post-intake, post-full-regen; was claude_pages 1358 / paired 1084 / gated 243 in the stale r407 block"
     },
     "how_to_use": "Run the gate, compare its headline numbers to these. A protected number must HOLD-OR-IMPROVE: skeleton pages>=50%/>=75% and mean up-or-equal; compare_structure exact up / EXTRA down-or-equal / missing down-or-equal; body_any down-or-equal (a documented net-positive over-capture cost may raise it — judge on the skeleton); structural_clean up-or-equal / leak down-or-equal; tags 100%; flipcard divergence 0; speechbubble defect 0. ack_todo_lines is NOT protected. IMPORTANT: the shared corpus DRIFTS between sessions — re-baseline at SESSION START (gate the untouched corpus once) so the diff is drift-free, OR A/B-isolate via the env toggles.",
@@ -106,6 +106,7 @@
     "_note_r407": "Round 407: the heading-led numbered opener takes the owner form too (56 pages / 24 modules; SCOPED regeneration of the 24, scoped ship #2 since the r405 full). Skeleton 54.025 -> 54.084 (+0.0583pp; 38 movers 32 up / 6 down, named), >=50 1176 -> 1181, >=75 200 -> 202, >=90 18, RAW 38.012 -> 38.022; compare_structure exact 11779 (the text-matched pool 13813 -> 13794) / 172 / 626; body_compare over-capture 42, runaway 4 -> 5 (ENGI202_2_0, named), EMPTY 173 -> 170, ANY 218 -> 216; every other gate EXACT; every verifier RESULT identical to r406.",
     "_note_intake_2026_09_19": "INTAKE RE-BASELINE 2026-09-19 (the 98-module September intake + a FULL corpus regeneration, no engine change). The POPULATION GREW: skeleton pairs 1956 -> 2349, cs matched 13794 -> 15668, body/defect pages 2102 -> 2606, gated dirs 484. Every absolute below therefore moves, and the rate metrics fall, WITHOUT any regression. PROOF, measured by splitting each gate by population: the PRE-EXISTING modules reproduce the round-407 baseline EXACTLY -- skeleton 54.084% / >=50 1181 / >=75 202 / >=90 18; compare_structure exact 11779 / EXTRA 172 / missing 626 / row-wrap 23; body_compare runaway 5 / empty_container 170; leak 26 occ / 23 pages; clean 2079/2102 = 98.91%. _content_manifest.py fresh confirmed all 413 pre-existing modules BYTE-IDENTICAL to the manifest, so identical bytes cannot yield different metrics. All verifier gates matched baseline exactly: tags 9557/9557 0 failures, flipCard 61 (32/11/18) divergence 0, speechBubble defect 4, math 323/323 defect 0, menulabels 91 defect 0, dragAndDrop 21 defect 0, modal defect 0, mtkQuiz defect 0, entry parity PASS. The 98 new modules contribute the whole delta; 78 of them converted, 20 cannot yet (12 XOTP dialect, 7 with no Writers Template, PMT101's table-only opener).",
     "_note_s40_r12_full": "Session 40 Round 12 (2026-09-24; no engine change — the ship ledger's FULL backstop): all 545 regenerated with the r452 engine, 542 / 542 modules byte-identical to the scoped-shipped manifest, every number in this file re-proved EXACT on the full corpus (skeleton 54.7484 @ 2477, 0 movers). Ledger record-full --round 452 -> scoped #0.",
+    "_note_r465": "Round 465 (session 42 Round 1, 2026-09-24; Chris's D14-21) — a GATE-CONFIGURATION round: CHI1003 / CHI1004 / CHI1005 / JPN1004 (no-source `Merge item N` lessons) join compare_exclusions.txt; no engine change, no regeneration. Every field below re-established on the new population: skeleton 2524 -> 2487 pairs (37 gone, 0 movers), SCAFFOLD 54.9477 -> 55.2517 (+0.304pp POPULATION, never a gain), >=50 1581 -> 1575, RAW 38.975 -> 39.193, median 56.0 -> 56.3; cs exact 16719 -> 16709 (the four modules' elements); body 2667 -> 2629 pages, ANY 239 -> 238, empty 176 -> 175; clean 2621/2667 -> 2584/2629; leak 75/46 -> 74/45; corpus block refreshed (claude_pages 2675 = the census; paired 2487; gated_dirs 530 = the modules compare_structure scores). Ceiling re-measured 91.7% (_ceiling_r465.json).",
     "_note_r461": "Round 461 (session 41 Round 9, 2026-09-24; KB 01E / 04B) — THE AUDIO-IMAGE UNIT (AUDIOIMGTAG_OFF): 7 TRR modules / 22 pages; SCAFFOLD 54.9376 -> 54.9477 (+0.0101pp; 7 up / 15 down named in BUILD_CHANGELOG round 461); every other gate EXACT; scoped #1 since the r460 FULL.",
     "_note_r460": "Round 460 (session 41 Round 8, 2026-09-24; KB constraint 67 / CL-0040) — KNOWLEDGE AND PRACTICES ARE THEIR OWN OVERVIEW TABS (KPTABS_OFF) — THE FULL BACKSTOP (42 batches, 523 unaffected modules byte-identical, ledger reset to 0). 19 modules / 28 pages changed, all in the module menu, which the skeleton SCAFFOLD collapses to one WIDGET line: SCAFFOLD EXACT, RAW 38.934 -> 38.967; cs / body / defect / leak EXACT; menu-only 20 up / 7 down (outputs/_r460_rawmenu.log).",
     "_note_r459": "Round 459 (session 41 Round 7, 2026-09-24; the page-model lane) — THE MODULE INTRODUCTION STAYS ON THE OVERVIEW: AR-1 now also recognises the introduction typed BLACK, glued to another tag, behind a CS instruction tag, or as a heading ([H2] Introduction / [H1] **INTRODUCTION** / [H3] **MODULE INTRODUCTION**) — page_split.intro_cluster_forms, INTROFORM_OFF — and a lesson heading after a merged introduction opens its page (the r456 opener on that overview). SCOPED ship #6 since the r452 FULL: 17 modules, pages 2691 -> 2675, pairs 2518 -> 2524. SCAFFOLD 54.9291 -> 54.9376 (+0.0085pp; the pre-existing pairs +0.0264pp), >=50 1578 -> 1581, >=75 270 -> 275, >=90 24 -> 25; cs matched 18925 -> 19467, exact 16282 -> 16719 (+437); body ANY 240 -> 239. NAMED: cs EXTRA 199 -> 208 and missing 860 -> 896 (all on the +542 newly compared introduction elements — HIS1002 +167 / +32 missing), clean 2637/2683 -> 2621/2667 (98.28: the 16 removed pages were all clean; unclean held at 46); dips COM1005_0_0 -10.8 / DAN1003_0_0 -6.8 (their humans render the introduction inside a module-menu tab — no #body), COM1006_2_0 -9.4, XDLS501_4 -4.8; lost pair TEDC402-9.0 (the old intro page; the overview rose 59.0 -> 81.6). _fastloop_diff --accept-named, outputs/_r459_fastloop_named.log.",
@@ -159,13 +160,14 @@
     "_note_r408": "Round 408 (session 28 Task 1): the mined registries rebuilt over the 552-module gold corpus (Module_Structure_Index / Granular / 24 new Style-Anchor bases + floor-flip corrections / Menu / Convention / lexicon / feature index / legacy consensus; data/Subject_Prefix_Map.json PROPOSED). SCOPED regeneration of the 103 modules the probe named (OFF = pre snapshot 2613/2613; scoped ship #1 since the 19 Sept full). Skeleton 53.134 -> 53.680 (+0.5455pp; 275 movers 197 up / 76 down, 0 outside the set, the 1813 unaffected pairs EXACT), >=50 1378 -> 1398, >=75 228 -> 236, >=90 19 -> 20, RAW 37.487 -> 37.884; compare_structure exact 13410 -> 14091 (the text-matched pool 15668 -> 16414) / EXTRA 184 -> 186 / MISSING 685 -> 690 (inside five newly single-file WJFUN / JPFUN modules) / row-wrap 23; body_compare over-capture 54 (the 19 Sept fast-loop snapshot's own value — the re-base had carried r407's 42; corrected here), runaway 6, EMPTY 192 -> 190, ANY 250 -> 248; defect clean 2504/2548 = 98.27 (58 clean WJFUN / JPFUN extra pages left the population; defect pages 44 / leak 73 EXACT); every verifier EXACT."
   },
   "skeleton": {
-    "mean_scaffold_pct": 54.95,
-    "median_scaffold_pct": 56.0,
-    "pages_ge_50": 1581,
+    "mean_scaffold_pct": 55.25,
+    "median_scaffold_pct": 56.3,
+    "pages_ge_50": 1575,
     "pages_ge_75": 275,
     "pages_ge_90": 25,
-    "raw_mean_pct": 38.98,
-    "pairs": 2524,
+    "raw_mean_pct": 39.19,
+    "pairs": 2487,
+    "_note_r465_state": "r465 (D14-21, population only): SCAFFOLD 55.2517 @ 2487, RAW 39.193; 0 movers, 37 pairs gone.",
     "_note_r461_state": "r461 (the audio-image unit): SCAFFOLD 54.9376 -> 54.9477 @ 2524, RAW 38.967 -> 38.975; 22 movers, 0 outside the affected set.",
     "_note_r460_state": "r460 (the K / P overview tabs, FULL): SCAFFOLD 54.9376 @ 2524 EXACT (0 movers), RAW 38.934 -> 38.967; ≥50 1581 / ≥75 275 / ≥90 25.",
     "_note_r459_state": "r459 (the introduction on the overview): SCAFFOLD 54.9291 @ 2518 -> 54.9376 @ 2524 (+0.0085pp; pre-existing +0.0264pp), RAW 38.917 -> 38.934; 27 new-only / 21 gone Claude pages, 0 movers outside the affected set. outputs/_r459_sk_final.json, _r459_skdelta.log, _r459_prescore2.log, _r459_split.py.",
@@ -263,7 +265,7 @@
     "_note_r408": "Round 408: SCAFFOLD 53.1341 -> 53.6797 (+0.5455pp; 275 movers, 197 up / 76 down, pp-sum +725.6 — GEO1006_3_0 -11.3, GEO1004_1_0 -9.4, ENGS404_6_1 -8.2, PWY1001_2_3_0 -7.0, CHI1003_8_0 -5.0), >=50 1398, >=75 236, >=90 20; RAW 37.487 -> 37.884; 2349 pairs / 0 skipped. State outputs/_s28_t1_sk_final.json."
   },
   "compare_structure": {
-    "exact_chain": 16719,
+    "exact_chain": 16709,
     "claude_extra_container": 208,
     "claude_missing_container": 896,
     "row_wrap_missing": 24,
@@ -308,10 +310,10 @@
     "_note_r408": "Round 408: exact 13410 -> 14091 (pool 15668 -> 16414), EXTRA 184 -> 186 (WJFUN206), MISSING 685 -> 690 (JPFUN01 / WJFUN108 / WJFUN109 +1, WJFUN304 +2), row-wrap 23; every unaffected module EXACT."
   },
   "body_compare": {
-    "any_breakdown": 239,
+    "any_breakdown": 238,
     "over_capture": 61,
     "runaway": 5,
-    "empty_container": 176,
+    "empty_container": 175,
     "_note_r453": "r453: pages 2658 -> 2668; ANY 237 -> 238 (+1 TRR108_0_0 over-capture 0.88 — the restored introduction table carries the writer's [Tabs: Can these tabs please be an option at the top of the page …] request, so the scanner hands it off as a tabs widget (A1, the r235 hand-off box); before r453 the whole introduction was trimmed). over 58 -> 59, runaway 5, empty 176. NAMED.",
     "_note_r451": "Round 451 (session 40 Round 8, 2026-09-24; the bilingual section bundle takes the standard hand-off box, BILHANDOFF_OFF): any_breakdown 260 -> 237 and empty_container 200 -> 176 (IMPROVED — the 61 empty <table> boxes on 23 TRR pages now carry their bundle's members); over_capture 57 -> 58 NAMED — TRR301_3_0, whose box was EMPTY (0 member characters) and now shows the unclassified bundle's 4,327 characters (62 % of the page; lost blocks 30 before and after): the page moved from the EMPTY flag to the OVER-CAPTURE flag, counted once in any_breakdown either way. outputs/_r451_scoped_ship.log, outputs/_r451_gates.log.",
     "_note_r448":"Round 448 (the D13-4 answer-key carry-through): over_capture 56 -> 57 NAMED — PHE1007_9_0, whose un-built typing box now shows the writer's red answers (its text 1,958 -> 2,070 chars), so the box / page ratio crossed the 0.40 line (0.39 -> 0.40, lost blocks 3 unchanged); EMPTY 201 -> 200 (better) — MXEO301_5_0's box was under 40 chars until its red answers were restored. any_breakdown 260 HELD. Every change is inside a hand-off box (outputs/_r448_outsidebox.py: 0 pages differ outside one); outputs/_r448_bodyflags.log.",
@@ -352,11 +354,11 @@
     "_note_r408": "Round 408: over-capture 54 (the 19 Sept fast-loop snapshot value; gate_baseline had carried r407's 42), runaway 6, EMPTY 192 -> 190, ANY 250 -> 248 (WJFUN304); every unaffected module EXACT."
   },
   "structural_defect": {
-    "clean_pages": 2621,
-    "total_pages": 2667,
-    "clean_pct": 98.28,
-    "literal_tag_leak_occ": 75,
-    "leak_pages": 46,
+    "clean_pages": 2584,
+    "total_pages": 2629,
+    "clean_pct": 98.29,
+    "literal_tag_leak_occ": 74,
+    "leak_pages": 45,
     "_note_r453": "r453: 2613/2658 -> 2623/2668 clean (the 10 restored pages are clean); leak 75 occ / 45 pages HELD.",
     "_note_r370": "Round 370: 2080/2103 -> 2079/2102 — the corpus is one page shorter (MXEX101's phantom page); leak 26 / 23 EXACT.",
     "_note_intake": "pre-existing subset EXACT: clean 2079/2102 = 98.91%, leak 26 occ / 23 pages. New batch adds 47 occ / 21 pages (GENO901 16, DTC1005 14 the largest).",
