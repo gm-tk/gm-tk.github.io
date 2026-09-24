@@ -9692,8 +9692,91 @@ class ContentConverter {
 		}
 		if (wrap) out.push(wrap.close);
 		out.push(def.close);
-		return out;
+		// ROUND 486 — KB 01F / 05D: the writer's quote is p.quoteText + p.quoteAck, no wrapper (see #quoteKbForm).
+		// Data flag: callouts.by_tag.<tag>.kb_p_form   Env toggle: its env (QUOTEFORM_OFF)
+		const _qf = def.kb_p_form && !wrap
+			? ContentConverter.#quoteKbForm(def.kb_p_form, out, flags.length, modifiers, it.parse.primary?.fragment) : null;
+		return _qf ?? out;
 	};
+
+	/**
+	 * ROUND 486 (the autonomous loop's session 45 Round 1) — THE WRITER'S QUOTE IN THE KB FORM.
+	 * KB 01F's normalised-tag table maps `quote` → `<p class="quoteText">"Quote"</p><p class="quoteAck">Attribution</p>`
+	 * (05D "Quote Text" the same) — no wrapper element. The gold agrees wherever it styles a tagged quote (290+
+	 * p.quoteText, never a div); the converter shipped a `<div class="quoteText">` box around plain `<p>`s with the
+	 * attribution glued into the quote's own paragraph. Given the strict box's parts ([...flags, open, ...content,
+	 * close]), this drops the wrapper, classes every plain `<p>` `quoteText` (+ the tag's modifier classes), and splits
+	 * the attribution into its own `p.quoteAck`: a LAST paragraph that is itself an attribution line (a dash / Source /
+	 * By line, when a quote paragraph precedes it), else the last paragraph's tail after the closing quote mark or after
+	 * a spaced en/em dash. Lists, images and converter notes pass through untouched. Only a GENUINE quote tag takes the
+	 * form (the tag's own bracket text matches genuine_tag_pattern): a writer instruction the lexicon matched on the word
+	 * "quote" (ART1002's tile request, ENGC403's `[insert quote from …]`) and a box that opens with a bare link (the
+	 * `[quote link] URL` instruction, HIS1005) are not quotes — null keeps the legacy box. Returns the new parts, or null.
+	 * Data flag: callouts.by_tag.quote.kb_p_form   Env toggle: its env (QUOTEFORM_OFF)
+	 */
+	static #quoteKbForm(cfg, parts, nFlags, modifiers, fragment) {
+		if (!cfg || cfg.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "QUOTEFORM_OFF"])) return null;
+		if (cfg.genuine_tag_pattern && !new RegExp(cfg.genuine_tag_pattern, "iu").test(String(fragment ?? ""))) return null;
+		const head = parts.slice(0, nFlags);
+		const inner = parts.slice(nFlags + 1, parts.length - 1).filter((p) => typeof p === "string" && p.trim() !== "");
+		const plainRe = /^\s*<p>([\s\S]*)<\/p>\s*$/;
+		const isPlain = (p) => plainRe.test(p) && !/<\/?p[\s>]/i.test(p.match(plainRe)[1]);   // exactly ONE bare <p>
+		const words = (h) => String(h).replace(/<[^>]*>/g, " ").trim().split(/\s+/).filter(Boolean).length;
+		const text = (h) => String(h).replace(/<[^>]*>/g, "").trim();
+		const idx = inner.map((p, k) => (isPlain(p) ? k : -1)).filter((k) => k >= 0);
+		// a box that OPENS with a bare link (the `[quote link] URL` instruction) is not a quote — keep the legacy box
+		if (idx.length && /^\s*<a\b[^>]*>\s*https?:\/\/\S+\s*<\/a>\s*$/i.test(inner[idx[0]].match(plainRe)[1])) return null;
+		const tCls = `${cfg.text_class ?? "quoteText"}${modifiers ?? ""}`;
+		const aCls = cfg.ack_class ?? "quoteAck";
+		const bodyOf = (k) => inner[k].match(plainRe)[1];
+		const ackLine = cfg.ack_line_pattern ? new RegExp(cfg.ack_line_pattern, "u") : null;
+		const bareLink = (b) => /^\s*<a\b[^>]*>\s*https?:\/\/\S+\s*<\/a>\s*$/i.test(b);
+		const isAckLine = (b) => (ackLine && ackLine.test(text(b)) && words(b) <= (cfg.ack_line_max_words ?? 25))
+			|| (cfg.ack_bare_link !== false && bareLink(b));
+		// THE QUOTE'S OWN EXTENT (the gold: SSCI104 styles only the italic quote, its explanation stays plain; PES1005
+		// ends its two quotes with the source link as the p.quoteAck). A box that OPENS with a self-contained quote — the
+		// whole paragraph in quotation marks or in italics — ends at the first later paragraph that is neither; that
+		// paragraph is the attribution when it looks like one, and everything after it stays plain body text. A box that
+		// opens any other way (a poem's lines, a quotation that runs over several paragraphs) keeps every paragraph.
+		const quoteLike = (b) => new RegExp(cfg.quote_like_pattern ?? "^\\s*(?:<(?:i|em)>|[“\"‘])", "u").test(b);
+		const selfContained = (b) => new RegExp(cfg.self_contained_pattern
+			?? "^\\s*(?:<(?:i|em)>[\\s\\S]*<\\/(?:i|em)>\\s*[.,;!?]?|(?:<[^>]+>)*[“\"‘][\\s\\S]*[”\"’](?:<\\/[^>]+>)*\\s*[.,;!?]?)\\s*$", "u").test(b);
+		let stop = idx.length, ackAt = -1;
+		if (cfg.quote_extent !== false && idx.length >= 2 && selfContained(bodyOf(idx[0]))) {
+			for (let j = 1; j < idx.length; j++) {
+				const b = bodyOf(idx[j]);
+				if (quoteLike(b)) continue;
+				if (isAckLine(b)) { ackAt = j; stop = j + 1; } else stop = j;
+				break;
+			}
+		}
+		const out = inner.map((p, k) => {
+			const j = idx.indexOf(k);
+			if (j < 0) return p;
+			if (j === ackAt) return `<p class="${aCls}">${bodyOf(k)}</p>`;
+			return j < stop ? `<p class="${tCls}">${bodyOf(k)}</p>` : p;
+		});
+		if (idx.length && ackAt < 0) {
+			const qn = Math.min(stop, idx.length);
+			const last = idx[qn - 1];
+			const body = bodyOf(last);
+			if (qn >= 2 && isAckLine(body)) {
+				out[last] = `<p class="${aCls}">${body}</p>`;
+			} else {
+				const maxW = cfg.ack_max_words ?? 14;
+				let m = cfg.tail_after_quote_pattern ? new RegExp(cfg.tail_after_quote_pattern, "u").exec(body) : null;
+				let q = null, a = null;
+				if (m && words(m[3]) <= maxW && text(m[1]).length) { q = m[1] + (m[2] || ""); a = m[3]; }
+				if (q === null && cfg.tail_after_dash_pattern) {
+					m = new RegExp(cfg.tail_after_dash_pattern, "u").exec(body);
+					if (m && words(m[2]) <= maxW && words(m[1]) >= (cfg.dash_head_min_words ?? 3)) { q = m[1]; a = m[2]; }
+				}
+				if (q !== null) out.splice(last, 1, `<p class="${tCls}">${q.trim()}</p>`, `<p class="${aCls}">${a.trim()}</p>`);
+			}
+		}
+		return [...head, ...out];
+	}
 
 	/**
 	 * Should this callout SPAN to WRAP a following TABLE as its content?

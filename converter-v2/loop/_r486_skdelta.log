@@ -1,0 +1,23 @@
+OLD pairs 2491  SCAFFOLD 55.3463%  RAW 39.231%  >=50 1582  >=75 277  >=90 26
+NEW pairs 2491  SCAFFOLD 55.3485%  RAW 39.234%  >=50 1582  >=75 277  >=90 26
+delta SCAFFOLD +0.0021pp  RAW +0.003pp  >=50 +0  >=75 +0  >=90 +0
+movers 17 (up 13 / down 4), pp-sum +5.3
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  OSAI301    OSAI301_1_0.html           75.0 ->   77.8  (+2.8)
+  ENGS301    ENGS301_3_0.html           60.9 ->   63.6  (+2.7)
+  OSAI501    OSAI501_1_0.html           80.2 ->   82.4  (+2.1)
+  OSAI401    OSAI401_1_0.html           62.6 ->   64.1  (+1.5)
+  EXBP901    EXBP901_4_0.html           28.4 ->   29.4  (+1.0)
+  ENGJ402    ENGJ402_6_0.html           24.5 ->   25.0  (+0.5)
+  ENGJ402    ENGJ402_2_0.html           49.0 ->   49.4  (+0.4)
+  PES1005    PES1005_4_0.html           54.2 ->   54.5  (+0.4)
+  ENGI102    ENGI102_0_0.html           38.6 ->   38.9  (+0.3)
+  ENGS101    ENGS101_1_0.html           44.0 ->   44.3  (+0.3)
+  XDLS906    XDLS906_5_0.html           48.7 ->   48.9  (+0.2)
+  ENGS101    ENGS101_4_0.html           36.5 ->   36.7  (+0.2)
+  TEDC402    TEDC402_1_0.html           29.3 ->   29.4  (+0.1)
+  XDLS905    XDLS905_7_0.html           62.9 ->   61.7  (-1.1)
+  OSAH401    OSAH401_2_0.html           63.4 ->   62.0  (-1.4)
+  SSCI104    SSCI104_4_0.html           54.2 ->   52.0  (-2.2)
+  ENGJ402    ENGJ402_3_0.html           58.9 ->   56.4  (-2.4)

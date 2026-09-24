@@ -1,0 +1,6 @@
+ENGJ402/ENGJ402_3_0.html: gold 115 lines | position-free overlap OLD 106 / 184  NEW 107 / 181  (Δ +1) | quote lines gold {'p.quoteText': 2} OLD {'div.quoteText': 3} NEW {'p.quoteText>i': 14, 'p.quoteText': 28}
+SSCI104/SSCI104_4_0.html: gold 278 lines | position-free overlap OLD 180 / 215  NEW 181 / 214  (Δ +1) | quote lines gold {'p.quoteText>i': 1} OLD {'div.quoteText': 1} NEW {'p.quoteText>i': 1}
+OSAH401/OSAH401_2_0.html: gold 193 lines | position-free overlap OLD 100 / 112  NEW 99 / 111  (Δ -1) | quote lines gold {'blockquote': 1} OLD {'div.quoteText': 1} NEW {'p.quoteText>i': 1}
+XDLS905/XDLS905_7_0.html: gold 130 lines | position-free overlap OLD 111 / 140  NEW 112 / 138  (Δ +1) | quote lines gold {'p.quoteText': 1, 'p.quoteAck': 1} OLD {'div.quoteText': 2} NEW {'p.quoteText': 2}
+OSAI301/OSAI301_1_0.html: gold 76 lines | position-free overlap OLD 66 / 72  NEW 67 / 72  (Δ +1) | quote lines gold {'p.quoteText': 1, 'p.quoteAck': 1} OLD {'div.quoteText': 1} NEW {'p.quoteText>i': 1, 'p.quoteAck': 1}
+EXBP901/EXBP901_4_0.html: gold 253 lines | position-free overlap OLD 158 / 211  NEW 160 / 211  (Δ +2) | quote lines gold {'p.quoteText': 2, 'p.quoteAck': 2} OLD {'div.quoteText': 1} NEW {'p.quoteText': 1, 'p.quoteAck': 1}

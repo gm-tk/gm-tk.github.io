@@ -813,7 +813,26 @@
 			},
 			"quote": {
 				"open": "<div class=\"quoteText{modifiers}\">",
-				"close": "</div>"
+				"close": "</div>",
+				"kb_p_form": {
+					"enabled": true,
+					"env": "QUOTEFORM_OFF",
+					"text_class": "quoteText",
+					"ack_class": "quoteAck",
+					"genuine_tag_pattern": "^\\s*(?:(?:centred|centered|highlighted|pull|block)\\s+)?(?:quote|quotation|quotetext)(?:\\s+by\\s+[^\\]]{1,40})?\\s*$",
+					"ack_max_words": 14,
+					"ack_line_max_words": 25,
+					"ack_line_pattern": "^(?:[–—-]\\s*[A-ZĀĒĪŌŪ(]|[Ss]ource\\s*:|By\\s+[A-ZĀĒĪŌŪ])",
+					"tail_after_quote_pattern": "^(.*[”\"’])((?:<\\/(?:i|b|em|strong|a|span)>)*[.,;]?)\\s+((?!.*[“”\"])(?:[–—-]\\s*[A-ZĀĒĪŌŪ(]|By\\s+[A-ZĀĒĪŌŪ]|[A-ZĀĒĪŌŪ(]).+)$",
+					"tail_after_dash_pattern": "^(.*\\S)\\s+([–—]\\s*[A-ZĀĒĪŌŪ(][^–—]*)$",
+					"dash_head_min_words": 3,
+					"ack_bare_link": true,
+					"quote_extent": true,
+					"quote_like_pattern": "^\\s*(?:<(?:i|em)>|[“\"‘])",
+					"self_contained_pattern": "^\\s*(?:<(?:i|em)>[\\s\\S]*<\\/(?:i|em)>\\s*[.,;!?]?|(?:<[^>]+>)*[“\"‘][\\s\\S]*[”\"’](?:<\\/[^>]+>)*\\s*[.,;!?]?)\\s*$",
+					"_doc_extent": "THE QUOTE'S OWN EXTENT (quote_extent): the strict gather takes the whole black run after the tag, so a box can hold the quote AND the prose after it. The gold styles only the quote (SSCI104_4: the italic quote is p.quoteText, its 'Thrive means…' explanation and the question stay plain <p>s; PES1005_4: two quoted paragraphs then the source link as p.quoteAck). A box whose FIRST paragraph is a self-contained quote (self_contained_pattern: wholly in quotation marks, or wholly italic) ends at the first later paragraph that is not quote_like (does not open with italics or a quotation mark); that paragraph becomes the p.quoteAck when it is an attribution line (ack_line_pattern, or a bare link when ack_bare_link), and every paragraph after it stays a plain <p> (it flows in the same column — the quote is a flowing callout). A box that opens any other way (a poem's plain lines — ENGJ402; a quotation opened on one paragraph and closed on the next — ENGS101) keeps every paragraph as p.quoteText.",
+					"_doc": "ROUND 486 (the autonomous loop's session 45 Round 1 — KB 01F / 05D). KB 01F's normalised-tag table maps `quote` → `<p class=\"quoteText\">\"Quote\"</p><p class=\"quoteAck\">Attribution</p>` (05D 'Quote Text' the same: no wrapper). The gold agrees wherever it styles a tagged quote (EXBP901 / OSAI301 / 401 / 501 / ENGJ402 / OSAH401: p.quoteText (+ p.quoteAck); 290+ gold p.quoteText, never a div). Claude shipped the flowing `<div class=\"quoteText\">` box around the gathered `<p>`s with the attribution glued into the quote's own `<p>` (45 boxes / 25 pages). ON: no wrapper div; every plain `<p>` of the box is `p.quoteText`; the attribution becomes its own `p.quoteAck` — the LAST paragraph's tail after the closing quote mark (tail_after_quote_pattern: `“…” Albert Einstein.`, `…magic.”</i> By Arthur C Clarke…`) or after a spaced en/em dash (tail_after_dash_pattern, head ≥ dash_head_min_words words: `…ourselves.</i> – Sir Edmund Hillary`), ≤ ack_max_words words; or a last paragraph that is itself an attribution line (ack_line_pattern: a dash / `Source:` / `By …`, ≤ ack_line_max_words words). Only a GENUINE quote tag takes the form — the primary tag's own bracket text must match genuine_tag_pattern (`quote` / `quotation` / `quotetext`, optionally `centered` / `highlighted` / `pull` / `block` before it or `by <name>` after it, case-insensitive); a writer INSTRUCTION the lexicon matched on the word (ART1002's `[please create three tiles … match colours with quote above …]`, ENGC403's `[insert quote from …]`) keeps the legacy box, and so does a box that OPENS with a bare link (the `[quote link] URL` instruction, HIS1005) — none of them is a quote. Lists, images and notes pass through untouched. Env QUOTEFORM_OFF = the legacy div box. Tools outputs/_s45_r1_quote.py (the tag census, gold vs Claude) + _s45_r1_quote2.py (the untagged discriminator — not derivable, 0.10)."
+				}
 			},
 			"supervisor note": {
 				"open": "<div class=\"row supervisor\">\n<div class=\"col-md-8 col-12 super-content-button\">\n<div class=\"super-content row\">\n<div class=\"col-12\">\n<h3>Supervisor note</h3>\n</div>\n<div class=\"col-12\">",

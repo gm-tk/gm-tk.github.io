@@ -1,0 +1,21 @@
+old → new category transitions (blocks whose category changed):
+    6  EXTRA      → exact     
+         ENGJ402/ENGJ402_2_0.html «the more poetry you read or listen to the mor» claude ['row', 'col'] gold ['row', 'col']
+         ENGJ403/ENGJ403_0_0.html «dont adventures ever have an end i suppose no» claude ['row', 'col'] gold ['row', 'col']
+         ENGS301/ENGS301_3_0.html «i felt really moved by the hugeness of these » claude ['row', 'col'] gold ['row', 'col']
+         OSAH401/OSAH401_2_0.html «if it causes harm and is considered harmful b» claude ['row', 'col'] gold ['row', 'col']
+         PES1005/PES1005_4_0.html «i want this system of knowledge of astronomy » claude ['row', 'col'] gold ['row', 'col']
+         PES1005/PES1005_4_0.html «nawareware tatou ki te panui me pehea te panu» claude ['row', 'col'] gold ['row', 'col']
+    4  UNMATCHED  → exact     
+         ENGJ403/ENGJ403_0_0.html « sir peter jackson» claude ['row', 'col'] gold ['row', 'col']
+         OSAI301/OSAI301_1_0.html «by arthur c clarke science fiction author» claude ['row', 'col'] gold ['row', 'col']
+         OSAI401/OSAI401_1_0.html «by arthur c clarke science fiction author» claude ['row', 'col'] gold ['row', 'col']
+         OSAI501/OSAI501_1_0.html «by arthur c clarke science fiction author» claude ['row', 'col'] gold ['row', 'col']
+    4  EXTRA      → MISSING   
+         SSCI104/SSCI104_4_0.html «thrive means doing well growing and being hap» claude ['row', 'col'] gold ['row', 'col', 'alert']
+         SSCI104/SSCI104_4_0.html «humanitys greatest strength has always been i» claude ['row', 'col'] gold ['row', 'col', 'alert']
+         SSCI104/SSCI104_4_0.html «do you agree with the quote chat with your su» claude ['row', 'col'] gold ['row', 'col', 'alert']
+         TWHA906/TWHA906_0_0.html «do not judge me by my success judge me by how» claude ['row', 'col'] gold ['row', 'col', 'whakatauki']
+    2  UNMATCHED  → MISSING   
+         TWHA906/TWHA906_0_0.html « sir edmund hillary» claude ['row', 'col'] gold ['row', 'col', 'whakatauki']
+         TWHA906/TWHA906_0_0.html «its not the mountain we conquer but ourselves» claude ['row', 'col'] gold ['row', 'col', 'whakatauki']

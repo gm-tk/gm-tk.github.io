@@ -1,5 +1,28 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 486, build 260620.50) — KB 01F / 05D THE WRITER'S QUOTE IS `p.quoteText` + `p.quoteAck`: no wrapper div, the attribution its own paragraph, the quote box holding only the quote
+
+### 1. WHAT CHANGED
+
+**The find** (session 45 Round 1 — the loss ledger's HIS1 family, 77 pages at 49.8 %, re-read with the scoped miner view: `p.quoteText` / `p.quoteAck` MISSING 23 + 20 lines). KB-first: **KB 01F's normalised-tag table maps `quote` → `<p class="quoteText">"Quote"</p><p class="quoteAck">Attribution</p>`** and 05D "Quote Text" gives the same form — no wrapper. `KB_AMALGAMATION_STATUS.md` had no row for it. The gold agrees wherever it styles a tagged quote (290+ `p.quoteText` / 221 `p.quoteAck` on 125 pages, never a div). Claude shipped the flowing `<div class="quoteText">` box around the gathered `<p>`s, the attribution glued into the quote's own paragraph (`“Failure is success in progress.” Albert Einstein.` — EXBP901), and the strict gather's whole black run inside the box (SSCI104_4: the explanation and the question after the quote).
+
+**The fix:** `ContentConverter.#quoteKbForm`, called at the end of `#calloutOpen`'s strict path when the callout def carries `kb_p_form`: no wrapper; every plain `<p>` of the box → `p.quoteText` (+ the tag's modifier classes); the attribution → its own `p.quoteAck` — the LAST paragraph's tail after the closing quote mark (`tail_after_quote_pattern`) or after a spaced en/em dash (`tail_after_dash_pattern`, head ≥ 3 words), ≤ 14 words, or a last paragraph that is itself an attribution line (a dash / `Source:` / `By Name` line, or a bare link). **The quote's own extent:** a box that opens with a self-contained quote (wholly quoted or wholly italic) ends at the first later paragraph that opens neither way — that paragraph is the `p.quoteAck` when it is an attribution line (PES1005_4's source link), and everything after it stays a plain `<p>` in the same column (SSCI104_4's explanation — the gold's own form); a box opening any other way (a poem's plain lines, ENGJ402; a quotation opened on one paragraph and closed on the next, ENGS101) keeps every paragraph. **Only a genuine quote tag takes the form** (`genuine_tag_pattern` on the tag's own bracket text: `quote` / `quotation` / `quotetext`, optionally `centered` / `highlighted` / `pull` / `block` before or `by <name>` after): the writer INSTRUCTIONS the lexicon matched on the word "quote" — ART1002's `[please create three tiles … match colours with quote above …]`, ENGC403's `[insert quote from …]` — and a box that opens with a bare link (the `[quote link] URL` instruction, HIS1005) keep the legacy box. Data `Emit_Templates.callouts.by_tag.quote.kb_p_form` {enabled, env, classes, the patterns, word caps, `quote_extent`, `ack_bare_link`}; env **`QUOTEFORM_OFF`**, byte-identical OFF.
+
+**Not derivable, recorded:** the gold's UNTAGGED quotes (its larger `p.quoteText` population — 72 not in the WT at all, 52 on untagged lines …). A WT line that opens with a quotation mark is `p.quoteText` in the gold 41 / 399 = 0.10 corpus-wide (plain p 0.26, absent 0.21, li 0.11); only HIS reaches 0.68 (26 / 38) — a family-dialect candidate (`_s45_r1_quote2.py`).
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 0 pages changed**; ON **19 pages / 16 modules** (ENGI102 ENGJ402 ENGJ403 ENGS101 ENGS301 EXBP901 OSAH401 OSAI301 OSAI401 OSAI501 PES1005 SSCI104 TEDC402 TWHA906 XDLS905 XDLS906). Regeneration + 12-module spot-check clean; content manifest 0 stale.
+- `scoped_ship.sh`: every gate held or improved except **compare_structure missing container 872 → 878 (+6), committed NAMED** (`_fastloop_diff.py --accept-named`): decomposed BLOCK BY BLOCK against the OFF render (`_r486_csblocks.py`) — **no block left EXACT**; 6 EXTRA → exact, 4 newly matched → exact (the split attributions), and the +6 = 4 blocks ALREADY mismatched moving EXTRA → MISSING (SSCI104_4's quote + its two paragraphs, which the gold keeps inside the writer's preceding `[alert]` box; TWHA906's Mandela quote, which the gold sets in a whakatauki box) + 2 newly matched blocks inside that TWHA906 whakatauki box.
+
+### 3. PROTECTED GATES
+
+- Skeleton **55.3463 % → 55.3485 % @ 2491 (+0.0021pp)**, RAW 39.231 → 39.234 %; ≥50 1582 / ≥75 277 / ≥90 26 EXACT; 17 movers, **13 up / 4 down NAMED**, each with its position-free companion (`_r486_companion.py`): ENGJ402_3_0 58.9 → 56.4 (overlap +1 — the gold lays the sonnet out as plain lines in a carousel), SSCI104_4_0 54.2 → 52.0 (+1 — the gold's alert around the quote), OSAH401_2_0 63.4 → 62.0 (−1 — the gold's `<blockquote>`, a KB-over-gold override), XDLS905_7_0 62.9 → 61.7 (+1 — alignment); up: OSAI301 +2.8, ENGS301 +2.7, OSAI501 +2.1, OSAI401 +1.5, EXBP901 +1.0 …
+- compare_structure exact **16691 → 16701 (+10)**, EXTRA **208 → 198 (−10)**, missing 872 → 878 (+6 NAMED, above), row-wrap 24; body 238 / clean 2587 / 2633 / leak 75 / 46 EXACT; tags 9557 / 9557; every verifier RESULT line ✓; selftests 50 green / 0 fail; the miner 195 CANDIDATE.
+- Plateau (§4): a KB-rule round, +0.0021pp — neither counts nor resets; **0 of 3**.
+
+**Ledger:** scoped #4 since the r482 FULL · data `callouts.by_tag.quote.kb_p_form` · env `QUOTEFORM_OFF` · code `ContentConverter.#quoteKbForm` · tools `_s45_r1_{quote,quote2,pick}.py`, `_r486_{companion,csblocks}.py`, `_r486_commit_named.sh`, `_s45_{regen,postship}.sh`, `_r486_finalise.py` · session 45 Round 1.
+
 ## 2026-09-25 (round 485, build 260620.49) — THE TITLE BAR'S LANGUAGE-BOUNDARY SPLIT: an English run then a Māori run typed with no separator ("Online Bullying Whakaweti ā-ipurangi") ships as the two header `<h1><span>`s
 
 ### 1. WHAT CHANGED

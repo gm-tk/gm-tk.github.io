@@ -1,0 +1,39 @@
+(1) untagged gold quote blocks by WT shape:
+    45 p.quoteText:italic           CEDT101 «*Your voice and my voice are expressions of identity. May our descendants live on and our » | DTC1004 «***Design is not just what it looks like and feels like. Design is how it works.*** ***–**» | DTC1004 «***The dumbest mistake is viewing design as something you do at the end of the process to »
+    43 p.quoteText:qopen            CEDK401 «*“**Looking back, she could see the old man sitting under the big umbrella. He would be wa» | CEDK401 «“*By the time she caught her fish it was late afternoon. It was a small fish, but she was » | ENGJ402 «"But, soft! what light through yonder window breaks?"»
+    42 p.quoteAck:plain             ENFUN03 «Read the following passage by Gary Provost. Consider how using a variety of sentences impa» | ENFUN03 «Read this excerpt from *The Hunger Games* by Suzanne Collins. The short, simple sentences » | CEDT301 «https://alchetron.com/Fanny-Rose-Howie»
+    41 p.quoteAck:dash/source       CEDK401 «Source: Aaron O’Neill, ‘Employment by economic sector in New Zealand 2021,’ *Statista.com,» | CEDK401 «Source: Brianna Mcilraith, ‘By the numbers: who is eating all of our food if we make enoug» | HIS1002 «Source: Philip H. Gordon, ‘Charles de Gaulle and the Nuclear Revolution’ in J. Gaddis, P. »
+    39 p.quoteText:plain            WJFUN210 «• The tuna (eel) moved like a shadow.» | WJFUN210 «• The river **was a silver ribbon** winding through the valley.» | WJFUN210 «• The river **danced** over the rocks.»
+    15 p.quoteAck:italic            ANZH303 «*(Source:* https://www.nzgeo.com/stories/the-meaning-of-mana/*)*» | ANZH303 «*(Source: adapted from* https://teara.govt.nz/en/te-ao-marama-the-natural-world/page-5__*)» | ANZH303 «*(Source:* https://www.journal.mai.ac.nz/sites/default/files/MAIJrnl_7_1_Dell_02.pdf*)*»
+     5 p.quoteAck:qopen             CEDK401 «*“**Looking back, she could see the old man sitting under the big umbrella. He would be wa» | CEDK401 «*“**Looking back, she could see the old man sitting under the big umbrella. He would be wa» | EXBP901 «*"Do not judge me by my success, judge me by how many times I fell down and got back up ag»
+     2 p.quoteTextReg:qopen         ANZH301 «*“At the time, however, I was confused about my identity. When I was a teenager the two th» | ANZH301 «*“In terms of housing, rents were high in the early post-war years, so Māori would often c»
+
+(2) untagged WT lines that OPEN with a quote mark (and close it): where the gold puts them
+    108  0.26 p@free                       ENFUN02 «**“What is the author trying to say in the text****?****”** and **“Why is this a» | HPFUN303 «“I” statements are a powerful tool in **assertive communication** because they h»
+     88  0.21 ABSENT                       SSFUN03 «“this map has early copyright clearance from Creative Services and it will be us» | SSFUN05 «“The whisper-quiet portable hair dryer with the unconditional guarantee.” The ha»
+     45  0.11 li@free                      WJFUN211 «*"The waterfall roared through the gorge."*» | WJFUN211 «*"The lake shimmered beneath the afternoon sun."*»
+     41  0.10 quoteText                    CEDK401 «*“**Looking back, she could see the old man sitting under the big umbrella. He w» | CEDK401 «“*By the time she caught her fish it was late afternoon. It was a small fish, bu»
+     33  0.08 p@alert                      CEDK501 «“I think we could …”» | CEDK501 «“One idea might be to …”»
+     27  0.06 p@whakatauki                 WJFUN210 «**"Ko au** **te** **awa, ko** **te** **awa ko au."**» | EXPFUN06 «**"Ko te mātauranga te kākahu o te rangatira."**»
+     26  0.06 p@activity                   SSFUN05 «"I wanted to create artworks that children especially would find enchanting, and» | SSFUN06 «*“Malala Yousafzai became an international symbol of the fight for girls’ educat»
+     12  0.03 p@accContent                 JPFUN01 «‘Please excuse me’ (intention)  OR      ‘I am being rude’ (literal meaning)» | WJFUN206 «*“full of movement” describes the water*»
+     11  0.03 li@activity                  WJFUN308 «*"The queue stretched all the way from Dargaville to Auckland!"*» | WJFUN308 «*"After the storm damaged several crops, local growers reminded each other that »
+      9  0.02 p@tab-pane                   CBI1009 «*‘I know how to…’*» | ENGJ301 «“The wind makes the kites dance with joy,” her guardsmen, Hautoa said.»
+      5  0.01 li@carousel                  ENGJ301 «‘As soon as it’s dark enough,’ Dad replied.» | ENGJ301 «“She just wandered in and bought an ice-cream✅,” said the owner.»
+      4  0.01 p@carousel                   ENGJ301 «“I’m tired of waking up late every day,” said Aroha.» | ENGJ301 «“I was angry and needed to go for a walk,” said Anahera.»
+
+  by family (n >= 10, share quoteText):
+    WJFUN    n=  59 found=  31 quoteText=   0 share=0.00
+    HIS      n=  52 found=  38 quoteText=  26 share=0.68
+    CEDO     n=  37 found=  36 quoteText=   0 share=0.00
+    HPRE     n=  34 found=  34 quoteText=   0 share=0.00
+    BLL      n=  19 found=  16 quoteText=   0 share=0.00
+    ENGJ     n=  19 found=  19 quoteText=   2 share=0.11
+    ENGC     n=  17 found=  16 quoteText=   0 share=0.00
+    ENGS     n=  15 found=   8 quoteText=   0 share=0.00
+    ANZH     n=  13 found=   7 quoteText=   2 share=0.29
+    XGF      n=  13 found=   8 quoteText=   2 share=0.25
+    CEDK     n=  11 found=  11 quoteText=   2 share=0.18
+    SSOG     n=  11 found=   8 quoteText=   0 share=0.00
+    XDLS     n=  11 found=   4 quoteText=   0 share=0.00
+    CEDR     n=  10 found=  10 quoteText=   0 share=0.00

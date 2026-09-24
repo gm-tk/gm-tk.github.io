@@ -1,0 +1,279 @@
+gold SSCI104-4.0.html 278 | claude SSCI104_4_0.html 214
+  0 body.container-fluid «»                                                                         | body.container-fluid «»
+  1   div#header «»                                                                                 |   div#header «»
+  2     div#module-code «»                                                                          |     div#module-code «»
+  3       h1 «04»                                                                                   |       h1 «Lesson 8 4»
+  4     h1>span «Early Human Inventions»                                                            |     h1>span «Early Human Inventions»
+  5       span «Early Human Inventions»                                                             |       span «Early Human Inventions»
+  6     div#module-head-buttons «»                                                                  |     div#module-head-buttons «»
+  7       div#module-menu-button.btn1.circle-button «»                                              |       div#module-menu-button.btn1.circle-button «»
+  8     div#module-menu-content.moduleMenu «»                                                       |     div#module-menu-content.moduleMenu «»
+  9       div.row «»                                                                                |       div.row «»
+ 10         WIDGET «»                                                                               |         WIDGET «»
+ 11   div#body «»                                                                                   |   div#body «»
+ 12     div.row «»                                                                                  |     div.row «»
+ 13       div.col-12.col-md-8 «»                                                                    |       div.col-12.col-md-8 «»
+ 14         div.alert «»                                                                            |         div.alert «»
+ 15           p «In this lesson, you are learning about early Stone»                                |           div.row «»
+ 16     WIDGET «»                                                                                   |             div.col-12 «»
+ 17     WIDGET «»                                                                                   |               p «In this lesson, you are learning about early Stone»
+ 18     div.row «»                                                                                  |         WIDGET «»
+ 19       div.col-12.col-md-8 «»                                                                    |         p «Early humans were great inventors. We found out ea»
+ 20         p «Early humans were great inventors. We found out ea»                                  |         p «Come back in time with us and look at some of the »
+ 21         p «Come back in time with us and look at some of the »                                  |         WIDGET «»
+ 22     WIDGET «»                                                                                   |     div.row «»
+ 23     div.row «»                                                                                  |       div.col-12.col-md-8 «»
+ 24       div.col-12.col-md-8 «»                                                                    |         div.activity.interactive[number=*] «»
+ 25         div.activity.interactive[number=*] «»                                                   |           div.row «»
+ 26           h3 «Skara Brae inventions»                                                            |             div.col-12 «»
+ 27           p «Look at the three images of things found in the Ne»                                |               h3 «Activity 4A Skara Brae inventions»
+ 28           h5 «What could this object have been used for?»                                       |               WIDGET «»
+ 29           WIDGET «»                                                                             |     div.row «»
+ 30     div.row «»                                                                                  |       div.col-12.col-md-8 «»
+ 31       div.col-12.col-md-8 «»                                                                    |         h5 «What could this object have been used for?»
+ 32         h3 «How did they make stone tools and weapons?»                                         |         p «green»
+ 33         p «Here is a funny video advertising the most popular»                                  |     WIDGET «»
+ 34         div.icon.ratio.ratio-16x9.videoSection «»                                               |     div.row «»
+ 35           iframe «»                                                                             |       div.col-12.col-md-8 «»
+ 36         p>b «The earliest Stone Age tool was called a , which i»                                |         h3 «How did they make stone tools and weapons?»
+ 37           b «flint»                                                                             |         p «Here is a funny video advertising the most popular»
+ 38         p «Watch this short video on how they created sharp f»                                  |         div.ratio.ratio-16x9.videoSection «»
+ 39         div.icon.ratio.ratio-16x9.videoSection «»                                               |           iframe «»
+ 40           iframe «»                                                                             |         p>b «The earliest Stone Age tool was called a , which i»
+ 41         p «Stone Age people crafted various tools using flint»                                  |           b «flint»
+ 42     div.row «»                                                                                  |         p «Watch this short video on how they created sharp f»
+ 43       div.col-12.col-md-8 «»                                                                    |         div.ratio.ratio-16x9.videoSection «»
+ 44         WIDGET «»                                                                               |           iframe «»
+ 45     div.row «»                                                                                  |         p «Stone Age people crafted various tools using flint»
+ 46       div.col-12.col-md-8 «»                                                                    |         WIDGET «»
+ 47         h3 «Early human tools in use today»                                                     |     div.row «»
+ 48         p «Today we have smart phones, televisions, computers»                                  |       div.col-12.col-md-8 «»
+ 49         p «Each of the objects in the flip cards below do the»                                  |         h3 «Early human tools in use today»
+ 50     div.row «»                                                                                  |         p «Today we have smart phones, televisions, computers»
+ 51       div.col-12.col-md-8 «»                                                                    |         p «Each of the objects in the flip cards below do the»
+ 52         div.flipCardsContainer.row «»                                                           |         div.flipCardsContainer.row «»
+ 53           div.col-12.col-md-6.col-sm-6.paddingLR «»                                             |           div.col-12.col-md-6.paddingLR «»
+ 54             WIDGET «»                                                                           |             WIDGET «»
+ 55           div.col-12.col-md-6.col-sm-6.paddingLR «»                                             |           div.col-12.col-md-6.paddingLR «»
+ 56             WIDGET «»                                                                           |             WIDGET «»
+ 57           div.col-12.col-md-6.col-sm-6.paddingLR «»                                             |           div.col-12.col-md-6.paddingLR «»
+ 58             WIDGET «»                                                                           |             WIDGET «»
+ 59           div.col-12.col-md-6.col-sm-6.paddingLR «»                                             |           div.col-12.col-md-6.paddingLR «»
+ 60             WIDGET «»                                                                           |             WIDGET «»
+ 61     div.row «»                                                                                  |     div.row «»
+ 62       div.col-12.col-md-8 «»                                                                    |       div.col-12.col-md-8 «»
+ 63         p «What clues showed you one object was from long ago»                                  |         p «What clues showed you one object was from long ago»
+ 64         p «Most objects from the Stone Age are made of stone »                                  |         ul «»
+ 65         p «Objects from today look factory-made and have proc»                                  |           li «Most objects from the Stone Age are made of stone »
+ 66         p «Let's play a memory game where you need to match t»                                  |           li «Objects from today look factory-made and have proc»
+ 67     div.row «»                                                                                  |         p «Let’s play a memory game where you need to match t»
+ 68       div.col-12.col-md-12 «»                                                                   |     div.row «»
+ 69         div.activity.interactive[number=*] «»                                                   |       div.col-12.col-md-8 «»
+ 70           div.row «»                                                                            |         div.activity.interactive[number=*] «»
+ 71             div.col-12.col-md-8 «»                                                              |           div.row «»
+ 72               h3 «Stone Age versus today»                                                       |             div.col-12 «»
+ 73               p «Match the old with the new by clicking two tiles u»                            |               h3 «Stone Age versus today»
+ 74           div.row «»                                                                            |               p «Match the old with the new by clicking two tiles u»
+ 75             div.col-12.col-md-12 «»                                                             |               WIDGET «»
+ 76               WIDGET «»                                                                         |     div.row «»
+ 77     div.row «»                                                                                  |       div.col-12.col-md-8 «»
+ 78       div.col-12.col-md-8 «»                                                                    |         p «Early humans didn’t have AI or search tools to hel»
+ 79         p «Early humans did not have AI or search tools to he»                                  |         p>b «It would have been like today when people own an i»
+ 80         p>b «It would have been like today when people own an i»                                |           b «not»
+ 81           b «not»                                                                               |         p>i «In the video below, there is a funny Stone Age moc»
+ 82         p>i «In the video below, there is a funny Stone Age moc»                                |           i «Dragon’s Den»
+ 83           i «Dragon's Den»                                                                      |         div.ratio.ratio-16x9.videoSection «»
+ 84         div.icon.ratio.ratio-16x9.videoSection «»                                               |           iframe «»
+ 85           iframe «»                                                                             |         p «Fire was first found by early humans when it happe»
+ 86         p «Fire was first found by early humans when it happe»                                  |         p «We are still curious today and love creating techn»
+ 87         p>span.infoTrigger «We are still curious today and love creating techn»                 |         p «ny tool, machine, or invention created by people t»
+ 88           span.infoTrigger «technology»                                                         |         p «follow a design process that leads to the result.»
+ 89     div.row «»                                                                                  |     div.row «»
+ 90       div.col-12.col-md-8 «»                                                                    |       div.col-12.col-md-8 «»
+ 91         WIDGET «»                                                                               |         h3 «What could a design process have looked like in th»
+ 92     div.row «»                                                                                  |         WIDGET «»
+ 93       div.col-12.col-md-8 «»                                                                    |         p «Many of the early human inventions were created to»
+ 94         p «Many of the early human inventions were created to»                                  |         p «Click on each circle to see the steps for an inven»
+ 95         p «Click on each circle to see the steps for an inven»                                  |         p>b «Cutting meat from hunted animals»
+ 96     div.row «»                                                                                  |           b «Example:»
+ 97       div.col-12.col-md-8 «»                                                                    |         img.img-fluid «»
+ 98         h3 «Paleolithic era (Early Stone Age)»                                                  |         WIDGET «»
+ 99         p>b «Cutting meat from hunted animals»                                                  |     div.row «»
+100           b «Example:»                                                                          |       div.col-12.col-md-8 «»
+101         img.img-fluid «»                                                                        |         h3 «Mesolithic era (Middle Stone Age)»
+102     div.row «»                                                                                  |         p>b «Catching fish from rivers»
+103       div.col-12.col-md-8 «»                                                                    |           b «Example:»
+104         div.shapeHover[layout=*] «»                                                             |     div.row «»
+105           div.outerContent «»                                                                   |       div.col-12.col-md-6 «»
+106             div.shape «»                                                                        |         img.img-fluid «»
+107               h4 «Step 1 Problem/ need»                                                         |       div.col-12.col-md-6 «»
+108                 br «»                                                                           |         img.img-fluid «»
+109             div.shape «»                                                                        |     div.row «»
+110               h4 «Step 2 Idea»                                                                  |       div.col-12.col-md-8 «»
+111             div.shape «»                                                                        |         WIDGET «»
+112               h4 «Step 3 Materials»                                                             |     div.row «»
+113             div.shape «»                                                                        |       div.col-12.col-md-8 «»
+114               h4 «Step 4 Invention»                                                             |         h3 «Neolithic era (New Stone Age)»
+115           div.hoverContent «»                                                                   |         p>b «Growing/farming food for a village»
+116             div.shapeContent «»                                                                 |           b «Example:»
+117               div «»                                                                            |         img.img-fluid «»
+118                 p «People needed to cut meat and animal skin to eat a»                          |         WIDGET «»
+119             div.shapeContent «»                                                                 |     div.row «»
+120               div «»                                                                            |       div.col-12.col-md-8 «»
+121                 p «They thought of making something sharp to help the»                          |         div.activity[number=*] «»
+122             div.shapeContent «»                                                                 |           div.row «»
+123               div «»                                                                            |             div.col-12 «»
+124                 p «They used hard flintstones found on the ground.»                             |               h3 «Activity 4C»
+125             div.shapeContent «»                                                                 |     div.row «»
+126               div «»                                                                            |       div.col-12.col-md-8 «»
+127                 p «They made sharp stone tools to cut meat. It also w»                          |         h3 «Stone Age invention task»
+128     div.row «»                                                                                  |         p «You can watch the video below to see a timeline of»
+129       div.col-12.col-md-8 «»                                                                    |         div.ratio.ratio-16x9.videoSection «»
+130         h3 «Mesolithic era (Middle Stone Age)»                                                  |           iframe «»
+131         p>b «Catching fish from rivers»                                                         |         p>b «You are an early human living in the Stone Age. Yo»
+132           b «Example:»                                                                          |           b «Your mission:»
+133         div.row «»                                                                              |         div.TKmodalButton.button «Instructions»
+134           div.col-12.col-md-6.col-sm-6.offset-md-0 «»                                           |         div.TKmodal «»
+135             img.img-fluid «»                                                                    |           p>b «You can choose era or just do something that exist»
+136           div.col-12.col-md-6.col-sm-6.offset-md-0 «»                                           |             b «ONE»
+137             img.img-fluid «»                                                                    |           ul «»
+138     div.row «»                                                                                  |             li>b «(3.3 million years ago – 10,000 BCE)»
+139       div.col-12.col-md-8 «»                                                                    |               b «Paleolithic»
+140         div.shapeHover[layout=*] «»                                                             |           ul «»
+141           div.outerContent «»                                                                   |             li>b «(10,000 BC – 5,000 BCE)»
+142             div.shape «»                                                                        |               b «Mesolithic»
+143               h4 «Step 1 Problem/ need»                                                         |           ul «»
+144                 br «»                                                                           |             li>b «(8,000 BC – 2,000 BCE)»
+145             div.shape «»                                                                        |               b «Neolithic»
+146               h4 «Step 2 Idea»                                                                  |           p «Show people by inventing something.»
+147             div.shape «»                                                                        |             b «Aim:»
+148               h4 «Step 3 Materials»                                                             |             b «how»
+149             div.shape «»                                                                        |             b «solve a problem»
+150               h4 «Step 4 Invention»                                                             |           p>b «What to do:»
+151           div.hoverContent «»                                                                   |             b «What to do:»
+152             div.shapeContent «»                                                                 |           ol «»
+153               div «»                                                                            |             li>b «one Stone Age era (optional).»
+154                 p «People needed food, but fish were hard to catch by»                          |               b «Choose»
+155             div.shapeContent «»                                                                 |           ol «»
+156               div «»                                                                            |             li>b «about a problem or need people had in that time.»
+157                 p «They thought of making tools to help catch fish.»                            |               b «Think»
+158             div.shapeContent «»                                                                 |           ol «»
+159               div «»                                                                            |             li>b «the P-I-M-A 4 steps (Problem-Idea-Materials-Invent»
+160                 p «They used stones, sticks and plant fibres.»                                  |               b «Complete»
+161             div.shapeContent «»                                                                 |           p>b «Use this PIMA four tep process»
+162               div «»                                                                            |             b «Use this PIMA four tep process»
+163                 p «They made fishing spears and nets to catch more fi»                          |         WIDGET «»
+164     div.row «»                                                                                  |         h4.goJournal «Go to your journal»
+165       div.col-12.col-md-8 «»                                                                    |         a «Upload to dropbox»
+166         h3 «Neolithic era (New Stone Age)»                                                      |           div.button «Upload to dropbox»
+167         p>b «Growing/farming food for a village»                                                |     div.row «»
+168           b «Example:»                                                                          |       div.col-12.col-md-8 «»
+169         img.img-fluid «»                                                                        |         h3 «Why did early humans gather in groups?»
+170       div.col-12.col-md-8 «»                                                                    |         p «Once early humans designed something, this knowled»
+171         div.shapeHover[layout=*] «»                                                             |         p «Māori believe in the power of belonging, shared co»
+172           div.outerContent «»                                                                   |         p «The video below shows why early humans gathered.»
+173             div.shape «»                                                                        |         div.ratio.ratio-16x9.videoSection «»
+174               h4 «Step 1 Problem/ need»                                                         |           iframe «»
+175                 br «»                                                                           |     div.row «»
+176             div.shape «»                                                                        |       div.col-12.col-md-8 «»
+177               h4 «Step 2 Idea»                                                                  |         div.alert «»
+178             div.shape «»                                                                        |           div.row «»
+179               h4 «Step 3 Materials»                                                             |             div.col-12 «»
+180             div.shape «»                                                                        |               p «Here is a quote from the video:»
+181               h4 «Step 4 Invention»                                                             |         p.quoteText>i «Humanity’s greatest strength has always been its a»
+182           div.hoverContent «»                                                                   |           i «Humanity’s greatest strength has always been its a»
+183             div.shapeContent «»                                                                 |         p>b «means doing well, growing, and being happy.»
+184               div «»                                                                            |           b «Thrive»
+185                 p «People needed a steady food supply for their famil»                          |         p «Do you agree with the quote? Chat with your superv»
+186             div.shapeContent «»                                                                 |     div.row «»
+187               div «»                                                                            |       div.col-12.col-md-8 «»
+188                 p «They thought about growing their own food as they »                          |         div.activity.interactive[number=*] «»
+189             div.shapeContent «»                                                                 |           div.row «»
+190               div «»                                                                            |             div.col-12 «»
+191                 p «They used seeds, soil, stone tools and water. They»                          |               h3 «Activity 4D»
+192             div.shapeContent «»                                                                 |               p «Whanaungatanga is thriving together»
+193               div «»                                                                            |               p «Is it still important for humans to gather togethe»
+194                 p «They used stone tools to prepare the ground and se»                          |               p>b «Below is a Venn diagram about reasons early humans»
+195     div.row «»                                                                                  |                 b «share the same reasons»
+196       div.col-12.col-md-8 «»                                                                    |               WIDGET «»
+197         div.activity.dropbox[number=*] «»                                                       |     div.row «»
+198           h3 «Stone Age invention task»                                                         |       div.col-12.col-md-8 «»
+199           p>b «You can choose era or just do something that exist»                              |         h3 «Lesson Summary»
+200             b «one»                                                                             |         p «Ka pai! In this lesson, you learned about the tool»
+201           div.icon.ratio.ratio-16x9.videoSection «»                                             |         p.hintLink «Need help ?»
+202             iframe «»                                                                           |           b «Need help ?»
+203           p>b «You are an early human living in the Stone Age. Yo»                              |           span.hint «»
+204             b «Your mission:»                                                                   |         div.hintDropContent «»
+205           h4 «Instructions»                                                                     |           p «Email or phone the kaiako. You can ring 0800 65 99»
+206           p>b «You can choose era or just do something that exist»                              |   div#footer «»
+207             b «ONE»                                                                             |     ul.footer-nav «»
+208           ul «»                                                                                 |       li>a#prev-lesson «»
+209             li>b «(3.3 million years ago – 10,000 BCE)»                                         |         a#prev-lesson «»
+210               b «Paleolithic»                                                                   |       li>a#next-lesson «»
+211             li>b «(10,000 BC – 5,000 BCE)»                                                      |         a#next-lesson «»
+212               b «Mesolithic»                                                                    |       li>a.home-nav «»
+213             li>b «(8,000 BC – 2,000 BCE)»                                                       |         a.home-nav «»
+214               b «Neolithic»                                                                     | 
+215           p «Show people by inventing something.»                                               | 
+216             b «Aim:»                                                                            | 
+217             b «how»                                                                             | 
+218             b «solve a problem»                                                                 | 
+219           p>b «What to do:»                                                                     | 
+220             b «What to do:»                                                                     | 
+221           ol «»                                                                                 | 
+222             li>b «one Stone Age era (optional)»                                                 | 
+223               b «Choose»                                                                        | 
+224             li>b «about a problem or need people had in that time»                              | 
+225               b «Think»                                                                         | 
+226             li>b «the P-I-M-A 4 steps (Problem-Idea-Materials-Invent»                           | 
+227               b «Complete»                                                                      | 
+228           p>b «Use this PIMA four step Process»                                                 | 
+229             b «Use this PIMA four step Process»                                                 | 
+230           WIDGET «»                                                                             | 
+231           h4.goJournal «Go to your journal»                                                     | 
+232           p «This is your last task for your journal. Please ch»                                | 
+233           a «Upload to dropbox»                                                                 | 
+234             div.button «Upload to dropbox»                                                      | 
+235     div.row «»                                                                                  | 
+236       div.col-12.col-md-8 «»                                                                    | 
+237         h3 «Why did early humans gather in groups?»                                             | 
+238         p «Once early humans designed something, this knowled»                                  | 
+239         p «Māori believe in the power of belonging, shared co»                                  | 
+240         p «The video below shows why early humans gathered.»                                    | 
+241         div.icon.ratio.ratio-16x9.videoSection «»                                               | 
+242           iframe «»                                                                             | 
+243     div.row «»                                                                                  | 
+244       div.col-12.col-md-8 «»                                                                    | 
+245         div.alert «»                                                                            | 
+246           p «Here is a quote from the video:»                                                   | 
+247           p.quoteText>i «Humanity's greatest strength has always been its a»                    | 
+248             i «Humanity's greatest strength has always been its a»                              | 
+249           p>b «means doing well, growing and being happy.»                                      | 
+250             b «Thrive»                                                                          | 
+251           p «Do you agree with the quote? Chat with your superv»                                | 
+252     div.row «»                                                                                  | 
+253       div.col-12.col-md-8 «»                                                                    | 
+254         div.activity.interactive[number=*] «»                                                   | 
+255           h3 «Whanaungatanga is thriving together»                                              | 
+256           p «Is it still important for humans to gather togethe»                                | 
+257           p>b «Below is a venn diagram about reasons early humans»                              | 
+258             b «share the same reasons»                                                          | 
+259           WIDGET «»                                                                             | 
+260     div.row «»                                                                                  | 
+261       div.col-12.col-md-8 «»                                                                    | 
+262         h4 «Lesson Summary»                                                                     | 
+263         p «Ka pai! In this lesson, you learned about the tool»                                  | 
+264         div.hint «»                                                                             | 
+265         div.row «»                                                                              | 
+266           div.col-12 «»                                                                         | 
+267             div.hintDropContent «»                                                              | 
+268               p>b «Email or phone the kaiako. You can ring 0800 65 99»                          | 
+269                 b «Need help ?»                                                                 | 
+270   div#footer «»                                                                                 | 
+271     ul.footer-nav «»                                                                            | 
+272       li>a#prev-lesson «»                                                                       | 
+273         a#prev-lesson «»                                                                        | 
+274       li>a#next-lesson «»                                                                       | 
+275         a#next-lesson «»                                                                        | 
+276       li>a.home-nav «»                                                                          | 
+277         a.home-nav «»                                                                           | 

@@ -1,0 +1,160 @@
+
+## ENGI102: pairs 7 -> 7
+   ENGI102_0.0.html         OLD ENGI102_0_0.html    38.6  NEW ENGI102_0_0.html    38.9 (raw  27.3)
+   ENGI102_1.0.html         OLD ENGI102_2_0.html    30.9  NEW ENGI102_2_0.html    30.9 (raw  25.1)
+   ENGI102_2.0.html         OLD ENGI102_4_0.html    38.6  NEW ENGI102_4_0.html    38.6 (raw  26.2)
+   ENGI102_3.0.html         OLD ENGI102_6_0.html    31.9  NEW ENGI102_6_0.html    31.9 (raw  25.5)
+   ENGI102_4.0.html         OLD ENGI102_8_0.html    44.8  NEW ENGI102_8_0.html    44.8 (raw  26.4)
+   ENGI102_5.0.html         OLD ENGI102_10_0.html   49.8  NEW ENGI102_10_0.html   49.8 (raw  34.9)
+   ENGI102_6.0.html         OLD ENGI102_12_0.html   50.4  NEW ENGI102_12_0.html   50.4 (raw  32.0)
+   module sum 285.0 over 7 -> 285.3 over 7  (mean 40.7 -> 40.8)
+
+## ENGJ402: pairs 9 -> 9
+   ENGJ402_0.0.html         OLD ENGJ402_0_0.html    69.4  NEW ENGJ402_0_0.html    69.4 (raw  56.3)
+   ENGJ402_1.0.html         OLD ENGJ402_1_0.html    75.2  NEW ENGJ402_1_0.html    75.2 (raw  28.0)
+   ENGJ402_2.0.html         OLD ENGJ402_2_0.html    49.0  NEW ENGJ402_2_0.html    49.4 (raw  36.9)
+   ENGJ402_3.0.html         OLD ENGJ402_3_0.html    58.9  NEW ENGJ402_3_0.html    56.4 (raw  38.5)
+   ENGJ402_4.0.html         OLD ENGJ402_4_0.html    87.7  NEW ENGJ402_4_0.html    87.7 (raw  87.7)
+   ENGJ402_5.0.html         OLD ENGJ402_5_0.html    23.8  NEW ENGJ402_5_0.html    23.8 (raw  23.4)
+   ENGJ402_6.0.html         OLD ENGJ402_6_0.html    24.5  NEW ENGJ402_6_0.html    25.0 (raw  20.1)
+   ENGJ402_7.0.html         OLD ENGJ402_7_0.html    58.1  NEW ENGJ402_7_0.html    58.1 (raw  34.1)
+   ENGJ402_8.0.html         OLD ENGJ402_8_0.html    50.5  NEW ENGJ402_8_0.html    50.5 (raw  50.5)
+   module sum 497.1 over 9 -> 495.6 over 9  (mean 55.2 -> 55.1)
+
+## ENGJ403: pairs 10 -> 10
+   ENGJ403_0.0.html         OLD ENGJ403_0_0.html    68.4  NEW ENGJ403_0_0.html    68.4 (raw  54.7)
+   ENGJ403_1.0.html         OLD ENGJ403_1_0.html    77.1  NEW ENGJ403_1_0.html    77.1 (raw  43.4)
+   ENGJ403_2.0.html         OLD ENGJ403_2_0.html    86.0  NEW ENGJ403_2_0.html    86.0 (raw  58.1)
+   ENGJ403_2.1.html         OLD ENGJ403_2_1.html    69.2  NEW ENGJ403_2_1.html    69.2 (raw  54.8)
+   ENGJ403_3.0.html         OLD ENGJ403_3_0.html    81.8  NEW ENGJ403_3_0.html    81.8 (raw  53.3)
+   ENGJ403_3.1.html         OLD ENGJ403_3_1.html    70.1  NEW ENGJ403_3_1.html    70.1 (raw  54.5)
+   ENGJ403_4.0.html         OLD ENGJ403_4_0.html    58.4  NEW ENGJ403_4_0.html    58.4 (raw  55.1)
+   ENGJ403_5.0.html         OLD ENGJ403_5_0.html    27.9  NEW ENGJ403_5_0.html    27.9 (raw  17.5)
+   ENGJ403_6.0.html         OLD ENGJ403_6_0.html    54.5  NEW ENGJ403_6_0.html    54.5 (raw  54.5)
+   ENGJ403_7.0.html         OLD ENGJ403_7_0.html    74.2  NEW ENGJ403_7_0.html    74.2 (raw  74.2)
+   module sum 667.5 over 10 -> 667.5 over 10  (mean 66.7 -> 66.7)
+
+## ENGS101: pairs 6 -> 6
+   ENGS101_0.0.html         OLD ENGS101_0_0.html    70.6  NEW ENGS101_0_0.html    70.6 (raw  46.2)
+   ENGS101_1.0.html         OLD ENGS101_1_0.html    44.0  NEW ENGS101_1_0.html    44.3 (raw  30.3)
+   ENGS101_2.0.html         OLD ENGS101_2_0.html    43.5  NEW ENGS101_2_0.html    43.5 (raw  32.4)
+   ENGS101_3.0.html         OLD ENGS101_3_0.html    25.2  NEW ENGS101_3_0.html    25.2 (raw  18.3)
+   ENGS101_4.0.html         OLD ENGS101_4_0.html    36.5  NEW ENGS101_4_0.html    36.7 (raw  21.1)
+   ENGS101_5.0.html         OLD ENGS101_5_0.html    59.4  NEW ENGS101_5_0.html    59.4 (raw  28.9)
+   module sum 279.1 over 6 -> 279.6 over 6  (mean 46.5 -> 46.6)
+
+## ENGS301: pairs 8 -> 8
+   ENGS301_0.0.html         OLD ENGS301_0_0.html    63.5  NEW ENGS301_0_0.html    63.5 (raw  42.3)
+   ENGS301_1.0.html         OLD ENGS301_1_0.html    82.4  NEW ENGS301_1_0.html    82.4 (raw  58.1)
+   ENGS301_2.0.html         OLD ENGS301_2_0.html    57.9  NEW ENGS301_2_0.html    57.9 (raw  35.9)
+   ENGS301_3.0.html         OLD ENGS301_3_0.html    60.9  NEW ENGS301_3_0.html    63.6 (raw  63.6)
+   ENGS301_4.0.html         OLD ENGS301_4_0.html    59.8  NEW ENGS301_4_0.html    59.8 (raw  41.5)
+   ENGS301_5.0.html         OLD ENGS301_5_0.html    75.3  NEW ENGS301_5_0.html    75.3 (raw  49.2)
+   ENGS301_6.0.html         OLD ENGS301_6_0.html    70.0  NEW ENGS301_6_0.html    70.0 (raw  48.6)
+   ENGS301_7.0.html         OLD ENGS301_7_0.html    73.9  NEW ENGS301_7_0.html    73.9 (raw  33.9)
+   module sum 543.8 over 8 -> 546.4 over 8  (mean 68.0 -> 68.3)
+
+## EXBP901: pairs 5 -> 5
+   EXBP901_0.0.html         OLD EXBP901_0_0.html    26.3  NEW EXBP901_0_0.html    26.3 (raw  19.9)
+   EXBP901_0.1.html         OLD EXBP901_1_0.html    29.8  NEW EXBP901_1_0.html    29.8 (raw  20.1)
+   EXBP901_0.2.html         OLD EXBP901_3_0.html    27.0  NEW EXBP901_3_0.html    27.0 (raw  20.8)
+   EXBP901_0.3.html         OLD EXBP901_4_0.html    28.4  NEW EXBP901_4_0.html    29.4 (raw  25.7)
+   EXBP901_1.1.html         OLD EXBP901_2_0.html    25.9  NEW EXBP901_2_0.html    25.9 (raw  25.9)
+   module sum 137.5 over 5 -> 138.5 over 5  (mean 27.5 -> 27.7)
+
+## OSAH401: pairs 5 -> 5
+   OSAH401_0.0.html         OLD OSAH401_0_0.html    86.6  NEW OSAH401_0_0.html    86.6 (raw  75.1)
+   OSAH401_1.0.html         OLD OSAH401_1_0.html    51.9  NEW OSAH401_1_0.html    51.9 (raw  26.2)
+   OSAH401_2.0.html         OLD OSAH401_2_0.html    63.4  NEW OSAH401_2_0.html    62.0 (raw  36.2)
+   OSAH401_3.0.html         OLD OSAH401_3_0.html    88.2  NEW OSAH401_3_0.html    88.2 (raw  33.3)
+   OSAH401_4.0.html         OLD OSAH401_4_0.html    63.3  NEW OSAH401_4_0.html    63.3 (raw  52.8)
+   module sum 353.4 over 5 -> 352.1 over 5  (mean 70.7 -> 70.4)
+
+## OSAI301: pairs 4 -> 4
+   OSAI301-00.html          OLD OSAI301_0_0.html    75.4  NEW OSAI301_0_0.html    75.4 (raw  67.2)
+   OSAI301-01.html          OLD OSAI301_1_0.html    75.0  NEW OSAI301_1_0.html    77.8 (raw  42.9)
+   OSAI301-02.html          OLD OSAI301_2_0.html    67.9  NEW OSAI301_2_0.html    67.9 (raw  40.0)
+   OSAI301-03.html          OLD OSAI301_3_0.html    55.6  NEW OSAI301_3_0.html    55.6 (raw  39.6)
+   module sum 273.9 over 4 -> 276.7 over 4  (mean 68.5 -> 69.2)
+
+## OSAI401: pairs 5 -> 5
+   OSAI401-00.html          OLD OSAI401_0_0.html    76.5  NEW OSAI401_0_0.html    76.5 (raw  58.4)
+   OSAI401-01.html          OLD OSAI401_1_0.html    62.6  NEW OSAI401_1_0.html    64.1 (raw  45.3)
+   OSAI401-02.html          OLD OSAI401_2_0.html    78.1  NEW OSAI401_2_0.html    78.1 (raw  38.8)
+   OSAI401-03.html          OLD OSAI401_3_0.html    72.9  NEW OSAI401_3_0.html    72.9 (raw  56.2)
+   OSAI401-04.html          OLD OSAI401_4_0.html    57.7  NEW OSAI401_4_0.html    57.7 (raw  31.1)
+   module sum 347.8 over 5 -> 349.3 over 5  (mean 69.6 -> 69.9)
+
+## OSAI501: pairs 6 -> 6
+   OSAI501-00.html          OLD OSAI501_0_0.html    65.5  NEW OSAI501_0_0.html    65.5 (raw  51.4)
+   OSAI501-01.html          OLD OSAI501_1_0.html    80.2  NEW OSAI501_1_0.html    82.4 (raw  54.2)
+   OSAI501-02.html          OLD OSAI501_2_0.html    79.4  NEW OSAI501_2_0.html    79.4 (raw  54.5)
+   OSAI501-03.html          OLD OSAI501_3_0.html    78.8  NEW OSAI501_3_0.html    78.8 (raw  51.0)
+   OSAI501-04.html          OLD OSAI501_4_0.html    85.3  NEW OSAI501_4_0.html    85.3 (raw  64.8)
+   OSAI501-05.html          OLD OSAI501_5_0.html    53.8  NEW OSAI501_5_0.html    53.8 (raw  28.2)
+   module sum 443.0 over 6 -> 445.1 over 6  (mean 73.8 -> 74.2)
+
+## PES1005: pairs 11 -> 11
+   PES1005_0.0.html         OLD PES1005_0_0.html    78.3  NEW PES1005_0_0.html    78.3 (raw  37.8)
+   PES1005_1.0.html         OLD PES1005_1_0.html    60.1  NEW PES1005_1_0.html    60.1 (raw  60.1)
+   PES1005_10.0.html        OLD PES1005_10_0.html   55.7  NEW PES1005_10_0.html   55.7 (raw  35.5)
+   PES1005_2.0.html         OLD PES1005_2_0.html    66.0  NEW PES1005_2_0.html    66.0 (raw  66.0)
+   PES1005_3.0.html         OLD PES1005_3_0.html    75.2  NEW PES1005_3_0.html    75.2 (raw  66.1)
+   PES1005_4.0.html         OLD PES1005_4_0.html    54.2  NEW PES1005_4_0.html    54.5 (raw  47.4)
+   PES1005_5.0.html         OLD PES1005_5_0.html    65.3  NEW PES1005_5_0.html    65.3 (raw  60.3)
+   PES1005_6.0.html         OLD PES1005_6_0.html    75.4  NEW PES1005_6_0.html    75.4 (raw  53.0)
+   PES1005_7.0.html         OLD PES1005_7_0.html    61.0  NEW PES1005_7_0.html    61.0 (raw  56.2)
+   PES1005_8.0.html         OLD PES1005_8_0.html    63.5  NEW PES1005_8_0.html    63.5 (raw  55.3)
+   PES1005_9.0.html         OLD PES1005_9_0.html    51.1  NEW PES1005_9_0.html    51.1 (raw  40.8)
+   module sum 705.8 over 11 -> 706.2 over 11  (mean 64.2 -> 64.2)
+
+## SSCI104: pairs 7 -> 7
+   SSCI104-0.0.html         OLD SSCI104_0_0.html    71.4  NEW SSCI104_0_0.html    71.4 (raw  36.8)
+   SSCI104-1.0.html         OLD SSCI104_1_0.html    38.6  NEW SSCI104_1_0.html    38.6 (raw  19.9)
+   SSCI104-2.0.html         OLD SSCI104_2_0.html    29.6  NEW SSCI104_2_0.html    29.6 (raw  22.5)
+   SSCI104-3.0.html         OLD SSCI104_3_0.html    40.2  NEW SSCI104_3_0.html    40.2 (raw  21.4)
+   SSCI104-4.0.html         OLD SSCI104_4_0.html    54.2  NEW SSCI104_4_0.html    52.0 (raw  30.8)
+   SSCI104-5.0.html         OLD SSCI104_5_0.html    32.0  NEW SSCI104_5_0.html    32.0 (raw  21.1)
+   SSCI104-6.0.html         OLD SSCI104_6_0.html    79.5  NEW SSCI104_6_0.html    79.5 (raw  62.3)
+   module sum 345.5 over 7 -> 343.3 over 7  (mean 49.4 -> 49.0)
+
+## TEDC402: pairs 9 -> 9
+   TEDC402-1.0.html         OLD TEDC402_1_0.html    29.3  NEW TEDC402_1_0.html    29.4 (raw  16.2)
+   TEDC402-2.0.html         OLD TEDC402_2_0.html    49.7  NEW TEDC402_2_0.html    49.7 (raw  24.6)
+   TEDC402-3.0.html         OLD TEDC402_3_0.html    44.6  NEW TEDC402_3_0.html    44.6 (raw  23.5)
+   TEDC402-4.0.html         OLD TEDC402_4_0.html    32.5  NEW TEDC402_4_0.html    32.5 (raw  18.0)
+   TEDC402-5.0.html         OLD TEDC402_5_0.html    36.3  NEW TEDC402_5_0.html    36.3 (raw  18.4)
+   TEDC402-6.0.html         OLD TEDC402_6_0.html    45.6  NEW TEDC402_6_0.html    45.6 (raw  26.6)
+   TEDC402-7.0.html         OLD TEDC402_7_0.html    35.9  NEW TEDC402_7_0.html    35.9 (raw  21.2)
+   TEDC402-8.0.html         OLD TEDC402_8_0.html    42.7  NEW TEDC402_8_0.html    42.7 (raw  25.2)
+   TEDC402.html             OLD TEDC402_0_0.html    81.6  NEW TEDC402_0_0.html    81.6 (raw  37.6)
+   module sum 398.2 over 9 -> 398.3 over 9  (mean 44.2 -> 44.3)
+
+## TWHA906: pairs 1 -> 1
+   TWHA906 Whakamana and Resilience.html OLD TWHA906_0_0.html    51.4  NEW TWHA906_0_0.html    51.4 (raw  30.2)
+   module sum 51.4 over 1 -> 51.4 over 1  (mean 51.4 -> 51.4)
+
+## XDLS905: pairs 8 -> 8
+   XDLS905.00.html          OLD XDLS905_0_0.html    72.2  NEW XDLS905_0_0.html    72.2 (raw  55.0)
+   XDLS905.01.html          OLD XDLS905_1_0.html    64.8  NEW XDLS905_1_0.html    64.8 (raw  64.3)
+   XDLS905.02.html          OLD XDLS905_2_0.html    66.7  NEW XDLS905_2_0.html    66.7 (raw  67.5)
+   XDLS905.03.html          OLD XDLS905_3_0.html    70.5  NEW XDLS905_3_0.html    70.5 (raw  65.1)
+   XDLS905.04.html          OLD XDLS905_4_0.html    44.4  NEW XDLS905_4_0.html    44.4 (raw  36.2)
+   XDLS905.05.html          OLD XDLS905_5_0.html    74.4  NEW XDLS905_5_0.html    74.4 (raw  72.1)
+   XDLS905.06.html          OLD XDLS905_6_0.html    62.4  NEW XDLS905_6_0.html    62.4 (raw  64.9)
+   XDLS905.07.html          OLD XDLS905_7_0.html    62.9  NEW XDLS905_7_0.html    61.7 (raw  56.1)
+   module sum 518.2 over 8 -> 517.1 over 8  (mean 64.8 -> 64.6)
+
+## XDLS906: pairs 8 -> 8
+   XDLS906_00_0.html        OLD XDLS906_0_0.html    60.0  NEW XDLS906_0_0.html    60.0 (raw  54.1)
+   XDLS906_01_0.html        OLD XDLS906_1_0.html    67.2  NEW XDLS906_1_0.html    67.2 (raw  52.1)
+   XDLS906_02_0.html        OLD XDLS906_2_0.html    73.5  NEW XDLS906_2_0.html    73.5 (raw  63.0)
+   XDLS906_03_0.html        OLD XDLS906_3_0.html    48.2  NEW XDLS906_3_0.html    48.2 (raw  37.3)
+   XDLS906_04_0.html        OLD XDLS906_4_0.html    65.8  NEW XDLS906_4_0.html    65.8 (raw  66.2)
+   XDLS906_05_0.html        OLD XDLS906_5_0.html    48.7  NEW XDLS906_5_0.html    48.9 (raw  38.2)
+   XDLS906_06_0.html        OLD XDLS906_6_0.html    71.4  NEW XDLS906_6_0.html    71.4 (raw  62.8)
+   XDLS906_07_0.html        OLD XDLS906_7_0.html    70.6  NEW XDLS906_7_0.html    70.6 (raw  63.4)
+   module sum 505.6 over 8 -> 505.8 over 8  (mean 63.2 -> 63.2)
+
+changed modules: pairs 109 -> 109; pp-sum 6352.8 -> 6358.2 (+5.3)
+corpus: 55.3463 % @ 2491 -> ≈ 55.3484 % @ 2491  (+0.0021pp);  >=50 +0, >=75 +0
