@@ -1,0 +1,70 @@
+diff --git a/converter-v2/app/js/InteractiveBuilder.js b/converter-v2/app/js/InteractiveBuilder.js
+index dc77aee..39d25b7 100644
+--- a/converter-v2/app/js/InteractiveBuilder.js
++++ b/converter-v2/app/js/InteractiveBuilder.js
+@@ -2987,15 +2987,26 @@ class InteractiveBuilder {
+ 				for (const l of String(p.text).split("\n")) if (l.trim()) lines.push(l);
+ 			}
+ 			if (lines.length >= (cfg.min_bold_panels ?? 2)) {
+-				const panels = [];
+-				let cur = null;
+-				for (const l of lines) {
+-					const lead = this.#accBoldLead(l, cfg);
+-					if (lead) { cur = { head: lead.head, parts: [] }; panels.push(cur); if (lead.rest) cur.parts.push({ p: lead.rest }); continue; }
+-					if (!cur) continue;                              // an intro line before the first panel
+-					if (!this.#accPushPart(cur.parts, { role: "text", text: l })) return null;
++				// ROUND 489 — the BULLETED bold lead ("• **Weed suppression** – If there are…", AGH1009 6.0; WHY_UNBUILT__accordion
++				// item 1 / reason 2b), read ONLY as a fallback after the r278 reading (the line must OPEN with the bold marks,
++				// colon separator) yields no valid panels — so every accordion the r278 reading builds is byte-identical
++				// (a bulleted bold line INSIDE a panel body must never become a new panel: XLP04 4.0's Materials / Activity).
++				// Data panel_delimiters.bullet_bold_lead {enabled, env, pattern}; env ACCBULLETLEAD_OFF.
++				const bbl = cfg.bullet_bold_lead;
++				const bblOn = bbl && bbl.enabled !== false && bbl.pattern
++					&& !(typeof process !== "undefined" && process.env && process.env[bbl.env ?? "ACCBULLETLEAD_OFF"]);
++				for (const bulleted of (bblOn ? [false, true] : [false])) {
++					const panels = [];
++					let cur = null, bad = false;
++					for (const l of lines) {
++						const lead = this.#accBoldLead(l, cfg, bulleted);
++						if (lead) { cur = { head: lead.head, parts: [] }; panels.push(cur); if (lead.rest) cur.parts.push({ p: lead.rest }); continue; }
++						if (!cur) continue;                              // an intro line before the first panel
++						if (!this.#accPushPart(cur.parts, { role: "text", text: l })) { bad = true; break; }
++					}
++					if (bad) { if (!bulleted) continue; return null; }
++					if (panels.length >= (cfg.min_bold_panels ?? 2) && panels.every((p) => p.head && p.parts.length)) return panels;
+ 				}
+-				if (panels.length >= (cfg.min_bold_panels ?? 2) && panels.every((p) => p.head && p.parts.length)) return panels;
+ 			}
+ 		}
+ 		return null;
+@@ -3150,9 +3161,11 @@ class InteractiveBuilder {
+ 	}
+ 
+ 	/** ROUND 278 — "**Head:** rest" → { head, rest }, or null when the line has no bold lead. */
+-	static #accBoldLead(line, cfg) {
++	static #accBoldLead(line, cfg, bulleted = false) {
+ 		const t = String(line ?? "").trim();
+-		const m = t.match(new RegExp(cfg.bold_lead_pattern ?? "^\\*\\*(.+?)\\*\\*\\s*[:：]?\\s*([\\s\\S]*)$"));
++		// ROUND 489 — `bulleted` = the D4 FALLBACK reading (see the D4 dialect): the pattern of
++		// panel_delimiters.bullet_bold_lead instead of the r278 one.
++		const m = t.match(new RegExp(bulleted ? cfg.bullet_bold_lead.pattern : (cfg.bold_lead_pattern ?? "^\\*\\*(.+?)\\*\\*\\s*[:：]?\\s*([\\s\\S]*)$")));
+ 		if (!m) return null;
+ 		const head = String(m[1]).replace(/\s*:\s*$/, "").trim();
+ 		const maxWords = cfg.head_max_words ?? 14;
+diff --git a/converter-v2/data/Emit_Templates.json b/converter-v2/data/Emit_Templates.json
+index 211e3f9..6887271 100644
+--- a/converter-v2/data/Emit_Templates.json
++++ b/converter-v2/data/Emit_Templates.json
+@@ -1919,6 +1919,12 @@
+ 		"accordion": {
+ 			"panel_delimiters": {
+ 				"enabled": true,
++				"bullet_bold_lead": {
++					"enabled": true,
++					"env": "ACCBULLETLEAD_OFF",
++					"pattern": "^(?:[•·▪◦‣]\\s*)?\\*\\*(.+?)\\*\\*\\s*(?:[:：]|[–—-](?=\\s))?\\s*([\\s\\S]*)$",
++					"_doc": "ROUND 489 (the autonomous loop's session 45 Round 6 — WHY_UNBUILT__accordion.md item 1 / reason 2b). The r278 D4 bold-lead panel dialect (`**Heading:** body` lines) required the line to OPEN with the bold marks and took only a colon as the separator, so the writer's bulleted form — `• **Weed suppression** – If there are plants growing…` × 5 under `[Interactive: accordion under bold headings]` (AGH1009 6.0) — refused, and the accordion shipped as the hand-off box. ON: an optional leading bullet character and a spaced en / em dash (or hyphen) as the separator, the dash dropped from the panel body. Every other D4 rule is unchanged (every member a black text line, ≥ min_bold_panels leads, every panel non-empty, head ≤ head_max_words). Env ACCBULLETLEAD_OFF = the r278 pattern."
++				},
+ 				"_note": "ROUND 278 — the PANEL DELIMITER VOCABULARY, tried LAST after the strict paths and both modes of the r246 rich fallback, so it is strictly additive and the 253 pre-round builds are byte-identical by construction. Panels resolve from an ordered vocabulary, each derivation gold-verified: D1 [accordion N] widened to the word/ordinal spellings, a heading-less panel taking its head from its own first [H2]-[H6]; D2 a captured TABLE, ONE ROW = ONE PANEL (head = a short first cell, else the content cell's BOLD LEAD); D3 a repeating same-level heading; D4 repeating BOLD-LEAD black lines. min_panels 1 for the explicit D1 (56.5% of gold accordions have one panel) but 2 for the inferred D2/D3/D4, so one table row is never guessed into an accordion. Env ACCPANELS_OFF.",
+ 				"title_members": {
+ 					"enabled": true,
