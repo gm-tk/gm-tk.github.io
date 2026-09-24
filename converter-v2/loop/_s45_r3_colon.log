@@ -1,0 +1,74 @@
+LEAKED-handoff: 31 — modules {'AGH1007': 7, 'CEDR203': 6, 'CEDT501': 5, 'AGH1002': 3, 'GEO1006': 3, 'SSFUN03': 2, 'TEDC402': 2, 'ARFUN02': 1, 'AGH1001': 1, 'OSGM501': 1}
+   features: {'table-cell': 15, 'split-runs': 13, 'head=hover definition': 13, 'head=hover': 7, 'head=rollover text': 5, 'bold-anchor': 5, 'head=roll over definition': 3, 'pre-ends-sentence': 2, 'head=roll over defn': 2, 'head=hover information': 1}
+      ARFUN02 «/en/photograph/42159/tutanekais-koauau]: [Hover definition: A small flute made from wood, bone, or stone] ║ [It»
+      SSFUN03 «ap. You will also learn about a map ✅key [ roll over definition: A list of symbols used on a map.] which is hel»
+      SSFUN03 « way to help with this is to have a ✅key [ roll over definition : A list of symbols or colours used on a map. ]»
+      CEDR203 «• Make a hypothesis [rollover text: making an educated guess based on questions/observatio»
+      CEDR203 «umbers of kererū are actually declining? [rollover text: decreasing]»
+      CEDR203 « or back of tile]  Predator Free Rakiura [hover: Stewart Island ] has a goal that the island will be predator-f»
+      CEDR203 «inability. It is also about manaakitanga [rollover text: mutual caring and sharing ] and whanaungatanga [rollov»
+      CEDR203 «caring and sharing ]  and whanaungatanga [rollover text: relationships ] .»
+      CEDR203 «ers, our mission is to create compelling [rollover text: making you want to read the poster and take action ] p»
+      AGH1001 «ck Group** ║ **Gestation Period (Days)** [hover definition: the number of days the animal is pregnant for] ║ **»
+      AGH1002 «ow the ground (from underground aquifers [hover definition: lakes and streams beneath the ground that transport»
+      AGH1002 « Water is also needed for photosynthesis [hover definition: the processes which plants use sunlight to create t»
+      AGH1002 «│ Air ║ Air is needed for respiration [hover definition: the processes by which plants use food to produce e»
+      AGH1007 «ses which increases the **surface area** [hover information: An increased surface area means that there are mor»
+DROPPED: 40 — modules {'SSFUN03': 4, 'AGH1004': 3, 'ANZH301': 3, 'XGF9002': 3, 'TWHK902': 2, 'AGH1009': 2, 'DAN1003': 2, 'HIS1003': 2, 'ARFUN03': 1, 'ARFUN04': 1, 'SSFUN05': 1, 'TEFUN02': 1, 'TEFUN05': 1, 'TWHT903': 1, 'XDLS901': 1, 'AGH1002': 1, 'AGH1005': 1, 'ANZH401': 1, 'CEDT501': 1, 'CEDW501': 1, 'DAN1006': 1, 'GER1002': 1, 'SSFUN07': 1, 'TEDC402': 1, 'XDLS912': 1}
+   features: {'split-runs': 22, 'head=hover definition': 15, 'head=hover': 9, 'pre-ends-sentence': 9, 'head=rollover definition': 5, 'table-cell': 5, 'bold-anchor': 5, 'head=roll over definition': 4, 'head=roll-over definition': 3, 'head=hover-over': 1, 'unclosed': 1, 'head=hover over “source ackno': 1, 'head=hover over s ource ackno': 1, 'head=hover-over wohin': 1}
+      ARFUN03 «Each dance element [hover: Tinana, Whanaungatanga , Wāhi, Wā | Time , Wana | Energy ] has»
+      ARFUN04 «t. What feelings or ideas does it evoke? [hover-over: Means to bring to mind, recall, or suggest emotions, memo»
+      SSFUN03 «People use maps to help ✅navigate [roll over definition: T o move to or find a place. ] around a city or»
+      SSFUN03 «elp understand maps and how to ✅navigate [roll over definition: T o move to or find a place. ] around a map usi»
+      SSFUN03 «**FACKTS**. This is called an ✅acronym . [roll over definition: A word that is made up of the first letter of d»
+      SSFUN03 « Australia, and the Indian ✅subcontinent [roll over definition: A large part of a continent. ]. The Indian Ocea»
+      SSFUN05 «ily in their kitchen shows an idealised* [rollover definition: Perfect or often better than reality.] *image of»
+      TEFUN02 «. ║  [Body]  Make a mind map, wireframes [hover definition: Uniform sketches which help to visualise a design.]»
+      TEFUN05 « measurable details. ]  and requirements [hover definition: Things the stakeholders want. ] so that stakeholder»
+      TWHK902 «Manaakitanga [hover definition: Caring for and respect of each other and the land i»
+      TWHK902 « increases our mana.]  and Kaitiakitanga [hover definition: Guardianship and protection.] .»
+      TWHT903 «Can you think of some other stereotypes [hover definition: beliefs people have about a thing or group that is »
+      XDLS901 «’s your turn to practise with a scenario [hover:An example story.] before you set your own goals.»
+      AGH1002 «ring and the addition of organic matter. [hover definition: material that has come from plants and animals that»
+LEAKED-note: 20 — modules {'SCES201': 6, 'ARFUN04': 2, 'CEDO202': 1, 'CEDR203': 1, 'XDLS901': 1, 'AGH1002': 1, 'AGH1007': 1, 'CEDO502': 1, 'CEDW501': 1, 'OSBY401': 1, 'OSGM401': 1, 'OSSM401': 1, 'XGF9001': 1, 'XTAS102': 1}
+   features: {'head=hover': 15, 'split-runs': 9, 'table-cell': 5, 'head=hover definition': 2, 'head=hover-over': 1, 'head=hover over': 1, 'head=rollover text': 1, 'unclosed': 1, 'bold-anchor': 1, 'pre-ends-sentence': 1}
+      ARFUN04 «This painting shows how contrast [hover-over: Differences in light and dark.] helps us notice different»
+      ARFUN04 «a light switch! Bright colours represent [Hover over: To show or stand for something.] light values, and dark c»
+      CEDO202 «Seasons are cyclical [hover: Happen in cycles, like a series of events that happen in the s»
+      CEDR203 «persuasive skills as we become advocates [rollover text: work to create change ] for a greener, more sustainabl»
+      XDLS901 «aching roles themselves. These rangatahi [hover:Young people.] are leaders and Teachers. They teach in primary »
+      AGH1002 «ients are more easily washed and leached [ hover definition: when nutrients are lost through the soils because »
+      AGH1007 «aterial (cellulose) through fermentation [ hover definition: breakdown of a substance by microorganisms such as»
+      CEDO502 «, try more general terms or **synonyms** [hover: words with similar meanings] .»
+      CEDW501 «s) representing different interconnected [Hover: Having all parts linked.] aspects of health and family. ║ Imag»
+      OSBY401 « to post anonymously or under pseudonyms [hover: A made-up name.] . Bullying may occur in comment threads or th»
+      OSGM401 «d money on upgrades or extras like skins [hover: Custom designs that change how characters or items look in a g»
+      OSSM401 «ocial comparison activates the amygdala, [hover: Small part of the brain that controls emotions like fear and a»
+      SCES201 « clouds of dust and gas called molecular [hover: Made up of tiny bits called molecules.] clouds. The gas and du»
+      SCES201 «ky called Te Waka o Tamarereti.  Pūrākau [hover: Stories] say this waka placed the stars in the sky to bring li»
+LEAKED-prose: 18 — modules {'AGH1009': 4, 'TEFUN05': 3, 'SSFUN03': 1, 'TEFUN02': 1, 'CEDR203': 1, 'AGH1002': 1, 'AGH1003': 1, 'AGH1007': 1, 'CEDT501': 1, 'MXDB202': 1, 'PHE1005': 1, 'SCES201': 1, 'XGF9003': 1}
+   features: {'split-runs': 11, 'head=hover definition': 11, 'head=hover': 3, 'table-cell': 2, 'head=roll over definition': 1, 'head=rollover text': 1, 'head=hover over definition': 1, 'head=hover text': 1}
+      SSFUN03 «map. You will identify what the ✅purpose [ roll over definition : the reason for something] of a map is and wha»
+      TEFUN02 «• join shapes by their faces [ hover definition: Wide, flat sides of a shape.] to keep the connecti»
+      TEFUN05 « can always get better! When we evaluate [ hover definition: Think about the good and the bad parts to form an »
+      TEFUN05 «parts to form an opinion. ]  and refine, [ hover definition: Change to make it better. ] we improve what we mak»
+      TEFUN05 «[Body]  Some designs are weak [ hover definition: They do a job, but not very well. ] and some are s»
+      CEDR203 «atch the word or words to the definition [rollover text: meaning ] ?»
+      AGH1002 « the process. Soils that are waterlogged [ hover definition: have too much water leaving limited space for air]»
+      AGH1003 « crop will help to increase strike rates [ hover definition : the number of seeds that germinate] and plant gro»
+      AGH1007 «ich are able to digest some of the fibre [hover definition: plant materia] through fermentation. Cellulose is t»
+      AGH1009 «wa [ hover definition:   R iver] or roto [ hover definition : Lake]. Rivers provided transport links across the»
+      AGH1009 «provided transport links across the motu [ hover definition : Islands] and the ocean was used for harvesting of»
+      AGH1009 «The use of chemicals – both pesticides [ hover definition : Sprays which kill insects.] and herbicides [ hove»
+      AGH1009 «rays which kill insects.] and herbicides [ hover definition : Sprays which kill weeds.] will not be covered as »
+      CEDT501 «y / • the school or workplace / • hapori [Hover: wider community] / • the person doing the bullying»
+LEAKED-?: 8 — modules {'AGH1009': 2, 'XGF9001': 2, 'SSFUN03': 1, 'XDLS901': 1, 'GEO1006': 1, 'XGF9002': 1}
+   features: {'split-runs': 6, 'head=roll over definition': 2, 'head=hover': 2, 'head=hover definition': 2, 'head=hover text': 2}
+      SSFUN03 «something] of a map is and what ✅symbols [ roll over definition: A shape/colour/image that represents something»
+      XDLS901 «e of performing tell us about her values [hover: W hat matters most.] and what brings her joy?»
+      AGH1009 «ho they are with a connection to the awa [ hover definition: R iver] or roto [ hover definition : Lake]. Rivers»
+      AGH1009 «re over 50 times more likely to defecate [ hover definition: P assing of faeces or urine . ] straight into wate»
+      GEO1006 « small flow of water. The river ✅channel [roll over definition: P athway or course that a river follows.] is of»
+      XGF9001 «than those around you. These intensities [hover text: **Intensities** are the heightened emotions, deep thinkin»
+      XGF9001 «cing these  [emphasise / highlight text] [hover text: **Intensities** are the heightened emotions, deep thinkin»
+      XGF9002 «tatus, authority, prestige. ]  *wairua,* [hover: Spirit ] and *talanoa,* [hover: Talk or discussion. ] woven th»

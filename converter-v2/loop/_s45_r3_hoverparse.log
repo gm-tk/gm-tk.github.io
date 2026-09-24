@@ -1,0 +1,86 @@
+  28   3m  [hover | - | class=instruction | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [hover: Made up of tiny bits called molecules.]  ||  [hover: Stars] 
+  25   4m  [hover definition | info trigger/INTERACTIVE | class=tag | instrFrag=false | wt=infoTrigger | closedInSpan=true
+        e.g.  [hover definition: substance that is in the walls of plant cells]  ||  [hover definition: mono meaning one] 
+  22   1m  [rollover text | body/ELEMENT | class=tag | instrFrag=false | wt= | closedInSpan=false
+        e.g.  [rollover text:  ||  [rollover text: 
+  20   7m  [hover definition | info trigger/INTERACTIVE | class=tag | instrFrag=false | wt=infoTrigger | closedInSpan=false
+        e.g.  [hover definition:  ||  [hover definition: 
+  14   5m  [hover | - | class=instruction | instrFrag=false | wt= | closedInSpan=false
+        e.g.  [hover:  ||  [hover: 
+  14   1m  [roll-over definition | info trigger/INTERACTIVE | class=tag | instrFrag=false | wt=infoTrigger | closedInSpan=true
+        e.g.  [roll-over definition: the continuing of te reo Māori being learned and taught across gen ||  [roll-over definition: customs and traditional values] 
+   7   1m  [hover] | - | class=instruction | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [hover]  ||  [hover] 
+   6   2m  [roll over definition | info trigger/INTERACTIVE | class=tag | instrFrag=false | wt=infoTrigger | closedInSpan=false
+        e.g.  [roll over definition:  ||  [roll over definition: 
+   4   1m  [roll over defn | - | class=instruction | instrFrag=false | wt= | closedInSpan=false
+        e.g.  [roll over defn:  ||  [roll over defn: 
+   3   1m  [hover-over | - | class=instruction | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [hover-over: Differences in light and dark.]  ||  [hover-over: Innovation is the process of developing new ideas.] 
+   3   1m  [rollover definition | info trigger/INTERACTIVE | class=tag | instrFrag=false | wt=infoTrigger | closedInSpan=true
+        e.g.  [rollover definition: the ancestral land and home of a Māori kinship group living in a co ||  [rollover definition: reasons to leave a place] 
+   2   1m  [hover - | - | class=instruction | instrFrag=false | wt= | closedInSpan=false
+        e.g.  [hover -  ||  [hover - 
+   2   1m  [hover trigger | info trigger/INTERACTIVE | class=tag | instrFrag=false | wt=infoTrigger | closedInSpan=false
+        e.g.  [hover trigger:  ||  [hover trigger: 
+   2   1m  [hover text | body/ELEMENT | class=tag | instrFrag=false | wt= | closedInSpan=false
+        e.g.  [hover text:  ||  [hover text: 
+   2   1m  [hover trigger definition | info trigger/INTERACTIVE | class=tag | instrFrag=false | wt=infoTrigger | closedInSpan=false
+        e.g.  [hover trigger definition:  ||  [hover trigger definition: 
+   1   1m  [hover information | - | class=instruction | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [hover information: An increased surface area means that there are more places for the ac
+   1   1m  [hover information | - | class=instruction | instrFrag=false | wt= | closedInSpan=false
+        e.g.  [hover information: 
+   1   1m  [rollover text | body/ELEMENT | class=tag | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [rollover text: guardians and protectors] 
+   1   1m  [hover - the ability to speak  | - | class=instruction | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [hover - The ability to speak up for yourself in a way that is honest and respectful.] 
+   1   1m  [hover - the background or sit | - | class=instruction | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [hover - The background or situation that helps explain the meaning of something.] 
+   1   1m  [hover – delete] | - | class=instruction | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [hover – delete] 
+   1   1m  [hover - person who starts or  | - | class=instruction | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [Hover - person who starts or takes part in hurting someone online] 
+   1   1m  [hover - when someone keeps bo | - | class=instruction | instrFrag=false | wt= | closedInSpan=true
+        e.g.  harassment [Hover - when someone keeps bothering, hurting, or upsetting another person on
+   1   1m  [hover - a samoan word for a p | data marker/SUBTAG | class=tag | instrFrag=false | wt= | closedInSpan=false
+        e.g.  fa'afafine [Hover - A Samoan word for a person who is assigned male at birth but lives as
+   1   1m  [hover – to celebrate or recog | - | class=instruction | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [Hover – to celebrate or recognise] 
+   1   1m  [hover | question/SUBTAG | class=tag | instrFrag=false | wt= | closedInSpan=true
+        e.g.  pātai [Hover: questions] 
+   1   1m  [hover – a person’s sense of w | - | class=instruction | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [hover – a person’s sense of worth and dignity] 
+   1   1m  [hover – purpose] | - | class=instruction | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [hover – purpose] 
+   1   1m  [hover – care and hospitality] | - | class=instruction | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [hover – care and hospitality] 
+   1   1m  [hover – speak] | - | class=instruction | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [hover – speak] 
+   1   1m  [hover | data marker/SUBTAG | class=tag | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [hover: a term used in Pasifika culture to that refers to talking and sharing ideas] 
+   1   1m  [hover – a gift or offering to | - | class=instruction | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [hover – a gift or offering to show thanks] 
+   1   1m  [hover text | word select/INTERACTIVE | class=tag | instrFrag=false | wt=wordSelect,wordHighlighter | closedInSpan=false
+        e.g.  [emphasise / highlight text] [hover text: 
+   1   1m  [hover over; to see something  | - | class=instruction | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [hover over; To see something and know what it is.] 
+   1   1m  [hover over | body/ELEMENT | class=tag | instrFrag=false | wt= | closedInSpan=false
+        e.g.  [Hover over: P 
+   1   1m  [hover over | - | class=instruction | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [Hover over: To show or stand for something.] 
+   1   1m  [hover over; this technique re | - | class=instruction | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [Hover over; This technique refers to the illusion of 3-D space on a flat surface.] 
+   1   1m  [hover | story heading/SUBTAG | class=tag | instrFrag=false | wt= | closedInSpan=true
+        e.g.  [hover:An example story.] 
+   1   1m  [hover trigger over image + ca | info trigger/INTERACTIVE | class=tag | instrFrag=false | wt=infoTrigger | closedInSpan=true
+        e.g.  [Hover trigger over image + captions. Please embed these images and have drop-down boxes 
+   1   1m  [hover definition] the differe | info trigger/INTERACTIVE | class=tag | instrFrag=false | wt=infoTrigger | closedInSpan=true
+        e.g.  [hover definition] the different elements of the weather and climate that influence a spe
+   1   1m  [hover definition] such as dea | info trigger/INTERACTIVE | class=tag | instrFrag=false | wt=infoTrigger | closedInSpan=true
+        e.g.  [hover definition] such as dead organisms, bacteria, fungi and living organisms such as b
+   1   1m  [hover definition] such as roc | info trigger/INTERACTIVE | class=tag | instrFrag=false | wt=infoTrigger | closedInSpan=true
+        e.g.  [hover definition] such as rocks and minerals 
+   1   1m  [roll-over definition | info trigger/INTERACTIVE | class=tag | instrFrag=false | wt=infoTrigger | closedInSpan=false
+        e.g.  [roll-over definition: 

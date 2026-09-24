@@ -1,0 +1,1 @@
+| `_s45_r3_{colon,record}.py` / `_s45_r3_hoverparse.cjs` / `_s45_r3_{colon,hoverparse}.log` / `_placement_census_s45.{md,json,log}` | `CONVERTER_V2/outputs/` | **Session 45 Round 3 (2026-09-25) — a PICK pass, no engine change** — the r487 hover residue decomposed (by container and by the engine's own tag resolution), KB c66 verified by construction, the placement census re-run. |
