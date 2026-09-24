@@ -1,0 +1,1 @@
+| `_s45_r11_{litable,record}.py` / `_s45_r11_litable.log` | `CONVERTER_V2/outputs/` | **Session 45 Round 11 (2026-09-25) — a PICK pass, no engine change** — the absent lesson LIs (class C), the WT learning-intentions tables, the MTK drop-down template's three-tab header, the carousel video ids. |

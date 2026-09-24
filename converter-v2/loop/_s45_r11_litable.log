@@ -1,0 +1,9 @@
+  51 ('3x4', 'body', 'body')  EXPFUN02 «Poppy puts her Learning Intentions in th» | EXPFUN02 «Huia puts her Learning Intentions in the» | EXPFUN02 «[body]   Sione puts his Learning Intenti» | EXPFUN02 «[body]   Poppy puts her Learning Intenti» | EXPFUN02 «[body]   Huia puts her Learning Intentio»
+  12 ('3x4', 'absent', 'body')  EXPFUN04 «Aniko knows she now needs to figure out » | EXPFUN04 «Charli knows she now needs to figure out» | EXPFUN04 «Aniko knows she now needs to figure out » | EXPFUN04 «Charli knows she now needs to figure out» | EXPFUN04 «Aniko knows she now needs to figure out »
+   9 ('4x4', 'body', 'body')  EXPFUN02 «[body]   Poppy puts her Learning Intenti» | EXPFUN02 «[body]   Poppy puts her Learning Intenti» | EXPFUN02 «[body]   Poppy puts her Learning Intenti» | EXPFUN03 «[body]   Amiria knows she now needs to f» | EXPFUN03 «[body]   Matt knows he now needs to figu»
+   5 ('2x1', 'absent', 'absent')  TEDC401 «[Overview]» | TEDC401 «[overview]» | TEDC401 «[Overview]» | TEDC401 «[Overview]» | TEDC402 «[Overview]»
+   1 ('7x2', 'absent', 'absent')  EXBP901 «[Body]   Match the learning intention to»
+   1 ('4x2', 'absent', 'absent')  EXIP901 «[Body]   Read the learning goals below a»
+   1 ('1x1', 'absent', 'absent')  TEDC401 «[Overview]»
+
+(gold, claude): {('body', 'body'): 60, ('absent', 'body'): 12, ('absent', 'absent'): 8}
