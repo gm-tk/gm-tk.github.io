@@ -1,5 +1,26 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-24 (round 477, build 260620.41) — KB CONSTRAINT 75 FOR GATHERED BODY TEXT: a tag line's paragraph and the black paragraphs gathered after it (an activity's body, an alert's content) keep the writer's inline links — public web targets, whole-phrase anchors
+
+### 1. WHAT CHANGED
+
+**The find** (session 43 Round 9 — the r475 link census's remaining free-body paths, traced with `outputs/_s43_r8_linkdbg.cjs`): ANZH104-6.0's "use an app like __Google Lens__ or __Seek by iNaturalist__" (inside activity 6B) is rendered by `ContentConverter.#element`'s body default — `renderBlackText(MediaBuilder.gatherFollowing(…), run)` with NO links; OSBY401's "Complete an online contact form" (a Netsafe alert) by `#calloutOpen` with only the alert TAG's own `block.links`, while its content was gathered from the following items. `gatherFollowing` returned the joined text, never the gathered items' links.
+
+**The fix** (`MediaBuilder.gatherFollowing` records the gathered items' `block.links` — the tag's own included — on `it._gatheredLinks`; `ContentConverter.#gatheredLinks` hands them to the `#element` body default and the callout content; data `Emit_Templates.body_region.gathered_links` {enabled, env, exclude_targets, min_text_chars 3}; env **`GATHERLINKS_OFF`**, byte-identical OFF): the free-body weave (exact phrase, first occurrence per line, never inside an `<a>`) on the gathered text, with r476's target exclusion (ONE pattern, `interactive_builders._widget_links.exclude_target_pattern`: the first ON run added 73 Drive / Slides / picture pointers the gold never links) and a 3-character minimum link text (Word split PES1005's "Te Rā" link run so only "ā" carried it — the first build linked the macron alone, "Te R<a>ā</a>").
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 3222 / 3222 identical**; ON (final) 38 modules changed; every added `<a>` inside a `<p>` / `<li>` / an inline `<i>` / `<b>` (`_r477_on/`, the parent census). Precision against the gold BODY (`_s43_r8_linkprec.py`): 37 of the added URLs the gold body carries (ANZH104's Google Lens / Seek / AutoDraw, ANZH404's Te Ara Kotahitanga, AGH1009's news articles …), the rest public pages the writer linked the gold drops — NAMED overrides of **KB constraint 75** ("inline → anchor").
+- Regeneration of the 39-module detector set + the 12-module spot-check (`_r477_regen.sh`, re-run with the final code): 0 truly stale, 12 / 12 byte-identical; `scoped_ship.sh` containment OK (38 ⊆ 39), its decomposition flagged ≥75 −1 → committed NAMED (`_fastloop_diff.py --accept-named "skeleton pages >=75%"`, the r470 / r475 precedent).
+
+### 3. PROTECTED GATES
+
+- Skeleton **55.2317 % → 55.2360 % @ 2491 (+0.0042pp)**, RAW 39.191 → 39.195 %; ≥50 1577; **≥75 276 → 275 — NAMED: HIS1008_5_0 75.9 → 74.9** (the writer's citation link "Garrow, David," → Wikipedia, which the gold drops); ≥90 25; 44 movers, 13 up (FRFUN06_6_0 +15.1, ANZH404_3_0 +13.0, OSBY401_1_0 +4.0, ANZH104_6_0 +2.2 …) / 31 down (the largest: HES1002_5_0 −5.8 — its list of health-resource links the gold leaves out; MXDI202_8_0 −4.1 — "Merino" / "fleece" → Wikipedia; PHE1007_10_0 −3.8) — every down page a writer link the gold drops; movers outside the affected set 0.
+- compare_structure **exact 16758 → 16759** (matched 19531 → 19532), EXTRA 208, missing 903; body / clean / leak EXACT; every verifier RESULT line identical to r476; 17 selftests + the skeleton selftest green; the feature index green; the miner 197 CANDIDATE @ 2491.
+- Plateau (§4): a KB-rule round; neither counts nor resets: **2 of 3** stands.
+
+**Ledger:** scoped #3 since the r474 FULL · data `body_region.gathered_links` · env `GATHERLINKS_OFF` · code `MediaBuilder.gatherFollowing`, `ContentConverter.#gatheredLinks` / `#element` / `#calloutOpen` · tools `_r477_{regen,postship,commit_named,checksums}.sh`, `_r477_finalise.py`. **Follow-ups (recorded):** the shared weave matches a phrase anywhere in the line (no word boundary) — the 3-character floor contains it here; table-cell links (a precision question); the Bilingual audio players' missing `src` / `title`.
+
 ## 2026-09-24 (round 476, build 260620.40) — KB CONSTRAINT 75 FOR BUILT WIDGETS: the writer's inline links in a widget's PROSE (panel bodies, the members' prose around it) keep their href — public web pages only; labels, faces and triggers stay link-free
 
 ### 1. WHAT CHANGED

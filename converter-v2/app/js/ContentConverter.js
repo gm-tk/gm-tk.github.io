@@ -8987,9 +8987,33 @@ class ContentConverter {
 
 		// ---- body / default ELEMENT: paragraphs of the following content ------
 		const gathered = MediaBuilder.gatherFollowing(it, bodyItems, i);
-		if (gathered.trim()) out.push(...ListsAndRuns.renderBlackText(gathered, run));
+		if (gathered.trim()) out.push(...ListsAndRuns.renderBlackText(gathered, run, this.#gatheredLinks(it, undefined)));
 		return out;
 	};
+
+	/**
+	 * ROUND 477 (the autonomous loop's session-43 Round 9) — KB constraint 75 ("inline → anchor") FOR GATHERED BODY TEXT.
+	 * MediaBuilder.gatherFollowing joins a tag line's text with the following black items, but the emitters that render the
+	 * joined text passed no links (the `#element` body default) or only the tag's own (`#calloutOpen`), so a writer link in
+	 * a gathered paragraph lost its href — ANZH104-6.0's "Google Lens / Seek by iNaturalist" (activity 6B), OSBY401's Netsafe
+	 * "online contact form" (an alert). With the flag on, the links gatherFollowing recorded (the tag's block + every gathered
+	 * item's) are woven; off → `fallback` (the r476 behaviour). Data body_region.gathered_links {enabled, env GATHERLINKS_OFF}.
+	 */
+	static #gatheredLinks(it, fallback) {
+		const cfg = DataService.Data.EmitTemplates.body_region?.gathered_links;
+		if (!cfg || cfg.enabled === false) return fallback;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "GATHERLINKS_OFF"]) return fallback;
+		const ls = it?._gatheredLinks;
+		if (!ls) return fallback;
+		// the r476 target exclusion (ONE pattern, interactive_builders._widget_links.exclude_target_pattern): a picture /
+		// stock / developer-asset / media target is the writer's pointer for the developer, never a learner link — the
+		// first ON run added 73 such hrefs (Drive audio folders, Google Slides decks) the gold never links
+		const pat = DataService.Data.EmitTemplates.interactive_builders?._widget_links?.exclude_target_pattern;
+		const skip = cfg.exclude_targets !== false && pat ? new RegExp(pat, "i") : null;
+		// a link whose text is a fragment (Word split the run: PES1005's "Te R|ā" linked on the "ā" alone) is never woven
+		const minChars = cfg.min_text_chars ?? 3;
+		return ls.filter((l) => !(skip && skip.test(String(l?.target ?? ""))) && String(l?.text ?? "").trim().length >= minChars);
+	}
 
 	/**
 	 * CALLOUT emitter — the OSAI201 over-nesting fix.
@@ -9523,7 +9547,7 @@ class ContentConverter {
 			&& !(typeof process !== "undefined" && process.env && process.env.SUPPAYLOAD_OFF)
 			? embedded : "";
 		if (longPayload) out.push(...deBold(deItal(ListsAndRuns.renderBlackText(longPayload, run, it.block?.links))));
-		if (content.trim()) out.push(...deProv(deBold(deItal(ListsAndRuns.renderBlackText(content, run, it.block?.links)))));
+		if (content.trim()) out.push(...deProv(deBold(deItal(ListsAndRuns.renderBlackText(content, run, this.#gatheredLinks(it, it.block?.links))))));
 		if (_tcParts) out.push(...deProv(deBold(deItal(_tcParts))));   // ROUND 399: the one-cell table's cell
 
 		// SAME-BLOCK BUTTON/LINK ABSORB (found on module OSAH501-01). An "[external link

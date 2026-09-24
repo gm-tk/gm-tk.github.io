@@ -632,12 +632,17 @@ class MediaBuilder {
 
 	static gatherFollowing(it, bodyItems, i) {
 		let text = it.blackAfter ?? "";
+		// ROUND 477 (KB c75; body_region.gathered_links): the gathered items' own hyperlinks, recorded beside the text
+		// so a caller can weave them (#element's body default, the callout content) — read-only, output-neutral here
+		const links = [...(it.block?.links ?? [])];
 		for (let j = i + 1; j < bodyItems.length; j++) {
 			const next = bodyItems[j];
 			if (next.type !== "black" || next.consumedBy !== undefined) break;
 			text += `\n${next.text}`;
 			next._consumed = true;
+			for (const l of (next.block?.links ?? [])) links.push(l);
 		}
+		it._gatheredLinks = links;
 		return text;
 	};
 }

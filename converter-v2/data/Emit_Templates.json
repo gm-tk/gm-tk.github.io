@@ -5383,6 +5383,13 @@
 		}
 	},
 	"body_region": {
+		"gathered_links": {
+			"enabled": true,
+			"env": "GATHERLINKS_OFF",
+			"exclude_targets": true,
+			"min_text_chars": 3,
+			"_doc": "ROUND 477 (the autonomous loop's session-43 Round 9) — KB constraint 75 ('inline → anchor') FOR GATHERED BODY TEXT. MediaBuilder.gatherFollowing joins a tag line's text with the following black items; the emitters rendering it passed no links (ContentConverter.#element's body default) or only the tag's own (#calloutOpen), so a writer link in a gathered paragraph lost its href (ANZH104-6.0 'Google Lens / Seek by iNaturalist' inside activity 6B; OSBY401's Netsafe 'online contact form' alert). On: gatherFollowing records the gathered items' block.links (the tag's own included) and both emitters weave them (the free-body weave — exact phrase, first occurrence per line, never inside an <a>). Env GATHERLINKS_OFF = the r476 output."
+		},
 		"open": "<div id=\"body\">",
 		"close": "</div>",
 		"black_leading_tag_strip": [

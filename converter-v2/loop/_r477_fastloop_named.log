@@ -1,0 +1,24 @@
+re-scoring 51 affected module(s): AGH1009 ANZH104 ANZH404 BLL120 BLL121 BLL133 BLL171 CBI1008 CEDK401 CEDO202 CEDR203 CEDR501 CEDT104 CEDT301 CEDW501 ENGC403 ENGI102 ENGI202 ENGI405 ENGJ402 ENGR102 FRFUN06 HES1002 HES1007 HIS1003 HIS1004 HIS1008 MXDI202 MXFL203 MXFL204 OSBY201 OSBY401 OSBY501 PES1002 PES1005 PHE1007 PHE1008 PWY1009 SSFUN02 SSFUN03 TEFUN03 TWHA904 TWHA905 TWHR905 XDLS904 XDLS905 XDLS908 XFUN01 XLP02 XLP05 XWHA01
+baseline taken: 2026-09-24T09:57:32Z
+(unaffected modules unchanged by construction — corpus aggregate moves by exactly the affected-set delta)
+
+  metric                                 baseline        new     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  55.23      55.24     +0.00  IMPROVED
+  skeleton pages >=50%                       1577       1577         0  HELD
+  skeleton pages >=75%                        276        275        -1  REGRESSED
+  compare_structure exact chain             16758      16759        +1  IMPROVED
+  compare_structure EXTRA container           208        208         0  HELD
+  compare_structure missing container         903        903         0  HELD
+  body_compare ANY breakdown                  238        238         0  HELD
+  defect structurally-clean %               98.25      98.25      0.00  HELD
+  literal-[tag] leak (occ)                     75         75         0  HELD
+  literal-[tag] leak (pages)                   46         46         0  HELD
+
+  context (no pass/fail): sk_pages: 2491->2491  cs_matched: 19531->19532  body_pages: 2633->2633  df_total: 2633->2633  df_clean: 2587->2587
+
+RESULT: MOVED, ACCEPTED AS NAMED — skeleton pages >=75%
+        Every mover was named on the command line and must be decomposed in the
+        round's changelog entry (which page, which mechanism). Recorded in the manifest.
+[commit] fast-loop baseline PATCHED (2491 pages) + content manifest refreshed — this is now the shipped state the next inner loop measures against.
+[commit] recorded accepted named movement: skeleton pages >=75%

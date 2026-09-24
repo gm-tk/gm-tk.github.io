@@ -1830,7 +1830,8 @@ class Config {
 	// ROUND 474 (260620.38): KB c52 — EVERY iSTOCK IMAGE CARRIES ITS TITLE AS ALT TEXT (session 43 Round 5; the FULL backstop). MediaBuilder.FillWidgetAlts, last in PageAssembler: an <img alt=""> naming iStock-<id> takes the verified acks title, else the module's URL-slug title. Env WIDGETALT_OFF.
 	// ROUND 475 (260620.39): KB c75 — THE MODULE MENU KEEPS THE WRITER'S INLINE LINKS (session 43 Round 7). MenuBuilder's text buffers carry their items' block.links into ListsAndRuns.renderBlackText (the free-body weave). Env MENULINKS_OFF.
 	// ROUND 476 (260620.40): KB c75 FOR BUILT WIDGETS (session 43 Round 8). ContentConverter.#interactivePlaceholder's renderBlock weaves the bundle's own public-web links into the widget's prose; renderInline (labels / faces / triggers) stays link-free. Env WIDGETLINKS_OFF.
-	static AppVersion = "260620.40";
+	// ROUND 477 (260620.41): KB c75 FOR GATHERED BODY TEXT (session 43 Round 9). MediaBuilder.gatherFollowing records the gathered items' links; #element's body default and the callout content weave them (public web targets, >= 3-character phrases). Env GATHERLINKS_OFF.
+	static AppVersion = "260620.41";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

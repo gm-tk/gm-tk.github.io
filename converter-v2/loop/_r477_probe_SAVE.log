@@ -1,0 +1,42 @@
+AGH1009: identical 10 / changed 1
+ANZH104: identical 8 / changed 1
+ANZH404: identical 6 / changed 2
+BLL120: identical 1 / changed 1
+CBI1008: identical 4 / changed 2
+CEDK401: identical 1 / changed 1
+CEDR203: identical 1 / changed 1
+CEDR501: identical 11 / changed 1
+CEDT104: identical 1 / changed 1
+CEDT301: identical 7 / changed 1
+CEDW501: identical 13 / changed 1
+ENGC403: identical 16 / changed 1
+ENGI102: identical 7 / changed 1
+ENGI202: identical 7 / changed 1
+ENGJ402: identical 9 / changed 1
+FRFUN06: identical 10 / changed 1
+HES1002: identical 7 / changed 2
+HES1007: identical 10 / changed 1
+HIS1003: identical 11 / changed 1
+HIS1004: identical 9 / changed 3
+HIS1008: identical 12 / changed 1
+MXDI202: identical 10 / changed 3
+MXFL203: identical 12 / changed 1
+OSBY201: identical 4 / changed 1
+OSBY401: identical 5 / changed 1
+OSBY501: identical 6 / changed 1
+PES1005: identical 11 / changed 1
+PHE1007: identical 10 / changed 2
+PHE1008: identical 6 / changed 1
+SSFUN02: identical 1 / changed 1
+SSFUN03: identical 1 / changed 1
+TWHA904: identical 1 / changed 1
+TWHA905: identical 1 / changed 1
+TWHR905: identical 1 / changed 1
+XDLS904: identical 8 / changed 1
+XDLS905: identical 8 / changed 1
+XDLS908: identical 9 / changed 1
+XLP02: identical 7 / changed 1
+XLP05: identical 6 / changed 1
+
+TOTAL: identical 268 / changed 47 / missing 0 over 39 modules
+CHANGED: AGH1009/AGH1009_4_0.html ANZH104/ANZH104_6_0.html ANZH404/ANZH404_3_0.html ANZH404/ANZH404_5_0.html BLL120/BLL120_0_0.html CBI1008/CBI1008_1_0.html CBI1008/CBI1008_2_0.html CEDK401/CEDK401_0_0.html CEDR203/CEDR203_0_0.html CEDR501/CEDR501_3_0.html CEDT104/CEDT104_0_0.html CEDT301/CEDT301_6_0.html CEDW501/CEDW501_6_0.html ENGC403/ENGC403_0_0.html ENGI102/ENGI102_8_0.html ENGI202/ENGI202_0_0.html ENGJ402/ENGJ402_2_0.html FRFUN06/FRFUN06_6_0.html HES1002/HES1002_5_0.html HES1002/HES1002_6_0.html HES1007/HES1007_4_0.html HIS1003/HIS1003_6_0.html HIS1004/HIS1004_5_0.html HIS1004/HIS1004_7_0.html HIS1004/HIS1004_9_0.html HIS1008/HIS1008_5_0.html MXDI202/MXDI202_3_0.html MXDI202/MXDI202_8_0.html MXDI202/MXDI202_10_0.html MXFL203/MXFL203_2_0.html OSBY201/OSBY201_3_0.html OSBY401/OSBY401_1_0.html OSBY501/OSBY501_1_0.html PES1005/PES1005_3_0.html PHE1007/PHE1007_7_0.html PHE1007/PHE1007_10_0.html PHE1008/PHE1008_3_0.html SSFUN02/SSFUN02_0_0.html SSFUN03/SSFUN03_0_0.html TWHA904/TWHA904_0_0.html TWHA905/TWHA905_0_0.html TWHR905/TWHR905_0_0.html XDLS904/XDLS904_2_0.html XDLS905/XDLS905_2_0.html XDLS908/XDLS908_6_0.html XLP02/XLP02_5_0.html XLP05/XLP05_1_0.html
