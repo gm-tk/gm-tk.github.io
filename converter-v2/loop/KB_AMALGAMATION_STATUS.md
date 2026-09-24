@@ -58,7 +58,7 @@
 | 35 | Media List optional; never supplies content or boundaries | pre-ledger | 153 two-file modules | **LIVE** | MediaListParser |
 | 36 | Graded MCQ = `multiChoiceQuiz` family, never `multiQuiz` | pre-ledger | mcq modules | **CAPTURED** — the r305 mcq builder emits `multiChoiceQuiz` (4 pages built; 0 legacy) | `_verify_mcq.cjs` |
 | 37 | No answer keys in comments; designer notes as visible red+bold with source prefixes; the permitted-comment list | pre-ledger; CL-0010/0013/0046 | every module | **LIVE** (r219 prefixes; `<!-- Lesson N.N -->` labels 413 pages; Mode P image comments) | NotesAndComments |
-| 38 | `autoCheck` auto-applied on ECH / 1-3 / 4-6 templates | pre-ledger | 1-3 + 4-6 modules (880 Claude pages) | **UNVERIFIED** — check the built widgets' `autoCheck` attribute by template | builders |
+| 38 | `autoCheck` auto-applied on ECH / 1-3 / 4-6 templates | pre-ledger | 1-3 + 4-6 modules (880 Claude pages) | **CAPTURED-LIVE for the dragAndDrop — round 483 (2026-09-25, session 44 Round 8): `skeleton.template_autocheck`, `TPLAUTOCHECK_OFF`; 51 built D&Ds on 1-3 / 4-6 pages / 38 modules → `autoCheck` + Reset only (KB 03B); the D&D verifier taught the form. REMAINING: the quiz types on those templates (7 multiChoiceQuiz, 5 dropQuiz, 1 typing — `_s44_r8_autocheck.py`).** | `SkeletonBuilder.#templateAutoCheck` |
 | 39 | One-off designer overrides | pre-ledger | — | N/A (mechanism) | — |
 | 40 | Comparison Mode | pre-ledger | — | N/A (mechanism) | — |
 | 41 | Caption `<p class="captionText">` under an image | pre-ledger | image-caption modules (26 WTs tag captions) | **PARTIAL** — Claude 38 pages / 106 occ vs gold 155 / 557 | `elements.image` caption path |

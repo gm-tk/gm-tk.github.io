@@ -1836,7 +1836,8 @@ class Config {
 	// ROUND 480 (260620.44): KB 07B THE MTK ACTIVITY IS ONE BOX (session 44 Round 3, a TRR family dialect). The `Activity NX: ║ Ngohe NX:` intro table + its [Activity: Embedded] table render as one div.activity (BilingualBuilder.isActLabelTable / bilingualActivity alb). Env ACTLABELBOX_OFF.
 	// ROUND 481 (260620.45): THE MTK ACTIVITY'S DATA ROWS ARE ONE HAND-OFF (session 44 Round 4) — inside the r480 box the [Activity: Embedded] table's data grid ships whole in one cv2-interactive hand-off (every column kept). Env ACTDATA_OFF.
 	// ROUND 482 (260620.46): KB 07D THE BILINGUAL LESSON TITLE KEEPS ITS h2 (session 44 Round 6) — the r371 writer-digit marker pins the r137 title level through the re-level pass. Env LESSONPIN_OFF.
-	static AppVersion = "260620.46";
+	// ROUND 483 (260620.47): KB c38 AUTOCHECK ON THE 1-3 / 4-6 / ECH TEMPLATES (session 44 Round 8) — SkeletonBuilder's #templateAutoCheck gives every built dragAndDrop on those pages autoCheck + only the Reset button. Env TPLAUTOCHECK_OFF.
+	static AppVersion = "260620.47";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

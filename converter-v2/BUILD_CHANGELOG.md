@@ -1,5 +1,26 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 483, build 260620.47) — KB CONSTRAINT 38: AUTOCHECK ON THE 1-3 / 4-6 / ECH TEMPLATES — every built drag-and-drop on those pages carries `autoCheck` with only its Reset button (KB 03B)
+
+### 1. WHAT CHANGED
+
+**The find** (session 44 Round 8 — the KB queue's UNVERIFIED rows re-read; `outputs/_s44_r8_autocheck.py`, by each page's `<html template>`): KB constraint 38 / 03A "autoCheck Auto-Application" — on the three dedicated templates (ECH / 1-3 / 4-6) `autoCheck` MUST be applied to every interactive that supports it, the Undo / Check buttons dropped exactly as the component's "With autoCheck" example shows. Claude built 51 dragAndDrops on 1-3 / 4-6 pages (38 modules: standard 24, images 13, column 14) and **none** carried it (the builders derive `autoCheck` only from the writer's own wording). The gold on 1-3: dragAndDrop 348 / 793, multiChoiceQuiz 237 / 310, dropQuiz 42 / 65, radioQuiz 46 / 59 — far above its 7-8 / 9-10 / NCEA rates (its pre-rule builds keep the rest).
+
+**The fix** (KB 03B: `<div class="dragAndDrop autoCheck …">` + the button row reduced to Reset; the free-form area layout never takes it): `SkeletonBuilder.BuildPage` — once the page's template attribute / level is resolved (the widget builders run before the skeleton knows it) — runs `#templateAutoCheck` over the body: every listed widget root without `autoCheck` (not in `skip_layouts`) gains the class and loses its own `drop_buttons`. Data `Emit_Templates.skeleton.template_autocheck` {enabled, env, templates [1-3, 4-6], levels [ech], widgets.dragAndDrop {skip_layouts [area], drop_buttons [undo, checkAnswer]}}; env **`TPLAUTOCHECK_OFF`**, byte-identical OFF. **The gate tool:** `reference/tests/_verify_dragdrop.cjs` learns KB 03B's autoCheck form (`btnOk` — an autoCheck widget keeps ONLY Reset; every other widget the reset / undo hidden / checkAnswer hidden row). The quiz types on those templates (7 multiChoiceQuiz, 5 dropQuiz, 1 typing — 12 widgets) are recorded for a later round.
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 3222 / 3222 identical**; ON 43 pages / 38 modules (`outputs/_affected_r483.txt`); every one of the 51 widgets `dragAndDrop autoCheck`, no Undo / Check button left.
+- Regeneration of the 38 + the 12-module spot-check (`_r483_regen.sh`): 0 truly stale, 12 / 12 byte-identical; **`scoped_ship.sh` PASS**.
+
+### 3. PROTECTED GATES
+
+- Skeleton **55.3280 % @ 2491 — EXACT** (0 movers; skeleton-blind by design — the root class and its button row sit inside the collapsed WIDGET line); RAW 39.237 → 39.224 % (−0.013pp — the unprotected full-content score sees the two dropped buttons per widget; the gold keeps them on its pre-rule D&Ds); compare_structure / body / clean / leak EXACT.
+- **The dragAndDrop verifier over the whole family: "every built dragAndDrop is the KB 03B form ✓"**; its selftest GREEN (LIVENESS + DETECTION); every other verifier RESULT line ✓; 17 selftests + the skeleton selftest green; the miner 195 CANDIDATE.
+- Plateau (§4): a KB-rule round, skeleton-blind by design; neither counts nor resets: **0 of 3**.
+
+**Ledger:** scoped #1 since the r482 FULL backstop · data `skeleton.template_autocheck` · env `TPLAUTOCHECK_OFF` · code `SkeletonBuilder.BuildPage` / `#templateAutoCheck` · gate tool `_verify_dragdrop.cjs` (btnOk) · tools `_s44_r8_{autocheck,pick}.py`, `_r483_{regen,postship}.sh`, `_r483_finalise.py` · session 44 Round 8.
+
 ## 2026-09-25 (session 44 Round 7, build 260620.46 — NO engine change) — THE LEDGER'S FULL-SHIP BACKSTOP: the whole corpus regenerated with the r482 engine is byte-identical to the shipped manifest
 
 - **Why:** eight scoped ships since the r474 FULL (r475–r482; `_ship_ledger.py`: cadence 8 reached). A scoped ship proves only its affected set + a 12-module sample; the backstop proves the whole chain.

@@ -330,13 +330,60 @@ class SkeletonBuilder {
 			Utils.FillTemplate(tpl.skeleton.body_open, { bodyClass: mode.bodyClass, bodyAttrs: mode.bodyAttrs }),
 			header,
 			tpl.body_region.open,
-			content.bodyHtml,
+			SkeletonBuilder.#templateAutoCheck(content.bodyHtml, templateAttr, levelAttr, tpl),
 			tpl.body_region.close,
 			footer,
 			acksHtml,            // overview only — div.acks AFTER #footer (policy)
 			tpl.skeleton.body_close,
 			tpl.skeleton.html_close,
 		].filter(Boolean).join("\n");
+	};
+
+	/**
+	 * ROUND 483 (the autonomous loop's session-44 Round 8) — KB constraint 38 / 03A "autoCheck Auto-Application": on the ECH / 1-3 /
+	 * 4-6 templates every interactive that supports it carries `autoCheck`, its Undo / Check buttons dropped as the component's
+	 * "With autoCheck" example shows (KB 03B dragAndDrop: the class + only the Reset button). A post-pass over the page body, keyed on
+	 * the RESOLVED template attribute / level (the widget builders run before the skeleton knows it). Data skeleton.template_autocheck
+	 * {templates, levels, widgets.<class>.{skip_layouts, drop_buttons}}; env TPLAUTOCHECK_OFF.
+	 * @param {string} html - the page's body HTML
+	 * @param {string} templateAttr - the resolved <html template> value
+	 * @param {string} levelAttr - the resolved ` level="…"` attribute text ("" when absent)
+	 * @param {Object} tpl - Emit_Templates
+	 * @returns {string}
+	 */
+	static #templateAutoCheck(html, templateAttr, levelAttr, tpl) {
+		const c = tpl.skeleton?.template_autocheck;
+		if (!html || !c || c.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "TPLAUTOCHECK_OFF"])) return html;
+		const t = String(templateAttr ?? "").toLowerCase();
+		const lv = (String(levelAttr ?? "").match(/level="([^"]*)"/i)?.[1] ?? "").toLowerCase();
+		if (!(c.templates ?? []).map((x) => String(x).toLowerCase()).includes(t)
+			&& !(lv && (c.levels ?? []).map((x) => String(x).toLowerCase()).includes(lv))) return html;
+		let out = String(html);
+		for (const [cls, w] of Object.entries(c.widgets ?? {})) {
+			const openRe = new RegExp(`<div class="(${cls}(?:\\s[^"]*)?)"([^>]*)>`, "g");
+			const hits = [];
+			let m;
+			while ((m = openRe.exec(out))) hits.push({ at: m.index, len: m[0].length, classes: m[1], rest: m[2] });
+			for (const h of hits.reverse()) {   // right to left: earlier indices stay valid
+				if (/\bautoCheck\b/.test(h.classes)) continue;
+				const lay = (h.rest.match(/\blayout="([^"]*)"/) ?? [])[1] ?? "";
+				if ((w.skip_layouts ?? []).includes(lay)) continue;
+				// the widget's own extent: walk <div …> / </div> from its open tag to the matching close
+				const tagRe = /<(\/?)div\b[^>]*>/g;
+				tagRe.lastIndex = h.at + h.len;
+				let depth = 1, end = -1, tm;
+				while ((tm = tagRe.exec(out))) { depth += tm[1] ? -1 : 1; if (depth === 0) { end = tm.index; break; } }
+				if (end < 0) continue;
+				let inner = out.slice(h.at + h.len, end);
+				for (const b of (w.drop_buttons ?? [])) {
+					inner = inner.replace(new RegExp(`\\n?[ \\t]*<div class="activityButton ${b}(?:\\s[^"]*)?">[^<]*</div>`, "g"), "");
+				}
+				const open = `<div class="${h.classes.replace(new RegExp(`^${cls}`), `${cls} autoCheck`)}"${h.rest}>`;
+				out = out.slice(0, h.at) + open + inner + out.slice(end);
+			}
+		}
+		return out;
 	};
 
 	/**

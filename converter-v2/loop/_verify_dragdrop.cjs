@@ -113,10 +113,18 @@ function checkColumn(w, r) {
 	}
 	for (const [o, n] of perCol) if (!anyCol.has(o) && (dragCount.get(o) ?? 0) !== n) r.defects.push(`column ${o}: drops ${n} / drags ${dragCount.get(o) ?? 0}`);
 	if (dcols.length !== cols.length) r.defects.push(`drag ddColumns ${dcols.length} / drop ddColumns ${cols.length} (03B pads to match)`);
-	if (BTN_ON && !(/activityButton reset/.test(w) && /activityButton undo hidden/.test(w) && /activityButton checkAnswer hidden/.test(w))) r.defects.push("no activityButton row");
+	if (BTN_ON && !btnOk(w)) r.defects.push("no activityButton row");
 	if (/\[\s*[A-Za-z][^\]\n]{0,40}\]/.test(visible(w))) r.defects.push("raw [tag] in the visible text");
 	if (/loading="lazy"/.test(w)) r.defects.push('loading="lazy" inside the widget (c83)');
 	return r;
+}
+
+// ROUND 483 (KB 03B "With autoCheck"; c38 on the 1-3 / 4-6 / ECH templates): an autoCheck widget keeps ONLY the Reset button;
+// every other widget keeps the reset / undo hidden / checkAnswer hidden row
+function btnOk(w) {
+	if (/<div class="dragAndDrop[^"]*\bautoCheck\b/.test(w))
+		return /activityButton reset/.test(w) && !/activityButton undo/.test(w) && !/activityButton checkAnswer/.test(w);
+	return /activityButton reset/.test(w) && /activityButton undo hidden/.test(w) && /activityButton checkAnswer hidden/.test(w);
 }
 
 function check(w) {
@@ -135,7 +143,7 @@ function check(w) {
 	const dropOpts = new Set(drops.map((d) => optionOf(d.attrs))), dragOpts = new Set(drags.map((d) => optionOf(d.attrs)));
 	for (const o of dragOpts) if (!dropOpts.has(o)) r.defects.push(`drag option ${o} has no drop`);
 	for (const o of dropOpts) if (!dragOpts.has(o)) r.defects.push(`drop option ${o} has no drag`);
-	if (BTN_ON && !(/activityButton reset/.test(w) && /activityButton undo hidden/.test(w) && /activityButton checkAnswer hidden/.test(w))) r.defects.push("no activityButton row");
+	if (BTN_ON && !btnOk(w)) r.defects.push("no activityButton row");
 	if (/\[\s*[A-Za-z][^\]\n]{0,40}\]/.test(visible(w))) r.defects.push("raw [tag] in the visible text");
 	if (/loading="lazy"/.test(w)) r.defects.push('loading="lazy" inside the widget (c83)');
 	for (const qq of qs) if (!visible(qq.inner).trim()) r.defects.push("an empty question");

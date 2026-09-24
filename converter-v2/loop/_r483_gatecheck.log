@@ -1,0 +1,3 @@
+!! newest OUTPUT-affecting source: 2026-09-25 02:27:43  (Config.js excluded — UI-only; data/ scoped to the 19 files the engine loads)
+>> Corpus is NOT 0-stale — a full-regen verdict off a stale corpus is meaningless.
+   Regen the named stale modules (./_stalecheck.sh lists them; python3 _batch_plan.py --codes …), then retry.
