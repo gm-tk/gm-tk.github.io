@@ -1,0 +1,27 @@
+OLD pairs 2491  SCAFFOLD 55.2360%  RAW 39.195%  >=50 1577  >=75 275  >=90 25
+NEW pairs 2491  SCAFFOLD 55.2333%  RAW 39.194%  >=50 1577  >=75 275  >=90 25
+delta SCAFFOLD -0.0027pp  RAW -0.001pp  >=50 +0  >=75 +0  >=90 +0
+movers 21 (up 5 / down 16), pp-sum -6.7
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  XDLS912    XDLS912_5_0.html           52.9 ->   53.5  (+0.5)
+  MXFU202    MXFU202_6_0.html           36.2 ->   36.6  (+0.5)
+  MXFU202    MXFU202_4_0.html           38.8 ->   39.3  (+0.4)
+  MXFU201    MXFU201_4_0.html           52.6 ->   53.0  (+0.4)
+  MXFU201    MXFU201_6_0.html           47.2 ->   47.2  (+0.0)
+  HES1007    HES1007_4_0.html           51.0 ->   50.9  (-0.0)
+  HES1007    HES1007_3_0.html           51.7 ->   51.7  (-0.0)
+  TWHK901    TWHK901_0_0.html           25.7 ->   25.6  (-0.0)
+  ENFUN08    ENFUN08_0_0.html           41.5 ->   41.5  (-0.0)
+  HES1007    HES1007_6_0.html           55.0 ->   54.9  (-0.1)
+  HES1007    HES1007_5_0.html           58.4 ->   58.2  (-0.2)
+  XTAS101    XTAS101_3_0.html           50.9 ->   50.6  (-0.2)
+  MXFU201    MXFU201_9_0.html           45.5 ->   45.2  (-0.3)
+  BLL173     BLL173_1_1.html            78.7 ->   78.1  (-0.5)
+  ENGJ301    ENGJ301_4_0.html           60.5 ->   59.9  (-0.6)
+  HES1007    HES1007_7_0.html           53.3 ->   52.7  (-0.7)
+  HIS1003    HIS1003_7_0.html           24.4 ->   23.7  (-0.7)
+  HIS1004    HIS1004_5_0.html           42.9 ->   42.0  (-0.9)
+  ENO2060    ENO2060_2_0.html           41.2 ->   40.0  (-1.2)
+  MXFL203    MXFL203_10_0.html          40.9 ->   39.4  (-1.5)
+  HES1007    HES1007_8_0.html           53.0 ->   51.3  (-1.7)
