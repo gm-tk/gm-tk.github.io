@@ -1,0 +1,167 @@
+258 dumped two-column bundles
+  34  head=nohead    instr=-     cells=marked → gold NO-GOLD-DD
+          BLL130 0.0#20 rows=6 r0=['', 'https://www.istockphoto.com/vector/yellow-padlock-safety-concept-3d-vector-illustration-gm1392727547-448880777?searchscope=image%2Cfilm']
+          BLL130 0.0#25 rows=5 r0=['', 'https://www.istockphoto.com/photo/middle-eastern-man-in-office-portrait-gm1976199466-558740444?searchscope=image%2Cfilm']
+  22  head=nohead    instr=-     cells=marked → gold standard
+          BLL174 1.1#7 rows=5 r0=['Tinkling', '« When a bell rings »']
+          BLL175 1.0#1 rows=5 r0=['Tinkling', '« When a bell rings »']
+  15  head=nohead    instr=-     cells=plain  → gold standard
+          AGH1005 6.0#14 rows=5 r0=['A', 'Nitrogen: Older leaves on the plants start to turn yellow.']
+          BLL167 1.1#4 rows=9 r0=['What am I audios saying the sentences listed below.« (can these just be an audio button saying each sentence) »', '« Correct answers »']
+  13  head=nohead    instr=-     cells=plain  → gold NO-GOLD-DD
+          AGH1005 3.0#7 rows=6 r0=['', 'Cuticle: waxy protective layer on top of the epidermis, which reduces the loss of water and stops the leaf from drying out.']
+          BLL270 0.0#4 rows=5 r0=['« Short vowel »', '« Long vowel »']
+  13  head=SHORTHEAD instr=col   cells=marked → gold NO-GOLD-DD
+          BLL113 2.0#5 rows=9 r0=['https://www.istockphoto.com/photo/young-maine-coon-cat-kitten-sitting-isolated-on-white-background-gm824855806-133685923?searchscope=image%2Cfilm
+          BLL131 1.0#5 rows=4 r0=['https://www.istockphoto.com/photo/green-number-1-gm173943775-9922820?searchscope=image%2Cfilm', 'https://www.istockphoto.com/photo/small-girl-run
+  11  head=nohead    instr=match cells=plain  → gold NO-GOLD-DD
+          BLL111 1.0#1 rows=6 r0=['', '« Correct answer - can we jumble them up though please. »']
+          BLL121 1.0#1 rows=7 r0=['', '« Correct answer - can we jumble them up though please. »']
+  10  head=nohead    instr=-     cells=marked → gold column/2col
+          ENGC206 1.0#4 rows=1 r0=['« Cooking verbs »', '« Everyday verbs »']
+          ENGC403 2.0#10 rows=3 r0=['« [H3] [Q1] »Agrees with the statement', '« [H3][Q2] »Disagrees with the statement']
+   9  head=SHORTHEAD instr=-     cells=plain  → gold NO-GOLD-DD
+          CEDK101 0.0#5 rows=1 r0=['Reflection', 'Refraction']
+          COM1002 3.0#3 rows=7 r0=['ADVANTAGES', 'DISADVANTAGES']
+   8  head=SHORTHEAD instr=-     cells=marked → gold NO-GOLD-DD
+          BLL161 1.0#2 rows=5 r0=['Short vowel sound', 'Long vowel sound']
+          BLL221 1.0#1 rows=5 r0=['Rhymes with ‘pain’', 'Does not rhyme with ‘pain’']
+   7  head=nohead    instr=match cells=plain  → gold standard
+          ENGI103 5.0#17 rows=5 r0=['Paddle', '']
+          MXEX301 4.0#6 rows=6 r0=['Measurement Prefix', '« Answers »']
+   5  head=SHORTHEAD instr=col   cells=plain  → gold column/2col
+          ANZH105 2.0#3 rows=5 r0=['Past', 'Present']
+          FRFUN06 2.0#8 rows=1 r0=['Soft c sound', 'Strong c sound']
+   5  head=nohead    instr=-     cells=marked → gold FIB
+          BLL232 1.0#2 rows=5 r0=['https://www.istockphoto.com/photo/tss-earnslaw-in-queenstown-gm867642126-144452735', 'In Queenstown, the old « boat » chugged across the lake.']
+          BLL253 1.0#2 rows=8 r0=['https://www.shutterstock.com/image-photo/colorful-kite-flying-blue-sky-600w-1141824749.jpg', 'The « [correct] »colourful kite flew in the sky.']
+   5  head=nohead    instr=-     cells=plain  → gold column/3col
+          CHFUN05 0.0#69 rows=3 r0=['« Question »', '« [answer] [randomise the list] »']
+          ENGI203 7.0#15 rows=2 r0=['', 'Improved medical procedures by making surgeries more exact, leading to quicker recoveries for patients.']
+   5  head=nohead    instr=col   cells=plain  → gold column/2col
+          FRFUN06 0.0#3 rows=3 r0=['Sound group - é', 'Sound group è / ê / ai']
+          FRFUN06 9.0#37 rows=1 r0=['Linking happens', 'Silent word end ing -ent does not link to next word']
+   4  head=nohead    instr=col   cells=plain  → gold NO-GOLD-DD
+          AGH1005 8.0#17 rows=3 r0=['Manaakitanga (elevate the mana of others and things) (M)', 'Kaitiakitanga (guardianship or protection of resources) (K)']
+          ENGI405 5.0#27 rows=0 r0=['Formal Texts / • Academic essays. / • Research reports. / • Official letters (business, government). / • Text books. / • Legal documents.', 'In
+   4  head=SHORTHEAD instr=-     cells=marked → gold column/2col
+          ARFUN02 0.0#6 rows=3 r0=['High Pitch', 'Low Pitch']
+          CEDT501 6.0#26 rows=3 r0=['Formal', 'Informal']
+   4  head=SHORTHEAD instr=col   cells=marked → gold column/0col
+          BLL250 0.0#9 rows=6 r0=['/sk/ sound', '/s/ sound']
+          BLL250 0.0#20 rows=3 r0=['/arf/', '/au/']
+   4  head=nohead    instr=-     cells=marked → gold column/0col
+          ENGI103 3.0#11 rows=4 r0=['« [image] » https://drive.google.com/file/d/1trI5NZt5utCQkxId5opg2dt50BXRfeZF/view?usp=drive_link / « [body] »This is the waka that waits in th
+          ENGR301 2.0#4 rows=6 r0=['« [image] »https://www.istockphoto.com/photo/phone-call-good-news-gossip-girl-in-pleasant-conversation-on-smartphone-enjoying-gm2143515056-56870
+   4  head=HEADTAG   instr=-     cells=plain  → gold NO-GOLD-DD
+          XGF9002 5.0#28 rows=1 r0=['« [H3] » Provides structure', '« [H3] » Provides fFreedom']
+          XGF9002 6.0#32 rows=1 r0=['« [Image as thumbnail – could we please have only the middle red door?] » https://www.istockphoto.com/photo/3d-doors-concept-gm645709208-117067
+   3  head=nohead    instr=match cells=marked → gold NO-GOLD-DD
+          BLL122 1.0#3 rows=6 r0=['', '« Correct answer - can we jumble them up though please. »']
+          BLL143 1.0#6 rows=5 r0=['Thumbs Up / https://www.istockphoto.com/photo/3d-illustration-gm1400158129-453822724?searchscope=image%2Cfilm « Image to go with all questions - 
+   3  head=SHORTHEAD instr=col   cells=marked → gold column/2col
+          BLL261 1.0#2 rows=3 r0=['Ends with –ing', 'Does not end with –ing']
+          ENGC206 1.0#3 rows=4 r0=['Not Precise', 'Precise']
+   3  head=nohead    instr=match cells=marked → gold standard
+          BLLR201 2.0#21 rows=7 r0=['perform', '« [correct] »Do or carry out.']
+          SCES201 1.0#5 rows=4 r0=['« [title 1] »Maramataka phase', '« [title 2] »Activity']
+   3  head=SHORTHEAD instr=-     cells=marked → gold standard
+          BLLR202 5.0#31 rows=4 r0=['Idea', 'Best evidence']
+          ENGR301 3.0#9 rows=6 r0=['Anecdote', 'Emotion']
+   3  head=nohead    instr=-     cells=marked → gold scatter
+          ENGC302 1.0#1 rows=5 r0=['« (example of layout for this) » / « [image] »https://drive.google.com/file/d/1u_l_CUdUGj_NHlqVgOT6vRXQsauW7Ixh/view?usp=drive_link']
+          ENGS404 1.0#6 rows=7 r0=['« Answers »', '« Drag options [shuffle] » / « [H4] »Plot event options']
+   3  head=nohead    instr=col   cells=marked → gold NO-GOLD-DD
+          MXFUN03 0.0#4 rows=1 r0=['« [Body] »Heavy', '« [Body] »Light']
+          OSGM401 1.0#3 rows=6 r0=['« [image] »https://www.istockphoto.com/vector/video-game_2-young-men-gm509674306-85605775']
+   3  head=HEADTAG   instr=-     cells=marked → gold standard
+          SSCI205 3.0#10 rows=3 r0=['« [H4] »Places', '« [H4] »What happened there']
+          SSCI205 3.0#12 rows=5 r0=['« [H4] »People of ancient Athens', '« [H4] »Rights, roles, responsibilities']
+   3  head=HEADTAG   instr=-     cells=marked → gold NO-GOLD-DD
+          SSCI205 5.0#27 rows=3 r0=['« [H4] »Athens / « [Image] to be created »', '« [H4] »Sparta / « [Image] to be created »']
+          SSOG105 5.0#29 rows=3 r0=['« [H5] »Story clues', '« [H5] »Tradition']
+   3  head=HEADTAG   instr=col   cells=plain  → gold NO-PAIR
+   2  head=nohead    instr=col   cells=plain  → gold standard
+          ENFUN07 0.0#11 rows=4 r0=['', 'A scooter is a fun thing to ride, but first you need to learn how.']
+          MXDB202 4.0#20 rows=8 r0=['', '« Correct answers »']
+   2  head=SHORTHEAD instr=col   cells=plain  → gold NO-GOLD-DD
+          ENGC102 1.0#2 rows=3 r0=['Fiction', 'Nonfiction']
+          TWHK901 0.0#1 rows=8 r0=['Renewable', 'Non-Renewable']
+   2  head=nohead    instr=-     cells=marked → gold column/3col
+          ENGS201 1.0#1 rows=7 r0=['Figure « (please include name and the image) »', 'Origin story']
+          MXFL102 3.0#5 rows=7 r0=['« 11 o’clock »', '« 2 o’clock »']
+   2  head=nohead    instr=match cells=plain  → gold NO-PAIR
+   2  head=SHORTHEAD instr=match cells=plain  → gold standard
+          HIS1008 6.0#12 rows=5 r0=['Aspects of Significance', 'Explanation']
+          PHE1004 1.0#1 rows=12 r0=['Applied Strategy', 'Definition']
+   2  head=nohead    instr=col   cells=marked → gold column/2col
+          HPRE203 1.0#3 rows=5 r0=['Verbal communication « [Q1] »', 'Non-verbal communication« [Q2] »']
+          OSAI101 1.0#7 rows=6 r0=['« Image »https://www.istockphoto.com/photo/fun-unicorn-3d-illustration-gm968815852-264101179', '« Image »https://www.istockphoto.com/photo/fun-u
+   2  head=nohead    instr=col   cells=marked → gold standard
+          MXFUN01 0.0#37 rows=6 r0=['« Question »', '« Answer »']
+          SCES201 3.0#15 rows=5 r0=['« [column 1 title] »Civilisation', '« [column 2 title] »Name for Matariki']
+   1  head=SHORTHEAD instr=match cells=marked → gold column/0col
+          AGH1001 2.0#4 rows=7 r0=['Primary Product', 'Export Revenue ($)']
+   1  head=SHORTHEAD instr=-     cells=plain  → gold standard
+          BLL222 2.0#7 rows=8 r0=['Sentence', 'Correct punctuation mark']
+   1  head=nohead    instr=-     cells=plain  → gold FIB
+          BLL266 1.0#3 rows=5 r0=['Sentence', 'Extra information / « [make these draggable] [correct answers] »']
+   1  head=nohead    instr=match cells=plain  → gold scatter
+          CEDR203 0.0#18 rows=10 r0=['« Text for choices on the map »', '« Answer »']
+   1  head=SHORTHEAD instr=-     cells=plain  → gold column/4col
+          CEDT208 0.0#3 rows=7 r0=['Image', 'Correct Sentence']
+   1  head=nohead    instr=-     cells=plain  → gold column/0col
+          CHFUN06 0.0#14 rows=3 r0=['« Question »', '« Answer »']
+   1  head=nohead    instr=-     cells=marked → gold column/5col
+          ENFUN04 0.0#22 rows=4 r0=['« Blue paint swatch »', 'calm sadness « (have each word as a separate drag and drop element) »']
+   1  head=HEADTAG   instr=match cells=marked → gold standard
+          ENGC403 8.0#25 rows=5 r0=['« [H3] » Modal verb', '« [H3] » Effect created']
+   1  head=nohead    instr=-     cells=plain  → gold scatter
+          ENGI301 5.0#7 rows=8 r0=['« Link for image » https://drive.google.com/file/d/13Qk0pdmaieKTCc6CCOWPQjrlTOPge_U1/view?usp=sharing / https://www.shutterstock.com/image-photo
+   1  head=nohead    instr=col   cells=plain  → gold column/4col
+          ENGI405 3.0#17 rows=11 r0=['Point', 'One of the main ideas in this text is …']
+   1  head=SHORTHEAD instr=-     cells=marked → gold FIB
+          ENGJ102 1.0#3 rows=5 r0=['Image', 'Sentence']
+   1  head=nohead    instr=-     cells=marked → gold column/6col
+          ENGS301 5.0#9 rows=5 r0=['« Blue paint swatch »', 'Calm, sadness « (have each word as a separate drag and drop element) »']
+   1  head=SHORTHEAD instr=-     cells=plain  → gold scatter
+          ENGS302 3.0#5 rows=4 r0=['Family:', 'Starsky wants to know his father']
+   1  head=SHORTHEAD instr=col   cells=plain  → gold column/3col
+          FRFUN07 1.0#2 rows=3 r0=['English meaning', 'French sentence']
+   1  head=nohead    instr=match cells=plain  → gold column/5col
+          GENO901 1.0#5 rows=8 r0=['', '']
+   1  head=SHORTHEAD instr=col   cells=marked → gold NO-PAIR
+   1  head=SHORTHEAD instr=-     cells=plain  → gold column/0col
+          GEO1006 5.0#5 rows=1 r0=['Natural/Physical impacts', 'Cultural/Human impacts']
+   1  head=SHORTHEAD instr=match cells=plain  → gold NO-PAIR
+   1  head=nohead    instr=match cells=marked → gold NO-PAIR
+   1  head=nohead    instr=match cells=marked → gold column/0col
+          OSAI201 2.0#15 rows=6 r0=['« Static Heading: »Reasons', '« Correct answers. Heading: »Good prompt examples']
+   1  head=HEADTAG   instr=-     cells=plain  → gold column/2col
+          OSAI501 3.0#14 rows=5 r0=['« [H5] »DO', '« [H5] »DO NOT']
+   1  head=HEADTAG   instr=match cells=plain  → gold standard
+          OSGM401 4.0#15 rows=5 r0=['« [H4] »Description of dopamine trigger', '« [H4] »Gaming feature']
+   1  head=HEADTAG   instr=col   cells=plain  → gold column/0col
+          OSSM501 1.0#5 rows=6 r0=['« [H4] »Benefits', '« [H4] »Risks']
+   1  head=nohead    instr=-     cells=plain  → gold NO-PAIR
+   1  head=nohead    instr=col   cells=plain  → gold column/0col
+          SCES201 3.0#13 rows=7 r0=['« [column title] »Te reo Māori', '« [column title] »English']
+   1  head=SHORTHEAD instr=match cells=plain  → gold NO-GOLD-DD
+          SSOG301 3.0#5 rows=8 r0=['Leadership Style', 'Leader']
+   1  head=SHORTHEAD instr=match cells=marked → gold NO-GOLD-DD
+          SSOG301 6.0#12 rows=6 r0=['Barrier', 'Solution']
+   1  head=SHORTHEAD instr=col   cells=marked → gold standard
+          TEFUN08 0.0#1 rows=5 r0=['Inputs', 'Outputs']
+   1  head=nohead    instr=match cells=plain  → gold column/3col
+          WJFUN106 0.0#15 rows=6 r0=['« [Image Column] »', '« [Sentences to drag column-currently correct] »']
+   1  head=nohead    instr=-     cells=plain  → gold column/2col
+          WJFUN110 0.0#10 rows=1 r0=['« Kea image as above - Formal »', '« Kea image as above - Informal »']
+   1  head=SHORTHEAD instr=match cells=marked → gold standard
+          WJFUN116 0.0#7 rows=4 r0=['Word', 'What picture does it create?']
+   1  head=HEADTAG   instr=col   cells=plain  → gold NO-GOLD-DD
+          XGF9002 7.0#35 rows=1 r0=['« [H3] » Builds resilience', '« [H3] » Increases pressure']
+   1  head=HEADTAG   instr=match cells=marked → gold NO-PAIR
+   1  head=HEADTAG   instr=-     cells=marked → gold column/2col
+          XGF9006 6.0#27 rows=4 r0=['« [H3] » Skill', '« [H3] »Example']
+   1  head=nohead    instr=-     cells=marked → gold column/4col
+          XTAS101 2.0#22 rows=2 r0=['Gaming', '« [image] »horses']

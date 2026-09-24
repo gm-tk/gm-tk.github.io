@@ -1,0 +1,1 @@
+| `_s42_r10_{dd2col.py,dd2dump.cjs,dd2match.py,dump.sh}` / `_s42_r10_{dd2col,dd2match}.log` / `_s42_r10_dd2dump.json` / `_s42_r10_codes.txt` / `_r471_decline.py` / `_r471probe_*` | `CONVERTER_V2/outputs/` | **Session 42 Round 10 (engine r471, MEASURED and DECLINED)** — the two-column dragAndDrop tables: the dump, the gold match, the `min_columns 2` sizing probe (2 pages). |
