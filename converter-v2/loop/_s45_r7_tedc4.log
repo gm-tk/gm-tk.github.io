@@ -1,0 +1,26 @@
+pages 16
+  143   16p   2m  body      EXTRA       —                                      -> div.row                                 e.g. TEDC401_0_0.html «» «»
+  133   14p   2m  body      MISSING     WIDGET                                 -> —                                       e.g. TEDC401_1_0.html «» «»
+  112   14p   2m  body      MISSING     div.row                                -> —                                       e.g. TEDC401_1_0.html «» «»
+   66   10p   2m  body      MOVED       li                                     -> li                                      e.g. TEDC401_1_0.html «organising files clearly» «organising files clearly»
+   56    6p   2m  module-menu MOVED       li                                     -> li                                      e.g. TEDC401_1_0.html «name and organise files clearly using fo» «name and organise files clearly using fo»
+   45   13p   2m  body      EXTRA       —                                      -> WIDGET                                  e.g. TEDC401_0_0.html «» «»
+   45    7p   2m  activity  MOVED       li                                     -> li                                      e.g. TEDC401_1_0.html «how you found it» «how you found it»
+   41   14p   2m  body      EXTRA       —                                      -> p                                       e.g. TEDC401_2_0.html «» «We are learning:»
+   39   13p   2m  activity  MISSING     p                                      -> —                                       e.g. TEDC401_1_0.html «Match the metadata to what it tells you:» «»
+   36   10p   2m  body      MOVED       p                                      -> p                                       e.g. TEDC401_1_0.html «So how do we manage digital work respons» «So how do we manage digital work respons»
+   25    4p   1m  body      MISSING     div.clickDropContent                   -> —                                       e.g. TEDC402_3_0.html «» «»
+   22    9p   2m  body      MISSING     br                                     -> —                                       e.g. TEDC401_1_0.html «» «»
+   21   10p   2m  body      MOVED       p>b                                    -> p>b                                     e.g. TEDC401_1_0.html «Kaitiakitanga means taking care of digit» «Kaitiakitanga means taking care of digit»
+   20    9p   2m  activity  MOVED       p                                      -> p                                       e.g. TEDC401_1_0.html «Choose an app or website you use often. » «Choose an app or website you use often. »
+   18    8p   2m  activity  MISSING     h4                                     -> —                                       e.g. TEDC401_1_0.html «Metadata retrieval quick task» «»
+   18    7p   2m  activity  MISSING     WIDGET                                 -> —                                       e.g. TEDC401_3_0.html «» «»
+   18    3p   1m  activity  EXTRA       —                                      -> p                                       e.g. TEDC402_2_0.html «» «Click through the journey of a keypress »
+   16    9p   2m  activity  MOVED       h3                                     -> h3                                      e.g. TEDC401_1_0.html «Responsible or Not?» «Responsible or Not?»
+   16    3p   1m  activity  EXTRA       —                                      -> ul                                      e.g. TEDC402_2_0.html «» «»
+   15    8p   2m  activity  MOVED       h4.goJournal                           -> h4.goJournal                            e.g. TEDC401_1_0.html «Go to your journal» «Go to your journal»
+   14   14p   2m  title     MISSING     h1>span                                -> —                                       e.g. TEDC401_1_0.html «Clickwise: Designing Usable Interfaces» «»
+   14    8p   2m  body      SUBSTITUTED WIDGET                                 -> WIDGET                                  e.g. TEDC401_2_0.html «» «»
+   13    7p   2m  module-menu MISSING     h5                                     -> —                                       e.g. TEDC401_1_0.html «We are learning:» «»
+   13    7p   2m  module-menu MISSING     ul                                     -> —                                       e.g. TEDC401_1_0.html «» «»
+   13    6p   2m  body      EXTRA       —                                      -> ul                                      e.g. TEDC401_2_0.html «» «»

@@ -1,0 +1,20 @@
+lesson pages: Claude menu empty + a WALT lead in Claude's body — (container, position, gold placement):
+    44  ('free', 'early', 'absent')  e.g. ANZH404/ANZH404_1_0.html ANZH404/ANZH404_2_0.html ANZH404/ANZH404_3_0.html ANZH404/ANZH404_4_0.html
+    44  ('free', 'early', 'body')  e.g. CEDO105/CEDO105_2_0.html CEDO501/CEDO501_7_0.html DAN1003/DAN1003_1_0.html DAN1003/DAN1003_2_0.html
+    24  ('free', 'early', 'menu')  e.g. CBI1008/CBI1008_1_0.html COM1005/COM1005_1_0.html COM1005/COM1005_2_0.html COM1005/COM1005_3_0.html
+    19  ('alert', 'early', 'menu')  e.g. HIS1003/HIS1003_1_0.html HIS1003/HIS1003_2_0.html HIS1003/HIS1003_3_0.html HIS1003/HIS1003_4_0.html
+    13  ('alert', 'early', 'absent')  e.g. ANZH401/ANZH401_1_0.html ANZH401/ANZH401_2_0.html ANZH401/ANZH401_3_0.html ANZH401/ANZH401_4_0.html
+     9  ('free', 'late', 'absent')  e.g. CBI1009/CBI1009_1_0.html HES1002/HES1002_5_0.html MXDI301/MXDI301_5_0.html XGF9006/XGF9006_2_0.html
+     6  ('activity', 'late', 'body')  e.g. BLL113/BLL113_1_0.html BLL135/BLL135_1_1.html BLL137/BLL137_1_0.html BLL271/BLL271_1_0.html
+     6  ('alert', 'early', 'body')  e.g. SSOG105/SSOG105_1_0.html SSOG105/SSOG105_2_0.html SSOG105/SSOG105_3_0.html SSOG105/SSOG105_4_0.html
+     5  ('activity', 'early', 'body')  e.g. BLL116/BLL116_1_0.html PNR104/PNR104_1_0.html PNR107/PNR107_1_0.html TRR112/TRR112_2_0.html
+     5  ('free', 'late', 'body')  e.g. DAN1003/DAN1003_5_0.html EXIP901/EXIP901_1_0.html XGF9001/XGF9001_2_0.html XGF9001/XGF9001_4_0.html
+     3  ('activity', 'early', 'absent')  e.g. BLL145/BLL145_1_0.html BLL151/BLL151_2_0.html BLL156/BLL156_1_1.html
+     3  ('activity', 'late', 'absent')  e.g. BLL146/BLL146_1_0.html BLL157/BLL157_1_1.html TRR109/TRR109_4_0.html
+     3  ('free', 'late', 'menu')  e.g. CBI1008/CBI1008_3_0.html CBI1009/CBI1009_3_0.html CBI1009/CBI1009_4_0.html
+     2  ('cv2-interactive', 'early', 'body')  e.g. HIS1001/HIS1001_8_0.html HIS1001/HIS1001_9_0.html
+     1  ('alert', 'late', 'body')  e.g. BLL244/BLL244_1_0.html
+     1  ('table', 'late', 'absent')  e.g. PNR101/PNR101_1_0.html
+     1  ('cv2-interactive', 'late', 'body')  e.g. XDLS911/XDLS911_1_0.html
+
+by gold placement: {'absent': 73, 'body': 70, 'menu': 46} modules 80

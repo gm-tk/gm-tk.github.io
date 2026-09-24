@@ -1,0 +1,73 @@
+lesson pages, Claude menu EMPTY, gold menu has text: {'absent': 246, 'in-body': 66} modules 72
+  ANZH401    {'absent': 12}  e.g. ANZH401_1_0.html
+  HPRE301    {'absent': 12}  e.g. HPRE301_1_0.html
+  HIS1003    {'in-body': 9, 'absent': 1}  e.g. HIS1003_1_0.html
+  HIS1004    {'in-body': 9, 'absent': 1}  e.g. HIS1004_1_0.html
+  MXFL203    {'in-body': 1, 'absent': 9}  e.g. MXFL203_1_0.html
+  MXDI202    {'absent': 8, 'in-body': 1}  e.g. MXDI202_9_0.html
+  MXFL204    {'absent': 8, 'in-body': 1}  e.g. MXFL204_10_0.html
+  MXFL102    {'absent': 8}  e.g. MXFL102_1_0.html
+  MXFU202    {'absent': 8}  e.g. MXFU202_2_0.html
+  COM1005    {'in-body': 7}  e.g. COM1005_1_0.html
+  COM1006    {'absent': 2, 'in-body': 5}  e.g. COM1006_2_0.html
+  ENGC102    {'absent': 7}  e.g. ENGC102_1_0.html
+  ENGR202    {'absent': 7}  e.g. ENGR202_1_0.html
+  HPRE203    {'absent': 7}  e.g. HPRE203_1_0.html
+  MXDI201    {'absent': 7}  e.g. MXDI201_2_0.html
+  MXEX302    {'absent': 7}  e.g. MXEX302_1_0.html
+  MXFU302    {'absent': 7}  e.g. MXFU302_5_0.html
+  SSOG105    {'absent': 7}  e.g. SSOG105_1_0.html
+  XGF9006    {'in-body': 7}  e.g. XGF9006_1_0.html
+  ANZH404    {'absent': 6}  e.g. ANZH404_1_0.html
+  HIS1001    {'absent': 6}  e.g. HIS1001_3_0.html
+  PWY1002    {'absent': 6}  e.g. PWY1002_1_2_0.html
+  SSOG101    {'absent': 6}  e.g. SSOG101_1_0.html
+  TEDC401    {'in-body': 5, 'absent': 1}  e.g. TEDC401_1_0.html
+  CEDO105    {'absent': 5}  e.g. CEDO105_1_0.html
+  COM1002    {'absent': 5}  e.g. COM1002_2_0.html
+  ENGR102    {'absent': 5}  e.g. ENGR102_1_0.html
+  ENGS101    {'absent': 5}  e.g. ENGS101_1_0.html
+  MXEX101    {'in-body': 4, 'absent': 1}  e.g. MXEX101_1_0.html
+  PES1005    {'absent': 4, 'in-body': 1}  e.g. PES1005_5_0.html
+  PWY1007    {'absent': 5}  e.g. PWY1007_2_0.html
+  PWY1009    {'absent': 5}  e.g. PWY1009_1_2_0.html
+  XWHA02     {'absent': 5}  e.g. XWHA02_1_0.html
+  CBI1008    {'in-body': 3, 'absent': 1}  e.g. CBI1008_1_0.html
+  CEDK501    {'absent': 4}  e.g. CEDK501_3_1.html
+  MXDI301    {'absent': 4}  e.g. MXDI301_4_0.html
+  MXEX301    {'absent': 4}  e.g. MXEX301_2_0.html
+  MXS1004    {'absent': 3, 'in-body': 1}  e.g. MXS1004_8_0.html
+  PWY1001    {'absent': 4}  e.g. PWY1001_1_2_0.html
+  PWY1008    {'absent': 4}  e.g. PWY1008_1_2_0.html
+  XDLS909    {'absent': 4}  e.g. XDLS909_1_0.html
+  CBI1009    {'in-body': 3}  e.g. CBI1009_1_0.html
+  ENGC403    {'absent': 3}  e.g. ENGC403_11_0.html
+  XDLS501    {'absent': 3}  e.g. XDLS501_1_0.html
+  XDLS502    {'absent': 3}  e.g. XDLS502_1_0.html
+  BLL274     {'absent': 2}  e.g. BLL274_1_0.html
+  BLL276     {'absent': 2}  e.g. BLL276_1_0.html
+  CEDR501    {'absent': 2}  e.g. CEDR501_2_0.html
+  ENGC206    {'absent': 1, 'in-body': 1}  e.g. ENGC206_5_0.html
+  ENGS404    {'in-body': 1, 'absent': 1}  e.g. ENGS404_4_0.html
+  EXIP901    {'absent': 2}  e.g. EXIP901_1_0.html
+  GEO1006    {'in-body': 1, 'absent': 1}  e.g. GEO1006_1_0.html
+  MXDB301    {'absent': 2}  e.g. MXDB301_6_0.html
+  ANZH103    {'absent': 1}  e.g. ANZH103_1_0.html
+  CEDT501    {'absent': 1}  e.g. CEDT501_13_0.html
+  ENGJ302    {'absent': 1}  e.g. ENGJ302_1_0.html
+  ENGS302    {'absent': 1}  e.g. ENGS302_4_0.html
+  ENO2060    {'absent': 1}  e.g. ENO2060_8_0.html
+  EXBP901    {'absent': 1}  e.g. EXBP901_3_0.html
+  FRNO901    {'in-body': 1}  e.g. FRNO901_2_0.html
+  GEO1005    {'in-body': 1}  e.g. GEO1005_4_0.html
+  PES1004    {'in-body': 1}  e.g. PES1004_4_0.html
+  PES1007    {'absent': 1}  e.g. PES1007_7_0.html
+  SPA1004    {'absent': 1}  e.g. SPA1004_2_0.html
+  TEDC402    {'in-body': 1}  e.g. TEDC402_1_0.html
+  XDLS902    {'in-body': 1}  e.g. XDLS902_2_0.html
+  XGF9004    {'absent': 1}  e.g. XGF9004_1_0.html
+  XLP02      {'absent': 1}  e.g. XLP02_4_0.html
+  XLP03      {'absent': 1}  e.g. XLP03_2_0.html
+  XLP04      {'in-body': 1}  e.g. XLP04_2_0.html
+  XMES102    {'absent': 1}  e.g. XMES102_5_0.html
+  XWHA01     {'absent': 1}  e.g. XWHA01_1_0.html
