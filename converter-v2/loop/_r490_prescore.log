@@ -1,0 +1,30 @@
+
+## HIS1003: pairs 10 -> 10
+   HIS1003_0.0.html         OLD HIS1003_9_0.html    38.1  NEW HIS1003_9_0.html    37.3 (raw  21.1)
+   HIS1003_1.0.html         OLD HIS1003_1_0.html    46.8  NEW HIS1003_1_0.html    49.2 (raw  33.7)
+   HIS1003_10.0.html        OLD HIS1003_10_0.html   56.5  NEW HIS1003_10_0.html   59.4 (raw  39.0)
+   HIS1003_2.0.html         OLD HIS1003_2_0.html    45.9  NEW HIS1003_2_0.html    49.5 (raw  32.6)
+   HIS1003_3.0.html         OLD HIS1003_3_0.html    45.7  NEW HIS1003_3_0.html    43.5 (raw  28.2)
+   HIS1003_4.0.html         OLD HIS1003_4_0.html    43.9  NEW HIS1003_4_0.html    44.4 (raw  36.8)
+   HIS1003_5.0.html         OLD HIS1003_5_0.html    60.6  NEW HIS1003_5_0.html    62.4 (raw  27.2)
+   HIS1003_6.0.html         OLD HIS1003_6_0.html    24.2  NEW HIS1003_6_0.html    27.6 (raw  14.5)
+   HIS1003_7.0.html         OLD HIS1003_7_0.html    23.7  NEW HIS1003_7_0.html    18.9 (raw  14.9)
+   HIS1003_8.0.html         OLD HIS1003_8_0.html    44.7  NEW HIS1003_8_0.html    49.3 (raw  38.2)
+   module sum 430.1 over 10 -> 441.4 over 10  (mean 43.0 -> 44.1)
+
+## HIS1004: pairs 11 -> 11
+   HIS1004_0.0.html         OLD HIS1004_0_0.html    46.2  NEW HIS1004_0_0.html    46.2 (raw  44.4)
+   HIS1004_1.0.html         OLD HIS1004_1_0.html    59.1  NEW HIS1004_1_0.html    61.7 (raw  54.0)
+   HIS1004_10.0.html        OLD HIS1004_10_0.html   32.1  NEW HIS1004_10_0.html   32.0 (raw  24.2)
+   HIS1004_2.0.html         OLD HIS1004_2_0.html    40.0  NEW HIS1004_2_0.html    39.7 (raw  29.9)
+   HIS1004_3.0.html         OLD HIS1004_3_0.html    58.6  NEW HIS1004_3_0.html    60.8 (raw  46.9)
+   HIS1004_4.0.html         OLD HIS1004_4_0.html    49.5  NEW HIS1004_4_0.html    51.7 (raw  25.1)
+   HIS1004_5.0.html         OLD HIS1004_5_0.html    42.0  NEW HIS1004_5_0.html    43.5 (raw  28.6)
+   HIS1004_6.0.html         OLD HIS1004_6_0.html    41.7  NEW HIS1004_6_0.html    43.7 (raw  31.7)
+   HIS1004_7.1.html         OLD HIS1004_7_0.html    35.6  NEW HIS1004_7_0.html    36.7 (raw  23.9)
+   HIS1004_8.0.html         OLD HIS1004_8_0.html    40.9  NEW HIS1004_8_0.html    42.3 (raw  36.1)
+   HIS1004_9.0.html         OLD HIS1004_9_0.html    44.3  NEW HIS1004_9_0.html    45.5 (raw  32.5)
+   module sum 489.9 over 11 -> 503.5 over 11  (mean 44.5 -> 45.8)
+
+changed modules: pairs 21 -> 21; pp-sum 920.0 -> 945.0 (+25.0)
+corpus: 55.3605 % @ 2491 -> ≈ 55.3705 % @ 2491  (+0.0100pp);  >=50 +1, >=75 +0

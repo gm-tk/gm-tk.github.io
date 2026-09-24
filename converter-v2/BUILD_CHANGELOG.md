@@ -1,5 +1,29 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 490, build 260620.53) — THE LESSON OVERVIEW'S WALT ALERT IS MENU CONTENT: an alert inside a lesson's `[Lesson Overview]` block whose text opens with a learning-intentions lead joins the lesson menu as its plain sentence
+
+### 1. WHAT CHANGED
+
+**The find** (session 45 Rounds 7 + 9 — the §1g placement lane: lesson pages whose Claude menu is EMPTY while the gold's has text — 312 pages / 72 modules, 66 / 23 with the gold's menu text sitting in Claude's BODY, six writer forms). One form is a clean, KB-backed rule: HIS1003 / HIS1004 write `[Lesson Overview] <lesson title>` → `[Alert box] In this lesson you are reviewing your understanding of the UNDHR and responsibilities of individuals and groups within societies.` → `[Lesson content]`. The gold (HIS1004_1.0): `#module-menu-content > row > col-md-8 > <p>In this lesson you are reviewing…</p>`; Claude: an EMPTY menu and the sentence in a `div.alert` at the top of `#body`, because the r147 section-stop ends the lesson menu at ANY alert — right for the CED family's `[alert.top]` printable-resources boxes, which the gold keeps in the body (CEDO501).
+
+**Measured** (`_s45_r9_loalert.py` — every alert-family tag inside a `[Lesson Overview] … [Lesson content]` block of every scored WT, by its text and the gold's placement): an alert whose text opens with a WALT lead → the gold's **menu 20 of 21** (the exception MXFL203's `coloured box` → body, named); EVERY other alert in such a block → body or absent, never the menu (CED `alert.top` 28 absent / 4 body; `alert` 24 body / 12 absent; `alert box` 14 / 6; RHS / solid / top …). The discriminator is the TEXT; r147's CED rule is untouched. The unifying "move any WALT lead into the menu" rule is NOT supported (Round 7: body 70 / menu 46 / absent 73) — only this form is.
+
+**The fix:** in the lesson-menu SECTION-STOP (`ContentConverter`, r147), an alert / important box in section A (the LO intro run) whose own text matches `lead_pattern` ("in this lesson you", "we are learning", "you will", "this lesson") is menu-safe and joins the menu as a plain black-text item — its sentence as the gold's `<p>`, no alert wrapper. Every other alert still ends the section. Data `Emit_Templates.menu.lesson_menu_section_stop.walt_alert` {enabled, env, alert_tags, lead_pattern}; env **`LOWALTALERT_OFF`**, byte-identical OFF. Authority: KB 01B / 01E (the lesson page's menu IS that lesson's own `[Lesson Overview]` block; `[Lesson content]` marks where the body starts) + the gold 20 / 21.
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 0 pages changed**; ON **20 pages / 2 modules** (HIS1003, HIS1004) — every lesson page's menu now carries the gold's sentence (HIS1004_1_0 byte-for-byte the gold's menu). Regeneration + 12-module spot-check clean; **`scoped_ship.sh` PASS**.
+
+### 3. PROTECTED GATES
+
+- Skeleton **55.3605 % → 55.3705 % @ 2491 (+0.0100pp)**, RAW 39.280 → 39.285 %; **≥50 1584 → 1585 (+1)**, ≥75 277, ≥90 26; 20 movers, **15 up / 5 down NAMED** (`_r490_companion.py`): HIS1003_7_0 23.7 → 18.9 (position-free overlap +2 — the gold's menu carries exactly this sentence; alignment); HIS1003_3_0 −2.2, HIS1003_9_0 −0.8 (the gold overview's content pair), HIS1004_2_0 −0.3, HIS1004_10_0 −0.1 — overlap equal while Claude's UNMATCHED lines fall by 3–5 (the removed alert wrapper), i.e. position-free precision rises; up HIS1003_8 +4.6, _2 +3.6, _6 +3.4, _10 +2.9, HIS1004_1 +2.6 …
+- compare_structure exact 16702 / EXTRA 198 / missing 878 / row-wrap 24 EXACT; body 238 / clean 2587 / 2633 / leak 75 / 46 EXACT; tags 9557 / 9557; every verifier RESULT line ✓; selftests 50 green / 0 fail; the miner 194 CANDIDATE.
+- Plateau (§4): +0.0100pp (< 0.02) but ≥50 +1 — a protected bucket moved: neither counts nor resets; **0 of 3**.
+
+**Recorded, not built** (Round 7): the other five in-body forms — TEDC's `[Lesson content]` → `[Overview]` → a one-cell LI / SC table (6 pages), COM's `[A fancy looking box]` (12), CBI's `[Alert solid] Blue box` + `[H4] We are learning about:` (6), XGF9006's `[Insert accordion]` LI block (7), MXEX101's `[Lesson Overview]` → `[H2] Understand` (4) — each its own module family, under the floor.
+
+**Ledger:** scoped #7 since the r482 FULL · data `menu.lesson_menu_section_stop.walt_alert` · env `LOWALTALERT_OFF` · code `ContentConverter` section-stop `buildSet` + the menu routing · tools `_s45_r7_{emptymenu,wtform,waltbody}.py`, `_s45_r9_{loalert,pick}.py`, `_r490_companion.py`, `_s45_{regen,postship}.sh`, `_r490_finalise.py` · session 45 Round 9. (r489 was consumed by Round 6's declined accordion prototype — the ride-along patch `_r489_accbullet_declined.patch`.)
+
 ## 2026-09-25 (round 488, build 260620.52) — THE STORY-REFERENCE CAROUSEL SHELL: a carousel whose members are the writer's `[embed book N]` / `[embed story]` reference builds the r126 story shell + a Designer/Developer To Do (43 hand-off boxes → built carousels)
 
 ### 1. WHAT CHANGED

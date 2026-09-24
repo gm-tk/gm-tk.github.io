@@ -3606,6 +3606,16 @@
 				"list",
 				"sub head"
 			],
+			"walt_alert": {
+				"enabled": true,
+				"env": "LOWALTALERT_OFF",
+				"alert_tags": [
+					"alert",
+					"important"
+				],
+				"lead_pattern": "^(?:in this lesson,? you|we are learning|you will|this lesson)",
+				"_doc": "ROUND 490 (the autonomous loop's session 45 Round 9 — the §1g placement lane). An alert / important box INSIDE a lesson's `[Lesson Overview]` block whose own text opens with a learning-intentions lead (lead_pattern: 'In this lesson you are reviewing your understanding of the UNDHR…' — HIS1003 / HIS1004's `[Lesson Overview] <title>` → `[Alert box] <sentence>` → `[Lesson content]`) is the lesson MENU's content, not a body callout: KB 01B / 01E make the lesson page's menu that lesson's own `[Lesson Overview]` block, and the gold places such an alert's sentence in the menu 20 of 21 times (outputs/_s45_r9_loalert.py; the exception MXFL203's `coloured box`, named), while every OTHER alert in such a block (CED's `[alert.top]` printable resources — the r147 reason this section-stop ends at an alert — RHS asides, …) stays in the body or is dropped, never the menu. ON: such an alert is menu-safe in section A (the LO intro run) and joins the menu as a plain black-text item — its sentence as the gold's `<p>`, no alert wrapper. Every other alert still ends the section (r147 untouched). Env LOWALTALERT_OFF reverts."
+			},
 			"body_ends_section": {
 				"enabled": true,
 				"env": "MENUBODY_OFF",

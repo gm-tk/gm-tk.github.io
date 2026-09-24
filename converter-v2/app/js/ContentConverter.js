@@ -6037,11 +6037,24 @@ class ContentConverter {
 				if (x.type === "tag" && _beTags.has(x.parse?.primary?.tag)) return false;   // ROUND 435 — `[Body]` ends the menu section
 				return textishNoBodyStop(x);
 			};
+			// ROUND 490 — THE LESSON OVERVIEW'S WALT ALERT IS MENU CONTENT. An alert / important box inside the LO block whose
+			// own text opens with a learning-intentions lead ("In this lesson you are reviewing…" — HIS1003 / HIS1004) belongs
+			// to the lesson menu (KB 01B / 01E; the gold 20 of 21); every OTHER alert still ends the section (r147 — CED's
+			// printable-resources boxes stay in the body). Section A only. Data lesson_menu_section_stop.walt_alert; env
+			// LOWALTALERT_OFF.
+			const _waCfg = stopCfg.walt_alert;
+			const _waOn = !!_waCfg && _waCfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[_waCfg.env || "LOWALTALERT_OFF"]);
+			const _waTags = new Set(_waOn ? (_waCfg.alert_tags ?? ["alert", "important"]) : []);
+			const _waRe = _waOn ? new RegExp(_waCfg.lead_pattern ?? "^(?:in this lesson,? you|we are learning|you will|this lesson)", "i") : null;
+			const waltAlert = (x) => _waOn && x?.type === "tag" && _waTags.has(x.parse?.primary?.tag)
+				&& _waRe.test(String(x.blackAfter ?? "").replace(/[*_]/g, "").trim());
 			const buildSet = (bodyStops) => {
 				const ok = (x) => (bodyStops ? textish(x) : textishNoBodyStop(x));
 				const out = new Set();
 				for (let j = overviewIdx + 1; j < lessonMenuEnd; j++) {     // section A: the LO intro
 					if (j === contentIdx) break;                            // LC opens its own section
+					if (waltAlert(items[j])) { items[j]._r490WaltAlert = true; out.add(j); continue; }   // ROUND 490
 					if (!ok(items[j])) break;                               // a structural tag ends it
 					out.add(j);
 				}
@@ -6603,6 +6616,8 @@ class ContentConverter {
 				// past it)
 				if ((i === overviewIdx && !loiImplicit) || (intentOn && i === contentIdx)) continue;   // ROUND 432 — the implicit block has no marker item to skip
 				if (menuIdxSet && !menuIdxSet.has(i)) { bodyItems.push(it); continue; }
+				// ROUND 490 — the LO block's WALT alert joins the menu as its plain sentence (the gold's <p>, no alert wrapper)
+				if (menuIdxSet && it._r490WaltAlert) { menuItems.push({ type: "black", text: String(it.blackAfter ?? ""), block: it.block }); continue; }
 				menuItems.push(it);
 				continue;
 			}
