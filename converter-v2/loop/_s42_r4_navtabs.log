@@ -1,0 +1,84 @@
+ 227  gold [(no menu)]  claude [(no menu)]  :: ANZH101 ANZH103 ANZH104 ANZH105 ANZH203 ANZH205 ANZH302 ANZH401 ARFUN01 ARFUN02 ARFUN03 ARFUN04 ARFUN05 BLL110 BLL111 BLL112 BLL113 BLL114 BLL115 BLL116 BLL117 BLL120 BLL121 BLL122 BLL123 BLL124 BLL125 BLL126 BLL127 BLL1
+  72  gold [Overview > Information]  claude [Overview > Information]  :: BLL251 BLL255 BLL257 BLL263 BLL264 BLL266 BLL275 CEDO105 ENGJ202 ENGJ301 ENGJ302 ENGJ402 ENGJ403 ENGR202 ENGR301 ENGS401 ENGS404 MXDB102 MXDB301 MXDB302 MXDI101 MXDI102 MXDI103 MXDI201 MXDI202 MXDI301 MXEO401 MXEX301 MXE
+  49  gold [Overview > Information > Standards]  claude [Overview > Information > Standards]  :: AGH1005 AGH1009 ANZH301 ANZH303 ANZH304 ANZH404 ART1006 CEDK501 CEDO501 CEDO502 CEDR501 CEDT501 CEDW501 ENG1007 ENGJ201 EXPFUN06 HES1002 HES1003 HES1004 HES1005 HES1006 HES1007 HIS1002 HIS1004 HIS1005 HIS1006 HIS1007 HIS
+  20  gold [Overview > Information > Standards]  claude [Overview > Information]  :: ART1002 ART1003 CBI1004 CBI1005 CBI1008 CBI1009 COM1002 COM1006 DAN1003 DAN1004 DAN1006 DTC1004 DTC1005 EXBP901 GEO1004 GEO1005 GEO1006 GER1002 HIS1001 MUS1004
+  15  gold [Overview > pane2 > pane3]  claude [Overview > pane2 > pane3]  :: CHFUN01 CHFUN04 CHFUN05 CHFUN06 CHFUN07 CHFUN08 WJFUN109 WJFUN110 WJFUN208 WJFUN210 WJFUN211 WJFUN212 WJFUN305 WJFUN306 WJFUN308
+  12  gold [Overview > Knowledge > Practices]  claude [Overview > Knowledge > Practices]  :: BLLR201 BLLR202 BLLR203 ENGC204 ENGC206 FRNO902 GENO901 HPRE203 SCBI301 SCCH301 SCES201 SCPH301
+   9  gold [Overview > Knowledge > Practices]  claude [Overview > Information]  :: BLL247 BLL253 BLL261 BLL262 BLL271 BLL272 BLL273 BLL274 BLL276
+   7  gold [Overview > Information > Standards]  claude [Overview > Information > pane3 > Standards]  :: AGH1003 AGH1006 AGH1008 XDLS901 XDLS902 XDLS908 XDLS909
+   7  gold [Overview > LI > Information]  claude [Overview > LI > Information]  :: PNR101 PNR102 PNR104 PNR107 TRR109 TRR110 TRR111
+   6  gold [(no menu)]  claude [Overview > Information]  :: ART1004 CEDR101 CEDR401 COM1005 FRFUN06 XGF9001
+   5  gold [Overview > pane2]  claude [Overview > pane2]  :: ENGS102 MXEO102 MXEO201 MXEO202 MXEO301
+   5  gold [Overview > Information]  claude [Overview > Knowledge > Practices]  :: ENO2060 HPRE301 SSCI104 SSCI205 SSEA203
+   5  gold [Overview > pane2 > pane3 > pane4]  claude [Overview > pane2 > pane3 > pane4]  :: WJFUN106 WJFUN107 WJFUN108 WJFUN205 WJFUN206
+   4  gold [Overview > Standards]  claude [Overview > Information]  :: PWY1002 PWY1007 PWY1008 PWY1009
+   4  gold [Overview > pane2 > pane3 > LI > Information]  claude [Overview > pane2 > pane3 > LI > Information]  :: TRR102 TRR103 TRR106 TRR116
+   3  gold [Overview > Information > pane3 > pane4]  claude [Overview > Information > pane3 > Standards]  :: AGH1001 AGH1002 AGH1004
+   3  gold [pane1 > pane2]  claude [Overview > Information]  :: FRFUN07 JPFUN01 JPFUN02
+   3  gold [pane1 > pane2 > pane3 > pane4]  claude [Overview > Information]  :: SSFUN02 SSFUN05 SSFUN08
+   3  gold [Overview > Information > pane3 > Standards]  claude [Overview > Information > pane3 > Standards]  :: XDLS903 XDLS904 XDLS906
+   2  gold [Overview > Information > pane3]  claude [Overview > Information > pane3 > Standards]  :: AGH1007 XDLS912
+   2  gold [(no menu)]  claude [Overview > Information > Standards]  :: ART1005 ENG1004
+   2  gold [Overview > pane2 > pane3 > pane4 > Information]  claude [Overview > pane2 > pane3 > LI > Information]  :: TRR108 TRR114
+   2  gold [Overview > pane2 > pane3 > pane4 > Information]  claude [Overview > LI > Information]  :: TRR112 TRR113
+   2  gold [Overview > Knowledge > Practices > pane4 > pane5 > pane6]  claude [Overview > pane2 > pane3 > pane4]  :: WJFUN115 WJFUN116
+   2  gold [pane1 > pane2 > pane3 > LI > Information > pane6]  claude [Overview > Information > Standards]  :: XMES201 XMES202
+   2  gold [Overview > Information > Standards > pane4]  claude [Overview > Information]  :: XTAS101 XTAS103
+   1  gold [Knowledge > Practices > LI]  claude [Overview > Information]  :: BLL243
+   1  gold [LI > Knowledge]  claude [Overview > Information]  :: BLL250
+   1  gold [Overview > Knowledge > Information]  claude [Overview > Information]  :: BLL265
+   1  gold [Overview > Information > pane3]  claude [Overview > Information > Standards]  :: ENG1005
+   1  gold [Overview > Knowledge > Practices > Information > pane5]  claude [Overview > Knowledge > Practices > Information]  :: ENGC403
+   1  gold [Overview]  claude [Overview > Information]  :: ENGR302
+   1  gold [Overview > Information]  claude [Overview > Knowledge > Practices > Information]  :: ENGS405
+   1  gold [Overview]  claude [Overview > Knowledge > Practices]  :: FRNO901
+   1  gold [pane1 > pane2 > pane3 > LI > Information > pane6]  claude [Overview > Information > pane3]  :: MXEX401
+   1  gold [Overview > LI > Information > pane4]  claude [Overview > Information]  :: MXS1004
+   1  gold [Overview > Overview > LI > LI > Information]  claude [Overview > Information]  :: PMT101
+   1  gold [LI > Overview]  claude [Overview > Information]  :: PWY1001
+   1  gold [Overview > Information > pane3 > Standards]  claude [Overview > Information]  :: SPA1004
+   1  gold [Overview > pane2 > Information > pane4]  claude [Overview > Information > pane3]  :: SSOG301
+   1  gold [Overview > pane2 > pane3 > LI > Information > LI]  claude [Overview > pane2 > pane3 > LI > Information]  :: TRR107
+   1  gold [Overview > pane2 > pane3 > LI > Information]  claude [Overview > Information]  :: TRR203
+   1  gold [Overview > pane2 > pane3 > LI > Information > LI]  claude [Overview > Information]  :: TRR301
+   1  gold [Overview > pane2 > pane3 > LI > Information > LI]  claude [Overview > pane2 > LI > Information]  :: TRR304
+   1  gold [Overview > pane2 > pane3 > pane4]  claude [Overview > pane2 > pane3]  :: WJFUN105
+   1  gold [Overview > Knowledge > Practices > pane4 > pane5]  claude [Overview > pane2 > pane3]  :: WJFUN112
+   1  gold [Knowledge > Practices > pane3 > pane4]  claude [Overview > pane2 > pane3]  :: WJFUN113
+   1  gold [Overview > pane2 > pane3 > pane4 > pane5]  claude [Overview > pane2 > pane3 > pane4 > pane5]  :: WJFUN304
+   1  gold [LI > pane2 > pane3]  claude [Overview > pane2 > pane3]  :: WJFUN307
+   1  gold [Overview > Information > pane3 > Standards]  claude [Overview > Information > Standards]  :: XDLS905
+   1  gold [pane1 > pane2 > pane3 > LI > Information > Standards]  claude [Overview > Information > Standards]  :: XMES203
+   1  gold [Overview > Information > pane3]  claude [Overview > Information]  :: XTAS102
+
+== gold has a Standards tab, Claude does not: 27 modules
+ART1002   gold [Overview > Information > Standards] claude [Overview > Information] | Assessment for Learning / You will work towards the following standard: / Achievement Standard 91913 Version 3Produce resolv | claude: ['body/none', 'body/none']
+ART1003   gold [Overview > Information > Standards] claude [Overview > Information] | Assessment for Learning / You will work towards the following standard: / Achievement Standard 91912 Version 4Use practice-b | claude: ['body/none', 'Information']
+CBI1004   gold [Overview > Information > Standards] claude [Overview > Information] | Aromatawai | Assessment for Learning / You will work towards the following standard: / Achievement Standard 92022 Chemistry and Biology 1 | claude: ['Information', 'Information']
+CBI1005   gold [Overview > Information > Standards] claude [Overview > Information] | Aromatawai | Assessment for Learning / You will work towards the following standard: / Achievement Standard 92022 Chemistry and Biology 1 | claude: ['Information', 'Information']
+CBI1008   gold [Overview > Information > Standards] claude [Overview > Information] | Assessment for Learning / You will work towards the following standard: / Achievement Standard 92021 (version 3) Chemistry a | claude: ['Information', 'Information']
+CBI1009   gold [Overview > Information > Standards] claude [Overview > Information] | Assessment for Learning / You will work towards the following standard: / Achievement Standard 92021 (version 3) Chemistry a | claude: ['Information', 'Information']
+COM1002   gold [Overview > Information > Standards] claude [Overview > Information] | Assessment for Learning / You will complete the following assessment for sta / Achievement Standard 90928 (version 3) Commerce 1. | claude: ['Information', 'body/none']
+COM1006   gold [Overview > Information > Standards] claude [Overview > Information] | Assessment for Learning / You will work towards the following standard: / Achievement Standard 92030 (version 2) Commerce 1. | claude: ['Information', 'Information']
+DAN1003   gold [Overview > Information > Standards] claude [Overview > Information] | Assessment for Learning / You will submit a report showing your understandin / You will work towards the following standard: | claude: ['Information', 'Information']
+DAN1004   gold [Overview > Information > Standards] claude [Overview > Information] | Assessment for Learning / You will work towards the following standard: / Assessment Standard 91939 (version 3) Dance 1.3
+   | claude: ['Information', 'body/none']
+DAN1006   gold [Overview > Information > Standards] claude [Overview > Information] | Assessment for Learning / What you learn in this module can be used towards  / For the assessment you will need to present two da | claude: ['Information', 'Information']
+DTC1004   gold [Overview > Information > Standards] claude [Overview > Information] | Assessment for Learning / This standard explores digital technologies design / Ākonga will demonstrate how their design decisions | claude: ['Information', 'Overview']
+DTC1005   gold [Overview > Information > Standards] claude [Overview > Information] | Assessment for Learning / You will work towards the following standard: / Achievement Standard 92005 (version 3) Digital Tec | claude: ['Information', 'Information']
+EXBP901   gold [Overview > Information > Standards] claude [Overview > Information] | Assessment for Learning / In EXPlore, you will design your own learning goal | claude: ['body/none', 'body/none']
+GEO1004   gold [Overview > Information > Standards] claude [Overview > Information] | Assessment for Learning / You will work towards the following standard: / Achievement Standard 91933 (version 3) Geography 1 | claude: ['Information', 'Information']
+GEO1005   gold [Overview > Information > Standards] claude [Overview > Information] | Assessment for Learning / You will work towards the following standard: / Achievement Standard 91934 (version 3) Geography 1 | claude: ['Information', 'body/none']
+GEO1006   gold [Overview > Information > Standards] claude [Overview > Information] | Assessment for Learning / Both GEO1005 and GEO1006 modules need to be comple / You will work towards the following standard: | claude: ['Information', 'Information']
+GER1002   gold [Overview > Information > Standards] claude [Overview > Information] | Assessment for Learning / You will work towards the following standard: / Achievement Standard 91968 (version 3) German 1.1  | claude: ['Information', 'Information']
+HIS1001   gold [Overview > Information > Standards] claude [Overview > Information] | Aromatawai | Assessment for Learning / You will work towards the following standard: / Achievement Standard 92025 1.2
+                    | claude: ['body/none', 'body/none']
+MUS1004   gold [Overview > Information > Standards] claude [Overview > Information] | Assessment for Learning / This module is about concepts/elements of rhythm,  / You will explore a range of rhythm exercises from  | claude: ['Information', 'Overview']
+PWY1002   gold [Overview > Standards] claude [Overview > Information] | Assessment for Learning / In this module, you will work towards achieving th / The Pathways standards in the section Where am I g | claude: ['Information', 'Information']
+PWY1007   gold [Overview > Standards] claude [Overview > Information] | Assessment for Learning / In this module you will work towards achieving the / The Pathways standards in the section How do I get | claude: ['body/none', 'Overview']
+PWY1008   gold [Overview > Standards] claude [Overview > Information] | Assessment for Learning / In this module you will work towards achieving the / The Pathways standards in the section How do I get | claude: ['Information', 'Information']
+PWY1009   gold [Overview > Standards] claude [Overview > Information] | Assessment for Learning / In this module you will work towards achieving the / The Pathways standards in the section Me pehea aha | claude: ['body/none', 'Overview']
+SPA1004   gold [Overview > Information > pane3 > Standards] claude [Overview > Information] | Assessment for Learning / You will work towards the following standards: / Achievement Standard 91972
+                        | claude: ['Information', 'Information']
+XTAS101   gold [Overview > Information > Standards > pane4] claude [Overview > Information] | Assessment for Learning / This learning builds essential awareness, knowledg | claude: ['body/none', 'body/none']
+XTAS103   gold [Overview > Information > Standards > pane4] claude [Overview > Information] | Assessment for Learning / This learning builds essential awareness, knowledg | claude: ['body/none', 'body/none']

@@ -565,6 +565,11 @@ menu, in tabs / accordions / carousels, and in hand-off boxes that swallow the t
    named section), `_s41_r8_lost.py` (Writers-Template text the gold carries that no Claude page carries),
    `_s41_r10_boxtitle2.py` (where an activity-box title landed). The first session that uses this lane folds them into
    ONE standing probe, `outputs/_placement_census.py` (a measurement-tool round), and every later session re-runs it.
+   **BUILT 24 Sept 2026 (session 42 Round 3):** `cd CONVERTER_V2/reference/tests && python3 ../../outputs/_placement_census.py`
+   under WSL (≈ 80 s; `--codes …` scoped, `--out <name>`) → `outputs/_placement_census.{md,json}` — every text block tagged
+   with its container path (header / `menu:<pane>` / `body[:panelN]:<widget|activity|alert|free>[:side]` / footer / acks),
+   matched by text, the transition table with the §1d flags; companion `outputs/_s42_r4_navtabs.py` (the overview's nav tab
+   set, gold vs Claude). Its first finds are in `LOOP_STATE.md` Follow-up candidates (s42-r3, P1–P8).
 3. **Record everything it finds**, below the floor included, as a line in `LOOP_STATE.md`'s "Follow-up candidates"
    with its numbers (gold placement share, Claude placement, modules / pages), so a later round can take it whole
    when a family's forms add up — the r460 WJFUN residue (four modules' Knowledge / Practices tabs, eleven empty
