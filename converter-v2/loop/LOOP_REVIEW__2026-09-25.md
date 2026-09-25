@@ -1,0 +1,143 @@
+# Loop review — 25 September 2026 (the third `/loop-review`)
+
+**What this is.** A health review of the PageForge autonomous loop itself — not a run of it. No round was started, no converter code or data was changed, no module was regenerated, nothing was pushed. Run on Fable (Claude Code) in `FINAL_MODULE_DATA`; Chris was not needed for any decision in it. Under Chris's standing instruction of 22 September (D12-1 / D12-2), every change this review recommends was **applied in this session** — to the loop rules file, the slash-command copies, the KB status file, the loop mirror and the next starting message — and committed.
+
+**Headline.** The loop is healthy and unusually productive: **114 rounds in 13 sessions over three and a half days, 71 of them shipped**, the score up from **59.6 % to 60.5 % of what is achievable**, no blocked class, no stall, no thrash, at most one context compaction per session. Two things need fixing in the rules and one in the tooling: (1) the committed gate baseline — the file every round is judged against — drifted for eight rounds because its numbers were typed by hand; (2) three widget checkers can pass even if the builder stops building; (3) the loop file had picked up stale "today" facts again, three days after the last sweep. Thirteen concrete changes were made (§4 below). Five decisions are waiting for Chris and three of them have no write-up yet, so a `/loop-decisions` session is due.
+
+## The words used in this report
+
+- **Round** — one pass of the loop: pick a class of mismatch, measure it, fix it behind a switch, rebuild the affected modules, prove every score held, write it up, commit.
+- **Shipped / declined / blocked / PICK pass** — a round that changed the converter and kept the change; one measured and rejected (often with the prototype kept as a patch); one that could not be settled without Chris; a round that only measured and recorded.
+- **Skeleton score** — how closely each generated page's row / column / activity / section structure matches the human developer's page, insides of interactive widgets ignored; the mean over all paired pages is the primary score.
+- **pp** — percentage points. 55.44 % → 55.46 % is +0.02pp.
+- **Ceiling / "% of achievable"** — the share of the human page's structure that has any source in the Writers Template. Today the ceiling is 91.7 %, so a raw 55.46 % is 60.5 % of achievable.
+- **Gate** — one of the automatic scores that must never get worse. **Gate baseline** — the committed file (`gate_baseline.json`) that records every gate's last shipped value; each round is judged "held or improved" against it.
+- **Scoped ship / FULL backstop** — a round regenerates only the modules it touches (scoped); every eighth scoped ship the whole corpus is regenerated and must come out byte-identical to what was shipped (the backstop).
+- **Verifier** — a checker for one widget type (flip cards, bingo grids, typing quizzes …) that inspects every built widget and reports defects.
+- **Miner / DIFF_QUEUE.md** — the instrument that reads every page's structural diff and ranks the classes of difference; **placement census** — the instrument that says where the human puts each block of content against where Claude puts it.
+- **Compaction** — the harness shrinking the conversation when it gets long; a **thrash** is compacting repeatedly without progress.
+- **KB** — the HTML Convertor knowledge base repository; **CL-NNNN** — a numbered decision in its change ledger.
+
+## 1. Health check — PASS, four housekeeping findings
+
+- `pageforge-site`: clean tree, branch `main`, HEAD `083e91e` (Round 500, session 46 stop), no git locks.
+- `_MIGRATION/verify_after_transfer.sh`: PASS on all six checks — census 552 gold module dirs / 545 Claude dirs / 2,679 Claude pages / 2,993 gold pages / 762 docx / 33 engine files / 24 data files (the one WARN, "HEAD is not the pre-transfer snapshot", is expected after 300 commits).
+- The five command files agree: the `/loop-start` body equals the loop file's §7 message byte for byte (the mechanical `diff` prints nothing) and carries no state; `/loop-stop`, `/loop-review`, `/loop-decisions` and `.claude/settings.json` match their mirror copies; the native-python hook is installed and unchanged.
+- The loop file's `**Amended:**` header is present (count 1) and its dated entries match the reviews that exist (16 Sept, 22 Sept, the 22 Sept crash-recovery, the 24 Sept D14-S1 amendment).
+- Mirror (`pageforge-site/converter-v2/loop/`, 9,257 files, all tracked): every loop file, the gate baseline, the four skill copies, the settings and the hook are byte-identical to their live counterparts. **Four snapshots are stale** — `_round_close.sh` (the live copy since 17 Sept also mirrors the miner and the queue), `_coverage_dashboard.json` (mirror 22 Sept, live 25 Sept), `_placement_census.md` / `.json` (mirror 24 Sept, live 25 Sept): the per-session mirror script copies `COVERAGE_DASHBOARD.md` but not these. Refreshed by this review; the list in §3 step 7 now names them. The other 61 differing files are per-round probe logs whose live copies were overwritten by later runs — left alone.
+- Intake check (§1f): 552 gold dirs, 762 docx and 2,993 gold pages are exactly the 22 Sept figures; `Module_Structure_Index.json` `module_meta` has 552 keys; the seven gold dirs with no Claude dir (GER1003–1007, SAM1005, SAM1006) are exactly the recorded no-build list. **No intake round is due.**
+- KB repo: HEAD `910a9cb` (23 Sept) — the commit `KB_AMALGAMATION_STATUS.md` already records; no commit since. Two untracked files under `Claude outputs/` are Chris's working files, not rules.
+- **Clutter:** 130 backup copies (`*.bak`, 12 MB) of the state and status files had accumulated at the folder root — one per condense or finalise. Moved to `_Backups/loop_state/` by this review; §5d now says that is where they go.
+
+## 2. What was read
+
+The whole loop file (91 KB, by section); `LOOP_STATE.md` in full (94 KB: the session-46 STOPPED entry and the pointers to sessions 34–45, every Decisions block, Position, the ceiling, the Follow-up candidates, the Needs Chris list, Declined and Blocked, the Round log, the two review entries, the next-session line); the archived STOPPED entries and Round-log lines for sessions 34–45 (`LOOP_STATE_ARCHIVE.md`, by heading and range); `KB_AMALGAMATION_STATUS.md`'s header, §C and §D; the `BUILD_CHANGELOG.md` headings back to round 401 and the round-500 entry in full; the KB repo's log and ledger since 22 Sept (CL-0101 → CL-0115, `12G`'s tail); the 22 Sept intake handover §5 / §7 / §9; the round-500 gate log, the session-46 full-corpus gate check, the committed baseline; `DIFF_QUEUE.md`'s header; the commit timeline (92 commits since the last review); the mirror script and the round-497 / round-500 finalise scripts.
+
+## 3. Assessment
+
+### 3a. KB drift — **fine as is on the rules; one heading corrected**
+
+- The KB has not moved since 23 Sept (HEAD `910a9cb`). The highest ledger entry is CL-0115; the status file's §C table has a row for every front-facing entry to 0115 (CL-0101–0108 are skill / documentation entries with no module rule). Its heading still said "CL-0001 → CL-0100" — corrected.
+- No new conflict between the KB and a shipped rule. The two KB-versus-gold questions the sessions found were raised to Chris rather than decided by the loop, which is the right handling: #22 (BLL2xx Knowledge / Practices tabs — CL-0040 leaves the split open) and #23 (the MX series' bare lesson menu — KB 01B says the row form, the MX gold ships none on 91 of 92 pages).
+- The KB rows the sessions verified by probe (c7, c15, c27, c38, c52, c66, c75) all came out LIVE or were shipped; seven §A rows are still marked UNVERIFIED (c24's casing half, 0035, 0039, 0054 and three others) — a lane, not a drift.
+- The `12G` "PageForge status" lines and the five KB wording edits are still owed by Chris (D13-1, a human action; Needs Chris #1).
+
+### 3b. Progress — **fine as is**
+
+**The score.** At the last review: 54.170 % on 2,353 paired pages, ceiling 90.9 % → **59.6 % of achievable**. Today: **55.459 % on 2,491 pairs, ceiling 91.7 % → 60.5 % of achievable** (build 260620.63, round 500). Raw movement +1.29pp, of which:
+
+| source | pp | how known |
+|---|---:|---|
+| converter work on an unchanged population (sessions 34, 35, 36, 40, 42, 43, 44, 45, 46) | **+0.69** | the session STOPPED entries, before → after on the same pair count |
+| converter work in the two sessions whose population also changed (s39: the dual-build re-pairing; s41: 47 new lesson pages from the page-model rounds) | ≈ +0.36 | quoted as changed-population moves; contains r442 +0.064, r444 −0.044 (a decided override), r456–r459 |
+| population arithmetic (the 38 intaken modules on 22 Sept, r440's re-pairing, r465's four exclusions, r470's +4 pages) and the ceiling re-measure 90.9 → 91.7 % | the rest | never claimed as gains |
+
+Every other gate held or improved with every dip named: pages ≥ 50 % 1,531 → 1,592, ≥ 75 % 254 → 277, ≥ 90 % 23 → 26; compare-structure exact chains 15,372 → 16,746; the literal-tag leak 75 → 52 occurrences in session 46 alone; body over-capture 260 → 232; four full-corpus backstops each came out 0 pages different.
+
+**Rounds and sessions** (22 Sept 10:50 → 25 Sept 15:55, 13 loop sessions, ≈ 52 session-hours):
+
+| | count |
+|---|---:|
+| rounds | 114 |
+| shipped (engine, data or gate-configuration) | 71 |
+| standalone full-corpus backstops | 4 |
+| declined on measurement (8 of them built, probed and reverted, patch kept) | 22 |
+| PICK passes, no engine change | 16 |
+| withdrawn (r464, by Chris's D14-21) | 1 |
+| blocked | 0 |
+
+Sessions ended: 5 on the 12-round budget (s40, s42, s44, s45, s46 — at 5 h, 2 h 30, 3 h 50, 3 h 30, 7 h 05; the 10-hour cap never), 3 on Chris's `/loop-stop` (s39, s41, s43), 4 on §4 exhaustion (s34–s37, all on 22–23 Sept — see 3c), 1 crash (s33, a server error during round 427's post-ship suite; recovered by s34 under the crashed-round rule). Minutes per round: ≈ 28 overall; an engine round 20–75 (session 46: 18–49), a PICK pass 5–20.
+
+**Plateau rule.** Never fired. It read "2 of 3" from session 40 to 43 because the gate-neutral rounds in between neither counted nor reset it (as designed), then r480 reset it; today 0 of 3. Firing for the right reason — and not firing when the queue still holds work — is exactly what the 22 Sept wording asked for.
+
+### 3c. Rule quality — **change needed in three places; fine in four**
+
+- **Exhaustion (§4) — change needed.** Sessions 34, 35 and 36 each declared exhaustion "with every lane tried", and each was refuted within one session: s35 shipped three rounds (+0.16pp), s36 four (+0.09pp), and s37's four honest declines were followed by the D13 decisions and s39's eight rounds. What refuted each verdict was not an untried lane but a **new instrument on a lane already marked tried** (s35 the menu-overrun census, s36 the content read of the hand-off boxes, s37 the box-boundary census). "Tried" was being satisfied by looking. Change 1 makes a lane count as tried only when its standing instrument was run fresh this session and its top row dispositioned. No exhaustion verdict has been declared since 23 Sept — every session since has ended on budget or on `/loop-stop` with 4–10 shipped rounds — so the cost of the change is nil today and it guards the next dry patch.
+- **The 20-page floor and the parked patches — change needed (small).** Eight rounds were built, probed and reverted because the class turned out under the floor or under consensus (r437, r438, r455, r462, r463, r468, r469 / r469b, r471). That is the rule working: the floor exists so a rule learnt on three pages is not applied corpus-wide. But four of the prototypes are parked as patches (r468 3 pages, r469 7, r469b 10, r489 8 accordions) with no rule that ever picks them up — §2 says a below-floor fix "rides along with a round already in scope", and nothing reads the patch list at PICK time. Change 4 makes the PICK step read the Position section's patch list and carry a patch whose pages fall inside the chosen round's affected set; a FULL backstop never carries one (its proof is "0 pages differ").
+- **Verifier vacuity — change needed** (a rule-quality finding that lives in the gate section, 3d).
+- **The three-attempt repair limit — fine.** No round reached three repairs; r499 used two (a first-sentence rule, then `.?!` only) and shipped with one named dip; nothing was blocked in 114 rounds.
+- **Named dips — fine.** Every dip in the period is named page by page ("22 up / 17 down NAMED", "≥75 −1 NAMED DAN1006_2_0") and treated as real movement, which is what §3 step 6 asks; the "scorer artefact" attribution, which needs a companion number, was not used once since 23 Sept.
+- **The 0.60 solidify floor and per-group sizing — fine.** The declines quote the group shares: the identical reo = eng pair (gold once 111 / twice 132, a tie); the WALT lead's placement (body 70 / menu 46 / absent 73, no consensus); writer bold inside bilingual prose (gold keeps 604 / strips 260 — Claude already keeps it). The KB-first rule was applied where a constraint covers the element (c38, c52, c75, 01F, 07B, 07D shipped as named overrides where the gold disagreed).
+- **The STOPPED-entry cap (≤ 1,500 characters) — noted, not changed.** The s36 and s37 entries ran to ≈ 2,400 characters; they are archived now. The Round-log lines stayed within 500.
+
+### 3d. Gate health — **change needed on the baseline refresh and on three verifiers; the measurements themselves are sound**
+
+- **Pairing parser:** `pairs skipped (parse error): 0`; 2,491 pairs stable since r470.
+- **Committed baseline vs live:** identical (`cmp`), at round 500, mirrored.
+- **The baseline drifted between backstops — change needed.** The session-46 full-corpus check (Round 10) read the committed baseline as skeleton mean 55.41 % / median 56.3 / body over-capture 238 against a live 55.45 % / 56.5 / 232 — not an improvement but **stale fields**: each round's `_rNNN_finalise.py` edits the JSON's lines by hand, and the r494–r498 scripts updated `pages_ge_50` and `raw_mean_pct` but not the mean, the median or `any_breakdown`. For eight rounds the hold-or-improve test ran against a mean 0.04pp too low and a body count 6 too high — a regression of that size would have passed. The backstop caught it, as it should; the 22 Sept review had found the same file twelve rounds behind for a different reason. Change 5: the aggregate fields are written by the tool from the round's own outputs, never typed; a tooling round is queued as the next session's Round 1 to make `_fastloop_diff.py --commit` (which already computes the aggregates) write them.
+- **Verifiers that can pass vacuously — change needed.** The bingo, typing and dragAndDrop verifiers print `RESULT … ✓` on `defect 0` alone; their built totals (52 grids, 8 quizzes / 57 inputs, 21 widgets) are recorded in the baseline but not compared. A builder that stopped building would report "0 built, defect 0 ✓". The flipCard, speechBubble, math and menu-label verifiers do compare a count. Change 6 states the count test in §3 step 6 and puts the three verifiers into the same tooling round.
+- **Baselines that moved without an explained cause:** none — the s46 re-base is explained in its changelog entry; r465's population change and r474 / r460 / r444's full regenerations are named.
+- **`_gatecheck.py` on a scoped corpus** refuses a full-regen verdict ("corpus is NOT 0-stale") — correct, and the reason the scoped rounds rely on `scoped_ship.sh`'s decomposition instead.
+
+### 3e. Session mechanics — **change needed in three places; §5c and §5d are working**
+
+- **Stalls / turns ended to wait:** none. **Commands past the timeout:** none recorded (the 22 Sept hook has had no native-python hang to catch; the verify script's own `python3 --version` now finds a real Python 3.14 and returns at once). **Hook blocks:** none logged.
+- **Compactions:** logged per event now — one each in sessions 40, 41, 43 and 46, none in 42, 44, 45; every one followed by the bounded re-read only; no thrash. The §5d caps held: `LOOP_STATE.md` ran 86–115 KB (session 39 started at 114.8 KB and condensed first), two to five condenses per session, the archive at 1.64 MB and grep-only.
+- **One prompt that should not have happened — change needed.** Session 39 (23 Sept ≈ 14:45) found the tree dirty with a round a parallel Cowork session had left loose (r439), and **asked Chris which session owned the tree**; Chris declined to answer, quit the app, and on resuming said "continue from where you left off". §5c forbids the question and §0 item 7 did not cover a tree that another session is changing right now. Change 2 adds the concurrent-session rule (read the loose files' mtimes; still changing = another session owns them; never ask; work around them; still for 30 minutes = a crashed round).
+- **Clock drift — change needed.** Sessions 40, 42 and 45 wrote estimated "≈ HH:MM" times into their Round-log lines that ran 10–80 minutes ahead of the real clock and had to be corrected afterwards from the commit times. Change 3: every time written into the state file is read from `date` in the same command.
+- **The 12-round default — change needed.** Five of the last seven sessions ended on the round cap at 2 h 30 – 7 h 05 with the 10-hour cap untouched and at most one compaction; every restart costs Chris a `/loop-start` and the session 20–30 minutes of health check and first PICK. Change 10 raises the default to 16 rounds; the 10-hour cap and the thrash breaker stay.
+- **The mirror** now holds 9,257 tracked files (4,688 logs, 1,403 shell scripts, 987 Python probes); the repository pack is 32 MB. Fine for now; noted so the next review can watch the growth.
+
+### 3f. Intake state (§1f) — **fine as is**
+
+No new gold module has arrived since the 22 Sept Round 0d (the 38 pre-intake modules). That round re-based the gate baseline, the ceiling, the dashboard, the registries (r426 page-model rows) and the miner, wrote `LOOP_INTAKE__2026-09-22_38_Modules.md` with a re-ranked §7, and every §7 item has since been dispositioned (the page model r426, the lesson chip r427, `col-md-6 > img` declined). The ceiling was re-measured again at r465 (91.7 %). The loop file's §0 item 6 still named the 19 Sept handover as "today's" — corrected to "the newest by date" (change 7).
+
+### 3g. Decisions owed by Chris — **five loop decisions, two human actions; a `/loop-decisions` session is due**
+
+Oldest first, with what each holds up:
+
+1. **#1 (16 Sept)** — the `12G` status lines and five KB wording edits (D13-1: Chris runs the Admin-Mode KB session himself). Human action; holds up nothing in the loop.
+2. **#10 (19 Sept)** — the seven Writers Templates to collect (GER1003–1007, SAM1005, SAM1006). Human action; Round 0d converts them when they land.
+3. **#17 (23 Sept)** — CEDT301: is the one-page gold the real one (single-file, accept 45 %) or keep it split (57.7 %)? Holds 1 module / 6 pairs.
+4. **#18 (24 Sept)** — the `[RHS alert]` family: keep as is, a Standard-only side column, or a KB rule? Measured 0.58 side-column overall (0.62 Standard). Holds ≈ 18 Standard tags. Write-up: `DECISIONS__Pending_2026-09-24.md` §1.
+5. **#19 (24 Sept)** — quiz answers the writer HIGHLIGHTED without announcing them: widen D13-4 or keep the fence? Holds ≈ 190 hand-off boxes. Write-up: the same file, §2.
+6. **#22 (24 Sept)** — BLL2xx overview: Knowledge / Practices in their own tabs (KB c67, 10–11 golds) or in Information (7 golds)? Holds 19 modules' overview menus. **No write-up yet.**
+7. **#23 (25 Sept)** — the MX series' bare lesson menu: keep KB 01B's row form (91 named overrides) or add the four series to KB 10 §3 and build the bare shell? Holds 91 pages / 12 modules. **No write-up yet.**
+
+Nothing new was raised in session 46; nothing was decided since 24 Sept, so nothing is struck. Items 3, 6 and 7 have no plain-English explainer, which is what `/loop-decisions` writes — recommended as Chris's next interactive session.
+
+## 4. The changes — all applied in this session
+
+Each: what the text said, what it says now, what happens if made, what would happen if not.
+
+1. **§4 Exhaustion — a lane counts as tried only when its instrument ran.** *Was:* "if every lane has been tried this session, the verdict stands, and the STOPPED entry names all seven with what each found." *Now adds:* "A lane counts as TRIED only when its standing instrument was run fresh on the current corpus in this session and its top row dispositioned in writing … Sessions 34, 35 and 36 each declared exhaustion with 'every lane tried' and each was refuted within one session by a round found on a lane the refuting session measured with a NEW instrument — a lane looked at is not a lane tried." Also the "today: before 19 September 2026" date becomes "the date in the newest `LOOP_INTAKE__*.md`'s name", and the exhaustion count note gains the 22–23 Sept three. *If made:* the next dry patch runs its instruments before stopping. *If not:* the s34–s36 pattern repeats when the easy classes run out.
+2. **§0 item 7 — a dirty tree may belong to a session running now.** *Was:* only the crashed-round rule. *Now adds* a paragraph: read the loose files' mtimes against the clock and this session's start; still changing, or an `outputs/` file newer than this session's start that it did not write, means another session (a Cowork kickoff) owns them — do not touch, never ask Chris (§5c), write one line in `LOOP_STATE.md`, take only non-overlapping PICKs, re-check at every round boundary; still for 30 minutes with no commit claiming them = a crashed round. *If made:* the s39 question never recurs. *If not:* a parallel session ends the loop's turn again.
+3. **§5d — times come from the clock.** *New bullet:* "Every time written into `LOOP_STATE.md` is read from the clock at that moment — `date '+%H:%M'` in the same command as the write, never estimated: sessions 40, 42 and 45 wrote ≈ times 10–80 minutes ahead of the real clock …". *If made:* the Round-log durations become usable for the next review's minutes-per-round. *If not:* every session needs a clock-correction note.
+4. **§3 step 1 and §2 — parked patches ride along; a backstop never carries one.** *§3 step 1 adds:* "Read the Position section's ride-along patch list in the same pass: a parked below-floor patch whose pages all fall inside the chosen class's affected set RIDES ALONG in that round — behind its own data flag and env toggle, proven by the same OFF probe over the union of the two affected sets, named in the changelog entry as its own delta; a patch is either taken when its area is regenerated or struck with the reason, never parked indefinitely." *§2 adds:* "A FULL backstop regeneration carries no ride-along and no engine or data change of its own — its whole proof is `0 pages differ`." *If made:* the four parked patches (28 pages) get an outlet without breaking the floor's purpose. *If not:* they sit in Position forever.
+5. **§3 step 7 — the baseline's aggregates are read off the round's outputs, never typed.** *Was:* "refresh `gate_baseline.json` (every field — `skeleton.pairs` included)". *Now:* "(every field — `skeleton.pairs` included; **each aggregate read off the round's own gate log, never typed from memory** — the r494–r498 scripts updated `pages_ge_50` and `raw_mean_pct` but not the mean, the median or `body_compare.any_breakdown`, and eight rounds were judged against a stale baseline until the session-46 backstop re-based it; from the queued tooling round on, `_fastloop_diff.py --commit` writes the aggregates and a finalise script edits notes only)". The tooling round is the next session's Round 1. *If made:* the hold-or-improve test is exact between backstops. *If not:* a small regression can ship unseen for up to eight rounds.
+6. **§3 step 6 — a verifier must fail when its built count falls.** *Now adds:* "A verifier whose RESULT reads ✓ only because nothing was built is passing vacuously: every verifier with a count in `gate_baseline.json` … must print that count against the baseline's and read ✗ when it FELL … Until the tooling round adds the count test to the bingo / typing / dragAndDrop verifiers, the finalise compares those three TOTAL lines with the baseline by eye and says so." *If made:* a builder regression is caught in the round that causes it. *If not:* "0 built, defect 0 ✓" would pass.
+7. **Stale-state sweep.** §0 item 6: "today `LOOP_INTAKE__2026-09-19_98_Modules.md`" → "the newest by the date in its name, never a named one"; §0 item 7: "(today: no round in flight … r425 …)" → "(the state file is the only place that says so — this file never does)"; §3 step 7: "the one §0 item 7 or the §0 census table names (today r425)" → "a figure the §0 census table carries"; the §7 message and the `/loop-start` body: "(today: before 19 September 2026)" removed. *If made:* the rules file stops needing a sweep every review. *If not:* a fresh session reads a wrong date as a rule.
+8. **§3 step 7 — the mirror list names the instruments' outputs.** Adds `outputs/_placement_census.md` / `.json` and `_coverage_dashboard.json`; the four stale snapshots refreshed now. *If not:* the committed copy of the placement census stays a day behind.
+9. **§5d and the §7 health check — backups live in `_Backups/loop_state/`.** *New bullet* plus one clause in the start message ("move any `*.bak` at the folder root into `_Backups/loop_state/`"); the 130 existing files moved. *If not:* the root keeps growing by one file per condense.
+10. **§4 Budget and the §7 message — the default becomes 16 rounds or 10 hours.** *Was:* "12 rounds or 10 hours". *Now:* "16 rounds or 10 hours (raised from 12 on 25 Sept 2026: five of the seven sessions to then had hit the 12-round cap at 2 h 30 – 7 h 05 with the 10-hour cap untouched and at most one compaction each …)". *If made:* fewer restarts for Chris; the hour cap and the thrash breaker still bound a session. *If not:* a productive session stops at hour three.
+11. **`KB_AMALGAMATION_STATUS.md` housekeeping.** The header gains "KB re-checked: 25 September 2026 (HEAD `910a9cb` unchanged; CL-0115 the highest; every CL to 0115 has a §C row)"; the §C heading reads "CL-0001 → CL-0115". *If not:* the next reader thinks 0101–0115 were never assessed.
+12. **The `/loop-review` skill itself** gains three checks so the next review does not have to rediscover them: the root `*.bak` count and the mirror's instrument snapshots (step 1); the baseline's aggregate fields against the newest full gate check and the verifiers' count logic (3d); the Round-log ≈ times against the commit times (3e).
+13. **`LOOP_STATE.md`:** the Position section's miner line corrected (it named the 23 Sept queue; the live one is 25 Sept 15:51 on the r500 corpus); a "Decisions from Chris (session 47, the third review)" block (no new numbered decision); the Needs Chris list headed with the five-plus-two summary and the `/loop-decisions` recommendation; this review's entry; and the "Next session starts with" line rewritten so Round 1 is the gate-tool round under the amended rules.
+
+Nothing in these changes touches converter code or data, regenerates a module, deletes a decision or pushes — so nothing needed Chris's approval under the standing instruction.
+
+## 5. What this review did not do
+
+No round, no converter change, no regeneration, nothing under `01-Finalized_Modules_` or `01-Claude_Modules_`, the KB repo untouched, nothing pushed. The gate-tool changes (5, 6) are described as rules and queued as the loop's next Round 1 — the loop has the WSL, probe and commit machinery for a tooling round and the review does not run gates.
+
+**Next `/loop-review`:** after ≈ 40 more rounds or after the five decisions are actioned, whichever comes first. First checks: the `**Amended:**` line is still present and ends with this review's date; the committed baseline's aggregate fields equal the newest full gate check's live column; no `*.bak` at the folder root; whether the 16-round default produced more than one compaction in any session.

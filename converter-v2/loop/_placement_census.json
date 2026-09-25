@@ -1,13 +1,13 @@
 {
- "generated": "2026-09-24 16:37",
+ "generated": "2026-09-25 00:02",
  "modules": 533,
  "pairs": 2492,
  "fates": {
-  "ABSENT-inWT": 16889,
-  "SAME": 64937,
+  "ABSENT-inWT": 16750,
+  "SAME": 64992,
   "ABSENT-notWT": 36540,
-  "MOVED": 37236,
-  "OTHER-PAGE": 8169
+  "MOVED": 37314,
+  "OTHER-PAGE": 8175
  },
  "transitions": [
   {
@@ -3010,9 +3010,9 @@
    "rank": 7,
    "gold": "body:activity",
    "claude": "body:widget:cv2-interactive",
-   "blocks": 2683,
-   "pages": 710,
-   "modules": 334,
+   "blocks": 2689,
+   "pages": 712,
+   "modules": 335,
    "families": {
     "BLL": 258,
     "TRR": 221,
@@ -3020,8 +3020,8 @@
     "FRNO": 143,
     "WJFUN": 127,
     "MXDB": 108,
+    "HIS": 106,
     "MXFL": 103,
-    "HIS": 102,
     "MXFU": 83,
     "ENGS": 73,
     "ENGI": 69,
@@ -3046,9 +3046,9 @@
     "MXEX": 25,
     "OSBY": 24,
     "OSGM": 24,
+    "HPRE": 23,
     "CEDW": 22,
     "CBI": 21,
-    "HPRE": 21,
     "SCES": 20,
     "ENGJ": 19,
     "XLP": 18,
@@ -3089,7 +3089,7 @@
     "XWHA": 1
    },
    "templates": {
-    "Standard": 2041,
+    "Standard": 2047,
     "Fundamentals": 382,
     "Inquiry": 25,
     "Bilingual": 235
@@ -3332,6 +3332,7 @@
     "HPFUN402",
     "HPFUN901",
     "HPRE203",
+    "HPRE301",
     "JPFUN01",
     "JPFUN02",
     "MXDB102",
@@ -3500,14 +3501,14 @@
    "rank": 8,
    "gold": "body:free",
    "claude": "ABSENT-inWT",
-   "blocks": 2370,
-   "pages": 655,
+   "blocks": 2367,
+   "pages": 654,
    "modules": 294,
    "families": {
     "TEDC": 152,
     "ENGJ": 104,
     "PWY": 103,
-    "OSOH": 96,
+    "OSOH": 95,
     "XDLS": 94,
     "AGH": 93,
     "CHFUN": 92,
@@ -3515,7 +3516,7 @@
     "ENGI": 85,
     "HIS": 84,
     "CEDO": 81,
-    "SSCI": 74,
+    "SSCI": 73,
     "MXFU": 66,
     "SSOG": 58,
     "HPFUN": 51,
@@ -3549,7 +3550,7 @@
     "FRFUN": 15,
     "SSFUN": 15,
     "XFUN": 15,
-    "OSSM": 14,
+    "OSSM": 13,
     "ARFUN": 12,
     "CBI": 12,
     "CEDT": 12,
@@ -3584,7 +3585,7 @@
     "TWHT": 1
    },
    "templates": {
-    "Standard": 1874,
+    "Standard": 1871,
     "Fundamentals": 418,
     "Inquiry": 48,
     "Bilingual": 30
@@ -3592,8 +3593,8 @@
    "flag": "floor ok",
    "best_family": [
     "OSOH",
-    0.20382165605095542,
-    96,
+    0.20169851380042464,
+    95,
     5
    ],
    "examples": [
@@ -3955,8 +3956,8 @@
    "rank": 9,
    "gold": "body:activity",
    "claude": "ABSENT-inWT",
-   "blocks": 2352,
-   "pages": 733,
+   "blocks": 2345,
+   "pages": 731,
    "modules": 325,
    "families": {
     "TEDC": 217,
@@ -3970,7 +3971,7 @@
     "ENGC": 80,
     "PNR": 75,
     "ENGR": 70,
-    "HIS": 70,
+    "HIS": 65,
     "XFUN": 65,
     "MXFU": 62,
     "SSOG": 57,
@@ -4013,7 +4014,6 @@
     "ENO": 6,
     "FRFUN": 6,
     "TEFUN": 6,
-    "HPRE": 5,
     "MUS": 5,
     "OSSM": 5,
     "PWYWHA": 5,
@@ -4023,6 +4023,7 @@
     "SCFUN": 4,
     "BLLR": 3,
     "ENG": 3,
+    "HPRE": 3,
     "MXS": 3,
     "OSGM": 3,
     "SCES": 3,
@@ -4038,7 +4039,7 @@
     "XOTPB": 1
    },
    "templates": {
-    "Standard": 1791,
+    "Standard": 1784,
     "Fundamentals": 326,
     "Inquiry": 73,
     "Bilingual": 162
@@ -4731,7 +4732,7 @@
    "rank": 11,
    "gold": "body:free",
    "claude": "body:widget:cv2-interactive",
-   "blocks": 1743,
+   "blocks": 1744,
    "pages": 374,
    "modules": 215,
    "families": {
@@ -4741,8 +4742,8 @@
     "OSAI": 71,
     "SSCI": 67,
     "AGH": 66,
+    "OSSM": 63,
     "MXFL": 62,
-    "OSSM": 62,
     "OSGM": 56,
     "WJFUN": 53,
     "JPFUN": 44,
@@ -4803,7 +4804,7 @@
     "DAN": 1
    },
    "templates": {
-    "Standard": 1449,
+    "Standard": 1450,
     "Fundamentals": 236,
     "Bilingual": 30,
     "Inquiry": 28
@@ -5852,15 +5853,15 @@
    "rank": 15,
    "gold": "body:widget:accordion",
    "claude": "body:widget:cv2-interactive",
-   "blocks": 1391,
-   "pages": 178,
-   "modules": 122,
+   "blocks": 1395,
+   "pages": 179,
+   "modules": 123,
    "families": {
     "BLL": 151,
     "XGF": 94,
     "XDLS": 84,
     "PWY": 71,
-    "MXFL": 56,
+    "MXFL": 60,
     "HPRE": 55,
     "ENGJ": 53,
     "WJFUN": 50,
@@ -5907,7 +5908,7 @@
     "SCBI": 1
    },
    "templates": {
-    "Standard": 1165,
+    "Standard": 1169,
     "Inquiry": 42,
     "Fundamentals": 184
    },
@@ -6050,6 +6051,7 @@
     "MXFL201",
     "MXFL202",
     "MXFL301",
+    "MXFL401",
     "MXFU202",
     "MXFU301",
     "MXFU302",
@@ -6105,7 +6107,7 @@
    "rank": 16,
    "gold": "body:widget:accordion",
    "claude": "ABSENT-inWT",
-   "blocks": 1321,
+   "blocks": 1317,
    "pages": 216,
    "modules": 133,
    "families": {
@@ -6119,9 +6121,9 @@
     "XGF": 56,
     "ENGJ": 46,
     "JPFUN": 37,
-    "MXFL": 34,
     "CEDT": 32,
     "MXDB": 31,
+    "MXFL": 30,
     "SSOG": 30,
     "WJFUN": 30,
     "HPFUN": 29,
@@ -6166,7 +6168,7 @@
     "TEFUN": 1
    },
    "templates": {
-    "Standard": 1086,
+    "Standard": 1082,
     "Fundamentals": 218,
     "Inquiry": 15,
     "Bilingual": 2
@@ -7571,11 +7573,11 @@
    "rank": 21,
    "gold": "body:widget:multiChoiceQuiz",
    "claude": "ABSENT-inWT",
-   "blocks": 941,
+   "blocks": 936,
    "pages": 140,
    "modules": 92,
    "families": {
-    "PWY": 184,
+    "PWY": 179,
     "TEDC": 98,
     "BLL": 56,
     "HPFUN": 46,
@@ -7622,15 +7624,15 @@
     "XTAS": 1
    },
    "templates": {
-    "Standard": 765,
+    "Standard": 760,
     "Inquiry": 31,
     "Fundamentals": 145
    },
    "flag": "floor ok",
    "best_family": [
     "PWY",
-    0.5714285714285714,
-    184,
+    0.5559006211180124,
+    179,
     5
    ],
    "examples": [
@@ -9046,16 +9048,16 @@
    "rank": 27,
    "gold": "body:panel:activity",
    "claude": "body:panel:widget:cv2-interactive",
-   "blocks": 707,
-   "pages": 40,
-   "modules": 40,
+   "blocks": 733,
+   "pages": 41,
+   "modules": 41,
    "families": {
-    "BLL": 393,
+    "BLL": 412,
     "TWHA": 77,
-    "CEDR": 65,
+    "CEDR": 66,
     "CEDT": 61,
+    "CEDK": 36,
     "TWHK": 34,
-    "CEDK": 30,
     "CEDO": 17,
     "CEDW": 14,
     "TWHR": 14,
@@ -9063,15 +9065,15 @@
     "EXIP": 1
    },
    "templates": {
-    "Inquiry": 705,
+    "Inquiry": 731,
     "Standard": 2
    },
    "flag": "floor ok",
    "best_family": [
-    "CEDR",
-    0.2070063694267516,
-    65,
-    4
+    "BLL",
+    0.2149191444966093,
+    412,
+    12
    ],
    "examples": [
     [
@@ -9145,6 +9147,7 @@
     "BLL260",
     "BLL270",
     "CEDK101",
+    "CEDK102",
     "CEDK401",
     "CEDO102",
     "CEDO202",
@@ -9449,188 +9452,12 @@
   {
    "rank": 29,
    "gold": "body:widget:tabs",
-   "claude": "ABSENT-inWT",
-   "blocks": 679,
-   "pages": 95,
-   "modules": 64,
-   "families": {
-    "TEDC": 301,
-    "FRNO": 83,
-    "HIS": 33,
-    "TEFUN": 33,
-    "PES": 32,
-    "OSOH": 31,
-    "XLP": 26,
-    "ENG": 17,
-    "ENFUN": 16,
-    "AGH": 14,
-    "ENGS": 14,
-    "FRFUN": 10,
-    "PWYWHA": 8,
-    "ENGJ": 7,
-    "MXFL": 7,
-    "GEO": 6,
-    "MXEO": 6,
-    "WJFUN": 6,
-    "MXDB": 5,
-    "ANZH": 4,
-    "HES": 4,
-    "PHE": 4,
-    "OSSC": 3,
-    "XWHA": 2,
-    "BLL": 1,
-    "DTC": 1,
-    "ENGI": 1,
-    "MXFU": 1,
-    "MXS": 1,
-    "XGF": 1,
-    "XMES": 1
-   },
-   "templates": {
-    "Standard": 614,
-    "Fundamentals": 65
-   },
-   "flag": "floor ok",
-   "best_family": [
-    "OSOH",
-    0.5344827586206896,
-    31,
-    3
-   ],
-   "examples": [
-    [
-     "AGH1001",
-     "AGH1001_2_0.html",
-     "li",
-     "—",
-     "Farm Advisor – Ash Phillips"
-    ],
-    [
-     "AGH1002",
-     "AGH1002_6_0.html",
-     "p",
-     "—",
-     "Soil depth and organic matter"
-    ],
-    [
-     "AGH1004",
-     "AGH1004_1_0.html",
-     "p",
-     "—",
-     "The distance to a town or city, a processing plant or packhouse, a seaport or airport can "
-    ],
-    [
-     "AGH1006",
-     "AGH1006_8_0.html",
-     "p",
-     "—",
-     "Chewing pests bite, tear and chew the leaves, stems and roots of plants, which damages and"
-    ],
-    [
-     "AGH1007",
-     "AGH1007_8_0.html",
-     "p",
-     "—",
-     "If the pathogen gets through the first line of defence, cells in the immune system will st"
-    ],
-    [
-     "AGH1007",
-     "AGH1007_8_0.html",
-     "li",
-     "—",
-     "Macrophages – release an alarm signal when they recognise a pathogen and call the neutroph"
-    ],
-    [
-     "AGH1007",
-     "AGH1007_8_0.html",
-     "li",
-     "—",
-     "Neutrophils – circulate in the blood and destroy pathogens by engulfing them."
-    ],
-    [
-     "AGH1008",
-     "AGH1008_2_0.html",
-     "p",
-     "—",
-     "Why it is important:Higher dry matter usually means higher nutrients, and therefore faster"
-    ]
-   ],
-   "module_list": [
-    "AGH1001",
-    "AGH1002",
-    "AGH1004",
-    "AGH1006",
-    "AGH1007",
-    "AGH1008",
-    "ANZH105",
-    "ANZH404",
-    "BLL135",
-    "DTC1004",
-    "ENFUN04",
-    "ENG1004",
-    "ENG1005",
-    "ENGI203",
-    "ENGJ101",
-    "ENGJ201",
-    "ENGS201",
-    "ENGS404",
-    "FRFUN06",
-    "FRFUN07",
-    "FRNO901",
-    "FRNO902",
-    "GEO1004",
-    "GEO1005",
-    "GEO1006",
-    "HES1003",
-    "HES1005",
-    "HIS1003",
-    "HIS1004",
-    "HIS1005",
-    "HIS1006",
-    "MXDB102",
-    "MXDB202",
-    "MXEO301",
-    "MXEO401",
-    "MXFL203",
-    "MXFL301",
-    "MXFU202",
-    "MXS1004",
-    "OSOH101",
-    "OSOH201",
-    "OSOH401",
-    "OSSC301",
-    "OSSC401",
-    "PES1004",
-    "PES1007",
-    "PES1008",
-    "PHE1001",
-    "PHE1003",
-    "PWYWHA1",
-    "TEDC401",
-    "TEDC402",
-    "TEFUN01",
-    "TEFUN03",
-    "TEFUN05",
-    "WJFUN208",
-    "WJFUN212",
-    "XGF9003",
-    "XLP02",
-    "XLP03",
-    "XLP05",
-    "XLP06",
-    "XMES103",
-    "XWHA02"
-   ]
-  },
-  {
-   "rank": 30,
-   "gold": "body:widget:tabs",
    "claude": "body:free",
-   "blocks": 643,
+   "blocks": 658,
    "pages": 72,
    "modules": 59,
    "families": {
-    "TEFUN": 101,
+    "TEFUN": 116,
     "PHE": 79,
     "ENGJ": 48,
     "ENGC": 47,
@@ -9666,14 +9493,14 @@
    },
    "templates": {
     "Standard": 508,
-    "Fundamentals": 129,
+    "Fundamentals": 144,
     "Inquiry": 6
    },
    "flag": "CANDIDATE",
    "best_family": [
     "TEFUN",
-    0.696551724137931,
-    101,
+    0.8,
+    116,
     5
    ],
    "examples": [
@@ -9797,12 +9624,187 @@
    ]
   },
   {
+   "rank": 30,
+   "gold": "body:widget:tabs",
+   "claude": "ABSENT-inWT",
+   "blocks": 656,
+   "pages": 92,
+   "modules": 63,
+   "families": {
+    "TEDC": 301,
+    "FRNO": 83,
+    "PES": 32,
+    "HIS": 31,
+    "OSOH": 31,
+    "XLP": 26,
+    "TEFUN": 18,
+    "ENG": 17,
+    "ENFUN": 16,
+    "AGH": 14,
+    "ENGS": 14,
+    "FRFUN": 10,
+    "PWYWHA": 8,
+    "MXFL": 7,
+    "GEO": 6,
+    "MXEO": 6,
+    "WJFUN": 6,
+    "MXDB": 5,
+    "ANZH": 4,
+    "HES": 4,
+    "PHE": 4,
+    "OSSC": 3,
+    "XWHA": 2,
+    "BLL": 1,
+    "DTC": 1,
+    "ENGI": 1,
+    "ENGJ": 1,
+    "MXFU": 1,
+    "MXS": 1,
+    "XGF": 1,
+    "XMES": 1
+   },
+   "templates": {
+    "Standard": 606,
+    "Fundamentals": 50
+   },
+   "flag": "floor ok",
+   "best_family": [
+    "OSOH",
+    0.5344827586206896,
+    31,
+    3
+   ],
+   "examples": [
+    [
+     "AGH1001",
+     "AGH1001_2_0.html",
+     "li",
+     "—",
+     "Farm Advisor – Ash Phillips"
+    ],
+    [
+     "AGH1002",
+     "AGH1002_6_0.html",
+     "p",
+     "—",
+     "Soil depth and organic matter"
+    ],
+    [
+     "AGH1004",
+     "AGH1004_1_0.html",
+     "p",
+     "—",
+     "The distance to a town or city, a processing plant or packhouse, a seaport or airport can "
+    ],
+    [
+     "AGH1006",
+     "AGH1006_8_0.html",
+     "p",
+     "—",
+     "Chewing pests bite, tear and chew the leaves, stems and roots of plants, which damages and"
+    ],
+    [
+     "AGH1007",
+     "AGH1007_8_0.html",
+     "p",
+     "—",
+     "If the pathogen gets through the first line of defence, cells in the immune system will st"
+    ],
+    [
+     "AGH1007",
+     "AGH1007_8_0.html",
+     "li",
+     "—",
+     "Macrophages – release an alarm signal when they recognise a pathogen and call the neutroph"
+    ],
+    [
+     "AGH1007",
+     "AGH1007_8_0.html",
+     "li",
+     "—",
+     "Neutrophils – circulate in the blood and destroy pathogens by engulfing them."
+    ],
+    [
+     "AGH1008",
+     "AGH1008_2_0.html",
+     "p",
+     "—",
+     "Why it is important:Higher dry matter usually means higher nutrients, and therefore faster"
+    ]
+   ],
+   "module_list": [
+    "AGH1001",
+    "AGH1002",
+    "AGH1004",
+    "AGH1006",
+    "AGH1007",
+    "AGH1008",
+    "ANZH105",
+    "ANZH404",
+    "BLL135",
+    "DTC1004",
+    "ENFUN04",
+    "ENG1004",
+    "ENG1005",
+    "ENGI203",
+    "ENGJ201",
+    "ENGS201",
+    "ENGS404",
+    "FRFUN06",
+    "FRFUN07",
+    "FRNO901",
+    "FRNO902",
+    "GEO1004",
+    "GEO1005",
+    "GEO1006",
+    "HES1003",
+    "HES1005",
+    "HIS1003",
+    "HIS1004",
+    "HIS1005",
+    "HIS1006",
+    "MXDB102",
+    "MXDB202",
+    "MXEO301",
+    "MXEO401",
+    "MXFL203",
+    "MXFL301",
+    "MXFU202",
+    "MXS1004",
+    "OSOH101",
+    "OSOH201",
+    "OSOH401",
+    "OSSC301",
+    "OSSC401",
+    "PES1004",
+    "PES1007",
+    "PES1008",
+    "PHE1001",
+    "PHE1003",
+    "PWYWHA1",
+    "TEDC401",
+    "TEDC402",
+    "TEFUN01",
+    "TEFUN03",
+    "TEFUN05",
+    "WJFUN208",
+    "WJFUN212",
+    "XGF9003",
+    "XLP02",
+    "XLP03",
+    "XLP05",
+    "XLP06",
+    "XMES103",
+    "XWHA02"
+   ]
+  },
+  {
    "rank": 31,
    "gold": "body:widget:carousel",
    "claude": "ABSENT-inWT",
-   "blocks": 639,
-   "pages": 137,
-   "modules": 107,
+   "blocks": 634,
+   "pages": 136,
+   "modules": 106,
    "families": {
     "BLL": 99,
     "OSAH": 62,
@@ -9823,7 +9825,6 @@
     "ENGJ": 9,
     "MXDB": 9,
     "OSBY": 9,
-    "MXEX": 8,
     "PES": 8,
     "SSOG": 8,
     "TEDC": 8,
@@ -9844,6 +9845,7 @@
     "ENGI": 3,
     "ENGR": 3,
     "ENO": 3,
+    "MXEX": 3,
     "XLP": 3,
     "XWHA": 3,
     "CEDK": 2,
@@ -9859,7 +9861,7 @@
     "SSCI": 1
    },
    "templates": {
-    "Standard": 558,
+    "Standard": 553,
     "Fundamentals": 71,
     "Inquiry": 5,
     "Bilingual": 5
@@ -9985,7 +9987,6 @@
     "MXDB202",
     "MXDB302",
     "MXDI202",
-    "MXEX201",
     "MXEX302",
     "MXFL204",
     "MXFL302",
@@ -10792,218 +10793,11 @@
   },
   {
    "rank": 36,
-   "gold": "body:widget:flipCard",
-   "claude": "ABSENT-inWT",
-   "blocks": 593,
-   "pages": 113,
-   "modules": 83,
-   "families": {
-    "PWY": 63,
-    "HPFUN": 60,
-    "XGF": 43,
-    "ENGJ": 31,
-    "OSOH": 28,
-    "TEDC": 27,
-    "CEDT": 26,
-    "MXFL": 25,
-    "OSGM": 23,
-    "SSCI": 22,
-    "ENGC": 21,
-    "BLLR": 19,
-    "OSSM": 17,
-    "CEDR": 15,
-    "PNR": 15,
-    "CHFUN": 14,
-    "CEDO": 13,
-    "CEDW": 10,
-    "ENFUN": 10,
-    "HIS": 10,
-    "OSAI": 9,
-    "OSSC": 9,
-    "XDLS": 9,
-    "XLP": 9,
-    "FRFUN": 8,
-    "XMES": 8,
-    "ARFUN": 7,
-    "ENO": 7,
-    "SSOG": 6,
-    "ENGI": 5,
-    "ENGS": 5,
-    "PES": 5,
-    "MXFU": 3,
-    "OSAH": 2,
-    "OSBY": 2,
-    "PHE": 2,
-    "BLL": 1,
-    "HPRE": 1,
-    "PWYWHA": 1,
-    "TEFUN": 1,
-    "WJFUN": 1
-   },
-   "templates": {
-    "Fundamentals": 101,
-    "Standard": 468,
-    "Bilingual": 15,
-    "Inquiry": 9
-   },
-   "flag": "CANDIDATE",
-   "best_family": [
-    "PNR",
-    0.6,
-    15,
-    3
-   ],
-   "examples": [
-    [
-     "ARFUN03",
-     "ARFUN03_0_0.html",
-     "p",
-     "—",
-     "The dancers are facing forward"
-    ],
-    [
-     "BLL256",
-     "BLL256_1_0.html",
-     "p",
-     "—",
-     "Height does not follow the usual eigh pattern. It makes a long /i/ sound because it comes "
-    ],
-    [
-     "BLLR202",
-     "BLLR202_3_0.html",
-     "p",
-     "—",
-     "Good at noticing small details."
-    ],
-    [
-     "BLLR203",
-     "BLLR203_3_0.html",
-     "p",
-     "—",
-     "The rangers looked after the forest."
-    ],
-    [
-     "CEDO502",
-     "CEDO502_1_1.html",
-     "h5",
-     "—",
-     "Credit card shopping"
-    ],
-    [
-     "CEDO502",
-     "CEDO502_5_0.html",
-     "h5",
-     "—",
-     "What is a closed question?"
-    ],
-    [
-     "CEDO502",
-     "CEDO502_5_0.html",
-     "p",
-     "—",
-     "A closed question can be answered with a short response, usually yes, no, or a single fact"
-    ],
-    [
-     "CEDO502",
-     "CEDO502_5_0.html",
-     "p",
-     "—",
-     "Example: \"Do you like your job?\""
-    ]
-   ],
-   "module_list": [
-    "ARFUN03",
-    "BLL256",
-    "BLLR202",
-    "BLLR203",
-    "CEDO502",
-    "CEDR501",
-    "CEDT501",
-    "CEDW501",
-    "CHFUN05",
-    "ENFUN01",
-    "ENFUN03",
-    "ENFUN05",
-    "ENFUN08",
-    "ENGC201",
-    "ENGC403",
-    "ENGI202",
-    "ENGI302",
-    "ENGJ301",
-    "ENGJ302",
-    "ENGJ402",
-    "ENGS101",
-    "ENGS102",
-    "ENO2060",
-    "FRFUN07",
-    "FRFUN08",
-    "HIS1002",
-    "HIS1003",
-    "HPFUN101",
-    "HPFUN202",
-    "HPFUN301",
-    "HPFUN302",
-    "HPFUN303",
-    "HPFUN903",
-    "HPRE301",
-    "MXFL204",
-    "MXFL301",
-    "MXFU301",
-    "OSAH301",
-    "OSAH401",
-    "OSAI101",
-    "OSAI201",
-    "OSAI401",
-    "OSBY401",
-    "OSGM201",
-    "OSGM401",
-    "OSOH301",
-    "OSOH401",
-    "OSOH501",
-    "OSSC301",
-    "OSSC401",
-    "OSSM301",
-    "OSSM401",
-    "PES1001",
-    "PES1007",
-    "PHE1005",
-    "PHE1008",
-    "PNR102",
-    "PNR104",
-    "PNR107",
-    "PWY1001",
-    "PWY1002",
-    "PWY1007",
-    "PWY1008",
-    "PWY1009",
-    "PWYWHA1",
-    "SSCI104",
-    "SSCI205",
-    "SSOG105",
-    "TEDC401",
-    "TEDC402",
-    "TEFUN03",
-    "WJFUN108",
-    "XDLS901",
-    "XDLS909",
-    "XGF9001",
-    "XGF9002",
-    "XGF9006",
-    "XLP01",
-    "XLP02",
-    "XLP03",
-    "XLP06",
-    "XMES102",
-    "XMES103"
-   ]
-  },
-  {
-   "rank": 37,
    "gold": "body:activity",
    "claude": "OTHER-PAGE",
-   "blocks": 582,
-   "pages": 207,
-   "modules": 94,
+   "blocks": 583,
+   "pages": 208,
+   "modules": 95,
    "families": {
     "TRR": 198,
     "MXDI": 37,
@@ -11034,7 +10828,7 @@
     "PWY": 5,
     "AGH": 4,
     "CEDK": 4,
-    "HIS": 3,
+    "HIS": 4,
     "BLL": 2,
     "HPRE": 2,
     "MXFL": 2,
@@ -11048,7 +10842,7 @@
     "SSOG": 1
    },
    "templates": {
-    "Standard": 379,
+    "Standard": 380,
     "Inquiry": 4,
     "Bilingual": 199
    },
@@ -11166,6 +10960,7 @@
     "HES1005",
     "HES1006",
     "HES1007",
+    "HIS1005",
     "HIS1008",
     "HPRE203",
     "MXDI202",
@@ -11215,16 +11010,16 @@
    ]
   },
   {
-   "rank": 38,
+   "rank": 37,
    "gold": "body:widget:tabs",
    "claude": "body:widget:cv2-interactive",
-   "blocks": 561,
-   "pages": 83,
+   "blocks": 569,
+   "pages": 85,
    "modules": 55,
    "families": {
+    "ENGJ": 85,
     "TEDC": 85,
-    "ENGJ": 79,
-    "HIS": 65,
+    "HIS": 67,
     "FRNO": 55,
     "PES": 54,
     "XLP": 34,
@@ -11252,16 +11047,16 @@
     "OSAI": 2
    },
    "templates": {
-    "Standard": 539,
+    "Standard": 547,
     "Fundamentals": 17,
     "Inquiry": 5
    },
    "flag": "un-built widget (A1)",
    "best_family": [
-    "ANZH",
-    0.42857142857142855,
-    21,
-    4
+    "ENGJ",
+    0.4427083333333333,
+    85,
+    5
    ],
    "examples": [
     [
@@ -11377,6 +11172,208 @@
     "XLP02",
     "XLP06",
     "XWHA02"
+   ]
+  },
+  {
+   "rank": 38,
+   "gold": "body:widget:flipCard",
+   "claude": "ABSENT-inWT",
+   "blocks": 548,
+   "pages": 101,
+   "modules": 78,
+   "families": {
+    "PWY": 62,
+    "HPFUN": 60,
+    "ENGJ": 49,
+    "XGF": 43,
+    "OSOH": 28,
+    "TEDC": 27,
+    "CEDT": 26,
+    "MXFL": 25,
+    "BLLR": 19,
+    "CEDR": 15,
+    "ENGC": 15,
+    "PNR": 15,
+    "CHFUN": 14,
+    "SSCI": 14,
+    "CEDW": 10,
+    "HIS": 10,
+    "OSGM": 10,
+    "OSSC": 9,
+    "XDLS": 9,
+    "FRFUN": 8,
+    "OSSM": 8,
+    "XLP": 8,
+    "XMES": 8,
+    "ARFUN": 7,
+    "ENFUN": 7,
+    "ENO": 7,
+    "ENGS": 5,
+    "PES": 5,
+    "OSAI": 4,
+    "SSOG": 4,
+    "MXFU": 3,
+    "MXDB": 2,
+    "OSAH": 2,
+    "OSBY": 2,
+    "PHE": 2,
+    "BLL": 1,
+    "CEDO": 1,
+    "HPRE": 1,
+    "PWYWHA": 1,
+    "TEFUN": 1,
+    "WJFUN": 1
+   },
+   "templates": {
+    "Fundamentals": 98,
+    "Standard": 426,
+    "Bilingual": 15,
+    "Inquiry": 9
+   },
+   "flag": "CANDIDATE",
+   "best_family": [
+    "PNR",
+    0.6,
+    15,
+    3
+   ],
+   "examples": [
+    [
+     "ARFUN03",
+     "ARFUN03_0_0.html",
+     "p",
+     "—",
+     "The dancers are facing forward"
+    ],
+    [
+     "BLL256",
+     "BLL256_1_0.html",
+     "p",
+     "—",
+     "Height does not follow the usual eigh pattern. It makes a long /i/ sound because it comes "
+    ],
+    [
+     "BLLR202",
+     "BLLR202_3_0.html",
+     "p",
+     "—",
+     "Good at noticing small details."
+    ],
+    [
+     "BLLR203",
+     "BLLR203_3_0.html",
+     "p",
+     "—",
+     "The rangers looked after the forest."
+    ],
+    [
+     "CEDO502",
+     "CEDO502_1_1.html",
+     "h5",
+     "—",
+     "Credit card shopping"
+    ],
+    [
+     "CEDR501",
+     "CEDR501_4_0.html",
+     "h4",
+     "—",
+     "Pānui 1: Aiko arrives early"
+    ],
+    [
+     "CEDR501",
+     "CEDR501_4_0.html",
+     "p",
+     "—",
+     "Aiko arrives at the interview ten minutes early. She takes a moment in the waiting area to"
+    ],
+    [
+     "CEDR501",
+     "CEDR501_4_0.html",
+     "h4",
+     "—",
+     "Pānui 2: Taika is late"
+    ]
+   ],
+   "module_list": [
+    "ARFUN03",
+    "BLL256",
+    "BLLR202",
+    "BLLR203",
+    "CEDO502",
+    "CEDR501",
+    "CEDT501",
+    "CEDW501",
+    "CHFUN05",
+    "ENFUN03",
+    "ENFUN05",
+    "ENFUN08",
+    "ENGC403",
+    "ENGJ301",
+    "ENGJ302",
+    "ENGJ402",
+    "ENGS101",
+    "ENGS102",
+    "ENO2060",
+    "FRFUN07",
+    "FRFUN08",
+    "HIS1002",
+    "HIS1003",
+    "HPFUN101",
+    "HPFUN202",
+    "HPFUN301",
+    "HPFUN302",
+    "HPFUN303",
+    "HPFUN903",
+    "HPRE301",
+    "MXDB302",
+    "MXFL204",
+    "MXFL301",
+    "MXFU301",
+    "OSAH301",
+    "OSAH401",
+    "OSAI201",
+    "OSAI401",
+    "OSBY401",
+    "OSGM201",
+    "OSGM401",
+    "OSOH301",
+    "OSOH401",
+    "OSOH501",
+    "OSSC301",
+    "OSSC401",
+    "OSSM301",
+    "OSSM401",
+    "PES1001",
+    "PES1007",
+    "PHE1005",
+    "PHE1008",
+    "PNR102",
+    "PNR104",
+    "PNR107",
+    "PWY1001",
+    "PWY1002",
+    "PWY1007",
+    "PWY1008",
+    "PWY1009",
+    "PWYWHA1",
+    "SSCI104",
+    "SSOG105",
+    "TEDC401",
+    "TEDC402",
+    "TEFUN03",
+    "WJFUN108",
+    "XDLS901",
+    "XDLS909",
+    "XGF9001",
+    "XGF9002",
+    "XGF9006",
+    "XLP01",
+    "XLP02",
+    "XLP03",
+    "XLP06",
+    "XMES102",
+    "XMES103"
    ]
   },
   {
@@ -12362,141 +12359,6 @@
   },
   {
    "rank": 44,
-   "gold": "body:panel:activity",
-   "claude": "ABSENT-inWT",
-   "blocks": 490,
-   "pages": 43,
-   "modules": 42,
-   "families": {
-    "TWHA": 140,
-    "BLL": 139,
-    "TWHK": 73,
-    "CEDT": 47,
-    "CEDK": 28,
-    "CEDO": 23,
-    "CEDR": 14,
-    "CEDW": 11,
-    "TWHT": 8,
-    "EXPFUN": 4,
-    "EXIP": 2,
-    "EXBP": 1
-   },
-   "templates": {
-    "Inquiry": 487,
-    "Standard": 3
-   },
-   "flag": "floor ok",
-   "best_family": [
-    "TWHK",
-    0.32158590308370044,
-    73,
-    4
-   ],
-   "examples": [
-    [
-     "BLL110",
-     "BLL110_0_0.html",
-     "p",
-     "—",
-     "Sometimes ‘s’ makes a /z/ sound. This happens when your voice is turned on. If you say the"
-    ],
-    [
-     "BLL120",
-     "BLL120_0_0.html",
-     "p",
-     "—",
-     "Repeat this three times."
-    ],
-    [
-     "BLL130",
-     "BLL130_0_0.html",
-     "p",
-     "—",
-     "Sometimes ‘g’ makes a /j/ sound as in giraffe. In this module we are just focussing on the"
-    ],
-    [
-     "BLL140",
-     "BLL140_0_0.html",
-     "p",
-     "—",
-     "Repeat this three times."
-    ],
-    [
-     "BLL150",
-     "BLL150_0_0.html",
-     "p",
-     "—",
-     "Some countries pronounce the letter 'z' as 'zee' and some pronounce it as 'zed'. In Aotear"
-    ],
-    [
-     "BLL150",
-     "BLL150_0_0.html",
-     "p",
-     "—",
-     "Repeat this three times."
-    ],
-    [
-     "BLL150",
-     "BLL150_0_0.html",
-     "p",
-     "—",
-     "Zac sees a zebra by some rocks. The zebra has black stripes. Zac wants to pat the zebra. Z"
-    ],
-    [
-     "BLL150",
-     "BLL150_0_0.html",
-     "p",
-     "—",
-     "Repeat this three times."
-    ]
-   ],
-   "module_list": [
-    "BLL110",
-    "BLL120",
-    "BLL130",
-    "BLL140",
-    "BLL150",
-    "BLL160",
-    "BLL170",
-    "BLL210",
-    "BLL230",
-    "BLL240",
-    "BLL250",
-    "BLL260",
-    "CEDK101",
-    "CEDK102",
-    "CEDK401",
-    "CEDO102",
-    "CEDO202",
-    "CEDO204",
-    "CEDO402",
-    "CEDR101",
-    "CEDR203",
-    "CEDR204",
-    "CEDR401",
-    "CEDT102",
-    "CEDT104",
-    "CEDT207",
-    "CEDT208",
-    "CEDT404",
-    "CEDW201",
-    "EXBP901",
-    "EXIP901",
-    "EXPFUN04",
-    "TWHA901",
-    "TWHA902",
-    "TWHA903",
-    "TWHA905",
-    "TWHA906",
-    "TWHK901",
-    "TWHK902",
-    "TWHK903",
-    "TWHK907",
-    "TWHT903"
-   ]
-  },
-  {
-   "rank": 45,
    "gold": "body:widget:tabs",
    "claude": "ABSENT-notWT",
    "blocks": 486,
@@ -12655,7 +12517,7 @@
    ]
   },
   {
-   "rank": 46,
+   "rank": 45,
    "gold": "body:widget:multiChoiceQuiz",
    "claude": "body:free",
    "blocks": 482,
@@ -12809,7 +12671,7 @@
    ]
   },
   {
-   "rank": 47,
+   "rank": 46,
    "gold": "body:widget:accordion",
    "claude": "body:activity",
    "blocks": 478,
@@ -12941,6 +12803,140 @@
     "XGF9001",
     "XTAS101",
     "XTAS103"
+   ]
+  },
+  {
+   "rank": 47,
+   "gold": "body:panel:activity",
+   "claude": "ABSENT-inWT",
+   "blocks": 455,
+   "pages": 42,
+   "modules": 41,
+   "families": {
+    "TWHA": 140,
+    "BLL": 120,
+    "TWHK": 73,
+    "CEDT": 38,
+    "CEDO": 23,
+    "CEDK": 22,
+    "CEDR": 13,
+    "CEDW": 11,
+    "TWHT": 8,
+    "EXPFUN": 4,
+    "EXIP": 2,
+    "EXBP": 1
+   },
+   "templates": {
+    "Inquiry": 452,
+    "Standard": 3
+   },
+   "flag": "floor ok",
+   "best_family": [
+    "TWHK",
+    0.32158590308370044,
+    73,
+    4
+   ],
+   "examples": [
+    [
+     "BLL110",
+     "BLL110_0_0.html",
+     "p",
+     "—",
+     "Sometimes ‘s’ makes a /z/ sound. This happens when your voice is turned on. If you say the"
+    ],
+    [
+     "BLL120",
+     "BLL120_0_0.html",
+     "p",
+     "—",
+     "Repeat this three times."
+    ],
+    [
+     "BLL130",
+     "BLL130_0_0.html",
+     "p",
+     "—",
+     "Sometimes ‘g’ makes a /j/ sound as in giraffe. In this module we are just focussing on the"
+    ],
+    [
+     "BLL140",
+     "BLL140_0_0.html",
+     "p",
+     "—",
+     "Repeat this three times."
+    ],
+    [
+     "BLL150",
+     "BLL150_0_0.html",
+     "p",
+     "—",
+     "Some countries pronounce the letter 'z' as 'zee' and some pronounce it as 'zed'. In Aotear"
+    ],
+    [
+     "BLL150",
+     "BLL150_0_0.html",
+     "p",
+     "—",
+     "Repeat this three times."
+    ],
+    [
+     "BLL150",
+     "BLL150_0_0.html",
+     "p",
+     "—",
+     "Zac sees a zebra by some rocks. The zebra has black stripes. Zac wants to pat the zebra. Z"
+    ],
+    [
+     "BLL150",
+     "BLL150_0_0.html",
+     "p",
+     "—",
+     "Repeat this three times."
+    ]
+   ],
+   "module_list": [
+    "BLL110",
+    "BLL120",
+    "BLL130",
+    "BLL140",
+    "BLL150",
+    "BLL160",
+    "BLL170",
+    "BLL210",
+    "BLL230",
+    "BLL250",
+    "BLL260",
+    "CEDK101",
+    "CEDK102",
+    "CEDK401",
+    "CEDO102",
+    "CEDO202",
+    "CEDO204",
+    "CEDO402",
+    "CEDR101",
+    "CEDR203",
+    "CEDR204",
+    "CEDR401",
+    "CEDT102",
+    "CEDT104",
+    "CEDT207",
+    "CEDT208",
+    "CEDT404",
+    "CEDW201",
+    "EXBP901",
+    "EXIP901",
+    "EXPFUN04",
+    "TWHA901",
+    "TWHA902",
+    "TWHA903",
+    "TWHA905",
+    "TWHA906",
+    "TWHK901",
+    "TWHK902",
+    "TWHK903",
+    "TWHK907",
+    "TWHT903"
    ]
   },
   {
@@ -13401,13 +13397,13 @@
    "rank": 51,
    "gold": "body:panel:widget:accordion",
    "claude": "ABSENT-inWT",
-   "blocks": 417,
+   "blocks": 407,
    "pages": 14,
    "modules": 13,
    "families": {
     "EXPFUN": 330,
-    "CEDR": 35,
     "CEDK": 25,
+    "CEDR": 25,
     "TWHK": 8,
     "CEDO": 7,
     "EXIP": 7,
@@ -13415,7 +13411,7 @@
     "CEDT": 1
    },
    "templates": {
-    "Inquiry": 410,
+    "Inquiry": 400,
     "Standard": 7
    },
    "flag": "below floor",
@@ -13457,30 +13453,30 @@
     [
      "CEDR203",
      "CEDR203_0_0.html",
-     "p",
+     "h4",
      "—",
-     "Spend some time researching your area of interest. What are the main issues or concerns? W"
+     "4. Share and Discuss"
+    ],
+    [
+     "CEDR203",
+     "CEDR203_0_0.html",
+     "h4",
+     "—",
+     "5. Review and Reflect"
     ],
     [
      "CEDR203",
      "CEDR203_0_0.html",
      "p",
      "—",
-     "Jot down the key points or ideas you want to include in your persuasive poster. You can us"
+     "These could be great starters if you want to be an Eco-leader, or they could add to your k"
     ],
     [
-     "CEDR203",
-     "CEDR203_0_0.html",
-     "p",
+     "CEDT101",
+     "CEDT101_0_0.html",
+     "h4",
      "—",
-     "You can use a drawing or graphic design tool to create your persuasive poster. You can als"
-    ],
-    [
-     "CEDR203",
-     "CEDR203_0_0.html",
-     "li",
-     "—",
-     "Use of colour to grab attention"
+     "Game of who am I"
     ]
    ],
    "module_list": [
@@ -16450,9 +16446,9 @@
    "rank": 72,
    "gold": "body:panel:free",
    "claude": "ABSENT-inWT",
-   "blocks": 212,
-   "pages": 42,
-   "modules": 39,
+   "blocks": 210,
+   "pages": 41,
+   "modules": 38,
    "families": {
     "EXPFUN": 48,
     "TWHA": 35,
@@ -16461,14 +16457,14 @@
     "CEDK": 19,
     "CEDT": 18,
     "TWHK": 16,
-    "CEDR": 11,
+    "CEDR": 10,
     "EXIP": 7,
     "TWHR": 4,
-    "BLL": 3,
-    "CEDW": 3
+    "CEDW": 3,
+    "BLL": 2
    },
    "templates": {
-    "Inquiry": 181,
+    "Inquiry": 179,
     "Standard": 31
    },
    "flag": "floor ok",
@@ -16485,13 +16481,6 @@
      "p",
      "—",
      "Some ākonga need more practise than others when learning the letters and sounds. Work thro"
-    ],
-    [
-     "BLL240",
-     "BLL240_0_0.html",
-     "p",
-     "—",
-     "Congratulations on completing this module where we have learned about the digraph 'wh' and"
     ],
     [
      "CEDK101",
@@ -16515,30 +16504,36 @@
      "Are you ready to dive into the mysterious world beneath the ocean's surface?"
     ],
     [
-     "CEDO102",
-     "CEDO102_0_0.html",
+     "CEDO202",
+     "CEDO202_0_0.html",
      "p",
      "—",
-     "Māori people have a deep connection with Tangaroa and the sea, and believe that water is a"
+     "Iti noa ana he pito mata"
     ],
     [
-     "CEDO102",
-     "CEDO102_0_0.html",
+     "CEDO202",
+     "CEDO202_0_0.html",
      "p",
      "—",
-     "Camouflage is one of nature’s clever tricks. It's a way for animals to hide from their pre"
+     "From the withered tree a flower blooms"
     ],
     [
-     "CEDO102",
-     "CEDO102_0_0.html",
+     "CEDO202",
+     "CEDO202_0_0.html",
+     "h2",
+     "—",
+     "Creating and sharing your dance"
+    ],
+    [
+     "CEDO204",
+     "CEDO204_0_0.html",
      "p",
      "—",
-     "Can you see the coral’s little tentacles in these images?"
+     "Beavers are found in several countries in North America, Europe and Asia and are a nationa"
     ]
    ],
    "module_list": [
     "BLL210",
-    "BLL240",
     "CEDK101",
     "CEDK401",
     "CEDO102",
@@ -16752,11 +16747,11 @@
    "rank": 74,
    "gold": "body:panel:free",
    "claude": "body:panel:widget:cv2-interactive",
-   "blocks": 200,
-   "pages": 27,
-   "modules": 27,
+   "blocks": 203,
+   "pages": 28,
+   "modules": 28,
    "families": {
-    "CEDR": 40,
+    "CEDR": 42,
     "TWHR": 40,
     "TWHK": 20,
     "CEDO": 19,
@@ -16764,20 +16759,20 @@
     "EXPFUN": 18,
     "TWHA": 17,
     "CEDK": 16,
-    "BLL": 4,
+    "BLL": 5,
     "TWHT": 4,
     "EXIP": 2,
     "EXBP": 1
    },
    "templates": {
-    "Inquiry": 197,
+    "Inquiry": 200,
     "Standard": 3
    },
    "flag": "floor ok",
    "best_family": [
     "CEDR",
-    0.1724137931034483,
-    40,
+    0.1810344827586207,
+    42,
     3
    ],
    "examples": [
@@ -16810,6 +16805,13 @@
      "Congratulations on completing this module. You are now ready to start Module 1. Go back to"
     ],
     [
+     "BLL240",
+     "BLL240_0_0.html",
+     "p",
+     "p",
+     "Congratulations on completing this module where we have learned about the digraph 'wh' and"
+    ],
+    [
      "CEDK102",
      "CEDK102_0_0.html",
      "p",
@@ -16829,13 +16831,6 @@
      "h4",
      "td",
      "To show something beautiful"
-    ],
-    [
-     "CEDK102",
-     "CEDK102_0_0.html",
-     "p",
-     "td",
-     "Sometimes, we see something amazing, like a beautiful rainbow or flower, and we want to sh"
     ]
    ],
    "module_list": [
@@ -16843,6 +16838,7 @@
     "BLL160",
     "BLL220",
     "BLL230",
+    "BLL240",
     "CEDK102",
     "CEDK401",
     "CEDO202",
@@ -20877,7 +20873,7 @@
    "rank": 104,
    "gold": "body:panel:free",
    "claude": "body:panel:activity",
-   "blocks": 131,
+   "blocks": 130,
    "pages": 26,
    "modules": 26,
    "families": {
@@ -20885,14 +20881,14 @@
     "BLL": 29,
     "CEDK": 17,
     "CEDT": 15,
-    "CEDR": 12,
+    "CEDR": 11,
     "CEDO": 6,
     "TWHA": 5,
     "CEDW": 4,
     "TWHT": 4
    },
    "templates": {
-    "Inquiry": 131
+    "Inquiry": 130
    },
    "flag": "floor ok",
    "best_family": [
@@ -20990,6 +20986,100 @@
   },
   {
    "rank": 105,
+   "gold": "body:panel:widget:accordion",
+   "claude": "body:panel:widget:cv2-interactive",
+   "blocks": 130,
+   "pages": 11,
+   "modules": 11,
+   "families": {
+    "CEDR": 62,
+    "CEDO": 26,
+    "CEDT": 13,
+    "TWHA": 10,
+    "CEDK": 9,
+    "TWHK": 8,
+    "EXIP": 2
+   },
+   "templates": {
+    "Inquiry": 128,
+    "Standard": 2
+   },
+   "flag": "un-built widget (A1)",
+   "best_family": null,
+   "examples": [
+    [
+     "CEDK102",
+     "CEDK102_0_0.html",
+     "h4",
+     "th",
+     "Get to know your camera"
+    ],
+    [
+     "CEDO204",
+     "CEDO204_0_0.html",
+     "p",
+     "p",
+     "In this activity you will come up with a creative idea for your dream house."
+    ],
+    [
+     "CEDO402",
+     "CEDO402_0_0.html",
+     "p",
+     "p",
+     "The winning waka was Team Vaka Manu Red with a time of 1:48.16."
+    ],
+    [
+     "CEDR203",
+     "CEDR203_0_0.html",
+     "p",
+     "p",
+     "Spend some time researching your area of interest. What are the main issues or concerns? W"
+    ],
+    [
+     "CEDR401",
+     "CEDR401_0_0.html",
+     "h4",
+     "p",
+     "A Māori view of leadership"
+    ],
+    [
+     "CEDR401",
+     "CEDR401_0_0.html",
+     "h4",
+     "p",
+     "Click here to see how we have organised this information."
+    ],
+    [
+     "CEDR401",
+     "CEDR401_0_0.html",
+     "p",
+     "p",
+     "Here is the information in a template. We can see the main and supporting ideas near the t"
+    ],
+    [
+     "CEDR401",
+     "CEDR401_0_0.html",
+     "th",
+     "th",
+     "TopicWhat the text is mainly about.One or two words including a noun (name of a place, per"
+    ]
+   ],
+   "module_list": [
+    "CEDK102",
+    "CEDO204",
+    "CEDO402",
+    "CEDR203",
+    "CEDR401",
+    "CEDT104",
+    "EXIP901",
+    "TWHA904",
+    "TWHA906",
+    "TWHK902",
+    "TWHK907"
+   ]
+  },
+  {
+   "rank": 106,
    "gold": "body:panel:widget:multiChoiceQuiz",
    "claude": "body:panel:widget:cv2-interactive",
    "blocks": 126,
@@ -21084,7 +21174,7 @@
    ]
   },
   {
-   "rank": 106,
+   "rank": 107,
    "gold": "body:alert",
    "claude": "body:widget:cv2-interactive",
    "blocks": 125,
@@ -21243,7 +21333,7 @@
    ]
   },
   {
-   "rank": 107,
+   "rank": 108,
    "gold": "body:free",
    "claude": "header:other",
    "blocks": 123,
@@ -21410,7 +21500,7 @@
    ]
   },
   {
-   "rank": 108,
+   "rank": 109,
    "gold": "body:widget:typing",
    "claude": "body:activity",
    "blocks": 120,
@@ -21528,99 +21618,6 @@
     "XMES203",
     "XTAS101",
     "XTAS102"
-   ]
-  },
-  {
-   "rank": 109,
-   "gold": "body:panel:widget:accordion",
-   "claude": "body:panel:widget:cv2-interactive",
-   "blocks": 120,
-   "pages": 10,
-   "modules": 10,
-   "families": {
-    "CEDR": 52,
-    "CEDO": 26,
-    "CEDT": 13,
-    "TWHA": 10,
-    "CEDK": 9,
-    "TWHK": 8,
-    "EXIP": 2
-   },
-   "templates": {
-    "Inquiry": 118,
-    "Standard": 2
-   },
-   "flag": "un-built widget (A1)",
-   "best_family": null,
-   "examples": [
-    [
-     "CEDK102",
-     "CEDK102_0_0.html",
-     "h4",
-     "th",
-     "Get to know your camera"
-    ],
-    [
-     "CEDO204",
-     "CEDO204_0_0.html",
-     "p",
-     "p",
-     "In this activity you will come up with a creative idea for your dream house."
-    ],
-    [
-     "CEDO402",
-     "CEDO402_0_0.html",
-     "p",
-     "p",
-     "The winning waka was Team Vaka Manu Red with a time of 1:48.16."
-    ],
-    [
-     "CEDR401",
-     "CEDR401_0_0.html",
-     "h4",
-     "p",
-     "A Māori view of leadership"
-    ],
-    [
-     "CEDT104",
-     "CEDT104_0_0.html",
-     "p",
-     "p",
-     "E Rere Taku Poi is a beautiful traditional waiata poi that:"
-    ],
-    [
-     "CEDT104",
-     "CEDT104_0_0.html",
-     "li",
-     "li",
-     "celebrates the graceful movement of poi"
-    ],
-    [
-     "CEDT104",
-     "CEDT104_0_0.html",
-     "li",
-     "li",
-     "teaches directional words in te reo Māori"
-    ],
-    [
-     "CEDT104",
-     "CEDT104_0_0.html",
-     "li",
-     "li",
-     "has simple, repeating patterns perfect for beginners"
-    ]
-   ],
-   "module_list": [
-    "CEDK102",
-    "CEDO204",
-    "CEDO402",
-    "CEDR401",
-    "CEDT104",
-    "EXIP901",
-    "TWHA904",
-    "TWHA906",
-    "TWHK902",
-    "TWHK907"
    ]
   },
   {
@@ -23774,6 +23771,110 @@
   },
   {
    "rank": 130,
+   "gold": "body:free",
+   "claude": "body:widget:flipCard",
+   "blocks": 92,
+   "pages": 14,
+   "modules": 13,
+   "families": {
+    "ENGI": 26,
+    "TEFUN": 23,
+    "XLP": 12,
+    "ARFUN": 9,
+    "PES": 9,
+    "ENGC": 5,
+    "SSCI": 3,
+    "SCCH": 2,
+    "TEDC": 2,
+    "OSGM": 1
+   },
+   "templates": {
+    "Fundamentals": 32,
+    "Standard": 60
+   },
+   "flag": "below floor",
+   "best_family": [
+    "XLP",
+    0.026490066225165563,
+    12,
+    3
+   ],
+   "examples": [
+    [
+     "ARFUN03",
+     "ARFUN03_0_0.html",
+     "p",
+     "p",
+     "Look at the pictures to see the body bases; click the pictures to flip them and reveal the"
+    ],
+    [
+     "ENGC206",
+     "ENGC206_4_0.html",
+     "p",
+     "p",
+     "Let’s look at the example recipe for macaroni cheese above. Each part of the recipe has a "
+    ],
+    [
+     "ENGI102",
+     "ENGI102_4_0.html",
+     "h4",
+     "p",
+     "Who is in the story?"
+    ],
+    [
+     "ENGI202",
+     "ENGI202_1_0.html",
+     "p",
+     "p",
+     "The setting is where the story happens (where it is set). It could be a castle, a dark for"
+    ],
+    [
+     "OSGM401",
+     "OSGM401_1_0.html",
+     "td",
+     "p",
+     "Taha hinengaro – mental and emotional wellbeing"
+    ],
+    [
+     "PES1003",
+     "PES1003_8_0.html",
+     "p",
+     "p",
+     "Clouds form when moist air rises, as it moves higher in the atmosphere, the moist air enco"
+    ],
+    [
+     "PES1003",
+     "PES1003_8_0.html",
+     "p",
+     "p",
+     "This cooling can cause the water vapor in the air to condense into tiny droplets or ice cr"
+    ],
+    [
+     "PES1003",
+     "PES1003_8_0.html",
+     "p",
+     "p",
+     "The amount of pressure needed for clouds to form depends on the temperature and moisture c"
+    ]
+   ],
+   "module_list": [
+    "ARFUN03",
+    "ENGC206",
+    "ENGI102",
+    "ENGI202",
+    "OSGM401",
+    "PES1003",
+    "SCCH301",
+    "SSCI205",
+    "TEDC401",
+    "TEFUN03",
+    "XLP01",
+    "XLP02",
+    "XLP03"
+   ]
+  },
+  {
+   "rank": 131,
    "gold": "body:activity",
    "claude": "body:widget:flipCard",
    "blocks": 92,
@@ -23862,7 +23963,7 @@
    ]
   },
   {
-   "rank": 131,
+   "rank": 132,
    "gold": "body:widget:tabs",
    "claude": "body:widget:carousel",
    "blocks": 92,
@@ -23950,7 +24051,7 @@
    ]
   },
   {
-   "rank": 132,
+   "rank": 133,
    "gold": "body:widget:selfCheck",
    "claude": "ABSENT-inWT",
    "blocks": 91,
@@ -24061,110 +24162,6 @@
     "PWY1002",
     "WJFUN304",
     "XGF9003"
-   ]
-  },
-  {
-   "rank": 133,
-   "gold": "body:free",
-   "claude": "body:widget:flipCard",
-   "blocks": 91,
-   "pages": 14,
-   "modules": 13,
-   "families": {
-    "ENGI": 26,
-    "TEFUN": 23,
-    "XLP": 12,
-    "ARFUN": 9,
-    "PES": 9,
-    "ENGC": 5,
-    "SCCH": 2,
-    "SSCI": 2,
-    "TEDC": 2,
-    "OSGM": 1
-   },
-   "templates": {
-    "Fundamentals": 32,
-    "Standard": 59
-   },
-   "flag": "below floor",
-   "best_family": [
-    "XLP",
-    0.026490066225165563,
-    12,
-    3
-   ],
-   "examples": [
-    [
-     "ARFUN03",
-     "ARFUN03_0_0.html",
-     "p",
-     "p",
-     "Look at the pictures to see the body bases; click the pictures to flip them and reveal the"
-    ],
-    [
-     "ENGC206",
-     "ENGC206_4_0.html",
-     "p",
-     "p",
-     "Let’s look at the example recipe for macaroni cheese above. Each part of the recipe has a "
-    ],
-    [
-     "ENGI102",
-     "ENGI102_4_0.html",
-     "h4",
-     "p",
-     "Who is in the story?"
-    ],
-    [
-     "ENGI202",
-     "ENGI202_1_0.html",
-     "p",
-     "p",
-     "The setting is where the story happens (where it is set). It could be a castle, a dark for"
-    ],
-    [
-     "OSGM401",
-     "OSGM401_1_0.html",
-     "td",
-     "p",
-     "Taha hinengaro – mental and emotional wellbeing"
-    ],
-    [
-     "PES1003",
-     "PES1003_8_0.html",
-     "p",
-     "p",
-     "Clouds form when moist air rises, as it moves higher in the atmosphere, the moist air enco"
-    ],
-    [
-     "PES1003",
-     "PES1003_8_0.html",
-     "p",
-     "p",
-     "This cooling can cause the water vapor in the air to condense into tiny droplets or ice cr"
-    ],
-    [
-     "PES1003",
-     "PES1003_8_0.html",
-     "p",
-     "p",
-     "The amount of pressure needed for clouds to form depends on the temperature and moisture c"
-    ]
-   ],
-   "module_list": [
-    "ARFUN03",
-    "ENGC206",
-    "ENGI102",
-    "ENGI202",
-    "OSGM401",
-    "PES1003",
-    "SCCH301",
-    "SSCI205",
-    "TEDC401",
-    "TEFUN03",
-    "XLP01",
-    "XLP02",
-    "XLP03"
    ]
   },
   {
@@ -24657,22 +24654,23 @@
    "rank": 139,
    "gold": "body:widget:multiChoiceQuiz",
    "claude": "OTHER-PAGE",
-   "blocks": 80,
-   "pages": 12,
-   "modules": 10,
+   "blocks": 85,
+   "pages": 13,
+   "modules": 11,
    "families": {
     "PHE": 28,
     "TRR": 20,
     "MXS": 9,
     "CEDO": 8,
     "ANZH": 5,
+    "PWY": 5,
     "ENGR": 4,
     "FRNO": 3,
     "CEDT": 2,
     "TEDC": 1
    },
    "templates": {
-    "Standard": 60,
+    "Standard": 65,
     "Bilingual": 20
    },
    "flag": "below floor",
@@ -24744,6 +24742,7 @@
     "FRNO902",
     "MXS1004",
     "PHE1003",
+    "PWY1009",
     "TEDC402",
     "TRR304"
    ]
@@ -28649,96 +28648,6 @@
    ]
   },
   {
-   "gold": "body:widget:flipCard",
-   "claude": "ABSENT-inWT",
-   "headings": 123,
-   "pages": 46,
-   "modules": [
-    "CEDO502",
-    "CEDR501",
-    "CEDT501",
-    "CEDW501",
-    "CHFUN05",
-    "ENGC403",
-    "ENGI202",
-    "ENGJ302",
-    "ENGJ402",
-    "ENGS102",
-    "HPFUN101",
-    "HPFUN202",
-    "HPFUN903",
-    "MXFL204",
-    "MXFL301",
-    "MXFU301",
-    "OSAI201",
-    "OSAI401",
-    "OSGM201",
-    "OSGM401",
-    "OSOH301",
-    "OSOH401",
-    "OSOH501",
-    "OSSC301",
-    "OSSC401",
-    "OSSM301",
-    "OSSM401",
-    "PHE1005",
-    "PWY1001",
-    "PWY1007",
-    "PWY1008",
-    "PWY1009",
-    "SSCI205",
-    "SSOG105",
-    "TEDC401",
-    "TEDC402",
-    "XGF9006",
-    "XLP03"
-   ],
-   "examples": [
-    [
-     "CEDO502",
-     "CEDO502_1_1.html",
-     "h5",
-     "—",
-     "Credit card shopping"
-    ],
-    [
-     "CEDO502",
-     "CEDO502_5_0.html",
-     "h5",
-     "—",
-     "What is a closed question?"
-    ],
-    [
-     "CEDO502",
-     "CEDO502_5_0.html",
-     "h5",
-     "—",
-     "What is an open question?"
-    ],
-    [
-     "CEDO502",
-     "CEDO502_5_0.html",
-     "h5",
-     "—",
-     "Why use closed questions?"
-    ],
-    [
-     "CEDO502",
-     "CEDO502_5_0.html",
-     "h5",
-     "—",
-     "Why use open questions?"
-    ],
-    [
-     "CEDR501",
-     "CEDR501_4_0.html",
-     "h4",
-     "—",
-     "Pānui 1: Aiko arrives early"
-    ]
-   ]
-  },
-  {
    "gold": "body:free",
    "claude": "header:other",
    "headings": 121,
@@ -28835,6 +28744,92 @@
      "h3",
      "h1",
      "Hopes versus reality"
+    ]
+   ]
+  },
+  {
+   "gold": "body:widget:flipCard",
+   "claude": "ABSENT-inWT",
+   "headings": 110,
+   "pages": 40,
+   "modules": [
+    "CEDO502",
+    "CEDR501",
+    "CEDT501",
+    "CEDW501",
+    "CHFUN05",
+    "ENGC403",
+    "ENGJ302",
+    "ENGJ402",
+    "ENGS102",
+    "HPFUN101",
+    "HPFUN202",
+    "HPFUN903",
+    "MXFL204",
+    "MXFL301",
+    "MXFU301",
+    "OSAI201",
+    "OSAI401",
+    "OSOH301",
+    "OSOH401",
+    "OSOH501",
+    "OSSC301",
+    "OSSC401",
+    "OSSM301",
+    "OSSM401",
+    "PHE1005",
+    "PWY1001",
+    "PWY1007",
+    "PWY1008",
+    "PWY1009",
+    "SSOG105",
+    "TEDC401",
+    "TEDC402",
+    "XGF9006",
+    "XLP03"
+   ],
+   "examples": [
+    [
+     "CEDO502",
+     "CEDO502_1_1.html",
+     "h5",
+     "—",
+     "Credit card shopping"
+    ],
+    [
+     "CEDR501",
+     "CEDR501_4_0.html",
+     "h4",
+     "—",
+     "Pānui 1: Aiko arrives early"
+    ],
+    [
+     "CEDR501",
+     "CEDR501_4_0.html",
+     "h4",
+     "—",
+     "Pānui 2: Taika is late"
+    ],
+    [
+     "CEDT501",
+     "CEDT501_1_0.html",
+     "h4",
+     "—",
+     "Sharing personal images"
+    ],
+    [
+     "CEDW501",
+     "CEDW501_1_0.html",
+     "h4",
+     "—",
+     "Hospitality and care"
+    ],
+    [
+     "CEDW501",
+     "CEDW501_1_0.html",
+     "h4",
+     "—",
+     "Guardianship and stewardship"
     ]
    ]
   },
@@ -29672,7 +29667,7 @@
   {
    "gold": "body:panel:activity",
    "claude": "ABSENT-inWT",
-   "headings": 61,
+   "headings": 60,
    "pages": 24,
    "modules": [
     "BLL120",
@@ -31343,6 +31338,68 @@
    ]
   },
   {
+   "gold": "body:panel:activity",
+   "claude": "body:panel:widget:cv2-interactive",
+   "headings": 20,
+   "pages": 10,
+   "modules": [
+    "BLL120",
+    "BLL210",
+    "CEDK102",
+    "CEDR204",
+    "CEDR401",
+    "CEDT102",
+    "CEDT207",
+    "TWHA902",
+    "TWHK902",
+    "TWHK903"
+   ],
+   "examples": [
+    [
+     "BLL120",
+     "BLL120_0_0.html",
+     "h3",
+     "p",
+     "Where is the /k/ sound?"
+    ],
+    [
+     "BLL210",
+     "BLL210_0_0.html",
+     "h5",
+     "th",
+     "Uses one of these things:"
+    ],
+    [
+     "CEDK102",
+     "CEDK102_0_0.html",
+     "h4",
+     "p",
+     "How to change your MTK profile picture"
+    ],
+    [
+     "CEDR204",
+     "CEDR204_0_0.html",
+     "h4",
+     "p",
+     "A Day at the Beach"
+    ],
+    [
+     "CEDR204",
+     "CEDR204_0_0.html",
+     "h4",
+     "p",
+     "A Busy City Street"
+    ],
+    [
+     "CEDR204",
+     "CEDR204_0_0.html",
+     "h4",
+     "p",
+     "Mysterious jungle expedition"
+    ]
+   ]
+  },
+  {
    "gold": "body:panel:free",
    "claude": "body:panel:activity",
    "headings": 20,
@@ -31462,63 +31519,62 @@
    ]
   },
   {
-   "gold": "body:panel:activity",
+   "gold": "body:panel:widget:accordion",
    "claude": "body:panel:widget:cv2-interactive",
    "headings": 19,
-   "pages": 9,
+   "pages": 8,
    "modules": [
-    "BLL120",
-    "BLL210",
-    "CEDR204",
+    "CEDK102",
+    "CEDR203",
     "CEDR401",
-    "CEDT102",
-    "CEDT207",
-    "TWHA902",
-    "TWHK902",
-    "TWHK903"
+    "CEDT104",
+    "EXIP901",
+    "TWHA904",
+    "TWHA906",
+    "TWHK907"
    ],
    "examples": [
     [
-     "BLL120",
-     "BLL120_0_0.html",
-     "h3",
-     "p",
-     "Where is the /k/ sound?"
-    ],
-    [
-     "BLL210",
-     "BLL210_0_0.html",
-     "h5",
+     "CEDK102",
+     "CEDK102_0_0.html",
+     "h4",
      "th",
-     "Uses one of these things:"
+     "Get to know your camera"
     ],
     [
-     "CEDR204",
-     "CEDR204_0_0.html",
+     "CEDK102",
+     "CEDK102_0_0.html",
      "h4",
-     "p",
-     "A Day at the Beach"
+     "th",
+     "How to be a digital kaitiaki:"
     ],
     [
-     "CEDR204",
-     "CEDR204_0_0.html",
+     "CEDK102",
+     "CEDK102_0_0.html",
      "h4",
-     "p",
-     "A Busy City Street"
+     "td",
+     "Being a good friend online:"
     ],
     [
-     "CEDR204",
-     "CEDR204_0_0.html",
+     "CEDR203",
+     "CEDR203_0_0.html",
      "h4",
      "p",
-     "Mysterious jungle expedition"
+     "Optional Extra for Experts"
     ],
     [
-     "CEDR204",
-     "CEDR204_0_0.html",
+     "CEDR401",
+     "CEDR401_0_0.html",
      "h4",
      "p",
-     "Haunted house adventure"
+     "A Māori view of leadership"
+    ],
+    [
+     "CEDR401",
+     "CEDR401_0_0.html",
+     "h4",
+     "p",
+     "Click here to see how we have organised this information."
     ]
    ]
   },
@@ -31577,65 +31633,6 @@
      "h3",
      "—",
      "How will I know if I’ve learned it?"
-    ]
-   ]
-  },
-  {
-   "gold": "body:panel:widget:accordion",
-   "claude": "body:panel:widget:cv2-interactive",
-   "headings": 18,
-   "pages": 7,
-   "modules": [
-    "CEDK102",
-    "CEDR401",
-    "CEDT104",
-    "EXIP901",
-    "TWHA904",
-    "TWHA906",
-    "TWHK907"
-   ],
-   "examples": [
-    [
-     "CEDK102",
-     "CEDK102_0_0.html",
-     "h4",
-     "th",
-     "Get to know your camera"
-    ],
-    [
-     "CEDK102",
-     "CEDK102_0_0.html",
-     "h4",
-     "th",
-     "How to be a digital kaitiaki:"
-    ],
-    [
-     "CEDK102",
-     "CEDK102_0_0.html",
-     "h4",
-     "td",
-     "Being a good friend online:"
-    ],
-    [
-     "CEDR401",
-     "CEDR401_0_0.html",
-     "h4",
-     "p",
-     "A Māori view of leadership"
-    ],
-    [
-     "CEDR401",
-     "CEDR401_0_0.html",
-     "h4",
-     "p",
-     "Click here to see how we have organised this information."
-    ],
-    [
-     "CEDR401",
-     "CEDR401_0_0.html",
-     "h4",
-     "p",
-     "How to be an effective business leader"
     ]
    ]
   },
@@ -31873,9 +31870,64 @@
    ]
   },
   {
+   "gold": "menu:pane4",
+   "claude": "menu:LI",
+   "headings": 17,
+   "pages": 3,
+   "modules": [
+    "TRR108",
+    "TRR114",
+    "TRR115"
+   ],
+   "examples": [
+    [
+     "TRR108",
+     "TRR108_0_0.html",
+     "h5",
+     "h5",
+     "Critical awareness and information synthesis:"
+    ],
+    [
+     "TRR108",
+     "TRR108_0_0.html",
+     "h5",
+     "h5",
+     "Diplomatic and empathetic communication:"
+    ],
+    [
+     "TRR108",
+     "TRR108_0_0.html",
+     "h5",
+     "h5",
+     "Linguistic creativity:"
+    ],
+    [
+     "TRR108",
+     "TRR108_0_0.html",
+     "h5",
+     "h5",
+     "Hei te mutunga o ngā marama e 6 i te kura:"
+    ],
+    [
+     "TRR108",
+     "TRR108_0_0.html",
+     "h5",
+     "h5",
+     "By the end of six months at kura:"
+    ],
+    [
+     "TRR108",
+     "TRR108_0_0.html",
+     "h5",
+     "h5",
+     "Hei te mutunga o te tau 1 i te kura:"
+    ]
+   ]
+  },
+  {
    "gold": "body:panel:widget:accordion",
    "claude": "ABSENT-inWT",
-   "headings": 17,
+   "headings": 16,
    "pages": 7,
    "modules": [
     "CEDK102",
@@ -31928,61 +31980,6 @@
      "h3",
      "—",
      "5th place: 1:53.72"
-    ]
-   ]
-  },
-  {
-   "gold": "menu:pane4",
-   "claude": "menu:LI",
-   "headings": 17,
-   "pages": 3,
-   "modules": [
-    "TRR108",
-    "TRR114",
-    "TRR115"
-   ],
-   "examples": [
-    [
-     "TRR108",
-     "TRR108_0_0.html",
-     "h5",
-     "h5",
-     "Critical awareness and information synthesis:"
-    ],
-    [
-     "TRR108",
-     "TRR108_0_0.html",
-     "h5",
-     "h5",
-     "Diplomatic and empathetic communication:"
-    ],
-    [
-     "TRR108",
-     "TRR108_0_0.html",
-     "h5",
-     "h5",
-     "Linguistic creativity:"
-    ],
-    [
-     "TRR108",
-     "TRR108_0_0.html",
-     "h5",
-     "h5",
-     "Hei te mutunga o ngā marama e 6 i te kura:"
-    ],
-    [
-     "TRR108",
-     "TRR108_0_0.html",
-     "h5",
-     "h5",
-     "By the end of six months at kura:"
-    ],
-    [
-     "TRR108",
-     "TRR108_0_0.html",
-     "h5",
-     "h5",
-     "Hei te mutunga o te tau 1 i te kura:"
     ]
    ]
   },

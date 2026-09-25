@@ -1,13 +1,13 @@
 # THE PLACEMENT CENSUS (LOOP §1g, D14-S1) — where the human puts it vs where Claude puts it
 
-Generated 2026-09-24 16:37 by `outputs/_placement_census.py` over 533 modules / 2492 paired pages (`_corpus.gate_mods()`; the skeleton gate's pairing) in 85 s. A block = one h1–h6 / p / li / td / th / figcaption / dt / dd with ≥ 20 characters or ≥ 4 words; the module menu's nav labels are not blocks.
+Generated 2026-09-25 00:02 by `outputs/_placement_census.py` over 533 modules / 2492 paired pages (`_corpus.gate_mods()`; the skeleton gate's pairing) in 82 s. A block = one h1–h6 / p / li / td / th / figcaption / dt / dd with ≥ 20 characters or ≥ 4 words; the module menu's nav labels are not blocks.
 
 ## Summary — the fate of every gold block
 
-- **SAME**: 64937 (39.7 %)
-- **MOVED**: 37236 (22.7 %)
-- **OTHER-PAGE**: 8169 (5.0 %)
-- **ABSENT-inWT**: 16889 (10.3 %)
+- **SAME**: 64992 (39.7 %)
+- **MOVED**: 37314 (22.8 %)
+- **OTHER-PAGE**: 8175 (5.0 %)
+- **ABSENT-inWT**: 16750 (10.2 %)
 - **ABSENT-notWT**: 36540 (22.3 %)
 - total gold blocks: 163771
 
@@ -25,51 +25,51 @@ Floors (§1d / §1g): a chrome transition (header / menu / footer on either side
 | 4 | `body:activity` | `body:free` | 3492 | 682 | 332 | TRR (0.37, 901, 13) | Standard 2072, Bilingual 1042, Fundamentals 291 | floor ok |
 | 5 | `acks` | `OTHER-PAGE` | 3489 | 254 | 240 | XTAS (0.77, 340, 3) | Standard 3402, Inquiry 45, Bilingual 42 | acks gate |
 | 6 | `body:widget:dragAndDrop` | `body:widget:cv2-interactive` | 3196 | 432 | 263 | OSAI (0.99, 70, 4) | Standard 2683, Fundamentals 432, Inquiry 43 | un-built widget (A1) |
-| 7 | `body:activity` | `body:widget:cv2-interactive` | 2683 | 710 | 334 | OSOH (0.43, 53, 5) | Standard 2041, Fundamentals 382, Bilingual 235 | floor ok |
-| 8 | `body:free` | `ABSENT-inWT` | 2370 | 655 | 294 | OSOH (0.20, 96, 5) | Standard 1874, Fundamentals 418, Inquiry 48 | floor ok |
-| 9 | `body:activity` | `ABSENT-inWT` | 2352 | 733 | 325 | PWY (0.50, 137, 5) | Standard 1791, Fundamentals 326, Bilingual 162 | floor ok |
+| 7 | `body:activity` | `body:widget:cv2-interactive` | 2689 | 712 | 335 | OSOH (0.43, 53, 5) | Standard 2047, Fundamentals 382, Bilingual 235 | floor ok |
+| 8 | `body:free` | `ABSENT-inWT` | 2367 | 654 | 294 | OSOH (0.20, 95, 5) | Standard 1871, Fundamentals 418, Inquiry 48 | floor ok |
+| 9 | `body:activity` | `ABSENT-inWT` | 2345 | 731 | 325 | PWY (0.50, 137, 5) | Standard 1784, Fundamentals 326, Bilingual 162 | floor ok |
 | 10 | `body:widget:multiChoiceQuiz` | `body:widget:cv2-interactive` | 2336 | 228 | 149 | ENGJ (0.97, 33, 4) | Standard 1849, Fundamentals 442, Inquiry 37 | un-built widget (A1) |
-| 11 | `body:free` | `body:widget:cv2-interactive` | 1743 | 374 | 215 | OSAH (0.38, 80, 3) | Standard 1449, Fundamentals 236, Bilingual 30 | floor ok |
+| 11 | `body:free` | `body:widget:cv2-interactive` | 1744 | 374 | 215 | OSAH (0.38, 80, 3) | Standard 1450, Fundamentals 236, Bilingual 30 | floor ok |
 | 12 | `body:widget:accordion` | `ABSENT-notWT` | 1692 | 178 | 113 | HIS (0.65, 192, 4) | Standard 1409, Fundamentals 143, Bilingual 77 | not derivable |
 | 13 | `menu:flat` | `ABSENT-notWT` | 1501 | 472 | 192 | ARFUN (1.00, 5, 5) | Standard 1275, Inquiry 169, Fundamentals 57 | not derivable |
 | 14 | `menu:flat` | `OTHER-PAGE` | 1466 | 259 | 69 | PWY (0.55, 44, 5) | Standard 1440, Inquiry 21, Fundamentals 5 | floor ok |
-| 15 | `body:widget:accordion` | `body:widget:cv2-interactive` | 1391 | 178 | 122 | ENGS (0.35, 23, 3) | Standard 1165, Fundamentals 184, Inquiry 42 | un-built widget (A1) |
-| 16 | `body:widget:accordion` | `ABSENT-inWT` | 1321 | 216 | 133 | XMES (0.58, 127, 3) | Standard 1086, Fundamentals 218, Inquiry 15 | floor ok |
+| 15 | `body:widget:accordion` | `body:widget:cv2-interactive` | 1395 | 179 | 123 | ENGS (0.35, 23, 3) | Standard 1169, Fundamentals 184, Inquiry 42 | un-built widget (A1) |
+| 16 | `body:widget:accordion` | `ABSENT-inWT` | 1317 | 216 | 133 | XMES (0.58, 127, 3) | Standard 1082, Fundamentals 218, Inquiry 15 | floor ok |
 | 17 | `body:alert` | `body:free` | 1272 | 378 | 168 | BLLR (1.00, 37, 3) | Standard 1068, Fundamentals 107, Bilingual 90 | CANDIDATE |
 | 18 | `acks` | `ABSENT-inWT` | 1246 | 251 | 237 | PWY (0.29, 74, 5) | Standard 928, Inquiry 210, Fundamentals 100 | acks gate |
 | 19 | `body:widget:accordion` | `body:free` | 1185 | 142 | 83 | TEFUN (0.74, 64, 4) | Standard 897, Fundamentals 157, Inquiry 116 | CANDIDATE |
 | 20 | `body:free` | `body:activity` | 1017 | 288 | 151 | SSFUN (0.13, 33, 5) | Standard 792, Bilingual 140, Fundamentals 82 | floor ok |
-| 21 | `body:widget:multiChoiceQuiz` | `ABSENT-inWT` | 941 | 140 | 92 | PWY (0.57, 184, 5) | Standard 765, Fundamentals 145, Inquiry 31 | floor ok |
+| 21 | `body:widget:multiChoiceQuiz` | `ABSENT-inWT` | 936 | 140 | 92 | PWY (0.56, 179, 5) | Standard 760, Fundamentals 145, Inquiry 31 | floor ok |
 | 22 | `menu:flat` | `ABSENT-inWT` | 932 | 548 | 176 | XOTPB (0.36, 52, 6) | Standard 886, Inquiry 44, Fundamentals 2 | floor ok |
 | 23 | `body:free` | `OTHER-PAGE` | 883 | 114 | 80 | TRR (0.25, 372, 5) | Standard 480, Bilingual 372, Fundamentals 16 | floor ok |
 | 24 | `body:widget:dragAndDrop` | `ABSENT-notWT` | 793 | 165 | 124 | HES (1.00, 50, 3) | Standard 630, Fundamentals 121, Bilingual 33 | not derivable |
 | 25 | `body:widget:flipCard` | `body:widget:cv2-interactive` | 750 | 115 | 94 | XOTPB (1.00, 36, 6) | Standard 607, Fundamentals 132, Bilingual 6 | un-built widget (A1) |
 | 26 | `body:alert` | `ABSENT-notWT` | 740 | 276 | 136 | PHE (0.69, 20, 4) | Standard 591, Bilingual 63, Fundamentals 57 | not derivable |
-| 27 | `body:panel:activity` | `body:panel:widget:cv2-interactive` | 707 | 40 | 40 | CEDR (0.21, 65, 4) | Inquiry 705, Standard 2 | floor ok |
+| 27 | `body:panel:activity` | `body:panel:widget:cv2-interactive` | 733 | 41 | 41 | BLL (0.21, 412, 12) | Inquiry 731, Standard 2 | floor ok |
 | 28 | `body:widget:dragAndDrop` | `ABSENT-inWT` | 690 | 195 | 133 | OSGM (0.40, 27, 3) | Standard 585, Fundamentals 92, Inquiry 7 | floor ok |
-| 29 | `body:widget:tabs` | `ABSENT-inWT` | 679 | 95 | 64 | OSOH (0.53, 31, 3) | Standard 614, Fundamentals 65 | floor ok |
-| 30 | `body:widget:tabs` | `body:free` | 643 | 72 | 59 | TEFUN (0.70, 101, 5) | Standard 508, Fundamentals 129, Inquiry 6 | CANDIDATE |
-| 31 | `body:widget:carousel` | `ABSENT-inWT` | 639 | 137 | 107 | BLL (0.49, 99, 13) | Standard 558, Fundamentals 71, Inquiry 5 | floor ok |
+| 29 | `body:widget:tabs` | `body:free` | 658 | 72 | 59 | TEFUN (0.80, 116, 5) | Standard 508, Fundamentals 144, Inquiry 6 | CANDIDATE |
+| 30 | `body:widget:tabs` | `ABSENT-inWT` | 656 | 92 | 63 | OSOH (0.53, 31, 3) | Standard 606, Fundamentals 50 | floor ok |
+| 31 | `body:widget:carousel` | `ABSENT-inWT` | 634 | 136 | 106 | BLL (0.49, 99, 13) | Standard 553, Fundamentals 71, Inquiry 5 | floor ok |
 | 32 | `body:panel:activity` | `ABSENT-notWT` | 621 | 52 | 50 | TWHA (0.38, 239, 6) | Inquiry 605, Standard 16 | not derivable |
 | 33 | `body:widget:dropQuiz` | `body:widget:cv2-interactive` | 617 | 114 | 95 | OSAI (0.89, 33, 4) | Standard 421, Fundamentals 196 | un-built widget (A1) |
 | 34 | `body:widget:dropDown` | `ABSENT-inWT` | 617 | 60 | 55 | OSAI (0.82, 62, 4) | Standard 493, Fundamentals 124 | CANDIDATE |
 | 35 | `body:widget:carousel` | `ABSENT-notWT` | 611 | 119 | 94 | XDLS (0.42, 64, 5) | Standard 459, Fundamentals 100, Inquiry 37 | not derivable |
-| 36 | `body:widget:flipCard` | `ABSENT-inWT` | 593 | 113 | 83 | PNR (0.60, 15, 3) | Standard 468, Fundamentals 101, Bilingual 15 | CANDIDATE |
-| 37 | `body:activity` | `OTHER-PAGE` | 582 | 207 | 94 | TRR (0.08, 198, 8) | Standard 379, Bilingual 199, Inquiry 4 | floor ok |
-| 38 | `body:widget:tabs` | `body:widget:cv2-interactive` | 561 | 83 | 55 | ANZH (0.43, 21, 4) | Standard 539, Fundamentals 17, Inquiry 5 | un-built widget (A1) |
+| 36 | `body:activity` | `OTHER-PAGE` | 583 | 208 | 95 | TRR (0.08, 198, 8) | Standard 380, Bilingual 199, Inquiry 4 | floor ok |
+| 37 | `body:widget:tabs` | `body:widget:cv2-interactive` | 569 | 85 | 55 | ENGJ (0.44, 85, 5) | Standard 547, Fundamentals 17, Inquiry 5 | un-built widget (A1) |
+| 38 | `body:widget:flipCard` | `ABSENT-inWT` | 548 | 101 | 78 | PNR (0.60, 15, 3) | Standard 426, Fundamentals 98, Bilingual 15 | CANDIDATE |
 | 39 | `body:widget:carousel` | `body:widget:cv2-interactive` | 547 | 99 | 78 | BLLR (0.37, 23, 3) | Standard 415, Fundamentals 100, Bilingual 29 | un-built widget (A1) |
 | 40 | `body:widget:reorder` | `body:widget:cv2-interactive` | 543 | 77 | 57 | BLL (0.88, 68, 10) | Standard 478, Fundamentals 62, Bilingual 3 | un-built widget (A1) |
 | 41 | `body:alert` | `ABSENT-inWT` | 519 | 212 | 119 | ENGR (0.38, 15, 3) | Standard 437, Fundamentals 62, Bilingual 11 | floor ok |
 | 42 | `body:widget:typing` | `body:widget:cv2-interactive` | 512 | 102 | 62 | ENGC (1.00, 13, 3) | Standard 468, Fundamentals 42, Bilingual 2 | un-built widget (A1) |
 | 43 | `body:widget:radioQuiz` | `body:widget:cv2-interactive` | 494 | 75 | 63 | ENGC (0.87, 53, 6) | Standard 379, Fundamentals 115 | un-built widget (A1) |
-| 44 | `body:panel:activity` | `ABSENT-inWT` | 490 | 43 | 42 | TWHK (0.32, 73, 4) | Inquiry 487, Standard 3 | floor ok |
-| 45 | `body:widget:tabs` | `ABSENT-notWT` | 486 | 70 | 48 | AGH (0.36, 39, 4) | Standard 458, Fundamentals 27, Inquiry 1 | not derivable |
-| 46 | `body:widget:multiChoiceQuiz` | `body:free` | 482 | 53 | 43 | WJFUN (0.29, 93, 3) | Standard 331, Fundamentals 135, Bilingual 12 | floor ok |
-| 47 | `body:widget:accordion` | `body:activity` | 478 | 48 | 33 | BLL (0.07, 53, 10) | Standard 431, Bilingual 39, Inquiry 7 | floor ok |
+| 44 | `body:widget:tabs` | `ABSENT-notWT` | 486 | 70 | 48 | AGH (0.36, 39, 4) | Standard 458, Fundamentals 27, Inquiry 1 | not derivable |
+| 45 | `body:widget:multiChoiceQuiz` | `body:free` | 482 | 53 | 43 | WJFUN (0.29, 93, 3) | Standard 331, Fundamentals 135, Bilingual 12 | floor ok |
+| 46 | `body:widget:accordion` | `body:activity` | 478 | 48 | 33 | BLL (0.07, 53, 10) | Standard 431, Bilingual 39, Inquiry 7 | floor ok |
+| 47 | `body:panel:activity` | `ABSENT-inWT` | 455 | 42 | 41 | TWHK (0.32, 73, 4) | Inquiry 452, Standard 3 | floor ok |
 | 48 | `body:panel:free` | `ABSENT-notWT` | 452 | 41 | 37 | TWHA (0.39, 167, 6) | Inquiry 320, Standard 132 | not derivable |
 | 49 | `body:widget:wordHighlighter` | `body:free` | 436 | 55 | 42 | WJFUN (0.72, 277, 9) | Fundamentals 306, Standard 130 | CANDIDATE |
 | 50 | `body:widget:multiChoiceQuiz` | `ABSENT-notWT` | 430 | 75 | 63 | SSFUN (0.81, 42, 4) | Standard 285, Fundamentals 107, Bilingual 30 | not derivable |
-| 51 | `body:panel:widget:accordion` | `ABSENT-inWT` | 417 | 14 | 13 | EXPFUN (0.47, 330, 4) | Inquiry 410, Standard 7 | below floor |
+| 51 | `body:panel:widget:accordion` | `ABSENT-inWT` | 407 | 14 | 13 | EXPFUN (0.47, 330, 4) | Inquiry 400, Standard 7 | below floor |
 | 52 | `body:panel:activity` | `body:panel:free` | 395 | 43 | 41 | CEDK (0.20, 44, 3) | Inquiry 383, Standard 12 | floor ok |
 | 53 | `body:widget:multiChoiceQuiz` | `body:activity` | 355 | 57 | 43 | PES (0.73, 81, 3) | Standard 284, Fundamentals 65, Bilingual 5 | CANDIDATE |
 | 54 | `body:widget:dropDown` | `ABSENT-notWT` | 346 | 21 | 19 | ENGI (0.26, 11, 3) | Standard 234, Fundamentals 112 | not derivable |
@@ -90,9 +90,9 @@ Floors (§1d / §1g): a chrome transition (header / menu / footer on either side
 | 69 | `body:panel:widget:accordion` | `ABSENT-notWT` | 233 | 16 | 15 | EXPFUN (0.21, 148, 3) | Inquiry 177, Standard 56 | not derivable |
 | 70 | `body:widget:dragAndDrop` | `body:free` | 232 | 45 | 40 | PES (0.17, 15, 3) | Standard 147, Fundamentals 36, Inquiry 34 | floor ok |
 | 71 | `header:other` | `ABSENT-notWT` | 225 | 210 | 111 | MXFUN (1.00, 3, 3) | Standard 184, Fundamentals 17, Bilingual 17 | not derivable |
-| 72 | `body:panel:free` | `ABSENT-inWT` | 212 | 42 | 39 | CEDO (0.11, 24, 4) | Inquiry 181, Standard 31 | floor ok |
+| 72 | `body:panel:free` | `ABSENT-inWT` | 210 | 41 | 38 | CEDO (0.11, 24, 4) | Inquiry 179, Standard 31 | floor ok |
 | 73 | `body:widget:flipCard` | `ABSENT-notWT` | 206 | 62 | 56 | SSFUN (0.38, 18, 3) | Standard 138, Fundamentals 61, Bilingual 4 | not derivable |
-| 74 | `body:panel:free` | `body:panel:widget:cv2-interactive` | 200 | 27 | 27 | CEDR (0.17, 40, 3) | Inquiry 197, Standard 3 | floor ok |
+| 74 | `body:panel:free` | `body:panel:widget:cv2-interactive` | 203 | 28 | 28 | CEDR (0.18, 42, 3) | Inquiry 200, Standard 3 | floor ok |
 | 75 | `body:widget:wordHighlighter` | `ABSENT-inWT` | 199 | 48 | 40 | ENGJ (0.55, 23, 5) | Standard 107, Fundamentals 92 | floor ok |
 | 76 | `body:widget:speechBubble` | `body:widget:cv2-interactive` | 198 | 92 | 60 | XDLS (0.26, 47, 5) | Standard 175, Fundamentals 20, Inquiry 3 | un-built widget (A1) |
 | 77 | `body:activity` | `body:alert` | 196 | 55 | 34 | ANZH (0.08, 49, 3) | Standard 190, Fundamentals 3, Bilingual 2 | floor ok |
@@ -122,12 +122,12 @@ Floors (§1d / §1g): a chrome transition (header / menu / footer on either side
 | 101 | `menu:Knowledge` | `menu:Overview` | 144 | 12 | 12 | BLL (0.88, 142, 11) | Standard 131, Inquiry 11, Fundamentals 2 | CANDIDATE |
 | 102 | `body:widget:hintSlider` | `body:widget:cv2-interactive` | 141 | 21 | 18 | ENFUN (0.21, 15, 3) | Standard 116, Fundamentals 25 | un-built widget (A1) |
 | 103 | `body:widget:accordion` | `body:widget:carousel` | 137 | 17 | 11 |  | Standard 137 | below floor |
-| 104 | `body:panel:free` | `body:panel:activity` | 131 | 26 | 26 | BLL (0.24, 29, 8) | Inquiry 131 | floor ok |
-| 105 | `body:panel:widget:multiChoiceQuiz` | `body:panel:widget:cv2-interactive` | 126 | 9 | 9 | TWHA (0.25, 60, 3) | Inquiry 126 | un-built widget (A1) |
-| 106 | `body:alert` | `body:widget:cv2-interactive` | 125 | 59 | 47 | ENGI (0.12, 10, 3) | Standard 87, Fundamentals 28, Bilingual 10 | floor ok |
-| 107 | `body:free` | `header:other` | 123 | 123 | 50 | ANZH (0.03, 16, 4) | Standard 120, Inquiry 3 | floor ok |
-| 108 | `body:widget:typing` | `body:activity` | 120 | 34 | 25 | MXDI (0.16, 28, 3) | Standard 118, Fundamentals 2 | floor ok |
-| 109 | `body:panel:widget:accordion` | `body:panel:widget:cv2-interactive` | 120 | 10 | 10 |  | Inquiry 118, Standard 2 | un-built widget (A1) |
+| 104 | `body:panel:free` | `body:panel:activity` | 130 | 26 | 26 | BLL (0.24, 29, 8) | Inquiry 130 | floor ok |
+| 105 | `body:panel:widget:accordion` | `body:panel:widget:cv2-interactive` | 130 | 11 | 11 |  | Inquiry 128, Standard 2 | un-built widget (A1) |
+| 106 | `body:panel:widget:multiChoiceQuiz` | `body:panel:widget:cv2-interactive` | 126 | 9 | 9 | TWHA (0.25, 60, 3) | Inquiry 126 | un-built widget (A1) |
+| 107 | `body:alert` | `body:widget:cv2-interactive` | 125 | 59 | 47 | ENGI (0.12, 10, 3) | Standard 87, Fundamentals 28, Bilingual 10 | floor ok |
+| 108 | `body:free` | `header:other` | 123 | 123 | 50 | ANZH (0.03, 16, 4) | Standard 120, Inquiry 3 | floor ok |
+| 109 | `body:widget:typing` | `body:activity` | 120 | 34 | 25 | MXDI (0.16, 28, 3) | Standard 118, Fundamentals 2 | floor ok |
 | 110 | `body:widget:radioQuiz` | `ABSENT-inWT` | 119 | 22 | 22 | HPFUN (0.41, 28, 3) | Standard 73, Fundamentals 37, Inquiry 9 | floor ok |
 | 111 | `body:free:side` | `ABSENT-notWT` | 119 | 43 | 36 | XDLS (0.35, 7, 3) | Standard 91, Fundamentals 26, Inquiry 2 | not derivable |
 | 112 | `body:alert:side` | `ABSENT-inWT` | 118 | 61 | 46 | MXFU (0.50, 22, 3) | Standard 102, Fundamentals 11, Bilingual 5 | floor ok |
@@ -148,16 +148,16 @@ Floors (§1d / §1g): a chrome transition (header / menu / footer on either side
 | 127 | `body:panel:widget:flipCard` | `ABSENT-inWT` | 100 | 7 | 7 | TWHA (0.21, 43, 4) | Inquiry 100 | below floor |
 | 128 | `other:free` | `body:free` | 94 | 5 | 5 |  | Standard 94 | below floor |
 | 129 | `menu:Standards` | `ABSENT-notWT` | 92 | 42 | 40 | GEO (0.40, 4, 3) | Standard 89, Inquiry 3 | not derivable |
-| 130 | `body:activity` | `body:widget:flipCard` | 92 | 11 | 8 |  | Standard 85, Inquiry 7 | below floor |
-| 131 | `body:widget:tabs` | `body:widget:carousel` | 92 | 10 | 6 |  | Standard 68, Fundamentals 24 | below floor |
-| 132 | `body:widget:selfCheck` | `ABSENT-inWT` | 91 | 26 | 21 |  | Standard 70, Inquiry 14, Fundamentals 7 | floor ok |
-| 133 | `body:free` | `body:widget:flipCard` | 91 | 14 | 13 | XLP (0.03, 12, 3) | Standard 59, Fundamentals 32 | below floor |
+| 130 | `body:free` | `body:widget:flipCard` | 92 | 14 | 13 | XLP (0.03, 12, 3) | Standard 60, Fundamentals 32 | below floor |
+| 131 | `body:activity` | `body:widget:flipCard` | 92 | 11 | 8 |  | Standard 85, Inquiry 7 | below floor |
+| 132 | `body:widget:tabs` | `body:widget:carousel` | 92 | 10 | 6 |  | Standard 68, Fundamentals 24 | below floor |
+| 133 | `body:widget:selfCheck` | `ABSENT-inWT` | 91 | 26 | 21 |  | Standard 70, Inquiry 14, Fundamentals 7 | floor ok |
 | 134 | `body:widget:dropQuiz` | `body:activity` | 89 | 15 | 14 | HPFUN (0.28, 30, 4) | Fundamentals 45, Standard 44 | below floor |
 | 135 | `menu:Practices` | `menu:Overview` | 86 | 11 | 11 | BLL (1.00, 85, 10) | Standard 85, Fundamentals 1 | CANDIDATE |
 | 136 | `body:widget:wordHighlighter` | `body:widget:cv2-interactive` | 86 | 19 | 18 | BLL (0.35, 15, 3) | Standard 45, Fundamentals 41 | un-built widget (A1) |
 | 137 | `body:widget:tabs` | `body:alert` | 86 | 7 | 5 |  | Standard 86 | below floor |
 | 138 | `menu:pane2` | `menu:Overview` | 86 | 7 | 7 | XMES (1.00, 45, 3) | Standard 64, Bilingual 22 | below floor |
-| 139 | `body:widget:multiChoiceQuiz` | `OTHER-PAGE` | 80 | 12 | 10 |  | Standard 60, Bilingual 20 | below floor |
+| 139 | `body:widget:multiChoiceQuiz` | `OTHER-PAGE` | 85 | 13 | 11 |  | Standard 65, Bilingual 20 | below floor |
 | 140 | `body:alert:side` | `body:activity` | 79 | 36 | 20 | TRR (0.48, 29, 3) | Standard 48, Bilingual 29, Inquiry 1 | floor ok |
 | 141 | `body:free:side` | `ABSENT-inWT` | 78 | 30 | 29 |  | Standard 75, Fundamentals 2, Inquiry 1 | floor ok |
 | 142 | `menu:Standards` | `ABSENT-inWT` | 78 | 53 | 46 | XDLS (0.34, 20, 8) | Standard 68, Inquiry 10 | floor ok |
@@ -193,8 +193,8 @@ Floors (§1d / §1g): a chrome transition (header / menu / footer on either side
 | `body:widget:accordion` | `body:free` | 132 | 54 | 40 | AGH1004 AGH1004_2_0.html <h4>→<h4> “Semi-intensive Farming”; AGH1004 AGH1004_2_0.html <h4>→<h4> “Semi-extensive Farming”; AGH1006 AGH1006_6_0.html <h4>→<h3> “Integrated weed management” |
 | `menu:flat` | `OTHER-PAGE` | 130 | 104 | 21 | ANZH203 ANZH203_1_0.html <h4>→<—> “How will I know if I’ve learned it?”; ANZH203 ANZH203_2_0.html <h4>→<—> “How will I know if I’ve learned it?”; ANZH203 ANZH203_3_0.html <h4>→<—> “How will I know if I’ve learned it?” |
 | `body:free` | `body:activity` | 129 | 104 | 71 | AGH1003 AGH1003_3_0.html <h3>→<p> “Flowers and fertilisers”; AGH1004 AGH1004_5_0.html <h3>→<h3> “Impact of Irrigation on Production”; AGH1005 AGH1005_7_0.html <h3>→<p> “Common pests and diseases” |
-| `body:widget:flipCard` | `ABSENT-inWT` | 123 | 46 | 38 | CEDO502 CEDO502_1_1.html <h5>→<—> “Credit card shopping”; CEDO502 CEDO502_5_0.html <h5>→<—> “What is a closed question?”; CEDO502 CEDO502_5_0.html <h5>→<—> “What is an open question?” |
 | `body:free` | `header:other` | 121 | 121 | 48 | AGH1005 AGH1005_0_0.html <h3>→<h1> “Ko te tūhura i te tipu me te tukanga i Aotearoa | ”; AGH1005 AGH1005_2_0.html <h3>→<h1> “Exploring plant anatomy and its impact on primary ”; AGH1005 AGH1005_5_0.html <h3>→<h1> “Exploring the plant process of respiration and its” |
+| `body:widget:flipCard` | `ABSENT-inWT` | 110 | 40 | 34 | CEDO502 CEDO502_1_1.html <h5>→<—> “Credit card shopping”; CEDR501 CEDR501_4_0.html <h4>→<—> “Pānui 1: Aiko arrives early”; CEDR501 CEDR501_4_0.html <h4>→<—> “Pānui 2: Taika is late” |
 | `body:alert` | `body:free` | 93 | 76 | 51 | AGH1003 AGH1003_5_0.html <h4>→<p> “Why is it important to add lime before fertiliser ”; AGH1009 AGH1009_4_0.html <h4>→<p> “A note on sprays”; ANZH103 ANZH103_1_0.html <h3>→<h3> “What happened after the Treaty was signed on 6 Feb” |
 | `body:widget:carousel` | `ABSENT-inWT` | 83 | 33 | 27 | ANZH105 ANZH105_6_0.html <h4>→<—> “New Zealand Māori Kapa haka”; ANZH303 ANZH303_5_0.html <h4>→<—> “The Eight-pointed Stars”; BLL262 BLL262_3_0.html <h5>→<—> “Pointillism Fish Part 1” |
 | `body:panel:activity` | `body:panel:free` | 75 | 22 | 22 | BLL240 BLL240_0_0.html <h4>→<h5> “Words making the 'ear' sound”; BLL240 BLL240_0_0.html <h4>→<h5> “Words making the 'air' sound”; BLL240 BLL240_0_0.html <h4>→<h5> “Words making the 'ur' sound” |
@@ -205,7 +205,7 @@ Floors (§1d / §1g): a chrome transition (header / menu / footer on either side
 | `body:free` | `OTHER-PAGE` | 69 | 31 | 24 | AGH1005 AGH1005_4_0.html <h3>→<—> “Exploring the plant process of transpiration”; CBI1009 CBI1009_1_0.html <h2>→<—> “Soluble and insoluble Salts”; CEDO501 CEDO501_3_0.html <h3>→<—> “Search engines and Artificial Intelligence” |
 | `body:widget:flipCard` | `body:widget:cv2-interactive` | 68 | 22 | 18 | ANZH105 ANZH105_5_0.html <h4>→<td> “What is it made of?”; ANZH105 ANZH105_5_0.html <h4>→<td> “Where is it from?”; ANZH105 ANZH105_5_0.html <h4>→<td> “How old is it?” |
 | `body:alert` | `ABSENT-inWT` | 62 | 50 | 35 | AGH1003 AGH1003_1_0.html <h4>→<—> “Need some extra help?”; ANZH301 ANZH301_7_0.html <h4>→<—> “Want to know more?”; ANZH301 ANZH301_9_0.html <h4>→<—> “Some other examples of urban marae:” |
-| `body:panel:activity` | `ABSENT-inWT` | 61 | 24 | 23 | BLL120 BLL120_0_0.html <h3>→<—> “Writing the letter k”; BLL120 BLL120_0_0.html <h3>→<—> “My name is, my sound is…”; BLL160 BLL160_0_0.html <h4>→<—> “A child was in bed sleeping. A duck ran in the doo” |
+| `body:panel:activity` | `ABSENT-inWT` | 60 | 24 | 23 | BLL120 BLL120_0_0.html <h3>→<—> “Writing the letter k”; BLL120 BLL120_0_0.html <h3>→<—> “My name is, my sound is…”; BLL160 BLL160_0_0.html <h4>→<—> “A child was in bed sleeping. A duck ran in the doo” |
 | `body:widget:carousel` | `body:widget:cv2-interactive` | 57 | 20 | 18 | BLL271 BLL271_1_0.html <h4>→<td> “pa / ki / hi / wi”; CEDO502 CEDO502_5_0.html <h5>→<p> “Use keywords carefully”; CEDO502 CEDO502_5_0.html <h5>→<p> “Use headings and subheadings” |
 | `menu:Information` | `ABSENT-inWT` | 56 | 45 | 43 | BLL251 BLL251_0_0.html <h4>→<—> “Tirohanga Whānui | Overview”; BLL255 BLL255_0_0.html <h4>→<—> “Tirohanga Whānui | Overview”; BLL257 BLL257_0_0.html <h4>→<—> “Tirohanga Whānui | Overview” |
 | `body:panel:widget:accordion` | `body:panel:free` | 55 | 12 | 12 | CEDK401 CEDK401_0_0.html <h4>→<h4> “Go to your journal”; CEDK401 CEDK401_0_0.html <h4>→<h4> “Go to your journal”; CEDK401 CEDK401_0_0.html <h4>→<h4> “Go to your journal” |
@@ -230,34 +230,34 @@ Floors (§1d / §1g): a chrome transition (header / menu / footer on either side
 | `body:activity` | `body:widget:flipCard` | 21 | 4 | 2 | ENGI102 ENGI102_2_0.html <h4>→<p> “Dress-up or Puppet Play”; ENGI102 ENGI102_2_0.html <h4>→<p> “Make a picture of a scene in the story”; ENGI102 ENGI102_2_0.html <h4>→<p> “Create an important item from the fairytale out of” |
 | `menu:LI` | `menu:Overview` | 21 | 9 | 9 | MXS1004 MXS1004_0_0.html <h5>→<h4> “Whāinga Ako | Learning Intentions”; MXS1004 MXS1004_0_0.html <h5>→<h4> “Paearu Angitu | How will I know if I’ve learned it”; PMT101 PMT101_0_0.html <h5>→<td> “Kei te ako au kia:” |
 | `menu:LI` | `menu:Information` | 21 | 5 | 5 | TRR103 TRR103_0_0.html <h5>→<h5> “Whakamaheretia tō wā:”; TRR103 TRR103_0_0.html <h5>→<h5> “He aha tāku hei tīmata?”; TRR103 TRR103_0_0.html <h5>→<h5> “What do I need to get started?” |
+| `body:panel:activity` | `body:panel:widget:cv2-interactive` | 20 | 10 | 10 | BLL120 BLL120_0_0.html <h3>→<p> “Where is the /k/ sound?”; BLL210 BLL210_0_0.html <h5>→<th> “Uses one of these things:”; CEDK102 CEDK102_0_0.html <h4>→<p> “How to change your MTK profile picture” |
 | `body:panel:free` | `body:panel:activity` | 20 | 10 | 10 | BLL250 BLL250_0_0.html <h2>→<h3> “The 'augh' letter team”; CEDK101 CEDK101_0_0.html <h3>→<h3> “How does light travel?”; CEDK101 CEDK101_0_0.html <h3>→<h3> “Light reflection and refraction” |
 | `body:widget:accordion` | `body:widget:carousel` | 19 | 5 | 5 | AGH1005 AGH1005_7_0.html <h5>→<li> “Powdery mildew (various species):”; AGH1005 AGH1005_7_0.html <h5>→<li> “Rust diseases (various species):”; AGH1005 AGH1005_7_0.html <h5>→<li> “Tomato yellow leaf curl virus (TYLCV):” |
-| `body:panel:activity` | `body:panel:widget:cv2-interactive` | 19 | 9 | 9 | BLL120 BLL120_0_0.html <h3>→<p> “Where is the /k/ sound?”; BLL210 BLL210_0_0.html <h5>→<th> “Uses one of these things:”; CEDR204 CEDR204_0_0.html <h4>→<p> “A Day at the Beach” |
-| `menu:Overview` | `OTHER-PAGE` | 19 | 19 | 6 | ENGJ201 ENGJ201_1_0.html <h3>→<—> “How will I know if I’ve learned it?”; ENGJ201 ENGJ201_2_0.html <h3>→<—> “How will I know if I’ve learned it?”; ENGJ201 ENGJ201_3_0.html <h3>→<—> “How will I know if I’ve learned it?” |
+| `body:panel:widget:accordion` | `body:panel:widget:cv2-interactive` | 19 | 8 | 8 | CEDK102 CEDK102_0_0.html <h4>→<th> “Get to know your camera”; CEDK102 CEDK102_0_0.html <h4>→<th> “How to be a digital kaitiaki:”; CEDK102 CEDK102_0_0.html <h4>→<td> “Being a good friend online:” |
 
 ## 3. Region agreement — of the gold's blocks in region A that Claude has on the paired page, the share it keeps in A
 
 | gold region | matched on page | kept in region | moved | agreement |
 |---|---:|---:|---:|---:|
-| `body:free` | 24015 | 20237 | 3778 | 0.843 |
-| `body:activity` | 18329 | 11603 | 6726 | 0.633 |
+| `body:free` | 24018 | 20238 | 3780 | 0.843 |
+| `body:activity` | 18335 | 11603 | 6732 | 0.633 |
 | `menu:flat` | 7743 | 7316 | 427 | 0.945 |
-| `body:widget:accordion` | 6132 | 2749 | 3383 | 0.448 |
+| `body:widget:accordion` | 6136 | 2749 | 3387 | 0.448 |
 | `body:widget:dragAndDrop` | 4007 | 328 | 3679 | 0.082 |
 | `acks` | 3936 | 3926 | 10 | 0.997 |
 | `body:alert` | 3629 | 1899 | 1730 | 0.523 |
 | `menu:Overview` | 3371 | 3258 | 113 | 0.966 |
 | `body:widget:multiChoiceQuiz` | 3320 | 90 | 3230 | 0.027 |
-| `body:panel:activity` | 3206 | 2047 | 1159 | 0.638 |
-| `body:panel:free` | 3032 | 2584 | 448 | 0.852 |
-| `body:widget:carousel` | 2131 | 1140 | 991 | 0.535 |
+| `body:panel:activity` | 3241 | 2056 | 1185 | 0.634 |
+| `body:panel:free` | 3034 | 2584 | 450 | 0.852 |
+| `body:widget:flipCard` | 2158 | 1138 | 1020 | 0.527 |
+| `body:widget:carousel` | 2136 | 1140 | 996 | 0.534 |
 | `menu:Information` | 2129 | 1477 | 652 | 0.694 |
-| `body:widget:flipCard` | 2113 | 1093 | 1020 | 0.517 |
-| `body:widget:tabs` | 2043 | 508 | 1535 | 0.249 |
+| `body:widget:tabs` | 2066 | 508 | 1558 | 0.246 |
 | `body:widget:speechBubble` | 1364 | 960 | 404 | 0.704 |
 | `header:other` | 1335 | 1266 | 69 | 0.948 |
 | `body:widget:dropQuiz` | 881 | 81 | 800 | 0.092 |
-| `body:panel:widget:accordion` | 794 | 350 | 444 | 0.441 |
+| `body:panel:widget:accordion` | 804 | 350 | 454 | 0.435 |
 | `body:widget:radioQuiz` | 715 | 0 | 715 | 0.000 |
 | `body:widget:typing` | 699 | 21 | 678 | 0.030 |
 | `body:widget:wordHighlighter` | 598 | 0 | 598 | 0.000 |
@@ -286,25 +286,25 @@ Every gold block matched on the paired page, in gold order, carries its Claude p
 
 | gold region | matched | out of order | share | pages | modules |
 |---|---:|---:|---:|---:|---:|
-| `body:free` | 24015 | 853 | 0.036 | 371 | 214 |
-| `body:activity` | 18329 | 842 | 0.046 | 347 | 189 |
+| `body:free` | 24018 | 853 | 0.036 | 371 | 214 |
+| `body:activity` | 18335 | 842 | 0.046 | 347 | 189 |
 | `menu:flat` | 7743 | 113 | 0.015 | 61 | 44 |
-| `body:widget:accordion` | 6132 | 208 | 0.034 | 66 | 54 |
+| `body:widget:accordion` | 6136 | 208 | 0.034 | 66 | 54 |
 | `body:widget:dragAndDrop` | 4007 | 731 | 0.182 | 203 | 146 |
 | `acks` | 3936 | 158 | 0.040 | 67 | 67 |
 | `body:alert` | 3629 | 175 | 0.048 | 115 | 76 |
 | `menu:Overview` | 3371 | 323 | 0.096 | 46 | 46 |
 | `body:widget:multiChoiceQuiz` | 3320 | 245 | 0.074 | 65 | 48 |
-| `body:panel:activity` | 3206 | 249 | 0.078 | 38 | 38 |
-| `body:panel:free` | 3032 | 132 | 0.044 | 29 | 26 |
-| `body:widget:carousel` | 2131 | 90 | 0.042 | 38 | 35 |
+| `body:panel:activity` | 3241 | 242 | 0.075 | 37 | 37 |
+| `body:panel:free` | 3034 | 132 | 0.044 | 29 | 26 |
+| `body:widget:flipCard` | 2158 | 79 | 0.037 | 31 | 28 |
+| `body:widget:carousel` | 2136 | 90 | 0.042 | 38 | 35 |
 | `menu:Information` | 2129 | 89 | 0.042 | 19 | 19 |
-| `body:widget:flipCard` | 2113 | 77 | 0.036 | 31 | 28 |
-| `body:widget:tabs` | 2043 | 113 | 0.055 | 55 | 44 |
+| `body:widget:tabs` | 2066 | 114 | 0.055 | 56 | 45 |
 | `body:widget:speechBubble` | 1364 | 59 | 0.043 | 34 | 29 |
 | `header:other` | 1335 | 43 | 0.032 | 41 | 35 |
 | `body:widget:dropQuiz` | 881 | 48 | 0.054 | 25 | 22 |
-| `body:panel:widget:accordion` | 794 | 55 | 0.069 | 10 | 10 |
+| `body:panel:widget:accordion` | 804 | 55 | 0.068 | 10 | 10 |
 | `body:widget:radioQuiz` | 715 | 14 | 0.020 | 9 | 9 |
 | `body:widget:typing` | 699 | 20 | 0.029 | 11 | 11 |
 | `body:widget:wordHighlighter` | 598 | 23 | 0.038 | 14 | 11 |
@@ -324,7 +324,6 @@ Every gold block matched on the paired page, in gold order, carries its Claude p
 | `h3:he aha tāku i ako` | 7 | 11 | TRR 12, PMT 2, PNR 1 | PMT101 PMT101_3_0.html: “He aha tāku i ako ai?” before “Tohua ngā mea kua akona e koe mō te orangatonutang” |
 | `h4:how will i know i` | 6 | 6 | BLL 3, TEDC 2, FRNO 1 | BLL261 BLL261_0_0.html: “How will I know I have learned it?” before “Written words are made up of letters and letter co” |
 | `li:identifying and recording phonemes in` | 6 | 6 | BLL 6 | BLL271 BLL271_0_0.html: “Identifying and recording phonemes in words, including:” before “Decoding words with less common graphemes or graph” |
-| `p:find things in your home` | 5 | 5 | BLL 15 | BLL110 BLL110_0_0.html: “Find things in your home or in your neighbourhood that have ” before “Draw some things that start with /t/ sound.” |
 | `li:use the words if and` | 5 | 5 | BLL 5 | BLL257 BLL257_0_0.html: “use the words if and then to make predictions about differen” before “Many sounds (phonemes) can be spelt in more than o” |
 | `li:to break te reo māori` | 5 | 5 | BLL 5 | BLL271 BLL271_0_0.html: “to break te reo Māori words into syllables” before “The vowel phoneme for <a> is the /ar/ in ‘car’, fo” |
 | `li:to blend syllables to say` | 5 | 5 | BLL 5 | BLL271 BLL271_0_0.html: “to blend syllables to say te reo Māori words fluently and co” before “The vowel phoneme for <a> is the /ar/ in ‘car’, fo” |
@@ -334,6 +333,7 @@ Every gold block matched on the paired page, in gold order, carries its Claude p
 | `li:blend syllables together to say` | 5 | 5 | BLL 5 | BLL271 BLL271_0_0.html: “blend syllables together to say a word smoothly” before “The vowel phoneme for <a> is the /ar/ in ‘car’, fo” |
 | `h5:hei te mutunga o te` | 5 | 5 | TRR 5 | TRR102 TRR102_0_0.html: “Hei te mutunga o te tau:” before “By the end of the year:” |
 | `p:take a photo of your` | 4 | 4 | BLL 5, ENGR 1, MXFL 1 | BLL110 BLL110_0_0.html: “Take a photo of your handwriting and upload it to show your ” before “Choose one or more of these activities to do. Clic” |
+| `p:find things in your home` | 4 | 4 | BLL 13 | BLL110 BLL110_0_0.html: “Find things in your home or in your neighbourhood that have ” before “Draw some things that start with /t/ sound.” |
 | `li:match definitions to the correct` | 4 | 4 | BLL 4 | BLL257 BLL257_0_0.html: “match definitions to the correct words” before “Many sounds (phonemes) can be spelt in more than o” |
 | `li:to make predictions about different` | 4 | 4 | BLL 4 | BLL272 BLL272_0_0.html: “to make predictions about different possible outcomes using ” before “The vowel phoneme for <a> is the /ar/ in 'car', fo” |
 | `li:match the correct picture with` | 4 | 4 | BLL 4 | BLL272 BLL272_0_0.html: “match the correct picture with audio” before “The vowel phoneme for <a> is the /ar/ in 'car', fo” |
@@ -353,7 +353,6 @@ Every gold block matched on the paired page, in gold order, carries its Claude p
 | `p:watch the following videos` | 3 | 3 | BLL 17 | BLL110 BLL110_0_0.html: “Watch the following videos:” before “My name is, my sound is…” |
 | `p:if your ākonga is having` | 3 | 3 | BLL 13 | BLL110 BLL110_0_0.html: “If your ākonga is having difficulty remembering both the nam” before “My name is, my sound is…” |
 | `p:when a letter is written` | 3 | 3 | BLL 4 | BLL110 BLL110_0_0.html: “When a letter is written as ‘i’ we want you to say its name.” before “Find the letter i” |
-| `p:find things in your house` | 3 | 3 | BLL 5 | BLL110 BLL110_0_0.html: “Find things in your house that start with the sound /i/.” before “Draw some things that start with /i/ or have the /” |
 | `p:draw some things that start` | 3 | 3 | BLL 7 | BLL120 BLL120_0_0.html: “Draw some things that start with /k/.” before “Watch the video and complete one or more of the cr” |
 | `p:watch these videos to learn` | 3 | 3 | BLL 4 | BLL140 BLL140_0_0.html: “Watch these videos to learn more about short and long vowels” before “If a letter is written as /a/ it means we want you” |
 | `p:lets re read the book` | 3 | 3 | BLL 3 | BLL154 BLL154_1_0.html: “Let’s re-read the book from the last module, Sant sings a so” before “These are some sentences from the book ‘Sant sings” |
@@ -369,6 +368,7 @@ Every gold block matched on the paired page, in gold order, carries its Claude p
 | `li:achievement with excellence` | 3 | 3 | ENG 3 | ENG1004 ENG1004_0_0.html: “Achievement with Excellence” before “Context and presentation mode selection” |
 | `p:think like a scientist` | 3 | 3 | TWHA 3, EXPFUN 1 | EXPFUN02 EXPFUN02_0_0.html: “Think like a Scientist” before “Learning goals and learning intentions” |
 | `p:think like a social scientist` | 3 | 3 | TWHA 2, EXPFUN 1 | EXPFUN02 EXPFUN02_0_0.html: “Think like a Social Scientist” before “Learning goals and learning intentions” |
+| `p:think like a mathematician` | 3 | 3 | TWHA 3, EXPFUN 1 | EXPFUN02 EXPFUN02_0_0.html: “Think like a Mathematician” before “Learning goals and learning intentions” |
 
 | gold region · tag | out-of-order blocks | modules |
 |---|---:|---:|
@@ -379,8 +379,8 @@ Every gold block matched on the paired page, in gold order, carries its Claude p
 | `body:widget:multiChoiceQuiz` · p | 225 | 45 |
 | `body:activity` · h3 | 170 | 63 |
 | `acks` · p | 158 | 67 |
-| `body:panel:activity` · p | 145 | 29 |
 | `body:alert` · p | 138 | 68 |
+| `body:panel:activity` · p | 137 | 28 |
 | `body:activity` · li | 133 | 43 |
 | `body:activity` · h4 | 129 | 34 |
 | `body:widget:reorder` · p | 127 | 22 |
@@ -391,7 +391,7 @@ Every gold block matched on the paired page, in gold order, carries its Claude p
 | `body:widget:accordion` · p | 84 | 30 |
 | `body:widget:accordion` · li | 75 | 20 |
 | `body:panel:free` · p | 68 | 21 |
-| `body:panel:activity` · h4 | 61 | 15 |
+| `body:panel:activity` · h4 | 62 | 15 |
 | `body:widget:tabs` · li | 58 | 33 |
 | `body:widget:carousel` · p | 58 | 26 |
 | `body:free` · h4 | 58 | 25 |
@@ -454,8 +454,8 @@ families: BLL 265, WJFUN 209, ENGI 178, MXFL 160, XGF 148, ENGC 138, PWY 130, OS
 - AGH1007 `AGH1007_5_0.html` <p>→<td> “Ewe pregnant with singles”
 - AGH1007 `AGH1007_5_0.html` <p>→<li> “Ewe lamb being finished”
 
-### `body:activity` → `body:widget:cv2-interactive` — 2683 blocks / 710 pages / 334 modules
-families: BLL 258, TRR 221, XMES 151, FRNO 143, WJFUN 127, MXDB 108, MXFL 103, HIS 102
+### `body:activity` → `body:widget:cv2-interactive` — 2689 blocks / 712 pages / 335 modules
+families: BLL 258, TRR 221, XMES 151, FRNO 143, WJFUN 127, MXDB 108, HIS 106, MXFL 103
 - AGH1001 `AGH1001_1_0.html` <p>→<p> “Select the primary products below which you think are produced in New Zealand or Pacific I”
 - AGH1002 `AGH1002_5_0.html` <p>→<p> “Match the chemical symbol with the nutrient.”
 - AGH1003 `AGH1003_2_0.html` <p>→<p> “For each production type, identify the irrigation system which would be best suited.”
@@ -463,8 +463,8 @@ families: BLL 258, TRR 221, XMES 151, FRNO 143, WJFUN 127, MXDB 108, MXFL 103, H
 - AGH1005 `AGH1005_1_0.html` <p>→<p> “Order the following phrases into similarities and differences.”
 - AGH1005 `AGH1005_6_0.html` <p>→<p> “Getting the correct amount of nutrients in the soil is a balancing act for many growers. H”
 
-### `body:free` → `ABSENT-inWT` — 2370 blocks / 655 pages / 294 modules
-families: TEDC 152, ENGJ 104, PWY 103, OSOH 96, XDLS 94, AGH 93, CHFUN 92, WJFUN 86
+### `body:free` → `ABSENT-inWT` — 2367 blocks / 654 pages / 294 modules
+families: TEDC 152, ENGJ 104, PWY 103, OSOH 95, XDLS 94, AGH 93, CHFUN 92, WJFUN 86
 - AGH1001 `AGH1001_0_0.html` <h3>→<—> “An introduction to agricultural and horticultural science in Aotearoa New Zealand | He wha”
 - AGH1002 `AGH1002_1_0.html` <p>→<—> “As soil gets older, more horizons form. Click on the horizons below to find out more about”
 - AGH1003 `AGH1003_0_0.html` <p>→<—> “This module explores the ways farmers and growers do this on various production systems wh”
@@ -472,7 +472,7 @@ families: TEDC 152, ENGJ 104, PWY 103, OSOH 96, XDLS 94, AGH 93, CHFUN 92, WJFUN
 - AGH1006 `AGH1006_2_0.html` <p>→<—> “Commercial crop production uses three main ways to propagate new plants; sowing seeds, cut”
 - AGH1006 `AGH1006_3_0.html` <p>→<—> “Cultivation is especially important in intensive horticulture-like commercial market garde”
 
-### `body:activity` → `ABSENT-inWT` — 2352 blocks / 733 pages / 325 modules
+### `body:activity` → `ABSENT-inWT` — 2345 blocks / 731 pages / 325 modules
 families: TEDC 217, ENGS 138, PWY 137, BLL 117, WJFUN 93, XDLS 90, TRR 83, XMES 81
 - AGH1001 `AGH1001_2_0.html` <p>→<—> “Complete activity 2B in your learning journal.”
 - AGH1002 `AGH1002_4_0.html` <p>→<—> “Go to your learning journal and complete activity 4B and 4C.”
@@ -490,8 +490,8 @@ families: XGF 359, BLL 186, WJFUN 165, MXFL 129, MXFU 117, ENGR 101, PWY 86, ENF
 - ARFUN03 `ARFUN03_0_0.html` <p>→<p> “The dancer’s focus is the audience.”
 - ARFUN03 `ARFUN03_0_0.html` <p>→<p> “The dancer's focus is his foot.”
 
-### `body:free` → `body:widget:cv2-interactive` — 1743 blocks / 374 pages / 215 modules
-families: XDLS 125, OSAH 80, ENGI 78, OSAI 71, SSCI 67, AGH 66, MXFL 62, OSSM 62
+### `body:free` → `body:widget:cv2-interactive` — 1744 blocks / 374 pages / 215 modules
+families: XDLS 125, OSAH 80, ENGI 78, OSAI 71, SSCI 67, AGH 66, OSSM 63, MXFL 62
 - AGH1001 `AGH1001_2_0.html` <p>→<p> “Below is a brief timeline of the events that have shaped Aotearoa into where we stand toda”
 - AGH1002 `AGH1002_3_0.html` <h4>→<th> “Air level in soil”
 - AGH1003 `AGH1003_2_0.html` <p>→<p> “While the irrigation system used mainly depends on the size of the production, a range of ”
@@ -526,8 +526,8 @@ families: HPRE 342, ANZH 290, ENGI 245, SSOG 211, ENGC 44, PWY 44, XWHA 35, ENGJ
 - ANZH401 `ANZH401_1_0.html` <p>→<—> “I am beginning to understand that ...”
 - ANZH401 `ANZH401_1_0.html` <li>→<—> “Colonisation and settlement have been central to Aotearoa New Zealand’s Histories for the ”
 
-### `body:widget:accordion` → `body:widget:cv2-interactive` — 1391 blocks / 178 pages / 122 modules
-families: BLL 151, XGF 94, XDLS 84, PWY 71, MXFL 56, HPRE 55, ENGJ 53, WJFUN 50
+### `body:widget:accordion` → `body:widget:cv2-interactive` — 1395 blocks / 179 pages / 123 modules
+families: BLL 151, XGF 94, XDLS 84, PWY 71, MXFL 60, HPRE 55, ENGJ 53, WJFUN 50
 - AGH1008 `AGH1008_3_0.html` <p>→<th> “Cows, or sheep, are kept in one big group and moved around paddocks daily, or every second”
 - AGH1009 `AGH1009_1_0.html` <p>→<th> “The Treaty of Waitangi is about partnership between the Crown and Māori. This partnership ”
 - ANZH203 `ANZH203_3_0.html` <h4>→<p> “Tupaia and the Endeavour”
@@ -535,7 +535,7 @@ families: BLL 151, XGF 94, XDLS 84, PWY 71, MXFL 56, HPRE 55, ENGJ 53, WJFUN 50
 - BLL112 `BLL112_2_0.html` <li>→<li> “Why do you think the tap might be running?”
 - BLL112 `BLL112_2_0.html` <li>→<li> “What do you notice about this tap?”
 
-### `body:widget:accordion` → `ABSENT-inWT` — 1321 blocks / 216 pages / 133 modules
+### `body:widget:accordion` → `ABSENT-inWT` — 1317 blocks / 216 pages / 133 modules
 families: XMES 127, TEDC 111, CHFUN 109, PWY 92, CEDR 75, AGH 63, BLL 58, XGF 56
 - AGH1003 `AGH1003_4_0.html` <h4>→<—> “Slurry Tankers/Umbilical Systems”
 - AGH1005 `AGH1005_2_0.html` <h4>→<—> “Disease and pest resistance”
@@ -580,8 +580,8 @@ families: TRR 136, AGH 100, HIS 100, MXFL 72, MXDI 61, XDLS 53, MXFU 52, ANZH 42
 - AGH1005 `AGH1005_2_0.html` <p>→<p> “Fruit is formed from the ovary of a flower after fertilisation. Fruit contain seeds used f”
 - AGH1005 `AGH1005_2_0.html` <p>→<p> “The main functions of fruits and seeds are to:”
 
-### `body:widget:multiChoiceQuiz` → `ABSENT-inWT` — 941 blocks / 140 pages / 92 modules
-families: PWY 184, TEDC 98, BLL 56, HPFUN 46, MXFL 44, CEDR 39, OSAI 39, MXFUN 34
+### `body:widget:multiChoiceQuiz` → `ABSENT-inWT` — 936 blocks / 140 pages / 92 modules
+families: PWY 179, TEDC 98, BLL 56, HPFUN 46, MXFL 44, CEDR 39, OSAI 39, MXFUN 34
 - AGH1007 `AGH1007_6_0.html` <p>→<—> “What organ is responsible for producing the egg.”
 - AGH1008 `AGH1008_4_0.html` <p>→<—> “Wool micron (fineness)”
 - BLL114 `BLL114_1_0.html` <p>→<—> “Click on the letter ...”

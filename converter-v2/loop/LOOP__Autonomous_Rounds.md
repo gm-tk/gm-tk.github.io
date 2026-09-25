@@ -13,7 +13,9 @@ RESTORED on 22 September) and 22 September 2026 by the second `/loop-review`
 crashed-round rule, the §3 step-1 in-flight marker and its §3 step-7 clear, and the matching clause in
 the §7 message and `.claude/skills/loop-start/SKILL.md`), and on 24 September 2026 by Chris's decisions after
 session 41 (D14-S1, standing — **§1g THE PLACEMENT CENSUS, NEW**, and its lane added to §4's exhaustion list;
-D14-20 / D14-21 are recorded in `LOOP_STATE.md`). **This file is
+D14-20 / D14-21 are recorded in `LOOP_STATE.md`), and on 25 September 2026 by the third `/loop-review`
+(`LOOP_REVIEW__2026-09-25.md`: §0 items 6–7, §2, §3 steps 1 / 6 / 7, §4, §5d, §7 — thirteen changes, all
+applied in that session). **This file is
 edited IN PLACE only — never rewritten from an older copy, never regenerated from memory after a
 compaction.** At every commit the mirror copy in `pageforge-site/converter-v2/loop/` is proven
 byte-identical (`cmp`), and every session's health check confirms this "Amended" line is present.
@@ -40,8 +42,9 @@ byte-identical (`cmp`), and every session's health check confirms this "Amended"
    §1b). It has been maintained for ~9 months AFTER most of the human gold was built.
 5. `LOOP_STATE.md` at the folder root, IF it exists — a previous session's position in the loop.
    Resume from it. If it does not exist, this is the first session: start at Round 0.
-6. **The latest `LOOP_INTAKE__<date>_*.md`** (folder root; today `LOOP_INTAKE__2026-09-19_98_Modules.md`,
-   the September 2026 intake of 98 modules) — what the corpus is after an intake, the new
+6. **The latest `LOOP_INTAKE__<date>_*.md`** (folder root — the newest by the date in its name, never a
+   named one; on 25 Sept 2026 that is `LOOP_INTAKE__2026-09-22_38_Modules.md`, whose §5 no-build list and §7
+   round order are the ones that stand; the 19 Sept file records the 98-module intake) — what the corpus is after an intake, the new
    families, the modules that cannot convert and why, the traps the intake exposed, and its
    **§7 recommended round order, every item of which must be dispositioned before exhaustion may
    be declared (§4)**. A new intake (§1f) writes a new one.
@@ -49,8 +52,8 @@ byte-identical (`cmp`), and every session's health check confirms this "Amended"
    rebuilt the registries (r408) and fixed the XOTP parsed-text message (r409); round 410 was
    finished by session 29. **CHECK FOR AN IN-FLIGHT ROUND BEFORE PICKING ANYTHING:** the
    Position section and the "Next session starts with" line of `LOOP_STATE.md` say whether a
-   round is in flight or built-but-inert (today: no round in flight — see LOOP_STATE.md; r425 was
-   finished by session 33 on 22 September 2026).
+   round is in flight or built-but-inert (the state file is the only place that says so — this file never
+   does).
    Never `git checkout` an in-flight round's files away without deciding (OPERATING_GUIDE.md
    §16, the round-284 lesson).
    **A DIRTY TREE OUTRANKS A CLEAN-LOOKING POSITION LINE (added 22 September 2026, after the
@@ -62,6 +65,15 @@ byte-identical (`cmp`), and every session's health check confirms this "Amended"
    last shipped state), and whether the round's data flag is `enabled: true` (a live unproven round
    is finished or toggled OFF before ANY regeneration, an intake's included). Write the missing
    §3 step-1 in-flight entry, then continue from §3 step 5. Never `git stash` them either.
+   **A DIRTY TREE MAY ALSO BELONG TO A SESSION THAT IS RUNNING NOW (added 25 September 2026, the third
+   review — session 39 asked Chris which session owned the tree and lost the app).** Before treating loose
+   files as a crashed round, read their mtimes against the clock and against this session's start: files
+   that changed in the last 30 minutes, or an `outputs/` file newer than this session's start that this
+   session did not write, mean another session (a Cowork kickoff Chris started in parallel) owns them. Then:
+   do not touch those files, do not `git add` them, never ask Chris which session owns them (§5c), write one
+   line in `LOOP_STATE.md` naming the files and the time, and take only PICKs whose files do not overlap
+   them; re-check the mtimes at every round boundary — once they have been still for 30 minutes and no
+   commit has claimed them, they are a crashed round and the rule above applies.
 
 Then run `bash _MIGRATION/verify_after_transfer.sh` once. It must say PASS before anything else
 (six checks: the five symlinks, the engine and gate-tool checksums, the corpus census, the two
@@ -587,7 +599,9 @@ menu, in tabs / accordions / carousels, and in hand-off boxes that swallow the t
   (skeleton / footer / menu scaffold / acks / tag normalisation) and at the OPERATING_GUIDE.md
   §10a cadence (every 8 scoped ships, hard stop 16) — and in Round 0d (§1f Phase 3), which the
   §7 message authorises by name and which resets the cadence counter. State the resolved module
-  list and its size in the log before each rebuild.
+  list and its size in the log before each rebuild. **A FULL backstop regeneration carries no
+  ride-along and no engine or data change of its own (25 Sept 2026) — its whole proof is `0 pages
+  differ`; a parked patch rides in an ordinary scoped round (§3 step 1).**
 - **Declines.** A class may be DECLINED without asking Chris when the r182 solidify procedure
   says so: the measured share of the corpus that follows the candidate rule is below 0.60, or it
   is a tie, or there is no derivable discriminator. Record the measurement in the changelog
@@ -665,7 +679,12 @@ Each round is bounded so an interruption loses at most one round of work.
    section vs where Claude puts it, the regions the skeleton collapses (the module menu, tabs, widgets) included.
    Choose the top candidate: chrome regions before body, KB rows first within an area (§1c),
    then the largest derivable population, skipping anything listed under "Declined classes"
-   in `LOOP_STATE.md`. **KB-FIRST CHECK before committing to a
+   in `LOOP_STATE.md`. **Read the Position section's ride-along patch list in the same pass (25 Sept
+   2026):** a parked below-floor patch (`outputs/_rNNN_declined.patch`) whose pages all fall inside the
+   chosen class's affected set RIDES ALONG in that round — behind its own data flag and env toggle, proven
+   by the same OFF probe over the union of the two affected sets, named in the changelog entry as its own
+   delta; a patch is either taken when its area is regenerated or struck with the reason, never parked
+   indefinitely (the Position list names each patch's pages, so the check is one grep). **KB-FIRST CHECK before committing to a
    gold-matching class:** search the KB for a rule covering the element; if one exists, the
    KB rule is the target, not the gold. Write the choice, its measured size per template and
    subject group, and its authority source (§1b, 1–4) to `LOOP_STATE.md` FIRST.
@@ -726,12 +745,27 @@ Each round is bounded so an interruption loses at most one round of work.
    - A verifier's RESULT line must read ✓ at its recorded baseline and ✗ only above it (the r348
      form). A round may not ship while any RESULT line is red; "red at the standing baseline" is
      not a state the loop is allowed to learn to ignore.
+     **A verifier whose RESULT reads ✓ only because nothing was built is passing vacuously (25 Sept 2026):**
+     every verifier with a count in `gate_baseline.json` (`flipcard.total`, `dragdrop.widgets`, `bingo.grids`,
+     `typing.quizzes` / `inputs`, `math.equations`, `menulabels.labels`) must print that count against the
+     baseline's and read ✗ when it FELL — a builder that stops building reports defect 0 and would otherwise
+     pass. Until the tooling round that adds the count test to the bingo / typing / dragAndDrop verifiers
+     ships (queued 25 Sept 2026 as the next session's Round 1), the finalise compares those three TOTAL lines
+     with the baseline by eye and says so in the changelog entry.
 7. **FINALISE** (OPERATING_GUIDE.md §12): prepend the `BUILD_CHANGELOG.md` entry, bump `Config.js AppVersion`,
    update `OPERATING_GUIDE.md` §14 if a baseline or toggle changed, refresh `gate_baseline.json`
-   (every field — `skeleton.pairs` included) and the feature index (`build_feature_index.cjs`)
+   (every field — `skeleton.pairs` included; **each aggregate read off the round's own gate log, never typed
+   from memory (25 Sept 2026): the r494–r498 finalise scripts updated `pages_ge_50` and `raw_mean_pct` but not
+   `mean_scaffold_pct`, `median_scaffold_pct` or `body_compare.any_breakdown`, and eight rounds were judged
+   against a stale baseline until the session-46 backstop re-based it; from the queued tooling round on,
+   `_fastloop_diff.py --commit` writes every aggregate itself and a finalise script edits notes only — until
+   then the finalise script asserts each field it sets against the live value and lists the aggregate keys it
+   did not touch**) and the feature index (`build_feature_index.cjs`)
    after any regeneration, **mirror every changed loop artefact — `gate_baseline.json`,
    `run_all_gates.sh`, `_corpus.py`, any new verifier, `LOOP_STATE.md`, `KB_AMALGAMATION_STATUS.md`,
-   `DIFF_QUEUE.md`, `outputs/COVERAGE_DASHBOARD.md`, this file, and the command copies
+   `DIFF_QUEUE.md`, `outputs/COVERAGE_DASHBOARD.md`, `outputs/_coverage_dashboard.json`,
+   `outputs/_placement_census.md` / `.json` (the standing instruments' outputs — the per-session mirror
+   script had copied only the dashboard's `.md`), this file, and the command copies
    (`.claude/skills/*/SKILL.md` → `loop/_skills/<name>.SKILL.md`, `.claude/settings.json` →
    `loop/_settings/`, `.claude/hooks/*` → `loop/_hooks/`) — into `pageforge-site/converter-v2/loop/`
    and prove the mirror byte-identical (`cmp`)**:
@@ -740,8 +774,8 @@ Each round is bounded so an interruption loses at most one round of work.
    one). If the round changed the Claude dir or page count, update the `expect` values at
    `_MIGRATION/verify_after_transfer.sh` lines 76–80 the same way (dated comment,
    `.pre-r<NNN>.bak`) — the next health check reads a stale value as a broken tree. When the
-   round just finalised is the one §0 item 7 or the §0 census table names (today r425), update
-   those two places in the same commit (item 7 → "no round in flight — see LOOP_STATE.md"), **and CLEAR
+   round just finalised changes a figure the §0 census table carries, update the table in the same
+   commit, **and CLEAR
    the step-1 in-flight marker in the same write** — the Position bullet goes back to "no round in
    flight", or to `LAST BUILT, SHIPPED INERT: r<N>` if the round shipped inert. A finalise that leaves
    the marker standing is as wrong as a PICK that never raised it. Then `git add`
@@ -759,8 +793,8 @@ refresh the state after every scoped regen, and run a fresh full score when one 
   corpus, and has no candidate row left (chrome floor 10 modules, body floor 20 pages, each
   judged per template/subject group); `KB_AMALGAMATION_STATUS.md` has no NOT CAPTURED row
   left with ≥ 20 in-scope pages; and the dashboard backlog has no derivable class ≥ 20 pages.
-  **Any exhaustion verdict reached before the latest Round 0d (§1f) is VOID** — today that means
-  before 19 September 2026 — for the same reason the sessions 15–18 verdicts are: the corpus
+  **Any exhaustion verdict reached before the latest Round 0d (§1f) is VOID** — the date in the newest
+  `LOOP_INTAKE__*.md`'s name, 22 September 2026 at the 25 Sept amendment — for the same reason the sessions 15–18 verdicts are: the corpus
   gained 98 modules and 24 family bases the queue had never seen, and re-mining on 19 Sept moved
   it 168 → 188 candidate rows (183 after round 408). Exhaustion may only be declared on a miner
   run over the POST-intake corpus. A "do not re-measure" note in `LOOP_STATE.md` is likewise VOID
@@ -775,11 +809,18 @@ refresh the state after every scoped regen, and run a fresh full score when one 
   it has not used this session** — the lanes are: the miner's rows; the KB queue; a content-level
   re-read of the hand-off boxes on disk; the recognition / no-build list; per-family registry rows
   (§1d exception 1); the loss ledger's largest family; the placement census (§1g, D14-S1) — if
-  every lane has been tried this session, the verdict stands, and the STOPPED entry names all seven with what each found. (Nine exhaustion
+  every lane has been tried this session, the verdict stands, and the STOPPED entry names all seven with what each found.
+  **A lane counts as TRIED only when its standing instrument was run fresh on the current corpus in this
+  session and its top row dispositioned in writing (25 Sept 2026 review):** the miner (`_diff_miner.py`),
+  the KB queue's row counts, the hand-off-box text read (`_s43_widgetloss2.cjs` + its report), the
+  recognition list against the no-build list, the registry rows' in-memory probe, the loss ledger,
+  `_placement_census.py`. A lane looked at is not a lane tried. (Nine exhaustion
   stops in eighteen sessions to 21 Sept 2026; each of the five miner-quoted ones — s21, s22, s24,
   s25, s30 — was followed within two sessions by 7–11 shipped rounds and +0.29 to +0.34pp found
   on a lane the stopping session had not tried; s30 stopped with two items still recorded in the
-  intake's §7 list.)
+  intake's §7 list. Sessions 34, 35 and 36 on 22–23 Sept each declared exhaustion with "every lane
+  tried" and each was refuted within one session — +0.16pp, +0.09pp, then the D13 decisions — by a
+  round found on a lane the refuting session measured with a NEW instrument.)
 - **Waiting.** Every remaining class ≥ 20 pages is BLOCKED — needs Chris. This is NOT
   exhaustion: report it as "the loop needs N decisions", list each with §5 item 4, and point
   Chris at `/loop-decisions`. Resume only after `LOOP_STATE.md` carries the answers.
@@ -794,7 +835,10 @@ refresh the state after every scoped regen, and run a fresh full score when one 
   needs a human decision, not another round. (16 Sept 2026 review: all three plateau stops to
   then were followed by a score-moving round in the very next session; none has fired since.)
 - **Budget.** The round cap or time cap in the kickoff message is reached (`/loop-start` with no
-  argument = **12 rounds or 10 hours**, the §7 default). When the time left is less than the next
+  argument = **16 rounds or 10 hours**, the §7 default — raised from 12 on 25 Sept 2026: five of the
+  seven sessions to then had hit the 12-round cap at 2 h 30 – 7 h 05 with the 10-hour cap untouched and
+  at most one compaction each, and every restart costs Chris a `/loop-start` plus the session 20–30
+  minutes of health check and first PICK; the hour cap and the §5d thrash breaker still bound a session). When the time left is less than the next
   round needs to ship AND prove (≈ 60–75 minutes for an engine round, more with a full
   regeneration), do not start it: finish that round's PICK and measurement, record them in
   `LOOP_STATE.md`, and stop — the sessions 11–12 pattern.
@@ -897,6 +941,13 @@ because the files were smaller then. **The fix is in the files, not the model.**
   key you need.
 - Every tool output is capped: pipe anything that could be long through `| head -c 6000` (or
   `| tail -n 40`). A regeneration or gate log goes to a file; print its last 3 lines.
+- **Every time written into `LOOP_STATE.md` is read from the clock at that moment (25 Sept 2026)** —
+  `date '+%H:%M'` in the same command as the write, never estimated: sessions 40, 42 and 45 wrote ≈ times
+  10–80 minutes ahead of the real clock and had to be corrected from the commit times afterwards.
+- **Backup copies live in `_Backups/loop_state/`, never at the folder root (25 Sept 2026):** a
+  `.pre-<tag>.bak` of `LOOP_STATE.md`, `KB_AMALGAMATION_STATUS.md` or this file is written there
+  (`mkdir -p` first); the health check moves any `*.bak` found at the root into it (130 of them, 12 MB,
+  had accumulated by 25 Sept 2026).
 
 **Post-compaction re-read (replaces the §6 sentence).** After an automatic compaction the FIRST
 actions are, in order and nothing else: (1) `wc -c LOOP_STATE.md DIFF_QUEUE.md LOOP__Autonomous_Rounds.md`;
@@ -993,7 +1044,7 @@ lost and so the health check can compare it with the skill body mechanically (`$
 the placeholder `/loop-start` fills with the budget Chris typed; it is kept literally in both
 copies so they are byte-identical):
 
-> Continue the PageForge autonomous loop in this folder. Start with a health check: `git status` in pageforge-site, `bash _MIGRATION/verify_after_transfer.sh` (must PASS — except that a census FAIL whose only cause is that the gold-module, gold-page or docx counts have GROWN is the INTAKE TRIGGER: new human-developer modules have arrived, so do Round 0d per LOOP__Autonomous_Rounds.md §1f — build their Claude equivalents, re-base every instrument, write the intake handover and re-prioritise the queue — before any PICK and before the miner check, but AFTER finishing or toggling OFF any in-flight or built-but-inert round; a Claude-dir or Claude-page count off by exactly what the last shipped round records is a stale expect value in that script — fix it and continue; then run the §0 intake checks (b)–(d)), delete every stale git lock in pageforge-site (`.git/index.lock`, `.git/HEAD.lock`, `.git/next-index-*.lock`, `.git/objects/maintenance.lock`, and any `.git/objects/*/tmp_obj_*`), `wc -c LOOP_STATE.md DIFF_QUEUE.md` — LOOP_STATE.md over 100 KB → condense/archive per §5d BEFORE anything else (over 160 KB = health check FAILED until fixed); never read any file over 100 KB whole (LOOP_STATE_ARCHIVE.md and outputs/_diff_queue_details.md are grep-only); confirm `grep -c '^\*\*Amended:\*\*' LOOP__Autonomous_Rounds.md` prints 1 (if not, an older copy has overwritten it — find the newest mirror version that has the header with `git -C pageforge-site log -S'**Amended:**' --oneline -- converter-v2/loop/LOOP__Autonomous_Rounds.md`, `git show <hash>:converter-v2/loop/LOOP__Autonomous_Rounds.md`, diff it against the live file and merge the lost sections IN — never replace the whole file — before doing anything else); and note the KB repo's HEAD against KB_AMALGAMATION_STATUS.md. Then read LOOP__Autonomous_Rounds.md and LOOP_STATE.md — if LOOP_STATE.md does not exist, do Round 0 and Round 0b first. Reconcile git with the state file: any uncommitted engine or data files belong to the round LOOP_STATE.md names as in progress — never git checkout or git restore them; check them against that round's PICK, finish or toggle OFF, and continue from the step the state file shows; **CRASHED-ROUND CHECK — run this BEFORE you believe the Position section:** if `git status` is dirty but LOOP_STATE.md says no round is in flight, the previous session DIED mid-round (a server error, a context blow-out, a power cut) and that line is STALE, not true — the tree is authoritative, not the state file. Do this, in order: `git diff` the uncommitted files; read the round number and the class out of their own code comments and `_doc` strings (a round implemented under §3 step 4 documents itself there); compare `Config.js` AppVersion against the top `BUILD_CHANGELOG.md` entry — EQUAL means the round never finalised, so nothing was regenerated and the corpus on disk is still the last shipped state; check whether the round's data flag is `enabled: true`, because a LIVE unproven round must be finished or toggled OFF BEFORE any regeneration, an intake's full regeneration included; then WRITE the §3 step-1 in-flight entry the dead session never got to write, and continue from §3 step 5. Never `git checkout`, `git restore` or `git stash` those files, and never take a new PICK while they are loose; if the Position section names a round as LAST BUILT, SHIPPED INERT (a DECLINED-INERT round is not it), finishing it is Round 1 — the "Next session starts with" line names the round and the order. Honour every entry under "Decisions from Chris" and never re-ask them; the open ones are in the "Needs Chris" list. THE DIFF MINER (§1d) IS MANDATORY: if reference/tests/_diff_miner.py or DIFF_QUEUE.md does not exist, or DIFF_QUEUE.md is older than the corpus (and no intake round is due — an intake outranks this check and re-mines in its Phase 5), do Round 0c FIRST — build/re-run the miner, commit DIFF_QUEUE.md — and take the PICK from it (chrome regions first: module-code chip, title, module menu, crumbs/side-nav, footer). THE PLACEMENT CENSUS (§1g, Chris's D14-S1) IS STANDING: every PICK pass also checks where the human puts each section against where Claude puts it — the module menu, tabs and widgets the skeleton cannot see included — and records every discrepancy it finds in LOOP_STATE.md's Follow-up candidates. Any exhaustion verdict reached before the latest intake round (today: before 19 September 2026) and any "do not re-measure" note in LOOP_STATE.md are VOID; exhaustion may only be declared under §4's full test — the miner's queue quoted, the intake's §7 list and the follow-up list dispositioned, and one PICK pass spent on a lane other than the miner's rows that this session has not used (if every lane has been tried, the verdict stands and the STOPPED entry names them all). BEFORE JUDGING ANY GATE READ §1e: when a gate looks worse, split it by population or run _content_manifest.py fresh; never stop on a plateau or a regression you have not split. Never call python or python3 from the Bash tool on this machine (the Windows Store stub hangs 30 minutes; the settings hook now refuses it) — every Python and gate runs under WSL; _gatecheck.py prints CACHED rows for gates it did not run, so run `cs bc` before believing the compare_structure or body_compare lines. This message carries the code REGENERATE CORPUS for every round of the loop, scoped by the §0a/§0b family rules in OPERATING_GUIDE.md (the converter guide; CLAUDE.md is only a pointer to it), and for the intake round's full regeneration. Budget for this session: $ARGUMENTS — if that is blank, 12 rounds or 10 hours, whichever comes first. RUN UNINTERRUPTED (§5c): never end your turn to wait for gates, regenerations, verifiers or background commands — run them in the foreground with a long timeout or poll them until done; never ask me whether to continue; a blocked item ends the round, not the session — record it and move to the next class. Follow the §6 context-diet rules: never read OPERATING_GUIDE.md or BUILD_CHANGELOG.md whole, and after every automatic compaction do ONLY the bounded §5d re-read and log the compaction as one line in LOOP_STATE.md. Update LOOP_STATE.md before and after every round, mirror the loop artefacts and commit after every round, never push. Stop only when §4 says so; then give me the §5 plain-English report with the copy-and-paste push block, and end LOOP_STATE.md with a "Next session starts with:" line.
+> Continue the PageForge autonomous loop in this folder. Start with a health check: `git status` in pageforge-site, `bash _MIGRATION/verify_after_transfer.sh` (must PASS — except that a census FAIL whose only cause is that the gold-module, gold-page or docx counts have GROWN is the INTAKE TRIGGER: new human-developer modules have arrived, so do Round 0d per LOOP__Autonomous_Rounds.md §1f — build their Claude equivalents, re-base every instrument, write the intake handover and re-prioritise the queue — before any PICK and before the miner check, but AFTER finishing or toggling OFF any in-flight or built-but-inert round; a Claude-dir or Claude-page count off by exactly what the last shipped round records is a stale expect value in that script — fix it and continue; then run the §0 intake checks (b)–(d)), delete every stale git lock in pageforge-site (`.git/index.lock`, `.git/HEAD.lock`, `.git/next-index-*.lock`, `.git/objects/maintenance.lock`, and any `.git/objects/*/tmp_obj_*`), move any `*.bak` at the folder root into `_Backups/loop_state/` (§5d), `wc -c LOOP_STATE.md DIFF_QUEUE.md` — LOOP_STATE.md over 100 KB → condense/archive per §5d BEFORE anything else (over 160 KB = health check FAILED until fixed); never read any file over 100 KB whole (LOOP_STATE_ARCHIVE.md and outputs/_diff_queue_details.md are grep-only); confirm `grep -c '^\*\*Amended:\*\*' LOOP__Autonomous_Rounds.md` prints 1 (if not, an older copy has overwritten it — find the newest mirror version that has the header with `git -C pageforge-site log -S'**Amended:**' --oneline -- converter-v2/loop/LOOP__Autonomous_Rounds.md`, `git show <hash>:converter-v2/loop/LOOP__Autonomous_Rounds.md`, diff it against the live file and merge the lost sections IN — never replace the whole file — before doing anything else); and note the KB repo's HEAD against KB_AMALGAMATION_STATUS.md. Then read LOOP__Autonomous_Rounds.md and LOOP_STATE.md — if LOOP_STATE.md does not exist, do Round 0 and Round 0b first. Reconcile git with the state file: any uncommitted engine or data files belong to the round LOOP_STATE.md names as in progress — never git checkout or git restore them; check them against that round's PICK, finish or toggle OFF, and continue from the step the state file shows; **CRASHED-ROUND CHECK — run this BEFORE you believe the Position section:** if `git status` is dirty but LOOP_STATE.md says no round is in flight, the previous session DIED mid-round (a server error, a context blow-out, a power cut) and that line is STALE, not true — the tree is authoritative, not the state file. Do this, in order: `git diff` the uncommitted files; read the round number and the class out of their own code comments and `_doc` strings (a round implemented under §3 step 4 documents itself there); compare `Config.js` AppVersion against the top `BUILD_CHANGELOG.md` entry — EQUAL means the round never finalised, so nothing was regenerated and the corpus on disk is still the last shipped state; check whether the round's data flag is `enabled: true`, because a LIVE unproven round must be finished or toggled OFF BEFORE any regeneration, an intake's full regeneration included; then WRITE the §3 step-1 in-flight entry the dead session never got to write, and continue from §3 step 5. Never `git checkout`, `git restore` or `git stash` those files, and never take a new PICK while they are loose; if the Position section names a round as LAST BUILT, SHIPPED INERT (a DECLINED-INERT round is not it), finishing it is Round 1 — the "Next session starts with" line names the round and the order. Honour every entry under "Decisions from Chris" and never re-ask them; the open ones are in the "Needs Chris" list. THE DIFF MINER (§1d) IS MANDATORY: if reference/tests/_diff_miner.py or DIFF_QUEUE.md does not exist, or DIFF_QUEUE.md is older than the corpus (and no intake round is due — an intake outranks this check and re-mines in its Phase 5), do Round 0c FIRST — build/re-run the miner, commit DIFF_QUEUE.md — and take the PICK from it (chrome regions first: module-code chip, title, module menu, crumbs/side-nav, footer). THE PLACEMENT CENSUS (§1g, Chris's D14-S1) IS STANDING: every PICK pass also checks where the human puts each section against where Claude puts it — the module menu, tabs and widgets the skeleton cannot see included — and records every discrepancy it finds in LOOP_STATE.md's Follow-up candidates. Any exhaustion verdict reached before the latest intake round (the date in the newest LOOP_INTAKE file's name) and any "do not re-measure" note in LOOP_STATE.md are VOID; exhaustion may only be declared under §4's full test — the miner's queue quoted, the intake's §7 list and the follow-up list dispositioned, and one PICK pass spent on a lane other than the miner's rows that this session has not used (if every lane has been tried, the verdict stands and the STOPPED entry names them all). BEFORE JUDGING ANY GATE READ §1e: when a gate looks worse, split it by population or run _content_manifest.py fresh; never stop on a plateau or a regression you have not split. Never call python or python3 from the Bash tool on this machine (the Windows Store stub hangs 30 minutes; the settings hook now refuses it) — every Python and gate runs under WSL; _gatecheck.py prints CACHED rows for gates it did not run, so run `cs bc` before believing the compare_structure or body_compare lines. This message carries the code REGENERATE CORPUS for every round of the loop, scoped by the §0a/§0b family rules in OPERATING_GUIDE.md (the converter guide; CLAUDE.md is only a pointer to it), and for the intake round's full regeneration. Budget for this session: $ARGUMENTS — if that is blank, 16 rounds or 10 hours, whichever comes first. RUN UNINTERRUPTED (§5c): never end your turn to wait for gates, regenerations, verifiers or background commands — run them in the foreground with a long timeout or poll them until done; never ask me whether to continue; a blocked item ends the round, not the session — record it and move to the next class. Follow the §6 context-diet rules: never read OPERATING_GUIDE.md or BUILD_CHANGELOG.md whole, and after every automatic compaction do ONLY the bounded §5d re-read and log the compaction as one line in LOOP_STATE.md. Update LOOP_STATE.md before and after every round, mirror the loop artefacts and commit after every round, never push. Stop only when §4 says so; then give me the §5 plain-English report with the copy-and-paste push block, and end LOOP_STATE.md with a "Next session starts with:" line.
 
 **The mechanical check** (the health check of every session and of every `/loop-review`):
 `diff <(sed -n 's/^> Continue the PageForge/Continue the PageForge/p' LOOP__Autonomous_Rounds.md) <(sed -n '6p' .claude/skills/loop-start/SKILL.md)`
