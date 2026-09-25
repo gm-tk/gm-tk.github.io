@@ -3802,6 +3802,24 @@ class InteractiveScanner {
 			const colon = inner.match(/^[^:]*:\s*([\s\S]+)$/);
 			if (colon && colon[1].trim()) { def = colon[1].trim(); tail = afterBracket; }   // (A)
 			else if (afterBracket) { def = afterBracket; }                                  // (C)
+			// (A5) ROUND 513 (session 50 Round 4) — THE PAREN DEF: a CLOSED bare `[hover]` whose definition the writer typed
+			// in parentheses right after it, black — XDLS902 `Hoa ako [hover] (learning partner) could find a class…` (the
+			// gold's infoTrigger carries exactly that definition on 45 of 48 such spans). With no def found the tag and the
+			// rest of the sentence went into a red Writers Note. The parenthesis is the def; the sentence continues after it.
+			// Data split_bracket.paren_def; env HOVERPAREN_OFF.
+			else {
+				const pd = split?.paren_def;
+				if (pd && pd.enabled !== false && splitOff
+					&& !(typeof process !== "undefined" && process.env && process.env[pd.env || "HOVERPAREN_OFF"])
+					&& new RegExp(pd.inner_pattern ?? "^hover$", "i").test(inner)) {
+					const pm = String(it.blackAfter ?? "").match(new RegExp(pd.def_pattern ?? "^\\s*\\(([^()]{1,120})\\)\\s*([\\s\\S]*)$"));
+					if (pm && /\p{L}/u.test(pm[1])) {
+						def = pm[1].trim();
+						// a continuation that opens with punctuation (`(learning partner), and as you…`) joins with no space
+						if (/^[,.;:!?)]/.test(pm[2])) { tail = pm[2].trim(); it.blackAfter = ""; } else it.blackAfter = pm[2];
+					}
+				}
+			}
 		}
 		// (A2) the marker yields no self-def — pull it from the FOLLOWING red/black item
 		if (!def && splitOff && split.unclosed_next_item !== false && !String(it.blackAfter ?? "").trim()) {

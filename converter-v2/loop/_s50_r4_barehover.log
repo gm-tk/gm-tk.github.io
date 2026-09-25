@@ -1,0 +1,31 @@
+BARE [hover] forms: R 186 spans / 46 modules, O 68 spans / 18 modules, P 48 spans / 5 modules
+gold info= match: O:False 51, O:True 17, P:False 3, P:True 45, R:False 133, R:True 53
+== R
+  ARFUN04: …• **Recognise** [hover] 'over; To see something and know what it is.' gold-info-hit=True
+  ARFUN04: …spatial depth. [hover] 'over; This technique refers to the illusion of 3-D' gold-info-hit=True
+  ENFUN02: …cartoon+talking+pop+art ║ [hover] 'over text  [Thought Bubbles Position] (front)' gold-info-hit=False
+  ENFUN02: …│ ║ [hover] 'over text  [Thought Bubbles Position] (back)' gold-info-hit=False
+  ENFUN02: …│ [hover] 'over text  [Thought Bubbles Position] (front)' gold-info-hit=False
+  ENFUN02: …│ [hover] 'over text  [Thought Bubbles Position] (back)' gold-info-hit=False
+  ENFUN02: …ng%2Bpop%2Bart%2Bethnic ║ [hover] 'over text  [Thought Bubbles Position] (front)' gold-info-hit=False
+  ENFUN02: …│ ║ [hover] 'over text  [Thought Bubbles Position] (back)' gold-info-hit=False
+== O
+  CEDK401: …Cattle [hover] 'Cattle are raised for beef in Northland.' gold-info-hit=False
+  CEDK401: …Milking Cow(s) [hover] 'Cows are kept for milk in the Waikato, Taranaki, B' gold-info-hit=False
+  CEDK401: …Sheep [hover] 'Sheep are farmed throughout the country.' gold-info-hit=False
+  CEDK401: …Pigs [hover] 'Canterbury has the most pig farms.' gold-info-hit=False
+  CEDK401: …Grapes [hover] 'Grapes are grown for eating fresh and for making w' gold-info-hit=False
+  CEDK401: …Kiwifruit [hover] 'Kiwifruit is grown in the regions of Northland, Au' gold-info-hit=False
+  CEDK401: …Apples [hover] 'Apples are grown in Hawke’s Bay and the Tasman reg' gold-info-hit=False
+  CEDK401: …Stone fruit [hover] 'Peaches, Nectarines, Apricots, Plums and Cherries ' gold-info-hit=False
+== P
+  XDLS903: …**restrictive eating** [hover] 'Only eating a limited number of foods.' gold-info-hit=True
+  XDLS502: …their whakamana [hover] 'Agency' gold-info-hit=True
+  XDLS902: …Hoa ako [hover] 'learning partner' gold-info-hit=True
+  XDLS902: …Hoa ako [hover] 'learning partner' gold-info-hit=True
+  XDLS902: …Hoa ako [hover] 'learning partner' gold-info-hit=True
+  XDLS902: …Hoa ako [hover] 'learning partner' gold-info-hit=True
+  XDLS902: …Hoa ako [hover] 'learning\xa0partner' gold-info-hit=True
+  XDLS902: …Hoa ako [hover] 'learning\xa0partner' gold-info-hit=True
+modules P: XDLS502 XDLS902 XDLS903 XDLS905 XDLS906
+modules R: ARFUN04 CEDK501 CEDT102 CEDT501 CEDW501 DAN1003 DAN1004 DTC1005 ENFUN02 ENG1004 ENG1007 ENGC101 ENGI101 ENGI203 ENGR102 EXBP901 EXIP901 GENO901 HPRE301 JPFUN01 MXDB202 MXDI202 MXFL401 MXFU201 MXFU202 MXFU402 PHE1002 PHE1003 TEDC401 TEFUN01 TWHA901 TWHA904 TWHA905 TWHK903 TWHR905 WJFUN304 XDLS502 XDLS903 XDLS904 XDLS905 XDLS906 XDLS908 XDLS909 XDLS911 XLP06 XWHA02

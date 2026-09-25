@@ -1,5 +1,26 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (round 513, build 260620.75) — THE BARE `[hover]` WITH ITS DEFINITION IN PARENTHESES: `Hoa ako [hover] (learning partner) could find a class…` weaves the hover and keeps the writer's sentence, instead of sending the tag and the rest of the sentence into a red Writers Note (5 XDLS modules; the dips NAMED — the gold hovers only a term's first occurrences)
+
+### 1. WHAT CHANGED
+
+**Found by** a widened recognition census (`outputs/_s50_r4_unresolved.cjs`: every red bracket in every Writers Template that resolves to NO tag — 3,313 spans / 420 modules; a bare `[hover]` the largest, 152 spans / 26 modules). `_s50_r4_barehover.py` splits the bare `[hover]` by form: **P — `ANCHOR [hover] (DEF) rest…`, the definition in parentheses right after the tag, black — 48 spans / 5 modules (XDLS502 / 902 / 903 / 905 / 906, the learning-support family's idiom)**; R — the def inside the red span (186 — already form C of the weave, or flip-card "hover over" labels); O — the tag then an unbracketed sentence (68 — CEDK401; the gold has no consensus, 17 / 68).
+
+**The defect:** `InteractiveScanner.#weaveHoverDefinition` (r82 → r500) found no definition in a CLOSED bare bracket and returned, so the tag became a red designer note that carried the rest of the writer's sentence with it — XDLS902's accordion panels ended at "You and your Hoa ako" and "(learning partner) could find a class or a book to follow…" rendered as a red `Writers Note:` line.
+
+**The fix** (a new form (A5) in the weave; data `elements.hover_definition_inline.split_bracket.paren_def`; env `HOVERPAREN_OFF`): the parenthesised text right after a closed bare `[hover]` / `[rollover]` / `[mouseover]` is the definition; it weaves onto the preceding word like every other hover form (`<span class="infoTrigger" info="learning partner">ako</span>`), and the sentence continues after it (a continuation opening with punctuation joins with no space).
+
+### 2. PROOF
+
+- In-memory probe over all 545 modules: `HOVERPAREN_OFF=1` → 0 pages changed; ON → **exactly the 5 XDLS modules** (36 files). `scoped_ship.sh … --round 513` PASS (0 stale, containment 5 ⊆ 5, the 12-module spot-check byte-identical). The woven hovers: `restrictive eating` / "Only eating a limited number of foods.", `whakamana` / "Agency", `ako` / "learning partner"; the Writers Notes that carried the sentences are gone.
+
+### 3. PROTECTED GATES
+
+- **Skeleton 55.6992 → 55.6929 % @ 2486 (−0.0063pp), ≥50 1609 → 1607, ≥75 280 → 281**, ≥90 26, RAW 39.539 % — 16 movers, 8 up / 8 down, −15.6pp-sum. **NAMED (KB c14 — the writer's tag decides the component; §1b "Gates and KB overrides"):** the gold hovers only a term's FIRST occurrences — XDLS902's opening accordion carries `<span class="infoTrigger" info="learning partner">hoa ako</span>`, while its later activities (1A–1E) print "with your hoa ako and discuss…" plain, the writer's `[hover] (learning partner)` dropped by the developer. The writer tagged every occurrence, so every one is woven; those later paragraphs gain a `span.infoTrigger` the gold does not have — XDLS902_1_0 58.7 → 49.8, XDLS902_7_0 52.6 → 46.7 (the two ≥50 crossings), XDLS902_5_0 / _6_0 / _3_0, XDLS903_2_0, XDLS905_1_0, XDLS906_3_0 (each ≤ 3.3pp); XDLS905_4_0 +2.4 and six more rise, XDLS905_5_0 crosses ≥75. The module-level check (the gold's info = the writer's def on 45 of 48) confirmed the reading; the anchor is the weave's standing one word (`ako`; the gold's `hoa ako` — recorded).
+- compare_structure, body_compare, clean, leak EXACT; tags 9557; every verifier ✓, every COUNT held (`_r513_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 513 --accept-named`; `--gate-baseline-check` PASS. Plateau: neither (a named KB-override dip).
+
+**Ledger:** scoped #7 since the r505 FULL (a FULL backstop is due after the next scoped ship) · data `elements.hover_definition_inline.split_bracket.paren_def` · env `HOVERPAREN_OFF` · code `InteractiveScanner.#weaveHoverDefinition` (A5) · tools `_s50_r4_unresolved.cjs`, `_s50_r4_barehover.py`, `_r513_finalise.py` · session 50 Round 4.
+
 ## 2026-09-26 (round 511, build 260620.74) — D15-19 THE YELLOW-✅ DROPDOWN QUIZ: the writer's yellow highlight builds a dropDown unannounced, under Chris's strict checks (the dropDown kickoff after r507's multiChoiceQuiz) + the mark placed after the previous one (MXDB302 8A: 7 questions, 6 = the gold's, the 7th the writer's correct answer where the gold slipped)
 
 ### 1. WHAT CHANGED

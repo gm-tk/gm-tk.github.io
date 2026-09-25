@@ -452,6 +452,13 @@
 			"skip_if_tag_keyword": "\\btrigger\\b",
 			"split_bracket": {
 				"enabled": true,
+				"paren_def": {
+					"_doc": "ROUND 513 (the autonomous loop's session 50 Round 4 — the widened recognition census `_s50_r4_unresolved.cjs`: a bare `[hover]` is the largest bracket that resolves to no tag, 152 spans / 26 modules). THE PAREN DEF: a CLOSED bare `[hover]` whose definition the writer typed in parentheses right after it, black — `Hoa ako [hover] (learning partner) could find a class or a book to follow` (XDLS902, the learning-support family's standard idiom). The weave found no definition, so the tag and THE REST OF THE SENTENCE went into a red Writers Note (the accordion panel ended at 'You and your Hoa ako'). `_s50_r4_barehover.py`: 48 such spans / 5 modules (XDLS502 / 902 / 903 / 905 / 906); the gold's infoTrigger carries exactly that definition on 45 of 48 (0.94). The parenthesised text is the def (it weaves onto the preceding word like every other hover form), the sentence continues after it. The other bare forms stay as they were (the def inside the red span after the bracket is already form C; a bare tag followed by an unbracketed sentence — CEDK401 — has no gold consensus, 17 / 68). Env HOVERPAREN_OFF.",
+					"enabled": true,
+					"env": "HOVERPAREN_OFF",
+					"inner_pattern": "^(?:hover|roll\\s*-?\\s*over|rollover|mouse\\s*-?\\s*over|mouseover)$",
+					"def_pattern": "^\\s*\\(([^()]{1,120})\\)\\s*([\\s\\S]*)$"
+				},
 				"lead_orphan": true,
 				"unclosed_next_item": true,
 				"leading_anchor": true,
