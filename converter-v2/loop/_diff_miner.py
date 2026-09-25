@@ -910,8 +910,11 @@ def write_md(res, path, corpus_note):
     # DIFF_QUEUE.md stays small enough to be read whole by a session (the 728 KB single file caused
     # context-compaction thrashing). The companion is never read whole: grep a rank, sed the range.
     MAIN = L
-    dpath = os.path.join(OUTPUTS, "_diff_queue_details.md")
-    MAIN += ["", "## Details — in the companion file `CONVERTER_V2/outputs/_diff_queue_details.md`",
+    # 25 Sept 2026 (session 49): a SCOPED run (`_diff_miner.py CODE …` → _diff_miner_scoped.md) writes its OWN companion,
+    # `_diff_miner_scoped_details.md` — it used to overwrite the full queue's `_diff_queue_details.md` (s49 Round 11).
+    dpath = os.path.join(OUTPUTS, "_diff_queue_details.md") if os.path.basename(path) == "DIFF_QUEUE.md" \
+        else os.path.splitext(path)[0] + "_details.md"
+    MAIN += ["", f"## Details — in the companion file `CONVERTER_V2/outputs/{os.path.basename(dpath)}`",
              "Every CANDIDATE and every top-40 row has three quoted examples (WT / gold / Claude) there, plus the",
              "below-floor list. **NEVER read the companion whole** (hundreds of KB): `grep -n '^### #<rank> ' "
              "CONVERTER_V2/outputs/_diff_queue_details.md` then `sed -n '<start>,<start+40>p'`. The top 25",
