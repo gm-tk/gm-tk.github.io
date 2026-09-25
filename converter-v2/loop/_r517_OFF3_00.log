@@ -1,0 +1,8 @@
+BLL152: identical 2 / changed 2
+BLL156: identical 2 / changed 2
+BLL252: identical 2 / changed 2
+CEDK501: identical 13 / changed 2
+ENGI303: identical 5 / changed 3
+
+TOTAL: identical 24 / changed 11 / missing 0 over 5 modules
+CHANGED: BLL152/BLL152_1_0.html BLL152/BLL152_interactives.txt BLL156/BLL156_1_0.html BLL156/BLL156_interactives.txt BLL252/BLL252_1_0.html BLL252/BLL252_interactives.txt CEDK501/CEDK501_6_0.html CEDK501/CEDK501_interactives.txt ENGI303/ENGI303_5_0.html ENGI303/ENGI303_6_0.html ENGI303/ENGI303_interactives.txt

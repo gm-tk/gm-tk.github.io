@@ -154,7 +154,8 @@ class InteractiveBuilder {
 				case "typing":
 					// ROUND 449 (D13-4) — the first builder this type has ever had: shape 1, the
 					// writer's red answer on the question line → the KB 03D text-only form.
-					html = this.#typing({ bundle, tpl, renderInline });
+					html = this.#typing({ bundle, tpl, renderInline })
+						?? this.#typingTable({ bundle, tpl, renderInline, typed: true });   // ROUND 517 — shape 2, the TABLE form
 					break;
 				case "dropDown":
 					// ROUND 287 — the first builder this type has ever had. FENCED on the
@@ -170,6 +171,9 @@ class InteractiveBuilder {
 					// ROUND 420 — the LETTER-GRID BINGO form (the BLL family's `[Self check]` + a table of letters)
 					// runs FIRST; the r69 question-list form where it declines.
 					html = this.#letterGridBingo({ bundle, tpl, renderInline, run })
+						// ROUND 517 — a `[Type and check]` table the writer answered in red is the TYPING table form (the
+						// alias word "check" folds the bundle to selfCheck; the writer's own "type" decides — KB c14)
+						?? this.#typingTable({ bundle, tpl: templates?.typing, renderInline, typed: false })
 						?? this.#selfCheck({ bundle, tpl, renderInline });
 					break;
 				case "dragAndDrop": // the narrow N:N text-matching case only (layout=standard)
@@ -13967,6 +13971,112 @@ class InteractiveBuilder {
 	 *
 	 *  Data interactive_builders.typing; env TYPING_OFF.
 	 * ================================================================== */
+	/**
+	 * ROUND 517 (the autonomous loop's session 50 Round 9 — D10-3's build lane, D13-4's rule: typing is built ONLY where the
+	 * writer marked the answer) — THE TYPING QUIZ'S TABLE FORM. The writer types the quiz as a TABLE and marks each answer RED
+	 * ("Answers are in red"): `[Type and check]` + `| 6 + 3 x 2 | 🔴12🔴 |`, or a grid `| 673 | 🔴670🔴 | 🔴700🔴 | 🔴1 000🔴 |`.
+	 * The gold (MXFUN01's nine such tables) builds `div.typing layout="standard"` > the writer's table with an input carrying
+	 * `answer=` in place of each red run, black text kept, the red "Question | Answer" label row dropped. Declines (hand-off box):
+	 * media anywhere, the writer's words asking for another widget / images (deny_pattern), a body row that is all red (letter
+	 * tiles), an answer over max_answer_words, fewer than min_answers. `typed` = the bundle is typing; a selfCheck bundle (the
+	 * alias word "check" folds `[Type and check]` there) is read only when the writer's own opener says type / typing.
+	 * Data interactive_builders.typing.table_form; env TYPTABLE_OFF.
+	 */
+	static #typingTable({ bundle, tpl, renderInline, typed }) {
+		const cfg = tpl?.table_form;
+		if (!tpl || tpl.enabled === false || !cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && (process.env[cfg.env || "TYPTABLE_OFF"] || process.env[tpl.env ?? "TYPING_OFF"])) return null;
+		if (bundle?.extraTypes?.length || (bundle?.media ?? []).length) return null;
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const unRed = (s) => String(s ?? "").replace(/\u{1f534}\[\/?RED TEXT\]\u{1f534}/gu, " ");
+		const inline = renderInline ?? ((s) => Utils.EscapeHtml(s));
+		const members = bundle?.memberItems ?? [];
+		const tables = members.filter((m) => m?.type === "table");
+		if (tables.length !== 1) return null;
+		const said = [...(bundle?.openerItems ?? []), ...members].filter((m) => m?.type === "tag")
+			.map((m) => `${unRed(m.text)} ${m.blackAfter ?? ""}`).join(" ").replace(/\s+/g, " ");
+		if (!typed && !new RegExp(cfg.selfcheck_opener_pattern ?? "\\btyp(?:e|ing)\\b", "i").test(said)) return null;
+		if (cfg.deny_pattern && new RegExp(cfg.deny_pattern, "i").test(said)) return null;
+		const btnRe = new RegExp(cfg.button_label_pattern ?? "^(?:check(?:\\s+(?:your\\s+)?answers?)?|reset|undo|show(?:\\s+answers?)?)\\.?$", "i");
+		const leads = [];
+		let seenTable = false;
+		for (const m of members) {
+			if (!m) continue;
+			if (m.type === "table") { seenTable = true; continue; }
+			if (m.type === "nested") return null;
+			if (m.type === "black") { const t = String(m.text ?? "").trim(); if (t) { if (seenTable) return null; leads.push(t); } continue; }
+			const p = m.parse?.primary, cls = m.parse?.class;
+			const after = String(m.blackAfter ?? "").trim();
+			if (p?.directive === "INTERACTIVE" || cls === "instruction" || cls === "noise") { if (after && !btnRe.test(after)) { if (seenTable) return null; leads.push(after); } continue; }
+			if (p?.tag === "button") { if (after && !btnRe.test(after)) return null; continue; }
+			if (p && (cfg.text_tags ?? tpl.text_tags ?? ["body", "paragraph"]).includes(p.tag)) { if (after) { if (seenTable) return null; leads.push(after); } continue; }
+			return null;   // any other tag — not this shape
+		}
+		const rows = (tables[0].block?.rows ?? []).map((r) => (r ?? []).map((c) => String(typeof c === "string" ? c : c?.text ?? "")));
+		if (rows.some((r) => r.some((c) => /https?:\/\/|\[\s*(?:image|photo|picture|insert)/i.test(unRed(c))))) return null;
+		const maxW = tpl.max_answer_words ?? 6;
+		const reject = new RegExp(tpl.answer_reject_pattern ?? "$^", "i");
+		const labelRe = new RegExp(cfg.label_row_pattern ?? "^(?:questions?|answers?|statements?|sentences?|words?|working|solutions?|q|a)\\s*:?$", "i");
+		const isRedCell = (c) => { const t = String(c).trim(); if (!t) return false; RED.lastIndex = 0; return RED.test(t) && !/[\p{L}\p{N}]/u.test(t.replace(RED, "")); };
+		let answers = 0;
+		const out = [];
+		rows.forEach((r, ri) => {
+			if (out === null) return;
+			const cells = r.filter((c, ci) => ci < r.length);
+			const nonEmpty = cells.filter((c) => String(c).trim());
+			if (!nonEmpty.length) return;
+			// a red label row ("Question | Answer") heads the writer's table — dropped
+			if (ri === 0 && nonEmpty.every(isRedCell) && nonEmpty.every((c) => labelRe.test(unRed(c).replace(/\s+/g, " ").trim()))) return;
+			if (nonEmpty.every(isRedCell)) { out.push(null); return; }   // an all-red body row = tiles / a different task
+			// a first row whose black cells are all bold labels is the header — a red cell in it is a column title, not an answer
+			// (MXFU202 `**World record** | 🔴Record rounded to the nearest tenth🔴`)
+			const boldCell = (c) => /^\s*\*\*[\s\S]*\*\*\s*$/.test(unRed(c).trim());
+			const header = ri === 0 && nonEmpty.some((c) => !isRedCell(c)) && nonEmpty.every((c) => isRedCell(c) || boldCell(c));
+			if (header) {
+				out.push(Utils.FillTemplate(cfg.row ?? "<tr>{cells}</tr>", { cells: cells.map((c) =>
+					Utils.FillTemplate(cfg.th ?? "<th>{content}</th>", { content: inline(unRed(c).replace(/\s+/g, " ").trim()) })).join("") }));
+				return;
+			}
+			const tds = cells.map((c) => {
+				const s = String(c);
+				let html = "", last = 0, m; RED.lastIndex = 0;
+				while ((m = RED.exec(s)) !== null) {
+					const before = s.slice(last, m.index);
+					if (before.trim()) html += inline(before.replace(/\s+/g, " ").trim()) + " ";
+					// a writer who brackets the answer (`🔴[cannot]🔴`, BLL252) means the word, not the brackets
+					const a = m[1].replace(/\s+/g, " ").trim().replace(/^\[\s*([^\[\]]*?)\s*\]$/, "$1");
+					if (a) {
+						// a red LABEL (`correct` beside the black answer — BLLR203; `(Question 1)` — SSCI205) means red is not
+						// the answer here: the whole table declines (never invent) — data table_form.label_answer_pattern
+						if (cfg.label_answer_pattern && new RegExp(cfg.label_answer_pattern, "i").test(a)) { html = null; break; }
+						if (a.split(" ").length > maxW || reject.test(a)) { html = null; break; }
+						// "23.30 or 23.3" — the writer's alternatives, the KB 03D `answer="a||b"` form (data table_form.alt_split)
+						const alts = cfg.alt_split ? a.split(new RegExp(cfg.alt_split, "i")).map((x) => x.trim()).filter(Boolean) : [a];
+						const ans = alts.length > 1 && alts.length <= 3 && alts.every((x) => x.split(" ").length <= 3) ? alts.join("||") : a;
+						html += Utils.FillTemplate(tpl.input, { answer: Utils.EscapeHtml(ans) }) + " "; answers++;
+					}
+					last = m.index + m[0].length;
+				}
+				if (html === null) return null;
+				const tail = s.slice(last);
+				if (tail.trim()) html += inline(tail.replace(/\s+/g, " ").trim());
+				return Utils.FillTemplate(header ? (cfg.th ?? "<th>{content}</th>") : (cfg.td ?? "<td>{content}</td>"), { content: html.trim() });
+			});
+			if (tds.some((x) => x === null)) { out.push(null); return; }
+			out.push(Utils.FillTemplate(cfg.row ?? "<tr>{cells}</tr>", { cells: tds.join("") }));
+		});
+		if (out.some((x) => x === null) || answers < (tpl.min_answers ?? 2)) return null;
+		const ac = (tpl.autocheck_words ?? []).some((w) => said.toLowerCase().includes(String(w).toLowerCase())) ? (tpl.autocheck_class ?? " autoCheck") : "";
+		return [
+			...leads.map((t) => Utils.FillTemplate(tpl.lead ?? "<p>{text}</p>", { text: inline(t) })),
+			Utils.FillTemplate(cfg.open, { autocheck: ac }),
+			...out,
+			cfg.table_close ?? "</table>\n</div>",
+			tpl.buttons,
+			cfg.close ?? "</div>",
+		].join("\n");
+	}
+
 	static #typing({ bundle, tpl, renderInline }) {
 		if (!tpl || tpl.enabled === false) return null;
 		if (typeof process !== "undefined" && process.env && process.env[tpl.env ?? "TYPING_OFF"]) return null;

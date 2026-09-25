@@ -1,0 +1,5 @@
+pages whose module menu holds >= 2000 chars and > 3x the gold menu: 3 (3 modules)
+by family: MXFUN 1, ART 1, XGF 1
+  MXFUN01    MXFUN01_0_0.html           menu  18912 / page  71458 ( 26 %)  gold menu    74 / page  69776
+  ART1005    ART1005_0_0.html           menu   3886 / page  17756 ( 22 %)  gold menu     0 / page   4630
+  XGF9001    XGF9001_0_0.html           menu   2888 / page  21829 ( 13 %)  gold menu     0 / page    583

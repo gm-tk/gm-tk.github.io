@@ -1,0 +1,7 @@
+MXFUN01: identical 0 / changed 2
+MXFUN03: identical 0 / changed 2
+PWY1001: identical 8 / changed 3
+PWY1002: identical 8 / changed 3
+
+TOTAL: identical 16 / changed 10 / missing 0 over 4 modules
+CHANGED: MXFUN01/MXFUN01_0_0.html MXFUN01/MXFUN01_interactives.txt MXFUN03/MXFUN03_0_0.html MXFUN03/MXFUN03_interactives.txt PWY1001/PWY1001_1_3_0.html PWY1001/PWY1001_2_2_0.html PWY1001/PWY1001_interactives.txt PWY1002/PWY1002_1_1_0.html PWY1002/PWY1002_3_2_0.html PWY1002/PWY1002_interactives.txt

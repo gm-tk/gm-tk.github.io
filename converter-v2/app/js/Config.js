@@ -1867,7 +1867,8 @@ class Config {
 	// ROUND 513 (260620.75): THE BARE [hover] WITH ITS DEFINITION IN PARENTHESES (session 50 Round 4): the paren def weaves the hover and the sentence stays in the paragraph. Env HOVERPAREN_OFF.
 	// ROUND 514 (260620.76): THE WRITERS' MISSING SPELLINGS (session 50 Round 6): `[type and check]`, `[click drops]`, `[radioquiz]`, `[carrousel]` name their widget — a toggled alias only fills a span with no widget or closer. Env SPELLALIAS_OFF.
 	// ROUND 515 (260620.77): KB c64 — [Insert animated character] IS A CREATIVE SERVICES VIDEO (session 50 Round 7): the pending Vimeo scaffold + its To Do; the Animation Script link folds into the To Do. Env CSVIDEO_OFF.
-	static AppVersion = "260620.77";
+	// ROUND 517 (260620.78): THE TYPING QUIZ'S TABLE FORM (session 50 Round 9): a table whose answers the writer typed in red builds the gold's div.typing layout=standard table with an input per answer. Env TYPTABLE_OFF.
+	static AppVersion = "260620.78";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

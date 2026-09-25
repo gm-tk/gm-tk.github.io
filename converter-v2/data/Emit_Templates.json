@@ -3175,7 +3175,26 @@
 			"answer_reject_pattern": "^(?:correct\\s+)?answers?\\s*[:=]|\\?\\s*$",
 			"min_answers": 2,
 			"max_answer_words": 6,
-			"opener_note_min_words": 3
+			"opener_note_min_words": 3,
+			"table_form": {
+				"_doc": "ROUND 517 (the autonomous loop's session 50 Round 9 — D10-3's build lane; D13-4: typing is built ONLY where the writer marked the answer; the r449 red-answer reading). THE TYPING QUIZ'S TABLE FORM: one captured table whose RED runs are the writer's answers ('Answers are in red') — `[Type and check]` + `| 6 + 3 x 2 | 🔴12🔴 |` or a grid `| 673 | 🔴670🔴 | 🔴700🔴 |` — builds the gold's `div.typing layout=\"standard\"` > `div.table-responsive` > the writer's table, each red run an input (answer=), black text kept, a first row of bold labels a <th> row, a red 'Question | Answer' label row dropped (MXFUN01's nine tables). `_s50_r9_typtable.cjs`: 113 typing / selfCheck bundles hold one table with red cells (65 without media, 68 modules). Declines to the hand-off box on media, on deny_pattern in the writer's words (another widget, images to recreate, words outside the table), on an all-red body row (letter tiles), on an answer over max_answer_words / answer_reject_pattern, below min_answers. A selfCheck-typed bundle (the alias word 'check' folds `[Type and check]` to selfCheck) is read only when its own opener says type / typing (selfcheck_opener_pattern). Env TYPTABLE_OFF.",
+				"enabled": true,
+				"env": "TYPTABLE_OFF",
+				"open": "<div class=\"typing{autocheck}\" layout=\"standard\">\n<div class=\"table-responsive\">\n<table class=\"table table-bordered\">",
+				"row": "<tr>{cells}</tr>",
+				"td": "<td>{content}</td>",
+				"th": "<th>{content}</th>",
+				"table_close": "</table>\n</div>",
+				"close": "</div>",
+				"selfcheck_opener_pattern": "\\btyp(?:e|ing)\\b",
+				"deny_pattern": "\\b(?:drag|drop|dragged|dropped|tiles?|multi\\s*-?\\s*choice|drop\\s*-?\\s*down|dropdown|outside\\s+(?:of\\s+)?(?:the\\s+)?(?:table|box)|images?|pictures?|photos?|graph|highlight(?:ed)?|circle|colou?r(?:ed)?)\\b",
+				"label_row_pattern": "^(?:questions?|answers?|statements?|sentences?|words?|working|solutions?|q|a)\\s*:?$",
+				"label_answer_pattern": "^\\(?\\s*(?:(?:in)?correct(?:\\s+answers?)?|answers?|example|e\\.?g\\.?|questions?\\s*\\d*|q\\s*\\d+|tick|x)\\s*\\)?\\s*[:.]?$",
+				"alt_split": "\\s+or\\s+",
+				"_alt_split_note": "The writer's alternative answers in one red run — `23.30 or 23.3` (MXFU202) — become the KB 03D multiple-answer form answer=\"a||b\" when there are 2–3 alternatives of ≤ 3 words each.",
+				"_label_answer_note":"A red run that is a LABEL — `correct` beside the black answer (BLLR203), `(Question 1)` (SSCI205), `Example` — means red is not the answer in that table: the whole table declines to the hand-off box.",
+				"button_label_pattern": "^(?:check(?:\\s+(?:your\\s+)?answers?)?|reset|undo|show(?:\\s+answers?)?)\\.?$"
+			}
 		},
 		"dropDown": {
 			"_comment": [

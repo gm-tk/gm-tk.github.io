@@ -1,5 +1,24 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (round 517, build 260620.78) — THE TYPING QUIZ'S TABLE FORM: a `[Type and check]` / `[typing quiz]` table whose answers the writer typed in RED builds the gold's `div.typing layout="standard"` table with an input per red answer (32 quizzes / 324 inputs / 17 modules; 70 % of the answers are the gold's own, 0 malformed; gate-neutral)
+
+### 1. WHAT CHANGED
+
+**The lane** (Chris's D10-3 build lane; **D13-4**: typing is built ONLY where the writer marked the answer — r449 shipped shape 1, the red answer on the question line). The dashboard's first-ranked blocker for the type: `(a captured TABLE)` — 98 declines, 0 builds. `_s50_r9_typtable.cjs`: 113 typing / selfCheck bundles hold ONE table with red cells (65 without media, 68 modules), the writer saying "Answers are in red" / "Correct answers are in red"; the gold's form (MXFUN01's nine `[Type and check]` tables): `div.typing layout="standard"` > `div.table-responsive` > the writer's table, each red run an `<input class="form-control" … answer="…">`, black text kept, the red "Question | Answer" label row dropped.
+
+**The fix** (`InteractiveBuilder.#typingTable`, tried after the r449 reading in the typing case and before the r69 reading in the selfCheck case; data `interactive_builders.typing.table_form`; env `TYPTABLE_OFF`): every red run in a cell → an input (answer = the run; a bracketed `[cannot]` means the word — BLL252; "23.30 or 23.3" → the KB 03D `answer="23.30||23.3"` form); a first row of bold labels (a red column title in it included — MXFU202) → the header row; a red label row → dropped. A selfCheck-typed bundle is read only when the writer's own opener says type / typing (the alias word "check" folds `[Type and check]` to selfCheck). **Declines to the hand-off box:** media anywhere; the writer's words asking for another widget, images, words outside the table, highlighting or colour (deny_pattern); an all-red body row (letter tiles); a red LABEL instead of an answer — `correct` beside the black answer (BLLR203), `(Question 1)` (SSCI205) — found by the first probe's answer check and made a decline (label_answer_pattern); an answer over max_answer_words; fewer than min_answers.
+
+### 2. PROOF
+
+- In-memory probe over all 545 modules: `TYPTABLE_OFF=1` → the 17 modules' 124 comparable files equal the manifest (0 differ), nothing else changes; ON → **17 modules** (BLL152 / 156 / 252, CEDK501, ENGI303, GEWHA, MXDI201 / 202, MXEO301, MXEX302, MXFL302, MXFU202 / 402, MXFUN01 / 03, PWY1001 / 1002). `scoped_ship.sh … --round 517` PASS (0 stale, containment 17 ⊆ 17, the 12-module spot-check byte-identical).
+- **The answers** (`outputs/_s50_r517_answers.cjs` — the table form's check; `_verify_typing.cjs` reads the typingContainer form only): **32 table quizzes / 324 inputs, 0 malformed; 226 (70 %) equal a gold typing answer** (80 % in the modules whose gold has typing at all — MXFUN01 61 / 61, MXEO301 63 / 67, MXFL302 19 / 21, BLL156 14 / 14 …); 35 inputs sit in modules whose gold has no typing input (CEDK501, GEWHA, PWY1001 / 1002 — the developer's substitution, A1).
+
+### 3. PROTECTED GATES
+
+- **Gate-neutral by design** (a widget build — the skeleton collapses a widget to one line): skeleton 55.7491 % @ 2486 EXACT, ≥50 1612, ≥75 285, ≥90 26; **RAW 39.555 → 39.574 %** (the widget internals now carry real structure); cs / clean / leak EXACT; **body_compare ANY 236 → 235** (CEDK501_6_0's over-capture cleared); tags 9557; every verifier ✓, every COUNT held (`_r517_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 517`; `--gate-baseline-check` PASS. Plateau: neither (a widget build).
+
+**Ledger:** scoped #3 since the r513 FULL · data `interactive_builders.typing.table_form` · env `TYPTABLE_OFF` · code `InteractiveBuilder.#typingTable` + the typing / selfCheck dispatch · tools `_s50_r9_typtable.cjs`, `_s50_r517_answers.cjs`, `_r517_finalise.py` · session 50 Round 9. **Recorded:** `_verify_typing.cjs` should learn the table form (its count test would then cover these 32 quizzes); the remaining red-table bundles are the declines above (≈ 80 — mostly drag-and-drop / tile / image requests the writer made in words).
+
 ## 2026-09-26 (round 515, build 260620.77) — KB CONSTRAINT 64: `[Insert animated character]` IS A CREATIVE SERVICES VIDEO — the pending Vimeo `videoSection` scaffold + its Designer/Developer To Do, with the writer's `Animation Script` link folded into the To Do (74 modules, the BLL blended-literacy family; skeleton +0.0107pp)
 
 ### 1. WHAT CHANGED

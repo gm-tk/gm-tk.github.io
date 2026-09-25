@@ -1,0 +1,7 @@
+GEWHA: identical 0 / changed 2
+MXDI201: identical 10 / changed 2
+MXDI202: identical 10 / changed 3
+MXEO301: identical 8 / changed 4
+
+TOTAL: identical 28 / changed 11 / missing 0 over 4 modules
+CHANGED: GEWHA/GEWHA_0_0.html GEWHA/GEWHA_interactives.txt MXDI201/MXDI201_2_0.html MXDI201/MXDI201_interactives.txt MXDI202/MXDI202_8_0.html MXDI202/MXDI202_10_0.html MXDI202/MXDI202_interactives.txt MXEO301/MXEO301_2_0.html MXEO301/MXEO301_5_1_0.html MXEO301/MXEO301_6_0.html MXEO301/MXEO301_interactives.txt
