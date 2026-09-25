@@ -1,10 +1,10 @@
 {
  "last_full": {
-  "round": "505",
-  "build": "260620.68",
-  "utc": "2026-09-25T08:13:51Z"
+  "round": "513",
+  "build": "260620.75",
+  "utc": "2026-09-25T14:26:16Z"
  },
- "scoped_since": 6,
+ "scoped_since": 0,
  "history": [
   {
    "round": "472",
@@ -199,6 +199,11 @@
   {
    "round": "511",
    "utc": "2026-09-25T13:09:42Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "513",
+   "utc": "2026-09-25T13:58:21Z",
    "kind": "scoped"
   }
  ]

@@ -1,5 +1,22 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (session 50 Round 5, build 260620.75 — NO engine change) — THE LEDGER'S FULL-SHIP BACKSTOP: the whole corpus regenerated with the r513 engine is byte-identical to the shipped manifest (545 dirs / 543 modules / 2,673 pages; 0 pages differ)
+
+### 1. WHAT RAN
+
+The ledger's backstop (`_ship_ledger.py`: scoped #7 since the r505 FULL — r510, r511, r513; one of the cadence's 8 left, taken at once) — no engine, data or registry change and no ride-along (LOOP §2). `outputs/_s50_full_regen.sh`: `_batch_plan.py`'s 42 batches as `batch_convert.cjs` calls, 4 parallel workers under WSL — 6 min 19 s, every batch rc 0, `_stalecheck.sh` 0 stale.
+
+### 2. PROOF
+
+- **`_content_manifest.py fresh` (affected = none): all 543 modules BYTE-IDENTICAL to the shipped manifest.** Identical bytes cannot move a metric.
+- `outputs/_s50_full_postship.sh`: `run_all_gates.sh` — every verifier RESULT ✓, every COUNT held, tags 9557 / 9557; skeleton `--json` vs the pre-backstop state: 0 movers, +0.0000pp; `_gatecheck.py cs bc` then `skeleton defect --commit --round 513`: every gate HELD, the commit wrote 0 changed aggregates; `--gate-baseline-check` PASS; the fast-loop baseline and the content manifest re-snapshotted; 50 selftest lines GREEN, 0 FAIL; the feature index rebuilt (selftest GREEN); the DIFF MINER re-run (194 CANDIDATE, 0 parse errors).
+
+### 3. PROTECTED GATES — EXACT
+
+Skeleton **55.6929 % @ 2486** (≥50 1607, ≥75 281, ≥90 26), RAW 39.539 %; cs 16768 / 204 / 887; body ANY 233; clean 2585 / 2627; leak 52 / 42 — all EXACT. Plateau: neither (a change-free backstop).
+
+**Ledger:** FULL ship recorded at round 513 (the counter reset) · tools `_s50_full_regen.sh`, `_s50_full_postship.sh`, `_s50_full_record.py` · session 50 Round 5.
+
 ## 2026-09-26 (round 513, build 260620.75) — THE BARE `[hover]` WITH ITS DEFINITION IN PARENTHESES: `Hoa ako [hover] (learning partner) could find a class…` weaves the hover and keeps the writer's sentence, instead of sending the tag and the rest of the sentence into a red Writers Note (5 XDLS modules; the dips NAMED — the gold hovers only a term's first occurrences)
 
 ### 1. WHAT CHANGED
