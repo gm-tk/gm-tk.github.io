@@ -1,0 +1,391 @@
+=== index/manifest sync ===
+INDEX/MANIFEST SYNC: OK — 33 browser files, 28 node engine files, app/js disk set in sync.
+  [0s] index/manifest sync
+
+=== entry parity (app↔harness) ===
+ENTRY-PARITY verifier — fixtures: BLL225
+— static contract (both entries use the ONE prep sequence) —
+  ✓ App.js: choke point only, no private prep steps
+  ✓ batch_convert.cjs: choke point only, no private prep steps
+  ✓ ModuleResolver.PrepareRun: present, carries the canonical mtkFlag decision
+— dynamic options parity (batch options vs app UI defaults) —
+  ✓ BLL225: 4 outputs byte-identical across both option constructions
+— selftest: DETECTION (an injected divergence must be flagged) —
+  ✓ static scanner FLAGS an injected private prep step
+  ✓ BLL225: LIVENESS — fixture builds (4 outputs)
+  ✓ dynamic differ SEES a real option divergence (imageMode P vs D)
+RESULT: PASS (entry parity holds)
+  [22s] entry parity (app↔harness)
+
+=== skeleton (PRIMARY) ===
+SKELETON STRUCTURAL MATCH — 2491 paired pages (text-immune, 100% of structure)
+
+pairs skipped (parse error): 0
+RAW match (full structure, incl. widget internals): mean 39.4%
+   ^ low because Phase-1 widgets are by-design PLACEHOLDERS vs the human's built widgets.
+
+SCAFFOLD match (widgets collapsed to one marker — the Phase-1 target: rows/cols/
+activities/sections + widget POSITIONS): mean 55.5%  median 56.5%
+  pages >=  95% SCAFFOLD match:   11 ( 0.4%)
+  pages >=  90% SCAFFOLD match:   26 ( 1.0%)
+  pages >=  75% SCAFFOLD match:  276 (11.1%)
+  pages >=  50% SCAFFOLD match: 1592 (63.9%)
+  pages <  50% scaffold match: 899
+
+== per-module mean SCAFFOLD match (worst 25) ==
+  MXFUN01     5.5%  (1 pages)
+  JPFUN02     6.0%  (1 pages)
+  MXFUN02     8.0%  (1 pages)
+  ANZHFUN05   9.1%  (1 pages)
+  ARFUN04     9.8%  (1 pages)
+  EXPFUN05   11.1%  (1 pages)
+  JPFUN01    13.7%  (1 pages)
+  PWYWHA1    13.8%  (1 pages)
+  TEFUN03    14.7%  (1 pages)
+  EXPFUN03   14.8%  (1 pages)
+  TWHA901    18.6%  (1 pages)
+  EXPFUN02   19.5%  (1 pages)
+  ART1005    19.5%  (1 pages)
+  TWHA903    20.5%  (1 pages)
+  SSFUN01    21.2%  (1 pages)
+  EXPFUN04   21.4%  (1 pages)
+  ART1003    22.8%  (1 pages)
+  ARFUN02    23.1%  (1 pages)
+  XDLS911    24.0%  (2 pages)
+  SSFUN05    24.5%  (1 pages)
+  CEDT104    24.9%  (1 pages)
+  BLL120     25.7%  (1 pages)
+  TRR304     25.7%  (4 pages)
+  GEWHA      25.8%  (1 pages)
+  TWHK901    26.6%  (1 pages)
+
+== worst individual pages by SCAFFOLD match (top 20) ==
+  MXFUN01_0_0.html           scaffold   5.5%  (raw    3%)
+  JPFUN02_0_0.html           scaffold   6.0%  (raw    5%)
+  SSFUN07_2_0.html           scaffold   6.1%  (raw    5%)
+  MXFUN02_0_0.html           scaffold   8.0%  (raw    5%)
+  ANZHFUN05_0_0.html         scaffold   9.1%  (raw   11%)
+  ARFUN04_0_0.html           scaffold   9.8%  (raw    6%)
+  TRR304_3_0.html            scaffold  10.0%  (raw   10%)
+  EXIP901_4_0.html           scaffold  10.0%  (raw    8%)
+  XDLS911_1_0.html           scaffold  10.8%  (raw    6%)
+  EXPFUN05_0_0.html          scaffold  11.1%  (raw   13%)
+  XOTPB08_2_0.html           scaffold  12.0%  (raw   11%)
+  MXDB301_3_0.html           scaffold  12.0%  (raw    7%)
+  ENGJ302_1_0.html           scaffold  12.3%  (raw   11%)
+  TEDC401_3_0.html           scaffold  13.4%  (raw    6%)
+  ENGFUN02_1_0.html          scaffold  13.4%  (raw   11%)
+  JPFUN01_0_0.html           scaffold  13.7%  (raw    6%)
+  PWYWHA1_0_0.html           scaffold  13.8%  (raw   13%)
+  MXDI103_8_0.html           scaffold  14.4%  (raw    6%)
+  PES1007_7_0.html           scaffold  14.4%  (raw   13%)
+  TEFUN03_0_0.html           scaffold  14.7%  (raw   10%)
+  [77s] skeleton (PRIMARY)
+
+=== structural defect audit ===
+STRUCTURAL DEFECT AUDIT — 2633 Claude pages
+STRUCTURALLY CLEAN pages (zero structural defects): 2591/2633 = 98.4%
+pages WITH >=1 structural defect: 42
+
+== defect CLASS ranking (total occurrences | pages affected) ==
+  A_literal_tag_leak                         52 occ |   42 pages
+
+== modules with the most structural defects (top 25) ==
+  DTC1005     14  {'A_literal_tag_leak': 14}
+  MUS1004      4  {'A_literal_tag_leak': 4}
+  XGF9004      2  {'A_literal_tag_leak': 2}
+  TRR116       2  {'A_literal_tag_leak': 2}
+  MXFU302      2  {'A_literal_tag_leak': 2}
+  HIS1005      2  {'A_literal_tag_leak': 2}
+  ENGI102      2  {'A_literal_tag_leak': 2}
+  CBI1008      2  {'A_literal_tag_leak': 2}
+  BLL260       2  {'A_literal_tag_leak': 2}
+  TRR304       1  {'A_literal_tag_leak': 1}
+  TRR115       1  {'A_literal_tag_leak': 1}
+  TRR106       1  {'A_literal_tag_leak': 1}
+  TRR102       1  {'A_literal_tag_leak': 1}
+  TEFUN07      1  {'A_literal_tag_leak': 1}
+  SSFUN05      1  {'A_literal_tag_leak': 1}
+  MXS1004      1  {'A_literal_tag_leak': 1}
+  MXFUN01      1  {'A_literal_tag_leak': 1}
+  MXEO301      1  {'A_literal_tag_leak': 1}
+  MXDI201      1  {'A_literal_tag_leak': 1}
+  HIS1006      1  {'A_literal_tag_leak': 1}
+  HIS1001      1  {'A_literal_tag_leak': 1}
+  ENGS404      1  {'A_literal_tag_leak': 1}
+  ENGS302      1  {'A_literal_tag_leak': 1}
+  ENFUN09      1  {'A_literal_tag_leak': 1}
+  DAN1003      1  {'A_literal_tag_leak': 1}
+
+== worst individual pages (top 20) ==
+  DTC1005_1_0.html             5  {'A_literal_tag_leak': 5}
+  XGF9004_7_0.html             2  {'A_literal_tag_leak': 2}
+  TRR116_9_0.html              2  {'A_literal_tag_leak': 2}
+  ENGI102_0_0.html             2  {'A_literal_tag_leak': 2}
+  DTC1005_16_0.html            2  {'A_literal_tag_leak': 2}
+  DTC1005_13_0.html            2  {'A_literal_tag_leak': 2}
+  BLL260_0_0.html              2  {'A_literal_tag_leak': 2}
+  TRR304_2_0.html              1  {'A_literal_tag_leak': 1}
+  TRR115_1_0.html              1  {'A_literal_tag_leak': 1}
+  TRR106_2_0.html              1  {'A_literal_tag_leak': 1}
+  TRR102_1_0.html              1  {'A_literal_tag_leak': 1}
+  TEFUN07_0_0.html             1  {'A_literal_tag_leak': 1}
+  SSFUN05_0_0.html             1  {'A_literal_tag_leak': 1}
+  MXS1004_2_0.html             1  {'A_literal_tag_leak': 1}
+  MXFUN01_0_0.html             1  {'A_literal_tag_leak': 1}
+  MXFU302_6_0.html             1  {'A_literal_tag_leak': 1}
+  MXFU302_4_0_0.html           1  {'A_literal_tag_leak': 1}
+  MXEO301_1_0.html             1  {'A_literal_tag_leak': 1}
+  MXDI201_8_0.html             1  {'A_literal_tag_leak': 1}
+  MUS1004_9_0.html             1  {'A_literal_tag_leak': 1}
+  [16s] structural defect audit
+
+=== compare_structure ===
+modules compared: 531 (comparator errors: 0)
+claude content elements: ~52746 | text-matched against human: 19519 (37.0% — unmatched = developer rewording/restructuring)
+  exact wrapper chain:         16745  (85.8%)
+  same wrappers, diff order:    1417  (7.3%)
+  claude EXTRA container:        198  (1.0%)  ← over-nesting
+  claude MISSING container:      888  (4.5%)
+  row wrap missing:               24  (0.1%)
+  other chain diffs:             247  (1.3%)
+rows ratio (claude/human content rows) avg: 1.30
+acks content (per-module MEDIAN — pooled totals are skewed by legacy giants):
+  human entries found in claude: median 27.8%  (pooled 8130/24604)
+  claude entries found in human: median 67.6%  (pooled 7966/13453) | claude ❗ todo lines: 10755
+worst over-nesting: [('TEDC402', 16), ('ANZH401', 12), ('HIS1005', 10), ('MXDB302', 10), ('BLL120', 7), ('BLL130', 6), ('SSFUN03', 6), ('ANZH303', 5)]
+  [37s] compare_structure
+
+=== body_compare ===
+BODY-CONTENT BREAKDOWN — 2633 pages compared (free-body excludes widget subtrees both sides)
+  OVER-CAPTURE (a widget ate body the human keeps free): 59 pages
+  RUNAWAY ABSORPTION (one widget absorbed >=4 types):     5 pages
+  EMPTY interactive container:                            171 pages
+  pages with ANY breakdown flag:                          232
+
+WORST-BROKEN PAGES (top 30):
+  GENO901/GENO901_2_1.html       | OVER-CAPTURE 79% (human keeps 75 blocks free); 1 EMPTY widget(s)
+  CEDK501/CEDK501_3_0.html       | OVER-CAPTURE 70% (human keeps 44 blocks free)
+  AGH1006/AGH1006_9_0.html       | OVER-CAPTURE 40% (human keeps 35 blocks free)
+  TRR108/TRR108_0_0.html         | OVER-CAPTURE 89% (human keeps 31 blocks free)
+  TRR301/TRR301_3_0.html         | OVER-CAPTURE 62% (human keeps 30 blocks free)
+  ENGJ301/ENGJ301_1_0.html       | OVER-CAPTURE 62% (human keeps 29 blocks free)
+  TEDC402/TEDC402_0_0.html       | OVER-CAPTURE 52% (human keeps 29 blocks free)
+  XDLS909/XDLS909_2_0.html       | OVER-CAPTURE 49% (human keeps 26 blocks free)
+  SSOG103/SSOG103_1_0.html       | OVER-CAPTURE 56% (human keeps 18 blocks free)
+  PHE1005/PHE1005_5_0.html       | OVER-CAPTURE 64% (human keeps 17 blocks free)
+  PMT101/PMT101_0_0.html         | OVER-CAPTURE 100% (human keeps 15 blocks free)
+  PWY1001/PWY1001_1_2_0.html     | OVER-CAPTURE 40% (human keeps 15 blocks free)
+  ANZH205/ANZH205_1_0.html       | OVER-CAPTURE 80% (human keeps 14 blocks free)
+  MXFU302/MXFU302_10_0.html      | OVER-CAPTURE 53% (human keeps 12 blocks free)
+  PHE1003/PHE1003_2_0.html       | OVER-CAPTURE 76% (human keeps 12 blocks free)
+  PWY1007/PWY1007_7_0.html       | OVER-CAPTURE 91% (human keeps 12 blocks free)
+  GENO901/GENO901_3_2.html       | OVER-CAPTURE 43% (human keeps 10 blocks free)
+  GENO901/GENO901_3_3.html       | OVER-CAPTURE 48% (human keeps 10 blocks free)
+  ENGC202/ENGC202_7_0.html       | OVER-CAPTURE 40% (human keeps 10 blocks free)
+  HES1005/HES1005_6_0.html       | OVER-CAPTURE 46% (human keeps 9 blocks free)
+  OSGM501/OSGM501_3_0.html       | OVER-CAPTURE 54% (human keeps 9 blocks free)
+  PES1008/PES1008_7_0.html       | OVER-CAPTURE 61% (human keeps 9 blocks free)
+  TEDC401/TEDC401_0_0.html       | OVER-CAPTURE 52% (human keeps 9 blocks free)
+  PWY1008/PWY1008_3_1_0.html     | OVER-CAPTURE 40% (human keeps 8 blocks free)
+  ENGR102/ENGR102_4_0.html       | OVER-CAPTURE 42% (human keeps 7 blocks free)
+  FRFUN07/FRFUN07_4_0.html       | OVER-CAPTURE 55% (human keeps 7 blocks free)
+  TEDC402/TEDC402_8_1.html       | OVER-CAPTURE 52% (human keeps 7 blocks free)
+  AGH1007/AGH1007_8_0.html       | OVER-CAPTURE 56% (human keeps 6 blocks free)
+  ENGS102/ENGS102_3_0.html       | OVER-CAPTURE 42% (human keeps 6 blocks free)
+  MXEX301/MXEX301_6_0.html       | OVER-CAPTURE 61% (human keeps 6 blocks free)
+
+MODULES WITH THE MOST BROKEN PAGES:
+  GENO901: 6 broken page(s)
+  TEDC402: 6 broken page(s)
+  MXFL101: 6 broken page(s)
+  PHE1003: 5 broken page(s)
+  MXDI103: 5 broken page(s)
+  ENGC403: 5 broken page(s)
+  MXFL203: 4 broken page(s)
+  AGH1007: 3 broken page(s)
+  MXDI202: 3 broken page(s)
+  XGF9004: 3 broken page(s)
+  CEDK501: 2 broken page(s)
+  AGH1006: 2 broken page(s)
+  XDLS909: 2 broken page(s)
+  PHE1005: 2 broken page(s)
+  PWY1001: 2 broken page(s)
+  [31s] body_compare
+
+=== JS regression (tags) ===
+TOTAL 9557 | HANDLED 9557 (100.00%) | REAL FAILURES 0 (0.00%)
+  primary                  6286
+  context                  1548
+  cross                    956
+  instruction              384
+  freetext                 359
+  heading_family           19
+  tag_in_instruction_line  5
+Failing sections:
+  [0s] JS regression (tags)
+
+=== flipCard verifier ===
+🟢 [ModuleResolver] CEDO102 is a recorded page_model exception — using single-file.
+CEDO102: built 15 card-texts [exact 12, copy-edit 2, gold-subst 0, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.47): Some people catch too many fish from the ocean, and this can upset the balance of life in the coral reef. It's like if w
+🟠 [ModuleResolver] Multiple module-code candidates found (MXDB302, MXO421) — using MXDB302 from filename "MXDB302 Writers Template + Media List.docx".
+MXDB302: built 14 card-texts [exact 9, copy-edit 1, gold-subst 0, defect 4] 4 unmatched (baseline)
+   unmatched (overlap 0.00): 1m = 100cm
+   unmatched (overlap 0.00): 1m = 1000mm
+   unmatched (overlap 0.00): 1000m = 1km
+   unmatched (overlap 0.00): 1cm = 10mm
+🟢 [DocxExtractor] Content opened at the [TITLE BAR] typed inside a table cell (the MTK bilingual template) — the overview tables before the first paragraph-level start are content, not front matter (round 453).
+TRR114: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XMES201: built 32 card-texts [exact 18, copy-edit 1, gold-subst 0, defect 13] 13 unmatched (baseline)
+   unmatched (overlap 0.25): Dog dog on white background
+   unmatched (overlap 0.50): Cat tabby cat
+   unmatched (overlap 0.50): Horse chestnut horse
+   unmatched (overlap 0.25): Goat goat on white background
+   unmatched (overlap 0.50): Rabbit soft rabbit
+   unmatched (overlap 0.50): dog eating
+   unmatched (overlap 0.50): rabbit and guinea pig
+   unmatched (overlap 0.00): budgies eating seed
+   unmatched (overlap 0.33): goats and horse eating hay
+   unmatched (overlap 0.50): cat toy
+   unmatched (overlap 0.50): dog toy
+   unmatched (overlap 0.14): bird toy
+   unmatched (overlap 0.20): hamster wheel
+
+TOTAL 61: exact 39, copy-edit 4, gold-subst 0, defect 18, divergence 0.
+RESULT: divergence 0 ✓ (protected). exact/copy-edit/defect are a tracked baseline — diff vs gate_baseline.json.flipcard, hold-or-improve.
+  [3s] flipCard verifier
+
+=== speechBubble verifier ===
+OSAI501: built 11 [exact 8, copy-edit 2, dev-edit 1, gold-subst 0, defect 0] OK ✓ (built⊆human, modulo copy-edits / dev-rewrites / gold-subst)
+OSAI401: built 22 [exact 7, copy-edit 1, dev-edit 0, gold-subst 11, defect 3] OK ✓ (at the recorded baseline 3)
+   DEFECT (overlap 0.44): Prompt 1: Create a list of tasks AI can and can't do. Make the answers read in the first person from the AI point of vie
+   DEFECT (overlap 0.19): Prompt 4: Create an analogy on the limits of AI. AI response: Analogy: AI is like a super-fast calculator with a huge li
+   DEFECT (overlap 0.18): Do a quiz.
+OSAH501: built 8 [exact 2, copy-edit 5, dev-edit 0, gold-subst 0, defect 1] OK ✓ (at the recorded baseline 1) | image-id miss 7
+   DEFECT (overlap 0.57): If you come across harmful behaviour online do not deal with it alone. Talk to someone you can trust and who knows how t
+   image-id not in human file: iStock-1170338101
+   image-id not in human file: iStock-1199375092
+   image-id not in human file: iStock-987355284
+   image-id not in human file: iStock-987354734
+   image-id not in human file: iStock-1190660690
+   image-id not in human file: iStock-1148188506
+   image-id not in human file: iStock-987354734
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGR101, EN000) — using ENGR101 from filename "ENGR101 Writers Template + Media List.docx".
+ENGR101: built 8 [exact 5, copy-edit 3, dev-edit 0, gold-subst 0, defect 0] OK ✓ (built⊆human, modulo copy-edits / dev-rewrites / gold-subst)
+OSGM501: built 13 [exact 9, copy-edit 0, dev-edit 4, gold-subst 0, defect 0] OK ✓ (built⊆human, modulo copy-edits / dev-rewrites / gold-subst)
+
+TOTAL built 62: exact 31, copy-edit 11, dev-edit 5, gold-subst 11, defect 4; image-id misses 7.
+RESULT: every built bubble is human-matched, writer-faithful (gold-subst) or at its recorded baseline ✓ (4 recorded in gate_baseline.json.speechbubble)
+  [2s] speechBubble verifier
+
+=== modal verifier ===
+OSOH501: 1 pop-out group(s), 6 trigger(s) [exact 0, copy-edit 0, dev-edit 6, defect 0]  ✓ every pop-out well-formed
+MXFU301: 3 pop-out group(s), 7 trigger(s) [exact 1, copy-edit 0, dev-edit 6, defect 0]  ✓ every pop-out well-formed
+ENGR302: 2 pop-out group(s), 4 trigger(s) [exact 3, copy-edit 0, dev-edit 1, defect 0]  ✓ every pop-out well-formed
+MXDB201: 1 pop-out group(s), 3 trigger(s) [exact 0, copy-edit 0, dev-edit 3, defect 0]  ✓ every pop-out well-formed
+EXPFUN04: 6 pop-out group(s), 18 trigger(s) [exact 0, copy-edit 0, dev-edit 18, defect 0]  ✓ every pop-out well-formed
+
+TOTAL: 13 pop-out group(s) across 5 module(s), 38 triggers; exact 4, copy-edit 0, dev-edit 34, defect 0.
+RESULT: every built pop-out is well-formed ✓
+  [3s] modal verifier
+
+=== mtkQuiz shell verifier ===
+TEFUN06: 4 shell(s) [boxed 4, box-less 0, defect 0]  gold "Go to quiz" 4  ✓ every shell is the KB shell
+TEFUN03: 3 shell(s) [boxed 3, box-less 0, defect 0]  gold "Go to quiz" 6  ✓ every shell is the KB shell
+ARFUN04: 4 shell(s) [boxed 3, box-less 1, defect 0]  gold "Go to quiz" 4  ✓ every shell is the KB shell
+SCCH301: 1 shell(s) [boxed 1, box-less 0, defect 0]  gold "Go to quiz" 1  ✓ every shell is the KB shell
+BLLR201: 2 shell(s) [boxed 2, box-less 0, defect 0]  gold "Go to quiz" 2  ✓ every shell is the KB shell
+HPRE203: 3 shell(s) [boxed 3, box-less 0, defect 0, residue 1]  gold "Go to quiz" 3  ✓ every shell is the KB shell
+    ! HPRE203_1_0.html 1D: Path 2b: the marker rides a non-quiz "unclassified" bundle whose placeholder sits in the box (residue, not counted)
+
+TOTAL: 17 shell(s) across 6 module(s); boxed 16, box-less 1, residue 1, defect 0.
+RESULT: every MTK quiz shell is the KB shell ✓
+  [4s] mtkQuiz shell verifier
+
+=== math verifier (equations → MathML) ===
+MXDI102: equations 154 (registered 154) / <math> 154 on 4 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+MXDI301: equations 69 (registered 69) / <math> 69 on 3 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+PES1008: equations 24 (registered 24) / <math> 24 on 3 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+MXEX301: equations 18 (registered 18) / <math> 18 on 2 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+PES1007: equations 17 (registered 17) / <math> 17 on 3 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+MXFU302: equations 15 (registered 15) / <math> 15 on 3 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+MXFU401: equations 12 (registered 12) / <math> 12 on 1 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+MXDB301: equations 6 (registered 6) / <math> 6 on 2 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+MXDI201: equations 6 (registered 6) / <math> 6 on 1 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+MXDB202: equations 1 (registered 1) / <math> 1 on 1 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+SCCH301: equations 1 (registered 1) / <math> 1 on 1 page(s); mathJax missing 0; sentinel leaks 0; malformed 0; defect 0 ✓
+TOTAL: 323 equation(s) across 11 module(s); <math> 323; defect 0.
+RESULT: every Word equation ships as MathML ✓
+  [7s] math verifier (equations → MathML)
+
+=== menu-label verifier (c23 / 01B) ===
+AGH1002: labels 13; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+ENGC401: labels 16; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+MXFL201: labels 20; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+OSSC401: labels 10; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+ANZH101: labels 0; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+BLL110: labels 2; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+XFUN02: labels 12; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+CEDT501: labels 24; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+CEDO502: labels 14; not-h5 0; no-colon 0; bare-verb items 0; title-above-label 0; p-between 0; defect 0 ✓
+TOTAL: 111 label(s) across 9 module(s); defect 0.
+RESULT: every lesson-menu label is the KB's <h5> form ✓
+  [4s] menu-label verifier (c23 / 01B)
+
+=== dragAndDrop verifier (03B) ===
+BLL146: widgets 1 (images 1, column 0); drags 6; defect 0 ✓
+BLL112: widgets 1 (images 1, column 0); drags 6; defect 0 ✓
+ENFUN04: widgets 3 (images 1, column 0); drags 19; defect 0 ✓
+CHFUN05: widgets 1 (images 1, column 0); drags 4; defect 0 ✓
+BLL266: widgets 1 (images 1, column 0); drags 8; defect 0 ✓
+MXFUN03: widgets 2 (images 2, column 0); drags 10; defect 0 ✓
+BLL244: widgets 1 (images 1, column 0); drags 10; defect 0 ✓
+ENGJ102: widgets 1 (images 0, column 0); drags 6; defect 0 ✓
+ARFUN03: widgets 1 (images 0, column 0); drags 2; defect 0 ✓
+ENFUN01: widgets 1 (images 0, column 0); drags 5; defect 0 ✓
+ENGI203: widgets 3 (images 0, column 1); drags 15; defect 0 ✓
+BLL220: widgets 3 (images 1, column 2); drags 31; defect 0 ✓
+ENFUN08: widgets 1 (images 0, column 1); drags 15; defect 0 ✓
+ENGR201: widgets 1 (images 0, column 1); drags 11; defect 0 ✓
+TOTAL: 21 widget(s) across 14 module(s); images 9; column 5; drags 148; defect 0.
+RESULT: every built dragAndDrop is the KB 03B form ✓
+  [6s] dragAndDrop verifier (03B)
+
+=== bingo verifier (03E) ===
+🟢 [ModuleResolver] BLL110 is a recorded page_model exception — using single-file.
+BLL110: 6 bingo build(s), 12 grid(s) / 144 cells [exact 3, copy-edit 4, dev-edit 5, defect 0]  gold bingos 12  ✓ every grid well-formed
+🟢 [ModuleResolver] BLL120 is a recorded page_model exception — using single-file.
+BLL120: 7 bingo build(s), 14 grid(s) / 168 cells [exact 8, copy-edit 6, dev-edit 0, defect 0]  gold bingos 14  ✓ every grid well-formed
+🟢 [ModuleResolver] BLL130 is a recorded page_model exception — using single-file.
+BLL130: 6 bingo build(s), 12 grid(s) / 144 cells [exact 10, copy-edit 0, dev-edit 2, defect 0]  gold bingos 12  ✓ every grid well-formed
+🟢 [ModuleResolver] BLL140 is a recorded page_model exception — using single-file.
+BLL140: 1 bingo build(s), 2 grid(s) / 24 cells [exact 2, copy-edit 0, dev-edit 0, defect 0]  gold bingos 2  ✓ every grid well-formed
+🟢 [ModuleResolver] BLL150 is a recorded page_model exception — using single-file.
+BLL150: 3 bingo build(s), 6 grid(s) / 72 cells [exact 5, copy-edit 1, dev-edit 0, defect 0]  gold bingos 9  ✓ every grid well-formed
+🟢 [ModuleResolver] BLL160 is a recorded page_model exception — using single-file.
+BLL160: 2 bingo build(s), 4 grid(s) / 48 cells [exact 4, copy-edit 0, dev-edit 0, defect 0]  gold bingos 4  ✓ every grid well-formed
+🟢 [ModuleResolver] BLL170 is a recorded page_model exception — using single-file.
+BLL170: 1 bingo build(s), 2 grid(s) / 24 cells [exact 2, copy-edit 0, dev-edit 0, defect 0]  gold bingos 2  ✓ every grid well-formed
+BLL113: built 0 bingos (all fell back)
+BLL154: built 0 bingos (all fell back)
+
+TOTAL: 52 grid(s) across 7 module(s), 624 cells; exact 34, copy-edit 11, dev-edit 7, defect 0.
+RESULT: every built bingo grid is the KB 03E form ✓
+  [6s] bingo verifier (03E)
+
+=== typing verifier (03D) ===
+BLL244 BLL244_2_0.html: 1 typing quiz(zes), 6 input(s), gold-matched 6
+FRFUN08 FRFUN08_3_0.html: 1 typing quiz(zes), 3 input(s), gold-matched 3
+MXDB302 MXDB302_5_0.html: 1 typing quiz(zes), 5 input(s), gold-matched 5
+MXEO301 MXEO301_5_0.html: 1 typing quiz(zes), 5 input(s), gold-matched 5
+MXFL301 MXFL301_1_0.html: 1 typing quiz(zes), 6 input(s), gold-matched 6
+MXFL301 MXFL301_4_0.html: 1 typing quiz(zes), 5 input(s), gold-matched 5
+MXFL302 MXFL302_5_0.html: 1 typing quiz(zes), 19 input(s), gold-matched 19
+PHE1007 PHE1007_2_0.html: 1 typing quiz(zes), 8 input(s), gold-matched 6
+
+TOTAL 8 typing quiz(zes) / 57 input(s): answer = a gold answer 55, no gold match 2, module has no gold typing 0 | DEFECTS 0
+RESULT: defect 0 ✓
+  [7s] typing verifier (03D)
+
+=== gate suite complete ===

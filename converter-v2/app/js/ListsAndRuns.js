@@ -508,6 +508,36 @@ class ListsAndRuns {
 		// writer ✅ marker) is left outside the span.
 		s = s.replace(new RegExp(`([\\p{L}\\p{M}\\p{N}][\\p{L}\\p{M}\\p{N}'’\\-]*)${_it0}([^${_it0}${_it1}]*)${_it1}`, "gu"),
 			(m, word, def) => fmtIt.replace("{info}", def.trim()).replace("{anchor}", word));
+		// ROUND 499 — THE HOVER DEFINITION AFTER THE FULL STOP. A writer who types the marker after the sentence's punctuation
+		// (`…the addition of organic matter. [hover definition: material that has come from…]`, AGH1002) leaves no word right
+		// before the sentinel, so the definition was dropped — 153 corpus-wide, the gold building 49 (`_s46_r9_itdrop.py`).
+		// Before the drop: the bold / italic run, the quoted phrase, or (for a definition of min_def_words+) the last word right
+		// before 1–2 punctuation marks becomes the anchor; the punctuation stays after the span. A writer NOTE riding the same
+		// path (`on ‘Fibre’`, `colour 3`, `over Māori boy`, `production – the process…`, a file name) matches note_pattern
+		// and is still dropped. Data elements.info_trigger_punct_anchor; env HOVERPUNCT_OFF.
+		const _pa = DataService.Data.EmitTemplates.elements?.info_trigger_punct_anchor;
+		if (_pa && _pa.enabled !== false && s.includes(_it0)
+			&& !(typeof process !== "undefined" && process.env && process.env[_pa.env ?? "HOVERPUNCT_OFF"])) {
+			const noteRe = _pa.note_pattern ? new RegExp(_pa.note_pattern, "iu") : null;
+			const P = `(${_pa.punct_class ?? "[.?!,;:)]"}{1,2})\\s*${_it0}([^${_it0}${_it1}]*)${_it1}`;
+			const words = (d) => d.replace(/<[^>]+>/g, " ").trim().split(/\s+/).filter(Boolean).length;
+			const okDef = (d, min) => words(d) >= min && /\p{L}/u.test(d) && !(noteRe && noteRe.test(d.replace(/<[^>]+>/g, "").trim()));
+			const wrap = (anchor, def, p) => fmtIt.replace("{info}", def.trim()).replace("{anchor}", anchor) + p;
+			// the line's FIRST SENTENCE is the term (`setting.` as a list item, `Ka rawe tō mahi! You have now completed…` as a
+			// paragraph): the gold wraps all of it, punctuation inside — `<span …>setting.</span>` (ARFUN05), `<span …>Ka rawe tō
+			// mahi!</span> You have…` (BLL272)
+			const wl = _pa.whole_line_max_words ?? 8;
+			s = s.replace(new RegExp(`^(\\s*)([^<${_it0}${_it1}]*?\\p{L}[^<${_it0}${_it1}]*?)${P.replace(_pa.punct_class ?? "[.?!,;:)]", _pa.whole_line_punct ?? "[.?!]")}`, "u"),
+				(m, lead, term, p, def) => (words(term) <= wl && okDef(def, 1))
+					? lead + wrap(term.trim() + p, def, "") : m);
+			s = s.replace(new RegExp(`<(b|i)>([^<]*)</\\1>${P}`, "gu"), (m, tag, inner, p, def) => okDef(def, 1) ? wrap(inner, def, p) : m);
+			s = s.replace(new RegExp(`(“[^“”<]{1,60}”)${P.replace("{1,2}", "{0,2}")}`, "gu"), (m, q, p, def) => okDef(def, 1) ? wrap(q, def, p) : m);
+			// the last-word anchor only for a CAPITALISED definition (last_word_upper): a lower-case one mostly glosses a term
+			// named earlier in the sentence (HIS1006 `the belief that…` = stereotype) — measured 4 right / 6 wrong vs 17 / 5
+			const upperOk = (d) => _pa.last_word_upper === false || /^\p{Lu}/u.test(d.replace(/<[^>]+>/g, "").trim());
+			s = s.replace(new RegExp(`([\\p{L}\\p{M}\\p{N}][\\p{L}\\p{M}\\p{N}'’\\-]*)${P}`, "gu"),
+				(m, word, p, def) => okDef(def, _pa.min_def_words ?? 2) && upperOk(def) ? wrap(word, def, p) : m);
+		}
 		if (typeof process !== "undefined" && process.env && process.env.TRACE_ITDROP) for (const _m of s.matchAll(new RegExp(`${_it0}([^${_it0}${_it1}]*)${_it1}`, "g"))) process.stderr.write(`ITDROP\t${JSON.stringify(s.slice(Math.max(0, _m.index - 40), _m.index))}\t${JSON.stringify(_m[1].slice(0, 40))}\n`);
 		s = s.replace(new RegExp(`${_it0}[^${_it0}${_it1}]*${_it1}`, "g"), "");   // still no clean anchor → drop the sentinel (plain text)
 		// bare URLs become real links (target=_blank, corpus convention)
