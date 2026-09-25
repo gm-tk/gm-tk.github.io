@@ -1,5 +1,27 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 498, build 260620.61) — THE HOVER DEFINITION'S RED FIRST LETTER: a colon hover marker whose red run carries the definition's first letter(s) keeps them, and a `]` typed black ends the definition (15 → 6 cut tooltips; 16 pages / 16 modules)
+
+### 1. WHAT CHANGED
+
+**The find** (session 46 Round 9 — the hover lane's s45-r2 (a) residue traced: `_s46_r9_colon.py` → `_s46_r9_infohead.py`, `_s46_items.cjs`): Word often leaves the definition's FIRST LETTER in the red marker run — `[roll over definition: T` red, `o move to or find a place.` black (SSFUN03), `[hover definition: S` + `pecific measurable details.` (TEFUN05), `[roll-over definition: for` + `the rights of urban Māori…` (ANZH301 / 302). The unclosed marker takes r222c's def_black_tail path, which read only the black tail, so **15 tooltips in 9 modules shipped with their first letter(s) cut** (`o move to…`, `hings the stakeholders want`, `n computing, a bus is…`, `ollaboration, support, belonging`). The same path took a `]` the writer typed BLACK as part of the definition, so the rest of the paragraph shipped inside the tooltip (GEO1006 `…a river follows.] is often narrow…`, HIS1003, SSFUN01, XDLS502, XDLS901) and AGH1008's `sires [hover: fathers] and dams [hover: mothers]` built one tooltip holding both.
+
+**The fix** (`InteractiveScanner.#weaveHoverDefinition` A4, data `elements.hover_definition_inline.split_bracket.def_black_tail_head`, env `HOVERTAILHEAD_OFF`): (a) the text after the unclosed marker's colon heads the definition, joined as the source joins it — a space when the black tail opens with one or the red run ENDS with one (the run's own space shows as two before the extractor's one-space pad: `for␣␣` + `the rights…`, but `T␣` + `o move…`); (b) a black `]` ends the definition there and the rest is the sentence again.
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 0 pages changed**; ON **16 pages / 16 modules** (AGH1008 ANZH301 ANZH302 ARFUN03 DAN1004 ENGS404 GEO1006 HIS1003 SSFUN01 SSFUN03 SSOG301 TEDC402 TEFUN05 XDLS502 XDLS901 XGF9002), each diffed by hand: every change is a restored definition head (`To move…`, `Specific…`, `Things…`, `In computing…`, `Collaboration…`, `The outcome…`, `for the rights…`) or a definition cut at its black `]` with the sentence restored after the anchor (GEO1006, HIS1003 `lionise`, SSFUN01, XDLS502, XDLS901); AGH1008 now builds BOTH tooltips (`sires` = fathers, `dams` = mothers). Regeneration + 12-module spot-check clean; **`scoped_ship.sh` PASS**.
+- Companion (the gate is blind to `info=`): `_s46_r9_infohead.py` first-letter cuts **15 → 6** (the six left are other shapes); `_s45_r2_hover.py` gold-matched definitions **COLON-inline 297 → 304, QUOTED 18 → 19 (+8)**; Claude tooltips 1070 → 1071.
+
+### 3. PROTECTED GATES
+
+- Skeleton **55.4469 % @ 2491 — 0 movers** (a skeleton-blind text-fidelity round), ≥50 1591, ≥75 277, ≥90 26, RAW 39.419 %; body ANY 232; cs 16745 / 198 / 888, clean 2591 / 2633, leak 52 / 42 EXACT; tags 9557 / 9557; every verifier RESULT ✓; selftests 50 green / 0 fail; the miner 195 CANDIDATE.
+- Plateau (§4): a skeleton-blind writer-content round (the r495 precedent) — neither; **0 of 3**.
+
+**Recorded, not built (the PICK pass):** `TRACE_ITDROP` over the corpus — **153 hover definitions (145 unique, 74 modules) are still DROPPED by `ListsAndRuns.inlineMarkup`** because no clean word sits right before the sentinel: 84 after a full stop, 14 `?`, 6 `!`, 6 a closing quote, 16 an empty host (`_s46_r9_itdrop.py`); the gold builds 49 of them (anchors: the last word before the punctuation — `holistically`, `colony`, `atmospheres` — a quoted phrase `“push factors”`, a whole short exclamation `Ka rawe tō mahi!`), but 90 are writer notes (`on ‘Fibre’`, `colour 3`, `over Māori boy`, `(`) — a punctuation-anchor rule needs a note filter first. The six first-letter cuts left (GEO1006 `ctions`, MXFL301 `maginary`, OSBY101, OSSM301, TEFUN05, XDLS909) are other marker shapes.
+
+**Ledger:** scoped #8 since the r490 FULL — **the FULL backstop is DUE** · data `elements.hover_definition_inline.split_bracket.def_black_tail_head` · env `HOVERTAILHEAD_OFF` · code `InteractiveScanner.#weaveHoverDefinition` (A4) · tools `_s46_r9_colon.py`, `_s46_r9_infohead.py`, `_s46_r9_itdrop.py` (+ the `TRACE_ITDROP` stderr hook in `ListsAndRuns.inlineMarkup`), `_s46_items.cjs`, `_r498_finalise.py` · session 46 Round 9.
+
 ## 2026-09-25 (round 497, build 260620.60) — THE XDLS CHOICE BOARD'S LAST DECLINED PAGES: r496's scrap release reaches the writer's `[Click Drop Activity N with embedded image]` scrap, and an activity anchor its OWN widget consumed counts as a panel (XDLS904 5.0 40.1 → 73.0, XDLS905 4.0 44.4 → 68.5, XDLS906 3.0 48.2 → 70.6 %)
 
 ### 1. WHAT CHANGED

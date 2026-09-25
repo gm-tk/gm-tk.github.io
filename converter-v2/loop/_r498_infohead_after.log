@@ -1,0 +1,9 @@
+Claude info= values 1071; first letters dropped (gold = 1–3 chars + Claude's): 6 in 6 modules
+dropped prefixes: {'H': 1, 'l': 1, 'A': 1, 'I': 1, 's': 1, 'Y': 1}
+modules: {'TEFUN05': 1, 'XDLS909': 1, 'GEO1006': 1, 'MXFL301': 1, 'OSBY101': 1, 'OSSM301': 1}
+  TEFUN05   TEFUN05_0_0.html       claude «ow you expect technology to work.»  gold «How you expect technology to work.»
+  XDLS909   XDLS909_0_0.html       claude «earning partner»  gold «learning partner»
+  GEO1006   GEO1006_5_0.html       claude «ctions to reduce the effects.»  gold «Actions to reduce the effects.»
+  MXFL301   MXFL301_1_0.html       claude «maginary lines that run north to south and divide up the Ear»  gold «Imaginary lines that run north to south and divide up the Ea»
+  OSBY101   OSBY101_1_0.html       claude «omeone you know who can help.»  gold «someone you know who can help.»
+  OSSM301   OSSM301_0_0.html       claude «oung people.»  gold «Young people.»

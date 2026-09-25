@@ -1,0 +1,19 @@
+AGH1008: identical 10 / changed 1
+ANZH301: identical 11 / changed 1
+ANZH302: identical 11 / changed 1
+ARFUN03: identical 1 / changed 1
+DAN1004: identical 9 / changed 1
+ENGS404: identical 12 / changed 1
+GEO1006: identical 6 / changed 1
+HIS1003: identical 11 / changed 1
+SSFUN01: identical 1 / changed 1
+SSFUN03: identical 1 / changed 1
+SSOG301: identical 9 / changed 1
+TEDC402: identical 10 / changed 1
+TEFUN05: identical 1 / changed 1
+XDLS502: identical 5 / changed 1
+XDLS901: identical 5 / changed 1
+XGF9002: identical 10 / changed 1
+
+TOTAL: identical 113 / changed 16 / missing 0 over 16 modules
+CHANGED: AGH1008/AGH1008_4_0.html ANZH301/ANZH301_9_0.html ANZH302/ANZH302_9_0.html ARFUN03/ARFUN03_0_0.html DAN1004/DAN1004_0_0.html ENGS404/ENGS404_0_0.html GEO1006/GEO1006_4_0.html HIS1003/HIS1003_7_0.html SSFUN01/SSFUN01_0_0.html SSFUN03/SSFUN03_0_0.html SSOG301/SSOG301_4_0.html TEDC402/TEDC402_2_0.html TEFUN05/TEFUN05_0_0.html XDLS502/XDLS502_3_0.html XDLS901/XDLS901_0_0.html XGF9002/XGF9002_0_0.html

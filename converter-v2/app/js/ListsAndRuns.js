@@ -508,6 +508,7 @@ class ListsAndRuns {
 		// writer ✅ marker) is left outside the span.
 		s = s.replace(new RegExp(`([\\p{L}\\p{M}\\p{N}][\\p{L}\\p{M}\\p{N}'’\\-]*)${_it0}([^${_it0}${_it1}]*)${_it1}`, "gu"),
 			(m, word, def) => fmtIt.replace("{info}", def.trim()).replace("{anchor}", word));
+		if (typeof process !== "undefined" && process.env && process.env.TRACE_ITDROP) for (const _m of s.matchAll(new RegExp(`${_it0}([^${_it0}${_it1}]*)${_it1}`, "g"))) process.stderr.write(`ITDROP\t${JSON.stringify(s.slice(Math.max(0, _m.index - 40), _m.index))}\t${JSON.stringify(_m[1].slice(0, 40))}\n`);
 		s = s.replace(new RegExp(`${_it0}[^${_it0}${_it1}]*${_it1}`, "g"), "");   // still no clean anchor → drop the sentinel (plain text)
 		// bare URLs become real links (target=_blank, corpus convention)
 		s = s.replace(/(https?:\/\/[^\s<>&"]+)/g, '<a href="$1" target="_blank">$1</a>');

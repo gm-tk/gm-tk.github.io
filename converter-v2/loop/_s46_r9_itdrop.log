@@ -1,0 +1,150 @@
+dropped hover definitions: 153 (145 unique) in 74 modules
+by the char before the sentinel x gold: {('punct', 'gold-no'): 90, ('punct', 'gold-builds'): 33, ('empty', 'gold-builds'): 14, ('other', 'gold-no'): 3, ('bracket', 'gold-builds'): 2, ('empty', 'gold-no'): 2, ('tag>', 'gold-no'): 1}
+prev char: {'.': 84, '∅': 16, '?': 14, '”': 6, '!': 6, ')': 5, ':': 4, ',': 3, '\ue001': 3, '[': 2, '>': 1, ';': 1}
+gold's anchor end for the punct cases: {('.', 'anchor-ends-.'): 5, ('∅', 'anchor-ends-s'): 5, ('!', 'anchor-ends-!'): 5, ('.', 'anchor-ends-y'): 4, ('.', 'anchor-ends-t'): 3, ('”', 'anchor-ends-”'): 3, ('.', 'anchor-ends-n'): 2, ('?', 'anchor-ends-?'): 2, ('∅', 'anchor-ends-t'): 2, ('∅', 'anchor-ends-e'): 2, ('[', 'anchor-ends-s'): 1, ('.', 'anchor-ends-p'): 1, ('∅', 'anchor-ends-n'): 1, ('∅', 'anchor-ends-g'): 1, ('∅', 'anchor-ends-m'): 1, ('∅', 'anchor-ends-a'): 1, ('[', 'anchor-ends-y'): 1, ('.', 'anchor-ends-e'): 1, ('.', 'anchor-ends-s'): 1, ('.', 'anchor-ends-b'): 1}
+modules: {'TEFUN01': 10, 'HES1002': 8, 'HPRE301': 7, 'DAN1006': 6, 'TEFUN03': 6, 'CEDK401': 5, 'ANZH205': 4, 'MXDB302': 4, 'PHE1008': 4, 'BLL243': 3, 'DAN1003': 3, 'ENGS101': 3, 'GENO901': 3, 'WJFUN108': 3, 'AGH1004': 2, 'ANZH301': 2, 'ANZH302': 2, 'ANZH401': 2, 'BLL245': 2, 'BLL252': 2, 'BLL275': 2, 'COM1002': 2, 'ENGI302': 2, 'HIS1005': 2, 'MXDI202': 2, 'MXFU201': 2, 'WJFUN106': 2, 'WJFUN107': 2, 'WJFUN205': 2, 'XDLS906': 2, 'AGH1002': 1, 'AGH1008': 1, 'ARFUN04': 1, 'ARFUN05': 1, 'BLL272': 1, 'BLL273': 1, 'BLL276': 1, 'BLLR203': 1, 'CEDO105': 1, 'CEDT501': 1}
+  AGH1002   punct   GOLD anchor «organic matter.»                pre «ng and the addition of organic matter.» def «material that has come from plants»
+  AGH1004   bracket GOLD anchor «regions»                        pre «rom specific areas or <b>regions</b> [» def «a distinct and defined geographic »
+  AGH1004   punct   gold-no                                      pre «. Can you name the region you live in?» def «over region areas – student to app»
+  AGH1008   tag>    gold-no                                      pre « info="fathers] and dams">sires</span>» def «mothers] to pass on different trai»
+  ANZH205   punct   GOLD anchor «Sovereignty»                    pre « one thousand eight hundred and forty.» def «Sovereignty»
+  ANZH205   punct   GOLD anchor «possession»                     pre «ws would be for both Māori and Pākehā.» def «Possession»
+  ANZH205   punct   GOLD anchor «government»                     pre «February in the year of our Lord 1840.» def «government»
+  ANZH205   punct   GOLD anchor «chieftainship»                  pre « from the lawlessness of the settlers.» def «chieftainship»
+  ANZH301   punct   GOLD anchor «“push factors”»                 pre «nother, we consider the “push factors”» def «reasons to leave a place»
+  ANZH301   punct   GOLD anchor «"pull" factors”»                pre «s to leave a place and “pull factors”» def «reasons to move to the new place»
+  ANZH302   punct   gold-no                                      pre «nother, we consider the “push factors”» def «reasons to leave a place»
+  ANZH302   punct   gold-no                                      pre «s to leave a place and “pull factors”» def «reasons to move to the new place»
+  ANZH401   punct   GOLD anchor «colony»                         pre «the skills required in the new colony.» def «a country or area under full or pa»
+  ANZH401   punct   gold-no                                      pre «dressed in a top hat and morning coat?» def «style of formal suit jacket»
+  ARFUN04   punct   GOLD anchor «evoke?»                         pre « What feelings or ideas does it evoke?» def «Means to bring to mind, recall, or»
+  ARFUN05   punct   GOLD anchor «setting.»                       pre «setting.» def «Where is the story taking place?»
+  BLL243    empty   GOLD anchor «what»                           pre «» def «asks about a thing or idea»
+  BLL243    empty   GOLD anchor «where»                          pre «» def «asks about a place»
+  BLL243    empty   GOLD anchor «when»                           pre «» def «asks about a time»
+  BLL245    empty   gold-no                                      pre «» def «<b>ho</b> the events happen to.»
+  BLL245    empty   GOLD anchor «setting»                        pre «» def «<b>Where</b> the story happens.»
+  BLL252    empty   GOLD anchor «stanzas»                        pre «» def «a section of a poem»
+  BLL252    empty   GOLD anchor «rhythm»                         pre «» def «the beat or flow of the words»
+  BLL272    punct   GOLD anchor «Ka rawe tō mahi!»               pre «Ka rawe tō mahi!» def «Excellent work!»
+  BLL273    punct   GOLD anchor «Mahi tika āna!»                 pre «Mahi tika āna!» def «Great work!»
+  BLL275    empty   GOLD anchor «Kia kaha, kia māia»             pre «» def «be strong, be confident»
+  BLL275    punct   GOLD anchor «Mahi whakamiharo!»              pre «Mahi whakamiharo!» def «Fantastic work!»
+  BLL276    punct   GOLD anchor «Ka mau te wehi!»                pre «Ka mau te wehi!» def «Awesome work!»
+  BLLR203   empty   GOLD anchor «figurative»                     pre «» def «Words that paint a picture in the »
+  CEDK401   punct   gold-no                                      pre «a sustainable food future is possible.» def «production – the process of goods »
+  CEDK401   punct   gold-no                                      pre «uce a few foods much more than others.» def «agricultural – the art and science»
+  CEDK401   punct   gold-no                                      pre «drag and drop the images onto the map.» def «crops – plants grown to be harvest»
+  CEDK401   punct   gold-no                                      pre «ople?, <i>Stuff,</i> 24 February 2023.» def «approximately – close to»
+  CEDK401   punct   gold-no                                      pre «ction process is as short as possible.» def «impact – effect or influence»
+  CEDO105   empty   GOLD anchor «codes»                          pre «» def «Letters, words, symbols with speci»
+  CEDT501   punct   GOLD anchor «discrimination»                 pre «.» def «treating people unfairly or unequa»
+  CEDW501   punct   GOLD anchor «holistically»                   pre «that they view wellbeing holistically.» def «Looking at the whole picture, cons»
+  COM1002   punct   gold-no                                      pre «ions, incorporated and unincorporated.» def «Over the words Community Organisat»
+  COM1002   bracket GOLD anchor «unlimited liability»            pre «[» def «i»
+  DAN1003   punct   gold-no                                      pre «sessment activity, with three prompts.» def «over prompt: A prompt is a specifi»
+  DAN1003   punct   GOLD anchor «source acknowledgment»          pre «per source acknowledgment is expected.» def «You are expected to give credit or»
+  DAN1003   punct   GOLD anchor «source acknowledgment»          pre «per source acknowledgment is required.» def «you are expected to give credit or»
+  DAN1006   punct   GOLD anchor «contraction and release»        pre «Contract and release.» def «Using the abdominal muscles to con»
+  DAN1006   punct   gold-no                                      pre «Moving in and out of the floor.» def «Moving from standing to the floor »
+  DAN1006   punct   gold-no                                      pre «Using gravity and momentum.» def «For example sense of suspension an»
+  DAN1006   punct   gold-no                                      pre «Lower centre of gravity.» def «Bending legs and using the pelvis »
+  DAN1006   punct   gold-no                                      pre «Feet in parallel.» def «Feet directing forward rather than»
+  DAN1006   punct   gold-no                                      pre « the movements, fluidity of the spine.» def «For example using the whole body i»
+  ENFUN03   empty   GOLD anchor «verbs»                          pre «» def «Doing words.»
+  ENFUN04   empty   GOLD anchor «antonyms»                       pre «» def «Words that mean the opposite»
+  ENFUN05   punct   gold-no                                      pre «is excerpt from Finding by David Hill.» def «My mother looked at me and smiled »
+  ENG1004   punct   gold-no                                      pre « all the techniques. It also includes:» def «– syntax»
+  ENGC301   empty   GOLD anchor «have a break, have a KitKat»    pre «» def «Slogan for KitKat»
+  ENGI103   empty   GOLD anchor «verbs»                          pre «» def «Doing words.»
+  ENGI302   punct   GOLD anchor «kōrero pūrākau.»                pre «ldren’s bedtime <b>korero purakau</b>.» def «storytelling»
+  ENGI302   punct   GOLD anchor «cardinal directions.»           pre «tions about <b>ordinal directions</b>.» def «directions on a compass»
+  ENGI405   punct   GOLD anchor «atmospheres»                    pre «t places create different atmospheres.» def «Feeling and mood of the place.»
+  ENGR202   punct   gold-no                                      pre «quot;to shape, form, or educate.&quot;» def «over graphic»
+  ENGS101   punct   gold-no                                      pre «f the boat in the middle of the ocean.» def «Blue text:»
+  ENGS101   punct   gold-no                                      pre « know what the sentence will be about.» def «Green text:»
+  ENGS101   punct   gold-no                                      pre «he places Maunganui and Mangaroa mean?» def «CS make the above rollover definit»
+  ENGS401   punct   GOLD anchor «choreography»                   pre «Choreography.» def «The planning and arranging the mov»
+  EXBP901   punct   gold-no                                      pre «cycle and see what each part involves.» def «:»
+  EXIP901   punct   gold-no                                      pre «cycle and see what each part involves.» def «:»
+  FRFUN06   punct   gold-no                                      pre «Most final consonants are quiet.» def «on the word “consonant” with follo»
+  FRNO902   punct   GOLD anchor «verb»                           pre «on, we need to change the <b>verb</b>.» def «doing word»
+  GENO901   punct   GOLD anchor «Wie heißt du? Wie heißen Sie?»  pre «WIE HEIßT DU? WIE HEIßEN SIE?» def «What is your name?»
+  GENO901   punct   GOLD anchor «Viel Spaß!»                     pre «nderstand or be understood. Viel Spaß!» def «Enjoy!»
+  GENO901   punct   GOLD anchor «“ich komme aus…”»               pre «e you come from using “ich komme aus…”» def «I come from …»
+  HES1002   punct   gold-no                                      pre « and/or red meat with the fat removed.» def «on ‘Fibre’»
+  HES1002   punct   gold-no                                      pre «rice are examples of high fibre foods.» def «on ‘legumes’»
+  HES1002   punct   gold-no                                      pre «chickpeas and beans e.g. kidney beans.» def «on ‘poultry’»
+  HES1002   punct   gold-no                                      pre «re mostly ‘whole’ and less ✅processed.» def «on ‘unsaturated fats’»
+  HES1002   punct   gold-no                                      pre «ome from plant sources e.g. olive oil.» def «on ‘saturated fats’»
+  HES1002   punct   gold-no                                      pre « come from animal sources e.g. butter.» def «on ‘sodium’»
+  HES1002   punct   gold-no                                      pre « Sodium is the chemical name for salt.» def «on ‘processed’»
+  HES1002   punct   gold-no                                      pre «y processed such as frozen vegetables.» def «on ‘iodised’»
+  HES1005   punct   gold-no                                      pre «good place to start to get some ideas.» def «on the word ‘Here’] [Insert media »
+  HIS1002   punct   GOLD anchor «Moruroa and Fangataufa»         pre «oana by a nuclear-capable world power.» def «atolls in Mā’ohi Nui (French Polyn»
+  HIS1003   punct   GOLD anchor «victimisation»                  pre « union protested at the victimisation,» def «Singling someone out for cruel and»
+  HIS1004   punct   gold-no                                      pre «29. Subject to law.» def «Recognition and respect for the ri»
+  HIS1005   punct   gold-no                                      pre «uot;the scribe&quot; on the document.)» def «The Confederation of United Tribes»
+  HIS1005   punct   gold-no                                      pre «d today? Why do you have that opinion?» def «Having or lacking money; what job »
+  HIS1006   punct   gold-no                                      pre « are ‘speaking’, what are they saying?» def «the belief that certain groups of »
+  HIS1008   punct   gold-no                                      pre « are ‘speaking’, what are they saying?» def «the belief that certain groups of »
+  HPRE301   punct   gold-no                                      pre «roblems and 22% have serious problems.» def «(»
+  HPRE301   punct   gold-no                                      pre «ealthy way, and most have some issues.» def «(»
+  HPRE301   punct   gold-no                                      pre «( Step 2: Make a simple observation)» def «colour 3»
+  HPRE301   punct   gold-no                                      pre «Step 3: Compare groups or patterns)» def «colour 4»
+  HPRE301   punct   gold-no                                      pre « social media is affecting many of us.» def «(»
+  HPRE301   punct   gold-no                                      pre «ns, link data to your own experience.)» def «colour 5»
+  HPRE301   punct   gold-no                                      pre «ia in a more balanced and healthy way.» def «(»
+  MXDB302   punct   gold-no                                      pre «afternoon, Nikau came up with an idea.» def «over Māori boy»
+  MXDB302   punct   gold-no                                      pre «et the hint something needs to change.» def «over European boy»
+  MXDB302   punct   gold-no                                      pre «oing something with the garden anyway.» def «over European girl»
+  MXDB302   punct   gold-no                                      pre «That sounds like a lot of Maths.» def «over Māori girl»
+  MXDI202   punct   gold-no                                      pre «ing a leap year, February has 29 days.» def «over leap year to give definition:»
+  MXDI202   punct   gold-no                                      pre «e before any other inhabited landmass.» def «uninhabited island – no one lives »
+  MXEO301   punct   gold-no                                      pre «are building greatness – waimarie pai!» def «Good luck.»
+  MXFU201   punct   gold-no                                      pre « the total often give us more meaning.» def «over the word average for the defi»
+  MXFU201   other   gold-no                                      pre «r the word average for the definition» def «over the word percentage for the d»
+  OSAI401   empty   GOLD anchor «legal»                          pre «» def «following the law»
+  OSGM101   punct   gold-no                                      pre «sons to play either online or offline.» def «with image»
+  OSOH101   punct   gold-no                                      pre «rs feels like when you are having fun.» def «+ image»
+  PHE1008   punct   gold-no                                      pre «ntimate connection to the environment.» def «the forest»
+  PHE1008   punct   gold-no                                      pre «s, and weaving and building materials.» def «moana/ocean, sea, or expanse of wa»
+  PHE1008   other   gold-no                                      pre «moana/ocean, sea, or expanse of water» def «awa/river»
+  PHE1008   other   gold-no                                      pre «, sea, or expanse of waterawa/river» def «whenua/land»
+  SCES201   punct   gold-no                                      pre « Māori and English name for each star.» def «] [replace each name with an info »
+  SSCI104   punct   gold-no                                      pre «rom one place to another is migration.» def «SSHG101 Audio migration.m4a»
+  SSFUN03   punct   GOLD anchor «acronym.»                       pre «ACKTS</b>. This is called an acronym .» def «A word that is made up of the firs»
+  SSFUN07   punct   GOLD anchor «defective»                      pre «Question 3: If a product is defective,» def «has a defect or is faulty»
+  SSOG301   punct   gold-no                                      pre «lude signing a petition or boycotting.» def «Not buying something or going some»
+  TEDC401   punct   gold-no                                      pre «idence. Your explanation must include:» def «– part 2»
+  TEFUN01   punct   gold-no                                      pre « to help you select your stakeholders:» def «1»
+  TEFUN01   punct   gold-no                                      pre «help identify issues specific to them.» def «2»
+  TEFUN01   punct   gold-no                                      pre « next steps and provide key knowledge.» def «3»
+  TEFUN01   punct   gold-no                                      pre «forward and provide necessary support.» def «4»
+  TEFUN01   punct   gold-no                                      pre «issues and a wider range of solutions.» def «5»
+  TEFUN01   punct   gold-no                                      pre «s for communicating with stakeholders:» def «1»
+  TEFUN01   punct   gold-no                                      pre « useful information they can give you.» def «2»
+  TEFUN01   punct   gold-no                                      pre « your messages are easy to understand.» def «3»
+  TEFUN01   punct   gold-no                                      pre « show that you care about their voice.» def «4»
+  TEFUN01   punct   gold-no                                      pre «st and keep everyone on the same page.» def «5»
+  TEFUN03   punct   gold-no                                      pre « a different kind of bread or filling?» def «-C»
+  TEFUN03   punct   GOLD anchor «imagination»                    pre «our favourite toys to make a new game?» def «-A»
+  TEFUN03   punct   gold-no                                      pre «e a game you play to make it more fun?» def «-M»
+  TEFUN03   punct   gold-no                                      pre « a tiny version of your favourite toy?» def «-P»
+  TEFUN03   punct   GOLD anchor «user-friendly»                  pre «tube for besides holding paper towels?» def «-E»
+  TEFUN03   punct   gold-no                                      pre « without using one of the usual rules?» def «-R»
+  TEFUN05   empty   gold-no                                      pre «» def «ow it actually works in real life.»
+  TEFUN08   punct   gold-no                                      pre «and output devices from Code Avengers.» def «the single sign on?»
+  WJFUN106  punct   gold-no                                      pre «rigger" info="2">played</span> soccer.» def «1»
+  WJFUN106  punct   gold-no                                      pre «ccer.1 Person, place or thing (noun)» def «2»
+  WJFUN107  punct   gold-no                                      pre «nfo="1">guard</span> blew the whistle.» def «1»
+  WJFUN107  punct   gold-no                                      pre «ect or noun: a person, place or thing.» def «2»
+  WJFUN108  punct   gold-no                                      pre «use they were formed over many years.”» def «1»
+  WJFUN108  punct   gold-no                                      pre « One idea, one object and one action.» def «2»
+  WJFUN108  punct   gold-no                                      pre « joined together using a joining word.» def «3»
+  WJFUN205  punct   gold-no                                      pre «tence must have a subject and a  verb.» def «1»
+  WJFUN205  punct   gold-no                                      pre «ke writing more interesting and clear.» def «for phrase»
+  WJFUN304  punct   gold-no                                      pre «According to tradition,» def «A legendary Māori explorer believe»
+  XDLS906   punct   gold-no                                      pre «oticing your connection to the whenua.» def «land»
+  XDLS906   punct   gold-no                                      pre «the menstrual cycle or the maramataka.» def «//www.tepapa.govt.nz/discover-coll»
+  XDLS911   punct   gold-no                                      pre «rvisor can help support this with you.» def «[dev- gender neutral]»

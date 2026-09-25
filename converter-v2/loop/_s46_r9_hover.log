@@ -1,0 +1,48 @@
+markers by shape (modules):
+    506 110m OTHER              gold-no/claude-no 506
+        families: {'XDLS': 149, 'GENO': 42, 'TEFUN': 40, 'WJFUN': 23, 'CEDT': 22, 'PHE': 20, 'CEDK': 16, 'ENGR': 15}
+    488  97m COLON-inline       gold/claude 297 | gold/claude-no 91 | gold-no/claude 62 | gold-no/claude-no 38
+        families: {'ANZH': 73, 'AGH': 72, 'SSFUN': 56, 'HIS': 36, 'CEDR': 22, 'ARFUN': 16, 'PHE': 16, 'DAN': 15}
+    243  72m TRIGGER            gold-no/claude-no 191 | gold/claude 32 | gold/claude-no 18 | gold-no/claude 2
+        families: {'TEFUN': 36, 'PES': 19, 'ENGI': 14, 'MXDI': 14, 'ENFUN': 12, 'HES': 12, 'ANZH': 11, 'ENGC': 11}
+    104  14m NAMED-FOR          gold/claude 79 | gold-no/claude 11 | gold/claude-no 9 | gold-no/claude-no 5
+        families: {'HIS': 55, 'ARFUN': 31, 'CEDO': 11, 'DAN': 7}
+     26   2m QUOTED             gold/claude 18 | gold-no/claude 4 | gold/claude-no 4
+        families: {'ENGS': 15, 'ENGC': 11}
+     17   4m NAMED-BARE         gold/claude 8 | gold-no/claude 7 | gold-no/claude-no 1 | gold/claude-no 1
+        families: {'HIS': 15, 'ANZH': 1, 'PES': 1}
+      5   2m COLON-standalone   gold-no/claude-no 4 | gold/claude-no 1
+        families: {'PHE': 4, 'HIS': 1}
+
+NAMED-FOR: where the TERM is (the preceding non-marker WT lines): {'inline-pre': 44, 'not-in-3': 13, 'prev1': 53, 'prev3': 3, 'prev2': 8}
+
+examples:
+  ('COLON-inline', 'gold', 'claude'): ARFUN01 «[Hover: They might help us express how we feel or change the way we feel when we see or he» || ARFUN01 «[Hover: They express who we are or let us learn about others.]» || ARFUN01 «[Hover: They might express our culture or help us learn about other cultures.]»
+  ('COLON-inline', 'gold', 'claude-no'): ARFUN02 «[Hover definition: A small flute made from wood, bone, or stone] ║ [Item 50] __**Guitar**_» || ARFUN03 «[hover: Tinana, Whanaungatanga , Wāhi, Wā | Time , Wana | Energy ] has many components [ho» || ARFUN04 «[hover-over: Differences in light and dark.] helps us notice different parts of a busy pic»
+  ('COLON-inline', 'gold-no', 'claude'): SSFUN02 «[roll-over definition: Q uestions that require a “yes” or “no” answer . ]. Once you have d» || SSFUN02 «[roll-over definition: W ords used directly from the text . ] and should be in inverted co» || SSFUN05 «[rollover definition: features and form are exaggerated for humor]»
+  ('COLON-inline', 'gold-no', 'claude-no'): ARFUN04 «[Hover over: P perspective is how we see things from different angles or distances in art.» || TEFUN02 «[ hover definition: Prototype that shows how the product will move and react to input. ] c» || TEFUN05 «[hover definition: Specific measurable details. ] and requirements [hover definition: Thin»
+  ('COLON-standalone', 'gold', 'claude-no'): PHE1008 «[hover: the forest] ngahere= Māori revered the forest for its beauty, spiritual presence, »
+  ('COLON-standalone', 'gold-no', 'claude-no'): HIS1002 «[Hover/rollover for the pounamu koru image: For each concept, please have the rollover def» || PHE1008 «[hover: moana/ocean, sea, or expanse of water ]» || PHE1008 «[hover: awa/river ]»
+  ('NAMED-BARE', 'gold', 'claude'): HIS1006 «[roll over definition- cultural appropriation: T he inappropriate or unacknowledged adopti» || HIS1006 «[roll over definition mamae: painful, sore, hurt]» || HIS1006 «[roll over definition reconcili ation: act of causing two people or groups to become frien»
+  ('NAMED-BARE', 'gold', 'claude-no'): HIS1008 «[roll over definition stereotype: the belief that certain groups of people all have a part»
+  ('NAMED-BARE', 'gold-no', 'claude'): ANZH401 «[rollover definition - Pūrakau: a story being handed down through generations] .» || HIS1006 «[roll-over definition caricatures: an exaggerated portrayal of a well-known person]» || HIS1006 «[rollover definition militant: act aggressively for a cause]»
+  ('NAMED-BARE', 'gold-no', 'claude-no'): HIS1006 «[roll over definition stereotype: the belief that certain groups of people all have a part»
+  ('NAMED-FOR', 'gold', 'claude'): ARFUN01 «[Hover on identities: Who we are . ]» || ARFUN02 «[hover on components: the different parts or aspects] – we are going to look at some of th» || ARFUN03 «[hover on choreography: Making your own movements and dance>] to make it more interesting »
+  ('NAMED-FOR', 'gold', 'claude-no'): ARFUN01 «[Hover on unique: S pecial just to you . ] response.» || ARFUN01 «[Hover on archive: A collection of historical documents that give information about a part» || ARFUN03 «[Hover on performance presence: Your wana that captures the audience's attention.] if they»
+  ('NAMED-FOR', 'gold-no', 'claude'): DAN1003 «[hover on originate: W here it started.] from?» || DAN1003 «[hover on rhythm: T he way beat is used to make patterns in sound.] and tempo [Hover on te» || HIS1001 «[Rollover for nuclear proliferation: the spread of nuclear weapons technology to other cou»
+  ('NAMED-FOR', 'gold-no', 'claude-no'): ARFUN03 «[Hover on locomotor: Travelling) as you move across the wāhi.» || HIS1002 «[rollover definition for inferred: conclude from evidence rather than from an explicit sta» || HIS1005 «[Rollover definition for Te Whakaminenga: T he Confederation of United Tribes . ]»
+  ('OTHER', 'gold-no', 'claude-no'): PMT101 «[ Hover definition] covenants, and its elder counterpart is, He Whakaputanga. / We will le» || PMT101 «[ Hover definition] , a ✅precious [ Hover definition] greenstone that must be protected. /» || PMT101 «[Hover definition] ║ [H2] : Ingoa Akoranga : **He Taonga te Whakapapa**»
+  ('QUOTED', 'gold', 'claude'): ENGC403 «[hover info ‘inevitable’: Certain to happen. ] Therefore, it is important that we learn ho» || ENGC403 «[hoverinfo ‘perspective’: Way of seeing something. ].» || ENGC403 «[hover info ‘claims’: The points and ideas you are making. ]»
+  ('QUOTED', 'gold', 'claude-no'): ENGC403 «[hover info ‘effect’: how they make us think or feel ] that they create.» || ENGS404 «[hover info ‘effect’: The outcome or result of something. ]» || ENGS404 «[hover info ‘perspective’: Way of looking at something. ] on how to use structure to creat»
+  ('QUOTED', 'gold-no', 'claude'): ENGC403 «[hover info ‘debate’: A formally structured argument. ]» || ENGC403 «[hover info ‘claim’: This is a point or statement of opinion. ]» || ENGC403 «[hover info ‘evidence’: This is facts or data used to support your claim. ]»
+  ('TRIGGER', 'gold', 'claude'): ENFUN01 «[hover trigger: the way the writing sounds] , **word choice** [hover trigger: serious or c» || ENFUN01 «[hover trigger: How the writing makes the writer feel] is particularly important.» || ENFUN01 «[Hover Trigger: the group of people from a range of social and ethnic backgrounds and of d»
+  ('TRIGGER', 'gold', 'claude-no'): ENFUN01 «[hover trigger: a longing for something past] for those who have grown up with the games. » || ENFUN02 «[hover trigger: Something that has been proven to be true ] , an **opinion** [hover trigge» || ENFUN02 «[hover trigger: Such as stories, reports, poems ] , **spoken** [hover trigger: Such as spe»
+  ('TRIGGER', 'gold-no', 'claude'): ENFUN05 «[hover trigger: Words that sound the same but have different meanings. ]» || ENFUN05 «[hover trigger: Naming word. ]»
+  ('TRIGGER', 'gold-no', 'claude-no'): CHFUN01 «[hover trigger translation] **“****你胖了！****” (n****ǐ** **p****à****ng le****)** [ **you go» || CHFUN05 «[hover trigger translation] “苹果和香蕉 Píngguǒ hé xiāngjiāo” ( apples and bananas ) , but you » || CHFUN06 «[hover trigger ] **Hanzi** ( **Chinese characters** ) work **the same** way. They are made»
+
+per module — gold builds it, Claude does not:
+  NAMED-FOR         9: {'ARFUN05': 3, 'ARFUN01': 2, 'HIS1005': 2, 'ARFUN03': 1, 'HIS1006': 1}
+  NAMED-BARE        1: {'HIS1008': 1}
+  COLON-inline     91: {'AGH1007': 8, 'SSFUN03': 6, 'CEDR203': 6, 'AGH1002': 5, 'AGH1009': 5, 'SCES201': 5, 'ARFUN04': 3, 'XDLS901': 3, 'AGH1004': 3, 'CEDT501': 3, 'GEO1006': 3, 'TEDC402': 3, 'XGF9001': 3, 'TEFUN02': 2, 'TEFUN05': 2, 'ANZH301': 2, 'CEDW501': 2, 'DAN1003': 2, 'ARFUN02': 1, 'ARFUN03': 1}
+  TRIGGER          18: {'ANZH205': 4, 'ENFUN02': 2, 'ENGI302': 2, 'TEDC402': 2, 'ENFUN01': 1, 'ENFUN07': 1, 'FRFUN06': 1, 'TEFUN05': 1, 'ENGI401': 1, 'ENGS102': 1, 'ENGS202': 1, 'TEDC401': 1}
+  QUOTED            4: {'ENGS404': 3, 'ENGC403': 1}

@@ -3806,13 +3806,30 @@ class InteractiveScanner {
 		if (!def && splitOff && split.def_black_tail !== false && !rawMarker.includes("]")
 			&& !(typeof process !== "undefined" && process.env && process.env.HOVERTAIL_OFF)) {
 			const ownBlack = String(it.blackAfter ?? "").trim();
+			let blackClose = null;
 			if (ownBlack) {
 				def = ownBlack.replace(/\s*\]\s*$/, "").trim();
-				it.blackAfter = "";
+				// ROUND 498 — (a) the def's FIRST LETTER(S) typed red with the marker (`[roll over definition: T` + black
+				// `o move to…`, SSFUN03): the text after the unclosed marker's colon heads the def, joined as the source
+				// joins it — a space when the black tail opens with one or the red run ENDS with one (the run's own
+				// space shows as two before the extractor's one-space pad: `for␣␣` + `the rights…`, but `T␣` + `o move…`);
+				// (b) a `]` the writer typed BLACK ends the def there — the rest is the sentence again (GEO1006 `…a river
+				// follows.] is often narrow…` shipped the whole paragraph as the tooltip). Data split_bracket.
+				// def_black_tail_head; env HOVERTAILHEAD_OFF.
+				if (split.def_black_tail_head !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[split.def_black_tail_head_env ?? "HOVERTAILHEAD_OFF"])) {
+					const hh = rawMarker.match(/:\s*([^:\[\]]{1,60}?)\s*$/);
+					const redText = String(it.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "");
+					const spaced = /^\s/.test(String(it.blackAfter ?? "")) || /\s{2,}$/.test(redText);
+					if (hh && /[\p{L}\p{N}]/u.test(hh[1])) def = hh[1] + (spaced ? " " : "") + def;
+					const cb = def.indexOf("]");
+					if (cb > 0) { blackClose = def.slice(cb + 1).trim(); def = def.slice(0, cb).trim(); }
+				}
+				it.blackAfter = blackClose ?? "";                     // (b) the sentence continues on this item's own tail
 				const nxt = items[i + 1];
 				const ntext = nxt ? String(nxt.text ?? "")
 					.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim() : "";
-				if (nxt && nxt.consumedBy === undefined && nxt.type === "tag"
+				if (blackClose === null && nxt && nxt.consumedBy === undefined && nxt.type === "tag"
 					&& (nxt.parse?.class === "noise" || nxt.parse?.class === "instruction")
 					&& /^\]$/.test(ntext)) {
 					consumeNext = true; contItem = nxt;   // its black tail = the sentence continuation

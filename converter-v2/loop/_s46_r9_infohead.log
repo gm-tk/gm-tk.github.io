@@ -1,0 +1,18 @@
+Claude info= values 1070; first letters dropped (gold = 1–3 chars + Claude's): 15 in 9 modules
+dropped prefixes: {'T': 4, 'I': 2, 'A ': 1, 'H': 1, 'l': 1, 'A': 1, 's': 1, 'Y': 1, 'C': 1, 'S': 1, 'D': 1}
+modules: {'XGF9002': 4, 'SSFUN03': 3, 'TEFUN05': 2, 'XDLS909': 1, 'GEO1006': 1, 'MXFL301': 1, 'OSBY101': 1, 'OSSM301': 1, 'TEDC402': 1}
+  SSFUN03   SSFUN03_0_0.html       claude «o move to or find a place.»  gold «To move to or find a place.»
+  SSFUN03   SSFUN03_0_0.html       claude «o move to or find a place.»  gold «To move to or find a place.»
+  SSFUN03   SSFUN03_0_0.html       claude «large part of a continent.»  gold «A large part of a continent.»
+  TEFUN05   TEFUN05_0_0.html       claude «ow you expect technology to work.»  gold «How you expect technology to work.»
+  TEFUN05   TEFUN05_0_0.html       claude «hings the stakeholders want.»  gold «Things the stakeholders want.»
+  XDLS909   XDLS909_0_0.html       claude «earning partner»  gold «learning partner»
+  GEO1006   GEO1006_5_0.html       claude «ctions to reduce the effects.»  gold «Actions to reduce the effects.»
+  MXFL301   MXFL301_1_0.html       claude «maginary lines that run north to south and divide up the Ear»  gold «Imaginary lines that run north to south and divide up the Ea»
+  OSBY101   OSBY101_1_0.html       claude «omeone you know who can help.»  gold «someone you know who can help.»
+  OSSM301   OSSM301_0_0.html       claude «oung people.»  gold «Young people.»
+  TEDC402   TEDC402_2_0.html       claude «n computing, a bus is a physical electrical pathway on the m»  gold «In computing, a bus is a physical electrical pathway on the »
+  XGF9002   XGF9002_0_0.html       claude «ollaboration, support, belonging.»  gold «Collaboration, support, belonging.»
+  XGF9002   XGF9002_0_0.html       claude «tatus, authority, prestige.»  gold «Status, authority, prestige.»
+  XGF9002   XGF9002_0_0.html       claude «alk or discussion.»  gold «Talk or discussion.»
+  XGF9002   XGF9002_0_0.html       claude «iscussion»  gold «Discussion»

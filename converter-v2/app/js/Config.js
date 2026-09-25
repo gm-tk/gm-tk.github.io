@@ -1850,7 +1850,8 @@ class Config {
 	// ROUND 495 (260620.58): KB C5 THE LITERAL-TAG LEAK (session 46 Round 5) — a built hint slider strips the writer's own face marker from each face; a black [Body text] is stripped like [body]. Env HINTFACEMARK_OFF / BLACKBODYTEXT_OFF.
 	// ROUND 496 (260620.59): THE XDLS CHOICE BOARD'S STRAY MARKER (session 46 Round 7) — the r307 tile prepass releases what a stray numberless [click drop image] marker captured. Env CDSCRAPREL_OFF.
 	// ROUND 497 (260620.60): THE XDLS CHOICE BOARD'S LAST DECLINED PAGES (session 46 Round 8) — the writer's [Click Drop Activity N with embedded image] scrap releases its captured lines; an anchor owned by its own widget counts as a panel. Env CDSCRAPREL2_OFF.
-	static AppVersion = "260620.60";
+	// ROUND 498 (260620.61): THE HOVER DEFINITION'S RED FIRST LETTER (session 46 Round 9) — a colon hover marker whose red run carries the def's first letter(s) keeps them; a black ']' ends the def. Env HOVERTAILHEAD_OFF.
+	static AppVersion = "260620.61";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
