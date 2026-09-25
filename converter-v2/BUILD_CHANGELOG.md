@@ -1,5 +1,26 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (round 515, build 260620.77) — KB CONSTRAINT 64: `[Insert animated character]` IS A CREATIVE SERVICES VIDEO — the pending Vimeo `videoSection` scaffold + its Designer/Developer To Do, with the writer's `Animation Script` link folded into the To Do (74 modules, the BLL blended-literacy family; skeleton +0.0107pp)
+
+### 1. WHAT CHANGED
+
+**The rule** (KB constraint 64 / CL-0037; 05A "Creative Services Videos (Vimeo)" — authority level 1): *"Any video produced by Creative Services (a Te Kura in-house / Audiovisual production — e.g. an animated intro …) is embedded as a Vimeo `videoSection` scaffold with the video ID left pending, and is always accompanied by a visible `Designer/Developer To Do:` note"*; the scaffold emitted exactly as the design team supplies it (its two time-placeholder comments are the KB's narrow comment exception). KB §A row 64 was CAPTURED-INERT: round 233 declined it because the generic `[Audiovisual item N]` marker is mostly audio, and it pre-named "the day the writers' templates start marking a CS video explicitly".
+
+**Found by** the widened recognition census (`_s50_r4_unresolved.cjs`): `[Insert animated character]` is the widest bracket that resolves to no tag — 73 tags in 73 modules (the BLL blended-literacy family), each followed by the writer's `__Animation Script__` link. Claude shipped a red Writers Note and the script link as student text (74 pages). `_s50_r7_animchar.py`: the gold page carries a Vimeo player at 53 of the 61 locatable tags (0.87) and hides the script link on 60 of 61.
+
+**The fix** (`ContentConverter.#csVideoPrepass` + its render case; data `elements.cs_video_marker`; env `CSVIDEO_OFF`): the marker's red span (the writer's request in the same span rides along — "As this is a new Set, can we please have an animated man again …") becomes `Designer/Developer To Do: add vimeo embed for the animated character …` + the KB 64 scaffold (`src="https://player.vimeo.com/video/"`, no ID); a following `Animation Script` line joins the To Do as `(Animation Script: <link>)` instead of shipping as student text. The r200 house style still adds the series' `icon` class.
+
+### 2. PROOF
+
+- In-memory probe over all 545 modules: `CSVIDEO_OFF=1` → 0 pages changed; ON → **74 modules** (`outputs/_affected_r515.txt`). `scoped_ship.sh … --round 515` PASS outright (0 stale, containment 74 ⊆ 74, the 12-module spot-check byte-identical). On disk: 74 To Do + scaffold pairs; student-visible `Animation Script` links 74 → 5 (the five whose script line does not directly follow the marker — BLL240 / BLL225 / BLL226 … — recorded).
+
+### 3. PROTECTED GATES
+
+- **Skeleton 55.7384 → 55.7491 % @ 2486 (+0.0107pp)**, 52 up / 15 down (+26.6pp-sum; every dip ≤ 2.0pp — the gold's own Vimeo embed is a bare `div` with inline padding, KB 64's is `div.videoSection.ratio`, so the iframe line matches and the wrapper line does not: a NAMED KB form); ≥50 1612, **≥75 283 → 285** (BLL136_0_0 / BLL137_0_0 74.6 → 76.8), ≥90 26; RAW 39.546 → 39.555 %.
+- compare_structure, body_compare, clean, leak EXACT; tags 9557; every verifier ✓, every COUNT held (`_r515_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 515`; `--gate-baseline-check` PASS. Plateau: neither (+0.0107pp, but ≥75 +2 — a protected bucket moved).
+
+**Ledger:** scoped #2 since the r513 FULL · data `elements.cs_video_marker` · env `CSVIDEO_OFF` · code `ContentConverter.#csVideoPrepass` + the `csvideo` render case · tools `_s50_r7_animchar.py`, `_r515_finalise.py` · session 50 Round 7 (the in-flight marker was raised after the code edit — a procedural slip, recorded). KB status: §A row 64 → CAPTURED-LIVE for the explicit `[Insert animated character]` marker (the generic `[Audiovisual item N]` stays inert, r233).
+
 ## 2026-09-26 (round 514, build 260620.76) — THE WRITERS' MISSING SPELLINGS: `[type and check]`, `[click drops]` / `[clickdrops]`, `[radioquiz]`, `[carrousel]` now name their widget (a toggled-alias group that only FILLS a span with no widget or closer); 45 modules; skeleton +0.0455pp
 
 ### 1. WHAT CHANGED

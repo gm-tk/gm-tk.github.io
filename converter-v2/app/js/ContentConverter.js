@@ -731,6 +731,7 @@ class ContentConverter {
 		// exists to make. Before it, the marker is still its own item with its
 		// own block (and its own hyperlink).
 		this.#assetTodoPrepass(bodyItems, tpl);
+		this.#csVideoPrepass(bodyItems, tpl);   // ROUND 515 — KB c64, before the coalesce for the same reason
 		ListsAndRuns.coalesceBlackRuns(menuItems);
 		ListsAndRuns.coalesceBlackRuns(bodyItems);
 
@@ -3285,6 +3286,15 @@ class ContentConverter {
 			if (it.type === "assettodo") {
 				rowFor("textRun");
 				emit(NotesAndComments.redFlag(it.note, run, "todo"));
+				markContent();
+				continue;
+			}
+			// ROUND 515 — KB c64: the Creative Services video marker (#csVideoPrepass) → To Do note + the pending Vimeo scaffold
+			if (it.type === "csvideo") {
+				rowFor("textRun");
+				emit(NotesAndComments.redFlag(it.note, run, "todo"));
+				emit(tpl.elements?.cs_video_marker?.scaffold ?? "");
+				if (String(it.blackAfter ?? "").trim()) emit(...actDeBold(ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links)));
 				markContent();
 				continue;
 			}
@@ -7030,6 +7040,44 @@ class ContentConverter {
 	 * Data flag: elements.asset_todo_notes.black_line · env TODOBLACK_OFF
 	 * (TODONOTE_OFF reverts this too, since it gates the shared note builder).
 	 */
+	/**
+	 * ROUND 515 (the autonomous loop's session 50 Round 7) — KB CONSTRAINT 64, THE CREATIVE SERVICES VIDEO, where the writer's
+	 * marker names one explicitly. `[Insert animated character]` (+ the writer's request in the same red span) is an in-house
+	 * animation — KB 05A lists "an animated intro" as a Creative Services video — so it is the pending Vimeo `videoSection`
+	 * scaffold with its visible `Designer/Developer To Do: add vimeo embed for …` note (r233 declined c64 for the generic
+	 * `[Audiovisual item N]` marker, mostly audio, and pre-named this day). The writer's `Animation Script` link line that
+	 * follows is a production asset: it joins the To Do (the gold hides it on 60 of 61 pages) instead of shipping as student
+	 * text. Data elements.cs_video_marker; env CSVIDEO_OFF.
+	 */
+	static #csVideoPrepass(bodyItems, tpl) {
+		const cfg = tpl.elements?.cs_video_marker;
+		if (!cfg || cfg.enabled === false || !cfg.marker_pattern) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "CSVIDEO_OFF"]) return;
+		const re = new RegExp(cfg.marker_pattern, "i");
+		const scriptRe = cfg.script_line_pattern ? new RegExp(cfg.script_line_pattern, "i") : null;
+		for (let i = 0; i < bodyItems.length; i++) {
+			const it = bodyItems[i];
+			if (!it || it.type !== "tag" || it.consumedBy !== undefined || it._consumed || it.parse?.primary) continue;
+			const raw = String(it.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ").replace(/\s+/g, " ").trim();
+			const m = raw.match(re);
+			if (!m) continue;
+			let note = String(cfg.note ?? "add vimeo embed for the animated character");
+			const rest = String(m[1] ?? "").trim();
+			if (rest) note += Utils.FillTemplate(cfg.rest_suffix ?? " — {rest}", { rest });
+			if (scriptRe) {
+				let j = i + 1;
+				while (j < bodyItems.length && bodyItems[j] && bodyItems[j].type === "black" && !String(bodyItems[j].text ?? "").trim()) j++;
+				const nx = bodyItems[j];
+				if (nx && nx.type === "black" && nx.consumedBy === undefined && !nx._consumed && scriptRe.test(String(nx.text ?? ""))) {
+					const url = (nx.block?.links ?? []).map((l) => l && l.target).find((t) => t);
+					note += Utils.FillTemplate(url ? (cfg.script_suffix ?? " (Animation Script: {url})") : (cfg.script_suffix_nourl ?? " (Animation Script supplied)"), { url: url ?? "" });
+					nx.text = ""; nx._consumed = true;
+				}
+			}
+			it.type = "csvideo"; it.note = note;
+		}
+	}
+
 	static #assetTodoPrepass(bodyItems, tpl) {
 		const cfg = tpl.elements?.asset_todo_notes;
 		const bl = cfg?.black_line;

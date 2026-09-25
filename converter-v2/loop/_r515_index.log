@@ -1,0 +1,15 @@
+rehtml: refreshed the output side for 552 modules — now run --merge
+feature index -> /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/data/Module_Feature_Index.json
+  552 modules, 143 distinct features
+  acks                      543 modules
+  heading                   543 modules
+  list                      543 modules
+  menu                      543 modules
+  note                      530 modules
+  body                      530 modules
+  title bar                 527 modules
+  activity                  522 modules
+  handoff                   522 modules
+  end page                  522 modules
+  h2                        517 modules
+  image                     516 modules
