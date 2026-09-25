@@ -1,0 +1,3 @@
+BLL243/BLL243_1_1.html: gold 138 lines | position-free overlap OLD(r492) 93 / 110  NEW(r493) 94 / 112  (Δ +1) | widget lines gold {'WIDGET': 5} OLD {'WIDGET': 4} NEW {'WIDGET': 4}
+BLL160/BLL160_0_0.html: gold 909 lines | position-free overlap OLD(r492) 502 / 553  NEW(r493) 503 / 556  (Δ +1) | widget lines gold {'WIDGET': 89} OLD {'WIDGET': 28} NEW {'WIDGET': 28}
+BLL254/BLL254_2_0.html: gold 216 lines | position-free overlap OLD(r492) 119 / 149  NEW(r493) 119 / 151  (Δ +0) | widget lines gold {'WIDGET': 5} OLD {'WIDGET': 3} NEW {'WIDGET': 3}

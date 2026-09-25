@@ -1,5 +1,27 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 493, build 260620.56) — THE BLL CLOSING SECTION AFTER THE DROPBOX BUTTON: in the Blended Literacy modules, a widget capture that already holds the writer's `[Button] Upload to dropbox` ends at the module's closing `[image]` / `[body]` — the celebration picture + "Congratulations on completing this module…" render free, as in the gold (a family dialect, 13 modules)
+
+### 1. WHAT CHANGED
+
+**The PICK pass** (session 46 Round 3 — the §1g placement census, the loss ledger, the miner's chrome rows): the census re-run (`_placement_census_s46`) — its CANDIDATE rows are the s42 class-C declines, and two rows (dropDown / flipCard text "ABSENT" from every Claude page, 617 / 546 blocks) are an instrument artefact: the text sits inside an un-built widget's hand-off table cell with the writer's options joined (`Start of a book. / Middle of a book. / End of a book.`); the loss ledger's never-worked MXFL2 (38 pages, 42.5 %) is the r436-declined repeated overview menu + row composition; miner row #5 (a second header span, 21 modules) is four different mechanisms each under the chrome floor; the accordion's D2 table refusals after r491 are five small shapes (≈ 12 bundles). All recorded in LOOP_STATE.md.
+
+**The find** (the gathering lane): `_s46_r3_swallow.py` — text the gold keeps FREE that Claude ships inside an un-built widget's hand-off box — then `_s46_r3_pastdropbox.cjs` (every bundle that captured more members after the writer's `[Button] Upload to dropbox`): 59 bundles, 51 of them only the button line's own `[trigger engagement]` tag; **18 with real content after it, 13 of them the Blended Literacy module's CLOSING section** — after the last activity's `[Button] Upload to dropbox [trigger engagement]` the writer ends the module with a celebration `[image]` (a 3D party popper / trophy) and `[body] Congratulations on completing this module…` (BLL272 / 273 `Ka rawe tō mahi!`), and the last widget's member walk (modal ×5, clickDrop ×5, unclassified ×2, typing ×1 — BLL210's is a 12-modal + carousel bundle for Activity 8G) swallowed both into its hand-off box. The activity box itself already closes at that button (r376). **The gold keeps them FREE on every checked page (10 / 10)** — `div#body > (div.inquiryPanel >) div.row > div.col-md-8 / col-md-6 > p`.
+
+**The fix** (`InteractiveScanner.#swallowMembers`, beside the table-data section break): in a module `member_rule.dropbox_button_ends_capture.module_pattern` names (`^BLL\d`), a `[body]` / `[image]` (stop_tags) after a captured upload-to-dropbox button member (button_label_pattern on its own text + black line) ends the walk; the closing picture and text then render as free body after the activity. A §1d exception-1 FAMILY DIALECT: keyed to one family by data, 13 pages (under the 20-page floor), matching the family's own gold on every checked page, OFF byte-identical, every other gate held. The other five past-the-button captures (XDLS903 / 906's next `[click drop]` item, CEDT404's checklist black lines, BLL254 1.0's noise tag) are untouched. Env `DROPBOXEND_OFF`.
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 0 pages changed**; ON **13 modules / 13 pages** (+ their `_interactives.txt`) — exactly the 13 BLL modules; e.g. BLL230_0_0 now ends `div.row > div.col-md-8 > img (iStock-1461683255 "3D Two Party Popper") + p "Congratulations on completing this module…"` after the activity box. Regeneration + 12-module spot-check clean; `scoped_ship.sh` FAIL on compare_structure missing +1 only → **accepted NAMED** (`_r493_named.log`: matched +9 across the 13 modules, exact +8 — every one a NEW match of the closing paragraph; BLL170's new match carries one wrapper the gold adds).
+
+### 3. PROTECTED GATES
+
+- Skeleton **55.3852 % → 55.3885 % @ 2491 (+0.0032pp)**, RAW 39.340 → 39.342 %; ≥50 1586, ≥75 277, ≥90 26 HELD; 13 movers, **11 up / 2 down NAMED** (`_r493_companion.py`): up BLL254_2_0 +2.1, BLL273_2_0 +1.9, BLL272_2_0 +1.5, BLL256_2_0 +1.4 …; down BLL243_1_1 −0.7 (position-free overlap 93 → 94) and BLL160_0_0 −0.1 (502 → 503) — alignment.
+- **compare_structure exact 16700 → 16708 (+8)**, matched 19458 → 19467, **missing 878 → 879 NAMED** (a new match); EXTRA 198 / row-wrap 24 EXACT; body 238 / clean 2587 / 2633 / leak 75 / 46 EXACT; tags 9557 / 9557; every verifier RESULT ✓; selftests 50 green / 0 fail; the miner 194 CANDIDATE.
+- Plateau (§4): +0.0032pp — a PICK that predicted a skeleton move and delivered < 0.02pp, but cs exact +8 (a protected gate moved): neither counts nor resets; **0 of 3**.
+
+**Ledger:** scoped #3 since the r490 FULL · data `member_rule.dropbox_button_ends_capture` · env `DROPBOXEND_OFF` · code `InteractiveScanner.#swallowMembers` · tools `_placement_census_s46.{md,json}`, `_s46_r3_swallow.py`, `_s46_r3_pastdropbox.cjs`, `_r493_companion.py`, `_r493_finalise.py` · session 46 Round 3.
+
 ## 2026-09-25 (round 492, build 260620.55) — THE ACCORDION PANEL AFTER A TABLE: the scanner's "a [Body] after the table starts a new section" break is scoped to the current panel for the accordion — the [Body] / heading right after the writer's next `[accordion N] Title` is that panel's content (10 modules; 13 hand-off boxes fewer, 9 accordions built)
 
 ### 1. WHAT CHANGED

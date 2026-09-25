@@ -325,6 +325,17 @@
 				"h4",
 				"h5"
 			],
+			"dropbox_button_ends_capture": {
+				"enabled": true,
+				"env": "DROPBOXEND_OFF",
+				"module_pattern": "^BLL\\d",
+				"button_label_pattern": "upload\\s+(?:it\\s+|this\\s+|your\\s+\\w+\\s+)?to\\s+(?:the\\s+|your\\s+)?drop\\s*-?\\s*box",
+				"stop_tags": [
+					"body",
+					"image"
+				],
+				"_doc": "ROUND 493 (the autonomous loop's session 46 Round 3) — a §1d exception-1 FAMILY DIALECT (the Blended Literacy modules, module_pattern). The writer ends the module's last activity with `[Button] Upload to dropbox [trigger engagement]` and closes the module with a celebration `[image]` + `[body] Congratulations on completing this module…` (BLL272 / 273 `Ka rawe tō mahi!`). The activity box closes at that button (r376), but the last widget's member walk ran on and swallowed the closing picture and text into its hand-off box (13 BLL modules: modal ×5, clickDrop ×5, unclassified ×2, typing ×1 — `_s46_r3_pastdropbox.cjs`); the gold keeps them FREE on every checked page (10 / 10 — `div#body > (div.inquiryPanel >) div.row > div.col-md-8 / col-md-6 > p`). In a module the pattern names, a stop_tags member after a captured upload-to-dropbox button (button_label_pattern on the member's own text + its black line) ends the walk. Env DROPBOXEND_OFF = the r492 walk."
+			},
 			"panel_scoped_table_break": {
 				"enabled": true,
 				"env": "ACCPANELBREAK_OFF",

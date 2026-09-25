@@ -1845,7 +1845,8 @@ class Config {
 	// ROUND 490 (260620.53): THE LESSON OVERVIEW'S WALT ALERT IS MENU CONTENT (session 45 Round 9) — an alert in a [Lesson Overview] block whose text opens with a learning-intentions lead joins the lesson menu as its sentence (the r147 section-stop). Env LOWALTALERT_OFF.
 	// ROUND 491 (260620.54): THE ACCORDION MARKER-CELL TABLE (session 46 Round 1) — an accordion laid out in a table whose cells carry the writer's own panel markers builds from them (D5 in #accResolvePanels) + the column-label row + the r489 bulleted bold lead. Env ACCMARKTABLE_OFF / ACCBULLETLEAD_OFF.
 	// ROUND 492 (260620.55): THE ACCORDION PANEL AFTER A TABLE (session 46 Round 2) — the scanner's section break after a table-data widget's table does not fire on the [Body] / heading right after the writer's next numbered panel delimiter. Env ACCPANELBREAK_OFF.
-	static AppVersion = "260620.55";
+	// ROUND 493 (260620.56): THE BLL CLOSING SECTION AFTER THE DROPBOX BUTTON (session 46 Round 3) — in the BLL family a widget capture holding an upload-to-dropbox button ends at the following [body] / [image]. Env DROPBOXEND_OFF.
+	static AppVersion = "260620.56";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

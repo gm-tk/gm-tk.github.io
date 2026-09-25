@@ -1,0 +1,3 @@
+r493 NAMED: compare_structure missing container +1 = BLL170 — a NEW match (matched +9 over the 13 modules, exact +8): the closing paragraph now matched as free body, the gold wraps it in one more container
+BLL170 {'matched': 1, 'claude_missing_container': 1}
+done

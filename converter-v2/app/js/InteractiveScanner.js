@@ -2446,6 +2446,24 @@ class InteractiveScanner {
 				if (tsd === "break") break;           // series over — the section resumes
 			}
 
+			// ROUND 493 — THE CLOSING SECTION AFTER THE DROPBOX BUTTON (a family dialect: the Blended Literacy modules).
+			// The writer ends the module's last activity with `[Button] Upload to dropbox [trigger engagement]` and then
+			// closes the module with a celebration `[image]` + `[body] Congratulations on completing this module…`. The
+			// activity box already closes at that button (r376), but the last widget's capture ran on and swallowed the
+			// closing picture and text (13 BLL modules — BLL210's 12-modal + carousel bundle for Activity 8G, BLL230's
+			// clickDrop …); the gold keeps them FREE on every checked page (10 / 10, `_s46_r3_pastdropbox.cjs`). So in the
+			// listed family, a [body] / [image] after a captured upload-to-dropbox button member ends the walk. Data
+			// member_rule.dropbox_button_ends_capture {module_pattern, button_label_pattern, stop_tags}; env DROPBOXEND_OFF.
+			const _dbe = _mrB.dropbox_button_ends_capture;
+			if (_dbe && _dbe.enabled !== false && p && p.directive !== "INTERACTIVE"
+				&& (_dbe.stop_tags ?? ["body", "image"]).includes(p.tag)
+				&& !(typeof process !== "undefined" && process.env && process.env[_dbe.env ?? "DROPBOXEND_OFF"])
+				&& new RegExp(_dbe.module_pattern, "i").test(String(run?.moduleCode ?? ""))) {
+				const _lab = new RegExp(_dbe.button_label_pattern, "i");
+				if ((bundle.memberItems ?? []).some((mm) => mm?.type === "tag" && mm.parse?.primary?.tag === "button"
+					&& _lab.test(`${mm.text ?? ""} ${mm.blackAfter ?? ""}`))) break;
+			}
+
 			// TABLE-DATA SECTION-BREAK resumption (OSBY201-02 + OSAI501-01): a [Body] ELEMENT or an
 			// [H2]-[H5] section HEADING that appears AFTER a TABLE-DATA widget (uses_data_table —
 			// typing/dragAndDrop/dropQuiz/memoryGame…) has captured its table is the writer starting

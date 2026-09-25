@@ -1,0 +1,16 @@
+BLL130: identical 1 / changed 1
+BLL140: identical 0 / changed 2
+BLL160: identical 0 / changed 2
+BLL170: identical 0 / changed 2
+BLL210: identical 0 / changed 2
+BLL220: identical 0 / changed 2
+BLL230: identical 0 / changed 2
+BLL240: identical 0 / changed 2
+BLL243: identical 2 / changed 2
+BLL254: identical 3 / changed 1
+BLL256: identical 3 / changed 1
+BLL272: identical 2 / changed 2
+BLL273: identical 2 / changed 2
+
+TOTAL: identical 13 / changed 23 / missing 0 over 13 modules
+CHANGED: BLL130/BLL130_0_0.html BLL140/BLL140_0_0.html BLL140/BLL140_interactives.txt BLL160/BLL160_0_0.html BLL160/BLL160_interactives.txt BLL170/BLL170_0_0.html BLL170/BLL170_interactives.txt BLL210/BLL210_0_0.html BLL210/BLL210_interactives.txt BLL220/BLL220_0_0.html BLL220/BLL220_interactives.txt BLL230/BLL230_0_0.html BLL230/BLL230_interactives.txt BLL240/BLL240_0_0.html BLL240/BLL240_interactives.txt BLL243/BLL243_1_1.html BLL243/BLL243_interactives.txt BLL254/BLL254_2_0.html BLL256/BLL256_2_0.html BLL272/BLL272_2_0.html BLL272/BLL272_interactives.txt BLL273/BLL273_2_0.html BLL273/BLL273_interactives.txt

@@ -1,0 +1,19 @@
+OLD pairs 2491  SCAFFOLD 55.3852%  RAW 39.340%  >=50 1586  >=75 277  >=90 26
+NEW pairs 2491  SCAFFOLD 55.3885%  RAW 39.342%  >=50 1586  >=75 277  >=90 26
+delta SCAFFOLD +0.0032pp  RAW +0.003pp  >=50 +0  >=75 +0  >=90 +0
+movers 13 (up 11 / down 2), pp-sum +8.0
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  BLL254     BLL254_2_0.html            35.6 ->   37.8  (+2.1)
+  BLL273     BLL273_2_0.html            51.0 ->   52.8  (+1.9)
+  BLL272     BLL272_2_0.html            59.0 ->   60.5  (+1.5)
+  BLL256     BLL256_2_0.html            53.7 ->   55.2  (+1.4)
+  BLL220     BLL220_0_0.html            59.3 ->   59.7  (+0.4)
+  BLL140     BLL140_0_0.html            58.1 ->   58.4  (+0.3)
+  BLL230     BLL230_0_0.html            50.4 ->   50.7  (+0.3)
+  BLL240     BLL240_0_0.html            58.4 ->   58.7  (+0.3)
+  BLL130     BLL130_0_0.html            46.4 ->   46.7  (+0.3)
+  BLL170     BLL170_0_0.html            60.7 ->   60.9  (+0.2)
+  BLL210     BLL210_0_0.html            61.0 ->   61.1  (+0.2)
+  BLL160     BLL160_0_0.html            32.7 ->   32.7  (-0.1)
+  BLL243     BLL243_1_1.html            64.0 ->   63.3  (-0.7)
