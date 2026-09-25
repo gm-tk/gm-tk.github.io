@@ -1,0 +1,49 @@
+======================================================================
+ SCOPED SHIP — affected=../../outputs/_affected_r509.txt (95 modules), toggle=EMPTYMENUFLAG_OFF
+======================================================================
+[0] toggle-exists invariant (EMPTYMENUFLAG_OFF)
+    OK — EMPTYMENUFLAG_OFF found in app/js (the last-shipped corpus == this toggle OFF).
+
+[1] content-hash 0-stale (mtime false-alarm defeated)
+[content-manifest] content-hash 0-stale vs _content_manifest.txt
+  affected set: 95 module(s) (must be freshly regenerated)
+  unaffected  : 448 module(s) (must be byte-identical to the manifest; mtime IGNORED)
+  OK — 0 truly stale. 95 affected regenerated; the untouched corpus is byte-identical to the manifest (mtime false-alarm defeated).
+
+[2] containment — actually-changed modules must be a subset of the affected set
+    OK — 95 changed module(s) are a subset of 95 affected (the true set ⊆ the detector set).
+
+[3] completeness spot-check (a mis-specified P is caught here)
+[spotcheck] verifying 12 non-affected modules regenerated WITH the fix ON
+  OK — all 12 sampled non-affected modules are BYTE-IDENTICAL under the fix (P's no-op claim holds on the sample).
+
+[4] exact gate proof (decomposition vs the last-ship baseline)
+re-scoring 107 affected module(s): AGH1006 AGH1007 AGH1008 ANZH103 ANZH401 ANZH404 BLL152 BLL161 BLL177 BLL210 BLL274 BLL276 CBI1004 CBI1005 CBI1008 CBI1009 CEDK501 CEDO105 CEDO501 CEDO502 CEDR203 CEDR501 CEDT501 CEDW501 CHFUN06 CHI1003 CHI1004 CHI1005 COM1002 COM1005 COM1006 ENGC102 ENGC206 ENGC302 ENGC403 ENGI401 ENGI405 ENGJ302 ENGJ402 ENGR102 ENGR202 ENGS101 ENGS201 ENGS302 ENGS404 ENO2060 EXBP901 EXIP901 FRFUN07 FRFUN08 FRNO901 GEO1005 GEO1006 HES1005 HIS1001 HIS1006 HIS1008 HPRE203 HPRE301 JPN1004 MXDB301 MXDI201 MXDI202 MXDI301 MXEO201 MXEX101 MXEX301 MXEX302 MXFL102 MXFL104 MXFL203 MXFL204 MXFU201 MXFU202 MXFU301 MXFU302 MXFUN02 MXS1004 OSSM501 PES1002 PES1004 PES1005 PES1007 PES1008 PWY1001 PWY1002 PWY1007 PWY1008 PWY1009 SCPH301 SPA1004 SSOG101 SSOG105 TEDC401 TEDC402 WJFUN305 XDLS501 XDLS502 XDLS902 XDLS909 XGF9006 XLP02 XLP03 XLP04 XMES102 XWHA01 XWHA02
+baseline taken: 2026-09-25T09:17:46Z
+(unaffected modules unchanged by construction — corpus aggregate moves by exactly the affected-set delta)
+
+  metric                                 baseline        new     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  55.59      55.59      0.00  HELD
+  skeleton pages >=50%                       1602       1602         0  HELD
+  skeleton pages >=75%                        277        277         0  HELD
+  compare_structure exact chain             16762      16762         0  HELD
+  compare_structure EXTRA container           204        204         0  HELD
+  compare_structure missing container         887        887         0  HELD
+  body_compare ANY breakdown                  232        230        -2  IMPROVED
+  defect structurally-clean %               98.40      98.40      0.00  HELD
+  literal-[tag] leak (occ)                     52         52         0  HELD
+  literal-[tag] leak (pages)                   42         42         0  HELD
+
+  context (no pass/fail): sk_pages: 2486->2486  cs_matched: 19540->19540  body_pages: 2627->2627  df_total: 2627->2627  df_clean: 2585->2585
+
+RESULT: PASS — every protected gate held-or-improved corpus-wide (exact, decomposition-proven).
+[commit] gate_baseline.json: every aggregate written by the tool — 2 changed: body_compare.any_breakdown 232 -> 230; body_compare.over_capture 59 -> 57  | _meta.round 509
+[commit] fast-loop baseline PATCHED (2486 pages) + content manifest refreshed — this is now the shipped state the next inner loop measures against.
+
+[6] periodic full-ship backstop cadence
+[ledger] last full ship: round 505 (2026-09-25T08:13:51Z); scoped ships since: 4 (cadence 8, hard 16)
+  OK — a full-ship backstop is not yet due (4 scoped ship(s) of headroom).
+
+SCOPED SHIP: PASS — only the affected set changed, the rest is byte-identical, and every protected
+gate held-or-improved (exact, decomposition-proven). Finalise (changelog + AppVersion + CLAUDE.md).

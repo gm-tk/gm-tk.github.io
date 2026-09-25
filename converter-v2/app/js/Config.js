@@ -1861,7 +1861,8 @@ class Config {
 	// ROUND 506 (260620.69): D15-18 PART 2 — THE LOST RHS BOXES (session 49 Round 7): a right-hand box's content typed under its own tags on the following lines is gathered into the side column. Env RHSTAGGED_OFF.
 	// ROUND 507 (260620.70): D15-19 THE YELLOW-✅ MULTIPLE-CHOICE QUIZ (session 49 Round 8): the writer's yellow highlight builds the quiz unannounced under the three checks. Env MCQYELLOW_OFF.
 	// ROUND 508 (260620.71): THE NESTED BRACKET (session 49 Round 9): `[Drag and drop [autocheck]]` flattens to `[Drag and drop] [autocheck]` — the widget name no longer vanishes. Env NESTBRACKET_OFF.
-	static AppVersion = "260620.71";
+	// ROUND 509 (260620.72): KB 10 §5 THE EMPTY LESSON MENU'S RED FLAG (session 49 Round 10): an empty lesson menu carries the designer To Do. Env EMPTYMENUFLAG_OFF.
+	static AppVersion = "260620.72";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

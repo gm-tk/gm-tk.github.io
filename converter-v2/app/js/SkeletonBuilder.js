@@ -876,6 +876,17 @@ class SkeletonBuilder {
 				&& !(sbs.env && typeof process !== "undefined" && process.env && process.env[sbs.env])
 				&& (sbs.code_patterns ?? []).some((p) => new RegExp(p).test(String(run.moduleCode || "")));
 			const shell = tpl.menu.shells[bareSeries ? "simplified_bare" : shellKey];
+			// ROUND 509 (KB 10 §5 — "build the empty #module-menu-content shell … and raise a visible red flag telling the designer
+			// the lesson-menu copy needs to be supplied"; data menu.empty_lesson_menu_flag; env EMPTYMENUFLAG_OFF): a LESSON page
+			// whose simplified menu has no text at all carries the designer To Do inside the shell instead of a silent blank (427
+			// pages / 108 modules on the r508 corpus). The D13-8 twelve are never empty (their menus copy the overview's).
+			let _menuContent = content.menu.content ?? "";
+			const _emf = tpl.menu.empty_lesson_menu_flag;
+			if (_emf && _emf.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[_emf.env || "EMPTYMENUFLAG_OFF"])
+				&& pageType === (_emf.page_type ?? "lesson")
+				&& (_emf.shells ?? ["simplified", "simplified_bare"]).includes(bareSeries ? "simplified_bare" : shellKey)
+				&& !String(_menuContent).replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").trim())
+				_menuContent = NotesAndComments.redFlag(_emf.text, run, _emf.kind ?? "todo");
 			if (shell) {
 				// tab pane 1's column class is phase-dependent (corpus-
 				// dominant per phase; data: menu.pane1_col_by_phase)
@@ -956,7 +967,7 @@ class SkeletonBuilder {
 						{ cls: c.cls, content: c.html ? c.html + "\n" : "" })).join("\n"),
 					tab2Content: content.menu.tab2 ?? "",
 					tab2Body,
-					menuContent: content.menu.content ?? "",
+					menuContent: _menuContent,   // ROUND 509: the empty lesson menu's KB 10 §5 flag, else content.menu.content as before
 					// two_col_li slots (Blended-Literacy form); ENG family suppresses the banner
 					// The BANNER-style menu family renders its top banner text from the
 					// module's own [H1] heading (reduced to its English form,

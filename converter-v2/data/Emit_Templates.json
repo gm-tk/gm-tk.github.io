@@ -3766,6 +3766,15 @@
 		},
 		"tab2_nav_item": "\n<li><a>{tab2Label}</a></li>",
 		"tab2_pane_template": "\n<div class=\"tab-pane\">\n<div class=\"row\">\n{tab2Body}\n</div>\n</div>",
+		"empty_lesson_menu_flag": {
+			"_doc": "ROUND 509 (the autonomous loop's session 49 Round 10 — KB 10_CORPUS_VALIDATED_SCAFFOLDING.md §5 l.63, authority level 1: 'When the source has no such wording and no reference supplies it, you cannot invent it: build the empty #module-menu-content shell the skeleton requires and raise a visible red flag telling the designer the lesson-menu copy needs to be supplied.' D13-8 overrode that rule for its twelve repeater modules ONLY (their lesson menus copy the overview's). Measured outputs/_s49_r10_emptymenu.cjs: 427 pages / 108 modules shipped a lesson menu with no text and no flag (MXFL 30, PWY 27, CHI 23, COM 23, MXDI 22, ANZH 20 …). A LESSON page whose simplified / simplified_bare menu is empty now carries this To Do inside the shell. Gate-neutral by design: the skeleton, compare_structure and body_compare exclude the cv2-note family (round 72). Env EMPTYMENUFLAG_OFF.",
+			"enabled": true,
+			"env": "EMPTYMENUFLAG_OFF",
+			"page_type": "lesson",
+			"shells": ["simplified", "simplified_bare"],
+			"kind": "todo",
+			"text": "Lesson menu: the Writers Template has no learning intentions / success criteria for this lesson — supply the lesson-menu copy (KB 10 §5)."
+		},
 		"simplified_bare_series": {
 			"_doc": "ROUND 502 (the autonomous loop's session 49 Round 2 — Chris's D15-23, 25 Sept 2026, Option B: 'A named Maths-series house style'). THE MX BARE LESSON MENU: on the LESSON pages of the MXFU (Standard MXFU2xx–4xx, not MXFUN), MXEX, MXDB3 and MXDI3 series the human leaves the lesson menu BARE — #module-menu-content > h5 + ul, no row > col-md-8 col-12 wrapper — on 91 of 91 paired lesson pages (outputs/_s45_r4_menuwrap.log: MXDB3 14, MXDI3 7, MXEX 26 + 1 mis-pair, MXFU 44). KB 01B l.296–301 says the lesson menu content goes inside the row > col-md-8 wrapper; Chris named the bare form a SERIES CONVENTION for these four series (a series-scoped override of 01B, the D14-20 precedent; the matching KB 10 §3 'series conventions — preserve' sub-table joins his rulebook session, Needs Chris #1). A page whose menu resolves to the `simplified` shell renders the `simplified_bare` shell instead when the module code matches one of code_patterns and the page is a lesson page (the overview keeps its own menu). Every other module, every overview and every non-simplified menu is byte-identical. It does NOT fill the empty MX lesson menus (no WT [Lesson Overview]) or build the missing MXEX201 / 202 menus — a separate follow-up. Env MXBAREMENU_OFF.",
 			"enabled": true,

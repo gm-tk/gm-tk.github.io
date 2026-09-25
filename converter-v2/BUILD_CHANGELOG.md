@@ -1,5 +1,23 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 509, build 260620.72) — KB 10 §5 THE EMPTY LESSON MENU'S RED FLAG: a lesson page whose Writers Template gives no learning intentions now tells the designer to supply the lesson-menu copy, instead of shipping a silent blank menu (412 pages / 95 modules; gate-neutral by design)
+
+### 1. WHAT CHANGED
+
+**The rule** (KB `10_CORPUS_VALIDATED_SCAFFOLDING.md` §5 l.63 — authority level 1): *"When the source has no such wording and no reference supplies it, you cannot invent it: build the empty `#module-menu-content` shell the skeleton requires and raise a visible red flag telling the designer the lesson-menu copy needs to be supplied."* D13-8 overrode that rule for its twelve repeater modules ONLY (their lesson menus copy the overview's). **Measured** (`outputs/_s49_r10_emptymenu.cjs`, the r508 corpus): **427 pages / 108 modules** shipped a menu with no text and no flag — MXFL 30, PWY 27, CHI 23, COM 23, MXDI 22, ANZH 20, FRFUN 19, HPRE 19, MXEX 19, MXFU 18 … (the empty MX menus r502 left bare among them — the D15 session's follow-up (c)).
+
+**The fix** (`SkeletonBuilder.#buildHeader`; data `menu.empty_lesson_menu_flag`; env `EMPTYMENUFLAG_OFF`): a LESSON page whose `simplified` / `simplified_bare` menu holds no text gets the designer To Do — "Designer/Developer To Do: Lesson menu: the Writers Template has no learning intentions / success criteria for this lesson — supply the lesson-menu copy (KB 10 §5)." The engine's existing note placement puts it at the top of `#body` (notes never ride inside the header), where the designer sees it first.
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 0 pages changed**; ON **412 pages / 95 modules** — every change the one added To Do line (the 15 other empty-menu pages of the census are overview-named / non-simplified shells). Regenerated = ON byte-for-byte (848 / 848, 11 batches, 4 workers); `scoped_ship.sh` PASS (0 stale, containment 95 ⊆ 95, the 12-module spot-check byte-identical).
+
+### 3. PROTECTED GATES
+
+- **Gate-neutral by design** (the skeleton, compare_structure and the defect audit exclude the `cv2-note` family, r72): skeleton 55.5883 % @ 2486 EXACT (0 movers), ≥50 1602, ≥75 277, ≥90 26, RAW 39.516 %; cs EXACT; clean / leak EXACT; **body_compare ANY 232 → 230, over-capture 59 → 57 — an ARTEFACT, named**: body_compare counts a free-standing note's characters in the page's free body, so two over-capture pages fall under its 0.40 threshold; nothing was un-captured. Every verifier ✓, every COUNT held (`_r509_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 509`; `--gate-baseline-check` PASS. Plateau: neither (gate-neutral by design).
+
+**Ledger:** scoped #4 since the r505 FULL · data `menu.empty_lesson_menu_flag` · env `EMPTYMENUFLAG_OFF` · code `SkeletonBuilder.#buildHeader` · tools `_s49_r10_emptymenu.cjs`, `_s49_regen_par.sh`, `_r509_finalise.py` · session 49 Round 10.
+
 ## 2026-09-25 (round 508, build 260620.71) — THE NESTED BRACKET: `[Drag and drop [autocheck]]` is a drag-and-drop with a condition, not a typing quiz — the writer's widget name no longer vanishes (50 pages / 10 modules; "typing" hand-offs 77 → 19, 9 more dragAndDrops built; skeleton +0.0449pp, ≥50 +3, ≥75 +1)
 
 ### 1. WHAT CHANGED
