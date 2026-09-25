@@ -92,6 +92,17 @@ class TagNormaliser {
 				}
 			}
 		}
+		// ROUND 514 (the autonomous loop's session 50 Round 6): TOGGLED ALIASES — a round's new writer spellings of an existing
+		// tag, each group behind its own env toggle so the toggle-OFF corpus stays the last shipped state. Data
+		// _meta.toggled_aliases [{ tag, aliases, env }].
+		for (const grp of lexicon._meta?.toggled_aliases ?? []) {
+			if (!grp || grp.enabled === false || !lexicon.tags[grp.tag]) continue;
+			if (typeof process !== "undefined" && process.env && process.env[grp.env || "SPELLALIAS_OFF"]) continue;
+			for (const alias of grp.aliases ?? []) {
+				const folded = Utils.Fold(alias);
+				if (!this.#aliasMap.has(folded)) this.#aliasMap.set(folded, { canon: grp.tag, directive: lexicon.tags[grp.tag].directive, toggled: true });
+			}
+		}
 
 		// longest-first order so embedded matching prefers the longest hit
 		this.#aliasOrder = [...this.#aliasMap.keys()].sort((a, b) => b.length - a.length);
@@ -239,7 +250,7 @@ class TagNormaliser {
 		for (const [cand, how] of candidates) {
 			if (cand && this.#aliasMap.has(cand)) {
 				const hit = this.#aliasMap.get(cand);
-				return { canon: hit.canon, directive: hit.directive, how, alias: cand };
+				return { canon: hit.canon, directive: hit.directive, how, alias: cand, toggled: hit.toggled };
 			}
 		}
 
@@ -261,7 +272,7 @@ class TagNormaliser {
 				|| (lenPos[0] === best.lenPos[0] && lenPos[1] > best.lenPos[1]);
 			if (better) {
 				const hit = this.#aliasMap.get(alias);
-				best = { lenPos, result: { canon: hit.canon, directive: hit.directive, how: "embedded", alias } };
+				best = { lenPos, result: { canon: hit.canon, directive: hit.directive, how: "embedded", alias, toggled: hit.toggled } };
 			}
 		}
 		return best ? best.result : null;
@@ -367,7 +378,7 @@ class TagNormaliser {
 		for (let pass = 0; pass < 3; pass++) {
 			const r = this.#matchOne(remaining);
 			if (!r) break;
-			tags.push({ tag: r.canon, directive: r.directive, how: r.how, fragment, alias: r.alias });
+			tags.push({ tag: r.canon, directive: r.directive, how: r.how, fragment, alias: r.alias, ...(r.toggled ? { toggled: true } : {}) });
 			if (hspOn && pass === 0 && r.how === "head" && r.directive === "SECTION_MARKER") {
 				const colon = remaining.indexOf(":");
 				remaining = colon >= 0 ? Utils.StripChars(remaining.slice(colon + 1).replace(/\s+/g, " ").trim(), " .;,:|-") : "";
@@ -499,6 +510,14 @@ class TagNormaliser {
 			&& tags.some((t) => t.tag === "activity" && t.directive === "CONTAINER_OPEN")) {
 			const fm = /^(\d{1,2}[a-z])(?=\s|$|[:.)\]–-])/.exec(free);
 			if (fm) numbers.push(fm[1]);
+		}
+
+		// ROUND 514 (session 50 Round 6): a TOGGLED spelling (_meta.toggled_aliases) only FILLS a span that resolved to no widget
+		// and no closer — it never competes with one: `[click drops end here]` stays the closer it was, `[Clickdrops or Tabs]`
+		// stays tabs, `[radioquiz [autocheck]]` stays what r508 made it (the first probe opened four runaway captures).
+		if (tags.some((t) => t.toggled)
+			&& tags.some((t) => !t.toggled && (t.directive === "INTERACTIVE" || t.directive === "CONTAINER_CLOSE"))) {
+			for (let k = tags.length - 1; k >= 0; k--) if (tags[k].toggled) tags.splice(k, 1);
 		}
 
 		// ROUND 508-follow-up ROUND 510 (the autonomous loop's session 49 Round 11; data Tag_Lexicon.json

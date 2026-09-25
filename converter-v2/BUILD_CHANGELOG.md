@@ -1,5 +1,27 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (round 514, build 260620.76) — THE WRITERS' MISSING SPELLINGS: `[type and check]`, `[click drops]` / `[clickdrops]`, `[radioquiz]`, `[carrousel]` now name their widget (a toggled-alias group that only FILLS a span with no widget or closer); 45 modules; skeleton +0.0455pp
+
+### 1. WHAT CHANGED
+
+**Found by** the widened recognition census (`outputs/_s50_r4_unresolved.cjs`: 3,313 red brackets resolve to NO tag / 420 modules). Five spellings of existing widget tags the alias lists lacked, each checked against the gold's own widgets in the modules that use it: **`[type and check]`** (46 spans / 7 modules — MXEO201, MXEX302, MXFL203, MXFUN01–03, SSCI205; the gold builds typing quizzes there) → `typing quiz`; **`[click drops]` / `[clickdrops]`** (16 / 7) → `click drop`; **`[radioquiz]`** (8 / 6) → `radio quiz`; **`[carrousel]`** (3 / 3) → `carousel`. `[checkboxes]` (15 / 11) is NOT added — the gold builds multiChoiceQuiz or selectionBox for it, no single target. KB c14 (the writer's tag decides the component); the lexicon's own extension rule (a new writer phrasing = one alias).
+
+**The mechanism** (`TagNormaliser` constructor + `Parse`; data `Tag_Lexicon.json _meta.toggled_aliases` [{tag, aliases, env}], NEW; env `SPELLALIAS_OFF`): a toggled alias group is merged into the alias map unless its env toggle is set, so the OFF corpus stays the last shipped state; its tags carry a `toggled` mark, and **a toggled spelling only FILLS a span that resolved to no widget and no closer — it never competes with one**. The first probe (without that rule) turned `[click drops end here]` / `[modals and click drops end here]` into openers (MXDB302_1_0 absorbed five widget types) and gave `[Clickdrops or Tabs]` a second widget; with it, those spans parse exactly as before while `[end click drops]` becomes the more specific `end click drop` closer.
+
+### 2. PROOF
+
+- In-memory probe: `SPELLALIAS_OFF=1` → the 45 modules' 288 comparable files equal the shipped manifest's md5s (0 differ); corpus-wide the OFF probe changes nothing outside them. ON → **45 modules** (`outputs/_affected_r514.txt`; `_s50_r514_spans.cjs`: 160 spans change parse). `scoped_ship.sh … --round 514` PASS (0 stale, containment 45 ⊆ 45, the 12-module spot-check byte-identical).
+- Widgets over the 45 (OFF → ON): clickDrop built 58 → 65, items 84 → 107, defect 0; carousels 70 → 73 (the 5 mismatched slide ids are pre-existing, equal OFF and ON); typing 0 → 0 (its builder reads red answers only — the new `typing` hand-offs name the writer's widget).
+
+### 3. PROTECTED GATES
+
+- **Skeleton 55.6929 → 55.7384 % @ 2486 (+0.0455pp)** — 49 movers, 36 up / 13 down, +113.1pp-sum; **≥50 1607 → 1612** (7 up-crossings, HPFUN203_0_0 50.0 → 49.0 down); **≥75 281 → 283** (SCPH301_4_0 57.5 → 79.6, SCBI301_7_0 71.2 → 75.1); ≥90 26; **RAW 39.539 → 39.546 %**. The largest down movers — MXFU202_8_0 46.6 → 39.8, PWY1001_1_3_0 46.8 → 41.3, XFUN02_4_0, TEDC401_4_0 — each a writer's widget now captured into its named hand-off box (A1).
+- **compare_structure exact 16768 → 16769, missing 887 → 886**, EXTRA 204.
+- **body_compare ANY 233 → 236 (+3), NAMED** (`_s50_bcsplit.py` / `_s50_bcpages.py`): TEDC401_6_0 — the SAME 3,674-char box, its label now listing a fourth type (`+ clickDrop`), which trips the 4-type line; ANZH302_10_0 — the writer's `[Carrousel]` box holds exactly its own "Please create a carrousel of these three sources" and the three sources (279 chars), and the page's older 1,373-char box (57 % before, 58 % after) now counts three blocks lost; CEDR501_2_1 — its two clickDrop boxes (1,569 + 1,347) become one of 3,018 at the writer's second `[Clickdrops]`.
+- Clean / leak EXACT; tags 9557; every verifier ✓, every COUNT held (`_r514_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 514 --accept-named`; `--gate-baseline-check` PASS. Plateau: **reset** (a real gain).
+
+**Ledger:** scoped #1 since the r513 FULL · data `Tag_Lexicon.json _meta.toggled_aliases` · env `SPELLALIAS_OFF` · code `TagNormaliser` (constructor, `#matchOne`, `#resolveFragment`, `Parse`) · tools `_s50_r4_unresolved.cjs`, `_s50_r514_spans.cjs`, `_r514_finalise.py` · session 50 Round 6.
+
 ## 2026-09-26 (session 50 Round 5, build 260620.75 — NO engine change) — THE LEDGER'S FULL-SHIP BACKSTOP: the whole corpus regenerated with the r513 engine is byte-identical to the shipped manifest (545 dirs / 543 modules / 2,673 pages; 0 pages differ)
 
 ### 1. WHAT RAN

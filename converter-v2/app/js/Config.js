@@ -1865,7 +1865,8 @@ class Config {
 	// ROUND 510 (260620.73): THE WIDGET NAMED AFTER A GENERIC INTERACTIVE BRACKET (session 50 Round 1): `[interactive activity] drag and drop` names the writer's widget; + the dragAndDrop category-sort opener guard and the dropDown all-red answers column. Env IQFREEWIDGET_OFF / DDSORTOPENER_OFF / DDCOLFOLD_OFF.
 	// ROUND 511 (260620.74): D15-19 THE YELLOW-✅ DROPDOWN QUIZ (session 50 Round 2): the writer's yellow highlight builds a dropDown unannounced under the three checks; colour marks placed in document order. Env DDYELLOW_OFF / DDMARKSEQ_OFF.
 	// ROUND 513 (260620.75): THE BARE [hover] WITH ITS DEFINITION IN PARENTHESES (session 50 Round 4): the paren def weaves the hover and the sentence stays in the paragraph. Env HOVERPAREN_OFF.
-	static AppVersion = "260620.75";
+	// ROUND 514 (260620.76): THE WRITERS' MISSING SPELLINGS (session 50 Round 6): `[type and check]`, `[click drops]`, `[radioquiz]`, `[carrousel]` name their widget — a toggled alias only fills a span with no widget or closer. Env SPELLALIAS_OFF.
+	static AppVersion = "260620.76";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -17,6 +17,29 @@
 			"DROP": "never emit (deliberate exclusion, e.g. sticky nav)"
 		},
 		"extension_rule": "New writer phrasing for an existing tag = append ONE alias here. New tag = add ONE entry here. Never a code change.",
+		"toggled_aliases": [
+			{
+				"_doc": "ROUND 514 (the autonomous loop's session 50 Round 6 — the widened recognition census outputs/_s50_r4_unresolved.cjs: red brackets that resolve to NO tag). Writers' spellings of existing widget tags the alias lists lacked, merged into the alias map by TagNormaliser's constructor unless SPELLALIAS_OFF is set (a toggled group keeps the OFF corpus the last shipped state; the extension rule above is unchanged for untoggled additions). `[type and check]` 46 spans / 7 modules (MXEO201, MXEX302, MXFL203, MXFUN01–03, SSCI205 — the gold builds typing quizzes there); `[click drops]` / `[clickdrops]` 16 / 7; `[radioquiz]` 8 / 6; `[carrousel]` 3 / 3. `[checkboxes]` (15 / 11) is NOT here: the gold builds multiChoiceQuiz or selectionBox for it, no single target.",
+				"tag": "typing quiz",
+				"aliases": ["type and check"],
+				"env": "SPELLALIAS_OFF"
+			},
+			{
+				"tag": "click drop",
+				"aliases": ["click drops", "clickdrops"],
+				"env": "SPELLALIAS_OFF"
+			},
+			{
+				"tag": "radio quiz",
+				"aliases": ["radioquiz"],
+				"env": "SPELLALIAS_OFF"
+			},
+			{
+				"tag": "carousel",
+				"aliases": ["carrousel"],
+				"env": "SPELLALIAS_OFF"
+			}
+		],
 		"interactive_qualifier_free_widget": {
 			"_doc": "ROUND 510 (the autonomous loop's session 49 Round 11 — KB constraint 14: the writer's tag decides the component; the r92 `[Activity 1A drag and drop]` precedent). `[interactive activity] drag and drop`, `[Interactive tool] Flip cards`, `[interactive] please create a drag and drop activity`, `[Interactive activity] drop down options`: the bracket is a generic 'an interactive goes here' qualifier and the widget is named AFTER it in the same red span, so the span parsed as a plain activity box and the widget was never recognised. When EVERY bracket of the span matches bracket_pattern and no widget tag was found, the span's free text is resolved as a fragment and its first INTERACTIVE tag joins the span (the precedence makes it primary, as for r92). Census outputs/_s49_r11_unknownquiz.cjs: ≈ 60 spans in ≈ 25 modules (drag and drop ≈ 33, flip cards ≈ 14, drop down 7, multiple choice 2). Env IQFREEWIDGET_OFF.",
 			"enabled": true,

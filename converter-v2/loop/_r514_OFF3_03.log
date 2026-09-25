@@ -1,0 +1,13 @@
+WJFUN113: identical 0 / changed 2
+WJFUN212: identical 0 / changed 2
+WJFUN305: identical 0 / changed 2
+WJFUN306: identical 0 / changed 2
+WJFUN307: identical 1 / changed 1
+WJFUN308: identical 1 / changed 1
+XFUN02: identical 5 / changed 2
+XMES101: identical 8 / changed 2
+XMES202: identical 2 / changed 6
+XMES203: identical 5 / changed 2
+
+TOTAL: identical 22 / changed 22 / missing 0 over 10 modules
+CHANGED: WJFUN113/WJFUN113_0_0.html WJFUN113/WJFUN113_interactives.txt WJFUN212/WJFUN212_0_0.html WJFUN212/WJFUN212_interactives.txt WJFUN305/WJFUN305_0_0.html WJFUN305/WJFUN305_interactives.txt WJFUN306/WJFUN306_0_0.html WJFUN306/WJFUN306_interactives.txt WJFUN307/WJFUN307_0_0.html WJFUN308/WJFUN308_0_0.html XFUN02/XFUN02_4_0.html XFUN02/XFUN02_interactives.txt XMES101/XMES101_6_0.html XMES101/XMES101_interactives.txt XMES202/XMES202_1_1.html XMES202/XMES202_2_0.html XMES202/XMES202_3_0.html XMES202/XMES202_4_0.html XMES202/XMES202_5_0.html XMES202/XMES202_interactives.txt XMES203/XMES203_4_0.html XMES203/XMES203_interactives.txt

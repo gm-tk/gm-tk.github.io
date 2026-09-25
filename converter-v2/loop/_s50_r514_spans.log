@@ -1,0 +1,92 @@
+spans changed by r514: 160 in 52 modules
+== |instruction → typing quiz|tag (46)
+   MXFUN01: [Type and Check]
+   MXFUN01: [Type and check]
+   MXFUN01: [Type and Check]
+   MXFUN01: [Type and check]
+   MXFUN01: [Type and check]
+   MXFUN01: [Type and check] Could this please be recreated, type in the answers shown
+== activity+activity|tag → activity+activity+typing quiz|tag (36)
+   HPFUN203: [interactive activity] type and check DEV: no correct answers
+   TWHA906: [interactive activity] type and check DEV answers will vary, colour code columns to match those in above quiz
+   MXDI201: [interactive activity] type and check
+   MXDI201: [interactive activity] type and check
+   MXDI201: [interactive activity] type and check
+   MXDI201: [interactive activity] complete the gaps/ type and check
+== |instruction → click drop|tag (23)
+   WJFUN212: [Clickdrops]
+   XFUN02: [insert click drops]
+   BLLR202: [close clickdrops]
+   CEDO502: [Clickdrops x 4]
+   CEDR501: [Clickdrops]
+   OSAH401: [click drops] Can the lifebuoy images be small and surround the central image with the title text e.g. ‘Netsafe’ in the middle of 
+== end other|tag → end click drop|tag (10)
+   HPFUN903: [end click drops]
+   WJFUN212: [end click drops]
+   BLL250: [end clickdrops]
+   BLL260: [end clickdrops]
+   BLL260: [end clickdrops]
+   BLL260: [end clickdrops]
+== |instruction → radio quiz|tag (9)
+   CHFUN06: [radioquiz]
+   ENFUN03: [radioquiz]
+   ENFUN05: [radioquiz]
+   ENFUN05: [radioquiz]
+   ENFUN05: [radioquiz]
+   MXFU402: [radioquiz]
+== end other|tag → click drop+end other|tag (7)
+   BLL272: [clickdrops end]
+   BLL275: [clickdrops end]
+   ENGJ302: [Click Drops end here]
+   MXDB302: [click drops end here]
+   MXDB302: [modals and click drops end here]
+   MXEO301: [Click drops end]
+== |instruction → activity+typing quiz|tag (4)
+   MXDI202: [interactive tool] type and check
+   MXDI202: [interactive tool] type and check
+   MXFL203: [interactive tool] type and check
+   MXFL203: [interactive tool] type and check
+== |instruction → carousel|tag (3)
+   WJFUN110: [carrousel]
+   ANZH301: [Carrousel]
+   ANZH302: [Carrousel]
+== typing quiz|tag → radio quiz+typing quiz|tag (3)
+   PWY1008: [radioquiz [autocheck]]
+   PWY1008: [radioquiz [autocheck]]
+   PWY1009: [radioquiz [autocheck]]
+== flip card|tag → click drop+flip card|tag (2)
+   TEDC401: [Clickdrops (or 3 flipcards)]
+   TEDC402: [Flipcards or clickdrops]
+== tabs|tag → click drop+tabs|tag (2)
+   TEDC402: [Clickdrops or Tabs]
+   TEDC402: [clickdrops or tabs]
+== data marker+page|tag → click drop+data marker+page|tag (1)
+   WJFUN307: [Insert Clickdrops across the page]
+== dropdown+dropdown|tag → radio quiz+dropdown+dropdown|tag (1)
+   ENGI401: [radioquiz and dropdown- not sure if there is a functionality to allow this so could do dropdown separately underneath]
+== activity|tag → typing quiz+activity|tag (1)
+   ENGR102: [Activity 5A- Type and check] keep box orange
+== body|tag → click drop+body|tag (1)
+   MXEX302: [Body text for click drops]
+== correct+answer|tag → radio quiz+correct+answer|tag (1)
+   PWY1007: [radioquiz [all answers correct]]
+== activity+activity|tag → activity+radio quiz+activity|tag (1)
+   SCBI301: [Radioquiz interactive – part of the same activity if possible]
+== radio quiz+answer|tag → radio quiz+radio quiz+answer|tag (1)
+   SCCH301: [radioquiz true/false. Answers shown]
+== |instruction → activity+radio quiz|tag (1)
+   SCPH301: [radioquiz interactive. Automarked.]
+== typing quiz|tag → typing quiz+typing quiz|tag (1)
+   SSCI205: [Type and check] + [Autocheck]
+== data marker+tabs|tag → click drop+data marker+tabs|tag (1)
+   TEDC401: [Tabs – ideally each ‘landing tab’ has the info from column 2, and 2 click drops labels ‘So what?’ and ‘Try this’ ]
+== accordion|tag → click drop+accordion|tag (1)
+   TEDC401: [Accordion / click drops]
+== activity+option|tag → click drop+activity+option|tag (1)
+   TEDC402: [activity choice – click drops]
+== button|tag → click drop+button|tag (1)
+   TEDC402: [clickdrops with button
+== activity|tag → click drop+activity|tag (1)
+   TEDC402: [activity click drops]
+== dropdown+embed|tag → click drop+dropdown+embed|tag (1)
+   TEDC402: [clickdrops + PDF modals + drop box]
