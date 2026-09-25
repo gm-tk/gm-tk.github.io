@@ -501,6 +501,32 @@ class TagNormaliser {
 			if (fm) numbers.push(fm[1]);
 		}
 
+		// ROUND 508-follow-up ROUND 510 (the autonomous loop's session 49 Round 11; data Tag_Lexicon.json
+		// _meta.interactive_qualifier_free_widget; env IQFREEWIDGET_OFF): THE WIDGET NAMED AFTER A GENERIC INTERACTIVE BRACKET.
+		// `[interactive activity] drag and drop`, `[Interactive tool] Flip cards`, `[interactive] please create a drag and drop
+		// activity` — the bracket only says "an interactive goes here" and the writer names the widget in the SAME red span
+		// after it. Those words sat in `free`, so the span was a plain activity box and the widget never recognised (KB c14:
+		// the writer's tag decides the component). When every bracket is such a generic qualifier and no widget tag was found,
+		// the free text is resolved as a fragment and its first INTERACTIVE tag joins the span — the r92 reading of
+		// `[Activity 1A drag and drop]` (activity + widget in one span; the precedence below makes the widget primary).
+		{
+			const iq = this.#lexicon?._meta?.interactive_qualifier_free_widget;
+			if (iq && iq.enabled !== false && free
+				&& !(typeof process !== "undefined" && process.env && process.env[iq.env || "IQFREEWIDGET_OFF"])
+				&& brackets.length && brackets.every((b) => new RegExp(iq.bracket_pattern, "i").test(Utils.Fold(b).trim()))
+				&& !tags.some((t) => t.directive === "INTERACTIVE")) {
+				const ff = Utils.Fold(free);
+				const w = this.#resolveFragment(ff).find((t) => !t.instruction && t.directive === "INTERACTIVE");
+				// the widget must be NAMED in the span's opening words (`drag and drop …`, `please create a drag and drop
+				// activity`), not met deep inside a request (ANZH301 `[Interactive] Please include this template here. Are
+				// there digital drawing tools …` → never a sketcher) — data max_lead_words.
+				const at = w?.alias ? ff.indexOf(w.alias) : -1;
+				const lead = at >= 0 ? ff.slice(0, at).split(/\s+/).filter(Boolean).length : Infinity;
+				if (w && lead <= (iq.max_lead_words ?? Infinity)
+					&& !(iq.free_deny_pattern && new RegExp(iq.free_deny_pattern, "i").test(ff))) tags.push(w);
+			}
+		}
+
 		// Step 4 CLASSIFY the span
 		let primary = null;
 		let promotedMark = null;      // ROUND 304 — set by a tag_promote rule carrying `mark`

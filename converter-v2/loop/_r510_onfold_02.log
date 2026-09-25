@@ -1,0 +1,14 @@
+HPFUN402: identical 2 / changed 0
+HPFUN403: identical 2 / changed 0
+HPFUN901: identical 2 / changed 0
+HPFUN903: identical 2 / changed 0
+HPRE203: identical 9 / changed 0
+MXDB301: identical 10 / changed 0
+MXDI201: identical 12 / changed 0
+MXDI202: identical 12 / changed 1
+MXFL104: identical 7 / changed 0
+MXFL201: identical 11 / changed 0
+MXFL203: identical 13 / changed 0
+
+TOTAL: identical 82 / changed 1 / missing 0 over 11 modules
+CHANGED: MXDI202/MXDI202_11_0.html

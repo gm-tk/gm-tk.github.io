@@ -1852,6 +1852,12 @@
 			"drag": "<div class=\"drag\" option=\"{n}\"><p>{answer}</p></div>",
 			"close": "</div>\n</div>\n</div>\n</div>",
 			"min_rows": 2,
+			"standard_decline_opener": {
+				"_doc": "ROUND 510 (the autonomous loop's session 50 Round 1 — the guard r510's generic-interactive-bracket reading needed before it could ship). The r69 pair reading takes any 2-column table as [label | answer]; when the writer's OPENER says the items go INTO coloured squares / zones / categories / groups / columns, the table is the drop TARGETS of a category sort, not the pairs — HPFUN101 1A: '[Interactive] Drag and drop, drop the statements into the relevant coloured square' over a 2×2 table of four zones (Blue / Green / Yellow / Red, each with its feelings), the statements typed after it; the r69 reading built two nonsense pairs from the zone cells (0 % of the gold's drags). The r69 form declines (the hand-off box keeps the writer's content); the images and column forms are not affected. Tested on the bundle's red TAG items only (the span that names the widget is the first member when an activity box owns the opener), never the black body text. Proven inert on every existing dragAndDrop build (the family probe with IQFREEWIDGET_OFF=1). Env DDSORTOPENER_OFF.",
+				"enabled": true,
+				"env": "DDSORTOPENER_OFF",
+				"pattern": "\\binto\\s+(?:the\\s+|their\\s+|its\\s+)?(?:relevant\\s+|correct\\s+|right\\s+|appropriate\\s+|matching\\s+)?(?:colou?red\\s+)?(?:squares?|zones?|categor(?:y|ies)|groups?|columns?)\\b"
+			},
 			"button_row": {
 				"enabled": true,
 				"env": "DDBUTTONS_OFF",
@@ -3185,6 +3191,11 @@
 				"width variants are editorial and are not reproduced)."
 			],
 			"enabled": true,
+			"column_answer_fold": {
+				"_doc": "ROUND 510 (the autonomous loop's session 50 Round 1 — found by the dropDown verifier over r510's modules). The D3 (b) COLUMN form read the first row as the red column HEAD whenever its answer cell was red; when EVERY answer cell is red and the first row's answer is one of the answers beneath it (MXDI202 10A 'Sorting measurements': Weight / Length … length), that row is a question — it was dropped (7 units for 8 rows) — and the options were distinct by exact spelling, so the writer's lower-case `length` became a third, duplicate option (the verifier's duplicate-option defect on all 7 units). With the flag on: the first row stays a question when its answer recurs below (case-insensitive), and the option set is distinct ignoring case (the first spelling kept; answers index by the folded key). Env DDCOLFOLD_OFF.",
+				"enabled": true,
+				"env": "DDCOLFOLD_OFF"
+			},
 			"upload_box": {
 				"_doc": "ROUND 308 (Chris, 2026-08-11 — 'Build it'; the round-306 follow-through chain ticket 2). A bundle the family fence refuses because the writer's opener names a DROPBOX (the student upload area) now builds the gold's own upload button instead of a red flag or a hand-off box: `<a href=\"\" target=\"_blank\"><div class=\"{cls}\">Upload to dropbox</div></a>` + ONE Designer/Developer To Do note carrying the writer's own bracket words. MEASURED (outputs/_r308_dropbox.json, 241 dropbox bundles / 88 modules): the gold ships this button 1,076 times across 263 modules — label 'Upload to dropbox' 96%, class `button` outside BLL and `buttonD` inside BLL (the round-66 house style, read from buttons.dropbox_orange_house_style so the two rules cannot drift), and 142 of the gold's own buttons carry the EMPTY href we ship (the unwired pre-publish form; the populated ones carry a per-module D2L rcode that is in NO Writers Template — the r232/CL-0044 class, an INTENTIONAL divergence). FENCES, each measured: an 'alert dropbox' opener is a REVEAL box, not an upload area (opener_exclude_pattern — exactly CEDT101 ×4, whose gold drops them); a MERGED capture (extraTypes) is the round-310 gathering class; a captured table, media, or another widget's member keeps the honest hand-off box (40 bundles). Captured black/[body] text is RELEASED after the button in the writer's own order (renderBlock — bullets become real lists); a no-primary red span's own text joins the note spec, never learner content. 12 modules whose gold ships NO upload button (BLL155, BLL266, ENGI400, ENGJ302, ENGJ403, HPRE301, SSEA203, SSOG103, TEDC401, TEDC402, TRR304, XMES201) are forward-looking NAMED divergences, never chased. Env DBXBUTTON_OFF reverts every upload-box bundle to its red flag / hand-off box byte-for-byte.",
 				"enabled": true,

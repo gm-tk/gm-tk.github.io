@@ -944,6 +944,19 @@ class InteractiveBuilder {
 		if (typeof process !== "undefined" && process.env && process.env.DRAGDROP_OFF) return null;
 		if (bundle?.extraTypes && bundle.extraTypes.length) return null;
 		if ((bundle?.media ?? []).length) return null;
+		// ROUND 510 (session 50 Round 1) — THE CATEGORY-SORT OPENER: an opener that sends the items INTO coloured squares /
+		// zones / categories / groups / columns names a category sort, so its 2-column table is the drop TARGETS, not
+		// [label | answer] pairs (HPFUN101 1A's 2×2 zone table) — keep the hand-off box. Data standard_decline_opener;
+		// env DDSORTOPENER_OFF.
+		{
+			const dec = tpl.standard_decline_opener;
+			if (dec && dec.enabled !== false && dec.pattern
+				&& !(typeof process !== "undefined" && process.env && process.env[dec.env || "DDSORTOPENER_OFF"])) {
+				const said = [...(bundle?.openerItems ?? []), ...(bundle?.memberItems ?? [])]
+					.filter((m) => m?.type === "tag").map((m) => this.#cellText(m.text)).join(" ");
+				if (new RegExp(dec.pattern, "i").test(said)) return null;
+			}
+		}
 		const tables = bundle?.tables ?? [];
 		if (tables.length !== 1) return null;
 		const srcRows = tables[0].rows ?? [];
@@ -12996,11 +13009,30 @@ class InteractiveBuilder {
 
 		// (b) COLUMN — a red header on the answers column, answers beneath it.
 		if (w === 2 && rows[0].length > 1 && this.#isFullyRed(rows[0][1])) {
-			const pairs = body.filter((r) => r.length > 1 && String(r[1]).trim())
+			// ROUND 510 (session 50 Round 1) — THE ALL-RED ANSWERS COLUMN: when the first row's red cell is itself one of
+			// the answers beneath it (MXDI202 10A: every answer cell red, `Weight` first), that row is a QUESTION, not the
+			// column head; and the options are distinct answers IGNORING CASE (the writer's `length` beside `Length` made a
+			// third, duplicate option). Data dropDown.column_answer_fold; env DDCOLFOLD_OFF.
+			const cf = tpl.column_answer_fold;
+			const cfOn = !!(cf && cf.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[cf.env || "DDCOLFOLD_OFF"]));
+			const key = (s) => String(s).toLowerCase().replace(/\s+/g, " ").trim();
+			const firstIsRow = cfOn && body.some((r) => r.length > 1 && key(this.#cellText(r[1] ?? "")) === key(this.#cellText(rows[0][1] ?? "")));
+			const pairs = (firstIsRow ? rows : body).filter((r) => r.length > 1 && String(r[1]).trim())
 				.map((r) => ({ q: this.#cellText(r[0] ?? ""), a: this.#cellText(r[1] ?? "") }));
 			if (pairs.length < 2 || pairs.some((p) => !p.q || !p.a)) return null;
 			const maxAns = tpl.max_answer_words ?? 12;
 			if (pairs.some((p) => p.a.split(/\s+/).length > maxAns)) return null;
+			if (cfOn) {
+				const first = new Map();
+				for (const p of pairs) if (!first.has(key(p.a))) first.set(key(p.a), p.a);
+				const opts = [...first.values()];
+				if (opts.length < min || opts.length > max) return null;
+				const idx = [...first.keys()];
+				return this.#ddQuestionForm(
+					pairs.map((p) => ({ question: p.q, options: opts, answer: idx.indexOf(key(p.a)) + 1 })),
+					tpl, inline, null, ac);
+			}
 			const opts = [...new Set(pairs.map((p) => p.a))];
 			if (opts.length < min || opts.length > max) return null;
 			return this.#ddQuestionForm(

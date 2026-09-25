@@ -1,0 +1,1489 @@
+  ~ AGH1001_3_0.html: -9 +19
+     - <div class="activity" number="3A">
+     - <a href="" target="_blank"><div class="button">Ranginui – Sky father</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Paptuanuku – Earth mother</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Tane-mahuta – Trees and birds</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     - <a href="" target="_blank"><div class="button">Tangaroa – Oceans and creatures in it</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s li
+     + <div class="activity interactive" number="3A">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="AGH1001-03-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: dragAndDrop — Activity (inline) — se
+     + <div style="font-size: 0.95em">
+     + <p>Ranginui – Sky father</p>
+     + <p>Paptuanuku – Earth mother</p>
+     + <p>Tane-mahuta – Trees and birds</p>
+     + <p>Tangaroa – Oceans and creatures in it.</p>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+  ~ AGH1001_4_0.html: -10 +10
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="AGH1001-04-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: interactive + interactive — Activity
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="AGH1001-04-02" style="border: 8px so
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: unclassified — Activity (inline) — s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="AGH1001-04-03" style="border: 8px so
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: interactive — Activity (inline) — se
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="AGH1001-04-04" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="AGH1001-04-01" style="border: 8px so
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: interactive + interactive — Activity
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="AGH1001-04-02" style="border: 8px so
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: unclassified — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="AGH1001-04-03" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: interactive — Activity (inline) — se
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="AGH1001-04-04" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: interactive — Activity (inline) — s
+  ~ AGH1001_5_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="AGH1001-05-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: unclassified — Activity (inline) — 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="AGH1001-05-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: unclassified — Activity (inline) — 
+  ~ AGH1001_interactives.txt: -15 +31
+     - TOTAL INTERACTIVES: 11
+     - Tier 2 (requires full build): 11
+     - STILL UN-BUILT (placeholders to develop): 10
+     - NOTE: this file is the hand-off WORKLIST — it lists ONLY the 10 un-built
+     - INTERACTIVE 1 of 10
+     - INTERACTIVE 2 of 10
+     - INTERACTIVE 3 of 10
+     - INTERACTIVE 4 of 10
+     - INTERACTIVE 5 of 10
+     - INTERACTIVE 6 of 10
+     - INTERACTIVE 7 of 10
+     - INTERACTIVE 8 of 10
+     - INTERACTIVE 9 of 10
+     - Placeholder marker: data-cv2-index="10" (the placeholder div to replace)
+     - INTERACTIVE 10 of 10
+     + TOTAL INTERACTIVES: 12
+     + Tier 2 (requires full build): 12
+     + STILL UN-BUILT (placeholders to develop): 11
+     + NOTE: this file is the hand-off WORKLIST — it lists ONLY the 11 un-built
+     + INTERACTIVE 1 of 11
+     + INTERACTIVE 2 of 11
+     + INTERACTIVE 3 of 11
+     + INTERACTIVE 4 of 11
+     + INTERACTIVE 5 of 11
+     + INTERACTIVE 6 of 11
+     + REFERENCE CODE: AGH1001-INT-03-01-dragAndDrop
+     + ↳ search this exact code in AGH1001_3_0.html to place the finished interactive
+     + File: AGH1001_3_0.html
+     + Type: dragAndDrop
+     + 🔴[RED TEXT] [interactive] Drag and drop onto above picture. Note: Red dots are drag and drop points. [/RED TE
+     + 🔴[RED TEXT] [button] [/RED TEXT]🔴Ranginui – Sky father 🔴[RED TEXT] [button] [/RED TEXT]🔴Paptuanuku – Earth
+     + INTERACTIVE 7 of 11
+     + INTERACTIVE 8 of 11
+     + INTERACTIVE 9 of 11
+     + Placeholder marker: data-cv2-index="9" (the placeholder div to replace)
+     + … 11 more added
+AGH1001: identical 3 / changed 4
+AGH1002: identical 8 / changed 0
+AGH1003: identical 10 / changed 0
+AGH1004: identical 8 / changed 0
+AGH1005: identical 10 / changed 0
+AGH1006: identical 11 / changed 0
+AGH1007: identical 11 / changed 0
+AGH1008: identical 11 / changed 0
+AGH1009: identical 11 / changed 0
+ANZH101: identical 5 / changed 0
+ANZH103: identical 3 / changed 0
+ANZH104: identical 9 / changed 0
+ANZH105: identical 10 / changed 0
+  ~ ANZH203_4_0.html: -14 +4
+     - <div class="activity" number="4A">
+     - <p>People have different opinions about our history and what should be celebrated or not celebrated. The statu
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity interactive" number="4B">
+     - <div class="row">
+     - <div class="col-12">
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: unclassified — Activity (inline) — s
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="activity interactive" number="4A">
+     + <h3>People have different opinions about our history and what should be celebrated or not celebrated. The stat
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: dragAndDrop — Activity 4A — see ANZH
+  ~ ANZH203_interactives.txt: -3 +3
+     - REFERENCE CODE: ANZH203-INT-04-01-unclassified
+     - Type: unclassified
+     - Activity: (none — inline component)
+     + REFERENCE CODE: ANZH203-INT-04-01-dragAndDrop
+     + Activity: 4A
+     + Type: dragAndDrop
+ANZH203: identical 6 / changed 2
+ANZH205: identical 9 / changed 0
+  ~ ANZH301_1_0.html: -31 +32
+     - <div class="activity" number="1E">
+     - <h3>1. New Zealand (like many other countries at the time) was experiencing strong economic growth which meant
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <ol>
+     - <li>The Māori population was also rapidly growing, and the small family farms were not able to support this gr
+     - </ol>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <ol>
+     - <li>Some Māori left the countryside in search of ‘the Big Three’: work, money, and pleasure. Many of the first
+     - </ol>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>from</p>
+     - <p>Opportunities and Challenges</p>
+     - <p>Listen to the following pūrākau about some of the impacts of WWII and urbanisation on Māori whānau.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="ANZH301-01-02" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: interactive — Activity (inline) — se
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="ANZH301-01-03" style="border: 8px so
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: interactive + interactive — Activity
+     - <div class="activity" number="1H">
+     - <h3>The time after the Second World War was one of big demographic changes. It was the beginning of Māori urba
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="ANZH301-01-04" style="border: 8px so
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: interactive — Activity (inline) — se
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <div class="row flipCardsContainer">
+     + <div class="col-md-6 col-12 paddingLR">
+     + <div class="flipCard">
+     + <div class="front"><p>1. New Zealand (like many other countries at the time) was experiencing strong economic 
+     + <div class="back"><p>1. The Māori population was also rapidly growing, and the small family farms were not abl
+     + <div class="col-md-6 col-12 paddingLR">
+     + <div class="flipCard">
+     + <div class="front"><img class="img-fluid" src="https://placehold.co/400x400?text=traiditional-maori-vegetable-
+     + <div class="back"><p>1. Some Māori left the countryside in search of ‘the Big Three’: work, money, and pleasur
+     + </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please display the following th
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>from</p>
+     + <h3>Opportunities and Challenges</h3>
+     + <p>Listen to the following pūrākau about some of the impacts of WWII and urbanisation on Māori whānau.</p>
+     + <div class="activity interactive" number="1E">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="ANZH301-01-02" style="border: 8px so
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: interactive — Activity (inline) — se
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="ANZH301-01-03" style="border: 8px so
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: interactive + interactive — Activity
+     + … 12 more added
+  ~ ANZH301_2_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="ANZH301-02-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: interactive + interactive + interact
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="ANZH301-02-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: interactive + interactive + interact
+  ~ ANZH301_3_0.html: -49 +29
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="ANZH301-03-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: interactive — Activity (inline) — se
+     - <div class="activity" number="3B">
+     - <div class="activity interactive" number="3C">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="ANZH301-03-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: unclassified — Activity (inline) — s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="ANZH301-03-03" style="border: 8px so
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: interactive — Activity (inline) — se
+     - <a href="#" target="_blank"><div class="button">Go to quiz</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <h3>The role of the government post WWII</h3>
+     - <p>After WWII, the</p>
+     - <p>government was made aware of the challenges and pressure facing urban Māori. They worked to introduce equal
+     - <p>When the National government came into power in 1949, they continued with these policies. They were also re
+     - <ol>
+     - <li>Assimilation means one culture is taken over and completely absorbed by another, leaving little or nothing
+     - <li>Integration means the blending of two cultures to make one single new one.</li>
+     - </ol>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="ANZH301-03-04" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: interactive + interactive — Activit
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity" number="3H">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="ANZH301-03-05" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: interactive — Activity (inline) — s
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity" number="3I">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - … 9 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="ANZH301-03-01" style="border: 8px so
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: interactive — Activity (inline) — se
+     + <div class="activity interactive" number="3B">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="ANZH301-03-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: dragAndDrop — Activity 3A — see ANZH
+     + <div class="activity" number="3C">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="ANZH301-03-03" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: interactive — Activity (inline) — s
+     + <p>The role of the government post WWII</p>
+     + <p>After WWII, the</p>
+     + <p>government was made aware of the challenges and pressure facing urban Māori. They worked to introduce equal
+     + <p>When the National government came into power in 1949, they continued with these policies. They were also re
+     + <div class="row speechBubble" layout="speech">
+     + <div class="col-12">
+     + <div class="bubble-basic no-hover bubble-top">
+     + <div>
+     + <p>1. Assimilation means one culture is taken over and completely absorbed by another, leaving little or nothi
+     + <p>1. Integration means the blending of two cultures to make one single new one.</p>
+     + </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please present the following de
+     + … 9 more added
+  ~ ANZH301_4_0.html: -17 +22
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="ANZH301-04-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: interactive — Activity (inline) — s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="ANZH301-04-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: interactive — Activity (inline) — s
+     - <h3 class="goJournal">Go to your journal</h3>
+     - <div class="activity" number="4E">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="ANZH301-04-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="ANZH301-04-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="ANZH301-04-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: sketcher (please include this templ
+     + <div style="font-size: 0.95em">
+     + <p>[Add button] Go to journal.</p>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + … 2 more added
+  ~ ANZH301_5_0.html: -22 +26
+     - <p>Source 1: Primary printed source: <a href="https://paperspast.natlib.govt.nz/periodicals/te-ao-hou" target=
+     - <p><a href="https://paperspast.natlib.govt.nz/periodicals/TAH196009.2.33" target="_blank">‘Growing up on Tāmak
+     - <p>Source 2: Primary visual source</p>
+     - <a href="https://www.nzonscreen.com/title/to-live-in-the-city-1967" target="_blank"><div class="externalButton
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (please clip to just show part 2 if p
+     - <p>Source 3: Primary audio Interview</p>
+     - <a href="https://www.ngataonga.org.nz/search-use-collection/search/41167/" target="_blank"><div class="externa
+     - <div class="activity" number="5C">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="ANZH301-05-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: interactive — Activity 5A — see ANZ
+     - <div class="activity dropbox" number="5D">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="ANZH301-05-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (please clip to just show part 2 if p
+     + <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: carousel (please present the follow
+     + <p>Source 1: Primary printed source: <a href="https://paperspast.natlib.govt.nz/periodicals/te-ao-hou" target=
+     + <p>‘Growing up on Tāmaki’ article: Papers Past | Magazines and Journals | Te Ao Hou | September 1960 | STEAMER
+     + <p>Source 2: Primary visual source</p>
+     + <p><a href="https://www.nzonscreen.com/title/to-live-in-the-city-1967" target="_blank">https://www.nzonscreen.
+     + <p>Source 3: Primary audio Interview</p>
+     + <p><a href="https://www.ngataonga.org.nz/search-use-collection/search/41167/" target="_blank">https://www.ngat
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="ANZH301-05-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="18" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: interactive — Activity 5A — see ANZ
+     + <div style="font-size: 0.95em">
+     + </div>
+     + … 6 more added
+  ~ ANZH301_6_0.html: -9 +9
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="ANZH301-06-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: interactive — Activity (inline) — s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="ANZH301-06-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: interactive + infoTrigger + infoTri
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="ANZH301-06-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="ANZH301-06-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="ANZH301-06-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="20" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #20: interactive + infoTrigger + infoTri
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="ANZH301-06-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="21" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: interactive — Activity (inline) — s
+  ~ ANZH301_7_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="ANZH301-07-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="18" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: interactive — Activity (inline) — s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="ANZH301-07-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="ANZH301-07-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="22" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #22: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="ANZH301-07-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: interactive — Activity (inline) — s
+  ~ ANZH301_8_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="ANZH301-08-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="20" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #20: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="ANZH301-08-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: interactive — Activity (inline) — s
+  ~ ANZH301_9_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="ANZH301-09-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="21" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: interactive — Activity (inline) — s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="ANZH301-09-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="22" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #22: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="ANZH301-09-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="ANZH301-09-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="26" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #26: interactive — Activity (inline) — s
+  ~ ANZH301_10_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="ANZH301-10-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: interactive — Activity 10A — see AN
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="ANZH301-10-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: interactive + interactive — Activit
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="27" data-cv2-ref="ANZH301-10-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="27" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #27: interactive — Activity 10A — see AN
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="28" data-cv2-ref="ANZH301-10-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="28" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #28: interactive + interactive — Activit
+  ~ ANZH301_interactives.txt: -37 +72
+     - TOTAL INTERACTIVES: 24
+     - Tier 1 (simple static structures): 0 — accordion, flipCard, speechBubble, tabs
+     - Tier 2 (requires full build): 24
+     - BUILT AUTOMATICALLY this run: 0 (no work needed — shipped live)
+     - STILL UN-BUILT (placeholders to develop): 24
+     - NOTE: this file is the hand-off WORKLIST — it lists ONLY the 24 un-built
+     - placeholder(s); the 0 BUILT interactive(s) are already live in the HTML and are omitted.
+     - INTERACTIVE 1 of 24
+     - INTERACTIVE 2 of 24
+     - INTERACTIVE 3 of 24
+     - Placeholder marker: data-cv2-index="3" (the placeholder div to replace)
+     - INTERACTIVE 4 of 24
+     - INTERACTIVE 5 of 24
+     - INTERACTIVE 6 of 24
+     - INTERACTIVE 7 of 24
+     - INTERACTIVE 8 of 24
+     - REFERENCE CODE: ANZH301-INT-03-02-unclassified
+     - Type: unclassified
+     - INTERACTIVE 9 of 24
+     - INTERACTIVE 10 of 24
+     - INTERACTIVE 11 of 24
+     - Placeholder marker: data-cv2-index="11" (the placeholder div to replace)
+     - INTERACTIVE 12 of 24
+     - INTERACTIVE 13 of 24
+     - INTERACTIVE 14 of 24
+     - REFERENCE CODE: ANZH301-INT-05-01-interactive
+     - INTERACTIVE 15 of 24
+     - INTERACTIVE 16 of 24
+     - INTERACTIVE 17 of 24
+     - INTERACTIVE 18 of 24
+     - INTERACTIVE 19 of 24
+     - INTERACTIVE 20 of 24
+     - INTERACTIVE 21 of 24
+     - INTERACTIVE 22 of 24
+     - INTERACTIVE 23 of 24
+     - INTERACTIVE 24 of 24
+     - Activity: (none — inline component)
+     + TOTAL INTERACTIVES: 28
+     + Tier 1 (simple static structures): 2 — accordion, flipCard, speechBubble, tabs
+     + Tier 2 (requires full build): 26
+     + BUILT AUTOMATICALLY this run: 2 (no work needed — shipped live)
+     + STILL UN-BUILT (placeholders to develop): 26
+     + NOTE: this file is the hand-off WORKLIST — it lists ONLY the 26 un-built
+     + placeholder(s); the 2 BUILT interactive(s) are already live in the HTML and are omitted.
+     + INTERACTIVE 1 of 26
+     + INTERACTIVE 2 of 26
+     + INTERACTIVE 3 of 26
+     + INTERACTIVE 4 of 26
+     + INTERACTIVE 5 of 26
+     + Activity: 1C
+     + INTERACTIVE 6 of 26
+     + INTERACTIVE 7 of 26
+     + INTERACTIVE 8 of 26
+     + REFERENCE CODE: ANZH301-INT-03-02-dragAndDrop
+     + Activity: 3A
+     + Type: dragAndDrop
+     + INTERACTIVE 9 of 26
+     + … 52 more added
+ANZH301: identical 1 / changed 11
+  ~ ANZH302_1_0.html: -31 +32
+     - <div class="activity" number="1E">
+     - <h3>1. New Zealand (like many other countries at the time) was experiencing strong economic growth which meant
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <ol>
+     - <li>The Māori population was also rapidly growing, and the small family farms were not able to support this gr
+     - </ol>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <ol>
+     - <li>Some Māori left the countryside in search of ‘the Big Three’: work, money, and pleasure. Many of the first
+     - </ol>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>from</p>
+     - <p>Opportunities and Challenges</p>
+     - <p>Listen to the following pūrākau about some of the impacts of WWII and urbanisation on Māori whānau.</p>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="ANZH302-01-02" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: interactive — Activity (inline) — se
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="ANZH302-01-03" style="border: 8px so
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: interactive + interactive — Activity
+     - <div class="activity" number="1H">
+     - <h3>The time after the Second World War was one of big demographic changes. It was the beginning of Māori urba
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="ANZH302-01-04" style="border: 8px so
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: interactive — Activity (inline) — se
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     + <div class="row flipCardsContainer">
+     + <div class="col-md-6 col-12 paddingLR">
+     + <div class="flipCard">
+     + <div class="front"><p>1. New Zealand (like many other countries at the time) was experiencing strong economic 
+     + <div class="back"><p>1. The Māori population was also rapidly growing, and the small family farms were not abl
+     + <div class="col-md-6 col-12 paddingLR">
+     + <div class="flipCard">
+     + <div class="front"><img class="img-fluid" src="https://placehold.co/400x400?text=traiditional-maori-vegetable-
+     + <div class="back"><p>1. Some Māori left the countryside in search of ‘the Big Three’: work, money, and pleasur
+     + </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please display the following th
+     + <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     + <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     + <p>from</p>
+     + <h3>Opportunities and Challenges</h3>
+     + <p>Listen to the following pūrākau about some of the impacts of WWII and urbanisation on Māori whānau.</p>
+     + <div class="activity interactive" number="1E">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="ANZH302-01-02" style="border: 8px so
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: interactive — Activity (inline) — se
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="ANZH302-01-03" style="border: 8px so
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: interactive + interactive — Activity
+     + … 12 more added
+  ~ ANZH302_2_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="ANZH302-02-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: interactive + interactive + interact
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="ANZH302-02-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: interactive + interactive + interact
+  ~ ANZH302_3_0.html: -49 +29
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="ANZH302-03-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: interactive — Activity (inline) — se
+     - <div class="activity" number="3B">
+     - <div class="activity interactive" number="3C">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="ANZH302-03-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: unclassified — Activity (inline) — s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="ANZH302-03-03" style="border: 8px so
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: interactive — Activity (inline) — se
+     - <a href="#" target="_blank"><div class="button">Go to quiz</div></a>
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Designer/Developer To Do: Wire this button&#39;s D2
+     - <h3>The role of the government post WWII</h3>
+     - <p>After WWII, the</p>
+     - <p>government was made aware of the challenges and pressure facing urban Māori. They worked to introduce equal
+     - <p>When the National government came into power in 1949, they continued with these policies. They were also re
+     - <ol>
+     - <li>Assimilation means one culture is taken over and completely absorbed by another, leaving little or nothing
+     - <li>Integration means the blending of two cultures to make one single new one.</li>
+     - </ol>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="ANZH302-03-04" style="border: 8px s
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: interactive + interactive — Activit
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity" number="3H">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="ANZH302-03-05" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: interactive — Activity (inline) — s
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity" number="3I">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - … 9 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="ANZH302-03-01" style="border: 8px so
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: interactive — Activity (inline) — se
+     + <div class="activity interactive" number="3B">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="ANZH302-03-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: dragAndDrop — Activity 3A — see ANZH
+     + <div class="activity" number="3C">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="ANZH302-03-03" style="border: 8px s
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: interactive — Activity (inline) — s
+     + <p>The role of the government post WWII</p>
+     + <p>After WWII, the</p>
+     + <p>government was made aware of the challenges and pressure facing urban Māori. They worked to introduce equal
+     + <p>When the National government came into power in 1949, they continued with these policies. They were also re
+     + <div class="row speechBubble" layout="speech">
+     + <div class="col-12">
+     + <div class="bubble-basic no-hover bubble-top">
+     + <div>
+     + <p>1. Assimilation means one culture is taken over and completely absorbed by another, leaving little or nothi
+     + <p>1. Integration means the blending of two cultures to make one single new one.</p>
+     + </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please present the following de
+     + … 9 more added
+  ~ ANZH302_4_0.html: -17 +22
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="ANZH302-04-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: interactive — Activity (inline) — s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="13" data-cv2-ref="ANZH302-04-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="13" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #13: interactive — Activity (inline) — s
+     - <h3 class="goJournal">Go to your journal</h3>
+     - <div class="activity" number="4E">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="ANZH302-04-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="ANZH302-04-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="ANZH302-04-03" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: sketcher (please include this templ
+     + <div style="font-size: 0.95em">
+     + <p>[Add button] Go to journal.</p>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + </div>
+     + … 2 more added
+  ~ ANZH302_5_0.html: -22 +26
+     - <p>Source 1: Primary printed source: <a href="https://paperspast.natlib.govt.nz/periodicals/te-ao-hou" target=
+     - <p><a href="https://paperspast.natlib.govt.nz/periodicals/TAH196009.2.33" target="_blank">‘Growing up on Tāmak
+     - <p>Source 2: Primary visual source</p>
+     - <a href="https://www.nzonscreen.com/title/to-live-in-the-city-1967" target="_blank"><div class="externalButton
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (please clip to just show part 2 if p
+     - <p>Source 3: Primary audio Interview</p>
+     - <a href="https://www.ngataonga.org.nz/search-use-collection/search/41167/" target="_blank"><div class="externa
+     - <div class="activity" number="5C">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="14" data-cv2-ref="ANZH302-05-01" style="border: 8px s
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="14" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #14: interactive — Activity 5A — see ANZ
+     - <div class="activity dropbox" number="5D">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="ANZH302-05-01" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: (please clip to just show part 2 if p
+     + <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: carousel (please present the follow
+     + <p>Source 1: Primary printed source: <a href="https://paperspast.natlib.govt.nz/periodicals/te-ao-hou" target=
+     + <p>‘Growing up on Tāmaki’ article: Papers Past | Magazines and Journals | Te Ao Hou | September 1960 | STEAMER
+     + <p>Source 2: Primary visual source</p>
+     + <p><a href="https://www.nzonscreen.com/title/to-live-in-the-city-1967" target="_blank">https://www.nzonscreen.
+     + <p>Source 3: Primary audio Interview</p>
+     + <p><a href="https://www.ngataonga.org.nz/search-use-collection/search/41167/" target="_blank">https://www.ngat
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="ANZH302-05-02" style="border: 8px s
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="18" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: interactive — Activity 5A — see ANZ
+     + <div style="font-size: 0.95em">
+     + </div>
+     + … 6 more added
+  ~ ANZH302_6_0.html: -9 +9
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="15" data-cv2-ref="ANZH302-06-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="15" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #15: interactive — Activity (inline) — s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="16" data-cv2-ref="ANZH302-06-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="16" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #16: interactive + infoTrigger + infoTri
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="17" data-cv2-ref="ANZH302-06-03" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="17" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #17: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="ANZH302-06-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="ANZH302-06-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="20" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #20: interactive + infoTrigger + infoTri
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="ANZH302-06-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="21" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: interactive — Activity (inline) — s
+  ~ ANZH302_7_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="18" data-cv2-ref="ANZH302-07-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="18" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #18: interactive — Activity (inline) — s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="19" data-cv2-ref="ANZH302-07-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="19" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #19: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="ANZH302-07-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="22" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #22: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="ANZH302-07-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: interactive — Activity (inline) — s
+  ~ ANZH302_8_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="20" data-cv2-ref="ANZH302-08-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="20" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #20: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="ANZH302-08-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: interactive — Activity (inline) — s
+  ~ ANZH302_9_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="21" data-cv2-ref="ANZH302-09-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="21" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #21: interactive — Activity (inline) — s
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="22" data-cv2-ref="ANZH302-09-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="22" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #22: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="25" data-cv2-ref="ANZH302-09-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="25" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #25: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="26" data-cv2-ref="ANZH302-09-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="26" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #26: interactive — Activity (inline) — s
+  ~ ANZH302_10_0.html: -6 +6
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="23" data-cv2-ref="ANZH302-10-01" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="23" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #23: interactive — Activity 10A — see AN
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="24" data-cv2-ref="ANZH302-10-02" style="border: 8px s
+     - <div class="cv2-interactive" data-cv2-index="24" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #24: interactive + interactive — Activit
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="27" data-cv2-ref="ANZH302-10-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="27" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #27: interactive — Activity 10A — see AN
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="28" data-cv2-ref="ANZH302-10-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="28" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #28: interactive + interactive — Activit
+  ~ ANZH302_interactives.txt: -37 +72
+     - TOTAL INTERACTIVES: 24
+     - Tier 1 (simple static structures): 0 — accordion, flipCard, speechBubble, tabs
+     - Tier 2 (requires full build): 24
+     - BUILT AUTOMATICALLY this run: 0 (no work needed — shipped live)
+     - STILL UN-BUILT (placeholders to develop): 24
+     - NOTE: this file is the hand-off WORKLIST — it lists ONLY the 24 un-built
+     - placeholder(s); the 0 BUILT interactive(s) are already live in the HTML and are omitted.
+     - INTERACTIVE 1 of 24
+     - INTERACTIVE 2 of 24
+     - INTERACTIVE 3 of 24
+     - Placeholder marker: data-cv2-index="3" (the placeholder div to replace)
+     - INTERACTIVE 4 of 24
+     - INTERACTIVE 5 of 24
+     - INTERACTIVE 6 of 24
+     - INTERACTIVE 7 of 24
+     - INTERACTIVE 8 of 24
+     - REFERENCE CODE: ANZH302-INT-03-02-unclassified
+     - Type: unclassified
+     - INTERACTIVE 9 of 24
+     - INTERACTIVE 10 of 24
+     - INTERACTIVE 11 of 24
+     - Placeholder marker: data-cv2-index="11" (the placeholder div to replace)
+     - INTERACTIVE 12 of 24
+     - INTERACTIVE 13 of 24
+     - INTERACTIVE 14 of 24
+     - REFERENCE CODE: ANZH302-INT-05-01-interactive
+     - INTERACTIVE 15 of 24
+     - INTERACTIVE 16 of 24
+     - INTERACTIVE 17 of 24
+     - INTERACTIVE 18 of 24
+     - INTERACTIVE 19 of 24
+     - INTERACTIVE 20 of 24
+     - INTERACTIVE 21 of 24
+     - INTERACTIVE 22 of 24
+     - INTERACTIVE 23 of 24
+     - INTERACTIVE 24 of 24
+     - Activity: (none — inline component)
+     + TOTAL INTERACTIVES: 28
+     + Tier 1 (simple static structures): 2 — accordion, flipCard, speechBubble, tabs
+     + Tier 2 (requires full build): 26
+     + BUILT AUTOMATICALLY this run: 2 (no work needed — shipped live)
+     + STILL UN-BUILT (placeholders to develop): 26
+     + NOTE: this file is the hand-off WORKLIST — it lists ONLY the 26 un-built
+     + placeholder(s); the 2 BUILT interactive(s) are already live in the HTML and are omitted.
+     + INTERACTIVE 1 of 26
+     + INTERACTIVE 2 of 26
+     + INTERACTIVE 3 of 26
+     + INTERACTIVE 4 of 26
+     + INTERACTIVE 5 of 26
+     + Activity: 1C
+     + INTERACTIVE 6 of 26
+     + INTERACTIVE 7 of 26
+     + INTERACTIVE 8 of 26
+     + REFERENCE CODE: ANZH302-INT-03-02-dragAndDrop
+     + Activity: 3A
+     + Type: dragAndDrop
+     + INTERACTIVE 9 of 26
+     + … 52 more added
+ANZH302: identical 1 / changed 11
+  ~ ANZH303_3_0.html: -37 +3
+     - <div class="activity" number="3A">
+     - <div class="activity interactive" number="3B">
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: unclassified — Activity (inline) — s
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity interactive" number="3C">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="ANZH303-03-03" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: unclassified — Activity (inline) — s
+     - <div style="font-size: 0.95em">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="activity interactive" number="3A">
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: dragAndDrop + radioQuiz — Activity 3
+  ~ ANZH303_5_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="ANZH303-05-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: speechBubble (or link to page and ca
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="ANZH303-05-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: speechBubble (or link to page and ca
+  ~ ANZH303_6_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="ANZH303-06-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: speechBubble (can to function be inc
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="ANZH303-06-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: speechBubble (can to function be inc
+  ~ ANZH303_interactives.txt: -27 +13
+     - TOTAL INTERACTIVES: 8
+     - Tier 2 (requires full build): 4
+     - STILL UN-BUILT (placeholders to develop): 6
+     - NOTE: this file is the hand-off WORKLIST — it lists ONLY the 6 un-built
+     - INTERACTIVE 1 of 6
+     - INTERACTIVE 2 of 6
+     - INTERACTIVE 3 of 6
+     - REFERENCE CODE: ANZH303-INT-03-02-unclassified
+     - Type: unclassified
+     - INTERACTIVE 4 of 6
+     - REFERENCE CODE: ANZH303-INT-03-03-unclassified
+     - ↳ search this exact code in ANZH303_3_0.html to place the finished interactive
+     - File: ANZH303_3_0.html
+     - Type: unclassified
+     - INTERACTIVE 5 of 6
+     - Placeholder marker: data-cv2-index="6" (the placeholder div to replace)
+     - Activity: (none — inline component)
+     - 
+     - INTERACTIVE 6 of 6
+     - -------------------------------------
+     - 
+     - Placeholder marker: data-cv2-index="8" (the placeholder div to replace)
+     - Activity: (none — inline component)
+     - 
+     - Content:
+     - 
+     - -------------------------------------
+     + TOTAL INTERACTIVES: 7
+     + Tier 2 (requires full build): 3
+     + STILL UN-BUILT (placeholders to develop): 5
+     + NOTE: this file is the hand-off WORKLIST — it lists ONLY the 5 un-built
+     + INTERACTIVE 1 of 5
+     + INTERACTIVE 2 of 5
+     + INTERACTIVE 3 of 5
+     + REFERENCE CODE: ANZH303-INT-03-02-dragAndDrop
+     + Activity: 3A
+     + Type: dragAndDrop + radioQuiz
+     + INTERACTIVE 4 of 5
+     + INTERACTIVE 5 of 5
+     + Placeholder marker: data-cv2-index="7" (the placeholder div to replace)
+ANZH303: identical 4 / changed 4
+  ~ ANZH304_1_0.html: -30 +37
+     - <p><a href="https://teara.govt.nz/en/zoomify/27994/grant-of-land-at-kerikeri" target="_blank">https://teara.go
+     - <p><a href="https://teara.govt.nz/en/artwork/27996/hongi-hika" target="_blank">https://teara.govt.nz/en/artwor
+     - <p><a href="https://teara.govt.nz/en/artwork/27997/war-party-1832" target="_blank">https://teara.govt.nz/en/ar
+     - <p><a href="https://teara.govt.nz/en/artwork/28006/paihia-mission-house" target="_blank">https://teara.govt.nz
+     - <p><a href="https://teara.govt.nz/en/photograph/28011/pompalliers-mobile-altar" target="_blank">https://teara.
+     - <p><b>William Williams</b> <a href="https://teara.govt.nz/en/photograph/28007/william-williams" target="_blank
+     - <p><b>Thomas Kendall</b> <a href="https://nzhistory.govt.nz/people/thomas-kendall" target="_blank">https://nzh
+     - <p><b>Henry Williams</b></p>
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <iframe src="https://teara.govt.nz/en/video/33580/henry-williams" loading="lazy" title="Video player" framebor
+     - <div class="videoSection icon ratio ratio-16x9">
+     - <div class="activity" number="1E">
+     - <div class="activity" number="1F">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="1" data-cv2-ref="ANZH304-01-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="1" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #1: speechBubble (please set up the for 
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     + <div class="row carousel">
+     + <div class="col-md-12 col-12 viewer">
+     + <div class="item">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=grant-of-land-at-kerikeri" alt="" /><!-- <img cl
+     + <div class="item">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=hongi-hika" alt="" /><!-- <img class="img-fluid"
+     + <div class="item">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=war-party-1832" alt="" /><!-- <img class="img-fl
+     + <div class="item">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=paihia-mission-house" alt="" /><!-- <img class="
+     + <div class="item">
+     + <img class="img-fluid" src="https://placehold.co/600x400?text=pompalliers-mobile-altar" alt="" /><!-- <img cla
+     + </div><p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Please create a carousel of the
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="ANZH304-01-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: flipCard — Activity (inline) — see A
+     + <p><b>William Williams</b> <a href="https://teara.govt.nz/en/photograph/28007/william-williams" target="_blank
+     + <p><b>Thomas Kendall</b> <a href="https://nzhistory.govt.nz/people/thomas-kendall" target="_blank">https://nzh
+     + <p><b>Henry Williams</b></p>
+     + … 17 more added
+  ~ ANZH304_2_0.html: -29 +27
+     - <div class="activity" number="2A">
+     - <div class="activity" number="2B">
+     - <p>In the early 1800s, New Zealand was seen as a good place for a British colony. Māori were admired for their
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>New Zealand’s geography, which was similar to Britain’s, also made it appealing. However, by 1837, the Brit
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=iStock-695776624" alt="Currency o
+     - <!-- <img class="img-fluid" loading="lazy" src="images/iStock-695776624.jpg" alt="Currency of United Kingdom P
+     - <p>The Church Missionary Society (CMS) and the Aborigines’ Protection Society (APS) kept trying to convince th
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>The violence of the musket wars between iwi was also a big concern for CMS observers. The APS argued that l
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>The threat of a possible French settlement at Akaroa and the plans of Edward and William Wakefield’s New Ze
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <p>To make sure the colonisation of New Zealand didn’t exploit Māori and provided British law and order for se
+     - <img class="img-fluid" loading="lazy" src="https://placehold.co/800x450?text=image" alt="" />
+     - <!-- <img class="img-fluid" loading="lazy" src="images/image.jpg" alt="" /> -->
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="activity interactive" number="2A">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="ANZH304-02-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: dragAndDrop — Activity 2A — see ANZH
+     + <div style="font-size: 0.95em">
+     + <p>In the early 1800s, New Zealand was seen as a good place for a British colony. Māori were admired for their
+     + <p><a href="https://nwo.org.nz/2020/04/24/what-led-to-the-treaty/" target="_blank">https://nwo.org.nz/2020/04/
+     + <p>New Zealand’s geography, which was similar to Britain’s, also made it appealing. However, by 1837, the Brit
+     + <p><a href="https://www.istockphoto.com/vector/currency-of-united-kingdom-pound-sterling-gm695776624-128822863
+     + <p>The Church Missionary Society (CMS) and the Aborigines’ Protection Society (APS) kept trying to convince th
+     + <p><a href="https://nzhistory.govt.nz/culture/pre-1840-contact/sealers-and-whalers" target="_blank">https://nz
+     + <p>The violence of the musket wars between iwi was also a big concern for CMS observers. The APS argued that l
+     + <p><a href="https://teara.govt.nz/en/artwork/38079/haka-with-muskets" target="_blank">https://teara.govt.nz/en
+     + <p>The threat of a possible French settlement at Akaroa and the plans of Edward and William Wakefield’s New Ze
+     + <p><a href="https://theseventhgeneration.org/akaroa-french/" target="_blank">https://theseventhgeneration.org/
+     + <p>To make sure the colonisation of New Zealand didn’t exploit Māori and provided British law and order for se
+     + … 7 more added
+  ~ ANZH304_3_0.html: -34 +24
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="2" data-cv2-ref="ANZH304-03-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="2" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #2: unclassified — Activity 3A — see ANZ
+     - <h3><a href="https://nzhistory.govt.nz/media_gallery/tid/122." target="_blank">https://nzhistory.govt.nz/media
+     - <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can these interactives be maintained 
+     - <h3>Proclamation of Sovereignty</h3>
+     - <p>By May 1840, Hobson published the Proclamation of Sovereignty, declaring Queen Victoria’s ‘full sovereignty
+     - <p>At the end of the seven-month journey of the Treaty copies, approximately 540 chiefs had signed. Many did n
+     - <div class="activity" number="3I">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity" number="3J">
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="activity interactive" number="3K">
+     - <div class="row">
+     - <div class="col-12">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="ANZH304-03-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: unclassified — Activity (inline) — s
+     - </div>
+     - </div>
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="ANZH304-03-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: unclassified — Activity 3A — see ANZ
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="ANZH304-03-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: Can these interactives be maintained 
+     + <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: carousel — Activity (inline) — see A
+     + <div style="font-size: 0.95em">
+     + <p><a href="https://nzhistory.govt.nz/media_gallery/tid/122." target="_blank">https://nzhistory.govt.nz/media_
+     + <p>[H3] Proclamation of Sovereignty</p>
+     + <p>By May 1840, Hobson published the Proclamation of Sovereignty, declaring Queen Victoria’s ‘full sovereignty
+     + <p>At the end of the seven-month journey of the Treaty copies, approximately 540 chiefs had signed. Many did n
+     + <div class="activity interactive" number="3I">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="ANZH304-03-03" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + … 4 more added
+  ~ ANZH304_4_0.html: -63 +42
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="ANZH304-04-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: interactive — Activity (inline) — se
+     - <div class="activity interactive" number="4C">
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="ANZH304-04-02" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     - <div style="min-height: 0; overflow: hidden">
+     - <div style="padding-top: 14px">
+     - <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: unclassified — Activity (inline) — s
+     - <div style="font-size: 0.95em">
+     - <div class="table-responsive">
+     - <table class="table table-bordered">
+     - <tr>
+     - <th>Who?</th>
+     - <th>The New Zealand Company employees (surveyors and Edward Wakefield’s brother Arthur Wakefield), Ngāti Toa r
+     - </tr>
+     - <tr>
+     - <td>Where?</td>
+     - <td>Wairau Valley, South Island.</td>
+     - </tr>
+     - <tr>
+     - <td>When?</td>
+     - <td>1843</td>
+     - </tr>
+     - <tr>
+     - <td>What?</td>
+     - <td>Conflict over an illegal deed for land in the Wairau Valley being taken from Ngāti Toa iwi by Captain John
+     - </tr>
+     - <tr>
+     - <td>Why?</td>
+     - <td>Conflict came about as Ngāti Toa’s understanding was that they had only given rights to water and timber, 
+     - </tr>
+     - <tr>
+     - <td>How?</td>
+     - <td>Ngāti Toa burned down the huts of some New Zealand Company surveyors. The company tried to have them arres
+     - </tr>
+     - </table>
+     - </div>
+     - … 23 more removed
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="ANZH304-04-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: interactive — Activity (inline) — se
+     + <div class="dragAndDrop" layout="standard">
+     + <div class="row">
+     + <div class="col-6 questionContainer">
+     + <div class="question"><p>Who?</p></div>
+     + <div class="question"><p>Where?</p></div>
+     + <div class="question"><p>When?</p></div>
+     + <div class="question"><p>What?</p></div>
+     + <div class="question"><p>Why?</p></div>
+     + <div class="question"><p>How?</p></div>
+     + <div class="col-6 ddContainer">
+     + <div class="dropContainer">
+     + <div class="drop" option="1"></div>
+     + <div class="drop" option="2"></div>
+     + <div class="drop" option="3"></div>
+     + <div class="drop" option="4"></div>
+     + <div class="drop" option="5"></div>
+     + <div class="drop" option="6"></div>
+     + … 22 more added
+  ~ ANZH304_6_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="ANZH304-06-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="6" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: interactive — Activity 6A — see ANZH
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="ANZH304-06-01" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="10" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #10: interactive — Activity 6A — see ANZ
+  ~ ANZH304_interactives.txt: -30 +64
+     - TOTAL INTERACTIVES: 6
+     - Tier 1 (simple static structures): 1 — accordion, flipCard, speechBubble, tabs
+     - Tier 2 (requires full build): 5
+     - BUILT AUTOMATICALLY this run: 0 (no work needed — shipped live)
+     - STILL UN-BUILT (placeholders to develop): 6
+     - NOTE: this file is the hand-off WORKLIST — it lists ONLY the 6 un-built
+     - placeholder(s); the 0 BUILT interactive(s) are already live in the HTML and are omitted.
+     - INTERACTIVE 1 of 6
+     - REFERENCE CODE: ANZH304-INT-01-01-speechBubble
+     - Placeholder marker: data-cv2-index="1" (the placeholder div to replace)
+     - INTERACTIVE 2 of 6
+     - INTERACTIVE 3 of 6
+     - REFERENCE CODE: ANZH304-INT-03-02-unclassified
+     - Type: unclassified
+     - INTERACTIVE 4 of 6
+     - INTERACTIVE 5 of 6
+     - REFERENCE CODE: ANZH304-INT-04-02-unclassified
+     - ↳ search this exact code in ANZH304_4_0.html to place the finished interactive
+     - File: ANZH304_4_0.html
+     - Type: unclassified
+     - 🔴[RED TEXT] [Interactive] Please create a drag and drop task here with check answer and reset buttons. The co
+     - ┌─── TABLE ───
+     - │ Who? ║ The New Zealand Company employees (surveyors and Edward Wakefield’s brother Arthur Wakefield), Ngāti 
+     - │ Where? ║ Wairau Valley, South Island.
+     - │ When? ║ 1843
+     - │ What? ║ Conflict over an illegal deed for land in the Wairau Valley being taken from Ngāti Toa iwi by Captai
+     - │ Why? ║ Conflict came about as Ngāti Toa’s understanding was that they had only given rights to water and tim
+     - │ How? ║ Ngāti Toa burned down the huts of some New Zealand Company surveyors. The company tried to have them 
+     - └─── END TABLE ───
+     - INTERACTIVE 6 of 6
+     + TOTAL INTERACTIVES: 10
+     + Tier 1 (simple static structures): 2 — accordion, flipCard, speechBubble, tabs
+     + Tier 2 (requires full build): 8
+     + BUILT AUTOMATICALLY this run: 2 (no work needed — shipped live)
+     + STILL UN-BUILT (placeholders to develop): 8
+     + NOTE: this file is the hand-off WORKLIST — it lists ONLY the 8 un-built
+     + placeholder(s); the 2 BUILT interactive(s) are already live in the HTML and are omitted.
+     + INTERACTIVE 1 of 8
+     + REFERENCE CODE: ANZH304-INT-01-01-flipCard
+     + Type: flipCard
+     + 🔴[RED TEXT] [Interactive] Please have these as flip cards across the page (name of the person on the front of
+     + 🔴[RED TEXT] [Insert image with caption] [/RED TEXT]🔴**William Williams** https://teara.govt.nz/en/photograph
+     + 🔴[RED TEXT] [Insert image with caption] [/RED TEXT]🔴**Thomas Kendall** https://nzhistory.govt.nz/people/thom
+     + 🔴[RED TEXT] [Insert image with caption and video embedded] [/RED TEXT]🔴**Henry Williams** 🔴[RED TEXT] [Imag
+     + INTERACTIVE 2 of 8
+     + REFERENCE CODE: ANZH304-INT-01-02-speechBubble
+     + ↳ search this exact code in ANZH304_1_0.html to place the finished interactive
+     + File: ANZH304_1_0.html
+     + INTERACTIVE 3 of 8
+     + REFERENCE CODE: ANZH304-INT-02-01-dragAndDrop
+     + … 44 more added
+ANZH304: identical 2 / changed 6
+  ~ ANZH401_1_0.html: -22 +20
+     - <h3>Encouragement or Discouragement</h3>
+     - <p>Look at each of the sources below by clicking on the labelled buttons.</p>
+     - <p>As you do this, think about whether the source is <b>encouraging</b> people to immigrate to Aotearoa New Ze
+     - <p>Remember to look at all parts of the source, including captions. Think about whether any of these sources c
+     - <a href="https://teara.govt.nz/en/document/506/poll-tax-certificate-stub" target="_blank"><div class="external
+     - <p>The stub of the poll <span class="infoTrigger" info="a tax for every Chinese adult immigrant regardless of 
+     - <a href="https://teara.govt.nz/en/photograph/2173/anti-chinese-legislation" target="_blank"><div class="extern
+     - <p>A <span class="infoTrigger" info="dates arranged in order">chronology</span> of the New Zealand government’
+     - <a href="https://teara.govt.nz/en/ephemera/2095/new-zealand-company-advertisement" target="_blank"><div class=
+     - <p>A New Zealand Company advertisement from 1839 published in a British newspaper. Free sailing ship passage w
+     - <a href="https://teara.govt.nz/en/photograph/1898/the-paddison-family-great-barrier-island1898" target="_blank
+     - <p>During the 1850s and 1860s many English migrants came to New Zealand assisted by provincial <span class="in
+     - <a href="https://teara.govt.nz/en/ephemera/1901/new-zealand-wants-domestic-servants" target="_blank"><div clas
+     - <p>This postcard was issued by the New Zealand High Commissioner’s Office in London, around 1913, as part of a
+     - <a href="http://natlib.govt.nz/" target="_blank"><div class="externalButton">Source: Alexander Turnbull Librar
+     - <p>Permission of the Alexander Turnbull Library, National Library of New Zealand, Te Puna Mātauranga o Aotearo
+     - <p>In the 1960s and early 1970s some Fijians, Tongans and Western Samoans arrived under a <span class="infoTri
+     - <div class="activity" number="1C">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - </div>
+     - </div>
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Writers Note: h3 note: embedded -</p>
+     + <div class="activity interactive" number="1C">
+     + <h3>Encouragement or Discouragement</h3>
+     + <p>Look at each of the sources below by clicking on the labelled buttons.</p>
+     + <p>As you do this, think about whether the source is <b>encouraging</b> people to immigrate to Aotearoa New Ze
+     + <p>Remember to look at all parts of the source, including captions. Think about whether any of these sources c
+     + <p><a href="https://teara.govt.nz/en/document/506/poll-tax-certificate-stub" target="_blank">https://teara.gov
+     + <p>The stub of the poll <span class="infoTrigger" info="a tax for every Chinese adult immigrant regardless of 
+     + <p><a href="https://teara.govt.nz/en/photograph/2173/anti-chinese-legislation" target="_blank">https://teara.g
+     + <p>A <span class="infoTrigger" info="dates arranged in order">chronology</span> of the New Zealand government’
+     + <p><a href="https://teara.govt.nz/en/ephemera/2095/new-zealand-company-advertisement" target="_blank">https://
+     + <p>A New Zealand Company advertisement from 1839 published in a British newspaper. Free sailing ship passage w
+     + <p><a href="https://teara.govt.nz/en/photograph/1898/the-paddison-family-great-barrier-island1898" target="_bl
+     + <p>During the 1850s and 1860s many English migrants came to New Zealand assisted by provincial <span class="in
+     + <p><a href="https://teara.govt.nz/en/ephemera/1901/new-zealand-wants-domestic-servants" target="_blank">https:
+     + <p>This postcard was issued by the New Zealand High Commissioner’s Office in London, around 1913, as part of a
+     + <p>Source: <a href="http://natlib.govt.nz/" target="_blank">Alexander Turnbull Library</a>, Dominion Post Coll
+     + <p>Permission of the <a href="http://natlib.govt.nz/" target="_blank">Alexander Turnbull Library</a>, National
+     + <p>In the 1960s and early 1970s some Fijians, Tongans and Western Samoans arrived under a <span class="infoTri
+     + <p class="cv2-note" style="color: red; font-weight: bold;">Red Flag: Un-built [typing] marker — no content cap
+  ~ ANZH401_3_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="3" data-cv2-ref="ANZH401-03-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="3" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #3: interactive + interactive — Activity
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="ANZH401-03-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: interactive + interactive — Activity
+  ~ ANZH401_5_0.html: -3 +3
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="4" data-cv2-ref="ANZH401-05-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="4" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #4: interactive — Activity (inline) — se
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="ANZH401-05-01" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: interactive — Activity (inline) — se
+  ~ ANZH401_6_0.html: -5 +5
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="5" data-cv2-ref="ANZH401-06-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="5" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #5: interactive — Activity 6A — see ANZH
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="ANZH401-06-02" style="border: 8px so
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: multiChoiceQuiz — Activity (inline) 
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="6" data-cv2-ref="ANZH401-06-01" style="border: 8px so
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: interactive — Activity 6A — see ANZH
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="ANZH401-06-02" style="border: 8px so
+     + <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: multiChoiceQuiz — Activity (inline) 
+  ~ ANZH401_7_0.html: -14 +28
+     - <div class="activity" number="7A">
+     - <p>Reasons:</p>
+     - <ul>
+     - <li>To discover a new river</li>
+     - <li>To make a map</li>
+     - <li>To find gold</li>
+     - <li>To stand in the light</li>
+     - <li>To search for clues</li>
+     - <li>To write a story</li>
+     - </ul>
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="7" data-cv2-ref="ANZH401-07-01" style="border: 8px so
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <div class="cv2-interactive" data-cv2-index="7" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #7: interactive — Activity (inline) — se
+     + <div class="activity interactive" number="7A">
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="ANZH401-07-01" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: selfCheck — Activity (inline) — see 
+     + <p>Reasons:</p>
+     + <ul>
+     + <li>To discover a new river</li>
+     + <li>To make a map</li>
+     + <li>To find gold</li>
+     + <li>To stand in the light</li>
+     + <li>To search for clues</li>
+     + <li>To write a story</li>
+     + </ul>
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="ANZH401-07-02" style="border: 8px so
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <div class="cv2-int-raw" style="display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s e
+     + <div style="min-height: 0; overflow: hidden">
+     + <div style="padding-top: 14px">
+     + <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     + … 8 more added
+  ~ ANZH401_13_0.html: -7 +7
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="8" data-cv2-ref="ANZH401-13-01" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="8" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #8: interactive — Activity (inline) — se
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="9" data-cv2-ref="ANZH401-13-02" style="border: 8px so
+     - <div class="cv2-interactive" data-cv2-index="9" style="border: 3px dashed #d9480f; background: #fff4e6; paddin
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #9: interactive — Activity (inline) — se
+     - <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="ANZH401-13-03" style="border: 8px s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="10" data-cv2-ref="ANZH401-13-01" style="border: 8px s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="11" data-cv2-ref="ANZH401-13-02" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="11" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #11: interactive — Activity (inline) — s
+     + <div class="cv2-interactive cv2-int-ref" data-cv2-index="12" data-cv2-ref="ANZH401-13-03" style="border: 8px s
+     + <div class="cv2-interactive" data-cv2-index="12" style="border: 3px dashed #d9480f; background: #fff4e6; paddi
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #12: interactive — Activity (inline) — s
+  ~ ANZH401_interactives.txt: -15 +50
+     - TOTAL INTERACTIVES: 10
+     - Tier 2 (requires full build): 10
+     - STILL UN-BUILT (placeholders to develop): 10
+     - NOTE: this file is the hand-off WORKLIST — it lists ONLY the 10 un-built
+     - INTERACTIVE 1 of 10
+     - INTERACTIVE 2 of 10
+     - INTERACTIVE 3 of 10
+     - INTERACTIVE 4 of 10
+     - INTERACTIVE 5 of 10
+     - INTERACTIVE 6 of 10
+     - INTERACTIVE 7 of 10
+     - REFERENCE CODE: ANZH401-INT-07-01-interactive
+     - INTERACTIVE 8 of 10
+     - INTERACTIVE 9 of 10
+     - INTERACTIVE 10 of 10
+     + TOTAL INTERACTIVES: 12
+     + Tier 2 (requires full build): 12
+     + STILL UN-BUILT (placeholders to develop): 12
+     + NOTE: this file is the hand-off WORKLIST — it lists ONLY the 12 un-built
+     + INTERACTIVE 1 of 12
+     + INTERACTIVE 2 of 12
+     + Activity: 1B
+     + Type: typing
+     + 🔴[RED TEXT] [Interactive] Please create a self-check/reset ‘drag and drop’ activity here. This will need 2 co
+     + INTERACTIVE 3 of 12
+     + File: ANZH401_1_0.html
+     + INTERACTIVE 4 of 12
+     + INTERACTIVE 5 of 12
+     + INTERACTIVE 6 of 12
+     + INTERACTIVE 7 of 12
+     + INTERACTIVE 8 of 12
+     + REFERENCE CODE: ANZH401-INT-07-01-selfCheck
+     + Type: selfCheck
+     + 🔴[RED TEXT] [Interactive] Arrange the following reasons/pull factors with click buttons beside each, students
+     + Reasons:
+     + … 30 more added
+ANZH401: identical 8 / changed 7
+  ~ ANZH404_3_0.html: -14 +4
+     - <div class="activity" number="3A">
+     - <div class="activity interactive" number="3B">
+     - <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     - <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: unclassified — Activity (inline) — s
+     - <div class="activity" number="3C">
+     - <div class="row">
+     - <div class="col-md-8 col-12">
+     - <div class="row">
+     - <div class="col-12">
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     - </div>
+     + <div class="activity interactive" number="3A">
+     + <div style="display: flex; align-items: center; gap: 14px"><span style="flex: 1; text-align: center; font-weig
+     + <p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) #6: dragAndDrop — Activity 3A — see ANZH
+     + <div class="activity" number="3B">
+  ~ ANZH404_interactives.txt: -3 +3
+     - REFERENCE CODE: ANZH404-INT-03-02-unclassified
+     - Activity: (none — inline component)
+     - Type: unclassified
+     + REFERENCE CODE: ANZH404-INT-03-02-dragAndDrop
+     + Activity: 3A
+     + Type: dragAndDrop
+ANZH404: identical 6 / changed 2
+ANZHFUN05: identical 2 / changed 0
+ARFUN01: identical 2 / changed 0
+ARFUN02: identical 2 / changed 0
+ARFUN03: identical 2 / changed 0
+ARFUN04: identical 2 / changed 0
+ARFUN05: identical 2 / changed 0
+ART1002: identical 9 / changed 0
+ART1003: identical 2 / changed 0
+ART1004: identical 2 / changed 0
+ART1005: identical 2 / changed 0
+ART1006: identical 6 / changed 0
+BLL110: identical 2 / changed 0
+BLL111: identical 4 / changed 0
+BLL112: identical 4 / changed 0
+BLL113: identical 4 / changed 0
+BLL114: identical 4 / changed 0
+BLL115: identical 4 / changed 0
+BLL116: identical 4 / changed 0
+BLL117: identical 4 / changed 0
+BLL120: identical 2 / changed 0
+BLL121: identical 4 / changed 0
+BLL122: identical 4 / changed 0
+BLL123: identical 4 / changed 0
+BLL124: identical 4 / changed 0
+BLL125: identical 4 / changed 0
+BLL126: identical 4 / changed 0
+BLL127: identical 4 / changed 0
+BLL130: identical 2 / changed 0
+BLL131: identical 4 / changed 0
+BLL132: identical 4 / changed 0
+BLL133: identical 4 / changed 0
+BLL134: identical 4 / changed 0
+BLL135: identical 4 / changed 0
+BLL136: identical 3 / changed 0
+BLL137: identical 4 / changed 0
+BLL140: identical 2 / changed 0
+BLL141: identical 4 / changed 0
+BLL142: identical 4 / changed 0
+BLL143: identical 4 / changed 0
+BLL144: identical 4 / changed 0
+BLL145: identical 4 / changed 0
+BLL146: identical 4 / changed 0
+BLL147: identical 4 / changed 0
+BLL150: identical 2 / changed 0
+BLL151: identical 4 / changed 0
+BLL152: identical 4 / changed 0
+BLL153: identical 4 / changed 0
+BLL154: identical 4 / changed 0
+BLL155: identical 4 / changed 0
+BLL156: identical 4 / changed 0
+BLL157: identical 4 / changed 0
+BLL160: identical 2 / changed 0
+BLL161: identical 4 / changed 0
+BLL162: identical 4 / changed 0
+BLL163: identical 4 / changed 0
+BLL164: identical 4 / changed 0
+BLL165: identical 4 / changed 0
+BLL166: identical 4 / changed 0
+BLL167: identical 4 / changed 0
+BLL170: identical 2 / changed 0
+BLL171: identical 4 / changed 0
+BLL172: identical 4 / changed 0
+BLL173: identical 4 / changed 0
+BLL174: identical 4 / changed 0
+BLL175: identical 5 / changed 0
+BLL176: identical 4 / changed 0
+BLL177: identical 4 / changed 0
+BLL210: identical 2 / changed 0
+BLL211: identical 4 / changed 0
+BLL212: identical 4 / changed 0
+BLL213: identical 4 / changed 0
+BLL214: identical 4 / changed 0
+BLL215: identical 4 / changed 0
+BLL216: identical 4 / changed 0
+BLL217: identical 4 / changed 0
+BLL220: identical 2 / changed 0
+BLL221: identical 4 / changed 0
+BLL222: identical 4 / changed 0
+BLL223: identical 4 / changed 0
+BLL224: identical 4 / changed 0
+BLL225: identical 4 / changed 0
+BLL226: identical 4 / changed 0
+BLL227: identical 4 / changed 0
+BLL230: identical 2 / changed 0
+BLL231: identical 4 / changed 0
+BLL232: identical 4 / changed 0
+BLL233: identical 4 / changed 0
+BLL234: identical 4 / changed 0
+BLL235: identical 4 / changed 0
+BLL236: identical 4 / changed 0
+BLL237: identical 4 / changed 0
+BLL240: identical 2 / changed 0
+BLL241: identical 4 / changed 0
+BLL242: identical 4 / changed 0
+BLL243: identical 4 / changed 0
+BLL244: identical 4 / changed 0
+BLL245: identical 4 / changed 0
+BLL246: identical 4 / changed 0
+BLL247: identical 4 / changed 0
+BLL250: identical 2 / changed 0
+BLL251: identical 4 / changed 0
+BLL252: identical 4 / changed 0
+BLL253: identical 4 / changed 0
+BLL254: identical 4 / changed 0
+BLL255: identical 4 / changed 0
+BLL256: identical 4 / changed 0
+BLL257: identical 4 / changed 0
+BLL260: identical 2 / changed 0
+BLL261: identical 4 / changed 0
+BLL262: identical 4 / changed 0
+BLL263: identical 4 / changed 0
+BLL264: identical 4 / changed 0
+BLL265: identical 5 / changed 0
+BLL266: identical 4 / changed 0
+BLL270: identical 2 / changed 0
+BLL271: identical 4 / changed 0
+BLL272: identical 4 / changed 0
+BLL273: identical 4 / changed 0
+BLL274: identical 4 / changed 0
+BLL275: identical 4 / changed 0
+BLL276: identical 4 / changed 0
+BLLR201: identical 8 / changed 0
+BLLR202: identical 8 / changed 0
+BLLR203: identical 8 / changed 0
+CBI1004: identical 12 / changed 0
+CBI1005: identical 12 / changed 0
+
+TOTAL: identical 641 / changed 47 / missing 0 over 147 modules
+CHANGED: AGH1001/AGH1001_3_0.html AGH1001/AGH1001_4_0.html AGH1001/AGH1001_5_0.html AGH1001/AGH1001_interactives.txt ANZH203/ANZH203_4_0.html ANZH203/ANZH203_interactives.txt ANZH301/ANZH301_1_0.html ANZH301/ANZH301_2_0.html ANZH301/ANZH301_3_0.html ANZH301/ANZH301_4_0.html ANZH301/ANZH301_5_0.html ANZH301/ANZH301_6_0.html ANZH301/ANZH301_7_0.html ANZH301/ANZH301_8_0.html ANZH301/ANZH301_9_0.html ANZH301/ANZH301_10_0.html ANZH301/ANZH301_interactives.txt ANZH302/ANZH302_1_0.html ANZH302/ANZH302_2_0.html ANZH302/ANZH302_3_0.html ANZH302/ANZH302_4_0.html ANZH302/ANZH302_5_0.html ANZH302/ANZH302_6_0.html ANZH302/ANZH302_7_0.html ANZH302/ANZH302_8_0.html ANZH302/ANZH302_9_0.html ANZH302/ANZH302_10_0.html ANZH302/ANZH302_interactives.txt ANZH303/ANZH303_3_0.html ANZH303/ANZH303_5_0.html ANZH303/ANZH303_6_0.html ANZH303/ANZH303_interactives.txt ANZH304/ANZH304_1_0.html ANZH304/ANZH304_2_0.html ANZH304/ANZH304_3_0.html ANZH304/ANZH304_4_0.html ANZH304/ANZH304_6_0.html ANZH304/ANZH304_interactives.txt ANZH401/ANZH401_1_0.html ANZH401/ANZH401_3_0.html ANZH401/ANZH401_5_0.html ANZH401/ANZH401_6_0.html ANZH401/ANZH401_7_0.html ANZH401/ANZH401_13_0.html ANZH401/ANZH401_interactives.txt ANZH404/ANZH404_3_0.html ANZH404/ANZH404_interactives.txt

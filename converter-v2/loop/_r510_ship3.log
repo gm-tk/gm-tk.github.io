@@ -1,0 +1,52 @@
+======================================================================
+ SCOPED SHIP — affected=../../outputs/_affected_r510.txt (43 modules), toggle=IQFREEWIDGET_OFF
+======================================================================
+[0] toggle-exists invariant (IQFREEWIDGET_OFF)
+    OK — IQFREEWIDGET_OFF found in app/js (the last-shipped corpus == this toggle OFF).
+
+[1] content-hash 0-stale (mtime false-alarm defeated)
+[content-manifest] content-hash 0-stale vs _content_manifest.txt
+  affected set: 43 module(s) (must be freshly regenerated)
+  unaffected  : 500 module(s) (must be byte-identical to the manifest; mtime IGNORED)
+  OK — 0 truly stale. 43 affected regenerated; the untouched corpus is byte-identical to the manifest (mtime false-alarm defeated).
+
+[2] containment — actually-changed modules must be a subset of the affected set
+    OK — 43 changed module(s) are a subset of 43 affected (the true set ⊆ the detector set).
+
+[3] completeness spot-check (a mis-specified P is caught here)
+[spotcheck] verifying 12 non-affected modules regenerated WITH the fix ON
+  OK — all 12 sampled non-affected modules are BYTE-IDENTICAL under the fix (P's no-op claim holds on the sample).
+
+[4] exact gate proof (decomposition vs the last-ship baseline)
+re-scoring 55 affected module(s): AGH1001 ANZH104 ANZH203 ANZH301 ANZH302 ANZH303 ANZH304 ANZH401 ANZH404 BLL272 ENFUN04 ENFUN07 EXBP901 FRFUN08 FRNO901 HIS1003 HIS1004 HPFUN101 HPFUN102 HPFUN103 HPFUN201 HPFUN202 HPFUN203 HPFUN301 HPFUN302 HPFUN303 HPFUN401 HPFUN402 HPFUN403 HPFUN901 HPFUN903 HPRE203 MXDB301 MXDI201 MXDI202 MXFL104 MXFL201 MXFL203 MXFL204 MXFU201 MXFU202 OSOH301 SSCI104 SSEA203 SSFUN05 SSFUN08 SSOG301 TEFUN02 TRR109 TRR111 TRR113 TWHA906 TWHK907 WJFUN211 XOTPG01
+baseline taken: 2026-09-25T09:35:45Z
+(unaffected modules unchanged by construction — corpus aggregate moves by exactly the affected-set delta)
+
+  metric                                 baseline        new     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  55.59      55.70     +0.11  IMPROVED
+  skeleton pages >=50%                       1602       1609        +7  IMPROVED
+  skeleton pages >=75%                        277        280        +3  IMPROVED
+  compare_structure exact chain             16762      16771        +9  IMPROVED
+  compare_structure EXTRA container           204        204         0  HELD
+  compare_structure missing container         887        888        +1  REGRESSED
+  body_compare ANY breakdown                  230        233        +3  REGRESSED
+  defect structurally-clean %               98.40      98.40      0.00  HELD
+  literal-[tag] leak (occ)                     52         52         0  HELD
+  literal-[tag] leak (pages)                   42         42         0  HELD
+
+  context (no pass/fail): sk_pages: 2486->2486  cs_matched: 19540->19552  body_pages: 2627->2627  df_total: 2627->2627  df_clean: 2585->2585
+
+RESULT: MOVED, ACCEPTED AS NAMED — compare_structure missing container, body_compare ANY breakdown
+        Every mover was named on the command line and must be decomposed in the
+        round's changelog entry (which page, which mechanism). Recorded in the manifest.
+[commit] gate_baseline.json: every aggregate written by the tool — 10 changed: skeleton.mean_scaffold_pct 55.59 -> 55.7; skeleton.median_scaffold_pct 56.7 -> 56.8; skeleton.pages_ge_50 1602 -> 1609; skeleton.pages_ge_75 277 -> 280; skeleton.raw_mean_pct 39.52 -> 39.54; compare_structure.exact_chain 16762 -> 16771; compare_structure.claude_missing_container 887 -> 888; body_compare.any_breakdown 230 -> 233; body_compare.over_capture 57 -> 59; body_compare.empty_container 171 -> 172  | _meta.round 510
+[commit] fast-loop baseline PATCHED (2486 pages) + content manifest refreshed — this is now the shipped state the next inner loop measures against.
+[commit] recorded accepted named movement: compare_structure missing container, body_compare ANY breakdown
+
+[6] periodic full-ship backstop cadence
+[ledger] last full ship: round 505 (2026-09-25T08:13:51Z); scoped ships since: 5 (cadence 8, hard 16)
+  OK — a full-ship backstop is not yet due (3 scoped ship(s) of headroom).
+
+SCOPED SHIP: PASS — only the affected set changed, the rest is byte-identical, and every protected
+gate held-or-improved (exact, decomposition-proven). Finalise (changelog + AppVersion + CLAUDE.md).

@@ -17,6 +17,17 @@
 			"DROP": "never emit (deliberate exclusion, e.g. sticky nav)"
 		},
 		"extension_rule": "New writer phrasing for an existing tag = append ONE alias here. New tag = add ONE entry here. Never a code change.",
+		"interactive_qualifier_free_widget": {
+			"_doc": "ROUND 510 (the autonomous loop's session 49 Round 11 — KB constraint 14: the writer's tag decides the component; the r92 `[Activity 1A drag and drop]` precedent). `[interactive activity] drag and drop`, `[Interactive tool] Flip cards`, `[interactive] please create a drag and drop activity`, `[Interactive activity] drop down options`: the bracket is a generic 'an interactive goes here' qualifier and the widget is named AFTER it in the same red span, so the span parsed as a plain activity box and the widget was never recognised. When EVERY bracket of the span matches bracket_pattern and no widget tag was found, the span's free text is resolved as a fragment and its first INTERACTIVE tag joins the span (the precedence makes it primary, as for r92). Census outputs/_s49_r11_unknownquiz.cjs: ≈ 60 spans in ≈ 25 modules (drag and drop ≈ 33, flip cards ≈ 14, drop down 7, multiple choice 2). Env IQFREEWIDGET_OFF.",
+			"enabled": true,
+			"_history": "Built in session 49 Round 11 and TOGGLED OFF at that session's /loop-stop (25 Sept 2026 ≈21:56 NZST) with one wrong build to guard — HPFUN101_0_0's category sort read as r69 pairs; the guard is Emit_Templates.json interactive_builders.dragAndDrop.standard_decline_opener (env DDSORTOPENER_OFF). Finished and enabled in session 50 Round 1.",
+			"env": "IQFREEWIDGET_OFF",
+			"max_lead_words": 4,
+			"free_deny_pattern": "\\btext[\\s-]+to[\\s-]+speech\\b",
+			"_free_deny_pattern_doc": "Session 50 Round 1: free text that names a FEATURE, not a widget, never supplies one — HIS1004 `[Interactive] Please include text to speech function here.` (×3) read `speech` as a speechBubble hand-off.",
+			"_max_lead_words_doc": "Session 50 Round 1: the widget's alias must start within the free text's first max_lead_words words (the writer NAMES the widget right after the bracket — `drag and drop images into circles`, `Flip cards`, `please create a drag and drop activity` = 3 lead words). An alias met deep inside a request is not a widget tag: ANZH301 `[Interactive] Please include this template here. Are there digital drawing tools …` had read as an empty sketcher hand-off box (body_compare empty_widgets).",
+			"bracket_pattern": "^interactive(?:\\s+(?:activity|tool|element|widget))?(?:\\s*[:#-]?\\s*\\d{1,2}[a-z]?)?$"
+		},
 		"nested_bracket_flatten": {
 			"_doc": "ROUND 508 (the autonomous loop's session 49 Round 9 — the D15 decisions session's loop-authority item (a); KB constraint 14: the writer's tag decides the component). A NESTED red bracket `[Drag and drop [autocheck]]` / `[Multichoice [autocheck]]` / `[reorder [autocheck]]` was read innermost-only by TagNormaliser.Parse, so the widget's own name vanished and `autocheck` (an alias of `typing quiz`, below) became the tag — the hand-off box said 'typing' and the widget's builder never ran. Parse now flattens `[a [b] c]` into `[a c] [b]` before extracting (the separate-bracket form `[Drag and drop] [autocheck]` already reads right). Census outputs/_s49_r9_nested.cjs: 108 nested red brackets / 24 modules, 76 with `autocheck` inside. Env NESTBRACKET_OFF.",
 			"enabled": true,
