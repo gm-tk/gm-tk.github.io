@@ -947,6 +947,7 @@ Set the env var when running `batch_convert.cjs` to revert that fix to its pre-r
 2. **Bump** `app/js/Config.js` `AppVersion` (e.g. `260616.36 → 260616.37`) and add a matching
    `// ROUND NN (260616.NN): …` comment above it.
 3. Note the **data flag** + **env toggle** you added (keep §11 of this file current).
+3b. **The committed gate baseline is written by the tools, never by hand (ROUND 501, 25 Sept 2026).** `scoped_ship.sh … --commit --round N` (→ `_fastloop_diff.py … --commit --round N`) and, after a FULL run, `_gatecheck.py … --commit --round N` write EVERY `gate_baseline.json` aggregate and `_meta.round`; a verifier count that legitimately grew (or a NAMED shrink) is recorded with `VERIFY_COUNT_RECORD=1 bash run_all_gates.sh`; the finalise script edits notes and `_meta.build` only. `_fastloop_diff.py --gate-baseline-check` must print PASS before the commit.
 4. **Update this OPERATING_GUIDE.md** if a convention, gate baseline, toggle, or recipe detail changed.
 5. **DELETE THE SPENT KICKOFF FILE (Chris, 2026-07-10 — non-negotiable).** *(The 2026-07-31
    SCCH302-series suspension of this rule ended at round 243: the Dev-Feedback Round 6 session
@@ -1168,6 +1169,7 @@ next rounds.
 
 - **LAST FULL (24 Sept 2026, session 40 Round 12 — no engine change):** the ledger backstop regenerated all 545 with the r452 engine — 542 / 542 modules byte-identical, every gate EXACT; ledger scoped #0.
 - **FULL backstop** at `260620.53` (session 45 Round 10, 25 Sept): all 545 modules regenerated, **0 pages differ** from the shipped manifest; every gate HELD; ledger reset (LAST FULL = r490).
+- **Build:** `260620.64` (round 501 — **the gate-tool round**, NO engine change: `_fastloop_diff.py` / `_gatecheck.py --commit --round N` write every `gate_baseline.json` aggregate, `--gate-baseline-check` proves no drift; the six count-bearing verifiers print `COUNT` vs the baseline and read ✗ when it FELL; the baseline's three stale fields corrected — median 56.6, over-capture 59, empty 171; menulabels 111).
 - **Build:** `260620.63` (round 500 — **the back-to-back split trigger**; `TRIGHOST_OFF`; scoped #4 since the r498 FULL; 12 pages; skeleton 55.4588 % @ 2491, +0.0084pp, ≥75 +1, cs exact +1).
 - **Build:** `260620.62` (round 499 — **the hover definition after the full stop**; `HOVERPUNCT_OFF`; scoped #3 since the r498 FULL; 25 pages; skeleton 55.4504 % @ 2491, +0.0035pp, ≥50 +1, ≥75 −1 NAMED).
 - **FULL backstop** at `260620.61` (session 46 Round 10, 25 Sept): all 545 modules regenerated, **0 pages differ** from the shipped manifest; every gate HELD; ledger reset (LAST FULL = r498); `gate_baseline.json` skeleton mean 55.45 / median 56.5, body ANY 232 re-based.

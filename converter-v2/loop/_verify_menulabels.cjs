@@ -82,6 +82,7 @@ const isLabel = (els, i) => { const e = els[i]; return !!(e && e.kind === "blk" 
 
 (async () => {
 	let totLabels = 0, totDefect = 0, totAbove = 0, mods = 0, improved = false, injected = false;
+	const perMod = {};   // ROUND 501: each module's built count, for the count-vs-baseline test (_verify_count.cjs)
 	for (const mod of process.argv.slice(2)) {
 		let pages;
 		try { pages = await convertModule(mod); } catch (e) { console.log(`${mod}: ERROR ${e.message}`); continue; }
@@ -114,12 +115,15 @@ const isLabel = (els, i) => { const e = els[i]; return !!(e && e.kind === "blk" 
 		const base = +(BASE[mod] || 0);
 		if (defect > base) totAbove += defect - base;
 		if (defect && defect < base) improved = true;
-		totLabels += labels; totDefect += defect;
+		totLabels += labels; totDefect += defect; perMod[mod] = labels;
 		console.log(`${mod}: labels ${labels}; not-h${LEVEL} ${notH5}; no-colon ${noColon}; bare-verb items ${badItems}; title-above-label ${titleAbove}; p-between ${pBetween}; defect ${defect}${defect > base ? ` ✗ (above the recorded baseline ${base})` : defect ? ` ✓ (at the recorded baseline ${base})` : " ✓"}`);
 	}
 	console.log(`TOTAL: ${totLabels} label(s) across ${mods} module(s); defect ${totDefect}.`);
+	// ROUND 501 (LOOP §3 step 6): the count test — ✗ when the label count FELL against gate_baseline.json.menulabels.
+	const C = require("./_verify_count.cjs").countTest("menulabels", { labels: totLabels }, perMod, process.argv.slice(2));
 	console.log(totAbove ? "RESULT: defects ABOVE the recorded baseline ✗ — fix before proceeding (gate_baseline.json.menulabels.per_module)."
+		: C.fell ? "RESULT: the lesson-menu label count FELL against the recorded baseline ✗ — a vacuous pass (see the COUNT line)."
 		: totDefect ? `RESULT: every lesson-menu label is the KB's <h${LEVEL}> form or at its recorded baseline ✓ (${totDefect} recorded in gate_baseline.json.menulabels${improved ? " — IMPROVED below baseline: refresh it" : ""})`
 		: `RESULT: every lesson-menu label is the KB's <h${LEVEL}> form ✓`);
-	process.exit(totAbove ? 1 : 0);
+	process.exit(totAbove || C.fell ? 1 : 0);
 })();

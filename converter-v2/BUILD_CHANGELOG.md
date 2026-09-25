@@ -1,5 +1,31 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 501, build 260620.64 — NO engine change; measurement-tool round, gate-neutral by design) — THE GATE-TOOL ROUND: the committed gate baseline's aggregates are written by the tools, and every count-bearing verifier turns red when its count FALLS
+
+### 1. WHAT CHANGED
+
+**Why** (the third `/loop-review`, 25 Sept 2026, LOOP §3 steps 6–7): the r494–r498 finalise scripts typed `gate_baseline.json` fields by hand and missed some (`mean_scaffold_pct`, `median_scaffold_pct`, `body_compare.any_breakdown`) — eight rounds were judged against a stale baseline until the session-46 backstop re-based it; and the bingo / typing / dragAndDrop verifiers read ✓ at defect 0 even when NOTHING was built (a builder that stops building passes vacuously).
+
+**The tools** (`CONVERTER_V2/reference/tests/`, outside git — mirrored into `converter-v2/loop/`):
+- `_fastloop_diff.py` — `gate_fields()` computes EVERY aggregate `gate_baseline.json` carries (skeleton mean / upper median / ≥50 / ≥75 / ≥90 / RAW / pairs / skipped; compare_structure exact / EXTRA / missing / row-wrap; body_compare ANY / over-capture / runaway / empty; defect clean / total / clean % / leak occ / leak pages) with each gate's own formula and rounding; `write_gate_baseline()` writes them by a section-aware LINE edit (the file mixes 2- and 4-space indents, so it is never re-serialised) and sets `_meta.round` / `build` / `date`; `--commit` (PASS or `--accept-named`) now calls it, keeps the fast-loop skeleton wrapper's summary in step, and takes `--round N` / `--build X`; **`--gate-baseline-check`** compares the committed file with the shipped state (exit 1 on drift).
+- `_gatecheck.py --commit --round N` — the same write from a FULL run's live gate JSONs (the backstop re-base).
+- `scoped_ship.sh` — `--round` is passed to `_fastloop_diff.py --commit`; `--accept-named M` passes a NAMED mover through.
+- NEW `_verify_count.cjs` + `_verify_{bingo,typing,dragdrop,flipcard,math,menulabels}.cjs` — each prints `COUNT (<key>): … vs <baseline>` for its totals AND per module, on its recorded `run_all_gates.sh` module set (an ad-hoc set reads n/a), and its RESULT reads ✗ (exit 1) when a count FELL; `VERIFY_COUNT_RECORD=1` records the counts (`count_per_module`, `count_modules`) by the same line edit. `_selftest_core.cjs` never passes the record flag to a fixture run. All six, not the three the review named: flipCard / math / menulabels had no count test either.
+
+### 2. PROOF
+
+- **The drift the tool found at once** (`_fastloop_diff.py --gate-baseline-check` on the r500 shipped state): three committed fields were stale — `skeleton.median_scaffold_pct` 56.5 (live 56.6), `body_compare.over_capture` 61 (live 59), `body_compare.empty_container` 175 (live 171); each matches the r500 full gate log's own printout (`_r500_gates.log`: "median 56.6%", "OVER-CAPTURE … 59", "EMPTY … 171"). The other 18 fields were already equal.
+- **The commit path** (`_r501_commit_proof.log`): CEDO105 regenerated with the r500 engine — **byte-identical** (`_content_manifest.py changed` = none) — then `_fastloop_diff.py CEDO105 --commit --round 501 --build 260620.64`: every protected gate HELD, PASS; it wrote exactly the three corrections + `_meta`; the diff of `gate_baseline.json` against `.pre-r501.bak` is those six lines and nothing else; `--gate-baseline-check` → PASS.
+- **The counts** recorded on the r500 corpus (`_r501_verifiers.sh`, `VERIFY_COUNT_RECORD=1`): flipCard 61, math 323 / 323, menulabels **111** (the committed 99 was stale — another typed field), dragAndDrop 21, bingo 52 grids / 624 cells, typing 8 quizzes / 57 inputs; each total equals the r500 gate log.
+- **The null test:** `BINGO_OFF=1` → `COUNT (bingo): grids 0 vs 52 … ✗ FELL` and RESULT ✗, rc 1 (before r501 the same run read "every built bingo grid is the KB 03E form ✓"); ON → ✓ held; an ad-hoc one-module run → n/a.
+- **Selftests:** flipCard / math / menulabels / dragAndDrop / bingo GREEN (`_selftest_core.cjs`), typing SELFTEST GREEN (`_r501_selftests.log`).
+
+### 3. PROTECTED GATES
+
+- Full suite `_r501_gates.log` on the r500 corpus (no Claude page changed): skeleton **55.4588 % @ 2491** (≥50 1592 / ≥75 277 / ≥90 26), pairs skipped 0; cs exact 16746 / EXTRA 198 / missing 888 / row-wrap 24; body ANY 232; clean 2591 / 2633; leak 52 / 42; tags 9557 / 9557; every verifier RESULT ✓ with its COUNT line "held (per module too)". **Gate-neutral by design** — plateau: neither.
+
+**Ledger:** no ship (no regeneration beyond the byte-identical CEDO105 proof) — still scoped #4 since the r498 FULL · no data flag / env toggle (no engine or data file touched) · tools `_fastloop_diff.py`, `_gatecheck.py`, `scoped_ship.sh`, `_verify_count.cjs`, the six verifiers, `_selftest_core.cjs`, `_r501_verifiers.sh`, `_r501_finalise.py` · session 49 Round 1.
+
 ## 2026-09-25 (round 500, build 260620.63) — THE BACK-TO-BACK SPLIT TRIGGER: a split-bracket hover trigger that follows another one anchors on the sentence, not on the closer the first one emptied (12 pages / 12 modules; the broken sentences rejoined; CEDO105_3_0 70.2 → 76.6 %)
 
 ### 1. WHAT CHANGED

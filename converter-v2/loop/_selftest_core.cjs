@@ -135,7 +135,9 @@ function makeFixture(root, codes, mangle) {
 
 function runVerifier(file, codes, env) {
 	const r = spawnSync("node", ["--require", "./_deflate_raw_polyfill.cjs", file, ...codes],
-		{ cwd: __dirname, encoding: "utf8", env: { ...process.env, STUB_OEMBED: "1", ...env }, timeout: 120000 });
+		// ROUND 501: VERIFY_COUNT_RECORD is never passed to a fixture run — a selftest must not record its fixture set as
+		// the verifier's count baseline (_verify_count.cjs).
+		{ cwd: __dirname, encoding: "utf8", env: { ...process.env, STUB_OEMBED: "1", VERIFY_COUNT_RECORD: "", ...env }, timeout: 120000 });
 	return { rc: r.status, out: (r.stdout || "") + (r.stderr || "") };
 }
 

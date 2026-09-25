@@ -110,8 +110,10 @@ async function convert(code) {
 	}
 
 	let W = 0, A = 0, D = 0, exact = 0, nomatch = 0, nogold = 0;
+	const perMod = {};   // ROUND 501: each module's built quiz count, for the count-vs-baseline test (_verify_count.cjs)
 	for (const code of process.argv.slice(2)) {
 		const run = await convert(code); if (!run) continue;
+		const w0 = W;
 		const gd = dirOf(code);
 		const gold = new Set();
 		for (const f of fs.readdirSync(gd).filter((x) => /\.html?$/i.test(x))) {
@@ -132,7 +134,13 @@ async function convert(code) {
 			A += n;
 			_l(`${code} ${o.filename}: ${ws.length} typing quiz(zes), ${n} input(s), gold-matched ${hit}${dd.length ? "  DEFECTS: " + dd.join("; ") : ""}`);
 		}
+		perMod[code] = W - w0;
 	}
 	_l(`\nTOTAL ${W} typing quiz(zes) / ${A} input(s): answer = a gold answer ${exact}, no gold match ${nomatch}, module has no gold typing ${nogold} | DEFECTS ${D}`);
-	_l(D === 0 ? "RESULT: defect 0 ✓" : "RESULT: DEFECTS PRESENT");
+	// ROUND 501 (LOOP §3 step 6): the count test — ✗ when the quiz / input count FELL against gate_baseline.json.typing.
+	const C = require("./_verify_count.cjs").countTest("typing", { quizzes: W, inputs: A }, perMod, process.argv.slice(2), _l);
+	_l(D !== 0 ? "RESULT: DEFECTS PRESENT"
+		: C.fell ? "RESULT: the built typing-quiz count FELL against the recorded baseline ✗ — a vacuous pass (see the COUNT line)."
+		: "RESULT: defect 0 ✓");
+	if (D !== 0 || C.fell) process.exitCode = 1;
 })().catch((e) => { console.error(e); process.exit(1); });

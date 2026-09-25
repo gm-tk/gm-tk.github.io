@@ -1,0 +1,24 @@
+SELFTEST _verify_flipcard.cjs LIVENESS: built TOTAL 15 on CEDO102 PASS
+SELFTEST _verify_flipcard.cjs DETECTION: defect signal 0 -> 30 under mangled gold — PASS
+SELFTEST _verify_flipcard.cjs: GREEN
+SELFTEST _verify_math.cjs LIVENESS: built TOTAL 69 on MXDI301 PASS
+SELFTEST _verify_math.cjs DETECTION: defect signal 0 -> 2 with an INJECTED malformed build — PASS
+SELFTEST _verify_math.cjs: GREEN
+SELFTEST _verify_menulabels.cjs LIVENESS: built TOTAL 16 on ENGC401 PASS
+SELFTEST _verify_menulabels.cjs DETECTION: defect signal 0 -> 2 with an INJECTED malformed build — PASS
+SELFTEST _verify_menulabels.cjs: GREEN
+SELFTEST _verify_dragdrop.cjs LIVENESS: built TOTAL 5 on BLL146 ENGJ102 ENGI203 PASS
+SELFTEST _verify_dragdrop.cjs DETECTION: defect signal 0 -> 10 with an INJECTED malformed build — PASS
+SELFTEST _verify_dragdrop.cjs: GREEN
+SELFTEST _verify_bingo.cjs LIVENESS: built TOTAL 12 on BLL110 PASS
+SELFTEST _verify_bingo.cjs DETECTION: defect signal 0 -> 2 with an INJECTED malformed build — PASS
+SELFTEST _verify_bingo.cjs: GREEN
+== ALL SELFTESTS GREEN ==
+  ✓ LIVENESS: BLL244 builds 1 typing quiz(zes) with 6 inputs
+  ✓ LIVENESS: the clean fixture reports defect 0
+  ✓ DETECTION: an answer emptied → 1 defect(s)
+  ✓ DETECTION: the layout removed → 1 defect(s)
+  ✓ DETECTION: a writer bracket injected → 1 defect(s)
+  ✓ DETECTION: the caseSensitive attribute dropped → 1 defect(s)
+  ✓ DETECTION: the showAnswer button dropped → 1 defect(s)
+SELFTEST GREEN

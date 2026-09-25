@@ -1,9 +1,9 @@
 {
   "_meta": {
     "purpose": "Committed PROTECTED-gate baseline (efficiency lever 2). The shared corpus DRIFTS between sessions so the BUILD_CHANGELOG absolutes never line up exactly — without a committed baseline the only rigorous proof of hold-or-improve is a second full A/B regen pass (~8m/round). Diff THIS after a regen instead. Refresh it (and the build/round) every shipped round, AFTER the gates pass.",
-    "build": "260620.63",
-    "round": 500,
-    "date": "2026-09-24",
+    "build": "260620.64",
+    "round": 501,
+    "date": "2026-09-25",
     "_round92_note": "Round 92 (ENGS302-01: side-alert-box-in-table + dragAndDrop activity wrapper / data-table capture / phantom-journal-button fix). Verified on a FULL 0-stale tightened regen vs the round-91 committed baseline (which matched the fast-loop baseline exactly: over 42 / any 181). PRIMARY skeleton IMPROVED (pages>=50% 524->539 +15, >=75% 65->70 +5, mean 47.8->48.2, median 49.3->49.8); compare_structure exact 5893->5902 (+9) / missing 261->252 (-9) / EXTRA 142 HELD; structural-clean 1290->1291 (95.0->95.1%) / leak 254->253 (-1) / leak pages 68->67 (-1); tags 9557/9557; flipCard divergence 0 (37/13/10/14); speechBubble defect 0. body_compare any 181->184 (+3) — the +3 over-capture (ENGC201-06, ENGR101-05, MXDB301-03) is the UNAVOIDABLE cost of capturing the dragAndDrop/activity DATA TABLE into the widget (the user's explicit fix): those tables ARE the widget's data the human BUILDS, but body_compare cannot credit Claude's un-built placeholder, and for these 3 the human keeps the table free. Net-positive per the MEASUREMENT MANDATE (judge a structural change FIRST on the skeleton, which improved +15) + the NET-POSITIVE convention. _round91_note: round 91 (ENGS302 emphasis-bullets/caption/media-url/lesson-name) shipped +1 skeleton / +1 compare exact / +2 missing.",
     "corpus": {
       "claude_pages": 2679,
@@ -108,6 +108,7 @@
     "_note_s40_r12_full": "Session 40 Round 12 (2026-09-24; no engine change — the ship ledger's FULL backstop): all 545 regenerated with the r452 engine, 542 / 542 modules byte-identical to the scoped-shipped manifest, every number in this file re-proved EXACT on the full corpus (skeleton 54.7484 @ 2477, 0 movers). Ledger record-full --round 452 -> scoped #0.",
     "_note_s45_full": "FULL-SHIP BACKSTOP at build 260620.53 (session 45 Round 10, 2026-09-25, no engine change): all 545 modules regenerated — 0 pages differ from the shipped manifest; skeleton 55.3705 @ 2491 (0 movers), cs / body / clean / leak EXACT; ledger LAST FULL = r490.",
     "_note_s46_full": "FULL-SHIP BACKSTOP at build 260620.61 (session 46 Round 10, 2026-09-25, no engine change): all 545 modules regenerated — 0 pages differ from the shipped manifest; skeleton 55.4469 @ 2491 (0 movers), cs / body / clean / leak EXACT; ledger LAST FULL = r498; re-based skeleton.mean_scaffold_pct 55.41 -> 55.45, median 56.3 -> 56.5, body_compare.any_breakdown 238 -> 232 (stale values).",
+    "_note_r501": "Round 501 (session 49 Round 1, 2026-09-25) — THE GATE-TOOL ROUND (no engine change): every aggregate here is now written by _fastloop_diff.py / _gatecheck.py --commit (never typed); its first write corrected three stale fields — skeleton.median_scaffold_pct 56.5 -> 56.6, body_compare.over_capture 61 -> 59, body_compare.empty_container 175 -> 171 (each = the r500 full gate log). The six count-bearing verifiers record count_per_module / count_modules (VERIFY_COUNT_RECORD=1); menulabels.labels 99 -> 111 (stale). Gates HELD on the r500 corpus.",
     "_note_r500": "Round 500 (session 46 Round 12, 2026-09-25) — THE BACK-TO-BACK SPLIT TRIGGER (TRIGHOST_OFF): 12 pages / 12 modules (sentences rejoined, tooltips built; drops 120 -> 103); SCAFFOLD 55.4504 -> 55.4588 @ 2491 (+0.0084pp), 10 movers all up; >=75 276 -> 277; cs exact 16745 -> 16746; body / clean / leak EXACT; scoped #4; scoped_ship PASS.",
     "_note_r499": "Round 499 (session 46 Round 11, 2026-09-25) — THE HOVER DEFINITION AFTER THE FULL STOP (HOVERPUNCT_OFF): 25 pages / 23 modules, 31 tooltips (drops 153 -> 120, gold-matched +10); SCAFFOLD 55.4469 -> 55.4504 @ 2491 (+0.0035pp); >=50 1591 -> 1592; >=75 277 -> 276 ACCEPTED AS NAMED (DAN1006_2_0 84.4 -> 72.2: the gold writes the four list definitions inline); cs / body / clean / leak EXACT; scoped #3.",
     "_note_r498": "Round 498 (session 46 Round 9, 2026-09-25) — THE HOVER DEFINITION'S RED FIRST LETTER (HOVERTAILHEAD_OFF): 16 pages / 16 modules, tooltips only (first-letter cuts 15 -> 6, gold-matched defs +8); SCAFFOLD 55.4469 @ 2491, 0 movers; every gate EXACT; scoped #8 (the FULL backstop due); scoped_ship PASS.",
@@ -196,7 +197,7 @@
   },
   "skeleton": {
     "mean_scaffold_pct": 55.46,
-    "median_scaffold_pct": 56.5,
+    "median_scaffold_pct": 56.6,
     "pages_ge_50": 1592,
     "pages_ge_75": 277,
     "pages_ge_90": 26,
@@ -368,9 +369,9 @@
   },
   "body_compare": {
     "any_breakdown": 232,
-    "over_capture": 61,
+    "over_capture": 59,
     "runaway": 5,
-    "empty_container": 175,
+    "empty_container": 171,
     "_note_r453": "r453: pages 2658 -> 2668; ANY 237 -> 238 (+1 TRR108_0_0 over-capture 0.88 — the restored introduction table carries the writer's [Tabs: Can these tabs please be an option at the top of the page …] request, so the scanner hands it off as a tabs widget (A1, the r235 hand-off box); before r453 the whole introduction was trimmed). over 58 -> 59, runaway 5, empty 176. NAMED.",
     "_note_r451": "Round 451 (session 40 Round 8, 2026-09-24; the bilingual section bundle takes the standard hand-off box, BILHANDOFF_OFF): any_breakdown 260 -> 237 and empty_container 200 -> 176 (IMPROVED — the 61 empty <table> boxes on 23 TRR pages now carry their bundle's members); over_capture 57 -> 58 NAMED — TRR301_3_0, whose box was EMPTY (0 member characters) and now shows the unclassified bundle's 4,327 characters (62 % of the page; lost blocks 30 before and after): the page moved from the EMPTY flag to the OVER-CAPTURE flag, counted once in any_breakdown either way. outputs/_r451_scoped_ship.log, outputs/_r451_gates.log.",
     "_note_r448":"Round 448 (the D13-4 answer-key carry-through): over_capture 56 -> 57 NAMED — PHE1007_9_0, whose un-built typing box now shows the writer's red answers (its text 1,958 -> 2,070 chars), so the box / page ratio crossed the 0.40 line (0.39 -> 0.40, lost blocks 3 unchanged); EMPTY 201 -> 200 (better) — MXEO301_5_0's box was under 40 chars until its red answers were restored. any_breakdown 260 HELD. Every change is inside a hand-off box (outputs/_r448_outsidebox.py: 0 pages differ outside one); outputs/_r448_bodyflags.log.",
@@ -443,6 +444,8 @@
     "real_failures": 0
   },
   "flipcard": {
+    "count_modules": ["CEDO102","MXDB302","TRR114","XMES201"],
+    "count_per_module": {"CEDO102":15,"MXDB302":14,"TRR114":0,"XMES201":32},
     "total": 61,
     "exact": 39,
     "copy_edit": 4,
@@ -462,6 +465,8 @@
     "note": "body_any 181->184 is the +3 over-capture documented in _round92_note (the dragAndDrop data-table capture cost). leak 253 / clean 1291 from the round-92 tightened full regen."
   },
   "math": {
+    "count_modules": ["MXDB202","MXDB301","MXDI102","MXDI201","MXDI301","MXEX301","MXFU302","MXFU401","PES1007","PES1008","SCCH301"],
+    "count_per_module": {"MXDB202":1,"MXDB301":6,"MXDI102":154,"MXDI201":6,"MXDI301":69,"MXEX301":18,"MXFU302":15,"MXFU401":12,"PES1007":17,"PES1008":24,"SCCH301":1},
     "equations": 323,
     "math": 323,
     "defect": 0,
@@ -471,7 +476,9 @@
     "_note_r352": "Round 352: PES1007 lesson 2's 'pre-existing page-tail loss' (the r346 baseline defect 1) WAS the carousel over-capture — cleared by the heading-after-table boundary; 323/323, defect 0, per_module empty."
   },
   "menulabels": {
-    "labels": 99,
+    "count_modules": ["AGH1002","ANZH101","BLL110","CEDO502","CEDT501","ENGC401","MXFL201","OSSC401","XFUN02"],
+    "count_per_module": {"AGH1002":13,"ANZH101":0,"BLL110":2,"CEDO502":14,"CEDT501":24,"ENGC401":16,"MXFL201":20,"OSSC401":10,"XFUN02":12},
+    "labels": 111,
     "defect": 0,
     "per_module": {
       "CEDT104": 1,
@@ -483,6 +490,8 @@
     "_note_r460": "Round 460: the verifier over the 19 changed modules — ENO2060 carries 4 PRE-EXISTING title-above-label defects on its LESSON pages (identical under KPTABS_OFF; r460 changed only ENO2060_0_0). Recorded as its per-module baseline; ✗ only above 4."
   },
   "dragdrop": {
+    "count_modules": ["ARFUN03","BLL112","BLL146","BLL220","BLL244","BLL266","CHFUN05","ENFUN01","ENFUN04","ENFUN08","ENGI203","ENGJ102","ENGR201","MXFUN03"],
+    "count_per_module": {"ARFUN03":1,"BLL112":1,"BLL146":1,"BLL220":3,"BLL244":1,"BLL266":1,"CHFUN05":1,"ENFUN01":1,"ENFUN04":3,"ENFUN08":1,"ENGI203":3,"ENGJ102":1,"ENGR201":1,"MXFUN03":2},
     "widgets": 21,
     "images": 9,
     "defect": 0,
@@ -492,6 +501,8 @@
     "_note_r351": "Round 351 — the gate set gains ENGI203 BLL220 ENFUN08 ENGR201 (column builds): 21 widgets (9 images, 5 column) / 148 drags / defect 0; the whole built family 86 widgets (18 images, 15 column) / 584 drags / defect 0 (_r351_verify_dragdrop_family.log). checkColumn: headed drop columns, option = the column index, per column drops == drags, drag columns == drop columns, the button row, no raw [tag], no lazy."
   },
   "typing": {
+    "count_modules": ["BLL244","FRFUN08","MXDB302","MXEO301","MXFL301","MXFL302","PHE1007"],
+    "count_per_module": {"BLL244":1,"FRFUN08":1,"MXDB302":1,"MXEO301":1,"MXFL301":2,"MXFL302":1,"PHE1007":1},
     "quizzes": 8,
     "inputs": 57,
     "gold_answer_match": 55,
@@ -499,6 +510,8 @@
     "_note_r449": "Round 449 (session 40 Round 4, 2026-09-24; Chris's decision D13-4): the typing quiz shape 1 — the writer's red answer on the question line -> the KB 03D text-only form (interactive_builders.typing, env TYPING_OFF). The gate set = the seven modules that build one (BLL244 FRFUN08 MXDB302 MXEO301 MXFL301 MXFL302 PHE1007); the whole typing family (85 modules) verified in-round: the same 8 quizzes / 57 inputs, defect 0 (outputs/_r449_typing_family.log). 55 of the 57 answers equal a gold answer= value (the two others are PHE1007's 'Hip Shoulder' / 'Plantarflexion Dorsiflexion' — the writer's words, the gold splits them). Protected: defect 0."
   },
   "bingo": {
+    "count_modules": ["BLL110","BLL113","BLL120","BLL130","BLL140","BLL150","BLL154","BLL160","BLL170"],
+    "count_per_module": {"BLL110":12,"BLL113":0,"BLL120":14,"BLL130":12,"BLL140":2,"BLL150":6,"BLL154":0,"BLL160":4,"BLL170":2},
     "grids": 52,
     "cells": 624,
     "defect": 0,

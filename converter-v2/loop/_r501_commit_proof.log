@@ -1,0 +1,22 @@
+re-scoring 1 affected module(s): CEDO105
+baseline taken: 2026-09-25T03:43:10Z
+(unaffected modules unchanged by construction — corpus aggregate moves by exactly the affected-set delta)
+
+  metric                                 baseline        new     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  55.46      55.46      0.00  HELD
+  skeleton pages >=50%                       1592       1592         0  HELD
+  skeleton pages >=75%                        277        277         0  HELD
+  compare_structure exact chain             16746      16746         0  HELD
+  compare_structure EXTRA container           198        198         0  HELD
+  compare_structure missing container         888        888         0  HELD
+  body_compare ANY breakdown                  232        232         0  HELD
+  defect structurally-clean %               98.40      98.40      0.00  HELD
+  literal-[tag] leak (occ)                     52         52         0  HELD
+  literal-[tag] leak (pages)                   42         42         0  HELD
+
+  context (no pass/fail): sk_pages: 2491->2491  cs_matched: 19520->19520  body_pages: 2633->2633  df_total: 2633->2633  df_clean: 2591->2591
+
+RESULT: PASS — every protected gate held-or-improved corpus-wide (exact, decomposition-proven).
+[commit] gate_baseline.json: every aggregate written by the tool — 3 changed: skeleton.median_scaffold_pct 56.5 -> 56.6; body_compare.over_capture 61 -> 59; body_compare.empty_container 175 -> 171  | _meta.date "2026-09-25"; _meta.round 501; _meta.build "260620.64"
+[commit] fast-loop baseline PATCHED (2491 pages) + content manifest refreshed — this is now the shipped state the next inner loop measures against.

@@ -141,6 +141,7 @@ const shape = (u) => u.cells.length + "#" + u.correct;
 
 (async () => {
 	let totalBuilt = 0, totalUnits = 0, totalCells = 0, exact = 0, copyedit = 0, diverge = 0, defect = 0, modsBuilt = 0;
+	const perMod = {};   // ROUND 501: each module's built grid count, for the count-vs-baseline test (_verify_count.cjs)
 	for (const mod of process.argv.slice(2)) {
 		built = [];
 		try { await convertModule(mod); } catch (e) { console.log(`${mod}: ERROR ${e.message}`); continue; }
@@ -165,10 +166,15 @@ const shape = (u) => u.cells.length + "#" + u.correct;
 				mV++;
 			}
 		}
-		exact += mE; copyedit += mC; diverge += mV; defect += mD;
+		exact += mE; copyedit += mC; diverge += mV; defect += mD; perMod[mod] = mUnits;
 		const verdict = mD ? `✗ ${mD} defect` : "✓ every grid well-formed";
 		console.log(`${mod}: ${built.length} bingo build(s), ${mUnits} grid(s) / ${mCells} cells [exact ${mE}, copy-edit ${mC}, dev-edit ${mV}, defect ${mD}]  gold bingos ${human.length}  ${verdict}`);
 	}
 	console.log(`\nTOTAL: ${totalUnits} grid(s) across ${modsBuilt} module(s), ${totalCells} cells; exact ${exact}, copy-edit ${copyedit}, dev-edit ${diverge}, defect ${defect}.`);
-	console.log(defect ? "RESULT: real defects present ✗" : "RESULT: every built bingo grid is the KB 03E form ✓");
+	// ROUND 501 (LOOP §3 step 6): the count test — ✗ when the grid / cell count FELL against gate_baseline.json.bingo.
+	const C = require("./_verify_count.cjs").countTest("bingo", { grids: totalUnits, cells: totalCells }, perMod, process.argv.slice(2));
+	console.log(defect ? "RESULT: real defects present ✗"
+		: C.fell ? "RESULT: the built bingo count FELL against the recorded baseline ✗ — a vacuous pass (see the COUNT line)."
+		: "RESULT: every built bingo grid is the KB 03E form ✓");
+	if (defect || C.fell) process.exitCode = 1;
 })();

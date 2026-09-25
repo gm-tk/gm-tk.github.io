@@ -17,7 +17,8 @@ D14-20 / D14-21 are recorded in `LOOP_STATE.md`), and on 25 September 2026 by th
 (`LOOP_REVIEW__2026-09-25.md`: §0 items 6–7, §2, §3 steps 1 / 6 / 7, §4, §5d, §7 — thirteen changes, all
 applied in that session), and the same day by Chris's D15-S1 (standing: every `/loop-decisions` presents the
 open decisions as `EXPLAINER__Pending_Decisions_<date>.html` in the 23 Sept 2026 format — §5b, §7, the
-loop-decisions skill). **This file is
+loop-decisions skill), and the same evening by r501's finalise (session 49 — §3 steps 6–7: the two "until"
+clauses struck, as they instructed, now that the gate-tool round has shipped). **This file is
 edited IN PLACE only — never rewritten from an older copy, never regenerated from memory after a
 compaction.** At every commit the mirror copy in `pageforge-site/converter-v2/loop/` is proven
 byte-identical (`cmp`), and every session's health check confirms this "Amended" line is present.
@@ -752,18 +753,22 @@ Each round is bounded so an interruption loses at most one round of work.
      every verifier with a count in `gate_baseline.json` (`flipcard.total`, `dragdrop.widgets`, `bingo.grids`,
      `typing.quizzes` / `inputs`, `math.equations`, `menulabels.labels`) must print that count against the
      baseline's and read ✗ when it FELL — a builder that stops building reports defect 0 and would otherwise
-     pass. Until the tooling round that adds the count test to the bingo / typing / dragAndDrop verifiers
-     ships (queued 25 Sept 2026 as the next session's Round 1 — its finalise STRIKES this sentence), the finalise
-     compares those three TOTAL lines with the baseline by eye and says so in the changelog entry.
+     pass. **Since r501 (25 Sept 2026, session 49 Round 1) all six do:** each prints `COUNT (<key>): … vs
+     <baseline>` for its totals AND per module on its recorded `run_all_gates.sh` module set (an ad-hoc set reads
+     n/a) and its RESULT reads ✗ when a count FELL (null-tested: `BINGO_OFF=1` → ✗); a round that legitimately
+     grows a count — or NAMES a shrink in its changelog entry — records it at the finalise with
+     `VERIFY_COUNT_RECORD=1 bash run_all_gates.sh`.
 7. **FINALISE** (OPERATING_GUIDE.md §12): prepend the `BUILD_CHANGELOG.md` entry, bump `Config.js AppVersion`,
    update `OPERATING_GUIDE.md` §14 if a baseline or toggle changed, refresh `gate_baseline.json`
    (every field — `skeleton.pairs` included; **each aggregate read off the round's own gate log, never typed
    from memory (25 Sept 2026): the r494–r498 finalise scripts updated `pages_ge_50` and `raw_mean_pct` but not
    `mean_scaffold_pct`, `median_scaffold_pct` or `body_compare.any_breakdown`, and eight rounds were judged
-   against a stale baseline until the session-46 backstop re-based it; from the queued tooling round on,
-   `_fastloop_diff.py --commit` writes every aggregate itself and a finalise script edits notes only — until
-   then the finalise script asserts each field it sets against the live value and lists the aggregate keys it
-   did not touch; the tooling round's finalise STRIKES this "until then" clause**) and the feature index (`build_feature_index.cjs`)
+   against a stale baseline until the session-46 backstop re-based it; **since r501 (25 Sept 2026)
+   `scoped_ship.sh … --commit --round N` (→ `_fastloop_diff.py … --commit --round N`) and, after a FULL run,
+   `_gatecheck.py … --commit --round N` write every aggregate and `_meta.round` themselves, a finalise script
+   edits notes and `_meta.build` only, and `_fastloop_diff.py --gate-baseline-check` must print PASS before
+   the commit — its first run found three more stale fields (median 56.5 → 56.6, over-capture 61 → 59,
+   empty 175 → 171)**) and the feature index (`build_feature_index.cjs`)
    after any regeneration, **mirror every changed loop artefact — `gate_baseline.json`,
    `run_all_gates.sh`, `_corpus.py`, any new verifier, `LOOP_STATE.md`, `KB_AMALGAMATION_STATUS.md`,
    `DIFF_QUEUE.md`, `outputs/COVERAGE_DASHBOARD.md`, `outputs/_coverage_dashboard.json`,

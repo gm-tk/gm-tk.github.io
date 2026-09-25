@@ -158,6 +158,7 @@ function check(w) {
 
 (async () => {
 	let totW = 0, totImg = 0, totCol = 0, totDrags = 0, totDefect = 0, totAbove = 0, mods = 0, improved = false, injected = false, injectedCol = false;
+	const perMod = {};   // ROUND 501: each module's built count, for the count-vs-baseline test (_verify_count.cjs)
 	for (const mod of process.argv.slice(2)) {
 		let pages;
 		try { pages = await convertModule(mod); } catch (e) { console.log(`${mod}: ERROR ${e.message}`); continue; }
@@ -180,13 +181,16 @@ function check(w) {
 		const base = +(BASE[mod] || 0);
 		if (defect > base) totAbove += defect - base;
 		if (defect && defect < base) improved = true;
-		totW += n; totImg += nImg; totCol += nCol; totDrags += drags; totDefect += defect;
+		totW += n; totImg += nImg; totCol += nCol; totDrags += drags; totDefect += defect; perMod[mod] = n;
 		console.log(`${mod}: widgets ${n} (images ${nImg}, column ${nCol}); drags ${drags}; defect ${defect}${defect > base ? ` ✗ (above the recorded baseline ${base})` : defect ? ` ✓ (at the recorded baseline ${base})` : " ✓"}`);
 		for (const l of notes.slice(0, 12)) console.log(l);
 	}
 	console.log(`TOTAL: ${totW} widget(s) across ${mods} module(s); images ${totImg}; column ${totCol}; drags ${totDrags}; defect ${totDefect}.`);
+	// ROUND 501 (LOOP §3 step 6): the count test — ✗ when the widget count FELL against gate_baseline.json.dragdrop.
+	const C = require("./_verify_count.cjs").countTest("dragdrop", { widgets: totW }, perMod, process.argv.slice(2));
 	console.log(totAbove ? "RESULT: defects ABOVE the recorded baseline ✗ — fix before proceeding (gate_baseline.json.dragdrop.per_module)."
+		: C.fell ? "RESULT: the built dragAndDrop count FELL against the recorded baseline ✗ — a vacuous pass (see the COUNT line)."
 		: totDefect ? `RESULT: every built dragAndDrop is the KB 03B form or at its recorded baseline ✓ (${totDefect} recorded in gate_baseline.json.dragdrop${improved ? " — IMPROVED below baseline: refresh it" : ""})`
 		: "RESULT: every built dragAndDrop is the KB 03B form ✓");
-	process.exit(totAbove ? 1 : 0);
+	process.exit(totAbove || C.fell ? 1 : 0);
 })();

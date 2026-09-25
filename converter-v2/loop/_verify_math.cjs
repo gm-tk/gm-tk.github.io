@@ -73,6 +73,7 @@ function wellFormed(mathHtml) {
 
 (async () => {
 	let totEq = 0, totMath = 0, totDefect = 0, mods = 0, totAbove = 0, improved = false;
+	const perMod = {};   // ROUND 501: each module's built count, for the count-vs-baseline test (_verify_count.cjs)
 	for (const mod of process.argv.slice(2)) {
 		let r;
 		try { r = await convertModule(mod); } catch (e) { console.log(`${mod}: ERROR ${e.message}`); continue; }
@@ -98,13 +99,16 @@ function wellFormed(mathHtml) {
 		const base = +(BASE[mod] || 0);   // ROUND 348: this module's recorded baseline (0 when unrecorded)
 		if (defect > base) totAbove += defect - base;
 		if (defect && defect < base) improved = true;
-		totEq += r.omath; totMath += math; totDefect += defect;
+		totEq += r.omath; totMath += math; totDefect += defect; perMod[mod] = math;
 		console.log(`${mod}: equations ${r.omath} (registered ${r.registered}) / <math> ${math} on ${mathPages} page(s); ${TOKEN} missing ${noJax}; sentinel leaks ${leaks}; malformed ${bad}; defect ${defect}${defect > base ? ` ✗ (above the recorded baseline ${base})` : defect ? ` ✓ (at the recorded baseline ${base}${defect < base ? " — IMPROVED, refresh gate_baseline.json" : ""})` : " ✓"}`);
 	}
 	console.log(`TOTAL: ${totEq} equation(s) across ${mods} module(s); <math> ${totMath}; defect ${totDefect}.`);
 	// ROUND 348: ✓ at the recorded baseline, ✗ only above it (LOOP §3 step 6).
+	// ROUND 501 (LOOP §3 step 6): the count test — ✗ when the equation / <math> count FELL against gate_baseline.json.math.
+	const C = require("./_verify_count.cjs").countTest("math", { equations: totEq, math: totMath }, perMod, process.argv.slice(2));
 	console.log(totAbove ? "RESULT: defects ABOVE the recorded baseline ✗ — fix before proceeding (gate_baseline.json.math.per_module)."
+		: C.fell ? "RESULT: the equation / MathML count FELL against the recorded baseline ✗ — a vacuous pass (see the COUNT line)."
 		: totDefect ? `RESULT: every Word equation ships as MathML or is at its recorded baseline ✓ (${totDefect} recorded in gate_baseline.json.math${improved ? " — IMPROVED below baseline: refresh it" : ""})`
 		: "RESULT: every Word equation ships as MathML ✓");
-	process.exit(totAbove ? 1 : 0);
+	process.exit(totAbove || C.fell ? 1 : 0);
 })();
