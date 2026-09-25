@@ -1604,6 +1604,87 @@ class ContentConverter {
 		// plus its video both end up gathered together inside the same col-md-8 column as the
 		// alert's partner. Both of these stay null/false in every other, ordinary case.
 		let pendingSideAlert = null;
+		// ROUND 506 (Chris's D15-18 part 2 — THE LOST RHS BOXES; data callouts.positional_side_alert.always_side.tagged_content;
+		// env RHSTAGGED_OFF). A right-hand box whose writer typed its content on the FOLLOWING lines under their own tags —
+		// `[alert RHS]` then `[body] When rounding, remember…` (MXFL301), `[Alert box RHS]` then `[H3] Extra fun` + `[Body] …`
+		// (SSFUN05), or the RHS tag typed on the heading's own line, `[Alert RHS] [H3] Key questions` + bullets (XGF9001 ×9, where
+		// the heading wins the parse) — rendered as an EMPTY box ("Empty [alert]") or no box at all, the content falling out
+		// into the main column. rhsTaggedRun gathers that run (one heading as the box's lead, then `[body]` lines and plain
+		// lines — bullets included — up to the next other tag); rhsPlace puts the built side column beside the row just
+		// closed (the r333 backward pairing and its box-style choice) or holds it for the next row (the r505 forward pairing).
+		const _rhsPsa = tpl.callouts?.positional_side_alert;
+		const _rhsAs = _rhsPsa?.always_side;
+		const _rhsTc = _rhsAs?.tagged_content;
+		const _rhsTaggedOn = !!_rhsPsa && _rhsPsa.enabled !== false && !!_rhsAs && _rhsAs.enabled !== false
+			&& !!_rhsTc && _rhsTc.enabled !== false
+			&& !(typeof process !== "undefined" && process.env
+				&& (process.env[_rhsPsa.env || "ALERTRHS_OFF"] || process.env[_rhsAs.env || "RHSALWAYS_OFF"] || process.env[_rhsTc.env || "RHSTAGGED_OFF"]))
+			&& (_rhsAs.template_types ?? []).map(String).includes(String(DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")]?.template_type ?? ""));
+		const _rhsKwAll = [...(_rhsPsa?.keywords ?? []), ...(_rhsAs?.extra_keywords ?? [])];
+		const rhsTagOf = (x) => x && x.type === "tag" ? String(x.parse?.primary?.tag || "") : "";
+		// an item's tags carry an alert / important tag whose own words name the right-hand side
+		const rhsTagged = (x) => !!x && x.type === "tag" && (x.parse?.tags || []).some((t) => (_rhsPsa?.tags ?? []).includes(String(t.tag || ""))
+			&& String(t.remainder || "").toLowerCase().split(/\s+/).some((w) => _rhsKwAll.includes(w)));
+		const rhsTaggedRun = (i, headIt) => {
+			const bodyTags = _rhsTc.body_tags ?? ["body", "body text"];
+			let j = i + 1, lead = headIt ? String(headIt.blackAfter || "").trim() : "";
+			const lines = [];
+			while (j < bodyItems.length && bodyItems[j].type === "black" && !String(bodyItems[j].text || "").trim()) j++;
+			if (!headIt && bodyItems[j] && /^h[1-6]$/.test(rhsTagOf(bodyItems[j])) && bodyItems[j].consumedBy === undefined
+				&& String(bodyItems[j].blackAfter || "").trim()) { lead = String(bodyItems[j].blackAfter).trim(); j++; }
+			let last = j - 1, sawBullet = false;
+			const isBullet = (t) => /^\s*[•▪◦·\-–*]\s/.test(t);
+			for (; j < bodyItems.length; j++) {
+				const x = bodyItems[j];
+				if (x.consumedBy !== undefined || x._consumed) break;
+				if (x.type === "black") {
+					const t = String(x.text || "");
+					if (!t.trim()) continue;
+					// the box ends where its list ends: a plain line after the bullets is the page's again (XGF9001 'Click on the
+					// accordion…'). Consecutive black lines arrive joined in ONE item, so the item is taken line by line: the lines
+					// before the break go into the box, the rest stays on the item and renders in the page as before.
+					const ls = t.split(/\n/);
+					const take = [];
+					let k = 0;
+					for (; k < ls.length; k++) {
+						const ln = ls[k];
+						if (ln.trim() && sawBullet && !isBullet(ln)) break;
+						if (isBullet(ln)) sawBullet = true;
+						take.push(ln);
+					}
+					if (take.some((l) => l.trim())) lines.push(take.join("\n"));
+					if (k < ls.length) {
+						if (take.some((l) => l.trim())) x.text = ls.slice(k).join("\n");   // the remainder stays on the page
+						break;
+					}
+					last = j; continue;
+				}
+				if (!sawBullet && bodyTags.includes(rhsTagOf(x)) && String(x.blackAfter || "").trim() && !(x.parse?.tags || []).some((t) => t.tag !== x.parse.primary.tag)) {   // a [Body] line after the list is the page's (XGF9001)
+					lines.push(String(x.blackAfter)); last = j; continue;
+				}
+				break;
+			}
+			if (!lead && !lines.length) return null;
+			if (!lines.length && !headIt) return null;   // a lone following heading is not the box's content
+			return { lead, text: lines.join("\n"), last };
+		};
+		const rhsPlace = (it, i, tagged) => {
+			const pre = ActivitiesBuilder.containerModifiers(it, tpl.callouts.modifier_classes, run).flags;
+			const back = parts.length && parts[parts.length - 1] === tpl.body_region.content_row_close
+				&& lastRowOpenIdx >= 0 && lastRowOpenIdx < parts.length - 1 && String(parts[lastRowOpenIdx]).startsWith('<div class="row');
+			if (back) {
+				const afterActivity = /^<div class="activity[\s"]/.test(String(parts[lastRowOpenIdx + 1] ?? ""));
+				const col = this.#sideAlertCol(it, bodyItems, i, run, afterActivity ? _rhsPsa.after_activity : _rhsPsa.after_content, pre, tagged);
+				parts.pop(); parts.push("</div>"); parts.push(col); parts.push("</div>");
+				rowOpen = false;
+			} else {
+				if (rowOpen) breakRow();
+				pendingSideAlert = this.#sideAlertCol(it, bodyItems, i, run, _rhsPsa.after_content, pre, tagged);
+				sideAlertSawMedia = true;
+			}
+			run.AddNote("info", "ContentConverter",
+				`[${rhsTagOf(it)}] right-hand box — its content typed under its own tags on the following lines — built as the side column (positional_side_alert.always_side.tagged_content).`);
+		};
 		let sideAlertSawMedia = false;
 		// true right after a heading was emitted — lets ONE text run join
 		// the heading's row (rowCfg.heading_keeps_next_black_run)
@@ -3310,6 +3391,12 @@ class ContentConverter {
 
 			switch (primary.directive) {
 				case "ELEMENT": {
+					// ROUND 506 (RHSTAGGED_OFF): `[Alert RHS] [H3] Key questions` — the right-hand box typed on the heading's own line (the
+					// heading wins the parse): the heading is the box's lead and the lines after it its content, in the side column
+					if (_rhsTaggedOn && !stack.length && /^h[1-6]$/.test(String(primary.tag || "")) && rhsTagged(it)) {
+						const _tr = rhsTaggedRun(i, it);
+						if (_tr) { rhsPlace(it, i, _tr); i = Math.max(i, _tr.last); break; }
+					}
 					// ROUND 428 — the Inquiry-template FALLBACK shell: a top-level heading whose text IS one of the
 					// writer's crumb-list labels opens that panel (CEDW201: `[Side Tabs]` list + an `[H2] Legends` per
 					// section, the `[End page]` closers gone from the stream); the heading then renders inside it.
@@ -3869,7 +3956,7 @@ class ContentConverter {
 					// with the token stripped (#calloutOpen). The leftover-word red flags the
 					// ordinary path would have emitted ride along inside the column.
 					// Data flag: callouts.positional_side_alert   Env toggle: ALERTRHS_OFF
-					let _rhsDef = null, _rhsPre = [], _rhsForward = false;
+					let _rhsDef = null, _rhsPre = [], _rhsForward = false, _rhsTagged = null;
 					{
 						const psa = tpl.callouts.positional_side_alert;
 						const psaOn = psa && psa.enabled !== false
@@ -3897,7 +3984,10 @@ class ContentConverter {
 									|| (_payload && !it.parse.instructionFragment && _payload.split(" ").length <= 12)   // a longer payload is neither lead nor content on the ordinary path either
 									|| (bodyItems[i + 1] && bodyItems[i + 1].type === "black" && bodyItems[i + 1].consumedBy === undefined
 										&& String(bodyItems[i + 1].text || "").trim()));
-								if (!spansAhead && hasContent && parts.length
+								// ROUND 506 (RHSTAGGED_OFF): no content of its own — the content typed under its own tags follows
+								if (!spansAhead && !hasContent && _rhsTaggedOn) _rhsTagged = rhsTaggedRun(i, null);
+								if (_rhsTagged) { /* placed below, before the ordinary path */ }
+								else if (!spansAhead && hasContent && parts.length
 									&& parts[parts.length - 1] === tpl.body_region.content_row_close
 									&& lastRowOpenIdx >= 0 && lastRowOpenIdx < parts.length - 1
 									&& String(parts[lastRowOpenIdx]).startsWith('<div class="row')) {
@@ -3925,6 +4015,11 @@ class ContentConverter {
 						&& !_sidePairOff
 						&& !(primary.tag === "side alert" && _sideAlertOff)
 						&& !stack.length;
+					if (_rhsTagged) {   // ROUND 506 — the lost box: its tagged content gathered, the side column placed
+						rhsPlace(it, i, _rhsTagged);
+						i = Math.max(i, _rhsTagged.last);
+						break;
+					}
 					if (_rhsForward) {
 						// ROUND 505 (RHSALWAYS_OFF): HOLD the side column; breakRow() attaches it as the right sibling of the
 						// row still open, else of the next content row when that row closes (the r123 pendingSideAlert path)
@@ -9401,10 +9496,17 @@ class ContentConverter {
 	 * be called EXACTLY ONCE per side-alert (the calling emit site is responsible for
 	 * guaranteeing that).
 	 */
-	static #sideAlertCol(it, bodyItems, i, run, def, pre = []) {
+	static #sideAlertCol(it, bodyItems, i, run, def, pre = [], tagged = null) {
 		const inner = [];
-		const following = MediaBuilder.gatherFollowing(it, bodyItems, i);
-		const _txt = following.trim() ? following : (it.blackAfter || "").trim();
+		// ROUND 506: `tagged` = the box's content typed under its own tags on the following lines ({lead, text} —
+		// rhsTaggedRun): the heading is the box's lead, the lines its text
+		const following = tagged ? "" : MediaBuilder.gatherFollowing(it, bodyItems, i);
+		const _txt = tagged ? String(tagged.text || "").trim() : (following.trim() ? following : (it.blackAfter || "").trim());
+		if (tagged && tagged.lead) {
+			const leadEl = def.lead_element || "h4";   // the writer's own heading stays a heading (never the group's div-lead convention)
+			inner.push(...this.#alertBoldStripper(def, run)([`<${leadEl}>${ListsAndRuns.inlineMarkup(tagged.lead)}</${leadEl}>`]));
+			def = { ...def, lead_element: null };   // the heading IS the lead — the tag's own words never add a second one
+		}
 		const deBold = this.#alertBoldStripper(def, run);   // the alertActivity box class is one of the measured alert-family buckets, so bold gets stripped here too
 		// ROUND 333: a def carrying a lead_element (the positional_side_alert defs — the KB's
 		// sidebar and alert-top forms both open with an <h4>) renders the tag's short embedded

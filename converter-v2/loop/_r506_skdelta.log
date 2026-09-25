@@ -1,0 +1,5 @@
+movers 15: up 10 / down 5; pp-sum +8.0; only-in-new 0 only-in-old 0
+≥50 crossings: 0 
+≥75 crossings: 0 
+top up: SSFUN07_0_0.html +4.6 XGF9001_9_0.html +1.9 MXFL301_4_0.html +1.7 XGF9001_3_0.html +1.7 XGF9001_8_0.html +1.1 XGF9001_2_0.html +0.3 XGF9001_6_0.html +0.3 HPRE203_5_0.html +0.2
+down: XGF9001_5_0.html 43.4->43.0 SSFUN05_0_0.html 24.5->23.9 XGF9001_7_0.html 69.3->68.7 XGF9001_4_0.html 52.9->52.1 HIS1005_9_0.html 57.1->55.6

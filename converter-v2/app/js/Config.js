@@ -1858,7 +1858,8 @@ class Config {
 	// ROUND 503 (260620.66): D15-22 THE BLL2xx KNOWLEDGE / PRACTICES TABS (session 49 Round 3) — the tabbed BLL2xx overview gets the KB c67 Knowledge / Practices tabs, the empty Information tab dropped. Env BLLKPTABS_OFF.
 	// ROUND 504 (260620.67): D15-17 CEDT301 IS ONE TABBED PAGE (session 49 Round 4) — the CEDT3 row single-file + the writer's black side-tab list read as the crumb list. Env INQBLACKLIST_OFF (the registry flip's OFF = outputs/_r504_pre/).
 	// ROUND 505 (260620.68): D15-18 PART 1 — THE RHS BOX IS ALWAYS THE SIDE COLUMN (session 49 Round 5): right-hand spellings count, and a box with no preceding row pairs with the following one (Standard / Fundamentals). Env RHSALWAYS_OFF.
-	static AppVersion = "260620.68";
+	// ROUND 506 (260620.69): D15-18 PART 2 — THE LOST RHS BOXES (session 49 Round 7): a right-hand box's content typed under its own tags on the following lines is gathered into the side column. Env RHSTAGGED_OFF.
+	static AppVersion = "260620.69";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

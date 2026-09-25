@@ -962,7 +962,13 @@
 				"env": "RHSALWAYS_OFF",
 				"template_types": ["Standard", "Fundamentals"],
 				"extra_keywords": ["right", "right-hand"],
-				"forward_pair": true
+				"forward_pair": true,
+				"tagged_content": {
+					"_doc": "ROUND 506 (the autonomous loop's session 49 Round 7 — Chris's D15-18 part 2, 'the lost boxes: the box must never vanish'). A right-hand box whose writer typed its content on the FOLLOWING lines under their own tags — `[alert RHS]` + `[body] When rounding…` (MXFL301), `[Alert box RHS]` + `[H3] Extra fun` + `[Body] …` (SSFUN05), or the RHS tag typed on the heading's own line, `[Alert RHS] [H3] Key questions` + bullets (XGF9001 ×9, the heading winning the parse) — was an EMPTY box ('Empty [alert]') or no box, its content falling into the main column. Now that run is the box's content: one heading as its lead (the def's lead element), then `[body]`-tagged lines (body_tags, a line carrying no other tag) and plain lines, bullets included, up to the next other tag; the side column goes beside the row just closed (the r333 backward pairing and box-style choice) or is held for the next row (r505). Env RHSTAGGED_OFF.",
+					"enabled": true,
+					"env": "RHSTAGGED_OFF",
+					"body_tags": ["body", "body text"]
+				}
 			},
 			"strip_tokens": {
 				"rhs": " rhs",

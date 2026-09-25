@@ -1,0 +1,16 @@
+  SSFUN05   [Alert box RHS]                gold=body               body               -> side-alert-top     'Extra fun – a jigsaw'
+  EXIP901   [Alert RHS Sophie’s learni     gold=body               body               -> side-alert-top     'Sophie has set herself the followi'
+  HPRE203   [ RHS Alert]                   gold=alert              body               -> side-alert-top     'If you need help reading the bar c'
+  MXFL301   [alert RHS]                    gold=alert              body               -> side-alert-top     'When rounding, remember these two '
+  XGF9001   [Alert RHS]                    gold=side-alertActivity body               -> side-alert-top     'Key questions'
+  XGF9001   [Alert RHS]                    gold=side-alertActivity body               -> side-alert-top     'Key questions'
+  XGF9001   [Alert RHS]                    gold=side-alertActivity body               -> side-alert-top     'Key question'
+  XGF9001   [Alert RHS]                    gold=side-alertActivity body               -> side-alert-top     'Key questions'
+  XGF9001   [Alert RHS]                    gold=side-alertActivity body               -> side-alert-top     'Key questions'
+  XGF9001   [Alert RHS]                    gold=side-alertActivity body               -> side-alert-top     'Key questions'
+  XGF9001   [Alert RHS]                    gold=side-alertActivity body               -> side-alert-top     'Key question'
+  XGF9001   [Alert RHS]                    gold=side-alertActivity body               -> side-alert-top     'Key question'
+  XGF9001   [Alert RHS]                    gold=side-alertActivity body               -> side-alert-top     'Key questions'
+moved 13: exact-shape gain 0 / lose 2; side-column agreement gain 9 / lose 4
+after: exact = 76 / 139; side-column agreement = 100 / 139
+before: exact = 78; side-column agreement = 95
