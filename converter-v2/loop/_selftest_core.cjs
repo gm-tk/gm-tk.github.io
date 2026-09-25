@@ -82,7 +82,8 @@ const SPEC = {
 	// first drag option="99" (no matching drop) and a loading="lazy" image — both 03B-form rules must register; BLL146 (the
 	// gold-exact images form) + ENGJ102 (a text form) are the fixtures; round 351 adds ENGI203 (a column / category-sort
 	// build) — the INJECT probe also gives the first built COLUMN widget's first drag option="99" (no such drop column).
-	"_verify_dragdrop.cjs": { codes: ["BLL146", "ENGJ102", "ENGI203"], total: /TOTAL: (\d+) widget/, signal: /defect (\d+)/, inject: true },
+	// round 519 adds BLL241 (a FIB / fill-in-the-blank build) — the INJECT probe gives its first FIB drag option="99" (unpaired).
+	"_verify_dragdrop.cjs": { codes: ["BLL146", "ENGJ102", "ENGI203", "BLL241"], total: /TOTAL: (\d+) widget/, signal: /defect (\d+)/, inject: true },
 	// bingo (round 420 — Chris's D10-3, the selfCheck type's letter-grid form → the KB 03E bingo): A1 faithful-to-source, so
 	// mangled gold is the wrong probe; the INJECT probe adds a malformed unit (grid="x", one empty cell, no correct cell, no
 	// Reset / Check row) which the defect rule MUST flag; BLL110 (12 gold-exact grids) is the fixture.

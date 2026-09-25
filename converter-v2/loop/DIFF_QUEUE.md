@@ -1,6 +1,6 @@
 # DIFF_QUEUE.md — the diff miner's ranked class queue (LOOP__Autonomous_Rounds.md §1d)
 
-**Produced:** 2026-09-26 04:19 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD e8edbe8; Claude corpus 545 dirs). **Population:** the skeleton gate's own — 2486 paired pages / 530 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 86.8 s.
+**Produced:** 2026-09-26 04:56 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD 9944832; Claude corpus 545 dirs). **Population:** the skeleton gate's own — 2486 paired pages / 530 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 86.0 s.
 
 **What a row is.** One CLASS = (region, parent element, gold form, Claude form, direction) over every differing skeleton line of every paired page — the same lines, labels, widget collapse and difflib alignment the PRIMARY gate scores (each element its own line so it can be quoted). Direction: MISSING = gold has it, Claude lacks it; EXTRA = Claude has it, gold lacks it; SUBSTITUTED = same position, different tag / class / wrapper; MOVED = same text, different place. Consensus = of the gold pages in the group where the region exists, the share carrying the gold form (for EXTRA: the share NOT carrying Claude's form). Derivable = the gold line's text is in the module's parsed Writers Template (round-110 tolerance); structure-only differences are always derivable.
 
@@ -8,8 +8,8 @@
 
 ## Summary
 
-- differing skeleton lines: 272005 — by direction {'MISSING': 143525, 'SUBSTITUTED': 25629, 'EXTRA': 93910, 'MOVED': 8941}
-- by region: {'module-code': 25, 'title': 349, 'header': 6, 'module-menu': 12607, 'phases-nav': 59, 'crumbs': 61, 'footer': 2560, 'acks': 1392, 'activity': 97359, 'body': 155994, 'root': 1593}
+- differing skeleton lines: 272005 — by direction {'MISSING': 143524, 'SUBSTITUTED': 25630, 'EXTRA': 93911, 'MOVED': 8940}
+- by region: {'module-code': 25, 'title': 349, 'header': 6, 'module-menu': 12607, 'phases-nav': 59, 'crumbs': 61, 'footer': 2560, 'acks': 1392, 'activity': 97358, 'body': 155995, 'root': 1593}
 - classes: 9424 — CANDIDATE 195, below floor 8932, the rest below consensus / not derivable
 
 ## Completeness census — the repeating chrome (§1d item 4)
@@ -399,13 +399,13 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 | 441 | footer | SUBSTITUTED | `ul.footer-nav` | `li>a#next-lesson` | `li>a#next-lesson` | 11 | 10 | 0.71 of 2486 | era=Refresh c=0.71 n=10 | structure | yes | CANDIDATE |
 | 442 | footer | SUBSTITUTED | `ul.footer-nav` | `li>a#next-lesson` | `li>a.home-nav` | 10 | 10 | 0.71 of 2486 | template=Standard c=0.74 n=10 | structure | yes | CANDIDATE |
 | 527 | acks | SUBSTITUTED | `div.col-12.col-md-8` | `div.acks` | `div.acks.acksTemplate` | 107 | 107 | 0.16 of 2486 | template+ptype=Inquiry/overview c=0.83 n=43 | structure | yes | CANDIDATE |
-| 559 | activity | MISSING | `div.col-12` | `p` | `—` | 776 | 374 | 0.29 of 2479 | template+ptype=Inquiry/overview c=0.82 n=40 | 0.81 | — | CANDIDATE |
+| 559 | activity | MISSING | `div.col-12` | `p` | `—` | 775 | 374 | 0.29 of 2479 | template+ptype=Inquiry/overview c=0.82 n=40 | 0.81 | — | CANDIDATE |
 | 560 | activity | EXTRA | `div.col-12` | `—` | `p` | 618 | 306 | 0.88 of 2479 | subject=ANZH c=0.99 n=26 | structure | — | CANDIDATE |
 | 561 | activity | MISSING | `div.col-12` | `WIDGET` | `—` | 425 | 266 | 0.18 of 2479 | template+ptype=Inquiry/overview c=0.68 n=28 | structure | — | CANDIDATE |
 | 563 | activity | MISSING | `div.col-12` | `a` | `—` | 452 | 235 | 0.28 of 2479 | template+ptype=Inquiry/overview c=0.77 n=29 | 0.64 | — | CANDIDATE |
 | 564 | activity | EXTRA | `div.col-12` | `—` | `WIDGET` | 356 | 218 | 0.82 of 2479 | subject=NCEA1 c=0.96 n=38 | structure | — | CANDIDATE |
 | 565 | activity | MOVED | `div.col-12` | `p` | `p` | 320 | 218 | 0.19 of 2479 | template+ptype=Inquiry/overview c=0.78 n=26 | structure | — | CANDIDATE |
-| 566 | activity | MISSING | `div.col-12` | `h3` | `—` | 410 | 202 | 0.31 of 2479 | template+ptype=Fundamentals/overview c=0.85 n=32 | 0.71 | — | CANDIDATE |
+| 566 | activity | MISSING | `div.col-12` | `h3` | `—` | 409 | 202 | 0.31 of 2479 | template+ptype=Fundamentals/overview c=0.85 n=32 | 0.71 | — | CANDIDATE |
 | 567 | activity | SUBSTITUTED | `div.col-12.col-md-8` | `div.activity.interactive[number=*]` | `div.activity[number=*]` | 270 | 185 | 0.44 of 2479 | subject+ptype=1-10 Blended Literacy/lesson c=0.73 n=64 | structure | yes | CANDIDATE |
 | 568 | activity | MISSING | `div.col-12` | `div.row` | `—` | 240 | 175 | 0.21 of 2479 | template+ptype=Bilingual/lesson c=0.61 n=20 | 0.96 | — | CANDIDATE |
 | 569 | activity | MISSING | `div.activity.interactive[number=*]` | `div.row` | `—` | 280 | 168 | 0.12 of 2479 | template+ptype=Fundamentals/overview c=0.65 n=34 | 0.93 | yes | CANDIDATE |
@@ -436,7 +436,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 | 620 | activity | EXTRA | `div.col-12.col-md-8` | `—` | `div.activity[number=*]` | 55 | 48 | 0.96 of 2479 | template=Standard c=0.98 n=41 | structure | yes | CANDIDATE |
 | 633 | activity | SUBSTITUTED | `div.col-12` | `WIDGET` | `div.row` | 42 | 42 | 0.59 of 2479 | ptype=lesson c=0.68 n=33 | structure | — | CANDIDATE |
 | 639 | activity | EXTRA | `p>i` | `—` | `i` | 49 | 40 | 0.96 of 2479 | template=Standard c=0.97 n=43 | structure | — | CANDIDATE |
-| 642 | activity | SUBSTITUTED | `div.col-12` | `h3` | `WIDGET` | 46 | 39 | 0.76 of 2479 | template+ptype=Standard/lesson c=0.89 n=33 | structure | — | CANDIDATE |
+| 640 | activity | SUBSTITUTED | `div.col-12` | `h3` | `WIDGET` | 47 | 40 | 0.76 of 2479 | template+ptype=Standard/lesson c=0.89 n=34 | structure | — | CANDIDATE |
 | 646 | activity | EXTRA | `div.col-12` | `—` | `div.icon.ratio.ratio-16x9.videoSection` | 51 | 37 | 0.98 of 2479 | template=Standard c=0.98 n=43 | structure | yes | CANDIDATE |
 | 647 | activity | EXTRA | `p` | `—` | `b` | 47 | 37 | 0.97 of 2479 | template=Standard c=0.97 n=38 | structure | — | CANDIDATE |
 | 648 | activity | SUBSTITUTED | `div.col-12` | `a` | `WIDGET` | 43 | 37 | 0.55 of 2479 | template+ptype=Standard/lesson c=0.65 n=39 | structure | — | CANDIDATE |
@@ -459,7 +459,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 | 829 | activity | MISSING | `div.col-12.col-md-8` | `div.activity.dropbox[number=*]` | `—` | 26 | 9 | 0.03 of 2479 | series=XDLS90 c=0.68 n=22 | 1.00 | yes | CANDIDATE |
 | 1072 | activity | EXTRA | `div.activity.clickDropContent.dropbox[nu` | `—` | `a` | 27 | 4 | 1.00 of 2479 | template=Standard c=1.00 n=21 | structure | yes | CANDIDATE |
 | 1073 | activity | EXTRA | `div.activity.dropbox[number=*]` | `—` | `a` | 24 | 4 | 0.99 of 2479 | era=Refresh c=0.99 n=24 | structure | yes | CANDIDATE |
-| 4058 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p` | 1117 | 412 | 0.82 of 2479 | series=DAN10 c=1.00 n=20 | structure | — | CANDIDATE |
+| 4058 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p` | 1118 | 412 | 0.82 of 2479 | series=DAN10 c=1.00 n=20 | structure | — | CANDIDATE |
 | 4059 | body | EXTRA | `div#body` | `—` | `div.row` | 1429 | 389 | 0.66 of 2479 | subject+ptype=1-10 Blended Literacy/overview c=1.00 n=31 | structure | — | CANDIDATE |
 | 4060 | body | MISSING | `div#body` | `div.row` | `—` | 1379 | 348 | 0.34 of 2479 | series=CEDO50 c=0.76 n=20 | 0.86 | — | CANDIDATE |
 | 4061 | body | MISSING | `div.col-12.col-md-8` | `p` | `—` | 623 | 297 | 0.26 of 2479 | template+ptype=Fundamentals/overview c=0.91 n=46 | 0.79 | — | CANDIDATE |
@@ -473,7 +473,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 | 4070 | body | EXTRA | `div.col-12.col-md-8` | `—` | `ul` | 305 | 181 | 0.95 of 2479 | subject=1-10 Mathematics c=0.98 n=20 | structure | — | CANDIDATE |
 | 4071 | body | MISSING | `div.col-12.col-md-8` | `WIDGET` | `—` | 274 | 178 | 0.19 of 2479 | template+ptype=Fundamentals/overview c=0.65 n=32 | structure | — | CANDIDATE |
 | 4072 | body | MISSING | `div.row` | `div.col-12.col-md-8` | `—` | 311 | 174 | 0.29 of 2479 | template+ptype=Fundamentals/overview c=0.94 n=20 | 0.94 | — | CANDIDATE |
-| 4074 | body | MISSING | `div.col-12.col-md-8` | `h3` | `—` | 252 | 155 | 0.18 of 2479 | template+ptype=Fundamentals/overview c=0.75 n=23 | 0.89 | — | CANDIDATE |
+| 4074 | body | MISSING | `div.col-12.col-md-8` | `h3` | `—` | 253 | 155 | 0.18 of 2479 | template+ptype=Fundamentals/overview c=0.75 n=23 | 0.89 | — | CANDIDATE |
 | 4075 | body | EXTRA | `div.col-12.col-md-8` | `—` | `a` | 221 | 151 | 0.98 of 2479 | subject+ptype=ConnectED/lesson c=1.00 n=25 | structure | — | CANDIDATE |
 | 4078 | body | EXTRA | `p>b` | `—` | `b` | 193 | 126 | 0.93 of 2479 | subject=1-10 Mathematics c=0.97 n=33 | structure | — | CANDIDATE |
 | 4079 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>a` | 184 | 124 | 0.99 of 2479 | subject=1-10 English c=1.00 n=21 | structure | — | CANDIDATE |
@@ -491,7 +491,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 | 4104 | body | EXTRA | `p>a` | `—` | `a` | 102 | 76 | 0.99 of 2479 | template=Standard c=1.00 n=79 | structure | — | CANDIDATE |
 | 4105 | body | EXTRA | `div.col-12.col-md-8` | `—` | `audio.audioPlayer.icon` | 114 | 74 | 1.00 of 2479 | ptype=overview c=1.00 n=36 | structure | yes | CANDIDATE |
 | 4109 | body | EXTRA | `div.row` | `—` | `div.col-12` | 135 | 71 | 0.71 of 2479 | subject=ANZH c=0.75 n=22 | structure | — | CANDIDATE |
-| 4112 | body | MOVED | `div.col-12.col-md-8` | `h3` | `h3` | 83 | 70 | 0.11 of 2479 | template+ptype=Fundamentals/overview c=0.67 n=22 | structure | — | CANDIDATE |
+| 4113 | body | MOVED | `div.col-12.col-md-8` | `h3` | `h3` | 82 | 69 | 0.11 of 2479 | template+ptype=Fundamentals/overview c=0.67 n=22 | structure | — | CANDIDATE |
 | 4114 | body | EXTRA | `div.fundamentalsPanel` | `—` | `div.row` | 74 | 69 | 0.98 of 2479 | era=Refresh c=0.98 n=74 | structure | — | CANDIDATE |
 | 4119 | body | EXTRA | `table.table.table-bordered` | `—` | `tr` | 94 | 67 | 0.98 of 2479 | template=Standard c=0.98 n=80 | structure | yes | CANDIDATE |
 | 4120 | body | EXTRA | `div.ratio.ratio-16x9.videoSection` | `—` | `iframe` | 84 | 67 | 0.92 of 2479 | template=Standard c=0.94 n=65 | structure | yes | CANDIDATE |
@@ -519,7 +519,7 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 | 4174 | body | MISSING | `div#body` | `div.inquiryPanel` | `—` | 40 | 37 | 0.02 of 2479 | template+ptype=Inquiry/overview c=0.63 n=35 | 0.93 | — | CANDIDATE |
 | 4175 | body | EXTRA | `div.row` | `—` | `div.col-12.col-md-4.offset-md-0` | 38 | 37 | 0.80 of 2479 | template=Standard c=0.81 n=21 | structure | — | CANDIDATE |
 | 4177 | body | EXTRA | `div#body` | `—` | `div.row.supervisor` | 44 | 35 | 0.90 of 2479 | ptype=lesson c=0.91 n=37 | structure | yes | CANDIDATE |
-| 4180 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>span.infoTrigger` | 38 | 34 | 0.87 of 2479 | template=Standard c=0.87 n=32 | structure | — | CANDIDATE |
+| 4180 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>span.infoTrigger` | 37 | 34 | 0.87 of 2479 | template=Standard c=0.87 n=31 | structure | — | CANDIDATE |
 | 4181 | body | EXTRA | `tr` | `—` | `th` | 37 | 33 | 0.99 of 2479 | template=Standard c=1.00 n=32 | structure | — | CANDIDATE |
 | 4183 | body | EXTRA | `div.row` | `—` | `div.col-12.col-md-4` | 47 | 32 | 0.94 of 2479 | template=Standard c=0.95 n=38 | structure | — | CANDIDATE |
 | 4185 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.flipCardsContainer.row` | 36 | 32 | 0.93 of 2479 | template=Standard c=0.95 n=27 | structure | — | CANDIDATE |

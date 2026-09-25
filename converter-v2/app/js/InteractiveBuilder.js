@@ -181,10 +181,13 @@ class InteractiveBuilder {
 					// ROUND 351 — the category-sort (column) form runs ONLY where both declined.
 					html = this.#dragAndDrop({ bundle, tpl, renderInline })
 						?? this.#dragAndDropImages({ bundle, tpl, renderInline, run })
-						?? this.#dragAndDropColumn({ bundle, tpl, renderInline });
+						?? this.#dragAndDropColumn({ bundle, tpl, renderInline })
+						// ROUND 519 — the FIB form: the writer's red answers inside black sentences (r449's reading, a FIB render)
+						?? (tpl?.fib ? this.#typing({ bundle, tpl: templates?.typing, renderInline, fib: tpl.fib, ddTpl: tpl }) : null);
 					// ROUND 351 — a built widget REPLACES the whole captured bundle: the members rule keeps
 					// the bundle's OTHER members (prose around the table) or declines the build.
-					if (html !== null) html = this.#ddWithMembers({ bundle, tpl, html, renderBlock });
+					// (r519: the FIB form placed every member itself — its black sentences ARE the widget — so it skips this)
+					if (html !== null && !bundle?.r519Fib) html = this.#ddWithMembers({ bundle, tpl, html, renderBlock });
 					break;
 				case "modal":       // image-pair form → TKmodal set; single document/PDF URL → a button;
 					// else (round 280) the general trigger+TKmodal set fallback. renderNested/
@@ -14085,9 +14088,17 @@ class InteractiveBuilder {
 		].join("\n");
 	}
 
-	static #typing({ bundle, tpl, renderInline }) {
-		if (!tpl || tpl.enabled === false) return null;
-		if (typeof process !== "undefined" && process.env && process.env[tpl.env ?? "TYPING_OFF"]) return null;
+	static #typing({ bundle, tpl, renderInline, fib, ddTpl }) {
+		// ROUND 519 — `fib` (interactive_builders.dragAndDrop.fib): the SAME red-answer reading renders KB 03B's drag-and-drop
+		// FIB layout instead of typing inputs (the writer's `[Drag and drop]` + sentences whose answers are red). Its own
+		// enabled / env (DDFIB_OFF) govern it; the typing toggles do not.
+		if (fib) {
+			if (!tpl || fib.enabled === false) return null;
+			if (typeof process !== "undefined" && process.env && process.env[fib.env ?? "DDFIB_OFF"]) return null;
+		} else {
+			if (!tpl || tpl.enabled === false) return null;
+			if (typeof process !== "undefined" && process.env && process.env[tpl.env ?? "TYPING_OFF"]) return null;
+		}
 		if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget
 		const inline = renderInline ?? ((s) => Utils.EscapeHtml(s));
 		const ak = DataService.Data.EmitTemplates.interactive_placeholder?.answer_key_d13_4 ?? {};
@@ -14188,6 +14199,73 @@ class InteractiveBuilder {
 			}
 			return out.replace(/\s{2,}/g, " ").trim();
 		};
+		if (fib) {
+			// ROUND 519 — the FIB render: each red answer an inline drop span (option n), the answers the drags, in order
+			// a drawn blank (a number line's "0 ______ 500,000") or a drop with no sentence is not a FIB sentence (the
+			// gold builds those as scatter / image widgets) — decline, the hand-off box stays
+			const fibDeny = new RegExp(fib.decline_text_pattern ?? "_{4,}");
+			for (const L of rows) {
+				if (!hasText(L)) return null;
+				if (L.segs.some((s) => s.k === "t" && fibDeny.test(s.t))) return null;
+				// two answers with no words between them — a tab-laid table (the gold builds a standard table widget)
+				if (fib.adjacent_answers !== true) {
+					let prevAns = false;
+					for (const s of L.segs) {
+						if (s.k === "a") { if (prevAns) return null; prevAns = true; }
+						else if (s.k === "t" && s.t.replace(/\*/g, "").trim()) prevAns = false;
+					}
+				}
+			}
+			for (const L of lead) if (L.segs.some((s) => s.k === "t" && fibDeny.test(s.t))) return null;
+			const fibAuto = this.#typingAutocheck(bundle, tpl);
+			// every line a prompt ending in its ONE answer, the answers distinct → KB 03B's Standard (matching) layout: the
+			// prompts the questions, the answers the drags (the gold's MXFL401 6B) — a FIB needs the blank INSIDE the sentence
+			const live = (L) => L.segs.filter((s) => s.k === "a" || (s.k === "t" && s.t.replace(/\*/g, "").trim()));
+			if (ddTpl && fib.trailing_as_standard !== false && rows.every((L) => { const s = live(L); return s.length >= 2 && s[s.length - 1].k === "a" && s.filter((x) => x.k === "a").length === 1; })
+				&& new Set(answers.map((a) => a.t.toLowerCase())).size === answers.length) {
+				const out = [];
+				for (const L of lead) out.push(Utils.FillTemplate(tpl.lead, { text: lineHtml(L) }));
+				out.push(fibAuto ? ddTpl.open.replace('class="dragAndDrop"', `class="dragAndDrop${fibAuto}"`) : ddTpl.open);
+				for (const L of rows) out.push(Utils.FillTemplate(ddTpl.question, { label: lineHtml({ ...L, segs: L.segs.filter((s) => s.k !== "a") }) }));
+				out.push(ddTpl.mid);
+				for (let i = 0; i < rows.length; i++) out.push(Utils.FillTemplate(ddTpl.drop, { n: i + 1 }));
+				out.push(ddTpl.drag_open);
+				for (let i = 0; i < answers.length; i++) out.push(Utils.FillTemplate(ddTpl.drag, { n: i + 1, answer: inline(answers[i].t) }));
+				const close = this.#ddClose(ddTpl);
+				if (fibAuto && fib.buttons_autocheck && close.length === 3) close[1] = fib.buttons_autocheck;
+				out.push(...close);
+				const builtS = out.join("\n");
+				if (this.#mcqLeakGuard(builtS)) return null;
+				if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
+				bundle.r519Fib = true;
+				return builtS;
+			}
+			let n = 0; const drags = [];
+			const fibLine = (L) => {
+				const segs = L.segs.filter((s) => s.k !== "n");
+				if (L.list === "number" && segs[0]?.k === "t") segs[0] = { ...segs[0], t: segs[0].t.replace(wordNo, "") };
+				let out = "";
+				for (const s of segs) {
+					if (s.k === "t") { out += textHtml(s.t); continue; }
+					if (out && !/\s$/.test(out) && s.pre) out += " ";
+					n++; drags.push(Utils.FillTemplate(fib.drag, { n, answer: inline(s.t) }));
+					out += Utils.FillTemplate(fib.drop, { n });
+					if (s.post) out += " ";
+				}
+				return out.replace(/\s{2,}/g, " ").trim();
+			};
+			const fh = [];
+			for (const L of lead) fh.push(Utils.FillTemplate(tpl.lead, { text: lineHtml(L) }));
+			// the writer's own "self marking" / "autocheck" → KB 03B "With autoCheck": the class, and the Reset button only
+			fh.push(Utils.FillTemplate(fib.open, { autocheck: fibAuto }));
+			for (const L of rows) fh.push(Utils.FillTemplate(fib.sentence, { text: fibLine(L) }));
+			fh.push(fib.mid, ...drags, fib.drags_close, (fibAuto && fib.buttons_autocheck) ? fib.buttons_autocheck : fib.buttons, fib.close);
+			const builtF = fh.join("\n");
+			if (this.#mcqLeakGuard(builtF)) return null;           // a build must never ADD a leak
+			if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
+			bundle.r519Fib = true;
+			return builtF;
+		}
 		const html = [];
 		for (const L of lead) html.push(Utils.FillTemplate(tpl.lead, { text: lineHtml(L) }));
 		html.push(Utils.FillTemplate(tpl.group_open, { autocheck: this.#typingAutocheck(bundle, tpl) }));

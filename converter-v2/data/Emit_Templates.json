@@ -1871,6 +1871,22 @@
 			"drag": "<div class=\"drag\" option=\"{n}\"><p>{answer}</p></div>",
 			"close": "</div>\n</div>\n</div>\n</div>",
 			"min_rows": 2,
+			"fib": {
+				"_doc": "ROUND 519 (the autonomous loop's session 50 Round 12 — D10-3's build lane; D13-4: only where the writer marked the answer). THE DRAG-AND-DROP FILL-IN-THE-BLANK FORM (KB 03B 'FIB Layout'; the gold ships 344 FIB widgets): the writer's `[Drag and drop]` + sentences whose answers are typed RED inside the black text ('Correct answers are in red'). The r449 typing reading (InteractiveBuilder.#typing — its lines, answer segments, answer-key and reject guards, min_answers, max_answer_words) is reused and rendered as the FIB form: each red answer an inline `<span class=\"drop\" option=\"n\">`, the answers the drags in the same order (the widget script shuffles), the 03B button row. Tried after the standard / images / column forms. `_s50_r12_fib.cjs`: 31 un-built dragAndDrop bundles / 21 modules have ≥ 2 such lines, no table, no media. Env DDFIB_OFF.",
+				"enabled": true,
+				"env": "DDFIB_OFF",
+				"decline_text_pattern": "_{4,}",
+				"trailing_as_standard": true,
+				"open": "<div class=\"dragAndDrop{autocheck}\" layout=\"FIB\">\n<div class=\"row dropContainer\">",
+				"sentence": "<p>{text}</p>",
+				"drop": "<span class=\"drop\" option=\"{n}\"></span>",
+				"mid": "</div>\n<div class=\"row\">",
+				"drag": "<div class=\"drag\" option=\"{n}\"><p>{answer}</p></div>",
+				"drags_close": "</div>",
+				"buttons": "<div class=\"row\">\n<div class=\"activityButton reset\">Reset</div>\n<div class=\"activityButton undo hidden\">Undo</div>\n<div class=\"activityButton checkAnswer hidden\">Check answers</div>\n</div>",
+				"buttons_autocheck": "<div class=\"row\">\n<div class=\"activityButton reset\">Reset</div>\n</div>",
+				"close": "</div>"
+			},
 			"standard_decline_opener": {
 				"_doc": "ROUND 510 (the autonomous loop's session 50 Round 1 — the guard r510's generic-interactive-bracket reading needed before it could ship). The r69 pair reading takes any 2-column table as [label | answer]; when the writer's OPENER says the items go INTO coloured squares / zones / categories / groups / columns, the table is the drop TARGETS of a category sort, not the pairs — HPFUN101 1A: '[Interactive] Drag and drop, drop the statements into the relevant coloured square' over a 2×2 table of four zones (Blue / Green / Yellow / Red, each with its feelings), the statements typed after it; the r69 reading built two nonsense pairs from the zone cells (0 % of the gold's drags). The r69 form declines (the hand-off box keeps the writer's content); the images and column forms are not affected. Tested on the bundle's red TAG items only (the span that names the widget is the first member when an activity box owns the opener), never the black body text. Proven inert on every existing dragAndDrop build (the family probe with IQFREEWIDGET_OFF=1). Env DDSORTOPENER_OFF.",
 				"enabled": true,

@@ -1,0 +1,24 @@
+TYPE            BUILT  DECLINED  MODULES  COVERAGE
+dragAndDrop       139      1019      367   12.0%
+multiChoiceQuiz    16       433      188   3.6%
+clickDrop         241       338      129   41.6%
+flipCard          308       282      160   52.2%
+dropDown          344       279      144   55.2%
+accordion         540       263      122   67.2%
+carousel          757       260      175   74.4%
+selfCheck          43       203       83   17.5%
+typing             19       193       83   9.0%
+modal             183       184       71   49.9%
+reorder             0       115       67   0.0%
+tabs               57       113       58   33.5%
+radioQuiz           0       110       76   0.0%
+selectionBox        0        87       44   0.0%
+speechBubble      710        68       45   91.3%
+slider              0        55       36   0.0%
+hint               49        48       14   50.5%
+infoTrigger         0        43       26   0.0%
+shapeHover          2        30       18   6.3%
+hintSlider         41        18       16   69.5%
+glossary            1         2        2   33.3%
+TOTAL            3450      4143          45.4%
+records -> /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_r271_variations.json 7593

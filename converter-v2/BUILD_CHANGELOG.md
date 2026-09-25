@@ -1,5 +1,32 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (round 519, build 260620.80) — THE DRAG-AND-DROP FILL-IN-THE-BLANK FORM: a writer's `[drag and drop]` whose answers are RED WORDS INSIDE BLACK SENTENCES builds KB 03B's FIB layout (the red words the drags, each a blank in its sentence), and where every line ends in its one answer, KB 03B's Standard (matching) layout; 9 widgets / 8 modules built (5 FIB + 4 Standard), 59 drags, 52 of them the gold's own drags; the verifier learns the FIB form
+
+### 1. WHAT CHANGED
+
+**The class** (`_s50_r12_fib.cjs`: 31 un-built dragAndDrop bundles / 21 modules carry ≥ 2 lines of black text with a short red word on them, no table, no media — the MX family most). The writer types the sentence with the answers in red and says so ("The words in red are in the correct place — can we make these draggable and muddle up please"; "Correct answers are in red"). D10-3 (the build lane) + D13-4 (only where the writer marked the answer).
+
+**The build** (`InteractiveBuilder.#typing` with a `fib` option — r449's red-answer reading reused, so a red answer is an answer by `Utils.AnswerKeyRedWord` exactly as in the typing quiz; the dragAndDrop dispatch tries it only where the r69 text / r350 image / r351 column forms all declined; data `interactive_builders.dragAndDrop.fib`, env **`DDFIB_OFF`**):
+- **FIB** (KB 03B "FIB Layout"): `div.dragAndDrop layout="FIB"` > `div.row.dropContainer` of the sentences, each red answer an inline `<span class="drop" option="n">`, then a `div.row` of `div.drag option="n"` holding the answers in order, then the button row.
+- **Standard** (`fib.trailing_as_standard`): when EVERY line is a prompt ending in its one answer and the answers are distinct, the widget is KB 03B's matching form (the prompts the questions, the answers the drags — the gold's own MXFL401 6B form); a FIB needs the blank inside the sentence.
+- **autoCheck** from the WRITER's own words ("self marking" — the r449 list): the class and, per KB 03B "With autoCheck", the Reset button only (`fib.buttons_autocheck`).
+- **Declines** (the hand-off box stays): a drawn blank (`____` — MXDI201's number line, which the gold builds as a scatter image; CEDO402's blank-line copy of the sentences), two answers with no words between them (MXDB302's tab-laid table — the gold builds a table widget), a line with no words, plus every r449 decline (a table, a nested widget, a red instruction inside a line, an answer-key label, > 6 words, a bracket).
+- The FIB / Standard build places every member itself, so the r351 members rule (`#ddWithMembers`, which would re-render the sentences as prose or decline on the red words) is skipped for it.
+
+**The tool** (`reference/tests/_verify_dragdrop.cjs`): `checkFib` — drops == drags, every option paired, no empty drag, no sentence without words, no drawn blank, the button row, no raw [tag], no lazy; per-module `FIB n` in the totals; the selftest gains BLL241 (LIVENESS 6 widgets on 4 fixtures; DETECTION 0 → 14 with an unpaired FIB drag injected). Its first run caught MXEO301 / MXFL301's autoCheck widgets carrying the Undo / Check row — fixed before the ship.
+
+### 2. PROOF
+
+- In-memory probe over all 545 modules: `DDFIB_OFF=1` → 0 pages changed; ON → **8 modules** (BLL235, BLL237, BLL241, MXEO301, MXFL201, MXFL301, MXFL401, MXFU401). `scoped_ship.sh … --round 519` PASS (0 stale, containment 8 ⊆ 8, the 12-module spot-check byte-identical).
+- `_verify_dragdrop.cjs` over the 8: **9 widgets (FIB 5, Standard 4), 59 drags, defect 0**; 52 drags (88 %) are the gold's own drag texts, 5 more words of the gold's page; BLL237's writer marked "tomatoes / and / … / roasted" where the gold chose "small / … / stews" — the writer's red is the target (D13-4).
+- Coverage dashboard: dragAndDrop hand-off boxes **1028 → 1019**, built 130 → 139.
+
+### 3. PROTECTED GATES
+
+Skeleton **55.7491 → 55.7490 % @ 2486** — a NAMED −0.0001pp, one page: MXFL401_6_0 scaffold 31.36 → 31.09 % (matched lines HELD at 37; 118 → 119 lines — the built widget's one extra line) while its RAW rose 22.09 → 29.94 % (`--accept-named "skeleton SCAFFOLD mean"`); ≥50 1612 / ≥75 285 / ≥90 26 held; RAW → 39.593 %; cs exact 16769 / EXTRA 204 / missing 886, body ANY 235, clean 98.40 %, leak 52 / 42 all EXACT; tags 9557; every verifier ✓, every COUNT held (dragdrop 21 on its gate set) (`_r519_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 519`; `--gate-baseline-check` PASS. Plateau (D10-3 (a), a build round): 9 sites converted, under the 20-site progress line — counts 1 of 3.
+
+**Ledger:** scoped #5 since the r513 FULL · data `interactive_builders.dragAndDrop.fib` (decline_text_pattern, trailing_as_standard, buttons_autocheck) · env `DDFIB_OFF` · code `InteractiveBuilder.#typing` (the `fib` / `ddTpl` options) + the dragAndDrop dispatch + the `#ddWithMembers` skip · tool `_verify_dragdrop.cjs` checkFib + the BLL241 fixture (`_selftest_core.cjs`) · session 50 Round 12.
+
 ## 2026-09-26 (round 518, build 260620.79) — THE TYPING VERIFIER LEARNS THE TABLE FORM, and the three defects its new checks found in r517's builds are guarded (GEWHA / PWY1001 / PWY1002 layout tables, MXFU202's `[image]` cells): 4 modules decline to the hand-off box; the typing count test now covers the table quizzes (14 quizzes / 145 inputs on the gate set, 140 the gold's own); gate-neutral
 
 ### 1. WHAT CHANGED

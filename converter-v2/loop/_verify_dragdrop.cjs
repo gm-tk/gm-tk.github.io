@@ -15,7 +15,9 @@
 // 03B's Column Layout instead: a dropContainer of HEADED ddColumns each holding ≥ 1 drop whose option is its own column index,
 // a dragContainer whose ddColumn count equals the drop ddColumn count (03B: "Empty ddColumn pads to match drop column count"),
 // per column drops == drags, every drag option naming a drop column, the button row, no raw [tag], no lazy, no empty drag.
-// FIB / scatter / area / venn are counted, not checked (no builder ships them). Protected criterion: defect 0 (✓ at the
+// ROUND 519 — a `layout="FIB"` widget (the fill-in-the-blank build) is checked by checkFib(): drops == drags, every option
+// paired, no empty drag, no sentence without words, no drawn blank (`____`), the button row, no raw [tag], no lazy.
+// scatter / area / venn are counted, not checked (no builder ships them). Protected criterion: defect 0 (✓ at the
 // recorded baseline / ✗ above it — the r348 form).
 //
 // Usage:  STUB_OEMBED=1 node --require ./_deflate_raw_polyfill.cjs _verify_dragdrop.cjs BLL146 BLL112 ENFUN04 …
@@ -119,6 +121,28 @@ function checkColumn(w, r) {
 	return r;
 }
 
+/** ROUND 519 — the KB 03B "FIB Layout" (the r519 build): a dropContainer row of sentences whose inline
+ *  `<span class="drop" option="n">` are the blanks, then a row of `<div class="drag" option="n">` answers — drops == drags,
+ *  every option paired, every drag and every sentence with words, no drawn blank (`____`) left in a sentence. */
+function checkFib(w, r) {
+	const dropC = sub(w, "dropContainer");
+	if (dropC === null) { r.defects.push("no dropContainer row"); return r; }
+	const drops = [...dropC.matchAll(/<span class="drop"([^>]*)><\/span>/g)].map((x) => optionOf(x[1]));
+	const drags = items(w, "drag"); r.drags = drags.length;
+	if (!drops.length) r.defects.push("no drop blank");
+	if (drops.length !== drags.length) r.defects.push(`counts differ: drops ${drops.length} / drags ${drags.length}`);
+	const dropOpts = new Set(drops), dragOpts = new Set(drags.map((d) => optionOf(d.attrs)));
+	for (const o of dragOpts) if (!dropOpts.has(o)) r.defects.push(`drag option ${o} has no drop`);
+	for (const o of dropOpts) if (!dragOpts.has(o)) r.defects.push(`drop option ${o} has no drag`);
+	for (const d of drags) if (!visible(d.inner).trim()) r.defects.push("an empty drag");
+	for (const p of dropC.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/g)) if (!visible(p[1]).trim()) r.defects.push("a sentence with no words");
+	if (/_{4,}/.test(visible(dropC))) r.defects.push("a drawn blank (____) left in a sentence");
+	if (BTN_ON && !btnOk(w)) r.defects.push("no activityButton row");
+	if (/\[\s*[A-Za-z][^\]\n]{0,40}\]/.test(visible(w))) r.defects.push("raw [tag] in the visible text");
+	if (/loading="lazy"/.test(w)) r.defects.push('loading="lazy" inside the widget (c83)');
+	return r;
+}
+
 // ROUND 483 (KB 03B "With autoCheck"; c38 on the 1-3 / 4-6 / ECH templates): an autoCheck widget keeps ONLY the Reset button;
 // every other widget keeps the reset / undo hidden / checkAnswer hidden row
 function btnOk(w) {
@@ -132,7 +156,8 @@ function check(w) {
 	const images = /<div class="dragAndDrop[^"]*\bimages\b/.test(w);
 	const r = { layout, images, drags: 0, defects: [] };
 	if (layout === "column") return checkColumn(w, r);   // ROUND 351 — the category-sort build
-	if (layout !== "standard") return r;   // FIB / scatter / area / venn are not built by any builder — counted only
+	if (layout === "FIB") return checkFib(w, r);          // ROUND 519 — the fill-in-the-blank build
+	if (layout !== "standard") return r;   // scatter / area / venn are not built by any builder — counted only
 	const q = sub(w, "questionContainer"), dd = sub(w, "ddContainer");
 	if (q === null || dd === null) { r.defects.push("no questionContainer / ddContainer pair"); return r; }
 	const dropC = sub(dd, "dropContainer"), dragC = sub(dd, "dragContainer");
@@ -157,13 +182,13 @@ function check(w) {
 }
 
 (async () => {
-	let totW = 0, totImg = 0, totCol = 0, totDrags = 0, totDefect = 0, totAbove = 0, mods = 0, improved = false, injected = false, injectedCol = false;
+	let totW = 0, totImg = 0, totCol = 0, totFib = 0, totDrags = 0, totDefect = 0, totAbove = 0, mods = 0, improved = false, injected = false, injectedCol = false, injectedFib = false;
 	const perMod = {};   // ROUND 501: each module's built count, for the count-vs-baseline test (_verify_count.cjs)
 	for (const mod of process.argv.slice(2)) {
 		let pages;
 		try { pages = await convertModule(mod); } catch (e) { console.log(`${mod}: ERROR ${e.message}`); continue; }
 		mods++;
-		let n = 0, nImg = 0, nCol = 0, drags = 0, defect = 0; const notes = [];
+		let n = 0, nImg = 0, nCol = 0, nFib = 0, drags = 0, defect = 0; const notes = [];
 		for (const p of pages) {
 			for (let w of widgets(p.html)) {
 				if (process.env.CV2_SELFTEST_INJECT && !injected && /layout="standard"/.test(w) && /<div class="drag" option="1">/.test(w)) {
@@ -174,18 +199,22 @@ function check(w) {
 					w = w.replace('<div class="drag" option="1">', '<div class="drag" option="99">');   // ROUND 351 — no such drop column
 					injectedCol = true;
 				}
-				const r = check(w); n++; if (r.images) nImg++; if (r.layout === "column") nCol++; drags += r.drags;
+				if (process.env.CV2_SELFTEST_INJECT && !injectedFib && /layout="FIB"/.test(w) && /<div class="drag" option="1">/.test(w)) {
+					w = w.replace('<div class="drag" option="1">', '<div class="drag" option="99">');   // ROUND 519 — an unpaired FIB drag
+					injectedFib = true;
+				}
+				const r = check(w); n++; if (r.images) nImg++; if (r.layout === "column") nCol++; if (r.layout === "FIB") nFib++; drags += r.drags;
 				if (r.defects.length) { defect += r.defects.length; notes.push(`   ${p.name}: ${r.defects.join("; ")}`); }
 			}
 		}
 		const base = +(BASE[mod] || 0);
 		if (defect > base) totAbove += defect - base;
 		if (defect && defect < base) improved = true;
-		totW += n; totImg += nImg; totCol += nCol; totDrags += drags; totDefect += defect; perMod[mod] = n;
-		console.log(`${mod}: widgets ${n} (images ${nImg}, column ${nCol}); drags ${drags}; defect ${defect}${defect > base ? ` ✗ (above the recorded baseline ${base})` : defect ? ` ✓ (at the recorded baseline ${base})` : " ✓"}`);
+		totW += n; totImg += nImg; totCol += nCol; totFib += nFib; totDrags += drags; totDefect += defect; perMod[mod] = n;
+		console.log(`${mod}: widgets ${n} (images ${nImg}, column ${nCol}, FIB ${nFib}); drags ${drags}; defect ${defect}${defect > base ? ` ✗ (above the recorded baseline ${base})` : defect ? ` ✓ (at the recorded baseline ${base})` : " ✓"}`);
 		for (const l of notes.slice(0, 12)) console.log(l);
 	}
-	console.log(`TOTAL: ${totW} widget(s) across ${mods} module(s); images ${totImg}; column ${totCol}; drags ${totDrags}; defect ${totDefect}.`);
+	console.log(`TOTAL: ${totW} widget(s) across ${mods} module(s); images ${totImg}; column ${totCol}; FIB ${totFib}; drags ${totDrags}; defect ${totDefect}.`);
 	// ROUND 501 (LOOP §3 step 6): the count test — ✗ when the widget count FELL against gate_baseline.json.dragdrop.
 	const C = require("./_verify_count.cjs").countTest("dragdrop", { widgets: totW }, perMod, process.argv.slice(2));
 	console.log(totAbove ? "RESULT: defects ABOVE the recorded baseline ✗ — fix before proceeding (gate_baseline.json.dragdrop.per_module)."
