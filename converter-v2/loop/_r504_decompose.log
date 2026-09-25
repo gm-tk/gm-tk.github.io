@@ -1,0 +1,3 @@
+before (split): 6 pairs CEDT301_6_0.html 34.8 CEDT301_3_0.html 58.2 CEDT301_5_0.html 64.0 CEDT301_2_0.html 64.3 CEDT301_4_0.html 67.2 CEDT301_0_0.html 80.8 mean 61.5 >=50 5 >=75 1
+after (single): 1 pairs CEDT301_0_0.html 45.2 raw 37.4
+corpus without CEDT301: 55.5372 @ 2485

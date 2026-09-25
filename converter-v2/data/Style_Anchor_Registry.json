@@ -2719,7 +2719,8 @@
 								"lesson": "prev+next+home",
 								"final": "—"
 							},
-							"page_model": "multi-file",
+							"page_model": "single-file",
+							"_r504_note": "ROUND 504 (2026-09-25, the loop's session 49 Round 4; Chris's decision D15-17, Option A — 'One tabbed page, like every other CEDT module'): FLIPPED to single-file. CEDT301 is built as ONE Inquiry page (div.crumbs → div.inquiryPanel, KB 06 l.63 / §3.4) like every other CEDT gold (CEDT101, 102, 104, 201–204, 207, 208, 404) and like its own finished one-page gold 'CEDT301 My place and me.html'; the lower score against that one page is ACCEPTED as NAMED (Chris overrode D13-6's caveat below). The row also governs CEDT302 / 303 (no gold, no build). The gates score CEDT301 against its single file (compare_gold_pages.txt `only`). The pre-round registry (outputs/_r504_pre/) is the OFF state, the r440 precedent.",
 							"_r440_note": "ROUND 440 (2026-09-23, the loop's session 39 Round 2; Chris's decision D13-6 and ITS CAVEAT): KEPT multi-file. The level's only gold is CEDT301 (CEDT302 / 303 have none), whose folder holds 'CEDT301 My place and me.html' (one tabbed Inquiry page) beside a split set CEDT301_0.0 … _7.0. D13-6 said: build it single-file, but 'if the single-file build scores clearly worse there, record it rather than force it'. It did — the single-file build scored 45.0 % SCAFFOLD against the single gold (outputs/_r440_prescore.log) where the split build scores 57.7 % against the split gold (67.7 % without the old single-file mis-pair) — so the row was NOT changed and the finding is on LOOP_STATE.md's Needs Chris list. The gates now pair CEDT301 split-to-split, its single-file gold excluded (reference/tests/compare_gold_pages.txt)."
 						}
 					},

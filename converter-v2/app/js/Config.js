@@ -1856,7 +1856,8 @@ class Config {
 	// ROUND 501 (260620.64): THE GATE-TOOL ROUND (session 49 Round 1) — no engine change: the committed gate baseline's aggregates are written by _fastloop_diff.py / _gatecheck.py --commit; six verifiers gained the count-vs-baseline test.
 	// ROUND 502 (260620.65): D15-23 THE MX BARE LESSON MENU (session 49 Round 2) — the MXFU / MXEX / MXDB3 / MXDI3 lesson menu without the row > col-md-8 wrapper. Env MXBAREMENU_OFF.
 	// ROUND 503 (260620.66): D15-22 THE BLL2xx KNOWLEDGE / PRACTICES TABS (session 49 Round 3) — the tabbed BLL2xx overview gets the KB c67 Knowledge / Practices tabs, the empty Information tab dropped. Env BLLKPTABS_OFF.
-	static AppVersion = "260620.66";
+	// ROUND 504 (260620.67): D15-17 CEDT301 IS ONE TABBED PAGE (session 49 Round 4) — the CEDT3 row single-file + the writer's black side-tab list read as the crumb list. Env INQBLACKLIST_OFF (the registry flip's OFF = outputs/_r504_pre/).
+	static AppVersion = "260620.67";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

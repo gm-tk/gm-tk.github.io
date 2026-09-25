@@ -1,0 +1,25 @@
+re-scoring 13 affected module(s): BLL154 BLL161 BLL212 BLL224 CEDT301 ENGC204 ENGFUN02 MXEX301 OSSM401 TRR301 TWHA901 XMES103 XOTPG05
+baseline taken: 2026-09-25T07:12:15Z
+(unaffected modules unchanged by construction — corpus aggregate moves by exactly the affected-set delta)
+
+  metric                                 baseline        new     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  55.55      55.53     -0.02  REGRESSED
+  skeleton pages >=50%                       1604       1599        -5  REGRESSED
+  skeleton pages >=75%                        277        276        -1  REGRESSED
+  compare_structure exact chain             16746      16762       +16  IMPROVED
+  compare_structure EXTRA container           198        200        +2  REGRESSED
+  compare_structure missing container         888        888         0  HELD
+  body_compare ANY breakdown                  232        232         0  HELD
+  defect structurally-clean %               98.40      98.40     -0.00  REGRESSED
+  literal-[tag] leak (occ)                     52         52         0  HELD
+  literal-[tag] leak (pages)                   42         42         0  HELD
+
+  context (no pass/fail): sk_pages: 2491->2486  cs_matched: 19520->19540  body_pages: 2633->2627  df_total: 2633->2627  df_clean: 2591->2585
+
+RESULT: MOVED, ACCEPTED AS NAMED — skeleton SCAFFOLD mean %, skeleton pages >=50%, skeleton pages >=75%, compare_structure EXTRA container, defect structurally-clean %
+        Every mover was named on the command line and must be decomposed in the
+        round's changelog entry (which page, which mechanism). Recorded in the manifest.
+[commit] gate_baseline.json: every aggregate written by the tool — 10 changed: skeleton.mean_scaffold_pct 55.55 -> 55.53; skeleton.median_scaffold_pct 56.7 -> 56.6; skeleton.pages_ge_50 1604 -> 1599; skeleton.pages_ge_75 277 -> 276; skeleton.raw_mean_pct 39.5 -> 39.46; skeleton.pairs 2491 -> 2486; compare_structure.exact_chain 16746 -> 16762; compare_structure.claude_extra_container 198 -> 200; structural_defect.clean_pages 2591 -> 2585; structural_defect.total_pages 2633 -> 2627  | _meta.round 504
+[commit] fast-loop baseline PATCHED (2486 pages) + content manifest refreshed — this is now the shipped state the next inner loop measures against.
+[commit] recorded accepted named movement: skeleton SCAFFOLD mean %, skeleton pages >=50%, skeleton pages >=75%, compare_structure EXTRA container, defect structurally-clean %

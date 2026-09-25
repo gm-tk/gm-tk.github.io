@@ -1,0 +1,49 @@
+======================================================================
+ SCOPED SHIP — affected=../../outputs/_affected_r504.txt (1 modules), toggle=INQBLACKLIST_OFF
+======================================================================
+[0] toggle-exists invariant (INQBLACKLIST_OFF)
+    OK — INQBLACKLIST_OFF found in app/js (the last-shipped corpus == this toggle OFF).
+
+[1] content-hash 0-stale (mtime false-alarm defeated)
+[content-manifest] content-hash 0-stale vs _content_manifest.txt
+  affected set: 1 module(s) (must be freshly regenerated)
+  unaffected  : 542 module(s) (must be byte-identical to the manifest; mtime IGNORED)
+  OK — 0 truly stale. 1 affected regenerated; the untouched corpus is byte-identical to the manifest (mtime false-alarm defeated).
+
+[2] containment — actually-changed modules must be a subset of the affected set
+    OK — 1 changed module(s) are a subset of 1 affected (the true set ⊆ the detector set).
+
+[3] completeness spot-check (a mis-specified P is caught here)
+[spotcheck] verifying 12 non-affected modules regenerated WITH the fix ON
+  OK — all 12 sampled non-affected modules are BYTE-IDENTICAL under the fix (P's no-op claim holds on the sample).
+
+[4] exact gate proof (decomposition vs the last-ship baseline)
+re-scoring 13 affected module(s): BLL154 BLL161 BLL212 BLL224 CEDT301 ENGC204 ENGFUN02 MXEX301 OSSM401 TRR301 TWHA901 XMES103 XOTPG05
+baseline taken: 2026-09-25T07:12:15Z
+(unaffected modules unchanged by construction — corpus aggregate moves by exactly the affected-set delta)
+
+  metric                                 baseline        new     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  55.55      55.53     -0.02  REGRESSED
+  skeleton pages >=50%                       1604       1599        -5  REGRESSED
+  skeleton pages >=75%                        277        276        -1  REGRESSED
+  compare_structure exact chain             16746      16762       +16  IMPROVED
+  compare_structure EXTRA container           198        200        +2  REGRESSED
+  compare_structure missing container         888        888         0  HELD
+  body_compare ANY breakdown                  232        232         0  HELD
+  defect structurally-clean %               98.40      98.40     -0.00  REGRESSED
+  literal-[tag] leak (occ)                     52         52         0  HELD
+  literal-[tag] leak (pages)                   42         42         0  HELD
+
+  context (no pass/fail): sk_pages: 2491->2486  cs_matched: 19520->19540  body_pages: 2633->2627  df_total: 2633->2627  df_clean: 2591->2585
+
+RESULT: FAIL — REGRESSED: skeleton SCAFFOLD mean %, skeleton pages >=50%, skeleton pages >=75%, compare_structure EXTRA container, defect structurally-clean %
+        (inner-loop only — investigate before the ship checkpoint; toggle the fix OFF and re-run to isolate.)
+
+[5] baseline NOT refreshed (no --commit). To make this the new shipped state, re-run with --commit.
+
+[6] periodic full-ship backstop cadence
+[ledger] last full ship: round 498 (2026-09-25T02:45:56Z); scoped ships since: 7 (cadence 8, hard 16)
+  OK — a full-ship backstop is not yet due (1 scoped ship(s) of headroom).
+
+SCOPED SHIP: FAILED — see the log above.

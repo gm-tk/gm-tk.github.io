@@ -1465,11 +1465,56 @@ class ContentConverter {
 		const fbSuppress = new Set();   // a `tabs` bundle the scanner made of the writer's bare crumb list — never a widget
 		const fbFold = (s) => fbClean(s).toLowerCase().replace(/[^a-z0-9āēīōū]+/g, " ").trim();
 		const isFbListHeading = (it) => it.type === "tag" && it.consumedBy === undefined
-			&& /^h[1-3]$/i.test(it.parse?.primary?.tag || "") && !!fbListLabels.length
+			&& ((fbBlackList && _blCfg.any_heading_level) ? /^h[1-6]$/i : /^h[1-3]$/i).test(it.parse?.primary?.tag || "") && !!fbListLabels.length   // ROUND 504: any level for the black list
 			&& fbListLabels.some((l) => l && fbFold(l) === fbFold(it.blackAfter));
 		let fbUseContent = false;
 		let fbUseHeadings = false;
 		let fbOpenerCount = 0;
+		// ROUND 504 (Chris's D15-17 — CEDT301 one tabbed page): THE WRITER'S BLACK SIDE-TAB LIST. CEDT301's Writers Template
+		// types its crumb list as BLACK lines — `Side Tabs:` then `Tab 1 – Introduction` … `Tab 9 – Digital Collage` — where
+		// the r428 list capture below reads only red `[Tab N] label` tags, so the nine lines printed as dead paragraphs in
+		// panel 1. A side-tabs instruction (a black `Side Tabs:` line or a red `[Side Tabs]` tag) followed by >= list_min
+		// black `Tab N – label` lines numbered 1, 2, 3 … IS the writer's crumb list: its labels are the crumbs, the lines and
+		// a black instruction render nothing, and (black_list.any_heading_level) a heading of ANY level that repeats a listed
+		// label opens its panel — the writer's own H4 `Digital collage` included. A listed heading that is the FIRST heading
+		// of a panel a `[page N]` boundary opened names that panel instead of opening another (CEDT301's `[page 6]` +
+		// picture + `[H1] Hikoi around town`). Data inquiry_tabs.template_fallback.black_list; env INQBLACKLIST_OFF.
+		const _blCfg = _fbOn && _fbCfg.black_list;
+		const _blOn = !!_blCfg && _blCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_blCfg.env || "INQBLACKLIST_OFF"]);
+		let fbBlackList = false;
+		if (_blOn) {
+			const lineRe = new RegExp(_blCfg.line_pattern || "^\\s*tab\\s*(\\d+)\\s*[–—:\\-]\\s*(\\S.*)$", "i");
+			const instrRe = new RegExp(_blCfg.instruction_pattern || "^\\s*side\\s*tabs?\\s*:?\\s*$", "i");
+			// the stream as LINES: consecutive black lines reach this point joined into ONE black item ("Side Tabs:\nTab 1 –
+			// Introduction\n…" — CEDT301), so every black item contributes its non-empty lines; a tag is one entry
+			const L = [];
+			for (const it of bodyItems) {
+				if (it.type === "black") {
+					for (const ln of String(it.text || "").split(/\n/)) { const t = ln.replace(/\*/g, "").trim(); if (t) L.push({ it, t }); }
+				} else L.push({ it, tag: true });
+			}
+			const isInstr = (e) => e.tag
+				? (e.it.type === "tag" && e.it.consumedBy === undefined && /side\s*tabs?/i.test(fbBracket(e.it)) && !String(e.it.blackAfter || "").trim())
+				: instrRe.test(e.t);
+			for (let i = 0; i < L.length && !fbBlackList; i++) {
+				if (!isInstr(L[i])) continue;
+				const got = [];
+				for (let j = i + 1; j < L.length && !L[j].tag; j++) {
+					const m = lineRe.exec(L[j].t);
+					if (!m || +m[1] !== got.length + 1) break;
+					got.push({ e: L[j], label: fbClean(m[2]) });
+				}
+				if (got.length < (_fbCfg.list_min ?? 3) || !got.every((g) => g.label)) continue;
+				// consume only whole black items — an item whose other lines are content is never swallowed
+				const used = new Set([...(L[i].tag ? [] : [L[i]]), ...got.map((g) => g.e)]);
+				const items = new Set([...used].map((e) => e.it));
+				if ([...items].some((it) => L.some((e) => e.it === it && !used.has(e)))) continue;
+				for (const it of items) { it._inquiryCrumb = true; fbList.add(it); }
+				for (const g of got) fbListLabels.push(g.label);
+				fbBlackList = true;
+			}
+		}
 		if (_fbOn) {
 			// the writer's crumb LIST = the first run of >= list_min consecutive labelled [Tab N] items (blank
 			// black runs between them allowed) — the r100 capture: its labels are the crumbs, the items render
@@ -1529,6 +1574,7 @@ class ContentConverter {
 		// a `[Tab N] label` and its `[page N]` twin are ONE opener whichever comes first (BLL250 / BLL260 write both on
 		// every panel, sometimes with a writer note between them): the second of the pair only fills an empty label
 		let fbLastKind = "";
+		let fbBoundarySentinel = -1;   // ROUND 504 — the parts index of the sentinel the last [page N] / [LESSON N] boundary opened
 		const fbOpen = (label, kind) => {
 			if (kind && fbLastKind && kind !== fbLastKind) {
 				if (label && !fbLabels[fbLabels.length - 1]) fbLabels[fbLabels.length - 1] = label;
@@ -3272,7 +3318,14 @@ class ContentConverter {
 							emit(stack.pop().close);
 							if (!stack.length) breakRow();
 						}
-						if (!stack.length) { fbOpen(fbClean(it.blackAfter), "page"); pageLabelHold = ""; headingHold = false; }
+						// ROUND 504 (INQBLACKLIST_OFF): with the writer's black list in hand, a listed heading that is the FIRST heading
+						// of a panel a boundary opened names that panel rather than opening another (CEDT301 `[page 6]` + a picture +
+						// `[H1] Hikoi around town`)
+						const _fbLastS = parts.lastIndexOf(INQ_SENTINEL);
+						const _fbNames = fbBlackList && _blCfg.boundary_heading_names_panel !== false && _fbLastS >= 0 && _fbLastS === fbBoundarySentinel
+							&& !/<h[1-6]/i.test(parts.slice(_fbLastS + 1).join(""));
+						if (_fbNames) { if (!fbLabels[fbLabels.length - 1]) fbLabels[fbLabels.length - 1] = fbClean(it.blackAfter); fbBoundarySentinel = -1; }
+						else if (!stack.length) { fbOpen(fbClean(it.blackAfter), "page"); pageLabelHold = ""; headingHold = false; }
 					}
 					// ROUND 430 — a CO-TAGGED opener `[Tab 5] [H3] Using technology` (TWHA902: the heading tag wins the
 					// primary, so the r100 count never saw the tab) opens its panel in the r100 / heading-label modes
@@ -3948,6 +4001,7 @@ class ContentConverter {
 						}
 						if (!stack.length) {
 							fbOpen(fbOwnLabel(it), "page");
+							fbBoundarySentinel = parts.lastIndexOf(INQ_SENTINEL);   // ROUND 504 — the panel this boundary opened (or reused)
 							pageLabelHold = "";
 							headingHold = false;
 							break;
@@ -4010,6 +4064,7 @@ class ContentConverter {
 						}
 						if (!stack.length) {
 							fbOpen(fbOwnLabel(it), "page");
+							fbBoundarySentinel = parts.lastIndexOf(INQ_SENTINEL);   // ROUND 504 — the panel this boundary opened (or reused)
 							pageLabelHold = "";
 							headingHold = false;
 							break;

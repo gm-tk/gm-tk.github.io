@@ -1,8 +1,8 @@
 {
   "_meta": {
     "purpose": "Committed PROTECTED-gate baseline (efficiency lever 2). The shared corpus DRIFTS between sessions so the BUILD_CHANGELOG absolutes never line up exactly — without a committed baseline the only rigorous proof of hold-or-improve is a second full A/B regen pass (~8m/round). Diff THIS after a regen instead. Refresh it (and the build/round) every shipped round, AFTER the gates pass.",
-    "build": "260620.66",
-    "round": 503,
+    "build": "260620.67",
+    "round": 504,
     "date": "2026-09-25",
     "_round92_note": "Round 92 (ENGS302-01: side-alert-box-in-table + dragAndDrop activity wrapper / data-table capture / phantom-journal-button fix). Verified on a FULL 0-stale tightened regen vs the round-91 committed baseline (which matched the fast-loop baseline exactly: over 42 / any 181). PRIMARY skeleton IMPROVED (pages>=50% 524->539 +15, >=75% 65->70 +5, mean 47.8->48.2, median 49.3->49.8); compare_structure exact 5893->5902 (+9) / missing 261->252 (-9) / EXTRA 142 HELD; structural-clean 1290->1291 (95.0->95.1%) / leak 254->253 (-1) / leak pages 68->67 (-1); tags 9557/9557; flipCard divergence 0 (37/13/10/14); speechBubble defect 0. body_compare any 181->184 (+3) — the +3 over-capture (ENGC201-06, ENGR101-05, MXDB301-03) is the UNAVOIDABLE cost of capturing the dragAndDrop/activity DATA TABLE into the widget (the user's explicit fix): those tables ARE the widget's data the human BUILDS, but body_compare cannot credit Claude's un-built placeholder, and for these 3 the human keeps the table free. Net-positive per the MEASUREMENT MANDATE (judge a structural change FIRST on the skeleton, which improved +15) + the NET-POSITIVE convention. _round91_note: round 91 (ENGS302 emphasis-bullets/caption/media-url/lesson-name) shipped +1 skeleton / +1 compare exact / +2 missing.",
     "corpus": {
@@ -49,6 +49,7 @@
     "_review_2026-09-16_note": "Loop review 2026-09-16 (LOOP_REVIEW__2026-09-16.md, Chris approved): skeleton.pairs corrected 1954 -> 1955 — the field had been stale since the r343 re-baseline while every other field was refreshed; every other value unchanged (the r347 state). The committed mirror in pageforge-site/converter-v2/loop/ had not been refreshed since r340 (7 rounds) and is refreshed with this edit; LOOP §3 step 7 now requires the mirror byte-identical at every commit.",
     "_round348_note": "Round 348 (tooling: _verify_speechbubble.cjs / _verify_math.cjs read speechbubble.per_module / math.per_module and print ✓ at-or-under the baseline, ✗ only above it — LOOP §3 step 6; batch_convert.cjs oembed-cache save atomic + merged + skip-when-clean). No engine change, no regeneration: every number here is the r347 state. Refresh a per_module table when a round lowers a count (the verifier prints IMPROVED).",
     "_round349_note": "Round 349 (D10-9: every learning / success label in the module menu is the KB's <h5> colon form — constraint 23 / 01B; FULL regeneration of all 416, ledger counter 0). skeleton 51.2832->50.9655 (-0.318pp = a NAMED KB-over-gold override: the lesson half +0.063pp, the overview half Chris chose -0.375pp (BLL 87 pages); 322 moved, all inside the 715 changed pages); >=50 1074->1072 / >=75 198->159 (39 named overview pages) / >=90 15->14 (ENGI401_0_0); RAW 35.409->35.049; cs 11464/175/607 / clean 2080/2103 / leak 26/23 / body 180 / math 322/323 / speechBubble 4 all EXACT. New gate: menulabels (91 / 0).",
+    "_note_r504": "Round 504 (session 49 Round 4, 2026-09-25) — D15-17 CEDT301 ONE TABBED PAGE (INQBLACKLIST_OFF + the CEDT3 page_model): 7 pages -> 1, 6 split pairs -> 1 (45.2 %); SCAFFOLD 55.5517 @ 2491 -> 55.5331 @ 2486, >=50 -5 / >=75 -1 / EXTRA +2 / clean -0.00 ACCEPTED AS NAMED (the population change Chris accepted); cs exact +16; scoped #7.",
     "_note_r503": "Round 503 (session 49 Round 3, 2026-09-25) — D15-22 THE BLL2xx KNOWLEDGE / PRACTICES TABS (BLLKPTABS_OFF): 18 tabbed BLL2xx overviews get Knowledge / Practices tabs, the empty Information tab dropped; skeleton-blind by design (EXACT), RAW 39.48 -> 39.50; menu-only +148.1pp-sum (6 up / 12 down NAMED); scoped #6.",
     "_note_r502": "Round 502 (session 49 Round 2, 2026-09-25) — D15-23 THE MX BARE LESSON MENU (MXBAREMENU_OFF): 94 lesson pages / 11 modules lose the row > col-md-8 menu wrapper (a named series convention); SCAFFOLD 55.4588 -> 55.5517 @ 2491 (+0.0929pp), 88 movers all up; >=50 1592 -> 1604; everything else EXACT; aggregates written by _fastloop_diff.py --commit --round 502; scoped #5.",
     "_note_r353": "Round 353: the generic members rule SHIPPED OFF — the corpus is byte-identical to r352; every r352 number stands.",
@@ -198,13 +199,13 @@
     "_note_r408": "Round 408 (session 28 Task 1): the mined registries rebuilt over the 552-module gold corpus (Module_Structure_Index / Granular / 24 new Style-Anchor bases + floor-flip corrections / Menu / Convention / lexicon / feature index / legacy consensus; data/Subject_Prefix_Map.json PROPOSED). SCOPED regeneration of the 103 modules the probe named (OFF = pre snapshot 2613/2613; scoped ship #1 since the 19 Sept full). Skeleton 53.134 -> 53.680 (+0.5455pp; 275 movers 197 up / 76 down, 0 outside the set, the 1813 unaffected pairs EXACT), >=50 1378 -> 1398, >=75 228 -> 236, >=90 19 -> 20, RAW 37.487 -> 37.884; compare_structure exact 13410 -> 14091 (the text-matched pool 15668 -> 16414) / EXTRA 184 -> 186 / MISSING 685 -> 690 (inside five newly single-file WJFUN / JPFUN modules) / row-wrap 23; body_compare over-capture 54 (the 19 Sept fast-loop snapshot's own value — the re-base had carried r407's 42; corrected here), runaway 6, EMPTY 192 -> 190, ANY 250 -> 248; defect clean 2504/2548 = 98.27 (58 clean WJFUN / JPFUN extra pages left the population; defect pages 44 / leak 73 EXACT); every verifier EXACT."
   },
   "skeleton": {
-    "mean_scaffold_pct": 55.55,
-    "median_scaffold_pct": 56.7,
-    "pages_ge_50": 1604,
-    "pages_ge_75": 277,
+    "mean_scaffold_pct": 55.53,
+    "median_scaffold_pct": 56.6,
+    "pages_ge_50": 1599,
+    "pages_ge_75": 276,
     "pages_ge_90": 26,
-    "raw_mean_pct": 39.5,
-    "pairs": 2491,
+    "raw_mean_pct": 39.46,
+    "pairs": 2486,
     "_note_r494_state": "r494 (the carousel slide-table tail): SCAFFOLD 55.4051 @ 2491, RAW 39.375; 39 movers (22 up / 17 down NAMED).",
     "_note_r493_state": "r493 (the BLL closing section): SCAFFOLD 55.3885 @ 2491, RAW 39.342; 13 movers (11 up / 2 down NAMED).",
     "_note_r492_state": "r492 (the accordion panel after a table): SCAFFOLD 55.3852 @ 2491, RAW 39.340; 13 movers (10 up / 3 down NAMED).",
@@ -325,8 +326,8 @@
     "_note_r408": "Round 408: SCAFFOLD 53.1341 -> 53.6797 (+0.5455pp; 275 movers, 197 up / 76 down, pp-sum +725.6 — GEO1006_3_0 -11.3, GEO1004_1_0 -9.4, ENGS404_6_1 -8.2, PWY1001_2_3_0 -7.0, CHI1003_8_0 -5.0), >=50 1398, >=75 236, >=90 20; RAW 37.487 -> 37.884; 2349 pairs / 0 skipped. State outputs/_s28_t1_sk_final.json."
   },
   "compare_structure": {
-    "exact_chain": 16746,
-    "claude_extra_container": 198,
+    "exact_chain": 16762,
+    "claude_extra_container": 200,
     "claude_missing_container": 888,
     "row_wrap_missing": 24,
     "_note_r453": "r453: matched 18178 -> 18463 (+285 restored TRR overview / lesson elements); exact 15657 -> 15855; EXTRA 199 held; missing 796 -> 840 (+44 — all on the newly compared restored content: TRR304 lesson 1 +28 on +148 matched, the six overview introductions +2 each; the modules whose page set did not change moved +0); row-wrap 24 held. NAMED.",
@@ -414,8 +415,8 @@
     "_note_r408": "Round 408: over-capture 54 (the 19 Sept fast-loop snapshot value; gate_baseline had carried r407's 42), runaway 6, EMPTY 192 -> 190, ANY 250 -> 248 (WJFUN304); every unaffected module EXACT."
   },
   "structural_defect": {
-    "clean_pages": 2591,
-    "total_pages": 2633,
+    "clean_pages": 2585,
+    "total_pages": 2627,
     "clean_pct": 98.4,
     "literal_tag_leak_occ": 52,
     "leak_pages": 42,

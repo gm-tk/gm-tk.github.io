@@ -17,10 +17,10 @@ MXFUN01  only  MXFUN01.html
 BLL240   only  BLL240.html
 CEDT207  only  CEDT207 Me, my selfie and I.html
 
-# (a, the caveat) CEDT301 — D13-6 said build it single-file UNLESS the single-file build scores clearly worse, and it
-# did (45.0 % against the single gold vs 57.7 % split-to-split — outputs/_r440_prescore.log). It stays split, so its
-# split build is scored against its split gold; the single file never pairs with one of its lesson pages (it did, 7.4 %).
-CEDT301  exclude  CEDT301 My place and me.html
+# (a) CEDT301 — ROUND 504 (Chris's D15-17, 25 Sept 2026, Option A: "One tabbed page, like every other CEDT module"):
+# built single-file like its siblings and scored against its one-page gold; the lower score is ACCEPTED as NAMED
+# (D15-17 overrides D13-6's caveat — r440 kept it split because the single page scored 45.0 % against 57.7 %).
+CEDT301  only  CEDT301 My place and me.html
 
 # (c) CEDK501 stays split: its single file is an unfilled "Heading / Body" template, never a build of the module
 CEDK501  exclude  CEDK501 Kia Mahitahi – Idea to Action.html
