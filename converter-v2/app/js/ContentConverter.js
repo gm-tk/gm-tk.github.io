@@ -4823,8 +4823,8 @@ class ContentConverter {
 		// post-passes: every consumer that reads a box's writer id (the tile pairing, the dropbox
 		// modifier) has run, so the page's consecutive numbering is settled last.
 		const bodyHtml = this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
-			this.#pageNumberNormalise(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
-				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), r307Tiles, run))), page, run),
+			this.#pageNumberNormalise(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
+				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), r307Tiles, run))), page, run), page, run),   // ROUND 522 — #journalInstructionBox
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
 				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
 				// ROUND 265: the level-pages dialect's nav/tile labels + registry row
@@ -6056,6 +6056,12 @@ class ContentConverter {
 				const openTags = new Set(loiCfg.opening_tags ?? ["title bar", "h1", "h2", "lesson content", "page", "body", "sub head"]);
 				const listRe = /^\s*(?:[•\-–—*·o]|\d+[.)]|[a-z][.)])\s+/i;
 				const foldT = (t) => Utils.Fold(String(t || "")).replace(/[*_]/g, "").trim();
+				// ROUND 468 (data lesson_overview_implicit.lead_heading_members; env LESSONWALTH2_OFF): a lead typed
+				// as a top-level heading (`[H2] We are learning about:`) is a block MEMBER too, not only a lead.
+				const lhmCfg = loiCfg.lead_heading_members;
+				const lhmTags = lhmCfg && lhmCfg.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[lhmCfg.env ?? "LESSONWALTH2_OFF"])
+					? new Set((lhmCfg.tags ?? []).map(String)) : null;
 				const textOf = (x) => x.type === "black" ? String(x.text || "")
 					: (x.type === "tag" ? (String(x.blackAfter || "").trim() || this.#norm.RenderText(x.text) || "") : "");
 				// a LEAD line: short ("We are learning:", "You will show your understanding by:"), never a prose sentence
@@ -6074,7 +6080,7 @@ class ContentConverter {
 					const p = x.parse?.primary;
 					if (!p) return x.parse?.class === "instruction" || x.parse?.class === "noise";
 					if (p.tag === "list") return true;
-					if (["body", "sub head", "h3", "h4", "h5"].includes(p.tag)) {
+					if (["body", "sub head", "h3", "h4", "h5"].includes(p.tag) || (lhmTags && lhmTags.has(p.tag))) {
 						const lines = String(x.blackAfter || "").split(/\n/).map((l) => l.trim()).filter(Boolean);
 						const own = this.#norm.RenderText(x.text) || "";
 						return (isLeadLine(own) || !own.trim()) && lines.every((l) => isLeadLine(l) || isListLine(l));
@@ -7600,6 +7606,114 @@ class ContentConverter {
 				`Page ${page.lessonLabel}: activity number${changes.length > 1 ? "s" : ""} normalised (page_number_normalise): ${changes.join(", ")}.`);
 		}
 		return out.join("");
+	}
+
+	/** ROUND 522 (the autonomous loop's session 51 Round 2) — THE JOURNAL INSTRUCTION IS ITS OWN ACTIVITY BOX.
+	 *  A page-level post-pass run just inside #pageNumberNormalise (so the new box is numbered with the rest). A FREE
+	 *  `<p>` — the direct child of a content row's column, outside any activity / widget / alert, no class — that tells the
+	 *  learner to go to the journal and complete a named activity ("Go to your learning journal and complete 3A.",
+	 *  PES1004; "Go to your journal to complete Activity 2A", GEO1005; the AGH red-bracket sentence PageAssembler read
+	 *  as black text) is wrapped in `div.activity[number=<its first id>] > div.row > div.col-12`, together with the
+	 *  writer's journal button beside it (h4.goJournal / a > div.button — D13-5; never invented). The gold does this on
+	 *  163 of 165 such instructions (outputs/_s51_r2_jplace2.py: AGH 61/61, HES 27/27, PES 22/22, GEO 10/10, COM 9/9,
+	 *  CBI 8/8); the box heading there is the developer's own (in no Writers Template), so none is added. When the column
+	 *  holds other content the row is split around the box (the gold's own row per box); a row with a side column is
+	 *  left alone. IN-BOX: one of PageAssembler's converted red-bracket sentences (run._r522JournalTexts) that ran on as
+	 *  the LAST content of a box numbered with ANOTHER id (AGH1002 2.0: 2B inside 2A) leaves it for its own box after
+	 *  that row; a writer's black journal line inside her own box stays (HES — already the gold's form). An id the page
+	 *  already carries is never boxed again (the r369 de-dupe would shift every later id).
+	 *  Data activity_wrapper.journal_instruction_box; env JOURNALINSTR_OFF (byte-identical). */
+	static #journalInstructionBox(html, page, run) {
+		const cfg = DataService.Data.EmitTemplates?.activity_wrapper?.journal_instruction_box;
+		if (!cfg || cfg.enabled === false || !html || !/journal/i.test(html)) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "JOURNALINSTR_OFF"]) return html;
+		const jRe = new RegExp(cfg.journal_pattern, "i"), vRe = new RegExp(cfg.verb_pattern, "i"), idRe = new RegExp(cfg.id_pattern, "i");
+		const plain = (s) => String(s).replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/&#39;|&rsquo;|&lsquo;/g, "'")
+			.replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
+		const CONT = new Set(["div", "ul", "ol", "li", "table", "thead", "tbody", "tr", "td", "th", "blockquote", "section", "figure", "a", "p", "h1", "h2", "h3", "h4", "h5", "h6"]);
+		// the close of the div whose open tag ends at `from` (depth counted over div tags only)
+		const divClose = (s, from) => {
+			const re = /<(\/?)div\b[^>]*>/gi; re.lastIndex = from; let d = 1, m;
+			while ((m = re.exec(s)) !== null) { d += m[1] ? -1 : 1; if (d === 0) return { start: m.index, end: m.index + m[0].length }; }
+			return null;
+		};
+		const skip = new Set();   // p starts already judged unboxable (a side column) — never re-judged
+		const find = (s) => {
+			const re = /<(\/?)([a-zA-Z][a-zA-Z0-9]*)\b([^>]*)>/g; const stack = []; let m;
+			while ((m = re.exec(s)) !== null) {
+				const tag = m[2].toLowerCase();
+				if (!CONT.has(tag) || /\/$/.test(m[3])) continue;
+				if (m[1]) { const k = stack.map((x) => x.tag).lastIndexOf(tag); if (k >= 0) stack.length = k; continue; }
+				const isDiv = (x, re) => x && x.tag === "div" && re.test(x.cls);
+				// FREE: the column's own child; IN-BOX: the last child of an activity box numbered with ANOTHER id (the
+				// writer's sentence ran on inside the box before it — AGH1002 2.0's 2B inside 2A)
+				const free = stack.length === 2, inBox = stack.length === 5 && isDiv(stack[2], /\bactivity\b/)
+					&& isDiv(stack[3], /\brow\b/) && isDiv(stack[4], /\bcol-/);
+				if (tag === "p" && (free || inBox) && !skip.has(m.index) && !/\bclass\s*=/.test(m[3])
+					&& isDiv(stack[0], /\brow\b/) && isDiv(stack[1], /\bcol-/)) {
+					const pClose = s.indexOf("</p>", m.index);
+					if (pClose > 0) {
+						const text = plain(s.slice(m.index, pClose));
+						const w = text.split(" ").filter(Boolean).length;
+						const idm = idRe.exec(text);
+						const id = idm ? idm[1] + idm[2].toUpperCase() : "";
+						const mine = run?._r522JournalTexts?.has(text.replace(/[*_]/g, "").replace(/\s+/g, " ").trim().toLowerCase());
+						if (idm && jRe.test(text) && vRe.test(text) && w >= (cfg.min_words ?? 5) && w <= (cfg.max_words ?? 40)
+							&& (free || (mine && String(stack[2].num).toUpperCase() !== id))
+							// the page already has that id: the r369 de-dupe gives the new box the next free letter — harmless when
+							// no activity box follows it (the gold's own form: AGH1009 7.0 7A → its journal box 7B), a shift of
+							// every later id when one does (never)
+							&& !(new RegExp(`\\bnumber="${id}"`, "i").test(s)
+								&& /<div class="(?:[^"]*\s)?activity(?:\s[^"]*)?"[^>]*? number="/.test(s.slice(pClose))))
+							return { pStart: m.index, pEnd: pClose + 4, row: stack[0], col: stack[1], box: inBox ? stack : null, id, text };
+					}
+				}
+				stack.push({ tag, cls: (/\bclass="([^"]*)"/.exec(m[3]) ?? [])[1] ?? "", num: (/\bnumber="([^"]*)"/.exec(m[3]) ?? [])[1] ?? "", start: m.index, end: m.index + m[0].length });
+			}
+			return null;
+		};
+		const BTN_AFTER = /^\s*(?:<h4 class="goJournal">[\s\S]*?<\/h4>|<a\b[^>]*>\s*<div class="button">[\s\S]*?<\/div>\s*<\/a>)/;
+		const BTN_BEFORE = /(?:<h4 class="goJournal">[^<]*<\/h4>|<a\b[^>]*>\s*<div class="button">[^<]*<\/div>\s*<\/a>)\s*$/;
+		let out = html, guard = 0;
+		for (let c = find(out); c && guard < 40; c = find(out), guard++) {
+			if (c.box) {
+				// IN-BOX: the sentence (+ its button) must be the box's LAST content, the box the last thing in its column,
+				// and something must stay in the box; it then leaves the box for its own row right after the box's row
+				const inner = c.box[4], act = c.box[2];
+				const innerClose = divClose(out, inner.end), actClose = divClose(out, act.end);
+				const colClose = divClose(out, c.col.end), rowClose = divClose(out, c.row.end);
+				if (!innerClose || !actClose || !colClose || !rowClose) { skip.add(c.pStart); continue; }
+				let segStart = c.pStart, segEnd = c.pEnd;
+				const a = BTN_AFTER.exec(out.slice(segEnd, innerClose.start)); if (a) segEnd += a[0].length;
+				const b = BTN_BEFORE.exec(out.slice(inner.end, segStart)); if (b) segStart -= b[0].length;
+				if (out.slice(segEnd, innerClose.start).trim() || !out.slice(inner.end, segStart).trim()
+					|| out.slice(actClose.end, colClose.start).trim()) { skip.add(c.pStart); continue; }
+				const box = Utils.FillTemplate(cfg.box_open, { id: c.id }) + "\n" + out.slice(segStart, segEnd).trim() + "\n" + cfg.box_close;
+				const colTag = out.slice(c.col.start, c.col.end);
+				out = out.slice(0, segStart).replace(/\s+$/, "") + "\n" + out.slice(segEnd, rowClose.end)
+					+ "\n<div class=\"row\">\n" + colTag + "\n" + box + "\n</div>\n</div>" + out.slice(rowClose.end);
+				if (run && typeof run.AddNote === "function")
+					run.AddNote("info", "ContentConverter", `Page ${page?.lessonLabel ?? "?"}: the journal instruction "${c.text.slice(0, 70)}" left activity ${act.num} for its own box ${c.id} (journal_instruction_box).`);
+				continue;
+			}
+			const colClose = divClose(out, c.col.end), rowClose = divClose(out, c.row.end);
+			if (!colClose || !rowClose || /<div\b/i.test(out.slice(colClose.end, rowClose.start))) { skip.add(c.pStart); continue; }
+			let segStart = c.pStart, segEnd = c.pEnd;
+			const a = BTN_AFTER.exec(out.slice(segEnd, colClose.start)); if (a) segEnd += a[0].length;
+			const b = BTN_BEFORE.exec(out.slice(c.col.end, segStart)); if (b) segStart -= b[0].length;
+			const box = Utils.FillTemplate(cfg.box_open, { id: c.id }) + "\n" + out.slice(segStart, segEnd).trim() + "\n" + cfg.box_close;
+			const before = out.slice(c.col.end, segStart), after = out.slice(segEnd, colClose.start);
+			const rowTag = out.slice(c.row.start, c.row.end), colTag = out.slice(c.col.start, c.col.end);
+			let rep;
+			if (!before.trim() && !after.trim()) rep = out.slice(c.row.start, c.col.end) + "\n" + box + "\n" + out.slice(colClose.start, rowClose.end);
+			else rep = (before.trim() ? out.slice(c.row.start, c.col.end) + before.replace(/\s+$/, "") + "\n</div>\n</div>\n<div class=\"row\">\n" : rowTag + "\n")
+				+ colTag + "\n" + box + "\n</div>\n</div>"
+				+ (after.trim() ? "\n<div class=\"row\">\n" + colTag + "\n" + after.replace(/^\s+/, "") + (/\n$/.test(after) ? "" : "\n") + out.slice(colClose.start, rowClose.end) : "");
+			out = out.slice(0, c.row.start) + rep + out.slice(rowClose.end);
+			if (run && typeof run.AddNote === "function")
+				run.AddNote("info", "ContentConverter", `Page ${page?.lessonLabel ?? "?"}: the journal instruction "${c.text.slice(0, 70)}" boxed as activity ${c.id} (journal_instruction_box).`);
+		}
+		return out;
 	}
 
 	/** ROUND 307 — half two, THE PAIRING POST-PASS (the round-305 dropbox-postpass

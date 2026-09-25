@@ -1,0 +1,84 @@
+JACT	AGH1001	1.0	primary=activity	cls=tag	nums=["1a"]	tags=["activity"]	[Complete activity 1A in your Learners Journal]	|after=	| next tag:important:[Alert solid Summary]
+JACT	AGH1001	2.0	primary=activity	cls=tag	nums=["2a","2b"]	tags=["activity"]	[Watch these videos and complete the activity 2A and 2B in your learning journal	|after=	| next -
+JACT	AGH1001	3.0	primary=activity	cls=tag	nums=["3a"]	tags=["activity"]	[Go to your learning journal and complete activity 3A]	|after=	| next tag:important:[Alert solid: Summary]
+JACT	AGH1001	4.0	primary=button	cls=tag	nums=["4a","4b"]	tags=["button","activity"]	[Button: Complete activity 4A and 4B in your Learners Journal]	|after=	| next -
+JACT	AGH1001	5.0	primary=activity	cls=tag	nums=["5a","5b"]	tags=["activity"]	[Complete activity 5A and 5B in your Learners Journal]	|after=	| next -
+JACT	AGH1002	2.0	primary=activity	cls=tag	nums=["2b"]	tags=["activity"]	[Go to your learning journal and complete activity 2B}	|after=	| next tag:h3:Soil Structure
+JACT	AGH1002	2.0	primary=activity	cls=tag	nums=["2c"]	tags=["activity"]	[Go to your learning journal and complete activity 2C]	|after=	| next tag::[Summary]
+JACT	AGH1002	3.0	primary=activity	cls=tag	nums=["3a"]	tags=["activity"]	[Go to your learning journal and complete activity 3A].	|after=	| next tag:h3:Respiration
+JACT	AGH1002	3.0	primary=activity	cls=tag	nums=["3b"]	tags=["activity"]	[Go to you learning journal and complete activity 3B]	|after=	| next tag::[Summary]
+JACT	AGH1002	4.0	primary=activity	cls=tag	nums=["4b","4c"]	tags=["activity"]	[Go to your learning journal and complete activity 4B and 4C]	|after=	| next tag::[Summary]
+JACT	AGH1002	5.0	primary=activity	cls=tag	nums=["5c"]	tags=["activity"]	[Complete activity 5C in your learning journal]	|after=	| next tag::[Summary]
+JACT	AGH1003	2.0	primary=activity	cls=tag	nums=["2x"]	tags=["activity"]	[Complete activity 2X in your learning journal]	|after=	| next tag::[Summary]
+JACT	AGH1003	3.0	primary=activity	cls=tag	nums=["3x"]	tags=["activity"]	[Go to your learning journal and complete activity 3X]	|after=	| next tag:body:[Body]
+JACT	AGH1003	4.0	primary=activity	cls=tag	nums=["4x"]	tags=["activity"]	[Go to your learning journal and complete activity 4X]	|after=	| next tag:h3:Adding Effluent
+JACT	AGH1003	4.0	primary=button	cls=tag	nums=["4x"]	tags=["button","activity"]	[Button][Go to your leaners journal and complete activity 4X]	|after=	| next tag::[Summary]
+JACT	AGH1003	5.0	primary=activity	cls=tag	nums=["5x"]	tags=["activity"]	[Go to your learning journal and complete activity 5X]	|after=	| next tag::[Summary]
+JACT	AGH1003	6.0	primary=activity	cls=tag	nums=["5x"]	tags=["activity"]	[Go to your learning journal and complete activity 5X]	|after=	| next tag::[Summary]
+JACT	AGH1003	7.0	primary=activity	cls=tag	nums=["7x"]	tags=["activity"]	[Go to your learning journal and complete activity 7X]	|after=	| next tag::[Summary]
+JACT	AGH1004	1.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 1A in your learning journal	|after=	| next tag:important:[Alert solid summary]
+JACT	AGH1004	2.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 2A in your learning journal	|after=	| next tag:h3:Topography Challenges and Impact on the Land
+JACT	AGH1004	2.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 2B in your learning journal	|after=	| next tag:h3:Intensive vs Extensive farming
+JACT	AGH1004	3.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 3A in your learning journal.	|after=	| next tag:h3:**Climatic Challenges**
+JACT	AGH1004	3.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 3B in your learning journal	|after=	| next black::Ultimately farmers are going to need to adapt thei
+JACT	AGH1004	4.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 4A in your learning journal.	|after=	| next tag:important:[Alert solid summary]
+JACT	AGH1004	6.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 5A in your learning journal.	|after=	| next tag:important:[Alert solid summary]
+JACT	AGH1005	0.0	primary=button	cls=tag	nums=["2"]	tags=["button","h2"]	[Button] Complete activity 1A in your learning journal. [H2]	|after=**Hononga | Connections**	| next tag::In this section outline any connections this modul
+JACT	AGH1005	1.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 1A in your learning journal.	|after=	| next tag:important:[Alert solid summary]
+JACT	AGH1005	2.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 2A in your learning journal.	|after=	| next tag:h3:Fruits and Seeds
+JACT	AGH1005	2.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 2B and 2C in your learning journal.	|after=	| next tag:drag and drop:see link
+JACT	AGH1005	3.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 3A in your learning journal.	|after=	| next tag:important:[Alert solid summary]
+JACT	AGH1005	4.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 4A in your learning journal.	|after=	| next tag:important:[Alert solid summary]
+JACT	AGH1005	5.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 5A in your learning journal.	|after=	| next tag:h3:Knowledge check:
+JACT	AGH1005	6.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 6A in your learning journal.	|after=	| next tag:important:[Alert solid summary]
+JACT	AGH1005	7.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 7A in your learning journal	|after=	| next tag:important:[Alert solid summary]
+JACT	AGH1005	8.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 8A in your learning journal.	|after=	| next tag:important:[Alert solid summary]
+JACT	AGH1006	1.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 1A in your learning journal.	|after=	| next tag:button:AGHFUN 01 Brainstorms and Mind Maps
+JACT	AGH1006	2.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 2A in your learning journal.	|after=	| next tag:h3:How to propagate from a cutting
+JACT	AGH1006	2.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 2B in your learning journal.	|after=	| next tag:h3:How to Propagate from Grafting
+JACT	AGH1006	4.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 3A in your learning journal.	|after=	| next tag:important:[Alert solid summary]
+JACT	AGH1006	5.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 4A and 4B in your learning journal.	|after=	| next tag:important:[Alert solid summary]
+JACT	AGH1006	6.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 5A in your learning journal.	|after=	| next tag:h3:Weed Control
+JACT	AGH1006	6.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 5B in your learning journal.	|after=	| next tag:important:[Alert solid summary]
+JACT	AGH1006	8.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 6A in your learning journal.	|after=	| next tag:h3:Integrated Pest Management or IPM
+JACT	AGH1006	8.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 6B in your learning journal.	|after=	| next tag:important:[Alert solid summary]
+JACT	AGH1007	3.0	primary=activity	cls=tag	nums=["1a","1b"]	tags=["activity"]	[Go to your Leaners Journal and complete activity 1A and 1B]	|after=	| next -
+JACT	AGH1007	4.0	primary=activity	cls=tag	nums=["2a","2b","2c"]	tags=["activity"]	[Go to your Leaners Journal and complete activity 2A, 2B and 2C]	|after=	| next tag::[Summary]
+JACT	AGH1007	5.0	primary=activity	cls=tag	nums=["3a"]	tags=["activity"]	[Go to your Leaners Journal and complete activity 3A]	|after=	| next tag::[Summary]
+JACT	AGH1007	6.0	primary=activity	cls=tag	nums=["4a","4b"]	tags=["activity"]	[Go to your Learners Journal and complete activity 4A and 4B]	|after=	| next tag::[Summary]
+JACT	AGH1007	7.0	primary=activity	cls=tag	nums=["5a","5b"]	tags=["activity"]	[Go to your leaners journal and complete activity 5A and 5B]	|after=	| next tag::[Summary]
+JACT	AGH1007	9.0	primary=activity	cls=tag	nums=["6a","6b"]	tags=["activity"]	[Go to your learning journal and complete activity 6A and 6B]	|after=	| next tag:image:[Image]
+JACT	AGH1008	1.0	primary=-	cls=instruction	nums=[]	tags=[]	then go to your learning journal and complete activity 1A.	|after=	| next tag:video:[Video]
+JACT	AGH1008	2.0	primary=activity	cls=tag	nums=["2a"]	tags=["activity"]	[Go to your learning journal and complete activity 2A].	|after=	| next tag::[Summary]
+JACT	AGH1008	3.0	primary=activity	cls=tag	nums=["2c"]	tags=["activity"]	[Go to your learning journal and complete activity 2C.]	|after=	| next tag:h3:Grazing Systems
+JACT	AGH1008	4.0	primary=activity	cls=tag	nums=["3a"]	tags=["activity"]	[Go to your learning journal and complete activity 3A.]	|after=	| next tag:h3:Breeds and Breed Selection
+JACT	AGH1008	4.0	primary=activity	cls=tag	nums=["3b"]	tags=["activity"]	[Go to your learning journal and complete activity 3B.]	|after=	| next tag::[Summary]
+JACT	AGH1008	5.0	primary=activity	cls=tag	nums=["3c"]	tags=["activity"]	[Go to your learning journal and complete activity 3C.]	|after=	| next tag:h3:Artificial Insemination
+JACT	AGH1008	8.0	primary=activity	cls=tag	nums=["4c"]	tags=["activity"]	[Go to your learning journal and complete activity 4C.]	|after=	| next tag::[Summary]
+JACT	AGH1009	1.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 1A in your journal	|after=	| next tag:h3:Different perspectives
+JACT	AGH1009	2.0	primary=button	cls=tag	nums=[]	tags=["button"]	[Button] Complete activity 2A in your learning journal	|after=	| next tag:important:[Alert solid summary]
+JACT	AGH1009	3.0	primary=activity	cls=tag	nums=["3a"]	tags=["activity"]	[Go to your learning journal and complete activity 3A]	|after=	| next tag:important:[Alert solid summary]
+JACT	AGH1009	4.0	primary=activity	cls=tag	nums=["4a","4b"]	tags=["activity"]	[Go to your learning journal and complete activity 4A and 4B]	|after=	| next tag:important:[Alert Solid Summary]
+JACT	AGH1009	5.0	primary=activity	cls=tag	nums=["5a"]	tags=["activity"]	[Go to your learning journal and complete activity 5A]	|after=	| next tag:important:[Alert Solid Summary]
+JACT	AGH1009	6.0	primary=activity	cls=tag	nums=["6a"]	tags=["activity"]	[Go to your learning journal and complete activity 6A]	|after=	| next tag:h3:Minimum or no-tillage cultivation
+JACT	AGH1009	6.0	primary=activity	cls=tag	nums=["6b"]	tags=["activity"]	[Go to your learning journal and complete activity 6B]	|after=	| next tag:important:[Alert solid summary]
+JACT	AGH1009	7.0	primary=activity	cls=tag	nums=["7a"]	tags=["activity"]	[Go to your journal and complete activity 7A]	|after=	| next tag:important:[Alert Solid Summary]
+JACT	AGH1009	8.0	primary=activity	cls=tag	nums=["8a"]	tags=["activity"]	[Go to your learners journal and complete activity 8A]	|after=	| next tag:important:[Alert Solid Summary]
+JACT	AGH1009	9.0	primary=activity	cls=tag	nums=["9a","9b"]	tags=["activity"]	[Go to your learners journal and complete activity 9A and 9B]	|after=	| next tag:important:[Alert Solid Summary]
+JACT	CEDT207	0.0	primary=activity	cls=tag	nums=["1a"]	tags=["activity","activity"]	[Journal activity – Activity 1A]	|after=	| next black::Record the answers to the following questions:
+JACT	CEDT301	0.0	primary=activity	cls=tag	nums=["1a"]	tags=["activity"]	[Journal Activity 1A]	|after=	| next black::Record the answers to the following questions:
+JACT	CEDT301	0.0	primary=activity	cls=tag	nums=["1b"]	tags=["activity"]	[Journal Activity 1B]	|after=	| next black::Paste or upload your photo(s) here.
+JACT	CEDT301	0.0	primary=activity	cls=tag	nums=["2a"]	tags=["activity"]	[Journal Activity 2A]	|after=	| next black::Record the answers to the following questions:
+JACT	COM1005	3.0	primary=activity	cls=tag	nums=["3c"]	tags=["activity"]	[Activity 3C] Copy Activity 2A of ECO1004 in the module as well as in the learni	|after=https://tekura.desire2learn.com/d2l/le/c	| next tag::]
+JACT	COM1005	4.0	primary=activity	cls=tag	nums=["3a","3b","3","1004"]	tags=["activity","answer","answer"]	[Copy Activity 3A and 3B from lesson 3 of ECO1004 here in the module as well as 	|after=	| next -
+JACT	COM1005	5.0	primary=activity	cls=tag	nums=["5b"]	tags=["activity"]	[Activity 5B] Copy Activity 5A from ECO1004. Number it as 5B. Copy it in the lea	|after=https://docs.google.com/document/d/1PU97	| next tag::#
+JACT	ENGS302	1.0	primary=activity	cls=tag	nums=["1b"]	tags=["activity"]	[Activity 1B Learning Journal]	|after=What happens when?	| next tag:body:You’re now going to download the Learning Journal 
+JACT	ENGS302	1.0	primary=activity	cls=tag	nums=["1c"]	tags=["activity"]	[Activity 1C Learning Journal]	|after=**Identifying the Conflict**	| next black::**Main Conflict:** The conflict is the main proble
+JACT	ENGS302	1.0	primary=activity	cls=tag	nums=["1d"]	tags=["activity"]	[Activity 1D Learning Journal]	|after=**Understanding the Resolution**	| next black::**Resolution:** The resolution is how the problem 
+JACT	HPRE203	5.0	primary=-	cls=instruction	nums=[]	tags=[]	DEV: Note: please insert the graph created into learning journal for activity 5B	|after=	| next tag:body:Use the graph above to answer the following questi
+JACT	JPN1004	2.0	primary=-	cls=instruction	nums=[]	tags=[]	(use current workbook activity 2B in the journal)	|after=	| next black::Merge item 3:
+JACT	JPN1004	2.0	primary=-	cls=instruction	nums=[]	tags=[]	Current workbook Activity 2A Writing Practice becomes Learning Journal Activity 	|after=	| next black::https://tekura.desire2learn.com/content/enforced/1
+JACT	JPN1004	2.0	primary=-	cls=instruction	nums=[]	tags=[]	(use current workbook activity 2B in the journal)	|after=	| next black::Merge item 4:
+JACT	JPN1004	2.0	primary=-	cls=instruction	nums=[]	tags=[]	Current workbook Activity 2B Writing Practice becomes Learning Journal Activity 	|after=	| next black::https://tekura.desire2learn.com/content/enforced/1
+JACT	JPN1004	5.0	primary=-	cls=instruction	nums=[]	tags=[]	Current Activity 7B Writing sentences – Journal Activity – include the picture a	|after=	| next tag:activity:: Activity 5B ねずみ は どこ です か。Where are the mice?
+JACT	PES1001	5.0	primary=button	cls=tag	nums=[]	tags=["button"]	Learning Journal activity 5C – checkpoint review [Button] Go to your learning jo	|after=	| next -

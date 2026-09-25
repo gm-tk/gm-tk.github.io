@@ -1872,7 +1872,8 @@ class Config {
 	// ROUND 519 (260620.80): THE DRAG-AND-DROP FILL-IN-THE-BLANK FORM (session 50 Round 12): red answers inside black sentences -> KB 03B FIB; one answer at every line's end -> the Standard matching form. Env DDFIB_OFF.
 	// ROUND 520 (260620.81): THE FIB FORM'S REMAINDER (session 50 Round 13): symbol answers, a trailing KB button tag, the prose after the questions, the sentence's full stop out of the drag. Env DDFIBREST_OFF.
 	// ROUND 521 (260620.82): THE NEW ACTIVITY ID ENDS THE WALK (session 50 Round 15): a follower whose own bracket names a different activity id opens its own bundle. Env ACTIDSPLIT_OFF.
-	static AppVersion = "260620.82";
+	// ROUND 522 (260620.83): THE JOURNAL INSTRUCTION IS ITS OWN ACTIVITY BOX (session 51 Round 2) + the AGH [Summary] alert + the r468 ride-along. Env JOURNALINSTR_OFF / SUMMARYALERT_OFF / LESSONWALTH2_OFF.
+	static AppVersion = "260620.83";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -84,6 +84,69 @@ class PageAssembler {
 	};
 
 	/**
+	 * ROUND 522 (the autonomous loop's session 51 Round 2) — THE WRITER'S RED-BRACKET JOURNAL SENTENCE IS
+	 * LEARNER TEXT, NOT AN [Activity] OPENER. `[Go to your learning journal and complete activity 2B]` (the AGH
+	 * family, 36 spans / 6 modules) parses with the activity tag and its id, so the converter opened a box
+	 * numbered 2B, stripped the ids into a garbled Writers Note ("…complete and" — a KB constraint-1 breach) and
+	 * left the box EMPTY or let it swallow the next section (AGH1002 2.0 'Soil Structure'). The gold renders the
+	 * sentence as the learner's instruction inside its own activity box (61 / 61 in AGH). Here — once, before the
+	 * split, the scanner and the converter read the stream — a tag item whose ONLY tag is the activity tag and whose
+	 * bracket is a journal SENTENCE (the data patterns, min_words..max_words) becomes a native black item holding
+	 * the writer's words, brackets stripped (a trailing '}' typo too); ContentConverter's #journalInstructionBox
+	 * then gives it its box. Data activity_wrapper.journal_instruction_box.bracket_sentence; env JOURNALINSTR_OFF.
+	 */
+	static #journalBracketSentence(items, run) {
+		const cfg = DataService.Data.EmitTemplates?.activity_wrapper?.journal_instruction_box;
+		if (!cfg || cfg.enabled === false || cfg.bracket_sentence === false) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "JOURNALINSTR_OFF"]) return;
+		const jRe = new RegExp(cfg.journal_pattern, "i"), vRe = new RegExp(cfg.verb_pattern, "i"), idRe = new RegExp(cfg.id_pattern, "i");
+		let n = 0;
+		for (const it of items) {
+			if (!it || it.type !== "tag" || it.parse?.primary?.tag !== "activity" || (it.parse.tags ?? []).length !== 1) continue;
+			const inner = String(it.text ?? "").replace(/^\s*\[/, "").replace(/[\]}]\s*$/, "").trim();
+			if (/[[\]{}]/.test(inner)) continue;   // a second bracket inside: not one sentence
+			const words = inner.split(/\s+/).filter(Boolean).length;
+			if (words < (cfg.min_words ?? 5) || words > (cfg.max_words ?? 40)) continue;
+			if (!jRe.test(inner) || !vRe.test(inner) || !idRe.test(inner)) continue;
+			const tail = String(it.blackAfter ?? "");
+			it.type = "black";
+			it.text = inner + (tail.trim() ? (/^\s*[.,;:!?]/.test(tail) ? tail.trim() : " " + tail.trim()) : "");
+			delete it.parse; delete it.blackAfter;
+			it._r522Journal = true;
+			// the post-pass moves ONLY these sentences out of a box numbered with another id (a writer's black journal line
+			// inside her own activity box stays there — the HES form, already the gold's)
+			(run._r522JournalTexts ??= new Set()).add(it.text.replace(/[*_]/g, "").replace(/\s+/g, " ").trim().toLowerCase());
+			n++;
+		}
+		if (n) run.AddNote("info", "PageAssembler",
+			`${n} red-bracket journal instruction${n > 1 ? "s" : ""} read as the learner's sentence, not an [Activity] opener (journal_instruction_box.bracket_sentence).`);
+	}
+
+	/**
+	 * ROUND 522 part 2 — THE WRITER'S BARE [Summary] IS AN ALERT BOX TITLED 'Summary' (the AGH family's own tag: 31 spans,
+	 * every one AGH; the gold boxes the whole run as `div.alert` headed `<h4>Summary</h4>`, 83 / 83 blocks). The span resolves
+	 * to no tag, so it shipped as a Writers Note with the bullets free. Here it is re-parsed as the data's retag_as (the
+	 * plain alert callout) with the tag word as its first content line: the ordinary strict alert path gathers the run and
+	 * #alertTitleHeading lifts that short first line to the h4. Data callouts.bare_summary_alert; env SUMMARYALERT_OFF.
+	 */
+	static #bareSummaryAlert(items, run, normaliser) {
+		const cfg = DataService.Data.EmitTemplates?.callouts?.bare_summary_alert;
+		if (!cfg || cfg.enabled === false || !normaliser) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "SUMMARYALERT_OFF"]) return;
+		const re = new RegExp(cfg.pattern, "i");
+		let n = 0;
+		for (const it of items) {
+			if (!it || it.type !== "tag" || it.parse?.primary || !re.test(String(it.text ?? ""))) continue;
+			const parse = normaliser.Parse(cfg.retag_as);
+			if (!parse?.primary) continue;
+			it.parse = parse; it.text = cfg.retag_as;
+			it.blackAfter = cfg.title + (String(it.blackAfter ?? "").trim() ? " " + String(it.blackAfter).trim() : "");
+			n++;
+		}
+		if (n) run.AddNote("info", "PageAssembler", `${n} bare [Summary] tag${n > 1 ? "s" : ""} read as an alert titled '${cfg.title}' (callouts.bare_summary_alert).`);
+	}
+
+	/**
 	 * Converts ONE module end-to-end: the single entry point that turns an
 	 * already-extracted Writers Template (run.wtBlocks, parsed by an earlier
 	 * pipeline stage) into finished, ready-to-save HTML pages plus the
@@ -142,6 +205,8 @@ class PageAssembler {
 
 		// ---- [5] split into pages -----------------------------------------
 		const items = PageSplitter.BuildItemStream(run.wtBlocks, normaliser);
+		PageAssembler.#journalBracketSentence(items, run);   // ROUND 522 — before the split, the scanner and the converter all read the item
+		PageAssembler.#bareSummaryAlert(items, run, normaliser);   // ROUND 522 part 2 (SUMMARYALERT_OFF)
 		run.pages = PageSplitter.Split(items, run, normaliser);
 		if (!run.pages.length) {
 			run.AddNote("error", "PageAssembler",

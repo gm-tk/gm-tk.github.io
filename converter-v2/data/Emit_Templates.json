@@ -703,7 +703,15 @@
 		}
 	},
 	"callouts": {
-		"rule": "One container algorithm serves every callout — only the class differs (a lookup, not logic). Modifier keywords append their class.",
+		"bare_summary_alert": {
+			"_doc": "ROUND 522 part 2 (the autonomous loop's session 51 Round 2; its own delta, SUMMARYALERT_OFF). THE WRITER'S BARE [Summary] IS AN ALERT BOX TITLED 'Summary'. The bare red `[Summary]` resolves to no tag (the recognition census: 31 spans, every one in the AGH family — AGH1002 / 1003 / 1007 / 1008), so it shipped as a 'Writers Note: [Summary]' with the bullets free (or, before r522, inside the mis-parsed journal box). The gold puts every following block in `div.alert > div.row > div.col-12` headed `<h4>Summary</h4>` (outputs/_s51_r2_summary.py: 83 / 83 matched blocks in body:alert) — the tag word is the title. PageAssembler re-parses the span as retag_as and makes the tag word its first content line; the ordinary strict alert path gathers the run and #alertTitleHeading lifts the short first line to the h4. A family dialect keyed on the writer's own tag (§1d exception 1: 31 pages / 4 modules, the family's gold 1.00).",
+			"enabled": true,
+			"env": "SUMMARYALERT_OFF",
+			"pattern": "^\\s*\\[\\s*summary\\s*\\]\\s*$",
+			"retag_as": "[Alert]",
+			"title": "Summary"
+		},
+		"rule":"One container algorithm serves every callout — only the class differs (a lookup, not logic). Modifier keywords append their class.",
 		"side_column_backward_pair": true,
 		"side_column_backward_pair_note": "ROUND 123 (Chris, the round-122 logged follow-up). A side_column callout ([Side alert] → alertActivity) is the RIGHT sibling of the immediately-preceding col-md-8 main-content column, in ONE shared <div class=\"row\"> — the human convention, measured 99/100 across the 43 [side alert] modules (`outputs/_measure_sidealert_pairing.py`; only BLL160 has 1 own-row, the 1% editorial exception). Round 122 freed the side alerts from widget absorption but rendered them in their OWN row, dipping the skeleton on own-row-vs-side-by-side placement. ContentConverter's callout emit site detects that rowFor(\"section\") has just closed the preceding content row (parts ends with content_row_close = close col-md-8 + close row), un-closes it, appends #sideAlertCol as the right-sibling col, and re-closes the row. The col-md-8 default content col already matches the human; the EXACT side width (col-md-4 dominant 48 vs col-md-3 44) stays editorial. Falls back to the round-122 own-row form when there is no preceding content row (page-start / consecutive alerts). General + data-described: any future side_column callout pairs the same way. Env SIDEPAIR_OFF reverts to own-row (independent of SIDEALERT_OFF, which reverts the class entirely).",
 		"flowing_tags": [
@@ -1155,6 +1163,19 @@
 			"env": "NUMNORM_OFF",
 			"majority_digit": true,
 			"dedupe_letters": true
+		},
+		"journal_instruction_box": {
+			"_doc": "ROUND 522 (the autonomous loop's session 51 Round 2). THE JOURNAL INSTRUCTION IS ITS OWN ACTIVITY BOX. Measured over the gate's pairs (outputs/_s51_r2_jplace2.py): of 165 gold blocks that tell the learner to go to the journal and complete a named activity ('Go to your learning journal and complete 3A.', 'Complete activity 4A in your journal.'), 163 sit inside their OWN activity box numbered with that id (AGH 61/61, HES 27/27, PES 22/22, GEO 10/10, COM 9/9, CBI 8/8 …); Claude boxed them only where the writer's own [Activity] tag did (HES). Two parts. (1) bracket_sentence — the writer's red-bracket form `[Go to your learning journal and complete activity 2B]` (AGH) parsed as an [Activity] OPENER: its ids were stripped into a garbled Writers Note ('…complete and' — a KB constraint-1 breach) and the box stayed EMPTY or swallowed the next section (AGH1002 2.0 'Soil Structure'). Right after the item stream is built (PageAssembler), such a span — an activity parse whose bracket is a journal SENTENCE (journal_pattern + verb_pattern + id_pattern, min_words..max_words, no other tag) — becomes the writer's black sentence, brackets stripped, words verbatim. (2) the page post-pass (ContentConverter, before #pageNumberNormalise): a FREE <p> (its column's own child, outside any activity / widget / alert) that is a journal instruction naming an id is wrapped in `div.activity[number=<the first id>] > div.row > div.col-12`, together with an adjacent writer journal button (h4.goJournal or a.button — never invented, D13-5); the row is split around it when the column holds other content; a row with a side column is left alone. The gold's box heading is the developer's own (not in any Writers Template) — never invented. Env JOURNALINSTR_OFF reverts both (JOURNALBOX_OFF is round 405's journal-SECTION box, a different rule).",
+			"enabled": true,
+			"env": "JOURNALINSTR_OFF",
+			"journal_pattern": "\\bjournal\\b",
+			"verb_pattern": "\\b(?:complete|go to|do)\\b",
+			"id_pattern": "\\b(?:activit(?:y|ies)|tasks?|sections?|assignments?|complete)\\s+(?:the\\s+)?(\\d{1,2})\\s?([A-Za-z])\\b",
+			"min_words": 5,
+			"max_words": 40,
+			"bracket_sentence": true,
+			"box_open": "<div class=\"activity\" number=\"{id}\">\n<div class=\"row\">\n<div class=\"col-12\">",
+			"box_close": "</div>\n</div>\n</div>"
 		},
 		"standalone_widget_box": {
 			"enabled": true,
@@ -3760,6 +3781,13 @@
 			"env": "LESSONWALT_OFF",
 			"alias_words": ["overview"],
 			"lead_pattern": "^(we are learning|learning intentions?|you will show|how will i know|i can\\b|success criteria|wh[aā]inga ako|paearu angitu)",
+			"lead_heading_members": {
+				"_doc": "ROUND 468 (the autonomous loop's session 42 Round 5, 2026-09-24 — the placement census P4, `menu:flat -> body:free`). A WALT / SC lead typed as a TOP-LEVEL heading — `[H2] We are learning about:` / `[H2] You will show your understanding by:` (CBI1008 lessons 1 / 2 / 5) — was found as the lead (isLead accepts any h1-h6) but refused as a block MEMBER (isMember accepted only body / sub head / h3 / h4 / h5), so the block never formed: the lesson menu shipped EMPTY and the WALT / success lists landed in the body as <h3>s, where the gold's menu holds them (<h5> + <ul>). tags = the extra heading tags a member may be when its own text is a lead line and every line after it is a lead or a list line (the h3-h5 rule unchanged).",
+				"enabled": true,
+				"env": "LESSONWALTH2_OFF",
+				"_r522_rode_along": "SHIPPED as the ride-along of round 522 (session 51 Round 2, 26 Sept 2026 — LOOP §3 step 1: its three pages all fall inside r522's 21-module affected set). Parked since session 42 as outputs/_r468_declined.patch (below the floor); applied unchanged. Its own delta on the r522 corpus (outputs/_s51_prescore.py): CBI1008_1_0 38.99 -> 43.38, CBI1008_2_0 49.28 -> 54.55, PES1004_8_0 48.28 -> 49.12 (+0.0042pp), >=50 +1; every other gate EXACT.",
+				"tags": ["h1", "h2", "h6"]
+			},
 			"max_scan_items": 14,
 			"opening_tags": ["title bar", "h1", "h2", "lesson content", "page", "body", "sub head"],
 			"_doc": "ROUND 432 (the autonomous loop's session 35 Round 3, 2026-09-22 — the module-menu chrome region; KB 01B 'Lesson Pages — Simplified Module Menu': the lesson page's menu IS its WALT / SC block, canonical labels whatever the writer's wording). The gold's convention over every paired lesson page carrying a WALT / SC lead element (`outputs/_s35_r3_waltmenu.py`): the lead sits in the gold's MENU on 1,258 pages and in its body alone on 38 (0.97); Claude built the menu on 810 (the [Lesson Overview] path) and left the block in the BODY on 95 pages / 36 modules where the writer marked it `[Overview]` (TEDC402, ENGC206, CEDT501), typed it bare after `[Lesson content]` + the lesson heading (FRNO901) or bare after an `[H1] LESSON …` title (PES1004). On a LESSON page with a menu and NO [Lesson Overview] marker (nor the r148 bare red lead): (a) an `[Overview]` title-bar alias among the opening items is the overview marker (consumed — it is never the page title); else (b) the first WALT / SC lead item (a black line, or a body / heading tag whose text starts with lead_pattern) reached through opening items only (blank lines, instructions, the title bar / lesson heading, `[Lesson content]`, an empty body tag — opening_tags) starts the block, which the r-existing section-stop then bounds (text and menu-safe tags to the first structural item or heading). MenuBuilder's simplified lesson menu renders it exactly as the marked form (the lead → the canonical <h5>, bullets → the list). The TEDC401 / TEDC402 form whose block sits inside a 2-row layout TABLE under the alias is a recorded follow-up (12 pages / 2 modules: the table is not menu-safe, so the section-stop ends before it). Env LESSONWALT_OFF restores the marker-only route."
