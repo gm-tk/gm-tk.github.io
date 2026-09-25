@@ -1,0 +1,16 @@
+r494 NAMED: compare_structure missing container +9 = NEW matches only (matched +51, exact +36; no module lost an exact match):
+AGH1003 {'matched': 3, 'exact_chain': 3}
+CEDR501 {'matched': 1, 'exact_chain': 1}
+CEDT501 {'matched': 1, 'exact_chain': 1}
+CHFUN05 {'matched': 3, 'exact_chain': 3}
+ENGI301 {'matched': 4, 'claude_missing_container': 4}
+FRNO901 {'matched': 2, 'exact_chain': 2}
+MXEO401 {'matched': 6, 'exact_chain': 5, 'claude_missing_container': 1}
+MXFU402 {'matched': 1, 'wrapper_set': 1}
+XDLS912 {'matched': 4, 'exact_chain': 4}
+XLP01 {'matched': 2, 'exact_chain': 2}
+XMES201 {'matched': 5, 'exact_chain': 1, 'wrapper_set': 4}
+XMES202 {'matched': 2, 'exact_chain': 2}
+XTAS102 {'matched': 11, 'exact_chain': 8, 'wrapper_set': 1, 'claude_missing_container': 2}
+XTAS103 {'matched': 6, 'exact_chain': 4, 'claude_missing_container': 2}
+done

@@ -325,6 +325,15 @@
 				"h4",
 				"h5"
 			],
+			"body_after_slide_table_ends": {
+				"enabled": true,
+				"env": "CARBODYEND_OFF",
+				"types": [
+					"carousel"
+				],
+				"owned_box_stays_open": true,
+				"_doc": "ROUND 494 (the autonomous loop's session 46 Round 4). owned_box_stays_open: when the carousel OWNS its activity box, the prose after the slide table stays INSIDE that box (the gold 10 / 10 — the r378 _postTableResume hold the converter's owner close site already honours); a carousel that owns no box leaves it free (39 / 43). body_terminates_after_table_exempt_types keeps the carousel's trailing [body] as an image-series slide caption (r352 split the HEADING half off as heading_terminates_after_table_exempt_types / CARHEADEND). But the break is only considered once the bundle HOLDS a table, and a carousel whose slides ARE a table carries its captions in the cells: the [body] after the slide table is the writer's next section. Measured over every carousel bundle holding a table then a [body] (`_s46_r4_cartail.cjs`, 72 bundles / 42 modules): the gold puts that [body] OUTSIDE the carousel 53 of 54 (free 39, the next activity box 14; a caption once — XTAS102 4.0, named). For a type listed here the exemption is lifted, so the [body] after its table ends the capture like any other table-data widget's. rotateBanner is not listed (not measured). Env CARBODYEND_OFF = the r493 walk."
+			},
 			"dropbox_button_ends_capture": {
 				"enabled": true,
 				"env": "DROPBOXEND_OFF",

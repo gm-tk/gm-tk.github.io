@@ -1,0 +1,52 @@
+🟠 [ModuleResolver] Multiple module-code candidates found (AGH1002, PPO1032) — using AGH1002 from filename "AGH1002 Writers Template + Media List.docx".
+AGH1002: built 3 carousel(s), 0 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] Multiple module-code candidates found (AGH1003, PPO1033) — using AGH1003 from filename "AGH1003 Writers Template + Media List.docx".
+AGH1003: built 2 carousel(s), 0 video slides  ✓ all slide ids match the human
+AGH1004: built 4 carousel(s), 0 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] Multiple module-code candidates found (AGH1009, PPO1051) — using AGH1009 from filename "AGH1009 Writers Template + Media List.docx".
+AGH1009: built 9 carousel(s), 0 video slides  ✓ all slide ids match the human
+BLL117: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+BLL127: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+BLL137: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+BLL157: built 3 carousel(s), 7 video slides  ✓ all slide ids match the human
+BLLR201: built 5 carousel(s), 0 video slides  ✓ all slide ids match the human
+CEDO502: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+CEDR501: built 4 carousel(s), 1 video slides  ✓ all slide ids match the human
+CEDT501: built 0 carousels (all fell back)
+🟠 [ModuleResolver] Multiple module-code candidates found (CEDW501, MA000) — using CEDW501 from filename "CEDW501 Writers Template.docx".
+CEDW501: built 3 carousel(s), 4 video slides  ✓ all slide ids match the human
+CHFUN05: built 10 carousel(s), 16 video slides  ✓ all slide ids match the human
+ENFUN04: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+ENGI102: built 1 carousel(s), 5 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI301, EN000) — using ENGI301 from filename "ENGI301 Writers Template + Media List.docx".
+ENGI301: built 0 carousels (all fell back)
+ENGJ201: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGR201, EN000) — using ENGR201 from filename "ENGR201 Writers Template + Media List.docx".
+ENGR201: built 0 carousels (all fell back)
+🟠 [ModuleResolver] FRFUN06: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+FRFUN06: built 2 carousel(s), 0 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] Multiple module-code candidates found (FRNO901, FRO101) — using FRNO901 from filename "FRNO901 Writers Template.docx".
+FRNO901: built 8 carousel(s), 0 video slides  ✓ all slide ids match the human
+MXEO401: built 1 carousel(s), 0 video slides  ✓ all slide ids match the human
+MXFU402: built 1 carousel(s), 2 video slides  ✓ all slide ids match the human
+XDLS912: built 7 carousel(s), 0 video slides  ✓ all slide ids match the human
+XFUN02: built 5 carousel(s), 0 video slides  ✓ all slide ids match the human
+XGF9004: built 3 carousel(s), 11 video slides  ✗ 11 slide id(s) NOT in the human carousels
+XLP01: built 7 carousel(s), 2 video slides  ✓ all slide ids match the human
+XLP02: built 5 carousel(s), 2 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] Multiple module-code candidates found (XLP03, XFUN03) — using XLP03 from filename "XLP03 Writers Template.docx".
+XLP03: built 4 carousel(s), 2 video slides  ✓ all slide ids match the human
+🟠 [ModuleResolver] Multiple module-code candidates found (XLP04, XFUN03) — using XLP04 from filename "XLP04 Writers Template.docx".
+XLP04: built 4 carousel(s), 6 video slides  ✓ all slide ids match the human
+XMES101: built 5 carousel(s), 2 video slides  ✓ all slide ids match the human
+XMES103: built 2 carousel(s), 0 video slides  ✓ all slide ids match the human
+XMES201: built 6 carousel(s), 0 video slides  ✓ all slide ids match the human
+🟢 [ModuleResolver] XMES202 is not in the registry members — inherited from its level XMES2 (sibling rule).
+XMES202: built 6 carousel(s), 2 video slides  ✓ all slide ids match the human
+XMES203: built 9 carousel(s), 0 video slides  ✓ all slide ids match the human
+XTAS101: built 4 carousel(s), 0 video slides  ✓ all slide ids match the human
+XTAS102: built 6 carousel(s), 0 video slides  ✓ all slide ids match the human
+XTAS103: built 5 carousel(s), 0 video slides  ✓ all slide ids match the human
+
+TOTAL: 140 carousels built across 35 modules, 62 video slides; 11 mismatched slide ids.
+RESULT: mismatches present ✗

@@ -2476,7 +2476,17 @@ class InteractiveScanner {
 			// Data: member_rule.{body,heading}_terminates_after_table (+ _exempt_types/_levels).
 			if (p?.directive !== "INTERACTIVE" && bundle.tables.length > 0) {
 				const entry = DataService.Data.BoundaryBank.interactives[bundle.type];
-				const exempt = (_mrB.body_terminates_after_table_exempt_types ?? []).includes(bundle.type);
+				let exempt = (_mrB.body_terminates_after_table_exempt_types ?? []).includes(bundle.type);
+				// ROUND 494 — THE [BODY] AFTER A CAROUSEL'S SLIDE TABLE. The exemption above keeps an image-series
+				// carousel's trailing [body] as its slide caption, but this check only runs once the bundle HOLDS a table —
+				// and a carousel whose slides ARE a table carries its captions in the cells: the [body] after that table is
+				// the next section (the gold keeps it outside the carousel 53 of 54 — free 39, the next activity box 14;
+				// `_s46_r4_cartail.cjs`, 72 bundles / 42 modules). For a listed type the exemption is lifted.
+				// Data member_rule.body_after_slide_table_ends; env CARBODYEND_OFF.
+				const _cbe = _mrB.body_after_slide_table_ends;
+				let _cbeLifted = false;
+				if (exempt && _cbe && _cbe.enabled !== false && (_cbe.types ?? []).includes(bundle.type)
+					&& !(typeof process !== "undefined" && process.env && process.env[_cbe.env ?? "CARBODYEND_OFF"])) { exempt = false; _cbeLifted = true; }
 				// ROUND 352 — the HEADING rule has its own exemption list. The slideshow types were exempt from
 				// BOTH rules through the shared body list ("their trailing [body] is a slide caption"), but a
 				// SECTION HEADING after a carousel's slide table is never a slide: the r279 table-slides
@@ -2512,6 +2522,11 @@ class InteractiveScanner {
 					if (_last?.type === "tag" && _re.test(String(_last.text ?? "")
 						.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim())) tableInPanel = false;
 				}
+				// ROUND 494 — a carousel that OWNS its activity box keeps the box open for the prose after its slide table:
+				// the gold keeps that prose inside the box 10 / 10 (the r378 hold's shape — the converter's owner close
+				// site honours _postTableResume); a carousel that owns no box leaves it free (39 / 43).
+				if (_cbeLifted && entry?.uses_data_table && isBreak && tableInPanel && bundle.activityOwner
+					&& p?.tag === "body" && _cbe.owned_box_stays_open !== false) bundle._postTableResume = true;
 				if (entry?.uses_data_table && isBreak && tableInPanel) break;   // section break resumes after the data table
 				// ROUND 378 — THE UNCLASSIFIED ACTIVITY RESUMES FREE BODY AT THE [Body] AFTER ITS TABLE
 				// (the autonomous loop's session 24 Round 2). The unclassified activity (an `[Activity N]`

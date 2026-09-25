@@ -1,8 +1,8 @@
 {
   "_meta": {
     "purpose": "Committed PROTECTED-gate baseline (efficiency lever 2). The shared corpus DRIFTS between sessions so the BUILD_CHANGELOG absolutes never line up exactly — without a committed baseline the only rigorous proof of hold-or-improve is a second full A/B regen pass (~8m/round). Diff THIS after a regen instead. Refresh it (and the build/round) every shipped round, AFTER the gates pass.",
-    "build": "260620.56",
-    "round": 493,
+    "build": "260620.57",
+    "round": 494,
     "date": "2026-09-24",
     "_round92_note": "Round 92 (ENGS302-01: side-alert-box-in-table + dragAndDrop activity wrapper / data-table capture / phantom-journal-button fix). Verified on a FULL 0-stale tightened regen vs the round-91 committed baseline (which matched the fast-loop baseline exactly: over 42 / any 181). PRIMARY skeleton IMPROVED (pages>=50% 524->539 +15, >=75% 65->70 +5, mean 47.8->48.2, median 49.3->49.8); compare_structure exact 5893->5902 (+9) / missing 261->252 (-9) / EXTRA 142 HELD; structural-clean 1290->1291 (95.0->95.1%) / leak 254->253 (-1) / leak pages 68->67 (-1); tags 9557/9557; flipCard divergence 0 (37/13/10/14); speechBubble defect 0. body_compare any 181->184 (+3) — the +3 over-capture (ENGC201-06, ENGR101-05, MXDB301-03) is the UNAVOIDABLE cost of capturing the dragAndDrop/activity DATA TABLE into the widget (the user's explicit fix): those tables ARE the widget's data the human BUILDS, but body_compare cannot credit Claude's un-built placeholder, and for these 3 the human keeps the table free. Net-positive per the MEASUREMENT MANDATE (judge a structural change FIRST on the skeleton, which improved +15) + the NET-POSITIVE convention. _round91_note: round 91 (ENGS302 emphasis-bullets/caption/media-url/lesson-name) shipped +1 skeleton / +1 compare exact / +2 missing.",
     "corpus": {
@@ -107,6 +107,7 @@
     "_note_intake_2026_09_19": "INTAKE RE-BASELINE 2026-09-19 (the 98-module September intake + a FULL corpus regeneration, no engine change). The POPULATION GREW: skeleton pairs 1956 -> 2349, cs matched 13794 -> 15668, body/defect pages 2102 -> 2606, gated dirs 484. Every absolute below therefore moves, and the rate metrics fall, WITHOUT any regression. PROOF, measured by splitting each gate by population: the PRE-EXISTING modules reproduce the round-407 baseline EXACTLY -- skeleton 54.084% / >=50 1181 / >=75 202 / >=90 18; compare_structure exact 11779 / EXTRA 172 / missing 626 / row-wrap 23; body_compare runaway 5 / empty_container 170; leak 26 occ / 23 pages; clean 2079/2102 = 98.91%. _content_manifest.py fresh confirmed all 413 pre-existing modules BYTE-IDENTICAL to the manifest, so identical bytes cannot yield different metrics. All verifier gates matched baseline exactly: tags 9557/9557 0 failures, flipCard 61 (32/11/18) divergence 0, speechBubble defect 4, math 323/323 defect 0, menulabels 91 defect 0, dragAndDrop 21 defect 0, modal defect 0, mtkQuiz defect 0, entry parity PASS. The 98 new modules contribute the whole delta; 78 of them converted, 20 cannot yet (12 XOTP dialect, 7 with no Writers Template, PMT101's table-only opener).",
     "_note_s40_r12_full": "Session 40 Round 12 (2026-09-24; no engine change — the ship ledger's FULL backstop): all 545 regenerated with the r452 engine, 542 / 542 modules byte-identical to the scoped-shipped manifest, every number in this file re-proved EXACT on the full corpus (skeleton 54.7484 @ 2477, 0 movers). Ledger record-full --round 452 -> scoped #0.",
     "_note_s45_full": "FULL-SHIP BACKSTOP at build 260620.53 (session 45 Round 10, 2026-09-25, no engine change): all 545 modules regenerated — 0 pages differ from the shipped manifest; skeleton 55.3705 @ 2491 (0 movers), cs / body / clean / leak EXACT; ledger LAST FULL = r490.",
+    "_note_r494": "Round 494 (session 46 Round 4, 2026-09-25) — THE [BODY] AFTER A CAROUSEL'S SLIDE TABLE (CARBODYEND_OFF): 38 modules; carousel Still-a-box 277 -> 252; SCAFFOLD 55.3885 -> 55.4051 @ 2491 (+0.0167pp, 22 up / 17 down NAMED); RAW 39.342 -> 39.375; >=50 1586 -> 1587; cs exact 16708 -> 16744, missing 879 -> 888 NAMED (new matches); body ANY 238 -> 236; clean / leak EXACT; scoped #4.",
     "_note_r493": "Round 493 (session 46 Round 3, 2026-09-25) — THE BLL CLOSING SECTION AFTER THE DROPBOX BUTTON (DROPBOXEND_OFF): 13 BLL modules / 13 pages; SCAFFOLD 55.3852 -> 55.3885 @ 2491 (+0.0032pp, 11 up / 2 down NAMED); RAW 39.340 -> 39.342; cs exact 16700 -> 16708, missing 878 -> 879 NAMED (a new match, BLL170); body / clean / leak EXACT; scoped #3 since the r490 FULL.",
     "_note_r492": "Round 492 (session 46 Round 2, 2026-09-25) — THE ACCORDION PANEL AFTER A TABLE (ACCPANELBREAK_OFF): 10 modules; Still-a-box 270 -> 257; SCAFFOLD 55.3709 -> 55.3852 @ 2491 (+0.0144pp, 10 up / 3 down NAMED); RAW 39.321 -> 39.340; >=50 1585 -> 1586; cs exact 16702 -> 16700 NAMED (CEDT501 / OSOH301 — moved inside the writer's accordion); body / clean / leak EXACT; scoped #2 since the r490 FULL.",
     "_note_r491": "Round 491 (session 46 Round 1, 2026-09-25) — THE ACCORDION MARKER-CELL TABLE (ACCMARKTABLE_OFF) + the r489 bulleted bold lead (ACCBULLETLEAD_OFF): 15 modules / 19 pages, 24 accordions built (Still-a-box 294 -> 270); SCAFFOLD 55.3705 -> 55.3709 @ 2491 (+0.0004pp, 2 up / 1 down NAMED); RAW 39.285 -> 39.321; cs / body / clean / leak EXACT; accordion verifier 1,263 panels / 180 modules defect 0; scoped #1 since the r490 FULL; scoped_ship PASS.",
@@ -187,13 +188,14 @@
     "_note_r408": "Round 408 (session 28 Task 1): the mined registries rebuilt over the 552-module gold corpus (Module_Structure_Index / Granular / 24 new Style-Anchor bases + floor-flip corrections / Menu / Convention / lexicon / feature index / legacy consensus; data/Subject_Prefix_Map.json PROPOSED). SCOPED regeneration of the 103 modules the probe named (OFF = pre snapshot 2613/2613; scoped ship #1 since the 19 Sept full). Skeleton 53.134 -> 53.680 (+0.5455pp; 275 movers 197 up / 76 down, 0 outside the set, the 1813 unaffected pairs EXACT), >=50 1378 -> 1398, >=75 228 -> 236, >=90 19 -> 20, RAW 37.487 -> 37.884; compare_structure exact 13410 -> 14091 (the text-matched pool 15668 -> 16414) / EXTRA 184 -> 186 / MISSING 685 -> 690 (inside five newly single-file WJFUN / JPFUN modules) / row-wrap 23; body_compare over-capture 54 (the 19 Sept fast-loop snapshot's own value — the re-base had carried r407's 42; corrected here), runaway 6, EMPTY 192 -> 190, ANY 250 -> 248; defect clean 2504/2548 = 98.27 (58 clean WJFUN / JPFUN extra pages left the population; defect pages 44 / leak 73 EXACT); every verifier EXACT."
   },
   "skeleton": {
-    "mean_scaffold_pct": 55.39,
+    "mean_scaffold_pct": 55.41,
     "median_scaffold_pct": 56.3,
-    "pages_ge_50": 1586,
+    "pages_ge_50": 1587,
     "pages_ge_75": 277,
     "pages_ge_90": 26,
-    "raw_mean_pct": 39.34,
+    "raw_mean_pct": 39.38,
     "pairs": 2491,
+    "_note_r494_state": "r494 (the carousel slide-table tail): SCAFFOLD 55.4051 @ 2491, RAW 39.375; 39 movers (22 up / 17 down NAMED).",
     "_note_r493_state": "r493 (the BLL closing section): SCAFFOLD 55.3885 @ 2491, RAW 39.342; 13 movers (11 up / 2 down NAMED).",
     "_note_r492_state": "r492 (the accordion panel after a table): SCAFFOLD 55.3852 @ 2491, RAW 39.340; 13 movers (10 up / 3 down NAMED).",
     "_note_r491_state": "r491 (the accordion marker-cell table): SCAFFOLD 55.3709 @ 2491, RAW 39.321; 3 movers (2 up / 1 down NAMED).",
@@ -313,9 +315,9 @@
     "_note_r408": "Round 408: SCAFFOLD 53.1341 -> 53.6797 (+0.5455pp; 275 movers, 197 up / 76 down, pp-sum +725.6 — GEO1006_3_0 -11.3, GEO1004_1_0 -9.4, ENGS404_6_1 -8.2, PWY1001_2_3_0 -7.0, CHI1003_8_0 -5.0), >=50 1398, >=75 236, >=90 20; RAW 37.487 -> 37.884; 2349 pairs / 0 skipped. State outputs/_s28_t1_sk_final.json."
   },
   "compare_structure": {
-    "exact_chain": 16708,
+    "exact_chain": 16744,
     "claude_extra_container": 198,
-    "claude_missing_container": 879,
+    "claude_missing_container": 888,
     "row_wrap_missing": 24,
     "_note_r453": "r453: matched 18178 -> 18463 (+285 restored TRR overview / lesson elements); exact 15657 -> 15855; EXTRA 199 held; missing 796 -> 840 (+44 — all on the newly compared restored content: TRR304 lesson 1 +28 on +148 matched, the six overview introductions +2 each; the modules whose page set did not change moved +0); row-wrap 24 held. NAMED.",
     "_note_r352": "Round 352: exact 11464 → 11607 (+143, the restored sections); missing 607 → 617 NAMED — the 44 pages whose carousel reverts to the honest hand-off box (a trailing [video]/[image], words between slide tables, a leading heading) no longer show the gold's row.carousel container. Hold-or-improve from here.",

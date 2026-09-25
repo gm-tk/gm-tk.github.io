@@ -13,6 +13,7 @@ WID = re.compile(r"accordion|accContent|carousel|flipCard|tabs|clickDrop|dropDow
 pp = json.load(io.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "_diff_miner.json"), encoding="utf-8"))["per_page"]
 def nodes(path):
     p = P(); p.feed(open(path, encoding="utf-8", errors="replace").read()); return p.nodes
+ALL = []   # session 46 Round 4: every swallowed block (code, page, box type, text) for the member-level probe
 by = collections.Counter(); pos = collections.Counter(); mods = collections.defaultdict(set); pages = collections.defaultdict(set); ex = collections.defaultdict(list)
 for rec in pp:
     code, page, gold = rec["module"], rec["page"], rec["gold"]
@@ -46,8 +47,11 @@ for rec in pp:
                 by[wtype] += 1; mods[wtype].add(code); pages[wtype].add((code, page))
                 pos["tail" if i >= len(body) - 3 else "middle"] += 1
                 if len(ex[wtype]) < 4: ex[wtype].append(f"{code}/{page}: {t.strip()[:70]}")
+                ALL.append({"code": code, "page": page, "type": wtype, "text": t.strip()[:120]})
 print("gold-free text inside Claude hand-off boxes, by the box's widget type:")
 for w, n in by.most_common(25):
     print(f"  {n:5d} blocks {len(pages[w]):4d} pg {len(mods[w]):3d} mod  {w}")
     for e in ex[w][:2]: print("         ", e)
 print("position in the box:", dict(pos))
+json.dump(ALL, open("_s46_r3_swallow.json", "w"), ensure_ascii=False)
+print(len(ALL), "swallowed blocks written to _s46_r3_swallow.json")
