@@ -1,6 +1,6 @@
 # PageForge — corpus discrepancy dashboard
 
-_Generated 2026-09-26 04:53 · corpus 535 modules / 2627 pages_
+_Generated 2026-09-26 05:22 · corpus 535 modules / 2627 pages_
 
 **What this is.** Every remaining difference between our HTML and the human's, measured across the whole library and ranked by how many modules it costs. Use it to choose the next round. It changes nothing — it only reports.
 
@@ -11,8 +11,8 @@ _Generated 2026-09-26 04:53 · corpus 535 modules / 2627 pages_
 
 ## 1. The two numbers that matter
 
-**Interactive coverage — 45.4%** (3450 of 7593 writer-tagged widgets actually build).
-The other 4143 ship as a hand-off box. This is what a tester sees when they say the conversion looks unfinished, and it is invisible to the protected gates by design.
+**Interactive coverage — 45.5%** (3454 of 7593 writer-tagged widgets actually build).
+The other 4139 ship as a hand-off box. This is what a tester sees when they say the conversion looks unfinished, and it is invisible to the protected gates by design.
 
 **Page scaffold match — 55.5% mean** (1592 of 2491 pages at 50%+, 277 at 75%+).
 The protected primary gate. It measures page structure with widget internals collapsed, so it moves very little while coverage is the real gap.
@@ -27,7 +27,7 @@ Body rows use `body_compare.py`'s own thresholds, so this table and the protecte
 
 | # | Class | Modules | Pages | Unlock | Shapes | Regen | What it is |
 |---|---|--:|--:|--:|--:|--:|---|
-| 1 | un-built dragAndDrop | 367 | 715 | 1019 | 863 | 390 (29% skipped) | Writers tagged 1158 dragAndDrop widgets; 1019 ship as a hand-off box instead of a built widget. |
+| 1 | un-built dragAndDrop | 366 | 714 | 1015 | 859 | 390 (29% skipped) | Writers tagged 1158 dragAndDrop widgets; 1015 ship as a hand-off box instead of a built widget. |
 | 2 | content lost vs the human (advisory) | 218 | 493 | 493 | — | — | The human page carries 3+ body blocks ours does not, without tripping the over-capture rule — content is going missing by some other route. |
 | 3 | un-built multiChoiceQuiz | 188 | 310 | 433 | 358 | 235 (57% skipped) | Writers tagged 449 multiChoiceQuiz widgets; 433 ship as a hand-off box instead of a built widget. |
 | 4 | un-built carousel | 175 | 198 | 260 | 211 | 391 (29% skipped) | Writers tagged 1017 carousel widgets; 260 ship as a hand-off box instead of a built widget. |
@@ -59,7 +59,7 @@ Body rows use `body_compare.py`'s own thresholds, so this table and the protecte
 
 | Type | Built | Total | Coverage | Declined | Distinct shapes | Modules |
 |---|--:|--:|--:|--:|--:|--:|
-| dragAndDrop | 139 | 1158 | 12.0% | 1019 | 863 | 367 |
+| dragAndDrop | 143 | 1158 | 12.3% | 1015 | 859 | 366 |
 | multiChoiceQuiz | 16 | 449 | 3.6% | 433 | 358 | 188 |
 | clickDrop | 241 | 579 | 41.6% | 338 | 265 | 129 |
 | flipCard | 308 | 590 | 52.2% | 282 | 238 | 160 |
@@ -91,7 +91,7 @@ A blocker is something a builder almost never accepts. Every shape carrying it f
 |---|---|--:|--:|--:|
 | multiChoiceQuiz | `mcq` | 307 | 15 | 5% |
 | multiChoiceQuiz | `(a captured TABLE)` | 172 | 0 | 0% |
-| dragAndDrop | `button+txt` | 145 | 16 | 10% |
+| dragAndDrop | `button+txt` | 143 | 18 | 11% |
 | dropDown | `(a captured TABLE)` | 114 | 13 | 10% |
 | multiChoiceQuiz | `mcq+txt` | 99 | 1 | 1% |
 | typing | `(a captured TABLE)` | 87 | 11 | 11% |

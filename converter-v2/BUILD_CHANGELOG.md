@@ -1,5 +1,30 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (round 520, build 260620.81) — THE FIB FORM'S REMAINDER: three writer shapes r519 declined inside its own family now build — a red `<` / `>` answer (MXEO301 3F / 6A "Greater than or less than?"), a trailing `[button] Check answers` / `Answers` the KB button row covers (TWHK907, TWHA906), the prose the capture ran on into after the questions (rendered after the widget) — and the sentence's own full stop leaves the drag; 4 widgets / 3 modules, 34 drags, 31 the gold's own; dragAndDrop boxes 1019 → 1015
+
+### 1. WHAT CHANGED
+
+**The measure** (`_s50_r13_fibrest.cjs` — every FIB-shaped dragAndDrop bundle r519 did not build, with its member signature: 40 bundles). Merged multi-widget bundles (the MX "[Activity 3A – drag and drop] [Activity 3B – type the answer]" pairs) and tables are left alone; the rest decline on a handful of writer habits.
+
+**The build** (`InteractiveBuilder.#typing`, fib mode only — the typing quiz is unchanged; data `interactive_builders.dragAndDrop.fib.remainder`, env **`DDFIBREST_OFF`** = the r519 output exactly):
+- `symbol_answer_pattern` — a red `<` / `>` / `≤` / `≥` / `=` is the writer's answer (the r448 red-word reader skips a word with no letter or digit).
+- `button_label_pattern` — a trailing `[button]` labelled Check answers / Reset / Undo / Answers is the KB button row the build already emits.
+- `trailing_prose` — answer-less paragraphs the capture ran on into AFTER the questions (MXEO301 6A's following `[body]` paragraph) render as prose after the widget; a question after them still declines.
+- `answer_trailing_punct` — 'publishers.' → the drag 'publishers', the full stop stays in the sentence after the blank.
+- `marker_tag_pattern` — the writer's `[correct answer]` marker after each red word is read as the answer marker (a word inside the marker's own run is the answer); `headless_first_row_declines` — when the FIRST sentence alone opens on its blank, its head was left outside the capture (BLL247 "The bus": the scanner keeps black text right after the opener out of the bundle — the shipped page already renders it as a list item before the box), so BLL247 stays a hand-off box rather than ship a headless sentence (the scanner fix is recorded as a follow-up).
+
+### 2. PROOF
+
+- In-memory probe over all 545 modules: `DDFIBREST_OFF=1` → 0 pages changed; ON → **3 modules** (MXEO301, TWHA906, TWHK907). `scoped_ship.sh … --round 520` PASS (0 stale, containment 3 ⊆ 3, the 12-module spot-check byte-identical).
+- `_verify_dragdrop.cjs` over the 3 (+ BLL247): FIB 4 + MXEO301's r519 Standard widgets, 45 drags, **defect 0**; the 4 new widgets' 34 drags — 31 the gold's own drag texts, 1 more a word of the gold's page.
+- Coverage dashboard: dragAndDrop hand-off boxes **1019 → 1015**, built 139 → 143.
+
+### 3. PROTECTED GATES
+
+Skeleton **55.7490 → 55.7489 % @ 2486** — a NAMED −0.0001pp, one page: MXEO301_6_0 scaffold 60.14 → 59.93 % (matched lines HELD at 166; 276 → 277 lines — the built widget's one extra line) while its RAW rose 32.71 → 33.56 % (`--accept-named "skeleton SCAFFOLD mean"`); ≥50 1612 / ≥75 285 / ≥90 26 held; RAW → 39.594 %; cs exact 16769 / EXTRA 204 / missing 886, body ANY 235, clean 98.40 %, leak 52 / 42 all EXACT; tags 9557; every verifier ✓, every COUNT held (`_r520_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 520`; `--gate-baseline-check` PASS. Plateau (D10-3 (a)): 4 sites converted, under the 20-site line — counts 2 of 3.
+
+**Ledger:** scoped #6 since the r513 FULL · data `interactive_builders.dragAndDrop.fib.remainder` · env `DDFIBREST_OFF` · code `InteractiveBuilder.#typing` (fib mode) · session 50 Round 13.
+
 ## 2026-09-26 (round 519, build 260620.80) — THE DRAG-AND-DROP FILL-IN-THE-BLANK FORM: a writer's `[drag and drop]` whose answers are RED WORDS INSIDE BLACK SENTENCES builds KB 03B's FIB layout (the red words the drags, each a blank in its sentence), and where every line ends in its one answer, KB 03B's Standard (matching) layout; 9 widgets / 8 modules built (5 FIB + 4 Standard), 59 drags, 52 of them the gold's own drags; the verifier learns the FIB form
 
 ### 1. WHAT CHANGED

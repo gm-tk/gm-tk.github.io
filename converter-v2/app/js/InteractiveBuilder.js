@@ -14106,6 +14106,13 @@ class InteractiveBuilder {
 		const textTags = tpl.text_tags ?? ["body", "paragraph"];
 		const reject = new RegExp(tpl.answer_reject_pattern ?? "$^", "i");
 		const notes = [];
+		// ROUND 520 — the FIB form's remainder (interactive_builders.dragAndDrop.fib.remainder, env DDFIBREST_OFF): the writer's
+		// `[correct answer]` marker, a trailing KB button tag, a symbol answer (`<` / `>`) — fib mode only
+		const rest = fib?.remainder && fib.remainder.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[fib.remainder.env ?? "DDFIBREST_OFF"]) ? fib.remainder : null;
+		const markRe = rest ? new RegExp(rest.marker_tag_pattern ?? "^correct$", "i") : null;
+		const symRe = rest ? new RegExp(rest.symbol_answer_pattern ?? "^[<>≤≥=]$", "u") : null;
+		const btnTagRe = rest ? new RegExp(rest.button_label_pattern ?? "^(?:undo|check(?:\\s+answers?)?|reset)\\.?$", "i") : null;
 
 		/* --- members → lines (one per source paragraph) of text / answer / note segments --- */
 		const lines = [];
@@ -14130,7 +14137,8 @@ class InteractiveBuilder {
 			if (cls === "noise") {
 				const raw = unRed(m.text);
 				const w = raw.replace(/\s+/g, " ").trim();
-				const how = Utils.AnswerKeyRedWord(ak, w);
+				let how = Utils.AnswerKeyRedWord(ak, w);
+				if (how === "skip" && symRe?.test(w)) how = "answer";     // r520 — a red `<` / `>` is the writer's answer
 				const L = lineOf(m);
 				if (how === "answer") L.segs.push({ k: "a", t: w, pre: /^\s/.test(raw), post: /\s$/.test(raw) });
 				else if (how === "plain") L.segs.push({ k: "t", t: ` ${w} ` });
@@ -14142,6 +14150,14 @@ class InteractiveBuilder {
 				if (String(m.blackAfter ?? "").trim()) lineOf(m).segs.push({ k: "t", t: m.blackAfter });
 				continue;
 			}
+			if (rest && p && markRe.test(String(p.tag ?? ""))) {    // r520 — `[correct answer]`: the writer's answer marker
+				const L = lineOf(m);
+				const lead = unRed(m.text).split("[")[0].replace(/\s+/g, " ").trim();   // 'weather [correct answer]' in one red run
+				if (lead) L.segs.push({ k: "a", t: lead, pre: true, post: true });
+				if (String(m.blackAfter ?? "").trim()) L.segs.push({ k: "t", t: (/^\s/.test(m.blackAfter) ? "" : " ") + m.blackAfter });
+				continue;
+			}
+			if (rest && p?.tag === "button" && btnTagRe.test(String(m.blackAfter ?? "").replace(/\s+/g, " ").trim())) continue;   // r520 — the KB button row covers it
 			return null;                                           // any other tag — not ours to place
 		}
 
@@ -14155,14 +14171,19 @@ class InteractiveBuilder {
 				&& hasText(merged[merged.length - 1])) { merged[merged.length - 1].segs.push(...L.segs); continue; }
 			merged.push(L);
 		}
-		const lead = [], rows = [];
+		const lead = [], rows = [], trail = [];
 		for (const L of merged) {
 			const isNote = L.segs.length && L.segs.every((s) => s.k === "n" || (s.k === "t" && !s.t.trim()));
 			if (isNote) { for (const s of L.segs) if (s.k === "n" && s.t) notes.push(s.t); continue; }
 			if (L.segs.some((s) => s.k === "n")) return null;       // a red instruction INSIDE a line — never guessed
 			if (!hasAns(L)) {
 				if (!hasText(L)) continue;
+				// r520 (fib mode) — prose the capture ran on into AFTER the questions renders after the widget
+				if (rows.length && rest?.trailing_prose) { trail.push(L); continue; }
 				if (rows.length) return null;                        // an answer-less line after the questions
+			}
+			if (trail.length) return null;                           // r520 — a question after that prose: not ours
+			if (!hasAns(L)) {
 				// the activity's own heading (the opener line's title) is already the box's heading
 				const plain = Utils.Fold(L.segs.filter((s) => s.k === "t").map((s) => s.t).join(" ").replace(/\*/g, ""));
 				if (bundle?.headingText && plain === Utils.Fold(String(bundle.headingText).replace(/\*/g, ""))) continue;
@@ -14217,6 +14238,12 @@ class InteractiveBuilder {
 				}
 			}
 			for (const L of lead) if (L.segs.some((s) => s.k === "t" && fibDeny.test(s.t))) return null;
+			// r520 — the FIRST sentence alone opens on its blank: its head was left outside the capture (BLL247 'The bus' — the
+			// scanner keeps black text right after the opener out of the bundle), so the widget would ship a headless sentence
+			if (rest?.headless_first_row_declines && rows.length >= 2) {
+				const first = (L) => L.segs.find((s) => s.k === "a" || (s.k === "t" && s.t.replace(/\*/g, "").trim()))?.k;
+				if (first(rows[0]) === "a" && rows.slice(1).every((L) => first(L) === "t")) return null;
+			}
 			const fibAuto = this.#typingAutocheck(bundle, tpl);
 			// every line a prompt ending in its ONE answer, the answers distinct → KB 03B's Standard (matching) layout: the
 			// prompts the questions, the answers the drags (the gold's MXFL401 6B) — a FIB needs the blank INSIDE the sentence
@@ -14234,6 +14261,7 @@ class InteractiveBuilder {
 				const close = this.#ddClose(ddTpl);
 				if (fibAuto && fib.buttons_autocheck && close.length === 3) close[1] = fib.buttons_autocheck;
 				out.push(...close);
+				for (const L of trail) out.push(Utils.FillTemplate(tpl.lead, { text: lineHtml(L) }));   // r520 — the prose after
 				const builtS = out.join("\n");
 				if (this.#mcqLeakGuard(builtS)) return null;
 				if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
@@ -14248,8 +14276,11 @@ class InteractiveBuilder {
 				for (const s of segs) {
 					if (s.k === "t") { out += textHtml(s.t); continue; }
 					if (out && !/\s$/.test(out) && s.pre) out += " ";
-					n++; drags.push(Utils.FillTemplate(fib.drag, { n, answer: inline(s.t) }));
-					out += Utils.FillTemplate(fib.drop, { n });
+					// r520 — the sentence's own full stop typed inside the red word ('publishers.') stays in the sentence
+					const pm = rest?.answer_trailing_punct ? new RegExp(rest.answer_trailing_punct).exec(s.t) : null;
+					const word = pm && pm.index > 0 ? s.t.slice(0, pm.index) : s.t;
+					n++; drags.push(Utils.FillTemplate(fib.drag, { n, answer: inline(word) }));
+					out += Utils.FillTemplate(fib.drop, { n }) + (word !== s.t ? inline(s.t.slice(word.length)) : "");
 					if (s.post) out += " ";
 				}
 				return out.replace(/\s{2,}/g, " ").trim();
@@ -14260,6 +14291,7 @@ class InteractiveBuilder {
 			fh.push(Utils.FillTemplate(fib.open, { autocheck: fibAuto }));
 			for (const L of rows) fh.push(Utils.FillTemplate(fib.sentence, { text: fibLine(L) }));
 			fh.push(fib.mid, ...drags, fib.drags_close, (fibAuto && fib.buttons_autocheck) ? fib.buttons_autocheck : fib.buttons, fib.close);
+			for (const L of trail) fh.push(Utils.FillTemplate(tpl.lead, { text: lineHtml(L) }));    // r520 — the prose after
 			const builtF = fh.join("\n");
 			if (this.#mcqLeakGuard(builtF)) return null;           // a build must never ADD a leak
 			if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];

@@ -1,12 +1,12 @@
 {
- "generated": "2026-09-26 04:53",
+ "generated": "2026-09-26 05:22",
  "warnings": [
   "skeleton state predates the newest engine change (2026-09-25) \u2014 its rows may lag.",
   "feature index predates the newest engine change (2026-09-26) \u2014 its rows may lag."
  ],
  "headline": {
   "bundles": 7593,
-  "built": 3450,
+  "built": 3454,
   "pages": 2627,
   "clean": 2585,
   "modules": 535,
@@ -202,9 +202,9 @@
    ]
   },
   "dragAndDrop": {
-   "built": 139,
+   "built": 143,
    "total": 1158,
-   "declined_shapes": 863,
+   "declined_shapes": 859,
    "modules": 386,
    "declined_modules": [
     "AGH1001",
@@ -521,7 +521,6 @@
     "TWHK901",
     "TWHK902",
     "TWHK903",
-    "TWHK907",
     "TWHT903",
     "WJFUN105",
     "WJFUN106",
@@ -2129,9 +2128,9 @@
   {
    "type": "dragAndDrop",
    "token": "button+txt",
-   "declined": 145,
-   "built": 16,
-   "build_rate": 0.099
+   "declined": 143,
+   "built": 18,
+   "build_rate": 0.112
   },
   {
    "type": "dropDown",
@@ -2222,14 +2221,14 @@
   {
    "class": "un-built dragAndDrop",
    "kind": "interactive",
-   "plain": "Writers tagged 1158 dragAndDrop widgets; 1019 ship as a hand-off box instead of a built widget.",
-   "modules": 367,
-   "pages": 715,
-   "occurrences": 1019,
-   "shapes": 863,
+   "plain": "Writers tagged 1158 dragAndDrop widgets; 1015 ship as a hand-off box instead of a built widget.",
+   "modules": 366,
+   "pages": 714,
+   "occurrences": 1015,
+   "shapes": 859,
    "regen_modules": 390,
    "regen_saving_pct": 29,
-   "note": "builder covers 139/1158 (12%)",
+   "note": "builder covers 143/1158 (12%)",
    "rank": 1
   },
   {

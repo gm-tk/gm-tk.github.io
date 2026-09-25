@@ -1877,6 +1877,17 @@
 				"env": "DDFIB_OFF",
 				"decline_text_pattern": "_{4,}",
 				"trailing_as_standard": true,
+				"remainder": {
+					"_doc": "ROUND 520 (session 50 Round 13) — THE FIB FORM'S REMAINDER: three writer shapes r519 declined inside its own family. marker_tag_pattern: the writer's `[correct answer]` tag after each red word (BLL247) is the answer marker, not a foreign tag — skipped, and a word typed inside the marker's own red run ('weather [correct answer]') is that line's answer. button_label_pattern: a trailing `[button] Check answers` / Reset / Undo is the KB button row the build already emits (TWHK907; TWHA906 labels its button \"Answers\" — the KB row's Check answers covers it). symbol_answer_pattern: a red `<` / `>` / `≤` / `≥` / `=` is the answer (MXEO301 3F / 6A — 'Greater than or less than?'); the r448 red-word reader skips a word with no letter or digit. trailing_prose: answer-less paragraphs the capture ran on into AFTER the questions (MXEO301 6A's following [body] paragraph) render as prose after the widget; a question after them still declines. headless_first_row_declines: when the FIRST sentence alone opens on its blank, its head was left outside the capture (BLL247 \"The bus\" — the scanner keeps black text right after the opener out of the bundle) — decline rather than ship a headless sentence (the scanner fix is a follow-up; so BLL247, the marker's own module, stays a hand-off box this round — the marker reading stays for the family). answer_trailing_punct: the sentence's full stop / comma typed inside the red word ('publishers.' — TWHA906) stays in the sentence after the blank; the drag is the word (the gold's own drags). Fib mode only — the typing quiz is unchanged. Env DDFIBREST_OFF = the r519 output.",
+					"enabled": true,
+					"env": "DDFIBREST_OFF",
+					"marker_tag_pattern": "^correct$",
+					"button_label_pattern": "^(?:undo|check(?:\\s+answers?)?|reset|(?:show\\s+)?answers?)\\.?$",
+					"symbol_answer_pattern": "^[<>≤≥=]$",
+					"trailing_prose": true,
+					"headless_first_row_declines": true,
+					"answer_trailing_punct": "[.,;:!?]+$"
+				},
 				"open": "<div class=\"dragAndDrop{autocheck}\" layout=\"FIB\">\n<div class=\"row dropContainer\">",
 				"sentence": "<p>{text}</p>",
 				"drop": "<span class=\"drop\" option=\"{n}\"></span>",

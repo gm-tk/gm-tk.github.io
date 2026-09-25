@@ -1,6 +1,6 @@
 # DIFF_QUEUE.md — the diff miner's ranked class queue (LOOP__Autonomous_Rounds.md §1d)
 
-**Produced:** 2026-09-26 04:56 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD 9944832; Claude corpus 545 dirs). **Population:** the skeleton gate's own — 2486 paired pages / 530 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 86.0 s.
+**Produced:** 2026-09-26 05:24 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD d5e1f18; Claude corpus 545 dirs). **Population:** the skeleton gate's own — 2486 paired pages / 530 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 87.4 s.
 
 **What a row is.** One CLASS = (region, parent element, gold form, Claude form, direction) over every differing skeleton line of every paired page — the same lines, labels, widget collapse and difflib alignment the PRIMARY gate scores (each element its own line so it can be quoted). Direction: MISSING = gold has it, Claude lacks it; EXTRA = Claude has it, gold lacks it; SUBSTITUTED = same position, different tag / class / wrapper; MOVED = same text, different place. Consensus = of the gold pages in the group where the region exists, the share carrying the gold form (for EXTRA: the share NOT carrying Claude's form). Derivable = the gold line's text is in the module's parsed Writers Template (round-110 tolerance); structure-only differences are always derivable.
 
@@ -8,7 +8,7 @@
 
 ## Summary
 
-- differing skeleton lines: 272005 — by direction {'MISSING': 143524, 'SUBSTITUTED': 25630, 'EXTRA': 93911, 'MOVED': 8940}
+- differing skeleton lines: 272005 — by direction {'MISSING': 143523, 'SUBSTITUTED': 25630, 'EXTRA': 93911, 'MOVED': 8941}
 - by region: {'module-code': 25, 'title': 349, 'header': 6, 'module-menu': 12607, 'phases-nav': 59, 'crumbs': 61, 'footer': 2560, 'acks': 1392, 'activity': 97358, 'body': 155995, 'root': 1593}
 - classes: 9424 — CANDIDATE 195, below floor 8932, the rest below consensus / not derivable
 

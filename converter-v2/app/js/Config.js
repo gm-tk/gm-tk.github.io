@@ -1870,7 +1870,8 @@ class Config {
 	// ROUND 517 (260620.78): THE TYPING QUIZ'S TABLE FORM (session 50 Round 9): a table whose answers the writer typed in red builds the gold's div.typing layout=standard table with an input per answer. Env TYPTABLE_OFF.
 	// ROUND 518 (260620.79): THE TYPING VERIFIER LEARNS THE TABLE FORM + the guards it called for (session 50 Round 10): a tag-word or still-bracketed red answer, or a leftover writer bracket, declines the table. Env TYPTABLEGUARD_OFF.
 	// ROUND 519 (260620.80): THE DRAG-AND-DROP FILL-IN-THE-BLANK FORM (session 50 Round 12): red answers inside black sentences -> KB 03B FIB; one answer at every line's end -> the Standard matching form. Env DDFIB_OFF.
-	static AppVersion = "260620.80";
+	// ROUND 520 (260620.81): THE FIB FORM'S REMAINDER (session 50 Round 13): symbol answers, a trailing KB button tag, the prose after the questions, the sentence's full stop out of the drag. Env DDFIBREST_OFF.
+	static AppVersion = "260620.81";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
