@@ -1,5 +1,26 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 496, build 260620.59) — THE XDLS CHOICE BOARD'S STRAY MARKER: r307 / r418's tile prepass releases what a writer's stray `[click drop image]` marker captured instead of declining the page's whole choice board (XDLS906 5.0: 48.9 → 73.4 %)
+
+### 1. WHAT CHANGED
+
+**The find** (session 46 Rounds 6–7 — the clickDrop refusal trace `_s46_r6_cdwhy.sh`, then the tile prepass trace `_s46_trace_cc.cjs`): the Learning-Support choice board (`[Click Drop Activity N with embedded image] Label [image … icon from LS global edits]`, XDLS902–906) is built by the r307 / r418 tile prepass on 30 of 35 lesson pages; it declines the whole row on five, each for a different reason — XDLS906 5.0: after `[Activity] **5B**` the writer typed a STRAY numberless, nameless `[click drop image]`, which opens a scrap that captures the activity's own `[H4] Where my ancestors came from` + `[body]` lines, so the prepass met "any other member = content" and gave up; XDLS906 3.0: the writer typed `[Activity] **3E**` BEFORE its `[Click Drop Activity 5] Judge` button (the button's scrap captures the activity's heading + body); XDLS903 1.0: a nameless numbered marker; XDLS904 5.0 / XDLS905 4.0: five free activity anchors for six tiles.
+
+**The fix** (`ContentConverter.#cdTilePrepass`, data `interactive_builders.clickDrop.tile_grid.scrap_release`, env `CDSCRAPREL_OFF`): (a) a scrap whose marker is a stray (numberless, nameless — the r307 comment's own "writer's stray duplicate") RELEASES its otherwise-refused members back to the page — they render where the writer put them, inside the activity — instead of declining the row; (b) an inline marker of a `release_inline_tags` type (`info trigger`) on the SAME paragraph as a heading the prepass already releases is released with it (it fires on no page today — XDLS906 3.0 declines later on the writer's swapped order; kept as the heading release's own completion). Only a member that would have declined the row is released, so every row that built before is byte-identical.
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 0 pages changed**; ON **XDLS906_5_0 only** (+ its `_interactives.txt`): the page now carries the six choice tiles and six paired `clickDropContent` panels like its sibling pages. Regeneration + 12-module spot-check clean; **`scoped_ship.sh` PASS**.
+
+### 3. PROTECTED GATES
+
+- Skeleton **55.4051 % → 55.4150 % @ 2491 (+0.0098pp)**, RAW 39.375 → 39.386 %; **≥50 1587 → 1588 (+1)**, ≥75 277, ≥90 26; **1 mover: XDLS906_5_0 48.9 → 73.4 (+24.4)**; body ANY 236 → 235; cs 16745 / 198 / 888 / 24, clean 2591 / 2633, leak 52 / 42 EXACT; tags 9557 / 9557; every verifier RESULT ✓; selftests 50 green / 0 fail; the miner 194 CANDIDATE.
+- Plateau (§4): +0.0098pp (< 0.02) but ≥50 +1 — a protected bucket moved: neither counts nor resets; **0 of 3**.
+
+**Recorded, not built:** the other three declined choice-board pages — XDLS906 3.0 (the swapped `[Activity]`-before-button order), XDLS903 1.0 (a nameless numbered marker), XDLS904 5.0 / XDLS905 4.0 (a sixth activity anchor consumed elsewhere).
+
+**Ledger:** scoped #6 since the r490 FULL · data `interactive_builders.clickDrop.tile_grid.scrap_release` · env `CDSCRAPREL_OFF` · code `ContentConverter.#cdTilePrepass` · tools `_s46_r6_cdwhy.sh`, `_s46_trace_cc.cjs`, `_r496_finalise.py` · session 46 Round 7.
+
 ## 2026-09-25 (round 495, build 260620.58) — KB CONSTRAINT 5, THE LITERAL-TAG LEAK: a built hint slider no longer prints the writer's own face marker (`[Hintslider front]`, `[hint slider text 1]`) on its faces, and a black-typed `[Body text]` is stripped like `[body]` — the leak gate 75 → 52 occurrences
 
 ### 1. WHAT CHANGED

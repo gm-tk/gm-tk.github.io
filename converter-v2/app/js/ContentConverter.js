@@ -7142,10 +7142,21 @@ class ContentConverter {
 		const names = [];
 		const headingReleases = new Map();     // bundleIdx -> [heading member items]
 		let numbered = 0, sawHeader = false;
+		// ROUND 496 — SCRAP RELEASE (session 46 Round 7; the five pages r307 / r418 still declined). (a) A writer's STRAY
+		// numberless, nameless marker (`[click drop image]` typed again after `[Activity] **5B**`, XDLS906-5.0) opens a scrap
+		// that captures the activity's OWN `[H4]` / `[body]` lines — it is no tile, so what it captured is released back to the
+		// page instead of declining the whole row; (b) an inline marker (release_inline_tags — the `[hover definition]` inside
+		// `[H2] Should we use less artificial [hover definition] fake light?`, XDLS906-3.0) riding the SAME paragraph as a
+		// released heading is released with it. Data tile_grid.scrap_release; env CDSCRAPREL_OFF.
+		const _sr = cfg.scrap_release;
+		const srOn = !!(_sr && _sr.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_sr.env ?? "CDSCRAPREL_OFF"]));
+		const srInline = new Set(srOn ? (_sr.release_inline_tags ?? []) : []);
 		for (const bi of cds) {
 			const b = bundles[bi];
 			if ((b.tables ?? []).length) return null;                  // a table-carrying bundle is not a scrap (XDLS912)
 			const rel = [];
+			let stray = false;                                         // ROUND 496 (a): this scrap's marker was a stray
 			for (const m of [...(b.openerItems ?? []), ...(b.memberItems ?? [])]) {
 				const ptag = m?.parse?.primary?.tag;
 				if (ptag === "click drop") {
@@ -7165,7 +7176,7 @@ class ContentConverter {
 					// LOSSLESS BY CONSTRUCTION (zero words). A NUMBERED nameless marker
 					// is a real tile whose name is unreachable (XDLS909's red-span
 					// names) — the page declines rather than ship a partial row.
-					if (!name && !rest && !(m.parse?.numbers ?? []).length) continue;
+					if (!name && !rest && !(m.parse?.numbers ?? []).length) { if (srOn && _sr.stray_marker_members !== false) stray = true; continue; }
 					if (!name || rest) return null;                     // nameless numbered marker / extra content lines
 					if (idRe.test(name.replace(/\s+/g, "").toUpperCase())) return null;   // "4B" is a reference, not a label (XDLS908)
 					if (name.split(/\s+/).length > maxWords) return null;
@@ -7180,6 +7191,10 @@ class ContentConverter {
 				} else if (["h1", "h2", "h3", "h4", "h5", "h6", "heading"].includes(ptag)) {
 					rel.push(m);                                        // a captured section heading — released below (XDLS906-2.0)
 				} else {
+					// ROUND 496 — only what would decline the row is released (strictly additive: every row that built still builds
+					// byte-identically): (a) anything a STRAY marker's scrap captured; (b) an inline marker on a released heading's paragraph.
+					if (srOn && stray) { rel.push(m); continue; }
+					if (srOn && srInline.has(ptag) && rel.length && rel[rel.length - 1]?.block && rel[rel.length - 1].block === m?.block) { rel.push(m); continue; }
 					return null;                                        // any other member = content, not a scrap (XDLS908/911)
 				}
 			}

@@ -1848,7 +1848,8 @@ class Config {
 	// ROUND 493 (260620.56): THE BLL CLOSING SECTION AFTER THE DROPBOX BUTTON (session 46 Round 3) — in the BLL family a widget capture holding an upload-to-dropbox button ends at the following [body] / [image]. Env DROPBOXEND_OFF.
 	// ROUND 494 (260620.57): THE [BODY] AFTER A CAROUSEL'S SLIDE TABLE (session 46 Round 4) — the carousel's exemption from the body-after-table section break is lifted; an activity-owned carousel keeps its box open for the prose. Env CARBODYEND_OFF.
 	// ROUND 495 (260620.58): KB C5 THE LITERAL-TAG LEAK (session 46 Round 5) — a built hint slider strips the writer's own face marker from each face; a black [Body text] is stripped like [body]. Env HINTFACEMARK_OFF / BLACKBODYTEXT_OFF.
-	static AppVersion = "260620.58";
+	// ROUND 496 (260620.59): THE XDLS CHOICE BOARD'S STRAY MARKER (session 46 Round 7) — the r307 tile prepass releases what a stray numberless [click drop image] marker captured. Env CDSCRAPREL_OFF.
+	static AppVersion = "260620.59";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
