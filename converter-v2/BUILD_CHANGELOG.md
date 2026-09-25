@@ -1,5 +1,22 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (session 49 Round 6, build 260620.68 — NO engine change) — THE LEDGER'S FULL-SHIP BACKSTOP: the whole corpus regenerated with the r505 engine is byte-identical to the shipped manifest (545 dirs / 543 modules / 2,673 pages; 0 pages differ)
+
+### 1. WHAT RAN
+
+The ledger's backstop (`_ship_ledger.py`: scoped #8 since the r498 FULL — r499, r500, r502, r503, r504, r505 and the two proof re-scores; the cadence is 8) — no engine, data or registry change and no ride-along (LOOP §2). `outputs/_s49_full_regen.sh`: `_batch_plan.py`'s 42 batches as `batch_convert.cjs … --force` calls, 4 parallel workers under WSL, a 900 s wall each — **42 / 42 rc 0 in 6 min 13 s**; `_stalecheck.sh` 0 stale.
+
+### 2. PROOF
+
+- **`_content_manifest.py fresh` (affected = none): all 543 modules BYTE-IDENTICAL to the shipped manifest; `changed` = none.** Identical bytes cannot move a metric.
+- `outputs/_s49_full_postship.sh`: `run_all_gates.sh` — every verifier RESULT ✓ and every r501 COUNT line "held (per module too)", tags 9557 / 9557; skeleton `--json` + `_s29_skdelta.py` vs the pre-backstop state: **0 movers, 0 new / 0 gone pages**; `_gatecheck.py cs bc` FIRST (its skeleton row was the documented CACHED one), then `skeleton defect --commit --round 505`: **every protected gate HELD — and the r501 writer reported "0 changed (all already equal)": the full run's own aggregates equal the baseline the scoped commits wrote since r501** (`_fastloop_diff.py --gate-baseline-check` PASS); ledger `record-full --round 505` (LAST FULL = r505, the counter 8 → 0); fast-loop baseline and content manifest re-snapshotted (2,673 pages / 543 modules); **50 selftests GREEN, 0 FAIL**; the feature index GREEN; the DIFF MINER re-run (2,486 pairs, 9,359 classes, **193 CANDIDATE**).
+
+### 3. PROTECTED GATES — EXACT
+
+Skeleton **55.5401 % @ 2486** (≥50 1599, ≥75 276, ≥90 26), RAW 39.467 %; cs 16766 / 199 / 888 / 24; body ANY 232; clean 2585 / 2627; leak 52 / 42 — all EXACT. Plateau: neither (a change-free backstop).
+
+**Ledger:** FULL ship recorded at round 505 (the counter reset) · tools `_s49_full_regen.sh`, `_s49_full_postship.sh`, `_s49_full_record.py` · session 49 Round 6.
+
 ## 2026-09-25 (round 505, build 260620.68) — D15-18 PART 1: A RIGHT-HAND BOX IS ALWAYS THE SIDE COLUMN in Standard and Fundamentals modules — the `right hand side` spellings count, and a box with no content row before it pairs with the row that follows (22 pages / 17 modules; the RHS family's Claude = gold 70 → 78 tags, 0 lost)
 
 ### 1. WHAT CHANGED
