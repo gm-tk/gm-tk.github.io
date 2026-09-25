@@ -1,0 +1,395 @@
+    GOLD ANZH301_2.0.html: <div class="slider"> items 0: 
+    GOLD ANZH301_5.0.html: <div class="slider"> items 0: 
+    GOLD ENGC202_8.0.html: <div class="slider"> items 1: How do you feel about your final review?
+--- ENGC403 #3 box modifier="insert"
+    tag: [insert slider] ⟶ It is not important ----------------------------------- It i
+    tag: [body] ⟶ At the end of the lesson you will be able to see whether you
+    tag: [H3] ⟶ Key life skills learnt through debating
+    tag: [body] ⟶ Here we have a list of skills that are strengthened and deve
+    tag: [insert flipcards] Designer note: can we please have image and title on the front with body on the reverse]
+    TABLE 3x5: 🔴[RED TEXT] [front] [/RED TEX ‖ 🔴[RED TEXT] [front] [/RED TEX ‖ 🔴[RED TEXT] [front] [/RED TEX ‖ 🔴[RED TEXT] [front] [/RED TEX ‖ 🔴[RED TEXT] [front] [/RED TEX // 🔴[RED TEXT] [front image] [/R ‖ 🔴[RED TEXT] [front image] [/R ‖ 🔴[RED TEXT] [front image] [/R ‖ 🔴[RED TEXT] [front image] [/R ‖ 🔴[RED TEXT] [front image] [/R // 🔴[RED TEXT] [reverse] [/RED T ‖ 🔴[RED TEXT] [reverse] [/RED T ‖ 🔴[RED TEXT] [reverse] [/RED T ‖ 🔴[RED TEXT] [reverse] [/RED T ‖ 🔴[RED TEXT] [reverse] [/RED T
+--- ENGC403 #5 box modifier="insert"
+    tag: [insert slider] ⟶ It is not important ----------------------------------- It i
+    GOLD ENGC403_1_0.html: <div class="slider"> items 0: 
+    GOLD ENGC403_1_0.html: <div class="slider"> items 0: 
+    GOLD ENGI103_6.0.html: <div class="slider"> items 0: 
+    GOLD ENGI401_6.3.html: <div class="slider"> items 5: How well did the speaker use tone ? Poor | How well did the speaker use pace ? Poor | How well did the speaker vary his intona | How well did the speaker use volume ? Po | How well did the speaker use pauses ? Po
+    GOLD ENGR201_6.0.html: <div class="slider"> items 1: How do you feel about your final article
+--- ENGR301 #3 box modifier=""
+    tag: [Slider] (no right or wrong answer)
+    TABLE 2x4:  // Harper *–* For cell phones ‖  ‖  ‖ Nikau *–* Against cell phones
+--- ENGR301 #20 box modifier=""
+    tag: [Slider] (no right or wrong answer)
+    TABLE 2x4:  // Harper – For cell phones ‖  ‖  ‖ Nikau – Against cell phones
+    GOLD ENGR301_1.0.html: <div class="slider"> items 1: 1. Slider question Harper For cell phone
+    GOLD ENGR301_8.0.html: <div class="slider"> items 1: 1. Slider question Harper For cell phone
+--- ENGS101 #5 box modifier="starting point in centre"
+    tag: [Slider Starting point in centre] ⟶ Self reflection
+    black: How did you find Lesson 1?
+    tag: [Images] ⟶ Rating Satisfaction. Set of Emotion Smiles -
+--- ENGS101 #9 box modifier="starting point in centre"
+    tag: [Slider Starting point in centre] ⟶ Self reflection
+    black: How did you find Lesson 2?
+    tag: [Images] ⟶ Rating Satisfaction. Set of Emotion Smiles -
+--- ENGS101 #14 box modifier="starting point in centre"
+    tag: [Slider Starting point in centre] ⟶ Self reflection
+    black: How did you find Lesson 3?
+    tag: [Images] ⟶ Rating Satisfaction. Set of Emotion Smiles -
+--- ENGS101 #18 box modifier="starting point in centre"
+    tag: [Slider Starting point in centre] ⟶ Self reflection
+    black: How did you find Lesson 4?
+    tag: [Images] ⟶ Rating Satisfaction. Set of Emotion Smiles -
+--- ENGS101 #20 box modifier="starting point in centre"
+    tag: [Slider Starting point in centre] ⟶ Self reflection
+    black: How did you find Lesson 5?
+    tag: [Images] ⟶ Rating Satisfaction. Set of Emotion Smiles -
+--- EXPFUN06 #1 box modifier=""
+    tag: [interactive: slider] Activity 1A: ⟶ What are my drivers? Checklist
+    tag: Use the sliders to indicate what motivates you the most.
+    TABLE 10x3: 1. Being and having good frien ‖ Yes ‖ No // 2. Being honest with myself an ‖ Yes ‖ No // 3. Taking responsibility for m ‖ Yes ‖ No // 4. Being able to choose my pro ‖ Yes ‖ No
+    black: Our drivers tell us many things about who we are and what motivates us.
+    black: We can use self-assessment or reflection and feedback from others to help keep us on track with where we want 
+--- HES1002 #2 box modifier=""
+    tag: [Activity] [Individual] [Slider Question] ⟶ How much do you know about eating for the best growth and de
+    black: From the best research, we have eating and qctivity guidelines here in New Zealand which help us to know what 
+--- HES1002 #10 box modifier=""
+    tag: [Slider Question] ⟶ Where do you think you sit on the guideline continuum below?
+    tag: I mostly follow the guidelines ----------------------------------------- I am not able to follow the guideline
+    tag: [H3] ⟶ So, what does ‘plenty of vegetables and fruit’ or ‘some’ mea
+    tag: [Body] ⟶ Firstly, one serving of vegetables is different to one servi
+    tag: [Insert media item 7a]
+    black: Another way is to measure using measuring cups, spoons, and scales to be more precise.
+    tag: [Insert media item 8a]
+--- HES1003 #4 box modifier="style: agree- disagree"
+    tag: [slider style: Agree- Disagree]
+    black: • The legal driving age should be raised to 18.
+    black: • The legal alcohol drinking age should be 20.
+    black: • It is hard to do something different from your friends.
+    black: • Social media is harmful.
+    black: • The age for voting in government elections should be lowered to 16
+    GOLD HES1003_2.0.html: <div class="slider"> items 5: The legal driving age should be raised t | The legal age to purchase alcohol should | It is hard to do something different fro | Social media is harmful. Agree Disagree | The age for voting in government electio
+    GOLD HPFUN101.html: <div class="slider"> items 0: 
+    GOLD HPFUN201.html: <div class="slider"> items 0: 
+--- HPFUN303 #5 box modifier="use scale from (not safe) to (very safe) - no"
+    tag: [interactive activity] slider – use scale from 0 (not safe) to 5 (very safe) - no correct answers
+    black: 1. You stay overnight at a friend’s house.
+    black: 1. You take a shortcut through the park home.
+    black: 1. You are reading a book at home in bed.
+    black: 1. A member of your whānau shouts at you.
+    black: 1. You walk to your sports practice with your friend.
+    black: 1. You message people you don’t know online.
+    black: 1. You bike home by yourself.
+    black: 1. You share your password with friends.
+    tag: [insert media item #21] ⟶ https://media.istockphoto.com/id/1211734773/photo/children-h
+--- HPFUN401 #2 box modifier=""
+    tag: [interactive activity] sliders for each statement ākonga will move a slider, between strongly disagree- – agre
+    black: 1. Smoking should be banned.
+    black: 1. The driving age should be raised to 18.
+    black: 1. The government should give all 14-year-olds a laptop.
+    black: 1. It is difficult to do something different from your friends.
+    black: 1. Teenagers should be allowed to vote.
+    black: 1. Artificial intelligence is taking over.
+    GOLD HPFUN401.html: <div class="slider"> items 6: 1. Smoking should be banned. Strongly ag | 2. The driving age should be raised to 1 | 3. The government should give all 14-yea | 4. It is difficult to do something diffe | 5. Teenagers should be allowed to vote.  | 6. Artificial intelligence is taking ove
+--- HPFUN402 #7 box modifier="/ bar graph"
+    tag: [interactive activity] slider/ bar graph activity
+    tag: DEV move the sliders from 0-5 to create a bar graph representing ākonga own perspective of their personal resp
+    TABLE 6x6: all of the time ‖  ‖  ‖  ‖  ‖  //  ‖  ‖  ‖  ‖  ‖  // some of the time ‖  ‖  ‖  ‖  ‖  //  ‖  ‖  ‖  ‖  ‖ 
+--- HPRE203 #21 box modifier=""
+    tag: [interactive slider] (DEV allow ākonga to slide slider from true | sometimes | never, for each statement.) ans
+    tag: [body text] ⟶ When I was younger, I liked to …
+    TABLE 4x2: 🔴[RED TEXT] [image] [/RED TEX ‖ • play with just one or two fr // 🔴[RED TEXT] [image] [/RED TEX ‖ • play in big groups. // 🔴[RED TEXT] [image] [/RED TEX ‖ • spend time with friends who  // 🔴[RED TEXT] [image] [/RED TEX ‖ • have friends who were funny.
+    GOLD HPRE203_4_0.html: <div class="slider"> items 4: Play with just one or two friends at a t | Play in big groups. true sometimes never | Spend time with friends who were kind. t | Have friends who were funny. true someti
+    GOLD MXFL203_10.0.html: <div class="slider"> items 0: 
+    GOLD MXFL203_11.0.html: <div class="slider"> items 0: 
+    GOLD MXFL203_5.0.html: <div class="slider"> items 4: Show ²⁄₂ 0 ½ 1 1½ 2 2½ 3 | Show ⁶⁄₆ 0 ⅙ ²⁄₆ ³⁄₆ ⁴⁄₆ ⅚ 1 1⅙ 1²⁄₆ 1³⁄ | Show ⁸⁄₈ 0 ⅛ ²⁄₈ ³⁄₈ ⁴⁄₈ ⅝ ⁶⁄₈ ⅞ 1 1⅛ 1² | Show ²⁄₁ 0 ¼ ²⁄₄ ¾ 1 1¼ 1²⁄₄ 1¾ 2 2¼ 2²⁄
+    GOLD MXFL204_8.0.html: <div class="slider"> items 3: Labrador Retriever Low energy High energ | Chihuahua Low energy High energy | Cavalier King Charles Spaniel Low energy
+    GOLD MXFL204_8.0.html: <div class="slider"> items 2: Chihuahua Low energy High energy | Cavalier King Charles Spaniel Low energy
+    GOLD MXFL204_8.0.html: <div class="slider"> items 1: Cavalier King Charles Spaniel Low energy
+    GOLD MXFL301_02.0.html: <div class="slider"> items 0: 
+    GOLD MXFL301_02.0.html: <div class="slider"> items 0: 
+    GOLD MXFL301_02.0.html: <div class="slider"> items 0: 
+    GOLD MXFL301_02.0_OLD.html: <div class="slider"> items 0: 
+    GOLD MXFL301_02.0_OLD.html: <div class="slider"> items 0: 
+    GOLD MXFL301_02.0_OLD.html: <div class="slider"> items 0: 
+    GOLD MXFL302_03.0.html: <div class="slider"> items 0: 
+--- OSAI101 #17 box modifier=""
+    tag: [slider] One slider per scenario.
+    black: Not there yet
+    black: Getting better
+    black: Confident
+    black: Oops. That’s not safe or smart yet. Let’s try again and make a better choice.
+    black: You’re on the right track. Keep thinking and checking to make it even safer.
+    black: Awesome. You’re using AI safely and making smart choices. Great job.
+    tag: Slider scale labels: ⟶ Not there yet Getting better Confident
+    tag: Can there be pop up show answers for each scale label like this:
+    tag: [label] ⟶ Not there yet (low left):
+    tag: [answer] ⟶ Oops. That’s not safe or smart yet. Let’s try again and make
+    tag: [label] ⟶ Getting better (middle):
+    tag: [answer] ⟶ You’re on the right track. Keep thinking and checking to mak
+    tag: [label] ⟶ Confident (high right):
+    tag: [answer] ⟶ Awesome. You're using AI safely and making smart choices. Gr
+    black: Scenario 1: "I asked AI for my friend’s password."
+    GOLD OSAI101-02.html: <div class="slider"> items 4: Scenario 1: "I asked AI for my friend’s  | Scenario 2: "I showed my supervisor my p | Scenario 3: "I checked if AI’s answer wa | Scenario 4: "I asked AI to write my whol
+--- OSAI201 #18 box modifier="chart"
+    tag: [slider chart] slide from low to high. Can the pop-up text appear when each number is chosen in the correspond
+    TABLE 6x4:  ‖ 🔴[RED TEXT] [X axis labels] a // 🔴[RED TEXT] [Y axis labels] d ‖ Evaluate AI ‖ Recognise AI ‖ Use AI responsibly // Level ‖ 🔴[RED TEXT] [Pop up texts tha // 3. Very good ‖ I can explain why AI might be  ‖ I can explain examples of AI i ‖ I don’t think about what I typ
+--- OSAI301 #12 box modifier="chart"
+    tag: [slider chart] Can the pop-up text appear when each number is chosen in the corresponding row?
+    TABLE 7x4:  ‖ 🔴[RED TEXT] [X axis labels] a // 🔴[RED TEXT] [Y axis labels] d ‖ Evaluate AI ‖ Recognise AI ‖ Use AI responsibly // Level ‖ 🔴[RED TEXT] [Pop up texts] [/ // • Emerging ‖ I know AI helps with things li ‖ I can spot AI in apps and game ‖ I follow basic safety rules wh
+--- OSBY101 #16 box modifier="vertical up and"
+    tag: [slider – vertical up and down]
+    TABLE 1x2:  ‖ 🔴[RED TEXT] 💚 [/RED TEXT]🔴S
+--- OSGM101 #9 box modifier=""
+    tag: [slider] use the timers from this image and cut out individual ones as below [image] ⟶ https://www.istockphoto.com/vector/set-of-timer-stopwatch-wi
+    tag: slider___________________________________________________________________________
+    tag: [H3] ⟶ Kind gaming
+    TABLE 1x2: 🔴[RED TEXT] [speech bubble] [ ‖ 🔴[RED TEXT] [image] [/RED TEX
+--- OSGM201 #13 box modifier=""
+    tag: [slider]
+    TABLE 1x4: **A little** / Less than 30 mi ‖ **Just right** / Around an hou ‖ **Getting a lot** / Two plus h ‖ **Too much** / Four plus hours
+    GOLD OSGM201_3.0.html: <div class="slider"> items 0: 
+--- OSGM301 #3 box modifier=""
+    tag: [Slider 1] Strongly Agree, Strongly Disagree, ⟶ Do I feel like I am learning when playing games?
+    tag: [Slider 2] Strongly Agree, Strongly Disagree ⟶ Do I have safe interactions with other players?
+    tag: [Slider 3] Strongly Agree, Strongly Disagree ⟶ Do I feel like I should be doing something else when gaming?
+    tag: [Body][Show answer] CS can this please appear when akonga confirm all the sliders
+    black: Looking at the answers above, consider how gaming is having a positive and/or negative effect on you. Whether 
+    GOLD OSGM301-01.html: <div class="slider"> items 3: 1. Do I feel like I am learning when pla | 2. Do I have safe interactions with othe | 3. Do I feel like I should be doing some
+--- OSGM401 #17 box modifier=""
+    tag: [Slider 1] Strongly agree, Strongly disagree, ⟶ Do I feel like I am learning when playing games?
+    tag: [Slider 2] Strongly agree, Strongly disagree ⟶ Do I have safe interactions with other players?
+    tag: [Slider 3] Strongly agree, Strongly disagree ⟶ Do I feel like I should be doing something else when gaming?
+    tag: [Show answer] CS can this please appear when ākonga confirm all the sliders
+    black: Looking at the answers above, consider how gaming is having an effect on you. Share and talk to a trusted adul
+    black: If gaming is replacing important activities like it might be tipping into gaming disorder (addiction). When ga
+    GOLD OSGM401-04.html: <div class="slider"> items 3: Do I feel like I am learning when playin | Do I have safe interactions with other p | Do I feel like I should be doing somethi
+--- OSGM501 #18 box modifier=""
+    tag: [Slider 1] Strongly agree, Strongly disagree, ⟶ Do I feel like I am learning when playing games?
+    tag: [Slider 2] Strongly agree, Strongly disagree ⟶ Do I have safe interactions with other players?
+    tag: [Slider 3] Strongly agree, Strongly disagree ⟶ Do I feel like I should be doing something else when gaming?
+    tag: [Show answer] CS can this please appear when ākonga confirm all the sliders
+    tag: [body] ⟶ Looking at the answers above, consider how gaming is having 
+    black: Healthy gaming often involves skill-building, creativity, or problem-solving. If you feel stuck, bored, or lik
+    black: Positive social interaction is a big part of healthy gaming. But if gaming is causing conflict, isolation, or 
+    black: If gaming is replacing important activities, it might be tipping into gaming disorder (addiction). When gaming
+    GOLD OSGM501-04.html: <div class="slider"> items 3: Do I feel like I am learning when playin | Do I have safe interactions with other p | Do I feel like I should be doing somethi
+--- OSOH101 #15 box modifier=""
+    tag: [slider]
+    TABLE 8x3: **I take breaks when using a s // I forget to take breaks ‖ I take breaks sometimes ‖ I take breaks often and move a // **I use screens for creative t // I mostly watch or play ‖ I sometimes do creative things ‖ I often use screens to make or
+    GOLD OSOH101_0.2.html: <div class="slider"> items 4: I take breaks when using a screen I forg | I use screens for creative things (drawi | I play outside or do other activities aw | I talk to my whānau about what I do onli
+--- OSOH401 #21 box modifier="graph chart"
+    tag: [graph slider chart interactive] slide vertically - can the Y axis go to 60 or 90 mins
+    tag: [body] ⟶ Slide each bar to the level you feel relates to how much tim
+    tag: Y axis
+    black: Percentage of day(%)
+    tag: x-axis ⟶ Activity
+    black: Screen Balance
+    tag: [show answer]
+    TABLE 1x2: Balanced day / Screen learning ‖ Too much screen time / Screen 
+--- OSSM301 #7 box modifier="graph chart"
+    tag: [Graph slider chart interactive] Horizontal min 0 max 5,
+    TABLE 11x7:  ‖ 🔴[RED TEXT] [xaxis labels] [/ ‖ Never (1) ‖ Not often (2) ‖ Sometimes (3) ‖ Mostly (4) ‖ Always (5) // 🔴[RED TEXT] [yaxis labels] [/ ‖ I check social media as soon a ‖  ‖  ‖  ‖  ‖  //  ‖ I use social media during scho ‖  ‖  ‖  ‖  ‖  //  ‖ I feel upset if I can’t go onl ‖  ‖  ‖  ‖  ‖ 
+    tag: [show answer] Akonga need to have moved each bar to at least once before showing.
+--- OSSM401 #3 box modifier=""
+    tag: [slider] have a slider per question
+    TABLE 4x6: 🔴[RED TEXT] labels [/RED TEXT // 0 Never ‖ 1 Rarely ‖ 2 Sometimes ‖ 3 Often ‖ 4 Very often ‖ 5 Always // Question 1 / I feel I need soc ‖ Question 2 / I feel stressed o ‖ Question 3 / I post photos or  ‖ Question 4 / I follow accounts // Question 5 / I spend more than ‖ Question 6 / I share informati ‖ Question 7 / I leave my privac ‖ Question 8 / I use social medi
+    GOLD OSSM401_1_0.html: <div class="slider sliderLines"> items 8: 1. I feel I need social media to stay co | 2. I feel stressed or anxious if I can’t | 3. I post photos or videos without think | 4. I follow accounts even if they make m | 5. I spend more than three hours a day o | 6. I share information without checking  | 7. I leave my privacy settings off or do | 8. I use social media instead of other a
+    GOLD OSSM401_1_0.html: <div class="slider sliderLines"> items 7: 2. I feel stressed or anxious if I can’t | 3. I post photos or videos without think | 4. I follow accounts even if they make m | 5. I spend more than three hours a day o | 6. I share information without checking  | 7. I leave my privacy settings off or do | 8. I use social media instead of other a
+    GOLD OSSM401_1_0.html: <div class="slider sliderLines"> items 6: 3. I post photos or videos without think | 4. I follow accounts even if they make m | 5. I spend more than three hours a day o | 6. I share information without checking  | 7. I leave my privacy settings off or do | 8. I use social media instead of other a
+    GOLD OSSM401_1_0.html: <div class="slider sliderLines"> items 5: 4. I follow accounts even if they make m | 5. I spend more than three hours a day o | 6. I share information without checking  | 7. I leave my privacy settings off or do | 8. I use social media instead of other a
+    GOLD OSSM401_1_0.html: <div class="slider sliderLines"> items 4: 5. I spend more than three hours a day o | 6. I share information without checking  | 7. I leave my privacy settings off or do | 8. I use social media instead of other a
+    GOLD OSSM401_1_0.html: <div class="slider sliderLines"> items 3: 6. I share information without checking  | 7. I leave my privacy settings off or do | 8. I use social media instead of other a
+    GOLD OSSM401_1_0.html: <div class="slider sliderLines"> items 2: 7. I leave my privacy settings off or do | 8. I use social media instead of other a
+    GOLD OSSM401_1_0.html: <div class="slider sliderLines"> items 1: 8. I use social media instead of other a
+--- OSSM501 #6 box modifier="graph chart"
+    tag: [Graph slider chart interactive] Horizontal min 0 max 5,
+    TABLE 11x7:  ‖ 🔴[RED TEXT] [xaxis labels] [/ ‖ Never (1) ‖ Not often (2) ‖ Sometimes (3) ‖ Mostly (4) ‖ Always (5) // 🔴[RED TEXT] [yaxis labels] [/ ‖ I check social media as soon a ‖  ‖  ‖  ‖  ‖  //  ‖ I use social media during scho ‖  ‖  ‖  ‖  ‖  //  ‖ I feel upset if I can’t go onl ‖  ‖  ‖  ‖  ‖ 
+    tag: [show answer] Ākonga need to have moved each bar at least once before showing.
+--- PHE1001 #1 box modifier=""
+    tag: [slider] ⟶ ‘I have no idea’ at one end, ‘I have some idea’ in the middl
+    GOLD PHE1001_1.0.html: <div class="slider"> items 0: 
+--- PHE1002 #1 box modifier=""
+    tag: [slider] ⟶ ‘I have no idea’ at one end, ‘I have some idea’ in the middl
+    black: [Body] An applied setting is an authentic
+    tag: [hover over authentic with genuine as other word] ⟶ environment, space, or place where the movement context take
+    GOLD PHE1002_1.0.html: <div class="slider"> items 0: 
+--- PHE1005 #5 box modifier=""
+    tag: [slider] ⟶ I know about Te Wheke
+    tag: 0 being no knowledge through to 100 being fully understand
+    tag: [H3] ⟶ What is Te Wheke?
+    tag: [insert item 6] image of octopus created especially for our ākonga. Add to the image a hover over the differen
+    black: [head] Te whanau – represents the family unit
+    black: [eyes] Waiora – the total wellbeing for individual and family
+    black: [one for each tentacle]:
+    black: Wairua – spiritual
+    black: Tinana – physical
+    black: Whanaungatanga – extended family
+    black: Mauri – life force in people and objects
+    black: Mana ake – unique identity of individuals and family
+    black: Hā a koro ma, a kui ma – breath of life from forebearers
+    black: Whatumanawa – open and healthy expression of emotion
+    tag: [body] ⟶ Traditional Māori health acknowledges the link between the m
+    black: The Te Wheke model relies on the individual’s self-reporting of their health and wellbeing, rather than using 
+--- PHE1005 #7 box modifier=""
+    tag: [slider] ⟶ I know about Fonofale
+    tag: 0 being no knowledge through to 100 being fully understand
+    tag: [H3] ⟶ What is Fonofale?
+    tag: [body] ⟶ Listen to Papāli'i Pale Sauni explain the Fonofale model of 
+    tag: [insert item 16]
+    tag: [body] ⟶ The Fonofale model was created as a Pacific model of health,
+    black: Similar to Te Whare Tapa Whā, the Fonofale model also uses the image of a house, otherwise known as a ‘fale’, 
+--- PHE1005 #9 box modifier=""
+    tag: [slider] ⟶ I know about Fonua
+    tag: 0 being no knowledge through to 100 being fully understand
+    tag: [H3] ⟶ What is Fonua?
+    tag: [body] ⟶ The Fonua model is a Tongan framework of health which compri
+    tag: [insert item] image of Fonua model used in health studies FUNdamental module
+    black: In the Fonua model there are five dimensions and five levels. These five dimensions are inter-woven like a mat
+    black: • Laumalie – Spiritual
+    black: • 'Atamai – Mental
+    black: • Sino – Physical
+    black: • Kainga – Collective/Community
+    black: • and 'Atakai – Environment.
+    black: All must be cared for equally in order to maintain holistic wellbeing. These five levels are interconnected an
+    black: • Taautaha – Individual
+    black: • Famili – Family
+    black: • Kolo – Local/Village
+    black: • Fonua – Nation
+    GOLD PHE1005_3.0.html: <div class="slider"> items 0: 
+    GOLD PHE1005_4.0.html: <div class="slider"> items 0: 
+    GOLD PHE1005_5.0.html: <div class="slider"> items 0: 
+--- SSCI104 #3 box modifier="arrow"
+    tag: [arrow slider] CS: can there be a clear divide like colours for Before and After sections? Can this be autoche
+    tag: [body] ⟶ Question 1: Did dinosaurs exist BC/BCE or AD/CE? Drag the sl
+    TABLE 2x2: 🔴[RED TEXT] [image] [/RED TEX // **BEFORE** (BC/BCE) ‖ **AFTER** (AD/CE)
+    black: Question 2: Did cars exist BC/BCE or AD/CE?
+    TABLE 2x2: 🔴[RED TEXT] [image] [/RED TEX // **BEFORE** (BC/BCE) ‖ **AFTER** (AD/CE)
+    black: Question 3: Did space travel exist BC/BCE or AD/CE? Drag the slider to show your answer.
+    TABLE 2x2: 🔴[RED TEXT] [image] [/RED TEX // **BEFORE (**BC/BCE) ‖ **AFTER** (AD/CE)
+    black: Question 4: Did people of the Stone Age exist BC/BCE or AD/CE? Drag the slider to show your answer.
+    TABLE 2x2: 🔴[RED TEXT] [image] [/RED TEX // **BEFORE** (BC/BCE) ‖ **AFTER** (AD/CE)
+--- SSCI205 #23 box modifier=""
+    tag: [Slider] easy – very hard (no correct answer)
+    tag: [Body] ⟶ Move the slider to show your thinking.
+    black: You will explain your choice in your journal.
+    tag: [Body] ⟶ Why did you place the slider there?
+    tag: [Button] ⟶ Go to journal
+    GOLD SSCI205_5_0.html: <div class="slider"> items 1: How hard do you think life in Sparta was
+    GOLD TEDC401-1.0.html: <div class="slider"> items 1: How confident do you feel with metadata 
+    GOLD TEDC401-5.0.html: <div class="slider"> items 1: How confident are you reading your own c
+--- TEDC402 #13 box modifier="+ short explanation"
+    tag: [slider + short explanation]
+    tag: [H3] ⟶ **How design affects understanding**
+    tag: [Body] ⟶ Move the slider to show how much you agree with this stateme
+    GOLD TEDC402-1.0.html: <div class="slider"> items 1: How much do you agree? Strongly disagree
+    GOLD TEDC402-6.0.html: <div class="slider"> items 1: How confident do you feel? Not yet confi
+    GOLD TEDC402-8.0.html: <div class="slider"> items 1: b. "Creating a clear, responsible data s
+    GOLD TWHA901 Be a Learner.html: <div class="slider"> items 0: 
+    GOLD TWHA901 Be a Learner.html: <div class="slider"> items 0: 
+    GOLD TWHA901 Be a Learner.html: <div class="slider"> items 0: 
+    GOLD TWHA901 Be a Learner.html: <div class="slider"> items 0: 
+    GOLD TWHA901 Be a Learner.html: <div class="slider"> items 0: 
+    GOLD TWHA901 Be a Learner.html: <div class="slider"> items 0: 
+    GOLD TWHA901 Be a Learner.html: <div class="slider"> items 0: 
+    GOLD TWHA901 Be a Learner.html: <div class="slider"> items 0: 
+    GOLD TWHA901 Be a Learner.html: <div class="slider"> items 0: 
+    GOLD TWHA901 Be a Learner.html: <div class="slider"> items 0: 
+    GOLD TWHA902 Be a Communicator.html: <div class="slider"> items 0: 
+    GOLD TWHA902 Be a Communicator.html: <div class="slider"> items 0: 
+    GOLD TWHA902 Be a Communicator.html: <div class="slider"> items 0: 
+    GOLD TWHA902 Be a Communicator.html: <div class="slider"> items 0: 
+    GOLD TWHA902 Be a Communicator.html: <div class="slider"> items 0: 
+    GOLD TWHA902 Be a Communicator.html: <div class="slider"> items 0: 
+    GOLD TWHA902 Be a Communicator.html: <div class="slider"> items 0: 
+    GOLD TWHA902 Be a Communicator.html: <div class="slider"> items 0: 
+    GOLD TWHA906 Whakamana and Resilience.html: <div class="slider"> items 0: 
+--- TWHK903 #9 box modifier="insert"
+    tag: [interactive: insert Slider] Activity 9A
+    black: 1. Using AI all the time is going to make us less able to solve problems.
+    tag: All the time/Never
+    black: 1. AI will help us solve some of the world’s wicked problems.
+    tag: All the time/Never
+    black: 1. I like to use AI to get me started on my projects.
+    tag: All the time/Never
+    black: 1. AI saves me a lot of time with my assignments.
+    tag: All the time/Never
+    black: 1. AI reduces my social contact with others in the real world.
+    tag: All the time/Never
+    black: What are your thoughts on Chat bots and AI? Read the scenarios below and tell us what you know about AI.
+    tag: [Dev short answer questions with the answers to show later]
+    TABLE 2x2: Phase 2/3 Activity 9B: Your th ‖ Phase 4/5 Activity 9C: Your th // Scenario: Your kaiako has aske ‖ Scenario: You’ve been asked to
+    tag: [interactive: reflection box]
+    black: You might like to reflect on areas in your life where you can apply these online skills in your everyday life.
+    GOLD TWHK907.html: <div class="slider"> items 10: 1. Beach, bush and forestry Not interest | 2. Animals Not interested Interested Pas | 3. Agriculture Not interested Interested | 4. Food Not interested Interested Passio | 5. Community events Not interested Inter | 6. People Not interested Interested Pass | 7. Reading Not interested Interested Pas | 8. Technology Not interested Interested  | 9. Art Not interested Interested Passion | 10. Emergency help Not interested Intere
+--- WJFUN112 #8 box modifier=""
+    tag: [Slider] Can each question have the same slider below. Below is a mock up from Co-Pilot. The words need to sta
+    tag: [Body] ⟶ Read about each audience. Think about the type of language t
+    black: Remember:
+    black: • Important or professional audiences often need more formal language.
+    black: • Friends and people you know well often suit more informal language.
+    black: 1A conservationist reading a report about protecting fur seals along the coastline.
+    tag: [correct answer ⟶ Very Formal
+    tag: ]
+    black: 2Your best friend who loves kayaking in Abel Tasman National Park.
+    tag: [correct answer ⟶ Very Informal
+    tag: ]
+    black: 3The principal of your school reading a letter thanking them for organising a class trip to Abel Tasman Nation
+    tag: [correct answer ⟶ Formal
+    tag: ]
+    black: 4A business owner advertising kayak tours in Abel Tasman National Park.
+    tag: [correct answer ⟶ Formal
+    GOLD WJFUN112_0_0.html: <div class="slider"> items 7: 1. A conservationist reading a report ab | 2. Your best friend who loves kayaking i | 3. The principal of your school reading  | 4. A business owner advertising kayak to | 5. Teenagers hanging out at Golden Bay o | 6. People reading an information board b | 7. A tourist who has stopped at the Visi
+--- XDLS912 #1 box modifier="insert - first statement with , then slide over to then statement with"
+    tag: [insert slider – First statement with picture, then slide over to Then statement with picture]
+    TABLE 6x1: **First Then** / **1. Pick up  // **First Then** / **2. Put dirt // **First Then** / **3. Put away // **First Then** / **4. Clear su
+--- XDLS912 #3 box modifier="insert - first statement with , then slide over to then statement with"
+    tag: [insert slider – First statement with picture, then slide over to Then statement with picture]
+    TABLE 7x1: **First Then** / **1. Check wh // **First Then** / **2️. Find ou // **First Then** / **3️. Get dre // **First Then** / **4️. Go to t
+--- XDLS912 #4 box modifier="insert - first statement with , then slide over to then statement with"
+    tag: [insert slider – First statement with picture, then slide over to Then statement with picture]
+    TABLE 7x1: **First Then** / **1. Choose c // **First Then** / **2️. Eat bre // **First Then** / **3️. Find ou // **First Then** / **4️. Look at
+--- XDLS912 #18 box modifier="insert - first statement with , then slide over to then statement with"
+    tag: [insert slider – First statement with picture, then slide over to Then statement with picture]
+    TABLE 6x1: **First Then** / **1.** First: // **First Then** / **2.** Then:  // **First Then** / **3. F**irst: // **First Then** / **4.** Find a
+    black: Here is a printable PDF you can use at home.
+--- XDLS912 #21 box modifier="insert"
+    tag: [insert slider]
+    TABLE 4x2: Speaker 1 says something. ‖ Speaker B – Listens and respon // Speaker B makes a comment that ‖ Speaker B might ask them a que // Speaker A might answer the que ‖ Speaker B might give another c // Speaker A or Speaker B asks a  ‖ And the conversation carries o
+--- XDLS912 #23 box modifier="insert"
+    tag: [insert slider] ⟶ When talking to someone:
+    tag: [insert image for slider] ⟶ man and woman talking to each other
+    TABLE 4x1: • **Wait for your turn.** Reme // • Make sure they are listening // • **Use a kind voice** and loo // • You can start with words lik
+--- XDLS912 #25 box modifier="insert"
+    tag: [insert slider]
+    TABLE 6x2: **Shower Schedule** // **First** / **Go to the bathro ‖ **Then** / **Turn on the showe // **First** / **Take off your cl ‖ **Then** / **Step into the sho // **First** / **Wash armpits, bo ‖ **Then** / **Rinse off soap.**
+--- XDLS912 #27 box modifier="insert"
+    tag: [insert slider]
+    TABLE 5x2: **Dressing Schedule** // **First** / **Choose your clot ‖ **Then** / **Put on your under // **First** / **Put on a t-shirt ‖ **Then** / **Put on pants or a // **First** / **Put on a jumper  ‖ **Then** / **Put on your socks
+--- XDLS912 #28 box modifier="insert"
+    tag: [insert slider]
+    TABLE 4x2: **Hair Schedule** // **First** / **Brush your hair  ‖ **Then** / **Choose your style // **First** / **Choose a hair ti ‖ **Then** / **Style your hair h // **First** / **Check your hair  ‖ **Then** / **Ask a friend or f
+--- XDLS912 #30 box modifier="insert"
+    tag: [insert slider]
+    TABLE 5x2: **How to wash your hands** // **First** / **Turn on the wate ‖ **Then** / **Put some water on // **First** / **Put some soap on ‖ **Then** / **Rub your hands to // **First** / **Wash the soap of ‖ **Then** / **Turn tap off.** /
+--- XDLS912 #32 box modifier="insert"
+    tag: [insert slider]
+    TABLE 4x2: **Deciding what to buy schedul // **First** / **Decide what you  ‖ **Then** / **Look in your cupb // **First** / **Start your list  ‖ **Then** / **Check with a trus // **First** / **Look up your ite ‖ **Then** / **Get your shopping
+    GOLD XFUN02.03.html: <div class="slider"> items 0: 
+    GOLD XGF9001-01.2.html: <div class="slider"> items 8: 1. Thinking deeply about everything. Gre | 2. Learning things quickly. Great Both G | 3. Feeling emotions strongly. Great Both | 4. Being highly curious and asking big q | 5. Struggling with perfectionism. Great  | 6. Finding it hard to relate to peers. G | 7. Having lots of different interests. G | 8. Being expected to always do well. Gre
+    GOLD XGF9001-01.2.html: <div class="slider"> items 7: 2. Learning things quickly. Great Both G | 3. Feeling emotions strongly. Great Both | 4. Being highly curious and asking big q | 5. Struggling with perfectionism. Great  | 6. Finding it hard to relate to peers. G | 7. Having lots of different interests. G | 8. Being expected to always do well. Gre
+    GOLD XGF9001-01.2.html: <div class="slider"> items 6: 3. Feeling emotions strongly. Great Both | 4. Being highly curious and asking big q | 5. Struggling with perfectionism. Great  | 6. Finding it hard to relate to peers. G | 7. Having lots of different interests. G | 8. Being expected to always do well. Gre
+    GOLD XGF9001-01.2.html: <div class="slider"> items 5: 4. Being highly curious and asking big q | 5. Struggling with perfectionism. Great  | 6. Finding it hard to relate to peers. G | 7. Having lots of different interests. G | 8. Being expected to always do well. Gre
+    GOLD XGF9001-01.2.html: <div class="slider"> items 4: 5. Struggling with perfectionism. Great  | 6. Finding it hard to relate to peers. G | 7. Having lots of different interests. G | 8. Being expected to always do well. Gre
+    GOLD XGF9001-01.2.html: <div class="slider"> items 3: 6. Finding it hard to relate to peers. G | 7. Having lots of different interests. G | 8. Being expected to always do well. Gre
+    GOLD XGF9001-01.2.html: <div class="slider"> items 2: 7. Having lots of different interests. G | 8. Being expected to always do well. Gre
+    GOLD XGF9001-01.2.html: <div class="slider"> items 1: 8. Being expected to always do well. Gre
+--- XLP02 #14 box modifier=""
+    TABLE 7x1: 🔴[RED TEXT] [image] [/RED TEX // 🔴[RED TEXT] [slider 1] [/RED  // 🔴[RED TEXT] [slider 2] [/RED  // 🔴[RED TEXT] [slider 3] [/RED 
+--- XMES201 #39 box modifier="insert emoji"
+    tag: [insert emoji slider]
+    black: Select the emoji that best shows how this lesson was for you.
+--- XMES202 #30 box modifier="insert chart histogram version - y = plant height, x = week -"
+    tag: [insert slider chart histogram version – y = plant height, x = Week 1-5]
+    TABLE 2x6:  ‖ Week 1 ‖ Week 2 ‖ Week 3 ‖ Week 4 ‖ Week 5 // Plant height (cm) ‖ 2 cm ‖ 4 cm ‖ 6 cm ‖ 8 cm ‖ 12 cm
+    GOLD XTAS101_1.0 .html: <div class="slider"> items 0: 
+    GOLD XTAS101_1.0.html: <div class="slider"> items 0: 
