@@ -1,0 +1,814 @@
+--- AGH1004 #6 box modifier=""
+    tag: [Interactive: True or False Quiz]
+    TABLE 6x2: Questions: ‖ True / False // 1. New Zealand’s kiwifruit reg ‖ True // 2. There will be a decrease in ‖ False // 3. There will be an increase i ‖ False
+    GOLD AGH1004.03.html: <div class="radioQuiz"> items 0: 
+    GOLD AGH1004.03.html: <div class="radioQuiz"> items 0: 
+--- AGH1005 #2 box modifier=""
+    tag: [Radio quiz] ⟶ Tick the following words that are mentioned above: Tick ✔
+    black: 1. Responsibility – social, financial, environmental□
+    black: 1. Pono – integrity towards the whenua (land)□
+    black: 1. Whanaungatanga – relationships between land and people□
+    black: 1. Burning rubbish fires or burying rubbish□
+    black: 1. Protection – kaitiakitanga□
+    tag: [Button] Complete activity 1A in your learning journal.
+    GOLD AGH1005.02.html: <div class="radioQuiz autoCheck"> items 0: 
+    GOLD AGH1005.03.html: <div class="radioQuiz autoCheck"> items 0: 
+    GOLD AGH1005.05.html: <div class="radioQuiz autoCheck"> items 0: 
+    GOLD AGH1005.06.html: <div class="radioQuiz autoCheck"> items 0: 
+    GOLD AGH1005.07.html: <div class="radioQuiz autoCheck"> items 0: 
+--- AGH1006 #13 box modifier=""
+    tag: [interactive: true/false]
+    black: 1. Glasshouses are less productive than open air cropping.□
+    black: 1. Consumer demand is driving the market for more productive and sustainable crops.□
+    black: 1. The price of producing crops means more productive methods are necessary.□
+    black: 1. Glasshouses make it more difficult to control plant growth. □
+    black: 1. Aspects of m anaakitanga are seen in the relationship between workers and owners.□
+    tag: Answers: 1. False, 2. True, 3. True, 4. False, 5. True
+--- AGH1006 #18 box modifier=""
+    tag: [interactive: True/false]
+    black: Key concepts to remember when pruning:
+    black: 1. Remove dead, damaged or diseased branches.□
+    black: 1. Remove secondary branches with a spacing of 60 cm between them. □
+    black: 1. On secondary branches prune above the 3rd node.□
+    black: 1. Prune all year round.□
+    black: 1. Cut off healthy wood.□
+    black: 1. Pruning back to an outward-facing bud will produce new growth away from the plant centre.□
+    tag: Answers: 1. True, 2. True, 3. True, 4. False, 5. False, 6. True
+--- AGH1006 #27 box modifier=""
+    tag: [interactive: True/False]
+    black: 1. Certain genetic traits in plants make them more resistant to pests and diseases.□
+    black: 1. Mulching around plants spreads diseases.□
+    black: 1. Diseases such as PSA in kiwifruit can be spread through tools and equipment.□
+    black: 1. Fruit pests can travel from country to country.□
+    tag: Answers: 1. T, 2. T, 3. F, 4. T, 5. T.
+    GOLD AGH1006.06.html: <div class="radioQuiz autoCheck"> items 0: 
+    GOLD AGH1006.09.html: <div class="radioQuiz autoCheck"> items 0: 
+--- AGH1007 #10 box modifier=""
+    tag: [Interactive: True or False Quiz]
+    TABLE 9x2:  ‖ Answer // • Chemical digestion is the ma ‖ FALSE // • Pigs, horses and cows are al ‖ FALSE // • Microbial digestion happens  ‖ TRUE
+    GOLD AGH1007.04.html: <div class="radioQuiz"> items 0: 
+    GOLD ANZH303_0.3.html: <div class="radioQuiz"> items 0: 
+    GOLD ANZH303_0.5.html: <div class="radioQuiz"> items 0: 
+--- ARFUN04 #68 box modifier="create"
+    tag: [Create true or false quiz]
+    GOLD ARFUN04_3.03.html: <div class="radioQuiz"> items 0: 
+    GOLD ARFUN04_3.08.html: <div class="radioQuiz"> items 0: 
+    GOLD ARFUN04_4.10.html: <div class="radioQuiz"> items 0: 
+--- BLL270 #3 box modifier=""
+    tag: [radio interactive] (instead of a T/F can we please have a comic looking thumbs up or thumbs down sign. If you
+    tag: [images] ⟶ https://media.istockphoto.com/id/2219018528/vector/thumbs-up
+    black: https://media.istockphoto.com/id/2219018422/vector/gesture-dislike-or-thumb-down-emoji-3d-illustration-bad-don
+    TABLE 11x3: 🔴[RED TEXT] [Audiovisual item ‖ 🔴[RED TEXT] Sound [/RED TEXT] ‖ 🔴[RED TEXT] Thumb up or down? //  ‖ ē ‖ 🔴[RED TEXT] up [/RED TEXT]🔴 //  ‖ k ‖ 🔴[RED TEXT] down [/RED TEXT]� //  ‖ p ‖ 🔴[RED TEXT] down [/RED TEXT]�
+--- BLL270 #5 box modifier=""
+    tag: [radio interactive] (instead of a T/F can we please have a comic looking thumbs up or thumbs down sign. If you
+    TABLE 9x3: 🔴[RED TEXT] [Audiovisual item ‖ 🔴[RED TEXT] Sound [/RED TEXT] ‖ 🔴[RED TEXT] Thumb up or down? //  ‖ a (incorrectly spoken) ‖ 🔴[RED TEXT] down [/RED TEXT]� //  ‖ ē (correctly spoken) ‖ 🔴[RED TEXT] up [/RED TEXT]🔴 //  ‖ o (correctly spoken) ‖ 🔴[RED TEXT] up [/RED TEXT]🔴
+    GOLD BLL270.html: <div class="radioQuiz autoCheck"> items 0: 
+    GOLD BLL270.html: <div class="radioQuiz"> items 0: 
+--- BLLR201 #19 box modifier=""
+    tag: [radio interactive] Is it possible to put ‘had’ and ‘would’ at the top (rather than T and F)?
+    TABLE 7x3:  ‖ had ‖ would // **I’d** finished my book befor ‖ 🔴[RED TEXT] [correct] [/RED T ‖  // **I’d** like to go to the park ‖  ‖ 🔴[RED TEXT] [correct] [/RED T // **We’d** love to go to the lib ‖  ‖ 🔴[RED TEXT] [correct] [/RED T
+    GOLD BLLR201_1_1.html: <div class="radioQuiz"> items 0: 
+--- BLLR202 #25 box modifier=""
+    tag: [radio interactive] Single option version [carousel]
+    tag: [slide 1]
+    TABLE 1x2: Summary A / Min is having a sl ‖ Checklist: / 🔴[RED TEXT] [cor
+    tag: [slide 2]
+    TABLE 1x2: Summary B / Min is excited to  ‖ Checklist: 🔴[RED TEXT] (all c
+    tag: [slide 3]
+    TABLE 1x2: Summary C / Min is excited abo ‖ Checklist: / 🔴[RED TEXT] [cor
+--- BLLR203 #28 box modifier="single"
+    tag: [radio interactive – single option]
+    black: **I felt Nessa grab my arm.**
+    black: 1.
+    tag: [correct] ⟶ This action shows Nessa might be scared or surprised.
+    black: 1.
+    tag: [correct] ⟶ This helps the reader understand Nessa’s feelings.
+    black: 1. This shows Nessa is bored.
+    black: 1.
+    tag: [correct] ⟶ This creates a moment of tension.
+    black: 1. This tells us Nessa wants to leave immediately.
+    black: **No power, no internet.**
+    black: 1. This creates a calm and relaxed mood.
+    black: 1.
+    tag: [correct] ⟶ The short sentence makes the problem feel clear.
+    black: 1.
+    tag: [correct] ⟶ This emphasises that Jack and Nessa are missing the things t
+--- CBI1004 #9 box modifier=""
+    tag: [interactive – True/false]
+    tag: [body] ⟶ Decide whether the following statements are true or false.
+    black: 1. Genetic variation refers to differences in genetic information.
+    black: 1. When a population of organisms declines, genetic variation increases.
+    black: 1. Genetic variation increases the likelihood of populations surviving changes in the environment.
+    black: 1. Endangered species are vulnerable to changes in the environment because they have high genetic variation.
+    tag: [Button] ⟶ Check answers
+    tag: [button] ⟶ Reset
+    tag: [Answer guide] ⟶ 1. T, 2. F, 3. T, 4. F
+    GOLD CBI1004_7_0.html: <div class="radioQuiz"> items 0: 
+--- CBI1008 #1 box modifier=""
+    tag: Activity1[Radio Quiz] ⟶ Facts about carbon
+    tag: F. It is an Element.
+    black: All living things have carbon compounds in them.
+    tag: T
+    black: Diamond is used for cutting tools because it is slippery.
+    tag: F
+    black: Graphen has only one layer of atoms.
+    tag: T
+    black: Running blades are likely to be made of carbon fibre.
+    tag: T
+    black: Graphite is a metal that conducts electricity.
+    tag: F
+    black: Diamond, Graphite, Fullerene and Graphen are elements.
+    tag: T
+    black: Plants need compounds of carbon for photosynthesis.
+    tag: T
+    GOLD CBI1008_1_0.html: <div class="radioQuiz"> items 0: 
+    GOLD CEDO502_1_2.html: <div class="radioQuiz"> items 0: 
+    GOLD CEDO502_1_2.html: <div class="radioQuiz hiddenHints"> items 0: 
+    GOLD CEDO502_1_2.html: <div class="radioQuiz"> items 0: 
+    GOLD CEDO502_3_0.html: <div class="radioQuiz"> items 0: 
+--- CEDR203 #13 box modifier="insert"
+    tag: [Insert Interactive true/false activity]
+    tag: [Insert statements. Developer note: answers are in brackets]
+    black: The Ellerslie International Flower Show was held in March. [True]
+    black: The ākonga took 9 months to design and build their garden. [False]
+    black: The rules said that the garden needed to be 6 metres long and 8 metres wide. [False]
+    black: The ākonga wanted to have lizards and wētā in their garden. [True]
+    black: The garden design included butterfly art. [True]
+    black: The garden design included a barbecue. [False]
+    tag: [Go to Journal]
+    GOLD CEDR203_1.8_Our-Gifted-Garden.html: <div class="radioQuiz autoCheck"> items 0: 
+--- CHFUN01 #6 box modifier="lucky/unlucky"
+    tag: [radio interactive] [auto mark] [options: lucky/unlucky] ⟶ 4A Check your understanding
+    tag: [body] ⟶ Choose lucky or unlucky according to Chinese culture.
+    black: • 6 [options: lucky/unlucky]
+    black: • 4 [options: lucky/unlucky]
+    black: • 8 [options: lucky/unlucky]
+    GOLD CHFUN01_0_0.html: <div class="radioQuiz"> items 0: 
+--- CHFUN04 #1 box modifier=""
+    tag: [radio interactive][auto mark] [true or false] ⟶ 1A Check your understanding
+    tag: [body] ⟶ True or False?
+    black: 1. All Chinese people speak the same language. [true or false]
+    black: 1. Most Chinese dialects use the same written characters, even though they are spoken differently. [true or fa
+--- CHFUN04 #3 box modifier=""
+    tag: [radio interactive][auto mark][true or false] ⟶ 2A Check your understanding
+    tag: [body] ⟶ True or False?
+    black: 1. In Chinese culture, people usually call their older siblings by their first name. [true or false]
+    black: 1. You show respect to someone who is older than you, even if they are not your parent or grandparent. [true o
+--- CHFUN04 #8 box modifier="chinese or western"
+    tag: [radio quiz] [auto mark] [options: Chinese or Western] ⟶ 1A Check your understanding
+    tag: [body] ⟶ Choose Chinese or Western
+    black: 1. Teachers often act as guides. Students may call out ideas, debate, or work independently. [options: Chinese
+    black: 1. Many go to extra classes, do homework, or practise musical instruments after school. [options: Chinese or W
+    black: 1. The teacher explains a new grammar point. Students listen quietly, take notes, and wait to be called on bef
+    GOLD CHFUN04_0_0.html: <div class="radioQuiz"> items 0: 
+    GOLD CHFUN04_0_0.html: <div class="radioQuiz"> items 0: 
+    GOLD CHFUN04_0_0.html: <div class="radioQuiz"> items 0: 
+--- CHFUN05 #5 box modifier="green is the"
+    tag: [radio quiz][highlight green is the correct answer][autocheck] ⟶ 2A Check your understanding
+    tag: [body] ⟶ Choose **true or false** for what I want to find out accordi
+    TABLE 6x3: 🔴[RED TEXT] Statement [/RED T ‖ 🔴[RED TEXT] Questions [/RED T ‖ 🔴[RED TEXT] Answer (True or F // **1.我叫Jack, 你呢?** / **wǒ jiào  ‖ **I want to find out your name ‖ **T/F** // **2.我叫Sally, 她呢?** / **wǒ jiào ‖ **I want to find out her name* ‖ **T/F** // **3.我很好，你呢？** / **wǒ hěn hǎo,  ‖ **I want to find out your age. ‖ **T/F**
+--- CHFUN05 #23 box modifier=""
+    tag: [radio quiz interactive] [autocheck] ⟶ 9A Check your understanding
+    tag: Highlight is the answer
+    tag: [body] ⟶ **Do I use 和 (hé)? Choose ‘Yes’ or ‘No’.**
+    TABLE 5x2: 🔴[RED TEXT] Questions [/RED T ‖ 🔴[RED TEXT] [radio interactiv // • **我喜欢和吃。** / **wǒ xǐhuān hé  ‖ ✔️ **Yes** ❌ **No** // • **我和你。** / **wǒ hé nǐ** / M* ‖ ✔️ **Yes** ❌ **No** // **3. 他跑步和游泳。** / **tā pǎobù hé ‖ ✔️ **Yes** ❌ **No**
+--- CHFUN05 #45 box modifier="the headings are: size, age"
+    tag: [radio quiz] [the choice headings are: size, age][autocheck] ⟶ 6A Check your understanding
+    tag: [Body] ⟶ Choose if the word 大 **(dà)** or 小 **(xiǎo)** is used for **
+    TABLE 5x3:  ‖ 🔴[RED TEXT] Questions [/RED T ‖ 🔴[RED TEXT] Answer (Size, age //  ‖ 我的狗很大。**Wǒ de gǒu hěn dà.** *M ‖ 🔴[RED TEXT] size, age [/RED T //  ‖ 我妈妈比爸爸小。**Wǒ māma bǐ bàba xiǎo ‖ 🔴[RED TEXT] size, age [/RED T //  ‖ 我的学校很小。**Wǒ de xuéxiào hěn xiǎ ‖ 🔴[RED TEXT] size, age [/RED T
+--- CHFUN05 #58 box modifier=""
+    tag: [radio interactive] [two columns with these two: 不，没（有）] [autocheck] ⟶ 11A Check your understanding
+    tag: [body] ⟶ Choose the correct negation word for the sentence.
+    black: 1. *I don’t like fish.*
+    tag: 不，没（有）
+    GOLD CHFUN05_0_0.html: <div class="radioQuiz autoCheck"> items 0: 
+    GOLD CHFUN05_0_0.html: <div class="radioQuiz autoCheck hiddenHints"> items 0: 
+    GOLD CHFUN05_0_0.html: <div class="radioQuiz"> items 0: 
+    GOLD CHFUN05_0_0.html: <div class="radioQuiz"> items 0: 
+    GOLD CHFUN05_0_0.html: <div class="radioQuiz"> items 0: 
+--- CHFUN06 #2 box modifier=""
+    tag: [radioquiz] [auto mark] [options: true or false] ⟶ 1A Check your understanding
+    tag: [body] ⟶ Is the statement true or false?
+    black: 1. Chinese characters are written inside a square, not stretched across a line like alphabet letters.
+    tag: [options: true or false]
+    black: 1. Each Chinese character usually represents one sound and one idea.
+    tag: [options: true or false]
+    black: 1. Chinese writing uses letters like the alphabet to build words.
+    tag: [options: true or false]
+    GOLD CHFUN06_0_0.html: <div class="radioQuiz"> items 0: 
+--- COM1005 #2 box modifier="please create a"
+    tag: [Please create a true/false quiz.]
+    tag: True
+    black: 1. The members of a household must be related to each other by blood.
+    tag: False
+    black: 1. A single person living alone is not an example of a household.
+    tag: False
+    black: 1. A household must not have more than 10 people in it.
+    tag: False
+    black: 1. A couple living together in a household doesn’t have to be married to each other.
+    tag: True
+    black: 1. A group of university ākonga (students) living together and sharing the chores and bills is an example of a
+    tag: True
+    GOLD COM1005_7_0.html: <div class="radioQuiz"> items 0: 
+--- ENFUN08 #6 box modifier=""
+    tag: [radio quiz]
+    TABLE 7x4: Rhyme ‖ Onomatopoeia ‖ Neither ‖  //  ‖  ‖  ‖ Oozy //  ‖  ‖  ‖ Slooshy, sloshy //  ‖  ‖  ‖ My toes, it goes
+--- ENFUN08 #13 box modifier=""
+    tag: [radio quiz]
+    TABLE 6x4: Simile ‖ Metaphor ‖ Neither ‖  //  ‖  ‖  ‖ Who fold and unfold their wing //  ‖  ‖  ‖ The glow-worms carry their swa //  ‖  ‖  ‖ Lighting the way for bats
+--- ENFUN08 #18 box modifier=""
+    tag: [radio quiz]
+    TABLE 7x4: Assonance ‖ Personification ‖ Hyperbole ‖  //  ‖  ‖  ‖ We discover no end of windows //  ‖  ‖  ‖ The pantry unforthcoming //  ‖  ‖  ‖ We leap and my father’s feet e
+--- ENFUN08 #25 box modifier=""
+    tag: [radio quiz]
+    TABLE 7x4: Idiom ‖ Rhetorical Questions ‖ Imagery ‖  //  ‖  ‖  ‖ Shimmering across your face li //  ‖  ‖  ‖ Are your toes curling? //  ‖  ‖  ‖ the blush that reveals your pr
+    GOLD ENFUN08.html: <div class="radioQuiz rQNumbers autoCheck" buttonNumber="3"> items 0: 
+    GOLD ENFUN08.html: <div class="radioQuiz rQNumbers autoCheck" buttonNumber="3"> items 0: 
+    GOLD ENFUN08.html: <div class="radioQuiz rQNumbers autoCheck" buttonNumber="3"> items 0: 
+    GOLD ENFUN08.html: <div class="radioQuiz rQNumbers autoCheck" buttonNumber="3"> items 0: 
+--- ENGC201 #4 box modifier=""
+    tag: [Radio Quiz – True or false]
+    TABLE 7x3: Scenario ‖ Formal ‖ Informal // Meeting a new teacher. ‖  ‖  // Participating in a pōwhiri (we ‖  ‖  // Playing tag with friends. ‖  ‖ 
+--- ENGC201 #8 box modifier=""
+    tag: [Radio Quiz]
+    TABLE 8x2: Scenario ‖ Question Mark? // Do you like ice cream ‖  // The sun is shining ‖  // What time is the pōwhiri ‖ 
+--- ENGC201 #10 box modifier=""
+    tag: [Radio Quiz – True or false AutoCheck]
+    TABLE 6x3: T ‖ F ‖ Question //  ‖  ‖ The clip shows a good example  //  ‖  ‖ The clip highlights what not t //  ‖  ‖ Sheldon (the male) is only pay
+--- ENGC201 #11 box modifier=""
+    tag: [Radio Quiz – True or false AutoCheck]
+    TABLE 5x3: T ‖ F ‖ Question //  ‖  ‖ Sadness listens to Bing Bong’s //  ‖  ‖ Empathetic listening is not an //  ‖  ‖ Tickling is better than listen
+    GOLD ENGC201_2.0.html: <div class="radioQuiz"> items 0: 
+    GOLD ENGC201_4.0.html: <div class="radioQuiz autoCheck"> items 0: 
+    GOLD ENGC201_4.0.html: <div class="radioQuiz autoCheck"> items 0: 
+--- ENGC202 #7 box modifier=""
+    tag: [radio quiz]
+    TABLE 7x3: **yes** ‖ **no** ‖  //  ‖  ‖ Gather the wheels, the body, a //  ‖  ‖ Cut the wood, into pieces for  //  ‖  ‖ Paint the car red, blue, or gr
+    GOLD ENGC202_3.0.html: <div class="radioQuiz"> items 0: 
+--- ENGC301 #9 box modifier=""
+    tag: [Radio Quiz – True or false autoCheck]
+    TABLE 8x3: Yes ‖ No ‖  //  ‖  ‖ For a limited time only. //  ‖  ‖ Good on ya. //  ‖  ‖ Bringing dreams to life.
+--- ENGC301 #14 box modifier=""
+    tag: [Radio Quiz – True or false autoCheck]
+    TABLE 10x3: Yes ‖ No ‖  //  ‖  ‖ Because you're worth it – L'Or //  ‖  ‖ Think different – Apple //  ‖  ‖ Make it happen – Jaguar
+    GOLD ENGC301_0.4.html: <div class="radioQuiz"> items 0: 
+    GOLD ENGC301_0.6.html: <div class="radioQuiz"> items 0: 
+--- ENGC401 #4 box modifier=""
+    tag: [Radio Quiz – True or false]
+    TABLE 5x3: True ‖ False ‖  //  ‖  ‖ Pai’s grandfather, Koro, belie //  ‖  ‖ Pai has a strong connection wi //  ‖  ‖ The film is set in Australia a
+    GOLD ENGC401_0.1.html: <div class="radioQuiz"> items 0: 
+    GOLD ENGJ301_7.0.html: <div class="radioQuiz rQNumbers autoCheck" buttonNumber="1"> items 0: 
+    GOLD ENGJ301_7.0.html: <div class="radioQuiz rQNumbers autoCheck" buttonNumber="1"> items 0: 
+--- ENGR101 #3 box modifier=""
+    tag: [radio quiz] (Include text and image)
+    TABLE 6x3:  ‖ True ‖ False // Dogs can fly. / 🔴[RED TEXT] [ ‖  ‖  // Frogs can jump. / 🔴[RED TEXT] ‖  ‖  // Giraffes can ride on elephants ‖  ‖ 
+--- ENGR301 #6 box modifier=""
+    tag: [Radio Quiz]
+    TABLE 9x3: 🔴[RED TEXT] Rhetorical [/RED  ‖ 🔴[RED TEXT] Not [/RED TEXT]🔴 ‖  //  ‖  ‖ Can you imagine life without t //  ‖  ‖ Who doesn't own a smartphone t //  ‖  ‖ Can a laptop be used for video
+--- ENGR301 #7 box modifier=""
+    tag: [Radio Quiz]
+    TABLE 7x4: Recent ‖ Relevant ‖ Reliable ‖  //  ‖  ‖  ‖ **Topic: Smartphone ownership* //  ‖  ‖  ‖ **Topic: Virtual reality** / A //  ‖  ‖  ‖ **Topic: AI (artificial intell
+--- ENGR302 #29 box modifier="- - auto marked"
+    tag: [Activity 5E – Radio quiz – auto marked] (can you please change the true/false options to fact/opinion?)
+    black: Decide whether each statement about *Voices in the Park* is a fact or an opinion. Remember, even if you agree 
+    black: 1. Smudge is the friendliest character in the story.
+    tag: (opinion)
+    black: 2. The park looks the most beautiful in autumn.
+    tag: (opinion)
+    black: 3. There are four different voices in the story.
+    tag: (fact)
+    black: 4. Charles’ mother is too strict.
+    tag: (opinion)
+    black: 5. Charles and his mother visit the park together.
+    tag: (fact)
+    black: 6. Albert is a beautiful dog.
+    tag: (opinion)
+    black: 7. Smudge’s father is more fun than Charles’ mother.
+    tag: (opinion)
+--- ENGR302 #31 box modifier="- auto marking"
+    tag: [Activity 6A – auto marking radio buttons quiz]
+    TABLE 11x3: T ‖ F ‖  //  ‖  ‖ • Māui’s brothers initially do //  ‖  ‖ • Māui’s brothers treated him  //  ‖  ‖ • Māui hid himself in the bott
+    GOLD ENGR302_2.0.html: <div class="radioQuiz"> items 0: 
+    GOLD ENGR302_6.0.html: <div class="radioQuiz"> items 0: 
+    GOLD ENGR302_7.0.html: <div class="radioQuiz"> items 0: 
+--- ENGS201 #6 box modifier=""
+    tag: [radio quiz]
+    TABLE 10x3: Fiction ‖ Nonfiction ‖  //  ‖  ‖ A nature documentary on lions. //  ‖  ‖ A book about Spider-Man. //  ‖  ‖ A fairy tale about a dragon.
+    GOLD ENGS201_2.0.html: <div class="radioQuiz"> items 0: 
+    GOLD ENGS201_4.0.html: <div class="radioQuiz"> items 0: 
+--- ENGS401 #16 box modifier="/check"
+    tag: [Radio button/check box]
+    black: • Setting
+    black: • Opinion/viewpoint
+    black: • Problem/solution
+    tag: [video] ⟶ https://www.youtube.com/watch?v=_KUY_NJAMG0
+    TABLE 1x2: 🔴[RED TEXT] [image] [/RED TEX ‖ 🔴[RED TEXT] [speechbubble] [/
+--- FRFUN06 #7 box modifier=""
+    tag: [Radio Buttons Quiz autocheck] ⟶ **5b – Spot the sound [**
+    tag: correct answer highlighted in green,]
+    black: un -
+    tag: [audio 11 ⟶ https://mytekuraschool.sharepoint.com/:u:/s/TeAraWhakamua381
+    tag: ]
+    tag: [Body text] ⟶ Question: Which sound do you hear?
+    black: Options: un in
+--- FRFUN06 #11 box modifier=""
+    tag: [Radio Buttons Quiz – autocheck]
+    black: chat
+    tag: [Audiovisual item 15] ⟶ Audiovisual Request Template FUN06 Pronunciation.docx
+    tag: Students can choose between “ch” or “sh”. Correct answer is the French “sh”
+--- FRFUN06 #16 box modifier=""
+    tag: [Radio Buttons Quiz autocheck] 3a ⟶ **Can you hear the final e?**
+    tag: correct answer highlighted in green
+    tag: Audio plays: Petite –[Audiovisual item 38]
+    tag: [Body] ⟶ Question: Do you hear the final e?
+    black: Options: Yes No
+    tag: [Side tab navigation] When quiet letters wake up
+--- GENO901 #18 box modifier="radio with all correct - smiley emojis replace"
+    tag: [Radio Interactive with all correct answers – smiley emojis replace True/False] ⟶ 2C Speaking practice
+    tag: [Creative services – please create smiley picture in place of T or F for students to click self-evaluation]
+    tag: [Audiovisual item 2 /Script 2] ⟶ GENO901 Audiovisual Request Template RAP 2026.docx
+--- HIS1003 #3 box modifier=""
+    tag: [Interactive] Please create a True/False quiz for the following- the answers are as given below.
+    TABLE 8x3: **Aim or Organ** ‖ **True** ‖ **False** // The United Nations Organisatio ‖ √ ‖  // The United Nations Organisatio ‖  ‖ √ // The United Nations aims to dev ‖ √ ‖ 
+    tag: [Add button] Check answers
+    tag: [Add button] Reset
+    GOLD HIS1003_1.0.html: <div class="radioQuiz"> items 0: 
+    GOLD HIS1003_3.0.html: <div class="radioQuiz"> items 0: 
+--- HIS1005 #19 box modifier="please set up as an similar in style to this- see"
+    tag: [please set up as an interactive Radio button quiz similar in style to this- See Radio Button Quiz ⟶ https://tekura.desire2learn.com/d2l/le/content/15666/viewCon
+    tag: [add Button] ⟶ Reset
+    tag: [add Button] ⟶ Check your answers
+    black: Now read an extract of an article by Trevor Richards for the online magazine *E-tangata*.
+    GOLD HIS1005-2.0.html: <div class="radioQuiz"> items 0: 
+--- HPFUN301 #3 box modifier=""
+    tag: [Interactive] [true or false questions]
+    TABLE 12x2:  ‖ 🔴[RED TEXT] Answers [/RED TEX // 🔴[RED TEXT] P [/RED TEXT]🔴ub ‖ 🔴[RED TEXT] True [/RED TEXT]� // 🔴[RED TEXT] M [/RED TEXT]🔴al ‖ 🔴[RED TEXT] True [/RED TEXT]� // 🔴[RED TEXT] M [/RED TEXT]🔴al ‖ 🔴[RED TEXT] False [/RED TEXT]
+    tag: [button] C ⟶ heck answers
+    GOLD HPFUN301_0_0.html: <div class="radioQuiz"> items 0: 
+--- HPFUN901 #7 box modifier=""
+    tag: [interactive activity] true or false
+    black: 1. We all get hurt at some point.
+    black: 1. When someone is injured, we should not act quickly.
+    black: 1. First aid is the initial help given to us after a sudden injury or illness.
+    black: 1. Whatever the situation, try to speak to an adult and get support as soon as you can.
+    black: 1. The most important person to keep safe when giving first aid is yourself.
+    black: 1. You must always help even when you don’t know what to do.
+    black: 1. New Zealand’s emergency phone number is 111.
+    tag: [button] ⟶ check answers
+    tag: Answers: 1 True2. False 3. True4. True5. True6. False. 7. True
+    GOLD HPFUN901_0_0.html: <div class="radioQuiz autoCheck"> items 0: 
+    GOLD HPFUN901_0_0.html: <div class="radioQuiz"> items 0: 
+--- HPRE203 #11 box modifier=""
+    tag: [Radio quiz] true or false statements
+    TABLE 9x1: • Consent is important. 🔴[RED // • Consent means that you do no // • We all have personal space o // • If some goes into our person
+    tag: [button] C ⟶ heck answers.
+--- HPRE203 #30 box modifier="no , reveal image when is clicked"
+    tag: [Radio quiz] (DEV reveal answers as boxes have been ticked) [no correct answers, reveal image when answer is c
+    TABLE 5x5:  ‖ girl ‖ boy ‖ unknown ‖ 🔴[RED TEXT] Answer: reveal wh // • I have curly black hair, I e ‖  ‖  ‖  ‖ 🔴[RED TEXT] [answer] [image]  // • I wear glasses, my hair is b ‖  ‖  ‖  ‖ 🔴[RED TEXT] [answer] [image]  // • I have very short hair, I en ‖  ‖  ‖  ‖ 🔴[RED TEXT] [answer][image] [
+    GOLD HPRE203_2_0.html: <div class="radioQuiz"> items 0: 
+    GOLD HPRE203_5_0.html: <div class="radioQuiz rQNumbers autoCheck hiddenHints" buttonNumber="3 items 0: 
+--- JPFUN01 #9 box modifier=""
+    tag: [Radio Quiz – True or false [autoCheck]] ⟶ 1A Reflection
+    tag: [Body] ⟶ Choose True or False for each statement.
+    black: 1. Special age milestones are celebrated in Japanese culture. True
+    black: 1. Shichi-go-san is celebrated on November 15. True
+    black: 1. Children aged 3, 5 and 7 celebrate with their parents at a shrine. True
+    black: 1. Parents wish their children live long, properous lives. True
+    black: 1. Coming of age celebrations traditionally celebrated turning 20 years old. True
+    black: 1. Seijin no hi is celebrated in January. True
+    black: 1. Traditional clothing is worn to celebrate special age milestones. True
+    black: 1. (Thinking about your own family) My family celebrate special birthday milestones. True
+    black: 1. (Thinking about your own culture) My culture recognises the importance of showing respect to those older th
+    GOLD JPFUN01_0_0.html: <div class="radioQuiz"> items 0: 
+--- MXDI201 #28 box modifier=""
+    tag: [Interactive activity] true or false
+    black: 1. 100 Children were each given $15. They had a total of $1500 altogether.
+    black: 1. There are seven players in a netball team, at a tournament there are 10 teams. There are 700 players altoge
+    black: 1. In one bag of jellybeans there are 35 jellybeans. In 10 bags there would be 350 jellybeans
+    black: 1. The baker makes 230 pies in one day, in 100 days he would have made 23,000 pies.
+    black: 1. Jessica made friendship bracelets and sold them for $3 each. She sold 100 and made $3000 in total
+    tag: Answers: 1. True, 2. false, 3. true, 4. true, 5. false
+    tag: [button] Check your answers [button] Reset
+    tag: [image] [item #83] netball players ⟶ https://www.istockphoto.com/photo/women-playing-netball-gm11
+    tag: [image] [item #84] jellybeans ⟶ https://media.istockphoto.com/id/184267921/photo/jelly-beans
+    tag: [image] [item #85] ⟶ https://media.istockphoto.com/id/516001468/photo/take-your-f
+    GOLD MXDI201_6.0.html: <div class="radioQuiz"> items 0: 
+--- MXDI202 #5 box modifier="/ click and select"
+    tag: [interactive activity] true or false/ click and select
+    black: 1. Burt Munro spent two decades modifying his motorcycle.
+    black: 1. Mt Everest was conquered over seven decades ago.
+    black: 1. Aotearoa New Zealand’s first Nobel prize was awarded over one century ago.
+    black: 1. Aotearoa New Zealand gave women the right to vote less than a century ago.
+    black: 1. Bruce McLaren died over seven decades ago
+    black: 1. The world’s fastest Indian record was set, riding a machine that was over 4 decades old!
+    tag: Answers: 1. True, 2. true, 3. true, 4. false, 5. false, 6. true
+    tag: [button] ⟶ check
+    tag: [button] ⟶ reset
+    tag: [image] ⟶ https://www.istockphoto.com/photo/ama-dablam-everest-circuit
+    GOLD MXEO301_3.0.html: <div class="radioQuiz"> items 0: 
+--- MXFL203 #25 box modifier=""
+    tag: [interactive activity] [true or false tick boxes]
+    black: 100% means one completed set
+    tag: true
+    black: 50% is equal to half
+    tag: true
+    black: 50% is greater than ¼
+    tag: true
+    black: ¼ is larger than 30%
+    tag: false
+    black: 75% is equal to ¾
+    tag: true
+    GOLD MXFL203_7.0.html: <div class="radioQuiz"> items 0: 
+--- MXFL301 #52 box modifier="- self-marking"
+    tag: [Activity 8A – self-marking radio quiz]
+    tag: [image] ⟶ https://www.shutterstock.com/image-photo/electronic-departur
+    TABLE 3x4: The 15:44 train to Westbury ha ‖ False ‖ The 16:03 train to Avonmouth l ‖ False // The train to London Paddington ‖ True ‖ The 15:45 train to Bristol Par ‖ False // The train to Taunton is leavin ‖ True ‖ The latest train to catch to C ‖ True
+    GOLD MXFL301_08.0.html: <div class="radioQuiz"> items 0: 
+--- MXFU202 #10 box modifier=""
+    tag: [interactive activity] true or false
+    black: 1. Europe has hosted the most Summer Olympic games.
+    black: 1. Africa has not hosted any Olympic games.
+    black: 1. New Zealand has hosted 2 Olympic games.
+    black: 1. Asia has hosted the Summer Olympic games more than South America.
+    black: 1. There have been 4 Summer Olympic games in North America.
+    black: 1. Oceania has hosted the Summer Olympics twice as many times as South America.
+    tag: Answers: a. True
+    tag: b. True
+    tag: c. False
+    tag: d. True
+    tag: e. False
+    tag: f. True
+    tag: [button] ⟶ Check answers
+    tag: [button] ⟶ Reset
+--- MXFU202 #34 box modifier=""
+    tag: [interactive activity] true or false.
+    black: 1. 3 teams compete at once.
+    black: 1. Games last for a maximum of 10 minutes.
+    black: 1. Games end when a team reaches 20 points.
+    black: 1. 3X3 basketball first featured at the Youth Olympics.
+    black: 1. 3X3 basketball was at the London Olympics.
+    black: 1. There are 3-point goals in 3X3 basketball.
+    black: 1. There are 2 point and 1-point goals in 3X3 basketball.
+    black: 1. Games use ½ a basketball court.
+    black: 1. There is only 1 goal used in 3X3 basketball.
+    tag: Answers. A. Trueb. falsec. trued. falsee. truef. falseg. falseh. truei. truej. true
+    tag: [button] ⟶ Check answers.
+    tag: [button] ⟶ Reset
+    GOLD MXFU202_2.0.html: <div class="radioQuiz"> items 0: 
+    GOLD MXFU202_7.0.html: <div class="radioQuiz"> items 0: 
+    GOLD MXFU202_9.0.html: <div class="radioQuiz"> items 0: 
+--- MXFU301 #38 box modifier="self-marking"
+    tag: [Activity 8E self-marking radio quiz] ⟶ Which statements are true?
+    black: 1. The die was rolled 50 times. True
+    black: 1. The number 4 is highly unlikely to be the rolled next. False
+    black: 1. Numbers 2 and 5 were rolled the same number of times. True
+    black: 1. The number 1 was rolled more frequently than the number 6. True
+    black: 1. The number 2 is twice as likely to be rolled as the number 6. False
+    black: 1. Rolling a 4 is almost impossible. False
+    tag: (Can you please put a little (i) beside each answer, and have the following explanations appear when it is cli
+    black: 1.
+    tag: This is true because 7 + 12 + 10 + 3 + 12 + 6 = 50 rolls
+    black: 1.
+    tag: This is false because rolling a die is an independent event. Every new roll offers an equal chance of any numb
+    black: 1.
+    tag: This is true for this data. Both numbers 2 and 5 were rolled 12 times.
+    black: 1.
+    tag: This is true for this data. The number 1 was rolled four more times than the number 4.
+--- MXFU301 #41 box modifier="- self marking"
+    tag: [Activity 9A – self marking radio quiz]
+    tag: [image] ⟶ https://media.istockphoto.com/id/182236883/photo/clown-head-
+    tag: [body] ⟶ The prize for getting three balls into the mouths of three c
+    black: As each prize is claimed, another is put into the bin, so each draw is an independent event.
+    black: A collection of people made some claims about the lucky dip prize bin. Decide whether each one is true or fals
+    black: 1. The probability of receiving a small soft toy is 40%.
+    tag: True
+    black: 1. There is more chance of receiving a water gun than a basketball.
+    tag: False
+    black: 1. The probability of not receiving a soft toy is 0.2.
+    tag: False
+    black: 1. It is possible to receive a basketball but not likely.
+    tag: True
+    black: 1. There is a good chance a soft toy of some size will come down the chute.
+    tag: True
+    black: 1. The probability of receiving a water gun is 10%.
+--- MXFU301 #45 box modifier="- self-marking"
+    tag: [Activity 9C – self-marking radio quiz]
+    TABLE 6x2: • The probability of snow duri ‖ 🔴[RED TEXT] False [/RED TEXT] // • The probability of picking a ‖ 🔴[RED TEXT] True [/RED TEXT]� // • The probability of finding a ‖ 🔴[RED TEXT] False [/RED TEXT] // • The probability of seeing a  ‖ 🔴[RED TEXT] False [/RED TEXT]
+    tag: (Please put a little (i) beside each answer so ākonga can click on it to get an explanation. Attach the extra 
+    black: 1.
+    tag: This is false because the probability of snow during Aotearoa New Zealand’s warmest month is low and certainly
+    black: 1.
+    tag: There are seven days each week and only two of those days start with ‘T’ (Tuesday and Thursday) so the probabi
+    black: 1.
+    tag: The probability of ½ indicates half the clover patch would contain clovers with four leaves. They are rare, so
+    black: 1.
+    tag: The probability of 1/3 indicates 10 nights per month. A full moon occurs roughly once each month and it does n
+    black: 1.
+    tag: Provided the swimming pool is full of water, you will always get wet, so this statement is true.
+    black: 1.
+    tag: The probability of 1 indicates 100% certainty. A small, gift-wrapped box might contain a ring, but there is al
+--- MXFUN02 #15 box modifier=""
+    tag: [Multichoice true or false quiz]
+    TABLE 9x2: 🔴[RED TEXT] Question [/RED TE ‖ 🔴[RED TEXT] Answer [/RED TEXT // 12 < 35 ‖ 🔴[RED TEXT] T [/RED TEXT]🔴 // 43 < 47 ‖ 🔴[RED TEXT] T [/RED TEXT]🔴 // 3+3 > 10 ‖ 🔴[RED TEXT] F [/RED TEXT]🔴
+    tag: [button] ⟶ Check answers
+    tag: [button] ⟶ Reset
+--- MXFUN02 #23 box modifier=""
+    tag: [activity 1B] [radio quiz]
+    tag: [Body] ⟶ Look at these equations below. Use your knowledge to tell if
+    TABLE 7x2: 6 x 7 = 7 x 6 ‖ 🔴[RED TEXT] T [/RED TEXT]🔴/F // 5 x 4 = 10 + 10 ‖ 🔴[RED TEXT] T [/RED TEXT]🔴/F // 3 + 4 + 7 = 3 x 5 ‖ T/🔴[RED TEXT] F [/RED TEXT]🔴 // 7 x 4 + 4 = 8 x 4 ‖ 🔴[RED TEXT] T [/RED TEXT]🔴/F
+    tag: [button] ⟶ Check answers
+    tag: [button] ⟶ Reset
+--- MXFUN02 #31 box modifier=""
+    tag: [Activity 1D] [Radio quiz] ⟶ Are you able to tell if these are true or false?
+    TABLE 7x2: -5 × -2 = 5 + 5 ‖ 🔴[RED TEXT] T [/RED TEXT]🔴/F // -5 × -4 = 100 ÷ 5 ‖ 🔴[RED TEXT] T [/RED TEXT]🔴/F // -3 × 5 × 2 = 2 × 2 × -5 × -2 ‖ T/🔴[RED TEXT] F [/RED TEXT]🔴 // -4 × 4 × -1 = -3 × -4 ‖ 🔴[RED TEXT] T [/RED TEXT]🔴/F
+    tag: [button] ⟶ Check answers
+    tag: [button] ⟶ Reset
+--- MXS1004 #6 box modifier=""
+    tag: [radio Quiz] have the tick boxes in two columns. ⟶ Select the correct variable type.
+    TABLE 9x3: **Variable** ‖ **Numeric** ‖ **Categorical** // Height ‖ 🔴[RED TEXT] tick [/RED TEXT]� ‖  // Hair colour ‖  ‖ 🔴[RED TEXT] tick [/RED TEXT]� // Age ‖ 🔴[RED TEXT] tick [/RED TEXT]� ‖ 
+    black: Numerical variables can be further categorised into two types:
+    black: • Discrete variables
+    black: • Continuous variables.
+    black: **Discrete variables** are measures that go in whole units. These are things you can count. For example, goals
+    black: **Continuous variables** can be in parts of a number, and they often have a unit of measurement. Height is a g
+--- MXS1004 #14 box modifier=""
+    tag: [Radio quiz] Self-check
+    TABLE 11x4: Feature ‖ Mean ‖ Median ‖ Mode // Considers all of the data ‖ 🔴[RED TEXT] Mean [/RED TEXT]� ‖  ‖  // May calculate to be something  ‖ 🔴[RED TEXT] Mean [/RED TEXT]� ‖ 🔴[RED TEXT] Median [/RED TEXT ‖  // Can be used with categorical d ‖  ‖  ‖ 🔴[RED TEXT] Mode [/RED TEXT]�
+    GOLD MXS1004_2_0.html: <div class="radioQuiz"> items 0: 
+--- OSAH401 #8 box modifier=""
+    tag: [radio interactive]
+    tag: [body] ⟶ Tick ‘yes’ if you think the example counts as online abuse o
+    black: ✅shows correct answer ❌ shows incorrect answer
+    TABLE 6x3: Scenario 1 ‖ Sending repeated mean messages ‖ ✅ Yes / ❌ No // Scenario 2 ‖ Asking someone out once polite ‖ ✅ No / ❌ Yes // Scenario 3 ‖ Accidentally sending a message ‖ ✅ No / ❌ Yes // Scenario 4 ‖ Sharing someone's private phot ‖ ✅ Yes / ❌ No
+    GOLD OSAH401_1.0.html: <div class="radioQuiz"> items 0: 
+--- OSBY101 #4 box modifier=""
+    tag: [radio interactive] ⟶ correct
+    TABLE 3x2: Join the group and laugh with  ‖ Go and ask Susie if she wants  // Run away and hide. ‖ Fetch an adult or tell them wh // Tell the group to stop and sug ‖ Scream, kick and push the chil
+--- OSBY201 #7 box modifier=""
+    tag: [radio interactive – autocheck]
+    TABLE 4x2: 🔴[RED TEXT] Scenario and ques ‖ 🔴[RED TEXT] Answers [/RED TEX // **1. Gaming trouble** / You’re ‖ A. Send a mean message back. / // **2. Online class chat** / Dur ‖ A. Screenshot the message and  // **3. Group chat drama** / You’ ‖ A. Join in so you don’t get le
+--- OSBY501 #12 box modifier=""
+    tag: [radio interactive] [autocheck]
+    TABLE 6x5: **Message/Action** ‖ **Interpretation** ‖ **Is this Intended?** 🔴[RED T ‖ 🔴[RED TEXT] [hidden Hints] [/ ‖ 🔴[RED TEXT] [show answer] [/R // A meme was shared earlier in t ‖ The sender is annoyed. ‖ ☐ Intended / ☐ Not Intended ‖ Think about how tone can chang ‖ The tone was misread because t // Talia posted this after a toug ‖ Talia is mocking the team. ‖ ☐ Intended / ☐ Not Intended ‖ Consider how emojis can be int ‖ Emojis can be interpreted in m // Aria sent this during a group  ‖ The sender is frustrated and f ‖ ☐ Intended / ☐ Not Intended ‖ Reflect on how silence from ot ‖ The sarcasm and frustration we
+--- OSBY501 #22 box modifier=""
+    tag: [radio interactive] [autocheck]
+    TABLE 7x3:  ‖ **Is this consent?** 🔴[RED TE ‖ 🔴[RED TEXT] [show answer] [/R // Jess shares a photo from a par ‖ ☐ Consent / ☐ No Consent ‖ Even though Talia is smiling,  // Leo asks his friend Sam if he  ‖ ☐ Consent / ☐ Not Consent ‖ A shrug and vague response don // Arnav reposts a meme that incl ‖ ☐ Consent / ☐ Not Consent ‖ Private messages are not meant
+--- OSGM101 #3 box modifier=""
+    tag: [Radio button quiz]
+    tag: [body] ⟶ Choose the correct answer to the question
+    black: 1.When was the first video game console sold?
+    black: 1. 2000
+    black: 1. 1985
+    black: 1. 1972
+    black: 2. Which is a safe device for young children to use?
+    black: 1. Xbox with online play.
+    black: 1. Tablet with parent controls activated.
+    black: 1. Laptop connected to the internet.
+    black: 3. What is gaming online?
+    black: 1. Playing games on devices that connect to the internet.
+    black: 1. Playing pre-loaded games .
+    black: 1. Playing the 'I Spy’ game while waiting in line.
+    black: Task 2: Online, offline or both?
+    tag: [drag and drop autocheck] CS: can it be set up like this one [2A] with the online and offline image circles wh ⟶ https://tekura.desire2learn.com/d2l/le/content/18418/viewCon
+--- OSGM201 #14 box modifier=""
+    tag: [radio buttons]
+    black: • Have I cheated to win?
+    black: • Have I helped someone who needed it?
+    black: • Have I included everyone?
+    black: • Did I choose a game that is right for my age?
+    black: • Did I stop playing if things felt wrong?
+    black: • Have I talked to an adult if something upset me?
+    black: • Have I taken enough breaks, eaten and done my chores/schoolwork?
+    tag: [body] ⟶ Have a chat to your supervisor or trusted adult about the ch
+--- OSOH101 #12 box modifier=""
+    tag: [Radio button quiz true/false]
+    black: Tick **true** if the statement is correct or **false** if it is wrong. Green is correct
+    TABLE 2x3: It is fine to share your passw ‖ Never share your contact detai ‖ Always check with a trusted ad // True / False ‖ True / False ‖ True / False
+    GOLD OSOH101_0.1.html: <div class="radioQuiz"> items 0: 
+    GOLD OSOH101_0.2.html: <div class="radioQuiz"> items 0: 
+    GOLD OSOH201_3.0.html: <div class="radioQuiz autoCheck"> items 0: 
+    GOLD OSOH201_3.0.html: <div class="radioQuiz autoCheck"> items 0: 
+--- OSOH401 #10 box modifier=""
+    tag: [radio button quiz autocheck] ⟶ Tick if the statement is true or false. What is good netique
+    TABLE 5x2: 🔴[RED TEXT] True or False [/R ‖ 🔴[RED TEXT] description [/RED // • True / • False ‖ You should ALWAYS have your ca // • True / • False ‖ Raise your hand and wait for y // • True / • False ‖ Ask others to join a gaming ch
+    black: 1.
+    GOLD OSOH401.0.1.html: <div class="radioQuiz"> items 0: 
+--- OSSC401 #8 box modifier=""
+    tag: [radio button quiz table autocheck]correct answers given in table
+    tag: [2A] ⟶ Spot the fake! You need all ‘yes’ for it to be credible.
+    tag: see this for design ⟶ https://tekuradev.desire2learn.com/d2l/le/content/7801/viewC
+    TABLE 5x9:  ‖ Trusted source ‖ Recent date ‖ Legit URL ‖ No / Bias ‖ Links / work ‖ Images check out ‖ Facts check out ‖ **Is it credible?** // 🔴[RED TEXT] Video [link] [/RE ‖ No ‖ Yes ‖ No ‖ No ‖ Yes ‖ No ‖ No ‖ No // 🔴[RED TEXT] [external link bu ‖ No ‖ No ‖ No ‖ No ‖ Yes ‖ No ‖ No ‖ No // 🔴[RED TEXT] [external link bu ‖ Yes ‖ Yes ‖ Yes ‖ Yes ‖ Yes ‖ Yes ‖ Yes ‖ Yes
+--- PWY1002 #9 box modifier=""
+    TABLE 1x1: 🔴[RED TEXT] [Radio quiz [auto
+--- PWY1002 #21 box modifier=""
+    TABLE 7x3: 🔴[RED TEXT] [Radio Quiz] [Aut ‖ **Constructive** ‖ **Destructive** // • “You did a good job. Next ti ‖  ‖  // • “Your work is terrible.” ‖  ‖  // • “I noticed a few mistakes. L ‖  ‖ 
+    GOLD PWY1002_1_2.html: <div class="radioQuiz"> items 0: 
+    GOLD PWY1002_3_0.html: <div class="radioQuiz"> items 0: 
+--- PWY1008 #20 box modifier=""
+    tag: [radio quiz [autocheck]] ⟶ 3C: Spot whakarongo pīkari
+    tag: [Body] ⟶ Read through the examples and decide if they are examples of
+    TABLE 8x3:  ‖ **Whakarongo pīkari** // **Example** ‖ **Yes** ‖ **No** // • Leilani waits until the inte ‖ Yes ‖  // • Bailey pauses for a moment b ‖ Yes ‖ 
+    GOLD PWY1008_1_3.html: <div class="radioQuiz"> items 0: 
+    GOLD PWY1008_2_1.html: <div class="radioQuiz"> items 0: 
+    GOLD PWY1008_3_2.html: <div class="radioQuiz"> items 0: 
+    GOLD PWY1009_1_1.html: <div class="radioQuiz"> items 0: 
+    GOLD PWY1009_3_1.html: <div class="radioQuiz"> items 0: 
+--- SCBI301 #7 box modifier="students select"
+    tag: [radio quiz. Students select correct options.]
+    black: Cell membrane
+    tag: [correct]
+    black: Cell wall
+    black: Cytoplasm
+    tag: [correct]
+    black: Nucleus
+    tag: [correct]
+    black: Mitochondria
+    tag: [correct]
+    black: Vacuole
+    tag: [correct]
+    black: Chloroplast
+    tag: [body text] ⟶ Plant cells have some extra structures that are not found in
+    tag: [radio quiz. Students select correct options.]
+    black: Cell membrane
+--- SCBI301 #18 box modifier="single option. all answers correct - students can select multiple"
+    tag: [radio quiz interactive. Autocheck. Single option. All answers correct – students can select multiple]
+    black: • Pizza dough
+    black: • Chocolate
+    black: • Cheese
+    black: • Rēwena bread
+    black: • Kānga pirau (fermented corn)
+    black: • Yoghurt
+    black: • Kombucha
+    black: • Miso
+    black: • Kimchi
+    black: • Olives
+    black: • None of these
+    tag: [button] ⟶ Reset
+--- SCCH301 #17 box modifier="with 'yes' 'no' checkboxes for each statement. shown. automarked"
+    tag: [radio quiz with ‘yes’ ‘no’ checkboxes for each statement. Correct answers shown. Automarked.]
+    black: When you added thermal energy, did the particles:
+    black: Move further apart?
+    tag: [yes]
+    black: Move faster?
+    tag: [yes]
+    black: Change their shape?
+    tag: [no]
+    black: Change their size?
+    tag: [no]
+    black: Change their type?
+    tag: [no]
+    black: Increase or decrease in number?
+    tag: [no]
+    tag: [button] ⟶ Undo
+    tag: [button] ⟶ Reset
+--- SCCH301 #28 box modifier="automarked"
+    tag: [radio quiz. Automarked.]
+    black: 1. Which is denser?
+    black: a. A solid piece of candle wax.
+    tag: [correct]
+    black: b. Liquid candle wax.
+    black: 2. Which is denser?
+    black: a. Warm water.
+    black: b. Cool water.
+    tag: [correct]
+    black: 3. Which is denser?
+    black: a. Solid carbon dioxide (dry ice).
+    tag: [correct]
+    black: b. Carbon dioxide gas.
+    black: 4. Which is denser?
+    black: a. Hot iron.
+    black: b. Cold iron.
+--- SCCH301 #29 box modifier="shown"
+    tag: [radioquiz true/false. Answers shown]
+    black: 1. Density is how much matter is packed into a certain amount of space.
+    tag: True
+    black: 1. A rock and a piece of foam can be the same size but have different densities.
+    tag: True
+    black: 1. Materials that have high density are light for their size.
+    tag: False
+    black: 1. If two objects have the same volume, the one with more mass has a higher density.
+    tag: True
+    black: 1. When a material is heated, its mass increases.
+    tag: False
+    black: 1. Heating a material usually makes it less dense.
+    tag: True
+    black: 1. Cooling a material usually makes it denser.
+    tag: True
+    black: 1. Solids are usually denser than gases.
+    GOLD SCCH301_4_0.html: <div class="radioQuiz"> items 0: 
+    GOLD SCCH301_7_0.html: <div class="radioQuiz"> items 0: 
+--- SCES201 #3 box modifier=""
+    tag: [activity 1a] [radio quiz] [auto check]
+    tag: [body text] ⟶ Decide if these statements about stars are true or false.
+    tag: [Q1] ⟶ Stars are balls of hot rock.
+    tag: [Q1 answer] ⟶ F
+    tag: [Q2] ⟶ Stars are formed when clumps of gas and dust bump into each 
+    tag: [Q2 answer] ⟶ T
+    tag: [Q3] ⟶ The main sequence happens when a star is about to die.
+    tag: [Q3 answer] ⟶ F
+    tag: [Q4] ⟶ Large stars can become black holes when they die.
+    tag: [Q4 answer] ⟶ T
+    tag: [Q5] ⟶ Constellations are groups of stars that appear close togethe
+    tag: [Q5 answer] ⟶ T
+    GOLD SCES201_1_0.html: <div class="radioQuiz"> items 0: 
+--- SSCI205 #25 box modifier=""
+    tag: [Radio quiz] [Autocheck]
+    TABLE 2x2: 🔴[RED TEXT] [Body] [/RED TEXT ‖ 🔴[RED TEXT] [Autocheck] (corr // 🔴[RED TEXT] [Body] [/RED TEXT ‖ 🔴[RED TEXT] [Autocheck] [/RED
+--- SSEA203 #3 box modifier=""
+    tag: [Interactive] Radio tick box
+    TABLE 2x4: 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]� // 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]�
+--- SSEA203 #11 box modifier="tickbox"
+    tag: [Radio button – tickbox]
+    GOLD SSEA203-2.0.html: <div class="radioQuiz"> items 0: 
+--- SSFUN03 #7 box modifier="insert mtk automarked"
+    tag: [insert MTK automarked True False quiz] (Answers supplied)
+    TABLE 5x2: 1. This map has limits shown b ‖ False // 2. This map uses **colour** to ‖ True // 3. There is a north arrow ‖ False // 4. The title tells us this is  ‖ False
+    GOLD SSFUN03_00.html: <div class="radioQuiz"> items 0: 
+--- SSFUN05 #8 box modifier=""
+    tag: [Interactive] Please create a true/false type quiz but with positive and negative as the words on the buttons 
+    tag: [Add buttons] Check answer and reset buttons.
+    tag: [Body]
+    black: 2. All Black Colin Meads was a tall, well-built sheep farmer and given the nickname, ‘Pine Tree’. Look back ov
+    tag: [Button] Quiz
+--- SSFUN08 #8 box modifier=""
+    tag: [Interactive] add a true or false function for question 2 – the answer is true
+    black: 1. How will the native plants provide rongoa and how effective will they be at restoring the land?
+    black: 1. Do you think the ambitious plan will benefit the whānau and why do you think this?
+    tag: [add button] quiz
+--- SSOG105 #11 box modifier=""
+    tag: [Radio interactive] self marking
+    TABLE 10x2: • Waitangi Day remembers the s // 🔴[RED TEXT] [correct] [/RED T ‖ False // • The Treaty of Waitangi was s // True ‖ 🔴[RED TEXT] [correct] [/RED T
+    GOLD SSOG105_2.0.html: <div class="radioQuiz autoCheck"> items 0: 
+--- SSOG301 #4 box modifier="insert an embedded"
+    tag: [insert an embedded True False Quiz] [H3] ⟶ Activity 2B **Leadership – separating truth from tale** Read
+    tag: [Developer – answers are shaded]
+    TABLE 11x3:  ‖ T ‖ F // Effective leaders do not need  ‖  ‖  // Empathy is not a quality of ef ‖  ‖  // Martin Luther King Jr. was pri ‖  ‖ 
+    tag: [button] ⟶ Undo
+    tag: [button] ⟶ Show answer
+    tag: [button] ⟶ Reset
+--- TEDC402 #73 box modifier=""
+    tag: [radio interactive]
+    tag: [Body] ⟶ Now it’s your turn to make decisions. There’s no guessing he
+    TABLE 1x5: **1.Hours Slept = 200** / • Ke ‖ **2.Steps = 12,000 with note “ ‖ **3.Height = 165 (no unit)** / ‖ **4.Duplicate row for Ari** /  ‖ 🔴[RED TEXT] Auto-feedback: [/
+    GOLD TEDC402-4.0.html: <div class="radioQuiz"> items 0: 
+    GOLD TEDC402-4.0.html: <div class="radioQuiz rQNumbers autoCheck" buttonNumber="3"> items 0: 
+    GOLD TRR109_1.0.html: <div class="radioQuiz autoCheck"> items 0: 
+    GOLD TRR109_1.0.html: <div class="radioQuiz autoCheck"> items 0: 
+    GOLD TRR109_4.0.html: <div class="radioQuiz autoCheck"> items 0: 
+    GOLD TRR109_4.0.html: <div class="radioQuiz autoCheck"> items 0: 
+    GOLD TRR109_4.0.html: <div class="radioQuiz autoCheck"> items 0: 
+    GOLD TRR109_4.0.html: <div class="radioQuiz autoCheck"> items 0: 
+--- TWHR905 #6 box modifier=""
+    tag: [Activity True false quiz] 4A Dev correct answers and explanations are in red and are to be displayed to the s
+    tag: [Body] ⟶ Discuss with those around you, either at huinga ako or at ho
+    black: 1. You will produce your best work if you spend a long time working non-stop on the same task.
+    tag: False. Taking regular breaks helps you focus better.
+    black: 1. To be the most productive you should only take a long break at lunchtime.
+    tag: False. You should schedule multiple long breaks for each day.
+    black: 1. Taking a walk outside away from your work can help you to solve a problem.
+    tag: True.
+    black: 1. Checking your emails as soon as they come in helps you stay on top of your work and schedule.
+    tag: False. Checking emails at a specific time helps you to focus better.
+    black: 1. Going on social media in your breaks between classes is a good way to switch your attention before starting
+    tag: False. It is easy to get distracted on social media which can make it harder to focus on the next task.
+    black: 1. Training yourself to focus on your work is a skill that you need to build just like building muscles.
+    tag: True.
+    GOLD TWHR905.html: <div class="radioQuiz"> items 0: 
+--- WJFUN115 #18 box modifier="yes - no"
+    tag: [Radio Quiz: Yes – No]
+    tag: [Body] ⟶ Read each sentence and decide if it uses alliteration. Click
+    black: Southern Field Days visitors viewed vintage vehicles.
+    tag: [correct answer ⟶ Yes
+    tag: ]
+    black: White clouds floated over the plains.
+    tag: [correct answer ⟶ No
+    tag: ]
+    black: Brilliant bakers baked buttery buns.
+    tag: [correct answer ⟶ Yes
+    tag: ]
+    black: Friendly farmers fixed fences on the farm.
+    tag: [correct answer ⟶ Yes
+    tag: ]
+    black: The fast jet boat sped down the river.
+    tag: [correct answer ⟶ No
+    GOLD WJFUN115_0_0.html: <div class="radioQuiz"> items 0: 
+--- XGF9004 #42 box modifier="insert quiz with options - in red"
+    tag: [Insert click drop quiz with True or False options – correct answer in red]
+    black: 1. Water boils at 100°C.
+    tag: [Fact]
+    black: 1. Chocolate is the best ice cream flavour.
+    tag: [Opinion]
+    black: 1. The moon affects the tides.
+    tag: [Fact]
+    black: 1. The human body needs oxygen to survive.
+    tag: [Fact]
+    black: 1. Dogs are friendlier than cats.
+    tag: [Opinion]
+    black: 1. Aotearoa New Zealand is in the Southern Hemisphere.
+    tag: [Fact]
+    black: 1. Rainbows are the most beautiful thing in nature.
+    tag: [Opinion]
+    black: 1. Reading books is more fun than watching movies.
+--- XGF9006 #19 box modifier="insert - drop / quiz?"
+    tag: [Insert interactive – drop quiz/radio quiz?]
+    TABLE 9x2: 🔴[RED TEXT] [H3] [/RED TEXT]� ‖ 🔴[RED TEXT] [Correct answer]  // A news article from a well-kno ‖ 🔴[RED TEXT] Reliable. [/RED T // A Tik Tok video with no source ‖ 🔴[RED TEXT] Not reliable. [/R // A Wikipedia article that links ‖ 🔴[RED TEXT] Reliable. [/RED T

@@ -3191,6 +3191,8 @@
 				"label_row_pattern": "^(?:questions?|answers?|statements?|sentences?|words?|working|solutions?|q|a)\\s*:?$",
 				"label_answer_pattern": "^\\(?\\s*(?:(?:in)?correct(?:\\s+answers?)?|answers?|example|e\\.?g\\.?|questions?\\s*\\d*|q\\s*\\d+|tick|x)\\s*\\)?\\s*[:.]?$",
 				"alt_split": "\\s+or\\s+",
+				"tag_answer_pattern": "^\\s*(?:body(?:\\s+text)?|table|tick\\s*-?\\s*box(?:es)?|typing(?:\\s+self\\s*-?\\s*check)?|self\\s*-?\\s*check|image|photo|heading|h[1-6]|written\\s+response|type\\s+the\\s+answer|quiz|mtk\\b[\\s\\S]*|engagement\\s+trigger|select\\s+option[\\s\\S]*)\\s*$",
+				"_tag_answer_note": "ROUND 518 (session 50 Round 10 — found by `_verify_typing.cjs`'s new table-form checks): a red cell that is a TAG word — GEWHA / PWY1002's layout tables (`Body`, `Table`, `Typing self check`, `[MTK Quiz Questionnaire] [engagement trigger]`, `select option Y/N`) — means the table describes a layout, not a quiz: the whole table declines. Any answer still bracketed after the single-bracket unwrap declines too, and so does a built table that would still show a writer bracket (MXFU202's `[image] 117 - 71.jpg` cells).",
 				"_alt_split_note": "The writer's alternative answers in one red run — `23.30 or 23.3` (MXFU202) — become the KB 03D multiple-answer form answer=\"a||b\" when there are 2–3 alternatives of ≤ 3 words each.",
 				"_label_answer_note":"A red run that is a LABEL — `correct` beside the black answer (BLLR203), `(Question 1)` (SSCI205), `Example` — means red is not the answer in that table: the whole table declines to the hand-off box.",
 				"button_label_pattern": "^(?:check(?:\\s+(?:your\\s+)?answers?)?|reset|undo|show(?:\\s+answers?)?)\\.?$"

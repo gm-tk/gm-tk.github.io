@@ -1,5 +1,24 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (round 518, build 260620.79) — THE TYPING VERIFIER LEARNS THE TABLE FORM, and the three defects its new checks found in r517's builds are guarded (GEWHA / PWY1001 / PWY1002 layout tables, MXFU202's `[image]` cells): 4 modules decline to the hand-off box; the typing count test now covers the table quizzes (14 quizzes / 145 inputs on the gate set, 140 the gold's own); gate-neutral
+
+### 1. WHAT CHANGED
+
+**The tool** (`reference/tests/_verify_typing.cjs`; LOOP §3 step 6 — every widget round is judged on its verifier, and a verifier that cannot see a form passes it vacuously): r517's table form (`div.typing layout="standard"` > table) was invisible to the verifier, which parsed only the typingContainer form. `parseTable` / `defectsTable` now read it — the layout, every input's form-control / type / placeholder / caseSensitive, a non-empty and un-bracketed answer, the reset / checkAnswer / showAnswer row, no writer bracket left in the table — its quizzes and inputs count in the same totals, and the selftest gains a MXFUN01 table fixture (LIVENESS 3 quizzes / 61 inputs; DETECTION: an emptied answer, a bracketed answer, the layout removed — all caught).
+
+**What it found on its first run over r517's 17 modules — DEFECTS 10, fixed** (`InteractiveBuilder.#typingTable`; data `interactive_builders.typing.table_form.tag_answer_pattern`; env **`TYPTABLEGUARD_OFF`** = the r517 output exactly): GEWHA, PWY1001 and PWY1002 hold LAYOUT tables whose red cells are TAGS (`[MTK Quiz Questionnaire] [engagement trigger]`, `Body`, `Table`, `Typing self check`, `[Tickbox [autocheck]]`, `select option Y/N`), not answers; MXFU202_5_0's table kept `[image] 117 - 71.jpg` cells. A red run still bracketed after the single-bracket unwrap, or a tag word, now declines the table, and so does a built table that would still show a writer bracket — those four tables go back to the hand-off box.
+
+### 2. PROOF
+
+- In-memory probe over all 545 modules: `TYPTABLEGUARD_OFF=1` → 0 pages changed; ON → **4 modules** (GEWHA, MXFU202, PWY1001, PWY1002). `scoped_ship.sh … --round 518` PASS (0 stale, containment 4 ⊆ 4, the 12-module spot-check byte-identical).
+- `_verify_typing.cjs` over r517's 17 modules: **27 quizzes / 309 inputs, DEFECTS 0**; 253 answers (82 %) the gold's own, 48 no gold match, 8 in a module whose gold has no typing. On the gate's recorded 7-module set the count GREW 8 → 14 quizzes, 57 → 145 inputs (MXEO301 1 → 5, MXFL302 1 → 3 — the table form counted), recorded with `VERIFY_COUNT_RECORD=1`; 140 of the 145 the gold's own answers.
+
+### 3. PROTECTED GATES
+
+Gate-neutral: skeleton 55.7491 % @ 2486 EXACT, RAW 39.574 %, cs / body / clean / leak EXACT; tags 9557; every verifier ✓, every COUNT held or recorded (`_r518_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 518`; `--gate-baseline-check` PASS. Plateau: neither (a measurement-tool round + a guard).
+
+**Ledger:** scoped #4 since the r513 FULL · tool `_verify_typing.cjs` (parseTable / defectsTable / the MXFUN01 selftest fixture) · data `interactive_builders.typing.table_form.tag_answer_pattern` · env `TYPTABLEGUARD_OFF` · code `InteractiveBuilder.#typingTable` · `gate_baseline.json.typing` counts 14 / 145 · session 50 Round 10.
+
 ## 2026-09-26 (round 517, build 260620.78) — THE TYPING QUIZ'S TABLE FORM: a `[Type and check]` / `[typing quiz]` table whose answers the writer typed in RED builds the gold's `div.typing layout="standard"` table with an input per red answer (32 quizzes / 324 inputs / 17 modules; 70 % of the answers are the gold's own, 0 malformed; gate-neutral)
 
 ### 1. WHAT CHANGED

@@ -38,6 +38,37 @@ function parse(html) {
 	}
 	return out;
 }
+/** ROUND 518 — the TABLE form (r517, InteractiveBuilder.#typingTable): div.typing layout="standard" > div.table-responsive >
+ *  table (rows = <tr>, each red answer an <input>) + the button row. Each table is one quiz; its rows are the <tr>s that hold an
+ *  input (a header / worked-example row holds none). */
+function parseTable(html) {
+	const out = [];
+	const re = /<div class="(typing(?:\s[^"]*)?)"([^>]*)>\s*<div class="table-responsive">\s*<table\b[^>]*>([\s\S]*?)<\/table>\s*<\/div>\s*<div class="row">\s*((?:<div class="activityButton[^"]*">[^<]*<\/div>\s*)+)<\/div>\s*<\/div>/g;
+	let m;
+	while ((m = re.exec(html))) {
+		const trs = [...m[3].matchAll(/<tr>([\s\S]*?)<\/tr>/g)].map((r) => r[1]);
+		out.push({ table: true, cls: m[1], attrs: m[2], rows: trs.filter((t) => /<input\b/.test(t)), allRows: trs, buttons: m[4], raw: m[0] });
+	}
+	return out;
+}
+function defectsTable(ws) {
+	const d = [];
+	for (const w of ws) {
+		if (!/\blayout="standard"/.test(w.attrs)) d.push("table form lacks layout=\"standard\"");
+		if (!w.rows.length) d.push("table form has no input row");
+		for (const r of w.rows) for (const a of inputs(r)) {
+			if (!/\bclass="form-control"/.test(a) || !/\btype="text"/.test(a)) d.push("an input is not form-control / type=text");
+			if (!/\bplaceholder="Type here"/.test(a)) d.push("an input lacks placeholder=\"Type here\"");
+			if (!/\bcaseSensitive="false"/.test(a)) d.push("an input lacks caseSensitive=\"false\"");
+			const ans = (a.match(/\banswer="([^"]*)"/) || [])[1];
+			if (!ans || !ans.trim() || /^\[|\]$/.test(ans.trim())) d.push("a table input with no (or a bracketed) answer");
+		}
+		for (const b of ["activityButton reset", "activityButton checkAnswer hidden", "activityButton showAnswer hidden"])
+			if (!w.buttons.includes(`class="${b}"`)) d.push(`table form's button row lacks ${b}`);
+		if (/\[[^\]\n]{0,120}\]/.test(w.raw.replace(/answer="[^"]*"/g, ""))) d.push("the table form still shows a writer bracket");
+	}
+	return d;
+}
 function inputs(p) { return [...p.matchAll(/<input\b([^>]*)\/?>/g)].map((x) => x[1]); }
 function defects(ws) {
 	const d = [];
@@ -106,6 +137,24 @@ async function convert(code) {
 			if (n) _l(`  ✓ DETECTION: ${name} → ${n} defect(s)`);
 			else { _l(`  ✗ DETECTION: ${name} was NOT caught`); ok = false; }
 		}
+		// ROUND 518 — the TABLE form (r517): MXFUN01's `[Type and check]` tables
+		const runT = await convert("MXFUN01");
+		const htmlT = (runT?.outputs || []).filter((o) => /\.html$/.test(o.filename)).map((o) => o.content).join("\n");
+		const wt = parseTable(htmlT);
+		const nT = wt.reduce((n, w) => n + w.rows.reduce((k, r) => k + inputs(r).length, 0), 0);
+		if (nT < 20) { _l(`  ✗ LIVENESS: MXFUN01 built ${nT} table-form input(s), expected >= 20`); ok = false; }
+		else _l(`  ✓ LIVENESS: MXFUN01 builds ${wt.length} table-form quiz(zes) with ${nT} inputs`);
+		if (defectsTable(wt).length) { _l("  ✗ LIVENESS: the clean table fixture reports a defect: " + defectsTable(wt).join("; ")); ok = false; }
+		else _l("  ✓ LIVENESS: the clean table fixture reports defect 0");
+		for (const [name, doctored] of [
+			["a table answer emptied", htmlT.replace(/(<div class="table-responsive">[\s\S]*?) answer="[^"]*"/, '$1 answer=""')],
+			["a table answer left bracketed", htmlT.replace(/(<div class="table-responsive">[\s\S]*?) answer="([^"]*)"/, '$1 answer="[$2]"')],
+			["the table form's layout removed", htmlT.replace(/(<div class="typing[^"]*") layout="standard"/, "$1")],
+		]) {
+			const n = defectsTable(parseTable(doctored)).length;
+			if (n) _l(`  ✓ DETECTION: ${name} → ${n} defect(s)`);
+			else { _l(`  ✗ DETECTION: ${name} was NOT caught`); ok = false; }
+		}
 		_l(ok ? "SELFTEST GREEN" : "SELFTEST FAIL"); process.exit(ok ? 0 : 1);
 	}
 
@@ -122,8 +171,9 @@ async function convert(code) {
 		}
 		for (const o of run.outputs || []) {
 			if (!/\.html$/.test(o.filename || "")) continue;
-			const ws = parse(o.content); if (!ws.length) continue;
-			const dd = defects(ws); D += dd.length; W += ws.length;
+			const w1 = parse(o.content), wt = parseTable(o.content);   // ROUND 518: + the table form (r517)
+			const ws = [...w1, ...wt]; if (!ws.length) continue;
+			const dd = [...defects(w1), ...defectsTable(wt)]; D += dd.length; W += ws.length;
 			let n = 0, hit = 0;
 			for (const w of ws) for (const p of w.rows) for (const a of inputs(p)) {
 				n++; const ans = norm((a.match(/\banswer="([^"]*)"/) || [])[1] || "");

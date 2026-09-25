@@ -13990,6 +13990,9 @@ class InteractiveBuilder {
 		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
 		const unRed = (s) => String(s ?? "").replace(/\u{1f534}\[\/?RED TEXT\]\u{1f534}/gu, " ");
 		const inline = renderInline ?? ((s) => Utils.EscapeHtml(s));
+		// ROUND 518 — the guards the verifier's table checks called for (a tag-word / still-bracketed answer, a leftover writer
+		// bracket); env TYPTABLEGUARD_OFF = the r517 output exactly
+		const guardOff = !!(typeof process !== "undefined" && process.env && process.env[cfg.guard_env || "TYPTABLEGUARD_OFF"]);
 		const members = bundle?.memberItems ?? [];
 		const tables = members.filter((m) => m?.type === "table");
 		if (tables.length !== 1) return null;
@@ -14049,6 +14052,9 @@ class InteractiveBuilder {
 						// a red LABEL (`correct` beside the black answer — BLLR203; `(Question 1)` — SSCI205) means red is not
 						// the answer here: the whole table declines (never invent) — data table_form.label_answer_pattern
 						if (cfg.label_answer_pattern && new RegExp(cfg.label_answer_pattern, "i").test(a)) { html = null; break; }
+						// ROUND 518 (the verifier's new table checks): a red run that is still bracketed after the unwrap, or is a
+						// TAG word (`Body`, `Table`, `[Tickbox [autocheck]]` — GEWHA / PWY1002's layout tables), is not an answer
+						if (!guardOff && (/[\[\]]/.test(a) || (cfg.tag_answer_pattern && new RegExp(cfg.tag_answer_pattern, "i").test(a)))) { html = null; break; }
 						if (a.split(" ").length > maxW || reject.test(a)) { html = null; break; }
 						// "23.30 or 23.3" — the writer's alternatives, the KB 03D `answer="a||b"` form (data table_form.alt_split)
 						const alts = cfg.alt_split ? a.split(new RegExp(cfg.alt_split, "i")).map((x) => x.trim()).filter(Boolean) : [a];
@@ -14066,6 +14072,8 @@ class InteractiveBuilder {
 			out.push(Utils.FillTemplate(cfg.row ?? "<tr>{cells}</tr>", { cells: tds.join("") }));
 		});
 		if (out.some((x) => x === null) || answers < (tpl.min_answers ?? 2)) return null;
+		// ROUND 518: never ship a table that still shows a writer bracket (`[image] 117 - 71.jpg` — MXFU202) — the hand-off box keeps it
+		if (!guardOff && /\[[^\]\n]{0,120}\]/.test(out.join("\n").replace(/answer="[^"]*"/g, ""))) return null;
 		const ac = (tpl.autocheck_words ?? []).some((w) => said.toLowerCase().includes(String(w).toLowerCase())) ? (tpl.autocheck_class ?? " autoCheck") : "";
 		return [
 			...leads.map((t) => Utils.FillTemplate(tpl.lead ?? "<p>{text}</p>", { text: inline(t) })),
