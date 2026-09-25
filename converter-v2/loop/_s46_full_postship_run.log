@@ -1,0 +1,93 @@
+[14:37:47] run_all_gates.sh
+  rc=0
+13:— selftest: DETECTION (an injected divergence must be flagged) —
+16:  ✓ dynamic differ SEES a real option divergence (imageMode P vs D)
+17:RESULT: PASS (entry parity holds)
+23:pairs skipped (parse error): 0
+87:STRUCTURALLY CLEAN pages (zero structural defects): 2591/2633 = 98.4%
+91:  A_literal_tag_leak                         52 occ |   42 pages
+94:  DTC1005     14  {'A_literal_tag_leak': 14}
+95:  MUS1004      4  {'A_literal_tag_leak': 4}
+96:  XGF9004      2  {'A_literal_tag_leak': 2}
+97:  TRR116       2  {'A_literal_tag_leak': 2}
+98:  MXFU302      2  {'A_literal_tag_leak': 2}
+99:  HIS1005      2  {'A_literal_tag_leak': 2}
+100:  ENGI102      2  {'A_literal_tag_leak': 2}
+101:  CBI1008      2  {'A_literal_tag_leak': 2}
+102:  BLL260       2  {'A_literal_tag_leak': 2}
+103:  TRR304       1  {'A_literal_tag_leak': 1}
+104:  TRR115       1  {'A_literal_tag_leak': 1}
+105:  TRR106       1  {'A_literal_tag_leak': 1}
+106:  TRR102       1  {'A_literal_tag_leak': 1}
+107:  TEFUN07      1  {'A_literal_tag_leak': 1}
+108:  SSFUN05      1  {'A_literal_tag_leak': 1}
+109:  MXS1004      1  {'A_literal_tag_leak': 1}
+110:  MXFUN01      1  {'A_literal_tag_leak': 1}
+111:  MXEO301      1  {'A_literal_tag_leak': 1}
+112:  MXDI201      1  {'A_literal_tag_leak': 1}
+113:  HIS1006      1  {'A_literal_tag_leak': 1}
+114:  HIS1001      1  {'A_literal_tag_leak': 1}
+115:  ENGS404      1  {'A_literal_tag_leak': 1}
+116:  ENGS302      1  {'A_literal_tag_leak': 1}
+117:  ENFUN09      1  {'A_literal_tag_leak': 1}
+118:  DAN1003      1  {'A_literal_tag_leak': 1}
+121:  DTC1005_1_0.html             5  {'A_literal_tag_leak': 5}
+122:  XGF9004_7_0.html             2  {'A_literal_tag_leak': 2}
+123:  TRR116_9_0.html              2  {'A_literal_tag_leak': 2}
+124:  ENGI102_0_0.html             2  {'A_literal_tag_leak': 2}
+125:  DTC1005_16_0.html            2  {'A_literal_tag_leak': 2}
+126:  DTC1005_13_0.html            2  {'A_literal_tag_leak': 2}
+127:  BLL260_0_0.html              2  {'A_literal_tag_leak': 2}
+128:  TRR304_2_0.html              1  {'A_literal_tag_leak': 1}
+129:  TRR115_1_0.html              1  {'A_literal_tag_leak': 1}
+[14:41:47] skeleton state (--json) + delta vs r498
+  rc=0
+OLD pairs 2491  SCAFFOLD 55.4469%  RAW 39.419%  >=50 1591  >=75 277  >=90 26
+NEW pairs 2491  SCAFFOLD 55.4469%  RAW 39.419%  >=50 1591  >=75 277  >=90 26
+delta SCAFFOLD +0.0000pp  RAW +0.000pp  >=50 +0  >=75 +0  >=90 +0
+movers 0 (up 0 / down 0), pp-sum +0.0
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+[14:43:09] gatecheck: cs bc FIRST (never trust a cached row), then skeleton defect
+  rc=1
+FULL-REGEN GATE VERDICT — live full corpus vs committed gate_baseline.json (round 498, build 260620.61)
+  skeleton SCAFFOLD mean %                  55.41      55.37     -0.04  REGRESSED
+  skeleton pages >=50%                       1591       1585        -6  REGRESSED
+  skeleton pages >=75%                        277        277         0  HELD
+  compare_structure exact chain             16745      16745         0  HELD
+  compare_structure EXTRA container           198        198         0  HELD
+  compare_structure missing container         888        888         0  HELD
+  body_compare ANY breakdown                  238        232        -6  IMPROVED
+  rc=0
+[gatecheck] running skeleton (full corpus)…
+[gatecheck] running defect (full corpus)…
+FULL-REGEN GATE VERDICT — live full corpus vs committed gate_baseline.json (round 498, build 260620.61)
+  skeleton SCAFFOLD mean %                  55.41      55.45     +0.04  IMPROVED
+  skeleton pages >=50%                       1591       1591         0  HELD
+  skeleton pages >=75%                        277        277         0  HELD
+  compare_structure exact chain             16745      16745         0  HELD
+  compare_structure EXTRA container           198        198         0  HELD
+  compare_structure missing container         888        888         0  HELD
+  body_compare ANY breakdown                  238        232        -6  IMPROVED
+[14:45:56] ship ledger: record-full (the backstop at what would have been scoped #8)
+[ledger] recorded FULL ship (round 498); scoped-since counter reset to 0.
+[ledger] last full ship: round 498 (2026-09-25T02:45:56Z); scoped ships since: 0 (cadence 8, hard 16)
+  OK — a full-ship backstop is not yet due (8 scoped ship(s) of headroom).
+[14:45:56] fast-loop baseline re-snapshot
+  rc=0
+  literal-[tag] leak (pages)                   42
+  (context: sk_pages=2491  cs_matched=19519  body_pages=2633  df_total=2633  df_clean=2591)
+[14:48:34] content manifest snapshot
+  rc=0
+[content-manifest] wrote 2679 pages / 543 modules -> /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_content_manifest.txt
+[14:48:43] selftests
+  rc=0  PASS/GREEN lines: 50  FAIL lines: 0
+[14:49:55] feature index
+  rc=0
+SELFTEST build_feature_index: GREEN
+[14:50:07] DIFF MINER (§1d — after every regeneration)
+  miner rc=0
+pairs 2491 / modules 530 / parse errors 0 / diff lines 274946 / classes 9379 (CANDIDATE 195, below floor 8886) in 82.4 s
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_diff_miner.json
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/DIFF_QUEUE.md
+[14:51:34] POSTSHIP_DONE

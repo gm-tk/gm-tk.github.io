@@ -1166,6 +1166,7 @@ next rounds.
 
 - **LAST FULL (24 Sept 2026, session 40 Round 12 — no engine change):** the ledger backstop regenerated all 545 with the r452 engine — 542 / 542 modules byte-identical, every gate EXACT; ledger scoped #0.
 - **FULL backstop** at `260620.53` (session 45 Round 10, 25 Sept): all 545 modules regenerated, **0 pages differ** from the shipped manifest; every gate HELD; ledger reset (LAST FULL = r490).
+- **FULL backstop** at `260620.61` (session 46 Round 10, 25 Sept): all 545 modules regenerated, **0 pages differ** from the shipped manifest; every gate HELD; ledger reset (LAST FULL = r498); `gate_baseline.json` skeleton mean 55.45 / median 56.5, body ANY 232 re-based.
 - **Build:** `260620.61` (round 498 — **the hover definition's red first letter**; `HOVERTAILHEAD_OFF`; scoped #8 since the r490 FULL — the FULL backstop DUE; 16 pages; skeleton 55.4469 % @ 2491, 0 movers).
 - **Build:** `260620.60` (round 497 — **the XDLS choice board's last declined pages**; `CDSCRAPREL2_OFF`; scoped #7 since the r490 FULL; 3 pages; skeleton 55.4469 % @ 2491, +0.0319pp, ≥50 +3).
 - **Build:** `260620.59` (round 496 — **the XDLS choice board's stray marker**; `CDSCRAPREL_OFF`; scoped #6 since the r490 FULL; 1 page; skeleton 55.4150 % @ 2491, +0.0098pp, ≥50 +1).

@@ -1,0 +1,13 @@
+[14:30:38] full regeneration: 42 batches, 4 parallel workers
+[14:36:52] REGEN_DONE
+42
+all rc 0
+[14:36:52] stale check
+newest OUTPUT-affecting source: 2026-09-25 14:14:33  (Config.js excluded — UI-only; data/ scoped to the 19 files the engine loads)
+stale modules: 0   OK — every output is fresh.
+[14:36:55] content manifest: fresh (affected = _affected_r498.txt) / changed
+[content-manifest] content-hash 0-stale vs _content_manifest.txt
+  affected set: 16 module(s) (must be freshly regenerated)
+  unaffected  : 527 module(s) (must be byte-identical to the manifest; mtime IGNORED)
+  OK — 0 truly stale. 16 affected regenerated; the untouched corpus is byte-identical to the manifest (mtime false-alarm defeated).
+[14:37:15] FULLSHIP_DONE

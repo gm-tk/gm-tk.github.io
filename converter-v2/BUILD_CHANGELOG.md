@@ -1,5 +1,12 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (session 46 Round 10, build 260620.61 — NO engine change) — THE LEDGER'S FULL-SHIP BACKSTOP: the whole corpus regenerated with the r498 engine is byte-identical to the shipped manifest (0 pages differ); two stale baseline values re-based
+
+- **Why:** eight scoped ships since the r490 FULL (r491–r498 — the cadence 8 reached at r498); a scoped ship proves only its affected set + a 12-module sample, the backstop bounds any accumulated under-scoping.
+- **Run** (`outputs/_s46_full_regen.sh` — `_batch_plan.py`'s plan, 42 batches, 4 parallel workers under WSL, 14:30 → 14:37): all rc 0; `_stalecheck.sh` 0 stale; **`_content_manifest.py changed`: IDENTICAL — 0 pages differ**.
+- **Gates on the fully fresh corpus** (`outputs/_s46_full_postship.sh`): `run_all_gates.sh` rc 0, every verifier RESULT ✓; skeleton **55.4469 % @ 2491** (median 56.5 %), ≥50 1591, ≥75 277, ≥90 26, RAW 39.419 %, 0 movers vs r498; cs 16745 / 198 / 888; body ANY 232; clean 2591 / 2633; leak 52 / 42; selftests 50 / 0; the miner 195 CANDIDATE. Ledger `record-full` (LAST FULL = r498, scoped counter 0).
+- **Re-based in `gate_baseline.json`** (the `_gatecheck.py` verdict read them as live-vs-baseline IMPROVED — stale, not a change): `skeleton.mean_scaffold_pct` 55.41 → 55.45 (the r495–r498 finalises set `pages_ge_50` / `raw_mean_pct` but not the mean) and `median_scaffold_pct` 56.3 → 56.5; `body_compare.any_breakdown` 238 → 232 (r497's −3 and earlier rounds' drops never written back).
+
 ## 2026-09-25 (round 498, build 260620.61) — THE HOVER DEFINITION'S RED FIRST LETTER: a colon hover marker whose red run carries the definition's first letter(s) keeps them, and a `]` typed black ends the definition (15 → 6 cut tooltips; 16 pages / 16 modules)
 
 ### 1. WHAT CHANGED
