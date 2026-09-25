@@ -13701,6 +13701,30 @@ class InteractiveBuilder {
 		const optText = (s) => stripped(String(s ?? "").replace(reList, ""));
 		const words = (s) => stripped(s).split(/\s+/).filter(Boolean).length;
 
+		// ROUND 507 (Chris's D15-19, Option B; data interactive_builders.multiChoiceQuiz.yellow_ticks; env MCQYELLOW_OFF): the
+		// writer's YELLOW highlight — the r309 `block.marks` side-channel, the parser's ✅ — marks the correct option even
+		// unannounced, ONLY when (a) every question has exactly one ticked OPTION (options counted, never runs), (b) the bundle is
+		// not the writer's D2L quiz (`[Button] Go to quiz` right above the opener — TEFUN01 / 03 / 04, ENGR202), (c) the writer
+		// never says "no correct answers" (OSAI101). A bundle with the writer's own [correct] marks keeps the r305 reading;
+		// green is never trusted. An answer is never invented.
+		const yt = tpl.yellow_ticks;
+		const ytOn = !!yt && yt.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[yt.env || "MCQYELLOW_OFF"]);
+		const ytCols = yt?.colours ?? ["yellow"];
+		const TICK = "✅";
+		const ticked = (m, text) => {
+			const mk = ytOn ? (m?.block?.marks ?? []).filter((x) => x && x.kind === "hl" && ytCols.includes(x.color)) : [];
+			return mk.length ? Utils.MarkAnswers(String(text ?? ""), mk, TICK, m?.block?.text ?? null, true) : String(text ?? "");
+		};
+		// a highlighted ANSWER-KEY line ("✅Correct Answer: B" — ARFUN04, whose option letters run b–e while its gold reads the key
+		// as the 2nd option) is never an option and never a tick: with it set aside the question has no ticked option and guard
+		// (a) declines — the key's letter is not guessed
+		const reKey = ytOn && yt.answer_key_line_pattern ? new RegExp(yt.answer_key_line_pattern, "i") : null;
+		const tickLine = (ln) => {
+			const t = ln.split(TICK).join("");
+			if (reKey && reKey.test(stripped(t))) return { k: "key", t };
+			return ln.includes(TICK) ? { k: "line", t, tick: true } : { k: "line", t: ln };
+		};
+
 		/* --- the member stream, flattened to ordered STEPS ---------------- */
 		const steps = [];
 		let seenOpener = false;
@@ -13708,8 +13732,8 @@ class InteractiveBuilder {
 			if (!m) continue;
 			if (m.type === "table" || m.type === "nested") return null;
 			if (m.type === "black") {
-				for (const ln of String(m.text ?? "").split(/\n+/))
-					if (stripped(ln)) steps.push({ k: "line", t: ln });
+				for (const ln of ticked(m, m.text).split(/\n+/))
+					if (stripped(ln.split(TICK).join(""))) steps.push(tickLine(ln));
 				continue;
 			}
 			const p = m.parse?.primary;
@@ -13733,8 +13757,8 @@ class InteractiveBuilder {
 			// CONTINUES the writer's sentence, so the bracket is dropped and the tail kept.
 			if (tag && (tpl.skip_tags ?? []).includes(tag) && !reCorrect.test(raw) && !reIncorrect.test(raw)) {
 				if (stripped(raw)) notes.push(raw);
-				for (const ln of String(m.blackAfter ?? "").split(/\n+/))
-					if (stripped(ln)) steps.push({ k: "line", t: ln });
+				for (const ln of ticked(m, m.blackAfter).split(/\n+/))
+					if (stripped(ln.split(TICK).join(""))) steps.push(tickLine(ln));
 				continue;
 			}
 			if (qTags.includes(tag)) {
@@ -13752,10 +13776,17 @@ class InteractiveBuilder {
 				if (/^\[[^\]]*\]$/.test(stripped(raw))) notes.push(raw);
 				else steps.push({ k: "line", t: raw });
 			}
-			for (const ln of String(m.blackAfter ?? "").split(/\n+/))
-				if (stripped(ln)) steps.push({ k: "line", t: ln });
+			for (const ln of ticked(m, m.blackAfter).split(/\n+/))
+				if (stripped(ln.split(TICK).join(""))) steps.push(tickLine(ln));
 		}
-		if (!steps.some((s) => s.k === "mark")) return null;       // an answer is never invented
+		// ROUND 507: the yellow ticks are the answer source only where the writer typed no [correct] / [incorrect] mark of their own
+		const tickMode = ytOn && !steps.some((s) => s.k === "mark" || s.k === "unmark") && steps.some((s) => s.tick);
+		if (tickMode) {
+			const said = [bundle?.prevItemText ?? "", ...(bundle?.memberItems ?? []).map((m) => `${m?.text ?? ""} ${m?.blackAfter ?? ""}`)].join(" ");
+			if (yt.no_answers_pattern && new RegExp(yt.no_answers_pattern, "i").test(said)) return null;                       // guard (c)
+			if (yt.d2l_button_pattern && new RegExp(yt.d2l_button_pattern, "i").test(String(bundle?.prevItemText ?? ""))) return null;   // guard (b)
+		}
+		if (!steps.some((s) => s.k === "mark") && !tickMode) return null;       // an answer is never invented
 
 		/* --- questions ---------------------------------------------------- */
 		const tagged = steps.some((s) => s.k === "q");
@@ -13771,6 +13802,7 @@ class InteractiveBuilder {
 				if (s.k === "mark") last.correct = true;
 				continue;
 			}
+			if (s.k === "key" && tickMode) continue;   // ROUND 507 — the writer's answer-key line is set aside (guard (a) then decides)
 			const txt = optText(s.t);
 			if (!txt) continue;
 			// with no [Question N] tags the writer's question line is the one ending in "?"
@@ -13783,9 +13815,11 @@ class InteractiveBuilder {
 				cur.text = (cur.text ? cur.text + " " : "") + txt;
 				continue;
 			}
-			cur.opts.push({ text: txt, correct: false });
+			cur.opts.push({ text: txt, correct: !!(tickMode && s.tick) });
 		}
 		if (qs.length < (tpl.min_questions ?? 1)) return null;
+		// ROUND 507 guard (a): with the yellow ticks as the answer source, EVERY question has exactly one ticked option
+		if (tickMode && qs.some((q) => q.opts.filter((o) => o.correct).length !== 1)) return null;
 
 		/* --- the guards --------------------------------------------------- */
 		// A bare URL is an ASSET the writer is pointing at, never question or option TEXT

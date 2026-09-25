@@ -739,6 +739,14 @@ class InteractiveScanner {
 				positionContext: lastContext,
 				startIndex: i, endIndex: i + 1,
 			};
+			// ROUND 507 (D15-19): the nearest non-blank item ABOVE the opener — the multiChoiceQuiz builder reads it for its
+			// D2L-quiz guard (TEFUN01: `[Button] Go to quiz` right above `[Quiz]` — those questions are the D2L quiz's)
+			{
+				let k = i - 1;
+				while (k >= 0 && items[k] && items[k].type === "black" && !String(items[k].text || "").trim()) k--;
+				const pv = k >= 0 ? items[k] : null;
+				bundle.prevItemText = pv ? `${pv.text || ""} ${pv.blackAfter || ""}` : "";
+			}
 			if (!bankEntry) {
 				bundle.redFlags.push(`Widget type "${type}" has no boundary-bank entry — heading-terminates default applied.`);
 			}

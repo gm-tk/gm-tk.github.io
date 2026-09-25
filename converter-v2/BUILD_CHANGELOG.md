@@ -1,5 +1,27 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 507, build 260620.70) — D15-19 THE YELLOW-✅ MULTIPLE-CHOICE QUIZ: the writer's yellow highlight builds the quiz without an announcement, under the three strict checks (4 quizzes / 19 questions on 4 modules — 17 carry exactly the gold's answer; TEFUN04's D2L quizzes and ARFUN04's answer-key form declined)
+
+### 1. WHAT CHANGED
+
+**The decision** (Chris, 25 Sept 2026, D15-19 — "19. Unannounced quiz answers: Option B (Trust yellow ✅ ticks, with strict checks) — as recommended"): widening D13-4 — a quiz may be built from the writer's YELLOW highlight (the parser's ✅) without an announcement, only where (a) exactly one OPTION per question is ticked (options counted, never highlighted runs), (b) the bundle is not the writer's D2L quiz, (c) the writer never says "no correct answers"; green is not trusted; one type per kickoff — multiChoiceQuiz first; judged on the widget's verifier against the gold's own answers.
+
+**Triangulated** (the D15 report): CEDW501 5B "The bubble" — WT `a. ✅A group of people you live with during lockdown.` (no announcement) → gold `CEDW501_5.0.html` `mcqOption value="correct"` on exactly that option → PageForge a hand-off box `⚙ INTERACTIVE (un-built) #34: multiChoiceQuiz`.
+
+**The fix** (`InteractiveBuilder.#multiChoiceQuiz`; data `interactive_builders.multiChoiceQuiz.yellow_ticks`; env `MCQYELLOW_OFF`; `InteractiveScanner` records `bundle.prevItemText`, the item just above the opener): the r309 `block.marks` side-channel's YELLOW highlights are put back into the member text with `Utils.MarkAnswers` (the r448 carry-through's own helper) and a ticked OPTION becomes `value="correct"` — only in a bundle with no `[correct]` / `[incorrect]` mark of the writer's own (those keep the r305 reading) and only when: (a) every question has exactly one ticked option; (b) the item above the opener is not a writer `[Button]` naming a quiz (`d2l_button_pattern` — `[Button] Go to quiz` TEFUN01 / 03, ENGR202 and `[Button] Quiz` TEFUN04, whose gold builds 0 multiChoiceQuiz: first tried with "go to quiz" only, TEFUN04 built 4 quizzes and was caught); (c) no "no correct answers" (`no_answers_pattern` — OSAI101). A highlighted ANSWER-KEY line (`✅Correct Answer: B` — ARFUN04, whose options are lettered b–e while its gold reads B as the 2nd option) is never an option or a tick: set aside, the question has no ticked option and guard (a) declines (first tried without it: ARFUN04 built a fifth option "Correct answer: b" as the answer — caught by the answer check).
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 0 pages changed**; ON **8 files / 4 modules** — CEDO502_3_0, CEDR501_4_0, CEDW501_5_0, MXEX302_1_0 (+ their interactives lists): **4 multiChoiceQuiz groups / 19 questions built, 4 hand-off boxes gone** (the pages' multiChoiceQuiz boxes 6 → 2). Regenerated = ON byte-for-byte; `scoped_ship.sh` PASS.
+- **Against the gold's own answers** (`_r507_answers.cjs`, every new question paired with the module's gold quizzes — `<p>` and `<li>` question forms): **17 / 19 = the gold's correct option**; 1 "differs" is a pairing artefact (the gold REPLACED the writer's "Which sport uses the term home run?" and the checker paired it with "slam dunk" → basketball; the built answer, Baseball, is the writer's), 1 the gold dropped (CEDR501 "What do both interviews have in common"). `_verify_mcq.cjs` on the 4: **defect 0 ✓**, SELFTEST GREEN (its own gold pairing reads only `<p class="mcqQuestionText">`, so it reports 16 "no gold" — a verifier follow-up).
+- The rest of the D15 report's ≈ 63: the D2L bundles (guard b), ARFUN04 (the key form), the other line bundles the r305 guards decline, and the 40 yellow TABLE bundles (the builder reads no table; many shapes — ENGR102 11 two-column, CEDO501 ≈ 12 options-across, CEDR501 6 single-cell … — each below the floor) — recorded.
+
+### 3. PROTECTED GATES
+
+- **A widget-build round** (§4: judged on its verifier; skeleton-blind — the widget is one WIDGET line): skeleton 55.5434 % @ 2486 EXACT, RAW 39.469 → 39.475 %; cs / body / clean / leak EXACT; tags 9557 / 9557; every verifier ✓, every COUNT held (`_r507_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 507`; `--gate-baseline-check` PASS. Plateau: neither (a widget build).
+
+**Ledger:** scoped #2 since the r505 FULL · data `multiChoiceQuiz.yellow_ticks` · env `MCQYELLOW_OFF` · code `InteractiveBuilder.#multiChoiceQuiz`, `InteractiveScanner` (`prevItemText`) · tools `_r507_answers.cjs`, `_r507_finalise.py` · session 49 Round 8. Next D15-19 type (a later kickoff): dropDown.
+
 ## 2026-09-25 (round 506, build 260620.69) — D15-18 PART 2: THE LOST RIGHT-HAND BOXES — a box whose content the writer typed on the following lines under their own tags gets that content, in the side column (15 pages / 8 modules; XGF9001's nine `[Alert RHS] [H3]` boxes restored; the "Empty [alert]" flags on those pages 12 → 4)
 
 ### 1. WHAT CHANGED

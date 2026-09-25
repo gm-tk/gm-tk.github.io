@@ -1,0 +1,257 @@
+🟢 [ConventionResolver] HTML conventions from group ConnectED|NCEA: overview menu tabs, lesson menu flat.
+🟢 [PageSplitter] [end page] before [MODULE INTRODUCTION] disregarded — the introduction stays on the overview page (AR-1).
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 6.0 ("SEARCH SMARTER – REFLECTING ON YOUR RESEARCH (US7121)").
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [MenuBuilder] Menu section "Aromatawai | Assessment for Learning" promoted to its own "Standards" nav tab (menu.extra_tabs registry).
+🟢 [InteractiveBuilder] Built flipCard #2 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 1.1: [activity] auto-closed before the next activity.
+🟢 [InteractiveBuilder] Built clickDrop #7 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: [end click drop] had no open container — ignored.
+🟢 [ContentConverter] Page 2.0: [end click drop] had no open container — ignored.
+🟢 [InteractiveBuilder] Built clickDrop #9 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: [end click drop] had no open container — ignored.
+🟢 [InteractiveBuilder] Built clickDrop #10 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: [end click drop] had no open container — ignored.
+🟢 [ContentConverter] Page 2.0: [end other] had no open container — ignored.
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [ContentConverter] Page 3.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end tabs] had no open container — ignored.
+🟢 [InteractiveBuilder] Built flipCard #12 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 3.0: [end accordion] had no open container — ignored.
+🟢 [InteractiveBuilder] Built accordion #14 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 3.0: [end accordion] had no open container — ignored.
+🟢 [InteractiveBuilder] Built accordion #15 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 3.0: [end accordion] had no open container — ignored.
+🟢 [InteractiveBuilder] Built accordion #16 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 3.0: [end accordion] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end tab n] had no open container — ignored.
+🟢 [ContentConverter] Page 3.0: [end tabs] had no open container — ignored.
+🟢 [InteractiveBuilder] Built multiChoiceQuiz #19 from captured data (no placeholder needed).
+🟢 [InteractiveScanner] Activity 4A: additional widget [typing quiz] absorbed (unclassified + typing).
+🟢 [InteractiveBuilder] Built speechBubble #20 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 4.0: the lead paragraph after [ [Tick box activity] ] renders free inside the box (lead_free_after_tag).
+🟢 [ContentConverter] Page 4.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 4.0: activity number normalised (page_number_normalise): 4B → 4C.
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] Activity 5B: additional widget [typing quiz] absorbed (typing + typing).
+🟢 [InteractiveScanner] Activity 5B: additional widget [typing quiz] absorbed (typing + typing).
+🟢 [InteractiveBuilder] Built flipCard #24 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 5.0: [end carousel] had no open container — ignored.
+🟢 [ContentConverter] Page 6.0: [end other] had no open container — ignored.
+🟢 [InteractiveScanner] Page 7.0: 1 id-carrying heading(s) re-tagged as [Activity N] openers (opener_rule.id_heading_opener).
+🟢 [InteractiveBuilder] Built carousel #29 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 7.0: activity box closed after its upload button — the button is the box's last child (round 376).
+🟢 [InteractiveScanner] selectionBox: additional widget [checklist] absorbed (selectionBox + selectionBox).
+🟢 [InteractiveScanner] selectionBox: additional widget [checklist] absorbed (selectionBox + selectionBox).
+🟢 [InteractiveScanner] selectionBox: additional widget [checklist] absorbed (selectionBox + selectionBox).
+🟢 [InteractiveScanner] selectionBox: additional widget [checklist] absorbed (selectionBox + selectionBox).
+🟢 [InteractiveScanner] selectionBox: additional widget [checklist] absorbed (selectionBox + selectionBox).
+🟢 [InteractiveScanner] selectionBox: additional widget [checklist] absorbed (selectionBox + selectionBox).
+🟢 [InteractiveScanner] selectionBox: additional widget [checklist] absorbed (selectionBox + selectionBox).
+🟢 [InteractiveScanner] selectionBox: additional widget [checklist] absorbed (selectionBox + selectionBox).
+🟢 [PageAssembler] [TITLE BAR] held only "Āu whiringa" (no English) — using the front-matter Course "Āu Whiringa – Making More Decisions" as the English title; Te Reo kept as the second title.
+CEDO502 CEDO502_3_0.html: 3 question(s)
+🟢 [ConventionResolver] HTML conventions from group ConnectED|NCEA: overview menu tabs, lesson menu flat.
+🟢 [PageSplitter] [end page] before [MODULE INTRODUCTION] disregarded — the introduction stays on the overview page (AR-1).
+🟢 [PageSplitter] Implicit page break: content continues after [end page] without a [LESSON] tag — opened page 2.0.
+🟢 [PageSplitter] "[the instant standard assessment task for this standard requ" mentions page inside a writer instruction — not a page boundary (lesson_boundary_guard).
+🟢 [PageSplitter] Content after the final [end page] (2 blocks) is writer-form boilerplate — not emitted (AR-5).
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [MenuBuilder] Menu section "Aromatawai | Assessment for Learning" promoted to its own "Standards" nav tab (menu.extra_tabs registry).
+🟢 [InteractiveBuilder] Built flipCard #1 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built carousel #3 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built carousel #4 from captured data (no placeholder needed).
+🟢 [InteractiveScanner] speechBubble: additional widget [speech bubble] absorbed (speechBubble + speechBubble).
+🟢 [InteractiveScanner] speechBubble: additional widget [speech bubble] absorbed (speechBubble + speechBubble).
+🟢 [InteractiveScanner] speechBubble: additional widget [speech bubble] absorbed (speechBubble + speechBubble).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveBuilder] Built flipCard #5 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built flipCard #6 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built speechBubble #8 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built accordion #9 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 3.0: [end accordion] had no open container — ignored.
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveBuilder] Built carousel #14 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built multiChoiceQuiz #16 from captured data (no placeholder needed).
+🟢 [InteractiveScanner] Activity 4B: additional widget [typing quiz] absorbed (typing + typing).
+🟢 [InteractiveBuilder] Built speechBubble #22 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built carousel #27 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 5.0: [activity] auto-closed before the next h2.
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveScanner] accordion: additional widget [accordion] absorbed (accordion + accordion).
+🟢 [InteractiveBuilder] Built carousel #29 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built accordion #30 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 6.0: [end other] had no open container — ignored.
+🟢 [InteractiveBuilder] Built dragAndDrop #31 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built speechBubble #32 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 8.0: [activity] auto-closed before the next alert.
+🟢 [ContentConverter] Page 8.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 8.0: activity box kept open for the prose after its data table (round 378).
+🟢 [ContentConverter] Page 8.0: [activity] auto-closed before the next activity.
+🟢 [AcksBuilder] Media item 3 ("URL") is a lesson link — no acknowledgement (scope rule).
+🟢 [AcksBuilder] Media item 4 ("URL") is a lesson link — no acknowledgement (scope rule).
+🟢 [AcksBuilder] Media item 6 ("External Link") is a lesson link — no acknowledgement (scope rule).
+🟢 [AcksBuilder] Media item 7 ("External Link") is a lesson link — no acknowledgement (scope rule).
+🟢 [SkeletonBuilder] footer_links "final" value "—" is not a footer pattern (the registry's no-evidence marker) — the KB's final-page form "prev+home" applied (footer.kb_position_defaults).
+CEDR501 CEDR501_4_0.html: 3 question(s)
+🟢 [ConventionResolver] HTML conventions from group ConnectED|NCEA: overview menu tabs, lesson menu flat.
+🟢 [PageSplitter] [end page] before [MODULE INTRODUCTION] disregarded — the introduction stays on the overview page (AR-1).
+🟢 [PageSplitter] Content after the final [end page] (4 blocks) is writer-form boilerplate — not emitted (AR-5).
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [MenuBuilder] Menu section "Aromatawai | Assessment for Learning" promoted to its own "Standards" nav tab (menu.extra_tabs registry).
+🟢 [InteractiveScanner] Activity 1A: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveBuilder] Built accordion #2 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built carousel #5 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 1.0: [end carousel] had no open container — ignored.
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveBuilder] Built flipCard #6 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built carousel #7 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: [end carousel] had no open container — ignored.
+🟢 [InteractiveBuilder] Built carousel #8 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.1: the lesson's simplified menu inherited from page 2.0 — a continuation page belongs to the same lesson (KB 01B; menu.lesson_continuation_inherits).
+🟢 [ContentConverter] Page 2.1: [end click drop] had no open container — ignored.
+🟢 [ContentConverter] Page 2.1: [end accordion] had no open container — ignored.
+🟢 [ContentConverter] Page 2.1: [end accordion] had no open container — ignored.
+🟢 [InteractiveScanner] Activity 3D: additional widget [dropdown] absorbed (unclassified + dropDown).
+🟢 [InteractiveScanner] Activity 3D: additional widget [dropdown] absorbed (unclassified + dropDown).
+🟢 [InteractiveScanner] Activity 3D: additional widget [dropdown] absorbed (unclassified + dropDown).
+🟢 [InteractiveScanner] Activity 3D: additional widget [dropdown] absorbed (unclassified + dropDown).
+🟢 [InteractiveScanner] Activity 3D: additional widget [dropdown] absorbed (unclassified + dropDown).
+🟢 [ContentConverter] Page 3.0: [end other] had no open container — ignored.
+🟢 [InteractiveBuilder] Built flipCard #21 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 3.0: [activity] auto-closed before the next activity.
+🟢 [InteractiveBuilder] Built flipCard #23 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 3.0: [activity] auto-closed before the next activity.
+🟢 [InteractiveBuilder] Built flipCard #26 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 3.0: activity numbers normalised (page_number_normalise): 3A → 3B, 3B → 3C, 3C → 3E, 101A → 3F, 3D → 3G, 3E → 3H, 3F → 3I.
+🟢 [InteractiveScanner] Activity 3G: additional widget [drag and drop] absorbed (unclassified + dragAndDrop).
+🟢 [ContentConverter] Page 3.1: the lesson's simplified menu inherited from page 3.0 — a continuation page belongs to the same lesson (KB 01B; menu.lesson_continuation_inherits).
+🟢 [ContentConverter] Page 3.1: activity box kept open for the prose after its data table (round 378).
+🟢 [ContentConverter] Page 3.1: activity box closed after its upload button — the button is the box's last child (round 376).
+🟢 [InteractiveBuilder] Built flipCard #32 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built multiChoiceQuiz #34 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built dropDown #36 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next important.
+🟢 [ContentConverter] Page 6.0: activity box kept open for the prose after its data table (round 378).
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next activity.
+🟢 [ContentConverter] Page 6.0: activity box kept open for the prose after its data table (round 378).
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next important.
+🟢 [ContentConverter] Page 7.1: the lesson's simplified menu inherited from page 7.0 — a continuation page belongs to the same lesson (KB 01B; menu.lesson_continuation_inherits).
+🟢 [ContentConverter] Page 7.2: the lesson's simplified menu inherited from page 7.0 — a continuation page belongs to the same lesson (KB 01B; menu.lesson_continuation_inherits).
+🟢 [InteractiveBuilder] Built flipCard #40 from captured data (no placeholder needed).
+🟢 [AcksBuilder] Media item 3 placed in lesson 0.0 by neighbour interpolation — verify its group.
+🟢 [AcksBuilder] Media item 4 placed in lesson 0.0 by neighbour interpolation — verify its group.
+CEDW501 CEDW501_5_0.html: 3 question(s)
+🟢 [DocxExtractor] Media-list boilerplate dropped: 3 blocks before the media table — the template's own instructions, not content.
+🟢 [ConventionResolver] HTML conventions from group 1-10 Mathematics|7-8: overview menu tabs, lesson menu flat.
+🟢 [PageSplitter] [end page] before [MODULE INTRODUCTION] disregarded — the introduction stays on the overview page (AR-1).
+🟢 [PageSplitter] [Lesson 1] repeats the open lesson's number with no body content between — merged, no empty page emitted (lesson_boundary_guard).
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [ContentConverter] Page 1.0: bare [activity] re-emphasis merged into the open numbered activity (no new box).
+🟢 [ContentConverter] Page 1.0: [activity] auto-closed before the next important.
+🟢 [ContentConverter] [important] right-hand box → the activity sidebar (alertActivity) side column paired with the preceding activity row (positional_side_alert).
+🟢 [InteractiveBuilder] Built multiChoiceQuiz #2 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 1.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 1.0: activity number normalised (page_number_normalise): 1B → 1C.
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveScanner] clickDrop: additional widget [click drop] absorbed (clickDrop + clickDrop).
+🟢 [InteractiveBuilder] Built accordion #3 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built accordion #4 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built accordion #5 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: [activity] auto-closed before the next activity.
+🟢 [InteractiveBuilder] Built clickDrop #6 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 2.0: [end activity] had no open container — ignored.
+🟢 [InteractiveBuilder] Built accordion #7 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built accordion #8 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 4.0: bare [activity] re-emphasis merged into the open numbered activity (no new box).
+🟢 [ContentConverter] Page 4.0: activity box kept open for the prose after its data table (round 378).
+🟢 [ContentConverter] Page 5.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 5.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 5.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 5.0: [end activity] had no open container — ignored.
+🟢 [InteractiveScanner] carousel: additional widget [carousel] absorbed (carousel + carousel).
+🟢 [InteractiveBuilder] Built carousel #14 from captured data (no placeholder needed).
+🟢 [ContentConverter] [important] right-hand box → the activity sidebar (alertActivity) side column paired with the preceding activity row (positional_side_alert).
+🟢 [ContentConverter] Page 6.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 6.0: [activity] auto-closed before the next h3.
+🟢 [ContentConverter] Page 6.0: [end activity] had no open container — ignored.
+🟢 [ContentConverter] Page 7.0: bare [activity] re-emphasis merged into the open numbered activity (no new box).
+🟢 [ContentConverter] Page 7.0: bare [activity] re-emphasis merged into the open numbered activity (no new box).
+🟢 [ActivitiesBuilder] 2 activity title heading(s) set to h3 (title_heading_level).
+MXEX302 MXEX302_1_0.html: 10 question(s)
+
+TOTAL 19 question(s): answer exact 3, copy-edit 0, divergence 0, no gold 16 | DEFECTS 0
+RESULT: defect 0 ✓
+🟢 [DocxExtractor] Media-list boilerplate dropped: 3 blocks before the media table — the template's own instructions, not content.
+🟢 [ConventionResolver] HTML conventions from group ConnectED|4-6: overview menu two_col_li, lesson menu two_col_li.
+🟢 [InteractiveScanner] Page 0.0: 9 id-carrying heading(s) re-tagged as [Activity N] openers (opener_rule.id_heading_opener).
+🟢 [InteractiveScanner] Activity 1A: additional widget [drag and drop] absorbed (dragAndDrop + dragAndDrop).
+🟢 [InteractiveScanner] Activity 1A: additional widget [drag and drop] absorbed (dragAndDrop + dragAndDrop).
+🟢 [InteractiveScanner] Activity 1A: additional widget [drag and drop] absorbed (dragAndDrop + dragAndDrop).
+🟢 [InteractiveBuilder] Built carousel #2 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 0.0: [activity] auto-closed before the next heading.
+🟢 [InteractiveBuilder] Built multiChoiceQuiz #5 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 0.0: [end mcq] had no open container — ignored.
+🟢 [ContentConverter] Page 0.0: [end other] had no open container — ignored.
+🟢 [InteractiveBuilder] Built flipCard #7 from captured data (no placeholder needed).
+🟢 [InteractiveBuilder] Built carousel #8 from captured data (no placeholder needed).
+🟢 [ContentConverter] Page 0.0: [activity] auto-closed before the next activity.
+🟢 [MenuBuilder] Menu heading "Tirohanga Whānui | Overview" is the section label — consumed (the menu scaffolding names it).
+🟢 [PanelsBuilder] 8 panel title heading(s) set to h2 (first_heading_level).
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=JxOMEUYKzvs
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=b9QusNEqYQQ
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=1ph_Ko4AalI
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=30V9_BUPt50
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=b25g4nZTHvM&t=1s
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=GRxofEmo3HA&t=2049s
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=h_xkDB9tNtc
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=T6pjGwkK2po
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=x5mHzwEOpp4
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=B8vRvN69esE
+🟠 [AcksBuilder] YouTube metadata unavailable for item  (stubbed) — possible dead link worth checking: https://www.youtube.com/watch?v=uFNWEKHHBFQ
+🟠 [AcksBuilder] 28 iStock titles could not be verified (no *istock-acks*.txt was supplied); each is marked ❗ and the acks block carries a designer note.
+🟠 [SkeletonBuilder] module_code value "—" has no module_code_value_map entry — element omitted; add the value to Emit_Templates.
+  ✓ LIVENESS: CEDO202 builds 4 question(s)
+  ✓ LIVENESS: the clean fixture reports defect 0
+  ✓ DETECTION: answer removed → 1 defect(s)
+  ✓ DETECTION: option emptied → 1 defect(s)
+  ✓ DETECTION: question emptied → 1 defect(s)
+  ✓ DETECTION: a writer bracket injected → 1 defect(s)
+SELFTEST GREEN
