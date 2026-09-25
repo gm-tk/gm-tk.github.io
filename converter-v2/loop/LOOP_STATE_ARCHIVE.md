@@ -4874,3 +4874,25 @@ before it 260620.52 (r488 the story-reference carousel shell — session 45 Roun
 ## STOPPED entry, session 45 (verbatim, s46 stop)
 
 ## >>> STOPPED 2026-09-25 08:45 NZST (session 45) on §4 BUDGET — the 12-round default reached (≈ 3 h 30 min; the 10 h cap not reached). **FOUR ENGINE ROUNDS SHIPPED + THE FULL BACKSTOP, every one committed:** r486 KB 01F the writer's quote is `p.quoteText` + `p.quoteAck`; r487 the unquoted named hover anchor (+70 definitions that were silently dropped); r488 the story-reference carousel shell (43 hand-off boxes → carousels, Still-a-box 320 → 277); r490 the lesson overview's WALT alert is menu content. **The FULL backstop** (Round 10): 545 modules, 0 pages differ. **Seven PICK passes** (R3 / R4 / R6 / R7 / R8 / R11 / R12 — one prototype saved as the ride-along patch `_r489_accbullet_declined.patch`). Skeleton **55.3463 → 55.3705 % @ 2491 (+0.0242pp)**, ≥50 1582 → 1585, ≥75 277, ≥90 26, RAW 39.231 → 39.285; cs exact 16691 → 16702, EXTRA 208 → 198, missing 872 → 878 (NAMED, r486); body / clean / leak EXACT; **60.4 % of achievable** (ceiling 91.7 %). Plateau 0 of 3. Needs Chris: #17–#19, #22, **#23 new** (the MX bare lesson menu). <<<
+
+## Per-round pointer headers, sessions 45 / 46 (verbatim, 25 Sept 2026 /loop-review condense)
+
+## Session 46 — Round 6 (no engine change) — a PICK pass: the leak mechanisms, the clickDrop refusals, the XDLS choice board — the record is in LOOP_STATE_ARCHIVE.md 'Session 46 — Round 6 PICK pass (no engine change) + what it found'.
+
+## Session 46 — Round 5 PICK (engine r495) — KB C5: THE LITERAL-TAG LEAK — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 46 — Round 5 PICK (engine r495) + what shipped'; the one-line summary is the s46-r5 Round-log line below.
+
+## Session 46 — Round 4 PICK (engine r494) — THE [BODY] AFTER A CAROUSEL'S SLIDE TABLE — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 46 — Round 4 PICK (engine r494) + what shipped'; the one-line summary is the s46-r4 Round-log line below.
+
+## Session 46 — Round 3 PICK (engine r493) — THE BLL CLOSING SECTION AFTER THE DROPBOX BUTTON — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 46 — Round 3 PICK (engine r493) + what shipped'; the one-line summary is the s46-r3 Round-log line below.
+
+## Session 46 — Round 2 PICK (engine r492) — THE ACCORDION PANEL AFTER A TABLE — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 46 — Round 2 PICK (engine r492) + what shipped'; the one-line summary is the s46-r2 Round-log line below.
+
+## Session 46 — Round 1 PICK (engine r491) — THE ACCORDION MARKER-CELL TABLE — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 46 — Round 1 PICK (engine r491) + what shipped'; the one-line summary is the s46-r1 Round-log line below.
+
+## Session 45 — Round 9 PICK (engine r490) — THE LESSON OVERVIEW'S WALT ALERT IS MENU CONTENT — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 45 — Round 9 PICK (engine r490) + what shipped'; the one-line summary is the s45-r9 Round-log line below.
+
+## Session 45 — Round 5 PICK (engine r488) — THE STORY-REFERENCE CAROUSEL SHELL — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 45 — Round 5 PICK (engine r488) + what shipped'; the one-line summary is the s45-r5 Round-log line below.
+
+## Session 45 — Round 2 PICK (engine r487) — THE UNQUOTED NAMED HOVER ANCHOR — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 45 — Round 2 PICK (engine r487) + what shipped'; the one-line summary is the s45-r2 Round-log line below.
+
+## Session 45 — Round 1 PICK (engine r486) — KB 01F THE WRITER'S QUOTE IS p.quoteText + p.quoteAck — SHIPPED; the PICK + what-shipped record is in LOOP_STATE_ARCHIVE.md 'Session 45 — Round 1 PICK (engine r486) + what shipped'; the one-line summary is the s45-r1 Round-log line below.
