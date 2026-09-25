@@ -1886,6 +1886,12 @@
 			"note": "ROUND 56 (Chris, OSAI201-01). A [glossary] interactive is a flat list of 'Term – Meaning' lines (en/em-dash or spaced hyphen separated). InteractiveBuilder.#glossary parses each captured black line via split_pattern (term = before the first dash, meaning = after) and builds the human's Term/Meaning table: <div class=\"glossary\"><h3 class=\"glossaryTitle\"><span>Glossary</span></h3> + <table class=\"table table-fixed search-table\"> with a 'Term'|'Meaning' header (tr.title-g) and one row per entry. The outer row>col-md-8 wrapper is supplied by the body emitter, so only the inner div.glossary (which carries the wavy-border CSS) is built here. Declines (placeholder) if fewer than min_rows dash lines are found. The boundary bank now terminates the glossary at the next heading so a following [H3] is not swallowed."
 		},
 		"hintSlider": {
+			"face_marker_strip": {
+				"enabled": true,
+				"env": "HINTFACEMARK_OFF",
+				"pattern": "^\\[\\s*hint\\s*-?\\s*slider(?:\\s+(?:\\d+|front|back|text|label|hint|answer|reveal)){0,3}\\s*\\]\\s*",
+				"_doc": "ROUND 495 (the autonomous loop's session 46 Round 5 — KB constraint 5, never render a [tag] as visible text). The table-form builder (#hintSliderTable) read each cell through #cellText, which strips the writer's red style but keeps the marker words, so a writer who typed the face marker at the head of each cell — `[Hintslider front] Start with a suitable greeting.` | `[Hintslider back] e.g., Guten Tag…` (GENO901-7.3, 16 faces) or `[hint slider 1] Employee` | `[hint slider text 1] The person who…` (PWY1009-1.1, 4) — shipped the marker as face text, 20 of the corpus's 75 literal-tag leaks. The gold's faces are the bare text (GENO901_0_7, PWY1009_1_0). A leading bracket matching pattern is removed from each face. Env HINTFACEMARK_OFF = the r494 faces."
+			},
 			"labelled_pairs": {
 				"enabled": true,
 				"min_rows": 1,
@@ -5567,6 +5573,14 @@
 		"black_leading_tag_strip": [
 			"body"
 		],
+		"black_leading_tag_strip_more": {
+			"enabled": true,
+			"env": "BLACKBODYTEXT_OFF",
+			"tags": [
+				"body text"
+			],
+			"_doc": "ROUND 495 (session 46 Round 5 — KB constraint 5): more tags for the r73 black-leading-tag strip, kept in their own key so they reverse on their own env — `body text`: HIS1002-7.0 `[Body Text] Governments did not…`, MXDI201-8.0 `[body text] In the next activity…`, MXS1004-8.0 `[Body text] Strength is the measure…` typed the writer's [body text] tag in BLACK (3 literal-tag leaks). Never legitimate content. Env BLACKBODYTEXT_OFF = the r494 strip; BLACKTAGSTRIP_OFF (r73) still reverts the whole strip."
+		},
 		"_black_leading_tag_strip_note": "Round 73 — structural tags a writer mis-typed in BLACK text (not the red [tag] style the detector reads) leak as literal content; #renderBlackText strips a leading one of these from each black line. 'body' is the safe, high-frequency case (OSBY201-02 '[body] A trusted adult…'; ~112 pages). Env BLACKTAGSTRIP_OFF reverts. Add a tag here only if it is NEVER legitimate body content.",
 		"drop_glyph_only_lines": {
 			"_doc": "ROUND 393 (the autonomous loop's session 26 Round 7 — the paired census outputs/_s26_r393_punct.py). A free-body line whose whole content is ONE punctuation glyph (a writer's stray `.` / `,`, a text-box bracket `[` / `]` left after an image, a broken equation's `+` `=` `–`, PNR102's `✔` ticks) shipped as `<p>.</p>`: Claude 170 on 69 pages / 64 modules; the gold ships the same glyph paragraph on NONE of them (dropped 170 / 170 = 1.00). In ListsAndRuns.renderBlackText's line filter, free-body text only (stitch true — the placeholder / built-widget dumps stay a faithful hand-off): a line that, with its `*` emphasis markers removed, is exactly one character that is not a letter, not a digit, not `_` and not in `keep`, is dropped before it can become a paragraph. `•` is kept for the bullet path's own empty-item rule. OFF = the r392 output.",

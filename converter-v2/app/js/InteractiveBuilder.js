@@ -1688,9 +1688,18 @@ class InteractiveBuilder {
 
 		// Map each [front, back] into the editable row template.
 		const inline = renderInline ?? ((s) => s); // safe default if not supplied
+		// ROUND 495 — KB constraint 5: the writer's OWN face marker typed at the head of a cell (`[Hintslider front]`,
+		// `[hint slider text 1]` — GENO901-7.3, PWY1009-1.1) is the widget's structure, not face text; #cellText strips
+		// only its red style, so the words shipped as a literal-tag leak on every face. The gold's faces are the bare
+		// text. Data hintSlider.face_marker_strip {pattern}; env HINTFACEMARK_OFF.
+		const fms = tpl.face_marker_strip;
+		const fmsRe = (fms && fms.enabled !== false && fms.pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[fms.env ?? "HINTFACEMARK_OFF"]))
+			? new RegExp(fms.pattern, "i") : null;
+		const face = (c) => { const t = this.#cellText(c); return fmsRe ? t.replace(fmsRe, "").trim() : t; };
 		const body = rows.map((r) => Utils.FillTemplate(tpl.row, {
-			front: inline(this.#cellText(r[0])),
-			back:  inline(this.#cellText(r[1])),
+			front: inline(face(r[0])),
+			back:  inline(face(r[1])),
 		}));
 
 		// open + every row + close → the finished widget.

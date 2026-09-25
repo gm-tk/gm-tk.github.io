@@ -357,7 +357,11 @@ class ListsAndRuns {
 		// content (e.g. a line literally starting with the text "[body] A trusted adult…").
 		// Strip a leading tag like this before rendering. Data flag:
 		// body_region.black_leading_tag_strip. Env toggle: BLACKTAGSTRIP_OFF.
-		const stripTags = cfg && (tpl.body_region?.black_leading_tag_strip ?? []);
+		// ROUND 495 — body_region.black_leading_tag_strip_more {tags, env BLACKBODYTEXT_OFF}: more tags on their own toggle.
+		const _more = tpl.body_region?.black_leading_tag_strip_more;
+		const stripTags = cfg && [...(tpl.body_region?.black_leading_tag_strip ?? []),
+			...((_more && _more.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[_more.env ?? "BLACKBODYTEXT_OFF"]))
+				? (_more.tags ?? []) : [])];
 		const blackTagRe = (stripTags && stripTags.length
 			&& !(typeof process !== "undefined" && process.env && process.env.BLACKTAGSTRIP_OFF))
 			? new RegExp(`^\\[(?:${stripTags.map((t) => String(t).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})\\]\\s*`, "i")

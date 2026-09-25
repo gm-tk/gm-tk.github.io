@@ -1,5 +1,29 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 495, build 260620.58) — KB CONSTRAINT 5, THE LITERAL-TAG LEAK: a built hint slider no longer prints the writer's own face marker (`[Hintslider front]`, `[hint slider text 1]`) on its faces, and a black-typed `[Body text]` is stripped like `[body]` — the leak gate 75 → 52 occurrences
+
+### 1. WHAT CHANGED
+
+**The PICK pass first** (session 46 Round 5): the gathering lane's remaining sub-shapes after r494 — the widget's first member swallowed (59 bundles: half a data table, half the lead sentence typed on the opener line across six types) and the unclassified box (56: r378's look-ahead keeps AGH's prose between two informational tables) — are each diffuse; recorded. The KB lane: row 5 (constraint 5 — never render a `[tag]` as visible text; every module; level-1 authority) is PARTIAL with the protected literal-tag leak gate at **75 occurrences / 46 pages**.
+
+**Measured** (`_s46_r5_leaks.py` — every leak the gate counts, through the gate's own `visible_text` + `LITERAL_TAG`): the writer's markers typed in BLACK or kept as text — **hint-slider face markers inside a BUILT slider** (GENO901_7_3 `[Hintslider front]` / `[Hintslider back]` on 16 faces; PWY1009_1_1_0 `[hint slider 1]` / `[hint slider text 1]` on 4): the table-form builder reads each cell through `#cellText`, which strips the red style but keeps the marker words, while the gold's faces are the bare text (GENO901_0_7, PWY1009_1_0); black `[Image …]` requests ≈ 20 (DTC1005 ×8 …); black `[H1]`–`[H5]` ≈ 20 (the gold h3 twice, p once where checked — mixed, recorded); **black `[Body text]` 3** (HIS1002-7.0, MXDI201-8.0, MXS1004-8.0 — the r73 black-leading-tag strip knows only `[body]`); others.
+
+**The fix:** (a) `InteractiveBuilder.#hintSliderTable` removes a leading bracket matching `interactive_builders.hintSlider.face_marker_strip.pattern` (`[hint slider …]` with up to three of the words front / back / text / label / hint / answer / reveal or a number) from each face (env `HINTFACEMARK_OFF`); (b) `ListsAndRuns.renderBlackText` reads `body_region.black_leading_tag_strip_more.tags` (`body text`) beside the r73 list (env `BLACKBODYTEXT_OFF`; the r73 `BLACKTAGSTRIP_OFF` still reverts the whole strip).
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF (both toggles) 0 pages changed**; ON **5 pages / 5 modules** (GENO901, PWY1009, ENFUN09, HIS1002, MXS1004). Regeneration + 12-module spot-check clean; **`scoped_ship.sh` PASS**.
+- `_verify_hintslider.cjs` GENO901 / PWY1009 / ENFUN09 (`_r495_verify_hintslider.log`): GENO901 28 / 28 rows, **unmatched 8 → 0** (exact 19 → 26); PWY1009 2 / 2, **unmatched 2 → 0**; ENFUN09's one unmatched row pre-existing (its `[hintslider]` line sits in free text — not this mechanism).
+
+### 3. PROTECTED GATES
+
+- **literal-[tag] leak 75 → 52 occurrences, 46 → 42 pages**; **structurally clean 2587 → 2591 / 2633 (98.25 → 98.40 %)**; compare_structure exact 16744 → 16745; EXTRA 198 / missing 888 / row-wrap 24; body ANY 236; skeleton **55.4051 % @ 2491 EXACT** (0 movers — a face's words and a line's leading tag are skeleton-blind); tags 9557 / 9557; every verifier RESULT ✓; selftests 50 green / 0 fail; the miner 194 CANDIDATE.
+- Plateau (§4): skeleton-blind by design (a KB-rule leak round): neither counts nor resets; **0 of 3**.
+
+**Recorded, not built:** the other leak mechanisms — black `[Image …]` requests with a URL or a description (≈ 20; DTC1005 ×8, HIS1005 ×2, ENGI102 ×2, SSFUN05, HIS1001, TRR102 / 106, ENGS404, MUS1004 ×2, ENFUN09), black `[H1]`–`[H5]` at a line's head (≈ 20; the gold's form mixed — h3 twice, p once where checked; a heading promotion needs its own census), `[Activity …]`, `[Answer: A]`, `[Rollover definition]`, `[Clickdrop 1 Image]`, `[carousel]`, `[drag and drop …]` singles.
+
+**Ledger:** scoped #5 since the r490 FULL · data `interactive_builders.hintSlider.face_marker_strip`, `body_region.black_leading_tag_strip_more` · env `HINTFACEMARK_OFF`, `BLACKBODYTEXT_OFF` · code `InteractiveBuilder.#hintSliderTable`, `ListsAndRuns.renderBlackText` · tools `_s46_r5_leaks.py`, `_r495_finalise.py` · session 46 Round 5.
+
 ## 2026-09-25 (round 494, build 260620.57) — THE [BODY] AFTER A CAROUSEL'S SLIDE TABLE: a carousel whose slides are a table no longer swallows the writer's next section — the [body] after the slide table ends the capture, and a carousel that owns its activity box keeps that box open for it (38 modules; 26 carousels newly built)
 
 ### 1. WHAT CHANGED

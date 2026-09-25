@@ -1847,7 +1847,8 @@ class Config {
 	// ROUND 492 (260620.55): THE ACCORDION PANEL AFTER A TABLE (session 46 Round 2) — the scanner's section break after a table-data widget's table does not fire on the [Body] / heading right after the writer's next numbered panel delimiter. Env ACCPANELBREAK_OFF.
 	// ROUND 493 (260620.56): THE BLL CLOSING SECTION AFTER THE DROPBOX BUTTON (session 46 Round 3) — in the BLL family a widget capture holding an upload-to-dropbox button ends at the following [body] / [image]. Env DROPBOXEND_OFF.
 	// ROUND 494 (260620.57): THE [BODY] AFTER A CAROUSEL'S SLIDE TABLE (session 46 Round 4) — the carousel's exemption from the body-after-table section break is lifted; an activity-owned carousel keeps its box open for the prose. Env CARBODYEND_OFF.
-	static AppVersion = "260620.57";
+	// ROUND 495 (260620.58): KB C5 THE LITERAL-TAG LEAK (session 46 Round 5) — a built hint slider strips the writer's own face marker from each face; a black [Body text] is stripped like [body]. Env HINTFACEMARK_OFF / BLACKBODYTEXT_OFF.
+	static AppVersion = "260620.58";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
