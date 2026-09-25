@@ -1,5 +1,21 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (session 50 Round 14, build 260620.81 — NO engine change) — THE LEDGER'S FULL-SHIP BACKSTOP: the whole corpus regenerated with the r520 engine is byte-identical to the shipped manifest (545 dirs / 543 modules / 2,673 pages; 0 pages differ)
+
+### 1. WHAT RAN
+
+The ledger's backstop (`_ship_ledger.py`: scoped #6 since the r513 FULL — r514, r515, r517, r518, r519, r520; taken at the session's close, two of the cadence's 8 left, after a PICK pass found no class at the floor on any lane) — no engine, data or registry change and no ride-along (LOOP §2). `outputs/_s50b_full_regen.sh`: `_batch_plan.py`'s 42 batches as `batch_convert.cjs` calls, 4 parallel workers under WSL — 6 min 19 s, every batch rc 0, `_stalecheck.sh` 0 stale.
+
+### 2. PROOF
+
+- **`_content_manifest.py fresh` (affected = none): all 543 modules BYTE-IDENTICAL to the shipped manifest** — every scoped ship since r513 was complete (none under-scoped). Identical bytes cannot move a metric.
+- `outputs/_s50b_full_postship.sh`: `run_all_gates.sh` — every verifier RESULT ✓, every COUNT held (dragdrop 21, typing 14 / 145, bingo 52, flipcard 61, math 323, menulabels 111), tags 9557 / 9557; skeleton `--json` vs the pre-backstop state: 0 movers, +0.0000pp; `_gatecheck.py cs bc` (its skeleton rows CACHED — LOOP §6) then `skeleton defect --commit --round 520`: every gate HELD; `--gate-baseline-check` PASS; the fast-loop baseline and the content manifest re-snapshotted; the 17 verifier selftests + the skeleton and feature-index selftests GREEN (50 PASS / GREEN lines, 0 FAIL); the feature index rebuilt; the DIFF MINER re-mined (195 CANDIDATE).
+- Ledger: `record-full --round 520 --build 260620.81` — LAST FULL = r520; scoped-since 0 (8 of headroom).
+
+### 3. PROTECTED GATES — EXACT
+
+Skeleton **55.7489 % @ 2486** (≥50 1612, ≥75 285, ≥90 26), RAW 39.594 %; cs 16769 / 204 / 886; body ANY 235; clean 2585 / 2627; leak 52 / 42 — all EXACT. Plateau: neither (a change-free backstop).
+
 ## 2026-09-26 (round 520, build 260620.81) — THE FIB FORM'S REMAINDER: three writer shapes r519 declined inside its own family now build — a red `<` / `>` answer (MXEO301 3F / 6A "Greater than or less than?"), a trailing `[button] Check answers` / `Answers` the KB button row covers (TWHK907, TWHA906), the prose the capture ran on into after the questions (rendered after the widget) — and the sentence's own full stop leaves the drag; 4 widgets / 3 modules, 34 drags, 31 the gold's own; dragAndDrop boxes 1019 → 1015
 
 ### 1. WHAT CHANGED
