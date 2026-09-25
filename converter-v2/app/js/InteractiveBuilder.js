@@ -12425,7 +12425,28 @@ class InteractiveBuilder {
 			if (hlRe.test(t)) hl = true;
 			if (grRe.test(t)) green = true;
 		}
-		return (hl || green) ? { hl, green } : null;
+		if (hl || green) return { hl, green };
+		// ROUND 511 (session 50 Round 2 — Chris's D15-19, Option B: 'Trust yellow ✅ ticks, with strict checks'; the dropDown
+		// kickoff after r507's multiChoiceQuiz). Unannounced, the writer's YELLOW highlight alone opens the mark path — never
+		// green — when (b) the item right above the opener is not the writer's D2L-quiz button and (c) the bundle never says
+		// "no correct answers"; (a) one marked option per question is every mark reading's own rule (#ddMarkAnswer → 0
+		// otherwise, and the bundle declines). A bundle with no yellow mark stays byte-identical. Data
+		// interactive_builders.dropDown.yellow_ticks; env DDYELLOW_OFF.
+		const yt = tpl?.yellow_ticks;
+		if (!yt || yt.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[yt.env || "DDYELLOW_OFF"])) return null;
+		const cols = yt.colours ?? ["yellow"];
+		const isY = (x) => x && x.kind === "hl" && cols.includes(x.color);
+		const members = bundle?.memberItems ?? [];
+		const anyYellow = members.some((m) => (m?.block?.marks ?? []).some(isY)
+			|| (m?.block?.cellMarks ?? []).some((row) => (row ?? []).some((cell) => (cell ?? []).some(isY))));
+		if (!anyYellow) return null;
+		if (yt.d2l_button_pattern && new RegExp(yt.d2l_button_pattern, "i").test(this.#cellText(bundle?.prevItemText ?? ""))) return null;   // (b)
+		if (yt.no_answers_pattern) {                                                                                                          // (c)
+			const said = [bundle?.prevItemText ?? "", ...members.map((m) => `${m?.text ?? ""} ${m?.blackAfter ?? ""}`)].join(" ");
+			if (new RegExp(yt.no_answers_pattern, "i").test(this.#cellText(said))) return null;
+		}
+		return { hl: true, green: false, colours: cols };
 	}
 
 	/** ROUND 309 — true when a member line IS the announcement (word-limited, so a
@@ -12447,6 +12468,7 @@ class InteractiveBuilder {
 		const out = [];
 		for (const mk of m?.block?.marks ?? []) {
 			if (mk.kind === "hl" && !kinds.hl) continue;
+			if (mk.kind === "hl" && kinds.colours && !kinds.colours.includes(mk.color)) continue;   // ROUND 511: unannounced = yellow only
 			if (mk.kind === "green" && !kinds.green) continue;
 			const t = String(mk.text ?? "").trim();
 			if (t) out.push(t);
@@ -12460,6 +12482,7 @@ class InteractiveBuilder {
 		const out = [];
 		for (const mk of block?.cellMarks?.[r]?.[c] ?? []) {
 			if (mk.kind === "hl" && !kinds.hl) continue;
+			if (mk.kind === "hl" && kinds.colours && !kinds.colours.includes(mk.color)) continue;   // ROUND 511: unannounced = yellow only
 			if (mk.kind === "green" && !kinds.green) continue;
 			const t = String(mk.text ?? "").trim();
 			if (t) out.push(t);
@@ -12716,7 +12739,7 @@ class InteractiveBuilder {
 	 * marks occupy. A ZERO-WIDTH range is an explicit [correct] insertion point: the
 	 * option that FOLLOWS it is the answer.
 	 */
-	static #ddRebuild(toks) {
+	static #ddRebuild(toks, tpl) {
 		const buf = [];
 		const marks = [];
 		const starts = [];
@@ -12742,10 +12765,20 @@ class InteractiveBuilder {
 			// highlighted). A mark whose text cannot be located contributes nothing —
 			// an unfound mark never guesses.
 			if (t.kind === "plain" && t.marks) {
+				// ROUND 511 (session 50 Round 2): the marks arrive in document order, so each is placed AFTER the previous
+				// one — MXDB302 8A Q5 `(0, 1, ✅2, 3) … (0, 1, ✅2, 3)`: the second `2` had landed on the first group again and
+				// the second group shipped as prose. Not found after the cursor → the first occurrence (the old reading).
+				// Data colour_marks.sequential_ranges; env DDMARKSEQ_OFF.
+				const sq = tpl?.colour_marks?.sequential_ranges;
+				const seqOn = !!(sq && sq.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[sq.env || "DDMARKSEQ_OFF"]));
+				let from = 0;
 				for (const mk of t.marks) {
 					const needle = String(mk).trim();
 					if (!needle) continue;
-					const idx = t.text.indexOf(needle);
+					let idx = seqOn ? t.text.indexOf(needle, from) : -1;
+					if (idx < 0) idx = t.text.indexOf(needle);
+					else from = idx + needle.length;
 					if (idx >= 0) marks.push([pos + idx, pos + idx + needle.length]);
 				}
 			}
@@ -12814,7 +12847,7 @@ class InteractiveBuilder {
 	 */
 	static #ddParagraph(toks, tpl, inline, run, ac) {
 		if (toks.some((t) => t.kind === "table" || t.kind === "img" || t.kind === "delim")) return null;
-		const { text, marks, starts } = this.#ddRebuild(toks);
+		const { text, marks, starts } = this.#ddRebuild(toks, tpl);
 		if (!marks.length || !text.trim()) return null;
 		const groups = [];
 		const re = /\(([^()]{2,300})\)/g;

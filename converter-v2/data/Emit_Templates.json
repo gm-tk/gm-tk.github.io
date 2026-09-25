@@ -3196,6 +3196,14 @@
 				"enabled": true,
 				"env": "DDCOLFOLD_OFF"
 			},
+			"yellow_ticks": {
+				"_doc": "ROUND 511 (the autonomous loop's session 50 Round 2 — Chris's D15-19, 25 Sept 2026, Option B: 'Trust yellow ✅ ticks, with strict checks'; the dropDown kickoff after r507's multiChoiceQuiz). The r309 colour_marks path opens only when the writer ANNOUNCES the marks; unannounced, the writer's YELLOW highlight alone (never green) now opens it, ONLY when (b) the item right above the opener is not the writer's D2L-quiz button (d2l_button_pattern — the gold builds only the quiz link there) and (c) nothing in the bundle says there are no correct answers (no_answers_pattern — OSAI101); (a) exactly one marked OPTION per question is every mark reading's own rule (#ddMarkAnswer returns 0 on 0 or 2+ hits and the bundle declines). A bundle with no yellow mark is byte-identical. Judged on _verify_dropdown.cjs against the gold's own answers. An answer is never invented. Env DDYELLOW_OFF.",
+				"enabled": true,
+				"env": "DDYELLOW_OFF",
+				"colours": ["yellow"],
+				"d2l_button_pattern": "\\bbutton\\b[^\\n]{0,60}?\\bquiz\\b",
+				"no_answers_pattern": "\\bno\\s+(?:correct|right|wrong|incorrect)\\s+(?:or\\s+(?:wrong|incorrect)\\s+)?answers?\\b|\\banswers\\s+will\\s+vary\\b"
+			},
 			"upload_box": {
 				"_doc": "ROUND 308 (Chris, 2026-08-11 — 'Build it'; the round-306 follow-through chain ticket 2). A bundle the family fence refuses because the writer's opener names a DROPBOX (the student upload area) now builds the gold's own upload button instead of a red flag or a hand-off box: `<a href=\"\" target=\"_blank\"><div class=\"{cls}\">Upload to dropbox</div></a>` + ONE Designer/Developer To Do note carrying the writer's own bracket words. MEASURED (outputs/_r308_dropbox.json, 241 dropbox bundles / 88 modules): the gold ships this button 1,076 times across 263 modules — label 'Upload to dropbox' 96%, class `button` outside BLL and `buttonD` inside BLL (the round-66 house style, read from buttons.dropbox_orange_house_style so the two rules cannot drift), and 142 of the gold's own buttons carry the EMPTY href we ship (the unwired pre-publish form; the populated ones carry a per-module D2L rcode that is in NO Writers Template — the r232/CL-0044 class, an INTENTIONAL divergence). FENCES, each measured: an 'alert dropbox' opener is a REVEAL box, not an upload area (opener_exclude_pattern — exactly CEDT101 ×4, whose gold drops them); a MERGED capture (extraTypes) is the round-310 gathering class; a captured table, media, or another widget's member keeps the honest hand-off box (40 bundles). Captured black/[body] text is RELEASED after the button in the writer's own order (renderBlock — bullets become real lists); a no-primary red span's own text joins the note spec, never learner content. 12 modules whose gold ships NO upload button (BLL155, BLL266, ENGI400, ENGJ302, ENGJ403, HPRE301, SSEA203, SSOG103, TEDC401, TEDC402, TRR304, XMES201) are forward-looking NAMED divergences, never chased. Env DBXBUTTON_OFF reverts every upload-box bundle to its red flag / hand-off box byte-for-byte.",
 				"enabled": true,
@@ -3258,7 +3266,12 @@
 				],
 				"optlist_head_pattern": "^\\[?\\s*(?:answer\\s+)?options?\\s*:\\s*([^\\]]+?)\\]?\\s*$",
 				"letter_line_pattern": "^[A-Za-z][.)]\\s+",
-				"question_label_pattern": "^question\\s*\\d+\\s*$"
+				"question_label_pattern": "^question\\s*\\d+\\s*$",
+				"sequential_ranges": {
+					"_doc": "ROUND 511 (the autonomous loop's session 50 Round 2 — found by the D15-19 dropDown kickoff's verifier check). #ddRebuild placed every colour mark at the FIRST occurrence of its text in the paragraph, so two groups with the same ticked option in one sentence — MXDB302 8A Q5 `(0, 1, ✅2, 3) decimal places so there need to be (0, 1, ✅2, 3)` — put both marks on the first group and the second group shipped as plain prose (6 units for the gold's 7). Marks arrive in document order: each is now placed after the previous one, falling back to the first occurrence when none follows. Env DDMARKSEQ_OFF.",
+					"enabled": true,
+					"env": "DDMARKSEQ_OFF"
+				}
 			}
 		}
 	},

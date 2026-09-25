@@ -1863,7 +1863,8 @@ class Config {
 	// ROUND 508 (260620.71): THE NESTED BRACKET (session 49 Round 9): `[Drag and drop [autocheck]]` flattens to `[Drag and drop] [autocheck]` — the widget name no longer vanishes. Env NESTBRACKET_OFF.
 	// ROUND 509 (260620.72): KB 10 §5 THE EMPTY LESSON MENU'S RED FLAG (session 49 Round 10): an empty lesson menu carries the designer To Do. Env EMPTYMENUFLAG_OFF.
 	// ROUND 510 (260620.73): THE WIDGET NAMED AFTER A GENERIC INTERACTIVE BRACKET (session 50 Round 1): `[interactive activity] drag and drop` names the writer's widget; + the dragAndDrop category-sort opener guard and the dropDown all-red answers column. Env IQFREEWIDGET_OFF / DDSORTOPENER_OFF / DDCOLFOLD_OFF.
-	static AppVersion = "260620.73";
+	// ROUND 511 (260620.74): D15-19 THE YELLOW-✅ DROPDOWN QUIZ (session 50 Round 2): the writer's yellow highlight builds a dropDown unannounced under the three checks; colour marks placed in document order. Env DDYELLOW_OFF / DDMARKSEQ_OFF.
+	static AppVersion = "260620.74";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -1,5 +1,27 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (round 511, build 260620.74) — D15-19 THE YELLOW-✅ DROPDOWN QUIZ: the writer's yellow highlight builds a dropDown unannounced, under Chris's strict checks (the dropDown kickoff after r507's multiChoiceQuiz) + the mark placed after the previous one (MXDB302 8A: 7 questions, 6 = the gold's, the 7th the writer's correct answer where the gold slipped)
+
+### 1. WHAT CHANGED
+
+**Chris's D15-19** (25 Sept 2026, Option B — *"Trust yellow ✅ ticks, with strict checks"*; one widget type per kickoff, multiChoiceQuiz first (r507), then dropDown): a quiz may be built from the writer's YELLOW highlight without an announcement ONLY where (a) exactly one OPTION per question carries a ✅, (b) the bundle is not the writer's D2L quiz under a `[Button] … quiz`, (c) the writer never says "no correct answers". GREEN is never trusted; an answer is never invented.
+
+**The fix** (`InteractiveBuilder.#ddMarkKinds`; data `interactive_builders.dropDown.yellow_ticks`; env `DDYELLOW_OFF`): the r309 colour-mark path (announced marks only) now also opens, unannounced, for YELLOW highlight marks alone (`#ddBlockMarks` / `#ddCellMarkTexts` filter `hl` marks by colour), when a yellow mark exists in the bundle, the item above the opener is not a D2L-quiz button (`d2l_button_pattern`) and nothing in the bundle says there are no correct answers (`no_answers_pattern`: "no correct / right / wrong answers", "answers will vary"). Guard (a) is every mark reading's own rule — `#ddMarkAnswer` returns 0 on zero or two-plus hit options and the bundle declines. A bundle without a yellow mark is byte-identical.
+
+**Found by the kickoff's verifier check and fixed with it** (`#ddRebuild`; data `colour_marks.sequential_ranges`; env `DDMARKSEQ_OFF`): a colour mark was placed at the FIRST occurrence of its text in the paragraph, so MXDB302 8A Q5 `(0, 1, ✅2, 3) decimal places so there need to be (0, 1, ✅2, 3)` put both marks on the first group and the second group shipped as prose (6 units for the gold's 7). The marks arrive in document order, so each is now placed after the previous one (the first occurrence when none follows). Proven inert on every existing build (the corpus-wide probe with `DDYELLOW_OFF=1`: 0 pages changed).
+
+### 2. THE POPULATION (`outputs/_s50_r511_ddyellow.cjs`, every dropDown bundle in the corpus, in memory)
+
+623 dropDown bundles; **27 carry a yellow mark** (≈ 24 modules): 3 were already built (announced — ENGJ301 6A, SCCH301 ×2), **r511 builds 1 more — MXDB302 8A** (the D1 paragraph form); the other 23 are shapes no reading handles yet, recorded (each below the 20-site shape floor): the TABLE forms ≈ 12 (ENFUN03 / 08, ENGC201, ENGI303, ENGI401, ENGR302 3C, ENGS202, FRFUN07 / 08, MXFU202, OSAH501, OSAI501 — each a different table layout), numbered / lettered option LINES 3 (ENFUN02, ENGR302 5B's parens split across lines, ENGS301), a highlighted word with NO option list 3 (HES1002 ×2, CEDR401 — never invented), and single stray marks (CHFUN05, CHI1004's upload-box guide); SCCH301 #27 and SCES201 ×2 are ANNOUNCED yet unbuilt (their shapes, not D15-19's).
+
+### 3. PROOF AND GATES
+
+- In-memory probe over all 545 modules: `DDYELLOW_OFF=1` → 0 pages changed; ON → **MXDB302 only** (1 page + its worklist). `scoped_ship.sh … --round 511` PASS (0 stale, containment 1 ⊆ 1, the 12-module spot-check byte-identical).
+- **`_verify_dropdown.cjs`** (every module): groups 332 → 333, units 218 → 225, **exact 150 → 156**, copy-edit 1 → 2, defect 0. The new copy-edit is NAMED — MXDB302 8A Q3 `The equation becomes (3.7 × 6.3, ✅37 × 63, 37 × 6.3, 3.7 × 63)`: the build follows the writer's tick (3.7 × 6.3 with the decimal points removed IS 37 × 63); the gold answers `37 × 6.3` — a human slip.
+- **Gate-neutral by design** (a widget build — the skeleton collapses a widget to one line): skeleton 55.6992 % @ 2486 EXACT, ≥50 1609, ≥75 280, ≥90 26, RAW 39.539 %; cs / body / clean / leak EXACT; tags 9557; every verifier ✓, every COUNT held (`_r511_gates.log`); `--gate-baseline-check` PASS. Plateau: neither (a widget build, skeleton-blind).
+
+**Ledger:** scoped #6 since the r505 FULL · data `interactive_builders.dropDown.yellow_ticks`, `dropDown.colour_marks.sequential_ranges` · env `DDYELLOW_OFF`, `DDMARKSEQ_OFF` · code `InteractiveBuilder.#ddMarkKinds` / `#ddBlockMarks` / `#ddCellMarkTexts` / `#ddRebuild` · tools `_s50_r511_ddyellow.cjs`, `_r511_finalise.py` · session 50 Round 2. **Next D15-19 kickoff:** none left by type (multiChoiceQuiz r507, dropDown r511); the residue is the per-shape list above.
+
 ## 2026-09-26 (round 510, build 260620.73) — THE WIDGET NAMED AFTER A GENERIC INTERACTIVE BRACKET: `[interactive activity] drag and drop`, `[Interactive tool] Flip cards`, `[Interactive] Please create a drag and drop …` now name the writer's widget instead of a plain activity box (284 spans / 41 modules; 43 modules regenerated; skeleton +0.1109pp)
 
 ### 1. WHAT CHANGED
