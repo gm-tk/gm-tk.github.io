@@ -1,0 +1,16 @@
+OLD pairs 2491  SCAFFOLD 55.4504%  RAW 39.420%  >=50 1592  >=75 276  >=90 26
+NEW pairs 2491  SCAFFOLD 55.4588%  RAW 39.425%  >=50 1592  >=75 277  >=90 26
+delta SCAFFOLD +0.0084pp  RAW +0.004pp  >=50 +0  >=75 +1  >=90 +0
+movers 10 (up 10 / down 0), pp-sum +21.0
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  CEDO105    CEDO105_3_0.html           70.2 ->   76.6  (+6.4)
+  BLL252     BLL252_2_0.html            68.2 ->   71.6  (+3.4)
+  ENGI103    ENGI103_2_0.html           54.0 ->   57.2  (+3.2)
+  OSAI401    OSAI401_4_0.html           57.7 ->   60.7  (+3.0)
+  BLL243     BLL243_1_1.html            63.3 ->   65.2  (+1.9)
+  BLLR203    BLLR203_5_0.html           68.6 ->   69.7  (+1.1)
+  ENFUN04    ENFUN04_0_0.html           54.7 ->   55.3  (+0.6)
+  BLL245     BLL245_2_0.html            63.7 ->   64.2  (+0.6)
+  ENFUN03    ENFUN03_0_0.html           41.6 ->   42.0  (+0.4)
+  TEFUN05    TEFUN05_0_0.html           56.4 ->   56.8  (+0.4)

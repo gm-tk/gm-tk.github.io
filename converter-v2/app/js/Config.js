@@ -1852,7 +1852,8 @@ class Config {
 	// ROUND 497 (260620.60): THE XDLS CHOICE BOARD'S LAST DECLINED PAGES (session 46 Round 8) — the writer's [Click Drop Activity N with embedded image] scrap releases its captured lines; an anchor owned by its own widget counts as a panel. Env CDSCRAPREL2_OFF.
 	// ROUND 498 (260620.61): THE HOVER DEFINITION'S RED FIRST LETTER (session 46 Round 9) — a colon hover marker whose red run carries the def's first letter(s) keeps them; a black ']' ends the def. Env HOVERTAILHEAD_OFF.
 	// ROUND 499 (260620.62): THE HOVER DEFINITION AFTER THE FULL STOP (session 46 Round 11) — a woven hover def whose marker follows the sentence's punctuation is anchored (first sentence / bold / quoted / last word) instead of dropped. Env HOVERPUNCT_OFF.
-	static AppVersion = "260620.62";
+	// ROUND 500 (260620.63): THE BACK-TO-BACK SPLIT TRIGGER (session 46 Round 12) — a split-bracket hover trigger after another one anchors on the sentence, not the emptied closer. Env TRIGHOST_OFF.
+	static AppVersion = "260620.63";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

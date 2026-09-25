@@ -668,7 +668,22 @@ class InteractiveScanner {
 							.split("[")[0].trim();
 						nx.type = "black"; nx.text = ""; nx.blackAfter = "";   // consume the "]" closer
 						const tail = (def ? `${def}` : "") + (continuation ? ` ${continuation}` : "");
-						const host = items[i - 1];
+						let host = items[i - 1];
+						// ROUND 500 — back-to-back split triggers (`[HInfo trigger: ] def ] , what [HInfo trigger: ] def ] , where`,
+						// BLL243): items[i-1] is the "]" closer the previous trigger just emptied, so the sentinel started a bare
+						// line — the definition dropped and the sentence broken into `<p> , where</p>` paragraphs. The nearest
+						// preceding item of the same paragraph that still carries text hosts it (the self-closed branch's own
+						// rule). Data info_trigger_inline.closer_host_skip_empty; env TRIGHOST_OFF.
+						if (_itCfg?.closer_host_skip_empty !== false && host && host.type === "black" && !String(host.text ?? "").trim()
+							&& !(typeof process !== "undefined" && process.env && process.env.TRIGHOST_OFF)) {
+							for (let h = i - 2; h >= 0; h--) {
+								const cand = items[h];
+								const ctext = cand.type === "black" ? cand.text : cand.blackAfter;
+								if (!String(ctext ?? "").trim()) continue;
+								if (!InteractiveScanner.#urlTailHost(ctext) && cand.block === it.block) host = cand;
+								break;
+							}
+						}
 						const anchorPrefix = inMarkerAnchor ? ` ${inMarkerAnchor}` : "";   // recovered in-marker term sits right before the sentinel
 						if (host && host.type === "black") {
 							host.text = String(host.text ?? "").replace(/\s+$/, "") + anchorPrefix + tail;

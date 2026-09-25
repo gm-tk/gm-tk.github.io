@@ -1,5 +1,27 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 500, build 260620.63) — THE BACK-TO-BACK SPLIT TRIGGER: a split-bracket hover trigger that follows another one anchors on the sentence, not on the closer the first one emptied (12 pages / 12 modules; the broken sentences rejoined; CEDO105_3_0 70.2 → 76.6 %)
+
+### 1. WHAT CHANGED
+
+**The find** (session 46 Round 12 — r499's residue: the 16 drops with an EMPTY host, `_s46_items.cjs BLL243`): the split-bracket trigger form — `…such as who [HInfo trigger: ] asks about a character ] , what [HInfo trigger: ] asks about a thing or idea ] , where …` (red opener, the definition black, a red `]` closer whose black tail continues the sentence) — anchored on `items[i-1]`. For the SECOND trigger of a run that item is the `]` closer the first trigger had just emptied, so its sentinel began a bare line: the definition was DROPPED (16 of r499's 120 drops; the gold builds 14 — BLL243 `what` / `where` / `when`, BLL252 `stanzas` / `rhythm`, ENFUN03 / ENGI103 `verbs`, ENFUN04 `antonyms`, CEDO105 `codes`, OSAI401 `legal` …) and the sentence broke into separate paragraphs (`<p> , where</p>`, `<p> , or when</p>`, an empty `<p></p>`).
+
+**The fix** (`InteractiveScanner` inline-trigger split-bracket branch, data `elements.info_trigger_inline.closer_host_skip_empty`, env `TRIGHOST_OFF`): when `items[i-1]` is an emptied item, the nearest preceding item of the SAME paragraph that still carries text hosts the sentinel — the rule the self-closed branch and the hover weave already follow.
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 0 pages changed**; ON **12 pages / 12 modules** (BLL243 BLL245 BLL252 BLL275 BLLR203 CEDO105 ENFUN03 ENFUN04 ENGC301 ENGI103 OSAI401 TEFUN05), each diffed: every one rejoins a sentence the writer typed as one paragraph and builds its tooltips (`who, what, where, or when` on BLL243 1.1; `lines and stanzas, … a rhythm` on BLL252; `subjects and verbs to make some sentences` on ENFUN03 / ENGI103). Regeneration + 12-module spot-check clean; **`scoped_ship.sh` PASS** (no dip).
+- Companion (`_s46_r9_itdrop.py`): drops **120 → 103** — every empty-host case gone; the rest are 78 writer notes (by design), 14 on a term named elsewhere, 2 after a stray `[`.
+
+### 3. PROTECTED GATES
+
+- Skeleton **55.4504 % → 55.4588 % @ 2491 (+0.0084pp)**, RAW 39.420 → 39.425 %; ≥50 1592; **≥75 276 → 277 (+1)**; ≥90 26; **10 movers, all up** (pp-sum +21.0), 0 outside the affected set: **CEDO105_3_0 70.2 → 76.6** (the ≥75 crossing), BLL252_2_0 +3.4, ENGI103_2_0 +3.2, OSAI401_4_0 +3.0, BLL243_1_1 +1.9, BLLR203_5_0 +1.1, ENFUN04 / BLL245 +0.6, ENFUN03 / TEFUN05 +0.4; **cs exact 16745 → 16746 (+1)**; EXTRA 198, missing 888, body ANY 232, clean 2591 / 2633, leak 52 / 42 EXACT; tags 9557; every verifier RESULT ✓; selftests 50 / 0; the miner 195 CANDIDATE.
+- Plateau (§4): +0.0084pp (< 0.02) but ≥75 +1 / cs exact +1 (protected gates moved) — neither; **0 of 3**.
+
+**Recorded, not built:** BLL245's `<b>ho</b> the events happen to.` and TEFUN05's `ow you expect…` / `ow it actually works…` — first letters split off in other marker shapes than r498's (a bold `W`, a red `H` inside the split-bracket opener): the r498 residue list.
+
+**Ledger:** scoped #4 since the r498 FULL · data `elements.info_trigger_inline.closer_host_skip_empty` · env `TRIGHOST_OFF` · code `InteractiveScanner` (the split-bracket inline trigger) · tools `_s46_items.cjs`, `_s46_r9_itdrop.py`, `_r500_finalise.py` · session 46 Round 12.
+
 ## 2026-09-25 (round 499, build 260620.62) — THE HOVER DEFINITION AFTER THE FULL STOP: a woven hover definition whose marker the writer typed after the sentence's punctuation is anchored instead of dropped (153 → 120 drops; 25 pages / 23 modules; ARFUN05 40.0 → 57.8 %)
 
 ### 1. WHAT CHANGED
