@@ -1,0 +1,5 @@
+movers 26: up 21 / down 5; pp-sum +111.8; only-in-new 0 only-in-old 0
+≥50 crossings: 5 PWY1001_1_1.html 48.7->60.7 FRNO902_7_0.html 42.1->52.0 FRNO902_2_0.html 44.0->50.2 FRNO902_3_0.html 48.8->51.8 PWY1009_3_3_0.html 52.5->48.0
+≥75 crossings: 1 PWY1009_2_1_0.html 72.1->75.9
+top up: PWY1001_1_1.html +12.0 PWY1009_3_1_0.html +10.8 PWY1008_2_1_0.html +10.0 FRNO902_7_0.html +9.9 FRNO902_5_0.html +7.8 PWY1002_2_1_0.html +6.5 PWY1008_3_2_0.html +6.3 FRNO902_2_0.html +6.1
+down: JPFUN01_0_0.html 13.7->13.5 FRNO902_8_0.html 53.9->53.7 PWY1008_3_1_0.html 68.3->67.2 PWY1009_2_2_0.html 52.9->51.0 PWY1009_3_3_0.html 52.5->48.0

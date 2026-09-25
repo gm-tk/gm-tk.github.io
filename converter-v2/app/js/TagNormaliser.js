@@ -417,6 +417,20 @@ class TagNormaliser {
 		let s = raw.replace(/\u{1f534}/gu, "").replace(/\[\/?RED TEXT\]/g, "");
 		s = Utils.Fold(s);
 
+		// ROUND 508 (the autonomous loop's session 49 Round 9; data Tag_Lexicon.json _meta.nested_bracket_flatten; env
+		// NESTBRACKET_OFF): a NESTED bracket — `[Drag and drop [autocheck]]`, `[Multichoice [autocheck]]` — is the writer's
+		// widget tag with its condition typed inside it. Step 2 below reads innermost brackets only, so the outer words (the
+		// widget itself) were lost and `autocheck` (an alias of `typing quiz`) became the tag. Flatten `[a [b] c]` into
+		// `[a c] [b]` first — the same reading the writer's separate-bracket form `[Drag and drop] [autocheck]` already gets.
+		const nbf = this.#lexicon?._meta?.nested_bracket_flatten;
+		if (nbf && nbf.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[nbf.env || "NESTBRACKET_OFF"])) {
+			for (let k = 0; k < 4 && /\[[^\[\]]*\[[^\[\]]*\][^\[\]]*\]/.test(s); k++)
+				s = s.replace(/\[([^\[\]]*)\[([^\[\]]*)\]([^\[\]]*)\]/g, (m0, a, b, c) => {
+					const outer = `${a} ${c}`.replace(/\s+/g, " ").trim();
+					return outer ? `[${outer}] [${b}]` : `[${b}]`;   // `[[hover trigger]]` has no outer words
+				});
+		}
+
 		// Step 2 EXTRACT bracket fragments, with damage repair:
 		//   normal [x] pairs, a dangling "[x" at the end (missing ]),
 		//   and a leading "x]" at the start (missing [).

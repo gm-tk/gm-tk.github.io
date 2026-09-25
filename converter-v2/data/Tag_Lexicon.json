@@ -17,6 +17,11 @@
 			"DROP": "never emit (deliberate exclusion, e.g. sticky nav)"
 		},
 		"extension_rule": "New writer phrasing for an existing tag = append ONE alias here. New tag = add ONE entry here. Never a code change.",
+		"nested_bracket_flatten": {
+			"_doc": "ROUND 508 (the autonomous loop's session 49 Round 9 — the D15 decisions session's loop-authority item (a); KB constraint 14: the writer's tag decides the component). A NESTED red bracket `[Drag and drop [autocheck]]` / `[Multichoice [autocheck]]` / `[reorder [autocheck]]` was read innermost-only by TagNormaliser.Parse, so the widget's own name vanished and `autocheck` (an alias of `typing quiz`, below) became the tag — the hand-off box said 'typing' and the widget's builder never ran. Parse now flattens `[a [b] c]` into `[a c] [b]` before extracting (the separate-bracket form `[Drag and drop] [autocheck]` already reads right). Census outputs/_s49_r9_nested.cjs: 108 nested red brackets / 24 modules, 76 with `autocheck` inside. Env NESTBRACKET_OFF.",
+			"enabled": true,
+			"env": "NESTBRACKET_OFF"
+		},
 		"condition_primary_demote": {
 			"_note": "MODIFIER-NOT-PRIMARY fix (Chris). 'self check'/'autocheck' are aliases of 'typing quiz', so in a COMPOUND like [clickdrop quiz autocheck] the condition could win the primary slot over the real widget (click drop), building the wrong widget. When a span matches the listed tag VIA one of these condition aliases AND another non-condition INTERACTIVE tag is present, TagNormaliser demotes it so the real widget governs. A STANDALONE [self check]/[autocheck] (the only INTERACTIVE tag) is unaffected — it stays a typing/selfCheck widget. Env PRIMARYFIX_OFF reverts.",
 			"tag": "typing quiz",

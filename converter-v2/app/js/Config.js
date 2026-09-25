@@ -1860,7 +1860,8 @@ class Config {
 	// ROUND 505 (260620.68): D15-18 PART 1 — THE RHS BOX IS ALWAYS THE SIDE COLUMN (session 49 Round 5): right-hand spellings count, and a box with no preceding row pairs with the following one (Standard / Fundamentals). Env RHSALWAYS_OFF.
 	// ROUND 506 (260620.69): D15-18 PART 2 — THE LOST RHS BOXES (session 49 Round 7): a right-hand box's content typed under its own tags on the following lines is gathered into the side column. Env RHSTAGGED_OFF.
 	// ROUND 507 (260620.70): D15-19 THE YELLOW-✅ MULTIPLE-CHOICE QUIZ (session 49 Round 8): the writer's yellow highlight builds the quiz unannounced under the three checks. Env MCQYELLOW_OFF.
-	static AppVersion = "260620.70";
+	// ROUND 508 (260620.71): THE NESTED BRACKET (session 49 Round 9): `[Drag and drop [autocheck]]` flattens to `[Drag and drop] [autocheck]` — the widget name no longer vanishes. Env NESTBRACKET_OFF.
+	static AppVersion = "260620.71";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
