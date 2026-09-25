@@ -15,7 +15,9 @@ the §7 message and `.claude/skills/loop-start/SKILL.md`), and on 24 September 2
 session 41 (D14-S1, standing — **§1g THE PLACEMENT CENSUS, NEW**, and its lane added to §4's exhaustion list;
 D14-20 / D14-21 are recorded in `LOOP_STATE.md`), and on 25 September 2026 by the third `/loop-review`
 (`LOOP_REVIEW__2026-09-25.md`: §0 items 6–7, §2, §3 steps 1 / 6 / 7, §4, §5d, §7 — thirteen changes, all
-applied in that session). **This file is
+applied in that session), and the same day by Chris's D15-S1 (standing: every `/loop-decisions` presents the
+open decisions as `EXPLAINER__Pending_Decisions_<date>.html` in the 23 Sept 2026 format — §5b, §7, the
+loop-decisions skill). **This file is
 edited IN PLACE only — never rewritten from an older copy, never regenerated from memory after a
 compaction.** At every commit the mirror copy in `pageforge-site/converter-v2/loop/` is proven
 byte-identical (`cmp`), and every session's health check confirms this "Amended" line is present.
@@ -894,6 +896,15 @@ holds up in pages — oldest first. A STOPPED entry or a round record points at 
 never restates it; a session that raises a new item appends one line; a decision strikes its
 line. `/loop-decisions` reads that list first; `/loop-review` re-checks it (the skill's step 3g).
 
+**How the open list is presented (Chris, 25 September 2026 — D15-S1, STANDING).** Every `/loop-decisions`
+session builds `EXPLAINER__Pending_Decisions_<date>.html` at the folder root in EXACTLY the format of
+`EXPLAINER__Pending_Decisions_2026-09-23.html` — that file is the template: copied, its `D` array and headline
+content replaced, its design, sections, ids and script untouched — with the tile grid of decisions, the
+writer / human / PageForge trio quoted from the real files, the clickable options with their score and rebuild
+chips, the recommendation, and the answer sheet Chris copies back into the chat. It is the deliverable Chris
+reads; `DECISIONS__Pending_<date>.md` stays the evidence record the page is built from. The skill's step 3
+carries the field-by-field recipe.
+
 ## 5c. NEVER end the turn to wait (added 15 Sept 2026 — the "continue once the gates finish" stall)
 
 The loop stalled several times because a long command (the gate suite, a regeneration batch, a
@@ -1030,7 +1041,9 @@ Two companion commands (also in `.claude/skills/`) are NOT loop runs and carry n
   commits (never pushes).
 - **`/loop-decisions`** — explains every open decision (the `LOOP_STATE.md` "Needs Chris" list,
   §5b) in plain English with real module examples (WT → gold → Claude, quoted), writes
-  `DECISIONS__Pending_<date>.md`, and records Chris's answers under "## Decisions from Chris" in
+  `DECISIONS__Pending_<date>.md` AND presents it as `EXPLAINER__Pending_Decisions_<date>.html` (the
+  deliverable Chris reads — the 23 Sept 2026 file's interactive format, Chris's D15-S1, §5b), and records
+  Chris's answers under "## Decisions from Chris" in
   `LOOP_STATE.md` — striking the decided lines — so the next `/loop-start` actions them.
 
 Chris keeps one message and pastes it unchanged into every new Claude Code session on this
