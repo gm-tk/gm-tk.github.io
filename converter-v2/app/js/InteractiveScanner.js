@@ -2947,6 +2947,20 @@ class InteractiveScanner {
 				// belongs to a REAL [Activity N] (BLL155 carousel + selfCheck = one
 				// activity). Otherwise it TERMINATES — the XGF9001 fix: a flipCard
 				// must NOT swallow the following accordion + the rest of the page.
+				// ROUND 521 — THE NEW ACTIVITY ID ENDS THE WALK. A follower whose OWN bracket opens a DIFFERENT activity
+				// ('[Activity 3B – self marking type the answer]' inside Activity 3A's walk — the MX family types the activity id
+				// and the widget in one bracket, so the tag resolves to the widget and the absolute [activity] break below never
+				// sees it) is a new activity, not another widget of this one: the walk ends and the follower opens its own
+				// bundle (its id read from the same bracket, as 3A's was). The gold keeps the two activities apart. Data
+				// member_rule.new_activity_id_terminates {enabled, pattern}; env ACTIDSPLIT_OFF.
+				{
+					const nai = meta.new_activity_id_terminates;
+					if (nai && nai.enabled !== false && bundle.activityId
+						&& !(typeof process !== "undefined" && process.env && process.env.ACTIDSPLIT_OFF)) {
+						const mm = new RegExp(nai.pattern ?? "\\[\\s*Activity\\s+([0-9]+[A-Za-z]?)\\b", "i").exec(String(next.text ?? ""));
+						if (mm && mm[1].toUpperCase() !== String(bundle.activityId).trim().toUpperCase()) break;
+					}
+				}
 				const sameType = extra !== null && extra === bundle.type;
 				// A DIFFERENT-type DISPLAY/narration follower (display_terminator_types —
 				// speechBubble/flipCard/tabs) is a NEW presentational SECTION, not another step of
