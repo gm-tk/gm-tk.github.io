@@ -1,0 +1,5 @@
+movers 88: up 88 / down 0; pp-sum +231.4; only-in-new 0 only-in-old 0
+≥50 crossings: 12 MXFU301_4_0.html 43.5->56.7 MXDB302_3_0.html 46.4->53.7 MXFU302_4_0_0.html 48.8->55.7 MXFU301_1_0.html 48.4->55.3 MXEX301_1_0.html 45.2->50.8 MXFU402_6_0.html 49.8->55.3 MXDB302_9_0.html 49.6->55.1 MXFU301_7_0.html 44.9->50.2 MXFU301_6_0.html 48.1->53.0 MXFU302_1_0.html 48.9->53.0 MXFU301_8_0.html 46.9->50.0 MXEX301_2_0.html 49.7->50.3
+≥75 crossings: 0 
+top up: MXFU301_4_0.html +13.2 MXFU402_7_0.html +12.6 MXFU302_3_0.html +9.6 MXFU301_11_0.html +9.2 MXDB302_3_0.html +7.3 MXDB301_7_0.html +7.0 MXFU302_4_0_0.html +6.9 MXFU301_1_0.html +6.9
+down: 

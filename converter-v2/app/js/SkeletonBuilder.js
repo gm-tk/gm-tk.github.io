@@ -866,7 +866,16 @@ class SkeletonBuilder {
 						? (content.menu.engFamily ? "two_col_offset" : (content.menu.inquiryFamily ? ((content.menu.familyShell && tpl.menu.shells[content.menu.familyShell]) ? content.menu.familyShell : "two_col_inquiry") : "two_col_li"))   // r359: the Inquiry two-column shell; r425: a family names its own
 						: (content.menu.kind === "tabs"
 							? (content.menu.tab1Cols ? "tabs_two_col" : "tabs") : "simplified");
-			const shell = tpl.menu.shells[shellKey];
+			// ROUND 502 (Chris's D15-23, 25 Sept 2026): the MX series' BARE lesson menu — on a LESSON page of a series
+			// named in menu.simplified_bare_series (MXFU2xx–4xx / MXEX / MXDB3 / MXDI3) the `simplified` shell gives way to
+			// `simplified_bare` (#module-menu-content > h5 + ul, no row > col-md-8 col-12), a named series convention over
+			// KB 01B l.296–301. Every other page, shell and module is byte-identical. Env MXBAREMENU_OFF.
+			const sbs = tpl.menu.simplified_bare_series;
+			const bareSeries = shellKey === "simplified" && !!sbs && sbs.enabled !== false && !!tpl.menu.shells.simplified_bare
+				&& pageType === (sbs.page_type ?? "lesson")
+				&& !(sbs.env && typeof process !== "undefined" && process.env && process.env[sbs.env])
+				&& (sbs.code_patterns ?? []).some((p) => new RegExp(p).test(String(run.moduleCode || "")));
+			const shell = tpl.menu.shells[bareSeries ? "simplified_bare" : shellKey];
 			if (shell) {
 				// tab pane 1's column class is phase-dependent (corpus-
 				// dominant per phase; data: menu.pane1_col_by_phase)

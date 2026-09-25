@@ -1854,7 +1854,8 @@ class Config {
 	// ROUND 499 (260620.62): THE HOVER DEFINITION AFTER THE FULL STOP (session 46 Round 11) — a woven hover def whose marker follows the sentence's punctuation is anchored (first sentence / bold / quoted / last word) instead of dropped. Env HOVERPUNCT_OFF.
 	// ROUND 500 (260620.63): THE BACK-TO-BACK SPLIT TRIGGER (session 46 Round 12) — a split-bracket hover trigger after another one anchors on the sentence, not the emptied closer. Env TRIGHOST_OFF.
 	// ROUND 501 (260620.64): THE GATE-TOOL ROUND (session 49 Round 1) — no engine change: the committed gate baseline's aggregates are written by _fastloop_diff.py / _gatecheck.py --commit; six verifiers gained the count-vs-baseline test.
-	static AppVersion = "260620.64";
+	// ROUND 502 (260620.65): D15-23 THE MX BARE LESSON MENU (session 49 Round 2) — the MXFU / MXEX / MXDB3 / MXDI3 lesson menu without the row > col-md-8 wrapper. Env MXBAREMENU_OFF.
+	static AppVersion = "260620.65";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
