@@ -68,7 +68,7 @@ def locate(d, snippet):
 rows = []
 for wt in glob.glob(os.path.join(ROOT, "01-Finalized_Modules_", "*", "*", "*Writers Template*_parsed.txt")):
     gdir = os.path.dirname(wt); code = os.path.basename(gdir); tpl = os.path.basename(os.path.dirname(gdir))
-    cdirs = glob.glob(os.path.join(ROOT, "01-Claude_Modules_", "*", code)) + glob.glob(os.path.join(ROOT, "01-Claude_Modules_", code))
+    cdirs = ([os.path.join(HERE, os.environ["ON_DIR"], code)] if os.path.isdir(os.path.join(HERE, os.environ.get("ON_DIR", "-"), code)) else []) + glob.glob(os.path.join(ROOT, "01-Claude_Modules_", "*", code)) + glob.glob(os.path.join(ROOT, "01-Claude_Modules_", code))
     lines = io.open(wt, encoding="utf-8", errors="replace").read().split("\n")
     for i, ln in enumerate(lines):
         plain = RED.sub(" ", ln)
@@ -101,6 +101,6 @@ log.append("\nby gold shape x claude shape:")
 for (g, c), n in collections.Counter((r["gold"], r["claude"]) for r in found).most_common(20): log.append(f"  {n:3d}  gold {g:20s} claude {c}")
 log.append("\nexamples:")
 for r in found[:30]: log.append(f"  {r['code']:9s} {r['tag'][:38]:38s} gold={r['gold']:18s} claude={r['claude']:18s} {r['text'][:50]!r}")
-io.open(os.path.join(HERE, "_rhsalert_measure.log"), "w", encoding="utf-8", newline="").write("\n".join(log) + "\n")
-json.dump(rows, io.open(os.path.join(HERE, "_rhsalert_measure.json"), "w", encoding="utf-8", newline=""), indent=1, ensure_ascii=False)
+io.open(os.path.join(HERE, os.environ.get("OUT", "_rhsalert_measure") + ".log"), "w", encoding="utf-8", newline="").write("\n".join(log) + "\n")
+json.dump(rows, io.open(os.path.join(HERE, os.environ.get("OUT", "_rhsalert_measure") + ".json"), "w", encoding="utf-8", newline=""), indent=1, ensure_ascii=False)
 print("\n".join(log[:12]))

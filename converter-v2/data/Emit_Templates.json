@@ -956,6 +956,14 @@
 			"env": "ALERTRHS_OFF",
 			"tags": ["alert", "important"],
 			"keywords": ["rhs", "rhc"],
+			"always_side": {
+				"_doc": "ROUND 505 (the autonomous loop's session 49 Round 5 — Chris's D15-18, 25 Sept 2026, Option B: 'An RHS tag always becomes the right-hand side box'). In STANDARD and FUNDAMENTALS modules (not Inquiry — its golds 3 / 10) every right-hand alert spelling becomes the side column, the box style still chosen by position (r333: alertActivity after an activity box, alert top after content). Two widenings of r333: (1) extra_keywords — the writer's `[Alert box right hand side (of page)]` / `[right-hand alert]` spellings, whose words r333's rhs / rhc list never matched (BLL242 / 244 / 251 / 254–257 / 272 built full-width); (2) forward_pair — a box with NO content row closed just before it (the page-top Ākonga notes, the WJFUN tile pages, a box right after a heading) is HELD and paired as the right sibling of the FOLLOWING content row (the r123 pendingSideAlert machinery the alert-table path already uses) instead of a full-width box. Measured (outputs/_rhsalert_measure.py, repaired at r505): the gold side column 92 / 139 = 0.66 (Standard 0.70, Fundamentals 0.66). The gold's full-width / paragraph forms where they differ are NAMED overrides by Chris's decision. Env RHSALWAYS_OFF.",
+				"enabled": true,
+				"env": "RHSALWAYS_OFF",
+				"template_types": ["Standard", "Fundamentals"],
+				"extra_keywords": ["right", "right-hand"],
+				"forward_pair": true
+			},
 			"strip_tokens": {
 				"rhs": " rhs",
 				"rhc": " rhs",

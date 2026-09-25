@@ -1,44 +1,44 @@
 [RHS alert] family: 176 tags / 73 modules
 GOLD shape, all tags: side-alert-top 50, side-alertActivity 42, absent 36, body 24, alert 19, alertActivity 3, bubble 1, no text 1
 GOLD shape where the text is found (139 tags / 67 modules): side-alert-top 50 (0.36), side-alertActivity 42 (0.30), body 24 (0.17), alert 19 (0.14), alertActivity 3 (0.02), bubble 1 (0.01)
-CLAUDE shape now (found tags): body 38, alert 34, side-alert-top 33, side-alertActivity 33, absent 1
-Claude = gold on 70 / 139
+CLAUDE shape now (found tags): side-alert-top 41, body 38, side-alertActivity 35, alert 24, absent 1
+Claude = gold on 78 / 139
 
 by template: Fundamentals: side-alert-top 17, body 5, alert 5, side-alertActivity 4; Inquiry: alert 4, alertActivity 3, side-alertActivity 3; Standard: side-alertActivity 35, side-alert-top 33, body 19, alert 10
 
 by gold shape x claude shape:
-   25  gold side-alert-top       claude side-alert-top
-   20  gold side-alertActivity   claude side-alertActivity
-   18  gold side-alert-top       claude alert
+   31  gold side-alert-top       claude side-alert-top
+   22  gold side-alertActivity   claude side-alertActivity
    16  gold body                 claude body
    15  gold side-alertActivity   claude body
+   12  gold side-alert-top       claude alert
     9  gold alert                claude alert
     6  gold side-alert-top       claude side-alertActivity
     5  gold body                 claude side-alertActivity
     5  gold alert                claude side-alert-top
-    4  gold side-alertActivity   claude alert
     3  gold alertActivity        claude body
     3  gold alert                claude body
+    3  gold side-alertActivity   claude side-alert-top
     2  gold alert                claude side-alertActivity
-    2  gold body                 claude alert
-    2  gold side-alertActivity   claude side-alert-top
+    2  gold body                 claude side-alert-top
     1  gold side-alertActivity   claude absent
     1  gold bubble               claude alert
-    1  gold body                 claude side-alert-top
+    1  gold body                 claude alert
+    1  gold side-alertActivity   claude alert
     1  gold side-alert-top       claude body
 
 examples:
-  ANZHFUN05 [Alert RHS]                            gold=side-alert-top     claude=alert              'Ākonga and Whānau'
+  ANZHFUN05 [Alert RHS]                            gold=side-alert-top     claude=side-alert-top     'Ākonga and Whānau'
   MXFUN01   [Alert RHS]                            gold=side-alert-top     claude=side-alert-top     'In Phase 2, we won’t be using the E for Exponents.'
   SSFUN01   [Alert RHS]                            gold=side-alertActivity claude=side-alertActivity 'Empathy means that we try to understand and care h'
   SSFUN05   [Alert box RHS]                        gold=body               claude=body               'Extra fun – a jigsaw'
   SSFUN08   [Alert box RHS]                        gold=alert              claude=side-alertActivity 'Extra for experts! Interested in extinctions? Have'
-  TEFUN01   [Alert RHS]                            gold=side-alert-top     claude=alert              'Ākonga and whānau'
-  TEFUN03   [Alert RHS]                            gold=side-alert-top     claude=alert              'Ākonga & Whānau'
+  TEFUN01   [Alert RHS]                            gold=side-alert-top     claude=side-alert-top     'Ākonga and whānau'
+  TEFUN03   [Alert RHS]                            gold=side-alert-top     claude=side-alert-top     'Ākonga & Whānau'
   TEFUN03   [Alert RHS of above]                   gold=body               claude=side-alertActivity 'You can even get creative and make your design usi'
   TEFUN04   [Alert RHS]                            gold=side-alertActivity claude=side-alertActivity 'This hands-on activity is optional! If you do choo'
   TEFUN05   [Alert RHS]                            gold=side-alert-top     claude=side-alert-top     'Ākonga & whānau'
-  TEFUN07   [Alert RHS]                            gold=body               claude=alert              'Ākonga & Whānau'
+  TEFUN07   [Alert RHS]                            gold=body               claude=side-alert-top     'Ākonga & Whānau'
   WJFUN116  [RHS Alert box]                        gold=side-alert-top     claude=alert              'ADD + VERB = ADVERB!'
   WJFUN206  [RHS Alert]                            gold=side-alertActivity claude=side-alertActivity '“Look carefully: what did the phrase add, and wher'
   WJFUN206  [Alert RHS]                            gold=side-alert-top     claude=side-alert-top     'When you add phrases, you often need commas to sho'

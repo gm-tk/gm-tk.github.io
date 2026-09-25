@@ -3869,16 +3869,24 @@ class ContentConverter {
 					// with the token stripped (#calloutOpen). The leftover-word red flags the
 					// ordinary path would have emitted ride along inside the column.
 					// Data flag: callouts.positional_side_alert   Env toggle: ALERTRHS_OFF
-					let _rhsDef = null, _rhsPre = [];
+					let _rhsDef = null, _rhsPre = [], _rhsForward = false;
 					{
 						const psa = tpl.callouts.positional_side_alert;
 						const psaOn = psa && psa.enabled !== false
 							&& !(typeof process !== "undefined" && process.env && process.env[psa.env || "ALERTRHS_OFF"])
 							&& (psa.tags ?? []).includes(primary.tag) && !stack.length;
+						// ROUND 505 (Chris's D15-18; data positional_side_alert.always_side; env RHSALWAYS_OFF): in Standard /
+						// Fundamentals modules an RHS box is ALWAYS the side column — the `right` / `right-hand` spellings count,
+						// and a box with no content row just before it pairs FORWARD with the following row.
+						const _as = psa?.always_side;
+						const _asOn = !!_as && _as.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[_as.env || "RHSALWAYS_OFF"])
+							&& (_as.template_types ?? []).map(String).includes(String(DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")]?.template_type ?? ""));
+						const _rhsKw = [...(psa?.keywords ?? []), ...(_asOn ? (_as.extra_keywords ?? []) : [])];
 						if (psaOn) {
 							const words = it.parse.tags.map((t) => t.remainder ?? "").join(" ")
 								.toLowerCase().split(/\s+/).filter(Boolean);
-							if (words.some((w) => (psa.keywords ?? []).includes(w))) {
+							if (words.some((w) => _rhsKw.includes(w))) {
 								const spansAhead = this.#explicitCloseAhead(bodyItems, i, primary.tag)
 									|| this.#calloutWrapsStructured(it, bodyItems, i);
 								// an EMPTY box (no embedded lead, no black text of its own, no unconsumed
@@ -3899,6 +3907,12 @@ class ContentConverter {
 									_rhsPre = ActivitiesBuilder.containerModifiers(it, tpl.callouts.modifier_classes, run).flags;
 									run.AddNote("info", "ContentConverter",
 										`[${primary.tag}] right-hand box → ${afterActivity ? "the activity sidebar (alertActivity)" : "an alert top"} side column paired with the preceding ${afterActivity ? "activity" : "content"} row (positional_side_alert).`);
+								} else if (_asOn && _as.forward_pair !== false && !spansAhead && hasContent && !pendingSideAlert) {
+									// ROUND 505 — no content row closed just before it: the box pairs with the row that follows
+									_rhsDef = psa.after_content; _rhsForward = true;
+									_rhsPre = ActivitiesBuilder.containerModifiers(it, tpl.callouts.modifier_classes, run).flags;
+									run.AddNote("info", "ContentConverter",
+										`[${primary.tag}] right-hand box → an alert top side column paired with the FOLLOWING content row (positional_side_alert.always_side).`);
 								}
 							}
 						}
@@ -3911,6 +3925,18 @@ class ContentConverter {
 						&& !_sidePairOff
 						&& !(primary.tag === "side alert" && _sideAlertOff)
 						&& !stack.length;
+					if (_rhsForward) {
+						// ROUND 505 (RHSALWAYS_OFF): HOLD the side column; breakRow() attaches it as the right sibling of the
+						// row still open, else of the next content row when that row closes (the r123 pendingSideAlert path)
+						pendingSideAlert = this.#sideAlertCol(it, bodyItems, i, run, _rhsDef, _rhsPre);
+						// the RHS box pairs with the NEXT content row as it stands — never the r123 alert-table hold that gathers
+						// headings into one column until media arrives (XGF9006: the box travelled past a heading and knocked the
+						// page's second RHS box off its own pairing)
+						sideAlertSawMedia = true;
+						if (rowOpen) breakRow();
+						while (bodyItems[i + 1]?._consumed) i++;       // its strict text run was consumed
+						break;
+					}
 					if (_sidePairOn && parts.length
 						&& parts[parts.length - 1] === tpl.body_region.content_row_close) {
 						parts.pop();                                   // un-close the preceding content row
