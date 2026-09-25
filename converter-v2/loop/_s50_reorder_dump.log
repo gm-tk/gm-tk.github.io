@@ -1,0 +1,888 @@
+--- AGH1006 #3 box modifier="/matching to the"
+    tag: [interactive: Ordering/Matching to the image] * Note to developer – please use the most appropriate interactiv
+    black: Order these plantings in alignment with the phases of the moon.
+    black: Waxing
+    black: Waning
+    TABLE 3x2: 🔴[RED TEXT] Planting kumara [ ‖ 🔴[RED TEXT] Planting beetroot // 🔴[RED TEXT] Planting broccoli ‖ 🔴[RED TEXT] Planting spinach  // 🔴[RED TEXT] Planting Yams [/R ‖ 🔴[RED TEXT] Planting beans [/
+--- BLL243 #6 box modifier=""
+    tag: [reorder]
+    tag: This activity is the same as Activity 1D in BLL232 (but with different pictures).
+    black: https://tekura.desire2learn.com/d2l/le/content/78989/viewContent/203166/View
+    tag: In Row 1 of the table below are the 7 images to be shown on each tab.
+    tag: In row 2, the images in red are the ones to be shown in the ‘click to reveal’ for round 1
+    tag: In row 3, the images in red are the ones to be shown in the ‘click to reveal’ for round 2, and so on…...
+    tag: Can we mix the order up in the ‘click to reveal’ so they are not in the same order as the 7 images underneath 
+    TABLE 5x7: https://media.istockphoto.com/ ‖ https://media.istockphoto.com/ ‖ https://media.istockphoto.com/ ‖ https://media.istockphoto.com/ ‖ https://media.istockphoto.com/ ‖ https://media.istockphoto.com/ ‖ https://media.istockphoto.com/ // 🔴[RED TEXT] https://media.ist ‖ https://media.istockphoto.com/ ‖ 🔴[RED TEXT] https://media.ist ‖ https://media.istockphoto.com/ ‖ https://media.istockphoto.com/ ‖ 🔴[RED TEXT] https://media.ist ‖ 🔴[RED TEXT] https://media.ist // https://media.istockphoto.com/ ‖ 🔴[RED TEXT] https://media.ist ‖ https://media.istockphoto.com/ ‖ 🔴[RED TEXT] https://media.ist ‖ 🔴[RED TEXT] https://media.ist ‖ 🔴[RED TEXT] https://media.ist ‖ 🔴[RED TEXT] https://media.ist // 🔴[RED TEXT] https://media.ist ‖ 🔴[RED TEXT] https://media.ist ‖ 🔴[RED TEXT] https://media.ist ‖ 🔴[RED TEXT] https://media.ist ‖ 🔴[RED TEXT] https://media.ist ‖ https://media.istockphoto.com/ ‖ 🔴[RED TEXT] https://media.ist
+--- BLL243 #8 box modifier=""
+    tag: [reorder] The sentences are currently in the correct order. Please jumble them.
+    black: Kiwi goes out at **midnight** to look for food.
+    black: Kiwi taps the ground with her beak and searches in the dirt.
+    black: Kiwi finds a worm, but dirt goes into her nostrils.
+    black: Kiwi sneezes and the worm falls into the stream.
+    black: Kiwi feels unhappy and wonders who can help.
+    black: Frog appears and suggests searching for food in the water.
+    black: Ruru swoops down and suggests looking for food from above.
+    black: Kiwi decides to return to the track and keep trying her own way.
+    black: The animals discover they all like a midnight roam, even though they hunt differently.
+    GOLD BLL243-2.0.html: <div class="reorder row" layout="re-sentence"> items 9: Kiwi goes out at midnight to look for fo | Kiwi taps the ground with her beak and s | Kiwi finds a worm, but dirt goes into he | Kiwi sneezes and the worm falls into the | Kiwi feels unhappy and wonders who can h | Frog appears and suggests searching for  | Ruru swoops down and suggests looking fo | Kiwi decides to return to the track and  | The animals discover they all like a mid
+--- BLL244 #3 box modifier=""
+    tag: [reorder] Please note there are two possible correct answers for each sentence.
+    TABLE 1x10: paper. ‖ table ‖ brushes ‖ was ‖ The ‖ covered ‖ paint, ‖ art ‖ and ‖ with
+    tag: The art table was covered with paint, brushes and paper.
+    tag: The art table was covered with paint, paper and brushes.
+    TABLE 1x9: under ‖ chickens, ‖ the ‖ sheep ‖ stars. ‖ cows ‖ The ‖ and ‖ slept
+    tag: The chickens, sheep and cows slept under the stars.
+    tag: The chickens, cows and sheep slept under the stars.
+    TABLE 1x10: Rain, ‖ the ‖ during ‖ sky ‖ wind ‖ filled ‖ and ‖ the ‖ thunder ‖ storm.
+    tag: Rain, wind and thunder filled the sky during the storm.
+    tag: Rain, thunder and wind filled the sky during the storm.
+    TABLE 1x10: case. ‖ crayons, ‖ her ‖ rulers ‖ pencil ‖ Aroha ‖ stickers ‖ kept ‖ and ‖ in
+    tag: Aroha kept crayons, rulers and stickers in her pencil case.
+    tag: Aroha kept crayons, stickers and rulers in her pencil case.
+    TABLE 1x12: lay ‖ jewels ‖ treasure ‖ and ‖ coins, ‖ In ‖ golden ‖ silver, ‖ the ‖ box ‖ crown. ‖ a
+    tag: In the treasure chest lay coins, silver, jewels and a golden crown.
+    tag: In the treasure chest lay silver, coins, jewels and a golden crown.
+    GOLD BLL244-01.html: <div class="reorder row" layout="re-standard"> items 12: The | art | table | was | covered | with | paint, | brushes | and | paper. | The | chickens,
+    GOLD BLL244-01.html: <div class="reorder row" layout="re-standard"> items 12: The | chickens, | sheep | and | cows | slept | under | the | stars. | Rain, | wind | and
+    GOLD BLL244-01.html: <div class="reorder row" layout="re-standard"> items 12: Rain, | wind | and | thunder | filled | the | sky | during | the | storm. | Aroha | kept
+    GOLD BLL244-01.html: <div class="reorder row" layout="re-standard"> items 12: Aroha | kept | crayons, | rulers | and | stickers | in | her | pencil | case. | In | the
+    GOLD BLL244-01.html: <div class="reorder row" layout="re-standard"> items 12: In | the | treasure | box | lay | coins, | silver, | jewels | and | a | golden | crown.
+    GOLD BLL246_2.0.html: <div class="reorder row" layout="re-standard"> items 9: Pete and Eve are at a town parade with N | Nan says Tāne is in the parade. | The children watch the floats go past. | Many floats pass the crowd. | Pete and Eve look for Tāne and Nat. | A small cow surprises everyone. | The crowd cheers and laughs. | Nan says the cow is Tāne and Nat. | The mystery is solved.
+    GOLD BLL246_2.0.html: <div class="reorder row" layout="re-standard"> items 6: Many floats pass the crowd. | Pete and Eve look for Tāne and Nat. | A small cow surprises everyone. | The crowd cheers and laughs. | Nan says the cow is Tāne and Nat. | The mystery is solved.
+    GOLD BLL246_2.0.html: <div class="reorder row" layout="re-standard"> items 3: The crowd cheers and laughs. | Nan says the cow is Tāne and Nat. | The mystery is solved.
+    GOLD BLL247_2_0.html: <div class="reorder row" layout="re-standard"> items 6: Miss Lee asks the children to share pain | The children gather on the mat. | Each child shows a painting and explains | The class learns about gardens, homes, p | Miss Lee pins up all the paintings. | She says the world is colourful because 
+    GOLD BLL247_2_0.html: <div class="reorder row" layout="re-standard"> items 4: Each child shows a painting and explains | The class learns about gardens, homes, p | Miss Lee pins up all the paintings. | She says the world is colourful because 
+    GOLD BLL247_2_0.html: <div class="reorder row" layout="re-standard"> items 2: Miss Lee pins up all the paintings. | She says the world is colourful because 
+--- BLL256 #4 box modifier=""
+    tag: [reorder] Please note there are some double ups of words and this might need to be taken into account with wha
+    TABLE 1x11: end. ‖ the ‖ in ‖ it ‖ noticed ‖ everyone ‖ but ‖ subtle ‖ was ‖ smile ‖ The
+    tag: [correct] ⟶ The smile was subtle but everyone noticed it in the end.
+    TABLE 1x11: door. ‖ the ‖ closed ‖ we ‖ so ‖ room ‖ the ‖ filled ‖ A ‖ draught ‖ cold
+    tag: [correct] ⟶ A cold draught filled the room so we closed the door.
+    TABLE 1x12: to ‖ sky. ‖ the ‖ pointed ‖ crowd ‖ the ‖ and ‖ ascend ‖ to ‖ began ‖ The ‖ balloon
+    tag: [correct] ⟶ The balloon began to ascend and the crowd pointed to the sky
+    TABLE 1x8: for ‖ She ‖ help. ‖ asked ‖ she ‖ so ‖ doubt ‖ felt
+    tag: [correct] ⟶ She felt doubt so she asked for help.
+    TABLE 1x11: was ‖ trouble. ‖ in ‖ he ‖ knew ‖ he ‖ but ‖ laughed ‖ The ‖ child ‖ naughty
+    tag: [correct] ⟶ The naughty child laughed but he knew he was in trouble.
+    TABLE 1x11: the ‖ surface. ‖ to ‖ rose ‖ bubbles ‖ and ‖ descend ‖ to ‖ started ‖ The ‖ diver
+    tag: [correct] ⟶ The diver started to descend and bubbles rose to the surface
+    TABLE 1x10: horse ‖ the ‖ running. ‖ neigh, ‖ to ‖ began ‖ and ‖ farmer ‖ came ‖ The
+    tag: [correct] ⟶ The horse began to neigh, and the farmer came running.
+    GOLD BLL256_1.0.html: <div class="reorder row sassoonI-text" layout="re-paragraph"> items 12: The | smile | was | subtle | but | everyone | noticed | it | in | the | end. | A
+--- BLL275 #5 box modifier=""
+    tag: [reorder + autocheck] Syllables are in the correct order for the answer. Please jumble them so the ākonga rear
+    tag: [audiovisual item 12]
+    TABLE 11x3: 🔴[RED TEXT] Working space [/R ‖ 🔴[RED TEXT] image [/RED TEXT] ‖ 🔴[RED TEXT] [AV item 12] [/RE // 🔴[RED TEXT] [correct] [/RED T ‖ https://media.istockphoto.com/ ‖ 🔴[RED TEXT] [kāreti] [/RED TE // 🔴[RED TEXT] [correct] [/RED T ‖ https://media.istockphoto.com/ ‖ 🔴[RED TEXT] [rōpere] [/RED TE // 🔴[RED TEXT] [correct] [/RED T ‖ https://media.istockphoto.com/ ‖ 🔴[RED TEXT] [pihikete] [/RED 
+    GOLD BLL275_1_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 12: kā | re | ti | rō | pe | re | pi | hi | ke | te | tī | hi
+--- BLL276 #6 box modifier=""
+    tag: [reorder + autocheck]
+    TABLE 6x2: 🔴[RED TEXT] [correct] [/RED T ‖ https://media.istockphoto.com/ // 🔴[RED TEXT] [correct] [/RED T ‖ https://media.istockphoto.com/ // 🔴[RED TEXT] [correct] [/RED T ‖ https://media.istockphoto.com/ // 🔴[RED TEXT] [correct] [/RED T ‖ https://www.shutterstock.com/s
+    GOLD BLL276_1_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 12: He | iti | te | manu. | He | nui | te | hōiho. | He | nui | te | kau.
+--- BLLR201 #41 box modifier=""
+    tag: [reorder] Sentences are currently in the correct order. Please jumble them.
+    black: A big storm leaves Kit and Dad with a lot of silt to clean up.
+    black: Kit remembers how the storm damaged homes and cut off power and phones.
+    black: Dad finally gets messages, and Kit hears from Casper.
+    black: Casper and his family come with spades and milk to help.
+    black: They work together, share food, and tell stories.
+    black: This shows that people can help each other through hard times because Casper’s family comes to support Kit and
+    GOLD BLLR201_5_0.html: <div class="reorder row" layout="re-standard"> items 6: A big storm leaves Kit and Dad with a lo | Kit remembers how the storm damaged home | Dad finally gets messages, and Kit hears | Casper and his family come with spades a | They work together, share food, and tell | This shows that people can help each oth
+--- BLLR202 #20 box modifier=""
+    tag: [reorder] The sentences are currently in the correct order. Please shuffle.
+    black: Taylor is invited to a sleepover at Min’s house.
+    black: Taylor worries about what might happen at the sleepover and feels unsure.
+    black: With support from her mum, Taylor decides to go to the sleepover.
+    black: At the sleepover, Taylor keeps to herself to feel comfortable at first.
+    black: The girls begin their sleepover activities together.
+    black: Min becomes upset when Elly can’t come.
+    black: Taylor notices how Min is feeling and comforts her.
+    black: The group settles down and the sleepover ends on a positive note.
+    tag: [body] ⟶ With the events in order, we can now see how the story unfol
+    tag: [image] ⟶ https://www.shutterstock.com/image-photo/woman-highlighting-
+    tag: Please arrange on the page to complement the text below and add interest rather than dominate the space.
+    black: **Important events** are the ones that help us understand the story. They often:
+    black: • explain the problem
+    black: • show what the characters do
+    black: • help the story move forward
+    GOLD BLLR202_4_0.html: <div class="reorder row" layout="re-standard"> items 8: Taylor is invited to a sleepover at Min’ | Taylor worries about what might happen a | With support from her mum, Taylor decide | At the sleepover, Taylor keeps to hersel | The girls begin their sleepover activiti | Min becomes upset when Elly can’t come. | Taylor notices how Min is feeling and co | The group settles down and the sleepover
+--- BLLR203 #6 box modifier=""
+    tag: [reorder]
+    tag: Can you please arrange these over two slides in a carousel.
+    TABLE 11x2: 🔴[RED TEXT] Jumbled letter to ‖ 🔴[RED TEXT] [correct] [/RED T // p y p h a 🔴[RED TEXT] [hint b ‖ happy // y f n u n 🔴[RED TEXT] [hint b ‖ funny // u n s n y 🔴[RED TEXT] [hint b ‖ sunny
+    GOLD BLLR203_1_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 12: h | a | p | p | y | f | u | n | n | y | s | u
+    GOLD BLLR203_1_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 12: f | u | n | n | y | s | u | n | n | y | w | i
+    GOLD BLLR203_1_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 12: s | u | n | n | y | w | i | n | d | y | b | a
+    GOLD BLLR203_1_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 12: w | i | n | d | y | b | a | b | y | k | e | y
+    GOLD BLLR203_1_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 12: b | a | b | y | k | e | y | d | o | n | k | e
+    GOLD BLLR203_1_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 12: k | e | y | d | o | n | k | e | y | m | o | n
+    GOLD BLLR203_1_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 12: d | o | n | k | e | y | m | o | n | k | e | y
+    GOLD BLLR203_1_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 12: m | o | n | k | e | y | h | o | n | e | y | c
+    GOLD BLLR203_1_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 12: h | o | n | e | y | c | h | i | m | n | e | y
+    GOLD BLLR203_1_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 7: c | h | i | m | n | e | y
+--- CHFUN05 #10 box modifier=""
+    tag: [reorder interactive][randomise the order][autocheck] ⟶ 4A Check your understanding
+    tag: answer is showing
+    tag: [body] ⟶ Drag the words to put them in the right order.
+    black: 1. My teacher 我**wǒ**/ 的**de**/ 老师**lǎoshī**
+    black: 1. Your cat 你**nǐ**/ 的**de**/ 猫**māo**
+    black: 1. His book 他**tā**/ 的**de**/ 书**shū**
+    black: 1. Her friend 她**tā**/ 的**de**/ 朋友**péngyou**
+--- CHFUN05 #37 box modifier=""
+    tag: [reorder][randomise the sentence][autocheck] ⟶ 3A Check your understanding
+    tag: [Body] ⟶ Drag the words to form a noun phrase using ‘的’ de.
+    black: 1. 红色**hóngsè** *red* 的**de** 苹果 **píngguǒ** *apple*
+    black: 1. 新 **xīn** *new* 的 **de** 电脑 **diànnǎo** *computer*
+    black: 1. 可爱 **kě’ài** *cute* 的 **de** 猫 **māo** *cat*
+--- CHFUN05 #41 box modifier="randomise order"
+    tag: [Reorder] [randomise word order][autocheck] ⟶ 4A Check your understanding
+    tag: [body] ⟶ Reorder the words to form a correct sentence using the measu
+    TABLE 3x3:  ‖ 🔴[RED TEXT] [photo] [Media it ‖ 我**Wǒ** *I* /有**yǒu** *have* / //  ‖ 🔴[RED TEXT] [photo] [Media it ‖ 他**Tā** *he*/有**yǒu** *has* /五 //  ‖ 🔴[RED TEXT] [photo] [Media it ‖ 我**Wǒ** *I* /家**jiā** *family*
+--- CHFUN05 #53 box modifier=""
+    tag: [Reorder] [randomize the order of the words] [autocheck] ⟶ 8A Check your understanding
+    tag: [Body] ⟶ Reorder the words to correctly form a past tense sentence us
+    black: 1. 我Wǒ (I) /爸爸bàba (dad) /买mǎi (buy)/了le /一个yí gè (one) /电脑diànnǎo (computer)
+    black: 1. 姐姐 Jiějie (older sister) /看 kàn (see) /了le /电影 diànyǐng (movie)
+    black: 1. 弟弟Dìdi (younger brother) /去qù (go) /了le /学校 xuéxiào (school)
+--- CHFUN05 #64 box modifier=""
+    tag: [reorder] [randomize the Chinese characters] [autocheck] ⟶ 13A Check your understanding
+    tag: [body] ⟶ Reorder the words to form correct sentences using 在.
+    black: 1. I am listening to music. 我wǒ / 在zài / 听tīng / 音乐yīnyuè
+    black: 1. Mum is reading a book. 妈妈māma / 在zài / 看kàn / 书shū
+    black: 1. Dad is playing pingpong. 爸爸bàba / 在zài / 打dǎ / 乒乓球pīngpāngqiú
+--- CHFUN05 #66 box modifier=""
+    tag: [reorder] [randomize the Chinese characters] [autocheck] ⟶ 14A Check your understanding
+    tag: [body] ⟶ Reorder the words to form correct sentences using 跟(gēn).
+    black: 1. *I play games with my friend.* 我wǒ 跟gēn 朋友péngyou 玩游戏 wán yóuxì
+    black: 1. *She cooks with her mum.* 她tā 跟gēn 妈妈māma 做饭zuòfàn
+--- CHFUN05 #83 box modifier=""
+    tag: [reorder] [randomize the order] [autocheck] ⟶ 21A Check your understanding
+    tag: [body] ⟶ Drag and reorder the words to form correct sentences using …
+    black: 1. During class I don’t play with the phone. 我wǒ / 上课shàngkè / 的时候de shíhou / 不玩手机bù wán shǒujī
+    black: 1. When she does homework, she listens to music. 她 tā / 做作业zuò zuòyè / 的时候de shíhou / 听音乐 tīng yīnyuè
+    black: 1. When we went home, it rained. 我们wǒmen / 回家huí jiā / 的时候de shíhou / 下雨了xià yǔ le
+--- CHFUN05 #87 box modifier=""
+    tag: [reorder] [randomise order] [autocheck] ⟶ 23A Check your understanding
+    tag: [body] ⟶ Reorder the words to form correct sentence using **因为(yīn wè
+    black: 1. It is raining, so I am not going. 因为yīnwèi / 下雨xià yǔ / 所以suǒyǐ / 我wǒ / 不去 bù qù
+    black: 1. My younger brother is tall, so he likes to play basketball. 因为yīnwèi /我弟弟wǒ dìdi/很高hěn gāo/他tā/喜欢xǐhuān /打篮
+--- CHFUN05 #92 box modifier=""
+    tag: [reorder] [randomise order] [autocheck] ⟶ 25A Check your understanding
+    tag: [body] ⟶ Reorder the words to form correct sentences using **从 (cóng 
+    black: 1. From March to May, it is spring. 从cóng/三月sānyuè/到dào/五月wǔyuè/是shì /春天chūntiān
+    black: 1. It takes 10 hours from China to New Zealand. 从cóng /中国Zhōngguó /到dào /新西兰Xīnxīlán /要十个小时yào shí gè xiǎoshí
+    GOLD CHFUN05_0_0.html: <div class="reorder row align-items-center" layout="re-sentence"> items 12: 我 | 的 | 老师 | 你 | 的 | 猫 | 他 | 的 | 书 | 她 | 的 | 朋友
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-paragraph"> items 0: 
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 12: 狗 | 很 | 大 | 天气 | 很 | 冷 | 苹果 | 很 | 红 | 我 | 很 | 忙
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 9: 天气 | 很 | 冷 | 苹果 | 很 | 红 | 我 | 很 | 忙
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 6: 苹果 | 很 | 红 | 我 | 很 | 忙
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 3: 我 | 很 | 忙
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 12: 红色 | 的 | 苹果 | 新 | 的 | 电脑 | 可爱 | 的 | 猫 | 我 | 有 | 一
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 12: 新 | 的 | 电脑 | 可爱 | 的 | 猫 | 我 | 有 | 一 | 只 | 猫 | 他
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 12: 可爱 | 的 | 猫 | 我 | 有 | 一 | 只 | 猫 | 他 | 有 | 五 | 只
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 12: 我 | 有 | 一 | 只 | 猫 | 他 | 有 | 五 | 只 | 狗 | 我 | 家
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 11: 他 | 有 | 五 | 只 | 狗 | 我 | 家 | 有 | 三 | 只 | 鸡
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 6: 我 | 家 | 有 | 三 | 只 | 鸡
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 12: 我 | 爸爸 | 买 | 了 | 一个 | 电脑 | 姐姐 | 看 | 了 | 电影 | 弟弟 | 去
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 8: 姐姐 | 看 | 了 | 电影 | 弟弟 | 去 | 了 | 学校
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 4: 弟弟 | 去 | 了 | 学校
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 12: 我 | 要 | 吃 | 午饭 | 她 | 要 | 去 | 看 | 电影 | 我们 | 要 | 去
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 9: 她 | 要 | 去 | 看 | 电影 | 我们 | 要 | 去 | 中国
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 4: 我们 | 要 | 去 | 中国
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 12: 我 | 在 | 听 | 音乐 | 妈妈 | 在 | 看 | 书 | 爸爸 | 在 | 打 | 乒乓球
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 12: 妈妈 | 在 | 看 | 书 | 爸爸 | 在 | 打 | 乒乓球 | 我 | 跟 | 朋友 | 玩游戏
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 12: 爸爸 | 在 | 打 | 乒乓球 | 我 | 跟 | 朋友 | 玩游戏 | 她 | 跟 | 妈妈 | 做饭
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 8: 我 | 跟 | 朋友 | 玩游戏 | 她 | 跟 | 妈妈 | 做饭
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 4: 她 | 跟 | 妈妈 | 做饭
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 12: 咖啡 | 比 | 茶 | 好喝 | 明天 | 比 | 今天 | 热 | 手机 | 比 | 电脑 | 贵
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 8: 明天 | 比 | 今天 | 热 | 手机 | 比 | 电脑 | 贵
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 4: 手机 | 比 | 电脑 | 贵
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 12: 我 | 上课 | 的时候 | 不玩手机 | 她 | 做作业 | 的时候 | 听音乐 | 我们 | 回家 | 的时候 | 下雨了
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 8: 她 | 做作业 | 的时候 | 听音乐 | 我们 | 回家 | 的时候 | 下雨了
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 4: 我们 | 回家 | 的时候 | 下雨了
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 11: 因为 | 下雨 | 所以 | 我 | 不去 | 因为 | 我弟弟 | 很高 | 他 | 喜欢 | 打篮球
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 6: 因为 | 我弟弟 | 很高 | 他 | 喜欢 | 打篮球
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 11: 从 | 三月 | 到 | 五月 | 是 | 春天 | 从 | 中国 | 到 | 新西兰 | 要十个小时
+    GOLD CHFUN05_0_0.html: <div class="reorder row" layout="re-sentence"> items 5: 从 | 中国 | 到 | 新西兰 | 要十个小时
+--- CHFUN07 #2 box modifier="randomise the order"
+    tag: [reorder][autocheck][randomise the word order] ⟶ 2A Check your understanding
+    tag: [body] ⟶ Drag and reorder the words to form a correct sentence.
+    black: 1. 我们 Wǒmen We / 昨天zuótiān yesterday / 看 电影kàn diànyǐng watched a movie
+    black: 1. 我 Wǒ I / 周末 zhōumò on the weekend/ 玩 游戏wán yóuxì play games.
+--- CHFUN07 #6 box modifier="randomise the order"
+    tag: [reorder] [randomise the word order] [autocheck] ⟶ 1A Check your understanding
+    tag: [Body] ⟶ Reorder the words to turn these answer statements into a que
+    TABLE 4x2: Answer statement ‖ Question // • 我想买衣服。 / Wǒ xiǎng mǎi yīfu.  ‖ 你nǐ you/ 想xiǎng want/ 买mǎi buy // • 我有七只猫。 / Wǒ yǒu qī zhī māo.  ‖ 你nǐ you / 有yǒu have / 几只jǐ zhī // • 我想去游泳。 / Wǒ xiǎng qù yóuyǒng ‖ 你nǐ you / 去qù going / 哪儿？nǎr w
+    GOLD CHFUN07_0_0.html: <div class="reorder row" layout="re-paragraph"> items 6: 我们 | 昨天 | 看 电影 | 我 | 周末 | 玩 游戏
+    GOLD CHFUN07_0_0.html: <div class="reorder row" layout="re-paragraph"> items 9: 二〇二四年 | 十月 | 十五日 | 星期三 | 上午 | 八点三十分 | 王 | 老师 | 你
+    GOLD CHFUN07_0_0.html: <div class="reorder row" layout="re-sentence"> items 11: 你 | 想 | 买 | 什么 | 你 | 有 | 几只 | 猫 | 你 | 去 | 哪儿？
+--- CHFUN08 #7 box modifier=""
+    tag: [reorder] [auto mark] [randomize order] ⟶ 1A Check your understanding
+    tag: [body] ⟶ Reorder the words, so it follows the structure who + when + 
+    TABLE 3x6: 1 ‖ 我们 / wǒmen / We ‖ 晚上 / wǎnshang / in the evening ‖ 坐公共汽车 / zuò gōnggòng qìchē / t ‖ 去商店 / qù shāngdiàn / go to the ‖ 买东西 / mǎi dōngxi / buy things // 2 ‖ 你 / Nǐ / You ‖ 中午 / Zhōngwǔ / at noon ‖ 走路 / zǒulù / walk ‖ 去朋友家 / qù péngyou jiā / go to  ‖ 吃饭 / Chīfàn / to eat // 3 ‖ 他们 / Tāmen / They ‖ 早上 / Zǎoshang / in the morning ‖ 去学校 / qù xuéxiào / to school ‖ 看书 / Kànshū / to read ‖ 
+    GOLD CHFUN08_0_0.html: <div class="reorder row" layout="re-sentence"> items 12: 我们 | 晚上 | 坐公共汽车 | 去商店 | 买东西 | 你 | 中午 | 走路 | 去朋友家 | 吃饭 | 他们 | 早上
+    GOLD CHFUN08_0_0.html: <div class="reorder row" layout="re-sentence"> items 9: 你 | 中午 | 走路 | 去朋友家 | 吃饭 | 他们 | 早上 | 去学校 | 看书
+    GOLD CHFUN08_0_0.html: <div class="reorder row" layout="re-sentence"> items 4: 他们 | 早上 | 去学校 | 看书
+--- ENFUN01 #19 box modifier="sentence/content .re"
+    tag: [Reorder Sentence/Content .re-img re-order]
+    TABLE 2x5: https://www.shutterstock.com/i ‖ https://www.shutterstock.com/i ‖ https://www.shutterstock.com/i ‖ https://www.shutterstock.com/i ‖ https://www.shutterstock.com/i // Technical ‖ Sophisticated ‖ Informal ‖ Slang ‖ Friendly
+--- ENFUN02 #3 box modifier=""
+    tag: [Reorder Interactive 10c]
+    tag: [Source Image from video above] ⟶ The kuia meets the spider.
+    tag: [1]
+    tag: [Source Image] ⟶ They decide to have a weaving competition
+    tag: [2]
+    tag: [Source Image] ⟶ The kuia makes mats and kits; the spider makes webs.
+    tag: [3]
+    tag: [Source Image] ⟶ The grandchildren arrive.
+    tag: [4]
+    tag: [Source Image] ⟶ The kuia and the spider argue about who has the best grandch
+    tag: [5]
+    tag: [Source Image] ⟶ They continue to live with each other.
+    tag: [6]
+    GOLD ENFUN02.html: <div class="reorder row" layout="re-standard"> items 6: The kuia meets the spider. | They decide to have a weaving competitio | The kuia makes mats and kits; the spider | The grandchildren arrive. | The kuia and the spider argue about who  | They continue to live with each other.
+--- ENFUN03 #3 box modifier=""
+    tag: [ReOrder] (Creative services put this into a self-correcting jumbled sentence with correct number of word bloc
+    TABLE 3x7: 🔴[RED TEXT] [Image] Please so ‖ The ‖ dog ‖ is ‖ chasing ‖ the ‖ cat. // 🔴[RED TEXT] [Image] [/RED TEX ‖ Tāne ‖ took ‖ a ‖ bug ‖ to ‖ kura. // 🔴[RED TEXT] [Image] [/RED TEX ‖ Weka ‖ sits ‖ on ‖ a ‖ rock.
+--- ENFUN03 #14 box modifier="sentences/content"
+    tag: [Reorder Sentences/Content]
+    tag: [body] ⟶ Reorder these boxes to create a complex sentence.
+    TABLE 6x6: 🔴[RED TEXT] Given [/RED TEXT] ‖ Lisa read an interesting artic ‖ While waiting for the bus ‖ **.** ‖ about a famous scientist ‖ **,** // 🔴[RED TEXT] Correct [/RED TEX ‖ While waiting for the bus ‖ **,** ‖ Lisa read an interesting artic ‖ about a famous scientist ‖ **.** // 🔴[RED TEXT] Given [/RED TEXT] ‖ Even though the dog has fleas ‖ the neighbours refuse ‖ to deflea their dog ‖ . ‖ , // 🔴[RED TEXT] Correct [/RED TEX ‖ Even though the dog has fleas ‖ , ‖ the neighbours refuse ‖ to deflea their dog. ‖ **.**
+    GOLD ENFUN03.html: <div class="reorder row" layout="re-sentence"> items 12: The | dog | is | chasing | the | cat. | Tāne | took | a | bug | to | kura.
+    GOLD ENFUN03.html: <div class="reorder row" layout="re-sentence"> items 11: Tāne | took | a | bug | to | kura. | Weka | sits | on | a | rock.
+    GOLD ENFUN03.html: <div class="reorder row" layout="re-sentence"> items 5: Weka | sits | on | a | rock.
+    GOLD ENFUN03.html: <div class="reorder row" layout="re-sentence"> items 12: While waiting for the bus | , | Lisa read an interesting article | about a famous scientist | . | Even though the dog has fleas | , | the neighbours refuse | to deflea their dog | . | Because I like to eat sweet things | ,
+--- ENGC201 #12 box modifier="sentence/content"
+    tag: [Reorder Sentence/Content] (currently in correct order)
+    TABLE 1x5: 🔴[RED TEXT] [image] [/RED TEX ‖ 🔴[RED TEXT] [image] [/RED TEX ‖ 🔴[RED TEXT] [image] [/RED TEX ‖ 🔴[RED TEXT] [image] [/RED TEX ‖ 🔴[RED TEXT] [image] [/RED TEX
+    black: .
+--- ENGC201 #13 box modifier="sentence/content.re"
+    tag: [Reorder Sentence/Content.re-img re-order.]
+    TABLE 1x5: 🔴[RED TEXT] [image] [/RED TEX ‖ 🔴[RED TEXT] [image] [/RED TEX ‖ 🔴[RED TEXT] [image] [/RED TEX ‖ 🔴[RED TEXT] [image] [/RED TEX ‖ 🔴[RED TEXT] [image] [/RED TEX
+    GOLD ENGC201_4.0.html: <div class="reorder connected row" layout="re-img"> items 5:  |  |  |  | 
+    GOLD ENGC201_5.0.html: <div class="reorder row" layout="re-standard"> items 5: The students arrive at the Te Awa reserv | Mrs Lakatani tumbles down the bank, inju | The students make a plan. | The Department of Conservation staff fin | Mrs Lakatani is placed into an ambulance
+--- ENGC204 #5 box modifier=""
+    tag: [reorder list]
+    TABLE 7x3: 1 ‖ Wipe the car with wax to give  ‖ 🔴[RED TEXT] [answer number 7] // 2 ‖ Rinse the car with clean water ‖ 🔴[RED TEXT] [answer number 5] // 3 ‖ Get a sponge or cloth. ‖ 🔴[RED TEXT] [answer number 3] // 4 ‖ Wash the car thoroughly with t ‖ 🔴[RED TEXT] [answer number 4]
+    GOLD ENGC204_1_0.html: <div class="reorder row" layout="re-standard"> items 7: Get a bucket from the garage. | Fill the bucket with warm, soapy water. | Get a sponge or cloth. | Wash the car thoroughly with the soapy w | Rinse the car with clean water using a h | Dry the car with a cloth or towel. | Wipe the car with wax to give it a shine
+--- ENGC302 #6 box modifier=""
+    tag: [Reorder interactive] (can the pieces be put together within this style of email template? These are currently
+    TABLE 8x2: **To** myfriend@tekura.org.nz // **Cc** mumtaylor@gmail.com // **Subject** Sawabona from Sout // Kia ora e hoa, / One (tahi) ‖ Awe, sawabona, howzit bru? I a
+    black: ‘Tot siens’ (Afrikaans) and hamba kahle (Zulu) (Goodbye) Cape Town!
+    black: Mā te wā,
+    black: Kahu
+    GOLD ENGC302_0.4.html: <div class="reorder row" layout="re-standard"> items 5: Awe, sawabona, howzit bru? I am visiting | First up, my bru Bheka took me on the ca | Once we left Table Mountain, we drove al | After we finished our super tube rides,  | Finally, he took me to my last surprise,
+--- ENGC401 #3 box modifier="content"
+    tag: [Reorder Content] (please shuffle- currently in correct order)
+    TABLE 8x1: The first film on record is cr // Viewers can watch a film on a  // Science fiction films are made // Earliest animated film.
+    GOLD ENGC401_0.1.html: <div class="reorder row" layout="re-standard"> items 8: The first film on record is created. | Viewers can watch a film on a projected  | Science fiction films are made, includin | Earliest animated film. | Sound effects and dialogue are in sync w | First technicolour films are produced. | The first fully CGI movie is made. | Virtual sets are used.
+--- ENGC403 #17 box modifier="insert rhs"
+    tag: [insert reorder activity] [shuffle] [autocheck] [insert image rhs activity box ⟶ Teenage Girl In Gym Exercising On Cross Trainer Stock Photo 
+    tag: ]
+    TABLE 3x1: 🔴[RED TEXT] [Q1 correct] [/RE // 🔴[RED TEXT] [Q2 correct] [/RE // 🔴[RED TEXT] [Q3 correct] [/RE
+--- ENGC403 #19 box modifier="sentence"
+    tag: [sentence reorder] [shuffle] [automark]
+    tag: [body] ⟶ Reorder the definitions so that they are in the correct plac
+    tag: [answers are currently in the correct place]
+    TABLE 4x2: We define fruit as: ‖ A part of a plant that people  // We define vegetables as: ‖ A part of a plant that people  // We define exempt as: ‖ When something is freed from s // We define GST as: ‖ Tax added to most goods and se
+--- ENGC403 #24 box modifier="insert"
+    tag: [insert reorder] [shuffle]
+    tag: [body] ⟶ Look at the list of quotes below and put them into order of 
+    tag: [answers currently in the correct order]
+    TABLE 3x1: Dr Jane Smith, a world leader  // According to my teacher, Mrs D // My friend John says, “knowing 
+    GOLD ENGC403_3_1.html: <div class="reorder row" layout="re-standard"> items 3: Exercise improves physical health. It is | Exercise improves people's physical appe | Exercise lets people wear stylish and tr
+    GOLD ENGC403_5_2.html: <div class="reorder row" layout="re-standard"> items 4: A part of a plant that people eat, which | A part of a plant that people eat, such  | When something is freed from something. | Tax added to most goods and services tha
+    GOLD ENGC403_6_0.html: <div class="reorder row" layout="re-standard"> items 3: Dr Jane Smith, a world leader in mathema | According to my teacher, Mrs Doe, “knowi | My friend John says, “knowing your times
+--- ENGI103 #2 box modifier=""
+    tag: [reorder interactive]
+    TABLE 2x5: 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]� // 🔴[RED TEXT] [image] [/RED TEX ‖ 🔴[RED TEXT] [image] [/RED TEX ‖ 🔴[RED TEXT] [image] [/RED TEX ‖ 🔴[RED TEXT] [image] [/RED TEX ‖ 🔴[RED TEXT] [image] [/RED TEX
+--- ENGI401 #9 box modifier=""
+    tag: [reorder interactive] currently in correct order
+    TABLE 1x5: 1 ‖ Rowling, J.K. ‖ *Harry Potter and the Philosop ‖ Bloomsbury, ‖ 1997.
+    TABLE 1x5: 2 ‖ Kinney, Jeff. ‖ *Diary of a Wimpy Kid.* ‖ Amulet Books, ‖ 2007.
+    GOLD ENGI401_2.0.html: <div class="reorder row" layout="re-paragraph"> items 12: Rowling, J.K. | Harry Potter and the Philosopher's Stone | Bloomsbury, | 1997. | Kinney, Jeff. | Diary of a Wimpy Kid. | Amulet Books, | 2007. | NASA Climate Kids. | What is Climate Change? | NASA, | 2023.
+--- ENGI405 #5 box modifier="where definitions can be moved into right place"
+    tag: [reorder activity where definitions can be moved into right place- autocheck]
+    black: • The chosen one The one who is destined to save the day
+    black: • Second chance Redemption story – someone who is not so great but then becomes great
+    black: • Love triangle One person being in love or interested in two other people who both like them back
+    black: • The quest Our main character is faced with a challenge to overcome or a place to go and do something
+    black: • The hidden worldA world that exists alongside reality that only some people know about
+    black: • Bad parents Unreliable or evil parents
+    black: • The outsider The person who doesn’t fit in
+    black: **Thinking questions when reading:**
+    black: Are any of the characters in my text similar to any other characters I know of?
+    black: Are there any storylines in this text that are like storylines I already know?
+    black: Below is a quick video of how recurring structure is used by Pixar.
+    tag: [insert video here ⟶ Storytelling Structure: The Pixar Story Spinehttps://www.you
+    tag: ]
+--- ENGI405 #16 box modifier="self correct. please jumble up"
+    tag: [interactive activity reorder. Self correct. Please jumble up]
+    black: One of the key ideas in the fairy tale *Little Red Riding Hood* is the importance of staying focused when you 
+    black: Instead of going straight to grandmother’s house, Little Red allows herself to be distracted by the wolf and i
+    black: The wolf is able to further distract her from her job by suggesting she gather flowers – this was not part of 
+    black: The distraction and the extra time picking flowers allows the wolf to find grandmother’s house, and get there 
+    black: Ultimately, if Red had just done her job and had not stopped to chat with the wolf, none of the terrible event
+    GOLD ENGI405_2.0.html: <div class="reorder row" layout="re-standard"> items 6: Cheap vs Affordable | Skinny vs Slim | Childish vs Youthful | Stubborn vs Determined | Lazy vs Relaxed | Old vs Wise
+    GOLD ENGI405_3.0.html: <div class="reorder row" layout="re-standard"> items 4: One of the key ideas in the fairy tale L | Instead of going straight to grandmother | The wolf is able to further distract her | Ultimately, if Red had just done her job
+    GOLD ENGI405_4.0.html: <div class="reorder row" layout="re-standard"> items 4: ‘“All the better to eat you with, dear!” | This line highlights the wolf’s terrible | In this story, an interesting idea to ex | If Little Red Riding Hood had listened t
+    GOLD ENGJ201_2.0.html: <div class="reorder row" layout="re-sentence"> items 12:  |  |  |  |  |  |  |  |  |  |  | 
+--- ENGJ202 #9 box modifier="sentence/content"
+    tag: [Reorder Sentence/Content 10E] (please mix up these words)
+    TABLE 9x2: Butterfly ‖ Sky // Sunshine ‖ Fine // Sunshine ‖ Line // Firefighter ‖ Brighter
+--- ENGJ403 #9 box modifier="insert"
+    tag: [insert reorder] [no correct answers] [shuffle]
+    TABLE 6x2: 🔴[RED TEXT] [H3] [/RED TEXT]� ‖ 🔴[RED TEXT] [H3] [/RED TEXT]� // The time obsessed teen who wea ‖ A city that is only visible at // The voiceover artist who can’t ‖ A world where speaking is ille // The ghost who’s afraid of the  ‖ A town where all the reflectio
+    GOLD ENGJ403_2.1.html: <div class="reorder row" layout="re-standard"> items 10: The time obsessed teen who wears watches | The voiceover artist who can't stop narr | The ghost who's afraid of the dark. | The detective who is good at their job b | The spider who wants to be adopted by a  | A city that is only visible at night. | A world where speaking is illegal. | A town where all the reflections show yo | A school where animals attend classes wi | An hour each day where your thoughts bec
+    GOLD ENGJ403_2.1.html: <div class="reorder row" layout="re-standard"> items 5: A city that is only visible at night. | A world where speaking is illegal. | A town where all the reflections show yo | A school where animals attend classes wi | An hour each day where your thoughts bec
+--- ENGR101 #7 box modifier=""
+    tag: [reorder interactive]
+    tag: (layout like 1B on this page ie text and image together https://tekuradev.desire2learn.com/d2l/le/content/7801
+    TABLE 1x4: https://drive.google.com/file/ ‖ https://drive.google.com/file/ ‖ https://drive.google.com/file/ ‖ https://drive.google.com/file/
+    GOLD ENGR101_02.0.html: <div class="reorder connected row" layout="re-img"> items 4: The caterpillars had been eating the swa | A butterfly came out of its chrysalis. | The butterfly crawled on Ming’s head. | Shanaya had a real butterfly on her T-sh
+--- ENGS102 #2 box modifier=""
+    tag: [reorder interactive]
+    TABLE 1x4: 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]�
+--- ENGS102 #14 box modifier=""
+    tag: [reorder interactive] (same format as 1B)
+    TABLE 1x4: 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]�
+    GOLD ENGS102_1.0.html: <div class="reorder connected row" layout="re-img"> items 4: The goats wanted to go across the bridge | The youngest billy goat met the troll. | The second billy goat went across the br | The third billy goat butted the troll in
+    GOLD ENGS102_4.0.html: <div class="reorder connected row" layout="re-img"> items 4: The Little Red Hen found some grain. | She asked for help from her friends. | She made a cake. | She ate it all by herself.
+--- ENGS404 #8 box modifier="insert . shuffle"
+    tag: [insert reorder activity. Shuffle]
+    black: 1. Early Saturday morning, Mia woke to an unexpected phone call.
+    tag: [Q1 correct]
+    black: 1. Her friend Sam needed help moving before Monday. He was having a bit of a meltdown.
+    tag: [Q2 correct]
+    black: 1. Mia brought coffee, gloves, and a playlist from 2016.
+    tag: [Q3 correct]
+    black: 1. They lifted boxes, argued about what counted as “light,” and laughed anyway.
+    tag: [Q4 correct]
+    black: 1. Sam’s cat hid under the couch.
+    tag: [Q5 correct]
+    black: 1. By Sunday afternoon, the flat was empty.
+    tag: [Q6 correct]
+    black: 1. They ate takeaways on the floor, tired but relieved.
+    tag: [Q7 correct]
+    tag: [close tab]
+    GOLD ENGS404_2_0.html: <div class="reorder row" layout="re-standard"> items 7: Early Saturday morning, Mia woke to an u | Her friend Sam needed help moving before | Mia brought coffee, gloves, and a playli | They lifted boxes, argued about what cou | Sam’s cat hid under the couch. | By Sunday afternoon, the flat was empty. | They ate takeaways on the floor, tired b
+--- ENO2060 #20 box modifier="insert - put the right side out of order"
+    tag: [insert interactive reorder- put the right side out of order]
+    TABLE 6x2: Source of inspiration ‖ *To Kill a Mockingbird* / 🔴[R // Ideas ‖ Empathy and resilience / Peopl // Audience ‖ Young adults and teenagers – e // Intent ‖ It shows how the character of 
+--- FRNO901 #2 box modifier=""
+    tag: [Reorder [autocheck]] ⟶ **1A Spot the greeting**
+    tag: [Body] ⟶ Listen carefully to the greetings below and select the match
+    tag: [ Text on one side to select and match to audiobuttons]
+    tag: [Audio buttons on the other side]
+    TABLE 4x2: **Bonjour** ‖ 🔴[RED TEXT] [Audiobutton for  // **Salut** ‖ 🔴[RED TEXT] [Audiobutton for  // **Coucou** ‖ 🔴[RED TEXT] [Audiobutton for  // **Bonsoir** ‖ 🔴[RED TEXT] [Audiobutton for 
+--- FRNO901 #12 box modifier=""
+    tag: [Reorder autocheck]] ⟶ **2A** **Build the question**
+    tag: [Body] ⟶ Drag the words into the correct order to build the question:
+    black: “What’s your name?”
+    TABLE 1x4: Comment, ‖ t’appelles ‖ tu, ‖ ?
+--- FRNO901 #16 box modifier=""
+    tag: [Reorder autocheck]] ⟶ **2C** **Put the conversation together**
+    tag: [Body] ⟶ Drag the conversation parts into the correct order, from sta
+    black: — Bonjour ! — Salut ! — Comment tu t’appelles ? — Je m’appelle Luc. — Et toi ? — Moi, c’est Sophie. — Comment 
+--- FRNO901 #23 box modifier=""
+    tag: [Reorder autocheck]] ⟶ **3C** **Put the conversation together**
+    tag: [Body] ⟶ Drag the different parts of the conversation into the correc
+    black: Bonjour!
+    black: Bonjour! Ça va?
+    black: Ça va bien merci. Et toi ?
+    black: Très bien !
+--- FRNO901 #42 box modifier=""
+    tag: [Reorder autocheck] ⟶ **6B** **Put the conversation together**
+    tag: [Body] ⟶ Drag the conversation parts into the correct order.
+    black: **–** Bonjour ! **–** Bonjour ! Quelles langues parles-tu ? **–** Je parle anglais et un peu de français. Et t
+--- FRNO901 #48 box modifier=""
+    tag: [Reorder [autocheck]] ⟶ **6F Put the Conversation Together**
+    tag: [Body] ⟶ Put the conversation parts into the correct order.
+    black: **–** Bonjour ! **–** Bonjour !
+    black: **–** C’est quand, ton anniversaire ? **–** Mon anniversaire, c’est le 17 avril.
+    black: **–** C’est quel jour ? **–** C’est lundi.
+    GOLD FRNO901_2_0.html: <div class="reorder row" layout="re-sentence"> items 4: Comment | tu | t’appelles | ?
+    GOLD FRNO901_2_0.html: <div class="reorder row autoCheck" layout="re-standard"> items 8: Bonjour ! | Salut ! | Comment tu t’appelles ? | Je m’appelle Luc. | Et toi ? | Moi, c’est Sophie. | Comment ça s’écrit ? | Ça s’écrit S – O – P – H – I – E
+    GOLD FRNO901_3_0.html: <div class="reorder row autoCheck" layout="re-standard"> items 4: Bonjour! | Bonjour! Ça va? | Ça va bien merci. Et toi ? | Très bien !
+    GOLD FRNO901_5_0.html: <div class="reorder row autoCheck" layout="re-standard"> items 4: Bonjour ! | Bonjour ! D’où viens-tu ? | Je viens de Nouvelle-Zélande. Et toi ? | Je viens de Canada.
+    GOLD FRNO901_6_0.html: <div class="reorder row autoCheck" layout="re-standard"> items 4: Bonjour ! | Bonjour ! Quelles langues parles-tu ? | Je parle anglais et un peu de français.  | Je parle anglais et espagnol.
+    GOLD FRNO901_6_0.html: <div class="reorder row autoCheck" layout="re-standard"> items 6: Bonjour ! | Bonjour ! | C’est quand, ton anniversaire ? | Mon anniversaire, c’est le 17 avril. | C’est quel jour ? | C’est lundi.
+--- FRNO902 #7 box modifier=""
+    tag: [Reorder [autocheck]] ⟶ **1E** **Build the phrase**
+    tag: [Body] ⟶ Put the words in the correct order below to build the phrase
+    TABLE 5x4: 1. ‖ voici ‖ mon ‖ père // 2. ‖ voici ‖ mes ‖ parents // 3. ‖ j’ai ‖ un ‖ chien // 4. ‖ c’est ‖ mon ‖ frère
+--- FRNO902 #13 box modifier=""
+    tag: [Reorder] [autocheck]] ⟶ **2C** **Build the sentence**
+    tag: [Body] ⟶ Put the words in the correct order to create clear French se
+    TABLE 4x4: 1. ‖ j’ai ‖ deux ‖ frères // 2. ‖ je n’ai pas ‖ de ‖ soeurs // 3. ‖ j’ai ‖ un ‖ chat // 4. ‖ j’ai ‖ trois ‖ soeurs
+--- FRNO902 #15 box modifier=""
+    tag: [Reorder [autocheck]] ⟶ **2D** **Build the sentence**
+    tag: [Body] ⟶ Put the words in the correct order to create clear French se
+    TABLE 3x4: 1. ‖ je suis ‖ enfant ‖ unique // 2. ‖ je suis ‖ fils ‖ unique // 3. ‖ je suis ‖ fille ‖ unique
+--- FRNO902 #23 box modifier=""
+    tag: [reorder [autocheck]] ⟶ **3D Sort the phrases**
+    tag: [Body] ⟶ Look at the words below and put them in the correct order to
+    TABLE 3x5: 1. ‖ ton ‖ chien ‖ s’appelle ‖ comment? // 2. ‖ il ‖ s’appelle ‖ comment? ‖  // 3. ‖ il ‖ est ‖ comment? ‖ 
+--- FRNO902 #25 box modifier=""
+    tag: [reorder [autocheck]] ⟶ **3E** **Sort the phrases**
+    tag: [Body] ⟶ Look at the words below and put them in the correct order to
+    TABLE 3x5: 1. ‖ mon ‖ chien ‖ s’appelle ‖ max // 2. ‖ il ‖ s’appelle ‖ max ‖  // 3. ‖ il ‖ est ‖ mignon ‖ 
+--- FRNO902 #27 box modifier="sentences"
+    tag: [reorder sentences] [autocheck]] ⟶ **3F Unjumble the pet conversation**
+    tag: [Body] ⟶ Now that you have explored the pet conversation, have a look
+    black: Tu as un animal ?
+    black: Oui, j’ai un chien.
+    black: Ton chien s’appelle comment ?
+    black: Mon chien s’appelle Max.
+    black: Il est comment?
+    black: Il est mignon !
+    TABLE 1x1: 🔴[RED TEXT] [Alert] [/RED TEX
+--- FRNO902 #40 box modifier=""
+    tag: [Reorder [autocheck]] ⟶ **4E Build the sentence**
+    tag: [Body] ⟶ Reorder the sentences below into correct French sentences.
+    black: 1. Il / a / les cheveux / bruns
+    black: 2. Elle / porte / des lunettes
+    black: 3. Il / a / des/ taches de rousseur
+    TABLE 1x1: 🔴[RED TEXT] [Alert] [Body] [/
+--- FRNO902 #59 box modifier=""
+    tag: [Reorder [autocheck]] ⟶ **6D Build the comparison**
+    tag: [Body] ⟶ Put the words in the correct order to make a correct French 
+    black: **1.** Emma / cheveux / longs / plus / les / que / Gaëlle / a
+    black: **Correct answer :** Emma a les cheveux plus longs que **Gaëlle**
+    black: 2. Hugo / cheveux / courts / plus / les / que / Léo / a
+    black: **Correct answer :** Hugo a les cheveux plus courts que Léo
+--- FRNO902 #67 box modifier=""
+    tag: [Reorder [autocheck]] ⟶ **7C Build the sentence**
+    tag: correct order shown below but with each sentence part separated by forward slash.
+    tag: [Body] ⟶ In this activity, you must put the words in the correct orde
+    black: 1. Il / a / les cheveux / bruns
+    black: 1. Ils / portent / des lunettes
+    black: 1. Emma / a / les cheveux / plus / longs / que / Gaëlle
+    black: 1. Le / chien / a / plus / de / poil / que / le poisson
+    GOLD FRNO902_1_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 12: voici | mon | père | voici | mes | parents | j’ai | un | chien | c’est | mon | frère
+    GOLD FRNO902_2_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 12: j’ai | deux | frères | je n’ai pas | de | soeurs | j’ai | un | chat | j’ai | trois | soeurs
+    GOLD FRNO902_2_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 9: je suis | enfant | unique | je suis | fils | unique | je suis | fille | unique
+    GOLD FRNO902_3_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 12: ton | chien | s’appelle | comment? | il | s’appelle | comment? | il | est | comment? | mon | chien
+    GOLD FRNO902_3_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 12: mon | chien | s’appelle | max | il | s’appelle | max | il | est | mignon | Tu as un animal ? | Oui, j’ai un chien.
+    GOLD FRNO902_3_0.html: <div class="reorder row" layout="re-standard"> items 6: Tu as un animal ? | Oui, j’ai un chien. | Ton chien s’appelle comment ? | Mon chien s’appelle Max. | Il est comment? | Il est mignon !
+    GOLD FRNO902_4_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 11: Il | a | les cheveux | bruns | Elle | porte | des lunettes | Il | a | des | taches de rousseur
+    GOLD FRNO902_6_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 12: Emma | a | les | cheveux | plus | longs | que | Gaëlle | Hugo | a | les | cheveux
+    GOLD FRNO902_7_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 12: Il | a | les cheveux | bruns | Ils | portent | des lunettes | Emma | a | les cheveux | plus | longs
+    GOLD FRNO902_8_0.html: <div class="reorder row" layout="re-paragraph" order="0"> items 12: Elle | a | les cheveux | longs | et | blonds | Emma | a | les cheveux | plus | longs | que
+--- GENO901 #19 box modifier=""
+    tag: [Reorder Interactive Activity 2D] [H3] ⟶ 2D Listen and put the mini dialogues in order.
+    tag: [Audiovisual item 3/Script 3] ⟶ GENO901 Audiovisual Request Template RAP 2026.docx
+    tag: [Create Audio Track 3 using AI generated voices] ⟶ GENO901 Audio-Script template Activity 2D -Te Ara Whakamua.d
+    tag: [1. Play audio button] [Reorder Interactive] 3 speech bubbles in jumbled/random order – ākonga put them in ord
+    tag: [correct order]
+    black: **Hallo, wie geht’s dir?**
+    black: **Danke, gut. Und dir?**
+    black: **Danke, auch gut.**
+    tag: [hover translation over auch = also]
+    tag: [2. Play audio button] [Reorder Interactive] [3 speech bubbles in jumbled/random order – ākonga put them in or
+    tag: [correct order]
+    black: **Guten Tag, Frau Schultz. Wie geht es Ihnen?**
+    black: **Guten Tag, Herr Müller. Danke, gut. Und Ihnen?**
+    black: **Naja, es geht mir nicht so gut.**
+    tag: [3. Play audio button] [Reorder Interactive] [3 speech bubbles in jumbled/random order – ākonga put them in or
+    tag: [correct order]
+--- GENO901 #40 box modifier=""
+    tag: [Reorder Quiz Auto check] ⟶ 5C Saying where you live
+    tag: [Body text] ⟶ Put the following sentences into the correct order.
+    black: Beispiel
+    tag: [hover translate ⟶ Example
+    tag: ] ⟶ England in London inIch wohne
+    TABLE 1x1: Ich wohne in London in England
+    black: 1. OamaruIch wohne inNeuseelandin
+    tag: [correct] ⟶ **Ich wohne in Oamaru in Neuseeland**
+    black: 1. DeutschlandDresdenIch wohneinin
+    tag: [correct] ⟶ **Ich wohne in Dresden in Deutschland**
+    black: 1. inÖsterreichinIch wohneSalzburg
+    tag: [correct] ⟶ **Ich wohne in Salzburg in Österreich**
+    black: 1. Ich wohneSchweizderininZürich
+    tag: [correct] ⟶ **Ich wohne in Zürich in der Schweiz**
+    tag: [Placeholder image of German teacher AV#5 ⟶ GENO901 Audiovisual Request Template RAP 2026.docx
+--- GENO901 #48 box modifier="students the green statements up and to match the english equivalents"
+    tag: [7B Reorder Autocheck] [Students slide the green statements up and down to match the English equivalents]
+    tag: [Answers shown in Green. Add reset option to allow for multiple attempts]
+    tag: [7B] ⟶ 7B Match the English meaning to the German questions.
+    TABLE 7x2: Wie geht es dir? Wie geht es I ‖ 🔴[RED TEXT] [correct] [/RED T // Wie heißt du? Wie heißen Sie? ‖ 🔴[RED TEXT] [correct] [/RED T // Welche Sprachen sprichst du? ‖ 🔴[RED TEXT] [correct] [/RED T // Wo wohnst du? Wo wohnen Sie? ‖ 🔴[RED TEXT] [correct] [/RED T
+    GOLD GENO901_0_2.html: <div class="reorder row autoCheck" layout="re-standard"> items 9: Hallo, wie geht’s dir? | Danke, gut. Und dir? | Danke, auch gut. auch | Guten Tag, Frau Schultz. Wie geht es Ihn | Guten Tag, Herr Müller. Danke, gut. Und  | Naja, es geht mir nicht so gut. | Tag, Lukas! Na, wie geht’s dir? | Prima! Und dir? | Auch sehr gut!
+    GOLD GENO901_0_2.html: <div class="reorder row autoCheck" layout="re-standard"> items 6: Guten Tag, Frau Schultz. Wie geht es Ihn | Guten Tag, Herr Müller. Danke, gut. Und  | Naja, es geht mir nicht so gut. | Tag, Lukas! Na, wie geht’s dir? | Prima! Und dir? | Auch sehr gut!
+    GOLD GENO901_0_2.html: <div class="reorder row autoCheck" layout="re-standard"> items 3: Tag, Lukas! Na, wie geht’s dir? | Prima! Und dir? | Auch sehr gut!
+    GOLD GENO901_0_5.html: <div class="reorder row autoCheck" layout="re-sentence"> items 12: Ich wohne | in | Oamaru | in | Neuseeland | Ich wohne | in | Dresden | in | Deutschland | Ich wohne | in
+    GOLD GENO901_0_5.html: <div class="reorder row autoCheck" layout="re-sentence"> items 12: Ich wohne | in | Dresden | in | Deutschland | Ich wohne | in | Salzburg | in | Österreich | Ich wohne | in
+    GOLD GENO901_0_5.html: <div class="reorder row autoCheck" layout="re-sentence"> items 11: Ich wohne | in | Salzburg | in | Österreich | Ich wohne | in | Zürich | in | der | Schweiz
+    GOLD GENO901_0_5.html: <div class="reorder row autoCheck" layout="re-sentence"> items 6: Ich wohne | in | Zürich | in | der | Schweiz
+    GOLD GENO901_0_7.html: <div class="reorder connected row autoCheck" layout="re-standard"> items 7: How are you? | What is your name? | Which languages do you speak? | Where do you live? | How old are you? | How do you spell that? | Where do you come from?
+--- HES1002 #7 box modifier="content"
+    tag: [Activity] [Reorder Content] [Instruction] ⟶ Sort the following foods from the least processed (whole foo
+    tag: [Insert image item 6a]
+    tag: [Insert image item 6a]
+    tag: [Insert image item 6a]
+    tag: [Insert image item 6a]
+    tag: [Insert image item 6a]
+--- HES1002 #16 box modifier=""
+    tag: [Reorder interactive]
+    tag: [Body] ⟶ Sort the following methods of contraception from least effec
+    tag: [Dev – I will place the pictures/media items in the correct order – please mix them up when creating the activ
+    tag: [Insert media item 21] Emergency pill
+    tag: [Insert media item 14] Condom
+    tag: [Insert media item 16] Combined pill
+    tag: [Insert media item 18] Contraceptive injection
+    tag: [Insert media item 15] IUD
+    tag: [Insert media item 20] Abstinence
+--- HPFUN901 #5 box modifier="the sentences. / match the sentence beginning to the ending"
+    tag: [interactive activity] re order the sentences. / match the sentence beginning to the ending.
+    TABLE 7x2: Long hair ‖ 🔴[RED TEXT] should be tied up // Avoid wearing lose clothing an ‖ 🔴[RED TEXT] accessories. [/RE // Clean as you go, it is safer ‖ 🔴[RED TEXT] and more hygienic // When using a knife hold it ‖ 🔴[RED TEXT] securely and roll
+    tag: [button] ⟶ check answers
+    tag: answers are shown on the table.
+    tag: [insert media item #29] ⟶ https://media.istockphoto.com/id/1446887654/vector/set-kids-
+    tag: use image of girl stretching for pan. – put a cross through it to symbolize not safe.
+--- MXDI202 #49 box modifier="numbers from smallest to largest"
+    tag: [interactive activity] ordering numbers from smallest to largest
+    black: 3 084 m
+    black: 1 930 m
+    black: 735 m
+    black: 6 200 m
+    black: 2 012 m
+    tag: Answers: 735m, 1 930m, 2 012m, 3 084m, 6 200m
+    tag: [image] ⟶ https://www.istockphoto.com/photo/giant-sub-gm106586670-1407
+    tag: [button] ⟶ check
+    tag: [button] ⟶ reset
+    GOLD MXDI202_10.0 proof 1.html: <div class="reorder row" layout="re-standard"> items 11: 735 m | 1 930 m | 2 012 m | 3 084 m | 6 200 m | 0.7 km | 1.9 km | 2.01 km | 3.08 km | 6.2 km | 62.0 km
+    GOLD MXDI202_10.0 proof 1.html: <div class="reorder row" layout="re-standard"> items 6: 0.7 km | 1.9 km | 2.01 km | 3.08 km | 6.2 km | 62.0 km
+--- MXEO301 #30 box modifier="- self-marking"
+    tag: [Activity 3G – self-marking reorder]
+    black: 1. -5, -12, -8, -3, -20
+    tag: -20, -12, -8, -5, -3
+    black: 1. -14, -7, -25, -9, -18
+    tag: -25, -18, -14, -9, -7
+    black: 1. -6, -22, -11, -4, -19
+    tag: -22, -19, -11, -6, -4
+    black: 1. -17, -21, -5, -8, -24
+    tag: -24, -21, -17, -8, -5
+    black: 1. 3, -16, -7, -12, 7
+    tag: -16, -12, -7, 3, 7
+--- MXEX302 #12 box modifier=""
+    tag: [Reorder interactive] is it possible to have this as a reorder interactive and also a type and check for the a
+    TABLE 5x2: 🔴[RED TEXT] Reorder (These ha ‖ 🔴[RED TEXT] Type and check an // • 2 3 4 5 7 8 13 ‖ Median = 🔴[RED TEXT] 5 [/RED  // • 4 6 7 18 22 23 ‖ Median = 🔴[RED TEXT] 12.5 [/R // • 2.3 3.6 3.7 4.1 4.5 7.3 8.2 ‖ Median = 🔴[RED TEXT] 4.1 [/RE
+    tag: [Button] ⟶ Check answers
+    tag: [Button] ⟶ Reset
+    GOLD MXEX302_5.0.html: <div class="reorder row" layout="re-sentence"> items 12: 2 | 3 | 4 | 5 | 7 | 8 | 13 | 4 | 6 | 7 | 18 | 22
+    GOLD MXEX302_5.0.html: <div class="reorder row" layout="re-sentence"> items 12: 4 | 6 | 7 | 18 | 22 | 23 | 2.3 | 3.6 | 3.7 | 4.1 | 4.5 | 7.3
+    GOLD MXEX302_5.0.html: <div class="reorder row" layout="re-sentence"> items 12: 2.3 | 3.6 | 3.7 | 4.1 | 4.5 | 7.3 | 8.2 | 45 | 46 | 47 | 50 | 59
+    GOLD MXEX302_5.0.html: <div class="reorder row" layout="re-sentence"> items 6: 45 | 46 | 47 | 50 | 59 | 102
+--- MXFU301 #3 box modifier="- self-marking"
+    tag: [Activity 1A – self-marking, reorder interactive]
+    tag: (Currently in correct order – please jumble)
+    black: Put the words below into order to show their degree of likelihood.
+    black: Certain not to happen → Certain to happen
+    black: 1.
+    tag: Impossible, Unlikely, Possible, Likely, Certain
+    black: 1.
+    tag: Never, Hardly ever, Sometimes, Often, Always
+    black: 1.
+    tag: Zero chance, Slim chance, Even chance, Good chance, Bound to happen
+    black: 1.
+    tag: Out of the question, Very doubtful, Might not happen, There’s a chance, More than likely, Guaranteed
+    tag: [Activity 1B-Drag and Drop] ⟶ Using probability words and phrases
+    tag: [Body] ⟶ Drag each of these events to the column that best describes 
+    tag: (Correct placement is in red)
+    TABLE 2x5: **Impossible** The event will  ‖ **Unlikely** / The event will  ‖ **Possible** / The event MIGHT ‖ **Likely** / The event has a G ‖ **Certain** / The event WILL h // 🔴[RED TEXT] Riding the Ferris ‖ 🔴[RED TEXT] Winning the jackp ‖ 🔴[RED TEXT] Winning a tug-of- ‖ 🔴[RED TEXT] Finding candy flo ‖ 🔴[RED TEXT] Getting wet on th
+--- MXFUN01 #21 box modifier=""
+    tag: [Reorder interactive] Could the following numbers please be able to be dragged in order. The correct order has
+    black: 1. 1234 2567 3 890 4 321 5 678 6 789
+    black: 1. 4 012 4 145 4 278 4 298 4 512 4 654
+    black: 1. 51 204 52 367 53 489 54 602 54 635 58 935
+    black: 1. 12 698 46 827 98 652 115 468 250 015 468 457
+    tag: [Button] ⟶ Check answers
+    tag: [Button] ⟶ Reset
+--- MXFUN01 #22 box modifier=""
+    tag: [Reorder interactive] Could the following numbers please be able to be dragged in order. The correct order has
+    black: 1. 8 276 7 892 5 643 3 457 2 109
+    black: 1. 9 832 7 465 6 321 4 908 3 157
+    black: 1. 98 765 87 654 76 543 65 432 54 321
+    black: 1. 987 654 234 567 123 456 67 890 34 567
+    tag: [Button] ⟶ Check answers
+    tag: [Button] ⟶ Reset
+--- MXFUN03 #7 box modifier=""
+    tag: [Reorder interactive] Could these please be coloured and made to look cool! Sorry about the table not letting 
+    TABLE 1x7: Mane / Monday ‖ Tūrei / Tuesday ‖ Wenerei / Wednesday ‖ Tāite / Thursday ‖ Paraire / Friday ‖ Hāterei / Saturday ‖ Rātapu / Sunday
+    tag: [Button] ⟶ Check answers
+    tag: [Button] ⟶ Reset
+--- MXFUN03 #8 box modifier=""
+    tag: [Reorder interactive] Same as above please.
+    TABLE 2x6: Hānuere / January ‖ Pēpuere / February ‖ Māehe / March ‖ Āperira / April ‖ Mei / May ‖ Hune / June // Hūrae / July ‖ Ākuhata / August ‖ Hepetema / September ‖ Oketopa / October ‖ Noema / November ‖ Tihema / December
+    tag: [Button] ⟶ Check answers
+    tag: [Button] ⟶ Reset
+    GOLD MXFUN03.html: <div class="reorder row" layout="re-column"> items 12: Mane | Monday | Tūrei | Tuesday | Wenerei | Wednesday | Tāite | Thursday | Paraire | Friday | Hāterei | Saturday | Rātapu | Sunday | Hānuere | January | Pēpuere | February | Māehe | March | Āperira | April | Mei | May
+    GOLD MXFUN03.html: <div class="reorder connected row" layout="re-standard"> items 12: Hānuere | January | Pēpuere | February | Māehe | March | Āperira | April | Mei | May | Hune | June | Hūrae | July | Ākuhata | August | Hepetema | September | Oketopa | October | Noema | November | Tihema | December
+--- OSAH401 #3 box modifier=""
+    tag: [reorder] Please scramble the order when creating interactive – in correct order now
+    tag: [body] ⟶ Match the correct factor with the explanation and example by
+    TABLE 4x2: 🔴[RED TEXT] [front] [/RED TEX ‖ 🔴[RED TEXT] [back] [/RED TEXT // Screen anonymity / 🔴[RED TEXT ‖ People sometimes say or do thi // Always online / 🔴[RED TEXT] [ ‖ The internet is part of everyd // Young people are more at risk  ‖ Teens and kids use the interne
+--- OSAH401 #13 box modifier=""
+    tag: [reorder] ⟶ Read each scenario and arrange the reporting steps in the co
+    tag: Correct order numbered above
+    TABLE 4x5: 🔴[RED TEXT] Scenario 1 [/RED  ‖ 🔴[RED TEXT] 3 [/RED TEXT]🔴 ‖ 🔴[RED TEXT] 2 [/RED TEXT]🔴 ‖ 🔴[RED TEXT] 1 [/RED TEXT]🔴 ‖ 🔴[RED TEXT] 4 [/RED TEXT]🔴 // You’re 14. Someone from your c ‖ **Make a report to Netsafe** / ‖ **Ask the person to stop, bloc ‖ **Tell a trusted adult or guar ‖ **Apply to the District Court* // 🔴[RED TEXT] Scenario 2 [/RED  ‖ 🔴[RED TEXT] 3 [/RED TEXT]🔴 ‖ 🔴[RED TEXT] 4 [/RED TEXT]🔴 ‖ 🔴[RED TEXT] 1 [/RED TEXT]🔴 ‖ 🔴[RED TEXT] 2 [/RED TEXT]🔴 // You’re 15. Someone from your s ‖ **Make a report to Netsafe** / ‖ **Report to the police** / Bec ‖ **Tell a trusted adult or guar ‖ **Block the person and report 
+    tag: [type the answer] ⟶ Type which scenario was a criminal offense, and which was no
+    tag: [show answer] ⟶ Scenario 1 was non-criminal and scenario 2 was a criminal of
+    GOLD OSAH401_2.0.html: <div class="reorder row" layout="re-standard"> items 8: Tell a trusted adult or guardian. Talk t | Ask the person to stop, block them, and  | Make a report to Netsafe. If the comment | Apply to the District Court. If Netsafe  | Tell a trusted adult or guardian. Let a  | Block the person and report the messages | Make a report to Netsafe. Go to netsafe. | Report to the police. Because this is a 
+    GOLD OSAH401_2.0.html: <div class="reorder row" layout="re-standard"> items 4: Tell a trusted adult or guardian. Let a  | Block the person and report the messages | Make a report to Netsafe. Go to netsafe. | Report to the police. Because this is a 
+--- OSAH501 #7 box modifier=""
+    tag: [reorder]
+    TABLE 11x2: 🔴[RED TEXT] [title] [/RED TEX ‖ Description 🔴[RED TEXT] CS –  // • No sharing of sensitive pers ‖ You shouldn’t post private inf // • No threats or intimidation ‖ Messages that scare, threaten, // • No grossly offensive content ‖ If something would deeply upse
+--- OSAI401 #7 box modifier=""
+    tag: [reorder] The cards on the left currently match with the cards on right. Please reorder/scramble right column
+    TABLE 8x2: 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]� // Predictive text and autocorrec ‖ Learns how people write and su // Gaming ‖ Controls characters, makes sma // Chatbots and customer service ‖ Answers questions, helps with 
+--- OSAI401 #17 box modifier=""
+    tag: [reorder] CS – reorder the examples on the right with the tips on the left. Currently answers are aligned corr
+    TABLE 9x2: 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] Example [/RED TEX // Be specific and avoid vague qu ‖ Explain the causes of World Wa // Break it down. If your task is ‖ First list three renewable ene // Set clear goals. Tell the AI w ‖ Summarise Macbeth in under 150
+--- OSAI401 #25 box modifier=""
+    tag: [reorder]
+    TABLE 6x4: Scenario 🔴[RED TEXT] [static  ‖ Benefit ‖ Risk ‖ Managing the Risk // An AI tool helps ākonga summar ‖ Saves time and makes complex i ‖ Summary could leave out key de ‖ Check the summary against your // A chatbot answers questions fo ‖ Gives instant help and explain ‖ Could give wrong answers or st ‖ Always cross-check with truste // AI suggests ideas for an Engli ‖ Helps brainstorm topics and st ‖ Might include biased examples  ‖ Review suggestions, add your o
+    GOLD OSAI401-01.html: <div class="reorder connected reorder-column row margB0" layout="re-co items 7: Learns how people write and suggests or  | Controls characters, makes smart enemies | Answers questions, helps with orders, an | Finds the fastest routes, avoids traffic | Use AI to help move, see, and make decis | Attempts to find the best results for yo | Shows you posts you might like; filters 
+    GOLD OSAI401-01.html: <div class="reorder row" layout="re-standard"> items 7: Learns how people write and suggests or  | Controls characters, makes smart enemies | Answers questions, helps with orders, an | Finds the fastest routes, avoids traffic | Use AI to help move, see, and make decis | Attempts to find the best results for yo | Shows you posts you might like; filters 
+    GOLD OSAI401-02.html: <div class="reorder connected reorder-column row margB0" layout="re-co items 8: Explain the causes of World War I in thr | First list three renewable energy source | Summarise Macbeth in under 150 words for | Explain gravity in simple terms for a Ye | Explain solar and wind energy used in Ao | Summarise photosynthesis in a numbered l | Ask AI to improve its answer by adding e | Start fresh with a clearer, more detaile
+    GOLD OSAI401-02.html: <div class="reorder row" layout="re-standard"> items 8: Explain the causes of World War I in thr | First list three renewable energy source | Summarise Macbeth in under 150 words for | Explain gravity in simple terms for a Ye | Explain solar and wind energy used in Ao | Summarise photosynthesis in a numbered l | Ask AI to improve its answer by adding e | Start fresh with a clearer, more detaile
+    GOLD OSAI401-03.html: <div class="reorder connected reorder-column row margB0" layout="re-co items 12: Saves time and makes complex ideas easie | Gives instant help and explains steps. | Helps brainstorm topics and structure qu | Makes it easy to find related content. | Speeds up design and gives creative opti | Summary could leave out key details or i | Could give wrong answers or stop you fro | Might include biased examples or ideas t | Can trap you in a ‘bubble’ and miss dive | Could copy styles without permission or  | Check the summary against your textbook  | Always cross-check with trusted sources 
+    GOLD OSAI401-03.html: <div class="reorder row" layout="re-standard"> items 12: Saves time and makes complex ideas easie | Gives instant help and explains steps. | Helps brainstorm topics and structure qu | Makes it easy to find related content. | Speeds up design and gives creative opti | Summary could leave out key details or i | Could give wrong answers or stop you fro | Might include biased examples or ideas t | Can trap you in a ‘bubble’ and miss dive | Could copy styles without permission or  | Check the summary against your textbook  | Always cross-check with trusted sources 
+--- OSAI501 #11 box modifier=""
+    tag: [reorder]
+    TABLE 6x4: Scenario 🔴[RED TEXT] [static  ‖ Benefit ‖ Risk ‖ Managing the risk // An AI tool helps doctors diagn ‖ Speeds up diagnosis and helps  ‖ May misdiagnose due to biased  ‖ Doctors must be well-trained a // A chatbot helps ākonga with ho ‖ Provides instant help and supp ‖ Could give incorrect answers o ‖ Ākonga should cross-check answ // Police use facial recognition  ‖ Helps solve crimes faster and  ‖ Can misidentify people, leadin ‖ Systems must be tested for bia
+    GOLD OSAI501-02.html: <div class="reorder connected reorder-column row margB0" layout="re-co items 12: Speeds up diagnosis and helps detect iss | Provides instant help and supports learn | Helps solve crimes faster and improves p | Makes it easier to find interesting cont | Encourages creativity and gives access t | May misdiagnose due to biased or incompl | Could give incorrect answers or discoura | Can misidentify people, leading to unfai | Can trap users in a "bubble" or echo cha | May copy styles without permission or re | Doctors must be well-trained and able to | Ākonga should cross-check answers with t
+    GOLD OSAI501-02.html: <div class="reorder row" layout="re-standard"> items 12: Speeds up diagnosis and helps detect iss | Provides instant help and supports learn | Helps solve crimes faster and improves p | Makes it easier to find interesting cont | Encourages creativity and gives access t | May misdiagnose due to biased or incompl | Could give incorrect answers or discoura | Can misidentify people, leading to unfai | Can trap users in a "bubble" or echo cha | May copy styles without permission or re | Doctors must be well-trained and able to | Ākonga should cross-check answers with t
+--- OSBY201 #5 box modifier="show"
+    tag: [reorder – show answer] (coloured column is static – currently in correct order – please mix the answers up)
+    tag: [body] ⟶ Match the example and result to the correct impact.
+    TABLE 3x3: Emotional impact ‖ Crying after being made fun of ‖ *I feel embarrassed and don’t  // Social impact ‖ Avoiding group games, classes  ‖ *I’ll just play by myself now. // Behavioural impact ‖ Getting angry or frustrated mo ‖ *I yelled at my brother becaus
+--- OSBY201 #18 box modifier=""
+    tag: [reorder autocheck]
+    tag: [body] ⟶ Billy Bulldog is giving his thumbs up to good banter and thu
+    tag: CS: Please scramble the order – currently in correct order
+    TABLE 7x2: 🔴[RED TEXT] static [/RED TEXT ‖ 🔴[RED TEXT] move [/RED TEXT]� // I cannot believe you beat me a ‖ 🔴[RED TEXT] [image] [/RED TEX // Who let this guy in again? ‖ 🔴[RED TEXT] [Image] [/RED TEX // You are too fast at this game! ‖ 🔴[RED TEXT] [image] [/RED TEX
+--- OSBY401 #5 box modifier=""
+    tag: [Reorder]
+    black: Match these definitions to the correct title.
+    TABLE 10x2: 🔴[RED TEXT] [heading] [/RED T ‖ 🔴[RED TEXT] [heading] [/RED T // Flaming or roasting 🔴[RED TEX ‖ Posting or sending angry, insu // Trolling 🔴[RED TEXT] [image]  ‖ Deliberately posting offensive // Dissing 🔴[RED TEXT] [image] [ ‖ Publicly putting someone down 
+--- OSBY501 #4 box modifier=""
+    tag: [Reorder]
+    black: Match these descriptions and examples with the correct title.
+    TABLE 10x3: 🔴[RED TEXT] [heading][static] ‖ 🔴[RED TEXT] [heading] [reorde ‖ 🔴[RED TEXT] [heading] [reorde // Flaming or Roasting 🔴[RED TEX ‖ Posting or sending angry, insu ‖ Josh posts a photo of himself  // Trolling 🔴[RED TEXT] [image]  ‖ Deliberately posting offensive ‖ An anonymous person joins a sc // Dissing 🔴[RED TEXT] [image] [ ‖ Publicly putting someone down  ‖ Ella shares a video of herself
+--- OSBY501 #13 box modifier=""
+    tag: [reorder]
+    TABLE 10x2: **Disrespectful communications ‖ **Respectful Alternative**🔴[R // Text message: / *That’s a dumb ‖ I’m not sure that idea will wo // Text Message: / *Whatever.* ‖ I see your point – thanks for  // Text message: / WHY DID YOU DO ‖ I’m confused about what happen
+--- OSBY501 #24 box modifier=""
+    tag: [Reorder]
+    black: Match these definitions to the correct title.
+    TABLE 6x3: 🔴[RED TEXT] [static] [/RED TE ‖ 🔴[RED TEXT] [reorder column]  ‖ 🔴[RED TEXT] [show answer] [/R // 🔴[RED TEXT] [H4] [/RED TEXT]� ‖ Jess receives a message from s ‖ Consent isn’t freely given if  // 🔴[RED TEXT] [H4] [/RED TEXT]� ‖ Niko agrees to share a voice m ‖ People have the right to chang // 🔴[RED TEXT] [H4] [/RED TEXT]� ‖ Ari sends a selfie to someone  ‖ Consent must be based on full,
+    GOLD OSBY501-03.html: <div class="reorder row" layout="re-standard"> items 9: I'm not sure that idea will work -- mayb | I see your point -- thanks for sharing.  | I'm confused about what happened -- coul | &#128077; or &#128522; with "Interesting | &#128517; with "We've all been there --  | Ask before posting; choose images everyo | Type a quick response in chat or use rea | I noticed a few things that might have b | Hey, I saw your message but I'm tied up 
+    GOLD OSBY501-05.html: <div class="reorder row" layout="re-standard"> items 5: Jess receives a message from someone the | Niko agrees to share a voice message in  | Ari sends a selfie to someone they trust | Sam gets a message late at night asking, | Mo agrees to share a funny video meme wi
+--- OSGM401 #8 box modifier=""
+    tag: [Reorder]
+    TABLE 7x2: 🔴[RED TEXT] Scenarios [/RED T ‖ 🔴[RED TEXT] Answers [/RED TEX // You’re playing an online game  ‖ Don’t share your email. It cou // A pop-up appears mid-game sayi ‖ Don’t click it. It could be a  // You join a game that’s rated R ‖ Leave the game. It’s not meant
+    tag: [show answer] Show after all questions are completed
+    GOLD OSGM401-01.html: <div class="reorder reorder-column row connected hoverBoxes" layout="r items 9: Linked to sleep problems and bad physica | Inappropriate content Games can include  | Can get in the way of important tasks, s | Use manipulative design features and adv | Gaming disorder (gaming addiction) Gamin | Helps reduce stress and anxiety Casual g | Help people to connect with others Gamin | Support learning in areas like problem-s | Can help to improve hand—eye coordinatio
+    GOLD OSGM401-02.html: <div class="reorder row" layout="re-standard"> items 6: Don’t share your email. It could be a sc | Don’t click it. It could be a scam or in | Leave the game. It’s not meant for your  | Don’t join. It’s safer to keep chats ins | Mute, block, or report them. You don’t h | Don’t share your personal information. T
+--- OSOH101 #22 box modifier=""
+    tag: [reorder]
+    TABLE 7x2: 🔴[RED TEXT] Image [/RED TEXT] // 🔴[RED TEXT] Static [/RED TEXT ‖ 🔴[RED TEXT] Moveable (please  // *“Haha, look at Kiri’s spellin ‖ 🔴[RED TEXT] ✅ [/RED TEXT]🔴 // *“Can I share your drawing on  ‖ ✅
+    GOLD OSOH101_0.3.html: <div class="reorder row" layout="re-standard"> items 5:  |  |  |  | 
+--- OSOH301 #4 box modifier=""
+    tag: [Reorder]
+    black: Match these definitions to the correct title.
+    TABLE 9x2: READY🔴[RED TEXT] [image] [/RE ‖ Make sure you have everything  // EYES AND EARS 🔴[RED TEXT] [im ‖ Listen carefully and use headp // ASK FOR HELP 🔴[RED TEXT] [ima ‖ If you don't understand someth // DON’T SHARE PERSONAL INFORMATI ‖ Keep personal information priv
+    black: 1.
+--- OSOH401 #13 box modifier=""
+    tag: [reorder]
+    tag: Instruction [body] ⟶ Move a ‘Do’ box to the examples of good device care and ‘Do 
+    TABLE 8x2: 🔴[RED TEXT] Static [/RED TEXT ‖ 🔴[RED TEXT] Moveable boxes (i // https://www.istockphoto.com/ph ‖ **Do not** stack heavy things  // https://www.istockphoto.com/ph ‖ **Do** keep it charged. // https://www.istockphoto.com/ph ‖ **Do no**t leave it outside or
+--- OSOH501 #19 box modifier=""
+    tag: [reorder]
+    TABLE 8x3: 🔴[RED TEXT] Scenario: [/RED T ‖ 🔴[RED TEXT] [answers] [/RED T ‖ 🔴[RED TEXT] [show answer] [/R // Sophie is doing her English re ‖ **Create a dedicated study spa ‖ **Why it works:** A clear, qui // Amelia struggles to stay focus ‖ **Set clear time blocks.** ‖ **Why it works:** Short bursts // Hannah plans to revise for her ‖ **Limit digital distractions.* ‖ **Why it works:** Removing tem
+--- OSOH501 #22 box modifier=""
+    tag: [re-order] CS – Column reorder
+    TABLE 11x2: 🔴[RED TEXT] [Question] [/RED  ‖ 🔴[RED TEXT] [Question] [/RED  // Posting photos/videos. ‖ Websites tracking browsing his // Commenting on posts and taggin ‖ Apps collecting location data. // Liking or reacting to content. ‖ Online stores saving shopping 
+    GOLD OSOH501-02.html: <div class="reorder row" layout="re-standard"> items 10: Keep it clean – use a soft cloth to gent | Charge it properly – plug it in before t | Use a case or bag – protect it when carr | Keep it safe – store it in a dry, cool p | Ask for help – if something doesn’t look | Eat or drink near your device – spills c | Leave it on the floor or bed – it could  | Leave your device unattended especially  | Use the same password for all your accou | Use it with dirty or wet hands – this ca
+    GOLD OSOH501-02.html: <div class="reorder row" layout="re-standard"> items 5: Eat or drink near your device – spills c | Leave it on the floor or bed – it could  | Leave your device unattended especially  | Use the same password for all your accou | Use it with dirty or wet hands – this ca
+    GOLD OSOH501-04.html: <div class="reorder row" layout="re-standard"> items 7: Create a dedicated study space. Why it w | Set clear time blocks. Why it works: Sho | Limit digital distractions. Why it works | Prepare before you start. Why it works:  | Use visual reminders. Why it works: Visu | Manage your environment. Why it works: S | Reward yourself. Why it works: Rewards m
+    GOLD OSOH501-05.html: <div class="reorder row" layout="re-standard"> items 11: Passive digital footprints | Websites tracking browsing history. | Apps collecting location data. | Online stores saving shopping habits. | Streaming services recording what you wa | Other people posting about you. | Businesses storing your data. | Search engines indexing your name. | Advertising networks tracking behaviour. | Wi-Fi and device tracking. | Likes and clicks tracked by algorithms.
+--- OSSC301 #4 box modifier="please scramble"
+    tag: [reorder- please scramble column 2]
+    TABLE 6x2: 🔴[RED TEXT] Static text [/RED ‖ 🔴[RED TEXT] Correct order – p // Ransomware scam ‖ Upgrade your skins! Click here // Fake competition scam ‖ You have won a prize! Click he // Impersonation scam ‖ Join [name] and get your vouch
+--- OSSC401 #4 box modifier="please scramble"
+    tag: [reorder- please scramble column 2]
+    TABLE 7x2: 🔴[RED TEXT] Static text [/RED ‖ 🔴[RED TEXT] Correct order – p // Malware scam ‖ Limited offer: Free skins upgr // Fake competition scam ‖ You have won a prize – just pa // Impersonation scam ‖ Hi [name], thank you for being
+    tag: [Activity 1B] [Dropdown quiz]
+    tag: [heading] ⟶ Which AI scam is this?
+--- OSSC501 #7 box modifier=""
+    tag: [reorder] column – CS 3 columns with headings at the top. Answers need to be in correct column. Row does not m
+    TABLE 8x3: 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]� // Misunderstanding or confusion. ‖ Fake news sites or posts. ‖ Leaking private details. // Poor research or assumptions. ‖ Edited images or videos. ‖ Context twisting. // Viral sharing without checking ‖ Bots and fake accounts. ‖ Doxxing.
+--- OSSC501 #17 box modifier=""
+    tag: [reorder][autocheck]
+    TABLE 8x2: 🔴[RED TEXT] [static] [/RED TE ‖ 🔴[RED TEXT] [reorder column]  // Step 1: ‖ Stop all contact / • Don’t rep // Step 2: ‖ Secure your accounts / • Conta // Step 3: ‖ Gather evidence / • Save the w
+    GOLD OSSC501_4_0.html: <div class="reorder row autoCheck" layout="re-standard"> items 7: Stop all contact Don’t reply, click link | Secure your accounts Contact your bank s | Gather evidence Save the web address (UR | Report to your bank if you paid money or | Block the scammer Block their email, pho | Manage the risk If you clicked a link or | Get support Visit netsafe.org.nz or call
+--- OSSM401 #6 box modifier=""
+    tag: [reorder]
+    tag: [body] ⟶ Move each heading so it matches the correct positive social 
+    TABLE 7x2: 🔴[RED TEXT] static [/RED TEXT ‖ 🔴[RED TEXT] Move (in correct  // People can share tips, vlogs,  ‖ Keep learning. // Music, art, writing and more!  ‖ Keep creating. // There are many positive online ‖ Keep helping.
+    GOLD OSSM401_2_0.html: <div class="reorder row" layout="re-standard"> items 6: Keep learning. | Keep creating. | Keep helping. | Keep networking. | Keep up to date. | Keep in touch.
+--- OSSM501 #25 box modifier=""
+    tag: [reorder] CS – match comparison to description. Headings at the top.
+    TABLE 8x2: 🔴[RED TEXT] [H5] [/RED TEXT]� ‖ 🔴[RED TEXT] [H5] [/RED TEXT]� // Highlight reel effect ‖ People share the best parts of // Social currency ‖ Likes and followers feel like  // Fear of missing out (FOMO) ‖ When people see others’ posts 
+    tag: CS – image in centre, speech bubble left and right of image
+    TABLE 1x3: 🔴[RED TEXT] [speech bubble] [ ‖ 🔴[RED TEXT] [image] [/RED TEX ‖ 🔴[RED TEXT] [speech bubble] [
+--- OSSM501 #37 box modifier=""
+    tag: [re-order] CS – Column reorder
+    TABLE 13x2: 🔴[RED TEXT] [image] [/RED TEX ‖ 🔴[RED TEXT] [image] [/RED TEX // Posting rude or offensive comm ‖ Sharing achievements or milest // Sharing inappropriate photos. ‖ Posting positive messages abou // Making negative remarks about  ‖ Sharing helpful or educational
+--- PHE1007 #11 box modifier="content"
+    tag: [Reorder content] ⟶ Sort the following from least to most balanced.
+    tag: [Dev the images are in the correct order, please mix them up when placing into the page]
+    tag: [Insert media item 39]
+    tag: [Insert media item 43]
+    tag: [Insert media item 40]
+    tag: [Insert media item 41]
+    tag: [Insert media item 42]
+    tag: [Button] ⟶ Go to journal. Complete activities 4A and 4B.
+    GOLD PHE1007_3.0.html: <div class="reorder row" layout="re-standard"> items 5: Crouch down, bending your knees. | Explode upwards. | Twist your hips and core/torso to face t | Straighten your throwing arm. | Release the shot from your grip.
+    GOLD PNR104_2_0.html: <div class="reorder row autoCheck" layout="re-sentence"> items 12:  |  |  |  |  |  |  |  |  |  |  | 
+    GOLD PNR104_2_0.html: <div class="reorder row autoCheck" layout="re-sentence"> items 12:  |  |  |  |  |  |  |  |  |  |  | 
+    GOLD PNR104_2_0.html: <div class="reorder row autoCheck" layout="re-sentence"> items 8:  |  |  |  |  |  |  | 
+    GOLD PNR104_2_0.html: <div class="reorder row autoCheck" layout="re-sentence"> items 4:  |  |  | 
+--- SCPH301 #2 box modifier="content"
+    tag: [interactive reorder content]
+    tag: [body] ⟶ 1. Put these in order from the most thermal energy to the le
+    tag: [Correct order shown]
+    tag: [image] ⟶ https://www.istockphoto.com/photo/hot-chocolate-dark-gm82130
+    tag: [image] ⟶ https://www.istockphoto.com/photo/glass-of-milk-isolated-on-
+    tag: [image] ⟶ https://www.istockphoto.com/photo/glass-of-ice-gm153162659-1
+    black: 2. Put these in order from the most thermal energy to the least thermal energy.
+    tag: [correct answers shown]
+    tag: [image] ⟶ https://www.istockphoto.com/vector/sun-or-sunshine-as-a-vect
+    tag: [image] ⟶ Pie Icon Stock Illustration - Download Image Now - Savory Pi
+    tag: [image] ⟶ Vanilla Soft Served Ice Cream Stock Illustration - Download 
+    tag: [button] ⟶ Check answers
+    tag: [button] ⟶ Undo
+    tag: [button] ⟶ Reset
+--- SCPH301 #5 box modifier="shown"
+    tag: [reorder interactive] [Correct answer shown.]
+    black: The tip of the spoon gains thermal energy.
+    black: The particles in the tip of the spoon move faster.
+    black: The particles bump into neighbouring particles, making them move faster.
+    black: Heat energy is passed along through the material until the whole spoon is hot.
+    tag: [button] ⟶ Check answer
+    tag: [button] ⟶ Reset
+--- SCPH301 #6 box modifier="order shown"
+    tag: [Reorder interactive] [Correct order shown]
+    black: The wall heater heats up nearby air.
+    black: As the air heats up, its density decreases.
+    black: The warm, less dense air rises.
+    black: Cooler, denser air moves into its place.
+    black: A convection current is set up.
+    black: The heater eventually heats all the air in the room.
+    tag: [button] ⟶ Check answers
+    tag: [button] ⟶ Reset
+    GOLD SCPH301_1_0.html: <div class="reorder row" layout="re-sentence"> items 6:  |  |  |  |  | 
+    GOLD SCPH301_2_0.html: <div class="reorder row" layout="re-standard"> items 4: The tip of the spoon gains thermal energ | The particles in the tip of the spoon mo | The particles bump into neighbouring par | Heat energy is passed along through the 
+    GOLD SCPH301_3_0.html: <div class="reorder row" layout="re-standard"> items 6: The wall heater heats up nearby air. | As the air heats up, its density decreas | The warm, less dense air rises. | Cooler, denser air moves into its place. | A convection current is set up. | The heater eventually heats all the air 
+--- SSCI104 #31 box modifier="separate - not a"
+    tag: [reorder – separate buttons – not a column] CS: These are in the correct order. Please scramble the order when
+    tag: [body] ⟶ The sentences below are scrambled. Can you click on and reor
+    TABLE 5x4: 🔴[RED TEXT] [image] [/RED TEX ‖ Rocko and Kiri🔴[RED TEXT] [1] ‖ are digging on 🔴[RED TEXT] [1 ‖ an archaeological site.🔴[RED  //  ‖ They dig in the sand🔴[RED TEX ‖ but🔴[RED TEXT] [2Correct] [/R ‖ they work very slowly.🔴[RED T //  ‖ Rocko finds an artefact🔴[RED  ‖ and 🔴[RED TEXT] [3Correct] [/ ‖ Kiri looks at his artefact.🔴[ //  ‖ They feel excited 🔴[RED TEXT] ‖ so🔴[RED TEXT] [4Correct] [/RE ‖ they take the artefact to the 
+--- SSCI205 #6 box modifier=""
+    tag: [Reorder interactive] Can this please be set out horizontally across the page.
+    tag: Can tiles for each of these please be created, scrambled to start with
+    tag: Each tile shows a Greek letter and the English letter it looks most like.
+    black: **Α** (A) **Θ** (TH) **Η** (E) **Ν** (N) **Α** (A)
+    tag: This reorder activity should be auto-marking, with one correct answer order. When students press Check:
+    black: •
+    tag: any letters placed in the correct order should lock and remain in position
+    black: •
+    tag: any letters placed incorrectly should return to the starting area
+    black: •
+    tag: students should be able to try again as many times as needed until the full message is correct
+    tag: [Body] ⟶ The code is complete when all the letters are in the correct
+    tag: [Button] ⟶ Check answer
+    tag: [Clickdrop image] ⟶ amulet greek letters.png
+    tag: [Click drop Body] ⟶ You cracked the code! The word is **Athena**. Athena was an 
+--- SSCI205 #36 box modifier=""
+    tag: [Reorder interactive] no correct answer
+    tag: Can the images created above please be used for this task. Add the text underneath.
+    tag: [Body] ⟶ When you finish, answer this in your journal:
+    black: 1. Which quality did you place as most important? Why?
+    tag: [Button] ⟶ Go to journal
+    GOLD SSCI205_2_0.html: <div class="reorder row" layout="re-sentence"> items 5: Α (A) | Θ (TH) | Η (E) | Ν (N) | Α (A)
+    GOLD SSCI205_7_0.html: <div class="reorder row" layout="re-img"> items 6:  |  |  |  |  | 
+--- TEDC402 #25 box modifier=""
+    tag: [Reorder interactive] ⟶ •
+    tag: [Correct 3] ⟶ Execute •
+    tag: [Correct 1] ⟶ Fetch •
+    tag: [Correct 2] ⟶ Decode
+    tag: [Auto feedback: ⟶ Ka pai! You’ve traced the path your computer follows billion
+    tag: ]
+    tag: [Image] ⟶ avatar Tina
+    tag: thinking hand on chin ⟶ Young Beautiful Student Woman Set Stock Illustration - Downl
+    GOLD TEDC402-2.0.html: <div class="reorder connected row" layout="re-standard"> items 3: Fetch | Decode | Execute
+    GOLD TEDC402-3.0.html: <div class="reorder row" layout="re-standard"> items 5: Strong password | Installing updates | App permissions | Privacy settings | Screen lock
+    GOLD TEDC402-6.0.html: <div class="reorder connected row" layout="re-standard"> items 6: Start. | For each value in the list, check if it  | If blank, replace with "unknown". | If not blank, keep the value. | Output the updated list. | End.
+    GOLD TEDC402-7.0.html: <div class="reorder connected row" layout="re-standard"> items 9: Add fruit to the blender. | Pour in milk or juice. | Blend until smooth. | Pour into a glass. | Start. | Store the input minutes in a variable. | If minutes is 0 to 60, set label to "low | If minutes is between 61 and 180, set la | Otherwise, set label to "high".
+    GOLD TEDC402-7.0.html: <div class="reorder row" layout="re-standard"> items 7: Start. | Store the input minutes in a variable. | If minutes is 0 to 60, set label to "low | If minutes is between 61 and 180, set la | Otherwise, set label to "high". | Output the label. | End.
+    GOLD TRR115_3.0.html: <div class="reorder row" layout="re-standard"> items 4: Pipi (heihei kōhine) | Paopao | Papa | Patu
+--- WJFUN115 #10 box modifier=""
+    tag: [reorder interactive]
+    black: 1
+    tag: [bold] ⟶ Looking
+    black: lookedstaredwatched
+    tag: [correct answer: ⟶ lookedwatchedstared
+    tag: ]
+    black: 2
+    tag: [bold] ⟶ Moving
+    black: exploredwalkedwandered
+    tag: [correct answer: ⟶ walkedwanderedexplored
+    tag: ]
+    black: 3
+    tag: [bold] ⟶ Size
+    black: Largeenormousbig
+    tag: [correct answer: ⟶ biglargeenormous
+    tag: ]
+--- WJFUN115 #15 box modifier=""
+    tag: [Reorder] [autocheck] [reset]
+    tag: [body] ⟶ Read the word in the left-hand column. Look at the pictures 
+    tag: [bold] ⟶ Tip:
+    tag: [unbold] ⟶ Say the words aloud and listen for the matching ending sound
+    tag: [Correct answers are as is. Please randomise the right-hand column so they need to reorder them. Alternatively
+    TABLE 7x2: pie ‖ https://www.istockphoto.com/ph // sheep ‖ Classic 4x4 Stock Photo - Down // balloon ‖ Harvest Moon Stock Photo - Dow // day ‖ Round And Rectangular Hay Bale
+    GOLD WJFUN115_0_0.html: <div class="reorder row" layout="re-standard"> items 12: looked | watched | stared | walked | wandered | explored | big | large | enormous | happy | pleased | delighted
+    GOLD WJFUN115_0_0.html: <div class="reorder row" layout="re-standard"> items 9: walked | wandered | explored | big | large | enormous | happy | pleased | delighted
+    GOLD WJFUN115_0_0.html: <div class="reorder row" layout="re-standard"> items 6: big | large | enormous | happy | pleased | delighted
+    GOLD WJFUN115_0_0.html: <div class="reorder row" layout="re-standard"> items 3: happy | pleased | delighted
+--- WJFUN205 #7 box modifier="two columns random order embedded currently in order"
+    tag: [Reorder] [Two columns random order auto check embedded currently in correct order]
+    TABLE 5x2: Independent Clause ‖ Dependent Clause // Rotorua has a lot of geotherma ‖ because it is in a volcanic zo // Rotorua’s name translates to t ‖ because Roto means lake and ru // The Pink Terraces were once co ‖ although they were destroyed b
+    tag: [Highlight] words in yellow
+    tag: [Button] ⟶ Reset
+--- WJFUN306 #10 box modifier=""
+    tag: [reorder] Correct order/answer B A C
+    black: Most effectiveLeast effective
+    TABLE 2x3: Message A ‖ Message B ‖ Message C // Dargaville offers a peaceful l ‖ Imagine raising your family in ‖ Dargaville is a settlement loc
+    tag: [show answer] ⟶ Message B is the most effective for families considering mov
+--- WJFUN306 #11 box modifier=""
+    tag: [reorder] Correct order/answer A C B
+    black: Most effectiveLeast effective
+    TABLE 2x3: Message A ‖ Message B ‖ Message C // Step into the stories of the N ‖ The museum houses artefacts, d ‖ Dargaville Museum contains exh
+    tag: [show answer] ⟶ Message A is the most effective for visitors interested in h
+    GOLD WJFUN306_0_0.html: <div class="reorder connected reorder-column row" layout="re-column"> items 9: Message B Explore the crystal-clear wate | Message A Discover Dargaville, home to K | Message C Dargaville provides access to  | Message B Imagine raising your family in | Message A Dargaville offers a peaceful l | Message C Dargaville is a settlement loc | Message A Step into the stories of the N | Message C Dargaville Museum contains exh | Message B The museum houses artefacts, d
+    GOLD WJFUN306_0_0.html: <div class="reorder connected reorder-column row" layout="re-column"> items 6: Message B Imagine raising your family in | Message A Dargaville offers a peaceful l | Message C Dargaville is a settlement loc | Message A Step into the stories of the N | Message C Dargaville Museum contains exh | Message B The museum houses artefacts, d
+    GOLD WJFUN306_0_0.html: <div class="reorder connected reorder-column row" layout="re-column"> items 3: Message A Step into the stories of the N | Message C Dargaville Museum contains exh | Message B The museum houses artefacts, d
+--- XDLS908 #7 box modifier="are displayed in flex"
+    tag: [image re-order. Images are displayed in flex]
+    tag: [Body] ⟶ Re-order these dogs from least like you to most like you.
+    tag: [Image] ⟶ Shy dog (https://www.istockphoto.com/photo/dalmation-by-a-ch
+    tag: [Image] ⟶ Friendly dog (https://www.istockphoto.com/photo/dog-gives-pa
+    tag: [Image] ⟶ Muddy active dog (https://www.istockphoto.com/photo/dirty-do
+    tag: [Image] ⟶ Royal looking dog (https://www.istockphoto.com/photo/yorkshi
+    tag: [Image] ⟶ Working dog (https://www.istockphoto.com/photo/kelpie-sheep-
+    GOLD XDLS908_3.1.html: <div class="reorder connected row" layout="re-img"> items 5: Shy dog | Friendly dog | Muddy active dog | Royal looking dog | Working dog
+--- XLP05 #4 box modifier="with"
+    tag: [Reorder interactive – with images]

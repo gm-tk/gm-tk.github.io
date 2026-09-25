@@ -1,0 +1,205 @@
+{
+ "last_full": {
+  "round": "505",
+  "build": "260620.68",
+  "utc": "2026-09-25T08:13:51Z"
+ },
+ "scoped_since": 6,
+ "history": [
+  {
+   "round": "472",
+   "utc": "2026-09-24T07:08:51Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "473",
+   "utc": "2026-09-24T07:43:52Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "475",
+   "utc": "2026-09-24T09:20:44Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "476",
+   "utc": "2026-09-24T09:57:43Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "477",
+   "utc": "2026-09-24T10:31:29Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "478",
+   "utc": "2026-09-24T11:44:25Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "479",
+   "utc": "2026-09-24T12:22:36Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "480",
+   "utc": "2026-09-24T13:03:38Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "481",
+   "utc": "2026-09-24T13:22:43Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "482",
+   "utc": "2026-09-24T13:44:40Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "483",
+   "utc": "2026-09-24T14:34:10Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "484",
+   "utc": "2026-09-24T14:50:07Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "485",
+   "utc": "2026-09-24T15:12:19Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "486",
+   "utc": "2026-09-24T17:44:33Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "487",
+   "utc": "2026-09-24T18:19:08Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "488",
+   "utc": "2026-09-24T19:06:37Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "490",
+   "utc": "2026-09-24T19:51:43Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "491",
+   "utc": "2026-09-24T21:41:48Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "492",
+   "utc": "2026-09-24T23:23:31Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "493",
+   "utc": "2026-09-24T23:54:26Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "494",
+   "utc": "2026-09-25T00:26:25Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "495",
+   "utc": "2026-09-25T00:46:52Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "496",
+   "utc": "2026-09-25T01:20:56Z",
+   "kind": "scoped"
+  },
+  {
+   "round": null,
+   "utc": "2026-09-25T01:49:15Z",
+   "kind": "scoped"
+  },
+  {
+   "round": null,
+   "utc": "2026-09-25T02:19:35Z",
+   "kind": "scoped"
+  },
+  {
+   "round": null,
+   "utc": "2026-09-25T03:04:23Z",
+   "kind": "scoped"
+  },
+  {
+   "round": null,
+   "utc": "2026-09-25T03:24:50Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "499",
+   "utc": "2026-09-25T03:25:50Z",
+   "kind": "scoped"
+  },
+  {
+   "round": null,
+   "utc": "2026-09-25T03:43:18Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "502",
+   "utc": "2026-09-25T06:26:38Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "503",
+   "utc": "2026-09-25T07:12:24Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "504",
+   "utc": "2026-09-25T07:31:37Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "505",
+   "utc": "2026-09-25T07:51:53Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "506",
+   "utc": "2026-09-25T08:39:53Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "507",
+   "utc": "2026-09-25T09:03:46Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "508",
+   "utc": "2026-09-25T09:17:55Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "509",
+   "utc": "2026-09-25T09:35:54Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "510",
+   "utc": "2026-09-25T12:06:48Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "511",
+   "utc": "2026-09-25T13:09:42Z",
+   "kind": "scoped"
+  }
+ ]
+}

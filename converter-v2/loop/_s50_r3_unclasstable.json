@@ -1,0 +1,1196 @@
+{
+ "pages": 511,
+ "fate": [
+  [
+   "absent",
+   223
+  ],
+  [
+   "widget:dragAndDrop",
+   57
+  ],
+  [
+   "free-text-in-activity",
+   53
+  ],
+  [
+   "plain-table-in-activity",
+   47
+  ],
+  [
+   "free-text",
+   32
+  ],
+  [
+   "widget:typing",
+   17
+  ],
+  [
+   "plain-table",
+   14
+  ],
+  [
+   "widget:carousel",
+   12
+  ],
+  [
+   "widget:multiChoiceQuiz",
+   9
+  ],
+  [
+   "widget:radioQuiz",
+   8
+  ],
+  [
+   "widget:accordion",
+   7
+  ],
+  [
+   "widget:flipCardsContainer",
+   7
+  ],
+  [
+   "widget:tabs",
+   5
+  ],
+  [
+   "widget:dropQuiz",
+   4
+  ],
+  [
+   "widget:reorder",
+   3
+  ],
+  [
+   "widget:bingo",
+   3
+  ],
+  [
+   "widget:speechBubble",
+   3
+  ],
+  [
+   "widget:memoryGame",
+   2
+  ],
+  [
+   "widget:slider",
+   2
+  ],
+  [
+   "widget:selfCheck",
+   1
+  ],
+  [
+   "widget:selectionBox",
+   1
+  ],
+  [
+   "widget:hintSlider",
+   1
+  ]
+ ],
+ "by_family": {
+  "BLL": [
+   [
+    "absent",
+    55
+   ],
+   [
+    "plain-table-in-activity",
+    18
+   ],
+   [
+    "free-text-in-activity",
+    5
+   ],
+   [
+    "widget:dragAndDrop",
+    5
+   ],
+   [
+    "widget:typing",
+    3
+   ],
+   [
+    "widget:bingo",
+    3
+   ],
+   [
+    "widget:multiChoiceQuiz",
+    2
+   ],
+   [
+    "widget:dropQuiz",
+    1
+   ],
+   [
+    "widget:carousel",
+    1
+   ],
+   [
+    "widget:memoryGame",
+    1
+   ],
+   [
+    "widget:accordion",
+    1
+   ]
+  ],
+  "MXDI": [
+   [
+    "absent",
+    15
+   ],
+   [
+    "free-text",
+    5
+   ],
+   [
+    "widget:dragAndDrop",
+    4
+   ],
+   [
+    "plain-table",
+    3
+   ],
+   [
+    "free-text-in-activity",
+    2
+   ],
+   [
+    "widget:accordion",
+    1
+   ],
+   [
+    "widget:carousel",
+    1
+   ],
+   [
+    "widget:reorder",
+    1
+   ],
+   [
+    "widget:dropQuiz",
+    1
+   ],
+   [
+    "widget:typing",
+    1
+   ]
+  ],
+  "XMES": [
+   [
+    "absent",
+    10
+   ],
+   [
+    "widget:carousel",
+    3
+   ],
+   [
+    "plain-table-in-activity",
+    3
+   ],
+   [
+    "free-text-in-activity",
+    3
+   ],
+   [
+    "widget:flipCardsContainer",
+    2
+   ],
+   [
+    "widget:slider",
+    2
+   ],
+   [
+    "widget:typing",
+    1
+   ],
+   [
+    "widget:accordion",
+    1
+   ],
+   [
+    "widget:multiChoiceQuiz",
+    1
+   ],
+   [
+    "free-text",
+    1
+   ]
+  ],
+  "MXFL": [
+   [
+    "absent",
+    9
+   ],
+   [
+    "widget:dragAndDrop",
+    4
+   ],
+   [
+    "plain-table-in-activity",
+    4
+   ],
+   [
+    "free-text",
+    3
+   ],
+   [
+    "widget:typing",
+    2
+   ],
+   [
+    "plain-table",
+    1
+   ],
+   [
+    "widget:dropQuiz",
+    1
+   ],
+   [
+    "widget:memoryGame",
+    1
+   ],
+   [
+    "widget:accordion",
+    1
+   ]
+  ],
+  "ENGS": [
+   [
+    "absent",
+    8
+   ],
+   [
+    "free-text-in-activity",
+    8
+   ],
+   [
+    "widget:radioQuiz",
+    2
+   ],
+   [
+    "widget:dragAndDrop",
+    2
+   ],
+   [
+    "plain-table-in-activity",
+    2
+   ],
+   [
+    "free-text",
+    1
+   ],
+   [
+    "widget:carousel",
+    1
+   ]
+  ],
+  "ENGC": [
+   [
+    "absent",
+    13
+   ],
+   [
+    "free-text",
+    2
+   ],
+   [
+    "widget:radioQuiz",
+    2
+   ],
+   [
+    "plain-table-in-activity",
+    2
+   ],
+   [
+    "widget:dragAndDrop",
+    1
+   ],
+   [
+    "free-text-in-activity",
+    1
+   ],
+   [
+    "widget:carousel",
+    1
+   ]
+  ],
+  "ENGI": [
+   [
+    "absent",
+    7
+   ],
+   [
+    "free-text-in-activity",
+    6
+   ],
+   [
+    "widget:dragAndDrop",
+    3
+   ],
+   [
+    "widget:speechBubble",
+    3
+   ],
+   [
+    "free-text",
+    1
+   ],
+   [
+    "plain-table",
+    1
+   ],
+   [
+    "widget:flipCardsContainer",
+    1
+   ]
+  ],
+  "MXFU": [
+   [
+    "absent",
+    7
+   ],
+   [
+    "widget:typing",
+    3
+   ],
+   [
+    "widget:dragAndDrop",
+    2
+   ],
+   [
+    "plain-table-in-activity",
+    2
+   ],
+   [
+    "free-text",
+    2
+   ],
+   [
+    "free-text-in-activity",
+    1
+   ],
+   [
+    "plain-table",
+    1
+   ],
+   [
+    "widget:tabs",
+    1
+   ],
+   [
+    "widget:multiChoiceQuiz",
+    1
+   ]
+  ],
+  "AGH": [
+   [
+    "widget:dragAndDrop",
+    8
+   ],
+   [
+    "free-text",
+    4
+   ],
+   [
+    "widget:carousel",
+    2
+   ],
+   [
+    "widget:selfCheck",
+    1
+   ],
+   [
+    "widget:multiChoiceQuiz",
+    1
+   ],
+   [
+    "absent",
+    1
+   ],
+   [
+    "widget:accordion",
+    1
+   ],
+   [
+    "widget:reorder",
+    1
+   ]
+  ],
+  "ENGR": [
+   [
+    "absent",
+    9
+   ],
+   [
+    "free-text-in-activity",
+    3
+   ],
+   [
+    "plain-table-in-activity",
+    3
+   ],
+   [
+    "free-text",
+    1
+   ],
+   [
+    "widget:multiChoiceQuiz",
+    1
+   ],
+   [
+    "widget:tabs",
+    1
+   ],
+   [
+    "widget:dragAndDrop",
+    1
+   ]
+  ],
+  "TRR": [
+   [
+    "absent",
+    14
+   ],
+   [
+    "free-text-in-activity",
+    3
+   ],
+   [
+    "widget:dragAndDrop",
+    1
+   ]
+  ],
+  "ENGJ": [
+   [
+    "absent",
+    5
+   ],
+   [
+    "widget:dragAndDrop",
+    4
+   ],
+   [
+    "plain-table-in-activity",
+    2
+   ],
+   [
+    "plain-table",
+    2
+   ],
+   [
+    "free-text",
+    2
+   ],
+   [
+    "free-text-in-activity",
+    1
+   ]
+  ],
+  "MXDB": [
+   [
+    "absent",
+    7
+   ],
+   [
+    "plain-table-in-activity",
+    4
+   ],
+   [
+    "free-text",
+    1
+   ],
+   [
+    "widget:dropQuiz",
+    1
+   ],
+   [
+    "free-text-in-activity",
+    1
+   ]
+  ],
+  "HPFUN": [
+   [
+    "absent",
+    5
+   ],
+   [
+    "widget:multiChoiceQuiz",
+    1
+   ],
+   [
+    "widget:flipCardsContainer",
+    1
+   ],
+   [
+    "widget:reorder",
+    1
+   ],
+   [
+    "free-text",
+    1
+   ],
+   [
+    "widget:radioQuiz",
+    1
+   ],
+   [
+    "widget:accordion",
+    1
+   ],
+   [
+    "widget:dragAndDrop",
+    1
+   ]
+  ],
+  "ENFUN": [
+   [
+    "absent",
+    4
+   ],
+   [
+    "free-text-in-activity",
+    2
+   ],
+   [
+    "widget:flipCardsContainer",
+    1
+   ],
+   [
+    "widget:hintSlider",
+    1
+   ]
+  ],
+  "MXEO": [
+   [
+    "widget:typing",
+    2
+   ],
+   [
+    "widget:carousel",
+    1
+   ],
+   [
+    "absent",
+    1
+   ],
+   [
+    "plain-table",
+    1
+   ],
+   [
+    "free-text-in-activity",
+    1
+   ],
+   [
+    "widget:dragAndDrop",
+    1
+   ],
+   [
+    "free-text",
+    1
+   ]
+  ],
+  "PES": [
+   [
+    "widget:dragAndDrop",
+    3
+   ],
+   [
+    "free-text",
+    2
+   ],
+   [
+    "widget:radioQuiz",
+    1
+   ],
+   [
+    "absent",
+    1
+   ],
+   [
+    "widget:flipCardsContainer",
+    1
+   ]
+  ],
+  "WJFUN": [
+   [
+    "absent",
+    5
+   ],
+   [
+    "widget:dragAndDrop",
+    1
+   ],
+   [
+    "widget:typing",
+    1
+   ],
+   [
+    "plain-table-in-activity",
+    1
+   ]
+  ],
+  "CEDO": [
+   [
+    "absent",
+    2
+   ],
+   [
+    "plain-table-in-activity",
+    1
+   ],
+   [
+    "widget:tabs",
+    1
+   ],
+   [
+    "widget:radioQuiz",
+    1
+   ],
+   [
+    "free-text-in-activity",
+    1
+   ],
+   [
+    "widget:multiChoiceQuiz",
+    1
+   ]
+  ],
+  "XTAS": [
+   [
+    "absent",
+    5
+   ],
+   [
+    "plain-table-in-activity",
+    1
+   ],
+   [
+    "widget:dragAndDrop",
+    1
+   ]
+  ],
+  "CEDT": [
+   [
+    "absent",
+    2
+   ],
+   [
+    "free-text-in-activity",
+    1
+   ],
+   [
+    "widget:selectionBox",
+    1
+   ],
+   [
+    "widget:dragAndDrop",
+    1
+   ],
+   [
+    "widget:radioQuiz",
+    1
+   ]
+  ],
+  "MXEX": [
+   [
+    "absent",
+    2
+   ],
+   [
+    "widget:typing",
+    2
+   ],
+   [
+    "free-text-in-activity",
+    1
+   ],
+   [
+    "plain-table-in-activity",
+    1
+   ]
+  ],
+  "TEDC": [
+   [
+    "widget:tabs",
+    2
+   ],
+   [
+    "absent",
+    2
+   ],
+   [
+    "free-text-in-activity",
+    2
+   ]
+  ],
+  "CEDW": [
+   [
+    "absent",
+    2
+   ],
+   [
+    "plain-table",
+    1
+   ],
+   [
+    "free-text-in-activity",
+    1
+   ],
+   [
+    "widget:dragAndDrop",
+    1
+   ]
+  ],
+  "XFUN": [
+   [
+    "absent",
+    2
+   ],
+   [
+    "free-text-in-activity",
+    2
+   ],
+   [
+    "widget:typing",
+    1
+   ]
+  ],
+  "XGF": [
+   [
+    "absent",
+    4
+   ],
+   [
+    "widget:flipCardsContainer",
+    1
+   ]
+  ],
+  "ANZH": [
+   [
+    "widget:dragAndDrop",
+    2
+   ],
+   [
+    "absent",
+    1
+   ],
+   [
+    "plain-table-in-activity",
+    1
+   ]
+  ],
+  "CEDK": [
+   [
+    "absent",
+    1
+   ],
+   [
+    "plain-table-in-activity",
+    1
+   ],
+   [
+    "free-text-in-activity",
+    1
+   ],
+   [
+    "widget:dragAndDrop",
+    1
+   ]
+  ],
+  "CEDR": [
+   [
+    "absent",
+    2
+   ],
+   [
+    "free-text-in-activity",
+    2
+   ]
+  ],
+  "HPRE": [
+   [
+    "absent",
+    2
+   ],
+   [
+    "widget:carousel",
+    2
+   ]
+  ],
+  "COM": [
+   [
+    "free-text",
+    2
+   ],
+   [
+    "free-text-in-activity",
+    1
+   ]
+  ],
+  "HIS": [
+   [
+    "free-text-in-activity",
+    2
+   ],
+   [
+    "widget:multiChoiceQuiz",
+    1
+   ]
+  ],
+  "MXFUN": [
+   [
+    "absent",
+    3
+   ]
+  ],
+  "OSOH": [
+   [
+    "widget:dragAndDrop",
+    2
+   ],
+   [
+    "absent",
+    1
+   ]
+  ],
+  "TWHK": [
+   [
+    "free-text",
+    1
+   ],
+   [
+    "plain-table-in-activity",
+    1
+   ],
+   [
+    "widget:accordion",
+    1
+   ]
+  ],
+  "ARFUN": [
+   [
+    "free-text",
+    1
+   ],
+   [
+    "absent",
+    1
+   ]
+  ],
+  "CBI": [
+   [
+    "absent",
+    1
+   ],
+   [
+    "widget:dragAndDrop",
+    1
+   ]
+  ],
+  "HES": [
+   [
+    "absent",
+    1
+   ],
+   [
+    "free-text-in-activity",
+    1
+   ]
+  ],
+  "MXS": [
+   [
+    "absent",
+    1
+   ],
+   [
+    "widget:dragAndDrop",
+    1
+   ]
+  ],
+  "OSBY": [
+   [
+    "free-text-in-activity",
+    1
+   ],
+   [
+    "absent",
+    1
+   ]
+  ],
+  "PHE": [
+   [
+    "free-text",
+    1
+   ],
+   [
+    "widget:dragAndDrop",
+    1
+   ]
+  ],
+  "SSOG": [
+   [
+    "widget:dragAndDrop",
+    1
+   ],
+   [
+    "absent",
+    1
+   ]
+  ],
+  "TWHA": [
+   [
+    "widget:dragAndDrop",
+    1
+   ],
+   [
+    "widget:typing",
+    1
+   ]
+  ],
+  "XDLS": [
+   [
+    "absent",
+    2
+   ]
+  ],
+  "ANZHFUN": [
+   [
+    "absent",
+    1
+   ]
+  ],
+  "BLLR": [
+   [
+    "plain-table",
+    1
+   ]
+  ],
+  "CHFUN": [
+   [
+    "absent",
+    1
+   ]
+  ],
+  "DAN": [
+   [
+    "absent",
+    1
+   ]
+  ],
+  "FRFUN": [
+   [
+    "plain-table",
+    1
+   ]
+  ],
+  "GENO": [
+   [
+    "plain-table",
+    1
+   ]
+  ],
+  "JPFUN": [
+   [
+    "absent",
+    1
+   ]
+  ],
+  "OSAH": [
+   [
+    "absent",
+    1
+   ]
+  ],
+  "OSAI": [
+   [
+    "widget:dragAndDrop",
+    1
+   ]
+  ],
+  "SSCI": [
+   [
+    "absent",
+    1
+   ]
+  ],
+  "SSEA": [
+   [
+    "plain-table",
+    1
+   ]
+  ],
+  "TEFUN": [
+   [
+    "absent",
+    1
+   ]
+  ],
+  "TWHR": [
+   [
+    "widget:dragAndDrop",
+    1
+   ]
+  ],
+  "TWHT": [
+   [
+    "widget:dragAndDrop",
+    1
+   ]
+  ],
+  "XLP": [
+   [
+    "absent",
+    1
+   ]
+  ]
+ },
+ "examples": {
+  "free-text": [
+   "AGH1001_2_0.html: [Alert solid: Summary]  / Key points from today’s lesson: / ",
+   "AGH1007_3_0.html: Function",
+   "AGH1007_9_0.html: Fly strike",
+   "AGH1009_7_0.html: Riparian Planting",
+   "ARFUN02_0_0.html: Fast Tempo:",
+   "COM1002_4_0.html: The main board lists all the publicly listed companies on th"
+  ],
+  "widget:selfCheck": [
+   "AGH1001_4_0.html: Livestock Group"
+  ],
+  "widget:carousel": [
+   "AGH1001_5_0.html: Calving usually happens at the end of winter/beginning of sp",
+   "AGH1004_2_0.html: Mountains and high country",
+   "BLL217_2_0.html: Sentence options - the correct sentence is in red.",
+   "ENGC403_1_0.html: [H3]  The way I think",
+   "ENGS401_1_0.html: [h5]  Save the Last Dance",
+   "HPRE203_2_0.html: [h4]  Hugging friends /  [imageLeilaph2 and Sura ph2 hugging"
+  ],
+  "widget:dragAndDrop": [
+   "AGH1002_5_0.html: Hydrogen",
+   "AGH1003_2_0.html: Large dairy farm",
+   "AGH1003_3_0.html: Magnesium",
+   "AGH1003_4_0.html: Description",
+   "AGH1007_5_0.html: Ewe pregnant with twins",
+   "AGH1007_8_0.html: Cell/Organ"
+  ],
+  "widget:multiChoiceQuiz": [
+   "AGH1007_4_0.html: Feed Name",
+   "BLL116_1_0.html: Listen to the audio:",
+   "BLL154_1_1.html: Using commas in sentences",
+   "CEDO502_7_0.html: [Image] iStock. Beautiful teenage Polynesian girl text messa",
+   "ENGR201_6_0.html: Is it uncommon?",
+   "HIS1008_6_0.html: Tests designed to frustrate and humiliate such as asking, “H"
+  ],
+  "absent": [
+   "AGH1008_2_0.html: Usually measured in crude protein and as a percentage.",
+   "ANZH104_1_0.html: Toys / Games / Movies / Travel / TV",
+   "ANZHFUN05_0_0.html: This part of the sentence states",
+   "ARFUN04_0_0.html: 1. Pattern",
+   "BLL110_0_0.html: https://www.istockphoto.com/vector/cartoon-golden-star-vecto",
+   "BLL114_2_0.html: Audio of spin s/p/i/n"
+  ],
+  "widget:accordion": [
+   "AGH1008_3_0.html: Calf meal",
+   "BLL274_2_0.html: [audiovisual item 14]",
+   "HPFUN902_0_0.html: Phase 1 & 2",
+   "MXDI101_7_0.html: 5 x 2 = 10",
+   "MXFL204_1_0.html: Information gathered",
+   "TWHK907_0_0.html: Accordion 1  /  Phase two"
+  ],
+  "widget:reorder": [
+   "AGH1008_6_0.html: Set the vaccination gun to the correct dose rate",
+   "HPFUN303_0_0.html: Someone stops you to ask for directions.",
+   "MXDI201_5_0.html: Number of birthday’s each person has in a year"
+  ],
+  "plain-table-in-activity": [
+   "ANZH304_3_0.html: William Hobson",
+   "BLL131_1_0.html: • direction / • giving something",
+   "BLL156_1_0.html: connected",
+   "BLL211_2_0.html: something",
+   "BLL216_2_0.html: https://www.istockphoto.com/vector/exclamation-and-question-",
+   "BLL223_2_0.html: something"
+  ],
+  "free-text-in-activity": [
+   "BLL125_1_0.html: [Audio 1]  Mick is hot.",
+   "BLL151_1_0.html: Root word",
+   "BLL232_2_0.html: Sentences:",
+   "BLL246_2_0.html: exclaims",
+   "BLL265_1_1.html: 1 – Words with –ful",
+   "CEDK501_6_1.html: You must:"
+  ],
+  "widget:typing": [
+   "BLL144_1_0.html: https://www.istockphoto.com/vector/game-dice-icon-set-vector",
+   "BLL157_1_0.html: Beginning sounds",
+   "BLL175_1_0.html: Original word",
+   "MXDI301_6_0.html: Number of items",
+   "MXEO201_1_0.html: Millimetres (mm)",
+   "MXEO201_5_0.html: 5 + 5 + 5 + 5 + 5 ="
+  ],
+  "widget:dropQuiz": [
+   "BLL166_1_1.html: Nikisha is The  [ Flick /  Flash /  Smash ].  / The Flash li",
+   "MXDB102_10_0.html: shape        circle          triangle          square       ",
+   "MXDI301_5_0.html: decreased /  increased",
+   "MXFL203_1_0.html: ______ years after covid disruption"
+  ],
+  "widget:memoryGame": [
+   "BLL231_1_0.html: floating",
+   "MXFL203_8_0.html: 1 kilogram"
+  ],
+  "widget:bingo": [
+   "BLL235_1_0.html: helpful   flips   climbing   louder  spotless    knowing    ",
+   "BLL251_1_0.html: https://www.istockphoto.com/vector/game-dice-icon-set-vector",
+   "BLL276_2_0.html: https://www.istockphoto.com/vector/game-dice-icon-set-vector"
+  ],
+  "plain-table": [
+   "BLLR201_1_1.html: Ending with",
+   "CEDW501_3_0.html: Tēnā koe",
+   "ENGI303_5_0.html: Height 1",
+   "ENGJ102_2_0.html: Example one is using a boy's name, ‘Samuel’.",
+   "ENGJ102_3_0.html: Example one – Tigers",
+   "FRFUN07_4_0.html: Older English"
+  ],
+  "widget:tabs": [
+   "CEDO202_0_0.html: Jump off two feet and land on two. / Jump off two feet and l",
+   "ENGR202_1_0.html: Enormous",
+   "MXFU202_8_0.html: Multiple choice answers",
+   "TEDC401_1_0.html: [Checkbox]  / Which one sounds most like the current reality",
+   "TEDC401_4_0.html: [Image] avatar ‘Jo’ thumbs up  Handsome Business Man Set Sto"
+  ],
+  "widget:radioQuiz": [
+   "CEDO502_1_1.html: Is credit used?",
+   "CEDT501_6_1.html: Pātai (Questions)",
+   "ENGC102_6_0.html: Tokelau is a very large country.",
+   "ENGC302_2_0.html: https://drive.google.com/file/d/1sT2jcLvfRYOHB0Y5IP3UgxxQ1nN",
+   "ENGS102_1_0.html: [Activity Heading]  What traditional tales do you know? /  [",
+   "ENGS201_4_0.html: https://pixabay.com/illustrations/captain-america-circuit-st"
+  ],
+  "widget:selectionBox": [
+   "CEDT104_0_0.html: Upoko iStock vector: [tem 7:  head ,][Item 8  Upoko  Audio] "
+  ],
+  "widget:flipCardsContainer": [
+   "ENFUN01_0_0.html: Your story made me feel",
+   "ENGI400_3_0.html: [Activity 3A]  Our compulsory modules /  [body]  Click on th",
+   "HPFUN302_0_0.html: [h3]  Frankie Adams\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tActress and amateur boxer",
+   "PES1007_1_0.html: Potential",
+   "XGF9002_1_0.html: https://www.istockphoto.com/vector/cross-icon-x-vector-sign-",
+   "XMES102_2_0.html: Activity 2B: Biggest to smallest"
+  ],
+  "widget:hintSlider": [
+   "ENFUN02_0_0.html: https://www.istockphoto.com/vector/happy-cartoon-kids-playin"
+  ],
+  "widget:speechBubble": [
+   "ENGI202_1_0.html: [Thought bubble]  /  [H4]  Whaitake /  [Body]  Use your inqu",
+   "ENGI202_2_0.html: [Thought bubble]  /  [H4]  Kotahitanga /  [Body]  Connect wi",
+   "ENGI202_4_0.html: [Thought bubble]  /  [H4 Bold]  Whakawhanaungatanga /  [Body"
+  ],
+  "widget:slider": [
+   "XMES103_3_0.html: Not fun. Too Hard.",
+   "XMES103_4_0.html: Not fun. Too Hard."
+  ]
+ }
+}

@@ -1,0 +1,1141 @@
+AGH1001: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (AGH1002, PPO1032) — using AGH1002 from filename "AGH1002 Writers Template + Media List.docx".
+AGH1002: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (AGH1003, PPO1033) — using AGH1003 from filename "AGH1003 Writers Template + Media List.docx".
+AGH1003: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+AGH1004: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+AGH1005: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (AGH1006, HTO1101) — using AGH1006 from filename "AGH1006 Writers Template + Media List.docx".
+AGH1006: built 34 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+AGH1007: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+AGH1008: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (AGH1009, PPO1051) — using AGH1009 from filename "AGH1009 Writers Template + Media List.docx".
+AGH1009: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ANZH101: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ANZH103: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ANZH104: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ANZH105: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ANZH203: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ANZH205: built 10 card-texts [exact 10, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (ANZH301, HSO1012) — using ANZH301 from filename "ANZH301 Writers Template + Media List.docx".
+ANZH301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ANZH302, HSO1012) — using ANZH302 from filename "ANZH302 Writers Template + Media List.docx".
+ANZH302: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ANZH303: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ANZH304: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ANZH401, SSO303) — using ANZH401 from filename "ANZH401 Writers Template + Media List.docx".
+ANZH401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ANZH404: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ANZHFUN05: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ARFUN01: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ARFUN02: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ARFUN03: built 11 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 11] 11 unmatched (baseline)
+   unmatched (overlap 0.15): Look at the pictures to see the body bases; click the pictures to flip them and reveal the body bases to see if what you
+   unmatched (overlap 0.00): Mirroring
+   unmatched (overlap 0.17): is when the dancers do the same thing beside or opposite each other, like they are each other's reflection in a mirror.
+   unmatched (overlap 0.27): In these photos the dancers are mirroring each other.
+   unmatched (overlap 0.00): Shadowing
+   unmatched (overlap 0.23): is when the dancers copy the movement of a dancer as if they are their shadow.
+   unmatched (overlap 0.31): In these photos the dancers are shadowing a dancer in front.
+   unmatched (overlap 0.00): Wāhi: focus
+   unmatched (overlap 0.14): Focus can mean a few things in dance and is important in different ways.
+   unmatched (overlap 0.09): You can say 'the performer is focused', for example they don't laugh or break their performance presence
+   unmatched (overlap 0.13): Focus is also about where the dancer or performer is looking, for example are they looking to the audience or at their m
+🟢 [ModuleResolver] ARFUN04 is a recorded page_model exception — using multi-file.
+ARFUN04: built 14 card-texts [exact 0, copy-edit 8, gold-subst 6, defect 0] all matched ✓
+ARFUN05: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ART1002: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ART1003, AR1000) — using ART1003 from filename "ART1003 Writers Template + Media List.docx".
+ART1003: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ART1004: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [DocxExtractor] No [TITLE BAR]/[Fundamental content] opener — content started at the first structural tag instead; check the first page for stray front-matter.
+ART1005: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ART1006: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL110 is a recorded page_model exception — using single-file.
+BLL110: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL111: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL112: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL113: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL114: built 9 card-texts [exact 6, copy-edit 0, gold-subst 3, defect 0] all matched ✓
+BLL115: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL116: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL117: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL120 is a recorded page_model exception — using single-file.
+BLL120: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL121: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL122: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL123: built 6 card-texts [exact 0, copy-edit 0, gold-subst 6, defect 0] all matched ✓
+BLL124: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL125: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL126: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL127: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL130 is a recorded page_model exception — using single-file.
+BLL130: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL131: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL132: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL133: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL134: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL135: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL136: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL137: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL140 is a recorded page_model exception — using single-file.
+BLL140: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL141: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL142: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL143: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL144: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL145: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL146: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL147: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL150 is a recorded page_model exception — using single-file.
+BLL150: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL151: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL152: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL153: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL154: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL155: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL156: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL157: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL160 is a recorded page_model exception — using single-file.
+BLL160: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL161: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL162: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL163: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL164: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL165: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL166: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL167: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL170 is a recorded page_model exception — using single-file.
+BLL170: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL171: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL172: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL173: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL174: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL175: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL176: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL177: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL210 is a recorded page_model exception — using single-file.
+BLL210: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL211: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (BLL212, BLL182) — using BLL212 from filename "BLL212 Writers Template + Media List.docx".
+BLL212: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (BLL213, BLL183) — using BLL213 from filename "BLL213 Writers Template + Media List.docx".
+BLL213: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (BLL214, BLL184) — using BLL214 from filename "BLL214 Writers Template + Media List.docx".
+BLL214: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL215: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL216: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL217: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL220 is a recorded page_model exception — using single-file.
+BLL220: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL221: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL222: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL223: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL224: built 4 card-texts [exact 4, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+BLL225: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL226: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL227: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (BLL230, BLL220) — using BLL230 from filename "BLL230 Writers Template.docx".
+🟢 [ModuleResolver] BLL230 is a recorded page_model exception — using single-file.
+BLL230: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL231: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL232: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL233: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL234: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL235: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL236: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL237: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL240 is a recorded page_model exception — using single-file.
+BLL240: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+BLL241: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL242: built 8 card-texts [exact 7, copy-edit 1, gold-subst 0, defect 0] all matched ✓
+🟢 [ModuleResolver] BLL243 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL243: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL244: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL245: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL246: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL247 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL247: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL250 is not in the registry members — inherited from its level BLL2 (sibling rule).
+🟢 [ModuleResolver] BLL250 is a recorded page_model exception — using single-file.
+BLL250: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL251: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL252: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL253 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL253: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLL254: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL255 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL255: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL256 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL256: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL257 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL257: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL260 is not in the registry members — inherited from its level BLL2 (sibling rule).
+🟢 [ModuleResolver] BLL260 is a recorded page_model exception — using single-file.
+BLL260: built 18 card-texts [exact 18, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟢 [ModuleResolver] BLL261 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL261: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL262 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL262: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL263 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL263: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL264 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL264: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL265 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL265: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL266 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL266: built 10 card-texts [exact 10, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟢 [ModuleResolver] BLL270 is not in the registry members — inherited from its level BLL2 (sibling rule).
+🟢 [ModuleResolver] BLL270 is a recorded page_model exception — using single-file.
+BLL270: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL271 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL271: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL272 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL272: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL273 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL273: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL274 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL274: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL275 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL275: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] BLL276 is not in the registry members — inherited from its level BLL2 (sibling rule).
+BLL276: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLLR201: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+BLLR202: built 2 card-texts [exact 2, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+BLLR203: built 2 card-texts [exact 2, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (CBI1004, SCO1091) — using CBI1004 from filename "CBI1004 Writers Template + Media List.docx".
+CBI1004: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CBI1005: built 10 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+CBI1008: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CBI1009: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDK101: built 12 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+CEDK102: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+CEDK401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDK501: built 24 card-texts [exact 21, copy-edit 0, gold-subst 3, defect 0] all matched ✓
+🟢 [ModuleResolver] CEDO102 is a recorded page_model exception — using single-file.
+CEDO102: built 15 card-texts [exact 12, copy-edit 2, gold-subst 0, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.47): Some people catch too many fish from the ocean, and this can upset the balance of life in the coral reef. It's like if w
+CEDO105: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDO201: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDO202: built 16 card-texts [exact 16, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+CEDO204: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDO301: built 6 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+CEDO402: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDO501: built 37 card-texts [exact 37, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+CEDO502: built 17 card-texts [exact 16, copy-edit 1, gold-subst 0, defect 0] all matched ✓
+CEDR101: built 4 card-texts [exact 4, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+CEDR201: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] CEDR203 is not in the registry members — inherited from its level CEDR2 (sibling rule).
+CEDR203: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDR204: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDR301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDR302: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDR401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDR501: built 36 card-texts [exact 4, copy-edit 0, gold-subst 0, defect 32] 32 unmatched (baseline)
+   unmatched (overlap 0.20): To summarise information
+   unmatched (overlap 0.12): E.g., after finishing a section of work or a topic.
+   unmatched (overlap 0.17): To record new information
+   unmatched (overlap 0.07): E.g., during lessons, videos, readings, or presentations.
+   unmatched (overlap 0.20): To revise information
+   unmatched (overlap 0.13): E.g., when studying for tests or assessments.
+   unmatched (overlap 0.20): To recall information
+   unmatched (overlap 0.18): E.g., when you need to remember facts, dates, or steps.
+   unmatched (overlap 0.17): To organise your thoughts
+   unmatched (overlap 0.07): E.g., while planning essays, projects, or speeches.
+   unmatched (overlap 0.14): To keep track of research
+   unmatched (overlap 0.07): E.g., when collecting information from different sources.
+   unmatched (overlap 0.17): To reflect on learning
+   unmatched (overlap 0.07): E.g., after class discussions or practical activities.
+   unmatched (overlap 0.20): To help concentration
+   unmatched (overlap 0.13): E.g., when listening or watching for long periods.
+   unmatched (overlap 0.20): To summarise information
+   unmatched (overlap 0.14): Summarise what you learn about interview techniques or common questions to review later.
+   unmatched (overlap 0.17): To record new information
+   unmatched (overlap 0.14): Take notes while researching the organisation or role to remember key facts you can mention.
+   unmatched (overlap 0.20): To revise information
+   unmatched (overlap 0.08): Revise your notes beforehand to recall examples and experiences that show your skills.
+   unmatched (overlap 0.20): To recall information
+   unmatched (overlap 0.11): Write down details about your achievements or experiences so you can answer questions confidently.
+   unmatched (overlap 0.17): To organise your thoughts
+   unmatched (overlap 0.13): Use notes to plan how you'll explain your strengths and experiences clearly.
+   unmatched (overlap 0.14): To keep track of research
+   unmatched (overlap 0.12): Record what you find on the company website or in the job description.
+   unmatched (overlap 0.17): To reflect on learning
+   unmatched (overlap 0.12): Reflect on past interviews or feedback to identify what to improve next time.
+   unmatched (overlap 0.20): To help concentration
+   unmatched (overlap 0.09): Practise note-taking during mock interviews to stay focused and remember the key points.
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+CEDT101: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] CEDT102 is not in the registry members — inherited from its level CEDT1 (sibling rule).
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+CEDT102: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+CEDT104: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDT201: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDT202: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDT203: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDT204: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDT207: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDT208: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDT301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDT404: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDT501: built 24 card-texts [exact 24, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+CEDW101: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CEDW201: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] CEDW303 is not in the registry members — inherited from its level CEDW5 (sibling rule).
+CEDW303: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (CEDW501, MA000) — using CEDW501 from filename "CEDW501 Writers Template.docx".
+CEDW501: built 90 card-texts [exact 72, copy-edit 13, gold-subst 0, defect 5] 5 unmatched (baseline)
+   unmatched (overlap 0.00): Tupuna/tipuna
+   unmatched (overlap 0.17): Add image like the rest Wahine
+   unmatched (overlap 0.29): Add image like the rest Tāne
+   unmatched (overlap 0.17): Add image like the rest Hungarei
+   unmatched (overlap 0.38): Add image like the rest Ingoa whānau
+CHFUN01: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CHFUN04: built 4 card-texts [exact 4, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+CHFUN05: built 68 card-texts [exact 63, copy-edit 2, gold-subst 0, defect 3] 3 unmatched (baseline)
+   unmatched (overlap 0.33): 先 xiān first (use the 'get up in the morning' picture)
+   unmatched (overlap 0.45): 再 zài then (use the 'eat breakfast' picture)
+   unmatched (overlap 0.50): 然后 ránhòu *afterwards after that* (use the 'going to school' picture)
+CHFUN06: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CHFUN07: built 3 card-texts [exact 3, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+CHFUN08: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (CHI1003, CHI1000) — using CHI1003 from filename "CHI1003 Writers Template + Media List.docx".
+CHI1003: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (CHI1004, CHI1000) — using CHI1004 from filename "CHI1004 Writers Template + Media List.docx".
+CHI1004: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (CHI1005, CHI1000) — using CHI1005 from filename "CHI1005 Writers Template + Media List.docx".
+CHI1005: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+CHWHA: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+COM1002: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (COM1005, ECO1001) — using COM1005 from filename "COM1005 Writers Template + Media List.docx".
+COM1005: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (COM1006, ECO1003) — using COM1006 from filename "COM1006 Writers Template + Media List.docx".
+COM1006: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+DAN1003: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+DAN1004: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+DAN1006: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+DTC1004: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+DTC1005: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ENFUN01: built 20 card-texts [exact 8, copy-edit 12, gold-subst 0, defect 0] all matched ✓
+ENFUN02: built 7 card-texts [exact 3, copy-edit 0, gold-subst 0, defect 4] 4 unmatched (baseline)
+   unmatched (overlap 0.00): Isolation
+   unmatched (overlap 0.00): Freedom
+   unmatched (overlap 0.00): Nature's beauty
+   unmatched (overlap 0.00): Journey and exploration
+ENFUN03: built 16 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 16] 16 unmatched (baseline)
+   unmatched (overlap 0.06): AND means as well . For example: I love rugby and I love to swim. I saw a monster and he smiled at me. Moana danced and 
+   unmatched (overlap 0.08): BUT changes the direction of a sentence. For example: She likes to sing but she's not very good. The plant is small but 
+   unmatched (overlap 0.03): OR gives a choice For example: You can buy the pink pyjamas or you can buy the black umbrella. Tui could eat lunch or sh
+   unmatched (overlap 0.05): SO tells us what's next For example: She ate her lunch early so by dinner time she was starving. Matiu was kind so he go
+   unmatched (overlap 0.06): When I saw the delicious cake on the dessert table, I couldn't resist having a slice.
+   unmatched (overlap 0.13): Complex Sentence
+   unmatched (overlap 0.10): Māia ran to catch the bus.
+   unmatched (overlap 0.29): Simple Sentence
+   unmatched (overlap 0.06): Hami saved his money, but he decided to splurge on a new video game.
+   unmatched (overlap 0.13): Compound Sentence
+   unmatched (overlap 0.05): While listening to my favourite song, I couldn't help but start dancing around the room.
+   unmatched (overlap 0.13): Complex Sentence
+   unmatched (overlap 0.13): The cat jumped onto the table.
+   unmatched (overlap 0.29): Simple Sentence
+   unmatched (overlap 0.18): The dog barked loudly, and the neighbours complained about the noise.
+   unmatched (overlap 0.13): Compound Sentence
+ENFUN04: built 12 card-texts [exact 12, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+ENFUN05: built 13 card-texts [exact 2, copy-edit 1, gold-subst 0, defect 10] 10 unmatched (baseline)
+   unmatched (overlap 0.04): Link for image (these were made by me in Canva)
+   unmatched (overlap 0.00): Flip
+   unmatched (overlap 0.09): Sarah is a talented singer she has won many awards for her performances
+   unmatched (overlap 0.09): Sarah is a talented singer; she has won many awards for her performances.
+   unmatched (overlap 0.08): My best friend who lives next door is coming over for a sleepover tonight
+   unmatched (overlap 0.08): My best friend (who lives next door) is coming over for a sleepover tonight.
+   unmatched (overlap 0.13): The soccer teams coach gave them a pep talk before the game
+   unmatched (overlap 0.13): The soccer team's coach gave them a pep talk before the game.
+   unmatched (overlap 0.05): Theres one thing you should always remember be kind to others
+   unmatched (overlap 0.04): There's one thing you should always remember: be kind to others.
+ENFUN07: built 8 card-texts [exact 8, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+ENFUN08: built 15 card-texts [exact 7, copy-edit 0, gold-subst 0, defect 8] 8 unmatched (baseline)
+   unmatched (overlap 0.22): He is like a shining star.
+   unmatched (overlap 0.25): He is a shining star.
+   unmatched (overlap 0.15): The classroom was as loud as a zoo.
+   unmatched (overlap 0.17): The classroom was a loud zoo.
+   unmatched (overlap 0.07): Her words were like daggers.
+   unmatched (overlap 0.08): Her words were daggers.
+   unmatched (overlap 0.57): Eating ice cream is a treat.
+   unmatched (overlap 0.19): Can you resist the taste of their favourite ice cream flavour?
+ENFUN09: built 13 card-texts [exact 11, copy-edit 0, gold-subst 0, defect 2] 2 unmatched (baseline)
+   unmatched (overlap 0.10): Images like these (these ones are made by me in Canva)
+   unmatched (overlap 0.00): Caption Text
+🟠 [ModuleResolver] Multiple module-code candidates found (ENG1004, ENG1001) — using ENG1004 from filename "ENG1004 Writers Template + Media List.docx".
+ENG1004: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENG1005, EN1001) — using ENG1005 from filename "ENG1005 Writers Template + Media List.docx".
+ENG1005: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENG1007, EN1001) — using ENG1007 from filename "ENG1007 Writers Template.docx".
+ENG1007: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ENGC101: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ENGC102: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGC201, EN000) — using ENGC201 from filename "ENGC201 Writers Template + Media List.docx".
+ENGC201: built 18 card-texts [exact 18, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGC202, EN000) — using ENGC202 from filename "ENGC202 Writers Template + Media List.docx".
+ENGC202: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGC204, ENWO307) — using ENGC204 from filename "ENGC204 Writers Template.docx".
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+ENGC204: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGC206, ENO304) — using ENGC206 from filename "ENGC206 Writers Template.docx".
+ENGC206: built 20 card-texts [exact 12, copy-edit 2, gold-subst 6, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGC301, EN000) — using ENGC301 from filename "ENGC301 Writers Template + Media List.docx".
+ENGC301: built 5 card-texts [exact 3, copy-edit 0, gold-subst 2, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGC302, EN000) — using ENGC302 from filename "ENGC302 Writers Template + Media List.docx".
+ENGC302: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGC401, EN000) — using ENGC401 from filename "ENGC401 Writers Template + Media List.docx".
+ENGC401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ENGC403: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ENGFUN02: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI101, ENGL101) — using ENGI101 from filename "ENGI101 Writers Template + Media List.docx".
+ENGI101: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ENGI102: built 28 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI103, EN000) — using ENGI103 from filename "ENGI103 Writers Template + Media List.docx".
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+ENGI103: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ENGI201: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ENGI202: built 24 card-texts [exact 7, copy-edit 0, gold-subst 12, defect 5] 5 unmatched (baseline)
+   unmatched (overlap 0.14): Waka Waka/canoes have been important to Māori for centuries and were used for transportation, fishing, exploration, and 
+   unmatched (overlap 0.18): Trees and forests Trees hold special importance to Māori as they teach kaitiakitanga; respect for nature and the environ
+   unmatched (overlap 0.13): Birds Birds are seen as messengers or guides between the physical and spiritual world. They are also symbols of kaitiaki
+   unmatched (overlap 0.11): Insects Insects signify the importance of nature and how all living things are connected. They are symbols of the import
+   unmatched (overlap 0.33): Kaitiakitanga (gGuardianship)
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI203, EN000) — using ENGI203 from filename "ENGI203 Writers Template + Media List.docx".
+ENGI203: built 3 card-texts [exact 3, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI301, EN000) — using ENGI301 from filename "ENGI301 Writers Template + Media List.docx".
+ENGI301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI302, EN000) — using ENGI302 from filename "ENGI302 Writers Template + Media List.docx".
+ENGI302: built 12 card-texts [exact 12, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI303, EN000) — using ENGI303 from filename "ENGI303 Writers Template + Media List.docx".
+ENGI303: built 4 card-texts [exact 0, copy-edit 4, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI400, ENO509) — using ENGI400 from filename "ENGI400 Writers Template.docx".
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+ENGI400: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGI401, EN000) — using ENGI401 from filename "ENGI401 Writers Template + Media List.docx".
+ENGI401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ENGI405: built 8 card-texts [exact 4, copy-edit 0, gold-subst 4, defect 0] all matched ✓
+ENGJ101: built 10 card-texts [exact 10, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+ENGJ102: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ENGJ201: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGJ202, EN000) — using ENGJ202 from filename "ENGJ202 Writers Template + Media List.docx".
+ENGJ202: built 5 card-texts [exact 5, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGJ301, EN000) — using ENGJ301 from filename "ENGJ301 Writers Template + Media List.docx".
+ENGJ301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ENGJ302: built 36 card-texts [exact 15, copy-edit 3, gold-subst 18, defect 0] all matched ✓
+ENGJ402: built 6 card-texts [exact 3, copy-edit 1, gold-subst 2, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGJ403, ENO500) — using ENGJ403 from filename "ENGJ403 Writers Template.docx".
+🟢 [ModuleResolver] ENGJ403 is not in the registry members — inherited from its level ENGJ4 (sibling rule).
+ENGJ403: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGR101, EN000) — using ENGR101 from filename "ENGR101 Writers Template + Media List.docx".
+ENGR101: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ENGR102: built 36 card-texts [exact 10, copy-edit 0, gold-subst 26, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGR201, EN000) — using ENGR201 from filename "ENGR201 Writers Template + Media List.docx".
+ENGR201: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+ENGR202: built 10 card-texts [exact 0, copy-edit 7, gold-subst 0, defect 3] 3 unmatched (baseline)
+   unmatched (overlap 0.18): Orange Attention getting Energy Warmth Naivety Superficial
+   unmatched (overlap 0.50): Pink Love Kindness Playfulness Childish
+   unmatched (overlap 0.57): Blue Safety Calm Reliable Sadness Melancholy
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGR301, EN000) — using ENGR301 from filename "ENGR301 Writers Template + Media List.docx".
+ENGR301: built 12 card-texts [exact 12, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+ENGR302: built 10 card-texts [exact 5, copy-edit 0, gold-subst 5, defect 0] all matched ✓
+ENGS101: built 42 card-texts [exact 24, copy-edit 1, gold-subst 0, defect 17] 17 unmatched (baseline)
+   unmatched (overlap 0.20): They love the rain Raincoat
+   unmatched (overlap 0.00): F unny cartoon smiling monster character.
+   unmatched (overlap 0.00): Cartoon angry gremlin.
+   unmatched (overlap 0.00): Cute monster.
+   unmatched (overlap 0.05): Funny cartoon furry monster character
+   unmatched (overlap 0.11): Funny Blue Monster Head with Long Arms
+   unmatched (overlap 0.00): Happy cool cartoon fat monster.
+   unmatched (overlap 0.06): Monster girl funny
+   unmatched (overlap 0.11): Funny yellow monster with tongue hanging out.
+   unmatched (overlap 0.23): Dad donate heart to a child. Adopted girl with father. Asking for Help
+   unmatched (overlap 0.14): Happy Family Characters Laughing. Father, Mother, Grandfather and Children Telling Funny Stories Sharing Ideas
+   unmatched (overlap 0.50): Little girl listening Listening Carefully
+   unmatched (overlap 0.33): Girl artist with paints and brush Trying New Things
+   unmatched (overlap 0.10): Boy jumping over skipping rope, cartoon character. Practicing Skills
+   unmatched (overlap 0.20): Vector illustration of mind map, arrow, brain, brainstorm, Using Pictures
+   unmatched (overlap 0.30): Boys and girls standing and sitting around desk Learning with others
+   unmatched (overlap 0.46): Huinga ako: Come along to your local huinga ako. You can learn with others who are also at Te Kura. Group activities : J
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGS102, EN000) — using ENGS102 from filename "ENGS102 Writers Template + Media List.docx".
+ENGS102: built 12 card-texts [exact 7, copy-edit 0, gold-subst 0, defect 5] 5 unmatched (baseline)
+   unmatched (overlap 0.24): Trees in a meadow https://www.youtube.com/watch?v=VVLf5t8ToRA (same video as L1) (3:30)
+   unmatched (overlap 0.25): Little Blue Duck https://www.youtube.com/watch?v=4Ywv4d3h5N8 (1.03)
+   unmatched (overlap 0.08): Dog https://www.youtube.com/watch?v=2E72TZy0LNo (screen cap at 0.29)
+   unmatched (overlap 0.06): Weta https://www.youtube.com/watch?v=4Ywv4d3h5N8 (Snip from book) or video at 1:00)
+   unmatched (overlap 0.10): Pavlova https://www.youtube.com/watch?v=4Ywv4d3h5N8 (6:00)
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGS201, EN000) — using ENGS201 from filename "ENGS201 Writers Template + Media List.docx".
+ENGS201: built 3 card-texts [exact 2, copy-edit 1, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGS202, EN000) — using ENGS202 from filename "ENGS202 Writers Template + Media List.docx".
+ENGS202: built 22 card-texts [exact 13, copy-edit 0, gold-subst 0, defect 9] 9 unmatched (baseline)
+   unmatched (overlap 0.00): Front
+   unmatched (overlap 0.05): Back
+   unmatched (overlap 0.00): Front
+   unmatched (overlap 0.05): Back
+   unmatched (overlap 0.11): Or any image you can get copyright clearance – I can go and take a photo
+   unmatched (overlap 0.10): Landmark creation
+   unmatched (overlap 0.04): Time travel
+   unmatched (overlap 0.00): Fantasy world
+   unmatched (overlap 0.00): Personal discovery
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGS301, EN000) — using ENGS301 from filename "ENGS301 Writers Template + Media List.docx".
+ENGS301: built 12 card-texts [exact 5, copy-edit 0, gold-subst 6, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.00): Kowhai
+ENGS302: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGS401, EN000) — using ENGS401 from filename "ENGS401 Writers Template + Media List.docx".
+ENGS401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (ENGS404, ENO000) — using ENGS404 from filename "ENGS404 Writers Template.docx".
+ENGS404: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ENGS405: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+ENO2060: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (EXBP901, EXIP902) — using EXBP901 from filename "EXBP901 Writers Template + Media List.docx".
+EXBP901: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+EXIP901: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+EXPFUN02: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+EXPFUN03: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+EXPFUN04: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+EXPFUN05: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [DocxExtractor] No [TITLE BAR]/[Fundamental content] opener — content started at the first structural tag instead; check the first page for stray front-matter.
+EXPFUN06: built 18 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 18] 18 unmatched (baseline)
+   unmatched (overlap 0.00): Whakawhanaungatanga (Relationships)
+   unmatched (overlap 0.19): Is about the relationships that help guide you through your project. You might reflect on the question 'How am I collabo
+   unmatched (overlap 0.00): Whakamana (Agency)
+   unmatched (overlap 0.16): Is about determining your own learning path and managing yourself to carry out your project to the best of your ability.
+   unmatched (overlap 0.00): Kotahitanga (Wellbeing)
+   unmatched (overlap 0.13): Is about ensuring balance and holistic wellbeing as you carry out your project. You might reflect on the question, 'how 
+   unmatched (overlap 0.00): Māramatonutanga (Rigour)
+   unmatched (overlap 0.19): Is about being rigorous in the pursuit of sense making and seeking to achieve your learning goals. You might reflect on 
+   unmatched (overlap 0.00): Whaitake (Relevance)
+   unmatched (overlap 0.19): Is about ensuring that your learning is relevant to your project, and to you and your future pathways. You might reflect
+   unmatched (overlap 0.20): Reflect on purpose
+   unmatched (overlap 0.13): Questions that support this form of reflection could include: How does what I am learning help me to answer my key quest
+   unmatched (overlap 0.20): Reflect on content
+   unmatched (overlap 0.11): Questions that support this form of reflection could include: What have I learned? How and why has my understanding chan
+   unmatched (overlap 0.20): Reflect on process
+   unmatched (overlap 0.13): Questions that support this form of reflection could include: What strategies did I try, and how well did they work? Wha
+   unmatched (overlap 0.13): Reflect on yourself as a learner
+   unmatched (overlap 0.17): Questions that support this form of reflection could include: What strengths am I applying to this project? What strengt
+EXPFUN07: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] FRFUN06: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+FRFUN06: built 10 card-texts [exact 3, copy-edit 1, gold-subst 0, defect 6] 6 unmatched (baseline)
+   unmatched (overlap 0.00): Front : image
+   unmatched (overlap 0.17): Flipped : word and clickable audio gare
+   unmatched (overlap 0.00): Front : image
+   unmatched (overlap 0.17): Flipped : word and clickable audio gomme
+   unmatched (overlap 0.50): Front caption : Deux hommes
+   unmatched (overlap 0.50): Front caption : Trois amis
+🟠 [ModuleResolver] FRFUN07: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+FRFUN07: built 6 card-texts [exact 3, copy-edit 1, gold-subst 0, defect 2] 2 unmatched (baseline)
+   unmatched (overlap 0.15): Flipside says "bookshop" not library Bookstore Full Of Books Makes For Better Everyday Life Stock Photo - Download Image
+   unmatched (overlap 0.10): Flipside says " currently" NOT actually Never Dont Be Late On Business Meeting Worried Businessman Looking At His Watch 
+🟠 [ModuleResolver] FRFUN08: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+FRFUN08: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (FRNO901, FRO101) — using FRNO901 from filename "FRNO901 Writers Template.docx".
+FRNO901: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+FRNO902: built 8 card-texts [exact 8, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+GENO901: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+GEO1004: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (GEO1005, GYO1008) — using GEO1005 from filename "GEO1005 Writers Template + Media List.docx".
+GEO1005: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+GEO1006: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (GER1002, GER1000) — using GER1002 from filename "GER1002 Writers Template + Media List.docx".
+GER1002: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+GEWHA: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HES1002, PEO1042) — using HES1002 from filename "HES1002 Writers Template + Media List.docx".
+HES1002: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HES1003: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HES1004: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HES1005: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HES1006: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HES1007: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1001, HS1001) — using HIS1001 from filename "HIS1001 Writers Template.docx".
+HIS1001: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1002, HS1002) — using HIS1002 from filename "HIS1002 Writers Template + Media List.docx".
+HIS1002: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HIS1003: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HIS1004: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HIS1005: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HIS1006: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1007, HIS1000) — using HIS1007 from filename "HIS1007 Writers Template.docx".
+HIS1007: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HIS1008, HIS1000) — using HIS1008 from filename "HIS1008 Writers Template + Media List.docx".
+HIS1008: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (HPFUN101, HPFUN01) — using HPFUN101 from filename "HPFUN101 Writers Template.docx".
+HPFUN101: built 12 card-texts [exact 12, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+HPFUN102: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HPFUN103: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HPFUN201: built 1 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.26): Your heart What you care about—like your family, pets, or helping others. What you think about, what you wonder, and wha
+HPFUN202: built 30 card-texts [exact 23, copy-edit 6, gold-subst 0, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.00): Airplane
+HPFUN203: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HPFUN301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HPFUN302: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HPFUN303: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HPFUN401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HPFUN402: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HPFUN403: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HPFUN901: built 24 card-texts [exact 20, copy-edit 0, gold-subst 0, defect 4] 4 unmatched (baseline)
+   unmatched (overlap 0.17): Phase 1 and 2
+   unmatched (overlap 0.17): Phase 3 and 4
+   unmatched (overlap 0.17): Phase 1 and 2
+   unmatched (overlap 0.17): Phase 3 and 4
+HPFUN902: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+HPFUN903: built 42 card-texts [exact 34, copy-edit 4, gold-subst 0, defect 4] 4 unmatched (baseline)
+   unmatched (overlap 0.08): Tires Use this image to cut relevant images for each flip card.
+   unmatched (overlap 0.17): Phase one and two
+   unmatched (overlap 0.17): Phase three and four
+   unmatched (overlap 0.48): Owners must take reasonable steps to prevent their dog from barking excessively, causing a nuisance, or intimidating peo
+🟠 [ModuleResolver] HPRE203: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+HPRE203: built 20 card-texts [exact 17, copy-edit 3, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] HPRE301: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+HPRE301: built 12 card-texts [exact 11, copy-edit 1, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (JPFUN01, JP000) — using JPFUN01 from filename "JPFUN01 Writers Template.docx".
+JPFUN01: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (JPFUN02, JP000) — using JPFUN02 from filename "JPFUN02 Writers Template.docx".
+JPFUN02: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (JPN1004, JAP1000) — using JPN1004 from filename "JPN1004 Writers Template + Media List.docx".
+JPN1004: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (MUS1004, MUS1001) — using MUS1004 from filename "MUS1004 Writers Template + Media List.docx".
+MUS1004: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MUS1006: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXDB102: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXDB201: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXDB202: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (MXDB301, MXO324) — using MXDB301 from filename "MXDB301 Writers Template + Media List.docx".
+MXDB301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (MXDB302, MXO421) — using MXDB302 from filename "MXDB302 Writers Template + Media List.docx".
+MXDB302: built 14 card-texts [exact 9, copy-edit 1, gold-subst 0, defect 4] 4 unmatched (baseline)
+   unmatched (overlap 0.00): 1m = 100cm
+   unmatched (overlap 0.00): 1m = 1000mm
+   unmatched (overlap 0.00): 1000m = 1km
+   unmatched (overlap 0.00): 1cm = 10mm
+MXDI101: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXDI102: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXDI103: built 16 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+MXDI201: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXDI202: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXDI301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXEO102: built 14 card-texts [exact 12, copy-edit 0, gold-subst 0, defect 2] 2 unmatched (baseline)
+   unmatched (overlap 0.25): Kōwhaiwhai
+   unmatched (overlap 0.00): Meaning
+MXEO201: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXEO202: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (MXEO301, MXO332) — using MXEO301 from filename "MXEO301 Writers Template + Media List.docx".
+MXEO301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXEO401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXEX101: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXEX201: built 10 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+MXEX202: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (MXEX301, MXO323) — using MXEX301 from filename "MXEX301 Writers Template + Media List.docx".
+MXEX301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXEX302: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (MXEX401, MXO421) — using MXEX401 from filename "MXEX401 Writers Template + Media List.docx".
+MXEX401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFL101: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFL102: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFL103: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFL104: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFL201: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFL202: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFL203: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFL204: built 9 card-texts [exact 4, copy-edit 1, gold-subst 0, defect 4] 4 unmatched (baseline)
+   unmatched (overlap 0.12): Daily exercise for dogs
+   unmatched (overlap 0.09): People watching African animals at the zoo
+   unmatched (overlap 0.03): Favourite pets
+   unmatched (overlap 0.00): Kakapo population
+MXFL301: built 8 card-texts [exact 7, copy-edit 1, gold-subst 0, defect 0] all matched ✓
+MXFL302: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFL401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFU201: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFU202: built 4 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 4] 4 unmatched (baseline)
+   unmatched (overlap 0.13): 2024 Paris Olympic Stadium
+   unmatched (overlap 0.00): 1936 Summer Olympics
+   unmatched (overlap 0.00): Panathenic Stadium – Ancient Greek stadium
+   unmatched (overlap 0.00): 2000 Olympics hockey stadium
+MXFU301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFU302: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (MXFU401, MX000) — using MXFU401 from filename "MXFU401 Writers Template + Media List.docx".
+MXFU401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXFU402: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+MXFUN01: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (MXFUN02, MXFUN102) — using MXFUN02 from filename "MXFUN02 Writers Template + Media List.docx".
+MXFUN02: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (MXFUN03, MXFUN103) — using MXFUN03 from filename "MXFUN03 Writers Template + Media List.docx".
+MXFUN03: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+MXS1004: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+OSAH301: built 14 card-texts [exact 11, copy-edit 0, gold-subst 0, defect 3] 3 unmatched (baseline)
+   unmatched (overlap 0.00): Kete 1
+   unmatched (overlap 0.00): Kete 2
+   unmatched (overlap 0.31): I know what the HDCA says about digital harm
+OSAH401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+OSAH501: built 22 card-texts [exact 9, copy-edit 0, gold-subst 12, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.00): COUNCELLORS
+OSAI101: built 12 card-texts [exact 12, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSAI201: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSAI301: built 12 card-texts [exact 12, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSAI401: built 6 card-texts [exact 0, copy-edit 0, gold-subst 6, defect 0] all matched ✓
+OSAI501: built 22 card-texts [exact 22, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSBY101: built 3 card-texts [exact 3, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSBY201: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSBY301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+OSBY401: built 11 card-texts [exact 11, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSBY501: built 33 card-texts [exact 23, copy-edit 0, gold-subst 10, defect 0] all matched ✓
+OSGM101: built 8 card-texts [exact 8, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSGM201: built 22 card-texts [exact 21, copy-edit 0, gold-subst 0, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.25): Cs: can these two images face each other and merge to create a conversation scene? Taha whānau social wellbeing
+OSGM301: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSGM401: built 31 card-texts [exact 31, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSGM501: built 3 card-texts [exact 3, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSOH101: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSOH201: built 8 card-texts [exact 8, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSOH301: built 18 card-texts [exact 10, copy-edit 7, gold-subst 0, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.56): Don't share your device without permission
+OSOH401: built 4 card-texts [exact 4, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSOH501: built 16 card-texts [exact 16, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSSC301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+OSSC401: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] OSSC501 is not in the registry members — inherited from its level OSSC4 (sibling rule).
+OSSC501: built 8 card-texts [exact 8, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+OSSM301: built 12 card-texts [exact 6, copy-edit 6, gold-subst 0, defect 0] all matched ✓
+OSSM401: built 16 card-texts [exact 10, copy-edit 6, gold-subst 0, defect 0] all matched ✓
+🟢 [ModuleResolver] OSSM501 is not in the registry members — inherited from its level OSSM4 (sibling rule).
+OSSM501: built 8 card-texts [exact 8, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+PES1001: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+PES1002: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (PES1003, PHO1052) — using PES1003 from filename "PES1003 Writers Template + Media List.docx".
+PES1003: built 14 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+🟠 [ModuleResolver] Multiple module-code candidates found (PES1004, PHO1011) — using PES1004 from filename "PES1004 Writers Template + Media List.docx".
+PES1004: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+PES1005: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (PES1007, SCO1013) — using PES1007 from filename "PES1007 Writers Template + Media List.docx".
+PES1007: built 8 card-texts [exact 4, copy-edit 0, gold-subst 4, defect 0] all matched ✓
+PES1008: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+PHE1001: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+PHE1002: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+PHE1003: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+PHE1004: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+PHE1005: built 4 card-texts [exact 0, copy-edit 4, gold-subst 0, defect 0] all matched ✓
+PHE1006: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (PHE1007, PEO1042) — using PHE1007 from filename "PHE1007 Writers Template + Media List.docx".
+PHE1007: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+PHE1008: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [TITLE BAR] typed inside a table cell (the MTK bilingual template) — the overview tables before the first paragraph-level start are content, not front matter (round 453).
+PMT101: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [Content for DROP DOWN MENU] marker — the MTK drop-down-menu bilingual template (its overview lives before the first [LESSON N CONTENT]).
+PNR101: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [Content for DROP DOWN MENU] marker — the MTK drop-down-menu bilingual template (its overview lives before the first [LESSON N CONTENT]).
+PNR102: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [Content for DROP DOWN MENU] marker — the MTK drop-down-menu bilingual template (its overview lives before the first [LESSON N CONTENT]).
+PNR104: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [Content for DROP DOWN MENU] marker — the MTK drop-down-menu bilingual template (its overview lives before the first [LESSON N CONTENT]).
+PNR107: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (PWY1001, PWO1007) — using PWY1001 from filename "PWY1001 Writers Template.docx".
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+PWY1001: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+PWY1002: built 23 card-texts [exact 23, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (PWY1007, PW1003) — using PWY1007 from filename "PWY1007 Writers Template.docx".
+PWY1007: built 8 card-texts [exact 8, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+PWY1008: built 12 card-texts [exact 12, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (PWY1009, LGO1007) — using PWY1009 from filename "PWY1009 Writers Template.docx".
+PWY1009: built 8 card-texts [exact 8, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (PWYWHA1, PWY1000) — using PWYWHA1 from filename "PWYWHA1 Writers Template.docx" (a registry-known code).
+PWYWHA1: built 3 card-texts [exact 3, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+SCBI301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+SCCH301: built 3 card-texts [exact 2, copy-edit 0, gold-subst 0, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.21): The moisture inside the popcorn turns into gas and expands, bursting the kernel open. Another good example is a steam en
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+SCES201: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] 5 mined registry field(s) held the unknown literal "n/a" — kept the nearest real tier / library-wide default instead (universal-field fallback; env SKELDEFAULT_OFF reverts).
+SCFUN01: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] SCPH301: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+SCPH301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (SPA1004, SPO1007) — using SPA1004 from filename "SPA1004 Writers Template + Media List.docx".
+SPA1004: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] SSCI104 is not in the registry members — inherited from its level SSCI3 (sibling rule).
+SSCI104: built 7 card-texts [exact 6, copy-edit 1, gold-subst 0, defect 0] all matched ✓
+🟢 [ModuleResolver] SSCI205 is not in the registry members — inherited from its level SSCI3 (sibling rule).
+SSCI205: built 42 card-texts [exact 3, copy-edit 27, gold-subst 0, defect 12] 12 unmatched (baseline)
+   unmatched (overlap 0.50): (front) Women
+   unmatched (overlap 0.50): (front) Metic
+   unmatched (overlap 0.50): (front) Children
+   unmatched (overlap 0.00): (front) Comedy
+   unmatched (overlap 0.17): (back) Comedy plays were funny and entertaining. They often made jokes about everyday life.
+   unmatched (overlap 0.00): (front) Tragedy
+   unmatched (overlap 0.10): (back) Tragedy plays were serious and emotional. They told stories about difficult choices and sad events.
+   unmatched (overlap 0.00): (front) Satire
+   unmatched (overlap 0.11): (back) Satire plays used humour to make people think about problems or behaviour in society.
+   unmatched (overlap 0.50): (front) Wrestling
+   unmatched (overlap 0.50): (front) Pankration
+   unmatched (overlap 0.50): (front) Teamwork
+🟠 [ModuleResolver] SSEA203: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+SSEA203: built 36 card-texts [exact 6, copy-edit 3, gold-subst 0, defect 27] 27 unmatched (baseline)
+   unmatched (overlap 0.40): Price: $30
+   unmatched (overlap 0.16): Size: Fits one person
+   unmatched (overlap 0.04): Features:
+   unmatched (overlap 0.20): Lightweight and easy to carry.
+   unmatched (overlap 0.16): Simple to set up.
+   unmatched (overlap 0.08): Thin material.
+   unmatched (overlap 0.16): Less sturdy in wind.
+   unmatched (overlap 0.04): Appearance:
+   unmatched (overlap 0.24): Brightly coloured, small and dome shaped.
+   unmatched (overlap 0.40): Price: $60
+   unmatched (overlap 0.19): Size: Fits two or three people.
+   unmatched (overlap 0.04): Features:
+   unmatched (overlap 0.06): Waterproof material.
+   unmatched (overlap 0.13): Strong poles for wind.
+   unmatched (overlap 0.06): Ventilation windows.
+   unmatched (overlap 0.13): Easy to pack away.
+   unmatched (overlap 0.04): Appearance:
+   unmatched (overlap 0.38): Outdoor-style colours (shades of green and blue). Classic medium dome shape.
+   unmatched (overlap 0.40): Price: $100
+   unmatched (overlap 0.17): Size: Fits four or five people.
+   unmatched (overlap 0.04): Features:
+   unmatched (overlap 0.11): Fully waterproof and windproof.
+   unmatched (overlap 0.11): Very strong and durable.
+   unmatched (overlap 0.17): Extra space for bags and gear.
+   unmatched (overlap 0.11): Built-in ground sheet.
+   unmatched (overlap 0.04): Appearance:
+   unmatched (overlap 0.31): Earthy colours (dark green, brown). Large tunnel shaped, multi-section design.
+SSFUN01: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+SSFUN02: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (SSFUN03, GYO1002) — using SSFUN03 from filename "SSFUN03 Writers Template + Media List.docx".
+SSFUN03: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+SSFUN05: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+SSFUN06: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [ModuleResolver] SSFUN07 is a recorded page_model exception — using multi-file.
+SSFUN07: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+SSFUN08: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (SSOG101, ISTO216) — using SSOG101 from filename "SSOG101 Writers Template + Media List.docx".
+SSOG101: built 32 card-texts [exact 22, copy-edit 1, gold-subst 0, defect 9] 9 unmatched (baseline)
+   unmatched (overlap 0.33): You get a flat tyre on your bike. Call 111?
+   unmatched (overlap 0.27): You scraped your knee playing at the playground. Call 111?
+   unmatched (overlap 0.37): No need to call 111: A trusted adult will be able to help you with most minor bumps and scrapes.
+   unmatched (overlap 0.31): Your sibling is playing with your favourite toy without asking. Call 111?
+   unmatched (overlap 0.22): You are lost in the supermarket. Call 111?
+   unmatched (overlap 0.32): No need to call 111: Go to the front desk, they will call for your parents and will make sure you are safe while you wai
+   unmatched (overlap 0.25): The house across the street is on fire. Call 111?
+   unmatched (overlap 0.19): You are followed home by someone who makes you feel uncomfortable. Call 111?
+   unmatched (overlap 0.37): You see a car crash and someone is badly hurt. Call 111?
+SSOG103: built 28 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+🟢 [ModuleResolver] SSOG105 is not in the registry members — inherited from its level SSOG1 (sibling rule).
+SSOG105: built 16 card-texts [exact 0, copy-edit 8, gold-subst 8, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (SSOG301, SSSO301) — using SSOG301 from filename "SSOG301 Writers Template + Media List.docx".
+SSOG301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] TEDC401: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+TEDC401: built 4 card-texts [exact 3, copy-edit 0, gold-subst 0, defect 1] 1 unmatched (baseline)
+   unmatched (overlap 0.22): Prototype: is or isn't? / Guess before you flip! Prototype IS …
+🟠 [ModuleResolver] TEDC402: no registry entry and no majority ruleset found — using global defaults. Check the code, or add the series to the registry.
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Single-cell page-layout table dissolved into 1 stacked blocks (a one-cell table holding an [Activity] is a box the writer drew, not widget data; round 313).
+🟢 [DocxExtractor] Page-layout table dissolved into 12 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 4 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 14 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 4 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+🟢 [DocxExtractor] Page-layout table dissolved into 2 stacked blocks (an [Activity] and a [speech bubble] shared one table — the finished page stacks them; round 306).
+TEDC402: built 12 card-texts [exact 7, copy-edit 0, gold-subst 0, defect 5] 5 unmatched (baseline)
+   unmatched (overlap 0.53): Version 1: A bar chart starting at zero → looks balanced. (Used Excel to turn this info table into a graph.)
+   unmatched (overlap 0.29): What is an operating system (OS)
+   unmatched (overlap 0.26): An operating system (OS) is the software that manages everything on your device: hardware (CPU, memory, storage, sensors
+   unmatched (overlap 0.06): OS Layers
+   unmatched (overlap 0.16): Operating systems work in layers, from low‑level hardware to the screen you tap. An operating system (OS) is the softwar
+TEFUN01: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TEFUN02: built 4 card-texts [exact 4, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+TEFUN03: built 20 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 20] 20 unmatched (baseline)
+   unmatched (overlap 0.11): CS Designed versions of Thinkers Keys Brainstorming Brainstorming Come up with multiple ways to find a solution.
+   unmatched (overlap 0.04): How To: Write down or draw as many ideas as you can, no matter how silly or wild they seem. Even if it is only half an i
+   unmatched (overlap 0.05): CS Designed versions of Thinkers Keys Combinations Combinations Blend products into something brand new.
+   unmatched (overlap 0.14): How to: Think about two products that already exist that could make a great product. Take the parts that you think are t
+   unmatched (overlap 0.08): CS Designed versions of Thinkers Keys Improvements Improvements Make an existing product better.
+   unmatched (overlap 0.11): How to: You don't need to start from the beginning! Think of something that already exists. Maybe your end user is alrea
+   unmatched (overlap 0.13): CS Designed versions of Thinkers Keys Challenge Challenge Find an assumption and try to prove it is possible.
+   unmatched (overlap 0.15): How to: Some things are impossible, but what if they weren't? Stretch your brain and see what comes out. Ask yourself, w
+   unmatched (overlap 0.05): CS Designed versions of Thinkers Keys Inventions Inventions Develop unusual ways of doing things.
+   unmatched (overlap 0.13): How to: Think sideways and dream up a device that can solve an everyday problem. First, draw it on a piece of paper or o
+   unmatched (overlap 0.06): CS Designed versions of Thinkers Keys BAR BAR Make it B igger. A dd something else. R eplace a part of it.
+   unmatched (overlap 0.07): How to: Take an object. Think: Can I make this bigger or smaller? Can I add anything to improve my design? What could I 
+   unmatched (overlap 0.11): CS Designed versions of Thinkers Keys Brick Wall Brick Wall Explore what is standing in your way.
+   unmatched (overlap 0.11): How to: Identify what is holding you back from being able to develop your idea or product. Think of as many ways as you 
+   unmatched (overlap 0.07): CS Designed versions of Thinkers Keys In Common In Common Show how two different things are alike.
+   unmatched (overlap 0.11): How to: Take two concepts that seem really different and find what connects them. This will help you to better understan
+   unmatched (overlap 0.09): CS Designed versions of Thinkers Keys Reverse Reverse Flip your thinking.
+   unmatched (overlap 0.15): How to: Are you stuck on a problem? Take the question you have and ask the opposite instead. It might sound silly, but w
+   unmatched (overlap 0.08): CS Designed versions of Thinkers Keys Prediction Prediction Think into the future.
+   unmatched (overlap 0.11): How to: Imagine what the future will look like in 10, 20 or even 100 years from now. What could technology be like then?
+TEFUN04: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TEFUN05: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TEFUN06: built 6 card-texts [exact 5, copy-edit 1, gold-subst 0, defect 0] all matched ✓
+TEFUN07: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TEFUN08: built 8 card-texts [exact 2, copy-edit 1, gold-subst 0, defect 5] 5 unmatched (baseline)
+   unmatched (overlap 0.00): Inputs
+   unmatched (overlap 0.00): Outputs
+   unmatched (overlap 0.19): You ask Mum for some juice to drink.
+   unmatched (overlap 0.40): You ask your brother to play catch.
+   unmatched (overlap 0.17): You ask your nana for some cake.
+🟢 [DocxExtractor] Content opened at the [TITLE BAR] typed inside a table cell (the MTK bilingual template) — the overview tables before the first paragraph-level start are content, not front matter (round 453).
+TRR102: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [TITLE BAR] typed inside a table cell (the MTK bilingual template) — the overview tables before the first paragraph-level start are content, not front matter (round 453).
+TRR103: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TRR104: ERROR Cannot read properties of null (reading 'name')
+TRR105: ERROR Cannot read properties of null (reading 'name')
+🟠 [ModuleResolver] Multiple module-code candidates found (TRR106, TRR101) — using TRR106 from filename "TRR106 Writers Template.docx".
+🟢 [DocxExtractor] Content opened at the [TITLE BAR] typed inside a table cell (the MTK bilingual template) — the overview tables before the first paragraph-level start are content, not front matter (round 453).
+TRR106: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [TITLE BAR] typed inside a table cell (the MTK bilingual template) — the overview tables before the first paragraph-level start are content, not front matter (round 453).
+TRR107: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [TITLE BAR] typed inside a table cell (the MTK bilingual template) — the overview tables before the first paragraph-level start are content, not front matter (round 453).
+TRR108: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [TITLE BAR] typed inside a table cell (the MTK bilingual template) — the overview tables before the first paragraph-level start are content, not front matter (round 453).
+TRR109: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [TITLE BAR] typed inside a table cell (the MTK bilingual template) — the overview tables before the first paragraph-level start are content, not front matter (round 453).
+TRR110: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [TITLE BAR] typed inside a table cell (the MTK bilingual template) — the overview tables before the first paragraph-level start are content, not front matter (round 453).
+TRR111: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [TITLE BAR] typed inside a table cell (the MTK bilingual template) — the overview tables before the first paragraph-level start are content, not front matter (round 453).
+TRR112: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [TITLE BAR] typed inside a table cell (the MTK bilingual template) — the overview tables before the first paragraph-level start are content, not front matter (round 453).
+TRR113: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [TITLE BAR] typed inside a table cell (the MTK bilingual template) — the overview tables before the first paragraph-level start are content, not front matter (round 453).
+TRR114: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [TITLE BAR] typed inside a table cell (the MTK bilingual template) — the overview tables before the first paragraph-level start are content, not front matter (round 453).
+TRR115: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [TITLE BAR] typed inside a table cell (the MTK bilingual template) — the overview tables before the first paragraph-level start are content, not front matter (round 453).
+TRR116: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [Content for DROP DOWN MENU] marker — the MTK drop-down-menu bilingual template (its overview lives before the first [LESSON N CONTENT]).
+TRR203: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [Content for DROP DOWN MENU] marker — the MTK drop-down-menu bilingual template (its overview lives before the first [LESSON N CONTENT]).
+TRR301: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟢 [DocxExtractor] Content opened at the [TITLE BAR] typed inside a table cell (the MTK bilingual template) — the overview tables before the first paragraph-level start are content, not front matter (round 453).
+TRR304: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TWHA901: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TWHA902: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TWHA903: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TWHA904: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TWHA905: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (TWHA906, TWHO903) — using TWHA906 from filename "TWHA906 Writers Template.docx".
+TWHA906: built 20 card-texts [exact 9, copy-edit 3, gold-subst 0, defect 8] 8 unmatched (baseline)
+   unmatched (overlap 0.36): DEV: Colour code for phase 2: Facing: Plants we can see when we walk
+   unmatched (overlap 0.22): DEV: colour code for phase 2: Facing: Food picture
+   unmatched (overlap 0.15): DEV: colour code for phase 3: Facing: F ood diary
+   unmatched (overlap 0.26): DEV: colour code for phase 3: Facing Plant feeding experiment
+   unmatched (overlap 0.27): J.K. Rowling Author of Harry Potter
+   unmatched (overlap 0.18): Taylor Swift Taylor_Swift_at_the_2023_ Singer song writer
+   unmatched (overlap 0.26): Sir Peter Beck Founder of Rocket Lab
+   unmatched (overlap 0.19): Liam Lawson Formula 1 driver
+TWHK901: built 38 card-texts [exact 37, copy-edit 1, gold-subst 0, defect 0] all matched ✓
+🟢 [ModuleResolver] TWHK902 is not in the registry members — inherited from its level TWHK9 (sibling rule).
+TWHK902: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TWHK903: built 8 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+🟢 [ModuleResolver] TWHK907 is not in the registry members — inherited from its level TWHK9 (sibling rule).
+TWHK907: built 18 card-texts [exact 12, copy-edit 4, gold-subst 0, defect 2] 2 unmatched (baseline)
+   unmatched (overlap 0.41): Facing: V ideo Reverse: T ake a video of you participating in your hapori.
+   unmatched (overlap 0.50): Facing: M usic Reverse: W rite and or perform a song or dance about your involvement within your hapori.
+TWHR905: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TWHR907: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+TWHT903: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+WJFUN105: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+WJFUN106: built 12 card-texts [exact 12, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+WJFUN107: built 8 card-texts [exact 3, copy-edit 2, gold-subst 0, defect 3] 3 unmatched (baseline)
+   unmatched (overlap 0.40): Maia and Koro planned their hike.
+   unmatched (overlap 0.40): They wanted to climb Mount Sunday.
+   unmatched (overlap 0.57): On Saturday we went hiking.
+WJFUN108: built 6 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 6] 6 unmatched (baseline)
+   unmatched (overlap 0.33): Simple Sentence
+   unmatched (overlap 0.15): I visited the West Coast. The West Coast beach is wild. The South Island mountains are tall.
+   unmatched (overlap 0.33): Compound Sentence
+   unmatched (overlap 0.08): The Punakaiki rocks are famous, and they look like stacks of pancakes. The Franz Josef Glacier is huge, and it moves ver
+   unmatched (overlap 0.33): Complex Sentence
+   unmatched (overlap 0.06): When you visit Lake Matheson, you can see clear reflections of the Southern Alps in the water. Because Shantytown shows 
+WJFUN109: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+WJFUN110: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+WJFUN112: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+WJFUN113: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+WJFUN115: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+WJFUN116: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+WJFUN205: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+WJFUN206: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+WJFUN208: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+WJFUN210: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+WJFUN211: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+WJFUN212: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+WJFUN304: built 4 card-texts [exact 2, copy-edit 0, gold-subst 0, defect 2] 2 unmatched (baseline)
+   unmatched (overlap 0.44): The clouds were bright. bright
+   unmatched (overlap 0.42): The glowing clouds filled the sky. glowing
+WJFUN305: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (WJFUN306, WJFUN205) — using WJFUN306 from filename "WJFUN306 Writers Template.docx".
+WJFUN306: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+WJFUN307: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+WJFUN308: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XDLS501: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XDLS502: built 13 card-texts [exact 0, copy-edit 3, gold-subst 0, defect 10] 10 unmatched (baseline)
+   unmatched (overlap 0.08): Patrick(
+   unmatched (overlap 0.58): He uses the facility of a gym.
+   unmatched (overlap 0.06): Dogs(
+   unmatched (overlap 0.44): These dogs are enjoying the facility of the beach.
+   unmatched (overlap 0.03): Marae(
+   unmatched (overlap 0.46): A marae is a special place culturally, spiritually and for community to come together in support and learning.
+   unmatched (overlap 0.07): 1. Make a list/show/tell about your favourite community facilities . Examples: library, skatepark, swimming pool, park .
+   unmatched (overlap 0.04): 1. Why do you like these facilities?
+   unmatched (overlap 0.05): 1. Think about what facilities are in your community that are not on your list?
+   unmatched (overlap 0.08): 1. What other people can use these other facilities?
+XDLS901: built 16 card-texts [exact 0, copy-edit 4, gold-subst 0, defect 12] 12 unmatched (baseline)
+   unmatched (overlap 0.13): 1. Explore the environment cards The cards show different environments that people work or volunteer in, such as:
+   unmatched (overlap 0.50): 1. indoors
+   unmatched (overlap 0.50): 1. outdoors
+   unmatched (overlap 0.11): 1. Compare and sortort You can now sort the cards into…
+   unmatched (overlap 0.08): 1. "I'd like to work/volunteer here."
+   unmatched (overlap 0.00): 1. "Maybe."
+   unmatched (overlap 0.13): 1. "Not for me."
+   unmatched (overlap 0.09): 1. Reflect and discuss with your hua ako about two environments you liked.
+   unmatched (overlap 0.20): 1. What do you like about this environment?
+   unmatched (overlap 0.24): 1. What kind of jobs or volunteer roles happen here?
+   unmatched (overlap 0.11): 1. What skills or personality traits would be helpful?
+   unmatched (overlap 0.22): Take a photo of your sorted cards and share with your kaiako what you found out about what environment you would like to
+XDLS902: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+XDLS903: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XDLS904: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XDLS905: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XDLS906: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XDLS908: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+🟠 [ModuleResolver] Multiple module-code candidates found (XDLS909, XDLS5909) — using XDLS909 from filename "XDLS909 Writers Template.docx".
+XDLS909: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XDLS911: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XDLS912: built 7 card-texts [exact 7, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟢 [ModuleResolver] XFUN01 is a recorded page_model exception — using single-file.
+XFUN01: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XFUN02: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XGF9001: built 48 card-texts [exact 45, copy-edit 3, gold-subst 0, defect 0] all matched ✓
+🟢 [ModuleResolver] XGF9002 is not in the registry members — inherited from its level XGF9 (sibling rule).
+XGF9002: built 48 card-texts [exact 0, copy-edit 12, gold-subst 24, defect 12] 12 unmatched (baseline)
+   unmatched (overlap 0.17): "My child thinks if they can't do a task straight away, it means they are not smart."
+   unmatched (overlap 0.10): Fixed mindset Correct! This belief suggests intelligence is static. Growth mindset This reflects a belief that ability i
+   unmatched (overlap 0.19): "I often say things like 'I love how hard you worked on that'."
+   unmatched (overlap 0.06): Fixed mindset This focuses on effort. Growth mindset Correct! This reinforces persistence.
+   unmatched (overlap 0.12): "My child gives up quickly when something feels challenging."
+   unmatched (overlap 0.09): Fixed mindset Correct! Avoiding challenge is linked to fixed mindset thinking. Growth mindset This response does not ref
+   unmatched (overlap 0.06): "I praise my child mostly for being clever or talented."
+   unmatched (overlap 0.13): Fixed mindset Correct! Talent-only praise can unintentionally fuel perfectionism. Growth mindset This does not align wit
+   unmatched (overlap 0.08): "When my child avoids something new, I assume they just aren't interested."
+   unmatched (overlap 0.10): Fixed mindset Correct! This assumes ability or interest is fixed rather than something that can grow with support. Growt
+   unmatched (overlap 0.13): "When my child becomes very upset about making a mistake, I try to fix the problem quickly, so they don't feel bad."
+   unmatched (overlap 0.10): Fixed mindset Correct! This can unintentionally send the message that mistakes should be avoided, rather than explored a
+XGF9003: built 16 card-texts [exact 15, copy-edit 1, gold-subst 0, defect 0] all matched ✓
+XGF9004: built 53 card-texts [exact 0, copy-edit 0, gold-subst 53, defect 0] all matched ✓
+XGF9006: built 56 card-texts [exact 44, copy-edit 0, gold-subst 12, defect 0] all matched ✓
+XLP01: built 16 card-texts [exact 8, copy-edit 4, gold-subst 0, defect 4] 4 unmatched (baseline)
+   unmatched (overlap 0.11): We will aim to cover each of these parts of learning to read in this module. Each part will be explained, modelled with 
+   unmatched (overlap 0.04): You can use this 'need help' button at any time to ask your ākonga's (student) kaiako (teacher) to help to support you.
+   unmatched (overlap 0.00): Coreboards
+   unmatched (overlap 0.33): AAC device
+XLP02: built 29 card-texts [exact 3, copy-edit 5, gold-subst 0, defect 21] 21 unmatched (baseline)
+   unmatched (overlap 0.50): 1. Writing with adults
+   unmatched (overlap 0.50): 2. Writing by Adults
+   unmatched (overlap 0.50): 3. Writing by myself.
+   unmatched (overlap 0.15): We will aim to cover each of these parts of learning to write in this module.
+   unmatched (overlap 0.10): Each part will be explained, modelled with video or pictures and reinforced with activities for you to try in each lesso
+   unmatched (overlap 0.13): You can use this 'need help' button at any time to ask your ākonga's (student) kaiako (teacher) to help to support you.
+   unmatched (overlap 0.00): Flour
+   unmatched (overlap 0.00): Salt
+   unmatched (overlap 0.03): Playdough or clay
+   unmatched (overlap 0.00): Slime
+   unmatched (overlap 0.00): Sand tray
+   unmatched (overlap 0.00): Kinetic sand
+   unmatched (overlap 0.00): Coloured rice
+   unmatched (overlap 0.00): Shaving foam (unscented)
+   unmatched (overlap 0.00): Paint
+   unmatched (overlap 0.13): Coloured markers and pens
+   unmatched (overlap 0.00): Whiteboard markers
+   unmatched (overlap 0.00): Twinkl resource
+   unmatched (overlap 0.00): Twinkl resource
+   unmatched (overlap 0.00): Twinkl resource
+   unmatched (overlap 0.00): Twinkl resource
+🟠 [ModuleResolver] Multiple module-code candidates found (XLP03, XFUN03) — using XLP03 from filename "XLP03 Writers Template.docx".
+XLP03: built 20 card-texts [exact 6, copy-edit 1, gold-subst 13, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (XLP04, XFUN03) — using XLP04 from filename "XLP04 Writers Template.docx".
+XLP04: built 6 card-texts [exact 6, copy-edit 0, gold-subst 0, defect 0] all matched ✓
+🟠 [ModuleResolver] Multiple module-code candidates found (XLP05, XFUN09) — using XLP05 from filename "XLP05 Writers Template + Media List.docx".
+XLP05: built 8 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+XLP06: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XMES101: built 6 card-texts [exact 1, copy-edit 2, gold-subst 0, defect 3] 3 unmatched (baseline)
+   unmatched (overlap 0.25): Girl with surprised expression
+   unmatched (overlap 0.33): man looking happy
+   unmatched (overlap 0.33): man looking sad
+XMES102: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XMES103: built 18 card-texts [exact 4, copy-edit 1, gold-subst 0, defect 13] 13 unmatched (baseline)
+   unmatched (overlap 0.00): yellow duckling
+   unmatched (overlap 0.00): yellow duckling
+   unmatched (overlap 0.00): yellow duckling
+   unmatched (overlap 0.00): yellow duckling
+   unmatched (overlap 0.00): yellow duckling
+   unmatched (overlap 0.00): Mother duck
+   unmatched (overlap 0.00): Images
+   unmatched (overlap 0.00): Instructions/Captions
+   unmatched (overlap 0.09): paper and art materials
+   unmatched (overlap 0.12): quiet art space
+   unmatched (overlap 0.18): hand tracing on large paper
+   unmatched (overlap 0.05): painted hands
+   unmatched (overlap 0.05): hands blended
+XMES201: built 32 card-texts [exact 18, copy-edit 1, gold-subst 0, defect 13] 13 unmatched (baseline)
+   unmatched (overlap 0.25): Dog dog on white background
+   unmatched (overlap 0.50): Cat tabby cat
+   unmatched (overlap 0.50): Horse chestnut horse
+   unmatched (overlap 0.25): Goat goat on white background
+   unmatched (overlap 0.50): Rabbit soft rabbit
+   unmatched (overlap 0.50): dog eating
+   unmatched (overlap 0.50): rabbit and guinea pig
+   unmatched (overlap 0.00): budgies eating seed
+   unmatched (overlap 0.33): goats and horse eating hay
+   unmatched (overlap 0.50): cat toy
+   unmatched (overlap 0.50): dog toy
+   unmatched (overlap 0.14): bird toy
+   unmatched (overlap 0.20): hamster wheel
+🟢 [ModuleResolver] XMES202 is not in the registry members — inherited from its level XMES2 (sibling rule).
+XMES202: built 15 card-texts [exact 6, copy-edit 3, gold-subst 0, defect 6] 6 unmatched (baseline)
+   unmatched (overlap 0.00): Fruits
+   unmatched (overlap 0.33): crop shelter
+   unmatched (overlap 0.33): seaweed fertiliser
+   unmatched (overlap 0.00): weeding
+   unmatched (overlap 0.09): limp vegetable plants
+   unmatched (overlap 0.05): slug on vegetable
+XMES203: built 12 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+XOTPB08: ERROR Cannot read properties of null (reading 'name')
+XOTPB09: ERROR Cannot read properties of null (reading 'name')
+XOTPB10: ERROR Cannot read properties of null (reading 'name')
+XOTPB11: ERROR Cannot read properties of null (reading 'name')
+XOTPB12: ERROR Cannot read properties of null (reading 'name')
+XOTPB13: ERROR Cannot read properties of null (reading 'name')
+XOTPG01: ERROR Cannot read properties of null (reading 'name')
+XOTPG03: ERROR Cannot read properties of null (reading 'name')
+XOTPG04: ERROR Cannot read properties of null (reading 'name')
+XOTPG05: ERROR Cannot read properties of null (reading 'name')
+XOTPG06: ERROR Cannot read properties of null (reading 'name')
+XOTPO01: ERROR Cannot read properties of null (reading 'name')
+XTAS101: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XTAS102: built 3 card-texts — human file has NO flipCard → DIVERGENCE (developer omitted/restructured), not a defect
+XTAS103: built 8 card-texts [exact 4, copy-edit 0, gold-subst 0, defect 4] 4 unmatched (baseline)
+   unmatched (overlap 0.13): person with book on head
+   unmatched (overlap 0.20): person holding book to face
+   unmatched (overlap 0.11): sitting beside books
+   unmatched (overlap 0.33): person standing in front of books
+XWHA01: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+XWHA02: built 0 card-texts [exact 0, copy-edit 0, gold-subst 0, defect 0] no builds
+
+TOTAL 2409: exact 1399, copy-edit 193, gold-subst 241, defect 387, divergence 189.
+COUNT (flipcard): n/a — an ad-hoc module set (the count test applies to the recorded 4-module gate set only).
+RESULT: divergence 189 ✗ — a built card has no human flipCard counterpart; investigate before ship.

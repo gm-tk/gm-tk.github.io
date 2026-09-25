@@ -1,23 +1,23 @@
 # PageForge — corpus discrepancy dashboard
 
-_Generated 2026-09-25 12:37 · corpus 535 modules / 2633 pages_
+_Generated 2026-09-26 01:22 · corpus 535 modules / 2627 pages_
 
 **What this is.** Every remaining difference between our HTML and the human's, measured across the whole library and ranked by how many modules it costs. Use it to choose the next round. It changes nothing — it only reports.
 
 ## ⚠ Freshness
 
 - skeleton state predates the newest engine change (2026-09-25) — its rows may lag.
-- body_compare predates the newest engine change (2026-09-25) — its rows may lag.
+- body_compare predates the newest engine change (2026-09-26) — its rows may lag.
 
 ## 1. The two numbers that matter
 
-**Interactive coverage — 46.0%** (3354 of 7285 writer-tagged widgets actually build).
-The other 3931 ship as a hand-off box. This is what a tester sees when they say the conversion looks unfinished, and it is invisible to the protected gates by design.
+**Interactive coverage — 45.5%** (3403 of 7476 writer-tagged widgets actually build).
+The other 4073 ship as a hand-off box. This is what a tester sees when they say the conversion looks unfinished, and it is invisible to the protected gates by design.
 
-**Page scaffold match — 55.4% mean** (1587 of 2491 pages at 50%+, 277 at 75%+).
+**Page scaffold match — 55.5% mean** (1592 of 2491 pages at 50%+, 277 at 75%+).
 The protected primary gate. It measures page structure with widget internals collapsed, so it moves very little while coverage is the real gap.
 
-**Structurally clean — 98.3%** (46 pages carry a visible defect)  ·  **body breakdown — 236 pages** (the protected body gate).
+**Structurally clean — 98.4%** (42 pages carry a visible defect)  ·  **body breakdown — 233 pages** (the protected body gate).
 
 ## 2. The ranked queue
 
@@ -27,29 +27,29 @@ Body rows use `body_compare.py`'s own thresholds, so this table and the protecte
 
 | # | Class | Modules | Pages | Unlock | Shapes | Regen | What it is |
 |---|---|--:|--:|--:|--:|--:|---|
-| 1 | un-built dragAndDrop | 338 | 645 | 924 | 775 | 357 (35% skipped) | Writers tagged 1034 dragAndDrop widgets; 924 ship as a hand-off box instead of a built widget. |
-| 2 | content lost vs the human (advisory) | 220 | 496 | 496 | — | — | The human page carries 3+ body blocks ours does not, without tripping the over-capture rule — content is going missing by some other route. |
-| 3 | un-built multiChoiceQuiz | 183 | 294 | 401 | 330 | 228 (59% skipped) | Writers tagged 413 multiChoiceQuiz widgets; 401 ship as a hand-off box instead of a built widget. |
-| 4 | un-built carousel | 170 | 192 | 252 | 204 | 386 (30% skipped) | Writers tagged 1000 carousel widgets; 252 ship as a hand-off box instead of a built widget. |
-| 5 | un-built flipCard | 152 | 200 | 261 | 218 | 259 (53% skipped) | Writers tagged 552 flipCard widgets; 261 ship as a hand-off box instead of a built widget. |
-| 6 | un-built dropDown | 134 | 204 | 260 | 212 | 264 (52% skipped) | Writers tagged 601 dropDown widgets; 260 ship as a hand-off box instead of a built widget. |
-| 7 | empty widget box | 131 | 175 | 175 | — | — | A hand-off box was emitted with nothing in it. |
-| 8 | un-built clickDrop | 126 | 181 | 346 | 252 | 191 (65% skipped) | Writers tagged 580 clickDrop widgets; 346 ship as a hand-off box instead of a built widget. |
-| 9 | un-built accordion | 122 | 188 | 257 | 223 | 248 (55% skipped) | Writers tagged 797 accordion widgets; 257 ship as a hand-off box instead of a built widget. |
-| 10 | un-built typing | 82 | 168 | 261 | 232 | 237 (57% skipped) | Writers tagged 269 typing widgets; 261 ship as a hand-off box instead of a built widget. |
+| 1 | un-built dragAndDrop | 370 | 722 | 1028 | 871 | 390 (29% skipped) | Writers tagged 1158 dragAndDrop widgets; 1028 ship as a hand-off box instead of a built widget. |
+| 2 | content lost vs the human (advisory) | 219 | 494 | 494 | — | — | The human page carries 3+ body blocks ours does not, without tripping the over-capture rule — content is going missing by some other route. |
+| 3 | un-built multiChoiceQuiz | 188 | 310 | 433 | 358 | 235 (57% skipped) | Writers tagged 449 multiChoiceQuiz widgets; 433 ship as a hand-off box instead of a built widget. |
+| 4 | un-built carousel | 173 | 196 | 258 | 210 | 388 (30% skipped) | Writers tagged 1012 carousel widgets; 258 ship as a hand-off box instead of a built widget. |
+| 5 | un-built flipCard | 160 | 214 | 282 | 238 | 267 (52% skipped) | Writers tagged 590 flipCard widgets; 282 ship as a hand-off box instead of a built widget. |
+| 6 | un-built dropDown | 144 | 220 | 279 | 232 | 275 (50% skipped) | Writers tagged 623 dropDown widgets; 279 ship as a hand-off box instead of a built widget. |
+| 7 | empty widget box | 129 | 172 | 172 | — | — | A hand-off box was emitted with nothing in it. |
+| 8 | un-built clickDrop | 125 | 179 | 323 | 252 | 192 (65% skipped) | Writers tagged 557 clickDrop widgets; 323 ship as a hand-off box instead of a built widget. |
+| 9 | un-built accordion | 122 | 189 | 263 | 228 | 248 (55% skipped) | Writers tagged 803 accordion widgets; 263 ship as a hand-off box instead of a built widget. |
+| 10 | un-built typing | 83 | 151 | 204 | 180 | 240 (57% skipped) | Writers tagged 212 typing widgets; 204 ship as a hand-off box instead of a built widget. |
 | 11 | un-built modal | 71 | 108 | 184 | 147 | 126 (77% skipped) | Writers tagged 367 modal widgets; 184 ship as a hand-off box instead of a built widget. |
-| 12 | un-built selfCheck | 71 | 103 | 137 | 103 | 237 (57% skipped) | Writers tagged 163 selfCheck widgets; 137 ship as a hand-off box instead of a built widget. |
+| 12 | un-built selfCheck | 71 | 103 | 137 | 103 | 240 (57% skipped) | Writers tagged 163 selfCheck widgets; 137 ship as a hand-off box instead of a built widget. |
 | 13 | page scaffold under 25% | 71 | 92 | 92 | — | — | The page's overall structure barely resembles the human's — these are the pages a tester screenshots. |
-| 14 | un-built reorder | 65 | 88 | 104 | 98 | 75 (86% skipped) | Writers tagged 104 reorder widgets; 104 ship as a hand-off box instead of a built widget. |
-| 15 | un-built radioQuiz | 60 | 74 | 89 | 84 | 73 (87% skipped) | Writers tagged 89 radioQuiz widgets; 89 ship as a hand-off box instead of a built widget. |
+| 14 | un-built radioQuiz | 69 | 86 | 101 | 96 | 84 (85% skipped) | Writers tagged 101 radioQuiz widgets; 101 ship as a hand-off box instead of a built widget. |
+| 15 | un-built reorder | 67 | 95 | 115 | 107 | 77 (86% skipped) | Writers tagged 115 reorder widgets; 115 ship as a hand-off box instead of a built widget. |
 | 16 | un-built tabs | 58 | 94 | 113 | 105 | 104 (81% skipped) | Writers tagged 170 tabs widgets; 113 ship as a hand-off box instead of a built widget. |
-| 17 | widget over-capture | 47 | 59 | 59 | — | — | A widget's capture ran past its boundary and swallowed body the human keeps free (gate rule: 40%+ of the page in one widget, 400+ chars, 3+ blocks lost). |
-| 18 | un-built speechBubble | 45 | 55 | 69 | 48 | 150 (73% skipped) | Writers tagged 780 speechBubble widgets; 69 ship as a hand-off box instead of a built widget. |
-| 19 | un-built selectionBox | 39 | 56 | 80 | 62 | 65 (88% skipped) | Writers tagged 80 selectionBox widgets; 80 ship as a hand-off box instead of a built widget. |
-| 20 | un-built slider | 33 | 44 | 52 | 42 | 39 (93% skipped) | Writers tagged 52 slider widgets; 52 ship as a hand-off box instead of a built widget. |
-| 21 | A_literal_tag_leak | 32 | 46 | 75 | — | — | Raw writer markup like [H2] is visible as text on the finished page. |
+| 17 | widget over-capture | 48 | 59 | 59 | — | — | A widget's capture ran past its boundary and swallowed body the human keeps free (gate rule: 40%+ of the page in one widget, 400+ chars, 3+ blocks lost). |
+| 18 | un-built speechBubble | 46 | 56 | 70 | 49 | 150 (73% skipped) | Writers tagged 780 speechBubble widgets; 70 ship as a hand-off box instead of a built widget. |
+| 19 | un-built selectionBox | 44 | 63 | 87 | 69 | 74 (87% skipped) | Writers tagged 87 selectionBox widgets; 87 ship as a hand-off box instead of a built widget. |
+| 20 | un-built slider | 36 | 47 | 55 | 45 | 42 (92% skipped) | Writers tagged 55 slider widgets; 55 ship as a hand-off box instead of a built widget. |
+| 21 | A_literal_tag_leak | 29 | 42 | 52 | — | — | Raw writer markup like [H2] is visible as text on the finished page. |
 | 22 | un-built infoTrigger | 26 | 35 | 43 | 37 | 276 (50% skipped) | Writers tagged 43 infoTrigger widgets; 43 ship as a hand-off box instead of a built widget. |
-| 23 | un-built shapeHover | 18 | 27 | 30 | 28 | 17 (97% skipped) | Writers tagged 32 shapeHover widgets; 30 ship as a hand-off box instead of a built widget. |
+| 23 | un-built shapeHover | 18 | 27 | 30 | 28 | 18 (97% skipped) | Writers tagged 32 shapeHover widgets; 30 ship as a hand-off box instead of a built widget. |
 | 24 | un-built hintSlider | 16 | 17 | 18 | 17 | 51 (91% skipped) | Writers tagged 59 hintSlider widgets; 18 ship as a hand-off box instead of a built widget. |
 | 25 | un-built hint | 14 | 20 | 48 | 22 | 28 (95% skipped) | Writers tagged 97 hint widgets; 48 ship as a hand-off box instead of a built widget. |
 | 26 | runaway absorption | 5 | 5 | 5 | — | — | One widget absorbed four or more different widget types — a capture that never found a terminator. |
@@ -59,22 +59,22 @@ Body rows use `body_compare.py`'s own thresholds, so this table and the protecte
 
 | Type | Built | Total | Coverage | Declined | Distinct shapes | Modules |
 |---|--:|--:|--:|--:|--:|--:|
-| dragAndDrop | 110 | 1034 | 10.6% | 924 | 775 | 338 |
-| multiChoiceQuiz | 12 | 413 | 2.9% | 401 | 330 | 183 |
-| clickDrop | 234 | 580 | 40.3% | 346 | 252 | 126 |
-| flipCard | 291 | 552 | 52.7% | 261 | 218 | 152 |
-| typing | 8 | 269 | 3.0% | 261 | 232 | 82 |
-| dropDown | 341 | 601 | 56.7% | 260 | 212 | 134 |
-| accordion | 540 | 797 | 67.8% | 257 | 223 | 122 |
-| carousel | 748 | 1000 | 74.8% | 252 | 204 | 170 |
+| dragAndDrop | 130 | 1158 | 11.2% | 1028 | 871 | 370 |
+| multiChoiceQuiz | 16 | 449 | 3.6% | 433 | 358 | 188 |
+| clickDrop | 234 | 557 | 42.0% | 323 | 252 | 125 |
+| flipCard | 308 | 590 | 52.2% | 282 | 238 | 160 |
+| dropDown | 344 | 623 | 55.2% | 279 | 232 | 144 |
+| accordion | 540 | 803 | 67.2% | 263 | 228 | 122 |
+| carousel | 754 | 1012 | 74.5% | 258 | 210 | 173 |
+| typing | 8 | 212 | 3.8% | 204 | 180 | 83 |
 | modal | 183 | 367 | 49.9% | 184 | 147 | 71 |
 | selfCheck | 26 | 163 | 16.0% | 137 | 103 | 71 |
+| reorder | 0 | 115 | 0.0% | 115 | 107 | 67 |
 | tabs | 57 | 170 | 33.5% | 113 | 105 | 58 |
-| reorder | 0 | 104 | 0.0% | 104 | 98 | 65 |
-| radioQuiz | 0 | 89 | 0.0% | 89 | 84 | 60 |
-| selectionBox | 0 | 80 | 0.0% | 80 | 62 | 39 |
-| speechBubble | 711 | 780 | 91.2% | 69 | 48 | 45 |
-| slider | 0 | 52 | 0.0% | 52 | 42 | 33 |
+| radioQuiz | 0 | 101 | 0.0% | 101 | 96 | 69 |
+| selectionBox | 0 | 87 | 0.0% | 87 | 69 | 44 |
+| speechBubble | 710 | 780 | 91.0% | 70 | 49 | 46 |
+| slider | 0 | 55 | 0.0% | 55 | 45 | 36 |
 | hint | 49 | 97 | 50.5% | 48 | 22 | 14 |
 | infoTrigger | 0 | 43 | 0.0% | 43 | 37 | 26 |
 | shapeHover | 2 | 32 | 6.2% | 30 | 28 | 18 |
@@ -89,20 +89,22 @@ A blocker is something a builder almost never accepts. Every shape carrying it f
 
 | Inside | The builder refuses | Declines | Builds | Build rate |
 |---|---|--:|--:|--:|
-| dragAndDrop | `(a captured TABLE)` | 656 | 110 | 14% |
-| multiChoiceQuiz | `mcq` | 290 | 11 | 4% |
-| typing | `(a captured TABLE)` | 146 | 0 | 0% |
-| multiChoiceQuiz | `(a captured TABLE)` | 144 | 0 | 0% |
-| dropDown | `(a captured TABLE)` | 104 | 11 | 10% |
-| dragAndDrop | `button+txt` | 99 | 9 | 8% |
-| multiChoiceQuiz | `mcq+txt` | 88 | 1 | 1% |
-| dropDown | `button+txt` | 43 | 3 | 6% |
+| multiChoiceQuiz | `mcq` | 307 | 15 | 5% |
+| multiChoiceQuiz | `(a captured TABLE)` | 172 | 0 | 0% |
+| dragAndDrop | `button+txt` | 145 | 16 | 10% |
+| dropDown | `(a captured TABLE)` | 114 | 13 | 10% |
+| multiChoiceQuiz | `mcq+txt` | 99 | 1 | 1% |
+| typing | `(a captured TABLE)` | 98 | 0 | 0% |
+| dropDown | `button+txt` | 55 | 4 | 7% |
+| multiChoiceQuiz | `button+txt` | 48 | 1 | 2% |
 | clickDrop | `video:yt` | 37 | 6 | 14% |
-| multiChoiceQuiz | `button+txt` | 34 | 0 | 0% |
+| dragAndDrop | `image:istock` | 32 | 0 | 0% |
+| dragAndDrop | `button` | 28 | 0 | 0% |
+| dragAndDrop | `answer` | 27 | 0 | 0% |
 | dragAndDrop | `audio` | 25 | 0 | 0% |
-| dragAndDrop | `answer` | 25 | 0 | 0% |
+| dragAndDrop | `image` | 25 | 0 | 0% |
 
-**No builder at all: infoTrigger, radioQuiz, reorder, selectionBox, slider** — 368 tagged widgets with no code path whatsoever. The single largest untouched block in the corpus.
+**No builder at all: infoTrigger, radioQuiz, reorder, selectionBox, slider** — 401 tagged widgets with no code path whatsoever. The single largest untouched block in the corpus.
 
 ## 5. Worst pages right now
 
@@ -134,7 +136,7 @@ Lowest structural match in the library, with the likeliest cause attached. These
 | GER1002 | GER1002_2_0.html | 15.0% | widget over-capture; 3 empty widget boxes |
 | ANZH301 | ANZH301_1_0.html | 15.0% | 11 content blocks missing; widget over-capture |
 | MXFL401 | MXFL401_2_0.html | 15.2% | 15 content blocks missing; widget over-capture |
-| SSOG301 | SSOG301_6_0.html | 15.4% | widget over-capture |
+| SSOG301 | SSOG301_6_0.html | 15.3% | widget over-capture |
 
 ## 6. How to use this
 

@@ -1,0 +1,35 @@
+diff --git a/converter-v2/app/js/TagNormaliser.js b/converter-v2/app/js/TagNormaliser.js
+index 47aa26a..39a8f0f 100644
+--- a/converter-v2/app/js/TagNormaliser.js
++++ b/converter-v2/app/js/TagNormaliser.js
+@@ -511,9 +511,15 @@ class TagNormaliser {
+ 		// `[Activity 1A drag and drop]` (activity + widget in one span; the precedence below makes the widget primary).
+ 		{
+ 			const iq = this.#lexicon?._meta?.interactive_qualifier_free_widget;
++			// ROUND 512 (session 50 Round 3): the writers' other generic spelling, `[Activity: Embedded] Drag and Drop`.
++			// Data embedded_bracket_pattern; env IQEMBED_OFF.
++			const iqEmb = iq?.embedded_bracket_pattern
++				&& !(typeof process !== "undefined" && process.env && process.env[iq.embedded_env || "IQEMBED_OFF"])
++				? new RegExp(iq.embedded_bracket_pattern, "i") : null;
+ 			if (iq && iq.enabled !== false && free
+ 				&& !(typeof process !== "undefined" && process.env && process.env[iq.env || "IQFREEWIDGET_OFF"])
+-				&& brackets.length && brackets.every((b) => new RegExp(iq.bracket_pattern, "i").test(Utils.Fold(b).trim()))
++				&& brackets.length && brackets.every((b) => new RegExp(iq.bracket_pattern, "i").test(Utils.Fold(b).trim())
++					|| (iqEmb && iqEmb.test(Utils.Fold(b).trim())))
+ 				&& !tags.some((t) => t.directive === "INTERACTIVE")) {
+ 				const ff = Utils.Fold(free);
+ 				const w = this.#resolveFragment(ff).find((t) => !t.instruction && t.directive === "INTERACTIVE");
+diff --git a/converter-v2/data/Tag_Lexicon.json b/converter-v2/data/Tag_Lexicon.json
+index d053f9b..5816359 100644
+--- a/converter-v2/data/Tag_Lexicon.json
++++ b/converter-v2/data/Tag_Lexicon.json
+@@ -22,6 +22,9 @@
+ 			"enabled": true,
+ 			"_history": "Built in session 49 Round 11 and TOGGLED OFF at that session's /loop-stop (25 Sept 2026 ≈21:56 NZST) with one wrong build to guard — HPFUN101_0_0's category sort read as r69 pairs; the guard is Emit_Templates.json interactive_builders.dragAndDrop.standard_decline_opener (env DDSORTOPENER_OFF). Finished and enabled in session 50 Round 1.",
+ 			"env": "IQFREEWIDGET_OFF",
++			"embedded_bracket_pattern": "^activity\\s*[:\\-–—]?\\s*embedded$",
++			"embedded_env": "IQEMBED_OFF",
++			"_embedded_doc": "ROUND 512 (the autonomous loop's session 50 Round 3): `[Activity: Embedded] Drag and Drop` / `Drop and Drag` / `Word select` / `Wordfind` / `Memory Game` / `Mix and Match` — the writers' other generic 'an interactive goes here' bracket (used in 21 modules: AGH1001–1009, ANZH1 / 2, HIS1001 / 1002, PES1003 / 1007, PMT101, SSOG101, TRR106 / 110 / 116, WJFUN106 / 108) names the widget after it exactly as r510's `[interactive activity] drag and drop` does. A bracket matching this pattern counts as generic for the rule above (the same lead-word limit and deny pattern apply). Env IQEMBED_OFF.",
+ 			"max_lead_words": 4,
+ 			"free_deny_pattern": "\\btext[\\s-]+to[\\s-]+speech\\b",
+ 			"_free_deny_pattern_doc": "Session 50 Round 1: free text that names a FEATURE, not a widget, never supplies one — HIS1004 `[Interactive] Please include text to speech function here.` (×3) read `speech` as a speechBubble hand-off.",
