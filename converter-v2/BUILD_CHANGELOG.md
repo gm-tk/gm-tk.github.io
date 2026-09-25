@@ -1,5 +1,29 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 503, build 260620.66) — D15-22 THE BLL2xx KNOWLEDGE / PRACTICES TABS: the tabbed BLL2xx overview menu gets its own Knowledge and Practices tabs in the KB c67 order, and the empty Information tab goes (18 pages / 18 modules; skeleton-blind by design — the menu-only compare +148.1pp-sum)
+
+### 1. WHAT CHANGED
+
+**The decision** (Chris, 25 Sept 2026, D15-22 — "22. BLL overview tabs: Option A (Their own tabs (the rulebook's set)) — as recommended"): r460 (KB c67 / CL-0040) made Knowledge / Practices their own nav tabs in every TABBED overview menu but left BLL on `exclude_subjects`, because CL-0040 had left the BLL263 D2 tab-split question open. Chris settled it for PageForge: in the tabbed BLL2xx overviews Knowledge and Practices are their own tabs (Overview → Knowledge → Practices → Information → Standards, 01B l.39) and the Information tab the promotions empty is removed (01B l.117). The 11 flat BLL2xx menus are untouched; BLL1xx was not asked and stays excluded.
+
+**Triangulated** (BLL243): gold `BLL243-0.0.html` l.28–30 — Knowledge | Practices | Learning intentions tabs; PageForge `BLL243_0_0.html` l.23–50 — Overview (holding `Knowledge:` / `Practices:`) | an EMPTY Information tab (empty in all 19 — the D15 report's correction 7).
+
+**The fix** (`MenuBuilder` — the r460 kpRe gate; data `menu.extra_tabs.curriculum_tabs.kb_canonical.readmit` { code_pattern `^BLL2\d{2}$` }; env `BLLKPTABS_OFF`): a module whose code matches the readmit pattern is taken off `exclude_subjects`, so r460's canonical promotion + `drop_empty_tab2` apply to it.
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 0 pages changed**; ON **18 overview pages / 18 modules** (BLL243 247 250 251 253 255 257 261 262 263 264 266 271–276) — every one now Overview | Knowledge | Practices with the empty Information tab gone; `_r503_check.cjs`: every change is inside `#module-menu-content`, the body byte-identical. **BLL265 does not change** — its Knowledge / Practices land in the page BODY, not the menu (Follow-up (b), a separate fault).
+- Regenerated = the probe's ON pages byte-for-byte; `scoped_ship.sh` PASS (0 stale, containment 18 ⊆ 18, the 12-module spot-check byte-identical).
+- **The region's own compare** (`_r503_rawmenu.py`, the r460 menu-only skeleton, OFF saved under `BLLKPTABS_OFF=1` vs ON): **menu-only +148.1pp-sum, RAW +59.4pp-sum**; **6 up** — BLL253 52.6 → 93.7, BLL247 36.1 → 79.1, BLL261 51.2 → 85.4, BLL273 46.8 → 74.2, BLL262 61.7 → 71.4, BLL243 39.0 → 42.4 (the own-tab golds); **12 down, NAMED**: the Information / combined-tab golds Chris ruled on — BLL251 7.7 → 2.4, BLL263 63.3 → 61.0, BLL250 33.3 → 32.0 (combined tab), BLL255 / 257 / 264 / 266 / 275 −0.1 to −0.2 — and BLL271 / 272 / 274 / 276 −0.1 to −0.2 (menus ≈ 6 % alike either way: the gold overview menu differs elsewhere).
+
+### 3. PROTECTED GATES
+
+- **Skeleton-blind by design** (§1g: the menu's `div.tabs` collapses to one WIDGET line): skeleton 55.5517 % @ 2491 EXACT (0 movers), ≥50 1604, ≥75 277, ≥90 26; RAW 39.477 → 39.50 %; cs / body / clean / leak EXACT; tags 9557 / 9557; every verifier ✓, every COUNT held (`_r503_gates.log`); `gate_baseline.json` aggregates written by `scoped_ship.sh … --commit --round 503`; `--gate-baseline-check` PASS. Plateau: neither (skeleton-blind by design).
+
+**Named overrides (§1b):** KB c67 / 01B over the BLL2xx golds that keep Knowledge / Practices in an Information tab (BLL251 / 255 / 257 / 263 / 264 / 266 / 275), BLL250's combined tab and BLL265's hybrid — by Chris's D15-22.
+
+**Ledger:** scoped #6 since the r498 FULL · data `kb_canonical.readmit` · env `BLLKPTABS_OFF` · code `MenuBuilder` (the r460 kpRe gate) · tools `_r503_check.cjs`, `_r503_rawmenu.py`, `_r503_finalise.py` · session 49 Round 3.
+
 ## 2026-09-25 (round 502, build 260620.65) — D15-23 THE MX BARE LESSON MENU: on the lesson pages of the MXFU / MXEX / MXDB3 / MXDI3 series the menu is the bare `#module-menu-content > h5 + ul` — Chris's named series convention (94 pages / 11 modules; +0.0929pp, ≥50 +12, 88 up / 0 down)
 
 ### 1. WHAT CHANGED

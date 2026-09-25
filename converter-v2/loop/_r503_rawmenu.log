@@ -1,0 +1,20 @@
+BLL243/BLL243_0_0.html        raw  47.1 ->  48.3   menu-only  39.0 ->  42.4  UP
+BLL247/BLL247_0_0.html        raw  57.9 ->  76.0   menu-only  36.1 ->  79.1  UP
+BLL250/BLL250_0_0.html        raw  26.6 ->  26.5   menu-only  33.3 ->  32.0  DOWN
+BLL251/BLL251_0_0.html        raw  32.3 ->  29.3   menu-only   7.7 ->   2.4  DOWN
+BLL253/BLL253_0_0.html        raw  56.1 ->  72.9   menu-only  52.6 ->  93.7  UP
+BLL255/BLL255_0_0.html        raw  49.2 ->  48.4   menu-only   2.8 ->   2.7  DOWN
+BLL257/BLL257_0_0.html        raw  46.2 ->  45.4   menu-only   2.8 ->   2.7  DOWN
+BLL261/BLL261_0_0.html        raw  55.2 ->  70.8   menu-only  51.2 ->  85.4  UP
+BLL262/BLL262_0_0.html        raw  57.8 ->  61.8   menu-only  61.7 ->  71.4  UP
+BLL263/BLL263_0_0.html        raw  56.7 ->  55.9   menu-only  63.3 ->  61.0  DOWN
+BLL264/BLL264_0_0.html        raw  32.8 ->  32.3   menu-only   7.1 ->   6.9  DOWN
+BLL266/BLL266_0_0.html        raw  44.8 ->  44.1   menu-only   6.9 ->   6.7  DOWN
+BLL271/BLL271_0_0.html        raw  27.4 ->  27.1   menu-only   6.2 ->   6.0  DOWN
+BLL272/BLL272_0_0.html        raw  39.0 ->  38.5   menu-only   6.3 ->   6.1  DOWN
+BLL273/BLL273_0_0.html        raw  53.6 ->  66.0   menu-only  46.8 ->  74.2  UP
+BLL274/BLL274_0_0.html        raw  31.2 ->  30.8   menu-only   6.2 ->   6.0  DOWN
+BLL275/BLL275_0_0.html        raw  32.9 ->  32.5   menu-only   6.3 ->   6.1  DOWN
+BLL276/BLL276_0_0.html        raw  29.4 ->  29.0   menu-only   4.1 ->   4.0  DOWN
+
+menu-only: 6 up / 12 down; raw pp-sum +59.4; menu pp-sum +148.1

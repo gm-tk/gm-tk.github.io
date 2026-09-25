@@ -1855,7 +1855,8 @@ class Config {
 	// ROUND 500 (260620.63): THE BACK-TO-BACK SPLIT TRIGGER (session 46 Round 12) — a split-bracket hover trigger after another one anchors on the sentence, not the emptied closer. Env TRIGHOST_OFF.
 	// ROUND 501 (260620.64): THE GATE-TOOL ROUND (session 49 Round 1) — no engine change: the committed gate baseline's aggregates are written by _fastloop_diff.py / _gatecheck.py --commit; six verifiers gained the count-vs-baseline test.
 	// ROUND 502 (260620.65): D15-23 THE MX BARE LESSON MENU (session 49 Round 2) — the MXFU / MXEX / MXDB3 / MXDI3 lesson menu without the row > col-md-8 wrapper. Env MXBAREMENU_OFF.
-	static AppVersion = "260620.65";
+	// ROUND 503 (260620.66): D15-22 THE BLL2xx KNOWLEDGE / PRACTICES TABS (session 49 Round 3) — the tabbed BLL2xx overview gets the KB c67 Knowledge / Practices tabs, the empty Information tab dropped. Env BLLKPTABS_OFF.
+	static AppVersion = "260620.66";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

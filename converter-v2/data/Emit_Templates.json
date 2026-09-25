@@ -3830,6 +3830,12 @@
 						"BLL",
 						"WJFUN"
 					],
+					"readmit": {
+						"_doc": "ROUND 503 (the autonomous loop's session 49 Round 3 — Chris's D15-22, 25 Sept 2026, Option A: 'Their own tabs (the rulebook's set)'). The BLL exclusion above left CL-0040's BLL263 D2 overview tab-split question open; Chris settled it for PageForge: in the TABBED BLL2xx overview menus (19 — BLL243, 247, 250, 251, 253, 255, 257, 261–266, 271–276) Knowledge and Practices each get their own nav tab in the KB c67 order (Overview → Knowledge → Practices → Information → Standards, 01B l.39) and the Information tab the promotions empty is removed (01B l.117 — drop_empty_tab2). A module whose code matches code_pattern is readmitted from exclude_subjects (BLL1xx is not decided and stays excluded); the 11 flat (untabbed) BLL2xx menus are untouched by construction (the rule acts only in the tabbed archetype). The gold's other forms — the 7 Information golds (BLL251 / 255 / 257 / 263 / 264 / 266 / 275), BLL265's hybrid and BLL250's combined tab — are NAMED overrides. Env BLLKPTABS_OFF restores the exclusion.",
+						"enabled": true,
+						"env": "BLLKPTABS_OFF",
+						"code_pattern": "^BLL2\\d{2}$"
+					},
 					"standards": {
 						"_doc": "ROUND 467 (the autonomous loop's session-42 Round 4, 2026-09-24 — KB constraint 67 / CL-0040 + 01B 'THE FIVE CANONICAL PANELS'; the placement census P1). In the TABBED overview archetype the writer's assessment section (`[H2] Aromatawai | Assessment for Learning`, routed to tab 2) is the canonical Standards/Assessment tab — 01B: 'For the last tab, use Standards (the dominant corpus label) unless the uploaded reference clearly uses Assessment; the internal heading is \"Assessment for Learning\" either way' — even where menu.extra_tabs.registry has no row for the module's subject|phase (the 10 July registry predates the September-intake NCEA families). A registry row still decides its own label (MXEX|9-10 / SSOG|7-8 / XMES|4-6 = Assessment). Measured: 27 modules whose gold carries a Standards tab Claude folded into Information (outputs/_s42_r4_navtabs.log); 49 already matched through the registry. drop_empty_tab2 = the c67 omission rule for the Information tab the promotion empties (the PWY golds are Overview > Standards). exclude_subjects keeps a subject on its registry-only behaviour.",
 						"enabled": true,

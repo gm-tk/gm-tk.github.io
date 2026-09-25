@@ -530,10 +530,17 @@ class MenuBuilder {
 		// their own archetype (exclude_subjects) keep the registry-only behaviour.
 		const kpCfg = xtCfg && xtCfg.curriculum_tabs?.enabled !== false ? xtCfg.curriculum_tabs?.kb_canonical : null;
 		const kpSubj = ((run.moduleCode || "").match(/^[A-Za-z]+/)?.[0] || "").toUpperCase();
+		// ROUND 503 (Chris's D15-22; data kb_canonical.readmit; env BLLKPTABS_OFF): a module whose code matches
+		// readmit.code_pattern (the BLL2xx series) is taken off exclude_subjects — its tabbed overview gets the
+		// canonical Knowledge / Practices tabs like every other subject.
+		const kpReadmit = kpCfg?.readmit;
+		const kpReadmitted = !!kpReadmit && kpReadmit.enabled !== false && !!kpReadmit.code_pattern
+			&& !(kpReadmit.env && typeof process !== "undefined" && process.env && process.env[kpReadmit.env])
+			&& new RegExp(kpReadmit.code_pattern, "i").test(String(run.moduleCode || ""));
 		const kpRe = kpCfg && kpCfg.enabled !== false && kpCfg.heading_pattern
 			&& !(typeof process !== "undefined" && process.env
 				&& (process.env[kpCfg.env ?? "KPTABS_OFF"] || process.env.XTABCURRIC_OFF))
-			&& !(kpCfg.exclude_subjects ?? []).some((x) => String(x).toUpperCase() === kpSubj)
+			&& (kpReadmitted || !(kpCfg.exclude_subjects ?? []).some((x) => String(x).toUpperCase() === kpSubj))
 			? new RegExp(kpCfg.heading_pattern, "i") : null;
 		let kpPromoted = false;
 		// ROUND 467 (KB constraint 67 / 01B; data
