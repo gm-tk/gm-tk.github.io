@@ -21,9 +21,9 @@ async function main() {
 		if (!want || label === want || label.startsWith(want)) {
 			const bundles = Array.isArray(res) ? res : (res?.bundles ?? []);
 			for (const b of bundles) {
-				if (b?.type !== (type || "accordion")) continue;
-				_l(`=== ${code} ${label} #${b.index} start ${b.startIndex} end ${b.endIndex} members ${(b.memberItems ?? []).length}`);
-				for (const m of (b.memberItems ?? []).slice(-3)) _l("   last member: " + brief(m));
+				if (type !== "*" && b?.type !== (type || "accordion")) continue;
+				_l(`=== ${code} ${label} #${b.index} [${b.type}] owner=${b.activityOwner ? "Y" : "-"} start ${b.startIndex} end ${b.endIndex} members ${(b.memberItems ?? []).length}`);
+				for (const m of (b.memberItems ?? []).slice(process.env.ALLM ? 0 : -3)) _l("   last member: " + brief(m));
 				_l("   TERMINATOR: " + brief(page.items[b.endIndex]));
 				_l("   then:       " + brief(page.items[b.endIndex + 1]));
 			}

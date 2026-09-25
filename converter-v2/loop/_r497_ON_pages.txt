@@ -1,0 +1,6 @@
+XDLS904/XDLS904_5_0.html
+XDLS904/XDLS904_interactives.txt
+XDLS905/XDLS905_4_0.html
+XDLS905/XDLS905_interactives.txt
+XDLS906/XDLS906_3_0.html
+XDLS906/XDLS906_interactives.txt

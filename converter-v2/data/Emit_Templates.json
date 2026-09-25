@@ -2891,6 +2891,10 @@
 					"release_inline_tags": [
 						"info trigger"
 					],
+					"env2": "CDSCRAPREL2_OFF",
+					"release_marker_pattern": "^\\s*\\[\\s*click\\s*drop\\s+activity\\s+\\w+\\s+with\\s+(?:image\\s+)?embedded\\s+image\\s*\\]",
+					"owned_anchor_counts": true,
+					"_doc_r497": "ROUND 497 (session 46 Round 8), env CDSCRAPREL2_OFF: (c) release_marker_pattern — a scrap whose marker is the writer's choice-board form `[Click Drop Activity N with (image) embedded image]` (XDLS903–906) releases its otherwise-refused members: XDLS906-3.0 typed `[Activity] **3E**` BEFORE its `Judge` button, so the button's scrap captured 3E's own `[H2]` / `[body]` (the bare `[Click Drop Activity N]` of XDLS908, a different gold, never matches); (d) owned_anchor_counts — when the ordinary anchor count falls short, an `[Activity]` anchor consumed by its activity's OWN widget (that bundle's activityOwner — XDLS905-4.0's modal owns `4A`, XDLS904-5.0's `5E`) counts as a panel: the box still renders with its id. Both only where the row would otherwise decline.",
 					"_doc": "ROUND 496 (the autonomous loop's session 46 Round 7). The r307 / r418 tile prepass builds the Learning-Support choice board on 30 of 35 XDLS902–906 lesson pages and declines the whole row on the others when a tile scrap holds a member it does not recognise. Two of those members are not tile content at all: (a) a writer's STRAY numberless, nameless marker (`[click drop image]` typed again after `[Activity] **5B**`, XDLS906-5.0) opens a scrap that captures the activity's OWN `[H4]` / `[body]` lines — with stray_marker_members the scrap's otherwise-refused members are RELEASED back to the page (they render where the writer put them, in the activity); (b) an inline marker of a release_inline_tags type riding the same paragraph as a heading the prepass already releases (XDLS906-3.0's `[H2] Should we use less artificial [hover definition] fake light?`) is released with it. Only a member that would have declined the row is released, so every row that built before is byte-identical. Env CDSCRAPREL_OFF = the r495 prepass."
 				},
 				"min_tiles": 2,

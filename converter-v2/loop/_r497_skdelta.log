@@ -1,0 +1,9 @@
+OLD pairs 2491  SCAFFOLD 55.4150%  RAW 39.386%  >=50 1588  >=75 277  >=90 26
+NEW pairs 2491  SCAFFOLD 55.4469%  RAW 39.419%  >=50 1591  >=75 277  >=90 26
+delta SCAFFOLD +0.0319pp  RAW +0.033pp  >=50 +3  >=75 +0  >=90 +0
+movers 3 (up 3 / down 0), pp-sum +79.5
+movers outside the affected set: 0 []
+new-only pages: 0  gone pages: 0
+  XDLS904    XDLS904_5_0.html           40.1 ->   73.0  (+32.9)
+  XDLS905    XDLS905_4_0.html           44.4 ->   68.5  (+24.2)
+  XDLS906    XDLS906_3_0.html           48.2 ->   70.6  (+22.4)

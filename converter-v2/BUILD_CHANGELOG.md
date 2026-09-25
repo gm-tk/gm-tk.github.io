@@ -1,5 +1,26 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-25 (round 497, build 260620.60) — THE XDLS CHOICE BOARD'S LAST DECLINED PAGES: r496's scrap release reaches the writer's `[Click Drop Activity N with embedded image]` scrap, and an activity anchor its OWN widget consumed counts as a panel (XDLS904 5.0 40.1 → 73.0, XDLS905 4.0 44.4 → 68.5, XDLS906 3.0 48.2 → 70.6 %)
+
+### 1. WHAT CHANGED
+
+**The find** (session 46 Round 8 — `_s46_scanend.cjs XDLS906 3.0 "*"` / `XDLS904 5.0 "*"`): after r496 four Learning-Support choice-board pages still declined the whole tile row. XDLS906 3.0: the writer typed `[Activity] **3E**` BEFORE its `[Click Drop Activity 5 with embedded image] Judge` button, so the button's scrap swallowed 3E's `[H2]` / `[hover definition]` / `[body]` / `[hover]` / `[3 buttons]` lines and the next button's marker — "any other member" declines the row. XDLS905 4.0 / XDLS904 5.0: five free `[Activity]` anchors for six tiles — the sixth is consumed by its activity's OWN widget (XDLS905's modal owns `4A`; XDLS904's carousel owns `5E`), so "never a tile without a panel" declined the row. XDLS904's carousel had also recovered the WRONG id (`5F`, the next anchor's tail), so its box would have shipped as 5F with an `<h3>5E</h3>` title.
+
+**The fix** (`ContentConverter.#cdTilePrepass`, data `interactive_builders.clickDrop.tile_grid.scrap_release` keys `release_marker_pattern` / `owned_anchor_counts`, env `CDSCRAPREL2_OFF`): (c) a scrap whose marker is the writer's `[Click Drop Activity N with (image) embedded image]` form releases its otherwise-refused members back to the page (the bare `[Click Drop Activity N]` of XDLS908 — a different gold — never matches); (d) ONLY when the ordinary anchor count falls short, an anchor consumed by the widget whose `activityOwner` it is counts as a panel, and that widget's box takes the anchor's own id. Both apply only to a row that would otherwise decline, so every row that built before is byte-identical.
+
+### 2. PROOF
+
+- In-memory A/B over all 545 modules: **OFF 0 pages changed**; ON **XDLS904_5_0, XDLS905_4_0, XDLS906_3_0** (+ their `_interactives.txt`): each page now carries the eighteen choice-tile classes and the gold's row + five paired `clickDropContent` panels (3B–3F / 4B–4F / 5B–5F). Regeneration + 12-module spot-check clean; **`scoped_ship.sh` PASS**.
+
+### 3. PROTECTED GATES
+
+- Skeleton **55.4150 % → 55.4469 % @ 2491 (+0.0319pp)**, RAW 39.386 → 39.419 %; **≥50 1588 → 1591 (+3)**, ≥75 277, ≥90 26; **3 movers, all up: XDLS904_5_0 40.1 → 73.0 (+32.9), XDLS905_4_0 44.4 → 68.5 (+24.2), XDLS906_3_0 48.2 → 70.6 (+22.4)**; 0 movers outside the affected set; body ANY 235 → 232; cs 16745 / 198 / 888, clean 2591 / 2633, leak 52 / 42 EXACT; tags 9557 / 9557; every verifier RESULT ✓; selftests 50 green / 0 fail; the miner 195 CANDIDATE.
+- Plateau (§4): +0.0319pp ≥ 0.02 — a real gain; **resets to 0 of 3**.
+
+**Recorded, not built:** XDLS903 1.0 (a nameless numbered marker — the last declined choice-board page); XDLS904 5.0's 5E box lacks the gold's `dropbox` class (the carousel-owned box ends before its `Share your judgments` line + upload button, which render just after it).
+
+**Ledger:** scoped #7 since the r490 FULL (1 of headroom — the FULL backstop is due at scoped #8) · data `interactive_builders.clickDrop.tile_grid.scrap_release` (`env2`, `release_marker_pattern`, `owned_anchor_counts`) · env `CDSCRAPREL2_OFF` · code `ContentConverter.#cdTilePrepass` · tools `_s46_scanend.cjs` (ALLM=1 prints every member), `_r497_finalise.py` · session 46 Round 8.
+
 ## 2026-09-25 (round 496, build 260620.59) — THE XDLS CHOICE BOARD'S STRAY MARKER: r307 / r418's tile prepass releases what a writer's stray `[click drop image]` marker captured instead of declining the page's whole choice board (XDLS906 5.0: 48.9 → 73.4 %)
 
 ### 1. WHAT CHANGED

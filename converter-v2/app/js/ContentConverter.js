@@ -7152,11 +7152,20 @@ class ContentConverter {
 		const srOn = !!(_sr && _sr.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env[_sr.env ?? "CDSCRAPREL_OFF"]));
 		const srInline = new Set(srOn ? (_sr.release_inline_tags ?? []) : []);
+		// ROUND 497 — (c) a scrap in the writer's release_marker_pattern form (`[Click Drop Activity N with (image) embedded image]`,
+		// the XDLS903–906 choice board) releases its otherwise-refused members too: XDLS906-3.0 typed `[Activity] **3E**` BEFORE its
+		// `Judge` button, so the button's scrap captured 3E's own `[H2]` / `[body]`; the bare `[Click Drop Activity N]` form (XDLS908,
+		// a different gold) never matches. (d) owned_anchor_counts — below. Env CDSCRAPREL2_OFF (both).
+		const sr2On = srOn && !(typeof process !== "undefined" && process.env && process.env[_sr.env2 ?? "CDSCRAPREL2_OFF"]);
+		const srMarkRe = sr2On && _sr.release_marker_pattern ? new RegExp(_sr.release_marker_pattern, "i") : null;
 		for (const bi of cds) {
 			const b = bundles[bi];
 			if ((b.tables ?? []).length) return null;                  // a table-carrying bundle is not a scrap (XDLS912)
 			const rel = [];
 			let stray = false;                                         // ROUND 496 (a): this scrap's marker was a stray
+			// ROUND 497 (c): this scrap's marker is the writer's choice-board form
+			const markForm = !!(srMarkRe && [...(b.openerItems ?? []), ...(b.memberItems ?? [])].some((m) => m?.parse?.primary?.tag === "click drop"
+				&& srMarkRe.test(String(m.parse?.raw ?? m.text ?? ""))));
 			for (const m of [...(b.openerItems ?? []), ...(b.memberItems ?? [])]) {
 				const ptag = m?.parse?.primary?.tag;
 				if (ptag === "click drop") {
@@ -7194,6 +7203,7 @@ class ContentConverter {
 					// ROUND 496 — only what would decline the row is released (strictly additive: every row that built still builds
 					// byte-identically): (a) anything a STRAY marker's scrap captured; (b) an inline marker on a released heading's paragraph.
 					if (srOn && stray) { rel.push(m); continue; }
+					if (markForm) { rel.push(m); continue; }            // ROUND 497 (c)
 					if (srOn && srInline.has(ptag) && rel.length && rel[rel.length - 1]?.block && rel[rel.length - 1].block === m?.block) { rel.push(m); continue; }
 					return null;                                        // any other member = content, not a scrap (XDLS908/911)
 				}
@@ -7219,17 +7229,26 @@ class ContentConverter {
 		// consumed still counts (it is about to be released); one a DIFFERENT
 		// widget consumed does not — that page declines (never a tile whose panel
 		// is trapped inside another widget; XDLS904-5.0, the gathering-round class).
-		const anchors = [];
-		for (let i2 = firstIdx + 1; i2 < bodyItems.length; i2++) {
-			const a = bodyItems[i2];
-			if (a?.type !== "tag" || a?.parse?.primary?.tag !== "activity") continue;
-			if (!(a.consumedBy === undefined || scrapSet.has(a.consumedBy))) continue;
-			const tail = String(a.blackAfter ?? "").replace(/[*\s]+/g, "").toUpperCase();
-			const nums = a.parse?.numbers ?? [];
-			if (!nums.length && idRe.test(tail)) anchors.push({ item: a, id: tail, fromTail: true });
-			else if (nums.length === 1 && !tail && idRe.test(String(nums[0]).toUpperCase()))
-				anchors.push({ item: a, id: String(nums[0]).toUpperCase(), fromTail: false });
-		}
+		// ROUND 497 (d) — owned: an anchor consumed by its activity's OWN widget (that widget's activityOwner is the anchor —
+		// XDLS905-4.0's modal owns `[Activity] 4A`, XDLS904-5.0's `5E`) still renders as its own box with its id, so it is a
+		// panel, not one trapped inside another widget. Consulted only when the ordinary count falls short (strictly additive).
+		const collectAnchors = (owned) => {
+			const out = [];
+			for (let i2 = firstIdx + 1; i2 < bodyItems.length; i2++) {
+				const a = bodyItems[i2];
+				if (a?.type !== "tag" || a?.parse?.primary?.tag !== "activity") continue;
+				if (!(a.consumedBy === undefined || scrapSet.has(a.consumedBy)
+					|| (owned && bundles[a.consumedBy]?.activityOwner === a))) continue;
+				const tail = String(a.blackAfter ?? "").replace(/[*\s]+/g, "").toUpperCase();
+				const nums = a.parse?.numbers ?? [];
+				if (!nums.length && idRe.test(tail)) out.push({ item: a, id: tail, fromTail: true });
+				else if (nums.length === 1 && !tail && idRe.test(String(nums[0]).toUpperCase()))
+					out.push({ item: a, id: String(nums[0]).toUpperCase(), fromTail: false });
+			}
+			return out;
+		};
+		let anchors = collectAnchors(false);
+		if (anchors.length < names.length && sr2On && _sr.owned_anchor_counts !== false) anchors = collectAnchors(true);
 		if (anchors.length < names.length) return null;                 // never a tile without a panel
 		// ---- QUALIFIED: release, mark, tag --------------------------------
 		for (const bi of cds) {
@@ -7252,6 +7271,13 @@ class ContentConverter {
 			// bracket-numbered anchor already carries its id and has no tail to
 			// suppress — it is tagged for the pairing only.
 			if (idOn) { a.item._r307PanelId = a.id; if (a.fromTail) a.item._r307TailIsId = true; }
+			// ROUND 497 (d) — an owned anchor's box is opened by its widget from bundle.activityId, and a widget can carry
+			// the WRONG one: XDLS904-5.0's carousel owns `[Activity] 5E` yet recovered `5F` (the next anchor's tail), so
+			// the box shipped as 5F with an "<h3>5E</h3>" title and the real 5F was renumbered 5E. The anchor's own id wins.
+			const ob = a.item.consumedBy !== undefined && !scrapSet.has(a.item.consumedBy) ? bundles[a.item.consumedBy] : null;
+			if (idOn && ob && ob.activityOwner === a.item && String(ob.activityId ?? "").toUpperCase() !== a.id) {
+				ob.activityId = a.id; ob._idFromTail = a.fromTail;
+			}
 		}
 		// Pairing rides the number= attributes the id repair writes, so CDTILEID_OFF
 		// (a diagnostic decomposition state) also leaves the panels unmarked.
