@@ -1,0 +1,18 @@
+[16:04:43] spot-check plan
+  AGH1001 BLL170 BLL216 CEDT102 ENGFUN02 EXPFUN04 HES1007 HPFUN903 MUS1006 MXEO202 MXEX401 XLP06
+
+Regenerate them WITH THE FIX ON (default env, NO *_OFF), then run `verify`:
+  python3 _batch_plan.py --codes AGH1001 BLL170 BLL216 CEDT102 ENGFUN02 EXPFUN04 HES1007 HPFUN903 MUS1006 MXEO202 MXEX401 XLP06
+sample: AGH1001 BLL170 BLL216 CEDT102 ENGFUN02 EXPFUN04 HES1007 HPFUN903 MUS1006 MXEO202 MXEX401 XLP06
+[16:04:44] 33 modules -> batches of 11
+  _r529_regen_batch_00 rc=0 OK — 11 module(s) regenerated fresh.
+  _r529_regen_batch_02 rc=0 OK — 11 module(s) regenerated fresh.
+  _r529_regen_batch_01 rc=0 OK — 11 module(s) regenerated fresh.
+[16:05:42] fresh check
+[content-manifest] content-hash 0-stale vs _content_manifest.txt
+  affected set: 21 module(s) (must be freshly regenerated)
+  unaffected  : 522 module(s) (must be byte-identical to the manifest; mtime IGNORED)
+  OK — 0 truly stale. 21 affected regenerated; the untouched corpus is byte-identical to the manifest (mtime false-alarm defeated).
+[spotcheck] verifying 12 non-affected modules regenerated WITH the fix ON
+  OK — all 12 sampled non-affected modules are BYTE-IDENTICAL under the fix (P's no-op claim holds on the sample).
+[16:06:01] REGEN_DONE

@@ -1,0 +1,29 @@
+
+'in summary': bare 1, gold-boxed 1 (1.00)
+   ENFUN    bare   1 boxed   1 mods  1 tags {'h4->h4': 1} []
+
+'key points': bare 24, gold-boxed 24 (1.00)
+   PES      bare  24 boxed  24 mods  4 tags {'h3->h4': 22, 'h4->h4': 2} []
+
+'key questions': bare 11, gold-boxed 8 (0.73)
+   XGF      bare  11 boxed   8 mods  2 tags {'h3->h3': 1, 'h3->h4': 4, 'h4->h4': 3} ['XGF9003_1_0.html gold -', 'XGF9003_1_0.html gold -']
+
+'lesson summary': bare 74, gold-boxed 50 (0.68)
+   HIS      bare  17 boxed  13 mods  4 tags {'h3->h3': 13} ['HIS1006_2_1.html gold -', 'HIS1007_1_0.html gold -']
+   HPRE     bare  14 boxed  14 mods  2 tags {'h3->h3': 14} []
+   SSCI     bare  12 boxed   8 mods  2 tags {'h3->h3': 8} ['SSCI104_1_0.html gold h4[]', 'SSCI104_2_0.html gold h4[]']
+   SSOG     bare  11 boxed   9 mods  3 tags {'h3->h3': 9} ['SSOG103_4_0.html gold -', 'SSOG301_4_0.html gold -']
+   XGF      bare   8 boxed   0 mods  1 tags {} ['XGF9002_1_0.html gold h3[]', 'XGF9002_2_0.html gold h3[]']
+   TEDC     bare   6 boxed   0 mods  2 tags {} ['TEDC401_1_0.html gold h3[]', 'TEDC401_2_0.html gold h3[]']
+   SSEA     bare   5 boxed   5 mods  1 tags {'h3->h3': 5} []
+   CEDK     bare   1 boxed   1 mods  1 tags {'h5->h3': 1} []
+
+'summary': bare 19, gold-boxed 5 (0.26)
+   HIS      bare  11 boxed   1 mods  2 tags {'h3->h3': 1} ['HIS1005_1_0.html gold -', 'HIS1005_2_0.html gold -']
+   SSFUN    bare   4 boxed   4 mods  1 tags {'h3->h4': 4} []
+   SSOG     bare   3 boxed   0 mods  1 tags {} ['SSOG301_4_0.html gold -', 'SSOG301_6_0.html gold -']
+   MXDI     bare   1 boxed   0 mods  1 tags {} ['MXDI301_8_0.html gold -']
+
+'what have we learned': bare 11, gold-boxed 7 (0.64)
+   XGF      bare   8 boxed   4 mods  2 tags {'h3->h3': 4} ['XGF9004_3_0.html gold -', 'XGF9004_4_0.html gold -']
+   BLLR     bare   3 boxed   3 mods  3 tags {'h4->h5': 3} []

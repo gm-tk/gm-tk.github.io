@@ -1,0 +1,114 @@
+gold alert runs 1961; missing in Claude (first element bare) 288; located in the WT items 258
+gold lead element: {'p': 136, 'h3': 75, 'h4': 62, 'h5': 15}
+
+ITEM itself: tag:h3 70, black 50, tag:body 47, tag:h2 32, tag:h5 15, tag:side alert 11, black:B 9, tag:h4 6, tag: 5, tag:h3:B 3
+PREV item:   tag:alert 39, black:short 28, tag:body 21, tag:body+payload 20, black 19, tag:speech bubble+payload 11, tag:button+payload 10, PAGESTART 9, tag:button 9, tag:h3+payload 8, tag:important 8, tag:shape n 7, tag:video+payload 7, tag:h2+payload 6
+
+PREV short texts / tags: 'TAG [Alert]' 29, 'TAG [Body]' 16, 'TAG [body]' 10, 'TAG [Journal button]' 9, 'TAG [Alert Solid]' 8, 'TAG [H3]' 7, 'TAG [Button]' 7, 'TAG [H2]' 6, 'TAG [ImageAfiPh2] [Speech bubble]' 6, 'TAG [Learning journal]' 6, 'TAG [video]' 6, 'TAG [ImageAlexPh3] [Speech Bubble]' 5, 'TAG 1A & 1B]' 5, 'TAG Can you please place bookworm ' 3, 'TAG [Box out to the right]' 3, 'TAG [end supervisor note]' 3, 'TAG Position bookworm avatar on ri' 2, 'TAG [friends][liked]' 2, 'TAG [Alert] [Insert module’s gener' 2, ' maintaining strong relationsh' 2, 'TAG [Lesson Summary]' 2, 'TAG [Coloured box purple]' 2, 'TAG [alert]' 2, 'TAG [Lesson Overview]' 2, 'TAG [Secondary Text]' 1, 'TAG [Secondary text]' 1, 'TAG [Summary alert box]' 1, 'TAG [Please put the following text' 1, 'TAG [Add button]' 1, 'TAG [insert the ‘hint’ text as an ' 1
+
+  30 runs /  22 modules  NOT-IN-WT-ITEMS   []
+  25 runs /   8 modules  tag:h3 <- tag:alert   [SSOG 8, SSCI 7, SSEA 5, HIS 2, HPRE 2, ANZH 1]
+      e.g. ANZH105_8_0.html gold<h3> 'keen to learn more' | item tag:h3 'Keen to learn more?' | prev '[Summary alert box] '
+      e.g. HIS1005_7_0.html gold<h4> 'toi moko' | item tag:h3 'Toi moko' | prev '[Alert Box] Please place this in the white space o'
+      e.g. HIS1006_1_2.html gold<h3> 'lesson summary' | item tag:h3 'Lesson Summary' | prev '[Alert Box] '
+      e.g. HPRE301_6_0.html gold<h3> 'i am hpefun301' | item tag:h3 'I am: HPEFUN301' | prev '[Alert] '
+  15 runs /   9 modules  black <- tag:body   [SSEA 5, AGH 3, HIS 2, SSCI 2, ANZH 1, ARFUN 1]
+      e.g. AGH1001_5_0.html gold<p> 'a management practice is an activity or job d' | item black: 'A **management practice** is an activity' | prev '[Body] '
+      e.g. AGH1003_2_0.html gold<p> 'this is why earthworms come to the surface af' | item black: 'This is why earthworms come to the surfa' | prev '[Secondary Text] '
+      e.g. AGH1003_2_0.html gold<p> 'think about organic matter like a pinata with' | item black: 'Think about organic matter like a pinata' | prev '[Secondary text] '
+      e.g. ANZH303_2_0.html gold<p> 'mana tapu and mauri are important to both peo' | item black: 'Mana, Tapu and Mauri are important to bo' | prev '[Please put the following text in a different colo'
+  13 runs /   7 modules  tag:body <- black:short   [ENFUN 7, XMES 2, ENGI 1, OSAI 1, PES 1, PHE 1]
+      e.g. ENFUN07_0_0.html gold<p> 'ka pai you have learned to group your ideas i' | item tag:body 'Ka pai, you have learned to group your i' | prev ' [TABLE]'
+      e.g. ENFUN07_0_0.html gold<p> 'ka pai you have learned to use a topic senten' | item tag:body 'Ka pai, you have learned to use a topic ' | prev ' [TABLE]'
+      e.g. ENFUN07_0_0.html gold<p> 'ka pai you have learned to elaborate on your ' | item tag:body 'Ka pai, you have learned to elaborate on' | prev ' [TABLE]'
+      e.g. ENFUN08_0_0.html gold<p> 'well done for completing this fundamental you' | item tag:body 'Well done for completing this FUNdamenta' | prev ' [TABLE]'
+  11 runs /   2 modules  tag:h3 <- tag:speech bubble+payload   [HPRE 11]
+      e.g. HPRE203_1_0.html gold<h3> 'lesson summary' | item tag:h3 'Lesson Summary' | prev '[ImageAfiPh2] [Speech bubble] I know that when I a'
+      e.g. HPRE203_2_0.html gold<h3> 'lesson summary' | item tag:h3 'Lesson Summary' | prev '[ImageAfiPh2] [Speech bubble] I know that when I a'
+      e.g. HPRE203_3_0.html gold<h3> 'lesson summary' | item tag:h3 'Lesson Summary' | prev '[ImageAfiPh2] [Speech bubble] I know that when I a'
+      e.g. HPRE203_4_0.html gold<h3> 'lesson summary' | item tag:h3 'Lesson Summary' | prev '[ImageAfiPh2] [Speech bubble] I know that when I a'
+  10 runs /  10 modules  black <- black   [CEDO 2, AGH 1, CBI 1, CHFUN 1, DTC 1, ENGI 1]
+      e.g. AGH1002_4_0.html gold<p> 'there are four physical properties of soil tw' | item black: 'There are four physical properties of so' | prev ' All three soil properties are connected and often'
+      e.g. CBI1008_2_0.html gold<p> 'note kaitiakitanga is founded on traditional ' | item black: 'Note: Kaitiakitanga is founded on tradit' | prev ' • *Hunting and fishing only for food, not as spor'
+      e.g. CEDO105_2_0.html gold<p> 'great job you will need your obstacle course ' | item black: 'Great job. You will need your obstacle c' | prev ' See how many times you can complete your obstacle'
+      e.g. CEDO501_3_1.html gold<p> 'tip the browser icon is usually found on the ' | item black: 'Tip: The browser icon is usually found o' | prev ' Before you begin practising, watch the clip below'
+   8 runs /   5 modules  tag:body <- tag:h3+payload   [SSFUN 4, CEDO 1, ENFUN 1, SCES 1, XGF 1]
+      e.g. CEDO502_1_0.html gold<p> 'interest is the extra money you pay when you ' | item tag:body 'Interest is the extra money you pay when' | prev '[H3] Calculating interest'
+      e.g. ENFUN02_0_0.html gold<p> 'themes are the key messages or main lessons i' | item tag:body 'Themes are the key messages or main less' | prev '[H3] Themes'
+      e.g. SCES201_1_0.html gold<p> 'gravity is an invisible force that pulls ever' | item tag:body 'Gravity is an invisible force that pulls' | prev '[H3] Gravity'
+      e.g. SSFUN03_0_0.html gold<p> 'in this lesson you have learned what a map is' | item tag:body 'In this lesson you have learned what a m' | prev '[H3] **Summary**'
+   8 runs /   1 modules  tag:h3 <- tag:button   [HPRE 8]
+      e.g. HPRE301_2_0.html gold<h3> 'lesson summary' | item tag:h3 'Lesson Summary' | prev '[Journal button] '
+      e.g. HPRE301_3_0.html gold<h3> 'lesson summary' | item tag:h3 'Lesson Summary' | prev '[Journal button] '
+      e.g. HPRE301_5_0.html gold<h3> 'lesson summary' | item tag:h3 'Lesson Summary' | prev '[Journal button] '
+      e.g. HPRE301_6_0.html gold<h3> 'lesson summary' | item tag:h3 'Lesson Summary' | prev '[Journal button] '
+   7 runs /   7 modules  black <- tag:body+payload   [ENFUN 1, ENGI 1, EXBP 1, HIS 1, MXS 1, WJFUN 1]
+      e.g. ENFUN07_0_0.html gold<p> 'ka pai you have learned to use the hamburger ' | item black: 'Ka pai, you have learned to use the hamb' | prev '[body] Share your paragraph with your supervisor o'
+      e.g. ENGI102_6_0.html gold<p> 'different iwi have their own stories the ones' | item black: 'Different iwi have their own stories. Th' | prev '[Body] Traditional stories from Aotearoa have been'
+      e.g. EXBP901_1_0.html gold<p> 'a really good idea is to use the he kākano mo' | item black: 'A really good idea is to use the He Kāka' | prev "[Body text] It's important to consider a topic tha"
+      e.g. HIS1003_3_0.html gold<p> 'the learning in this lesson links to the prev' | item black: 'The learning in this lesson links to the' | prev '[Body] Using the sources given to you below, you w'
+   7 runs /   1 modules  tag:h2 <- tag:button+payload   [PES 7]
+      e.g. PES1003_2_0.html gold<h4> 'key points' | item tag:h2 'Key points' | prev '[Button] Go to workbook'
+      e.g. PES1003_3_0.html gold<h4> 'key points' | item tag:h2 'Key points' | prev '[Button] Go to workbook'
+      e.g. PES1003_4_0.html gold<h4> 'key points' | item tag:h2 'Key points' | prev '[Button] Go to workbook'
+      e.g. PES1003_6_0.html gold<h4> 'key points' | item tag:h2 'Key points' | prev '[Button] Go to workbook'
+   6 runs /   3 modules  tag:h5 <- tag:body+payload   [ENGC 3, ENFUN 2, ENGI 1]
+      e.g. ENFUN02_0_0.html gold<h4> 'in summary' | item tag:h5 'In summary …' | prev '[body] When we write, our ideas become stories for'
+      e.g. ENFUN02_0_0.html gold<h4> 'in summary' | item tag:h5 'In summary …' | prev '[body] When we write, our ideas become stories for'
+      e.g. ENGC202_2_0.html gold<h4> 'instructions draft' | item tag:h5 'Instructions draft' | prev '[body] They have written his instructions and woul'
+      e.g. ENGC202_3_0.html gold<h4> 'draft instructions' | item tag:h5 'Draft instructions' | prev '[body] They would like your help with their instru'
+   6 runs /   1 modules  tag:h3 <- PAGESTART   [HIS 6]
+      e.g. HIS1002_2_0.html gold<h3> 'lesson summary' | item tag:h3 'Lesson Summary' | prev '-'
+      e.g. HIS1002_4_0.html gold<h3> 'lesson summary' | item tag:h3 'Lesson Summary' | prev '-'
+      e.g. HIS1002_6_0.html gold<h3> 'lesson summary' | item tag:h3 'Lesson Summary' | prev '-'
+      e.g. HIS1002_7_0.html gold<h3> 'lesson summary' | item tag:h3 'Lesson Summary' | prev '-'
+   6 runs /   1 modules  tag:h2 <- tag:[Learning journal]+payload   [PES 6]
+      e.g. PES1004_2_0.html gold<h4> 'key points' | item tag:h2 'KEY POINTS' | prev '[Learning journal] Go to your learning journal and'
+      e.g. PES1004_3_0.html gold<h4> 'key points' | item tag:h2 'KEY POINTS' | prev '[Learning journal] Go to your learning journal and'
+      e.g. PES1004_5_0.html gold<h4> 'key points' | item tag:h2 'KEY POINTS' | prev '[Learning journal] Go to your learning journal and'
+      e.g. PES1004_6_0.html gold<h4> 'key points' | item tag:h2 'KEY POINTS' | prev '[Learning journal] Go to your learning journal and'
+   6 runs /   1 modules  black <- tag:important   [TRR 6]
+      e.g. TRR203_2_0.html gold<p> 'kia maumahara koe' | item black: 'Kia maumahara koe' | prev '[Alert Solid] '
+      e.g. TRR203_2_0.html gold<p> 'kia maumahara koe' | item black: 'Kia maumahara koe' | prev '[Alert Solid] '
+      e.g. TRR203_2_0.html gold<p> 'kia maumahara koe' | item black: 'Kia maumahara koe' | prev '[Alert Solid] '
+      e.g. TRR203_3_0.html gold<p> 'kia maumahara koe' | item black: 'Kia maumahara koe' | prev '[Alert Solid] '
+   6 runs /   1 modules  tag:h2 <- black:short   [XGF 6]
+      e.g. XGF9003_0_0.html gold<h3> 'key questions' | item tag:h2 'Key questions' | prev ' [TABLE]'
+      e.g. XGF9003_1_1.html gold<h4> 'key questions' | item tag:h2 'Key questions' | prev ' [TABLE]'
+      e.g. XGF9003_1_1.html gold<h3> 'key questions' | item tag:h2 'Key questions' | prev ' [TABLE]'
+      e.g. XGF9003_1_1.html gold<h4> 'key questions' | item tag:h2 'Key questions' | prev ' [TABLE]'
+   5 runs /   5 modules  tag:body <- tag:alert   [ENGS 2, SSCI 1, SSEA 1, XTAS 1]
+      e.g. ENGS301_7_0.html gold<p> 'ka pai well done you have now completed this ' | item tag:body 'Ka pai, well done. You have now complete' | prev '[alert/summary box] '
+      e.g. ENGS404_3_1.html gold<p> 'when we show and dont tell we try to appeal t' | item tag:body 'When we show and don’t tell, we try to a' | prev '[add alert box] '
+      e.g. SSCI205_1_0.html gold<p> 'in this lesson you will explore where ancient' | item tag:body 'In this lesson, you will explore where a' | prev '[Alert] '
+      e.g. SSEA203_6_0.html gold<p> 'if you enjoyed this learning you may like to ' | item tag:body 'If you enjoyed this learning, you may li' | prev '[Alert] '
+   5 runs /   1 modules  tag:h2 <- tag:1A & 1B]   [PES 5]
+      e.g. PES1008_1_0.html gold<h4> 'key points' | item tag:h2 'Key points' | prev '1A & 1B] '
+      e.g. PES1008_6_0.html gold<h4> 'key points' | item tag:h2 'Key points' | prev '1A & 1B] '
+      e.g. PES1008_7_0.html gold<h4> 'key points' | item tag:h2 'Key points' | prev '1A & 1B] '
+      e.g. PES1008_8_0.html gold<h4> 'key points' | item tag:h2 'Key points' | prev '1A & 1B] '
+   4 runs /   3 modules  tag:h5 <- tag:Can you please place   [BLLR 4]
+      e.g. BLLR201_2_0.html gold<h5> 'what have we learned' | item tag:h5 'What have we learned?' | prev 'Can you please place bookworm avatar on the inside'
+      e.g. BLLR202_2_0.html gold<h5> 'what to notice' | item tag:h5 'What to notice' | prev 'Can you please place bookworm avatar on the inside'
+      e.g. BLLR202_2_0.html gold<h5> 'what have we learned' | item tag:h5 'What have we learned?' | prev 'Can you please place bookworm avatar on the inside'
+      e.g. BLLR203_2_0.html gold<h5> 'what have we learned' | item tag:h5 'What have we learned?' | prev 'Can you please place a bookworm avatar on the insi'
+   4 runs /   3 modules  tag:h4 <- tag:alert   [MXFU 2, CEDK 1, SSEA 1]
+      e.g. CEDK401_0_0.html gold<h3> 'lesson summary' | item tag:h4 'Lesson Summary' | prev '[Lesson Summary Box] '
+      e.g. MXFU302_1_0.html gold<h4> 'commonwealth games' | item tag:h4 'Commonwealth Games' | prev '[Alert] '
+      e.g. MXFU302_1_0.html gold<h4> 'the olympic games' | item tag:h4 'The Olympic Games' | prev '[Alert] '
+      e.g. SSEA203_2_0.html gold<h4> 'easy way to remember' | item tag:h4 'Easy way to remember:' | prev '[Alert] '
+   4 runs /   2 modules  tag:h3 <- tag:body   [ENGJ 2, HIS 2]
+      e.g. ENGJ403_3_1.html gold<h4> 'basic character information' | item tag:h3 'Basic character information' | prev '[insert important box r h s of text above] '
+      e.g. ENGJ403_5_0.html gold<h4> 'interesting fact' | item tag:h3 'Interesting fact!' | prev '[insert important note to r h s of text] '
+      e.g. HIS1005_6_0.html gold<h4> 'the halfgallon quarteracre pavlova paradise' | item tag:h3 'The Half-gallon quarter-acre Pavlova par' | prev '[Please place in white space of right hand column '
+      e.g. HIS1005_9_1.html gold<h4> 'letters live  former slaves letter to master' | item tag:h3 'Letters live – former slaves letter to m' | prev '[please insert in white space of right hand column'
+   4 runs /   4 modules  tag:side alert <- black:short   [OSBY 3, SCPH 1]
+      e.g. OSBY301_1_0.html gold<p> 'sometimes online bullying can be called cyber' | item tag:side alert 'Sometimes online bullying can be called ' | prev ' [TABLE]'
+      e.g. OSBY401_1_0.html gold<p> 'sometimes online bullying can be called cyber' | item tag:side alert 'Sometimes online bullying can be called ' | prev ' [TABLE]'
+      e.g. OSBY501_1_0.html gold<p> 'sometimes online bullying can be called cyber' | item tag:side alert 'Sometimes online bullying can be called ' | prev ' [TABLE]'
+      e.g. SCPH301_1_0.html gold<p> 'a thermometer measures temperature not therma' | item tag:side alert 'A thermometer measures temperature, not ' | prev ' • Slow-moving particles = low temperature.'
+   4 runs /   1 modules  tag:h2 <- tag:video+payload   [PES 4]
+      e.g. PES1007_1_0.html gold<h4> 'key points' | item tag:h2 'Key points' | prev '[video] Which Power Source Is Most Efficient?'
+      e.g. PES1007_4_0.html gold<h4> 'key points' | item tag:h2 'Key points' | prev '[video] Which Power Source Is Most Efficient?'
+      e.g. PES1007_8_0.html gold<h4> 'key points' | item tag:h2 'Key points' | prev '[video] Which Power Source Is Most Efficient?'
+      e.g. PES1007_9_0.html gold<h4> 'key points' | item tag:h2 'Key points' | prev '[video] Which Power Source Is Most Efficient?'

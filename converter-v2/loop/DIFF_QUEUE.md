@@ -1,6 +1,6 @@
 # DIFF_QUEUE.md — the diff miner's ranked class queue (LOOP__Autonomous_Rounds.md §1d)
 
-**Produced:** 2026-09-26 15:39 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD 610fc26; Claude corpus 545 dirs). **Population:** the skeleton gate's own — 2486 paired pages / 530 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 87.2 s.
+**Produced:** 2026-09-26 16:21 NZST by `reference/tests/_diff_miner.py` on the CURRENT corpus (pageforge-site HEAD 8e41511; Claude corpus 545 dirs). **Population:** the skeleton gate's own — 2486 paired pages / 530 modules (compare_exclusions.txt honoured; acks / glossary / references pages excluded); parse errors skipped: 0 (must be 0); modules without a parsed WT: 2. Run time 87.7 s.
 
 **What a row is.** One CLASS = (region, parent element, gold form, Claude form, direction) over every differing skeleton line of every paired page — the same lines, labels, widget collapse and difflib alignment the PRIMARY gate scores (each element its own line so it can be quoted). Direction: MISSING = gold has it, Claude lacks it; EXTRA = Claude has it, gold lacks it; SUBSTITUTED = same position, different tag / class / wrapper; MOVED = same text, different place. Consensus = of the gold pages in the group where the region exists, the share carrying the gold form (for EXTRA: the share NOT carrying Claude's form). Derivable = the gold line's text is in the module's parsed Writers Template (round-110 tolerance); structure-only differences are always derivable.
 
@@ -8,9 +8,9 @@
 
 ## Summary
 
-- differing skeleton lines: 270589 — by direction {'MISSING': 142387, 'SUBSTITUTED': 25672, 'EXTRA': 93776, 'MOVED': 8754}
-- by region: {'module-code': 25, 'title': 349, 'header': 6, 'module-menu': 12584, 'phases-nav': 57, 'crumbs': 63, 'footer': 2557, 'acks': 1392, 'activity': 97475, 'body': 154488, 'root': 1593}
-- classes: 9436 — CANDIDATE 197, below floor 8946, the rest below consensus / not derivable
+- differing skeleton lines: 270305 — by direction {'MISSING': 142159, 'SUBSTITUTED': 25703, 'EXTRA': 93812, 'MOVED': 8631}
+- by region: {'module-code': 25, 'title': 349, 'header': 6, 'module-menu': 12584, 'phases-nav': 57, 'crumbs': 63, 'footer': 2550, 'acks': 1390, 'activity': 97473, 'body': 154213, 'root': 1595}
+- classes: 9451 — CANDIDATE 198, below floor 8961, the rest below consensus / not derivable
 
 ## Completeness census — the repeating chrome (§1d item 4)
 
@@ -388,167 +388,168 @@ A fact is one thing a page's chrome has: `header:chip` (the `#module-code` div),
 | 427 | footer | SUBSTITUTED | `div#footer` | `ul.footer-nav.inquiry-nav` | `ul.footer-nav.inquiry-nav` | 20 | 20 | 0.14 of 2486 | subject+ptype=1-10 Blended Literacy/overview c=0.89 n=16 | structure | yes | CANDIDATE |
 | 428 | footer | SUBSTITUTED | `ul.footer-nav.inquiry-nav` | `li>a.home-nav` | `li>a.home-nav` | 19 | 19 | 0.14 of 2486 | subject+ptype=1-10 Blended Literacy/overview c=0.89 n=16 | structure | yes | CANDIDATE |
 | 429 | footer | MISSING | `li>a.home-nav` | `a.home-nav` | `—` | 27 | 16 | 0.99 of 2486 | era=Refresh c=0.99 n=16 | structure | yes | CANDIDATE |
-| 430 | footer | SUBSTITUTED | `ul.footer-nav.inquiry-nav` | `li>a#next-lesson` | `li>a#next-lesson` | 16 | 16 | 0.11 of 2486 | subject+ptype=1-10 Blended Literacy/overview c=0.87 n=16 | structure | yes | CANDIDATE |
-| 431 | footer | SUBSTITUTED | `div#footer` | `ul.footer-nav` | `ul.footer-nav` | 16 | 15 | 0.82 of 2486 | template=Standard c=0.85 n=14 | structure | yes | CANDIDATE |
+| 430 | footer | SUBSTITUTED | `div#footer` | `ul.footer-nav` | `ul.footer-nav` | 17 | 16 | 0.82 of 2486 | ptype=lesson c=0.87 n=10 | structure | yes | CANDIDATE |
+| 431 | footer | SUBSTITUTED | `ul.footer-nav.inquiry-nav` | `li>a#next-lesson` | `li>a#next-lesson` | 16 | 16 | 0.11 of 2486 | subject+ptype=1-10 Blended Literacy/overview c=0.87 n=16 | structure | yes | CANDIDATE |
 | 432 | footer | MISSING | `ul.footer-nav.inquiry-nav` | `li>a#prev-lesson` | `—` | 15 | 15 | 0.10 of 2486 | template+ptype=Inquiry/overview c=0.72 n=14 | structure | yes | CANDIDATE |
 | 433 | footer | SUBSTITUTED | `div#footer` | `ul.footer-nav` | `ul.footer-nav.inquiry-nav` | 46 | 14 | 0.82 of 2486 | ptype=lesson c=0.87 n=13 | structure | yes | CANDIDATE |
-| 434 | footer | EXTRA | `div#footer` | `—` | `ul.footer-nav.inquiry-nav` | 17 | 14 | 0.85 of 2486 | template=Standard c=0.86 n=12 | structure | yes | CANDIDATE |
+| 434 | footer | EXTRA | `div#footer` | `—` | `ul.footer-nav.inquiry-nav` | 16 | 14 | 0.85 of 2486 | template=Standard c=0.86 n=12 | structure | yes | CANDIDATE |
 | 436 | footer | EXTRA | `ul.footer-nav.fundamentals-nav` | `—` | `li>a.home-nav` | 21 | 12 | 0.98 of 2486 | era=Refresh c=0.98 n=12 | structure | yes | CANDIDATE |
-| 438 | footer | SUBSTITUTED | `ul.footer-nav` | `li>a.home-nav` | `li>a.home-nav` | 13 | 11 | 0.83 of 2486 | template=Standard c=0.85 n=10 | structure | yes | CANDIDATE |
-| 439 | footer | MISSING | `div#footer` | `ul.footer-nav` | `—` | 12 | 11 | 0.82 of 2486 | template=Standard c=0.85 n=10 | structure | yes | CANDIDATE |
-| 440 | footer | SUBSTITUTED | `ul.footer-nav` | `li>a#next-lesson` | `li>a#next-lesson` | 12 | 11 | 0.71 of 2486 | template=Standard c=0.74 n=10 | structure | yes | CANDIDATE |
-| 442 | footer | SUBSTITUTED | `ul.footer-nav` | `li>a#next-lesson` | `li>a.home-nav` | 10 | 10 | 0.71 of 2486 | template=Standard c=0.74 n=10 | structure | yes | CANDIDATE |
-| 529 | acks | SUBSTITUTED | `div.col-12.col-md-8` | `div.acks` | `div.acks.acksTemplate` | 107 | 107 | 0.16 of 2486 | template+ptype=Inquiry/overview c=0.83 n=43 | structure | yes | CANDIDATE |
-| 562 | activity | MISSING | `div.col-12` | `p` | `—` | 763 | 371 | 0.24 of 2479 | template+ptype=Inquiry/overview c=0.78 n=40 | 0.81 | — | CANDIDATE |
-| 563 | activity | EXTRA | `div.col-12` | `—` | `p` | 624 | 310 | 0.88 of 2479 | subject=ANZH c=0.99 n=26 | structure | — | CANDIDATE |
-| 564 | activity | MISSING | `div.col-12` | `WIDGET` | `—` | 427 | 265 | 0.18 of 2479 | template+ptype=Inquiry/overview c=0.68 n=28 | structure | — | CANDIDATE |
-| 566 | activity | MISSING | `div.col-12` | `a` | `—` | 467 | 240 | 0.28 of 2479 | template+ptype=Inquiry/overview c=0.77 n=30 | 0.63 | — | CANDIDATE |
-| 567 | activity | EXTRA | `div.col-12` | `—` | `WIDGET` | 359 | 221 | 0.82 of 2479 | subject=NCEA1 c=0.96 n=37 | structure | — | CANDIDATE |
-| 568 | activity | MOVED | `div.col-12` | `p` | `p` | 294 | 209 | 0.19 of 2479 | template+ptype=Inquiry/overview c=0.78 n=26 | structure | — | CANDIDATE |
-| 569 | activity | MISSING | `div.col-12` | `h3` | `—` | 403 | 199 | 0.42 of 2479 | template+ptype=Fundamentals/overview c=0.88 n=30 | 0.70 | — | CANDIDATE |
-| 570 | activity | SUBSTITUTED | `div.col-12.col-md-8` | `div.activity.interactive[number=*]` | `div.activity[number=*]` | 282 | 191 | 0.44 of 2479 | subject+ptype=1-10 Blended Literacy/lesson c=0.73 n=65 | structure | yes | CANDIDATE |
-| 571 | activity | MISSING | `div.col-12` | `div.row` | `—` | 246 | 178 | 0.21 of 2479 | template+ptype=Bilingual/lesson c=0.61 n=20 | 0.96 | — | CANDIDATE |
-| 572 | activity | MISSING | `div.activity.interactive[number=*]` | `div.row` | `—` | 268 | 165 | 0.12 of 2479 | template+ptype=Fundamentals/overview c=0.65 n=34 | 0.93 | yes | CANDIDATE |
-| 573 | activity | EXTRA | `div.col-12` | `—` | `img.img-fluid` | 247 | 159 | 0.97 of 2479 | subject+ptype=1-10 English/lesson c=0.99 n=22 | structure | — | CANDIDATE |
-| 574 | activity | MOVED | `div.col-12` | `p` | `p` | 170 | 132 | 0.15 of 2479 | template+ptype=Inquiry/overview c=0.78 n=22 | structure | — | CANDIDATE |
-| 575 | activity | EXTRA | `div.col-12` | `—` | `p>a` | 153 | 124 | 1.00 of 2479 | subject+ptype=1-10 Blended Literacy/lesson c=1.00 n=37 | structure | — | CANDIDATE |
-| 577 | activity | EXTRA | `div.row` | `—` | `div.col-12` | 169 | 121 | 0.84 of 2479 | template=Standard c=0.88 n=141 | structure | — | CANDIDATE |
-| 581 | activity | EXTRA | `div.activity[number=*]` | `—` | `div.row` | 137 | 105 | 0.95 of 2479 | subject=1-10 English c=0.98 n=23 | structure | yes | CANDIDATE |
-| 585 | activity | SUBSTITUTED | `div.col-12.col-md-8` | `div.activity[number=*]` | `div.activity.interactive[number=*]` | 125 | 91 | 0.46 of 2479 | subject+ptype=1-10 Blended Literacy/lesson c=0.81 n=23 | structure | yes | CANDIDATE |
-| 586 | activity | SUBSTITUTED | `div.col-12` | `p` | `p` | 120 | 91 | 0.75 of 2479 | subject+ptype=1-10 Blended Literacy/lesson c=0.92 n=21 | structure | — | CANDIDATE |
+| 437 | footer | SUBSTITUTED | `ul.footer-nav` | `li>a.home-nav` | `li>a.home-nav` | 14 | 12 | 0.83 of 2486 | ptype=lesson c=0.88 n=10 | structure | yes | CANDIDATE |
+| 438 | footer | SUBSTITUTED | `ul.footer-nav` | `li>a#next-lesson` | `li>a#next-lesson` | 13 | 12 | 0.71 of 2486 | ptype=lesson c=0.75 n=10 | structure | yes | CANDIDATE |
+| 441 | footer | MISSING | `div#footer` | `ul.footer-nav` | `—` | 11 | 10 | 0.82 of 2486 | era=Refresh c=0.82 n=10 | structure | yes | CANDIDATE |
+| 442 | footer | SUBSTITUTED | `ul.footer-nav` | `li>a#prev-lesson` | `li>a#prev-lesson` | 11 | 10 | 0.70 of 2486 | ptype=lesson c=0.87 n=10 | structure | yes | CANDIDATE |
+| 443 | footer | SUBSTITUTED | `ul.footer-nav` | `li>a#next-lesson` | `li>a.home-nav` | 10 | 10 | 0.71 of 2486 | template=Standard c=0.74 n=10 | structure | yes | CANDIDATE |
+| 528 | acks | SUBSTITUTED | `div.col-12.col-md-8` | `div.acks` | `div.acks.acksTemplate` | 107 | 107 | 0.16 of 2486 | template+ptype=Inquiry/overview c=0.83 n=43 | structure | yes | CANDIDATE |
+| 561 | activity | MISSING | `div.col-12` | `p` | `—` | 764 | 371 | 0.24 of 2479 | template+ptype=Inquiry/overview c=0.78 n=40 | 0.81 | — | CANDIDATE |
+| 562 | activity | EXTRA | `div.col-12` | `—` | `p` | 623 | 310 | 0.88 of 2479 | subject=ANZH c=0.99 n=26 | structure | — | CANDIDATE |
+| 563 | activity | MISSING | `div.col-12` | `WIDGET` | `—` | 428 | 266 | 0.18 of 2479 | template+ptype=Inquiry/overview c=0.68 n=28 | structure | — | CANDIDATE |
+| 565 | activity | MISSING | `div.col-12` | `a` | `—` | 467 | 240 | 0.28 of 2479 | template+ptype=Inquiry/overview c=0.77 n=30 | 0.63 | — | CANDIDATE |
+| 566 | activity | EXTRA | `div.col-12` | `—` | `WIDGET` | 356 | 220 | 0.82 of 2479 | subject=NCEA1 c=0.96 n=36 | structure | — | CANDIDATE |
+| 567 | activity | MOVED | `div.col-12` | `p` | `p` | 293 | 209 | 0.19 of 2479 | template+ptype=Inquiry/overview c=0.78 n=26 | structure | — | CANDIDATE |
+| 568 | activity | MISSING | `div.col-12` | `h3` | `—` | 406 | 200 | 0.42 of 2479 | template+ptype=Fundamentals/overview c=0.88 n=30 | 0.70 | — | CANDIDATE |
+| 569 | activity | SUBSTITUTED | `div.col-12.col-md-8` | `div.activity.interactive[number=*]` | `div.activity[number=*]` | 282 | 191 | 0.44 of 2479 | subject+ptype=1-10 Blended Literacy/lesson c=0.73 n=65 | structure | yes | CANDIDATE |
+| 570 | activity | MISSING | `div.col-12` | `div.row` | `—` | 244 | 178 | 0.21 of 2479 | template+ptype=Bilingual/lesson c=0.61 n=20 | 0.96 | — | CANDIDATE |
+| 571 | activity | MISSING | `div.activity.interactive[number=*]` | `div.row` | `—` | 268 | 165 | 0.12 of 2479 | template+ptype=Fundamentals/overview c=0.65 n=34 | 0.93 | yes | CANDIDATE |
+| 572 | activity | EXTRA | `div.col-12` | `—` | `img.img-fluid` | 247 | 159 | 0.97 of 2479 | subject+ptype=1-10 English/lesson c=0.99 n=22 | structure | — | CANDIDATE |
+| 573 | activity | MOVED | `div.col-12` | `p` | `p` | 170 | 132 | 0.15 of 2479 | template+ptype=Inquiry/overview c=0.78 n=22 | structure | — | CANDIDATE |
+| 574 | activity | EXTRA | `div.col-12` | `—` | `p>a` | 153 | 124 | 1.00 of 2479 | subject+ptype=1-10 Blended Literacy/lesson c=1.00 n=37 | structure | — | CANDIDATE |
+| 576 | activity | EXTRA | `div.row` | `—` | `div.col-12` | 169 | 121 | 0.84 of 2479 | template=Standard c=0.88 n=141 | structure | — | CANDIDATE |
+| 580 | activity | EXTRA | `div.activity[number=*]` | `—` | `div.row` | 137 | 105 | 0.95 of 2479 | subject=1-10 English c=0.98 n=23 | structure | yes | CANDIDATE |
+| 584 | activity | SUBSTITUTED | `div.col-12` | `p` | `p` | 119 | 91 | 0.75 of 2479 | subject+ptype=1-10 Blended Literacy/lesson c=0.92 n=21 | structure | — | CANDIDATE |
+| 585 | activity | SUBSTITUTED | `div.col-12.col-md-8` | `div.activity[number=*]` | `div.activity.interactive[number=*]` | 124 | 90 | 0.46 of 2479 | subject+ptype=1-10 Blended Literacy/lesson c=0.81 n=23 | structure | yes | CANDIDATE |
+| 586 | activity | EXTRA | `div.col-12` | `—` | `h3` | 120 | 90 | 0.86 of 2479 | template=Standard c=0.92 n=71 | structure | — | CANDIDATE |
 | 587 | activity | EXTRA | `div.col-12` | `—` | `p>b` | 134 | 88 | 0.97 of 2479 | template=Standard c=0.98 n=86 | structure | — | CANDIDATE |
-| 588 | activity | EXTRA | `div.col-12` | `—` | `h3` | 118 | 88 | 0.86 of 2479 | template=Standard c=0.92 n=69 | structure | — | CANDIDATE |
-| 589 | activity | EXTRA | `div.col-12` | `—` | `ol` | 129 | 87 | 0.96 of 2479 | subject=1-10 Mathematics c=0.98 n=24 | structure | — | CANDIDATE |
-| 591 | activity | EXTRA | `p>b` | `—` | `b` | 119 | 85 | 0.92 of 2479 | template=Standard c=0.94 n=74 | structure | — | CANDIDATE |
-| 594 | activity | EXTRA | `div.col-12` | `—` | `ul` | 109 | 84 | 0.94 of 2479 | template=Standard c=0.96 n=89 | structure | — | CANDIDATE |
-| 595 | activity | EXTRA | `p>a` | `—` | `a` | 94 | 78 | 0.98 of 2479 | subject+ptype=1-10 Blended Literacy/lesson c=1.00 n=33 | structure | — | CANDIDATE |
-| 596 | activity | EXTRA | `div.col-12` | `—` | `a` | 95 | 76 | 0.72 of 2479 | template=Standard c=0.73 n=74 | structure | — | CANDIDATE |
-| 599 | activity | EXTRA | `div.activity.interactive[number=*]` | `—` | `div.row` | 93 | 72 | 0.79 of 2479 | template=Standard c=0.83 n=72 | structure | yes | CANDIDATE |
-| 601 | activity | EXTRA | `div.col-12` | `—` | `h4.goJournal` | 149 | 69 | 0.95 of 2479 | series=HIS10 c=1.00 n=27 | structure | — | CANDIDATE |
-| 603 | activity | SUBSTITUTED | `div.col-12` | `p` | `WIDGET` | 79 | 69 | 0.75 of 2479 | template+ptype=Standard/lesson c=0.88 n=60 | structure | — | CANDIDATE |
-| 604 | activity | SUBSTITUTED | `div.col-12` | `a` | `h4.goJournal` | 153 | 66 | 0.55 of 2479 | series=HIS10 c=0.83 n=25 | structure | — | CANDIDATE |
-| 606 | activity | SUBSTITUTED | `div.col-12` | `WIDGET` | `p` | 71 | 65 | 0.59 of 2479 | ptype=lesson c=0.68 n=59 | structure | — | CANDIDATE |
-| 614 | activity | SUBSTITUTED | `div.col-12` | `a` | `p` | 80 | 55 | 0.55 of 2479 | subject+ptype=1-10 Mathematics/lesson c=0.80 n=23 | structure | — | CANDIDATE |
-| 615 | activity | EXTRA | `ol` | `—` | `li` | 74 | 55 | 0.96 of 2479 | subject=NCEA1 c=0.97 n=23 | structure | — | CANDIDATE |
-| 616 | activity | EXTRA | `div.col-12` | `—` | `p>i` | 61 | 55 | 0.97 of 2479 | template=Standard c=0.98 n=50 | structure | — | CANDIDATE |
-| 619 | activity | EXTRA | `a` | `—` | `div.button` | 63 | 52 | 0.78 of 2479 | template=Standard c=0.79 n=44 | structure | yes | CANDIDATE |
-| 620 | activity | EXTRA | `div.col-12.col-md-8` | `—` | `div.activity[number=*]` | 59 | 51 | 0.96 of 2479 | template=Standard c=0.98 n=44 | structure | yes | CANDIDATE |
-| 633 | activity | SUBSTITUTED | `div.col-12` | `WIDGET` | `div.row` | 44 | 44 | 0.59 of 2479 | ptype=lesson c=0.68 n=34 | structure | — | CANDIDATE |
-| 643 | activity | EXTRA | `p>i` | `—` | `i` | 50 | 41 | 0.96 of 2479 | template=Standard c=0.97 n=44 | structure | — | CANDIDATE |
-| 644 | activity | SUBSTITUTED | `div.col-12` | `h3` | `WIDGET` | 47 | 41 | 0.76 of 2479 | template+ptype=Standard/lesson c=0.89 n=34 | structure | — | CANDIDATE |
+| 588 | activity | EXTRA | `div.col-12` | `—` | `ol` | 128 | 87 | 0.98 of 2479 | subject=1-10 Mathematics c=1.00 n=24 | structure | — | CANDIDATE |
+| 590 | activity | EXTRA | `p>b` | `—` | `b` | 119 | 85 | 0.92 of 2479 | template=Standard c=0.94 n=74 | structure | — | CANDIDATE |
+| 593 | activity | EXTRA | `div.col-12` | `—` | `ul` | 110 | 84 | 0.94 of 2479 | template=Standard c=0.96 n=90 | structure | — | CANDIDATE |
+| 594 | activity | EXTRA | `p>a` | `—` | `a` | 94 | 78 | 0.98 of 2479 | subject+ptype=1-10 Blended Literacy/lesson c=1.00 n=33 | structure | — | CANDIDATE |
+| 595 | activity | EXTRA | `div.col-12` | `—` | `a` | 95 | 76 | 0.72 of 2479 | template=Standard c=0.73 n=74 | structure | — | CANDIDATE |
+| 598 | activity | EXTRA | `div.activity.interactive[number=*]` | `—` | `div.row` | 93 | 72 | 0.79 of 2479 | template=Standard c=0.83 n=72 | structure | yes | CANDIDATE |
+| 600 | activity | EXTRA | `div.col-12` | `—` | `h4.goJournal` | 148 | 69 | 0.95 of 2479 | series=HIS10 c=1.00 n=26 | structure | — | CANDIDATE |
+| 602 | activity | SUBSTITUTED | `div.col-12` | `p` | `WIDGET` | 79 | 69 | 0.75 of 2479 | template+ptype=Standard/lesson c=0.88 n=60 | structure | — | CANDIDATE |
+| 603 | activity | SUBSTITUTED | `div.col-12` | `a` | `h4.goJournal` | 153 | 66 | 0.55 of 2479 | series=HIS10 c=0.83 n=25 | structure | — | CANDIDATE |
+| 605 | activity | SUBSTITUTED | `div.col-12` | `WIDGET` | `p` | 71 | 65 | 0.59 of 2479 | ptype=lesson c=0.68 n=59 | structure | — | CANDIDATE |
+| 613 | activity | SUBSTITUTED | `div.col-12` | `a` | `p` | 80 | 55 | 0.55 of 2479 | subject+ptype=1-10 Mathematics/lesson c=0.80 n=23 | structure | — | CANDIDATE |
+| 614 | activity | EXTRA | `ol` | `—` | `li` | 74 | 55 | 0.96 of 2479 | subject=NCEA1 c=0.97 n=23 | structure | — | CANDIDATE |
+| 615 | activity | EXTRA | `div.col-12` | `—` | `p>i` | 61 | 55 | 0.97 of 2479 | template=Standard c=0.98 n=50 | structure | — | CANDIDATE |
+| 618 | activity | EXTRA | `a` | `—` | `div.button` | 63 | 52 | 0.78 of 2479 | template=Standard c=0.79 n=44 | structure | yes | CANDIDATE |
+| 619 | activity | EXTRA | `div.col-12.col-md-8` | `—` | `div.activity[number=*]` | 59 | 51 | 0.96 of 2479 | template=Standard c=0.98 n=44 | structure | yes | CANDIDATE |
+| 631 | activity | SUBSTITUTED | `div.col-12` | `WIDGET` | `div.row` | 45 | 45 | 0.59 of 2479 | ptype=lesson c=0.68 n=34 | structure | — | CANDIDATE |
+| 642 | activity | EXTRA | `p>i` | `—` | `i` | 50 | 41 | 0.96 of 2479 | template=Standard c=0.97 n=44 | structure | — | CANDIDATE |
+| 643 | activity | SUBSTITUTED | `div.col-12` | `h3` | `WIDGET` | 47 | 41 | 0.76 of 2479 | template+ptype=Standard/lesson c=0.89 n=34 | structure | — | CANDIDATE |
 | 645 | activity | SUBSTITUTED | `div.col-12` | `a` | `WIDGET` | 47 | 40 | 0.55 of 2479 | template+ptype=Standard/lesson c=0.65 n=44 | structure | — | CANDIDATE |
-| 649 | activity | EXTRA | `div.col-12` | `—` | `audio.audioPlayer.icon` | 68 | 38 | 1.00 of 2479 | template=Bilingual c=1.00 n=37 | structure | yes | CANDIDATE |
-| 651 | activity | EXTRA | `a` | `—` | `div.externalButton` | 49 | 37 | 0.92 of 2479 | template=Standard c=0.92 n=36 | structure | — | CANDIDATE |
-| 652 | activity | EXTRA | `p` | `—` | `b` | 47 | 37 | 0.95 of 2479 | template=Standard c=0.96 n=38 | structure | — | CANDIDATE |
-| 655 | activity | EXTRA | `div.col-12` | `—` | `div.icon.ratio.ratio-16x9.videoSection` | 50 | 36 | 0.98 of 2479 | template=Standard c=0.98 n=42 | structure | yes | CANDIDATE |
-| 658 | activity | EXTRA | `ul` | `—` | `li` | 36 | 35 | 0.93 of 2479 | template=Standard c=0.95 n=27 | structure | — | CANDIDATE |
-| 661 | activity | EXTRA | `div.col-12.col-md-8` | `—` | `div.activity.interactive[number=*]` | 36 | 33 | 0.89 of 2479 | template=Standard c=0.92 n=30 | structure | yes | CANDIDATE |
-| 664 | activity | EXTRA | `div.col-12` | `—` | `div.ratio.ratio-16x9.videoSection` | 45 | 31 | 0.96 of 2479 | template=Standard c=0.97 n=29 | structure | yes | CANDIDATE |
-| 675 | activity | SUBSTITUTED | `div.row` | `div.col-12` | `WIDGET` | 28 | 28 | 0.78 of 2479 | ptype=lesson c=0.92 n=20 | structure | — | CANDIDATE |
-| 681 | activity | SUBSTITUTED | `div.col-12` | `WIDGET` | `ol` | 27 | 25 | 0.59 of 2479 | ptype=lesson c=0.68 n=21 | structure | — | CANDIDATE |
-| 689 | activity | EXTRA | `div.col-12` | `—` | `h5` | 26 | 23 | 0.99 of 2479 | template=Standard c=0.99 n=20 | structure | — | CANDIDATE |
-| 690 | activity | EXTRA | `div.icon.ratio.ratio-16x9.videoSection` | `—` | `iframe` | 26 | 23 | 0.99 of 2479 | era=Refresh c=0.99 n=26 | structure | yes | CANDIDATE |
-| 691 | activity | SUBSTITUTED | `div.row` | `div.col-12` | `div.col-12.col-md-8` | 26 | 23 | 0.78 of 2479 | era=Refresh c=0.78 n=26 | structure | — | CANDIDATE |
+| 648 | activity | EXTRA | `div.col-12` | `—` | `audio.audioPlayer.icon` | 68 | 38 | 1.00 of 2479 | template=Bilingual c=1.00 n=37 | structure | yes | CANDIDATE |
+| 650 | activity | EXTRA | `a` | `—` | `div.externalButton` | 49 | 37 | 0.92 of 2479 | template=Standard c=0.92 n=36 | structure | — | CANDIDATE |
+| 651 | activity | EXTRA | `p` | `—` | `b` | 47 | 37 | 0.95 of 2479 | template=Standard c=0.96 n=38 | structure | — | CANDIDATE |
+| 654 | activity | EXTRA | `div.col-12` | `—` | `div.icon.ratio.ratio-16x9.videoSection` | 50 | 36 | 0.98 of 2479 | template=Standard c=0.98 n=42 | structure | yes | CANDIDATE |
+| 657 | activity | EXTRA | `ul` | `—` | `li` | 36 | 35 | 0.93 of 2479 | template=Standard c=0.95 n=27 | structure | — | CANDIDATE |
+| 660 | activity | EXTRA | `div.col-12.col-md-8` | `—` | `div.activity.interactive[number=*]` | 37 | 34 | 0.89 of 2479 | template=Standard c=0.92 n=31 | structure | yes | CANDIDATE |
+| 663 | activity | EXTRA | `div.col-12` | `—` | `div.ratio.ratio-16x9.videoSection` | 45 | 31 | 0.96 of 2479 | template=Standard c=0.97 n=29 | structure | yes | CANDIDATE |
+| 675 | activity | SUBSTITUTED | `div.row` | `div.col-12` | `WIDGET` | 27 | 27 | 0.78 of 2479 | era=Refresh c=0.78 n=27 | structure | — | CANDIDATE |
+| 680 | activity | SUBSTITUTED | `div.col-12` | `WIDGET` | `ol` | 27 | 25 | 0.59 of 2479 | ptype=lesson c=0.68 n=21 | structure | — | CANDIDATE |
+| 684 | activity | SUBSTITUTED | `div.row` | `div.col-12` | `div.col-12.col-md-8` | 27 | 24 | 0.78 of 2479 | ptype=lesson c=0.92 n=20 | structure | — | CANDIDATE |
+| 685 | activity | SUBSTITUTED | `div.row` | `div.col-12` | `div.row` | 26 | 24 | 0.78 of 2479 | ptype=lesson c=0.92 n=21 | structure | — | CANDIDATE |
+| 691 | activity | EXTRA | `div.col-12` | `—` | `h5` | 26 | 23 | 0.99 of 2479 | template=Standard c=0.99 n=20 | structure | — | CANDIDATE |
+| 692 | activity | EXTRA | `div.icon.ratio.ratio-16x9.videoSection` | `—` | `iframe` | 26 | 23 | 0.99 of 2479 | era=Refresh c=0.99 n=26 | structure | yes | CANDIDATE |
 | 695 | activity | EXTRA | `div.ratio.ratio-16x9.videoSection` | `—` | `iframe` | 27 | 22 | 0.97 of 2479 | template=Standard c=0.98 n=22 | structure | yes | CANDIDATE |
-| 697 | activity | SUBSTITUTED | `div.row` | `div.col-12` | `div.row` | 24 | 22 | 0.78 of 2479 | era=Refresh c=0.78 n=24 | structure | — | CANDIDATE |
-| 715 | activity | SUBSTITUTED | `div.col-12` | `h3` | `p` | 21 | 19 | 0.76 of 2479 | era=Refresh c=0.76 n=21 | structure | — | CANDIDATE |
+| 716 | activity | SUBSTITUTED | `div.col-12` | `h3` | `p` | 21 | 19 | 0.76 of 2479 | era=Refresh c=0.76 n=21 | structure | — | CANDIDATE |
 | 719 | activity | SUBSTITUTED | `div.col-12` | `p` | `h4.goJournal` | 28 | 18 | 0.75 of 2479 | template+ptype=Standard/lesson c=0.88 n=26 | structure | — | CANDIDATE |
 | 725 | activity | EXTRA | `div.col-12` | `—` | `div.TKmodal` | 20 | 17 | 1.00 of 2479 | era=Refresh c=1.00 n=20 | structure | — | CANDIDATE |
 | 734 | activity | EXTRA | `div.col-12` | `—` | `div.button` | 24 | 16 | 1.00 of 2479 | template=Standard c=1.00 n=21 | structure | yes | CANDIDATE |
 | 836 | activity | EXTRA | `p>span.infoTrigger` | `—` | `span.infoTrigger` | 24 | 9 | 0.99 of 2479 | template=Standard c=1.00 n=22 | structure | — | CANDIDATE |
-| 859 | activity | MISSING | `div.col-12.col-md-8` | `div.activity.dropbox[number=*]` | `—` | 25 | 8 | 0.03 of 2479 | series=XDLS90 c=0.68 n=22 | 1.00 | yes | CANDIDATE |
+| 899 | activity | MISSING | `div.col-12.col-md-8` | `div.activity.dropbox[number=*]` | `—` | 24 | 7 | 0.03 of 2479 | series=XDLS90 c=0.68 n=22 | 1.00 | yes | CANDIDATE |
 | 1080 | activity | EXTRA | `div.activity.clickDropContent.dropbox[nu` | `—` | `a` | 27 | 4 | 1.00 of 2479 | template=Standard c=1.00 n=21 | structure | yes | CANDIDATE |
 | 1081 | activity | EXTRA | `div.activity.dropbox[number=*]` | `—` | `a` | 24 | 4 | 0.99 of 2479 | era=Refresh c=0.99 n=24 | structure | yes | CANDIDATE |
-| 4066 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p` | 1094 | 409 | 0.82 of 2479 | subject+ptype=1-10 Blended Literacy/lesson c=0.99 n=28 | structure | — | CANDIDATE |
-| 4067 | body | EXTRA | `div#body` | `—` | `div.row` | 1440 | 390 | 0.66 of 2479 | subject+ptype=1-10 Blended Literacy/overview c=1.00 n=31 | structure | — | CANDIDATE |
-| 4068 | body | MISSING | `div#body` | `div.row` | `—` | 1361 | 346 | 0.34 of 2479 | series=CEDO50 c=0.76 n=20 | 0.86 | — | CANDIDATE |
-| 4069 | body | MISSING | `div.col-12.col-md-8` | `p` | `—` | 629 | 299 | 0.26 of 2479 | template+ptype=Fundamentals/overview c=0.91 n=47 | 0.79 | — | CANDIDATE |
-| 4070 | body | EXTRA | `div.col-12.col-md-8` | `—` | `img.img-fluid` | 555 | 253 | 0.96 of 2479 | template+ptype=Standard/overview c=1.00 n=28 | structure | — | CANDIDATE |
-| 4071 | body | EXTRA | `div.col-12.col-md-8` | `—` | `WIDGET` | 402 | 251 | 0.93 of 2479 | subject+ptype=NCEA1/lesson c=0.99 n=46 | structure | — | CANDIDATE |
-| 4072 | body | MOVED | `div.col-12.col-md-8` | `p` | `p` | 348 | 224 | 0.16 of 2479 | template+ptype=Fundamentals/overview c=0.83 n=42 | structure | — | CANDIDATE |
-| 4073 | body | EXTRA | `div.row` | `—` | `div.col-12.col-md-8` | 295 | 211 | 0.85 of 2479 | subject+ptype=1-10 Blended Literacy/lesson c=0.97 n=22 | structure | — | CANDIDATE |
-| 4075 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>b` | 305 | 183 | 0.97 of 2479 | subject=1-10 Blended Literacy c=1.00 n=22 | structure | — | CANDIDATE |
-| 4076 | body | MISSING | `div.col-12.col-md-8` | `WIDGET` | `—` | 274 | 179 | 0.19 of 2479 | template+ptype=Fundamentals/overview c=0.65 n=33 | structure | — | CANDIDATE |
-| 4077 | body | EXTRA | `div.col-12.col-md-8` | `—` | `ul` | 294 | 175 | 0.95 of 2479 | subject=1-10 English c=0.97 n=31 | structure | — | CANDIDATE |
-| 4078 | body | MISSING | `div.row` | `div.col-12.col-md-8` | `—` | 306 | 171 | 0.29 of 2479 | template+ptype=Fundamentals/overview c=0.94 n=20 | 0.94 | — | CANDIDATE |
-| 4080 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h3` | 273 | 167 | 0.82 of 2479 | template+ptype=Standard/overview c=0.98 n=22 | structure | — | CANDIDATE |
-| 4081 | body | SUBSTITUTED | `div.row` | `div.col-12` | `div.col-12.col-md-8` | 283 | 155 | 0.54 of 2479 | series=AGH10 c=0.88 n=21 | structure | — | CANDIDATE |
-| 4082 | body | MISSING | `div.col-12.col-md-8` | `h3` | `—` | 257 | 154 | 0.18 of 2479 | template+ptype=Fundamentals/overview c=0.75 n=23 | 0.89 | — | CANDIDATE |
-| 4083 | body | EXTRA | `div.col-12.col-md-8` | `—` | `a` | 204 | 147 | 0.98 of 2479 | subject=1-10 English c=0.99 n=26 | structure | — | CANDIDATE |
-| 4086 | body | EXTRA | `p>b` | `—` | `b` | 192 | 126 | 0.93 of 2479 | subject=1-10 Mathematics c=0.97 n=32 | structure | — | CANDIDATE |
-| 4087 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>a` | 184 | 124 | 0.99 of 2479 | subject=1-10 English c=1.00 n=21 | structure | — | CANDIDATE |
-| 4089 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.ratio.ratio-16x9.videoSection` | 192 | 117 | 0.93 of 2479 | subject=NCEA1 c=0.98 n=22 | structure | yes | CANDIDATE |
-| 4091 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.table-responsive` | 153 | 112 | 0.92 of 2479 | ptype=overview c=0.95 n=22 | structure | — | CANDIDATE |
-| 4096 | body | MOVED | `div.col-12.col-md-8` | `p` | `p` | 136 | 99 | 0.18 of 2479 | template+ptype=Inquiry/overview c=0.63 n=20 | structure | — | CANDIDATE |
-| 4100 | body | EXTRA | `p` | `—` | `b` | 124 | 95 | 0.93 of 2479 | subject=NCEA1 c=0.96 n=33 | structure | — | CANDIDATE |
-| 4103 | body | EXTRA | `div.table-responsive` | `—` | `table.table.table-bordered` | 138 | 88 | 0.96 of 2479 | subject=NCEA1 c=0.97 n=30 | structure | yes | CANDIDATE |
-| 4105 | body | EXTRA | `a` | `—` | `div.button` | 145 | 87 | 0.97 of 2479 | subject=NCEA1 c=0.98 n=20 | structure | — | CANDIDATE |
-| 4106 | body | EXTRA | `p>i` | `—` | `i` | 109 | 85 | 0.90 of 2479 | subject=1-10 Blended Literacy c=0.95 n=26 | structure | — | CANDIDATE |
-| 4107 | body | SUBSTITUTED | `div.icon.ratio.ratio-16x9.videoSection` | `iframe.embed-responsive-item` | `iframe` | 209 | 81 | 0.19 of 2479 | series=PES10 c=0.67 n=37 | structure | yes | CANDIDATE |
-| 4108 | body | EXTRA | `div.col-12.col-md-8` | `—` | `ol` | 104 | 81 | 0.99 of 2479 | template=Standard c=0.99 n=80 | structure | — | CANDIDATE |
-| 4110 | body | SUBSTITUTED | `div#body` | `div.row` | `WIDGET` | 117 | 76 | 0.94 of 2479 | subject=Online Safety (OS9000) c=1.00 n=27 | structure | — | CANDIDATE |
-| 4111 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>i` | 103 | 76 | 0.98 of 2479 | subject=NCEA1 c=0.99 n=27 | structure | — | CANDIDATE |
-| 4112 | body | EXTRA | `div.col-12.col-md-8` | `—` | `audio.audioPlayer.icon` | 115 | 75 | 1.00 of 2479 | ptype=overview c=1.00 n=36 | structure | yes | CANDIDATE |
-| 4113 | body | EXTRA | `div.row` | `—` | `div.col-12` | 137 | 74 | 0.71 of 2479 | subject=ANZH c=0.75 n=22 | structure | — | CANDIDATE |
-| 4114 | body | EXTRA | `p>a` | `—` | `a` | 100 | 74 | 0.99 of 2479 | template=Standard c=1.00 n=77 | structure | — | CANDIDATE |
-| 4119 | body | MOVED | `div.col-12.col-md-8` | `h3` | `h3` | 83 | 70 | 0.11 of 2479 | template+ptype=Fundamentals/overview c=0.67 n=22 | structure | — | CANDIDATE |
-| 4123 | body | EXTRA | `div.fundamentalsPanel` | `—` | `div.row` | 74 | 69 | 0.98 of 2479 | era=Refresh c=0.98 n=74 | structure | — | CANDIDATE |
-| 4126 | body | EXTRA | `table.table.table-bordered` | `—` | `tr` | 91 | 67 | 0.98 of 2479 | template=Standard c=0.98 n=77 | structure | yes | CANDIDATE |
-| 4130 | body | EXTRA | `div.col-12` | `—` | `p` | 104 | 64 | 0.92 of 2479 | template=Standard c=0.94 n=86 | structure | — | CANDIDATE |
-| 4131 | body | EXTRA | `a` | `—` | `div.externalButton` | 88 | 64 | 0.93 of 2479 | template=Standard c=0.93 n=74 | structure | — | CANDIDATE |
-| 4132 | body | EXTRA | `div.ratio.ratio-16x9.videoSection` | `—` | `iframe` | 80 | 64 | 0.92 of 2479 | template=Standard c=0.94 n=61 | structure | yes | CANDIDATE |
-| 4133 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h4` | 80 | 64 | 0.97 of 2479 | template=Standard c=0.98 n=39 | structure | — | CANDIDATE |
-| 4134 | body | EXTRA | `ul` | `—` | `li` | 73 | 64 | 0.94 of 2479 | template=Standard c=0.95 n=49 | structure | — | CANDIDATE |
-| 4141 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `div.col-12.col-md-8` | 65 | 58 | 0.98 of 2479 | ptype=lesson c=0.99 n=39 | structure | — | CANDIDATE |
-| 4145 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `p` | 67 | 53 | 0.85 of 2479 | template+ptype=Standard/lesson c=0.85 n=46 | structure | — | CANDIDATE |
-| 4147 | body | EXTRA | `div.alert` | `—` | `div.row` | 61 | 52 | 0.91 of 2479 | template=Standard c=0.92 n=44 | structure | — | CANDIDATE |
-| 4148 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `div.activity[number=*]` | 59 | 52 | 0.85 of 2479 | template+ptype=Standard/lesson c=0.85 n=52 | structure | yes | CANDIDATE |
-| 4150 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.alert` | 63 | 50 | 0.90 of 2479 | template=Standard c=0.91 n=50 | structure | — | CANDIDATE |
-| 4154 | body | EXTRA | `tr` | `—` | `td` | 57 | 48 | 0.95 of 2479 | template=Standard c=0.95 n=51 | structure | — | CANDIDATE |
-| 4156 | body | EXTRA | `div.inquiryPanel` | `—` | `div.row` | 49 | 48 | 0.99 of 2479 | era=Refresh c=0.99 n=49 | structure | — | CANDIDATE |
-| 4157 | body | EXTRA | `div.row` | `—` | `div.col-12.col-md-6` | 69 | 46 | 0.99 of 2479 | subject=Online Safety (OS9000) c=1.00 n=25 | structure | — | CANDIDATE |
-| 4158 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.icon.ratio.ratio-16x9.videoSection` | 61 | 46 | 0.92 of 2479 | template=Standard c=0.93 n=54 | structure | yes | CANDIDATE |
-| 4160 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `WIDGET` | 47 | 45 | 0.85 of 2479 | template+ptype=Standard/lesson c=0.85 n=28 | structure | — | CANDIDATE |
-| 4163 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `WIDGET` | 48 | 44 | 0.98 of 2479 | ptype=lesson c=0.99 n=40 | structure | — | CANDIDATE |
-| 4168 | body | EXTRA | `div#body` | `—` | `WIDGET` | 69 | 41 | 0.93 of 2479 | era=Refresh c=0.93 n=69 | structure | — | CANDIDATE |
-| 4171 | body | EXTRA | `div.alert.solid` | `—` | `div.row` | 51 | 40 | 0.99 of 2479 | template=Standard c=0.99 n=40 | structure | yes | CANDIDATE |
-| 4174 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h4.goJournal` | 46 | 39 | 1.00 of 2479 | template=Standard c=1.00 n=44 | structure | — | CANDIDATE |
-| 4177 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h5` | 46 | 38 | 0.99 of 2479 | template=Standard c=0.99 n=29 | structure | — | CANDIDATE |
-| 4178 | body | EXTRA | `p` | `—` | `i` | 45 | 38 | 0.96 of 2479 | template=Standard c=0.97 n=41 | structure | — | CANDIDATE |
-| 4179 | body | MISSING | `div#body` | `div.fundamentalsPanel` | `—` | 44 | 38 | 0.02 of 2479 | template+ptype=Fundamentals/overview c=0.60 n=37 | 0.98 | yes | CANDIDATE |
-| 4183 | body | MISSING | `div#body` | `div.inquiryPanel` | `—` | 39 | 36 | 0.02 of 2479 | template+ptype=Inquiry/overview c=0.63 n=34 | 0.93 | — | CANDIDATE |
-| 4184 | body | EXTRA | `div.row` | `—` | `div.col-12.col-md-4.offset-md-0` | 37 | 36 | 0.80 of 2479 | template=Standard c=0.81 n=21 | structure | — | CANDIDATE |
-| 4186 | body | EXTRA | `div#body` | `—` | `div.row.supervisor` | 44 | 35 | 0.90 of 2479 | ptype=lesson c=0.91 n=37 | structure | yes | CANDIDATE |
-| 4191 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `div.row` | 34 | 33 | 0.98 of 2479 | ptype=lesson c=0.99 n=22 | structure | — | CANDIDATE |
-| 4193 | body | EXTRA | `div.row` | `—` | `div.col-12.col-md-4` | 46 | 32 | 0.94 of 2479 | template=Standard c=0.95 n=37 | structure | — | CANDIDATE |
-| 4195 | body | EXTRA | `tr` | `—` | `th` | 37 | 32 | 0.99 of 2479 | template=Standard c=0.99 n=32 | structure | — | CANDIDATE |
-| 4196 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.flipCardsContainer.row` | 36 | 32 | 0.93 of 2479 | template=Standard c=0.95 n=27 | structure | — | CANDIDATE |
-| 4198 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>span.infoTrigger` | 35 | 32 | 0.87 of 2479 | template=Standard c=0.87 n=29 | structure | — | CANDIDATE |
-| 4206 | body | EXTRA | `div#body` | `—` | `div.fundamentalsPanel` | 37 | 30 | 0.98 of 2479 | era=Refresh c=0.98 n=37 | structure | yes | CANDIDATE |
-| 4209 | body | EXTRA | `div.inquiryPanel.showing` | `—` | `div.row` | 32 | 30 | 0.99 of 2479 | era=Refresh c=0.99 n=32 | structure | yes | CANDIDATE |
-| 4210 | body | EXTRA | `div#body` | `—` | `div.inquiryPanel` | 30 | 30 | 0.98 of 2479 | era=Refresh c=0.98 n=30 | structure | — | CANDIDATE |
-| 4213 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.clickDropContent` | 33 | 28 | 0.94 of 2479 | template=Standard c=0.94 n=30 | structure | — | CANDIDATE |
-| 4219 | body | EXTRA | `div.introduction` | `—` | `div.row` | 27 | 27 | 0.99 of 2479 | era=Refresh c=0.99 n=27 | structure | — | CANDIDATE |
-| 4223 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `div.col-12.col-md-6` | 32 | 26 | 0.98 of 2479 | ptype=lesson c=0.99 n=28 | structure | — | CANDIDATE |
-| 4226 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h2` | 37 | 25 | 0.99 of 2479 | ptype=lesson c=0.99 n=21 | structure | — | CANDIDATE |
-| 4228 | body | EXTRA | `div.icon.ratio.ratio-16x9.videoSection` | `—` | `iframe` | 31 | 25 | 0.97 of 2479 | template=Standard c=0.98 n=26 | structure | yes | CANDIDATE |
-| 4229 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `div.activity.interactive[number=*]` | 30 | 25 | 0.85 of 2479 | template+ptype=Standard/lesson c=0.85 n=26 | structure | yes | CANDIDATE |
-| 4231 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `h3` | 27 | 25 | 0.85 of 2479 | template+ptype=Standard/lesson c=0.85 n=22 | structure | — | CANDIDATE |
-| 4236 | body | EXTRA | `p>span.infoTrigger` | `—` | `span.infoTrigger` | 28 | 24 | 0.95 of 2479 | template=Standard c=0.96 n=21 | structure | — | CANDIDATE |
-| 4239 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `img.img-fluid` | 25 | 24 | 0.85 of 2479 | era=Refresh c=0.85 n=25 | structure | — | CANDIDATE |
-| 4243 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.alert.solid` | 27 | 22 | 0.99 of 2479 | template=Standard c=0.99 n=20 | structure | yes | CANDIDATE |
-| 4247 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `p` | 24 | 22 | 0.98 of 2479 | ptype=lesson c=0.99 n=20 | structure | — | CANDIDATE |
-| 4254 | body | EXTRA | `div.flipCardsContainer.row` | `—` | `div.col-12.col-md-4.paddingLR` | 22 | 21 | 0.97 of 2479 | era=Refresh c=0.97 n=22 | structure | — | CANDIDATE |
-| 4267 | body | EXTRA | `div.col-12` | `—` | `ul` | 21 | 19 | 0.88 of 2479 | era=Refresh c=0.88 n=21 | structure | — | CANDIDATE |
-| 4268 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `div.col-12` | 21 | 19 | 0.98 of 2479 | era=Refresh c=0.98 n=21 | structure | — | CANDIDATE |
-| 4275 | body | EXTRA | `div.col-12.col-md-6` | `—` | `img.img-fluid` | 22 | 18 | 0.99 of 2479 | era=Refresh c=0.99 n=22 | structure | — | CANDIDATE |
-| 4277 | body | EXTRA | `div.clickDropContent` | `—` | `p` | 20 | 18 | 0.98 of 2479 | era=Refresh c=0.98 n=20 | structure | — | CANDIDATE |
-| 4301 | body | SUBSTITUTED | `div#body` | `div.row` | `div.table-responsive` | 22 | 15 | 0.94 of 2479 | ptype=lesson c=0.98 n=21 | structure | — | CANDIDATE |
-| 4316 | body | EXTRA | `div.col-12.col-md-6` | `—` | `p` | 23 | 14 | 1.00 of 2479 | ptype=lesson c=1.00 n=21 | structure | — | CANDIDATE |
-| 4370 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `div.button` | 26 | 11 | 0.98 of 2479 | subject+ptype=Leaving to Learn/lesson c=1.00 n=20 | structure | — | CANDIDATE |
-| 4968 | body | EXTRA | `div.choiceHeightMatch.choicePage.col-12.` | `—` | `WIDGET` | 20 | 3 | 0.98 of 2479 | era=Refresh c=0.98 n=20 | structure | yes | CANDIDATE |
-| 9362 | root | EXTRA | `body.container-fluid` | `—` | `div.row` | 271 | 271 | 0.88 of 2486 | subject+ptype=1-10 Mathematics/overview c=0.97 n=33 | structure | — | CANDIDATE |
-| 9366 | root | SUBSTITUTED | `#root` | `body` | `body.container-fluid` | 139 | 15 | 0.06 of 2486 | series=PWY10 c=1.00 n=45 | structure | yes | CANDIDATE |
+| 4073 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p` | 1090 | 409 | 0.82 of 2479 | subject+ptype=1-10 Blended Literacy/lesson c=0.99 n=28 | structure | — | CANDIDATE |
+| 4074 | body | EXTRA | `div#body` | `—` | `div.row` | 1440 | 390 | 0.66 of 2479 | subject+ptype=1-10 Blended Literacy/overview c=1.00 n=31 | structure | — | CANDIDATE |
+| 4075 | body | MISSING | `div#body` | `div.row` | `—` | 1360 | 346 | 0.34 of 2479 | series=CEDO50 c=0.76 n=20 | 0.86 | — | CANDIDATE |
+| 4076 | body | MISSING | `div.col-12.col-md-8` | `p` | `—` | 629 | 299 | 0.26 of 2479 | template+ptype=Fundamentals/overview c=0.91 n=47 | 0.79 | — | CANDIDATE |
+| 4077 | body | EXTRA | `div.col-12.col-md-8` | `—` | `img.img-fluid` | 556 | 254 | 0.96 of 2479 | template+ptype=Standard/overview c=1.00 n=28 | structure | — | CANDIDATE |
+| 4078 | body | EXTRA | `div.col-12.col-md-8` | `—` | `WIDGET` | 402 | 251 | 0.93 of 2479 | subject+ptype=NCEA1/lesson c=0.99 n=46 | structure | — | CANDIDATE |
+| 4079 | body | MOVED | `div.col-12.col-md-8` | `p` | `p` | 348 | 224 | 0.16 of 2479 | template+ptype=Fundamentals/overview c=0.83 n=42 | structure | — | CANDIDATE |
+| 4080 | body | EXTRA | `div.row` | `—` | `div.col-12.col-md-8` | 298 | 211 | 0.85 of 2479 | subject+ptype=1-10 Blended Literacy/lesson c=0.97 n=23 | structure | — | CANDIDATE |
+| 4082 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>b` | 305 | 183 | 0.97 of 2479 | subject=1-10 Blended Literacy c=1.00 n=22 | structure | — | CANDIDATE |
+| 4083 | body | MISSING | `div.col-12.col-md-8` | `WIDGET` | `—` | 274 | 179 | 0.19 of 2479 | template+ptype=Fundamentals/overview c=0.65 n=33 | structure | — | CANDIDATE |
+| 4084 | body | EXTRA | `div.col-12.col-md-8` | `—` | `ul` | 267 | 173 | 0.95 of 2479 | subject=1-10 English c=0.97 n=31 | structure | — | CANDIDATE |
+| 4085 | body | MISSING | `div.row` | `div.col-12.col-md-8` | `—` | 307 | 171 | 0.29 of 2479 | template+ptype=Fundamentals/overview c=0.94 n=20 | 0.94 | — | CANDIDATE |
+| 4086 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h3` | 272 | 167 | 0.82 of 2479 | template+ptype=Standard/overview c=0.98 n=22 | structure | — | CANDIDATE |
+| 4088 | body | SUBSTITUTED | `div.row` | `div.col-12` | `div.col-12.col-md-8` | 283 | 155 | 0.54 of 2479 | series=AGH10 c=0.88 n=21 | structure | — | CANDIDATE |
+| 4089 | body | MISSING | `div.col-12.col-md-8` | `h3` | `—` | 257 | 154 | 0.18 of 2479 | template+ptype=Fundamentals/overview c=0.75 n=23 | 0.89 | — | CANDIDATE |
+| 4090 | body | EXTRA | `div.col-12.col-md-8` | `—` | `a` | 202 | 147 | 0.98 of 2479 | subject=1-10 English c=0.99 n=26 | structure | — | CANDIDATE |
+| 4093 | body | EXTRA | `p>b` | `—` | `b` | 192 | 126 | 0.93 of 2479 | subject=1-10 Mathematics c=0.97 n=32 | structure | — | CANDIDATE |
+| 4094 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>a` | 184 | 124 | 0.99 of 2479 | subject=1-10 English c=1.00 n=21 | structure | — | CANDIDATE |
+| 4096 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.ratio.ratio-16x9.videoSection` | 192 | 117 | 0.93 of 2479 | subject=NCEA1 c=0.98 n=22 | structure | yes | CANDIDATE |
+| 4098 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.table-responsive` | 152 | 111 | 0.92 of 2479 | ptype=overview c=0.95 n=22 | structure | — | CANDIDATE |
+| 4102 | body | MOVED | `div.col-12.col-md-8` | `p` | `p` | 136 | 99 | 0.18 of 2479 | template+ptype=Inquiry/overview c=0.63 n=20 | structure | — | CANDIDATE |
+| 4107 | body | EXTRA | `p` | `—` | `b` | 123 | 94 | 0.93 of 2479 | subject=NCEA1 c=0.96 n=33 | structure | — | CANDIDATE |
+| 4110 | body | EXTRA | `a` | `—` | `div.button` | 147 | 88 | 0.99 of 2479 | subject=NCEA1 c=1.00 n=21 | structure | — | CANDIDATE |
+| 4111 | body | EXTRA | `div.table-responsive` | `—` | `table.table.table-bordered` | 138 | 88 | 0.96 of 2479 | subject=NCEA1 c=0.97 n=30 | structure | yes | CANDIDATE |
+| 4113 | body | EXTRA | `p>i` | `—` | `i` | 109 | 85 | 0.90 of 2479 | subject=1-10 Blended Literacy c=0.95 n=26 | structure | — | CANDIDATE |
+| 4114 | body | SUBSTITUTED | `div.icon.ratio.ratio-16x9.videoSection` | `iframe.embed-responsive-item` | `iframe` | 209 | 81 | 0.19 of 2479 | series=PES10 c=0.67 n=37 | structure | yes | CANDIDATE |
+| 4115 | body | EXTRA | `div.col-12.col-md-8` | `—` | `ol` | 104 | 81 | 0.99 of 2479 | template=Standard c=0.99 n=80 | structure | — | CANDIDATE |
+| 4117 | body | SUBSTITUTED | `div#body` | `div.row` | `WIDGET` | 119 | 77 | 0.94 of 2479 | subject=Online Safety (OS9000) c=1.00 n=27 | structure | — | CANDIDATE |
+| 4118 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>i` | 103 | 76 | 0.98 of 2479 | subject=NCEA1 c=0.99 n=27 | structure | — | CANDIDATE |
+| 4119 | body | EXTRA | `div.row` | `—` | `div.col-12` | 138 | 75 | 0.71 of 2479 | subject=ANZH c=0.75 n=22 | structure | — | CANDIDATE |
+| 4120 | body | EXTRA | `div.col-12.col-md-8` | `—` | `audio.audioPlayer.icon` | 115 | 75 | 1.00 of 2479 | ptype=overview c=1.00 n=36 | structure | yes | CANDIDATE |
+| 4121 | body | EXTRA | `p>a` | `—` | `a` | 100 | 74 | 0.99 of 2479 | template=Standard c=1.00 n=77 | structure | — | CANDIDATE |
+| 4127 | body | MOVED | `div.col-12.col-md-8` | `h3` | `h3` | 83 | 70 | 0.11 of 2479 | template+ptype=Fundamentals/overview c=0.67 n=22 | structure | — | CANDIDATE |
+| 4131 | body | EXTRA | `div.fundamentalsPanel` | `—` | `div.row` | 74 | 69 | 0.98 of 2479 | era=Refresh c=0.98 n=74 | structure | — | CANDIDATE |
+| 4132 | body | EXTRA | `table.table.table-bordered` | `—` | `tr` | 91 | 67 | 0.98 of 2479 | template=Standard c=0.98 n=77 | structure | yes | CANDIDATE |
+| 4137 | body | EXTRA | `div.col-12` | `—` | `p` | 105 | 65 | 0.92 of 2479 | template=Standard c=0.94 n=88 | structure | — | CANDIDATE |
+| 4138 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h4` | 80 | 65 | 0.97 of 2479 | template=Standard c=0.98 n=39 | structure | — | CANDIDATE |
+| 4139 | body | EXTRA | `ul` | `—` | `li` | 78 | 65 | 0.94 of 2479 | template=Standard c=0.95 n=54 | structure | — | CANDIDATE |
+| 4140 | body | EXTRA | `a` | `—` | `div.externalButton` | 88 | 64 | 0.93 of 2479 | template=Standard c=0.93 n=74 | structure | — | CANDIDATE |
+| 4141 | body | EXTRA | `div.ratio.ratio-16x9.videoSection` | `—` | `iframe` | 80 | 64 | 0.92 of 2479 | template=Standard c=0.94 n=61 | structure | yes | CANDIDATE |
+| 4148 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `div.col-12.col-md-8` | 64 | 57 | 0.98 of 2479 | ptype=lesson c=0.99 n=38 | structure | — | CANDIDATE |
+| 4151 | body | EXTRA | `div.alert` | `—` | `div.row` | 70 | 55 | 0.91 of 2479 | template=Standard c=0.92 n=53 | structure | — | CANDIDATE |
+| 4153 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `p` | 67 | 53 | 0.85 of 2479 | template+ptype=Standard/lesson c=0.85 n=46 | structure | — | CANDIDATE |
+| 4154 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `div.activity[number=*]` | 59 | 52 | 0.85 of 2479 | template+ptype=Standard/lesson c=0.85 n=52 | structure | yes | CANDIDATE |
+| 4157 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.alert` | 63 | 50 | 0.90 of 2479 | template=Standard c=0.91 n=50 | structure | — | CANDIDATE |
+| 4161 | body | EXTRA | `tr` | `—` | `td` | 57 | 48 | 0.95 of 2479 | template=Standard c=0.95 n=51 | structure | — | CANDIDATE |
+| 4163 | body | EXTRA | `div.inquiryPanel` | `—` | `div.row` | 49 | 48 | 0.99 of 2479 | era=Refresh c=0.99 n=49 | structure | — | CANDIDATE |
+| 4164 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.icon.ratio.ratio-16x9.videoSection` | 61 | 47 | 0.92 of 2479 | template=Standard c=0.93 n=53 | structure | yes | CANDIDATE |
+| 4165 | body | EXTRA | `div.row` | `—` | `div.col-12.col-md-6` | 69 | 46 | 0.99 of 2479 | subject=Online Safety (OS9000) c=1.00 n=25 | structure | — | CANDIDATE |
+| 4167 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `WIDGET` | 47 | 45 | 0.85 of 2479 | template+ptype=Standard/lesson c=0.85 n=28 | structure | — | CANDIDATE |
+| 4170 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `WIDGET` | 48 | 44 | 0.98 of 2479 | ptype=lesson c=0.99 n=40 | structure | — | CANDIDATE |
+| 4174 | body | EXTRA | `div#body` | `—` | `WIDGET` | 69 | 41 | 0.93 of 2479 | era=Refresh c=0.93 n=69 | structure | — | CANDIDATE |
+| 4179 | body | EXTRA | `div.alert.solid` | `—` | `div.row` | 51 | 40 | 0.99 of 2479 | template=Standard c=0.99 n=40 | structure | yes | CANDIDATE |
+| 4181 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h4.goJournal` | 47 | 39 | 1.00 of 2479 | template=Standard c=1.00 n=45 | structure | — | CANDIDATE |
+| 4184 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h5` | 46 | 38 | 0.99 of 2479 | template=Standard c=0.99 n=29 | structure | — | CANDIDATE |
+| 4185 | body | EXTRA | `p` | `—` | `i` | 45 | 38 | 0.96 of 2479 | template=Standard c=0.97 n=41 | structure | — | CANDIDATE |
+| 4186 | body | MISSING | `div#body` | `div.fundamentalsPanel` | `—` | 44 | 38 | 0.02 of 2479 | template+ptype=Fundamentals/overview c=0.60 n=37 | 0.98 | yes | CANDIDATE |
+| 4190 | body | MISSING | `div#body` | `div.inquiryPanel` | `—` | 39 | 36 | 0.02 of 2479 | template+ptype=Inquiry/overview c=0.63 n=34 | 0.93 | — | CANDIDATE |
+| 4191 | body | EXTRA | `div.row` | `—` | `div.col-12.col-md-4.offset-md-0` | 37 | 36 | 0.80 of 2479 | template=Standard c=0.81 n=21 | structure | — | CANDIDATE |
+| 4193 | body | EXTRA | `div#body` | `—` | `div.row.supervisor` | 44 | 35 | 0.90 of 2479 | ptype=lesson c=0.91 n=37 | structure | yes | CANDIDATE |
+| 4196 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `div.row` | 35 | 34 | 0.98 of 2479 | ptype=lesson c=0.99 n=23 | structure | — | CANDIDATE |
+| 4199 | body | EXTRA | `div.row` | `—` | `div.col-12.col-md-4` | 46 | 32 | 0.94 of 2479 | template=Standard c=0.95 n=37 | structure | — | CANDIDATE |
+| 4200 | body | EXTRA | `tr` | `—` | `th` | 37 | 32 | 0.99 of 2479 | template=Standard c=0.99 n=32 | structure | — | CANDIDATE |
+| 4201 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.flipCardsContainer.row` | 36 | 32 | 0.93 of 2479 | template=Standard c=0.95 n=27 | structure | — | CANDIDATE |
+| 4203 | body | EXTRA | `div.col-12.col-md-8` | `—` | `p>span.infoTrigger` | 35 | 32 | 0.87 of 2479 | template=Standard c=0.87 n=29 | structure | — | CANDIDATE |
+| 4211 | body | EXTRA | `div#body` | `—` | `div.fundamentalsPanel` | 37 | 30 | 0.98 of 2479 | era=Refresh c=0.98 n=37 | structure | yes | CANDIDATE |
+| 4214 | body | EXTRA | `div.inquiryPanel.showing` | `—` | `div.row` | 32 | 30 | 0.99 of 2479 | era=Refresh c=0.99 n=32 | structure | yes | CANDIDATE |
+| 4215 | body | EXTRA | `div#body` | `—` | `div.inquiryPanel` | 30 | 30 | 0.98 of 2479 | era=Refresh c=0.98 n=30 | structure | — | CANDIDATE |
+| 4221 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.clickDropContent` | 33 | 28 | 0.94 of 2479 | template=Standard c=0.94 n=30 | structure | — | CANDIDATE |
+| 4225 | body | EXTRA | `div.introduction` | `—` | `div.row` | 27 | 27 | 0.99 of 2479 | era=Refresh c=0.99 n=27 | structure | — | CANDIDATE |
+| 4230 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `div.col-12.col-md-6` | 32 | 26 | 0.98 of 2479 | ptype=lesson c=0.99 n=28 | structure | — | CANDIDATE |
+| 4232 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `div.activity.interactive[number=*]` | 31 | 26 | 0.85 of 2479 | template+ptype=Standard/lesson c=0.85 n=26 | structure | yes | CANDIDATE |
+| 4234 | body | EXTRA | `div.col-12.col-md-8` | `—` | `h2` | 37 | 25 | 0.99 of 2479 | ptype=lesson c=0.99 n=21 | structure | — | CANDIDATE |
+| 4236 | body | EXTRA | `div.icon.ratio.ratio-16x9.videoSection` | `—` | `iframe` | 31 | 25 | 0.97 of 2479 | template=Standard c=0.98 n=26 | structure | yes | CANDIDATE |
+| 4238 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `h3` | 27 | 25 | 0.85 of 2479 | template+ptype=Standard/lesson c=0.85 n=22 | structure | — | CANDIDATE |
+| 4242 | body | EXTRA | `p>span.infoTrigger` | `—` | `span.infoTrigger` | 28 | 24 | 0.95 of 2479 | template=Standard c=0.96 n=21 | structure | — | CANDIDATE |
+| 4245 | body | SUBSTITUTED | `div.col-12.col-md-8` | `p` | `img.img-fluid` | 25 | 24 | 0.85 of 2479 | era=Refresh c=0.85 n=25 | structure | — | CANDIDATE |
+| 4249 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `p` | 25 | 23 | 0.98 of 2479 | ptype=lesson c=0.99 n=21 | structure | — | CANDIDATE |
+| 4252 | body | EXTRA | `div.col-12.col-md-8` | `—` | `div.alert.solid` | 27 | 22 | 0.99 of 2479 | template=Standard c=0.99 n=20 | structure | yes | CANDIDATE |
+| 4259 | body | EXTRA | `div.flipCardsContainer.row` | `—` | `div.col-12.col-md-4.paddingLR` | 22 | 21 | 0.97 of 2479 | era=Refresh c=0.97 n=22 | structure | — | CANDIDATE |
+| 4262 | body | EXTRA | `div.col-12` | `—` | `ul` | 22 | 20 | 0.88 of 2479 | era=Refresh c=0.88 n=22 | structure | — | CANDIDATE |
+| 4273 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `div.col-12` | 21 | 19 | 0.98 of 2479 | era=Refresh c=0.98 n=21 | structure | — | CANDIDATE |
+| 4280 | body | EXTRA | `div.col-12.col-md-6` | `—` | `img.img-fluid` | 22 | 18 | 0.99 of 2479 | era=Refresh c=0.99 n=22 | structure | — | CANDIDATE |
+| 4283 | body | EXTRA | `div.clickDropContent` | `—` | `p` | 20 | 18 | 0.98 of 2479 | era=Refresh c=0.98 n=20 | structure | — | CANDIDATE |
+| 4309 | body | SUBSTITUTED | `div#body` | `div.row` | `div.table-responsive` | 22 | 15 | 0.94 of 2479 | ptype=lesson c=0.98 n=21 | structure | — | CANDIDATE |
+| 4323 | body | EXTRA | `div.col-12.col-md-6` | `—` | `p` | 23 | 14 | 1.00 of 2479 | ptype=lesson c=1.00 n=21 | structure | — | CANDIDATE |
+| 4376 | body | SUBSTITUTED | `div.row` | `div.col-12.col-md-8` | `div.button` | 26 | 11 | 0.98 of 2479 | subject+ptype=Leaving to Learn/lesson c=1.00 n=20 | structure | — | CANDIDATE |
+| 4978 | body | EXTRA | `div.choiceHeightMatch.choicePage.col-12.` | `—` | `WIDGET` | 20 | 3 | 0.98 of 2479 | era=Refresh c=0.98 n=20 | structure | yes | CANDIDATE |
+| 9377 | root | EXTRA | `body.container-fluid` | `—` | `div.row` | 271 | 271 | 0.88 of 2486 | subject+ptype=1-10 Mathematics/overview c=0.97 n=33 | structure | — | CANDIDATE |
+| 9381 | root | SUBSTITUTED | `#root` | `body` | `body.container-fluid` | 139 | 15 | 0.06 of 2486 | series=PWY10 c=1.00 n=45 | structure | yes | CANDIDATE |
 
 ## Details — in the companion file `CONVERTER_V2/outputs/_diff_queue_details.md`
 Every CANDIDATE and every top-40 row has three quoted examples (WT / gold / Claude) there, plus the

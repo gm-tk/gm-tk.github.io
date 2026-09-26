@@ -1,0 +1,8 @@
+heading texts matched: 4775 headings; texts where the gold boxes it and Claude does not (>= 3):
+  50 gold-alert/claude-bare | 'lesson summary'                           total   79 gold-alert   57 (0.72) claude-alert  14 mods 16 / alert-mods 12 | gold-alert fams: HPRE 14, HIS 13, SSOG 9, SSCI 8, ANZH 7, SSEA 5 | all fams: HPRE 14, HIS 13, SSCI 12, TEDC 10, SSOG 9, XGF 8
+  24 gold-alert/claude-bare | 'key points'                               total   70 gold-alert   70 (1.00) claude-alert  46 mods 10 / alert-mods 10 | gold-alert fams: PES 24, CBI 18, SCBI 8, SCCH 7, SCPH 7, AGH 6 | all fams: PES 24, CBI 18, SCBI 8, SCCH 7, SCPH 7, AGH 6
+   8 gold-alert/claude-bare | 'key questions'                            total   17 gold-alert   14 (0.82) claude-alert   9 mods 4 / alert-mods 3 | gold-alert fams: XGF 14 | all fams: XGF 17
+   7 gold-alert/claude-bare | 'what have we learned'                     total   10 gold-alert   10 (1.00) claude-alert   3 mods 4 / alert-mods 4 | gold-alert fams: XGF 7, BLLR 3 | all fams: XGF 7, BLLR 3
+   5 gold-alert/claude-bare | 'summary'                                  total   18 gold-alert   18 (1.00) claude-alert  13 mods 4 / alert-mods 4 | gold-alert fams: AGH 13, SSFUN 4, HIS 1 | all fams: AGH 13, SSFUN 4, HIS 1
+   4 gold-alert/claude-bare | 'you will show your understanding by'      total    4 gold-alert    4 (1.00) claude-alert   0 mods 1 / alert-mods 1 | gold-alert fams: TWHK 4 | all fams: TWHK 4
+   4 gold-alert/claude-bare | 'enhancing friendships hpfun303'           total    4 gold-alert    4 (1.00) claude-alert   0 mods 1 / alert-mods 1 | gold-alert fams: HPRE 4 | all fams: HPRE 4
