@@ -4823,8 +4823,8 @@ class ContentConverter {
 		// post-passes: every consumer that reads a box's writer id (the tile pairing, the dropbox
 		// modifier) has run, so the page's consecutive numbering is settled last.
 		const bodyHtml = this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
-			this.#pageNumberNormalise(this.#introHeadingFullRow(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
-				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), r307Tiles, run))), page, run), run), run), page, run),   // ROUND 522 — #journalInstructionBox; ROUND 526 — #introHeadingFullRow; ROUND 529 — #summaryHeadingAlert
+			this.#pageNumberNormalise(this.#introHeadingFullRow(this.#bareStockUrlImage(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
+				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), r307Tiles, run))), page, run), run), run), run), page, run),   // ROUND 522 — #journalInstructionBox; ROUND 526 — #introHeadingFullRow; ROUND 529 — #summaryHeadingAlert; ROUND 532 — #bareStockUrlImage
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
 				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
 				// ROUND 265: the level-pages dialect's nav/tile labels + registry row
@@ -7647,6 +7647,65 @@ class ContentConverter {
 		}
 		if (n && run && typeof run.AddNote === "function")
 			run.AddNote("info", "ContentConverter", `${n} Introduction heading${n > 1 ? "s" : ""} given ${n > 1 ? "their" : "its"} own full-width row (intro_heading_full_row).`);
+		return out;
+	}
+
+	/** ROUND 532 (the autonomous loop's session 52 Round 8) — THE BARE STOCK-PHOTO URL IS AN IMAGE. A body paragraph whose whole
+	 *  content is one stock-photo URL (`<p><a href="https://www.istockphoto.com/…">https://www.istockphoto.com/…</a></p>`) is the
+	 *  writer's image reference typed on its own line — after a description, after an `[image]` whose own line already held one,
+	 *  under an unknown bracket — and shipped as a visible link on ≈ 150 pages; MediaBuilder's standing contract is that the
+	 *  pasted iStock URL is the asset reference and never visible text, and the gold shows that very image on the paired page
+	 *  for 205 of 325 (0.63; outputs/_s52_r8_stockimg.py). Outside the un-built hand-off boxes (the developer's raw copy) the
+	 *  paragraph becomes the image in the run's mode (MediaBuilder's Mode P / D markup + FinishImg's alt and lazy); when the page
+	 *  already shows that image (its iStock label / filename) the paragraph is dropped. Data elements.bare_stock_url_image
+	 *  {host_pattern, id_patterns}; env STOCKURLIMG_OFF (byte-identical). */
+	static #bareStockUrlImage(html, run) {
+		const cfg = DataService.Data.EmitTemplates.elements?.bare_stock_url_image;
+		if (!cfg || cfg.enabled === false || !html) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "STOCKURLIMG_OFF"]) return html;
+		const hostRe = new RegExp(cfg.host_pattern ?? "istockphoto|gettyimages|shutterstock", "i");
+		if (!hostRe.test(html)) return html;
+		const tpl = DataService.Data.EmitTemplates.image;
+		const pRe = /<p>\s*(?:<a\b[^>]*>)?\s*(https?:\/\/[^\s<"]+)\s*(?:<\/a>)?\s*<\/p>/g;
+		const spans = [];
+		for (const h of html.matchAll(/<div class="cv2-interactive[^"]*"/g)) {
+			const re = /<(\/?)div\b[^>]*>/g; re.lastIndex = h.index; let d = 0, x;
+			while ((x = re.exec(html)) !== null) { d += x[1] ? -1 : 1; if (d === 0) { spans.push([h.index, x.index + x[0].length]); break; } }
+		}
+		const hits = [];
+		for (const m of html.matchAll(pRe)) {
+			if (spans.some(([a, z]) => m.index >= a && m.index < z)) continue;
+			const url = m[1].replace(/&amp;/g, "&");
+			if (!hostRe.test(url)) continue;
+			const id = (cfg.id_patterns ?? ["gm-?(\\d{6,10})", "/id/(\\d{6,10})"]).map((p) => url.match(new RegExp(p))?.[1]).find(Boolean) ?? null;
+			hits.push({ at: m.index, len: m[0].length, url, id });
+		}
+		if (!hits.length) return html;
+		let out = html, nImg = 0, nDrop = 0;
+		for (const h of hits.slice().reverse()) {
+			const rest = out.slice(0, h.at) + out.slice(h.at + h.len);
+			let rep;
+			if ((h.id && rest.includes(`iStock-${h.id}`)) || cfg.mode === "drop") { rep = ""; nDrop++; }
+			else if ((cfg.mode ?? "todo") === "todo") {
+				// the house To Do form (the Media List item note's wording): the image stays the developer's cue, the learner
+				// sees no URL, and the red note sits outside the skeleton — the in-place <img> scored 3× lower than the note
+				// (+0.0078 vs +0.0241pp): the gold places these pictures in side columns / widgets, not at the URL's line
+				rep = NotesAndComments.redFlag(Utils.FillTemplate(cfg.todo_text ?? "Designer/Developer To Do: image goes here{label}. Link: {url}",
+					{ label: h.id ? ` (iStock-${h.id})` : "", url: Utils.EscapeHtml(h.url) }), run, "cs");
+				nImg++;
+			} else {
+				const label = h.id ? `iStock-${h.id}` : "image";
+				const filename = h.id ? Utils.FillTemplate(tpl.filename_rules.istock, { id: h.id }) : "image.jpg";
+				rep = run?.imageMode === "P"
+					? MediaBuilder.FinishImg(Utils.FillTemplate(tpl.mode_P.visible, { label }), h.url, h.id, run) + "\n"
+						+ MediaBuilder.FinishImg(Utils.FillTemplate(tpl.mode_P.comment, { filename }), h.url, h.id, run)
+					: MediaBuilder.FinishImg(Utils.FillTemplate(tpl.mode_D.visible, { filename }), h.url, h.id, run);
+				nImg++;
+			}
+			out = out.slice(0, h.at) + rep + out.slice(h.at + h.len);
+		}
+		if (run && typeof run.AddNote === "function")
+			run.AddNote("info", "ContentConverter", `${nImg + nDrop} bare stock-photo URL line${nImg + nDrop > 1 ? "s" : ""}: ${nImg} rendered as the image, ${nDrop} dropped (the page shows that image already) (bare_stock_url_image).`);
 		return out;
 	}
 
