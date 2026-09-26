@@ -1,0 +1,162 @@
+  17 sites /   5 modules  h3    gold ALERT/- claude free/-   [SSCI 8, SSOG 5, HPRE 2, ENGC 1, HIS 1]
+      e.g. ENGC403 '[insert important box]' -> 'quick check' (gold<p>) then body:''
+      e.g. HIS1005 '[Alert Box] Please place thi' -> 'toi moko' (gold<h4>) then image:''
+      e.g. HPRE301 '[Alert]' -> 'i am hpefun301' (gold<h3>) then body:''
+      e.g. HPRE301 '[Alert]' -> 'i am hpefun301' (gold<h3>) then alert:''
+      e.g. SSCI205 '[Alert]' -> 'lesson summary' (gold<h3>) then body:''
+  13 sites /   7 modules  body  gold ALERT/- claude free/-   [SSEA 6, ENGS 2, SSCI 2, BLLR 1, DTC 1, TEDC 1]
+      e.g. BLLR201 '[close alert box]' -> 'click here for a full list of the contra' (gold<p>) then click drop:''
+      e.g. DTC1005 '[alert Top]' -> 'an understanding of film techniques and ' (gold<p>) then alert:''
+      e.g. ENGS301 '[alert/summary box]' -> 'ka pai well done you have now completed ' (gold<p>) then -:''
+      e.g. ENGS404 '[add alert box]' -> 'when we show and dont tell we try to app' (gold<p>) then alert:''
+      e.g. SSCI104 '[Alert]' -> 'in this lesson you are learning about ti' (gold<p>) then -:''
+  11 sites /   2 modules  h3    gold ALERT/- claude ALERT/-   [SSOG 6, SSEA 5]
+      e.g. SSEA203 '[Alert]' -> 'lesson summary' (gold<h3>) then body:''
+      e.g. SSEA203 '[Alert]' -> 'lesson summary' (gold<h3>) then body:''
+      e.g. SSEA203 '[Alert]' -> 'lesson summary' (gold<h3>) then body:''
+      e.g. SSEA203 '[Alert]' -> 'lesson summary' (gold<h3>) then body:''
+      e.g. SSEA203 '[Alert]' -> 'lesson summary' (gold<h3>) then body:''
+  11 sites /  11 modules  body  gold ALERT/None claude ALERT/None   [XOTPB 6, XOTPG 5]
+      e.g. XOTPB08 '[alert] Story Questions' -> 'talk about the story using the following' (gold<p>) then black:'1 who is making a pavlova'
+      e.g. XOTPB09 '[alert] Story Questions' -> 'talk about the story using the following' (gold<p>) then black:'1 look at the bean seeds in th'
+      e.g. XOTPB10 '[alert] Story Questions' -> 'talk about the story using the following' (gold<p>) then black:'1 what truck is used to dump d'
+      e.g. XOTPB11 '[alert] Story Questions' -> 'talk about the story using the following' (gold<p>) then black:'1 what are the dogs sniffing a'
+      e.g. XOTPB12 '[alert] Story Questions' -> 'talk about the story using the following' (gold<p>) then black:'1 what kinds of clouds can you'
+  10 sites /   1 modules  h3    gold None/ALERT claude free/free   [HIS 10]
+      e.g. HIS1005 '[Alert Box] Lesson Summary' -> 'summary' (gold<None>) then black:'you have learned to identify t'
+      e.g. HIS1005 '[Alert Box] Lesson Summary' -> 'summary' (gold<None>) then black:'you have learned to think abou'
+      e.g. HIS1005 '[Alert Box] Lesson Summary' -> 'summary' (gold<None>) then black:'you can now understand the pro'
+      e.g. HIS1005 '[Alert Box] Lesson Summary' -> 'summary' (gold<None>) then black:'you can now understand the str'
+      e.g. HIS1005 '[Alert Box]' -> 'summary' (gold<None>) then black:'in this lesson you have learne'
+   9 sites /   6 modules  body  gold None/- claude free/-   [BLL 4, XTAS 3, ENFUN 1, ENGS 1]
+      e.g. BLL250 '[Close alert box]' -> 'look at the words below say each one out' (gold<None>) then drag and drop:''
+      e.g. BLL252 '[close alert box]' -> 'for each of the words below drag a cross' (gold<None>) then typing quiz:''
+      e.g. BLL254 '[close alert box]' -> 'look at each picture then fill in the mi' (gold<None>) then drag and drop:''
+      e.g. BLL254 '[close alert box]' -> 'look at the picture at the start of our ' (gold<None>) then image:''
+      e.g. ENFUN05 '[Alert]' -> 'take care with these two contractions' (gold<None>) then h5:''
+   9 sites /   5 modules  h3    gold None/- claude free/-   [ENGC 4, ENG 2, BLL 1, CEDT 1, XGF 1]
+      e.g. BLL252 '[alert box]' -> 'two rule breakers' (gold<None>) then body:''
+      e.g. CEDT104 '[Alert solid]' -> 'fun poi tips' (gold<None>) then body:''
+      e.g. ENG1005 '[Important – can you put a b' -> 'what you will do' (gold<None>) then body:''
+      e.g. ENG1005 '[Important – can you put a b' -> 'what you will do' (gold<None>) then body:''
+      e.g. ENGC403 '[close important box] [close' -> 'excellence' (gold<None>) then important:''
+   5 sites /   3 modules  h3    gold None/None claude free/free   [HIS 3, AGH 1, MXEO 1]
+      e.g. AGH1001 '[interactive] [important not' -> 'te reo korero' (gold<None>) then black:'te ao māori  maori beliefs tra'
+      e.g. HIS1006 '[Important]' -> 'next steps' (gold<None>) then black:'now that you have a very thoro'
+      e.g. HIS1006 '[Important]' -> 'next steps' (gold<None>) then black:'now that you have a very thoro'
+      e.g. HIS1006 '[Important]' -> 'next steps' (gold<None>) then black:'now that you have a very thoro'
+      e.g. MXEO301 '[Alert box – solid]' -> 'check point' (gold<None>) then black:'it is now time to share all th'
+   5 sites /   3 modules  h3    gold free/- claude free/-   [ENGC 3, BLLR 2]
+      e.g. BLLR202 '[close alert box]' -> 'breaking words into syllables' (gold<h3>) then page:''
+      e.g. BLLR203 '[close alert box]' -> 'breaking words into syllables' (gold<h3>) then body:''
+      e.g. ENGC403 '[close important box] [close' -> 'how to peer and self assess' (gold<h3>) then body:''
+      e.g. ENGC403 '[close important box] [close' -> 'how to peer assess' (gold<h3>) then body:''
+      e.g. ENGC403 '[close important box]' -> 'verbal language practise' (gold<h3>) then body:''
+   5 sites /   4 modules  body  gold free/- claude free/-   [ENGC 2, ENGS 1, MXEX 1, TEDC 1]
+      e.g. ENGC403 '[close important box]' -> 'take a look at the following videos for ' (gold<p>) then carousel:''
+      e.g. ENGC403 '[close important box] [close' -> 'watch the following video and then have ' (gold<p>) then video:''
+      e.g. ENGS404 '[close alert box]' -> 'it helps the reader imagine the scene cl' (gold<p>) then activity:''
+      e.g. MXEX301 '[Alert] Visit FUN on Multipl' -> 'division is used a lot in understanding ' (gold<p>) then accordion:''
+      e.g. TEDC401 '[Alert]' -> 'click on the' (gold<p>) then info trigger image:''
+   5 sites /   1 modules  h3    gold ALERT/None claude ALERT/None   [HIS 5]
+      e.g. HIS1006 '[Alert Box]' -> 'lesson summary' (gold<h3>) then black:'in this lesson you have learne'
+      e.g. HIS1006 '[Alert Box]' -> 'lesson summary' (gold<h3>) then black:'you have learned that the lega'
+      e.g. HIS1006 '[Alert Box]' -> 'lesson summary' (gold<h3>) then black:'in this lesson you have learnt'
+      e.g. HIS1006 '[Alert Box]' -> 'lesson summary' (gold<h3>) then black:'you have learned to extract in'
+      e.g. HIS1006 '[Alert Box]' -> 'lesson summary' (gold<h3>) then black:'in this lesson you have been t'
+   4 sites /   1 modules  h3    gold None/- claude None/-   [ENGC 4]
+      e.g. ENGC403 '[close important box] [close' -> 'merit' (gold<None>) then important:''
+      e.g. ENGC403 '[close important box] [close' -> 'merit' (gold<None>) then important:''
+      e.g. ENGC403 '[close important box] [close' -> 'merit' (gold<None>) then important:''
+      e.g. ENGC403 '[close important box] [close' -> 'merit' (gold<None>) then important:''
+   4 sites /   1 modules  body  gold None/- claude ALERT/-   [MXDB 4]
+      e.g. MXDB302 '[alert]' -> 'if you would like more practice with thi' (gold<None>) then accordion:''
+      e.g. MXDB302 '[alert]' -> 'if you would like more practice with thi' (gold<None>) then accordion:''
+      e.g. MXDB302 '[alert]' -> 'if you would like more practice with thi' (gold<None>) then accordion:''
+      e.g. MXDB302 '[alert]' -> 'if you would like more practice with thi' (gold<None>) then accordion:''
+   4 sites /   3 modules  h4    gold ALERT/- claude free/-   [MXFU 2, MXFL 1, MXFUN 1]
+      e.g. MXFL302 '[alert box]' -> 'optional extra' (gold<h4>) then body:''
+      e.g. MXFU302 '[Alert]' -> 'commonwealth games' (gold<h4>) then body:''
+      e.g. MXFU302 '[Alert]' -> 'the olympic games' (gold<h4>) then body:''
+      e.g. MXFUN01 '[Solid Alert]' -> 'is it bedmas pemdas or gema' (gold<h4>) then body:''
+   3 sites /   3 modules  h4    gold free/- claude free/-   [ENG 1, ENGC 1, MXDB 1]
+      e.g. ENG1007 '[Alert – off to side of purp' -> 'what is an aspect' (gold<h4>) then body:''
+      e.g. ENGC403 '[close important box]' -> 'nonverbal language' (gold<h4>) then body:''
+      e.g. MXDB302 '[alert blank ends here]' -> 'laying the foundation' (gold<h3>) then body:''
+   3 sites /   1 modules  h4    gold None/None claude free/ALERT   [ENGC 3]
+      e.g. ENGC403 '[add important box]' -> 'written part' (gold<None>) then black:'introduction topic and point o'
+      e.g. ENGC403 '[open important box]' -> 'written part' (gold<None>) then black:'introduction topic and point o'
+      e.g. ENGC403 '[open important box]' -> 'written part' (gold<None>) then black:'introduction topic and point o'
+   2 sites /   2 modules  h3    gold ALERT/ALERT claude free/free   [ANZH 1, HIS 1]
+      e.g. ANZH105 '[Summary alert box]' -> 'keen to learn more' (gold<h3>) then black:'check out the fundamental on t'
+      e.g. HIS1005 '[Alert Box]' -> 'chopping down the flagstaff' (gold<h3>) then black:'heke fells the flagstaff at ko'
+   2 sites /   2 modules  h4    gold ALERT/ALERT claude ALERT/ALERT   [CEDK 1, HIS 1]
+      e.g. CEDK401 '[Lesson Summary Box]' -> 'lesson summary' (gold<h3>) then black:'you have learned how food is p'
+      e.g. HIS1006 '[Important box]' -> 'the engineers mock haka' (gold<h4>) then black:'kamate kamate'
+   2 sites /   2 modules  body  gold ALERT/None claude free/None   [ENG 1, XTAS 1]
+      e.g. ENG1004 '[Important – can you put a b' -> 'you will' (gold<h4>) then black:'1 identify an event cultural e'
+      e.g. XTAS101 '[Summary box:]' -> 'we hope you enjoyed that lesson here is ' (gold<p>) then black:' our special interests are ver'
+   2 sites /   2 modules  body  gold free/None claude free/None   [ENG 1, MXEX 1]
+      e.g. ENG1005 '[Important – can you put a b' -> 'you will' (gold<p>) then black:'1 select an appropriate text'
+      e.g. MXEX301 '[Alert] Visit FUN on Prefixe' -> 'prefixes are syllables or letters that a' (gold<p>) then black:'kilo'
+   2 sites /   2 modules  h2    gold free/- claude free/-   [ENGJ 1, HES 1]
+      e.g. ENGJ403 '[close important note]' -> 'film or play' (gold<h3>) then body:''
+      e.g. HES1006 '[Alert]' -> 'a working example' (gold<h4>) then body:''
+   2 sites /   1 modules  h2    gold None/- claude free/-   [ENGJ 2]
+      e.g. ENGJ403 '[close important box]' -> 'the script' (gold<None>) then body:''
+      e.g. ENGJ403 '[close important box]' -> 'the screenplay' (gold<None>) then image:''
+   2 sites /   2 modules  body  gold ALERT/ALERT claude ALERT/ALERT   [ENGS 1, XOTPO 1]
+      e.g. ENGS101 '[Alert.solid]' -> 'in this module we are exploring how to b' (gold<p>) then black:'here are some fun ways you can'
+      e.g. XOTPO01 '[alert] Story questions' -> 'use these questions to talk about the st' (gold<p>) then black:'find something the same colour'
+   2 sites /   1 modules  h3    gold ALERT/ALERT claude ALERT/ALERT   [HIS 2]
+      e.g. HIS1006 '[Alert Box]' -> 'lesson summary' (gold<h3>) then black:'in this lesson you have learne'
+      e.g. HIS1006 '[Alert Box]' -> 'lesson summary' (gold<h3>) then black:'you have learned that historia'
+   2 sites /   2 modules  body  gold ALERT/ALERT claude free/free   [SSCI 1, XDLS 1]
+      e.g. SSCI205 '[Alert]' -> 'in this lesson you will explore where an' (gold<p>) then black:'by the end of the lesson you w'
+      e.g. XDLS912 '[insert summary box]' -> 'congratulations you have completed some ' (gold<p>) then black:'here is a list of your new lif'
+   1 sites /   1 modules  body  gold None/None claude free/None   [BLL 1]
+      e.g. BLL250 '[Alert box]' -> 'when you see sc at the start or middle o' (gold<None>) then black:'say s when sc comes before e i'
+   1 sites /   1 modules  h5    gold None/- claude free/-   [BLL 1]
+      e.g. BLL254 '[Alert box]' -> 'bought and brought' (gold<None>) then body:''
+   1 sites /   1 modules  h3    gold free/None claude free/free   [DAN 1]
+      e.g. DAN1003 '[Alert Solid]' -> 'important to include' (gold<h4>) then black:'now that you have describedthe'
+   1 sites /   1 modules  h2    gold ALERT/- claude None/-   [DTC 1]
+      e.g. DTC1005 '[Alert]' -> 'analog video editing' (gold<h4>) then body:''
+   1 sites /   1 modules  body  gold None/ALERT claude free/free   [ENFUN 1]
+      e.g. ENFUN08 '[alert]' -> 'a proper noun is what we call nouns that' (gold<None>) then black:'for example'
+   1 sites /   1 modules  h5    gold None/- claude ALERT/-   [ENGR 1]
+      e.g. ENGR302 '[alert top]' -> 'optional extra about yertle the turtle' (gold<None>) then body:''
+   1 sites /   1 modules  h4    gold ALERT/- claude ALERT/-   [ENGS 1]
+      e.g. ENGS101 '[Alert.solid]' -> 'youre welcome' (gold<h4>) then body:''
+   1 sites /   1 modules  body  gold free/free claude free/free   [EXIP 1]
+      e.g. EXIP901 '[Alert]' -> 'sophies success criteria' (gold<h3>) then black:'ultimately sophie is aiming fo'
+   1 sites /   1 modules  h4    gold None/None claude free/free   [EXPFUN 1]
+      e.g. EXPFUN06 '[Alert box: Now take another' -> 'success criteria' (gold<None>) then black:'our success criteria tell us w'
+   1 sites /   1 modules  h3    gold None/None claude None/None   [HIS 1]
+      e.g. HIS1006 '[Alert Box]' -> 'whats in a name' (gold<None>) then black:'naacp  national association fo'
+   1 sites /   1 modules  h4    gold None/None claude None/None   [HIS 1]
+      e.g. HIS1006 '[Alert Box – beside the acti' -> 'aspects of significance' (gold<None>) then black:'when analysing the significanc'
+   1 sites /   1 modules  h3    gold ALERT/ALERT claude ALERT/free   [HIS 1]
+      e.g. HIS1006 '[Alert Box]' -> 'lesson summary' (gold<h3>) then black:'you have learned to annotate a'
+   1 sites /   1 modules  h3    gold ALERT/None claude ALERT/free   [HIS 1]
+      e.g. HIS1006 '[Alert Box]' -> 'lesson summary' (gold<h3>) then black:'well done on completing the le'
+   1 sites /   1 modules  h5    gold ALERT/None claude ALERT/None   [MXFL 1]
+      e.g. MXFL302 '[alert box]' -> 'key takeaways' (gold<h4>) then black:' the only way to make equivale'
+   1 sites /   1 modules  h3    gold free/ALERT claude free/free   [MXFU 1]
+      e.g. MXFU302 '[Alert – coloured box]' -> 'theoretical probability' (gold<ul>) then black:'theoretical probability tells '
+   1 sites /   1 modules  h5    gold None/None claude free/free   [MXFUN 1]
+      e.g. MXFUN02 '[Alert solid]' -> 'rule one' (gold<None>) then black:'adding a negative is the same '
+   1 sites /   1 modules  body  gold ALERT/- claude ALERT/-   [SCES 1]
+      e.g. SCES201 '[Alert]' -> 'this story deals with the death of a gra' (gold<p>) then end alert:''
+   1 sites /   1 modules  h5    gold ALERT/ALERT claude free/free   [SSCI 1]
+      e.g. SSCI104 '[alert]' -> 'here is what we learnt from the video' (gold<h5>) then black:'human migration is the movemen'
+   1 sites /   1 modules  h4    gold ALERT/None claude free/None   [SSEA 1]
+      e.g. SSEA203 '[Alert]' -> 'easy way to remember' (gold<h4>) then black:' needs  i must have this'
+   1 sites /   1 modules  body  gold None/None claude None/None   [TEDC 1]
+      e.g. TEDC401 '[alert]' -> 'if you enjoyed this learning you may lik' (gold<None>) then black:' tedc402 data story'
+   1 sites /   1 modules  h3    gold free/- claude ALERT/-   [TEDC 1]
+      e.g. TEDC402 '[Alert]' -> 'lesson summary' (gold<h3>) then body:''
+   1 sites /   1 modules  h2    gold None/None claude free/None   [XGF 1]
+      e.g. XGF9003 '[Alert]' -> 'httpswwwistockphotocomvectorsearchloupei' (gold<None>) then black:' what is one thing you have le'
+   1 sites /   1 modules  h2    gold ALERT/- claude free/-   [XLP 1]
+      e.g. XLP06 '[alert]' -> 'sleep is so important it is our superpow' (gold<h4>) then image:''

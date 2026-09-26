@@ -167,6 +167,16 @@
 		"tag_count": 84,
 		"alias_count": 377,
 		"suffix_container_close": true,
+		"close_word_closer": {
+			"enabled": true,
+			"env": "CLOSEWORD_OFF",
+			"max_words": 4,
+			"mode": "instruction",
+			"directives": [
+				"CONTAINER_OPEN"
+			],
+			"_note": "ROUND 535 (the autonomous loop, session 53 Round 1). THE WRITER'S `[close X]` IS A CLOSER. The generic closer (spec rule 3) knew only `end` / `end of` / `/`, so `[close alert box]` 13, `[close important box]` 18, `[close alert]`, `[close important note]` resolved to an alert / important OPEN (MXEO202 2: the next paragraph shipped inside a phantom alert the gold leaves free), `[close tab]` 21 to a new tab (SUBTAG), `[close modal]` 46 / `[close accordion]` 16 / `[close clickdrop]` 17 / `[close carousel]` 2 to a widget OPENER, `[close box]` 9 to a shape SUBTAG — ≈ 150 spans / ≈ 30 modules (outputs/_s53_r1_emptyalert.py + the item-stream census). The word `close` (or `close the`) now reads as `end` when the rest is at most max_words words and resolves to one of `directives`; a long image description (`[close up of …]`) never matches. Env CLOSEWORD_OFF reverts."
+		},
 		"head_section_marker_owns_payload": {
 			"enabled": true,
 			"env": "TITLEPAYLOAD_OFF",

@@ -1,5 +1,26 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (round 535, build 260620.94) — THE WRITER'S `[close alert box]` IS NOT AN OPENER: a callout closer typed with the word "close" (`[close alert box]`, `[close important box]`, `[close alert]`, `[close important note]`) no longer opens a phantom box — it is read as the writer's instruction (a developer note), and the box it closes keeps the form it already had; 11 modules / 20 pages, skeleton +0.0057pp, ≥50 +3
+
+### 1. WHAT CHANGED
+
+**The class** (session 53 Round 1's PICK pass — the s52 follow-up lane, the empty `[Alert]` + tagged content, `_s53_r1_emptyalert.py`, below the floor at 30 sites / 12 modules — exposed the root cause of part of it): `TagNormaliser.#CLOSE_PREFIX` knows only `end` / `end of` / `/`, so a closer typed with **close** fell through to the alias match and resolved to its own OPENER. For the callouts: `[close alert box]` 13, `[close important box]` 18 (12 of them `[close important box] [close tab]`), `[close alert]`, `[close important note]` — each opened a strict box that either gathered the NEXT paragraph (MXEO202 2: "You can also click on the protractor icon…" shipped in an alert the gold leaves free) or, empty, shipped with an "Empty [important]" red flag or span-wrapped the following widget (BLL252 / 254, BLLR201–203). The widget forms (`[close modal]` 46, `[close accordion]` 16, `[close clickdrop]` 17, `[close tab]` 21, `[close box]` 9) are scanner-internal and are NOT touched.
+
+**Two designs measured before this one** (the in-memory probe, `_s52_on.sh r535`): (1) `close X` ≡ `end X` for every container, widget and sub-part → 65 pages / 19 modules, **−0.0012pp** (the tab / click-drop bundles ended early — ENGJ403's `[close tab 1]` orphaned the next tab; ENGS404's dropbox lost its box); (2) the same for the callout openers only → 20 pages, **−0.0139pp** (an explicit end switches the opener to SPAN mode, which never takes the r505 / r506 right-hand side column — MXEO202 2's `[RHS Alert box]` lost its `col-md-4 alertActivity`, −13.7 — and ENGC403's `[important box] … [open important box] … [close important box]` pairs re-nested). (3) SHIPPED: the callout `close` is a no-op writer instruction.
+
+**The fix** (`TagNormaliser.#resolveFragment` step 3c; data `Tag_Lexicon.json _meta.close_word_closer` {max_words 4, mode "instruction", directives [CONTAINER_OPEN]}, env **`CLOSEWORD_OFF`**): a fragment `close [the] <≤ 4 words>` whose rest resolves to a CONTAINER_OPEN tag is returned as the instruction guard (a red developer note, which the skeleton ignores); an image description `[close up of …]` is long and never matches.
+
+### 2. PROOF
+
+- In-memory probe over all 545 modules: `CLOSEWORD_OFF=1` → 6,432 / 6,432 pages identical; ON → **20 pages / 11 modules** (BLL250 / 252 / 254, BLLR201–203, ENGC403, ENGJ403, ENGS404, MXEO202, MXFL301); 0 ASSEMBLE ERROR. `scoped_ship.sh … --round 535 --commit` PASS: 0 stale, containment 11 ⊆ 11, the 12-module spot-check byte-identical.
+- The skeleton gate's own `match()` (`_s51_prescore.py`): **+0.0056pp, 17 up / 3 down** (BLL252_1_0 +1.7, ENGC403_11_0 +1.9, ENGJ403_3_1 +1.9, ENGC403_12_0 +1.8, MXEO202_2_0 +1.5 …); the dips are all ENGC403: 5_0 −5.07, 7_0 −0.70, 4_2 −0.32 — the phantom EMPTY `div.alert.solid > div.row > div.col-12` wrappers had matched the gold's real box, whose content (the PIPS / PEGS list) Claude leaves free because its opener `[insert important box] [insert image small to r h s …]` loses the primary slot to the image (a separate co-tag class, below the floor).
+
+### 3. PROTECTED GATES
+
+Skeleton **56.3343 → 56.3400 % @ 2486 (+0.0057pp)**, ≥50 1638 → 1641, ≥75 305, ≥90 29; RAW 39.9707 → 39.9718 %; compare_structure exact 17024 / EXTRA 198 / missing 661 held; body_compare ANY 233 held; leak 52 / 42 EXACT; tags 9557; every verifier ✓, every COUNT held (`_r535_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 535`; `--gate-baseline-check` PASS. Plateau: **1 of 3** (+0.0057pp).
+
+**Ledger:** scoped #1 since the s52-r11 FULL · data `Tag_Lexicon.json _meta.close_word_closer` · env `CLOSEWORD_OFF` · code `TagNormaliser.#resolveFragment` step 3c · session 53 Round 1.
+
 ## 2026-09-26 (session 52 Round 11, build 260620.93 — NO engine change) — THE LEDGER'S FULL-SHIP BACKSTOP: the whole corpus regenerated with the r534 engine (scoped #7 since the s51-r12 FULL — the cadence-8 backstop one ship early), 0 pages differ, every gate identical
 
 ### 1. WHAT RAN

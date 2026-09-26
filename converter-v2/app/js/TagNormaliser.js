@@ -363,6 +363,34 @@ class TagNormaliser {
 			}
 		}
 
+		// 3c. ROUND 535 — THE WRITER'S "close X" IS A CLOSER. The prefix closer above knows only "end" / "end of" / "/",
+		// so `[close alert box]`, `[close important box]`, `[close tab]`, `[close accordion]`, `[close modal]` fell through
+		// to the alias match and resolved to their OWN OPENER — a phantom alert round the next paragraph (MXEO202 2),
+		// a new tab, a new widget bundle (≈ 150 spans / ≈ 30 modules; outputs/_s53_r1_emptyalert.py). The word "close"
+		// (optionally "close the") is read as "end" when the rest is a SHORT container name that resolves to a
+		// container / widget / sub-part tag — an image description "[close up of …]" (long) never matches.
+		// Data flag: Tag_Lexicon.json _meta.close_word_closer   Env toggle: CLOSEWORD_OFF
+		const cwc = this.#lexicon._meta?.close_word_closer;
+		if (cwc && cwc.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[cwc.env || "CLOSEWORD_OFF"])) {
+			const cm = f.match(/^close(?:\s+the)?\s+/i);
+			const rest = cm ? f.slice(cm[0].length).trim() : "";
+			if (rest && rest.split(/\s+/).length <= (cwc.max_words ?? 4)) {
+				const inner = this.#matchOne(rest);
+				if (inner && (cwc.directives ?? []).includes(inner.directive)) {
+					// mode "instruction": the closer is a no-op writer instruction (a developer note) — the box it
+					// closes keeps the strict / right-hand form it already had (an explicit end would switch it to SPAN
+					// mode: the RHS side column lost, MXEO202 2; ENGC403's paired [open …] / [close …] boxes re-nested)
+					if (cwc.mode === "instruction") return [{ instruction: true, fragment, remainder: "" }];
+					return [{
+						tag: `end ${inner.canon}`,
+						directive: "CONTAINER_CLOSE",
+						how: "close_word", fragment, remainder: "",
+					}];
+				}
+			}
+		}
+
 		// 4. alias match with multi-match (container + child compounds)
 		const tags = [];
 		let remaining = f;

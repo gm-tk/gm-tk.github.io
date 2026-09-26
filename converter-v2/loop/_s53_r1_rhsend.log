@@ -1,0 +1,62 @@
+  62 sites /  31 modules  NO-END gold main+box claude main+box   [MXFL 10, XGF 9, MXFUN 6, ANZH 4, SSCI 4, EXIP 3]
+      e.g. ANZH203 '[RHS Alert]' -> 'when learning about history we identify '
+      e.g. ANZH301 '[Alert box RHC]' -> 'sensitivity some of the content in this '
+      e.g. ANZH303 '[Alert box RHC]' -> 'if you can make contact with mana whenua'
+      e.g. ANZH303 '[Alert box RHC]' -> 'you have a fundamental lesson about hist'
+  45 sites /  32 modules  NO-END gold main claude main   [ANZH 8, BLL 7, TEDC 7, HIS 3, MXFL 3, SSFUN 3]
+      e.g. ANZH101 '[RHS Alert]' -> 'it is important to remember that iwi hav'
+      e.g. ANZH101 '[Alert RHS]' -> 'visit a library with your supervisor to '
+      e.g. ANZH105 '[Alert RHS]' -> 'to find out more about interviews you mi'
+      e.g. ANZH301 '[Alert box RHS]' -> 'watch this video of another event that s'
+  31 sites /  24 modules  NO-END gold None claude main+box   [MXFUN 6, TEFUN 6, ANZH 3, ENGI 3, MXFL 2, SSFUN 2]
+      e.g. ANZH302 '[Alert box RHC]' -> 'sensitivity some of the content in this '
+      e.g. ANZH303 '[Alert box RHC]' -> 'image httpsnzhistorygovtnzmediaphotochan'
+      e.g. ANZH404 '[Alert box RHC]' -> 'image httpswwwfuturelearncomcoursesmauto'
+      e.g. ENGI102 '[RHS alert] Can this be a bubb' -> 'whakamana  you hold the power to choose '
+  27 sites /  16 modules  END    gold main+box claude main+box   [WJFUN 11, ARFUN 5, XGF 5, HIS 3, ENGS 2, EXIP 1]
+      e.g. ARFUN01 '[Insert as alert box on right ' -> 'in this module there is learning for eac'
+      e.g. ARFUN02 '[Insert as alert box on right ' -> 'in this module there is learning for eac'
+      e.g. ARFUN03 '[Insert as alert box on right ' -> 'in this module there is learning for eac'
+      e.g. ARFUN04 '[Insert as alert box on right-' -> 'in this module learning is divided acros'
+  26 sites /  13 modules  NO-END gold None claude main   [ANZH 11, FRFUN 5, SSFUN 2, TEFUN 2, BLL 1, CEDT 1]
+      e.g. ANZH101 '[Alert RHS]' -> 'you can share your picture with your kai'
+      e.g. ANZH301 '[Alert box RHC]' -> 'share this would be a great kōrero to sh'
+      e.g. ANZH301 '[Alert box RHS]' -> 'want to know more follow these links to '
+      e.g. ANZH301 '[Alert box RHS]' -> 'check this out a more recent way of maki'
+  13 sites /  11 modules  END    gold None claude main+box   [BLL 5, WJFUN 3, CEDO 2, ENGS 2, XGF 1]
+      e.g. BLL251 '[Alert box right hand side of ' -> 'some reminders'
+      e.g. BLL254 '[Alert box right hand side of ' -> 'some reminders'
+      e.g. BLL255 '[Alert box right hand side of ' -> 'an important reminder'
+      e.g. BLL256 '[Alert box right hand side of ' -> 'an important reminder'
+   7 sites /   7 modules  NO-END gold main+box claude main   [HIS 2, ANZH 1, CEDR 1, MXFL 1, SCCH 1, SSOG 1]
+      e.g. ANZH301 '[Alert box RHS]' -> 'the mwwl is still going strong check out'
+      e.g. CEDR101 '[side alert RHS]' -> 'listening to stories often helps childre'
+      e.g. HIS1004 '[Alert box RHS]' -> 'aotearoa new zealand and the freedom cha'
+      e.g. HIS1005 '[Alert Box] Please place in wh' -> 'in 1905 in haining street the centre of '
+   7 sites /   7 modules  NO-END gold main claude main+box   [BLL 1, CEDR 1, DTC 1, EXIP 1, HIS 1, MXFL 1]
+      e.g. BLL240 '[Alert box – right hand side]' -> 'remember the letter y is a very special '
+      e.g. CEDR204 '[Important info box RHS]' -> 'tips for success'
+      e.g. DTC1004 '[alertbox important in right c' -> 'if you need help on the difference betwe'
+      e.g. EXIP901 '[Alert RHS Sophie’s learning g' -> 'sophie has set herself the following lea'
+   5 sites /   5 modules  NO-END gold None claude None   [ANZH 2, FRFUN 1, HIS 1, MXFUN 1]
+      e.g. ANZH203 '[Alert box RHS]' -> 'httpswwwyoutubecomembed316f1a8c09ksiec4d'
+      e.g. ANZH304 '[Alert box RHC]' -> 'httpscollectionstepapagovtnzobject702'
+      e.g. FRFUN06 '[Alert] to right of text below' -> ' two short strokes  balanced shape  not '
+      e.g. HIS1004 '[Alert box RHS]' -> 'extra task watch the movie invictus to s'
+   5 sites /   2 modules  END    gold None claude None   [WJFUN 4, HIS 1]
+      e.g. HIS1006 '[Alert box in the right-hand c' -> 'for your external assessment as92027 you'
+      e.g. WJFUN304 '[RHS Alert]' -> ' we are not adding new clauses'
+      e.g. WJFUN304 '[RHS Alert]' -> 'relative clauses help writers  describe '
+      e.g. WJFUN304 '[RHS Alert]' -> 'participles help writers  add detail qui'
+   4 sites /   2 modules  END    gold main+box claude main   [SCBI 2, SCPH 2]
+      e.g. SCBI301 '[right-hand alert]' -> 'in te ao māori te kore the void is the r'
+      e.g. SCBI301 '[right hand side alert]' -> 'did you know that uni means one unicycle'
+      e.g. SCPH301 '[right-hand alert]' -> 'to learn more about particles and matter'
+      e.g. SCPH301 '[right-hand alert]' -> 'a thermometer measures temperature not t'
+   3 sites /   3 modules  END    gold main claude main+box   [BLL 1, ENGS 1, HIS 1]
+      e.g. BLL272 '[Alert box right hand side of ' -> 'an important reminder'
+      e.g. ENGS302 '[Numeracy – put this is an ale' -> 'maths moment understanding timetables'
+      e.g. HIS1008 '[Alert box in the right-hand c' -> 'for your external assessment as92027 you'
+   2 sites /   2 modules  NO-END gold main claude None   [SSFUN 1, WJFUN 1]
+      e.g. SSFUN07 '[Alert – RHS?]' -> 'as you watch the videos what questions d'
+      e.g. WJFUN206 '[RHS Alert]' -> 'check carefully is the punctuation insid'
