@@ -6353,6 +6353,22 @@
 			"_note": "ROUND 58 — post-pass that adds .interactive to a free-body activity div whose depth-balanced span contains a cv2-interactive placeholder declaring an interactive-task widget type (the set in activity_wrapper.interactive_widget_types). Closes the activity-missing-.interactive defect for activities whose interactive widget is a SEPARATE inner bundle (not the activity-owner bundle's own type), which the emit-time forceInt at #activityOpen (round 50) misses — e.g. BLL135-01/BLL216 dragAndDrop, BLL145/BLL155 selfCheck, CEDK102/CEDO105 multiChoiceQuiz. Derives from the SAME measured human convention as the round-50 emit rule (dragAndDrop 77% / selfCheck 76% / multiChoiceQuiz 79% .interactive across the 4,345 human files in 02-All_HTML_Files); triangulated on CEDO102/CEDK101/CEDW101 whose human overview carries class=\"activity interactive\". Class-blind to compare_structure (records 'activity' for both) + body_compare; visible only to the structural-defect audit + skeleton (toward the human). Env ACTINT_OFF reverts.",
 			"marker_format_note": "the placeholder type marker 'INTERACTIVE (un-built) #N: TYPE' is a structural constant of interactive_placeholder; the DECISION CONTENT (which types count) is data here via interactive_widget_types."
 		},
+		"intro_heading_full_row": {
+			"_doc": "ROUND 526 (session 51 Round 7). THE BLL INTRODUCTION HEADING'S OWN FULL-WIDTH ROW. The writer's mid-document `[Introduction]` (a title-bar alias) renders as `<h3>Introduction</h3>` at the head of the ordinary `col-md-8 col-12` content row; the Blended Literacy gold gives that heading its own FULL-WIDTH row, `div.row > div.col-12 > h3 Introduction` alone, on 65 of the 79 BLL overviews where it is found (0.82 — outputs/_s51_r7_intro.py; the scoped miner's BLL row #1374, 107 pages / 78 modules). A page post-pass (ContentConverter.#introHeadingFullRow, just inside #pageNumberNormalise): in a module whose Module_Structure_Index subject is listed, a row whose column OPENS with the heading is split — the heading alone in `row > <column_class>`, the rest in the row's own column; a heading alone in its row just changes column class. A family dialect keyed by subject (LOOP §1d exception 1). Env INTROROW_OFF.",
+			"enabled": true,
+			"env": "INTROROW_OFF",
+			"subjects": [
+				"1-10 Blended Literacy"
+			],
+			"exclude_series": [
+				"BLL17",
+				"BLL24",
+				"BLL26"
+			],
+			"_exclude_series_doc": "The gold's form per series (outputs/_s51_r7_intro2.py): the full-width row in BLL11 7/8, BLL12 7/7, BLL13 8/8, BLL14 4/4, BLL15 7/7, BLL16 6/6, BLL21 7/7, BLL22 7/7, BLL23 5/7, BLL25 7/7; the col-md-8 column in BLL17 (5 of 7) and BLL26 (4 of 5); BLL24 a 3 : 3 tie — those three series keep the pre-526 row (a per-group rule, LOOP §1d exception 2).",
+			"heading_pattern": "^<h3>Introduction</h3>$",
+			"column_class": "col-12"
+		},
 		"alert_title_heading": {
 			"enabled": true,
 			"level": 4,

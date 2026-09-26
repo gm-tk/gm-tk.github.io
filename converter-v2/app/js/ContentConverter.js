@@ -4823,8 +4823,8 @@ class ContentConverter {
 		// post-passes: every consumer that reads a box's writer id (the tile pairing, the dropbox
 		// modifier) has run, so the page's consecutive numbering is settled last.
 		const bodyHtml = this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
-			this.#pageNumberNormalise(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
-				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), r307Tiles, run))), page, run), page, run),   // ROUND 522 — #journalInstructionBox
+			this.#pageNumberNormalise(this.#introHeadingFullRow(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
+				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), r307Tiles, run))), page, run), run), page, run),   // ROUND 522 — #journalInstructionBox; ROUND 526 — #introHeadingFullRow
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
 				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
 				// ROUND 265: the level-pages dialect's nav/tile labels + registry row
@@ -7606,6 +7606,48 @@ class ContentConverter {
 				`Page ${page.lessonLabel}: activity number${changes.length > 1 ? "s" : ""} normalised (page_number_normalise): ${changes.join(", ")}.`);
 		}
 		return out.join("");
+	}
+
+	/** ROUND 526 (the autonomous loop's session 51 Round 7) — THE BLL INTRODUCTION HEADING'S OWN FULL-WIDTH ROW. The writer's
+	 *  mid-document `[Introduction]` renders as `<h3>Introduction</h3>` opening the ordinary content column; the Blended Literacy
+	 *  gold gives it a row of its own at full width (`div.row > div.col-12 > h3` alone) on 65 of 79 overviews (0.82 —
+	 *  outputs/_s51_r7_intro.py). In a module whose subject the data lists, a row whose column OPENS with the heading is split:
+	 *  the heading alone in `row > <column_class>`, the rest in the row's own column (a heading already alone just changes its
+	 *  column's class). Data body_region.intro_heading_full_row; env INTROROW_OFF (byte-identical). */
+	static #introHeadingFullRow(html, run) {
+		const cfg = DataService.Data.EmitTemplates.body_region?.intro_heading_full_row;
+		if (!cfg || cfg.enabled === false || !html || !html.includes("Introduction")) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "INTROROW_OFF"]) return html;
+		const meta = DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")];
+		if (!(cfg.subjects ?? []).map(String).includes(String(meta?.subject ?? ""))) return html;
+		if ((cfg.exclude_series ?? []).map(String).includes(String(meta?.series ?? ""))) return html;
+		const hRe = new RegExp(cfg.heading_pattern ?? "^<h3>Introduction</h3>$");
+		const divClose = (s, from) => {
+			const re = /<(\/?)div\b[^>]*>/gi; re.lastIndex = from; let d = 1, m;
+			while ((m = re.exec(s)) !== null) { d += m[1] ? -1 : 1; if (d === 0) return { start: m.index, end: m.index + m[0].length }; }
+			return null;
+		};
+		const open = /(<div class="row">\s*)(<div class="([^"]*\bcol-[^"]*)">)\s*(<h[1-6]>[^<]*<\/h[1-6]>)/g;
+		let out = html, from = 0, n = 0, m;
+		while ((open.lastIndex = from, m = open.exec(out)) !== null) {
+			from = m.index + m[0].length;
+			if (!hRe.test(m[4]) || m[3].trim() === (cfg.column_class ?? "col-12")) continue;
+			const colOpenEnd = m.index + m[1].length + m[2].length;
+			const colClose = divClose(out, colOpenEnd);
+			if (!colClose) continue;
+			const rest = out.slice(from, colClose.start);
+			const head = `<div class="row">\n<div class="${cfg.column_class ?? "col-12"}">\n${m[4]}\n</div>`;
+			const rep = rest.trim()
+				? `${head}\n</div>\n<div class="row">\n${m[2]}${rest}`   // the rest keeps the row's own column (and whatever follows it)
+				: `${head}`;
+			// rest empty: the heading's own column closes at colClose — replace up to (not incl.) it
+			out = out.slice(0, m.index) + rep + out.slice(rest.trim() ? colClose.start : colClose.end);
+			from = m.index + rep.length;
+			n++;
+		}
+		if (n && run && typeof run.AddNote === "function")
+			run.AddNote("info", "ContentConverter", `${n} Introduction heading${n > 1 ? "s" : ""} given ${n > 1 ? "their" : "its"} own full-width row (intro_heading_full_row).`);
+		return out;
 	}
 
 	/** ROUND 522 (the autonomous loop's session 51 Round 2) — THE JOURNAL INSTRUCTION IS ITS OWN ACTIVITY BOX.
