@@ -1,0 +1,26 @@
+CUED {'not-found': 9, 'MAIN': 6, 'SIDE col-md-4': 14}
+uncued {'not-found': 797, 'MAIN': 97, 'SIDE col-md-4': 53, 'half col-md-6': 11}
+CUED — claude places them: {'not-found': 29}
+   CUED:HPRE {'not-found': 2, 'MAIN': 1}
+   CUED:SSCI {'SIDE col-md-4': 12, 'MAIN': 5, 'not-found': 1}
+nf
+     CEDK401 '[Image] Please have this image out to the side in ' '4ytjtb' claude:None
+     HIS1006 '[insert image in right hand column beside this tex' 'kas-black_is_beautiful-bild-1156-1' claude:None
+     HIS1008 '[insert image in right hand column beside this tex' 'kas-black_is_beautiful-bild-1156-1' claude:None
+     HPRE203 '[image] [RHS]' 'blue-figure-with-heart-hugging-another-vector' claude:None
+     HPRE203 '[image][RHS]' 'flat-design-notepad-pen-and-color-sheets-of-paper' claude:None
+     SCBI301 '[image on right hand side of text]' 'biology-experiment' claude:None
+MAIN
+     HPRE203 '[image] [RHS]' 's example' claude:None
+     SSCI205 '[Image] RHS' 'same and different' claude:None
+     SSCI205 '[Image] RHS' 'greek person writing' claude:None
+     SSCI205 '[Image] RHS' 'important places in athens' claude:None
+     SSCI205 '[Image] RHS' 'democracy' claude:None
+     SSCI205 '[Image] RHS' 'theatre masks' claude:None
+SIDE col-md-4
+     SCES201 '[image to right of text]' 'pauline_harris_sfti' claude:None
+     SSCI205 '[Image] RHS created in copilot' 'ana lesson 1' claude:None
+     SSCI205 '[Image] RHS' 'time travel passport' claude:None
+     SSCI205 '[Image] RHS side of above text' 'amulet end of lesson 1' claude:None
+     SSCI205 '[Image] RHS' 'amulet lesson 2' claude:None
+     SSCI205 '[Image] Images placed side by side.' 'athenian theatre' claude:None
