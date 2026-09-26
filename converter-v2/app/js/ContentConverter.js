@@ -4823,8 +4823,8 @@ class ContentConverter {
 		// post-passes: every consumer that reads a box's writer id (the tile pairing, the dropbox
 		// modifier) has run, so the page's consecutive numbering is settled last.
 		const bodyHtml = this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
-			this.#pageNumberNormalise(this.#introHeadingFullRow(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
-				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), r307Tiles, run))), page, run), run), page, run),   // ROUND 522 — #journalInstructionBox; ROUND 526 — #introHeadingFullRow
+			this.#pageNumberNormalise(this.#introHeadingFullRow(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
+				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), r307Tiles, run))), page, run), run), run), page, run),   // ROUND 522 — #journalInstructionBox; ROUND 526 — #introHeadingFullRow; ROUND 529 — #summaryHeadingAlert
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
 				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
 				// ROUND 265: the level-pages dialect's nav/tile labels + registry row
@@ -7647,6 +7647,105 @@ class ContentConverter {
 		}
 		if (n && run && typeof run.AddNote === "function")
 			run.AddNote("info", "ContentConverter", `${n} Introduction heading${n > 1 ? "s" : ""} given ${n > 1 ? "their" : "its"} own full-width row (intro_heading_full_row).`);
+		return out;
+	}
+
+	/** ROUND 529 (the autonomous loop's session 52 Round 2) — THE SUMMARY HEADING'S ALERT BOX. A lesson's closing summary
+	 *  heading — `Lesson Summary`, `Key points`, `Key questions`, `Summary`, `What have we learned` — typed as a plain `[H3]`
+	 *  (no `[Alert]` before it) renders bare in the content column; the gold boxes the heading and what follows it to the
+	 *  column's end as `div.alert > div.row > div.col-12` (KB 14.8 'Lesson summary alert' for HPE; KB 05B `<h4>Key points</h4>`;
+	 *  per family, outputs/_s52_r2_headalert2.py: Lesson Summary HIS 13 / 17, HPRE 14 / 14, SSCI 8 / 12, SSOG 9 / 11, SSEA 5 / 5;
+	 *  Key points PES 24 / 24; …). A heading that is a column's direct child, outside any box or widget, whose text matches a
+	 *  rule for the module's family opens the box; the rule's `level` re-levels it. The box holds what the gold's holds
+	 *  (outputs/_s52_r2_sumbox.py: HIS `p` 57 / 60, PES `ul` 34 / 35, SSOG `p ol p` / `p ul p`, HPRE `p ol` / `p p.hint p`): the
+	 *  sibling blocks after the heading — one plain paragraph, then any lists, then one closing paragraph after a list; a
+	 *  hint (p.hintLink + its div.hintDropContent) only where the rule says hint_inside (KB 14.8's HPE sequence). Whatever
+	 *  else the column held after the heading moves to a new row in a column of the same class, as the gold places it. A
+	 *  summary whose column goes on to the end-of-module dropbox (skip_if_rest_pattern) is that box's (HIS1006's last page:
+	 *  the gold's `activity dropbox` holds the summary). Data body_region.summary_heading_alert {rules [{pattern, families,
+	 *  level, hint_inside}], exclude_ancestor_pattern, skip_if_rest_pattern, box_open, box_close}; env SUMALERT_OFF. */
+	static #summaryHeadingAlert(html, run) {
+		const cfg = DataService.Data.EmitTemplates.body_region?.summary_heading_alert;
+		if (!cfg || cfg.enabled === false || !html) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "SUMALERT_OFF"]) return html;
+		const fam = String(run?.moduleCode || "").replace(/\d.*$/, "");
+		const rules = (cfg.rules ?? []).filter((r) => (r.families ?? []).map(String).includes(fam))
+			.map((r) => ({ re: new RegExp(r.pattern, "i"), level: r.level ?? null, hintInside: r.hint_inside === true }));
+		if (!rules.length) return html;
+		const excl = new RegExp(cfg.exclude_ancestor_pattern ?? "\\balert\\b", "i");
+		const skipRest = cfg.skip_if_rest_pattern ? new RegExp(cfg.skip_if_rest_pattern, "i") : null;
+		const plain = (s) => String(s).replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim()
+			.replace(/[\s:?.!…]+$/, "");
+		const tok = /<div\b([^>]*)>|<\/div>|<h([2-5])\b[^>]*>([\s\S]*?)<\/h\2>/gi;
+		const stack = [], hits = [];
+		let m;
+		while ((m = tok.exec(html)) !== null) {
+			if (m[0].startsWith("</")) { stack.pop(); continue; }
+			if (m[0][1] === "d" || m[0][1] === "D") { stack.push({ cls: (/class="([^"]*)"/.exec(m[1] ?? "") ?? [])[1] ?? "", at: m.index }); continue; }
+			const top = stack[stack.length - 1];
+			if (!top || !/\bcol-/.test(top.cls) || stack.some((d) => excl.test(d.cls))) continue;
+			if (hits.length && m.index < hits[hits.length - 1].end) continue;   // inside the previous box's range
+			const r = rules.find((x) => x.re.test(plain(m[3])));
+			if (!r) continue;
+			// the column's close: count divs from the heading on
+			const re = /<(\/?)div\b[^>]*>/gi; re.lastIndex = m.index + m[0].length; let d = 1, c;
+			while ((c = re.exec(html)) !== null) { d += c[1] ? -1 : 1; if (d === 0) break; }
+			if (!c) continue;
+			hits.push({ start: m.index, hEnd: m.index + m[0].length, end: c.index, level: r.level, inner: m[3], hl: m[2],
+				hintInside: r.hintInside, colOpen: (/^<div\b[^>]*>/.exec(html.slice(top.at)) ?? [`<div class="${top.cls}">`])[0] });
+		}
+		if (!hits.length) return html;
+		// the column's top-level sibling blocks after the heading (comments / whitespace kept with the block before them)
+		const blocksOf = (s) => {
+			const out = []; let i = 0;
+			while (i < s.length) {
+				const lt = s.indexOf("<", i);
+				if (lt < 0) break;
+				if (s.startsWith("<!--", lt)) { const e = s.indexOf("-->", lt); i = e < 0 ? s.length : e + 3; continue; }
+				const tm = /^<([a-zA-Z][a-zA-Z0-9]*)\b([^>]*)>/.exec(s.slice(lt));
+				if (!tm) { i = lt + 1; continue; }
+				const name = tm[1].toLowerCase(), attrs = tm[2];
+				let end;
+				if (/^(?:img|br|hr|input|source)$/.test(name) || /\/\s*$/.test(attrs)) end = lt + tm[0].length;
+				else {
+					const re = new RegExp(`<(/?)${name}\\b[^>]*>`, "gi"); re.lastIndex = lt; let d = 0, x;
+					while ((x = re.exec(s)) !== null) { d += x[1] ? -1 : 1; if (d === 0) break; }
+					end = x ? x.index + x[0].length : s.length;
+				}
+				out.push({ name, cls: (/class="([^"]*)"/.exec(attrs) ?? [])[1] ?? "", start: lt, end });
+				i = end;
+			}
+			return out;
+		};
+		let out = html, n = 0;
+		for (const h of hits.slice().reverse()) {
+			const seg = out.slice(h.hEnd, h.end), bl = blocksOf(seg);
+			const plainP = (b) => b && b.name === "p" && !b.cls, list = (b) => b && (b.name === "ul" || b.name === "ol");
+			let k = 0;
+			if (plainP(bl[k])) k++;
+			const k0 = k;
+			while (list(bl[k])) k++;
+			if (k > k0 && k0 > 0 && plainP(bl[k])) k++;
+			if (k === 0) continue;
+			if (h.hintInside && bl[k] && bl[k].name === "p" && /\bhintLink\b/.test(bl[k].cls)) {
+				k++;
+				if (bl[k] && bl[k].name === "div" && /\bhintDropContent\b/.test(bl[k].cls)) k++;
+			}
+			const cut = bl[k - 1].end;
+			if (skipRest && skipRest.test(seg.slice(cut))) continue;   // the column goes on to the end-of-module dropbox: that box owns it
+			const lv = h.level ? String(h.level).replace(/^h/i, "") : h.hl;
+			const box = (cfg.box_open ?? `<div class="alert">\n<div class="row">\n<div class="col-12">`) + "\n" + `<h${lv}>${h.inner}</h${lv}>`
+				+ seg.slice(0, cut) + "\n" + (cfg.box_close ?? `</div>\n</div>\n</div>`);
+			const rest = seg.slice(cut);
+			const tail = rest.replace(/<!--[\s\S]*?-->/g, "").trim()
+				? `\n</div>\n</div>\n<div class="row">\n${h.colOpen}${rest.replace(/\s+$/, "")}\n`
+				: `${rest.replace(/\s+$/, "")}\n`;
+			out = out.slice(0, h.start) + box + tail + out.slice(h.end);
+			n++;
+		}
+		if (!n) return html;
+		if (run && typeof run.AddNote === "function")
+			run.AddNote("info", "ContentConverter", `${n} summary heading${n > 1 ? "s" : ""} boxed as the lesson's alert (summary_heading_alert).`);
 		return out;
 	}
 
