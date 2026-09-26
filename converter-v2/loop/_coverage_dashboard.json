@@ -1,16 +1,16 @@
 {
- "generated": "2026-09-26 06:17",
+ "generated": "2026-09-27 00:04",
  "warnings": [
   "skeleton state predates the newest engine change (2026-09-25) \u2014 its rows may lag.",
-  "feature index predates the newest engine change (2026-09-26) \u2014 its rows may lag."
+  "body_compare predates the newest engine change (2026-09-26) \u2014 its rows may lag."
  ],
  "headline": {
-  "bundles": 7646,
-  "built": 3485,
+  "bundles": 7639,
+  "built": 3486,
   "pages": 2627,
   "clean": 2585,
   "modules": 535,
-  "body_any": 236,
+  "body_any": 233,
   "paired": 2491,
   "scaffold_mean": 55.45880835292526,
   "ge50": 1592,
@@ -203,8 +203,8 @@
   },
   "dragAndDrop": {
    "built": 146,
-   "total": 1169,
-   "declined_shapes": 858,
+   "total": 1170,
+   "declined_shapes": 860,
    "modules": 387,
    "declined_modules": [
     "AGH1001",
@@ -396,6 +396,7 @@
     "FRFUN06",
     "FRFUN07",
     "FRFUN08",
+    "FRNO901",
     "FRNO902",
     "GENO901",
     "GEO1006",
@@ -747,8 +748,8 @@
    ]
   },
   "clickDrop": {
-   "built": 243,
-   "total": 582,
+   "built": 244,
+   "total": 583,
    "declined_shapes": 266,
    "modules": 183,
    "declined_modules": [
@@ -1237,8 +1238,8 @@
   },
   "typing": {
    "built": 34,
-   "total": 234,
-   "declined_shapes": 177,
+   "total": 230,
+   "declined_shapes": 173,
    "modules": 85,
    "declined_modules": [
     "ANZH401",
@@ -1254,7 +1255,6 @@
     "BLLR201",
     "BLLR202",
     "BLLR203",
-    "CEDK501",
     "CEDO105",
     "CEDO501",
     "CEDO502",
@@ -1328,8 +1328,8 @@
   },
   "reorder": {
    "built": 0,
-   "total": 115,
-   "declined_shapes": 107,
+   "total": 116,
+   "declined_shapes": 108,
    "modules": 67,
    "declined_modules": [
     "AGH1006",
@@ -1487,10 +1487,10 @@
    ]
   },
   "multiChoiceQuiz": {
-   "built": 16,
-   "total": 456,
+   "built": 15,
+   "total": 454,
    "declined_shapes": 363,
-   "modules": 195,
+   "modules": 194,
    "declined_modules": [
     "AGH1002",
     "ANZH103",
@@ -1682,63 +1682,11 @@
     "XOTPO01"
    ]
   },
-  "selectionBox": {
-   "built": 0,
-   "total": 87,
-   "declined_shapes": 69,
-   "modules": 44,
-   "declined_modules": [
-    "ANZH105",
-    "ANZH205",
-    "ARFUN04",
-    "CEDK501",
-    "CEDO501",
-    "CEDO502",
-    "CEDT104",
-    "CEDT501",
-    "ENGI405",
-    "ENO2060",
-    "FRNO902",
-    "GENO901",
-    "GER1002",
-    "HPFUN103",
-    "HPFUN301",
-    "MXDI201",
-    "MXFL204",
-    "MXFL401",
-    "MXFU302",
-    "OSAI101",
-    "OSOH101",
-    "OSOH201",
-    "OSOH401",
-    "SCFUN01",
-    "SSCI205",
-    "SSEA203",
-    "SSFUN01",
-    "SSFUN03",
-    "SSOG103",
-    "SSOG105",
-    "TEDC401",
-    "TRR102",
-    "TRR106",
-    "TWHA901",
-    "TWHA903",
-    "TWHA904",
-    "TWHA905",
-    "TWHK907",
-    "WJFUN108",
-    "WJFUN307",
-    "XFUN02",
-    "XLP02",
-    "XLP03",
-    "XLP04"
-   ]
-  },
   "tabs": {
    "built": 57,
-   "total": 170,
-   "declined_shapes": 105,
-   "modules": 86,
+   "total": 171,
+   "declined_shapes": 106,
+   "modules": 87,
    "declined_modules": [
     "AGH1006",
     "ANZH404",
@@ -1748,6 +1696,7 @@
     "CEDO402",
     "CEDO501",
     "CEDO502",
+    "CEDR203",
     "CEDT102",
     "CEDT207",
     "CEDW101",
@@ -1845,9 +1794,9 @@
    ]
   },
   "dropDown": {
-   "built": 355,
-   "total": 629,
-   "declined_shapes": 226,
+   "built": 356,
+   "total": 630,
+   "declined_shapes": 227,
    "modules": 232,
    "declined_modules": [
     "AGH1003",
@@ -2103,6 +2052,57 @@
     "TEDC401"
    ]
   },
+  "selectionBox": {
+   "built": 0,
+   "total": 81,
+   "declined_shapes": 63,
+   "modules": 43,
+   "declined_modules": [
+    "ANZH105",
+    "ANZH205",
+    "ARFUN04",
+    "CEDK501",
+    "CEDO502",
+    "CEDT104",
+    "CEDT501",
+    "ENGI405",
+    "ENO2060",
+    "FRNO902",
+    "GENO901",
+    "GER1002",
+    "HPFUN103",
+    "HPFUN301",
+    "MXDI201",
+    "MXFL204",
+    "MXFL401",
+    "MXFU302",
+    "OSAI101",
+    "OSOH101",
+    "OSOH201",
+    "OSOH401",
+    "SCFUN01",
+    "SSCI205",
+    "SSEA203",
+    "SSFUN01",
+    "SSFUN03",
+    "SSOG103",
+    "SSOG105",
+    "TEDC401",
+    "TRR102",
+    "TRR106",
+    "TWHA901",
+    "TWHA903",
+    "TWHA904",
+    "TWHA905",
+    "TWHK907",
+    "WJFUN108",
+    "WJFUN307",
+    "XFUN02",
+    "XLP02",
+    "XLP03",
+    "XLP04"
+   ]
+  },
   "glossary": {
    "built": 1,
    "total": 3,
@@ -2118,9 +2118,9 @@
   {
    "type": "multiChoiceQuiz",
    "token": "mcq",
-   "declined": 314,
-   "built": 15,
-   "build_rate": 0.046
+   "declined": 317,
+   "built": 14,
+   "build_rate": 0.042
   },
   {
    "type": "multiChoiceQuiz",
@@ -2132,7 +2132,7 @@
   {
    "type": "dragAndDrop",
    "token": "button+txt",
-   "declined": 142,
+   "declined": 141,
    "built": 18,
    "build_rate": 0.113
   },
@@ -2146,7 +2146,7 @@
   {
    "type": "multiChoiceQuiz",
    "token": "mcq+txt",
-   "declined": 99,
+   "declined": 95,
    "built": 1,
    "build_rate": 0.01
   },
@@ -2204,23 +2204,23 @@
   {
    "class": "un-built dragAndDrop",
    "kind": "interactive",
-   "plain": "Writers tagged 1169 dragAndDrop widgets; 1023 ship as a hand-off box instead of a built widget.",
-   "modules": 367,
-   "pages": 719,
-   "occurrences": 1023,
-   "shapes": 858,
+   "plain": "Writers tagged 1170 dragAndDrop widgets; 1024 ship as a hand-off box instead of a built widget.",
+   "modules": 368,
+   "pages": 720,
+   "occurrences": 1024,
+   "shapes": 860,
    "regen_modules": 390,
    "regen_saving_pct": 29,
-   "note": "builder covers 146/1169 (12%)",
+   "note": "builder covers 146/1170 (12%)",
    "rank": 1
   },
   {
    "class": "content lost vs the human (advisory)",
    "kind": "body",
    "plain": "The human page carries 3+ body blocks ours does not, without tripping the over-capture rule \u2014 content is going missing by some other route.",
-   "modules": 218,
-   "pages": 494,
-   "occurrences": 494,
+   "modules": 220,
+   "pages": 498,
+   "occurrences": 498,
    "shapes": null,
    "regen_modules": null,
    "regen_saving_pct": null,
@@ -2231,14 +2231,14 @@
   {
    "class": "un-built multiChoiceQuiz",
    "kind": "interactive",
-   "plain": "Writers tagged 456 multiChoiceQuiz widgets; 440 ship as a hand-off box instead of a built widget.",
+   "plain": "Writers tagged 454 multiChoiceQuiz widgets; 439 ship as a hand-off box instead of a built widget.",
    "modules": 188,
-   "pages": 315,
-   "occurrences": 440,
+   "pages": 314,
+   "occurrences": 439,
    "shapes": 363,
    "regen_modules": 235,
    "regen_saving_pct": 57,
-   "note": "builder covers 16/456 (3%)",
+   "note": "builder covers 15/454 (3%)",
    "rank": 3
   },
   {
@@ -2270,27 +2270,27 @@
   {
    "class": "un-built dropDown",
    "kind": "interactive",
-   "plain": "Writers tagged 629 dropDown widgets; 274 ship as a hand-off box instead of a built widget.",
+   "plain": "Writers tagged 630 dropDown widgets; 274 ship as a hand-off box instead of a built widget.",
    "modules": 145,
    "pages": 216,
    "occurrences": 274,
-   "shapes": 226,
+   "shapes": 227,
    "regen_modules": 275,
    "regen_saving_pct": 50,
-   "note": "builder covers 355/629 (56%)",
+   "note": "builder covers 356/630 (56%)",
    "rank": 6
   },
   {
    "class": "un-built clickDrop",
    "kind": "interactive",
-   "plain": "Writers tagged 582 clickDrop widgets; 339 ship as a hand-off box instead of a built widget.",
+   "plain": "Writers tagged 583 clickDrop widgets; 339 ship as a hand-off box instead of a built widget.",
    "modules": 130,
    "pages": 192,
    "occurrences": 339,
    "shapes": 266,
    "regen_modules": 192,
    "regen_saving_pct": 65,
-   "note": "builder covers 243/582 (41%)",
+   "note": "builder covers 244/583 (41%)",
    "rank": 7
   },
   {
@@ -2336,14 +2336,14 @@
   {
    "class": "un-built typing",
    "kind": "interactive",
-   "plain": "Writers tagged 234 typing widgets; 200 ship as a hand-off box instead of a built widget.",
-   "modules": 83,
-   "pages": 149,
-   "occurrences": 200,
-   "shapes": 177,
+   "plain": "Writers tagged 230 typing widgets; 196 ship as a hand-off box instead of a built widget.",
+   "modules": 82,
+   "pages": 147,
+   "occurrences": 196,
+   "shapes": 173,
    "regen_modules": 240,
    "regen_saving_pct": 57,
-   "note": "builder covers 34/234 (14%)",
+   "note": "builder covers 34/230 (14%)",
    "rank": 11
   },
   {
@@ -2388,11 +2388,11 @@
   {
    "class": "un-built reorder",
    "kind": "interactive",
-   "plain": "Writers tagged 115 reorder widgets; 115 ship as a hand-off box instead of a built widget.",
+   "plain": "Writers tagged 116 reorder widgets; 116 ship as a hand-off box instead of a built widget.",
    "modules": 67,
-   "pages": 95,
-   "occurrences": 115,
-   "shapes": 107,
+   "pages": 96,
+   "occurrences": 116,
+   "shapes": 108,
    "regen_modules": 77,
    "regen_saving_pct": 86,
    "note": "NO BUILDER EXISTS for this type \u2014 the largest single kind of gap",
@@ -2401,23 +2401,23 @@
   {
    "class": "un-built tabs",
    "kind": "interactive",
-   "plain": "Writers tagged 170 tabs widgets; 113 ship as a hand-off box instead of a built widget.",
-   "modules": 58,
-   "pages": 94,
-   "occurrences": 113,
-   "shapes": 105,
+   "plain": "Writers tagged 171 tabs widgets; 114 ship as a hand-off box instead of a built widget.",
+   "modules": 59,
+   "pages": 95,
+   "occurrences": 114,
+   "shapes": 106,
    "regen_modules": 104,
    "regen_saving_pct": 81,
-   "note": "builder covers 57/170 (33%)",
+   "note": "builder covers 57/171 (33%)",
    "rank": 16
   },
   {
    "class": "widget over-capture",
    "kind": "body",
    "plain": "A widget's capture ran past its boundary and swallowed body the human keeps free (gate rule: 40%+ of the page in one widget, 400+ chars, 3+ blocks lost).",
-   "modules": 50,
-   "pages": 60,
-   "occurrences": 60,
+   "modules": 47,
+   "pages": 57,
+   "occurrences": 57,
    "shapes": null,
    "regen_modules": null,
    "regen_saving_pct": null,
@@ -2441,11 +2441,11 @@
   {
    "class": "un-built selectionBox",
    "kind": "interactive",
-   "plain": "Writers tagged 87 selectionBox widgets; 87 ship as a hand-off box instead of a built widget.",
-   "modules": 44,
-   "pages": 63,
-   "occurrences": 87,
-   "shapes": 69,
+   "plain": "Writers tagged 81 selectionBox widgets; 81 ship as a hand-off box instead of a built widget.",
+   "modules": 43,
+   "pages": 58,
+   "occurrences": 81,
+   "shapes": 63,
    "regen_modules": 74,
    "regen_saving_pct": 87,
    "note": "NO BUILDER EXISTS for this type \u2014 the largest single kind of gap",
@@ -2658,7 +2658,7 @@
    "module": "PWYWHA1",
    "page": "PWYWHA1_0_0.html",
    "scaffold": 13.8,
-   "likely_cause": "12 content blocks missing; widget over-capture"
+   "likely_cause": "13 content blocks missing; widget over-capture"
   },
   {
    "module": "MXDI103",
@@ -2670,7 +2670,7 @@
    "module": "PES1007",
    "page": "PES1007_7_0.html",
    "scaffold": 14.4,
-   "likely_cause": "15 content blocks missing"
+   "likely_cause": "16 content blocks missing"
   },
   {
    "module": "TEFUN03",
@@ -2694,7 +2694,7 @@
    "module": "ANZH301",
    "page": "ANZH301_1_0.html",
    "scaffold": 15.0,
-   "likely_cause": "11 content blocks missing; widget over-capture"
+   "likely_cause": "12 content blocks missing; widget over-capture"
   },
   {
    "module": "MXFL401",

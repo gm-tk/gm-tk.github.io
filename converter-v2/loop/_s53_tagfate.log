@@ -1,4 +1,4 @@
-modules 533; items located on the gold 72903; in 70 s
+modules 533; items located on the gold 72903; in 69 s
 
 ## Per cue — the gold's forms vs Claude's (top cues by located items)
 
@@ -8,12 +8,12 @@ modules 533; items located on the gold 72903; in 70 s
   2823  tag:h3                       GOLD h3@body:free 0.48, h3@body:activity 0.18, h4@body:free 0.05  |  CLAUDE h3@body:free 0.57, h3@body:activity 0.14, p@body:widget:cv2-interactive 0.04
   2652  tag:activity                 GOLD h3@body:activity 0.67, h3@body:panel:activity 0.19, p@body:activity 0.04  |  CLAUDE h3@body:activity 0.74, h3@body:panel:activity 0.21, p@body:activity 0.01
   1406  black:boldlead               GOLD p@body:free 0.15, p@body:activity 0.08, h4@body:widget:accordion 0.07  |  CLAUDE p@body:free 0.32, p@body:widget:cv2-interactive 0.16, p@body:activity 0.14
-  1373  tag:h2                       GOLD h2@body:free 0.25, h3@body:free 0.25, h1@header:other 0.12  |  CLAUDE h3@body:free 0.33, h1@header:other 0.14, h4@body:free 0.10
-   789  tag:h4                       GOLD h4@body:free 0.36, h3@body:free 0.14, h3@body:activity 0.11  |  CLAUDE h4@body:free 0.31, h5@body:free 0.16, h3@body:free 0.13
+  1373  tag:h2                       GOLD h2@body:free 0.25, h3@body:free 0.25, h1@header:other 0.12  |  CLAUDE h3@body:free 0.33, h1@header:other 0.14, p@body:free 0.10
+   789  tag:h4                       GOLD h4@body:free 0.36, h3@body:free 0.14, h3@body:activity 0.11  |  CLAUDE h4@body:free 0.38, h3@body:free 0.13, h5@body:free 0.10
    642  tag:alert                    GOLD p@body:alert 0.59, p@body:alert:side 0.13, p@body:panel:alert 0.08  |  CLAUDE p@body:alert 0.68, p@body:alert:side 0.09, p@body:panel:alert 0.08
    610  tag:speech bubble            GOLD p@body:widget:speechBubble 0.94, p@body:widget:carousel 0.02, p@body:widget:wordHighlighter 0.01  |  CLAUDE p@body:widget:speechBubble 0.83, p@body:widget:cv2-interactive 0.15, ABSENT 0.01
    586  tag:accordion                GOLD h4@body:widget:accordion 0.70, h4@body:panel:widget:accordion 0.09, p@body:free 0.03  |  CLAUDE h4@body:widget:accordion 0.61, p@body:widget:cv2-interactive 0.20, h4@body:panel:widget:accordion 0.08
-   557  tag:h2:boldlead              GOLD h5@menu:flat 0.19, h5@menu:Information 0.14, h2@body:free 0.12  |  CLAUDE ABSENT 0.22, h3@body:free 0.21, h4@menu:Overview 0.17
+   557  tag:h2:boldlead              GOLD h5@menu:flat 0.19, h5@menu:Information 0.14, h2@body:free 0.12  |  CLAUDE ABSENT 0.22, h4@menu:Overview 0.17, h3@body:free 0.16
    551  tag:h5                       GOLD h5@body:panel:free 0.22, h5@body:free 0.16, h4@menu:flat 0.10  |  CLAUDE h5@body:panel:free 0.37, h5@body:free 0.19, h4@body:free 0.12
    491  tag:?                        GOLD p@body:widget:dropQuiz 0.14, p@body:free 0.11, p@body:activity 0.09  |  CLAUDE p@body:free 0.27, p@body:widget:cv2-interactive 0.23, ABSENT 0.16
    485  tag:modal                    GOLD p@body:panel:activity 0.50, p@body:widget:multiChoiceQuiz 0.30, h5@body:widget:clickDrop 0.04  |  CLAUDE p@body:panel:widget:cv2-interactive 0.36, p@body:widget:cv2-interactive 0.35, p@body:panel:activity 0.17
@@ -34,7 +34,7 @@ modules 533; items located on the gold 72903; in 70 s
    124  tag:shape n                  GOLD h4@body:free 0.29, p@menu:flat 0.09, p@body:widget:multiChoiceQuiz 0.07  |  CLAUDE p@body:widget:cv2-interactive 0.64, p@body:free 0.25, p@body:activity 0.04
    118  tag:title bar                GOLD h1@header:other 0.59, h3@body:free 0.08, h4@body:widget:accordion 0.07  |  CLAUDE h1@header:other 0.58, h3@body:free 0.12, ABSENT 0.12
    112  tag:drag and drop            GOLD h3@body:activity 0.59, p@body:activity 0.28, p@body:panel:activity 0.04  |  CLAUDE p@body:widget:cv2-interactive 0.62, h3@body:activity 0.23, p@body:activity 0.04
-   107  tag:h4:boldlead              GOLD h4@body:free 0.29, h3@body:activity 0.26, li@body:widget:tabs 0.10  |  CLAUDE h4@body:free 0.32, h3@body:activity 0.24, h5@body:free 0.17
+   107  tag:h4:boldlead              GOLD h4@body:free 0.29, h3@body:activity 0.26, li@body:widget:tabs 0.10  |  CLAUDE h4@body:free 0.36, h3@body:activity 0.24, h5@body:free 0.12
    103  tag:flip card                GOLD p@body:widget:flipCard 0.39, p@body:free 0.17, h4@body:widget:flipCard 0.07  |  CLAUDE p@body:widget:cv2-interactive 0.39, p@body:widget:flipCard 0.29, ABSENT 0.13
    102  tag:correct                  GOLD p@body:widget:multiChoiceQuiz 0.38, p@body:widget:dropDown 0.22, li@body:widget:reorder 0.07  |  CLAUDE p@body:widget:cv2-interactive 0.75, p@body:activity 0.09, li@body:activity 0.06
    101  tag:back                     GOLD p@body:widget:flipCard 0.60, p@body:widget:hintSlider 0.39, h5@body:widget:flipCard 0.01  |  CLAUDE p@body:widget:hintSlider 0.39, p@body:widget:flipCard 0.37, p@body:widget:cv2-interactive 0.19
@@ -53,10 +53,6 @@ modules 533; items located on the gold 72903; in 70 s
         e.g. ANZH104_7_0.html '[Body]' 'share your learning with your kaiako by uploading '
         e.g. ANZH105_2_0.html '[Body]' 'can you sort these examples into past and present'
         e.g. ANZH105_5_0.html '[Body]' 'students from room 3 brought some of their special'
-  431 items /   49 pages /  36 mods  black:bullet             li@body:widget:accordion     → p@body:widget:accordion      (gold form share of cue 0.08)  [BLL 173, ENO 46, WJFUN 43, XGF 40, HES 39]
-        e.g. BLL116_2_0.html '' 'where do you think sant and nat are playing'
-        e.g. BLL116_2_0.html '' 'what clues are there'
-        e.g. BLL116_2_0.html '' 'where do you think nat and sant found the tins'
   396 items /  223 pages / 150 mods  black                    p@body:activity              → p@body:free                  (gold form share of cue 0.17)  [HIS 70, XGF 31, BLL 21, DAN 19, SSOG 17]
         e.g. AGH1001_3_0.html '' 'identify whether these statements are true or fals'
         e.g. AGH1003_2_0.html '' 'revisit this list from earlier in the lesson selec'
@@ -317,10 +313,6 @@ modules 533; items located on the gold 72903; in 70 s
         e.g. CEDK401_0_0.html '' 'what do you think the word abundant means if youre'
         e.g. CEDK401_0_0.html '' 'what evidence can you find that shows that the cra'
         e.g. CEDK401_0_0.html '' 'what do you know about why seafood in the oceans a'
-   55 items /   28 pages /  25 mods  tag:h4                   h4@body:free                 → h5@body:free                 (gold form share of cue 0.36)  [WJFUN 18, ENGI 6, ENG 5, ENO 4, GEO 4]
-        e.g. CBI1009_1_0.html '[H4]' 'saturated solution'
-        e.g. CBI1009_1_0.html '[H4]' 'dissociation of sodium chloride'
-        e.g. CBI1009_1_0.html '[H4]' 'uses of solubility'
    53 items /    6 pages /   6 mods  black:bullet             li@body:widget:flipCard      → li@body:widget:cv2-interactive (gold form share of cue 0.00)  [OSOH 16, HPRE 13, OSAI 13, OSSC 9, WJFUN 2]
         e.g. HPRE301_11_0.html '' 'does not cause problems in daily life'
         e.g. HPRE301_11_0.html '' 'supports connection with others'
@@ -333,6 +325,10 @@ modules 533; items located on the gold 72903; in 70 s
         e.g. BLL110_0_0.html '[body]' 'watch the following videos'
         e.g. BLL110_0_0.html '[body]' 'watch the following videos'
         e.g. BLL110_0_0.html '[Body]' 'watch the following videos'
+   50 items /    6 pages /   6 mods  black:bullet             li@body:activity             → li@body:widget:accordion     (gold form share of cue 0.09)  [XLP 17, ENG 15, BLL 5, ENGC 5, MXEO 4]
+        e.g. BLL125_2_0.html '' 'have you ever been mad at someone what happened wh'
+        e.g. BLL125_2_0.html '' 'why was sant mad at his dad'
+        e.g. BLL125_2_0.html '' 'do you think that sant ripped his hat on purpose w'
    50 items /    9 pages /   8 mods  black                    p@body:widget:dragAndDrop    → p@body:activity              (gold form share of cue 0.02)  [CBI 21, ENGJ 10, GEO 6, MXFL 6, XGF 6]
         e.g. CBI1008_2_0.html '' 'an atom or group of atoms that has gained or lost '
         e.g. CBI1008_2_0.html '' 'the amount of matter an object has measured in kil'
@@ -341,10 +337,6 @@ modules 533; items located on the gold 72903; in 70 s
         e.g. ANZH401_1_0.html '[Alert box] Success criteria:' 'i can process information by organising sources to'
         e.g. ANZH401_2_0.html '[Alert box] Success criteria:' 'i can categorise some reasons why people moved to '
         e.g. ANZH401_3_0.html '[Alert box] Success criteria:' 'i can explain examples of different perspectives a'
-   49 items /   26 pages /  11 mods  tag:h2:boldlead          h2@body:free                 → h3@body:free                 (gold form share of cue 0.12)  [FRFUN 19, PES 13, TEDC 8, SSFUN 4, FRNO 3]
-        e.g. FRFUN06_1_0.html '[Title] [H2]' 'meet the sound on om'
-        e.g. FRFUN06_1_0.html '[Title] [H2]' 'meet the sound in im ain ein'
-        e.g. FRFUN06_1_0.html '[Title] [H2]' 'meet the sound un um'
    48 items /   32 pages /  19 mods  tag:activity             h3@body:free                 → h3@body:activity             (gold form share of cue 0.02)  [XDLS 14, MXDI 7, XGF 6, MXFL 5, ENGJ 4]
         e.g. ANZH401_5_0.html '[Activity individual - 5A] [H3' 'the wairau affray'
         e.g. BLL117_2_0.html '[Activity 2F]' 'congratulations'
@@ -369,10 +361,6 @@ modules 533; items located on the gold 72903; in 70 s
         e.g. BLL243_1_1.html 'Where' 'does the worm land after kiwi sneezes'
         e.g. BLL243_1_1.html 'Who' 'swoops down from the sky to speak to kiwi'
         e.g. BLL243_1_1.html 'How' 'does kiwi search for food in the dirt'
-   45 items /    5 pages /   5 mods  black:bullet             li@body:activity             → li@body:widget:accordion     (gold form share of cue 0.09)  [XLP 17, ENG 15, ENGC 5, MXEO 4, PWY 4]
-        e.g. ENG1004_0_0.html '' 'presentation style'
-        e.g. ENG1004_0_0.html '' 'between three and six times'
-        e.g. ENG1004_0_0.html '' 'describe the characteristics of your example'
    44 items /   12 pages /  11 mods  black:bullet             li@body:activity             → ABSENT                       (gold form share of cue 0.09)  [WJFUN 22, XDLS 6, OSSM 5, ANZH 4, ART 3]
         e.g. ANZH404_6_0.html '' 'what is a perspective'
         e.g. ANZH404_6_0.html '' 'what makes a good relationship between individuals'
@@ -445,6 +433,10 @@ modules 533; items located on the gold 72903; in 70 s
         e.g. AGH1007_9_0.html '' 'complete the checkpoint once you have finished all'
         e.g. ANZH401_1_0.html '' 'as you watch find the answers to these questions'
         e.g. ANZH401_3_0.html '' 'you could choose the british government of the tim'
+   35 items /   20 pages /  17 mods  tag:h4                   h4@body:free                 → h5@body:free                 (gold form share of cue 0.36)  [ENGI 6, ENG 5, ENO 4, GEO 4, CBI 3]
+        e.g. CBI1009_1_0.html '[H4]' 'saturated solution'
+        e.g. CBI1009_1_0.html '[H4]' 'dissociation of sodium chloride'
+        e.g. CBI1009_1_0.html '[H4]' 'uses of solubility'
    34 items /   27 pages /  24 mods  tag:drag and drop        h3@body:activity             → p@body:widget:cv2-interactive (gold form share of cue 0.59)  [ENGR 10, WJFUN 5, BLL 3, ENGS 2, MXFL 2]
         e.g. BLL143_1_0.html '[Activity 1E] [Drag and Drop]' 'right or wrong'
         e.g. BLL143_1_1.html '[Activity 2B] [Drag and Drop/S' 'create a sentence'
@@ -525,3 +517,217 @@ modules 533; items located on the gold 72903; in 70 s
         e.g. MXFL301_4_0.html '' 'five or more round up'
         e.g. MXFL301_4_0.html '' 'four or less the number rolls back and the digit s'
         e.g. WJFUN110_0_0.html '' 'kea wants to inform give facts about queenstown'
+   30 items /    6 pages /   6 mods  black                    p@body:widget:radioQuiz      → p@body:activity              (gold form share of cue 0.00)  [HIS 10, PHE 10, ENGJ 6, HES 2, BLL 1]
+        e.g. BLL127_2_0.html '' 'in the story'
+        e.g. CBI1008_1_0.html '' 'carbon is a compound'
+        e.g. ENGJ301_7_0.html '' 'do my sentences make sense when i read my story al'
+   30 items /   16 pages /  16 mods  tag:body                 p@body:widget:carousel       → p@body:free                  (gold form share of cue 0.01)  [TEFUN 5, ENO 3, HIS 3, MXS 3, XDLS 3]
+        e.g. BLL226_1_0.html '[body]' 'once you have completed all of the sentences read '
+        e.g. ENGJ402_3_0.html '[Body]' 'sonnet spoken by actress dame judi dench'
+        e.g. ENO2060_3_0.html '[body]' 'this film is about identity and breaking free from'
+
+## CHROME transitions (header / menu), largest first
+
+  310 items /   69 pages /  69 mods  black                    p@menu:Overview              → h5@menu:Overview             (gold form share of cue 0.03)  [XDLS 52, CHFUN 34, OSOH 23, OSAI 22, OSGM 22]
+        e.g. BLL251_0_0.html '' 'we are learning'
+        e.g. BLL255_0_0.html '' 'we are learning'
+        e.g. BLL257_0_0.html '' 'we are learning'
+  242 items /  117 pages /  38 mods  black:bullet             li@menu:flat                 → ABSENT                       (gold form share of cue 0.23)  [HIS 57, ENGI 40, ENGC 39, ENGR 22, MXFL 21]
+        e.g. AGH1004_5_0.html '' 'investigate water availability within regional are'
+        e.g. BLL122_0_0.html '' 'read write and spell words that contain the letter'
+        e.g. BLL147_0_0.html '' 'categorise items'
+  191 items /  107 pages / 107 mods  black                    p@menu:flat                  → h5@menu:flat                 (gold form share of cue 0.03)  [BLL 63, ENGS 23, ENGJ 16, ENGC 15, HPFUN 14]
+        e.g. BLL125_0_0.html '' 'we are learning'
+        e.g. BLL126_0_0.html '' 'we are learning'
+        e.g. BLL127_0_0.html '' 'we are learning'
+  124 items /    9 pages /   9 mods  black:bullet             li@menu:Information          → li@menu:Knowledge            (gold form share of cue 0.05)  [BLL 100, HPRE 12, SSCI 12]
+        e.g. BLL251_0_0.html '' 'many sounds phonemes can be spelt in more than one'
+        e.g. BLL251_0_0.html '' 'sometimes words have one or more letter sound comb'
+        e.g. BLL251_0_0.html '' 'sounds phonemes can be shown with unusual letter c'
+  121 items /   25 pages /  14 mods  black:bullet             li@menu:flat                 → li@menu:Overview             (gold form share of cue 0.23)  [AGH 59, CEDR 38, XMES 8, ENGS 5, OSGM 4]
+        e.g. AGH1003_2_0.html '' 'i can identify the ways farmers and growers carry '
+        e.g. AGH1003_2_0.html '' 'i can describe the steps taken by farmers and or g'
+        e.g. AGH1003_2_0.html '' 'i can explain how changes to physical chemical and'
+  119 items /   11 pages /  11 mods  black:bullet             li@menu:Overview             → ABSENT                       (gold form share of cue 0.12)  [AGH 53, HIS 31, WJFUN 16, ENGJ 8, CEDT 6]
+        e.g. AGH1003_0_0.html '' 'describe how soil management practices are carried'
+        e.g. AGH1003_0_0.html '' 'explain how soil management practices impact soil '
+        e.g. AGH1003_0_0.html '' 'explain how soil management practices impact plant'
+  119 items /    8 pages /   8 mods  black:bullet             li@menu:LI                   → li@menu:Overview             (gold form share of cue 0.01)  [XMES 87, BLL 17, MXEX 7, MXS 4, PWY 4]
+        e.g. BLL243_0_0.html '' 'about prefixes'
+        e.g. BLL243_0_0.html '' 'to complete a range of word related activities to '
+        e.g. BLL243_0_0.html '' 'to read a decodable text accurately and make meani'
+  114 items /   19 pages /  18 mods  black                    h5@menu:flat                 → ABSENT                       (gold form share of cue 0.02)  [HIS 29, AGH 22, ENGI 16, ENGR 16, MXDB 10]
+        e.g. AGH1001_1_0.html '' 'we are learning to'
+        e.g. AGH1001_1_0.html '' 'we are learning to'
+        e.g. AGH1001_1_0.html '' 'we are learning to'
+  112 items /   29 pages /  21 mods  black:bullet             li@menu:flat                 → li@body:free                 (gold form share of cue 0.23)  [MXEX 26, ENFUN 13, CBI 8, GEO 8, GEWHA 8]
+        e.g. BLL124_0_0.html '' 'blend letters to make words'
+        e.g. BLL124_0_0.html '' 'identify and use question marks and exclamation ma'
+        e.g. BLL124_0_0.html '' 'read spell and write heart words'
+  107 items /   11 pages /  10 mods  black:bullet             li@menu:Information          → li@menu:Overview             (gold form share of cue 0.05)  [MXDI 22, SSCI 21, SPA 20, MXFL 18, SSEA 10]
+        e.g. HIS1002_0_0.html '' 'we are evaluating the factors that have shaped peo'
+        e.g. HIS1002_0_0.html '' 'we are learning to substantiate arguments and judg'
+        e.g. HIS1002_0_0.html '' 'we are learning to evaluate primary sources'
+   82 items /   24 pages /  24 mods  black                    li@menu:Overview             → p@menu:Overview              (gold form share of cue 0.01)  [CBI 17, MXEX 16, MXDI 12, AGH 7, GER 5]
+        e.g. AGH1002_0_0.html '' 'use evidence data and investigative approaches wit'
+        e.g. AGH1007_0_0.html '' 'utilise discipline language and graphics used in a'
+        e.g. AGH1007_0_0.html '' 'utilise different perspectives that influence prim'
+   69 items /    9 pages /   9 mods  black:bullet             li@menu:Information          → li@menu:Practices            (gold form share of cue 0.05)  [BLL 63, SSCI 5, HPRE 1]
+        e.g. BLL251_0_0.html '' 'identifying and recording phonemes in words includ'
+        e.g. BLL251_0_0.html '' 'decoding words with less common graphemes or graph'
+        e.g. BLL251_0_0.html '' 'monitoring their understanding of texts and attemp'
+   58 items /    8 pages /   8 mods  black:bullet             li@menu:Information          → ABSENT                       (gold form share of cue 0.05)  [AGH 18, MXFL 13, ANZH 8, MXFU 8, MXDB 6]
+        e.g. AGH1002_0_0.html '' 'describe what soil is and how it forms'
+        e.g. AGH1002_0_0.html '' 'explain the importance of soil to agricultural and'
+        e.g. AGH1002_0_0.html '' 'describe and identify the different features of so'
+   57 items /   29 pages /  29 mods  tag:h2:boldlead          h5@menu:flat                 → ABSENT                       (gold form share of cue 0.19)  [BLL 47, ENGS 6, ENGI 4]
+        e.g. BLL111_0_0.html '[H2]' 'whāinga ako learning intentions'
+        e.g. BLL111_0_0.html '[H2]' 'paearu angitu how will i know if ive learned it'
+        e.g. BLL112_0_0.html '[H2]' 'whāinga ako learning intentions'
+   54 items /    3 pages /   3 mods  tag:h5                   h4@menu:flat                 → h5@body:panel:free           (gold form share of cue 0.10)  [EXPFUN 54]
+        e.g. EXPFUN02_0_0.html '[H5]' 'learning intentions'
+        e.g. EXPFUN02_0_0.html '[H5]' 'learning intentions'
+        e.g. EXPFUN02_0_0.html '[H5]' 'learning intentions'
+   53 items /    4 pages /   4 mods  black:bullet             li@menu:pane3                → li@menu:Overview             (gold form share of cue 0.01)  [XMES 48, MXEX 5]
+        e.g. MXEX401_0_0.html '' 'identify prior knowledge what they already know ab'
+        e.g. MXEX401_0_0.html '' 'use representations to compare explore prove learn'
+        e.g. MXEX401_0_0.html '' 'select diagrammatic representations to represent r'
+   51 items /    5 pages /   5 mods  black:bullet             li@menu:pane2                → li@menu:Overview             (gold form share of cue 0.01)  [XMES 33, SSOG 13, MXEX 5]
+        e.g. MXEX401_0_0.html '' 'in similar shapes corresponding angles are equal a'
+        e.g. MXEX401_0_0.html '' 'in right angled triangles there is a fixed relatio'
+        e.g. MXEX401_0_0.html '' 'a point has zero dimensions a line has one dimensi'
+   39 items /   23 pages /  23 mods  tag:h2:boldlead          h5@menu:Overview             → h4@menu:Overview             (gold form share of cue 0.09)  [ENGS 7, OSBY 7, OSGM 7, OSAI 6, OSSM 4]
+        e.g. BLL255_0_0.html '[H2]' 'learning intentions'
+        e.g. BLL255_0_0.html '[H2]' 'success criteria'
+        e.g. CEDO501_0_0.html '[H2]' 'learning intentions'
+   38 items /    7 pages /   7 mods  black                    p@menu:flat                  → h5@menu:Overview             (gold form share of cue 0.03)  [XMES 13, CEDT 7, ENGS 7, CEDK 6, ENO 4]
+        e.g. CEDK501_1_0.html '' 'we are learning'
+        e.g. CEDK501_1_0.html '' 'we are learning'
+        e.g. CEDK501_1_0.html '' 'we are learning'
+   38 items /    1 pages /   1 mods  tag:body                 p@body:free                  → p@menu:flat                  (gold form share of cue 0.43)  [MXFUN 38]
+        e.g. MXFUN01_0_0.html '[Body]' 'numbers are all around us we see them on letterbox'
+        e.g. MXFUN01_0_0.html '[Body]' 'our number system is based on 10'
+        e.g. MXFUN01_0_0.html '[Body]' 'numbers can be made up in lots of different ways'
+   37 items /   14 pages /  14 mods  black                    p@menu:flat                  → ABSENT                       (gold form share of cue 0.03)  [ENGC 14, ENGI 14, BLL 3, ENGR 2, CEDR 1]
+        e.g. BLL122_0_0.html '' 'we are learning to'
+        e.g. BLL145_0_0.html '' 'we are learning to'
+        e.g. BLL147_0_0.html '' 'we are learning to'
+   37 items /   12 pages /  12 mods  black                    li@menu:Information          → p@menu:Information           (gold form share of cue 0.00)  [CEDO 10, CEDT 8, ENGC 6, CEDK 5, PHE 4]
+        e.g. CEDK501_0_0.html '' '92010 level 1 demonstrate understanding of factors'
+        e.g. CEDK501_0_0.html '' '24709 level 1 produce a balanced budget to manage '
+        e.g. CEDK501_0_0.html '' '29305 level 1 set personal goals and carry out a p'
+   37 items /    1 pages /   1 mods  black:bullet             li@body:free                 → li@menu:pane3                (gold form share of cue 0.15)  [CHFUN 37]
+        e.g. CHFUN05_0_0.html '' 'use le after a verb to show that an action is comp'
+        e.g. CHFUN05_0_0.html '' 'use with a verb and a time word to show a complete'
+        e.g. CHFUN05_0_0.html '' 'use le after a verb to show that an action is comp'
+   37 items /    7 pages /   1 mods  black:bullet             li@body:widget:accordion     → li@menu:Overview             (gold form share of cue 0.08)  [XGF 37]
+        e.g. XGF9001_2_0.html '' 'to identify and appreciate our unique strengths va'
+        e.g. XGF9001_5_0.html '' 'to understand the elements of wellbeing and how ch'
+        e.g. XGF9001_4_0.html '' 'to set personal goals to support our growth and we'
+   35 items /   16 pages /  16 mods  tag:h2:boldlead          h5@menu:Information          → ABSENT                       (gold form share of cue 0.14)  [HIS 10, XDLS 5, ENGJ 4, HES 2, MXDB 2]
+        e.g. ANZH304_0_0.html '[H2]' 'hononga connections'
+        e.g. ENGJ302_0_0.html '[H2]' 'whakamaheretia tō wā planning your time'
+        e.g. ENGJ302_0_0.html '[H2]' 'he aha tāku hei tīmata what do i need to get start'
+   35 items /    9 pages /   9 mods  black:boldlead           h5@menu:Overview             → p@menu:Overview              (gold form share of cue 0.02)  [MXDI 10, MXFU 9, MXDB 5, MXEX 5, MXFL 5]
+        e.g. MXDB301_0_0.html '' 'te tūhura pūāhua investigating situations'
+        e.g. MXDB301_0_0.html '' 'te whakaata pūāhua representing situations'
+        e.g. MXDB301_0_0.html '' 'te tūhono pūāhua connecting situations'
+   33 items /    8 pages /   8 mods  black                    p@menu:Overview              → ABSENT                       (gold form share of cue 0.03)  [AGH 18, ENGJ 10, COM 2, HIS 2, XMES 1]
+        e.g. AGH1008_0_0.html '' 'we are learning to'
+        e.g. AGH1008_0_0.html '' 'we are learning to'
+        e.g. AGH1008_0_0.html '' 'we are learning to'
+   32 items /   10 pages /  10 mods  black                    p@menu:Information           → ABSENT                       (gold form share of cue 0.01)  [MXFL 10, AGH 6, HIS 6, MXDB 4, ANZH 2]
+        e.g. AGH1002_0_0.html '' 'we are learning to'
+        e.g. AGH1004_0_0.html '' 'we are learning to'
+        e.g. AGH1004_0_0.html '' 'we are learning to'
+   32 items /   13 pages /  13 mods  black                    li@menu:flat                 → p@menu:flat                  (gold form share of cue 0.00)  [BLL 9, SSOG 7, ENGS 4, MXFL 4, CEDO 2]
+        e.g. BLL153_0_0.html '' 'to understand chunking with word families write di'
+        e.g. BLL240_0_0.html '' 'using phonics knowledge to match letters and lette'
+        e.g. BLL240_0_0.html '' 'saying the sounds without pausing between them e g'
+   31 items /    3 pages /   3 mods  black:bullet             li@menu:Overview             → p@menu:Overview              (gold form share of cue 0.12)  [TEDC 15, HPRE 10, MXFU 6]
+        e.g. HPRE203_0_0.html '' 'recognise verbal and non verbal signs of consent a'
+        e.g. HPRE203_0_0.html '' 'explain why consent must be voluntary informed and'
+        e.g. HPRE203_0_0.html '' 'show empathy by recognising others feelings and pe'
+   30 items /   30 pages /  18 mods  tag:h3                   h3@body:free                 → h1@header:other              (gold form share of cue 0.48)  [XTAS 7, CEDO 3, SCCH 3, XLP 3, XMES 3]
+        e.g. BLL274_1_0.html '[H3]' 'vowel sounds'
+        e.g. BLL276_1_0.html '[H3]' 'vowel sounds'
+        e.g. CEDK501_10_0.html '[H3]' 'respectful communication'
+   30 items /    3 pages /   3 mods  black:bullet             li@menu:pane5                → li@menu:pane3                (gold form share of cue 0.00)  [WJFUN 30]
+        e.g. WJFUN112_0_0.html '' 'to identify the audience of a text and understand '
+        e.g. WJFUN112_0_0.html '' 'explain what an audience is'
+        e.g. WJFUN112_0_0.html '' 'explain how writers change their language for diff'
+   29 items /   17 pages /  17 mods  tag:body                 p@menu:Overview              → h5@menu:Overview             (gold form share of cue 0.00)  [TEDC 8, FRNO 7, CHFUN 6, BLL 2, ENGC 1]
+        e.g. BLL265_0_0.html '[Body]' 'we are learning'
+        e.g. BLL266_0_0.html '[Body]' 'we are learning'
+        e.g. CHFUN01_0_0.html '[Body]' 'we are learning'
+   29 items /    4 pages /   4 mods  black:bullet             li@menu:Overview             → li@menu:Knowledge            (gold form share of cue 0.12)  [ENGS 12, SSEA 7, SSCI 6, FRNO 4]
+        e.g. ENGS405_0_0.html '' 'text forms and genres are selected and adapted by '
+        e.g. ENGS405_0_0.html '' 'features of text can be examined individually and '
+        e.g. ENGS405_0_0.html '' 'a text is influenced by its historical cultural an'
+   29 items /   12 pages /   5 mods  black:bullet             li@menu:pane2                → li@body:free                 (gold form share of cue 0.01)  [XGF 18, WJFUN 11]
+        e.g. WJFUN108_0_0.html '' 'to use a capital letter for the start of a sentenc'
+        e.g. WJFUN108_0_0.html '' 'to use a comma for lists'
+        e.g. WJFUN108_0_0.html '' 'use capital letters and full stops correctly in al'
+   28 items /    7 pages /   1 mods  black:bullet             li@menu:flat                 → li@body:widget:cv2-interactive (gold form share of cue 0.23)  [XGF 28]
+        e.g. XGF9006_1_0.html '' 'what genius hour is and how it helps us follow our'
+        e.g. XGF9006_1_0.html '' 'how we can take charge of our own learning'
+        e.g. XGF9006_1_0.html '' 'explain what genius hour is in my own words'
+   27 items /   26 pages /  11 mods  tag:h2                   h2@body:free                 → h1@header:other              (gold form share of cue 0.25)  [ANZH 6, CEDW 5, ENGC 4, PES 3, MXDI 2]
+        e.g. ANZH404_1_0.html '[H2]' 'change over time'
+        e.g. ANZH404_2_0.html '[H2]' 'inside the system'
+        e.g. ANZH404_3_0.html '[H2]' 'alongside the system'
+   26 items /    6 pages /   5 mods  black                    h4@menu:flat                 → h5@menu:flat                 (gold form share of cue 0.00)  [AGH 9, MXS 8, EXBP 4, EXIP 4, HPFUN 1]
+        e.g. AGH1009_1_0.html '' 'you will show your understanding by'
+        e.g. AGH1009_1_0.html '' 'you will show your understanding by'
+        e.g. AGH1009_1_0.html '' 'you will show your understanding by'
+   26 items /    8 pages /   6 mods  black                    p@menu:flat                  → p@body:free                  (gold form share of cue 0.03)  [XDLS 14, MXEX 7, GEO 2, SSEA 2, MXDI 1]
+        e.g. GEO1005_4_0.html '' 'we are learning to explain how tectonic processes '
+        e.g. GEO1005_3_0.html '' 'you will show your understanding by describing som'
+        e.g. MXDI202_9_0.html '' 'three dimensional shape names and related vocabula'
+   25 items /    5 pages /   5 mods  black                    p@menu:Overview              → h5@menu:flat                 (gold form share of cue 0.03)  [ANZH 10, PES 7, XDLS 7, ENGJ 1]
+        e.g. ANZH301_1_0.html '' 'you will show your understanding by'
+        e.g. ANZH301_1_0.html '' 'you will show your understanding by'
+        e.g. ANZH301_1_0.html '' 'you will show your understanding by'
+
+## FAMILY DIALECTS — per (cue, family): the gold's dominant form (share ≥ 0.60) that Claude produces on < 0.40 of the same items
+
+ 169 fixable  BLL      tag:modal              n= 256 (11 m /  11 p)  gold p@body:panel:activity 0.93  claude-same 0.27  claude instead: [('p@body:panel:widget:cv2-interactive', 169)]
+ 144 fixable  XGF      tag:modal              n= 148 ( 2 m /   8 p)  gold p@body:widget:multiChoiceQuiz 0.97  claude-same 0.00  claude instead: [('p@body:widget:cv2-interactive', 144)]
+ 133 fixable  BLL      tag:click drop         n= 153 (15 m /  18 p)  gold p@body:panel:activity 0.87  claude-same 0.00  claude instead: [('p@body:panel:widget:cv2-interactive', 130), ('ABSENT', 3)]
+  49 fixable  BLL      tag:h2:boldlead        n=  78 (46 m /  46 p)  gold h5@menu:flat 0.83  claude-same 0.21  claude instead: [('ABSENT', 47), ('h4@body:free', 2)]
+  40 fixable  MXFUN    tag:activity           n=  45 ( 2 m /   2 p)  gold p@body:activity 1.00  claude-same 0.11  claude instead: [('h3@body:activity', 24), ('p@menu:flat', 16)]
+  33 fixable  GENO     tag:body               n= 106 ( 1 m /   9 p)  gold p@body:free 0.67  claude-same 0.36  claude instead: [('ABSENT', 29), ('p@body:widget:cv2-interactive', 3)]
+  30 fixable  HES      black:boldlead         n=  31 ( 2 m /   2 p)  gold li@body:widget:accordion 0.97  claude-same 0.00  claude instead: [('p@body:activity', 30)]
+  28 fixable  BLL      tag:click drop:boldlead n=  28 ( 2 m /   2 p)  gold p@body:panel:activity 1.00  claude-same 0.00  claude instead: [('p@body:panel:widget:cv2-interactive', 25), ('ABSENT', 3)]
+  26 fixable  CEDK     tag:checklist          n=  26 ( 1 m /   5 p)  gold p@body:widget:multiChoiceQuiz 1.00  claude-same 0.00  claude instead: [('p@body:widget:cv2-interactive', 26)]
+  25 fixable  BLLR     tag:correct            n=  30 ( 3 m /   6 p)  gold p@body:widget:multiChoiceQuiz 0.83  claude-same 0.00  claude instead: [('p@body:widget:cv2-interactive', 25)]
+  24 fixable  ANZH     tag:important          n=  28 ( 3 m /  12 p)  gold p@body:activity 0.86  claude-same 0.00  claude instead: [('p@body:alert', 24)]
+  24 fixable  WJFUN    tag:hint               n=  40 ( 5 m /   5 p)  gold p@body:widget:dropQuiz 0.60  claude-same 0.00  claude instead: [('p@body:widget:cv2-interactive', 24)]
+  22 fixable  OSAI     tag:dropdown           n=  22 ( 4 m /   4 p)  gold p@body:widget:dropQuiz 1.00  claude-same 0.00  claude instead: [('p@body:widget:cv2-interactive', 22)]
+  21 fixable  ENGI     tag:answer             n=  21 ( 1 m /   1 p)  gold p@body:widget:dragAndDrop 1.00  claude-same 0.00  claude instead: [('p@body:widget:cv2-interactive', 11), ('ABSENT', 6)]
+  20 fixable  ANZHFUN  black                  n=  26 ( 1 m /   1 p)  gold p@body:free 0.92  claude-same 0.15  claude instead: [('p@body:activity', 19), ('p@body:widget:cv2-interactive', 1)]
+  18 fixable  COM      tag:h2                 n=  29 ( 3 m /  12 p)  gold h2@body:free 0.62  claude-same 0.00  claude instead: [('h3@body:free', 13), ('h2@body:widget:accordion', 5)]
+  18 fixable  MXFL     tag:audio              n=  18 ( 1 m /   9 p)  gold p@body:widget:speechBubble 1.00  claude-same 0.00  claude instead: [('p@body:free', 16), ('p@body:widget:cv2-interactive', 1)]
+  17 fixable  BLL      tag:important          n=  25 ( 7 m /   7 p)  gold p@body:panel:alert:side 0.68  claude-same 0.00  claude instead: [('p@body:panel:alert', 17)]
+  17 fixable  MXFL     tag:modal              n=  18 ( 3 m /  11 p)  gold h5@body:widget:clickDrop 0.94  claude-same 0.00  claude instead: [('ABSENT', 16), ('p@body:activity', 1)]
+  17 fixable  MXFL     tag:button             n=  17 ( 1 m /   1 p)  gold h3@body:activity 1.00  claude-same 0.00  claude instead: [('p@body:widget:cv2-interactive', 17)]
+  17 fixable  MXFU     tag:button             n=  17 ( 1 m /   1 p)  gold p@acks 1.00  claude-same 0.00  claude instead: [('p@body:widget:cv2-interactive', 17)]
+  17 fixable  SCFUN    black:bullet           n=  23 ( 1 m /   1 p)  gold li@body:widget:tabs 0.74  claude-same 0.00  claude instead: [('li@body:widget:carousel', 14), ('li@body:free', 3)]
+  16 fixable  CEDR     tag:tab n              n=  23 ( 4 m /   4 p)  gold p@body:free 1.00  claude-same 0.30  claude instead: [('p@menu:Overview', 13), ('p@body:panel:widget:cv2-interactive', 3)]
+  15 fixable  OSGM     tag:shape n            n=  15 ( 2 m /   3 p)  gold h4@body:free 1.00  claude-same 0.00  claude instead: [('p@body:widget:cv2-interactive', 15)]
+  14 fixable  COM      tag:?                  n=  17 ( 2 m /   3 p)  gold p@body:widget:dropQuiz 0.82  claude-same 0.00  claude instead: [('ABSENT', 13), ('p@body:widget:cv2-interactive', 1)]
+  14 fixable  PES      tag:h2:boldlead        n=  22 ( 3 m /  13 p)  gold h2@body:free 0.64  claude-same 0.00  claude instead: [('h3@body:free', 13), ('h4@body:free', 1)]
+  14 fixable  SSCI     tag:button             n=  15 ( 1 m /   2 p)  gold h4@body:activity 1.00  claude-same 0.07  claude instead: [('p@body:widget:cv2-interactive', 14)]
+  13 fixable  EXPFUN   tag:h1                 n=  19 ( 4 m /   4 p)  gold p@body:panel:widget:speechBubble 0.68  claude-same 0.00  claude instead: [('p@body:panel:free', 9), ('h2@body:panel:free', 4)]
+  13 fixable  GENO     tag:hint slider        n=  20 ( 1 m /   3 p)  gold p@body:widget:hintSlider 0.95  claude-same 0.30  claude instead: [('ABSENT', 13)]
+  12 fixable  TEDC     tag:?                  n=  16 ( 2 m /   6 p)  gold p@body:widget:hintSlider 0.75  claude-same 0.00  claude instead: [('p@body:activity', 6), ('p@body:widget:cv2-interactive', 6)]
+  12 fixable  TRR      tag:h3:boldlead        n=  18 ( 3 m /   3 p)  gold h3@body:free 0.67  claude-same 0.00  claude instead: [('h5@body:free', 10), ('h4@body:free', 2)]
+  11 fixable  SSEA     black:boldlead         n=  16 ( 1 m /   4 p)  gold p@body:widget:multiChoiceQuiz 0.69  claude-same 0.00  claude instead: [('ABSENT', 11)]
+  11 fixable  SSOG     tag:image              n=  19 ( 1 m /   5 p)  gold h4@body:activity 0.68  claude-same 0.11  claude instead: [('p@body:activity', 11)]
+  11 fixable  WJFUN    tag:back               n=  18 ( 6 m /   6 p)  gold p@body:widget:flipCard 1.00  claude-same 0.39  claude instead: [('p@body:widget:cv2-interactive', 9), ('p@body:free', 2)]
+  10 fixable  ARFUN    tag:h2                 n=  38 ( 3 m /   3 p)  gold h3@body:free 0.61  claude-same 0.34  claude instead: [('h4@body:free', 7), ('p@body:widget:cv2-interactive', 1)]
+  10 fixable  BLL      tag:data marker        n=  15 ( 1 m /   1 p)  gold p@body:panel:activity 1.00  claude-same 0.33  claude instead: [('p@body:panel:free', 10)]
+  10 fixable  PES      tag:activity           n=  15 ( 5 m /  11 p)  gold p@body:activity 0.67  claude-same 0.00  claude instead: [('h3@body:activity', 10)]
+  10 fixable  PWY      tag:data marker        n=  16 ( 3 m /   6 p)  gold p@body:widget:carousel 0.81  claude-same 0.19  claude instead: [('ABSENT', 6), ('p@body:widget:cv2-interactive', 4)]
+  10 fixable  TWHK     tag:h3                 n=  15 ( 4 m /   4 p)  gold h3@body:panel:free 0.67  claude-same 0.00  claude instead: [('h5@body:panel:free', 5), ('h4@body:panel:free', 3)]
+   7 fixable  MXEO     tag:accordion          n=  15 ( 1 m /   4 p)  gold h4@body:widget:accordion 0.60  claude-same 0.13  claude instead: [('p@body:widget:cv2-interactive', 6), ('ABSENT', 1)]

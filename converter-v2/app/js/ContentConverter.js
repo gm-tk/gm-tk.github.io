@@ -9228,12 +9228,16 @@ class ContentConverter {
 			// name, found by the writer-cue fate census (outputs/_s53_tagfate.py → _s53_r2_hlevel.py): FRFUN / CEDT keep [H2] at
 			// h2, WJFUN / ENGC keep [H4] at h4. Its own block and env so the rows revert exactly.
 			// Data: keep_writer_digit.digits_by_prefix_families { env, "<digit>": [prefix…] }. Env HKEEPFAM_OFF.
-			const _kwdFam = _kwd?.digits_by_prefix_families;
-			const _kwdFamOn = _kwdBase && !!_kwdFam && _kwdFam.enabled !== false
-				&& !(typeof process !== "undefined" && process.env && process.env[_kwdFam.env ?? "HKEEPFAM_OFF"])
-				&& ((_kwdFam[String(digit)] ?? [])).some((p) => /\d/.test(String(p))
-					? String(run?.moduleCode || "").startsWith(String(p))
-					: String(p) === _kwdPrefix);
+			// ROUND 538: every `digits_by_prefix_families*` block (r536's, then `_2` — the rest of the passing groups), each on its
+			// own env, so a later block reverts alone (env HKEEPFAM2_OFF) and r536's stays byte-identical.
+			const _kwdFamOn = _kwdBase && Object.keys(_kwd ?? {}).filter((k) => k.startsWith("digits_by_prefix_families")).some((k) => {
+				const _kwdFam = _kwd[k];
+				return !!_kwdFam && typeof _kwdFam === "object" && _kwdFam.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[_kwdFam.env ?? "HKEEPFAM_OFF"])
+					&& ((_kwdFam[String(digit)] ?? [])).some((p) => /\d/.test(String(p))
+						? String(run?.moduleCode || "").startsWith(String(p))
+						: String(p) === _kwdPrefix);
+			});
 			const _kwdOn = _kwdTpl || _kwdPfx || _kwdFamOn;
 			let _hHtml = this.#stripHeadingItalic(`<h${shifted}>${ListsAndRuns.inlineMarkup(headInline)}</h${shifted}>`, run);
 			if (_kwdOn) _hHtml = _hHtml.replace(/^<h(\d)>/, `<h$1 data-wd="${digit}">`);

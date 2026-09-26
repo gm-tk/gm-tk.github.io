@@ -63,6 +63,7 @@ mods = codes or sorted(m for m in _corpus.gate_mods(CLAUDE) if os.path.isdir(_co
 fate = collections.Counter(); cue_tot = collections.Counter(); cue_gold = collections.defaultdict(collections.Counter)
 cue_cl = collections.defaultdict(collections.Counter); pages = collections.defaultdict(set); mset = collections.defaultdict(set)
 fams = collections.defaultdict(collections.Counter); ex = collections.defaultdict(list)
+fam_joint = collections.defaultdict(collections.Counter); fam_pages = collections.defaultdict(set); fam_mods = collections.defaultdict(set)
 t0 = __import__("time").time()
 for mod in mods:
     items = items_of(mod)
@@ -84,6 +85,7 @@ for mod in mods:
         gf = f"{g[0]}@{coarse(g[1])}"; cf = f"{c[0]}@{coarse(c[1])}" if c else "ABSENT"
         cue = cue_of(it)
         cue_tot[cue] += 1; cue_gold[cue][gf] += 1; cue_cl[cue][cf] += 1
+        fk = (cue, famof(mod)); fam_joint[fk][(gf, cf)] += 1; fam_pages[fk].add(pg_of.get(it["t"][:40], mod)); fam_mods[fk].add(mod)
         if gf != cf:
             k = (cue, gf, cf); fate[k] += 1; mset[k].add(mod); fams[k][famof(mod)] += 1
             pages[k].add(pg_of.get(it["t"][:40], mod))
@@ -102,3 +104,27 @@ for (cue, gf, cf), v in rows[:120]:
           f"[{', '.join(f'{f} {x}' for f, x in fams[k].most_common(5))}]")
     for e in ex[k]: print("        e.g.", e)
 json.dump({"|".join(k): [v, len(pages[k]), len(mset[k])] for k, v in fate.items()}, open(os.path.join(O, "_s53_tagfate.json"), "w"))
+print("\n## CHROME transitions (header / menu), largest first\n")
+crows = [(k, v) for k, v in fate.items() if re.search(r"@(header|menu)", k[1] + k[2])]
+crows.sort(key=lambda kv: -kv[1])
+for (cue, gf, cf), v in crows[:40]:
+    k = (cue, gf, cf); share = cue_gold[cue][gf] / cue_tot[cue]
+    print(f"{v:5d} items / {len(pages[k]):4d} pages / {len(mset[k]):3d} mods  {cue:24s} {gf:28s} → {cf:28s} (gold form share of cue {share:.2f})  "
+          f"[{', '.join(f'{f} {x}' for f, x in fams[k].most_common(5))}]")
+    for e in ex[k]: print("        e.g.", e)
+print("\n## FAMILY DIALECTS — per (cue, family): the gold's dominant form (share ≥ 0.60) that Claude produces on < 0.40 of the same items\n")
+cands = []
+for fk, joint in fam_joint.items():
+    n = sum(joint.values())
+    if n < 15: continue
+    g = collections.Counter(); c = collections.Counter()
+    for (gf, cf), v in joint.items(): g[gf] += v; c[cf] += v
+    gtop, gv = g.most_common(1)[0]
+    if gv / n < 0.60: continue
+    hit = sum(v for (gf, cf), v in joint.items() if gf == gtop and cf == gtop)
+    if hit / n >= 0.40: continue
+    miss = collections.Counter({cf: v for (gf, cf), v in joint.items() if gf == gtop and cf != gtop})
+    cands.append(((gv - hit), fk, n, gtop, gv / n, hit / n, miss.most_common(2), len(fam_pages[fk]), len(fam_mods[fk])))
+cands.sort(key=lambda r: -r[0])
+for gain, (cue, fam), n, gtop, gs, cs, miss, np_, nm in cands[:60]:
+    print(f"{gain:4d} fixable  {fam:8s} {cue:22s} n={n:4d} ({nm:2d} m / {np_:3d} p)  gold {gtop} {gs:.2f}  claude-same {cs:.2f}  claude instead: {miss}")

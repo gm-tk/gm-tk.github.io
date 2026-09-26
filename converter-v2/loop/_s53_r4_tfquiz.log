@@ -1,0 +1,29 @@
+T/F tables in un-built entries:
+    13  NONE  cols=3 other=1  (10 modules)
+     3  ALL-MARKED  cols=3 other=1  (3 modules)
+     1  NONE  cols=8 other=6  (1 modules)
+     1  NONE  cols=4 other=2  (1 modules)
+     1  NONE  cols=2 other=0  (1 modules)
+
+by Type: [(('radioQuiz', 'not'), 11), (('unclassified', 'not'), 2), (('slider', 'not'), 1), (('dragAndDrop + radioQuiz', 'ALL'), 1), (('dragAndDrop', 'ALL'), 1), (('unclassified + hintSlider', 'not'), 1), (('radioQuiz', 'ALL'), 1), (('unclassified + dragAndDrop', 'not'), 1)]
+
+mark glyphs: [('Yes', 9), ('No', 9), ('√', 7), ('The Co', 7), ('Tick', 5), ('✓', 4), ('i', 4), ('c', 3), ('k', 2), ('m', 1), ('l', 1), ('h', 1), ('u', 1), ('g', 1), ('e', 1)]
+
+ALL-MARKED entries 3 in 3 modules; rows 16
+   ('ANZH303', 'ANZH303_3_0.html', 'dragAndDrop + radioQuiz', 4, ['Statement', 'True', 'False'])
+   ('CEDO502', 'CEDO502_3_0.html', 'dragAndDrop', 5, ['Fact', 'True', 'False'])
+   ('HIS1003', 'HIS1003_1_0.html', 'radioQuiz', 7, ['Aim or Organ', 'True', 'False'])
+  NOT ('ENFUN05', 'ENFUN05_0_0.html', 'radioQuiz')
+  NOT ('EXPFUN06', 'EXPFUN06_0_0.html', 'slider')
+  NOT ('BLL177', 'BLL177_1_0.html', 'unclassified')
+  NOT ('ENGC201', 'ENGC201_4_0.html', 'radioQuiz')
+  NOT ('ENGC202', 'ENGC202_3_0.html', 'radioQuiz')
+  NOT ('ENGC301', 'ENGC301_4_0.html', 'radioQuiz')
+  NOT ('ENGC301', 'ENGC301_6_0.html', 'radioQuiz')
+  NOT ('ENGC401', 'ENGC401_1_0.html', 'radioQuiz')
+  NOT ('ENGR101', 'ENGR101_1_0.html', 'radioQuiz')
+  NOT ('ENGR302', 'ENGR302_6_0.html', 'radioQuiz')
+  NOT ('ENGS201', 'ENGS201_4_0.html', 'unclassified + hintSlider')
+  NOT ('MXDB202', 'MXDB202_1_0.html', 'unclassified + dragAndDrop')
+  NOT ('PES1001', 'PES1001_2_0.html', 'unclassified')
+  NOT ('SSOG301', 'SSOG301_2_0.html', 'radioQuiz')
