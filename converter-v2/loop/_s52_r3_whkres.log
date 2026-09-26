@@ -1,0 +1,185 @@
+
+== ANZH105_0_0.html gold: kō ngā tahu ā ō tapuwai inanahi hei tauira mō / the footsteps laid down by our ancestors crea  | claude chain ['alert', 'row', 'col']
+     black                  t='' a='We are going to explore where people come from, how life has changed over time, and deep d'
+     tag   video            t='[Video]' a='Tiki Taane: *No Place Like Home* (Tiki Taane: No Place Like Home in NZSL – 2 minute TVC (c'
+   > tag   alert            t='[Alert]' a='*Kō ngā tahu ā ō tapuwai inanahi, hei tauira mō āpōpō*'
+     black                  t='' a='"The footsteps laid down by our ancestors create the paving stones upon which we stand tod'
+     tag   lesson content   t='[Lesson content]' a=''
+     tag   h2               t='[H2]' a='*Lesson 1:* Nō Hea Koe? | Where Are You From?'
+
+== ANZH205_0_0.html gold: e kore au e ngaro he kākano i ruia mai i rang / māori history is the foundational and continu  | claude chain ['alert', 'row', 'col']
+     tag   body             t='[Body]' a='Te Tiriti o Waitangi was signed on 6 February 1840. On the 6th of February each year, we p'
+     tag   video            t='[Video]' a='Hahana Kids: The big problem with the Treaty (Hahana Kids: The BIG problem with the Treaty'
+   > tag   alert            t='[Alert]' a='*E kore au e ngaro; he kākano i ruia mai i Rangiātea*'
+     black                  t='' a='"Māori history is the foundational and continuous history of Aotearoa New Zealand.”'
+     tag   lesson content   t='[Lesson content]' a=''
+     tag   h2               t='[H2]' a='*Lesson 1:* Why did we need a Treaty?'
+
+== BLLR201_0_0.html gold: mā te kimi ka kite mā te kite ka mōhio mā te  / seek and discover discover and know know and   | claude chain ['row', 'col']
+     tag   body             t='[body]' a='The sign says *Secret Library of Lost Worlds.* You love exploring secrets, so you push on '
+     tag   data marker      t='[Audiovisual item 1]' a=''
+   > tag   body             t='[Body]' a='*Mā te kimi ka kite, mā te kite ka mōhio, mā te mōhio ka mārama.*'
+     black                  t='' a='Seek and discover, discover and know, know and become enlightened.'
+     tag   lesson overview   t='[Lesson Overview]' a=''
+     black                  t='' a='We are learning:'
+
+== CEDT207_0_0.html gold: ehara taku toa i te toa takitahi engari he to / i come not with my own strengths but bring wi  | claude chain ['alert', 'row', 'col']
+     tag   h2               t='[H2]' a='Introduction'
+     tag   important        t='[Important]' a=''
+   > black                  t='' a='*“Ehara taku toa i te toa takitahi engari he toa takitini.*'
+     black                  t='' a='*I come not with my own strengths but bring with me the gifts, talents and strengths of my'
+     black                  t='' a='No two people are exactly alike. Each of us is an individual with unique talents, interest'
+     tag   image            t='[Image]' a=''
+
+== ENGI400_0_0.html gold: mā te huruhuru ka rere te manu / with feathers the bird will fly  | claude chain ['row', 'col']
+     tag   module introduction   t='[MODULE INTRODUCTION]' a=''
+     tag   h1               t='Landing page [H1]' a='Equipped to Explore'
+   > tag                    t='Whakatauki' a='Mā te huruhuru ka rere te manu'
+     black                  t='' a='With feathers the bird will fly'
+     tag   h3               t='[H3]' a='Welcome to English!'
+     tag   body             t='[body]' a='Communication is an important part of interacting with each other. It helps us to build re'
+
+== ENGS101_0_0.html gold: kia mau ki tō ūkaipō / dont forget your roots  | claude chain ['row', 'col']
+     black                  t='' a='• use myths to help me understand more about the world around me.'
+     tag   module introduction   t='[MODULE INTRODUCTION]' a=''
+   > black                  t='' a="Kia mau ki tō ūkaipō Don't forget your roots"
+     black                  t='' a='Have you ever wondered how a story can change the way we see the world around us? In this '
+     tag   info trigger     t='[Rollover definition]' a='pūrākau'
+     tag                    t='(Story)' a='*Te Ika a Māui*. This story is more than just an adventure; it reveals how our surrounding'
+
+== EXBP901_1_0.html gold: mā te kimi ka kite mā te kite ka mōhio mā te  / seek and discover discover and know know and   | claude chain ['row', 'col']
+     tag   tab n            t='[New side tab]' a='Intro'
+     tag   whakatauki       t='[Introductory Whakatauki]' a=''
+   > black                B t='' a='**Mā te kimi ka kite, Mā te kite ka mōhio, Mā te mōhio ka mārama**'
+     black                B t='' a='**Seek and discover. Discover and know. Know and become enlightened.**'
+     black                  t='' a='Learning is a journey. It starts with a conscious effort to seek knowledge, discover a new'
+     tag   body             t='[Body text]' a=''
+
+== EXBP901_4_0.html gold: ko te pae tawhiti whāia kia tata ko te pae ta / seek out the distant horizons and then cheris  | claude chain ['row', 'col']
+     tag   end carousel     t='[end banner]' a=''
+     tag   whakatauki       t='[whakatauki]' a=''
+   > black                  t='' a='*Ko te pae tawhiti whāia kia tata, ko te pae tata, whakamaua kia tina*'
+     black                  t='' a='Seek out the distant horizons and then cherish those you attain.'
+     black                  t='' a='This whakatauki refers to how we set out to achieve our goals and how we celebrate those w'
+     tag   tab n            t='[Showcase tab]' a=''
+
+== EXPFUN06_0_0.html gold: ko te mātauranga te kākahu o te rangatira / knowledge is the garment of the chief  | claude chain ['row', 'col']
+     tag   tab n            t='[Tab 1]' a=''
+     tag   h2             B t='[H2]' a='**Introduction**'
+   > black                B t='' a='**"Ko te mātauranga te kākahu o te rangatira."** *"Knowledge is the garment of the chief."'
+     black                  t='' a='This whakataukī highlights that self-awareness and reflective learning are essential for l'
+     tag   h3               t='[H3]' a='What is aromatawai (assessment)?'
+     black                  t='' a='Aromatawai focuses on the learner and what they can do. It connects teaching and learning,'
+
+== MXFL203_0_0.html gold: ko te pae tawhiti whāia kia tata ko te pae ta / seek out distant horizons and cherish those y  | claude chain ['row', 'col']
+     tag   video            t='[video][item#1] introduction v' a="Tens of thousands flock to Canterbury's A&P show | Checkpoint (youtube.com)"
+     tag   h2               t='[h2] Whakatauki' a=''
+   > tag   body             t='[body]' a='Ko te pae tawhiti, whāia kia tata. Ko te pae tata, whakamaua kia tina Seek out distant hor'
+     tag   lesson overview   t='[Lesson Overview]' a=''
+     tag   body             t='[body text]' a='In this lesson you will learn about the history of A&P shows and where they are held acros'
+     tag   activity         t='[Activity 1A]' a='A&P show map'
+
+== MXFU201_0_0.html gold: he aha te kai ō te rangatira he kōrero he kōr / what is the food of the leader it is knowledg  | claude chain ['row', 'col']
+     black                  t='' a='•'
+     tag                    t='Start with a whakatauki' a=''
+   > black                  t='' a='He aha te kai ō te rangatira? He kōrero, he kōrero, he kōrero. What is the food of the lea'
+     tag   lesson overview   t='[Lesson Overview]' a=''
+     black                  t='' a='Lesson 1 will allow you to revise your knowledge of time. You will read and interpret A.M.'
+     tag   lesson content   t='[Lesson content]' a=''
+
+== MXFU202_0_0.html gold: whāia te iti kahurangi ki te tuohu koe me mau / pursue that which is precious and dont be det  | claude chain ['row', 'col']
+     tag   video            t='[embedded video]' a='https://youtu.be/65gFQGDD1vA'
+     tag                    t='(cut NZ highlights, as many sp' a=''
+   > black                  t='' a='Whāia te iti kahurangi ki te tuohu koe me maunga teitei Pursue that which is precious and '
+     tag   image            t='[image]' a='https://www.istockphoto.com/photo/gold-silver-bronze-first-second-and-third-medals-gm21600'
+     tag   lesson overview   t='[Lesson Overview]' a=''
+     black                  t='' a='Understand where and when the Olympic games started. Order dates, locate Olympia, Greece, '
+
+== PHE1007_1_0.html gold: tuku iho he tapu te upoko / from our ancestors the head is sacred  | claude chain ['row', 'col']
+     tag   h2               t='[H2]' a='The body is tapu'
+     tag   image            t='[Insert media item 48]' a=''
+   > tag   body             t='[Body]' a='*Tuku iho, he tapu te upoko.*'
+     black                  t='' a='From our ancestors, the head is sacred'
+     black                  t='' a='By virtue of being born, all humans have tapu and mana. There are differing levels of tapu'
+     black                  t='' a='Some tikanga [hover – Customs] related to the upoko includes:'
+
+== SSEA203_0_0.html gold: nāu te rourou nāku te rourou ka ora ai te iwi / with your food basket and my food basket the   | claude chain ['row', 'col']
+     tag   module introduction   t='[MODULE INTRODUCTION]' a=''
+     tag   whakatauki       t='[Whakatauki]' a=''
+   > black                B t='' a='**Nāu te rourou, nāku te rourou, ka ora ai te iwi.**'
+     black                  t='' a='*With your food basket and my food basket, the people will thrive.*'
+     black                  t='' a='This whakatauki reflects **sharing resources and working together**, linking to how goods '
+     tag   body             t='[Body]' a='In this module, we are learning about money and how people use it in their everyday lives.'
+
+== SSFUN01_0_0.html gold: ehara tāku toa it te toa takitahi engari he t / my success is not the work of an individual b  | claude chain ['row', 'col']
+     tag   h1               t='[H1]' a='Social Action | Mahinga Pāpori'
+     black                  t='' a='[Highlight text for whakataukī]'
+   > black                  t='' a='*Ehara tāku toa it te toa takitahi, engari he toa takitini.*'
+     black                  t='' a='*My success is not the work of an individual, but the work of many.*'
+     tag   body             t='[Body]' a='Social sciences helps us to understand the powerful concept of social action'
+     tag   body             t='[rollover text: efforts to bri' a='Social action in social sciences involves individuals taking steps to positively impact th'
+
+== SSOG101_0_0.html gold: ehara taku toa i te toa takitahi engari kē he / my strength is not that of one but of many  | claude chain ['alert', 'row', 'col']
+     tag   body             t='[Body]' a='In your neighbourhood, when you need some help, there are lots of nice people who are read'
+     tag   video            t='[Video]' a='Helpers in the community song Crop (0.03-1:55)'
+   > tag   alert            t='[Alert]' a='*Ehara taku toa i te toa takitahi, engari kē he toa takitini*'
+     black                  t='' a='"My strength is not that of one but of many”'
+     tag   lesson content   t='[Lesson content]' a=''
+     tag   h2               t='[H2]' a='*Lesson 1: In an Emergency Dial 111*'
+
+== TWHA905_0_0.html gold: whatungarongaro te tangata toitū te whenua / as man disappears from sight the land remains  | claude chain ['row', 'col']
+     tag   tab n            t='[Tab 1: MODULE INTRODUCTION] T' a=''
+     tag   body             t='[Body]' a='Kia ora! Welcome to this module on how to practice our thinking skills through the way we '
+   > black                  t='' a='Whatungarongaro te tangata toitū te whenua *As man disappears from sight, the land remains'
+     black                  t='' a='This whakataukī highlights the enduring nature of land and the importance of protecting it'
+     tag                    t='[hover - Traditional Māori kno' a='approaches such as mahinga kai'
+     tag                    t="[hover - Means 'to work the fo" a=', and kaitiakitanga'
+
+== TWHA906_0_0.html gold: its not the mountain we conquer but ourselves /  sir edmund hillary  | claude chain ['row', 'col']
+     tag                    t='(answers are shown above in re' a=''
+     tag   end activity     t='[end interactive]' a=''
+   > tag   quote            t='[quote]' a='*It’s not the mountain we conquer but ourselves.* – Sir Edmund Hillary'
+     tag                    t='[Actiivty 5B]' a='When things do not go to plan'
+     tag   body             t='[Body]' a='When things do not go to plan, we can feel frustrated. Watch the following video of a pict'
+     tag   image            t='[insert media item #61]' a='https://youtu.be/jgXBfkaNw5A'
+
+== TWHA906_0_0.html gold: do not judge me by my success judge me by how /  nelson mandela  | claude chain ['row', 'col']
+     black                  t='' a='• Your story rewrite.'
+     tag   button           t='[button]' a='Portfolio'
+   > tag   quote            t='[quote]' a='*“Do not judge me by my success, judge me by how many times I fell down and got back up ag'
+     tag   alert            t='[alert]' a='Being resilient is when you can persevere when things are hard. You’ll use your strengths '
+     tag   end tab n        t='[End tab]' a=''
+
+== WJFUN210_0_0.html gold: ko au te awa ko te awa ko au / i am the river and the river is me  | claude chain ['row', 'col']
+     tag   body             t='[body]' a='Whanganui is a fascinating place with many exciting attractions. The Whanganui River winds'
+     black                  t='' a='There is a special Māori expression from this area'
+   > black                  t='' a='"Ko au te awa, ko te awa ko au." I am the river, and the river is me.'
+     tag   video            t='[Insert Video]' a='Whanganui Journey Track, New Zealand (Great Walks Track Profile 3 of 9)'
+     black                  t='' a='In this Fundamental we will be learning about the different language choices we can make t'
+     black                  t='' a='Click on an image below to get started. You can do them in any order. At the end of each o'
+
+== XDLS501_0_0.html gold: ehara taku toa i te toa takitahi engari he to / my strength is not that of one but of many  | claude chain ['alert', 'row', 'col']
+     tag   module introduction   t='[MODULE INTRODUCTION]' a=''
+     tag   h1               t='[H1]' a='Whakawhanaungatanga | Learning to relate well with others'
+   > tag   important      B t='[Important Statement]' a='**Ehara taku toa i te toa takitahi engari, he toa takitini**'
+     black                  t='' a='My successes are not mine alone, they are ours – the greatest successes we will have are f'
+     tag   body             t='[Body]' a=''
+     black                  t='' a='This module is called a Whakawhanaugatanga. The purpose is to assist you nourish relations'
+
+== XGF9002_9_0.html gold: e ngā mātua e ngā whānau ngā mihi nunui ki a   | claude chain ['row', 'col']
+     tag   button           t='[Button 3] [H3]' a='NAGC https://www.nagc.org/family-tip-sheets'
+     tag   button           t='[Button 4] [H3]' a='Fordham Institute https://fordhaminstitute.org/national/commentary/wonderful-weighty-chall'
+   > tag   body             t='[Body]' a='E ngā mātua, e ngā whānau, ngā mihi nunui ki a koutou.'
+     black                  t='' a='Thank you for walking this journey – for learning, reflecting, and sharing alongside your '
+     black                  t='' a='Giftedness is not only about exceptional ability – it is about *potential, purpose, and pe'
+     black                  t='' a='Your child’s gifts are woven from their whakapapa, experiences, and imagination – and it i'
+
+== XGF9003_0_0.html gold: mā te huruhuru ka rere te manu / with feathers the bird will fly  | claude chain ['row', 'col']
+     tag                    t='Resources and Games' a=''
+     tag   tab n            t='[New tab]' a='Introduction'
+   > tag                  B t='[whakaukī]' a='**Mā te huruhuru, ka rere te manu.**'
+     black                  t='' a='*With feathers, the bird will fly.*'
+     black                  t='' a='Every bird needs feathers to fly – just like we need skills like planning and focus to hel'
+     tag   tab n            t='[Tab 1]' a='Introduction'
+
+RUNS 23

@@ -1,0 +1,17 @@
+MISSING-container elements 672
+
+  630 el /  247 pages / 144 modules  human wrapped in [alert]
+   families: TRR 105, HIS 60, ENFUN 41, SSCI 29, XGF 28, CEDO 26, ENGJ 25, ENGC 20
+   claude innermost | tag: col | p 462, col | h3 67, col | ul 47, col | h4 25, videoSection | iframe 10
+   e.g. AGH1001_5_0.html <p> 'a management practice is an activity or job done b'  claude ['row', 'col']  human ['row', 'col', 'alert']
+   e.g. AGH1002_4_0.html <p> 'there are four physical properties of soil two of '  claude ['row', 'col']  human ['row', 'col', 'alert']
+   e.g. AGH1002_4_0.html <ol> 'drainage water holding capacity'  claude ['row', 'col']  human ['row', 'col', 'alert']
+   e.g. AGH1002_4_0.html <p> 'the other two are related to the air in the soil'  claude ['row', 'col']  human ['row', 'col', 'alert']
+
+   42 el /   24 pages /  23 modules  human wrapped in [whakatauki]
+   families: TWHA 5, EXBP 4, MXFU 4, XGF 3, BLLR 2, CEDT 2, ENGI 2, ENGS 2
+   claude innermost | tag: col | p 42
+   e.g. BLLR201_0_0.html <p> 'mā te kimi ka kite mā te kite ka mōhio mā te mōhio'  claude ['row', 'col']  human ['row', 'col', 'whakatauki']
+   e.g. BLLR201_0_0.html <p> 'seek and discover discover and know know and becom'  claude ['row', 'col']  human ['row', 'col', 'whakatauki']
+   e.g. CEDT208_0_0.html <p> 'my culture and language consolidate my learning en'  claude ['row', 'col']  human ['row', 'col', 'col', 'whakatauki']
+   e.g. CEDT501_0_0.html <p> 'speak to me speak back  through dialogue comes und'  claude ['row', 'col']  human ['row', 'col', 'whakatauki']
