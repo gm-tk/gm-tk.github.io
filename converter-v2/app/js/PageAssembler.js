@@ -154,6 +154,22 @@ class PageAssembler {
 		const empty = (it) => !String(it?.text ?? "").trim() && !String(it?.blackAfter ?? "").trim();
 		const maxReo = cfg.max_reo_chars ?? 200;
 		const eng0 = (x) => String(x?.text ?? "").trim();
+		// ROUND 530: the overview's MODULE MENU region — from a `[TITLE BAR]` section marker to the next section marker — is
+		// built by the menu builder, not the callout emitter; a proverb there stays as the writer typed it (ENGI202's Understand
+		// block) — the payload pass only (on the r528 pass it cost PWYWHA1 / XWHA01 / TWHA903 their boxes). Data
+		// callouts.untagged_proverb.payload_forms.skip_menu_region; env WHKFORMS_OFF.
+		const pfc = cfg.payload_forms;
+		const menuGuard = !!pfc && pfc.enabled !== false && pfc.skip_menu_region === true
+			&& !(typeof process !== "undefined" && process.env && process.env[pfc.env || "WHKFORMS_OFF"]);
+		const inMenu = new Set();
+		if (menuGuard) {
+			let on = false;
+			for (let k = 0; k < items.length; k++) {
+				const p = items[k]?.type === "tag" ? items[k].parse?.primary : null;
+				if (p?.directive === "SECTION_MARKER" || p?.directive === "PAGE_BOUNDARY") { on = p.tag === "title bar"; continue; }
+				if (on) inMenu.add(k);
+			}
+		}
 		let n = 0, nOwn = 0;
 		for (let k = 0; k < items.length; k++) {
 			const it = items[k];
@@ -207,6 +223,43 @@ class PageAssembler {
 			n++;
 		}
 		if (n) run.AddNote("info", "PageAssembler", `${n} untagged proverb${n > 1 ? "s" : ""} (a reo line + its English) read as ${cfg.retag_as}${nOwn ? ` (${nOwn} in place of a payload-free callout that held only the pair)` : ""} (callouts.untagged_proverb).`);
+		// ROUND 530 — THE PROVERB AS A TAG'S PAYLOAD (session 52 Round 3; the whakataukī residue after r528, outputs/_s52_r3_whkres.py):
+		// the reo line typed on the tag's own line — `[Body] *Tuku iho, he tapu te upoko.*` (PHE1007, BLLR201) or a callout whose
+		// whole content is the pair, `[Alert] *Kō ngā tahu ā ō tapuwai inanahi…*` + the English (ANZH105 / 205, SSOG101, XDLS501's
+		// `[Important Statement]`) — is the same proverb box; the gold ships div.whakatauki on every one. The tag is re-typed as the
+		// whakatauki with `reo | english` as its payload. Data callouts.untagged_proverb.payload_forms; env WHKFORMS_OFF.
+		const pf = cfg.payload_forms;
+		if (!pf || pf.enabled === false || (typeof process !== "undefined" && process.env && process.env[pf.env || "WHKFORMS_OFF"])) return;
+		let n2 = 0;
+		for (let k = 0; k < items.length; k++) {
+			const it = items[k];
+			const tag = it?.type === "tag" ? it.parse?.primary?.tag : null;
+			if (!tag || !(pf.tags ?? []).includes(tag) || inMenu.has(k)) continue;
+			let pay = String(it.blackAfter ?? "").trim();
+			if (prefixRe) pay = pay.replace(prefixRe, "");
+			const reo = plain(pay);
+			if (!reo || reo.length > maxReo || (excl && excl.test(reo))) continue;
+			const w = words(pay);
+			if (w.length < (cfg.min_reo_words ?? 4) || !w.every((x) => syl.test(x))) continue;
+			let j = k + 1; while (j < items.length && items[j]?.type === "black" && empty(items[j])) j++;
+			const nx = items[j];
+			if (!nx || nx.type !== "black") continue;
+			const ew = words(nx.text).filter((x) => /^[A-Za-zāēīōūĀĒĪŌŪ]+$/.test(x));
+			if (ew.length < (cfg.min_english_words ?? 3) || ew.filter((x) => syl.test(x)).length / ew.length >= (cfg.max_english_reo_share ?? 0.5)) continue;
+			const eng = eng0(nx);
+			if (plain(eng).length > (cfg.max_english_chars ?? 200)) continue;
+			if ((pf.whole_content_tags ?? []).includes(tag)) {
+				let e = j + 1; while (e < items.length && items[e]?.type === "black" && empty(items[e])) e++;
+				if (e < items.length && items[e]?.type !== "tag") continue;   // the callout holds more than the pair: it stays
+			}
+			const parse = normaliser.Parse(cfg.retag_as);
+			if (parse?.primary?.tag !== "whakatauki") continue;
+			it.parse = parse; it.text = cfg.retag_as;
+			it.blackAfter = !sepRe.test(pay) && !sepRe.test(eng) ? `${pay} | ${eng}` : pay;
+			if (it.blackAfter !== pay) { nx.text = ""; nx.blackAfter = ""; }
+			n2++;
+		}
+		if (n2) run.AddNote("info", "PageAssembler", `${n2} proverb${n2 > 1 ? "s" : ""} typed as a tag's payload read as ${cfg.retag_as} (callouts.untagged_proverb.payload_forms).`);
 	}
 
 	/**

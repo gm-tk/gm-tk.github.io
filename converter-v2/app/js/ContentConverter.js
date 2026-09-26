@@ -10102,8 +10102,15 @@ class ContentConverter {
 			// and number ranges are never split). Writers vary the separator (corpus:
 			// pipe 23, spaced-dash among the rest); the human splits them either way.
 			// Never split a line carrying a URL.
-			content = content.split("\n").map((line) =>
-				line.includes("http") ? line : line.replace(/\s+[|–—]\s+/, "\n")).join("\n");
+			// ROUND 530: a proverb that already HAS its two lines (reo, then english) is never re-split — an English line's
+			// own spaced dash ("Pursue excellence – should you stumble…", EXBP901) is punctuation, not the separator
+			// (proverb_split_merged.pipe_split_single_line_only; env WHKFORMS_OFF).
+			const _psm = def.proverb_split_merged;
+			const _oneLineOnly = !!_psm && _psm.enabled !== false && _psm.pipe_split_single_line_only === true
+				&& !(typeof process !== "undefined" && process.env && process.env[_psm.env ?? "WHKFORMS_OFF"]);
+			if (!(_oneLineOnly && content.split("\n").filter((l) => l.trim()).length > 1))
+				content = content.split("\n").map((line) =>
+					line.includes("http") ? line : line.replace(/\s+[|–—]\s+/, "\n")).join("\n");
 		}
 		// PROVERB NORMALISE — SPLIT step (round 225; Chris's XDLS905/906 whakataukī
 		// screenshots). A writer authors the proverb as a bold reo line, a SOFT line
@@ -11247,10 +11254,19 @@ class ContentConverter {
 		return s;
 	};
 
+	/** The proverb-only callout's content: the payload, then the SHORT black lines after it up to proverb_max_paragraphs.
+	 *  ROUND 530 (the autonomous loop's session 52 Round 3) — by emit time an earlier pass has often joined the proverb, its
+	 *  translation and the commentary into ONE black item ("reo\nenglish\ncommentary"); the old length test read that as
+	 *  commentary, so the writer's own `[Whakatauki]` shipped EMPTY with a red flag (SSEA203_0_0, EXBP901) or reo-only. A merged
+	 *  item over proverb_max_chars now gives up its leading short lines (up to the paragraph limit) and keeps the rest as free
+	 *  body. Data callouts.by_tag.whakatauki.proverb_split_merged; env WHKFORMS_OFF. */
 	static #gatherProverb(it, bodyItems, i, def) {
 		const maxChars = def.proverb_max_chars ?? 200;
 		const maxPara = def.proverb_max_paragraphs ?? 2;
 		const sepRe = /\s[|–—]\s/;                 // reo|english separator on one line
+		const psm = def.proverb_split_merged;      // ROUND 530 (WHKFORMS_OFF)
+		const splitMerged = !!psm && psm.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[psm.env ?? "WHKFORMS_OFF"]);
 		const first = (it.blackAfter ?? "").trim();
 		const parts = first ? [first] : [];
 		// only look for the english on a SEPARATE line when it is not already on the
@@ -11259,6 +11275,26 @@ class ContentConverter {
 			for (let j = i + 1; j < bodyItems.length && parts.length < maxPara; j++) {
 				const next = bodyItems[j];
 				if (next.type !== "black" || next.consumedBy !== undefined) break;
+				// ROUND 530 — a MERGED item ("reo\nenglish\ncommentary", joined by an earlier pass): take its leading short
+				// lines up to maxPara and leave the rest in place (callouts.by_tag.whakatauki.proverb_split_merged)
+				if (splitMerged && String(next.text ?? "").includes("\n") && next.text.trim().length > maxChars) {
+					const lines = String(next.text).split("\n");
+					const labelRe = psm.label_pattern ? new RegExp(psm.label_pattern, "i") : null;
+					const kept = [];
+					let t = 0, took = 0;
+					// the writer's own label line before the proverb ('**Whakatauki**', FRNO902) stays out of the box
+					while (t < lines.length && labelRe && labelRe.test(lines[t].replace(/\*+/g, "").trim())) kept.push(lines[t++]);
+					while (t < lines.length && parts.length < maxPara) {
+						const ln = lines[t].trim();
+						if (!ln) { t++; continue; }
+						if (ln.length > maxChars) break;
+						parts.push(ln); t++; took++;
+					}
+					if (!took) break;
+					const restLines = kept.concat(lines.slice(t));
+					if (restLines.join("").trim()) next.text = restLines.join("\n"); else next._consumed = true;
+					break;
+				}
 				if ((next.text ?? "").trim().length > maxChars) break;   // commentary → free body
 				parts.push(next.text.trim());
 				next._consumed = true;

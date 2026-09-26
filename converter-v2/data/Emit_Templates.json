@@ -723,6 +723,22 @@
 			"max_english_reo_share": 0.5,
 			"exclude_pattern": "^\\W*(?:kia ora|nau mai|t[eē]n[aā] (?:koe|kout[oō]u|kor[oō]ua)|m[oō]rena)\\b",
 			"max_english_chars": 200,
+			"payload_forms": {
+				"enabled": true,
+				"env": "WHKFORMS_OFF",
+				"tags": [
+					"body",
+					"alert",
+					"important"
+				],
+				"whole_content_tags": [
+					"alert",
+					"important"
+				],
+				"skip_menu_region": true,
+				"_skip_menu_doc": "The overview's module-menu region (a [TITLE BAR] section marker to the next section marker) is built by the menu builder, not the callout emitter: a proverb there stays as the writer typed it (ENGI202's Understand block — unguarded, the menu printed the raw `reo | english` payload). Guards THIS pass only: applied to the r528 untagged pass it cost PWYWHA1 / XWHA01 / TWHA903 their gold-matching boxes (a title bar followed straight by body text there, no menu).",
+				"_doc": "ROUND 530 (session 52 Round 3). THE PROVERB AS A TAG'S PAYLOAD: the reo line typed on the tag's own line — [Body] *Tuku iho, he tapu te upoko.* (PHE1007, BLLR201) or a callout whose whole content is the pair, [Alert] *Kō ngā tahu ā ō tapuwai inanahi…* + the English (ANZH105 / ANZH205, SSOG101, XDLS501's [Important Statement]) — is the same proverb box; the gold ships div.whakatauki on every one (outputs/_s52_r3_whkres.py, the residue after r528). The tag is re-typed as the whakatauki with `reo | english` as its payload; a whole_content_tags callout re-types only when a tag / the end follows the English. KB 07B §7."
+			},
 			"tagged_lookback": 2,
 			"owner_tags": [
 				"alert",
@@ -890,6 +906,15 @@
 				"proverb_only": true,
 				"proverb_max_chars": 200,
 				"proverb_max_paragraphs": 2,
+				"proverb_split_merged": {
+					"enabled": true,
+					"env": "WHKFORMS_OFF",
+					"pipe_split_single_line_only": true,
+					"label_pattern": "^(?:whakat[aā]u[aā]?k[iī]|proverb|proverbe)\\s*:?$",
+					"_label_doc": "A leading label line in the merged item ('**Whakatauki**', FRNO902) stays out of the box — the gold keeps it as its own bold <p> before the box.",
+					"_pipe_doc": "The reo|english pipe / spaced-dash split (split_payload_on_pipe) runs only when the gathered content is ONE line: a proverb that already has its two lines keeps them — the English line's own spaced dash is punctuation ('Pursue excellence – should you stumble, let it be to a lofty mountain', EXBP901: the gold keeps it one <p>).",
+					"_doc": "ROUND 530 (session 52 Round 3). THE TAGGED WHAKATAUKĪ'S MERGED LINES. By emit time an earlier pass has often joined the proverb, its translation and the commentary into ONE black item ('reo\\nenglish\\ncommentary'); #gatherProverb's length test (proverb_max_chars) read it as commentary, so the writer's own [Whakatauki] shipped EMPTY with an 'Empty [whakatauki]' red flag (SSEA203_0_0, EXBP901_1_0 / _4_0) or reo-only. A merged item over proverb_max_chars now gives up its leading short lines, up to proverb_max_paragraphs, and keeps the rest as free body. Found by outputs/_s52_r3_whkres.py (the whakataukī residue after r528). KB 07B §7."
+				},
 				"proverb_note": "A whakataukī holds ONLY the proverb (reo + english) — the leading SHORT line(s) on/after the marker. The COMMENTARY that follows (a long explanatory paragraph, no marker) is FREE body, not part of the callout. Measured: 137/147 human .whakatauki hold exactly 2 <p> (the proverb), only 4 hold a long paragraph. ContentConverter.#gatherProverb stops at the first paragraph longer than proverb_max_chars (or after proverb_max_paragraphs) and leaves it un-consumed → rendered as body. split_payload_on_pipe splits reo|english on | / – / — (spaced). Fixes XGF9001 (the en-dash proverb + absorbed commentary).",
 				"icon_note": "2026-06-12 (round 5): icon img REMOVED — the signed-off OSAI201-00 gold file has a plain <div class=\"whakatauki\"> and the archive has 0/181 with an icon. The earlier icon addition is superseded.",
 				"pipe_note": "Writers give the proverb as 'reo | english' on one line; the house form is two separate <p>s (179/181 in the corpus)."
