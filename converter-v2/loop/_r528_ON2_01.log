@@ -1,0 +1,17 @@
+[flagon] EmitTemplates:callouts.untagged_proverb → enabled
+DAN1003: identical 9 / changed 1
+DAN1004: identical 9 / changed 1
+ENGC101: identical 6 / changed 1
+ENGC201: identical 6 / changed 2
+ENGC204: identical 7 / changed 1
+ENGC403: identical 16 / changed 1
+ENGI202: identical 7 / changed 1
+ENGI405: identical 8 / changed 1
+ENGS404: identical 12 / changed 1
+ENGS405: identical 1 / changed 1
+FRNO901: identical 9 / changed 1
+GENO901: identical 23 / changed 1
+HES1003: identical 10 / changed 1
+
+TOTAL: identical 123 / changed 14 / missing 0 over 13 modules
+CHANGED: DAN1003/DAN1003_0_0.html DAN1004/DAN1004_0_0.html ENGC101/ENGC101_0_0.html ENGC201/ENGC201_0_0.html ENGC201/ENGC201_6_0.html ENGC204/ENGC204_0_0.html ENGC403/ENGC403_0_0.html ENGI202/ENGI202_0_0.html ENGI405/ENGI405_0_0.html ENGS404/ENGS404_0_0.html ENGS405/ENGS405_0_0.html FRNO901/FRNO901_0_0.html GENO901/GENO901_0_0.html HES1003/HES1003_0_0.html

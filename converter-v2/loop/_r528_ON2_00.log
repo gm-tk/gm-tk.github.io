@@ -1,0 +1,18 @@
+[flagon] EmitTemplates:callouts.untagged_proverb → enabled
+AGH1002: identical 7 / changed 1
+ANZH301: identical 0 / changed 12
+ANZH302: identical 0 / changed 12
+ANZH303: identical 7 / changed 1
+BLL271: identical 3 / changed 1
+CBI1004: identical 11 / changed 1
+CEDK401: identical 1 / changed 1
+CEDR203: identical 1 / changed 1
+CEDR204: identical 1 / changed 1
+CEDT101: identical 1 / changed 1
+CEDT102: identical 1 / changed 1
+CEDT207: identical 1 / changed 1
+CEDT301: identical 1 / changed 1
+CHWHA: identical 1 / changed 1
+
+TOTAL: identical 36 / changed 36 / missing 0 over 14 modules
+CHANGED: AGH1002/AGH1002_1_0.html ANZH301/ANZH301_0_0.html ANZH301/ANZH301_1_0.html ANZH301/ANZH301_2_0.html ANZH301/ANZH301_3_0.html ANZH301/ANZH301_4_0.html ANZH301/ANZH301_5_0.html ANZH301/ANZH301_6_0.html ANZH301/ANZH301_7_0.html ANZH301/ANZH301_8_0.html ANZH301/ANZH301_9_0.html ANZH301/ANZH301_10_0.html ANZH301/ANZH301_interactives.txt ANZH302/ANZH302_0_0.html ANZH302/ANZH302_1_0.html ANZH302/ANZH302_2_0.html ANZH302/ANZH302_3_0.html ANZH302/ANZH302_4_0.html ANZH302/ANZH302_5_0.html ANZH302/ANZH302_6_0.html ANZH302/ANZH302_7_0.html ANZH302/ANZH302_8_0.html ANZH302/ANZH302_9_0.html ANZH302/ANZH302_10_0.html ANZH302/ANZH302_interactives.txt ANZH303/ANZH303_0_0.html BLL271/BLL271_2_0.html CBI1004/CBI1004_0_0.html CEDK401/CEDK401_0_0.html CEDR203/CEDR203_0_0.html CEDR204/CEDR204_0_0.html CEDT101/CEDT101_0_0.html CEDT102/CEDT102_0_0.html CEDT207/CEDT207_0_0.html CEDT301/CEDT301_0_0.html CHWHA/CHWHA_0_0.html

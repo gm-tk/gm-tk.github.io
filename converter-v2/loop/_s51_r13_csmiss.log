@@ -1,0 +1,17 @@
+MISSING-container elements 879
+
+  768 el /  298 pages / 149 modules  human wrapped in [alert]
+   families: TRR 105, HIS 81, HPRE 51, PES 49, ENFUN 41, SSOG 31, SSCI 29, XGF 28
+   claude innermost | tag: col | p 508, col | h3 130, col | ul 70, col | h4 30, col | h5 11
+   e.g. AGH1001_5_0.html <p> 'a management practice is an activity or job done b'  claude ['row', 'col']  human ['row', 'col', 'alert']
+   e.g. AGH1002_4_0.html <p> 'there are four physical properties of soil two of '  claude ['row', 'col']  human ['row', 'col', 'alert']
+   e.g. AGH1002_4_0.html <ol> 'drainage water holding capacity'  claude ['row', 'col']  human ['row', 'col', 'alert']
+   e.g. AGH1002_4_0.html <p> 'the other two are related to the air in the soil'  claude ['row', 'col']  human ['row', 'col', 'alert']
+
+  111 el /   59 pages /  55 modules  human wrapped in [whakatauki]
+   families: TWHA 9, ENGC 7, XMES 7, ENGS 6, PHE 6, MXFU 5, XGF 5, CEDR 4
+   claude innermost | tag: col | p 111
+   e.g. ANZH303_0_0.html <p> 'ki te kotahi te kākaho ka whati ki te kāpuia e kor'  claude ['row', 'col']  human ['row', 'col', 'whakatauki']
+   e.g. ANZH303_0_0.html <p> 'when we stand alone we are vulnerable but together'  claude ['row', 'col']  human ['row', 'col', 'whakatauki']
+   e.g. BLLR201_0_0.html <p> 'mā te kimi ka kite mā te kite ka mōhio mā te mōhio'  claude ['row', 'col']  human ['row', 'col', 'whakatauki']
+   e.g. BLLR201_0_0.html <p> 'seek and discover discover and know know and becom'  claude ['row', 'col']  human ['row', 'col', 'whakatauki']

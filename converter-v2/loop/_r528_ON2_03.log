@@ -1,0 +1,17 @@
+[flagon] EmitTemplates:callouts.untagged_proverb → enabled
+TWHR907: identical 1 / changed 1
+XDLS502: identical 4 / changed 2
+XDLS901: identical 4 / changed 2
+XGF9004: identical 18 / changed 1
+XGF9006: identical 8 / changed 1
+XLP04: identical 5 / changed 1
+XMES101: identical 9 / changed 1
+XMES102: identical 6 / changed 1
+XMES103: identical 6 / changed 1
+XTAS102: identical 6 / changed 1
+XTAS103: identical 7 / changed 1
+XWHA01: identical 2 / changed 1
+XWHA02: identical 5 / changed 2
+
+TOTAL: identical 81 / changed 16 / missing 0 over 13 modules
+CHANGED: TWHR907/TWHR907_0_0.html XDLS502/XDLS502_0_0.html XDLS502/XDLS502_4_0.html XDLS901/XDLS901_0_0.html XDLS901/XDLS901_4_0.html XGF9004/XGF9004_1_0.html XGF9006/XGF9006_0_0.html XLP04/XLP04_0_0.html XMES101/XMES101_0_0.html XMES102/XMES102_0_0.html XMES103/XMES103_0_0.html XTAS102/XTAS102_0_0.html XTAS103/XTAS103_0_0.html XWHA01/XWHA01_0_0.html XWHA02/XWHA02_0_0.html XWHA02/XWHA02_5_0.html

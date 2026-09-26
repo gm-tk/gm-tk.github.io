@@ -1,0 +1,82 @@
+diff --git a/converter-v2/app/js/PageAssembler.js b/converter-v2/app/js/PageAssembler.js
+index 0451be5..8b20e2e 100644
+--- a/converter-v2/app/js/PageAssembler.js
++++ b/converter-v2/app/js/PageAssembler.js
+@@ -122,6 +122,45 @@ class PageAssembler {
+ 			`${n} red-bracket journal instruction${n > 1 ? "s" : ""} read as the learner's sentence, not an [Activity] opener (journal_instruction_box.bracket_sentence).`);
+ 	}
+ 
++	/**
++	 * ROUND 528 — THE UNTAGGED WHAKATAUKĪ (KB 07B §7; the gold boxes it 49 / 64 where its text survives). A free black
++	 * paragraph whose every word is Māori-phonotactic, followed by an English paragraph, is a proverb + translation the writer
++	 * typed without the [Whakatauki] tag: the reo item is re-typed as that tag with the reo line as its payload, so the
++	 * existing proverb-only callout (reo + english, bold / italic stripped) builds the box. A pair already under a whakatauki
++	 * tag and a greeting are left alone. Data callouts.untagged_proverb; env UNTAGPROVERB_OFF.
++	 */
++	static #untaggedProverb(items, run, normaliser) {
++		const cfg = DataService.Data.EmitTemplates?.callouts?.untagged_proverb;
++		if (!cfg || cfg.enabled === false || !normaliser) return;
++		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "UNTAGPROVERB_OFF"]) return;
++		const syl = new RegExp(cfg.syllable_pattern, "i"), punct = new RegExp(cfg.word_strip_pattern, "g");
++		const excl = cfg.exclude_pattern ? new RegExp(cfg.exclude_pattern, "i") : null;
++		const plain = (s) => String(s ?? "").replace(/<[^>]+>|\*+/g, "").replace(/(?<![A-Za-z])_+|_+(?![A-Za-z])/g, "").normalize("NFC").replace(/\s+/g, " ").trim();
++		const words = (s) => plain(s).replace(punct, " ").split(/\s+/).filter(Boolean);
++		const empty = (it) => !String(it?.text ?? "").trim() && !String(it?.blackAfter ?? "").trim();
++		let n = 0;
++		for (let k = 0; k < items.length; k++) {
++			const it = items[k];
++			if (!it || it.type !== "black") continue;
++			const reo = plain(it.text);
++			if (!reo || reo.length > (cfg.max_reo_chars ?? 200) || (excl && excl.test(reo))) continue;
++			const w = words(it.text);
++			if (w.length < (cfg.min_reo_words ?? 4) || !w.every((x) => syl.test(x))) continue;
++			let j = k + 1; while (j < items.length && items[j]?.type === "black" && empty(items[j])) j++;
++			const nx = items[j];
++			if (!nx || nx.type !== "black") continue;
++			const ew = words(nx.text).filter((x) => /^[A-Za-zāēīōūĀĒĪŌŪ]+$/.test(x));
++			if (ew.length < (cfg.min_english_words ?? 3) || ew.filter((x) => syl.test(x)).length / ew.length >= (cfg.max_english_reo_share ?? 0.5)) continue;
++			let p = k - 1; while (p >= 0 && items[p]?.type !== "table" && empty(items[p])) p--;
++			if (items[p]?.type === "tag" && items[p].parse?.primary?.tag === "whakatauki") continue;
++			const parse = normaliser.Parse(cfg.retag_as);
++			if (parse?.primary?.tag !== "whakatauki") continue;
++			it.type = "tag"; it.parse = parse; it.blackAfter = it.text; it.text = cfg.retag_as;
++			n++;
++		}
++		if (n) run.AddNote("info", "PageAssembler", `${n} untagged proverb${n > 1 ? "s" : ""} (a reo line + its English) read as ${cfg.retag_as} (callouts.untagged_proverb).`);
++	}
++
+ 	/**
+ 	 * ROUND 525 — THE BOLD ACTIVITY ID AFTER A WIDGET TAG (the FRNO family's form, 50 spans): `[Reorder autocheck]]
+ 	 * **2C****Put the conversation together**` — the id and title typed in bold black after the widget tag, so no box opened and
+@@ -277,6 +316,7 @@ class PageAssembler {
+ 		PageAssembler.#bareSummaryAlert(items, run, normaliser);   // ROUND 522 part 2 (SUMMARYALERT_OFF)
+ 		PageAssembler.#cotagDuplicateId(items, run);   // ROUND 523 (ACTHDCOTAG_OFF — the co-tag rule's own guard)
+ 		PageAssembler.#boldIdWidgetActivity(items, run, normaliser);   // ROUND 525 (BOLDIDACT_OFF)
++		PageAssembler.#untaggedProverb(items, run, normaliser);   // ROUND 528 (UNTAGPROVERB_OFF)
+ 		run.pages = PageSplitter.Split(items, run, normaliser);
+ 		if (!run.pages.length) {
+ 			run.AddNote("error", "PageAssembler",
+diff --git a/converter-v2/data/Emit_Templates.json b/converter-v2/data/Emit_Templates.json
+index 305d1a0..bae82b0 100644
+--- a/converter-v2/data/Emit_Templates.json
++++ b/converter-v2/data/Emit_Templates.json
+@@ -711,6 +711,19 @@
+ 			"retag_as": "[Alert]",
+ 			"title": "Summary"
+ 		},
++		"untagged_proverb": {
++			"_doc": "ROUND 528 (the autonomous loop's session 51 Round 13). THE UNTAGGED WHAKATAUKĪ. A writer who types a proverb and its translation without the [Whakatauki] tag leaves two free black paragraphs: the reo line (every word Māori-phonotactic — open syllables over the Māori alphabet, ≥ min_reo_words) and the English line right after it. The gold boxes the pair as div.whakatauki 49 / 77 (0.64; 0.77 of the 64 whose text is in the gold — outputs/_s51_r13_proverb.cjs → _s51_r13_provgold.py; Inquiry 0.65 / Standard 0.63, 69 pages, no family > 6); KB 07B §7 names the dedicated whakatauki component. The reo item is re-typed as the retag_as tag with the reo line as its payload, so the existing proverb-only callout (by_tag.whakatauki: reo + english, bold / italic stripped, 2 paragraphs) builds the box. Skipped: a pair the writer already tagged (the item before it is a whakatauki tag), a greeting (exclude_pattern), a reo line over max_reo_chars. Env UNTAGPROVERB_OFF.",
++			"enabled": false,
++			"env": "UNTAGPROVERB_OFF",
++			"syllable_pattern": "^(?:(?:[hkmnprtw]|ng|wh)?[aeiouāēīōū])+$",
++			"word_strip_pattern": "[‘’'\"“”.,;:!?()\\-–—…]",
++			"min_reo_words": 4,
++			"max_reo_chars": 200,
++			"min_english_words": 3,
++			"max_english_reo_share": 0.5,
++			"exclude_pattern": "^\\W*(?:kia ora|nau mai|t[eē]n[aā] (?:koe|kout[oō]u|kor[oō]ua)|m[oō]rena)\\b",
++			"retag_as": "[Whakatauki]"
++		},
+ 		"rule":"One container algorithm serves every callout — only the class differs (a lookup, not logic). Modifier keywords append their class.",
+ 		"side_column_backward_pair": true,
+ 		"side_column_backward_pair_note": "ROUND 123 (Chris, the round-122 logged follow-up). A side_column callout ([Side alert] → alertActivity) is the RIGHT sibling of the immediately-preceding col-md-8 main-content column, in ONE shared <div class=\"row\"> — the human convention, measured 99/100 across the 43 [side alert] modules (`outputs/_measure_sidealert_pairing.py`; only BLL160 has 1 own-row, the 1% editorial exception). Round 122 freed the side alerts from widget absorption but rendered them in their OWN row, dipping the skeleton on own-row-vs-side-by-side placement. ContentConverter's callout emit site detects that rowFor(\"section\") has just closed the preceding content row (parts ends with content_row_close = close col-md-8 + close row), un-closes it, appends #sideAlertCol as the right-sibling col, and re-closes the row. The col-md-8 default content col already matches the human; the EXACT side width (col-md-4 dominant 48 vs col-md-3 44) stays editorial. Falls back to the round-122 own-row form when there is no preceding content row (page-start / consecutive alerts). General + data-described: any future side_column callout pairs the same way. Env SIDEPAIR_OFF reverts to own-row (independent of SIDEALERT_OFF, which reverts the class entirely).",
