@@ -1,5 +1,21 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (session 51 Round 12, build 260620.86 — NO engine change) — THE LEDGER'S FULL-SHIP BACKSTOP: the whole corpus regenerated with the r526 engine is byte-identical to the shipped manifest (545 dirs / 543 modules / 2,673 pages; 0 pages differ)
+
+### 1. WHAT RAN
+
+The ledger's backstop (`_ship_ledger.py`: scoped #5 since the r520 FULL — r522, r523, r525, r526 plus r523's re-run; taken early, three of the cadence's 8 left, as the clean check after this session's four shipped engine rounds, three declined-and-backed-out patches (r524, r527, r527 v2) and the r526 commit that landed in two parts (5bce0fe + 84b660d)) — no engine, data or registry change and no ride-along (LOOP §2). `outputs/_s51_full_regen.sh`: `_batch_plan.py`'s 42 batches as `batch_convert.cjs` calls, 4 parallel workers under WSL — 6 min 24 s, every batch rc 0, `_stalecheck.sh` 0 stale (TRR104 / TRR105 listed by `fresh` as not regenerated: the two recorded no-source dirs, no Claude build — as at every FULL).
+
+### 2. PROOF
+
+- **`_content_manifest.py diff`: IDENTICAL — 0 pages differ** from the shipped manifest: every scoped ship since r520 was complete (none under-scoped), and the backed-out r524 / r527 patches left nothing behind. Identical bytes cannot move a metric.
+- `outputs/_s51_full_postship.sh`: `run_all_gates.sh` — every verifier RESULT ✓, every COUNT held (flipcard 61, math 323, menulabels 111, dragdrop 21, bingo 52 / 624, typing 25 / 232), tags 9557 / 9557 (0 real failures); skeleton `--json` vs the pre-backstop state: 0 movers, +0.0000pp; `_gatecheck.py cs bc` (its skeleton rows CACHED at 55.75 — LOOP §6, ignored) then `skeleton defect --commit --round 526`: every gate HELD; `_fastloop_diff.py --gate-baseline-check` PASS; the fast-loop baseline and the content manifest re-snapshotted; the verifier selftests + the skeleton and feature-index selftests GREEN (50 PASS / GREEN lines, 0 FAIL); the feature index rebuilt; the DIFF MINER re-mined (197 CANDIDATE, the table unchanged).
+- Ledger: `record-full --round 526 --build 260620.86` — LAST FULL = r526; scoped-since 0 (8 of headroom).
+
+### 3. PROTECTED GATES — EXACT
+
+Skeleton **56.1010 % @ 2486** (≥50 1627, ≥75 292, ≥90 28), RAW 39.844 %; cs 16830 / 204 / 879; body ANY 234; clean 2585 / 2627; leak 52 / 42 — all EXACT. Plateau: neither (a change-free backstop).
+
 ## 2026-09-26 (round 526, build 260620.86) — THE BLL INTRODUCTION HEADING'S OWN FULL-WIDTH ROW: on a Blended Literacy page the writer's `[Introduction]` heading stands alone in a `div.row > div.col-12` row (the gold's form on 65 of 79 overviews), not at the head of the `col-md-8` content column; per series (BLL17 / BLL24 / BLL26 keep theirs); 66 modules, skeleton +0.0550pp
 
 ### 1. WHAT CHANGED

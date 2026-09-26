@@ -1,0 +1,1 @@
+- compaction at 13:54 during s51-r12 (the FULL backstop), step setup — the §5d bounded re-read only (loop §3 / §4 / §5c / §5d / §6; LOOP_STATE Session line, Position); no thrash.

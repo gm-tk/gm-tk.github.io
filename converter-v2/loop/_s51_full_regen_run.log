@@ -1,0 +1,13 @@
+[13:55:02] full regeneration: 42 batches, 4 parallel workers
+[14:01:26] REGEN_DONE
+42
+all rc 0
+[14:01:26] stale check
+newest OUTPUT-affecting source: 2026-09-26 13:52:26  (Config.js excluded — UI-only; data/ scoped to the 19 files the engine loads)
+stale modules: 0   OK — every output is fresh.
+[14:01:34] content manifest: fresh (affected = _affected_s51_full.txt) / changed
+  affected set: 545 module(s) (must be freshly regenerated)
+  unaffected  : 0 module(s) (must be byte-identical to the manifest; mtime IGNORED)
+  !! NOT REGENERATED — 2 affected module(s) older than the source edit (truly stale): TRR104 TRR105
+     => regen them:  python3 _batch_plan.py --codes TRR104 TRR105
+[14:02:37] FULLSHIP_DONE
