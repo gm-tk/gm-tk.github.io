@@ -1875,7 +1875,8 @@ class Config {
 	// ROUND 522 (260620.83): THE JOURNAL INSTRUCTION IS ITS OWN ACTIVITY BOX (session 51 Round 2) + the AGH [Summary] alert + the r468 ride-along. Env JOURNALINSTR_OFF / SUMMARYALERT_OFF / LESSONWALTH2_OFF.
 	// ROUND 523 (260620.84): THE ACTIVITY GOVERNS A HEADING CO-TAG (session 51 Round 3) + its duplicate-id guard + the r521 walk-end reading the box owner's id. Env ACTHDCOTAG_OFF / ACTIDOWNER_OFF.
 	// ROUND 525 (260620.85): THE BOLD ACTIVITY ID AFTER A WIDGET TAG (session 51 Round 5; the FRNO dialect). Env BOLDIDACT_OFF.
-	static AppVersion = "260620.85";
+	// ROUND 526 (260620.86): THE BLL INTRODUCTION HEADING'S OWN FULL-WIDTH ROW (session 51 Round 7; per series). Env INTROROW_OFF.
+	static AppVersion = "260620.86";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

@@ -1,5 +1,24 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (round 526, build 260620.86) — THE BLL INTRODUCTION HEADING'S OWN FULL-WIDTH ROW: on a Blended Literacy page the writer's `[Introduction]` heading stands alone in a `div.row > div.col-12` row (the gold's form on 65 of 79 overviews), not at the head of the `col-md-8` content column; per series (BLL17 / BLL24 / BLL26 keep theirs); 66 modules, skeleton +0.0550pp
+
+### 1. WHAT CHANGED
+
+**The class** (the loss ledger's largest family, BLL — 298 pages, 10.2 % of the gap; the scoped miner over BLL `_s51_bll_miner.md`, row #1374 `div.row` › gold `div.col-12` vs Claude `div.col-12.col-md-8`, 107 pages / 78 modules): the writer's mid-document `[Introduction]` (a title-bar alias) renders as `<h3>Introduction</h3>` at the head of the ordinary content column; the Blended Literacy gold puts that heading ALONE in a full-width row (`_s51_r7_intro.py`: `row > col-12 > h3` alone on 65 of 79 overviews, 0.82). By series (`_s51_r7_intro2.py`): the full-width row in BLL11 7/8, BLL12 7/7, BLL13 8/8, BLL14 4/4, BLL15 7/7, BLL16 6/6, BLL21 7/7, BLL22 7/7, BLL23 5/7, BLL25 7/7; the `col-md-8` column in BLL17 (5 of 7) and BLL26 (4 of 5); BLL24 a 3 : 3 tie.
+
+**The fix** (`ContentConverter.#introHeadingFullRow`, a page post-pass just inside `#pageNumberNormalise`; data `body_region.intro_heading_full_row` {subjects ["1-10 Blended Literacy"], exclude_series [BLL17, BLL24, BLL26], heading_pattern, column_class "col-12"}, env **`INTROROW_OFF`**): in a module whose subject is listed and whose series is not excluded, a row whose column OPENS with `<h3>Introduction</h3>` is split — the heading alone in `row > col-12`, the rest in the row's own column. A per-group rule (LOOP §1d exception 2) keyed by the family's own gold. The first build (every series) scored +0.0438pp with BLL261–264 down 4pp each; the series scope removed those.
+
+### 2. PROOF
+
+- In-memory probe over all 545 modules: `INTROROW_OFF=1` → 6,432 / 6,432 pages identical; ON → **66 modules** (BLL only); 0 ASSEMBLE ERROR. `scoped_ship.sh … --round 526` PASS: 0 stale, containment 66 ⊆ 66, a re-planned 12-module spot-check byte-identical.
+- The skeleton gate's own `match()` (`_s51_prescore.py`): **+0.0549pp, 58 up / 3 down** (BLL253_0_0 +7.2, …; the three dips BLL237 / 236 / 142 −1.2 to −1.7, each the short overview's alignment).
+
+### 3. PROTECTED GATES
+
+Skeleton **56.0460 → 56.1010 % @ 2486 (+0.0550pp)**, ≥50 1627 held, ≥75 290 → 292, ≥90 26; RAW 39.798 → 39.8442 %; compare_structure exact 16830 / EXTRA 204 / missing 879 held; body_compare ANY 234 held; clean 98.40 %, leak 52 / 42 EXACT; tags 9557; every verifier ✓, every COUNT held (`_r526_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 526`; `--gate-baseline-check` PASS. Plateau: **reset** (+0.0550pp).
+
+**Ledger:** scoped #5 since the s50-r14 FULL (r520) · data `body_region.intro_heading_full_row` · env `INTROROW_OFF` · code `ContentConverter.#introHeadingFullRow` · session 51 Round 7.
+
 ## 2026-09-26 (round 525, build 260620.85) — THE BOLD ACTIVITY ID AFTER A WIDGET TAG: the FRNO family's `[Reorder autocheck]] **2C****Put the conversation together**` opens the numbered box with the bold title as its h3 (50 spans / FRNO901, FRNO902, FRFUN06); 4 modules, skeleton +0.0238pp
 
 ### 1. WHAT CHANGED
