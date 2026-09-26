@@ -2003,6 +2003,13 @@
 				"buttons_autocheck": "<div class=\"row\">\n<div class=\"activityButton reset\">Reset</div>\n</div>",
 				"close": "</div>"
 			},
+			"red_answer_column": {
+				"_doc": "ROUND 544 (the autonomous loop's session 54 Round 7 — D10-3's build lane). THE RED ANSWER COLUMN: the writer types a matching table's ANSWER column red (`• Sarah spent $12 … ║ «3x = 12»` MXEO301 5.1; a four-column table = two pair sets, `3² ║ «3 × 3» ║ 3^6 ║ «3 × 3 × …»` MXEO301 1.0); the r69 red guard refused every one, the gold builds the standard matching layout (the prompts the questions, the red answers the drags, the right-hand pairs after the left). InteractiveBuilder.#ddRedAnswerPairs: every row of every column pair empty or a black prompt beside a red-only answer; a black first row over them = the label header (dropped); a URL / writer [tag] declines; strip_bullet drops a prompt's leading list mark (the gold's form). max_width 4. Measured `outputs/_s54_r3_ddtable.cjs` on the r543 engine: 24 tables / 22 pages / 9 modules (MXFL 11, MXEO 4, MXDI 3, ENGR 2, BLL 2, MXDB 2). Env DDREDANS_OFF.",
+				"enabled": true,
+				"env": "DDREDANS_OFF",
+				"max_width": 4,
+				"strip_bullet": "^[•·*]\\s*"
+			},
 			"label_row": {
 				"_doc": "ROUND 542 (the autonomous loop's session 54 Round 4 — D10-3's build lane; dragAndDrop is the largest un-built type). THE LABEL ROW of the r69 standard pair table: the writer's FIRST row is a red column-label row (`Question ║ Answer`, `Word ║ [correct]`, `Clause [static] ║ Description`, `║ Correct answer - can we jumble them up though please`) over red-free pairs — the r69 red guard refused the whole table. When that row's text carries a matching-role cue (role_pattern) and no category cue (category_pattern — a heading marker `[H4] Benefits ║ [H4] Risks`, `[static heading]` / `[column heading]`, a `sort` / `category` / `group` word: the gold builds those as a COLUMN sort, e.g. OSSM501) and no URL, it is the header: dropped; a real-word red run in it (label_max_words, the r350 #ddIsNote test) rides along as the red Writers Note after the widget. Measured `outputs/_s54_r3_ddtable.cjs` + the r286 traces: 47 refused 2-column tables whose red sits ONLY in row 1. Env DDLABELROW_OFF.",
 				"enabled": true,

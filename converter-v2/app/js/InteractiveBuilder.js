@@ -968,7 +968,16 @@ class InteractiveBuilder {
 		if (tables.length !== 1) return null;
 		const srcRows = tables[0].rows ?? [];
 		const width = Math.max(0, ...srcRows.map((r) => (r ?? []).length));
-		if (width !== 2) return null;                            // strictly label | answer
+		// ROUND 544 (the autonomous loop's session 54 Round 7 — D10-3's build lane) — THE RED ANSWER COLUMN. The writer types the
+		// ANSWER column red (`• Sarah spent $12 … ║ «3x = 12»` — MXEO301 5.1; `3² ║ «3 × 3» ║ 3^6 ║ «3 × 3 × …»` — two pair sets
+		// in one four-column table, MXEO301 1.0): the red guard refused every one. The gold builds the standard matching layout,
+		// the prompts the questions and the red answers the drags, a four-column table's right-hand pairs after its left-hand
+		// ones. #ddRedAnswerPairs reads it (black prompt ║ red-only answer on every row of every column pair; a black first row
+		// over them = the label header, dropped); data red_answer_column {max_width, strip_bullet}; env DDREDANS_OFF.
+		const ra = tpl.red_answer_column;
+		const raPairs = ra && ra.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[ra.env || "DDREDANS_OFF"])
+			&& width % 2 === 0 && width <= (ra.max_width ?? 4) ? this.#ddRedAnswerPairs(srcRows, width, ra) : null;
+		if (width !== 2 && !raPairs) return null;                // strictly label | answer
 		let rows = srcRows.filter((r) => Array.isArray(r) && r.length === 2);
 		// ROUND 542 (the autonomous loop's session 54 Round 4 — D10-3's build lane) — THE LABEL ROW. The writer's FIRST row is
 		// often a red column-label row over the pairs (`Question ║ Answer`, `Word ║ [correct]`, `Clause [static] ║ Description`,
@@ -999,10 +1008,14 @@ class InteractiveBuilder {
 				if (lr.decline_identity !== false && pair.length && pair.every(([l, a]) => l.replace(/\s+/g, " ") === a.replace(/\s+/g, " "))) return null;
 			}
 		}
-		if (rows.length < (tpl.min_rows ?? 2)) return null;
+		if (!raPairs && rows.length < (tpl.min_rows ?? 2)) return null;
 		const inline = renderInline ?? ((s) => s);
 		const labels = [], answers = [];
-		for (const r of rows) {
+		if (raPairs) {                                           // ROUND 544 — the red answer column's pairs
+			for (const [l, a] of raPairs) { labels.push(l); answers.push(a); }
+			if (labels.length < (tpl.min_rows ?? 2)) return null;
+		}
+		else for (const r of rows) {
 			if (this.#hasRedText(r[0]) || this.#hasRedText(r[1])) return null;   // writer instruction → bail
 			const label = this.#cellText(r[0]).trim();
 			const answer = this.#cellText(r[1]).trim();
@@ -1015,7 +1028,7 @@ class InteractiveBuilder {
 		const out = [tpl.open];
 		for (const l of labels) out.push(Utils.FillTemplate(tpl.question, { label: inline(l) }));
 		out.push(tpl.mid);
-		for (let i = 0; i < rows.length; i++) out.push(Utils.FillTemplate(tpl.drop, { n: i + 1 }));
+		for (let i = 0; i < labels.length; i++) out.push(Utils.FillTemplate(tpl.drop, { n: i + 1 }));   // (= rows.length off the r544 path)
 		out.push(tpl.drag_open);
 		for (let i = 0; i < answers.length; i++) out.push(Utils.FillTemplate(tpl.drag, { n: i + 1, answer: inline(answers[i]) }));
 		out.push(...this.#ddClose(tpl));   // ROUND 350 — the KB button row (button_row; DDBUTTONS_OFF = the r69 close)
@@ -1039,6 +1052,36 @@ class InteractiveBuilder {
 		const off = typeof process !== "undefined" && process.env && br?.env && process.env[br.env];
 		if (!br || br.enabled === false || off) return [tpl.close];
 		return [br.close_inner, br.html, br.close_outer ?? "</div>"];
+	}
+
+	/**
+	 * ROUND 544 — THE RED ANSWER COLUMN's pairs, or null. Every row has `width` cells (2 or 4); in every column PAIR (j, j+1)
+	 * each row is either empty or a BLACK prompt (no red) beside a RED-ONLY answer (no black words); a black first row over
+	 * such rows is the column-label header (dropped). Pairs come column-pair by column-pair (the left-hand set top-down, then
+	 * the right-hand set — the gold's MXEO301 1.0 order). A URL or a writer [tag] in a pair = another shape (null). A leading
+	 * bullet on a prompt (`• Sarah spent …`) is the writer's list mark, not the question's (ra.strip_bullet — the gold's form).
+	 */
+	static #ddRedAnswerPairs(srcRows, width, ra) {
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const all = srcRows.filter((r) => Array.isArray(r));
+		if (!all.length || all.some((r) => r.length !== width)) return null;          // a ragged table
+		const blackOf = (c) => this.#cellText(String(c ?? "").replace(RED, " ")).replace(/\s+/g, " ").trim();
+		const redOf = (c) => [...String(c ?? "").matchAll(RED)].map((m) => m[1].replace(/\s+/g, " ").trim()).filter(Boolean).join(" ");
+		const hasRed = (c) => this.#hasRedText(c);
+		let body = all;
+		if (body.length > 2 && !body[0].some(hasRed) && body.slice(1).every((r) => r.some(hasRed))) body = body.slice(1);
+		const bullet = new RegExp(ra?.strip_bullet ?? "^[•·*]\\s*");
+		const pairs = [];
+		for (let j = 0; j < width; j += 2) {
+			for (const r of body) {
+				const p = blackOf(r[j]).replace(bullet, "").trim(), a = redOf(r[j + 1]);
+				if (!p && !a && !hasRed(r[j]) && !blackOf(r[j + 1])) continue;          // an empty pair slot
+				if (hasRed(r[j]) || !p || !a || /[\p{L}\p{N}]/u.test(blackOf(r[j + 1]))) return null;
+				if (/https?:\/\/|\[[^\]]*\]/.test(`${p} ${a}`)) return null;
+				pairs.push([p, a]);
+			}
+		}
+		return pairs.length ? pairs : null;
 	}
 
 	/**

@@ -1,12 +1,12 @@
 {
- "generated": "2026-09-27 05:30",
+ "generated": "2026-09-27 05:50",
  "warnings": [
   "skeleton state predates the newest engine change (2026-09-25) \u2014 its rows may lag.",
   "feature index predates the newest engine change (2026-09-27) \u2014 its rows may lag."
  ],
  "headline": {
   "bundles": 7640,
-  "built": 3526,
+  "built": 3547,
   "pages": 2627,
   "clean": 2585,
   "modules": 535,
@@ -202,9 +202,9 @@
    ]
   },
   "dragAndDrop": {
-   "built": 184,
+   "built": 205,
    "total": 1170,
-   "declined_shapes": 829,
+   "declined_shapes": 816,
    "modules": 387,
    "declined_modules": [
     "AGH1001",
@@ -264,8 +264,6 @@
     "BLL170",
     "BLL171",
     "BLL173",
-    "BLL174",
-    "BLL175",
     "BLL177",
     "BLL210",
     "BLL211",
@@ -2125,13 +2123,6 @@
    "build_rate": 0.0
   },
   {
-   "type": "dragAndDrop",
-   "token": "button+txt",
-   "declined": 136,
-   "built": 23,
-   "build_rate": 0.145
-  },
-  {
    "type": "dropDown",
    "token": "(a captured TABLE)",
    "declined": 115,
@@ -2199,14 +2190,14 @@
   {
    "class": "un-built dragAndDrop",
    "kind": "interactive",
-   "plain": "Writers tagged 1170 dragAndDrop widgets; 986 ship as a hand-off box instead of a built widget.",
-   "modules": 363,
-   "pages": 702,
-   "occurrences": 986,
-   "shapes": 829,
+   "plain": "Writers tagged 1170 dragAndDrop widgets; 965 ship as a hand-off box instead of a built widget.",
+   "modules": 361,
+   "pages": 689,
+   "occurrences": 965,
+   "shapes": 816,
    "regen_modules": 390,
    "regen_saving_pct": 29,
-   "note": "builder covers 184/1170 (15%)",
+   "note": "builder covers 205/1170 (17%)",
    "rank": 1
   },
   {
