@@ -1881,7 +1881,8 @@ class Config {
 	// ROUND 530 (260620.89): THE WHAKATAUKĪ'S OTHER WRITER FORMS (session 52 Round 3; KB 07B §7 — the merged lines, the payload forms). Env WHKFORMS_OFF.
 	// ROUND 531 (260620.90): THE BRACKET FRAGMENT IN A BUTTON LABEL (session 52 Round 5; KB constraint 5; text-only). Env BTNBRACKET_OFF.
 	// ROUND 532 (260620.91): THE BARE STOCK-PHOTO URL IS AN IMAGE REFERENCE (session 52 Round 8; the To Do note in place of the visible URL). Env STOCKURLIMG_OFF.
-	static AppVersion = "260620.91";
+	// ROUND 533 (260620.92): THE BARE VIDEO URL IS THE EMBED (session 52 Round 9; KB 01E). Env VIDEOURLEMBED_OFF.
+	static AppVersion = "260620.92";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

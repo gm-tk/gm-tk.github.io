@@ -1,0 +1,12 @@
+[18:32:22] gate-baseline-check
+
+GATE-BASELINE CHECK: PASS — every committed aggregate equals the shipped state
+[18:32:22] feature index
+  rc=0
+SELFTEST build_feature_index: GREEN
+[18:32:37] DIFF MINER
+  miner rc=0
+pairs 2486 / modules 530 / parse errors 0 / diff lines 270014 / classes 9449 (CANDIDATE 197, below floor 8959) in 90.4 s
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs/_diff_miner.json
+wrote /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/DIFF_QUEUE.md
+[18:34:13] POST_DONE

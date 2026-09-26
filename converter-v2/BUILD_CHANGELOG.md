@@ -1,5 +1,24 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (round 533, build 260620.92) — THE BARE VIDEO URL IS THE EMBED: a body paragraph that is nothing but a YouTube / Vimeo URL becomes the `videoSection` embed (KB 01E; the gold embeds that video on the page 0.86), or goes when the page already embeds it; 62 modules / 82 pages, skeleton +0.0063pp, compare_structure exact +19
+
+### 1. WHAT CHANGED
+
+**The class** (r532's follow-up — `_s52_r9_videourl.py`, un-built hand-off boxes excluded by exact span): 134 bare YouTube / Vimeo URL paragraphs with a video id — a writer's video line under a `[video]` whose own line held the title, in an activity, after an instruction; the gold EMBEDS that video on the paired page for **115 (0.86)** — 92 where Claude has no embed, 23 where Claude already embeds it (a duplicate line). r340's seam A (a url-only `[link]` line → the embed, gold 0.90) on every such line.
+
+**The fix** (`ContentConverter.#bareVideoUrlEmbed`, a page post-pass beside `#bareStockUrlImage`; data `elements.bare_video_url_embed` {host_pattern}, env **`VIDEOURLEMBED_OFF`**): outside the un-built hand-off boxes the paragraph becomes `video.youtube` (the group's host convention) or `video.generic_iframe` with Vimeo's player URL; the page's icon pass adds `icon`; when the page already embeds that video the line is dropped.
+
+### 2. PROOF
+
+- In-memory probe over all 545 modules: `VIDEOURLEMBED_OFF=1` → 6,432 / 6,432 pages identical; ON → **82 pages / 62 modules**; 0 ASSEMBLE ERROR. The first `scoped_ship.sh … --round 533` FAILED on skeleton ≥50 −2; the corpus was restored (`VIDEOURLEMBED_OFF=1 _s45_regen.sh 533` → `_content_manifest.py diff` 0 pages), the two movers measured, the ON state regenerated and shipped with `--accept-named "pages >=50%"`: PASS, 0 stale, containment 62 ⊆ 62, the 12-module spot-check byte-identical.
+- The skeleton gate's own `match()` (`_s51_prescore.py`): **+0.0064pp, 29 up / 13 down**. **The two NAMED movers across the 50 line** (`_s52_companion.py`): **HIS1008_6_0 54.71 → 44.38** — the change is exactly the gold's embed; position-free overlap 123 → **124** / 164 while the aligned matches fall 90 → 73 (difflib re-anchors on a 165-line page): the alignment artefact; **MXS1004_0_0 50.57 → 48.84** — the writer's YouTube Short, which the developer dropped from the gold entirely (overlap 25 → 24): the KB 01E form against a developer deletion, a NAMED override (the rule's 14 % minority — no discriminator: Shorts split 1 : 1).
+
+### 3. PROTECTED GATES
+
+Skeleton **56.2705 → 56.2768 % @ 2486 (+0.0063pp)**, ≥50 1634 → 1632 (−2, NAMED above), ≥75 301 → 302, ≥90 28; RAW 39.947 → 39.9482 %; compare_structure exact 17005 → 17024 (+19) / EXTRA 198 / missing 661 held; body_compare ANY 233 held; clean 98.40 %, leak 52 / 42 EXACT; tags 9557; every verifier ✓, every COUNT held (`_r533_gates.log`); `--gate-baseline-check` PASS. Plateau: **1 of 3** (+0.0063pp < 0.02).
+
+**Ledger:** scoped #6 since the s51-r12 FULL (r526) · data `elements.bare_video_url_embed` · env `VIDEOURLEMBED_OFF` · code `ContentConverter.#bareVideoUrlEmbed` · session 52 Round 9.
+
 ## 2026-09-26 (round 532, build 260620.91) — THE BARE STOCK-PHOTO URL IS AN IMAGE REFERENCE: a body paragraph that is nothing but a stock-photo URL (`<p><a href="https://www.istockphoto.com/…">https://www.istockphoto.com/…</a></p>`) no longer ships as visible learner text — it becomes the house `Designer/Developer To Do: image goes here (iStock-N). Link: …` note, or goes when the page already shows that image; 107 modules / 140 pages, skeleton +0.0240pp
 
 ### 1. WHAT CHANGED
