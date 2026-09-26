@@ -1,0 +1,1 @@
+- s51-r11 (engine r527 v2, 26 Sept 13:45 → 13:51) · a PICK pass (the hand-off text census fresh; the new miner rows #681 / #593 / #692 / #4262 — class C) then r527 REOPENED (the walk-freed sentences into r522's in-box move) · DECLINED again (+0.0065pp, 18 up / 14 down) · backed out, corpus 0 pages differ · plateau 0 of 3 (neither).

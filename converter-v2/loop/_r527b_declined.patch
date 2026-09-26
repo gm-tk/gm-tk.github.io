@@ -1,0 +1,79 @@
+diff --git a/converter-v2/app/js/ContentConverter.js b/converter-v2/app/js/ContentConverter.js
+index ce0a374..e65ceda 100644
+--- a/converter-v2/app/js/ContentConverter.js
++++ b/converter-v2/app/js/ContentConverter.js
+@@ -7699,7 +7699,8 @@ class ContentConverter {
+ 						const w = text.split(" ").filter(Boolean).length;
+ 						const idm = idRe.exec(text);
+ 						const id = idm ? idm[1] + idm[2].toUpperCase() : "";
+-						const mine = run?._r522JournalTexts?.has(text.replace(/[*_]/g, "").replace(/\s+/g, " ").trim().toLowerCase());
++						const mine = run?._r522JournalTexts?.has(text.replace(/[*_]/g, "").replace(/\s+/g, " ").trim().toLowerCase())
++							|| run?._r527JournalKeys?.has(text.toLowerCase().replace(/[^a-z0-9]+/g, "").slice(0, 40));   // ROUND 527 — a walk-freed sentence
+ 						if (idm && jRe.test(text) && vRe.test(text) && w >= (cfg.min_words ?? 5) && w <= (cfg.max_words ?? 40)
+ 							&& (free || (mine && String(stack[2].num).toUpperCase() !== id))
+ 							// the page already has that id: the r369 de-dupe gives the new box the next free letter — harmless when
+diff --git a/converter-v2/app/js/InteractiveScanner.js b/converter-v2/app/js/InteractiveScanner.js
+index 0eea8f9..e24bb64 100644
+--- a/converter-v2/app/js/InteractiveScanner.js
++++ b/converter-v2/app/js/InteractiveScanner.js
+@@ -1885,10 +1885,42 @@ class InteractiveScanner {
+ 		return n;
+ 	};
+ 
++	/** ROUND 527 — is items[j] (with the rest of its paragraph) a journal instruction naming an activity id? The item's own
++	 *  text — a black line, or a button / body / tag-less red span's bracket words + black tail — plus every later item on the same
++	 *  block, brackets and the leading tag word stripped, tested with r522's journal_instruction_box patterns. */
++	static #isJournalInstruction(items, j, cfg) {
++		const it = items[j];
++		if (!it || (it.type !== "black" && it.type !== "tag")) return false;
++		if (it.type === "tag") {
++			const p = it.parse?.primary;
++			if (p && !["button", "body", "body text", "learning journal"].includes(String(p.tag))) return false;
++		}
++		const piece = (x) => x.type === "black" ? String(x.text ?? "") : `${String(x.text ?? "")} ${String(x.blackAfter ?? "")}`;
++		let text = piece(it);
++		for (let k = j + 1; k < items.length && items[k]?.block && items[k].block === it.block; k++) text += " " + piece(items[k]);
++		text = text.replace(/\[\s*(?:button|body(?: text)?|learning journal)\s*:?\s*\]?/gi, " ").replace(/[[\]{}*]/g, " ").replace(/\s+/g, " ").trim();
++		const w = text.split(" ").filter(Boolean).length;
++		if (w < (cfg.min_words ?? 5) || w > (cfg.max_words ?? 40)) return false;
++		return new RegExp(cfg.journal_pattern, "i").test(text) && new RegExp(cfg.verb_pattern, "i").test(text)
++			&& new RegExp(cfg.id_pattern, "i").test(text);
++	}
++
+ 	static #swallowMembers(bundle, items, startJ, headingTerminates, absolute, run, normaliser = null) {
++		// ROUND 527 (journal_instruction_box.walk_terminator; env JOURNALWALK_OFF): a journal instruction ends the walk
++		const _jib = DataService.Data.EmitTemplates?.activity_wrapper?.journal_instruction_box;
++		const _jwt = _jib && _jib.enabled !== false && _jib.walk_terminator && _jib.walk_terminator.enabled !== false
++			&& !(typeof process !== "undefined" && process.env && (process.env[_jib.walk_terminator.env || "JOURNALWALK_OFF"] || process.env[_jib.env || "JOURNALINSTR_OFF"]))
++			? _jib : null;
+ 		let j = startJ;
+ 		for (; j < items.length; j++) {
+ 			const next = items[j];
++			if (_jwt && j > startJ && this.#isJournalInstruction(items, j, _jwt)) {
++				// the freed sentence joins r522's in-box move (ContentConverter.#journalInstructionBox): its own box, not the open one
++				const _k = String(next.type === "black" ? next.text : `${next.text ?? ""} ${next.blackAfter ?? ""}`)
++					.replace(/\[[^\]]*\]/g, " ").toLowerCase().replace(/[^a-z0-9]+/g, "").slice(0, 40);
++				if (_k && run) (run._r527JournalKeys ??= new Set()).add(_k);
++				break;
++			}
+ 
+ 			if (next.type === "table") {           // content_data — usually a member
+ 				// ROUND 312 — TITLE-SERIES trailing-table semantics: in a [title N]-delimited
+diff --git a/converter-v2/data/Emit_Templates.json b/converter-v2/data/Emit_Templates.json
+index 305d1a0..39eb2b1 100644
+--- a/converter-v2/data/Emit_Templates.json
++++ b/converter-v2/data/Emit_Templates.json
+@@ -1174,7 +1174,12 @@
+ 			"min_words": 5,
+ 			"max_words": 40,
+ 			"bracket_sentence": true,
+-			"box_open": "<div class=\"activity\" number=\"{id}\">\n<div class=\"row\">\n<div class=\"col-12\">",
++			"walk_terminator": {
++				"_doc": "ROUND 527 (session 51 Round 10 — r522's remainder). A widget's member walk swallowed the journal instruction that follows it — `[Button] Complete activity 2A in your learning journal.` (AGH1001–1009), `Go to your learning journal and complete activity 3A` — 17 gold instructions (outputs/_s51_r2_jplace2.tsv) sat inside a hand-off box, where the gold boxes each as its own activity (r522: 163 / 165). InteractiveScanner.#swallowMembers ends the walk at an item whose text — with the rest of its paragraph, brackets and tag words stripped — is a journal instruction naming an id (this block's journal / verb / id patterns, min_words..max_words); the item then renders as body and r522's post-pass boxes it. Env JOURNALWALK_OFF.",
++				"enabled": true,
++				"env": "JOURNALWALK_OFF"
++			},
++			"box_open":"<div class=\"activity\" number=\"{id}\">\n<div class=\"row\">\n<div class=\"col-12\">",
+ 			"box_close": "</div>\n</div>\n</div>"
+ 		},
+ 		"standalone_widget_box": {
