@@ -1,0 +1,27 @@
+== colon: 378
+    279 (133 pages) gold absent         top XTAS 26, TEDC 22, TEFUN 21, SCCH 17, SCPH 16  e.g. AGH1001_1_0.html: 'For example:'
+     27 ( 11 pages) gold div.accHead    top XTAS 10, ENGJ 7, ENGI 6, CEDT 2, PWY 1  e.g. CEDT104_0_0.html: 'Poi ball | Pōro:'
+     15 ( 13 pages) gold div.row        top HPRE 2, PWY 2, AGH 1, CEDO 1, COM 1  e.g. AGH1009_2_0.html: 'Photosynthesis:'
+     13 (  6 pages) gold p>b            top ENGS 5, CBI 2, SCPH 2, SSCI 2, CEDK 1  e.g. CBI1005_1_0.html: 'Offspring genotypes:'
+      8 (  5 pages) gold div.accContent top CEDO 5, SCPH 1, TEDC 1, XMES 1  e.g. CEDO204_0_0.html: 'You will need:'
+      7 (  3 pages) gold div.back       top XMES 5, CEDT 1, TWHK 1  e.g. CEDT501_7_0.html: 'This is the best response because it is assertive. It’s resp'
+      6 (  5 pages) gold p plain        top CEDR 2, ARFUN 1, BLL 1, ENGR 1, MUS 1  e.g. ARFUN02_0_0.html: 'Match the Rhythm:'
+      4 (  1 pages) gold div.carousel-caption top ANZH 4  e.g. ANZH303_4_0.html: 'Source 2 The Musket Wars:'
+== short<=6w: 1262
+    833 (277 pages) gold absent         top BLL 110, CHFUN 52, WJFUN 40, MXDI 37, FRNO 31  e.g. AGH1005_2_0.html: 'Image'
+     60 ( 10 pages) gold div.accHead    top CEDK 30, TEFUN 12, GEO 5, XLP 4, TEDC 3  e.g. ANZH404_5_0.html: 'Example 3: Ihumātao'
+     59 ( 43 pages) gold div.row        top TRR 8, TEDC 7, ENGI 6, FRFUN 6, HPFUN 3  e.g. BLL133_2_0.html: 'floss'
+     47 ( 13 pages) gold div.drag       top CEDW 14, DTC 11, BLL 8, MXS 4, AGH 2  e.g. AGH1005_8_0.html: 'Flowering'
+     38 ( 10 pages) gold h4             top TEFUN 18, DTC 6, CEDT 4, ANZH 3, CEDR 3  e.g. ANZH303_3_0.html: 'Mana and Tapu'
+     27 ( 13 pages) gold div.ddColumn   top COM 7, FRNO 4, CEDR 3, ENGC 3, WJFUN 3  e.g. BLL215_1_0.html: 'Words with a suffix'
+     27 (  4 pages) gold div.question   top CEDW 16, MXEO 5, MXEX 5, FRNO 1  e.g. CEDW501_3_0.html: 'Kuia'
+     19 (  9 pages) gold div.col-md-4   top SCCH 6, MXEO 5, CEDR 2, SSFUN 2, TEDC 2  e.g. CEDR101_0_0.html: 'jumping'
+== long: 552
+    427 (222 pages) gold absent         top XGF 33, BLL 23, CHFUN 21, MXFL 19, TEDC 19  e.g. AGH1008_2_0.html: 'As a plant gets older, the amount of sugar, starch and prote'
+     27 ( 22 pages) gold div.row        top ART 4, PWY 4, ENGS 2, OSBY 2, AGH 1  e.g. AGH1009_2_0.html: 'Nitrogen Fixation: Nitrogen gas (N2) from the atmosphere is '
+     13 (  7 pages) gold div.accContent top CEDR 6, TEFUN 2, BLL 1, EXPFUN 1, HIS 1  e.g. BLL261_2_0.html: 'Think alouds\n\t\t\t\t\t\t\t\t\tYou could use these sentence s
+     13 (  9 pages) gold p plain        top MUS 5, PHE 2, XLP 2, CBI 1, CEDO 1  e.g. CBI1009_4_0.html: 'A balanced chemical equation demonstrates the law of conserv'
+     13 (  6 pages) gold p>b            top ENGS 6, OSGM 3, HIS 2, OSAH 1, XLP 1  e.g. ENGS404_7_0.html: 'Who are they, and what are they like, what makes them intere'
+     11 ( 11 pages) gold p (bold part)  top CBI 2, XLP 2, FRNO 1, GEO 1, MXFL 1  e.g. CBI1008_3_0.html: 'Example: Check if the following equations are balanced and f'
+      7 (  4 pages) gold div.back       top PWYWHA 3, OSOH 2, OSGM 1, WJFUN 1  e.g. OSGM201_3_0.html: 'Balance tip: Choose games that make you feel happy and safe.'
+      6 (  3 pages) gold div.item       top XDLS 3, XLP 2, OSAH 1  e.g. OSAH401_3_0.html: 'Right to Be Safe from Harmful Digital Communications'

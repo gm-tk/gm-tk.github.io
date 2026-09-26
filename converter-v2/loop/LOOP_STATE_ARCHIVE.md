@@ -5435,3 +5435,7 @@ before it 260620.52 (r488 the story-reference carousel shell — session 45 Roun
 
 - **FULL BACKSTOP IN FLIGHT — NOT PROVEN** (session 52 Round 11, started 26 Sept 19:00 NZST — THE LEDGER'S FULL-SHIP BACKSTOP at 260620.93, scoped #7 since the s51-r12 FULL; NO engine change: `outputs/_s52_full_fullship_par.sh` (4 workers) then `_s52_full_postship.sh`; its whole proof is 0 pages differ from the r534 manifest). If this session dies here: the corpus may be mid-regeneration with the r534 engine — re-run `_s52_full_fullship_par.sh` (idempotent) and the post-ship.
 - **Done:** 0 pages differ; every gate identical; ledger reset.
+
+## STOPPED entry, session 51 (verbatim, s52 stop)
+
+## >>> STOPPED 2026-09-26 14:58 NZST (session 51) on Chris's `/loop-stop` — 13 of 16 rounds (≈ 5 h 20 m of the 10 h). **FOUR ENGINE ROUNDS SHIPPED + ONE FULL BACKSTOP, every one committed:** r522 the journal instruction's own activity box (+ the AGH [Summary] alert + the r468 ride-along), r523 the activity governs a heading co-tag, r525 the FRNO bold activity id, r526 the BLL introduction's full-width row; FULL s51-r12 (0 pages differ). Declined: r524, r527, r527 v2. **r528 (the untagged whakataukī) built and TOGGLED OFF, uncommitted** (pre-score +0.0030pp). Skeleton **55.7889 → 56.1010 % @ 2486** (+0.3121pp), ≥50 1616 → 1627, ≥75 286 → 292, ≥90 26 → 28, RAW 39.630 → 39.844; cs exact 16772 → 16830 (EXTRA 204, missing 886 → 879); body ANY 236 → 234; leak 52; **61.2 % of achievable** (ceiling 91.7 %). Plateau 0 of 3. Needs Chris: #1 / #10 only (human actions). <<<

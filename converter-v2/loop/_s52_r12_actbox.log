@@ -1,0 +1,15 @@
+ 4643 boxes / 1600 pages  one Claude box   fams: BLL 1132, MXFL 262, XDLS 219, MXFU 175, ENGC 147, HIS 139, MXDI 139, ENGI 133
+ 1175 boxes /  644 pages  gold box: no text matched   fams: TRR 86, XDLS 80, AGH 79, PES 58, TWHA 40, MXDB 36, MXDI 35, PWY 35
+  808 boxes /  501 pages  partly boxed   fams: BLL 162, XGF 37, WJFUN 32, XDLS 31, ENGC 25, XMES 23, CEDR 21, ENFUN 19
+  757 boxes /  324 pages  split over boxes   fams: BLL 188, CHFUN 49, TRR 40, ENGI 29, ANZH 27, CEDO 26, HES 26, XGF 25
+  740 boxes /  463 pages  UNBOXED (all matched blocks free)   fams: TRR 63, HPFUN 33, XGF 28, BLL 25, TWHA 25, CEDT 24, TEDC 24, AGH 23
+      gold classes: [('activity', 234), ('activity interactive', 226), ('activity dropbox', 92), ('activity alertPadding', 82), ('activity alertPadding dropbox', 32), ('activity dropbox alertPadding', 20)]
+      e.g. AGH1001_3_0.html [activity interactive alertPadding n=3B] 'self check true or false'
+      e.g. AGH1002_6_0.html [activity interactive n=6A] 'organic matter or not'
+      e.g. AGH1003_3_0.html [activity n=3C] 'fertiliser application'
+      e.g. AGH1003_4_0.html [activity n=4B] 'benefits of organic matter'
+      e.g. AGH1004_1_0.html [activity n=2C] 'have a go at matching each word or words to the correct defi'
+      e.g. AGH1004_2_0.html [activity interactive n=6A] 'reflective questions'
+      e.g. AGH1004_3_0.html [activity n=3B] 'compare the data for rainfall and temperature in 2 regions'
+      e.g. AGH1004_5_0.html [activity interactive n=5B] 'knowledge check sorting activity'
+  134 boxes /   90 pages  in a hand-off box   fams: FRNO 17, HPFUN 12, ENG 9, FRFUN 8, TWHK 8, MXFL 7, PWY 6, TWHA 6

@@ -1,0 +1,17 @@
+OVER-generating pages (ratio >= 1.4): 119 ; UNDER (<= 0.7): 492 of 2487
+over by family: XDLS 7/75, ANZH 6/94, SSOG 6/28, XGF 6/41, AGH 5/74, ENGI 5/84, HIS 5/77, TRR 5/80, XWHA 5/8, DAN 4/28, ENGFUN 4/5, FRFUN 4/28, MXEX 4/41, XLP 4/29
+under by family: PWY 29/45, MXFL 25/99, TRR 24/80, BLL 22/299, ENGS 20/64, MXFU 20/58, PHE 20/50, ENGI 18/84, MXDI 18/55, PES 18/76, MXDB 16/42, AGH 15/74, ENGR 15/46, ANZH 14/94
+
+lines in EXCESS on the over-generating pages: [('div.row', 1872), ('p', 1706), ('div.col-12.col-md-8', 1506), ('┌ 2× repeated:', 683), ('h3', 560), ('b', 535), ('div.col-12', 507), ('li', 479), ('h5', 362), ('WIDGET', 332), ('ul', 280), ('┌ 3× repeated:', 257), ('img.img-fluid', 230), ('i', 212), ('a', 210), ('iframe', 194), ('tr', 174), ('td', 174)]
+
+lines in DEFICIT on the under-generating pages: [('p', 3789), ('div.row', 3468), ('┌ 2× repeated:', 2046), ('h3', 1402), ('div.col-12.col-md-8', 1358), ('div.col-12', 1231), ('li', 1106), ('img.img-fluid', 1075), ('WIDGET', 1056), ('br', 1025), ('b', 858), ('td', 757), ('ul', 708), ('┌ 3× repeated:', 701), ('h4', 642), ('a', 621), ('div.clickDropContent', 542), ('div.col-12.col-md-12', 493)]
+  e.g. AGH ['AGH1006_0_0.html 44/30', 'AGH1006_2_0.html 119/84']
+  e.g. ANZH ['ANZH103_1_0.html 222/85', 'ANZH302_0_0.html 68/44']
+  e.g. ARFUN ['ARFUN04_0_0.html 1774/221']
+  e.g. ART ['ART1003_0_0.html 231/59', 'ART1005_0_0.html 321/119']
+  e.g. BLL ['BLL155_0_0.html 63/14', 'BLL261_1_0.html 83/59']
+  e.g. CBI ['CBI1008_3_0.html 399/257', 'CBI1009_1_0.html 251/100']
+  e.g. CEDO ['CEDO301_0_0.html 78/48', 'CEDO501_2_1.html 216/147']
+  e.g. CEDR ['CEDR203_0_0.html 387/275', 'CEDR501_3_0.html 174/81']
+  e.g. CEDT ['CEDT501_1_1.html 82/57']
+  e.g. DAN ['DAN1003_0_0.html 110/48', 'DAN1003_4_0.html 57/38']
