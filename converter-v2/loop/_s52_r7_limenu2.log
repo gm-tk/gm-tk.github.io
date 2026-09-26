@@ -1,0 +1,14 @@
+ALL {'no label in body': 311, 'label in body@>6 / GOLD menu has it': 5, 'label in body@<=6 / GOLD menu has it': 19, 'label in body@<=6 / gold menu lacks it': 7}
+pages (label near the top, gold menu has it): 19 in 11 families
+{'XGF': 7, 'CBI': 3, 'COM': 1, 'ENGS': 1, 'FRNO': 1, 'GEO': 1, 'PES': 1, 'SPA': 1, 'TEDC': 1, 'XDLS': 1, 'XLP': 1}
+forms: [('p:we are learning', 11), ('h5:we are learning about', 2), ('h4:we are learning about', 1), ('h5:learning intention', 1), ('h5:we are learning to', 1), ('p:we are learning about', 1), ('h5:learning intentions', 1), ('h4:learning intentions', 1)]
+    CBI1008_5_0.html @2 <h4> 'We are learning about:'
+    CBI1009_3_0.html @3 <h5> 'We are learning about:'
+    CBI1009_4_0.html @1 <h5> 'We are learning about:'
+    COM1002_2_0.html @0 <h5> 'Learning intention'
+    ENGS404_4_0.html @0 <p> 'We are learning:'
+    FRNO901_2_0.html @1 <p> 'We are learning:'
+    GEO1006_1_0.html @1 <h5> 'We are learning to'
+    PES1004_4_0.html @0 <p> 'We are learning about:'
+    SPA1004_2_0.html @0 <h5> 'LEARNING INTENTIONS'
+    TEDC401_5_0.html @0 <h4> 'Learning Intentions'
