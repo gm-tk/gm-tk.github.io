@@ -711,6 +711,31 @@
 			"retag_as": "[Alert]",
 			"title": "Summary"
 		},
+		"untagged_proverb": {
+			"_doc": "ROUND 528 (the autonomous loop's session 51 Round 13). THE UNTAGGED WHAKATAUKĪ. A writer who types a proverb and its translation without the [Whakatauki] tag leaves two free black paragraphs: the reo line (every word Māori-phonotactic — open syllables over the Māori alphabet, ≥ min_reo_words) and the English line right after it. The gold boxes the pair as div.whakatauki 49 / 77 (0.64; 0.77 of the 64 whose text is in the gold — outputs/_s51_r13_proverb.cjs → _s51_r13_provgold.py; Inquiry 0.65 / Standard 0.63, 69 pages, no family > 6); KB 07B §7 names the dedicated whakatauki component. The reo item is re-typed as the retag_as tag with the reo line as its payload, so the existing proverb-only callout (by_tag.whakatauki: reo + english, bold / italic stripped, 2 paragraphs) builds the box. Skipped: a pair the writer already tagged (the item before it is a whakatauki tag), a greeting (exclude_pattern), a reo line over max_reo_chars. Env UNTAGPROVERB_OFF. SESSION 52 (the s51 pre-score's downs triangulated — CEDR203 / PHE1005 / ENGC204 / HES1003 / ANZH301): the English is handed to the box as the writer's one-line `reo | english` form and its own item emptied (by emit time a later pass has merged it with the paragraphs after it, so the proverb gather read it as commentary and left it out — 15 of 63 boxes shipped reo-only); an English line over max_english_chars is commentary and stays free; a proverb right after an INTERACTIVE tag is that widget's content (ANZH301 / 302's [interactive] — the s51 build left an 'unbundled' red flag), and one right after an owner_tags callout with a payload or more content is that box's; a payload-free owner_tags callout whose WHOLE content is the pair is the writer's proverb box under another name and is REPLACED by the whakatauki (AGH1002 / CBI1004 / CEDT207 / CEDT301 / XDLS901's [Important] + proverb: the gold ships the whakatauki alone — the s51 build left an 'Empty [important]' red flag); a line with a whakatauki tag within tagged_lookback short lines before it belongs to that tag (ENGC204's four-line box was split in two); the writer's bare label line before the pair (label_pattern: Whakataukī / [Whakataukī] / Whakatauki:) and an inline label prefix (label_prefix_pattern) are dropped — the gold drops both (PHE1005, CEDR203, HES1003).",
+			"enabled": true,
+			"env": "UNTAGPROVERB_OFF",
+			"syllable_pattern": "^(?:(?:[hkmnprtw]|ng|wh)?[aeiouāēīōū])+$",
+			"word_strip_pattern": "[‘’'\"“”.,;:!?()\\-–—…]",
+			"min_reo_words": 4,
+			"max_reo_chars": 200,
+			"min_english_words": 3,
+			"max_english_reo_share": 0.5,
+			"exclude_pattern": "^\\W*(?:kia ora|nau mai|t[eē]n[aā] (?:koe|kout[oō]u|kor[oō]ua)|m[oō]rena)\\b",
+			"max_english_chars": 200,
+			"tagged_lookback": 2,
+			"owner_tags": [
+				"alert",
+				"side alert",
+				"important",
+				"wananga",
+				"quote",
+				"supervisor note"
+			],
+			"label_pattern": "^\\[?\\s*whakat[aā]u[aā]?k[iī]\\s*:?\\s*\\]?$",
+			"label_prefix_pattern": "^\\s*\\**\\s*whakat[aā]u[aā]?k[iī]\\s*:\\s*\\**\\s*",
+			"retag_as": "[Whakatauki]"
+		},
 		"rule":"One container algorithm serves every callout — only the class differs (a lookup, not logic). Modifier keywords append their class.",
 		"side_column_backward_pair": true,
 		"side_column_backward_pair_note": "ROUND 123 (Chris, the round-122 logged follow-up). A side_column callout ([Side alert] → alertActivity) is the RIGHT sibling of the immediately-preceding col-md-8 main-content column, in ONE shared <div class=\"row\"> — the human convention, measured 99/100 across the 43 [side alert] modules (`outputs/_measure_sidealert_pairing.py`; only BLL160 has 1 own-row, the 1% editorial exception). Round 122 freed the side alerts from widget absorption but rendered them in their OWN row, dipping the skeleton on own-row-vs-side-by-side placement. ContentConverter's callout emit site detects that rowFor(\"section\") has just closed the preceding content row (parts ends with content_row_close = close col-md-8 + close row), un-closes it, appends #sideAlertCol as the right-sibling col, and re-closes the row. The col-md-8 default content col already matches the human; the EXACT side width (col-md-4 dominant 48 vs col-md-3 44) stays editorial. Falls back to the round-122 own-row form when there is no preceding content row (page-start / consecutive alerts). General + data-described: any future side_column callout pairs the same way. Env SIDEPAIR_OFF reverts to own-row (independent of SIDEALERT_OFF, which reverts the class entirely).",

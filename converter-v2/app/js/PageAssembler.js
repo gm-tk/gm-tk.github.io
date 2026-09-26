@@ -123,6 +123,93 @@ class PageAssembler {
 	}
 
 	/**
+	 * ROUND 528 — THE UNTAGGED WHAKATAUKĪ (KB 07B §7; the gold boxes it 49 / 64 where its text survives). A free black
+	 * paragraph whose every word is Māori-phonotactic, followed by an English paragraph, is a proverb + translation the writer
+	 * typed without the [Whakatauki] tag: the reo item is re-typed as that tag with the reo line as its payload, so the
+	 * existing proverb-only callout (reo + english, bold / italic stripped) builds the box. A pair already under a whakatauki
+	 * tag and a greeting are left alone. Data callouts.untagged_proverb; env UNTAGPROVERB_OFF.
+	 * Session 52 refinements (the s51 pre-score's downs, triangulated): (1) the English line is handed to the box HERE as the
+	 * writer's `reo | english` one-line form (split_payload_on_pipe makes it two <p>s) and its own item emptied — by emit time
+	 * a later pass has merged it with the paragraphs after it (PHE1005: 283 chars), so the proverb gather took it for
+	 * commentary and left it out; an "English" line over max_english_chars is commentary and stays free (reo-only box);
+	 * (2) a proverb that is a widget's or a strict callout's content (the item before it is an INTERACTIVE directive —
+	 * ANZH301 / 302's `[interactive]` — or an owner_tags callout with a payload or more content) is left to it, while a
+	 * payload-free owner_tags callout whose whole content is the pair is REPLACED by the whakatauki (AGH1002 / CBI1004 /
+	 * CEDT207 / CEDT301 / XDLS901's `[Important]` + proverb — the gold ships the whakatauki alone); (3) the later lines of a writer-TAGGED proverb (a whakatauki tag within
+	 * tagged_lookback short lines before it — ENGC204's four-line box) are left to that tag; (4) the writer's bare label
+	 * line just before the pair (`Whakataukī`, `[Whakataukī]`, `Whakatauki:`) and an inline `Whakatauki:` prefix are dropped,
+	 * as the gold drops them (label_pattern / label_prefix_pattern).
+	 */
+	static #untaggedProverb(items, run, normaliser) {
+		const cfg = DataService.Data.EmitTemplates?.callouts?.untagged_proverb;
+		if (!cfg || cfg.enabled === false || !normaliser) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "UNTAGPROVERB_OFF"]) return;
+		const syl = new RegExp(cfg.syllable_pattern, "i"), punct = new RegExp(cfg.word_strip_pattern, "g");
+		const excl = cfg.exclude_pattern ? new RegExp(cfg.exclude_pattern, "i") : null;
+		const labelRe = cfg.label_pattern ? new RegExp(cfg.label_pattern, "i") : null;
+		const prefixRe = cfg.label_prefix_pattern ? new RegExp(cfg.label_prefix_pattern, "i") : null;
+		const sepRe = /\s[|–—]\s/;
+		const plain = (s) => String(s ?? "").replace(/<[^>]+>|\*+/g, "").replace(/(?<![A-Za-z])_+|_+(?![A-Za-z])/g, "").normalize("NFC").replace(/\s+/g, " ").trim();
+		const words = (s) => plain(s).replace(punct, " ").split(/\s+/).filter(Boolean);
+		const empty = (it) => !String(it?.text ?? "").trim() && !String(it?.blackAfter ?? "").trim();
+		const maxReo = cfg.max_reo_chars ?? 200;
+		const eng0 = (x) => String(x?.text ?? "").trim();
+		let n = 0, nOwn = 0;
+		for (let k = 0; k < items.length; k++) {
+			const it = items[k];
+			if (!it || it.type !== "black") continue;
+			const reo = plain(it.text);
+			if (!reo || reo.length > maxReo || (excl && excl.test(reo))) continue;
+			const w = words(it.text);
+			if (w.length < (cfg.min_reo_words ?? 4) || !w.every((x) => syl.test(x))) continue;
+			let j = k + 1; while (j < items.length && items[j]?.type === "black" && empty(items[j])) j++;
+			const nx = items[j];
+			if (!nx || nx.type !== "black") continue;
+			const ew = words(nx.text).filter((x) => /^[A-Za-zāēīōūĀĒĪŌŪ]+$/.test(x));
+			if (ew.length < (cfg.min_english_words ?? 3) || ew.filter((x) => syl.test(x)).length / ew.length >= (cfg.max_english_reo_share ?? 0.5)) continue;
+			// (2) / (3): walk back over empties and up to tagged_lookback short black lines — a whakatauki tag there owns
+			// this line; the nearest non-empty item an INTERACTIVE tag owns it as its widget's content
+			let p = k - 1; while (p >= 0 && items[p]?.type !== "table" && empty(items[p])) p--;
+			if (items[p]?.type === "tag" && items[p].parse?.primary?.directive === "INTERACTIVE") continue;
+			let owner = null;
+			if (items[p]?.type === "tag" && (cfg.owner_tags ?? []).includes(items[p].parse?.primary?.tag)) {
+				// a payload-free callout whose WHOLE content is the pair (a tag / the end follows the English) is the writer's
+				// proverb box under another name — the gold ships the whakatauki alone (AGH1002, CBI1004, CEDT207, CEDT301,
+				// XDLS901); any other owned line stays with its callout
+				let e = j + 1; while (e < items.length && items[e]?.type === "black" && empty(items[e])) e++;
+				if (String(items[p].blackAfter ?? "").trim() || (e < items.length && items[e]?.type !== "tag")) continue;
+				owner = items[p];
+			}
+			let q = p, back = 0, owned = false;
+			while (q >= 0 && back <= (cfg.tagged_lookback ?? 2)) {
+				const b = items[q];
+				if (b?.type === "tag") { owned = b.parse?.primary?.tag === "whakatauki"; break; }
+				if (b?.type !== "black") break;
+				if (!empty(b)) { if (plain(b.text).length > maxReo) break; back++; }
+				q--;
+			}
+			if (owned) continue;
+			const parse = normaliser.Parse(cfg.retag_as);
+			if (parse?.primary?.tag !== "whakatauki") continue;
+			if (owner && plain(eng0(nx)).length > (cfg.max_english_chars ?? 200)) continue;
+			if (owner) { owner.type = "black"; delete owner.parse; owner.text = ""; owner.blackAfter = ""; nOwn++; }
+			// (4) the bare label line before the pair
+			if (labelRe && items[p]?.type === "black" && labelRe.test(plain(items[p].text))) { items[p].text = ""; items[p].blackAfter = ""; }
+			let payload = String(it.text).trim();
+			if (prefixRe) payload = payload.replace(prefixRe, "");
+			// (1) the English joins the payload as the writer's one-line `reo | english` form, unless it is commentary
+			const eng = eng0(nx);
+			if (plain(eng).length <= (cfg.max_english_chars ?? 200) && !sepRe.test(payload) && !sepRe.test(eng)) {
+				payload = `${payload} | ${eng}`;
+				nx.text = ""; nx.blackAfter = "";
+			}
+			it.type = "tag"; it.parse = parse; it.blackAfter = payload; it.text = cfg.retag_as;
+			n++;
+		}
+		if (n) run.AddNote("info", "PageAssembler", `${n} untagged proverb${n > 1 ? "s" : ""} (a reo line + its English) read as ${cfg.retag_as}${nOwn ? ` (${nOwn} in place of a payload-free callout that held only the pair)` : ""} (callouts.untagged_proverb).`);
+	}
+
+	/**
 	 * ROUND 525 — THE BOLD ACTIVITY ID AFTER A WIDGET TAG (the FRNO family's form, 50 spans): `[Reorder autocheck]]
 	 * **2C****Put the conversation together**` — the id and title typed in bold black after the widget tag, so no box opened and
 	 * both shipped inside the hand-off box; the gold boxes each as div.activity[number=2C] titled by the bold words. The widget tag
@@ -277,6 +364,7 @@ class PageAssembler {
 		PageAssembler.#bareSummaryAlert(items, run, normaliser);   // ROUND 522 part 2 (SUMMARYALERT_OFF)
 		PageAssembler.#cotagDuplicateId(items, run);   // ROUND 523 (ACTHDCOTAG_OFF — the co-tag rule's own guard)
 		PageAssembler.#boldIdWidgetActivity(items, run, normaliser);   // ROUND 525 (BOLDIDACT_OFF)
+		PageAssembler.#untaggedProverb(items, run, normaliser);   // ROUND 528 (UNTAGPROVERB_OFF)
 		run.pages = PageSplitter.Split(items, run, normaliser);
 		if (!run.pages.length) {
 			run.AddNote("error", "PageAssembler",
