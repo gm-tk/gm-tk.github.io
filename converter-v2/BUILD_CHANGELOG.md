@@ -1,5 +1,24 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (round 534, build 260620.93) — THE BARE LINK LINE IS THE DEVELOPER'S: a body paragraph that is nothing but a URL (neither a stock photo nor a video — a D2L / Te Kura page, a source site, a Google doc) becomes the house `Designer/Developer To Do: the writer's link — …` note; 195 modules / 300 pages, skeleton +0.0575pp, ≥50 +6, ≥75 +3
+
+### 1. WHAT CHANGED
+
+**The class** (r532 / r533's follow-up — `_s52_r10_d2lurl.py`, un-built hand-off boxes excluded by exact span): the remaining bare-URL paragraphs. D2L / Te Kura links: 138, the gold shows the link on the paired page 7 times (absent **0.95**); other hosts ≈ 355: absent 261 (**0.74**), an inline anchor on nearby prose 81 (which words — not derivable), a button 4. The gold ships 19 bare-URL paragraphs corpus-wide.
+
+**The fix** (`ContentConverter.#bareLinkUrlNote`, a page post-pass after `#bareVideoUrlEmbed`; data `elements.bare_link_url_note` {exclude_host_pattern, todo_text}, env **`BARELINKNOTE_OFF`**): outside the un-built hand-off boxes, a `<p>` whose whole content is one URL not matched by r532 / r533 becomes the house To Do note (`NotesAndComments.redFlag`) — the learner sees no URL, the developer keeps the link (to anchor on text, make a button or credit in the acks). KB c5 (no writer residue in the output).
+
+### 2. PROOF
+
+- In-memory probe over all 545 modules: `BARELINKNOTE_OFF=1` → 6,432 / 6,432 pages identical; ON → **300 pages / 195 modules**, every changed line a bare-URL paragraph; 0 ASSEMBLE ERROR. `scoped_ship.sh … --round 534 --commit` PASS: 0 stale, containment 195 ⊆ 195, the 12-module spot-check byte-identical.
+- The skeleton gate's own `match()` (`_s51_prescore.py`): **+0.0581pp, 217 up / 55 down** (COM1005_3_0 +9.5, DTC1004_4_0 +6.0 …; the dips: BLL251_1_0 −9.1 and ENGJ301_1_0 −6.4 — those golds carry the link as an anchor elsewhere on the page (position-free overlap 49 → 48, 48 → 47) — the rest ≤ 2.3); the buckets net ≥50 +6, ≥75 +3.
+
+### 3. PROTECTED GATES
+
+Skeleton **56.2768 → 56.3343 % @ 2486 (+0.0575pp)**, ≥50 1632 → 1638, ≥75 302 → 305, ≥90 28; RAW 39.948 → 39.9707 %; compare_structure exact 17024 / EXTRA 198 / missing 661 held; body_compare ANY 233 held; clean 98.40 %, leak 52 / 42 EXACT; tags 9557; every verifier ✓, every COUNT held (`_r534_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 534`; `--gate-baseline-check` PASS. Plateau: **reset** (+0.0575pp).
+
+**Ledger:** scoped #7 since the s51-r12 FULL (r526) — **the FULL backstop is due at the next ship (cadence 8)** · data `elements.bare_link_url_note` · env `BARELINKNOTE_OFF` · code `ContentConverter.#bareLinkUrlNote` · session 52 Round 10.
+
 ## 2026-09-26 (round 533, build 260620.92) — THE BARE VIDEO URL IS THE EMBED: a body paragraph that is nothing but a YouTube / Vimeo URL becomes the `videoSection` embed (KB 01E; the gold embeds that video on the page 0.86), or goes when the page already embeds it; 62 modules / 82 pages, skeleton +0.0063pp, compare_structure exact +19
 
 ### 1. WHAT CHANGED

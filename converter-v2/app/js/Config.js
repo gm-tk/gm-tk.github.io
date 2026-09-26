@@ -1882,7 +1882,8 @@ class Config {
 	// ROUND 531 (260620.90): THE BRACKET FRAGMENT IN A BUTTON LABEL (session 52 Round 5; KB constraint 5; text-only). Env BTNBRACKET_OFF.
 	// ROUND 532 (260620.91): THE BARE STOCK-PHOTO URL IS AN IMAGE REFERENCE (session 52 Round 8; the To Do note in place of the visible URL). Env STOCKURLIMG_OFF.
 	// ROUND 533 (260620.92): THE BARE VIDEO URL IS THE EMBED (session 52 Round 9; KB 01E). Env VIDEOURLEMBED_OFF.
-	static AppVersion = "260620.92";
+	// ROUND 534 (260620.93): THE BARE LINK LINE IS THE DEVELOPER'S (session 52 Round 10; the To Do note in place of a bare URL). Env BARELINKNOTE_OFF.
+	static AppVersion = "260620.93";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

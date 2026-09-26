@@ -1,0 +1,34 @@
+[18:41:16] spot-check plan
+  CBI1008 ENGJ403 FRNO901 HES1004 OSBY501 OSSM501 SCFUN01 TRR106 TRR107 XDLS906 XFUN01 XOTPB11
+
+Regenerate them WITH THE FIX ON (default env, NO *_OFF), then run `verify`:
+  python3 _batch_plan.py --codes CBI1008 ENGJ403 FRNO901 HES1004 OSBY501 OSSM501 SCFUN01 TRR106 TRR107 XDLS906 XFUN01 XOTPB11
+sample: CBI1008 ENGJ403 FRNO901 HES1004 OSBY501 OSSM501 SCFUN01 TRR106 TRR107 XDLS906 XFUN01 XOTPB11
+[18:41:17] 207 modules -> batches of 11
+  _r534_regen_batch_02 rc=0 OK — 11 module(s) regenerated fresh.
+  _r534_regen_batch_03 rc=0 OK — 11 module(s) regenerated fresh.
+  _r534_regen_batch_00 rc=0 OK — 11 module(s) regenerated fresh.
+  _r534_regen_batch_01 rc=0 OK — 11 module(s) regenerated fresh.
+  _r534_regen_batch_04 rc=0 OK — 11 module(s) regenerated fresh.
+  _r534_regen_batch_05 rc=0 OK — 11 module(s) regenerated fresh.
+  _r534_regen_batch_07 rc=0 OK — 11 module(s) regenerated fresh.
+  _r534_regen_batch_06 rc=0 OK — 11 module(s) regenerated fresh.
+  _r534_regen_batch_08 rc=0 OK — 11 module(s) regenerated fresh.
+  _r534_regen_batch_09 rc=0 OK — 11 module(s) regenerated fresh.
+  _r534_regen_batch_11 rc=0 OK — 11 module(s) regenerated fresh.
+  _r534_regen_batch_10 rc=0 OK — 11 module(s) regenerated fresh.
+  _r534_regen_batch_12 rc=0 OK — 11 module(s) regenerated fresh.
+  _r534_regen_batch_13 rc=0 OK — 11 module(s) regenerated fresh.
+  _r534_regen_batch_15 rc=0 OK — 11 module(s) regenerated fresh.
+  _r534_regen_batch_14 rc=0 OK — 11 module(s) regenerated fresh.
+  _r534_regen_batch_17 rc=0 OK — 11 module(s) regenerated fresh.
+  _r534_regen_batch_16 rc=0 OK — 11 module(s) regenerated fresh.
+  _r534_regen_batch_18 rc=0 OK — 9 module(s) regenerated fresh.
+[18:45:50] fresh check
+[content-manifest] content-hash 0-stale vs _content_manifest.txt
+  affected set: 195 module(s) (must be freshly regenerated)
+  unaffected  : 348 module(s) (must be byte-identical to the manifest; mtime IGNORED)
+  OK — 0 truly stale. 195 affected regenerated; the untouched corpus is byte-identical to the manifest (mtime false-alarm defeated).
+[spotcheck] verifying 12 non-affected modules regenerated WITH the fix ON
+  OK — all 12 sampled non-affected modules are BYTE-IDENTICAL under the fix (P's no-op claim holds on the sample).
+[18:46:12] REGEN_DONE
