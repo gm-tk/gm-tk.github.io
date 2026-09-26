@@ -1,106 +1,11 @@
 {
  "last_full": {
-  "round": "520",
-  "build": "260620.81",
-  "utc": "2026-09-25T17:50:25Z"
+  "round": "542",
+  "build": "260621.00",
+  "utc": "2026-09-26T16:00:18Z"
  },
  "scoped_since": 0,
  "history": [
-  {
-   "round": "479",
-   "utc": "2026-09-24T12:22:36Z",
-   "kind": "scoped"
-  },
-  {
-   "round": "480",
-   "utc": "2026-09-24T13:03:38Z",
-   "kind": "scoped"
-  },
-  {
-   "round": "481",
-   "utc": "2026-09-24T13:22:43Z",
-   "kind": "scoped"
-  },
-  {
-   "round": "482",
-   "utc": "2026-09-24T13:44:40Z",
-   "kind": "scoped"
-  },
-  {
-   "round": "483",
-   "utc": "2026-09-24T14:34:10Z",
-   "kind": "scoped"
-  },
-  {
-   "round": "484",
-   "utc": "2026-09-24T14:50:07Z",
-   "kind": "scoped"
-  },
-  {
-   "round": "485",
-   "utc": "2026-09-24T15:12:19Z",
-   "kind": "scoped"
-  },
-  {
-   "round": "486",
-   "utc": "2026-09-24T17:44:33Z",
-   "kind": "scoped"
-  },
-  {
-   "round": "487",
-   "utc": "2026-09-24T18:19:08Z",
-   "kind": "scoped"
-  },
-  {
-   "round": "488",
-   "utc": "2026-09-24T19:06:37Z",
-   "kind": "scoped"
-  },
-  {
-   "round": "490",
-   "utc": "2026-09-24T19:51:43Z",
-   "kind": "scoped"
-  },
-  {
-   "round": "491",
-   "utc": "2026-09-24T21:41:48Z",
-   "kind": "scoped"
-  },
-  {
-   "round": "492",
-   "utc": "2026-09-24T23:23:31Z",
-   "kind": "scoped"
-  },
-  {
-   "round": "493",
-   "utc": "2026-09-24T23:54:26Z",
-   "kind": "scoped"
-  },
-  {
-   "round": "494",
-   "utc": "2026-09-25T00:26:25Z",
-   "kind": "scoped"
-  },
-  {
-   "round": "495",
-   "utc": "2026-09-25T00:46:52Z",
-   "kind": "scoped"
-  },
-  {
-   "round": "496",
-   "utc": "2026-09-25T01:20:56Z",
-   "kind": "scoped"
-  },
-  {
-   "round": null,
-   "utc": "2026-09-25T01:49:15Z",
-   "kind": "scoped"
-  },
-  {
-   "round": null,
-   "utc": "2026-09-25T02:19:35Z",
-   "kind": "scoped"
-  },
   {
    "round": null,
    "utc": "2026-09-25T03:04:23Z",
@@ -204,6 +109,101 @@
   {
    "round": "520",
    "utc": "2026-09-25T17:16:40Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "521",
+   "utc": "2026-09-25T18:07:46Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "522",
+   "utc": "2026-09-25T23:34:12Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "523",
+   "utc": "2026-09-26T00:25:30Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "525",
+   "utc": "2026-09-26T00:50:43Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "526",
+   "utc": "2026-09-26T01:19:22Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "528",
+   "utc": "2026-09-26T03:29:04Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "529",
+   "utc": "2026-09-26T04:12:18Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "530",
+   "utc": "2026-09-26T04:47:13Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "531",
+   "utc": "2026-09-26T05:15:56Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "532",
+   "utc": "2026-09-26T05:59:05Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "533",
+   "utc": "2026-09-26T06:26:07Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "534",
+   "utc": "2026-09-26T06:49:12Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "535",
+   "utc": "2026-09-26T11:04:51Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "536",
+   "utc": "2026-09-26T11:28:04Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "537",
+   "utc": "2026-09-26T11:44:15Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "538",
+   "utc": "2026-09-26T12:19:30Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "539",
+   "utc": "2026-09-26T12:50:03Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "541",
+   "utc": "2026-09-26T14:20:25Z",
+   "kind": "scoped"
+  },
+  {
+   "round": "542",
+   "utc": "2026-09-26T15:25:39Z",
    "kind": "scoped"
   }
  ]

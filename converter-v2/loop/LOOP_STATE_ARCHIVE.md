@@ -5600,3 +5600,8 @@ r539 +0.0038pp (< 0.02: counts); r538 +0.0100pp (counted); r538 +0.0100pp (< 0.0
 ## Position — Standing facts AppVersion history 260620.93 → 260620.87 (verbatim, s54 §5d condense #1)
 
 ; before it 260620.93 (r534 the bare link line — session 52 Round 10, 26 Sept); before it 260620.92 (r533 the bare video URL — session 52 Round 9, 26 Sept); before it 260620.91 (r532 the bare stock-photo URL — session 52 Round 8, 26 Sept); before it 260620.90 (r531 the bracket fragment in a button label — session 52 Round 5, 26 Sept); before it 260620.89 (r530 the whakataukī's other writer forms — session 52 Round 3, 26 Sept); before it 260620.88 (r529 the summary heading's alert box — session 52 Round 2, 26 Sept); before it 260620.87 (r528 the untagged whakataukī — session 52 Round 1, 26 Sept); 260620.86 and older → LOOP_STATE_ARCHIVE.md 'Position — Standing facts AppVersion history 260620.86 and older (verbatim, s53 §5d condense #1)'
+
+## Session 54 — the Round-5 FULL marker (verbatim) + done
+
+- **FULL BACKSTOP IN FLIGHT — NOT PROVEN** (session 54 Round 5, 27 Sept 04:39 NZDT): the ledger's FULL-ship backstop at 260621.00 (scoped #7 since the s52-r11 FULL — the cadence-8 backstop one ship early, the s52 precedent); NO engine / data change; every gated module regenerated (`_s54_full_fullship_par.sh`, 4 workers); proof = `_content_manifest.py diff` 0 pages differ + every gate identical; then `_ship_ledger.py record-full --round 542`. If this session dies mid-run: re-run the regeneration (it is idempotent) and the proof.
+- **Done:** 0 pages differ; every gate identical; ledger reset (LAST FULL = r542).

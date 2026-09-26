@@ -1,5 +1,21 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-27 (session 54 Round 5, build 260621.00 — NO engine change) — THE LEDGER'S FULL-SHIP BACKSTOP: the whole corpus regenerated with the r542 engine (scoped #7 since the s52-r11 FULL — the cadence-8 backstop one ship early, the s52 precedent)
+
+### 1. WHAT RAN
+
+`outputs/_s54_full_fullship_par.sh` (a copy of `_s52_full_fullship_par.sh`): `_batch_plan.py`'s 42 batches (545 modules) through `batch_convert.cjs --force`, 4 parallel workers under WSL, 04:41 → 04:47 NZDT, every batch rc 0. Then `outputs/_s54_full_postship.sh`: `run_all_gates.sh`, the skeleton state + its delta vs the pre-regeneration snapshot, `_gatecheck.py cs bc` then `skeleton defect --commit --round 542` (the cs bc run printed the CACHED s52 skeleton rows — the §6 trap; the live skeleton run is the verdict), `_ship_ledger.py record-full --round 542`, the fast-loop and content-manifest snapshots, the selftests (50 PASS / GREEN, 0 FAIL), the feature index (GREEN) and the DIFF MINER (198 CANDIDATE, unchanged).
+
+### 2. PROOF
+
+`_content_manifest.py diff` → **IDENTICAL, 0 pages differ** (2,673 pages / 543 modules), taken before the snapshot. Skeleton delta vs the pre-regeneration snapshot: **+0.0000pp, 0 movers**, new-only 0, gone 0.
+
+### 3. PROTECTED GATES
+
+Skeleton **56.3993 % @ 2486**, ≥50 1647, ≥75 309, ≥90 29, RAW 40.082 %; compare_structure exact 17062 / EXTRA 206 / missing 581; body_compare ANY 233; clean 2585 / 2627; leak 52 / 42; tags 9557; every verifier ✓, every COUNT held (`_s54_full_gates.log`); `--gate-baseline-check` PASS.
+
+**Ledger:** FULL recorded at round 542 (260621.00); scoped-since counter 0 (8 of headroom) · session 54 Round 5.
+
 ## 2026-09-27 (round 542, build 260621.00) — THE DRAG-AND-DROP LABEL ROW: a two-column `[Drag and drop]` table whose FIRST row is the writer's red column-label row (`Question ║ Answer`, `Word ║ [correct]`, `Clause [static] ║ Description`, `║ Correct answer – can we jumble them up though please`) now builds the KB 03B standard matching widget — the label row dropped, its instruction the Writers Note; 17 widgets / 17 modules, verifier defect 0, skeleton-neutral by design
 
 ### 1. WHAT CHANGED
