@@ -1175,7 +1175,20 @@ class InteractiveBuilder {
 		const srcRows = (tables[0].rows ?? []).filter((r) => Array.isArray(r));
 		if (srcRows.length < (cfg.min_rows ?? 2)) return null;
 		const width = Math.max(0, ...srcRows.map((r) => r.length));
-		if (width < (cfg.min_columns ?? 3)) return null;
+		// ROUND 543 (the autonomous loop's session 54 Round 6 — D10-3's build lane) — THE MARKED CATEGORY SORT. The writer marks a
+		// sort's header in red (`[H4] Benefits ║ [H4] Risks` — OSSM501; `AI can [static heading] ║ AI can't` — OSAI201; a fully-red
+		// short label row `Short vowel ║ Long vowel` — BLL270) or types the ITEMS red under a black header (`/sk/ sound ║ /s/ sound`
+		// over `scooter ║ science` — BLL250, the gold's 2-column ddColumn sort); both were refused (a red cell anywhere), and a
+		// 2-column sort always was (min_columns 3 — an unmarked 2-column table is the r69 pair reader's). With data column.marked
+		// (env DDCOLMARK_OFF): a header cell's red run that is a heading marker (header_marker_pattern) is stripped, a fully-red
+		// short cell is the label; a data cell that is red text only (black separators allowed) is its item(s); and a table so
+		// marked (a marked header OR every item red) may be 2 columns wide. An unmarked table reads exactly as r351.
+		const mk = cfg.marked && cfg.marked.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[cfg.marked.env || "DDCOLMARK_OFF"]) ? cfg.marked : null;
+		const wide = width >= (cfg.min_columns ?? 3);
+		if (!wide && !(mk && width >= (mk.min_columns ?? 2))) return null;
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const markerRe = mk ? new RegExp(mk.header_marker_pattern ?? "^\\[\\s*(?:h[1-6]|static(?:\\s+heading)?|column\\s+(?:heading|title))\\s*\\]$", "i") : null;
 		const inline = renderInline ?? ((s) => s);
 		const tagRe = /\[[^\]]*\]/, urlRe = /https?:\/\//;
 		const reject = new RegExp(cfg.header_reject_pattern ?? "_{3,}|\\bimages?\\b", "i");
@@ -1183,9 +1196,18 @@ class InteractiveBuilder {
 		const header = srcRows[0];
 		if (header.length !== width) return null;
 		const headings = [];
+		let marked = false;
 		for (const c of header) {
-			if (this.#hasRedText(c)) return null;
-			const t = this.#cellText(c).trim();
+			let t;
+			if (this.#hasRedText(c)) {
+				if (!mk) return null;
+				const s = String(c ?? ""), reds = [...s.matchAll(RED)].map((m) => m[1].replace(/\s+/g, " ").trim()).filter(Boolean);
+				const black = this.#cellText(s.replace(RED, " ")).replace(/\s+/g, " ").trim();
+				if (reds.length && reds.every((x) => markerRe.test(x)) && black) t = black;                 // `[H4] Benefits`
+				else if (!black && reds.length === 1 && mk.red_label !== false) t = reds[0];               // `«Short vowel»`
+				else return null;
+				marked = true;
+			} else t = this.#cellText(c).trim();
 			if (!t || urlRe.test(t) || tagRe.test(t) || reject.test(t)) return null;
 			if (t.split(/\s+/).length > (cfg.header_max_words ?? 8)) return null;
 			headings.push(t);
@@ -1193,20 +1215,30 @@ class InteractiveBuilder {
 		// the data rows: every non-empty cell is one item or a ` / ` / bullet list of items belonging to its column
 		const split = new RegExp(cfg.item_split_pattern ?? "\\s/\\s|\\u2022");
 		const cols = headings.map(() => []);
+		let redItems = 0, blackItems = 0;
 		for (const r of srcRows.slice(1)) {
 			if (r.length > width) return null;
 			for (let c = 0; c < r.length; c++) {
-				if (this.#hasRedText(r[c])) return null;
-				const t = this.#cellText(r[c]).trim();
+				let t;
+				if (this.#hasRedText(r[c])) {
+					if (!mk) return null;
+					const s = String(r[c] ?? "");
+					if (/[\p{L}\p{N}]/u.test(this.#cellText(s.replace(RED, " ")))) return null;             // red AND black words — not an item cell
+					t = [...s.matchAll(RED)].map((m) => m[1].replace(/\s+/g, " ").trim()).filter(Boolean).join(" / ");
+					if (t) redItems++;
+				} else { t = this.#cellText(r[c]).trim(); if (t) blackItems++; }
 				if (!t) continue;
 				if (urlRe.test(t) || tagRe.test(t)) return null;
 				for (const part of t.split(split)) { const it = part.trim(); if (it) cols[c].push(it); }
 			}
 		}
+		if (redItems && blackItems) return null;                                          // a half-red table is another shape
+		if (!wide && !(marked || (redItems && !blackItems))) return null;                  // a 2-column sort only when the writer marked it
 		const all = cols.flat();
 		if (all.length < (cfg.min_items ?? 3)) return null;
 		if (cols.filter((c) => c.length).length < 2) return null;                       // a pooled cell = no answer key
 		if (new Set(all.map((x) => x.toLowerCase())).size !== all.length) return null;    // a repeated item = an ambiguous key
+		if (marked || redItems || !wide) bundle._ddMarkedItems = all.slice();             // ROUND 543 — #ddWithMembers' echo test
 		const out = [cfg.open];
 		for (let c = 0; c < cols.length; c++) {
 			out.push(Utils.FillTemplate(cfg.col_open, { heading: inline(headings[c]) }));
@@ -1277,6 +1309,14 @@ class InteractiveBuilder {
 				const t = String(m.text ?? "").trim();
 				if (!t) continue;
 				if (cfg.render_black === false) return null;
+				// ROUND 543 — under a MARKED sort only (bundle._ddMarkedItems): a black line that merely repeats one of the drag
+				// items (the writer's `* I share your perspective.` list above the table — CEDT501 6.1; the gold shows the
+				// instruction line only) is the widget's own content. Data column.marked.echo_consumed
+				if (bundle?._ddMarkedItems && tpl?.column?.marked?.echo_consumed !== false) {
+					const f = (s) => Utils.Fold(String(s)).replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+					const echo = f(this.#cellText(t).replace(/^[*•\-–]\s*/, ""));
+					if (echo && bundle._ddMarkedItems.some((x) => f(x) === echo)) continue;
+				}
 				const r = block(m.text); if (!r) return null; side.push(r); continue;
 			}
 			if (m.type !== "tag") return null;                                            // a nested widget, anything unknown

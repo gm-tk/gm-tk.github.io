@@ -1890,7 +1890,8 @@ class Config {
 	// ROUND 539 (260620.98): THE ONE-LEVEL SHIFT UNDER A BODY [H1] (session 53 Round 5; ARFUN [H2] -> h3, ARFUN / TWHT [H3] -> h4). Env HKEEPFAM3_OFF.
 	// ROUND 541 (260620.99): THE ALERT WHOSE TITLE IS A HEADING (session 53 Round 8 / session 54 Round 1; the empty callout takes the following [Hn] and its run; the callout + heading co-tag). Env CALLOUTHEADBOX_OFF / CALLOUTHDCOTAG_OFF.
 	// ROUND 542 (260621.00): THE DRAG-AND-DROP LABEL ROW (session 54 Round 4; a red column-label row over a two-column pair table is the header). Env DDLABELROW_OFF.
-	static AppVersion = "260621.00";
+	// ROUND 543 (260621.01): THE MARKED CATEGORY SORT (session 54 Round 6; a red-marked header or red items make a column sort, 2 columns included). Env DDCOLMARK_OFF.
+	static AppVersion = "260621.01";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

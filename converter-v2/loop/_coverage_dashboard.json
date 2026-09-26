@@ -1,13 +1,12 @@
 {
- "generated": "2026-09-27 04:36",
+ "generated": "2026-09-27 05:30",
  "warnings": [
   "skeleton state predates the newest engine change (2026-09-25) \u2014 its rows may lag.",
-  "body_compare predates the newest engine change (2026-09-27) \u2014 its rows may lag.",
   "feature index predates the newest engine change (2026-09-27) \u2014 its rows may lag."
  ],
  "headline": {
   "bundles": 7640,
-  "built": 3505,
+  "built": 3526,
   "pages": 2627,
   "clean": 2585,
   "modules": 535,
@@ -203,9 +202,9 @@
    ]
   },
   "dragAndDrop": {
-   "built": 163,
+   "built": 184,
    "total": 1170,
-   "declined_shapes": 843,
+   "declined_shapes": 829,
    "modules": 387,
    "declined_modules": [
     "AGH1001",
@@ -418,7 +417,6 @@
     "HPFUN203",
     "HPFUN301",
     "HPFUN302",
-    "HPFUN303",
     "HPFUN401",
     "HPFUN403",
     "HPFUN901",
@@ -470,7 +468,6 @@
     "OSBY101",
     "OSBY201",
     "OSBY301",
-    "OSBY401",
     "OSBY501",
     "OSGM301",
     "OSGM401",
@@ -2130,9 +2127,9 @@
   {
    "type": "dragAndDrop",
    "token": "button+txt",
-   "declined": 138,
-   "built": 21,
-   "build_rate": 0.132
+   "declined": 136,
+   "built": 23,
+   "build_rate": 0.145
   },
   {
    "type": "dropDown",
@@ -2202,14 +2199,14 @@
   {
    "class": "un-built dragAndDrop",
    "kind": "interactive",
-   "plain": "Writers tagged 1170 dragAndDrop widgets; 1007 ship as a hand-off box instead of a built widget.",
-   "modules": 365,
-   "pages": 713,
-   "occurrences": 1007,
-   "shapes": 843,
+   "plain": "Writers tagged 1170 dragAndDrop widgets; 986 ship as a hand-off box instead of a built widget.",
+   "modules": 363,
+   "pages": 702,
+   "occurrences": 986,
+   "shapes": 829,
    "regen_modules": 390,
    "regen_saving_pct": 29,
-   "note": "builder covers 163/1170 (13%)",
+   "note": "builder covers 184/1170 (15%)",
    "rank": 1
   },
   {

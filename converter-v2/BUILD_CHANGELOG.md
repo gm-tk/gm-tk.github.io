@@ -1,5 +1,26 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-27 (round 543, build 260621.01) — THE MARKED CATEGORY SORT: a drag-and-drop sort whose header the writer marked in red (`[H4] Benefits ║ [H4] Risks`, `AI can [static heading]`, a fully-red `Short vowel ║ Long vowel` row) or whose ITEMS are typed red (`/sk/ sound ║ /s/ sound` over `scooter ║ science`) now builds the KB 03B column layout, 2 columns included; 21 widgets / 17 modules, 18 the gold's own column layout, verifier defect 0
+
+### 1. WHAT CHANGED
+
+**The class** (D10-3's widget-build lane, dragAndDrop — the largest un-built type): the r351 column reader refused any red cell and any 2-column table; the writer marks a sort's header with a red heading marker or a red label row, or types the drag items red under a black header (the session-54 census `outputs/_s54_r3_ddtable.cjs`: red-item sorts 16 bundles / 14 pages / 12 modules — BLL240 / 250, MXFU402, MXDI103, CEDT501 ×2, MXFL202 ×2, MXDB302, FRFUN07, WJFUN109 …; plus the heading-labelled rows r542's label-row rule sends on as sorts — OSSM501, OSAI201 / 301 / 501, OSBY401 …).
+
+**The fix** (`InteractiveBuilder.#dragAndDropColumn`, data `interactive_builders.dragAndDrop.column.marked`, env **`DDCOLMARK_OFF`**): a header cell's red run that is a heading marker (`header_marker_pattern` — `[Hn]`, `[static]` / `[static heading]`, `[column heading]` / `[column title]`) is stripped and the black text is the label; a fully-red short cell is the label (`red_label`); a data cell of red text only (black separators allowed) gives its item(s); a half-red table (red AND black items) declines; a table so marked (a marked header, or every item red) may be 2 columns wide (`min_columns` 2 — an unmarked 2-column table stays the r69 pair reader's). **Repair (attempt 1, after the first ship FAILED on the skeleton mean −0.00003pp):** the members rule (`#ddWithMembers`) re-rendered the writer's asterisked list of the phrases above CEDT501 6.1's table as paragraphs although every phrase is a drag item (the gold shows the instruction line only) — under a marked sort only, a black line that merely repeats a drag item is consumed (`echo_consumed`); CEDT501_6_1 −0.62 → +0.79. An unmarked table reads exactly as r351 (the OFF probe is byte-identical on every module).
+
+### 2. PROOF
+
+- OFF probe (`DDCOLMARK_OFF=1`) over all 545 modules: **6,432 / 6,432 identical**; ON → 36 pages / **17 modules**, 0 ASSEMBLE ERROR. `scoped_ship.sh … --round 543 --commit` PASS (the second ship; the first FAILED and was restored — `_s54_restore.sh 543`, manifest 0 pages differ): 0 stale, containment 17 ⊆ 17, the 12-module spot-check byte-identical.
+- **21 hand-off boxes → built column widgets**; `_verify_dragdrop.cjs` on the 17 modules: 29 widgets, defect 0 ✓. The gold's own widget (`outputs/_s54_r4_ddlayout.py`): **18 the same column layout**, 1 different (OSGM401 4.0 — `[H4] Description ║ [H4] Gaming feature`, the gold's standard match), 2 where the gold has no drag-and-drop sharing a drag (MXDI202 8.0, MXFL202 2.0 — A1, judged on the verifier).
+- The skeleton's `match()`: 4 pages moved, 3 up / 1 down, +1.35pp-sum; the dip NAMED: MXFL202_2_0 −0.21 with its position-free overlap 90 → 91 of 178 (`outputs/_s54_companion.py` — an alignment artefact).
+- The verifier COUNT on its recorded set grew 23 → 24 (ENFUN04 3 → 4) — recorded. Coverage dashboard: dragAndDrop built 163 → 184, interactive coverage 45.9 → 46.2 %.
+
+### 3. PROTECTED GATES
+
+Skeleton **56.3993 → 56.3998 % @ 2486 (+0.0005pp)**, ≥50 1647 → 1648, ≥75 309, ≥90 29; RAW 40.0821 → 40.1172 %; compare_structure exact 17062 / EXTRA 206 / missing 581 held; body_compare ANY 233 held; leak 52 / 42; tags 9557; every verifier ✓ (`_r543_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 543`; `--gate-baseline-check` PASS. A widget-build round (LOOP §4): the still-a-box test moved 21 (≥ 20 — progress) — the plateau window resets.
+
+**Ledger:** scoped #1 since the s54-r5 FULL · data `interactive_builders.dragAndDrop.column.marked` · env `DDCOLMARK_OFF` · code `InteractiveBuilder.#dragAndDropColumn` + `#ddWithMembers` (echo) · session 54 Round 6.
+
 ## 2026-09-27 (session 54 Round 5, build 260621.00 — NO engine change) — THE LEDGER'S FULL-SHIP BACKSTOP: the whole corpus regenerated with the r542 engine (scoped #7 since the s52-r11 FULL — the cadence-8 backstop one ship early, the s52 precedent)
 
 ### 1. WHAT RAN
