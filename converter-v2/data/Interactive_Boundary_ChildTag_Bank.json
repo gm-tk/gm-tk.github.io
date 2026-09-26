@@ -547,7 +547,13 @@
 			"new_activity_id_terminates": {
 				"enabled": true,
 				"_doc": "ROUND 521 (session 50 Round 15) — THE NEW ACTIVITY ID ENDS THE WALK. The same-activity multi-widget absorb (same_activity_multi_widget) kept a different-type follower inside the bundle whenever the bundle belongs to a real [Activity N] — but when the follower's OWN bracket names a DIFFERENT activity id ('[Activity 3B – self marking type the answer]' inside Activity 3A's walk; the MX family types the id and the widget in one bracket, so the tag resolves to the widget and the absolute [activity] break never fires), it is a new activity. `_s50_r15_actid.cjs`: of 1,570 bundles that absorbed a follower, 58 bundles / 17 modules absorbed one naming another activity id (MX 44, BLL 4, ARFUN 3, JPFUN / XMES 2 each); the gold keeps the two apart. The walk ends there and the follower opens its own bundle and activity. Only when the bundle HAS an activity id and the follower names a different one. Env ACTIDSPLIT_OFF.",
-				"pattern": "\\[\\s*Activity\\s+([0-9]+[A-Za-z]?)\\b"
+				"pattern": "\\[\\s*Activity\\s+([0-9]+[A-Za-z]?)\\b",
+				"owner_lookback": {
+					"_doc": "ROUND 523 part 2 (session 51 Round 3; its own delta, ACTIDOWNER_OFF). During the walk a widget bundle opened UNDER a separate [Activity N] opener has no activityId yet (the owner is attached later by the activity look-back), so the r521 test above never fired for it — ARFUN04 1G's drag-and-drop (its box newly opened by r523's heading co-tag) walked on into `[Activity 1H drag and drop] [MTK Quiz …]` as a same-type continuation and swallowed that quiz (the mtkQuiz verifier's '1G: <ol> inside the shell'). When the bundle has no activityId, the nearest activity opener before it (back to max_back items, never past a PAGE_BOUNDARY or another widget opener) lends its id to the test.",
+					"enabled": true,
+					"env": "ACTIDOWNER_OFF",
+					"max_back": 60
+				}
 			},
 			"dropbox_never_merges": {
 				"enabled": true,

@@ -123,6 +123,36 @@ class PageAssembler {
 	}
 
 	/**
+	 * ROUND 523 — THE CO-TAG'S DUPLICATE-ID GUARD. TagNormaliser gives an `[Activity 2] [H3] Title` span the activity's
+	 * primary slot (Tag_Lexicon _meta.activity_heading_cotag); but when the SAME id opens another activity later on the same
+	 * page, the writer put the id on a section heading AND on the real activity (MXEX202 lesson 2: `[Activity 2] [H3] Double
+	 * or Half` … `[Activity 2] [H3] Fun Water Challenge`; HES1002 2.0) — the gold boxes only the later one and keeps the
+	 * first a free heading, while a box on the first shifts every later id by the r369 de-dupe. Such a span hands the primary
+	 * slot back to its heading (the pre-523 parse). Data activity_heading_cotag.duplicate_id_guard; env ACTHDCOTAG_OFF.
+	 */
+	static #cotagDuplicateId(items, run) {
+		const cfg = DataService.Data.TagLexicon?._meta?.activity_heading_cotag;
+		if (!cfg || cfg.enabled === false || cfg.duplicate_id_guard === false) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "ACTHDCOTAG_OFF"]) return;
+		const idOf = (x) => String(x?.parse?.numbers?.[0] ?? "").toUpperCase();
+		let n = 0;
+		for (let i = 0; i < items.length; i++) {
+			const it = items[i];
+			if (it?.type !== "tag" || !it.parse?.cotagHeading || it.parse.primary?.tag !== "activity" || !idOf(it)) continue;
+			for (let j = i + 1; j < items.length; j++) {
+				const x = items[j];
+				if (x?.type !== "tag" || !x.parse?.primary) continue;
+				if (x.parse.primary.directive === "PAGE_BOUNDARY") break;
+				if (x.parse.primary.tag === "activity" && idOf(x) === idOf(it)) {
+					it.parse.primary = it.parse.cotagHeading; n++;
+					break;
+				}
+			}
+		}
+		if (n) run.AddNote("info", "PageAssembler", `${n} [Activity] + heading co-tag${n > 1 ? "s" : ""} kept as a heading: the same id opens a later activity (activity_heading_cotag.duplicate_id_guard).`);
+	}
+
+	/**
 	 * ROUND 522 part 2 — THE WRITER'S BARE [Summary] IS AN ALERT BOX TITLED 'Summary' (the AGH family's own tag: 31 spans,
 	 * every one AGH; the gold boxes the whole run as `div.alert` headed `<h4>Summary</h4>`, 83 / 83 blocks). The span resolves
 	 * to no tag, so it shipped as a Writers Note with the bullets free. Here it is re-parsed as the data's retag_as (the
@@ -207,6 +237,7 @@ class PageAssembler {
 		const items = PageSplitter.BuildItemStream(run.wtBlocks, normaliser);
 		PageAssembler.#journalBracketSentence(items, run);   // ROUND 522 — before the split, the scanner and the converter all read the item
 		PageAssembler.#bareSummaryAlert(items, run, normaliser);   // ROUND 522 part 2 (SUMMARYALERT_OFF)
+		PageAssembler.#cotagDuplicateId(items, run);   // ROUND 523 (ACTHDCOTAG_OFF — the co-tag rule's own guard)
 		run.pages = PageSplitter.Split(items, run, normaliser);
 		if (!run.pages.length) {
 			run.AddNote("error", "PageAssembler",

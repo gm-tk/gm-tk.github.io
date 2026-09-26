@@ -118,6 +118,21 @@
 				}
 			]
 		},
+		"activity_heading_cotag": {
+			"_doc": "ROUND 523 (the autonomous loop's session 51 Round 3). THE ACTIVITY GOVERNS A HEADING CO-TAG. A writer types the activity opener and the title's heading level in ONE red span, either order — `[Activity 1A] [H3] Examples of Factors` (HES1007) / `[H3] [Activity 2A] Emotion patterns check-in` (XGF9002): 219 spans / 33 modules (outputs/_s51_r3_acthead.py). The heading tag is an ELEMENT (precedence 6) and outranked the activity's CONTAINER_OPEN (5), so no box opened, the title shipped as a bare <hN>, and the heading fragment's digit joined the ids (`[\"3\",\"2b\"]`). The gold puts that heading inside an activity box on 166 of 195 matched spans (0.85 — ARFUN 47/52, XGF 33/35, CEDO 26/31, HES 19/25, MXEX 13/18). When a span's tags are ONLY the activity tag plus heading_tags and a heading won the primary slot, the activity takes it (the black tail is the box's title, as for a plain `[Activity 1A] Title`) and each heading fragment's digit leaves `numbers`. A span that also carries a widget (INTERACTIVE) or any other tag is untouched. Env ACTHDCOTAG_OFF.",
+			"enabled": true,
+			"env": "ACTHDCOTAG_OFF",
+			"duplicate_id_guard": true,
+			"_duplicate_id_guard_doc": "PageAssembler.#cotagDuplicateId: a promoted co-tag whose id opens ANOTHER activity later on the same page (before a PAGE_BOUNDARY) hands the primary slot back to its heading — the writer typed the id on a section heading and on the real activity (MXEX202 lesson 2 'Double or Half' / 'Fun Water Challenge', HES1002 2.0); the gold boxes only the later one.",
+			"heading_tags": [
+				"h1",
+				"h2",
+				"h3",
+				"h4",
+				"h5",
+				"h6"
+			]
+		},
 		"mtk_quiz_retag": {
 			"_note": "ROUND 232 (Change Ledger CL-0038, 16 Jul — Chris). Any [MTKquiz]-family span (any modifiers) ships the canonical 'Go to quiz' button + a Designer/Developer To Do note; the writer's quiz content stays rendered; the 'dropbox' wrapper modifier does NOT attach. The family's live resolutions were all over the map (measured, outputs/_detect_mtkquiz.cjs — 33 spans / 21 modules): most forms hit mcq INTERACTIVE via the embedded 'quiz' alias (an un-built bundle that swallowed the writer's quiz content into a placeholder dump), [MTKQuiz]/[Auto-marked MTKquiz] were bare instructions, the 'Free text box…' form mis-resolved to a text box ELEMENT and the 'teacher dropbox' form to dropdown. This span-level RETAG (applied in TagNormaliser.Parse after tag_promote, and ALSO on tag-less instruction spans) normalises them all: quiz-junk tags in drop_tags are removed, ONE 'mtk quiz' ELEMENT tag is injected, and the primary is recomputed SURVIVORS-FIRST (a surviving [Activity]/[drag and drop] co-tag keeps governing — [Activity 1A: MTK Quiz] still opens its box; only when the old primary was dropped or null does mtk quiz take the slot). head_pattern matches the family head (MTKQuiz/MTK Quiz/MTK-quiz); exclude_pattern keeps the ARFUN01 closer ([End of MTK Quiz content] stays a CONTAINER_CLOSE, never a button); bracketless_max_words caps the bracket-less red-line form (ENG1004/ENG1005 'Activity – long answer MTK quiz, Kaiako marked', measured the ONLY bracket-less carriers corpus-wide) so a long prose note mentioning an MTK quiz can never retag. Emit templates + the adjacent writer-button absorb live in Emit_Templates.interactive_builders.mtk_quiz. Env MTKQUIZ_OFF reverts the whole family to the measured pre-round behaviour.",
 			"enabled": true,

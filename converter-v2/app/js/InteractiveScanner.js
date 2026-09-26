@@ -2955,10 +2955,23 @@ class InteractiveScanner {
 				// member_rule.new_activity_id_terminates {enabled, pattern}; env ACTIDSPLIT_OFF.
 				{
 					const nai = meta.new_activity_id_terminates;
-					if (nai && nai.enabled !== false && bundle.activityId
+					// ROUND 523 part 2 (owner_lookback; env ACTIDOWNER_OFF): a bundle opened UNDER a separate [Activity N]
+					// opener has no activityId during the walk — the nearest activity opener before it lends its id
+					let naiId = bundle.activityId;
+					const olb = nai?.owner_lookback;
+					if (!naiId && olb && olb.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[olb.env || "ACTIDOWNER_OFF"])) {
+						for (let b = (bundle.startIndex ?? j) - 1, n = 0; b >= 0 && n < (olb.max_back ?? 60); b--, n++) {
+							const p = items[b]?.type === "tag" ? items[b].parse?.primary : null;
+							if (!p) continue;
+							if (p.directive === "PAGE_BOUNDARY" || p.directive === "INTERACTIVE") break;
+							if (p.tag === "activity" && p.directive === "CONTAINER_OPEN") { naiId = items[b].parse.numbers?.[0] ?? null; break; }
+						}
+					}
+					if (nai && nai.enabled !== false && naiId
 						&& !(typeof process !== "undefined" && process.env && process.env.ACTIDSPLIT_OFF)) {
 						const mm = new RegExp(nai.pattern ?? "\\[\\s*Activity\\s+([0-9]+[A-Za-z]?)\\b", "i").exec(String(next.text ?? ""));
-						if (mm && mm[1].toUpperCase() !== String(bundle.activityId).trim().toUpperCase()) break;
+						if (mm && mm[1].toUpperCase() !== String(naiId).trim().toUpperCase()) break;
 					}
 				}
 				const sameType = extra !== null && extra === bundle.type;

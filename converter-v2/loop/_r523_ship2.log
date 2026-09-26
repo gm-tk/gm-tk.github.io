@@ -1,0 +1,52 @@
+======================================================================
+ SCOPED SHIP — affected=../../outputs/_affected_r523.txt (36 modules), toggle=ACTHDCOTAG_OFF
+======================================================================
+[0] toggle-exists invariant (ACTHDCOTAG_OFF)
+    OK — ACTHDCOTAG_OFF found in app/js (the last-shipped corpus == this toggle OFF).
+
+[1] content-hash 0-stale (mtime false-alarm defeated)
+[content-manifest] content-hash 0-stale vs _content_manifest.txt
+  affected set: 36 module(s) (must be freshly regenerated)
+  unaffected  : 507 module(s) (must be byte-identical to the manifest; mtime IGNORED)
+  OK — 0 truly stale. 36 affected regenerated; the untouched corpus is byte-identical to the manifest (mtime false-alarm defeated).
+
+[2] containment — actually-changed modules must be a subset of the affected set
+    OK — 36 changed module(s) are a subset of 36 affected (the true set ⊆ the detector set).
+
+[3] completeness spot-check (a mis-specified P is caught here)
+[spotcheck] verifying 12 non-affected modules regenerated WITH the fix ON
+  OK — all 12 sampled non-affected modules are BYTE-IDENTICAL under the fix (P's no-op claim holds on the sample).
+
+[4] exact gate proof (decomposition vs the last-ship baseline)
+re-scoring 48 affected module(s): ANZH103 ANZH401 ARFUN04 ARFUN05 BLL175 BLL253 CEDK501 CEDO501 CEDO502 CEDR501 CEDT501 CEDW501 COM1002 COM1005 ENGI103 ENGJ403 GEO1004 HES1002 HES1007 HIS1003 HPFUN402 MXDI102 MXEO401 MXEX201 MXEX202 MXFL103 MXFL201 MXFL202 PHE1003 PHE1007 PHE1008 SSOG301 TEFUN02 TEFUN08 TRR109 TWHR907 WJFUN106 WJFUN109 WJFUN110 WJFUN115 WJFUN205 WJFUN208 WJFUN212 WJFUN304 XGF9002 XGF9003 XGF9006 XMES102
+baseline taken: 2026-09-25T23:34:02Z
+(unaffected modules unchanged by construction — corpus aggregate moves by exactly the affected-set delta)
+
+  metric                                 baseline        new     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  55.88      56.02     +0.14  IMPROVED
+  skeleton pages >=50%                       1618       1625        +7  IMPROVED
+  skeleton pages >=75%                        288        289        +1  IMPROVED
+  compare_structure exact chain             16845      16830       -15  REGRESSED
+  compare_structure EXTRA container           204        204         0  HELD
+  compare_structure missing container         879        879         0  HELD
+  body_compare ANY breakdown                  234        234         0  HELD
+  defect structurally-clean %               98.40      98.40      0.00  HELD
+  literal-[tag] leak (occ)                     52         52         0  HELD
+  literal-[tag] leak (pages)                   42         42         0  HELD
+
+  context (no pass/fail): sk_pages: 2486->2486  cs_matched: 19618->19603  body_pages: 2627->2627  df_total: 2627->2627  df_clean: 2585->2585
+
+RESULT: MOVED, ACCEPTED AS NAMED — compare_structure exact chain
+        Every mover was named on the command line and must be decomposed in the
+        round's changelog entry (which page, which mechanism). Recorded in the manifest.
+[commit] gate_baseline.json: every aggregate written by the tool — 6 changed: skeleton.mean_scaffold_pct 55.88 -> 56.02; skeleton.median_scaffold_pct 57.0 -> 57.1; skeleton.pages_ge_50 1618 -> 1625; skeleton.pages_ge_75 288 -> 289; skeleton.raw_mean_pct 39.71 -> 39.78; compare_structure.exact_chain 16845 -> 16830  | _meta.round 523
+[commit] fast-loop baseline PATCHED (2486 pages) + content manifest refreshed — this is now the shipped state the next inner loop measures against.
+[commit] recorded accepted named movement: compare_structure exact chain
+
+[6] periodic full-ship backstop cadence
+[ledger] last full ship: round 520 (2026-09-25T17:50:25Z); scoped ships since: 3 (cadence 8, hard 16)
+  OK — a full-ship backstop is not yet due (5 scoped ship(s) of headroom).
+
+SCOPED SHIP: PASS — only the affected set changed, the rest is byte-identical, and every protected
+gate held-or-improved (exact, decomposition-proven). Finalise (changelog + AppVersion + CLAUDE.md).

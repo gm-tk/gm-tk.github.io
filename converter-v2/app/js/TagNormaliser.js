@@ -549,6 +549,7 @@ class TagNormaliser {
 		// Step 4 CLASSIFY the span
 		let primary = null;
 		let promotedMark = null;      // ROUND 304 — set by a tag_promote rule carrying `mark`
+		let cotagHeading = null;      // ROUND 523 — the heading tag an activity co-tag took the primary slot from
 		let cls;
 		if (tags.length) {
 			// the primary tag = highest directive precedence; ties keep the
@@ -777,6 +778,27 @@ class TagNormaliser {
 					}
 				}
 			}
+			// ROUND 523 (the autonomous loop's session 51 Round 3) — THE ACTIVITY GOVERNS A HEADING CO-TAG. The writer's
+			// `[Activity 1A] [H3] Title` / `[H3] [Activity 2A] Title` (219 spans / 33 modules) put the heading (ELEMENT, 6)
+			// ahead of the activity (CONTAINER_OPEN, 5): no box opened, the title shipped as a bare <hN>, and the heading's
+			// digit joined the ids. The gold boxes that heading on 166 of 195 matched spans. When the span's tags are ONLY
+			// the activity tag + heading tags and a heading won, the activity takes the primary slot (its black tail is the
+			// box's title) and each heading fragment's digit leaves `numbers`. Data _meta.activity_heading_cotag; env ACTHDCOTAG_OFF.
+			const ahc = this.#lexicon?._meta?.activity_heading_cotag;
+			if (ahc && ahc.enabled !== false && primary
+				&& !(typeof process !== "undefined" && process.env && process.env[ahc.env || "ACTHDCOTAG_OFF"])) {
+				const hd = new Set((ahc.heading_tags ?? []).map(String));
+				const act = tags.find((t) => t.tag === "activity" && t.directive === "CONTAINER_OPEN");
+				if (act && hd.has(primary.tag) && tags.every((t) => t === act || hd.has(t.tag))) {
+					cotagHeading = primary;   // PageAssembler's duplicate-id guard can hand the slot back
+					primary = act;
+					for (const frag of brackets) {
+						const hm = /^\s*\[?\s*h\s?([1-6])\s*\]?\s*$/i.exec(frag);
+						const k = hm ? numbers.indexOf(hm[1]) : -1;
+						if (k >= 0) numbers.splice(k, 1);
+					}
+				}
+			}
 		}
 		// THE [MTKquiz] FAMILY → ONE canonical "mtk quiz" ELEMENT tag (ROUND 232 —
 		// Change Ledger CL-0038).
@@ -916,6 +938,7 @@ class TagNormaliser {
 			// reach any span the rule did not touch. Undefined for every span no
 			// rule matched, so nothing that existed before this round can read it.
 			promoted: promotedMark,
+			...(cotagHeading ? { cotagHeading } : {}),   // ROUND 523 — present only on a promoted activity co-tag
 		};
 	};
 
