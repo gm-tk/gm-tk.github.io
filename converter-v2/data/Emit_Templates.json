@@ -1448,6 +1448,14 @@
 			"strip_pattern": "\\.$",
 			"keep_pattern": "(\\.\\.|\\b(?:e\\.g|i\\.e|etc|vs|approx|no|pp?|cf))\\.$"
 		},
+		"label_bracket_clean": {
+			"_doc": "ROUND 531 (session 52 Round 5). THE BRACKET FRAGMENT IN A BUTTON LABEL — KB constraint 5 (no literal tag / writer note in the output). A writer's bracket fragment reached 35 button labels on ≈ 26 pages (found on ANZH301 while measuring the journal-box ORDER lane): a split tag's tail ('Add button] Download journal', 'Button] [Download Journal', 'insert button] Download file ['), a writer note ('Upload to dropbox  [trigger engagement]', 'Lesson 5: Beyond the Basics [Not applicable]'), an unclosed note ('Download journal button] [Media item 31 -'), an orphan bracket ('Go back to [', 'go to quiz]', '] Video Mode'). The gold labels are clean ('Download journal', 'Go to quiz', 'Video Mode', 'Upload to dropbox'). Complete bracket notes go (a short caps token like a video title's '[HD]' stays — keep_pattern); the text after a split tag's '…]' wins when it has letters, else the text before it without the button words (button_words_pattern); an unclosed trailing note (note_pattern) goes; any other stray bracket character goes; nothing left = the label unchanged. Text-only: skeleton-blind by design. Env BTNBRACKET_OFF.",
+			"enabled": true,
+			"env": "BTNBRACKET_OFF",
+			"keep_pattern": "^[A-Z0-9]{1,4}$",
+			"note_pattern": "media item|merged item|trigger|applicable|insert",
+			"button_words_pattern": "\\b(?:add|insert)?\\s*buttons?\\b(?:\\s+title\\s*:)?"
+		},
 		"canonical_labels": {
 			"_doc": "ROUND 328 (the autonomous loop, session 4 Round 3, 2026-09-15 — KB constraint 55's LABEL half + CL-0038 / constraint 65 + 14.11 / 14D). A submission button keeps its full 'Go to' label: the writer's bare noun — `[Button] Portfolio`, `[Add button] Quiz button`, `[Add button] Quiz`, `[Button] Dropbox` — is the label the KB says never ships bare ('the leading Go to is never dropped to a bare Dropbox / Portfolio'; the quiz button reads 'Go to quiz'). The first rule whose label_match hits the resolved, trimmed label supplies the canonical label; a rule's family_labels row wins for a module whose code prefix is listed (14.11: the BLL / LS / HPE families label the dropbox button 'Upload to Dropbox'). MEASURED: 94 bare-noun labels on 54 pages / 44 modules (quiz 45, portfolio 25, dropbox 14, journal 10 — journal has no KB label rule and is untouched); in the same modules the gold ships 'Go to quiz' ×128, 'Go to portfolio' ×77. Applied at the generic [button] seam after the round-323 trim and before the round-326 anchor, so the anchor's quiz href and To Do wording key on the canonical label. Env BTNLABEL_OFF reverts byte-for-byte.",
 			"enabled": true,

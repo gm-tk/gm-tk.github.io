@@ -8527,6 +8527,38 @@ class ContentConverter {
 		return { title, mode };
 	}
 
+	/** ROUND 531 (the autonomous loop's session 52 Round 5) — THE BRACKET FRAGMENT IN A BUTTON LABEL (KB constraint 5). A
+	 *  writer's bracket fragment reached 35 button labels on ≈ 26 pages: a split tag's tail (`Add button] Download journal`,
+	 *  `Button] [Download Journal`), a writer note (`Upload to dropbox [trigger engagement]`, `… [Not applicable]`), an unclosed
+	 *  note (`Download journal button] [Media item 31 -`), an orphan bracket (`Go back to [`, `go to quiz]`). The gold labels
+	 *  are clean. Complete bracket notes go (a short caps token like a video title's `[HD]` stays — keep_pattern); the text
+	 *  after a split tag's `…]` wins when it has letters, else the text before it without the button words; an unclosed
+	 *  trailing note (note_pattern) goes, any other stray bracket character goes. Nothing left = the label unchanged.
+	 *  Data buttons.label_bracket_clean; env BTNBRACKET_OFF. */
+	static #buttonLabelBrackets(label, tpl) {
+		const cfg = tpl?.buttons?.label_bracket_clean;
+		if (!cfg || cfg.enabled === false || !label || !/[[\]]/.test(String(label))) return label;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "BTNBRACKET_OFF"]) return label;
+		const keep = new RegExp(cfg.keep_pattern ?? "^[A-Z0-9]{1,4}$");
+		const note = new RegExp(cfg.note_pattern ?? "media item|merged item|trigger|applicable|insert", "i");
+		const btnWords = new RegExp(cfg.button_words_pattern ?? "\\b(?:add|insert)?\\s*buttons?\\b(?:\\s+title\\s*:)?", "gi");
+		const kept = [];   // a kept short caps token (`[HD]`) is parked as a placeholder while the stray brackets go
+		const park = (s) => s.replace(/\[([^[\]]*)\]/g, (m, x) => keep.test(x.trim()) ? `\u0000${kept.push(m) - 1}\u0000` : " ");
+		const unpark = (s) => s.replace(/\u0000(\d+)\u0000/g, (m, i) => kept[+i]);
+		const tidy = (s) => s.replace(/[[\]]/g, " ").replace(/^[\s(–—\-:]+|[\s–—\-:(]+$/g, "").replace(/\s+/g, " ").trim();
+		let s = park(String(label));                                                                    // complete bracket notes go
+		const unclosed = /\[([^[\]]*)$/.exec(s);
+		if (unclosed && note.test(unclosed[1])) s = s.slice(0, unclosed.index);                        // an unclosed trailing note
+		const cut = s.indexOf("]");
+		let out;
+		if (cut >= 0 && s.lastIndexOf("[", cut) < 0) {                                                  // a split tag's tail `…]`
+			const tail = tidy(s.slice(cut + 1)), head = tidy(s.slice(0, cut).replace(btnWords, " "));
+			out = /[A-Za-zĀ-ſ]/.test(tail) ? tail : head;
+		} else out = tidy(s);
+		out = unpark(out);
+		return out && /[A-Za-zĀ-ſ0-9]/.test(out) ? out : label;
+	}
+
 	static #buttonLabelTrim(label, tpl) {
 		const cfg = tpl?.buttons?.label_trailing_stop;
 		if (!cfg || cfg.enabled === false || !label) return label;
@@ -9449,6 +9481,8 @@ class ContentConverter {
 				form = extDest.form;
 				if (labelDefaulted) label = extDest.label;
 			}
+			// ROUND 531 (KB constraint 5): a writer's bracket fragment is not part of the label
+			label = this.#buttonLabelBrackets(label, tpl);
 			// ROUND 323 (KB row 55): the writer's sentence full stop is not part of the label
 			label = this.#buttonLabelTrim(label, tpl);
 			// ROUND 328 (KB constraint 55's label half): a bare "Quiz" / "Portfolio" / "Dropbox"
