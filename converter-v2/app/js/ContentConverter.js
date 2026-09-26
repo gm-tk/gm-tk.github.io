@@ -4823,8 +4823,8 @@ class ContentConverter {
 		// post-passes: every consumer that reads a box's writer id (the tile pairing, the dropbox
 		// modifier) has run, so the page's consecutive numbering is settled last.
 		const bodyHtml = this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
-			this.#pageNumberNormalise(this.#introHeadingFullRow(this.#bareStockUrlImage(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
-				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), r307Tiles, run))), page, run), run), run), run), page, run),   // ROUND 522 — #journalInstructionBox; ROUND 526 — #introHeadingFullRow; ROUND 529 — #summaryHeadingAlert; ROUND 532 — #bareStockUrlImage
+			this.#pageNumberNormalise(this.#introHeadingFullRow(this.#bareVideoUrlEmbed(this.#bareStockUrlImage(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
+				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), r307Tiles, run))), page, run), run), run), run), run), page, run),   // ROUND 522 — #journalInstructionBox; ROUND 526 — #introHeadingFullRow; ROUND 529 — #summaryHeadingAlert; ROUND 532 — #bareStockUrlImage; ROUND 533 — #bareVideoUrlEmbed
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
 				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
 				// ROUND 265: the level-pages dialect's nav/tile labels + registry row
@@ -7647,6 +7647,59 @@ class ContentConverter {
 		}
 		if (n && run && typeof run.AddNote === "function")
 			run.AddNote("info", "ContentConverter", `${n} Introduction heading${n > 1 ? "s" : ""} given ${n > 1 ? "their" : "its"} own full-width row (intro_heading_full_row).`);
+		return out;
+	}
+
+	/** ROUND 533 (the autonomous loop's session 52 Round 9) — THE BARE VIDEO URL IS THE EMBED (KB 01E `[video]` → videoSection).
+	 *  A body paragraph whose whole content is one YouTube / Vimeo URL — a writer's video line under a `[video]` whose own line
+	 *  held a title, in an activity, after an instruction — shipped as a visible link; the gold EMBEDS that video on the paired
+	 *  page for 115 of 134 (0.86; outputs/_s52_r9_videourl.py) — r340's seam A (a url-only `[link]` line → the embed, 0.90)
+	 *  on every such line. Outside the un-built hand-off boxes the paragraph becomes the embed (`video.youtube` with the
+	 *  group's host convention, or `video.generic_iframe` for Vimeo; the page's icon pass adds `icon`); when the page already
+	 *  embeds that video (23 of the 115) the line is dropped. Data elements.bare_video_url_embed {host_pattern}; env
+	 *  VIDEOURLEMBED_OFF (byte-identical). */
+	static #bareVideoUrlEmbed(html, run) {
+		const cfg = DataService.Data.EmitTemplates.elements?.bare_video_url_embed;
+		if (!cfg || cfg.enabled === false || !html) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "VIDEOURLEMBED_OFF"]) return html;
+		const hostRe = new RegExp(cfg.host_pattern ?? "youtube\\.com/(?:watch\\?|shorts/|embed/|live/)|youtu\\.be/|vimeo\\.com/(?:video/)?\\d", "i");
+		if (!hostRe.test(html)) return html;
+		const tplV = DataService.Data.EmitTemplates.video;
+		const ytRe = new RegExp(DataService.Data.AcksFormats?.extraction_regexes?.youtube_id ?? DataService.Data.AcksFormats?.youtube_id
+			?? "(?:youtube\\.com/watch\\?v=|youtu\\.be/|youtube\\.com/embed/|youtube\\.com/shorts/)([\\w-]{11})");
+		const pRe = /<p>\s*(?:<a\b[^>]*>)?\s*(https?:\/\/[^\s<"]+)\s*(?:<\/a>)?\s*<\/p>/g;
+		const spans = [];
+		for (const h of html.matchAll(/<div class="cv2-interactive[^"]*"/g)) {
+			const re = /<(\/?)div\b[^>]*>/g; re.lastIndex = h.index; let d = 0, x;
+			while ((x = re.exec(html)) !== null) { d += x[1] ? -1 : 1; if (d === 0) { spans.push([h.index, x.index + x[0].length]); break; } }
+		}
+		const hits = [];
+		for (const m of html.matchAll(pRe)) {
+			if (spans.some(([a, z]) => m.index >= a && m.index < z)) continue;
+			const url = m[1].replace(/&amp;/g, "&");
+			if (!hostRe.test(url)) continue;
+			const yt = url.match(ytRe)?.[1] ?? null;
+			const vm = yt ? null : (url.match(/vimeo\.com\/(?:video\/)?(\d{6,})/i)?.[1] ?? null);
+			if (!yt && !vm) continue;
+			hits.push({ at: m.index, len: m[0].length, url, yt, vm });
+		}
+		if (!hits.length) return html;
+		let out = html, nEmb = 0, nDrop = 0;
+		for (const h of hits.slice().reverse()) {
+			const rest = out.slice(0, h.at) + out.slice(h.at + h.len);
+			const key = h.yt ?? h.vm;
+			const embedded = [...rest.matchAll(/<iframe\b[^>]*\bsrc="([^"]*)"/g)].some((x) => x[1].includes(key));
+			let rep;
+			if (embedded) { rep = ""; nDrop++; }
+			else if (h.yt) {
+				rep = Utils.FillTemplate(tplV.youtube, { videoId: h.yt, params: "" });
+				if (run?.conventions?.videoHost === "youtube") rep = rep.replace("youtube-nocookie.com", "youtube.com");
+				nEmb++;
+			} else { rep = Utils.FillTemplate(tplV.generic_iframe, { url: Utils.EscapeHtml(`https://player.vimeo.com/video/${h.vm}`) }); nEmb++; }
+			out = out.slice(0, h.at) + rep + out.slice(h.at + h.len);
+		}
+		if (run && typeof run.AddNote === "function")
+			run.AddNote("info", "ContentConverter", `${nEmb + nDrop} bare video URL line${nEmb + nDrop > 1 ? "s" : ""}: ${nEmb} built as the embed, ${nDrop} dropped (the page embeds that video already) (bare_video_url_embed).`);
 		return out;
 	}
 
