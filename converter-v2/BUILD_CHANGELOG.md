@@ -1,5 +1,26 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (round 536, build 260620.95) — THE FAMILY KEEPS THE WRITER'S HEADING DIGIT: FRFUN's `[H2]` ships at h2, WJFUN's and ENGC's `[H4]` at h4 (the r373 / r374 per-prefix pin, three more families found by the new writer-cue fate census); 15 modules / 41 pages, skeleton +0.0261pp, ≥50 +3
+
+### 1. WHAT CHANGED
+
+**The instrument** (NEW, session 53 Round 2 — the s52 handover asked for the empty lanes re-read with one): `outputs/_s53_tagfate.py`, THE WRITER-CUE FATE CENSUS — every Writers-Template item (the engine's own item stream, `outputs/_s52_items/`) located by its text on the gold paired page and on Claude's (the placement census parser: block tag + container region), its fate recorded per side as `<tag>@<region>` and aggregated by the writer's cue (the item's tag, a bold lead, a bullet): 72,903 items / 533 modules in 70 s. Its heading rows — `[H2]` gold h2 / Claude h3 on 154 items / 97 pages; `[H4]` gold h4 / Claude h5 on 55 / 28 — were split per family by `outputs/_s53_r2_hlevel.py` (writer digit vs the gold's level vs Claude's, free-body headings, TOP vs sub-level on the page).
+
+**The class**: the gold keeps the writer's digit where the r45 shift + rank puts it one level deeper, in three families the r373 / r374 table (`keep_writer_digit.digits_by_prefix`) does not name — **FRFUN `[H2]` → h2 0.92** (64 items / 13 pages; Claude h3 0.73 / h4 0.27), **WJFUN `[H4]` → h4 1.00** (52 / 9 modules; Claude h5 0.90), **ENGC `[H4]` → h4 0.92** (39 / 5 modules / 14 pages; Claude h5 0.46). A per-group rule (LOOP §1d exception 2 — the groups summed). CEDT `[H2]` (0.63 by items) was probed and DROPPED: CEDT501's gold follows the shift (−12.1 over 12 pages). No KB rule fixes body heading levels (authority §1b-3/4).
+
+**The fix** (`ContentConverter` heading emitter, path (c) beside the r371 template pin and the r373 prefix pin; data `Emit_Templates.json body_region.heading_relevel.keep_writer_digit.digits_by_prefix_families` {env, "2": [FRFUN], "4": [WJFUN, ENGC]}, env **`HKEEPFAM_OFF`**): the heading carries the transient `data-wd` marker, so `#relevelHeadings` pins it at the writer's digit and ranks the page's other headings exactly as before.
+
+### 2. PROOF
+
+- In-memory probe over all 545 modules: `HKEEPFAM_OFF=1` → 6,432 / 6,432 pages identical; ON → **41 pages / 15 modules** (ENGC206 / 403, FRFUN06 / 07 / 08, ten WJFUN); 0 ASSEMBLE ERROR. `scoped_ship.sh … --round 536 --commit` PASS: 0 stale, containment 15 ⊆ 15, the 12-module spot-check byte-identical.
+- The skeleton gate's own `match()`: **+0.0261pp, 19 up / 4 down** (FRFUN06 +61.9 over 10 pages, ENGC403 +4.6, the WJFUN pages +0.2…+0.9). The dips, NAMED: FRFUN06_4_0 −6.36 — the ON page matches the gold's `h2`s exactly; an alignment artefact (position-free overlap 92 → 97 of 139 RISES, `_s52_companion.py`); FRFUN08_8_0 / 9_0 / 10_0 −2.5…−2.7 — FRFUN08's gold follows the shift (`h3`), the family's outlier (position-free 27 → 26, 31 → 30, 23 → 22).
+
+### 3. PROTECTED GATES
+
+Skeleton **56.3400 → 56.3661 % @ 2486 (+0.0261pp)**, ≥50 1641 → 1644, ≥75 305, ≥90 29; RAW 39.9718 → 39.9782 %; compare_structure exact 17024 / EXTRA 198 / missing 661 held; body_compare ANY 233 held; leak 52 / 42 EXACT; tags 9557; every verifier ✓, every COUNT held (`_r536_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 536`; `--gate-baseline-check` PASS. Plateau: **reset** (+0.0261pp).
+
+**Ledger:** scoped #2 since the s52-r11 FULL · data `keep_writer_digit.digits_by_prefix_families` · env `HKEEPFAM_OFF` · code `ContentConverter` heading emitter path (c) · session 53 Round 2.
+
 ## 2026-09-26 (round 535, build 260620.94) — THE WRITER'S `[close alert box]` IS NOT AN OPENER: a callout closer typed with the word "close" (`[close alert box]`, `[close important box]`, `[close alert]`, `[close important note]`) no longer opens a phantom box — it is read as the writer's instruction (a developer note), and the box it closes keeps the form it already had; 11 modules / 20 pages, skeleton +0.0057pp, ≥50 +3
 
 ### 1. WHAT CHANGED

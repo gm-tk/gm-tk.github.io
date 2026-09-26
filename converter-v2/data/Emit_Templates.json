@@ -6624,6 +6624,18 @@
 					"2": "H2KEEP_OFF",
 					"4": "H4KEEP_OFF"
 				},
+				"digits_by_prefix_families": {
+					"enabled": true,
+					"env": "HKEEPFAM_OFF",
+					"2": [
+						"FRFUN"
+					],
+					"4": [
+						"WJFUN",
+						"ENGC"
+					],
+					"_note": "ROUND 536 (the autonomous loop, session 53 Round 2). The same per-digit prefix pin as digits_by_prefix, for the families the r373 / r374 table does not name — found by the NEW writer-cue fate census (outputs/_s53_tagfate.py: every WT item located on the gold / Claude paired pages as <tag>@<region>) and split per family by outputs/_s53_r2_hlevel.py (writer digit vs gold level vs Claude level, free-body headings): FRFUN [H2] → gold h2 0.92 (64 items / 13 pages; Claude h3 0.73 / h4 0.27 — FRFUN06 carries it, FRFUN08's gold follows the shift: the family's outlier, its dips NAMED), WJFUN [H4] → h4 1.00 (52 / 9 / 9; Claude h5 0.90), ENGC [H4] → h4 0.92 (39 / 5 / 14; Claude h5 0.46). CEDT [H2] (0.63 by items) was probed and DROPPED: CEDT501's gold follows the shift (−12.1 over 12 pages). A per-group rule (LOOP §1d exception 2 — the groups summed). Env HKEEPFAM_OFF reverts these rows only."
+				},
 				"pin_levels": {
 					"1": 2
 				},

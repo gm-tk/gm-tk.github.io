@@ -9224,7 +9224,17 @@ class ContentConverter {
 				&& ((_kwd.digits_by_prefix ?? {})[String(digit)] ?? []).some((p) => /\d/.test(String(p))
 					? String(run?.moduleCode || "").startsWith(String(p))   // a letters+digits SERIES prefix (BLL2 = the BLL2xx series)
 					: String(p) === _kwdPrefix);                             // a letter run (ENG never matches ENGFUN)
-			const _kwdOn = _kwdTpl || _kwdPfx;
+			// (c) ROUND 536 (session 53 Round 2): the same per-digit prefix pin for the families the r373 / r374 table does not
+			// name, found by the writer-cue fate census (outputs/_s53_tagfate.py → _s53_r2_hlevel.py): FRFUN / CEDT keep [H2] at
+			// h2, WJFUN / ENGC keep [H4] at h4. Its own block and env so the rows revert exactly.
+			// Data: keep_writer_digit.digits_by_prefix_families { env, "<digit>": [prefix…] }. Env HKEEPFAM_OFF.
+			const _kwdFam = _kwd?.digits_by_prefix_families;
+			const _kwdFamOn = _kwdBase && !!_kwdFam && _kwdFam.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[_kwdFam.env ?? "HKEEPFAM_OFF"])
+				&& ((_kwdFam[String(digit)] ?? [])).some((p) => /\d/.test(String(p))
+					? String(run?.moduleCode || "").startsWith(String(p))
+					: String(p) === _kwdPrefix);
+			const _kwdOn = _kwdTpl || _kwdPfx || _kwdFamOn;
 			let _hHtml = this.#stripHeadingItalic(`<h${shifted}>${ListsAndRuns.inlineMarkup(headInline)}</h${shifted}>`, run);
 			if (_kwdOn) _hHtml = _hHtml.replace(/^<h(\d)>/, `<h$1 data-wd="${digit}">`);
 			out.push(_hHtml);
