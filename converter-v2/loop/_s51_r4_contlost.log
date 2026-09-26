@@ -1,0 +1,108 @@
+ACT	AGH1001	h4(ELEMENT)	h4+alert	["4"]	[H4] [Alert blank] » Reflective Questions:
+ACT	ANZH401	h3(ELEMENT)	alert+h3	["3"]	[Alert box] [H3] Want to Travel Back in Time? » 
+ACT	ANZH401	h3(ELEMENT)	alert+shape n+h3	["3"]	[Alert – Breakout Box] [H3] » Have you caught ‘gold fever’?
+ACT	ANZH401	h3(ELEMENT)	alert+shape n+h3	["3"]	[Alert – breakout box] [H3] Social Science Conventions » 
+ACT	ANZH401	h3(ELEMENT)	alert+shape n+h3	["3"]	[Alert – Breakout Box] [H3] » Once a Panther
+ACT	ARFUN04	h3(ELEMENT)	activity+shape n+h3	["1i","3"]	[Activity 1I Tick box] [H3] » **What have I learned?**
+ACT	BLL255	h5(ELEMENT)	important+h5+body	["5"]	[alert solid] Not sure if this is the correct annotation. I would just » 
+ACT	CEDO502	h3(ELEMENT)	important+h3	["3"]	[Important] [H3] » Why manageable debt can be good
+ACT	CEDR203	h3(ELEMENT)	alert+h3	["3"]	[Alert RHS] [H3] » Did you know? In the video, ākonga talk 
+ACT	CEDT501	h3(ELEMENT)	important+h3	["3"]	[Important] [H3] » Step 1: Take a screenshot
+ACT	CEDT501	h3(ELEMENT)	important+h3	["3"]	[Important] [H3] » Step 2: Don’t respond
+ACT	CEDT501	h3(ELEMENT)	important+h3	["3"]	[Important] [H3] » Step 3: Report it
+ACT	CEDT501	h3(ELEMENT)	important+h3	["3"]	[Important] [H3] » Step 4: Block the person
+ACT	CEDT501	h3(ELEMENT)	important+h3	["3"]	[Important] [H3] » Tell someone you trust
+ACT	CHI1004	heading(ELEMENT)	whakatauki+heading+image	[]	[ insert Whakatauki and the images under heading ‘Introduction’] » 
+ACT	CHI1005	heading(ELEMENT)	whakatauki+heading+image	[]	[ insert Whakatauki and the images under heading ‘Introduction’] » 
+ACT	ENG1004	h4(ELEMENT)	alert+h4	["4"]	[Alert] Note to developer, can this be at the top, on the righthand si » What is “context?”
+ACT	ENG1004	h3(ELEMENT)	alert+alert+shape n+h3	["3"]	[Alert note to designer, could this alert have a box around it] [H3] » Assessment conditions
+ACT	ENG1005	h3(ELEMENT)	alert+alert+shape n+h3	["3"]	[Alert note to designer, could this alert have a box around it] [H3] » Assessment conditions
+ACT	ENG1005	h4(ELEMENT)	alert+h4	["4"]	[Alert] [H4] » Worldview definition:
+ACT	ENG1005	h4(ELEMENT)	alert+h4	["4"]	[Alert] [H4] » Worldview definition:
+ACT	ENG1007	h3(ELEMENT)	alert+alert+shape n+h3	["3"]	[Alert note to designer, could this alert have a box around it] [H3] » Assessment conditions
+ACT	ENGI400	heading(ELEMENT)	activity+heading+image	["2a"]	[Activity 2A add image just under heading] » 
+ACT	EXBP901	h2(ELEMENT)	alert+h2	["2"]	[Alert] [H2] » The EPIC database.
+ACT	EXIP901	h2(ELEMENT)	alert+h2	["2"]	[Alert] [H2] » The EPIC database
+ACT	GENO901	heading(ELEMENT)	activity+heading	["3","4a"]	[H3 Activity 4A] » 4A Autokennzeichen – German numberplates
+ACT	HPRE301	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Enhancing friendships: HPFUN303
+ACT	HPRE301	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Enhancing friendships: HPFUN303
+ACT	HPRE301	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Enhancing friendships: HPFUN303
+ACT	HPRE301	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » I am: HPEFUN303
+ACT	HPRE301	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Enhancing friendships: HPFUN303
+ACT	MXDI301	heading(ELEMENT)	activity+heading	["3","1c"]	[H3 Activity 1C] » Whole numbers, decimals and the powers o
+ACT	MXDI301	heading(ELEMENT)	activity+heading	["3","3a"]	[H3 Activity 3A] » Describing and continuing patterns
+ACT	MXDI301	heading(ELEMENT)	activity+heading	["3","6c"]	[H3 Activity 6C] » Identifying linear patterns in tables
+ACT	MXDI301	heading(ELEMENT)	activity+heading	["3","7b"]	[H3 Activity 7B] » Recognising linear patterns
+ACT	MXDI301	heading(ELEMENT)	activity+heading	["3","8a"]	[H3 Activity 8A] » Summary
+ACT	OSGM101	heading(ELEMENT)	activity+heading	[]	[activity+heading] » 
+ACT	OSSC301	heading(ELEMENT)	activity+heading	["1a"]	[Activity 1A] [heading] » Which scam is it?
+ACT	OSSC301	heading(ELEMENT)	activity+heading	["3a"]	[Activity 3A] [heading] » Keep it safe!
+ACT	OSSC301	heading(ELEMENT)	activity+heading	["3c"]	[Activity 3C] [heading] » Online Scam Revision Quiz
+ACT	OSSC401	heading(ELEMENT)	activity+heading	["1a"]	[Activity 1A] [heading] » Which scam is it?
+ACT	OSSC401	heading(ELEMENT)	activity+heading	["2b"]	[Activity 2B] [heading] » Your news bulletin quiz
+ACT	OSSC401	heading(ELEMENT)	activity+heading	["2c"]	[Activity 2C] [heading] » How fake news spreads
+ACT	OSSC401	heading(ELEMENT)	activity+heading	["4a"]	[Activity 4A] [heading] » Keep it safe!
+ACT	OSSC401	heading(ELEMENT)	activity+heading	["4b"]	[Activity 4B] [heading] » Online scam revision quiz
+ACT	SSCI104	h3(ELEMENT)	alert+h3	["3"]	[alert] [H3] » **Number line tips:**
+ACT	SSCI104	heading(ELEMENT)	activity+heading	[]	[Activity][heading] » Activity 4A Skara Brae inventions
+ACT	SSFUN02	h3(ELEMENT)	alert+h3	["3"]	[Alert box] [H3] » Fun school fact #3 **Pupils of the Mokow
+ACT	TEDC401	heading(ELEMENT)	activity+heading	["5c"]	[activity] 5C [Heading] » Ethics
+ACT	TWHR905	h2(ELEMENT)	h2+whakatauki	["2"]	[H2] [Introductory whakataukī] » 
+ACT	TWHR907	h2(ELEMENT)	h2+whakatauki	["2"]	[H2] [Introductory whakataukī] » 
+ACT	WJFUN208	h2(ELEMENT)	h2+activity+shape n	["2","1b"]	[H2] [Activity 1B] [Typeable box]: » Which text works best?
+ACT	WJFUN210	h3(ELEMENT)	activity+answer+h3	["1c","3"]	[Activity 1C] [Type answer] [H3] » Choosing figurative language
+ACT	XGF9001	h3(ELEMENT)	alert+h3	["3"]	[Alert RHS] [H3] » Key questions
+ACT	XGF9001	h3(ELEMENT)	alert+h3	["3"]	[Alert RHS] [H3] » Key questions
+ACT	XGF9001	h3(ELEMENT)	alert+h3	["3"]	[Alert RHS] [H3] » Key question
+ACT	XGF9001	h3(ELEMENT)	alert+h3	["3"]	[Alert.solid] [H3] Reflection » 
+ACT	XGF9001	h3(ELEMENT)	alert+h3	["3"]	[Alert RHS] [H3] » Key questions
+ACT	XGF9001	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Reflection questions
+ACT	XGF9001	h3(ELEMENT)	alert+h3	["3"]	[Alert RHS] [H3] » Key questions
+ACT	XGF9001	h3(ELEMENT)	alert+h3	["3"]	[Alert RHS] [H3] » Key questions
+ACT	XGF9001	h3(ELEMENT)	alert+h3	["3"]	[Alert RHS] [H3] » Key question
+ACT	XGF9001	h3(ELEMENT)	alert+h3	["3"]	[Alert RHS] [H3] » Key question
+ACT	XGF9001	h3(ELEMENT)	alert+h3	["3"]	[Alert RHS] [H3] » Key questions
+ACT	XGF9002	h2(ELEMENT)	alert+h2	["2"]	[Alert.solid] [H2] » Parent/whānau handbook
+ACT	XGF9002	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Reflective prompt
+ACT	XGF9002	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Reflective prompt
+ACT	XGF9002	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Reflective prompt
+ACT	XGF9002	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Reflective prompt
+ACT	XGF9002	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Reflective prompt
+ACT	XGF9002	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Reflective prompt
+ACT	XGF9002	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Reflective prompt
+ACT	XGF9002	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Reflective prompt
+ACT	XGF9003	h2(ELEMENT)	alert+h2	["2"]	[Alert] [H2] » Key questions
+ACT	XGF9003	h2(ELEMENT)	alert+h2	["2"]	[Alert] [H2] » Key questions
+ACT	XGF9003	h2(ELEMENT)	alert+h2+image	["2"]	[Alert] [H2] [Image] » https://www.istockphoto.com/vector/searc
+ACT	XGF9003	h2(ELEMENT)	alert+h2	["2"]	[Alert] [H2] » Key questions
+ACT	XGF9003	h2(ELEMENT)	alert+h2+image	["2"]	[Alert] [H2] [Image] » https://www.istockphoto.com/vector/searc
+ACT	XGF9003	h2(ELEMENT)	alert+h2	["2"]	[Alert] [H2] » Key questions
+ACT	XGF9003	h2(ELEMENT)	alert+h2+image	["2"]	[Alert] [H2] [Image] » https://www.istockphoto.com/vector/searc
+ACT	XGF9003	h2(ELEMENT)	alert+h2	["2"]	[Alert] [H2] » Key questions
+ACT	XGF9003	h2(ELEMENT)	alert+h2+image	["2"]	[Alert] [H2] [Image] » https://www.istockphoto.com/vector/searc
+ACT	XGF9003	h2(ELEMENT)	alert+h2	["2"]	[Alert] [H2] » Key questions
+ACT	XGF9003	h2(ELEMENT)	alert+h2+image	["2"]	[Alert] [H2] [Image] » https://www.istockphoto.com/vector/searc
+ACT	XGF9003	h2(ELEMENT)	alert+h2	["2"]	[Alert] [H2] » Key questions
+ACT	XGF9003	h2(ELEMENT)	alert+h2+image	["2"]	[Alert] [H2] [Image] » https://www.istockphoto.com/vector/searc
+ACT	XGF9003	h2(ELEMENT)	alert+h2	["2"]	[Alert] [H2] » Key questions
+ACT	XGF9003	h2(ELEMENT)	alert+h2+image	["2"]	[Alert] [H2] [Image] » https://www.istockphoto.com/vector/searc
+ACT	XGF9003	h2(ELEMENT)	alert+h2	["2"]	[Alert] [H2] » Key questions
+ACT	XGF9003	h2(ELEMENT)	alert+h2+image	["2"]	[Alert] [H2] [Image] » https://www.istockphoto.com/vector/searc
+ACT	XGF9003	h2(ELEMENT)	alert+h2	["2"]	[Alert] [H2] » Key questions
+ACT	XGF9003	h2(ELEMENT)	alert+h2+image	["2"]	[Alert] [H2] [Image] » https://www.istockphoto.com/vector/searc
+ACT	XGF9004	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » **Working definition:** a ‘working defin
+ACT	XGF9004	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Focus questions:
+ACT	XGF9004	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Focus questions:
+ACT	XGF9004	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Focus questions:
+ACT	XGF9004	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Focus questions:
+ACT	XGF9004	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Focus questions:
+ACT	XGF9004	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » Focus questions:
+ACT	XGF9006	h3(ELEMENT)	alert+h3	["3"]	[Alert.solid] [H3] » What have we learned?
+ACT	XGF9006	h3(ELEMENT)	alert+h3	["3"]	[Alert.solid] [H3] » What have we learned?
+ACT	XGF9006	h3(ELEMENT)	alert+h3	["3"]	[Alert.solid] [H3] » What have we learned?
+ACT	XGF9006	h3(ELEMENT)	alert+h3	["3"]	[Alert.RHS] [H3] » Tips for success
+ACT	XGF9006	h3(ELEMENT)	alert+h3	["3"]	[Alert.solid] [H3] » What have we learned?
+ACT	XGF9006	h3(ELEMENT)	alert+h3	["3"]	[Alert.solid] [H3] » What have we learned?
+ACT	XGF9006	h3(ELEMENT)	alert+h3	["3"]	[Alert.solid] [H3] » What have we learned?
+ACT	XGF9006	h3(ELEMENT)	alert+h3	["3"]	[Alert.solid] [H3] » What have we learned?
+ACT	XGF9006	h3(ELEMENT)	alert+h3	["3"]	[Alert] [H3] » EXPlore
