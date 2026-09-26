@@ -1,0 +1,1 @@
+| `_s52_full_{fullship_par,postship}.sh` / `_s52_full_*.log` / `_s52_full_fin.py` / `_affected_s52_full.txt` | `CONVERTER_V2/outputs/` | **s52-r11 (26 Sept 2026) — THE LEDGER'S FULL-SHIP BACKSTOP at 260620.93 (no engine change): 42 batches, 0 pages differ, every gate identical; ledger scoped #7 → 0.** |

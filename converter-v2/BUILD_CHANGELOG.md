@@ -1,5 +1,21 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (session 52 Round 11, build 260620.93 — NO engine change) — THE LEDGER'S FULL-SHIP BACKSTOP: the whole corpus regenerated with the r534 engine (scoped #7 since the s51-r12 FULL — the cadence-8 backstop one ship early), 0 pages differ, every gate identical
+
+### 1. WHAT RAN
+
+`outputs/_s52_full_fullship_par.sh` (a copy of `_s29_r416_fullship_par.sh`): `_batch_plan.py`'s 42 batches through `batch_convert.cjs --force`, 4 parallel workers under WSL, 19:01 → 19:08, every batch rc 0. Then `outputs/_s52_full_postship.sh`: `run_all_gates.sh`, the skeleton state + delta vs the r534 snapshot, `_gatecheck.py cs bc` (its skeleton rows CACHED from r526 — the known quirk, ignored) then `_gatecheck.py skeleton defect --commit --round 534` (live, every gate HELD), `_ship_ledger.py record-full --round 534`, the fast-loop re-snapshot, the content-manifest snapshot, every selftest (50 PASS / GREEN, 0 FAIL), the feature index, the DIFF MINER.
+
+### 2. PROOF
+
+`_content_manifest.py diff` → **IDENTICAL, 0 pages differ** (2,673 pages / 543 modules). Skeleton delta vs the pre-regeneration snapshot: **+0.0000pp, 0 movers**, new-only 0, gone 0.
+
+### 3. PROTECTED GATES
+
+Skeleton **56.3343 % @ 2486**, ≥50 1638, ≥75 305, ≥90 29, RAW 39.971 %; compare_structure exact 17024 / EXTRA 198 / missing 661; body_compare ANY 233; clean 2585 / 2627 = 98.40 %; leak 52 / 42; tags 9557; every verifier ✓, every COUNT held (`_s52_full_gates.log`). Plateau: neither (a change-free backstop).
+
+**Ledger:** FULL recorded at round 534 (260620.93); scoped-since counter 0 (8 of headroom) · session 52 Round 11.
+
 ## 2026-09-26 (round 534, build 260620.93) — THE BARE LINK LINE IS THE DEVELOPER'S: a body paragraph that is nothing but a URL (neither a stock photo nor a video — a D2L / Te Kura page, a source site, a Google doc) becomes the house `Designer/Developer To Do: the writer's link — …` note; 195 modules / 300 pages, skeleton +0.0575pp, ≥50 +6, ≥75 +3
 
 ### 1. WHAT CHANGED
