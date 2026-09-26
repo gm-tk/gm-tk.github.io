@@ -1880,7 +1880,8 @@ class Config {
 	// ROUND 529 (260620.88): THE SUMMARY HEADING'S ALERT BOX (session 52 Round 2; KB 14.8 / 05B; per family). Env SUMALERT_OFF.
 	// ROUND 530 (260620.89): THE WHAKATAUKĪ'S OTHER WRITER FORMS (session 52 Round 3; KB 07B §7 — the merged lines, the payload forms). Env WHKFORMS_OFF.
 	// ROUND 531 (260620.90): THE BRACKET FRAGMENT IN A BUTTON LABEL (session 52 Round 5; KB constraint 5; text-only). Env BTNBRACKET_OFF.
-	static AppVersion = "260620.90";
+	// ROUND 532 (260620.91): THE BARE STOCK-PHOTO URL IS AN IMAGE REFERENCE (session 52 Round 8; the To Do note in place of the visible URL). Env STOCKURLIMG_OFF.
+	static AppVersion = "260620.91";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

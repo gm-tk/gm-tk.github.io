@@ -1,5 +1,24 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (round 532, build 260620.91) — THE BARE STOCK-PHOTO URL IS AN IMAGE REFERENCE: a body paragraph that is nothing but a stock-photo URL (`<p><a href="https://www.istockphoto.com/…">https://www.istockphoto.com/…</a></p>`) no longer ships as visible learner text — it becomes the house `Designer/Developer To Do: image goes here (iStock-N). Link: …` note, or goes when the page already shows that image; 107 modules / 140 pages, skeleton +0.0240pp
+
+### 1. WHAT CHANGED
+
+**The class** (found from the BLL scoped miner's #110 `activity EXTRA p>a`, 43 pages / 40 modules): `_s52_r8_bareurl.py` (un-built hand-off boxes excluded by exact span) — Claude ships ≈ 353 stock-photo URL paragraphs on ≈ 160 pages (+ ≈ 140 video, 137 D2L, ≈ 360 other-host bare URLs) where the gold has 19 bare-URL paragraphs in all. Their WT forms are diffuse (`_s52_r8_urlcue.py`: a URL-only line after a description, a second / third URL after an `[image]` whose own line held the first — ARFUN04's `[insert item #17: images]` + two more lines — an unknown bracket's payload, a URL splitting a writer's note), but `_s52_r8_stockimg.py` shows the gold displays that very image on the paired page for 205 of 325 with an id (0.63), elsewhere in the module for 40 more. MediaBuilder's standing contract: the pasted iStock URL is the asset reference, never visible text.
+
+**The fix** (`ContentConverter.#bareStockUrlImage`, a page post-pass beside `#summaryHeadingAlert`; data `elements.bare_stock_url_image` {mode, todo_text, host_pattern, id_patterns}, env **`STOCKURLIMG_OFF`**): outside the un-built hand-off boxes (the developer's raw copy stays), a `<p>` whose whole content is one stock-photo URL becomes the house To Do note (`NotesAndComments.redFlag`, the Media List item note's wording) — dropped instead when the page already shows that image. Three forms were measured (`mode`): the in-place placeholder `<img>` **+0.0078pp (96 up / 30 down)** — the gold places these pictures in side columns and widgets, not at the URL's line, so an in-place image misaligns even where the gold shows it on that page (CEDO / CEDK / OSAI: img 3.26pp-sum vs note 12.53); drop and the To Do note both **+0.0241pp (106 up / 19 down)** — the note keeps the image as the developer's cue and sits outside the skeleton. Not taken (recorded): video URLs (should be embeds), D2L links, other hosts.
+
+### 2. PROOF
+
+- In-memory probe over all 545 modules: `STOCKURLIMG_OFF=1` → 6,432 / 6,432 pages identical; ON → **140 pages / 107 modules**, every changed line a bare stock URL (XGF9006_7_0: the URL between the two halves of a writer's note — dropped, the halves rejoin); 0 ASSEMBLE ERROR. `scoped_ship.sh … --round 532 --commit` PASS: 0 stale, containment 107 ⊆ 107, the 12-module spot-check byte-identical.
+- The skeleton gate's own `match()` (`_s51_prescore.py`): **+0.0241pp, 106 up / 19 down** (the dips: BLL137_1_0 −10.2 / BLL114_1_0 −5.4 — a URL line that anchored the alignment, DTC1004_5_0 −2.2, the rest ≤ 1.2).
+
+### 3. PROTECTED GATES
+
+Skeleton **56.2465 → 56.2705 % @ 2486 (+0.0240pp)**, ≥50 1632 → 1634, ≥75 301, ≥90 28; RAW 39.943 → 39.9471 %; compare_structure exact 17005 / EXTRA 198 / missing 661 held; body_compare ANY 234 → 233; clean 98.40 %, leak 52 / 42 EXACT; tags 9557; every verifier ✓, every COUNT held (`_r532_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 532`; `--gate-baseline-check` PASS. Plateau: **reset** (+0.0240pp ≥ 0.02).
+
+**Ledger:** scoped #5 since the s51-r12 FULL (r526) · data `elements.bare_stock_url_image` · env `STOCKURLIMG_OFF` · code `ContentConverter.#bareStockUrlImage` · session 52 Round 8.
+
 ## 2026-09-26 (round 531, build 260620.90) — THE BRACKET FRAGMENT IN A BUTTON LABEL: a writer's bracket fragment no longer reaches a button's label (`Add button] Download journal` → `Download journal`, `Upload to dropbox  [trigger engagement]` → `Upload to dropbox`, `go to quiz]` → `go to quiz`); KB constraint 5; 26 modules / 27 pages, text-only — every gate held by design
 
 ### 1. WHAT CHANGED
