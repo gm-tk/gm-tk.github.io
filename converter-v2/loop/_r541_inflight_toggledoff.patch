@@ -1,0 +1,183 @@
+diff --git a/converter-v2/app/js/ContentConverter.js b/converter-v2/app/js/ContentConverter.js
+index 02c0251..9321b10 100644
+--- a/converter-v2/app/js/ContentConverter.js
++++ b/converter-v2/app/js/ContentConverter.js
+@@ -7799,6 +7799,101 @@ class ContentConverter {
+ 		return out;
+ 	}
+ 
++	/** ROUND 541 (the autonomous loop's session 53 Round 8) — THE ALERT WHOSE TITLE IS A HEADING (form A). The writer types the
++	 *  callout tag ALONE on its line (`[Alert]`, `[Summary alert box]`, `[Important]`) and its title on the next line under a heading
++	 *  tag (`[H3] Keen to learn more?` — ANZH105, BLL252, DAN1003 …) with the text after it. The strict callout gathers only black
++	 *  text, so the box shipped EMPTY with the "Empty [alert]" red flag and the heading + its lines went free in the next row. The
++	 *  gold boxes the heading on 55 of 67 such sites, the first line after it on 40 / 42, the second on 13 / 21
++	 *  (outputs/_s53_r8_alertrun.py). A content row holding ONLY that empty box, followed by a row whose column OPENS with an
++	 *  h2–h5, becomes one row: the box (its own class) holds the heading and the column's following run of paragraphs / lists
++	 *  (up to the next heading or other block); whatever the column held after the run moves to a new row in a column of the
++	 *  same class (the r529 form); the empty row and its flag go. Data body_region.empty_callout_heading_box; env CALLOUTHEADBOX_OFF. */
++	static #emptyCalloutHeadingBox(html, run) {
++		const cfg = DataService.Data.EmitTemplates.body_region?.empty_callout_heading_box;
++		if (!cfg || cfg.enabled === false || !html) return html;
++		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "CALLOUTHEADBOX_OFF"]) return html;
++		const emptyRow = new RegExp(`<div class="row">\\s*<div class="[^"]*\\bcol-[^"]*">\\s*<div class="(alert\\b[^"]*)">\\s*<div class="row">\\s*<div class="col-12">\\s*`
++			+ `<p class="cv2-note"[^>]*>${cfg.flag_pattern ?? "Red Flag: Empty \\[(?:alert|important)\\]"}[^<]*<\\/p>\\s*<\\/div>\\s*<\\/div>\\s*<\\/div>\\s*<\\/div>\\s*<\\/div>`, "gi");
++		const levels = (cfg.heading_levels ?? [2, 3, 4, 5]).join("");
++		const next = new RegExp(`\\s*(<div class="row">\\s*<div class="([^"]*\\bcol-[^"]*)">)\\s*<h([${levels}])\\b[^>]*>[\\s\\S]*?<\\/h\\3>`, "y");
++		const hits = [];
++		let m;
++		while ((m = emptyRow.exec(html)) !== null) {
++			next.lastIndex = m.index + m[0].length;
++			const n = next.exec(html);
++			if (!n) continue;
++			const colStart = n.index + n[0].indexOf(n[1]) + n[1].length;               // just inside the heading's column
++			const hStart = html.indexOf("<h", colStart), hEnd = n.index + n[0].length;
++			const re = /<(\/?)div\b[^>]*>/gi; re.lastIndex = colStart; let d = 1, c;
++			while ((c = re.exec(html)) !== null) { d += c[1] ? -1 : 1; if (d === 0) break; }
++			if (!c) continue;
++			hits.push({ start: m.index, rowOpenAt: n.index + n[0].indexOf(n[1]), rowOpen: n[1], colCls: n[2], hStart, hEnd, colEnd: c.index, boxCls: m[1] });
++		}
++		if (!hits.length) return html;
++		const blocksOf = (s) => {
++			const out = []; let i = 0;
++			while (i < s.length) {
++				const lt = s.indexOf("<", i);
++				if (lt < 0) break;
++				if (s.startsWith("<!--", lt)) { const e = s.indexOf("-->", lt); i = e < 0 ? s.length : e + 3; continue; }
++				const tm = /^<([a-zA-Z][a-zA-Z0-9]*)\b([^>]*)>/.exec(s.slice(lt));
++				if (!tm) { i = lt + 1; continue; }
++				const name = tm[1].toLowerCase(), attrs = tm[2];
++				let end;
++				if (/^(?:img|br|hr|input|source)$/.test(name) || /\/\s*$/.test(attrs)) end = lt + tm[0].length;
++				else {
++					const r2 = new RegExp(`<(/?)${name}\\b[^>]*>`, "gi"); r2.lastIndex = lt; let dd = 0, x;
++					while ((x = r2.exec(s)) !== null) { dd += x[1] ? -1 : 1; if (dd === 0) break; }
++					end = x ? x.index + x[0].length : s.length;
++				}
++				out.push({ name, cls: (/class="([^"]*)"/.exec(attrs) ?? [])[1] ?? "", start: lt, end });
++				i = end;
++			}
++			return out;
++		};
++		// the run the box takes — r529's measured form: one plain paragraph, then any lists, then one closing paragraph after a
++		// list (a writer note or any other block ends it); data run_rule "r529" | "all" (every following paragraph / list)
++		const plainP = (b) => b && b.name === "p" && !b.cls, list = (b) => b && (b.name === "ul" || b.name === "ol");
++		// a heading r529 boxes itself (its family's summary words — Lesson Summary, Key points …): drop only the empty row and
++		// leave the heading to r529's measured box (its level rule included) — the gold ships ONE box there, not two
++		const sha = DataService.Data.EmitTemplates.body_region?.summary_heading_alert;
++		const shaOn = !!sha && sha.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[sha.env || "SUMALERT_OFF"]);
++		const fam = String(run?.moduleCode || "").replace(/\d.*$/, "");
++		const shaRes = shaOn ? (sha.rules ?? []).filter((r) => (r.families ?? []).map(String).includes(fam)).map((r) => new RegExp(r.pattern, "i")) : [];
++		const plainH = (s) => String(s).replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim().replace(/[\s:?.!…]+$/, "");
++		let out = html, n = 0;
++		for (const h of hits.slice().reverse()) {
++			if (shaRes.some((re) => re.test(plainH(out.slice(h.hStart, h.hEnd))))) {
++				out = out.slice(0, h.start) + out.slice(h.rowOpenAt); n++;
++				continue;
++			}
++			const seg = out.slice(h.hEnd, h.colEnd), bl = blocksOf(seg);
++			let k = 0;
++			if ((cfg.run_rule ?? "r529") === "all") {   // every following paragraph / list — a converter note travels with its line
++				while (plainP(bl[k]) || list(bl[k]) || (bl[k] && bl[k].name === "p" && /\bcv2-note\b/.test(bl[k].cls))) k++;
++			}
++			else {
++				if (plainP(bl[k])) k++;
++				const k0 = k;
++				while (list(bl[k])) k++;
++				if (k > k0 && k0 > 0 && plainP(bl[k])) k++;
++				if (k === 0) while (list(bl[k])) k++;
++			}
++			if (k < (cfg.min_blocks ?? 1)) continue;
++			const cut = bl[k - 1].end, rest = seg.slice(cut);
++			const box = `<div class="${h.boxCls}">\n<div class="row">\n<div class="col-12">\n` + out.slice(h.hStart, h.hEnd) + seg.slice(0, cut) + `\n</div>\n</div>\n</div>`;
++			const tail = rest.replace(/<!--[\s\S]*?-->/g, "").trim()
++				? `\n</div>\n</div>\n<div class="row">\n<div class="${h.colCls}">${rest.replace(/\s+$/, "")}\n`
++				: `${rest.replace(/\s+$/, "")}\n`;
++			out = out.slice(0, h.start) + h.rowOpen + "\n" + box + tail + out.slice(h.colEnd);
++			n++;
++		}
++		if (!n) return html;
++		if (run && typeof run.AddNote === "function")
++			run.AddNote("info", "ContentConverter", `${n} empty callout${n > 1 ? "s" : ""} took the heading that follows as ${n > 1 ? "their" : "its"} title (empty_callout_heading_box).`);
++		return out;
++	}
++
+ 	/** ROUND 529 (the autonomous loop's session 52 Round 2) — THE SUMMARY HEADING'S ALERT BOX. A lesson's closing summary
+ 	 *  heading — `Lesson Summary`, `Key points`, `Key questions`, `Summary`, `What have we learned` — typed as a plain `[H3]`
+ 	 *  (no `[Alert]` before it) renders bare in the content column; the gold boxes the heading and what follows it to the
+@@ -7814,6 +7909,7 @@ class ContentConverter {
+ 	 *  the gold's `activity dropbox` holds the summary). Data body_region.summary_heading_alert {rules [{pattern, families,
+ 	 *  level, hint_inside}], exclude_ancestor_pattern, skip_if_rest_pattern, box_open, box_close}; env SUMALERT_OFF. */
+ 	static #summaryHeadingAlert(html, run) {
++		html = this.#emptyCalloutHeadingBox(html, run);   // ROUND 541 — runs first, so r529 never re-boxes a heading it took
+ 		const cfg = DataService.Data.EmitTemplates.body_region?.summary_heading_alert;
+ 		if (!cfg || cfg.enabled === false || !html) return html;
+ 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "SUMALERT_OFF"]) return html;
+diff --git a/converter-v2/app/js/TagNormaliser.js b/converter-v2/app/js/TagNormaliser.js
+index 62b418f..3e31240 100644
+--- a/converter-v2/app/js/TagNormaliser.js
++++ b/converter-v2/app/js/TagNormaliser.js
+@@ -816,9 +816,19 @@ class TagNormaliser {
+ 			if (ahc && ahc.enabled !== false && primary
+ 				&& !(typeof process !== "undefined" && process.env && process.env[ahc.env || "ACTHDCOTAG_OFF"])) {
+ 				const hd = new Set((ahc.heading_tags ?? []).map(String));
+-				const act = tags.find((t) => t.tag === "activity" && t.directive === "CONTAINER_OPEN");
++				let act = tags.find((t) => t.tag === "activity" && t.directive === "CONTAINER_OPEN");
++				// ROUND 524 (callouts sub-rule; env CALLOUTHDCOTAG_OFF): with no activity tag, a callout box's tag
++				// (`[Alert] [H2] Key questions`) governs the heading the same way — never a right-hand box (r505 / r506's path)
++				const cc = ahc.callouts;
++				let viaCallout = false;
++				if (!act && cc && cc.enabled !== false
++					&& !(typeof process !== "undefined" && process.env && process.env[cc.env || "CALLOUTHDCOTAG_OFF"])
++					&& !(cc.deny_pattern && new RegExp(cc.deny_pattern, "i").test(s))) {
++					act = tags.find((t) => (cc.tags ?? []).includes(t.tag) && t.directive === "CONTAINER_OPEN");
++					viaCallout = !!act;
++				}
+ 				if (act && hd.has(primary.tag) && tags.every((t) => t === act || hd.has(t.tag))) {
+-					cotagHeading = primary;   // PageAssembler's duplicate-id guard can hand the slot back
++					if (!viaCallout) cotagHeading = primary;   // PageAssembler's duplicate-id guard can hand the slot back
+ 					primary = act;
+ 					for (const frag of brackets) {
+ 						const hm = /^\s*\[?\s*h\s?([1-6])\s*\]?\s*$/i.exec(frag);
+diff --git a/converter-v2/data/Emit_Templates.json b/converter-v2/data/Emit_Templates.json
+index 5b45d80..7a84d68 100644
+--- a/converter-v2/data/Emit_Templates.json
++++ b/converter-v2/data/Emit_Templates.json
+@@ -6458,6 +6458,15 @@
+ 			"heading_pattern": "^<h3>Introduction</h3>$",
+ 			"column_class": "col-12"
+ 		},
++		"empty_callout_heading_box": {
++			"_doc": "ROUND 541 (the autonomous loop, session 53 Round 8). THE ALERT WHOSE TITLE IS A HEADING (form A): the writer types the callout tag alone (`[Alert]`, `[Summary alert box]`, `[Important]`) and its title on the next line under a heading tag (`[H3] Keen to learn more?` — ANZH105, BLL252, DAN1003 …), the text after it. The strict callout gathered only black text, so the box shipped EMPTY with the 'Empty [alert]' red flag and the heading + its lines went free in the next row. The gold boxes the heading on 55 of 67 such sites, the first line after it on 40 / 42, the second on 13 / 21 (outputs/_s53_r8_alertrun.py). ContentConverter.#emptyCalloutHeadingBox (run first inside #summaryHeadingAlert): a content row holding ONLY that empty box, followed by a row whose column opens with an h2–h5, becomes one box (its own class) holding the heading + the column's following run of paragraphs / lists; the rest of the column moves to a new row (the r529 form); the empty row and its flag go. Form B (`[Alert] [H3] …` in one span) rides as the r524 co-tag rule (Tag_Lexicon activity_heading_cotag.callouts). Env CALLOUTHEADBOX_OFF.",
++			"enabled": false,
++			"env": "CALLOUTHEADBOX_OFF",
++			"heading_levels": [2, 3, 4, 5],
++			"min_blocks": 1,
++			"run_rule": "all",
++			"flag_pattern": "Red Flag: Empty \\[(?:alert|important)\\]"
++		},
+ 		"summary_heading_alert": {
+ 			"_doc": "ROUND 529 (session 52 Round 2). THE SUMMARY HEADING'S ALERT BOX. A lesson's closing summary heading typed as a plain heading (no [Alert] before it) renders bare in the content column; the gold boxes the heading and what follows it to the column's end as div.alert > div.row > div.col-12. KB 14.8 (HPE) names the 'Lesson summary alert' ([alert] → [H3] Lesson Summary → [body] Ka pai! … → [Hint Button] Need help?); KB 05B gives the 'Key points' alert its <h4>Key points</h4> label. Measured on every Claude-bare summary heading, matched to its gold heading (outputs/_s52_r2_headalert2.py): Lesson Summary HIS 13/17, HPRE 14/14, SSCI 8/12, SSOG 9/11, SSEA 5/5, CEDK 1/1 (XGF 0/8 and TEDC 0/6 keep theirs bare — not listed); Key points PES 24/24 (gold <h4>); Summary SSFUN 4/4 (gold <h4>; HIS 1/11 not listed); What have we learned BLLR 3/3 (gold <h5>; XGF 4/8 a tie, not listed; XGF's Key questions 8/11 is a bare div.alert > h4 + ul with no inner row — a different box, not listed) — ≈ 81 of 91 (0.89), a per-group rule (LOOP §1d exception 2) keyed by the module code's family prefix. The census that found it: outputs/_s52_r2_alertcue.py (the s51-r13 cs MISSING div.alert lead — 288 gold alert boxes Claude leaves bare). A heading that is a column's direct child, outside every exclude_ancestor_pattern container, whose plain text (trailing : ? . stripped) matches a rule for the module's family opens the box; the rule's level re-levels it. The box holds what the gold's holds (outputs/_s52_r2_sumbox.py — HIS p 57/60, PES ul 34/35, SSOG p ol p / p ul p, SSCI / SSEA p with the hint right AFTER the box 8/8 and 5/5, HPRE p ol / p p.hint p): one plain paragraph, any lists, one closing paragraph after a list, and the hint only where the rule says hint_inside (KB 14.8's HPE sequence); the rest of the column moves to a new row in a column of the same class. Env SUMALERT_OFF.",
+ 			"enabled": true,
+diff --git a/converter-v2/data/Tag_Lexicon.json b/converter-v2/data/Tag_Lexicon.json
+index 98e3fb3..c8b1e63 100644
+--- a/converter-v2/data/Tag_Lexicon.json
++++ b/converter-v2/data/Tag_Lexicon.json
+@@ -129,6 +129,18 @@
+ 			"enabled": true,
+ 			"env": "ACTHDCOTAG_OFF",
+ 			"duplicate_id_guard": true,
++			"callouts": {
++				"_doc": "ROUND 524 (session 51 Round 4). A CALLOUT GOVERNS A HEADING CO-TAG. The same precedence slip for the callout boxes: `[Alert] [H2] Key questions` (XGF9001–9006), `[Important] [H3] Step 1: Take a screenshot` (CEDT501), `[Alert box] [H3] Want to Travel Back in Time?` (ANZH401) — 76 spans / 18 modules (outputs/_s51_r4_alerthead.py): the heading (ELEMENT) outranked the callout (CONTAINER_OPEN), so no box opened and the title shipped as a bare heading. The gold puts that heading inside an alert box on 38 of 48 matched spans (XGF 28/36 — the other 8 sit in the overview menu's panes — HPRE 4/4, ENG 3/3). When the span carries NO activity tag and its tags are ONLY one of these callout tags + heading tags, the callout takes the primary slot; the black tail becomes the box's first line, which #alertTitleHeading lifts to the gold's <h4> when content follows. A span naming a right-hand position (deny_pattern — rhs / right) keeps the r505 / r506 side-column path, which reads the heading primary. Env CALLOUTHDCOTAG_OFF.",
++				"enabled": false,
++				"env": "CALLOUTHDCOTAG_OFF",
++				"tags": [
++					"alert",
++					"important",
++					"whakatauki",
++					"wananga"
++				],
++				"deny_pattern": "\\b(?:rhs|rhc|right|right[\\s-]*hand)\\b"
++			},
+ 			"_duplicate_id_guard_doc": "PageAssembler.#cotagDuplicateId: a promoted co-tag whose id opens ANOTHER activity later on the same page (before a PAGE_BOUNDARY) hands the primary slot back to its heading — the writer typed the id on a section heading and on the real activity (MXEX202 lesson 2 'Double or Half' / 'Fun Water Challenge', HES1002 2.0); the gold boxes only the later one.",
+ 			"heading_tags": [
+ 				"h1",

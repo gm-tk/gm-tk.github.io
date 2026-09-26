@@ -1,0 +1,24 @@
+## FORM A: 67 sites / 26 modules / 31 pages
+   heading (gold in alert, claude in alert): {(True, False): 31, (False, False): 11, (True, True): 24, (False, True): 1}
+     e.g. ANZH105 '[H3]' 'keen to learn more' gold ALERT claude free
+     e.g. BLL252 '[H3]' 'two rule breakers' gold ALERT claude free
+     e.g. BLL254 '[H5]' 'bought and brought' gold free claude free
+     e.g. CEDK401 '[H4]' 'lesson summary' gold ALERT claude ALERT
+     e.g. CEDT104 '[H3]' 'fun poi tips' gold free claude free
+     e.g. DAN1003 '[H3]' 'important to include' gold ALERT claude free
+   following item by position (gold inside the alert?): #1 in 40 / out 2, #2 in 13 / out 8, #3 in 5 / out 4, #4 in 3 / out 0, #5 in 2 / out 0, #6 in 1 / out 0
+   by kind: black in 18 / out 6, bullet in 16 / out 0, body in 30 / out 8
+   run length inside the gold alert after the heading: [(0, 15), (1, 27), (2, 8), (3, 2), (4, 1), (5, 1), (6, 1)]
+
+## FORM B: 41 sites / 14 modules / 16 pages
+   heading (gold in alert, claude in alert): {(True, False): 31, (False, False): 10}
+     e.g. ANZH401 '[Alert – Breakout Box] [H3' 'have you caught gold fever' gold ALERT claude free
+     e.g. CEDO502 '[Important] [H3]' 'why manageable debt can be good' gold free claude free
+     e.g. CEDT501 '[Important] [H3]' 'tell someone you trust' gold free claude free
+     e.g. ENG1004 '[Alert note to designer, c' 'assessment conditions' gold ALERT claude free
+     e.g. ENG1005 '[Alert note to designer, c' 'assessment conditions' gold ALERT claude free
+     e.g. ENG1007 '[Alert note to designer, c' 'assessment conditions' gold ALERT claude free
+   following item by position (gold inside the alert?): #1 in 27 / out 0, #2 in 18 / out 0, #3 in 9 / out 7, #4 in 9 / out 0, #5 in 0 / out 0, #6 in 0 / out 0
+   by kind: black in 12 / out 0, bullet in 45 / out 0, body in 6 / out 7
+   run length inside the gold alert after the heading: [(0, 4), (1, 9), (2, 9), (4, 9)]
+

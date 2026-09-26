@@ -1,0 +1,43 @@
+CHANGED: AGH1001: identical 5 / changed 2
+CHANGED: ANZH105: identical 9 / changed 1
+CHANGED: ANZH401: identical 14 / changed 1
+CHANGED: BLL252: identical 3 / changed 1
+CHANGED: BLL254: identical 3 / changed 1
+CHANGED: TOTAL: identical 682 / changed 6 / missing 0 over 147 modules
+CHANGED: CEDO502: identical 10 / changed 1
+CHANGED: CEDT104: identical 1 / changed 1
+CHANGED: CEDT501: identical 15 / changed 1
+CHANGED: DAN1003: identical 4 / changed 6
+CHANGED: ENG1005: identical 4 / changed 3
+CHANGED: ENGC403: identical 16 / changed 1
+CHANGED: EXBP901: identical 6 / changed 1
+CHANGED: EXIP901: identical 6 / changed 1
+CHANGED: TOTAL: identical 845 / changed 15 / missing 0 over 132 modules
+CHANGED: HES1006: identical 7 / changed 1
+CHANGED: HIS1005: identical 8 / changed 8
+CHANGED: HIS1006: identical 6 / changed 10
+CHANGED: HIS1007: identical 3 / changed 5
+CHANGED: HIS1008: identical 5 / changed 8
+CHANGED: HPRE301: identical 8 / changed 6
+CHANGED: MXEO301: identical 11 / changed 1
+CHANGED: MXFL302: identical 10 / changed 1
+CHANGED: MXFU302: identical 11 / changed 2
+CHANGED: MXFUN01: identical 1 / changed 1
+CHANGED: MXFUN02: identical 1 / changed 1
+CHANGED: TOTAL: identical 960 / changed 44 / missing 0 over 132 modules
+CHANGED: SSCI104: identical 6 / changed 2
+CHANGED: SSCI205: identical 3 / changed 8
+CHANGED: SSEA203: identical 3 / changed 5
+CHANGED: SSFUN02: identical 1 / changed 1
+CHANGED: SSOG103: identical 7 / changed 1
+CHANGED: SSOG105: identical 3 / changed 6
+CHANGED: TEDC402: identical 10 / changed 1
+CHANGED: TWHR905: identical 1 / changed 1
+CHANGED: TWHR907: identical 1 / changed 1
+CHANGED: XGF9001: identical 9 / changed 2
+CHANGED: XGF9002: identical 2 / changed 9
+CHANGED: XGF9003: identical 1 / changed 6
+CHANGED: XGF9004: identical 17 / changed 2
+CHANGED: XGF9006: identical 2 / changed 7
+CHANGED: TOTAL: identical 612 / changed 52 / missing 0 over 134 modules
+TOTAL identical 6198 / changed 234

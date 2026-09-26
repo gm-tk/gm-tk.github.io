@@ -1,0 +1,162 @@
+extra Claude row breaks (the gold keeps both blocks in one top-level row): 1396
+
+  239 breaks  194 pages  prev p@free                 → next h3@free                [AGH 28, ENGC 10, PES 10, DTC 9, ANZH 8]
+        e.g. AGH1001_2_0.html …'many types of career pathways ' | 'here are some well known jobs '
+        e.g. AGH1001_3_0.html …'aakitanga respect and care for' | 'self check true or false'
+        e.g. AGH1002_1_0.html …'e basis of food production in ' | 'cultural significance of soil'
+  131 breaks   90 pages  prev p@free                 → next h4@free                [ENGJ 13, AGH 12, ENGC 12, ENGR 10, XGF 8]
+        e.g. AGH1004_2_0.html …'and extensive farming are two ' | 'intensive farming'
+        e.g. AGH1004_2_0.html …'farming is farming where high ' | 'semi intensive farming'
+        e.g. AGH1004_2_0.html …'sive farming has rolling hill ' | 'semi extensive farming'
+   82 breaks   74 pages  prev p@free                 → next p@alert                [AGH 9, XLP 9, CEDR 8, CEDT 5, DTC 5]
+        e.g. AGH1002_2_0.html …'or which determines the levels' | 'a soil s texture is caused by '
+        e.g. AGH1002_2_0.html …'sand silt and clay lines cross' | 'the combined percentage of san'
+        e.g. AGH1002_3_0.html …'are absorbed from the soil thr' | 'nutrients must be dissolved in'
+   62 breaks   33 pages  prev p@free                 → next h5@free                [CBI 21, ENGS 13, ENGI 6, PHE 4, OSSM 3]
+        e.g. CBI1008_2_0.html …'nergy from sunlight c6h12o6 o2' | 'respiration'
+        e.g. CBI1008_2_0.html …'s animals and other organic ma' | 'combustion'
+        e.g. CBI1008_2_0.html …'petrol o2 co2 h2o energy' | 'carbon reservoirs'
+   52 breaks   47 pages  prev p@free                 → next p@free                 [CEDR 5, XDLS 5, XGF 5, ENGI 4, OSOH 4]
+        e.g. AGH1002_1_0.html …'tion māori have to soil is sho' | 'te toto o tetangatahe kai teor'
+        e.g. AGH1002_1_0.html …' provides the blood in our vei' | 'māori have their own names for'
+        e.g. ANZH404_0_0.html …'ntinue to develop their unders' | 'kia kaha kia māia kia manawatu'
+   43 breaks   38 pages  prev iframe@free            → next h3@free                [PES 6, ENGR 5, ENGS 4, GEO 3, MXEO 3]
+        e.g. ANZH101_1_0.html …'8w0zjqA3hUI' | 'ngā kupu nui important words'
+        e.g. ANZH303_6_0.html …'tk6k5dcM2I0' | 'who were the rangatira who pre'
+        e.g. BLL266_2_0.html …'14h7hmpUKXk' | 'tree treasure hunt'
+   33 breaks   32 pages  prev p@free                 → next h3@activity            [HIS 8, ANZH 7, ENGJ 3, TEDC 3, ENGI 2]
+        e.g. ANZH101_2_0.html …'ture in many origin stories wh' | 'tessellations'
+        e.g. ANZH301_1_0.html …' other reasons why life in the' | 'click the flip cards below to '
+        e.g. ANZH301_3_0.html …'isation grew quickly to a memb' | 'listen to this audio about the'
+   31 breaks   26 pages  prev li@free                → next h3@free                [XGF 6, FRNO 5, AGH 4, ENGS 2, SSOG 2]
+        e.g. AGH1002_2_0.html …'asily a soil can be cultivated' | 'soil texture triangles'
+        e.g. AGH1002_4_0.html …'aeration' | 'soil water drainage and water '
+        e.g. AGH1006_5_0.html …'lower appearance and size and ' | 'plant support and staking'
+   31 breaks   30 pages  prev p@alert                → next h3@free                [ANZH 10, MXDB 5, OSGM 2, SSOG 2, XGF 2]
+        e.g. ANZH303_1_0.html …'sson we are learning to unders' | 'te ao māori the māori worldvie'
+        e.g. ANZH303_2_0.html …'sson we are learning to explor' | 'mana tapu and mauri'
+        e.g. ANZH303_5_0.html …'sson we are learning about why' | 'petihana nga rangatira o te iw'
+   29 breaks   27 pages  prev p@alert                → next p@free                 [ANZH 6, CEDK 5, CEDR 4, TRR 3, HIS 2]
+        e.g. ANZH303_4_0.html …' fundamental lesson about hist' | 'in the activities that follow '
+        e.g. ANZH401_1_0.html …'sson you are learning to organ' | 'at different times in history '
+        e.g. ANZH401_6_0.html …'sson you are learning to under' | 'a society develops characteris'
+   26 breaks   25 pages  prev iframe@free            → next p@alert                [XDLS 4, ENGI 3, ENGC 2, ENGJ 2, MXEX 2]
+        e.g. CBI1004_6_0.html …'G-_fwABa2BU' | 'genetics can be more complicat'
+        e.g. CEDK501_0_0.html …'ZRg6-fODDkU' | 'imagine you and two friends ha'
+        e.g. CEDR501_4_0.html …'XluLgh7XWk0' | 'what does a respectful languag'
+   24 breaks   22 pages  prev td@cv2-interactive     → next p@free                 [BLL 3, FRNO 2, MXDB 2, OSAI 2, PWY 2]
+        e.g. BLL171_2_0.html …'ld shrink down to the size of ' | 'congratulations you have now c'
+        e.g. BLL247_2_0.html …'ns ancestors or family members' | 'let s read the story a colourf'
+        e.g. BLL266_1_0.html …'it was a rainbow' | 'when you have completed the ac'
+   23 breaks   21 pages  prev h3@free                → next p@free                 [ENGC 7, ENGR 4, ENGS 3, ENGI 2, MXFU 2]
+        e.g. BLLR202_1_0.html …'breaking words into syllables' | 'here s a great tip for you the'
+        e.g. CEDO501_8_0.html …'ning for an increase in income' | 'when your income goes down it '
+        e.g. CEDR501_5_0.html …' and te tiriti o waitangi in a' | 'when you act with mana integri'
+   21 breaks   20 pages  prev p@activity             → next p@alert                [ENGS 4, XDLS 4, MXFL 2, XGF 2, AGH 1]
+        e.g. AGH1001_4_0.html …'l māori horticultural practice' | 'for māori the year was divided'
+        e.g. ANZH401_4_0.html …'he button below and it will ta' | 'here is an example to help you'
+        e.g. CEDR501_8_0.html …'tivity you will need to find a' | 'tip if you are not sure what a'
+   21 breaks   14 pages  prev p@alert                → next p@alert                [TRR 9, CEDT 6, ANZH 4, MXFL 1, XGF 1]
+        e.g. ANZH203_6_0.html …' wayfinders european navigator' | 'well done you have completed t'
+        e.g. ANZH401_4_0.html …'nce interested me because i en' | 'go to your journal and share w'
+        e.g. ANZH401_6_0.html …'e in 1840 there were a signifi' | 'use the quiz button below to s'
+   19 breaks   19 pages  prev p@cv2-interactive      → next p@free                 [XGF 5, HIS 3, ENGJ 2, XDLS 2, ANZH 1]
+        e.g. ANZH301_6_0.html …'saw a renaissance of māori cul' | 'this was seen in things like k'
+        e.g. ENGC301_5_0.html …'the best deal and justifying c' | 'using this numerical knowledge'
+        e.g. ENGI405_5_0.html …'formal or informal texts' | 'the key way to tell the differ'
+   18 breaks   15 pages  prev p@cv2-interactive      → next h3@free                [XGF 4, TEDC 3, HIS 2, PHE 2, XDLS 2]
+        e.g. AGH1006_4_0.html …'olled environment the inside o' | 'types of structures'
+        e.g. ANZH105_5_0.html …'rom room 3 brought some of the' | 'pictograph of taonga objects'
+        e.g. HIS1002_3_0.html …'ts gained a measure of success' | 'lenses for evaluating perspect'
+   17 breaks    5 pages  prev h4@free                → next h4@free                [TRR 12, XGF 4, AGH 1]
+        e.g. AGH1004_3_0.html …'ry high quality land typically' | 'class 6 non agricultural land '
+        e.g. TRR108_1_0.html …'finished' | 'kua oti'
+        e.g. TRR108_1_0.html …'what have i learned' | 'he aha tāku i ako ai'
+   16 breaks   16 pages  prev iframe@free            → next h4@free                [OSOH 3, XGF 2, ANZH 1, CBI 1, ENGI 1]
+        e.g. ANZH105_6_0.html …'ifN0-A8Zo_0' | 'samoan fire dancing'
+        e.g. CBI1008_3_0.html …'VvbX8PitSpg' | 'the law of conservation of mat'
+        e.g. ENGI102_6_0.html …'713PhpuOf10' | 'māui and the sun'
+   16 breaks   15 pages  prev h3@free                → next h3@free                [BLL 6, TEDC 5, DTC 2, CBI 1, GENO 1]
+        e.g. BLL236_0_0.html …'introduction' | 'supervisor note'
+        e.g. BLL237_0_0.html …'introduction' | 'supervisor note'
+        e.g. BLL241_0_0.html …'introduction' | 'supervisor note'
+   15 breaks   15 pages  prev h3@free                → next h4@free                [HES 6, OSAH 2, PWY 2, AGH 1, CBI 1]
+        e.g. AGH1009_9_0.html …'f effective management practic' | 'integrated pest management and'
+        e.g. CBI1005_7_0.html …'olution and phylogenetic trees' | 'evolution'
+        e.g. CEDO502_7_0.html …'debt over time' | 'manageable vs unmanageable'
+   13 breaks   13 pages  prev p@activity             → next p@free                 [XDLS 5, BLL 4, HIS 1, HPRE 1, MXFU 1]
+        e.g. BLL245_2_0.html …'ding the student may still sou' | 'let s read the story missing b'
+        e.g. BLL247_1_0.html …'here this place' | 'choose the correct homophone s'
+        e.g. BLL274_2_0.html …'d this text remember to check ' | 'have you noticed that many of '
+   13 breaks   11 pages  prev p@free                 → next h2@free                [HIS 6, COM 4, CEDR 3]
+        e.g. CEDR501_3_0.html …'es is a skill you can use anyw' | 'why we take notes'
+        e.g. CEDR501_4_0.html …'ecklist below to ensure that y' | 'respectful language and tone'
+        e.g. CEDR501_4_0.html …'age can mean different things ' | 'eye contact'
+   12 breaks   12 pages  prev iframe@free            → next h3@activity            [MXDI 3, HIS 2, ENGC 1, ENGS 1, SCCH 1]
+        e.g. ENGC201_4_0.html …'t685WM5R6aM' | 'empathetic listening'
+        e.g. ENGS401_4_0.html …'AAyPtVHc96s' | 'interpreting actions'
+        e.g. HIS1005_9_1.html …'evi_i7R0SFQ' | 'understanding difficult histor'
+   11 breaks   11 pages  prev li@free                → next p@alert                [CEDO 2, AGH 1, CEDT 1, DAN 1, ENGC 1]
+        e.g. AGH1003_5_0.html …'soil texture' | 'other than carbon lime adds no'
+        e.g. CEDO105_1_0.html …'ke other shapes with your body' | 'you can try this activity agai'
+        e.g. CEDO502_4_0.html …'ents disguised as advice that ' | 'if a source seems confusing bi'
+   11 breaks   11 pages  prev h3@free                → next p@alert                [ANZH 2, CEDK 2, CEDT 2, HPRE 2, CEDW 1]
+        e.g. ANZH401_4_0.html …'want to travel back in time' | 'if you would like to know more'
+        e.g. ANZH401_7_0.html …'have you caught gold fever' | 'if you would like to know more'
+        e.g. CEDK501_1_0.html …'creating a smart goal' | 'if you have already completed '
+   11 breaks   11 pages  prev p@cv2-interactive      → next p@alert                [XGF 2, CEDR 1, ENGI 1, ENGJ 1, HIS 1]
+        e.g. CEDR501_3_0.html …'cornell method' | 'the cornell method was invente'
+        e.g. ENGI303_3_0.html …'d a valuable lesson in this st' | 'life can be full of challenges'
+        e.g. ENGJ403_5_0.html …'ll look at the opening sequenc' | 'inside out is about a girl nam'
+   10 breaks   10 pages  prev p@free                 → next h4@alert               [ANZH 1, CEDO 1, CEDT 1, ENGC 1, ENO 1]
+        e.g. ANZH301_9_0.html …'t generation is the furthest r' | 'lesson summary'
+        e.g. CEDO502_2_0.html …'ess that lends money to people' | 'example'
+        e.g. CEDT501_7_0.html …'he people you have talked with' | 'for example'
+   10 breaks   10 pages  prev iframe@carousel        → next p@free                 [BLL 7, ENGI 1, XDLS 1, XGF 1]
+        e.g. BLL157_1_1.html …'gubPH3WEurg' | 'drag these contractions so the'
+        e.g. BLL215_2_0.html …'rVBHH5DwYFA' | 'if you feel confident to show '
+        e.g. BLL216_1_0.html …'8eHlWaZmyK8' | 'here are some more examples fo'
+    9 breaks    8 pages  prev h3@activity            → next p@alert                [ANZH 4, BLL 2, CEDT 1, HIS 1, XMES 1]
+        e.g. ANZH401_1_0.html …'opening and closing doors' | 'watch this short film it shows'
+        e.g. ANZH401_7_0.html …'following the gold' | 'read the poem following gold b'
+        e.g. ANZH401_9_0.html …'come on over' | 'watch this video clip about wh'
+    9 breaks    8 pages  prev td@cv2-interactive     → next h3@activity            [XMES 3, BLL 1, BLLR 1, ENGS 1, MXFU 1]
+        e.g. BLL154_1_0.html …'can ants swim just look at him' | 'reading revision'
+        e.g. BLLR203_1_0.html …'a lot of smoke coming out of t' | 'using the words'
+        e.g. ENGS201_4_0.html …'ter parker decided to become a' | 'what if'
+    9 breaks    4 pages  prev h5@free                → next h5@free                [TRR 8, OSOH 1]
+        e.g. OSOH101_3_0.html …'josie s mana meter before' | 'josie s mana meter after'
+        e.g. TRR114_1_0.html …'finished' | 'kua oti'
+        e.g. TRR114_1_0.html …'what have i learned' | 'he aha tāku i ako ai'
+    8 breaks    8 pages  prev p@free                 → next p@activity             [ENGI 2, HIS 2, ANZH 1, BLL 1, CBI 1]
+        e.g. ANZH101_1_0.html …'godwit and tane the tui discus' | 'tick any of these words that y'
+        e.g. BLL244_1_0.html …'pictures to the correct senten' | 'the grizzly bear is an excelle'
+        e.g. CBI1008_1_0.html …'carbon the element of life' | 'click the button to open the j'
+    8 breaks    8 pages  prev p@activity             → next h3@free                [BLL 2, MXEO 2, CBI 1, ENGC 1, ENGJ 1]
+        e.g. BLL247_2_0.html …'upervisor to record you talkin' | 'some helpful presentation tips'
+        e.g. BLL254_2_0.html …'to make predictions before we ' | 'an important note'
+        e.g. CBI1004_2_0.html …'tivity you will extract some d' | 'what you need'
+    8 breaks    6 pages  prev p@cv2-interactive      → next iframe@free            [SCES 3, BLL 1, ENGR 1, HIS 1, PES 1]
+        e.g. BLL266_2_0.html …'nonfiction features' | 'M0c97fdvK7c'
+        e.g. ENGR102_2_0.html …'these other vowel teams rememb' | 'TxZefW-bX1k'
+        e.g. HIS1004_7_0.html …'extract from https www thepost' | 'puK5-pb_X98'
+    7 breaks    7 pages  prev p@cv2-interactive      → next h4@free                [AGH 1, ENGI 1, HPRE 1, OSSM 1, PWY 1]
+        e.g. AGH1003_2_0.html …'rtant to remember that irrigat' | 'irrigation and physical proper'
+        e.g. ENGI301_5_0.html …'he checklist below to ensure y' | 'checklist'
+        e.g. HPRE301_3_0.html …'public transport' | 'free public transport'
+    7 breaks    3 pages  prev li@free                → next h4@free                [ENGC 5, AGH 1, OSSC 1]
+        e.g. AGH1003_2_0.html …'temperature water takes longer' | 'irrigation and chemical proper'
+        e.g. ENGC403_12_0.html …'s mostly clear and understanda' | 'oral presentation part'
+        e.g. ENGC403_12_0.html …'s clear appropriate and works ' | 'oral presentation part'
+    7 breaks    7 pages  prev p@alertActivity        → next p@free                 [BLL 3, OSBY 2, ANZH 1, SCCH 1]
+        e.g. ANZH101_1_0.html …'rtant to remember that iwi hav' | 'in the video tāne says the fir'
+        e.g. BLL177_2_0.html …'hat ar is an r controlled vowe' | 'on your white board or paper w'
+        e.g. BLL244_1_0.html …'f the homonyms we are learning' | 'match the pictures to the corr'
+    7 breaks    7 pages  prev p@cv2-interactive      → next h3@activity            [ANZH 1, ENGS 1, MXFL 1, TEDC 1, XGF 1]
+        e.g. ANZH301_1_0.html …' second world war young māori ' | 'have a listen to this audio of'
+        e.g. ENGS404_2_0.html …'now that you have explored som' | 'sharing your learning'
+        e.g. MXFL401_2_0.html …'earnt a lot about percentages ' | 'word problems'
+    7 breaks    7 pages  prev p@activity             → next h3@activity            [ANZH 2, XMES 2, ENGR 1, HIS 1, MXFL 1]
+        e.g. ANZH301_1_0.html …'elect from the drop down optio' | 'the time after the second worl'
+        e.g. ANZH301_4_0.html …'rip should depict city life an' | 'go to your journal'
+        e.g. ENGR102_2_0.html …' u is long and the i is silent' | 'support your child in this act'
