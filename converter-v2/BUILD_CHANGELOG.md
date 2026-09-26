@@ -1,5 +1,24 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (round 528, build 260620.87) — THE UNTAGGED WHAKATAUKĪ: a free black reo paragraph (every word Māori-phonotactic, ≥ 4 words) followed by its English is the proverb + translation the writer typed without the `[Whakatauki]` tag, and renders as the `div.whakatauki` box (KB 07B §7; the gold boxes it 49 / 64 where its text survives); 53 modules, skeleton +0.0259pp, compare_structure missing −69
+
+### 1. WHAT CHANGED
+
+**The class** (session 51 Round 13, `_s51_r13_proverb.cjs` → `_s51_r13_provgold.py`; the s51-r13 cs MISSING census: `div.whakatauki` 111 elements / 59 pages / 55 modules): a proverb pair typed as two plain paragraphs — the reo line, then the English — ships as two free `<p>`s; the gold wraps the pair in `div.whakatauki` on 49 of 77 untagged pairs (0.64; 0.77 of the 64 whose text is in the gold; Inquiry 0.65 / Standard 0.63, 69 pages, no family > 6). KB 07B §7 names the whakatauki component.
+
+**The fix** (`PageAssembler.#untaggedProverb`, after `#boldIdWidgetActivity`; data `callouts.untagged_proverb`, env **`UNTAGPROVERB_OFF`**): the reo item is re-typed as the `[Whakatauki]` tag with `reo | english` as its payload (the writer's one-line form — `split_payload_on_pipe` makes the two `<p>`s), so the existing proverb-only callout builds the box. Session 52 refined the s51 build (+0.0030pp, 25 up / 34 down) after triangulating its downs: (1) by emit time a later pass has merged the English with the paragraphs after it (PHE1005: 283 chars), so `#gatherProverb` read it as commentary and 15 of 63 boxes shipped reo-only — the pair is now handed over whole and the English item emptied (an "English" over `max_english_chars` is commentary and stays free); (2) a proverb right after an INTERACTIVE tag is that widget's content (ANZH301 / 302's `[interactive]` — the s51 build left an 'unbundled' red flag); (3) a line within `tagged_lookback` short lines of a writer-tagged whakatauki belongs to that box (ENGC204's four-line box was split in two); (4) a payload-free `owner_tags` callout whose whole content is the pair is REPLACED by the whakatauki (AGH1002 / CBI1004 / CEDT207 / CEDT301 / XDLS901's `[Important]` + proverb — the gold ships the whakatauki alone; the s51 build left 'Empty [important]' red flags), any other owned line stays with its callout; (5) the writer's bare label line (`Whakataukī`, `[Whakataukī]`, `Whakatauki:`) and an inline `Whakatauki:` prefix are dropped, as the gold drops them.
+
+### 2. PROOF
+
+- In-memory probe over all 545 modules: `UNTAGPROVERB_OFF=1` → 6,432 / 6,432 pages identical; ON → **59 pages / 53 modules**; 0 ASSEMBLE ERROR; 0 red-flag notes added. `_s45_regen.sh 528`: 53 + a 12-module spot-check sample regenerated, 0 stale, the sample byte-identical. `scoped_ship.sh … --round 528 --commit` PASS: containment 53 ⊆ 53.
+- The skeleton gate's own `match()` (`_s51_prescore.py`, `_r528b_prescore.log`): **+0.0258pp, 30 up / 22 down** (PWY1001_0_0 +7.2, XMES102_0_0 +6.4, XTAS102_0_0 +5.0, …); the downs are the gold's own row placement — the box first in `#body` with no row (ENGC201), inline after the heading (CEDR203), HES1003's NCEA1 flow exclusion and its human-added English.
+
+### 3. PROTECTED GATES
+
+Skeleton **56.1010 → 56.1269 % @ 2486 (+0.0259pp)**, ≥50 1627 → 1628, ≥75 292 → 295, ≥90 28; RAW 39.844 → 39.8554 %; compare_structure exact 16830 → 16867 (+37) / EXTRA 204 → 201 / missing 879 → 810 (−69); body_compare ANY 234 held; clean 98.40 %, leak 52 / 42 EXACT; tags 9557; every verifier ✓, every COUNT held (`_r528_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 528`; `--gate-baseline-check` PASS. Plateau: **reset** (+0.0259pp).
+
+**Ledger:** scoped #1 since the s51-r12 FULL (r526) · data `callouts.untagged_proverb` · env `UNTAGPROVERB_OFF` · code `PageAssembler.#untaggedProverb` · session 51 Round 13 (built) / session 52 Round 1 (refined, shipped).
+
 ## 2026-09-26 (session 51 Round 12, build 260620.86 — NO engine change) — THE LEDGER'S FULL-SHIP BACKSTOP: the whole corpus regenerated with the r526 engine is byte-identical to the shipped manifest (545 dirs / 543 modules / 2,673 pages; 0 pages differ)
 
 ### 1. WHAT RAN

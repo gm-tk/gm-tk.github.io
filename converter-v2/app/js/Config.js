@@ -1876,7 +1876,8 @@ class Config {
 	// ROUND 523 (260620.84): THE ACTIVITY GOVERNS A HEADING CO-TAG (session 51 Round 3) + its duplicate-id guard + the r521 walk-end reading the box owner's id. Env ACTHDCOTAG_OFF / ACTIDOWNER_OFF.
 	// ROUND 525 (260620.85): THE BOLD ACTIVITY ID AFTER A WIDGET TAG (session 51 Round 5; the FRNO dialect). Env BOLDIDACT_OFF.
 	// ROUND 526 (260620.86): THE BLL INTRODUCTION HEADING'S OWN FULL-WIDTH ROW (session 51 Round 7; per series). Env INTROROW_OFF.
-	static AppVersion = "260620.86";
+	// ROUND 528 (260620.87): THE UNTAGGED WHAKATAUKĪ (session 51 Round 13 built / session 52 Round 1 shipped; KB 07B §7). Env UNTAGPROVERB_OFF.
+	static AppVersion = "260620.87";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

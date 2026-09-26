@@ -1,0 +1,58 @@
+CHANGED: AGH1002: identical 7 / changed 1
+CHANGED: ANZH303: identical 7 / changed 1
+CHANGED: BLL271: identical 3 / changed 1
+CHANGED: CBI1004: identical 11 / changed 1
+CHANGED: TOTAL: identical 684 / changed 4 / missing 0 over 147 modules
+CHANGED: CEDK401: identical 1 / changed 1
+CHANGED: CEDR203: identical 0 / changed 2
+CHANGED: CEDR204: identical 1 / changed 1
+CHANGED: CEDT101: identical 1 / changed 1
+CHANGED: CEDT301: identical 1 / changed 1
+CHANGED: DAN1003: identical 9 / changed 1
+CHANGED: DAN1004: identical 9 / changed 1
+CHANGED: DTC1004: identical 8 / changed 1
+CHANGED: ENGC101: identical 6 / changed 1
+CHANGED: ENGC201: identical 6 / changed 2
+CHANGED: ENGC403: identical 16 / changed 1
+CHANGED: ENGI202: identical 7 / changed 1
+CHANGED: ENGI405: identical 8 / changed 1
+CHANGED: ENGS404: identical 12 / changed 1
+CHANGED: ENGS405: identical 1 / changed 1
+CHANGED: FRNO901: identical 9 / changed 1
+CHANGED: GENO901: identical 23 / changed 1
+CHANGED: TOTAL: identical 841 / changed 19 / missing 0 over 132 modules
+CHANGED: HES1003: identical 10 / changed 1
+CHANGED: HIS1002: identical 11 / changed 1
+CHANGED: JPN1004: identical 10 / changed 2
+CHANGED: MXDB301: identical 9 / changed 1
+CHANGED: MXDI201: identical 11 / changed 1
+CHANGED: MXDI301: identical 9 / changed 1
+CHANGED: MXEO401: identical 7 / changed 1
+CHANGED: MXEX301: identical 9 / changed 1
+CHANGED: MXFL204: identical 12 / changed 1
+CHANGED: MXFU402: identical 8 / changed 1
+CHANGED: PHE1005: identical 6 / changed 1
+CHANGED: PHE1007: identical 11 / changed 1
+CHANGED: PWY1001: identical 10 / changed 1
+CHANGED: TOTAL: identical 990 / changed 14 / missing 0 over 132 modules
+CHANGED: PWYWHA1: identical 1 / changed 1
+CHANGED: TWHA901: identical 1 / changed 1
+CHANGED: TWHA903: identical 1 / changed 1
+CHANGED: TWHA904: identical 1 / changed 1
+CHANGED: TWHK903: identical 1 / changed 1
+CHANGED: TWHR905: identical 1 / changed 1
+CHANGED: TWHR907: identical 1 / changed 1
+CHANGED: XDLS502: identical 4 / changed 2
+CHANGED: XDLS901: identical 4 / changed 2
+CHANGED: XGF9004: identical 18 / changed 1
+CHANGED: XGF9006: identical 8 / changed 1
+CHANGED: XLP04: identical 5 / changed 1
+CHANGED: XMES101: identical 9 / changed 1
+CHANGED: XMES102: identical 6 / changed 1
+CHANGED: XMES103: identical 6 / changed 1
+CHANGED: XTAS102: identical 6 / changed 1
+CHANGED: XTAS103: identical 7 / changed 1
+CHANGED: XWHA01: identical 2 / changed 1
+CHANGED: XWHA02: identical 5 / changed 2
+CHANGED: TOTAL: identical 642 / changed 22 / missing 0 over 134 modules
+TOTAL identical 6314 / changed 118
