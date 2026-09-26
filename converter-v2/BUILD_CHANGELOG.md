@@ -1,5 +1,24 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (round 531, build 260620.90) — THE BRACKET FRAGMENT IN A BUTTON LABEL: a writer's bracket fragment no longer reaches a button's label (`Add button] Download journal` → `Download journal`, `Upload to dropbox  [trigger engagement]` → `Upload to dropbox`, `go to quiz]` → `go to quiz`); KB constraint 5; 26 modules / 27 pages, text-only — every gate held by design
+
+### 1. WHAT CHANGED
+
+**The class** (found on ANZH301 while measuring the placement census's ORDER lane — `_s52_r5_jtail.py`, the journal button ends the activity box? a page-level TIE, 40 : 40, declined): 35 `div.button` labels on ≈ 26 pages carried a writer's bracket fragment — a split tag's tail (`Add button] Download journal`, `Button] [Download Journal`, `insert button] Download file [`), a writer note (`Upload to dropbox  [trigger engagement]`, `Lesson 5: Beyond the Basics [Not applicable]`), an unclosed note (`Download journal button] [Media item 31 -`), an orphan bracket (`Go back to [`, `go to quiz]`, `Access activities here]`). The download-button path stripped only the outer brackets of the tag text (`[Add button] Download journal.` → `Add button] Download journal`). The gold labels are clean (`Download journal`, `Go to quiz`, `Video Mode`, `Upload to dropbox`). KB constraint 5 (level 1).
+
+**The fix** (`ContentConverter.#buttonLabelBrackets`, at the common button emit just before `#buttonLabelTrim`; data `buttons.label_bracket_clean` {keep_pattern, note_pattern, button_words_pattern}, env **`BTNBRACKET_OFF`**): complete bracket notes go (a short caps token like a video title's `[HD]` stays); the text after a split tag's `…]` wins when it has letters, else the text before it without the button words (`(Audio Button]` → `Audio`, `Button title: Dative forms]` → `Dative forms`); an unclosed trailing note goes; any other stray bracket goes; nothing left = the label unchanged. MXFU202's `Dropbox [` now reaches r328's canonical `Go to dropbox`. Not reached (other builders, recorded): WJFUN306's click-drop `] Video Mode`, DAN1003's external `journal]`.
+
+### 2. PROOF
+
+- In-memory probe over all 545 modules: `BTNBRACKET_OFF=1` → 6,432 / 6,432 pages identical; ON → **27 pages / 26 modules**, every changed line a button label (each before → after read in `_r531_ON_pages`); 0 ASSEMBLE ERROR. `scoped_ship.sh … --round 531 --commit` PASS: 0 stale, containment 26 ⊆ 26, the 12-module spot-check byte-identical.
+- Skeleton-blind by design (the gate is text-immune): the skeleton gate's own `match()` moved 0 pages.
+
+### 3. PROTECTED GATES
+
+Skeleton **56.2465 % @ 2486 (±0.0000pp)**, ≥50 1632 / ≥75 301 / ≥90 28 held; RAW 39.9432 %; compare_structure exact 17005 / EXTRA 198 / missing 661 held; body_compare ANY 234 held; clean 98.40 %, leak 52 / 42 EXACT; tags 9557; every verifier ✓, every COUNT held (`_r531_gates.log`); `--gate-baseline-check` PASS. Plateau: **1 of 3** unchanged (a text-only round, skeleton-blind by design: neither).
+
+**Ledger:** scoped #4 since the s51-r12 FULL (r526) · data `buttons.label_bracket_clean` · env `BTNBRACKET_OFF` · code `ContentConverter.#buttonLabelBrackets` · session 52 Round 5.
+
 ## 2026-09-26 (round 530, build 260620.89) — THE WHAKATAUKĪ'S OTHER WRITER FORMS: the writer's own `[Whakatauki]` no longer ships EMPTY when its proverb, translation and commentary arrive merged into one item, and a proverb typed as a `[Body]` / payload-only `[Alert]` / `[Important]` payload is the whakatauki box (KB 07B §7); 18 modules, skeleton +0.0074pp, compare_structure exact +19 / EXTRA −5 / missing −11
 
 ### 1. WHAT CHANGED

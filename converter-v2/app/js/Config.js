@@ -1879,7 +1879,8 @@ class Config {
 	// ROUND 528 (260620.87): THE UNTAGGED WHAKATAUKĪ (session 51 Round 13 built / session 52 Round 1 shipped; KB 07B §7). Env UNTAGPROVERB_OFF.
 	// ROUND 529 (260620.88): THE SUMMARY HEADING'S ALERT BOX (session 52 Round 2; KB 14.8 / 05B; per family). Env SUMALERT_OFF.
 	// ROUND 530 (260620.89): THE WHAKATAUKĪ'S OTHER WRITER FORMS (session 52 Round 3; KB 07B §7 — the merged lines, the payload forms). Env WHKFORMS_OFF.
-	static AppVersion = "260620.89";
+	// ROUND 531 (260620.90): THE BRACKET FRAGMENT IN A BUTTON LABEL (session 52 Round 5; KB constraint 5; text-only). Env BTNBRACKET_OFF.
+	static AppVersion = "260620.90";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)

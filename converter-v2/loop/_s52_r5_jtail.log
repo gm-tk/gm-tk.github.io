@@ -1,0 +1,28 @@
+{'gold: journal LAST in its box': 1404, 'gold: content AFTER the journal': 326}
+{'tail: not in gold': 448, 'tail: gold in ANOTHER box': 67, 'tail: gold OUTSIDE (the box ended)': 184, 'tail: gold in the SAME box': 126}
+FIRST TAIL none {'h4.gj -> p': 47, 'button -> p': 43, 'h4.gj -> button': 17, 'h4.gj -> h4': 2, 'button -> li': 1, 'h4.gj -> h5': 1, 'button -> h5': 1}
+FIRST TAIL outside {'h4.gj -> p': 14, 'h4.gj -> h5': 8, 'h4.gj -> h4': 4, 'button -> h5': 1}
+FIRST TAIL another {'h4.gj -> button': 10, 'h4.gj -> p': 6, 'h4.gj -> h5': 2}
+FIRST TAIL same {'h4.gj -> button': 21, 'h4.gj -> p': 17, 'button -> button': 2, 'h4.gj -> h5': 2, 'button -> p': 1, 'h4.gj -> h4': 1, 'h4.gj -> li': 1}
+PAGES none {'ANZH': 13, 'MXFL': 9, 'ENGI': 7, 'HIS': 7, 'ENGJ': 6, 'MXDI': 6, 'BLLR': 5, 'CEDT': 5, 'ENGC': 5, 'PHE': 5, 'HES': 4, 'SSOG': 4, 'CEDO': 2, 'COM': 2, 'ENGR': 2, 'ENGS': 2, 'GEO': 2, 'MXEO': 2, 'MXEX': 2, 'CEDK': 1, 'CEDR': 1, 'CEDW': 1, 'DAN': 1, 'EXBP': 1, 'EXPFUN': 1, 'MXDB': 1, 'MXFU': 1, 'PES': 1, 'SCBI': 1, 'SSEA': 1, 'SSFUN': 1, 'XGF': 1}
+PAGES outside {'ENGJ': 4, 'HIS': 4, 'MXDI': 3, 'ANZH': 2, 'ENGI': 2, 'MXDB': 2, 'MXEO': 2, 'CEDK': 1, 'CEDW': 1, 'ENGC': 1, 'ENGR': 1, 'ENGS': 1, 'XGF': 1}
+PAGES another {'MXFU': 3, 'ENGI': 2, 'PES': 2, 'ANZH': 1, 'BLLR': 1, 'CEDO': 1, 'CEDR': 1, 'MXDB': 1, 'MXDI': 1, 'MXEO': 1, 'MXFL': 1}
+PAGES same {'HIS': 8, 'ANZH': 4, 'ENGI': 4, 'ENGR': 3, 'ENGJ': 2, 'ENGS': 2, 'HES': 2, 'MXDB': 2, 'MXEO': 2, 'MXFL': 2, 'BLLR': 1, 'CEDK': 1, 'CEDR': 1, 'CEDT': 1, 'ENGC': 1, 'EXPFUN': 1, 'MXEX': 1, 'PES': 1, 'SCBI': 1, 'XGF': 1}
+pages with an OUTSIDE tail 37 / modules 25
+tail: gold in ANOTHER box {'ENGJ': 10, 'MXDB': 9, 'GEO': 8, 'CEDW': 7, 'MXEO': 7, 'MXFU': 7, 'CEDR': 4, 'ANZH': 3, 'ENGI': 3, 'BLLR': 2, 'MXFL': 2, 'PES': 2, 'CEDO': 1, 'CEDT': 1}
+tail: gold OUTSIDE (the box ended) {'MXDB': 49, 'ENGJ': 36, 'MXEO': 31, 'ENGS': 16, 'ANZH': 13, 'GEO': 8, 'HIS': 6, 'ENGI': 5, 'ENGR': 5, 'CEDW': 4, 'MXDI': 4, 'ENGC': 3, 'CEDK': 1, 'EXBP': 1}
+tail: gold in the SAME box {'HIS': 31, 'ANZH': 16, 'CEDT': 15, 'HES': 12, 'ENGR': 8, 'ENGI': 6, 'EXPFUN': 5, 'MXFL': 4, 'BLLR': 3, 'ENGC': 3, 'MXDB': 3, 'MXEO': 3, 'CEDR': 2, 'ENGJ': 2}
+    ANZH101_2_0.html <h5> 'paikea'
+    ANZH101_2_0.html <p> 'paikea travelled across the ocean to aotearoa on the back of'
+    ANZH101_2_0.html <p> 'paikea lived in hawaiki his father had 71 sons but paikea wa'
+    ANZH101_2_0.html <p> 'paikeas older brothers were not happy about this they became'
+    ANZH101_2_0.html <p> 'paikea was clever the night before the fishing trip he prete'
+    ANZH101_2_0.html <p> 'the next day when they were all far from shore paikea sank t'
+    ANZH101_2_0.html <p> 'now paikea was all alone floating on a small plank in the bi'
+    ANZH101_2_0.html <p> 'eventually they reached a wonderful place called whangara ne'
+    ANZH205_2_0.html <p> 'after signing te tiriti william hobson said to each rangatir'
+    ANZH205_4_0.html <p> 'kai pai now lets find out which copy of the treaty was broug'
+    ANZH205_4_0.html <p> 'explore your copy of the treaty below you can use the intera'
+    ANZH205_4_0.html <p> 'some signatures were signed with a name and signature where '
+    ANZH301_1_0.html <p> 'māori involvement in the war effort also had another impact '
+    CEDK101_0_0.html <p> 'colours have a secret power when it comes to heat because wh'
