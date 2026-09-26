@@ -1,5 +1,25 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-27 (round 544, build 260621.02) — THE RED ANSWER COLUMN: a `[Drag and drop]` matching table whose ANSWER column the writer typed red (`• Sarah spent $12 … ║ «3x = 12»`; a four-column table = two pair sets) now builds the KB 03B standard layout — the prompts the questions, the red answers the drags; 21 widgets / 8 modules, 18 the gold's own layout, verifier defect 0
+
+### 1. WHAT CHANGED
+
+**The class** (D10-3's widget-build lane, dragAndDrop): the r69 pair reader refused any red text and any width other than 2, and the maths writers mark the answer column red — `• Sarah spent $12 at the arcade … ║ «3x = 12»` (MXEO301 5.1), `3² ║ «3 × 3» ║ 3^6 ║ «3 × 3 × 3 × 3 × 3 × 3»` (MXEO301 1.0 — two pair sets in one four-column table), `4.14 pm ║ «16:14 hours» ║ 17:25 hours ║ «5:25 pm»` (MXFL301 7.0). The session-54 census (`outputs/_s54_r3_ddtable.cjs`, re-run on the r543 engine): **24 tables / 22 pages / 9 modules** (MXFL 11, MXEO 4, MXDI 3, ENGR 2, BLL 2, MXDB 2). The gold builds the standard matching layout, the right-hand pairs after the left-hand ones (MXEO301 1.0: drags `3 × 3`, `2 × 2 × 2 × 2`, `5 × … × 5`, then `3 × 3 × 3 × 3 × 3 × 3` …), the prompt's list bullet dropped.
+
+**The fix** (`InteractiveBuilder.#dragAndDrop` + the new `#ddRedAnswerPairs`, data `interactive_builders.dragAndDrop.red_answer_column` {`max_width` 4, `strip_bullet`}, env **`DDREDANS_OFF`**): every row of every column pair empty or a black prompt beside a red-only answer; a black first row over them is the column-label header (dropped); a URL or a writer `[tag]` declines; the pairs feed r69's own standard render (its distinct-answer test included). Every table the r69 form already built is untouched (the branch fires only where the red guard or the width refused).
+
+### 2. PROOF
+
+- OFF probe (`DDREDANS_OFF=1`) over all 545 modules: **6,432 / 6,432 identical**; ON → 27 pages / **8 modules**, 0 ASSEMBLE ERROR. `scoped_ship.sh … --round 544 --commit` PASS: 0 stale, containment 8 ⊆ 8, the 12-module spot-check byte-identical.
+- **21 hand-off boxes → built widgets** (BLL174 / 175, ENGR302, MXDB302 ×2, MXDI202 ×3, MXEO301 ×4, MXFL301 ×3, MXFL302 ×6); `_verify_dragdrop.cjs` on the 8 modules: 33 widgets, defect 0 ✓. The gold's own widget (`outputs/_s54_r4_ddlayout.py`): **18 the same standard layout, 0 a different one**, 3 where the gold has no drag-and-drop sharing a drag (BLL175 1.0, MXDB302 1.0, MXEO301 5.0 — A1).
+- Coverage dashboard: dragAndDrop built 184 → 205, interactive coverage 46.2 → 46.4 %.
+
+### 3. PROTECTED GATES
+
+Skeleton **56.3998 → 56.3998 % @ 2486 (held — a widget-build round, skeleton-blind by design)**, ≥50 1648, ≥75 309, ≥90 29; RAW 40.1172 → 40.1516 %; compare_structure exact 17062 / EXTRA 206 / missing 581 held; body_compare ANY 233 held; leak 52 / 42; tags 9557; every verifier ✓, the dragdrop COUNT held 24 (`_r544_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 544`; `--gate-baseline-check` PASS. The still-a-box test moved 21 (≥ 20 — progress): the plateau window stays at 0.
+
+**Ledger:** scoped #2 since the s54-r5 FULL · data `interactive_builders.dragAndDrop.red_answer_column` · env `DDREDANS_OFF` · code `InteractiveBuilder.#dragAndDrop` / `#ddRedAnswerPairs` · session 54 Round 7.
+
 ## 2026-09-27 (round 543, build 260621.01) — THE MARKED CATEGORY SORT: a drag-and-drop sort whose header the writer marked in red (`[H4] Benefits ║ [H4] Risks`, `AI can [static heading]`, a fully-red `Short vowel ║ Long vowel` row) or whose ITEMS are typed red (`/sk/ sound ║ /s/ sound` over `scooter ║ science`) now builds the KB 03B column layout, 2 columns included; 21 widgets / 17 modules, 18 the gold's own column layout, verifier defect 0
 
 ### 1. WHAT CHANGED

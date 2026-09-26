@@ -1891,7 +1891,8 @@ class Config {
 	// ROUND 541 (260620.99): THE ALERT WHOSE TITLE IS A HEADING (session 53 Round 8 / session 54 Round 1; the empty callout takes the following [Hn] and its run; the callout + heading co-tag). Env CALLOUTHEADBOX_OFF / CALLOUTHDCOTAG_OFF.
 	// ROUND 542 (260621.00): THE DRAG-AND-DROP LABEL ROW (session 54 Round 4; a red column-label row over a two-column pair table is the header). Env DDLABELROW_OFF.
 	// ROUND 543 (260621.01): THE MARKED CATEGORY SORT (session 54 Round 6; a red-marked header or red items make a column sort, 2 columns included). Env DDCOLMARK_OFF.
-	static AppVersion = "260621.01";
+	// ROUND 544 (260621.02): THE RED ANSWER COLUMN (session 54 Round 7; a matching table's red answer column, 2 or 4 columns). Env DDREDANS_OFF.
+	static AppVersion = "260621.02";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
