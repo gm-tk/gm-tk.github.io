@@ -3582,6 +3582,31 @@ class InteractiveBuilder {
 	 * first written). Every panel is a heading + body text; any non-text member
 	 * (image/video/button/table) bails.
 	 */
+	/**
+	 * ROUND 537 (the autonomous loop, session 53 Round 3) — THE PANEL'S BULLETS ARE A LIST. The strict text-only and image
+	 * accordion paths rendered every panel body line as its own <p>, so a writer's "• …" bullet shipped as
+	 * <p>• Where do you think Sant and Nat are playing?</p> (BLL116 2.0) where the gold lists it (accContent > ul > li) —
+	 * 431 bullet lines on 49 pages / 36 modules (outputs/_s53_tagfate.py). A run of consecutive "•" lines renders as ONE
+	 * <ul> of <li>s (the glyph dropped — the page renderer's own "•" → <li> rule); every other line keeps its <p>. A panel
+	 * with no bullet line is byte-identical. Data: accordion.panel_bullet_list {enabled, env}. Env ACCBULLETLIST_OFF.
+	 */
+	static #panelBodyHtml(parts, inline, cfg) {
+		const on = !!cfg && cfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[cfg.env ?? "ACCBULLETLIST_OFF"]);
+		const bullet = (t) => String(t ?? "").match(/^\s*•\s*([\s\S]*\S)\s*$/);
+		if (!on || !parts.some((t) => bullet(t))) return parts.map((t) => `<p>${inline(t)}</p>`).join("");
+		let html = "", li = [];
+		const flush = () => { if (li.length) { html += `<ul>${li.map((t) => `<li>${inline(t)}</li>`).join("")}</ul>`; li = []; } };
+		for (const t of parts) {
+			const m = bullet(t);
+			if (m) { li.push(m[1]); continue; }
+			flush();
+			html += `<p>${inline(t)}</p>`;
+		}
+		flush();
+		return html;
+	}
+
 	static #accordionTextOnly({ bundle, tpl, renderInline }) {
 		// Walk the captured members in order, grouping them into panels. A panel
 		// opens on each [accordion N] tag (heading = the tag's trailing text) and
@@ -3655,7 +3680,7 @@ class InteractiveBuilder {
 			if (!p.head || !p.bodyParts.length) return null;
 			if (this.#hasRedText(p.head)) return null;
 			if (p.bodyParts.some((t) => this.#hasRedText(t))) return null;
-			const content = p.bodyParts.map((t) => `<p>${inline(t)}</p>`).join("");
+			const content = this.#panelBodyHtml(p.bodyParts, inline, tpl.panel_bullet_list);   // ROUND 537
 			built.push(Utils.FillTemplate(tpl.row, { head: inline(p.head), content }));
 		}
 
@@ -3784,7 +3809,7 @@ class InteractiveBuilder {
 		for (const p of panels) {
 			if (!p.head || !p.body.length) return null;          // every panel needs a heading + body
 			const img = p.image ? this.#assetImage(p.image, tpl, run) : "";
-			const content = img + p.body.map((t) => `<p>${inline(t)}</p>`).join("");
+			const content = img + this.#panelBodyHtml(p.body, inline, tpl.panel_bullet_list);   // ROUND 537
 			built.push(Utils.FillTemplate(tpl.row, { head: inline(p.head), content }));
 		}
 		const tail = trailing.map((t) => Utils.FillTemplate(tpl.trailing_body, { text: inline(t) }));

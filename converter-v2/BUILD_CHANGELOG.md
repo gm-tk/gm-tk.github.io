@@ -1,5 +1,24 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (round 537, build 260620.96) — THE ACCORDION PANEL'S BULLETS ARE A LIST: a built accordion's `•` lines ship as `<ul><li>` (glyph dropped) instead of `<p>• …</p>`; 43 modules / 57 pages, skeleton-blind by design (a widget's interior), RAW +0.043
+
+### 1. WHAT CHANGED
+
+**The class** (the s53-r2 writer-cue fate census's largest new row, `outputs/_s53_tagfate.py`): `black:bullet li@widget:accordion → p@widget:accordion` — **431 bullet lines on 49 pages / 36 modules** (BLL 173, ENO 46, WJFUN 43, XGF 40, HES 39). An accordion built by the strict text-only or image path (`InteractiveBuilder.#accordionTextOnly` / `#accordionWithImages`) rendered each panel body line as its own `<p>`, so the writer's bullets shipped with the glyph in a paragraph — BLL116 2.0: `<div class="accContent"><p>• Where do you think Sant and Nat are playing?</p><p>• What clues are there?</p></div>`, where the gold has `<div class="accContent"><ul><li>Where do you think Sant and Nat are playing?</li><li>What clues are there?</li></ul></div>`. The rich and panel-delimiter paths already listed them (through the page renderer). Authority: the writer's own bullets — the page renderer's `•` → `<li>` rule, applied everywhere else.
+
+**The fix** (`InteractiveBuilder.#panelBodyHtml`, called by both strict paths; data `Emit_Templates.json accordion.panel_bullet_list`, env **`ACCBULLETLIST_OFF`**): a run of consecutive `•` lines renders as ONE `<ul>` of `<li>`s with the glyph dropped; every other line keeps its `<p>`; a panel with no bullet line is byte-identical.
+
+### 2. PROOF
+
+- In-memory probe over all 545 modules: `ACCBULLETLIST_OFF=1` → 6,432 / 6,432 pages identical; ON → **57 pages / 43 modules** (the BLL1xx / BLL2xx family, ENG1004, ENGC102, ENGI405, ENO2060, EXPFUN02, HES1007, HPFUN402, HPRE301, JPFUN01, PHE1003, PWY1002, SCCH301, SCPH301, five WJFUN, XGF9001 / 9002, XLP04, XMES202, XTAS101 / 103), every changed line an `accContent`'s bullet run; 0 ASSEMBLE ERROR. `scoped_ship.sh … --round 537 --commit` PASS: 0 stale, containment 43 ⊆ 43, the 12-module spot-check byte-identical.
+- Skeleton-blind by design (the SCAFFOLD collapses a widget to one WIDGET line): the skeleton gate's own `match()` moves 0 pages; the RAW (widget-inclusive) mean rises **39.9782 → 40.0211 %**.
+
+### 3. PROTECTED GATES
+
+Skeleton **56.3661 % @ 2486 (held exactly)**, ≥50 1644, ≥75 305, ≥90 29; RAW 39.9782 → 40.0211 %; compare_structure exact 17024 / EXTRA 198 / missing 661 held; body_compare ANY 233 held; leak 52 / 42 EXACT; tags 9557; every verifier ✓, every COUNT held (`_r537_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 537`; `--gate-baseline-check` PASS. Plateau: **neither** (skeleton-blind by design — LOOP §1g / §4).
+
+**Ledger:** scoped #3 since the s52-r11 FULL · data `accordion.panel_bullet_list` · env `ACCBULLETLIST_OFF` · code `InteractiveBuilder.#panelBodyHtml` · session 53 Round 3.
+
 ## 2026-09-26 (round 536, build 260620.95) — THE FAMILY KEEPS THE WRITER'S HEADING DIGIT: FRFUN's `[H2]` ships at h2, WJFUN's and ENGC's `[H4]` at h4 (the r373 / r374 per-prefix pin, three more families found by the new writer-cue fate census); 15 modules / 41 pages, skeleton +0.0261pp, ≥50 +3
 
 ### 1. WHAT CHANGED

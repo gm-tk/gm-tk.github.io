@@ -2112,6 +2112,11 @@
 			"close": "</div>"
 		},
 		"accordion": {
+			"panel_bullet_list": {
+				"enabled": true,
+				"env": "ACCBULLETLIST_OFF",
+				"_doc": "ROUND 537 (the autonomous loop, session 53 Round 3). THE PANEL'S BULLETS ARE A LIST: the strict text-only and image accordion paths (InteractiveBuilder.#accordionTextOnly / #accordionWithImages) rendered each panel body line as its own <p>, so the writer's `• …` bullets shipped with the glyph in a paragraph (BLL116 2.0 `<p>• Where do you think Sant and Nat are playing?</p>`) where the gold lists them (`accContent > ul > li`) — 431 bullet lines on 49 pages / 36 modules (outputs/_s53_tagfate.py, the writer-cue fate census). A run of consecutive `•` lines is now ONE <ul> of <li>s (glyph dropped); other lines keep their <p>; a panel with no bullet is byte-identical. The rich / panel-delimiter paths already list bullets through the page renderer. Env ACCBULLETLIST_OFF."
+			},
 			"panel_delimiters": {
 				"enabled": true,
 				"bullet_bold_lead": {
