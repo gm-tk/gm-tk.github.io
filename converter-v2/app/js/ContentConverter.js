@@ -4823,8 +4823,8 @@ class ContentConverter {
 		// post-passes: every consumer that reads a box's writer id (the tile pairing, the dropbox
 		// modifier) has run, so the page's consecutive numbering is settled last.
 		const bodyHtml = this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
-			this.#pageNumberNormalise(this.#introHeadingFullRow(this.#bareVideoUrlEmbed(this.#bareStockUrlImage(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
-				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), r307Tiles, run))), page, run), run), run), run), run), page, run),   // ROUND 522 — #journalInstructionBox; ROUND 526 — #introHeadingFullRow; ROUND 529 — #summaryHeadingAlert; ROUND 532 — #bareStockUrlImage; ROUND 533 — #bareVideoUrlEmbed
+			this.#pageNumberNormalise(this.#introHeadingFullRow(this.#bareLinkUrlNote(this.#bareVideoUrlEmbed(this.#bareStockUrlImage(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
+				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), r307Tiles, run))), page, run), run), run), run), run), run), page, run),   // ROUND 522 — #journalInstructionBox; ROUND 526 — #introHeadingFullRow; ROUND 529 — #summaryHeadingAlert; ROUND 532 — #bareStockUrlImage; ROUND 533 — #bareVideoUrlEmbed; ROUND 534 — #bareLinkUrlNote
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
 				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
 				// ROUND 265: the level-pages dialect's nav/tile labels + registry row
@@ -7647,6 +7647,43 @@ class ContentConverter {
 		}
 		if (n && run && typeof run.AddNote === "function")
 			run.AddNote("info", "ContentConverter", `${n} Introduction heading${n > 1 ? "s" : ""} given ${n > 1 ? "their" : "its"} own full-width row (intro_heading_full_row).`);
+		return out;
+	}
+
+	/** ROUND 534 (the autonomous loop's session 52 Round 10) — THE BARE LINK LINE IS THE DEVELOPER'S. A body paragraph whose whole
+	 *  content is one URL that is neither a stock photo (r532) nor a video (r533) — a D2L / Te Kura page, a source site, a Google
+	 *  doc — shipped as a visible link; the gold shows that link on the paired page for 7 of 138 D2L links (absent 0.95) and for
+	 *  ≈ 90 of ≈ 355 others, 81 of them as an anchor on nearby prose whose words are not derivable (absent 0.74;
+	 *  outputs/_s52_r10_d2lurl.py). Outside the un-built hand-off boxes the paragraph becomes the house To Do note, so the learner
+	 *  sees no URL and the developer keeps the link (to anchor, make a button, or credit). Data elements.bare_link_url_note
+	 *  {exclude_host_pattern, todo_text}; env BARELINKNOTE_OFF (byte-identical). */
+	static #bareLinkUrlNote(html, run) {
+		const cfg = DataService.Data.EmitTemplates.elements?.bare_link_url_note;
+		if (!cfg || cfg.enabled === false || !html || !html.includes("http")) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "BARELINKNOTE_OFF"]) return html;
+		const excl = new RegExp(cfg.exclude_host_pattern ?? "istockphoto|gettyimages|shutterstock|youtu\\.?be|vimeo\\.com", "i");
+		const pRe = /<p>\s*(?:<a\b[^>]*>)?\s*(https?:\/\/[^\s<"]+)\s*(?:<\/a>)?\s*<\/p>/g;
+		const spans = [];
+		for (const h of html.matchAll(/<div class="cv2-interactive[^"]*"/g)) {
+			const re = /<(\/?)div\b[^>]*>/g; re.lastIndex = h.index; let d = 0, x;
+			while ((x = re.exec(html)) !== null) { d += x[1] ? -1 : 1; if (d === 0) { spans.push([h.index, x.index + x[0].length]); break; } }
+		}
+		const hits = [];
+		for (const m of html.matchAll(pRe)) {
+			if (spans.some(([a, z]) => m.index >= a && m.index < z)) continue;
+			const url = m[1].replace(/&amp;/g, "&");
+			if (excl.test(url)) continue;
+			hits.push({ at: m.index, len: m[0].length, url });
+		}
+		if (!hits.length) return html;
+		let out = html;
+		for (const h of hits.slice().reverse()) {
+			const rep = NotesAndComments.redFlag(Utils.FillTemplate(cfg.todo_text ?? "Designer/Developer To Do: the writer's link — {url}",
+				{ url: Utils.EscapeHtml(h.url) }), run, "cs");
+			out = out.slice(0, h.at) + rep + out.slice(h.at + h.len);
+		}
+		if (run && typeof run.AddNote === "function")
+			run.AddNote("info", "ContentConverter", `${hits.length} bare link line${hits.length > 1 ? "s" : ""} turned into the developer's To Do note (bare_link_url_note).`);
 		return out;
 	}
 
