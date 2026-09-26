@@ -7799,6 +7799,108 @@ class ContentConverter {
 		return out;
 	}
 
+	/** ROUND 541 (the autonomous loop's session 53 Round 8) — THE ALERT WHOSE TITLE IS A HEADING (form A). The writer types the
+	 *  callout tag ALONE on its line (`[Alert]`, `[Summary alert box]`, `[Important]`) and its title on the next line under a heading
+	 *  tag (`[H3] Keen to learn more?` — ANZH105, BLL252, DAN1003 …) with the text after it. The strict callout gathers only black
+	 *  text, so the box shipped EMPTY with the "Empty [alert]" red flag and the heading + its lines went free in the next row. The
+	 *  gold boxes the heading on 55 of 67 such sites, the first line after it on 40 / 42, the second on 13 / 21
+	 *  (outputs/_s53_r8_alertrun.py). A content row holding ONLY that empty box, followed by a row whose column OPENS with an
+	 *  h2–h5, becomes one row: the box (its own class) holds the heading and the column's following run of paragraphs / lists
+	 *  (up to the next heading or other block); whatever the column held after the run moves to a new row in a column of the
+	 *  same class (the r529 form); the empty row and its flag go. Data body_region.empty_callout_heading_box; env CALLOUTHEADBOX_OFF. */
+	static #emptyCalloutHeadingBox(html, run) {
+		const cfg = DataService.Data.EmitTemplates.body_region?.empty_callout_heading_box;
+		if (!cfg || cfg.enabled === false || !html) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "CALLOUTHEADBOX_OFF"]) return html;
+		const emptyRow = new RegExp(`<div class="row">\\s*<div class="[^"]*\\bcol-[^"]*">\\s*<div class="(alert\\b[^"]*)">\\s*<div class="row">\\s*<div class="col-12">\\s*`
+			+ `<p class="cv2-note"[^>]*>${cfg.flag_pattern ?? "Red Flag: Empty \\[(?:alert|important)\\]"}[^<]*<\\/p>\\s*<\\/div>\\s*<\\/div>\\s*<\\/div>\\s*<\\/div>\\s*<\\/div>`, "gi");
+		const levels = (cfg.heading_levels ?? [2, 3, 4, 5]).join("");
+		const next = new RegExp(`\\s*(<div class="row">\\s*<div class="([^"]*\\bcol-[^"]*)">)\\s*<h([${levels}])\\b[^>]*>[\\s\\S]*?<\\/h\\3>`, "y");
+		const hits = [];
+		let m;
+		while ((m = emptyRow.exec(html)) !== null) {
+			next.lastIndex = m.index + m[0].length;
+			const n = next.exec(html);
+			if (!n) continue;
+			const colStart = n.index + n[0].indexOf(n[1]) + n[1].length;               // just inside the heading's column
+			const hStart = html.indexOf("<h", colStart), hEnd = n.index + n[0].length;
+			const re = /<(\/?)div\b[^>]*>/gi; re.lastIndex = colStart; let d = 1, c;
+			while ((c = re.exec(html)) !== null) { d += c[1] ? -1 : 1; if (d === 0) break; }
+			if (!c) continue;
+			hits.push({ start: m.index, rowOpenAt: n.index + n[0].indexOf(n[1]), rowOpen: n[1], colCls: n[2], hStart, hEnd, colEnd: c.index, boxCls: m[1] });
+		}
+		if (!hits.length) return html;
+		const blocksOf = (s) => {
+			const out = []; let i = 0;
+			while (i < s.length) {
+				const lt = s.indexOf("<", i);
+				if (lt < 0) break;
+				if (s.startsWith("<!--", lt)) { const e = s.indexOf("-->", lt); i = e < 0 ? s.length : e + 3; continue; }
+				const tm = /^<([a-zA-Z][a-zA-Z0-9]*)\b([^>]*)>/.exec(s.slice(lt));
+				if (!tm) { i = lt + 1; continue; }
+				const name = tm[1].toLowerCase(), attrs = tm[2];
+				let end;
+				if (/^(?:img|br|hr|input|source)$/.test(name) || /\/\s*$/.test(attrs)) end = lt + tm[0].length;
+				else {
+					const r2 = new RegExp(`<(/?)${name}\\b[^>]*>`, "gi"); r2.lastIndex = lt; let dd = 0, x;
+					while ((x = r2.exec(s)) !== null) { dd += x[1] ? -1 : 1; if (dd === 0) break; }
+					end = x ? x.index + x[0].length : s.length;
+				}
+				out.push({ name, cls: (/class="([^"]*)"/.exec(attrs) ?? [])[1] ?? "", start: lt, end });
+				i = end;
+			}
+			return out;
+		};
+		// the run the box takes — r529's measured form: one plain paragraph, then any lists, then one closing paragraph after a
+		// list (a writer note or any other block ends it); data run_rule "r529" | "all" (every following paragraph / list)
+		const plainP = (b) => b && b.name === "p" && !b.cls, list = (b) => b && (b.name === "ul" || b.name === "ol");
+		// a heading r529 boxes itself (its family's summary words — Lesson Summary, Key points …): with data r529_handoff true, drop
+		// only the empty row and leave the heading to r529's measured box (its level rule included). OFF by default (session 54
+		// Round 1): the hand-off probed +0.0148pp against +0.0179pp without it (HIS 9.74 vs 15.17pp-sum, SSOG 0.24 vs 2.31) —
+		// the writer's own box takes the whole run the gold boxes
+		const sha = DataService.Data.EmitTemplates.body_region?.summary_heading_alert;
+		const shaOn = cfg.r529_handoff === true && !!sha && sha.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[sha.env || "SUMALERT_OFF"]);
+		const fam = String(run?.moduleCode || "").replace(/\d.*$/, "");
+		const shaRes = shaOn ? (sha.rules ?? []).filter((r) => (r.families ?? []).map(String).includes(fam)).map((r) => new RegExp(r.pattern, "i")) : [];
+		const plainH = (s) => String(s).replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim().replace(/[\s:?.!…]+$/, "");
+		let out = html, n = 0;
+		for (const h of hits.slice().reverse()) {
+			if (shaRes.some((re) => re.test(plainH(out.slice(h.hStart, h.hEnd))))) {
+				out = out.slice(0, h.start) + out.slice(h.rowOpenAt); n++;
+				continue;
+			}
+			const seg = out.slice(h.hEnd, h.colEnd), bl = blocksOf(seg);
+			let k = 0;
+			// data summary_run: a SUMMARY heading (Lesson summary, Key points …) takes r529's measured short run whatever the family
+			// — the gold's summary box holds the recap and leaves the closing narrative free (SSCI205 8 / 8 pages)
+			const sr = cfg.summary_run, rr = sr && sr.pattern && new RegExp(sr.pattern, "i").test(plainH(out.slice(h.hStart, h.hEnd)))
+				? (sr.run_rule ?? "r529") : (cfg.run_rule ?? "r529");
+			if (rr === "all") {   // every following paragraph / list — a converter note travels with its line
+				while (plainP(bl[k]) || list(bl[k]) || (bl[k] && bl[k].name === "p" && /\bcv2-note\b/.test(bl[k].cls))) k++;
+			}
+			else {
+				if (plainP(bl[k])) k++;
+				const k0 = k;
+				while (list(bl[k])) k++;
+				if (k > k0 && k0 > 0 && plainP(bl[k])) k++;
+				if (k === 0) while (list(bl[k])) k++;
+			}
+			if (k < (cfg.min_blocks ?? 1)) continue;
+			const cut = bl[k - 1].end, rest = seg.slice(cut);
+			const box = `<div class="${h.boxCls}">\n<div class="row">\n<div class="col-12">\n` + out.slice(h.hStart, h.hEnd) + seg.slice(0, cut) + `\n</div>\n</div>\n</div>`;
+			const tail = rest.replace(/<!--[\s\S]*?-->/g, "").trim()
+				? `\n</div>\n</div>\n<div class="row">\n<div class="${h.colCls}">${rest.replace(/\s+$/, "")}\n`
+				: `${rest.replace(/\s+$/, "")}\n`;
+			out = out.slice(0, h.start) + h.rowOpen + "\n" + box + tail + out.slice(h.colEnd);
+			n++;
+		}
+		if (!n) return html;
+		if (run && typeof run.AddNote === "function")
+			run.AddNote("info", "ContentConverter", `${n} empty callout${n > 1 ? "s" : ""} took the heading that follows as ${n > 1 ? "their" : "its"} title (empty_callout_heading_box).`);
+		return out;
+	}
+
 	/** ROUND 529 (the autonomous loop's session 52 Round 2) — THE SUMMARY HEADING'S ALERT BOX. A lesson's closing summary
 	 *  heading — `Lesson Summary`, `Key points`, `Key questions`, `Summary`, `What have we learned` — typed as a plain `[H3]`
 	 *  (no `[Alert]` before it) renders bare in the content column; the gold boxes the heading and what follows it to the
@@ -7814,6 +7916,7 @@ class ContentConverter {
 	 *  the gold's `activity dropbox` holds the summary). Data body_region.summary_heading_alert {rules [{pattern, families,
 	 *  level, hint_inside}], exclude_ancestor_pattern, skip_if_rest_pattern, box_open, box_close}; env SUMALERT_OFF. */
 	static #summaryHeadingAlert(html, run) {
+		html = this.#emptyCalloutHeadingBox(html, run);   // ROUND 541 — runs first, so r529 never re-boxes a heading it took
 		const cfg = DataService.Data.EmitTemplates.body_region?.summary_heading_alert;
 		if (!cfg || cfg.enabled === false || !html) return html;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "SUMALERT_OFF"]) return html;

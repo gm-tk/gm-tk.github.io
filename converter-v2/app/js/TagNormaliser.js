@@ -816,9 +816,19 @@ class TagNormaliser {
 			if (ahc && ahc.enabled !== false && primary
 				&& !(typeof process !== "undefined" && process.env && process.env[ahc.env || "ACTHDCOTAG_OFF"])) {
 				const hd = new Set((ahc.heading_tags ?? []).map(String));
-				const act = tags.find((t) => t.tag === "activity" && t.directive === "CONTAINER_OPEN");
+				let act = tags.find((t) => t.tag === "activity" && t.directive === "CONTAINER_OPEN");
+				// ROUND 524 (callouts sub-rule; env CALLOUTHDCOTAG_OFF): with no activity tag, a callout box's tag
+				// (`[Alert] [H2] Key questions`) governs the heading the same way — never a right-hand box (r505 / r506's path)
+				const cc = ahc.callouts;
+				let viaCallout = false;
+				if (!act && cc && cc.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[cc.env || "CALLOUTHDCOTAG_OFF"])
+					&& !(cc.deny_pattern && new RegExp(cc.deny_pattern, "i").test(s))) {
+					act = tags.find((t) => (cc.tags ?? []).includes(t.tag) && t.directive === "CONTAINER_OPEN");
+					viaCallout = !!act;
+				}
 				if (act && hd.has(primary.tag) && tags.every((t) => t === act || hd.has(t.tag))) {
-					cotagHeading = primary;   // PageAssembler's duplicate-id guard can hand the slot back
+					if (!viaCallout) cotagHeading = primary;   // PageAssembler's duplicate-id guard can hand the slot back
 					primary = act;
 					for (const frag of brackets) {
 						const hm = /^\s*\[?\s*h\s?([1-6])\s*\]?\s*$/i.exec(frag);

@@ -1,0 +1,60 @@
+ANZH105_8_0.html       ~ ANZH105_08.0.html        exact +2  EXTRA +0  missing -2
+DAN1003_2_0.html       ~ DAN1003_2_0.html         exact -1  EXTRA +1  missing +0
+     <h3> 'important to include': exact -> EXTRA  claude ['alert', 'row', 'col'] human ['row', 'col']
+DAN1003_3_0.html       ~ DAN1003_3_0.html         exact -1  EXTRA +1  missing +0
+     <h3> 'important to include': exact -> EXTRA  claude ['alert', 'row', 'col'] human ['row', 'col']
+DAN1003_4_0.html       ~ DAN1003_4_0.html         exact -1  EXTRA +1  missing +0
+     <h3> 'important to include': exact -> EXTRA  claude ['alert', 'row', 'col'] human ['row', 'col']
+DAN1003_6_0.html       ~ DAN1003_6_0.html         exact -1  EXTRA +1  missing +0
+     <h3> 'important to include': exact -> EXTRA  claude ['alert', 'row', 'col'] human ['row', 'col']
+DAN1003_7_0.html       ~ DAN1003_7_0.html         exact -1  EXTRA +1  missing +0
+     <h3> 'important to include': exact -> EXTRA  claude ['alert', 'row', 'col'] human ['row', 'col']
+EXBP901_1_0.html       ~ EXBP901_0.1.html         exact +0  EXTRA +0  missing -2
+HES1006_5_0.html       ~ HES1006_5.0.html         exact -2  EXTRA +2  missing +0
+     <h3> 'a working example': exact -> EXTRA  claude ['alert', 'row', 'col'] human ['row', 'col']
+     <p> 'the issue teen vaping is on the rise with more adolescents b': exact -> EXTRA  claude ['alert', 'row', 'col'] human ['row', 'col']
+HIS1005_5_0.html       ~ HIS1005-5.0.html         exact +0  EXTRA +0  missing -2
+HIS1005_5_1.html       ~ HIS1005-5.1.html         exact +1  EXTRA +0  missing -1
+HIS1005_6_0.html       ~ HIS1005-6.0.html         exact +1  EXTRA +0  missing -1
+HIS1005_6_1.html       ~ HIS1005-6.1.html         exact +1  EXTRA +0  missing -1
+HIS1005_7_0.html       ~ HIS1005-7.0.html         exact +1  EXTRA +0  missing -1
+HIS1005_8_0.html       ~ HIS1005-8.0.html         exact +1  EXTRA +0  missing -1
+HIS1005_9_1.html       ~ HIS1005-9.1.html         exact +5  EXTRA +0  missing -5
+HIS1005_10_1.html      ~ HIS1005-10.1.html        exact +1  EXTRA +0  missing -1
+HIS1008_1_0.html       ~ HIS1008-1.0.html         exact +1  EXTRA +0  missing -1
+HIS1008_5_0.html       ~ HIS1008-5.0.html         exact +1  EXTRA +0  missing -1
+HPRE301_1_0.html       ~ HPRE301-1.0.html         exact +0  EXTRA +0  missing -1
+HPRE301_3_0.html       ~ HPRE301-2.0.html         exact +0  EXTRA +0  missing -1
+HPRE301_4_0.html       ~ HPRE301-3.0.html         exact +0  EXTRA +0  missing -1
+HPRE301_6_0.html       ~ HPRE301-4.0.html         exact +0  EXTRA +0  missing -2
+HPRE301_7_0.html       ~ HPRE301-5.0.html         exact +0  EXTRA +0  missing -1
+HPRE301_9_0.html       ~ HPRE301-7.0.html         exact +0  EXTRA +0  missing -1
+MXFU302_1_0.html       ~ MXFU302_1.0.html         exact +0  EXTRA +0  missing -4
+MXFU302_2_0.html       ~ MXFU302_2.0.html         exact +0  EXTRA +0  missing -2
+MXFUN01_0_0.html       ~ MXFUN01.html             exact +0  EXTRA +0  missing -2
+SSCI104_1_0.html       ~ SSCI104-1.0.html         exact +0  EXTRA +0  missing -2
+SSCI205_1_0.html       ~ SSCI205_1_0.html         exact +2  EXTRA +0  missing -2
+SSCI205_2_0.html       ~ SSCI205_2_0.html         exact +2  EXTRA +0  missing -2
+SSCI205_3_0.html       ~ SSCI205_3_0.html         exact +2  EXTRA +0  missing -2
+SSCI205_4_0.html       ~ SSCI205_4_0.html         exact +2  EXTRA +0  missing -2
+SSCI205_5_0.html       ~ SSCI205_5_0.html         exact +2  EXTRA +0  missing -2
+SSCI205_6_0.html       ~ SSCI205_6_0.html         exact +2  EXTRA +0  missing -2
+SSCI205_7_0.html       ~ SSCI205_7_0.html         exact +2  EXTRA +0  missing -2
+SSCI205_8_0.html       ~ SSCI205_8_0.html         exact +2  EXTRA +0  missing -2
+SSEA203_2_0.html       ~ SSEA203-2.0.html         exact +2  EXTRA +0  missing -2
+SSFUN02_0_0.html       ~ SSFUN02_00.html          exact +1  EXTRA +0  missing -1
+XGF9001_4_0.html       ~ XGF9001-01.3.html        exact +1  EXTRA +0  missing +0
+XGF9002_0_0.html       ~ XGF9002_0_0.html         exact +2  EXTRA +0  missing -2
+XGF9003_0_0.html       ~ XGF9003-00.0.html        exact +2  EXTRA +0  missing -2
+XGF9003_1_1.html       ~ XGF9003-02.0.html        exact +2  EXTRA +0  missing -3
+XGF9003_1_2.html       ~ XGF9003-03.0.html        exact +0  EXTRA +0  missing -1
+XGF9006_1_0.html       ~ XGF9006-01.0.html        exact +0  EXTRA +0  missing -2
+XGF9006_2_0.html       ~ XGF9006-02.0.html        exact +1  EXTRA +0  missing -2
+XGF9006_3_0.html       ~ XGF9006-03.0.html        exact +3  EXTRA +0  missing -4
+XGF9006_4_0.html       ~ XGF9006-04.0.html        exact +3  EXTRA +0  missing -4
+XGF9006_5_0.html       ~ XGF9006-05.0.html        exact -1  EXTRA +0  missing +0
+XGF9006_6_0.html       ~ XGF9006-06.0.html        exact -1  EXTRA +0  missing +0
+XGF9006_7_0.html       ~ XGF9006-07.0.html        exact +0  EXTRA +0  missing -2
+
+by module: DAN1003 ex-5 EX+5 mi+0; HES1006 ex-2 EX+2 mi+0; ANZH105 ex+2 EX+0 mi-2; EXBP901 ex+0 EX+0 mi-2; HIS1005 ex+11 EX+0 mi-13; HIS1008 ex+2 EX+0 mi-2; HPRE301 ex+0 EX+0 mi-7; MXFU302 ex+0 EX+0 mi-6; MXFUN01 ex+0 EX+0 mi-2; SSCI104 ex+0 EX+0 mi-2; SSCI205 ex+16 EX+0 mi-16; SSEA203 ex+2 EX+0 mi-2; SSFUN02 ex+1 EX+0 mi-1; XGF9001 ex+1 EX+0 mi+0; XGF9002 ex+2 EX+0 mi-2; XGF9003 ex+4 EX+0 mi-6; XGF9006 ex+5 EX+0 mi-14
+TOTAL {'exact': 39, 'EXTRA': 7, 'missing': -77}

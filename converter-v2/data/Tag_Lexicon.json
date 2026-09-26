@@ -129,6 +129,18 @@
 			"enabled": true,
 			"env": "ACTHDCOTAG_OFF",
 			"duplicate_id_guard": true,
+			"callouts": {
+				"_doc": "ROUND 524 (session 51 Round 4). A CALLOUT GOVERNS A HEADING CO-TAG. The same precedence slip for the callout boxes: `[Alert] [H2] Key questions` (XGF9001–9006), `[Important] [H3] Step 1: Take a screenshot` (CEDT501), `[Alert box] [H3] Want to Travel Back in Time?` (ANZH401) — 76 spans / 18 modules (outputs/_s51_r4_alerthead.py): the heading (ELEMENT) outranked the callout (CONTAINER_OPEN), so no box opened and the title shipped as a bare heading. The gold puts that heading inside an alert box on 38 of 48 matched spans (XGF 28/36 — the other 8 sit in the overview menu's panes — HPRE 4/4, ENG 3/3). When the span carries NO activity tag and its tags are ONLY one of these callout tags + heading tags, the callout takes the primary slot; the black tail becomes the box's first line, which #alertTitleHeading lifts to the gold's <h4> when content follows. A span naming a right-hand position (deny_pattern — rhs / right) keeps the r505 / r506 side-column path, which reads the heading primary. Env CALLOUTHDCOTAG_OFF.",
+				"enabled": true,
+				"env": "CALLOUTHDCOTAG_OFF",
+				"tags": [
+					"alert",
+					"important",
+					"whakatauki",
+					"wananga"
+				],
+				"deny_pattern": "\\b(?:rhs|rhc|right|right[\\s-]*hand)\\b"
+			},
 			"_duplicate_id_guard_doc": "PageAssembler.#cotagDuplicateId: a promoted co-tag whose id opens ANOTHER activity later on the same page (before a PAGE_BOUNDARY) hands the primary slot back to its heading — the writer typed the id on a section heading and on the real activity (MXEX202 lesson 2 'Double or Half' / 'Fun Water Challenge', HES1002 2.0); the gold boxes only the later one.",
 			"heading_tags": [
 				"h1",

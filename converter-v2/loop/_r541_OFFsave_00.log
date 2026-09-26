@@ -1,0 +1,13 @@
+AGH1001: identical 5 / changed 2
+ANZH105: identical 9 / changed 1
+ANZH401: identical 14 / changed 1
+BLL252: identical 3 / changed 1
+BLL254: identical 3 / changed 1
+CEDO502: identical 10 / changed 1
+CEDT104: identical 1 / changed 1
+CEDT501: identical 15 / changed 1
+DAN1003: identical 4 / changed 6
+ENG1005: identical 4 / changed 3
+
+TOTAL: identical 68 / changed 18 / missing 0 over 10 modules
+CHANGED: AGH1001/AGH1001_3_0.html AGH1001/AGH1001_4_0.html ANZH105/ANZH105_8_0.html ANZH401/ANZH401_4_0.html BLL252/BLL252_1_0.html BLL254/BLL254_1_0.html CEDO502/CEDO502_1_1.html CEDT104/CEDT104_0_0.html CEDT501/CEDT501_3_0.html DAN1003/DAN1003_2_0.html DAN1003/DAN1003_3_0.html DAN1003/DAN1003_4_0.html DAN1003/DAN1003_5_0.html DAN1003/DAN1003_6_0.html DAN1003/DAN1003_7_0.html ENG1005/ENG1005_1_0.html ENG1005/ENG1005_2_0.html ENG1005/ENG1005_interactives.txt

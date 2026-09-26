@@ -1,0 +1,52 @@
+======================================================================
+ SCOPED SHIP — affected=../../outputs/_affected_r541.txt (38 modules), toggle=CALLOUTHEADBOX_OFF
+======================================================================
+[0] toggle-exists invariant (CALLOUTHEADBOX_OFF)
+    OK — CALLOUTHEADBOX_OFF found in app/js (the last-shipped corpus == this toggle OFF).
+
+[1] content-hash 0-stale (mtime false-alarm defeated)
+[content-manifest] content-hash 0-stale vs _content_manifest.txt
+  affected set: 38 module(s) (must be freshly regenerated)
+  unaffected  : 505 module(s) (must be byte-identical to the manifest; mtime IGNORED)
+  OK — 0 truly stale. 38 affected regenerated; the untouched corpus is byte-identical to the manifest (mtime false-alarm defeated).
+
+[2] containment — actually-changed modules must be a subset of the affected set
+    OK — 38 changed module(s) are a subset of 38 affected (the true set ⊆ the detector set).
+
+[3] completeness spot-check (a mis-specified P is caught here)
+[spotcheck] verifying 12 non-affected modules regenerated WITH the fix ON
+  OK — all 12 sampled non-affected modules are BYTE-IDENTICAL under the fix (P's no-op claim holds on the sample).
+
+[4] exact gate proof (decomposition vs the last-ship baseline)
+re-scoring 50 affected module(s): AGH1001 ANZH104 ANZH105 ANZH401 BLL214 BLL221 BLL252 BLL254 CEDK501 CEDO502 CEDT104 CEDT501 CHWHA DAN1003 ENG1005 ENGC403 ENGI101 EXBP901 EXIP901 HES1006 HIS1004 HIS1005 HIS1006 HIS1007 HIS1008 HPRE301 MXDB102 MXDB202 MXEO301 MXFL302 MXFU302 MXFUN01 MXFUN02 OSBY501 OSSM401 SSCI104 SSCI205 SSEA203 SSFUN02 SSFUN08 SSOG103 SSOG105 TEDC402 TWHR905 TWHR907 XGF9001 XGF9002 XGF9003 XGF9004 XGF9006
+baseline taken: 2026-09-26T12:49:53Z
+(unaffected modules unchanged by construction — corpus aggregate moves by exactly the affected-set delta)
+
+  metric                                 baseline        new     delta  verdict
+  -----------------------------------------------------------------------------
+  skeleton SCAFFOLD mean %                  56.38      56.40     +0.02  IMPROVED
+  skeleton pages >=50%                       1645       1647        +2  IMPROVED
+  skeleton pages >=75%                        305        309        +4  IMPROVED
+  compare_structure exact chain             17024      17062       +38  IMPROVED
+  compare_structure EXTRA container           198        206        +8  REGRESSED
+  compare_structure missing container         661        581       -80  IMPROVED
+  body_compare ANY breakdown                  233        233         0  HELD
+  defect structurally-clean %               98.40      98.40      0.00  HELD
+  literal-[tag] leak (occ)                     52         52         0  HELD
+  literal-[tag] leak (pages)                   42         42         0  HELD
+
+  context (no pass/fail): sk_pages: 2486->2486  cs_matched: 19631->19627  body_pages: 2627->2627  df_total: 2627->2627  df_clean: 2585->2585
+
+RESULT: MOVED, ACCEPTED AS NAMED — compare_structure EXTRA container
+        Every mover was named on the command line and must be decomposed in the
+        round's changelog entry (which page, which mechanism). Recorded in the manifest.
+[commit] gate_baseline.json: every aggregate written by the tool — 7 changed: skeleton.mean_scaffold_pct 56.38 -> 56.4; skeleton.pages_ge_50 1645 -> 1647; skeleton.pages_ge_75 305 -> 309; skeleton.raw_mean_pct 40.03 -> 40.05; compare_structure.exact_chain 17024 -> 17062; compare_structure.claude_extra_container 198 -> 206; compare_structure.claude_missing_container 661 -> 581  | _meta.round 541
+[commit] fast-loop baseline PATCHED (2486 pages) + content manifest refreshed — this is now the shipped state the next inner loop measures against.
+[commit] recorded accepted named movement: compare_structure EXTRA container
+
+[6] periodic full-ship backstop cadence
+[ledger] last full ship: round 534 (2026-09-26T07:20:02Z); scoped ships since: 6 (cadence 8, hard 16)
+  OK — a full-ship backstop is not yet due (2 scoped ship(s) of headroom).
+
+SCOPED SHIP: PASS — only the affected set changed, the rest is byte-identical, and every protected
+gate held-or-improved (exact, decomposition-proven). Finalise (changelog + AppVersion + CLAUDE.md).

@@ -6458,6 +6458,22 @@
 			"heading_pattern": "^<h3>Introduction</h3>$",
 			"column_class": "col-12"
 		},
+		"empty_callout_heading_box": {
+			"_doc": "ROUND 541 (the autonomous loop, session 53 Round 8). THE ALERT WHOSE TITLE IS A HEADING (form A): the writer types the callout tag alone (`[Alert]`, `[Summary alert box]`, `[Important]`) and its title on the next line under a heading tag (`[H3] Keen to learn more?` — ANZH105, BLL252, DAN1003 …), the text after it. The strict callout gathered only black text, so the box shipped EMPTY with the 'Empty [alert]' red flag and the heading + its lines went free in the next row. The gold boxes the heading on 55 of 67 such sites, the first line after it on 40 / 42, the second on 13 / 21 (outputs/_s53_r8_alertrun.py). ContentConverter.#emptyCalloutHeadingBox (run first inside #summaryHeadingAlert): a content row holding ONLY that empty box, followed by a row whose column opens with an h2–h5, becomes one box (its own class) holding the heading + the column's following run of paragraphs / lists; the rest of the column moves to a new row (the r529 form); the empty row and its flag go. Form B (`[Alert] [H3] …` in one span) rides as the r524 co-tag rule (Tag_Lexicon activity_heading_cotag.callouts). Env CALLOUTHEADBOX_OFF.",
+			"enabled": true,
+			"env": "CALLOUTHEADBOX_OFF",
+			"heading_levels": [2, 3, 4, 5],
+			"min_blocks": 1,
+			"run_rule": "all",
+			"r529_handoff": false,
+			"summary_run": {
+				"_doc": "A summary heading takes r529's measured short run (one plain paragraph, any lists, one closing paragraph after a list) instead of run_rule — the gold's summary box holds the recap and leaves the closing narrative free (SSCI205 8 / 8 pages).",
+				"pattern": "^(?:lesson summary|summary|key points|what have we learned|what have we learnt)$",
+				"run_rule": "r529"
+			},
+			"_r529_handoff_doc": "true = a heading r529's summary rule matches (Lesson Summary, Key points …) keeps r529's measured box and this rule drops only the empty row. Session 54 Round 1 probe: the hand-off +0.0148pp vs +0.0179pp without it (HIS 15.17 → 9.74pp-sum, SSOG 2.31 → 0.24) — left false.",
+			"flag_pattern": "Red Flag: Empty \\[(?:alert|important)\\]"
+		},
 		"summary_heading_alert": {
 			"_doc": "ROUND 529 (session 52 Round 2). THE SUMMARY HEADING'S ALERT BOX. A lesson's closing summary heading typed as a plain heading (no [Alert] before it) renders bare in the content column; the gold boxes the heading and what follows it to the column's end as div.alert > div.row > div.col-12. KB 14.8 (HPE) names the 'Lesson summary alert' ([alert] → [H3] Lesson Summary → [body] Ka pai! … → [Hint Button] Need help?); KB 05B gives the 'Key points' alert its <h4>Key points</h4> label. Measured on every Claude-bare summary heading, matched to its gold heading (outputs/_s52_r2_headalert2.py): Lesson Summary HIS 13/17, HPRE 14/14, SSCI 8/12, SSOG 9/11, SSEA 5/5, CEDK 1/1 (XGF 0/8 and TEDC 0/6 keep theirs bare — not listed); Key points PES 24/24 (gold <h4>); Summary SSFUN 4/4 (gold <h4>; HIS 1/11 not listed); What have we learned BLLR 3/3 (gold <h5>; XGF 4/8 a tie, not listed; XGF's Key questions 8/11 is a bare div.alert > h4 + ul with no inner row — a different box, not listed) — ≈ 81 of 91 (0.89), a per-group rule (LOOP §1d exception 2) keyed by the module code's family prefix. The census that found it: outputs/_s52_r2_alertcue.py (the s51-r13 cs MISSING div.alert lead — 288 gold alert boxes Claude leaves bare). A heading that is a column's direct child, outside every exclude_ancestor_pattern container, whose plain text (trailing : ? . stripped) matches a rule for the module's family opens the box; the rule's level re-levels it. The box holds what the gold's holds (outputs/_s52_r2_sumbox.py — HIS p 57/60, PES ul 34/35, SSOG p ol p / p ul p, SSCI / SSEA p with the hint right AFTER the box 8/8 and 5/5, HPRE p ol / p p.hint p): one plain paragraph, any lists, one closing paragraph after a list, and the hint only where the rule says hint_inside (KB 14.8's HPE sequence); the rest of the column moves to a new row in a column of the same class. Env SUMALERT_OFF.",
 			"enabled": true,
