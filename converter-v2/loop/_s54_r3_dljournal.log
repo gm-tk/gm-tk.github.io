@@ -1,0 +1,35 @@
+  97  gold only    | no WT line     {'ENGI': 11, 'ENGS': 8, 'AGH': 7, 'ENGC': 5, 'PHE': 5, 'CEDT': 4, 'ENGJ': 4, 'ENGR': 4}
+        e.g. AGH1001_1_0.html  WT: —
+        e.g. AGH1002_2_0.html  WT: —
+        e.g. AGH1003_2_0.html  WT: —
+        e.g. AGH1005_1_0.html  WT: —
+        e.g. AGH1006_1_0.html  WT: —
+        e.g. AGH1008_1_0.html  WT: —
+  43  gold+claude  | tagged         {'MXFL': 7, 'ANZH': 5, 'BLLR': 3, 'PHE': 3, 'CEDR': 2, 'ENGI': 2, 'MXEO': 2, 'MXEX': 2}
+        e.g. ANZH101_1_0.html  WT: ¦[Body]¦The activities in this module will be completed in a journal. Please download the file by clicking on the ‘Download Journal’ button. Save this file to y
+        e.g. ANZH301_1_0.html  WT: ¦[Body]¦Download your learning journal for this module using the button below.
+        e.g. ANZH303_1_0.html  WT: ¦[Add button] Download Journal (with instructions of how to)¦
+        e.g. ANZH304_1_0.html  WT: ¦[Add buttons]¦Download journal¦(add generic how to instructions]¦
+        e.g. ANZH404_1_0.html  WT: ¦[Add button]¦ Download journal
+        e.g. BLLR201_1_1.html  WT: ¦[button]¦Download journal
+  23  gold only    | untagged text  {'HIS': 4, 'ENGI': 3, 'MXEX': 3, 'PES': 3, 'MXEO': 2, 'ENGJ': 1, 'GEO': 1, 'GER': 1}
+        e.g. ENGI102_2_0.html  WT: • You will be sharing your learning in a journal. Once you have downloaded this the first time, it will sit in your Google Drive for you to go back to and add t
+        e.g. ENGI303_1_0.html  WT: │ ¦[modal]¦The story of Princess Iwa ¦(download from¦https://instructionalseries.tki.org.nz/Instructional-Series/School-Journal/School-Journal-Level-3-June-2022
+        e.g. ENGI405_2_0.html  WT: Download the journal that goes with this module.
+        e.g. ENGJ302_1_0.html  WT: │ 83. ║ 78 ║ Poem downloaded  ║ Poem ‘Close Up’ ║ School Journal ║ __https://drive.google.com/file/d/16vb-pQTdnceTVf74BnTZukjlnBp18eJZ/__ [LINK: https://drive.g
+        e.g. GEO1005_1_0.html  WT: Download your learning journal to complete these questions. quiz. ¦Insert button: Go to journal¦
+        e.g. GER1002_2_0.html  WT: ¦[body]¦Download this overview of dative forms and keep it in your journal for easy reference.
+  17  gold only    | tagged         {'CEDO': 2, 'ENGC': 2, 'XGF': 2, 'ANZH': 1, 'CEDK': 1, 'CEDT': 1, 'ENGI': 1, 'EXBP': 1}
+        e.g. ANZH302_2_0.html  WT: │ You have now finished your journal! / Go to ‘File’ and ‘Download as’ a .docx file and upload it to the dropbox in My Te Kura.        / Make sure you name your
+        e.g. CEDK101_0_0.html  WT: ¦[button]¦Download journal.
+        e.g. CEDO102_0_0.html  WT: ¦[Button]¦Download Journal
+        e.g. CEDO204_0_0.html  WT: ¦[Button]¦ Download Journal
+        e.g. CEDT404_0_0.html  WT: ¦[Download Journal]¦
+        e.g. ENGC206_1_0.html  WT: ¦[body]¦ Download your learning journal for this module. In this activity, you will be given two sentences that are not precise. Rewrite each sentence to make i
+   4  claude only  | tagged         {'MXFU': 2, 'ANZH': 1, 'CEDO': 1}
+        e.g. ANZH302_1_0.html  WT: │ You have now finished your journal! / Go to ‘File’ and ‘Download as’ a .docx file and upload it to the dropbox in My Te Kura.        / Make sure you name your
+        e.g. CEDO301_3_0.html  WT: ¦[Button]¦Download journal
+        e.g. MXFU401_2_0.html  WT: ¦[Button]¦Download l__earning journal__ [LINK: https://docs.google.com/document/d/19nYzMlk_qHB39xzzbHwv7og6fvuhaJKG4JX10m3fpng/edit?usp=sharing]
+        e.g. MXFU401_3_0.html  WT: ¦[Button]¦Download l__earning journal__ [LINK: https://docs.google.com/document/d/19nYzMlk_qHB39xzzbHwv7og6fvuhaJKG4JX10m3fpng/edit?usp=sharing]
+   1  gold+claude  | untagged text  {'HIS': 1}
+        e.g. HIS1008_1_0.html  WT: • Download a copy of the journal titled: HIS1008 Maranga Ake | Rise Up – Mautohe | Protest. Save a copy to your desktop, labelling it with your name and the nam

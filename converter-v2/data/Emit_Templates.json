@@ -2003,6 +2003,17 @@
 				"buttons_autocheck": "<div class=\"row\">\n<div class=\"activityButton reset\">Reset</div>\n</div>",
 				"close": "</div>"
 			},
+			"label_row": {
+				"_doc": "ROUND 542 (the autonomous loop's session 54 Round 4 — D10-3's build lane; dragAndDrop is the largest un-built type). THE LABEL ROW of the r69 standard pair table: the writer's FIRST row is a red column-label row (`Question ║ Answer`, `Word ║ [correct]`, `Clause [static] ║ Description`, `║ Correct answer - can we jumble them up though please`) over red-free pairs — the r69 red guard refused the whole table. When that row's text carries a matching-role cue (role_pattern) and no category cue (category_pattern — a heading marker `[H4] Benefits ║ [H4] Risks`, `[static heading]` / `[column heading]`, a `sort` / `category` / `group` word: the gold builds those as a COLUMN sort, e.g. OSSM501) and no URL, it is the header: dropped; a real-word red run in it (label_max_words, the r350 #ddIsNote test) rides along as the red Writers Note after the widget. Measured `outputs/_s54_r3_ddtable.cjs` + the r286 traces: 47 refused 2-column tables whose red sits ONLY in row 1. Env DDLABELROW_OFF.",
+				"enabled": true,
+				"env": "DDLABELROW_OFF",
+				"role_pattern": "\\b(?:questions?|answers?|correct|definitions?|meanings?|words?|static|mov(?:e)?able|draggable|drag|fixed|jumble|descriptions?)\\b",
+				"category_pattern": "\\[\\s*h[1-6]\\s*\\]|\\b(?:static|column)\\s+heading|\\bsort|\\bcategor|\\bgroups?\\b",
+				"label_max_words": 3,
+				"blank_pattern": "_{3,}",
+				"decline_identity": true,
+				"_guards_doc": "Under a dropped label row only (every build the r69 form already made is untouched): a drawn blank in a label (blank_pattern — BLL266 'My brother ____ played …', the gold's FIB) and a table whose every label equals its answer (decline_identity — BLLR201–203 'cartoonist ║ cartoonist') keep the hand-off box. category_pattern also reads the UNBRACKETED 'Static Heading:' (OSAI201 2.0 — the gold's column sort)."
+			},
 			"standard_decline_opener": {
 				"_doc": "ROUND 510 (the autonomous loop's session 50 Round 1 — the guard r510's generic-interactive-bracket reading needed before it could ship). The r69 pair reading takes any 2-column table as [label | answer]; when the writer's OPENER says the items go INTO coloured squares / zones / categories / groups / columns, the table is the drop TARGETS of a category sort, not the pairs — HPFUN101 1A: '[Interactive] Drag and drop, drop the statements into the relevant coloured square' over a 2×2 table of four zones (Blue / Green / Yellow / Red, each with its feelings), the statements typed after it; the r69 reading built two nonsense pairs from the zone cells (0 % of the gold's drags). The r69 form declines (the hand-off box keeps the writer's content); the images and column forms are not affected. Tested on the bundle's red TAG items only (the span that names the widget is the first member when an activity box owns the opener), never the black body text. Proven inert on every existing dragAndDrop build (the family probe with IQFREEWIDGET_OFF=1). Env DDSORTOPENER_OFF.",
 				"enabled": true,

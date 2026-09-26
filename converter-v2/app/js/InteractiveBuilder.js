@@ -969,7 +969,36 @@ class InteractiveBuilder {
 		const srcRows = tables[0].rows ?? [];
 		const width = Math.max(0, ...srcRows.map((r) => (r ?? []).length));
 		if (width !== 2) return null;                            // strictly label | answer
-		const rows = srcRows.filter((r) => Array.isArray(r) && r.length === 2);
+		let rows = srcRows.filter((r) => Array.isArray(r) && r.length === 2);
+		// ROUND 542 (the autonomous loop's session 54 Round 4 — D10-3's build lane) — THE LABEL ROW. The writer's FIRST row is
+		// often a red column-label row over the pairs (`Question ║ Answer`, `Word ║ [correct]`, `Clause [static] ║ Description`,
+		// `║ Correct answer – can we jumble them up though please`): the red guard below refused the whole table (47 of the
+		// refused 2-column tables carry red ONLY there — `_s54_r3_ddtable.cjs`). A first row with red text, a matching-role
+		// cue (role_pattern) and no category cue (category_pattern: `[H4] Benefits ║ [H4] Risks`, `[static heading]`, a
+		// `sort` instruction — the gold builds those as a column sort, OSSM501) and no URL, over red-free rows, is the header:
+		// dropped, its real-word red instruction riding along as the Writers Note (the r350 header rule). Data label_row;
+		// env DDLABELROW_OFF.
+		let labelNotes = [];
+		const lr = tpl.label_row;
+		if (lr && lr.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[lr.env || "DDLABELROW_OFF"])
+			&& rows.length > 1 && (this.#hasRedText(rows[0][0]) || this.#hasRedText(rows[0][1]))
+			&& rows.slice(1).every((r) => !this.#hasRedText(r[0]) && !this.#hasRedText(r[1]))) {
+			const head = rows[0].map((c) => this.#cellText(c)).join(" | ");
+			if (new RegExp(lr.role_pattern, "i").test(head) && !(lr.category_pattern && new RegExp(lr.category_pattern, "i").test(head))
+				&& !/https?:\/\//.test(head)) {
+				for (const c of rows[0]) for (const m of String(c).matchAll(/\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]/g)) {
+					const t = m[1].replace(/\u{1f534}/gu, "").trim();
+					if (this.#ddIsNote(t, lr)) labelNotes.push(t);
+				}
+				rows = rows.slice(1);
+				// under a label row, a drawn blank in a label is a FIB sentence (BLL266 — the gold's FIB layout), and a table whose
+				// every label IS its answer (`cartoonist ║ cartoonist` — BLLR201–203) is not a matching set: both keep the box
+				const pair = rows.map((r) => [this.#cellText(r[0]).trim(), this.#cellText(r[1]).trim()]);
+				if (lr.blank_pattern && pair.some(([l]) => new RegExp(lr.blank_pattern).test(l))) return null;
+				// exact, case kept: `a ║ A` (BLL111 — lower- to upper-case letters) IS a matching set
+				if (lr.decline_identity !== false && pair.length && pair.every(([l, a]) => l.replace(/\s+/g, " ") === a.replace(/\s+/g, " "))) return null;
+			}
+		}
 		if (rows.length < (tpl.min_rows ?? 2)) return null;
 		const inline = renderInline ?? ((s) => s);
 		const labels = [], answers = [];
@@ -990,6 +1019,11 @@ class InteractiveBuilder {
 		out.push(tpl.drag_open);
 		for (let i = 0; i < answers.length; i++) out.push(Utils.FillTemplate(tpl.drag, { n: i + 1, answer: inline(answers[i]) }));
 		out.push(...this.#ddClose(tpl));   // ROUND 350 — the KB button row (button_row; DDBUTTONS_OFF = the r69 close)
+		if (labelNotes.length) {           // ROUND 542 — the label row's instruction, the r350 Writers Note path
+			const seen = new Set(bundle.instructions ?? []);
+			bundle.instructions = [...(bundle.instructions ?? [])];
+			for (const n of labelNotes) if (!seen.has(n)) { bundle.instructions.push(n); seen.add(n); }
+		}
 		return out.join("\n");
 	}
 

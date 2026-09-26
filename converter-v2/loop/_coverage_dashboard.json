@@ -1,12 +1,13 @@
 {
- "generated": "2026-09-27 00:04",
+ "generated": "2026-09-27 04:36",
  "warnings": [
   "skeleton state predates the newest engine change (2026-09-25) \u2014 its rows may lag.",
-  "body_compare predates the newest engine change (2026-09-26) \u2014 its rows may lag."
+  "body_compare predates the newest engine change (2026-09-27) \u2014 its rows may lag.",
+  "feature index predates the newest engine change (2026-09-27) \u2014 its rows may lag."
  ],
  "headline": {
-  "bundles": 7639,
-  "built": 3486,
+  "bundles": 7640,
+  "built": 3505,
   "pages": 2627,
   "clean": 2585,
   "modules": 535,
@@ -19,8 +20,8 @@
  },
  "types": {
   "carousel": {
-   "built": 757,
-   "total": 1017,
+   "built": 758,
+   "total": 1018,
    "declined_shapes": 211,
    "modules": 378,
    "declined_modules": [
@@ -202,9 +203,9 @@
    ]
   },
   "dragAndDrop": {
-   "built": 146,
+   "built": 163,
    "total": 1170,
-   "declined_shapes": 860,
+   "declined_shapes": 843,
    "modules": 387,
    "declined_modules": [
     "AGH1001",
@@ -261,7 +262,6 @@
     "BLL161",
     "BLL162",
     "BLL166",
-    "BLL167",
     "BLL170",
     "BLL171",
     "BLL173",
@@ -342,7 +342,6 @@
     "CEDW501",
     "CHFUN04",
     "CHFUN05",
-    "CHFUN06",
     "CHWHA",
     "COM1002",
     "COM1006",
@@ -536,7 +535,6 @@
     "WJFUN205",
     "WJFUN206",
     "WJFUN210",
-    "WJFUN211",
     "WJFUN212",
     "WJFUN304",
     "WJFUN305",
@@ -1054,9 +1052,9 @@
    ]
   },
   "accordion": {
-   "built": 540,
+   "built": 541,
    "total": 803,
-   "declined_shapes": 228,
+   "declined_shapes": 227,
    "modules": 231,
    "declined_modules": [
     "AGH1006",
@@ -2132,9 +2130,9 @@
   {
    "type": "dragAndDrop",
    "token": "button+txt",
-   "declined": 141,
-   "built": 18,
-   "build_rate": 0.113
+   "declined": 138,
+   "built": 21,
+   "build_rate": 0.132
   },
   {
    "type": "dropDown",
@@ -2204,14 +2202,14 @@
   {
    "class": "un-built dragAndDrop",
    "kind": "interactive",
-   "plain": "Writers tagged 1170 dragAndDrop widgets; 1024 ship as a hand-off box instead of a built widget.",
-   "modules": 368,
-   "pages": 720,
-   "occurrences": 1024,
-   "shapes": 860,
+   "plain": "Writers tagged 1170 dragAndDrop widgets; 1007 ship as a hand-off box instead of a built widget.",
+   "modules": 365,
+   "pages": 713,
+   "occurrences": 1007,
+   "shapes": 843,
    "regen_modules": 390,
    "regen_saving_pct": 29,
-   "note": "builder covers 146/1170 (12%)",
+   "note": "builder covers 163/1170 (13%)",
    "rank": 1
   },
   {
@@ -2244,14 +2242,14 @@
   {
    "class": "un-built carousel",
    "kind": "interactive",
-   "plain": "Writers tagged 1017 carousel widgets; 260 ship as a hand-off box instead of a built widget.",
+   "plain": "Writers tagged 1018 carousel widgets; 260 ship as a hand-off box instead of a built widget.",
    "modules": 175,
    "pages": 198,
    "occurrences": 260,
    "shapes": 211,
    "regen_modules": 391,
    "regen_saving_pct": 29,
-   "note": "builder covers 757/1017 (74%)",
+   "note": "builder covers 758/1018 (74%)",
    "rank": 4
   },
   {
@@ -2310,14 +2308,14 @@
   {
    "class": "un-built accordion",
    "kind": "interactive",
-   "plain": "Writers tagged 803 accordion widgets; 263 ship as a hand-off box instead of a built widget.",
+   "plain": "Writers tagged 803 accordion widgets; 262 ship as a hand-off box instead of a built widget.",
    "modules": 122,
    "pages": 189,
-   "occurrences": 263,
-   "shapes": 228,
+   "occurrences": 262,
+   "shapes": 227,
    "regen_modules": 248,
    "regen_saving_pct": 55,
-   "note": "builder covers 540/803 (67%)",
+   "note": "builder covers 541/803 (67%)",
    "rank": 9
   },
   {

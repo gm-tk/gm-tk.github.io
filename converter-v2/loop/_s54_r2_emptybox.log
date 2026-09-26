@@ -1,0 +1,67 @@
+empty boxes by (writer tag, next block):
+    32  alert            → h3                   gold boxed 1 / free 0 / notfound 31 / short 0   {'BLL': 6, 'SSOG': 4, 'HIS': 3, 'SSCI': 3, 'SSEA': 3}
+        e.g. BLL257_2_0.html 'match the definition to the correct word in the fi' gold:notfound
+        e.g. BLL272_1_0.html 'help sheets te reo māori alphabet sounds vowel sou' gold:notfound
+        e.g. BLL273_1_0.html 'help sheets te reo māori alphabet sounds vowel sou' gold:notfound
+        e.g. BLL274_1_0.html 'help sheets te reo māori alphabet sounds vowel sou' gold:notfound
+    20  alert            → p                    gold boxed 2 / free 6 / notfound 12 / short 0   {'BLL': 6, 'ANZH': 2, 'ENFUN': 2, 'HIS': 2, 'CEDK': 1}
+        e.g. ANZH301_4_0.html 'please include the image from the tūhura resource ' gold:notfound
+        e.g. ANZH302_4_0.html 'please include the image from the tūhura resource ' gold:notfound
+        e.g. BLL240_0_0.html 'remember the silent e that changes the sound of th' gold:free
+        e.g. BLL250_0_0.html 'when you see sc at the start or middle of a word l' gold:notfound
+     8  supervisor note  → p                    gold boxed 0 / free 6 / notfound 2 / short 0   {'ENGR': 5, 'ANZH': 1, 'BLL': 1, 'ENGI': 1}
+        e.g. ANZH105_3_0.html 'use the support material below to help you and you' gold:free
+        e.g. BLL123_1_0.html 'writers note if the ākonga does not know the meani' gold:notfound
+        e.g. ENGI201_2_0.html 'writers note activity note to be provided next to ' gold:notfound
+        e.g. ENGR102_1_0.html 'this lesson will be exploring the silent e rule so' gold:free
+     8  alert            → h4                   gold boxed 0 / free 1 / notfound 7 / short 0   {'BLLR': 4, 'SSEA': 2, 'MXFL': 1, 'XGF': 1}
+        e.g. BLLR201_1_1.html 'contraction spelling rules the two word phrases en' gold:notfound
+        e.g. BLLR202_1_0.html 'take care these spelling patterns can be confusing' gold:notfound
+        e.g. BLLR202_2_0.html 'what to notice the suffix al means about or connec' gold:notfound
+        e.g. BLLR203_1_0.html 'take care these spelling patterns can be tricky be' gold:notfound
+     7  alert            → h2                   gold boxed 0 / free 0 / notfound 7 / short 0   {'TWHA': 7}
+        e.g. TWHA903_0_0.html 'think like a scientist when we wonder about things' gold:notfound
+        e.g. TWHA903_0_0.html 'think like a mathematician this goal is about solv' gold:notfound
+        e.g. TWHA903_0_0.html 'think like an innovator innovators notice problems' gold:notfound
+        e.g. TWHA904_0_0.html 'think like a scientist when we wonder about things' gold:notfound
+     5  alert            → h5                   gold boxed 0 / free 0 / notfound 5 / short 0   {'BLLR': 3, 'ENG': 1, 'EXPFUN': 1}
+        e.g. BLLR201_2_0.html 'what have we learned words can be made from smalle' gold:notfound
+        e.g. BLLR202_2_0.html 'what have we learned words can be made from smalle' gold:notfound
+        e.g. BLLR203_2_0.html 'what have we learned a suffix is added to the end ' gold:notfound
+        e.g. ENG1007_0_0.html 'what is an aspect purposes and audiences ideas eg ' gold:notfound
+     5  alert            → ul                   gold boxed 0 / free 0 / notfound 2 / short 3   {'TEDC': 2, 'ENGS': 1, 'SSEA': 1, 'XTAS': 1}
+        e.g. ENGS301_7_0.html '' gold:?
+        e.g. SSEA203_6_0.html '' gold:?
+        e.g. TEDC401_0_0.html 'acknowledgements designerdeveloper to do no istock' gold:notfound
+        e.g. TEDC402_0_0.html 'acknowledgements designerdeveloper to do no istock' gold:notfound
+     3  whakatauki       → p                    gold boxed 1 / free 0 / notfound 2 / short 0   {'GENO': 1, 'PWY': 1, 'PWYWHA': 1}
+        e.g. GENO901_0_0.html 'germany in one minute submitting your work in this' gold:notfound
+        e.g. PWY1001_0_0.html 'he taonga rongonui te aroha ki te tangata goodwill' gold:boxed
+        e.g. PWYWHA1_0_0.html 'ka pū te ruha ka hao te rangatahi as the old net i' gold:notfound
+     2  important        → h5                   gold boxed 0 / free 0 / notfound 2 / short 0   {'ENG': 2}
+        e.g. ENG1004_0_0.html 'how to present your learning you have a choice bet' gold:notfound
+        e.g. ENG1005_0_0.html 'what you will do select an appropriate text identi' gold:notfound
+     2  quote            → h5                   gold boxed 0 / free 0 / notfound 2 / short 0   {'ENGJ': 2}
+        e.g. ENGJ402_6_0.html 'the sky stretched thin by simon armitage the sky s' gold:notfound
+        e.g. ENGJ402_6_0.html 'wade in the water by tracy k smith one of the wome' gold:notfound
+     2  quote            → p                    gold boxed 0 / free 0 / notfound 2 / short 0   {'ENGJ': 2}
+        e.g. ENGJ402_6_0.html 'aotearoa new zealand poet musician and environment' gold:notfound
+        e.g. ENGJ402_6_0.html 'interactive unbuilt 12 unclassified activity 6a se' gold:notfound
+     1  important        → ul                   gold boxed 0 / free 0 / notfound 0 / short 1   {'AGH': 1}
+        e.g. AGH1005_3_0.html '' gold:?
+     1  important        → p                    gold boxed 0 / free 0 / notfound 1 / short 0   {'AGH': 1}
+        e.g. AGH1006_8_0.html 'complete activity 6b in your learning journal go t' gold:notfound
+     1  alert            → a                    gold boxed 0 / free 0 / notfound 1 / short 0   {'ANZH': 1}
+        e.g. ANZH304_1_0.html 'upload to dropbox designerdeveloper to do wire thi' gold:notfound
+     1  important        → h2                   gold boxed 0 / free 0 / notfound 1 / short 0   {'ARFUN': 1}
+        e.g. ARFUN01_0_0.html 'history who came before us the arts teach us about' gold:notfound
+     1  quote            → h4                   gold boxed 0 / free 0 / notfound 1 / short 0   {'ENGJ': 1}
+        e.g. ENGJ402_6_0.html 'michele leggott a pioneering figure in new zealand' gold:notfound
+     1  important        → h4                   gold boxed 0 / free 0 / notfound 1 / short 0   {'HIS': 1}
+        e.g. HIS1002_1_0.html 'first read the instructions writers note it is tim' gold:notfound
+     1  important        → h3                   gold boxed 0 / free 0 / notfound 1 / short 0   {'MXFUN': 1}
+        e.g. MXFUN03_0_0.html 'match the times to the correct clock face span sty' gold:notfound
+     1  alert            → img                  gold boxed 1 / free 0 / notfound 0 / short 0   {'XDLS': 1}
+        e.g. XDLS909_3_0.html 'as an aotearoa new zealand citizen you have respon' gold:boxed
+     1  whakatauki       → h3                   gold boxed 0 / free 0 / notfound 1 / short 0   {'XGF': 1}
+        e.g. XGF9004_1_0.html 'philosophy what is it kia ora e hoa mā and welcome' gold:notfound

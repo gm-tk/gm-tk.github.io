@@ -1,5 +1,25 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-27 (round 542, build 260621.00) — THE DRAG-AND-DROP LABEL ROW: a two-column `[Drag and drop]` table whose FIRST row is the writer's red column-label row (`Question ║ Answer`, `Word ║ [correct]`, `Clause [static] ║ Description`, `║ Correct answer – can we jumble them up though please`) now builds the KB 03B standard matching widget — the label row dropped, its instruction the Writers Note; 17 widgets / 17 modules, verifier defect 0, skeleton-neutral by design
+
+### 1. WHAT CHANGED
+
+**The class** (D10-3's widget-build lane; dragAndDrop is the largest un-built type, 1,024 hand-off boxes). The session-54 census of the refused single-table drag-and-drops (`outputs/_s54_r3_ddtable.cjs`, a Build hook over every module, joined to the r286 decline traces): the r69 pair reader refuses ANY table carrying red text, and **47** refused two-column tables carry their red ONLY in the first row — the writer's column-label row. Two shapes hide there: N:N matching under a role label (`Question ║ Answer`, `Word ║ [correct]`, `(Static) ║ (Draggable)` — the gold's standard layout, SCES201 / OSSM401 / WJFUN211) and a two-category sort under heading labels (`[H4] Benefits ║ [H4] Risks`, `[static heading] AI can ║ AI can't`, a `sort` instruction — the gold's COLUMN layout, OSSM501 / OSAI201).
+
+**The fix** (`InteractiveBuilder.#dragAndDrop`, data `interactive_builders.dragAndDrop.label_row`, env **`DDLABELROW_OFF`**): a first row with red text over red-free rows, whose text carries a matching-role cue (`role_pattern`) and no category cue (`category_pattern` — a `[Hn]` marker, `static` / `column heading`, `sort` / `categor` / `group`) and no URL, is the header — dropped; a real-word red run in it rides along as the red Writers Note (the r350 `#ddIsNote` test). Under a dropped label row only, a drawn blank in a label (`blank_pattern` — BLL266, the gold's FIB) and a table whose every label equals its answer exactly (`decline_identity` — BLLR201–203 `cartoonist ║ cartoonist`) keep the hand-off box. Every widget the r69 form already built is untouched by construction (the branch runs only where the red guard refused).
+
+### 2. PROOF
+
+- OFF probe (`DDLABELROW_OFF=1`) over all 545 modules: **6,432 / 6,432 identical**; ON → 34 pages / **17 modules** (their `_interactives.txt` reports + 17 pages), 0 ASSEMBLE ERROR. `scoped_ship.sh … --round 542 --commit` PASS: 0 stale, containment 17 ⊆ 17, the 12-module spot-check byte-identical.
+- **17 hand-off boxes → built widgets** (BLL111 / 121 / 131 / 167, CHFUN05 / 06, ENFUN05 / 08, ENGC302, MXEX301, MXFUN01 / 02, OSBY101, OSSM401, PWY1002, WJFUN205 / 211). `_verify_dragdrop.cjs` on the 17: **21 widgets / 129 drags, defect 0 ✓**. The gold's own widget for each (`outputs/_s54_r4_ddlayout.py`, matched by shared drags): **11 the same standard layout, 0 a different layout**, 6 where the gold has no drag-and-drop sharing a drag (BLL167, CHFUN05 / 06, ENGC302, MXFUN02, OSBY101 — the writer asked for one: A1, judged on the verifier). Two probe designs dropped on the gold check: without the blank / identity / unbracketed-heading guards 22 widgets (BLL266 gold FIB, OSAI201 2.0 gold column, BLLR201–203 identity tables); a case-folded identity test wrongly refused BLL111 / 121 / 131's `a ║ A` letter matches (the gold's standard) — made exact.
+- The verifier COUNT on its recorded 14-module set GREW 21 → 23 (CHFUN05 1 → 2, ENFUN08 1 → 2) — recorded (`VERIFY_COUNT_RECORD=1`).
+
+### 3. PROTECTED GATES
+
+Skeleton **56.3982 → 56.3993 % @ 2486 (+0.0011pp)**, ≥50 1647, ≥75 309, ≥90 29 held; RAW 40.0522 → 40.0821 %; compare_structure exact 17062 / EXTRA 206 / missing 581 held; body_compare ANY 233 held; leak 52 / 42; tags 9557; every verifier ✓ (`_r542_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 542`; `--gate-baseline-check` PASS. A widget-build round (LOOP §4): skeleton-blind by design; the still-a-box test moved 17 (< 20) — plateau **1 of 3**.
+
+**Ledger:** scoped #7 since the s52-r11 FULL · data `interactive_builders.dragAndDrop.label_row` · env `DDLABELROW_OFF` · code `InteractiveBuilder.#dragAndDrop` · session 54 Round 4.
+
 ## 2026-09-27 (round 541, build 260620.99) — THE ALERT WHOSE TITLE IS A HEADING: the writer's EMPTY `[Alert]` / `[Important]` / `[Alert Solid]` line followed by a `[Hn]` title now boxes the heading and its run (form A), and the `[Alert] [H3] …` co-tag opens the box (form B, the parked r524 patch); 38 modules / 117 pages, skeleton +0.0183pp, compare_structure exact +38 / missing −80
 
 ### 1. WHAT CHANGED

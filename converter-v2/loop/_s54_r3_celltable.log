@@ -1,0 +1,15 @@
+one-cell activity tables: 21 in 6 modules; families {'PWY': 20, 'TWHT': 1}
+     7  lead '[learning journal]'                       gold activity  claude hand-off   e.g. PWY1002 1H: Who you can relate to | PWY1007 3B: Spot the mistakes | PWY1008 2D: Building your interview notes
+     2  lead '[learning journal]'                       gold free      claude hand-off   e.g. PWY1007 1F: Your information | PWY1007 2B: Filling out forms
+     1  lead '[activity 1f]'                            gold activity  claude activity   e.g. PWY1001 1F: Total time
+     1  lead '[activity 2a]'                            gold activity  claude activity   e.g. PWY1001 2A: Getting ready on a budget challenge
+     1  lead '[learning journal] [engagement trigger]'  gold found?    claude hand-off   e.g. PWY1001 2C: Your own qualities.
+     1  lead '[activity 2e]'                            gold free      claude free       e.g. PWY1001 2E: Safety
+     1  lead '[activity 2f]'                            gold activity  claude activity   e.g. PWY1001 2F: Match em’ up
+     1  lead '[multichoice]'                            gold activity  claude hand-off   e.g. PWY1001 3D: Understanding colloquial language
+     1  lead '[journal]'                                gold activity  claude hand-off   e.g. PWY1001 3E: Dig deeper
+     1  lead '[typing self check]'                      gold activity  claude hand-off   e.g. PWY1002 1A: Before you begin
+     1  lead '[mtk quiz] [engagement trigger]'          gold absent    claude hand-off   e.g. PWY1008 2F: Preparing a clear response
+     1  lead '[mtk quiz] [engagement trigger]'          gold activity  claude hand-off   e.g. PWY1009 1C: What have you heard of?
+     1  lead '[learning journal]'                       gold activity  claude found?     e.g. PWY1009 2B: Bailey's job offer at Green Fingers Garden Centre
+     1  lead '(no tag)'                                 gold activity  claude hand-off   e.g. TWHT903 2C: Roll and Tell

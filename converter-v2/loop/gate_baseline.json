@@ -1,8 +1,8 @@
 {
   "_meta": {
     "purpose": "Committed PROTECTED-gate baseline (efficiency lever 2). The shared corpus DRIFTS between sessions so the BUILD_CHANGELOG absolutes never line up exactly — without a committed baseline the only rigorous proof of hold-or-improve is a second full A/B regen pass (~8m/round). Diff THIS after a regen instead. Refresh it (and the build/round) every shipped round, AFTER the gates pass.",
-    "build": "260620.99",
-    "round": 541,
+    "build": "260621.00",
+    "round": 542,
     "date": "2026-09-27",
     "_round92_note": "Round 92 (ENGS302-01: side-alert-box-in-table + dragAndDrop activity wrapper / data-table capture / phantom-journal-button fix). Verified on a FULL 0-stale tightened regen vs the round-91 committed baseline (which matched the fast-loop baseline exactly: over 42 / any 181). PRIMARY skeleton IMPROVED (pages>=50% 524->539 +15, >=75% 65->70 +5, mean 47.8->48.2, median 49.3->49.8); compare_structure exact 5893->5902 (+9) / missing 261->252 (-9) / EXTRA 142 HELD; structural-clean 1290->1291 (95.0->95.1%) / leak 254->253 (-1) / leak pages 68->67 (-1); tags 9557/9557; flipCard divergence 0 (37/13/10/14); speechBubble defect 0. body_compare any 181->184 (+3) — the +3 over-capture (ENGC201-06, ENGR101-05, MXDB301-03) is the UNAVOIDABLE cost of capturing the dragAndDrop/activity DATA TABLE into the widget (the user's explicit fix): those tables ARE the widget's data the human BUILDS, but body_compare cannot credit Claude's un-built placeholder, and for these 3 the human keeps the table free. Net-positive per the MEASUREMENT MANDATE (judge a structural change FIRST on the skeleton, which improved +15) + the NET-POSITIVE convention. _round91_note: round 91 (ENGS302 emphasis-bullets/caption/media-url/lesson-name) shipped +1 skeleton / +1 compare exact / +2 missing.",
     "corpus": {
@@ -51,6 +51,7 @@
     "_round349_note": "Round 349 (D10-9: every learning / success label in the module menu is the KB's <h5> colon form — constraint 23 / 01B; FULL regeneration of all 416, ledger counter 0). skeleton 51.2832->50.9655 (-0.318pp = a NAMED KB-over-gold override: the lesson half +0.063pp, the overview half Chris chose -0.375pp (BLL 87 pages); 322 moved, all inside the 715 changed pages); >=50 1074->1072 / >=75 198->159 (39 named overview pages) / >=90 15->14 (ENGI401_0_0); RAW 35.409->35.049; cs 11464/175/607 / clean 2080/2103 / leak 26/23 / body 180 / math 322/323 / speechBubble 4 all EXACT. New gate: menulabels (91 / 0).",
     "_note_s49_full": "Session 49 Round 6 (2026-09-25) — THE FULL-SHIP BACKSTOP at 260620.68 (no engine change): 545 dirs regenerated, all 543 modules byte-identical to the manifest; the full gatecheck HELD every gate and its --commit wrote 0 changed aggregates (the tool-written baseline confirmed); ledger LAST FULL = r505.",
     "_note_s50_full": "Session 50 Round 5 (2026-09-26) — THE FULL-SHIP BACKSTOP at 260620.75 (no engine change): 545 dirs regenerated, all 543 modules byte-identical to the manifest; the full gatecheck HELD every gate and its --commit wrote 0 changed aggregates; ledger LAST FULL = r513.",
+    "_note_r542": "Round 542 (session 54 Round 4, 2026-09-27) — THE DRAG-AND-DROP LABEL ROW (DDLABELROW_OFF): 17 modules; 17 hand-off boxes -> built widgets; skeleton 56.3982 -> 56.3993 (+0.0011pp); every other gate held; dragdrop count 21 -> 23 recorded; scoped #7 since the s52-r11 FULL.",
     "_note_r541": "Round 541 (session 54 Round 1, 2026-09-27) — THE ALERT WHOSE TITLE IS A HEADING (CALLOUTHEADBOX_OFF / CALLOUTHDCOTAG_OFF): 38 modules / 117 pages; skeleton 56.3799 -> 56.3982 (+0.0183pp); cs exact 17024 -> 17062, missing 661 -> 581, EXTRA 198 -> 206 NAMED (DAN1003 x5 the gold's alertActivity side box, HES1006 x2 / MXFU302 x1 the gold leaves the box open); scoped #6 since the s52-r11 FULL.",
     "_note_r539": "Round 539 (session 53 Round 5, 2026-09-27) — THE ONE-LEVEL SHIFT UNDER A BODY [H1] (HKEEPFAM3_OFF): 5 modules / 5 pages; skeleton 56.3761 -> 56.3799 (+0.0038pp); every other gate held; scoped #5 since the s52-r11 FULL.",
     "_note_r538": "Round 538 (session 53 Round 4, 2026-09-27) — THE FAMILY HEADING DIGIT PIN, BLOCK 2 (HKEEPFAM2_OFF): 20 modules / 39 pages; skeleton 56.3661 -> 56.3761 (+0.0100pp), >=50 1645; every other gate held; scoped #4 since the s52-r11 FULL.",
@@ -238,7 +239,7 @@
     "pages_ge_50": 1647,
     "pages_ge_75": 309,
     "pages_ge_90": 29,
-    "raw_mean_pct": 40.05,
+    "raw_mean_pct": 40.08,
     "pairs": 2486,
     "_note_r494_state": "r494 (the carousel slide-table tail): SCAFFOLD 55.4051 @ 2491, RAW 39.375; 39 movers (22 up / 17 down NAMED).",
     "_note_r493_state": "r493 (the BLL closing section): SCAFFOLD 55.3885 @ 2491, RAW 39.342; 13 movers (11 up / 2 down NAMED).",
@@ -528,8 +529,8 @@
   },
   "dragdrop": {
     "count_modules": ["ARFUN03","BLL112","BLL146","BLL220","BLL244","BLL266","CHFUN05","ENFUN01","ENFUN04","ENFUN08","ENGI203","ENGJ102","ENGR201","MXFUN03"],
-    "count_per_module": {"ARFUN03":1,"BLL112":1,"BLL146":1,"BLL220":3,"BLL244":1,"BLL266":1,"CHFUN05":1,"ENFUN01":1,"ENFUN04":3,"ENFUN08":1,"ENGI203":3,"ENGJ102":1,"ENGR201":1,"MXFUN03":2},
-    "widgets": 21,
+    "count_per_module": {"ARFUN03":1,"BLL112":1,"BLL146":1,"BLL220":3,"BLL244":1,"BLL266":1,"CHFUN05":2,"ENFUN01":1,"ENFUN04":3,"ENFUN08":2,"ENGI203":3,"ENGJ102":1,"ENGR201":1,"MXFUN03":2},
+    "widgets": 23,
     "images": 9,
     "defect": 0,
     "per_module": {},

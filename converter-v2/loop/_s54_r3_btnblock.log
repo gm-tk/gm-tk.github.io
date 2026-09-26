@@ -1,0 +1,126 @@
+refused bundles holding a [button] member: 905
+
+accordion: refused-with-button 24 (20 pages) — WOULD BUILD without the button(s): 14 bundles / 11 pages / 9 modules (button last member 9)
+   would-build labels: {"upload to dropbox":3,"[button – eng1004y1] please make this bu":3,"[insert button to explore] [insert butto":1,"[add go to journal button]":1,"https://ihc-standtall.com/":1,"https://maps.google.com/":1,"tips for making models":1,"[button – eng1005 working towards]":1,"[button – eng1005y1] please make this bu":1,"https://www.ncbionetwork.org/iet/microsc":1}
+   all labels:         {"go to journal":9,"upload to dropbox":3,"[button – eng1004y1] please make this bu":3,"[embed audio with a link and play button":1,"[insert button to explore] [insert butto":1,"[add go to journal button]":1,"https://ihc-standtall.com/":1,"https://maps.google.com/":1,"tips for making models":1,"[button – eng1005 working towards]":1,"[button – eng1005y1] please make this bu":1,"https://www.ncbionetwork.org/iet/microsc":1,"pdf":1}
+   e.g. XGF9004 17.0 #83 [[Insert button to EXPlore] [Insert button to Genius Hour]] ; XDLS911 1.0 #9 [Upload to dropbox] ; XDLS911 1.0 #16 [Upload to dropbox] ; XDLS911 1.0 #25 [Upload to dropbox] ; ENGI400 2.0 #2 [[add go to journal button]] ; XDLS902 7.0 #45 [https://ihc-standtall.com/]
+
+dropDown: refused-with-button 72 (65 pages) — WOULD BUILD without the button(s): 9 bundles / 9 pages / 8 modules (button last member 6)
+   would-build labels: {"go to dropbox":4,"[go to journal]":1,"go to the journal":1,"upload to dropbox":1,"go to journal":1,"fundamentals":1}
+   all labels:         {"reset":14,"check answers":14,"go to dropbox":7,"[end activity] [reset button]":4,"go to journal":3,"[button] check your answers [button] res":3,"yes":3,"no":3,"[go to journal]":2,"heck answers":2,"undo":2,"learning journal for your own record":1,"https://docs.google.com/document/d/1x8mo":1,"https://docs.google.com/presentation/d/1":1}
+   e.g. MXDI103 3.0 #12 [Go to dropbox] ; MXDI103 6.0 #24 [Go to dropbox] ; ENGC202 7.0 #11 [[go to journal]] ; ENGI101 1.2 #10 [Go to the journal.] ; CEDT404 0.0 #6 [Upload to dropbox] ; MXDB202 5.0 #25 [Go to journal.]
+
+speechBubble: refused-with-button 9 (7 pages) — WOULD BUILD without the button(s): 8 bundles / 6 pages / 4 modules (button last member 8)
+   would-build labels: {"upload to dropbox":3,"go to journal":2,"upload pictures of the signs to dropbox":1,"so that the ākonga can press on a button":1,"[button: go to journal]":1}
+   all labels:         {"upload to dropbox":3,"go to journal":3,"upload pictures of the signs to dropbox":1,"so that the ākonga can press on a button":1,"[button: go to journal]":1}
+   e.g. XDLS908 5.0 #39 [Upload to dropbox.] ; XDLS908 5.0 #43 [Upload to dropbox.] ; XDLS908 6.0 #46 [Upload to dropbox.] ; XDLS908 8.0 #61 [Upload pictures of the signs to dropbox.] ; XDLS901 3.0 #45 [so that the ākonga can press on a button above and they get a model answer?And have it text to speech?]] ; TEDC402 6.0 #121 [[Button: go to journal]]
+
+dragAndDrop: refused-with-button 167 (125 pages) — WOULD BUILD without the button(s): 7 bundles / 7 pages / 7 modules (button last member 7)
+   would-build labels: {"[add buttons] check answer and reset":2,"[button] check your answers [button] res":1,"[button] complete activity 6a in your le":1,"go to journal":1,"eset check your answers":1,"quiz":1}
+   all labels:         {"reset":80,"check answers":58,"go to journal":27,"check":16,"undo":9,"check answer":5,"[add button] check answers":5,"upload to dropbox":4,"[add button] reset":4,"heck answers":3,"[button] reset":3,"[add buttons] check answer and reset":2,"download journal":2,"check your answers":2}
+   e.g. ANZH302 3.0 #8 [[Add buttons] Check answer and reset.] ; MXDI201 6.0 #29 [[button] Check your answers [button] Reset] ; AGH1005 6.0 #14 [[Button] Complete activity 6A in your learning journal.] ; ENGI405 5.0 #21 [Go to journal] ; GEO1006 5.0 #5 [eset Check your answers] ; ANZH301 3.0 #8 [[Add buttons] Check answer and reset.]
+
+flipCard: refused-with-button 18 (17 pages) — WOULD BUILD without the button(s): 6 bundles / 6 pages / 5 modules (button last member 6)
+   would-build labels: {"upload to dropbox":2,"go to journal":2,"[button] complete activity 1a in your jo":1,"[3 buttons – film, camera and microphone":1}
+   all labels:         {"go to journal":6,"reset":3,"upload to dropbox":3,"check answers":2,"[button] complete activity 1a in your jo":1,"[3 buttons – film, camera and microphone":1,"check":1,"pload to dropbox":1,"dropbox":1,"go to your journal and complete activity":1,"pātaka kai; free food for all as pantrie":1}
+   e.g. AGH1009 1.0 #1 [[Button] Complete activity 1A in your journal] ; XDLS502 3.0 #12 [[3 buttons – film, camera and microphone] Upload to dropbox] ; BLL264 1.0 #4 [Upload to dropbox] ; MXDB202 2.0 #8 [Go to journal.] ; MXDB202 5.0 #21 [Go to journal.] ; MXFU202 10.0 #49 [Upload to dropbox.]
+
+selfCheck: refused-with-button 62 (30 pages) — WOULD BUILD without the button(s): 5 bundles / 4 pages / 3 modules (button last member 5)
+   would-build labels: {"check":4,"reset":3,"go to journal":1,"[button] reset":1}
+   all labels:         {"reset":40,"check answers":34,"go to journal":9,"check":9,"[button] reset":4,"[button] check your answers":3,"go to dropbox":1,"check answers [button]":1,"[button] check your answers [button] res":1,"check your answers":1,"answers":1,"check answer":1}
+   e.g. MXDI103 9.0 #33 [Go to journal] ; MXDI201 5.0 #21 [check | [button] Reset] ; MXDI202 4.0 #19 [check | reset] ; MXDI202 4.0 #20 [check | reset] ; MXDI202 7.0 #35 [check | reset]
+
+carousel: refused-with-button 9 (9 pages) — WOULD BUILD without the button(s): 4 bundles / 4 pages / 4 modules (button last member 3)
+   would-build labels: {"[button – go to learning journal]":1,"predator free new zealand":1,"forest and bird youth":1,"supporters of tiritiri matangi https://w":1,"grid paper https://www.twinkl.co.nz/reso":1,"go to journal":1,"upload to dropbox":1}
+   all labels:         {"go to journal":2,"[go to journal]":2,"[3 buttons – film, camera and microphone":1,"[button – go to learning journal]":1,"premiere pro":1,"predator free new zealand":1,"forest and bird youth":1,"supporters of tiritiri matangi https://w":1,"grid paper https://www.twinkl.co.nz/reso":1,"upload to dropbox":1}
+   e.g. CEDR101 0.0 #19 [[Button – go to learning journal]] ; CEDR203 0.0 #15 [Predator Free New Zealand | Forest and Bird Youth | Supporters of Tiritiri Matangi https://www.tiritirimatangi.org.nz/] ; MXEO201 4.0 #8 [Grid Paper https://www.twinkl.co.nz/resource/roi2-m-69-squared-paper-activity-sheets | Go to journal.] ; BLL167 1.1 #5 [Upload to dropbox]
+
+clickDrop: refused-with-button 47 (27 pages) — WOULD BUILD without the button(s): 3 bundles / 3 pages / 3 modules (button last member 1)
+   would-build labels: {"to complete activity 2c, click on the re":1,"go to quiz":1,"go to journal":1}
+   all labels:         {"upload to dropbox":28,"go to journal":6,"[go to journal]":2,"[check answer button]":2,"upload to ddropbox":1,"to complete activity 2c, click on the re":1,"https://www.shutterstock.com/image-vecto":1,"email facility within my te kura – how t":1,"microsoft account (https://tekura.desire":1,"google account (https://tekura.desire2le":1,"upload pictures of the signs to dropbox":1,"accessible chef (https://accessiblechef.":1,"go to dropbox":1,"[please use this image as a button.]":1}
+   e.g. CEDK501 3.0 #4 [To complete Activity 2C, click on the response sheet.] ; WJFUN306 0.0 #13 [Go to quiz] ; ENGC401 2.0 #7 [Go to journal]
+
+typing: refused-with-button 15 (14 pages) — WOULD BUILD without the button(s): 1 bundles / 1 pages / 1 modules (button last member 0)
+   would-build labels: {"answers":1}
+   all labels:         {"reset":6,"check answers":4,"possible answers":2,"– [audioplayer button] – [audiovisual it":2,"[button: submit learning]":2,"to find more language names, go to frfun":1,"show answers":1,"upload to dropbox":1,"[check button / with reset button for in":1,"[keep the check your answers button] wit":1,"answers":1,"[add button] check answers button":1,"[add button] reset button":1}
+   e.g. CEDT501 2.0 #3 [Answers]
+
+multiChoiceQuiz: refused-with-button 62 (42 pages) — WOULD BUILD without the button(s): 1 bundles / 1 pages / 1 modules (button last member 1)
+   would-build labels: {"[check button] [reset button]":1}
+   all labels:         {"check answers":28,"reset":17,"go to quiz":5,"check answer":3,"[button] check answers":3,"submit answers":3,"portfolio":3,"[box to type answer, buttons for file up":3,"[go to journal]":2,"ubmit answers":2,"ortfolio":2,"[check button] [reset button]":2,"go to your journal and complete activity":1,"go to portfolio":1}
+   e.g. WJFUN304 0.0 #19 [[Check button] [Reset button]]
+
+hintSlider: refused-with-button 3 (3 pages) — WOULD BUILD without the button(s): 1 bundles / 1 pages / 1 modules (button last member 1)
+   would-build labels: {"https://cab.org.nz":1,"https://communitylaw.org.nz":1}
+   all labels:         {"[audio play button] keep audio files as ":1,"[audio play button] keep original audio ":1,"upload to dropbox":1,"https://cab.org.nz":1,"https://communitylaw.org.nz":1}
+   e.g. PWY1002 4.0 #33 [https://cab.org.nz | https://communitylaw.org.nz]
+
+interactive: refused-with-button 70 (49 pages) — WOULD BUILD without the button(s): 0 bundles / 0 pages / 0 modules (button last member 0)
+   would-build labels: {}
+   all labels:         {"[add button] go to journal":23,"reset":10,"check answers":10,"[add button] reset":6,"[add button] upload to dropbox":6,"go to journal":5,"upload to dropbox":5,"explore an artwork":4,"[add button] quiz button":4,"[add button] check answers":3,"[add button] check answer":3,"[add button] quiz":2,"go to workbook":2,"**maramataka explained - rnz sound archi":1}
+   e.g. 
+
+modal: refused-with-button 73 (37 pages) — WOULD BUILD without the button(s): 0 bundles / 0 pages / 0 modules (button last member 0)
+   would-build labels: {}
+   all labels:         {"go to journal":47,"upload to dropbox":40,"[go to journal]":5,"external link":5,"political cartoon":1,"newspaper article":1,"template":1,"[journal button]":1,"o to journal":1,"https://docs.google.com/document/d/1uugi":1,"https://docs.google.com/document/d/1erd5":1}
+   e.g. 
+
+unclassified: refused-with-button 181 (135 pages) — WOULD BUILD without the button(s): 0 bundles / 0 pages / 0 modules (button last member 0)
+   would-build labels: {}
+   all labels:         {"reset":41,"check answers":38,"go to journal":31,"[button] go to journal":20,"[go to journal]":10,"upload to dropbox":9,"learning journal":8,"check":7,"[button to check answers] [button to res":6,"undo":3,"check answer":3,"https://docs.google.com/document/d/117i4":3,"go to dropbox":3,"[button – go to learning journal]":2}
+   e.g. 
+
+hint: refused-with-button 3 (3 pages) — WOULD BUILD without the button(s): 0 bundles / 0 pages / 0 modules (button last member 0)
+   would-build labels: {}
+   all labels:         {"engc403 response sheet lesson 4.2f.docx":1,"[button: go to your journal]":1,"check answers":1,"reset":1}
+   e.g. 
+
+radioQuiz: refused-with-button 25 (22 pages) — WOULD BUILD without the button(s): 0 bundles / 0 pages / 0 modules (button last member 0)
+   would-build labels: {}
+   all labels:         {"reset":15,"check answers":9,"undo":5,"[go to journal]":2,"heck answers":2,"check your answers":1,"show answer":1,"[button] check your answers [button] res":1,"[add buttons] check answer and reset but":1,"[button] quiz":1,"check":1,"[button] complete activity 1a in your le":1,"[add button] quiz":1,"[add button] check answers":1}
+   e.g. 
+
+reorder: refused-with-button 15 (13 pages) — WOULD BUILD without the button(s): 0 bundles / 0 pages / 0 modules (button last member 0)
+   would-build labels: {}
+   all labels:         {"reset":10,"check answers":8,"check answer":2,"[audio buttons on the other side]":1,"undo":1,"check":1,"go to journal":1,"go to journal. complete activities 4a an":1}
+   e.g. 
+
+wordFind: refused-with-button 9 (8 pages) — WOULD BUILD without the button(s): 0 bundles / 0 pages / 0 modules (button last member 0)
+   would-build labels: {}
+   all labels:         {"[go to journal]":2,"check answers":2,"reset":1,"go to frfrfun04 – no1 “words and express":1,"go to frfrfun04 – no1 page “words and ex":1,"heck answers":1,"go to journal":1}
+   e.g. 
+
+selectionBox: refused-with-button 12 (7 pages) — WOULD BUILD without the button(s): 0 bundles / 0 pages / 0 modules (button last member 0)
+   would-build labels: {}
+   all labels:         {"[check answer button]":7,"check answers":3,"upload to dropbox: us 28088 (3 cr) – des":1,"answers / reset":1}
+   e.g. 
+
+crossword: refused-with-button 5 (5 pages) — WOULD BUILD without the button(s): 0 bundles / 0 pages / 0 modules (button last member 0)
+   would-build labels: {}
+   all labels:         {"check answers":3,"reset":2,"go to frfun04 – no1 page “words and expr":1,"nswers":1}
+   e.g. 
+
+tabs: refused-with-button 7 (7 pages) — WOULD BUILD without the button(s): 0 bundles / 0 pages / 0 modules (button last member 0)
+   would-build labels: {}
+   all labels:         {"– yes / no":1,"go to frfuno5 – language features for mo":1,"[button} go to journal":1,"reset":1,"[button: go to your journal]":1,"go to journal":1,"check answers reset":1}
+   e.g. 
+
+memoryGame: refused-with-button 8 (7 pages) — WOULD BUILD without the button(s): 0 bundles / 0 pages / 0 modules (button last member 0)
+   would-build labels: {}
+   all labels:         {"reset":6,"check answers":3,"[button] reset":2,"heck your answers":1,"[button] check answers":1,"check":1}
+   e.g. 
+
+sketcher: refused-with-button 5 (5 pages) — WOULD BUILD without the button(s): 0 bundles / 0 pages / 0 modules (button last member 0)
+   would-build labels: {}
+   all labels:         {"[button: go to journal]":2,"[button: go to your journal]":1,"answers":1,"text at the bottom":1,"[end activity] [check answers] [reset bu":1}
+   e.g. 
+
+timeline: refused-with-button 2 (2 pages) — WOULD BUILD without the button(s): 0 bundles / 0 pages / 0 modules (button last member 0)
+   would-build labels: {}
+   all labels:         {"check answers":1,"reset":1,"go to portfolio":1}
+   e.g. 
+
+slider: refused-with-button 2 (2 pages) — WOULD BUILD without the button(s): 0 bundles / 0 pages / 0 modules (button last member 0)
+   would-build labels: {}
+   all labels:         {"go to journal":1,"go to portfolio":1}
+   e.g. 

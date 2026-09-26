@@ -1,0 +1,22 @@
+CHANGED: BLL111: identical 2 / changed 2
+CHANGED: BLL121: identical 2 / changed 2
+CHANGED: BLL131: identical 2 / changed 2
+CHANGED: BLL167: identical 2 / changed 2
+CHANGED: TOTAL: identical 680 / changed 8 / missing 0 over 147 modules
+CHANGED: CHFUN05: identical 0 / changed 2
+CHANGED: CHFUN06: identical 0 / changed 2
+CHANGED: ENFUN05: identical 0 / changed 2
+CHANGED: ENFUN08: identical 0 / changed 2
+CHANGED: ENGC302: identical 7 / changed 2
+CHANGED: TOTAL: identical 850 / changed 10 / missing 0 over 132 modules
+CHANGED: MXEX301: identical 8 / changed 2
+CHANGED: MXFUN01: identical 0 / changed 2
+CHANGED: MXFUN02: identical 0 / changed 2
+CHANGED: OSBY101: identical 3 / changed 2
+CHANGED: OSSM401: identical 4 / changed 2
+CHANGED: PWY1002: identical 9 / changed 2
+CHANGED: TOTAL: identical 992 / changed 12 / missing 0 over 132 modules
+CHANGED: WJFUN205: identical 0 / changed 2
+CHANGED: WJFUN211: identical 0 / changed 2
+CHANGED: TOTAL: identical 660 / changed 4 / missing 0 over 134 modules
+TOTAL identical 6364 / changed 68
