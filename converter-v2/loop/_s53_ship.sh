@@ -6,10 +6,11 @@
 cd /mnt/c/Users/Gavin/TeKura/FINAL_MODULE_DATA/CONVERTER_V2/outputs || exit 1
 N="$1"; TG="$2"; shift 2; NAMED="${1:-}"; [ "$NAMED" = "--accept-named" ] && NAMED="--accept-named $2" || NAMED=""
 AFF=_affected_r$N.txt; [ -s "$AFF" ] || { echo "no $AFF"; exit 2; }
-echo "[$(date +%T)] OFF probe ($TG=1) over every module"
+if [ -z "${SKIP_OFF:-}" ]; then echo "[$(date +%T)] OFF probe ($TG=1) over every module"
 PROBE_QUIET=1 bash _s51_probe_par.sh r${N}_OFF "$PWD/_s52_allcodes.txt" $TG=1 > _r${N}_OFF_summary.log 2>&1
 tail -1 _r${N}_OFF_summary.log; echo "  OFF ASSEMBLE ERROR: $(cat _r${N}_OFF_0?.log | grep -c 'ASSEMBLE ERROR')"
 grep -q 'TOTAL identical [0-9]* / changed 0$' _r${N}_OFF_summary.log || { echo "OFF PROBE NOT IDENTICAL — stop"; exit 1; }
+fi
 cd ../reference/tests || exit 1; O=../../outputs
 echo "[$(date +%T)] spot-check plan"
 python3 _scoped_spotcheck.py plan --affected $O/$AFF --n 12 --manifest $O/_content_manifest.txt > $O/_r${N}_spotcheck_plan.log 2>&1

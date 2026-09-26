@@ -1,5 +1,24 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-27 (round 539, build 260620.98) — THE ONE-LEVEL SHIFT UNDER A BODY `[H1]`: ARFUN's `[H2]` ships at h3 and ARFUN's / TWHT's `[H3]` at h4 (the gold's single shift) where the r45 rank pushed them two deep; 5 modules / 5 pages, skeleton +0.0038pp — a family dialect under the floor (LOOP §1d exception 1)
+
+### 1. WHAT CHANGED
+
+**The class** (`outputs/_s53_r5_hlevel1.py`, the r536 heading probe extended to the writer's `[H1]`): where a body `[H1]` sits above them, the rank pool holds its level, so the page's `[H2]` / `[H3]` rank TWO levels down while the gold shifts them ONE — ARFUN `[H2]` gold h3 (0.54 sub-level / 0.85 top) / Claude h4 0.89 (64 items / 4 pages), ARFUN `[H3]` gold h4 0.63 / Claude h5 0.63 (30 / 4), TWHT `[H3]` gold h4 0.69 / Claude h5 0.77 (13 / 1). EXPFUN `[H2]` (gold h3 0.70) was probed and DROPPED: −1.2 over 4 pages (EXPFUN02 / 04 / 05 follow the rank).
+
+**The fix** (`ContentConverter` heading emitter path (c): a `digits_by_prefix_families*` block may carry `pin_levels` {digit: level}, and the level rides in the transient `data-wd` marker that `#relevelHeadings` pins at — the r536 / r538 blocks carry none and are byte-identical; data `keep_writer_digit.digits_by_prefix_families_3` {pin_levels {"2": 3, "3": 4}, "2": [ARFUN], "3": [ARFUN, TWHT]}, env **`HKEEPFAM3_OFF`**).
+
+### 2. PROOF
+
+- In-memory probe over all 545 modules: `HKEEPFAM3_OFF=1` → 6,432 / 6,432 pages identical (run before the regeneration); ON → **5 pages / 5 modules** (ARFUN01 / 02 / 04 / 05, TWHT903); 0 ASSEMBLE ERROR. `scoped_ship.sh … --round 539 --commit` PASS (re-run after a comment-only edit that names the toggle for the step-0 invariant; the regenerated pages are byte-identical to the probe's saved ON pages, so the gate suite measured exactly this output): 0 stale, containment 5 ⊆ 5, the 12-module spot-check byte-identical.
+- The skeleton gate's own `match()`: **+0.0038pp, 4 up / 0 down** (ARFUN05 +4.7, TWHT903 +2.5, ARFUN02 +2.0, ARFUN04 +0.3; ARFUN01 changed, score unchanged) — every changed page up or neutral: a family dialect under the floor (§1d exception 1).
+
+### 3. PROTECTED GATES
+
+Skeleton **56.3761 → 56.3799 % @ 2486 (+0.0038pp)**, ≥50 1645, ≥75 305, ≥90 29; RAW 40.0256 → 40.0275 %; compare_structure exact 17024 / EXTRA 198 / missing 661 held; body_compare ANY 233 held; leak 52 / 42 EXACT; tags 9557; every verifier ✓, every COUNT held (`_r539_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 539`; `--gate-baseline-check` PASS. Plateau: **2 of 3** (+0.0038pp — the next PICK must predict ≥ 0.02pp or be gate-neutral by design).
+
+**Ledger:** scoped #5 since the s52-r11 FULL · data `keep_writer_digit.digits_by_prefix_families_3` · env `HKEEPFAM3_OFF` · code `ContentConverter` heading emitter path (c) `pin_levels` · session 53 Round 5.
+
 ## 2026-09-27 (round 538, build 260620.97) — THE FAMILY KEEPS THE WRITER'S HEADING DIGIT, THE REST OF THE PASSING GROUPS: COM / GEO `[H2]` → h2, TWHK / TWHR / EXPFUN / CEDK `[H3]` → h3, CEDO `[H4]` → h4, OSOH `[H5]` → h5 (r536's rule, a second row block); 20 modules / 39 pages, skeleton +0.0100pp, ≥50 +1
 
 ### 1. WHAT CHANGED

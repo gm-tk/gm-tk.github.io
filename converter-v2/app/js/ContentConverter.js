@@ -9230,17 +9230,24 @@ class ContentConverter {
 			// Data: keep_writer_digit.digits_by_prefix_families { env, "<digit>": [prefix…] }. Env HKEEPFAM_OFF.
 			// ROUND 538: every `digits_by_prefix_families*` block (r536's, then `_2` — the rest of the passing groups), each on its
 			// own env, so a later block reverts alone (env HKEEPFAM2_OFF) and r536's stays byte-identical.
+			// ROUND 539: a block may carry its own `pin_levels` {digit: level} — the gold's ONE-level shift where the rank would
+			// push the heading two deep under a body [H1] (EXPFUN / ARFUN [H2] → h3, ARFUN / TWHT [H3] → h4); the level rides in
+			// the data-wd marker (#relevelHeadings pins at the marker's value). A block with no pin_levels writes the digit, as before.
+			// Data: keep_writer_digit.digits_by_prefix_families_3 {pin_levels, …}. Env HKEEPFAM3_OFF.
+			let _kwdFamLevel = null;
 			const _kwdFamOn = _kwdBase && Object.keys(_kwd ?? {}).filter((k) => k.startsWith("digits_by_prefix_families")).some((k) => {
 				const _kwdFam = _kwd[k];
-				return !!_kwdFam && typeof _kwdFam === "object" && _kwdFam.enabled !== false
+				const hit = !!_kwdFam && typeof _kwdFam === "object" && _kwdFam.enabled !== false
 					&& !(typeof process !== "undefined" && process.env && process.env[_kwdFam.env ?? "HKEEPFAM_OFF"])
 					&& ((_kwdFam[String(digit)] ?? [])).some((p) => /\d/.test(String(p))
 						? String(run?.moduleCode || "").startsWith(String(p))
 						: String(p) === _kwdPrefix);
+				if (hit) { const lv = parseInt(_kwdFam.pin_levels?.[String(digit)], 10); _kwdFamLevel = Number.isFinite(lv) && lv >= 2 && lv <= 5 ? lv : null; }
+				return hit;
 			});
 			const _kwdOn = _kwdTpl || _kwdPfx || _kwdFamOn;
 			let _hHtml = this.#stripHeadingItalic(`<h${shifted}>${ListsAndRuns.inlineMarkup(headInline)}</h${shifted}>`, run);
-			if (_kwdOn) _hHtml = _hHtml.replace(/^<h(\d)>/, `<h$1 data-wd="${digit}">`);
+			if (_kwdOn) _hHtml = _hHtml.replace(/^<h(\d)>/, `<h$1 data-wd="${(!_kwdTpl && !_kwdPfx && _kwdFamLevel) ? _kwdFamLevel : digit}">`);
 			out.push(_hHtml);
 			// Part-3 "BOTH" case: an embedded heading whose span is followed
 			// by body text — the following text is the NEXT element's body

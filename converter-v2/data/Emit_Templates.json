@@ -6642,6 +6642,22 @@
 					"_note_r538": "ROUND 538 adds the sibling block digits_by_prefix_families_2 (env HKEEPFAM2_OFF) for the rest of the passing groups; the emitter's path (c) reads every digits_by_prefix_families* block.",
 					"_note": "ROUND 536 (the autonomous loop, session 53 Round 2). The same per-digit prefix pin as digits_by_prefix, for the families the r373 / r374 table does not name — found by the NEW writer-cue fate census (outputs/_s53_tagfate.py: every WT item located on the gold / Claude paired pages as <tag>@<region>) and split per family by outputs/_s53_r2_hlevel.py (writer digit vs gold level vs Claude level, free-body headings): FRFUN [H2] → gold h2 0.92 (64 items / 13 pages; Claude h3 0.73 / h4 0.27 — FRFUN06 carries it, FRFUN08's gold follows the shift: the family's outlier, its dips NAMED), WJFUN [H4] → h4 1.00 (52 / 9 / 9; Claude h5 0.90), ENGC [H4] → h4 0.92 (39 / 5 / 14; Claude h5 0.46). CEDT [H2] (0.63 by items) was probed and DROPPED: CEDT501's gold follows the shift (−12.1 over 12 pages). A per-group rule (LOOP §1d exception 2 — the groups summed). Env HKEEPFAM_OFF reverts these rows only."
 				},
+				"digits_by_prefix_families_3": {
+					"enabled": true,
+					"env": "HKEEPFAM3_OFF",
+					"pin_levels": {
+						"2": 3,
+						"3": 4
+					},
+					"2": [
+						"ARFUN"
+					],
+					"3": [
+						"ARFUN",
+						"TWHT"
+					],
+					"_note": "ROUND 539 (the autonomous loop, session 53 Round 5). THE ONE-LEVEL SHIFT UNDER A BODY [H1]: where a body [H1] sits above them, the r45 rank pushed the page's [H2] / [H3] TWO levels down while the gold shifts them ONE (outputs/_s53_r5_hlevel1.py): ARFUN [H2] gold h3 (0.54 sub / 0.85 top) / Claude h4 0.89 (64 items / 4 pages), ARFUN [H3] gold h4 0.63 / Claude h5 0.63 (30 / 4), TWHT [H3] gold h4 0.69 / Claude h5 0.77 (13 / 1) — a family dialect under the floor (LOOP §1d exception 1: every changed page up or neutral). EXPFUN [H2] (gold h3 0.70) was probed and DROPPED (−1.2 over 4 pages: EXPFUN02 / 04 / 05 follow the rank). pin_levels pins the listed digit at digit + 1 (the level rides in the emitter's data-wd marker). Env HKEEPFAM3_OFF reverts this block only."
+				},
 				"digits_by_prefix_families_2": {
 					"enabled": true,
 					"env": "HKEEPFAM2_OFF",

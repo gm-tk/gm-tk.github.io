@@ -1887,7 +1887,8 @@ class Config {
 	// ROUND 536 (260620.95): THE FAMILY KEEPS THE WRITER'S HEADING DIGIT (session 53 Round 2; FRFUN [H2] -> h2, WJFUN / ENGC [H4] -> h4). Env HKEEPFAM_OFF.
 	// ROUND 537 (260620.96): THE ACCORDION PANEL'S BULLETS ARE A LIST (session 53 Round 3; <ul><li> in accContent instead of <p>• …</p>). Env ACCBULLETLIST_OFF.
 	// ROUND 538 (260620.97): THE FAMILY HEADING DIGIT PIN, THE REST OF THE PASSING GROUPS (session 53 Round 4; COM / GEO [H2], TWHK / TWHR / EXPFUN / CEDK [H3], CEDO [H4], OSOH [H5]). Env HKEEPFAM2_OFF.
-	static AppVersion = "260620.97";
+	// ROUND 539 (260620.98): THE ONE-LEVEL SHIFT UNDER A BODY [H1] (session 53 Round 5; ARFUN [H2] -> h3, ARFUN / TWHT [H3] -> h4). Env HKEEPFAM3_OFF.
+	static AppVersion = "260620.98";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
