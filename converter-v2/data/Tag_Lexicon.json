@@ -118,6 +118,12 @@
 				}
 			]
 		},
+		"bold_id_widget_activity": {
+			"_doc": "ROUND 525 (session 51 Round 5). THE BOLD ACTIVITY ID AFTER A WIDGET TAG. The FRNO family (and FRFUN06) types the widget tag, then the activity id and its title in BOLD black text: `[Reorder autocheck]] **2C****Put the conversation together**`, `[Dropbox] **1F****Lesson one task**` — 50 spans (FRNO901 28, FRNO902 20, FRFUN06 2). No box opened; the id and title shipped inside the hand-off box as text, where the gold boxes every one as div.activity[number=<id>] with the title as its h3 (outputs/_s51_r3_unboxed.tsv: 56 FRNO gold boxes rendered unboxed). PageAssembler.#boldIdWidgetActivity re-parses such a widget tag with an `[Activity <id>]` co-tag (the round-92 activity + widget span, which already opens the numbered box) and takes the bold id off the tail; a stray bracket span between them (`[Wordfind autocheck] ] **1E**…`) hands the tail's id to the widget tag before it on the same paragraph. A tag that already carries an activity tag is untouched. A family dialect (LOOP §1d exception 1). Env BOLDIDACT_OFF.",
+			"enabled": true,
+			"env": "BOLDIDACT_OFF",
+			"id_pattern": "^\\s*\\*\\*\\s*(\\d{1,2}[A-Za-z])\\s*\\*\\*"
+		},
 		"activity_heading_cotag": {
 			"_doc": "ROUND 523 (the autonomous loop's session 51 Round 3). THE ACTIVITY GOVERNS A HEADING CO-TAG. A writer types the activity opener and the title's heading level in ONE red span, either order — `[Activity 1A] [H3] Examples of Factors` (HES1007) / `[H3] [Activity 2A] Emotion patterns check-in` (XGF9002): 219 spans / 33 modules (outputs/_s51_r3_acthead.py). The heading tag is an ELEMENT (precedence 6) and outranked the activity's CONTAINER_OPEN (5), so no box opened, the title shipped as a bare <hN>, and the heading fragment's digit joined the ids (`[\"3\",\"2b\"]`). The gold puts that heading inside an activity box on 166 of 195 matched spans (0.85 — ARFUN 47/52, XGF 33/35, CEDO 26/31, HES 19/25, MXEX 13/18). When a span's tags are ONLY the activity tag plus heading_tags and a heading won the primary slot, the activity takes it (the black tail is the box's title, as for a plain `[Activity 1A] Title`) and each heading fragment's digit leaves `numbers`. A span that also carries a widget (INTERACTIVE) or any other tag is untouched. Env ACTHDCOTAG_OFF.",
 			"enabled": true,

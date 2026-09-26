@@ -1,5 +1,24 @@
 # BUILD CHANGELOG — Stage 2 (engine + UI)
 
+## 2026-09-26 (round 525, build 260620.85) — THE BOLD ACTIVITY ID AFTER A WIDGET TAG: the FRNO family's `[Reorder autocheck]] **2C****Put the conversation together**` opens the numbered box with the bold title as its h3 (50 spans / FRNO901, FRNO902, FRFUN06); 4 modules, skeleton +0.0238pp
+
+### 1. WHAT CHANGED
+
+**The class** (the session-51 unboxed-box census `_s51_r3_unboxed.tsv`: 56 FRNO gold boxes rendered unboxed; the WT form by `grep`): the FRNO family (and FRFUN06) types the widget tag, then the activity id and its title in BOLD black text — `[Reorder autocheck]] **2C****Put the conversation together**`, `[Drag and drop column autocheck]] **1B****Sort the greetings**`, `[Dropbox] **1F****Lesson one task**`, and with a stray bracket span between, `[Wordfind autocheck] ] **1E****Find the French**` — **50 spans: FRNO901 28, FRNO902 20, FRFUN06 2**. The id is black text, so no box opened: the id and the title shipped inside the hand-off box as text. The gold boxes every one as `div.activity[number=<id>]` with the title as its `<h3>` above the widget.
+
+**The fix** (`PageAssembler.#boldIdWidgetActivity`; data `Tag_Lexicon._meta.bold_id_widget_activity`, env **`BOLDIDACT_OFF`**): a widget tag (INTERACTIVE primary, no activity tag) whose black tail opens with `**<id>**` is re-parsed in the round-365 form `[Activity <id> – <the widget words>]` — the round-92 activity + widget span, which opens the numbered box, and whose tail `typed_tag_title` makes the box's `<h3>` — and the bold id leaves the tail. A stray bracket span's tail moves to the widget tag before it on the same paragraph. A family dialect (LOOP §1d exception 1: the whole FRNO family, every page).
+
+### 2. PROOF
+
+- In-memory probe over all 545 modules: `BOLDIDACT_OFF=1` → 6,432 / 6,432 pages identical; ON → **4 modules** (FRFUN06, FRFUN08 — its hand-off manifest only, FRNO901, FRNO902); 0 ASSEMBLE ERROR. `scoped_ship.sh … --round 525` PASS: 0 stale, containment 4 ⊆ 4, a re-planned 12-module spot-check byte-identical.
+- The skeleton gate's own `match()` (`_s51_prescore.py`): **+0.0233pp, 13 up / 2 down** (FRNO902_2_0 +12.9, FRNO902_1_0 +10.8, FRNO901_5_0 +9.1, FRNO901_3_0 / 2_0 / 6_0 / 4_0 ≈ +5, …; the two dips < 0.3pp).
+
+### 3. PROTECTED GATES
+
+Skeleton **56.0222 → 56.0460 % @ 2486 (+0.0238pp)**, ≥50 1625 → 1627, ≥75 289 → 290, ≥90 26; RAW 39.783 → 39.7983 %; compare_structure exact 16830 / EXTRA 204 / missing 879 held; body_compare ANY 234 held; clean 98.40 %, leak 52 / 42 EXACT; tags 9557; every verifier ✓, every COUNT held (`_r525_gates.log`); aggregates written by `scoped_ship.sh … --commit --round 525`; `--gate-baseline-check` PASS. Plateau: **reset** (+0.0238pp).
+
+**Ledger:** scoped #4 since the s50-r14 FULL (r520) · data `Tag_Lexicon._meta.bold_id_widget_activity` · env `BOLDIDACT_OFF` · code `PageAssembler.#boldIdWidgetActivity` · session 51 Round 5.
+
 ## 2026-09-26 (round 523, build 260620.84) — THE ACTIVITY GOVERNS A HEADING CO-TAG: `[Activity 1A] [H3] Title` / `[H3] [Activity 2A] Title` (219 spans / 33 modules) opens the writer's numbered box with its title, where it shipped a bare heading — the gold boxes it 0.85; with a duplicate-id guard and the r521 walk-end reading the box owner's id; 36 modules, skeleton +0.1392pp, ≥50 +7
 
 ### 1. WHAT CHANGED

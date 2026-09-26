@@ -123,6 +123,44 @@ class PageAssembler {
 	}
 
 	/**
+	 * ROUND 525 — THE BOLD ACTIVITY ID AFTER A WIDGET TAG (the FRNO family's form, 50 spans): `[Reorder autocheck]]
+	 * **2C****Put the conversation together**` — the id and title typed in bold black after the widget tag, so no box opened and
+	 * both shipped inside the hand-off box; the gold boxes each as div.activity[number=2C] titled by the bold words. The widget tag
+	 * is re-parsed with an `[Activity 2C]` co-tag (the round-92 activity + widget span, which opens the numbered box) and the bold id
+	 * leaves the tail. A stray bracket span between them (`[Wordfind autocheck] ] **1E**…`, a noise item) hands the tail's id to the
+	 * widget tag just before it on the same paragraph. Data Tag_Lexicon _meta.bold_id_widget_activity; env BOLDIDACT_OFF.
+	 */
+	static #boldIdWidgetActivity(items, run, normaliser) {
+		const cfg = DataService.Data.TagLexicon?._meta?.bold_id_widget_activity;
+		if (!cfg || cfg.enabled === false || !normaliser) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "BOLDIDACT_OFF"]) return;
+		const re = new RegExp(cfg.id_pattern);
+		let n = 0;
+		for (let i = 0; i < items.length; i++) {
+			const it = items[i];
+			if (it?.type !== "tag") continue;
+			const m = re.exec(String(it.blackAfter ?? ""));
+			if (!m) continue;
+			let w = it;
+			if (!it.parse?.primary && i > 0 && items[i - 1]?.type === "tag" && items[i - 1].block === it.block) w = items[i - 1];
+			const p = w.parse?.primary;
+			if (!p || p.directive !== "INTERACTIVE" || (w.parse.tags ?? []).some((t) => t.tag === "activity")) continue;
+			// the round-365 form `[Activity 2C – <widget words>]`, so the bold title after the id becomes the box's <h3>
+			// (activity_wrapper.embedded_interactive_activity.typed_tag_title); the widget words keep resolving the widget
+			const inner = String(w.text ?? "").replace(/[[\]]/g, " ").replace(/\s+/g, " ").trim();
+			const text = `[Activity ${m[1]} – ${inner}]`;
+			const np = normaliser.Parse(text);
+			if (!np?.primary || np.primary.directive !== "INTERACTIVE" || !(np.tags ?? []).some((t) => t.tag === "activity")) continue;
+			w.parse = np; w.text = text;
+			const tail = String(it.blackAfter).slice(m[0].length);
+			if (w !== it) { w.blackAfter = String(w.blackAfter ?? "") + tail; it.blackAfter = ""; }   // the stray bracket's tail moves to its widget
+			else it.blackAfter = tail;
+			n++;
+		}
+		if (n) run.AddNote("info", "PageAssembler", `${n} widget tag${n > 1 ? "s" : ""} followed by a bold activity id read as the activity + widget span (bold_id_widget_activity).`);
+	}
+
+	/**
 	 * ROUND 523 — THE CO-TAG'S DUPLICATE-ID GUARD. TagNormaliser gives an `[Activity 2] [H3] Title` span the activity's
 	 * primary slot (Tag_Lexicon _meta.activity_heading_cotag); but when the SAME id opens another activity later on the same
 	 * page, the writer put the id on a section heading AND on the real activity (MXEX202 lesson 2: `[Activity 2] [H3] Double
@@ -238,6 +276,7 @@ class PageAssembler {
 		PageAssembler.#journalBracketSentence(items, run);   // ROUND 522 — before the split, the scanner and the converter all read the item
 		PageAssembler.#bareSummaryAlert(items, run, normaliser);   // ROUND 522 part 2 (SUMMARYALERT_OFF)
 		PageAssembler.#cotagDuplicateId(items, run);   // ROUND 523 (ACTHDCOTAG_OFF — the co-tag rule's own guard)
+		PageAssembler.#boldIdWidgetActivity(items, run, normaliser);   // ROUND 525 (BOLDIDACT_OFF)
 		run.pages = PageSplitter.Split(items, run, normaliser);
 		if (!run.pages.length) {
 			run.AddNote("error", "PageAssembler",
