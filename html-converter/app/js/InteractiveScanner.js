@@ -1,0 +1,4304 @@
+/**
+ * InteractiveScanner.js
+ * ===========================================================================
+ * WHAT THIS FILE DOES:
+ * Finds every interactive ACTIVITY BLOCK in a page's item stream and
+ * bundles it: openers + the interactive tag + all members, ending at the
+ * first terminator. The scanner never BUILDS interactives — the bundles feed
+ * the builders, the placeholder emitter and the {CODE}_interactives.txt manifest.
+ *
+ * THE BLOCK MODEL (Interactive_Boundary_Rules.md §1):
+ *   [ OPENERS ] → [ INTERACTIVE TAG ] → [ MEMBERS … ] ‖ [ TERMINATOR ]
+ * The terminator is NOT consumed — it is the next thing to render normally.
+ *
+ * DATA THIS FILE READS (no boundary knowledge in code):
+ * Interactive_Boundary_ChildTag_Bank.json —
+ *   _meta.opener_rule.opener_tags            which tags can precede a block
+ *   _meta.member_rule.terminators_absolute    hard stops, always
+ *   _meta.member_rule.terminators_conditional h2–h5, per-widget flag
+ *   interactives[type].heading_is_terminator  the per-widget flag
+ * Tag_Lexicon.json (via TagNormaliser)        which tags are INTERACTIVE
+ *
+ * SAFE DEFAULTS (also from the bank's rules):
+ * - heading_is_terminator === null (unknown widget) → headings TERMINATE
+ *   (errs toward more normal conversion — the safer failure mode).
+ * - A nested interactive terminates the current block and starts its own;
+ *   worst case the nested widget gets its own placeholder, which is safe.
+ * ===========================================================================
+ */
+
+class InteractiveScanner {
+
+	/**
+	 * Scans one page, returning interactive bundles and marking the item
+	 * ranges they consumed (so the converter can skip them).
+	 *
+	 * WHAT A BUNDLE LOOKS LIKE:
+	 * {
+	 *   index: 3,                    // 1-based, run-wide (set by caller)
+	 *   type: "dragAndDrop",         // bank/manifest type
+	 *   canonTag: "drag and drop",   // lexicon canonical
+	 *   modifier: "autocheck",       // remainder/extra hints ("" if none)
+	 *   activityId: "2B" | null,     // captured from the opener
+	 *   headingText: "Can you spot a good prompt…",
+	 *   openerItems: [...], memberItems: [...],   // raw items (in order)
+	 *   tables: [tableBlock…],       // content_data
+	 *   instructions: ["please scramble …"],      // → red flags too
+	 *   media: [{text,target}…],     // links seen inside the block
+	 *   positionContext: "After heading \"What is AI?\"",
+	 *   startIndex, endIndex,        // item-range consumed [start, end)
+	 *   redFlags: ["…"],             // anything ambiguous, surfaced
+	 * }
+	 *
+	 * @param {Object} page - PageSplitter page (items walked in order)
+	 * @param {TagNormaliser} normaliser - for widget-type lookups
+	 * @param {ConversionRun} run - tallies + notes
+	 * @returns {Object[]} bundles (page-local; caller assigns run indexes)
+	 */
+	static ScanPage(page, normaliser, run) {
+		const bank = DataService.Data.BoundaryBank;
+		const openerTags = new Set(bank._meta.opener_rule.opener_tags);
+		const absolute = new Set(bank._meta.member_rule.terminators_absolute);
+		// GENERAL widget boundary: every registered STANDALONE CALLOUT tag (the keys of
+		// Emit_Templates.callouts.by_tag) ALSO hard-terminates widget capture. A callout box such as
+		// [side alert]/[alert]/[wananga]/[supervisor note] sitting beside or after a widget is the
+		// writer's OWN separate element — never a member of the widget — so #swallowMembers must stop
+		// there. DATA-DRIVEN + REUSABLE: because this reads the callouts.by_tag keys directly, any
+		// FUTURE tag added to callouts.by_tag automatically becomes a boundary too, with nothing else
+		// to update. [Side alert] in particular is its own canonical tag and is NOT listed in
+		// terminators_absolute, so without this special case a side alert sitting right next to an
+		// activity widget could get swallowed into the widget as if it were part of it. Data
+		// callout_tags_terminate; env CALLOUTTERM_OFF reverts to a shorter, hard-coded literal list
+		// (alert/important/whakatauki/quote only — missing wananga/supervisor note/side alert and any
+		// future callout tag).
+		if (bank._meta.member_rule.callout_tags_terminate !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.CALLOUTTERM_OFF)) {
+			const _byTag = DataService.Data.EmitTemplates?.callouts?.by_tag || {};
+			for (const _t of Object.keys(_byTag)) absolute.add(_t);
+		}
+		const items = page.items;
+		const bundles = [];
+
+		// BILINGUAL reoMode flag (mirrors the equivalent check in ContentConverter's own setup:
+		// dual_language enabled + reoTranslate body_class / mtkFlag / TRR|PNR code prefix). Used by
+		// the post-scan activity-number pass below to assign a widget bundle the activity number that
+		// lives in an "Activity NX:" table ROW (not an [Activity N] tag).
+		const _dlCfg = DataService.Data.EmitTemplates?.elements?.dual_language;
+		// The "MTK WRITERS TEMPLATE" house header that many Writers Templates carry at the top is NOT,
+		// by itself, a reliable signal that the module is bilingual (see PageSplitter for the full
+		// reasoning) — most modules with that header are ordinary single-language modules. So it only
+		// counts as a bilingual trigger when data explicitly says use_mtk_flag:true, or the env var
+		// MTKREO_OFF=1 is set to turn the more permissive behaviour on.
+		const _mtkArm = (!!_dlCfg && _dlCfg.use_mtk_flag === true)
+			|| !!(typeof process !== "undefined" && process.env && process.env.MTKREO_OFF);
+		const reoMode = !!_dlCfg && _dlCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.REOTRANSLATE_OFF)
+			&& (/reoTranslate/i.test(run?.resolvedRules?.body_class || "") || (_mtkArm && !!run?.mtkFlag)
+				|| (_dlCfg.code_prefixes || []).some((p) => String(run?.moduleCode || "").toUpperCase().startsWith(String(p).toUpperCase())));
+
+		// THE ID-CARRYING HEADING IS THE ACTIVITY OPENER. The Mathematics MXDI / MXFU family
+		// never types `[Activity 1A] Title`: it types `[H3] 1A Spot the place value` and the gold
+		// opens `<div class="activity …" number="1A"><h3>Spot the place value</h3>` right there.
+		// Re-tag such a heading item IN PLACE as the `[Activity 1A]` opener it is (the
+		// normaliser's own parse, the id-stripped title as its tail) so every downstream rule —
+		// the owner lookback, the unclassified path, the numbering, ActivitiesBuilder's box —
+		// sees exactly a typed opener. Not on bilingual pages (their number is a table row);
+		// never beside a typed opener with the same id.
+		// Data: BoundaryBank._meta.opener_rule.id_heading_opener   Env: IDHEAD_OFF
+		this.#idHeadingOpeners(items, normaliser, run, page, reoMode);
+		// A bracket-less red `Activity 4A` line — the writer coloured the opener but typed no
+		// brackets, so it parses as noise with no primary and the box never opens (ENGI102
+		// lesson 8; the gold's box 4A) — is the `[Activity 4A]` opener (the bare-lead class). A
+		// red span whose ENTIRE folded text is the word + id is re-parsed in place; a longer
+		// sentence never matches.
+		// Data: BoundaryBank._meta.opener_rule.bare_red_opener   Env: BAREACT_OFF
+		this.#bareRedOpeners(items, normaliser, run, page, reoMode);
+
+		// rolling context: the most recent heading/element text, so each
+		// bundle can say where it sits ("After heading …") for the manifest
+		let lastContext = page.isOverview ? "Top of overview page" : "Top of page";
+
+		for (let i = 0; i < items.length; i++) {
+			const it = items[i];
+			if (it.type === "tag" && it.parse.primary?.directive === "ELEMENT") {
+				const txt = (it.blackAfter || it.parse.remainders.join(" ")).trim();
+				if (txt) lastContext = `After ${it.parse.primary.tag} "${txt.slice(0, 60)}"`;
+			}
+
+			// ---- activity WITHOUT a widget keyword but WITH a data table ---
+			// (the BLL phonics pattern — verified on BLL146 Activities
+			// 1A/1C/1D: "[Activity N]" + instructions + a TABLE of widget
+			// data, with the widget type only described in prose). Such an
+			// activity IS a build-task: capture it un-built as an
+			// UNCLASSIFIED bundle with a red flag, never as a plain content
+			// table. Deferred to the normal path when a real interactive
+			// tag appears before the table (its opener-lookback will own
+			// this activity item instead).
+			if (it.type === "tag" && it.consumedBy === undefined
+				&& it.parse.primary?.tag === "activity"
+				&& it.parse.primary?.directive === "CONTAINER_OPEN") {
+				let tableAhead = false;
+				for (let j = i + 1; j < items.length; j++) {
+					const peek = items[j];
+					if (peek.consumedBy !== undefined) break;
+					if (peek.type === "table") { tableAhead = true; break; }
+					if (peek.type !== "tag") continue;
+					const pp = peek.parse.primary;
+					if (!pp) continue;
+					if (pp.directive === "INTERACTIVE") break;        // normal path owns it
+					if (pp.tag === "activity" || absolute.has(pp.tag)
+						|| pp.directive === "PAGE_BOUNDARY") break;    // window over, no table
+				}
+				if (tableAhead) {
+					const bundle = {
+						type: "unclassified", canonTag: "activity",
+						modifier: "", headingText: "",
+						activityId: it.parse.numbers[0]?.toUpperCase() ?? null,
+						openerItems: [], memberItems: [], tables: [],
+						instructions: [], media: [],
+						redFlags: ["Activity has a data table but NO recognised interactive keyword — widget type must be identified from the captured content."],
+						positionContext: lastContext,
+						startIndex: i, endIndex: i + 1,
+					};
+					// THE UNCLASSIFIED ACTIVITY KEEPS ITS TITLE AND LEAD PROSE FREE (KB 01F
+					// activity_heading). The gold opens such a box with the <h3> title + the instruction
+					// paragraph and the widget follows; collecting the opener as the first member would
+					// swallow both into the placeholder box. This is
+					// the NORMAL path's activity-owner form applied here: the opener becomes
+					// bundle.activityOwner, the items between it and the first TABLE (black runs,
+					// ELEMENT tags — [body] / headings / media —, instruction spans) become
+					// bundle.activityLeadItems, and the members start at that table. ContentConverter
+					// already renders an owned bundle as h3 title + lead prose + the widget box.
+					// Data: BoundaryBank._meta.opener_rule.unclassified_activity_lead   Env: UNCLASSLEAD_OFF
+					// Scoped to a NUMBERED opener (`[Activity 1A] Title`): the number is what makes the
+					// span the box's own opener. An UNNUMBERED `[interactive activity] drag and drop …`
+					// span nested inside a numbered box (MXFU201's shape) keeps the member form — its
+					// tail is the widget's instruction, not a title, and the outer numbered opener
+					// already renders the box, its [h3] title and its lead prose.
+					const _ualCfg = DataService.Data.BoundaryBank?._meta?.opener_rule?.unclassified_activity_lead;
+					const _ualOn = !!_ualCfg && _ualCfg.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[_ualCfg.env || "UNCLASSLEAD_OFF"])
+						&& (it.parse.numbers?.length > 0);
+					if (_ualOn) {
+						// The lead may hold ONE heading tag and only as its FIRST item (the `[h3] Title` that
+						// follows a bare `[Activity N]`); any later heading ends the lead — the member walk
+						// then starts AT that heading and, headings being terminators, captures nothing,
+						// the right outcome for a table that belongs to a later section (ENGI303 lesson 6,
+						// MXFL203 lesson 8).
+						const _ualHeading = (x) => x.type === "tag" && /^(?:h[1-6]|heading|activity heading)$/i.test(String(x.parse?.primary?.tag || ""));
+						let j = i + 1;
+						while (j < items.length && items[j].consumedBy === undefined && items[j].type !== "table"
+							&& (items[j].type === "black" || items[j].type === "assettodo"
+								|| (items[j].type === "tag" && (!items[j].parse?.primary || items[j].parse.primary.directive === "ELEMENT")))
+							&& !(_ualHeading(items[j]) && j > i + 1)) j++;
+						// A lead that OPENS with an h2–h5 heading tag (`[Activity N]` + `[h4] What is the value?`
+						// + prose + a type-and-check table — MXFUN01, MXFL203, AGH1008) keeps the member form:
+						// the heading terminates the member walk, so the table renders FREE and the heading +
+						// prose as ordinary content; owning it would move that table into the hand-off box,
+						// away from the human build. The owner form is for the tail-titled / plain-text-titled
+						// opener, whose whole activity would otherwise vanish into the capture.
+						// THE HEADING-TAG-LED LEAD TAKES THE OWNER FORM. The guard's premise holds only for the
+						// tags #swallowMembers actually terminates on (h2–h5): an `[Activity Heading]`,
+						// `[Activity heading H3]` or `[Heading]` lead is NOT a terminator, so the member form
+						// would swallow title, prose and table whole — for exactly the KB 01F activity_heading
+						// tag (ENFUN02 1A, ENGC201 6A, MXFU402 2C; the gold opens with <h3>Title</h3>). With the
+						// sub-rule on, only a member_form_tags heading keeps the member form.
+						// Data: unclassified_activity_lead.heading_led_owner   Env: UNCLASSHEAD_OFF
+						const _hloCfg = _ualCfg.heading_led_owner;
+						const _hloOn = !!_hloCfg && _hloCfg.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[_hloCfg.env || "UNCLASSHEAD_OFF"]);
+						// THE HEADING-LED NUMBERED OPENER TAKES THE OWNER FORM TOO. The member form kept for an
+						// h2–h5-led lead is an EMPTY box: the heading is the walk's first item and headings
+						// terminate, so the bundle holds only the opener — the box would stand with its `no
+						// content captured` flag alone and the heading / prose / table free AFTER it. The gold's
+						// same-numbered box holds that section INSIDE (h3 + widget / prose / table). With
+						// empty_walk_owner on, member_form_tags is ignored and the owner form applies to every
+						// heading-led lead. Env HEADLEDOWNER_OFF.
+						const _ewoCfg = _hloCfg?.empty_walk_owner;
+						const _ewoOn = _hloOn && !!_ewoCfg && _ewoCfg.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[_ewoCfg.env || "HEADLEDOWNER_OFF"]);
+						const _hloMemberTags = new Set(_ewoOn ? [] : (_hloCfg?.member_form_tags ?? ["h2", "h3", "h4", "h5"]).map((t) => String(t).toLowerCase()));
+						const _ualLeadHeads = items.slice(i + 1, j).some((x) => _ualHeading(x)
+							&& (!_hloOn || _hloMemberTags.has(String(x.parse?.primary?.tag || "").toLowerCase())));
+						if (_ualLeadHeads) {
+							this.#collectMember(bundle, it, run);
+							bundle.endIndex = this.#swallowMembers(bundle, items, i + 1,
+								/* headings terminate the unknown widget: */ true, absolute, run, normaliser);
+						} else {
+						bundle.activityOwner = it;
+						bundle.activityLeadItems = items.slice(i + 1, j);
+						bundle._unclassLead = true;   // the converter's lead rendering: only the opener's own tail or a heading tag is the title
+						bundle.endIndex = this.#swallowMembers(bundle, items, j,
+							/* headings terminate the unknown widget: */ true, absolute, run, normaliser);
+						}
+					} else {
+						// AN UNNUMBERED `[interactive activity] …` NESTS IN THE NUMBERED BOX BEFORE IT. The MXDI /
+						// MXFU family opens the activity with an id heading (`[H3] 1A Spot the place value`,
+						// re-tagged as `[Activity 1A]` by #idHeadingOpeners), writes its prose and video, and
+						// then types the widget as an UNNUMBERED `[interactive activity] drop down …` span with a
+						// data table. Made its own bundle (canonTag activity), that span would trip the
+						// converter's "a new activity closes the open one" rule, closing the 1A box in front of
+						// it and opening a second, sequence-numbered box for the widget: TWO boxes where the gold
+						// ships ONE (h3 + prose + video + widget, all inside number="1A"). The same lookback the
+						// normal path uses (cross black runs and ELEMENT / opener tags, stop at a consumed item
+						// or anything else) finds the numbered opener; when it does, the bundle is OWNED by it
+						// (the owner form: opener → activityOwner, the items between → activityLeadItems, this
+						// span and its table → members). No numbered opener within reach → the plain
+						// own-bundle form. Data: id_heading_opener.unnumbered_nests_in_numbered  Env: IDHEAD_OFF
+						const _ihCfg = DataService.Data.BoundaryBank?._meta?.opener_rule?.id_heading_opener;
+						const _nestOn = !!_ihCfg && _ihCfg.enabled !== false && _ihCfg.unnumbered_nests_in_numbered !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[_ihCfg.env || "IDHEAD_OFF"])
+							&& !(it.parse.numbers?.length > 0);
+						let _outer = -1;
+						if (_nestOn) {
+							let s = i - 1;
+							while (s >= 0) {
+								const prev = items[s];
+								if (prev.consumedBy !== undefined) break;
+								if (prev.type === "tag" && prev.parse.primary?.tag === "activity"
+									&& prev.parse.primary.directive === "CONTAINER_OPEN") {
+									// scoped to a box an ID HEADING opened (the family's own convention) — a typed
+									// `[Activity N]` + unnumbered `[activity]` pair keeps the two-box form (as the human
+									// build of HPFUN101 1A does)
+									if (prev.parse.numbers?.length > 0 && prev._idHeading) _outer = s;
+									break;
+								}
+								if (prev.type === "black" || prev.type === "assettodo") { s--; continue; }
+								if (prev.type === "tag" && (!prev.parse.primary || openerTags.has(prev.parse.primary?.tag)
+									|| prev.parse.primary?.directive === "ELEMENT")) { s--; continue; }
+								break;
+							}
+						}
+						// THE REVERSE TRIO: the MXFUN family types `[Activity 2C]` → `[H3] Write the correct
+						// number` → `[Activity body] Oops! …` + the widget's table. The NUMBERED opener has no
+						// table in its own window (the `[Activity body]` span ends it), so without this rule the
+						// bundle opens HERE at the un-numbered span with no owner, the activity wrapper gives it
+						// a positional number and the numbered box stands before it holding only the title (the
+						// gold ships ONE `number=2C` box with h3 + p + table). The same lookback as the nesting
+						// rule above, but for a TYPED numbered opener with NO tail that sits past blanks and at
+						// most `max_headings` title headings: it owns the bundle (the owner form), the heading +
+						// this span + the prose up to the first table are the lead, the members start at the
+						// table. Data Emit_Templates activity_wrapper.mode_opener_merge .reverse_order; env
+						// MODEREVERSE_OFF (shared with the converter side of the same rule).
+						const _mrCfg = DataService.Data.EmitTemplates?.activity_wrapper?.mode_opener_merge?.reverse_order;
+						const _mrOn = !!_mrCfg && _mrCfg.enabled !== false && _outer < 0 && !(it.parse.numbers?.length > 0)
+							&& !(typeof process !== "undefined" && process.env && process.env[_mrCfg.env || "MODEREVERSE_OFF"]);
+						let _rev = -1;
+						if (_mrOn) {
+							const _maxH = _mrCfg.max_headings ?? 1; let heads = 0, s = i - 1;
+							while (s >= 0) {
+								const prev = items[s];
+								if (prev.consumedBy !== undefined) break;
+								if (prev.type === "black") { if (!(prev.text ?? "").trim()) { s--; continue; } break; }
+								if (prev.type !== "tag") break;
+								const pp = prev.parse.primary;
+								if (pp?.tag === "activity" && pp.directive === "CONTAINER_OPEN") {
+									if (prev.parse.numbers?.length > 0 && !(prev.blackAfter ?? "").trim()) _rev = s;
+									break;
+								}
+								if (pp && /^(?:h[1-6]|heading|activity heading)$/i.test(String(pp.tag || "")) && heads < _maxH) { heads++; s--; continue; }
+								break;
+							}
+						}
+						if (_rev >= 0) {
+							let j = i + 1;
+							while (j < items.length && items[j].consumedBy === undefined && items[j].type !== "table"
+								// a span with NO primary tag (`[Type and check] Could this please be recreated …`, the
+								// writer's instruction) is NOT lead prose — it ends the lead and starts the members, so
+								// #swallowMembers keeps it as the widget's instruction (the standard red Writers Note)
+								&& (items[j].type === "black" || items[j].type === "assettodo"
+									|| (items[j].type === "tag" && items[j].parse?.primary && items[j].parse.primary.directive === "ELEMENT"))) j++;
+							bundle.activityOwner = items[_rev];
+							bundle.activityLeadItems = items.slice(_rev + 1, j);
+							bundle.activityId = items[_rev].parse.numbers[0]?.toUpperCase() ?? null;
+							bundle.startIndex = _rev;
+							bundle._unclassLead = true;
+							bundle._reverseMerge = true;
+							run?.AddNote?.("info", "InteractiveScanner", `the un-numbered [activity] span after a numbered opener's title heading joins that opener's box (${bundle.activityId}).`);
+							bundle.endIndex = this.#swallowMembers(bundle, items, j,
+								/* headings terminate the unknown widget: */ true, absolute, run, normaliser);
+						} else if (_outer >= 0) {
+							bundle.activityOwner = items[_outer];
+							bundle.activityLeadItems = items.slice(_outer + 1, i);
+							bundle.activityId = items[_outer].parse.numbers[0]?.toUpperCase() ?? null;
+							bundle.startIndex = _outer;
+							bundle._nestedInNumbered = true;
+							this.#collectMember(bundle, it, run);
+							bundle.endIndex = this.#swallowMembers(bundle, items, i + 1,
+								/* headings terminate the unknown widget: */ true, absolute, run, normaliser);
+						} else {
+						// the activity item itself is the first member (its
+						// blackAfter carries the activity title/instructions)
+						this.#collectMember(bundle, it, run);
+						bundle.endIndex = this.#swallowMembers(bundle, items, i + 1,
+							/* headings terminate the unknown widget: */ true, absolute, run, normaliser);
+						}
+					}
+					for (let k = bundle.startIndex; k < bundle.endIndex; k++) {
+						items[k].consumedBy = bundles.length;
+					}
+					bundles.push(bundle);
+					i = bundle.endIndex - 1;
+					continue;
+				}
+			}
+
+			// ---- interactives INSIDE a table row (data pattern 8) ----------
+			// Speech bubbles & co. often arrive as "[speech bubble] text ║
+			// [image] url" table rows — the invocation lives in a CELL, so
+			// the table itself is the whole bundle (verified on OSAH401).
+			if (it.type === "table" && it.consumedBy === undefined) {
+				// reoMode SAFETY CHECK: a bilingual English|Māori CONTENT table is NOT a widget, even
+				// when one of its body cells happens to embed an `[Interactive] [X]` reference (the
+				// writer is just mentioning a widget inline, as part of the intro prose). Skip the
+				// interactive-in-table capture in that case, so the table unfolds normally via
+				// BilingualBuilder's `bilingualTable` instead. Without this check the intro table would be
+				// over-captured as a flipCard widget, which would make the activity box wrap the WRONG
+				// content and be mis-numbered, and the reo/eng prose would never render. Data
+				// dual_language.content_table_guard; env REOTABLE_OFF.
+				const _ctgOn = reoMode
+					&& !(typeof process !== "undefined" && process.env && process.env.REOTABLE_OFF)
+					&& (DataService.Data.EmitTemplates?.elements?.dual_language?.content_table_guard?.enabled !== false);
+				const cellType = (_ctgOn && this.#bilingualContentTable(it.block))
+					? null
+					: this.#interactiveInTable(it.block, normaliser, InteractiveScanner.#tableInteractionCue(items, i));
+				if (cellType) {
+					const bankEntry2 = bank.interactives[cellType.type] ?? null;
+					const tableBundle = {
+						type: cellType.type, canonTag: cellType.canonTag,
+						modifier: "", activityId: null, headingText: "",
+						openerItems: [], memberItems: [it], tables: [it.block],
+						instructions: [], media: [], redFlags: bankEntry2 ? [] : [
+							`Widget type "${cellType.type}" has no boundary-bank entry.`],
+						positionContext: lastContext,
+						startIndex: i, endIndex: i + 1,
+					};
+					this.#harvestMedia(tableBundle, it);
+					// FLIPCARD [Embedded] DATA-TABLE ABSORB. The [Embedded][Flipcard] DECLARATION table
+					// is captured right here (its [Flipcard] invocation lives inside one of its own
+					// cells); but its SEPARATE following [Item N] data table carries no invocation of its
+					// own, so left alone it would escape this bundle entirely and leak into the page as a
+					// raw, unstyled table (a PNR-module shape). Absorb any immediately-following member-tagged
+					// data table(s) into THIS
+					// same bundle, so the end result is ONE flipCard placeholder (the [Item N]/[Image]
+					// data sits inside it as a developer reference, not a visible leak). A following table
+					// that carries its OWN invocation, or its own [back] face content, is deliberately
+					// LEFT for that separate bundle to claim instead (see the #interactiveInTable guard
+					// above). Data member_rule.flipcard_data_table_absorb; env FLIPDATA_OFF.
+					const fda = DataService.Data.BoundaryBank?._meta?.member_rule?.flipcard_data_table_absorb;
+					if (fda && fda.enabled !== false && cellType.type === (fda.widget_type ?? "flipCard")
+						&& !(typeof process !== "undefined" && process.env && process.env.FLIPDATA_OFF)
+						&& new RegExp("\\[\\s*" + (fda.trigger_tag ?? "embedded") + "\\b", "i").test(it.block.text ?? "")) {
+						const memRe = new RegExp("\\[\\s*(" + (fda.member_tags ?? ["item"]).join("|") + ")\\b", "i");
+						let j = i + 1;
+						while (j < items.length && items[j].type === "table" && items[j].consumedBy === undefined
+							&& !this.#interactiveInTable(items[j].block, normaliser, true)
+							&& memRe.test(items[j].block?.text ?? "")) {
+							tableBundle.memberItems.push(items[j]);
+							tableBundle.tables.push(items[j].block);
+							this.#harvestMedia(tableBundle, items[j]);
+							items[j].consumedBy = bundles.length;
+							tableBundle.endIndex = j + 1;
+							j++;
+						}
+					}
+					it.consumedBy = bundles.length;
+					bundles.push(tableBundle);
+					i = tableBundle.endIndex - 1;
+					continue;
+				}
+			}
+
+			// HOVER/ROLLOVER DEFINITION marker whose definition is NOT introduced by the word "trigger"
+			// (so the SINGLE-BRACKET inline-trigger handling further below, which keys off that word,
+			// never reaches it). Two shapes are handled here:
+			//   - COLON self-closed: "[hover: DEF]" / "[hover definition: DEF]" — the definition sits
+			//     inside the bracket, after the first colon. Written as "[Hover: …]" this would
+			//     otherwise resolve as a plain [body] tag and SPLIT the paragraph in two; written as
+			//     "[hover definition: …]" it resolves as an infoTrigger, but the "trigger"-keyed handling
+			//     mentioned above still DROPS the definition text.
+			//   - MARKER-THEN-DEF: "[hover text] DEF" — the definition follows the closing bracket,
+			//     inside the SAME red span (e.g. ENGC101: "**adjectives** [hover text] Describing
+			//     words.").
+			// Both shapes are woven onto the nearest preceding word as the infoTrigger sentinel (the same
+			// mechanism the single-bracket inline trigger uses below), so the paragraph stays in one
+			// piece instead of splitting. This must run BEFORE the INTERACTIVE-tag skip a little further
+			// down, because the "[Hover: …]" shape resolves to a plain [body] tag and would never reach
+			// the standalone-widget path otherwise.
+			// Data EmitTemplates.elements.hover_definition_inline; env HOVERDEF_OFF.
+			if (it.consumedBy === undefined && this.#weaveHoverDefinition(items, i, normaliser)) continue;
+
+			// BARE NUMBERED SERIES OPENER. A widget is opened here only when the item's primary
+			// tag is INTERACTIVE. Some writers number the PARTS and never type the whole: "[Tab 1]
+			// Subtraction in parts / [Tab 2] Add instead of subtract / [Tab 3] Algorithm" with no
+			// [tabs] anywhere. Those parts are SUBTAGs, so nothing would open a bundle and each one
+			// would arrive alone under an orphan red flag with its bracket leaking onto the page as
+			// literal text. When the series qualifies (see #bareSeriesOpener for the four fences —
+			// clean numbered form, real content BETWEEN the panes, no opener already on the page, and
+			// for tabs a label on every marker), the FIRST marker acts as the opener: the bundle is
+			// created with the partner widget's type and the marker stays in memberItems, so
+			// #tabsPanes and the carousel builder read it exactly as they read any other bundle.
+			// Data member_rule.bare_series_opener; env TABOPENER_OFF / SLIDEOPENER_OFF.
+			const bareSeries = InteractiveScanner.#bareSeriesOpener(items, i);
+			if (!bareSeries && (it.type !== "tag" || it.parse.primary?.directive !== "INTERACTIVE")) continue;
+			if (it.consumedBy !== undefined) continue;   // already inside a bundle
+
+			// ACCORDION-AS-PHASES SUPPRESSION (registry-gated to specific module families — see
+			// #accordionPhaseRow): on a gated page, an accordion-opening invocation never opens a
+			// widget bundle at all. Some modules author their content as a single big [Accordion] with
+			// numbered [Accordion N] panels, but the finished page actually presents those panels as
+			// separate "phases" (a phases nav + one panel per phase), not as a built accordion widget.
+			// So here the numbered/bare accordion tags are deliberately left UNCONSUMED, so a later
+			// pre-pass in ContentConverter can turn them into phase-boundary markers instead
+			// (numbered → a phase break, bare opener → a no-op); a "[link to … accordion menu]"
+			// cross-link form is left for that same pre-pass to dissolve into ordinary prose (its
+			// blackAfter text is genuine content the finished page keeps as-is).
+			// Data fundamentals_panels.phase_text.accordion_delimiter; env FUNPANACC_OFF.
+			if (InteractiveScanner.#accordionPhaseForm(it, run)) continue;
+
+			// MTK DROP-DOWN-MENU MARKER SUPPRESSION (the PNR101/102/104
+			// bilingual family): the "[Content for DROP DOWN MENU]" opener parses as a
+			// "dropdown" INTERACTIVE invocation, but it is a MENU section marker, not a
+			// widget — opening a bundle here would swallow the module-menu table into an
+			// orange placeholder. On a bilingual (reoTranslate/TRR/PNR) module whose
+			// opener is DIRECTLY followed by the menu table (the PNR shape — the
+			// paragraph-form TRR203/TRR301 siblings are deliberately untouched), the
+			// marker is left unconsumed so ContentConverter's #partitionItems can route
+			// that table to the module menu instead.
+			// Data: elements.dual_language.dropdown_menu. Env toggle: REODROPMENU_OFF.
+			if (InteractiveScanner.#dropdownMenuMarker(items, i, run)) continue;
+
+			// ---- the invocation ------------------------------------------
+			// A bare-series opener is a SUBTAG standing in for the whole widget, so
+			// the type comes from the data map rather than the marker's own tag. The alias is
+			// deliberately NOT passed through: [Slide N]'s alias is "slide", which is not a
+			// carousel alias, and letting it reach #resolveWidgetType could pick a variant the
+			// writer never asked for.
+			const canonTag = bareSeries ? bareSeries.opener_tag : it.parse.primary.tag;
+			const type = bareSeries ? bareSeries.widget
+				: this.#widgetTypeFor(canonTag, it.parse.primary.alias, normaliser);
+
+			// A MODAL CLOSER NEVER OPENS A BUNDLE. "[Close Modal]" resolves to the SAME `modal`
+			// tag as a real invocation (unlike "[modal ends]", which resolves CONTAINER_CLOSE and
+			// behaves), so a closer the preceding walk never reached would OPEN ITS OWN BUNDLE — a
+			// useless one-marker hand-off box at best (EXPFUN05) and at worst a bundle that swallows
+			// the whole FOLLOWING SECTION into a dump (MXFL301/MXFU301). It is the writer's end
+			// delimiter: consume it as a no-op. RESIDUE-FENCED: a closer span carrying other words
+			// keeps the ordinary behaviour, so a writer instruction riding the bracket is never
+			// silently dropped here (such a span, e.g. "(stop at 4:01) [close modal]", is reached
+			// MID-WALK and handled by the member-walk rule instead). The lexicon does NOT promote
+			// the closer to CONTAINER_CLOSE: EXPFUN04/05's BUILT tile modals absorb 30+ interleaved
+			// closers mid-walk, and a directive change would stop their walks at the first one and
+			// shatter the builds.
+			// Data member_rule.modal_gathering (closer_pattern); env MODCLOSER_OFF.
+			{
+				const mgO = DataService.Data.BoundaryBank._meta.member_rule.modal_gathering;
+				if (mgO && mgO.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env.MODCLOSER_OFF)
+					&& (mgO.types ?? ["modal"]).includes(type) && !bareSeries && it.parse?.primary) {
+					const foldO = String(it.parse.folded ?? "");
+					if (new RegExp(mgO.closer_pattern, "i").test(foldO)
+						&& !foldO.replace(new RegExp(mgO.closer_strip_pattern ?? mgO.closer_pattern, "i"), "").replace(/[\[\]\s]+/g, "")) {
+						it.type = "black"; it.text = it.blackAfter ?? ""; it.blackAfter = "";
+						continue;
+					}
+				}
+			}
+
+			// THE SAME SHAPE FOR THE ACCORDION AND THE CAROUSEL. The lexicon aliases
+			// "end accordion" / "end carousel" to CONTAINER_CLOSE, but not the writer's "close" /
+			// "finish" spellings, which fall through to the plain INTERACTIVE tag and would OPEN a
+			// bundle holding nothing but the closer — an empty hand-off box on a finished page
+			// (ENGJ402-6.0 "[Finish carousel]", MXFL301-2.0/-3.0 and MXFU301-8.0 "[close
+			// accordion]"). Consume it as a no-op, exactly as the modal rule above does. The
+			// modal's reason for keeping the lexicon unchanged does not bite here: for these two
+			// families, every bundle that carries a closer alongside other members is left
+			// un-built anyway, so no built walk can move. Kept as its OWN data block and toggle so
+			// the modal path is untouched by construction.
+			// OPEN SITE ONLY (a closer met mid-walk keeps the ordinary behaviour) and BARE
+			// OPEN SITE ONLY (a closer met mid-walk keeps the ordinary behaviour) and BARE
+			// ONLY (a closer bracket carrying any other word is left alone, so a
+			// writer instruction riding it is never silently dropped).
+			// Data member_rule.closer_never_opens; env CLOSEROPEN_OFF.
+			{
+				const cnO = DataService.Data.BoundaryBank._meta.member_rule.closer_never_opens;
+				if (cnO && cnO.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env.CLOSEROPEN_OFF)
+					&& (cnO.types ?? []).includes(type) && !bareSeries && it.parse?.primary) {
+					const foldC = String(it.parse.folded ?? "");
+					const reC = new RegExp(cnO.pattern, "i");
+					if (reC.test(foldC) && !foldC.replace(reC, "").replace(/[\[\]\s]+/g, "")) {
+						it.type = "black"; it.text = it.blackAfter ?? ""; it.blackAfter = "";
+						continue;
+					}
+				}
+			}
+
+			// STANDALONE INLINE MARKER (in free body, not inside any open widget): it
+			// is NOT a widget — the human renders it inline ON the surrounding text
+			// (a [highlight text] highlight, or a [rollover definition] tooltip span).
+			// Opened as a widget it would either SWALLOW the following paragraphs
+			// (XGF9001, SSFUN07-00) or leave a tiny EMPTY box. The inline annotation is
+			// not built here, so the marker literal is dropped and its own-line text is
+			// re-exposed as plain free body — the surrounding content converts normally, in place.
+			// Both inline_markers and standalone_inline_markers get THIS role; only
+			// inline_markers are ALSO absorbed inside an open widget (see #swallowMembers).
+			// (Bank policy member_rule.{inline_markers,standalone_inline_markers}.)
+			const _mr = DataService.Data.BoundaryBank._meta.member_rule;
+			const _isWordSelect = (_mr.inline_markers ?? []).includes(type);
+			const _isStandalone = (_mr.standalone_inline_markers ?? []).includes(type);
+			// TABLE-QUALIFIED widget: "[Table wordSelect]" / "[Table dragAndDrop]" is a
+			// STANDALONE table-data interactive (the human builds a clickable table), NOT an inline
+			// highlight marker — the "Table" qualifier on the tag is the writer flagging the data form.
+			// So a marker tag that ALSO carries a [table] tag is NOT dissolved inline; it falls through
+			// to the normal bundle path and captures its following table (OSAI401-01 Activity 1A's
+			// [Table wordSelect] would otherwise render as a RAW, un-wrapped <table>).
+			// Data: member_rule.table_qualifier_tags.
+			const _tableQual = (_mr.table_qualifier_tags ?? ["table"]);
+			const _hasTableQualifier = it.parse.tags.some((t) => _tableQual.includes(t.tag));
+			if ((_isWordSelect || _isStandalone) && !_hasTableQualifier) {
+				// INFO-TRIGGER (a standalone hover/rollover DEFINITION) authored INLINE as
+				// "anchor [hovertrigger: DEFINITION] continuation". The parser splits that into the
+				// PRECEDING anchor item, THIS marker (its blackAfter = the DEFINITION), and a "]"
+				// CLOSER item (its blackAfter = the rest of the sentence). Re-exposing the DEFINITION as
+				// body text would LEAK it, and the closer would render as a SEPARATE <p> (a SPLIT).
+				// Instead, re-STITCH: fold the definition onto the anchor as an inline annotation —
+				// encoded as a private-use sentinel … that #inlineMarkup turns into a
+				// <span class="infoTrigger" info="DEF"> when the anchor is a clear bold/italic run (and
+				// drops it to plain text otherwise) — and re-join the continuation, so the whole thing
+				// is ONE paragraph. (ENGC201-00 "This **whakatauki** [hovertrigger: Proverb] reinforces…"
+				// → one <p> with <span class="infoTrigger" info="Proverb">whakatauki</span> reinforces…)
+				if (_isStandalone && !_isWordSelect) {
+					// SINGLE-BRACKET inline trigger. "anchor [audio trigger DEF]" / "anchor [hover
+					// trigger DEF]" carries the DEFINITION INSIDE its own SELF-CLOSED red span (the
+					// bracket opens AND closes within this one marker), so there is NO separate "]"
+					// closer item — the split-bracket path further below never fires, and left
+					// unhandled the marker would BREAK the paragraph and drop the definition entirely
+					// (e.g. "Being an online kaitiaki [audio trigger kai-ti-a-ki] means …" would render
+					// as three separate <p> elements instead of one). Detect this self-closed form,
+					// recover the DEFINITION in its ORIGINAL letter case from the marker text that
+					// follows the word "trigger" (parse.remainders has already been folded to
+					// lowercase and mangled, so it can't be used for the info= attribute), encode it
+					// using the U+E000…U+E001 sentinel characters directly after the preceding anchor
+					// word, and re-join the continuation — producing ONE paragraph that #inlineMarkup
+					// later turns into <span class="infoTrigger" info="DEF">anchor</span>. The separate
+					// split-bracket acronym form ("[hover trigger DEF" with a separate "]" later) is
+					// NOT self-closed, so it is left untouched by this branch.
+					// Data: EmitTemplates.elements.info_trigger_inline.enabled; env INFOTRIG_OFF.
+					const _itCfg = DataService.Data.EmitTemplates.elements?.info_trigger_inline;
+					const _inlineTrigOn = (_itCfg?.enabled !== false)
+						&& !(typeof process !== "undefined" && process.env && process.env.INFOTRIG_OFF);
+					if (_inlineTrigOn) {
+						const rawMarker = String(it.text ?? "")
+							.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim();
+						const selfClosed = /\]\s*$/.test(rawMarker);            // bracket closes in THIS marker
+						const mTrig = rawMarker.match(/\btrigger\b\s*:?\s*([\s\S]*?)\s*\]\s*$/i);
+						const infoInside = mTrig ? mTrig[1].trim() : "";        // original-case definition
+						// An instruction-shaped "def" (e.g. "[Hover trigger over image + captions.
+						// Please embed these images and have drop-down boxes…]") is really a writer NOTE
+						// to the developer, not an actual definition: skip the weave here so it falls
+						// through to the ordinary CS-note handling instead (the finished page strips
+						// notes like this). Data elements.hover_weave_hygiene; env HOVERHYG_OFF.
+						if (selfClosed && infoInside && !InteractiveScanner.#hoverDefIsInstruction(infoInside)) {
+							const IT0 = String.fromCharCode(0xE000), IT1 = String.fromCharCode(0xE001);
+							const sentinel = IT0 + infoInside + IT1;
+							const continuation = String(it.blackAfter ?? "").trim();
+							// anchor host = nearest PRECEDING item that still carries text — skip
+							// already-consumed empties so back-to-back triggers (kaitiaki THEN taonga in
+							// one sentence) each anchor on their own word, not on a hollow sibling.
+							// A candidate whose trailing text is a bare URL can never host the sentinel —
+							// the URL-detection machinery reads straight through the private-use
+							// characters used to encode it, corrupting the link. When only media is
+							// adjacent like this there is no usable word to anchor the definition to, so
+							// fall through to the no-host case below instead.
+							let h = i - 1, host = null;
+							while (h >= 0) {
+								const cand = items[h];
+								const ctext = cand.type === "black" ? cand.text : cand.blackAfter;
+								if (String(ctext ?? "").trim()) {
+									if (InteractiveScanner.#urlTailHost(ctext)) { host = null; break; }
+									host = cand; break;
+								}
+								h--;
+							}
+							if (host && host.type === "black") {
+								host.text = String(host.text ?? "").replace(/\s+$/, "") + sentinel
+									+ (continuation ? ` ${continuation}` : "");
+								it.type = "black"; it.text = ""; it.blackAfter = ""; continue;
+							} else if (host) {
+								host.blackAfter = String(host.blackAfter ?? "").replace(/\s+$/, "") + sentinel
+									+ (continuation ? ` ${continuation}` : "");
+								it.type = "black"; it.text = ""; it.blackAfter = ""; continue;
+							}
+							// no usable anchor host → keep the continuation (no word to annotate)
+							it.type = "black"; it.text = continuation; it.blackAfter = ""; continue;
+						}
+					}
+					const nx = items[i + 1];
+					const hasCloser = nx && nx.type === "tag" && !nx.parse?.primary && /^\s*\]/.test(nx.text ?? "");
+					if (hasCloser) {
+						const def = String(it.blackAfter ?? "").replace(/^[\s:]+/, "").trim();
+						const continuation = String(nx.blackAfter ?? "").trim();
+						// SOME writers put the ANCHOR term INSIDE the marker bracket, before the sub-tag:
+						// "become [obsolete [rollover definition: no longer in use] ]" (SSFUN07) — here the
+						// marker's own text is "obsolete [rollover definition:". Recover that leading term
+						// (the part before the first "[") so it is neither LOST nor mis-anchored on the
+						// preceding word; it becomes the wrapped anchor. ENGC201's "[hovertrigger:" has no
+						// leading term → "" → the anchor stays the preceding black word (structure 1).
+						const inMarkerAnchor = String(it.text ?? "")
+							.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "")
+							.split("[")[0].trim();
+						nx.type = "black"; nx.text = ""; nx.blackAfter = "";   // consume the "]" closer
+						const tail = (def ? `${def}` : "") + (continuation ? ` ${continuation}` : "");
+						let host = items[i - 1];
+						// Back-to-back split triggers (`[HInfo trigger: ] def ] , what [HInfo trigger: ] def ] , where`,
+						// BLL243): items[i-1] is the "]" closer the previous trigger just emptied, so hosting the sentinel there would
+						// start a bare line — the definition dropped and the sentence broken into `<p> , where</p>` paragraphs. The
+						// nearest preceding item of the same paragraph that still carries text hosts it (the self-closed branch's own
+						// rule). Data info_trigger_inline.closer_host_skip_empty; env TRIGHOST_OFF.
+						if (_itCfg?.closer_host_skip_empty !== false && host && host.type === "black" && !String(host.text ?? "").trim()
+							&& !(typeof process !== "undefined" && process.env && process.env.TRIGHOST_OFF)) {
+							for (let h = i - 2; h >= 0; h--) {
+								const cand = items[h];
+								const ctext = cand.type === "black" ? cand.text : cand.blackAfter;
+								if (!String(ctext ?? "").trim()) continue;
+								if (!InteractiveScanner.#urlTailHost(ctext) && cand.block === it.block) host = cand;
+								break;
+							}
+						}
+						const anchorPrefix = inMarkerAnchor ? ` ${inMarkerAnchor}` : "";   // recovered in-marker term sits right before the sentinel
+						if (host && host.type === "black") {
+							host.text = String(host.text ?? "").replace(/\s+$/, "") + anchorPrefix + tail;
+							it.type = "black"; it.text = ""; it.blackAfter = "";
+						} else if (host && host.type === "tag") {
+							host.blackAfter = String(host.blackAfter ?? "").replace(/\s+$/, "") + anchorPrefix + tail;
+							it.type = "black"; it.text = ""; it.blackAfter = "";
+						} else {
+							// no usable anchor host — keep the continuation (drop the definition: no anchor)
+							it.type = "black"; it.text = continuation; it.blackAfter = "";
+						}
+						continue;
+					}
+					// no "]" closer → a BARE standalone marker: fall back to the safe default (re-expose
+					// its own text as free body so it cannot swallow the rest of the page).
+					it.type = "black"; it.text = it.blackAfter ?? ""; it.blackAfter = ""; continue;
+				}
+				// wordSelect/highlight: the text after the marker IS body content — keep it (unchanged).
+				it.type = "black";
+				it.text = it.blackAfter ?? "";
+				it.blackAfter = "";
+				continue;
+			}
+
+			const bankEntry = bank.interactives[type] ?? null;
+			// null/missing flag → unknown widget → headings terminate (safe)
+			let headingTerminates = bankEntry ? bankEntry.heading_is_terminator !== false : true;
+			// A carousel/slideshow's slide TITLES are [H#] headings that live INSIDE the widget; if
+			// left at the boundary bank's default of heading_is_terminator:true, capture would stop
+			// dead at the first slide title — no carousel would ever get built, and every slide would
+			// be orphaned as separate content instead. Force false for these slideshow types
+			// specifically, so slide titles are captured as part of the widget; the LONE
+			// SECTION-BREAK HEADING rule further below still correctly bounds a REAL section heading
+			// that comes after the whole carousel. Data member_rule.slideshow_heading_internal;
+			// env CARSLIDE_OFF.
+			if ((bank._meta.member_rule.slideshow_heading_internal ?? []).includes(type)
+				&& !(typeof process !== "undefined" && process.env && process.env.CARSLIDE_OFF)) {
+				headingTerminates = false;
+			}
+
+			const bundle = {
+				type, canonTag,
+				// pre-fold widget VARIANT (e.g. rotateBanner before it folds to carousel) so a
+				// shared parent builder can branch on the sub-form the writer used.
+				variant: bareSeries ? bareSeries.widget
+					: this.#resolveWidgetType(canonTag, it.parse.primary?.alias, normaliser),
+				// an INFERRED opener; see the fence in #swallowMembers
+				_bareSeries: bareSeries ? bareSeries.family : undefined,
+				modifier: this.#modifierFor(it),
+				activityId: null, headingText: "",
+				openerItems: [], memberItems: [], tables: [],
+				instructions: [], media: [], redFlags: [],
+				positionContext: lastContext,
+				startIndex: i, endIndex: i + 1,
+			};
+			// The nearest non-blank item ABOVE the opener — the multiChoiceQuiz builder reads it for its
+			// D2L-quiz guard (TEFUN01: `[Button] Go to quiz` right above `[Quiz]` — those questions are the D2L quiz's)
+			{
+				let k = i - 1;
+				while (k >= 0 && items[k] && items[k].type === "black" && !String(items[k].text || "").trim()) k--;
+				const pv = k >= 0 ? items[k] : null;
+				bundle.prevItemText = pv ? `${pv.text || ""} ${pv.blackAfter || ""}` : "";
+			}
+			if (!bankEntry) {
+				bundle.redFlags.push(`Widget type "${type}" has no boundary-bank entry — heading-terminates default applied.`);
+			}
+
+			// ---- openers: walk BACK to the [Activity N] wrapper -----------
+			// The widget belongs to the nearest preceding [Activity] whose
+			// run reaches here without an intervening terminator. Crucially
+			// (as in OSAI301 1A), the cv2 box must hold ONLY the widget + its
+			// data: the activity wrapper, its title, and its instruction
+			// [body] stay OUTSIDE the box as activity-level content, and any
+			// content ABOVE the [activity] tag (e.g. a section [body] +
+			// [video]) is never touched. So the lookback stops AT the
+			// [activity] tag and records it as the bundle's owner; it does
+			// not slurp the activity's lead body into the box.
+			let s = i - 1;
+			let activityIdx = -1;
+			// The `[interactive: video]` / `[interactive: image]` bracket resolves its ELEMENT as the
+			// primary and carries `activity` only through the alias word "interactive". The lookback
+			// still takes it as the OWNER (the gold boxes the group it leads), but the span is not
+			// SWALLOWED as the box opener: the owner becomes a synthetic bare opener and the span
+			// itself is the box's first LEAD item, rendered through the body loop's own element path
+			// (the lead_media rule) — so the writer's media line surfaces (its embed, or the "no URL"
+			// flag) instead of vanishing (AGH1004 / AGH1005 / AGH1006, TWHA902, TWHK901).
+			// Data: BoundaryBank._meta.opener_rule.owner_alias_exclude   Env: OWNERALIAS_OFF
+			const _oaeCfg = bank._meta.opener_rule.owner_alias_exclude;
+			const _oaeOn = !!_oaeCfg && _oaeCfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[_oaeCfg.env || "OWNERALIAS_OFF"]);
+			const _oaeWords = new Set((_oaeCfg && _oaeCfg.alias_words) || []);
+			const _oaeTags = new Set((_oaeCfg && _oaeCfg.element_tags) || []);
+			const _oaeNoHow = new Set((_oaeCfg && _oaeCfg.exclude_primary_hows) || []);
+			const _isAliasElement = (p) => _oaeOn && p.parse.primary?.tag !== "activity" && p.parse.primary?.tag != null
+				&& _oaeTags.has(p.parse.primary.tag) && !_oaeNoHow.has(String(p.parse.primary.how ?? ""))
+				&& p.parse.tags.some((t) => t.tag === "activity" && _oaeWords.has(String(t.raw ?? t.alias ?? "").toLowerCase()));
+			while (s >= 0) {
+				const prev = items[s];
+				if (prev.consumedBy !== undefined) break;
+				if (prev.type === "tag" && prev.parse.tags.some((t) => t.tag === "activity")) {
+					activityIdx = s; break;                 // found the owner
+				}
+				// cross the activity's own heading / lead body / media —
+				// these sit between [Activity] and the widget tag — but a
+				// terminator or a NON-opener tag stops the walk
+				if (prev.type === "black") { s--; continue; }
+				if (prev.type === "tag" && (!prev.parse.primary || openerTags.has(prev.parse.primary?.tag))
+					&& prev.parse.primary?.tag !== "activity") { s--; continue; }
+				break;
+			}
+
+			if (activityIdx >= 0) {
+				// the bundle is OWNED by an activity: the converter renders
+				// the activity wrapper + everything between it and the widget
+				// as activity-level content, then the cv2 box (widget + data)
+				// nested inside. Mark the activity + in-between items so the
+				// converter knows this range is one activity unit.
+				if (_isAliasElement(items[activityIdx])) {
+					// The aliased element span opens the box as a SYNTHETIC bare opener and joins the
+					// lead as its own element (rendered by the converter's lead loop — media through #element,
+					// a heading as the title); the box keeps its positional letter.
+					bundle.activityOwner = { type: "tag", parse: { tags: [], numbers: [], primary: null }, blackAfter: "", _aliasElementOwner: true };
+					bundle.activityLeadItems = items.slice(activityIdx, i); // the span itself + title/body/media before the widget
+				} else {
+					bundle.activityOwner = items[activityIdx];
+					bundle.activityLeadItems = items.slice(activityIdx + 1, i); // title/body/media before the widget
+					bundle.activityId = items[activityIdx].parse.numbers[0]?.toUpperCase() ?? bundle.activityId;
+				}
+				bundle.startIndex = activityIdx;
+				bundle.openerItems = [];   // nothing goes INSIDE the box from the openers
+			} else {
+				// no activity wrapper (inline widget) — box starts at the tag
+				bundle.openerItems = [];
+				bundle.startIndex = i;
+			}
+
+			// capture the activity id + heading from the openers
+			for (const op of bundle.openerItems) {
+				if (op.type !== "tag") continue;
+				const tag = op.parse.primary?.tag;
+				if (tag === "activity" && op.parse.numbers.length) {
+					bundle.activityId = op.parse.numbers[0].toUpperCase();
+				}
+				if (tag === "activity heading" || tag === "heading") {
+					// original-case: embedded payload first, following text second
+					bundle.headingText = (normaliser.RenderText(op.text) || op.blackAfter).trim();
+				}
+			}
+			// id may also ride on the interactive tag itself ([Activity 7 drag and
+			// drop]) — but ONLY when the span genuinely carries the [Activity] tag.
+			// A widget's own trailing number ([Flipcard 1], [Accordion 2]) is a
+			// PANEL index, not an activity id, and must not enable cross-widget
+			// absorption (in XGF9001 a flipCard "1" would otherwise swallow the page).
+			if (!bundle.activityId && it.parse.numbers.length
+				&& it.parse.tags.some((t) => t.tag === "activity")) {
+				bundle.activityId = it.parse.numbers[0].toUpperCase();
+			}
+
+			// the interactive tag's own trailing text is learner-facing
+			// content for the widget (or an embedded instruction — both are
+			// members; instruction detection happens per-member below)
+			this.#collectMember(bundle, it, run);
+
+			// ---- members: walk FORWARD until a terminator -----------------
+			bundle.endIndex = this.#swallowMembers(bundle, items, i + 1, headingTerminates, absolute, run, normaliser);
+			// THE HEADING-THEN-TABLE SHAPE AFTER AN EMPTY TYPED-WIDGET INVOCATION TAKES THE OWNER
+			// FORM (the normal-widget-path twin of the heading-led owner rule). See #headingTableOwner.
+			// Data opener_rule.heading_table_owner; env HEADTABLE_OFF.
+			this.#headingTableOwner(bundle, items, i, headingTerminates, absolute, run, normaliser);
+			// GATHER THE WHOLE INFERRED SERIES, OR NONE OF IT. A bare-series bundle is a guess
+			// about a widget the writer never named, so it is only worth making when the capture
+			// actually reaches the series the guess was based on. If a terminator truncates it
+			// short of the SECOND marker, the bundle can only ever hold one pane — below every
+			// builder's min_panes/min_slides floor — so it would decline and leave a developer
+			// hand-off box standing where readable body text belongs. SCFUN01-0.0 is the live
+			// case: its writer closes each pane with an explicit "[end tab]", which is a
+			// CONTAINER_CLOSE and rightly ends the walk after the first. Abandoning the bundle
+			// here leaves every item unconsumed, so that page converts as ordinary content — the
+			// never-half-build rule applied at the gathering step rather than the building one.
+			if (bareSeries && bundle.endIndex <= bareSeries.secondIndex) {
+				for (const m of bundle.memberItems) if (m) m.consumedBy = undefined;
+				continue;
+			}
+			// TRAILING MEDIA: a [video]/[audio] the writer placed AFTER the
+			// widget's content is swallowed as a member, but the human renders it
+			// as its OWN element. Trim it back out so the normal converter path
+			// emits it standalone (data: BoundaryBank._meta.member_rule.trailing_media_extract).
+			bundle.endIndex = this.#trimTrailingMedia(bundle, bundle.endIndex);
+			// BACKWARD LEAD-PAIR ABSORB. The forward scan that captures members always starts at the
+			// FIRST interactive tag, so a REPEATING (lead-in label, widget) series always loses its
+			// very first label — it sits ABOVE (before) the tag, outside the scanned range. Having
+			// captured the members, detect the clean widget-first alternation pattern and walk back UP
+			// through the preceding items to recover that missed leading label (this extends
+			// startIndex backward; the ownership-marking loop below then consumes it along with
+			// everything else). See #absorbLeadingPattern for the full explanation. Data
+			// member_rule.leading_pattern_absorb; env INTLEADPAIR_OFF.
+			this.#absorbLeadingPattern(bundle, items, i);
+			// BACKWARD SAME-BLOCK AVATAR ABSORB. A speech bubble the writer typed as
+			// ONE PARAGRAPH — "[Image] <words> <title> [LINK: iStock url] [speech bubble] <text>" —
+			// splits into separate red-span ITEMS, so the [image] sits just ABOVE the invocation and
+			// outside the bundle. Recover it (same source BLOCK only) so the builder can emit the
+			// human's one-row avatar+bubble instead of a loose image followed by a hand-off box.
+			// See #absorbSameBlockImage. Data member_rule.same_block_image_absorb; env SBNOTBL_OFF.
+			this.#absorbSameBlockImage(bundle, items, i);
+			// BACKWARD SAME-BLOCK LABEL ABSORB. A modal the writer typed as ONE
+			// LINE — "<the visible label> [Pop-out] <the pop-out content>" — splits into a
+			// black item then the tag, so the FIRST modal's label sits just ABOVE the
+			// invocation and outside the bundle while every later one is captured. Recover it
+			// (same source BLOCK only) so the builder can emit the human's
+			// div.button.TKmodalButton trigger instead of dropping the label.
+			// See #absorbSameBlockLabel. Data member_rule.same_block_label_absorb; env MODALLEAD_OFF.
+			this.#absorbSameBlockLabel(bundle, items, i);
+			// A BARE GENERIC INVOCATION bundle — the standalone "[Interactive]" re-tag
+			// (Tag_Lexicon qualifier_alias_demote.standalone_becomes) — that captured
+			// NOTHING AT ALL (no forward members, no backward absorb, no learner text on its
+			// own opener) DISSOLVES here rather than shipping an EMPTY dashed placeholder
+			// box: the item is left unconsumed and flows down the ordinary unhandled-tag path
+			// (a cv2 instruction note). These are the bare spans whose invocation names a
+			// widget but whose content the walk could not reach. A bundle that captured
+			// ANYTHING (AGH1001-01: instruction line + data table) is untouched.
+			// Data member_rule.bare_invocation_dissolve_empty; rides env INTALIAS_OFF.
+			// A bundle is "too thin" when it captured NO data table and under
+			// min_member_chars of member text — nothing buildable was specified, so the
+			// items are left unconsumed: a captured [image]/media member then renders
+			// down its NORMAL standalone path (visible Mode P/D placeholder) and the
+			// invocation itself down the unhandled-tag/note path. A TABLE member always
+			// keeps the bundle (the table IS the buildable widget data, however short its text).
+			const _bid = DataService.Data.BoundaryBank._meta.member_rule.bare_invocation_dissolve_empty;
+			if (_bid && _bid.enabled !== false && (_bid.types ?? []).includes(bundle.type)) {
+				let _chars = 0;
+				for (const m of (bundle.memberItems ?? [])) {
+					// count the RENDERED length: the writer's **bold**/*italic* markers
+					// are formatting, not content (a short bold title must not clear the
+					// threshold on its markers alone)
+					_chars += (((m.type === "black" ? m.text : m.blackAfter) ?? "")
+						.replace(/\*/g, "").trim()).length;
+				}
+				if (!(bundle.tables ?? []).length && _chars < (_bid.min_member_chars ?? 40)) {
+					continue;
+				}
+			}
+			// mark ownership so the converter and later scans skip the range
+			for (let k = bundle.startIndex; k < bundle.endIndex; k++) {
+				items[k].consumedBy = bundles.length;
+			}
+			bundles.push(bundle);
+
+			i = bundle.endIndex - 1;   // resume at the terminator (loop i++)
+		}
+
+		// ── activity numbering ──────────────────────────────────────────
+		// Capture the writer's number whether inside the bracket ([Activity 1A],
+		// 71% of templates) or just outside it ([Activity] 1A, ~1%); then ensure
+		// per-page uniqueness in document order — ~30% of modules reuse a number
+		// and the human developers renumber sequentially (a second 1A → 1B).
+		const seenAct = new Set();
+
+		// ── BILINGUAL activity-number assignment (reoMode only) ──
+		// The bilingual activity NUMBER is a table ROW ("Activity 1A:" / "Ngohe 1A:") inside
+		// the English|Māori content table, NOT an [Activity N] TAG, so the opener-lookback
+		// above never set activityId for these widgets. Walk the items in order, track the
+		// most recent activity-number row, and hand it to the FIRST following widget bundle
+		// (claimed-per-row → one number = one box; a second bundle before the next row stays
+		// inline, matching the finished page's single box per activity). Sets bundle.activityId +
+		// bundle.reoActivity; ContentConverter's bundle path then opens the wrapper (reoAct).
+		// Runs BEFORE the standard uniqueness loop so a stray standard id renumbers around it.
+		// Data activity_wrapper.reo_bundle_activity; env REOACT_OFF. reoMode-scoped → standard
+		// (non-bilingual) modules — where "Activity NX:" text can also coincidentally appear, e.g.
+		// ENGS302 — are unaffected either way.
+		// The OVERVIEW page is the tabbed menu, NEVER lesson activities — the finished pages ship
+		// ZERO div.activity on a bilingual overview page. So even when the page splitter spills
+		// lesson content onto the overview, no activity wrapper is built there — doing so would
+		// pollute the menu page.
+		const _reoActCfg = DataService.Data.EmitTemplates?.activity_wrapper?.reo_bundle_activity;
+		const _reoActOn = reoMode && !page.isOverview && !!_reoActCfg && _reoActCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.REOACT_OFF);
+		if (_reoActOn) {
+			const startMap = new Map();
+			for (const b of bundles) if (!startMap.has(b.startIndex)) startMap.set(b.startIndex, b);
+			let lastNum = null, claimed = true;
+			for (let idx = 0; idx < items.length; idx++) {
+				if (items[idx].type === "table") {
+					const n = this.#reoActivityNum(items[idx].block);
+					if (n) { lastNum = n; claimed = false; }
+				}
+				const b = startMap.get(idx);
+				if (b && !b.activityId && lastNum && !claimed && b.canonTag !== "activity") {
+					let id = lastNum;
+					while (seenAct.has(id)) id = this.#nextActivityId(id);
+					b.activityId = id; b.reoActivity = true; seenAct.add(id);
+					claimed = true;   // one number → one box; the next bundle waits for the next row
+				}
+			}
+		}
+
+		for (const b of bundles) {
+			if (b.activityOwner === undefined && b.canonTag !== "activity") continue;
+			let id = b.activityId;
+			if (!id && b.activityOwner) {
+				const m = (b.activityOwner.text || "").match(/activit(?:y|ies)\b[^a-z0-9]*#?\s*(\d+\s*[a-z]?)/i);
+				if (m) id = m[1].replace(/\s+/g, "").toUpperCase();
+				// The writer's number may ride in the opener's BLACK tail instead of the
+				// coloured span ("[Activity] **1A**", as in the TEDC402 layout-table
+				// family). Recovering the writer's own id — never inventing one — gives
+				// the box the gold's `number="1A"`.
+				// Data opener_rule.owner_id_from_tail; env SBOWNERID_OFF.
+				if (!id && (DataService.Data.BoundaryBank._meta.opener_rule.owner_id_from_tail ?? false)
+					&& !(typeof process !== "undefined" && process.env && process.env.SBOWNERID_OFF)) {
+					const m2 = ((b.activityOwner.text || "") + " " + (b.activityOwner.blackAfter || ""))
+						.match(/activit(?:y|ies)\b[^a-z0-9]*#?\s*(\d+\s*[a-z]?)/i);
+					if (m2) { id = m2[1].replace(/\s+/g, "").toUpperCase(); b._idFromTail = true; }
+				}
+			}
+			if (!id) continue;
+			while (seenAct.has(id)) id = this.#nextActivityId(id);
+			seenAct.add(id);
+			b.activityId = id;
+		}
+		return bundles;
+	};
+
+	/**
+	 * Swallows members forward from startJ until the first terminator
+	 * (the bank's member_rule: membership = "not a terminator"). Shared by
+	 * the normal interactive path and the unclassified-activity path.
+	 *
+	 * @returns {number} endIndex — the item range consumed is [.., endIndex)
+	 */
+	/**
+	 * Is this a bilingual `English|Māori` CONTENT table? (Mirrors the same check in
+	 * BilingualBuilder.bilingualHeader: row-0 col-0 reads roughly "english", row-0 col-1 reads
+	 * roughly "māori|te reo".) Such a table is the writer's reo/eng PROSE — never a widget, even
+	 * when a body cell embeds an `[Interactive] [X]` reference — so `#interactiveInTable` must NOT
+	 * capture it; it unfolds separately via `BilingualBuilder.bilingualTable` instead. This file has
+	 * no access to the shared `Utils` helper class, so text folding for comparison (stripping
+	 * `*`/red-marker/`🔴`/extra spaces) is done inline here rather than via Utils.Fold.
+	 *
+	 * @param {Object} block - a table block (block.rows = array of row arrays of cell text)
+	 * @returns {boolean}
+	 */
+	static #bilingualContentTable(block) {
+		const cfg = DataService.Data.EmitTemplates?.elements?.dual_language;
+		const rows = block?.rows ?? [];
+		if (!rows.length || !Array.isArray(rows[0]) || rows[0].length < 2) return false;
+		const fold = (s) => String(s ?? "")
+			.replace(/\u{1f534}|\[\/?RED TEXT\]|\*/gu, "").toLowerCase().trim();
+		return new RegExp(cfg?.header_english || "english", "i").test(fold(rows[0][0]))
+			&& new RegExp(cfg?.header_maori || "māori|maori|te reo", "i").test(fold(rows[0][1]));
+	};
+
+	/**
+	 * Does this table OPEN a bilingual SECTION (a `[H1] N.M` decimal sub-section number, e.g.
+	 * 1.1 / 2.3)? Mirrors `BilingualBuilder.bilingualSectionNum`. A widget bundle must TERMINATE
+	 * at one, so it never swallows the next section's heading into itself (which would produce an
+	 * over-extended activity box covering more than one section). Robust to `**bold**` /
+	 * `🔴[RED TEXT]` cell markers.
+	 *
+	 * @param {Object} block - a table block
+	 * @returns {boolean}
+	 */
+	static #sectionOpenerRe = /\[\s*h1\s*\]\s*\d+\.\d+/i;
+	static #bilingualSectionOpener(block) {
+		const rows = block?.rows ?? [];
+		if (!rows.length || !Array.isArray(rows[0]) || rows[0].length < 2) return false;
+		const strip = (s) => String(s ?? "").replace(/🔴|\[\/?RED TEXT\]|\*/g, "");
+		for (let r = 0; r < Math.min(rows.length, 3); r++)
+			for (const c of (rows[r] || []))
+				if (InteractiveScanner.#sectionOpenerRe.test(strip(c))) return true;
+		return false;
+	};
+
+	/**
+	 * Is this tag item a standalone RED "Phase N" fundamentals phase delimiter? (No resolved
+	 * primary tag, class noise/instruction, ENTIRE folded text matching the phase_text
+	 * delimiter_pattern, on a fundamentals single-file module.) Some fundamentals-style modules
+	 * mark where one "phase" of the lesson ends and the next begins using plain red text like
+	 * "Phase 2" rather than a bracketed tag. Used by #swallowMembers (which has no access to this
+	 * method's enclosing scope, so it calls it directly) as a HARD member-walk terminator — the red
+	 * twin of terminators_absolute_text (never a member of any widget, always ends capture). Data
+	 * fundamentals_panels.phase_text.red_delimiter (+ scanner_hard_terminator); env
+	 * FUNPANRED_OFF.
+	 *
+	 * This method ALSO accepts a second, BRACKETED phase-boundary OPENER shape used by a different
+	 * family of modules: "[Phase one content begins]"/"[Start of phase two content]" — without this,
+	 * a widget such as an engagement quiz could swallow the next phase's opener bracket, trapping
+	 * the phase boundary marker inside the widget's captured content instead of letting it end the
+	 * widget. OPENER pattern only — the matching CLOSER form ("[End of Phase One]") never needs this
+	 * same protection (a widget never tries to consume it); the call site's !primary guard already
+	 * excludes closers anyway, since they resolve to "end other"/"end page" directives rather than
+	 * a plain red span. Data fundamentals_panels.phase_text.bracketed_delimiter
+	 * (+ scanner_hard_terminator); env FUNPANBRACKET_OFF.
+	 *
+	 * @param {Object} it - a page item (item.type, item.parse)
+	 * @param {ConversionRun} run - for resolvedRules.body_class / page_model
+	 * @returns {boolean}
+	 */
+	/**
+	 * Is this item a TILE-PAGE marker (`[Tile N content]` / `[Tile N]`) on a page
+	 * the tile-page dialect governs? The marker resolves to the `shape n` SUBTAG, so it is
+	 * recognised by its FOLDED TEXT (tile_pages.marker_pattern, never the ENDS form). Gated to
+	 * the fundamentals body class + the single-file page model + a tile_pages registry row for
+	 * this module (its series, else its subject|template_phase group) — the same gate
+	 * ContentConverter.#tilePagesPrepass applies, so the scanner and the pre-pass agree on
+	 * exactly which pages the markers are boundaries. Data
+	 * fundamentals_panels.tile_pages (scanner_hard_terminator); env TILEPAGE_OFF.
+	 *
+	 * @param {Object} it - a page item
+	 * @param {ConversionRun} run
+	 * @returns {boolean}
+	 */
+	/** Is this item an INQUIRY PANEL OPENER that must END the open bundle's member
+	 *  capture? The opener resolves to the `tab n` SUBTAG (`[Tab N]`, `[New tab]`, `[New side tab]`,
+	 *  `[Insert Right click tab – …]`; never the `end tab n` CONTAINER_CLOSE, which already
+	 *  terminates). #swallowMembers stops at the bank's absolute terminators, CONTAINER_CLOSE,
+	 *  PAGE_BOUNDARY and h2–h5 — never at a sub-tag — so an un-closed carousel / flip-card capture
+	 *  would run THROUGH the next opener and take the whole panel (CEDR401 `[Tab 5] Surprises in
+	 *  the data` up to `[Tab 6]`; TWHA902's `[Tab 4]` / `[Tab 6]` / `[Tab 9]`); the empty-opener
+	 *  recovery handles only a TRAILING empty opener. Gated to a registry-known Inquiry module
+	 *  (`module_meta.template_type`, the template fallback's own scope) on a single-file page, and
+	 *  never to a real `[tabs]` widget (its `[Tab N]` are its members). Data
+	 *  inquiry_tabs.opener_stops_capture; env INQOPENER2_OFF.
+	 *
+	 * @param {Object} it - a page item
+	 * @param {Object} bundle - the open bundle
+	 * @param {ConversionRun} run
+	 * @returns {boolean}
+	 */
+	static #inquiryOpenerMarker(it, bundle, run) {
+		const cfg = DataService.Data.EmitTemplates?.body_region?.inquiry_tabs?.opener_stops_capture;
+		if (!cfg || cfg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "INQOPENER2_OFF"]) return false;
+		if (!it || it.type !== "tag") return false;
+		const p = it.parse?.primary;
+		if (!p || p.directive !== "SUBTAG") return false;
+		const tag = String(p.tag || "");
+		if (!/\btab\b/i.test(tag) || /^end\b/i.test(tag)) return false;
+		if (bundle && (bundle.type === "tabs" || bundle.canonTag === "tabs")) return false;
+		// An EXPlore stage page's tab opener (PageSplitter flagged it `_stageOpener`) ends the capture too: the
+		// panel it opens is the stage page's inquiry panel (EXBP901's "[New tab] Keep track of progress" inside a carousel
+		// capture). Data inquiry_tabs.template_fallback.stage_dialect; env EXSIDETAB_OFF.
+		if (it._stageOpener === true) {
+			const sd = DataService.Data.EmitTemplates?.body_region?.inquiry_tabs?.template_fallback?.stage_dialect;
+			if (sd && sd.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[sd.env || "EXSIDETAB_OFF"])) return true;
+		}
+		// a panel OPENER carries a digit (`[Tab 5]`), a label (`[New tab] Organisation for school`, `[Tab 4] Body
+		// language`, `[Tab 2 – Scenario]`) or the `new … tab` form; a BARE `[Tab]` is a `[Tabs]` widget's member
+		// (TWHR907's third tab inside a drop-down capture) and never a boundary
+		const inner = String(it.text || "").replace(/\[\/?RED TEXT\]|\u{1f534}/gu, "");
+		const br = /\[([^\]]*)\]\s*(.*)$/s.exec(inner);
+		const bracket = br ? br[1] : inner, tail = br ? br[2] : "";
+		const labelled = !!String(it.blackAfter || "").trim() || !!tail.replace(/\[[^\]]*\]/g, "").trim()
+			|| /[A-Za-z]/.test(bracket.replace(/\b(?:tab|tabs|new|side|insert|right|click)\b/gi, "").replace(/\d/g, ""));
+		if (!/\d/.test(bracket) && !labelled && !/\bnew\b/i.test(bracket)) return false;
+		const tt = String(DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")]?.template_type ?? "");
+		if (!(cfg.template_types || ["Inquiry"]).map(String).includes(tt)) return false;
+		if (cfg.single_file_only !== false && run?.resolvedRules?.page_model === "multi-file") return false;
+		return true;
+	};
+
+	static #tilePageMarker(it, run) {
+		const tp = DataService.Data.EmitTemplates?.body_region?.fundamentals_panels?.tile_pages;
+		if (!tp || tp.enabled === false || tp.scanner_hard_terminator === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[tp.env || "TILEPAGE_OFF"]) return false;
+		if (it.type !== "tag") return false;
+		if (!/(^|\s)fundamentals(\s|$)/.test(run?.resolvedRules?.body_class || "")) return false;
+		if (run?.resolvedRules?.page_model !== "single-file") return false;
+		const folded = (it.parse?.folded ?? "").trim();
+		if (new RegExp(tp.marker_ends_pattern || "^\\[tile\\s*\\d+\\s+content\\s+ends\\]$", "i").test(folded)) return false;
+		// the tile markers, plus the page-structure instructions the pre-pass consumes
+		// (the RHS side-tab navigation list and the tile-links table instruction) —
+		// all of them section boundaries a widget must never swallow
+		const pats = [tp.marker_pattern || "^\\[tile\\s*(\\d+)(?:\\s+content)?\\]$",
+			...(tp.scanner_terminator_patterns ?? [tp.nav_tag_pattern, tp.tile_links_pattern]).filter(Boolean)];
+		if (!pats.some((p) => new RegExp(p, "i").test(folded))) return false;
+		const reg = tp.registry || {};
+		if (reg.series?.[run?.moduleCode]) return true;
+		const subj = (run?.moduleCode || "").match(/^[A-Za-z]+/)?.[0] || "";
+		const rawPhase = run?.resolvedRules?.template_phase ?? "";
+		const phase = DataService.Data.EmitTemplates?.skeleton?.template_attr_map?.[rawPhase] ?? rawPhase;
+		const lk = `${subj}|${phase}`.toLowerCase();
+		return Object.keys(reg.groups || {}).some((k) => k.toLowerCase() === lk);
+	};
+
+	static #redPhaseDelimiter(it, run) {
+		const fp = DataService.Data.EmitTemplates?.body_region?.fundamentals_panels?.phase_text;
+		if (!fp) return false;
+		if (typeof process !== "undefined" && process.env && process.env.FUNDPHASE_OFF) return false;
+		if (!/(^|\s)fundamentals(\s|$)/.test(run?.resolvedRules?.body_class || "")) return false;
+		if (run?.resolvedRules?.page_model !== "single-file") return false;
+		if (!(it.parse?.class === "noise" || it.parse?.class === "instruction")) return false;
+		const folded = (it.parse?.folded ?? "").trim();
+		const rd = fp.red_delimiter;
+		if (rd && rd.enabled !== false && rd.scanner_hard_terminator !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.FUNPANRED_OFF)
+			&& new RegExp(fp.delimiter_pattern || "^phase\\s+\\d+$", "i").test(folded)) return true;
+		const br = fp.bracketed_delimiter;
+		if (br && br.enabled !== false && br.scanner_hard_terminator !== false && br.opener_pattern
+			&& !(typeof process !== "undefined" && process.env && process.env.FUNPANBRACKET_OFF)
+			&& new RegExp(br.opener_pattern, "i").test(folded)) return true;
+		// The MXFUN code-content phase marker (`[MXFUN402 Content - PHASE 4]`) is a hard
+		// terminator too: without it a widget open at the end of Phase 3 would swallow the
+		// Phase 4 marker as a member and the fourth panel would never open (MXFUN02). Same gate as the
+		// two forms above. Data fundamentals_panels.phase_text.code_content_delimiter; env CODEPHASE_OFF.
+		const cc = fp.code_content_delimiter;
+		if (cc && cc.enabled !== false && cc.scanner_hard_terminator !== false && cc.marker_pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[cc.env || "CODEPHASE_OFF"])
+			&& new RegExp(cc.marker_pattern, "i").test(folded)) return true;
+		return false;
+	};
+
+	/**
+	 * ACCORDION-AS-PHASES: which suppressed FORM is this item, or null when this behaviour isn't
+	 * gated on for the current module? Some modules author their whole lesson as ONE [Accordion]
+	 * widget with numbered [Accordion N] panels — but the FINISHED page presents those panels as
+	 * fundamentals "phases" chrome (a phases nav + one panel per phase), never as a built accordion
+	 * widget. The tricky part: these accordion tags are normally CONSUMED into a widget bundle by
+	 * the scanner (unlike the other phase-delimiter shapes above, which are always left unconsumed),
+	 * so the scanner must be told NOT to bundle them at all on a gated module.
+	 * Gate = data flag + env + fundamentals body_class + single-file page + a registry row (see
+	 * #accordionPhaseRow) restricting this to specific module families — because numbered
+	 * [Accordion N] is ALSO the ordinary, standard way many OTHER (non-fundamentals) modules author
+	 * a genuine, real accordion widget, so this suppression must never fire for those.
+	 * Returns one of three forms: "break" = a numbered invocation, i.e. a PHASE BOUNDARY (a later
+	 * pre-pass turns it into a phase-break marker; it's also treated as a HARD member-walk
+	 * terminator here so no other widget bundle can swallow it), "noop" = the bare [accordion]
+	 * opener with no number (a later pre-pass simply consumes and discards it), "dissolve" = any
+	 * other accordion-primary form, such as the writer's own "[link to this section of the
+	 * accordion menu]" cross-link — left unconsumed so a later pre-pass can dissolve it back into
+	 * ordinary prose (re-exposing its blackAfter text). Data
+	 * fundamentals_panels.phase_text.accordion_delimiter; env FUNPANACC_OFF
+	 * (FUNDPHASE_OFF reverts the whole phase-text machinery, not just this suppression).
+	 *
+	 * @param {Object} it - a page item (item.type, item.parse)
+	 * @param {ConversionRun} run - for resolvedRules.body_class / page_model / moduleCode
+	 * @returns {"break"|"noop"|"dissolve"|null}
+	 */
+	/**
+	 * Is this INTERACTIVE invocation actually the MTK bilingual template's
+	 * "[Content for DROP DOWN MENU]" module-menu marker (the
+	 * PNR101/102/104 family)? The marker resolves to the "dropdown" widget tag,
+	 * but it introduces the module MENU table, not a widget: a bundle opened
+	 * here would capture that table into a placeholder and the menu would never
+	 * be built. Gated to bilingual (reoTranslate / TRR / PNR-prefix) modules
+	 * whose opener is DIRECTLY followed by a TABLE item (the PNR shape) — a
+	 * real "[dropdown]" widget on any other module, and the paragraph-form
+	 * TRR203/TRR301 siblings (their menu content is loose paragraphs, not a
+	 * table), are completely unaffected.
+	 * Data: elements.dual_language.dropdown_menu. Env toggle: REODROPMENU_OFF.
+	 *
+	 * @param {Object[]} items - the page's item stream
+	 * @param {number} i - index of the tag item (primary directive INTERACTIVE)
+	 * @param {ConversionRun} run - module identity + resolved rules
+	 * @returns {boolean} true = suppress (not a widget; leave unconsumed)
+	 */
+	static #dropdownMenuMarker(items, i, run) {
+		const dl = DataService.Data.EmitTemplates?.elements?.dual_language;
+		const cfg = dl?.dropdown_menu;
+		if (!cfg || cfg.enabled === false || dl.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env.REODROPMENU_OFF) return false;
+		if (items[i + 1]?.type !== "table") return false;   // the PNR table shape only
+		const _mtkArm = dl.use_mtk_flag === true
+			|| !!(typeof process !== "undefined" && process.env && process.env.MTKREO_OFF);
+		const reo = /reoTranslate/i.test(run?.resolvedRules?.body_class || "")
+			|| (_mtkArm && !!run?.mtkFlag)
+			|| (dl.code_prefixes || []).some((p) =>
+				String(run?.moduleCode || "").toUpperCase().startsWith(String(p).toUpperCase()));
+		if (!reo) return false;
+		return new RegExp(cfg.opener_pattern ?? "^\\[content for drop[ -]?down menu\\]$", "i")
+			.test((items[i].parse?.folded ?? "").trim());
+	};
+
+	/**
+	 * THE BARE NUMBERED SERIES OPENER.
+	 *
+	 * Decide whether the item at `i` — a SUBTAG such as `[Tab 1]` or `[Slide 1]`, which can
+	 * never open a widget on its own — is in fact the start of a numbered series the writer
+	 * meant as a whole widget and simply never named. The tabs and carousel builders cannot
+	 * help when no bundle is created for them to read, and creating that bundle is the only
+	 * thing this predicate does.
+	 *
+	 * FOUR FENCES (see the data block's `_note`):
+	 *
+	 *   1. CLEAN NUMBERED FORM. The marker must have parsed as a clean numbered tag (`how` in
+	 *      clean_hows) AND carry a numeric number. `[New tab]`, `[Tab Nav]`,
+	 *      `[Tab layout]`, `[Template tab here]` and every other prose form parse as
+	 *      `how:"embedded"` with no number, so the fundamentals-panel and choice-page marker
+	 *      families are excluded BY CONSTRUCTION rather than by a word list.
+	 *   2. CONTENT BETWEEN THE PANES (`min_gap`). This is the load-bearing one. The BLL and
+	 *      CED INQUIRY families declare `[Tab 1]…[Tab 6]` as a CONTIGUOUS crumb list naming
+	 *      the module's pages, and the inquiry panel builders already turn those into correct
+	 *      inquiry panels. Such crumb lists have gaps of exactly 1 between consecutive
+	 *      markers; the pages whose gold builds a real tab strip have gaps of 3 or more. A tab
+	 *      strip has content in its panes; a crumb list does not.
+	 *   3. NO OPENER ALREADY ON THE PAGE. If any INTERACTIVE invocation of the partner widget
+	 *      exists anywhere on this page, the markers escaping it is a capture or builder
+	 *      question — the tabs and carousel builders own those — not a gathering one.
+	 *   4. A LABEL IS NEVER INVENTED (tabs only). Every marker must carry its own trailing
+	 *      text within `label_max_words`. MXDI201-9.0's markers carry whole PARAGRAPHS and its
+	 *      human developer invented four short names instead; TWHA901/906 and TWHK903 carry
+	 *      none at all. A SLIDE needs no label — captions are optional and some of the gold's
+	 *      slides carry no media either — so a slide's content is simply whatever follows its
+	 *      marker.
+	 *
+	 * @param {Object[]} items - the page's item stream
+	 * @param {number} i - index of the candidate first marker
+	 * @returns {{widget:string, opener_tag:string, family:string, count:number}|null}
+	 *   the resolved widget when the series qualifies, else null (the item is skipped, so
+	 *   every page that does not qualify is unaffected by construction)
+	 */
+	static #bareSeriesOpener(items, i) {
+		const cfg = DataService.Data.BoundaryBank?._meta?.member_rule?.bare_series_opener;
+		if (!cfg || cfg.enabled === false) return null;
+		const it = items[i];
+		if (!it || it.type !== "tag" || it.consumedBy !== undefined) return null;
+		const prim = it.parse?.primary;
+		if (!prim) return null;
+		const fam = (cfg.families ?? {})[prim.tag];
+		if (!fam) return null;
+		if (fam.env && typeof process !== "undefined" && process.env && process.env[fam.env]) return null;
+
+		const cleanHows = cfg.clean_hows ?? ["exact", "denumbered", "denumbered_head"];
+		const minGap = cfg.min_gap ?? 2;
+		const minMembers = cfg.min_members ?? 2;
+		const numOf = (m) => {
+			if (!m || m.type !== "tag" || m.consumedBy !== undefined) return null;
+			const p = m.parse?.primary;
+			if (!p || p.tag !== prim.tag) return null;
+			if (!cleanHows.includes(String(p.how ?? ""))) return null;
+			const raw = (m.parse.numbers ?? [])[0];
+			const n = parseInt(raw, 10);
+			return (/^\d+$/.test(String(raw ?? "")) && Number.isFinite(n)) ? n : null;
+		};
+		// FENCE 1 — this item must itself be a clean numbered marker.
+		const first = numOf(it);
+		if (first === null) return null;
+
+		// FENCE 3 — an INTERACTIVE invocation of the partner widget anywhere on the page.
+		for (const m of items) {
+			if (!m || m.type !== "tag") continue;
+			const p = m.parse?.primary;
+			if (!p || p.directive !== "INTERACTIVE") continue;
+			const wt = (DataService.Data.TagLexicon?.tags?.[p.tag] || {}).widget_types || [];
+			if (p.tag === fam.opener_tag || wt.includes(fam.widget)) return null;
+		}
+
+		// The RISING run starting here, gathered over the clean numbered markers only.
+		const label = (m) => {
+			const tail = String(m.blackAfter ?? "").trim();
+			if (tail) return tail;
+			const mm = /\][ \t]*(\S.*)$/.exec(String(m.text ?? "").trim());
+			return mm ? mm[1].trim() : "";
+		};
+		// The CONSECUTIVE run starting here. Consecutive, not merely rising: a gap in the
+		// writer's own numbering means a marker the walk could not read, so the series is not
+		// fully understood and building from it would be a guess. ANZH105-6.0 is the live
+		// case — its second series reads [Slide 1] … [Slide 3] because the middle marker was
+		// typed as "[Slide 2] [H4]" and resolves to the heading tag instead; capturing 1 and 3
+		// would sweep in an "[H4] New Zealand Māori" whose heading the widget walk then drops.
+		// Requiring 1,2,3… leaves that series as ordinary content.
+		const consecutive = cfg.require_consecutive !== false;
+		const run = [{ idx: i, n: first, item: it }];
+		for (let j = i + 1; j < items.length; j++) {
+			const n = numOf(items[j]);
+			if (n === null) continue;
+			const prev = run[run.length - 1].n;
+			if (consecutive ? (n !== prev + 1) : (n <= prev)) break;   // series ended
+			run.push({ idx: j, n, item: items[j] });
+		}
+		if (run.length < minMembers) return null;
+
+		// FENCE 2 — real content between every consecutive pair.
+		for (let k = 0; k + 1 < run.length; k++) {
+			if (run[k + 1].idx - run[k].idx < minGap) return null;
+		}
+		// FENCE 4 — a label on every marker, never invented, never a paragraph.
+		if (fam.require_label) {
+			const maxW = fam.label_max_words ?? 6;
+			for (const r of run) {
+				const l = label(r.item).replace(/\*+/g, "").trim();
+				if (!l) return null;
+				if (l.split(/\s+/).length > maxW) return null;
+			}
+		}
+		return {
+			widget: fam.widget, opener_tag: fam.opener_tag, family: prim.tag,
+			count: run.length, secondIndex: run[1].idx,
+		};
+	};
+
+	static #accordionPhaseForm(it, run) {
+		const acc = DataService.Data.EmitTemplates?.body_region?.fundamentals_panels?.phase_text?.accordion_delimiter;
+		if (!acc || acc.enabled === false || acc.scanner_suppress === false) return null;
+		if (typeof process !== "undefined" && process.env
+			&& (process.env.FUNPANACC_OFF || process.env.FUNDPHASE_OFF)) return null;
+		if (it.type !== "tag" || it.parse?.primary?.tag !== (acc.tag || "accordion")) return null;
+		if (!/(^|\s)fundamentals(\s|$)/.test(run?.resolvedRules?.body_class || "")) return null;
+		if (run?.resolvedRules?.page_model !== "single-file") return null;
+		if (!InteractiveScanner.#accordionPhaseRow(acc, run)) return null;
+		const folded = (it.parse?.folded ?? "").trim();
+		if (new RegExp(acc.numbered_pattern || "^\\[accordion\\s+\\d+\\]$", "i").test(folded)) return "break";
+		if (new RegExp(acc.bare_pattern || "^\\[accordion\\]$", "i").test(folded)) return "noop";
+		return "dissolve";
+	};
+
+	/** The accordion_delimiter registry row for this run, or null. Looks the module up by its exact
+	 *  code first (a per-module "series" override), then falls back to its subject+phase group — the
+	 *  same two-tier lookup shape used elsewhere for per-family registry data. */
+	static #accordionPhaseRow(acc, run) {
+		const reg = acc.registry || {};
+		if (reg.series && reg.series[run?.moduleCode]) return reg.series[run.moduleCode];
+		const subj = (run?.moduleCode || "").match(/^[A-Za-z]+/)?.[0] || "";
+		const rawPhase = run?.resolvedRules?.template_phase ?? "";
+		const phase = DataService.Data.EmitTemplates.skeleton?.template_attr_map?.[rawPhase] ?? rawPhase;
+		const lk = `${subj}|${phase}`.toLowerCase();
+		const hit = Object.keys(reg.groups || {}).find((k) => k.toLowerCase() === lk);
+		return hit ? reg.groups[hit] : null;
+	};
+
+	/** reoMode for a run (mirrors the scan-time flag) — used by #swallowMembers, which has no closure. */
+	static #reoModeFor(run) {
+		const cfg = DataService.Data.EmitTemplates?.elements?.dual_language;
+		// The MTK house header is honoured as a bilingual signal only when data explicitly says
+		// use_mtk_flag:true, or the env var MTKREO_OFF=1 turns the more permissive behaviour
+		// on (see PageSplitter for why the header alone isn't trusted by default).
+		const _mtkArm = (!!cfg && cfg.use_mtk_flag === true)
+			|| !!(typeof process !== "undefined" && process.env && process.env.MTKREO_OFF);
+		return !!cfg && cfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.REOTRANSLATE_OFF)
+			&& (/reoTranslate/i.test(run?.resolvedRules?.body_class || "") || (_mtkArm && !!run?.mtkFlag)
+				|| (cfg.code_prefixes || []).some((p) => String(run?.moduleCode || "").toUpperCase().startsWith(String(p).toUpperCase())));
+	};
+
+	/**
+	 * TRUE when an ABSOLUTE-terminator item is really the writer's own [Title] for a
+	 * HINT, so the member walk swallows it instead of stopping there.
+	 *
+	 * THE PROBLEM. `[Title]` resolves to primary tag `title bar` (SECTION_MARKER), which
+	 * is in `terminators_absolute`. A writer who types the hint's title in its OWN
+	 * paragraph would therefore end the walk before anything was captured, leaving the
+	 * hint as an empty hand-off box; a writer who types it on the ADJACENT line keeps
+	 * the title, because there the two tags merge into a single red span. Same widget,
+	 * same intent, opposite outcome — a variation, and this rule handles it.
+	 *
+	 * THE FENCES (all four required, so a real page title bar is never stolen):
+	 *   1. the bundle's type is in `types` (hint / hintSlider) — every other widget's
+	 *      title-stop behaviour is untouched BY CONSTRUCTION;
+	 *   2. the bundle has captured no CONTENT yet — every member so far is the widget's
+	 *      own invocation (the opener is itself collected as a member), so the title must
+	 *      immediately follow the invocation and this can never reach a later section;
+	 *   3. the folded tag is exactly "[title]" — a genuine page bar folds to "[title bar]";
+	 *   4. the blackAfter is non-empty and <= max_words (a hint title is short).
+	 *
+	 * @param {Object} bundle - the open bundle
+	 * @param {Object} item   - the candidate terminator item
+	 * @param {Object} p      - item.parse.primary
+	 * @returns {boolean} true → swallow as a member; false → normal terminator handling
+	 */
+	static #hintTitleMember(bundle, item, p) {
+		if (typeof process !== "undefined" && process.env && process.env.HINTTITLE_OFF) return false;
+		const cfg = DataService.Data.BoundaryBank?._meta?.member_rule?.hint_title_member;
+		if (!cfg || cfg.enabled === false) return false;
+		if (!(cfg.types ?? []).includes(bundle?.type)) return false;
+		// "captured no content yet": the opener tag is itself collected as a member, so
+		// allow the invocation(s) and nothing else — the title must sit directly after it.
+		if ((bundle?.memberItems ?? []).some((m) => m?.parse?.primary?.directive !== "INTERACTIVE")) return false;
+		if (String(item?.parse?.folded ?? "").trim().toLowerCase() !== String(cfg.folded ?? "[title]")) return false;
+		const black = String(item?.blackAfter ?? "").trim();
+		if (!black) return false;
+		return black.split(/\s+/).length <= (cfg.max_words ?? 12);
+	};
+
+	/**
+	 * The writer's NUMBERED [title N] PANEL DELIMITER (the CHFUN05 dialect).
+	 *
+	 * CHFUN05's writer delimits every accordion panel with "[title 1]", "[title 2]", …
+	 * (a few of them misspelled "[tilte N]"), the panel's heading riding as the tag's
+	 * black tail. "[title N]" resolves to primary tag `title bar` / SECTION_MARKER — an
+	 * ABSOLUTE terminator — so without this rule the walk dies at each accordion's own
+	 * first panel and captures NOTHING, while a section whose writer misspelled the word
+	 * captures everything, because "[tilte N]" resolves to NO tag at all and nothing
+	 * terminates. The gold builds every accordion and panel from exactly these markers.
+	 * So: inside an accordion-family bundle, a numbered title marker is a MEMBER, not a
+	 * terminator. The numbered form is a single-module dialect (CHFUN05), so the fence
+	 * (numbered + an accordion-family walk) fires there alone; the UNNUMBERED [Title]
+	 * stops of BLL266/OSBY401/SSFUN07 never match the pattern and keep terminating. The
+	 * misspelling is a DATA-listed spelling alternation in the pattern, not a fuzzy
+	 * matcher. Data member_rule.title_panel_member; env ACCTITLEMEM_OFF.
+	 *
+	 * @param {Object} bundle - the open bundle
+	 * @param {Object} item   - the candidate terminator item
+	 * @param {Object} p      - item.parse.primary
+	 * @returns {boolean} true → swallow as a member; false → normal terminator handling
+	 */
+	static #titlePanelMember(bundle, item, p) {
+		if (typeof process !== "undefined" && process.env && process.env.ACCTITLEMEM_OFF) return false;
+		const cfg = DataService.Data.BoundaryBank?._meta?.member_rule?.title_panel_member;
+		if (!cfg || cfg.enabled === false) return false;
+		if (!(cfg.types ?? []).includes(bundle?.type)) return false;
+		if (p?.tag !== "title bar") return false;
+		return new RegExp(cfg.pattern ?? "^\\[\\s*ti(?:tle|lte)\\s+\\d+\\s*\\]$", "i")
+			.test(String(item?.text ?? "").trim());
+	};
+
+	/**
+	 * Is another NUMBERED [title N]/[tilte N] panel delimiter still AHEAD?
+	 *
+	 * The fence on the title-series section-break below: content between two title
+	 * delimiters is the earlier panel's content (including its "[body] Watch the
+	 * video…" + video table — the gold nests those INSIDE accContent), so the
+	 * body-after-data-table section break must not fire between panels. Once no
+	 * further title lies ahead, the series is over and the break semantics resume.
+	 * Mirrors #panelDelimiterAhead, except the thing sought IS a SECTION_MARKER
+	 * (title bar), so a title-bar item never stops the scan; the misspelled
+	 * "[tilte N]" carries no primary at all, which is why the test is on the raw
+	 * bracket text rather than the resolved tag.
+	 *
+	 * @param {Array} items - the page's item stream
+	 * @param {number} from - index to start looking from
+	 * @param {Object} cfg  - member_rule.title_panel_member
+	 * @returns {boolean}
+	 */
+	/**
+	 * The TITLE-SERIES capture decision, shared by the [body] site and the
+	 * table branch of #swallowMembers. Null when the bundle is not in title-series mode
+	 * (no captured numbered title member); "capture" while the current panel is still
+	 * empty OR another numbered title
+	 * lies ahead (in-panel content — the gold nests each panel's video INSIDE
+	 * accContent); "break" when the last panel already has content and no title remains
+	 * (the section resuming — the gold ships the trailing video OUTSIDE the widget).
+	 * Data member_rule.title_panel_member (body_break/lookahead); env ACCTITLEMEM_OFF.
+	 *
+	 * @param {Object} bundle - the open bundle
+	 * @param {Array} items - the page's item stream
+	 * @param {number} j - the current walk index
+	 * @returns {"capture"|"break"|null}
+	 */
+	static #titleSeriesDecision(bundle, items, j, item = null) {
+		if (typeof process !== "undefined" && process.env && process.env.ACCTITLEMEM_OFF) return null;
+		const cfg = DataService.Data.BoundaryBank?._meta?.member_rule?.title_panel_member;
+		if (!cfg || cfg.enabled === false || cfg.body_break === false) return null;
+		if (!(cfg.types ?? []).includes(bundle?.type)) return null;
+		// a TABLE only enters the series decision when it is a MEDIA table (the #isMediaTable
+		// predicate; single-cell form allowed) — a data/comparison table directly under
+		// its [title N] IS the panel's content (CHFUN05's 要/会 comparison, gold-nested)
+		// and must fall through to the ordinary capture.
+		if (item && item.type === "table"
+			&& !this.#isMediaTable(item.block, { min_cells: cfg.trailing_table_min_cells ?? 1 })) return null;
+		const re = new RegExp(cfg.pattern ?? "^\\[\\s*ti(?:tle|lte)\\s+\\d+\\s*\\]$", "i");
+		let lastTitle = -1;
+		for (let q = (bundle.memberItems ?? []).length - 1; q >= 0; q--) {
+			const mm = bundle.memberItems[q];
+			if (mm?.type === "tag" && re.test(String(mm.text ?? "").trim())) { lastTitle = q; break; }
+		}
+		if (lastTitle < 0) return null;
+		const panelHasContent = lastTitle < bundle.memberItems.length - 1;
+		if (!panelHasContent || this.#titleAheadFence(items, j + 1, cfg)) return "capture";
+		return "break";
+	};
+
+	static #titleAheadFence(items, from, cfg) {
+		const re = new RegExp(cfg.pattern ?? "^\\[\\s*ti(?:tle|lte)\\s+\\d+\\s*\\]$", "i");
+		const limit = Math.min(items.length, from + (cfg.lookahead ?? 25));
+		for (let k = from; k < limit; k++) {
+			const it = items[k];
+			if (!it || it.consumedBy !== undefined) continue;
+			if (it.type === "table" || it.type === "black") continue;
+			if (it.type !== "tag") continue;
+			if (re.test(String(it.text ?? "").trim())) return true;
+			const pr = it.parse?.primary;
+			if (!pr) continue;                                        // an unresolved span — read on
+			if (pr.tag === "activity") return false;
+			if (pr.directive === "INTERACTIVE") return false;         // a different widget starts
+			if (pr.directive === "PAGE_BOUNDARY") return false;
+			if (pr.directive === "SECTION_MARKER") return false;      // a REAL section marker ends the series
+		}
+		return false;
+	};
+
+	/**
+	 * The bilingual activity NUMBER ("1A") carried in a table's "Activity NX:" / "Ngohe NX:" label
+	 * row, or null. The number is digit(s) + a single letter followed by a colon (the writer's
+	 * label form); ordinary prose mentioning "activity" without that digit+letter+colon shape never
+	 * matches.
+	 *
+	 * @param {Object} block - a table block
+	 * @returns {string|null}
+	 */
+	static #reoActivityNum(block) {
+		const text = (block && block.text) || "";
+		const m = /\b(?:activity|ngohe)\s*([0-9]+\s*[A-Za-z])\s*:/i.exec(text);
+		return m ? m[1].replace(/\s+/g, "").toUpperCase() : null;
+	};
+
+	/**
+	 * Is there another PANEL DELIMITER for THIS widget still ahead?
+	 *
+	 * The fence on the trailing-button section break: the break must only ever fire in
+	 * the widget's TAIL, never between two panels (which would truncate a real
+	 * multi-panel accordion and spill the rest into free body). Looks ahead over the
+	 * unconsumed items for another tag of the bundle's OWN type, stopping at the first
+	 * item that would end this widget anyway — a different widget's invocation, or a
+	 * SECTION_MARKER / PAGE_BOUNDARY — and at `lookahead` items, so the scan can never
+	 * see a later, unrelated accordion further down the page.
+	 *
+	 * @param {Array} items - the page's item stream
+	 * @param {number} from - index to start looking from
+	 * @param {Object} bundle - the open bundle
+	 * @param {Object} cfg - member_rule.button_tail_terminates
+	 * @returns {boolean} true when another panel delimiter for this widget lies ahead
+	 */
+	/**
+	 * Is this member a GO-TO-JOURNAL button?
+	 *
+	 * The `buttons.go_journal` rule already owns that button at a widget's
+	 * tail: `#goJournalTail` ships the templated <h4 class="goJournal"> after the
+	 * widget while the raw text stays in the hand-off dump. Releasing the same button
+	 * from the bundle would make the main loop render a SECOND, plain `div.button`
+	 * beside that heading (a duplicate, as on HIS1006-12.0). So the trailing-button
+	 * section break steps aside for it and leaves the go-journal machinery in charge.
+	 * Uses the SAME two data patterns as that rule, so the two can never drift apart.
+	 *
+	 * @param {Object} item - the candidate [button] member
+	 * @returns {boolean}
+	 */
+	static #isGoJournalButton(item) {
+		const gj = DataService.Data.EmitTemplates.buttons?.go_journal;
+		if (!gj || gj.enabled === false) return false;
+		const strip = (s) => String(s ?? "")
+			.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\s+/g, " ").trim();
+		const label = strip(item?.blackAfter ?? "");
+		if (gj.label_match && new RegExp(gj.label_match, "i").test(label)) return true;
+		const raw = strip(item?.text ?? "");
+		return !!(gj.raw_match && new RegExp(gj.raw_match, "i").test(raw));
+	};
+
+	static #panelDelimiterAhead(items, from, bundle, cfg = {}) {
+		const limit = Math.min(items.length, from + (cfg.lookahead ?? 12));
+		for (let k = from; k < limit; k++) {
+			const it = items[k];
+			if (!it || it.consumedBy !== undefined) continue;
+			if (it.type !== "tag") continue;
+			const pr = it.parse?.primary;
+			if (!pr) continue;
+			if (pr.tag === bundle.canonTag || pr.tag === bundle.type) return true;   // another panel of ours
+			// A widget whose panels are SUB-tags rather than same-type tags
+			// (the flip card's [front]/[back]/[Card N]) needs those sub-tags recognised
+			// as panel delimiters, or a button BETWEEN two cards would read as a tail
+			// and truncate the deck. DATA-listed per type (panel_subtags_by_type);
+			// EMPTY for every other type.
+			if ((((cfg.panel_subtags_by_type ?? {})[bundle.type]) ?? []).includes(pr.tag)) return true;
+			if (pr.directive === "INTERACTIVE") return false;                        // a different widget starts
+			if (pr.directive === "SECTION_MARKER" || pr.directive === "PAGE_BOUNDARY") return false;
+		}
+		return false;
+	};
+
+	/**
+	 * True when a captured table is a MEDIA TABLE (the CHFUN
+	 * "[slideshow]" dialect): every non-empty cell carries an [image]/[video]
+	 * red-span tag AND a URL (an optional [caption] tag + text may follow in
+	 * the same cell), with at least `min_cells` such cells. Any other cell
+	 * shape (a caption-only cell, a text cell, a tag-less URL grid) fails the
+	 * test, so the rotate-banner / image|caption-table families never match.
+	 *
+	 * @param {Object} block - the table block
+	 * @param {Object} cfg - member_rule.media_table_terminates
+	 * @returns {boolean}
+	 */
+	static #isMediaTable(block, cfg = {}) {
+		const rows = block?.rows ?? [];
+		const tagRe = new RegExp(cfg.cell_tag_pattern ?? "\\[\\s*(image|video)\\s*\\]", "i");
+		let n = 0;
+		for (const r of rows) {
+			if (!Array.isArray(r)) return false;
+			for (const c of r) {
+				const raw = String(c ?? "");
+				if (!raw.trim()) continue;                       // empty cell — ignored
+				if (!tagRe.test(raw)) return false;              // a non-media cell → not a media table
+				if (!/https?:\/\//.test(raw)) return false;      // media tag without a URL → not clean
+				n++;
+			}
+		}
+		return n >= (cfg.min_cells ?? 2);
+	};
+
+	/**
+	 * True when a captured table is a MEDIA|CAPTION table (as in
+	 * OSSC401-1.0): every non-empty DATA ROW pairs exactly ONE media cell (an
+	 * [image]/[video] red-span tag AND a URL) with one or more PROSE cells (real
+	 * text, no media URL of their own). That is the writer's whole slideshow —
+	 * one slide per row — so the member walk must END at the table instead of
+	 * running on into the next section.
+	 *
+	 * The SIBLING of #isMediaTable, which requires EVERY cell to be a
+	 * media cell and therefore fails this form the moment it meets the prose cell.
+	 * `require_video` keeps the image|caption table families (owned by the
+	 * #carouselImageTable capture) untouched.
+	 *
+	 * @param {Object} block - the table block
+	 * @param {Object} cfg - member_rule.media_caption_table_terminates
+	 * @returns {boolean}
+	 */
+	static #isMediaCaptionTable(block, cfg = {}) {
+		const rows = block?.rows ?? [];
+		const tagRe = new RegExp(cfg.media_tag_pattern ?? "\\[\\s*(image|video)\\s*\\]", "i");
+		const urlRe = /https?:\/\/[^\s\]"<>]+/;
+		let nRows = 0, sawVideo = false;
+		for (const r of rows) {
+			if (!Array.isArray(r)) return false;
+			let media = 0, prose = 0;
+			for (const c of r) {
+				const raw = String(c ?? "");
+				if (!raw.trim()) continue;                       // empty cell — ignored
+				const kind = tagRe.exec(raw);
+				const url = urlRe.exec(raw);
+				if (kind && url) {
+					media++;
+					if (kind[1].toLowerCase() === "video") sawVideo = true;
+					continue;
+				}
+				if (url) return false;                           // a bare/untagged media URL → not this form
+				// a prose cell must carry real words once tags are stripped
+				const words = raw.replace(/\[[^\]]*\]/g, " ").replace(/[\u{1f534}]/gu, " ").trim();
+				if (!words) return false;                        // a bare marker cell → not this form
+				prose++;
+			}
+			if (!media && !prose) continue;                      // a wholly empty row
+			if (media !== 1 || prose < 1) return false;          // not a media|caption pair
+			nRows++;
+		}
+		if ((cfg.require_video ?? true) && !sawVideo) return false;
+		return nRows >= (cfg.min_rows ?? 2);
+	};
+
+	/** Next activity number on a collision: 1A → 1B; "1" → "1A". */
+	static #nextActivityId(id) {
+		const m = id.match(/^(.*?)([A-Za-z])$/);
+		return m ? m[1] + String.fromCharCode(m[2].toUpperCase().charCodeAt(0) + 1) : id + "A";
+	};
+
+	/** Re-tags an id-carrying heading (`[H3] 1A Spot the place value`) as the
+	 *  `[Activity 1A]` opener it is, in place. See ScanPage's call site and the data _doc
+	 *  (opener_rule.id_heading_opener). Returns the number of items re-tagged. */
+	/**
+	 * The bracket-less red `Activity 4A` opener (see the ScanPage call site). Returns the count re-parsed.
+	 */
+	static #bareRedOpeners(items, normaliser, run, page, reoMode) {
+		const cfg = DataService.Data.BoundaryBank?._meta?.opener_rule?.bare_red_opener;
+		if (!cfg || cfg.enabled === false || reoMode || !normaliser) return 0;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "BAREACT_OFF"]) return 0;
+		const re = new RegExp(cfg.pattern ?? "^\\**\\s*activity\\s+(\\d{1,2}[a-z]?)\\s*\\**\\s*[:.]?\\s*$", "i");
+		const strip = (s) => String(s ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\s+/g, " ").trim();
+		let n = 0;
+		for (const it of items) {
+			if (it.type !== "tag" || it.consumedBy !== undefined || it.parse?.primary) continue;
+			if ((it.parse?.tags ?? []).length) continue;                 // a span that resolved any tag is not a bare line
+			const m = strip(it.text).match(re);
+			if (!m) continue;
+			const id = m[1].toUpperCase();
+			const parsed = normaliser.Parse(`[Activity ${id}] `);
+			if (!parsed || parsed.primary?.tag !== "activity") continue;
+			it._bareRedOpener = { raw: it.text };
+			it.text = `[Activity ${id}]`;
+			it.parse = parsed;
+			n++;
+		}
+		if (n && run && typeof run.AddNote === "function") {
+			run.AddNote("info", "InteractiveScanner",
+				`Page ${page?.lessonLabel ?? "?"}: ${n} bracket-less red "Activity N" line(s) re-parsed as [Activity N] openers (opener_rule.bare_red_opener).`);
+		}
+		return n;
+	};
+
+	static #idHeadingOpeners(items, normaliser, run, page, reoMode) {
+		const cfg = DataService.Data.BoundaryBank?._meta?.opener_rule?.id_heading_opener;
+		if (!cfg || cfg.enabled === false || reoMode || !normaliser) return 0;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "IDHEAD_OFF"]) return 0;
+		const tags = new Set((cfg.heading_tags ?? ["h2", "h3", "h4", "h5"]).map((t) => String(t).toLowerCase()));
+		const idRe = new RegExp(cfg.id_pattern ?? "^\\**\\s*(\\d{1,2}[A-Z])\\b[\\s.:–—-]*\\**\\s*(\\S.*)$");
+		const minTitle = cfg.min_title_chars ?? 2;
+		const win = cfg.same_id_window ?? 3;
+		// The WORD form: `[H3] Activity 1A: Title` / `[H3] Activity 2A` (the word, then the
+		// id). The digit-first id_pattern does not see it, so the heading would ship free and
+		// the box never open (the gold boxes it). The word list and pattern are data
+		// (opener_rule.id_heading_opener.word_form); a match with no title keeps the heading's own
+		// words as the box title (the gold's h3 slot is always filled).
+		const wf = cfg.word_form;
+		const wfOn = wf && wf.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[wf.env || "ACTWORD_OFF"]);
+		let wordRe = null;
+		if (wfOn) {
+			const words = (wf.words ?? ["Activity"]).map((w) => String(w).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+			const alt = words.map((w) => `${w[0].toUpperCase()}${w.slice(1)}|${w[0].toLowerCase()}${w.slice(1)}|${w.toUpperCase()}`).join("|");
+			wordRe = new RegExp(String(wf.pattern ?? "^\\**\\s*(?:WORDS)\\s+(\\d{1,2}[A-Z])\\b\\s*\\**\\s*[:.–—-]?\\s*(.*)$").replace("WORDS", alt));
+		}
+		const isActOpener = (x, id) => x && x.type === "tag" && x.parse?.primary?.tag === "activity"
+			&& x.parse.primary.directive === "CONTAINER_OPEN"
+			&& (!id || (x.parse.numbers ?? []).some((n) => String(n).toUpperCase() === id));
+		// THE JOURNAL SECTION: a free heading whose section (before the next heading / opener /
+		// section marker) carries a go-to-journal [button] is an activity box in the subjects whose
+		// gold boxes it (English, Leaving to Learn); in NCEA1 and Mathematics the gold is split, and
+		// EXPlore's gold drops the heading. The heading is re-tagged as a bare [Activity] opener (the
+		// positional letter numbers it; the heading's own words are the box title; the button becomes
+		// the goJournal h4 inside the box). Data: opener_rule.id_heading_opener.journal_section   Env: JOURNALBOX_OFF
+		const js = cfg.journal_section;
+		const jsOn = js && js.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[js.env || "JOURNALBOX_OFF"])
+			&& (js.subjects ?? []).includes(String(DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")]?.subject ?? ""));
+		const jsTags = new Set((js?.heading_tags ?? ["h2", "h3", "h4"]).map((t) => String(t).toLowerCase()));
+		const jsStop = new Set((js?.stop_tags ?? ["h1", "h2", "h3", "h4", "h5", "heading", "activity heading", "activity", "title bar", "lesson content"]).map((t) => String(t).toLowerCase()));
+		const journalAhead = (from) => {
+			const limit = Math.min(items.length, from + (js?.max_items ?? 30));
+			for (let k = from; k < limit; k++) {
+				const x = items[k];
+				if (!x || x.consumedBy !== undefined) return false;
+				if (x.type === "table") return false;                       // a table-led section is a widget's, not a journal task's
+				if (x.type !== "tag") continue;
+				const q = x.parse?.primary;
+				if (!q) continue;
+				if (q.directive === "PAGE_BOUNDARY" || q.directive === "SECTION_MARKER" || q.directive === "INTERACTIVE"
+					|| q.directive === "CONTAINER_OPEN" || q.directive === "CONTAINER_CLOSE" || jsStop.has(String(q.tag || "").toLowerCase())) return false;
+				if (q.tag === "button" && this.#isGoJournalButton(x)) return true;
+			}
+			return false;
+		};
+		let n = 0;
+		for (let i = 0; i < items.length; i++) {
+			const it = items[i];
+			if (it.type !== "tag" || it.consumedBy !== undefined || it._idHeading) continue;
+			const p = it.parse?.primary;
+			if (!p || p.directive !== "ELEMENT" || !tags.has(String(p.tag || "").toLowerCase())) continue;
+			const tail = String(it.blackAfter ?? "").replace(/\s+/g, " ").trim();
+			let m = tail.match(idRe);
+			let viaWord = false;
+			if (!m && jsOn && jsTags.has(String(p.tag || "").toLowerCase()) && tail.length >= minTitle && !it.parse?.instructionFragment) {
+				// the previous non-blank item must not be an activity opener (that heading is the box's own title)
+				let pv = i - 1;
+				while (pv >= 0 && items[pv].type === "black" && !String(items[pv].text ?? "").trim()) pv--;
+				const prevOpener = pv >= 0 && isActOpener(items[pv], null);
+				// A heading typed on the SAME line as another heading — a side-by-side caption row
+				// ("[H3] Picture A     [H3] Picture B", XGF9003 5C) — captions the open activity's own
+				// two-column content; it is never a journal section's title (the gold keeps the row and its
+				// journal call inside the writer's box). Data journal_section.not_side_by_side;
+				// env SBSHEAD_OFF (shared with container_auto_close.activity_close_before.side_by_side_headings_stay).
+				const sbsRow = js?.not_side_by_side === true && it.block
+					&& !(typeof process !== "undefined" && process.env && process.env.SBSHEAD_OFF)
+					&& items.some((x) => x !== it && x.type === "tag" && x.block === it.block
+						&& /^h[1-6]$|^heading$/.test(String(x.parse?.primary?.tag || "").toLowerCase()));
+				if (!prevOpener && !sbsRow && journalAhead(i + 1)) {
+					const parsedJ = normaliser.Parse("[Activity] ");
+					if (parsedJ && parsedJ.primary?.tag === "activity") {
+						it._idHeading = { level: String(p.tag).toLowerCase(), raw: it.text, tail, journalSection: true };
+						it.text = "[Activity]";
+						it.parse = parsedJ;
+						it.blackAfter = tail.replace(/\*/g, "").trim();
+						n++;
+					}
+					continue;
+				}
+			}
+			if (!m && wordRe) {
+				m = tail.match(wordRe);
+				if (!m && wf.embedded !== false) {
+					// the word form typed INSIDE the red span — `🔴[H2] Activity 1A🔴 Title` (EXPFUN02,
+					// MXFU302) or `🔴[H2] Activity 1A: Title🔴` (SSFUN07): the embedded text (original
+					// case) joined to the black tail is the same heading
+					const emb = String(normaliser.RenderText(it.text) ?? "").replace(/\s+/g, " ").trim();
+					if (emb) m = [emb, tail].filter(Boolean).join(" ").match(wordRe);
+				}
+				viaWord = !!m;
+			}
+			if (!m) continue;
+			const id = m[1].toUpperCase();
+			let title = m[2].replace(/\*/g, "").trim();
+			// the word form with nothing after the id (`[H3] Activity 2A`): the heading's own words
+			// are the box title (title_fallback "heading"; any other value skips the heading)
+			const wordFallback = viaWord && title.length < minTitle && (wf.title_fallback ?? "heading") === "heading";
+			if (wordFallback) title = tail.replace(/\*/g, "").trim();
+			if (title.length < minTitle) continue;
+			// "2D shapes" / "3D printing" are dimension words, not ids (as in MXDB102 lesson 1):
+			// the writer's activity title starts with a capital / digit / quote / bracket
+			if ((cfg.exclude_ids ?? []).map((x) => String(x).toUpperCase()).includes(id)) continue;
+			if (!new RegExp(cfg.title_start_pattern ?? "^[A-Z0-9\"'‘“(\[]").test(title)) continue;
+			let clash = false;
+			for (let k = Math.max(0, i - win); k <= Math.min(items.length - 1, i + win); k++) {
+				if (k !== i && isActOpener(items[k], id)) { clash = true; break; }
+			}
+			if (clash) continue;
+			const parsed = normaliser.Parse(`[Activity ${id}] `);
+			if (!parsed || parsed.primary?.tag !== "activity") continue;
+			it._idHeading = { level: String(p.tag).toLowerCase(), raw: it.text, tail, wordForm: viaWord };
+			it.text = `[Activity ${id}]`;
+			it.parse = parsed;
+			it.blackAfter = title;
+			n++;
+		}
+		if (n && run && typeof run.AddNote === "function") {
+			run.AddNote("info", "InteractiveScanner",
+				`Page ${page?.lessonLabel ?? "?"}: ${n} id-carrying heading(s) re-tagged as [Activity N] openers (opener_rule.id_heading_opener).`);
+		}
+		return n;
+	};
+
+	static #swallowMembers(bundle, items, startJ, headingTerminates, absolute, run, normaliser = null) {
+		let j = startJ;
+		for (; j < items.length; j++) {
+			const next = items[j];
+
+			if (next.type === "table") {           // content_data — usually a member
+				// TITLE-SERIES trailing-table semantics: in a [title N]-delimited
+				// accordion, a table arriving after the LAST panel already has content is the
+				// section's own trailing media (CHFUN05's 觉得/想 video), which the gold ships
+				// OUTSIDE the widget — the walk ends. A table BETWEEN titles (panel content,
+				// the This/That in-panel videos) falls through to the normal capture below.
+				// See #titleSeriesDecision; env ACCTITLEMEM_OFF.
+				if (this.#titleSeriesDecision(bundle, items, j, next) === "break") break;
+				// reoMode SECTION boundary: a `[H1] N.M` decimal section-opener table starts a NEW
+				// section box (BilingualBuilder.bilingualSection), so a widget bundle must STOP here
+				// and never swallow the next section's heading/prose into itself (which would produce
+				// an over-extended activity box spanning more than one section). Gated by the
+				// section_grouping flag + env REONEST_OFF.
+				const _scfg = DataService.Data.EmitTemplates?.elements?.dual_language?.section_grouping;
+				if (_scfg && _scfg.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env.REONEST_OFF)
+					&& InteractiveScanner.#reoModeFor(run) && InteractiveScanner.#bilingualSectionOpener(next.block)) break;
+				// A following TABLE whose cell carries a DIRECT DIFFERENT-type display-terminator
+				// invocation is a NEW section, not this widget's data. For example, a table-authored
+				// [speechbubble] could otherwise get trapped inside the current activity by the
+				// "table is always a member" swallow rule below; terminate here instead, so the main
+				// loop's #interactiveInTable opens it as its own separate free-body bundle. DIRECT
+				// invocation only — this deliberately does NOT use the looser face-tag inference from
+				// #interactiveInTable below, so ordinary face/data tables are left untouched.
+				// Env ACTSPLIT_OFF.
+				const mrT = DataService.Data.BoundaryBank._meta.member_rule;
+				if (mrT.same_activity_display_terminates && normaliser
+					&& !(typeof process !== "undefined" && process.env && process.env.ACTSPLIT_OFF)) {
+					const ct = this.#tableDirectInvocation(next.block, normaliser);
+					if (ct && ct !== bundle.type && (mrT.display_terminator_types ?? []).includes(ct)) break;
+				}
+				// A MEMBER-based flipCard must TERMINATE at a FOLLOWING table that is itself a
+				// DIFFERENT-type display widget (e.g. a [speech bubble] authored as a table, appearing
+				// right after a set of flip cards) instead of absorbing it as more of its own data — an
+				// absorbed table like that makes the member-card builder bail out to a plain
+				// placeholder instead of building the cards. Uses the table's DIRECT invocation, so a
+				// plain card-DATA table (an ordinary [back]/[front] face-data table, which is NOT a
+				// display widget) is still absorbed as normal. Scoped to listed types. Data
+				// member_rule.table_display_terminates_types; env FLIPTBL_OFF.
+				if (normaliser && (mrT.table_display_terminates_types ?? []).includes(bundle.type)
+					&& !(typeof process !== "undefined" && process.env && process.env.FLIPTBL_OFF)) {
+					const ct2 = this.#tableDirectInvocation(next.block, normaliser);
+					if (ct2 && ct2 !== bundle.type && (mrT.display_terminator_types ?? []).includes(ct2)) break;
+				}
+				// A member-based CAROUSEL/slideshow must LIKEWISE TERMINATE at a FOLLOWING table that
+				// is itself a DIFFERENT-type DISPLAY widget (e.g. a [speech bubble] authored as a table,
+				// appearing right after a run of slides) instead of ABSORBING it. Absorbing a
+				// display-table like that makes the carousel builder bail to a placeholder AND denies
+				// the speech bubble its own separate bundle (the carousel would run right past its last
+				// slide into the next, unrelated widget). Same mechanism as the flipCard guard just
+				// above, scoped to the slideshow types (which never use a data table themselves), so a
+				// plain image/video carousel is unaffected and the main loop's #interactiveInTable opens
+				// the table as its own free-body bundle. The writer tagged TWO separate widgets and the
+				// finished page builds two — the writer's tag corresponds to the finished element. Data
+				// member_rule.table_display_terminates_types_slideshow; env CARTBL_OFF.
+				if (normaliser && (mrT.table_display_terminates_types_slideshow ?? []).includes(bundle.type)
+					&& !(typeof process !== "undefined" && process.env && process.env.CARTBL_OFF)) {
+					const ct3 = this.#tableDirectInvocation(next.block, normaliser);
+					if (ct3 && ct3 !== bundle.type && (mrT.display_terminator_types ?? []).includes(ct3)) break;
+				}
+				// NUMBERED-SERIES CONTAINMENT (OSOH501-01 panel 4). Inside a
+				// numbered-series host, a member TABLE that itself carries a DIFFERENT-type
+				// interactive invocation (the [Click drop] values table typed inside the last
+				// [Accordion 4] panel) becomes a NESTED sub-bundle — rendered in place inside the
+				// panel (built when its builder succeeds, else an honest nested placeholder)
+				// instead of arriving as a foreign data table that bails the host's rich build.
+				// Same gating + data as the tag form above (member_rule.numbered_series_absorb);
+				// requires a REAL series already captured (>= min_panels numbered tags). Env ACCNEST_OFF.
+				const serCfg = mrT.numbered_series_absorb;
+				if (normaliser && serCfg && serCfg.enabled !== false
+					&& (serCfg.hosts ?? []).includes(bundle.type)
+					&& !(typeof process !== "undefined" && process.env && process.env.ACCNEST_OFF)) {
+					const ctN = this.#tableDirectInvocation(next.block, normaliser);
+					if (ctN && ctN !== bundle.type) {
+						const numReT = new RegExp(
+							(serCfg.numbered_pattern ?? "\\[\\s*{type}\\s+\\d+").replace("{type}", bundle.type), "i");
+						const nPanels = [...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])]
+							.filter((m) => m && m.type === "tag" && m.parse?.primary?.tag === bundle.type
+								&& numReT.test(String(m.text ?? ""))).length;
+						if (nPanels >= (serCfg.min_panels ?? 2)) {
+							const sub = {
+								type: ctN, canonTag: ctN, modifier: null,
+								activityId: null, headingText: "",
+								openerItems: [], memberItems: [], tables: [],
+								instructions: [], media: [], redFlags: [],
+								positionContext: bundle.positionContext,
+								startIndex: j, endIndex: j + 1, nested: true,
+							};
+							this.#collectMember(sub, next, run);
+							sub.tables.push(next.block);
+							bundle.memberItems.push({ type: "nested", nestedBundle: sub });
+							(bundle.nestedBundles ??= []).push(sub);
+							run.AddNote("info", "InteractiveScanner",
+								`${bundle.type}: nested [${ctN}] table absorbed as a sub-bundle; host continues.`);
+							continue;
+						}
+					}
+				}
+				// FOREIGN-TABLE SECTION BREAK (freeing the speech bubble from the page-layout
+				// table). A free [speech bubble] whose member walk swallows a table that is NOT
+				// bubble material — the writer's next SECTION laid out as a table ("[H3] Wireframes
+				// | [embed video]", TEDC401-3.0; the slider/click-drop activity tables, TEDC402-2.0)
+				// — would decline the whole widget and trap the section in the hand-off box with it.
+				// The walk ENDS BEFORE such a table (left unconsumed, unlike the media-table
+				// capture-then-break rules): a table carrying its own invocation self-captures as its
+				// own widget via #interactiveInTable, and the rest takes the normal table path.
+				// "Foreign" is the BUILDER'S OWN verdict — the public InteractiveBuilder.SbTableForeign
+				// runs the rich composer's table reading under its most permissive assumption, so a
+				// table it would decline even then belongs to a bundle that could never build anyway.
+				// Fenced on captured content (a bubble invocation's own black text counts — the
+				// content_on_invocation semantics), so an empty-bubble bundle keeps its exact shape.
+				// Data member_rule.foreign_table_terminates; env SBFOREIGNTBL_OFF.
+				{
+					const ftT = mrT.foreign_table_terminates;
+					if (ftT && ftT.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env.SBFOREIGNTBL_OFF)
+						&& (ftT.types ?? ["speechBubble"]).includes(bundle.type)
+						&& bundle.memberItems.some((m) => m && ((m.type === "black" && String(m.text ?? "").trim() !== "")
+							|| (m.type === "tag" && String(m.blackAfter ?? "").trim() !== "")))
+						&& typeof InteractiveBuilder !== "undefined"
+						&& InteractiveBuilder.SbTableForeign(next.block)) {
+						break;   // the table is NOT captured — it takes the normal page path
+					}
+				}
+				bundle.tables.push(next.block);
+				bundle.memberItems.push(next);
+				// MEDIA-TABLE TERMINATION (the CHFUN "[slideshow]" dialect, as in CHFUN01).
+				// In that family the writer authors a slideshow as ONE table whose every cell is a
+				// media cell ([image]/[video] tag + URL, optional [caption]) — the table IS the
+				// whole widget, so the member walk ENDS right after capturing it. Without this,
+				// the carousel would run on past the table and swallow the next section (the
+				// "[dropquiz] 1A Check your understanding" quiz) into its own hand-off box. The
+				// media-cell table form belongs to the CHFUN family alone.
+				// Data member_rule.media_table_terminates; env CARMEDTBL_OFF.
+				{
+					const mtT = DataService.Data.BoundaryBank._meta.member_rule.media_table_terminates;
+					if (mtT && mtT.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env.CARMEDTBL_OFF)
+						&& (mtT.types ?? ["carousel"]).includes(bundle.type)
+						&& this.#isMediaTable(next.block, mtT)) {
+						j++;   // the table itself stays captured; the walk ends AFTER it
+						break;
+					}
+				}
+				// MEDIA|CAPTION-TABLE TERMINATION (as in OSSC401-1.0). The sibling of the
+				// rule above for the dialect where each row pairs a media cell with the
+				// slide's PROSE. That table IS the whole slideshow, so the walk ends at
+				// it; without this OSSC401's carousel would swallow the next section's
+				// heading, body and video into its hand-off box (the gold ends the
+				// carousel at the table). Video-scoped, so the image|caption families
+				// keep their own capture unchanged.
+				// Data member_rule.media_caption_table_terminates; env CARCAPTBL_OFF.
+				{
+					const mcT = DataService.Data.BoundaryBank._meta.member_rule.media_caption_table_terminates;
+					if (mcT && mcT.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env.CARCAPTBL_OFF)
+						&& (mcT.types ?? ["carousel"]).includes(bundle.type)
+						&& this.#isMediaCaptionTable(next.block, mcT)) {
+						j++;   // the table itself stays captured; the walk ends AFTER it
+						break;
+					}
+				}
+				// TABLE SECTION BREAK BEFORE THE NEXT CAROUSEL (the third member of the
+				// media-table family, and the only one that is shape-BLIND). A writer who
+				// lays out several slideshows in a row types one invocation + one table
+				// each; absorbed into ONE bundle, the lot would bail the builder outright
+				// (extraTypes), leaving XTAS101-0.0 a single hand-off box where the GOLD
+				// ships THREE separate carousels — one per table, exactly as written. Once
+				// a table is captured and ANOTHER invocation of this same widget lies ahead,
+				// the table IS this widget and the walk ends at it; the prose between the two
+				// renders as ordinary body, again matching the gold. Deliberately NOT a
+				// blanket "any table ends a carousel": a bundle whose SECOND table has no
+				// invocation of its own keeps both (the builder makes slides from both),
+				// because releasing an untagged table to the body path could leak its raw
+				// [image]/[video] tags. Data member_rule.carousel_table_terminates_before_next;
+				// env CARSPLIT_OFF.
+				{
+					const ctT = DataService.Data.BoundaryBank._meta.member_rule.carousel_table_terminates_before_next;
+					if (ctT && ctT.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env.CARSPLIT_OFF)
+						&& (ctT.types ?? ["carousel"]).includes(bundle.type)
+						// REO / BILINGUAL modules excluded: their tables belong to the bilingual
+						// machinery, and releasing what follows one into the body would put literal
+						// tags on TRR301's pages.
+						&& !(ctT.exclude_reo !== false && InteractiveScanner.#reoModeFor(run))
+						&& this.#panelDelimiterAhead(items, j + 1, bundle, ctT)) {
+						j++;   // the table itself stays captured; the walk ends AFTER it
+						break;
+					}
+				}
+				continue;
+			}
+			if (next.type === "black") {           // free_text_content
+				// A standalone "Phase N" line (a fundamentals PHASE BOUNDARY used by one family of
+				// modules) is a HARD terminator: it is never a widget member, so a quiz or other widget
+				// at the end of a phase must not swallow the next phase's delimiter and content along
+				// with it (that family's own "[end quiz]" closer resolves to "end mcq", which is not an
+				// absolute terminator on its own). Data-driven text terminators; env FUNDPHASE_OFF
+				// turns this off (the line is then swallowed as a plain member).
+				const _absTxt = DataService.Data.BoundaryBank._meta.member_rule.terminators_absolute_text ?? [];
+				if (_absTxt.length && !(typeof process !== "undefined" && process.env && process.env.FUNDPHASE_OFF)) {
+					const _bt = String(next.text || "").trim();
+					if (_bt && _absTxt.some((re) => new RegExp(re, "i").test(_bt))) break;
+				}
+				bundle.memberItems.push(next);
+				this.#harvestMedia(bundle, next);
+				continue;
+			}
+
+			const p = next.parse.primary;
+			// A standalone RED "Phase N" span (no primary tag, class noise/instruction, ENTIRE
+			// folded text matching the phase_text delimiter_pattern) is a fundamentals PHASE
+			// BOUNDARY: a HARD terminator, never a member — the red-text twin of the BLACK-line
+			// terminators_absolute_text check above (without it, a phase-boundary span would be
+			// swallowed into a widget bundle and that phase would never open as its own
+			// content). Gated to fundamentals body_class + single-file + the data flag. Data
+			// fundamentals_panels.phase_text.red_delimiter; env FUNPANRED_OFF.
+			if (!p && this.#redPhaseDelimiter(next, run)) break;
+			// A TILE-PAGE marker (`[Tile N content]` / `[Tile N]`, the WJFUN family's phase
+			// boundary) is a HARD terminator too: it resolves to the `shape n` SUBTAG, so without
+			// this a widget open at the end of a tile would swallow the next tile's marker (and its
+			// `[H1]` / LI / SC block) as members, the panel would never open and the marker would
+			// leak as a Writers Note. Same gate as the phase delimiter above (fundamentals body
+			// class + single-file) plus the tile_pages registry row. Data
+			// fundamentals_panels.tile_pages.scanner_hard_terminator; env TILEPAGE_OFF.
+			if (this.#tilePageMarker(next, run)) break;
+			// An INQUIRY PANEL OPENER (`[Tab N]` / `[New tab]` / `[New side tab]`, the `tab n`
+			// SUBTAG) is a HARD terminator of every NON-`tabs` bundle on a registry-known Inquiry
+			// module's single-file page: an un-closed carousel / flip-card capture would otherwise
+			// run THROUGH the next opener and take the whole panel with it (CEDR401 `[Tab 5]`, TWHA902
+			// `[Tab 4]` / `[Tab 6]` / `[Tab 9]`). Data inquiry_tabs.opener_stops_capture; env INQOPENER2_OFF.
+			if (this.#inquiryOpenerMarker(next, bundle, run)) break;
+			// A suppressed numbered/bare accordion invocation is a fundamentals PHASE BOUNDARY on
+			// a gated page (accordion-as-phases): a HARD terminator, never a member — no bundle may
+			// swallow a phase delimiter (the same principle as the other phase-delimiter checks
+			// above; scanner_hard_terminator). The "dissolve" link form is NOT a boundary and keeps
+			// the default member handling. Data fundamentals_panels.phase_text
+			// .accordion_delimiter; env FUNPANACC_OFF.
+			if (p?.directive === "INTERACTIVE"
+				&& (DataService.Data.EmitTemplates?.body_region?.fundamentals_panels?.phase_text
+					?.accordion_delimiter?.scanner_hard_terminator !== false)) {
+				const _accForm = this.#accordionPhaseForm(next, run);
+				if (_accForm === "break" || _accForm === "noop") break;
+			}
+			// INSTRUCTION-DOMINANT span: a writer instruction that happens to name-drop tag-words
+			// (e.g. "...reset button at the end of this activity") can get misread as a phantom tag.
+			// Inside an open bundle it must NOT terminate the walk (which would orphan the widget's
+			// following data table, leaving it stranded outside the widget) nor render as a phantom
+			// button — swallow it as an instruction MEMBER instead. Scoped to this member walk only;
+			// classification elsewhere in the pipeline is unchanged.
+			// Data member_rule.instruction_dominant_member; env INSTRDOM_OFF.
+			const _mrID = DataService.Data.BoundaryBank._meta.member_rule;
+			if (normaliser && (_mrID.instruction_dominant_member ?? false)
+				&& !(typeof process !== "undefined" && process.env && process.env.INSTRDOM_OFF)
+				&& normaliser.IsInstructionDominant(next.parse, _mrID.instruction_dominant_min_words ?? 8)) {
+				// BRIDGE-TO-DATA ONLY: swallow the instruction (the answer-key / randomise note)
+				// solely when it sits right before the widget's DATA TABLE (a uses_data_table widget) —
+				// so the rule bridges the widget to its table (ENGS302 1A) but can NEVER extend a bundle
+				// across an instruction into FREE PROSE the human keeps (no over-capture).
+				const _entryID = DataService.Data.BoundaryBank.interactives[bundle.type];
+				const _nextTable = items[j + 1] && items[j + 1].type === "table" && items[j + 1].consumedBy === undefined;
+				if (_entryID?.uses_data_table && _nextTable) {
+					this.#collectMember(bundle, next, run);
+					continue;
+				}
+			}
+
+			// TRAILING-BUTTON SECTION BREAK. A [button] after the accordion's last panel —
+			// usually the bundle's very LAST member — is the writer's post-accordion button
+			// ("[Go to journal]") that the member walk swallowed, not panel content: the GOLD
+			// almost never puts a button inside a panel, and a swallowed button carries the
+			// accordion on into the next section entirely (XGF9003-1.0 would swallow [Body], the
+			// journal button, "[H2] Time management", an image and an [Alert] after its eight
+			// clean panels). So the walk ENDS at it and the button renders through the normal
+			// body path — a REAL button, exactly where the writer put it, which no in-panel
+			// rendering could better. This is the same section-break family as the media-series
+			// and media-table rules, and no accordion that builds carries a [button] member, so
+			// it cannot change an existing build. FENCED so it can never truncate a real
+			// multi-panel accordion: it fires only once the bundle has captured content AND no
+			// further panel delimiter lies ahead.
+			// Data member_rule.button_tail_terminates; env ACCBTNTAIL_OFF.
+			{
+				const btT = DataService.Data.BoundaryBank._meta.member_rule.button_tail_terminates;
+				if (btT && btT.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env.ACCBTNTAIL_OFF)
+					// The rule also covers the CAROUSEL, and each type turns off on its OWN
+					// env toggle so the two can be tested independently. `env_by_type` is
+					// DATA — covering a further type is a data edit plus one map entry, never
+					// a code change.
+					&& !(typeof process !== "undefined" && process.env
+						&& (btT.env_by_type ?? {})[bundle.type]
+						&& process.env[(btT.env_by_type ?? {})[bundle.type]])
+					&& (btT.types ?? ["accordion"]).includes(bundle.type)
+					&& (btT.tags ?? ["button"]).includes(p?.tag)
+					&& p?.directive !== "INTERACTIVE"
+					// A PHANTOM button — the writer's "[embed audio with a link and play
+					// button]" (HIS1006-11.0) resolves to primary tag `button` because of the
+					// word BURIED in it, and breaking there would truncate the accordion's own
+					// sources. The `clean_hows` distinction is exactly this test: a
+					// genuine tag resolves exact/denumbered, a tag-word inside prose resolves
+					// how:"embedded".
+					&& (btT.clean_hows ?? ["exact", "denumbered", "denumbered_head", "exception"]).includes(p?.how)
+					&& !this.#isGoJournalButton(next)
+					&& bundle.memberItems.some((m) => m && (m.type !== "tag" || m.parse?.primary?.directive !== "INTERACTIVE"
+						// For a speech bubble the content very often rides ON the
+						// invocation ("[speech bubble] Remember: Good design is responsible
+						// design." and nothing else), so an invocation carrying black text
+						// counts as captured content. DATA-listed per type.
+						|| ((btT.content_on_invocation_types ?? []).includes(bundle.type)
+							&& String(m.blackAfter ?? "").trim() !== "")))
+					// A type listed in panel_subtags_by_type (flipCard) releases its tail
+					// button ONLY when the deck is EXPLICITLY face-delimited — at least one
+					// captured [front]/[back]/[Card N] member. A marker-less prose bundle
+					// made reachable by the release would build a GARBLE (consecutive
+					// paragraphs paired as faces, a section heading inside a card front, the
+					// writer's example lines lost — as CEDK401-6.0 would), so a marker-less
+					// deck keeps its honest hand-off box; the face-marked decks (ENGI405,
+					// PHE1007) release and build their humans' own cards. No entry for a type
+					// = no extra requirement, so accordion/carousel/speechBubble are unaffected.
+					&& ((((btT.panel_subtags_by_type ?? {})[bundle.type]) == null)
+						|| bundle.memberItems.some((m) => m && m.type === "tag"
+							&& (((btT.panel_subtags_by_type ?? {})[bundle.type]) ?? []).includes(m.parse?.primary?.tag)))
+					// The lookahead fence protects a MULTI-PANEL widget whose panels are
+					// SUB-tags (accordion, carousel). A speech bubble's "panels" are separate
+					// INVOCATIONS, so a following [speech bubble] is a DIFFERENT SPEAKER —
+					// applied to bubbles, the fence would block nearly every candidate (TEDC401
+					// is full of bubble markers). DATA-listed per type.
+					&& ((btT.delimiter_ahead_skip_types ?? []).includes(bundle.type)
+						|| !this.#panelDelimiterAhead(items, j + 1, bundle, btT))) {
+					// Mark the bundle so the BUILDER can scope its leak guard to builds this
+					// break made possible. A widget that only becomes buildable because a
+					// trailing button was released must not put a literal writer tag on the
+					// page (as BLL262-1.0's black "[Audio]" line would), and the builder's
+					// other leak guard is scoped to `mvUsed` and cannot see this route.
+					bundle._buttonTail = true;
+					break;
+				}
+			}
+
+			// FACE-WIDGET body resumption: a flipCard/speechBubble — whose signature carries
+			// front/back and NEVER 'body' — that has ALREADY captured a face treats a following
+			// [Body] ELEMENT as the writer RESUMING free body. The finished page keeps that [Body]
+			// OUTSIDE the widget (e.g. two flip cards, then separate [Body] text below them). A
+			// [Body]-based flip form with NO faces (a module whose card backs are themselves [Body]
+			// tags) never trips this, so its [Body] members are preserved as part of the widget.
+			// Data: member_rule.body_terminates_after_face.
+			const _mrB = DataService.Data.BoundaryBank._meta.member_rule;
+			// FACE / REVEAL member terminator (the general form of the rule above). A [Body] ELEMENT
+			// after the widget has already captured a FACE/REVEAL member — [front]/[back]/[drop]/
+			// [answer] — is the writer RESUMING free body (the finished page keeps it OUTSIDE the
+			// widget). Keyed off the CAPTURED member, not the widget's signature, so it also covers a
+			// clickDrop's FRONT/DROP reveal form (whose signature does not formally list front/back).
+			// A [Body]-BASED form with NO face/reveal member ever captures one → never trips → its
+			// [body] members stay content. Data: member_rule.face_member_tags.
+			if (_mrB.body_terminates_after_face && p?.tag === "body" && p?.directive !== "INTERACTIVE") {
+				const faceTags = _mrB.face_member_tags ?? ["front", "back", "drop", "answer"];
+				// For a DATA-TABLE widget, count a face tag only on a genuine captured face MEMBER
+				// (a [front]/[back]/[drop]/[answer], which is a SUBTAG), NOT on the widget's OWN
+				// invocation, whose MODIFIER words can coincidentally look like a face word (e.g.
+				// "[reorder – show answer]" resolves to tags [reorder, answer]). Counting the
+				// invocation itself would falsely fire this terminator on the very FIRST following
+				// [body], so a data-table widget (reorder/dragAndDrop/…) would capture NOTHING and
+				// its data table would leak outside the activity entirely. Genuine face members are
+				// SUBTAG; the invocation itself is INTERACTIVE — that's the distinction this checks.
+				// SCOPED to uses_data_table widgets: for those, a following table is unambiguously the
+				// widget's data (post-table body-termination is handled below by
+				// body_terminates_after_table), so suppressing the false face-terminator here cannot
+				// over-capture free body; FACE/REVEAL widgets (flipCard/clickDrop/speechBubble) keep
+				// their exact original behaviour unchanged. Data member_rule.face_excludes_invocation;
+				// env FACEINVOKE_OFF reverts.
+				const _entryF = DataService.Data.BoundaryBank.interactives[bundle.type];
+				const excludeInvocation = (_mrB.face_excludes_invocation ?? true)
+					&& !(typeof process !== "undefined" && process.env && process.env.FACEINVOKE_OFF)
+					&& _entryF?.uses_data_table === true;
+				// find the MOST-RECENT captured face member
+				let recentFace = null;
+				for (let k = bundle.memberItems.length - 1; k >= 0; k--) {
+					const m = bundle.memberItems[k];
+					if (m.type === "tag" && !(excludeInvocation && m.parse?.primary?.directive === "INTERACTIVE")
+						&& m.parse?.tags?.some((t) => faceTags.includes(t.tag))) { recentFace = m; break; }
+				}
+				// An EMPTY face — a [back]/[front] with NO inline content of its own — takes its
+				// content from the FOLLOWING [body] ELEMENT(s) instead (a card form like [Front] [H5]
+				// title [image] [back] [body], where the title+image ride the front and the back text
+				// is a separate following [body]). That [body] IS the face's content, not a free-body
+				// section break, so keep capturing while the most-recent face is still empty (its
+				// content is still arriving). A face that already carries inline content, followed by
+				// a SEPARATE free [body], still terminates as described above. Data
+				// member_rule.face_empty_keeps_body; env FACEBODY_OFF.
+				const faceKeepsBody = recentFace
+					&& !String(recentFace.blackAfter ?? "").replace(/\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu, "").trim()
+					&& (_mrB.face_empty_keeps_body ?? true)
+					&& !(typeof process !== "undefined" && process.env && process.env.FACEBODY_OFF);
+				if (recentFace && !faceKeepsBody) break;   // [Body] resumes free body after a CONTENT-carrying face member
+			}
+
+			// SELF-CAPTIONED widget (speechBubble): the bubble TEXT rides on the widget's OWN
+			// invocation ([speech bubble] <text>), not in a [front]/[back] face or a data table — so a
+			// [Body] ELEMENT after it is the writer RESUMING FREE BODY. The human renders the bubble
+			// small and the [body] + everything after as normal page content (XGF9001-00, where one
+			// [speech bubble] would otherwise swallow "This module will help you…" + bullets + a video + a 2nd
+			// bubble). Terminate once the invocation already carries its text. Same section-break family
+			// as body_terminates_after_face/_after_table; a per-type list (NOT a blanket rule) keeps it
+			// from ever firing for table/face-authored widgets (e.g. flipCard) whose invocation text may
+			// legitimately precede a [body] (a [body] is never the bubble's OWN text).
+			// Data: member_rule.body_terminates_after_invocation_text_types.
+			if (p?.tag === "body" && p?.directive !== "INTERACTIVE"
+				&& (_mrB.body_terminates_after_invocation_text_types ?? []).includes(bundle.type)) {
+				const sawInvocationText = bundle.memberItems.some((m) => m.type === "tag"
+					&& m.parse?.primary?.directive === "INTERACTIVE"
+					&& String(m.blackAfter ?? "")
+						.replace(/\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu, "").trim().length > 0);
+				// CONVERSATION form: the bubble text rides on captured [black] members (the
+				// Prompt/AI-response lines), NOT the invocation — whose "Conversation layout" modifier
+				// sits INSIDE the tag, so blackAfter is empty. Without this check, a conversation-style
+				// speech bubble could swallow a following [body] paragraph that should render on its
+				// own, and even merge in a second, unrelated conversation. Once the bubble has captured
+				// black content, a following [Body] is a section break. A [body] is never a
+				// speechBubble's OWN content.
+				const sawBlackContent = bundle.memberItems.some((m) =>
+					m.type === "black" && String(m.text ?? "").trim().length > 0);
+				if (sawInvocationText || sawBlackContent) break;   // bubble text already captured → [body] resumes free body
+			}
+
+			// SHAPE-PATTERN SECTION BREAK. A shapeHover widget authors repeating [shape n] > [body] >
+			// [image] groups; a [body] that begins AFTER the current shape group is already COMPLETE
+			// (an [image]/media member seen since the most recent [shape n], with NO new [shape n]
+			// opening a fresh group) is the writer RESUMING free body — the finished page keeps it
+			// OUTSIDE the widget as ordinary following prose. Every legitimate shape-description
+			// [body] is immediately preceded by its own [shape n] (with no image captured in the
+			// group yet), so it never trips this check. Same family as
+			// body_terminates_after_face/_table/_invocation_text above; the LONE SECTION-BREAK
+			// HEADING rule further below handles the section heading that typically follows.
+			// Data member_rule.body_section_break_after_shape (+ _types); env SHAPEBODY_OFF.
+			if (p?.tag === "body" && p?.directive !== "INTERACTIVE"
+				&& (_mrB.body_section_break_after_shape ?? false)
+				&& (_mrB.body_section_break_after_shape_types ?? ["shapeHover"]).includes(bundle.type)
+				&& !(typeof process !== "undefined" && process.env && process.env.SHAPEBODY_OFF)) {
+				let sawImageSinceShape = false, reachedShape = false;
+				for (let k = bundle.memberItems.length - 1; k >= 0; k--) {
+					const m = bundle.memberItems[k];
+					if (m.type === "tag" && m.parse?.tags?.some((t) => /^shape\b/.test(t.tag))) { reachedShape = true; break; }
+					if (m.type === "tag" && ["image", "video", "audio"].includes(m.parse?.primary?.tag)) sawImageSinceShape = true;
+				}
+				if (reachedShape && sawImageSinceShape) break;   // shape group complete → this [body] resumes free body
+			}
+
+			// SLIDE-PATTERN SECTION BREAK. A carousel slide is typically shaped [slide n] > [H#] >
+			// [body] (main text, before the image) > [image] > [body] (an example caption, after the
+			// image) — ONE caption after the image. A FURTHER [body] (an [image] seen since the last
+			// [slide n] AND a [body] ALREADY captured after that image — i.e. a SECOND post-image
+			// body) is the writer RESUMING free body after the last slide; the finished page renders
+			// it as an ordinary <p> after the whole carousel. Same family as
+			// body_section_break_after_shape above, but a slideshow specifically allows one
+			// post-image caption per slide before treating anything further as a section break.
+			// Data member_rule.body_section_break_after_slide (+ _types); env CARSLIDE_OFF.
+			if (p?.tag === "body" && p?.directive !== "INTERACTIVE"
+				&& (_mrB.body_section_break_after_slide ?? false)
+				&& (_mrB.body_section_break_after_slide_types ?? ["carousel", "rotateBanner"]).includes(bundle.type)
+				&& !(typeof process !== "undefined" && process.env && process.env.CARSLIDE_OFF)) {
+				let sawBodySince = false, postImageBody = false, reachedSlide = false;
+				for (let k = bundle.memberItems.length - 1; k >= 0; k--) {
+					const m = bundle.memberItems[k];
+					if (m.type === "tag" && m.parse?.tags?.some((t) => /^slide\b/.test(t.tag))) { reachedSlide = true; break; }
+					const mp = m.type === "tag" ? m.parse?.primary : null;
+					const isBody = mp?.tag === "body" || (m.type === "black" && String(m.text ?? "").trim().length > 0);
+					if (isBody) sawBodySince = true;
+					if (["image", "video", "audio"].includes(mp?.tag) && sawBodySince) postImageBody = true;
+				}
+				if (reachedSlide && postImageBody) break;   // 2nd post-image body → free body resumes after the carousel
+			}
+
+			// MEDIA-SERIES SECTION BREAK (as in ENGS404-00). A carousel authored as a
+			// back-to-back RUN of [image]/[video] members directly after the invocation —
+			// "[insert image carousel] [image 1] [image 2] [image 3] [image 4]" — IS the series:
+			// the writer's own list delimits the widget, and the first following non-media ELEMENT
+			// tag (a [body], a heading, a [button], a data marker…) is the SECTION resuming.
+			// Without this the walk would keep absorbing to the page end, dumping the whole
+			// introduction/vocabulary section into the placeholder so the build always declines.
+			// Scoped hard: fires only when the bundle has NO [slide N] marker AND every substantive
+			// captured member so far is the invocation, a media member, a video's own link/title
+			// black line, or a writer instruction — i.e. the capture is still a PURE media run
+			// (>= media_series_min_run). Interleaved dialects (image>body>image slide captions)
+			// never satisfy the pure-run test and keep the ordinary capture BY CONSTRUCTION; the
+			// terminator set is "any tag ELEMENT whose primary is not image/video/audio/caption"
+			// (a heading after the run is a trailing section, not a slide — as in EXPFUN02 and
+			// ENGJ403, whose trailing sections would otherwise become bogus slides). Data
+			// member_rule.media_series_break (+ _types/_min_run); env CARSERIES_OFF.
+			if (p && p.directive !== "INTERACTIVE"
+				&& !["image", "video", "audio", "caption"].includes(p.tag)
+				&& (_mrB.media_series_break ?? false)
+				&& (_mrB.media_series_break_types ?? ["carousel", "rotateBanner"]).includes(bundle.type)
+				&& !(typeof process !== "undefined" && process.env && process.env.CARSERIES_OFF)) {
+				let mediaRun = 0, pure = true, sawSlideMarker = false, lastWasVideo = false;
+				for (const m of bundle.memberItems) {
+					if (!m) continue;
+					if (m.type === "table" || m.type === "nested") { pure = false; break; }
+					if (m.type === "black") {
+						if (!String(m.text ?? "").trim()) continue;
+						// a link/title line directly after a video is that video's reference line
+						if (lastWasVideo && (m.block?.links?.length || /https?:\/\//.test(String(m.text ?? "")))) { lastWasVideo = false; continue; }
+						pure = false; break;
+					}
+					const mp = m.parse?.primary;
+					if (!mp) {
+						if (["instruction", "noise"].includes(m.parse?.class)) continue;   // writer notes ride along
+						pure = false; break;
+					}
+					if (mp.directive === "INTERACTIVE") { lastWasVideo = false; continue; }   // the invocation itself
+					if (mp.tag === "slide n" || mp.tag === "slide"
+						|| (m.parse?.tags ?? []).some((t) => t.tag === "slide n")) { sawSlideMarker = true; break; }
+					if (["image", "video", "audio"].includes(mp.tag)) { mediaRun++; lastWasVideo = mp.tag === "video"; continue; }
+					pure = false; break;
+				}
+				if (pure && !sawSlideMarker && mediaRun >= (_mrB.media_series_min_run ?? 2)) {
+					break;   // the media run IS the carousel → this element resumes the section
+				}
+			}
+
+			// SAME-TYPE GROUP SPLIT. A SECTION heading BETWEEN two same-type widget GROUPS must split
+			// them (e.g. an [H4] section heading sitting between one set of flip cards and a second,
+			// unrelated set of flip cards — the finished page ships TWO separate flip-card containers
+			// with that heading rendered free between them, not fused into one big container).
+			// Discriminator: a heading whose IMMEDIATELY-FOLLOWING member is a SAME-type INTERACTIVE
+			// opener (a new [flip card]) is a between-group section heading — a card-FRONT heading, by
+			// contrast, is followed by its own [image], never by another [flip card]. Terminate so the
+			// heading renders as free content and the next group opens its own separate bundle. Scoped
+			// to listed widget types (the multi-instance widgets whose heading_is_terminator flag is
+			// false). Data member_rule.heading_splits_same_type_groups; env FLIPGROUP_OFF.
+			if (p && ["h2", "h3", "h4", "h5"].includes(p.tag) && normaliser
+				&& (_mrB.heading_splits_same_type_groups ?? []).includes(bundle.type)
+				&& !(typeof process !== "undefined" && process.env && process.env.FLIPGROUP_OFF)) {
+				const nx = items[j + 1];
+				if (nx && nx.type === "tag" && nx.parse?.primary?.directive === "INTERACTIVE") {
+					const nxType = this.#widgetTypeFor(nx.parse.primary.tag, nx.parse.primary.alias, normaliser);
+					if (nxType === bundle.type) break;   // section heading before a new same-type group → split here
+				}
+			}
+
+			// TITLE-SERIES [body] SEMANTICS (the CHFUN05 [title N] dialect).
+			// Once a bundle holds a captured NUMBERED title member, a [body] is decided by
+			// the SERIES, not by the table-data section break below: (a) a [body] directly
+			// after a title is that panel's opening content — captured; (b) a [body]
+			// arriving while ANOTHER numbered title lies ahead is still in-panel content
+			// (the gold nests each panel's "[body] Watch the video…" + video table INSIDE
+			// accContent — CHFUN05's This/That panels); (c) a [body] arriving after the
+			// LAST panel already has content is the writer's section RESUMING — the walk
+			// ends, and the trailing "[body] Watch the video and count along." + its video
+			// table ship OUTSIDE the widget, exactly where CHFUN05's gold puts them. Only a
+			// bundle carrying a numbered title member (the CHFUN05 dialect) reaches this. Data
+			// member_rule.title_panel_member (body_break/lookahead); env ACCTITLEMEM_OFF (title
+			// members are only ever captured under the same toggle, so this block is dormant with it).
+			if (p?.tag === "body") {
+				const tsd = this.#titleSeriesDecision(bundle, items, j);
+				if (tsd === "capture") { this.#collectMember(bundle, next, run); continue; }
+				if (tsd === "break") break;           // series over — the section resumes
+			}
+
+			// THE CLOSING SECTION AFTER THE DROPBOX BUTTON (a family dialect: the Blended Literacy modules).
+			// The writer ends the module's last activity with `[Button] Upload to dropbox [trigger engagement]` and then
+			// closes the module with a celebration `[image]` + `[body] Congratulations on completing this module…`. The
+			// activity box already closes at that button, but the last widget's capture would run on and swallow the
+			// closing picture and text (as in BLL210's 12-modal + carousel bundle for Activity 8G, or BLL230's
+			// clickDrop); the gold keeps them FREE. So in the listed family, a [body] / [image] after a captured
+			// upload-to-dropbox button member ends the walk. Data
+			// member_rule.dropbox_button_ends_capture {module_pattern, button_label_pattern, stop_tags}; env DROPBOXEND_OFF.
+			const _dbe = _mrB.dropbox_button_ends_capture;
+			if (_dbe && _dbe.enabled !== false && p && p.directive !== "INTERACTIVE"
+				&& (_dbe.stop_tags ?? ["body", "image"]).includes(p.tag)
+				&& !(typeof process !== "undefined" && process.env && process.env[_dbe.env ?? "DROPBOXEND_OFF"])
+				&& new RegExp(_dbe.module_pattern, "i").test(String(run?.moduleCode ?? ""))) {
+				const _lab = new RegExp(_dbe.button_label_pattern, "i");
+				if ((bundle.memberItems ?? []).some((mm) => mm?.type === "tag" && mm.parse?.primary?.tag === "button"
+					&& _lab.test(`${mm.text ?? ""} ${mm.blackAfter ?? ""}`))) break;
+			}
+
+			// TABLE-DATA SECTION-BREAK resumption (OSBY201-02 + OSAI501-01): a [Body] ELEMENT or an
+			// [H2]-[H5] section HEADING that appears AFTER a TABLE-DATA widget (uses_data_table —
+			// typing/dragAndDrop/dropQuiz/memoryGame…) has captured its table is the writer starting
+			// a NEW SECTION. The table is the widget's content; the [body]/heading and ANYTHING after
+			// it (e.g. a following speechBubble + video)
+			// belong OUTSIDE the widget. This OVERRIDES heading_is_terminator:false (that flag only
+			// protects the widget's OWN internal headings, which sit in/before the data — a heading
+			// AFTER the data table is not internal). Slideshow widgets (carousel/rotateBanner) are
+			// EXEMPT (their trailing [body] is a slide caption the image-carousel builder handles).
+			// Data: member_rule.{body,heading}_terminates_after_table (+ _exempt_types/_levels).
+			if (p?.directive !== "INTERACTIVE" && bundle.tables.length > 0) {
+				const entry = DataService.Data.BoundaryBank.interactives[bundle.type];
+				let exempt = (_mrB.body_terminates_after_table_exempt_types ?? []).includes(bundle.type);
+				// THE [BODY] AFTER A CAROUSEL'S SLIDE TABLE. The exemption above keeps an image-series
+				// carousel's trailing [body] as its slide caption, but this check only runs once the bundle HOLDS a table —
+				// and a carousel whose slides ARE a table carries its captions in the cells: the [body] after that table is
+				// the next section (the gold keeps it outside the carousel, free or in the next activity box). For a listed
+				// type the exemption is lifted.
+				// Data member_rule.body_after_slide_table_ends; env CARBODYEND_OFF.
+				const _cbe = _mrB.body_after_slide_table_ends;
+				let _cbeLifted = false;
+				if (exempt && _cbe && _cbe.enabled !== false && (_cbe.types ?? []).includes(bundle.type)
+					&& !(typeof process !== "undefined" && process.env && process.env[_cbe.env ?? "CARBODYEND_OFF"])) { exempt = false; _cbeLifted = true; }
+				// The HEADING rule has its own exemption list. The slideshow types would otherwise be exempt from
+				// BOTH rules through the shared body list ("their trailing [body] is a slide caption"), but a
+				// SECTION HEADING after a carousel's slide table is never a slide: a table-slides carousel would
+				// swallow the writer's next section — heading, paragraphs, lists, images, the rest of the page
+				// (AGH1005 2.0 "Parts of a plant", AGH1009 5.0's four h3 sections) — and the builder would drop
+				// every word of it (the gold keeps the text as free body). Absent key → the shared list.
+				// Data member_rule.heading_terminates_after_table_exempt_types; env CARHEADEND_OFF.
+				const hList = _mrB.heading_terminates_after_table_exempt_types;
+				const hExempt = (Array.isArray(hList) && !(typeof process !== "undefined" && process.env && process.env.CARHEADEND_OFF))
+					? hList.includes(bundle.type) : exempt;
+				const headingLevels = _mrB.heading_terminates_after_table_levels ?? ["h2", "h3", "h4", "h5"];
+				const isBreak = (_mrB.body_terminates_after_table && p?.tag === "body" && !exempt)
+					|| (_mrB.heading_terminates_after_table && headingLevels.includes(p?.tag) && !hExempt);
+				// THE BREAK IS SCOPED TO THE CURRENT PANEL for a type whose writer delimits NUMBERED panels
+				// (the accordion): a table in an EARLIER panel is that panel's content, so a [Body] / heading right after
+				// the writer's next `[accordion N] Title` is the new panel's own content, not a new section (as in
+				// MXFL301-4.0's "The box method", whose last panel would otherwise be empty). Only when the last numbered
+				// delimiter was captured AFTER the last table. Data member_rule.panel_scoped_table_break;
+				// env ACCPANELBREAK_OFF.
+				let tableInPanel = true;
+				const _psb = _mrB.panel_scoped_table_break;
+				const _psbPat = (isBreak && _psb && _psb.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[_psb.env ?? "ACCPANELBREAK_OFF"]))
+					? _psb.types?.[bundle.type] : null;
+				if (_psbPat) {
+					// only the item RIGHT AFTER the writer's new numbered delimiter (the panel's opening [Body] / heading):
+					// once the panel has opened, the ordinary break applies again, so a panel the writer left empty
+					// (OSOH201-1.0's `[Accordion 3] Taha whānau` over the next section) cannot run on past its first item
+					const _re = new RegExp(_psbPat, "i");
+					const _mem = bundle.memberItems ?? [];
+					const _last = _mem[_mem.length - 1];
+					if (_last?.type === "tag" && _re.test(String(_last.text ?? "")
+						.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim())) tableInPanel = false;
+				}
+				// A carousel that OWNS its activity box keeps the box open for the prose after its slide table:
+				// the gold keeps that prose inside the box (the same hold the converter's owner close site applies
+				// through _postTableResume); a carousel that owns no box leaves it free.
+				if (_cbeLifted && entry?.uses_data_table && isBreak && tableInPanel && bundle.activityOwner
+					&& p?.tag === "body" && _cbe.owned_box_stays_open !== false) bundle._postTableResume = true;
+				if (entry?.uses_data_table && isBreak && tableInPanel) break;   // section break resumes after the data table
+				// THE UNCLASSIFIED ACTIVITY RESUMES FREE BODY AT THE [Body] AFTER ITS TABLE. The
+				// unclassified activity (an `[Activity N]` with a data table and no widget keyword — the BLL
+				// phonics form) has no boundary-bank entry, so the rule above never reaches it and its walk
+				// would swallow the writer's post-table `[Body]` ("When you have finished writing all of the
+				// words, read your list back to your supervisor") and the `[Button] Upload to dropbox` after
+				// it into the hand-off dump. The gold mostly keeps that prose FREE inside the same box, after
+				// the built widget (BLL210 1E: h3 + p + flipCards + p + buttonD). The walk ends here and the
+				// bundle is flagged so the converter's owner close site keeps the box OPEN for the resumed
+				// prose; autoClose / the upload button then close it.
+				// Data: opener_rule.unclassified_activity_lead.post_table_resume   Env: UNCLASSTAIL_OFF
+				if (isBreak && bundle.type === "unclassified" && bundle.activityOwner) {
+					const _ptr = DataService.Data.BoundaryBank?._meta?.opener_rule?.unclassified_activity_lead?.post_table_resume;
+					if (_ptr && _ptr.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[_ptr.env || "UNCLASSTAIL_OFF"])
+						&& (p?.tag === "body" || _ptr.headings_too === true)) {
+						// only the writer's LAST prose resumes free body: a [Body] between two data
+						// tables (BLL175 1B's words table → "Now write…" → the sentences table) is the
+						// widget's own instruction and the second table its data — ending the walk there
+						// would put that table on the page as a kept <table>. Look ahead to the walk's
+						// natural end; another table there keeps the walk going.
+						let _more = false;
+						for (let q = j + 1; q < items.length; q++) {
+							const nx = items[q];
+							if (nx.consumedBy !== undefined) break;
+							if (nx.type === "table") { _more = true; break; }
+							if (nx.type !== "tag") continue;
+							const np = nx.parse?.primary;
+							if (!np) continue;
+							// a widget invocation ahead (a [flip card] / [hint slider] the writer typed after
+							// the instruction) is the activity's own next widget, not resumed free body —
+							// cutting there would split it out of the dump and lose it (ENGS201 4C, XLP03 2A)
+							if (np.directive === "INTERACTIVE" && _ptr.widget_ahead_keeps !== false) { _more = true; break; }
+							if (np.directive === "PAGE_BOUNDARY" || np.directive === "SECTION_MARKER"
+								|| np.directive === "INTERACTIVE" || np.directive === "CONTAINER_CLOSE") break;
+							if (np.tag === "activity" || absolute.has(np.tag) || /^h[1-5]$/i.test(np.tag ?? "")) break;
+						}
+						if (!_more) {
+							bundle._postTableResume = true;
+							break;
+						}
+					}
+				}
+			}
+
+			// LONE SECTION-BREAK HEADING.
+			// A heading_is_terminator:false widget legitimately holds internal headings, but across
+			// the corpus those fall into only three shapes: (a) the LEAD title (a heading BEFORE any
+			// captured content), (b) a CLUSTER of two or more sibling panel/front headings, or (c) a
+			// card FRONT immediately followed by its [image]. A SINGLE heading that lands AFTER the
+			// widget has captured at least one genuine content member, has NO sibling [H2]-[H5]
+			// before the bundle's next ABSOLUTE terminator, AND is FOLLOWED BY ordinary section
+			// content (a [body]/[video]/[audio]/table/list — NOT an [image] front, NOT widget
+			// sub-content) is the writer STARTING A NEW SECTION that the widget must not own — the
+			// finished page renders that heading and what follows it OUTSIDE the widget. DISTINCT
+			// from heading_terminates_after_table above (that needs a captured TABLE; this fires when
+			// the captured content is floating black members / images with no table yet — e.g. a
+			// shapeHover's text-box labels). The LEAD + CLUSTER + follow=image exclusions keep every
+			// legitimate internal heading intact. Data:
+			// member_rule.lone_heading_section_break (+ lone_heading_follow_section_tags); env LONEHEAD_OFF.
+			// Slideshow types (carousel/rotateBanner) carry a slide TITLE per slide; the LAST
+			// slide's heading is "lone" (no sibling heading after it) and would otherwise falsely
+			// trip this rule, truncating the carousel before its final slide. A blanket exemption
+			// would instead let the SECTION heading AFTER the whole carousel (OSOH501-01 "[H3] How
+			// to use hauora…" following the 4th slide) be swallowed as a bogus 5th slide, killing
+			// the build (the empty trailing slide bails the builder). So the exemption is PRECISE —
+			// a heading whose nearest preceding substantive member is a [Slide N]/[slide] MARKER is
+			// that slide's title (always internal, as in OSAI501-04); any OTHER heading in a
+			// slideshow runs the standard lone+follow test below, whose follow=image exclusion keeps
+			// a heading-opened slide's title inside (its [image] follows) while a trailing section
+			// heading (followed by [body] text) correctly terminates the carousel.
+			// Data slideshow_heading_internal (+ slideshow_heading_lone_break); env CARTRAIL_OFF.
+			let slideshowExempt = (_mrB.slideshow_heading_internal ?? []).includes(bundle.type);
+			if (slideshowExempt && (_mrB.slideshow_heading_lone_break ?? false)
+				// REO/bilingual modules keep the blanket exemption: their text-form carousels
+				// flow through the bilingual placeholder pipeline, and splitting one at a lone
+				// heading re-exposes raw members the merged dump was containing (a literal-tag
+				// leak on TRR301).
+				&& !InteractiveScanner.#reoModeFor(run)
+				// Only an IMAGE-carrying carousel (the buildable image-slide form) runs the
+				// precise test: its interior slide titles are protected by the follow=image
+				// exclusion, so only a genuine trailing section heading breaks. A TEXT-form
+				// carousel (heading+body slides, NO [image] member yet — MXDB302's quiz
+				// carousels) keeps the blanket exemption: every one of its slide headings is
+				// followed by body text, so the lone test would cut its LAST slide off
+				// (as in MXDB302-06).
+				&& bundle.memberItems.some((m) => m && m.type === "tag" && m.parse?.primary?.tag === "image")
+				&& !(typeof process !== "undefined" && process.env && process.env.CARTRAIL_OFF)) {
+				let precededByMarker = false;
+				for (let k = bundle.memberItems.length - 1; k >= 0; k--) {
+					const m = bundle.memberItems[k];
+					if (m.type === "black" && !String(m.text ?? "").trim()) continue;
+					if (m.type === "tag") {
+						const mp = m.parse?.primary;
+						if (mp?.directive === "INSTRUCTION" || m.parse?.class === "instruction") continue;
+						precededByMarker = mp?.tag === "slide n" || mp?.tag === "slide"
+							|| (m.parse?.tags ?? []).some((t) => t.tag === "slide n");
+					}
+					break;   // first substantive member decides
+				}
+				slideshowExempt = precededByMarker;
+			}
+			if (headingTerminates === false && p && ["h2", "h3", "h4", "h5"].includes(p.tag)
+				&& (_mrB.lone_heading_section_break ?? false)
+				&& !slideshowExempt
+				&& !(typeof process !== "undefined" && process.env && process.env.LONEHEAD_OFF)) {
+				const faceTags = _mrB.face_member_tags ?? ["front", "back", "drop", "answer"];
+				const widgetSubTags = new Set([...faceTags, "shape n", "tab n", "slide n"]);
+				const isGenuineContent = (m) => {
+					if (m.type === "black") return String(m.text ?? "").trim().length > 0;
+					if (m.type === "table") return true;
+					if (m.type === "tag") {
+						const mp = m.parse?.primary;
+						if (!mp || mp.directive === "INSTRUCTION") return false;
+						if (["image", "video", "audio", "button"].includes(mp.tag)) return true;
+						if (m.parse?.tags?.some((t) => widgetSubTags.has(t.tag))) return true;
+					}
+					return false;
+				};
+				// (1) the widget already captured >=1 genuine content member (NOT the LEAD-title case)
+				const contentCaptured = bundle.memberItems.some(isGenuineContent);
+				if (contentCaptured) {
+					// PANEL-LABEL exclusion. A NUMBERED multi-panel widget authors each panel as
+					// [clickdrop N image] > [clickdrop N text] > [H#] label > [body] > [image]*3. EVERY
+					// panel heading is followed by its own [body], and the LAST panel's heading is
+					// "lone" (no sibling [H#] after it), so the plain LONE SECTION-BREAK HEADING check
+					// above would falsely terminate the widget right at the last panel — fragmenting a
+					// single clickDrop widget into an activity box + a stray numberless box + a leaked
+					// plain-body paragraph. A heading whose NEAREST preceding captured member (skipping
+					// the widget's own empty [clickdrop N text] opener and any retained notes, with NO
+					// free body/media/table in between) is a SAME-TYPE interactive panel opener is that
+					// panel's LABEL, never a section break — the same idea as exclusion (c) above ("a
+					// card FRONT immediately followed by its [image]"). A shapeHover's genuine section
+					// heading, by contrast, is preceded by shape CONTENT (image/body), not a same-type
+					// opener, so it still correctly terminates. Data
+					// lone_heading_panel_label_exclude; env LONECLUSTER_OFF.
+					// SINGLE-TYPE guard: only a clean same-type panel cluster (all absorbed extraTypes
+					// === bundle.type — e.g. clickDrop+clickDrop+…) qualifies. A MULTI-TYPE mega-merge
+					// (several different widget types absorbed together) is NOT a panel cluster — its
+					// internal [H#] headings are genuine widget boundaries, so keep the ordinary
+					// termination behaviour there (otherwise an already-over-merged bundle would only
+					// grow further).
+					const singleTypeCluster = !(bundle.extraTypes ?? []).some((t) => t !== bundle.type);
+					let isPanelLabel = false;
+					if ((_mrB.lone_heading_panel_label_exclude ?? true) && normaliser && singleTypeCluster
+						&& !(typeof process !== "undefined" && process.env && process.env.LONECLUSTER_OFF)) {
+						for (let k = bundle.memberItems.length - 1; k >= 0; k--) {
+							const m = bundle.memberItems[k];
+							if (m.type === "black") { if (String(m.text ?? "").trim()) break; continue; }
+							if (m.type === "table") break;
+							if (m.type === "tag") {
+								const mp = m.parse?.primary;
+								if (mp?.directive === "INSTRUCTION") continue;   // skip a retained note
+								if (mp?.directive === "INTERACTIVE") {
+									isPanelLabel = this.#widgetTypeFor(mp.tag, mp.alias, normaliser) === bundle.type;
+								}
+								break;   // first substantive tag decides
+							}
+						}
+					}
+					const stopsBundle = (it2) => {
+						if (it2.type !== "tag") return false;
+						const pp = it2.parse?.primary;
+						if (!pp) return false;
+						if (pp.tag === "activity" || it2.parse.tags?.some((t) => t.tag === "activity")) return true;
+						if (pp.tag === "h1" || absolute.has(pp.tag)) return true;
+						return pp.directive === "INTERACTIVE" || pp.directive === "CONTAINER_CLOSE" || pp.directive === "PAGE_BOUNDARY";
+					};
+					// (2) LONE: no sibling [H2]-[H5] between here and the bundle's next absolute terminator
+					let lone = true;
+					for (let k = j + 1; k < items.length; k++) {
+						const it2 = items[k];
+						if (stopsBundle(it2)) break;
+						if (it2.type === "tag" && ["h2", "h3", "h4", "h5"].includes(it2.parse?.primary?.tag)) { lone = false; break; }
+					}
+					// (3) FOLLOWED BY ordinary section content (skip notes; an [image] front => false)
+					const sectionTags = _mrB.lone_heading_follow_section_tags ?? ["video", "audio", "list"];
+					let followSection = false;
+					for (let k = j + 1; k < items.length; k++) {
+						const it2 = items[k];
+						if (it2.type === "black") { followSection = String(it2.text ?? "").trim().length > 0; break; }
+						if (it2.type === "table") { followSection = true; break; }
+						if (it2.type === "tag") {
+							const pp = it2.parse?.primary;
+							if (!pp) continue;
+							if (pp.directive === "INSTRUCTION") continue;   // a retained note — keep scanning
+							followSection = sectionTags.includes(pp.tag);   // [image]/front/etc => false (keep inside)
+							break;
+						}
+					}
+					// WITHIN-PANEL HEADING CLUSTER (OSOH501-01 panel 4). Inside a
+					// NUMBERED-SERIES host (numbered_series_absorb), a lone heading that CONTINUES a
+					// same-level heading run already captured since the last panel opener is that
+					// panel's internal sub-heading cluster, never a section break — OSOH501's
+					// [Accordion 4] holds [H5] Manaaki / [H5] Tika / [H5] Whanaungatanga: the first
+					// two survive the LONE test (a sibling lies ahead) but the LAST is forward-lone
+					// and would truncate the panel right before it (the human nests all three in
+					// accContent). Scoped to numbered-series hosts only, so the shapeHover
+					// section-break behaviour is untouched everywhere else. Env ACCNEST_OFF.
+					let panelCluster = false;
+					const _serCfg = _mrB.numbered_series_absorb;
+					if (_serCfg && _serCfg.enabled !== false && (_serCfg.hosts ?? []).includes(bundle.type)
+						&& !(typeof process !== "undefined" && process.env && process.env.ACCNEST_OFF)) {
+						for (let k = bundle.memberItems.length - 1; k >= 0; k--) {
+							const m = bundle.memberItems[k];
+							if (m.type !== "tag") continue;
+							const mt = m.parse?.primary?.tag;
+							if (mt === bundle.type) break;              // reached the panel opener
+							if (mt === p.tag) { panelCluster = true; break; }   // a same-level sibling already in this panel
+						}
+					}
+					if (lone && followSection && !isPanelLabel && !panelCluster) break;   // lone heading starts a new section → terminate the widget here (unless a same-type panel LABEL / an in-panel cluster member)
+				}
+			}
+
+			// (new interactive) — when the open bundle belongs to an
+			// [Activity N] and no new [Activity] has appeared, the human
+			// developers build BOTH widgets inside ONE activity block
+			// (bank policy same_activity_multi_widget; verified BLL155 1A:
+			// carousel + [self check] = one activity). Absorb as an extra
+			// widget type instead of splitting. Openerless inline bundles
+			// still split.
+			if (p?.directive === "INTERACTIVE") {
+				const meta = DataService.Data.BoundaryBank._meta.member_rule;
+				const extra = normaliser ? this.#widgetTypeFor(p.tag, p.alias, normaliser) : null;
+				// BARE-SERIES BUNDLES NEVER SWALLOW ANOTHER WIDGET. This host has no opener of its
+				// own — it was inferred from a numbered [Tab N]/[Slide N] series (#bareSeriesOpener) —
+				// so there is no writer evidence that it extends past the next widget the writer DID
+				// name. Every absorb rule below assumes an explicit invocation marked the widget's
+				// start; the activity-scoped same_activity_multi_widget rule in particular would take
+				// the follower as an extraType (in MXDB202-2.0 the inferred tabs bundle would swallow
+				// the [self check] typing quiz that follows the third tab, the builder would then bail
+				// on extraTypes, and readable body text would become a developer hand-off box).
+				// Strictly NARROWING: it can only ever end an inferred bundle.
+				if (bundle._bareSeries && extra !== null && extra !== bundle.type) break;
+				// A MODAL CLOSER MEMBER ENDS THE WALK. "[close modal]" resolves to the same `modal`
+				// INTERACTIVE tag as a real invocation, so a walk that reached one would ABSORB it via
+				// the same-type path below and run straight on into the next section (MXFL301-5.0's
+				// bundle would swallow two whole modal groups plus the following drop-down quiz and its
+				// table; -3.0/-4.0 would run into the next accordion/alert). The closer is the writer's
+				// own end delimiter — consume it IN RANGE (so it can never open a bundle of its own)
+				// and stop. FENCED to a bundle with NO NUMBERED same-type member: EXPFUN04/05's BUILT
+				// tile modals are numbered series whose 30+ interleaved closers are absorbed mid-walk
+				// by design, and they keep the ordinary behaviour. A closer span carrying OTHER words
+				// ("(stop at 4:01) [close modal]") surfaces that residue via bundle.instructions — the
+				// standard red Writers Note — so a writer instruction riding the bracket is never
+				// silently stripped. This check sits at the TOP of the INTERACTIVE-member block because
+				// the same-type absorb below would otherwise capture the closer first. Data
+				// member_rule.modal_gathering; env MODCLOSER_OFF.
+				{
+					const mgC = meta.modal_gathering;
+					if (mgC && mgC.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env.MODCLOSER_OFF)
+						&& (mgC.types ?? ["modal"]).includes(bundle.type)
+						&& p.tag === bundle.canonTag) {
+						const closerRe = new RegExp(mgC.closer_pattern, "i");
+						const foldC = String(next.parse?.folded ?? "");
+						if (closerRe.test(foldC) && !this.#modalHasNumberedMember(bundle, closerRe)) {
+							const residue = foldC
+								.replace(new RegExp(mgC.closer_strip_pattern ?? mgC.closer_pattern, "i"), "")
+								.replace(/[\[\]]+/g, " ").replace(/\s+/g, " ").trim();
+							if (residue) bundle.instructions.push(residue);
+							j++;   // the closer stays INSIDE the consumed range — it opens nothing
+							break;
+						}
+					}
+				}
+				// INLINE MARKERS ([highlight text] → wordSelect/wordHighlighter) are NOT
+				// standalone widgets — they mark text the human highlights INLINE on the
+				// surrounding container. Inside an open widget they must be ABSORBED as a
+				// plain member (never a terminator), so the host's text stays whole:
+				// XGF9001's flip-card back "Being [highlight text] gifted means…" must
+				// remain ONE back, not split into "Being" + an empty wordSelect. (Bank
+				// policy member_rule.inline_markers.)
+				if (extra !== null && (meta.inline_markers ?? []).includes(extra)) {
+					this.#collectMember(bundle, next, run);
+					continue;
+				}
+				// NESTED-INTERACTIVE ABSORB. A DIFFERENT-type interactive the writer authored INSIDE
+				// this host's content (e.g. a [shape hover] typed inside an [Accordion 5] panel) is
+				// ABSORBED as a NESTED sub-bundle rather than terminating the host outright (which is
+				// what the default `break` at the foot of this block would otherwise do). The nested
+				// widget is recursively swallowed into its own sub-bundle (its members ride along
+				// inside the host's consumed range, so the main scanning loop never re-scans them
+				// separately), and a {type:"nested"} marker is pushed into the host's members at the
+				// nested widget's position. The host then keeps walking AFTER the nested widget, so a
+				// later SAME-type continuation (e.g. the writer resuming "[Accordion 5]" content
+				// further down, perhaps under a duplicate panel number) still rejoins the SAME host —
+				// producing one single accordion container with the shapeHover nested inside one of
+				// its panels, matching the finished page. MAP host->[nested types] (data
+				// member_rule.nested_interactive_absorb) keeps this tight: for example, only
+				// accordion->shapeHover is allowed, nothing broader. env NESTABSORB_OFF turns this
+				// off, so a nested widget simply terminates the host.
+				const nestList = (meta.nested_interactive_absorb ?? {})[bundle.type] ?? [];
+				if (extra !== null && extra !== bundle.type && nestList.includes(extra)
+					&& !(typeof process !== "undefined" && process.env && process.env.NESTABSORB_OFF)) {
+					j = this.#absorbNestedSubBundle(bundle, items, j, next, extra, p, absolute, run, normaliser) - 1;
+					continue;
+				}
+				// NUMBERED-SERIES CONTAINMENT (as in OSOH501-01). When the writer
+				// authors an accordion as a NUMBERED panel series ([Accordion 1] … [Accordion 2] …
+				// [Accordion 4]), the numbers are an explicit FORWARD GUARANTEE: everything between
+				// [Accordion N] and [Accordion N+1] belongs to panel N — including a different-type
+				// interactive the writer placed INSIDE the panel (a [modal] image set, a [tabs]
+				// letter-nav, a [Click drop] values table). The human's finished pages group ALL the
+				// numbered panels into one accordion and nest those widgets inside the panel's
+				// accContent. So: while the HOST is a numbered series (a data-listed host type with a
+				// numbered opener/member), a different-type INTERACTIVE invocation is absorbed as a
+				// NESTED sub-bundle (the nested-interactive mechanism above) rather than terminating
+				// the host — (a) ALWAYS when a LATER numbered same-type tag still lies ahead (the
+				// between-panels rule, provably inside the series), and (b) after the LAST numbered
+				// panel (tail) only when the series is real (>= min_panels numbered tags already
+				// captured) — the tail window is still bounded by every existing terminator (lone
+				// section heading / callout / [Activity] / [H1] / page boundary). Data
+				// member_rule.numbered_series_absorb; env ACCNEST_OFF.
+				const seriesCfg = meta.numbered_series_absorb;
+				if (extra !== null && extra !== bundle.type && seriesCfg && seriesCfg.enabled !== false
+					&& (seriesCfg.hosts ?? []).includes(bundle.type)
+					&& !(typeof process !== "undefined" && process.env && process.env.ACCNEST_OFF)) {
+					const numRe = new RegExp(
+						(seriesCfg.numbered_pattern ?? "\\[\\s*{type}\\s+\\d+").replace("{type}", bundle.type),
+						"i");
+					const isNumbered = (m) => m && m.type === "tag"
+						&& m.parse?.primary?.tag === bundle.type && numRe.test(String(m.text ?? ""));
+					const panelsSoFar = [...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])]
+						.filter(isNumbered).length;
+					// look AHEAD: does a later numbered same-type tag lie before a hard stop?
+					let laterPanel = false;
+					for (let k = j + 1; k < items.length; k++) {
+						const it2 = items[k];
+						if (it2.type !== "tag") continue;
+						const pp = it2.parse?.primary;
+						if (!pp) continue;
+						if (pp.tag === bundle.type && numRe.test(String(it2.text ?? ""))) { laterPanel = true; break; }
+						if (pp.tag === "h1" || pp.tag === "activity" || absolute.has(pp.tag)
+							|| pp.directive === "PAGE_BOUNDARY" || pp.directive === "CONTAINER_CLOSE") break;
+					}
+					const tailOk = (seriesCfg.tail !== false) && panelsSoFar >= (seriesCfg.min_panels ?? 2);
+					if ((laterPanel && panelsSoFar >= 1) || tailOk) {
+						j = this.#absorbNestedSubBundle(bundle, items, j, next, extra, p, absolute, run, normaliser) - 1;
+						continue;
+					}
+				}
+				// THE DROPBOX SPLIT. The student file-upload DROPBOX is never part of another
+				// activity's basket, in EITHER direction: a dropbox marker merged in as a phantom
+				// "second widget" makes every builder bail on the mixed basket (BLL156's clean
+				// three-video carousel would be refused because the upload button at the end of the
+				// activity is mis-filed as a second widget), AND the trapped dropbox never reaches the
+				// upload-box builder. No bundle that builds carries one. So instead of the
+				// same_activity_multi_widget absorb below sweeping the marker into the host's
+				// extraTypes, the walk terminates: the host builds clean and the dropbox opens its OWN
+				// bundle, which #ddUploadBox turns into the gold's "Upload to dropbox" button. The
+				// discriminator is the upload box's OWN predicate pair, read live from the dropDown
+				// template block so the two rules can never drift: deny = opener_deny_pattern ("drop
+				// box"), minus the upload_box opener_exclude_pattern ("alert" — an [alert dropbox] is a
+				// REVEAL box, CEDT101, and keeps its ordinary behaviour). ONE DIRECTION ONLY: the
+				// reverse arm (a dropbox-opener HOST releasing its foreign followers) would lose the
+				// writer's paired "No" button on ENGI401 — the freed [Modal] reaches the single-URL
+				// button path, which silently drops an unplaceable [button] member — while its dropbox
+				// box still declines, so it is not applied (see the data doc).
+				// Data member_rule.dropbox_never_merges; env DBXSPLIT_OFF.
+				{
+					const dbx = meta.dropbox_never_merges;
+					if (dbx && dbx.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env.DBXSPLIT_OFF)
+						&& extra === "dropDown" && bundle.type !== "dropDown") {
+						const ddTpl = DataService.Data.EmitTemplates.interactive_builders?.dropDown ?? {};
+						const deny = new RegExp(ddTpl.opener_deny_pattern ?? "drop\\s*box", "i");
+						const excl = new RegExp(ddTpl.upload_box?.opener_exclude_pattern ?? "\\balert\\b", "i");
+						const own = String(next.text ?? "");
+						// the follower is the student upload area → the host's walk ends here
+						if (deny.test(own) && !excl.test(own)) break;
+					}
+				}
+				// SAME widget type = a CONTINUATION (multi-panel: accordion strips,
+				// flip-card decks) — always absorbed so the panels stay one bundle.
+				// A DIFFERENT type = a new widget; absorbed only when this bundle
+				// belongs to a REAL [Activity N] (BLL155 carousel + selfCheck = one
+				// activity). Otherwise it TERMINATES — as in XGF9001, where a flipCard
+				// must NOT swallow the following accordion + the rest of the page.
+				// THE NEW ACTIVITY ID ENDS THE WALK. A follower whose OWN bracket opens a DIFFERENT activity
+				// ('[Activity 3B – self marking type the answer]' inside Activity 3A's walk — the MX family types the activity id
+				// and the widget in one bracket, so the tag resolves to the widget and the absolute [activity] break below never
+				// sees it) is a new activity, not another widget of this one: the walk ends and the follower opens its own
+				// bundle (its id read from the same bracket, as 3A's was). The gold keeps the two activities apart. Data
+				// member_rule.new_activity_id_terminates {enabled, pattern}; env ACTIDSPLIT_OFF.
+				{
+					const nai = meta.new_activity_id_terminates;
+					// The owner lookback (owner_lookback; env ACTIDOWNER_OFF): a bundle opened UNDER a separate [Activity N]
+					// opener has no activityId during the walk — the nearest activity opener before it lends its id
+					let naiId = bundle.activityId;
+					const olb = nai?.owner_lookback;
+					if (!naiId && olb && olb.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[olb.env || "ACTIDOWNER_OFF"])) {
+						for (let b = (bundle.startIndex ?? j) - 1, n = 0; b >= 0 && n < (olb.max_back ?? 60); b--, n++) {
+							const p = items[b]?.type === "tag" ? items[b].parse?.primary : null;
+							if (!p) continue;
+							if (p.directive === "PAGE_BOUNDARY" || p.directive === "INTERACTIVE") break;
+							if (p.tag === "activity" && p.directive === "CONTAINER_OPEN") { naiId = items[b].parse.numbers?.[0] ?? null; break; }
+						}
+					}
+					if (nai && nai.enabled !== false && naiId
+						&& !(typeof process !== "undefined" && process.env && process.env.ACTIDSPLIT_OFF)) {
+						const mm = new RegExp(nai.pattern ?? "\\[\\s*Activity\\s+([0-9]+[A-Za-z]?)\\b", "i").exec(String(next.text ?? ""));
+						if (mm && mm[1].toUpperCase() !== String(naiId).trim().toUpperCase()) break;
+					}
+				}
+				const sameType = extra !== null && extra === bundle.type;
+				// A DIFFERENT-type DISPLAY/narration follower (display_terminator_types —
+				// speechBubble/flipCard/tabs) is a NEW presentational SECTION, not another step of
+				// the same activity's task. The finished page CLOSES the activity and renders the
+				// follower OUTSIDE it, as its own separate element (a consistent pattern in the human
+				// build for these particular widget types). Terminate instead of
+				// absorbing — the follower then starts its OWN bundle, resolved either by the
+				// activity look-back as free-body content (it simply stops once it reaches the
+				// already-consumed original widget), or, if a new [Activity] tag intervenes first,
+				// that tag's absolute terminator opens a brand NEW activity container for it (this
+				// already happens naturally — the loop breaks at [activity] before reaching the
+				// widget). TASK-style followers (typing/dropQuiz/reorder/mcq — usually kept inside
+				// the SAME activity) and same-type continuations are unaffected by this rule. Data:
+				// member_rule.{same_activity_display_terminates, display_terminator_types}; env
+				// ACTSPLIT_OFF.
+				const displayTerminates = meta.same_activity_display_terminates
+					&& !(typeof process !== "undefined" && process.env && process.env.ACTSPLIT_OFF)
+					&& extra !== null && !sameType
+					&& (meta.display_terminator_types ?? []).includes(extra);
+				if (meta.same_activity_multi_widget && normaliser && !displayTerminates
+					&& (sameType || bundle.activityId)) {
+					(bundle.extraTypes ??= []).push(extra);
+					this.#collectMember(bundle, next, run);
+					run.AddNote("info", "InteractiveScanner",
+						`${bundle.activityId ? "Activity " + bundle.activityId : bundle.type}: additional widget [${p.tag}] absorbed (${bundle.type} + ${extra}).`);
+					continue;
+				}
+				if (displayTerminates) break;   // display/narration follower → activity closes here
+				// CONVERSATION + clickDrop reveal: a CONVERSATION-style speechBubble absorbs an
+				// immediately-following clickDrop as its own inline response — the writer's "Click to
+				// see its response:" instruction plus a [Click drop] (front/drop) tag together form
+				// the LAST turn of the conversation. The conversation builder renders it as that last
+				// bubble's CLICK reveal (following the Writers Template's literal [Click drop]
+				// instruction, rather than a hover interaction, since a hover can't be reliably
+				// derived from the source document). Narrow: only a speechBubble whose invocation
+				// carries the "Conversation layout" cue absorbs a clickDrop this way, and only ONE;
+				// the clickDrop's [front]/[drop] members are then collected as usual, and a following
+				// [body] still terminates per the FACE / REVEAL member terminator rule above. Data:
+				// member_rule.conversation_absorbs_clickdrop.
+				if (extra === "clickDrop" && bundle.type === "speechBubble"
+					&& (meta.conversation_absorbs_clickdrop ?? true)
+					&& [...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])].some((m) =>
+						m.type === "tag" && /conversation/i.test(String(m.text ?? "")))) {
+					(bundle.extraTypes ??= []).push(extra);
+					this.#collectMember(bundle, next, run);
+					continue;
+				}
+				break;
+			}
+			// (new [Activity N]) — absolute
+			if (p?.tag === "activity" || next.parse.tags.some((t) => t.tag === "activity")) break;
+			// HINT TITLE — the writer's own [Title] for a [Hint Button].
+			// [Title] resolves to primary tag `title bar` / SECTION_MARKER, and `title bar`
+			// is an ABSOLUTE terminator, so a writer who puts the hint's title in its OWN
+			// paragraph (TEDC402, SSEA203) would end the walk immediately and the bundle capture
+			// NOTHING — while a writer who puts it on the ADJACENT line (HPRE203, SSOG103) keeps
+			// it, because there the two tags merge into one red span. Such "bare invocation"
+			// hints are a CAPTURE FAILURE, not empty widgets. Swallow it as the hint's TITLE
+			// instead. FOUR conditions, all required, so a genuine page title bar can never be
+			// stolen: the bundle is HINT-family, it has captured NOTHING yet (the title
+			// immediately follows the opener), the folded form is exactly "[title]" (a real
+			// page bar folds to "[title bar]"), and the blackAfter is non-empty and short.
+			// The accordion/clickDrop/flipCard title-stops are untouchable BY CONSTRUCTION
+			// through the `types` gate. Data member_rule.hint_title_member; env HINTTITLE_OFF.
+			if (p && absolute.has(p.tag) && this.#hintTitleMember(bundle, next, p)) {
+				this.#collectMember(bundle, next, run);
+				continue;
+			}
+			// TITLE PANEL DELIMITER — the writer's numbered [title N] is an
+			// accordion PANEL marker, not a page title bar: swallow it as a member (the
+			// CHFUN05 dialect; see #titlePanelMember). env ACCTITLEMEM_OFF.
+			if (p && absolute.has(p.tag) && this.#titlePanelMember(bundle, next, p)) {
+				this.#collectMember(bundle, next, run);
+				continue;
+			}
+			// the bank's absolute terminator list (alert, important,
+			// end activity, page boundaries, section markers, h1 …)
+			if (p && absolute.has(p.tag)) break;
+			if (p?.directive === "CONTAINER_CLOSE") break;   // explicit close ends the open container (over-capture #3)
+				if (p?.directive === "PAGE_BOUNDARY") break;   // belt & braces
+			// conditional terminators: h2–h5 per the widget's flag — EXCEPT the pop-out's
+			// own content heading: see #modalHeadingMember. (The modal CLOSER
+			// walk-stop lives at the top of the INTERACTIVE-member block above — a
+			// same-type member never reaches this far down.)
+			if (p && ["h2", "h3", "h4", "h5"].includes(p.tag) && headingTerminates) {
+				if (!this.#modalHeadingMember(bundle, items, j, p, absolute)) break;
+				this.#collectMember(bundle, next, run);
+				continue;
+			}
+
+			// not a terminator → swallowed as a member
+			this.#collectMember(bundle, next, run);
+		}
+		return j;
+	};
+
+	/** Does this modal bundle already hold a NUMBERED same-type member?
+	 *  The numbered-series discriminator the gathering rules fence on: EXPFUN04/05's
+	 *  built tile dialect is numbered and keeps its ordinary behaviour. The digit must sit
+	 *  INSIDE THE SAME BRACKET as the modal word (data numbered_pattern — a lookahead
+	 *  pair, so "[3 Click modal XL…]" counts with the digit BEFORE the word): a bare
+	 *  /\d/ over the whole fold would read the "4" in a co-tag "[Modal] [H4]" (ENGI202) and
+	 *  the "2" in a parenthetical "(same as in FUNdamental phase 2)" (ENFUN07) as
+	 *  series evidence. */
+	static #modalHasNumberedMember(bundle, closerRe) {
+		const mg = DataService.Data.BoundaryBank._meta.member_rule.modal_gathering ?? {};
+		const numRe = new RegExp(mg.numbered_pattern
+			?? "\\[(?=[^\\]]*(?:modal|pop\\s*-?\\s*out|popout))(?=[^\\]]*\\d)[^\\]]*\\]", "i");
+		for (const m of [...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])]) {
+			if (!m || m.type !== "tag") continue;
+			if (m.parse?.primary?.tag !== bundle.canonTag) continue;
+			const f = String(m.parse?.folded ?? "");
+			if (closerRe && closerRe.test(f)) continue;
+			if (numRe.test(f)) return true;
+		}
+		return false;
+	};
+
+	/** Is this modal bundle's kept trailing media SAFE to keep? True only
+	 *  when the INVOCATION carries a plausible trigger label on its own tail — the
+	 *  label+video dialect's precondition, tested with the BUILDER'S OWN label rules read live
+	 *  (label_max_words from interactive_builders.modal.modal_sets, so the two never drift):
+	 *  non-empty, within the word cap, not a bare URL, not itself a bracketed instruction. A
+	 *  label-less bundle cannot build, and keeping media in a bundle that then declines LOSES
+	 *  the rendered embed into dump text. */
+	static #modalTrailKeep(bundle) {
+		// Only a trailing VIDEO is kept — the gold-backed dialect is label+video, and
+		// #modalPushPart has no audio role, so a kept trailing AUDIO in a declining
+		// bundle would vanish into dump text (as MXEO301's player would). Data
+		// member_rule.trailing_media_keep_tags.
+		const mr = DataService.Data.BoundaryBank._meta.member_rule ?? {};
+		const keepTags = mr.trailing_media_keep_tags ?? ["video"];
+		const last = (bundle.memberItems ?? [])[(bundle.memberItems ?? []).length - 1];
+		if (!last || last.type !== "tag" || !keepTags.includes(last.parse?.primary?.tag)) return false;
+		// A TABLE-carrying bundle is a different dialect the builder mostly declines
+		// (PES1008's info-box table: its kept video would become a note line) —
+		// the pop is the safe default there.
+		if ((bundle.tables ?? []).length) return false;
+		let inv = null;
+		for (const m of [...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])]) {
+			if (m && m.type === "tag" && m.parse?.primary?.tag === bundle.canonTag
+				&& m.parse?.primary?.directive === "INTERACTIVE") { inv = m; break; }
+		}
+		if (!inv) return false;
+		const tail = String(inv.blackAfter ?? "")
+			.replace(/\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu, "")
+			.replace(/\*+/g, "").trim();
+		if (!tail) return false;
+		if (/https?:\/\//i.test(tail) || /\[[^\]]*\]/.test(tail)) return false;
+		const maxWords = DataService.Data.EmitTemplates?.interactive_builders?.modal
+			?.modal_sets?.label_max_words ?? 9;
+		return tail.split(/\s+/).length <= maxWords;
+	};
+
+	/** THE POP-OUT'S OWN CONTENT HEADING. Modal has no boundary-bank entry, so headings
+	 *  TERMINATE its member walk by default — and the writers' dominant pop-out shapes put
+	 *  a heading at the TOP of the pop-out's own content: "[Modal 1 Image] → [H3] Threading
+	 *  Beads → [Body] …" (MXDI101, MXEX201) and "[modal] How do I convert? → [H5] → body
+	 *  → video → [close modal]" (MXFL301/MXFU301/BLL243). Stopping dead at the heading
+	 *  would ship the bundle as a ONE-MARKER hand-off box and render the pop-out's content
+	 *  as loose body text.
+	 *
+	 *  A heading is CAPTURED as modal content only under these fences:
+	 *   (a) NEVER when the next unconsumed item is a same-type marker — that heading is
+	 *       the NEXT set's label / a between-group section heading (XGF9003's hover
+	 *       matrix, whose [H2] labels sit directly before each [Pop-out], keeps its
+	 *       exact shape BY CONSTRUCTION — the gold builds a shapeHover there);
+	 *   (b) ARM-N: the bundle already holds a NUMBERED same-type member (the writer is
+	 *       keying sets by number), ONE heading per set (a second
+	 *       heading since the last same-type marker is the section resuming → terminate);
+	 *   (c) ARM-C: a modal CLOSER lies AHEAD within the lookahead — the writer told us
+	 *       where the widget ends, so headings up to it are content (multi-step pop-outs
+	 *       keep all their [H5] steps). The ahead-scan stops at absolute terminators,
+	 *       activity tags, different-type INTERACTIVE invocations and page boundaries,
+	 *       so a LONE modal with no series evidence (ENGS102-2.0, whose following [H3]
+	 *       is genuinely the next section) terminates as usual.
+	 *  Data member_rule.modal_gathering; env MODHEADMEM_OFF. */
+	static #modalHeadingMember(bundle, items, j, p, absolute) {
+		const mg = DataService.Data.BoundaryBank._meta.member_rule.modal_gathering;
+		if (!mg || mg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env.MODHEADMEM_OFF) return false;
+		if (!(mg.types ?? ["modal"]).includes(bundle.type)) return false;
+		const closerRe = new RegExp(mg.closer_pattern, "i");
+		// (a) heading directly followed by a same-type marker = the next set's label
+		let k = j + 1;
+		while (k < items.length && items[k]
+			&& ((items[k].type === "black" && !String(items[k].text ?? "").trim()) || items[k].consumedBy)) k++;
+		const nx = items[k];
+		if (nx && nx.type === "tag" && nx.parse?.primary?.directive === "INTERACTIVE"
+			&& nx.parse.primary.tag === bundle.canonTag) return false;
+		// (b) ARM-N — numbered series, one heading per set
+		if (this.#modalHasNumberedMember(bundle, closerRe)) {
+			for (let m = (bundle.memberItems ?? []).length - 1; m >= 0; m--) {
+				const mm = bundle.memberItems[m];
+				if (!mm || mm.type !== "tag") continue;
+				const mp = mm.parse?.primary;
+				if (mp?.tag === bundle.canonTag) return true;              // no heading since the last marker
+				if (["h2", "h3", "h4", "h5"].includes(mp?.tag)) return false;   // second heading → section resumes
+			}
+			return true;
+		}
+		// (c) ARM-C — a modal closer ahead bounds the capture
+		const closeRe = mg.closer_close_pattern ? new RegExp(mg.closer_close_pattern, "i") : null;
+		const cap = Math.min(items.length, j + 1 + (mg.lookahead ?? 40));
+		for (let a = j + 1; a < cap; a++) {
+			const itA = items[a];
+			if (!itA || itA.consumedBy) continue;
+			if (itA.type !== "tag") continue;
+			const pa = itA.parse?.primary;
+			if (!pa) continue;
+			const fa = String(itA.parse?.folded ?? "");
+			if (pa.directive === "INTERACTIVE" && pa.tag === bundle.canonTag && closerRe.test(fa)) return true;
+			if (pa.directive === "CONTAINER_CLOSE" && closeRe && closeRe.test(fa)) return true;
+			if (absolute && absolute.has(pa.tag)) return false;
+			if (pa.tag === "activity" || itA.parse?.tags?.some((t) => t.tag === "activity")) return false;
+			if (pa.directive === "INTERACTIVE" && pa.tag !== bundle.canonTag) return false;
+			if (pa.directive === "PAGE_BOUNDARY" || pa.directive === "CONTAINER_OPEN"
+				|| pa.directive === "SECTION_MARKER" || pa.directive === "CONTAINER_CLOSE") return false;
+		}
+		return false;
+	};
+
+	/**
+	 * THE HEADING-THEN-TABLE SHAPE AFTER AN EMPTY TYPED-WIDGET INVOCATION TAKES THE OWNER FORM.
+	 *
+	 * A task-typed invocation with no activity opener before it (`[interactive: drag and
+	 * drop]`, `[Interactive activity]`) or with its id embedded in the span
+	 * (`[Activity 2C][drag and drop]`) is followed by the writer's `[H3]` title, an
+	 * instruction paragraph and the widget's TABLE. Headings terminate the member walk, so
+	 * the bundle holds only its invocation: skip_empty would render no box, the heading
+	 * and prose would ship free and the table as a kept <table>. The gold boxes the section —
+	 * <h3> title + <p> + the BUILT widget.
+	 *
+	 * The rule fires ONLY when every one of these holds: the bundle's type is listed, it has
+	 * no owner, it captured no table and no member beyond its invocation, the walk stopped at
+	 * a listed heading, and — within max_between blank / prose / `[body]` / `[list]` /
+	 * instruction items — a TABLE follows before anything else (another opener, a marker, a
+	 * media element or a consumed item ends the look-ahead with no change). Then the bundle
+	 * becomes an OWNED bundle in the `_aliasElementOwner` shape: a synthetic bare owner
+	 * (an embedded `[Activity 2C]` id keeps its number; an id-less one takes the
+	 * positional letter), the heading + prose become activityLeadItems (ContentConverter's
+	 * lead loop renders the <h3> title and the free prose inside the box), instruction spans
+	 * join the bundle's instructions (the red Writers Note before the widget), and the member
+	 * walk resumes AT the table so it is captured as the widget's data (the dragAndDrop
+	 * builders then build it). The lead items sit inside [startIndex, endIndex)
+	 * and are consumed by the caller's ownership-marking loop like every other member.
+	 *
+	 * Data: BoundaryBank._meta.opener_rule.heading_table_owner   Env: HEADTABLE_OFF
+	 *
+	 * @param {Object} bundle           - the bundle whose members were just collected
+	 * @param {Array}  items            - the page items
+	 * @param {number} i                - the invocation's index
+	 * @param {boolean} headingTerminates - the widget's heading_is_terminator flag
+	 * @param {Set}    absolute         - the absolute terminator set
+	 * @param {Object} run              - the conversion run
+	 * @param {Object} normaliser       - the tag normaliser
+	 */
+	static #headingTableOwner(bundle, items, i, headingTerminates, absolute, run, normaliser) {
+		const cfg = DataService.Data.BoundaryBank?._meta?.opener_rule?.heading_table_owner;
+		if (!cfg || cfg.enabled === false) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "HEADTABLE_OFF"]) return;
+		if (!(cfg.types ?? []).includes(bundle.type)) return;
+		if ((bundle.extraTypes ?? []).length) return;
+		if ((bundle.tables ?? []).length) return;
+		const inv = items[i];
+		if ((bundle.memberItems ?? []).some((m) => m !== inv)) return;
+		const headTags = new Set((cfg.heading_tags ?? ["h1", "h2", "h3", "h4", "h5", "h6", "heading"]).map((t) => String(t).toLowerCase()));
+		// The OWNED half (data owned_bundles; env HEADTABLEOWNED_OFF): a real `[Activity N]` opener (or the
+		// synthetic owner) already owns the bundle and its walk still ended at the heading — the box would be EMPTY.
+		// The owner stays; the heading + prose are appended to its lead. An opener with its own title tail, or a lead
+		// that already holds a heading, is left alone — under the lead loop's first-line-is-the-title rule the
+		// heading after the invocation would otherwise demote to prose.
+		const owned = bundle.activityOwner !== undefined;
+		const oc = cfg.owned_bundles;
+		const ocOn = !!oc && oc.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[oc.env || "HEADTABLEOWNED_OFF"]);
+		if (owned) {
+			if (!ocOn) return;
+			// the tail is the writer's title unless it is empty, the box's id, or the bare id the
+			// owner_id_from_tail rule recovers later in the scan (`[Activity] **6A**`)
+			const tail = String(bundle.activityOwner.blackAfter ?? "").replace(/[*\s]+/g, "");
+			if (tail && tail.toUpperCase() !== String(bundle.activityId ?? "").toUpperCase() && !/^\d{1,2}[A-Za-z]?$/.test(tail)) return;
+			if ((bundle.activityLeadItems ?? []).some((x) => x && x.type === "tag" && headTags.has(String(x.parse?.primary?.tag ?? "").toLowerCase()))) return;
+		}
+		const betweenTags = new Set((cfg.between_tags ?? ["body", "list"]).map((t) => String(t).toLowerCase()));
+		// A media element between the heading and the table (`[image]` — WJFUN109 1B) is the box's own lead media (the lead_media rule renders it inside the box)
+		const betweenMedia = new Set(((ocOn && oc.between_media_tags) || []).map((t) => String(t).toLowerCase()));
+		const maxBetween = cfg.max_between ?? 6;
+		const isBlank = (x) => x.type === "black" && !String(x.text ?? "").trim();
+		// the walk must have stopped AT a heading (blank lines aside)
+		let j = bundle.endIndex;
+		while (j < items.length && isBlank(items[j])) j++;
+		const head = items[j];
+		if (!head || head.consumedBy !== undefined || head.type !== "tag") return;
+		const hp = head.parse?.primary;
+		if (!hp || !headTags.has(String(hp.tag ?? "").toLowerCase())) return;
+		// look ahead: prose / [body] / [list] / instruction spans, then a TABLE — nothing else
+		let k = j + 1, between = 0, tIdx = -1;
+		const instr = [];
+		for (; k < items.length; k++) {
+			const x = items[k];
+			if (x.consumedBy !== undefined) break;
+			if (isBlank(x)) continue;
+			if (x.type === "table") { tIdx = k; break; }
+			if (++between > maxBetween) break;
+			if (x.type === "black" || x.type === "assettodo") continue;
+			if (x.type !== "tag") break;
+			const p = x.parse?.primary;
+			if (!p) { if (x.parse?.class === "instruction" || x.parse?.instructionFragment) instr.push(x); continue; }
+			if (p.directive === "ELEMENT" && (betweenTags.has(String(p.tag ?? "").toLowerCase()) || betweenMedia.has(String(p.tag ?? "").toLowerCase()))) continue;
+			break;
+		}
+		// THE OWNED HEADING-LED BUNDLE WITH NO TABLE (data owned_bundles.no_table; env NOTABLEOWNED_OFF):
+		// the quiz written as paragraphs after the heading (`[Activity 1A] [Dropdown Quiz]` + `[H3]` + `[body]` + the
+		// questions as lines — WJFUN307, ENGJ403, ENFUN03). The owned half above takes the heading + prose only when a
+		// table follows; without one the box would stand EMPTY and the section free after it, where the gold's
+		// same-numbered box mostly holds it. The heading becomes the first lead item and the member
+		// walk RESUMES right after it — the standard capture with its own terminators takes the section as members.
+		// Owned bundles only — a real owner, or the embedded form whose invocation carries the id
+		// (`[Activity 1A] [Dropdown Quiz]`, whose box already exists); the unowned no-table shape is
+		// usually free in the gold and stays free.
+		let ntMode = false;
+		if (tIdx < 0) {
+			const nt = ocOn && (owned || bundle.activityId != null) ? oc.no_table : null;
+			if (!nt || nt.enabled === false) return;
+			if (typeof process !== "undefined" && process.env && process.env[nt.env || "NOTABLEOWNED_OFF"]) return;
+			ntMode = true; tIdx = j + 1; instr.length = 0;
+		}
+		// the owner form: a synthetic bare owner (the `_aliasElementOwner` shape), the heading + prose as the lead,
+		// instruction spans as the bundle's instructions, the walk resumed at the table
+		if (!owned) bundle.activityOwner = { type: "tag", parse: { tags: [], numbers: [], primary: null }, blackAfter: "", _headTableOwner: true };
+		// the heading goes FIRST so it is the box's <h3> under the lead loop's first-line-is-the-title rule; an owned
+		// bundle's existing lead (the aliased element, a prose line) follows it, then the prose after the heading
+		const post = items.slice(j, tIdx).filter((x) => !instr.includes(x));
+		bundle.activityLeadItems = [post[0], ...(owned ? (bundle.activityLeadItems ?? []) : []), ...post.slice(1)];
+		bundle._headTableOwner = true;
+		for (const x of instr) this.#collectMember(bundle, x, run);
+		bundle.endIndex = this.#swallowMembers(bundle, items, tIdx, headingTerminates, absolute, run, normaliser);
+		if (run && typeof run.AddNote === "function") {
+			run.AddNote("info", "InteractiveScanner",
+				`[${String(inv?.text ?? "").trim()}] — the heading "${String(head.blackAfter ?? normaliser?.RenderText?.(head.text) ?? "").trim().slice(0, 60)}" and ${ntMode ? "the section after it are" : "its table are"} the widget's own (heading_table_owner${ntMode ? ", no_table" : ""}).`);
+		}
+	};
+
+	/**
+	 * TRAILING MEDIA. Trim trailing [video]/[audio] members (the writer's
+	 * post-widget media) back out of a just-closed bundle so they render as their
+	 * OWN standalone elements via the normal converter path.
+	 *
+	 * WHY: writers often drop an explainer [video] AFTER an interactive's content
+	 * (OSBY301: a YouTube video after the last accordion panel). The boundary scan
+	 * swallows it as a member, but the finished HTML places it in its own row. So
+	 * we pop any trailing media tags off the bundle and shrink the consumed range;
+	 * the scanner then resumes AT that item (i = endIndex - 1; i++) and it converts
+	 * normally, in document order, right after the widget.
+	 *
+	 * Data-driven: the tag list is BoundaryBank._meta.member_rule.trailing_media_extract.
+	 *
+	 * @param {Object} bundle    - the bundle whose members were just collected
+	 * @param {number} endIndex  - the bundle's current end index (exclusive)
+	 * @returns {number} the (possibly reduced) end index
+	 */
+	static #trimTrailingMedia(bundle, endIndex) {
+		const mr = DataService.Data.BoundaryBank?._meta?.member_rule ?? {};
+		// SLIDESHOW widgets (carousel/rotateBanner) are EXEMPT: a trailing [video]/[audio]
+		// is the last SLIDE, not post-widget media — trimming it would drop a slide and
+		// duplicate it as a standalone element after the widget. (member_rule.trailing_media_extract_exempt_types)
+		if ((mr.trailing_media_extract_exempt_types ?? []).includes(bundle.type)) return endIndex;
+		// The MODAL keeps its trailing media WHEN IT CAN BUILD: a [video] directly after
+		// "[modal] <label>" IS the pop-out's content by the widget's own semantics (the
+		// label+video dialect, and the golds render the label and video as ONE unit —
+		// ENFUN09's h5+video, MXDB302's h4+video, MXFU301's TKmodal). Popping it would empty
+		// those bundles into one-marker hand-off boxes with their content stranded outside.
+		// LABEL-FENCED (#modalTrailKeep): the keep fires ONLY when the invocation's own tail is
+		// a plausible trigger label, because a label-less bundle DECLINES at the builder and a
+		// declined bundle turns its kept media into dump text (ENGJ101 would lose a rendered
+		// embed, PES1008's video become a note line, OSBY201 lose its two external-video
+		// buttons, MXEO301 an audio player). Separate key + toggle so the OSBY301
+		// post-accordion semantics of the general rule are untouched. Data
+		// member_rule.trailing_media_keep_types; env MODTRAILMEDIA_OFF.
+		if ((mr.trailing_media_keep_types ?? []).includes(bundle.type)
+			&& !(typeof process !== "undefined" && process.env && process.env.MODTRAILMEDIA_OFF)
+			&& this.#modalTrailKeep(bundle)) return endIndex;
+		const extract = mr.trailing_media_extract ?? [];
+		if (!extract.length) return endIndex;
+		// The last memberItem always lines up with items[endIndex-1] (members are
+		// swallowed in document order), so each pop shrinks the range by one item.
+		while (bundle.memberItems.length) {
+			const last = bundle.memberItems[bundle.memberItems.length - 1];
+			if (last.type !== "tag") break;
+			if (!extract.includes(last.parse?.primary?.tag)) break;
+			bundle.memberItems.pop();
+			endIndex -= 1;
+		}
+		return endIndex;
+	};
+
+	/**
+	 * BACKWARD LEAD-PAIR ABSORB.
+	 *
+	 * The general idea: "detect a repeating pattern, then go back UP to recover the missed
+	 * first pairing." Because a bundle is scanned FORWARD from the first interactive tag (see
+	 * ScanPage above), a REPEATING (lead-in label, widget) series always loses its very first
+	 * label — it sits ABOVE the tag, outside the forward scan (e.g. a series of speech bubbles
+	 * each introduced by a short lead-in like "…what we see:" would have its very first
+	 * lead-in orphaned as ordinary body text, while its later siblings "…feel:"/"…think:" get
+	 * correctly captured as part of the widget).
+	 *
+	 * After #swallowMembers has run, collapse the captured members into a per-source-block
+	 * token string (W=interactive tag, L=standalone black label, O=table). ONLY on a STRICT
+	 * clean widget-first alternation (^W(LW)+$: two or more widgets, exactly one label per
+	 * interior widget, no runs of multiple labels, no tables) do we extrapolate the pattern
+	 * backward: walk up over UNCONSUMED black items whose label SIGNATURE equals the DOMINANT
+	 * interior-label signature (i.e. they look "similarly structured" to the labels already
+	 * captured) and are label-shaped (num/alpha/colon/bullet — never free prose or a URL),
+	 * capped at exactly the number of MISSING labels and close to the interior labels' word
+	 * count. Matched labels are prepended to memberItems and startIndex is moved back to
+	 * include them (the caller's ownership-marking loop then consumes them along with
+	 * everything else). Data member_rule.leading_pattern_absorb; env INTLEADPAIR_OFF.
+	 * inline_only.
+	 */
+	static #absorbLeadingPattern(bundle, items, tagIdx) {
+		const cfg = DataService.Data.BoundaryBank?._meta?.member_rule?.leading_pattern_absorb;
+		if (!cfg || cfg.enabled === false) return;
+		if (typeof process !== "undefined" && process.env && process.env.INTLEADPAIR_OFF) return;
+		if (cfg.inline_only !== false && bundle.activityOwner) return;   // inline widgets only
+
+		// collapse members -> per-role token string; noise/instruction fragments ride the widget block
+		let toks = "";
+		const labelTexts = [];
+		for (const m of bundle.memberItems) {
+			if (m.type === "tag" && m.parse?.primary?.directive === "INTERACTIVE") toks += "W";
+			else if (m.type === "black") { toks += "L"; labelTexts.push(m.text ?? ""); }
+			else if (m.type === "table") toks += "O";
+		}
+		if (!new RegExp(cfg.widget_first_alternation ?? "^W(LW)+$").test(toks)) return;
+
+		// the DOMINANT interior-label signature must be a genuine lead-in shape ("similarly
+		// structured") — else the labels are incidental and nothing above should be pulled in.
+		const counts = {};
+		for (const t of labelTexts) { const s = this.#labelSignature(t, cfg); counts[s] = (counts[s] || 0) + 1; }
+		const domSig = Object.keys(counts).sort((a, b) => counts[b] - counts[a])[0];
+		if (!(cfg.label_like ?? []).includes(domSig)) return;
+
+		const wc = (t) => String(t ?? "").replace(/\*+/g, "").trim().split(/\s+/).filter(Boolean).length;
+		const maxLbl = labelTexts.reduce((a, t) => Math.max(a, wc(t)), 0);
+		const cap = Math.max(maxLbl + (cfg.max_above_words_over_labels ?? 2), cfg.min_above_words_cap ?? 12);
+		const nW = (toks.match(/W/g) || []).length;
+		const missing = nW - labelTexts.length;         // labels needed to balance the front (=1 here)
+		if (missing < 1) return;
+
+		// walk UP, absorbing contiguous UNCONSUMED black labels that MATCH the interior signature —
+		// the recovered leading pairing(s). Stops at the first non-matching / consumed / non-black
+		// item, so it can never cross into unrelated section content.
+		let s = tagIdx - 1;
+		const absorbed = [];
+		while (s >= 0 && absorbed.length < missing) {
+			const prev = items[s];
+			if (!prev || prev.consumedBy !== undefined || prev.type !== "black") break;
+			if (this.#labelSignature(prev.text, cfg) !== domSig) break;
+			if (wc(prev.text) > cap) break;
+			absorbed.unshift(prev);
+			s--;
+		}
+		if (!absorbed.length) return;
+		bundle.memberItems.unshift(...absorbed);
+		bundle.startIndex = s + 1;
+		for (const a of absorbed) this.#harvestMedia(bundle, a);
+	};
+
+	/**
+	 * BACKWARD SAME-BLOCK AVATAR ABSORB.
+	 *
+	 * THE WRITER'S FORM (TEDC401/TEDC402/SSCI104): the avatar and its bubble are
+	 * ONE Writers Template paragraph —
+	 *     [Image] avatar Tina  smiling  <iStock title> [LINK: https://…gm2235638824-…]
+	 *     [speech bubble] RHS  See how the table gives the details…
+	 * The extractor splits that paragraph into separate red-span ITEMS, and the forward
+	 * member walk starts AT the [speech bubble] invocation, so the [image] item sits just
+	 * ABOVE it, outside the bundle. Left alone it would render as a loose standalone image
+	 * (plus its "avatar Tina" caption) with the bubble text stranded in a hand-off box
+	 * below; the finished page ships ONE `row speechBubble` containing both.
+	 *
+	 * THE DISCRIMINATOR IS THE SHARED SOURCE `block` — the "continuous sentence
+	 * vs a paragraph later" rule. An [image] in a DIFFERENT paragraph is the writer's own
+	 * separate element and is never touched, so this can only ever pull in an image the
+	 * writer glued to the bubble itself.
+	 *
+	 * The human gold builds an avatar+bubble row for this same-block form; the other
+	 * speechBubble shapes without a table (no media at all, non-iStock, iStock but not in
+	 * the same block) are left untouched, because the gold does not reliably build them.
+	 *
+	 * CONSERVATIVE BY CONSTRUCTION — the absorb runs only for a bundle the builder's
+	 * `no_table_image` branch can definitely finish: no table, no extra widget types, exactly
+	 * one nameable iStock image (id pattern) and no video in media, a contiguous run of
+	 * same-block items ending at the invocation that contains exactly ONE [image] tag and
+	 * otherwise only the writer's descriptive instruction/noise spans. Anything else and the
+	 * bundle is left exactly as it was — the image keeps rendering standalone and the widget
+	 * keeps its honest hand-off box. Absorbed instruction spans are pushed to
+	 * bundle.instructions so they still surface as red Writers Notes (never silently
+	 * strip a documented instruction), just after the widget rather than before it.
+	 *
+	 * @param {object} bundle - the open speechBubble bundle
+	 * @param {object[]} items - the page's item stream
+	 * @param {number} tagIdx - index of the widget's invocation tag (the bundle's start)
+	 */
+	static #absorbSameBlockImage(bundle, items, tagIdx) {
+		const cfg = DataService.Data.BoundaryBank?._meta?.member_rule?.same_block_image_absorb;
+		if (!cfg || cfg.enabled === false) return;
+		if (typeof process !== "undefined" && process.env && process.env.SBNOTBL_OFF) return;
+		if (!(cfg.types ?? ["speechBubble"]).includes(bundle.type)) return;
+		if ((bundle.tables ?? []).length || (bundle.extraTypes ?? []).length) return;
+
+		// exactly ONE nameable iStock image already harvested from the block's links, no video
+		const urls = (bundle.media ?? []).map((m) => String(m?.target ?? m?.text ?? ""));
+		if (urls.some((u) => new RegExp(cfg.video_pattern ?? "youtu\\.?be|youtube\\.com|vimeo", "i").test(u))) return;
+		const idRe = new RegExp(cfg.istock_id_pattern ?? "gm-?\\d{6,10}", "i");
+		if (urls.filter((u) => idRe.test(u)).length !== 1) return;
+
+		// SHARED PREDICATE — the members must be text the builder's no_table_image branch can
+		// actually render. Consulted HERE, before anything is consumed, so the absorb can never
+		// swallow an avatar the builder would then decline (which would trap the image inside a
+		// hand-off box); one definition, so absorb and build cannot drift apart.
+		const bTpl = DataService.Data.EmitTemplates?.interactive_builders?.speechBubble;
+		if (!InteractiveBuilder.NoTableBubbleParagraphs(bundle.memberItems, null, bTpl?.no_table_image)) return;
+
+		const blk = items[tagIdx]?.block;
+		if (!blk) return;
+
+		// walk UP over the CONTIGUOUS run of unconsumed items sharing that one source block
+		const run = [];
+		for (let s = tagIdx - 1; s >= 0; s--) {
+			const prev = items[s];
+			if (!prev || prev.consumedBy !== undefined || prev.block !== blk) break;
+			run.unshift(prev);
+			if (run.length > (cfg.max_absorb ?? 6)) return;      // an unexpectedly busy paragraph → bail
+		}
+		if (!run.length) return;
+
+		// exactly one [image] tag; everything else must be the image's own descriptive
+		// instruction/noise span (a structural tag means the paragraph carries a real
+		// second element and the absorb would swallow it)
+		const imgs = run.filter((it) => it.type === "tag" && it.parse?.primary?.tag === (cfg.image_tag ?? "image"));
+		if (imgs.length !== 1) return;
+		const ok = new Set(cfg.other_item_classes ?? ["instruction", "noise"]);
+		for (const it of run) {
+			if (it === imgs[0]) continue;
+			if (it.type !== "tag" || it.parse?.primary || !ok.has(it.parse?.class)) return;
+		}
+
+		bundle.memberItems.unshift(...run);
+		// THE OWNER START. An activity-owner lookback's `startIndex = activityIdx` must not be
+		// overwritten with the image's own index: a bundle with BOTH an [Activity] owner and a
+		// same-block avatar would leave the [Activity]/[H3]/[Body] lead items UNCONSUMED — the
+		// main loop would render them once (an empty-ish activity box + a loose heading) and the
+		// bundle-owned path AGAIN inside its box (flushLead), doubling the whole activity
+		// (TEDC402's layout tables take exactly this shape). So startIndex only ever moves
+		// BACKWARD, and a lead item the absorb turns into a MEMBER leaves the lead list (else the
+		// avatar's own caption text would render inside the box as "<p>avatar Tina</p>" AND as
+		// the bubble's picture).
+		// Data member_rule.same_block_image_absorb.owner_start_fix; env SBOWNERFIX_OFF.
+		const _ownerFix = (cfg.owner_start_fix ?? true)
+			&& !(typeof process !== "undefined" && process.env && process.env.SBOWNERFIX_OFF);
+		bundle.startIndex = _ownerFix ? Math.min(bundle.startIndex, tagIdx - run.length) : (tagIdx - run.length);
+		if (_ownerFix && Array.isArray(bundle.activityLeadItems)) {
+			bundle.activityLeadItems = bundle.activityLeadItems.filter((x) => !run.includes(x));
+		}
+		bundle.sameBlockImage = imgs[0];              // the builder's no_table_image branch keys on this
+		for (const a of run) {
+			this.#harvestMedia(bundle, a);
+			// keep the writer's descriptive note visible (it renders after the widget)
+			if (a !== imgs[0] && a.type === "tag" && (a.parse?.class === "instruction" || a.parse?.instructionFragment)) {
+				bundle.instructions.push(String(a.text ?? "").replace(/\s+/g, " ").trim());
+			}
+		}
+	};
+
+	/**
+	 * BACKWARD SAME-BLOCK LABEL ABSORB (#absorbSameBlockImage transposed to the modal).
+	 *
+	 * THE WRITER'S FORM (XGF9004-9.0, one paragraph per modal):
+	 *     "Everyone gets the same size piece of cake, even though someone is hungrier.
+	 *      [Pop-out] Fairness can depend on need. Sometimes equal isn't the same as fair."
+	 * The black lead is the VISIBLE trigger label and the tag's trailing text is the
+	 * pop-out. Because the walk starts AT the first tag, every later label is captured
+	 * (each is the black item preceding the next tag) but the FIRST one is left outside
+	 * the bundle — so the builder would either drop that label or decline the whole
+	 * widget for want of a trigger.
+	 *
+	 * CONTAINMENT: the SAME source BLOCK only (the "continuous sentence vs a
+	 * paragraph later" discriminator), a single BLACK item, label-sized, and only when the
+	 * bundle's first member is the modal tag itself. A different block, a structural tag,
+	 * an already-consumed item or a long paragraph all decline, so the absorb can never
+	 * swallow a real preceding element. The item is left in place for the builder to read
+	 * as a member; nothing is consumed that the builder cannot use, because a label it
+	 * cannot place simply renders as the set's trigger text.
+	 *
+	 * Data member_rule.same_block_label_absorb; env MODALLEAD_OFF.
+	 *
+	 * @param {object} bundle - the bundle being assembled
+	 * @param {object[]} items - the page's item stream
+	 * @param {number} tagIdx - index of the opening invocation
+	 */
+	static #absorbSameBlockLabel(bundle, items, tagIdx) {
+		const cfg = DataService.Data.BoundaryBank?._meta?.member_rule?.same_block_label_absorb;
+		if (!cfg || cfg.enabled === false) return;
+		if (typeof process !== "undefined" && process.env && process.env.MODALLEAD_OFF) return;
+		if (!(cfg.types ?? ["modal"]).includes(bundle.type)) return;
+		if ((bundle.tables ?? []).length) return;
+
+		// the bundle must OPEN on the widget tag itself — otherwise the label is already in
+		const first = bundle.memberItems?.[0];
+		if (!first || first.type !== "tag" || first.parse?.primary?.tag !== (cfg.tag ?? "modal")) return;
+
+		const blk = items[tagIdx]?.block;
+		if (!blk) return;
+		const prev = items[tagIdx - 1];
+		if (!prev || prev.consumedBy !== undefined || prev.block !== blk) return;
+		if (prev.type !== "black") return;
+
+		const t = String(prev.text ?? "").replace(/\*+/g, "").trim();
+		if (!t) return;
+		// THE SHARED CAP (the same discipline as the avatar absorb: the scanner must not consume
+		// something the builder would then decline, or the text is TRAPPED inside a hand-off box
+		// that never builds). It reads the BUILDER's own gold-backed label cap, so absorb and
+		// build cannot drift apart — XGF9004's scenario sentences, for example, are far too long
+		// to be trigger labels.
+		const bCap = DataService.Data.EmitTemplates?.interactive_builders?.modal?.modal_sets?.label_max_words;
+		const cap = bCap ?? cfg.max_label_words ?? 9;
+		if (t.split(/\s+/).length > cap) return;              // a whole sentence, not a label
+
+		bundle.memberItems.unshift(prev);
+		bundle.startIndex = tagIdx - 1;
+	}
+
+	/** The lead-in LABEL shape (data-driven, first match wins; else "prose"). */
+	static #labelSignature(text, cfg) {
+		const t = String(text ?? "").replace(/\*+/g, "").trim();
+		if (!t) return "empty";
+		for (const s of (cfg.label_signatures ?? [])) {
+			if (new RegExp(s.re).test(t)) return s.name;
+		}
+		return "prose";
+	};
+
+	/**
+	 * Picks the bank widget type for a canonical tag.
+	 *
+	 * HOW: lexicon tags map to one or more widget_types (e.g. carousel →
+	 * [carousel, rotateBanner]). When there are several, the alias the
+	 * writer actually used picks the variant: an alias sharing a word with
+	 * a widget type's folded name wins (e.g. "rotating banner" → rotateBanner,
+	 * "self check" → selfCheck). Otherwise the first listed type is used.
+	 * Generic rule — no per-widget code.
+	 *
+	 * @returns {string} widget type key into the boundary bank
+	 */
+	static #widgetTypeFor(canonTag, alias, normaliser) {
+		const resolved = this.#resolveWidgetType(canonTag, alias, normaliser);
+		// VARIANT FOLDING: a VARIANT widget_type (rotateBanner/wordHighlighter) is the SAME main
+		// widget as its parent — return the parent so the type flows to the parent's BUILDER /
+		// manifest tier / boundary entry instead of being treated as a separate, un-built duplicate.
+		// Data: BoundaryBank._meta.widget_type_taxonomy.variant_of; env VARFOLD_OFF.
+		const tax = DataService.Data.BoundaryBank?._meta?.widget_type_taxonomy;
+		if (tax?.variant_of && !(typeof process !== "undefined" && process.env && process.env.VARFOLD_OFF)) {
+			return tax.variant_of[resolved] ?? resolved;
+		}
+		return resolved;
+	};
+
+	/**
+	 * The UNFOLDED widget type from a canonical tag + the matched alias (the variant
+	 * fold of #widgetTypeFor is NOT applied here). Lets a shared parent BUILDER branch on the
+	 * sub-form the writer actually used — e.g. a [rolling/rotating/banner] tag folds to
+	 * `carousel` for capture purposes, but the finished page builds a distinct rotateBanner
+	 * STRIP layout for it, so the builder needs to know the opener was specifically the
+	 * rotateBanner variant, not a generic carousel. Generic mechanism — no per-widget code.
+	 *
+	 * @returns {string} the pre-fold widget type key
+	 */
+	static #resolveWidgetType(canonTag, alias, normaliser) {
+		const types = normaliser.GetWidgetTypes(canonTag);
+		if (!types.length) return canonTag;              // e.g. "modal" (no bank type)
+		if (types.length === 1) return types[0];
+		let resolved = types[0];
+		const aliasWords = new Set((alias ?? "").split(" "));
+		for (const t of types) {
+			// fold the camelCase type into words: rotateBanner → rotate banner
+			const words = t.replace(/([A-Z])/g, " $1").toLowerCase().split(" ").filter(Boolean);
+			if (words.some((w) => aliasWords.has(w))) { resolved = t; break; }
+		}
+		return resolved;
+	};
+
+	/**
+	 * Weaves a hover/rollover/mouseover DEFINITION marker onto its nearest preceding word as
+	 * the infoTrigger sentinel, for two shapes that the SINGLE-BRACKET inline trigger handling
+	 * (see the "trigger"-keyed logic in ScanPage above) does NOT reach:
+	 *   (A) COLON self-closed   "[hover: DEF]" / "[hover definition: DEF]" / "[rollover
+	 *       definition: DEF]"   — the def is the payload after the FIRST colon, inside
+	 *       the bracket. ("[Hover: …]" resolves to a plain [body] tag and SPLITS the paragraph;
+	 *       "[hover definition: …]" resolves to an infoTrigger, but the "trigger"-keyed handling
+	 *       elsewhere still DROPS the def via its own bare-marker guard.)
+	 *   (C) MARKER-THEN-DEF      "[hover text] DEF"  — the bracket closes and the def
+	 *       follows it inside the SAME red span (e.g. "**adjectives** [hover text] Describing
+	 *       words. can make…").
+	 * Returns true if it wove the definition in (the caller then `continue`s past the item);
+	 * false leaves the item for normal handling. The U+E000…U+E001 sentinel +
+	 * ContentConverter.#inlineMarkup machinery is the SAME mechanism the single-bracket inline
+	 * trigger uses, so a bold anchor (**adjectives**) and a plain word (gestures) both build
+	 * <span class="infoTrigger" info="DEF">anchor</span>.
+	 *
+	 * SAFETY: the head must start hover/rollover/mouseover (data head_pattern); a marker
+	 * carrying "trigger" (skip_if_tag_keyword) is left to the single-bracket inline trigger
+	 * handling instead; a marker that resolves to a NON-infoTrigger interactive widget
+	 * (shapeHover, hover audio player…) is skipped; a marker with no recoverable def is left
+	 * untouched (never a leaked literal). Data EmitTemplates.elements.hover_definition_inline;
+	 * env HOVERDEF_OFF reverts.
+	 */
+	/**
+	 * hover-weave HYGIENE: shared safety guards for BOTH sentinel-weave paths in this file (the
+	 * single-bracket info_trigger_inline handling in ScanPage, and the hover_definition_inline
+	 * handling just above). Without these guards, a small minority of weaves would anchor the
+	 * sentinel onto the wrong host — e.g. gluing it onto a bare URL or media filename fragment
+	 * (whose "word" is meaningless, like "png" or a random link ID) instead of a real word, or
+	 * weaving in text that was actually a developer instruction rather than a genuine
+	 * definition. Both guards only ever DECLINE a mis-weave (they never invent a new anchor out
+	 * of nothing), so an already-correct weave is always left untouched. Data
+	 * elements.hover_weave_hygiene; env HOVERHYG_OFF.
+	 */
+	static #hoverHygieneCfg() {
+		const cfg = DataService.Data.EmitTemplates.elements?.hover_weave_hygiene;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.HOVERHYG_OFF) return null;
+		return cfg;
+	}
+
+	/** A recovered hover DEF that reads as a writer INSTRUCTION is not a definition. */
+	static #hoverDefIsInstruction(def) {
+		const cfg = InteractiveScanner.#hoverHygieneCfg();
+		if (!cfg || cfg.instruction_def_guard === false) return false;
+		const re = new RegExp(cfg.instruction_cue_pattern
+			?? "\\b(?:please|can you|could you|note to (?:dev|cs)\\b|dev team)\\b", "i");
+		return re.test(String(def ?? ""));
+	}
+
+	/** True when a host candidate's trailing text is a MEDIA REFERENCE — a bare URL (+ "]"/")"
+	 *  residue) or a media filename ("Masons day in Percentages.png") — not prose. The URL/media
+	 *  machinery reads straight through a sentinel glued to such text, and its last "word" ("png",
+	 *  "qJIHqK") is never the hover anchor. Pattern lives in data (media_tail_pattern). */
+	static #urlTailHost(text) {
+		const cfg = InteractiveScanner.#hoverHygieneCfg();
+		if (!cfg || cfg.url_host_skip === false) return false;
+		const re = new RegExp(cfg.media_tail_pattern
+			?? "(?:https?:\\/\\/[^\\s<>&\"]+|\\.(?:png|jpe?g|gif|svg|webp|pdf|docx?|pptx?|xlsx?))[\\s\\]\\)]*$", "i");
+		return re.test(String(text ?? "").trim());
+	}
+
+	static #weaveHoverDefinition(items, i, normaliser) {
+		const it = items[i];
+		if (!it || it.type !== "tag") return false;
+		const cfg = DataService.Data.EmitTemplates.elements?.hover_definition_inline;
+		if (!cfg || cfg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env.HOVERDEF_OFF) return false;
+		// TWO split/orphaned hover-bracket shapes the main colon/marker-then-def handling above
+		// doesn't reach, both behind cfg.split_bracket + env HOVERSPLIT_OFF (independent of HOVERDEF_OFF):
+		//   (A1) ORPHAN-LEAD-BRACKET — the marker's opening "[" was left in the preceding BLACK run,
+		//        so the span begins "hover definition] DEF" (no leading "[") and head_pattern (^\[)
+		//        fails. WT: "…specific areas or **regions** [🔴hover definition] a distinct…🔴". Restore
+		//        the "[" (gated: head keyword at the very start + a "]" present) and strip the orphan
+		//        "[" off the host so it never leaks as "regions [".
+		//   (A2) DEF-IN-NEXT-ITEM — the marker carries NO usable def of its own (an UNCLOSED
+		//        "[hover definition:" with no "]", OR a closed-but-empty "[hover definition]") and its
+		//        blackAfter is empty; the def is the FOLLOWING red/black item ("DEF…]" + the paragraph
+		//        continuation in ITS blackAfter). WT: "…topographies 🔴[hover definition:🔴 🔴the shape
+		//        and features…🔴 on planet Earth…". Consume that item as the def. The def-in-BLACK form
+		//        (no red def item) is NOT touched.
+		const split = cfg.split_bracket;
+		const splitOff = split && split.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.HOVERSPLIT_OFF);
+		let rawMarker = String(it.text ?? "")
+			.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim();
+		// The bare "[define: DEF]" head joins the weave (as in SCCH302-03 "boiling point"; "[hover
+		// define:" already works because it starts with "hover"). cfg.define_heads.head_pattern is
+		// the base alternation + "define"; the toggle swaps back to the base pattern. "definition"
+		// is NOT added on this scanner side ([definition…] spans are widget-member SUBTAGS —
+		// weaving them would break widget capture); the render-stitch already carries it.
+		// Data flag: elements.hover_definition_inline.define_heads   Env toggle: DEFINEHEAD_OFF
+		const _dh = cfg.define_heads;
+		const _dhOn = _dh && _dh.enabled !== false && _dh.head_pattern
+			&& !(typeof process !== "undefined" && process.env && process.env.DEFINEHEAD_OFF);
+		const headStr = (_dhOn ? _dh.head_pattern : null)
+			?? cfg.head_pattern ?? "^\\[\\s*(?:hover|rollover|mouseover)\\b";
+		const headRe = new RegExp(headStr, "i");
+		// (A1) restore an orphaned leading "[" before testing the head
+		let leadOrphan = false;
+		if (splitOff && split.lead_orphan !== false && !rawMarker.startsWith("[") && rawMarker.includes("]")
+			&& new RegExp(headStr.replace("\\[\\s*", ""), "i").test(rawMarker)) {
+			rawMarker = "[" + rawMarker; leadOrphan = true;
+		}
+		// (A3) ANCHOR-BEFORE-BRACKET. After DocxExtractor merges the writer's adjacent red runs,
+		// the marker span can read "ANCHOR [hover…: DEF]" — the hovered WORD sits inside the span,
+		// before the bracket, so head_pattern (^\[) fails and left unhandled it would leak as a
+		// plain CS note instead of becoming a hover span. Lift the anchor out (it weaves onto the
+		// host below); rawMarker becomes the "[hover…]" marker for the def recovery. Runs AFTER
+		// (A1) so an orphaned-"[" form (which the
+		// A1 block has already turned into a "[hover…" leader) is never mistaken for an anchor.
+		let leadingAnchor = "";
+		if (splitOff && split.leading_anchor !== false && !rawMarker.startsWith("[")
+			&& !(typeof process !== "undefined" && process.env && process.env.HOVERANCHOR_OFF)) {
+			const am = rawMarker.match(new RegExp(
+				"^(.*?\\S)\\s*(\\[\\s*(?:hover|roll\\s*-?\\s*over|rollover|mouse\\s*-?\\s*over|mouseover)\\b[\\s\\S]*)$", "i"));
+			if (am && /\p{L}/u.test(am[1])) { leadingAnchor = am[1].trim(); rawMarker = am[2].trim(); }
+		}
+		if (!headRe.test(rawMarker)) return false;
+		// (A6) THE MARKER BEFORE ITS ANCHOR, THE DEFINITION IN PARENTHESES. A bare hover head
+		// (no definition of its own) typed IN FRONT of the hovered words, the definition in parentheses right after them:
+		//   black parentheses  `[Rollover Definition] features (Parts of the product.) are most important…` (TEFUN01),
+		//                      `[Hover Trigger] **digits** (definition: Any of the symbols 0,1,2…)` (MXDI301)
+		//   red parentheses    `In [Roll over definition] ancient Mesoamerica ( where countries like Mexico are today ), they
+		//                      made balls…` (TEFUN03 — `(` and `)` are their own red spans around a black definition)
+		// Left alone, the first would ship as a literal parenthesis and the second would split the sentence into three
+		// paragraphs; the gold's span sits on those anchor words. The anchor (≤ max_anchor_words,
+		// a leading `definition:` lead stripped from the definition) is woven with the definition into its own paragraph —
+		// after the nearest preceding text of the SAME source paragraph, or as the item's own text when the marker opens it.
+		// Runs before the `trigger` skip (so `[Hover Trigger]` joins); a marker that resolves to a real non-infoTrigger widget
+		// is left alone. Data split_bracket.pre_anchor_paren; env HOVERPREANCHOR_OFF.
+		const _pa6 = split?.pre_anchor_paren;
+		if (_pa6 && _pa6.enabled !== false && splitOff
+			&& !(typeof process !== "undefined" && process.env && process.env[_pa6.env ?? "HOVERPREANCHOR_OFF"])
+			&& new RegExp(_pa6.bare_head_pattern ?? "^\\[\\s*(?:hover|roll\\s*-?\\s*over|rollover|mouse\\s*-?\\s*over|mouseover)(?:\\s+(?:definition|defn|def|trigger|text|info))*\\s*\\]\\s*$", "i").test(rawMarker)) {
+			const prim6 = it.parse?.primary;
+			const wt6 = (prim6 && prim6.directive === "INTERACTIVE" && normaliser) ? (normaliser.GetWidgetTypes(prim6.tag) ?? []) : [];
+			let pre6 = null;
+			if (!(wt6.length && !wt6.includes("infoTrigger"))) {
+				const ba = String(it.blackAfter ?? "");
+				const plainA = (a) => a.replace(/[*_]/g, "").trim();
+				const okA = (a) => /[\p{L}\p{N}]/u.test(plainA(a)) && plainA(a).split(/\s+/).length <= (_pa6.max_anchor_words ?? 6);
+				const lead = _pa6.def_lead_pattern ?? "(?:definition(?:\\s+when\\s+hovered)?\\s*:\\s*)?";
+				const m6 = ba.match(new RegExp("^\\s*([^()\\[\\]\\n]{1,80}?)\\s*\\(\\s*" + lead + "([^()]{1,240}?)\\s*\\)([\\s\\S]*)$", "iu"));
+				if (m6 && okA(m6[1]) && /\p{L}/u.test(m6[2])) pre6 = { anchor: m6[1].trim(), def: m6[2].trim(), rest: m6[3], consume: [] };
+				else if (!/[()]/.test(ba) && okA(ba)) {
+					const a1 = items[i + 1], a2 = items[i + 2];
+					const red6 = (x) => String(x?.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim();
+					if (a1 && a2 && a1.type === "tag" && a2.type === "tag" && a1.consumedBy === undefined && a2.consumedBy === undefined
+						&& red6(a1) === "(" && /^\)/.test(red6(a2)) && /\p{L}/u.test(String(a1.blackAfter ?? ""))) {
+						const d6 = String(a1.blackAfter).trim().replace(new RegExp("^" + lead, "i"), "").trim();
+						pre6 = { anchor: ba.trim(), def: d6, rest: red6(a2).slice(1) + String(a2.blackAfter ?? ""), consume: [a1, a2] };
+					}
+				}
+			}
+			if (pre6 && pre6.def && !InteractiveScanner.#hoverDefIsInstruction(pre6.def)) {
+				const IT0 = String.fromCharCode(0xE000), IT1 = String.fromCharCode(0xE001);
+				const rest = String(pre6.rest ?? "").replace(/^\s+/, "");
+				const piece = pre6.anchor + IT0 + pre6.def + IT1 + (rest ? (/^(?:\*\*|__|\*)?[,.;:!?)]/.test(rest) ? "" : " ") + rest : "");
+				let host = null;
+				for (let h = i - 1; h >= 0; h--) {
+					const c = items[h];
+					const t = c?.type === "black" ? c.text : c?.blackAfter;
+					if (!String(t ?? "").trim()) continue;
+					if (c.block !== undefined && c.block === it.block && !InteractiveScanner.#urlTailHost(t)) host = c;
+					break;
+				}
+				if (host) {
+					const base = String(host.type === "black" ? host.text : host.blackAfter).replace(/\s+$/, "") + " " + piece;
+					if (host.type === "black") host.text = base; else host.blackAfter = base;
+					it.type = "black"; it.text = ""; it.blackAfter = "";
+				} else {
+					it.type = "black"; it.text = piece; it.blackAfter = "";
+				}
+				for (const c of pre6.consume) { c.type = "black"; c.text = ""; c.blackAfter = ""; }
+				return true;
+			}
+		}
+		const skipKw = cfg.skip_if_tag_keyword ? new RegExp(cfg.skip_if_tag_keyword, "i") : null;
+		if (skipKw && skipKw.test(rawMarker)) return false;        // a "trigger" form → handled by the single-bracket inline trigger logic instead
+		const prim = it.parse?.primary;
+		if (prim && prim.directive === "INTERACTIVE" && normaliser) {
+			const wt = normaliser.GetWidgetTypes(prim.tag) ?? [];
+			if (wt.length && !wt.includes("infoTrigger")) return false;   // a real widget, not a tooltip
+		}
+		// recover the DEFINITION (original case). Split the marker into its FIRST bracket +
+		// whatever trails it INSIDE the span. A colon-def INSIDE the bracket ("[hover: DEF]",
+		// "[hover on X: DEF]") is form (A) — text after the "]" (e.g. a sentence "." the writer
+		// left inside the red span: "[hover: …]. ") is then sentence TAIL, NOT the def. Only when
+		// the bracket holds NO colon-def is the text AFTER the "]" the def — form (C) "[hover text]
+		// Describing words.". This ordering stops a trailing "]." from being mis-read as a 1-char
+		// def (as CEDO202's "sustainably" would otherwise get info=".").
+		let def = "", tail = "", consumeNext = false, contItem = it;
+		const mk = rawMarker.match(/^\[([^\]]*)\]([\s\S]*)$/);
+		if (mk) {
+			const inner = mk[1].trim();
+			const afterBracket = mk[2].trim();
+			const colon = inner.match(/^[^:]*:\s*([\s\S]+)$/);
+			// Form (A) with the writer's OTHER separators: after the head words, "=" / a spaced
+			// dash / a quoted payload (`[hover = wellbeing].` TWHK903, `[hover – a phrase or part of sentence…].` EXBP901,
+			// `[hover “anticipating what to do next”].` XLP06) — the bracket holds the definition, so the "." after it is the
+			// sentence's tail; form (C) would read that "." as the definition (info="."). Form (C) itself is unchanged (it
+			// does not require a letter: markers left unwoven would split paragraphs, as in ENGI101 1.1).
+			// Data hover_definition_inline.def_clean.weave_separators; env HOVERDEFCLEAN_OFF.
+			const _dcw = cfg.def_clean;
+			// The flag has its own env (weave_separators_env; WEAVESEP_OFF turns it off).
+			const _dcwOn = _dcw && _dcw.enabled !== false && _dcw.weave_separators !== false
+				&& !(typeof process !== "undefined" && process.env && (process.env[_dcw.env ?? "HOVERDEFCLEAN_OFF"]
+					|| process.env[_dcw.weave_separators_env ?? "WEAVESEP_OFF"]));
+			let sepDef = "";
+			if (_dcwOn && !(colon && colon[1].trim())) {
+				const hw = _dcw.head_words_pattern
+					?? "(?:hover|roll\\s*-?\\s*over|rollover|mouse\\s*-?\\s*over|mouseover|define)(?:\\s+(?:definition|defn|def|text|info|information))*";
+				const hm = inner.match(new RegExp("^" + hw + "\\s*" + (_dcw.separator_class ?? "[=–—]") + "\\s*([\\s\\S]+)$", "iu"))
+					?? inner.match(new RegExp("^" + hw + "\\s*[“\"‘']([^”\"’']+)[”\"’']\\s*$", "iu"));
+				if (hm && /\p{L}/u.test(hm[1])) sepDef = hm[1].trim();
+			}
+			if (colon && colon[1].trim()) { def = colon[1].trim(); tail = afterBracket; }   // (A)
+			else if (sepDef) { def = sepDef; tail = afterBracket; }                         // (A) the other separators
+			else if (afterBracket) { def = afterBracket; }                                  // (C)
+			// (A5) THE PAREN DEF: a CLOSED bare `[hover]` whose definition the writer typed
+			// in parentheses right after it, black — XDLS902 `Hoa ako [hover] (learning partner) could find a class…` (the
+			// gold's infoTrigger carries exactly that definition). With no def found the tag and the rest of the sentence
+			// would go into a red Writers Note. The parenthesis is the def; the sentence continues after it.
+			// Data split_bracket.paren_def; env HOVERPAREN_OFF.
+			else {
+				const pd = split?.paren_def;
+				if (pd && pd.enabled !== false && splitOff
+					&& !(typeof process !== "undefined" && process.env && process.env[pd.env || "HOVERPAREN_OFF"])
+					&& new RegExp(pd.inner_pattern ?? "^hover$", "i").test(inner)) {
+					const pm = String(it.blackAfter ?? "").match(new RegExp(pd.def_pattern ?? "^\\s*\\(([^()]{1,120})\\)\\s*([\\s\\S]*)$"));
+					if (pm && /\p{L}/u.test(pm[1])) {
+						def = pm[1].trim();
+						// a continuation that opens with punctuation (`(learning partner), and as you…`) joins with no space
+						if (/^[,.;:!?)]/.test(pm[2])) { tail = pm[2].trim(); it.blackAfter = ""; } else it.blackAfter = pm[2];
+					}
+				}
+			}
+		}
+		// (A2) the marker yields no self-def — pull it from the FOLLOWING red/black item
+		if (!def && splitOff && split.unclosed_next_item !== false && !String(it.blackAfter ?? "").trim()) {
+			const nxt = items[i + 1];
+			const nxtPrim = nxt && nxt.parse && nxt.parse.primary;
+			const nxtOk = nxt && nxt.consumedBy === undefined && (nxt.type === "black"
+				|| (nxt.type === "tag" && (!nxtPrim || nxtPrim.directive !== "INTERACTIVE")
+					&& (nxt.parse?.class === "instruction" || nxt.parse?.class === "noise")));
+			if (nxtOk) {
+				const dtxt = String(nxt.text ?? "")
+					.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "")
+					.replace(/^\s*\]\s*/, "").replace(/\s*\]\s*$/, "").trim();   // drop a stray late "]"
+				if (dtxt) { def = dtxt; tail = ""; consumeNext = true; contItem = nxt; }
+			}
+		}
+		// (A4) DEF-IN-OWN-BLACK-TAIL — module ENGJ403's standard hover idiom: a red "[hover
+		// info ‘pitch’:" span with NO closing "]", the DEFINITION as the span's OWN black tail
+		// ("When you share your script main idea."), then a bare "]" red span whose own black
+		// tail continues the sentence. The (A2) shape above requires an EMPTY own tail, so this
+		// form would fall through and leak as a "Writers Note:" + a fragmented paragraph — the
+		// human weaves the quoted word as <span class="infoTrigger">. The def comes from the
+		// marker's own black tail; the stray "]" closer span is consumed and ITS black tail
+		// rejoins the sentence. Data split_bracket.def_black_tail; env HOVERTAIL_OFF.
+		if (!def && splitOff && split.def_black_tail !== false && !rawMarker.includes("]")
+			&& !(typeof process !== "undefined" && process.env && process.env.HOVERTAIL_OFF)) {
+			const ownBlack = String(it.blackAfter ?? "").trim();
+			let blackClose = null;
+			if (ownBlack) {
+				def = ownBlack.replace(/\s*\]\s*$/, "").trim();
+				// (a) the def's FIRST LETTER(S) typed red with the marker (`[roll over definition: T` + black
+				// `o move to…`, SSFUN03): the text after the unclosed marker's colon heads the def, joined as the source
+				// joins it — a space when the black tail opens with one or the red run ENDS with one (the run's own
+				// space shows as two before the extractor's one-space pad: `for␣␣` + `the rights…`, but `T␣` + `o move…`);
+				// (b) a `]` the writer typed BLACK ends the def there — the rest is the sentence again (GEO1006 `…a river
+				// follows.] is often narrow…` would otherwise put the whole paragraph in the tooltip). Data split_bracket.
+				// def_black_tail_head; env HOVERTAILHEAD_OFF.
+				if (split.def_black_tail_head !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[split.def_black_tail_head_env ?? "HOVERTAILHEAD_OFF"])) {
+					const hh = rawMarker.match(/:\s*([^:\[\]]{1,60}?)\s*$/);
+					const redText = String(it.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "");
+					const spaced = /^\s/.test(String(it.blackAfter ?? "")) || /\s{2,}$/.test(redText);
+					if (hh && /[\p{L}\p{N}]/u.test(hh[1])) def = hh[1] + (spaced ? " " : "") + def;
+					const cb = def.indexOf("]");
+					if (cb > 0) { blackClose = def.slice(cb + 1).trim(); def = def.slice(0, cb).trim(); }
+				}
+				it.blackAfter = blackClose ?? "";                     // (b) the sentence continues on this item's own tail
+				const nxt = items[i + 1];
+				const ntext = nxt ? String(nxt.text ?? "")
+					.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim() : "";
+				if (blackClose === null && nxt && nxt.consumedBy === undefined && nxt.type === "tag"
+					&& (nxt.parse?.class === "noise" || nxt.parse?.class === "instruction")
+					&& /^\]$/.test(ntext)) {
+					consumeNext = true; contItem = nxt;   // its black tail = the sentence continuation
+				}
+			}
+		}
+		if (!def) return false;                                    // no def → leave untouched
+		// A recovered "def" that reads as a writer INSTRUCTION (e.g. "For each concept, please
+		// have the rollover definitions below. Ngā mihi") is not a genuine definition: CONSUME the
+		// marker exactly like the no-anchor branch does (the finished page strips instructions
+		// like this). NOT a plain decline — if this marker's text happens to contain a word like
+		// "image", ordinary handling elsewhere could mis-resolve it into an extra placeholder
+		// <img> that then wrongly absorbs the NEXT bare URL out of its own line, corrupting an
+		// unrelated link. The tail/continuation stay as plain body; nothing is reordered or
+		// leaked. Data elements.hover_weave_hygiene.instruction_cue_pattern; env HOVERHYG_OFF.
+		if (InteractiveScanner.#hoverDefIsInstruction(def)) {
+			const cont = String(contItem.blackAfter ?? "").trim();
+			it.type = "black"; it.text = ((leadingAnchor ? `${leadingAnchor} ` : "") + tail + (cont ? ` ${cont}` : "")).trim(); it.blackAfter = "";
+			if (consumeNext) { contItem.type = "black"; contItem.text = ""; contItem.blackAfter = ""; }
+			return true;
+		}
+		const IT0 = String.fromCharCode(0xE000), IT1 = String.fromCharCode(0xE001);
+		const sentinel = IT0 + def + IT1;
+		const blackCont = String(contItem.blackAfter ?? "").trim();
+		// QUOTED NAMED ANCHOR (with A4 above): the writer names the hovered
+		// word in quotes inside the marker head — "[hover info ‘pitch’: …" — so the
+		// sentinel should attach to THAT word in the preceding host prose (its LAST
+		// occurrence), not blindly to the host's final word. When the quoted word is
+		// not found in the host, fall back to the plain last-word append (unchanged).
+		const qm = rawMarker.match(/^\[[^\]:]*?['‘"]([^'’"‘\]]+)['’"]/);
+		const quotedAnchor = qm ? qm[1].trim() : "";
+		// THE UNQUOTED NAMED ANCHOR. The writer names the hovered word WITHOUT quotes — "[Rollover definition
+		// for supreme: …]" typed on its own line after the paragraph (HIS1005), "[Hover on identities: …]" inline after
+		// the word (ARFUN01), "[roll over definition mamae: …]" (HIS1006). A plain append puts the sentinel after the
+		// host's LAST word; a host that ends a sentence has none, so inlineMarkup would drop the definition (writer
+		// content lost). The named TERM is found in the nearest `lookback` text items (whole word, case-insensitive,
+		// never inside an earlier woven definition) — its FIRST occurrence for a standalone definition line, its LAST
+		// for an inline marker. No TERM / no match → the plain last-word append. Data
+		// elements.hover_definition_inline.named_anchor   Env HOVERNAMED_OFF
+		const _na = cfg.named_anchor;
+		let namedHost = null, namedBase = "", namedAt = -1;
+		if (!quotedAnchor && !leadingAnchor && _na && _na.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_na.env ?? "HOVERNAMED_OFF"])) {
+			let term = "";
+			for (const p of (_na.patterns ?? [])) {
+				const m = new RegExp(p, "iu").exec(rawMarker);
+				if (m && m[1] && /\p{L}/u.test(m[1])) { term = m[1].replace(/\s+/g, " ").trim(); break; }
+			}
+			if (term && _na.strip_lead_article !== false) term = term.replace(/^(?:the|a|an)\s+/i, "");
+			if (term && /\p{L}/u.test(term)) {
+				const esc = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\s+/g, "\\s+");
+				const termRe = new RegExp(`(?<![\\p{L}\\p{M}\\p{N}])${esc}(?![\\p{L}\\p{M}\\p{N}])`, "giu");
+				const inSentinel = (s, at) => s.lastIndexOf(IT0, at) > s.lastIndexOf(IT1, at);
+				// an INLINE marker (the nearest text shares its source paragraph) searches only that paragraph — a
+				// term the writer mistyped (ARFUN05 "setting. [hover on time: Where is the story taking place?]")
+				// must not reach back into another bullet; only a STANDALONE definition line looks back.
+				let budget = _na.lookback ?? 3, first = true, inlineMarker = false;
+				for (let h2 = i - 1; h2 >= 0 && budget > 0; h2--) {
+					const cand = items[h2];
+					if (!cand || cand.type === "table") break;
+					const ctext = cand.type === "black" ? cand.text : cand.blackAfter;
+					if (!String(ctext ?? "").trim()) continue;
+					if (first) { inlineMarker = cand.block !== undefined && cand.block === it.block; first = false; }
+					else if (inlineMarker) break;
+					budget--;
+					if (InteractiveScanner.#urlTailHost(ctext)) break;
+					let s = String(ctext ?? "").replace(/\s+$/, "");            // = hostBase (declared below)
+					if (leadOrphan) s = s.replace(/\s*\[\s*$/, "");
+					const hits = [];
+					termRe.lastIndex = 0;
+					let m;
+					while ((m = termRe.exec(s)) !== null) {
+						let e = m.index + m[0].length;
+						while (e < s.length && /[*_]/.test(s[e])) e++;
+						// never inside an earlier woven definition, never a word that already carries one
+						if (!inSentinel(s, m.index) && s[e] !== IT0) hits.push({ m, e });
+						if (termRe.lastIndex === m.index) termRe.lastIndex++;
+					}
+					if (!hits.length) continue;
+					const occ = inlineMarker ? (_na.inline_occurrence ?? "last") : (_na.standalone_occurrence ?? "first");
+					const pick = occ === "first" ? hits[0] : hits[hits.length - 1];
+					namedHost = cand; namedBase = s; namedAt = pick.e;   // after a closing ** / * so a bold anchor wraps whole
+					break;
+				}
+			}
+		}
+		// what rejoins the line after the woven span: the sentence TAIL (attached directly, e.g.
+		// a ".") then the following black continuation (space-separated).
+		// For the ANCHOR-BEFORE-BRACKET form (A3 above), the hovered word was lifted off the marker
+		// span; re-attach it to the host RIGHT BEFORE the sentinel so #inlineMarkup wraps THAT word
+		// (not the host's own last word). e.g. host "He kākano ahau i ruia mai i" + " Rangiātea" +
+		// sentinel(def).
+		// A continuation that opens with punctuation (`ākonga [hover=student], kaimahi…`, XWHA02) joins with no
+		// space — `ākonga</span>, kaimahi`, the gold's form (as the paren-def form does). Data def_clean; env HOVERDEFCLEAN_OFF.
+		const _dcj = cfg.def_clean;
+		const _joinTight = !!(_dcj && _dcj.enabled !== false && _dcj.tight_punct_join !== false && /^[,.;:!?)]/.test(String(blackCont ?? ""))
+			&& !(typeof process !== "undefined" && process.env && process.env[_dcj.env ?? "HOVERDEFCLEAN_OFF"]));
+		const append = (leadingAnchor ? ` ${leadingAnchor}` : "") + sentinel + tail + (blackCont ? (_joinTight ? "" : " ") + blackCont : "");
+		// anchor host = nearest PRECEDING item that still carries text (skip consumed empties).
+		// A candidate whose trailing text is a bare URL (e.g. an [image]/[Image link] item's media
+		// reference) can NEVER host the sentinel: the URL-detection machinery reads straight through
+		// the private-use characters, corrupting the URL entirely and leaving stray characters
+		// visible in the output. When the adjacent context is media rather than prose, there's no
+		// real word to anchor the definition to — fall to the no-anchor branch below (the
+		// definition is dropped, the marker is consumed). Data
+		// elements.hover_weave_hygiene.url_host_skip; env HOVERHYG_OFF.
+		let h = i - 1, host = null;
+		while (h >= 0) {
+			const cand = items[h];
+			const ctext = cand.type === "black" ? cand.text : cand.blackAfter;
+			if (String(ctext ?? "").trim()) {
+				if (InteractiveScanner.#urlTailHost(ctext)) { host = null; break; }
+				host = cand; break;
+			}
+			h--;
+		}
+		// strip a trailing orphaned "[" (A1) off the host so "regions [" never leaks
+		const hostBase = (s) => { let b = String(s ?? "").replace(/\s+$/, ""); if (leadOrphan) b = b.replace(/\s*\[\s*$/, ""); return b; };
+		// weave: quoted named anchor → the sentinel lands right after the LAST occurrence
+		// of that word in the host prose; otherwise the plain append (last word).
+		const weaveInto = (base) => {
+			if (quotedAnchor) {
+				const w = quotedAnchor.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+				const re = new RegExp(`\\b(${w})\\b(?![\\s\\S]*\\b${w}\\b)`, "i");
+				if (re.test(base)) {
+					return base.replace(re, `$1${sentinel}`)
+						+ tail + (blackCont ? ` ${blackCont}` : "");
+				}
+			}
+			return base + append;
+		};
+		// The unquoted named anchor found (see above) — weave onto THAT word. An inline marker's
+		// continuation rejoins its own host exactly as the plain path does; a standalone definition line's
+		// own trailing text stays its own paragraph (never glued onto a foreign one).
+		if (namedHost) {
+			const woven = namedBase.slice(0, namedAt) + sentinel + namedBase.slice(namedAt);
+			const rest = tail + (blackCont ? ` ${blackCont}` : "");
+			const setT = (x, t) => { if (x.type === "black") x.text = t; else x.blackAfter = t; };
+			const standalone = !(namedHost.block !== undefined && namedHost.block === it.block);
+			if (namedHost === host && !standalone) {
+				setT(namedHost, woven + rest);
+				it.type = "black"; it.text = ""; it.blackAfter = "";
+			} else {
+				setT(namedHost, woven);
+				if (!standalone && host && host !== namedHost && rest.trim()) {
+					setT(host, hostBase(host.type === "black" ? host.text : host.blackAfter) + rest);
+					it.type = "black"; it.text = ""; it.blackAfter = "";
+				} else {
+					it.type = "black"; it.text = rest.trim(); it.blackAfter = "";
+				}
+			}
+			if (consumeNext) { contItem.type = "black"; contItem.text = ""; contItem.blackAfter = ""; }
+			return true;
+		}
+		if (host && host.type === "black") {
+			host.text = weaveInto(hostBase(host.text));
+		} else if (host) {
+			host.blackAfter = weaveInto(hostBase(host.blackAfter));
+		} else {
+			// no usable anchor word → keep the lifted anchor + tail/continuation as plain body, drop the def
+			it.type = "black"; it.text = ((leadingAnchor ? `${leadingAnchor} ` : "") + tail + (blackCont ? ` ${blackCont}` : "")).trim(); it.blackAfter = "";
+			if (consumeNext) { contItem.type = "black"; contItem.text = ""; contItem.blackAfter = ""; }
+			return true;
+		}
+		it.type = "black"; it.text = ""; it.blackAfter = "";
+		if (consumeNext) { contItem.type = "black"; contItem.text = ""; contItem.blackAfter = ""; }
+		return true;
+	};
+
+	/**
+	 * The modifier = whatever meaningful text rode along with the
+	 * invocation: the tag fragment's remainder ("autocheck"), plus any
+	 * secondary non-subtag keywords ("[drag and drop quiz]").
+	 *
+	 * @returns {string} "" when there is none
+	 */
+	static #modifierFor(item) {
+		const parts = [];
+		for (const t of item.parse.tags) {
+			if (t.remainder) parts.push(t.remainder);
+		}
+		// numbering already captured as activityId — strip leftover digits
+		return parts.join(" ").replace(/\b\d+[a-z]?\b/g, "").replace(/\s+/g, " ").trim();
+	};
+
+	/**
+	 * Files one member item into the bundle, splitting out writer
+	 * instructions (they are BOTH bundled and red-flagged — §4 of the
+	 * boundary rules: surface now, build later).
+	 */
+	static #collectMember(bundle, item, run) {
+		bundle.memberItems.push(item);
+		this.#harvestMedia(bundle, item);
+
+		if (item.type !== "tag") return;
+		const parse = item.parse;
+		if (parse.class === "instruction" || parse.instructionFragment) {
+			// A NUMBERED [title N]/[tilte N] panel delimiter is a STRUCTURAL
+			// marker of the title dialect, not a writer instruction (the misspelled
+			// "[tilte N]" resolves to no tag and classifies as one): its content — the
+			// panel's heading — ships INSIDE the built widget as the accHead, so the red
+			// note would duplicate the heading it sits under. Suppressed under exactly the
+			// capture rule's fences; nothing is silently stripped — the builder renders
+			// every word of the tail, and a DECLINED bundle still shows the marker verbatim
+			// in its hand-off dump. env ACCTITLEMEM_OFF.
+			const tCfg = DataService.Data.BoundaryBank?._meta?.member_rule?.title_panel_member;
+			if (tCfg && tCfg.enabled !== false && (tCfg.types ?? []).includes(bundle.type)
+				&& !(typeof process !== "undefined" && process.env && process.env.ACCTITLEMEM_OFF)
+				&& new RegExp(tCfg.pattern ?? "^\\[\\s*ti(?:tle|lte)\\s+\\d+\\s*\\]$", "i")
+					.test(String(item.text ?? "").trim())) return;
+			// the whole span is a writer instruction
+			bundle.instructions.push(item.text.replace(/\s+/g, " ").trim());
+		}
+	};
+
+	/**
+	 * Absorb a DIFFERENT-type interactive invocation as a NESTED sub-bundle of the open
+	 * host (ONE implementation shared by the per-type map (nested_interactive_absorb) and
+	 * the numbered-series containment rule (numbered_series_absorb)). The nested widget is recursively
+	 * swallowed into its own sub-bundle (registered for its own cv2-index + manifest entry,
+	 * later rendered in place — BUILT when its builder succeeds, else an honest nested
+	 * placeholder), a {type:"nested"} marker is pushed into the host's members at the nested
+	 * widget's position, and the host keeps walking AFTER the nested widget's members.
+	 *
+	 * @returns {number} the nested widget's end index (the host resumes there)
+	 */
+	static #absorbNestedSubBundle(bundle, items, j, next, extra, p, absolute, run, normaliser) {
+		const subEntry = DataService.Data.BoundaryBank.interactives[extra] ?? null;
+		const subHeadingTerm = subEntry ? subEntry.heading_is_terminator !== false : true;
+		const sub = {
+			type: extra, canonTag: p.tag,
+			modifier: this.#modifierFor(next),
+			activityId: null, headingText: "",
+			openerItems: [], memberItems: [], tables: [],
+			instructions: [], media: [], redFlags: [],
+			positionContext: bundle.positionContext,
+			startIndex: j, endIndex: j + 1, nested: true,
+		};
+		this.#collectMember(sub, next, run);             // the nested widget's own opener tag
+		const subEnd = this.#swallowMembers(sub, items, j + 1, subHeadingTerm, absolute, run, normaliser);
+		sub.endIndex = subEnd;
+		bundle.memberItems.push({ type: "nested", nestedBundle: sub });
+		(bundle.nestedBundles ??= []).push(sub);
+		run.AddNote("info", "InteractiveScanner",
+			`${bundle.type}: nested [${p.tag}] absorbed as a sub-bundle (${extra}); host continues.`);
+		return subEnd;
+	}
+
+	/**
+	 * THE INLINE HOVER IN A TABLE CELL. For each red span of a table (in block.text
+	 * order), true when that span sits inside a hover-definition marker the free-body cell renderer WILL weave onto an
+	 * anchor word (`herbicide [🔴hover definition🔴: a spray designed to kill plants]`) — found by running
+	 * ListsAndRuns.hoverStitch over each cell exactly as TablesAndGrids.contentTable does (the red markers stripped, one
+	 * cell at a time) and reading back the ranges it wove. #interactiveInTable skips such a span, so the table does
+	 * not become an un-built infoTrigger box on its account. null = off, no rows, or the cell spans do not line up
+	 * with block.text (nothing released). Data elements.hover_definition_inline.table_cell_release; env TABLEHOVER_OFF.
+	 */
+	static #tableInteractionCue(items, i) {
+		// THE FENCE: a table the writer announces as the DATA of an interaction — its own first row ("Match the verbs
+		// with their corresponding photos above", DAN1004 1.0 — the gold builds a drag-and-drop) or a lead within
+		// cue_lookback text-bearing items before it ("[Interactive: Image with click on points for information]", "Click on
+		// the parts…", AGH1007 6.0 — the gold builds a clickDrop image) — keeps the table capture, so its hover markers do not
+		// release it into a plain table. Data table_cell_release.interaction_cue_pattern / cue_lookback.
+		const cfg = DataService.Data.EmitTemplates?.elements?.hover_definition_inline?.table_cell_release;
+		if (!cfg || !cfg.interaction_cue_pattern) return false;
+		const re = new RegExp(cfg.interaction_cue_pattern, "iu");
+		const strip = (s) => String(s ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ");
+		if (re.test(strip((items[i]?.block?.rows?.[0] ?? []).join(" ")))) return true;
+		let n = 0;
+		for (let h = i - 1; h >= 0 && n < (cfg.cue_lookback ?? 3); h--) {
+			const c = items[h];
+			if (!c || c.type === "table") break;
+			const t = strip(c.type === "black" ? c.text : `${c.text ?? ""} ${c.blackAfter ?? ""}`);
+			if (!t.trim()) continue;
+			n++;
+			if (re.test(t)) return true;
+		}
+		return false;
+	};
+
+	static #inlineHoverSpans(block) {
+		const hdi = DataService.Data.EmitTemplates?.elements?.hover_definition_inline;
+		const cfg = hdi?.table_cell_release;
+		if (!cfg || cfg.enabled === false || hdi.enabled === false || !Array.isArray(block?.rows)) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "TABLEHOVER_OFF"]) return null;
+		if (!/\[/.test(block.text ?? "")) return null;
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const out = [];
+		for (const cells of block.rows) {
+			for (const cell of (cells ?? [])) {
+				const c = String(cell ?? "");
+				let stripped = "", last = 0;
+				const pos = [];
+				for (const m of c.matchAll(RED)) {
+					stripped += c.slice(last, m.index);
+					// the span's own text without its edge whitespace (a red " [hover definition" starts a space before the marker)
+					const lead = m[1].length - m[1].trimStart().length, trail = m[1].length - m[1].trimEnd().length;
+					pos.push([stripped.length + lead, stripped.length + Math.max(lead, m[1].length - trail)]);
+					stripped += m[1];
+					last = m.index + m[0].length;
+				}
+				if (!pos.length) continue;
+				stripped += c.slice(last);
+				const woven = [];
+				ListsAndRuns.hoverStitch(stripped, woven);
+				for (const [s, e] of pos) out.push(woven.some(([ws, we]) => s >= ws && e <= we));
+			}
+		}
+		const total = [...String(block.text ?? "").matchAll(RED)].length;
+		return out.length === total && out.some(Boolean) ? out : null;
+	};
+
+	/**
+	 * Does a table carry an interactive invocation inside its cells?
+	 * Scans the table's red spans through the normaliser; the first
+	 * INTERACTIVE primary wins (data pattern 8: speech-bubble-in-table-row).
+	 *
+	 * @returns {Object|null} { type, canonTag } or null
+	 */
+	static #interactiveInTable(block, normaliser, noRelease = false) {
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const spans = [];
+		const released = noRelease ? null : InteractiveScanner.#inlineHoverSpans(block);
+		let k = -1;
+		for (const m of (block.text ?? "").matchAll(RED)) {
+			k++;
+			const parse = normaliser.Parse(m[1]);
+			if (parse.primary?.directive === "INTERACTIVE"
+				&& !(released && released[k] && this.#widgetTypeFor(parse.primary.tag, parse.primary.alias, normaliser) === "infoTrigger")) {
+				return {
+					canonTag: parse.primary.tag,
+					type: this.#widgetTypeFor(parse.primary.tag, parse.primary.alias, normaliser),
+				};
+			}
+			spans.push(m[1]);
+		}
+		// ORPHAN FACE TABLE. A free-body table with NO invocation of its own, whose cells still
+		// carry flipCard FACE tags (BOTH [front] AND [back], per the data's require list), is
+		// orphan flip-card data: the finished page builds a flipCard from it, but without this
+		// check the raw <table> with its literal [Front]/[Back]/[Image] tags would leak straight
+		// into the output as visible text. Capture it as a flipCard bundle instead — the builder
+		// declines this un-paired table form, so it renders as an honest placeholder with the
+		// [tag] data INSIDE it (a developer reference, not a learner-facing leak), and the page
+		// gets a WIDGET marker matching the finished page's shape. The CALL SITE only reaches here
+		// for a table with consumedBy===undefined, so a face table already captured by a
+		// [flipCard]/[Embedded] bundle is never touched twice. Data member_rule.face_table_capture;
+		// env FACETABLE_OFF.
+		const ftc = DataService.Data.BoundaryBank?._meta?.member_rule?.face_table_capture;
+		if (ftc && ftc.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env.FACETABLE_OFF)) {
+			const joined = spans.join(" ");
+			const need = ftc.require ?? ["front", "back"];
+			if (need.every((t) => new RegExp("\\[\\s*" + t + "\\b", "i").test(joined))) {
+				const wtype = ftc.widget_type ?? "flipCard";
+				return { canonTag: wtype, type: wtype };
+			}
+		}
+		return null;
+	};
+
+	/**
+	 * The type of the FIRST DIRECT interactive invocation in a table's cells — the "direct"
+	 * half of #interactiveInTable, WITHOUT that method's looser ORPHAN FACE TABLE inference, so
+	 * this fires only on a literal [speechbubble]/[flipcard]/[tabs] invocation actually present
+	 * in a cell, never on an orphan face/data table that merely looks like one.
+	 *
+	 * @returns {string|null} widget type, or null
+	 */
+	static #tableDirectInvocation(block, normaliser) {
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		for (const m of (block.text ?? "").matchAll(RED)) {
+			const parse = normaliser.Parse(m[1]);
+			if (parse.primary?.directive === "INTERACTIVE") {
+				return this.#widgetTypeFor(parse.primary.tag, parse.primary.alias, normaliser);
+			}
+		}
+		return null;
+	};
+
+	/** Collects hyperlinks + pasted URLs from an item into bundle.media. */
+	static #harvestMedia(bundle, item) {
+		const block = item.block;
+		if (block?.links?.length) {
+			for (const l of block.links) {
+				if (!bundle.media.some((m) => m.target === l.target)) bundle.media.push(l);
+			}
+		}
+		// bare pasted URLs in the visible text (common for iStock/video)
+		const text = item.type === "black" ? item.text : (item.blackAfter ?? "");
+		for (const u of text.matchAll(/https?:\/\/[^\s\]\)"<>]+/g)) {
+			if (!bundle.media.some((m) => m.target === u[0])) {
+				bundle.media.push({ text: "", target: u[0] });
+			}
+		}
+	};
+}
+
+// Node export hook; browsers ignore it.
+if (typeof module !== "undefined") module.exports = { InteractiveScanner };

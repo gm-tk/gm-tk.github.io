@@ -1,0 +1,1286 @@
+{
+	"_meta": {
+		"title": "Tag Lexicon — canonical tags, aliases, directives",
+		"purpose": "THE tag vocabulary. Replaces the 9,557-line exhaustive variation list: instead of memorising every messy form, the engine runs the small generic normalisation pipeline in Tag_Normalisation_Spec.md against these aliases. Validated against the full historical corpus: 9,556/9,557 catalogued variations (99.99%) resolve correctly with these aliases + the pipeline rules; the single irreducible compound is in Tag_Exceptions.json.",
+		"how_matching_works": "Aliases are matched case-, diacritic-, and whitespace-insensitively, after the mechanical normalisation steps (see spec): marker stripping, bracket repair, dash/quote folding, numbering removal. A single alias therefore covers hundreds of raw variations. Matching tries: exact -> colon-payload -> colon-head -> de-numbered -> embedded (longest alias at suffix > prefix > interior). Fragments are multi-matched (container + child), 'end X'/'/X' resolves generically to a CONTAINER_CLOSE of X, and fragments opening with an addressee prefix (CS/Dev/Note) are writer instructions and are never tag-matched.",
+		"directives": {
+			"ELEMENT": "normal HTML element",
+			"CONTAINER_OPEN": "opens a wrapper",
+			"CONTAINER_CLOSE": "closes the matching wrapper",
+			"INTERACTIVE": "widget: Phase-1 bundles + red placeholder",
+			"SUBTAG": "slot inside an interactive/structure",
+			"PAGE_BOUNDARY": "ends the output file",
+			"SECTION_MARKER": "names the following region",
+			"INLINE": "mid-paragraph element",
+			"INLINE_FORMAT": "text formatting marker",
+			"DROP": "never emit (deliberate exclusion, e.g. sticky nav)"
+		},
+		"extension_rule": "New writer phrasing for an existing tag = append ONE alias here. New tag = add ONE entry here. Never a code change.",
+		"toggled_aliases": [
+			{
+				"_doc": "Writers' spellings of existing widget tags that the alias lists lack — red brackets that would otherwise resolve to NO tag — merged into the alias map by TagNormaliser's constructor unless SPELLALIAS_OFF is set (a toggled group, so it can be switched off as a unit; the extension rule above is unchanged for untoggled additions). `[type and check]` (MXEO201, MXEX302, MXFL203, MXFUN01–03, SSCI205 — the gold builds typing quizzes there); `[click drops]` / `[clickdrops]`; `[radioquiz]`; `[carrousel]`. `[checkboxes]` is NOT here: the gold builds multiChoiceQuiz or selectionBox for it, no single target.",
+				"tag": "typing quiz",
+				"aliases": ["type and check"],
+				"env": "SPELLALIAS_OFF"
+			},
+			{
+				"tag": "click drop",
+				"aliases": ["click drops", "clickdrops"],
+				"env": "SPELLALIAS_OFF"
+			},
+			{
+				"tag": "radio quiz",
+				"aliases": ["radioquiz"],
+				"env": "SPELLALIAS_OFF"
+			},
+			{
+				"tag": "carousel",
+				"aliases": ["carrousel"],
+				"env": "SPELLALIAS_OFF"
+			},
+			{
+				"_doc": "The writer's supervisor-note spellings — '[Supervisor’s Note]' … '[End Supervisor’s Note]' (Fold makes the curly apostrophe straight), '[Supervisors note]', '[Supervisors Notes]', '[Supervision note]' — which would otherwise resolve to NO tag and render as red 'Writers Note: [...]' lines (as in XGF9004, TRR114, MXFL101, MXFL103, MXFL202, BLL122, BLL244, BLL245); in MXFL103 an unresolved one after the overview's [End page] would also leave the overview empty and push the introduction to page 1.0. The gold renders every one as the supervisor note (a super-content panel, an alert, the overview's notes). KB 01D (writer variants resolve to the one normalised tag).",
+				"tag": "supervisor note",
+				"aliases": ["supervisor's note", "supervisor's notes", "supervisors note", "supervisors notes", "supervision note"],
+				"env": "SUPALIAS_OFF"
+			},
+			{
+				"_doc": "The writers' spaced / joined / hyphenated spellings of known tags that would otherwise resolve to NO tag (KB 01D): '[over view]' (MXFL204 lesson 10's overview opener — unresolved, its sentence lands in the body and the lesson menu stays blank), '[BodyText]' (COM1002), '[MemoryGame]' / '[memorygame]' (ENGC301, ENGS404), '[wordhighlighter]' (ENFUN08), '[carou sel]' (BLL145), '[externallink]' (ENGC301), '[dragdrop]' (ENGS202). 'over view' is also in Emit_Templates menu.lesson_overview_implicit.alias_words, so the lesson-overview rules read it as they read '[overview]'. Not here: '[click-drop]' / '[click-drops]' (GER1002, TEDC402 — the same head also matches ANZH301–304's '[Click-drop: Link: Map N]', where the gold keeps the map questions a body <ol> under a carousel, and an alias would capture them into a hand-off box), '[check box]' / '[tickboxes]' (no single target — as for '[checkboxes]'), '[aud io]' (a black link word), '[Alert-solid]' (already alert solid). Env SPELLVAR_OFF (every group below).",
+				"tag": "title bar",
+				"aliases": ["over view"],
+				"env": "SPELLVAR_OFF"
+			},
+			{
+				"tag": "body",
+				"aliases": ["bodytext"],
+				"env": "SPELLVAR_OFF"
+			},
+			{
+				"tag": "memory game",
+				"aliases": ["memorygame"],
+				"env": "SPELLVAR_OFF"
+			},
+			{
+				"tag": "word select",
+				"aliases": ["wordhighlighter"],
+				"env": "SPELLVAR_OFF"
+			},
+			{
+				"tag": "carousel",
+				"aliases": ["carou sel"],
+				"env": "SPELLVAR_OFF"
+			},
+			{
+				"tag": "external link",
+				"aliases": ["externallink"],
+				"env": "SPELLVAR_OFF"
+			},
+			{
+				"tag": "drag and drop",
+				"aliases": ["dragdrop"],
+				"env": "SPELLVAR_OFF"
+			}
+		],
+		"interactive_qualifier_free_widget": {
+			"_doc": "KB constraint 14: the writer's tag decides the component (as with `[Activity 1A drag and drop]`). `[interactive activity] drag and drop`, `[Interactive tool] Flip cards`, `[interactive] please create a drag and drop activity`, `[Interactive activity] drop down options`: the bracket is a generic 'an interactive goes here' qualifier and the widget is named AFTER it in the same red span, so without this rule the span parses as a plain activity box and the widget is never recognised. When EVERY bracket of the span matches bracket_pattern and no widget tag was found, the span's free text is resolved as a fragment and its first INTERACTIVE tag joins the span (the precedence makes it primary). Common forms: drag and drop, flip cards, drop down, multiple choice. Env IQFREEWIDGET_OFF.",
+			"enabled": true,
+			"env": "IQFREEWIDGET_OFF",
+			"max_lead_words": 4,
+			"free_deny_pattern": "\\btext[\\s-]+to[\\s-]+speech\\b",
+			"_free_deny_pattern_doc": "Free text that names a FEATURE, not a widget, never supplies one — HIS1004 `[Interactive] Please include text to speech function here.` would otherwise read `speech` as a speechBubble hand-off.",
+			"_max_lead_words_doc": "The widget's alias must start within the free text's first max_lead_words words (the writer NAMES the widget right after the bracket — `drag and drop images into circles`, `Flip cards`, `please create a drag and drop activity` = 3 lead words). An alias met deep inside a request is not a widget tag: ANZH301 `[Interactive] Please include this template here. Are there digital drawing tools …` would otherwise read as an empty sketcher hand-off box.",
+			"bracket_pattern": "^interactive(?:\\s+(?:activity|tool|element|widget))?(?:\\s*[:#-]?\\s*\\d{1,2}[a-z]?)?$"
+		},
+		"nested_bracket_flatten": {
+			"_doc": "KB constraint 14: the writer's tag decides the component. A NESTED red bracket `[Drag and drop [autocheck]]` / `[Multichoice [autocheck]]` / `[reorder [autocheck]]` read innermost-only would lose the widget's own name, and `autocheck` (an alias of `typing quiz`, below) would become the tag — the hand-off box would say 'typing' and the widget's builder would never run. So Parse flattens `[a [b] c]` into `[a c] [b]` before extracting (the separate-bracket form `[Drag and drop] [autocheck]` reads right as it is). Most nested red brackets carry `autocheck` inside. Env NESTBRACKET_OFF.",
+			"enabled": true,
+			"env": "NESTBRACKET_OFF"
+		},
+		"condition_primary_demote": {
+			"_note": "MODIFIER-NOT-PRIMARY. 'self check'/'autocheck' are aliases of 'typing quiz', so in a COMPOUND like [clickdrop quiz autocheck] the condition could win the primary slot over the real widget (click drop), building the wrong widget. When a span matches the listed tag VIA one of these condition aliases AND another non-condition INTERACTIVE tag is present, TagNormaliser demotes it so the real widget governs. A STANDALONE [self check]/[autocheck] (the only INTERACTIVE tag) is unaffected — it stays a typing/selfCheck widget. Env PRIMARYFIX_OFF turns this off.",
+			"tag": "typing quiz",
+			"aliases": [
+				"self check",
+				"self-check",
+				"selfcheck",
+				"autocheck",
+				"auto check",
+				"auto-check"
+			]
+		},
+		"qualifier_alias_demote": {
+			"_note": "QUALIFIER-NOT-CONTAINER (as in BLL241-01). The lone word 'interactive' is an alias of the 'activity' container, so a QUALIFIER span like [Interactive Stop Watch] / [interactive tool] / [interactive stopwatch] / lone [Interactive] would resolve to an [activity] CONTAINER_OPEN and mis-open a NUMBERLESS activity box that SPLITS the real activity (BLL241 1C: the audio + drag-words would fall out of the box into a second, unnamed box). Genuine containers ALWAYS carry the word 'activity' ([interactive activity], which yields a SEPARATE alias:'activity' tag). So: when the resolved PRIMARY is an 'activity' CONTAINER_OPEN whose alias is a listed qualifier AND there is NO other 'activity' tag from a non-qualifier alias, TagNormaliser DROPS the qualifier-only activity tag → the span falls through to instruction/noise and does not open/split a box. A widget-primary span ([Interactive – drag and drop] → drag and drop) is untouched (activity is never the primary there). Env INTERACTIVEQUAL_OFF turns this off.",
+			"enabled": true,
+			"tag": "activity",
+			"open_directive": "CONTAINER_OPEN",
+			"aliases": [
+				"interactive"
+			],
+			"standalone_becomes": "interactive",
+			"_note_standalone": "standalone_becomes (as in AGH1001-01): a BARE standalone '[Interactive]' span (the demoted alias is the span's ONLY tag, matched EXACTLY) is the writer's generic widget INVOCATION, not a qualifier — it is re-tagged as this generic INTERACTIVE opener (canonical 'interactive'; no lexicon tags entry needed — GetWidgetTypes returns [] so the scanner types the bundle 'unclassified', and activity_wrapper.standalone_widget_box then wraps it in the human's `activity interactive` box). Embedded qualifier forms ('[Interactive Stop Watch]') and multi-tag spans still demote-drop as above. Env INTALIAS_OFF gives the bare form the plain demote (instruction class, no bundle, the following data table kept as a plain <table>)."
+		},
+		"tag_promote": {
+			"_note": "ELEMENT->CONTAINER promote (as in ENGS102-1.0). A resolved ELEMENT tag whose HUMAN rendering is really a different CONTAINER convention is promoted to that container tag so its existing machinery fires. Rules: [Supervisor button] -> [Supervisor note], and [right-hand alert] -> [side alert] (a rule may carry when_match, a regex tested against the span's FOLDED text — the promote then fires only when the span matches, so a broad 'from' tag like the generic 'alert' can be promoted for ONE spelling only). The writer's supervisor side-note is authored as a green 'button' in the WT, but the human developer almost always renders it as the SAME super-content reveal PANEL it builds for [Supervisor note]. Promoting the resolved tag+directive routes [Supervisor button] through the whole supervisor-panel pipeline (scan / pair / activity-lookahead / callouts.by_tag all key on primary.tag === 'supervisor note'). Applied in TagNormaliser.Parse AFTER the primary is chosen; every matching tag in the span is rewritten (tag + directive) and the primary recomputed. Per-rule env toggle. NOTE this only rehomes the SEQUENTIAL (standalone) supervisor-button cases; a supervisor-button sitting in a 2-cell content|note LAYOUT table (the ENG family) is a separate table-composition case.",
+			"enabled": true,
+			"rules": [
+				{
+					"from": "supervisor button",
+					"to": "supervisor note",
+					"to_directive": "CONTAINER_OPEN",
+					"env": "SUPBUTTON_OFF"
+				},
+				{
+					"from": "alert",
+					"to": "side alert",
+					"to_directive": "CONTAINER_OPEN",
+					"when_match": "\\[?\\s*right[\\s-]*hand[\\s-]*alert\\b",
+					"env": "RHSALERT_OFF",
+					"_doc": "(As in SCCH302-01.) The writer's [right-hand alert] is the side tip-box the human ships as an alertActivity col-md-4 RIGHT column paired with the preceding content column (the side-alert machinery), but the bracket would fall through to the generic 'alert' substring -> a full-width plain alert with the content as a lead paragraph + a stray empty row>col-12. Promoting the resolved 'alert' to 'side alert' ONLY when the folded span matches right[- ]hand alert routes it through the whole existing side-alert pipeline; the wider RHS-alert phrasing family ([rhs alert], [alert box right hand side] etc) is deliberately not rerouted here and renders as plain alerts. Env RHSALERT_OFF gives the plain-alert render."
+				},
+				{
+					"from": "shape n",
+					"to": "alert",
+					"to_directive": "CONTAINER_OPEN",
+					"when_match": "^\\s*\\[\\s*(?:insert\\s+|lesson\\s+)?summary\\s*box\\s*:?\\s*\\]",
+					"clear_remainder": true,
+					"mark": "summary_box",
+					"env": "SUMMARYBOX_OFF",
+					"_doc": "THE LESSON-SUMMARY BOX. A writer ends a lesson with [summary box] and the module's summary run beneath it; 'box' is an alias of the widget sub-part `shape n`, whose directive is SUBTAG, so without this promote the marker reaches the ORPHAN branch, prints 'Red Flag: Orphan sub-tag [shape n] outside an interactive' and the summary renders as loose paragraphs with a red flag over them. The human developer boxes it. Promoting the resolved tag to `alert` routes it through the WHOLE existing callout pipeline (the strict containment, the content_wrap row>col-12, and — the piece that makes the PLACEMENT right — container_auto_close.activity_close_before, which already lists CONTAINER_OPEN, so an activity still open at the marker is closed first and the box lands in its OWN section row, which is where the gold almost always puts it). The human build boxes [summary box] every time, and it is the ONLY form in this family that behaves consistently — [coloured box] is boxed only some of the time and the plain [Box] form never (ENGR202's gold builds an ACCORDION from it) — so the other two forms are deliberately left out. THE CLASS IS EDITORIAL, not derivable: alert or alert solid, with EVERY module internally pure (XMES203/XTAS101/XTAS102/XTAS103/XLP02/XLP04 alert; XMES201/XMES202/XDLS912 alert solid) and no signal whatever in the writer's document — the same situation as the videoSection icon. `alert` is the clear majority (above the solidify floor and not a tie), so it is the corpus form and the solid modules are known divergences. THE HEADING IS ALSO EDITORIAL and is deliberately NOT promoted: the gold heads the box <h4> most of the time but not always, the colon-versus-full-stop discriminator is weak and splits by module too, and some of those headings are in NO writer text at all — a heading is never invented, so the writer's own first line renders as the <p> the gold uses on XTAS101/102/103. clear_remainder is load-bearing: without it the leftover word 'summary' maps through callouts.modifier_classes to class='alert summary', a class the gold library never uses."
+				},
+				{
+					"from": "carousel",
+					"to": "wananga",
+					"to_directive": "CONTAINER_OPEN",
+					"clear_remainder": true,
+					"when_match": "^\\s*\\[\\s*banner\\s*[-\u2013\u2014:]\\s*w[\u0101a]nanga",
+					"env": "WANANGA_OFF",
+					"_doc": "CEDT501's `[Banner - Wānanga/Talanoa box]` is the same cultural alert as every other `[Wānanga/Talanoa box]` (its gold pages render `alert cultural` layout=combined) but the `banner` alias resolves the span to the carousel / rotateBanner INTERACTIVE, which opens a bundle that captures the writer's one-cell table and declines. The promote rewrites the carousel tag to the wananga container on the `[Banner - Wānanga…` spelling only (the anchor excludes `[Rolling Banner - …]`, one site whose 4-cell strip the gold dropped). Env WANANGA_OFF."
+				}
+			]
+		},
+		"bold_id_widget_activity": {
+			"_doc": "THE BOLD ACTIVITY ID AFTER A WIDGET TAG. The FRNO family (and FRFUN06) types the widget tag, then the activity id and its title in BOLD black text: `[Reorder autocheck]] **2C****Put the conversation together**`, `[Dropbox] **1F****Lesson one task**`. With no box opened, the id and title would land inside the hand-off box as text, where the gold boxes every one as div.activity[number=<id>] with the title as its h3. PageAssembler.#boldIdWidgetActivity re-parses such a widget tag with an `[Activity <id>]` co-tag (the activity + widget span, which already opens the numbered box) and takes the bold id off the tail; a stray bracket span between them (`[Wordfind autocheck] ] **1E**…`) hands the tail's id to the widget tag before it on the same paragraph. A tag that already carries an activity tag is untouched. A family dialect. Env BOLDIDACT_OFF.",
+			"enabled": true,
+			"env": "BOLDIDACT_OFF",
+			"id_pattern": "^\\s*\\*\\*\\s*(\\d{1,2}[A-Za-z])\\s*\\*\\*"
+		},
+		"activity_heading_cotag": {
+			"_doc": "THE ACTIVITY GOVERNS A HEADING CO-TAG. A writer types the activity opener and the title's heading level in ONE red span, either order — `[Activity 1A] [H3] Examples of Factors` (HES1007) / `[H3] [Activity 2A] Emotion patterns check-in` (XGF9002). The heading tag is an ELEMENT (precedence 6) and outranks the activity's CONTAINER_OPEN (5), so without this rule no box opens, the title renders as a bare <hN>, and the heading fragment's digit joins the ids (`[\"3\",\"2b\"]`). The gold puts that heading inside an activity box in the large majority of cases. When a span's tags are ONLY the activity tag plus heading_tags and a heading won the primary slot, the activity takes it (the black tail is the box's title, as for a plain `[Activity 1A] Title`) and each heading fragment's digit leaves `numbers`. A span that also carries a widget (INTERACTIVE) or any other tag is untouched. Env ACTHDCOTAG_OFF.",
+			"enabled": true,
+			"env": "ACTHDCOTAG_OFF",
+			"duplicate_id_guard": true,
+			"callouts": {
+				"_doc": "A CALLOUT GOVERNS A HEADING CO-TAG. The same precedence slip for the callout boxes: `[Alert] [H2] Key questions` (XGF9001–9006), `[Important] [H3] Step 1: Take a screenshot` (CEDT501), `[Alert box] [H3] Want to Travel Back in Time?` (ANZH401): the heading (ELEMENT) outranks the callout (CONTAINER_OPEN), so without this rule no box opens and the title renders as a bare heading. The gold puts that heading inside an alert box in most cases (the XGF exceptions sit in the overview menu's panes). When the span carries NO activity tag and its tags are ONLY one of these callout tags + heading tags, the callout takes the primary slot; the black tail becomes the box's first line, which #alertTitleHeading lifts to the gold's <h4> when content follows. A span naming a right-hand position (deny_pattern — rhs / right) keeps the side-column path, which reads the heading primary. Env CALLOUTHDCOTAG_OFF.",
+				"enabled": true,
+				"env": "CALLOUTHDCOTAG_OFF",
+				"tags": [
+					"alert",
+					"important",
+					"whakatauki",
+					"wananga"
+				],
+				"deny_pattern": "\\b(?:rhs|rhc|right|right[\\s-]*hand)\\b"
+			},
+			"_duplicate_id_guard_doc": "PageAssembler.#cotagDuplicateId: a promoted co-tag whose id opens ANOTHER activity later on the same page (before a PAGE_BOUNDARY) hands the primary slot back to its heading — the writer typed the id on a section heading and on the real activity (MXEX202 lesson 2 'Double or Half' / 'Fun Water Challenge', HES1002 2.0); the gold boxes only the later one.",
+			"heading_tags": [
+				"h1",
+				"h2",
+				"h3",
+				"h4",
+				"h5",
+				"h6"
+			]
+		},
+		"mtk_quiz_retag": {
+			"_note": "Change Ledger CL-0038. Any [MTKquiz]-family span (any modifiers) renders the canonical 'Go to quiz' button + a Designer/Developer To Do note; the writer's quiz content stays rendered; the 'dropbox' wrapper modifier does NOT attach. Left alone, the family's forms resolve all over the map: most hit mcq INTERACTIVE via the embedded 'quiz' alias (an un-built bundle that swallows the writer's quiz content into a placeholder dump), [MTKQuiz]/[Auto-marked MTKquiz] are bare instructions, the 'Free text box…' form resolves to a text box ELEMENT and the 'teacher dropbox' form to dropdown. This span-level RETAG (applied in TagNormaliser.Parse after tag_promote, and ALSO on tag-less instruction spans) normalises them all: quiz-junk tags in drop_tags are removed, ONE 'mtk quiz' ELEMENT tag is injected, and the primary is recomputed SURVIVORS-FIRST (a surviving [Activity]/[drag and drop] co-tag keeps governing — [Activity 1A: MTK Quiz] still opens its box; only when the old primary was dropped or null does mtk quiz take the slot). head_pattern matches the family head (MTKQuiz/MTK Quiz/MTK-quiz); exclude_pattern keeps the ARFUN01 closer ([End of MTK Quiz content] stays a CONTAINER_CLOSE, never a button); bracketless_max_words caps the bracket-less red-line form (ENG1004/ENG1005 'Activity – long answer MTK quiz, Kaiako marked', the only bracket-less carriers in the corpus) so a long prose note mentioning an MTK quiz can never retag. Emit templates + the adjacent writer-button absorb live in Emit_Templates.interactive_builders.mtk_quiz. Env MTKQUIZ_OFF turns the whole family retag off.",
+			"enabled": true,
+			"env": "MTKQUIZ_OFF",
+			"canonical": "mtk quiz",
+			"head_pattern": "mtk[\\s-]*quiz",
+			"exclude_pattern": "^\\s*\\[?\\s*end\\b",
+			"bracketless_max_words": 12,
+			"omit_quiz_content_drop": {
+				"_doc": "KB constraint 65 / CL-0082. Extra co-tags dropped by the retag, under the MTKQUIZOMIT_OFF toggle: a callout tag resolved from the marker's PROSE (SCCH301 '[MTK quiz. Trigger engagement. Automarked. Alert teachers …]' would keep `alert` as the survivor primary, so the marker would open an alert box and neither the MTK-quiz emit nor its shell would see it). `alert` is the only such survivor; no marker legitimately co-tags a callout. Env MTKQUIZOMIT_OFF keeps the co-tags (MTKQUIZ_OFF turns the whole retag off).",
+				"enabled": true,
+				"env": "MTKQUIZOMIT_OFF",
+				"tags": ["alert"]
+			},
+			"drop_tags": [
+				"mcq",
+				"engagement quiz button",
+				"question",
+				"text box",
+				"option",
+				"dropdown",
+				"video",
+				"audio"
+			]
+		},
+		"tag_count": 84,
+		"alias_count": 377,
+		"suffix_container_close": true,
+		"close_word_closer": {
+			"enabled": true,
+			"env": "CLOSEWORD_OFF",
+			"max_words": 4,
+			"mode": "instruction",
+			"directives": [
+				"CONTAINER_OPEN"
+			],
+			"_note": "THE WRITER'S `[close X]` IS A CLOSER. The generic closer (spec rule 3) knows `end` / `end of` / `/`; without this rule `[close alert box]`, `[close important box]`, `[close alert]`, `[close important note]` would resolve to an alert / important OPEN (in MXEO202 the next paragraph would land inside a phantom alert the gold leaves free), `[close tab]` to a new tab (SUBTAG), `[close modal]` / `[close accordion]` / `[close clickdrop]` / `[close carousel]` to a widget OPENER, and `[close box]` to a shape SUBTAG. The word `close` (or `close the`) reads as `end` when the rest is at most max_words words and resolves to one of `directives`; a long image description (`[close up of …]`) never matches. Env CLOSEWORD_OFF turns this off."
+		},
+		"head_section_marker_owns_payload": {
+			"enabled": true,
+			"env": "TITLEPAYLOAD_OFF",
+			"_note": "When the FIRST alias hit of a fragment comes from its HEAD (the text before the colon) and that tag is a SECTION_MARKER (`[Title: …]`, `[Overview: …]`, `[Introduction: …]`), the payload is the marker's own TEXT — the multi-pass never re-scans it for embedded aliases. Otherwise ARFUN02's `[Title: Puoro me te Oro| Music and Sound]` would resolve to `audio` (the embedded alias 'sound', ELEMENT 6 outranking SECTION_MARKER 3), the module would lose its title and the first `[Title: Phase one]` tile label would become the page's h1. Head-matched spans that spawn a higher-ranked payload tag are almost all the DESIGNED activity + widget compound (`[interactive: carousel + captions]`), which this rule leaves untouched (their head is a CONTAINER_OPEN). Env TITLEPAYLOAD_OFF turns this off (HEADPAYLOAD_OFF is the accordion member rule — a different toggle)."
+		},
+		"unresolved_marker_retag": {
+			"enabled": true,
+			"_note": "SEPARATE UNBUILT INTERACTIVE (as in CHFUN01). A span that resolves NO tags at all but opens with a known quiz-family marker is RETAGGED as the listed canonical INTERACTIVE, so the writer's quiz opens its own bundle (an honest hand-off box) instead of leaking as an instruction note + loose body text. CONTAINMENT BY CONSTRUCTION: only zero-tag spans are touched — every span that already resolves anything ([dropquiz][autocheck] -> typing quiz) is unchanged. The zero-tag carriers include CHFUN01/04, HPRE203, OSAI501, OSGM301, OSGM501, OSOH101, OSSM301 — their golds build dropDown/mcq quizzes at those spots. Env toggle: DROPQUIZ_OFF.",
+			"rules": [
+				{
+					"head_pattern": "\\[\\s*dropquiz",
+					"canonical": "dropdown",
+					"directive": "INTERACTIVE"
+				}
+			]
+		},
+		"_pending_style_directive_writing_font": {
+			"_doc": "KB CL-0109, constraint 93. The KB normalises `[writing font]` / `[handwriting font]` / `[write font]` to `writing_font` = add class `writeFont` to the tagged element. RECORDED ONLY, NOT A TAG ENTRY: the lexicon has no STYLE directive that adds a class to the next element (INLINE_FORMAT only renders the black text plain), and an alias here would be LIVE — the matcher's embedded pass would catch CEDR501's writer instruction `[Put in handwriting font.]` and silently swallow it. No corpus WT uses the tag itself. Building it needs a STYLE directive (tag → class on the following element).",
+			"aliases": [
+				"writing font",
+				"handwriting font",
+				"write font"
+			],
+			"target_class": "writeFont"
+		}
+	},
+	"tags": {
+		"h1": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"h1",
+				"heading 1",
+				"h 1"
+			],
+			"rules_family": "5.1"
+		},
+		"h2": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"h2",
+				"h 2"
+			],
+			"rules_family": "5.1"
+		},
+		"h3": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"h3",
+				"h 3"
+			],
+			"rules_family": "5.1"
+		},
+		"h4": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"h4",
+				"h 4"
+			],
+			"rules_family": "5.1"
+		},
+		"h5": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"h5",
+				"h 5"
+			],
+			"rules_family": "5.1"
+		},
+		"heading": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"heading",
+				"h",
+				"insert heading",
+				"header"
+			],
+			"rules_family": "5.1"
+		},
+		"activity heading": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"activity heading",
+				"activity title",
+				"insert image for heading"
+			],
+			"rules_family": "5.1"
+		},
+		"title bar": {
+			"directive": "SECTION_MARKER",
+			"aliases": [
+				"title bar",
+				"title",
+				"overview",
+				"introduction",
+				"landing page"
+			],
+			"rules_family": "5.2"
+		},
+		"module introduction": {
+			"directive": "SECTION_MARKER",
+			"aliases": [
+				"module introduction",
+				"module intro"
+			],
+			"rules_family": "5.3"
+		},
+		"lesson": {
+			"directive": "PAGE_BOUNDARY",
+			"aliases": [
+				"lesson",
+				"akoranga"
+			],
+			"rules_family": "5.4"
+		},
+		"page": {
+			"directive": "PAGE_BOUNDARY",
+			"aliases": [
+				"page",
+				"new page",
+				"page break"
+			],
+			"rules_family": "5.4"
+		},
+		"lesson overview": {
+			"directive": "SECTION_MARKER",
+			"aliases": [
+				"lesson overview"
+			],
+			"rules_family": "5.3"
+		},
+		"lesson content": {
+			"directive": "SECTION_MARKER",
+			"aliases": [
+				"lesson content",
+				"fundamental content",
+				"fundamental code",
+				"fundamental 1 code",
+				"fundamental 2 code",
+				"fundamental 3 code"
+			],
+			"rules_family": "5.3"
+		},
+		"body": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"body",
+				"p",
+				"text",
+				"body text",
+				"body copy",
+				"paragraph"
+			],
+			"rules_family": "5.5"
+		},
+		"alert": {
+			"directive": "CONTAINER_OPEN",
+			"aliases": [
+				"alert",
+				"alert box",
+				"alert text",
+				"alertbox"
+			],
+			"rules_family": "5.6"
+		},
+		"side alert": {
+			"directive": "CONTAINER_OPEN",
+			"aliases": [
+				"side alert",
+				"sidealert",
+				"side alert box",
+				"side-alert"
+			],
+			"rules_family": "5.6",
+			"_doc": "(As in BLL210.) A `[Side alert]` is the writer's SIDE tip-box that the human renders as `<div class=\"alertActivity\">` in a narrow side column (col-md-4/3), NOT the generic `[alert]` box (which the bare 'alert' substring match would give). Distinct canonical so callouts.by_tag routes it to the alertActivity shape."
+		},
+		"important": {
+			"directive": "CONTAINER_OPEN",
+			"aliases": [
+				"important",
+				"important box",
+				"alert solid",
+				"important text"
+			],
+			"rules_family": "5.6"
+		},
+		"wananga": {
+			"directive": "CONTAINER_OPEN",
+			"aliases": [
+				"wananga",
+				"talanoa",
+				"cultural alert"
+			],
+			"rules_family": "5.6"
+		},
+		"whakatauki": {
+			"directive": "CONTAINER_OPEN",
+			"aliases": [
+				"whakatauki",
+				"whakatauaki",
+				"proverb"
+			],
+			"rules_family": "5.6"
+		},
+		"quote": {
+			"directive": "CONTAINER_OPEN",
+			"aliases": [
+				"quote",
+				"quotetext",
+				"quotation",
+				"pull quote"
+			],
+			"rules_family": "5.6"
+		},
+		"image": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"image",
+				"insert image",
+				"img",
+				"photo",
+				"picture",
+				"graphic",
+				"insert item",
+				"diagram",
+				"insert the image",
+				"gif",
+				"insert media item",
+				"media item",
+				"images"
+			],
+			"rules_family": "5.7"
+		},
+		"video": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"video",
+				"insert video",
+				"embed video",
+				"video embed",
+				"youtube",
+				"vimeo",
+				"video link"
+			],
+			"rules_family": "5.8"
+		},
+		"audio": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"audio",
+				"insert audio",
+				"audio file",
+				"sound",
+				"audio embed",
+				"mp3",
+				"audioimage",
+				"listen icon"
+			],
+			"rules_family": "5.8"
+		},
+		"activity": {
+			"directive": "CONTAINER_OPEN",
+			"aliases": [
+				"activity",
+				"activity box",
+				"activity wrapper",
+				"interactive",
+				"activity box wide for interactives",
+				"activity- embedded",
+				"activity + heading",
+				"activity body"
+			],
+			"rules_family": "5.9"
+		},
+		"accordion": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"accordion",
+				"according",
+				"accordian"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"accordion"
+			]
+		},
+		"flip card": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"flip card",
+				"flipcard",
+				"flip cards",
+				"flipcards",
+				"flip- card",
+				"flashcard",
+				"flash card",
+				"flipchart",
+				"flip chart"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"flipCard"
+			]
+		},
+		"click drop": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"click drop",
+				"clickdrop",
+				"click dropdown",
+				"click and drop",
+				"clickable drop"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"clickDrop"
+			]
+		},
+		"drag and drop": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"drag and drop",
+				"drag drop",
+				"drag & drop",
+				"draganddrop",
+				"drop and drag",
+				"drag n drop",
+				"drag and drop quiz"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"dragAndDrop"
+			]
+		},
+		"dropdown": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"dropdown",
+				"drop down",
+				"dropbox",
+				"drop box"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"dropDown"
+			]
+		},
+		"carousel": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"carousel",
+				"slideshow",
+				"rotating banner",
+				"rotate banner",
+				"slide show",
+				"banner"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"carousel",
+				"rotateBanner"
+			]
+		},
+		"tabs": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"tabs",
+				"tab interactive",
+				"tabs interactive",
+				"tabbed"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"tabs"
+			]
+		},
+		"speech bubble": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"speech bubble",
+				"speechbubble",
+				"speech bubbles",
+				"conversation",
+				"speech",
+				"thought bubble",
+				"thought bubbles",
+				"green thought bubble",
+				"thought bubble green"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"speechBubble"
+			]
+		},
+		"hint": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"hint"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"hint"
+			],
+			"_note": "Split out from 'hint slider' — a bare [hint] is the simple click-to-reveal hint (catalogue #25), NOT the multi-row hint slider (#26). They are different ELEMENTS in the gold — hint is p.hintLink + span.hint + div.hintDropContent, hintSlider is div.hintSlider > hintRow > frontInfo|backInfo. Both types enter InteractiveBuilder#hintEntry, which routes on the authored CONTENT rather than the tag: the tag is not a reliable discriminator ([hint sliders] resolves here, to widget_type hint, yet IS a slider; OSAI401/501 author sliders under [hint slider]). Emit_Templates.interactive_builders needs its 'hint' key, or Build returns null at its missing-template guard. Env HINTELEM_OFF leaves [hint] unbuilt."
+		},
+		"hint slider": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"hint slider",
+				"hintslider"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"hintSlider"
+			]
+		},
+		"shape hover": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"shape hover",
+				"shapehover",
+				"hover shape"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"shapeHover"
+			]
+		},
+		"reorder": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"reorder",
+				"re-order",
+				"re order",
+				"ordering",
+				"order activity"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"reorder"
+			]
+		},
+		"slider": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"slider",
+				"image slider",
+				"before after slider"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"slider"
+			]
+		},
+		"memory game": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"memory game",
+				"memory",
+				"matching game",
+				"match game",
+				"memory cards"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"memoryGame"
+			]
+		},
+		"word drag": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"word drag",
+				"worddrag",
+				"word drag and drop"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"wordDrag"
+			]
+		},
+		"typing quiz": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"typing quiz",
+				"self check",
+				"self-check",
+				"selfcheck",
+				"typing",
+				"type the answer",
+				"self assessment quiz",
+				"autocheck",
+				"auto check",
+				"auto-check"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"typing",
+				"selfCheck"
+			]
+		},
+		"word select": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"word select",
+				"word highlighter",
+				"wordselect",
+				"word highlight",
+				"highlight the word",
+				"word selection",
+				"highlight",
+				"highlight text"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"wordSelect",
+				"wordHighlighter"
+			]
+		},
+		"mcq": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"mcq",
+				"multi choice",
+				"multiple choice",
+				"multichoice",
+				"multi-choice",
+				"quiz"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"multiChoiceQuiz"
+			]
+		},
+		"mtk quiz": {
+			"directive": "ELEMENT",
+			"aliases": [],
+			"rules_family": "CL-0038",
+			"_note": "CL-0038: the canonical MTK-quiz marker — renders as the 'Go to quiz' button + Designer/Developer To Do note (templates in Emit_Templates.interactive_builders.mtk_quiz). DELIBERATELY NO ALIASES: natural alias matching is not env-gateable, so the span-level retag in _meta.mtk_quiz_retag (env MTKQUIZ_OFF) does ALL the matching; this entry is the taxonomy record + directive lookup for the injected tag.",
+			"widget_types": []
+		},
+		"radio quiz": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"radio quiz",
+				"true false",
+				"true/false",
+				"true or false",
+				"radio button quiz",
+				"radio"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"radioQuiz"
+			]
+		},
+		"checklist": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"checklist",
+				"check list",
+				"tick list",
+				"checkbox",
+				"tick boxes",
+				"rarangi tirotiro"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"selectionBox"
+			]
+		},
+		"info trigger": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"info trigger",
+				"infotrigger",
+				"hover trigger",
+				"hover tigger",
+				"hover definition",
+				"info button",
+				"information trigger",
+				"roll over definition",
+				"rollover definition",
+				"roll-over definition",
+				"hovertrigger",
+				"trigger",
+				"mouseover definition",
+				"mouse over definition"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"infoTrigger"
+			]
+		},
+		"timeline": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"timeline",
+				"time line"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"timeline"
+			]
+		},
+		"crossword": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"crossword",
+				"cross word"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"crossword"
+			]
+		},
+		"word find": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"word find",
+				"wordfind",
+				"word search",
+				"wordsearch"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"wordFind"
+			]
+		},
+		"clicking order": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"clicking order",
+				"click order",
+				"click the order",
+				"clickingorder"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"clickingOrder"
+			]
+		},
+		"puzzle": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"puzzle",
+				"jigsaw"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"puzzle"
+			]
+		},
+		"sketcher": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"sketcher",
+				"sketch",
+				"draw",
+				"drawing"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"sketcher"
+			]
+		},
+		"glossary": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"glossary"
+			],
+			"rules_family": "5.10",
+			"widget_types": [
+				"glossary"
+			]
+		},
+		"modal": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"modal",
+				"popup",
+				"pop up",
+				"pop-up",
+				"pop-out",
+				"pop out",
+				"popout"
+			],
+			"rules_family": "5.10",
+			"widget_types": []
+		},
+		"info trigger image": {
+			"directive": "INTERACTIVE",
+			"aliases": [
+				"info trigger image",
+				"image hover trigger",
+				"infoimagetrigger",
+				"image trigger"
+			],
+			"rules_family": "5.17",
+			"widget_types": [
+				"infoTrigger"
+			]
+		},
+		"text box": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"text box",
+				"text input",
+				"textbox",
+				"input box",
+				"text entry",
+				"type in box"
+			],
+			"rules_family": "5.14"
+		},
+		"embed": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"embed",
+				"imbed",
+				"imbed film",
+				"pdf embed",
+				"padlet",
+				"desmos",
+				"pdf",
+				"iframe",
+				"genially",
+				"google form"
+			],
+			"aliases_note": "(As in ENGS302.) 'imbed' is a recurrent writer misspelling of 'embed'; without these aliases '[Imbed film]'/'[imbed film]' would resolve to null (neither 'imbed' nor 'film' is otherwise an alias) and the whole tag would leak. 'imbed video'/'Imbed video' still resolve to VIDEO (the 'video' suffix wins over the 'imbed' prefix); a video-host '[Imbed film]' reaches the embed branch which routes YouTube/Vimeo to the videoSection video builder.",
+			"rules_family": "5.14"
+		},
+		"button": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"button",
+				"add button",
+				"buttons",
+				"go to journal",
+				"journal button"
+			],
+			"rules_family": "5.13"
+		},
+		"external link": {
+			"directive": "INLINE",
+			"aliases": [
+				"external link",
+				"link",
+				"url",
+				"hyperlink",
+				"weblink",
+				"web link",
+				"website"
+			],
+			"rules_family": "5.12"
+		},
+		"external link button": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"external link button",
+				"link button",
+				"external button"
+			],
+			"rules_family": "5.13"
+		},
+		"engagement quiz button": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"engagement quiz button",
+				"engagement quiz",
+				"engagement button",
+				"trigger engagement",
+				"engagement trigger"
+			],
+			"rules_family": "5.13"
+		},
+		"supervisor button": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"supervisor button",
+				"supervisor",
+				"kaiawhina button"
+			],
+			"rules_family": "5.13"
+		},
+		"supervisor note": {
+			"directive": "CONTAINER_OPEN",
+			"aliases": [
+				"supervisor note",
+				"note to supervisor",
+				"note for supervisor",
+				"supervisor information",
+				"supervisor notes"
+			],
+			"rules_family": "5.6"
+		},
+		"audio button": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"audio button",
+				"audiobutton"
+			],
+			"rules_family": "5.13"
+		},
+		"table": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"table",
+				"data table"
+			],
+			"rules_family": "5.5"
+		},
+		"list": {
+			"directive": "ELEMENT",
+			"aliases": [
+				"unordered list",
+				"unsorted list",
+				"ordered list",
+				"bullet list",
+				"numbered list",
+				"bullet points",
+				"list"
+			],
+			"rules_family": "5.5"
+		},
+		"front": {
+			"directive": "SUBTAG",
+			"aliases": [
+				"front"
+			],
+			"rules_family": "5.11"
+		},
+		"back": {
+			"directive": "SUBTAG",
+			"aliases": [
+				"back",
+				"reverse side",
+				"reverse",
+				"facing"
+			],
+			"rules_family": "5.11"
+		},
+		"drop": {
+			"directive": "SUBTAG",
+			"aliases": [
+				"drop"
+			],
+			"rules_family": "5.11"
+		},
+		"tab n": {
+			"directive": "SUBTAG",
+			"aliases": [
+				"tab"
+			],
+			"rules_family": "5.11"
+		},
+		"slide n": {
+			"directive": "SUBTAG",
+			"aliases": [
+				"slide"
+			],
+			"rules_family": "5.11"
+		},
+		"shape n": {
+			"directive": "SUBTAG",
+			"aliases": [
+				"shape",
+				"tile",
+				"card",
+				"hotspot",
+				"box",
+				"book",
+				"section"
+			],
+			"rules_family": "5.11"
+		},
+		"answer": {
+			"directive": "SUBTAG",
+			"aliases": [
+				"answer",
+				"answers"
+			],
+			"rules_family": "5.11"
+		},
+		"question": {
+			"directive": "SUBTAG",
+			"aliases": [
+				"question",
+				"questions"
+			],
+			"rules_family": "5.11"
+		},
+		"correct": {
+			"directive": "SUBTAG",
+			"aliases": [
+				"correct",
+				"correct answer"
+			],
+			"rules_family": "5.11"
+		},
+		"option": {
+			"directive": "SUBTAG",
+			"aliases": [
+				"option",
+				"options",
+				"choice"
+			],
+			"rules_family": "5.11"
+		},
+		"story heading": {
+			"directive": "SUBTAG",
+			"aliases": [
+				"story heading",
+				"story",
+				"dropdown heading"
+			],
+			"rules_family": "5.11"
+		},
+		"data marker": {
+			"directive": "SUBTAG",
+			"aliases": [
+				"term",
+				"definition",
+				"label",
+				"caption",
+				"row",
+				"column",
+				"item",
+				"clue",
+				"word",
+				"hint text",
+				"feedback",
+				"across",
+				"down",
+				"incorrect",
+				"static",
+				"insert thumbnail",
+				"merge source",
+				"on click"
+			],
+			"rules_family": "5.11"
+		},
+		"end activity": {
+			"directive": "CONTAINER_CLOSE",
+			"aliases": [
+				"end activity",
+				"end of activity",
+				"/activity",
+				"activity end",
+				"end interactive"
+			],
+			"rules_family": "5.15"
+		},
+		"end alert": {
+			"directive": "CONTAINER_CLOSE",
+			"aliases": [
+				"end alert",
+				"/alert",
+				"end of alert",
+				"end alert box",
+				"alert box ends here",
+				"alert ends here"
+			],
+			"rules_family": "5.15"
+		},
+		"end important": {
+			"directive": "CONTAINER_CLOSE",
+			"aliases": [
+				"end important",
+				"/important",
+				"end of important"
+			],
+			"rules_family": "5.15"
+		},
+		"end page": {
+			"directive": "PAGE_BOUNDARY",
+			"aliases": [
+				"end page",
+				"/page",
+				"end of page",
+				"page end"
+			],
+			"rules_family": "5.4"
+		},
+		"end lesson": {
+			"directive": "PAGE_BOUNDARY",
+			"aliases": [
+				"end lesson",
+				"/lesson",
+				"end of lesson"
+			],
+			"rules_family": "5.15"
+		},
+		"end other": {
+			"directive": "CONTAINER_CLOSE",
+			"aliases": [
+				"end accordion",
+				"end modal",
+				"end tabs",
+				"end carousel",
+				"end quote",
+				"end quiz",
+				"end glossary",
+				"end timeline",
+				"end speech bubble",
+				"end dropdown",
+				"end slider",
+				"end table",
+				"end activty",
+				"carousel ends here",
+				"carousel ends",
+				"carousels end",
+				"accordion ends here",
+				"accordion ends",
+				"accordions end",
+				"accordion end",
+				"modal ends here",
+				"modal ends",
+				"modal end",
+				"tabs end here",
+				"tabs ends here",
+				"tabs end",
+				"tab ends",
+				"slider ends",
+				"dropdown ends",
+				"drop down ends",
+				"coloured box ends here",
+				"coloured box ends",
+				"colour box ends here",
+				"box ends here",
+				"box ends",
+				"end"
+			],
+			"_suffix_close_note": "SUFFIX CLOSE FORMS: writers close a widget with '[Carousel ends here]'/'[accordion ends]'/'[modal ends]' about as often as with the prefix '[End carousel]'. Without these the embedded widget name ('carousel') would match first → the marker would OPEN a new empty widget AND fail to close the open one (as in ENGJ301's '[Carousel ends here]'). Listed here as CONTAINER_CLOSE; the scanner terminates an open widget on ANY CONTAINER_CLOSE directive. 'coloured box ends' = a callout close, harmless as a widget terminator too.",
+			"rules_family": "5.15"
+		},
+		"sticky nav": {
+			"directive": "DROP",
+			"aliases": [
+				"sticky nav",
+				"stickynav",
+				"sticky navigation"
+			],
+			"rules_family": "-"
+		},
+		"format": {
+			"directive": "INLINE_FORMAT",
+			"aliases": [
+				"bold",
+				"italics",
+				"italic",
+				"underline"
+			],
+			"rules_family": "6"
+		}
+	}
+}

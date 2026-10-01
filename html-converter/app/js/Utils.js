@@ -1,0 +1,419 @@
+/**
+ * Utils.js
+ * ===========================================================================
+ * WHAT THIS FILE DOES:
+ * Pure, reusable utility functions shared across the converter: text folding,
+ * escaping, date stamping, template filling, and small string helpers.
+ *
+ * WHY SEPARATE FILE:
+ * Per the coding standards, pure helpers live apart from DOM/fetch/business
+ * logic so they can be reasoned about (and tested) in isolation.
+ *
+ * RULES:
+ * - All functions here are PURE (same input = same output)
+ * - No DOM manipulation here
+ * - No data fetching, no globals
+ * ===========================================================================
+ */
+
+class Utils {
+	/**
+	 * Does a title, or one half of a title, read as te reo Māori? A macron (āēīōū) decides at once. Otherwise the MĀORI ALPHABET + PHONOTACTICS:
+	 * every word's letters come from a e i o u h k m n p r t w (g only inside the digraph ng), every word ends in a
+	 * vowel, and no two consonants stand together except the digraphs ng / wh; a LONE word needs at least
+	 * cfg.min_letters_single_word letters (5) so that "Time", "Home", "Note" stay English while "Whaikaha", "Pepeha",
+	 * "Mahi Tahi", "Te Tautoko Ako", "Taku hinga motuhake" read Māori. Digits and punctuation are skipped; an empty
+	 * text is not Māori. Pure. Data: Emit_Templates.header.te_reo_detect. SkeletonBuilder.#looksMaori
+	 * (letters-only) decides title ORDER — this test decides whether a SEPARATOR is a bilingual boundary.
+	 * @param {string} text
+	 * @param {Object} [cfg] - header.te_reo_detect
+	 * @returns {boolean}
+	 */
+	static LooksMaori(text, cfg) {
+		const s = String(text ?? "");
+		if (/[\u0101\u0113\u012b\u014d\u016b\u0100\u0112\u012a\u014c\u016a]/.test(s)) return true;
+		const minSingle = Number(cfg?.min_letters_single_word ?? 5);
+		const stop = new Set((cfg?.english_stopwords ?? []).map((w) => String(w).toLowerCase()));
+		const tokens = s.toLowerCase().split(/\s+/).map((t) => t.replace(/^[^a-z'\u2019-]+|[^a-z'\u2019-]+$/g, "")).filter(Boolean);
+		if (!tokens.length) return false;
+		let letters = 0;
+		for (const tok of tokens) {
+			if (/['\u2019-]/.test(tok)) return false;                 // a hyphenated / apostrophe token ("One-to-one") is never Māori here
+			const w = tok.replace(/[^a-z]/g, "");
+			if (!w) continue;
+			if (tokens.length <= 3 && stop.has(w)) return false;      // a SHORT English phrase of words that pass Māori phonotactics ("No more"); a long Māori title may carry the particle "me"
+			if (!/^[aeiouhkmnprtwg]+$/.test(w)) return false;          // a letter outside the Māori alphabet
+			if (!/[aeiou]$/.test(w)) return false;                   // every Māori word ends in a vowel
+			const x = w.replace(/ng/g, "N").replace(/wh/g, "W");       // the digraphs count as one consonant
+			if (/g/.test(x)) return false;                            // g only ever inside ng
+			if (/[hkmnprtwNW]{2}/.test(x)) return false;             // no consonant clusters
+			letters += w.length;
+		}
+		if (tokens.length === 1 && letters < minSingle) return false;
+		return true;
+	}
+
+	// =======================================================================
+	// TEXT FOLDING (matching the reference normaliser's fold() exactly)
+	// =======================================================================
+
+	/**
+	 * Folds a string for case/diacritic/whitespace-insensitive MATCHING.
+	 *
+	 * WHAT IT DOES:
+	 * Strips diacritics (whakataukī → whakatauki), straightens curly quotes,
+	 * turns en/em dashes into "-", collapses whitespace runs to single
+	 * spaces, trims, lowercases.
+	 *
+	 * WHY IT MATTERS:
+	 * This is THE comparability step from Tag_Normalisation_Spec.md Step 1.
+	 * Every alias match, cue match, and heading lookup folds first, so a
+	 * variation that differs only by case/spacing/diacritics never needs a
+	 * rule of its own.
+	 *
+	 * NOTE: NEVER fold render content — folding is for matching only.
+	 *
+	 * @param {string} s - raw text
+	 * @returns {string} folded text
+	 */
+	static Fold(s) {
+		// normalize("NFKD") splits letters from their accent marks,
+		// then \p{M} (Unicode "Mark") removes the accents
+		let out = s.normalize("NFKD").replace(/\p{M}/gu, "");
+		// curly quotes → straight; non-breaking space → space
+		out = out.replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/ /g, " ");
+		// en dash / em dash → hyphen (instruction cues rely on this)
+		out = out.replace(/[–—]/g, "-");
+		// collapse all whitespace runs to single spaces, trim, lowercase
+		return out.replace(/\s+/g, " ").trim().toLowerCase();
+	};
+
+	/**
+	 * Strips a set of characters from both ends of a string.
+	 * (JS has no direct equivalent of Python's str.strip("chars") — the
+	 * normaliser port needs one for fragment tidying like ' .;,|-'.)
+	 *
+	 * @param {string} s - input
+	 * @param {string} chars - the characters to remove from the ends
+	 * @returns {string}
+	 */
+	static StripChars(s, chars) {
+		let start = 0;
+		let end = s.length;
+		while (start < end && chars.includes(s[start])) start++;
+		while (end > start && chars.includes(s[end - 1])) end--;
+		return s.slice(start, end);
+	};
+
+	// =======================================================================
+	// HTML HELPERS
+	// =======================================================================
+
+	/**
+	 * Escapes the five HTML-special characters so writer text renders as
+	 * text, never as markup.
+	 *
+	 * USAGE: Utils.EscapeHtml('AT&T <ltd>') → 'AT&amp;T &lt;ltd&gt;'
+	 *
+	 * @param {string} s
+	 * @returns {string}
+	 */
+	static EscapeHtml(s) {
+		return String(s)
+			.replace(/&/g, "&amp;")
+			.replace(/</g, "&lt;")
+			.replace(/>/g, "&gt;")
+			.replace(/"/g, "&quot;")
+			.replace(/'/g, "&#39;");
+	};
+
+	/**
+	 * Fills {placeholder} tokens in a template string from a values object.
+	 *
+	 * WHAT IT DOES:
+	 * "Hello {name}" + {name: "Aroha"} → "Hello Aroha". Unknown tokens are
+	 * left in place (visible), because silently emitting an empty string
+	 * would hide a template/data mismatch — surfacing beats absorbing.
+	 *
+	 * USAGE:
+	 * Utils.FillTemplate(tpl.red_flag.form, { text: "CS — fix me" })
+	 *
+	 * @param {string} template - text containing {tokens}
+	 * @param {Object} values - token → replacement
+	 * @returns {string}
+	 */
+	static FillTemplate(template, values) {
+		return template.replace(/\{(\w+)\}/g, (whole, key) =>
+			// ?? keeps the literal token when no value was supplied —
+			// a visible signal that something didn't line up
+			values[key] ?? whole
+		);
+	};
+
+	// =======================================================================
+	// TEXT FORMATTING
+	// =======================================================================
+
+	/**
+	 * Title Cases a list of words with the acks slug rules applied:
+	 * special tokens get their official casing (3d → 3D), small words stay
+	 * lowercase unless first.
+	 *
+	 * WHY IT EXISTS:
+	 * The iStock slug → official title derivation (Acks_Formats.json
+	 * istock_slug_title, 98% verified) needs consistent casing.
+	 *
+	 * @param {string[]} words - lowercased slug words
+	 * @param {Object} specialTokens - folded token → official casing
+	 * @param {string[]} smallWords - words kept lowercase mid-title
+	 * @returns {string}
+	 */
+	static TitleCaseWords(words, specialTokens = {}, smallWords = []) {
+		return words.map((w, i) => {
+			if (specialTokens[w]) return specialTokens[w];
+			if (i > 0 && smallWords.includes(w)) return w;
+			return w.charAt(0).toUpperCase() + w.slice(1);
+		}).join(" ");
+	};
+
+	/**
+	 * Today's date as dd/mm/yy — the acks "retrieved" stamp format
+	 * (Acks_Formats.json oembed.retrieved_date_format).
+	 *
+	 * @returns {string} e.g. "12/06/26"
+	 */
+	static TodayStamp() {
+		const now = new Date();
+		// ternary-free zero pad: "0" + n, keep last two chars
+		const pad = (n) => String(n).padStart(2, "0");
+		return `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${String(now.getFullYear()).slice(-2)}`;
+	};
+
+	/**
+	 * Zero-pads a lesson/page number to two digits ("1" → "01").
+	 * Used by output filenames ({code}-01.html) and padded module codes.
+	 *
+	 * @param {number|string} n
+	 * @returns {string}
+	 */
+	static Pad2(n) {
+		return String(n).padStart(2, "0");
+	};
+
+	/**
+	 * Makes a short URL-safe slug from free text (for Mode-P placeholder
+	 * labels and fallback image filenames).
+	 *
+	 * USAGE: Utils.Slugify("Fun bulldog!") → "fun-bulldog"
+	 *
+	 * @param {string} s
+	 * @param {number} maxLen - cap the slug length (default 40)
+	 * @returns {string}
+	 */
+	static Slugify(s, maxLen = 40) {
+		return Utils.Fold(s)
+			.replace(/[^a-z0-9]+/g, "-")   // anything non-alphanumeric → dash
+			.replace(/^-+|-+$/g, "")        // no leading/trailing dashes
+			.slice(0, maxLen)
+			.replace(/-+$/g, "");           // re-trim if the cut landed on a dash
+	};
+
+	/**
+	 * Escapes a string for safe use inside a RegExp.
+	 * (Same job as Python's re.escape — the normaliser port builds alias
+	 * regexes from data, so every alias must be escaped first.)
+	 *
+	 * @param {string} s
+	 * @returns {string}
+	 */
+	static RegexEscape(s) {
+		return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+	};
+
+	/**
+	 * Sequential async mapping — the team's standard mapSeries (standards
+	 * §7c). Used for rate-limit-friendly work like oEmbed fetches.
+	 *
+	 * @param {Array} iterable
+	 * @param {Function} action - async (item, index, total) => result
+	 * @returns {Promise<Array>} results in order
+	 */
+	static async MapSeries(iterable, action) {
+		const results = [];
+		for (const [index, item] of iterable.entries()) {
+			results.push(await action(item, index, iterable.length));
+		}
+		return results;
+	};
+
+	/**
+	 * How many times `needle` occurs in `hay` (overlapping occurrences counted — the
+	 * same walk MarkAnswers uses to find the nth one).
+	 */
+	static CountOccurrences(hay, needle) {
+		const h = String(hay ?? ""), n = String(needle ?? "");
+		if (!n) return 0;
+		let c = 0;
+		for (let k = h.indexOf(n); k >= 0; k = h.indexOf(n, k + 1)) c++;
+		return c;
+	};
+
+	/**
+	 * Puts the writer's answer marks back into the text of an un-built quiz's hand-off: `glyph` (the parser's own ✅ "correct answer"
+	 * marker) goes immediately before each marked phrase. `marks` are the extractor's answer-mark
+	 * side-channel entries ({text, kind, nth}); `nth` picks which occurrence when the phrase
+	 * appears more than once (the last one when the markup split an occurrence). When the
+	 * text is only PART of its source block (`base`), a mark is placed only if it falls
+	 * inside this part — the rest belong to the block's other items.
+	 *
+	 * @param {string} text - the text to mark
+	 * @param {Array<{text:string, nth?:number}>} marks
+	 * @param {string} [glyph]
+	 * @param {string|null} [base] - the whole source-block text `text` was cut from
+	 * @returns {string}
+	 */
+	static MarkAnswers(text, marks, glyph = "✅", base = null, afterListMarker = false) {
+		const s = String(text ?? "");
+		if (!s.trim() || !Array.isArray(marks) || !marks.length) return s;
+		// afterListMarker (the HTML box): a mark that starts ON a line's list marker ("b. When…",
+		// "1. Straight…", "• Yes") takes the glyph AFTER the marker, so the rendered list keeps
+		// the item — the parser's own "✅b." form would stop it reading as a list item
+		const listShift = (p, str) => {
+			if (!afterListMarker) return p;
+			const ls = str.lastIndexOf("\n", p - 1) + 1;
+			const lm = str.slice(ls).match(/^\s*(?:\d+[.)]|[A-Za-z][.)]|[•●▪◦*-])\s+/);
+			return lm && p < ls + lm[0].length ? ls + lm[0].length : p;
+		};
+		const core = s.trim(), lead = s.length - s.trimStart().length;
+		const b = base == null ? core : String(base);
+		let off = base == null ? 0 : b.indexOf(core);
+		const within = off >= 0;
+		if (!within) off = 0;
+		const at = new Set();
+		for (const m of marks) {
+			const t = String(m?.text ?? "").trim();
+			if (!t) continue;
+			const hay = within ? b : core;
+			const occ = [];
+			for (let k = hay.indexOf(t); k >= 0; k = hay.indexOf(t, k + 1)) occ.push(k);
+			if (!occ.length) continue;
+			const pos = occ[Math.min(Number.isInteger(m.nth) ? m.nth : 0, occ.length - 1)];
+			if (within && (pos < off || pos + t.length > off + core.length)) continue;   // another item's mark
+			at.add(listShift(lead + pos - off, s));
+		}
+		let out = s;
+		for (const p of [...at].sort((x, y) => y - x)) out = out.slice(0, p) + glyph + out.slice(p);
+		return out;
+	};
+
+	/**
+	 * The answer-key carry-through's own switch for ONE bundle: the config
+	 * (EmitTemplates.interactive_placeholder.answer_key) when it is on (env
+	 * ANSWERKEY_OFF) and the bundle is a quiz-engine type, else null. Shared by the
+	 * hand-off box (ContentConverter) and the worklist (ManifestBuilder).
+	 */
+	static AnswerKeyConfig(cfg, bundle) {
+		if (!cfg || cfg.enabled === false || !bundle) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "ANSWERKEY_OFF"]) return null;
+		const types = [bundle.type, ...(bundle.extraTypes ?? [])];
+		return types.some((t) => (cfg.types ?? []).includes(t)) ? cfg : null;
+	};
+
+	/**
+	 * The marks the carry-through ticks: the kinds in cfg.mark_kinds (default
+	 * highlight only) and, for a highlight, only the colours in cfg.highlight_colours when
+	 * listed (the parser ticks YELLOW only — js/formatter.js).
+	 */
+	static AnswerKeyMarks(cfg, marks) {
+		const kinds = cfg?.mark_kinds ?? ["hl"];
+		const cols = cfg?.highlight_colours;
+		return (marks ?? []).filter((mk) => kinds.includes(mk?.kind)
+			&& (mk.kind !== "hl" || !Array.isArray(cols) || cols.includes(mk.color)));
+	};
+
+	/**
+	 * How a red 'noise' fragment inside a quiz renders in its hand-off:
+	 * "skip" (no letter or digit — a stray "]"), "plain" (a label / media note —
+	 * "Answers:", "(image)"), else "answer" (the writer's red answer word — ticked).
+	 */
+	static AnswerKeyRedWord(cfg, words) {
+		const w = String(words ?? "").replace(/\s+/g, " ").trim();
+		if (!w || new RegExp(cfg?.red_answer_skip ?? "^[^\\p{L}\\p{N}]*$", "u").test(w)) return "skip";
+		if (cfg?.red_answer_plain && new RegExp(cfg.red_answer_plain, "iu").test(w)) return "plain";
+		return "answer";
+	};
+
+	// =======================================================================
+	// THE JOURNAL-BUTTON VARIANTS
+	// =======================================================================
+
+	/**
+	 * Is this writer [Button] a JOURNAL button that the exact "go to (your)
+	 * journal" test misses? Every journal-label variant on a writer's [Button]
+	 * is the journal element and ships the <h4 class="goJournal">, never a green button; a label that is
+	 * a whole instruction keeps that sentence as a <p>; a journal is never
+	 * invented where the writer typed no [Button].
+	 *
+	 * The label is read the three ways writers type it: in the black text after
+	 * the tag ("[Button] Learning journal."), inside the span ("[Button – go to
+	 * learning journal]", "[Button for Journal]", "[insert go to journal
+	 * button]"), and split over the red-text seam ("[button] Go to" + "journal").
+	 * Never fires with a URL (a linked button keeps its link) or on
+	 * a download / upload / dropbox / .docx label (their own buttons).
+	 *
+	 * It is called for FREE buttons only — ContentConverter's button branch and
+	 * the walk of #goJournalTail (a button after a widget, still inside its box).
+	 * The bundle side (the scanner's section break, #goJournalTail's member
+	 * branch, the builders' member skips) keeps the exact patterns, so no widget
+	 * bundle or build moves: widening the scanner's test would change which items
+	 * a speech bubble keeps, so a variant button is released from a bundle by the
+	 * exact test, then rendered here.
+	 *
+	 * Data: EmitTemplates.buttons.go_journal.journal_variants   Env: JOURNALVAR_OFF
+	 *
+	 * @param {Object} gj - EmitTemplates.buttons.go_journal
+	 * @param {string} rawText - the item's tag text (the bracket span plus any same-run label)
+	 * @param {string} after - the item's black text after the tag
+	 * @param {string|null} [textLabel] - the caller's rendered in-tag label, when it has one
+	 * @returns {null|{kind: "pure"}|{kind: "sentence", sentence: string}}
+	 */
+	static GoJournalVariant(gj, rawText, after, textLabel = null) {
+		const v = gj?.journal_variants;
+		if (!gj || gj.enabled === false || !v || v.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[v.env ?? "JOURNALVAR_OFF"]) return null;
+		const unRed = (s) => String(s ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ")
+			.replace(/\s+/g, " ").trim();
+		const plain = (s) => unRed(s).replace(/\*/g, "").replace(/\s+/g, " ").trim();
+		const raw = String(rawText ?? ""), aRaw = unRed(after), a = plain(after);
+		if (/https?:\/\//i.test(a) || /https?:\/\//i.test(raw)) return null;
+		const pure = new RegExp(v.pure_match, "i");
+		const head = new RegExp(v.button_head, "i");
+		// from the spans, keep only a span that names a button or the journal — another
+		// tag on the same line is never label text ("[go to journal] [end page]", ENGS201)
+		const tRaw = textLabel != null && plain(textLabel) ? unRed(textLabel)
+			: unRed(unRed(raw).replace(/\[([^[\]]*)\]/g, (m, inner) => (/button|journal/i.test(inner) ? ` ${inner} ` : " ")))
+				.replace(head, "");
+		const t = plain(tRaw);
+		const both = [t, a].filter(Boolean).join(" ");
+		if (!new RegExp(v.journal_word, "i").test(both) || new RegExp(v.exclude, "i").test(both)) return null;
+		if (pure.test(both) || (!a && pure.test(t))) return { kind: "pure" };
+		if (v.sentences === false) return null;
+		// the sentence the button carried: the black tail after a pure in-tag label
+		// ("[Button] Journal" + "Go to your journal and complete activity 4a."), else the
+		// one label there is; a tail is never folded into a non-journal in-tag label (it
+		// belongs to a later tag — "[Button] … journal. [H2]" + the heading's text)
+		let src = null;
+		if (a && t) src = pure.test(t) ? aRaw : (new RegExp(v.journal_word, "i").test(t) ? tRaw : null);
+		else src = a ? aRaw : tRaw;
+		if (!src || !plain(src)) return null;
+		// "Journal. Complete Activity 4E Reflection." — the leading label is the heading
+		const lead = new RegExp(v.sentence_lead, "i");
+		const stripped = plain(src).replace(lead, "");
+		const sentence = stripped !== plain(src) && stripped ? stripped : src;
+		return { kind: "sentence", sentence };
+	};
+}
+
+// Node export hook: the browser ignores this (module is undefined);
+// Node scripts require() these classes. Not used by the app.
+if (typeof module !== "undefined") module.exports = { Utils };

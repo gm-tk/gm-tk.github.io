@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PageForge — Writer Template Parser</title>
+    <meta name="description" content="Client-side .docx parser for Writer Template documents. No data is stored or transmitted.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-inner">
+            <div class="header-titles">
+                <div class="title-row">
+                    <h1 class="app-title">PageForge</h1>
+                    <div class="privacy-badge" aria-label="All processing happens in your browser. No data is uploaded or stored.">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm-1 14.5l-4-4 1.41-1.41L11 13.67l5.59-5.59L18 9.5l-7 7z"/>
+                        </svg>
+                        100% Client-Side
+                    </div>
+                </div>
+                <p class="app-subtitle">Writer Template Parser &mdash; Client-Side Only, No Data Stored</p>
+            </div>
+
+            <!-- Top-level mode toggle (header bar, right-aligned): Module Development
+                 (default), Page Stitcher, and the embedded HTML Generator. -->
+            <div id="mode-toggle" class="mode-toggle" role="radiogroup" aria-label="PageForge mode">
+                <span class="mode-toggle-label">Mode</span>
+                <div class="mode-toggle-options">
+                    <input type="radio" name="pageforge-mode" id="mode-option-module"
+                           class="mode-toggle-input sr-only" value="module" checked>
+                    <label for="mode-option-module" class="mode-toggle-btn">Module Development</label>
+                    <input type="radio" name="pageforge-mode" id="mode-option-stitcher"
+                           class="mode-toggle-input sr-only" value="stitcher">
+                    <label for="mode-option-stitcher" class="mode-toggle-btn">Page Stitcher</label>
+                    <input type="radio" name="pageforge-mode" id="mode-option-htmlgen"
+                           class="mode-toggle-input sr-only" value="html-generator">
+                    <label for="mode-option-htmlgen" class="mode-toggle-btn">HTML Generator</label>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Error panel (shared across states) -->
+        <div id="error-panel" class="hidden" role="alert">
+            <span class="error-icon" aria-hidden="true">&#9888;</span>
+            <span id="error-message"></span>
+        </div>
+
+        <!-- Module Development Front Page (default) -->
+        <section id="module-dev-section" aria-label="Module development">
+            <p class="module-dev-intro">
+                Upload a Writer&rsquo;s Template and/or a Media List (<code>.docx</code>).
+                At least one is required.
+            </p>
+            <div class="module-upload-grid">
+
+                <!-- Word documents slot — the Writer's Template and/or the Media
+                     List together (1–2 .docx, auto-classified by content). -->
+                <div class="module-upload-slot">
+                    <div id="module-docx-drop"
+                         class="drop-zone module-drop"
+                         role="button"
+                         tabindex="0"
+                         aria-label="Drop the Writer's Template and/or Media List .docx here or click to browse">
+                        <span class="drop-zone-icon" aria-hidden="true">&#128196;</span>
+                        <p class="drop-zone-title">Drop Writer&rsquo;s Template &amp;/or Media List .docx<br>or click to browse</p>
+                    </div>
+                    <input type="file" id="module-docx-input" accept=".docx" multiple class="sr-only" aria-hidden="true">
+                    <div id="module-docx-info" class="staged-file-info hidden">
+                        <span class="staged-file-icon" aria-hidden="true">&#128196;</span>
+                        <span id="module-docx-name" class="staged-file-name"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <button id="btn-module-activate" class="btn btn-convert" type="button" disabled
+                    aria-label="Activate module development conversion">
+                Convert
+            </button>
+        </section>
+
+        <!-- Module Development Results / Download Screen -->
+        <section id="module-results-section" class="hidden" aria-label="Module development output">
+            <h2 class="module-results-title">Conversion complete</h2>
+            <div id="module-results-list" class="file-list-panel" aria-label="Converted files"></div>
+            <p id="module-results-empty" class="drop-zone-hint hidden">
+                No converted files to download.
+            </p>
+            <div id="module-next-steps" class="next-steps-panel hidden" aria-label="Next steps"></div>
+            <div class="results-actions">
+                <button id="btn-module-back" class="btn" type="button"
+                        aria-label="Back to the upload screen, keeping the files you uploaded">
+                    &#8592; Back
+                </button>
+                <button id="btn-module-reset" class="btn btn-primary" type="button"
+                        aria-label="Convert another module — clears the uploaded files and starts fresh">
+                    Convert another module
+                </button>
+            </div>
+        </section>
+
+        <!-- Page Stitcher (separate mode) -->
+        <section id="stitch-section" class="hidden" aria-label="Page Stitcher">
+            <p class="module-dev-intro">
+                PageForge automatically detects which of the two modes to activate based on the
+                files you upload:
+                <strong>Split-mode module</strong> (for stitching together long single page
+                modules like fundamentals or inquiry): Upload the base homepage and all of its
+                section files to download the unified single-page HTML.
+                <strong>Interactive insertion:</strong> Upload the module pages from the HTML
+                Generator together with the built-interactives file(s) from the Interactives
+                Claude project to download the final HTML files.
+            </p>
+            <div class="module-upload-grid">
+
+                <!-- One container for the base + all section files (auto-classified) -->
+                <div class="module-upload-slot">
+                    <div id="stitch-drop" class="drop-zone module-drop" role="button" tabindex="0"
+                         aria-label="Drop the module .html files here (base + sections, or pages + built interactives) or click to browse. You can drop files more than once — each drop is added to the list.">
+                        <span class="drop-zone-icon" aria-hidden="true">&#129513;</span>
+                        <p class="drop-zone-title">Drop all the module .html files<br>or click to browse</p>
+                        <p class="drop-zone-hint">Files from different folders? Drop them one batch
+                            at a time &mdash; each drop is <strong>added</strong> to the list below.</p>
+                    </div>
+                    <input type="file" id="stitch-input" accept=".html,.htm,.txt" multiple class="sr-only" aria-hidden="true">
+                    <div id="stitch-info" class="staged-file-info hidden">
+                        <span class="staged-file-icon" aria-hidden="true">&#129513;</span>
+                        <span id="stitch-name" class="staged-file-name"></span>
+                    </div>
+                    <ul id="stitch-file-list" class="staged-file-list hidden"
+                        aria-label="Files ready to stitch"></ul>
+                    <button id="btn-stitch-clear" class="btn-link-clear hidden" type="button"
+                            aria-label="Remove every file from the upload list">
+                        Remove all files
+                    </button>
+                </div>
+
+            </div>
+
+            <button id="btn-stitch" class="btn btn-convert" type="button" disabled
+                    aria-label="Stitch the base + section files into one unified page">
+                Stitch
+            </button>
+
+            <div id="stitch-summary" class="next-steps-panel hidden" aria-label="Stitch result"></div>
+        </section>
+
+        <!-- HTML Generator (third mode): the html-converter UI, embedded
+             in an isolated iframe so its engine can never clash with the two V1.5
+             engines. Hidden until the HTML Generator mode is selected. -->
+        <section id="html-generator-section" class="hidden" aria-label="HTML Generator">
+            <p class="module-dev-intro">
+                Convert a Writer&rsquo;s Template (<code>.docx</code>) and its Media List into the
+                finished module HTML.
+            </p>
+            <iframe id="html-generator-frame"
+                    src="html-converter/app/index.html"
+                    title="HTML Generator"
+                    loading="lazy"
+                    style="width:100%; height:80vh; min-height:600px; border:1px solid #d0d0d0; border-radius:8px; background:#ffffff;"></iframe>
+        </section>
+    </main>
+
+    <!-- Toast notification -->
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <!-- Screen reader announcements -->
+    <div id="sr-announcer" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
+
+    <footer class="app-footer">
+        PageForge &mdash; No data is stored, transmitted, or retained.
+    </footer>
+
+    <!-- JSZip via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
+            integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+
+    <!-- Application scripts (order matters) -->
+    <script src="js/omml-to-mathml.js"></script>
+    <script src="js/omml-to-latex.js"></script>
+    <script src="js/docx-parser.js"></script>
+    <script src="js/comment-extractor.js"></script>
+    <script src="js/formatter.js"></script>
+    <script src="js/output-manager.js"></script>
+    <script src="js/toast.js"></script>
+    <script src="js/comment-filter.js"></script>
+    <script src="js/comment-inserter.js"></script>
+    <script src="js/comment-config.js"></script>
+    <script src="js/page-stitcher.js"></script>
+    <script src="js/media-list-converter.js"></script>
+    <script src="js/module-results-page.js"></script>
+    <script src="js/mode-toggle-filename.js"></script>
+    <script src="js/mode-toggle.js"></script>
+    <!-- HTML Generator mode (third mode): self-contained show/hide. It does NOT
+         modify the existing two-mode shell — the Module Development and Page
+         Stitcher behaviour is byte-for-byte unchanged. -->
+    <script src="js/html-generator-mode.js"></script>
+</body>
+</html>

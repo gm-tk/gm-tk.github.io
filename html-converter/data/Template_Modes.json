@@ -1,0 +1,15 @@
+{
+  "_doc": "The TEMPLATE-MODE RESOLVER's data. A module's whole-page template = a BASE layout (standard / fundamentals / inquiry) plus optional MODIFIERS (mathJax / reoTranslate), expressed as the <body class> token order + the body language/translation attrs (+ footer class, passthrough for now). The HUMAN convention: BASE tokens (fundamentals/inquiry) PREPEND before the core 'container-fluid'; MODIFIER tokens (mathJax/reoTranslate) APPEND after it; fundamentals + reoTranslate additionally carry language/translation body attrs. This resolver NORMALISES whatever mode the Style_Anchor_Registry encodes (the registry holds fundamentals/inquiry in the WRONG order 'container-fluid fundamentals'/'container-fluid inquiry' and without the attrs). It does NOT detect NEW modes (crumbs/panels/dual-language pairing). It leaves Standard ('container-fluid') and an already-correct 'container-fluid mathJax' unchanged. Consumed by TemplateModeResolver.Resolve, called from SkeletonBuilder. Env TEMPLATEMODE_OFF (or enabled:false) uses the raw registry body_class with no reorder and no attrs.",
+  "enabled": true,
+  "core_token": "container-fluid",
+  "bases": {
+    "fundamentals": { "body_attrs": { "language": "eng", "translation": "reo" } },
+    "inquiry": {}
+  },
+  "modifiers": {
+    "mathJax": {},
+    "reoTranslate": { "body_attrs": { "language": "reo", "translation": "eng" } }
+  },
+  "_canonical_order": "[base tokens in registry order] + core_token + [unknown tokens in registry order] + [modifier tokens in registry order]. A body class with NO core_token (sentinels 'n/a' / '—' / 'absent', or an empty value) is passed through UNTOUCHED — the resolver never invents a layout.",
+  "_mathjax_deferred": "MathJax is a PER-PAGE modifier (most human mathJax pages sit inside modules whose representative page is plain 'container-fluid' — it is NOT a module-level mode), and it has NO derivable Writers-Template signal: a LaTeX/math marker in the WT does not predict it, and a module's human build may carry mathJax on only one of its pages. A per-group registry fire would therefore OVER-emit. So the resolver PRESERVES whatever mathJax the registry already emits and adds NO new mathJax fires. The real lever would be a per-page math-content signal."
+}

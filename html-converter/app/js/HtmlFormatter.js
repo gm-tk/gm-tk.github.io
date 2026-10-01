@@ -1,0 +1,208 @@
+/**
+ * HtmlFormatter.js
+ * ===========================================================================
+ * WHAT THIS FILE DOES:
+ * Indents a finished HTML page with tabs so the output is debuggable by eye
+ * — matching how the human-developed modules are formatted, and plain good
+ * practice for files developers will hand-edit.
+ *
+ * HOW IT WORKS:
+ * The emitters produce one tag (or one text-bearing element) per line, so
+ * indentation is a line-level walk: a line that CLOSES a block steps the
+ * depth out before printing; a line that OPENS one steps it in after.
+ * Self-contained lines (<p>text</p>), void elements (<img>, <meta>, …),
+ * comments, and the doctype never change depth.
+ *
+ * WHY A SEPARATE FILE:
+ * Pure presentation polish, one concern: string in → string out. It never
+ * parses meaning and never reorders content — a malformed balance simply
+ * clamps at depth 0 rather than throwing mid-conversion.
+ *
+ * BLOCK-LEVEL LINE BREAKING:
+ * The emitters glue structural runs onto one line (an activity open is
+ * `<div class="activity"…><div class="row"><div class="col-12">`; a table row
+ * is `<tr><td>…</td><td>…</td></tr>`). The human build breaks almost every
+ * MIXED div/table-structural glued boundary onto its own line and keeps ONLY
+ * the empty-element one-liners glued (`<div></div>`, `<td></td>`,
+ * `<th></th>`). #breakBlocks therefore splits a ZERO-WHITESPACE `><`
+ * boundary when BOTH tags are in the data list, EXCEPT an open tag immediately
+ * followed by its own close. The inserted character is a newline BETWEEN tags
+ * — never inside a text node — so the page's meaning is unchanged
+ * (normalising `>\s*<` to `><` reproduces the un-split page exactly).
+ * Data: Emit_Templates.formatter.block_line_breaks · env LINEBREAK_OFF.
+ * ===========================================================================
+ */
+
+class HtmlFormatter {
+
+	// elements that never have a closing tag — they must not change depth
+	static #VOID = new Set(["img", "br", "meta", "link", "input", "hr",
+		"source", "wbr", "area", "base", "col", "embed", "track"]);
+
+	// one full tag (open or close, quoted attrs skipped) that is IMMEDIATELY
+	// followed by another tag — the glued `><` boundary #breakBlocks splits
+	static #GLUED = /(<(\/?)([a-zA-Z][\w-]*)(?:"[^"]*"|'[^']*'|[^>"'])*>)(?=<(\/?)([a-zA-Z][\w-]*))/g;
+
+	/**
+	 * The block-tag set to break between, or null when the
+	 * feature is off (data flag disabled, env LINEBREAK_OFF, or no data).
+	 */
+	static #breakSet() {
+		if (typeof process !== "undefined" && process.env && process.env.LINEBREAK_OFF) return null;
+		try {
+			const cfg = DataService.Data.EmitTemplates.formatter?.block_line_breaks;
+			if (!cfg || !cfg.enabled || !Array.isArray(cfg.tags)) return null;
+			return new Set(cfg.tags);
+		} catch (e) { return null; }
+	};
+
+	/**
+	 * KB constraint 83: strips loading="lazy" from every
+	 * <img> that sits INSIDE a moving-or-draggable interactive (data host_classes:
+	 * banner, carousel, drag-and-drop, click-drop + its content panel, flip card,
+	 * memory game, sketcher). A whole-document, void-aware tag walk: an open
+	 * element pushes (with the host class it carries, if any), a close tag pops
+	 * to its match, and an <img> met while any stacked ancestor is a host loses
+	 * the attribute. Images outside a host keep it.
+	 * Returns the html unchanged when off (data flag, env LAZYHOST_OFF, no data).
+	 */
+	static #lazyFreeHosts(html) {
+		if (typeof process !== "undefined" && process.env && process.env.LAZYHOST_OFF) return html;
+		let cfg;
+		try { cfg = DataService.Data.EmitTemplates.formatter?.lazy_free_hosts; } catch (e) { return html; }
+		if (!cfg || !cfg.enabled || !Array.isArray(cfg.host_classes) || !cfg.host_classes.length) return html;
+		if (cfg.env && typeof process !== "undefined" && process.env && process.env[cfg.env]) return html;
+		const hosts = new Set(cfg.host_classes);
+		const attr = cfg.attribute ?? 'loading="lazy"';
+		const tagRe = /<(\/?)([a-zA-Z][\w-]*)((?:"[^"]*"|'[^']*'|[^>"'])*)>/g;
+		const stack = [];   // [tagName, isHost]
+		let out = "", last = 0, inHost = 0, m;
+		while ((m = tagRe.exec(html)) !== null) {
+			const closing = m[1] === "/", name = m[2].toLowerCase(), attrs = m[3];
+			if (closing) {
+				for (let i = stack.length - 1; i >= 0; i--) {
+					if (stack[i][0] === name) {
+						for (let k = stack.length - 1; k >= i; k--) if (stack[k][1]) inHost--;
+						stack.length = i; break;
+					}
+				}
+				continue;
+			}
+			if (name === "img") {
+				if (inHost > 0 && attrs.includes(attr)) {
+					out += html.slice(last, m.index) + m[0].replace(new RegExp("\\s*" + attr.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), "");
+					last = m.index + m[0].length;
+				}
+				continue;
+			}
+			if (HtmlFormatter.#VOID.has(name) || /\/\s*$/.test(attrs)) continue;   // a void never opens
+			const cm = /\bclass="([^"]*)"/.exec(attrs);
+			const isHost = !!cm && cm[1].split(/\s+/).some((c) => hosts.has(c));
+			stack.push([name, isHost]);
+			if (isHost) inHost++;
+		}
+		return last ? out + html.slice(last) : html;
+	};
+
+	/**
+	 * KB constraint 28: the XHTML void pass, or null
+	 * when off (data flag disabled, env XHTMLVOID_OFF, or no data). Returns
+	 * { doctype, re, close }: `re` matches one void open tag attribute-aware (a
+	 * quoted value may hold '>' or '/'), capturing the name and the attribute
+	 * run WITHOUT any trailing whitespace or slash, so the tail can be rewritten
+	 * to `close` (" />") whatever form it arrived in — `<img a="b">`, `<img a="b"/>`
+	 * and `<img a="b" />` all become `<img a="b" />` (idempotent).
+	 */
+	static #voidPass() {
+		if (typeof process !== "undefined" && process.env && process.env.XHTMLVOID_OFF) return null;
+		try {
+			const cfg = DataService.Data.EmitTemplates.formatter?.xhtml_voids;
+			if (!cfg || !cfg.enabled || !Array.isArray(cfg.void_tags) || !cfg.void_tags.length) return null;
+			if (cfg.env && typeof process !== "undefined" && process.env && process.env[cfg.env]) return null;
+			const names = cfg.void_tags.map((t) => String(t).toLowerCase()).join("|");
+			// name, then the attribute run: quoted values or any non-quote non-'>'
+			// character, ending BEFORE optional whitespace + optional '/' + '>'
+			const re = new RegExp("<(" + names + ")(?=[\\s/>])((?:\"[^\"]*\"|'[^']*'|[^>\"'/]|/(?!\\s*>))*?)\\s*/?>", "gi");
+			return { doctype: cfg.doctype ?? null, re, close: cfg.close ?? " />" };
+		} catch (e) { return null; }
+	};
+
+	/**
+	 * Applies the void pass to one line — the doctype line is
+	 * rewritten whole (case-insensitive match on `<!doctype html>`), every
+	 * void open tag gets the `close` tail.
+	 */
+	static #xhtmlVoids(line, vp) {
+		if (vp.doctype && /^<!doctype\s+html\s*>$/i.test(line)) return vp.doctype;
+		return line.replace(vp.re, (whole, name, attrs) => "<" + name + attrs.replace(/\s+$/, "") + vp.close);
+	};
+
+	/**
+	 * Splits glued block-tag boundaries in one emitter line.
+	 * A boundary qualifies when BOTH tags are in `set`; an OPEN tag glued to
+	 * its OWN close (`<div></div>`, `<td></td>`) stays a one-liner — the
+	 * human build's empty-element convention.
+	 */
+	static #breakBlocks(line, set) {
+		return line.replace(HtmlFormatter.#GLUED, (whole, tag, lClose, lName, rClose, rName) => {
+			const l = lName.toLowerCase(), r = rName.toLowerCase();
+			if (!set.has(l) || !set.has(r)) return whole;          // outside the block set
+			if (lClose === "" && rClose === "/" && l === r) return whole; // empty element
+			return tag + "\n";
+		});
+	};
+
+	/**
+	 * Re-indents an HTML document with tabs.
+	 *
+	 * USAGE: HtmlFormatter.Indent(html) → indented html
+	 *
+	 * @param {string} html - emitter output (one element per line)
+	 * @returns {string} tab-indented document
+	 */
+	static Indent(html) {
+		const out = [];
+		let depth = 0;
+
+		// break glued block-tag runs onto their own lines
+		// BEFORE the depth walk, so each new line indents like the human build's.
+		const breakSet = HtmlFormatter.#breakSet();
+		if (breakSet) {
+			html = html.split("\n")
+				.map((l) => HtmlFormatter.#breakBlocks(l, breakSet))
+				.join("\n");
+		}
+
+		// KB constraint 83: no loading="lazy" inside a moving interactive —
+		// a whole-document walk, before the per-line passes (see #lazyFreeHosts).
+		html = HtmlFormatter.#lazyFreeHosts(html);
+
+		// KB constraint 28: lowercase doctype + XHTML self-closing voids,
+		// applied per line after the block breaking so every void tag is seen once.
+		const vp = HtmlFormatter.#voidPass();
+
+		for (const raw of html.split("\n")) {
+			let line = raw.trim();
+			if (!line) continue;   // emitter blank lines carry no meaning
+			if (vp) line = HtmlFormatter.#xhtmlVoids(line, vp);
+
+			const opens = [...line.matchAll(/<([a-zA-Z][\w-]*)(?=[\s>])/g)]
+				.map((m) => m[1].toLowerCase())
+				.filter((t) => !HtmlFormatter.#VOID.has(t));
+			const closes = [...line.matchAll(/<\/([a-zA-Z][\w-]*)>/g)].length;
+
+			// net depth change AFTER this line; a pure-closing line outdents
+			// BEFORE printing so the close aligns with its opener
+			const net = opens.length - closes;
+			if (net < 0) depth = Math.max(0, depth + net);
+
+			out.push("\t".repeat(depth) + line);
+
+			if (net > 0) depth += net;
+		}
+		return out.join("\n");
+	};
+}
+
+// Node export hook; browsers ignore it.
+if (typeof module !== "undefined") module.exports = { HtmlFormatter };

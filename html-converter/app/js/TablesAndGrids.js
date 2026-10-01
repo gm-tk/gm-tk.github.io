@@ -1,0 +1,526 @@
+/**
+ * TablesAndGrids.js
+ * ===========================================================================
+ * WHAT THIS FILE DOES:
+ * The TABLE and GRID rendering primitives, split out of ContentConverter
+ * (the main content-emitting class) into their own file to keep that file's
+ * size manageable. Six statics:
+ *
+ *   - contentTable(block, run, insidePlaceholder, norm)  THE table emitter — a
+ *         writer table -> the kept <table> HTML (header/data rows, with
+ *         structural cell-tag inline rendering), after first offering the
+ *         layout-grid path below
+ *   - renderCellInline(cell, run, isHeader, norm)  a structural [tag] inside a
+ *         KEPT data-table cell, rendered inline with its marker stripped
+ *         (CELLTAG_OFF)
+ *   - layoutTableGrid(rows, run, insidePlaceholder, norm)  a LAYOUT table of
+ *         tagged mini-document cells -> the recursive row>col grid
+ *         (LTABLE_OFF; carries a multi-row all-cells-tagged guard)
+ *   - cellParts(cell)  split one cell into its "/"-separated parts
+ *   - renderCellParts(cell, run, norm)  render a grid cell's parts as body
+ *         elements (headings / images / grouped black text)
+ *   - cellImage(text, run)  an image reference inside a cell -> the Mode-P/D
+ *         placeholder markup (iStock id -> asset filename)
+ *
+ * WHY SEPARATE FILE:
+ * These six methods were natural candidates for their own file because none
+ * of them depend on ContentConverter's own internal state (its private
+ * instance fields) — they only need DataService.Data (the shared global data
+ * store, same as everywhere else in the app) plus one extra piece of
+ * information the caller must supply explicitly: `norm`, the tag-normaliser
+ * instance. `norm` is threaded through as the LAST parameter of every method
+ * that needs it (three readers, plus contentTable, which simply passes it
+ * through to layoutTableGrid/renderCellInline). Being self-contained like
+ * this means they can live here without any awkward back-references into
+ * ContentConverter.
+ *
+ * WHEN TO WORK HERE:
+ * Any change to how a KEPT <table> is rendered, how a layout table becomes a
+ * row/col grid, or how an in-cell image resolves to its placeholder markup.
+ * Env toggles LTABLE_OFF and CELLTAG_OFF (both explained inline below) let
+ * either behaviour be reverted for A/B comparison without a code change.
+ * ===========================================================================
+ */
+
+class TablesAndGrids {
+
+	/**
+	 * THE table emitter: turns one writer-authored table block into either a
+	 * kept <table> element (the normal case) or, when the table turns out to
+	 * actually be a side-by-side LAYOUT rather than real tabular data, a
+	 * row>col grid instead (see layoutTableGrid below).
+	 *
+	 * HOW: first offers the whole table to layoutTableGrid, which decides
+	 * whether this is really a layout table in disguise; if it declines
+	 * (returns null), falls through to the normal <table> rendering path,
+	 * cell by cell.
+	 *
+	 * @param {Object} block - the table content block, e.g.
+	 *        { rows: [ ["Header A", "Header B"], ["cell 1", "cell 2"] ] }
+	 * @param {ConversionRun} run - the current conversion run (image mode, etc.)
+	 * @param {boolean} [insidePlaceholder] - true when this table sits inside
+	 *        an un-built interactive-widget placeholder box, where the raw
+	 *        writer [tag] text must be shown as-is (a developer reference)
+	 *        rather than cleaned up
+	 * @param {TagNormaliser} norm - resolves a bracketed [tag] to its
+	 *        canonical name; needed to detect structural tags inside cells
+	 * @returns {string} the rendered <table> (or row>col grid) HTML
+	 */
+	static contentTable(block, run, insidePlaceholder = false, norm) {
+		const t = DataService.Data.EmitTemplates.elements.table;
+		const rows = block.rows ?? [];
+
+		// LAYOUT-TABLE -> GRID. A FREE-BODY content table whose cells each embed a
+		// tagged mini-document ([H3]+[Image]+[Body]+list, "/"-separated parts) is really a
+		// side-by-side LAYOUT that should render as a row>col grid, not as a genuine data
+		// table. Render each cell's parts back through the element renderer. Conservative:
+		// SINGLE-ROW only (a 1-row table is never an MCQ/comparison DATA table);
+		// placeholder/widget tables stay raw (insidePlaceholder); a widget-member tag in
+		// any cell bails out of the grid path (a mis-captured flipCard/carousel stays raw).
+		// Data flag: body_region.layout_table_grid. Env toggle: LTABLE_OFF (disables the
+		// grid conversion, so a layout table renders as a plain <table> instead).
+		// The table block's own hyperlinks travel down
+		// both cell paths (grid + kept-table), so a title-anchored image cell can
+		// resolve its URL exactly like its free-body counterpart (see cellImage below).
+		const links = block.links ?? null;
+		const grid = this.layoutTableGrid(rows, run, insidePlaceholder, norm, links);
+		if (grid) return grid;
+
+		// KB 05D: every content table carries the KB class form —
+		// `table table-bordered` by default; a two-column COMPARISON table (every row exactly
+		// two cells AND a header pair from the contrast lexicon) takes `table tableFixed` when
+		// kb_class_form.comparison is enabled. The wrapper and the th header rule are unchanged.
+		// Data flag: elements.table.kb_class_form. Env toggle: TBLBORDER_OFF (bare `table`).
+		const cf = t.kb_class_form;
+		const cfOn = !!cf && cf.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[cf.env ?? "TBLBORDER_OFF"]);
+		let open = t.open;
+		if (cfOn) {
+			let cls = cf.default_class || "table table-bordered";
+			const cmp = cf.comparison;
+			// the comparison form has its own env (comparison.env = TBLCOMPARE_OFF)
+			const cmpOn = cmp && cmp.enabled === true && !(typeof process !== "undefined" && process.env && process.env[cmp.env || "TBLCOMPARE_OFF"]);
+			if (cmpOn && Array.isArray(cmp.lexicon) && rows.length && rows.every((cells) => cells.length === 2)) {
+				const fold = (c) => Utils.Fold(String(c ?? "").replace(/<[^>]+>/g, "").replace(/\[[^\]]*\]/g, "").replace(/\*/g, "")).replace(/[^\p{L}' ]+/gu, " ").trim();
+				const [a, b] = rows[0].map(fold);
+				// a WHOLE-WORD match (plural 's' allowed), so "do" does not match "don't touch" (XTAS102)
+				const w = (h, x) => h === x || h.startsWith(x + " ") || h === x + "s" || h.startsWith(x + "s ");
+				if (cmp.lexicon.some(([x, y]) => (w(a, x) && w(b, y)) || (w(a, y) && w(b, x)))) cls = cmp.class || "table tableFixed";
+			}
+			open = open.replace(/<table class="table">/, `<table class="${cls}">`);
+		}
+		const html = [open];
+		// The first row is the header row (<th>, KB 05D's column-label form) UNLESS one of its
+		// cells runs to first_row_header.data_row_min_words words — a sentence is not a label, and the human
+		// build treats such a row as data (every shorter row stays th). The word
+		// count strips the red-run markers and the ** / __ emphasis. Env TBLHEADLONG_OFF = every first row th.
+		const frh = t.first_row_header;
+		const frhOn = !!frh && frh.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[frh.env ?? "TBLHEADLONG_OFF"]);
+		// The VISIBLE words: the red-run markers, then any bracketed [tag] / [hover: definition] marker, then the ** / __
+		// emphasis are stripped before counting (ENGJ403's one-column heading row carries two hover definitions inside
+		// its brackets — seven visible words). A first row whose every non-empty cell is WHOLLY bold is the writer's own
+		// header cue and stays th whatever its length (gold th 0.86 on the matched bold rows).
+		const plainOf = (c) => String(c ?? "").replace(/\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu, " ").trim();
+		const wordsOf = (c) => plainOf(c).replace(/\[[^\]]*\]?/g, " ").replace(/\*\*|__/g, " ").trim().split(/\s+/).filter(Boolean).length;
+		const wholeBold = (c) => /^(?:\*\*|__)[\s\S]*(?:\*\*|__)$/.test(plainOf(c));
+		// FREE-BODY tables only: a table inside an un-built widget's hand-off dump keeps its raw first-row form
+		// (the placeholder containment — a developer reference, not page content).
+		const firstIsHeader = insidePlaceholder || !frhOn || !rows.length
+			|| rows[0].filter((c) => plainOf(c)).every((c) => wholeBold(c)) && rows[0].some((c) => plainOf(c))
+			|| !rows[0].some((c) => wordsOf(c) >= (frh.data_row_min_words ?? 9));
+		rows.forEach((cells, r) => {
+			const isHdr = r === 0 && firstIsHeader;
+			const cellTpl = isHdr ? t.header_cell : t.cell;
+			html.push(t.row_open
+				+ cells.map((c) => {
+					// CELL-TAG rendering: a structural [tag] inside a KEPT free-body table cell
+					// is rendered INLINE (its marker stripped) instead of leaking literally into
+					// the page. FREE-BODY ONLY (insidePlaceholder=false) — a table INSIDE an
+					// un-built interactive-widget placeholder shows the raw WT [tag] data BY
+					// DESIGN (a developer reference), so its markers must NOT be stripped there.
+					// Returns null when the cell doesn't match this case, so the caller falls
+					// through to the plain-text rendering below.
+					const inline = insidePlaceholder ? null : this.renderCellInline(c, run, isHdr, norm, links);
+					// A FREE-BODY cell renderCellInline declines whose ' / '-joined lines include a '• '
+					// bullet renders through the body's own paragraph + list machinery (a lead line → <p>, a bullet
+					// run → <ul><li>) instead of the raw joined string. Data elements.table.cell_bullets; env TBLCELLLIST_OFF.
+					const blOn = !insidePlaceholder && inline === null && !!t.cell_bullets && t.cell_bullets.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[t.cell_bullets.env ?? "TBLCELLLIST_OFF"]);
+					const blParts = blOn ? this.cellParts(c) : [];
+					const blHit = blParts.some((p) => /^•\s*\S/.test(p));
+					const content = blHit ? ListsAndRuns.renderBlackText(blParts.join("\n"), run, Array.isArray(links) ? links : [], true).join("")
+						: inline !== null ? inline
+						// red spans inside table cells: keep their text visible,
+						// marked — they are usually interactive data labels
+						: ListsAndRuns.inlineMarkup(c.replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, ""),
+							insidePlaceholder ? [] : this.cellLinks(links), !insidePlaceholder);   // only weave hover/definition markers (and the cell's own hyperlinks) into a FREE-BODY cell, never a placeholder dump
+					// A HEADER CELL IS PLAIN: the human's <th> is almost never wholly bold (KB 05D's
+					// <tr><th>Header 1</th> form), while a writer-bold header row would render <th><b>…</b></th>.
+					// A header cell whose rendered content is exactly ONE <b>/<strong> span
+					// (no other bold inside) drops the wrapper; <td> cells keep theirs. Free-body only.
+					// Data elements.table.header_cell_plain; env THPLAIN_OFF (keeps the bold wrapper).
+					let _cell = content;
+					const _thp = t.header_cell_plain;
+					if (isHdr && !insidePlaceholder && _thp && _thp.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[_thp.env ?? "THPLAIN_OFF"])) {
+						const _m = String(_cell).match(/^\s*<(b|strong)>([\s\S]*)<\/\1>\s*$/);
+						if (_m && !/<\/?(?:b|strong)\b/.test(_m[2])) _cell = _m[2];
+					}
+					return Utils.FillTemplate(cellTpl, { content: _cell });
+				}).join("")
+				+ t.row_close);
+		});
+		html.push(t.close);
+		return html.join("\n");
+	};
+
+	/**
+	 * DATA-TABLE CELL-TAG rendering. A structural [tag] inside a cell of a KEPT
+	 * <table> (one that layoutTableGrid decided NOT to turn into a grid) is
+	 * rendered INLINE — with its bracket marker stripped out — instead of
+	 * leaking into the page as literal "[H2] Some text" text. Matches the
+	 * reference developer's own rendering convention:
+	 *   • [H1-6] / [Body, bold] text -> <b>text</b> in a DATA cell (<td>); PLAIN
+	 *     text in a HEADER cell (<th> — already bold by default in the site's
+	 *     CSS, so no extra <b> is needed there). For example, a matrix table's
+	 *     [H2]-tagged first-column label becomes <td><b>Organisation</b></td>,
+	 *     while that same tag used as an actual column header becomes plain
+	 *     <th>Executive function skill</th>; a [Body, bold] cell whose text is
+	 *     already wrapped in **asterisks** becomes <th><b>Line</b></th> (the
+	 *     ** markdown itself supplies the bold).
+	 *   • [Body] / [Text] / [list] text -> just the text (no bold).
+	 *   • an image-only cell -> the in-cell <img> (via cellImage). A cell that
+	 *     carries BOTH a text label AND a decorative [Image] renders only the
+	 *     label and drops the image.
+	 * SCOPE = STRUCTURAL tags only (an explicit allow-list in the data file). A
+	 * cell whose LEADING tag is actually a widget-member tag (e.g. [front],
+	 * [Card N], [Item N], [Tab N]) or a non-tag bracket (like "[tick]", or
+	 * ordinary bracketed prose) is LEFT COMPLETELY ALONE — this method returns
+	 * null, and the caller then renders the cell's literal text unchanged — so
+	 * a genuine data table whose cells happen to contain bracketed prose can
+	 * never be mis-rendered by this rule. Does NOT touch layoutTableGrid's own
+	 * keep-vs-grid decision (that runs first, separately).
+	 *
+	 * @param {string} cell - the raw cell text (may contain a leading [tag])
+	 * @param {ConversionRun} run - the current conversion run
+	 * @param {boolean} isHeader - true when this cell is in the table's first
+	 *        (header) row — controls the bold/plain distinction above
+	 * @param {TagNormaliser} norm - resolves a bracketed [tag] to its canonical name
+	 * @returns {string|null} the cell's inner HTML, or null when this cell
+	 *        isn't a case this method handles (the caller should fall back to
+	 *        its own literal-text rendering)
+	 * Data flag: body_region.data_table_cell_tags.
+	 * Env toggle: CELLTAG_OFF (disables this whole method, so every structural
+	 * tag in a data-table cell leaks as literal bracketed text instead).
+	 */
+	static renderCellInline(cell, run, isHeader, norm, links = null) {
+		const cfg = DataService.Data.EmitTemplates.body_region?.data_table_cell_tags;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.CELLTAG_OFF) return null;
+		const parts = this.cellParts(cell);
+		if (!parts.length) return null;
+		const struct = new Set(cfg.structural_tags);
+		const headingRe = new RegExp(cfg.heading_pattern ?? "^(?:h[1-6]|heading|activity heading)$");
+		const canonOf = (bracket) => {
+			try { return norm.Parse(`[${bracket}]`)?.primary?.tag ?? null; } catch { return null; }
+		};
+		// ACTIVATE only when the LEADING part is a structural [tag] (the allow-list).
+		const lead = parts[0].match(/^\[([^\]]+)\]/);
+		const leadCanon = lead ? canonOf(lead[1]) : null;
+		if (!leadCanon || !struct.has(leadCanon)) return null;
+
+		const labelSegs = [];   // { bold, text }
+		const images = [];      // raw text for #cellImage
+		for (const part of parts) {
+			const m = part.match(/^\[([^\]]+)\]\s*([\s\S]*)$/);
+			const bracket = m ? m[1] : "";
+			const rest = m ? m[2] : part;
+			const canon = m ? canonOf(bracket) : null;
+			if (canon && headingRe.test(canon)) {
+				labelSegs.push({ bold: true, text: (rest.trim() || norm.RenderText(part) || "") });
+			} else if (canon === "body" || canon === "list") {
+				labelSegs.push({ bold: /\bbold\b/i.test(bracket), text: rest });
+			} else if (canon === "image") {
+				images.push(rest || part);
+			} else if (canon && struct.has(canon)) {
+				labelSegs.push({ bold: false, text: rest });
+			} else if (!canon && /^https?:\/\/\S+$/.test(part.trim())) {
+				images.push(part);   // a bare-URL continuation → image adjunct (dropped when a label exists)
+			} else {
+				labelSegs.push({ bold: false, text: part });   // plain continuation text
+			}
+		}
+
+		const labels = labelSegs.filter((s) => String(s.text).trim() !== "");
+		if (labels.length) {
+			// a TEXT label is present → render it; decorative [Image] parts are DROPPED.
+			return labels.map((s) => {
+				let inner = ListsAndRuns.inlineMarkup(String(s.text).trim(), this.cellLinks(links));   // the cell's own hyperlinks
+				const wantBold = s.bold && !isHeader && (cfg.bold_in_data_cells_only !== false);
+				if (wantBold && !/^<(?:b|strong)>[\s\S]*<\/(?:b|strong)>$/.test(inner)) inner = `<b>${inner}</b>`;
+				return inner;
+			}).join(cfg.label_join ?? " ");
+		}
+		// image-only cell → render the in-cell image(s)
+		const out = images.map((tx) => this.cellImage(tx, run, links).join("")).filter(Boolean);
+		return out.length ? out.join("") : null;
+	};
+
+	/**
+	 * LAYOUT-TABLE -> GRID. Some writer tables aren't really tabular DATA at
+	 * all — they're being used as a quick way to lay two or three things out
+	 * side by side (e.g. an image next to a paragraph, in a single-row
+	 * table). The reference developer renders those as a row>col grid of
+	 * normal body elements, not as an actual <table>. This method detects
+	 * that shape and, when it matches, BUILDS the grid HTML; otherwise it
+	 * returns null and the caller renders a normal <table> instead.
+	 *
+	 * WHAT COUNTS AS A "LAYOUT" TABLE: every non-empty cell needs to open
+	 * with a recognised structural [tag] (see the DETECT step below) — a
+	 * genuine data table's cells are just plain data, with no tags.
+	 *
+	 * @param {Array<Array<string>>} rows - the table's cells, row by row, e.g.
+	 *        [ ["[Image] https://...", "[Body] Some descriptive text"] ]
+	 * @param {ConversionRun} run - the current conversion run
+	 * @param {boolean} insidePlaceholder - true when this table sits inside an
+	 *        un-built interactive-widget placeholder; layout conversion is
+	 *        skipped there (the raw tag text must show through unchanged)
+	 * @param {TagNormaliser} norm - resolves a bracketed [tag] to its canonical name
+	 * @returns {string|null} the row>col grid HTML, or null when `rows` isn't
+	 *        recognised as a layout table (the caller should render a plain
+	 *        <table> instead)
+	 * See Emit_Templates.body_region.layout_table_grid for the full data
+	 * shape. Env toggle: LTABLE_OFF (disables this method entirely, so every
+	 * table — layout or data — renders as a plain <table>).
+	 */
+	static layoutTableGrid(rows, run, insidePlaceholder, norm, links = null) {
+		const cfg = DataService.Data.EmitTemplates.body_region?.layout_table_grid;
+		if (!cfg || cfg.enabled === false || insidePlaceholder || !rows?.length) return null;
+		if (typeof process !== "undefined" && process.env && process.env.LTABLE_OFF) return null;
+		// DETECT: structural [tag] cells; a widget-member tag bails (mis-captured widget → raw);
+		// track whether EVERY non-empty cell is a tagged mini-document (the clean-panel signal).
+		const struct = new Set(cfg.structural_tags);
+		let hasStruct = false, allTagged = true;
+		for (const r of rows) {
+			for (const cell of (r || [])) {
+				if (!String(cell ?? "").trim()) continue;   // empty cells don't disqualify
+				let cellTagged = false;
+				for (const part of this.cellParts(cell)) {
+					const m = part.match(/^\[([^\]]+)\]/);
+					if (!m) continue;
+					let canon = null;
+					try { canon = norm.Parse(`[${m[1]}]`)?.primary?.tag ?? null; } catch { canon = null; }
+					if (!canon) continue;
+					if (norm.GetWidgetTypes(canon).length) return null;   // mis-captured widget → raw
+					if (struct.has(canon)) { hasStruct = true; cellTagged = true; }
+				}
+				if (!cellTagged) allTagged = false;
+			}
+		}
+		if (!hasStruct) return null;
+		// MULTI-ROW GUARD: a 1-row table is always treated as a side-by-side panel set (see
+		// above). A MULTI-ROW table, on the other hand, is only converted to a grid when
+		// EVERY non-empty cell is itself a tagged mini-document — the "clean panel" case,
+		// e.g. a grid of food-item cards, each cell fully tagged with its own heading/image/body.
+		// A multi-row table with ANY plain, untagged cell is instead a genuine DATA table (for
+		// example, a tagged header row sitting above plain data rows, or a tagged first-column
+		// label next to plain data columns) and MUST stay a real <table> so its tabular
+		// structure is preserved. Data flag: layout_table_grid.multi_row_requires_all_cells_tagged.
+		if (rows.length !== 1 && (cfg.multi_row_requires_all_cells_tagged ?? true) && !allTagged) return null;
+		// BUILD: each row → a div.row; each non-empty cell → a col rendered from its parts.
+		const out = [];
+		for (const r of rows) {
+			const cells = (r || []).filter((c) => String(c ?? "").trim() !== "");
+			if (!cells.length) continue;
+			const colClass = cfg.col_class_by_count?.[String(cells.length)] || cfg.col_class_default;
+			const cols = cells.map((c) => {
+				const inner = this.renderCellParts(c, run, norm, links).filter(Boolean);
+				return `${cfg.col_open.replace("{colClass}", colClass)}\n${inner.join("\n")}\n${cfg.col_close}`;
+			});
+			out.push(`${cfg.row_open}\n${cols.join("\n")}\n${cfg.row_close}`);
+		}
+		return out.length ? out.join("\n") : null;
+	};
+
+	/**
+	 * Splits a table cell into its "/"-separated parts, with any red-span
+	 * marker wrappers stripped out first. Writers combine several tagged
+	 * mini-elements inside one cell by separating them with " / ", e.g. a
+	 * cell reading "[H3] Wheels / [Image] https://... / [Body] Some text"
+	 * splits into three parts: "[H3] Wheels", "[Image] https://...", and
+	 * "[Body] Some text". Empty parts are dropped.
+	 *
+	 * @param {string} cell - the raw cell text
+	 * @returns {string[]} the trimmed, non-empty "/"-separated parts
+	 */
+	/**
+	 * THE WRITER'S HYPERLINK IN A TABLE CELL. The free body weaves a
+	 * Writers-Template hyperlink onto its phrase (ListsAndRuns.inlineMarkup's `links`, the hyperlink_weave rule), and a
+	 * free-body table cell does the same with the table block's own links, so `Email __help@netsafe.org.nz__`
+	 * (mailto) or `__www.youthline.co.nz__` keeps its link as the human build does. Returns the links to weave, or [] when
+	 * the rule is off. Callers only use it for FREE-BODY
+	 * cells (a hand-off box's raw table dump stays untouched). Data elements.hyperlink_weave.table_cells; env CELLLINKWEAVE_OFF.
+	 *
+	 * @param {Array<Object>|null} links - the table block's hyperlinks [{text, target}]
+	 * @returns {Array<Object>} the links to weave (possibly empty)
+	 */
+	static cellLinks(links) {
+		const c = DataService.Data.EmitTemplates.elements?.hyperlink_weave?.table_cells;
+		if (!c || c.enabled === false || !Array.isArray(links) || !links.length) return [];
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "CELLLINKWEAVE_OFF"]) return [];
+		// only a link whose VISIBLE text is itself a web / email address (the block's list also carries image, file and video
+		// asset references and phrases that recur elsewhere in the table — data anchor_pattern, explained in its note)
+		if (!c.anchor_pattern) return links;
+		const re = new RegExp(c.anchor_pattern, "i");
+		// an anchor that ends in a file extension (`Tukutuku.jpg`) is a file
+		// name, not an address — data exclude_pattern
+		const ex = c.exclude_pattern ? new RegExp(c.exclude_pattern, "i") : null;
+		return links.filter((l) => { const t = String(l?.text ?? "").trim(); return re.test(t) && !(ex && ex.test(t)); });
+	};
+
+	static cellParts(cell) {
+		return String(cell ?? "")
+			.replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "")
+			.split(/\s+\/\s+/).map((p) => p.trim()).filter(Boolean);
+	};
+
+	/**
+	 * Renders one layout-table cell as a sequence of body elements: each
+	 * "/"-separated [tag] part (see cellParts above) is dispatched exactly
+	 * like a free-standing body element would be —
+	 *   - a heading tag becomes <hN> (the writer's own heading digit, shifted
+	 *     by the standard body_shift amount; the page-wide heading
+	 *     re-leveller normalises it further afterwards)
+	 *   - an [image] tag goes through the image emitter (cellImage)
+	 *   - body/list/bullet/plain text goes through
+	 *     ListsAndRuns.renderBlackText, so consecutive "• " bullet parts
+	 *     group together into one <ul> instead of becoming separate
+	 *     paragraphs
+	 * Stray divider tokens a writer sometimes leaves between parts (a bare
+	 * "=" or an em dash "—" with nothing else on it) are skipped entirely.
+	 *
+	 * @param {string} cell - the raw cell text
+	 * @param {ConversionRun} run - the current conversion run
+	 * @param {TagNormaliser} norm - resolves a bracketed [tag] to its canonical name
+	 * @returns {string[]} the rendered HTML for each element found in the cell
+	 */
+	static renderCellParts(cell, run, norm, links = null) {
+		const tpl = DataService.Data.EmitTemplates;
+		const skipRe = new RegExp(tpl.body_region.layout_table_grid.skip_part_pattern ?? "^[=\\s]*$");
+		const out = [];
+		let buf = [];
+		// the cell's text and headings weave the table block's own hyperlinks (see cellLinks)
+		const cl = this.cellLinks(links);
+		const flush = () => { if (buf.length) { out.push(...ListsAndRuns.renderBlackText(buf.join("\n"), run, cl)); buf = []; } };
+		// THE RED NOTE IN A LAYOUT CELL. cellParts strips the red markers, so a
+		// part the writer typed wholly in RED with no [tag] of its own — a note to the developer beside the picture ("please
+		// add eyes, mouth and license plate", "[Image like this – kombi van parked in Auckland", ENGS202) — would render as a
+		// learner paragraph. Such a part renders as the writer's red note instead, the free body's own form
+		// (NotesAndComments.redFlag kind "cs"). The raw cell is split the same way; any mismatch keeps the plain rendering.
+		// Data body_region.layout_table_grid.red_part_note; env CELLREDNOTE_OFF (and TABLEHOVER_OFF, the master toggle).
+		const rpn = tpl.body_region.layout_table_grid.red_part_note;
+		const rpnOn = rpn && rpn.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && (process.env[rpn.env ?? "CELLREDNOTE_OFF"] || process.env.TABLEHOVER_OFF));
+		const parts = this.cellParts(cell);
+		let redOnly = null;
+		if (rpnOn) {
+			const raw = String(cell ?? "").split(/\s+\/\s+/).map((p) => p.trim()).filter((p) =>
+				p.replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "").trim());
+			if (raw.length === parts.length) {
+				redOnly = raw.map((p) => /\u{1f534}\[RED TEXT\]/u.test(p)
+					&& !p.replace(/\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu, "").trim());
+			}
+		}
+		parts.forEach((part, pi) => {
+			const m = part.match(/^\[([^\]]+)\]\s*([\s\S]*)$/);
+			let canon = null, rest = part;
+			if (m) {
+				try { canon = norm.Parse(`[${m[1]}]`)?.primary?.tag ?? null; } catch { canon = null; }
+				rest = m[2];
+			}
+			if (!canon && redOnly && redOnly[pi] && /\p{L}/u.test(part)) {
+				flush();
+				out.push(NotesAndComments.redFlag(part.trim(), run, "cs"));
+				return;
+			}
+			if (canon && /^(?:h[1-5]|heading|activity heading)$/.test(canon)) {
+				flush();
+				const digit = /^h\d$/.test(canon) ? parseInt(canon[1], 10) : 2;
+				const shifted = Math.min(Math.max(digit + tpl.elements.heading.logical_to_element.body_shift, 2), 5);
+				const text = (rest.trim() || norm.RenderText(part) || "").replace(/\*/g, "").trim();
+				if (text) out.push(`<h${shifted}>${ListsAndRuns.inlineMarkup(text, cl)}</h${shifted}>`);
+			} else if (canon === "image") {
+				flush();
+				out.push(...this.cellImage(rest, run, links));
+			} else {
+				const content = canon ? rest : part;
+				if (content.trim() && !skipRe.test(content.trim())) buf.push(content);
+			}
+		});
+		flush();
+		return out;
+	};
+
+	/**
+	 * Renders an image reference found inside a layout-table cell. The cell
+	 * text is typically a pasted asset reference such as
+	 * "iStock. https://www.istockphoto.com/photo/...-gm1234567890-...jpg" —
+	 * that whole description is the asset REFERENCE the writer pasted in, not
+	 * text meant for the learner to read, so it is consumed here and never
+	 * shown as visible page text. When the URL contains a recognisable iStock
+	 * id, the filename is derived from it; otherwise a filename is slugified
+	 * from whatever descriptive text remains. See MediaBuilder.image for the
+	 * same Mode P (visible placeholder) / Mode D (direct image) split applied
+	 * to a normal, free-body [image] tag.
+	 *
+	 * @param {string} text - the cell's raw text (expected to contain a URL)
+	 * @param {ConversionRun} run - the current conversion run (drives imageMode)
+	 * @returns {string[]} one or two HTML fragments — the placeholder/image
+	 *          markup (and, in Mode P, a second commented-out real reference)
+	 */
+	static cellImage(text, run, links = null) {
+		const tpl = DataService.Data.EmitTemplates.image;
+		let url = text.match(/https?:\/\/[^\s\]\)"<>]+/)?.[0] ?? "";
+		// TITLE-ANCHORED CELL IMAGE. A writer often
+		// authors a table-cell image BY TITLE: the cell text is the asset's title, and
+		// the URL lives only in the docx hyperlink's TARGET (which the extractor stores
+		// on the table BLOCK, not in the cell text). Free-body images already resolve
+		// this form through it.block.links; without this step the cell path would slugify
+		// the title into a wrong filename (SCCH302's Solutions/Suspensions table:
+		// "clear-yellow-liquid-is-poured-into-beake.jpg" instead of
+		// iStock-1321097020.jpg). When the cell text holds NO URL, find the table
+		// block's hyperlink whose folded anchor TEXT sits inside the folded cell text
+		// (longest anchor wins, so two image cells in one row each find their own
+		// link) and use its target. Data flag: body_region.cell_image_link_match.
+		// Env toggle: CELLIMGLINK_OFF (title-anchored cells fall back to slug filenames).
+		if (!url && links && links.length) {
+			const cfg = DataService.Data.EmitTemplates.body_region?.cell_image_link_match;
+			const on = cfg && cfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env.CELLIMGLINK_OFF);
+			if (on) {
+				const fold = (s) => String(s ?? "").toLowerCase().replace(/\s+/g, " ").trim();
+				const ft = fold(text);
+				let best = null;
+				for (const l of links) {
+					const a = fold(l.text);
+					if (!l.target || /^https?:\/\//i.test(String(l.text ?? "").trim())) continue;
+					if (a.length < (cfg.min_anchor_length ?? 8)) continue;
+					if (ft.includes(a) && (!best || a.length > best.len)) best = { len: a.length, target: l.target };
+				}
+				if (best) url = best.target;
+			}
+		}
+		const istockId = url.match(/gm-?(\d{6,10})/)?.[1] ?? null;
+		const filename = istockId
+			? Utils.FillTemplate(tpl.filename_rules.istock, { id: istockId })
+			: `${Utils.Slugify(text.replace(/https?:\/\/\S+/g, "").replace(/^\s*istock[.:]?/i, "").trim() || "image") || "image"}.jpg`;
+		const label = istockId ? `iStock-${istockId}` : "image";
+		if (run.imageMode === "P") {
+			return [MediaBuilder.FinishImg(Utils.FillTemplate(tpl.mode_P.visible, { label }), url, istockId, run),
+				MediaBuilder.FinishImg(Utils.FillTemplate(tpl.mode_P.comment, { filename }), url, istockId, run)];
+		}
+		return [MediaBuilder.FinishImg(Utils.FillTemplate(tpl.mode_D.visible, { filename }), url, istockId, run)];
+	};
+}
+
+// Node export hook; browsers ignore it.
+if (typeof module !== "undefined") module.exports = { TablesAndGrids };

@@ -1,0 +1,65 @@
+# ---------------------------------------------------------------------------
+# Allow-list: everything in this folder is ignored by default, and only the
+# files the published web app needs to run are let through below. Anything
+# not named here stays on this computer and is never committed.
+# ---------------------------------------------------------------------------
+
+# 1. Ignore everything at the top level.
+/*
+
+# 2. The site shell.
+!/.gitignore
+!/.nojekyll
+!/index.html
+!/css/
+!/js/
+!/data/
+
+# 3. The converter: its app folder, and only the data files the app loads
+#    (the list in html-converter/app/js/Config.js -> DataFiles). A new file
+#    added to DataFiles needs its own line here too.
+!/html-converter/
+/html-converter/*
+!/html-converter/app/
+/html-converter/app/js/_modules.json
+!/html-converter/data/
+/html-converter/data/*
+!/html-converter/data/Acks_Formats.json
+!/html-converter/data/Comment_Authors.json
+!/html-converter/data/Emit_Templates.json
+!/html-converter/data/Html_Convention_Registry.json
+!/html-converter/data/Input_Doc_Rules.json
+!/html-converter/data/Instruction_Cues.json
+!/html-converter/data/Interactive_Boundary_ChildTag_Bank.json
+!/html-converter/data/Manifest_Patterns.json
+!/html-converter/data/Menu_Scaffold_Registry.json
+!/html-converter/data/Module_Structure_Index.json
+!/html-converter/data/Overview_Menu_Heading_Lexicon.json
+!/html-converter/data/Precedence_Cascade.json
+!/html-converter/data/Style_Anchor_Registry.json
+!/html-converter/data/Style_Anchor_Registry_Majority_And_Deviations.json
+!/html-converter/data/Subject_Global_Parameters.json
+!/html-converter/data/Tag_Exceptions.json
+!/html-converter/data/Tag_Lexicon.json
+!/html-converter/data/Template_Modes.json
+
+# 4. Never tracked anywhere, even inside an allowed folder.
+*.local.md
+*.md
+!/README.md
+*.bak
+*.log
+*.tar
+*.tgz
+*.zip
+__pycache__/
+*.pyc
+node_modules/
+.fuse_hidden*
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+.idea/
+.vscode/

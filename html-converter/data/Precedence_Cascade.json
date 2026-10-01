@@ -1,0 +1,121 @@
+{
+ "_meta": {
+  "purpose": "The 6-LEVEL AUTHORITY CASCADE. A module inherits its structure from the NEAREST previously-developed work; the search widens only when the nearer level has no SOLID answer. The corpus-wide average is the LAST resort, never the first. The ONLY thing that overrides a previously-developed module is the per-subject GLOBAL PARAMETERS (doc 14), within its scope.",
+  "authority_order": "doc14 (within scope) > existing related module in the SAME SERIES + SAME TEMPLATE > same subject + same level + same template > same-template in-subject > whole subject > whole corpus. The nearer level always wins; a level with no SOLID pattern (ambiguous / 50-50 / fragmented) is OMITTED and the cascade CLIMBS A RUNG; ESCALATE only when no level confirms an authority and doc-14 is silent.",
+  "level_walk_note": "The canonical walk-levels: (1) level 2 is series+TEMPLATE (the existing related module(s) in the same series that also share the template), not bare series; (2) there is no standalone bare-phase level (prefix+first-digit) — phase lives only inside subject+phase+template (year-level within the subject+template). Six levels total.",
+  "level_0_own_human_gold": "ABOVE this whole cascade sits LEVEL 0: for a module that ALREADY has a human-developed build in 01-Finalized_Modules_, that human build IS the authoritative templated structure for the module — the conversion's target is to reproduce it element-for-element. GUARDRAIL: the converter DERIVES it from the raw Writers Template + Media List via general rules; it must NEVER read/copy the gold as an input. Level 0 is the comparison target, not an input — resolve()/PrecedenceResolver deliberately do NOT consult a module's own gold; they DERIVE (levels 1-6) and ADJUDICATE.",
+  "level_0_doc14_carve_out": "THE ONE RECORDED EXCEPTION to Level 0: a doc-14 Subject Global Parameter whose family is MARKED overrides_gold:true in data/Subject_Global_Parameters.json is a FORWARD-LOOKING design-team directive that the gold library largely PREDATES. Within its scope, such a rule outranks the module's own human gold: conversions adhere to the doc-14 convention even where the gold does not, and a divergence from the gold that matches the marked rule is INTENTIONAL (verdict DOC-14 OVERRIDE) — never treated as a converter error, never 'fixed' back toward the gold. Full policy: Subject_Global_Parameters._meta.gold_override_policy (incl. its gate_policy and doc-14's own Mode-B sibling-structure note).",
+  "solidify_rule": "THE STYLE-ANCHOR-REGISTRY PRINCIPLE: a CONSOLIDATION level asserts an authoritative value for an element ONLY when that value is SOLIDLY consistent in the group — a clear dominant pattern (its module-share >= solidify_share AND not a tie). When the group is ambiguous (a 50-50 split, or fragmented with no dominant value), the element is OMITTED at that level and the cascade DEFERS UP a rung (a coarser group has more data and usually solidifies). It never asserts a rule from a weak/ambiguous split. Encoded per level as decision:'solidify' + solidify_share + tie_defers_up.",
+  "env_toggle": "CASCADE6_OFF",
+  "reverts_to": "the THREE-level adjudicate (doc14 -> sibling-band precedence -> corpus fallback). (Despite the '6' in the toggle name, it switches off the WHOLE cascade regardless of level count.)",
+  "consumed_by": "app/js/PrecedenceResolver.js reads data/Module_Structure_Index.json (module_meta + modules) + this file. DATA OVER CODE: the level definitions, order, decision rule and reliability floors live here; the code just walks them. All groups are computed live from module_meta — no registry rebuild needed.",
+  "reliability_defaults": {
+   "min_modules": 5,
+   "solidify_share": 0.60,
+   "majority_share": 0.60,
+   "strong_share": 0.80,
+   "window": 5,
+   "window_agree": 0.75
+  },
+  "match_semantics": {
+   "equals": "the side whose full ancestor-ladder signature EQUALS the reference wins (levels 2-6, full granular_sig).",
+   "contains": "the side whose signature CONTAINS the doc-14 token wins (level 1 gives a token e.g. 'col-md-8', not a full sig)."
+  }
+ },
+ "levels": [
+  {
+   "n": 1,
+   "id": "doc14",
+   "authority": "doc14",
+   "kind": "override",
+   "match": "contains",
+   "describe": "a per-subject GLOBAL PARAMETER (doc 14) that governs this element, within its stated scope. Overrides every level below."
+  },
+  {
+   "n": 2,
+   "id": "series_template",
+   "authority": "series_template_precedence",
+   "kind": "sibling_chain",
+   "temporal": true,
+   "group": "series_template",
+   "match": "equals",
+   "window": 5,
+   "window_agree": 0.75,
+   "min_modules": 1,
+   "describe": "the existing related module(s) in the SAME tight series (prefix + first two digits, e.g. BLL24) AND the SAME TEMPLATE-type, nearest-lower first. The module this one continues from. A single clear predecessor decides; a mixed nearest-window (no solid pattern) defers up."
+  },
+  {
+   "n": 3,
+   "id": "subject_phase_template",
+   "authority": "subject_phase_template_consensus",
+   "kind": "consensus",
+   "temporal": false,
+   "group": "subject_phase_template",
+   "match": "equals",
+   "decision": "solidify",
+   "solidify_share": 0.60,
+   "tie_defers_up": true,
+   "min_modules": 3,
+   "describe": "ALL modules in the SAME SUBJECT (learning area, across its sibling prefixes) at the SAME year-LEVEL and the SAME TEMPLATE-type. Asserts a value only when it is SOLIDLY dominant here; an ambiguous split is omitted and defers up."
+  },
+  {
+   "n": 4,
+   "id": "subject_template",
+   "authority": "subject_template_consensus",
+   "kind": "consensus",
+   "temporal": false,
+   "group": "subject_template",
+   "match": "equals",
+   "decision": "solidify",
+   "solidify_share": 0.60,
+   "tie_defers_up": true,
+   "min_modules": 5,
+   "describe": "ALL modules of the same TEMPLATE-type (Standard/Inquiry/Fundamentals/Bilingual) in the same subject, any level. Solid dominant value only; else omit + defer up."
+  },
+  {
+   "n": 5,
+   "id": "subject",
+   "authority": "subject_consensus",
+   "kind": "consensus",
+   "temporal": false,
+   "group": "subject",
+   "match": "equals",
+   "decision": "solidify",
+   "solidify_share": 0.60,
+   "tie_defers_up": true,
+   "min_modules": 5,
+   "describe": "ALL modules in the same SUBJECT (learning area). Solid dominant value only; else omit + defer up."
+  },
+  {
+   "n": 6,
+   "id": "corpus",
+   "authority": "corpus_consensus",
+   "kind": "consensus",
+   "temporal": false,
+   "group": "corpus",
+   "match": "equals",
+   "decision": "solidify",
+   "solidify_share": 0.60,
+   "tie_defers_up": true,
+   "min_modules": 5,
+   "describe": "ALL modules in the corpus. The last resort — a labelled fallback, never the primary authority. Solid dominant value only; if even the corpus is ambiguous, the cascade ESCALATES (no derivable rule)."
+  }
+ ],
+ "confidence_by_level": {
+  "1": "authoritative",
+  "2": "high",
+  "3": "medium-high",
+  "4": "medium",
+  "5": "medium",
+  "6": "low"
+ },
+ "engine_inherit": {
+  "_note": "The LIVE engine application of the cascade (PrecedenceResolver.inheritMenu, called from ContentConverter on the overview menu). OFF by default (enabled:false), so default output is unchanged — the same pattern as the subject-parameters master_enabled:false switch. env INHERIT_ON force-enables (A/B), INHERIT_OFF force-reverts (outranks both). When ON, the overview menu's CURRICULUM column width is GENERATED from the nearest previously-developed sibling (resolveWidth(code, menu_curric_key)); on ESCALATE the default is kept + a cv2-note advisory is emitted. inheritMenu is layout-preserving (targets only the <h5>-carrying curriculum column; a col-md-12 band is preserved).",
+  "_note_effect": "Keyed on menu|@h5, inheritance brings the overview curriculum column width closer to the human build; the menu sits in #header, so only the page skeleton changes. The JS and Python resolvers return identical results.",
+  "_roadmap": "Enable one proven scope at a time. TWO refinements come BEFORE enabling: (1) menu_curric_key 'menu|@h5' is a per-page-AGGREGATE proxy — the overview curriculum column needs a page-context-scoped key so a lesson-menu h5 can't skew the width; (2) the ENG-family / banner curriculum width is baked in SkeletonBuilder's two_col_offset SHELL template (not the ContentConverter menu panes), so those families need the same gated consult at the SkeletonBuilder shell layer. The ContentConverter hook already reaches the pane-form (tab1Cols / flat-h5) menus.",
+  "enabled": false,
+  "menu_curric_key": "menu|@h5",
+  "env_toggle": "INHERIT_OFF",
+  "env_force_on": "INHERIT_ON"
+ }
+}

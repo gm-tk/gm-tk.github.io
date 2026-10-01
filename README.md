@@ -1,0 +1,94 @@
+# PageForge V2
+
+A **100% client-side** static web app that prepares the inputs for Te Kura's downstream module-conversion workflow. It takes a writer's **Writer's Template** `.docx` (and optional Media List), and produces the parsed `.txt` files — now carrying reviewers' actionable Word comments — plus a separate **Page Stitcher** for recombining split modules.
+
+PageForge V2 is an **interim production replacement** for the current online PageForge. Everything runs in the browser: nothing is uploaded, stored, or sent to a server.
+
+---
+
+## Two modes
+
+A single switch in the header toggles between the two top-level modes.
+
+### 1. Module Development (default)
+
+Drop the Writer's Template and/or the Media List into the **one** Word-documents container (1–2 `.docx`) and press **Convert**:
+
+| Upload area | Accepts | Produces |
+|---|---|---|
+| **Word documents** | the Writer's Template and/or the Media List `.docx` (1–2 files, **auto-classified** by content) | `<CODE> Writers Template_parsed.txt` and/or `<CODE> Media List_parsed.txt` (the module `<CODE>` is detected in the file; all other filename parts are dropped) |
+
+Both `.docx` go in the one container in any order — PageForge detects which is the Writer's Template (it has a `[TITLE BAR]`) and which is the Media List (it has a media table), and **converts every document you provide**, listing each produced file with its own download — plus a **Download all as a ZIP** button when more than one file is produced. Upload these into the downstream HTML Convertor project to generate the finished module HTML.
+
+### 2. Page Stitcher
+
+Two jobs behind one button; PageForge detects which from the files you upload. **Split-mode module:** the base homepage and all of its section files → one unified single-page module HTML (named `<CODE>.html`). **Interactive insertion:** the module pages from the HTML Generator plus the built-interactives file(s) from the Interactives project → the final HTML files.
+
+The upload container is **accumulating**: the pages and the built interactives usually live in different folders, so each drag-and-drop **adds** to the list rather than replacing it. Every staged file is listed with a **✕** to remove it (plus *Remove all files*) before you press **Stitch**.
+
+---
+
+## The three features
+
+**1. Native Word comment capture.** When a writer's `.docx` carries native Word editor comments, PageForge keeps only the **actionable** ones from the six Creative-Services reviewers (an asymmetric filter drops pure copyright/permission boilerplate but keeps anything with an action signal) and re-emits each as a **red note** in the parsed `.txt`, immediately before the thing it refers to. A comment anchored to a Media List row is matched to the body element that uses the same media (by URL, iStock id, or YouTube id). Whitelist + filter are data-driven in [`data/comment-authors.json`](data/comment-authors.json).
+
+**2. Word equations as LaTeX.** An equation typed with Word's equation editor is stored as
+OMML (`<m:oMath>` / `<m:oMathPara>`) beside the ordinary text runs, not inside them, so PageForge reads those objects separately
+and converts each one to LaTeX: `\(…\)` where the writer had it inline, `\[…\]` where they gave it
+its own line.
+
+LaTeX because that is how the equations get written. Writers are asked to convert their
+maths to LaTeX and paste it into Word, then press **Alt + =** — which makes Word swallow
+the LaTeX and store an equation object, so the LaTeX cannot be kept, only regenerated.
+Regenerating it means the parsed `.txt` reads the same whether the writer pressed Alt + =
+or left their LaTeX as plain text, and the downstream Convertor has one job instead of two.
+
+Fractions, brackets, super/subscripts, roots, n-ary operators, matrices, accents and limits
+are all covered; anything unrecognised is recursed into rather than dropped.
+
+**3. Page Stitcher (with SPLIT MODE).** The downstream converter can emit a long single-page module as a base homepage + per-section files (so each generation stays within length limits); the Page Stitcher recombines them losslessly via an explicit marker contract.
+
+---
+
+## Privacy model
+
+- **100% client-side.** All parsing, conversion and stitching happen in the browser.
+- **Nothing is uploaded, stored, or transmitted** — no backend, no `localStorage` / `sessionStorage`; session state is held in memory only.
+- **Content fidelity.** Writer-supplied text passes through unchanged; comment notes are *additive metadata*, never edits to the source.
+
+---
+
+## Project structure
+
+```
+index.html              The single-page app (both modes)
+css/styles.css          Styles
+data/
+  comment-authors.json    Comment whitelist + asymmetric content filter + media-match config
+js/
+  docx-parser.js          .docx reader (JSZip); extended for native comment extraction + equations
+  omml-to-latex.js        Word equation objects (OMML) -> LaTeX  (the shipped carrier)
+  omml-to-mathml.js       the same, targeting MathML — kept as the deterministic standby
+  comment-extractor.js    comments.xml parse + anchor/rowUrl capture + carry-forward
+  comment-filter.js       author whitelist/normalisation + asymmetric omit filter
+  comment-inserter.js     body + media-match placement; red-note rendering
+  comment-config.js       loads data/comment-authors.json (browser)
+  formatter.js            parsed-.txt formatter (red-text marker reused for comment notes)
+  page-stitcher.js        SPLIT-MODE reassembly (pure core + the stitch-mode adapter)
+  media-list-converter.js structural Media List → .txt
+  module-results-page.js  results / download screen
+  mode-toggle.js          the two-mode shell + Module Development conversion orchestrator
+  mode-toggle-filename.js  output-filename derivation
+  output-manager.js       download primitive (Blob + object URL)
+  toast.js                standalone toast
+html-converter/         the HTML Generator (the converter app and the data files it loads)
+.nojekyll               GitHub Pages marker
+```
+
+---
+
+## Deploying
+
+This is a static site. Deploy by serving the directory (or pushing to a GitHub Pages repo); `.nojekyll` is already present so the `js/` and `data/` folders are served as-is. No build step.
+
+> The browser loads `data/*.json` via `fetch`, so use an `http(s)` origin (e.g. GitHub Pages or any static server) rather than opening `index.html` from `file://`. Each data-driven module also carries a built-in fallback, so the app degrades gracefully if a data file can't be fetched.

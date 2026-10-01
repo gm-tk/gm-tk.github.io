@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!--
+	Converter V2 — Phase-1 module converter (Writers Template .docx → MTK HTML)
+	===========================================================================
+	WHAT THIS PAGE IS:
+	The single entry point. Upload a Writers Template .docx + its Media List
+	.docx (or one combined file), pick the image output mode, convert, and
+	download the generated pages + the interactives manifest.
+
+	HOW TO RUN IT (one command):
+	From the html-converter folder: python3 -m http.server 8732
+	then open                       http://localhost:8732/app/
+	(The engine fetches ../data/*.json live — edit a data file, reload, and
+	the next conversion uses it. Opened via file:// this page shows the
+	instruction screen instead, because browsers block local fetch.)
+
+	SCRIPT LOAD ORDER IS MEANINGFUL (coding standards §2):
+	Config first, then utilities/services, then pipeline stages in
+	dependency order, App.js LAST.
+-->
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HTML Generator V2 — Phase 1</title>
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+	<!-- shown only when opened via file:// (see App.Init's guard) -->
+	<div id="file-guard" hidden>
+		<h1>HTML Generator V2</h1>
+		<p>This page was opened straight from the file system, so the browser blocks it from reading the rule data in <code>html-converter/data/</code>.</p>
+		<p>Start it with one command from the <code>html-converter</code> folder instead:</p>
+		<pre>python3 -m http.server 8732</pre>
+		<p>then open <a href="http://localhost:8732/app/">http://localhost:8732/app/</a></p>
+	</div>
+
+	<div id="app-root">
+		<header class="app-header">
+			<h1>HTML Generator V2 <span class="phase-badge">Phase 1</span> <span id="app-version" class="version-badge"></span></h1>
+			<p class="app-subtitle">Writers Template → MTK HTML · non-interactive content converted, interactives captured un-built, acknowledgements generated</p>
+		</header>
+
+		<!-- ============ 1. UPLOAD ============ -->
+		<section class="panel">
+			<h2>1 · Upload</h2>
+			<div id="drop-zone" title="Click to choose files, or drop them here">
+				<p><strong>Upload the “WritersTemplate.docx” &amp; “MediaList.docx” here</strong> (or one combined WT + ML Word Doc file).</p>
+				<p class="drop-hint">Also add the “iStock-acks.txt” file to ensure the verified image titles are used in the acknowledgements.</p>
+			</div>
+			<input type="file" id="file-input" accept=".docx,.txt" multiple hidden>
+			<ul id="file-list" class="file-list"></ul>
+		</section>
+
+		<!-- ============ 2. IMAGE MODE ============ -->
+		<section class="panel">
+			<h2>2 · Image output mode <span class="panel-note">(applies to every image in this run — no mixing)</span></h2>
+			<!-- Plain-language labels; internally these are imageMode "P" and "D". -->
+			<label class="mode-option">
+				<input type="radio" name="image-mode" id="mode-p" checked>
+				<strong>Placeholder images</strong>: pages show a temporary placeholder for each image (real filename commented out in backend).
+			</label>
+			<label class="mode-option">
+				<input type="radio" name="image-mode" id="mode-d">
+				<strong>Direct images</strong>: pages link straight to the real image files — no placeholders.
+			</label>
+		</section>
+
+		<!-- The interactive hand-off is the default for every run. Each un-built interactive renders as its
+		     reference-code box with the raw captured content collapsed inside it
+		     (expand/collapse via the arrow at the right end of the box), and the
+		     same codes head the {CODE}_interactives.txt blocks. -->
+
+		<!-- ============ 3. REFERENCE MODULE ============
+		     Hidden until files are uploaded. The dropdown auto-selects the
+		     SUGGESTED reference module (same module series first, then the
+		     same subject at the same phase); when neither exists it shows
+		     "Please select a reference module" and the Convert button stays
+		     inactive until a module is selected OR reference HTML pages are
+		     uploaded. The choice is applied inside ModuleResolver.PrepareRun
+		     (the one shared prep used by every entry point). -->
+		<section class="panel" id="reference-panel" hidden>
+			<h2>3 · Reference module <span class="panel-note">(which already-built module this conversion inherits its page structure from)</span></h2>
+			<p id="reference-status" class="reference-status"></p>
+			<label class="mode-option">
+				<input type="radio" name="ref-mode" id="ref-pick" checked>
+				<strong>Choose a reference module from the library</strong> (suggested module selected if one exists).
+			</label>
+			<div id="ref-pick-block" class="ref-sub-block">
+				<!-- The picker. The
+				     LEFT column stacks the three LABELLED filter dropdowns plus a
+				     "Reset filters" button; the RIGHT column holds the
+				     type-to-filter box above the always-visible module list
+				     (size=8) with the live "showing N of M" count underneath.
+				     All filters combine; an exact single code match self-selects;
+				     the recommended module stays pinned + pre-selected. -->
+				<div class="ref-pick-grid">
+					<div class="ref-filter-col">
+						<div class="ref-filter-field">
+							<label for="ref-subject-filter">Subject</label>
+							<select id="ref-subject-filter" title="Filter by subject">
+								<option value="">All subjects</option>
+							</select>
+						</div>
+						<div class="ref-filter-field">
+							<label for="ref-phase-filter">Phase</label>
+							<select id="ref-phase-filter" title="Filter by phase level">
+								<option value="">All phases</option>
+							</select>
+						</div>
+						<div class="ref-filter-field">
+							<label for="ref-template-filter">Template</label>
+							<select id="ref-template-filter" title="Filter by template">
+								<option value="">All templates</option>
+							</select>
+						</div>
+						<button type="button" id="ref-filter-reset" class="ref-filter-reset">Reset filters</button>
+					</div>
+					<div class="ref-list-col">
+						<input id="ref-code-filter" type="text" placeholder="Type a module code to filter…" autocomplete="off">
+						<select id="ref-code-select" size="8">
+							<option value="">Please select a reference module</option>
+						</select>
+						<p id="ref-code-count" class="drop-hint" aria-live="polite"></p>
+					</div>
+				</div>
+			</div>
+			<!-- "Make your own template": subject + phase +
+			     template chosen directly; all three REQUIRED before Convert
+			     activates. Choosing a subject narrows the
+			     phase and template lists to what that subject has ALREADY
+			     DEVELOPED, and the two cross-narrow — only combinations that
+			     exist in the library can be assembled (no suitable combination
+			     = the trigger to use "Upload a reference module" below). The
+			     engine inherits from the most typical matching library module. -->
+			<label class="mode-option">
+				<input type="radio" name="ref-mode" id="ref-custom">
+				<strong>Make your own template</strong> — pick a subject, phase and template; the converter builds from the most typical matching modules in the library.
+			</label>
+			<div id="ref-custom-block" class="ref-sub-block" hidden>
+				<!-- Titles above each dropdown; the three fields share
+				     ONE horizontal line (flex, no wrapping). -->
+				<div class="ref-custom-row">
+					<div class="ref-custom-field">
+						<label for="ref-custom-subject">Subject</label>
+						<select id="ref-custom-subject" title="Subject (required)">
+							<option value="">Select a subject…</option>
+						</select>
+					</div>
+					<div class="ref-custom-field">
+						<label for="ref-custom-phase">Phase</label>
+						<select id="ref-custom-phase" title="Phase (required)">
+							<option value="">Select a phase…</option>
+						</select>
+					</div>
+					<div class="ref-custom-field">
+						<label for="ref-custom-template">Template</label>
+						<select id="ref-custom-template" title="Template (required)">
+							<option value="">Select a template…</option>
+						</select>
+					</div>
+				</div>
+				<p class="drop-hint">All three are required, and only combinations that already exist in
+					PageForge's distilled templates are offered — choosing a subject narrows the phases and
+					templates to those already developed for it. If the combination you need isn't
+					available, use "Upload a reference module" below instead.</p>
+			</div>
+			<label class="mode-option">
+				<input type="radio" name="ref-mode" id="ref-html">
+				<strong>Upload a reference module</strong> — upload the finished HTML pages of a module to use as the reference.
+			</label>
+			<div id="ref-html-block" class="ref-sub-block" hidden>
+				<input type="file" id="ref-html-input" accept=".html,.htm" multiple>
+				<ul id="ref-html-list" class="file-list"></ul>
+				<p class="drop-hint">The conversion will also produce a distilled template file
+					(<code>…_reference-template.json</code>) — send it to Gavin so this reference module can be
+					added to PageForge's templated modules for future conversions.</p>
+			</div>
+		</section>
+
+		<!-- ============ 4. CONVERT ============ -->
+		<section class="panel">
+			<h2>4 · Convert</h2>
+			<button id="convert-button" type="button" disabled>Convert module</button>
+			<!-- While Convert is deactivated by the reference gate,
+			     this red note says why (App.#updateConvertGate drives it). -->
+			<p id="convert-gate-note" class="convert-gate-note" hidden></p>
+			<!-- The conversion progress bar (hidden until Convert; App.js drives it,
+			     the engine reports through the guarded run.onProgress hook — browser-only) -->
+			<div id="progress-bar" class="progress-bar" hidden
+				role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+				<div id="progress-bar-fill" class="progress-bar-fill"></div>
+				<span id="progress-bar-label" class="progress-bar-label"></span>
+			</div>
+			<div id="progress-log" class="progress-log" aria-live="polite"></div>
+		</section>
+
+		<!-- ============ 5. RESULTS ============ -->
+		<section class="panel">
+			<h2>5 · Output files</h2>
+			<div id="output-metadata" class="output-metadata" hidden></div>
+			<ul id="output-list" class="output-list"></ul>
+			<button id="download-all" type="button" hidden>Download all as .zip</button>
+		</section>
+
+		<!-- Resets the converter to a fresh state in place (no page
+		     reload, which would drop back to the site's landing view). Hidden
+		     until a conversion has completed; App.js wires + re-hides it. -->
+		<div id="reset-panel" class="reset-panel" hidden>
+			<button id="reset-button" type="button" class="reset-button">Clear everything &amp; convert another module</button>
+			<p class="reset-note">Removes the current results and downloads and clears the uploaded files, ready for a fresh module.</p>
+		</div>
+
+		<section id="summary-panel" class="panel summary-panel" hidden></section>
+	</div>
+
+	<!-- 1. Config first — everything reads from it -->
+	<script src="js/Config.js"></script>
+	<!-- 2. pure utilities, then services -->
+	<script src="js/Utils.js"></script>
+	<script src="js/DataService.js"></script>
+	<!-- 3. ingest layer -->
+	<script src="js/ZipReader.js"></script>
+	<script src="js/DocxExtractor.js"></script>
+	<script src="js/MediaListParser.js"></script>
+	<script src="js/ReferenceMiner.js"></script>
+	<!-- 4. pipeline stages in dependency order -->
+	<script src="js/ConversionRun.js"></script>
+	<script src="js/TagNormaliser.js"></script>
+	<script src="js/ModuleResolver.js"></script>
+	<script src="js/ConventionResolver.js"></script>
+	<script src="js/PageSplitter.js"></script>
+	<script src="js/InteractiveScanner.js"></script>
+	<script src="js/InteractiveBuilder.js"></script>
+	<script src="js/ListsAndRuns.js"></script>
+	<script src="js/NotesAndComments.js"></script>
+	<script src="js/TablesAndGrids.js"></script>
+	<script src="js/MenuBuilder.js"></script>
+	<script src="js/PanelsBuilder.js"></script>
+	<script src="js/BilingualBuilder.js"></script>
+	<script src="js/ActivitiesBuilder.js"></script>
+	<script src="js/MediaBuilder.js"></script>
+	<script src="js/PrecedenceResolver.js"></script>
+	<script src="js/ContentConverter.js"></script>
+	<script src="js/TemplateModeResolver.js"></script>
+	<script src="js/SkeletonBuilder.js"></script>
+	<script src="js/AcksBuilder.js"></script>
+	<script src="js/ManifestBuilder.js"></script>
+	<script src="js/HtmlFormatter.js"></script>
+	<script src="js/PageAssembler.js"></script>
+	<!-- 5. output + presentation -->
+	<script src="js/ZipWriter.js"></script>
+	<script src="js/SummaryReporter.js"></script>
+	<!-- 6. App.js LAST — it orchestrates everything above -->
+	<script src="js/App.js"></script>
+</body>
+</html>

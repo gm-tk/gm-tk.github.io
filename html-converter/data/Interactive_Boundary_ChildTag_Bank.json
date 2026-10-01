@@ -1,0 +1,976 @@
+{
+	"_meta": {
+		"title": "Interactive Activity Boundary & Child-Tag Bank",
+		"purpose": "For the eventual converter: given an interactive tag in a parsed Writer's Template, this bank says (a) which surrounding tags/content belong to that interactive, (b) where the interactive block ends, and (c) which tags can NEVER be part of an interactive and therefore guarantee it has finished. Built so Phase-1 conversion can render every non-interactive tag to HTML while bundling all interactive-related content together (un-built) and resuming clean conversion at the next non-interactive tag.",
+		"stage1_note": "The generative form. The earlier exhaustive per-interactive opener and child-tag lists were verified to collapse, via Tag_Lexicon.json, onto the three global rules below plus a small per-interactive signature. The full empirical lists remain in the source archive bank; re-derivation: every observed opener resolved to opener_rule.opener_tags, and every observed member resolved to a non-terminator canonical tag (member_rule), with zero unexplained remainder beyond free-text content labels.",
+		"block_model": "An interactive ACTIVITY BLOCK = [optional opener tags] + [the interactive tag] + [member tags/content/instructions] ... up to (not including) the first TERMINATOR.",
+		"widget_type_taxonomy": {
+			"_note": "MAIN vs VARIANT differentiation. A VARIANT widget_type is the SAME main widget as its parent — only a styling/structural variation — so InteractiveScanner.#widgetTypeFor folds it to the parent (the type then flows to the parent's BUILDER, manifest tier, and boundary entry instead of an un-built duplicate). Only variants WITHOUT their own builder that the parent can serve are folded: rotateBanner->carousel (carousel builds it), wordHighlighter->wordSelect (both are the same inline word component). hintSlider is NOT folded (it has its own builder and is the common form, not a variation of accordion in this engine); selfCheck is NOT folded (a distinct freeform widget; its CONDITION sense is handled by condition_primary_demote in Tag_Lexicon). Env VARFOLD_OFF turns the fold off.",
+			"variant_of": {
+				"rotateBanner": "carousel",
+				"wordHighlighter": "wordSelect"
+			}
+		},
+		"opener_rule": {
+			"id_heading_opener": {
+				"_doc": "THE ID-CARRYING HEADING IS THE ACTIVITY OPENER. The Mathematics MXDI / MXFU family (and SSFUN01, CEDT104, ART1003 / 1005, CEDO202, EXPFUN04 / 05, MXFL201 …) never types `[Activity 1A] Title`: it types a HEADING whose text starts with the activity id — `[H3] 1A Spot the place value`, `[h3] 1B Ordering the months`, `[H2] 2A Connecting with Others` — followed by the activity's prose and widget. The gold almost always builds `<div class=\"activity …\" number=\"1A\">` opening with `<h3>Title</h3>` (the id stripped) for such a heading. With this rule on, InteractiveScanner.ScanPage re-tags such a heading item IN PLACE as the activity opener it is — `[Activity 1A]` with the id-stripped title as its tail (the normaliser's own parse, so the owner lookback, the unclassified-activity path, the activity numbering and ActivitiesBuilder's box all behave exactly as for a typed `[Activity 1A] Title`). Guards: heading_tags only; the id must be `\\d{1,2}[A-Z]` (an upper-case letter — the writer's `1a ___ is less than` answer rows never match); a title of at least min_title_chars must follow; skipped when an `[Activity]` opener with the SAME id sits within same_id_window items before or after it (both forms in one WT), on bilingual (reoMode) pages (their number lives in a table row — the reo_bundle_activity rule) and when the heading is already consumed. Known outliers: SSOG301 (its `[H3] 1B` headings are section titles) and EXPFUN03's repeated `[H2] 1A Designing your own Learning Goals`. Env IDHEAD_OFF turns the rule off.",
+				"enabled": true,
+				"env": "IDHEAD_OFF",
+				"heading_tags": ["h2", "h3", "h4", "h5"],
+				"id_pattern": "^\\**\\s*(\\d{1,2}[A-Z])\\b[\\s.:–—-]*\\**\\s*(\\S.*)$",
+				"min_title_chars": 2,
+				"same_id_window": 3,
+				"title_start_pattern": "^[A-Z0-9\"'‘“(\\[]",
+				"_doc_title_start": "The id-stripped title must start with a capital, a digit, a quote or a bracket: `[H3] 2D shapes` / `3D printing` are dimension words, not ids (as in MXDB102 lesson 1, which would otherwise open a phantom box `2D` titled `shapes`). exclude_ids (optional list of ids never treated as an opener) is the manual escape hatch.",
+				"exclude_ids": [],
+				"force_interactive": true,
+				"_doc_force_interactive": "An id-heading-opened box that OWNS a widget bundle takes `activity interactive`, exactly like the synthetic standalone box it replaces (the gold: MXFU202 9A–9E, MXDI201 10A–10D `activity interactive`; the widget-less heading box 9F / 10E stays plain because it never comes through the bundle-owner path). The class is part of the page structure, so it matters.",
+				"unnumbered_nests_in_numbered": true,
+				"_doc_nesting": "The family then types the widget as an UNNUMBERED `[interactive activity] drop down …` span (an `activity` CONTAINER_OPEN with no number) after the id heading's prose and video. On its own that span would become its own unclassified bundle, and the converter's 'a new activity closes the open one' rule would close the 1A box in front of it and open a second, sequence-numbered box — TWO boxes where the gold has ONE. With unnumbered_nests_in_numbered the unclassified path looks back (black runs, ELEMENT / opener tags) for a NUMBERED opener and, finding one, makes it the bundle's owner (the owner form) — one box: h3 + prose + video + the capture.",
+				"lead_media_tags": ["image", "video", "audio"],
+				"lead_media_env": "LEADMEDIA_OFF",
+				"lead_media_exclude_templates": ["Inquiry"],
+				"journal_section": {
+					"_doc": "THE JOURNAL SECTION IS AN ACTIVITY BOX. A writer's free `[H3] Title` (no [Activity] opener) whose section — before the next heading / opener / section marker / table / widget — ends in a go-to-journal [button] would otherwise render free; the gold boxes it as a numbered activity (h3 title + prose + the goJournal h4) in the subjects listed here (1-10 English and Leaving to Learn, where the gold does so consistently; other subjects are mixed or drop the heading, so they are not listed). #idHeadingOpeners re-tags such a heading as a bare [Activity] opener (the heading's own words = the box title; the positional letter numbers it; the button's goJournal h4 goes inside the box); a heading directly after a writer's [Activity] opener is that box's title and is never re-tagged; the walk stops at a table (a widget's section) or any CONTAINER / INTERACTIVE / SECTION directive. Subjects from Module_Structure_Index.module_meta. Env JOURNALBOX_OFF turns this off.",
+					"enabled": true,
+					"env": "JOURNALBOX_OFF",
+					"subjects": ["1-10 English", "Leaving to Learn"],
+					"not_side_by_side": true,
+					"_doc_not_side_by_side": "A heading typed on the SAME line as another heading — a side-by-side caption row ('[H3] Picture A     [H3] Picture B', XGF9003 5.0 inside 5C 'Spot the difference') — captions the open activity's own two-column content and is never re-tagged as a journal-section box (the gold keeps the row and its journal call inside the writer's 5C; an extra box would take the next positional letter and push the writer's own letters along). A broader 'any heading inside a writer activity' guard would leave content free that belongs in a box (ENGC301 6.0), so it is not used. Env SBSHEAD_OFF (shared with container_auto_close.activity_close_before.side_by_side_headings_stay).",
+					"heading_tags": ["h2", "h3", "h4"],
+					"stop_tags": ["h1", "h2", "h3", "h4", "h5", "heading", "activity heading", "activity", "title bar", "lesson content"],
+					"max_items": 30
+				},
+				"word_form": {
+					"_doc": "THE WORD FORM of the id-carrying heading: `[H3]Activity 1A: Trait of the seasons` (CEDO202), `[H2] Activity 1A: Needs and Wants` (SSFUN07), `[H3] Activity 2A` with no title at all (XDLS501), `[H4] Activity 1A: Analysing Pie Charts` (MXFU302). The id_pattern above starts at the DIGIT, so without this the word form would never match: the heading would render free and the box would never open. The gold has a box of that number for most such headings, across Standard, Inquiry and Fundamentals and every heading level, opening with an <h3> (the WT's title verbatim or re-worded). Outliers: SSOG301 (its headings are section titles), EXPFUN03. WITHOUT a title the gold still usually boxes it with an invented h3, so title_fallback \"heading\" keeps the heading's own words (`Activity 2A`) as the box title — the words are the writer's. The NUMBER-ONLY form (`[H3] Task 1: …` ART, `Activity 1:` ANZH303 / XWHA02 / OSAH401) is NOT matched: the gold never has a box of that number. When the pattern matches, everything else is the id-heading path unchanged — the same-id clash window, exclude_ids, the title_start guard, reoMode, the re-tag as `[Activity <id>] Title`, the owner lookback, force_interactive, the nesting rule. `words` are matched Capitalised / lower / UPPER; `WORDS` in the pattern is the alternation. Env ACTWORD_OFF (or enabled false) turns the word form off; IDHEAD_OFF turns the whole rule off.",
+					"enabled": true,
+					"env": "ACTWORD_OFF",
+					"words": ["Activity", "Mahi", "Ngohe"],
+					"pattern": "^\\**\\s*(?:WORDS)\\s+(\\d{1,2}[A-Za-z])\\b\\s*\\**\\s*[:.–—-]?\\s*(.*)$",
+					"_doc_pattern": "The letter may be lower-case here (ART1003 `Activity 2a`, ART1005 `Activity 1a` — the gold boxes them as 2A / 1A); the word in front makes it unambiguous, unlike the bare id_pattern above, whose `1a ___ is less than` answer rows keep the upper-case rule. The id is upper-cased before the re-tag.",
+					"embedded": true,
+					"_doc_embedded": "The same heading typed INSIDE the red span — `🔴[H2] Activity 1A🔴 Designing your own…` (EXPFUN02–05), `🔴[H4] Activity 1A🔴 **Analysing Pie Charts**` (MXFU302), `🔴[H2] Activity 1A: Needs and Wants🔴` (SSFUN07), `🔴[H3] Activity 5B🔴 Using variables…` (MXDI301): the span's embedded text (TagNormaliser.RenderText, original case) joined to the black tail is matched when the tail alone does not. false = the black tail only.",
+					"title_fallback": "heading"
+				},
+				"_doc_lead_media": "An owned bundle's lead would otherwise render a media item's tail as a `<p>` (the link text) — the video between the activity's title and its widget would appear as a bare link inside the box where the gold has the videoSection embed (MXDI201 1A). A lead item whose primary tag is in lead_media_tags goes down the body loop's own #element path. The gold carries media in the same box for Standard and Fundamentals templates, but only about half the time for Inquiry (the BLL golds drop the stock image), so the rule is SCOPED by template: lead_media_exclude_templates (matched against Module_Structure_Index module_meta.template_type), with its own env lead_media_env (LEADMEDIA_OFF) inside IDHEAD_OFF. Authority: the body's existing media rule (KB 01E) extended to the activity lead."
+			},
+			"rule": "A span immediately preceding an interactive tag belongs to its block when its primary tag resolves (via Tag_Lexicon.json) to one of opener_tags — it is the activity wrapper/title for that interactive.",
+			"owner_id_from_tail": true,
+			"owner_alias_exclude": {
+				"_doc": "(As in AGH1005 lesson 2.) THE `[interactive: video]` LINE IS THE BOX'S FIRST LEAD ELEMENT, NOT ITS SWALLOWED OPENER. `[interactive: video]` parses to `video` as the primary tag with a second `activity` tag whose alias word is `interactive`; the owner lookback takes ANY span carrying an `activity` tag as the following widget's owner, so the writer's video line before `[interactive: drag and drop]` would become the drag-and-drop's activity OWNER and be rendered as the box opener — the video request would vanish from the page without a note. Such owner spans occur as `[interactive: video]` (AGH1004 / AGH1005 / AGH1006), `[interactive: Video – …]` (TWHA902 / TWHK901) and embedded forms (`[interactive image like this]`, `[interactive as a flow diagram …]`, `[interactive: List the 3 ways …]`). Making the span NOT an owner would be wrong: the gold BOXES the group the `[interactive: X]` line leads (AGH1005 7A = h3 + the built carousel), so the owner reading is structurally right. Instead the span is KEPT as the owner but rendered as the box's first LEAD element through the lead_media path (a synthetic bare opener takes its place), scoped to `element_tags` with `exclude_primary_hows` (the embedded image / list forms render nothing through the element path or re-number the box, so they are excluded). The video's `no URL` flag surfaces inside the box — a documented request is never silently stripped; the URL is a Media-List item.",
+				"enabled": true,
+				"env": "OWNERALIAS_OFF",
+				"alias_words": ["interactive"],
+				"element_tags": ["video", "audio", "image"],
+				"exclude_primary_hows": ["embedded"]
+			},
+			"heading_table_owner": {
+				"_doc": "THE HEADING-THEN-TABLE SHAPE AFTER AN EMPTY TYPED-WIDGET INVOCATION TAKES THE OWNER FORM. A task-typed invocation with no activity opener before it (`[interactive: drag and drop]`, `[Interactive activity]`, `[Activity: Embedded]`) or with its id embedded in the span (`[Activity 2C][drag and drop]`) is followed by the writer's `[H3]` title, an instruction paragraph and the widget's TABLE; headings terminate the member walk, so the bundle would hold only its invocation — skip_empty would render no box, the heading and prose would render free and the table as a kept <table>. The gold boxes the section: <h3> title + <p> + the BUILT widget (for most such bundles, across Standard, Fundamentals and Inquiry). With this on, InteractiveScanner (right after the member walk): a listed-type bundle with no owner, no captured table and no member beyond its invocation whose walk stopped at a heading_tags heading, followed within max_between prose / between_tags / instruction items by a TABLE and nothing else, becomes an OWNED bundle — a synthetic bare owner (the `_aliasElementOwner` shape: an embedded `[Activity 2C]` id keeps its number, an id-less one takes the positional letter), the heading + prose = activityLeadItems (the converter's lead loop renders the <h3> title and the free prose inside the box), instruction spans join the bundle's instructions (the red Writers Note), and the walk resumes AT the table so it is captured as the widget's data for the builders. Env HEADTABLE_OFF turns this off.",
+				"enabled": true,
+				"env": "HEADTABLE_OFF",
+				"types": ["dragAndDrop", "dropDown", "multiChoiceQuiz", "radioQuiz", "typing", "reorder", "selectionBox", "selfCheck", "clickDrop", "unclassified", "interactive"],
+				"heading_tags": ["h1", "h2", "h3", "h4", "h5", "h6", "heading"],
+				"between_tags": ["body", "list"],
+				"max_between": 6,
+				"owned_bundles": {
+					"_doc": "THE OWNED HALF of the heading-then-table rule. A real `[Activity N]` / `[Interactive: activity]` opener (or the synthetic owner) OWNS the task-typed invocation whose walk ended at the writer's `[H3]` title, then prose / an instruction, then the TABLE — without this the box would be EMPTY (the `no content captured` flag) and the heading / prose / table free AFTER it (as in AGH1004 lessons 1 + 5, TEDC401 1E / 2A / 3B / 6A, TEDC402 6A / 6B, WJFUN109 1B / 2A, TEFUN05 1B). Where the gold carries the heading it almost always sits INSIDE the same box, with the widget built after it. With this on, #headingTableOwner also accepts an OWNED bundle when the owner carries no title tail (empty, or the id itself) and its existing lead holds no heading tag: the real owner stays, the heading + prose are APPENDED to activityLeadItems, instruction spans join the instructions, the walk resumes AT the table. An opener with its own title tail, or a lead already holding a heading, is left alone (the heading after the invocation would demote to prose under the lead loop's first-line-is-the-title rule). Env HEADTABLEOWNED_OFF turns this half off; HEADTABLE_OFF turns off both halves.",
+					"enabled": true,
+					"env": "HEADTABLEOWNED_OFF",
+					"between_media_tags": ["image", "video", "audio"],
+					"no_table": {
+						"_doc": "THE OWNED HEADING-LED BUNDLE WITH NO TABLE: a writer-owned typed-widget box whose walk ended at once on the heading after the invocation, with NO table following (the quiz written as paragraphs — `[Activity 1A] [Dropdown Quiz – Auto Check]` + `[H3] Synonym strength` + `[body]` + the questions and options as lines; WJFUN307, ENGJ403, ENFUN03, ENGS404, TEFUN05). The heading-then-table rule takes the heading + prose only when a TABLE follows; without this the box would be EMPTY with the whole section free after it, where the gold's same-numbered box usually holds text or media. Rule: when the table scan finds none, the heading becomes the FIRST lead item and the member walk RESUMES right after it — the standard capture (its own terminators: the next heading, an activity opener, a section marker) takes the section as members and the lead_free rule frees the first paragraph. Owned bundles only — the gold boxes the unowned no-table shape less than half the time, so it stays free. Env NOTABLEOWNED_OFF turns this off.",
+						"enabled": true,
+						"env": "NOTABLEOWNED_OFF"
+					}
+				}
+			},
+			"bare_red_opener": {
+				"_doc": "THE BRACKET-LESS RED `Activity 4A` LINE IS THE `[Activity 4A]` OPENER. A writer colours the opener red but types no brackets (`🔴Activity 4A🔴`, then `[H4] Check your understanding` + a red instruction + the answer table — ENGI102 lesson 8, whose gold has box 4A with the built dragAndDrop); the span parses as noise with no primary and the box would never open. The form occurs in ENGS302, PES1001, ENGI102, TWHA902, ANZH101, ENGJ402, SSFUN06, TWHK902 and others, and the gold boxes these activities. A red span with NO resolved tag whose ENTIRE folded text matches `pattern` (the word, the id, an optional colon / full stop, optional bold markers) is re-parsed in place as the typed opener; like the bare-lead rule, a whole-span exact predicate cannot over-fire on prose. Env BAREACT_OFF turns this off.",
+				"enabled": true,
+				"env": "BAREACT_OFF",
+				"pattern": "^\\**\\s*activity\\s+(\\d{1,2}[a-z]?)\\s*\\**\\s*[:.]?\\s*$"
+			},
+			"opener_tags": [
+				"activity",
+				"activity heading",
+				"heading",
+				"h2",
+				"h3",
+				"h4",
+				"h5",
+				"body",
+				"button",
+				"image",
+				"story heading",
+				"list"
+			],
+			"unclassified_activity_lead": {
+				"_doc": "KB 01F activity_heading. THE UNCLASSIFIED ACTIVITY KEEPS ITS TITLE HEADING AND LEAD PROSE FREE. An `[Activity N] Title` whose only widget signal is a data table (the BLL phonics pattern) is captured as an UNCLASSIFIED bundle; if the opener item itself were the bundle's first member, the whole activity — title and instruction paragraph included — would become the placeholder box, while the gold opens the box with `<h3>Title</h3>` + the instruction `<p>` and the widget follows. So the unclassified path records the opener as `bundle.activityOwner` and the items between it and the first TABLE (black runs, ELEMENT tags — [body] / headings / media —, instruction spans) as `bundle.activityLeadItems`, and swallows members from that table — exactly the normal path's activity-owner form, which ContentConverter already renders as the box's h3 title + lead prose + the placeholder box. Env UNCLASSLEAD_OFF collects the opener as a member instead.",
+				"enabled": true,
+				"env": "UNCLASSLEAD_OFF",
+				"heading_led_owner": {
+					"_doc": "THE HEADING-TAG-LED LEAD TAKES THE OWNER FORM. The member form is kept for a lead that OPENS with a heading tag only where the heading terminates the walk so the table renders FREE — true for the tags #swallowMembers terminates on (h2–h5: MXFUN01 / MXFL203 / AGH1008's `[h4]` shape, where the member form fits the gold better) and FALSE for `activity heading`, `heading`, `h1`, `h6`, which the walk swallows whole — title, prose and table into the placeholder — for exactly the KB 01F `activity_heading` tag. With this sub-rule the member form is kept ONLY when the lead's opening heading tag is in member_form_tags; every other heading-tag-led lead takes the owner form (opener = activityOwner, the heading + prose = activityLeadItems, members from the first table); ContentConverter's lead rendering already promotes a heading-tag lead item to the box's <h3>. For bare-opener + heading-tag boxes the gold mostly opens with <h3>Title</h3> (`activity heading`, `activity heading h3` and `heading` especially). Env UNCLASSHEAD_OFF keeps the member form for every heading-tag-led lead.",
+					"enabled": true,
+					"env": "UNCLASSHEAD_OFF",
+					"member_form_tags": ["h2", "h3", "h4", "h5"],
+					"empty_walk_owner": {
+						"_doc": "THE HEADING-LED NUMBERED OPENER TAKES THE OWNER FORM TOO. The member form kept for an h2–h5-led lead is an EMPTY box: the heading is the member walk's first item and headings terminate it, so the bundle holds only the opener — the page would get `<div class=activity number=N>` with the `no content captured` flag alone and the heading / prose / table free AFTER it (as in ENGI102 lesson 8's 4A–4C, MXEO401, MXEX302, HIS1008, ENGI202 …). The gold's same-numbered box usually holds the section INSIDE — h3 + widget, h3 + prose, h3 + table. With this flag on, member_form_tags is ignored: every heading-led numbered opener takes the owner form (opener → activityOwner, the heading + prose → activityLeadItems, members from the first table; a lead with no table before the next stop still renders its h3 + prose inside the box). The typed-widget empty boxes (`[Activity 2A drag and drop]` + a heading — the normal path) are NOT this rule's. Env HEADLEDOWNER_OFF turns this off.",
+						"enabled": true,
+						"env": "HEADLEDOWNER_OFF"
+					}
+				},
+				"post_table_resume": {
+					"_doc": "(As in ANZH205 1A.) THE UNCLASSIFIED ACTIVITY RESUMES FREE BODY AT THE [Body] AFTER ITS TABLE. member_rule.body_terminates_after_table ends a widget's walk at the writer's `[Body]` after a captured data table — but only for a boundary-bank type with uses_data_table, and the unclassified activity (an `[Activity N]` with a data table and no widget keyword — the BLL phonics form) has no entry, so its walk would swallow the post-table prose (`[Body] When you have finished writing all of the words, read your list back to your supervisor`) and the `[Button] Upload to dropbox` after it into the hand-off dump. Where the gold page has that prose, it is mostly INSIDE the same-numbered box (above all in the BLL family and Inquiry templates). With this on, #swallowMembers ends the unclassified owner-form walk at that [Body] and flags the bundle (_postTableResume); ContentConverter's owner close site then keeps the frame OPEN (the same shape as the activity hold) so the ordinary loop renders the prose free inside the box after the hand-off box; autoClose, the next opener or the upload button closes it. headings_too (default false): a post-table h2–h5 already terminates an unclassified walk (heading_is_terminator) and closes the box — leave it. Env UNCLASSTAIL_OFF turns this off.",
+					"enabled": true,
+					"env": "UNCLASSTAIL_OFF",
+					"headings_too": false,
+					"widget_ahead_keeps": true,
+					"_doc_cuts": "Two cases are excluded: a [Body] BETWEEN two data tables is the widget's own instruction and the second table its data (BLL175 1B), and a widget INVOCATION ahead ([hint slider] / [flip card] after the instruction) is the activity's next widget, not resumed free body (ENGS201 4C / XLP03 2A — splitting it out would turn the gold's one widget into two). So the walk looks ahead to its natural end and resumes only when NO table and (widget_ahead_keeps) NO widget invocation follow."
+				}
+			},
+			"_opener_tags_note": "Tags the activity-ownership LOOK-BACK (InteractiveScanner) crosses when walking from a widget back to its owning [Activity N]: the activity's own lead content (title/heading/body/button/image/list) sits between the [Activity] tag and the widget and must not stop the walk. 'list' is included because of cases like OSAI501-02's Activity 2A, which puts an [unsorted list] (the 'Benefit/Risk/Managing the risk' instructions) before its reorder; without 'list' the look-back would stop at the list, the reorder would not be owned by 2A, and the activity would render as an EMPTY box with its title/list spilled outside. A list in an activity lead is activity content, so crossing it is correct (same basis as [body] being an opener)."
+		},
+		"member_rule": {
+			"rule": "Once an interactive block is open, EVERY following item is swallowed as a member — tags of directive SUBTAG, content elements (body/image/video/button/audio/...), free text, writer instructions (flag red, still bundled), and TABLE blocks — UNTIL the first terminator. No member list is needed: membership is 'not a terminator'.",
+			"terminators_absolute": [
+				"(new interactive)",
+				"(new [Activity N])",
+				"alert",
+				"important",
+				"whakatauki",
+				"quote",
+				"end activity",
+				"end of activity",
+				"end page",
+				"end accordion",
+				"end alert",
+				"end important",
+				"lesson",
+				"page",
+				"title bar",
+				"module introduction",
+				"lesson overview",
+				"lesson content",
+				"h1"
+			],
+			"callout_tags_terminate": true,
+			"callout_tags_terminate_note": "(As in BLL210.) GENERAL widget-boundary rule: every registered STANDALONE CALLOUT tag (the keys of Emit_Templates.callouts.by_tag — alert/important/wananga/whakatauki/quote/supervisor note/side alert/...) is ALSO an absolute widget-capture terminator. A callout box that sits immediately BESIDE or AFTER a widget is the writer's OWN standalone element, never a widget member — so the widget's #swallowMembers stops at it and it renders as its own element (the human convention). DATA-DRIVEN + REUSABLE exactly like the by_tag def itself: a FUTURE tag added to callouts.by_tag is AUTOMATICALLY a boundary too (no separate list to maintain). terminators_absolute hard-codes alert/important/whakatauki/quote; this folds in the rest (wananga/supervisor note/side alert) and any future callout — otherwise a side alert (its own canonical 'side alert', not the bare 'alert') abutting an activity widget would be SWALLOWED into the widget's placeholder. Read by InteractiveScanner.ScanPage (the `absolute` set). Env CALLOUTTERM_OFF uses the literal terminators_absolute list only.",
+			"terminators_conditional": [
+				"h2",
+				"h3",
+				"h4",
+				"h5"
+			],
+			"conditional_rule": "[H2]-[H5] terminate only when the open interactive's heading_is_terminator is true; [H1] always terminates.",
+			"terminators_absolute_text": [
+				"^phase\\s+\\d+$"
+			],
+			"terminators_absolute_text_note": "(As in TEFUN02.) A standalone BLACK line matching one of these patterns is a HARD terminator (the same class as terminators_absolute, but for plain TEXT not a tag). The TEFUN fundamentals family delimits each phase with a plain-text 'Phase N' line; without this, a quiz/widget at the end of a phase (whose [end quiz] -> 'end mcq' is NOT an absolute terminator) over-captures the next phase's 'Phase N' delimiter + its content, so the phase never opens. Only a few fundamentals modules carry such a line (TEFUN01-08 + MXFUN01), so this can never cut a real widget member in a standard module. Read by InteractiveScanner.#swallowMembers; env FUNDPHASE_OFF turns it off (the line is swallowed).",
+			"never_member_note": "Any tag in absolute_terminator_tags can be relied on as a hard boundary: when the parser sees it after an interactive has opened, the interactive's content is complete and normal tag-by-tag conversion resumes from that tag.",
+			"same_activity_multi_widget": true,
+			"nested_interactive_absorb": {
+				"accordion": [
+					"shapeHover"
+				]
+			},
+			"nested_interactive_absorb_note": "(As in OSAI501-03.) A DIFFERENT-type interactive opener that the writer authored INSIDE a host widget's content (e.g. a [shape hover] typed inside an [Accordion 5] panel, OSAI501-03 'When AI is not appropriate') is ABSORBED as a nested sub-bundle of the host instead of TERMINATING it (the default at the foot of #swallowMembers). The host keeps walking AFTER the nested widget's members, so a later same-type continuation ([Accordion 5] 'Managing risks', the writer's duplicate-numbered panel 6) rejoins the host as one bundle — matching the human's single <div class=accordion> with the shapeHover nested in panel 5's accContent. The nested widget is recursively swallowed into its own sub-bundle (registered for its own cv2-index + manifest entry) and rendered as an honest nested placeholder by the accordion builder; the host's range still consumes the nested items (no double-render). MAP host->[absorbable nested types] keeps the blast radius tight: only accordion->shapeHover (a handful of human pages nest this). env NESTABSORB_OFF lets the nested widget terminate the host and get its own top-level placeholder.",
+			"numbered_series_absorb": {
+				"enabled": true,
+				"hosts": [
+					"accordion"
+				],
+				"numbered_pattern": "\\[\\s*{type}\\s+\\d+",
+				"min_panels": 2,
+				"tail": true
+			},
+			"numbered_series_absorb_note": "(As in OSOH501-01.) NUMBERED-SERIES CONTAINMENT: when a writer numbers a widget's panels ([Accordion 1] … [Accordion 4]), everything between [Accordion N] and [Accordion N+1] belongs to panel N, INCLUDING a different-type interactive typed inside the panel (a [modal] image set, a [tabs] letter-nav, a [Click drop] values table). Letting ANY different-type invocation terminate the host would split one authored accordion into 4+ fragments (OSOH501-01: panel 1's modals, panel 3's READYSAFE tabs and panel 4 would break out as separate top-level placeholders). So while the HOST is a data-listed numbered-series type, a different-type INTERACTIVE invocation absorbs as a NESTED sub-bundle (the nested_interactive_absorb mechanism, shared implementation #absorbNestedSubBundle) — (a) ALWAYS when a LATER numbered same-type tag lies ahead before a hard stop (h1/activity/absolute/page-boundary/container-close) = the between-panels forward guarantee, and (b) after the LAST numbered panel (tail:true) only when the series is real (>= min_panels numbered tags already captured); the tail window stays bounded by every existing terminator (lone section heading, callout, [Activity], [H1], page end). The human golds commonly nest widget markup INSIDE accContent (videoSection, speechBubble, carousel, flipCard, clickDrop, dropDown, hintSlider, tabs, shapeHover). The nested sub-bundle renders in place — BUILT when its own builder succeeds (e.g. the READYSAFE tabs), else an honest nested placeholder. env ACCNEST_OFF lets the nested widget terminate the host.",
+			"leading_pattern_absorb": {
+				"enabled": true,
+				"inline_only": true,
+				"widget_first_alternation": "^W(LW)+$",
+				"label_signatures": [
+					{
+						"name": "url",
+						"re": "^https?://"
+					},
+					{
+						"name": "bullet",
+						"re": "^[\\u2022\\u2013\\u2014-]\\s"
+					},
+					{
+						"name": "num",
+						"re": "^\"?\\(?\\d+\\s*[.)]"
+					},
+					{
+						"name": "alpha",
+						"re": "^\"?[a-z]\\s*[.)]"
+					},
+					{
+						"name": "colon",
+						"re": ":\\s*$"
+					}
+				],
+				"label_like": [
+					"num",
+					"alpha",
+					"colon",
+					"bullet"
+				],
+				"max_above_words_over_labels": 2,
+				"min_above_words_cap": 12
+			},
+			"leading_pattern_absorb_note": "(As in ENGC101-02.) THE BACKWARD LEAD-PAIR ABSORB — detect a repeating pattern, then walk UP to recover the missed first pairing. A bundle is scanned FORWARD from the first interactive tag, so when the writer's element is a REPEATING (lead-in label, widget) series the FIRST label — which sits ABOVE the first tag — would be orphaned (ENGC101-02: 'We can use words to describe what we see:' left as a stray body <p>, its 'feel:'/'think:' siblings inside the box; XGF9004 True/False modals: statement '1.' outside, '2.'..'12.' inside). AFTER #swallowMembers, this pass collapses the members to a per-source-block token string (W=interactive tag, L=standalone black label, O=table), and ONLY when it is a STRICT clean widget-first alternation (widget_first_alternation ^W(LW)+$, >=2 widgets, one label per interior widget, no L-runs, no tables) does it consider absorbing. It then extrapolates the unit BACKWARD: it walks up from the tag over UNCONSUMED black items whose label SIGNATURE (label_signatures, first match wins) equals the DOMINANT interior-label signature ('similarly structured') and are label_like (num/alpha/colon/bullet — never free prose or a URL), capped at exactly the MISSING count (widgets - interior labels = 1 for this envelope) and at a word count near the interior labels (never a body paragraph). Matched labels are prepended to memberItems + startIndex moved back (the ownership loop then consumes them). The strict+similarity guard fires rarely (ENGC101 speechBubble colon, XGF9004 modal numbered) — MXEX302's carousel (interior 'label' a URL, above free prose) and every already-consumed 'above' correctly do not match. inline_only:true (an activity-owned bundle's startIndex is the [Activity] tag, whose predecessor is section content, not a widget label). Env INTLEADPAIR_OFF (or enabled:false) uses the forward-only capture. Looser envelopes (trailing-label WLWLWL, table-interleaved) are not handled.",
+			"same_block_image_absorb": {
+				"enabled": true,
+				"owner_start_fix": true,
+				"types": [
+					"speechBubble"
+				],
+				"image_tag": "image",
+				"other_item_classes": [
+					"instruction",
+					"noise"
+				],
+				"istock_id_pattern": "gm-?\\d{6,10}",
+				"video_pattern": "youtu\\.?be|youtube\\.com|vimeo",
+				"max_absorb": 6
+			},
+			"same_block_image_absorb_note": "THE BACKWARD SAME-BLOCK AVATAR ABSORB. The writer types the avatar and its bubble as ONE paragraph — '[Image] avatar Tina  smiling  <iStock title> [LINK: https://…gm2235638824-…]  [speech bubble] RHS  See how the table gives the details…' — but the extractor splits that paragraph into separate red-span ITEMS and the forward member walk begins AT the [speech bubble] invocation, so the [image] would be orphaned just above the bundle: a loose standalone image (plus an 'avatar Tina' caption) with the bubble text stranded in a hand-off box below, where the finished page has ONE row speechBubble holding both. This pass walks UP from the invocation over the CONTIGUOUS run of unconsumed items sharing the invocation's own source `block` (the 'continuous sentence vs a paragraph later' discriminator — an [image] in a different paragraph is the writer's separate element and can never be pulled in), and absorbs the run when it holds EXACTLY ONE [image] tag and otherwise only the image's own descriptive instruction/noise spans; the bundle must additionally have no table, no extra widget types, and exactly one nameable iStock id in its harvested media with no video URL. The absorbed image is handed to InteractiveBuilder's speechBubble no_table_image branch as bundle.sameBlockImage; absorbed instruction spans go to bundle.instructions so they still surface as red Writers Notes (never silently strip a documented instruction — they simply render after the widget instead of before it). Where the guard matches (TEDC401, TEDC402, SSCI104) the human gold always builds an avatar+bubble row. Other no-table speechBubble bundles are deliberately LEFT as hand-off boxes: those with no media at all (the gold often adds a character asset that is in no Writers Template), with non-iStock media, or with an iStock URL but no same-block [image]. env SBNOTBL_OFF turns off this absorb + the builder branch.",
+			"inline_markers": [
+				"wordSelect",
+				"wordHighlighter"
+			],
+			"standalone_inline_markers": [
+				"infoTrigger"
+			],
+			"table_qualifier_tags": [
+				"table"
+			],
+			"_opener_tags_heading_note": "The activity-ownership look-back crosses an activity's LEAD content (title/sub-headings/body/image/list between [Activity N] and the widget) to find the owning [Activity]. The normaliser emits the LEVELLED tags h2-h5, not only the GENERIC 'heading', so opener_tags lists h2-h5 too; otherwise the look-back would stop at a lead heading (OSAI401-01 Activity 1A's [H4] 'AI Abilities') and never reach [Activity 1A] — the wordSelect would not be owned by 1A: the activity would get no .interactive class AND would not be bounded by the widget (it would over-extend past 'People can do…'). Safe: the look-back stops AT the [activity] tag, so a section break before the activity is never crossed.",
+			"conversation_absorbs_clickdrop": true,
+			"_conversation_absorbs_clickdrop_note": "A CONVERSATION speechBubble (its invocation carries the 'Conversation layout' cue) absorbs an immediately-following clickDrop as its inline response reveal — the writer's 'Click to see its response:' + [Click drop] (front/drop) is the last chatbot turn (OSAI401-01 Prompt 4). The conversation builder renders it as the last bubble's CLICK reveal (button + clickDropContent), per the WT's literal [Click drop] — NOT the human's non-derivable hover. The clickDrop's [front]/[drop] members are then collected; a following [body] still terminates (the face/reveal-member rule). Read by InteractiveScanner.#swallowMembers.",
+			"_table_qualifier_note": "TABLE-QUALIFIED widget: when an inline-marker tag ALSO carries one of these qualifier tags ([Table wordSelect]), it is a STANDALONE table-data interactive (the human builds a clickable table) — NOT an inline highlight. The InteractiveScanner skips the inline-marker dissolution and starts a normal bundle that captures the following table, so the widget is WRAPPED in a placeholder instead of leaking as a raw <table> (OSAI401-01 Activity 1A '[Table wordSelect] What can AI do'). Read by InteractiveScanner.",
+			"_inline_markers_note": "INLINE MARKERS: these widget types are NOT standalone block widgets — they annotate text INLINE. Two roles, two lists:\n  • inline_markers ([highlight text]/[word select] → wordSelect/wordHighlighter): the human highlights text via the wordHighlighter class ON the surrounding container (e.g. a flip-card's back face). These get BOTH roles — (a) ABSORBED as a plain member when another widget is open (so XGF9001's back 'Being [highlight text] gifted means…' stays ONE back), and (b) standalone, the marker is dropped and the text renders as free body.\n  • standalone_inline_markers ([rollover/hover/mouseover definition] → infoTrigger): the human wraps the PRECEDING word in an inline <span class=\"infoTrigger\" info=\"…\"> tooltip (far more often than a block div). These get ONLY role (b) — a STANDALONE one (in body text) is dropped so it cannot swallow the rest of the page (as in SSFUN07-00/PHE1008-00). They are NOT absorbed inside an open widget (role a): inside a widget they TERMINATE as normal, because absorbing them would corrupt ENGS101's compound-word flip-cards (the [Rollover definition] CS-notes in the card region would be pulled into the build). The infoTrigger hover payload is left to the interactive build (the annotated word renders as readable plain text).",
+			"trailing_media_extract": [
+				"video",
+				"audio"
+			],
+			"_trailing_media_note": "TRAILING MEDIA: a tag listed here, when it is the LAST member of an interactive block, is trimmed back out of the block so it renders as its OWN standalone element. Writers often place an explainer [video] AFTER a widget's content (e.g. OSBY301's video after the last accordion panel); the boundary scan swallows it, but the human renders it separately. Add/remove tags here to tune. (image is deliberately NOT listed: an image at the end of a block is usually the last panel's own image, not a separate element.)",
+			"same_activity_note": "When a NEW interactive tag appears while a bundle that belongs to an [Activity N] is open — and no new [Activity] wrapper has appeared — the human developers build it as part of the SAME activity block (as in BLL155 1A: carousel + [self check] = one activity). The engine therefore absorbs it into the open bundle as an additional widget type instead of splitting (extraTypes on the bundle/manifest). Openerless INLINE bundles still split.",
+			"same_activity_display_terminates": false,
+			"display_terminator_types": [
+				"speechBubble",
+				"flipCard",
+				"tabs"
+			],
+			"same_activity_display_terminates_note": "(As in ENGS401-01.) DORMANT: the flag defaults to false; set it true to activate. REFINES same_activity_multi_widget by the FOLLOWER's ROLE. When a bundle that belongs to an [Activity N] is open and a NEW interactive of a DIFFERENT type appears with no new [Activity] tag between them, same_activity_multi_widget absorbs it (one activity). That is correct for a TASK follower (typing/dropQuiz/reorder/multiChoiceQuiz — the human almost always keeps these INSIDE the activity) and for a SAME-type continuation, but the human usually CLOSES the activity and renders a DISPLAY/narration follower OUTSIDE as a new presentational section — above all flipCard, tabs and speechBubble (the ENGS401-01 case: carousel/radio INSIDE .activity, the following [speechbubble] OUTSIDE). WHEN ENABLED: if the follower's resolved type is in display_terminator_types AND != bundle.type, InteractiveScanner.#swallowMembers TERMINATES the open bundle instead of absorbing; the follower starts its OWN bundle whose activity look-back (it stops at the first consumedBy item) resolves it as free-body — OR, if a new [Activity] tag intervenes, that tag's absolute terminator already opens a NEW activity container for it. TWO insertion points: (a) the (new interactive) free-tag absorb, (b) a following TABLE whose cell carries a DIRECT display-terminator invocation ([speechbubble] in ENGS401 is table-authored). Env ACTSPLIT_OFF also turns it off when enabled. It stays off because the tables it frees (flipcard/highlighter, EXBP901/EXIP901 [tab n]) would render RAW until that content is captured or built.",
+			"body_terminates_after_face": true,
+			"body_terminates_after_face_note": "A [Body] ELEMENT after the widget has captured a FACE/REVEAL member ([front]/[back]/[drop]/[answer] — face_member_tags) TERMINATES the widget: the writer is resuming free body (the human keeps it OUTSIDE the widget). The test keys off the CAPTURED member (not the signature), so it covers the clickDrop FRONT/DROP reveal form (OSAI401-01) as well as flipCard/speechBubble faces. A [Body]-BASED form with no face/reveal member (SSFUN07's [body] backs; the clickDrop label+[body] form) never captures one, so its [body] members stay content. XGF9001: 2 flipcards then [Body] body text. Read by InteractiveScanner.#swallowMembers.",
+			"face_member_tags": [
+				"front",
+				"back",
+				"drop",
+				"answer"
+			],
+			"face_excludes_invocation": true,
+			"face_excludes_invocation_note": "(As in OSBY201-01.) For a DATA-TABLE widget (uses_data_table:true), body_terminates_after_face counts a face tag only on a genuine captured face MEMBER (a [front]/[back]/[drop]/[answer], which parses as a SUBTAG), NOT on the widget's OWN invocation whose MODIFIER words can coincide with a face word: [reorder – show answer] parses to tags [reorder, answer]; [Multichoice – correct answers are in red] -> [mcq, answer]; [click and drop on answers] -> [click drop, answer]. Counting the invocation would make the FIRST following [body] falsely terminate the bundle, so the data-table widget would capture NOTHING and its data table would leak outside the activity (OSBY201-01 1B reorder: 'no content captured' + a leaked <table>). The invocation is INTERACTIVE; genuine face members are SUBTAG — so InteractiveScanner.#swallowMembers skips INTERACTIVE-directive members in the sawFace test. SCOPED to uses_data_table widgets: for those a following table is unambiguously the widget's data (post-table body-termination is body_terminates_after_table), so suppressing the false face-terminator cannot over-capture free body; the true FACE/REVEAL widgets (flipCard/clickDrop/speechBubble) keep the plain face rule, and non-table pop-ups (modal 'Pop up with answer') are not covered. Env FACEINVOKE_OFF counts the invocation.",
+			"face_empty_keeps_body": true,
+			"face_empty_keeps_body_note": "(As in OSAI501-04.) An EMPTY face ([back]/[front] with no inline content) takes its content from the FOLLOWING [body] ELEMENT(s) — the [Front]/[H5] title [image]/[back]/[body] card form. That [body] is the face content, NOT a free-body section break, so body_terminates_after_face is suppressed while the most-recent face is still empty. The inline-content-face form (XGF9001 2-flipcards) still terminates. env FACEBODY_OFF.",
+			"face_table_capture": {
+				"enabled": true,
+				"require": [
+					"back"
+				],
+				"widget_type": "flipCard",
+				"_note": "A FREE-BODY table (no invocation in any cell, consumedBy===undefined) whose cells carry a [back] face tag (the back-of-card signal; the fronts may be [Front] text OR [Image]) is ORPHAN flip-card data: the human builds a flipCard, and without this the raw <table> would leak (XGF9001-05 [Front]+[Back]; XGF9006-07 [Image]-front + [Back]). #interactiveInTable returns flipCard so the table is captured as a bundle — the builder declines the un-paired table form, so it renders as an honest placeholder with the [Front]/[Back]/[Image] data INSIDE it (a developer reference, not a learner-facing leak), and the page gets a WIDGET marker like the human's. The consumedBy guard at the call site means it NEVER touches a table already captured by a [flipCard]/[Embedded] invocation bundle (CEDO501/CEDW501/etc. are unaffected). Env FACETABLE_OFF turns this off.",
+				"scope_note": "Across the modules (placeholders stripped, notes dropped) the ONLY free-body tables carrying a [back] face tag are XGF9001-05 and XGF9006-07; every other module's face tables sit inside placeholders. [back] is flipCard-specific (front/back), so the [back] signal cannot mis-fire on a clickDrop ([front]/[drop]) or a data table."
+			},
+			"flipcard_data_table_absorb": {
+				"enabled": true,
+				"trigger_tag": "embedded",
+				"member_tags": [
+					"item"
+				],
+				"_note": "The [Embedded][Flipcard] form is a DECLARATION table ('Activity Type / [Embedded] / [Flipcard]') captured here (the [Flipcard] invocation lives in a cell, so #interactiveInTable opens a flipCard table-bundle), immediately followed by a SEPARATE flip-DATA table whose cells carry [Item N] rows ('Card no. / Image (front) / Text (back side)'). Without this the decl table would be captured but the data table (no invocation of its own) would escape the bundle and leak its [Item N]/[Image] literals (PNR101/102/104). When a flipCard table-bundle is created from a table whose text carries [Embedded] (trigger_tag), absorb the immediately-following member-tagged ([Item N], member_tags) data table(s) into the SAME bundle, so the page shows ONE flipCard placeholder with all its data INSIDE it (a developer reference, not a learner-facing leak). A following table that has its OWN invocation or a [back] face tag (its own face_table_capture bundle) is LEFT for that bundle — the absorb stops. Env FLIPDATA_OFF turns this off.",
+				"scope_note": "Free-body [Item N] data tables occur only in PNR101/102/104; the trigger requires the preceding decl table to carry [Embedded], so the absorb cannot run on a non-[Embedded] flipCard (e.g. the XGF [back] tables, which have no [Embedded] and no following [Item N] table)."
+			},
+			"body_terminates_after_invocation_text_types": [
+				"speechBubble"
+			],
+			"body_terminates_after_invocation_text_note": "SELF-CAPTIONED widgets: the listed types carry their content on their OWN invocation tag's trailing text (a [speech bubble] <text> bubble), NOT in a [front]/[back] face or a data table. So a [Body] ELEMENT after the invocation (which already holds the bubble text) is the writer RESUMING FREE BODY — terminate the widget; the [body] and everything after it (more body, a video, a following bubble) render as normal page content OUTSIDE the widget. This is the inline-authored companion to body_terminates_after_face / body_terminates_after_table: same section-break family, for a widget whose 'face' is its invocation text. A PER-TYPE list (not a blanket rule) so it never fires for table/face-authored widgets (e.g. flipCard) whose invocation text can legitimately precede a [body] before the table is captured. The guard requires the invocation to ALREADY carry non-blank text, so an empty [speech bubble] whose text is in a following [body] is not mis-cut. XGF9001-00: a [speech bubble] 'Giftedness isn't just…' + [image], then 'This module will help you:' + bullets + a video + a 2nd bubble — the widget ends at that [body]. Read by InteractiveScanner.#swallowMembers.",
+			"trailing_media_extract_exempt_types": [
+				"carousel",
+				"rotateBanner"
+			],
+			"trailing_media_extract_exempt_note": "SLIDESHOW widgets (carousel, rotateBanner) are EXEMPT from trailing_media_extract: a trailing [video]/[audio] is the LAST SLIDE, not post-widget media. Without this, a video carousel loses its last slide (it renders standalone after the widget, then the auto-builder would duplicate it). Read by InteractiveScanner.#trimTrailingMedia.",
+			"trailing_media_keep_types": [
+				"modal"
+			],
+			"trailing_media_keep_note": "The MODAL keeps its trailing media. A [video] directly after '[modal] <label>' IS the pop-out's CONTENT by the widget's own semantics: the modal dialect ('[Modal] Factor trees' then the video that pops out) exists for exactly that shape, and the golds render label+video as ONE unit (ENFUN09's h5+video, MXDB302's h4+video, MXFU301-9.0's own TKmodal). Trimming it would empty the bundle: '[modal] Author Neil Gaiman speaks on his drafting process' + [video] captures BOTH members, and #trimTrailingMedia popping the video would leave a one-marker hand-off box with its content stranded outside (ENFUN09, MXDB302). A separate key + toggle so the OSBY301 post-accordion semantics of trailing_media_extract are untouched for every other type. Env MODTRAILMEDIA_OFF.",
+			"body_terminates_after_table": true,
+			"body_terminates_after_table_note": "A [Body] ELEMENT that appears AFTER a TABLE-DATA widget (uses_data_table: true) has already captured its table is the writer RESUMING FREE BODY — the table is the widget's content; the [body] is a section break, and anything after it (free body, a following speechBubble/widget) is NOT part of the widget. The human renders all of it OUTSIDE the widget (OSBY201-02: a [typing] scenario table -> free body -> a separate Billy-Bulldog speechBubble; without this, the typing would swallow both). Terminate the widget at that [body]. Mirrors body_terminates_after_face for table-data widgets. SLIDESHOW widgets are EXEMPT (their trailing body is a slide caption handled by the image-carousel builder). Read by InteractiveScanner.#swallowMembers.",
+			"body_terminates_after_table_exempt_types": [
+				"carousel",
+				"rotateBanner"
+			],
+			"heading_terminates_after_table": true,
+			"heading_terminates_after_table_exempt_types": [
+				"rotateBanner"
+			],
+			"heading_terminates_after_table_exempt_types_note": "The HEADING rule's OWN exemption list (separate from body_terminates_after_table_exempt_types, so a carousel is not exempt from both). A SECTION HEADING ([H2]-[H5]) after a CAROUSEL's captured slide table is the writer's next section, never a slide — otherwise the table-slides carousel would swallow the whole rest of the page (AGH1005 2.0 'Parts of a plant', AGH1009 5.0's four h3 sections, XTAS102 3.0's seven h4 carousels) and drop every word of it, where the gold keeps the text as free body. The carousel ENDS at that heading; rotateBanner keeps the exemption. A trailing [body] after the table stays a carousel member (a caption — the body list is unchanged) and the table-slides builder renders it after the widget (Emit_Templates carousel.table_slides.members). Key ABSENT → the shared body list. Read by InteractiveScanner.#swallowMembers; env CARHEADEND_OFF.",
+			"heading_terminates_after_table_note": "Companion to body_terminates_after_table: an [H2]-[H5] section HEADING that appears AFTER a TABLE-DATA widget (uses_data_table: true) has captured its table is a NEW SECTION — the table is the widget's content, so the heading and everything after it belong OUTSIDE the widget. This OVERRIDES the widget's heading_is_terminator:false (which exists only so the widget's OWN internal headings — story heading / slide n, which sit in/before the data — are not treated as terminators; a heading AFTER the data table is not internal). The human renders it as a free <hN> section (OSAI501-01: a [memory game] data table -> [H3] 'Generative AI and LLM' -> a speechBubble + a video; without this, the memoryGame would swallow the heading, bubble and video). Same SLIDESHOW exemption as body_terminates_after_table. Read by InteractiveScanner.#swallowMembers.",
+			"heading_terminates_after_table_levels": [
+				"h2",
+				"h3",
+				"h4",
+				"h5"
+			],
+			"body_after_slide_table_ends": {
+				"enabled": true,
+				"env": "CARBODYEND_OFF",
+				"types": [
+					"carousel"
+				],
+				"owned_box_stays_open": true,
+				"_doc": "owned_box_stays_open: when the carousel OWNS its activity box, the prose after the slide table stays INSIDE that box (as the gold does — the _postTableResume hold the converter's owner close site already honours); a carousel that owns no box leaves it free. body_terminates_after_table_exempt_types keeps the carousel's trailing [body] as an image-series slide caption (the HEADING half is heading_terminates_after_table_exempt_types / CARHEADEND). But the break is only considered once the bundle HOLDS a table, and a carousel whose slides ARE a table carries its captions in the cells: the [body] after the slide table is the writer's next section — the gold almost always puts it OUTSIDE the carousel (free, or in the next activity box; a caption once — XTAS102 4.0). For a type listed here the exemption is lifted, so the [body] after its table ends the capture like any other table-data widget's. rotateBanner is not listed. Env CARBODYEND_OFF keeps the exemption."
+			},
+			"dropbox_button_ends_capture": {
+				"enabled": true,
+				"env": "DROPBOXEND_OFF",
+				"module_pattern": "^BLL\\d",
+				"button_label_pattern": "upload\\s+(?:it\\s+|this\\s+|your\\s+\\w+\\s+)?to\\s+(?:the\\s+|your\\s+)?drop\\s*-?\\s*box",
+				"stop_tags": [
+					"body",
+					"image"
+				],
+				"_doc": "A FAMILY DIALECT (the Blended Literacy modules, module_pattern). The writer ends the module's last activity with `[Button] Upload to dropbox [trigger engagement]` and closes the module with a celebration `[image]` + `[body] Congratulations on completing this module…` (BLL272 / 273 `Ka rawe tō mahi!`). The activity box closes at that button, but the last widget's member walk would run on and swallow the closing picture and text into its hand-off box; the gold keeps them FREE (`div#body > (div.inquiryPanel >) div.row > div.col-md-8 / col-md-6 > p`). In a module the pattern names, a stop_tags member after a captured upload-to-dropbox button (button_label_pattern on the member's own text + its black line) ends the walk. Env DROPBOXEND_OFF turns this off."
+			},
+			"panel_scoped_table_break": {
+				"enabled": true,
+				"env": "ACCPANELBREAK_OFF",
+				"types": {
+					"accordion": "^\\[\\s*(?:start\\s+of\\s+)?accord(?:io|ia)n(?:\\s+(?:heading|panel|tab|title|item))?\\s*(?:\\d+|one|two|three|four|five|six|seven|eight|nine|ten)\\b"
+				},
+				"_doc": "The two section breaks above (body_ / heading_terminates_after_table) read a [Body] or heading after a TABLE-DATA widget's captured table as the writer starting a new section. The accordion is a table-data widget (a D2 accordion IS its table), but an accordion with the writer's own NUMBERED panel delimiters carries tables as PANEL CONTENT: MXFL301-4.0's panel 1 holds a step table, then `[accordion 2] The box method` opens panel 2 and its `[body] The box method uses place value…` would be read as a new section — the capture would stop, panel 2 would come out empty, the whole accordion would become the hand-off box and panel 2's content would run free below it (ENGJ102-2.0's accordion would split in two there). For a type listed here, the break counts only a table in the CURRENT panel: when the bundle's last numbered panel delimiter (the type's pattern, matched on the member's own red-span text) was captured AFTER its last table, the [Body] / heading is that panel's content and the walk continues; a table inside the current panel still ends it at the next [Body] / heading. Env ACCPANELBREAK_OFF turns this off."
+			},
+			"lone_heading_section_break": true,
+			"lone_heading_section_break_note": "(As in OSBY201-03 shapeHover 'The ‘banter’ trap'.) A heading_is_terminator:false widget (flipCard/accordion/clickDrop/tabs/slider/memoryGame/crossword/shapeHover) legitimately HOLDS internal headings, but in the human builds those are only: (a) the widget's LEAD title (a heading BEFORE any captured content member), (b) a CLUSTER of >=2 sibling panel/front headings (accordion 'Drafting/Revising/Editing/Publishing'; clickDrop vocab labels), or (c) a card FRONT immediately followed by its [image] (flipCard, OSAI501). A SINGLE heading that lands AFTER the widget captured >=1 genuine content member, has NO sibling [H2]-[H5] before the bundle's next ABSOLUTE terminator (lone, not a cluster), AND is FOLLOWED BY ordinary section content (a [body]/[video]/[audio]/table/list — NOT an [image] front, NOT widget sub-content) is the writer STARTING A NEW SECTION the widget must not own. The human renders it OUTSIDE the widget (as in OSBY201/OSGM401 shapeHover, CEDW501/XGF9001/MXFL301 accordion, ENGJ301/EXPFUN06/MXDB302 flipCard). DISTINCT from heading_terminates_after_table (that fires AFTER a captured TABLE; this fires when the captured content is floating black members / images with NO table yet, e.g. shapeHover's text-box labels). The LEAD + CLUSTER + follow=image exclusions keep every legitimate internal heading. Read by InteractiveScanner.#swallowMembers; env LONEHEAD_OFF turns it off.",
+			"lone_heading_follow_section_tags": [
+				"body",
+				"video",
+				"audio",
+				"list"
+			],
+			"lone_heading_panel_label_exclude": true,
+			"lone_heading_panel_label_exclude_note": "(As in BLL241-02 clickDrop.) PANEL-LABEL exclusion for the lone_heading_section_break rule. A NUMBERED multi-panel widget authors each panel as [clickdrop N image] > [clickdrop N text] > [H#] label > [body] > [image]*3 (BLL241 Fog/Loops/Glide vocabulary panels). EVERY panel heading is followed by its own [body], and the LAST panel's heading is 'lone' (no sibling [H#] after it before the next [Activity]), so the lone-heading rule alone would terminate the widget at the last panel — fragmenting the clickDrop into an activity box + a second numberless interactive box + a plain-body leak (the Loops panel). A heading whose NEAREST preceding captured member (skipping the widget's own empty [clickdrop N text] opener + retained INSTRUCTION notes, with NO free body text / media / table between) is a SAME-TYPE interactive PANEL OPENER is that panel's LABEL, never a section break. This is the direct analogue of lone-heading exclusion (c) 'a card FRONT immediately followed by its [image]'. The shapeHover 'banter' [H3] is preceded by shape CONTENT (an [image]/[body]), not a same-type opener, so it still correctly terminates (OSBY201-03/XGF9001/ENGJ301). Read by InteractiveScanner.#swallowMembers; env LONECLUSTER_OFF turns the exclusion off.",
+			"body_section_break_after_shape": true,
+			"body_section_break_after_shape_types": [
+				"shapeHover"
+			],
+			"body_section_break_after_shape_note": "(As in OSAI501-02.) A shapeHover authors REPEATING [shape n] > [body] > [image] groups. A [body] that begins AFTER the current shape group is already COMPLETE (an [image]/media member captured since the most recent [shape n] tag), with NO new [shape n] opening it, is the writer RESUMING free body — the human renders it OUTSIDE the widget ('While it's not perfect and can make mistakes…' is a plain <p> before the [H3] AI risks section, OSAI501-02). Every legitimate shape-description [body] is immediately preceded by its [shape n] (no [image] captured in the group yet) so never trips. Same section-break family as body_terminates_after_face/_after_table/_after_invocation_text + lone_heading_section_break (which terminates the FOLLOWING [H3] AI risks). Seen in OSAH501/OSAI401/OSAI501/OSGM401/OSGM501/OSOH501. Read by InteractiveScanner.#swallowMembers (walk back to the current shape's [shape n] opener: an [image]/media seen since it → orphan [body] → terminate); env SHAPEBODY_OFF turns it off.",
+			"slideshow_heading_internal": [
+				"carousel",
+				"rotateBanner"
+			],
+			"slideshow_heading_internal_note": "(As in OSAI501-04.) A carousel/slideshow's slide TITLES are [H#] headings INSIDE the widget ([Slide N] then [H5] 'Data ingestion'). The bank flags carousel heading_is_terminator:true, so the FIRST slide [H5] would terminate capture → the carousel would build nothing ('RED FLAG: Un-built [carousel] marker — no content captured') and every slide would leak as an orphan [slide n] sub-tag. For these slideshow types InteractiveScanner forces headingTerminates=false so slide titles are captured; lone_heading_section_break still bounds a REAL post-carousel section heading (a CLUSTER of slide titles never trips lone_heading). env CARSLIDE_OFF lets the heading terminate.",
+			"slideshow_heading_lone_break": true,
+			"slideshow_heading_lone_break_note": "(As in OSOH501-01/-02.) Treating every heading in a carousel as internal would swallow the SECTION heading following the whole carousel ([H3] 'How to use hauora…' after the 4th slide) as a bogus 5th slide, and the empty trailing slide would bail the builder (the carousel would stay an orange placeholder). With this flag the exemption is PRECISE: a heading whose nearest preceding substantive member is a [Slide N]/[slide] MARKER is that slide's title (always internal — the OSAI501-04 protection); any OTHER heading in a slideshow runs the standard lone+follow test, whose follow=image exclusion keeps a heading-OPENED slide's title inside (its [image] follows) while a trailing section heading (followed by [body] text) correctly terminates the carousel. env CARTRAIL_OFF uses the blanket exemption.",
+			"body_section_break_after_slide": true,
+			"body_section_break_after_slide_types": [
+				"carousel",
+				"rotateBanner"
+			],
+			"body_section_break_after_slide_note": "(As in OSAI501-04.) A carousel slide is [slide n] > [H#] > [body](main, pre-image) > [image] > [body](Example, post-image) — exactly ONE caption after the image. A FURTHER [body] (image seen since the last [slide n] AND a [body] ALREADY captured after that image — i.e. the 2ND post-image body) is the writer RESUMING free body after the last slide; the human renders it as a <p> AFTER the carousel ('AI is only as good as the data it learns from…', OSAI501-04, then [Activity 4a]). Same family as body_section_break_after_shape but slideshow allows one post-image caption, so the discriminator is the 2nd post-image body. Read by InteractiveScanner.#swallowMembers; env CARSLIDE_OFF turns it off.",
+			"media_series_break": true,
+			"media_series_break_types": [
+				"carousel",
+				"rotateBanner"
+			],
+			"media_series_min_run": 2,
+			"media_series_break_note": "(As in ENGS404-00, the new-era WT media-series carousel.) A carousel authored as a back-to-back RUN of [image]/[video] members directly after the invocation ('[insert image carousel] [image 1]..[image 4]') is delimited by the writer's own list: the first following non-media ELEMENT tag ([body]/heading/[button]/data marker…) resumes the SECTION, so the member walk terminates there instead of absorbing the rest of the page into the placeholder. Fires ONLY while the capture is still a PURE media run (no [slide N] marker; every substantive member so far = invocation / media / a video's own link-title black line / writer instructions; run >= media_series_min_run). Interleaved slide dialects (image>body>image captions) fail the pure-run test and are unaffected BY CONSTRUCTION. A heading after the run is the NEXT page section, never a trailing slide (as in EXPFUN02, ENGJ403, XLP04/06, HPRE301, XGF9001). Read by InteractiveScanner.#swallowMembers; env CARSERIES_OFF turns it off.",
+			"instruction_dominant_member": true,
+			"instruction_dominant_min_words": 8,
+			"instruction_dominant_member_note": "(As in ENGS302-01.) A writer INSTRUCTION that name-drops tag-words mid-sentence — '[This is the correct order of plot points. Please randomise order and include a check and reset BUTTON at the end of this ACTIVITY]' — resolves (TagNormaliser) to class:'tag' with embedded tag matches [activity|correct|button], primary=button. Inside an OPEN interactive bundle this would both (a) TERMINATE the member walk at the embedded 'activity' tag, orphaning the dragAndDrop's FOLLOWING data table (it would leak as plain <p> body), and (b) render the leftover span as a phantom '[button]' -> the journal-label default button ('Go to your journal') stranded between the placeholder and the data. So before the terminator checks, when the next item IS instruction-dominant (TagNormaliser.IsInstructionDominant: class==tag + ALL resolved tags how=='embedded' + an instruction cue present + >= min_words), it is swallowed as a plain instruction MEMBER (it is consumed -> no phantom button; the walk continues -> the data table is captured into the bundle). BRIDGE-TO-DATA ONLY (the over-capture guard): the swallow fires SOLELY when the bundle is a uses_data_table widget AND the instruction sits IMMEDIATELY BEFORE its DATA TABLE — so it bridges the widget to its table (ENGS302 1A) but can NEVER extend a bundle across an instruction into FREE PROSE the human keeps. SCOPED to the member walk (an open bundle) — the GLOBAL classification is unchanged, so standalone briefs (image/audio/embed/activity drafts) are untouched. The cue+all-embedded+length test never matches a clean leading element tag ('[Download learning journal button]' has no cue; '[H3] x' is a leading exact tag). Read by InteractiveScanner.#swallowMembers; env INSTRDOM_OFF turns it off (the walk terminates at the instruction).",
+			"heading_splits_same_type_groups": [
+				"flipCard"
+			],
+			"heading_splits_same_type_groups_note": "(As in OSAI501-04.) A SECTION heading BETWEEN two same-type widget groups (the [H4] Unethical between the Ethical/Unethical flipCardsContainers) SPLITS them. A heading whose immediately-following member is a SAME-type interactive opener (a [flip card]) is a between-group section heading (a card-front heading is followed by its [image]). InteractiveScanner.#swallowMembers terminates so the heading is free + the next group is its own bundle. env FLIPGROUP_OFF.",
+			"table_display_terminates_types": [
+				"flipCard"
+			],
+			"table_display_terminates_types_note": "(As in OSAI501-04.) A MEMBER-based flipCard terminates at a FOLLOWING table that is a DIFFERENT-type display widget (the unicorn [speech bubble] table after the Unethical cards) via the table direct invocation, rather than absorbing it (an absorbed table makes #flipCardMembers bail). A plain card-DATA table (the XGF/PNR [back] tables, not a display widget) is still absorbed. env FLIPTBL_OFF.",
+			"table_display_terminates_types_slideshow": [
+				"carousel",
+				"rotateBanner"
+			],
+			"table_display_terminates_types_slideshow_note": "(As in OSAH501-03.) A member-based CAROUSEL/slideshow LIKEWISE terminates before a FOLLOWING table whose DIRECT invocation is a DIFFERENT-type display widget (the Lawdog [speech bubble] table after the 4 incident slides), instead of ABSORBING it. An absorbed display-table would make #carousel bail to a placeholder AND deny the speech bubble its own bundle (the carousel would run past its last slide into the next widget). Same mechanism as table_display_terminates_types; scoped to the slideshow types, which never use a data table, so a carousel is unaffected elsewhere and the main loop's #interactiveInTable opens the table as its own free-body bundle. The writer tagged TWO widgets ([carousel] + [speech bubble]) and the human builds two — the writer tag corresponds to the human element, so both build (as in OSAH501-03, OSAI201-03, OSAI101-01, OSAI301-01, OSAI401-04, ENGS401-01). env CARTBL_OFF.",
+			"bare_invocation_dissolve_empty": {
+				"enabled": true,
+				"types": [
+					"interactive"
+				],
+				"min_member_chars": 40
+			},
+			"bare_invocation_dissolve_empty_note": "The bare generic '[Interactive]' invocation (Tag_Lexicon _meta.qualifier_alias_demote.standalone_becomes -> canonical 'interactive') opens a widget bundle so the following instruction + data table are captured and activity_wrapper.standalone_widget_box wraps them (AGH1001-01). But a bundle that captured NO table and under min_member_chars of member text (a media member does NOT exempt: the image keeps its normal standalone Mode P/D render) is too thin to hand off as a widget box — it DISSOLVES at scan finalization (before ownership marking): the items stay unconsumed and render down the ordinary unhandled-tag/note path (a cv2 note). min_member_chars mirrors the 40-char threshold below which a container counts as EMPTY. Rides env INTALIAS_OFF.",
+			"_note_owner_id": "opener_rule.owner_id_from_tail (set below in opener_rule) + member_rule.same_block_image_absorb.owner_start_fix (set in that block): two guards for the layout-table dissolution. owner_start_fix — the same-block avatar absorb must not OVERWRITE the activity-owner lookback's startIndex, or the [Activity]/[H3]/[Body] lead items would stay unconsumed, the whole activity would render TWICE (once by the plain loop, once inside the bundle-owned box), and the avatar's caption text would leak as '<p>avatar Tina</p>' inside the box; so startIndex only ever moves BACKWARD and an absorbed lead item leaves the lead list. Env SBOWNERFIX_OFF. owner_id_from_tail — the writer's activity number may ride in the opener's BLACK tail ('[Activity] **1A**'); 'number' is a skeleton KEEP_ATTR, so the writer's own id is recovered (never invented). Env SBOWNERID_OFF.",
+			"foreign_table_terminates": {
+				"enabled": true,
+				"types": [
+					"speechBubble"
+				],
+				"_note": "Free the speech bubble from the page-layout table. A free [speech bubble] whose member walk swallows a table that is NOT bubble material — the writer's next SECTION laid out as a table ('[H3] Wireframes | [embed video]', TEDC401-3.0; the slider/click-drop activity tables, TEDC402-2.0) — would decline the whole widget and trap the section in the hand-off box with it. So the walk ENDS BEFORE such a table (left UNCONSUMED, unlike the capture-then-break rules): a table carrying its own invocation self-captures as its own widget via #interactiveInTable, and the rest takes the normal table path. 'Foreign' is the BUILDER'S OWN verdict — InteractiveBuilder.SbTableForeign (public, a shared predicate) runs the rich composer's table reading under its most permissive opener assumption; a table it declines even then belongs to a bundle that would be declined anyway, so the rule is additive by construction. Fenced on captured content (a bubble invocation's own black text counts, the content_on_invocation semantics), so an empty-bubble bundle keeps its exact shape. Env SBFOREIGNTBL_OFF."
+			},
+			"media_table_terminates": {
+				"enabled": true,
+				"types": [
+					"carousel"
+				],
+				"min_cells": 2,
+				"cell_tag_pattern": "\\[\\s*(image|video)\\s*\\]",
+				"_note": "(As in CHFUN01.) The CHFUN family authors a slideshow as ONE table whose every cell is a media cell ([image]/[video] red tag + URL, optional [caption]); the table IS the whole widget, so the member walk ENDS right after capturing it — the following [dropquiz] quiz section becomes its OWN bundle instead of being swallowed into the carousel's hand-off box. Cell test is all-or-nothing (a caption-only / text / tag-less-URL cell fails), so the rotate-banner and image|caption-table families never match. The media-cell table form occurs only in CHFUN01/04/05/06/07. Env toggle: CARMEDTBL_OFF (also turns off the matching carousel media_table BUILD in Emit_Templates)."
+			},
+			"hint_title_member": {
+				"enabled": true,
+				"types": [
+					"hint",
+					"hintSlider"
+				],
+				"folded": "[title]",
+				"max_words": 12,
+				"_note": "[Title] resolves to primary tag `title bar` / SECTION_MARKER, and `title bar` is in terminators_absolute — so a writer who puts a hint's title in its OWN paragraph would get a bundle with NO members at all, while a writer who puts it on the ADJACENT line keeps it (the two tags merge into one red span there). Such 'bare invocation' hints are a CAPTURE FAILURE, not empty widgets. Inside a HINT-family bundle that has captured nothing yet, a [title]-folded marker with a short non-empty blackAfter is swallowed as the hint's TITLE instead of ending the walk. SCOPING (all four required): the bundle type is in `types`, memberItems is still EMPTY, the folded form is exactly `[title]` (a real page bar folds to `[title bar]`), and the blackAfter is non-empty and <= max_words. The HINT-family [title] form appears in TEDC402 and SSEA203 (blackAfter '**Need help ?**'). Other widgets whose opener is followed by a title-bar marker (accordion / clickDrop / flipCard — CHFUN05 [title N], BLL266, OSBY401, SSFUN07) are untouched BY CONSTRUCTION through the `types` gate. Env toggle: HINTTITLE_OFF."
+			},
+			"title_panel_member": {
+				"enabled": true,
+				"types": [
+					"accordion"
+				],
+				"pattern": "^\\[\\s*ti(?:tle|lte)\\s+\\d+\\s*\\]$",
+				"body_break": true,
+				"lookahead": 25,
+				"_note": "THE NUMBERED [title N] PANEL DELIMITER (CHFUN05). The writer delimits every accordion panel with a NUMBERED '[title 1]', '[title 2]', … (some misspelled '[tilte N]'), the panel's heading riding as the tag's black tail. '[title N]' resolves to primary `title bar` / SECTION_MARKER — an ABSOLUTE terminator — so without this each accordion walk would die at its own first panel marker and capture NOTHING, while a misspelled section (which resolves to NO tag) would capture everything. Inside an accordion-family bundle a marker matching `pattern` is a MEMBER (the panel delimiter), and once one is captured the [body] semantics follow the SERIES (body_break): a [body] directly after a title, or with another numbered title within `lookahead` unconsumed items ahead, is IN-PANEL content (the gold nests each panel's 'Watch the video…' + video table INSIDE accContent); a [body] after the LAST panel already has content ends the walk, so the trailing video renders OUTSIDE the widget, exactly where the gold puts it. The numbered form occurs only in CHFUN05; the UNNUMBERED [Title] stops (BLL266/OSBY401/SSFUN07) never match and keep terminating. The 'tilte' alternation is DATA-LISTED spelling, not a fuzzy matcher. Builder half: Emit_Templates interactive_builders.accordion.panel_delimiters.title_members (env ACCTITLEPANEL_OFF). Env toggle: ACCTITLEMEM_OFF."
+			},
+			"media_caption_table_terminates": {
+				"enabled": true,
+				"_note": "(As in OSSC401-1.0.) The SIBLING of media_table_terminates for the MEDIA|CAPTION dialect: when a carousel captures a table whose every data row pairs ONE media cell ([video]/[image] tag + URL) with prose cell(s), THAT TABLE IS THE WHOLE WIDGET, so the member walk ENDS right after capturing it. Without this the carousel would run on and swallow the next section — OSSC401's '[H4] Types of AI scams' heading, its body and its own [video] would all be pulled into the carousel's hand-off box, while the gold ends the carousel at the table and renders that section as ordinary body. Video-scoped (require_video) exactly like the builder, so the image|caption table families keep their existing capture. Env toggle: CARCAPTBL_OFF.",
+				"types": [
+					"carousel"
+				],
+				"require_video": true,
+				"min_rows": 2,
+				"media_tag_pattern": "\\[\\s*(image|video)\\s*\\]"
+			},
+			"carousel_table_terminates_before_next": {
+				"enabled": true,
+				"exclude_reo": true,
+				"types": [
+					"carousel"
+				],
+				"lookahead": 12,
+				"_note": "The THIRD member of the media_series_break / media_table_terminates / media_caption_table_terminates family, and the only one that is shape-BLIND: once a carousel bundle has captured ANY table, a further invocation of the SAME widget ahead ends the member walk right after that table. THE GOLD SHOWS THE SPLIT: XTAS101-0.0's writer lays out three slideshows in a row ('[insert carousel with pictures and captions]' + a 7x2 table, '[insert video carousel]' + a 1x2 table, '[insert carousel images + captions]' + a 5x2 table) and the gold has THREE separate carousels of 6, 2 and 5 slides — one per table, with the [H3]/[body] prose between them rendered as ordinary body. Absorbing all three into ONE bundle would give it extraTypes that bail the builder at its first line, leaving a single hand-off box. DELIBERATELY NOT a blanket 'any table ends a carousel': a bundle whose SECOND table has no invocation of its own keeps both tables (#carouselTableSlides makes slides from both in document order), because releasing an untagged table to the body path could leak its raw [image]/[video] tags. FENCED by the shared #panelDelimiterAhead, so the scan stops at a different widget's invocation or a section/page marker and a later unrelated carousel is invisible to it. Env toggle: CARSPLIT_OFF.",
+				"_note_scope": "A built carousel never carries more than one table or any extraTypes (those bail before the builder). The built bundles with a member after their table (BLL117/127/137/157 rotateBanner, CEDO105, OSGM501) carry no further carousel invocation, so the lookahead cannot fire on them."
+			},
+			"head_bracket_payload": {
+				"enabled": true,
+				"_note": "A member's text is normally read from its blackAfter alone, which is right for a bare '[H4]' with the heading on the line beneath. But writers also type the heading INSIDE the red span, and when the black line beneath is EMPTY the payload is unambiguously the heading: EXBP901-3.0's '[H3] Be a Learner' / '[H3] Be a Communicator' / '[H3] Be a Thinker' and XDLS902-5.0's '[H2] The sexual health check-up'. Without this the widget walk would drop them and EXBP901's accordion would have no panel headings at all, so it could not build. The ordinary body path renders the embedded payload as the heading, so this brings the shared member walk into line with it rather than inventing a convention. STRICTLY the empty-tail case: when a member carries BOTH a payload and a black line the two are indistinguishable by shape and the human treats them in OPPOSITE ways — ANZH105-6.0's '[H4] New Zealand Maori' + 'Kapa haka' is JOINED into one gold heading, while SSCI205-8.0's '[H5] overlayed image' + 'Government' has its payload DROPPED (the gold has the word 'overlayed' nowhere, and the heading is 'Government'). Nothing in the writer's document separates a heading fragment from a design instruction, so the both-present form keeps its existing reading rather than being decided by a pattern fitted to one string. Also narrow by construction: the span must hold exactly ONE bracket, so a multi-bracket marker such as '[Slide 2] [H4]' is untouched. Env HEADPAYLOAD_OFF.",
+				"_note_scope": "With the bare-series toggles OFF, this rule on its own affects only EXBP901-3.0 (its accordion builds, panels 'Be a Learner'/'Be a Communicator'/'Be a Thinker') and XDLS902-5.0 (keeps the heading 'The sexual health check-up'); SSCI205-8.0 is left unchanged."
+			},
+			"bare_series_opener": {
+				"enabled": true,
+				"min_members": 2,
+				"min_gap": 2,
+				"require_consecutive": true,
+				"clean_hows": [
+					"exact",
+					"denumbered",
+					"denumbered_head"
+				],
+				"families": {
+					"tab n": {
+						"widget": "tabs",
+						"opener_tag": "tabs",
+						"env": "TABOPENER_OFF",
+						"require_label": true,
+						"label_max_words": 6
+					},
+					"slide n": {
+						"widget": "carousel",
+						"opener_tag": "carousel",
+						"env": "SLIDEOPENER_OFF",
+						"require_label": false
+					}
+				},
+				"_note": "THE BARE NUMBERED SERIES OPENS ITS WIDGET. A writer numbers [Tab 1] Subtraction in parts / [Tab 2] Add instead of subtract / [Tab 3] Algorithm and never types [tabs], so the scanner — which opens a widget only on a primary tag whose lexicon directive is INTERACTIVE — would never start one, and every numbered part would arrive alone under a red orphan flag. This rule treats the FIRST marker of a qualifying rising series as the widget's opener, leaving the marker itself in memberItems so #tabsPanes (delimiter_tags ['tab n','tab']) and the carousel builder read it exactly as they read a normal bundle. NOTHING ELSE CHANGES: no builder, no template, no member vocabulary. FOUR FENCES: (1) CLEAN NUMBERED FORM ONLY: the marker's parse 'how' must be one of clean_hows AND it must carry a numeric number, so the [New tab] fundamentals panel delimiters, the [Tab Nav] choice-page markers, [Tab layout], [Template tab here] and every other embedded prose form are excluded BY CONSTRUCTION. (2) MIN_GAP: every consecutive pair in the series must be at least min_gap items apart, i.e. there must be CONTENT between the panes. This is what separates a tab strip from the BLL/CED INQUIRY CRUMB LIST, where the writer declares [Tab 1]..[Tab 6] as six CONTIGUOUS items naming the pages of the module and the inquiry panel builders already turn them into inquiry panels correctly (inquiry-crumb pages always have gaps of exactly 1; real tab strips have gaps of 3 or more). (3) AN OPENER ALREADY ON THE PAGE: if any INTERACTIVE invocation of the partner widget exists anywhere on the page, this is a capture or builder question, not a gathering one, and the rule declines. (4) A LABEL IS NEVER INVENTED (tabs only): every marker in the series must carry its own trailing text, within label_max_words. That excludes TWHA901/902/903/906, TWHK903, XGF9003-1.1, HPFUN901, ENGJ102, ENGJ302 (no or partial labels) and MXDI201-9.0, whose 'labels' are whole paragraphs and whose human developer INVENTED four short names. A SLIDE needs no label — many gold slides carry no media and captions are optional, so a slide's content is simply whatever follows its marker. Env: bare_series_opener.enabled plus the per-family env keys (TABOPENER_OFF / SLIDEOPENER_OFF), so the two families switch off independently (the env_by_type pattern).",
+				"_note_gold": "Where the series qualifies (tabs in MXDB202, MXEO301, MXFL301, MXFU301, MXFU202; slides in ANZH105, MXFU302), the human builds a TAB STRIP whose nav labels are the writer's own tails verbatim — nothing is invented — and usually a CAROUSEL for the slide series. Two known divergences follow the writer's own tag rather than the human build: MXFU202-2.0 and ANZH105-7.0, whose humans built an accordion from the same markers. Some bundles are then DECLINED by the builder (ANZH105-4.0/5.0/7.0, MXFU202-3.0 — the reading-book family, whose slides are pages of an external PDF): their content goes into the widget's honest hand-off box and the raw brackets stop leaking. SCFUN01-0.0 does not fire: its writer closes each pane with '[end tab]', a CONTAINER_CLOSE that truncates the inferred series to one pane, so the bundle dissolves."
+			},
+			"button_tail_terminates": {
+				"enabled": true,
+				"types": [
+					"accordion",
+					"carousel",
+					"speechBubble",
+					"flipCard"
+				],
+				"env_by_type": {
+					"carousel": "CARBTNTAIL_OFF",
+					"speechBubble": "SBBTNTAIL_OFF",
+					"flipCard": "FCBTNTAIL_OFF"
+				},
+				"panel_subtags_by_type": {
+					"flipCard": [
+						"front",
+						"back",
+						"shape n"
+					]
+				},
+				"_note_flipcard": "flipCard joins the trailing-button section break: the gold almost never puts a button inside a finished flip card, and a flip-card bundle that carries a [button] member usually has it as the very LAST member. panel_subtags_by_type serves TWO fences: (1) in #panelDelimiterAhead — a flip card's panels are [front]/[back]/[Card N] SUB-tags rather than same-type tags, so without it a button BETWEEN two cards would read as a tail and truncate the deck; (2) at the release itself — a type listed here releases its tail button ONLY when the deck is EXPLICITLY face-delimited (>=1 captured face-marked member). Fence (2) matters because a marker-less prose bundle (as in CEDK401-6.0) would otherwise be built as a garble (consecutive paragraphs paired as faces, a section [H2] inside a card front, the writer's example lines lost). With the fence, the release frees a writer's 'Go to journal. Complete activity 9A.' (PHE1007-9.0) as a REAL button outside the box instead of raw dump text, while the face-marked deck itself still declines and keeps its honest box. The map is EMPTY for the other types, so accordion/carousel/speechBubble are unaffected. Env FCBTNTAIL_OFF turns flipCard membership off alone (the env_by_type pattern), and with it set the subtags key is dormant.",
+				"tags": [
+					"button"
+				],
+				"lookahead": 12,
+				"delimiter_ahead_skip_types": [
+					"speechBubble"
+				],
+				"content_on_invocation_types": [
+					"speechBubble"
+				],
+				"_note_content_on_invocation_types": "The break fires only once the bundle has captured CONTENT, tested as 'some member that is not just another invocation'. For an accordion that is right — its content is always separate members. A speech bubble's content very often rides ON THE INVOCATION ITSELF: TEDC401-3.0 writes '[speech bubble] Remember: Good design is responsible design.' and nothing else, so at the moment the trailing [Button] is reached the only captured member IS the invocation and the guard would refuse. For the types listed here an invocation carrying non-empty black text counts as captured content, which is what it plainly is.",
+				"_note_delimiter_ahead_skip_types": "The lookahead fence (#panelDelimiterAhead) exists so the break can never truncate a real MULTI-PANEL widget: if another panel tag of the same type lies ahead, the walk keeps going. That is right for an accordion or a carousel, whose panels/slides are SUB-tags of one widget. It is wrong for the speech bubble, whose 'panels' are separate INVOCATIONS — a following [speech bubble] is a DIFFERENT SPEAKER, not a continuation of this one, and bubble-heavy modules (TEDC401) almost always have one within the 12-item lookahead, so with the fence applied the rule would never reach a speechBubble. Skipping it is safe by construction — a building bubble never carries a [button] member — and where bubbles do sit on both sides of a writer's button they simply become two widgets, which is what the writer laid out.",
+				"_note": "A [button] member in an accordion's TAIL ENDS the member walk, so the button renders through the normal body path as a REAL button exactly where the writer put it. An unplaceable [button] in an accordion usually sits AFTER the last panel — often as the bundle's very LAST member ('[Go to journal]'). It is the writer's post-accordion button, not panel content, and swallowing it would also drag the next section in (XGF9003-1.0 would pull [Body], the journal button, '[H2] Time management', an image and an [Alert] in after eight clean panels). The GOLD agrees: a button very rarely sits inside an accordion panel. FENCED against truncating a real multi-panel accordion: it fires only once the bundle has captured content AND #panelDelimiterAhead finds no further panel tag of the same type within `lookahead` items (the scan stops at another widget's invocation or a section/page marker, so a later unrelated accordion is invisible to it). Same family as media_series_break / media_table_terminates / media_caption_table_terminates. Env toggle: ACCBTNTAIL_OFF. EXCLUDES a GO-TO-JOURNAL button: the buttons.go_journal rule owns that one at a widget's tail (#goJournalTail renders the templated <h4 class=\"goJournal\"> after the widget), so releasing it here would make the main loop render a SECOND plain div.button beside that heading (as on HIS1006-12.0). #isGoJournalButton reuses that rule's OWN label_match/raw_match patterns so the two can never drift apart. EXCLUDES a PHANTOM button: the writer's \"[embed audio with a link and play button]\" (HIS1006-11.0) resolves to primary tag button because of the word buried in it, and breaking there would truncate the accordion's own sources — so the member must resolve with one of clean_hows (a tag-word inside prose resolves how:\"embedded\"). THE CAROUSEL follows the same rule (env CARBTNTAIL_OFF via env_by_type, so the two types switch off independently): a carousel decline often ends in a run of [button] members (CEDR401-1.0 is six captioned videos blocked only by a trailing \"Download journal\"; MXFL102-2.0 three videos; CEDT501-3.0 a whole reporting sequence), and the gold very rarely puts a button inside a carousel's viewer. Some building carousels do carry a trailing [button] (XGF9001-4.0, XTAS101-2.0, AGH1005-3.0, AGH1006-5.0, BLL117/127/137/157, ENGC302-7.0, MXDI103-3.0, CEDK501-1.0), so for the carousel the rule does change existing builds. THE SPEECH BUBBLE follows it too (env SBBTNTAIL_OFF via env_by_type): a speechBubble decline often ends in a run of [button] members (TEDC401, XDLS908, MXFL202, TEDC402, ANZH304, XDLS901, TEFUN01), with the writer's button almost always the bundle's very last member, and the human NEVER puts a button inside a speech-bubble row. A building speech bubble never carries a [button] member, so no existing bubble build can change.",
+				"exclude_go_journal": true,
+				"clean_hows": [
+					"exact",
+					"denumbered",
+					"denumbered_head",
+					"exception"
+				]
+			},
+			"new_activity_id_terminates": {
+				"enabled": true,
+				"_doc": "THE NEW ACTIVITY ID ENDS THE WALK. The same-activity multi-widget absorb (same_activity_multi_widget) keeps a different-type follower inside the bundle whenever the bundle belongs to a real [Activity N] — but when the follower's OWN bracket names a DIFFERENT activity id ('[Activity 3B – self marking type the answer]' inside Activity 3A's walk; the MX family types the id and the widget in one bracket, so the tag resolves to the widget and the absolute [activity] break never fires), it is a new activity (seen mostly in MX, also BLL, ARFUN, JPFUN, XMES); the gold keeps the two apart. The walk ends there and the follower opens its own bundle and activity. Only when the bundle HAS an activity id and the follower names a different one. Env ACTIDSPLIT_OFF.",
+				"pattern": "\\[\\s*Activity\\s+([0-9]+[A-Za-z]?)\\b",
+				"owner_lookback": {
+					"_doc": "The owner-id half (its own toggle, ACTIDOWNER_OFF). During the walk a widget bundle opened UNDER a separate [Activity N] opener has no activityId yet (the owner is attached later by the activity look-back), so the new-activity-id test above would never fire for it — ARFUN04 1G's drag-and-drop (its box opened by the heading co-tag rule) would walk on into `[Activity 1H drag and drop] [MTK Quiz …]` as a same-type continuation and swallow that quiz. When the bundle has no activityId, the nearest activity opener before it (back to max_back items, never past a PAGE_BOUNDARY or another widget opener) lends its id to the test.",
+					"enabled": true,
+					"env": "ACTIDOWNER_OFF",
+					"max_back": 60
+				}
+			},
+			"dropbox_never_merges": {
+				"enabled": true,
+				"_doc": "THE DROPBOX SPLIT. The student file-upload DROPBOX is never part of another activity's basket. A dropbox marker swept into a host bundle's extraTypes by same_activity_multi_widget would make every builder bail on the mixed basket (BLL156's clean three-video carousel would be refused because the upload button at the end of the activity was filed as a second widget) AND the trapped dropbox would never reach the upload-box builder, so the upload button the gold uses throughout would be lost twice over. No building non-dropDown bundle carries a dropbox member, so this changes no existing build. THE RULE IS ONE DIRECTION: a FOLLOWER resolving to the dropDown type whose text matches the upload box's OWN deny predicate (opener_deny_pattern, minus upload_box.opener_exclude_pattern — an [alert dropbox] is a REVEAL box, CEDT101, unchanged) TERMINATES the host's walk instead of absorbing; the marker then opens its own bundle and #ddUploadBox renders the gold's button. The REVERSE split (releasing a dropbox-opener HOST's foreign followers) is deliberately NOT done: it would free a [Modal] into the single-URL button path, which builds a button and silently drops the writer's paired '[button] No' member, losing writer content for no gain. The modal member handling would first have to stop swallowing an unplaceable [button]. The predicate pair is READ LIVE from interactive_builders.dropDown so the scanner and the builder can never drift. Env DBXSPLIT_OFF.",
+				"types_never_split": []
+			},
+			"closer_never_opens": {
+				"enabled": true,
+				"types": ["accordion", "carousel"],
+				"pattern": "\\[\\s*(?:close|closing|finish|finished)\\s+(?:the\\s+)?(?:accordion|carousel|slideshow)\\b",
+				"_doc": "THE CLOSER THAT OPENS ITS OWN WIDGET. A bare '[close modal]' is the writer's END DELIMITER, not a fresh invocation, and the modal walk consumes it as a no-op at the OPEN site (member_rule.modal_gathering.closer_pattern, types ['modal']). The identical shape would still open useless one-marker bundles for two other families, because the lexicon aliases 'end accordion'/'end carousel' to CONTAINER_CLOSE but not the writer's 'close'/'finish' spellings, which fall through to the plain INTERACTIVE tag — each would render an empty hand-off box on a finished page (as with ENGJ402 p6.0 '[Finish carousel]', MXFL301 p2.0 + p3.0 and MXFU301 p8.0 '[close accordion]'). Most closer-shaped spans already resolve CONTAINER_CLOSE; the rest resolve INTERACTIVE. A lexicon change to CONTAINER_CLOSE is not used because EXPFUN04/05's BUILT tile modals absorb many interleaved closers mid-walk and would shatter; for accordion and carousel, bundles that carry a closer ALONGSIDE other members are already declining (ENGI405 p1.0, ENGJ403 p1.0 + p5.0, MXFU301 p9.0), so no built bundle is at risk. FENCES: the rule fires ONLY at the OPEN site (a closer met mid-walk keeps the normal behaviour, so nothing a working walk relies on moves); ONLY for a bundle whose type is in `types`; and ONLY when the span is BARE — a closer bracket carrying any other word keeps the normal behaviour, so a writer instruction riding the bracket can never be silently dropped. clickDrop is DELIBERATELY NOT in `types`: its closer spans are in the BLL27x/ENGJ403 families, whose clickDrop walks follow their own gathering rules, and consuming their closers would change bundle boundaries there. Env CLOSEROPEN_OFF."
+			},
+			"modal_gathering": {
+				"enabled": true,
+				"_doc": "THE ONE-SENTENCE MODAL FAMILY. Without a boundary-bank entry, headings would TERMINATE the modal's member walk by default — and the writers' pop-out shapes put a heading at the TOP of the pop-out's own content ('[Modal 1 Image] → [H3] Threading Beads → [Body]…' MXDI101 / MXEX201; '[modal] How do I convert? → [H5] → body → video → [close modal]' MXFL301/MXFU301/BLL243/MXDB302). Every such walk would stop dead at the heading, the bundle would be a one-marker hand-off box and the content would render loose. THREE COUPLED RULES, each with its own env toggle: (1) MODHEADMEM_OFF — the pop-out's own content heading is CAPTURED (InteractiveScanner.#modalHeadingMember; fences in its doc comment — XGF9003's hover matrix and ENGS102's lone modal are unaffected BY CONSTRUCTION); (2) MODCLOSER_OFF — '[close modal]' (which resolves to the SAME modal tag as a real invocation, unlike '[modal ends]' which resolves CONTAINER_CLOSE) never OPENS a bundle at the scan site (otherwise it would open one-marker closer boxes, as in EXPFUN05, and bundles that swallow the whole FOLLOWING SECTION, as in MXFL301/MXFU301) and ENDS the member walk of an UNNUMBERED bundle (consumed in range; residue like '(stop at 4:01)' surfaces via bundle.instructions — §6). A lexicon promote to CONTAINER_CLOSE is not used: most closers sit INTERLEAVED inside EXPFUN04/05's BUILT numbered tile modals, whose walks absorb them mid-run by design, so the numbered-member fence is what keeps those builds intact; (3) MODTRAILMEDIA_OFF — see trailing_media_keep_types. BUILD OUTCOMES: the label+content pop-outs build the writer's TKmodal (MXFU301-9.0's own gold is the model), where the gold sometimes substitutes a clickDrop reveal or flattened inline content (MXFL301, BLL243, MXDB302, ENFUN09); the no-address [Modal N Image] families (MXDI101/MXEX201) gather their content into the hand-off box and still decline honestly at the label/filename test. NOT COVERED: XGF9003's hover family (gold shapeHover), the layout-TABLE one-marker bundles, the ENGR302 nested-carousel modal, HES1005's media-list items, EXPFUN05's tile dialect, MXDB302's 'A Clever Tip' (unnumbered, closerless, multi-heading — no series evidence to key on).",
+				"types": [
+					"modal"
+				],
+				"closer_pattern": "\\[\\s*close\\s+(?:modal|pop\\s*[- ]?out|popout)\\b",
+				"closer_strip_pattern": "\\[\\s*close\\s+(?:modal|pop\\s*[- ]?out|popout)[^\\]]*\\]?",
+				"closer_close_pattern": "\\bmodals?\\s+ends?\\b|\\bend\\s+(?:of\\s+)?modal\\b|\\bmodals\\s+end\\s+here\\b",
+				"numbered_pattern": "\\[(?=[^\\]]*(?:modal|pop\\s*-?\\s*out|popout))(?=[^\\]]*\\d)[^\\]]*\\]",
+				"numbered_pattern_note": "The numbered-series test: a digit INSIDE THE SAME BRACKET as the modal word (a lookahead pair, so '[3 Click modal XL…]' counts with the digit before the word). A bare /\\d/ over the whole fold would read the '4' in a co-tag '[Modal] [H4]' (ENGI202) and the '2' in '(same as in FUNdamental phase 2)' (ENFUN07) as series evidence; this pattern prevents both.",
+				"lookahead": 40,
+				"one_heading_per_set": true
+			},
+			"same_block_label_absorb": {
+				"enabled": true,
+				"types": [
+					"modal"
+				],
+				"tag": "modal",
+				"max_label_words": 9,
+				"_comment": "The same_block_image_absorb idea transposed to the modal. A writer types a modal as ONE LINE — '<the visible label> [Pop-out] <the pop-out content>' (XGF9004-9.0, XGF9002-4.0) — so the black lead is the trigger LABEL and the tag's trailing text is the pop-out. The member walk starts AT the first tag, so every LATER label is captured (it is the black item preceding the next tag) but the FIRST one would be left outside the bundle. This recovers it: the SAME source BLOCK only (the 'continuous sentence' discriminator), a single BLACK item, label-sized (the cap is READ FROM the builder: interactive_builders.modal.modal_sets.label_max_words, so absorb and build can never drift apart — a shared predicate), and only when the bundle's first member is the modal tag itself — a different block, a structural tag, an already-consumed item or a whole paragraph all decline, so it cannot swallow a real preceding element. Consumed in place and read by InteractiveBuilder.#modalSets (D2). Env MODALLEAD_OFF."
+			}
+		},
+		"per_interactive_fields": {
+			"heading_is_terminator": "false = this widget legitimately contains internal headings (accordion strips, flip-card faces, ...) — do not terminate on [H2]-[H5].",
+			"uses_data_table": "true = a TABLE block after the tag carries the widget's option data.",
+			"signature_subtags": "SUBTAG-class canonical tags characteristic of this widget (Phase-4 slotting; Phase-1 detection confidence).",
+			"nested_interactives_observed": "Other interactive types historically observed INSIDE this widget's blocks (e.g. feedback modals in quizzes). Phase-1 policy is still 'new interactive terminates' — worst case the nested widget gets its own placeholder, which is safe."
+		}
+	},
+	"interactives": {
+		"dragAndDrop": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"correct",
+				"data marker"
+			]
+		},
+		"carousel": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker",
+				"shape n",
+				"slide n",
+				"story heading"
+			]
+		},
+		"flipCard": {
+			"heading_is_terminator": false,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"back",
+				"data marker",
+				"front",
+				"shape n"
+			],
+			"nested_interactives_observed": [
+				"modal"
+			]
+		},
+		"selfCheck": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"nested_interactives_observed": [
+				"drag and drop",
+				"modal"
+			]
+		},
+		"accordion": {
+			"heading_is_terminator": false,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker"
+			],
+			"nested_interactives_observed": [
+				"modal"
+			]
+		},
+		"clickDrop": {
+			"heading_is_terminator": false,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker",
+				"drop",
+				"shape n"
+			]
+		},
+		"speechBubble": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"answer",
+				"back",
+				"data marker",
+				"front",
+				"shape n"
+			],
+			"nested_interactives_observed": [
+				"checklist",
+				"info trigger",
+				"mcq",
+				"speech bubble"
+			]
+		},
+		"dropDown": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"answer",
+				"tab n"
+			],
+			"nested_interactives_observed": [
+				"checklist"
+			]
+		},
+		"tabs": {
+			"heading_is_terminator": false,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"tab n"
+			],
+			"nested_interactives_observed": [
+				"modal"
+			]
+		},
+		"typing": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"answer",
+				"shape n"
+			]
+		},
+		"slider": {
+			"heading_is_terminator": false,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"back",
+				"front"
+			],
+			"nested_interactives_observed": [
+				"dropdown",
+				"modal"
+			]
+		},
+		"dropQuiz": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"answer"
+			]
+		},
+		"multiChoiceQuiz": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"correct",
+				"data marker",
+				"question",
+				"slide n"
+			]
+		},
+		"reorder": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"answer",
+				"data marker",
+				"option",
+				"question"
+			],
+			"nested_interactives_observed": [
+				"mcq"
+			]
+		},
+		"wordFind": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker"
+			],
+			"nested_interactives_observed": [
+				"carousel",
+				"word select"
+			]
+		},
+		"selectionBox": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker",
+				"option"
+			],
+			"nested_interactives_observed": [
+				"checklist",
+				"dropdown",
+				"modal"
+			]
+		},
+		"memoryGame": {
+			"heading_is_terminator": false,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker",
+				"slide n",
+				"story heading"
+			],
+			"nested_interactives_observed": [
+				"drag and drop"
+			]
+		},
+		"stopWatch": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker",
+				"shape n",
+				"story heading"
+			],
+			"nested_interactives_observed": [
+				"dropdown"
+			]
+		},
+		"radioQuiz": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker"
+			],
+			"nested_interactives_observed": [
+				"mcq"
+			]
+		},
+		"rotateBanner": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker",
+				"option",
+				"tab n"
+			]
+		},
+		"crossword": {
+			"heading_is_terminator": false,
+			"uses_data_table": true
+		},
+		"infoTrigger": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"nested_interactives_observed": [
+				"modal",
+				"typing quiz"
+			]
+		},
+		"hintSlider": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"back",
+				"front",
+				"tab n"
+			],
+			"nested_interactives_observed": [
+				"speech bubble"
+			]
+		},
+		"timeline": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"correct"
+			],
+			"nested_interactives_observed": [
+				"modal",
+				"word select"
+			]
+		},
+		"wordHighlighter": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"correct",
+				"shape n"
+			],
+			"nested_interactives_observed": [
+				"mcq",
+				"memory game",
+				"modal"
+			]
+		},
+		"shapeHover": {
+			"heading_is_terminator": false,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"front",
+				"shape n",
+				"tab n"
+			]
+		},
+		"numberLine": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker",
+				"shape n",
+				"tab n"
+			],
+			"nested_interactives_observed": [
+				"typing quiz"
+			]
+		},
+		"vennDiagram": {
+			"heading_is_terminator": null,
+			"uses_data_table": true
+		},
+		"wordDrag": {
+			"heading_is_terminator": null,
+			"uses_data_table": true
+		},
+		"audioTrigger": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"back",
+				"front"
+			]
+		},
+		"puzzle": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"back"
+			],
+			"nested_interactives_observed": [
+				"carousel"
+			]
+		},
+		"clickingOrder": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"tab n"
+			]
+		},
+		"wordSelect": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"nested_interactives_observed": [
+				"dropdown"
+			]
+		},
+		"sliderChart": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"answer",
+				"slide n"
+			],
+			"nested_interactives_observed": [
+				"modal"
+			]
+		},
+		"hint": {
+			"heading_is_terminator": null,
+			"signature_subtags": [
+				"answer"
+			]
+		},
+		"glossary": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"_note_heading_terminates": "heading_is_terminator is true (as in OSAI201-01): the glossary is a flat Term–Meaning list with no internal headings, so otherwise the next [H3] section heading ('Types of AI') would be SWALLOWED into the glossary bundle. A heading terminates the capture so it renders as its own section heading after the glossary."
+		},
+		"sketcher": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"answer",
+				"data marker"
+			],
+			"nested_interactives_observed": [
+				"radio quiz"
+			]
+		},
+		"bingo": {
+			"heading_is_terminator": null,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker"
+			],
+			"nested_interactives_observed": [
+				"word select"
+			]
+		},
+		"rhetoricalQuestion": {
+			"heading_is_terminator": null
+		},
+		"interactive": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [],
+			"_note_bare_interactive": "The bare generic '[Interactive]' invocation (Tag_Lexicon qualifier_alias_demote.standalone_becomes). Conservative boundaries: headings terminate; uses_data_table so a [Body] ELEMENT after a captured data table terminates the walk (the writer resuming free body — otherwise AGH1001-01's post-table [Body] would be absorbed)."
+		}
+	}
+}

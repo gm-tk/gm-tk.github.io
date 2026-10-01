@@ -1,0 +1,1538 @@
+/**
+ * App.js
+ * ===========================================================================
+ * WHAT THIS FILE DOES:
+ * The orchestrator for the BROWSER version of the converter — loaded LAST,
+ * after every other engine file. This is the file that runs when a real
+ * person opens index.html in their browser, drops in a Writers Template
+ * (WT — the source .docx a writer fills in with [bracketed tags] like [H2]
+ * or [Activity]) and usually its companion Media List (a second .docx
+ * listing the URL/caption for every image, video and audio used in that
+ * module), and clicks Convert. It wires up the upload UI, runs the startup
+ * sequence (file:// guard → load data → compile the tag matcher), and then
+ * drives one conversion per click: classify the uploads (WT / media list /
+ * combined), run the shared pipeline stages in order, then hand the
+ * finished output files to the download list and the summary panel.
+ *
+ * THIS IS ONE OF TWO ENTRY POINTS:
+ * A separate, parallel entry point exists for automated/bulk conversion
+ * from the command line — batch_convert.cjs, a Node.js script — which does
+ * NOT load or use this file at all. Both entry points funnel their critical
+ * setup (classifying the uploads, detecting the module code, resolving its
+ * structural rules, parsing the Media List, trimming front-matter) through
+ * the SAME shared engine method, ModuleResolver.PrepareRun (see stage [3]
+ * inside #convert(), below), specifically so the browser tool and the
+ * command-line tool can never silently drift apart and produce different
+ * output for the same input document.
+ *
+ * STARTUP SEQUENCE (one big try/catch, standards §8a) — see Init():
+ *   file:// guard → DataService.Init() → new TagNormaliser(...) → wire up
+ *   the upload UI → ready for a click.
+ *
+ * CONVERSION SEQUENCE (one big try/catch, standards §8a) — see #convert(),
+ * which runs once per click of the Convert button:
+ *   read the upload-time option checkboxes → extract every uploaded .docx
+ *   into blocks → the shared prep (ModuleResolver.PrepareRun) → build every
+ *   output page (PageAssembler.AssembleModule) → render the download list
+ *   and the run summary.
+ *
+ * WHY THE file:// GUARD:
+ * The engine fetches ../data/*.json at runtime (edit a data file → reload
+ * → converted output changes — the whole point). Browsers block fetch on
+ * file:// pages, so double-clicking index.html cannot work; the guard
+ * explains the one-command local server instead of failing silently.
+ * ===========================================================================
+ */
+
+class App {
+
+	static #normaliser = null;   // compiled matcher (built once at startup)
+	static #files = [];          // uploaded .docx File objects awaiting conversion
+	// The optional verified iStock acknowledgements files
+	// (API-sourced via Getty Images). Kept SEPARATE from #files: it is not a
+	// .docx, must not enter the docx-extraction loop, and does not count toward
+	// the two-docx-per-run limit. It is a LIST of accepted .txt candidates
+	// rather than one name-matched file: filenames take per-module forms, so
+	// #addFiles admits any .txt whose CONTENTS are iStock acknowledgements and
+	// PrepareRun/AcksBuilder.PickIstockAcks makes the final choice (normally
+	// there is exactly one).
+	static #txtFiles = [];
+	// The REFERENCE-MODULE panel's state. #refHtmlFiles holds the
+	// uploaded reference .html File objects (only used when the "upload
+	// reference HTML" choice is selected); #refPreview is the latest
+	// upload-time advisory (detected code + suggested reference), produced by
+	// ReferenceMiner.PreviewSuggestion — NEVER by calling the prep methods
+	// from here (entry parity: prep belongs to ModuleResolver.PrepareRun).
+	// #refPreviewToken guards the async front-matter fallback against a
+	// stale result landing after the file list changed again.
+	// The dropdown auto-selects
+	// the suggested reference (same module series first, then same subject at
+	// the same phase); #refUserPicked remembers a manual selection so a
+	// re-render never clobbers it, and #updateConvertGate keeps the Convert
+	// button inactive until a reference is selected or HTML pages are added.
+	static #refHtmlFiles = [];
+	static #refPreview = null;
+	static #refPreviewToken = 0;
+	static #refCodesFilled = false;
+	static #refUserPicked = false;
+	// The currently-suggested reference code, so the list can mark
+	// its row with the red "recommended" note on every rebuild.
+	static #refSuggestedCode = null;
+	// The full library-code list, cached once so the type-to-filter
+	// box can rebuild the dropdown's options without re-reading the data.
+	// Each row is enriched at fill time with its phase key
+	// (ModuleResolver.PhaseKeyFor — the engine's own classification) and a
+	// display subject, so the subject/phase filter dropdowns can narrow the
+	// list without re-deriving anything per keystroke.
+	static #refCodeRows = [];
+
+	// The phase-level display vocabulary: concise label per phase
+	// key, shown with a real example code from the library (filled at
+	// #fillReferenceCodes time), e.g. "Phase 3 · Years 7–8 (e.g. OSAI301)".
+	// The list covers every phase present in the library codes: Phase 5 gets
+	// its own entry (OSAI501/CEDO501-class — the engine's registry classifier folds a
+	// leading 5 into NCEA for LOOKUP purposes, which is wrong for a person
+	// filtering, so the filter uses #refPhaseKey below instead).
+	static #RefPhaseLabels = {
+		"1xx": "Phase 1 · Years 1–3",
+		"2xx": "Phase 2 · Years 4–6",
+		"3xx": "Phase 3 · Years 7–8",
+		"4xx": "Phase 4 · Years 9–10",
+		"5xx": "Phase 5 · Years 11–13",
+		"NCEA": "NCEA · senior secondary",
+		"FUN": "Fundamentals",
+		// the 9xx series: short courses & specials (Explore pathways, the
+		// XDLS digital-literacy short courses, TWHK90x, the XGF 900x games)
+		"9xx": "9xx series · short courses",
+		"other": "Other",
+	};
+
+	/**
+	 * The FILTER's phase classifier — covers every phase family actually
+	 * present in the library. Deliberately NOT ModuleResolver.PhaseKeyFor: that
+	 * classifier serves the registry lookup and folds a leading 5 into
+	 * NCEA, hiding Phase 5 from a person filtering.
+	 *
+	 * @param {string} code - a module code, e.g. "OSAI501"
+	 * @returns {string} a key of #RefPhaseLabels
+	 */
+	static #refPhaseKey(code) {
+		// Delegates to the ONE shared classifier (the engine's
+		// "Make your own template" matcher uses the same one, so the UI
+		// filter and the engine pool logic can never drift apart).
+		return ReferenceMiner.PhaseKey(code);
+	};
+
+	/**
+	 * STARTUP. Runs once, when the page finishes loading (wired up at the
+	 * very bottom of this file via a DOMContentLoaded listener). Everything
+	 * the app needs before a person can click "Convert" happens here, in
+	 * order, inside one try/catch (standards §8a) — so a startup failure is
+	 * caught and shown loudly instead of leaving a half-initialised page
+	 * that looks fine but silently doesn't work.
+	 *
+	 * THE STARTUP SEQUENCE, STEP BY STEP:
+	 *   1. file:// GUARD — if this page was opened by double-clicking
+	 *      index.html (protocol "file:") instead of being served over
+	 *      http://, hide the whole app UI, show the file:// warning panel
+	 *      instead, and return early — nothing else below is safe to run
+	 *      yet (see "WHY THE file:// GUARD" at the top of this file).
+	 *   2. DataService.Init() — fetches and parses every runtime
+	 *      configuration/data JSON file the engine needs (the tag lexicon,
+	 *      tag exceptions, instruction-cue vocabulary, and every other
+	 *      data-driven rule file under data/*.json). This is awaited
+	 *      because nothing below — or later, during a conversion — can run
+	 *      correctly until it has finished.
+	 *   3. Build the TagNormaliser — the compiled matcher that recognises
+	 *      and classifies every [bracketed tag] a writer used in their
+	 *      Writers Template (e.g. working out that "[h2]", "[H2]" and a
+	 *      stray "[Heading 2]" all mean the same tag). It is built ONCE
+	 *      here, from the lexicon/exceptions/instruction-cue data just
+	 *      loaded, and then reused for every conversion click for the rest
+	 *      of this browser session — it is never rebuilt per conversion.
+	 *   4. Stamp the build version onto the page (a small "build …" label)
+	 *      purely so a developer looking at the running page can tell at a
+	 *      glance whether the code they just edited is actually the code
+	 *      that's live.
+	 *   5. #wireUi() — attach every click/drag/drop event listener the
+	 *      upload UI and the Convert button need.
+	 *   6. Log "ready to convert" and stop. The app now just waits for a
+	 *      person to drop in files and click Convert, which is handled
+	 *      entirely separately by #convert() (see CONVERSION SEQUENCE at
+	 *      the top of this file, and #convert()'s own JSDoc below).
+	 *
+	 * @returns {Promise<void>} resolves once the app is ready for a click —
+	 *   or once the file:// guard has shown its message and returned early
+	 */
+	static async Init() {
+		try {
+			// ---- file:// guard ------------------------------------------
+			if (location.protocol === "file:") {
+				document.getElementById(Config.Selectors.FileGuard).hidden = false;
+				document.getElementById(Config.Selectors.AppRoot).hidden = true;
+				return;
+			}
+
+			// ---- load every runtime data file, compile the matcher -------
+			await DataService.Init();
+			this.#normaliser = new TagNormaliser(
+				DataService.Data.TagLexicon,
+				DataService.Data.TagExceptions,
+				DataService.Data.InstructionCues,
+			);
+
+			// stamp the build version on the page so a developer can see at
+			// a glance that new code is live (YYMMDD + iteration)
+			const vEl = document.getElementById("app-version");
+			if (vEl) vEl.textContent = `build ${Config.AppVersion}`;
+
+			this.#wireUi();
+			this.#log(Config.Strings.ReadyToConvert);
+			console.log(`🟢 HTML Generator V2 ready (v${Config.AppVersion})`);
+		} catch (error) {
+			console.error("🔴 App initialization error:", error);
+			Config.FULL_BREAK(`Startup failed: ${error.message}`);
+		}
+	};
+
+	// =======================================================================
+	// UI WIRING (delegated events, CSS-class state — standards §8)
+	// =======================================================================
+
+	/**
+	 * Wires up every event listener the upload UI and the Convert button
+	 * need. Called once from Init(), after the tag matcher is ready — never
+	 * called again, so these listeners live for the whole page session.
+	 *
+	 * WHAT IT WIRES:
+	 * - the drop zone: clicking it opens the native file picker; dragging
+	 *   files over it highlights it (adds the "active" CSS class); dropping
+	 *   files onto it adds them via #addFiles()
+	 * - the hidden file <input>: its "change" event fires after a person
+	 *   picks files through the native picker it opens
+	 * - the Convert button: starts one conversion by calling #convert()
+	 * - the file list: ONE delegated click listener on the whole <ul>,
+	 *   rather than a listener per row (see WHY, below)
+	 *
+	 * WHY A DELEGATED LISTENER ON THE FILE LIST (not one "remove" listener
+	 * per row): #renderFileList() throws away and rebuilds the list's whole
+	 * innerHTML every time a file is added or removed, which would destroy
+	 * any listener attached directly to an individual row's remove button.
+	 * Listening on the parent <ul> instead means the listener survives every
+	 * re-render — it inspects e.target when a click happens to work out
+	 * which row was clicked, using e.target.closest("[data-remove]") to find
+	 * the nearest remove button (and read its data-remove index) even if the
+	 * actual click landed on a child element of that button, like an icon.
+	 *
+	 * @returns {void}
+	 */
+	static #wireUi() {
+		const dropZone = document.getElementById(Config.Selectors.DropZone);
+		const fileInput = document.getElementById(Config.Selectors.FileInput);
+
+		// drop zone: click opens the picker; drag-and-drop adds files
+		dropZone.addEventListener("click", () => fileInput.click());
+		dropZone.addEventListener("dragover", (e) => { e.preventDefault(); dropZone.classList.add("active"); });
+		dropZone.addEventListener("dragleave", () => dropZone.classList.remove("active"));
+		dropZone.addEventListener("drop", (e) => {
+			e.preventDefault();
+			dropZone.classList.remove("active");
+			this.#addFiles([...e.dataTransfer.files]);
+		});
+		fileInput.addEventListener("change", () => {
+			this.#addFiles([...fileInput.files]);
+			fileInput.value = "";   // same file can be re-picked after a fix
+		});
+
+		document.getElementById(Config.Selectors.ConvertButton)
+			.addEventListener("click", () => this.#convert());
+
+		// the "clear everything & convert another module" reset button — resets
+		// the converter to its fresh state in place (see #resetPage()).
+		const resetBtn = document.getElementById(Config.Selectors.ResetButton);
+		if (resetBtn) resetBtn.addEventListener("click", () => this.#resetPage());
+
+		// delegated remove buttons on the file list (rows are re-rendered)
+		document.getElementById(Config.Selectors.FileList)
+			.addEventListener("click", (e) => {
+				const btn = e.target.closest("[data-remove]");
+				if (!btn) return;
+				// "acks:N" removes the accepted acknowledgements .txt at that
+				// index; a bare number removes the docx at that index
+				// (see #renderFileList)
+				if (String(btn.dataset.remove).startsWith("acks:")) {
+					this.#txtFiles.splice(Number(btn.dataset.remove.slice(5)), 1);
+				} else this.#files.splice(Number(btn.dataset.remove), 1);
+				this.#renderFileList();
+			});
+
+		// ---- the Reference-module panel ------------------------------------
+		// Two choices as radios (pick — the default — and html); each reveals
+		// its own sub-block, and every change re-evaluates the Convert gate.
+		const refBlocks = () => {
+			const pick = document.getElementById(Config.Selectors.RefPick);
+			const custom = document.getElementById(Config.Selectors.RefCustom);
+			const html = document.getElementById(Config.Selectors.RefHtml);
+			const pb = document.getElementById(Config.Selectors.RefPickBlock);
+			const cb = document.getElementById(Config.Selectors.RefCustomBlock);
+			const hb = document.getElementById(Config.Selectors.RefHtmlBlock);
+			if (pb) pb.hidden = !pick?.checked;
+			if (cb) cb.hidden = !custom?.checked;   // Make your own template
+			if (hb) hb.hidden = !html?.checked;
+			this.#updateConvertGate();
+		};
+		for (const id of [Config.Selectors.RefPick, Config.Selectors.RefCustom, Config.Selectors.RefHtml]) {
+			document.getElementById(id)?.addEventListener("change", refBlocks);
+		}
+		// The three REQUIRED custom-template dropdowns: any change
+		// re-narrows the other two lists to combinations that actually exist
+		// in the library (an invalid selection resets and re-gates),
+		// then re-evaluates the Convert gate. They never touch the library
+		// picker's list.
+		for (const id of [Config.Selectors.RefCustomSubject, Config.Selectors.RefCustomPhase,
+			Config.Selectors.RefCustomTemplate]) {
+			document.getElementById(id)?.addEventListener("change", () => {
+				this.#renderCustomOptions();
+				this.#updateConvertGate();
+			});
+		}
+		document.getElementById(Config.Selectors.RefCodeSelect)
+			?.addEventListener("change", () => {
+				this.#refUserPicked = true;
+				this.#updateConvertGate();
+			});
+		// Type-to-filter: every keystroke narrows the dropdown to
+		// the codes containing the typed text; an EXACT single match selects
+		// itself (so typing a full code is enough); clearing the box restores
+		// the full list. The current selection is never dropped by filtering.
+		document.getElementById(Config.Selectors.RefCodeFilter)
+			?.addEventListener("input", (e) => {
+				this.#renderRefCodeOptions();
+				const sel = document.getElementById(Config.Selectors.RefCodeSelect);
+				const f = e.target.value.trim().toUpperCase();
+				if (sel && f) {
+					const matches = this.#refCodeRows.filter((r) => r.code.includes(f));
+					if (matches.length === 1 && sel.value !== matches[0].code) {
+						sel.value = matches[0].code;
+						this.#refUserPicked = true;
+					}
+				}
+				this.#updateConvertGate();
+			});
+		// The subject + phase filter dropdowns narrow the list the
+		// same way (all three filters combine); changing one re-renders and
+		// re-evaluates the gate. Filtering never drops the current selection.
+		// Choosing a subject also REBUILDS the phase dropdown so
+		// it only offers the phases present in that subject (an invalidated
+		// phase choice resets to "All phases").
+		document.getElementById(Config.Selectors.RefSubjectFilter)
+			?.addEventListener("change", () => {
+				this.#renderPhaseOptions();
+				this.#renderTemplateOptions();   // templates narrow with the subject too
+				this.#renderRefCodeOptions();
+				this.#updateConvertGate();
+			});
+		for (const id of [Config.Selectors.RefPhaseFilter, Config.Selectors.RefTemplateFilter]) {
+			document.getElementById(id)?.addEventListener("change", () => {
+				this.#renderRefCodeOptions();
+				this.#updateConvertGate();
+			});
+		}
+		// The "Reset filters" button: clears the code text + all
+		// three dropdowns back to "show everything" (the current selection is
+		// untouched — it stays selected in the restored full list).
+		document.getElementById(Config.Selectors.RefFilterReset)
+			?.addEventListener("click", () => {
+				this.#clearRefFilters();
+				this.#renderRefCodeOptions();
+				this.#updateConvertGate();
+			});
+		document.getElementById(Config.Selectors.RefHtmlInput)
+			?.addEventListener("change", (e) => {
+				this.#addRefHtml([...e.target.files]);
+				e.target.value = "";   // same file can be re-picked
+			});
+		document.getElementById(Config.Selectors.RefHtmlList)
+			?.addEventListener("click", (e) => {
+				const btn = e.target.closest("[data-remove]");
+				if (!btn) return;
+				this.#refHtmlFiles.splice(Number(btn.dataset.remove), 1);
+				this.#renderRefHtmlList();
+			});
+	};
+
+	/**
+	 * THE CONVERT GATE. The Convert button is clickable only
+	 * when (a) at least one .docx is uploaded AND (b) the reference
+	 * requirement is satisfied: either a reference module is selected in
+	 * the dropdown (the suggestion auto-fills it when one exists), or the
+	 * "upload reference HTML" choice is active with at least one page
+	 * added. When the reference feature is off (data flag) or its panel
+	 * isn't showing yet, only the file requirement applies.
+	 *
+	 * @returns {void}
+	 */
+	static #updateConvertGate() {
+		const btn = document.getElementById(Config.Selectors.ConvertButton);
+		if (!btn) return;
+		let ok = this.#files.length > 0;
+		// When the REFERENCE requirement is what blocks Convert,
+		// say so in red under the button (refBlocked drives the note below).
+		let refBlocked = false;
+		let noteText = Config.Strings.ConvertGateReference;
+		const panel = document.getElementById(Config.Selectors.ReferencePanel);
+		const cfg = DataService.Data?.EmitTemplates?.reference_module;
+		if (ok && cfg && cfg.enabled !== false && panel && !panel.hidden) {
+			if (document.getElementById(Config.Selectors.RefHtml)?.checked) {
+				ok = this.#refHtmlFiles.length > 0;
+			} else if (document.getElementById(Config.Selectors.RefCustom)?.checked) {
+				// "Make your own template": ALL THREE dropdowns required
+				ok = !!(document.getElementById(Config.Selectors.RefCustomSubject)?.value)
+					&& !!(document.getElementById(Config.Selectors.RefCustomPhase)?.value)
+					&& !!(document.getElementById(Config.Selectors.RefCustomTemplate)?.value);
+				noteText = Config.Strings.ConvertGateCustom;
+			} else {
+				ok = !!(document.getElementById(Config.Selectors.RefCodeSelect)?.value);
+			}
+			refBlocked = !ok;
+		}
+		btn.disabled = !ok;
+		const note = document.getElementById(Config.Selectors.ConvertGateNote);
+		if (note) {
+			note.hidden = !refBlocked;
+			note.textContent = refBlocked ? noteText : "";
+		}
+	};
+
+	/**
+	 * Accepts newly-picked reference .html pages for the "upload reference
+	 * HTML" choice. Only .html/.htm files are kept; anything
+	 * else is logged and ignored.
+	 *
+	 * @param {File[]} files - the picked browser File objects
+	 * @returns {void}
+	 */
+	static #addRefHtml(files) {
+		for (const f of files) {
+			if (/\.html?$/i.test(f.name)) { this.#refHtmlFiles.push(f); continue; }
+			this.#log(`⚠ "${f.name}" is not an .html page — ignored (the reference upload takes the module's finished HTML pages).`);
+		}
+		this.#renderRefHtmlList();
+	};
+
+	/** Redraws the reference-HTML file list (mirrors #renderFileList). */
+	static #renderRefHtmlList() {
+		const list = document.getElementById(Config.Selectors.RefHtmlList);
+		if (!list) return;
+		list.innerHTML = this.#refHtmlFiles.map((f, i) =>
+			`<li>${Utils.EscapeHtml(f.name)} <button type="button" data-remove="${i}" title="Remove">✕</button></li>`).join("");
+		this.#updateConvertGate();   // adding/removing pages can (un)satisfy the gate
+	};
+
+	/**
+	 * Shows/refreshes the Reference-module panel after every
+	 * change to the uploaded files. Purely ADVISORY: it detects the module
+	 * code (filenames first; the first docx's front matter as an async
+	 * fallback), names the SUGGESTED reference module, and fills the
+	 * pick-list of every library module code. All the detection work happens inside
+	 * ReferenceMiner.PreviewSuggestion (an engine helper), never here.
+	 *
+	 * @returns {Promise<void>}
+	 */
+	static async #updateReferencePanel() {
+		const panel = document.getElementById(Config.Selectors.ReferencePanel);
+		if (!panel) return;
+		const cfg = DataService.Data?.EmitTemplates?.reference_module;
+		if (!cfg || cfg.enabled === false) return;   // feature off → panel stays hidden
+		if (!this.#files.length) {
+			panel.hidden = true;
+			this.#refPreview = null;
+			this.#updateConvertGate();
+			return;
+		}
+		panel.hidden = false;
+		this.#fillReferenceCodes();
+
+		const token = ++this.#refPreviewToken;
+		const filenames = this.#files.map((f) => f.name);
+		let preview = ReferenceMiner.PreviewSuggestion({ filenames });
+		if (!preview.code) {
+			// no code in the filenames — peek at the first docx's front matter
+			this.#renderRefStatus({ code: null, pending: true });
+			try {
+				const zip = new ZipReader(await this.#files[0].arrayBuffer());
+				const doc = await DocxExtractor.Extract(zip);
+				if (token !== this.#refPreviewToken) return;   // stale — files changed again
+				preview = ReferenceMiner.PreviewSuggestion({ filenames, allBlocks: doc.blocks });
+			} catch { /* advisory only — leave preview code-less */ }
+		}
+		if (token !== this.#refPreviewToken) return;
+		this.#refPreview = preview;
+		this.#renderRefStatus(preview);
+
+		// Auto-select the suggestion in the dropdown. A manual
+		// selection is never clobbered; with no suggestion (and no manual
+		// pick) the placeholder "Please select a reference module" stays
+		// selected and the Convert gate keeps the button inactive.
+		// Remember the suggestion so the list can mark its row
+		// with the red "recommended" note on every rebuild.
+		this.#refSuggestedCode = preview.suggestion?.code ?? null;
+		// Clear any leftover filters first so the suggestion
+		// is guaranteed to be present in the (full) option list.
+		const sel = document.getElementById(Config.Selectors.RefCodeSelect);
+		if (sel && (!this.#refUserPicked || !sel.value)) {
+			this.#clearRefFilters();
+			// With a recommended module, PRE-SELECT its subject +
+			// phase in the filter dropdowns too, so the visible list opens on
+			// the recommendation's own cohort (its subject may be absent from
+			// the subject list — e.g. an unclassified module — in which case
+			// the assignment is a no-op and "All subjects" stays).
+			const suggRow = this.#refSuggestedCode
+				? this.#refCodeRows.find((r) => r.code === this.#refSuggestedCode) ?? null
+				: null;
+			if (suggRow) {
+				const subjSel = document.getElementById(Config.Selectors.RefSubjectFilter);
+				if (subjSel && suggRow.subjectLabel) subjSel.value = suggRow.subjectLabel;
+				this.#renderPhaseOptions();      // phases now reflect that subject
+				this.#renderTemplateOptions();   // templates too
+				const phaseSel = document.getElementById(Config.Selectors.RefPhaseFilter);
+				if (phaseSel) phaseSel.value = suggRow.phaseKey ?? "";
+				// Pre-select the recommendation's template as well (a
+				// template-less module leaves "All templates")
+				const tplSel = document.getElementById(Config.Selectors.RefTemplateFilter);
+				if (tplSel && suggRow.template_type) tplSel.value = suggRow.template_type;
+			}
+			this.#renderRefCodeOptions();
+			sel.value = preview.suggestion?.code ?? "";
+		} else {
+			// a manual pick stands — still refresh the list so the
+			// recommended row shows its note
+			this.#renderRefCodeOptions();
+		}
+		this.#updateConvertGate();
+	};
+
+	/** Clears the code/subject/phase filters back to "show everything". */
+	static #clearRefFilters() {
+		const filterBox = document.getElementById(Config.Selectors.RefCodeFilter);
+		if (filterBox) filterBox.value = "";
+		for (const id of [Config.Selectors.RefSubjectFilter, Config.Selectors.RefPhaseFilter,
+			Config.Selectors.RefTemplateFilter]) {
+			const s = document.getElementById(id);
+			if (s) s.value = "";
+		}
+		// The phase + template lists mirror the (now-cleared) subject choice
+		if (this.#refCodesFilled) {
+			this.#renderPhaseOptions();
+			this.#renderTemplateOptions();
+		}
+	};
+
+	/**
+	 * Renders the panel's status line: the detected module code and the
+	 * suggested reference module (or an honest "no relative found" when the
+	 * library holds nothing related — the case the reference-HTML upload
+	 * exists for).
+	 *
+	 * @param {Object} preview - a ReferenceMiner.PreviewSuggestion result
+	 *   (or {pending:true} while the front-matter fallback is running)
+	 * @returns {void}
+	 */
+	static #renderRefStatus(preview) {
+		const el = document.getElementById(Config.Selectors.ReferenceStatus);
+		if (!el) return;
+		if (preview?.pending) {
+			el.textContent = "Reading the uploaded document to work out the module code…";
+			return;
+		}
+		if (!preview?.code) {
+			el.textContent = "No module code found in the uploads yet — select a reference module below, or upload reference HTML.";
+			return;
+		}
+		// Two lines, no trailing why-phrase, the template named as "… Template".
+		const s = preview.suggestion;
+		if (s) {
+			const meta = s.meta ?? {};
+			const detail = [meta.series, meta.template_type ? `${meta.template_type} Template` : null]
+				.filter(Boolean).join(" · ");
+			el.innerHTML = `Module detected: <strong>${Utils.EscapeHtml(preview.code)}</strong>.<br>`
+				+ `Suggested reference: <strong>${Utils.EscapeHtml(s.code)}</strong>`
+				+ `${detail ? ` (${Utils.EscapeHtml(detail)})` : ""}`;
+		} else {
+			el.innerHTML = `Module detected: <strong>${Utils.EscapeHtml(preview.code)}</strong>.<br>`
+				+ `No suggested module exists in PageForge's distilled templates — please select a `
+				+ `reference module below, or upload reference HTML.`;
+		}
+	};
+
+	/**
+	 * Caches the library-code list (once), enriches each row with its phase
+	 * key + display subject, populates the subject and phase
+	 * filter dropdowns from the data actually present, and renders the
+	 * full, unfiltered list. The placeholder option ("Please select a
+	 * reference module") is always the first, empty-value entry — it is
+	 * what shows when no suggestion exists and nothing was picked.
+	 */
+	static #fillReferenceCodes() {
+		if (this.#refCodesFilled) return;
+		const rows = ReferenceMiner.ListLibraryCodes();
+		if (!rows.length) return;
+		// enrich: phase key via the filter's own complete classifier;
+		// modules the index carries no subject for keep an empty subjectLabel —
+		// they show under "All subjects" but are NOT offered as a filter entry
+		// (there is no "Unclassified" entry in the list).
+		this.#refCodeRows = rows.map((r) => ({
+			...r,
+			phaseKey: this.#refPhaseKey(r.code),
+			subjectLabel: r.subject || "",
+		}));
+
+		// subject dropdown: every distinct REAL subject in the library, sorted
+		const subjSel = document.getElementById(Config.Selectors.RefSubjectFilter);
+		if (subjSel) {
+			const subjects = [...new Set(this.#refCodeRows.map((r) => r.subjectLabel))]
+				.filter(Boolean).sort();
+			subjSel.insertAdjacentHTML("beforeend", subjects.map((s) =>
+				`<option value="${Utils.EscapeHtml(s)}">${Utils.EscapeHtml(s)}</option>`).join(""));
+		}
+		// phase + template dropdowns: rebuilt from the data (and
+		// re-rebuilt whenever the subject filter changes, so they only offer
+		// what's present in that subject)
+		this.#renderPhaseOptions();
+		this.#renderTemplateOptions();
+
+		// The "Make your own template" dropdowns: filled ONCE with ALL
+		// available options (unlike the library filters, these never narrow —
+		// not by each other, and not by the module being converted).
+		this.#fillCustomOptions();
+
+		this.#renderRefCodeOptions();
+		this.#refCodesFilled = true;
+	};
+
+	/**
+	 * Fills the "Make your own template" SUBJECT dropdown (once — always the
+	 * full subject list) and renders the phase/template dropdowns.
+	 *
+	 * The phase and template dropdowns only offer what has ALREADY BEEN
+	 * DEVELOPED —
+	 * choosing a subject narrows both lists to that subject's phases and
+	 * templates, and the two cross-narrow so only combinations that exist in
+	 * the library can be assembled. This guarantees every choice has real
+	 * templated attributes to inherit; when a needed combination doesn't
+	 * exist, that's the signal to use "Upload a reference module" instead.
+	 *
+	 * @returns {void}
+	 */
+	static #fillCustomOptions() {
+		const rows = this.#refCodeRows;
+		if (!rows.length) return;
+		const subjSel = document.getElementById(Config.Selectors.RefCustomSubject);
+		if (subjSel && subjSel.options.length <= 1) {
+			const subjects = [...new Set(rows.map((r) => r.subjectLabel))].filter(Boolean).sort();
+			subjSel.insertAdjacentHTML("beforeend", subjects.map((s) =>
+				`<option value="${Utils.EscapeHtml(s)}">${Utils.EscapeHtml(s)}</option>`).join(""));
+		}
+		this.#renderCustomOptions();
+	};
+
+	/**
+	 * (Re)builds the custom-template PHASE and TEMPLATE dropdowns (ROUND
+	 * 274) from what actually exists in the library, given the current
+	 * selections: with no subject chosen both lists show the full library's
+	 * values; with a subject chosen they narrow to that subject, and each
+	 * list additionally narrows by the OTHER's surviving choice (Science +
+	 * template Fundamentals → only the phases Science Fundamentals modules
+	 * exist at). A selection the new pool doesn't support resets to its
+	 * "Select a …" placeholder (which re-gates Convert).
+	 *
+	 * @returns {void}
+	 */
+	static #renderCustomOptions() {
+		const rows = this.#refCodeRows;
+		const phaseSel = document.getElementById(Config.Selectors.RefCustomPhase);
+		const tplSel = document.getElementById(Config.Selectors.RefCustomTemplate);
+		if (!rows.length || !phaseSel || !tplSel) return;
+		const subj = document.getElementById(Config.Selectors.RefCustomSubject)?.value ?? "";
+		const poolS = subj ? rows.filter((r) => r.subjectLabel === subj) : rows;
+		// pass 1 — drop selections the chosen subject doesn't support at all
+		const phasesInS = new Set(poolS.map((r) => r.phaseKey));
+		const tplsInS = new Set(poolS.map((r) => r.template_type).filter(Boolean));
+		let phase = phaseSel.value;
+		if (phase && !phasesInS.has(phase)) phase = "";
+		let tpl = tplSel.value;
+		if (tpl && !tplsInS.has(tpl)) tpl = "";
+		// pass 2 — each list narrows by the OTHER surviving choice, so only
+		// combinations that actually exist can be assembled
+		const phasePool = tpl ? poolS.filter((r) => r.template_type === tpl) : poolS;
+		const tplPool = phase ? poolS.filter((r) => r.phaseKey === phase) : poolS;
+		const order = Object.keys(this.#RefPhaseLabels);
+		const pos = (k) => { const i = order.indexOf(k); return i < 0 ? order.length : i; };
+		const phases = [...new Set(phasePool.map((r) => r.phaseKey))].sort((a, b) => pos(a) - pos(b));
+		phaseSel.innerHTML = `<option value="">Select a phase…</option>`
+			+ phases.map((p) => {
+				const example = phasePool.find((r) => r.phaseKey === p)?.code;
+				const label = `${this.#RefPhaseLabels[p] ?? p}${example ? ` (e.g. ${example})` : ""}`;
+				return `<option value="${Utils.EscapeHtml(p)}">${Utils.EscapeHtml(label)}</option>`;
+			}).join("");
+		phaseSel.value = phases.includes(phase) ? phase : "";
+		const templates = [...new Set(tplPool.map((r) => r.template_type))].filter(Boolean).sort();
+		tplSel.innerHTML = `<option value="">Select a template…</option>`
+			+ templates.map((t) =>
+				`<option value="${Utils.EscapeHtml(t)}">${Utils.EscapeHtml(t)}</option>`).join("");
+		tplSel.value = templates.includes(tpl) ? tpl : "";
+	};
+
+	/**
+	 * (Re)builds the template dropdown's options — the distinct
+	 * template types present in the whole library, or in the chosen subject
+	 * when one is selected (mirrors #renderPhaseOptions). Modules the index
+	 * carries no template for stay visible under "All templates" but are not
+	 * offered as an entry; an invalidated choice resets to "All templates".
+	 *
+	 * @returns {void}
+	 */
+	static #renderTemplateOptions() {
+		const tplSel = document.getElementById(Config.Selectors.RefTemplateFilter);
+		if (!tplSel || !this.#refCodeRows.length) return;
+		const subj = document.getElementById(Config.Selectors.RefSubjectFilter)?.value ?? "";
+		const pool = subj
+			? this.#refCodeRows.filter((r) => r.subjectLabel === subj)
+			: this.#refCodeRows;
+		const present = [...new Set(pool.map((r) => r.template_type))].filter(Boolean).sort();
+		const current = tplSel.value;
+		tplSel.innerHTML = `<option value="">All templates</option>`
+			+ present.map((t) =>
+				`<option value="${Utils.EscapeHtml(t)}">${Utils.EscapeHtml(t)}</option>`).join("");
+		tplSel.value = present.includes(current) ? current : "";
+	};
+
+	/**
+	 * (Re)builds the phase dropdown's options. The pool is the
+	 * whole library, or — when a subject is chosen — only that subject's
+	 * modules, so the dropdown always reflects the phases actually present
+	 * in what's being viewed. Each option keeps the concise label + a real
+	 * example code drawn FROM the pool (so with "Online Safety" chosen the
+	 * Phase 5 example is an OS module, not a CED one). A phase choice the
+	 * new pool doesn't contain resets to "All phases".
+	 *
+	 * @returns {void}
+	 */
+	static #renderPhaseOptions() {
+		const phaseSel = document.getElementById(Config.Selectors.RefPhaseFilter);
+		if (!phaseSel || !this.#refCodeRows.length) return;
+		const subj = document.getElementById(Config.Selectors.RefSubjectFilter)?.value ?? "";
+		const pool = subj
+			? this.#refCodeRows.filter((r) => r.subjectLabel === subj)
+			: this.#refCodeRows;
+		const order = Object.keys(this.#RefPhaseLabels);
+		// a phase key the label table doesn't know sorts LAST (indexOf -1
+		// would otherwise sort it first) and shows its raw key as the label
+		const pos = (k) => { const i = order.indexOf(k); return i < 0 ? order.length : i; };
+		const present = [...new Set(pool.map((r) => r.phaseKey))].sort((a, b) => pos(a) - pos(b));
+		const current = phaseSel.value;
+		phaseSel.innerHTML = `<option value="">All phases</option>`
+			+ present.map((p) => {
+				const example = pool.find((r) => r.phaseKey === p)?.code;
+				const label = `${this.#RefPhaseLabels[p] ?? p}${example ? ` (e.g. ${example})` : ""}`;
+				return `<option value="${Utils.EscapeHtml(p)}">${Utils.EscapeHtml(label)}</option>`;
+			}).join("");
+		phaseSel.value = present.includes(current) ? current : "";
+	};
+
+	/**
+	 * Rebuilds the reference list's options from the cached library list,
+	 * narrowed by the type-to-filter text. Matching is a
+	 * case-insensitive substring test against the code and its subject ·
+	 * template label. The placeholder always stays, the current selection
+	 * is always kept in the list (filtering can never silently drop it),
+	 * and the selection itself survives the rebuild.
+	 *
+	 * The list is an always-visible scrolling box (index.html
+	 * size=8), so this rebuild happens in plain sight as the person types;
+	 * the "showing N of M modules" line underneath narrates it, and the
+	 * selected row is scrolled into view.
+	 *
+	 * The text filter COMBINES with the subject and phase
+	 * dropdowns (all three read from the DOM here); the count line names
+	 * every active filter.
+	 *
+	 * @returns {void}
+	 */
+	static #renderRefCodeOptions() {
+		const sel = document.getElementById(Config.Selectors.RefCodeSelect);
+		if (!sel) return;
+		const current = sel.value;
+		const text = (document.getElementById(Config.Selectors.RefCodeFilter)?.value ?? "").trim();
+		const f = text.toUpperCase();
+		const subj = document.getElementById(Config.Selectors.RefSubjectFilter)?.value ?? "";
+		const phase = document.getElementById(Config.Selectors.RefPhaseFilter)?.value ?? "";
+		const tpl = document.getElementById(Config.Selectors.RefTemplateFilter)?.value ?? "";
+		// The RECOMMENDED module is PINNED to the top of the list,
+		// no matter what filters are active (it renders first, right after the
+		// placeholder, and is excluded from its alphabetical position below).
+		const suggested = this.#refSuggestedCode
+			? this.#refCodeRows.find((r) => r.code === this.#refSuggestedCode) ?? null
+			: null;
+		const rows = this.#refCodeRows.filter((r) => {
+			if (suggested && r.code === suggested.code) return false;   // pinned above
+			if (r.code === current) return true;   // never drop the selection
+			if (subj && r.subjectLabel !== subj) return false;
+			if (phase && r.phaseKey !== phase) return false;
+			if (tpl && r.template_type !== tpl) return false;
+			if (!f) return true;
+			const detail = [r.subject, r.template_type].filter(Boolean).join(" · ");
+			return r.code.includes(f) || detail.toUpperCase().includes(f);
+		});
+		// The suggested module's row carries a red "recommended"
+		// note (class-styled; options can't hold real badges, so it's styled
+		// text on the row).
+		const optionFor = (r, rec) => {
+			const detail = [r.subject, r.template_type].filter(Boolean).join(" · ");
+			return `<option value="${Utils.EscapeHtml(r.code)}"${rec ? ` class="ref-recommended"` : ""}>`
+				+ `${Utils.EscapeHtml(r.code)}${detail ? ` — ${Utils.EscapeHtml(detail)}` : ""}`
+				+ `${rec ? " — ★ recommended" : ""}</option>`;
+		};
+		// With a recommended module pinned (and therefore
+		// pre-selected), the "Please select a reference module" placeholder
+		// row is dropped entirely: a real selection always exists, so the
+		// prompt row is just noise. Without a suggestion the placeholder
+		// stays — it is the visible "nothing chosen yet" state the Convert
+		// gate keys on.
+		sel.innerHTML = (suggested ? "" : `<option value="">Please select a reference module</option>`)
+			+ (suggested ? optionFor(suggested, true) : "")
+			+ rows.map((r) => optionFor(r, false)).join("");
+		sel.value = current;   // restore ("" when nothing was selected)
+		sel.selectedOptions[0]?.scrollIntoView({ block: "nearest" });
+		const count = document.getElementById(Config.Selectors.RefCodeCount);
+		if (count) {
+			const total = this.#refCodeRows.length;
+			const visible = rows.length + (suggested ? 1 : 0);   // incl. the pinned row
+			const active = [];
+			if (f) active.push(`matching “${text}”`);
+			if (subj) active.push(`subject: ${subj}`);
+			if (phase) active.push(`phase: ${this.#RefPhaseLabels[phase] ?? phase}`);
+			if (tpl) active.push(`template: ${tpl}`);
+			count.textContent = active.length
+				? `Showing ${visible} of ${total} library modules — ${active.join(" · ")}`
+					+ (rows.length ? "" : (suggested
+						? " — only the recommended module matches nothing here; clear a filter to widen the list"
+						: " — no matches; clear a filter to widen the list"))
+				: `Showing all ${total} library modules — filter by code, subject or phase above`;
+		}
+	};
+
+	/**
+	 * Adds newly-picked or dropped files to the pending upload list (the
+	 * shared #files array), validating them first. Called from both upload
+	 * paths wired up in #wireUi() — the drop-zone's "drop" event and the
+	 * file <input>'s "change" event — so this is the ONE place file
+	 * validation happens, no matter how a person chose their files.
+	 *
+	 * WHAT IT VALIDATES:
+	 * - extension: only files ending in ".docx" are kept. Anything else (a
+	 *   stray .pdf, .doc, a screenshot, …) is rejected immediately with a
+	 *   visible log message — never silently dropped without explanation.
+	 * - count: this tool converts ONE module per run, which needs at most
+	 *   two files — the Writers Template (WT) and its companion Media List
+	 *   — or a single combined .docx that serves as both. A third file is
+	 *   refused, the list is trimmed back to the first two, and a log
+	 *   message explains why.
+	 *
+	 * WHAT IT DOES NOT DO: work out WHICH of the (up to two) accepted files
+	 * is the WT and which is the Media List — that classification happens
+	 * later, inside ModuleResolver.PrepareRun, once the files have actually
+	 * been unzipped and their content read (see #convert() stage [3]).
+	 *
+	 * @param {File[]} files - newly-picked or dropped browser File objects
+	 * @returns {void}
+	 */
+	static async #addFiles(files) {
+		// .docx inputs, plus any optional .txt holding the verified iStock
+		// acknowledgements; anything else is surfaced immediately.
+		//
+		// A .txt is not judged by its NAME. Filenames come in several forms
+		// (_istock-acks.txt, _istock-acks-OSAI501.txt /
+		// _OSAI501-istock-acks.txt), so ANY .txt is accepted here and its CONTENTS decide: if its
+		// lines are iStock acknowledgements and nothing else, it is the acks
+		// file. The check below is for immediate on-screen feedback; the
+		// authoritative pick happens once, for both entries, inside
+		// ModuleResolver.PrepareRun (AcksBuilder.PickIstockAcks).
+		for (const f of files) {
+			if (f.name.toLowerCase().endsWith(".docx")) { this.#files.push(f); continue; }
+			if (!f.name.toLowerCase().endsWith(".txt")) {
+				this.#log(`⚠ "${f.name}" is not a .docx (or a .txt of iStock acknowledgements) — ignored.`);
+				continue;
+			}
+			let verdict = { ok: false, matched: 0, nonEmpty: 0 };
+			try { verdict = AcksBuilder.LooksLikeIstockAcks(await f.text()); }
+			catch { /* unreadable file falls through as "not recognised" */ }
+			if (verdict.ok) {
+				this.#txtFiles.push(f);
+				this.#log(`✓ "${f.name}" — recognised by its contents as verified iStock acknowledgements `
+					+ `(${verdict.matched} entries); these titles will be used for the iStock acks.`);
+			} else {
+				this.#log(`⚠ "${f.name}" does not look like an iStock acknowledgements file `
+					+ `(${verdict.matched} of ${verdict.nonEmpty} lines are acknowledgement lines) — ignored. `
+					+ `Expected one line per asset, e.g. "&lt;p&gt;Photo: Title, iStock 1234567, Getty Images. Used with permission.&lt;/p&gt;".`);
+			}
+		}
+		// one module per run: a WT + its media list (or one combined file)
+		if (this.#files.length > 2) {
+			this.#log("⚠ More than two .docx files — Phase 1 converts ONE module per run (WT + media list, or one combined docx). Extra files removed.");
+			this.#files = this.#files.slice(0, 2);
+		}
+		this.#renderFileList();
+	};
+
+	/**
+	 * Redraws the visible list of pending uploaded files from the current
+	 * #files array, and enables/disables the Convert button to match — it
+	 * only becomes clickable once at least one file has been added.
+	 *
+	 * WHY REBUILD THE WHOLE LIST (rather than patch individual rows): the
+	 * list is always short (at most two files — see #addFiles()), so simply
+	 * re-rendering the whole <ul> from #files on every change keeps this
+	 * file's in-memory state and the visible DOM impossible to get out of
+	 * sync — #files is the one source of truth, and the DOM is always just
+	 * a direct reflection of it. Each row's "remove" button carries its own
+	 * array index in a data-remove="i" attribute, which the delegated click
+	 * listener wired in #wireUi() reads to know which file to splice out.
+	 *
+	 * Called after every change to #files: when files are added, and when
+	 * one is removed via its row's "remove" button.
+	 *
+	 * @returns {void}
+	 */
+	static #renderFileList() {
+		const list = document.getElementById(Config.Selectors.FileList);
+		const rows = this.#files.map((f, i) =>
+			`<li>${Utils.EscapeHtml(f.name)} <button type="button" data-remove="${i}" title="Remove">✕</button></li>`);
+		// each accepted verified-iStock-acknowledgements .txt renders as its own
+		// row (data-remove="acks:N" — see the delegated click handler in #wireUi)
+		this.#txtFiles.forEach((f, i) => rows.push(
+			`<li>${Utils.EscapeHtml(f.name)} <em>(verified iStock acks)</em> <button type="button" data-remove="acks:${i}" title="Remove">✕</button></li>`));
+		list.innerHTML = rows.join("");
+		// The Convert button's state is owned by the gate (files
+		// present + a reference selected or reference HTML added).
+		this.#updateConvertGate();
+		// Every file-list change refreshes the Reference-module
+		// panel (fire-and-forget: it's advisory display work, and its own
+		// token guard handles a stale async result; it re-runs the gate once
+		// the suggestion has been auto-selected).
+		this.#updateReferencePanel();
+	};
+
+	// =======================================================================
+	// THE CONVERSION PROGRESS BAR (Convert panel)
+	// =======================================================================
+	// Stage-weighted determinate bar: each stage owns a fixed slice of the
+	// 0–100% bar, and advances by done/total INSIDE that slice — so the bar
+	// is MONOTONIC (it only ever moves forward; it never jumps backward or
+	// resets mid-run) without needing to know every stage's total item count
+	// up front (page counts, media counts, etc. only exist once the run is
+	// actually under way). The extract and prep stages are reported directly
+	// by #convert(); the pages and acks stages arrive through
+	// run.onProgress — an OPTIONAL callback that ONLY this browser entry
+	// point ever sets. The command-line batch-conversion tool
+	// (batch_convert.cjs) never sets run.onProgress, so the engine's guarded
+	// call sites that report progress are harmless no-ops when running in
+	// batch — this is purely display machinery bolted onto the browser UI,
+	// not a change to the shared conversion logic itself, so it can never
+	// make the browser tool and the batch tool produce different output.
+	// The acks slice is the widest because building the acknowledgements
+	// section is the genuinely slow phase in the browser: it does a real
+	// oEmbed fetch (a web standard some sites, like YouTube, support for
+	// looking up a resource's title/author from its URL alone) for each
+	// media item, with a throttle of at least 250ms between fetches.
+
+	/**
+	 * The stage table the progress bar is built from. Each stage owns a
+	 * fixed slice of the 0–100% bar: "start" is the percentage where that
+	 * slice begins, and "span" is how many percentage points wide it is.
+	 * The four spans (15 + 5 + 35 + 40 = 95) deliberately leave the last 5
+	 * points unused — #progressDone() jumps straight to a clean 100% rather
+	 * than trying to land exactly on 95+span. "label" names the entry in
+	 * Config.Strings used as that stage's visible text label.
+	 */
+	static #ProgressStages = {
+		extract: { start: 0,  span: 15, label: "ProgressExtract" },
+		prep:    { start: 15, span: 5,  label: "ProgressPrep" },
+		pages:   { start: 20, span: 35, label: "ProgressPages" },
+		acks:    { start: 55, span: 40, label: "ProgressAcks" },
+	};
+
+	/**
+	 * Shows the progress bar at 0% and clears any leftover error styling
+	 * left over from a previous failed run. Called at the very start of
+	 * every #convert() click, before any real conversion work happens.
+	 * @returns {void}
+	 */
+	static #progressStart() {
+		const bar = document.getElementById(Config.Selectors.ProgressBar);
+		if (!bar) return;                    // older index.html — degrade silently
+		bar.classList.remove("error");
+		bar.hidden = false;
+		this.#progressSet("extract", 0, Math.max(this.#files.length, 1));
+	};
+
+	/**
+	 * Moves the bar's fill to a position INSIDE one stage's fixed slice,
+	 * based on how far through that stage the work has got (done out of
+	 * total). For example, #progressSet("pages", 3, 10) with pages'
+	 * {start: 20, span: 35} lands the fill at 20 + 35*(3/10) = 30.5%,
+	 * rounded. Also updates the bar's visible text label and its
+	 * aria-valuenow attribute (used by screen readers).
+	 *
+	 * @param {string} stage - one of the keys in #ProgressStages: "extract" | "prep" | "pages" | "acks"
+	 * @param {number} done - units completed so far within this stage
+	 * @param {number} total - the total number of units this stage will process
+	 * @returns {void}
+	 */
+	static #progressSet(stage, done, total) {
+		const bar = document.getElementById(Config.Selectors.ProgressBar);
+		const s = this.#ProgressStages[stage];
+		if (!bar || bar.hidden || !s) return;
+		const frac = total > 0 ? Math.min(done / total, 1) : 1;
+		const pct = Math.round(s.start + s.span * frac);
+		document.getElementById(Config.Selectors.ProgressBarFill).style.width = `${pct}%`;
+		bar.setAttribute("aria-valuenow", String(pct));
+		const detail = total > 1 ? ` ${Math.min(done, total)}/${total}` : "";
+		document.getElementById(Config.Selectors.ProgressBarLabel).textContent =
+			`${Config.Strings[s.label] ?? stage}${detail} — ${pct}%`;
+	};
+
+	/**
+	 * Fills the bar the rest of the way to a full 100% and switches its
+	 * label to "Done" (the bar itself stays visible, it doesn't hide).
+	 * Called once, immediately after a conversion finishes successfully.
+	 * @returns {void}
+	 */
+	static #progressDone() {
+		const bar = document.getElementById(Config.Selectors.ProgressBar);
+		if (!bar || bar.hidden) return;
+		document.getElementById(Config.Selectors.ProgressBarFill).style.width = "100%";
+		bar.setAttribute("aria-valuenow", "100");
+		document.getElementById(Config.Selectors.ProgressBarLabel).textContent =
+			`${Config.Strings.ProgressDone} — 100%`;
+	};
+
+	/**
+	 * Puts the bar into its error state: the fill FREEZES exactly where it
+	 * was when the failure happened (it does not reset to 0% or jump to
+	 * 100%) and turns red, so a person can see roughly how far the
+	 * conversion got before it broke. Called from #convert()'s catch block.
+	 * @returns {void}
+	 */
+	static #progressError() {
+		const bar = document.getElementById(Config.Selectors.ProgressBar);
+		if (!bar || bar.hidden) return;
+		bar.classList.add("error");
+		document.getElementById(Config.Selectors.ProgressBarLabel).textContent =
+			Config.Strings.ProgressFailed;
+	};
+
+	/**
+	 * Hides the progress bar and resets its fill back to 0%, ready for the
+	 * next click. Used by #convert()'s early-return paths — an upload that
+	 * gets refused before real conversion work starts (e.g. no Writers
+	 * Template found among the uploads) never moved the bar to a
+	 * meaningful position, so hiding it is clearer than leaving a stalled,
+	 * near-empty bar on screen.
+	 * @returns {void}
+	 */
+	static #progressHide() {
+		const bar = document.getElementById(Config.Selectors.ProgressBar);
+		if (!bar) return;
+		bar.hidden = true;
+		bar.classList.remove("error");
+		document.getElementById(Config.Selectors.ProgressBarFill).style.width = "0%";
+		bar.setAttribute("aria-valuenow", "0");
+	};
+
+	// =======================================================================
+	// THE CONVERSION (one run per click)
+	// =======================================================================
+
+	/**
+	 * Runs ONE complete conversion: everything that happens between a person
+	 * clicking the Convert button and the finished HTML pages appearing in
+	 * the download list. Wrapped in one big try/catch (standards §8a) so any
+	 * failure — anywhere in the whole pipeline — is caught, logged to both
+	 * the browser console and the on-page log, and shown as a frozen red
+	 * progress bar, rather than leaving the button disabled forever or
+	 * failing in a way nobody can see.
+	 *
+	 * THE CONVERSION SEQUENCE, STEP BY STEP:
+	 *   [1] Read the upload-time option checkboxes (image mode P/D, and the
+	 *       interactive hand-off mode inline/extract) and use them to
+	 *       construct a fresh ConversionRun — the "run" object: one mutable
+	 *       scratchpad object created for THIS conversion only, that every
+	 *       later stage reads from and writes onto (the detected module
+	 *       code, the resolved rules, the finished pages, warning/error
+	 *       notes, the output files, …).
+	 *   [2] Extract every uploaded .docx file into this engine's internal
+	 *       block representation (see ZipReader + DocxExtractor.Extract).
+	 *       Neither uploaded file is known yet to be the Writers Template or
+	 *       the Media List at this point — see stage [3] for that.
+	 *   [3] Run the ONE shared prep sequence, ModuleResolver.PrepareRun:
+	 *       classify the extracted files, detect the module code, resolve
+	 *       its structural rules, parse the Media List, and trim the WT's
+	 *       front-matter. This is the SAME sequence the separate
+	 *       command-line batch tool calls (see the note near the top of
+	 *       this file) — see stage [3]'s own comment, below, for why that
+	 *       matters. PrepareRun can signal that conversion cannot continue
+	 *       (prep.ok === false): either no Writers Template was found among
+	 *       the uploads at all (prep.reason === "no-wt"), or the module uses
+	 *       a pathway this converter doesn't support yet (prep.reason ===
+	 *       "unsupported", e.g. certain bilingual templates) — either way,
+	 *       #convert() logs why, re-enables the Convert button, and returns
+	 *       early without attempting to build any pages.
+	 *   [4] Wire up run.onProgress (see THE CONVERSION PROGRESS BAR, above)
+	 *       so the engine can report page-by-page and acknowledgement-by-
+	 *       acknowledgement progress back to this browser UI as it works.
+	 *   [5]–[8] Hand the fully-prepared run to PageAssembler.AssembleModule,
+	 *       which runs the rest of the pipeline (page splitting, interactive
+	 *       widget scanning + content conversion, acknowledgements, and
+	 *       final HTML assembly) and fills in run.pages / run.interactives /
+	 *       run.outputs. See stage [5]–[8]'s own comment, below.
+	 *   Finally: render the finished output files into the download list
+	 *       (#renderOutputs) and the run summary panel (SummaryReporter),
+	 *       mark the progress bar 100% Done, and log a one-line result.
+	 *
+	 * @returns {Promise<void>} resolves once conversion has finished (or
+	 *   failed, or been refused) and the button has been re-enabled
+	 */
+	static async #convert() {
+		const button = document.getElementById(Config.Selectors.ConvertButton);
+		button.disabled = true;
+		this.#clearOutputs();
+		this.#progressStart();
+		this.#log(Config.Strings.Converting);
+
+		try {
+			// ---- [1] upload-time choices ------------------------------------
+			// imageMode ("P" or "D"): which of two placeholder-image rendering
+			// styles to use for an image the converter can't fetch a real
+			// asset for yet. Purely a user choice, carried on the run object.
+			const imageMode = document.getElementById(Config.Selectors.ModeP).checked ? "P" : "D";
+			// The interactive HAND-OFF is the DEFAULT and has no UI switch:
+			// interactiveMode is resolved by the run itself
+			// (ConversionRun.DefaultInteractiveMode — the same shared, data-driven
+			// decision the batch entry point uses, so the two entries cannot drift).
+			// Every un-built interactive renders as its reference-code box with
+			// the raw captured content collapsed inside it, and the same codes
+			// head the {CODE}_interactives.txt blocks.
+			const run = new ConversionRun({ imageMode });
+
+			// ---- [2] extract every uploaded docx into blocks ----------------
+			// A .docx file IS a zip archive internally (that's Word's own
+			// format), so ZipReader opens it as one, and
+			// DocxExtractor.Extract(zip) reads the zip's XML parts and turns
+			// them into this engine's internal representation: an ordered
+			// list of paragraph/table "blocks" that the rest of the pipeline
+			// works with (see DocxExtractor.js for the full block shape).
+			// This runs for EVERY uploaded file (there are at most two — see
+			// #addFiles()) — at this point neither file is known yet to be
+			// the Writers Template or the Media List; that classification
+			// happens next, in stage [3].
+			//
+			// `docs` ends up shaped like:
+			//   [
+			//     { name: "OSAH401 Writers Template.docx", doc: { blocks, rels, mtkFlag, hasContentStart, metadata } },
+			//     { name: "OSAH401 Media List.docx",        doc: { blocks, rels, mtkFlag, hasContentStart, metadata } },
+			//   ]
+			const docs = [];
+			for (const file of this.#files) {
+				const zip = new ZipReader(await file.arrayBuffer());
+				const doc = await DocxExtractor.Extract(zip);
+				docs.push({ name: file.name, doc });
+				this.#log(`Extracted ${file.name}: ${doc.blocks.length} blocks, ${doc.rels.size} links.`);
+				this.#progressSet("extract", docs.length, this.#files.length);
+			}
+
+			// ---- [3] THE SHARED PREP ----------------------------------------
+			// Classification (working out which uploaded file is the WT and
+			// which is the Media List), module-code detection, structural
+			// rule resolution, setting run.mtkFlag, the unsupported-pathway
+			// refusal check, media-item parsing, and trimming the WT's
+			// front-matter ALL live in ONE method: ModuleResolver.PrepareRun.
+			// This browser app and batch_convert.cjs (the separate,
+			// command-line entry point used for bulk/automated conversion —
+			// see the note near the top of this file) BOTH call this exact
+			// same method for their setup, so they can never silently drift
+			// apart: two separate copies of this logic would slowly fall out
+			// of sync, and the SAME module could then produce DIFFERENT HTML
+			// depending on which tool converted it.
+			// The optional verified iStock acknowledgements
+			// file rides into the ONE shared prep sequence as plain text; parsing
+			// lives inside PrepareRun/AcksBuilder (never here — entry parity).
+			// Hand in EVERY accepted .txt; PrepareRun applies the one
+			// shared content test and picks (entry parity: the batch entry point
+			// hands in its folder's .txt files exactly the same way).
+			const istockAcksFiles = await Promise.all(this.#txtFiles.map(
+				async (f) => ({ name: f.name, text: await f.text() })));
+			// The Reference-module choice rides into the ONE
+			// shared prep sequence as plain options (exactly like
+			// istockAcksFiles): the decision logic lives inside PrepareRun,
+			// never here (entry parity — the batch entry point passes neither, so
+			// its conversions are untouched by this feature). The Convert gate
+			// normally guarantees one of the two is present; the defensive
+			// branches below only fire if the gate was somehow bypassed.
+			let referenceCode = null;
+			let referenceHtmlFiles = null;
+			let referenceSpec = null;
+			if (document.getElementById(Config.Selectors.RefCustom)?.checked) {
+				// "Make your own template": the three required choices
+				const spec = {
+					subject: document.getElementById(Config.Selectors.RefCustomSubject)?.value ?? "",
+					phase: document.getElementById(Config.Selectors.RefCustomPhase)?.value ?? "",
+					template: document.getElementById(Config.Selectors.RefCustomTemplate)?.value ?? "",
+				};
+				if (spec.subject && spec.phase && spec.template) {
+					referenceSpec = spec;
+					this.#log(`Reference module: making your own template — ${spec.subject} · `
+						+ `${this.#RefPhaseLabels[spec.phase] ?? spec.phase} · ${spec.template} `
+						+ `(the converter will inherit from the most typical matching library module; the template always leads).`);
+				} else {
+					this.#log("⚠ 'Make your own template' is selected but not all three choices were made — converting from the module's own registry home.");
+				}
+			} else if (document.getElementById(Config.Selectors.RefHtml)?.checked && this.#refHtmlFiles.length) {
+				referenceHtmlFiles = await Promise.all(this.#refHtmlFiles.map(
+					async (f) => ({ name: f.name, text: await f.text() })));
+				this.#log(`Reference module: mining ${referenceHtmlFiles.length} uploaded HTML page(s) — a distilled template file will be included in the outputs to send to Gavin.`);
+			} else {
+				const v = (document.getElementById(Config.Selectors.RefCodeSelect)?.value ?? "")
+					.trim().toUpperCase();
+				if (v) {
+					referenceCode = v;
+					const suggested = this.#refPreview?.suggestion?.code;
+					this.#log(`Reference module: inheriting page structure from ${v}${v === suggested ? " (the suggested module)" : " (your choice)"}.`);
+				} else {
+					this.#log("⚠ No reference module was selected — converting from the module's own registry home.");
+				}
+			}
+			const prep = ModuleResolver.PrepareRun({ docs, run, normaliser: this.#normaliser, istockAcksFiles, referenceCode, referenceHtmlFiles, referenceSpec });
+			if (!prep.ok && prep.reason === "no-wt") {
+				this.#log("🔴 No Writers Template found among the uploads (no [TITLE BAR]/[Fundamental content] opener). Nothing converted.");
+				this.#progressHide();
+				button.disabled = false;
+				return;
+			}
+			if (!prep.ok && prep.reason === "unsupported") {
+				run.AddNote("error", "App", `${prep.unsupported.label}: ${prep.unsupported.action}`);
+				SummaryReporter.Render(run);
+				this.#progressHide();
+				button.disabled = false;
+				return;
+			}
+			if (prep.mediaSource) this.#log(`Media list: ${run.mediaItems.length} items.`);
+			this.#progressSet("prep", 1, 1);
+
+			// The browser-only progress hook: pages + acks progress reports flow
+			// from the engine's guarded call sites inside the pipeline below.
+			// batch_convert.cjs never sets run.onProgress, so those same call
+			// sites are harmless no-ops when running in batch — see THE
+			// CONVERSION PROGRESS BAR section, above, for the full explanation.
+			run.onProgress = (stage, done, total) => this.#progressSet(stage, done, total);
+
+			// ---- [5]-[8]: the page-building pipeline ------------------------
+			// App.js's own stage numbering picks back up here at [5]. Stages
+			// [5] through [8] all happen INSIDE this one call, entirely inside
+			// PageAssembler.AssembleModule: split the prepared module into
+			// pages, scan each page for interactive widgets and convert its
+			// content to HTML, build the acknowledgements section, and wrap
+			// every finished page in its page skeleton plus write the
+			// interactives hand-off manifest. This file deliberately doesn't
+			// need those details to stay correct — see PageAssembler.js if you
+			// need to trace further in.
+			await PageAssembler.AssembleModule(run, this.#normaliser);
+
+			// ---- outputs + summary ------------------------------------------
+			// Conversion succeeded: hand the finished files to the download
+			// list (#renderOutputs) and the human-readable run summary
+			// (SummaryReporter.Render), then mark the progress bar 100% Done.
+			this.#renderOutputs(run);
+			SummaryReporter.Render(run);
+			this.#progressDone();
+			this.#log(`${Config.Strings.Done} ${run.outputs.length} files for ${run.moduleCode ?? "module"}.`);
+
+			// ---- post-success UI -------------------------------------------
+			// The module is converted, so:
+			//  - HIDE the Convert button — the current module is done; a
+			//       fresh conversion goes through the reset button below. We
+			//       hide (not destroy) the node so the reset can restore it.
+			//  - SHOW the "clear everything & convert another module" reset
+			//       button, which is meaningless before a conversion exists.
+			//  - SCROLL to the VERY BOTTOM so the "Download all as .zip"
+			//       button is guaranteed visible — when a module produces many
+			//       HTML files their filenames can push that button off-screen,
+			//       so landing on it (block:"end") is what is wanted, not the
+			//       top of the Output files section. We scroll the button itself
+			//       into view (robust inside the embedded iframe); a full-height
+			//       window.scrollTo is the equivalent when the button is absent.
+			//       All three fire ONLY on success — never on refusal/error.
+			button.hidden = true;
+			const resetPanel = document.getElementById(Config.Selectors.ResetPanel);
+			if (resetPanel) resetPanel.hidden = false;
+			const downloadAll = document.getElementById(Config.Selectors.DownloadAll);
+			if (downloadAll && !downloadAll.hidden) {
+				downloadAll.scrollIntoView({ behavior: "smooth", block: "end" });
+			} else {
+				window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+			}
+		} catch (error) {
+			console.error("🔴 Conversion error:", error);
+			this.#progressError();
+			this.#log(`🔴 Conversion failed: ${error.message} (see the browser console for the stack).`);
+		}
+		button.disabled = false;
+	};
+
+	// =======================================================================
+	// OUTPUT PRESENTATION
+	// =======================================================================
+
+	/**
+	 * Renders the results of a successful conversion into the Outputs
+	 * panel: a "module details" summary card, one downloadable link per
+	 * output file, and a "download all as zip" button. Called once, right
+	 * after PageAssembler.AssembleModule finishes inside #convert().
+	 *
+	 * WHAT IT BUILDS:
+	 * - the module-details card: the captured front-matter fields (module
+	 *   code, subject, course, English/Te Reo titles, key contact, date
+	 *   submitted) plus the two upload-time choices (image mode,
+	 *   interactive hand-off mode), read from run.Summary().metadata and
+	 *   the run object itself. Blank fields are filtered out rather than
+	 *   shown empty.
+	 * - one <li> per file in run.outputs: each finished HTML page, plus the
+	 *   interactives hand-off manifest file when one was produced (see the
+	 *   "extract" interactive mode). Each becomes a real downloadable link
+	 *   by wrapping its text content in a Blob and pointing an <a> at an
+	 *   object URL for that blob — the whole file lives in memory, there is
+	 *   no server to fetch it from.
+	 * - the "download all" button, wired to zip every output together
+	 *   (ZipWriter.Build) on click, built lazily rather than up front since
+	 *   most conversions are only ever inspected file-by-file.
+	 *
+	 * @param {ConversionRun} run - the completed run (run.outputs, run.Summary(), etc.)
+	 * @returns {void}
+	 */
+	static #renderOutputs(run) {
+		const list = document.getElementById(Config.Selectors.OutputList);
+		list.innerHTML = "";
+
+		// module-identity card beside the downloads — the captured
+		// front-matter fields + resolved titles, kept for future use
+		const md = run.Summary().metadata;
+		const metaEl = document.getElementById("output-metadata");
+		if (metaEl) {
+			const rows = [
+				["Module code", run.moduleCode],
+				["Subject", md.subject],
+				["Course", md.course],
+				["English title", md.englishTitle],
+				["Te Reo title", md.teReoTitle],
+				["Key contact", md.keyContact],
+				["Date submitted", md.dateSubmitted],
+				// Plain language ("P"/"D" are internal codes)
+				["Image mode", run.imageMode === "P" ? "Placeholder images" : "Direct images"],
+				// Which reference module steered the page structure.
+				// The custom-template choice names its spec + the module chosen.
+				["Reference module", run.referenceSpec
+					? `custom template (${run.referenceSpec.subject} · ${this.#RefPhaseLabels[run.referenceSpec.phase] ?? run.referenceSpec.phase} · ${run.referenceSpec.template})${run.referenceCode ? ` — built from ${run.referenceCode}` : ""}`
+					: run.referenceCode
+						? `${run.referenceCode} (chosen at upload)`
+						: (run.referenceDistilled
+							? `distilled from uploaded HTML${run.referenceDistilled.referenceCode ? ` (${run.referenceDistilled.referenceCode})` : ""}`
+							: null)],
+				["Interactive mode", run.interactiveMode === "extract" ? "hand-off (raw content collapsed in-page, expandable)" : "inline (legacy)"],
+				["iStock acks file", run.istockAcks ? `${run.istockAcks.size} verified titles` : (run.istockAcksSupplied ? "supplied, but no usable entries" : "none supplied")],
+				// How many iStock titles had to be derived from the
+				// image URL instead of verified; each is marked ❗ on the page.
+				["iStock titles unverified", run.istockUnverified?.length
+					? `${run.istockUnverified.length} marked ❗ for checking` : null],
+			].filter(([, v]) => v);
+			metaEl.innerHTML = `<h3>Module details</h3><dl class="meta-list">${
+				rows.map(([k, v]) => `<dt>${Utils.EscapeHtml(k)}</dt><dd>${Utils.EscapeHtml(String(v))}</dd>`).join("")
+			}</dl>`;
+			metaEl.hidden = false;
+		}
+
+		for (const out of run.outputs) {
+			const blob = new Blob([out.content],
+				{
+					type: out.kind === "manifest" ? "text/plain"
+						: out.kind === "reference-template" ? "application/json" : "text/html",
+				});
+			const a = document.createElement("a");
+			a.href = URL.createObjectURL(blob);
+			a.download = out.filename;
+			a.textContent = out.filename;
+			const li = document.createElement("li");
+			li.appendChild(a);
+			const kindLabel = out.kind === "manifest" ? "interactives manifest"
+				: out.kind === "reference-template" ? "distilled reference template — send to Gavin"
+					: "page";
+			li.insertAdjacentHTML("beforeend",
+				` <span class="output-kind">${kindLabel}</span>`);
+			list.appendChild(li);
+		}
+
+		// download-all zip
+		const all = document.getElementById(Config.Selectors.DownloadAll);
+		all.hidden = run.outputs.length === 0;
+		all.onclick = () => {
+			const blob = ZipWriter.Build(run.outputs);
+			const a = document.createElement("a");
+			a.href = URL.createObjectURL(blob);
+			a.download = `${run.moduleCode ?? "module"}_converted.zip`;
+			a.click();
+			URL.revokeObjectURL(a.href);
+		};
+	};
+
+	/**
+	 * Wipes every leftover output from a previous conversion — the file
+	 * download list, the module-details card, the "download all" button,
+	 * and the run-summary panel — back to their empty/hidden starting
+	 * state. Called at the very start of every #convert() click, before any
+	 * new conversion work begins, so a failed or refused conversion can
+	 * never leave a STALE previous run's outputs visible alongside (or
+	 * instead of) whatever the new click actually produced.
+	 *
+	 * @returns {void}
+	 */
+	static #clearOutputs() {
+		document.getElementById(Config.Selectors.OutputList).innerHTML = "";
+		document.getElementById(Config.Selectors.DownloadAll).hidden = true;
+		const meta = document.getElementById("output-metadata");
+		if (meta) { meta.hidden = true; meta.innerHTML = ""; }
+		const panel = document.getElementById(Config.Selectors.SummaryPanel);
+		panel.hidden = true;
+		panel.innerHTML = "";
+	};
+
+	/**
+	 * Resets the whole converter back to its fresh, first-load state IN PLACE
+	 * — WITHOUT reloading the page. Wired to the "clear everything & convert
+	 * another module" reset button (shown only after a conversion completes).
+	 *
+	 * WHY NOT location.reload(): the converter runs inside an <iframe> in the
+	 * PageForge site shell (under "HTML Generator" mode). A full reload would
+	 * navigate the iframe back to the site's default "Module Development"
+	 * landing page, dropping the user out of the converter entirely. So the
+	 * reset rebuilds the fresh state by hand instead: it returns the SAME view
+	 * to "new-page state without navigating away".
+	 *
+	 * WHAT IT CLEARS/RESTORES:
+	 *  - the pending uploads (#files) + the (now empty) file list
+	 *  - all outputs: the download list, module-details card, download-all
+	 *    button, and the summary panel (via #clearOutputs)
+	 *  - the progress bar (hidden, back to 0%) + the progress log
+	 *  - the Convert button: shown again + disabled-until-a-file-is-added
+	 *  - the image-mode radios back to Mode P (default)
+	 *  - hides this reset button again (meaningless with no conversion)
+	 *  - scrolls back to the top (section 1 · Upload)
+	 *
+	 * @returns {void}
+	 */
+	static #resetPage() {
+		// pending uploads + file list (incl. any accepted acknowledgements .txt)
+		this.#files = [];
+		this.#txtFiles = [];
+		this.#renderFileList();          // also disables the Convert button (0 files)
+
+		// outputs, module-details card, download-all, summary panel
+		this.#clearOutputs();
+
+		// progress bar + log
+		this.#progressHide();
+		const log = document.getElementById(Config.Selectors.ProgressLog);
+		if (log) log.innerHTML = "";
+
+		// Convert button: bring it back (R3 hid it on success) — #renderFileList
+		// has already set its disabled state to match the now-empty file list.
+		const button = document.getElementById(Config.Selectors.ConvertButton);
+		if (button) button.hidden = false;
+
+		// upload-time choices back to their defaults (the interactive
+		// hand-off is the default and has no checkbox to reset)
+		const modeP = document.getElementById(Config.Selectors.ModeP);
+		if (modeP) modeP.checked = true;
+		const modeD = document.getElementById(Config.Selectors.ModeD);
+		if (modeD) modeD.checked = false;
+
+		// The Reference-module panel back to its fresh state:
+		// hidden (no files), the pick choice selected with its block visible,
+		// the html choice cleared and hidden, the dropdown back to the
+		// placeholder, and the manual-pick memory forgotten.
+		// (#renderFileList above already re-hid the panel via
+		// #updateReferencePanel, since the file list is now empty.)
+		this.#refHtmlFiles = [];
+		this.#refPreview = null;
+		this.#refUserPicked = false;
+		this.#refSuggestedCode = null;   // no recommended row without files
+		this.#renderRefHtmlList();
+		const refPick = document.getElementById(Config.Selectors.RefPick);
+		if (refPick) refPick.checked = true;
+		for (const id of [Config.Selectors.RefCustom, Config.Selectors.RefHtml]) {
+			const r = document.getElementById(id);
+			if (r) r.checked = false;
+		}
+		const pickBlock = document.getElementById(Config.Selectors.RefPickBlock);
+		if (pickBlock) pickBlock.hidden = false;
+		for (const id of [Config.Selectors.RefCustomBlock, Config.Selectors.RefHtmlBlock]) {
+			const b = document.getElementById(id);
+			if (b) b.hidden = true;
+		}
+		// The custom-template dropdowns back to their required-empty state
+		for (const id of [Config.Selectors.RefCustomSubject, Config.Selectors.RefCustomPhase,
+			Config.Selectors.RefCustomTemplate]) {
+			const s = document.getElementById(id);
+			if (s) s.value = "";
+		}
+		// With everything cleared, restore the full phase/template lists
+		if (this.#refCodesFilled) this.#renderCustomOptions();
+		const refSel = document.getElementById(Config.Selectors.RefCodeSelect);
+		if (refSel) refSel.value = "";
+		// Clear the code/subject/phase filters + restore the full list
+		this.#clearRefFilters();
+		if (this.#refCodesFilled) this.#renderRefCodeOptions();
+
+		// hide the reset button again + scroll to the top (section 1 · Upload)
+		const resetPanel = document.getElementById(Config.Selectors.ResetPanel);
+		if (resetPanel) resetPanel.hidden = true;
+		window.scrollTo({ top: 0, behavior: "smooth" });
+	};
+
+	/**
+	 * Appends one line of plain text to the visible, scrolling progress log
+	 * panel (newest line last, at the bottom). Used throughout Init() and
+	 * #convert() to narrate what's happening — file validation warnings,
+	 * per-file extraction results, refusal reasons, the final result line,
+	 * and so on — so a person watching the page can follow along without
+	 * opening the browser's developer console.
+	 *
+	 * WHY textContent (not innerHTML): the text passed in can include a
+	 * writer's own filename or error message, which must never be
+	 * interpreted as HTML markup — textContent always renders it as
+	 * literal text, so there's no need to separately escape it here.
+	 *
+	 * @param {string} text - the line to append (plain text, not HTML)
+	 * @returns {void}
+	 */
+	static #log(text) {
+		const log = document.getElementById(Config.Selectors.ProgressLog);
+		const line = document.createElement("p");
+		line.textContent = text;
+		log.appendChild(line);
+		log.scrollTop = log.scrollHeight;
+	};
+}
+
+// the single bootstrap (standards §8a)
+document.addEventListener("DOMContentLoaded", () => {
+	App.Init();
+});
