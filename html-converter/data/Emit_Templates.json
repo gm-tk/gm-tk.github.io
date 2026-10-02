@@ -860,12 +860,74 @@
 			"enabled": true,
 			"env": "BARELINKNOTE_OFF",
 			"exclude_host_pattern": "istockphoto|gettyimages|shutterstock|youtu\\.?be|vimeo\\.com",
-			"todo_text": "Designer/Developer To Do: the writer's link — {url}"
+			"todo_text": "Designer/Developer To Do: the writer's link — {url}",
+			"escape_once": {
+				"enabled": true,
+				"env": "TODOESC_OFF",
+				"_doc": "The note's text is escaped by the red-note form itself (NotesAndComments.redFlag), so the link is handed over as written: an address with a query string reads «…?a=1&b=2» in the note, never «&amp;b=2». Env TODOESC_OFF (or enabled:false) escapes it before the form does as well."
+			}
 		},
 		"bare_video_url_embed": {
 			"_doc": "THE BARE VIDEO URL IS THE EMBED — KB 01E ([video] → videoSection). A body paragraph whose whole content is one YouTube / Vimeo URL is embedded by the human build (the same reading as external_link_video_embed's seam A for a url-only [link] line). Outside the un-built hand-off boxes the paragraph becomes video.youtube (the group's host convention) or video.generic_iframe (Vimeo's player URL); the page's icon pass adds `icon`; when the page already embeds that video the line is dropped. Env VIDEOURLEMBED_OFF.",
 			"enabled": true,
 			"env": "VIDEOURLEMBED_OFF",
+			"host_pattern": "youtube\\.com/(?:watch\\?|shorts/|embed/|live/)|youtu\\.be/|vimeo\\.com/(?:video/)?\\d"
+		},
+		"bare_url_link": {
+			"_doc": "A BARE URL IS LINKED WHOLE, ITS QUERY STRING INCLUDED (KB 01C: a bare URL is a link / media reference; KB constraint 5: no stray markup in the output). ListsAndRuns.inlineMarkup turns every bare web address into a link after the text is HTML-escaped, so a query string's ampersand arrives as «&amp;». With query_string on, the escaped ampersand stays inside the address — `https://www.youtube.com/watch?v=ID&ab_channel=X` is one link — and any other entity (&#39;, &quot; …) still ends it. Off: the address stops at the first ampersand and the rest of the query shows as text. A whole-URL line also stays a whole-URL line, so the bare video / stock-photo line passes read it. Env URLQUERY_OFF.",
+			"enabled": true,
+			"env": "URLQUERY_OFF",
+			"query_string": true,
+			"trailing_punctuation": {
+				"enabled": true,
+				"env": "URLTRIM_OFF",
+				"_doc": "The address ends where the URL ends: a matched address that closes with sentence punctuation («. , ; : ! ?» — never the «;» of an entity such as &amp;) or with a «)» that has no matching «(» inside the address (a URL typed in brackets) gives that ending back to the sentence — written after the link — so the link text and the href are the address alone. Env URLTRIM_OFF (or enabled:false) keeps the ending inside the link.",
+				"chars": ".,;:!?"
+			}
+		},
+		"title_video_line_embed": {
+			"_doc": "THE TITLE-ANCHORED VIDEO LINE IS THE EMBEDDED VIDEO — KB 01E ([video] → videoSection), the same reading bare_video_url_embed gives a line that is one bare video URL. A paragraph whose whole text is the words of ONE YouTube / Vimeo hyperlink («__Your guide to soil testing on a dairy farm - YouTube__ [LINK: …]», with or without a [video] tag before it) is the writer's video reference; the human build embeds the video (about 17 in 20 such lines) and drops the title. Three parts, one switch: MediaBuilder.WholeLineVideoLinks picks the video links whose words make a whole line of a text (the runs of one link joined); the body's gathered-links filter and MediaBuilder.media's gathered lines keep those links, so the line reaches the page as <p><a href=video>Title</a></p>; #bareVideoUrlEmbed then builds the embed for a paragraph that is wholly one titled video anchor (inline b / strong / i / em / u wrappers allowed), or drops it when the page already embeds that video. A video link inside a sentence keeps the r-old reading. Env TITLEVIDEO_OFF.",
+			"enabled": true,
+			"env": "TITLEVIDEO_OFF",
+			"host_pattern": "youtube\\.com/(?:watch\\?|shorts/|embed/|live/)|youtu\\.be/|vimeo\\.com/(?:video/)?\\d",
+			"wrapper_tags": ["b", "strong", "i", "em", "u"]
+		},
+		"labelled_video_line_embed": {
+			"_doc": "THE LABELLED VIDEO LINE IS THE EMBEDDED VIDEO — KB 01E ([video] → videoSection). A body paragraph that is one bare YouTube / Vimeo address (the linker's anchor, its text the address itself) plus a short label — a title («Virtual eye https://…»), a lead («Video: https://…»), a note («https://… (start at 0:34)», «https://… - Gmail instructions») — is the writer's video reference with its name beside it; the gold embeds it and the label goes (it is the acknowledgement's title). Outside the un-built hand-off boxes the paragraph becomes the embed the whole-line address gets (bare_video_url_embed), or is dropped when the page already embeds that video. A label that names a start time («start at M:SS») gives the embed that start (?start=N), as the gold does. The label is 1 to max_label_words words with no other address. Env LABELVIDEO_OFF.",
+			"enabled": true,
+			"env": "LABELVIDEO_OFF",
+			"host_pattern": "youtube\\.com/(?:watch\\?|shorts/|embed/|live/)|youtu\\.be/|vimeo\\.com/(?:video/)?\\d",
+			"max_label_words": 10,
+			"wrapper_tags": ["b", "strong", "i", "em", "u"],
+			"start_pattern": "\\bstart(?:s|ing)?\\s+(?:at\\s+|from\\s+)?(\\d{1,2}):(\\d{1,2})\\b"
+		},
+		"soft_break_lead": {
+			"_doc": "THE SOFT-BREAK SLASH NEVER OPENS A BLOCK (KB constraint 5: no stray markup; constraint 1: the writer's words unchanged). The parsed Writers Template writes a table cell's line break as « / ». When a builder lifts the line before it — a video address, a [caption] tag, a bold title — the marker is left opening the next block («<p>/ More examples of using 只 (zhī)…»), a slash the writer never typed and the gold never shows. Outside the un-built hand-off boxes a listed block whose text opens with «/ » loses the marker (repeated markers too, inside any leading inline wrapper); a block left empty is dropped. A block whose text also closes with «/» is BLL's sound notation («/ oo /») and is left alone, and so is a slash inside the text. Env SLASHLEAD_OFF.",
+			"enabled": true,
+			"env": "SLASHLEAD_OFF",
+			"tags": ["p", "li"],
+			"trailing": {
+				"enabled": true,
+				"env": "SLASHTAIL_OFF",
+				"_doc": "The same marker CLOSING a block: when the line after it was lifted (an image, the proverb, a second language) the block ends « /» («Insoluble /», «Whakatauki /», «Cinderella /»). The listed block loses the trailing marker (repeated markers too, inside any closing inline wrapper). A text that opens with «/» or ends «/ x /» is sound notation and is left alone, and so is a slash with no space before it («and/or»). Env SLASHTAIL_OFF (or enabled:false) keeps it."
+			},
+			"cell_parts": {
+				"enabled": true,
+				"env": "CELLSLASH_OFF",
+				"_doc": "CONSECUTIVE markers are ONE line break where a cell is split into its lines (TablesAndGrids.cellParts). An emptied line — a token a pass dropped («[Body] / [Checklist] / ☒ Device: Tablet, laptop / …» with [Checklist] dropped), an empty paragraph — leaves «/  /» in the cell. The splitter took « /  » as the break and glued the second «/» to the next line («/ • Device…»), which then read as prose instead of the list's first item (the TRR «What do I need to get started?» menu list). A run of markers now splits once. «/ oo /» sound notation has no space outside its slashes and is not a break. Env CELLSLASH_OFF (or enabled:false) splits on single markers only."
+			}
+		},
+		"bold_marker_residue": {
+			"_doc": "THE PARSED BOLD MARKER NEVER SHOWS (KB constraint 5: no stray markup). The parsed Writers Template marks bold as «**…**». When the bold run held only what a builder lifted (a flip card's image address) the block is left as the bare marker («<h4>**</h4>»); when a bold run crosses a soft line break each half keeps one marker («**June- Mid-July» / «LATE PREGNANCY/DRY PERIOD**», «**roue» / «vous**»). Outside the un-built hand-off boxes a listed block whose text is only asterisks is dropped, and a block with an ODD count of the two-asterisk marker loses the one at its edge (leading first, else trailing). Paired markers and longer runs («***», a censored «n*****s») are left alone. Env BOLDMARK_OFF.",
+			"enabled": true,
+			"env": "BOLDMARK_OFF",
+			"tags": ["p", "li", "h1", "h2", "h3", "h4", "h5", "h6"]
+		},
+		"media_item_video": {
+			"_doc": "A MEDIA-ITEM REFERENCE WHOSE URL IS A VIDEO IS THE VIDEO — KB 01E ([video] → videoSection). The writer's generic reference to a Media List row («[Insert media item 9] video https://youtu.be/…», «[video, media item 5]», «[insert item 4] https://www.youtube.com/…») resolves to the image element through its alias (Tag_Lexicon), yet the row is a video and the human build embeds it (about 19 in 20 such lines). When the element's alias is one of `aliases` and its own URL — its first link, else the first web address in its own text — is a video host, it renders as the video embed (MediaBuilder.media, kind video: the group's host and icon conventions, the title-line drop); every other image element keeps the image path (an explicit «image» / «diagram» word with a video URL is often a screenshot request). Env MEDIAITEMVIDEO_OFF.",
+			"enabled": true,
+			"env": "MEDIAITEMVIDEO_OFF",
+			"aliases": ["insert media item", "media item", "insert item"],
 			"host_pattern": "youtube\\.com/(?:watch\\?|shorts/|embed/|live/)|youtu\\.be/|vimeo\\.com/(?:video/)?\\d"
 		},
 		"bare_stock_url_image": {
@@ -874,6 +936,11 @@
 			"env": "STOCKURLIMG_OFF",
 			"mode": "todo",
 			"todo_text": "Designer/Developer To Do: image goes here{label}. Link: {url}",
+			"escape_once": {
+				"enabled": true,
+				"env": "TODOESC_OFF",
+				"_doc": "The note's text is escaped by the red-note form itself, so the link is handed over as written («…?phrase=bed&searchscope=image», never «&amp;searchscope»). Env TODOESC_OFF (or enabled:false) escapes it before the form does as well."
+			},
 			"_mode_doc": "todo (default) = the house To Do note in place of the URL line (the image stays the developer's cue; no URL for the learner); image = the in-place placeholder <img>; drop = nothing. The human places these pictures in side columns and widgets, not at the URL's line, so an in-place <img> usually lands in the wrong place — hence the note by default.",
 			"host_pattern": "istockphoto|gettyimages|shutterstock",
 			"id_patterns": [
@@ -1640,6 +1707,21 @@
 				"ANZH|Standard",
 				"EXPlore|Inquiry"
 			],
+			"extension": {
+				"enabled": true,
+				"env": "ICONEXT_OFF",
+				"_doc": "Series and subject|template groups mined from the human build after the base lists above, by the same rule (_note_registry: n >= 2 modules, pooled icon share >= 0.85, >= 8 human videos; a group only with no plain-majority series inside it). They join icon_series / icon_subject_template in the one group decision (MediaBuilder #videoIconGroup), so the per-embed form and the widget post-pass follow them alike. Env ICONEXT_OFF (or enabled:false) uses the base lists alone. CBI10 45/45, COM10 14/14, DAN10 42/46, DTC10 42/42, GEO10 26/27 human videos with the icon; the 1-10 Mathematics Fundamentals modules 54/56.",
+				"icon_series": [
+					"CBI10",
+					"COM10",
+					"DAN10",
+					"DTC10",
+					"GEO10"
+				],
+				"icon_subject_template": [
+					"1-10 Mathematics|Fundamentals"
+				]
+			},
 			"widget_embedded": {
 				"enabled": true,
 				"env_off": "VIDEOICONWIDGET_OFF",
@@ -1913,6 +1995,14 @@
 		"manifest_raw_verbatim": {
 			"enabled": true,
 			"_note": "For the UN-BUILT interactives, {CODE}_interactives.txt carries the RAW parsed content VERBATIM, so the developer building the widget by hand sees exactly what the writer authored, unprocessed (the faithful mode still cleans sentinels / ** / whitespace and renders tables in a separate 'Data' section). ON: each un-built entry keeps only its MINIMAL header (INTERACTIVE N of M, the extract REFERENCE CODE + hint when in extract mode, File, Placeholder marker, Activity, Type) and then a single 'Content:' block that walks the member SOURCE BLOCKS in reading order (deduped by block identity) and prints each block's raw text EXACTLY — sentinels, [tags], ** and all — with a captured TABLE rendered INLINE at its position as the ┌─── TABLE ───/│ cell ║ cell/└─── END TABLE ─── ASCII box (which is literally the table block's own raw serialised text). The Modifier / Tier / Data Pattern / Position / Activity Heading / Writer Instructions / Associated Media / Red Flags sections are DROPPED from the raw un-built entry (type + anchor + raw content only). BUILT entries are already omitted by manifest_unbuilt_only, so this only affects the hand-off worklist. The txt is a developer-only working file (never ships). Env MANIFESTRAW_OFF (or enabled:false) uses the faithful/processed form."
+		},
+		"manifest_link_targets": {
+			"enabled": true,
+			"env": "HANDOFFLINK_OFF",
+			"_note": "THE WRITER'S HYPERLINKS IN THE HAND-OFF. A captured block's raw text carries each hyperlink's visible words but not its address — the extractor keeps the addresses in block.links, one entry per Word run. The raw Content writes every link in the content-source form of KB 01C (`__link text__ [LINK: https://…]`), so the developer building the widget has each video, picture source and web page the writer linked. The runs of one link (the same address, separated only by whitespace or * / _ markers) are one span; a link whose words are themselves a web address is already visible and is left as it is (KB 01C: a bare URL is a media reference); a link whose words cannot be found in the block is written on its own line after the block (unplaced_form), so no address is lost. Applies to the raw-verbatim Content only (manifest_raw_verbatim). Env HANDOFFLINK_OFF (or enabled:false) gives the words alone.",
+			"form": "__{text}__ [LINK: {url}]",
+			"unplaced_form": "[LINK: {url}]",
+			"address_text_pattern": "^(?:https?://|www\\.)\\S+$"
 		},
 		"extract": {
 			"enabled": true,

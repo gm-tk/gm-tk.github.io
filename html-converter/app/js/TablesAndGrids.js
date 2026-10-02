@@ -378,9 +378,14 @@ class TablesAndGrids {
 	};
 
 	static cellParts(cell) {
+		// a run of line-break markers (an emptied line between them) is one break, so no marker is left on the next line
+		// (soft_break_lead.cell_parts; env CELLSLASH_OFF)
+		const cp = DataService.Data.EmitTemplates?.elements?.soft_break_lead?.cell_parts;
+		const run = !!cp && cp.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[cp.env || "CELLSLASH_OFF"]);
 		return String(cell ?? "")
 			.replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "")
-			.split(/\s+\/\s+/).map((p) => p.trim()).filter(Boolean);
+			.split(run ? /\s+\/(?:\s+\/)*\s+/ : /\s+\/\s+/).map((p) => p.trim()).filter(Boolean);
 	};
 
 	/**

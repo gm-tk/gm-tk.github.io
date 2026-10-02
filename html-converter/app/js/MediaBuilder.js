@@ -325,11 +325,13 @@ class MediaBuilder {
 		// Without it the element would print a "no URL" note and the link would ship as a button;
 		// the gold embeds the video. Env LINKVID_OFF turns it off.
 		let linkTagUrl;
-		if (!(it.block?.links?.[0]?.target) && !gathered.match(_re) && !followLink && kind === "video") {
+		if (!it._mediaUrl && !(it.block?.links?.[0]?.target) && !gathered.match(_re) && !followLink && kind === "video") {
 			const hit = this.FollowingVideoLinkTag(bodyItems, i, tpl);
 			if (hit) { linkTagUrl = hit.url; hit.item._consumed = true; }
 		}
-		const url = it.block?.links?.[0]?.target
+		// it._mediaUrl: the URL a caller has already judged to be this element's own (the media-item video route)
+		const url = it._mediaUrl
+			?? it.block?.links?.[0]?.target
 			?? gathered.match(_re)?.[0]
 			?? followLink
 			?? linkTagUrl
@@ -403,7 +405,11 @@ class MediaBuilder {
 			keepRaw = keepRaw.split("\n").filter((L) => L.trim() !== followLinkLine).join("\n");
 		}
 		const rest = this.stripMediaResidue(keepRaw);
-		if (rest) out.push(...ListsAndRuns.renderBlackText(rest, run, it.block?.links));
+		// a gathered line that is wholly a titled video link keeps that link (see WholeLineVideoLinks), so the page's
+		// video-line pass can build its embed
+		const _wl = rest ? this.WholeLineVideoLinks(it._gatheredLinks ?? [], rest) : null;
+		const _links = _wl && _wl.merged.length ? [...(it.block?.links ?? []), ..._wl.merged] : it.block?.links;
+		if (rest) out.push(...ListsAndRuns.renderBlackText(rest, run, _links));
 		return out;
 	};
 
@@ -475,10 +481,16 @@ class MediaBuilder {
 			const g = /^([A-Za-z]+)(\d+)/.exec(code);
 			series = g ? g[1] + g[2].slice(0, 2) : null;   // prefix + first two digits (fallback)
 		}
-		if ((rule.icon_series || []).includes(series)) return true;
+		// the registry's extension (series and groups mined after its base lists) joins them unless its env is set
+		const ext = rule.extension;
+		const extOn = !!ext && ext.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[ext.env || "ICONEXT_OFF"]);
+		const iconSeries = [...(rule.icon_series || []), ...(extOn ? ext.icon_series || [] : [])];
+		const iconGroups = [...(rule.icon_subject_template || []), ...(extOn ? ext.icon_subject_template || [] : [])];
+		if (iconSeries.includes(series)) return true;
 		if ((rule.plain_series || []).includes(series)) return false;
 		const st = (m.subject && m.template_type) ? `${m.subject}|${m.template_type}` : null;
-		return !!(st && (rule.icon_subject_template || []).includes(st));
+		return !!(st && iconGroups.includes(st));
 	};
 
 	/**
@@ -636,6 +648,46 @@ class MediaBuilder {
 		}
 		it._gatheredLinks = links;
 		return text;
+	};
+
+	/**
+	 * THE TITLE-ANCHORED VIDEO LINE. Of `links` (block.links: one {text, target}
+	 * per Word run), the YouTube / Vimeo links whose words — the consecutive runs
+	 * of one target joined — make a WHOLE line of `text` (bold / italic /
+	 * underline markers, a leading bullet and closing punctuation ignored): the
+	 * writer's video reference typed as a titled line. `merged` holds one link per
+	 * such line ({text: the joined words, target}), `runs` the run records it
+	 * replaces. Both empty when elements.title_video_line_embed is off (env
+	 * TITLEVIDEO_OFF) — the caller then keeps its links as they are.
+	 *
+	 * @param {Array<Object>} links - the block / gathered links
+	 * @param {string} text - the text those links sit in
+	 * @returns {{merged: Array<Object>, runs: Set<Object>}}
+	 */
+	static WholeLineVideoLinks(links, text) {
+		const none = { merged: [], runs: new Set() };
+		const cfg = DataService.Data.EmitTemplates.elements?.title_video_line_embed;
+		if (!cfg || cfg.enabled === false) return none;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "TITLEVIDEO_OFF"]) return none;
+		if (!Array.isArray(links) || !links.length || !text) return none;
+		const hostRe = new RegExp(cfg.host_pattern ?? "youtube\\.com/(?:watch\\?|shorts/|embed/|live/)|youtu\\.be/|vimeo\\.com/(?:video/)?\\d", "i");
+		const fold = (s) => String(s ?? "").replace(/\*\*|__|\*/g, "").replace(/^[\s•·]+/, "")
+			.replace(/[\s.:;,]+$/, "").replace(/\s+/g, " ").trim().toLowerCase();
+		const lines = new Set(String(text).split("\n").map(fold).filter(Boolean));
+		const out = { merged: [], runs: new Set() };
+		for (let i = 0; i < links.length; i++) {
+			const target = String(links[i]?.target ?? "").trim();
+			if (!hostRe.test(target)) continue;
+			let words = String(links[i]?.text ?? ""), j = i + 1;
+			while (j < links.length && String(links[j]?.target ?? "").trim() === target) words += String(links[j++]?.text ?? "");
+			const w = fold(words);
+			if (w && !/^(?:https?:|www\.)/.test(w) && lines.has(w)) {
+				out.merged.push({ text: words.replace(/\s+/g, " ").trim(), target });
+				for (let k = i; k < j; k++) out.runs.add(links[k]);
+			}
+			i = j - 1;
+		}
+		return out;
 	};
 }
 

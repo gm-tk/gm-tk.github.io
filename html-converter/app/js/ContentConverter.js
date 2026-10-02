@@ -5094,14 +5094,14 @@ class ContentConverter {
 		// #pageNumberNormalise runs OUTSIDE #cdTilePair and the dropbox / interactive
 		// post-passes: every consumer that reads a box's writer id (the tile pairing, the dropbox
 		// modifier) has run, so the page's consecutive numbering is settled last.
-		const bodyHtml = this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
+		const bodyHtml = this.#boldMarkerResidue(this.#softBreakLead(this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
 			this.#pageNumberNormalise(this.#introHeadingFullRow(this.#bareLinkUrlNote(this.#bareVideoUrlEmbed(this.#bareStockUrlImage(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
 				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), tileRowTiles, run))), page, run), run), run), run), run), run), page, run),   // #journalInstructionBox, #introHeadingFullRow, #summaryHeadingAlert, #bareStockUrlImage, #bareVideoUrlEmbed, #bareLinkUrlNote
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
 				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
 				// the level-pages dialect's nav/tile labels + registry row
 				// (fundamentals_panels.level_pages; env LEVELPAGE_OFF)
-				levelRow: lvInfo?.row, levelLabels: lvInfo?.labels }));   // "run" is passed through for the newTabNav registry lookup
+				levelRow: lvInfo?.row, levelLabels: lvInfo?.labels })), run), run);   // "run" is passed through for the newTabNav registry lookup
 		// INQUIRY-mode wrapping also runs OUTERMOST: it turns the assembled body into
 		// "div.crumbs" + "div.inquiryPanel" elements at each "[Tab N]" sentinel position.
 		// inquiryActive then tells SkeletonBuilder whether to emit the inquiry page's body
@@ -8770,7 +8770,105 @@ class ContentConverter {
 		const on = !!hc && hc.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env[hc.env || "HEADURL_OFF"]);
 		const tags = ["p", ...(on ? (hc.tags ?? []).filter((t) => /^h[1-6]$/.test(String(t))) : [])].join("|");
-		return new RegExp(`<(${tags})>\\s*(?:<a\\b[^>]*>)?\\s*(https?:\\/\\/[^\\s<"]+)\\s*(?:<\\/a>)?\\s*<\\/\\1>`, "g");
+		// a URL line still reads as one when the linker has given its brackets / closing punctuation back to the line
+		// (elements.bare_url_link.trailing_punctuation; env URLTRIM_OFF)
+		const bt = DataService.Data.EmitTemplates.elements?.bare_url_link?.trailing_punctuation;
+		const btOn = !!bt && bt.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[bt.env || "URLTRIM_OFF"]);
+		const pre = btOn ? "\\(?\\s*" : "", post = btOn ? "[).,;:!?]*\\s*" : "";
+		return new RegExp(`<(${tags})>\\s*${pre}(?:<a\\b[^>]*>)?\\s*(https?:\\/\\/[^\\s<"]+)\\s*(?:<\\/a>)?\\s*${post}<\\/\\1>`, "g");
+	}
+
+	/** THE SOFT-BREAK SLASH NEVER OPENS A BLOCK. The parsed Writers Template writes a table cell's line break as « / »; a builder
+	 *  that lifts the line before it (a video address, a `[caption]` tag, a bold title) leaves the marker opening the next block
+	 *  («<p>/ More examples of using…»). Outside the un-built hand-off boxes a listed block whose text opens with «/ » loses it
+	 *  (repeated markers too, inside any leading inline wrapper) and a block left empty is dropped; a block whose text also closes
+	 *  with «/» is BLL's sound notation («/ oo /») and is left alone. The same marker CLOSING a block («Insoluble /») goes too
+	 *  (soft_break_lead.trailing; env SLASHTAIL_OFF), unless the text is sound notation («/ y /»). Data elements.soft_break_lead
+	 *  {tags, trailing}; env SLASHLEAD_OFF. */
+	static #softBreakLead(html, run) {
+		const cfg = DataService.Data.EmitTemplates.elements?.soft_break_lead;
+		if (!cfg || !html || !html.includes("/")) return html;
+		const envOn = (c, d) => typeof process !== "undefined" && process.env && process.env[c?.env || d];
+		const leadOn = cfg.enabled !== false && !envOn(cfg, "SLASHLEAD_OFF");
+		const tr = cfg.trailing;
+		const trailOn = !!tr && tr.enabled !== false && !envOn(tr, "SLASHTAIL_OFF");
+		if (!leadOn && !trailOn) return html;
+		const tags = (cfg.tags ?? ["p", "li"]).filter((t) => /^[a-z][a-z0-9]*$/.test(String(t))).join("|");
+		if (!tags) return html;
+		const spans = [];
+		for (const h of html.matchAll(/<div class="cv2-interactive[^"]*"/g)) {
+			const re = /<(\/?)div\b[^>]*>/g; re.lastIndex = h.index; let d = 0, x;
+			while ((x = re.exec(html)) !== null) { d += x[1] ? -1 : 1; if (d === 0) { spans.push([h.index, x.index + x[0].length]); break; } }
+		}
+		const blockRe = new RegExp(`<(${tags})\\b([^>]*)>([\\s\\S]*?)<\\/\\1>`, "g");
+		const leadRe = /^((?:\s|<(?:b|strong|i|em|u|span)\b[^>]*>)*)(?:\/(?:\s|&nbsp;)+)+/;
+		const tailRe = /(?:(?:\s|&nbsp;)+\/)+((?:\s|<\/(?:b|strong|i|em|u|span)>)*)$/;
+		const soundRe = /\/\s*\S{1,4}\s*\/\s*\/?\s*$/;
+		const textOf = (s) => s.replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").trim();
+		let nLead = 0, nTail = 0;
+		const out = html.replace(blockRe, (whole, tag, attrs, inner, at) => {
+			if (spans.some(([a, z]) => at >= a && at < z)) return whole;
+			let rest = inner;
+			const m = leadOn ? leadRe.exec(inner) : null;
+			if (m) {
+				const after = textOf(inner).replace(/^(?:\/\s*)+/, "");
+				if (after.endsWith("/")) return whole;        // «/ oo /» — a sound, not a line break
+				rest = m[1] + inner.slice(m[0].length);
+				nLead++;
+			} else if (trailOn) {
+				const t = textOf(inner);
+				if (!t || t.startsWith("/") || soundRe.test(t)) return whole;
+				const cut = inner.replace(tailRe, "$1");
+				if (cut === inner || !textOf(cut)) return whole;
+				rest = cut;
+				nTail++;
+			} else return whole;
+			return textOf(rest) ? `<${tag}${attrs}>${rest}</${tag}>` : "";
+		});
+		if (nLead + nTail && run && typeof run.AddNote === "function")
+			run.AddNote("info", "ContentConverter", `${nLead + nTail} block${nLead + nTail > 1 ? "s" : ""} with the soft-break slash at an edge — ${nLead} opening, ${nTail} closing — the marker removed (soft_break_lead).`);
+		return out;
+	}
+
+	/** THE PARSED BOLD MARKER NEVER SHOWS. The parsed Writers Template marks bold as «**…**»; a bold run that held only what a
+	 *  builder lifted leaves the bare marker as the block («<h4>**</h4>»), and a bold run across a soft line break leaves one
+	 *  marker on each half («**roue» / «vous**»). Outside the un-built hand-off boxes a listed block whose text is only asterisks
+	 *  is dropped, and a block with an odd count of the two-asterisk marker loses the one at its edge (leading first, else
+	 *  trailing). Paired markers and longer runs («***», «n*****s») are left alone. Data elements.bold_marker_residue {tags};
+	 *  env BOLDMARK_OFF. */
+	static #boldMarkerResidue(html, run) {
+		const cfg = DataService.Data.EmitTemplates.elements?.bold_marker_residue;
+		if (!cfg || cfg.enabled === false || !html || !html.includes("**")) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "BOLDMARK_OFF"]) return html;
+		const tags = (cfg.tags ?? ["p", "li"]).filter((t) => /^[a-z][a-z0-9]*$/.test(String(t))).join("|");
+		if (!tags) return html;
+		const spans = [];
+		for (const h of html.matchAll(/<div class="cv2-interactive[^"]*"/g)) {
+			const re = /<(\/?)div\b[^>]*>/g; re.lastIndex = h.index; let d = 0, x;
+			while ((x = re.exec(html)) !== null) { d += x[1] ? -1 : 1; if (d === 0) { spans.push([h.index, x.index + x[0].length]); break; } }
+		}
+		const blockRe = new RegExp(`<(${tags})\\b([^>]*)>([\\s\\S]*?)<\\/\\1>`, "g");
+		const markRe = /(?<!\*)\*\*(?!\*)/g;
+		const leadRe = /^((?:\s|<(?:b|strong|i|em|u|span)\b[^>]*>)*)\*\*(?!\*)/;
+		const tailRe = /(?<!\*)\*\*((?:\s|<\/(?:b|strong|i|em|u|span)>)*)$/;
+		const textOf = (s) => s.replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").trim();
+		let nDrop = 0, nEdge = 0;
+		const out = html.replace(blockRe, (whole, tag, attrs, inner, at) => {
+			if (!inner.includes("**") || spans.some(([a, z]) => at >= a && at < z)) return whole;
+			const t = textOf(inner);
+			if (/^[\s*]+$/.test(t) && t.includes("**")) { nDrop++; return ""; }
+			if (((t.match(markRe) ?? []).length % 2) === 0) return whole;
+			let rest = inner;
+			if (/^\*\*(?!\*)/.test(t)) rest = inner.replace(leadRe, "$1");
+			else if (/(?<!\*)\*\*$/.test(t)) rest = inner.replace(tailRe, "$1");
+			if (rest === inner || !textOf(rest)) return whole;
+			nEdge++;
+			return `<${tag}${attrs}>${rest}</${tag}>`;
+		});
+		if (nDrop + nEdge && run && typeof run.AddNote === "function")
+			run.AddNote("info", "ContentConverter", `the parsed bold marker: ${nDrop} marker-only block${nDrop === 1 ? "" : "s"} dropped, ${nEdge} unpaired edge marker${nEdge === 1 ? "" : "s"} removed (bold_marker_residue).`);
+		return out;
 	}
 
 	/** THE BARE LINK LINE IS THE DEVELOPER'S. A body paragraph whose whole content is one URL that is neither a stock photo
@@ -8799,9 +8897,16 @@ class ContentConverter {
 		}
 		if (!hits.length) return html;
 		let out = html;
+		// the red-note form escapes the note's text itself, so the link goes in as written (bare_link_url_note.escape_once;
+		// env TODOESC_OFF)
+		const eo = cfg.escape_once;
+		const once = !!eo && eo.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[eo.env || "TODOESC_OFF"]);
+		const asWritten = (u) => String(u).replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, "\"")
+			.replace(/&#39;/g, "'").replace(/&amp;/g, "&");
 		for (const h of hits.slice().reverse()) {
 			const rep = NotesAndComments.redFlag(Utils.FillTemplate(cfg.todo_text ?? "Designer/Developer To Do: the writer's link — {url}",
-				{ url: Utils.EscapeHtml(h.url) }), run, "cs");
+				{ url: once ? asWritten(h.url) : Utils.EscapeHtml(h.url) }), run, "cs");
 			out = out.slice(0, h.at) + rep + out.slice(h.at + h.len);
 		}
 		if (run && typeof run.AddNote === "function")
@@ -8817,9 +8922,18 @@ class ContentConverter {
 	 *  line is dropped. Data elements.bare_video_url_embed {host_pattern}; env VIDEOURLEMBED_OFF. */
 	static #bareVideoUrlEmbed(html, run) {
 		const cfg = DataService.Data.EmitTemplates.elements?.bare_video_url_embed;
-		if (!cfg || cfg.enabled === false || !html) return html;
-		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "VIDEOURLEMBED_OFF"]) return html;
-		const hostRe = new RegExp(cfg.host_pattern ?? "youtube\\.com/(?:watch\\?|shorts/|embed/|live/)|youtu\\.be/|vimeo\\.com/(?:video/)?\\d", "i");
+		const envOn = (c, d) => typeof process !== "undefined" && process.env && process.env[c?.env || d];
+		const bareOn = !!cfg && cfg.enabled !== false && !envOn(cfg, "VIDEOURLEMBED_OFF");
+		// THE TITLE-ANCHORED VIDEO LINE: a paragraph that is wholly one video anchor with a title for its text is the
+		// same reference (elements.title_video_line_embed, env TITLEVIDEO_OFF — see MediaBuilder.WholeLineVideoLinks)
+		const tcfg = DataService.Data.EmitTemplates.elements?.title_video_line_embed;
+		const titleOn = !!tcfg && tcfg.enabled !== false && !envOn(tcfg, "TITLEVIDEO_OFF");
+		// THE LABELLED VIDEO LINE: one bare video address with a short label beside it (a title, «Video:», «(start at 0:34)»)
+		// is the same reference (elements.labelled_video_line_embed, env LABELVIDEO_OFF)
+		const lcfg = DataService.Data.EmitTemplates.elements?.labelled_video_line_embed;
+		const labelOn = !!lcfg && lcfg.enabled !== false && !envOn(lcfg, "LABELVIDEO_OFF");
+		if ((!bareOn && !titleOn && !labelOn) || !html) return html;
+		const hostRe = new RegExp((bareOn ? cfg : titleOn ? tcfg : lcfg).host_pattern ?? "youtube\\.com/(?:watch\\?|shorts/|embed/|live/)|youtu\\.be/|vimeo\\.com/(?:video/)?\\d", "i");
 		if (!hostRe.test(html)) return html;
 		const tplV = DataService.Data.EmitTemplates.video;
 		const ytRe = new RegExp(DataService.Data.AcksFormats?.extraction_regexes?.youtube_id ?? DataService.Data.AcksFormats?.youtube_id
@@ -8831,14 +8945,57 @@ class ContentConverter {
 			while ((x = re.exec(html)) !== null) { d += x[1] ? -1 : 1; if (d === 0) { spans.push([h.index, x.index + x[0].length]); break; } }
 		}
 		const hits = [];
-		for (const m of html.matchAll(pRe)) {
+		const ids = (url) => {
+			const yt = url.match(ytRe)?.[1] ?? null;
+			return { yt, vm: yt ? null : (url.match(/vimeo\.com\/(?:video\/)?(\d{6,})/i)?.[1] ?? null) };
+		};
+		if (bareOn) for (const m of html.matchAll(pRe)) {
 			if (spans.some(([a, z]) => m.index >= a && m.index < z)) continue;
 			const url = m[2].replace(/&amp;/g, "&");
 			if (!hostRe.test(url)) continue;
-			const yt = url.match(ytRe)?.[1] ?? null;
-			const vm = yt ? null : (url.match(/vimeo\.com\/(?:video\/)?(\d{6,})/i)?.[1] ?? null);
+			const { yt, vm } = ids(url);
 			if (!yt && !vm) continue;
 			hits.push({ at: m.index, len: m[0].length, url, yt, vm });
+		}
+		if (titleOn) {
+			const wr = (tcfg.wrapper_tags ?? ["b", "strong", "i", "em", "u"]).filter((t) => /^[a-z]+$/.test(String(t))).join("|") || "b";
+			const lineRe = new RegExp(`^\\s*(?:<(?:${wr})>\\s*)*<a\\b[^>]*\\bhref="([^"]+)"[^>]*>([^<]+)<\\/a>\\s*(?:<\\/(?:${wr})>\\s*)*[.:]?\\s*$`, "i");
+			for (const m of html.matchAll(/<p>([\s\S]*?)<\/p>/g)) {
+				if (spans.some(([a, z]) => m.index >= a && m.index < z)) continue;
+				const lm = lineRe.exec(m[1]);
+				if (!lm || /^\s*(?:https?:\/\/|www\.)/i.test(lm[2])) continue;   // a URL-text anchor is the bare form's
+				const url = lm[1].replace(/&amp;/g, "&");
+				if (!hostRe.test(url)) continue;
+				const { yt, vm } = ids(url);
+				if (!yt && !vm) continue;
+				if (hits.some((h) => h.at === m.index)) continue;
+				hits.push({ at: m.index, len: m[0].length, url, yt, vm });
+			}
+			hits.sort((a, b) => a.at - b.at);
+		}
+		if (labelOn) {
+			const wr = (lcfg.wrapper_tags ?? ["b", "strong", "i", "em", "u"]).filter((t) => /^[a-z]+$/.test(String(t))).join("|") || "b";
+			const wrapRe = new RegExp(`<\\/?(?:${wr})>`, "gi");
+			const maxW = Number(lcfg.max_label_words ?? 10);
+			const stRe = lcfg.start_pattern ? new RegExp(lcfg.start_pattern, "i") : null;
+			for (const m of html.matchAll(/<p>([\s\S]*?)<\/p>/g)) {
+				if (spans.some(([a, z]) => m.index >= a && m.index < z)) continue;
+				if (hits.some((h) => h.at === m.index)) continue;
+				const as = [...m[1].matchAll(/<a\b[^>]*\bhref="([^"]+)"[^>]*>([^<]*)<\/a>/gi)];
+				if (as.length !== 1 || /<a\b/i.test(m[1].replace(as[0][0], ""))) continue;
+				if (!/^\s*https?:\/\//i.test(as[0][2])) continue;   // the anchor's text is the address (a titled anchor is the title form's)
+				const url = as[0][1].replace(/&amp;/g, "&");
+				if (!hostRe.test(url)) continue;
+				const { yt, vm } = ids(url);
+				if (!yt && !vm) continue;
+				const label = (m[1].slice(0, as[0].index) + " " + m[1].slice(as[0].index + as[0][0].length)).replace(wrapRe, " ");
+				if (/[<>]|https?:\/\/|www\./i.test(label)) continue;
+				const words = label.replace(/&[#\w]+;/g, " ").split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w));
+				if (!words.length || words.length > maxW) continue;
+				const st = stRe ? stRe.exec(label) : null;
+				hits.push({ at: m.index, len: m[0].length, url, yt, vm, start: st ? Number(st[1]) * 60 + Number(st[2]) : 0 });
+			}
+			hits.sort((a, b) => a.at - b.at);
 		}
 		if (!hits.length) return html;
 		let out = html, nEmb = 0, nDrop = 0;
@@ -8849,7 +9006,7 @@ class ContentConverter {
 			let rep;
 			if (embedded) { rep = ""; nDrop++; }
 			else if (h.yt) {
-				rep = Utils.FillTemplate(tplV.youtube, { videoId: h.yt, params: "" });
+				rep = Utils.FillTemplate(tplV.youtube, { videoId: h.yt, params: h.start ? `?start=${h.start}` : "" });
 				if (run?.conventions?.videoHost === "youtube") rep = rep.replace("youtube-nocookie.com", "youtube.com");
 				nEmb++;
 			} else { rep = Utils.FillTemplate(tplV.generic_iframe, { url: Utils.EscapeHtml(`https://player.vimeo.com/video/${h.vm}`) }); nEmb++; }
@@ -8899,8 +9056,14 @@ class ContentConverter {
 				// the house To Do form (the Media List item note's wording): the image stays the developer's cue, the learner
 				// sees no URL, and the red note sits outside the skeleton — the in-place <img> scored 3× lower than the note
 				// (+0.0078 vs +0.0241pp): the gold places these pictures in side columns / widgets, not at the URL's line
+				// the red-note form escapes the note's text itself (bare_stock_url_image.escape_once; env TODOESC_OFF)
+				const eo = cfg.escape_once;
+				const once = !!eo && eo.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[eo.env || "TODOESC_OFF"]);
+				const link = once ? String(h.url).replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, "\"")
+					.replace(/&#39;/g, "'").replace(/&amp;/g, "&") : Utils.EscapeHtml(h.url);
 				rep = NotesAndComments.redFlag(Utils.FillTemplate(cfg.todo_text ?? "Designer/Developer To Do: image goes here{label}. Link: {url}",
-					{ label: h.id ? ` (iStock-${h.id})` : "", url: Utils.EscapeHtml(h.url) }), run, "cs");
+					{ label: h.id ? ` (iStock-${h.id})` : "", url: link }), run, "cs");
 				nImg++;
 			} else {
 				const label = h.id ? `iStock-${h.id}` : "image";
@@ -10535,6 +10698,9 @@ class ContentConverter {
 
 		// ---- image (Mode P / Mode D — uniform per run) ---------------------
 		if (tag === "image") {
+			// a generic media-item reference whose own URL is a video is that video (see #mediaItemVideoUrl)
+			const _miv = this.#mediaItemVideoUrl(it);
+			if (_miv) { it._mediaUrl = _miv; return out.concat(MediaBuilder.media(it, bodyItems, i, "video", run, this.#norm)); }
 			return out.concat(MediaBuilder.image(it, bodyItems, i, run));
 		}
 
@@ -11042,9 +11208,29 @@ class ContentConverter {
 
 		// ---- body / default ELEMENT: paragraphs of the following content ------
 		const gathered = MediaBuilder.gatherFollowing(it, bodyItems, i);
-		if (gathered.trim()) out.push(...ListsAndRuns.renderBlackText(gathered, run, this.#gatheredLinks(it, undefined)));
+		if (gathered.trim()) out.push(...ListsAndRuns.renderBlackText(gathered, run, this.#gatheredLinks(it, undefined, gathered)));
 		return out;
 	};
+
+	/**
+	 * A MEDIA-ITEM REFERENCE WHOSE URL IS A VIDEO IS THE VIDEO (KB 01E). The Tag_Lexicon reads the writer's generic
+	 * reference to a Media List row («[Insert media item 9] video https://youtu.be/…») as the image element, whose path
+	 * builds a picture placeholder and never renders the URL. When the element's alias is one of the data's media-item
+	 * aliases and its own URL — its first link, else the first web address in its own text — is a video host, that URL
+	 * is returned and the element renders as the video embed; otherwise "" (the image path). Data
+	 * elements.media_item_video {aliases, host_pattern}; env MEDIAITEMVIDEO_OFF.
+	 */
+	static #mediaItemVideoUrl(it) {
+		const cfg = DataService.Data.EmitTemplates.elements?.media_item_video;
+		if (!cfg || cfg.enabled === false) return "";
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "MEDIAITEMVIDEO_OFF"]) return "";
+		const alias = String(it?.parse?.primary?.alias ?? "").trim().toLowerCase();
+		if (!alias || !(cfg.aliases ?? []).some((a) => String(a).toLowerCase() === alias)) return "";
+		const url = String(it.block?.links?.[0]?.target
+			?? `${it.text ?? ""} ${it.blackAfter ?? ""}`.match(/https?:\/\/[^\s\]\)"<>]+/)?.[0] ?? "").trim();
+		const hostRe = new RegExp(cfg.host_pattern ?? "youtube\\.com/(?:watch\\?|shorts/|embed/|live/)|youtu\\.be/|vimeo\\.com/(?:video/)?\\d", "i");
+		return url && hostRe.test(url) ? url : "";
+	}
 
 	/**
 	 * KB constraint 75 ("inline → anchor") FOR GATHERED BODY TEXT.
@@ -11054,17 +11240,19 @@ class ContentConverter {
 	 * Netsafe "online contact form" (an alert). With the flag on, the links gatherFollowing recorded (the tag's block + every
 	 * gathered item's) are woven; off → `fallback`. Data body_region.gathered_links {enabled, env GATHERLINKS_OFF}.
 	 */
-	static #gatheredLinks(it, fallback) {
+	static #gatheredLinks(it, fallback, text) {
 		const cfg = DataService.Data.EmitTemplates.body_region?.gathered_links;
 		if (!cfg || cfg.enabled === false) return fallback;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "GATHERLINKS_OFF"]) return fallback;
 		const ls = it?._gatheredLinks;
 		if (!ls) return fallback;
-		return this.#weaveableLinks(ls, cfg);
+		return this.#weaveableLinks(ls, cfg, text);
 	}
 
-	/** The gathered-links filter, shared: drop the links the free-body weave must never carry. */
-	static #weaveableLinks(ls, cfg) {
+	/** The gathered-links filter, shared: drop the links the free-body weave must never carry. A video link whose words
+	 *  make a whole line of `text` is the line's video reference and is kept, its Word runs merged into one link
+	 *  (MediaBuilder.WholeLineVideoLinks — the page's video-line pass builds its embed). */
+	static #weaveableLinks(ls, cfg, text) {
 		// the target exclusion (ONE pattern, interactive_builders._widget_links.exclude_target_pattern): a picture /
 		// stock / developer-asset / media target is the writer's pointer for the developer, never a learner link (Drive
 		// audio folders, Google Slides decks — the gold never links them)
@@ -11072,7 +11260,9 @@ class ContentConverter {
 		const skip = cfg.exclude_targets !== false && pat ? new RegExp(pat, "i") : null;
 		// a link whose text is a fragment (Word split the run: PES1005's "Te R|ā" linked on the "ā" alone) is never woven
 		const minChars = cfg.min_text_chars ?? 3;
-		return ls.filter((l) => !(skip && skip.test(String(l?.target ?? ""))) && String(l?.text ?? "").trim().length >= minChars);
+		const wl = text ? MediaBuilder.WholeLineVideoLinks(ls, text) : { merged: [], runs: new Set() };
+		const kept = ls.filter((l) => !wl.runs.has(l) && !(skip && skip.test(String(l?.target ?? ""))) && String(l?.text ?? "").trim().length >= minChars);
+		return wl.merged.length ? [...kept, ...wl.merged] : kept;
 	}
 
 	/**

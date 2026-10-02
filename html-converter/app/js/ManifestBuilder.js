@@ -341,17 +341,94 @@ class ManifestBuilder {
 		// answer words already show in their own red markers here). Data
 		// interactive_placeholder.answer_key; env ANSWERKEY_OFF.
 		const ak = Utils.AnswerKeyConfig(DataService.Data.EmitTemplates.interactive_placeholder?.answer_key, b);
+		// The writer's hyperlinks ride in the block text in the KB 01C form (see #withLinkTargets).
+		// Data interactive_placeholder.manifest_link_targets; env HANDOFFLINK_OFF.
+		const ltc = DataService.Data.EmitTemplates.interactive_placeholder?.manifest_link_targets;
+		const lt = (ltc && ltc.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[ltc.env || "HANDOFFLINK_OFF"])) ? ltc : null;
 		for (const m of b.memberItems ?? []) {
 			const blk = m.block;
 			if (blk) {
 				if (seen.has(blk)) continue;   // one line per source block, deduped
 				seen.add(blk);
-				push(ak ? this.#answerKeyRaw(blk, ak) : (blk.text ?? ""));
+				push(this.#withLinkTargets(ak ? this.#answerKeyRaw(blk, ak) : (blk.text ?? ""), blk, lt));
 			} else {                            // synthetic member — no source block
 				push(m.type === "black" ? (m.text ?? "") : (m.blackAfter ?? ""));
 			}
 		}
 		return lines;
+	};
+
+	/**
+	 * A captured block's raw text with the writer's hyperlinks written in. The block
+	 * text carries each link's visible words only; block.links holds one
+	 * {text, target} per Word run, in reading order. The runs of one link — the
+	 * same address, with nothing but whitespace or * / _ markers between them in
+	 * the text — become one span written in the data's `form` (KB 01C:
+	 * `__words__ [LINK: url]`), a ** pair the span cuts in half moving with it. A
+	 * link whose words are themselves a web address is already visible and stays
+	 * as it is; a link whose words are not in the text, or have no letters (a
+	 * linked picture), is written on its own line after the block
+	 * (`unplaced_form`) unless its address already shows.
+	 *
+	 * @param {string} text - the block's raw text (answer marks already in)
+	 * @param {Object} blk - the source block (its `links`)
+	 * @param {Object|null} cfg - interactive_placeholder.manifest_link_targets, null when off
+	 * @returns {string} the text with every link address carried
+	 */
+	static #withLinkTargets(text, blk, cfg) {
+		if (!cfg || !Array.isArray(blk.links) || !blk.links.length || !text) return text;
+		const addressRe = new RegExp(cfg.address_text_pattern ?? "^(?:https?://|www\\.)\\S+$", "i");
+		const glueRe = /^[\s*_]*$/;
+		const spans = [], unplaced = [];
+		let cursor = 0, cur = null;
+		const close = () => { if (cur) { spans.push(cur); cursor = cur.end; cur = null; } };
+		const links = blk.links;
+		for (let i = 0; i < links.length; i++) {
+			const url = String(links[i]?.target ?? "").trim();
+			const words = String(links[i]?.text ?? "");
+			if (!/^https?:\/\//i.test(url) || !words) continue;
+			if (cur && cur.url === url) {   // the next run of the open link
+				const at = text.indexOf(words, cur.end);
+				if (at >= 0 && glueRe.test(text.slice(cur.end, at))) { cur.end = at + words.length; continue; }
+			}
+			// a run with no letters that continues no link (a linked picture's blank run, a lone bracket): its address
+			// is written after the block
+			if (!/[\p{L}\p{N}]/u.test(words)) { if (!unplaced.includes(url)) unplaced.push(url); continue; }
+			close();
+			// the run's place: where it and the runs after it read on without a break, so a short
+			// run («Ng») lands beside its neighbours, not on an earlier unlinked match
+			let at = text.indexOf(words, cursor);
+			for (let k = i + 1, chain = words; at >= 0 && k < Math.min(links.length, i + 4); k++) {
+				const next = String(links[k]?.text ?? "");
+				const a2 = next ? text.indexOf(chain + next, cursor) : -1;
+				if (a2 < 0) break;
+				chain += next; at = a2;
+			}
+			if (at < 0) { if (!unplaced.includes(url)) unplaced.push(url); continue; }
+			cur = { start: at, end: at + words.length, url };
+		}
+		close();
+		let out = "", pos = 0;
+		for (const s of spans) {
+			let { start, end } = s;
+			if ((text.slice(start, end).match(/\*\*/g) ?? []).length % 2) {   // keep a bold pair whole
+				if (text.slice(start - 2, start) === "**") start -= 2;
+				else if (text.slice(end, end + 2) === "**") end += 2;
+			}
+			if (start < pos) continue;
+			const raw = text.slice(start, end);
+			const core = raw.trim();
+			if (addressRe.test(core.replace(/^[*_]+|[*_]+$/g, "").replace(/[\r\n]+/g, ""))) continue;   // the words are the address (a wrapped one too)
+			const lead = raw.slice(0, raw.length - raw.trimStart().length);
+			const trail = raw.slice(raw.trimEnd().length);
+			out += text.slice(pos, start) + lead + Utils.FillTemplate(cfg.form ?? "__{text}__ [LINK: {url}]", { text: core, url: s.url }) + trail;
+			pos = end;
+		}
+		out += text.slice(pos);
+		const extra = unplaced.filter((u) => !out.includes(u))
+			.map((u) => Utils.FillTemplate(cfg.unplaced_form ?? "[LINK: {url}]", { url: u }));
+		return extra.length ? [out, ...extra].join("\n") : out;
 	};
 
 	/**

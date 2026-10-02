@@ -615,8 +615,31 @@ class ListsAndRuns {
 			&& !(typeof process !== "undefined" && process.env && process.env[_dc.tight_after_span_env ?? "HOVERTIGHT_OFF"])) {
 			s = s.replace(/(<span class="infoTrigger"[^>]*>[^<]*<\/span>)[ \t]+(?=[,.;:!?)])/g, "$1");
 		}
-		// bare URLs become real links (target=_blank, corpus convention)
-		s = s.replace(/(https?:\/\/[^\s<>&"]+)/g, '<a href="$1" target="_blank">$1</a>');
+		// bare URLs become real links (target=_blank, corpus convention); the text is escaped by now, so a query string's
+		// ampersand is «&amp;» and stays inside the address (elements.bare_url_link.query_string; env URLQUERY_OFF)
+		const _bu = DataService.Data.EmitTemplates.elements?.bare_url_link;
+		const _buQuery = !!_bu && _bu.enabled !== false && _bu.query_string !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_bu.env || "URLQUERY_OFF"]);
+		const _buRe = _buQuery ? /(https?:\/\/(?:[^\s<>&"]|&amp;)+)/g : /(https?:\/\/[^\s<>&"]+)/g;
+		// the address ends where the URL ends: closing sentence punctuation (never an entity's own «;») and a «)» with no
+		// «(» to match inside the address go back to the sentence (elements.bare_url_link.trailing_punctuation; env URLTRIM_OFF)
+		const _bt = _bu?.trailing_punctuation;
+		const _btOn = !!_bt && _bt.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_bt.env || "URLTRIM_OFF"]);
+		if (_btOn) {
+			const marks = String(_bt.chars ?? ".,;:!?");
+			const count = (u, c) => u.split(c).length - 1;
+			s = s.replace(_buRe, (whole) => {
+				let u = whole, tail = "";
+				for (;;) {
+					const last = u.slice(-1);
+					if (last && marks.includes(last) && !(last === ";" && /&(?:[a-z]+|#\d+);$/i.test(u))) { tail = last + tail; u = u.slice(0, -1); continue; }
+					if (last === ")" && count(u, ")") > count(u, "(")) { tail = last + tail; u = u.slice(0, -1); continue; }
+					break;
+				}
+				return `<a href="${u}" target="_blank">${u}</a>${tail}`;
+			});
+		} else s = s.replace(_buRe, '<a href="$1" target="_blank">$1</a>');
 		// Weave the Writers Template's own HYPERLINK phrases (block.links {text,target}) onto their
 		// DESCRIPTIVE text as <a href=target>phrase</a> — the human convention. Conservative: exact
 		// phrase text, FIRST occurrence, skip if the text is itself a URL (bare-URL rule already linked
