@@ -80,8 +80,8 @@ class MediaBuilder {
 		const tpl = DataService.Data.EmitTemplates.image;
 		const out = [];
 		const gathered = this.gatherFollowing(it, bodyItems, i);
-		const url = it.block?.links?.[0]?.target
-			?? (gathered.match(/https?:\/\/[^\s\]\)"<>]+/)?.[0] ?? "");
+		const url = this.CanonicalStockUrl(it.block?.links?.[0]?.target
+			?? (gathered.match(/https?:\/\/[^\s\]\)"<>]+/)?.[0] ?? ""));
 
 		// filename: iStock id when present (data rule), else a slug
 		const istockId = url.match(/gm-?(\d{6,10})/)?.[1] ?? null;
@@ -169,6 +169,25 @@ class MediaBuilder {
 	 * Data flag: elements.image_attrs (alt_from_reference / loading_lazy).
 	 * Env toggle: IMGATTRS_OFF (reverts BOTH — alt stays "", no loading).
 	 */
+	/**
+	 * THE iSTOCK IMAGE ADDRESS NAMES ITS ASSET. A writer often pastes iStock's image-FILE address
+	 * (media.istockphoto.com/id/<id>/<kind>/<slug>.jpg) instead of the asset PAGE address
+	 * (istockphoto.com/<kind>/<slug>-gm<id>-…); both carry the same asset id and title slug. The file
+	 * form is rewritten to the page form, so the id that names the file (iStock-<id>.jpg) and the slug
+	 * that gives its alt are read by the same patterns as every other iStock link. Any other address is
+	 * returned unchanged. Data image.istock_cdn_form {pattern, canonical}; env ISTOCKCDN_OFF.
+	 *
+	 * @param {string} url
+	 * @returns {string}
+	 */
+	static CanonicalStockUrl(url) {
+		const cfg = DataService.Data.EmitTemplates.image?.istock_cdn_form;
+		if (!url || !cfg || cfg.enabled === false) return url;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "ISTOCKCDN_OFF"]) return url;
+		const m = String(url).match(new RegExp(cfg.pattern, "i"));
+		return m ? Utils.FillTemplate(cfg.canonical, { id: m[1], kind: m[2].toLowerCase(), slug: m[3].toLowerCase() }) : url;
+	};
+
 	static FinishImg(html, url, istockId, run) {
 		const cfg = DataService.Data.EmitTemplates.elements?.image_attrs;
 		if (!cfg || cfg.enabled === false) return html;
@@ -241,6 +260,11 @@ class MediaBuilder {
 		let blob = "";
 		try { blob = JSON.stringify(run?.wtBlocks ?? []); } catch { blob = ""; }
 		for (const u of blob.match(/https?:\/\/(?:www\.)?istockphoto\.com\/[^\s"\\\]<>)]+/gi) ?? []) urls.push(u);
+		// iStock's image-file addresses, in the page form (CanonicalStockUrl; unchanged when ISTOCKCDN_OFF)
+		for (const u of blob.match(/https?:\/\/media\.istockphoto\.com\/[^\s"\\\]<>)]+/gi) ?? []) {
+			const c = this.CanonicalStockUrl(u);
+			if (c !== u) urls.push(c);
+		}
 		for (const url of urls) {
 			let clean = url;
 			try { clean = decodeURIComponent(url); } catch { /* keep raw on bad escapes */ }

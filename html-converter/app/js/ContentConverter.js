@@ -813,6 +813,7 @@ class ContentConverter {
 	 */
 	static ConvertPage(page, bundles, run, normaliser) {
 		this.#norm = normaliser;
+		run.handoffPage = page;   // the page a hand-off table box registered now belongs to (BilingualBuilder.UnbuiltBox)
 		const tpl = DataService.Data.EmitTemplates;
 		const menuType = MenuBuilder.menuTypeFor(page, run);
 
@@ -3452,7 +3453,8 @@ class ContentConverter {
 					// the developer's hand-off. So a grid that still shows a resolved tag anywhere in it
 					// falls BACK to the placeholder instead: this feature can never add a visible leak.
 					if (reoGrid && !this.#htmlLeaksResolvedTag(reoGrid)) parts.push(reoGrid);
-					else parts.push(`<div class="cv2-interactive bilingual-unbuilt">\n${TablesAndGrids.contentTable(it.block, run, true, this.#norm)}\n</div>`);
+					else parts.push(BilingualBuilder.UnbuiltBox(TablesAndGrids.contentTable(it.block, run, true, this.#norm), it.block, run,
+						"a table in a bilingual module that is neither unfolded nor a clean layout grid — kept raw"));
 					markContent(); this.#closeSpanWrap(stack, emit, breakRow); continue;
 				}
 				// LEAK GUARD, generalising the SAME "never let the grid leak a raw tag" safety check
@@ -3474,7 +3476,8 @@ class ContentConverter {
 						&& (process.env.MTKGUARD_OFF || process.env.MTKREO_OFF));
 				const _lgFallback = () => {
 					breakRow();
-					parts.push(`<div class="cv2-interactive bilingual-unbuilt">\n${TablesAndGrids.contentTable(it.block, run, true, this.#norm)}\n</div>`);
+					parts.push(BilingualBuilder.UnbuiltBox(TablesAndGrids.contentTable(it.block, run, true, this.#norm), it.block, run,
+						"a table whose cells keep a tag the page cannot show (the MTK leak guard) — kept raw"));
 				};
 				const grid = stack.length ? null : TablesAndGrids.layoutTableGrid(it.block.rows ?? [], run, false, this.#norm, it.block.links ?? null);
 				if (grid) {
@@ -5018,10 +5021,13 @@ class ContentConverter {
 		// Data flag: Emit_Templates.menu.lesson_repeats_overview {enabled, modules}
 		// Env toggle: MENUREPEAT_OFF
 		const lro = DataService.Data.EmitTemplates.menu?.lesson_repeats_overview;
-		// a second hand-kept list, repeat_modules, with its own env (repeat_modules_env = MENUREPEAT12_OFF).
+		// a second hand-kept list, repeat_modules, with its own env (repeat_modules_env = MENUREPEAT12_OFF), and further
+		// hand-kept lists in repeat_lists, each { modules, env } with its own env toggle (MENUREPEAT3_OFF).
 		const _envOn = (n) => typeof process !== "undefined" && process.env && process.env[n];
 		const lroListed = (Array.isArray(lro?.modules) && lro.modules.includes(run.moduleCode))
-			|| (Array.isArray(lro?.repeat_modules) && lro.repeat_modules.includes(run.moduleCode) && !_envOn(lro.repeat_modules_env || "MENUREPEAT12_OFF"));
+			|| (Array.isArray(lro?.repeat_modules) && lro.repeat_modules.includes(run.moduleCode) && !_envOn(lro.repeat_modules_env || "MENUREPEAT12_OFF"))
+			|| (Array.isArray(lro?.repeat_lists) && lro.repeat_lists.some((l) => Array.isArray(l?.modules)
+				&& l.modules.includes(run.moduleCode) && !_envOn(l.env || "MENUREPEAT3_OFF")));
 		const menuRepeatOn = lro && lro.enabled !== false && !_envOn("MENUREPEAT_OFF") && lroListed;
 		if (menuRepeatOn && menuType !== "none") {
 			const paneKeys = ["tab1", "tab2", "content", "left", "right"];

@@ -195,6 +195,16 @@
 			"_note": "Free the speech bubble from the page-layout table. A table whose red spans resolve to BOTH an ACTIVITY-family CONTAINER_OPEN marker AND a speech-bubble INTERACTIVE invocation is a PAGE-LAYOUT table, not widget data: the writer laid the activity out in one cell and the character+balloon in the other, and the HUMAN'S OWN ANSWER is to dissolve the table — the finished page renders the two cells as ordinary stacked blocks in reading order (TEDC402-1.0). DocxExtractor.DissolveBubbleLayoutTables turns each cell into one paragraph block (in-cell ' / ' line breaks restored to plain newlines — the soft-break form), BEFORE the missing-bracket repair so a cell's 'Activity]' typo heals too; the [Activity] opener then opens its box and the [Image]+[speech bubble] cell rides the no-table avatar dialect this module's free-body bubbles already build through. THE FENCE: an activity marker alone is not enough — many tables with one must STAY tables (bilingual TRR embedded-activity tables, fundamentals accordion/slide tables, CEDO501's quiz tables); only tables with BOTH markers dissolve. A table carrying any PAGE_BOUNDARY/SECTION_MARKER span never dissolves (an in-cell [End page] reaching the page splitter would churn pagination — ENGS202's page-opener table stays exactly as it is, by design). Env SBLAYOUT_OFF turns this off."
 		}
 	},
+	"list_numbering": {
+		"word_count": {
+			"enabled": true,
+			"env": "OLNUM_OFF",
+			"reset_tags": ["h1", "h2", "h3", "h4", "h5", "h6", "title bar", "lesson", "end page", "end of page", "page", "module introduction", "lesson overview"],
+			"reset_style_pattern": "^(?:heading ?[1-6]|title)$",
+			"_doc_reset": "A HEADING ENDS A LIST'S CONTINUATION: a non-list paragraph opening with one of reset_tags (the writer's bracket tag, its first words) or carrying a Word heading style (reset_style_pattern) starts a new section, so every list counter starts again after it. Writers reuse one Word list for every activity's «Today we will:» steps (CEDT104), which Word numbers on; the human build restarts each one, as a list split only by a sentence, an image or a note keeps its numbers.",
+			"_doc": "WORD'S OWN LIST NUMBER. A paragraph in a Word numbered list is written with the number Word shows on it (\"3. Why do these crusaders…\"), not a blanket \"1.\": the extractor reads numbering.xml's counting facts (numId → abstract list, each level's w:start, each numId's w:startOverride) and advances one counter per abstract list and level in document order — a deeper level resets under a shallower item, an override restarts its level the first time its numId is met, empty and red numbered paragraphs count as Word counts them, and table-cell paragraphs are not counted. With the list renderer's ol_start, a list the writer interrupted (a sentence, an image, a writer note) continues at its own number — KB constraint 42: numbered steps use <ol><li> with start=\"N\" for continuation across split content."
+		}
+	},
 	"formatting_markers": {
 		"bold": "**",
 		"italic": "*",
@@ -216,6 +226,18 @@
 				"enabled": true,
 				"base_pattern": "[\\p{L}\\p{N})\\]’'\"”%°]$"
 			}
+		},
+		"underline": {
+			"_doc": "THE WRITER'S UNDERLINE (KB 01C: `__text__` → `<u>text</u>`; 02C: underline markers converted to HTML tags). A black run's direct <w:u w:val=\"…\"/> (any value but none) is read and ships as <u> — with the guard: only a piece INSIDE a sentence (its paragraph has other, non-underlined black text with a letter or digit); a whole underlined paragraph stays plain, and any heading stays plain (the sentinels are dropped inside <h1>–<h6>, attribute values and <title>). A hyperlink's own underline is never a <u> (a run inside a <w:hyperlink> or carrying a character style on link_styles is skipped); red writer text is untouched. The piece rides the black text as the U+E024 … U+E025 sentinel pair (whitespace kept outside; neighbouring pieces joined across plain whitespace) and becomes <u> last, in PageAssembler beside the superscript pass; the hand-off file gets plain text. A piece with no letter or digit (an underlined blank line of spaces) stays plain. Env UNDERLINE_OFF.",
+			"enabled": true,
+			"env": "UNDERLINE_OFF",
+			"link_styles": ["Hyperlink", "FollowedHyperlink"],
+			"content_pattern": "[\\p{L}\\p{N}]",
+			"before_instruction": true,
+			"url_pattern": "https?://|www\\.",
+			"word_edges": true,
+			"_doc_word_edges": "An underlined PHRASE (its text holds a space) that starts or ends inside a word is the writer's selection slip («the d__ecimal number system__», «T__he base-10 …__») and takes the rest of that word; an underline inside one word (phonics letters «du__ck__s», a digit of a number) has no space and stays exactly as typed.",
+			"_doc_authoring_marks": "Two underlines are the writer's authoring marks, not emphasis, and stay plain: a phrase whose next non-blank piece is a red writer instruction (before_instruction — `__techniques__ [definition: …]`, `__open question__ [roll-over definition: …]`: the underline shows which words the hover or link acts on, and the hover builder needs those words untouched), and any underline in a paragraph whose black text carries a raw address (url_pattern — `[Recording link] https://… __Please clip at:__`, a typed link label)."
 		},
 		"note": "Matches the parsed corpus conventions: **bold**, *italic*, '• ' bullets. Numbered list items keep their literal numbers.",
 		"preserve_leading_space_note": "(As in OSBY201-01.) A docx splits a styled phrase into its own run, and Word often keeps the inter-word SPACE INSIDE that styled run as a LEADING space (run 'their' has no trailing space; the bold run is ' wellbeing or hauora'). Wrapping a bold/italic run with blackText.trim() drops BOTH sides, so restoring only the TRAILING space would lose the leading one and glue the words ('their<b>wellbeing…', 'house or<b>whare</b>'); the human build keeps the space before <b>. When true, DocxExtractor#parseParagraph restores the leading space SYMMETRICALLY, only when the run actually had one, so legitimately-glued cases (no leading space) are untouched. Env BOLDSPACE_OFF uses the drop form."

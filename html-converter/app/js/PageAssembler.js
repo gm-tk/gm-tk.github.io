@@ -755,10 +755,11 @@ class PageAssembler {
 						const tidied = NotesAndComments.TidyDeveloperNotes(
 							NotesAndComments.OmitPlaceholderResidue(html));
 						// Adjacent sibling lists join into one (body_region.merge_adjacent_lists; env ULMERGE_OFF) — after TypedNumberList, before the link-text pass.
-						const deEmoji = (seg) => ListsAndRuns.MergeAdjacentLists(ListsAndRuns.TypedNumberList(ListsAndRuns.EmojiStrip(seg, () =>
+						// A bare list-number paragraph leaves the page (body_region.lone_list_number; env LONENUM_OFF) — after TypedNumberList.
+						const deEmoji = (seg) => ListsAndRuns.MergeAdjacentLists(ListsAndRuns.LoneListNumbers(ListsAndRuns.TypedNumberList(ListsAndRuns.EmojiStrip(seg, () =>
 							NotesAndComments.redFlag(
 								DataService.Data.InputDocRules?.emoji_strip?.disclosure ?? "",
-								run, "diagnostic"))));
+								run, "diagnostic")))));
 						const ai = tidied.indexOf("<div class=\"acks");
 						// KB constraint 92 / CL-0093: every CJK run takes its language-font class
 						// (ListsAndRuns.LanguageFontWrap; data body_region.language_fonts; env LANGFONT_OFF) —
@@ -783,6 +784,9 @@ class PageAssembler {
 						// The superscript / subscript sentinels become <sup> / <sub> (the
 						// whole-phrase guard inside); data Input_Doc_Rules.formatting_markers.vert_align; env VERTALIGN_OFF.
 						withMath = DocxExtractor.VertReplace(withMath, false, DataService.Data.InputDocRules?.formatting_markers?.vert_align);
+						// The writer's in-sentence underline sentinels become <u> (plain inside headings, attributes and the
+						// <title>); data Input_Doc_Rules.formatting_markers.underline; env UNDERLINE_OFF (no sentinels are made).
+						withMath = DocxExtractor.UnderReplace(withMath, false, DataService.Data.InputDocRules?.formatting_markers?.underline);
 						// KB c52: every derivable iStock image alt, LAST (MediaBuilder.FillWidgetAlts;
 						// data elements.image_attrs.widget_alt_postpass; env WIDGETALT_OFF).
 						return MediaBuilder.FillWidgetAlts(withMath, run);
@@ -799,7 +803,7 @@ class PageAssembler {
 		});
 		run.outputs.push({
 			filename: Utils.FillTemplate(naming.manifest_file, { code }),
-			content: DocxExtractor.VertReplace(DocxExtractor.MathReplace(ManifestBuilder.Build(run)), true),   // equation sentinels → MathML in the hand-off too; sup / sub sentinels stripped to plain text
+			content: DocxExtractor.UnderReplace(DocxExtractor.VertReplace(DocxExtractor.MathReplace(ManifestBuilder.Build(run)), true), true),   // equation sentinels → MathML in the hand-off too; sup / sub and underline sentinels stripped to plain text
 			kind: "manifest",
 		});
 

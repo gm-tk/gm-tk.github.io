@@ -245,6 +245,41 @@ class ManifestBuilder {
 			out.push("-------------------------------------");
 		});
 
+		// The un-built bilingual tables: each hand-off box BilingualBuilder.UnbuiltBox registered (a table kept raw
+		// with no widget tag around it) is listed after the interactives — the page file, the box's reference code,
+		// the kind, and the table's rows in the corpus form with the writer's link addresses written in.
+		// Data interactive_placeholder.handoff_tables; env HANDOFFTABLE_OFF.
+		const htCfg = DataService.Data.EmitTemplates.interactive_placeholder?.handoff_tables;
+		const tables = (htCfg && htCfg.enabled !== false && Array.isArray(run.handoffTables)
+			&& !(typeof process !== "undefined" && process.env && process.env[htCfg.env || "HANDOFFTABLE_OFF"])) ? run.handoffTables : [];
+		if (tables.length) {
+			const tm = DataService.Data.InputDocRules?.table_markers ?? { open: "[TABLE]", close: "[/TABLE]", row_prefix: "| ", column_separator: " ║ " };
+			const ltc = DataService.Data.EmitTemplates.interactive_placeholder?.manifest_link_targets;
+			const lt = (ltc && ltc.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[ltc.env || "HANDOFFLINK_OFF"])) ? ltc : null;
+			out.push("");
+			out.push("=====================================");
+			out.push(Utils.FillTemplate(htCfg.manifest_heading ?? "UN-BUILT BILINGUAL TABLES — {count}", { count: tables.length }));
+			out.push("=====================================");
+			tables.forEach((t, idx) => {
+				const pageIndex = Array.isArray(run.pages) ? run.pages.indexOf(t.page) : -1;
+				const file = run.outputs[pageIndex]?.filename ?? run.outputs[0]?.filename;
+				const rows = Array.isArray(t.block?.rows) ? t.block.rows : [];
+				const text = [tm.open, ...rows.map((cells) => `${tm.row_prefix}${(cells ?? []).join(tm.column_separator)}`), tm.close].join("\n");
+				out.push("");
+				out.push(`TABLE ${idx + 1} of ${tables.length}`);
+				out.push("-------------------------------------");
+				out.push(`File: ${file}`);
+				out.push(`Box marker: data-cv2-ref="${t.ref}" (the cv2-interactive bilingual-unbuilt box)`);
+				out.push(`Kind: ${t.kind}`);
+				out.push("");
+				out.push("Content:");
+				for (const ln of this.#withLinkTargets(text, t.block ?? {}, lt).split("\n")) out.push(ln.replace(/\s+$/, ""));
+				out.push("");
+				out.push("-------------------------------------");
+			});
+		}
+
 		return out.join("\n");
 	};
 

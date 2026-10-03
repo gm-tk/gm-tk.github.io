@@ -87,6 +87,33 @@
 class BilingualBuilder {
 
 	/**
+	 * The hand-off box for a bilingual-section table the converter cannot unfold or build: `inner` is the box's
+	 * content (the raw table, or the banner for a widget a content table names inline). When the hand-off table
+	 * list is on (interactive_placeholder.handoff_tables; env HANDOFFTABLE_OFF) the box carries a reference code
+	 * and the table is registered on run.handoffTables for its {CODE}_interactives.txt entry (ManifestBuilder).
+	 *
+	 * @param {string} inner - the box's inner HTML
+	 * @param {Object} block - the source table block (its rows and links feed the worklist entry)
+	 * @param {ConversionRun} run - the conversion run (the page being converted is run.handoffPage)
+	 * @param {string} kind - the entry's one-line description
+	 * @returns {string} the box HTML
+	 */
+	static UnbuiltBox(inner, block, run, kind) {
+		const cfg = DataService.Data.EmitTemplates.interactive_placeholder?.handoff_tables;
+		const on = !!cfg && cfg.enabled !== false && !!run && !!block
+			&& !(typeof process !== "undefined" && process.env && process.env[cfg.env || "HANDOFFTABLE_OFF"]);
+		if (!on) return `<div class="cv2-interactive bilingual-unbuilt">\n${inner}\n</div>`;
+		if (!Array.isArray(run.handoffTables)) run.handoffTables = [];
+		const n = run.handoffTables.length + 1;
+		const page = run.handoffPage ?? null;
+		const pageIdx = page && Array.isArray(run.pages) ? run.pages.indexOf(page) : -1;
+		const ref = Utils.FillTemplate(cfg.ref_template ?? "{code}-{page}-T{n}",
+			{ code: run.moduleCode ?? "MODULE", page: Utils.Pad2(pageIdx < 0 ? 0 : pageIdx), n });
+		run.handoffTables.push({ n, ref, kind, block, page });
+		return `<div class="cv2-interactive bilingual-unbuilt" data-cv2-ref="${ref}">\n${inner}\n</div>`;
+	}
+
+	/**
 	 * THE BILINGUAL reo/eng UNFOLD — turns a plain 2-column (or 4-column,
 	 * with the two extra columns used for proofreading marks) "English |
 	 * Māori" content table into the site's actual interleaved output.
@@ -138,7 +165,8 @@ class BilingualBuilder {
 		const guard = cfg.content_table_guard;
 		if (guard && guard.enabled !== false
 			&& /\[\s*(?:interactive|flip\s?cards?|carousel|audio\s?hover|drop\s?down|multi(?:ple)?\s?choice|word\s?(?:find|select)|memory\s?game|radio\s?button|sketcher|drag\s?and\s?drop|word\s?drag|reorder|crossword)\b/i.test(block.text || "")) {
-			html += `\n<div class="cv2-interactive bilingual-unbuilt">\n<p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) — bilingual widget embedded in the content table; develop from the source table.</p>\n</div>`;
+			html += "\n" + this.UnbuiltBox(`<p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) — bilingual widget embedded in the content table; develop from the source table.</p>`,
+				block, run, "a widget the bilingual content table names inline — the table below is its source");
 		}
 		return html;
 	};
@@ -587,14 +615,16 @@ class BilingualBuilder {
 					// a content table that REFERENCES an interactive inline → keep a cv2 marker AND box
 					// the section (the human builds that widget inside the div.activity).
 					if (guardOn && this.embeddedWidgetRe.test(nx.block.text || "")) {
-						inner.push(`<div class="cv2-interactive bilingual-unbuilt">\n<p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) — bilingual widget embedded in the content table; develop from the source table.</p>\n</div>`);
+						inner.push(this.UnbuiltBox(`<p style="color: #d9480f; font-weight: bold">⚙ INTERACTIVE (un-built) — bilingual widget embedded in the content table; develop from the source table.</p>`,
+							nx.block, run, "a widget the bilingual content table names inline — the table below is its source"));
 						hasWidget = true;
 					}
 					continue;
 				}
 				// a non-bilingual DATA table (audio-item list, word bank) → a cv2 marker; on its own it does
 				// NOT box the section (it is a widget's data, normally captured with its bundle).
-				inner.push(`<div class="cv2-interactive bilingual-unbuilt">\n${TablesAndGrids.contentTable(nx.block, run, true, norm)}\n</div>`);
+				inner.push(this.UnbuiltBox(TablesAndGrids.contentTable(nx.block, run, true, norm), nx.block, run,
+					"a data table in a bilingual section (an audio-item list, a word bank) — kept raw"));
 				continue;
 			}
 			if (nx.type === "black") {
@@ -921,7 +951,9 @@ class BilingualBuilder {
 				for (let ri = 0; ri < rows.length; ri++) {
 					const row = rows[ri];
 					if (dataFrom >= 0 && ri >= dataFrom) {
-						out.push(`<div class="cv2-interactive bilingual-unbuilt">\n${TablesAndGrids.contentTable({ ...block, rows: rows.slice(dataFrom) }, run, true, norm)}\n</div>`);
+						const dataBlock = { ...block, rows: rows.slice(dataFrom) };
+						out.push(this.UnbuiltBox(TablesAndGrids.contentTable(dataBlock, run, true, norm), dataBlock, run,
+							"the data rows of a bilingual activity marker table — kept raw"));
 						break;
 					}
 					const c0 = String(row[0] ?? ""), c1 = String(row[1] ?? "");
@@ -939,7 +971,8 @@ class BilingualBuilder {
 					for (const m of (R.media.length ? R.media : E.media)) out.push(m);
 				}
 			} else {
-				out.push(`<div class="cv2-interactive bilingual-unbuilt">\n${TablesAndGrids.contentTable(block, run, true, norm)}\n</div>`);
+				out.push(this.UnbuiltBox(TablesAndGrids.contentTable(block, run, true, norm), block, run,
+					"a widget-spec or data table inside a bilingual activity box — kept raw"));
 			}
 		}
 		if (!out.length) return null;

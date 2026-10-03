@@ -413,7 +413,7 @@ class ListsAndRuns {
 			}
 			const numbered = line.match(/^(\d+)[.)]\s+(.*)$/);
 			if (bullet) return { kind: "ul", level, content: bullet[1] };
-			if (numbered) return { kind: "ol", level, content: numbered[2] };
+			if (numbered) return { kind: "ol", level, content: numbered[2], num: parseInt(numbered[1], 10) };
 			return { kind: "p", level: 0, content: line };
 		});
 		// THE WRITER'S TYPED ASTERISK BULLET. A "* text" line (asterisk + space) is the writer's own manual
@@ -464,7 +464,7 @@ class ListsAndRuns {
 					allHaveChildren = false;
 				}
 				if (!fullyBold(cur.content)) allBold = false;
-				items.push({ content: cur.content, childHtml });
+				items.push({ content: cur.content, childHtml, num: cur.num });
 			}
 			// EMPTY-ITEM drop: a stray empty <li> inside a POPULATED list is the "• "-only
 			// artifact (a writer bullet whose red instruction was lifted to a note). An ALL-empty
@@ -483,8 +483,18 @@ class ListsAndRuns {
 			const allChildK = kept.length >= 1 && kept.every((x) => x.childHtml);
 			if ((cfg.ol_bold_parents ?? true) && baseLevel === 0 && listKind === "ul"
 				&& allBoldK && allChildK && kept.length >= 2) listKind = "ol";
-			const open = listKind === "ul" ? L.unordered_open : L.ordered_open;
+			let open = listKind === "ul" ? L.unordered_open : L.ordered_open;
 			const close = listKind === "ul" ? L.unordered_close : L.ordered_close;
+			// A CONTINUED NUMBERED LIST KEEPS ITS NUMBERS (KB constraint 42): a numbered run whose first
+			// item is N > 1 (Word's own number from the extractor, or the writer's typed digit) opens
+			// <ol start="N">, so a list interrupted by a sentence, an image or a note does not restart at 1.
+			// Data body_region.list_nesting.ol_start; env OLNUM_OFF.
+			const _ols = cfg.ol_start;
+			if (listKind === "ol" && nodes[start].kind === "ol" && _ols && _ols.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[_ols.env ?? "OLNUM_OFF"])) {
+				const n0 = kept.length ? kept[0].num : null;
+				if (Number.isInteger(n0) && n0 > 1) open = open.replace(/^<ol\b/, "<ol" + Utils.FillTemplate(_ols.start_attr, { n: n0 }));
+			}
 			const lis = kept.map(({ content, childHtml }) =>
 				Utils.FillTemplate(L.item, { content: this.inlineMarkup(content, links, stitch) + (childHtml ? `\n${childHtml}` : "") }));
 			return [[open, ...lis, close].join("\n"), i];
@@ -1023,6 +1033,58 @@ class ListsAndRuns {
 			if (i < src.length) pieces.push({ live: true, s: src.slice(i) });
 		}
 		return pieces.map((p) => (p.live ? p.s.replace(joinRe, "$2") : p.s)).join("");
+	};
+
+	/**
+	 * A LIST NUMBER NEVER STANDS ALONE. A bare <p> whose whole text is a list number («1.», «12)» —
+	 * optionally inside one bold / italic wrapper) is left behind when a Word-numbered paragraph's
+	 * content goes elsewhere: a wholly red item lifted into a Writers Note (an answer key «1. C»,
+	 * a developer instruction), or an item whose leading [body] tag opened a block of its own. It
+	 * carries nothing for the learner, and the human build never has one, so it leaves the page.
+	 * A full-page post-pass at the TypedNumberList seam, after the containers are decided — LIVE
+	 * zones only: hand-off boxes, notes and the data-listed built widgets keep their text verbatim.
+	 * Data body_region.lone_list_number; env LONENUM_OFF.
+	 * @param {string} html - one finished page's HTML (before the acks block)
+	 * @returns {string}
+	 */
+	static LoneListNumbers(html) {
+		const cfg = DataService.Data.EmitTemplates?.body_region?.lone_list_number;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "LONENUM_OFF"]) return html;
+		const src = String(html);
+		const lone = new RegExp(cfg.pattern || "[ \\t]*<p>\\s*(?:<(b|strong|i|em)>)?\\s*\\d{1,2}\\s*[.)]\\s*(?:<\\/\\1>)?\\s*<\\/p>[ \\t]*\\n?", "g");
+		if (!lone.test(src)) return src;
+		lone.lastIndex = 0;
+		const tnl = DataService.Data.EmitTemplates?.body_region?.typed_number_list;
+		const widgets = ((cfg.verbatim_widget_classes ?? tnl?.verbatim_widget_classes) ?? []).map((c) => String(c).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+		const openRe = new RegExp("<div class=\"(?:cv2-interactive|" + widgets.join("|")
+			+ ")|<p class=\"cv2-(?:note|comment)\"|<script\\b|<style\\b", "g");
+		const pieces = [];
+		{
+			let i = 0, m;
+			while ((m = openRe.exec(src))) {
+				const j = m.index;
+				let end;
+				if (m[0].startsWith("<div")) {
+					const re = /<div\b|<\/div>/g;
+					re.lastIndex = j; let depth = 0, mm; end = src.length;
+					while ((mm = re.exec(src))) {
+						depth += mm[0] === "</div>" ? -1 : 1;
+						if (depth === 0) { end = re.lastIndex; break; }
+					}
+				} else if (m[0].startsWith("<p")) {
+					const k = src.indexOf("</p>", j); end = k < 0 ? src.length : k + 4;
+				} else {
+					const close = m[0].startsWith("<script") ? "</script>" : "</style>";
+					const k = src.indexOf(close, j); end = k < 0 ? src.length : k + close.length;
+				}
+				if (j > i) pieces.push({ live: true, s: src.slice(i, j) });
+				pieces.push({ live: false, s: src.slice(j, end) });
+				i = end; openRe.lastIndex = end;
+			}
+			if (i < src.length) pieces.push({ live: true, s: src.slice(i) });
+		}
+		return pieces.map((p) => (p.live ? p.s.replace(lone, "") : p.s)).join("");
 	};
 
 	static TypedNumberList(html) {

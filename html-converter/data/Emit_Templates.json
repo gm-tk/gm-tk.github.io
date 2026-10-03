@@ -357,9 +357,32 @@
 				"_doc": "A kept table's first row is the header row (<th>) — KB 05D's `<tr><th>Header 1</th>…` form, a column LABEL — UNLESS one of its cells runs to data_row_min_words words or more: a sentence is not a label, and that row renders as data (<td>; a [Body, bold] cell keeps its <b> as data cells do). In the human build a first row with a long (>= 9-word) cell is almost always <td>, while shorter first rows are mostly <th>; no other shape signal (columns, rows, bold) separates them. FREE-BODY tables only — a table inside an un-built widget's hand-off dump keeps its raw first-row form (the placeholder containment). The word count strips the red-run markers and the ** / __ emphasis. Env TBLHEADLONG_OFF = every first row th."
 			},
 			"cell_bullets": {
-				"enabled": false,
+				"enabled": true,
 				"env": "TBLCELLLIST_OFF",
-				"_doc": "A kept table cell whose ' / '-joined lines (the extractor's in_cell_line_break marker) include a '• ' bullet renders through ListsAndRuns.renderBlackText — the body's own paragraph + nested-list machinery: a lead line is a <p>, a bullet run is a <ul><li> list (a numbered run an <ol>) — instead of the raw joined string with literal '• ' text. In the human build a bullets-only cell is a bare <ul> in the td and a lead-text + bullets cell is <p>lead</p><ul>; a NON-bullet multi-line cell has no consistent form and is untouched. Only a FREE-BODY cell that renderCellInline declines (no structural lead tag); a hand-off dump's table keeps its raw form (the placeholder containment). Off by default (enabled: false): many of these tables are rebuilt by the human as an accordion / prose / a widget, or kept as a table in a way this cell rule does not match, so it needs a table-level discriminator for the tables the gold keeps as tables before it is turned on. Env TBLCELLLIST_OFF = the raw joined string."
+				"_doc": "A kept table cell whose ' / '-joined lines (the extractor's in_cell_line_break marker) include a '• ' bullet renders through ListsAndRuns.renderBlackText — the body's own paragraph + nested-list machinery: a lead line is a <p>, a bullet run is a <ul><li> list (a numbered run an <ol>) — instead of the raw joined string with literal '• ' text. In the human build a bullets-only cell is a bare <ul> in the td and a lead-text + bullets cell is <p>lead</p><ul>; a NON-bullet multi-line cell has no consistent form and is untouched. Only a FREE-BODY cell that renderCellInline declines (no structural lead tag); a hand-off dump's table keeps its raw form (the placeholder containment). Where the human keeps the writer's table, a bulleted cell is a list about twice as often as plain lines, and the whole score gain sits on those tables. Where the human rebuilds the writer's table as an accordion, prose or a widget, the writer's tag still decides the component (KB 14, Decision Framework A1): the table stays and its cell keeps the list. That costs those pages a few skeleton lines the human's rebuild does not have. No table-level cue in the writer's template separates the two (column count, header row, bullets-only or lead + bullets cells, every data cell bulleted, the host, the series), so the rule covers every free-body table. Env TBLCELLLIST_OFF = the raw joined string with literal '• ' text.",
+				"numbered": {
+					"enabled": true,
+					"env": "TBLCELLOL_OFF",
+					"_doc": "A WORD-NUMBERED LIST IN A CELL IS AN <ol>. The extractor parses a cell's paragraphs without the numbering map, so every list item in a cell carries the bullet prefix '• ' (its text and the document's list counters are untouched by this rule), and it records beside the rows the text of each paragraph whose Word list is numbered (the table block's cellNumbered). On this list path such an item renders as a numbered item, so the cell's run becomes an <ol>. Where the human keeps a cell's list, the writer's Word format decides its kind: a numbered Word list is an <ol> about 20 times in 21 and a bulleted one a <ul> about 96 times in 97. Elsewhere the writer's cell numbering stays as it was: across the corpus the human rarely shows it, so it is never restored into the cell text. Env TBLCELLOL_OFF = every cell list item a <ul> item."
+				}
+			},
+			"cell_paragraphs": {
+				"enabled": true,
+				"env": "CELLBR_OFF",
+				"joiner": " ",
+				"_doc": "A TABLE CELL'S PARAGRAPHS ARE LINES, NOT SLASHES. The extractor joins a Word cell's paragraphs with the in-cell marker « / » and records the paragraphs themselves beside the rows (cellParas); a free-body data cell of two or more paragraphs renders them as lines joined by joiner, so the learner reads «Tīkina o tino pene…» and «Kautehia ia kara…» on two lines instead of one line broken by a slash. A writer's own « / » inside one paragraph («Whenu / Strand») is never split — the paragraphs come from the side-channel, not from the marker — and a cell a caller rewrote keeps its single-line form. The human build writes these lines with <br> more than any other form (CBI, CEDK, XGF, MXDB, CEDW almost always). Hand-off boxes keep the raw marker (a developer reference)."
+			},
+			"merged_cells": {
+				"enabled": true,
+				"env": "TBLMERGE_OFF",
+				"colspan_attr": " colspan=\"{n}\"",
+				"rowspan_attr": " rowspan=\"{n}\"",
+				"rows": {
+					"enabled": false,
+					"env": "TBLMERGEROWS_OFF",
+					"_doc": "The vertical half, held inert: a cell merged down rows (w:vMerge restart + its continuation cells) renders with rowspan and its EMPTY continuation cells are omitted. Measured over the whole corpus it moves 18 pages, 9 up and 9 down — the dips are tables the human rebuilt as a widget (a quiz's «Options» column) or kept with empty cells — so it stays off until a discriminator separates them. When off, a vertically merged cell renders as before (the origin cell, then empty cells below it)."
+				},
+				"_doc": "THE WRITER'S MERGED TABLE CELL IS A MERGED CELL. A Word table cell merged across columns (w:gridSpan) renders with colspan, so a merged header such as «Income (weekly)» spans the whole table instead of leaving a short, ragged row. The vertical half (rowspan) is the `rows` block below. The extractor records each cell's Word facts (span width, vertical-merge state, grid column) beside the table's rows; the text form, the widget builders and the hand-off dumps read nothing new. Applied to FREE-BODY tables only (a hand-off dump keeps the writer's raw grid) and only when the recorded facts line up with the rows the renderer receives (a caller that re-cut the rows keeps the plain form). A continuation cell that carries text stays a visible cell. The human build uses colspan on most plain tables where the writer merged across columns, and where it does not it moved the merged row out of the table or rebuilt the grid — never a short row; where the writer merged down rows it uses rowspan or drops the merged column, almost never a column of empty cells."
 			},
 			"kb_class_form": {
 				"enabled": true,
@@ -1622,6 +1645,13 @@
 			"fallback": "{slugified-description-or-item-number}.jpg",
 			"label_rule": "The Mode-P label is the media item number or 'image' — short, URL-safe."
 		},
+		"istock_cdn_form": {
+			"enabled": true,
+			"env": "ISTOCKCDN_OFF",
+			"pattern": "^https?://media\\.istockphoto\\.com/id/(\\d{6,12})/([a-z]+)/([a-z0-9-]+?)\\.(?:jpe?g|png|gif|webp)",
+			"canonical": "https://www.istockphoto.com/{kind}/{slug}-gm{id}-",
+			"_doc": "THE iSTOCK IMAGE ADDRESS NAMES ITS ASSET. Writers often paste iStock's image-FILE address (https://media.istockphoto.com/id/537547686/photo/word-poetry-made-with-wooden-letters.jpg?…) rather than the asset PAGE address (…/photo/word-poetry-made-with-wooden-letters-gm537547686-…). Both carry the asset id and the title slug; the file form is rewritten to the page form so the image is named iStock-<id>.jpg (filename_rules.istock) and takes its slug title as alt, as the human build names it, instead of a generic «image» placeholder with an empty alt."
+		},
 		"uniform_rule": "The chosen mode applies to EVERY image in the conversion run — no mixing (brief §8.1)."
 	},
 	"video": {
@@ -1996,12 +2026,22 @@
 			"enabled": true,
 			"_note": "For the UN-BUILT interactives, {CODE}_interactives.txt carries the RAW parsed content VERBATIM, so the developer building the widget by hand sees exactly what the writer authored, unprocessed (the faithful mode still cleans sentinels / ** / whitespace and renders tables in a separate 'Data' section). ON: each un-built entry keeps only its MINIMAL header (INTERACTIVE N of M, the extract REFERENCE CODE + hint when in extract mode, File, Placeholder marker, Activity, Type) and then a single 'Content:' block that walks the member SOURCE BLOCKS in reading order (deduped by block identity) and prints each block's raw text EXACTLY — sentinels, [tags], ** and all — with a captured TABLE rendered INLINE at its position as the ┌─── TABLE ───/│ cell ║ cell/└─── END TABLE ─── ASCII box (which is literally the table block's own raw serialised text). The Modifier / Tier / Data Pattern / Position / Activity Heading / Writer Instructions / Associated Media / Red Flags sections are DROPPED from the raw un-built entry (type + anchor + raw content only). BUILT entries are already omitted by manifest_unbuilt_only, so this only affects the hand-off worklist. The txt is a developer-only working file (never ships). Env MANIFESTRAW_OFF (or enabled:false) uses the faithful/processed form."
 		},
+		"handoff_tables": {
+			"enabled": true,
+			"env": "HANDOFFTABLE_OFF",
+			"ref_template": "{code}-{page}-T{n}",
+			"manifest_heading": "UN-BUILT BILINGUAL TABLES — {count} (the writer's table is kept raw in its hand-off box on the page; no widget tag captured it, so it is not among the interactives above)",
+			"_doc": "The hand-off file is the developer's channel and lists every box left to build. A bilingual-section table the converter cannot unfold or build (a word bank, an audio-item list, a section bundle kept raw, the widget a content table names inline) is shown in a `cv2-interactive bilingual-unbuilt` box; each such box carries a reference code (data-cv2-ref, ref_template: the module code, the page's document-order index, T + a module-wide count) and gets its own entry after the interactives in {CODE}_interactives.txt — the page file, the reference, the kind, and the table's rows in the corpus form with the writer's link addresses written in. The box's visible content is unchanged; the Page Stitcher reads only cv2-int-ref markers. Env HANDOFFTABLE_OFF."
+		},
 		"manifest_link_targets": {
 			"enabled": true,
 			"env": "HANDOFFLINK_OFF",
 			"_note": "THE WRITER'S HYPERLINKS IN THE HAND-OFF. A captured block's raw text carries each hyperlink's visible words but not its address — the extractor keeps the addresses in block.links, one entry per Word run. The raw Content writes every link in the content-source form of KB 01C (`__link text__ [LINK: https://…]`), so the developer building the widget has each video, picture source and web page the writer linked. The runs of one link (the same address, separated only by whitespace or * / _ markers) are one span; a link whose words are themselves a web address is already visible and is left as it is (KB 01C: a bare URL is a media reference); a link whose words cannot be found in the block is written on its own line after the block (unplaced_form), so no address is lost. Applies to the raw-verbatim Content only (manifest_raw_verbatim). Env HANDOFFLINK_OFF (or enabled:false) gives the words alone.",
 			"form": "__{text}__ [LINK: {url}]",
 			"unplaced_form": "[LINK: {url}]",
+			"page_form": "{text} [LINK: {url}]",
+			"page_env": "BOXLINK_OFF",
+			"_page_note": "THE HAND-OFF TABLE KEEPS ITS LINKS. A table dumped raw into a hand-off box on the page (an un-built widget's table, the Bilingual builder's unbuilt rows — which have no worklist entry, so the box is the developer's only copy) writes each of the writer's hyperlinks after its own words in the cell that holds them, as page_form — the image, audio or document the writer linked («[Item 23][Audio] i haere ahau ki te whare … [LINK: …sharepoint…]») stays with the developer instead of being dropped. A link whose words are themselves an address stays as it is; one whose words are in no cell is skipped. The free body is untouched (it weaves its own links). Env page_env.",
 			"address_text_pattern": "^(?:https?://|www\\.)\\S+$"
 		},
 		"extract": {
@@ -4130,6 +4170,17 @@
 				"XWHA01"
 			],
 			"repeat_modules_env": "MENUREPEAT12_OFF",
+			"repeat_lists": [
+				{
+					"modules": [
+						"GER1002",
+						"SSCI104",
+						"SSEA203"
+					],
+					"env": "MENUREPEAT3_OFF",
+					"_doc": "Three more modules whose human build repeats the module-overview menu on its lesson pages: on these modules a lesson page whose own menu would be EMPTY (the writer gave the lesson no overview) carries the overview's built menu, exactly as the lists above. It is NOT a rule — ENGJ201's gold copies the overview too and is not listed (its lessons keep their own intentions). A named override of KB 01B l.316 / l.337 and KB 10 l.63 for these three only. Each entry of repeat_lists is one hand-kept list with its own env toggle (here MENUREPEAT3_OFF)."
+				}
+			],
 			"_doc_hand_kept_12": "Twelve more modules whose human build repeats the module-overview menu on its lesson pages join the hand-kept list (repeat_modules): on these modules a lesson page whose own menu would be EMPTY carries the overview's menu, exactly as the modules above. It is NOT a rule: other modules with empty lesson menus do not repeat the overview, and a future module needs a human call. A NAMED override of KB 01B l.223 / KB 10 l.63, FOR THESE TWELVE ONLY. Env MENUREPEAT12_OFF drops this list alone (the modules list keeps repeating).",
 			"_doc": "LESSON-MENU REPEAT. A small set of modules repeat the OVERVIEW curriculum (Understand/Know/Do) menu VERBATIM on every lesson page's #module-menu-content (MXFL201_1.0 ≡ _0.0). For a FLAGGED module, ContentConverter stashes the overview's built menu (run.overviewMenu) and reuses it wherever a lesson menu would be EMPTY. PER-MODULE by necessity, non-derivable: MXFL201 repeats but MXFL204 — SAME subject×phase, SAME 'simplified' lesson menu-type, indistinguishable WT inputs — does NOT (its lesson menus are empty); the discriminator is the human's per-module editorial choice, and no convert-time signal predicts it. Tight: only the listed modules fire, and only where the lesson menu is ALREADY empty (never overrides a populated lesson menu, never fires on a menu_type 'none' page). Env MENUREPEAT_OFF turns it off."
 		},
@@ -4400,7 +4451,12 @@
 			"_doc": "Numbered constraint 67, universal: the tabbed overview menu includes 'only the tabs the Writers Template supplies content for (omission rule: absent content → remove BOTH the <li> and its .tab-pane; never synthesise placeholder content)'. The standards / LI promotions drop an Information tab they EMPTIED; this also covers an Information tab that was empty to begin with. On a page whose type is in page_types and whose menu is tabbed, a blank tab 2 (no text, image, iframe or table; no held tab-2 columns) sets dropTab2 — the nav <li> and the pane both go; the FRFUN in_tabs form the same. The human's own empty Information tab (ENGS401) and its non-canonical 'Information' tab holding the LI / SC or Knowledge (HIS1001, MXDB102, MXDI101–103, MXFL103, TEDC401 / 402) are NAMED overrides. Lesson pages are out of scope. Env INFOTABOMIT_OFF.",
 			"enabled": true,
 			"env": "INFOTABOMIT_OFF",
-			"page_types": ["overview"]
+			"page_types": ["overview"],
+			"blank_tab": {
+				"enabled": true,
+				"env": "BLANKTAB_OFF",
+				"_doc": "Constraint 67's omission rule on EVERY tabbed module menu, decided where the shell is rendered: a tabs shell's second tab whose pane would render blank (no text, no image, iframe, table, video or audio, and no held tab-2 columns) is not built — its nav <li> and its pane both go. It covers what the MenuBuilder checks above cannot reach: a LESSON page's Information tab beside the lesson's own intentions (the human's form is one Overview tab), and a menu with no content at all (MenuBuilder returns early, so the shell would show two empty tabs; the first tab stays, holding the KB 10 §5 designer flag). It runs after the lesson-menu repeat copy, so a copied overview menu renders exactly as on the overview. Env BLANKTAB_OFF."
+			}
 		},
 		"tab2_nav_item": "\n<li><a>{tab2Label}</a></li>",
 		"tab2_pane_template": "\n<div class=\"tab-pane\">\n<div class=\"row\">\n{tab2Body}\n</div>\n</div>",
@@ -6949,7 +7005,8 @@
 			"cjk_chars": "\\u3040-\\u30ff\\u3400-\\u4dbf\\u4e00-\\u9fff\\uf900-\\ufaff\\uff00-\\uffef\\u3000-\\u303f",
 			"han_chars": "\\u3400-\\u4dbf\\u4e00-\\u9fff\\uf900-\\ufaff",
 			"kana_chars": "\\u3040-\\u30ff",
-			"internal_joiners": "\\s\\u00a0()\\[\\]/.,:;!?…\\-",
+			"internal_joiners": "\\s\\u00a0()\\[\\]/.,:;!?…\\-\\uE024\\uE025",
+			"_doc_joiners": "The underline sentinel pair (U+E024 / U+E025 — the writer's in-sentence underline, made <u> after this pass) joins a run like a space, so an underlined word inside a Japanese / Chinese run never splits the run's span; the underline pass then keeps a <u> only where it nests cleanly.",
 			"skip_zones": [
 				["<script\\b", "</script>"],
 				["<style\\b", "</style>"],
@@ -6965,6 +7022,11 @@
 			"tags": [
 				"ul"
 			]
+		},
+		"lone_list_number": {
+			"enabled": true,
+			"env": "LONENUM_OFF",
+			"_doc": "A LIST NUMBER NEVER STANDS ALONE. A bare <p> whose whole text is a list number («1.», «12)», optionally inside one bold / italic wrapper) is the residue of a Word-numbered paragraph whose content went elsewhere — a wholly red item lifted into a Writers Note (an answer key «1. C / 2. B», a developer instruction) or an item whose leading [body] tag opened a block of its own («1.» above «In your journal, write…»). It carries nothing for the learner and the human build never has one (KB constraint 5 — no parser residue; constraint 42 — numbered steps are <ol><li>, never a bare number), so the page post-pass after TypedNumberList removes it. LIVE zones only: hand-off boxes, notes and the typed_number_list verbatim widget classes keep their text."
 		},
 		"typed_number_list": {
 			"_doc": "KB constraint 42 (Universal): numbered instructions / steps / sub-questions are semantic <ol><li> (start=\"N\" when the run does not begin at 1), NEVER <p>1. …</p> manual numbering. The writer TYPES the numbers as plain text (\"1. What happened…\", not a Word numbered list, so LISTNEST never sees a list); the free-body path (renderBlackText) builds the <ol>, but widget panels render lines as <p> and never see it (e.g. inside a built accordion panel). The human mostly ships such text as a list (usually <ol>), the typed number stripped. MECHANISM: ListsAndRuns.TypedNumberList, a FULL-PAGE post-pass at the EmojiStrip seam (PageAssembler, after the emoji list clause, before LinkTextDisplay, body only — the acks block is never touched): a run of >= min_run consecutive bare <p> elements (whitespace-only between them) whose text opens with SEQUENTIAL typed numbers (n, n+1, …; a restart ends the run) OR with the extractor's Word-numbered-list marker on every item (DocxExtractor prefixes each numbered-list paragraph with \"1. \" and never counts, so a Word list inside a widget panel would show as <p>1. …</p><p>1. …</p> — every question numbered 1; marker_form_all_equal) becomes ONE <ol> (start=\"n\" when n > 1) of <li>s with the lead removed from the first text node. VERBATIM ZONES copied through untouched: cv2-interactive hand-off boxes, cv2-note / cv2-comment, script / style, AND every built widget subtree whose class opens with one of verbatim_widget_classes — a flipCard face keeps its typed number as the card title (TWHK901 <h5>1. Partnership…</h5>), a dragAndDrop question is a plain <p> (CEDR501), a carousel caption a <p> (XGF9003); accordion panels, activity boxes and free body are LIVE (BLL212 / SCCH301 / ENGR101 ship the <ol>). Env TYPEDOL_OFF turns it off.",
@@ -7424,6 +7486,12 @@
 				"env": "STARBULLET_OFF",
 				"_doc": "THE WRITER'S TYPED ASTERISK BULLET: a line the writer started with '* ' (asterisk + space — a manual bullet; the engine's Word list numbering always renders '• ', and the italic marker '*text*' never opens with a space) is a list item, not a paragraph; otherwise it would show as a literal <p>* …</p> — the asterisk visible, the list broken (e.g. BLL240 / 242–244 / 247 / 250–252 / 271–276, the overview menu's 'Decoding an unknown word … involves:' sub-points; ARFUN02; HIS1006; MXEO201; MXFL401). The human lists these lines: nested under the preceding '• …:' bullet (the BLL form), flat after a colon lead (ARFUN02). The rule: directly after a '•' bullet line the '* ' line nests one level deeper; after another '* ' line it takes that line's level; anywhere else it is a flat top-level item. Env STARBULLET_OFF keeps the literal <p>."
 			},
+			"ol_start": {
+				"enabled": true,
+				"env": "OLNUM_OFF",
+				"start_attr": " start=\"{n}\"",
+				"_doc": "A CONTINUED NUMBERED LIST KEEPS ITS NUMBERS (KB constraint 42: numbered steps use <ol><li>, with start=\"N\" for continuation across split content). A numbered run whose first item is N > 1 — Word's own number, which the extractor now writes on every numbered paragraph (list_numbering.word_count), or the writer's typed digit — opens <ol start=\"N\">, so steps 1–2, a sentence, then step 3 shows 3, not a second 1. A run that starts at 1 is unchanged, and a bullet list promoted to numbers (ol_bold_parents) never takes a start."
+			},
 			"emphasis_led_bullet": true,
 			"emphasis_led_bullet_note": "A writer typed a literal bullet glyph as the list marker, but WRAPPED it in emphasis ('*•structural features…*'), PRECEDED it with stray emphasis (' *•make independent…'), or separated it with a TAB ('*•\\tdescribe…') — none caught by #renderBlackText's plain ^• test, so the item would show as a <p> instead of a list <li> (ENGS302-00 'I know that:' + '•structural…', 'In my learning…' + '•make…'; the human ships both as <li>, like all the other bullets; also XMES102). #renderBlackText ALSO matches a bullet after a leading run of *,_  emphasis markers and, when the bullet sat inside an emphasis WRAPPER, drops the now-dangling closing marker so the content stays clean. A plain '• text' bullet flows through the unchanged path. env EMPHBULLET_OFF uses the plain ^• test (emphasis-led bullets fall back to a <p>).",
 			"note": "The writer's docx carries list NESTING via w:ilvl (DocxExtractor encodes it as leading 2-space indentation per level); #renderBlackText builds nested <ul>/<ol> from it instead of flattening every bullet to one level. OL-OVERRIDE: a TOP-level bullet list whose every item is BOLD and carries nested sub-points is rendered as a NUMBERED <ol> (the human numbers these 'category + sub-points' lists even though the docx tags them as bullets — OSAI201-02 'What did we learn?': <ol><li><b>Be specific</b><ul><li>Bad prompt…</li><li>Good prompt…</li></ul></li>…). Conservative: top level only, every item bold AND parented, >=2 items, so a plain flat list or a non-bold list is unchanged. indent_spaces_per_level matches the extractor's encoding. env LISTNEST_OFF flattens every list to one level."
@@ -7631,6 +7699,12 @@
 		"implicit_break_sub_page": {
 			"enabled": true,
 			"env": "IMPLSUB_OFF",
+			"black_number": {
+				"enabled": true,
+				"env": "IMPLSUBBLACK_OFF",
+				"pattern": "^\\s*(\\d+)(?![.\\d])",
+				"_doc": "The writer's other way of typing an explicit lesson number: a BARE [LESSON] tag followed by the number in its own black text («[lesson] 4», «[LESSON] 1 New Zealanders and dates»). That whole number counts as the tag's explicit number, so an implicit page break inside lesson N whose next tag is «[LESSON] N+1» opens lesson N's continuation N.1, not lesson N+1. A dotted number (4.1) or a bare tag with no number still records none."
+			},
 			"_doc": "KB 01D 'Lesson Numbering: [LESSON 1] → -01, [LESSON 2] → -02 … explicit numbers preserved'. An implicit page break (content after [end page] with no [LESSON] tag and no 'Lesson N' heading) would open lesson N+1 by the running ordinal; when the writer's own [LESSON N+1] came later it would collide, PageSplitter's duplicate-label pass would relabel it N+2, and every later lesson would shift by one (e.g. CEDR501 [LESSON 2] 'Take note!' as 3.0). Inside a lesson page N (an integer number) whose writer still has an explicit [LESSON N+1] ahead, the implied page is lesson N's CONTINUATION, sub-page N.k — the human's form (CEDR501 1.1 'Roles', 2.1) — and keeps the lesson number, so the continuation rule hands it the lesson's menu. Env IMPLSUB_OFF."
 		},
 		"_doc": "THE NEW-ERA WRITER LESSON NUMBERING (as in ENGJ403): the newest WT era numbers lessons ALREADY DOTTED ([Lesson 0.0]/[Lesson 1.0]/[Lesson 2.1]) and closes in-lesson TILE structures with [end tile lesson navigate back to lesson N]. Three coupled PageSplitter rules: (1) overview_zero_pattern — a [Lesson 0/0.0] while the OVERVIEW is open is the overview's own number (the module introduction), consumed, content stays on 0.0 (so the overview is not left empty; env ZEROLESSON_OFF); (2) dotted_label_verbatim — a dotted writer number is the page label VERBATIM ('2.1' not '2.1.0'; as in ENGJ403 + CEDK501/CEDO501/CEDR501/CEDT501/CEDW501/XMES202, whose human builds ship the same '2.1'-style pages; un-dotted '[Lesson 4]' keeps the '.0'; env DOTLESSON_OFF); (3) tile_closer_pattern — an 'end lesson' closer whose own text matches the tile pattern is an IN-PAGE structure closer, never a page boundary (env TILECLOSER_OFF).",

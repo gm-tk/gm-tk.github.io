@@ -418,9 +418,21 @@ class PageSplitter {
 		const _ibsOn = !!_ibs && _ibs.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env[_ibs.env ?? "IMPLSUB_OFF"]);
 		const _explicitLessonAt = [];
+		// a bare tag whose own black text opens with a whole number («[lesson] 4») records that number
+		// (data implicit_break_sub_page.black_number; env IMPLSUBBLACK_OFF)
+		const _ibsBn = _ibs?.black_number;
+		const _ibsBnRe = (_ibsOn && _ibsBn && _ibsBn.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_ibsBn.env ?? "IMPLSUBBLACK_OFF"]))
+			? new RegExp(_ibsBn.pattern ?? "^\\s*(\\d+)(?![.\\d])") : null;
 		if (_ibsOn) items.forEach((x, k) => {   // every [LESSON] tag; a bare or dotted one records n = null (it blocks the rule)
-			if (x.type === "tag" && x.parse?.primary?.tag === "lesson")
-				_explicitLessonAt.push({ k, n: x.parse.numbers?.length && /^\d+$/.test(String(x.parse.numbers[0])) ? parseInt(x.parse.numbers[0], 10) : null });
+			if (x.type === "tag" && x.parse?.primary?.tag === "lesson") {
+				let n = x.parse.numbers?.length && /^\d+$/.test(String(x.parse.numbers[0])) ? parseInt(x.parse.numbers[0], 10) : null;
+				if (n === null && _ibsBnRe && !x.parse.numbers?.length) {
+					const bm = _ibsBnRe.exec(String(x.blackAfter ?? ""));
+					if (bm) n = parseInt(bm[1], 10);
+				}
+				_explicitLessonAt.push({ k, n });
+			}
 		});
 
 		// The FRFUN multi-file levels overview: a level-first title marker met on the overview opens the

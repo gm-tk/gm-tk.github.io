@@ -414,6 +414,67 @@ class DocxExtractor {
 		return strip(out);
 	}
 
+	/** The underlined piece in the black text stream: each line of its (trimmed) text between the sentinel pair
+	 *  U+E024 \u2026 U+E025, the surrounding whitespace kept outside (a line break never sits inside a pair). */
+	static #underWrap(text) {
+		const t = String(text ?? "");
+		if (!t.trim()) return t;
+		return t.split("\n").map((line) => {
+			if (!line.trim()) return line;
+			const lead = (line.match(/^\s*/) || [""])[0], tail = (line.match(/\s*$/) || [""])[0];
+			return `${lead}\uE024${line.trim()}\uE025${tail}`;
+		}).join("\n");
+	}
+
+	/** The underline sentinels become <u> LAST (PageAssembler, after VertReplace): neighbouring pairs separated only by
+	 *  whitespace join into one; inside a heading (<h1>\u2013<h6>), an attribute value or the <title> the text stays plain (KB:
+	 *  a heading carries no inline underline; a hover text never receives markup); a pair whose text spans a block
+	 *  boundary stays plain; `plain` strips every sentinel (the .txt hand-off). A text without sentinels comes back
+	 *  untouched. */
+	static UnderReplace(text, plain = false, cfg = null) {
+		if (text == null) return text;
+		const s = String(text);
+		if (!/[\uE024\uE025]/.test(s)) return s;
+		const strip = (x) => x.replace(/[\uE024\uE025]/g, "");
+		if (plain) return strip(s);
+		let out = s.replace(/(=")([^"]*)(")/g, (m, a, v, b) => (/[\uE024\uE025]/.test(v) ? a + strip(v) + b : m))
+			.replace(/<title>([\s\S]*?)<\/title>/g, (m, v) => `<title>${strip(v)}</title>`)
+			.replace(/<(h[1-6])\b([^>]*)>([\s\S]*?)<\/\1>/gi, (m, t, at, v) => (/[\uE024\uE025]/.test(v) ? `<${t}${at}>${strip(v)}</${t}>` : m));
+		// a link's own text never carries a <u> (the link is the underline: a writer link, a typed address, a button)
+		out = out.replace(/(<a\b[^>]*>)([\s\S]*?)(<\/a>)/gi, (m, o, v, c) => (/[\uE024\uE025]/.test(v) ? o + strip(v) + c : m));
+		// a block whose WHOLE text is underlined stays plain \u2014 a line of a soft-broken paragraph renders as its own block
+		const bare = (x) => x.replace(/<[^>]*>/g, "").replace(/&[a-z#0-9]+;/gi, " ").replace(/[\s\p{P}\p{S}]+/gu, "");
+		out = out.replace(/<(p|li|td|th)\b([^>]*)>((?:(?!<\/?(?:p|li|ul|ol|div|table|tr|td|th)\b)[\s\S])*?)<\/\1>/gi, (m, t, at, v) => {
+			if (v.indexOf("\uE024") < 0) return m;
+			const all = bare(strip(v));
+			const under = (v.match(/\uE024[^\uE024\uE025]*\uE025/g) || []).map((x) => bare(strip(x))).join("");
+			return all && under === all ? `<${t}${at}>${strip(v)}</${t}>` : m;
+		});
+		out = out.replace(/\uE025((?:\s|&nbsp;)*)\uE024/g, "$1");
+		// a PHRASE (its text holds a space) that starts or ends inside a word is the writer's selection slip \u2014 \u00ABthe
+		// d__ecimal number system__\u00BB \u2014 and takes the rest of that word; an underline inside one word (phonics letters
+		// \u00ABdu__ck__s\u00BB, a digit of a number) has no space and stays exactly as typed. Data formatting_markers.underline.word_edges.
+		if (cfg?.word_edges !== false) {
+			out = out.replace(/([\p{L}\p{N}]+)\uE024([^\uE024\uE025<>]*\s[^\uE024\uE025]*)\uE025/gu, "\uE024$1$2\uE025")
+				.replace(/\uE024([^\uE024\uE025]*\s[^\uE024\uE025<>]*)\uE025([\p{L}\p{N}]+)/gu, "\uE024$1$2\uE025");
+		}
+		const block = /<\/?(?:p|li|ul|ol|div|h[1-6]|td|th|tr|table|tbody|thead|section|br|hr)\b/i;
+		// a pair whose text opens or closes an element it does not also close / open (a script span the language pass
+		// wrapped across the pair's edge) stays plain \u2014 a <u> never mis-nests
+		const balanced = (body) => {
+			const stack = [];
+			for (const t of body.matchAll(/<(\/?)([a-z][a-z0-9]*)\b[^>]*?(\/?)>/gi)) {
+				const name = t[2].toLowerCase();
+				if (t[3] || ["img", "br", "wbr", "hr", "input"].includes(name)) continue;
+				if (!t[1]) stack.push(name);
+				else if (stack.pop() !== name) return false;
+			}
+			return stack.length === 0;
+		};
+		out = out.replace(/\uE024([^\uE024\uE025]*)\uE025/g, (m, body) => (block.test(body) || !body.trim() || !balanced(body) ? body : `<u>${body}</u>`));
+		return strip(out);
+	}
+
 	/**
 	 * Extracts a complete docx into blocks + metadata.
 	 *
@@ -686,6 +747,8 @@ class DocxExtractor {
 				text: [tm.open, ...rows.map((cells) => `${tm.row_prefix}${cells.join(tm.column_separator)}`), tm.close].join("\n"),
 			};
 			if (src.cellMarks) blk.cellMarks = src.cellMarks.slice(from, to);
+			if (src.cellSpans) blk.cellSpans = src.cellSpans.slice(from, to);
+			if (src.cellParas) blk.cellParas = src.cellParas.slice(from, to);
 			return blk;
 		};
 		let promoted = 0;
@@ -1705,7 +1768,59 @@ class DocxExtractor {
 		for (const m of xml.matchAll(/<w:num w:numId="(\d+)"[^>]*>\s*<w:abstractNumId w:val="(\d+)"/g)) {
 			formats.set(m[1], abstractFmt.get(m[2]) ?? "bullet");
 		}
+		// THE COUNTING SIDE — what Word needs to show each numbered paragraph's own number:
+		// numId → abstractNumId, each abstract list's per-level w:start, and each numId's
+		// per-level w:lvlOverride/w:startOverride. #parseParagraph advances the counters
+		// (one per abstract list, one slot per level) in document order.
+		const abstractOf = new Map(), levelStart = new Map(), overrides = new Map();
+		for (const m of xml.matchAll(/<w:abstractNum w:abstractNumId="(\d+)"[\s\S]*?(?=<w:abstractNum |<w:num |<\/w:numbering>)/g)) {
+			const starts = {};
+			for (const lv of m[0].matchAll(/<w:lvl w:ilvl="(\d+)"[\s\S]*?<\/w:lvl>/g)) {
+				const s = lv[0].match(/<w:start w:val="(\d+)"/)?.[1];
+				starts[lv[1]] = s ? Number(s) : 1;
+			}
+			levelStart.set(m[1], starts);
+		}
+		for (const m of xml.matchAll(/<w:num w:numId="(\d+)"[^>]*>([\s\S]*?)<\/w:num>/g)) {
+			const abs = m[2].match(/<w:abstractNumId w:val="(\d+)"/)?.[1];
+			if (abs) abstractOf.set(m[1], abs);
+			const ov = new Map();
+			for (const o of m[2].matchAll(/<w:lvlOverride w:ilvl="(\d+)"[^>]*>([\s\S]*?)<\/w:lvlOverride>/g)) {
+				const s = o[2].match(/<w:startOverride w:val="(\d+)"/)?.[1];
+				if (s) ov.set(Number(o[1]), Number(s));
+			}
+			if (ov.size) overrides.set(m[1], ov);
+		}
+		formats.wordCount = { abstractOf, levelStart, overrides, counters: new Map(), restarted: new Set() };
 		return formats;
+	};
+
+	/**
+	 * The number Word shows on one numbered paragraph, advancing that list's counters:
+	 * the counter of its level steps on (from the level's w:start), every deeper level
+	 * resets, and a numId's w:startOverride restarts its level the first time that numId
+	 * is met. Counters are kept per ABSTRACT list, so two numIds sharing one abstract list
+	 * continue each other, as Word numbers them.
+	 *
+	 * @param {Object} wc - numFormats.wordCount (from #parseNumbering)
+	 * @param {string} numId
+	 * @param {number} level - the paragraph's w:ilvl
+	 * @returns {number}
+	 */
+	static #wordListNumber(wc, numId, level) {
+		const abs = wc.abstractOf.get(numId) ?? `num${numId}`;
+		let ctr = wc.counters.get(abs);
+		if (!ctr) { ctr = []; wc.counters.set(abs, ctr); }
+		const startOf = (lv) => wc.levelStart.get(abs)?.[lv] ?? 1;
+		const ov = wc.overrides.get(numId);
+		const key = `${numId}:${level}`;
+		if (ov && ov.has(level) && !wc.restarted.has(key)) {
+			wc.restarted.add(key);
+			ctr[level] = ov.get(level) - 1;
+		}
+		ctr[level] = (typeof ctr[level] === "number" ? ctr[level] : startOf(level) - 1) + 1;
+		ctr.length = level + 1;
+		return ctr[level];
 	};
 
 	/**
@@ -1830,7 +1945,7 @@ class DocxExtractor {
 			if (kind === "tbl") {
 				const end = this.#findClose(body, at, "w:tbl");
 				const tableXml = body.slice(at, end);
-				const tblBlock = this.#parseTable(tableXml, rels, page, rules);
+				const tblBlock = this.#parseTable(tableXml, rels, page, rules, numFormats);
 				const found = findComments(tableXml, true);
 				const all = pendingComments.length ? [...pendingComments, ...found] : found;
 				pendingComments = [];
@@ -1962,6 +2077,17 @@ class DocxExtractor {
 		// underneath it at ilvl 1. Stays 0 for an ordinary, non-nested list,
 		// or for a paragraph that isn't a list item at all.
 		const listLevel = parseInt(xml.match(/<w:ilvl w:val="(\d+)"/)?.[1] ?? "0", 10);
+		// WORD'S OWN LIST NUMBER: a numbered paragraph carries the number Word shows on it
+		// (its list's counter, advanced in document order), so a list the writer interrupted
+		// with a sentence, an image or a note continues 3, 4 … instead of restarting at 1.
+		// Every numbered paragraph advances its counter, empty or red ones included, as Word
+		// counts them. Data list_numbering.word_count; env OLNUM_OFF (every item reads "1.").
+		let wordNumber = null;
+		const wnc = rules.list_numbering?.word_count;
+		if (list === "number" && numId !== "0" && numFormats.wordCount && wnc && wnc.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[wnc.env ?? "OLNUM_OFF"])) {
+			wordNumber = this.#wordListNumber(numFormats.wordCount, numId, listLevel);
+		}
 
 		const links = [];
 		// pieces: [{ text, red, bold, italic }] in order — grouped later
@@ -1996,14 +2122,16 @@ class DocxExtractor {
 		}
 		const segments = xml.split(/(<w:hyperlink [^>]*>|<\/w:hyperlink>)/);
 		let currentLink = null;
+		let inHyperlink = false;   // inside any <w:hyperlink> (an anchor link has no r:id) — its runs' underline is the link's own
 		for (const seg of segments) {
 			const openLink = seg.match(/^<w:hyperlink ([^>]*)>$/);
 			if (openLink) {
 				const rId = openLink[1].match(/r:id="([^"]+)"/)?.[1];
 				currentLink = rId ? (rels.get(rId) ?? null) : null;
+				inHyperlink = true;
 				continue;
 			}
-			if (seg === "</w:hyperlink>") { currentLink = null; continue; }
+			if (seg === "</w:hyperlink>") { currentLink = null; inHyperlink = false; continue; }
 
 			// runs inside this segment
 			for (const rm of seg.matchAll(/<w:r\b[\s\S]*?<\/w:r>/g)) {
@@ -2119,8 +2247,21 @@ class DocxExtractor {
 				const vert = (_va && _va.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[_va.env || "VERTALIGN_OFF"]))
 					? (run.match(/<w:vertAlign w:val="(superscript|subscript)"\s*\/>/)?.[1] ?? null) : null;
 
+				// THE WRITER'S UNDERLINE: the run's direct <w:u w:val="…"/> (any value but none) rides on a black piece — never a
+				// hyperlink's own underline (a run inside a <w:hyperlink>, or one whose character style is on link_styles). The
+				// paragraph guard below keeps only an in-sentence piece; the black-run serialiser wraps it in the U+E024 … U+E025
+				// sentinels and DocxExtractor.UnderReplace makes it <u> at the very end (PageAssembler). Data
+				// Input_Doc_Rules.formatting_markers.underline; env UNDERLINE_OFF (the piece carries no key).
+				const _ul = rules.formatting_markers?.underline;
+				const _uTag = (_ul && _ul.enabled !== false && !inHyperlink && !red
+					&& !(typeof process !== "undefined" && process.env && process.env[_ul.env || "UNDERLINE_OFF"]))
+					? (run.match(/<w:u(?:\s[^>]*)?\/>/)?.[0] ?? null) : null;
+				const under = !!_uTag && (_uTag.match(/w:val="([^"]+)"/)?.[1] ?? "single") !== "none"
+					&& !(_ul.link_styles ?? ["Hyperlink"]).includes(run.match(/<w:rStyle w:val="([^"]+)"/)?.[1] ?? "");
+
 				if (currentLink) links.push({ text, target: currentLink });
 				pieces.push(vert ? { text, red, bold, italic, mark, markColor, hyper: hyperRed, vert } : { text, red, bold, italic, mark, markColor, hyper: hyperRed });
+				if (under) pieces[pieces.length - 1].under = true;
 			}
 		}
 
@@ -2194,6 +2335,34 @@ class DocxExtractor {
 						pieces.splice(endPiece, 1, ...[{ ...e, text: before }, { ...e, text: "]", red: true }, { ...e, text: after }].filter((x) => x.text !== "" || x.red));
 					}
 					k = endPiece;
+				}
+			}
+		}
+
+		// THE UNDERLINE GUARD: only an underlined piece INSIDE a sentence keeps its mark — when no black piece without an
+		// underline holds a letter or digit (a whole underlined line, usually a heading), every mark goes; a marked piece with
+		// no letter or digit (an underlined blank of spaces) stays plain too. A piece the bracket donation above turned red
+		// is skipped by the serialiser's red branch. Data formatting_markers.underline.content_pattern.
+		// Two more marks are the writer's AUTHORING marks, not emphasis: an underlined phrase whose next non-blank piece is
+		// a red writer instruction (`__techniques__ [definition: …]`, `__open question__ [roll-over definition: …]` — the
+		// underline shows which words the hover / link acts on), and every underline in a paragraph whose black text carries
+		// a raw address (`[Recording link] https://… __Please clip at:__` — a typed link label). Data
+		// formatting_markers.underline.before_instruction / url_pattern.
+		if (pieces.some((p) => p.under)) {
+			const _ulCfg = rules.formatting_markers?.underline ?? {};
+			const _ulc = new RegExp(_ulCfg.content_pattern ?? "[\\p{L}\\p{N}]", "u");
+			const plainBlack = pieces.some((p) => !p.red && !p.under && _ulc.test(p.text));
+			const urlLine = !!_ulCfg.url_pattern && pieces.some((p) => !p.red && new RegExp(_ulCfg.url_pattern, "i").test(p.text));
+			for (const p of pieces) if (p.under && (!plainBlack || urlLine || p.red || !_ulc.test(p.text))) delete p.under;
+			if (_ulCfg.before_instruction !== false) {
+				for (let k = 0; k < pieces.length; k++) {
+					if (!pieces[k].under) continue;
+					let e = k;   // the phrase: underlined pieces joined across whitespace-only black pieces
+					while (e + 1 < pieces.length && !pieces[e + 1].red && (pieces[e + 1].under || !String(pieces[e + 1].text).trim())) e++;
+					let n = e + 1;
+					while (n < pieces.length && !pieces[n].red && !String(pieces[n].text).trim()) n++;
+					if (n < pieces.length && pieces[n].red) for (let q = k; q <= e; q++) delete pieces[q].under;
+					k = e;
 				}
 			}
 		}
@@ -2289,7 +2458,8 @@ class DocxExtractor {
 				let blackText = "";
 				while (i < pieces.length && !pieces[i].red
 					&& pieces[i].bold === bold && pieces[i].italic === italic) {
-					blackText += pieces[i].vert ? DocxExtractor.#vertWrap(pieces[i], out + blackText, rules) : pieces[i].text; i++;   // superscript / subscript sentinels
+					const _pt = pieces[i].vert ? DocxExtractor.#vertWrap(pieces[i], out + blackText, rules) : pieces[i].text;   // superscript / subscript sentinels
+					blackText += pieces[i].under ? DocxExtractor.#underWrap(_pt) : _pt; i++;   // underline sentinels
 				}
 				// markdown markers only when the text has substance —
 				// never wrap pure whitespace (it renders as stray asterisks)
@@ -2328,7 +2498,18 @@ class DocxExtractor {
 		// reads it to build nested <ul>/<ol>; a flat (ilvl 0) list is unchanged.
 		const indent = "  ".repeat(Math.max(0, listLevel));
 		if (list === "bullet" && out.trim()) out = `${indent}${rules.formatting_markers.bullet_prefix}${out}`;
-		if (list === "number" && out.trim() && !/^\s*\d+[.)]/.test(out)) out = `${indent}1. ${out}`;
+		if (list === "number" && out.trim() && !/^\s*\d+[.)]/.test(out)) out = `${indent}${wordNumber ?? 1}. ${out}`;
+		// A HEADING ENDS A LIST'S CONTINUATION: a non-list paragraph that opens with one of the
+		// data-listed structural tags ([H3], [Title bar], [Lesson] …) or carries a Word heading
+		// style starts a new section, so every list counter starts again after it (the writer's
+		// reused "Today we will:" list under each activity heading reads 1, 2, 3 each time).
+		if (wordNumber === null && list !== "number" && numFormats.wordCount && wnc && wnc.enabled !== false
+			&& Array.isArray(wnc.reset_tags) && numFormats.wordCount.counters.size) {
+			const lead = out.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim().match(/^\[([^\]\[]{1,40})\]/)?.[1];
+			const word = lead ? lead.toLowerCase().replace(/[^a-z0-9 ]+/g, " ").replace(/\s+/g, " ").trim() : "";
+			const styled = new RegExp(wnc.reset_style_pattern ?? "^$", "i").test(xml.match(/<w:pStyle w:val="([^"]+)"/)?.[1] ?? "");
+			if (styled || (word && wnc.reset_tags.some((t) => word === t || word.startsWith(t + " ")))) numFormats.wordCount.counters.clear();
+		}
 
 		// ANSWER-MARK side-channel: merge consecutive same-kind marked
 		// pieces (Word fragments one highlighted phrase into several runs; a pure
@@ -2383,9 +2564,11 @@ class DocxExtractor {
 	 * same paragraph logic (so red tags INSIDE tables keep their markers —
 	 * interactives' data tables depend on this).
 	 *
+	 * @param {Map} [numFormats] - numId → bullet|number; read ONLY for the cellNumbered side-channel (a cell paragraph is
+	 *        still parsed with an empty map, so its text keeps the «• » prefix and no list counter moves)
 	 * @returns {Object} tableBlock
 	 */
-	static #parseTable(xml, rels, page, rules) {
+	static #parseTable(xml, rels, page, rules, numFormats = null) {
 		const links = [];
 		const rows = [];
 		const rowLinks = [];   // hyperlinks per ROW — the media list parser
@@ -2396,14 +2579,45 @@ class DocxExtractor {
 
 		let anyCellMark = false;
 		const cellMarks = [];   // rows-aligned: cellMarks[r][c] = [{text,kind}] (the answer-mark side-channel)
+		// The merged-cell side-channel, rows-aligned: cellSpans[r][c] = { span, vmerge, col } — the cell's
+		// w:gridSpan width, its w:vMerge state ("restart" / "continue" / null) and its grid column (after the
+		// row's w:gridBefore). Kept only when the table has a merge; only the kept-table renderer reads it.
+		let anySpan = false;
+		const cellSpans = [];
+		// The cell-paragraph side-channel, rows-aligned: cellParas[r][c] = the cell's own paragraphs (trimmed, in order) when it
+		// holds two or more — the renderer's only way to tell a paragraph join from a writer's own « / ». Kept only when a cell has one.
+		let anyParas = false;
+		const cellParas = [];
+		// The numbered-list side-channel, rows-aligned: cellNumbered[r][c] = the trimmed text of each of the cell's paragraphs
+		// whose Word list is NUMBERED (its numId's level-0 format), or null. Kept only when a cell has one.
+		let anyNumbered = false;
+		const cellNumbered = [];
 		for (const rowMatch of xml.matchAll(/<w:tr\b[\s\S]*?<\/w:tr>/g)) {
 			const cells = [];
 			const thisRowLinks = [];
 			const thisRowMarks = [];
+			const thisRowSpans = [];
+			const thisRowParas = [];
+			const thisRowNumbered = [];
+			const firstCell = rowMatch[0].search(/<w:tc\b/);
+			const trPr = rowMatch[0].match(/<w:trPr\b[\s\S]*?<\/w:trPr>/);
+			const before = trPr && (firstCell < 0 || trPr.index < firstCell) ? trPr[0].match(/<w:gridBefore\b[^>]*w:val="(\d+)"/) : null;
+			let gridCol = before ? Number(before[1]) : 0;
 			for (const cellMatch of rowMatch[0].matchAll(/<w:tc\b[\s\S]*?<\/w:tc>/g)) {
+				const firstPara = cellMatch[0].search(/<w:p[ >]/);
+				const tcPr = cellMatch[0].match(/<w:tcPr\b[\s\S]*?<\/w:tcPr>/);
+				const props = tcPr && (firstPara < 0 || tcPr.index < firstPara) ? tcPr[0] : "";
+				const gs = props.match(/<w:gridSpan\b[^>]*w:val="(\d+)"/);
+				const span = gs ? Math.max(1, Number(gs[1])) : 1;
+				const vm = props.match(/<w:vMerge\b([^>]*?)\/?>/);
+				const vmerge = vm ? (/w:val="restart"/.test(vm[1]) ? "restart" : "continue") : null;
+				if (span > 1 || vmerge) anySpan = true;
+				thisRowSpans.push({ span, vmerge, col: gridCol });
+				gridCol += span;
 				// every paragraph in the cell, joined with the in-cell
 				// line-break marker (corpus convention: " / ")
 				const paras = [];
+				const numbered = [];
 				const cm = [];
 				for (const pm of cellMatch[0].matchAll(/<w:p[ >][\s\S]*?<\/w:p>/g)) {
 					const block = this.#parseParagraph(pm[0], rels, new Map(), page, rules);
@@ -2411,18 +2625,27 @@ class DocxExtractor {
 					// is its paragraphs joined) — computed before this paragraph joins them
 					const before = paras.join(rules.table_markers.in_cell_line_break);
 					if (block.text.trim()) paras.push(block.text.trim());
+					const nid = numFormats ? pm[0].match(/<w:numId w:val="(\d+)"/)?.[1] : null;
+					if (nid && nid !== "0" && numFormats.get(nid) === "number" && block.text.trim()) numbered.push(block.text.trim());
 					links.push(...block.links);
 					thisRowLinks.push(...block.links);
 					if (block.marks) cm.push(...block.marks.map((mk) => (typeof mk.nth === "number" && before
 						? { ...mk, nth: mk.nth + Utils.CountOccurrences(before, mk.text) } : mk)));   // the answer-mark side-channel
 				}
 				cells.push(paras.join(rules.table_markers.in_cell_line_break));
+				thisRowParas.push(paras.length > 1 ? paras.slice() : null);
+				if (paras.length > 1) anyParas = true;
+				thisRowNumbered.push(numbered.length ? numbered : null);
+				if (numbered.length) anyNumbered = true;
 				thisRowMarks.push(cm);
 				if (cm.length) anyCellMark = true;
 			}
 			rows.push(cells);
 			rowLinks.push(thisRowLinks);
 			cellMarks.push(thisRowMarks);
+			cellSpans.push(thisRowSpans);
+			cellParas.push(thisRowParas);
+			cellNumbered.push(thisRowNumbered);
 		}
 
 		// the corpus text form — what the tag pipeline scans
@@ -2435,6 +2658,9 @@ class DocxExtractor {
 
 		const blk = { kind: "table", rows, rowLinks, links, wtPage: tablePage, text };
 		if (anyCellMark) blk.cellMarks = cellMarks;   // the answer-mark side-channel
+		if (anySpan) blk.cellSpans = cellSpans;       // the merged-cell side-channel
+		if (anyParas) blk.cellParas = cellParas;      // the cell-paragraph side-channel
+		if (anyNumbered) blk.cellNumbered = cellNumbered;   // the numbered-list side-channel
 		return blk;
 	};
 

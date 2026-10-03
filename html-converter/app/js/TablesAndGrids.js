@@ -4,12 +4,15 @@
  * WHAT THIS FILE DOES:
  * The TABLE and GRID rendering primitives, split out of ContentConverter
  * (the main content-emitting class) into their own file to keep that file's
- * size manageable. Six statics:
+ * size manageable. Eight statics (placeholderLinkTargets writes a hand-off
+ * table's link addresses after their words, BOXLINK_OFF):
  *
  *   - contentTable(block, run, insidePlaceholder, norm)  THE table emitter — a
  *         writer table -> the kept <table> HTML (header/data rows, with
  *         structural cell-tag inline rendering), after first offering the
  *         layout-grid path below
+ *   - mergedCellPlan(rows, spans)  the writer's Word merges -> each kept
+ *         cell's colspan / rowspan / omitted continuation cell (TBLMERGE_OFF)
  *   - renderCellInline(cell, run, isHeader, norm)  a structural [tag] inside a
  *         KEPT data-table cell, rendered inline with its marker stripped
  *         (CELLTAG_OFF)
@@ -127,11 +130,29 @@ class TablesAndGrids {
 		const firstIsHeader = insidePlaceholder || !frhOn || !rows.length
 			|| rows[0].filter((c) => plainOf(c)).every((c) => wholeBold(c)) && rows[0].some((c) => plainOf(c))
 			|| !rows[0].some((c) => wordsOf(c) >= (frh.data_row_min_words ?? 9));
-		rows.forEach((cells, r) => {
+		// MERGED CELLS: the writer's Word merges (the extractor's cellSpans side-channel) — a cell merged across
+		// columns carries colspan, a cell merged down rows carries rowspan and its EMPTY continuation cells are
+		// omitted. FREE-BODY tables only; null (the plain form) when the side-channel does not line up with these rows.
+		// Data elements.table.merged_cells; env TBLMERGE_OFF.
+		const mc = t.merged_cells;
+		// The vertical half has its own flag (elements.table.merged_cells.rows; env TBLMERGEROWS_OFF).
+		const envOn = (cfg, name) => !!cfg && cfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[cfg.env ?? name]);
+		const plan = !insidePlaceholder && envOn(mc, "TBLMERGE_OFF")
+			? this.mergedCellPlan(rows, block.cellSpans, envOn(mc.rows, "TBLMERGEROWS_OFF")) : null;
+		// A hand-off box's raw table keeps the writer's link addresses (placeholderLinkTargets; the free body weaves its own).
+		const shown = insidePlaceholder ? this.placeholderLinkTargets(rows, block.links) : rows;
+		shown.forEach((cells, r) => {
 			const isHdr = r === 0 && firstIsHeader;
-			const cellTpl = isHdr ? t.header_cell : t.cell;
+			const baseTpl = isHdr ? t.header_cell : t.cell;
 			html.push(t.row_open
-				+ cells.map((c) => {
+				+ cells.map((c, ci) => {
+					const p = plan ? plan[r][ci] : null;
+					if (p && p.hidden) return "";
+					const attrs = !p ? ""
+						: (p.colspan > 1 ? Utils.FillTemplate(mc.colspan_attr, { n: p.colspan }) : "")
+						+ (p.rowspan > 1 ? Utils.FillTemplate(mc.rowspan_attr, { n: p.rowspan }) : "");
+					const cellTpl = attrs ? baseTpl.replace(/^<(t[hd])\b/, `<$1${attrs}`) : baseTpl;
 					// CELL-TAG rendering: a structural [tag] inside a KEPT free-body table cell
 					// is rendered INLINE (its marker stripped) instead of leaking literally into
 					// the page. FREE-BODY ONLY (insidePlaceholder=false) — a table INSIDE an
@@ -142,16 +163,23 @@ class TablesAndGrids {
 					const inline = insidePlaceholder ? null : this.renderCellInline(c, run, isHdr, norm, links);
 					// A FREE-BODY cell renderCellInline declines whose ' / '-joined lines include a '• '
 					// bullet renders through the body's own paragraph + list machinery (a lead line → <p>, a bullet
-					// run → <ul><li>) instead of the raw joined string. Data elements.table.cell_bullets; env TBLCELLLIST_OFF.
+					// run → <ul><li>) instead of the raw joined string. It weaves the same links as every other free-body cell
+					// (cellLinks: web addresses only), so an asset name inside a writer's bracket stays plain text and the
+					// bracket still lifts into a Writers Note. Data elements.table.cell_bullets; env TBLCELLLIST_OFF.
 					const blOn = !insidePlaceholder && inline === null && !!t.cell_bullets && t.cell_bullets.enabled !== false
 						&& !(typeof process !== "undefined" && process.env && process.env[t.cell_bullets.env ?? "TBLCELLLIST_OFF"]);
 					const blParts = blOn ? this.cellParts(c) : [];
 					const blHit = blParts.some((p) => /^•\s*\S/.test(p));
-					const content = blHit ? ListsAndRuns.renderBlackText(blParts.join("\n"), run, Array.isArray(links) ? links : [], true).join("")
+					// A FREE-BODY cell of two or more writer paragraphs (the extractor's cellParas side-channel) renders them
+					// as lines joined by cell_paragraphs.joiner instead of the in-cell « / » marker; null when not that case.
+					const paras = !insidePlaceholder && inline === null && !blHit ? this.cellParagraphs(block, rows, r, ci, c) : null;
+					const unred = (x) => x.replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "");
+					const content = blHit ? ListsAndRuns.renderBlackText(this.cellNumberedParts(block, rows, r, ci, blParts).join("\n"), run, this.cellLinks(links), true).join("")
 						: inline !== null ? inline
+						: paras ? paras.map((p) => ListsAndRuns.inlineMarkup(unred(p), this.cellLinks(links), true)).join(t.cell_paragraphs.joiner)
 						// red spans inside table cells: keep their text visible,
 						// marked — they are usually interactive data labels
-						: ListsAndRuns.inlineMarkup(c.replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, ""),
+						: ListsAndRuns.inlineMarkup(unred(c),
 							insidePlaceholder ? [] : this.cellLinks(links), !insidePlaceholder);   // only weave hover/definition markers (and the cell's own hyperlinks) into a FREE-BODY cell, never a placeholder dump
 					// A HEADER CELL IS PLAIN: the human's <th> is almost never wholly bold (KB 05D's
 					// <tr><th>Header 1</th> form), while a writer-bold header row would render <th><b>…</b></th>.
@@ -171,6 +199,43 @@ class TablesAndGrids {
 		});
 		html.push(t.close);
 		return html.join("\n");
+	};
+
+	/**
+	 * The MERGED-CELL plan for one kept table: per cell { colspan, rowspan, hidden }, from the extractor's
+	 * cellSpans side-channel (each cell's Word span width, vertical-merge state and grid column).
+	 *   - span > 1                         -> colspan = span
+	 *   - vmerge "continue" with NO text   -> hidden; the nearest visible cell above it at the same grid
+	 *                                         column that is part of the merge gains one rowspan
+	 *   - a continuation cell that carries text stays a visible cell (it is content, not a merge filler)
+	 * Returns null when there is nothing to merge or when the side-channel's shape does not match the rows
+	 * exactly (a caller that re-cut the rows keeps the plain form).
+	 *
+	 * @param {string[][]} rows - the table's cell texts
+	 * @param {Object[][]} [spans] - block.cellSpans, rows-aligned { span, vmerge, col }
+	 * @param {boolean} [mergeRows] - apply the vertical merges too (rowspan + omitted continuation cells)
+	 * @returns {Object[][]|null}
+	 */
+	static mergedCellPlan(rows, spans, mergeRows = true) {
+		if (!Array.isArray(spans) || spans.length !== rows.length
+			|| rows.some((cells, r) => !Array.isArray(cells) || !Array.isArray(spans[r]) || spans[r].length !== cells.length)) return null;
+		const plan = rows.map((cells) => cells.map(() => ({ colspan: 1, rowspan: 1, hidden: false })));
+		let any = false;
+		rows.forEach((cells, r) => cells.forEach((c, i) => {
+			const s = spans[r][i] || {};
+			if (s.span > 1) { plan[r][i].colspan = s.span; any = true; }
+			if (!mergeRows || s.vmerge !== "continue" || String(c ?? "").trim()) return;
+			for (let u = r - 1; u >= 0; u--) {
+				const k = spans[u].findIndex((x) => x && x.col === s.col);
+				if (k < 0 || !spans[u][k].vmerge) return;
+				if (plan[u][k].hidden) continue;
+				plan[u][k].rowspan += 1;
+				plan[r][i].hidden = true;
+				any = true;
+				return;
+			}
+		}));
+		return any ? plan : null;
 	};
 
 	/**
@@ -363,6 +428,120 @@ class TablesAndGrids {
 	 * @param {Array<Object>|null} links - the table block's hyperlinks [{text, target}]
 	 * @returns {Array<Object>} the links to weave (possibly empty)
 	 */
+	/**
+	 * THE HAND-OFF TABLE KEEPS ITS LINKS. A table dumped raw into a hand-off box (an un-built widget's table, the
+	 * Bilingual builder's unbuilt rows) shows the writer's text for the developer, but a cell's hyperlink lives
+	 * beside the text (block.links), so the image / audio file the writer linked would be lost from the box. Each
+	 * link is written after its own words in the cell that holds them, in the hand-off form (`page_form`,
+	 * «words [LINK: url]»): links are taken in reading order, each one's words found in the next cell that holds
+	 * them, consecutive runs of one address joined into one span; a link whose words are themselves an address is
+	 * already visible and stays as it is, and one whose words are in no cell is skipped. The rows are returned
+	 * unchanged when there is nothing to place. Data interactive_placeholder.manifest_link_targets.page_form;
+	 * env BOXLINK_OFF.
+	 *
+	 * @param {string[][]} rows - the table's cell texts
+	 * @param {Array<Object>|null} links - the table block's hyperlinks [{text, target}], in reading order
+	 * @returns {string[][]} the rows, with each placed link's address after its words
+	 */
+	/**
+	 * A TABLE CELL'S PARAGRAPHS ARE LINES, NOT SLASHES. The extractor joins a cell's paragraphs with the in-cell
+	 * marker (« / ») and records the paragraphs themselves beside the rows (block.cellParas). A writer may also type
+	 * « / » inside ONE paragraph («Whenu / Strand»), so the marker alone cannot be split on: this returns the cell's
+	 * own paragraphs only when the side-channel lines up with the rows and the cell string is still exactly those
+	 * paragraphs joined by the marker (a cell a caller rewrote keeps its single-line form). Data
+	 * elements.table.cell_paragraphs; env CELLBR_OFF.
+	 *
+	 * @param {Object} block - the table block (its cellParas)
+	 * @param {string[][]} rows - the rows being rendered
+	 * @param {number} r - row index
+	 * @param {number} ci - cell index
+	 * @param {string} c - the cell string being rendered
+	 * @returns {string[]|null} the cell's paragraphs, or null
+	 */
+	static cellParagraphs(block, rows, r, ci, c) {
+		const cfg = DataService.Data.EmitTemplates.elements?.table?.cell_paragraphs;
+		if (!cfg || cfg.enabled === false || !cfg.joiner) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "CELLBR_OFF"]) return null;
+		const all = block?.cellParas;
+		if (!Array.isArray(all) || all.length !== rows.length || !Array.isArray(all[r]) || all[r].length !== (rows[r]?.length ?? -1)) return null;
+		const pa = all[r][ci];
+		if (!Array.isArray(pa) || pa.length < 2) return null;
+		const marker = DataService.Data.InputDocRules?.table_markers?.in_cell_line_break ?? " / ";
+		return pa.join(marker) === String(c ?? "") ? pa : null;
+	};
+
+	/**
+	 * A kept cell's Word-NUMBERED list items. The extractor gives every list paragraph in a cell the bullet prefix «• »
+	 * (a cell paragraph is parsed without the numbering map) and records, beside the rows, the text of each paragraph whose
+	 * Word list is numbered (block.cellNumbered). On the list path those items read «1. text», so renderBlackText builds an
+	 * <ol> — the human's form for a writer's numbered cell list, where a bulleted one stays <ul>. Matched by the item's own
+	 * text, so a re-cut row or a writer's « / » inside a paragraph can never number the wrong item.
+	 * Data elements.table.cell_bullets.numbered; env TBLCELLOL_OFF.
+	 *
+	 * @param {Object} block - the table block (its cellNumbered)
+	 * @param {string[][]} rows - the rows being rendered
+	 * @param {number} r - row index
+	 * @param {number} ci - cell index
+	 * @param {string[]} parts - the cell's lines (cellParts)
+	 * @returns {string[]} the lines, a numbered item's «• » turned into «1. »
+	 */
+	static cellNumberedParts(block, rows, r, ci, parts) {
+		const cfg = DataService.Data.EmitTemplates.elements?.table?.cell_bullets?.numbered;
+		if (!cfg || cfg.enabled === false) return parts;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "TBLCELLOL_OFF"]) return parts;
+		const all = block?.cellNumbered;
+		if (!Array.isArray(all) || all.length !== rows.length || !Array.isArray(all[r]) || all[r].length !== (rows[r]?.length ?? -1)) return parts;
+		const nums = all[r][ci];
+		if (!Array.isArray(nums) || !nums.length) return parts;
+		const unred = (x) => String(x ?? "").replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "").trim();
+		const set = new Set(nums.map(unred));
+		return parts.map((p) => (set.has(p) ? p.replace(/^•\s+/, "1. ") : p));
+	};
+
+	static placeholderLinkTargets(rows, links) {
+		const cfg = DataService.Data.EmitTemplates.interactive_placeholder?.manifest_link_targets;
+		if (!cfg || cfg.enabled === false || !cfg.page_form || !Array.isArray(links) || !links.length) return rows;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.page_env ?? "BOXLINK_OFF"]) return rows;
+		const addressRe = new RegExp(cfg.address_text_pattern ?? "^(?:https?://|www\\.)\\S+$", "i");
+		const text = rows.map((cells) => (Array.isArray(cells) ? cells.map((c) => String(c ?? "")) : cells));
+		const refs = [];
+		text.forEach((cells, r) => { if (Array.isArray(cells)) cells.forEach((_, ci) => refs.push([r, ci])); });
+		const spans = new Map();   // "r,ci" → [{start, end, url}]
+		const keep = (s) => { const k = `${s.r},${s.ci}`; if (!spans.has(k)) spans.set(k, []); spans.get(k).push(s); };
+		let at = 0, off = 0, cur = null;
+		for (const l of links) {
+			const url = String(l?.target ?? "").trim();
+			const words = String(l?.text ?? "");
+			if (!/^https?:\/\//i.test(url) || !/[\p{L}\p{N}]/u.test(words) || addressRe.test(words.trim())) continue;
+			if (cur && cur.url === url) {   // the next run of the open link
+				const t = text[cur.r][cur.ci];
+				const p = t.indexOf(words, cur.end);
+				if (p >= 0 && /^[\s*_]*$/.test(t.slice(cur.end, p))) { cur.end = p + words.length; off = cur.end; continue; }
+			}
+			if (cur) { keep(cur); cur = null; }
+			for (let k = at; k < refs.length; k++) {
+				const [r, ci] = refs[k];
+				const p = text[r][ci].indexOf(words, k === at ? off : 0);
+				if (p < 0) continue;
+				at = k; off = p + words.length;
+				cur = { r, ci, start: p, end: off, url };
+				break;
+			}
+		}
+		if (cur) keep(cur);
+		if (!spans.size) return rows;
+		return text.map((cells, r) => (Array.isArray(cells) ? cells.map((t, ci) => {
+			const list = (spans.get(`${r},${ci}`) ?? []).sort((a, b) => b.start - a.start);
+			let s = t, floor = Infinity;
+			for (const sp of list) {
+				if (sp.end > floor) continue;   // overlapping span: keep the later one
+				s = s.slice(0, sp.start) + Utils.FillTemplate(cfg.page_form, { text: s.slice(sp.start, sp.end), url: sp.url }) + s.slice(sp.end);
+				floor = sp.start;
+			}
+			return s;
+		}) : cells));
+	};
+
 	static cellLinks(links) {
 		const c = DataService.Data.EmitTemplates.elements?.hyperlink_weave?.table_cells;
 		if (!c || c.enabled === false || !Array.isArray(links) || !links.length) return [];

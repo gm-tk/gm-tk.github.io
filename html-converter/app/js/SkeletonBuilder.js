@@ -941,7 +941,18 @@ class SkeletonBuilder {
 				// dropTab2 (a registry row with _drop_empty_tab2 whose sections all
 				// promoted away — SCCH301's Overview | Knowledge | Practices form)
 				// fills them empty. Data: menu.tab2_nav_item + menu.tab2_pane_template.
-				const dropT2 = content.menu.dropTab2 === true;
+				// A TAB WITH NO CONTENT IS NOT BUILT — constraint 67's omission rule on every tabbed menu (data
+				// menu.info_tab_omission.blank_tab; env BLANKTAB_OFF): a second-tab pane that would render blank (no text, no
+				// image / iframe / table / video / audio, no held tab-2 columns) drops its nav item and its pane. Decided here,
+				// after the lesson-menu repeat copy and the KB 10 §5 flag, so it also reaches a lesson page's Information tab
+				// beside the lesson's own intentions and a menu with no content at all (MenuBuilder returns early for those);
+				// a copied overview menu renders exactly as it does on the overview.
+				const _bt = tpl.menu.info_tab_omission?.blank_tab;
+				const _btOn = !!_bt && _bt.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[_bt.env || "BLANKTAB_OFF"]);
+				const _t2Blank = !/<(img|iframe|table|video|audio)\b/i.test(tab2Body)
+					&& !tab2Body.replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").trim();
+				const dropT2 = content.menu.dropTab2 === true || (_btOn && _t2Blank);
 				const tab2Nav = leadNav + (dropT2 ? "" : Utils.FillTemplate(
 					tpl.menu.tab2_nav_item ?? "\n<li><a>{tab2Label}</a></li>",
 					{ tab2Label: Utils.EscapeHtml(content.menu.tab2Label ?? "Information") }));
