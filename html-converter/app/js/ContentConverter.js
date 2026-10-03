@@ -865,6 +865,8 @@ class ContentConverter {
 		// after the fact would risk breaking the bullet grouping the coalesce
 		// exists to make. Before it, the marker is still its own item with its
 		// own block (and its own hyperlink).
+		this.#inlineRedWordPrepass(menuItems, tpl, run);   // the red run that is part of the writer's text — before the coalesce, while each paragraph is its own items
+		this.#inlineRedWordPrepass(bodyItems, tpl, run);
 		this.#assetTodoPrepass(bodyItems, tpl);
 		this.#csVideoPrepass(bodyItems, tpl);   // KB c64, before the coalesce for the same reason
 		ListsAndRuns.coalesceBlackRuns(menuItems);
@@ -7772,6 +7774,100 @@ class ContentConverter {
 	 * follows is a production asset: it joins the To Do (the gold almost always hides it) instead of shipping as student
 	 * text. Data elements.cs_video_marker; env CSVIDEO_OFF.
 	 */
+	/**
+	 * THE RED RUN THAT IS PART OF THE WRITER'S TEXT STAYS IN PLACE (constraint 1: the writer's characters are never deleted).
+	 * A red run with no bracket that resolves to no tag and carries no instruction cue is "noise" to the dispatcher: it
+	 * renders nothing, and the black text after it starts a new paragraph — «pa[ck]s» ships as «pa» / «s», «(hare, [hear])»
+	 * as «(hare,» / «)». Three forms of such a run are the writer's own text, each with its own data switch:
+	 *   glued       a few letters or digits typed red INSIDE a word — no space between the run and a letter on at least one
+	 *               side («[K]im has 8 pa[ck]s», «[h]ow to …», «This is a [5]s pattern»): it can only be part of the word;
+	 *   option_list the red option inside a bracketed list of options («(hare, [hear])», «[[boy], girl, pool]»): the list
+	 *               must show every option — which one is right is no longer shown once the colour is gone;
+	 *   in_sentence one to a few red words inside the running text of a sentence («traffic signals use [red] for stop»).
+	 * The run's own characters go back into the black text in place (its own spaces kept, nothing added) and the tag item
+	 * leaves the stream; several runs in one paragraph fold one after another into the same text. A run that belongs to an
+	 * interactive's capture is never touched (the builders read the red runs as answers).
+	 * Data: Emit_Templates.elements.inline_red_words   Env toggle: REDWORD_OFF
+	 *
+	 * @param {Array<Object>} items - the page's body (or menu) items, before the black runs are coalesced; edited in place
+	 * @param {Object} tpl - the emit templates
+	 * @param {ConversionRun} run - the current run (for the info note)
+	 */
+	static #inlineRedWordPrepass(items, tpl, run) {
+		const cfg = tpl.elements?.inline_red_words;
+		if (!cfg || cfg.enabled === false || !Array.isArray(items)) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "REDWORD_OFF"]) return;
+		const on = (c) => !!c && c.enabled !== false;
+		const rx = (src, flags = "u") => (src ? new RegExp(src, flags) : null);
+		const gl = on(cfg.glued) ? cfg.glued : null;
+		const ol = on(cfg.option_list) ? cfg.option_list : null;
+		const ins = on(cfg.in_sentence) ? cfg.in_sentence : null;
+		if (!gl && !ol && !ins) return;
+		const notRe = rx(cfg.exclude_pattern, "iu");
+		const gluedRe = gl ? rx(gl.run_pattern ?? "^[\\p{L}\\p{N}’']+$") : null;
+		const optWordRe = ol ? rx(ol.word_pattern ?? "^[\\p{L}\\p{N}’'\\-]+(?:[ \\u00a0]+[\\p{L}\\p{N}’'\\-]+)*,?$") : null;
+		const optSepBeforeRe = ol ? rx(ol.separator_before ?? "[(\\[,/]\\s*$") : null;
+		const optSepAfterRe = ol ? rx(ol.separator_after ?? "^\\s*[)\\],/]") : null;
+		const insWordRe = ins ? rx(ins.word_pattern ?? "^[\\p{L}’'\\-]+(?:[ \\u00a0]+[\\p{L}’'\\-]+)*[.,;:!?]?$") : null;
+		const insBeforeRe = ins ? rx(ins.before_pattern ?? "[\\p{L}\\p{N},(]\\s*$") : null;
+		const insAfterRe = ins ? rx(ins.after_pattern ?? "^\\s*(?:[.,;:!?)]|\\p{Ll})") : null;
+		const skipBeforeRe = rx(cfg.skip_before_pattern, "iu");
+		const skipAfterRe = rx(cfg.skip_after_pattern, "iu");
+		const words = (w) => w.split(/[  ]+/).length;
+		// is the position inside an open bracket — «(» or «[» not yet closed in the black text before it — whose list
+		// holds at least one BLACK option beside the run? (a bracket of red runs only is a set of answers, not options)
+		const inOpenList = (before, after) => {
+			const o = Math.max(before.lastIndexOf("("), before.lastIndexOf("["));
+			if (o < 0 || o < Math.max(before.lastIndexOf(")"), before.lastIndexOf("]"))) return false;
+			const c = after.search(/[)\]]/);
+			return /[\p{L}\p{N}]/u.test(before.slice(o + 1)) || /[\p{L}\p{N}]/u.test(c >= 0 ? after.slice(0, c) : after);
+		};
+		const free = (x) => !!x && x.consumedBy === undefined && !x._consumed;
+		let n = 0;
+		for (let i = 0; i < items.length; i++) {
+			const it = items[i];
+			if (!free(it) || it.type !== "tag" || it.parse?.primary || it.parse?.class !== "noise") continue;
+			// the item's text is the red span's inner text (the span markers already taken off by the tokeniser)
+			const inner = String(it.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "");
+			if (/[\[\]]/.test(inner)) continue;
+			const after = String(it.blackAfter ?? "");
+			// the run's own characters: the span pads one space each side of them; a space the writer left before a
+			// closing mark («snooty ,») goes with the pad
+			let own = inner.replace(/^ /, "").replace(/ $/, "");
+			if (/^[.,;:!?)\]]/.test(after)) own = own.replace(/\s+$/, "");
+			const word = own.trim();
+			if (!word || (notRe && notRe.test(word))) continue;
+			const prev = i > 0 ? items[i - 1] : null;
+			const host = free(prev) && prev.block === it.block && (prev.type === "black" || prev.type === "tag") ? prev : null;
+			const key = host ? (host.type === "black" ? "text" : "blackAfter") : null;
+			const before = key ? String(host[key] ?? "") : "";
+			// never between web addresses («…/photo-a [or] https://…/photo-b» is the writer choosing between two assets)
+			if ((skipBeforeRe && skipBeforeRe.test(before)) || (skipAfterRe && skipAfterRe.test(after))) continue;
+			// glued: no space between the run and a letter on at least one side (the run's own space, if it has one,
+			// is on the far side: «gaming[ q]uiz»)
+			const glued = !!gl && gluedRe.test(word) && word.length <= (gl.max_chars ?? 4)
+				&& ((!/\s$/.test(own) && /^\p{Ll}/u.test(after)) || (!/^\s/.test(own) && /\p{L}$/u.test(before)));
+			const option = !glued && !!ol && optWordRe.test(word) && words(word) <= (ol.max_words ?? 3) && inOpenList(before, after)
+				&& (optSepBeforeRe.test(before) || optSepAfterRe.test(after));
+			const sentence = !glued && !option && !!ins && insWordRe.test(word) && words(word) <= (ins.max_words ?? 3)
+				&& !!before.trim() && insBeforeRe.test(before) && insAfterRe.test(after);
+			if (!glued && !option && !sentence) continue;
+			if (host) {
+				host[key] = before + own + after;
+				items.splice(i, 1);
+				i--;
+			} else {
+				// a glued run that opens its paragraph («[K]im has 8 packs»): it becomes the start of its own black text
+				it.type = "black";
+				it.text = own + after;
+				delete it.parse;
+				delete it.blackAfter;
+			}
+			n++;
+		}
+		if (n) run?.AddNote?.("info", "ContentConverter", `${n} red run${n === 1 ? "" : "s"} that are part of the writer's text kept in place (inline_red_words).`);
+	}
+
 	static #csVideoPrepass(bodyItems, tpl) {
 		const cfg = tpl.elements?.cs_video_marker;
 		if (!cfg || cfg.enabled === false || !cfg.marker_pattern) return;

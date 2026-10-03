@@ -940,6 +940,36 @@
 				"_doc": "CONSECUTIVE markers are ONE line break where a cell is split into its lines (TablesAndGrids.cellParts). An emptied line — a token a pass dropped («[Body] / [Checklist] / ☒ Device: Tablet, laptop / …» with [Checklist] dropped), an empty paragraph — leaves «/  /» in the cell. The splitter took « /  » as the break and glued the second «/» to the next line («/ • Device…»), which then read as prose instead of the list's first item (the TRR «What do I need to get started?» menu list). A run of markers now splits once. «/ oo /» sound notation has no space outside its slashes and is not a break. Env CELLSLASH_OFF (or enabled:false) splits on single markers only."
 			}
 		},
+		"inline_red_words": {
+			"_doc": "THE RED RUN THAT IS PART OF THE WRITER'S TEXT STAYS IN PLACE (constraint 1: the writer's characters are never deleted). A red run with no bracket that resolves to no tag and carries no instruction word is noise to the tag classifier: it renders nothing, and the text after it starts a new paragraph. Three forms of such a run are the writer's own text; each has its own switch. The run's characters are put back in place in the black text around it (its own spaces kept, nothing added). Never a run matching exclude_pattern, never one that sits between web addresses (skip_before_pattern / skip_after_pattern), never one that belongs to an interactive's capture. Disabled, or under the env toggle, every such run renders nothing.",
+			"enabled": true,
+			"env": "REDWORD_OFF",
+			"exclude_pattern": "\\b(?:image|images|img|insert|link|links|video|audio|button|bold|unbold|italic|italics|underline|heading|alert|tab|tabs|hover|rollover|roll over|defn|definition|caption|icon|font|todo|tbc|retrieved|screenshot|source|credit|website|cs|dev|facing side|reverse side|correct answers?|answer in|h[1-6])\\b",
+			"skip_before_pattern": "https?://\\S*\\s*$",
+			"skip_after_pattern": "^\\s*(?:https?://|www\\.)",
+			"glued": {
+				"_doc": "A few letters or digits typed red INSIDE a word: no space between the run and a letter on at least one side (the first letter of a word, a phonics passage's focus letters, the digit of «5s»). It can only be part of the word.",
+				"enabled": true,
+				"max_chars": 4,
+				"run_pattern": "^[\\p{L}\\p{N}’']+$"
+			},
+			"option_list": {
+				"_doc": "The red option inside a bracketed list of options — «(hare, hear)», «[boy, girl, swimming pool]»: the run sits after an opening bracket that is not yet closed, next to a list separator. The list must show every option; with the colour gone the page no longer shows which one the writer marked. The bracket must hold at least one black option beside the run: a bracket of red runs only is a set of answers, not a list of options.",
+				"enabled": true,
+				"max_words": 3,
+				"word_pattern": "^[\\p{L}\\p{N}’'\\-]+(?:[ \\u00a0]+[\\p{L}\\p{N}’'\\-]+)*,?$",
+				"separator_before": "[(\\[,/]\\s*$",
+				"separator_after": "^\\s*[)\\],/]"
+			},
+			"in_sentence": {
+				"_doc": "One to a few red words inside the running text of a sentence, with black text before them that has not ended its sentence and black text after them that carries it on. Off: the form is ambiguous from the document alone — in some documents the red word is a key term of the sentence, in others it is the answer of a fill-in frame, and putting it back would print the answer.",
+				"enabled": false,
+				"max_words": 3,
+				"word_pattern": "^[\\p{L}’'\\-]+(?:[ \\u00a0]+[\\p{L}’'\\-]+)*[.,;:!?]?$",
+				"before_pattern": "[\\p{L}\\p{N},(\\[“\"'‘–—-]\\s*$",
+				"after_pattern": "^\\s*(?:[.,;:!?)\\]”\"'’]|\\p{Ll})"
+			}
+		},
 		"bold_marker_residue": {
 			"_doc": "THE PARSED BOLD MARKER NEVER SHOWS (KB constraint 5: no stray markup). The parsed Writers Template marks bold as «**…**». When the bold run held only what a builder lifted (a flip card's image address) the block is left as the bare marker («<h4>**</h4>»); when a bold run crosses a soft line break each half keeps one marker («**June- Mid-July» / «LATE PREGNANCY/DRY PERIOD**», «**roue» / «vous**»). Outside the un-built hand-off boxes a listed block whose text is only asterisks is dropped, and a block with an ODD count of the two-asterisk marker loses the one at its edge (leading first, else trailing). Paired markers and longer runs («***», a censored «n*****s») are left alone. Env BOLDMARK_OFF.",
 			"enabled": true,
@@ -7022,6 +7052,14 @@
 			"tags": [
 				"ul"
 			]
+		},
+		"orphan_punctuation": {
+			"_doc": "ORPHAN PUNCTUATION. A block (p / h1–h6 / li) whose whole text is ONE sentence mark, or a mark with no wording, is what is left when an inline widget capture, a fill-in answer span, a URL line or a moved definition took the words around it — the gold never ships one. merge_pattern (a lone . , ; : ! ?): the mark joins the end of the text block that closes right before it (through a list close), so the writer's mark is kept; with no text block before it the block is removed. drop_pattern (a lone dash or bullet glyph, a bare ** run, the cell line-break marker / on its own): the block is removed, with a list it leaves empty. Verbatim zones — hand-off boxes, developer notes and comments, the built widgets on typed_number_list.verbatim_widget_classes — are never touched. Env ORPHANPUNCT_OFF.",
+			"enabled": false,
+			"env": "ORPHANPUNCT_OFF",
+			"elements": ["p", "h1", "h2", "h3", "h4", "h5", "h6", "li"],
+			"merge_pattern": "^[.,;:!?]{1,2}$",
+			"drop_pattern": "^(?:[•·▪◦\\-–—]|(?:\\*\\*\\s*)+|\\*\\*[–—-]|/(?:\\s*/)*)$"
 		},
 		"lone_list_number": {
 			"enabled": true,

@@ -1913,7 +1913,17 @@ class DocxExtractor {
 		const page = { current: rules.wt_page_tracking.first_page_number };
 
 		// body = everything inside <w:body> … </w:body>
-		const body = xml.slice(xml.indexOf("<w:body>") + 8, xml.lastIndexOf("</w:body>"));
+		// THE VML COPY OF A TEXT BOX. Word stores a text box (or any shape that holds text) twice inside
+		// <mc:AlternateContent>: the DrawingML copy in <mc:Choice> and a VML copy in <mc:Fallback> for older readers. The
+		// walk below reaches the paragraphs inside a text box as blocks of their own, so each of the box's paragraphs
+		// would become TWO blocks (one per copy); the Fallback copies are dropped before the walk (no embedded image is
+		// read from either copy).
+		// Data: Input_Doc_Rules.paragraph.textbox_fallback_skip   Env toggle: TXBXFALLBACK_OFF
+		const _tfs = rules.paragraph?.textbox_fallback_skip;
+		const _bodyXml = xml.slice(xml.indexOf("<w:body>") + 8, xml.lastIndexOf("</w:body>"));
+		const body = _tfs && _tfs.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_tfs.env ?? "TXBXFALLBACK_OFF"])
+			? _bodyXml.replace(/<mc:Fallback\b[^>]*>[\s\S]*?<\/mc:Fallback>/g, "") : _bodyXml;
 
 		// walk top-level elements: tables first (they contain paragraphs,
 		// so we must not double-read their inner w:p as body paragraphs)
@@ -2216,9 +2226,22 @@ class DocxExtractor {
 				const red = listRed || nearRed || hyperRed;
 				if (nearRed || hyperRed) nearOpen = Math.max(0, nearOpen + (text.match(/\[/g) || []).length - (text.match(/\]/g) || []).length);
 				else if (!listRed && text.trim()) nearOpen = 0;
-				// <w:b/> means bold on; <w:b w:val="0"/> means explicitly off
-				const bold = /<w:b\/>|<w:b w:val="(?:1|true)"\/>/.test(run);
-				const italic = /<w:i\/>|<w:i w:val="(?:1|true)"\/>/.test(run);
+				// <w:b/> means bold on; <w:b w:val="0"/> means explicitly off.
+				// THE ELEMENT IN EITHER XML FORM. Desktop Word writes <w:b/>; another serialiser writes the same
+				// element with a space before the closing slash (<w:b />, <w:b w:val="1" />) and may spell the
+				// on-value "on". A test for the compact form alone reads such a document as having no bold and
+				// no italic at all, so every styled run of the writer's ships plain.
+				// Data: Input_Doc_Rules.formatting_markers.run_toggle_forms   Env toggle: SPACEDXML_OFF
+				const _rt = rules.formatting_markers?.run_toggle_forms;
+				const _rtOn = !!_rt && _rt.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[_rt.env || "SPACEDXML_OFF"]);
+				const _rtKey = _rtOn ? (_rt.on_values ?? ["1", "true", "on"]).join("|") : "";
+				const _rtRx = (this._runToggleRx ??= {})[_rtKey] ??= {
+					b: _rtOn ? new RegExp(`<w:b(?: w:val="(?:${_rtKey})")?\\s*/>`) : /<w:b\/>|<w:b w:val="(?:1|true)"\/>/,
+					i: _rtOn ? new RegExp(`<w:i(?: w:val="(?:${_rtKey})")?\\s*/>`) : /<w:i\/>|<w:i w:val="(?:1|true)"\/>/,
+				};
+				const bold = _rtRx.b.test(run);
+				const italic = _rtRx.i.test(run);
 
 				// ANSWER MARKS. A writer marks a quiz's correct answer with a yellow
 				// HIGHLIGHTER (<w:highlight>) or with GREEN text (00b050 — the writer's answer

@@ -756,10 +756,12 @@ class PageAssembler {
 							NotesAndComments.OmitPlaceholderResidue(html));
 						// Adjacent sibling lists join into one (body_region.merge_adjacent_lists; env ULMERGE_OFF) — after TypedNumberList, before the link-text pass.
 						// A bare list-number paragraph leaves the page (body_region.lone_list_number; env LONENUM_OFF) — after TypedNumberList.
-						const deEmoji = (seg) => ListsAndRuns.MergeAdjacentLists(ListsAndRuns.LoneListNumbers(ListsAndRuns.TypedNumberList(ListsAndRuns.EmojiStrip(seg, () =>
+						// An orphan punctuation block merges onto the text before it or leaves (ListsAndRuns.OrphanPunctuation;
+						// body_region.orphan_punctuation; env ORPHANPUNCT_OFF) — after the emoji pass, before TypedNumberList.
+						const deEmoji = (seg) => ListsAndRuns.MergeAdjacentLists(ListsAndRuns.LoneListNumbers(ListsAndRuns.TypedNumberList(ListsAndRuns.OrphanPunctuation(ListsAndRuns.EmojiStrip(seg, () =>
 							NotesAndComments.redFlag(
 								DataService.Data.InputDocRules?.emoji_strip?.disclosure ?? "",
-								run, "diagnostic")))));
+								run, "diagnostic"))))));
 						const ai = tidied.indexOf("<div class=\"acks");
 						// KB constraint 92 / CL-0093: every CJK run takes its language-font class
 						// (ListsAndRuns.LanguageFontWrap; data body_region.language_fonts; env LANGFONT_OFF) —

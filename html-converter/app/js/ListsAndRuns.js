@@ -983,6 +983,96 @@ class ListsAndRuns {
 	 * @returns {string}
 	 */
 	/**
+	 * ORPHAN PUNCTUATION. A block (p / h1–h6 / li, from body_region.orphan_punctuation.elements) whose whole text is
+	 * one sentence mark (merge_pattern: a lone . , ; : ! ?) or a mark that carries no wording (drop_pattern: a lone
+	 * dash / bullet glyph, a bare `**` run, the cell line-break marker «/» on its own) is what is left when a widget
+	 * capture, a fill-in answer span, a URL line or a moved definition took the words around it. A merge-mark joins the
+	 * end of the text block that closes right before it (a p / li / heading, through a list close) — the writer's mark is
+	 * kept (constraint 1); with no text block right before it, and for a drop-mark, the block is removed, together with
+	 * a list it leaves empty. A pre-acks page post-pass; the verbatim zones (hand-off boxes, developer notes and
+	 * comments, built widgets on the typed-number list's verbatim list, scripts, styles) are skipped.
+	 * Data: Emit_Templates.body_region.orphan_punctuation   Env toggle: ORPHANPUNCT_OFF
+	 *
+	 * @param {string} html - one page's HTML (before the acks block)
+	 * @returns {string} the HTML with orphan punctuation blocks merged / removed
+	 */
+	static OrphanPunctuation(html) {
+		const cfg = DataService.Data.EmitTemplates?.body_region?.orphan_punctuation;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "ORPHANPUNCT_OFF"]) return html;
+		const src = String(html);
+		const els = (cfg.elements ?? ["p", "h1", "h2", "h3", "h4", "h5", "h6", "li"]).filter((t) => /^[a-z0-9]+$/.test(t));
+		if (!els.length) return src;
+		// a candidate block holds text only, or text inside one inline wrapper (<p><b>.</b></p>)
+		const blockRe = new RegExp("<(" + els.join("|") + ")(?:\\s[^>]*)?>\\s*(?:<(b|strong|i|em)>)?([^<]*)(?:</\\2>)?\\s*</\\1>", "g");
+		const mergeRe = new RegExp(cfg.merge_pattern ?? "^[.,;:!?]{1,2}$", "u");
+		const dropRe = new RegExp(cfg.drop_pattern ?? "^(?:[•·▪◦\\-–—]|(?:\\*\\*\\s*)+|/(?:\\s*/)*)$", "u");
+		const textOf = (s) => String(s).replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
+		// the text block that closes right before a position: </p> / </li> / </hN>, optionally followed by a list close
+		const tailRe = /(<\/(?:p|li|h[1-6])>)((?:\s*<\/(?:ul|ol)>)?\s*)$/;
+		const endsInText = /(?:[^>\s]|<\/(?:a|b|i|u|em|strong|span|sup|sub)>)\s*$/;
+		const fix = (s) => {
+			let out = "", last = 0, m, hit = false;
+			blockRe.lastIndex = 0;
+			while ((m = blockRe.exec(s))) {
+				const t = textOf(m[3]);
+				if (!t) continue;
+				const merge = mergeRe.test(t);
+				if (!merge && !dropRe.test(t)) continue;
+				hit = true;
+				let head = out + s.slice(last, m.index);
+				let tail = s.slice(m.index + m[0].length);
+				const tm = merge ? head.match(tailRe) : null;
+				if (tm && endsInText.test(head.slice(0, head.length - tm[0].length))) {
+					const cut = head.length - tm[0].length;
+					head = head.slice(0, cut) + t + tm[1] + tm[2];
+				} else if (m[1] === "li") {
+					// a removed <li> that was its list's only item takes the list with it
+					const om = head.match(/<(ul|ol)(?:\s[^>]*)?>\s*$/);
+					const cm = tail.match(/^\s*<\/(ul|ol)>/);
+					if (om && cm && om[1] === cm[1]) {
+						head = head.slice(0, head.length - om[0].length);
+						s = s.slice(0, m.index + m[0].length) + tail.slice(cm[0].length);
+					}
+				}
+				out = head.replace(/[ \t]+$/, "");
+				last = m.index + m[0].length;
+				blockRe.lastIndex = last;
+			}
+			return hit ? out + s.slice(last) : s;
+		};
+		// carve the page into LIVE and VERBATIM zones
+		const tnl = DataService.Data.EmitTemplates?.body_region?.typed_number_list;
+		const widgets = (tnl?.verbatim_widget_classes ?? []).map((c) => String(c).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+		const openRe = new RegExp("<div class=\"(?:cv2-interactive" + (widgets.length ? "|" + widgets.join("|") : "")
+			+ ")|<p class=\"cv2-(?:note|comment)\"|<script\\b|<style\\b", "g");
+		const pieces = [];
+		let i = 0, om;
+		while ((om = openRe.exec(src))) {
+			const j = om.index;
+			let end;
+			if (om[0].startsWith("<div")) {
+				const re = /<div\b|<\/div>/g;
+				re.lastIndex = j; let depth = 0, mm; end = src.length;
+				while ((mm = re.exec(src))) {
+					depth += mm[0] === "</div>" ? -1 : 1;
+					if (depth === 0) { end = re.lastIndex; break; }
+				}
+			} else if (om[0].startsWith("<p")) {
+				const k = src.indexOf("</p>", j); end = k < 0 ? src.length : k + 4;
+			} else {
+				const close = om[0].startsWith("<script") ? "</script>" : "</style>";
+				const k = src.indexOf(close, j); end = k < 0 ? src.length : k + close.length;
+			}
+			if (j > i) pieces.push({ live: true, s: src.slice(i, j) });
+			pieces.push({ live: false, s: src.slice(j, end) });
+			i = end; openRe.lastIndex = end;
+		}
+		if (i < src.length) pieces.push({ live: true, s: src.slice(i) });
+		return pieces.map((p) => (p.live ? fix(p.s) : p.s)).join("");
+	};
+
+	/**
 	 * ADJACENT SIBLING LISTS → ONE LIST. A writer's bullet run split into two
 	 * sibling <ul>s by an item that rendered nothing (a bullet's trailing inline [link to X]
 	 * marker, a consumed item, an image between bullets) is one list in the gold. A full-page

@@ -210,6 +210,12 @@
 		"italic": "*",
 		"bullet_prefix": "• ",
 		"preserve_leading_space": true,
+		"run_toggle_forms": {
+			"_doc": "A RUN'S BOLD / ITALIC IN EITHER XML FORM. Desktop Word writes <w:b/>; another serialiser writes the same element with a space before the closing slash (<w:b />, <w:b w:val=\"1\" />) and may spell the on-value \"on\". With this block enabled the extractor's bold / italic test accepts optional whitespace before the slash and every value listed in on_values; disabled, or under the env toggle, it accepts the compact form with 1 / true only — and a document saved in the spaced form ships without any of the writer's bold or italic. w:val=\"0\" / \"false\" stays off in both.",
+			"enabled": true,
+			"env": "SPACEDXML_OFF",
+			"on_values": ["1", "true", "on"]
+		},
 		"vert_align": {
 			"_doc": "THE WRITER'S SUPERSCRIPT AND SUBSCRIPT. A Word run's <w:vertAlign w:val=\"superscript|subscript\"/> is read, so CO₂ does not render as CO2 nor m² as m2. The gold carries the writer's non-ordinal superscripts (2, 1, -1, 3, +, - …) and subscripts (CBI's formulas), and writes ORDINAL suffixes plain. ON: DocxExtractor records the run's vertAlign; the black-run serialiser wraps a superscript / subscript piece in private-use sentinels (superscript U+E020…U+E021, subscript U+E022…U+E023) inside its bold / italic group — an ordinal suffix (ordinal_pattern after a digit) stays plain; PageAssembler turns them into <sup> / <sub> LAST (DocxExtractor.VertReplace, beside the equation MathReplace), keeps the plain text inside attribute values and <title>, and strips them from the .txt hand-off. Env VERTALIGN_OFF (the pieces carry no key — output unchanged).",
 			"enabled": true,
@@ -296,6 +302,11 @@
 		"self_closed_skip": {
 			"enabled": true,
 			"rule": "Word writes an EMPTY paragraph as a SELF-CLOSED <w:p w14:paraId=\"..\"/> (often in empty table cells inside a textbox, as in CHFUN01's Section A). If DocxExtractor.#findClose counted each as an OPEN with no matching close, the depth would ratchet up and a textbox-carrying paragraph's scan would run to end-of-body — the WHOLE module would collapse into ONE giant block: the front matter leaking into the output, every paragraph boundary lost (bullets glued, [tags] fused into prose), and IsContentStart never seeing the real [TITLE BAR]. When true, a self-closed <w:p .../> contributes NOTHING to the depth scan and is skipped as a top-level block (it has no content). A module with no self-closed paragraphs is unaffected BY CONSTRUCTION. Env toggle: SELFCLOSEP_OFF counts them as opens."
+		},
+		"textbox_fallback_skip": {
+			"enabled": false,
+			"env": "TXBXFALLBACK_OFF",
+			"rule": "Word stores a text box (or any shape that holds text) TWICE inside <mc:AlternateContent>: the DrawingML copy in <mc:Choice> and a VML copy in <mc:Fallback> for older readers. The document walk reaches the paragraphs inside a text box as blocks of their own, so each of the box paragraphs became TWO blocks, one per copy, and the page showed the box words twice. With this block enabled the <mc:Fallback> copies are removed from the body before the walk; no embedded image is read from either copy. Disabled, or under the env toggle, both copies are walked."
 		}
 	},
 	"math": {
