@@ -1913,17 +1913,17 @@ class DocxExtractor {
 		const page = { current: rules.wt_page_tracking.first_page_number };
 
 		// body = everything inside <w:body> … </w:body>
-		// THE VML COPY OF A TEXT BOX. Word stores a text box (or any shape that holds text) twice inside
-		// <mc:AlternateContent>: the DrawingML copy in <mc:Choice> and a VML copy in <mc:Fallback> for older readers. The
-		// walk below reaches the paragraphs inside a text box as blocks of their own, so each of the box's paragraphs
-		// would become TWO blocks (one per copy); the Fallback copies are dropped before the walk (no embedded image is
-		// read from either copy).
-		// Data: Input_Doc_Rules.paragraph.textbox_fallback_skip   Env toggle: TXBXFALLBACK_OFF
-		const _tfs = rules.paragraph?.textbox_fallback_skip;
+		// A TEXT BOX IS READ ONCE, AFTER THE PARAGRAPH THAT ANCHORS IT. Word stores a text box twice inside
+		// <mc:AlternateContent> (a DrawingML copy and a VML copy), in a run of its anchoring paragraph. Read in place,
+		// the anchor closes at the box's first inner paragraph — that paragraph takes the anchor run's colour, the
+		// anchor's words after the box are lost — and every later box paragraph is read once per copy. The boxes are
+		// lifted out of their runs before the walk, one copy each (#liftTextBoxes).
+		// Data: Input_Doc_Rules.paragraph.textbox_lift   Env toggle: TXBXLIFT_OFF
+		const _tbl = rules.paragraph?.textbox_lift;
 		const _bodyXml = xml.slice(xml.indexOf("<w:body>") + 8, xml.lastIndexOf("</w:body>"));
-		const body = _tfs && _tfs.enabled !== false
-			&& !(typeof process !== "undefined" && process.env && process.env[_tfs.env ?? "TXBXFALLBACK_OFF"])
-			? _bodyXml.replace(/<mc:Fallback\b[^>]*>[\s\S]*?<\/mc:Fallback>/g, "") : _bodyXml;
+		const body = _tbl && _tbl.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_tbl.env ?? "TXBXLIFT_OFF"])
+			? this.#liftTextBoxes(_bodyXml, _tbl) : _bodyXml;
 
 		// walk top-level elements: tables first (they contain paragraphs,
 		// so we must not double-read their inner w:p as body paragraphs)
@@ -1988,6 +1988,115 @@ class DocxExtractor {
 			last.comments = last.comments ? [...last.comments, ...pendingComments] : pendingComments;
 		}
 		return blocks;
+	};
+
+	/**
+	 * Lifts every text box out of the run that anchors it (Input_Doc_Rules.paragraph.textbox_lift). Each top-level
+	 * <mc:AlternateContent> that holds a <w:txbxContent> is cut from its run, and the content of every text box in ONE
+	 * copy of it (cfg.copy: "choice" — the DrawingML copy — or "fallback", the other copy when the first holds no text
+	 * box) is placed right after the close of the anchoring paragraph, boxes in document order. A box inside a box
+	 * arrives at the top level with its own <mc:AlternateContent> and is lifted on the next pass.
+	 *
+	 * @param {string} body - the XML inside <w:body>
+	 * @param {object} cfg - the textbox_lift data block
+	 * @returns {string} the body with every text box lifted
+	 */
+	static #liftTextBoxes(body, cfg) {
+		const passes = Number(cfg.max_passes ?? 4);
+		// the words of a stretch of XML, every text box inside it left out
+		const words = (x) => {
+			let t = x;
+			for (const [a, b] of this.#topSpans(x, "mc:AlternateContent").reverse()) t = t.slice(0, a) + t.slice(b);
+			return [...t.matchAll(/<w:t(?:\s[^>]*)?>([^<]*)<\/w:t>/g)].map((m) => m[1]).join("").trim();
+		};
+		for (let pass = 0; pass < passes; pass++) {
+			const tables = cfg.scope === "body" ? this.#topSpans(body, "w:tbl") : [];
+			const spans = this.#topSpans(body, "mc:AlternateContent")
+				.filter(([s, e]) => body.slice(s, e).includes("<w:txbxContent")
+					&& !tables.some(([ta, tb]) => ta < s && e <= tb));
+			if (!spans.length) break;
+			const ops = [];
+			for (let k = 0; k < spans.length; k++) {
+				const [s, e] = spans[k];
+				// the anchoring paragraph's own close: the first </w:p> after the box that is not inside a later box
+				let c = body.indexOf("</w:p>", e);
+				for (let j = k + 1; j < spans.length && c >= 0 && spans[j][0] < c; j++) {
+					if (c < spans[j][1]) c = body.indexOf("</w:p>", spans[j][1]);
+				}
+				const ac = body.slice(s, e);
+				const ch = this.#topSpans(ac, "mc:Choice")[0];
+				const fb = this.#topSpans(ac, "mc:Fallback", ch ? ch[1] : 0)[0];
+				const order = cfg.copy === "fallback" ? [fb, ch] : [ch, fb];
+				const copy = order.map((sp) => (sp ? ac.slice(sp[0], sp[1]) : "")).find((x) => x.includes("<w:txbxContent")) ?? "";
+				const inner = this.#topSpans(copy, "w:txbxContent").map(([a, b]) => {
+					const box = copy.slice(a, b);
+					return box.slice(box.indexOf(">") + 1, box.lastIndexOf("</w:txbxContent>"));
+				}).join("");
+				// an INLINE box (it sits in the line like a character) of one paragraph, with the anchor's words on both
+				// sides, keeps its runs in place: the sentence reads through it
+				const paras = this.#topSpans(inner, "w:p");
+				if (cfg.inline_in_place && /<wp:inline\b/.test(ac) && paras.length === 1) {
+					let p0 = Math.max(body.lastIndexOf("<w:p ", s), body.lastIndexOf("<w:p>", s));
+					for (let j = k - 1; j >= 0; j--) {
+						if (spans[j][0] < p0 && p0 < spans[j][1]) p0 = Math.max(body.lastIndexOf("<w:p ", spans[j][0]), body.lastIndexOf("<w:p>", spans[j][0]));
+					}
+					if (p0 >= 0 && c > e && words(body.slice(p0, s)) && words(body.slice(e, c))) {
+						const para = inner.slice(paras[0][0], paras[0][1]);
+						const runs = para.slice(para.indexOf(">") + 1, para.lastIndexOf("</w:p>")).replace(/<w:pPr\b[\s\S]*?<\/w:pPr>/, "");
+						ops.push({ at: s, end: e, text: `</w:r>${runs}<w:r>` });
+						continue;
+					}
+				}
+				ops.push({ at: s, end: e, text: "" });
+				ops.push({ at: c < 0 ? body.length : c + 6, end: null, text: inner });
+			}
+			// apply in position order (a cut always starts inside its anchor, before the anchor's close)
+			ops.sort((x, y) => x.at - y.at || (x.end === null) - (y.end === null));
+			const out = [];
+			let pos = 0;
+			for (const op of ops) {
+				out.push(body.slice(pos, op.at), op.text);
+				pos = op.end ?? op.at;
+			}
+			out.push(body.slice(pos));
+			body = out.join("");
+		}
+		return body;
+	};
+
+	/**
+	 * The top-level spans of one element in a string, nesting counted ([start, end) pairs, end just past the close
+	 * tag). A self-closed open (<tag … />) has no span.
+	 *
+	 * @param {string} xml - the text being scanned
+	 * @param {string} tag - element name, e.g. "mc:AlternateContent"
+	 * @param {number} [from] - where to start scanning
+	 * @returns {Array<[number, number]>} the spans, in order
+	 */
+	static #topSpans(xml, tag, from = 0) {
+		const open = `<${tag}`, close = `</${tag}>`;
+		const spans = [];
+		let depth = 0, start = -1, i = from;
+		while (i < xml.length) {
+			const o = xml.indexOf(open, i), c = xml.indexOf(close, i);
+			if (c < 0) break;
+			if (o >= 0 && o < c) {
+				const nx = xml[o + open.length];
+				if (nx !== ">" && nx !== " " && nx !== "/") { i = o + open.length; continue; }
+				const gt = xml.indexOf(">", o);
+				if (gt < 0) break;
+				i = gt + 1;
+				if (xml[gt - 1] === "/") continue;
+				if (depth === 0) start = o;
+				depth++;
+			} else {
+				i = c + close.length;
+				if (depth === 0) continue;
+				depth--;
+				if (depth === 0) { spans.push([start, i]); start = -1; }
+			}
+		}
+		return spans;
 	};
 
 	/**

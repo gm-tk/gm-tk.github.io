@@ -303,10 +303,14 @@
 			"enabled": true,
 			"rule": "Word writes an EMPTY paragraph as a SELF-CLOSED <w:p w14:paraId=\"..\"/> (often in empty table cells inside a textbox, as in CHFUN01's Section A). If DocxExtractor.#findClose counted each as an OPEN with no matching close, the depth would ratchet up and a textbox-carrying paragraph's scan would run to end-of-body — the WHOLE module would collapse into ONE giant block: the front matter leaking into the output, every paragraph boundary lost (bullets glued, [tags] fused into prose), and IsContentStart never seeing the real [TITLE BAR]. When true, a self-closed <w:p .../> contributes NOTHING to the depth scan and is skipped as a top-level block (it has no content). A module with no self-closed paragraphs is unaffected BY CONSTRUCTION. Env toggle: SELFCLOSEP_OFF counts them as opens."
 		},
-		"textbox_fallback_skip": {
+		"textbox_lift": {
 			"enabled": false,
-			"env": "TXBXFALLBACK_OFF",
-			"rule": "Word stores a text box (or any shape that holds text) TWICE inside <mc:AlternateContent>: the DrawingML copy in <mc:Choice> and a VML copy in <mc:Fallback> for older readers. The document walk reaches the paragraphs inside a text box as blocks of their own, so each of the box paragraphs became TWO blocks, one per copy, and the page showed the box words twice. With this block enabled the <mc:Fallback> copies are removed from the body before the walk; no embedded image is read from either copy. Disabled, or under the env toggle, both copies are walked."
+			"env": "TXBXLIFT_OFF",
+			"rule": "Word stores a text box (or any shape that holds text) TWICE inside <mc:AlternateContent> in a run of the paragraph that anchors it: the DrawingML copy in <mc:Choice> and a VML copy in <mc:Fallback> for older readers. Read in place, the anchoring paragraph closes at the box's first inner paragraph, so that inner paragraph is read as part of the anchor's run and takes the anchor run's colour (a box's black or white letter shown as a red note), the anchor's own words after the box are lost, and each box paragraph after the first is read twice, once per copy (a built widget showing every word twice). With this block enabled, before the walk, every <mc:AlternateContent> that holds a <w:txbxContent> is taken out of its run and the content of each text box in ONE copy (copy: the <mc:Choice> copy, or the <mc:Fallback> copy when the Choice holds no text box) is placed right after the close of the anchoring paragraph, in document order, so every box paragraph is read once, on its own; a text box inside a text box is lifted the same way (up to max_passes). inline_in_place: an INLINE box (<wp:inline> — it sits in the line like a character) of one paragraph with the anchor's words on both sides keeps its runs in place, so the sentence reads through it ('Select [Run >].'). scope body: a text box inside a table cell is left where it is (a table cell joins its paragraphs with its own separator and prints red spans as cell text, so a box lifted inside a cell would show new separators and the writer's instructions). No embedded image is read from either copy. Disabled, or under the env toggle, the copies are walked in place.",
+			"copy": "choice",
+			"scope": "body",
+			"inline_in_place": true,
+			"max_passes": 4
 		}
 	},
 	"math": {
