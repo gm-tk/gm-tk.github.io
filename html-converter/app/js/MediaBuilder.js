@@ -76,11 +76,48 @@ class MediaBuilder {
 	 * @returns {string[]} the rendered HTML fragments — the image markup,
 	 *          plus any caption text found after it
 	 */
+	/**
+	 * A TAGGED ITEM TAKES ITS OWN LINK, NOT THE LINE'S FIRST. Several tagged items on one line ("[Button: Virtual
+	 * drumming] [Button: Incredibox demo]", "[image] … [video] …") share the paragraph's one block.links list, and each
+	 * read links[0] — so the second sent the learner to the first one's address. When the block holds two or more links
+	 * with different targets, the item takes the link whose words stand in its OWN words (it.blackAfter). Returns the
+	 * target, or null when the rule does not decide (the caller's own reading stands).
+	 * Data elements.item_own_link {enabled, env ITEMOWNLINK_OFF, min_text_chars}.
+	 *
+	 * A MEDIA item (kind "image" / "video") takes only a link of its own kind (data kind_patterns: a picture host or file,
+	 * a video host); a kind with no pattern is never re-read, and a button (no kind) takes any address.
+	 *
+	 * @param {Object} it - the tagged content item
+	 * @param {string} [kind] - "image" / "video" for a media item; omitted for a button
+	 * @returns {string|null}
+	 */
+	static ItemOwnLink(it, kind) {
+		const cfg = DataService.Data.EmitTemplates?.elements?.item_own_link;
+		if (!cfg || cfg.enabled === false) return null;
+		const kindRe = kind ? (cfg.kind_patterns?.[kind] ? new RegExp(cfg.kind_patterns[kind], "i") : null) : undefined;
+		if (kindRe === null) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "ITEMOWNLINK_OFF"]) return null;
+		const links = (it?.block?.links ?? []).filter((l) => l && String(l.target ?? "").trim());
+		if (links.length < 2 || new Set(links.map((l) => String(l.target).trim())).size < 2) return null;
+		const fold = (s) => String(s ?? "").replace(/[*_]/g, "").replace(/\s+/g, " ").trim().toLowerCase();
+		const own = fold(it.blackAfter);
+		if (!own) return null;
+		const min = cfg.min_text_chars ?? 3;
+		// the line's FIRST link stays the reading whenever its words are this item's own — the rule only corrects an item
+		// whose own words hold another link's words and not the first one's (a garbled paste that runs two addresses
+		// together, HIS1002 10.0, keeps the first)
+		const first = fold(links[0].text);
+		if (first.length >= min && own.includes(first)) return null;
+		const hit = links.find((l) => { const t = fold(l.text); return t.length >= min && own.includes(t); });
+		if (!hit || (kindRe && !kindRe.test(String(hit.target)))) return null;
+		return String(hit.target).trim();
+	}
+
 	static image(it, bodyItems, i, run) {
 		const tpl = DataService.Data.EmitTemplates.image;
 		const out = [];
 		const gathered = this.gatherFollowing(it, bodyItems, i);
-		const url = this.CanonicalStockUrl(it.block?.links?.[0]?.target
+		const url = this.CanonicalStockUrl(this.ItemOwnLink(it, "image") ?? it.block?.links?.[0]?.target
 			?? (gathered.match(/https?:\/\/[^\s\]\)"<>]+/)?.[0] ?? ""));
 
 		// filename: iStock id when present (data rule), else a slug
@@ -355,6 +392,7 @@ class MediaBuilder {
 		}
 		// it._mediaUrl: the URL a caller has already judged to be this element's own (the media-item video route)
 		const url = it._mediaUrl
+			?? this.ItemOwnLink(it, kind)
 			?? it.block?.links?.[0]?.target
 			?? gathered.match(_re)?.[0]
 			?? followLink

@@ -867,6 +867,8 @@ class ContentConverter {
 		// own block (and its own hyperlink).
 		this.#inlineRedWordPrepass(menuItems, tpl, run);   // the red run that is part of the writer's text — before the coalesce, while each paragraph is its own items
 		this.#inlineRedWordPrepass(bodyItems, tpl, run);
+		this.#inlineFormatRequestPrepass(menuItems, tpl, run);   // the writer's mid-sentence «[bold the word X]» — the same seam
+		this.#inlineFormatRequestPrepass(bodyItems, tpl, run);
 		this.#assetTodoPrepass(bodyItems, tpl);
 		this.#csVideoPrepass(bodyItems, tpl);   // KB c64, before the coalesce for the same reason
 		ListsAndRuns.coalesceBlackRuns(menuItems);
@@ -4826,12 +4828,28 @@ class ContentConverter {
 							const _capHead = new RegExp(
 								_wOn ? (_wCfg.head ?? "^\\[\\s*caption\\s*\\d*\\s*\\]\\s*$")
 									: (_capCfg.match ?? "^\\[\\s*caption\\s*\\]\\s*$"), "i");
-							const _capEmit = (words) => emit(...actDeBold([Utils.FillTemplate(_capCfg.template,
-								{ text: ListsAndRuns.inlineMarkup(String(words).replace(/\*/g, "").trim())
-									.replace(/\n+/g, "<br>") })]));
+							// A CAPTION KEEPS THE WRITER'S BOLD: a wrapper around the WHOLE caption is still stripped; the
+							// inner marks the data keeps ('bold'; 'italic') render as the body text's do, the others are
+							// stripped as before; the item's own hyperlinks are woven only when the data says so.
+							// Data caption_text.keep_marks {keep, links}; env CAPMARKS_OFF.
+							const _km = _capCfg.keep_marks;
+							const _kmOn = !!_km && _km.enabled !== false
+								&& !(typeof process !== "undefined" && process.env && process.env[_km.env ?? "CAPMARKS_OFF"]);
+							const _capText = (words, links) => {
+								if (!_kmOn) return ListsAndRuns.inlineMarkup(String(words).replace(/\*/g, "").trim());
+								const keep = new Set(_km.keep ?? []);
+								let w = String(words).trim();
+								const whole = /^(\*{1,3})(?!\*)([\s\S]*?[^*])\1$/.exec(w);
+								if (whole && !whole[2].includes("*")) w = whole[2].trim();
+								if (!keep.has("italic")) w = w.replace(/\*\*\*([^*]+)\*\*\*/g, "**$1**").replace(/(?<!\*)\*(?!\*)/g, "");
+								if (!keep.has("bold")) w = w.replace(/\*\*/g, "");
+								return ListsAndRuns.inlineMarkup(w, _km.links === true ? (links ?? []) : []);
+							};
+							const _capEmit = (words, links) => emit(...actDeBold([Utils.FillTemplate(_capCfg.template,
+								{ text: _capText(words, links).replace(/\n+/g, "<br>") })]));
 							// (A) — the base path, head pattern widened to accept a number
 							if (_capHead.test(_capFold) && it.blackAfter.trim()) {
-								_capEmit(it.blackAfter);
+								_capEmit(it.blackAfter, it.block?.links);
 								break;
 							}
 							if (_wOn) {
@@ -4840,7 +4858,7 @@ class ContentConverter {
 									?? "^\\s*\\[\\s*caption\\s*\\d*\\s*\\]\\s*(\\S[\\s\\S]*)$", "i")
 									.exec(String(it.text ?? "").trim());
 								if (_mC) {
-									_capEmit(_mC[1]);
+									_capEmit(_mC[1], it.block?.links);
 									if (it.blackAfter.trim()) emit(...actDeBold(
 										ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links)));
 									break;
@@ -4850,7 +4868,7 @@ class ContentConverter {
 									const _nx = bodyItems[i + 1];
 									if (_nx && _nx.type === "black" && String(_nx.text ?? "").trim()
 										&& _nx.consumedBy === undefined && !_nx._consumed) {
-										_capEmit(_nx.text);
+										_capEmit(_nx.text, _nx.block?.links);
 										_nx._consumed = true;
 										while (bodyItems[i + 1]?._consumed) i++;
 										break;
@@ -5123,8 +5141,8 @@ class ContentConverter {
 		// post-passes: every consumer that reads a box's writer id (the tile pairing, the dropbox
 		// modifier) has run, so the page's consecutive numbering is settled last.
 		const bodyHtml = this.#boldMarkerResidue(this.#softBreakLead(this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
-			this.#pageNumberNormalise(this.#introHeadingFullRow(this.#bareLinkUrlNote(this.#bareVideoUrlEmbed(this.#bareStockUrlImage(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
-				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), tileRowTiles, run))), page, run), run), run), run), run), run), page, run),   // #journalInstructionBox, #introHeadingFullRow, #summaryHeadingAlert, #bareStockUrlImage, #bareVideoUrlEmbed, #bareLinkUrlNote
+			this.#pageNumberNormalise(this.#freeDropboxBox(this.#introHeadingFullRow(this.#bareLinkUrlNote(this.#bareVideoUrlEmbed(this.#bareStockUrlImage(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
+				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), tileRowTiles, run))), page, run), run), run), run), run), run), page, run), page, run),   // #freeDropboxBox, #journalInstructionBox, #introHeadingFullRow, #summaryHeadingAlert, #bareStockUrlImage, #bareVideoUrlEmbed, #bareLinkUrlNote
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
 				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
 				// the level-pages dialect's nav/tile labels + registry row
@@ -7895,6 +7913,107 @@ class ContentConverter {
 		if (n) run?.AddNote?.("info", "ContentConverter", `${n} red run${n === 1 ? "" : "s"} that are part of the writer's text kept in place (inline_red_words).`);
 	}
 
+	/**
+	 * A FORMATTING REQUEST INSIDE A SENTENCE IS APPLIED, NOT A PARAGRAPH BREAK. The writer types a red request in the middle
+	 * of a sentence — «Wana qualities are how [bold the word how] we do the movement …» (ARFUN03), «explore autumn [bold the
+	 * word autumn] using movement.» (CEDO202) — and the tag item cut the sentence into two paragraphs while the request
+	 * itself rendered nothing. The human keeps one sentence and applies the request («are <b>how</b> we do»). For a tag
+	 * item whose words are a request (request_pattern: bold / italic, then the words to mark) standing between black text
+	 * that does not end a sentence and black text that continues it (the same host test as #inlineRedWordPrepass), the
+	 * sentence is rejoined and — when the named words stand right beside the request (within window_chars, outside any
+	 * existing mark) — they take the requested mark («**…**» / «*…*», which the inline renderer turns into <b> / <i>).
+	 * Named words not found → the item is left alone (the request stays the writer's note to the developer).
+	 * Data: Emit_Templates.elements.inline_format_request   Env toggle: FMTREQ_OFF
+	 */
+	static #inlineFormatRequestPrepass(items, tpl, run) {
+		const cfg = tpl.elements?.inline_format_request;
+		if (!cfg || cfg.enabled === false || !Array.isArray(items)) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "FMTREQ_OFF"]) return;
+		const reqRe = new RegExp(cfg.request_pattern, "iu");
+		const bareRe = cfg.bare_request_pattern ? new RegExp(cfg.bare_request_pattern, "iu") : null;
+		const beforeRe = new RegExp(cfg.before_pattern ?? "[\\p{L}\\p{N},’'\")]\\s*$", "u");
+		const afterRe = new RegExp(cfg.after_pattern ?? "^\\s*(?:[.,;:!?)’'\"]|\\p{Ll})", "u");
+		// a bare request usually stands before words the writer has already marked («[bold] **planned actions**»)
+		const win = cfg.window_chars ?? 60, maxW = cfg.max_target_words ?? 6;
+		const marks = cfg.marks ?? { bold: "**", italic: "*" };
+		const free = (x) => !!x && x.consumedBy === undefined && !x._consumed;
+		const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+		const innerOf = (x) => String(x?.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim();
+		// the request's other forms: the PAIR «[bold] words [end bold]», whose words the writer bracketed, and a wider bare
+		// vocabulary («[emphasise text]», «[end bold]», «[italics]», «[unbold]») that may run on into an ALL-CAPS word
+		const mf = cfg.more_forms;
+		const mfOn = !!mf && mf.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[mf.env || "FMTREQMORE_OFF"]);
+		const mfBareRe = mfOn && mf.bare_pattern ? new RegExp(mf.bare_pattern, "iu") : null;
+		const mfEndRe = mfOn && mf.end_pattern ? new RegExp(mf.end_pattern, "iu") : null;
+		const bareAfterRe = mfOn && mf.after_pattern ? new RegExp(mf.after_pattern, "u")
+			: cfg.bare_after_pattern ? new RegExp(cfg.bare_after_pattern, "u") : afterRe;
+		let n = 0;
+		if (mfEndRe && bareRe) {
+			for (let i = 0; i + 1 < items.length; i++) {
+				const it = items[i], nx = items[i + 1];
+				if (!free(it) || it.type !== "tag" || !free(nx) || nx.type !== "tag" || nx.block !== it.block) continue;
+				const open = innerOf(it);
+				if (!bareRe.test(open) || !mfEndRe.test(innerOf(nx))) continue;
+				const mid = String(it.blackAfter ?? "").trim();
+				if (!mid || !/[\p{L}\p{N}]/u.test(mid) || mid.split(/\s+/).length > (mf.max_pair_words ?? 12)) continue;
+				// the bracketed words take the mark unless the writer marked them already
+				const mk = marks[/^\[\s*ital/i.test(open) ? "italic" : "bold"] ?? "**";
+				const body = /\*/.test(mid) ? mid : mk + mid + mk;
+				const rest = String(nx.blackAfter ?? "").replace(/^\s+/, "");
+				it.blackAfter = " " + body + (rest ? (/^[.,;:!?)’'"]/.test(rest) ? "" : " ") + rest : "");
+				// the closing request is spent in place (never spliced: later passes keep item positions)
+				nx.blackAfter = "";
+				nx._consumed = true;
+				i++;
+				n++;
+			}
+		}
+		for (let i = 1; i < items.length; i++) {
+			const it = items[i];
+			if (!free(it) || it.type !== "tag") continue;
+			const inner = innerOf(it);
+			// a BARE request («[bold]») names no words — the human applies it to one, two or no words, so the sentence is
+			// only rejoined, no mark guessed
+			const bare = (!!bareRe && bareRe.test(inner)) || (!!mfBareRe && mfBareRe.test(inner));
+			const m = bare ? null : reqRe.exec(inner);
+			if (!m && !bare) continue;
+			const kind = m && m[1].toLowerCase().startsWith("ital") ? "italic" : "bold";
+			const target = m ? String(m[2] ?? "").replace(/^[\s:‘’'"“”]+|[\s‘’'"“”.]+$/g, "").trim() : "";
+			if (m && (!target || !/[\p{L}\p{N}]/u.test(target) || target.split(/\s+/).length > maxW)) continue;
+			const prev = items[i - 1];
+			const host = free(prev) && prev.block === it.block && (prev.type === "black" || prev.type === "tag") ? prev : null;
+			if (!host) continue;
+			const key = host.type === "black" ? "text" : "blackAfter";
+			const before = String(host[key] ?? ""), after = String(it.blackAfter ?? "");
+			if (!before.trim() || !beforeRe.test(before) || !(bare ? bareAfterRe : afterRe).test(after)) continue;
+			// the named words, right beside the request: the last occurrence ending the before-text's window, else the first
+			// opening the after-text's window — never inside an existing «*» mark
+			const mk = marks[kind] ?? "**";
+			const tRe = new RegExp(`(^|[^\\p{L}\\p{N}*])(${esc(target)})(?=[^\\p{L}\\p{N}*]|$)`, "giu");
+			const tail = before.slice(-win), head = after.slice(0, win);
+			let nb = null, na = null;
+			if (!bare) {
+				let hit, last = null;
+				while ((hit = tRe.exec(tail)) !== null) last = hit;
+				if (last) {
+					const at = before.length - tail.length + last.index + last[1].length;
+					nb = before.slice(0, at) + mk + last[2] + mk + before.slice(at + last[2].length);
+				} else {
+					tRe.lastIndex = 0;
+					const h = tRe.exec(head);
+					if (h) { const at = h.index + h[1].length; na = after.slice(0, at) + mk + h[2] + mk + after.slice(at + h[2].length); }
+				}
+				if (nb === null && na === null) continue;
+			}
+			const b = (nb ?? before).replace(/\s+$/, ""), a = (na ?? after).replace(/^\s+/, "");
+			host[key] = b + (/^[.,;:!?)’'"]/.test(a) ? "" : " ") + a;
+			items.splice(i, 1);
+			i--;
+			n++;
+		}
+		if (n) run?.AddNote?.("info", "ContentConverter", `${n} formatting request${n === 1 ? "" : "s"} inside a sentence applied in place (inline_format_request).`);
+	}
+
 	static #csVideoPrepass(bodyItems, tpl) {
 		const cfg = tpl.elements?.cs_video_marker;
 		if (!cfg || cfg.enabled === false || !cfg.marker_pattern) return;
@@ -9519,6 +9638,125 @@ class ContentConverter {
 		return out;
 	}
 
+	/** A FREE DROPBOX BUTTON GETS ITS OWN ACTIVITY BOX. KB constraint 43: the writer's dropbox button ("Upload to dropbox",
+	 *  "Go to dropbox") ENDS an activity, and that activity carries `dropbox`; the human build never leaves the button
+	 *  outside a box. When the writer's [Body] or [Alert] has closed the box before it, or the page has no box at all, the
+	 *  button and the hand-in text before it ship as loose column content (ENGJ102 5.0's "Kai Pai! You have completed …"
+	 *  then "Upload to dropbox"; MXFU401 6.0's teacher-marked hand-in).
+	 *  A page-level post-pass run just inside #pageNumberNormalise (so the box is lettered with the rest): a dropbox button
+	 *  that is a direct child of a content row's column, outside every activity / alert / widget, takes the RUN of the
+	 *  column's own children that ends at it — paragraphs (a writer's note rides along), the writer's journal heading or
+	 *  other button, and at most one heading, which opens the run — when that run carries learner text with hand-in wording
+	 *  within max_words. A comment, an image, a list, a table, a widget, a box or another dropbox button ends the run. The
+	 *  run, the button and the To Do note right after it are wrapped in box_open / box_close and the row is split around
+	 *  the box, as #journalInstructionBox does; a row with a side column is left alone. The opening heading takes the box
+	 *  title level (KB 01F: h3). The box number is the next letter after the page's last box before it (the lesson number
+	 *  + A when there is none); #pageNumberNormalise then renumbers any later box. No heading is added — the gold's
+	 *  "Dropbox" / "Share your learning" is the developer's own, in no Writers Template.
+	 *  Data activity_wrapper.free_dropbox_box; env FREEDBXBOX_OFF. */
+	static #freeDropboxBox(html, page, run) {
+		const cfg = DataService.Data.EmitTemplates?.activity_wrapper?.free_dropbox_box;
+		if (!cfg || cfg.enabled === false || !html || !/drop\s?box/i.test(html)) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "FREEDBXBOX_OFF"]) return html;
+		const labelRe = new RegExp(cfg.button_label_pattern, "i"), handinRe = new RegExp(cfg.handin_pattern, "i");
+		const maxWords = Number(cfg.max_words ?? 150), titleLevel = Number(cfg.title_level ?? 3);
+		const plain = (s) => String(s).replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/&#39;|&rsquo;|&lsquo;/g, "'")
+			.replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
+		const classOf = (openTag) => (/\bclass="([^"]*)"/.exec(openTag) ?? [])[1] ?? "";
+		const BUTTON_A = /^<a\b[^>]*>\s*<div class="button">([\s\S]*?)<\/div>\s*<\/a>$/;
+		const VOID = new Set(["img", "br", "hr", "input", "source", "meta", "link", "wbr"]);
+		const CONT = new Set(["div", "ul", "ol", "li", "table", "thead", "tbody", "tr", "td", "th", "blockquote", "section", "figure", "a", "p", "h1", "h2", "h3", "h4", "h5", "h6"]);
+		const divClose = (s, from) => {
+			const re = /<(\/?)div\b[^>]*>/gi; re.lastIndex = from; let d = 1, m;
+			while ((m = re.exec(s)) !== null) { d += m[1] ? -1 : 1; if (d === 0) return { start: m.index, end: m.index + m[0].length }; }
+			return null;
+		};
+		// the direct children of s[from, to): { tag, open, start, end } — balanced; a comment and a void tag are their own child
+		const children = (s, from, to) => {
+			const out = [], re = /<!--[\s\S]*?-->|<(\/?)([a-zA-Z][a-zA-Z0-9]*)\b[^>]*>/g; re.lastIndex = from;
+			let depth = 0, m;
+			while ((m = re.exec(s)) !== null && m.index < to) {
+				if (m[0].startsWith("<!--")) { if (depth === 0) out.push({ tag: "#comment", open: m[0], start: m.index, end: m.index + m[0].length }); continue; }
+				const tag = m[2].toLowerCase();
+				if (VOID.has(tag) || /\/>$/.test(m[0])) { if (depth === 0) out.push({ tag, open: m[0], start: m.index, end: m.index + m[0].length }); continue; }
+				if (!m[1]) { if (depth === 0) out.push({ tag, open: m[0], start: m.index, end: -1 }); depth++; }
+				else { depth--; if (depth === 0 && out.length) out[out.length - 1].end = m.index + m[0].length; }
+			}
+			return out;
+		};
+		const skip = new Set();   // button starts already judged unboxable — never re-judged
+		const find = (s) => {
+			const re = /<(\/?)([a-zA-Z][a-zA-Z0-9]*)\b([^>]*)>/g; const stack = []; let m;
+			while ((m = re.exec(s)) !== null) {
+				const tag = m[2].toLowerCase();
+				if (!CONT.has(tag) || /\/$/.test(m[3])) continue;
+				if (m[1]) { const k = stack.map((x) => x.tag).lastIndexOf(tag); if (k >= 0) stack.length = k; continue; }
+				if (tag === "a" && stack.length === 2 && !skip.has(m.index)
+					&& stack[0].tag === "div" && /\brow\b/.test(stack[0].cls) && stack[1].tag === "div" && /\bcol-/.test(stack[1].cls)) {
+					const aClose = s.indexOf("</a>", m.index);
+					const b = aClose > 0 ? BUTTON_A.exec(s.slice(m.index, aClose + 4)) : null;
+					if (b && labelRe.test(plain(b[1]))) return { aStart: m.index, aEnd: aClose + 4, row: stack[0], col: stack[1] };
+				}
+				stack.push({ tag, cls: classOf(m[0]), start: m.index, end: m.index + m[0].length });
+			}
+			return null;
+		};
+		let out = html, guard = 0;
+		for (let c = find(out); c && guard < 40; c = find(out), guard++) {
+			const colClose = divClose(out, c.col.end), rowClose = divClose(out, c.row.end);
+			if (!colClose || !rowClose || /<div\b/i.test(out.slice(colClose.end, rowClose.start))) { skip.add(c.aStart); continue; }
+			// the run: the column's own children that end at the button, read backwards
+			const kids = children(out, c.col.end, c.aStart);
+			const seq = [];
+			for (let i = kids.length - 1; i >= 0; i--) {
+				const k = kids[i];
+				if (k.end < 0) break;
+				const cls = classOf(k.open);
+				if (k.tag === "p" && (!cls || /\bcv2-note\b/.test(cls))) { seq.unshift(k); continue; }
+				if (k.tag === "a") {
+					const b = BUTTON_A.exec(out.slice(k.start, k.end));
+					if (b && !labelRe.test(plain(b[1]))) { seq.unshift(k); continue; }
+					break;
+				}
+				if (/^h[3-5]$/.test(k.tag)) { seq.unshift(k); if (/\bgoJournal\b/.test(cls)) continue; break; }
+				break;
+			}
+			const learner = seq.filter((k) => k.tag === "p" && !classOf(k.open)).map((k) => plain(out.slice(k.start, k.end))).join(" ");
+			const words = learner.split(" ").filter(Boolean).length;
+			const head = seq.length && /^h[3-5]$/.test(seq[0].tag) && !/\bgoJournal\b/.test(classOf(seq[0].open)) ? seq[0] : null;
+			const handin = handinRe.test(learner) || (head && handinRe.test(plain(out.slice(head.start, head.end))));
+			if (!seq.length || words < 1 || words > maxWords || !handin) { skip.add(c.aStart); continue; }
+			// the box number: the next letter after the page's last box before the run (the lesson number + A when none)
+			const segStart = seq[0].start;
+			const ids = [...out.slice(0, segStart).matchAll(/<div class="(?:[^"]*\s)?activity(?:\s[^"]*)?"[^>]*? number="([^"]*)"/g)].map((x) => x[1]);
+			let id = null;
+			if (ids.length) { const p = /^(\d+)([A-Za-z])$/.exec(ids[ids.length - 1].trim()); if (p && !/[Zz]/.test(p[2])) id = p[1] + String.fromCharCode(p[2].toUpperCase().charCodeAt(0) + 1); }
+			else if (/^\d+$/.test(String(page?.lessonNumber ?? ""))) id = String(page.lessonNumber) + "A";
+			// an overview page is never renumbered: the id must not be one a later box already carries; and with
+			// `last_box_only` a box is made only where no numbered box follows (a new id mid-page shifts every later one)
+			const laterBox = /<div class="(?:[^"]*\s)?activity(?:\s[^"]*)?"[^>]*? number="/.test(out.slice(c.aEnd));
+			if (!id || (page?.isOverview && new RegExp(`\\bnumber="${id}"`, "i").test(out.slice(segStart)))
+				|| (cfg.last_box_only === true && laterBox)) { skip.add(c.aStart); continue; }
+			let segEnd = c.aEnd;
+			const note = /^\s*(?:<p class="cv2-note"[^>]*>[\s\S]*?<\/p>\s*)+/.exec(out.slice(segEnd, colClose.start));
+			if (note) segEnd += note[0].replace(/\s+$/, "").length;
+			let inner = out.slice(segStart, segEnd).trim();
+			if (head) inner = inner.replace(/^<h([3-5])\b([^>]*)>([\s\S]*?)<\/h\1>/, `<h${titleLevel}$2>$3</h${titleLevel}>`);
+			const box = Utils.FillTemplate(cfg.box_open, { id }) + "\n" + inner + "\n" + cfg.box_close;
+			const before = out.slice(c.col.end, segStart), after = out.slice(segEnd, colClose.start);
+			const rowTag = out.slice(c.row.start, c.row.end), colTag = out.slice(c.col.start, c.col.end);
+			let rep;
+			if (!before.trim() && !after.trim()) rep = out.slice(c.row.start, c.col.end) + "\n" + box + "\n" + out.slice(colClose.start, rowClose.end);
+			else rep = (before.trim() ? out.slice(c.row.start, c.col.end) + before.replace(/\s+$/, "") + "\n</div>\n</div>\n<div class=\"row\">\n" : rowTag + "\n")
+				+ colTag + "\n" + box + "\n</div>\n</div>"
+				+ (after.trim() ? "\n<div class=\"row\">\n" + colTag + "\n" + after.replace(/^\s+/, "") + (/\n$/.test(after) ? "" : "\n") + out.slice(colClose.start, rowClose.end) : "");
+			out = out.slice(0, c.row.start) + rep + out.slice(rowClose.end);
+			if (run && typeof run.AddNote === "function")
+				run.AddNote("info", "ContentConverter", `Page ${page?.lessonLabel ?? "?"}: the writer's dropbox button and the hand-in text before it ("${learner.slice(0, 60)}") boxed as activity ${id} (free_dropbox_box).`);
+		}
+		return out;
+	}
+
 	/** Half two, THE PAIRING POST-PASS (the dropbox-postpass
 	 *  sibling): on a page whose tile row was actually emitted, the Nth tile's
 	 *  panel — the activity box carrying the Nth anchor's number= — gains the
@@ -10856,7 +11094,7 @@ class ContentConverter {
 			// Env toggle: ALLEXTVID_OFF
 			if (it._extLinkButton) {
 				const ba = it.blackAfter ?? "";
-				const vurl = it.block?.links?.[0]?.target ?? (ba.match(/https?:\/\/[^\s\]]+/)?.[0] ?? "");
+				const vurl = MediaBuilder.ItemOwnLink(it, "video") ?? it.block?.links?.[0]?.target ?? (ba.match(/https?:\/\/[^\s\]]+/)?.[0] ?? "");
 				const vlabel = ba.replace(/https?:\/\/[^\s\]]+/g, "").replace(/\*/g, "").trim();
 				if (vurl) {
 					const eb = tpl.buttons["external link button"];
@@ -10944,7 +11182,7 @@ class ContentConverter {
 				run.AddNote("info", "ContentConverter", `[engagement quiz button] → the KB's anchored "Go to quiz" button + To Do note (kb_form).`);
 				return out;
 			}
-			let url = it.block?.links?.[0]?.target
+			let url = MediaBuilder.ItemOwnLink(it) ?? it.block?.links?.[0]?.target
 				?? (it.blackAfter.match(/https?:\/\/[^\s\]]+/)?.[0] ?? "");
 			// a [button] whose destination is a VIDEO is the gold's embedded video,
 			// not a link button — "[Button] Play video" + "[video link] URL", "[Button: youtube-url]",

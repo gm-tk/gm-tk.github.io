@@ -102,7 +102,12 @@ class InteractiveBuilder {
 			// its reads; restored in `finally` before anything else sees the bundle. A member the builder never
 			// read cannot be in the build — the exact "un-consumed" set #withMembers needs (see #trackMembers).
 			const track = this.#trackMembers({ bundle, type, templates });
+			// an [image] cell whose stock address is a hyperlink on its words reads as the typed form — prepared here,
+			// applied only on a second pass when the widget builds without it (#dispatchWithRelink)
+			const relink = this.#cellRewrites(bundle, templates, type);
 			try {
+			const dispatch = () => {
+			let html = null;
 			switch (type) {
 				// ---- easy widgets -------------------------
 				// `hint` and `hintSlider` are DIFFERENT elements (ONE click-to-reveal
@@ -197,7 +202,11 @@ class InteractiveBuilder {
 				default:
 					return null; // type has a template but no code case yet
 			}
-			} finally { track?.restore(); }
+			return html;
+			};
+			html = this.#dispatchWithRelink(bundle, dispatch, relink);
+			} finally { track?.restore(); relink?.restore(); }
+			if (html && relink?.used) html = relink.clean(html);
 
 			// A builder may still decline (null) if the captured data did not fit.
 			// the generic MEMBERS rule: a built widget replaces the whole captured bundle,
@@ -491,6 +500,204 @@ class InteractiveBuilder {
 	 *
 	 * @returns {{touched: boolean[], tablesRead: function(): boolean, restore: function(): void}|null}
 	 */
+	/**
+	 * A WIDGET'S IMAGE CELL TAKES THE ADDRESS ON ITS OWN WORDS. The writer tags a table cell [image] and types the
+	 * picture's name with its stock address as a hyperlink on the words. A table block carries its hyperlinks apart from
+	 * the cell text (block.links, {text, target}), so the builders received the words alone: a flip card's face showed
+	 * the stock page's title as learner text (ENGI405 2.0's «Red Apple With Leaf … Stock Photo - Download Image Now - …
+	 * - iStock») and the picture was lost. Every builder already reads the typed form («[image] name https://…gm123…»),
+	 * so for the one build each table cell that carries the image marker and no address of its own gets the target of
+	 * the block's hyperlink whose words stand inside it, inserted right after those words. The edited cells are
+	 * restored when the build ends (the caller's finally), so the hand-off box, the members rule and every other reader
+	 * see the cells as captured. Data interactive_builders._image_cell_link; env WIDGETIMGLINK_OFF.
+	 * @returns {{restore: function}|null}
+	 */
+	static #imageCellLinks(bundle, templates) {
+		const cfg = templates?._image_cell_link;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "WIDGETIMGLINK_OFF"]) return null;
+		const blocks = new Set();
+		for (const m of (bundle?.memberItems ?? [])) if (m && m.type === "table" && m.block && Array.isArray(m.block.rows)) blocks.add(m.block);
+		for (const t of (bundle?.tables ?? [])) if (t && Array.isArray(t.rows)) blocks.add(t);
+		if (!blocks.size) return null;
+		const markRe = new RegExp(cfg.marker_pattern, "i"), hostRe = new RegExp(cfg.host_pattern, "i");
+		const genericRe = cfg.generic_words_pattern ? new RegExp(cfg.generic_words_pattern, "i") : null;
+		const segRe = new RegExp(cfg.segment_separator ?? "\\s/\\s", "g");
+		const min = cfg.min_text_chars ?? 4;
+		// the cell with its red spans (the writer's developer instructions) and bracketed tags blanked to spaces of the
+		// same length, so a link's words are matched only where they are the cell's own learner words and the index
+		// found is the index in the cell itself
+		const mask = (s) => s.replace(/\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu, (m) => " ".repeat(m.length))
+			.replace(/\[[^\]]*\]/g, (m) => " ".repeat(m.length));
+		const edits = [], undo = [], injected = new Set();
+		const restore = () => { for (const [row, c, v] of undo.reverse()) row[c] = v; undo.length = 0; };
+		const apply = () => { for (const [row, c, from, to] of edits) if (row[c] === from) { undo.push([row, c, from]); row[c] = to; } };
+		try {
+			for (const b of blocks) {
+				const links = (b.links ?? []).filter((l) => {
+					const t = String(l?.text ?? "").trim();
+					return l && hostRe.test(String(l.target ?? "")) && t.length >= min && !(genericRe && genericRe.test(t));
+				});
+				if (!links.length) continue;
+				for (const row of b.rows) {
+					if (!Array.isArray(row)) continue;
+					for (let c = 0; c < row.length; c++) {
+						const cell = row[c];
+						if (typeof cell !== "string" || !markRe.test(cell) || /https?:\/\//i.test(cell)) continue;
+						const masked = mask(cell);
+						const hit = links.find((l) => masked.includes(String(l.text).trim()));
+						if (!hit) continue;
+						// the address goes at the END of the line segment that holds the words (never mid-sentence)
+						const at = masked.indexOf(String(hit.text).trim());
+						segRe.lastIndex = at;
+						const sm = segRe.exec(cell);
+						const end = sm ? sm.index : cell.replace(/\s+$/, "").length;
+						const url = String(hit.target).trim();
+						injected.add(url);
+						edits.push([row, c, cell, cell.slice(0, end) + " " + url + cell.slice(end)]);
+					}
+				}
+			}
+		} catch (e) { return null; }
+		if (!edits.length) return null;
+		// an inserted address a builder printed as a link or as text instead of reading it as the picture is removed, so
+		// such a cell ships as before (the picture's name) and never shows the address
+		const clean = (html) => {
+			let out = String(html ?? "");
+			for (const u of injected) {
+				const e = u.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/&/g, "(?:&|&amp;)");
+				out = out.replace(new RegExp(`\\s*<a\\b[^>]*href="${e}"[^>]*>[\\s\\S]*?</a>`, "g"), "")
+					.replace(new RegExp(`(>[^<]*?)\\s*${e}`, "g"), "$1");
+			}
+			return out;
+		};
+		return { apply, restore, clean, used: false };
+	}
+
+	/**
+	 * The addresses decide a widget's PICTURES, never whether it builds: the type dispatch runs first on the cells as
+	 * captured; only when that builds does it run again, from the same starting state, with the addresses applied — a
+	 * widget the cells alone cannot build stays the hand-off box (its other content was never judged), and a second
+	 * pass that declines keeps the first build and its state. The bundle's own properties (the flags builders set,
+	 * bundle.instructions) are snapshotted around each pass so neither pass sees the other's.
+	 */
+	/**
+	 * The second pass's cell rewrites, combined: the image cells' addresses (#imageCellLinks) and the cells' Word-numbered
+	 * steps (#numberedCellSteps). One object with apply / restore / clean, or null when neither has an edit.
+	 */
+	static #cellRewrites(bundle, templates, type) {
+		const img = this.#imageCellLinks(bundle, templates);
+		const parts = [img, this.#numberedCellSteps(bundle, templates, type)].filter(Boolean);
+		if (!parts.length) return null;
+		// the picture addresses may build a widget the cells as captured cannot (never the numbering alone)
+		const ic = templates?._image_cell_link;
+		const mayBuild = !!img && !!ic?.may_build && ic.may_build.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[ic.may_build.env ?? "WIDGETIMGBUILD_OFF"]);
+		const setOf = (ps) => ({
+			hasImage: ps.includes(img),
+			apply() { for (const p of ps) p.apply(); },
+			restore() { for (const p of ps.slice().reverse()) p.restore(); },
+			accepts(html, html0) { return ps.every((p) => (p.accepts ? p.accepts(html, html0) : true)); },
+			clean(html) { return ps.reduce((h, p) => (p.clean ? p.clean(h) : h), html); },
+		});
+		const sets = [setOf(parts), ...(parts.length > 1 ? parts.map((p) => setOf([p])) : [])];
+		return {
+			used: false,
+			chosen: null,
+			mayBuild,
+			candidates() { return sets; },
+			restore() { for (const s of sets) s.restore(); },
+			clean(html) { return this.chosen ? this.chosen.clean(html) : html; },
+		};
+	}
+
+	/**
+	 * A BUILT WIDGET KEEPS THE WRITER'S NUMBERED STEPS. A table cell's Word list reaches the builders as «• » lines
+	 * whichever kind the writer chose, so a click-drop panel, an accordion pane or a flip card's back rendered the
+	 * writer's NUMBERED steps as a bulleted list. The table block records each cell's Word-numbered items
+	 * (block.cellNumbered[row][cell], «• » kept — the record TablesAndGrids.cellNumberedParts reads for layout grids). For
+	 * the second pass of a build (never deciding whether it builds), each such item's «• » becomes «1. », the typed form
+	 * the shared renderer makes an <ol>. Widget types the data excludes (a carousel's captions — the gold keeps
+	 * bullets there) are left alone. Data interactive_builders._cell_numbered_steps; env WIDGETCELLOL_OFF.
+	 * @returns {{apply: function, restore: function}|null}
+	 */
+	static #numberedCellSteps(bundle, templates, type) {
+		const cfg = templates?._cell_numbered_steps;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "WIDGETCELLOL_OFF"]) return null;
+		if ((cfg.exclude_types ?? []).includes(type)) return null;
+		const blocks = new Set();
+		for (const m of (bundle?.memberItems ?? [])) if (m && m.type === "table" && m.block && Array.isArray(m.block.rows)) blocks.add(m.block);
+		for (const t of (bundle?.tables ?? [])) if (t && Array.isArray(t.rows)) blocks.add(t);
+		const unred = (x) => String(x ?? "").replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "").trim();
+		const joiner = cfg.joiner ?? " / ";
+		const edits = [], undo = [];
+		for (const b of blocks) {
+			const all = b.cellNumbered;
+			if (!Array.isArray(all) || all.length !== b.rows.length) continue;
+			b.rows.forEach((row, r) => {
+				if (!Array.isArray(row) || !Array.isArray(all[r]) || all[r].length !== row.length) return;
+				row.forEach((cell, c) => {
+					const nums = all[r][c];
+					if (typeof cell !== "string" || !Array.isArray(nums) || !nums.length) return;
+					const set = new Set(nums.map(unred));
+					const parts = cell.split(joiner);
+					let hit = false;
+					const out = parts.map((p) => { if (set.has(unred(p)) && /^\s*•\s+/.test(p)) { hit = true; return p.replace(/^(\s*)•\s+/, "$11. "); } return p; });
+					if (hit) edits.push([row, c, cell, out.join(joiner)]);
+				});
+			});
+		}
+		if (!edits.length) return null;
+		// a builder that does not read the typed number shows it as text («1. How many weeks …» in a quiz question, «/ 1.
+		// You are the bully. / 1. …» in a speech bubble): the build is refused when any rewritten step stands in its
+		// visible text gains a typed «1. » that the build without the rewrite does not carry (the step's own words may
+		// carry the writer's red answer, so the test is the typed number itself, anywhere in the visible text)
+		const plainOf = (h) => String(h ?? "").replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ");
+		const typedSteps = (h) => (plainOf(h).match(/(?:^|[\s/>])1\.\s/g) ?? []).length;
+		return {
+			apply() { for (const [row, c, from, to] of edits) if (row[c] === from) { undo.push([row, c, from]); row[c] = to; } },
+			restore() { for (const [row, c, v] of undo.reverse()) row[c] = v; undo.length = 0; },
+			accepts(html, html0) { return typedSteps(html) <= typedSteps(html0); },
+		};
+	}
+
+	static #dispatchWithRelink(bundle, dispatch, relink) {
+		if (!relink) return dispatch();
+		const s0 = this.#bundleState(bundle);
+		const html0 = dispatch();
+		// a widget the cells as captured cannot build may still build from the rewrites — only when the data allows it
+		// and only with a set whose every rewrite accepts the build (relink.mayBuild: _image_cell_link.may_build)
+		if (html0 === null && !relink.mayBuild) return null;
+		const s1 = this.#bundleState(bundle);
+		// each candidate set of rewrites in turn (all of them, then each alone): the first whose build succeeds and that
+		// every one of its rewrites accepts (a rewrite may refuse a build — #numberedCellSteps refuses one that shows its
+		// «1. » as text) is kept; none → the first build and its state
+		for (const set of relink.candidates()) {
+			if (html0 === null && !set.hasImage) continue;
+			this.#bundleRestore(bundle, s0);
+			let html1 = null;
+			set.apply();
+			try { html1 = dispatch(); } finally { set.restore(); }
+			if (html1 !== null && set.accepts(html1, html0 ?? "")) { relink.used = true; relink.chosen = set; return html1; }
+		}
+		this.#bundleRestore(bundle, s1);
+		return html0;
+	}
+
+	/** The bundle's own property descriptors (getters untouched), each array value copied. */
+	static #bundleState(bundle) {
+		const d = Object.getOwnPropertyDescriptors(bundle);
+		for (const k of Object.keys(d)) if (Array.isArray(d[k].value)) d[k] = { ...d[k], value: d[k].value.slice() };
+		return d;
+	}
+
+	/** Put the bundle back to a #bundleState snapshot: added properties removed, every recorded one re-defined. */
+	static #bundleRestore(bundle, d) {
+		for (const k of Object.keys(Object.getOwnPropertyDescriptors(bundle))) if (!(k in d)) delete bundle[k];
+		for (const [k, desc] of Object.entries(d)) Object.defineProperty(bundle, k, Array.isArray(desc.value) ? { ...desc, value: desc.value.slice() } : desc);
+	}
+
 	static #trackMembers({ bundle, type, templates }) {
 		const cfg = templates?._members_rule;
 		if (!cfg || cfg.enabled === false || cfg.consumption !== "read") return null;
@@ -9934,7 +10141,7 @@ class InteractiveBuilder {
 			for (const cells of groups) {
 				const parts = [];
 				for (const cell of cells) {
-					const got = this.#carCellParts(cell, { bundle, tpl, cfg, mv, rich, idRe, inline });
+					const got = this.#carCellParts(cell, { bundle, tpl, cfg, mv, rich, idRe, inline, links: item.block?.links });
 					if (got === null) return null;                   // red instruction / unreadable cell
 					parts.push(...got);
 				}
@@ -10028,7 +10235,7 @@ class InteractiveBuilder {
 	 * @param {object} ctx - bundle / tpl / cfg / mv / rich / idRe / inline
 	 * @returns {Array<object>|null} the parts, or null to decline the whole build
 	 */
-	static #carCellParts(cell, { bundle, tpl, cfg, mv, rich, idRe }) {
+	static #carCellParts(cell, { bundle, tpl, cfg, mv, rich, idRe, links }) {
 		let raw = String(cell ?? "");
 		if (!raw.trim()) return [];
 		// RED TEXT IN A CELL IS NOT AUTOMATICALLY AN INSTRUCTION. In this dialect the
@@ -10057,8 +10264,22 @@ class InteractiveBuilder {
 		if (cfg.dangling_marker_repair) {
 			raw = raw.replace(new RegExp(cfg.dangling_marker_repair, "gi"), "[$1] ");
 		}
-		const url = this.#cellMediaUrl(cell) || (raw.match(/https?:\/\/[^\s\]"<>]+/)?.[0] ?? "");
+		let url = this.#cellMediaUrl(cell) || (raw.match(/https?:\/\/[^\s\]"<>]+/)?.[0] ?? "");
 		const kind = (raw.match(new RegExp(cfg.media_marker_pattern ?? "\\[\\s*(image|video|audio|caption|embed)[^\\]]*\\]", "i")) || [])[1];
+		// A CAROUSEL IMAGE CELL TAKES THE ADDRESS ON ITS OWN WORDS. A table block carries its hyperlinks apart from the
+		// cell text, so «[image] chicken life cycle» — the stock address a hyperlink on the words — reached this point with
+		// no address and shipped as the name alone. For an [image] cell with no address in its text, the block's hyperlink
+		// whose words stand inside the cell gives the picture's address. Data table_slides.image_cell_link; env CARIMGLINK_OFF.
+		const icl = cfg.image_cell_link;
+		if (!url && /^image$/i.test(kind ?? "") && icl && icl.enabled !== false && Array.isArray(links) && links.length
+			&& !(typeof process !== "undefined" && process.env && process.env[icl.env ?? "CARIMGLINK_OFF"])) {
+			const words = this.#cellText(raw).replace(/\s+/g, " ").trim();
+			const hit = links.find((l) => {
+				const t = String(l?.text ?? "").replace(/\s+/g, " ").trim();
+				return t.length >= (icl.min_text_chars ?? 3) && /^https?:\/\//i.test(String(l?.target ?? "").trim()) && words.includes(t);
+			});
+			if (hit) url = String(hit.target).trim();
+		}
 		const isVideo = url && (idRe.test(url) || this.#carouselVideoUrlOk(url, rich));
 		// EVERY bracketed marker comes out of the visible text, not just the media one:
 		// the writer brackets media-list references beside it ("[Item 64] [Image] lamp",

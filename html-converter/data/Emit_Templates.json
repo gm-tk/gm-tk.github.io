@@ -777,6 +777,13 @@
 				"inspan": "^\\s*\\[\\s*caption\\s*\\d*\\s*\\]\\s*(\\S[\\s\\S]*)$",
 				"_doc": "Three widenings of the caption_text branch: (A) 'head' accepts the writer's NUMBER — [caption 2], as in SCFUN01; (C) 'inspan' takes the caption words riding the span itself (original case from the raw span text) — HIS1007, HIS1008; (B) a bare head with an empty tail takes the NEXT black item WHOLE as the caption (the human ships the whole item as ONE captionText — HIS1005-4.0/-9.0 verbatim, newlines as <br>) and consumes it — SSFUN05, HIS1005, HIS1006, HIS1007, HIS1008. Deliberately NOT captions (the head pattern fails them BY CONSTRUCTION): [Caption:] + [Caption for the map] (HIS1001 — the human ships a PLAIN <p>/<h4>, not captionText) and [caption hover] (OSOH101 — the human builds a carousel caption). Env CAPTIONWIDE_OFF turns off the widening alone (the exact-bracket + blackAfter path unchanged); CAPTIONTEXT_OFF turns off the whole branch."
 			},
+			"keep_marks": {
+				"_doc": "A CAPTION KEEPS THE WRITER'S BOLD. The caption words were rendered with every '*' stripped, so the writer's part-bold words shipped plain (HIS1005 9.0 / HIS1007 3.0 «Each **STATE** has its own version …», JPN1004 5.0's bolded 下（した）— the human keeps all three). On: a wrapper around the WHOLE caption is still stripped (a caption typed all in bold stays plain, as before) and the inner marks listed in 'keep' render as the body text's do. Italic is not kept: measured on the changed captions the human keeps the writer's italic title in 1 caption and drops it in 5 (ANZH203, HIS1005, HIS1007, SSFUN05) — the human's own form; 'links' (the item's own hyperlinks woven) is off for the same reason (1 plain, 2 with no human caption to compare).",
+				"enabled": true,
+				"env": "CAPMARKS_OFF",
+				"keep": ["bold"],
+				"links": false
+			},
 			"_doc": "A FREE-BODY [caption] (outside any interactive) is the writer's image caption; the human ships <p class=\"captionText\">…</p> (as in SCCH302-02). 'caption' stays an alias of the data-marker SUBTAG, so inside widget bundles nothing changes (carousel/flipCard captions etc — most [caption] tags are widget members); this rule fires ONLY at the orphan-sub-tag branch (which by definition is outside every interactive), replacing the 'Orphan sub-tag [data marker]' red flag + plain <p> with the captionText paragraph. The match is the EXACT bare bracket ([caption] and nothing else in the span) so a caption marker carrying extra instruction text still surfaces as a flag. Env CAPTIONTEXT_OFF turns it off."
 		},
 		"cs_video_marker": {
@@ -1084,6 +1091,38 @@
 			"env": "MEDIAITEMVIDEO_OFF",
 			"aliases": ["insert media item", "media item", "insert item"],
 			"host_pattern": "youtube\\.com/(?:watch\\?|shorts/|embed/|live/)|youtu\\.be/|vimeo\\.com/(?:video/)?\\d"
+		},
+		"inline_format_request": {
+			"_doc": "A FORMATTING REQUEST INSIDE A SENTENCE IS APPLIED, NOT A PARAGRAPH BREAK. The writer types a red request in the middle of a sentence — 'Wana qualities are how [bold the word how] we do the movement …' (ARFUN03), 'explore autumn [bold the word autumn] using movement.' (CEDO202) — and the tag item cut the sentence into two paragraphs while the request rendered nothing (274 such spans / 33 modules). The human keeps one sentence and applies the request ('are <b>how</b> we do'). A tag item whose words match request_pattern (bold / italic, then the words to mark), between black text that does not end a sentence (before_pattern) and black text that continues it (after_pattern), rejoins the sentence; the named words (max_target_words) take the mark from 'marks' when they stand within window_chars of the request, outside any existing mark. Named words not found → the item is left alone.",
+			"enabled": true,
+			"env": "FMTREQ_OFF",
+			"request_pattern": "^\\[\\s*(bold|italic|italici[sz]e)\\b(?:\\s+(?:the\\s+)?(?:words?|phrase|text))?\\s*[:\\-–]?\\s*(.+?)\\s*\\]?$",
+			"bare_request_pattern": "^\\[\\s*(?:bold|italic|italici[sz]e)\\s*\\]?$",
+			"bare_after_pattern": "^\\s*(?:\\*{1,2}[\\p{L}\\p{N}]|[.,;:!?)’'\"]|\\p{Ll})",
+			"_doc_bare": "A BARE request ('[bold]', BLL262 / BLLR201 / ENGC206 / ENGS404 / PHE1003) names no words, and the human applies it to the next word, the next two, or none — so the sentence is only rejoined (the split is never the human's form), no mark guessed.",
+			"max_target_words": 6,
+			"window_chars": 60,
+			"marks": { "bold": "**", "italic": "*" },
+			"more_forms": {
+				"_doc": "A FORMATTING REQUEST'S OTHER FORMS ARE READ TOO. The PAIR '[bold] Main clause 1: [end bold] Hokianga Harbour is wide …' (WJFUN304, WJFUN208) names its own words: a bare opening request (bare_request_pattern) followed straight away by a closing one (end_pattern) in the same paragraph marks the words between them (at most max_pair_words; words the writer marked already keep the writer's mark) and drops the closing request. A wider bare vocabulary (bare_pattern: '[emphasise text]', '[emphasise/italisise text]' — XGF9002 / 9003 / 9004 —, '[end bold]', '[italics]', '[unbold]', '[bold text]') only rejoins the sentence, like '[bold]'; after_pattern also lets the sentence run on into the writer's ALL-CAPS word ('starts with a [Bold] TITLE – this tells us …', ENGC206).",
+				"enabled": true,
+				"env": "FMTREQMORE_OFF",
+				"end_pattern": "^\\[\\s*end\\s+(?:bold|itali[cs]s?)\\s*\\]?$",
+				"bare_pattern": "^\\[\\s*(?:end\\s+(?:bold|itali[cs]s?)|un-?bold|itali[cs]s|(?:bold|itali[cs]i[sz]e)\\s+text|emphasi[sz]e(?:\\s*/\\s*itali[cs]?i[sz]e)?(?:\\s+(?:the\\s+)?text)?)\\s*\\]?$",
+				"after_pattern": "^\\s*(?:\\*{1,2}[\\p{L}\\p{N}]|[.,;:!?)’'\"]|\\p{Ll}|\\p{Lu}{2,}(?!\\p{Ll}))",
+				"max_pair_words": 12
+			}
+		},
+		"item_own_link": {
+			"_doc": "A TAGGED ITEM TAKES ITS OWN LINK, NOT THE LINE'S FIRST. A writer can put several tagged items on one line ('[Button: Virtual drumming] [Button: Incredibox demo]', '[external link] Pixabay … [external link] Unsplash', an [image] and a [video]); all their hyperlinks live in the paragraph's one block.links list, and every item took links[0], so the second button sent the learner to the first one's address. When the block holds two or more links with different targets, an item takes the link whose words (min_text_chars or more) stand in its own words (it.blackAfter); with no such link, the caller's own reading stands.",
+			"enabled": true,
+			"env": "ITEMOWNLINK_OFF",
+			"min_text_chars": 3,
+			"kind_patterns": {
+				"image": "istockphoto|shutterstock|gettyimages|unsplash|pixabay|pexels|\\.(?:jpe?g|png|gif|webp|svg)(?:[?#]|$)",
+				"video": "youtube\\.com|youtu\\.be|vimeo\\.com"
+			},
+			"_doc_guards": "The line's FIRST link stays the reading whenever its words are this item's own; a media item takes only a link of its own kind (kind_patterns — an image a picture host or file, a video a video host; a kind with no pattern is never re-read; a button takes any address). Without these, a garbled paste running two addresses together (HIS1002 10.0) and an image whose own words held another link (SSOG301 2.0) lost their right address."
 		},
 		"bare_stock_url_image": {
 			"_doc": "THE BARE STOCK-PHOTO URL IS AN IMAGE. A body paragraph whose whole content is one stock-photo URL (the writer's image reference typed on its own line — after a description, after an [image] whose own line already held one, under an unknown bracket) must not show as a visible link: MediaBuilder's standing contract is that the pasted iStock URL is the asset reference, never visible text, and the human build shows that image. Outside the un-built hand-off boxes (the developer's raw copy) the paragraph becomes the image in the run's mode (image.mode_P / mode_D + MediaBuilder.FinishImg's alt and loading=lazy); when the page already shows that image (its iStock-<id> label / filename) the paragraph is dropped. Env STOCKURLIMG_OFF.",
@@ -1668,6 +1707,18 @@
 			"max_words": 40,
 			"bracket_sentence": true,
 			"box_open": "<div class=\"activity\" number=\"{id}\">\n<div class=\"row\">\n<div class=\"col-12\">",
+			"box_close": "</div>\n</div>\n</div>"
+		},
+		"free_dropbox_box": {
+			"_doc": "A FREE DROPBOX BUTTON GETS ITS OWN ACTIVITY BOX. The writer's dropbox button ('Upload to dropbox', 'Go to dropbox') ends an activity, and that activity carries the dropbox modifier (KB constraint 43); the human build never leaves it outside a box. When the writer's [Body] or [Alert] has closed the box before it, or the page has no box at all, the button and the hand-in text before it ship as loose column content. A page post-pass beside journal_instruction_box: a dropbox button that is a direct child of a content column, outside every activity, alert or widget, takes the run of the column's own children that ends at it - paragraphs, at most one heading (it opens the run), the writer's journal heading or button, the writer's notes - when that run carries learner text with hand-in wording (handin_pattern) within max_words; the run, the button and the To Do note after it are wrapped in box_open / box_close, the row split around it, and #pageNumberNormalise letters the box with the rest. A column with a side column is left alone. A button with no learner text before it (after an alert or a widget) is left as it is.",
+			"enabled": true,
+			"env": "FREEDBXBOX_OFF",
+			"button_label_pattern": "^\\s*(?:Upload|Go|Submit|Send)\\s+(?:to|your\\s+(?:journal|work)\\s+to)\\s+(?:the\\s+|your\\s+)?drop\\s?box\\s*\\.?\\s*$",
+			"handin_pattern": "\\b(?:drop\\s?box|upload|share (?:your|all|it)|check\\s?-?point|ka pai|kai pai|ka rawe|you have (?:now )?(?:successfully )?completed|congratulations|teacher[- ]marked|submit)\\b",
+			"max_words": 150,
+			"title_level": 3,
+			"last_box_only": true,
+			"box_open": "<div class=\"activity dropbox\" number=\"{id}\">\n<div class=\"row\">\n<div class=\"col-12\">",
 			"box_close": "</div>\n</div>\n</div>"
 		},
 		"standalone_widget_box": {
@@ -2266,6 +2317,29 @@
 			"exclude_target_pattern": "youtu\\.?be|youtube\\.com|vimeo\\.com|istockphoto|shutterstock|gettyimages|alamy|stock\\.adobe|unsplash|pexels|dreamstime|123rf|images\\.app\\.goo\\.gl|google\\.[a-z.]+/(?:imgres|search)|/media/file|drive\\.google|docs\\.google|sharepoint\\.com|desire2learn|safelinks|canva\\.com|claude\\.site|\\.(?:jpe?g|png|gif|svg|webp|mp3|mp4|m4v|wav)(?:[?#]|$)",
 			"_doc_exclude": "A picture / stock / developer-asset target (a picture's source page, a Drive / SharePoint / D2L asset, a Google image or search result, a media file) is the writer's pointer for the developer — the human rarely links these inside or beside widgets — so it is never woven as a learner link.",
 			"_doc": "KB constraint 75 ('inline → anchor') FOR BUILT WIDGETS. ContentConverter.#interactivePlaceholder hands the widget builders renderInline / renderBlock callbacks; the hover-definition stitch is deliberately off inside widgets, and without this every writer inline link inside a built widget — or in the prose the members rule renders around it — would lose its href (AGH1009-7.0's 'Yara N-Sensor' beside a carousel). On: the callbacks weave the bundle's OWN hyperlinks (every opener / member item's and captured table's block.links; the free-body weave — exact phrase, first occurrence per line, never inside an <a>); the hover stitch stays off. Env WIDGETLINKS_OFF turns it off."
+		},
+		"_cell_numbered_steps": {
+			"_doc": "A BUILT WIDGET KEEPS THE WRITER'S NUMBERED STEPS. A table cell's Word list reaches the widget builders as '• ' lines whichever kind the writer chose, so a click-drop panel, an accordion pane or a flip card's back rendered the writer's NUMBERED steps as a bulleted list (the census F-LIST numbered-as-bullets row's widget half). The table block records each cell's Word-numbered items (block.cellNumbered, the record the layout-grid rule reads). In the second pass of a build — run only when the cells as captured already build, so this never decides whether a widget builds — each such item's '• ' becomes '1. ', the typed form the shared renderer makes an <ol>. A carousel is excluded (exclude_types): the human keeps its captions' bullets. The in-cell line joiner is 'joiner'.",
+			"enabled": true,
+			"env": "WIDGETCELLOL_OFF",
+			"exclude_types": ["carousel"],
+			"joiner": " / "
+		},
+		"_image_cell_link": {
+			"_doc": "A WIDGET'S IMAGE CELL TAKES THE ADDRESS ON ITS OWN WORDS. The writer tags a table cell [image] and types the picture's name with its stock address as a hyperlink on the words ('[image] __Red Apple With Leaf … Stock Photo - Download Image Now - … - iStock__'). A table block carries its hyperlinks apart from the cell text (block.links, {text, target}), so the cell reached the widget builders as the words alone: a flip card's face showed the stock page's title as learner text and an accordion panel the name, the picture lost. Every builder already reads the typed form ('[image] name https://www.istockphoto.com/…gm123…'). For the one build, each table cell carrying marker_pattern with no address of its own gets the target of the block's hyperlink whose words stand inside the cell (target matching host_pattern, the words min_text_chars or more), inserted right after those words; the cells are restored when the build ends.",
+			"enabled": true,
+			"env": "WIDGETIMGLINK_OFF",
+			"marker_pattern": "\\[\\s*(?:insert\\s+(?:an?\\s+)?)?(?:image|photo|picture)s?\\b[^\\]]*\\]",
+			"host_pattern": "istockphoto\\.com/.*(?:gm-?\\d{6,10}|/id/\\d{4,10})",
+			"min_text_chars": 4,
+			"generic_words_pattern": "^(?:(?:this|the|an?|that)\\s+)?(?:image|images|photo|photos|picture|pictures|here|link|this|istock|stock photo)$",
+			"segment_separator": "\\s/\\s",
+			"_doc_match": "The link's words must stand among the cell's OWN black words — red spans (the writer's developer instructions, whose links are references: XMES203 1.0's «[Dev team … like this image …]») and bracketed tags are masked first — and must not be a generic word (generic_words_pattern). The address is inserted at the end of the line segment (segment_separator) that holds the words, never mid-sentence; an inserted address a builder still printed as a link or as text is removed from the build, so such a cell ships exactly as before.",
+			"may_build": {
+				"_doc": "THE PICTURE ADDRESSES MAY BUILD A WIDGET WHOSE STEPS ARE RIGHT. Without this the addresses decide a widget's pictures only, never whether it builds (a widget the cells as captured cannot build stays the hand-off box). On: such a widget may build from a candidate set that carries the addresses, kept only when every rewrite in the set accepts the build — the numbered-steps rewrite refuses one that shows a typed «1. » — so the click-drops and accordions whose picture cells held their only obstacle build with their pictures and the writer's numbered steps as an <ol> (XMES203 4.0's «Track your shadow»). The numbering rewrite alone never builds a widget.",
+				"enabled": true,
+				"env": "WIDGETIMGBUILD_OFF"
+			}
 		},
 		"_members_rule": {
 			"enabled": true,
@@ -3347,6 +3421,12 @@
 					"_doc": "A MEDIA SLIDE'S CAPTION KEEPS THE CELL'S LINES (KB constraint 5: no stray markup). A prose cell is split at segment_separator (the in-cell line break), but a cell that carries a picture, a video or an audio file passed the rest of its text through whole, so the caption printed the cell's « / » joiners between the slide's title, its copy and the picture's own caption («Oil and Natural gas / New Zealand has … / Oil fields in New Zealand»). The human build gives each line its own block. The media branches' caption text is split at segment_separator into lines, which the block renderer turns into <p> / <li> inside the carousel-caption. Env CARCAPLINES_OFF.",
 					"enabled": true,
 					"env": "CARCAPLINES_OFF"
+				},
+				"image_cell_link": {
+					"_doc": "A CAROUSEL IMAGE CELL TAKES THE ADDRESS ON ITS OWN WORDS. The writer tags a cell [image] and types the picture's name with its stock address as a hyperlink on the words ('[image] __chicken life cycle__'). A table block carries its hyperlinks apart from the cell text ({text, target} in block.links), so the cell's own words reached the slide builder without the address: the slide shipped the name alone, the picture and its source lost, and the cell was listed as an asset request. For a cell whose media marker is image and whose text holds no address, the block's hyperlink whose words stand inside the cell (min_text_chars or more, an http(s) target) gives the picture's address; the image branch then names the file as for an address typed in the cell.",
+					"enabled": true,
+					"env": "CARIMGLINK_OFF",
+					"min_text_chars": 3
 				},
 				"media_marker_pattern": "\\[\\s*(image|video|audio|caption|embed)[^\\]]*\\]",
 				"dangling_marker_repair": "\\[\\s*(image|video|audio|caption|embed)\\b(?![^\\[\\]\\n]*\\])",
