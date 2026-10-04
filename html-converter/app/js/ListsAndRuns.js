@@ -1011,13 +1011,13 @@ class ListsAndRuns {
 		// the text block that closes right before a position: </p> / </li> / </hN>, optionally followed by a list close
 		const tailRe = /(<\/(?:p|li|h[1-6])>)((?:\s*<\/(?:ul|ol)>)?\s*)$/;
 		const endsInText = /(?:[^>\s]|<\/(?:a|b|i|u|em|strong|span|sup|sub)>)\s*$/;
-		const fix = (s) => {
+		const fix = (s, dropOnly = false) => {
 			let out = "", last = 0, m, hit = false;
 			blockRe.lastIndex = 0;
 			while ((m = blockRe.exec(s))) {
 				const t = textOf(m[3]);
 				if (!t) continue;
-				const merge = mergeRe.test(t);
+				const merge = !dropOnly && mergeRe.test(t);
 				if (!merge && !dropRe.test(t)) continue;
 				hit = true;
 				let head = out + s.slice(last, m.index);
@@ -1041,10 +1041,16 @@ class ListsAndRuns {
 			}
 			return hit ? out + s.slice(last) : s;
 		};
-		// carve the page into LIVE and VERBATIM zones
+		// carve the page into LIVE and VERBATIM zones — built widgets are LIVE too when inside_built_widgets is on (a lone
+		// mark is never a widget's shape); hand-off boxes, notes, scripts and styles stay verbatim. Data
+		// orphan_punctuation.inside_built_widgets; env ORPHANWIDGET_OFF.
+		const ibw = cfg.inside_built_widgets;
+		const ibwOn = !!ibw && ibw.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[ibw.env ?? "ORPHANWIDGET_OFF"]);
 		const tnl = DataService.Data.EmitTemplates?.body_region?.typed_number_list;
 		const widgets = (tnl?.verbatim_widget_classes ?? []).map((c) => String(c).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
-		const openRe = new RegExp("<div class=\"(?:cv2-interactive" + (widgets.length ? "|" + widgets.join("|") : "")
+		const carve = (src, withWidgets) => {
+		const openRe = new RegExp("<div class=\"(?:cv2-interactive" + (withWidgets && widgets.length ? "|" + widgets.join("|") : "")
 			+ ")|<p class=\"cv2-(?:note|comment)\"|<script\\b|<style\\b", "g");
 		const pieces = [];
 		let i = 0, om;
@@ -1065,11 +1071,17 @@ class ListsAndRuns {
 				const k = src.indexOf(close, j); end = k < 0 ? src.length : k + close.length;
 			}
 			if (j > i) pieces.push({ live: true, s: src.slice(i, j) });
-			pieces.push({ live: false, s: src.slice(j, end) });
+			// a built widget (not a hand-off box, a note, a script or a style) is its own zone
+			pieces.push({ live: false, widget: om[0].startsWith("<div") && !/cv2-interactive/.test(om[0]), s: src.slice(j, end) });
 			i = end; openRe.lastIndex = end;
 		}
 		if (i < src.length) pieces.push({ live: true, s: src.slice(i) });
-		return pieces.map((p) => (p.live ? fix(p.s) : p.s)).join("");
+		return pieces;
+		};
+		// inside a built widget only a DROP mark goes (a lone dash / bullet / slash — no wording): a sentence mark there may
+		// be the widget's own content (a flip card's «?» front) and stays; the widget's own hand-off boxes and notes are verbatim
+		const inWidget = (w) => carve(w, false).map((p) => (p.live ? fix(p.s, true) : p.s)).join("");
+		return carve(src, true).map((p) => (p.live ? fix(p.s) : (p.widget && ibwOn ? inWidget(p.s) : p.s))).join("");
 	};
 
 	/**
@@ -1175,6 +1187,85 @@ class ListsAndRuns {
 			if (i < src.length) pieces.push({ live: true, s: src.slice(i) });
 		}
 		return pieces.map((p) => (p.live ? p.s.replace(lone, "") : p.s)).join("");
+	};
+
+	/**
+	 * A RUN OF TYPED DASH LINES → A SEMANTIC <ul> (the typed-number list's sibling, KB constraint 42's semantic-list principle).
+	 * A writer who types «- » at the head of each line gives the extractor plain paragraphs; a run of >= min_run consecutive bare
+	 * <p> (nothing but whitespace between one </p> and the next <p>) whose text opens with lead_pattern becomes one <ul> of <li>s,
+	 * the dash removed from the paragraph's first text node (a dash bolded on its own goes with its emptied inline tag). The
+	 * verbatim zones are the typed-number list's own (hand-off boxes, notes and comments, scripts, styles, the listed built
+	 * widgets). Data: Emit_Templates body_region.typed_dash_list; env TYPEDUL_OFF.
+	 *
+	 * @param {string} html - one finished page's HTML (before the acks block)
+	 * @returns {string}
+	 */
+	static TypedDashList(html) {
+		const cfg = DataService.Data.EmitTemplates?.body_region?.typed_dash_list;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "TYPEDUL_OFF"]) return html;
+		const src = String(html);
+		if (!/<p>\s*(?:<[^>]+>\s*)*-/.test(src)) return src;   // no candidate at all
+		const leadRe = new RegExp(cfg.lead_pattern || "^\\s*-\\s+");
+		const minRun = Math.max(2, cfg.min_run ?? 2);
+		const tnl = DataService.Data.EmitTemplates?.body_region?.typed_number_list;
+		const widgets = (tnl?.verbatim_widget_classes ?? []).map((c) => String(c).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+		const openRe = new RegExp("<div class=\"(?:cv2-interactive" + (widgets.length ? "|" + widgets.join("|") : "")
+			+ ")|<p class=\"cv2-(?:note|comment)\"|<script\\b|<style\\b", "g");
+		const pieces = [];
+		{
+			let i = 0, m;
+			while ((m = openRe.exec(src))) {
+				const j = m.index;
+				let end;
+				if (m[0].startsWith("<div")) {
+					const re = /<div\b|<\/div>/g;
+					re.lastIndex = j; let depth = 0, mm; end = src.length;
+					while ((mm = re.exec(src))) {
+						depth += mm[0] === "</div>" ? -1 : 1;
+						if (depth === 0) { end = re.lastIndex; break; }
+					}
+				} else if (m[0].startsWith("<p")) {
+					const k = src.indexOf("</p>", j); end = k < 0 ? src.length : k + 4;
+				} else {
+					const close = m[0].startsWith("<script") ? "</script>" : "</style>";
+					const k = src.indexOf(close, j); end = k < 0 ? src.length : k + close.length;
+				}
+				if (j > i) pieces.push({ live: true, s: src.slice(i, j) });
+				pieces.push({ live: false, s: src.slice(j, end) });
+				i = end; openRe.lastIndex = end;
+			}
+			if (i < src.length) pieces.push({ live: true, s: src.slice(i) });
+		}
+		const P_INNER = "(?:(?!<\\/p>)[^])*";
+		const RUN_RE = new RegExp("<p>" + P_INNER + "<\\/p>(?:\\s*<p>" + P_INNER + "<\\/p>)+", "g");
+		const ITEM_RE = () => new RegExp("(<p>(" + P_INNER + ")<\\/p>)(\\s*)", "g");
+		const LEAD_HTML = /^((?:\s*<[^>]+>)*)\s*-(?:\s+|(\s*<\/(b|i|strong|em|u)>)\s*)/;
+		const stripLead = (inner) => inner.replace(LEAD_HTML, (all, open, closeTag, closeName) => {
+			if (!closeTag) return open;
+			const re = new RegExp("(\\s*<" + closeName + "(?:\\s[^>]*)?>)(?![\\s\\S]*<" + closeName + "(?:\\s[^>]*)?>)");
+			return open.replace(re, "");
+		}).replace(/^[ \t ]+/, "");
+		const isDash = (inner) => leadRe.test(inner.replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ")) && LEAD_HTML.test(inner);
+		const listify = (chunk) => chunk.replace(RUN_RE, (run) => {
+			const items = [];
+			const re = ITEM_RE(); let mm;
+			while ((mm = re.exec(run))) items.push({ html: mm[1], inner: mm[2], ws: mm[3], dash: isDash(mm[2]) });
+			let out = "", group = [];
+			const flush = () => {
+				if (group.length >= minRun) out += "<ul>\n" + group.map((g) => "<li>" + stripLead(g.inner) + "</li>").join("\n") + "\n</ul>\n";
+				else for (const g of group) out += g.html + g.ws;
+				group = [];
+			};
+			for (const it of items) {
+				if (it.dash) { group.push(it); continue; }
+				flush();
+				out += it.html + it.ws;
+			}
+			flush();
+			return out;
+		});
+		return pieces.map((p) => (p.live ? listify(p.s) : p.s)).join("");
 	};
 
 	static TypedNumberList(html) {

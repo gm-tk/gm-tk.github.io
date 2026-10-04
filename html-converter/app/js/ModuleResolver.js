@@ -640,6 +640,9 @@ class ModuleResolver {
 					`${n} further media table(s) with the template's own media-list preamble trimmed from the content (media_list_preamble.repeat_tables).`);
 			}
 		}
+		// the template's submission checklist leaves the content wherever the tail rule missed it.
+		// Data media_list_preamble.submission_checklist; env CHECKLIST_OFF.
+		run.wtBlocks = DocxExtractor.DropSubmissionChecklist(run.wtBlocks, run);
 
 		return { ok: true, wt, mediaSource };
 	};

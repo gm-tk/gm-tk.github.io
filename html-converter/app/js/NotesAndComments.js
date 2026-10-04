@@ -481,6 +481,47 @@ class NotesAndComments {
 	 * @param {string} html - the fully assembled page HTML
 	 * @returns {string} the same HTML with omit-marker residue removed
 	 */
+	/**
+	 * THE UNFILLED CONNECTIONS SAMPLE NEVER SHIPS. A section under a heading (or a bold-lead paragraph) matching
+	 * omit_template_sample.heading_pattern that still holds the template's sentinel block («Subject name») loses every block
+	 * matching block_patterns — the two sample lead sentences and the sample list — and a list it leaves empty; when no block of
+	 * the writer's own remains (developer notes do not count), the heading goes too. The section ends at the next heading, the
+	 * next bold-lead paragraph or the end of its container. Runs on the whole assembled page (menu included).
+	 * Data red_flag.omit_template_sample; env TEMPLATESAMPLE_OFF.
+	 *
+	 * @param {string} html - the fully assembled page HTML
+	 * @returns {string}
+	 */
+	static OmitTemplateSample(html) {
+		const cfg = DataService.Data.EmitTemplates.red_flag?.omit_template_sample;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "TEMPLATESAMPLE_OFF"]) return html;
+		let s = String(html ?? "");
+		if (!/connections/i.test(s)) return s;
+		const fold = (x) => String(x).replace(/<[^>]+>/g, " ").replace(/&nbsp;|&#160;/g, " ").replace(/&#39;|&rsquo;|’|‘/g, "'")
+			.replace(/&amp;/g, "&").replace(/\s+/g, " ").trim().toLowerCase();
+		const headRe = new RegExp(cfg.heading_pattern ?? "^(?:hononga\\s*\\|\\s*)?connections:?$", "i");
+		const sentRe = new RegExp(cfg.sentinel_pattern ?? "^subject name$", "i");
+		const blockRes = (cfg.block_patterns ?? []).map((p) => new RegExp(p, "i"));
+		const heads = [...s.matchAll(/<(h[1-6])\b[^>]*>([\s\S]*?)<\/\1>|<p>\s*<b>([^<]*)<\/b>\s*<\/p>/g)]
+			.filter((m) => headRe.test(fold(m[2] ?? m[3] ?? "")));
+		for (const hm of heads.reverse()) {
+			const start = hm.index + hm[0].length;
+			const rest = s.slice(start);
+			const stop = rest.search(/<h[1-6]\b|<p>\s*<b>[^<]*<\/b>\s*<\/p>|<\/div>/);
+			const end = start + (stop < 0 ? rest.length : stop);
+			let sec = s.slice(start, end);
+			const blocks = [...sec.matchAll(/<(p|li)\b([^>]*)>([\s\S]*?)<\/\1>/g)];
+			if (!blocks.some((b) => sentRe.test(fold(b[3])))) continue;
+			sec = sec.replace(/\s*<(p|li)\b([^>]*)>([\s\S]*?)<\/\1>/g, (all, tag, attrs, inner) =>
+				(!/cv2-/.test(attrs) && blockRes.some((r) => r.test(fold(inner))) ? "" : all));
+			sec = sec.replace(/\s*<(ul|ol)\b[^>]*>\s*<\/\1>/g, "");
+			const own = [...sec.matchAll(/<(p|li)\b([^>]*)>([\s\S]*?)<\/\1>/g)].some((b) => !/cv2-/.test(b[2]) && fold(b[3]));
+			s = s.slice(0, own ? start : hm.index) + sec + s.slice(end);
+		}
+		return s;
+	}
+
 	static OmitPlaceholderResidue(html) {
 		const op = DataService.Data.EmitTemplates.red_flag?.omit_placeholders;
 		if (!op || op.enabled === false) return html;

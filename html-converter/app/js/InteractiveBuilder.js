@@ -3473,6 +3473,14 @@ class InteractiveBuilder {
 				const restLines = String(kept[idx]).split("\n").slice(1);
 				body = [[lead.rest, ...restLines].filter(Boolean).join("\n"), ...kept.filter((_, i) => i !== idx)];
 			}
+			// THE CELL'S OWN LINES: the body's in-cell line breaks become lines, so the block renderer gives each its
+			// <p> / <li> instead of one paragraph with the joiner and the writer's «•» printed. Data
+			// panel_delimiters.table_cell_lines; env ACCCELLLINES_OFF.
+			const tcl = cfg.table_cell_lines;
+			if (tcl && tcl.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[tcl.env ?? "ACCCELLLINES_OFF"])) {
+				const sep = tcl.separator ?? " / ";
+				body = body.map((b) => String(b).replace(/^\s*\/\s+/, "").split(sep).map((s) => s.trim()).filter(Boolean).join("\n"));
+			}
 			const parts = [];
 			if (img) parts.push({ img });
 			for (const b of body) if (String(b).trim()) parts.push({ p: String(b) });
@@ -6025,7 +6033,13 @@ class InteractiveBuilder {
 
 		const img = [], body = [];
 		const imgRe = /istockphoto|gettyimages|\.(?:jpe?g|png|gif|webp|svg)\b|\[\s*image\b|\[IMAGE\b/i;
-		const segs = s.split(/\s\/\s|\n/).map((p) => p.trim()).filter((p) => p !== "");
+		// A CARD FACE'S LINES CARRY NO JOINER AT THEIR EDGES (a face holding two joiners in a row kept «/ » on the next
+		// line — the front's heading). Data flipCard.general_cards.face_segment_edges; env FLIPEDGE_OFF.
+		const fse = cfg.face_segment_edges;
+		const fseOn = !!fse && fse.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[fse.env ?? "FLIPEDGE_OFF"]);
+		const segs = s.split(/\s\/\s|\n/).map((p) => (fseOn ? p.trim().replace(/^(?:\/\s+)+/, "").replace(/(?:\s+\/)+$/, "") : p).trim())
+			.filter((p) => p !== "" && !(fseOn && /^[/\s]+$/.test(p)));
 		for (const seg of segs) {
 			const url = this.#cellMediaUrl(seg);
 			if (url) {
@@ -10052,6 +10066,19 @@ class InteractiveBuilder {
 		// strip the media|caption form uses.
 		const text = this.#cellText(raw).replace(/\[[^\]]*\]/g, " ")
 			.replace(/https?:\/\/[^\s\]"<>]+/g, " ").replace(/\s+/g, " ").trim();
+		// A MEDIA SLIDE'S CAPTION KEEPS THE CELL'S LINES: the caption text beside a picture / video / audio file is split
+		// at the in-cell line break as the prose branch below splits it, so the block renderer gives each line its own
+		// block instead of printing the joiners. Data table_slides.media_caption_lines; env CARCAPLINES_OFF.
+		// (A joiner left at a segment's edge goes, and a segment with no letter or digit is no line — joiners alone, or the
+		// colon a stripped marker leaves («[Image, + caption]:»): «/ / (up to 1:38)» is one line, a cell of joiners alone
+		// gives the slide no caption.)
+		const mcl = cfg.media_caption_lines;
+		const capText = mcl && mcl.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[mcl.env ?? "CARCAPLINES_OFF"])
+			? text.split(new RegExp(cfg.segment_separator ?? "\\s+/\\s+"))
+				.map((s) => s.trim().replace(/^(?:\/\s+)+/, "").replace(/(?:\s+\/)+$/, "").trim())
+				.filter((s) => /[\p{L}\p{N}]/u.test(s)).join("\n")
+			: text;
 
 		// a VIDEO cell
 		if (isVideo && (!kind || /video|embed/i.test(kind) || !text)) {
@@ -10061,26 +10088,35 @@ class InteractiveBuilder {
 				return alt ? { html: alt } : null;
 			})();
 			if (!embed) { this.#carNoteAssetRequest(bundle, null, raw, mv); return []; }
-			return text ? [embed, { p: text }] : [embed];
+			return capText ? [embed, { p: capText }] : [embed];
 		}
 		// an IMAGE cell — a url names the asset; a brief with no url is an asset request
 		if (url || /^image$/i.test(kind ?? "")) {
 			const file = this.#carImageFilename(url, tpl, mv);
-			if (!file) { this.#carNoteAssetRequest(bundle, null, raw, mv); return text ? [{ p: text }] : []; }
-			return text ? [{ img: file }, { p: text }] : [{ img: file }];
+			if (!file) { this.#carNoteAssetRequest(bundle, null, raw, mv); return capText ? [{ p: capText }] : []; }
+			return capText ? [{ img: file }, { p: capText }] : [{ img: file }];
 		}
 		// an AUDIO cell
 		if (/^audio$/i.test(kind ?? "")) {
 			const au = this.#carAudioHtml(url, raw, mv);
-			if (!au) { this.#carNoteAssetRequest(bundle, null, raw, mv); return text ? [{ p: text }] : []; }
-			return text ? [{ html: au }, { p: text }] : [{ html: au }];
+			if (!au) { this.#carNoteAssetRequest(bundle, null, raw, mv); return capText ? [{ p: capText }] : []; }
+			return capText ? [{ html: au }, { p: capText }] : [{ html: au }];
 		}
 		// a PROSE cell. The writer separates a slide's title from its copy with " / "
 		// (the media|caption convention); a SHORT leading segment titles the
 		// slide, a long one is simply the first paragraph.
 		if (!text) return [];
 		const sep = new RegExp(cfg.segment_separator ?? "\\s+/\\s+");
-		const segs = text.split(sep).map((s) => s.trim()).filter(Boolean);
+		// A PROSE SLIDE'S LINES CARRY NO JOINER AT THEIR EDGES: a cell that opens with the in-cell line break would keep
+		// «/ » on its first segment (the slide's title). Data table_slides.prose_segment_edges; env CARPROSEEDGE_OFF.
+		const pse = cfg.prose_segment_edges;
+		const pseOn = !!pse && pse.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[pse.env ?? "CARPROSEEDGE_OFF"]);
+		const segs = pseOn
+			? text.split(sep).map((s) => s.trim().replace(/^(?:\/\s+)+/, "").replace(/(?:\s+\/)+$/, "").trim())
+				.filter((s) => /[\p{L}\p{N}]/u.test(s))
+			: text.split(sep).map((s) => s.trim()).filter(Boolean);
+		if (!segs.length) return [];
 		if (segs.length > 1 && this.#carIsSlideTitle(segs[0], cfg)) {
 			return [{ h: segs[0] }, { p: segs.slice(1).join("\n") }];
 		}
@@ -12128,12 +12164,35 @@ class InteractiveBuilder {
 		// the scanner's backward absorptions unshift) renders before the button and the
 		// marker's own trailing text and later members after it.
 		let nBefore = 0;
+		let byButton = false;   // the split point was set by the writer's own dropbox [button] member
 		const push = (t) => { const s = String(t ?? "").trim(); if (s) raw.push(s); };
+		// the writer's own dropbox button IS the button this box builds; an engagement-trigger
+		// decoration joins the note. Data upload_box.button_member; env DBXBTNMEMBER_OFF.
+		const bm = cfg.button_member;
+		const bmOn = !!bm && bm.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[bm.env ?? "DBXBTNMEMBER_OFF"]);
+		const bmTags = new Set(bmOn ? (bm.button_tags ?? ["button"]) : []);
+		const bmNotes = new Set(bmOn ? (bm.note_tags ?? []) : []);
+		const bmLabel = new RegExp(bm?.label_pattern ?? "drop\\s*-?\\s*box", "i");
 		for (const m of bundle.memberItems ?? []) {
 			if (!m) continue;
 			if (m.type === "black") { push(m.text); continue; }
 			if (m.type !== "tag") return null;                    // a table or anything else → decline
 			const prim = m.parse?.primary?.tag ?? null;
+			if (prim && bmTags.has(prim)) {
+				const words = (String(m.text ?? "") + " " + String(m.blackAfter ?? "")).replace(/\s+/g, " ").trim();
+				if (!bmLabel.test(words)) return null;            // any other button → decline
+				spec.push(words);
+				nBefore = raw.length;                             // the box's button stands here
+				byButton = true;
+				continue;
+			}
+			if (prim && bmNotes.has(prim)) {
+				const w = String(m.text ?? "").replace(/\s+/g, " ").trim();
+				if (w) spec.push(w);
+				push(m.blackAfter);
+				continue;
+			}
 			if (prim && !delims.includes(prim) && !textTags.has(prim)) return null;   // a foreign widget's piece
 			if (prim && delims.includes(prim)) {
 				const own = String(m.text ?? "");
@@ -12143,13 +12202,14 @@ class InteractiveBuilder {
 				const w = own.replace(/\s+/g, " ").trim();
 				if (w) spec.push(w);                              // every bracket's words reach the note
 				nBefore = raw.length;                             // text so far precedes this marker
+				byButton = false;
 			} else if (!prim) {
 				const w = String(m.text ?? "").replace(/\s+/g, " ").trim();
 				if (w) spec.push(w);
 			}
 			push(m.blackAfter);
 		}
-		return { opener, spec, raw, nBefore };
+		return { opener, spec, raw, nBefore, byButton };
 	}
 
 	/** Would the upload box build this bundle's Upload-to-dropbox button?
@@ -12157,6 +12217,16 @@ class InteractiveBuilder {
 	 *  hold (see #ddUploadBoxScan). Pure. */
 	static UploadBoxCandidate(bundle, ddTpl) {
 		return this.#ddUploadBoxScan(bundle, ddTpl) !== null;
+	}
+
+	/** A STANDALONE dropbox activity: the upload box builds, the writer's dropbox opener is the bundle's
+	 *  first member and the writer's own text stands before the writer's own dropbox [button] (nBefore > 0, set
+	 *  by that button member, not by a second dropbox marker) — the human gives it
+	 *  its own `activity dropbox` box (ContentConverter, activity_wrapper.standalone_dropbox_box). Pure. */
+	static UploadBoxStandalone(bundle, ddTpl) {
+		const scan = this.#ddUploadBoxScan(bundle, ddTpl);
+		if (!scan || !(scan.nBefore > 0) || !scan.byButton) return false;
+		return (bundle.memberItems ?? []).find(Boolean) === scan.opener;
 	}
 
 	/**

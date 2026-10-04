@@ -797,16 +797,20 @@ class PageAssembler {
 				// Data: Emit_Templates body_region.typed_number_list; env TYPEDOL_OFF.
 				content: HtmlFormatter.Indent(
 					(() => {
+						// the unfilled Connections sample leaves the page (NotesAndComments.OmitTemplateSample;
+						// red_flag.omit_template_sample; env TEMPLATESAMPLE_OFF) — beside the placeholder-residue pass.
 						const tidied = NotesAndComments.TidyDeveloperNotes(
-							NotesAndComments.OmitPlaceholderResidue(html));
+							NotesAndComments.OmitTemplateSample(NotesAndComments.OmitPlaceholderResidue(html)));
 						// Adjacent sibling lists join into one (body_region.merge_adjacent_lists; env ULMERGE_OFF) — after TypedNumberList, before the link-text pass.
 						// A bare list-number paragraph leaves the page (body_region.lone_list_number; env LONENUM_OFF) — after TypedNumberList.
 						// An orphan punctuation block merges onto the text before it or leaves (ListsAndRuns.OrphanPunctuation;
 						// body_region.orphan_punctuation; env ORPHANPUNCT_OFF) — after the emoji pass, before TypedNumberList.
-						const deEmoji = (seg) => ListsAndRuns.MergeAdjacentLists(ListsAndRuns.LoneListNumbers(ListsAndRuns.TypedNumberList(ListsAndRuns.OrphanPunctuation(ListsAndRuns.EmojiStrip(seg, () =>
+						// A run of typed «- » lines becomes a <ul> (ListsAndRuns.TypedDashList; body_region.typed_dash_list; env
+						// TYPEDUL_OFF) — beside TypedNumberList, before the adjacent-list join.
+						const deEmoji = (seg) => ListsAndRuns.MergeAdjacentLists(ListsAndRuns.LoneListNumbers(ListsAndRuns.TypedDashList(ListsAndRuns.TypedNumberList(ListsAndRuns.OrphanPunctuation(ListsAndRuns.EmojiStrip(seg, () =>
 							NotesAndComments.redFlag(
 								DataService.Data.InputDocRules?.emoji_strip?.disclosure ?? "",
-								run, "diagnostic"))))));
+								run, "diagnostic")))))));
 						const ai = tidied.indexOf("<div class=\"acks");
 						// KB constraint 92 / CL-0093: every CJK run takes its language-font class
 						// (ListsAndRuns.LanguageFontWrap; data body_region.language_fonts; env LANGFONT_OFF) —

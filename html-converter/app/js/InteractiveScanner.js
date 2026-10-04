@@ -2157,6 +2157,14 @@ class InteractiveScanner {
 			// Data member_rule.button_tail_terminates; env ACCBTNTAIL_OFF.
 			{
 				const btT = DataService.Data.BoundaryBank._meta.member_rule.button_tail_terminates;
+				// A GO-TO-JOURNAL button at the tail stays the widget's member (the go-journal machinery
+				// ships its heading after the widget) — and it is the widget's LAST member: the walk takes
+				// it and ends, so the writer's next element (a speech bubble, the lesson summary) is never
+				// swallowed after it. Data button_tail_terminates.go_journal_closes; env GOJOURNALTAIL_OFF.
+				const _gjBtn = this.#isGoJournalButton(next);
+				const _gjc = btT?.go_journal_closes;
+				const _gjCloses = _gjBtn && !!_gjc && _gjc.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[_gjc.env ?? "GOJOURNALTAIL_OFF"]);
 				if (btT && btT.enabled !== false
 					&& !(typeof process !== "undefined" && process.env && process.env.ACCBTNTAIL_OFF)
 					// The rule also covers the CAROUSEL, and each type turns off on its OWN
@@ -2176,7 +2184,7 @@ class InteractiveScanner {
 					// genuine tag resolves exact/denumbered, a tag-word inside prose resolves
 					// how:"embedded".
 					&& (btT.clean_hows ?? ["exact", "denumbered", "denumbered_head", "exception"]).includes(p?.how)
-					&& !this.#isGoJournalButton(next)
+					&& (!_gjBtn || _gjCloses)
 					&& bundle.memberItems.some((m) => m && (m.type !== "tag" || m.parse?.primary?.directive !== "INTERACTIVE"
 						// For a speech bubble the content very often rides ON the
 						// invocation ("[speech bubble] Remember: Good design is responsible
@@ -2209,6 +2217,7 @@ class InteractiveScanner {
 					// page (as BLL262-1.0's black "[Audio]" line would), and the builder's
 					// other leak guard is scoped to `mvUsed` and cannot see this route.
 					bundle._buttonTail = true;
+					if (_gjBtn) { this.#collectMember(bundle, next, run); j++; }
 					break;
 				}
 			}

@@ -1033,18 +1033,59 @@ class TablesAndGrids {
 		// a cell that carries the writer's own [image] tag builds its picture from the cell text: left alone
 		if (this.cellHasImageTag(s, norm, sep)) return null;
 		const minW = cfg.min_words ?? 3;
+		// THE BRACKETED FORM: a red run that is exactly one bracketed request of at least bracketed.min_words letter-words
+		// and no web address («[students type here]») — the bracket is the writer's instruction mark, no cue word needed.
+		// Data elements.table.cell_red_request.bracketed; env CELLREDBRACKET_OFF.
+		const bk = cfg.bracketed;
+		const RUNS = /(?:\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534})+/gu;
+		const innerOf = (r) => r.replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\s+/g, " ").trim();
+		const bkFits = (inner) => /^\[[^[\]]+\]$/.test(inner) && !/https?:\/\/|www\./i.test(inner)
+			&& !(bk.exclude_pattern && new RegExp(bk.exclude_pattern, "i").test(inner))
+			&& !(bk.skip_resolved_tags !== false && (() => { try { return !!norm.Parse(inner)?.primary; } catch { return true; } })())
+			&& inner.slice(1, -1).split(" ").filter((w) => /\p{L}/u.test(w)).length >= (bk.min_words ?? 2);
+		// only a cell whose every bracketed red run qualifies and whose other text holds no bracket the tag vocabulary
+		// resolves: a cell that also carries a real tag, red or black («[insert audio]» typed as a link), is left to the
+		// cell's own handling
+		const restResolves = () => {
+			const rest = s.replace(RUNS, (r) => (bkFits(innerOf(r)) ? " " : r)).replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ");
+			for (const t of rest.matchAll(/\[([^\]\n]{1,60})\]/g)) {
+				try { if (norm.Parse(`[${t[1]}]`)?.primary) return true; } catch { return true; }
+			}
+			return false;
+		};
+		const bkOn = !!bk && bk.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[bk.env ?? "CELLREDBRACKET_OFF"])
+			&& [...s.matchAll(RUNS)].map((m) => innerOf(m[0])).every((inner) => !/[[\]]/.test(inner) || bkFits(inner))
+			&& !restResolves();
 		const hits = [];
-		for (const m of s.matchAll(/(?:\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534})+/gu)) {
-			const inner = m[0].replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\s+/g, " ").trim();
-			if (!inner || /[[\]]/.test(inner)) continue;
+		for (const m of s.matchAll(RUNS)) {
+			const inner = innerOf(m[0]);
+			if (!inner) continue;
+			if (bkOn && bkFits(inner)) {
+				// a bracket with the writer's words still to come in its paragraph («The artist worked [phrase highlighter]
+				// in a bright …») puts its note at the paragraph's end, so the note never splits the sentence
+				const stop = sep && s.indexOf(sep, m.index + m[0].length) >= 0 ? s.indexOf(sep, m.index + m[0].length) : s.length;
+				const after = s.slice(m.index + m[0].length, stop).replace(RUNS, " ");
+				hits.push({ start: m.index, end: m.index + m[0].length, note: NotesAndComments.redFlag(inner, run, "cs"),
+					at: /[\p{L}\p{N}]/u.test(after) ? stop : null });
+				continue;
+			}
+			if (/[[\]]/.test(inner)) continue;
 			if (inner.split(" ").filter((w) => /[\p{L}\p{N}]/u.test(w)).length < minW) continue;
 			if (!norm.HasInstructionCue(inner)) continue;
 			hits.push({ start: m.index, end: m.index + m[0].length, note: NotesAndComments.redFlag(inner, run, "cs") });
 		}
 		if (!hits.length) return null;
-		let text = "", at = 0;
 		// a space on each side: a web address typed right before the run must end before the token (the link weave)
-		hits.forEach((h, i) => { text += s.slice(at, h.start) + ` ⟦CV2NOTE${i}⟧ `; at = h.end; });
+		const edits = [];
+		hits.forEach((h, i) => {
+			const tok = ` ⟦CV2NOTE${i}⟧ `;
+			if (h.at == null) edits.push({ from: h.start, to: h.end, put: tok });
+			else { edits.push({ from: h.start, to: h.end, put: " " }); edits.push({ from: h.at, to: h.at, put: tok }); }
+		});
+		edits.sort((a, b) => a.from - b.from || a.to - b.to);
+		let text = "", at = 0;
+		for (const e of edits) { text += s.slice(at, e.from) + e.put; at = Math.max(at, e.to); }
 		text += s.slice(at);
 		return { text, notes: hits.map((h) => h.note) };
 	};

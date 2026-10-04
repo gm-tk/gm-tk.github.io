@@ -37,6 +37,22 @@
 			"enabled": true,
 			"note": "The design team's SOURCE-SPECIFIC red-note prefix scheme (KB CL-0010 + CL-0013): a WRITER'S own note / CS instruction (kind 'cs') → 'Writers Note:'; a CONVERTER-detected issue (kind 'diagnostic', the default — ambiguity / missing info / unbuildable structure) → 'Red Flag:'; a DEFERRED piece of a known, correctly-built pattern (kind 'todo' — an asset/URL/setup the developer supplies in production; matches Subject_Global_Parameters._meta.red_note_format byte-for-byte) → 'Designer/Developer To Do:'; a whitelisted Word comment → 'Note from {author}:' (Comment_Authors.render.form). ALL render red AND BOLD ('color: red; font-weight: bold;' — the bold weight is CL-0010's), always visible, never a hidden comment. The cv2-note / cv2-comment marker classes keep every note out of structural comparisons. The human gold strips ALL developer notes, and these prefixes are design-authority decisions the gold predates — recorded in Subject_Global_Parameters._universal_conventions (overrides_gold:true) so the wording is never chased back toward the gold. Env NOTESCHEME_OFF (or enabled:false) renders every note in the legacy forms (legacy_form / legacy_cs_form here + Comment_Authors.render.legacy_form)."
 		},
+		"omit_template_sample": {
+			"_doc": "THE UNFILLED CONNECTIONS SAMPLE NEVER SHIPS (the omit_placeholders principle — template text the writer never replaced is not learner content — applied to the BLACK sample block). The Writers Template's Connections section carries a sample the writer is meant to replace: «Learning connected to this module can be found in/through ...», «If you've enjoyed this you might like to try learning about/through …» and the italic list «Subject name / EXPlore / ConnectED / Leaving to Learn». Only its red how-to line was omitted, so 37 modules shipped the sample in the module menu; the human build has no Connections heading in 31 of them and no sample list in 34. A section under a heading (or a bold lead) matching heading_pattern that holds a block matching sentinel_pattern («Subject name») loses every block matching a block_patterns entry (and a list left empty); when no other block remains, the heading goes too. A section the writer filled — no sentinel — is untouched. Runs on the whole assembled page, beside OmitPlaceholderResidue. Env TEMPLATESAMPLE_OFF.",
+			"enabled": true,
+			"env": "TEMPLATESAMPLE_OFF",
+			"heading_pattern": "^(?:hononga\\s*\\|\\s*)?connections:?$",
+			"sentinel_pattern": "^subject name$",
+			"block_patterns": [
+				"^learning connected to this module can be found in(?:/through)?\\s*(?:\\.{2,}|…|:)?$",
+				"^if you'?ve enjoyed this,? you might like to try learning about(?:/through)?\\s*(?:\\.{2,}|…|:)?$",
+				"^and/or\\s*(?:\\.{2,}|…)?$",
+				"^subject name$",
+				"^explore$",
+				"^connected$",
+				"^leaving to learn$"
+			]
+		},
 		"omit_placeholders": {
 			"enabled": true,
 			"match": "prefix",
@@ -420,6 +436,16 @@
 				"enabled": true,
 				"env": "CELLREDREQ_OFF",
 				"min_words": 3,
+				"bracketed": {
+					"_doc": "THE WRITER'S RED BRACKETED REQUEST IN A TABLE CELL IS A WRITERS NOTE TOO. A red span in a kept cell that is exactly ONE bracketed request — «Name: [students type here]», «[complete the sentence here]», «[orange background]», «[add green tick]», «[click drop image]» — printed as cell text for the learner. In the writer's convention the bracket itself marks an instruction (no cue word is needed, unlike the un-bracketed request above), so it renders as the cell's Writers Note in place. Only a bracket of at least min_words words with a letter and no web address: a one-word or one-letter bracket («[h]», «[word 1]», «[fact]») may be the learner's own label or blank and stays as it is. Env CELLREDBRACKET_OFF.",
+					"enabled": true,
+					"env": "CELLREDBRACKET_OFF",
+					"min_words": 2,
+					"exclude_pattern": "^\\[\\s*(?:hover|roll[\\s-]*over|mouse[\\s-]*over|defin|info\\b|translat)",
+					"skip_resolved_tags": true,
+					"_doc_skip_resolved_tags": "A bracket the tag vocabulary resolves to ANY tag is left as it is: a clean tag («[Body, bold]», «[TITLE BAR]», «[on click]») is the writer's structural tag, whose rendering belongs to the table and widget rules; a tag word embedded in a request («[insert text box]») already sends its table to the un-built hand-off box through the kept-table leak guard (the widget the human builds there), and a note would release that table as a plain grid. Only a bracket that resolves to NO tag (an instruction) becomes a note, so no table changes its form.",
+					"_doc_exclude": "A bracket that opens with a hover / roll-over / definition / translation word carries LEARNER content (the definition the hover will show — «[hover: Assets are things you own that have value …]», «[define: speed up]»): it is not a request and stays where it is for the hover rules."
+				},
 				"_doc": "THE WRITER'S RED REQUEST IN A TABLE CELL IS A WRITERS NOTE. A kept table cell prints red text as cell text, because a red span in a cell is usually a data label the learner should read. A red span that is a request to the developer («Please insert the image on page 6», «Can we split this picture please», «(Please use a diagram that looks like this: )») was printed to the learner the same way. In a FREE-BODY kept-table cell, a red run (consecutive red spans read as one) with no bracket, at least min_words words and an instruction cue (Instruction_Cues.cue_patterns — the same test that makes an un-bracketed red span in the free body a Writers Note) renders as a Writers Note (NotesAndComments.redFlag kind cs) where the writer put it; the cell's other words stay. A red run with no cue — a data label, a header label, red answer or learner text — stays visible as before. Runs the image-reference rule has taken are not seen here. The layout-grid cell has its own red-note rule (layout_table_grid.red_part_note). Hand-off boxes keep the raw form."
 			},
 			"cell_audio_word": {
@@ -683,6 +709,16 @@
 			"url_host_skip": true,
 			"note": "HYGIENE guards shared by BOTH sentinel-weave paths (info_trigger_inline + hover_definition_inline). (1) instruction_def_guard — a recovered 'def' matching instruction_cue_pattern is a writer NOTE, not a definition ('For each concept, please have the rollover definitions below. Ngā mihi' HIS1002-16; '…Please embed these images and have drop-down boxes…' AGH1004-01): DECLINE the weave so the marker falls to the CS-note handling — the human strips both. (2) url_host_skip — the anchor-host walk never selects a candidate whose trailing text is a bare URL or media FILENAME (+']'/')' residue; media_tail_pattern): the URL machinery would read straight through the private-use sentinel ('…Pounamu_0.jpg⟨IT0⟩For' becoming part of the URL and orphaning ⟨IT1⟩ into the output), or weave info onto URL fragments such as 'png' (MXFU201's '[hover] enlarge graph' hints). With only media adjacent the anchor is non-derivable → the no-anchor fallback (def dropped, marker consumed — as the human drops the text at MXFU201). Named-anchor selection (HIS1001 '[Rollover for moratorium: …]') belongs to the split-bracket and render-stitch rules, not here. Both guards only DECLINE mis-weaves; clean weaves are untouched by construction. Env HOVERHYG_OFF turns off all 4 sites.",
 			"media_tail_pattern": "(?:https?:\\/\\/[^\\s<>&\"]+|\\.(?:png|jpe?g|gif|svg|webp|pdf|docx?|pptx?|xlsx?))[\\s\\]\\)]*$"
+		},
+		"audio_animation": {
+			"_doc": "THE AUDIO ANIMATION IS A VIDEO. The writer's «[Audio animation]» / «[Insert audio animation 1]» / «[insert AI audio animation 2]» names Te Kura's narrated ANIMATION — a video the audiovisual team produces — but the tag resolves to the audio element (the word «audio» embedded), so the page shipped an empty audio player (<audio src=\"audio/.mp3\">). The human build gives it a video frame: the team's Vimeo animation in 21 of the 30 modules that carry the tag, an empty frame with «Designer note: … with audiovisual team to come» where it had not arrived, an audio element in only 5 (each with other audio). An audio-resolved media tag whose own words match tag_pattern renders as the video: the embed when a YouTube / Vimeo address is found (video_pattern), otherwise the frame shell plus the developer To Do (todo_text; {tag} = the writer's tag, {link} = a non-video address the writer gave, else empty). Env AUDIOANIM_OFF.",
+			"enabled": true,
+			"env": "AUDIOANIM_OFF",
+			"tag_pattern": "\\banimation\\b",
+			"video_pattern": "youtu\\.?be|youtube\\.com|vimeo\\.com",
+			"frame": "<div class=\"videoSection ratio ratio-16x9\">\n<iframe src=\"about:blank\" loading=\"lazy\" title=\"Video player\" frameborder=\"0\" allowfullscreen></iframe>\n</div>",
+			"todo_text": "{tag} — the audiovisual team's animation video goes in this frame: embed its Vimeo or YouTube address.{link}",
+			"link_text": " The writer's link: {url}"
 		},
 		"video_embed_title_drop": {
 			"enabled": true,
@@ -1679,6 +1715,11 @@
 			"max_lookahead": 120,
 			"_note_hold": "KB constraint 43, the dropbox modifier/placement class. A bundle-OWNED activity box closes at its widget's end, so a writer's dropbox marker placed AFTER the widget but still INSIDE the activity ([Activity 2D] … [clickdrop button] … [microphone, camera and video dropbox buttons] [End page] — XMES101) would escape into its own row UNDER the closed box: the marker is freed into its own dropDown bundle, the upload box builds the Upload-to-dropbox button, and the dropbox postpass (which marks `dropbox` only when the button sits INSIDE the box's own span) would not fire. The human keeps the button INSIDE the activity (BLL always). THE RULE: at the owner close site, walk forward from the bundle's opening item with the auto-close boundary semantics (scanSupNote's walk — skip the owner's own members, consumed items, blank lines; black text, tables and non-boundary tags are content; a stray non-activity CONTAINER_CLOSE is the widget's own end tag and is flagged so it cannot pop the held frame; a heading <= rendered_heading_max, an activity_close_before directive/tag, an activity closer, a page boundary, a section marker, or an item consumed by a DIFFERENT non-dropbox bundle ends the walk with NO hold); when the first foreign bundle reached is a freed upload-box bundle (InteractiveBuilder.UploadBoxCandidate — the upload box's own scan, public so scanner/builder/holder can never drift) with no activity of its own (canonTag/activityOwner/activityId all unset — the isNewActivity test), the activity frame is LEFT OPEN: the dropbox bundle then renders through the ordinary non-owner path inside the still-open box, autoClose (or the page-end drain) closes the box at the next boundary, and the dropbox postpass marks it `dropbox`. FENCES: the ENFUN prose|widget row split (prose_interactive_rows, pirKey) is excluded — its widget row is already closed at the site; the buttonD/BLL plain-box convention is untouched (the postpass's \\bbutton\\b test does not see buttonD — the BLL button moves inside the box, and the box stays plain as the human's BLL boxes are). max_lookahead mirrors #goJournalTail's 120. Env toggle ACTDBXINSIDE_OFF closes the box at the widget's end."
 		},
+		"standalone_dropbox_box": {
+			"enabled": true,
+			"env": "DBXOWNBOX_OFF",
+			"_doc": "A STANDALONE DROPBOX ACTIVITY GETS ITS OWN BOX. When the writer opens the dropbox first ([Dropbox], [Dropbox Activity], [Dropbox Activity Box]), types its own learner text and then its dropbox button ([Button] Go to dropbox), the human gives it its OWN `activity dropbox` box with the next positional letter (MXDB102, MXDI103 3E / 6F, MXFL202 7B). Without this the upload box joins the activity box before it through owned_activity_keeps_trailing_dropbox (KB constraint 43 — right for a dropbox marker INSIDE an activity's span after its widget, XMES101 2D / XTAS101 1C, wrong for a dropbox activity of its own). The test is the upload-box builder's own scan (InteractiveBuilder.UploadBoxStandalone: the opener is the bundle's first member and the writer's text stands before the writer's OWN dropbox [button] member — a second dropbox marker or an inline [insert dropbox link] request does not qualify, so XTAS101 1G, the KB-43 example, keeps its dropbox inside its box), so the builder, the hold and the emit site cannot drift. Numbered-lesson pages only (the human numbers the box); the open box closes first; the box is not `interactive`. Env DBXOWNBOX_OFF."
+		},
 		"upload_box_ends_activity": {
 			"enabled": true,
 			"env": "DBXENDS_OFF",
@@ -2586,6 +2627,12 @@
 			},
 			"panel_delimiters": {
 				"enabled": true,
+				"table_cell_lines": {
+					"_doc": "THE CELL'S OWN LINES IN A TABLE-FORM PANEL (KB constraint 5: no stray markup). A table whose rows are the panels carries each panel's body in a cell; the cell's paragraphs reach the builder joined by the in-cell line break (separator), and the body rendered as ONE paragraph with the joiner and the writer's «•» printed («• What makes a good leader in the game? / • How do you make sure everyone can follow you safely? / …»). The human build lists them (accContent > ul > li) or gives each line its own <p>. The panel BODY is split at the separator into lines, which the block renderer turns into <p> / <ul> as anywhere else; the heading is chosen exactly as before. Env ACCCELLLINES_OFF.",
+					"enabled": true,
+					"env": "ACCCELLLINES_OFF",
+					"separator": " / "
+				},
 				"bullet_bold_lead": {
 					"enabled": true,
 					"env": "ACCBULLETLEAD_OFF",
@@ -2910,6 +2957,11 @@
 				"face_label_back_word_pattern": "^(?:back|reverse|reverse\\s+side|on\\s+flip|flip\\s+side|side\\s*b)\\s*[:.\\-]?\\s*$",
 				"asset_reference_pattern": "^\\W*(?:istock|getty|wikipedia\\s+commons|image|picture|photo|graphic|illustration)\\b|\\[\\s*image\\b|\\bgm\\d{6,}",
 				"instruction_span_prefixes": ["please", "can you", "could you", "could we", "is it possible", "we would like", "note to", "dev team"],
+				"face_segment_edges": {
+					"_doc": "A CARD FACE'S LINES CARRY NO JOINER AT THEIR EDGES (KB constraint 5: no stray markup). A face is split at the writer's « / » (the in-cell line break) and hard newlines; a face whose text holds two joiners in a row («[IMAGE …] / / Socrates 469 – 399 BCE», once the picture is lifted out) kept «/ » on the next line, and a short first line is the front's heading — XGF9004 shipped «<h4>/ Socrates 469 – 399 BCE</h4>». A joiner at a line's edges goes and a line of joiners alone is no line (the carousel's prose_segment_edges rule). Env FLIPEDGE_OFF.",
+					"enabled": true,
+					"env": "FLIPEDGE_OFF"
+				},
 				"image_caption_as_text": true,
 				"image_slug_fallback": true,
 				"leak_guard": true,
@@ -3286,6 +3338,16 @@
 				"require_content": true,
 				"title_max_words": 6,
 				"segment_separator": "\\s+/\\s+",
+				"prose_segment_edges": {
+					"_doc": "A PROSE SLIDE'S LINES CARRY NO JOINER AT THEIR EDGES (KB constraint 5: no stray markup). A prose cell is split at segment_separator, but a cell that OPENS with the in-cell line break («[body] / **Adaptations** / **Characters:** …» — the writer's tag on its own line) kept «/ » on its first segment, and a short first segment is the slide's title, so the slide shipped «<h4>/ <b>Adaptations</b></h4>». A joiner at a segment's edges goes, and a segment with no letter or digit is no line (the media branches' rule, media_caption_lines). Env CARPROSEEDGE_OFF.",
+					"enabled": true,
+					"env": "CARPROSEEDGE_OFF"
+				},
+				"media_caption_lines": {
+					"_doc": "A MEDIA SLIDE'S CAPTION KEEPS THE CELL'S LINES (KB constraint 5: no stray markup). A prose cell is split at segment_separator (the in-cell line break), but a cell that carries a picture, a video or an audio file passed the rest of its text through whole, so the caption printed the cell's « / » joiners between the slide's title, its copy and the picture's own caption («Oil and Natural gas / New Zealand has … / Oil fields in New Zealand»). The human build gives each line its own block. The media branches' caption text is split at segment_separator into lines, which the block renderer turns into <p> / <li> inside the carousel-caption. Env CARCAPLINES_OFF.",
+					"enabled": true,
+					"env": "CARCAPLINES_OFF"
+				},
 				"media_marker_pattern": "\\[\\s*(image|video|audio|caption|embed)[^\\]]*\\]",
 				"dangling_marker_repair": "\\[\\s*(image|video|audio|caption|embed)\\b(?![^\\[\\]\\n]*\\])",
 				"leak_pattern_dangling": "\\[\\s*(?:image|video|audio|caption|embed)\\b(?![^\\[\\]\\n]*\\])",
@@ -3795,6 +3857,14 @@
 				"env": "DBXBUTTON_OFF",
 				"opener_exclude_pattern": "\\balert\\b",
 				"text_member_tags": ["body"],
+				"button_member": {
+					"enabled": true,
+					"env": "DBXBTNMEMBER_OFF",
+					"button_tags": ["button"],
+					"label_pattern": "drop\\s*-?\\s*box",
+					"note_tags": ["engagement quiz button"],
+					"_doc": "THE WRITER'S OWN DROPBOX BUTTON. The writer often closes the upload activity with `[Button] Go to dropbox` (MXDB102, MXDI103, MXFL202, MXEX202, MXDB202, ENGI101) and decorates it with `[Engagement trigger]`; the human renders the body text and then the house 'Upload to dropbox' button exactly where that button stood. A member whose primary tag is in button_tags and whose own words (bracket + black line) match label_pattern IS the button this box builds: its words join the To Do note, its label is never released as prose, and the box's button takes its place (text before it stays before the button, text after it goes after). A note_tags member (the engagement-trigger decoration) joins the note. Any other button — 'Go to journal', a download link — still declines (the box cannot render it). Env DBXBTNMEMBER_OFF."
+				},
 				"button_html": "<a href=\"\" target=\"_blank\"><div class=\"{cls}\">Upload to dropbox</div></a>",
 				"todo_note": "Wire this button's D2L dropbox quicklink (the href is intentionally blank — the per-module rcode is in no Writers Template). Writer: {spec}"
 			},
@@ -7125,12 +7195,24 @@
 			"env": "ORPHANPUNCT_OFF",
 			"elements": ["p", "h1", "h2", "h3", "h4", "h5", "h6", "li"],
 			"merge_pattern": "^[.,;:!?]{1,2}$",
-			"drop_pattern": "^(?:[•·▪◦\\-–—]|(?:\\*\\*\\s*)+|\\*\\*[–—-]|/(?:\\s*/)*)$"
+			"drop_pattern": "^(?:[•·▪◦\\-–—]|(?:\\*\\*\\s*)+|\\*\\*[–—-]|/(?:\\s*/)*)$",
+			"inside_built_widgets": {
+				"_doc": "THE ORPHAN MARK INSIDE A BUILT WIDGET. The pass skipped every built widget on the typed-number list's verbatim_widget_classes (those widgets own their inner SHAPE for the typed-number list), so a lone mark left inside one still shipped: DTC1005's clickDrop panel «<p>–</p>» ×10 (the residue of the writer's «[Image – URL]» split by bold), SCCH301's clickDrop «.», ENGC206's flip-card back «•», BLL262 / CEDR101's carousel captions «-» / «.». A lone DROP mark (a dash, a bullet glyph, a slash, a bare «**» — no wording) is never a widget's shape: inside built widgets the pass removes those too; a lone SENTENCE mark there stays (a flip card's «?» front is the card's content, and a merge would double a full stop); un-built hand-off boxes, Writers Notes and comments, scripts and styles stay verbatim. Env ORPHANWIDGET_OFF.",
+				"enabled": true,
+				"env": "ORPHANWIDGET_OFF"
+			}
 		},
 		"lone_list_number": {
 			"enabled": true,
 			"env": "LONENUM_OFF",
 			"_doc": "A LIST NUMBER NEVER STANDS ALONE. A bare <p> whose whole text is a list number («1.», «12)», optionally inside one bold / italic wrapper) is the residue of a Word-numbered paragraph whose content went elsewhere — a wholly red item lifted into a Writers Note (an answer key «1. C / 2. B», a developer instruction) or an item whose leading [body] tag opened a block of its own («1.» above «In your journal, write…»). It carries nothing for the learner and the human build never has one (KB constraint 5 — no parser residue; constraint 42 — numbered steps are <ol><li>, never a bare number), so the page post-pass after TypedNumberList removes it. LIVE zones only: hand-off boxes, notes and the typed_number_list verbatim widget classes keep their text."
+		},
+		"typed_dash_list": {
+			"_doc": "A RUN OF TYPED DASH LINES IS A BULLETED LIST (the semantic-list principle of KB constraint 42, the typed-number rule's sibling). A writer who TYPES «- » at the head of each line («- sound out the individual vowels and blend them», «- make ae out of things you have at home») gives the extractor plain paragraphs, so the page shipped one <p>- …</p> per line; where the human build carries those lines they are list items 129 of 143 (the gold holds two <p>- in the whole corpus). A page post-pass beside typed_number_list, with its verbatim zones: a run of at least min_run consecutive plain <p> whose text opens with lead_pattern becomes one <ul> of <li>s, the dash removed (a dash bolded on its own goes with its emptied <b>). A single dash line is left (it may be a sentence's own dash). Env TYPEDUL_OFF.",
+			"enabled": true,
+			"env": "TYPEDUL_OFF",
+			"lead_pattern": "^\\s*-\\s+",
+			"min_run": 2
 		},
 		"typed_number_list": {
 			"_doc": "KB constraint 42 (Universal): numbered instructions / steps / sub-questions are semantic <ol><li> (start=\"N\" when the run does not begin at 1), NEVER <p>1. …</p> manual numbering. The writer TYPES the numbers as plain text (\"1. What happened…\", not a Word numbered list, so LISTNEST never sees a list); the free-body path (renderBlackText) builds the <ol>, but widget panels render lines as <p> and never see it (e.g. inside a built accordion panel). The human mostly ships such text as a list (usually <ol>), the typed number stripped. MECHANISM: ListsAndRuns.TypedNumberList, a FULL-PAGE post-pass at the EmojiStrip seam (PageAssembler, after the emoji list clause, before LinkTextDisplay, body only — the acks block is never touched): a run of >= min_run consecutive bare <p> elements (whitespace-only between them) whose text opens with SEQUENTIAL typed numbers (n, n+1, …; a restart ends the run) OR with the extractor's Word-numbered-list marker on every item (DocxExtractor prefixes each numbered-list paragraph with \"1. \" and never counts, so a Word list inside a widget panel would show as <p>1. …</p><p>1. …</p> — every question numbered 1; marker_form_all_equal) becomes ONE <ol> (start=\"n\" when n > 1) of <li>s with the lead removed from the first text node. VERBATIM ZONES copied through untouched: cv2-interactive hand-off boxes, cv2-note / cv2-comment, script / style, AND every built widget subtree whose class opens with one of verbatim_widget_classes — a flipCard face keeps its typed number as the card title (TWHK901 <h5>1. Partnership…</h5>), a dragAndDrop question is a plain <p> (CEDR501), a carousel caption a <p> (XGF9003); accordion panels, activity boxes and free body are LIVE (BLL212 / SCCH301 / ENGR101 ship the <ol>). Env TYPEDOL_OFF turns it off.",

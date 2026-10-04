@@ -394,6 +394,11 @@ class DocxExtractor {
 			out = out.replace(/\uE021((?:\s|<br\s*\/?>)*)\uE020/g, "$1").replace(/\uE023((?:\s|<br\s*\/?>)*)\uE022/g, "$1");
 			const word = new RegExp(wp.word_pattern, "u"), lead = new RegExp(wp.lead_pattern, "u");
 			const nb = cfg.needs_base, baseRe = nb?.enabled ? new RegExp(nb.base_pattern, "u") : null;
+			// a raised piece right after a closed lowered (or raised) piece has its base — an ion's charge, CO₃²⁻. Data
+			// vert_align.needs_base.after_index; env SUPAFTERSUB_OFF.
+			const ai = nb?.after_index;
+			const afterIdx = !!ai && ai.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[ai.env ?? "SUPAFTERSUB_OFF"]);
 			const inlineTag = /<\/?(?:b|strong|i|em|u|span|a)\b[^>]*>$/i;
 			out = out.replace(/([\uE020\uE022])([^\uE020-\uE023]*)([\uE021\uE023])/g, (m, o, body, c, at, all) => {
 				// a raised / lowered piece needs a BASE right before it (x\u00B2, CO\u2082, 10\u207B\u00B9 \u2014 past inline tags only): one that opens a
@@ -402,7 +407,7 @@ class DocxExtractor {
 				if (baseRe) {
 					let before = all.slice(Math.max(0, at - 300), at), prev;
 					do { prev = before; before = before.replace(inlineTag, ""); } while (before !== prev);
-					if (!baseRe.test(before)) return body;
+					if (!baseRe.test(before) && !(afterIdx && /[]$/.test(before))) return body;
 				}
 				const txt = body.replace(/<[^>]*>/g, " ");
 				if (!word.test(txt) && !/\S {2,}\S/.test(body)) return m;
@@ -1522,6 +1527,53 @@ class DocxExtractor {
 	};
 
 	/**
+	 * THE TEMPLATE'S SUBMISSION CHECKLIST NEVER SHIPS, wherever it sits.
+	 *
+	 * The Writers Template's own checklist for the writer ("SUBMISSION CHECKLIST" /
+	 * "Have you:" / "☐ Checked the resource code is correct?" …) is dropped by the
+	 * media-list tail rule only when it is the first thing after the media table; a
+	 * writer's note between the two, or a checklist the tail rule does not reach, lets
+	 * it ship on the last lesson page (the human build never shows it). A paragraph
+	 * matching heading_pattern leaves the content with the run of paragraphs after it
+	 * that are blank or checklist lines (line_exact / line_phrases), provided at least
+	 * min_lines of them are checklist lines; the first other block ends the run.
+	 *
+	 * Data media_list_preamble.submission_checklist; env CHECKLIST_OFF.
+	 */
+	static DropSubmissionChecklist(blocks, run = null) {
+		const cfg = DataService.Data.InputDocRules.media_list_preamble?.submission_checklist;
+		if (!cfg || cfg.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "CHECKLIST_OFF"])) return blocks;
+		const RED = /\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu;
+		const folded = (b) => Utils.Fold(String(b?.text ?? "").replace(RED, " ").replace(/[*_~]+/g, ""));
+		const head = new RegExp(cfg.heading_pattern ?? "^submission checklist\\b", "i");
+		const exact = new Set((cfg.line_exact ?? []).map((p) => Utils.Fold(String(p))));
+		const phrases = (cfg.line_phrases ?? []).map((p) => Utils.Fold(String(p)));
+		const isLine = (t) => exact.has(t) || phrases.some((p) => t.includes(p));
+		const drop = new Set();
+		for (let i = 0; i < blocks.length; i++) {
+			if (blocks[i]?.kind !== "para" || !head.test(folded(blocks[i]))) continue;
+			const run_ = [blocks[i]];
+			let lines = 0, k = i + 1;
+			for (; k < blocks.length; k++) {
+				const b = blocks[k];
+				if (b?.kind !== "para") break;
+				const t = folded(b);
+				if (t && !isLine(t)) break;
+				if (t) lines++;
+				run_.push(b);
+			}
+			if (lines < (cfg.min_lines ?? 2)) continue;
+			for (const b of run_) drop.add(b);
+			i = k - 1;
+		}
+		if (!drop.size) return blocks;
+		run?.AddNote("info", "DocxExtractor",
+			`The template's submission checklist dropped (${drop.size} block${drop.size === 1 ? "" : "s"}) — the writer's own checklist, not content.`);
+		return blocks.filter((b) => !drop.has(b));
+	};
+
+	/**
 	 * DISSOLVES A PAGE-LAYOUT TABLE THAT TRAPS A SPEECH BUBBLE.
 	 *
 	 * WHAT PROBLEM THIS SOLVES:
@@ -2589,8 +2641,9 @@ class DocxExtractor {
 				const bridgeOn = rules.red_runs.bridge_split_tag
 					&& !(typeof process !== "undefined" && process.env && process.env.REDBRIDGE_OFF);
 				let redText = "";
+				let lastRed = null;   // the last red run merged into the span (the marker-tail letters below)
 				while (i < pieces.length) {
-					if (pieces[i].red) { redText += pieces[i].text; i++; continue; }
+					if (pieces[i].red) { redText += pieces[i].text; lastRed = pieces[i]; i++; continue; }
 					// SOFT-BREAK-ONLY GAP. A soft line break often lives in a COLOURLESS run of
 					// its own between two red runs ("[Overview]" ⏎ "[H3] Knowledge" — one
 					// paragraph, the tags on separate lines). The "\n" that run contributes must
@@ -2612,6 +2665,28 @@ class DocxExtractor {
 						redText += pieces[i].text; i++; continue;   // bridge the whitespace gap mid-tag
 					}
 					break;
+				}
+				// THE MARKER'S TAIL LETTERS. A writer types a red marker and keeps red for the first letter or two of the next
+				// word («[definition: » + «O» + black «utside of …», «[button]» + «S» + «ubmit»): merged into the span above, the
+				// letters would become the marker's tail and the word would ship cut. When the span's LAST red run is a few
+				// letters glued to a black piece that opens with a lowercase letter, and the span before them holds a «[» / «(»
+				// and ends at a boundary, the letters go back to the black word (also when the writer typed the marker's
+				// closing «]» black after a definition: the word is whole either way). Data red_runs.marker_tail_letters; env
+				// REDTAILLETTER_OFF.
+				const _mt = rules.red_runs.marker_tail_letters;
+				if (_mt && _mt.enabled !== false && lastRed && i < pieces.length && !pieces[i].red
+					&& !(typeof process !== "undefined" && process.env && process.env[_mt.env ?? "REDTAILLETTER_OFF"])) {
+					const raw = String(lastRed.text ?? "");
+					const frag = raw.trim();
+					const head = redText.slice(0, redText.length - raw.length) + raw.slice(0, raw.length - raw.trimStart().length);
+					if (redText.endsWith(raw) && !/\s$/.test(raw) && frag.length <= (_mt.max_chars ?? 4)
+						&& new RegExp(_mt.letters_pattern ?? "^\\s*\\p{L}+$", "u").test(raw)
+						&& /^\p{Ll}/u.test(String(pieces[i].text ?? ""))
+						&& head.trim() && new RegExp(_mt.marker_pattern ?? "[\\[(]", "u").test(head)
+						&& new RegExp(_mt.boundary_pattern ?? "[\\s:\\[\\]()]$", "u").test(head)) {
+						redText = head;
+						pieces[i].text = frag + pieces[i].text;
+					}
 				}
 				// A WHITESPACE-ONLY red span: sometimes a writer accidentally
 				// colours just a single space or tab character red, with no

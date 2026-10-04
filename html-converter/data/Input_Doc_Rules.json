@@ -103,6 +103,15 @@
 		"marker_open": "🔴[RED TEXT] ",
 		"marker_close": " [/RED TEXT]🔴",
 		"collapse_whitespace_only": true,
+		"marker_tail_letters": {
+			"_doc": "THE WRITER'S RED FIRST LETTERS AFTER A RED MARKER BELONG TO THE WORD (KB constraint 1: the writer's characters are never deleted). A writer types a red marker and keeps red for the first letter or two of the next word: «[definition: » ‹O›«utside of Aotearoa…», «[button]» ‹S›«ubmit», «[multi choice image activity]» ‹C›«lick the emoji…». The red runs merge into ONE marker span, so the letters become the marker's tail and the word ships cut («ctions to reduce the effects.», «lick the emoji»). When the merged span's LAST red run is 1 to max_chars letters with no space after it, the black text right after it opens with a lowercase letter, and the span before those letters holds a «[» or «(» and ends at a boundary (a space, colon, bracket or parenthesis), the letters go back to the start of the black word — also when the writer typed the marker's closing «]» black after the definition («[insert rollover definition: » ‹F› «riendships between countries or groups.]»): the word is whole either way. Env REDTAILLETTER_OFF.",
+			"enabled": true,
+			"env": "REDTAILLETTER_OFF",
+			"max_chars": 4,
+			"letters_pattern": "^\\s*\\p{L}+$",
+			"boundary_pattern": "[\\s:\\[\\]()]$",
+			"marker_pattern": "[\\[(]"
+		},
 		"bridge_split_tag": true,
 		"bridge_split_tag_note": "Word can split a single uniform-RED [tag] into separate runs and DROP the colour on an interior space, fragmenting ONE tag across two [RED TEXT] marker spans (ANZH304 '[Please embed this journal story (as in ANZHFUN01 phase 2]'). DocxExtractor.#parseParagraph's red-merge loop BRIDGES a stray non-red whitespace run that sits MID-TAG between two red runs — fires ONLY when the red text so far has an unbalanced '[' (mid-tag) AND the gap run is whitespace-only AND the next run is red, so it reassembles ONE split tag but NEVER merges across real black content (an intentional '[tag: black label]' form) or between two complete tags. The COMMON same-colour split (Word's usual run fragmentation, e.g. '[Tab 1: I'+'ntroduction'+']' -> [Tab 1: Introduction]) is merged by the consecutive-red loop — this adds only the whitespace-gap variant, which is rare. env REDBRIDGE_OFF turns it off.",
 		"red_label_text": {
@@ -242,7 +251,12 @@
 			"needs_base": {
 				"_doc": "The base guard for whole phrases. A raised or lowered piece needs a BASE immediately before it (base_pattern on the text before it, past inline tags only): x², CO₂, 10⁻¹, Na⁺. One that opens a line, a table cell or a list item, or follows a space, is not an exponent or an index — ART1002's raised list words (<li>Maps</li>; its gold writes them all flat) and MXDI301's cell line «10 raised to the 0 power» after a line break (gold 10<sup>0</sup><br>10 raised to the 0 power) — and stays at normal height. Only read when whole_phrase is enabled.",
 				"enabled": true,
-				"base_pattern": "[\\p{L}\\p{N})\\]’'\"”%°]$"
+				"base_pattern": "[\\p{L}\\p{N})\\]’'\"”%°]$",
+				"after_index": {
+					"_doc": "A RAISED PIECE RIGHT AFTER A LOWERED ONE HAS ITS BASE. An ion's charge is typed raised straight after the lowered count of its last atom — CO₃²⁻, SO₄²⁻, PO₄³⁻ (CBI1009's equations) — so the text right before the raised piece ends with the closing of the lowered piece, not a letter or digit, and the base guard dropped the charge to the line («CO<sub>3</sub>2-»). A raised piece whose text before it ends with a closed lowered piece (or a closed raised piece) has its base. Env SUPAFTERSUB_OFF.",
+					"enabled": true,
+					"env": "SUPAFTERSUB_OFF"
+				}
 			}
 		},
 		"underline": {
@@ -644,6 +658,15 @@
 			"env": "MLREPEAT_OFF",
 			"max_tables": 8,
 			"_doc": "EVERY MEDIA TABLE THAT CARRIES THE TEMPLATE'S OWN MEDIA-LIST PREAMBLE LEAVES THE CONTENT STREAM: MXEX101 pastes the template's media-list section (the red 'MEDIA LIST' heading, 'Please supply details for ALL external media …', the copyright bullet, the media table) after several lessons, and the trim above removes only the one media table ModuleResolver identifies — the rest would open implicit pages holding the preamble as Writers Notes. After that trim, every further media table (MediaListParser.FindMediaTable) with a phrases_exact / phrases_contains hit within max_blocks before it is trimmed the same way (TrimMediaListPreamble), up to max_tables. A media table with no such preamble (ENGJ402 / MXEO202's journal media lists, HIS1006's resource-pack tables) stays. Seen in MXEX101, MXFUN01, MUS1004. Env MLREPEAT_OFF."
+		},
+		"submission_checklist": {
+			"enabled": true,
+			"env": "CHECKLIST_OFF",
+			"heading_pattern": "^(?:[•·\\-–]\\s*)?(?:mtk writer'?s template:?\\s*)?submission checklist\\b",
+			"line_exact": ["have you", "have you:"],
+			"min_lines": 2,
+			"line_phrases": ["completed section a", "true reflection of old content", "kaimahi guide notes", "for submission to creative services", "toolbox items", "red tag for every component", "resource code is correct", "punctuation, spelling and grammar", "activities against the answers", "hyperlinks work", "completed the media list", "media files separately", "audio or video scripts", "please supply these separately", "received approval for this resource", "metadata form", "corresponding writer's template"],
+			"_doc": "THE TEMPLATE'S SUBMISSION CHECKLIST NEVER SHIPS. The Writers Template ends with its own checklist for the writer ('SUBMISSION CHECKLIST' / 'Have you:' / '☐ Completed Section A …', '☐ Checked the resource code is correct?' …), which the human build never shows. The tail rule above drops it only when it is the first thing after the media table; a writer's note between the two (CEDT404's permission-form link, CEDO402's journal image links, CEDW201's permission forms), a checklist the extractor does not see as the tail (CBI1008, CHI1004's bulleted heading) or the old template's checklist followed by its writing guide (ANZH103) let it reach the last lesson page. A paragraph matching heading_pattern (red markers, bold / italic markers and edge whitespace removed) leaves the content with every following paragraph that is blank, equals a line_exact entry or contains a line_phrases entry, provided at least min_lines of them are checklist lines (a learner-facing assessment checklist under the same heading keeps its own lines and is left alone); the first other block stops the drop (the writer's notes before the heading and anything after the checklist are untouched). Env CHECKLIST_OFF."
 		},
 		"phrases_exact": [
 			"media list",

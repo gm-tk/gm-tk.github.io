@@ -363,7 +363,29 @@ class MediaBuilder {
 			?? "";
 
 		let builtVideoEmbed = false;
-		if (kind === "audio") {
+		// THE AUDIO ANIMATION IS A VIDEO: an audio-resolved tag whose own words name an animation («[Audio animation]») is
+		// the audiovisual team's animation video — the video embed when a YouTube / Vimeo address is found, otherwise the
+		// video frame shell and a developer To Do (never an empty audio player). Data elements.audio_animation; env
+		// AUDIOANIM_OFF.
+		const aa = tpl.elements?.audio_animation;
+		const animation = kind === "audio" && !!aa && aa.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[aa.env ?? "AUDIOANIM_OFF"])
+			&& new RegExp(aa.tag_pattern ?? "\\banimation\\b", "i").test(String(it.text ?? ""));
+		if (animation) {
+			const videoId = url.match(new RegExp(acks.youtube_id))?.[1] ?? null;
+			if (videoId) {
+				let embed = Utils.FillTemplate(tpl.video.youtube, { videoId, params: "" });
+				if (run.conventions?.videoHost === "youtube") embed = embed.replace("youtube-nocookie.com", "youtube.com");
+				out.push(this.#applyVideoIcon(embed, run));
+			} else if (url && new RegExp(aa.video_pattern ?? "youtu\\.?be|youtube\\.com|vimeo\\.com", "i").test(url)) {
+				out.push(this.#applyVideoIcon(Utils.FillTemplate(tpl.video.generic_iframe, { url: Utils.EscapeHtml(url) }), run));
+			} else {
+				const tag = (String(it.text ?? "").match(/\[[^\]]*\]/) ?? [String(it.text ?? "").trim()])[0].replace(/\s+/g, " ");
+				const link = url ? Utils.FillTemplate(aa.link_text ?? " The writer's link: {url}", { url }) : "";
+				out.push(Utils.FillTemplate(tpl.red_flag.todo_form, { text: Utils.EscapeHtml(Utils.FillTemplate(aa.todo_text ?? "{tag}{link}", { tag, link })) }));
+				out.push(aa.frame);
+			}
+		} else if (kind === "audio") {
 			const file = url.split("/").pop() || tpl.audio.default_filename;
 			out.push(Utils.FillTemplate(tpl.audio.form, {
 				filename: Utils.EscapeHtml(/\.\w{2,4}$/.test(file) ? file : tpl.audio.default_filename),

@@ -2787,6 +2787,18 @@ class ContentConverter {
 					const saOwner = saOn
 						? { type: "tag", parse: { tags: [], numbers: [], primary: null }, blackAfter: "" }
 						: null;
+					// A STANDALONE DROPBOX ACTIVITY GETS ITS OWN BOX. The writer opens the dropbox first, types its own learner
+					// text, then its dropbox button ([Dropbox Activity] / [Body] … / [Button] Go to dropbox — MXDB102, MXDI103,
+					// MXFL202): the human gives it its own `activity dropbox` box with the next positional letter, where the upload
+					// box would otherwise join the box before it (the trailing-dropbox hold, KB constraint 43, is for a marker
+					// INSIDE an activity's span). Numbered-lesson pages only (the human numbers the box); the open box closes
+					// first; the box is not `interactive`. Data activity_wrapper.standalone_dropbox_box; env DBXOWNBOX_OFF.
+					const dbOn = !saOn && !reoMode && !bundle.activityOwner && bundle.activityId == null
+						&& !embeddedAct && !reoAct && bundle.type === "dropDown"
+						&& this.#standaloneDropbox(bundle, tpl);
+					const dbOwner = dbOn
+						? { type: "tag", parse: { tags: [], numbers: [], primary: null }, blackAfter: "" }
+						: null;
 					// LEVEL-PAGES ID-LED TASK BUNDLE → ACTIVITY BOX (CHFUN01). In the
 					// level-pages dialect the writer leads each
 					// task widget with its own activity id + title ("[dropquiz] … 1A Check
@@ -2812,7 +2824,7 @@ class ContentConverter {
 					// same numbered `activity interactive` form, but the dialect's box
 					// also carries the writer's OWN title heading (a task type like
 					// radioQuiz can qualify for both — the titled form is the human's).
-					let actOwner = bundle.activityOwner ?? (embeddedAct ? it : (reoOwner ?? lvOwner ?? saOwner));
+					let actOwner = bundle.activityOwner ?? (embeddedAct ? it : (reoOwner ?? lvOwner ?? saOwner ?? dbOwner));
 					// A SYNTHETIC WIDGET BOX NEVER OPENS INSIDE AN OPEN ACTIVITY BOX. The standalone saOwner /
 					// level-pages lvOwner are decided AFTER the isNewActivity guard above (which closes an open
 					// activity only for a bundle with a REAL owner or id), so a standalone task widget met while a
@@ -2845,6 +2857,13 @@ class ContentConverter {
 							}
 						}
 					}
+					// the standalone dropbox box is a sibling of the box before it, never nested in it
+					if (actOwner && actOwner === dbOwner) {
+						while (stack.length && stack[stack.length - 1].tag === "activity") {
+							emit(stack.pop().close);
+							if (!stack.length) breakRow();
+						}
+					}
 					rowFor(actOwner ? "section" : "block");   // activity = own section row; inline widget flows
 					if (actOwner) {
 						// OSAI301 1A shape: render a REAL activity wrapper, its
@@ -2859,7 +2878,8 @@ class ContentConverter {
 						// plain `activity` form (the gold's usual box around "Go to quiz")
 						const mtkShellEarly = this.#mtkQuizShellBundle(bundle, it);
 						const mtkPlainBox = mtkShellEarly === "widget" && mtkCfg && mtkCfg.shell_box_plain !== false;
-						const forceInt = !mtkPlainBox && [bundle.type, ...(bundle.extraTypes ?? [])]
+						// the standalone dropbox box is the gold's plain `activity dropbox`, never `interactive`
+						const forceInt = actOwner !== dbOwner && (!mtkPlainBox && [bundle.type, ...(bundle.extraTypes ?? [])]
 							.some((t) => interactiveTypes.has(t))
 							// a SYNTHETIC standalone box is `activity interactive` by
 							// construction — the box only exists because of the widget it wraps
@@ -2872,7 +2892,7 @@ class ContentConverter {
 							// `activity alertPadding`) never comes through this path and stays plain.
 							// Data: id_heading_opener.force_interactive
 							|| (!!actOwner?._idHeading
-								&& DataService.Data.BoundaryBank?._meta?.opener_rule?.id_heading_opener?.force_interactive !== false);
+								&& DataService.Data.BoundaryBank?._meta?.opener_rule?.id_heading_opener?.force_interactive !== false));
 						// A BUNDLE-OWNED activity (module BLL124, activities 2C/2D — the "interactive
 						// captured right after the opener" case) needs its own supervisor-note lookahead:
 						// without one, any note attached to it — whether directly after the opener or further
@@ -2896,7 +2916,7 @@ class ContentConverter {
 						// (TEFUN04 gold 1A,-,-,-,1B) — the synthetic box takes no letter there
 						const _pnPhasePage = typeof this.#pageLessonNumber === "number" && !run._levelMenu
 							&& (tpl.activity_wrapper?.phase_numbering?.synthetic_unnumbered !== false);
-						emit(...ActivitiesBuilder.activityOpen(actOwner, stack, run, false, this.#phaseBareId(actOwner, bundle.activityId, tpl), forceInt, bSupNote, this.#pageLessonNumber, this.#lessonLetterMap, (actOwner === saOwner && !_pnPhasePage) || actOwner === lvOwner));
+						emit(...ActivitiesBuilder.activityOpen(actOwner, stack, run, false, this.#phaseBareId(actOwner, bundle.activityId, tpl), forceInt, bSupNote, this.#pageLessonNumber, this.#lessonLetterMap, (actOwner === saOwner && !_pnPhasePage) || actOwner === lvOwner || (actOwner === dbOwner && !_pnPhasePage)));
 						if (bSupNote) bSupNote.consumedBy = "activity-super-content";
 						// The level-pages id-led box: the writer's own lead title —
 						// "1A Check your understanding" minus the id — is the box's heading
@@ -9907,6 +9927,18 @@ class ContentConverter {
 	 * with no activity of its own (the loop's own isNewActivity test, inverted).
 	 * Data activity_wrapper.owned_activity_keeps_trailing_dropbox; env ACTDBXINSIDE_OFF.
 	 */
+	/** Does this freed upload-box bundle open its OWN `activity dropbox` box? (the writer's dropbox opener first,
+	 *  its own text, then its button — InteractiveBuilder.UploadBoxStandalone) on a numbered-lesson page. Shared by
+	 *  the inline emit site and #dropboxTailHold so the two cannot drift.
+	 *  Data activity_wrapper.standalone_dropbox_box; env DBXOWNBOX_OFF. */
+	static #standaloneDropbox(bundle, tpl) {
+		const cfg = tpl.activity_wrapper?.standalone_dropbox_box;
+		if (!cfg || cfg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "DBXOWNBOX_OFF"]) return false;
+		if (this.#pageLessonNumber == null) return false;
+		return InteractiveBuilder.UploadBoxStandalone(bundle, tpl.interactive_builders?.dropDown);
+	}
+
 	static #dropboxTailHold(bodyItems, i, bundles, ownerIdx, tpl, renderedHeading) {
 		const cfg = tpl.activity_wrapper?.owned_activity_keeps_trailing_dropbox;
 		if (!cfg || cfg.enabled === false) return false;
@@ -9932,6 +9964,7 @@ class ContentConverter {
 				if (b.type === "dropDown" && b.canonTag !== "activity"
 					&& b.activityOwner === undefined && b.activityId === null
 					&& InteractiveBuilder.UploadBoxCandidate(b, ddTpl)) {
+					if (this.#standaloneDropbox(b, tpl)) return false;    // it opens its own box (standalone_dropbox_box)
 					for (const s of strays) s._dbxStrayCloser = true;
 					return true;
 				}
