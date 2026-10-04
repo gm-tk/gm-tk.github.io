@@ -3447,7 +3447,7 @@ class ContentConverter {
 					breakRow();
 					const reoGridOn = (dlCfg.reo_layout_table_grid?.enabled !== false)
 						&& !(typeof process !== "undefined" && process.env && process.env.REOLTABLE_OFF);
-					const reoGrid = reoGridOn ? TablesAndGrids.layoutTableGrid(it.block.rows ?? [], run, false, this.#norm, it.block.links ?? null) : null;
+					const reoGrid = reoGridOn ? TablesAndGrids.layoutTableGrid(it.block.rows ?? [], run, false, this.#norm, it.block.links ?? null, it.block) : null;
 					// LEAK-SAFE: use the grid ONLY when it is clean. A grid cell whose text carries a
 					// resolved [tag] somewhere in the MIDDLE of its text (the cell renderer only strips
 					// a LEADING tag, not one buried mid-sentence) would leak that raw tag as VISIBLE
@@ -3481,7 +3481,7 @@ class ContentConverter {
 					parts.push(BilingualBuilder.UnbuiltBox(TablesAndGrids.contentTable(it.block, run, true, this.#norm), it.block, run,
 						"a table whose cells keep a tag the page cannot show (the MTK leak guard) — kept raw"));
 				};
-				const grid = stack.length ? null : TablesAndGrids.layoutTableGrid(it.block.rows ?? [], run, false, this.#norm, it.block.links ?? null);
+				const grid = stack.length ? null : TablesAndGrids.layoutTableGrid(it.block.rows ?? [], run, false, this.#norm, it.block.links ?? null, it.block);
 				if (grid) {
 					if (_lgOn && this.#htmlLeaksResolvedTag(grid)) {
 						_lgFallback();
@@ -5382,7 +5382,14 @@ class ContentConverter {
 		const maxLen = cfg.max_title_chars ?? 45;
 		// first <p> inside a .alert (optionally inside its row>col), promoted ONLY when a
 		// following block tag exists after it (`\s*<[^/]` — a closing </div> = the only block).
-		const re = /(<div class="alert[^"]*">\s*(?:<div class="row">\s*<div class="col[^"]*">\s*)?)<p\b[^>]*>([\s\S]*?)<\/p>(\s*<[^/])/gi;
+		// The title may not contain a </p> (alert_title_heading.no_cross_p; env ALERTHCROSS_OFF): the lazy match
+		// would run past a paragraph closed by </div> into the NEXT alert and take its title.
+		const ncp = cfg.no_cross_p;
+		const noCross = !!ncp && ncp.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[ncp.env ?? "ALERTHCROSS_OFF"]);
+		const re = noCross
+			? /(<div class="alert[^"]*">\s*(?:<div class="row">\s*<div class="col[^"]*">\s*)?)<p\b[^>]*>((?:(?!<\/p>)[\s\S])*?)<\/p>(\s*<[^/])/gi
+			: /(<div class="alert[^"]*">\s*(?:<div class="row">\s*<div class="col[^"]*">\s*)?)<p\b[^>]*>([\s\S]*?)<\/p>(\s*<[^/])/gi;
 		return html.replace(re, (full, pre, inner, after) => {
 			const text = inner.replace(/<[^>]+>/g, " ").replace(/&[a-z]+;/gi, " ").trim();
 			if (!text || text.length > maxLen) return full;

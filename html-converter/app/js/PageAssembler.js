@@ -186,6 +186,50 @@ class PageAssembler {
 		if (n) run.AddNote("info", "PageAssembler", `${n} media tag(s) typed in black at a paragraph head read as the writer's red tag, after the widget scan.`);
 	};
 
+	/**
+	 * THE BLACK DEVELOPER NOTE IS A WRITERS NOTE. A writer's note to the developer typed in BLACK ("Note to CS – Please use
+	 * Sassoon font.", "DEV: Colour code for phase 2:", "Can we make something like this please?") would ship as learner text; the
+	 * human build drops these lines. A black item whose plain text matches red_flag.black_developer_note.pattern — or a heading
+	 * tag (heading_tags) whose whole payload does — becomes the writer-instruction item the normaliser already makes of that text
+	 * (Parse → class "instruction", no tag), so ContentConverter's instruction path prints the red Writers Note in its place. A
+	 * parse that is not a pure instruction is left alone. Data red_flag.black_developer_note; env BLACKDEVNOTE_OFF.
+	 *
+	 * @param {Object[]} items - the module's body items (mutated in place)
+	 * @param {ConversionRun} run
+	 * @param {TagNormaliser} normaliser
+	 */
+	static #blackDeveloperNote(items, run, normaliser) {
+		const cfg = DataService.Data.EmitTemplates?.red_flag?.black_developer_note;
+		if (!cfg || cfg.enabled === false || !normaliser || !cfg.pattern) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "BLACKDEVNOTE_OFF"]) return;
+		const re = new RegExp(cfg.pattern, "i");
+		const plain = (s) => String(s ?? "").replace(/<[^>]+>|\*+/g, "").replace(/\s+/g, " ").trim();
+		const heads = new Set(cfg.heading_tags ?? []);
+		// a black line inside a widget's capture (the nearest tag before it, over black lines only, is a widget tag) is the
+		// widget's own content — the hand-off box keeps it as the writer typed it (cfg.inside_widget: false)
+		const inWidget = (i) => {
+			if (cfg.inside_widget !== false) return false;
+			let h = i - 1;
+			while (h >= 0 && items[h] && items[h].type === "black") h--;
+			const tag = h >= 0 && items[h]?.type === "tag" ? items[h].parse?.primary?.tag : null;
+			try { return !!tag && normaliser.GetWidgetTypes(tag).length > 0; } catch { return false; }
+		};
+		let n = 0;
+		for (const [i, it] of items.entries()) {
+			if (!it) continue;
+			let text = null;
+			if (it.type === "black" && !inWidget(i)) text = plain(it.text);
+			else if (it.type === "tag" && heads.has(it.parse?.primary?.tag) && !String(it.text ?? "").replace(/\[[^\]]*\]|\u{1f534}\[\/?RED TEXT\]\u{1f534}/gu, "").trim())
+				text = plain(it.blackAfter);   // a heading tag whose whole payload is the note
+			if (!text || !re.test(text)) continue;
+			const p = normaliser.Parse(text);
+			if (p?.class !== "instruction" || p.primary) continue;
+			it.type = "tag"; it.parse = p; it.text = text; it.blackAfter = "";
+			n++;
+		}
+		if (n) run.AddNote("info", "PageAssembler", `${n} black developer note${n > 1 ? "s" : ""} read as the Writers Note, not learner text (red_flag.black_developer_note).`);
+	};
+
 	static #untaggedProverb(items, run, normaliser) {
 		const cfg = DataService.Data.EmitTemplates?.callouts?.untagged_proverb;
 		if (!cfg || cfg.enabled === false || !normaliser) return;
@@ -464,6 +508,7 @@ class PageAssembler {
 		PageAssembler.#cotagDuplicateId(items, run);   // ACTHDCOTAG_OFF — the co-tag rule's own guard
 		PageAssembler.#boldIdWidgetActivity(items, run, normaliser);   // BOLDIDACT_OFF
 		PageAssembler.#untaggedProverb(items, run, normaliser);   // UNTAGPROVERB_OFF
+		PageAssembler.#blackDeveloperNote(items, run, normaliser);   // BLACKDEVNOTE_OFF
 		run.pages = PageSplitter.Split(items, run, normaliser);
 		if (!run.pages.length) {
 			run.AddNote("error", "PageAssembler",

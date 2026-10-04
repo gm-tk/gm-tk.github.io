@@ -13,6 +13,20 @@
 		"todo_form": "<p class=\"cv2-note\" style=\"color: red; font-weight: bold;\">Designer/Developer To Do: {text}</p>",
 		"legacy_form": "<p class=\"cv2-note\" style=\"color: red\">RED FLAG: {text}</p>",
 		"legacy_cs_form": "<p class=\"cv2-note\" style=\"color: red\">CS: {text}</p>",
+		"black_developer_note": {
+			"enabled": true,
+			"env": "BLACKDEVNOTE_OFF",
+			"pattern": "^\\W{0,3}(?:note\\s*(?:to|for)\\s*(?:the\\s*)?(?:cs|dev|developers?|designers?|creative services|graphic designers?|editors?)\\b|(?:cs|dev|developer|designer)\\s*[:\\-\\u2013\\u2014]\\s|(?:please\\s+)?(?:can|could)\\s+(?:we|the\\s+(?:cs|developer|designer))\\s+(?:please\\s+)?(?:insert|add|create|make|use|put|build|have)\\b(?=.*\\b(?:please|modal|carousel|flip\\s?cards?|accordion|tabs?|button|hover|interactive|sections?|image|video|font|layout|colou?r|drag|ākonga|akonga|students?|learners?|this)\\b))",
+			"heading_tags": [
+				"h2",
+				"h3",
+				"h4",
+				"h5"
+			],
+			"inside_widget": false,
+			"_inside_widget_doc": "false: a black line inside a widget's capture (the nearest tag before it, over black lines only, is a widget tag) is left as the widget's own content — the un-built hand-off box keeps the writer's lines as typed (XOTPB09 / XOTPB13's carousel boxes keep their «CS: …» line).",
+			"_doc": "THE BLACK DEVELOPER NOTE IS A WRITERS NOTE. A line the writer addressed to the developer but typed in BLACK ('Note to CS – Please use Sassoon font.', 'Note to developer – …', 'DEV: Colour code for phase 2:', 'Cs: can these two images …', 'Can we make something like this please?') would ship as learner text; the human build drops these lines. A black item whose text matches `pattern` — or a heading tag (heading_tags) whose whole payload does — is read as the writer-instruction item the normaliser already makes of that text (Parse → class instruction, no tag), so the instruction path prints the red Writers Note in its place. A parse that is not a pure instruction is left alone. The 'Insert / Add image …' form is NOT listed: it mixes learner instructions ('Add photos of your work to your journal'). Env BLACKDEVNOTE_OFF reverts."
+		},
 		"todo_lead": {
 			"enabled": true,
 			"env": "TODOLEAD_OFF",
@@ -354,6 +368,11 @@
 				"enabled": true,
 				"env": "TBLHEADLONG_OFF",
 				"data_row_min_words": 9,
+				"image_row": {
+					"enabled": true,
+					"env": "TBLHEADIMG_OFF",
+					"_doc": "A FIRST ROW HOLDING A PICTURE IS A DATA ROW. A header cell is a column label (KB 05D); a picture is the row's content. When a kept table's first row would be the header and one of its rendered cells holds an <img> (whatever route built it — the writer's [image] tag, a red image reference, a title-anchored image cell), the row renders with the data-cell template (<td>) instead. Where the human build keeps the picture in a table cell it writes <td> (seven modules — ENGC401, ENGS301, ENGS401's judge tables, MXDI202, XLP01, XMES202, XMES203) and <th> in one (CHFUN04). The cells are rendered once as the header row and re-tagged, so a header cell's bold rule stands for that row."
+				},
 				"_doc": "A kept table's first row is the header row (<th>) — KB 05D's `<tr><th>Header 1</th>…` form, a column LABEL — UNLESS one of its cells runs to data_row_min_words words or more: a sentence is not a label, and that row renders as data (<td>; a [Body, bold] cell keeps its <b> as data cells do). In the human build a first row with a long (>= 9-word) cell is almost always <td>, while shorter first rows are mostly <th>; no other shape signal (columns, rows, bold) separates them. FREE-BODY tables only — a table inside an un-built widget's hand-off dump keeps its raw first-row form (the placeholder containment). The word count strips the red-run markers and the ** / __ emphasis. Env TBLHEADLONG_OFF = every first row th."
 			},
 			"cell_bullets": {
@@ -363,7 +382,12 @@
 				"numbered": {
 					"enabled": true,
 					"env": "TBLCELLOL_OFF",
-					"_doc": "A WORD-NUMBERED LIST IN A CELL IS AN <ol>. The extractor parses a cell's paragraphs without the numbering map, so every list item in a cell carries the bullet prefix '• ' (its text and the document's list counters are untouched by this rule), and it records beside the rows the text of each paragraph whose Word list is numbered (the table block's cellNumbered). On this list path such an item renders as a numbered item, so the cell's run becomes an <ol>. Where the human keeps a cell's list, the writer's Word format decides its kind: a numbered Word list is an <ol> about 20 times in 21 and a bulleted one a <ul> about 96 times in 97. Elsewhere the writer's cell numbering stays as it was: across the corpus the human rarely shows it, so it is never restored into the cell text. Env TBLCELLOL_OFF = every cell list item a <ul> item."
+					"_doc": "A WORD-NUMBERED LIST IN A CELL IS AN <ol>. The extractor parses a cell's paragraphs without the numbering map, so every list item in a cell carries the bullet prefix '• ' (its text and the document's list counters are untouched by this rule), and it records beside the rows the text of each paragraph whose Word list is numbered (the table block's cellNumbered). On this list path such an item renders as a numbered item, so the cell's run becomes an <ol>. Where the human keeps a cell's list, the writer's Word format decides its kind: a numbered Word list is an <ol> about 20 times in 21 and a bulleted one a <ul> about 96 times in 97. Elsewhere the writer's cell numbering stays as it was: across the corpus the human rarely shows it, so it is never restored into the cell text. Env TBLCELLOL_OFF = every cell list item a <ul> item.",
+					"grid": {
+						"enabled": true,
+						"env": "GRIDCELLOL_OFF",
+						"_doc": "The same in a LAYOUT-GRID cell (a table rebuilt as a row of columns, renderCellParts — an activity box, a column of text beside a picture): a cell list item whose Word list is numbered renders as a numbered item, so the run is an <ol> (the gold's form in activity boxes 35 of 35, in body columns 26 of 31). Matched by the item's own text against the cell's cellNumbered record, as on the kept-table path. Env GRIDCELLOL_OFF = a grid cell's list items stay <ul> items."
+					}
 				}
 			},
 			"cell_paragraphs": {
@@ -372,15 +396,50 @@
 				"joiner": " ",
 				"_doc": "A TABLE CELL'S PARAGRAPHS ARE LINES, NOT SLASHES. The extractor joins a Word cell's paragraphs with the in-cell marker « / » and records the paragraphs themselves beside the rows (cellParas); a free-body data cell of two or more paragraphs renders them as lines joined by joiner, so the learner reads «Tīkina o tino pene…» and «Kautehia ia kara…» on two lines instead of one line broken by a slash. A writer's own « / » inside one paragraph («Whenu / Strand») is never split — the paragraphs come from the side-channel, not from the marker — and a cell a caller rewrote keeps its single-line form. The human build writes these lines with <br> more than any other form (CBI, CEDK, XGF, MXDB, CEDW almost always). Hand-off boxes keep the raw marker (a developer reference)."
 			},
+			"cell_image_reference": {
+				"enabled": true,
+				"env": "CELLIMGREF_OFF",
+				"_doc": "THE WRITER'S IMAGE REFERENCE IN A TABLE CELL IS THE CELL'S IMAGE. A writer often types the picture a cell should hold as a red label with no bracket — «Image: iStock: symbol on speech bubble:», «Image RHS: iStock: board walk along the lake waihola:», «Image on RHS of text: istock: Lake Wanaka New Zealand:» — followed by the stock or source address. A kept table cell prints red text as cell text, so the learner read the label and a raw link. In a FREE-BODY table cell, a red span that holds no bracket, opens with an image word and reads as a label (label_pattern: the image word, then a colon within a few words), together with its web address — inside the span, typed right after it, on the cell's next line, or (with no address typed) the table link whose words sit inside the span — renders through the cell's own image emitter (TablesAndGrids.cellImage: the run's Mode P / D image, the iStock id giving the file name) in the place the writer put it; the cell's other words stay. Text after the address on the same line stays as the cell's text. A span with a bracket, a label with no resolvable address, and hand-off boxes are left exactly as they were. The human build carries the picture on about two thirds of these (its stock id in an <img>), in the cell or beside the table. The layout-grid cell (a table rebuilt as a row of columns) has its own switch, grid.",
+				"label_pattern": "^\\s*(?:(?:rhs|lhs|left|right)\\s+)?(?:image|photo|picture|illustration|graphic|icon|diagram)s?\\b[^:\\n\\[\\]]{0,40}?:",
+				"address_pattern": "https?://[^\\s<>\"\\]\\[]+",
+				"trailing_note": true,
+				"_trailing_note_doc": "The cell's next line, wholly red with no bracket, straight after the reference («(image needs to be flipped vertically as above)») is the writer's note on that picture: it renders as a Writers Note beside the image (the layout cell's red-note form) instead of cell text. false = it stays cell text.",
+				"grid": {
+					"enabled": true,
+					"env": "GRIDIMGREF_OFF",
+					"_doc": "The same reference in a LAYOUT-GRID cell (renderCellParts): the part renders as the image (cellImage) in place, before the red-note rule that would otherwise print a wholly red reference as a Writers Note, and instead of the learner paragraph a red label with a black address printed."
+				},
+				"semicolon_label": {
+					"enabled": true,
+					"env": "IMGLABELSEMI_OFF",
+					"label_pattern": "^\\s*(?:(?:rhs|lhs|left|right)\\s+)?(?:image|photo|picture|illustration|graphic|icon|diagram)s?\\b[^:;\\n\\[\\]]{0,40}?[:;]",
+					"_doc": "The label's colon may be a semicolon («Image; iStock; organic waste; https://…» — CEDK401, CEDT501): some writers separate the label's parts that way. When on, this label_pattern replaces the block's own."
+				}
+			},
+			"cell_red_request": {
+				"enabled": true,
+				"env": "CELLREDREQ_OFF",
+				"min_words": 3,
+				"_doc": "THE WRITER'S RED REQUEST IN A TABLE CELL IS A WRITERS NOTE. A kept table cell prints red text as cell text, because a red span in a cell is usually a data label the learner should read. A red span that is a request to the developer («Please insert the image on page 6», «Can we split this picture please», «(Please use a diagram that looks like this: )») was printed to the learner the same way. In a FREE-BODY kept-table cell, a red run (consecutive red spans read as one) with no bracket, at least min_words words and an instruction cue (Instruction_Cues.cue_patterns — the same test that makes an un-bracketed red span in the free body a Writers Note) renders as a Writers Note (NotesAndComments.redFlag kind cs) where the writer put it; the cell's other words stay. A red run with no cue — a data label, a header label, red answer or learner text — stays visible as before. Runs the image-reference rule has taken are not seen here. The layout-grid cell has its own red-note rule (layout_table_grid.red_part_note). Hand-off boxes keep the raw form."
+			},
+			"cell_audio_word": {
+				"enabled": true,
+				"env": "CELLAUDIOWORD_OFF",
+				"form": "<div class=\"audioButton\" audioName=\"{name}\"></div>",
+				"max_words": 4,
+				"max_edit": 2,
+				"name_joiner": "-",
+				"_doc": "THE WRITER'S RED [word] BESIDE ITS WORD IS THE WORD'S AUDIO BUTTON. A te reo dictionary table puts, in each row, the writer's red «[kuia]» (the audio request) in the first cell and the word «kuia» in the next, then its meaning; the page printed «[kuia]» to the learner. The human build makes every such cell the word's audio button, `<td><div class=\"audioButton\" audioName=\"kuia\"></div></td>` (BLL271 / 273 / 274 / 275 / 276: 58 of 58 rows), named from the VISIBLE word in the next cell (BLL271's «[teketeko]» beside «tekoteko» → tekoteko): folded (no macrons, lower case), its other characters dropped, its words joined by name_joiner («Ngāti Porou» → ngati-porou, «Auē!» → aue). In a FREE-BODY kept table, a cell that is wholly red and only «[w]» (at most max_words words) whose next cell is plain text (no red, no bracket, at most max_words words) folding to w within max_edit letters renders as `form`; a first row led by such a cell is a data row, not the header (a header label carries no audio request). Any other bracketed red cell stays as before. Hand-off boxes keep the raw form."
+			},
 			"merged_cells": {
 				"enabled": true,
 				"env": "TBLMERGE_OFF",
 				"colspan_attr": " colspan=\"{n}\"",
 				"rowspan_attr": " rowspan=\"{n}\"",
 				"rows": {
-					"enabled": false,
+					"enabled": true,
 					"env": "TBLMERGEROWS_OFF",
-					"_doc": "The vertical half, held inert: a cell merged down rows (w:vMerge restart + its continuation cells) renders with rowspan and its EMPTY continuation cells are omitted. Measured over the whole corpus it moves 18 pages, 9 up and 9 down — the dips are tables the human rebuilt as a widget (a quiz's «Options» column) or kept with empty cells — so it stays off until a discriminator separates them. When off, a vertically merged cell renders as before (the origin cell, then empty cells below it)."
+					"_doc": "The vertical half: a cell merged down rows (w:vMerge restart + its continuation cells) renders with rowspan and its EMPTY continuation cells are omitted. Measured over the whole corpus it moves 25 pages / 21 modules, 10 up / 9 down, net positive, every gate held. The dips are tables the human rebuilt in another form (ENGC301's quiz «Options» column as a widget, AGH1007's shared description repeated in each row) or whose header row differs (ENGS401's judge tables — the gold's own rowspan, a <td> first row); the human build uses rowspan where it keeps the merge (ENGI405, ENGJ201, ENGS202, ENGS401, CEDK501, MXDI301, MXFUN01). When off, a vertically merged cell renders as before (the origin cell, then empty cells below it)."
 				},
 				"_doc": "THE WRITER'S MERGED TABLE CELL IS A MERGED CELL. A Word table cell merged across columns (w:gridSpan) renders with colspan, so a merged header such as «Income (weekly)» spans the whole table instead of leaving a short, ragged row. The vertical half (rowspan) is the `rows` block below. The extractor records each cell's Word facts (span width, vertical-merge state, grid column) beside the table's rows; the text form, the widget builders and the hand-off dumps read nothing new. Applied to FREE-BODY tables only (a hand-off dump keeps the writer's raw grid) and only when the recorded facts line up with the rows the renderer receives (a caller that re-cut the rows keeps the plain form). A continuation cell that carries text stays a visible cell. The human build uses colspan on most plain tables where the writer merged across columns, and where it does not it moved the merged row out of the table or rebuilt the grid — never a short row; where the writer merged down rows it uses rowspan or drops the merged column, almost never a column of empty cells."
 			},
@@ -457,6 +516,13 @@
 				"exclude_pattern_note": "A visible text ending in a file extension (`Tukutuku.jpg`) passes the address shape but is a file name, never woven. Web-page endings (.html / .php) and every domain ending stay addresses.",
 				"anchor_pattern":"^(?:(?:https?://)?(?:www\\.)?[\\w-]+(?:\\.[\\w-]+)+(?:/\\S*)?|[\\w.+-]+@[\\w-]+(?:\\.[\\w-]+)+)[).,;:]?$",
 				"anchor_pattern_note": "Only a link whose VISIBLE text is itself a web address or an email address is woven into a cell (`www.youthline.co.nz`, `help@netsafe.org.nz`): a table block's link list also carries its image / file / video asset references (iStock titles, SharePoint files, YouTube clips, a single hyperlinked letter) and descriptive phrases whose text recurs elsewhere in the table, which the human mostly does not link — only the address shape is the writer's unambiguous learner-facing link.",
+				"phrase_links": {
+					"enabled": true,
+					"env": "CELLPHRASELINK_OFF",
+					"min_words": 2,
+					"asset_host_pattern": "istockphoto|gettyimages|shutterstock|unsplash|pexels|pixabay|vecteezy|freepik|mychillybin|youtube\\.com|youtu\\.be|vimeo|sharepoint|onedrive|1drv|drive\\.google|docs\\.google|dropbox|desire2learn|wikimedia|canva\\.com|flickr|bing\\.com/(?:images|search)|google\\.[a-z.]+/(?:search|imgres)|images\\.google|safelinks\\.protection\\.outlook",
+					"_doc": "THE WRITER'S PHRASE LINK IN A TABLE CELL KEEPS ITS ADDRESS. Beside the address-shaped links above, a cell also weaves a link whose visible words are a phrase of at least min_words words («online contact form» → netsafe.org.nz/report) when its target is an ordinary web page: not a stock-image, video, file-share, drive or LMS host (asset_host_pattern — those links are the writer's asset references, a picture's title, a clip, a file; an image-search or mail-safelink address is a source, not a page) and not a file. The gold links these phrases (the OS series' Netsafe «online contact form», the TWHK volunteering pages). Env CELLPHRASELINK_OFF = address-shaped links only."
+				},
 				"note": "THE WRITER'S HYPERLINK IN A TABLE CELL. The weave below also runs in the three table-cell renderers (TablesAndGrids.renderCellInline's segments, the data-table cell fallback, renderCellParts' text flush + heading), which receive the table block's own links, so a writer's cell hyperlink renders as a link as the human keeps it (OSBY401 2.0 `Email help@netsafe.org.nz` / `online contact form`, CEDW501 / CEDT501 `www.youthline.co.nz`, CEDK501 `www.sorted.org.nz`). Free-body cells only — a table inside an un-built widget's hand-off box stays the raw dump. Env CELLLINKWEAVE_OFF turns it off."
 			},
 			"note": "A run HYPERLINKED in the Writers Template (a real w:hyperlink, captured by DocxExtractor as block.links {text,target}) is woven onto its DESCRIPTIVE phrase as <a href=target>phrase</a>, the human convention (the human links descriptive phrases, not bare URLs). The writer's [external link] tag is an 'opens externally' MODIFIER on the phrase, not its own element, so it emits no separate bare-URL <p> when the block already carries a descriptive-phrase hyperlink (#inline suppress). Conservative: exact phrase text, first occurrence per line, skipped if already inside an <a> or if the link text IS the URL (the bare-URL rule links those). Env LINKWEAVE_OFF turns off BOTH the weave and the [external link] suppress (plain phrase + separate bare URL)."
@@ -7055,7 +7121,7 @@
 		},
 		"orphan_punctuation": {
 			"_doc": "ORPHAN PUNCTUATION. A block (p / h1–h6 / li) whose whole text is ONE sentence mark, or a mark with no wording, is what is left when an inline widget capture, a fill-in answer span, a URL line or a moved definition took the words around it — the gold never ships one. merge_pattern (a lone . , ; : ! ?): the mark joins the end of the text block that closes right before it (through a list close), so the writer's mark is kept; with no text block before it the block is removed. drop_pattern (a lone dash or bullet glyph, a bare ** run, the cell line-break marker / on its own): the block is removed, with a list it leaves empty. Verbatim zones — hand-off boxes, developer notes and comments, the built widgets on typed_number_list.verbatim_widget_classes — are never touched. Env ORPHANPUNCT_OFF.",
-			"enabled": false,
+			"enabled": true,
 			"env": "ORPHANPUNCT_OFF",
 			"elements": ["p", "h1", "h2", "h3", "h4", "h5", "h6", "li"],
 			"merge_pattern": "^[.,;:!?]{1,2}$",
@@ -7236,6 +7302,11 @@
 			"enabled": true,
 			"level": 4,
 			"max_title_chars": 45,
+			"no_cross_p": {
+				"_doc": "The title paragraph may not CONTAIN a `</p>`: the lazy `<p>([\\s\\S]*?)</p>(\\s*<[^/])` runs past a paragraph closed by `</div>` (an alert whose only paragraph is its body, or an empty red-flag alert) into the NEXT alert, takes that alert's first paragraph, and leaves its short title a <p>. Promotion rules unchanged (max_title_chars, a following block tag). Built and held OFF: 7 pages / 5 modules, under the body floor on its own. Env ALERTHCROSS_OFF = the lazy match.",
+				"enabled": false,
+				"env": "ALERTHCROSS_OFF"
+			},
 			"_note": "An [alert] callout whose FIRST content line is a SHORT TITLE ('Safety message', 'Key points from today's lesson:') followed by body is rendered by the human as a HEADING inside the alert (<h4>, as in OSAI201-03 'Safety message'), not a <p>. A post-pass (run AFTER re-levelling, like named_headings, so the h4 is not re-levelled) promotes the FIRST <p> inside a .alert to <h{level}> when its text is <= max_title_chars AND a following block exists (a single-block alert is body, untouched). With <=45 chars and >=2 blocks the human uses a heading far more often than a <p>, and the heading-first level is mostly h4, so level 4 is the default. A <p>->h4 tag change never alters the row/col/activity wrapper chain. Env ALERTH_OFF turns it off."
 		},
 		"heading_relevel": {

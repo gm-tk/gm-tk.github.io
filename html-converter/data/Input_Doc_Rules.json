@@ -196,6 +196,11 @@
 		}
 	},
 	"list_numbering": {
+		"level_format": {
+			"enabled": true,
+			"env": "LISTLEVELFMT_OFF",
+			"_doc": "A WORD LIST'S KIND IS READ PER LEVEL. Word defines a list's marker per level (w:lvl ilvl → numFmt): a numbered list often carries bulleted sub-points, and a bulleted list numbered ones. The kind was read from level 0 only, so a bulleted sub-level under a numbered list rendered as an <ol> («  1. Both sides look the same, like a mirror image.»). Each list paragraph now takes the kind of its own level (bullet → • / <ul>, any numbering format → 1. / <ol>); a level that defines none (numFmt none, or absent) keeps the level-0 kind. The table-cell numbered record (cellNumbered) reads it the same way. Env LISTLEVELFMT_OFF = level 0 for every level."
+		},
 		"word_count": {
 			"enabled": true,
 			"env": "OLNUM_OFF",
@@ -210,6 +215,13 @@
 		"italic": "*",
 		"bullet_prefix": "• ",
 		"preserve_leading_space": true,
+		"wrap_per_line": {
+			"enabled": true,
+			"env": "STYLEPERLINE_OFF",
+			"bold": true,
+			"italic": true,
+			"_doc": "A STYLED RUN ACROSS THE WRITER'S SOFT LINE BREAK IS STYLED ON EACH LINE. A bold or italic run that holds a Word soft line break (w:br, a real newline in the run text) was wrapped once across the break ('**Strong g\\nSoft g**'), and the per-line split downstream left '<p>**Strong g</p><p>Soft g**</p>': the markers shown to the learner and the style lost. Each line of such a run is wrapped on its own ('**Strong g**\\n**Soft g**'), with the same leading / trailing space rule per line — here in the extractor, the one place that knows a real bold run from asterisks the writer typed (footnote marks «*», «**», «***»). bold / italic turn each half on. An answer mark that spans the break is matched with the markers allowed at each break (Utils.MarkAnswers). Env STYLEPERLINE_OFF = the single wrap."
+		},
 		"run_toggle_forms": {
 			"_doc": "A RUN'S BOLD / ITALIC IN EITHER XML FORM. Desktop Word writes <w:b/>; another serialiser writes the same element with a space before the closing slash (<w:b />, <w:b w:val=\"1\" />) and may spell the on-value \"on\". With this block enabled the extractor's bold / italic test accepts optional whitespace before the slash and every value listed in on_values; disabled, or under the env toggle, it accepts the compact form with 1 / true only — and a document saved in the spaced form ships without any of the writer's bold or italic. w:val=\"0\" / \"false\" stays off in both.",
 			"enabled": true,
@@ -298,13 +310,19 @@
 	},
 	"paragraph": {
 		"soft_break_newline": true,
+		"no_break_hyphen": {
+			"enabled": true,
+			"env": "NBHYPHEN_OFF",
+			"char": "-",
+			"_doc": "THE WRITER'S NON-BREAKING HYPHEN IS KEPT. Word stores a non-breaking hyphen (Ctrl+Shift+-) as its own element, <w:noBreakHyphen/>, not as text, so reading only the w:t text glued the words ('second‑hand' → 'secondhand', 'follow‑up' → 'followup'). The element is read as `char` at its own position (the human build writes a plain hyphen, 'ding-ding'). Env NBHYPHEN_OFF = the element is skipped."
+		},
 		"rule": "A writer's Shift+Enter stores a <w:br/> INSIDE the paragraph; extracting only the w:t text would delete it, gluing the text on either side with no separator at all ('…ana”Through perseverance…') — corrupted text, and soft breaks are common in Writers Templates. When true, DocxExtractor contributes '\\n' at the break's own position in the run text (a <w:br> with type=page|column stays a page/column break — the page counter is untouched). The downstream machinery handles multi-line text: renderBlackText emits one <p>/<li> per line — the MAJORITY gold form for soft-broken black paragraphs (EXPFUN03 keeps its own house style); Utils.Fold collapses \\s+ so tag classification is unaffected; the proverbSplit boundary rules stay dormant (the lines arrive already split). Env SOFTBR_OFF gives the glued extraction.",
 		"self_closed_skip": {
 			"enabled": true,
 			"rule": "Word writes an EMPTY paragraph as a SELF-CLOSED <w:p w14:paraId=\"..\"/> (often in empty table cells inside a textbox, as in CHFUN01's Section A). If DocxExtractor.#findClose counted each as an OPEN with no matching close, the depth would ratchet up and a textbox-carrying paragraph's scan would run to end-of-body — the WHOLE module would collapse into ONE giant block: the front matter leaking into the output, every paragraph boundary lost (bullets glued, [tags] fused into prose), and IsContentStart never seeing the real [TITLE BAR]. When true, a self-closed <w:p .../> contributes NOTHING to the depth scan and is skipped as a top-level block (it has no content). A module with no self-closed paragraphs is unaffected BY CONSTRUCTION. Env toggle: SELFCLOSEP_OFF counts them as opens."
 		},
 		"textbox_lift": {
-			"enabled": false,
+			"enabled": true,
 			"env": "TXBXLIFT_OFF",
 			"rule": "Word stores a text box (or any shape that holds text) TWICE inside <mc:AlternateContent> in a run of the paragraph that anchors it: the DrawingML copy in <mc:Choice> and a VML copy in <mc:Fallback> for older readers. Read in place, the anchoring paragraph closes at the box's first inner paragraph, so that inner paragraph is read as part of the anchor's run and takes the anchor run's colour (a box's black or white letter shown as a red note), the anchor's own words after the box are lost, and each box paragraph after the first is read twice, once per copy (a built widget showing every word twice). With this block enabled, before the walk, every <mc:AlternateContent> that holds a <w:txbxContent> is taken out of its run and the content of each text box in ONE copy (copy: the <mc:Choice> copy, or the <mc:Fallback> copy when the Choice holds no text box) is placed right after the close of the anchoring paragraph, in document order, so every box paragraph is read once, on its own; a text box inside a text box is lifted the same way (up to max_passes). inline_in_place: an INLINE box (<wp:inline> — it sits in the line like a character) of one paragraph with the anchor's words on both sides keeps its runs in place, so the sentence reads through it ('Select [Run >].'). scope body: a text box inside a table cell is left where it is (a table cell joins its paragraphs with its own separator and prints red spans as cell text, so a box lifted inside a cell would show new separators and the writer's instructions). No embedded image is read from either copy. Disabled, or under the env toggle, the copies are walked in place.",
 			"copy": "choice",

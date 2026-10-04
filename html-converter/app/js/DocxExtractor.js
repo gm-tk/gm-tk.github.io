@@ -1768,6 +1768,21 @@ class DocxExtractor {
 		for (const m of xml.matchAll(/<w:num w:numId="(\d+)"[^>]*>\s*<w:abstractNumId w:val="(\d+)"/g)) {
 			formats.set(m[1], abstractFmt.get(m[2]) ?? "bullet");
 		}
+		// THE KIND OF EACH LEVEL: numId → { ilvl: "bullet" | "number" } from the abstract list's own w:lvl definitions,
+		// so a bulleted sub-level under a numbered list is read as bullets (list_numbering.level_format; #parseParagraph)
+		const absLevelFmt = new Map();
+		for (const m of xml.matchAll(/<w:abstractNum w:abstractNumId="(\d+)"[\s\S]*?(?=<w:abstractNum |<w:num |<\/w:numbering>)/g)) {
+			const lv = {};
+			for (const l of m[0].matchAll(/<w:lvl w:ilvl="(\d+)"[\s\S]*?<\/w:lvl>/g)) {
+				const f = l[0].match(/<w:numFmt w:val="(\w+)"/)?.[1];
+				if (f) lv[l[1]] = f === "bullet" ? "bullet" : (f === "none" ? null : "number");
+			}
+			absLevelFmt.set(m[1], lv);
+		}
+		formats.levelFmt = new Map();
+		for (const m of xml.matchAll(/<w:num w:numId="(\d+)"[^>]*>\s*<w:abstractNumId w:val="(\d+)"/g)) {
+			formats.levelFmt.set(m[1], absLevelFmt.get(m[2]) ?? {});
+		}
 		// THE COUNTING SIDE — what Word needs to show each numbered paragraph's own number:
 		// numId → abstractNumId, each abstract list's per-level w:start, and each numId's
 		// per-level w:lvlOverride/w:startOverride. #parseParagraph advances the counters
@@ -1807,6 +1822,25 @@ class DocxExtractor {
 	 * @param {number} level - the paragraph's w:ilvl
 	 * @returns {number}
 	 */
+	/**
+	 * The kind ("bullet" | "number") Word gives one LEVEL of a list — the abstract list's own w:lvl numFmt for that ilvl —
+	 * or null when the rule is off or the level defines none (the caller keeps the list's level-0 kind).
+	 * Data Input_Doc_Rules.list_numbering.level_format; env LISTLEVELFMT_OFF.
+	 *
+	 * @param {Map} numFormats - from #parseNumbering (its levelFmt)
+	 * @param {string} numId
+	 * @param {number} level - the paragraph's w:ilvl
+	 * @param {Object} rules - Input_Doc_Rules
+	 * @returns {string|null}
+	 */
+	static #levelKind(numFormats, numId, level, rules) {
+		const lf = rules?.list_numbering?.level_format;
+		if (!lf || lf.enabled === false || !numFormats?.levelFmt) return null;
+		if (typeof process !== "undefined" && process.env && process.env[lf.env ?? "LISTLEVELFMT_OFF"]) return null;
+		const k = numFormats.levelFmt.get(String(numId))?.[String(level)];
+		return k === "bullet" || k === "number" ? k : null;
+	};
+
 	static #wordListNumber(wc, numId, level) {
 		const abs = wc.abstractOf.get(numId) ?? `num${numId}`;
 		let ctr = wc.counters.get(abs);
@@ -2201,6 +2235,9 @@ class DocxExtractor {
 		// with a sentence, an image or a note continues 3, 4 … instead of restarting at 1.
 		// Every numbered paragraph advances its counter, empty or red ones included, as Word
 		// counts them. Data list_numbering.word_count; env OLNUM_OFF (every item reads "1.").
+		// THE KIND OF THIS LEVEL: a bulleted sub-level under a numbered list (or a numbered one under bullets) is read
+		// from its own w:lvl, not the list's level 0 (list_numbering.level_format; env LISTLEVELFMT_OFF)
+		if (numId) list = this.#levelKind(numFormats, numId, listLevel, rules) ?? list;
 		let wordNumber = null;
 		const wnc = rules.list_numbering?.word_count;
 		if (list === "number" && numId !== "0" && numFormats.wordCount && wnc && wnc.enabled !== false
@@ -2269,10 +2306,17 @@ class DocxExtractor {
 				// Data: Input_Doc_Rules.paragraph.soft_break_newline   Env toggle: SOFTBR_OFF
 				const softBr = rules.paragraph?.soft_break_newline !== false
 					&& !(typeof process !== "undefined" && process.env && process.env.SOFTBR_OFF);
+				// the writer's non-breaking hyphen is an element, not text: read as the data's char
+				// (Input_Doc_Rules.paragraph.no_break_hyphen; env NBHYPHEN_OFF)
+				const nbh = rules.paragraph?.no_break_hyphen;
+				const nbhOn = !!nbh && nbh.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[nbh.env ?? "NBHYPHEN_OFF"]);
 				let text = "";
-				for (const t of run.matchAll(/<w:t(?: [^>]*)?>([\s\S]*?)<\/w:t>|<w:br(?:\s+[^>]*)?\/>/g)) {
+				for (const t of run.matchAll(/<w:t(?: [^>]*)?>([\s\S]*?)<\/w:t>|<w:br(?:\s+[^>]*)?\/>|<w:noBreakHyphen\s*\/>/g)) {
 					if (t[0].startsWith("<w:br")) {
 						if (softBr && !/w:type="(?:page|column)"/.test(t[0])) text += "\n";
+					} else if (t[0].startsWith("<w:noBreakHyphen")) {
+						if (nbhOn) text += nbh.char ?? "-";
 					} else text += this.#decodeXml(t[1]);
 				}
 				if (/<w:tab\/>/.test(run)) text = ` ${text}`;
@@ -2391,6 +2435,13 @@ class DocxExtractor {
 				const under = !!_uTag && (_uTag.match(/w:val="([^"]+)"/)?.[1] ?? "single") !== "none"
 					&& !(_ul.link_styles ?? ["Hyperlink"]).includes(run.match(/<w:rStyle w:val="([^"]+)"/)?.[1] ?? "");
 
+				// a BARE run holding only the non-breaking hyphen (no formatting of its own — the serialiser that writes
+				// <w:r><w:noBreakHyphen /></w:r>) belongs to the word around it: it joins the run before it, red or bold
+				// as that run is, instead of cutting a red span in three (no_break_hyphen; env NBHYPHEN_OFF)
+				if (nbhOn && pieces.length && !/<w:rPr\b/.test(run) && /<w:noBreakHyphen\s*\/>/.test(run) && text === (nbh.char ?? "-")) {
+					pieces[pieces.length - 1].text += text;
+					continue;
+				}
 				if (currentLink) links.push({ text, target: currentLink });
 				pieces.push(vert ? { text, red, bold, italic, mark, markColor, hyper: hyperRed, vert } : { text, red, bold, italic, mark, markColor, hyper: hyperRed });
 				if (under) pieces[pieces.length - 1].under = true;
@@ -2618,7 +2669,23 @@ class DocxExtractor {
 						&& !(typeof process !== "undefined" && process.env && process.env.BOLDSPACE_OFF);
 					const lead = (keepLead && blackText.startsWith(" ")) ? " " : "";
 					const tail = blackText.endsWith(" ") ? " " : "";
-					if (bold) blackText = `${lead}${rules.formatting_markers.bold}${blackText.trim()}${rules.formatting_markers.bold}${tail}`;
+					// A STYLED RUN ACROSS A SOFT LINE BREAK: a run that holds the writer's soft break ("\n") is wrapped line
+					// by line, so the per-line split downstream never leaves "**Strong g" / "Soft g**" with the markers
+					// shown. Data formatting_markers.wrap_per_line {bold, italic}; env STYLEPERLINE_OFF (the single wrap).
+					const wpl = rules.formatting_markers.wrap_per_line;
+					const perLine = /\n/.test(blackText.trim()) && !!wpl && wpl.enabled !== false
+						&& ((bold && wpl.bold !== false) || (!bold && italic && wpl.italic === true))
+						&& !(typeof process !== "undefined" && process.env && process.env[wpl.env ?? "STYLEPERLINE_OFF"]);
+					if (perLine) {
+						const mk = bold ? rules.formatting_markers.bold : rules.formatting_markers.italic;
+						blackText = blackText.split("\n").map((seg) => {
+							if (!seg.trim()) return seg;
+							const sl = (keepLead && seg.startsWith(" ")) ? " " : "";
+							const st = seg.endsWith(" ") ? " " : "";
+							return `${sl}${mk}${seg.trim()}${mk}${st}`;
+						}).join("\n");
+					}
+					else if (bold) blackText = `${lead}${rules.formatting_markers.bold}${blackText.trim()}${rules.formatting_markers.bold}${tail}`;
 					else if (italic) blackText = `${lead}${rules.formatting_markers.italic}${blackText.trim()}${rules.formatting_markers.italic}${tail}`;
 				}
 				out += blackText;
@@ -2758,7 +2825,9 @@ class DocxExtractor {
 					const before = paras.join(rules.table_markers.in_cell_line_break);
 					if (block.text.trim()) paras.push(block.text.trim());
 					const nid = numFormats ? pm[0].match(/<w:numId w:val="(\d+)"/)?.[1] : null;
-					if (nid && nid !== "0" && numFormats.get(nid) === "number" && block.text.trim()) numbered.push(block.text.trim());
+					const nlv = parseInt(pm[0].match(/<w:ilvl w:val="(\d+)"/)?.[1] ?? "0", 10);
+					const nkind = nid ? (this.#levelKind(numFormats, nid, nlv, rules) ?? numFormats.get(nid)) : null;
+					if (nid && nid !== "0" && nkind === "number" && block.text.trim()) numbered.push(block.text.trim());
 					links.push(...block.links);
 					thisRowLinks.push(...block.links);
 					if (block.marks) cm.push(...block.marks.map((mk) => (typeof mk.nth === "number" && before

@@ -272,6 +272,12 @@ class Utils {
 	 * @param {string|null} [base] - the whole source-block text `text` was cut from
 	 * @returns {string}
 	 */
+	/** Is the per-line wrap of a styled run on (Input_Doc_Rules.formatting_markers.wrap_per_line; env STYLEPERLINE_OFF)? */
+	static #perLineMarks() {
+		const w = DataService.Data?.InputDocRules?.formatting_markers?.wrap_per_line;
+		return !!w && w.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[w.env ?? "STYLEPERLINE_OFF"]);
+	};
+
 	static MarkAnswers(text, marks, glyph = "✅", base = null, afterListMarker = false) {
 		const s = String(text ?? "");
 		if (!s.trim() || !Array.isArray(marks) || !marks.length) return s;
@@ -296,6 +302,13 @@ class Utils {
 			const hay = within ? b : core;
 			const occ = [];
 			for (let k = hay.indexOf(t); k >= 0; k = hay.indexOf(t, k + 1)) occ.push(k);
+			// a mark across the writer's soft line break, on text whose styled run is wrapped line by line
+			// («**bonjour**\n**nom**» for the mark «bonjour\nnom»): matched with the markers allowed at each break
+			// (Input_Doc_Rules.formatting_markers.wrap_per_line; env STYLEPERLINE_OFF)
+			if (!occ.length && t.includes("\n") && Utils.#perLineMarks()) {
+				const rx = new RegExp(t.split("\n").map((x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("(?:\\*{1,2})?\\n(?:\\*{1,2})?"), "g");
+				for (const mm of hay.matchAll(rx)) occ.push(mm.index);
+			}
 			if (!occ.length) continue;
 			const pos = occ[Math.min(Number.isInteger(m.nth) ? m.nth : 0, occ.length - 1)];
 			if (within && (pos < off || pos + t.length > off + core.length)) continue;   // another item's mark

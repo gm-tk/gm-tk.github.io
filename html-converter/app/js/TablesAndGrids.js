@@ -24,6 +24,9 @@
  *         elements (headings / images / grouped black text)
  *   - cellImage(text, run)  an image reference inside a cell -> the Mode-P/D
  *         placeholder markup (iStock id -> asset filename)
+ *   - cellImageRefs(cell, run, cfg, links) / fillImageRefs(html, imgs)  the
+ *         writer's red «Image: iStock: …:» label + address in a cell -> a
+ *         token, rendered back as the cell's image (CELLIMGREF_OFF)
  *
  * WHY SEPARATE FILE:
  * These six methods were natural candidates for their own file because none
@@ -86,7 +89,7 @@ class TablesAndGrids {
 		// both cell paths (grid + kept-table), so a title-anchored image cell can
 		// resolve its URL exactly like its free-body counterpart (see cellImage below).
 		const links = block.links ?? null;
-		const grid = this.layoutTableGrid(rows, run, insidePlaceholder, norm, links);
+		const grid = this.layoutTableGrid(rows, run, insidePlaceholder, norm, links, block);
 		if (grid) return grid;
 
 		// KB 05D: every content table carries the KB class form —
@@ -127,9 +130,12 @@ class TablesAndGrids {
 		const wholeBold = (c) => /^(?:\*\*|__)[\s\S]*(?:\*\*|__)$/.test(plainOf(c));
 		// FREE-BODY tables only: a table inside an un-built widget's hand-off dump keeps its raw first-row form
 		// (the placeholder containment — a developer reference, not page content).
-		const firstIsHeader = insidePlaceholder || !frhOn || !rows.length
+		// A first row LED by the writer's red [word] beside its word (a dictionary row, cell_audio_word) is a data row.
+		const awCfg = insidePlaceholder ? null : this.cellAudioWordConfig();
+		const firstIsHeader = (insidePlaceholder || !frhOn || !rows.length
 			|| rows[0].filter((c) => plainOf(c)).every((c) => wholeBold(c)) && rows[0].some((c) => plainOf(c))
-			|| !rows[0].some((c) => wordsOf(c) >= (frh.data_row_min_words ?? 9));
+			|| !rows[0].some((c) => wordsOf(c) >= (frh.data_row_min_words ?? 9)))
+			&& !(awCfg && rows.length && this.cellAudioWord(rows[0], 0, awCfg));
 		// MERGED CELLS: the writer's Word merges (the extractor's cellSpans side-channel) — a cell merged across
 		// columns carries colspan, a cell merged down rows carries rowspan and its EMPTY continuation cells are
 		// omitted. FREE-BODY tables only; null (the plain form) when the side-channel does not line up with these rows.
@@ -142,17 +148,49 @@ class TablesAndGrids {
 			? this.mergedCellPlan(rows, block.cellSpans, envOn(mc.rows, "TBLMERGEROWS_OFF")) : null;
 		// A hand-off box's raw table keeps the writer's link addresses (placeholderLinkTargets; the free body weaves its own).
 		const shown = insidePlaceholder ? this.placeholderLinkTargets(rows, block.links) : rows;
+		// A FIRST ROW HOLDING A PICTURE IS A DATA ROW: a header row one of whose rendered cells holds an <img> is re-tagged
+		// with the data-cell form (KB 05D: a header cell is a column label). FREE-BODY only.
+		// Data elements.table.first_row_header.image_row; env TBLHEADIMG_OFF.
+		const imgRowOn = !insidePlaceholder && frhOn && envOn(frh.image_row, "TBLHEADIMG_OFF");
 		shown.forEach((cells, r) => {
 			const isHdr = r === 0 && firstIsHeader;
 			const baseTpl = isHdr ? t.header_cell : t.cell;
-			html.push(t.row_open
-				+ cells.map((c, ci) => {
+			const rowHtml = cells.map((c, ci) => {
 					const p = plan ? plan[r][ci] : null;
 					if (p && p.hidden) return "";
 					const attrs = !p ? ""
 						: (p.colspan > 1 ? Utils.FillTemplate(mc.colspan_attr, { n: p.colspan }) : "")
 						+ (p.rowspan > 1 ? Utils.FillTemplate(mc.rowspan_attr, { n: p.rowspan }) : "");
 					const cellTpl = attrs ? baseTpl.replace(/^<(t[hd])\b/, `<$1${attrs}`) : baseTpl;
+					// THE WRITER'S RED [word] BESIDE ITS WORD renders as the word's audio button (cellAudioWord). FREE-BODY only.
+					// Data elements.table.cell_audio_word; env CELLAUDIOWORD_OFF.
+					const aw = awCfg ? this.cellAudioWord(cells, ci, awCfg) : null;
+					if (aw) return Utils.FillTemplate(cellTpl, { content: aw });
+					// THE WRITER'S IMAGE REFERENCE IN A KEPT CELL: a red «Image: iStock: …:» label and its address render as the
+					// cell's image in place (cellImageRefs); the cell is rendered from its tokenised text through the usual
+					// branches below and the images are put back after. FREE-BODY only. When the cell has its paragraphs
+					// (cellParagraphs), they are tokenised as paragraphs so the line form survives.
+					// Data elements.table.cell_image_reference; env CELLIMGREF_OFF.
+					// THE WRITER'S RED REQUEST IN A KEPT CELL («Please insert the image on page 6») renders as a Writers Note in
+					// place the same way (cellRedRequests, after the image references). Data elements.table.cell_red_request;
+					// env CELLREDREQ_OFF.
+					const irCfg = insidePlaceholder ? null : this.cellImageRefConfig(false);
+					let cc = c, irImgs = null, irParas = null, rqNotes = null;
+					if (!insidePlaceholder) {
+						const P0 = this.cellParagraphs(block, rows, r, ci, c);
+						const SEP = "\n\u0001\n";   // whitespace on both sides: an address typed before it ends there
+						let work = P0 ? P0.join(SEP) : c, changed = false;
+						const ir = irCfg ? this.cellImageRefs(work, run, irCfg, norm, links, P0 ? SEP : null) : null;
+						if (ir) { irImgs = ir.imgs; work = ir.text; changed = true; }
+						const rq = this.cellRedRequests(work, run, norm, P0 ? SEP : null);
+						if (rq) { rqNotes = rq.notes; work = rq.text; changed = true; }
+						if (changed) {
+							if (P0) {
+								irParas = work.split(SEP).map((x) => x.trim()).filter(Boolean);
+								cc = irParas.join(DataService.Data.InputDocRules?.table_markers?.in_cell_line_break ?? " / ");
+							} else cc = work;
+						}
+					}
 					// CELL-TAG rendering: a structural [tag] inside a KEPT free-body table cell
 					// is rendered INLINE (its marker stripped) instead of leaking literally into
 					// the page. FREE-BODY ONLY (insidePlaceholder=false) — a table INSIDE an
@@ -160,7 +198,7 @@ class TablesAndGrids {
 					// DESIGN (a developer reference), so its markers must NOT be stripped there.
 					// Returns null when the cell doesn't match this case, so the caller falls
 					// through to the plain-text rendering below.
-					const inline = insidePlaceholder ? null : this.renderCellInline(c, run, isHdr, norm, links);
+					const inline = insidePlaceholder ? null : this.renderCellInline(cc, run, isHdr, norm, links);
 					// A FREE-BODY cell renderCellInline declines whose ' / '-joined lines include a '• '
 					// bullet renders through the body's own paragraph + list machinery (a lead line → <p>, a bullet
 					// run → <ul><li>) instead of the raw joined string. It weaves the same links as every other free-body cell
@@ -168,19 +206,21 @@ class TablesAndGrids {
 					// bracket still lifts into a Writers Note. Data elements.table.cell_bullets; env TBLCELLLIST_OFF.
 					const blOn = !insidePlaceholder && inline === null && !!t.cell_bullets && t.cell_bullets.enabled !== false
 						&& !(typeof process !== "undefined" && process.env && process.env[t.cell_bullets.env ?? "TBLCELLLIST_OFF"]);
-					const blParts = blOn ? this.cellParts(c) : [];
+					const blParts = blOn ? this.cellParts(cc) : [];
 					const blHit = blParts.some((p) => /^•\s*\S/.test(p));
 					// A FREE-BODY cell of two or more writer paragraphs (the extractor's cellParas side-channel) renders them
 					// as lines joined by cell_paragraphs.joiner instead of the in-cell « / » marker; null when not that case.
-					const paras = !insidePlaceholder && inline === null && !blHit ? this.cellParagraphs(block, rows, r, ci, c) : null;
+					const paras = insidePlaceholder || inline !== null || blHit ? null
+						: irParas ? (irParas.length >= 2 ? irParas : null)
+						: this.cellParagraphs(block, rows, r, ci, c);
 					const unred = (x) => x.replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "");
-					const content = blHit ? ListsAndRuns.renderBlackText(this.cellNumberedParts(block, rows, r, ci, blParts).join("\n"), run, this.cellLinks(links), true).join("")
+					const content = this.fillImageRefs(this.fillImageRefs(blHit ? ListsAndRuns.renderBlackText(this.cellNumberedParts(block, rows, r, ci, blParts).join("\n"), run, this.cellLinks(links), true).join("")
 						: inline !== null ? inline
 						: paras ? paras.map((p) => ListsAndRuns.inlineMarkup(unred(p), this.cellLinks(links), true)).join(t.cell_paragraphs.joiner)
 						// red spans inside table cells: keep their text visible,
 						// marked — they are usually interactive data labels
-						: ListsAndRuns.inlineMarkup(unred(c),
-							insidePlaceholder ? [] : this.cellLinks(links), !insidePlaceholder);   // only weave hover/definition markers (and the cell's own hyperlinks) into a FREE-BODY cell, never a placeholder dump
+						: ListsAndRuns.inlineMarkup(unred(cc),
+							insidePlaceholder ? [] : this.cellLinks(links), !insidePlaceholder), irImgs), rqNotes, null, "CV2NOTE");   // only weave hover/definition markers (and the cell's own hyperlinks) into a FREE-BODY cell, never a placeholder dump
 					// A HEADER CELL IS PLAIN: the human's <th> is almost never wholly bold (KB 05D's
 					// <tr><th>Header 1</th> form), while a writer-bold header row would render <th><b>…</b></th>.
 					// A header cell whose rendered content is exactly ONE <b>/<strong> span
@@ -194,7 +234,9 @@ class TablesAndGrids {
 						if (_m && !/<\/?(?:b|strong)\b/.test(_m[2])) _cell = _m[2];
 					}
 					return Utils.FillTemplate(cellTpl, { content: _cell });
-				}).join("")
+				}).join("");
+			html.push(t.row_open
+				+ (isHdr && imgRowOn && /<img\b/i.test(rowHtml) ? rowHtml.replace(/<th\b/g, "<td").replace(/<\/th>/g, "</td>") : rowHtml)
 				+ t.row_close);
 		});
 		html.push(t.close);
@@ -357,7 +399,7 @@ class TablesAndGrids {
 	 * shape. Env toggle: LTABLE_OFF (disables this method entirely, so every
 	 * table — layout or data — renders as a plain <table>).
 	 */
-	static layoutTableGrid(rows, run, insidePlaceholder, norm, links = null) {
+	static layoutTableGrid(rows, run, insidePlaceholder, norm, links = null, block = null) {
 		const cfg = DataService.Data.EmitTemplates.body_region?.layout_table_grid;
 		if (!cfg || cfg.enabled === false || insidePlaceholder || !rows?.length) return null;
 		if (typeof process !== "undefined" && process.env && process.env.LTABLE_OFF) return null;
@@ -393,16 +435,17 @@ class TablesAndGrids {
 		if (rows.length !== 1 && (cfg.multi_row_requires_all_cells_tagged ?? true) && !allTagged) return null;
 		// BUILD: each row → a div.row; each non-empty cell → a col rendered from its parts.
 		const out = [];
-		for (const r of rows) {
-			const cells = (r || []).filter((c) => String(c ?? "").trim() !== "");
-			if (!cells.length) continue;
+		rows.forEach((r, ri) => {
+			// each non-empty cell with its original column index (the cellNumbered record is rows-aligned)
+			const cells = (r || []).map((c, ci) => ({ c, ci })).filter((x) => String(x.c ?? "").trim() !== "");
+			if (!cells.length) return;
 			const colClass = cfg.col_class_by_count?.[String(cells.length)] || cfg.col_class_default;
-			const cols = cells.map((c) => {
-				const inner = this.renderCellParts(c, run, norm, links).filter(Boolean);
+			const cols = cells.map(({ c, ci }) => {
+				const inner = this.renderCellParts(c, run, norm, links, this.gridCellNumbered(block, rows, ri, ci)).filter(Boolean);
 				return `${cfg.col_open.replace("{colClass}", colClass)}\n${inner.join("\n")}\n${cfg.col_close}`;
 			});
 			out.push(`${cfg.row_open}\n${cols.join("\n")}\n${cfg.row_close}`);
-		}
+		});
 		return out.length ? out.join("\n") : null;
 	};
 
@@ -498,6 +541,36 @@ class TablesAndGrids {
 		return parts.map((p) => (set.has(p) ? p.replace(/^•\s+/, "1. ") : p));
 	};
 
+	/**
+	 * A LAYOUT-GRID cell's Word-numbered list items (layoutTableGrid → renderCellParts): the cell's cellNumbered record as a
+	 * set of item texts (red markers stripped, «• » prefix kept — the form renderCellParts compares), or null when the rule
+	 * is off or the record does not line up with the rows. Data elements.table.cell_bullets.numbered.grid; env
+	 * GRIDCELLOL_OFF (and TBLCELLOL_OFF).
+	 *
+	 * @param {Object|null} block - the table block (its cellNumbered)
+	 * @param {string[][]} rows - the rows being rendered
+	 * @param {number} r - row index
+	 * @param {number} ci - cell index (in the row's own cells, empty ones included)
+	 * @returns {Set<string>|null}
+	 */
+	static gridCellNumbered(block, rows, r, ci) {
+		const num = DataService.Data.EmitTemplates.elements?.table?.cell_bullets?.numbered;
+		const on = (c, name) => !!c && c.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[c.env ?? name]);
+		if (!on(num, "TBLCELLOL_OFF") || !on(num.grid, "GRIDCELLOL_OFF")) return null;
+		const all = block?.cellNumbered;
+		if (!Array.isArray(all) || all.length !== rows.length || !Array.isArray(all[r]) || all[r].length !== (rows[r]?.length ?? -1)) return null;
+		const nums = all[r][ci];
+		if (!Array.isArray(nums) || !nums.length) return null;
+		const unred = (x) => String(x ?? "").replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "").trim();
+		// a numbered paragraph with a soft line break inside it («• Prototype → Sketch a possible solution / create a first
+		// draft») reaches renderCellParts as two parts: its first segment is the list item
+		const marker = DataService.Data.InputDocRules?.table_markers?.in_cell_line_break ?? " / ";
+		const set = new Set();
+		for (const n of nums.map(unred)) { set.add(n); set.add(n.split(marker)[0].trim()); }
+		return set;
+	};
+
 	static placeholderLinkTargets(rows, links) {
 		const cfg = DataService.Data.EmitTemplates.interactive_placeholder?.manifest_link_targets;
 		if (!cfg || cfg.enabled === false || !cfg.page_form || !Array.isArray(links) || !links.length) return rows;
@@ -553,7 +626,18 @@ class TablesAndGrids {
 		// an anchor that ends in a file extension (`Tukutuku.jpg`) is a file
 		// name, not an address — data exclude_pattern
 		const ex = c.exclude_pattern ? new RegExp(c.exclude_pattern, "i") : null;
-		return links.filter((l) => { const t = String(l?.text ?? "").trim(); return re.test(t) && !(ex && ex.test(t)); });
+		// a phrase link to an ordinary web page («online contact form» → netsafe.org.nz/report) is woven too
+		// (table_cells.phrase_links; env CELLPHRASELINK_OFF): not an asset host, not a file
+		const pl = c.phrase_links;
+		const plOn = !!pl && pl.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[pl.env ?? "CELLPHRASELINK_OFF"]);
+		const hostRe = plOn && pl.asset_host_pattern ? new RegExp(pl.asset_host_pattern, "i") : null;
+		const phrase = (l, t) => {
+			if (!plOn) return false;
+			const target = String(l?.target ?? "").trim();
+			if (!/^https?:\/\//i.test(target) || (hostRe && hostRe.test(target)) || (ex && (ex.test(t) || ex.test(target.replace(/[?#].*$/, ""))))) return false;
+			return t.split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length >= (pl.min_words ?? 2);
+		};
+		return links.filter((l) => { const t = String(l?.text ?? "").trim(); return (re.test(t) && !(ex && ex.test(t))) || phrase(l, t); });
 	};
 
 	static cellParts(cell) {
@@ -587,7 +671,20 @@ class TablesAndGrids {
 	 * @param {TagNormaliser} norm - resolves a bracketed [tag] to its canonical name
 	 * @returns {string[]} the rendered HTML for each element found in the cell
 	 */
-	static renderCellParts(cell, run, norm, links = null) {
+	static renderCellParts(cell, run, norm, links = null, numbered = null) {
+		// THE WRITER'S IMAGE REFERENCE IN A LAYOUT-GRID CELL: a red «Image: iStock: …:» label and its address render as the
+		// image in place (cellImageRefs), before the red-note rule below could print a wholly red reference as a Writers
+		// Note. Data elements.table.cell_image_reference.grid; env GRIDIMGREF_OFF (and CELLIMGREF_OFF).
+		const irCfg = this.cellImageRefConfig(true);
+		const ir = irCfg ? this.cellImageRefs(cell, run, irCfg, norm, links) : null;
+		if (ir) {
+			// the tokens are black text now, so the second pass renders the cell's parts as usual; each image goes back
+			// where its token landed, and one the rendering lost goes after the cell's parts
+			const placed = new Set();
+			const out = this.renderCellParts(ir.text, run, norm, links, numbered).map((h) => this.fillImageRefs(h, ir.imgs, placed));
+			ir.imgs.forEach((img, i) => { if (!placed.has(i)) out.push(img); });
+			return out;
+		}
 		const tpl = DataService.Data.EmitTemplates;
 		const skipRe = new RegExp(tpl.body_region.layout_table_grid.skip_part_pattern ?? "^[=\\s]*$");
 		const out = [];
@@ -636,7 +733,9 @@ class TablesAndGrids {
 				flush();
 				out.push(...this.cellImage(rest, run, links));
 			} else {
-				const content = canon ? rest : part;
+				let content = canon ? rest : part;
+				// a Word-numbered item reads «1. » so its run is an <ol> (gridCellNumbered; cell_bullets.numbered.grid)
+				if (numbered && numbered.has(content.trim())) content = content.trim().replace(/^•\s+/, "1. ");
 				if (content.trim() && !skipRe.test(content.trim())) buf.push(content);
 			}
 		});
@@ -703,6 +802,251 @@ class TablesAndGrids {
 				MediaBuilder.FinishImg(Utils.FillTemplate(tpl.mode_P.comment, { filename }), url, istockId, run)];
 		}
 		return [MediaBuilder.FinishImg(Utils.FillTemplate(tpl.mode_D.visible, { filename }), url, istockId, run)];
+	};
+
+	/**
+	 * Is the cell image-reference rule on for this caller? The kept-table cell reads
+	 * elements.table.cell_image_reference (env CELLIMGREF_OFF); the layout-grid cell also needs its grid block
+	 * (env GRIDIMGREF_OFF).
+	 *
+	 * @param {boolean} grid - true for the layout-grid caller (renderCellParts)
+	 * @returns {Object|null} the data block when on, else null
+	 */
+	static cellImageRefConfig(grid) {
+		const cfg = DataService.Data.EmitTemplates.elements?.table?.cell_image_reference;
+		const on = (c, name) => !!c && c.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[c.env ?? name]);
+		if (!on(cfg, "CELLIMGREF_OFF")) return null;
+		if (grid && !on(cfg.grid, "GRIDIMGREF_OFF")) return null;
+		return cfg;
+	};
+
+	/**
+	 * THE WRITER'S IMAGE REFERENCE IN A TABLE CELL. A writer types the picture a cell should hold as a red label with no
+	 * bracket («Image: iStock: symbol on speech bubble:», «Image RHS: iStock: …:») and the stock or source address after it.
+	 * Each such red run (consecutive red spans read as one), together with its address — inside the run, typed right after
+	 * it on the same line, on the cell's next line, or, with no address typed, the table link whose words sit inside the run
+	 * (or make up the rest of its line) — is replaced by a token; the token's image is the cell's own image emitter
+	 * (cellImage). The caller renders the tokenised cell through its usual path and puts the images in with fillImageRefs.
+	 * Text after the address on the same line stays. A run with a bracket, or with no resolvable address, is left alone,
+	 * and so is a cell that carries the writer's own [image] tag (that tag's path renders the cell's image).
+	 * Data elements.table.cell_image_reference {label_pattern, address_pattern}.
+	 *
+	 * @param {string} cell - the raw cell text (red markers in)
+	 * @param {ConversionRun} run - the current conversion run (image mode)
+	 * @param {Object} cfg - the data block (cellImageRefConfig)
+	 * @param {TagNormaliser} norm - resolves a bracketed [tag] to its canonical name
+	 * @param {Array<Object>|null} [links] - the table block's hyperlinks [{text, target}]
+	 * @param {string|null} [sep] - the separator the caller joined the cell's paragraphs with (default the « / » marker);
+	 *        it must hold whitespace on both sides so an address typed before it ends there
+	 * @returns {{text: string, imgs: string[]}|null} the tokenised cell and one image per token, or null when none
+	 */
+	static cellImageRefs(cell, run, cfg, norm, links = null, sep = null) {
+		const s = String(cell ?? "");
+		if (!cfg || !/\u{1f534}\[RED TEXT\]/u.test(s)) return null;
+		if (this.cellHasImageTag(s, norm, sep)) return null;
+		// the semicolon form of the label (cell_image_reference.semicolon_label; env IMGLABELSEMI_OFF)
+		const semi = cfg.semicolon_label;
+		const semiOn = !!semi && semi.enabled !== false && !!semi.label_pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[semi.env ?? "IMGLABELSEMI_OFF"]);
+		const labelRe = new RegExp(semiOn ? semi.label_pattern : cfg.label_pattern, "i");
+		const addr = cfg.address_pattern ?? "https?://[^\\s<>\"\\]\\[]+";
+		const addrRe = new RegExp(addr, "i");
+		const esc = (x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+		const sepRe = sep ? esc(sep) : "\\s\\/";
+		const sameLine = new RegExp(`^[ \\t]*(${addr})`, "i");
+		const nextLine = new RegExp(`^\\s*${sep ? esc(sep) : "\\/"}\\s*(${addr})[ \\t]*(?=${sepRe}|\\n|$)`, "i");
+		const fold = (x) => String(x ?? "").toLowerCase().replace(/\s+/g, " ").trim();
+		const webLinks = (links ?? []).filter((l) => /^https?:\/\//i.test(String(l?.target ?? "")));
+		const runRe = /(?:\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534})+/gu;
+		const hits = [];
+		for (const m of s.matchAll(runRe)) {
+			const inner = m[0].replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "");
+			if (/[[\]]/.test(inner) || !labelRe.test(inner)) continue;
+			let end = m.index + m[0].length;
+			let url = inner.match(addrRe)?.[0] ?? null;
+			const after = s.slice(end);
+			if (!url) {
+				const a = after.match(sameLine) ?? after.match(nextLine);
+				if (a) { url = a[1]; end += a[0].length; }
+			}
+			if (!url && webLinks.length) {
+				// a title-anchored reference: the link's words inside the run, or the rest of the run's line made of link words
+				const fi = fold(inner);
+				let best = null;
+				for (const l of webLinks) {
+					const t = fold(l.text);
+					if (t.length >= 8 && fi.includes(t) && (!best || t.length > best.len)) best = { len: t.length, target: l.target };
+				}
+				if (best) url = best.target;
+				else {
+					const lineEnd = after.search(sep ? new RegExp(`${esc(sep)}|\\n`) : /\s\/\s|\n/);
+					const line = lineEnd < 0 ? after : after.slice(0, lineEnd);
+					let rest = line, first = null;
+					for (const l of webLinks.slice().sort((x, y) => String(y.text ?? "").length - String(x.text ?? "").length)) {
+						const t = String(l.text ?? "").trim();
+						if (t.length < 2 || !rest.includes(t)) continue;
+						if (!first && t.length >= 8) first = l.target;
+						rest = rest.split(t).join(" ");
+					}
+					if (first && !/[\p{L}\p{N}]/u.test(rest)) { url = first; end += line.length; }
+				}
+			}
+			if (!url) continue;
+			const desc = inner.replace(new RegExp(addr, "gi"), " ").replace(labelRe, " ")
+				.replace(/^\s*(?:i?stock|getty\s*images?|shutterstock)\b[^:;]{0,30}[:;]\s*/i, " ").replace(/[\s:;]+$/, "").replace(/\s+/g, " ").trim();
+			let img = this.cellImage(`${desc} ${url}`, run, links).join("");
+			// THE NOTE ABOUT THE PICTURE: the cell's next line wholly red, no bracket («(image needs to be flipped vertically as
+			// above)») is the writer's note on this picture — it renders as a Writers Note beside the image (the layout cell's
+			// red-note form, NotesAndComments.redFlag kind "cs"). Data cell_image_reference.trailing_note.
+			if (cfg.trailing_note !== false) {
+				const tn = s.slice(end).match(new RegExp(`^\\s*${sep ? esc(sep) : "\\/"}\\s*((?:\\u{1f534}\\[RED TEXT\\][\\s\\S]*?\\[\\/RED TEXT\\]\\u{1f534})+)[ \\t]*(?=${sepRe}|\\n|$)`, "u"));
+				const note = tn ? tn[1].replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "").trim() : "";
+				if (note && !/[[\]]/.test(note) && /\p{L}/u.test(note)) {
+					img += NotesAndComments.redFlag(note, run, "cs");
+					end += tn[0].length;
+				}
+			}
+			hits.push({ start: m.index, end, img });
+		}
+		if (!hits.length) return null;
+		let text = "", at = 0;
+		hits.forEach((h, i) => { text += s.slice(at, h.start) + `⟦CV2IMG${i}⟧`; at = h.end; });
+		text += s.slice(at);
+		return { text, imgs: hits.map((h) => h.img) };
+	};
+
+	/**
+	 * Puts the images of cellImageRefs back into a rendered cell: a token alone in a paragraph replaces the paragraph,
+	 * any other token is replaced where it stands, and a token the rendering lost is added at the end (the image is never
+	 * dropped).
+	 *
+	 * @param {string} html - the rendered cell content
+	 * @param {string[]|null} imgs - the images, by token number
+	 * @param {Set<number>|null} [placed] - for a caller that renders a cell in several fragments: records each token put
+	 *        back, and a token not in this fragment is NOT added at the end (the caller adds the lost ones once)
+	 * @param {string} [prefix] - the token family (CV2IMG for cellImageRefs, CV2NOTE for cellRedRequests)
+	 * @returns {string}
+	 */
+	static fillImageRefs(html, imgs, placed = null, prefix = "CV2IMG") {
+		if (!imgs || !imgs.length) return html;
+		let out = String(html ?? "");
+		imgs.forEach((img, i) => {
+			const tok = `⟦${prefix}${i}⟧`;
+			const alone = new RegExp(`<p>\\s*${tok}\\s*</p>`);
+			if (alone.test(out)) out = out.replace(alone, img);
+			else if (out.includes(tok)) out = out.split(tok).join(img);
+			else { if (!placed) out += img; return; }
+			if (placed) placed.add(i);
+		});
+		return out;
+	};
+
+	/**
+	 * Does the cell carry the writer's own [image] tag (a line that opens with a bracket resolving to "image")? That tag's
+	 * path builds the cell's picture from the cell text, so the cell-token rules (cellImageRefs, cellRedRequests) stand aside.
+	 *
+	 * @param {string} cell - the cell text
+	 * @param {TagNormaliser} norm
+	 * @param {string|null} [sep] - the paragraph separator the caller joined the cell with (default the « / » marker)
+	 * @returns {boolean}
+	 */
+	static cellHasImageTag(cell, norm, sep = null) {
+		const s = String(cell ?? "");
+		return this.cellParts(sep ? s.split(sep).join(" / ") : s).some((p) => {
+			const m = p.match(/^\[([^\]]+)\]/);
+			if (!m) return false;
+			try { return norm?.Parse(`[${m[1]}]`)?.primary?.tag === "image"; } catch { return false; }
+		});
+	};
+
+	/**
+	 * The cell_audio_word block when it is on (null when off or absent). Env CELLAUDIOWORD_OFF.
+	 *
+	 * @returns {Object|null}
+	 */
+	static cellAudioWordConfig() {
+		const cfg = DataService.Data.EmitTemplates?.elements?.table?.cell_audio_word;
+		return cfg && cfg.enabled !== false && cfg.form
+			&& !(typeof process !== "undefined" && process.env && process.env[cfg.env ?? "CELLAUDIOWORD_OFF"]) ? cfg : null;
+	}
+
+	/**
+	 * THE WRITER'S RED [word] BESIDE ITS WORD (a te reo dictionary row: «[kuia]» | «kuia» | its meaning). The cell is wholly
+	 * red and only a bracketed word; the next cell is plain text folding to the same word (within max_edit letters — the
+	 * writer's «[teketeko]» beside «tekoteko»). Returns the audio button named from the VISIBLE word (folded, its words
+	 * joined by name_joiner), or null when the cell is not that case. Data elements.table.cell_audio_word.
+	 *
+	 * @param {string[]} cells - the row's raw cell texts (red markers in)
+	 * @param {number} ci - the cell's column
+	 * @param {Object|null} cfg - cellAudioWordConfig()
+	 * @returns {string|null}
+	 */
+	static cellAudioWord(cells, ci, cfg) {
+		if (!cfg || ci + 1 >= cells.length) return null;
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const raw = String(cells[ci] ?? "");
+		if (!raw.includes("\u{1f534}") || raw.replace(RED, "").trim()) return null;
+		const m = raw.replace(RED, "$1").replace(/\s+/g, " ").trim().match(/^\[\s*([^\[\]]+?)\s*\]$/);
+		if (!m) return null;
+		const next = String(cells[ci + 1] ?? "");
+		if (/\u{1f534}|[\[\]]/u.test(next)) return null;
+		const word = next.replace(/\*\*|__/g, "").replace(/\s+/g, " ").trim();
+		const max = cfg.max_words ?? 4, count = (x) => x.split(" ").filter(Boolean).length;
+		if (!word || count(word) > max || count(m[1]) > max) return null;
+		const key = (x) => Utils.Fold(x).toLowerCase().replace(/[^a-z0-9]+/g, "");
+		const a = key(m[1]), b = key(word);
+		if (!a || !b) return null;
+		// letters apart (Levenshtein), allowed at most max_edit and a quarter of the shorter word
+		const d = Array.from({ length: b.length + 1 }, (_, j) => j);
+		for (let i = 1; i <= a.length; i++) {
+			let prev = d[0]; d[0] = i;
+			for (let j = 1; j <= b.length; j++) {
+				const tmp = d[j];
+				d[j] = Math.min(d[j] + 1, d[j - 1] + 1, prev + (a[i - 1] === b[j - 1] ? 0 : 1));
+				prev = tmp;
+			}
+		}
+		if (d[b.length] > Math.min(cfg.max_edit ?? 2, Math.floor(Math.min(a.length, b.length) / 4))) return null;
+		const name = Utils.Fold(word).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().split(" ").join(cfg.name_joiner ?? "-");
+		return Utils.FillTemplate(cfg.form, { name });
+	}
+
+	/**
+	 * THE WRITER'S RED REQUEST IN A TABLE CELL. Each red run (consecutive red spans read as one) with no bracket, at least
+	 * min_words words and an instruction cue (the free body's own test, norm.HasInstructionCue) is replaced by a token whose
+	 * fragment is the Writers Note (NotesAndComments.redFlag kind "cs"); the caller renders the tokenised cell and puts the
+	 * notes back with fillImageRefs(…, "CV2NOTE"). A red run with no cue stays as it is (a data label the learner reads).
+	 * Data elements.table.cell_red_request; env CELLREDREQ_OFF.
+	 *
+	 * @param {string} cell - the cell text (red markers in; image references already tokenised)
+	 * @param {ConversionRun} run
+	 * @param {TagNormaliser} norm
+	 * @returns {{text: string, notes: string[]}|null}
+	 */
+	static cellRedRequests(cell, run, norm, sep = null) {
+		const cfg = DataService.Data.EmitTemplates.elements?.table?.cell_red_request;
+		if (!cfg || cfg.enabled === false || !norm) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "CELLREDREQ_OFF"]) return null;
+		const s = String(cell ?? "");
+		if (!/\u{1f534}\[RED TEXT\]/u.test(s)) return null;
+		// a cell that carries the writer's own [image] tag builds its picture from the cell text: left alone
+		if (this.cellHasImageTag(s, norm, sep)) return null;
+		const minW = cfg.min_words ?? 3;
+		const hits = [];
+		for (const m of s.matchAll(/(?:\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534})+/gu)) {
+			const inner = m[0].replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\s+/g, " ").trim();
+			if (!inner || /[[\]]/.test(inner)) continue;
+			if (inner.split(" ").filter((w) => /[\p{L}\p{N}]/u.test(w)).length < minW) continue;
+			if (!norm.HasInstructionCue(inner)) continue;
+			hits.push({ start: m.index, end: m.index + m[0].length, note: NotesAndComments.redFlag(inner, run, "cs") });
+		}
+		if (!hits.length) return null;
+		let text = "", at = 0;
+		// a space on each side: a web address typed right before the run must end before the token (the link weave)
+		hits.forEach((h, i) => { text += s.slice(at, h.start) + ` ⟦CV2NOTE${i}⟧ `; at = h.end; });
+		text += s.slice(at);
+		return { text, notes: hits.map((h) => h.note) };
 	};
 }
 
