@@ -226,6 +226,11 @@ class PageSplitter {
 		const _ltb = _psRules?.lesson_titlebar_inpage;
 		const _ltbOn = !!_ltb && _ltb.enabled !== false && !_psRulesOff
 			&& !(typeof process !== "undefined" && process.env && process.env[_ltb.env ?? "LESSONTB_OFF"]);
+		// Rule 5 — a second [TITLE BAR] right after the overview's [End page] whose section is labelled the overview is
+		// the overview's introduction (data page_split_rules.overview_titlebar_section; env OVERVIEWTB_OFF)
+		const _ots = _psRules?.overview_titlebar_section;
+		const _otsOn = !!_ots && _ots.enabled !== false && !_psRulesOff
+			&& !(typeof process !== "undefined" && process.env && process.env[_ots.env ?? "OVERVIEWTB_OFF"]);
 		let _lastTitleBarFold = null;
 
 		const pages = [];
@@ -586,6 +591,25 @@ class PageSplitter {
 					current.items.push(it);
 					closed = false;
 					continue;
+				} else if (_otsOn && current?.isOverview && closed && String(it.blackAfter || "").replace(/\*+/g, "").trim()
+					&& (() => {
+						// the title bar's section opens with the module-overview label ([H1] «Tirohanga Whānui | Overview»)
+						let b = i + 1;
+						while (b < items.length && items[b].type === "black" && !String(items[b].text ?? "").trim()) b++;
+						const h = items[b];
+						return !!h && h.type === "tag" && (_ots.heading_tags ?? ["h1", "h2"]).includes(String(h.parse?.primary?.tag || ""))
+							&& new RegExp(_ots.overview_label_pattern ?? "^overview$", "i").test(Utils.Fold(String(h.blackAfter || "").replace(/\*/g, "")).trim());
+					})()) {
+					// A second [TITLE BAR] right after the overview's [End page], whose section is labelled the overview, is the
+					// overview's introduction — not AR-4's twin document (page_split_rules.overview_titlebar_section; OVERVIEWTB_OFF)
+					run.AddNote("info", "PageSplitter",
+						`A second [TITLE BAR] ("${String(it.blackAfter || "").replace(/\*+/g, "").trim().slice(0, 40)}") right after the overview's [End page] opens a section labelled the overview — its introduction, kept on page 0.0 (page_split_rules.overview_titlebar_section).`);
+					current._introMerged = true;
+					const _icfO = DataService.Data.EmitTemplates.page_split?.intro_cluster_forms;
+					if (_icfO?.menu_boundary === true && !(typeof process !== "undefined" && process.env && process.env.INTROMENU_OFF)) it._introStart = true;
+					current.items.push(it);
+					closed = false;
+					continue;
 				} else {
 					// AR-4: a SECOND literal [TITLE BAR] → new sub-document
 					subDocument++;
@@ -698,6 +722,67 @@ class PageSplitter {
 						if (q >= 0 && items[q].type === "tag" && items[q].parse?.primary?.tag === "module introduction") {
 							run.AddNote("info", "PageSplitter",
 								`"${(it.parse?.folded ?? "").trim()}" right after [MODULE INTRODUCTION] is the introduction's label — no new page (intro_cluster_forms.intro_page_label).`);
+							continue;
+						}
+					}
+				}
+
+				// The Writers Template's own lesson stub — its red «Insert the content for your lesson here, then follow on
+				// with lesson two etc as required.» followed by a bare [LESSON] — left inside a lesson is template
+				// scaffolding, not a page boundary: the bare marker is consumed and the lesson continues (the instruction
+				// still reaches the developer as its Writers Note). Data page_split.lesson_boundary_guard.template_stub;
+				// env TEMPLATESTUB_OFF.
+				{
+					const _ts = DataService.Data.EmitTemplates.page_split?.lesson_boundary_guard?.template_stub;
+					if (tag === "lesson" && _ts && _ts.enabled !== false && _ts.stub_pattern
+						&& DataService.Data.EmitTemplates.page_split?.lesson_boundary_guard?.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[_ts.env ?? "TEMPLATESTUB_OFF"])
+						&& !(it.parse?.numbers ?? []).length && !String(it.blackAfter ?? "").replace(/[*_\s]+/g, "")) {
+						let q = i - 1;
+						while (q >= 0 && items[q].type === "black" && !String(items[q].text ?? "").trim()) q--;
+						const _pt = q >= 0 ? String(items[q].type === "tag" ? (items[q].parse?.folded ?? "") : (items[q].text ?? "")).trim() : "";
+						if (_pt && new RegExp(_ts.stub_pattern, "i").test(_pt)) {
+							run.AddNote("info", "PageSplitter",
+								"A bare [LESSON] right after the template's own lesson stub instruction is template scaffolding — the lesson continues, no new page (lesson_boundary_guard.template_stub).");
+							continue;
+						}
+					}
+				}
+
+				// On the overview, right after its [End page]: a lesson opener whose number the NEXT lesson opener repeats
+				// (an [End page] between them) heads the module introduction, not the lesson — the marker is consumed, the
+				// overview continues and holds the introduction, and the next opener opens lesson N. Data
+				// page_split.intro_cluster_forms.repeated_lesson_opener; env INTROREPEAT_OFF.
+				{
+					const _icfR = DataService.Data.EmitTemplates.page_split?.intro_cluster_forms;
+					const _rlo = _icfR?.repeated_lesson_opener;
+					if (tag === "lesson" && current?.isOverview && closed && _rlo && _rlo.enabled !== false && _icfR.enabled !== false
+						&& !(typeof process !== "undefined" && process.env
+							&& (process.env[_rlo.env ?? "INTROREPEAT_OFF"] || process.env[_icfR.env ?? "INTROFORM_OFF"]))) {
+						const _numOf = (x) => {
+							const n = (x.parse?.numbers ?? [])[0];
+							if (n != null && String(n).trim()) return String(n).replace(/\.0+$/, "");
+							const m = String(x.blackAfter ?? "").replace(/[*_]+/g, "").trim().match(new RegExp(_rlo.title_number_pattern ?? "^lesson\\s+(\\d+)\\s*$", "i"));
+							return m ? m[1] : null;
+						};
+						const _n0 = _numOf(it);
+						let _endBetween = false, _next = null;
+						for (let q = i + 1; q < items.length; q++) {
+							const p = items[q].type === "tag" ? items[q].parse?.primary : null;
+							if (!p || p.directive !== "PAGE_BOUNDARY") continue;
+							if (p.tag === "lesson") { _next = items[q]; break; }
+							if (p.tag === "end page") _endBetween = true;
+						}
+						if (_n0 && _next && _endBetween && _numOf(_next) === _n0) {
+							run.AddNote("info", "PageSplitter",
+								`[LESSON] "${String(it.blackAfter ?? "").replace(/[*_]+/g, "").trim() || _n0}" is opened again by the next lesson opener — the section it heads is the module introduction, kept on the overview (intro_cluster_forms.repeated_lesson_opener).`);
+							current._introMerged = true;
+							for (let q = i + 1; q < items.length; q++) {   // the introduction's first item ends the overview's menu
+								if (items[q].type === "black" && !String(items[q].text ?? "").trim()) continue;
+								if (_icfR.menu_boundary === true && !(typeof process !== "undefined" && process.env && process.env.INTROMENU_OFF)) items[q]._introStart = true;
+								break;
+							}
+							closed = false;
 							continue;
 						}
 					}

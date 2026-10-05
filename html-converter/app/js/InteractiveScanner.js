@@ -3740,7 +3740,14 @@ class InteractiveScanner {
 		if (!cfg || cfg.instruction_def_guard === false) return false;
 		const re = new RegExp(cfg.instruction_cue_pattern
 			?? "\\b(?:please|can you|could you|note to (?:dev|cs)\\b|dev team)\\b", "i");
-		return re.test(String(def ?? ""));
+		if (re.test(String(def ?? ""))) return true;
+		// a yes / no question TO THE DEVELOPER («can the students hover over and the info is read aloud …?») is a note too
+		// (data hover_weave_hygiene.developer_question; env HOVERDEVQ_OFF)
+		const dq = cfg.developer_question;
+		if (dq && dq.enabled !== false && dq.pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[dq.env || "HOVERDEVQ_OFF"])
+			&& new RegExp(dq.pattern, "i").test(String(def ?? "").trim())) return true;
+		return false;
 	}
 
 	/** True when a host candidate's trailing text is a MEDIA REFERENCE — a bare URL (+ "]"/")"
@@ -3943,13 +3950,33 @@ class InteractiveScanner {
 				}
 			}
 		}
-		// (A2) the marker yields no self-def — pull it from the FOLLOWING red/black item
+		// (A2) the marker yields no self-def — pull it from the FOLLOWING red/black item. NOT for the writer's DEFINITIONS
+		// BLOCK (a request ending at its colon — «[Rollover definitions please:» — followed by «word – definition» lines):
+		// its entries define the red words of the paragraphs before it, so the whole block is left for
+		// ContentConverter's red-word pass (Emit_Templates.elements.inline_red_words.in_sentence.writer_definitions; env
+		// REDWORDDEF_OFF) instead of the first entry being taken as this marker's definition.
+		const _wdS = DataService.Data.EmitTemplates.elements?.inline_red_words?.in_sentence?.writer_definitions;
+		const _defBlockOpener = !!_wdS && _wdS.enabled !== false && /:\s*$/.test(rawMarker)
+			&& !(typeof process !== "undefined" && process.env && process.env[_wdS.env ?? "REDWORDDEF_OFF"])
+			&& new RegExp(_wdS.open_pattern ?? "(?:roll\\s*-?\\s*over|hover)\\s+definitions?\\b", "iu").test(rawMarker)
+			&& new RegExp(_wdS.entry_pattern ?? "^(.{1,40}?)\\s+[–—-]\\s+(.{2,})$", "u").test(String(items[i + 1]?.text ?? "")
+				.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ").replace(/\s+/g, " ").replace(/\]\s*$/, "").trim());
+		if (_defBlockOpener) return false;
+		// a black tail that is ONLY a separator («[roll over defn» + «: » + the red definition, GEO1006) counts as an empty
+		// tail here, and the next red run that CLOSES the bracket is accepted whatever tag its words resolve to (never an
+		// interactive). Data split_bracket.separator_tail; env HOVERSEPTAIL_OFF.
+		const _st = split?.separator_tail;
+		const _sepTail = !def && splitOff && !!_st && _st.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_st.env ?? "HOVERSEPTAIL_OFF"])
+			&& new RegExp(_st.tail_pattern ?? "^\\s*[:–—-]\\s*$", "u").test(String(it.blackAfter ?? ""))
+			&& /\]\s*$/.test(String(items[i + 1]?.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, ""));
+		if (_sepTail) it.blackAfter = "";
 		if (!def && splitOff && split.unclosed_next_item !== false && !String(it.blackAfter ?? "").trim()) {
 			const nxt = items[i + 1];
 			const nxtPrim = nxt && nxt.parse && nxt.parse.primary;
 			const nxtOk = nxt && nxt.consumedBy === undefined && (nxt.type === "black"
 				|| (nxt.type === "tag" && (!nxtPrim || nxtPrim.directive !== "INTERACTIVE")
-					&& (nxt.parse?.class === "instruction" || nxt.parse?.class === "noise")));
+					&& (_sepTail || nxt.parse?.class === "instruction" || nxt.parse?.class === "noise")));
 			if (nxtOk) {
 				const dtxt = String(nxt.text ?? "")
 					.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "")

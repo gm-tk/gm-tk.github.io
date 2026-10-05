@@ -236,6 +236,8 @@ class AcksBuilder {
 		}
 		// Te Kura items are covered by the standing catch-all line
 		if (sourceClass === "tekura") return null;
+		// the writer's bracketed request opening the title is a page instruction, not the title (title_request_strip)
+		item = this.#titleWithoutRequest(item);
 
 		const prefix = this.#typePrefix(item, run);
 		const adapted = fmt.entry_templates.adapted_keywords.some((k) =>
@@ -673,6 +675,28 @@ class AcksBuilder {
 	 *   acknowledgement when the item has a URL, else an ACK-TODO
 	 *   ("asset-id") for a named asset with no link at all
 	 */
+	/**
+	 * THE WRITER'S REQUEST BEFORE THE TITLE. A media-list description that opens with a bracketed request to the
+	 * developer — «[Embed audio which can be clicked on and listened to] / Lion and Mouse» (ENGI102), «[Insert image of
+	 * superhero such as this one] …» (ENGC206) — would ship the request on the acknowledgements page. The leading request
+	 * (and the cell's « / » paragraph join after it) is removed, repeatedly, unless nothing with a letter would remain.
+	 * Returns the item unchanged or a shallow copy. Data Acks_Formats.title_request_strip; env ACKTITLEREQ_OFF.
+	 */
+	static #titleWithoutRequest(item) {
+		const cfg = DataService.Data.AcksFormats?.title_request_strip;
+		if (!cfg || cfg.enabled === false || !cfg.pattern) return item;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "ACKTITLEREQ_OFF"]) return item;
+		const re = new RegExp(cfg.pattern, "i");
+		const orig = String(item?.description ?? "");
+		let d = orig;
+		while (re.test(d)) {
+			const next = d.replace(re, "");
+			if (!/\p{L}/u.test(next)) break;
+			d = next;
+		}
+		return d === orig ? item : { ...item, description: d.trim() };
+	}
+
 	static #websiteEntry(item, prefix, run) {
 		const fmt = DataService.Data.AcksFormats;
 		if (!item.url) {

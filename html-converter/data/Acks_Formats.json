@@ -184,6 +184,12 @@
   "note_position": "top of the acknowledgements block, inside the opening-disclaimer group — the designer reads it in context, immediately above the ❗ lines it refers to. Carries class cv2-note, like every other converter note."
  },
 
+ "title_request_strip": {
+  "enabled": true,
+  "env": "ACKTITLEREQ_OFF",
+  "pattern": "^\\s*\\[\\s*(?:insert|embed|add|place|put|please|include|use)\\b[^\\]]*\\]\\s*(?:\\/\\s*)?",
+  "_doc": "A media-list title that OPENS with the writer's bracketed request to the developer («[Embed audio which can be clicked on and listened to] / Lion and Mouse», «[Insert image of superhero such as this one] …») is a page instruction, not the asset's title: the request (and the cell's paragraph join after it) leaves the acknowledgement, which then reads «Audio: Lion and Mouse, …» as the gold does. Only a leading request is removed, repeatedly; a title that would be left with no letter keeps its words."
+ },
  "title_authority": {
   "stock": "Official asset name only — writer descriptions are NOT acceptable for stock assets (istock/other_stock/pixabay). Derive from the URL slug, or emit ACK-TODO[istock-name].",
   "youtube": "oEmbed title/author verbatim (including any '| Site' suffix), or ACK-TODO[video-meta].",

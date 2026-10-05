@@ -642,6 +642,12 @@
 			"skip_if_tag_keyword": "\\btrigger\\b",
 			"split_bracket": {
 				"enabled": true,
+				"separator_tail": {
+					"enabled": true,
+					"env": "HOVERSEPTAIL_OFF",
+					"tail_pattern": "^\\s*[:–—-]\\s*$",
+					"_doc": "Form (A2) of InteractiveScanner.#weaveHoverDefinition, widened: a marker whose own black tail is ONLY a separator («**climate change** 🔴[roll over defn🔴: 🔴Long term shifts in temperatures and weather patterns.]🔴 is affecting …», GEO1006) has no definition of its own — the separator is not one (the hover read «:») — so, as for an empty tail, the definition is the NEXT red run, here one that closes the bracket «…]» whatever tag its words resolve to (never an interactive), and the sentence continues on that run's own tail (it was lost). The separator itself leaves with the marker."
+				},
 				"pre_anchor_paren": {
 					"enabled": true,
 					"env": "HOVERPREANCHOR_OFF",
@@ -763,6 +769,12 @@
 			"enabled": true,
 			"instruction_def_guard": true,
 			"instruction_cue_pattern": "\\b(?:please|can you|could you|note to (?:dev|cs)\\b|dev team)\\b",
+			"developer_question": {
+				"enabled": true,
+				"env": "HOVERDEVQ_OFF",
+				"pattern": "^(?:can|could|would|will|is\\s+it\\s+possible|are\\s+we\\s+able|do\\s+we|should\\s+we)\\b[^?]*\\?\\s*$",
+				"_doc": "A recovered 'def' that is a YES / NO question to the developer — «[Hover Triggers - Audio & Informational] can the students hover over and the info is read aloud for each image?» (PES1008 5.0, a request about the images that follow) — is a writer note, not a definition: the same decline as instruction_cue_pattern, so the learner never hovers a sentence and reads the developer's question (the gold has no hover there). Only a modal opening counts: the genuine question hovers open with what / who / where / when («Who are the characters in the story?»)."
+			},
 			"url_host_skip": true,
 			"note": "HYGIENE guards shared by BOTH sentinel-weave paths (info_trigger_inline + hover_definition_inline). (1) instruction_def_guard — a recovered 'def' matching instruction_cue_pattern is a writer NOTE, not a definition ('For each concept, please have the rollover definitions below. Ngā mihi' HIS1002-16; '…Please embed these images and have drop-down boxes…' AGH1004-01): DECLINE the weave so the marker falls to the CS-note handling — the human strips both. (2) url_host_skip — the anchor-host walk never selects a candidate whose trailing text is a bare URL or media FILENAME (+']'/')' residue; media_tail_pattern): the URL machinery would read straight through the private-use sentinel ('…Pounamu_0.jpg⟨IT0⟩For' becoming part of the URL and orphaning ⟨IT1⟩ into the output), or weave info onto URL fragments such as 'png' (MXFU201's '[hover] enlarge graph' hints). With only media adjacent the anchor is non-derivable → the no-anchor fallback (def dropped, marker consumed — as the human drops the text at MXFU201). Named-anchor selection (HIS1001 '[Rollover for moratorium: …]') belongs to the split-bracket and render-stitch rules, not here. Both guards only DECLINE mis-weaves; clean weaves are untouched by construction. Env HOVERHYG_OFF turns off all 4 sites.",
 			"media_tail_pattern": "(?:https?:\\/\\/[^\\s<>&\"]+|\\.(?:png|jpe?g|gif|svg|webp|pdf|docx?|pptx?|xlsx?))[\\s\\]\\)]*$"
@@ -1134,9 +1146,34 @@
 				"separator_after": "^\\s*[)\\],/]"
 			},
 			"in_sentence": {
-				"_doc": "One to a few red words inside the running text of a sentence, with black text before them that has not ended its sentence and black text after them that carries it on. Off: the form is ambiguous from the document alone — in some documents the red word is a key term of the sentence, in others it is the answer of a fill-in frame, and putting it back would print the answer.",
-				"enabled": false,
+				"_doc": "One to a few red words inside the running text of a sentence, with black text before them that has not ended its sentence and black text after them that carries it on. The form is ambiguous from the document alone — in some documents the red word is a key term of the sentence, in others the answer of a fill-in frame — so the word comes back into the sentence (constraint 1: the writer's words stay; letters only — a red NUMBER in a sentence stays out) AND the paragraph is followed by ONE red Writers Note naming the words put back (KB constraints 37 / 59), so the developer can make a key term a hover definition or a fill-in a quiz. Never a run inside an interactive's capture (the builders read red runs as answers), never one matching exclude_pattern.",
+				"enabled": true,
+				"env": "REDWORDSENT_OFF",
+				"note": {
+					"enabled": true,
+					"env": "REDWORDNOTE_OFF",
+					"template": "red in the Writers Template, kept in the sentence above: {words}",
+					"word_form": "«{word}»",
+					"joiner": ", ",
+					"_doc": "The note after the paragraph: one per paragraph, every red word the pass put back in that paragraph named once, in order; it renders through the writer-instruction note (the red bold «Writers Note:» form)."
+				},
+				"writer_definitions": {
+					"enabled": true,
+					"env": "REDWORDDEF_OFF",
+					"open_pattern": "(?:roll\\s*-?\\s*over|hover)\\s+definitions?\\b",
+					"entry_pattern": "^(.{1,40}?)\\s+[–—-]\\s+(.{2,})$",
+					"black_paren_request": {
+						"enabled": true,
+						"env": "HOVERPARENREQ_OFF",
+						"lead_pattern": "\\s*\\(\\s*(?:roll\\s*-?\\s*over|hover)\\s*(?:defn|definition|def)\\s*$",
+						"def_pattern": "^\\s*[:–—-]\\s*(.+?)\\s*$",
+						"_doc": "THE ROLL-OVER REQUEST TYPED IN BLACK, ITS DEFINITION IN RED: «… and **viticulture**. (roll over defn🔴: Cultivation of grapes.🔴)» (GEO1005) — the black text ends with the request («(roll over defn»), the red run that follows is the definition (after its separator) and the black «)» closes the request. The anchor is the word (or bold run) the request follows; the definition becomes its hover and the request, the separator and the closing «)» leave the page — before, the definition shipped as a Writers Note and «(roll over defn» stayed as learner text."
+					},
+					"_doc": "KB 04B (the hover definition, `span.infoTrigger` + `info`) + constraint 1. THE WRITER'S OWN DEFINITIONS BLOCK MAKES THE RED WORD A HOVER: after the paragraphs whose key terms are typed red, the writer asks for the hovers and supplies them — a red request ending at its colon («[Rollover definitions please:», «[please provide roll-over definitions for the words highlighted red:») and then one red «word – definition» line per term, the last closing the bracket. A red word this pass puts back into its sentence that the NEXT such block on the page defines (the word itself, case ignored) carries that definition — the woven hover the gold builds (CEDK401: «… a <span class=\"infoTrigger\" info=\"…\">metaphor</span> for …») — and is not named again in the paragraph's note; the block's used entries leave the page (the request they answered is not repeated as a Writers Note), and when every entry was used the opener goes with them. Never an invented definition: a red word no block defines keeps the plain word and the note."
+				},
 				"max_words": 3,
+				"option_label_after": "^[.)]",
+				"_doc_option_label_after": "A SINGLE red letter followed by «.» or «)» is a multiple-choice option LABEL the writer coloured to mark the answer («a. Tropical 🔴b🔴. 🔴Temperate🔴 c. …», GEO1005) — never a word of the sentence: putting the letter back alone would print half an answer.",
 				"word_pattern": "^[\\p{L}’'\\-]+(?:[ \\u00a0]+[\\p{L}’'\\-]+)*[.,;:!?]?$",
 				"before_pattern": "[\\p{L}\\p{N},(\\[“\"'‘–—-]\\s*$",
 				"after_pattern": "^\\s*(?:[.,;:!?)\\]”\"'’]|\\p{Ll})"
@@ -1154,6 +1191,18 @@
 			"env": "MEDIAITEMVIDEO_OFF",
 			"aliases": ["insert media item", "media item", "insert item"],
 			"host_pattern": "youtube\\.com/(?:watch\\?|shorts/|embed/|live/)|youtu\\.be/|vimeo\\.com/(?:video/)?\\d"
+		},
+		"request_continuation": {
+			"enabled": true,
+			"env": "REQCONT_OFF",
+			"request_pattern": "^\\[\\s*(?:(?:insert|add|merged|placeholder)\\s+)?(?:hyper)?link\\b[^\\]]*\\]$",
+			"host_tags": ["body", "paragraph"],
+			"_scope_note": "LINK requests only: an image / photo / media / audio / video request's own words are its description or caption (XMES203 «digital clock face …», ARFUN02 «mouse») and stay with it. The text before the tag must be plain text or a [body] line (host_tags) — never a button's label (SSOG101's «[Button] Create your escape plan … Then»).",
+			"before_pattern": "[\\p{L}\\p{N},(*_]\\s*$",
+			"after_pattern": "^\\s*(?:\\*{1,3}|_{1,2})?\\s*(?:\\p{Ll}|[,;:)])",
+			"deny_after_pattern": "https?:\\/\\/|www\\.|\\.(?:jpe?g|png|gif|pdf|mp3|mp4|docx?)\\b",
+			"_deny_after_note": "The tag's own address — «[Link] https://pepeha.nz/…» (ANZH101), «[video] https://…» (PES1001) — is the tag's content, never the sentence's: words carrying an address never move.",
+			"_doc": "A REQUEST TAG TYPED INSIDE A SENTENCE IS NOT A PARAGRAPH BREAK. «… for others please click on this link [insert link item 1] to see the recommended items)» (ART1003), «… (Link [Merged link 2] to page with information about dropbox …» (ART1004 / ART1005): the tag item cut the writer's sentence into two paragraphs (the fidelity census's F-CUT split-link / split-other rows). For a non-widget tag whose words are a link / media request (request_pattern) in the SAME source paragraph as black text before it that does not end the sentence (before_pattern) and whose own words continue it (after_pattern: a lower-case word or closing punctuation, the writer's italic / bold mark allowed before it), the words rejoin the sentence; the tag keeps its own handling after the paragraph. The writer's italic / bold run cut by the tag is joined back into one run. The format requests («[bold the word X]») stay with inline_format_request; a widget tag never moves."
 		},
 		"inline_format_request": {
 			"_doc": "A FORMATTING REQUEST INSIDE A SENTENCE IS APPLIED, NOT A PARAGRAPH BREAK. The writer types a red request in the middle of a sentence — 'Wana qualities are how [bold the word how] we do the movement …' (ARFUN03), 'explore autumn [bold the word autumn] using movement.' (CEDO202) — and the tag item cut the sentence into two paragraphs while the request rendered nothing (274 such spans / 33 modules). The human keeps one sentence and applies the request ('are <b>how</b> we do'). A tag item whose words match request_pattern (bold / italic, then the words to mark), between black text that does not end a sentence (before_pattern) and black text that continues it (after_pattern), rejoins the sentence; the named words (max_target_words) take the mark from 'marks' when they stand within window_chars of the request, outside any existing mark. Named words not found → the item is left alone.",
@@ -1185,6 +1234,14 @@
 				"_doc": "A BARE BOLD / ITALIC REQUEST INSIDE A SENTENCE NO LONGER CUTS IT, WHEREVER IT STANDS. The bare requests ('[bold]', '[unbold]', '[end italics]', '[emphasise text]' — bare_request_pattern and more_forms.bare_pattern) are rejoined by the pass that runs after the interactive scan, on FREE body items only; in a list run, an activity box or a widget capture the request item still cut the writer's sentence ('The clock went [bold] …' WJFUN113, '• which was carved from wood [end italics] …' WJFUN304, 'Question 1. What did Jeremy [emphasise text] **want**?' XGF9004). The highlight forms' item-stream pass (PageAssembler, before the split and the scanner, the request item kept in place with no words of its own) reads these too — rejoin only, no mark guessed. An opening request followed in the same paragraph by its closing one (more_forms.end_pattern — the pair, which marks its words) and a NAMED request ('[bold the word how]' — request_pattern) are left to the later pass.",
 				"enabled": true,
 				"env": "FMTREQSTREAM_OFF"
+			},
+			"marked_before": {
+				"_doc": "A REQUEST AFTER A WORD THE WRITER HAS ALREADY MARKED NO LONGER CUTS THE SENTENCE. The writer often applies the format and still types the request beside it — 'you will unpack the **relationship** [bold] between the cultural context …', 'if you can do it **and** [bold] listen', 'Writers don't just choose [italics] *what* [end italics] to say', 'Choose the **four adjectives** [unbold] that best describe …', 'tick __**one**__ [Bold the word one] of the three' — and the text before the request ends in the writer's own closing mark, which the sentence test (a word, a comma, a quote or a bracket at the end) did not read as a sentence still running, so the request cut it in two. before_pattern also takes a word closed by up to four mark characters; after_pattern also takes a sentence that runs on into a word or a stop opened by up to four mark characters ('[bold] ***but***', '**as** [unbold]**.** It helps'); a NAMED request whose words the writer has marked already only rejoins the sentence (the writer's mark stays, none is added); bare_pattern adds '[Bold Type]' and '[underline Type]' / '[underline]' to the rejoin-only vocabulary.",
+				"enabled": true,
+				"env": "FMTREQMARKED_OFF",
+				"before_pattern": "[\\p{L}\\p{N},’'\")][*_]{0,4}\\s*$",
+				"after_pattern": "^\\s*(?:[*_]{1,4}[\\p{L}\\p{N}.,;:!?)’'\"]|[.,;:!?)’'\"]|\\p{Ll}|\\p{Lu}{2,}(?!\\p{Ll}))",
+				"bare_pattern": "^\\[\\s*(?:(?:bold|underline)\\s+type|underline)\\s*\\]?$"
 			}
 		},
 		"item_own_link": {
@@ -2549,6 +2606,23 @@
 		},
 		"selfCheck": {
 			"enabled": true,
+			"picture_word_choice": {
+				"_doc": "THE PICTURE-WORD CHOICE: the BLL family's «[self check] Correct answers are in red» + a table whose every row is [word ║ stock picture ║ word] with ONE word in red («hog ║ <iStock picture of a hug> ║ 🔴hug🔴», «🔴snack🔴 ║ <picture> ║ sack») — «Look at the picture and then click on the word that matches the picture.» The human builds a multiChoiceQuiz in every one (BLL133 / 141 / 162 / 172 / 217 / 223 / 232): one question per row, the two words its options, the red word value=\"correct\". Built so: the picture is the question (the stock picture's own file, the run's image mode), the two words its options in the writer's order, the red one correct. Tried only after every other selfCheck reading declined. The writer's note must say the answers are marked (answer_note_pattern — an answer is never invented); every row needs exactly one red word, a stock picture in the middle cell and words of at most max_words; fewer than min_rows rows, a header row, any other member with learner text or a cell holding a tag keeps the hand-off box.",
+				"enabled": true,
+				"env": "PICWORDCHOICE_OFF",
+				"answer_note_pattern": "\\bcorrect\\s+answers?\\s+(?:are|is)\\s+(?:in\\s+)?red\\b",
+				"min_rows": 4,
+				"max_words": 3,
+				"filename_istock": "iStock-{id}.jpg",
+				"image_mode_P": "<img class=\"img-fluid\" src=\"https://placehold.co/600x400?text={label}\" alt=\"\" loading=\"lazy\">",
+				"image_mode_P_comment": "<!-- <img class=\"img-fluid\" loading=\"lazy\" src=\"images/{filename}\" alt=\"\"> -->",
+				"image_mode_D": "<img class=\"img-fluid\" loading=\"lazy\" src=\"images/{filename}\" alt=\"\">",
+				"open": "<div class=\"multiChoiceQuiz autoCheck\">",
+				"question": "<div class=\"row\">\n<div class=\"col-12 mcqQuestion\">\n{picture}\n<div class=\"mcqOptions\">\n{options}\n</div>\n</div>\n</div>",
+				"option": "<p class=\"mcqOption\">{text}</p>",
+				"option_correct": "<p class=\"mcqOption\" value=\"correct\">{text}</p>",
+				"close": "</div>"
+			},
 			"letter_grid_bingo": {
 				"_doc": "THE LETTER-GRID BINGO: the BLL family's `[Self check] Click on the lower case letter ‘s’.` + a TABLE of single letters with the CORRECT cells typed in red (BLL110 / 113 / 120 / 130 / 140 / 150 / 154 / 160 / 170 — each bundle usually holding the lower-case and the capital grid, the writer's `[Add an audio that when they click/hover on the letter it says the name of the letter…]` ELEMENT tag and the `**Alphabet Audio** [LINK]` line). The human builds the KB's BINGO (03E COMP_04): `div.bingo.col-12 > div.bingoContainer[grid=N] > div.number[value=correct] > p` + the `row > activityButton reset-btn / activityButton hidden check-btn` row — grid 12 cells → 4, 9 → 3, 16 → 4; the wrapper `bingo col-12`; the button row; no h4 card title; the cell usually `p.sassoonI-text` (often with a `span.audioTrigger` — the developer's snipped alphabet audio, NOT emitted here: the package cannot supply the asset, so the writer's audio request and the link ride as the red Writers Note after the widget). Tried BEFORE the question-list form; fires only when EVERY table in the bundle is a letter grid (every non-empty cell ≤ max_cell_chars letters / digits once the red markers and bold marks are stripped; ≥ min_cells cells), every extra type is selfCheck itself (the second grid), and each table follows its own `[Self check]` invocation whose black text is the lead; per table → `lead` + the bingo: the cells row-major from the writer's table, value=\"correct\" on the RED cells or, when the writer marked none, on the cells equal to the letter quoted in the lead (`correct_from`; neither → decline, never half-built); `grid` from the cell count (grid_by_cells, else grid_default); the cell class by module-code prefix (cell_class_by_prefix — the BLL family's Sassoon Infant; plain <p> = the KB form elsewhere). The box takes `.interactive` through interactive_widget_types (bingo is listed). Env BINGO_OFF keeps the hand-off box.",
 				"enabled": true,
@@ -3171,6 +3245,39 @@
 			"alternating_multicol": true,
 			"front_back_multirow": true,
 			"_front_back_multirow_note": "The MULTI-ROW alternating Front/Back flipCard (as in OSAH501-03). The writer lays the cards out as a [Flip card image] table: a Front|Back|Front|Back header over MULTIPLE data rows, each row holding width/2 cards (column-pairs col 2i = front, col 2i+1 = back). Each FRONT = '[body] **title** / [image] url' (image-front), each BACK = '[body] / Law: X / lead-in: / • a / • b' (a rich text + bullet list a flip back CAN hold). The human editorially rebuilt this as an accordion, but THAT choice is NON-DERIVABLE (Decision Framework A — no link from the writer's [Flip card image] tag), so the WRITER'S flipCard is built. Generalises the single-data-row form (#flipCardAlternating) to N data rows + a bulleted/rich back (#flipBackRich). InteractiveBuilder.#flipCardMultiRow strips the per-cell structural markup (#stripStructuralTags: [body]/[front]/[back]/[H#], red-wrapped or literal — [image] kept for image detection), then reuses #flipImageFront + #flipBackRich; emits tpl.card_image_front cards. Conservative (never half-build → orange placeholder): a clean Front/Back header (#looksLikeFlipHeader), >=2 data rows, every row width-wide, every card builds cleanly (a surviving CS note / empty cell / missing image|title fails the whole widget). Scoped width>=4 even, so the 2-col form (CEDO102/MXDB302/TRR114/XMES201) and the single-row form are untouched. Building it also removes the placeholder's literal-[tag] leak. Env FLIPMULTIROW_OFF gives the orange placeholder.",
+			"word_grid": {
+				"enabled": true,
+				"env": "FLIPWORDGRID_OFF",
+				"max_words": 2,
+				"min_cards": 4,
+				"decline_request_pattern": "\\bcolou?r|\\baudio\\b|\\bsound\\s+(?:file|clip|button)|\\bimages?\\b|\\bpictures?\\b",
+				"face_label_pattern": "^(?:front|back|reverse|side\\s*\\d*|(?:front|back|flipped|outer|inner)\\s+side)$",
+				"_face_label_note": "A cell that names a card FACE («Front ║ Poem ║ Advertisement ║ Song» / «Back ║ Entertain ║ Persuade ║ Entertain», ENFUN01) makes the table a faced card table, not a word list — the box stays; so does a repeated word. The request check also reads the line just before the opener (BLL230's colour request sits there).",
+				"_decline_request_note": "A writer request this plain grid cannot honour keeps the hand-off box: the cards coloured to tell two sounds apart (BLL230 «Can we please colour the inside of the flipcards so they can differentiate …» — the gold's pink / light-blue audio cards), an audio card, a picture on a card.",
+				"open": "<div class=\"row flipCardsContainer sassoon-text\">",
+				"card": "<div class=\"col-md-4 col-12 paddingLR\">\n<div class=\"flipCard noBG flipTimer\" flipTime=\"5000\">\n<div class=\"front\"><p>Word {n}</p></div>\n<div class=\"back\"><p style=\"font-size: 150%;\">{word}</p></div>\n</div>\n</div>",
+				"close": "</div>",
+				"_doc": "THE WORD GRID — tried only where every other flipCard reading (the dialects, the composer) declined, so no existing build changes. One captured table whose every non-empty cell is ONE word or a two-word phrase (max_words; no red, tag, link, slash or closing punctuation — a sentence is not a word card): the BLL spelling lists («white ║ who ║ whiskers» × 3 rows, «[Flipcards] Can we create flip cards that open for 5 seconds and then flip back again?»). One card per cell in reading order, the gold's own form in every one of its 18 grids (BLL240 / BLL250 / BLL260): the front the card's number label «Word N» (counted per grid), the back the word at 150 % in the reading font (`sassoon-text` on the grid), each card a timed flip (`flipTimer`, flipTime 5000 — the writer's «open for 5 seconds and then flip back»). Empty cells (a blank last row) are skipped; fewer than min_cards words keeps the hand-off box."
+			},
+			"instruction_series": {
+				"enabled": true,
+				"env": "FLIPSERIES_OFF",
+				"count_pattern": "\\bseries\\s+of\\s+(\\d+|two|three|four|five|six|seven|eight|nine|ten)\\s+flip\\s*(?:boxes|cards)\\b",
+				"number_words": { "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10 },
+				"intro_pattern": "\\bflip\\s+side\\s+of\\s+each\\b[^:]*:\\s*$",
+				"min_cards": 2,
+				"max_cards": 12,
+				"max_words": 14,
+				"front_rules": [
+					{ "pattern": "\\bquestion\\s+marks?\\b", "text": "?" }
+				],
+				"colour_request_pattern": "\\b(?:different|own)\\s+colou?rs?\\b",
+				"colour_levels": ["7-8", "9-10", "NCEA", "ECH", "1-3", "4-6"],
+				"open": "<div class=\"row flipCardsContainer\">",
+				"card": "<div class=\"col-md-4 col-12 paddingLR\">\n<div class=\"flipCard\"{colour}>\n<div class=\"front\"><p style=\"font-size: 300%;\">{front}</p></div>\n<div class=\"back\"><p>{back}</p></div>\n</div>\n</div>",
+				"close": "</div>",
+				"_doc": "THE INSTRUCTION SERIES — tried only where every other flipCard reading (the dialects, the composer, the word grid) declined, so no existing build changes. The writer asks for the cards in a red instruction and types their backs as plain lines: 'To CS: Create a series of 6 flip boxes Each one to have a different colour and perhaps a question mark? On the flip side of each one is an activity: / Where would you find it? / … / What rhymes with it? / Record your responses and send them to your kaiako.' The count comes from the instruction (count_pattern); the line ending the instruction tag (intro_pattern) is the cue, and the NEXT count plain lines are the backs, one card each (max_words each; no red, tag or link) — fewer lines than the count, or anything else between them, keeps the hand-off box. The front is the writer's own suggestion (front_rules: a question mark); with no suggestion the box stays. 'a different colour' each (colour_request_pattern) gives every card the next colourLevel in colour_levels, the series' own built order. The line after the last card is the learner's instruction and stays as text after the cards."
+			},
 			"text_guard": {
 				"enabled": true,
 				"env": "FLIPTEXTGUARD_OFF",
@@ -3563,7 +3670,13 @@
 				"open": "<div class=\"rotateBanner\">\n<div class=\"bannerContainer\">",
 				"item": "<div class=\"bannerItem\">\n{image}\n</div>",
 				"close": "</div>\n</div>",
-				"min_items": 2
+				"min_items": 2,
+				"labelled_list": {
+					"_doc": "THE LABELLED LIST BANNER — tried only where the banner has no table. The writer lists the pictures under the opener as red labels, each followed by its one stock address: '[Insert rotating banner]' 'Image #1: https://www.istockphoto.com/…' … 'Image #5: …' (the HPFUN series; the human builds the same div.rotateBanner strip). One bannerItem per label in the writer's order, the standard picture placeholder (the iStock id from a 'gm…' or a '/id/…/' iStock address; another host keeps the banner's own name for it). Any other member, a label (label_pattern) with no address or with words beside it, a video, or fewer than min_items pictures keeps the hand-off box.",
+					"enabled": true,
+					"env": "ROTBANNERLIST_OFF",
+					"label_pattern": "^(?:image|photo|picture)\\s*#?\\s*\\d+\\s*:?$"
+				}
 			},
 			"item_image_caption": "<div class=\"item image\">\n{image}\n<div class=\"carousel-caption\">\n{caption}\n</div>\n</div>",
 			"rich_slides_accordion_sibling_note": "see interactive_builders.accordion.rich_panels.head_from_first_line — the accordion half of the same rule (build the writer's tagged widget).",
@@ -3861,6 +3974,40 @@
 			"filename_istock": "iStock-{id}.jpg",
 			"min_shapes": 2
 		},
+		"reorder": {
+			"enabled": true,
+			"_doc": "THE REORDER (KB 03F COMP_05): the items listed in their CORRECT order in the source, the page script shuffles them. Built ONLY where the writer says the typed order is the answer (an answer is never invented). The table form below is the one shape built.",
+			"table_form": {
+				"enabled": true,
+				"env": "REORDERTABLE_OFF",
+				"answer_mark_pattern": "currently\\s+(?:in\\s+(?:the\\s+)?(?:correct|right)\\s+(?:order|place)|match|aligned)|(?:answers?|order)\\s+(?:are|is)\\s+(?:currently\\s+)?(?:as\\s+is|in\\s+(?:the\\s+)?correct\\s+(?:order|place))|aligned\\s+correctly|in\\s+(?:the\\s+)?correct\\s+order\\s+(?:so|now|already)|\\[\\s*correct\\s+answers?\\s*\\]|\\[\\s*static(?:\\s+column)?\\s*\\]|reorder\\s+column|(?:right|left)(?:-hand)?\\s+(?:side|column)\\s+out\\s+of\\s+order|(?:randomi[sz]e|shuffle|scramble|jumble)\\s+(?:the\\s+)?(?:right|left)(?:-hand)?\\s+(?:side|column)|reorder\\/scramble",
+				"no_answer_pattern": "\\bno\\s+correct\\s+answers?\\b",
+				"mark_member_tags": ["answer"],
+				"_mark_member_note": "A bracketed answer remark on its own line — «[answers are currently in the correct place]» (ENGC403 7.1 / 8.1) — parses as an `answer` tag, not an instruction note: it is read for the mark and its words ride as the Writers Note after the widget.",
+				"deny_cell_pattern": "https?:\\/\\/|\\[\\s*(?:image|insert\\s+image|photo|picture|audio|video|item|media|audiovisual)\\b",
+				"header_annotation_pattern": "^\\[\\s*(?:h\\d|title|heading|static(?:\\s+column)?|reorder(?:\\s+column)?)\\s*\\]$|^(?:cs\\s*[–—-]\\s*)?reorder\\s+column$",
+				"static_pattern": "^\\[\\s*static(?:\\s+column)?\\s*\\]$",
+				"cell_annotation_pattern": "^\\[[^\\]]*\\]$",
+				"label_max_words": 4,
+				"min_rows": 2,
+				"max_columns": 4,
+				"column_classes": { "1": ["col-12"], "2": ["col-4", "col-8"], "3": ["col-4", "col-4", "col-4"], "4": ["col-3", "col-3", "col-3", "col-3"] },
+				"header_open": "<div class=\"reorder connected reorder-column row margB0\" layout=\"re-column\">\n<div class=\"reorderQuestions row\">",
+				"header_cell": "<div class=\"col\">\n<div class=\"reorderQuestion\">\n<p>{text}</p>\n</div>\n</div>",
+				"header_close": "</div>\n</div>",
+				"open": "<div class=\"reorder row\" layout=\"re-standard\">",
+				"questions_open": "<div class=\"reorderQuestions {col}\">",
+				"question": "<div class=\"reorderQuestion\">\n{paras}\n</div>",
+				"questions_close": "</div>",
+				"list_open": "<div class=\"reorderList {col}\">",
+				"item": "<div class=\"reorderItem\">\n{paras}\n</div>",
+				"list_close": "</div>",
+				"para": "<p>{text}</p>",
+				"buttons": "<div class=\"col-12\">\n<div class=\"reorderReset button activityButton\">Reset</div>\n<div class=\"reorderAnswer button activityButton\">Check answer</div>\n</div>",
+				"close": "</div>",
+				"_doc": "THE REORDER THE WRITER TYPED AS A TABLE, IN ORDER. One captured table whose rows are already in the correct order, and the writer SAYS so — on the opener, in an instruction note or in a cell (answer_mark_pattern: «currently in the correct order / place» ENGC401 / ENGC403 / WJFUN205 / OSBY201, «currently match» / «aligned correctly» OSAI401, «put the right side out of order» ENO2060, «[static]» / «[static column]» / «reorder column» headers OSAI401 / OSAI501 / OSBY501 / OSSC501 / OSAH501). ONE column = the KB list (`.reorderList.col-12`, ENGC401 0.1 / ENGC403 3.1 gold). TWO OR MORE = the aligned columns: the static column (the `[static]`-headed one, else the first) the `.reorderQuestions`, every other column its own `.reorderList` in the typed order (OSAI401-01 / -03, OSAI501-02, OSBY501-03, ENGC403 5.2 gold), widths column_classes. A header row — an annotation (header_annotation_pattern), an all-bold row over plain ones, or short label words (label_max_words, no closing punctuation) over sentence rows — becomes the gold's `re-column` label block (OSAI401-03 / OSAI501-02), its other red words the Writers Note. A cell's paragraphs (the ` / ` cell join) each a <p>; the writer's bullet and ✅ go. DECLINES (the hand-off box stays): no mark; «no correct answers» (ENGJ403); a second table; a media / URL cell (deny_cell_pattern — WJFUN115, OSAH401, OSBY201 3.4); a ragged row (ENGC302); a red word left in a body cell (MXEX302's typed medians); a header annotation that is not a heading / static / reorder one (OSBY501 5.2's «[show answer]» column); a static column that is not the first; an empty or repeated item; fewer than min_rows rows. The human built two of the sites as a drag-and-drop matching set instead (ENO2060, OSAH501) — the writer's type is built."
+			}
+		},
 		"multiChoiceQuiz": {
 			"_comment": ["multiChoiceQuiz — the MULTIPLE-CHOICE QUIZ.",
 				"THE DERIVATION, proven against the human's own page: the writer marks the right answer",
@@ -3908,6 +4055,31 @@
 			"max_options": 10,
 			"max_question_words": 63,
 			"max_option_words": 40,
+			"table_form": {
+				"enabled": true,
+				"env": "MCQTABLE_OFF",
+				"header_cell_pattern": "^(?:questions?|answers?|options?|correct|incorrect|[a-d]|)$",
+				"correct_header_pattern": "^correct$",
+				"deny_cell_pattern": "https?://|\\[[^\\]]*\\]|\\b(?:insert|image|picture|photo|audio|video|text\\s*box)\\b",
+				"button_label_pattern": "^(?:check(?:\\s+(?:your\\s+)?answers?)?|submit|reset|show(?:\\s+answers?)?)\\.?$",
+				"option_split_pattern": "\\n| / ",
+				"lettered_option_pattern": "^\\s*[A-Da-d][.)]\\s+",
+				"cell_break": "<br />",
+				"_cell_break_note": "A cell's second paragraph (the extractor's ` / ` cell join, TablesAndGrids.cellParts) is the human's line break inside the question or option — ENFUN01 `Who is most likely to say this: <br />“Hiya my cuzzie! …”`.",
+				"table_layout": {
+					"enabled": true,
+					"env": "MCQTABLELAYOUT_OFF",
+					"open": "<div class=\"multiChoiceQuiz{autocheck}\">\n<div class=\"table-responsive\">\n<table class=\"table table-bordered\">",
+					"row": "<tr>\n<td>\n<ol{start}>\n<li>{question}</li>\n</ol>\n</td>\n<td>\n<div class=\"col mcqQuestion\">\n<div class=\"mcqOptions\">\n{options}\n</div>\n</div>\n</td>\n</tr>",
+					"start_attr": " start=\"{n}\"",
+					"close": "</table>\n</div>\n</div>",
+					"requires_header": true,
+					"_header_note": "Only the writer's table WITH its label row (`Questions | Answers`) is kept: MXFUN01's two (both headed) ship as the table, CEDK102's unheaded two-column table ships as the plain quiz list — three of three gold sites.",
+					"_doc": "THE HUMAN KEEPS THE WRITER'S TWO-COLUMN TABLE: where EVERY row is the question cell beside ONE cell of lettered options (the lettered form below), the gold ships the table itself — the question numbered in the left cell, the quiz's options in the right (MXFUN01 3C «Word problem quiz» and 4F «Scaling quantities quiz», both `div.multiChoiceQuiz > .table-responsive > table > tr > td(ol > li) + td(.col.mcqQuestion > .mcqOptions)`). The multi-column rows keep the plain quiz list (TWHK907, ENFUN01)."
+				},
+				"_lettered_note": "The second row form: the question cell beside ONE cell holding every option, each lettered (`A. 2 cups / B. 3 cups / 🔴C. 4 cups🔴 / D. 5 cups`, MXFUN01) — split on the cell's line / paragraph break only when EVERY piece carries its letter; the marked piece is the answer. The letters and the writer's bullets go, as the list form strips them (list_marker_pattern).",
+				"_doc": "THE QUIZ THE WRITER TYPED AS A TABLE (the list shapes below never read a table, so every captured table declined). ONE table in the capture whose body rows are each [the question, two or more options] with EXACTLY ONE option marked as the answer — a wholly red cell («│ • 72 – 48 = ║ 30 ║ 🔴20🔴 ║ 27», MXFUN01; TWHK907), a yellow ✅ cell (MXDI201), or the column a header row names «Correct» («Question ║ Correct ║ Incorrect ║ Incorrect», ENFUN01) — builds the same KB form the list shapes build: one question per row, its options in the writer's order, value=\"correct\" on the marked one. A header row (its cells all header words, header_cell_pattern) is dropped. DECLINES (the hand-off box stays, never half-built, never an invented answer): a row with no marked option or with two, a cell holding a tag, a URL or a media request (deny_cell_pattern), any black text in the capture, a second table, and every guard of the list shapes (option counts and lengths, glued options, the leak guard)."
+			},
 			"yellow_ticks": {
 				"_doc": "'Trust yellow ✅ ticks, with strict checks.' The writer's YELLOW highlight (the block.marks side-channel; the parser's ✅) marks the correct option even when the writer never announced it — CEDW501 5B `a. ✅A group of people you live with during lockdown.` (the human's CEDW501_5.0 mcqOption value=\"correct\" is on exactly that option). Used only where the bundle has NO [correct] / [incorrect] mark of the writer's own, and ONLY when: (a) every question has exactly one ticked OPTION (options counted, never highlighted runs — OSAI101's one green run over a whole list is the trap); (b) the item right above the opener is not the writer's D2L-quiz button (d2l_button_pattern — TEFUN01 / 03 / 04, ENGR202: the human builds only the quiz-link button there); (c) nothing in the bundle or above it says there are no correct answers (no_answers_pattern — as in OSAI101). colours = the trusted highlight colours (green is NOT trusted). Env MCQYELLOW_OFF.",
 				"enabled": true,
@@ -3917,6 +4089,7 @@
 				"_d2l_note": "The writer's D2L-quiz button right above the opener: `[Button] Go to quiz` (TEFUN01 / 03, ENGR202) and `[Button] Quiz` (TEFUN04 — its gold builds no multiChoiceQuiz, 0 / 0) — any writer [Button] whose label names a quiz.",
 				"no_answers_pattern": "\\bno\\s+(?:correct|right)\\s+answers?\\b",
 				"answer_key_line_pattern": "^(?:the\\s+)?correct\\s+answers?\\s*(?:is|are)?\\s*[:\\-–]",
+				"_table_form_link": "the table form above reads the same yellow ticks (✅) inside the table's cells",
 				"_answer_key_note": "A highlighted ANSWER-KEY line — `✅Correct Answer: B` (ARFUN04, whose option letters run b–e while its gold reads B as the 2nd option) — is never an option and never a tick; with it set aside the question has no ticked option and guard (a) declines (the key's letter is not guessed)."
 			}
 		},
@@ -8076,6 +8249,13 @@
 			"env": "EMPTYTB_OFF",
 			"_doc": "AN EMPTY SECOND [TITLE BAR] ON THE OPEN OVERVIEW IS NOT A TWIN DOCUMENT: MUS1006's writer typed [TITLE BAR] + the title, [MODULE INTRODUCTION] + its text, then a second, EMPTY [TITLE BAR] before '[H1] Tirohanga Whānui | Overview' and the overview sections — AR-4 would read it as a twin sub-document, so 0_0 would keep the introduction and 1_0 would ship the overview as a menu with no h1 and an empty body; the human ships one 0_0. A literal [TITLE BAR] with no payload (no black tail, no words after the bracket) arriving on the overview while it is still open (no [end page] before it) stays in-page. AR-4's twin documents carry their own title. (ENFUN09's empty repeated [TITLE BAR] follows an [End page] on a single-file page and is unaffected.) Env EMPTYTB_OFF."
 		},
+		"overview_titlebar_section": {
+			"enabled": true,
+			"env": "OVERVIEWTB_OFF",
+			"heading_tags": ["h1", "h2"],
+			"overview_label_pattern": "^(?:tirohanga\\s+wh[aā]nui\\s*\\|\\s*)?overview$",
+			"_doc": "KB 01D Standard Page Structure (the overview page carries the module introduction) + AR-1 / AR-4. A SECOND [TITLE BAR] WHOSE SECTION IS LABELLED THE OVERVIEW IS THE OVERVIEW'S INTRODUCTION, NOT A TWIN DOCUMENT: COM1002's writer closed the overview with [End page], then typed '[TITLE BAR] WHAT IS AN ORGANISATION?' + '[H1] Tirohanga Whānui | Overview' + the introduction's text, and then '[H1] Lesson One: …'. AR-4 read the second title bar as a new sub-document (numbered 0.0, relabelled 1.0) that also swallowed lesson 1, leaving the overview's body empty. Right after the overview's [End page], a non-empty second [TITLE BAR] whose first heading (heading_tags) is the module-overview label (overview_label_pattern, the folded text) continues the overview: its section is the introduction (marked as the introduction start, so the overview's menu ends there), and a 'Lesson N' heading after it opens lesson N's page as the mid-page opener does on an overview holding a merged introduction."
+		},
 		"lesson_titlebar_inpage": {
 			"_doc": "A TITLE BAR THAT OPENS A FRESH LESSON PAGE IS THAT LESSON'S TITLE, NOT A SUB-DOCUMENT. GER1002's writer opens each lesson `[LESSON]` then `[Title bar] 1.0 EINE EMAIL AUS DEUTSCHLAND`; the literal mid-document [TITLE BAR] is AR-4's second-document trigger, so the [LESSON] page would stay empty and the lesson would open a new sub-document page, shifting every later page. AR-4's twin document (a reading-record set) opens after an [End page], never on a lesson page that holds only its opener; the reoMode branch likewise keeps a mid-doc title bar in-page as a lesson title. KB 01D (the [LESSON] tag opens the lesson page): a mid-document literal [TITLE BAR] arriving while the current page is a LESSON page whose items so far are only its opener tag(s) and blank lines stays in-page. Env LESSONTB_OFF.",
 			"enabled": true,
@@ -8146,6 +8326,12 @@
 				"env": "INTROLABEL_OFF",
 				"pattern": "^splash\\s+page\\s*[-–—:]\\s*intro(?:duction)?$",
 				"_doc": "KB 01D Standard Page Structure: the overview page carries the module introduction; AR-1. A RED LABEL naming the introduction — `Splash Page - Intro`, typed as an unbracketed red span on the line after the overview's [End page] (EXBP901, EXIP901) — is an introduction-cluster marker: the [End page] before it is disregarded and the introduction (`[H2] Nau mai haere mai …`, the welcome, the project cycle) stays on page 0.0, the human's form; with menu_boundary the label is `_introStart`, so the overview section above it is the menu. It rides with header.title_split.te_reo_line.title_bar_pair (TBPAIR_OFF): together they keep both overviews' menus and bodies filled. Env INTROLABEL_OFF."
+			},
+			"repeated_lesson_opener": {
+				"enabled": true,
+				"env": "INTROREPEAT_OFF",
+				"title_number_pattern": "^lesson\\s+(\\d+)\\s*$",
+				"_doc": "KB 01D Standard Page Structure (the overview carries the module introduction) + AR-1. A LESSON OPENER WHOSE NUMBER THE NEXT LESSON OPENER REPEATS IS THE INTRODUCTION, NOT THE LESSON: BLL265's writer typed the introduction (a welcome, the module's whakataukī, a video) under '[LESSON] Lesson 1' + '[Lesson content]', closed it with [End page], then opened the real lesson with '[Lesson 1]'. Without this the introduction became lesson page 1.0 (no menu — the BLL lesson pages carry none) and the real lesson 1.1. On the overview, right after its [End page], a [LESSON] whose number (its own, or a bare 'Lesson N' title — title_number_pattern) equals the number of the NEXT lesson opener, with an [End page] between the two, is consumed: the overview continues and holds the introduction (marked as its introduction start), and the next opener opens lesson N as usual."
 			},
 			"menu_boundary": true,
 			"_doc_menu_boundary": "KB 01D Standard Page Structure. The item where AR-1 recognised the module introduction (every form above, and [supervisor note]) is marked `_introStart`; with no red [MODULE INTRODUCTION] tag and no mid-document title-bar alias, ContentConverter ends the overview's menu there, so the introduction is the page's body (as in the human build) instead of sitting in #module-menu-content (HIS1002, XFUN02, PES1005, ART1006, MXFL103 …). Env INTROMENU_OFF.",
@@ -8225,6 +8411,12 @@
 				"dotted_sub_lesson": true,
 				"_doc_dotted_sub_lesson": "A DOTTED [LESSON N.M] of the open lesson N after a page holding only that lesson's front matter continues the page (its number + title become the sub-lesson's) — PWY1001 '[Lesson 1]' '[Lesson Overview]' … '[LESSON 1.1] Timeliness' would otherwise ship an empty 1.0 page the human build does not have. Env FRONTFOLDDOT_OFF.",
 				"_doc": "THE FRONT-MATTER-ONLY LESSON PAGE FOLDS FORWARD, so no page ships empty (e.g. CEDK501 4, DAN1006 4.1, MXFL103 0, MXFL204 6, MXFU301 4, PES1007 6, PWY1001 1, XLP05 0). A LESSON page (not the overview) whose items are ONLY its front matter — section markers ([Lesson Overview] / [Lesson content] / a title-bar alias), at most max_headings heading tags, writer instructions / noise, and black text that is blank or made only of WALT / SC lead or list lines (prose is content even inside the [Lesson Overview] block — SPA1004 lesson 2) — does not end at the writer's next `[end page]`, bare `[LESSON]` (no number) or `[PAGE]` marker: the content that follows continues on it, so the lesson ships as the human's one page (MXFU301 lesson 4: `[Lesson Overview]` + WALT + `[Lesson content]` + `[H2] Lesson 4: Time to play` then a bare `[LESSON]`; XLP02 lesson 3: the block then `[end page]`). A marker with its OWN, DIFFERENT lesson number still opens its page (a genuine new lesson); the same-number merge and RR-3 / AR-2 are unchanged (they count a heading or the WALT text as content, which is why these pages need this rule). The folded marker's title is adopted when the page has none. Env FRONTFOLD_OFF."
+			},
+			"template_stub": {
+				"enabled": true,
+				"env": "TEMPLATESTUB_OFF",
+				"stub_pattern": "^insert the content for your lesson here\\b",
+				"_doc": "KB 01D (the WT's own [LESSON] / [End page] structure) + constraint 1. THE WRITERS TEMPLATE'S OWN LESSON STUB IS NOT A PAGE BOUNDARY: the template ships each lesson as the red instruction «Insert the content for your lesson here, then follow on with lesson two etc as required.» followed by a bare [LESSON]; a writer who leaves that pair in the middle of a lesson (CEDK501, inside lesson 6) would otherwise get a phantom page holding the second half of the lesson, numbered from the running ordinal, with an empty menu — the human keeps the lesson whole. A bare [LESSON] (no number, no title) whose previous item is the stub instruction is consumed and the lesson continues; the instruction itself still reaches the developer as its Writers Note."
 			},
 			"duplicate_number_merge": true,
 			"instruction_guard": true,

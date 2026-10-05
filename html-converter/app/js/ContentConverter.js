@@ -869,6 +869,8 @@ class ContentConverter {
 		this.#inlineRedWordPrepass(bodyItems, tpl, run);
 		this.#inlineFormatRequestPrepass(menuItems, tpl, run);   // the writer's mid-sentence «[bold the word X]» — the same seam
 		this.#inlineFormatRequestPrepass(bodyItems, tpl, run);
+		this.#requestContinuationPrepass(menuItems, tpl, run);   // a mid-sentence link / media request — the same seam
+		this.#requestContinuationPrepass(bodyItems, tpl, run);
 		this.#assetTodoPrepass(bodyItems, tpl);
 		this.#csVideoPrepass(bodyItems, tpl);   // KB c64, before the coalesce for the same reason
 		ListsAndRuns.coalesceBlackRuns(menuItems);
@@ -7849,8 +7851,13 @@ class ContentConverter {
 		const rx = (src, flags = "u") => (src ? new RegExp(src, flags) : null);
 		const gl = on(cfg.glued) ? cfg.glued : null;
 		const ol = on(cfg.option_list) ? cfg.option_list : null;
-		const ins = on(cfg.in_sentence) ? cfg.in_sentence : null;
+		const ins = on(cfg.in_sentence) && !(typeof process !== "undefined" && process.env && process.env[cfg.in_sentence.env || "REDWORDSENT_OFF"])
+			? cfg.in_sentence : null;
 		if (!gl && !ol && !ins) return;
+		// the in-sentence form's note: ONE red Writers Note after the paragraph naming every word put back in it
+		const insNote = ins && on(ins.note) && !(typeof process !== "undefined" && process.env && process.env[ins.note.env || "REDWORDNOTE_OFF"])
+			? ins.note : null;
+		const noted = new Map();   // the paragraph's block -> the words put back in it, in order
 		const notRe = rx(cfg.exclude_pattern, "iu");
 		const gluedRe = gl ? rx(gl.run_pattern ?? "^[\\p{L}\\p{N}’']+$") : null;
 		const optWordRe = ol ? rx(ol.word_pattern ?? "^[\\p{L}\\p{N}’'\\-]+(?:[ \\u00a0]+[\\p{L}\\p{N}’'\\-]+)*,?$") : null;
@@ -7871,9 +7878,72 @@ class ContentConverter {
 			return /[\p{L}\p{N}]/u.test(before.slice(o + 1)) || /[\p{L}\p{N}]/u.test(c >= 0 ? after.slice(0, c) : after);
 		};
 		const free = (x) => !!x && x.consumedBy === undefined && !x._consumed;
+		// THE WRITER'S DEFINITIONS BLOCK (in_sentence.writer_definitions; env REDWORDDEF_OFF): a red request ending at its colon
+		// («[Rollover definitions please:») and one red «word – definition» paragraph per term after it, to the closing «]».
+		// Collected first; a red word put back below that the NEXT block on the page defines carries the definition as the
+		// hover sentinel (U+E000 definition U+E001 — ListsAndRuns.inlineMarkup wraps the word before it in span.infoTrigger).
+		const wd = ins && on(ins.writer_definitions)
+			&& !(typeof process !== "undefined" && process.env && process.env[ins.writer_definitions.env || "REDWORDDEF_OFF"]) ? ins.writer_definitions : null;
+		const defBlocks = [];
+		if (wd) {
+			const openRe = rx(wd.open_pattern ?? "(?:roll\\s*-?\\s*over|hover)\\s+definitions?\\b", "iu");
+			const entryRe = rx(wd.entry_pattern ?? "^(.{1,40}?)\\s+[–—-]\\s+(.{2,})$");
+			const txt = (x) => String(x.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ").replace(/\s+/g, " ").trim();
+			const redOnly = (x) => x.type === "tag" && !x.parse?.primary && free(x) && !String(x.blackAfter ?? "").trim();
+			for (let i = 0; i < items.length; i++) {
+				const it = items[i];
+				const t = redOnly(it) ? txt(it) : "";
+				if (!t || !/^\[/.test(t) || /\]/.test(t) || !/:$/.test(t) || !openRe.test(t)) continue;
+				const map = new Map();
+				let j = i + 1, closed = false;
+				while (j < items.length && !closed) {
+					const blk = items[j].block, grp = [];
+					while (j < items.length && items[j].block === blk) grp.push(items[j++]);
+					if (!blk || !grp.length || !grp.every(redOnly)) break;
+					let e = grp.map(txt).join(" ").replace(/\s+/g, " ").trim();
+					if (/\]$/.test(e)) { closed = true; e = e.replace(/\]$/, "").trim(); }
+					const m = e.match(entryRe);
+					if (!m) break;
+					const k = m[1].trim().toLowerCase();
+					if (!map.has(k)) map.set(k, { def: m[2].trim(), items: grp, used: false });
+				}
+				if (map.size) defBlocks.push({ opener: it, map });
+			}
+		}
+		const IT0 = String.fromCharCode(0xE000), IT1 = String.fromCharCode(0xE001);
+		const defFor = (word, at) => {   // the next block after position `at` that defines the word
+			for (const b of defBlocks) {
+				const bi = items.indexOf(b.opener);
+				if (bi > at && b.map.has(word.toLowerCase())) return b.map.get(word.toLowerCase());
+			}
+			return null;
+		};
+		// THE ROLL-OVER REQUEST TYPED IN BLACK, ITS DEFINITION IN RED («… **viticulture**. (roll over defn» + 🔴«: Cultivation of
+		// grapes.»🔴 + «)»): the red run is the definition of the word the request follows. Data
+		// in_sentence.writer_definitions.black_paren_request; env HOVERPARENREQ_OFF.
+		const bpr = wd && on(wd.black_paren_request)
+			&& !(typeof process !== "undefined" && process.env && process.env[wd.black_paren_request.env || "HOVERPARENREQ_OFF"]) ? wd.black_paren_request : null;
+		const bprLeadRe = bpr ? rx(bpr.lead_pattern ?? "\\s*\\(\\s*(?:roll\\s*-?\\s*over|hover)\\s*(?:defn|definition|def)\\s*$", "iu") : null;
+		const bprDefRe = bpr ? rx(bpr.def_pattern ?? "^\\s*[:–—-]\\s*(.+?)\\s*$") : null;
 		let n = 0;
 		for (let i = 0; i < items.length; i++) {
 			const it = items[i];
+			if (bpr && free(it) && it.type === "tag" && !it.parse?.primary && /^\s*\)/.test(String(it.blackAfter ?? ""))) {
+				const prv = i > 0 ? items[i - 1] : null;
+				const hk = free(prv) && prv.block === it.block && (prv.type === "black" || prv.type === "tag") ? (prv.type === "black" ? "text" : "blackAfter") : null;
+				const hb = hk ? String(prv[hk] ?? "") : "";
+				const lm = hk ? hb.match(bprLeadRe) : null;
+				const dm = String(it.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").match(bprDefRe);
+				if (lm && dm && /[\p{L}\p{N}]/u.test(hb.slice(0, lm.index)) && !/[\[\]]/.test(dm[1])) {
+					const side = hb.slice(0, lm.index).replace(/\s+$/, "");
+					const pm = side.match(/^([\s\S]*?)([.,;:!?]*)$/);   // the sentence's own punctuation stays after the hover
+					prv[hk] = pm[1] + IT0 + dm[1] + IT1 + pm[2] + String(it.blackAfter).replace(/^\s*\)/, "");
+					items.splice(i, 1);
+					i--;
+					n++;
+					continue;
+				}
+			}
 			if (!free(it) || it.type !== "tag" || it.parse?.primary || it.parse?.class !== "noise") continue;
 			// the item's text is the red span's inner text (the span markers already taken off by the tokeniser)
 			const inner = String(it.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "");
@@ -7898,8 +7968,21 @@ class ContentConverter {
 			const option = !glued && !!ol && optWordRe.test(word) && words(word) <= (ol.max_words ?? 3) && inOpenList(before, after)
 				&& (optSepBeforeRe.test(before) || optSepAfterRe.test(after));
 			const sentence = !glued && !option && !!ins && insWordRe.test(word) && words(word) <= (ins.max_words ?? 3)
-				&& !!before.trim() && insBeforeRe.test(before) && insAfterRe.test(after);
+				&& !!before.trim() && insBeforeRe.test(before) && insAfterRe.test(after)
+				// a single red letter before «.» / «)» is a multiple-choice option label marking the answer, not a word
+				&& !(ins.option_label_after && [...word].length === 1 && new RegExp(ins.option_label_after, "u").test(after));
 			if (!glued && !option && !sentence) continue;
+			// the writer's own definition (the next definitions block): the word becomes the hover, and the note skips it
+			const _bare = word.replace(/[.,;:!?]$/, "");
+			const _def = sentence && host && defBlocks.length ? defFor(_bare, i) : null;
+			if (_def) {
+				_def.used = true;
+				own = own.replace(new RegExp(`(${_bare.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "u"), `$1${IT0}${_def.def}${IT1}`);
+			}
+			if (sentence && insNote && host && it.block && !_def) {
+				if (!noted.has(it.block)) noted.set(it.block, []);
+				noted.get(it.block).push(_bare);
+			}
 			if (host) {
 				host[key] = before + own + after;
 				items.splice(i, 1);
@@ -7914,6 +7997,34 @@ class ContentConverter {
 			n++;
 		}
 		if (n) run?.AddNote?.("info", "ContentConverter", `${n} red run${n === 1 ? "" : "s"} that are part of the writer's text kept in place (inline_red_words).`);
+		// the definitions blocks: the entries a hover used leave the page (the request they answered is not repeated); when
+		// every entry was used, the opener goes with them
+		let hovered = 0;
+		for (const b of defBlocks) {
+			const ents = [...b.map.values()];
+			const usedN = ents.filter((e) => e.used).length;
+			if (!usedN) continue;
+			hovered += usedN;
+			const drop = new Set(ents.filter((e) => e.used).flatMap((e) => e.items));
+			if (usedN === ents.length) drop.add(b.opener);
+			for (let k = items.length - 1; k >= 0; k--) if (drop.has(items[k])) items.splice(k, 1);
+		}
+		if (hovered) run?.AddNote?.("info", "ContentConverter", `${hovered} red word${hovered === 1 ? "" : "s"} put back carry the writer's own roll-over definition as a hover (in_sentence.writer_definitions).`);
+		// the in-sentence note: after the paragraph's LAST item, a writer-instruction item (no tag, class "instruction" —
+		// rendered as the red bold «Writers Note:») naming the words put back, each once, in order
+		for (const [blk, ws] of noted) {
+			let last = -1;
+			for (let k = 0; k < items.length; k++) if (items[k]?.block === blk) last = k;
+			if (last < 0) continue;
+			const uniq = [...new Set(ws.filter(Boolean))];
+			if (!uniq.length) continue;
+			const named = uniq.map((w) => Utils.FillTemplate(insNote.word_form ?? "«{word}»", { word: w })).join(insNote.joiner ?? ", ");
+			const text = Utils.FillTemplate(insNote.template ?? "red in the Writers Template, kept in the sentence above: {words}", { words: named });
+			// its own block (a note of its own, never read as the continuation of a red span the paragraph ends with)
+			items.splice(last + 1, 0, { type: "tag", text, blackAfter: "", block: { ...blk, text, links: [] }, _redWordNote: true,
+				parse: { class: "instruction", primary: null, tags: [], folded: text.toLowerCase(), remainders: [], numbers: [], hasBrackets: false } });
+		}
+		if (noted.size) run?.AddNote?.("info", "ContentConverter", `${noted.size} paragraph${noted.size === 1 ? "" : "s"} with red words put back carry a Writers Note naming them (inline_red_words.in_sentence.note).`);
 	}
 
 	/**
@@ -7926,15 +8037,65 @@ class ContentConverter {
 	 * sentence is rejoined and — when the named words stand right beside the request (within window_chars, outside any
 	 * existing mark) — they take the requested mark («**…**» / «*…*», which the inline renderer turns into <b> / <i>).
 	 * Named words not found → the item is left alone (the request stays the writer's note to the developer).
-	 * Data: Emit_Templates.elements.inline_format_request   Env toggle: FMTREQ_OFF
+	 * Data: Emit_Templates.elements.inline_format_request   Env toggle: FMTREQ_OFF (a word closed by its mark before the request: marked_before, FMTREQMARKED_OFF)
 	 */
+	static #requestContinuationPrepass(items, tpl, run) {
+		const cfg = tpl.elements?.request_continuation;
+		if (!cfg || cfg.enabled === false || !Array.isArray(items) || !cfg.request_pattern) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "REQCONT_OFF"]) return;
+		const reqRe = new RegExp(cfg.request_pattern, "iu");
+		const beforeRe = new RegExp(cfg.before_pattern ?? "[\\p{L}\\p{N},(*_]\\s*$", "u");
+		const afterRe = new RegExp(cfg.after_pattern ?? "^\\s*(?:\\*{1,3}|_{1,2})?\\s*(?:\\p{Ll}|[,;:)])", "u");
+		const free = (x) => !!x && x.consumedBy === undefined && !x._consumed;
+		const innerOf = (x) => String(x?.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim();
+		// the writer's emphasis run open at the end of the text before the tag («• *All … click on this link») and re-opened
+		// at the start of the words after it («*to see the recommended items)*») is ONE run: the second opener goes
+		const openRuns = (s) => {
+			const t = s.replace(/\*\*\*/g, "\u0001").replace(/\*\*/g, "\u0002");
+			return { b: (t.match(/\u0002/g) ?? []).length % 2 === 1, i: (t.match(/(?<!\*)\*(?!\*)/g) ?? []).length % 2 === 1 };
+		};
+		let n = 0;
+		for (let i = 1; i < items.length; i++) {
+			const it = items[i];
+			if (!free(it) || it.type !== "tag" || it.parse?.primary?.directive === "INTERACTIVE") continue;
+			if (!reqRe.test(innerOf(it))) continue;
+			// a link tag that carries its own address builds a link / button labelled with the words after it — they stay its label
+			if (/https?:\/\/|www\./i.test(innerOf(it)) || (it.block?.links ?? []).length) continue;
+			const prev = items[i - 1];
+			const hostTags = cfg.host_tags ?? ["body", "paragraph"];
+			const host = free(prev) && prev.block === it.block
+				&& (prev.type === "black" || (prev.type === "tag" && hostTags.includes(prev.parse?.primary?.tag))) ? prev : null;
+			if (!host) continue;
+			const key = host.type === "black" ? "text" : "blackAfter";
+			const before = String(host[key] ?? ""), after0 = String(it.blackAfter ?? "");
+			if (!before.trim() || !beforeRe.test(before) || !afterRe.test(after0)) continue;
+			// the tag's own address (a link / media URL in its words) is the tag's content, never the sentence's
+			if (cfg.deny_after_pattern && new RegExp(cfg.deny_after_pattern, "iu").test(after0)) continue;
+			// words the writer hyperlinked are the link's own label (the link builder makes them the button / anchor text)
+			const plainAfter = after0.replace(/[*_]/g, "").replace(/\s+/g, " ").trim().toLowerCase();
+			if ((it.block?.links ?? []).some((l) => { const t = String(l?.text ?? "").replace(/[*_]/g, "").replace(/\s+/g, " ").trim().toLowerCase(); return t.length > 2 && plainAfter.includes(t); })) continue;
+			let after = after0.replace(/^\s+/, "");
+			const open = openRuns(before);
+			if (open.b && /^\*\*(?!\*)/.test(after)) after = after.slice(2);
+			else if (open.i && /^\*(?!\*)/.test(after)) after = after.slice(1);
+			host[key] = before.replace(/\s+$/, "") + (/^[,;:.!?)]/.test(after) ? "" : " ") + after;
+			it.blackAfter = "";
+			n++;
+		}
+		if (n) run?.AddNote?.("info", "ContentConverter", `${n} mid-sentence request tag${n === 1 ? "" : "s"}: the writer's words after the tag rejoin the sentence (request_continuation).`);
+	}
+
 	static #inlineFormatRequestPrepass(items, tpl, run) {
 		const cfg = tpl.elements?.inline_format_request;
 		if (!cfg || cfg.enabled === false || !Array.isArray(items)) return;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "FMTREQ_OFF"]) return;
 		const reqRe = new RegExp(cfg.request_pattern, "iu");
 		const bareRe = cfg.bare_request_pattern ? new RegExp(cfg.bare_request_pattern, "iu") : null;
-		const beforeRe = new RegExp(cfg.before_pattern ?? "[\\p{L}\\p{N},’'\")]\\s*$", "u");
+		// the text before may end in the writer's own closing mark («**and** [bold] listen») — the sentence still runs
+		const mb = cfg.marked_before;
+		const mbOn = !!mb && mb.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[mb.env || "FMTREQMARKED_OFF"]);
+		const mbBareRe = mbOn && mb.bare_pattern ? new RegExp(mb.bare_pattern, "iu") : null;
+		const beforeRe = new RegExp((mbOn && mb.before_pattern) || (cfg.before_pattern ?? "[\\p{L}\\p{N},’'\")]\\s*$"), "u");
 		const afterRe = new RegExp(cfg.after_pattern ?? "^\\s*(?:[.,;:!?)’'\"]|\\p{Ll})", "u");
 		// a bare request usually stands before words the writer has already marked («[bold] **planned actions**»)
 		const win = cfg.window_chars ?? 60, maxW = cfg.max_target_words ?? 6;
@@ -7948,7 +8109,8 @@ class ContentConverter {
 		const mfOn = !!mf && mf.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[mf.env || "FMTREQMORE_OFF"]);
 		const mfBareRe = mfOn && mf.bare_pattern ? new RegExp(mf.bare_pattern, "iu") : null;
 		const mfEndRe = mfOn && mf.end_pattern ? new RegExp(mf.end_pattern, "iu") : null;
-		const bareAfterRe = mfOn && mf.after_pattern ? new RegExp(mf.after_pattern, "u")
+		const bareAfterRe = mbOn && mb.after_pattern ? new RegExp(mb.after_pattern, "u")
+			: mfOn && mf.after_pattern ? new RegExp(mf.after_pattern, "u")
 			: cfg.bare_after_pattern ? new RegExp(cfg.bare_after_pattern, "u") : afterRe;
 		let n = 0;
 		if (mfEndRe && bareRe) {
@@ -7977,13 +8139,16 @@ class ContentConverter {
 			const inner = innerOf(it);
 			// a BARE request («[bold]») names no words — the human applies it to one, two or no words, so the sentence is
 			// only rejoined, no mark guessed
-			const bare = (!!bareRe && bareRe.test(inner)) || (!!mfBareRe && mfBareRe.test(inner));
+			const bare = (!!bareRe && bareRe.test(inner)) || (!!mfBareRe && mfBareRe.test(inner)) || (!!mbBareRe && mbBareRe.test(inner));
 			const m = bare ? null : reqRe.exec(inner);
 			if (!m && !bare) continue;
 			const kind = m && m[1].toLowerCase().startsWith("ital") ? "italic" : "bold";
 			const target = m ? String(m[2] ?? "").replace(/^[\s:‘’'"“”]+|[\s‘’'"“”.]+$/g, "").trim() : "";
 			if (m && (!target || !/[\p{L}\p{N}]/u.test(target) || target.split(/\s+/).length > maxW)) continue;
-			const prev = items[i - 1];
+			// a request the item-stream pass has already spent (its words moved, none left) stands between the two halves
+			let j = i - 1;
+			if (mbOn) while (j > 0 && items[j]?._sentenceHost && items[j].type === "tag" && items[j].block === it.block && !String(items[j].blackAfter ?? "").trim()) j--;
+			const prev = items[j];
 			const host = free(prev) && prev.block === it.block && (prev.type === "black" || prev.type === "tag") ? prev : null;
 			if (!host) continue;
 			const key = host.type === "black" ? "text" : "blackAfter";
@@ -8006,10 +8171,15 @@ class ContentConverter {
 					const h = tRe.exec(head);
 					if (h) { const at = h.index + h[1].length; na = after.slice(0, at) + mk + h[2] + mk + after.slice(at + h[2].length); }
 				}
-				if (nb === null && na === null) continue;
+				// words the writer has marked already («__**one**__ [Bold the word one]») keep that mark: the sentence is only rejoined
+				if (nb === null && na === null && !(mbOn
+					&& new RegExp(`(^|[^\\p{L}\\p{N}])[*_]{1,4}${esc(target)}[*_]{1,4}(?=[^\\p{L}\\p{N}]|$)`, "iu").test(tail + " " + head))) continue;
 			}
 			const b = (nb ?? before).replace(/\s+$/, ""), a = (na ?? after).replace(/^\s+/, "");
-			host[key] = b + (/^[.,;:!?)’'"]/.test(a) ? "" : " ") + a;
+			// «**as**» + «**.** It helps» → «**as.** It helps»: two runs in the same mark meet at a stop
+			const mm = mbOn ? /^([*_]+)[.,;:!?)’'"]/.exec(a) : null;
+			if (mm && b.endsWith(mm[1])) host[key] = b.slice(0, -mm[1].length) + a.slice(mm[1].length);
+			else host[key] = b + (/^[.,;:!?)’'"]/.test(a) ? "" : " ") + a;
 			items.splice(i, 1);
 			i--;
 			n++;

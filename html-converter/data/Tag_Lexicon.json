@@ -45,6 +45,16 @@
 				"env": "HINFOHOVER_OFF"
 			},
 			{
+				"_doc": "The writer's «[Heading H4] Exploring Narrative Styles» (ENGJ301, CEDR204, SSOG103, SSOG105 — 38 tags) is the heading level spelled out: without these it resolves to the generic `heading` tag with the number 4, which renders the right <h4> but never ends a widget's capture the way «[H4]» does (ENGJ301 1A's drag-and-drop swallowed the next section and its modal). One group per level, one toggle.",
+				"tag": "h1",
+				"aliases": ["heading h1"],
+				"env": "HEADINGHN_OFF"
+			},
+			{ "tag": "h2", "aliases": ["heading h2"], "env": "HEADINGHN_OFF" },
+			{ "tag": "h3", "aliases": ["heading h3"], "env": "HEADINGHN_OFF" },
+			{ "tag": "h4", "aliases": ["heading h4"], "env": "HEADINGHN_OFF" },
+			{ "tag": "h5", "aliases": ["heading h5"], "env": "HEADINGHN_OFF" },
+			{
 				"_doc": "The writer's supervisor-note spellings — '[Supervisor’s Note]' … '[End Supervisor’s Note]' (Fold makes the curly apostrophe straight), '[Supervisors note]', '[Supervisors Notes]', '[Supervision note]' — which would otherwise resolve to NO tag and render as red 'Writers Note: [...]' lines (as in XGF9004, TRR114, MXFL101, MXFL103, MXFL202, BLL122, BLL244, BLL245); in MXFL103 an unresolved one after the overview's [End page] would also leave the overview empty and push the introduction to page 1.0. The gold renders every one as the supervisor note (a super-content panel, an alert, the overview's notes). KB 01D (writer variants resolve to the one normalised tag).",
 				"tag": "supervisor note",
 				"aliases": ["supervisor's note", "supervisor's notes", "supervisors note", "supervisors notes", "supervision note"],

@@ -241,7 +241,7 @@ class PageAssembler {
 	 * tag item whose whole text is one such request (the data bare_pattern), standing in the same paragraph between text
 	 * that does not end a sentence and text that continues it, is taken out and the two halves joined; the writer's own
 	 * marks stay and no mark is guessed. The word / letter / phrase highlighter quiz is never matched.
-	 * Data: Emit_Templates.elements.inline_format_request.highlight_forms   Env toggle: FMTREQHILITE_OFF
+	 * Data: Emit_Templates.elements.inline_format_request.highlight_forms   Env toggle: FMTREQHILITE_OFF (a word closed by its mark before the request: marked_before, FMTREQMARKED_OFF)
 	 */
 	static #highlightRequestInSentence(items, run) {
 		const base = DataService.Data.EmitTemplates?.elements?.inline_format_request;
@@ -249,13 +249,16 @@ class PageAssembler {
 		if (!cfg || cfg.enabled === false || !cfg.bare_pattern || !Array.isArray(items)) return;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "FMTREQHILITE_OFF"]) return;
 		const reqRe = new RegExp(cfg.bare_pattern, "iu");
-		const beforeRe = new RegExp(cfg.before_pattern ?? base.before_pattern ?? "[\\p{L}\\p{N},’'\")]\\s*$", "u");
-		const afterRe = new RegExp(cfg.after_pattern ?? base.more_forms?.after_pattern ?? "^\\s*(?:\\*{1,2}[\\p{L}\\p{N}]|[.,;:!?)’'\"]|\\p{Ll})", "u");
+		// the text before may end in the writer's own closing mark («**and** [bold] listen») — the sentence still runs
+		const mb = base.marked_before;
+		const mbOn = !!mb && mb.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[mb.env || "FMTREQMARKED_OFF"]);
+		const beforeRe = new RegExp((mbOn && mb.before_pattern) || (cfg.before_pattern ?? base.before_pattern ?? "[\\p{L}\\p{N},’'\")]\\s*$"), "u");
+		const afterRe = new RegExp((mbOn && mb.after_pattern) || (cfg.after_pattern ?? base.more_forms?.after_pattern ?? "^\\s*(?:\\*{1,2}[\\p{L}\\p{N}]|[.,;:!?)’'\"]|\\p{Ll})"), "u");
 		const innerOf = (x) => String(x?.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim();
 		// the bare bold / italic vocabulary joins on the same terms (stream_bare); a pair's opener and a named request do not
 		const sb = base.stream_bare;
 		const sbOn = !!sb && sb.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[sb.env || "FMTREQSTREAM_OFF"]);
-		const sbRes = sbOn ? [base.bare_request_pattern, base.more_forms?.bare_pattern].filter(Boolean).map((p) => new RegExp(p, "iu")) : [];
+		const sbRes = sbOn ? [base.bare_request_pattern, base.more_forms?.bare_pattern, mbOn ? mb.bare_pattern : null].filter(Boolean).map((p) => new RegExp(p, "iu")) : [];
 		const endRe = sbOn && base.more_forms?.end_pattern ? new RegExp(base.more_forms.end_pattern, "iu") : null;
 		const openRe = sbOn && base.bare_request_pattern ? new RegExp(base.bare_request_pattern, "iu") : null;
 		const isReq = (x, i) => {
@@ -280,7 +283,10 @@ class PageAssembler {
 			const before = String(prev[key] ?? ""), after = String(it.blackAfter ?? "");
 			if (!before.trim() || !beforeRe.test(before) || !afterRe.test(after)) continue;
 			const a = after.replace(/^\s+/, "");
-			prev[key] = before.replace(/\s+$/, "") + (/^[.,;:!?)’'"]/.test(a) ? "" : " ") + a;
+			// «**as**» + «**.** It helps» → «**as.** It helps»: two runs in the same mark meet at a stop
+			const b = before.replace(/\s+$/, ""), mm = mbOn ? /^([*_]+)[.,;:!?)’'"]/.exec(a) : null;
+			if (mm && b.endsWith(mm[1])) prev[key] = b.slice(0, -mm[1].length) + a.slice(mm[1].length);
+			else prev[key] = b + (/^[.,;:!?)’'"]/.test(a) ? "" : " ") + a;
 			// the request item stays where it stands, its words moved: the scanner and every later pass see the same items
 			it.blackAfter = "";
 			it._sentenceHost = prev;
