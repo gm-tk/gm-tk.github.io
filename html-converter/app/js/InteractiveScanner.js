@@ -591,9 +591,32 @@ class InteractiveScanner {
 					if (_inlineTrigOn) {
 						const rawMarker = String(it.text ?? "")
 							.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim();
-						const selfClosed = /\]\s*$/.test(rawMarker);            // bracket closes in THIS marker
+						let selfClosed = /\]\s*$/.test(rawMarker);            // bracket closes in THIS marker
 						const mTrig = rawMarker.match(/\btrigger\b\s*:?\s*([\s\S]*?)\s*\]\s*$/i);
-						const infoInside = mTrig ? mTrig[1].trim() : "";        // original-case definition
+						let infoInside = mTrig ? mTrig[1].trim() : "";        // original-case definition
+						// THE DEFINITION AFTER THE BRACKET, in the same red span: «**Pūrākau** [hover trigger] Māori myths and legends.
+						// tell of Pūtoto …» — the bracket closes before the definition, so the marker is not self-closed and the
+						// fallback below would drop the red words and break the sentence. A bracket naming the trigger followed by
+						// def_after_bracket.min_def_words+ words and no further bracket is the self-closed form with its definition —
+						// only mid-paragraph (the word it annotates is the nearest preceding text of the same paragraph); a writer's
+						// label before it («definition “…”») is not part of the definition.
+						// Data info_trigger_inline.def_after_bracket; env TRIGDEFAFTER_OFF.
+						const _da = _itCfg?.def_after_bracket;
+						if (!selfClosed && _da && _da.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[_da.env ?? "TRIGDEFAFTER_OFF"])) {
+							const mA = rawMarker.match(new RegExp(_da.pattern, "iu"));
+							let defA = mA ? mA[1].trim() : "";
+							if (defA && _da.label_pattern) defA = defA.replace(new RegExp(_da.label_pattern, "iu"), "").trim();
+							const mQ = defA.match(/^[“"‘']\s*([^“”"‘’']+?)\s*[”"’']$/u);
+							if (mQ) defA = mQ[1];
+							else if (/^[“‘]/u.test(defA) && !/[”’]/u.test(defA)) defA = defA.slice(1).trim();
+							let hA = i - 1;
+							while (hA >= 0 && !String((items[hA].type === "black" ? items[hA].text : items[hA].blackAfter) ?? "").trim()) hA--;
+							const sameBlock = hA >= 0 && items[hA].block === it.block;
+							if (defA && sameBlock && defA.split(/\s+/).filter((w) => /\p{L}/u.test(w)).length >= (_da.min_def_words ?? 2)) {
+								selfClosed = true; infoInside = defA;
+							}
+						}
 						// An instruction-shaped "def" (e.g. "[Hover trigger over image + captions.
 						// Please embed these images and have drop-down boxes…]") is really a writer NOTE
 						// to the developer, not an actual definition: skip the weave here so it falls
@@ -633,9 +656,54 @@ class InteractiveScanner {
 							// no usable anchor host → keep the continuation (no word to annotate)
 							it.type = "black"; it.text = continuation; it.blackAfter = ""; continue;
 						}
+							// A BARE trigger («[hover trigger]», no words of its own) whose definition is the NEXT red span(s) of the
+							// paragraph: «**Geosphere** [hover trigger] ‹The solid parts of the Earth …› is the most obvious …».
+							// Data info_trigger_inline.def_next_red; env TRIGDEFNEXT_OFF.
+							const _dn = _itCfg?.def_next_red;
+							if (_dn && _dn.enabled !== false && selfClosed && !infoInside && !String(it.blackAfter ?? "").trim()
+								&& !(typeof process !== "undefined" && process.env && process.env[_dn.env ?? "TRIGDEFNEXT_OFF"])) {
+								const redOf = (x) => String(x?.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\s+/g, " ").trim();
+								const spans = [];
+								for (let k = i + 1; k < items.length && spans.length < (_dn.max_spans ?? 3); k++) {
+									const x = items[k];
+									if (!x || x.type !== "tag" || x.parse?.primary || x.consumedBy !== undefined || x.block !== it.block) break;
+									const tx = redOf(x);
+									if (!tx || /[[\]]/.test(tx)) break;
+									spans.push(x);
+									if (String(x.blackAfter ?? "").trim()) break;   // the sentence resumes after this span
+								}
+								const defN = spans.map(redOf).join(" ").replace(/\s+([,.;:!?])/g, "$1").trim();
+								if (spans.length && defN.split(/\s+/).filter((w) => /\p{L}/u.test(w)).length >= (_dn.min_def_words ?? 2)
+									&& !InteractiveScanner.#hoverDefIsInstruction(defN)) {
+									const IT0 = String.fromCharCode(0xE000), IT1 = String.fromCharCode(0xE001);
+									const contN = String(spans[spans.length - 1].blackAfter ?? "").trim();
+									let h = i - 1, hostN = null;
+									while (h >= 0) {
+										const cand = items[h];
+										const ctext = cand.type === "black" ? cand.text : cand.blackAfter;
+										if (String(ctext ?? "").trim()) { if (cand.block === it.block && !InteractiveScanner.#urlTailHost(ctext)) hostN = cand; break; }
+										h--;
+									}
+									if (hostN) {
+										const key = hostN.type === "black" ? "text" : "blackAfter";
+										hostN[key] = String(hostN[key] ?? "").replace(/\s+$/, "") + IT0 + defN + IT1
+											+ (contN ? (/^[,.;:!?)]/.test(contN) ? "" : " ") + contN : "");
+										it.type = "black"; it.text = ""; it.blackAfter = "";
+										for (const x of spans) { x.type = "black"; x.text = ""; x.blackAfter = ""; }
+										continue;
+									}
+								}
+							}
 					}
 					const nx = items[i + 1];
-					const hasCloser = nx && nx.type === "tag" && !nx.parse?.primary && /^\s*\]/.test(nx.text ?? "");
+					// A CLOSER THAT CARRIES THE NEXT TAG («] [audiovisual item 10]», BLL271 / BLL272) closes the definition too: its
+					// «]» is consumed and the tag stays its own item (the sentence's continuation joins the anchor's paragraph).
+					// Data info_trigger_inline.closer_with_tag; env TRIGCLOSERTAG_OFF.
+					const _ct = _itCfg?.closer_with_tag;
+					const closerTag = !!_ct && _ct.enabled !== false && !!_ct.pattern && nx && nx.type === "tag" && !!nx.parse?.primary
+						&& new RegExp(_ct.pattern, "u").test(String(nx.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim())
+						&& !(typeof process !== "undefined" && process.env && process.env[_ct.env ?? "TRIGCLOSERTAG_OFF"]);
+					const hasCloser = nx && nx.type === "tag" && (!nx.parse?.primary || closerTag) && /^\s*\]/.test(nx.text ?? "");
 					if (hasCloser) {
 						const def = String(it.blackAfter ?? "").replace(/^[\s:]+/, "").trim();
 						const continuation = String(nx.blackAfter ?? "").trim();
@@ -648,7 +716,8 @@ class InteractiveScanner {
 						const inMarkerAnchor = String(it.text ?? "")
 							.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "")
 							.split("[")[0].trim();
-						nx.type = "black"; nx.text = ""; nx.blackAfter = "";   // consume the "]" closer
+						if (closerTag) { nx.text = String(nx.text ?? "").replace(/^\s*\]\s*/, ""); nx.blackAfter = ""; nx._closerTag = true; }   // a later trigger skips it as a host
+						else { nx.type = "black"; nx.text = ""; nx.blackAfter = ""; }   // consume the "]" closer
 						const tail = (def ? `${def}` : "") + (continuation ? ` ${continuation}` : "");
 						let host = items[i - 1];
 						// Back-to-back split triggers (`[HInfo trigger: ] def ] , what [HInfo trigger: ] def ] , where`,
@@ -656,7 +725,7 @@ class InteractiveScanner {
 						// start a bare line — the definition dropped and the sentence broken into `<p> , where</p>` paragraphs. The
 						// nearest preceding item of the same paragraph that still carries text hosts it (the self-closed branch's own
 						// rule). Data info_trigger_inline.closer_host_skip_empty; env TRIGHOST_OFF.
-						if (_itCfg?.closer_host_skip_empty !== false && host && host.type === "black" && !String(host.text ?? "").trim()
+						if (_itCfg?.closer_host_skip_empty !== false && host && ((host.type === "black" && !String(host.text ?? "").trim()) || (host._closerTag && !String(host.blackAfter ?? "").trim()))
 							&& !(typeof process !== "undefined" && process.env && process.env.TRIGHOST_OFF)) {
 							for (let h = i - 2; h >= 0; h--) {
 								const cand = items[h];
@@ -3837,7 +3906,18 @@ class InteractiveScanner {
 			if (_dcwOn && !(colon && colon[1].trim())) {
 				const hw = _dcw.head_words_pattern
 					?? "(?:hover|roll\\s*-?\\s*over|rollover|mouse\\s*-?\\s*over|mouseover|define)(?:\\s+(?:definition|defn|def|text|info|information))*";
-				const hm = inner.match(new RegExp("^" + hw + "\\s*" + (_dcw.separator_class ?? "[=–—]") + "\\s*([\\s\\S]+)$", "iu"))
+				// a hyphen followed by a space separates too (def_clean.hyphen_separator; env HOVERHYPHEN_OFF) — only where the
+				// render stitch (ContentConverter's definition weave, which reads a SUBTAG marker) will not, and only right after a
+				// word: a marker typed after a full stop has no word to hover here
+				const _hy = _dcw.hyphen_separator;
+				const _pv = items[i - 1];
+				const _pvText = String((_pv?.type === "black" ? _pv.text : _pv?.blackAfter) ?? "");
+				const _sep = _hy && _hy.enabled !== false && _hy.pattern
+					&& !(typeof process !== "undefined" && process.env && process.env[_hy.env ?? "HOVERHYPHEN_OFF"])
+					&& it.parse?.primary?.directive !== "SUBTAG" && _pv && _pv.block === it.block
+					&& new RegExp(_hy.after_word_pattern ?? "[\\p{L}\\p{N}][’'\"”)*_]*\\s*$", "u").test(_pvText)
+					? "(?:" + (_dcw.separator_class ?? "[=–—]") + "|" + _hy.pattern + ")" : (_dcw.separator_class ?? "[=–—]");
+				const hm = inner.match(new RegExp("^" + hw + "\\s*" + _sep + "\\s*([\\s\\S]+)$", "iu"))
 					?? inner.match(new RegExp("^" + hw + "\\s*[“\"‘']([^”\"’']+)[”\"’']\\s*$", "iu"));
 				if (hm && /\p{L}/u.test(hm[1])) sepDef = hm[1].trim();
 			}

@@ -575,8 +575,36 @@ class ListsAndRuns {
 			});
 		}
 		const fmtIt = fmt.info_trigger ?? '<span class="infoTrigger" info="{info}">{anchor}</span>';
+		// A LONG RUN IS NOT THE ANCHOR: a bold / italic run of more than long_run.max_words words, or one that opens with
+		// punctuation («*…across the world. Theories of socialism*», «*, stemming from the teachings of Marxism*»), is the
+		// writer's quotation or sentence, not the term — its last word is the anchor, inside the writer's formatting.
+		// Data elements.info_trigger_anchor.long_run; env HOVERLONGRUN_OFF.
+		const _lr = DataService.Data.EmitTemplates.elements?.info_trigger_anchor?.long_run;
+		const _lrOn = !!_lr && _lr.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[_lr.env ?? "HOVERLONGRUN_OFF"]);
 		s = s.replace(new RegExp(`<(b|i)>([^<]*)</\\1>${_it0}([^${_it0}${_it1}]*)${_it1}`, "g"),
-			(m, tag, inner, def) => fmtIt.replace("{info}", def.trim()).replace("{anchor}", inner));
+			(m, tag, inner, def) => {
+				if (_lrOn && !(_lr.skip_def_pattern && new RegExp(_lr.skip_def_pattern, "u").test(def))) {
+					const n = inner.trim().split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
+					if (n > (_lr.max_words ?? 12) || (_lr.lead_punct_pattern && new RegExp(_lr.lead_punct_pattern, "u").test(inner))) {
+						const mm = inner.match(/^([\s\S]*?)([\p{L}\p{M}\p{N}][\p{L}\p{M}\p{N}'’\-]*)([^\p{L}\p{M}\p{N}]*)$/u);
+						if (mm && mm[1].trim()) return `<${tag}>${mm[1]}${fmtIt.replace("{info}", def.trim()).replace("{anchor}", mm[2])}${mm[3]}</${tag}>`;
+					}
+				}
+				return fmtIt.replace("{info}", def.trim()).replace("{anchor}", inner);
+			});
+		// THE HOVER'S ANCHOR IS THE WRITER'S WHOLE TERM: a te reo term's lead word (reo_lead.words: «hoa ako», «te reo»,
+		// «Mātauranga Māori», «tino rangatiratanga», «Ngāti Tūwharetoa» …) binds to the word before the definition.
+		// Data elements.info_trigger_anchor.reo_lead; env HOVERREOLEAD_OFF.
+		const _ia = DataService.Data.EmitTemplates.elements?.info_trigger_anchor;
+		if (_ia && s.includes(_it0)) {
+			const W = "[\\p{L}\\p{M}\\p{N}'’\\-]";
+			const rl = _ia.reo_lead;
+			if (rl && rl.enabled !== false && Array.isArray(rl.words) && rl.words.length
+				&& !(typeof process !== "undefined" && process.env && process.env[rl.env ?? "HOVERREOLEAD_OFF"])) {
+				s = s.replace(new RegExp(`(^|[^\\p{L}\\p{M}\\p{N}'’\\-])((?:${rl.words.join("|")})\\s+[\\p{L}\\p{M}\\p{N}]${W}*)${_it0}([^${_it0}${_it1}]*)${_it1}`, "giu"),
+					(m, pre, term, def) => pre + fmtIt.replace("{info}", def.trim()).replace("{anchor}", term));
+			}
+		}
 		// NON-BOLD anchor: wrap the single WORD immediately before the sentinel. Most of the
 		// human's infoTrigger anchors are ONE word ("contempt", "whānau", "kōrero", "onomatopoeia",
 		// "stanzas", "decisions"…). A multi-word non-bold anchor gets its LAST word wrapped — the

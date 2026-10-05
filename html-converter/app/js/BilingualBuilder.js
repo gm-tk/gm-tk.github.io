@@ -1085,6 +1085,13 @@ class BilingualBuilder {
 			aiPend = null;
 		};
 		const aiName = (p) => p.replace(/\u{1f534}|\[\/?RED TEXT\]/gu, "").replace(/\[[^\]]*\]/g, "").replace(/\*/g, "").replace(/\s+/g, " ").trim();
+		// the template's field label beside a heading tag («[H3] Intro sentence: / Welcome …») is not the heading: it goes, and
+		// a heading left with no words passes to the cell's next text part (dual_language.template_labels; env REOLABEL_OFF)
+		const tl = DataService.Data.EmitTemplates?.elements?.dual_language?.template_labels;
+		const tlRe = tl && tl.enabled !== false && tl.label_pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[tl.env || "REOLABEL_OFF"])
+			? new RegExp(tl.label_pattern, "iu") : null;
+		let headCarry = 0;
 		for (const part of TablesAndGrids.cellParts(cell)) {
 			const low = part.toLowerCase();
 			if (ai) {
@@ -1122,8 +1129,21 @@ class BilingualBuilder {
 				flush();
 				const digit = /^h\d$/.test(canon) ? parseInt(canon[1], 10) : 2;
 				const lvl = Math.min(Math.max(digit, 2), 5);
-				const t = (norm.RenderText(part) || rest.trim() || "").replace(/\*/g, "").trim();
+				let t = (norm.RenderText(part) || rest.trim() || "").replace(/\*/g, "").trim();
+				if (tlRe && tlRe.test(t)) {
+					t = t.replace(tlRe, "").trim();
+					if (!t) { headCarry = lvl; continue; }
+				}
 				if (t) text.push(`<h${lvl}>${ListsAndRuns.inlineMarkup(t)}</h${lvl}>`);
+			} else if (headCarry && !/^\s*\[[^\]]+\]\s*$/.test(part) && (canon ? rest : part).replace(/\[[^\]]*\]|\u{1f534}|\*/gu, "").trim()) {
+				// the heading the label stood in for: this part's words
+				flush();
+				let t = canon ? rest : part;
+				let mm;
+				while ((mm = t.match(/^\s*\[[^\]]+\]\s*/))) t = t.slice(mm[0].length);
+				t = t.replace(/\*/g, "").trim();
+				text.push(`<h${headCarry}>${ListsAndRuns.inlineMarkup(t)}</h${headCarry}>`);
+				headCarry = 0;
 			} else {
 				// Strip every leading non-media [tag] so none of them can leak into the
 				// rendered text — not just the FIRST one, but a whole run of CONSECUTIVE

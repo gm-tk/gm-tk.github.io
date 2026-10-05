@@ -175,15 +175,15 @@ class TablesAndGrids {
 					// place the same way (cellRedRequests, after the image references). Data elements.table.cell_red_request;
 					// env CELLREDREQ_OFF.
 					const irCfg = insidePlaceholder ? null : this.cellImageRefConfig(false);
-					let cc = c, irImgs = null, irParas = null, rqNotes = null;
+					let cc = c, irImgs = null, irParas = null, rqNotes = null, rqLinks = [];
 					if (!insidePlaceholder) {
 						const P0 = this.cellParagraphs(block, rows, r, ci, c);
 						const SEP = "\n\u0001\n";   // whitespace on both sides: an address typed before it ends there
 						let work = P0 ? P0.join(SEP) : c, changed = false;
 						const ir = irCfg ? this.cellImageRefs(work, run, irCfg, norm, links, P0 ? SEP : null) : null;
 						if (ir) { irImgs = ir.imgs; work = ir.text; changed = true; }
-						const rq = this.cellRedRequests(work, run, norm, P0 ? SEP : null);
-						if (rq) { rqNotes = rq.notes; work = rq.text; changed = true; }
+						const rq = this.cellRedRequests(work, run, norm, P0 ? SEP : null, links);
+						if (rq) { rqNotes = rq.notes; rqLinks = rq.links ?? []; work = rq.text; changed = true; }
 						if (changed) {
 							if (P0) {
 								irParas = work.split(SEP).map((x) => x.trim()).filter(Boolean);
@@ -214,13 +214,13 @@ class TablesAndGrids {
 						: irParas ? (irParas.length >= 2 ? irParas : null)
 						: this.cellParagraphs(block, rows, r, ci, c);
 					const unred = (x) => x.replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "");
-					const content = this.fillImageRefs(this.fillImageRefs(blHit ? ListsAndRuns.renderBlackText(this.cellNumberedParts(block, rows, r, ci, blParts).join("\n"), run, this.cellLinks(links), true).join("")
+					const content = this.fillImageRefs(this.fillImageRefs(blHit ? ListsAndRuns.renderBlackText(this.cellNumberedParts(block, rows, r, ci, blParts).join("\n"), run, this.cellLinks(links).concat(rqLinks), true).join("")
 						: inline !== null ? inline
-						: paras ? paras.map((p) => ListsAndRuns.inlineMarkup(unred(p), this.cellLinks(links), true)).join(t.cell_paragraphs.joiner)
+						: paras ? paras.map((p) => ListsAndRuns.inlineMarkup(unred(p), this.cellLinks(links).concat(rqLinks), true)).join(t.cell_paragraphs.joiner)
 						// red spans inside table cells: keep their text visible,
 						// marked — they are usually interactive data labels
 						: ListsAndRuns.inlineMarkup(unred(cc),
-							insidePlaceholder ? [] : this.cellLinks(links), !insidePlaceholder), irImgs), rqNotes, null, "CV2NOTE");   // only weave hover/definition markers (and the cell's own hyperlinks) into a FREE-BODY cell, never a placeholder dump
+							insidePlaceholder ? [] : this.cellLinks(links).concat(rqLinks), !insidePlaceholder), irImgs), rqNotes, null, "CV2NOTE");   // only weave hover/definition markers (and the cell's own hyperlinks) into a FREE-BODY cell, never a placeholder dump
 					// A HEADER CELL IS PLAIN: the human's <th> is almost never wholly bold (KB 05D's
 					// <tr><th>Header 1</th> form), while a writer-bold header row would render <th><b>…</b></th>.
 					// A header cell whose rendered content is exactly ONE <b>/<strong> span
@@ -1024,14 +1024,38 @@ class TablesAndGrids {
 	 * @param {TagNormaliser} norm
 	 * @returns {{text: string, notes: string[]}|null}
 	 */
-	static cellRedRequests(cell, run, norm, sep = null) {
+	static cellRedRequests(cell, run, norm, sep = null, links = null) {
 		const cfg = DataService.Data.EmitTemplates.elements?.table?.cell_red_request;
 		if (!cfg || cfg.enabled === false || !norm) return null;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "CELLREDREQ_OFF"]) return null;
-		const s = String(cell ?? "");
+		let s = String(cell ?? "");
 		if (!/\u{1f534}\[RED TEXT\]/u.test(s)) return null;
 		// a cell that carries the writer's own [image] tag builds its picture from the cell text: left alone
 		if (this.cellHasImageTag(s, norm, sep)) return null;
+		// a red link request whose address is the following word's own hyperlink («[Link 2, to https://…/kiekie/] kiekie», the
+		// word linked to the same address in the table's links) is redundant: removed before the requests are read, and that
+		// link is handed back (links) for the cell's weave. Data cell_red_request.redundant_link; env CELLREDLINK_OFF.
+		const woven = [];
+		const rl = cfg.redundant_link;
+		if (rl && rl.enabled !== false && rl.pattern && Array.isArray(links) && links.length
+			&& !(typeof process !== "undefined" && process.env && process.env[rl.env ?? "CELLREDLINK_OFF"])) {
+			const rlRe = new RegExp(rl.pattern, "i");
+			const addr = (u) => String(u ?? "").trim().replace(/[)\].,]+$/, "").replace(/\/$/, "").toLowerCase();
+			s = s.replace(/(?:\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534})+/gu, (run, at) => {
+				const inner = run.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\s+/g, " ").trim();
+				const m = inner.match(rlRe);
+				if (!m) return run;
+				const after = s.slice(at + run.length, at + run.length + (rl.lookahead_chars ?? 160)).trimStart();
+				const lk = links.find((l) => {
+					const t = String(l?.text ?? "").trim();
+					return t && after.startsWith(t) && !/\p{L}/u.test(after.charAt(t.length)) && addr(l?.target) === addr(m[1]);
+				});
+				if (!lk) return run;
+				woven.push(lk);
+				return " ";
+			});
+			if (woven.length && !/\u{1f534}\[RED TEXT\]/u.test(s)) return { text: s, notes: [], links: woven };
+		}
 		const minW = cfg.min_words ?? 3;
 		// THE BRACKETED FORM: a red run that is exactly one bracketed request of at least bracketed.min_words letter-words
 		// and no web address («[students type here]») — the bracket is the writer's instruction mark, no cue word needed.
@@ -1075,7 +1099,7 @@ class TablesAndGrids {
 			if (!norm.HasInstructionCue(inner)) continue;
 			hits.push({ start: m.index, end: m.index + m[0].length, note: NotesAndComments.redFlag(inner, run, "cs") });
 		}
-		if (!hits.length) return null;
+		if (!hits.length) return woven.length ? { text: s, notes: [], links: woven } : null;
 		// a space on each side: a web address typed right before the run must end before the token (the link weave)
 		const edits = [];
 		hits.forEach((h, i) => {
@@ -1087,7 +1111,7 @@ class TablesAndGrids {
 		let text = "", at = 0;
 		for (const e of edits) { text += s.slice(at, e.from) + e.put; at = Math.max(at, e.to); }
 		text += s.slice(at);
-		return { text, notes: hits.map((h) => h.note) };
+		return { text, notes: hits.map((h) => h.note), links: woven };
 	};
 }
 

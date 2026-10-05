@@ -230,6 +230,94 @@ class PageAssembler {
 		if (n) run.AddNote("info", "PageAssembler", `${n} black developer note${n > 1 ? "s" : ""} read as the Writers Note, not learner text (red_flag.black_developer_note).`);
 	};
 
+	/**
+	 * A HIGHLIGHT REQUEST INSIDE A SENTENCE NO LONGER CUTS IT. The writer types a red highlight request in the middle of
+	 * a sentence — «Māori perspectives value [highlight text] **mana (personal …)** as key aspects», «Being [highlight text]
+	 * **gifted** means …», «[emphasise / highlight text]», «[end highlight]» — and the tag item cut the sentence into two
+	 * paragraphs wherever it stood: in the free body, in an accordion pane, on a flip card's back, in an activity box.
+	 * «[highlight]» and «[highlight text]» are also the word-select widget's tag names, so the scanner took the request
+	 * for a widget inside its host's capture. The human keeps the sentence whole and marks the words in different ways
+	 * from page to page (a highlight span, bold or plain), so — once, before the split and the scanner read the stream — a
+	 * tag item whose whole text is one such request (the data bare_pattern), standing in the same paragraph between text
+	 * that does not end a sentence and text that continues it, is taken out and the two halves joined; the writer's own
+	 * marks stay and no mark is guessed. The word / letter / phrase highlighter quiz is never matched.
+	 * Data: Emit_Templates.elements.inline_format_request.highlight_forms   Env toggle: FMTREQHILITE_OFF
+	 */
+	static #highlightRequestInSentence(items, run) {
+		const base = DataService.Data.EmitTemplates?.elements?.inline_format_request;
+		const cfg = base?.highlight_forms;
+		if (!cfg || cfg.enabled === false || !cfg.bare_pattern || !Array.isArray(items)) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "FMTREQHILITE_OFF"]) return;
+		const reqRe = new RegExp(cfg.bare_pattern, "iu");
+		const beforeRe = new RegExp(cfg.before_pattern ?? base.before_pattern ?? "[\\p{L}\\p{N},’'\")]\\s*$", "u");
+		const afterRe = new RegExp(cfg.after_pattern ?? base.more_forms?.after_pattern ?? "^\\s*(?:\\*{1,2}[\\p{L}\\p{N}]|[.,;:!?)’'\"]|\\p{Ll})", "u");
+		const innerOf = (x) => String(x?.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim();
+		// the bare bold / italic vocabulary joins on the same terms (stream_bare); a pair's opener and a named request do not
+		const sb = base.stream_bare;
+		const sbOn = !!sb && sb.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[sb.env || "FMTREQSTREAM_OFF"]);
+		const sbRes = sbOn ? [base.bare_request_pattern, base.more_forms?.bare_pattern].filter(Boolean).map((p) => new RegExp(p, "iu")) : [];
+		const endRe = sbOn && base.more_forms?.end_pattern ? new RegExp(base.more_forms.end_pattern, "iu") : null;
+		const openRe = sbOn && base.bare_request_pattern ? new RegExp(base.bare_request_pattern, "iu") : null;
+		const isReq = (x, i) => {
+			const t = innerOf(x);
+			if (reqRe.test(t)) return true;
+			if (!sbRes.some((r) => r.test(t))) return false;
+			if (!endRe) return true;
+			// the pair «[bold] words [end bold]» is the later pass's: neither its opener nor its closer joins here
+			const nx = items[i + 1], pv = items[i - 1];
+			if (!endRe.test(t)) return !(nx && nx.type === "tag" && nx.block === x.block && endRe.test(innerOf(nx)));
+			return !(openRe && pv && pv.type === "tag" && pv.block === x.block && openRe.test(innerOf(pv)));
+		};
+		let n = 0;
+		for (let i = 1; i < items.length; i++) {
+			const it = items[i];
+			if (!it || it.type !== "tag" || !isReq(it, i)) continue;
+			// the sentence's first half: the item before, or — when that is a request already joined — the item it joined
+			let prev = items[i - 1];
+			if (prev?._sentenceHost) prev = prev._sentenceHost;
+			if (!prev || prev.block !== it.block || (prev.type !== "black" && prev.type !== "tag")) continue;
+			const key = prev.type === "black" ? "text" : "blackAfter";
+			const before = String(prev[key] ?? ""), after = String(it.blackAfter ?? "");
+			if (!before.trim() || !beforeRe.test(before) || !afterRe.test(after)) continue;
+			const a = after.replace(/^\s+/, "");
+			prev[key] = before.replace(/\s+$/, "") + (/^[.,;:!?)’'"]/.test(a) ? "" : " ") + a;
+			// the request item stays where it stands, its words moved: the scanner and every later pass see the same items
+			it.blackAfter = "";
+			it._sentenceHost = prev;
+			n++;
+		}
+		if (n) run.AddNote("info", "PageAssembler", `${n} highlight / formatting request${n === 1 ? "" : "s"} inside a sentence taken out, the sentence kept whole (inline_format_request.highlight_forms / stream_bare).`);
+	}
+
+	/**
+	 * AN AUDIO-ANIMATION REQUEST TYPED IN BLACK IS THE ANIMATION VIDEO. A writer who typed «[Audio Animation 1:» in black
+	 * (bold-underlined, linked to the module's audio-script document) and closed the bracket in a red note left a paragraph
+	 * the red-tag rule (elements.audio_animation) never sees, so the bracket shipped as learner text. Before the split and
+	 * the scanner, such a paragraph — an unclosed bracket naming an audio animation — becomes that tag item (its words, its
+	 * paragraph's links), and MediaBuilder builds the animation's video frame and To Do with the writer's link.
+	 * Data elements.audio_animation.black_opener   Env toggle: AUDIOANIMBLACK_OFF
+	 */
+	static #blackAudioAnimation(items, run, normaliser) {
+		const aa = DataService.Data.EmitTemplates?.elements?.audio_animation;
+		const cfg = aa?.black_opener;
+		if (!cfg || cfg.enabled === false || aa.enabled === false || !cfg.pattern || !normaliser || !Array.isArray(items)) return;
+		if (typeof process !== "undefined" && process.env && (process.env[cfg.env || "AUDIOANIMBLACK_OFF"] || process.env[aa.env || "AUDIOANIM_OFF"])) return;
+		const re = new RegExp(cfg.pattern, "i");
+		let n = 0;
+		for (const it of items) {
+			if (!it || it.type !== "black") continue;
+			const t = String(it.text ?? "").replace(/[*_]/g, "").replace(/\s+/g, " ").trim();
+			if (!re.test(t)) continue;
+			const text = "[" + t.replace(/^\[\s*/, "").replace(/[\s:;,–-]+$/, "") + "]";
+			let p = null;
+			try { p = normaliser.Parse(text + " "); } catch { p = null; }
+			if (!p?.primary) continue;
+			it.type = "tag"; it.parse = p; it.text = " " + text + " "; it.blackAfter = "";
+			n++;
+		}
+		if (n) run.AddNote("info", "PageAssembler", `${n} audio-animation request${n > 1 ? "s" : ""} typed in black read as the animation tag (audio_animation.black_opener).`);
+	}
+
 	static #untaggedProverb(items, run, normaliser) {
 		const cfg = DataService.Data.EmitTemplates?.callouts?.untagged_proverb;
 		if (!cfg || cfg.enabled === false || !normaliser) return;
@@ -509,6 +597,8 @@ class PageAssembler {
 		PageAssembler.#boldIdWidgetActivity(items, run, normaliser);   // BOLDIDACT_OFF
 		PageAssembler.#untaggedProverb(items, run, normaliser);   // UNTAGPROVERB_OFF
 		PageAssembler.#blackDeveloperNote(items, run, normaliser);   // BLACKDEVNOTE_OFF
+		PageAssembler.#highlightRequestInSentence(items, run);   // FMTREQHILITE_OFF — before the scanner reads the request as a widget tag
+		PageAssembler.#blackAudioAnimation(items, run, normaliser);   // AUDIOANIMBLACK_OFF
 		run.pages = PageSplitter.Split(items, run, normaliser);
 		if (!run.pages.length) {
 			run.AddNote("error", "PageAssembler",

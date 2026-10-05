@@ -2684,6 +2684,222 @@ class MenuBuilder {
 	};
 
 	/**
+	 * THE STANDARD ENTRY IS ONE PARAGRAPH, THE TITLE LINKED (KB 01B, the Standards / Assessment tab): the Writers Template's
+	 * standard block, one paragraph per line, is composed into <p><b>standard</b><br><a>title</a><br>level<br>credits</p>
+	 * wherever it landed in the built menu — every pane string of buildMenu's result (the core buckets, the column and
+	 * promoted-tab panes, the writer-tab panes), walked once after the build. Data menu.standard_entry; env STDENTRY_OFF.
+	 */
+	static composeStandardEntries(menu, run) {
+		const cfg = DataService.Data.EmitTemplates.menu?.standard_entry;
+		if (!menu || !cfg || cfg.enabled === false || !cfg.std_pattern) return menu;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "STDENTRY_OFF"]) return menu;
+		let n = 0;
+		const walk = (v, depth) => {
+			if (typeof v === "string") {
+				if (!v.includes("<p")) return v;
+				const r = this.#composeStandardEntries(v, cfg);
+				n += r.n;
+				return r.html;
+			}
+			if (depth > 3 || !v || typeof v !== "object") return v;
+			if (Array.isArray(v)) { for (let k = 0; k < v.length; k++) v[k] = walk(v[k], depth + 1); return v; }
+			for (const k of Object.keys(v)) v[k] = walk(v[k], depth + 1);
+			return v;
+		};
+		walk(menu, 0);
+		if (n) run?.AddNote?.("info", "MenuBuilder", `${n} standard entr${n === 1 ? "y" : "ies"} composed in the KB 01B form (menu.standard_entry).`);
+		return menu;
+	}
+
+	/**
+	 * A BOLD STRAND LINE IN THE KNOW / DO MENU IS THE STRAND'S HEADING. In every pane string of buildMenu's result, inside a
+	 * section headed (<h4>) Know / Do / Understand, a short paragraph whose whole content is one bold run, followed by more of the
+	 * section, becomes the strand's <h5> (the human build's form, 0.95). Data menu.strand_heading; env STRANDH5_OFF.
+	 */
+	static strandHeadings(menu, run) {
+		const cfg = DataService.Data.EmitTemplates.menu?.strand_heading;
+		if (!menu || !cfg || cfg.enabled === false || !cfg.section_pattern) return menu;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "STRANDH5_OFF"]) return menu;
+		const secRe = new RegExp(cfg.section_pattern, "iu");
+		const maxW = cfg.max_words ?? 12;
+		const reqRe = cfg.require_pattern ? new RegExp(cfg.require_pattern, "u") : null;
+		const textOf = (s) => String(s).replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
+		let n = 0;
+		const fix = (h) => {
+			if (typeof h !== "string" || !/<h4\b/i.test(h)) return h;
+			return h.replace(/(<h4\b[^>]*>([\s\S]*?)<\/h4>)([\s\S]*?)(?=<h4\b|$)/gi, (all, head, headInner, sec) => {
+				if (!secRe.test(textOf(headInner))) return all;
+				const out = sec.replace(/<p>\s*<(b|strong)>([^<]+)<\/\1>\s*<\/p>(?=\s*<(?:p|ul|ol|div)\b)/g, (pAll, _t, inner) => {
+					const t = inner.replace(/\s+/g, " ").trim();
+					if (!t || t.split(" ").length > maxW || /[.!?:]$/.test(t) || (reqRe && !reqRe.test(t))) return pAll;
+					n++;
+					return Utils.FillTemplate(cfg.template ?? "<h5>{text}</h5>", { text: t });
+				});
+				return head + out;
+			});
+		};
+		for (const k of ["tab1", "tab2", "content", "left", "right"]) if (typeof menu[k] === "string") menu[k] = fix(menu[k]);
+		for (const cols of [menu.tab1Cols, menu.tab2Cols, menu.extraTabs]) if (Array.isArray(cols)) for (const c of cols) if (c && typeof c.html === "string") c.html = fix(c.html);
+		if (n) run?.AddNote?.("info", "MenuBuilder", `${n} bold strand line${n === 1 ? "" : "s"} in a Know / Do pane headed as <h5> (menu.strand_heading).`);
+		return menu;
+	}
+
+	/**
+	 * THE UNFILLED STANDARDS TEMPLATE NEVER SHIPS. In every pane of buildMenu's result that holds the template's sentinel
+	 * («Level #, External/Internal», «# credits», «Module code Standard (# credits) – Name/Title»), the paragraphs and list
+	 * items that are template lines go, an emptied list goes, a lead left with nothing after it goes (back to front), the
+	 * emptied heading goes; a promoted tab left with no content of its own is dropped (KB c67's omission rule).
+	 * Data menu.unfilled_standard_template; env STDTEMPLATE_OFF.
+	 */
+	static omitUnfilledStandards(menu, run) {
+		const cfg = DataService.Data.EmitTemplates.menu?.unfilled_standard_template;
+		if (!menu || !cfg || cfg.enabled === false || !cfg.sentinel_pattern) return menu;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "STDTEMPLATE_OFF"]) return menu;
+		const fold = (x) => String(x).replace(/<[^>]+>/g, " ").replace(/&nbsp;|&#160;/g, " ").replace(/&amp;/g, "&")
+			.replace(/\s+/g, " ").trim().toLowerCase();
+		const sentRe = new RegExp(cfg.sentinel_pattern, "i");
+		const blockRes = (cfg.block_patterns ?? []).map((p) => new RegExp(p, "i"));
+		const leadRes = (cfg.lead_patterns ?? []).map((p) => new RegExp(p, "i"));
+		const own = (h) => [...String(h).matchAll(/<(p|li|h[1-6])\b([^>]*)>([\s\S]*?)<\/\1>/g)].some((b) => !/cv2-/.test(b[2]) && !/^h/.test(b[1]) && fold(b[3]))
+			|| /<(?:img|table|iframe|a)\b/i.test(String(h).replace(/<p\b[^>]*cv2-[^>]*>[\s\S]*?<\/p>/g, ""));
+		let n = 0;
+		const clean = (h) => {
+			if (typeof h !== "string" || !h.includes("<")) return h;
+			if (![...h.matchAll(/<(p|li)\b([^>]*)>([\s\S]*?)<\/\1>/g)].some((b) => sentRe.test(fold(b[3])))) return h;
+			let s = h.replace(/\s*<(p|li)\b([^>]*)>([\s\S]*?)<\/\1>/g, (all, tag, attrs, inner) =>
+				(!/cv2-/.test(attrs) && blockRes.some((r) => r.test(fold(inner))) ? "" : all));
+			s = s.replace(/\s*<(ul|ol)\b[^>]*>\s*<\/\1>/g, "");
+			// a lead with nothing after it in its pane (only closing tags or the end) goes; repeated, so a chain goes back to front
+			for (let guard = 0; guard < 8; guard++) {
+				const ps = [...s.matchAll(/<p\b([^>]*)>([\s\S]*?)<\/p>/g)].filter((b) => !/cv2-/.test(b[1]) && leadRes.some((r) => r.test(fold(b[2]))));
+				const last = ps.reverse().find((b) => !s.slice(b.index + b[0].length).replace(/<p\b[^>]*cv2-[^>]*>[\s\S]*?<\/p>/g, "").replace(/<\/[a-z0-9]+>/gi, "").trim());
+				if (!last) break;
+				s = s.slice(0, last.index).replace(/\s+$/, "") + s.slice(last.index + last[0].length);
+			}
+			s = this.dropEmptyHeadings(s, run);
+			n++;
+			return s;
+		};
+		for (const k of ["tab1", "tab2", "content", "left", "right"]) if (typeof menu[k] === "string") menu[k] = clean(menu[k]);
+		for (const cols of [menu.tab1Cols, menu.tab2Cols]) if (Array.isArray(cols)) for (const c of cols) if (c && typeof c.html === "string") c.html = clean(c.html);
+		if (Array.isArray(menu.extraTabs)) {
+			for (const t of menu.extraTabs) if (t && typeof t.html === "string") t.html = clean(t.html);
+			const kept = menu.extraTabs.filter((t) => t && own(t.html));
+			if (kept.length !== menu.extraTabs.length) {
+				// a dropped tab's developer notes pass through to the first pane, where the note relocation still finds them
+				const notes = menu.extraTabs.filter((t) => t && !own(t.html))
+					.flatMap((t) => [...String(t.html).matchAll(/<p\b[^>]*cv2-[^>]*>[\s\S]*?<\/p>/g)].map((x) => x[0]));
+				const col = Array.isArray(menu.tab1Cols) ? [...menu.tab1Cols].reverse().find((c) => c && typeof c.html === "string") : null;
+				const host = ["tab1", "content", "left", "tab2", "right"].find((k) => typeof menu[k] === "string" && menu[k].trim());
+				if (notes.length && col) col.html += "\n" + notes.join("\n");
+				else if (notes.length && host) menu[host] += "\n" + notes.join("\n");
+				run?.AddNote?.("info", "MenuBuilder", `${menu.extraTabs.length - kept.length} promoted tab(s) left empty by the unfilled standards template dropped (KB c67 omission rule; menu.unfilled_standard_template).`);
+				menu.extraTabs = kept.length ? kept : null;
+			}
+		}
+		if (n) run?.AddNote?.("info", "MenuBuilder", `${n} menu pane(s): the unfilled standards template omitted (menu.unfilled_standard_template).`);
+		return menu;
+	}
+
+	/**
+	 * THE STANDARD ENTRY (KB 01B, the Standards / Assessment tab). Reads a menu pane's paragraphs in order; a run that opens
+	 * with a standard line (cfg.std_pattern) and continues — paragraph after paragraph, nothing but white space between —
+	 * with the entry's own lines (the address, '(Version N)', the title, the level, the credits; the template's unfilled
+	 * placeholders) becomes ONE paragraph: <b>standard (Version N)</b><br><a href target=_blank>title</a><br>level<br>credits.
+	 * A run with neither a level nor a credits line is left as it is. Returns { html, n } (n = entries composed).
+	 */
+	static #composeStandardEntries(html, cfg) {
+		const src = String(html ?? "");
+		const stdRe = new RegExp(cfg.std_pattern, "i"), verRe = new RegExp(cfg.version_pattern, "i");
+		const phRe = new RegExp(cfg.placeholder_pattern, "i"), titleLabelRe = new RegExp(cfg.title_label_pattern, "i");
+		const levelRe = new RegExp(cfg.level_pattern, "i"), creditsRe = new RegExp(cfg.credits_pattern, "i");
+		const maxParts = cfg.max_parts ?? 7;
+		// the entry's other writer forms (standard_entry.more_forms; env STDENTRYMORE_OFF): a bare number as the standard line,
+		// «URL: <address>» typed as text, the standard's own address repeated as a link line
+		const mf = cfg.more_forms;
+		const mfOn = !!mf && mf.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[mf.env ?? "STDENTRYMORE_OFF"]);
+		const bareStdRe = mfOn && mf.bare_std_pattern ? new RegExp(mf.bare_std_pattern) : null;
+		const urlTextRe = mfOn && mf.url_text_pattern ? new RegExp(mf.url_text_pattern, "i") : null;
+		const urlLabelRe = mfOn && mf.url_label_pattern ? new RegExp(mf.url_label_pattern, "i") : null;
+		const isStd = (t) => stdRe.test(t) || (!!bareStdRe && bareStdRe.test(t));
+		const textOf = (s) => String(s).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+		const isUrl = (s) => /^(?:https?:\/\/|www\.)\S+$/i.test(String(s).trim());
+		const linkRe = /<a\b[^>]*\bhref="([^"]*)"[^>]*>([\s\S]*?)<\/a>/i;
+		const paras = [];
+		const pRe = /<p(\s[^>]*)?>([\s\S]*?)<\/p>/g;
+		let m;
+		while ((m = pRe.exec(src))) paras.push({ start: m.index, end: m.index + m[0].length, attrs: m[1] ?? "", inner: m[2] });
+		const out = [];
+		let pos = 0, n = 0;
+		for (let i = 0; i < paras.length; i++) {
+			const p0 = paras[i];
+			const l0 = p0.inner.match(linkRe);
+			// the standard line: its own words (a link on it is the address; the link's words are the standard when they
+			// read as one, the title when they do not)
+			let stdText = textOf(l0 ? p0.inner.replace(linkRe, " ") : p0.inner);
+			let href = null, linkText = null, title = null, version = null, level = null, credits = null, stdLink = null;
+			if (l0) {
+				href = l0[1];
+				const lt = textOf(l0[2]);
+				// the writer linked the standard's own words: with no title to carry it, the link stays on them
+				if (stdRe.test(lt) && !stdRe.test(stdText)) { stdLink = { words: lt, rest: stdText }; stdText = (lt + " " + stdText).trim(); }
+				else linkText = lt;
+			}
+			if (!isStd(stdText)) continue;
+			const vIn = stdText.match(/\(\s*version\s*#?\s*[\d.]*\s*\)/i);
+			if (vIn) { stdText = stdText.replace(vIn[0], " ").replace(/\s+/g, " ").trim(); if (/\d/.test(vIn[0])) version = vIn[0]; }
+			let j = i + 1;
+			const notes = [];   // a developer note inside the entry («(from NZQA document)») passes through, after the entry
+			for (; j < paras.length && j - i <= maxParts; j++) {
+				if (src.slice(paras[j - 1].end, paras[j].start).trim()) break;
+				if (/\bcv2-note\b/.test(paras[j].attrs)) { notes.push(src.slice(paras[j].start, paras[j].end)); continue; }
+				const inner = paras[j].inner;
+				const lk = inner.match(linkRe);
+				const rest = textOf(lk ? inner.replace(linkRe, " ") : inner);
+				const t = textOf(inner);
+				if (isStd(t)) break;
+				if (lk && !href && (!rest || phRe.test(rest) || verRe.test(rest) || (!!urlLabelRe && urlLabelRe.test(rest)))) {
+					href = lk[1]; const lt = textOf(lk[2]); linkText = lt;
+					if (verRe.test(rest) && /\d/.test(rest)) version = version ?? rest;
+					continue;
+				}
+				if (lk && href && mfOn && lk[1] === href && (!rest || phRe.test(rest))) continue;   // the same address again
+				if (lk) break;
+				const um = !href && urlTextRe ? t.match(urlTextRe) : null;
+				if (um) { href = um[1]; linkText = um[1]; continue; }
+				if (phRe.test(t)) continue;
+				if (verRe.test(t)) { if (/\d/.test(t)) version = version ?? t; continue; }
+				if (levelRe.test(t) && !level) { level = t; continue; }
+				if (creditsRe.test(t) && !credits) { credits = t; if (level) { j++; break; } continue; }
+				if (titleLabelRe.test(t) && !title) { title = t.replace(titleLabelRe, "").trim(); continue; }
+				if (!title && !level && !credits && t.split(/\s+/).length >= 2 && !/:\s*$/.test(t)) { title = t; continue; }
+				break;
+			}
+			if (!level && !credits) continue;
+			const nrm = (s) => String(s ?? "").toLowerCase().replace(/[^a-z0-9ā-ū]+/g, " ").trim();
+			const keepStdLink = !!stdLink && !title && !linkText;
+			const lines = [keepStdLink
+				? `<b><a href="${href}" target="_blank">${stdLink.words}</a>${stdLink.rest ? " " + stdLink.rest : ""}${version ? " " + version : ""}</b>`
+				: `<b>${stdText}${version ? " " + version : ""}</b>`];
+			if (href && !keepStdLink) {
+				if (title && linkText && !isUrl(linkText) && !nrm(linkText).includes(nrm(title))) {
+					lines.push(`<a href="${href}" target="_blank">${linkText}</a>`, title);
+				} else {
+					lines.push(`<a href="${href}" target="_blank">${title || linkText || href}</a>`);
+				}
+			} else if (title) lines.push(title);
+			if (level) lines.push(level);
+			if (credits) lines.push(credits);
+			out.push(src.slice(pos, p0.start), `<p>${lines.join("<br>")}</p>`, ...notes.map((x) => "\n" + x));
+			pos = paras[j - 1].end;
+			i = j - 1;
+			n++;
+		}
+		out.push(src.slice(pos));
+		return { html: n ? out.join("") : src, n };
+	}
+
+	/**
 	 * The BOLD-stripping sibling of stripTextItalic: removes <b>/<strong>
 	 * wrapper tags, KEEPING the inner text and any inner markup (<i>/<a>/
 	 * etc). Repeats until it reaches a fixed point, so nested bold markup

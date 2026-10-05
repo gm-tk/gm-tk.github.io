@@ -5033,6 +5033,9 @@ class ContentConverter {
 		// also runs across the menu's HTML-string fields, not just the body
 		// (MenuBuilder.buildMenu returns an OBJECT whose values are strings of pane HTML).
 		const menu = MenuBuilder.buildMenu(menuItems, menuType, run, page, this.#norm);
+		MenuBuilder.omitUnfilledStandards(menu, run);   // the unfilled standards template never ships (STDTEMPLATE_OFF)
+		MenuBuilder.composeStandardEntries(menu, run);   // KB 01B the standard entry (STDENTRY_OFF)
+		MenuBuilder.strandHeadings(menu, run);   // a bold strand line in the Know / Do menu is its <h5> (STRANDH5_OFF)
 		// The ENG-family two_col OVERVIEW menu deliberately keeps "We are learning:"/"I can:"
 		// as plain "<p>" lead-in text (it does NOT promote them to headings), so the
 		// named-heading promotion above is skipped for it entirely.

@@ -39,6 +39,12 @@
 				"env": "SPELLALIAS_OFF"
 			},
 			{
+				"_doc": "The writer's '[HInfo hover: ' opener for the inline hover ('✅ngā wāhanga o te tinana [HInfo hover: ] parts of the body ]', BLL271 / 272 / 273 / 275 / 276) — the same writers' '[HInfo trigger: ' resolves to the info trigger, this spelling resolved to NO tag, so the sentence broke into separate paragraphs around a Writers Note '[HInfo hover:'. The gold builds the word's hover with the definition.",
+				"tag": "info trigger",
+				"aliases": ["hinfo hover"],
+				"env": "HINFOHOVER_OFF"
+			},
+			{
 				"_doc": "The writer's supervisor-note spellings — '[Supervisor’s Note]' … '[End Supervisor’s Note]' (Fold makes the curly apostrophe straight), '[Supervisors note]', '[Supervisors Notes]', '[Supervision note]' — which would otherwise resolve to NO tag and render as red 'Writers Note: [...]' lines (as in XGF9004, TRR114, MXFL101, MXFL103, MXFL202, BLL122, BLL244, BLL245); in MXFL103 an unresolved one after the overview's [End page] would also leave the overview empty and push the introduction to page 1.0. The gold renders every one as the supervisor note (a super-content panel, an alert, the overview's notes). KB 01D (writer variants resolve to the one normalised tag).",
 				"tag": "supervisor note",
 				"aliases": ["supervisor's note", "supervisor's notes", "supervisors note", "supervisors notes", "supervision note"],

@@ -134,6 +134,12 @@
 	"elements": {
 		"dual_language": {
 			"enabled": true,
+			"template_labels": {
+				"_doc": "THE BILINGUAL TEMPLATE'S FIELD LABELS NEVER SHIP AS HEADINGS. The PNR / PMT bilingual template's content table carries red field labels beside its heading tags — '[H3] Intro sentence: / Welcome to the world of numbers.', '[H3] Rerenga Kōrero Whakataki: / Nau mai haere mai …', '[H1] Ingoa Kowae: Te Tau 2' — and the label became the heading while the writer's line under it became a paragraph. The human ships '<h3>Welcome to the world of numbers.</h3>' and 'Te Tau 2', no label. A heading part whose words open with a template label (label_pattern) loses the label; when nothing remains, the heading passes to the cell's next text part.",
+				"enabled": true,
+				"env": "REOLABEL_OFF",
+				"label_pattern": "^(?:intro(?:duction)?\\s+sentence|rerenga\\s+k[oō]rero\\s+whakataki|ingoa\\s+k[oō]wae|module\\s+name)\\s*:\\s*"
+			},
 			"_doc": "Bilingual reoTranslate body unfold: a reoTranslate module's English|Māori content table -> interleaved <tag reo>{Māori}</tag><tag eng>{English}</tag> in ONE row>col-md-8 wrapper; media (image/audio/video) emitted ONCE, un-paired. Env REOTRANSLATE_OFF.",
 			"use_mtk_flag": false,
 			"_use_mtk_flag_doc": "false (default) = the 'MTK WRITERS TEMPLATE' house header does NOT put a module in reoMode (almost every WT carries it — it is the house template NAME, not a bilingual marker, and no genuine bilingual module relies on it alone). Genuine bilingual = reoTranslate body_class OR a code_prefixes match. true (or env MTKREO_OFF=1) = the flag is honoured and puts the module in reoMode.",
@@ -436,6 +442,13 @@
 				"enabled": true,
 				"env": "CELLREDREQ_OFF",
 				"min_words": 3,
+				"redundant_link": {
+					"_doc": "A RED LINK REQUEST WHOSE ADDRESS IS THE NEXT WORDS' OWN LINK IS REDUNDANT. 'This kete is woven from [Link 2, to https://…/kiekie/] kiekie' with 'kiekie' itself hyperlinked to the same address (TEFUN07) showed the bracket and its address as cell text and left the word plain; the human links the word only. A red run in a kept cell that is exactly one bracketed link request carrying an address (pattern), followed (within lookahead_chars) by words that are one of the table's own hyperlinks to the same address, is removed, and that hyperlink is woven onto those words in the cell.",
+					"enabled": true,
+					"env": "CELLREDLINK_OFF",
+					"pattern": "^\\[\\s*(?:link|hyperlink|url)\\b[^\\]]*?(https?://[^\\s\\]]+)\\s*\\]$",
+					"lookahead_chars": 160
+				},
 				"bracketed": {
 					"_doc": "THE WRITER'S RED BRACKETED REQUEST IN A TABLE CELL IS A WRITERS NOTE TOO. A red span in a kept cell that is exactly ONE bracketed request — «Name: [students type here]», «[complete the sentence here]», «[orange background]», «[add green tick]», «[click drop image]» — printed as cell text for the learner. In the writer's convention the bracket itself marks an instruction (no cue word is needed, unlike the un-bracketed request above), so it renders as the cell's Writers Note in place. Only a bracket of at least min_words words with a letter and no web address: a one-word or one-letter bracket («[h]», «[word 1]», «[fact]») may be the learner's own label or blank and stays as it is. Env CELLREDBRACKET_OFF.",
 					"enabled": true,
@@ -569,8 +582,46 @@
 		"info_trigger_inline": {
 			"enabled": true,
 			"note": "A SELF-CLOSED inline trigger marker ('anchor [audio trigger DEF]' / '[hover trigger DEF]', the DEFINITION carried INSIDE the marker's own red span so there is NO separate ']' closer) is woven onto its preceding anchor word as <span class=\"infoTrigger\" info=\"DEF\">anchor</span> (using the inline_format.info_trigger template), instead of breaking the paragraph and dropping the def. The DEF is recovered in ORIGINAL case from the marker text after 'trigger' (parse.remainders is lowercased/mangled). InteractiveScanner inserts the U+E000 sentinel right after the anchor; ContentConverter.#inlineMarkup builds the span. Conservative: fires ONLY on the self-closed form with a non-empty def AND a preceding anchor word; the SPLIT-bracket form ('[hover trigger DEF' + a separate ']' item, as in ENGJ302/MXDI301) is a distinct tokenisation handled by the hasCloser path. Env INFOTRIG_OFF keeps the paragraph-break behaviour.",
+			"def_next_red": {
+				"_doc": "A BARE HOVER TRIGGER TAKES ITS DEFINITION FROM THE NEXT RED SPAN. '**Geosphere** [hover trigger] ‹The solid parts of the Earth, including all the rocks …› is the most obvious …' (PES1002): the self-closed branch needs the definition inside the trigger's own span and the split-bracket branch needs a ']' closer, so the bare trigger was emptied and its definition — the next red span — shipped as a Writers Note in the middle of the sentence; the human hovers the word before the trigger. A bare self-closed trigger with no words of its own takes the following red spans of the same paragraph (no bracket, at most max_spans, at least min_def_words words, not a developer instruction) as its definition, and the last span's continuation rejoins the sentence.",
+				"enabled": true,
+				"env": "TRIGDEFNEXT_OFF",
+				"max_spans": 3,
+				"min_def_words": 2
+			},
+			"def_after_bracket": {
+				"_doc": "THE DEFINITION AFTER THE BRACKET, IN THE SAME RED SPAN, IS THE TRIGGER'S DEFINITION. '**Pūrākau** [hover trigger] Māori myths and legends. tell of Pūtoto …' (PES1002: Pūrākau, kaitiakitanga, mangroves) — the red bracket closes before the definition, so the marker was not read as self-closed: the red words were dropped and the sentence broke after the word. The gold builds the word's hover with that definition. A trigger whose red text is a bracket that is only the trigger's name (pattern: «[hover trigger]», «[Hinfo trigger]», «[info trigger]» — not «[info trigger image]») followed by at least min_def_words words and no further bracket takes those words as its definition, when the nearest preceding text is in the same paragraph (a trigger on its own line is an image or widget request: left as it was). A leading writer's label (label_pattern: «definition “Has the same features as the population”», MXS1004; «mahinga kai rollover definition: Gardening or …», PES1002) and the quotes around the definition (or a lone opening quote) are dropped, as the gold's info has them. An instruction-shaped text still falls through to the Writers Note.",
+				"enabled": true,
+				"env": "TRIGDEFAFTER_OFF",
+				"pattern": "^\\[\\s*(?:hover|info|hinfo)?\\s*-?\\s*trigger\\s*\\]\\s*([^\\[\\]]+)$",
+				"label_pattern": "^(?:definition|meaning)\\s*[:\\-–—=]?\\s*|^[^:.]{1,40}?\\s(?:rollover|roll-over|hover)\\s+definition\\s*:\\s*",
+				"min_def_words": 2
+			},
+			"closer_with_tag": {
+				"_doc": "A CLOSER THAT CARRIES THE NEXT TAG CLOSES THE DEFINITION TOO. 'We will be focusing on ngā wāhanga o te tinana [HInfo hover: ] parts of the body ] [audiovisual item 10] in this module, so let’s practice …' (BLL271 / BLL272): the red ']' and the next tag are one item, so the split-bracket path (which needs a bare ']' closer) never fired — the sentence broke into three paragraphs around the definition. The gold keeps the sentence whole with the word's hover. A closer item that is ']' followed by exactly one bracketed tag (pattern) closes the definition: the ']' is consumed, the tag stays its own item, and the sentence's continuation joins the anchor's paragraph.",
+				"enabled": true,
+				"env": "TRIGCLOSERTAG_OFF",
+				"pattern": "^\\]\\s*\\[[^\\[\\]]+\\]$"
+			},
 			"closer_host_skip_empty": true,
 			"_closer_host_skip_empty_doc": "THE BACK-TO-BACK SPLIT TRIGGER. The split-bracket form (`[HInfo trigger: ] def ]`, the def in black between a red opener and a red `]` closer) anchors on the preceding item; when two triggers follow each other (`…such as who [HInfo trigger: ] asks about a character ] , what [HInfo trigger: ] asks about a thing or idea ] , where …`, BLL243) that item is the closer the first trigger emptied, so the second one's sentinel would start a bare line — its definition dropped and the sentence broken into `<p> , where</p>` paragraphs. The host is therefore the nearest preceding item of the same paragraph that still carries text — the self-closed branch's and the hover weave's own rule. Env TRIGHOST_OFF."
+		},
+		"info_trigger_anchor": {
+			"_doc": "THE HOVER'S ANCHOR IS THE WRITER'S WHOLE TERM, WHERE THE WRITER SHOWS IT. A non-bold hover anchor is the last word before the definition, and the gold anchors the writer's whole term (721 anchors equal the gold's; 132 in 67 modules are the last word of the gold's term — most of them an English modifier the source does not mark, which stays as it is). A shape the writer's words DO show is read here, at the anchor (ListsAndRuns.inlineMarkup).",
+			"reo_lead": {
+				"_doc": "A TE REO TERM'S LEAD WORD BINDS TO THE ANCHOR. 'Hoa ako [hover] (learning partner)' anchored 'ako' where the gold anchors 'hoa ako' (XDLS902 / 905 / 908 / 901 / 909 ×39); likewise te reo, te taiao, Te Whakaminenga, Mātauranga / Kaupapa Māori, tino rangatiratanga, Ngāti Tūwharetoa, Ngāi Tahu, tangata whenua, mahinga kai, mahi tahi, papa kāinga, Huinga Ako, Oranga Tamariki, Kāinga Ora, Manatū Hauora. The words are the ones measured before a short anchor and before none of the anchors that already equal the gold's.",
+				"enabled": true,
+				"env": "HOVERREOLEAD_OFF",
+				"words": ["hoa", "te", "mātauranga", "kaupapa", "tino", "ngāti", "ngāi", "tangata", "mahinga", "mahi", "papa", "huinga", "oranga", "kainga", "kāinga", "manatū"]
+			},
+			"long_run": {
+				"_doc": "A LONG ITALIC / BOLD RUN IS NOT THE ANCHOR — ITS LAST WORD IS. '*In the early 20th century, new theories … Theories of socialism* [rollover definition: A political ideology …]' (HIS1003): the bold / italic anchor wrapped the whole 23-word quotation (55 words in the next) as one hover and dropped its italics; the gold anchors 'socialism' inside the quotation. Likewise SSFUN08's newspaper quotations, HIS1004, GER1002 and HIS1003's '*, stemming from the teachings of Marxism*'. The gold does anchor whole short sentences (GENO901 'Wie heißt du? Wie heißen Sie?', PES1004's instructions — at most 8 words), so only a run of more than max_words words, or one opening with punctuation (lead_punct_pattern), anchors on its last word, inside the writer's formatting. A definition written 'term = meaning' (skip_def_pattern: MXEX401's '[hover: *te ao Māori =* *the Māori world* ]', the term inside the bracket) is a different shape and is left as it was.",
+				"enabled": true,
+				"env": "HOVERLONGRUN_OFF",
+				"max_words": 12,
+				"lead_punct_pattern": "^\\s*[,;:.)]",
+				"skip_def_pattern": "="
+			}
 		},
 		"hover_definition_inline": {
 			"enabled": true,
@@ -624,6 +675,12 @@
 				"weave_separators_env": "WEAVESEP_OFF",
 				"_weave_separators_doc": "weave_separators: the scanner weave's form (A) also takes `=`, a spaced dash and a quoted payload after the head words (head_words_pattern), and form (C) needs a letter or digit after the bracket, so a `[hover – DEF]` / `[hover = DEF]` / quoted marker is woven instead of splitting its sentence around a Writers Note. Env WEAVESEP_OFF turns off just this part (HOVERDEFCLEAN_OFF turns off all of def_clean).",
 				"separator_class": "[=–—]",
+				"hyphen_separator": {
+					"_doc": "A HOVER DEFINITION AFTER A HYPHEN IS WOVEN. 'you'll build assertiveness [hover - The ability to speak up for yourself …] skills' (CEDT501), '[hover- History of your family]' (CEDW501), '[hover - Traditional Māori knowledge]' (TWHA905): with only '=', '–', '—' and a quoted payload as separators the request was not woven — it shipped as a red Writers Note wedged between the halves of the writer's sentence, where the gold builds <span class=\"infoTrigger\" info=\"…\">assertiveness</span>. A hyphen followed by a space (pattern) also separates the head words from the definition here.",
+					"enabled": true,
+					"env": "HOVERHYPHEN_OFF",
+					"pattern": "-(?=\\s)"
+				},
 				"_separator_note": "The plain hyphen is NOT a weave separator: `[hover - what the word means]` (ENGI101) is woven by the render stitch, and consuming it at item level would move the next drag-and-drop's activity number (a stray 2H box).",
 				"tight_after_span": true,
 				"tight_after_span_env": "HOVERTIGHT_OFF",
@@ -718,7 +775,13 @@
 			"video_pattern": "youtu\\.?be|youtube\\.com|vimeo\\.com",
 			"frame": "<div class=\"videoSection ratio ratio-16x9\">\n<iframe src=\"about:blank\" loading=\"lazy\" title=\"Video player\" frameborder=\"0\" allowfullscreen></iframe>\n</div>",
 			"todo_text": "{tag} — the audiovisual team's animation video goes in this frame: embed its Vimeo or YouTube address.{link}",
-			"link_text": " The writer's link: {url}"
+			"link_text": " The writer's link: {url}",
+			"black_opener": {
+				"_doc": "AN AUDIO-ANIMATION REQUEST TYPED IN BLACK IS THE ANIMATION VIDEO. XDLS902–906 type the request in black bold-underline, linked to the module's audio-script document ('__[Audio Animation 1:__ [LINK: …Audio-Scripts XDLS904.docx]'), and close the bracket in a red note ('Note this will be repeated across five units XDLS 902-6]'); the red-tag rule above never saw it, so '[Audio Animation 1:' shipped as a learner paragraph. Before the split and the scanner, a black paragraph that is an unclosed bracket naming an audio animation (pattern) is retyped as that tag, so the rule above builds the frame and the To Do with the writer's link.",
+				"enabled": true,
+				"env": "AUDIOANIMBLACK_OFF",
+				"pattern": "^\\[\\s*(?:insert\\s+)?(?:an?\\s+)?(?:ai\\s+)?audio\\s+animation\\b[^\\[\\]]{0,40}$"
+			}
 		},
 		"video_embed_title_drop": {
 			"enabled": true,
@@ -1111,6 +1174,17 @@
 				"bare_pattern": "^\\[\\s*(?:end\\s+(?:bold|itali[cs]s?)|un-?bold|itali[cs]s|(?:bold|itali[cs]i[sz]e)\\s+text|emphasi[sz]e(?:\\s*/\\s*itali[cs]?i[sz]e)?(?:\\s+(?:the\\s+)?text)?)\\s*\\]?$",
 				"after_pattern": "^\\s*(?:\\*{1,2}[\\p{L}\\p{N}]|[.,;:!?)’'\"]|\\p{Ll}|\\p{Lu}{2,}(?!\\p{Ll}))",
 				"max_pair_words": 12
+			},
+			"highlight_forms": {
+				"_doc": "A HIGHLIGHT REQUEST INSIDE A SENTENCE NO LONGER CUTS IT. The writer types a red highlight request in the middle of a sentence — 'Māori perspectives value [highlight text] **mana (personal and collective strength) …** as key aspects of giftedness', 'how to trust your [highlight text] **inner compass** to guide you', '[emphasise / highlight text]', '[highlight / emphasise text]', '[end highlight]', '[text highlighter]' — and the tag item cut the sentence into two paragraphs wherever it stood (the free body, an accordion pane, a flip card's back, an activity box) — '[highlight]' and '[highlight text]' are also the word-select widget's tag names, so the scanner read the request as a widget inside its host's capture. The human keeps the sentence whole; the mark it gives the words differs from page to page (a highlight span, bold or plain), so the request is read like a bare request: PageAssembler takes it out of the item stream before the split and the scanner, the two halves of the sentence are joined and the writer's own marks are kept, no mark is guessed. The word / letter / phrase highlighter quiz widget is not this request and is never matched.",
+				"enabled": true,
+				"env": "FMTREQHILITE_OFF",
+				"bare_pattern": "^\\[\\s*(?:/\\s*highlight|end\\s+(?:text\\s+)?highlight(?:ing|er)?|text\\s+highlighter|(?:(?:emphasi[sz]e|itali[cs]i[sz]e|bold)\\s*(?:/|and)\\s*)?highlight(?:\\s*/\\s*emphasi[sz]e)?(?:\\s+text)?)\\s*\\]?$"
+			},
+			"stream_bare": {
+				"_doc": "A BARE BOLD / ITALIC REQUEST INSIDE A SENTENCE NO LONGER CUTS IT, WHEREVER IT STANDS. The bare requests ('[bold]', '[unbold]', '[end italics]', '[emphasise text]' — bare_request_pattern and more_forms.bare_pattern) are rejoined by the pass that runs after the interactive scan, on FREE body items only; in a list run, an activity box or a widget capture the request item still cut the writer's sentence ('The clock went [bold] …' WJFUN113, '• which was carved from wood [end italics] …' WJFUN304, 'Question 1. What did Jeremy [emphasise text] **want**?' XGF9004). The highlight forms' item-stream pass (PageAssembler, before the split and the scanner, the request item kept in place with no words of its own) reads these too — rejoin only, no mark guessed. An opening request followed in the same paragraph by its closing one (more_forms.end_pattern — the pair, which marks its words) and a NAMED request ('[bold the word how]' — request_pattern) are left to the later pass.",
+				"enabled": true,
+				"env": "FMTREQSTREAM_OFF"
 			}
 		},
 		"item_own_link": {
@@ -4390,6 +4464,57 @@
 			"_doc": "KB constraint 75 ('inline → anchor') IN THE MODULE MENU. MenuBuilder's text buffers render through ListsAndRuns.renderBlackText, which without the items' hyperlinks would lose every writer inline link in a menu pane. The human keeps some of these (the NCEA standard pages in the Standards / Information tabs — AGH1009, COM1002, HIS1004, MXS1004, PES1001–1004 / 1008; XDLS909, XTAS102) and drops others (D2L cross-module links, glossary / vocabulary documents — NAMED overrides of c75). On: each buffer (the section / tab builder and #writerTabPane) carries its items' block.links into the free-body weave (exact phrase, first occurrence per line, never inside an existing <a>). Env MENULINKS_OFF turns it off."
 		},
 		"rule": "menu_type registry value picks the shell. Overview pre-body headings route into the menu per tab_map (the CONSUMED outcome — they emit no body element). menu_type 'none' = no menu button and no menu content div at all.",
+		"standard_entry": {
+			"_doc": "THE STANDARD ENTRY IS ONE PARAGRAPH, THE TITLE LINKED (KB 01B 'Standards/Assessment tab', Variations A / B: <p><b>{Standard code + title}</b><br><a href=\"{standard url}\" target=\"_blank\">{standard description}</a><br>{Level, Internal/External}<br>{N credits}</p>). The Writers Template's standard block — 'Unit Standard # 91930 [URL: https://…] (Version 3) Title: Demonstrate understanding … Level 1, External 5 credits' — reached the module menu as one paragraph per line, the address printed as its own link's words. A run of consecutive paragraphs in a menu pane that opens with a standard line (std_pattern) and carries a level or credits line is composed into the entry: the standard line bold (with the writer's '(Version N)'), the address linked on the title (the template's 'Title:' field label stripped; the link's own words kept when they are not the address and do not hold the title), the level and credits lines after <br>. The template's unfilled placeholders — the URL slot's 'from NZQA website' and an empty '(Version #)' — are dropped. Any other paragraph ends the run; a list item is never read.",
+			"enabled": true,
+			"env": "STDENTRY_OFF",
+			"std_pattern": "^(?:(?:Unit|Achievement)\\s+Standard\\b|(?:US|AS)\\s*#?\\s*\\d{4,6}\\b)",
+			"version_pattern": "^\\(\\s*version\\s*#?\\s*([\\d.]*)\\s*\\)\\.?$",
+			"placeholder_pattern": "^(?:from\\s+(?:the\\s+)?NZQA\\s+website\\.?)$",
+			"title_label_pattern": "^Title\\s*:?\\s+",
+			"level_pattern": "^(?:NCEA\\s+)?Level\\s+\\d",
+			"credits_pattern": "^\\d+\\s+credits?\\.?$",
+			"max_parts": 7,
+			"more_forms": {
+				"_doc": "THE STANDARD ENTRY'S OTHER WRITER FORMS. Writers who replaced the template's 'Unit Standard #' with the number alone ('*29309* [URL: https://…] (Version 3)', XDLS901–908; '__28087__', CEDO501), who typed the address as text ('URL: https://www.nzqa.govt.nz/…/29309.pdf') or who repeated the standard's own address as a link line under a linked standard (CEDR501) were not read as an entry. A line that is only a 4–6 digit number (bare_std_pattern) opens an entry like a standard line; a paragraph 'URL: <address>' is the entry's address (url_text_pattern); a link paragraph whose address equals the entry's is absorbed. The entry still needs its level or credits line.",
+				"enabled": true,
+				"env": "STDENTRYMORE_OFF",
+				"bare_std_pattern": "^\\d{4,6}$",
+				"url_text_pattern": "^URL\\s*:?\\s*(https?://\\S+?)\\.?$",
+				"url_label_pattern": "^URL\\s*:?$"
+			}
+		},
+		"strand_heading": {
+			"_doc": "A BOLD STRAND LINE IN THE KNOW / DO MENU IS THE STRAND'S HEADING. The overview menu's Understand / Know / Do panes head each curriculum strand with <h5> in the human build (695 of 735 strand headings, 0.95) — a writer who tagged the strand gets it already; one who typed it as a bold paragraph ('**Ine | Measurement**', '**Te tūhura pūāhua | Investigating situations**', MXDB301) shipped <p><b>Ine | Measurement</b></p>. Inside a pane section whose <h4> heading matches section_pattern, a paragraph whose whole content is one bold run of at most max_words words, not ending a sentence, and followed by more content in the section, becomes <h5>{text}</h5>.",
+			"enabled": true,
+			"env": "STRANDH5_OFF",
+			"section_pattern": "^(?:(?:m[oō]hio|mahi|m[aā]rama)\\s*\\|\\s*)?(?:know|do|understand)(?:\\s*\\|\\s*(?:m[oō]hio|mahi|m[aā]rama))?\\s*:?$",
+			"max_words": 12,
+			"require_pattern": "\\S\\s+\\|\\s+\\S",
+			"_require_doc": "Only a bilingual strand name ('Ine | Measurement') is a strand heading: a subject label ending in a colon ('English:', 'Maths:' — XMES / XTAS) stays a bold paragraph, as the gold keeps it (44 such lines in the first probe).",
+			"template": "<h5>{text}</h5>"
+		},
+		"unfilled_standard_template": {
+			"_doc": "THE UNFILLED STANDARDS TEMPLATE NEVER SHIPS (the omit_placeholders principle: template text the writer never replaced is not learner content). A Writers Template whose Assessment-for-Learning block was left as the template — 'Unit Standard # [URL: from NZQA website] (Version #) Title Level #, External/Internal # credits' and the sample list 'You can work towards [Subject name] standards in other modules, including: Module code Standard (# credits) – Name/Title' ×3 — shipped those placeholders in the Standards tab. In a menu pane that holds the template's sentinel (sentinel_pattern), every paragraph or list item whose whole text is a template line (block_patterns) goes, an emptied list goes, a lead (lead_patterns) left with nothing after it goes (back to front, so a chain of leads goes together), the emptied heading goes, and a promoted tab left with no content of its own is dropped (KB c67's omission rule). Lines the writer filled in ('Module code ? 91972 (5 credits) – Interact in Spanish …') are not template lines and stay. Developer notes never count as content.",
+			"enabled": true,
+			"env": "STDTEMPLATE_OFF",
+			"sentinel_pattern": "^(?:level\\s*#,?\\s*external\\s*/\\s*internal|#\\s*credits|module code\\s+standard\\s*\\(#\\s*credits\\)\\s*[–-]\\s*name\\s*/\\s*title)$",
+			"block_patterns": [
+				"^(?:unit|achievement)\\s+standard\\s*#?$",
+				"^from\\s+nzqa\\s+website\\.?\\]?(?:\\s*\\(version\\s*#\\))?$",
+				"^\\(version\\s*#\\)$",
+				"^title$",
+				"^level\\s*#,?\\s*external\\s*/\\s*internal$",
+				"^#\\s*credits$",
+				"^module code\\s+standard\\s*\\(#\\s*credits\\)\\s*[–-]\\s*name\\s*/\\s*title$"
+			],
+			"lead_patterns": [
+				"^you will work towards the following standards?:?$",
+				"^you can work towards$",
+				"^standards in other modules,?\\s*including:?$",
+				"^you can work towards(?:\\s*\\[?subject name\\]?)?\\s+standards in other modules,?\\s*including:?$"
+			]
+		},
 		"strip_italic_all": true,
 		"_strip_italic_all_doc": "GENERAL menu-item italic strip. The human strips <i>/<em> from module-menu items almost always (Standard and Inquiry alike), while in body/activity/table it is mixed (editorial) and in acks it always KEEPS them — a clean role rule. The WT wraps menu learning-intentions/curriculum/descriptions in *italics*; the human menu carries none. ContentConverter.#buildMenu strips text-italic from ALL panes (tab1/tab2/content/left/right) via #stripTextItalic (removes <i>/<em>, keeps inner text; a Font-Awesome icon <i class=\"fa…\"> is never touched), generalising the ENG/banner curriculum-pane strips. EXCLUDES reo/bilingual modules (#isReoModule: TRR/PNR prefix / reoTranslate body_class / mtkFlag): there the human KEEPS italic on BOTH panes — the reo line AND its English translation (TRR108 'He kaingākaunui…' + 'Mokopuna care about…', TRR301). Env MENUITALIC_OFF limits the strip to the ENG/banner family panes.",
 		"none_family_fallthrough": true,
