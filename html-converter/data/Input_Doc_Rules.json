@@ -351,6 +351,11 @@
 			"char": "-",
 			"_doc": "THE WRITER'S NON-BREAKING HYPHEN IS KEPT. Word stores a non-breaking hyphen (Ctrl+Shift+-) as its own element, <w:noBreakHyphen/>, not as text, so reading only the w:t text glued the words ('second‑hand' → 'secondhand', 'follow‑up' → 'followup'). The element is read as `char` at its own position (the human build writes a plain hyphen, 'ding-ding'). Env NBHYPHEN_OFF = the element is skipped."
 		},
+		"tab_in_place": {
+			"enabled": true,
+			"env": "TABINPLACE_OFF",
+			"_doc": "THE WRITER'S TAB SEPARATES THE WORDS WHERE IT WAS TYPED. Word stores a tab as its own element, <w:tab/>, between the run's w:t texts ('1.' <w:tab/> 'Who lives closest …', 'big' <w:tab/><w:tab/> 'enormous'). Reading the run's text first and then putting ONE space before the whole run moved the tab to the run's start, so the words either side of it ran together ('1.Who lives closest …', 'bigenormous', '5VValue'). Each tab is read as a space at its own position in the run; a run of tabs is one space, and a run whose tabs all come before its text reads exactly as before (one leading space). Env TABINPLACE_OFF = the one leading space per run."
+		},
 		"rule": "A writer's Shift+Enter stores a <w:br/> INSIDE the paragraph; extracting only the w:t text would delete it, gluing the text on either side with no separator at all ('…ana”Through perseverance…') — corrupted text, and soft breaks are common in Writers Templates. When true, DocxExtractor contributes '\\n' at the break's own position in the run text (a <w:br> with type=page|column stays a page/column break — the page counter is untouched). The downstream machinery handles multi-line text: renderBlackText emits one <p>/<li> per line — the MAJORITY gold form for soft-broken black paragraphs (EXPFUN03 keeps its own house style); Utils.Fold collapses \\s+ so tag classification is unaffected; the proverbSplit boundary rules stay dormant (the lines arrive already split). Env SOFTBR_OFF gives the glued extraction.",
 		"self_closed_skip": {
 			"enabled": true,

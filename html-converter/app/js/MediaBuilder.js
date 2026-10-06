@@ -390,6 +390,15 @@ class MediaBuilder {
 			const hit = this.FollowingVideoLinkTag(bodyItems, i, tpl);
 			if (hit) { linkTagUrl = hit.url; hit.item._consumed = true; }
 		}
+		// the address the writer typed in RED on the next line («[video] <title>» then a red «https://www.youtube.com/…»)
+		// — a line the page never shows: the video takes it and consumes the line
+		// (elements.media_request_before_media.red_address_line; env MEDIAREDADDR_OFF)
+		let redAddrUrl;
+		if (!it._mediaUrl && !(it.block?.links?.[0]?.target) && !gathered.match(_re) && !followLink && !linkTagUrl && kind === "video"
+			&& !(_urlInTextOn && String(it.text || "").match(_re)) && !this.ItemOwnLink(it, kind)) {
+			const hit = this.#nextRedAddress(bodyItems, i, tpl);
+			if (hit) { redAddrUrl = hit.url; hit.item._consumed = true; }
+		}
 		// it._mediaUrl: the URL a caller has already judged to be this element's own (the media-item video route)
 		const url = it._mediaUrl
 			?? this.ItemOwnLink(it, kind)
@@ -398,6 +407,7 @@ class MediaBuilder {
 			?? followLink
 			?? linkTagUrl
 			?? (_urlInTextOn ? String(it.text || "").match(_re)?.[0] : undefined)
+			?? redAddrUrl
 			?? "";
 
 		let builtVideoEmbed = false;
@@ -444,7 +454,11 @@ class MediaBuilder {
 				out.push(this.#applyVideoIcon(Utils.FillTemplate(tpl.video.generic_iframe, { url: Utils.EscapeHtml(url) }), run));
 				builtVideoEmbed = true;
 			} else {
-				out.push(NotesAndComments.redFlag(`[${kind}] with no URL found — add the ${kind} source.`, run));
+				// the writer's request about the NEXT video («[please embed video with image and play button]» then «[Video link]
+				// <address>») ships as their Writers Note, not as a missing-source flag (elements.media_request_before_media)
+				const req = this.#requestBeforeMedia(it, bodyItems, i, kind, run);
+				if (req !== null) out.push(...req);
+				else out.push(NotesAndComments.redFlag(`[${kind}] with no URL found — add the ${kind} source.`, run));
 			}
 		}
 
@@ -537,6 +551,86 @@ class MediaBuilder {
 	 * Env toggle: VIDEOICON_OFF (or the data's own enabled:false) disables
 	 * this method entirely, so every video embed stays in the plain form.
 	 */
+	/**
+	 * A media tag with no address whose NEXT item (blank lines skipped) is a media tag of a listed kind is the writer's
+	 * request about that next element, not a missing source: its own words (the kind words aside) ship as the red
+	 * Writers Note, and a bare tag («[Video Link]» before «[video link][item 28]») ships nothing. Null = not this form
+	 * (the missing-source flag as before). Data elements.media_request_before_media; env MEDIAREQNEXT_OFF.
+	 */
+	static #requestBeforeMedia(it, bodyItems, i, kind, run) {
+		const c = DataService.Data.EmitTemplates.elements?.media_request_before_media;
+		if (!c || c.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "MEDIAREQNEXT_OFF"]) return null;
+		if (!(c.kinds ?? ["video"]).includes(kind) || !Array.isArray(bodyItems)) return null;
+		let j = i + 1;
+		while (j < bodyItems.length && bodyItems[j]?.type === "black" && !String(bodyItems[j].text ?? "").trim()) j++;
+		const nx = bodyItems[j];
+		if (!nx) return null;
+		const RED = /\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu;
+		// the next tag must carry the address — on its own line or the plain lines after it, where the video gathers it
+		// (a run of address-less videos is each its own missing source)
+		const addr = /https?:\/\/\S/;
+		const hasAddr = (x) => (x?.block?.links ?? []).some((l) => String(l?.target ?? "").trim())
+			|| addr.test(String(x?.text ?? "")) || addr.test(String(x?.blackAfter ?? ""));
+		const tagNext = () => {
+			if (nx.type !== "tag" || nx.parse?.instructionFragment) return false;
+			if (!(c.next_tags ?? ["video"]).includes(String(nx.parse?.primary?.tag ?? "").toLowerCase())) return false;
+			let found = hasAddr(nx);
+			for (let k = j + 1; !found && k < bodyItems.length && bodyItems[k]?.type === "black"; k++) found = hasAddr(bodyItems[k]);
+			return found;
+		};
+		// or the next line holds ONLY a video address — black, perhaps in (red) brackets — the line the video embeds from
+		// («(https://www.youtube.com/watch?v=…)»); a red address the page never shows is not this form (address_line)
+		const ac = c.address_line;
+		const lineOn = !!ac && ac.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[ac.env ?? "MEDIAREQADDR_OFF"]);
+		const addressLine = () => {
+			if (!lineOn) return false;
+			const black = String(nx.type === "tag" ? (nx.blackAfter ?? "") : (nx.text ?? ""));
+			if (/\u{1f534}/u.test(black)) return false;
+			if (nx.type === "tag" && /[\p{L}\p{N}]/u.test(String(nx.text ?? "").replace(RED, " "))) return false;
+			const urls = black.match(/https?:\/\/\S+/g) ?? [];
+			if (urls.length !== 1 || black.replace(/https?:\/\/\S+/g, " ").replace(/[\s()[\]]+/g, "")) return false;
+			return new RegExp(ac.host_pattern ?? "youtu\\.?be|youtube\\.com|vimeo\\.com", "i").test(urls[0]);
+		};
+		if (!tagNext() && !addressLine()) return null;
+		const text = String(it.text ?? "").replace(RED, " ").replace(/\s+/g, " ").trim();
+		const kindWords = new Set(c.kind_words ?? ["insert", "video", "link", "embed", "clip", "item"]);
+		const rest = Utils.Fold(text.replace(/[[\]]/g, " ")).replace(/[^\p{L}\p{N}]+/gu, " ").split(" ")
+			.filter((w) => w && !kindWords.has(w) && !/^\d+$/.test(w));
+		// the writer's timestamps («[Video 0:29- 0:46]») are words too (address_line.keep_pattern)
+		const keep = lineOn && !!ac.keep_pattern && new RegExp(ac.keep_pattern).test(text);
+		if (rest.length < (c.min_words ?? 2) && !keep) return [];
+		return [NotesAndComments.redFlag(text, run, "cs")];
+	}
+
+	/**
+	 * The next unconsumed item after an address-less video, when it is a line holding ONLY one red YouTube / Vimeo
+	 * address (its black words brackets at most) — the address the writer typed for that video, which no other reader
+	 * shows. Returns { item, url } or null; the caller consumes the item.
+	 * Data elements.media_request_before_media.red_address_line; env MEDIAREDADDR_OFF.
+	 */
+	static #nextRedAddress(bodyItems, i, tpl) {
+		const c = tpl.elements?.media_request_before_media?.red_address_line;
+		if (!c || c.enabled === false || !Array.isArray(bodyItems)) return null;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "MEDIAREDADDR_OFF"]) return null;
+		const RED = /\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu;
+		for (let j = i + 1; j < bodyItems.length; j++) {
+			const nx = bodyItems[j];
+			if (!nx) return null;
+			if (nx._consumed || nx.consumedBy !== undefined) continue;
+			if (nx.type === "black" && !String(nx.text ?? "").trim()) continue;
+			if (nx.type !== "tag" || nx.parse?.primary) return null;               // a parsed tag is its own element
+			if (String(nx.blackAfter ?? "").replace(/[\s()[\]]+/g, "")) return null;
+			const red = String(nx.text ?? "").replace(RED, " ");
+			const urls = red.match(/https?:\/\/[^\s()[\]]+/g) ?? [];
+			if (urls.length !== 1 || red.replace(/https?:\/\/[^\s()[\]]+/g, " ").replace(/[\s()[\]]+/g, "")) return null;
+			if (!new RegExp(c.host_pattern ?? "youtu\\.?be|youtube\\.com|vimeo\\.com", "i").test(urls[0])) return null;
+			return { item: nx, url: urls[0] };
+		}
+		return null;
+	}
+
 	static #applyVideoIcon(embed, run) {
 		return this.#videoIconGroup(run) ? embed.replace('class="videoSection ', 'class="videoSection icon ') : embed;
 	};

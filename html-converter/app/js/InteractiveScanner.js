@@ -3087,6 +3087,20 @@ class InteractiveScanner {
 			// the bank's absolute terminator list (alert, important,
 			// end activity, page boundaries, section markers, h1 …)
 			if (p && absolute.has(p.tag)) break;
+			// the closer of a widget this bundle absorbed as an extra ends only that widget (member_rule.inner_closer; env
+			// INNERCLOSE_OFF): «[End Hint]» inside a drop-down quiz whose hints the quiz absorbed
+			if (p?.directive === "CONTAINER_CLOSE") {
+				const ic = DataService.Data.BoundaryBank?._meta?.member_rule?.inner_closer;
+				const inner = String(p.tag ?? "").replace(/^end\s+/i, "");
+				const mh = ic?.more_hosts;
+				const hosts = [...(ic?.hosts ?? []), ...(mh && !(typeof process !== "undefined" && process.env && process.env[mh.env ?? "MCQQBLOCK_OFF"]) ? (mh.hosts ?? []) : [])];
+				if (ic && ic.enabled !== false && hosts.includes(bundle.type)
+					&& !(typeof process !== "undefined" && process.env && process.env[ic.env ?? "INNERCLOSE_OFF"])
+					&& inner !== String(p.tag ?? "") && inner !== bundle.type && (bundle.extraTypes ?? []).includes(inner)) {
+					this.#collectMember(bundle, next, run);
+					continue;
+				}
+			}
 			if (p?.directive === "CONTAINER_CLOSE") break;   // explicit close ends the open container (over-capture #3)
 				if (p?.directive === "PAGE_BOUNDARY") break;   // belt & braces
 			// conditional terminators: h2–h5 per the widget's flag — EXCEPT the pop-out's

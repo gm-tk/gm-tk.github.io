@@ -942,14 +942,25 @@ class MenuBuilder {
 							bucket = "left";
 							const raw = (it.blackAfter && it.blackAfter.trim()) ? it.blackAfter : headingText;
 							const mb = raw.match(/^\s*\*\*([^*]+?)\*\*\s*([\s\S]*)$/);
-							let label, rest = "";
-							if (mb) { label = mb[1].replace(/:\s*$/, "").trim(); rest = mb[2]; }
+							// the label keeps the writer's colon in a family whose gold keeps it (menu.two_col_li.label_colon;
+							// env LABELCOLON_OFF): typed inside the bold, or as its own bold run right after the label
+							const lcCfg = cfg.label_colon;
+							const keepColon = !!lcCfg && lcCfg.enabled !== false && !!lcCfg.code_pattern
+								&& !(typeof process !== "undefined" && process.env && process.env[lcCfg.env ?? "LABELCOLON_OFF"])
+								&& new RegExp(lcCfg.code_pattern, "i").test(String(run?.moduleCode || ""));
+							let label, rest = "", typed = false;
+							if (mb) {
+								typed = /:\s*$/.test(mb[1]);
+								label = mb[1].replace(/:\s*$/, "").trim(); rest = mb[2];
+								if (keepColon && !typed && /^\s*(?:\*\*)?\s*:/.test(rest)) { typed = true; rest = rest.replace(/^\s*(?:\*\*)?\s*:\s*(?:\*\*)?/, ""); }
+							}
 							else {
 								const ci = headingText.indexOf(":");
 								if (ci >= 0 && headingText.slice(ci + 1).trim()) {
-									label = headingText.slice(0, ci).trim(); rest = headingText.slice(ci + 1);
-								} else { label = headingText.replace(/:\s*$/, "").trim(); }
+									label = headingText.slice(0, ci).trim(); rest = headingText.slice(ci + 1); typed = true;
+								} else { typed = /:\s*$/.test(headingText); label = headingText.replace(/:\s*$/, "").trim(); }
 							}
+							if (keepColon && typed && label) label += ":";
 							push(Utils.FillTemplate((inqFamily ? inqCfg.left_heading : cfg.left_heading), { heading: Utils.EscapeHtml(label) }));   // the Inquiry family's h4>span
 							if (rest && rest.replace(/[*\s]/g, "")) {
 								for (const piece of ListsAndRuns.renderBlackText(rest.trim(), run)) push(piece);

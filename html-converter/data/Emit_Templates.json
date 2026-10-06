@@ -1145,6 +1145,11 @@
 				"env": "CELLREDGLUE_OFF",
 				"_doc": "THE RED LETTERS GLUED INSIDE A WORD IN A TABLE CELL STAY IN THE WORD. The extractor writes a red run as «🔴[RED TEXT] ea [/RED TEXT]🔴» — a space of padding inside each marker — so when a kept table cell's markers are stripped, letters the writer typed red INSIDE a word come apart: «t🔴ea🔴ch» → «t ea ch», «laugh🔴ed🔴» → «laugh ed» (BLL253's suffix table, BLL172's word-building table, TRR106 / TRR110's te reo vowels, BLL135, BLL130). In TablesAndGrids.cellParts a marker that touches a letter outside it loses its padding space on that side, so the word stays whole — plain letters, the body rule's form for glued red letters. Env CELLREDGLUE_OFF."
 			},
+			"panel_glue": {
+				"enabled": true,
+				"env": "PANELREDGLUE_OFF",
+				"_doc": "THE RED LETTERS GLUED INSIDE A WORD IN A BUILT PANEL STAY IN THE WORD. The shared panel walk of the accordion / click-drop / tabs / flip-card builders files every red run that resolves to no tag as a Writers Note — and takes the black text after it with it — so a click-drop panel's «a … just like in the word 🔴u🔴p» shipped «a … just like in the word» with a note «p» (BLL270's help sheet). A red run of letters or digits (the glued form's run_pattern and max_chars) with no space between it and a letter on at least one side — a letter ending the panel text before it, or a lower-case letter starting the text after it — is part of the writer's word: its characters go back into the panel text in place (the body's glued form, plain letters), and nothing is filed as a note. Env PANELREDGLUE_OFF = the note, as before."
+			},
 			"exclude_pattern":"\\b(?:image|images|img|insert|link|links|video|audio|button|bold|unbold|italic|italics|underline|heading|alert|tab|tabs|hover|rollover|roll over|defn|definition|caption|icon|font|todo|tbc|retrieved|screenshot|source|credit|website|cs|dev|facing side|reverse side|correct answers?|answer in|h[1-6])\\b",
 			"skip_before_pattern": "https?://\\S*\\s*$",
 			"skip_after_pattern": "^\\s*(?:https?://|www\\.)",
@@ -1289,6 +1294,28 @@
 				"gm-?(\\d{6,10})",
 				"/id/(\\d{6,10})"
 			]
+		},
+		"media_request_before_media": {
+			"enabled": true,
+			"env": "MEDIAREQNEXT_OFF",
+			"kinds": ["video"],
+			"next_tags": ["video"],
+			"kind_words": ["insert", "video", "link", "embed", "clip", "item"],
+			"min_words": 1,
+			"address_line": {
+				"enabled": true,
+				"env": "MEDIAREQADDR_OFF",
+				"host_pattern": "youtu\\.?be|youtube\\.com|vimeo\\.com",
+				"keep_pattern": "\\d{1,2}:\\d{2}",
+				"_doc": "THE NEXT LINE MAY BE THE ADDRESS ITSELF. The writer types '[video] <title>' and the address on the next line, often in red brackets ('(https://www.youtube.com/watch?v=…)'); that line embeds the video, so the tag's 'no URL found' flag was as false as the next-tag form's. The next item counts when its black words are ONLY one address of host_pattern (brackets aside) and its red words carry no letter or digit; a red address the page never shows is not this form. With this form on, the writer's timestamps on the tag ('[Video 0:29- 0:46]', keep_pattern) ship as their note even with no other words. Toggle OFF = the flag as before."
+			},
+			"red_address_line": {
+				"enabled": true,
+				"env": "MEDIAREDADDR_OFF",
+				"host_pattern": "youtu\\.?be|youtube\\.com|vimeo\\.com",
+				"_doc": "A RED ADDRESS ON THE NEXT LINE IS THE VIDEO'S OWN. The writer types '[video] <title>' and the video's address in red on the next line (alone, perhaps with a closing bracket); a red line with no tag in it is shown by no reader, so the video shipped as 'no URL found' and was missing from the page while its address reached the acknowledgements. MediaBuilder.media: an address-less video whose next unconsumed item is an unparsed red line holding only one address of host_pattern (its black words brackets at most) takes that address and consumes the line — the embed the gold shows. Toggle OFF = the flag and no video as before."
+			},
+			"_doc": "A VIDEO TAG WITH NO ADDRESS JUST BEFORE THE VIDEO THAT HAS ONE IS THE WRITER'S REQUEST ABOUT IT. The writer types their instruction as its own bracket ('[please embed video with image and play button]', '[insert video: Dev team please cut at 5:06]') and the video on the next line ('[Video link] <address>'); the instruction parsed as a video element with no address, so it shipped as the red 'Red Flag: [video] with no URL found — add the video source.' directly above a video embedded with its source, and the writer's words were lost. MediaBuilder.media's no-address branch: when the next item (blank lines skipped) is a tag of next_tags that carries an address (a link, or an address in its words — a run of address-less videos is each its own missing source), the tag's own words ship as the red Writers Note instead (a bare tag whose words are only kind_words / numbers ships nothing; the next tag is the video). Toggle OFF = the missing-source flag as before."
 		},
 		"media_free_note": {
 			"enabled": true,
@@ -2484,6 +2511,19 @@
 			"_doc_exclude": "A picture / stock / developer-asset target (a picture's source page, a Drive / SharePoint / D2L asset, a Google image or search result, a media file) is the writer's pointer for the developer — the human rarely links these inside or beside widgets — so it is never woven as a learner link.",
 			"_doc": "KB constraint 75 ('inline → anchor') FOR BUILT WIDGETS. ContentConverter.#interactivePlaceholder hands the widget builders renderInline / renderBlock callbacks; the hover-definition stitch is deliberately off inside widgets, and without this every writer inline link inside a built widget — or in the prose the members rule renders around it — would lose its href (AGH1009-7.0's 'Yara N-Sensor' beside a carousel). On: the callbacks weave the bundle's OWN hyperlinks (every opener / member item's and captured table's block.links; the free-body weave — exact phrase, first occurrence per line, never inside an <a>); the hover stitch stays off. Env WIDGETLINKS_OFF turns it off."
 		},
+		"_opener_heading": {
+			"enabled": true,
+			"env": "OPENERHEAD_OFF",
+			"heading_tags": {
+				"h2": "h2",
+				"h3": "h3",
+				"h4": "h4",
+				"h5": "h5",
+				"heading": "h3"
+			},
+			"max_words": 12,
+			"_doc": "A BUILT WIDGET KEEPS THE HEADING THE WRITER TYPED ON ITS OPENER LINE. The writer puts a heading tag in the opener's own bracket stack and types the heading after it ('[Flipcards] [h4] <heading>', '[hint slider] [H5] <heading>', '[hint slider] [heading] <heading>'); the gold ships that text as the heading just before the widget. A builder that does not place the opener's text itself dropped it (or left it as a Writers Note). ContentConverter.#interactivePlaceholder: when a BUILT widget's opener (its INTERACTIVE tag item) carries one of heading_tags (the tag → the body heading tag it renders as) and black text of 1..max_words words that the built HTML does not already carry (a builder that uses it as a title, button label or slide heading is untouched), the text renders BEFORE the widget through the body’s own heading path (as a ‘[h4] <heading>’ line would), so it takes the page’s heading levels like every other writer heading. Toggle OFF = the text dropped as before."
+		},
 		"_cell_numbered_steps": {
 			"_doc": "A BUILT WIDGET KEEPS THE WRITER'S NUMBERED STEPS. A table cell's Word list reaches the widget builders as '• ' lines whichever kind the writer chose, so a click-drop panel, an accordion pane or a flip card's back rendered the writer's NUMBERED steps as a bulleted list (the census F-LIST numbered-as-bullets row's widget half). The table block records each cell's Word-numbered items (block.cellNumbered, the record the layout-grid rule reads). In the second pass of a build — run only when the cells as captured already build, so this never decides whether a widget builds — each such item's '• ' becomes '1. ', the typed form the shared renderer makes an <ol>. A carousel is excluded (exclude_types): the human keeps its captions' bullets. The in-cell line joiner is 'joiner'.",
 			"enabled": true,
@@ -2679,6 +2719,20 @@
 				"option_correct": "<p class=\"mcqOption\" value=\"correct\">{text}</p>",
 				"close": "</div>"
 			},
+			"inline_option_choice": {
+				"enabled": true,
+				"env": "INLINEOPTCHOICE_OFF",
+				"question_pattern": "^(.{3,}?[?:])\\s+((?:[A-Za-z0-9]{1,3}\\s+){2,}[A-Za-z0-9]{1,3})$",
+				"answer_pattern": "^\\[\\s*answer\\s*:\\s*(?:line\\s+|option\\s+|number\\s+)?([A-Za-z0-9]{1,3})\\s*\\.?\\s*\\]$",
+				"min_options": 3,
+				"max_options": 5,
+				"open": "<div class=\"multiChoiceQuiz autoCheck\" columns=\"column-{n}\">\n<div class=\"row\">\n<div class=\"col-12 mcqQuestion\">\n<p class=\"mcqQuestionText\">{question}</p>\n<div class=\"mcqOptions\">",
+				"option": "<p class=\"mcqOption\">{text}</p>",
+				"option_correct": "<p class=\"mcqOption\" value=\"correct\">{text}</p>",
+				"close": "</div>\n</div>\n</div>\n</div>",
+				"after": "<p>{text}</p>",
+				"_doc": "THE INLINE-OPTION CHOICE: a self check whose question carries its choices typed after it ('[self check] Which line on the grid is completed? 1 2 3 4 5'), the writer's answer in its own bracket ('[Answer: Line 4]') and the writer's '[body]' paragraphs after it (the bingo-grid follow-up, one shape at 4 sites). The gold builds the auto-check multi-choice quiz: one mcqOption per typed choice (columns = the number of choices), the named one value=correct, the body paragraphs after; the question rides inside as the quiz's mcqQuestionText (the form of every built quiz and of its verifier; the gold sets it as a paragraph before the quiz). Reads only that shape: the question must end in 3..max_options short choices (question_pattern), the answer must name exactly one of them (answer_pattern), and nothing but '[body]' paragraphs may follow; a self check with no typed choices is never given any (the answer-mark rule). Toggle OFF = the hand-off box as before."
+			},
 			"letter_grid_bingo": {
 				"_doc": "THE LETTER-GRID BINGO: the BLL family's `[Self check] Click on the lower case letter ‘s’.` + a TABLE of single letters with the CORRECT cells typed in red (BLL110 / 113 / 120 / 130 / 140 / 150 / 154 / 160 / 170 — each bundle usually holding the lower-case and the capital grid, the writer's `[Add an audio that when they click/hover on the letter it says the name of the letter…]` ELEMENT tag and the `**Alphabet Audio** [LINK]` line). The human builds the KB's BINGO (03E COMP_04): `div.bingo.col-12 > div.bingoContainer[grid=N] > div.number[value=correct] > p` + the `row > activityButton reset-btn / activityButton hidden check-btn` row — grid 12 cells → 4, 9 → 3, 16 → 4; the wrapper `bingo col-12`; the button row; no h4 card title; the cell usually `p.sassoonI-text` (often with a `span.audioTrigger` — the developer's snipped alphabet audio, NOT emitted here: the package cannot supply the asset, so the writer's audio request and the link ride as the red Writers Note after the widget). Tried BEFORE the question-list form; fires only when EVERY table in the bundle is a letter grid (every non-empty cell ≤ max_cell_chars letters / digits once the red markers and bold marks are stripped; ≥ min_cells cells), every extra type is selfCheck itself (the second grid), and each table follows its own `[Self check]` invocation whose black text is the lead; per table → `lead` + the bingo: the cells row-major from the writer's table, value=\"correct\" on the RED cells or, when the writer marked none, on the cells equal to the letter quoted in the lead (`correct_from`; neither → decline, never half-built); `grid` from the cell count (grid_by_cells, else grid_default); the cell class by module-code prefix (cell_class_by_prefix — the BLL family's Sassoon Infant; plain <p> = the KB form elsewhere). The box takes `.interactive` through interactive_widget_types (bingo is listed). Env BINGO_OFF keeps the hand-off box.",
 				"enabled": true,
@@ -2810,6 +2864,11 @@
 				"body_tag_pattern": "^\\[\\s*body(?:\\s+text)?\\s*\\]$",
 				"button_row_labels": "^(?:undo|check(?:\\s+answers?)?|reset)\\.?$",
 				"tag_words_as_prose": true,
+				"join_chunks": {
+					"enabled": true,
+					"env": "DDJOINCHUNKS_OFF",
+					"_doc": "A MEMBER'S PROSE OF SEVERAL PARAGRAPHS SHIPS WITHOUT A STRAY COMMA. The prose renderer returns an array of <p>/<ul> chunks; pushed whole, an array of two or more chunks was written out with a ',' between them — a comma the learner saw between the writer's activity title and its instruction. Each member's chunks are joined by a line break instead. Toggle OFF = the comma as before."
+				},
 				"note_cue_pattern": "^(?:cs|dev|developer|designer|note|nb)\\s*[:\\-\\u2013\\u2014]",
 				"note": "THE MEMBERS RULE for every built dragAndDrop (the text form, the image form, the column form): a built widget REPLACES the whole captured bundle and the forms only read the TABLE, so every other member the scanner swallowed — the writer's sentence before the table, the 'Go to journal' line after it, a [button], a [body] paragraph, a cloze passage — would silently vanish (the human keeps such prose as <p>: AGH1001 2.0, AGH1005 6.0, TEFUN06, TWHK902, ENGC301, CEDR203, OSGM101). Walked over the members in order: the table = the widget; a black paragraph renders in place through the free-body paragraph emitter (render_black), before or after the widget as the writer placed it; a [body] tag with words is a paragraph (body_tag_as_prose); an instruction-class tag is already the red Writers Note (skipped); a [button] whose label is one of the 03B button row's own (button_row_labels — SSOG301's [insert button] Undo / Check Answer / Reset) is satisfied by the row the build emits; the words riding the invocation tag's OWN line (PHE1005 2.0 '[activity - drag and drop] Match the Māori with the English…' = the human's <h3>) render as a paragraph BEFORE the widget (tag_words_as_prose — the safe content-preserving form; the activity's h3 is the title-level mechanism's business); a [body] or tag-line text opening with a developer cue (note_cue_pattern — OSGM101 '[body] CS: scramble the saying') is a note, not learner prose → decline; ANYTHING ELSE — a [button] with another label, [answer], [audio], [image], [activity], a nested widget — cannot be rendered from inside the widget seam, so the build is DECLINED and the hand-off box keeps every member (never half-build). DDMEMBERS_OFF=1 turns the rule off (members are silently replaced)."
 			},
@@ -4135,7 +4194,18 @@
 				"_doc": "THE REORDER THE WRITER TYPED AS A TABLE, IN ORDER. One captured table whose rows are already in the correct order, and the writer SAYS so — on the opener, in an instruction note or in a cell (answer_mark_pattern: «currently in the correct order / place» ENGC401 / ENGC403 / WJFUN205 / OSBY201, «currently match» / «aligned correctly» OSAI401, «put the right side out of order» ENO2060, «[static]» / «[static column]» / «reorder column» headers OSAI401 / OSAI501 / OSBY501 / OSSC501 / OSAH501). ONE column = the KB list (`.reorderList.col-12`, ENGC401 0.1 / ENGC403 3.1 gold). TWO OR MORE = the aligned columns: the static column (the `[static]`-headed one, else the first) the `.reorderQuestions`, every other column its own `.reorderList` in the typed order (OSAI401-01 / -03, OSAI501-02, OSBY501-03, ENGC403 5.2 gold), widths column_classes. A header row — an annotation (header_annotation_pattern), an all-bold row over plain ones, or short label words (label_max_words, no closing punctuation) over sentence rows — becomes the gold's `re-column` label block (OSAI401-03 / OSAI501-02), its other red words the Writers Note. A cell's paragraphs (the ` / ` cell join) each a <p>; the writer's bullet and ✅ go. DECLINES (the hand-off box stays): no mark; «no correct answers» (ENGJ403); a second table; a media / URL cell (deny_cell_pattern — WJFUN115, OSAH401, OSBY201 3.4); a ragged row (ENGC302); a red word left in a body cell (MXEX302's typed medians); a header annotation that is not a heading / static / reorder one (OSBY501 5.2's «[show answer]» column); a static column that is not the first; an empty or repeated item; fewer than min_rows rows. The human built two of the sites as a drag-and-drop matching set instead (ENO2060, OSAH501) — the writer's type is built."
 			}
 		},
+		"selectionBox": {
+			"enabled": true,
+			"_doc": "The writer's «[checkbox]» / «[checklist]» widget. KB 01D maps «checkbox» to the multi-choice quiz (the survey variant when nothing is marked). Built only where the capture is the question-block form with ONE marked answer per question (interactive_builders.multiChoiceQuiz.question_blocks — the gold's multiChoiceQuiz, WJFUN307 2A / 2B); every other checklist keeps its hand-off box."
+		},
 		"multiChoiceQuiz": {
+			"question_blocks": {
+				"enabled": true,
+				"env": "MCQQBLOCK_OFF",
+				"opener_tags": { "multiChoiceQuiz": ["mcq"], "selectionBox": ["checklist"] },
+				"note_skip_pattern": "\\bactivity\\b|multi\\s*-?\\s*choice|\\bm\\s*-\\s*choice\\b|check\\s*-?\\s*box|check\\s*-?\\s*list|\\bmcq\\b|\\bquiz\\b|auto\\s*-?\\s*check",
+				"_doc": "THE QUESTION BLOCKS AS A MULTI-CHOICE QUIZ. The drop-down's question-block form (dropDown.question_blocks and its more_forms: «Q1.» / «Question 1» stems, option lines, ONE trailing «[Correct answer]» per question — red, or black at the end of the line — and an optional «[Hint] … [End Hint]») typed under «[multi choice]» or «[checkbox – Auto Check]» (opener_tags per widget type) is read by the same parser and emitted as the gold's multiChoiceQuiz: the question text the stem and the question lines (line breaks between), the writer's marked option value=\"correct\", the KB hint inside the question. Runs before the list / table forms. Env MCQQBLOCK_OFF."
+			},
 			"_comment": ["multiChoiceQuiz — the MULTIPLE-CHOICE QUIZ.",
 				"THE DERIVATION, proven against the human's own page: the writer marks the right answer",
 				"with a bracket that FOLLOWS the option it marks. CEDO202-0.0 shows it unambiguously",
@@ -4177,6 +4247,18 @@
 			"list_marker_pattern": "^\\s*(?:\\*\\*)?\\s*(?:[A-Za-z][\\)\\.]|\\d+[\\)\\.]|[\u2022\u25cf\u25aa\u2023\u25e6\u2610\u2611\u2612])\\s*",
 			"checkbox_only_pattern": "^[\\s\u2610\u2611\u2612\u25a1\u2022\u25cf\u2013\u2014\\-\\.\\)\\(]*$",
 			"question_end_pattern": "\\?\\s*(?:\\*\\*)?\\s*$",
+			"non_options": {
+				"hint_line": { "enabled": true, "env": "MCQHINTLINE_OFF", "pattern": "^\\s*(?:\\*\\*)?\\s*hint\\s*:\\s*(?:\\*\\*)?\\s*(.+)$" },
+				"button_label": { "enabled": true, "env": "MCQBUTTON_OFF", "tags": ["button"] },
+				"body_after": { "enabled": true, "env": "MCQBODYEND_OFF", "tags": ["body"] },
+				"_doc": "LINES THAT ARE NOT ANSWER CHOICES (the list form). Three things the writer types among the questions were read as options, so the learner saw them as answers: a «Hint: …» line after a question's options (hint_line — it is that question's hint, rendered as the KB hint inside the question; HPRE301 ×8); the LABEL typed after the writer's «[Button]» («Check answers» — button_label: the developer's, it rides as the Writers Note; MXEX302; a label-less button bracket is read as before); a «[body]» paragraph after the last question's options (body_after — the page's text after the quiz, rendered after it; CEDR501). Each its own env toggle."
+			},
+			"question_lead_lines": {
+				"enabled": true,
+				"env": "MCQLEAD_OFF",
+				"max_heading_words": 8,
+				"_doc": "A QUESTION'S OWN LINES STAY IN THE QUESTION (the list form, no [Question N] tags). Writers lead a question with a short heading line and then the question itself ('1 – Adding detail' / 'Which sentence shows an example of adding detail using a phrase?' / 'A. …' 'B. …' 'C. …'). The walk started the question at the heading and filed the question line as its first option, then filed the NEXT question's heading as the last option of this one, so every question showed the wrong options. Two rules: a line ending in '?' that arrives before the question has any option joins the question text (after a line break — the gold's 'Adding detail<br>Which sentence …?'); and once a question's options carry list markers (A. / b) / 1. / a bullet), a short heading line without one (at most max_heading_words, no colon, no closing punctuation — a closing quote or bracket after it counts) followed by an unmarked question line ending in '?' opens the next question. Any other unmarked line after the options is read as before. Env MCQLEAD_OFF = the walk as it was."
+			},
 			"min_questions": 1,
 			"min_options": 2,
 			"max_options": 10,
@@ -4296,6 +4378,34 @@
 				"_doc": "The D3 (b) COLUMN form reads the first row as the red column HEAD whenever its answer cell is red; when EVERY answer cell is red and the first row's answer is one of the answers beneath it (MXDI202 10A 'Sorting measurements': Weight / Length … length), that row is a question — without this it would be dropped — and with options distinct only by exact spelling, the writer's lower-case `length` would become a third, duplicate option. With the flag on: the first row stays a question when its answer recurs below (case-insensitive), and the option set is distinct ignoring case (the first spelling kept; answers index by the folded key). Env DDCOLFOLD_OFF.",
 				"enabled": true,
 				"env": "DDCOLFOLD_OFF"
+			},
+			"question_blocks": {
+				"enabled": true,
+				"env": "DDQBLOCK_OFF",
+				"stem_pattern": "^\\s*(\\*\\*)?\\s*Q(\\d{1,2})\\s*[.:)]\\s*(.*?)\\s*(?:\\*\\*)?\\s*$",
+				"more_forms": {
+					"enabled": true,
+					"env": "DDQBLOCKX_OFF",
+					"stem_pattern": "^\\s*(\\*\\*)?\\s*(?:Q|Question\\s*)(\\d{1,2})(?:\\s*[.:)]|\\s*(?:\\*\\*)?\\s*$)\\s*(.*?)\\s*(?:\\*\\*)?\\s*$",
+					"black_mark_pattern": "\\s*\\[\\s*correct(?:\\s+answer)?\\s*\\]\\s*$",
+					"_doc": "MORE OF THE WRITERS' FORMS of the same question blocks (WJFUN305's three quizzes): the stem «Question N» (plain or bold, no punctuation — stem_pattern here replaces the block's own); a mark followed only by a line break still trails its option, and the options typed after soft line breaks in the same paragraph are the block's next lines; a «[Correct answer]» typed in BLACK at the end of an option line (black_mark_pattern) is the writer's mark all the same; a picture member before the first question renders above the quiz (a request with no nameable picture rides as the note). Env DDQBLOCKX_OFF = the block form as it first shipped."
+				},
+				"numbered_stems": {
+					"enabled": true,
+					"env": "DDQBLOCKN_OFF",
+					"stem_pattern": "^\\s*(\\*\\*)\\s*(\\d{1,2})\\.\\s*(?:\\*\\*\\s*)?(.*?)\\s*(?:\\*\\*)?\\s*$",
+					"option_marker_pattern": "^\\s*(?:(?:\\d{1,2}|[A-Za-z])[.)]\\s+|[○●•◯◦]\\s*)",
+					"heading_tags": ["h2", "h3", "h4", "h5"],
+					"_doc": "THE NUMBERED FORM OF THE SAME QUESTION BLOCKS (WJFUN211's four quizzes). A BOLD-wrapped «N.» line opens a block — «**1. The clouds floated like cotton wool.**», «**1.** **Purpose: …**», «**1.**», «**1.***\"quote\"*» (stem_pattern; the bold markers come off the stem text, which renders bold; a plain «1. …» line stays an option; the drop-down reading only — a multi-choice question keeps its plain text); «○» / «●» / «•» bullets mark options as the letters and numbers do (option_marker_pattern); a heading tag before the first block renders as that heading; a picture linked on the request's own words (the block's links) renders above the quiz. Env DDQBLOCKN_OFF."
+				},
+				"option_marker_pattern": "^\\s*(?:\\d{1,2}|[A-Za-z])[.)]\\s+",
+				"blank_pattern": "\\s*_{3,}\\s*",
+				"max_option_words": 6,
+				"hint_tags": ["hint"],
+				"closer_tags": ["end hint"],
+				"heading_pattern": "\\[\\s*h([2-6])\\s*\\]",
+				"note_skip_pattern": "\\bactivity\\b|drop\\s*-?\\s*down|\\bquiz\\b|auto\\s*-?\\s*check",
+				"_doc": "THE QUESTION-BLOCK DROP-DOWN (the WJFUN dialect). «[Dropdown Quiz – Auto Check]», a lead paragraph, then numbered question blocks: «Q1. <stem>» (stem_pattern — plain, bold, or the number alone), one or more question lines (a sentence with a blank «____» where the answer goes, a quote, or a question), 2–10 option lines (bare or carrying option_marker_pattern, the marker dropped), the writer's TRAILING «[Correct answer]» after the right option (in the same paragraph, nothing typed after it — the other dialects read [correct] as marking the option that FOLLOWS it, so this dialect runs first and only where every mark trails its option), and an optional «[Hint] … [End Hint]». The options are the run of short lines (≤ max_option_words, no blank, not a question, not a wrapped italic quote; all numbered once one is) that holds the mark; the lines before them are the question. Emits the paragraph layout: one <li> per block — the stem, a line break, the question line with the drop-down at its blank (each side keeps the writer's italics) or after it, then the KB hint (interactive_builders.hint: the tag's own word as its label). The opener's tail is the activity title (a heading when the opener carries «[H3]»); its other brackets that are not the widget's own words (note_skip_pattern) ride as the Writers Note. Declines (the hand-off box stays) on any member it cannot place, a block without exactly one trailing mark, an option set outside 2–10, two blanks in one block, or text after a hint. Env DDQBLOCK_OFF."
 			},
 			"yellow_ticks": {
 				"_doc": "'Trust yellow ✅ ticks, with strict checks' (as for multiChoiceQuiz). The colour_marks path opens only when the writer ANNOUNCES the marks; unannounced, the writer's YELLOW highlight alone (never green) also opens it, ONLY when (b) the item right above the opener is not the writer's D2L-quiz button (d2l_button_pattern — the human builds only the quiz link there) and (c) nothing in the bundle says there are no correct answers (no_answers_pattern — OSAI101); (a) exactly one marked OPTION per question is every mark reading's own rule (#ddMarkAnswer returns 0 on 0 or 2+ hits and the bundle declines). A bundle with no yellow mark is unaffected. An answer is never invented. Env DDYELLOW_OFF.",
@@ -5475,6 +5585,12 @@
 			"right_heading": "<h5>{heading}</h5>",
 			"curriculum_split_all": true,
 			"_curriculum_split_all_doc": "The curriculum SPLIT (the '**Label:** prose' Understand/Know/Do form → a label heading + the prose as a separate <p>) for EVERY two_col_li family, not just eng_family (as in CEDO102-00). Outside eng_family the curriculum would otherwise be pushed as a heading with the prose ABSORBED into the heading text (no separate content node), so the content-less headings would be removed by #dropEmptyHeadings and the LEFT column would be EMPTY. The split makes each label heading carry a following <p> so it survives. Uses the family's OWN left_heading template (the banner family's h5+span; eng_family keeps its curriculum_heading+#curriculumLevel path). Italics are stripped from the recovered LEFT pane to match the human's plain curriculum prose. The exact heading LEVEL (h3/h4/h5) and the banner's presence VARY editorially WITHIN families (e.g. BLL mostly h5, some h4; mostly with a banner) and are NOT cleanly derivable per-module — left at the family template default (a recovered node with a level near-miss is far better than a missing column). Env CURRICSPLIT_OFF limits the split to eng_family.",
+			"label_colon": {
+				"enabled": true,
+				"env": "LABELCOLON_OFF",
+				"code_pattern": "^BLL\\d",
+				"_doc": "THE CURRICULUM LABEL KEEPS THE WRITER'S COLON in the family that keeps it. The split above drops the colon the writer typed after the label ('**Understand:**', '**Knowledge****:**' → 'Understand', 'Knowledge'); most families' gold drops it too, but the Blended Literacy series (a module code matching code_pattern) keeps it in its overview menu (<h5><span>Understand:</span></h5>, <h5><span>Knowledge:</span></h5>) and in its lesson menus. For such a module the label keeps the colon when the writer typed one — after the label inside its bold, or as its own bold run right after it; a label typed without a colon stays as it is. Env LABELCOLON_OFF = the colon dropped for every family."
+			},
 			"right_match": [
 				"learning intentions",
 				"whainga ako",

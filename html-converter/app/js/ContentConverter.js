@@ -12976,6 +12976,33 @@ class ContentConverter {
 		return out;
 	}
 
+	/** The heading a BUILT widget's opener line carries — its INTERACTIVE tag item with a heading tag in the same bracket
+	 *  stack and the heading typed after it — rendered as that heading, or null (no such heading, too long, or the built
+	 *  HTML already carries the words). It renders through the body's own heading path (a "[h4] <heading>" line), so it
+	 *  takes the page's heading levels like every other writer heading; a Writers Note carrying exactly those words is then
+	 *  not repeated after the widget. Returns {html, key} or null. Data interactive_builders._opener_heading;
+	 *  env OPENERHEAD_OFF. */
+	static #openerHeading(bundle, built, run) {
+		const cfg = DataService.Data.EmitTemplates.interactive_builders?._opener_heading;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "OPENERHEAD_OFF"]) return null;
+		const op = [...(bundle?.openerItems ?? []), ...(bundle?.memberItems ?? [])]
+			.find((it) => it?.type === "tag" && it.parse?.primary?.directive === "INTERACTIVE");
+		if (!op) return null;
+		const map = cfg.heading_tags ?? {};
+		const hit = (op.parse?.tags ?? []).map((t) => String(t?.tag ?? "").toLowerCase()).find((t) => Object.hasOwn(map, t));
+		if (!hit) return null;
+		const text = String(op.blackAfter ?? "").replace(/\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu, " ").replace(/\s+/g, " ").trim();
+		const key = this.CaptureFold(text);
+		if (!key || key.split(" ").length > (cfg.max_words ?? 12)) return null;
+		if (this.CaptureFold(built).includes(key)) return null;
+		let parse;
+		try { parse = this.#norm.Parse(`[${map[hit]}]`); } catch { parse = null; }
+		if (!parse?.primary?.tag) return null;
+		const out = this.#elementCore({ ...op, text: `[${map[hit]}]`, blackAfter: text, parse }, [], 0, null, run);
+		return Array.isArray(out) && out.length ? { html: out.join("\n"), key } : null;
+	}
+
 	static #interactivePlaceholder(bundle, run, opts = null) {
 		// FIRST: can we build this interactive for REAL? The InteractiveBuilder
 		// handles the small set of "easy" widgets we fully understand. It returns
@@ -13051,7 +13078,11 @@ class ContentConverter {
 			// widget the caller emits this return value BEFORE the activity close, so the
 			// notes land bottom-but-inside the activity container — exactly the house rule.
 			const notes = this.#bundleInstructions(bundle);
-			const out = built + notes.map((t) => NotesAndComments.redFlag(t, run, "cs")).join("");
+			// the heading the writer typed on the opener line ("[Flipcards] [h4] <heading>") leads the widget
+			// (interactive_builders._opener_heading; env OPENERHEAD_OFF)
+			const head = this.#openerHeading(bundle, built, run);
+			const out = (head?.html ?? "") + built + notes.filter((t) => !head || this.CaptureFold(t) !== head.key)
+				.map((t) => NotesAndComments.redFlag(t, run, "cs")).join("");
 			// a NESTED render (a widget inside a built widget's pane) adds none: the note would sit inside the parent's
 			// pane, where a literal bracket makes the parent decline its build (as on HPRE301's accordion)
 			if (!capFree || !capFree.length || opts?.nested) return out;

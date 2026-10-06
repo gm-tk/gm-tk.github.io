@@ -2363,15 +2363,29 @@ class DocxExtractor {
 				const nbh = rules.paragraph?.no_break_hyphen;
 				const nbhOn = !!nbh && nbh.enabled !== false
 					&& !(typeof process !== "undefined" && process.env && process.env[nbh.env ?? "NBHYPHEN_OFF"]);
+				// the writer's tab is an element between the run's texts (<w:tab/>, or <w:tab /> in the spaced XML form): read as
+				// a space at its own position, a run of tabs as one space; a tab before any text is the run's one leading space
+				// (Input_Doc_Rules.paragraph.tab_in_place; env TABINPLACE_OFF = one leading space for the whole run, the compact
+				// form only)
+				const tip = rules.paragraph?.tab_in_place;
+				const tipOn = !!tip && tip.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[tip.env ?? "TABINPLACE_OFF"]);
 				let text = "";
-				for (const t of run.matchAll(/<w:t(?: [^>]*)?>([\s\S]*?)<\/w:t>|<w:br(?:\s+[^>]*)?\/>|<w:noBreakHyphen\s*\/>/g)) {
+				let lastTab = false;
+				for (const t of run.matchAll(/<w:t(?: [^>]*)?>([\s\S]*?)<\/w:t>|<w:br(?:\s+[^>]*)?\/>|<w:noBreakHyphen\s*\/>|<w:tab\s*\/>/g)) {
+					if (t[0].startsWith("<w:tab")) {
+						if (tipOn && !lastTab && !/[ \n]$/.test(text)) text += " ";
+						lastTab = true;
+						continue;
+					}
+					lastTab = false;
 					if (t[0].startsWith("<w:br")) {
 						if (softBr && !/w:type="(?:page|column)"/.test(t[0])) text += "\n";
 					} else if (t[0].startsWith("<w:noBreakHyphen")) {
 						if (nbhOn) text += nbh.char ?? "-";
 					} else text += this.#decodeXml(t[1]);
 				}
-				if (/<w:tab\/>/.test(run)) text = ` ${text}`;
+				if (!tipOn && /<w:tab\/>/.test(run)) text = ` ${text}`;
 				// INVISIBLE-WHITESPACE NORMALISE (table cells arrive through this same
 				// paragraph walk). A writer's Word file carries invisible characters that were
 				// never intended as page content: the NON-BREAKING SPACE U+00A0

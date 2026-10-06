@@ -153,7 +153,12 @@ class InteractiveBuilder {
 					html = this.#clickDropEntry({ bundle, tpl, renderInline, run, renderBlock, renderTable, renderNested });
 					break;
 				case "multiChoiceQuiz":
-					html = this.#multiChoiceQuiz({ bundle, tpl, renderInline });
+					// the question blocks with a trailing answer mark first; the list / table forms where they decline
+					html = this.#mcqQuestionBlocks({ bundle, templates, renderInline, run })
+						?? this.#multiChoiceQuiz({ bundle, tpl, renderInline });
+					break;
+				case "selectionBox":   // «[checkbox – Auto Check]» typed as question blocks, one marked answer each (KB 01D)
+					html = this.#mcqQuestionBlocks({ bundle, templates, renderInline, run });
 					break;
 				case "typing":
 					// shape 1, the writer's red answer on the question line → the KB 03D text-only form.
@@ -186,7 +191,9 @@ class InteractiveBuilder {
 						// the BLL picture-word choice ([word ║ picture ║ word], the red word correct) where every other reading declined
 						?? this.#pictureWordChoice({ bundle, tpl, renderInline, run })
 						// the BLL «Find the sound» pictures with the writer's marked dot under each («Middle dot is the correct answer»)
-						?? this.#dotPositionChoice({ bundle, tpl, renderInline, run });
+						?? this.#dotPositionChoice({ bundle, tpl, renderInline, run })
+						// a question with its choices typed after it («… completed? 1 2 3 4 5») and the writer's «[Answer: Line 4]»
+						?? this.#inlineOptionChoice({ bundle, tpl, renderInline });
 					break;
 				case "dragAndDrop": // the narrow N:N text-matching case only (layout=standard)
 					// the image-pair form runs ONLY where the text form declined;
@@ -1251,6 +1258,59 @@ class InteractiveBuilder {
 	}
 
 	/**
+	 * THE INLINE-OPTION CHOICE: a self check whose question carries its choices typed after it («Which line on the grid is
+	 * completed? 1 2 3 4 5») and whose answer the writer names in its own bracket («[Answer: Line 4]») → the auto-check
+	 * multi-choice quiz the gold builds: the question its question text, one option per typed choice, the named one correct;
+	 * the writer's «[body]» paragraphs follow the quiz. Declines on anything else (a table, media, an answer that names no
+	 * typed choice or names one twice, an untagged line) — never an invented choice or answer.
+	 * Data interactive_builders.selfCheck.inline_option_choice; env INLINEOPTCHOICE_OFF.
+	 */
+	static #inlineOptionChoice({ bundle, tpl, renderInline }) {
+		const cfg = tpl?.inline_option_choice;
+		if (!cfg || cfg.enabled === false || !cfg.question_pattern || !cfg.answer_pattern) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "INLINEOPTCHOICE_OFF"]) return null;
+		if ((bundle?.tables ?? []).length || (bundle?.media ?? []).length || bundle?.extraTypes?.length) return null;
+		const RED = /\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu;
+		const plain = (s) => String(s ?? "").replace(RED, " ").replace(/\s+/g, " ").trim();
+		const inline = renderInline ?? ((s) => s);
+		const qRe = new RegExp(cfg.question_pattern, "u"), aRe = new RegExp(cfg.answer_pattern, "i");
+		let question = null, options = null, answer = null;
+		const after = [];
+		for (const m of [...(bundle?.openerItems ?? []), ...(bundle?.memberItems ?? [])]) {
+			if (!m) continue;
+			if (m.type !== "tag") return null;                                              // an untagged line / a table
+			const tag = String(m.parse?.primary?.tag ?? "").toLowerCase();
+			const words = this.#cellText(m.blackAfter ?? "").trim();
+			if (m.parse?.primary?.directive === "INTERACTIVE" && question === null) {
+				const q = qRe.exec(plain(words));
+				if (!q) return null;
+				question = q[1].trim();
+				options = q[2].trim().split(/\s+/);
+				continue;
+			}
+			if (tag === "answer" && answer === null && !words) {
+				const a = aRe.exec(plain(m.text));
+				if (!a) return null;
+				answer = a[1];
+				continue;
+			}
+			if (tag === "body" && question !== null && answer !== null && words) { after.push(words); continue; }
+			return null;
+		}
+		if (question === null || answer === null) return null;
+		if (options.length < (cfg.min_options ?? 3) || options.length > (cfg.max_options ?? 5)) return null;
+		const hits = options.filter((o) => o.toLowerCase() === answer.toLowerCase()).length;
+		if (hits !== 1 || new Set(options.map((o) => o.toLowerCase())).size !== options.length) return null;
+		const opts = options.map((o) => Utils.FillTemplate(o.toLowerCase() === answer.toLowerCase() ? cfg.option_correct : cfg.option, { text: inline(o) }));
+		return [
+			Utils.FillTemplate(cfg.open, { n: String(options.length), question: inline(question) }),
+			...opts,
+			cfg.close,
+			...after.map((t) => Utils.FillTemplate(cfg.after, { text: inline(t) })),
+		].join("\n");
+	}
+
+	/**
 	 * dragAndDrop — NARROW N:N TEXT-MATCHING form, layout=standard.
 	 * One 2-column data table [label | answer]; row order is the answer key. Builds the
 	 * human's questionContainer (one .question per label) + ddContainer (a .drop per row
@@ -1793,7 +1853,13 @@ class InteractiveBuilder {
 		if (typeof process !== "undefined" && process.env && cfg.env && process.env[cfg.env]) return html;
 		const members = bundle?.memberItems ?? [];
 		if (!members.length) return html;
-		const block = renderBlock ?? ((t) => `<p>${t}</p>`);
+		// a member's prose of several paragraphs comes back as an array of chunks: joined, not comma-written (members.join_chunks)
+		const jc = cfg.join_chunks;
+		const jcOn = !!jc && jc.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[jc.env ?? "DDJOINCHUNKS_OFF"]);
+		const block = renderBlock
+			? (jcOn ? ((t) => { const r = renderBlock(t); return Array.isArray(r) && r.length > 1 ? r.join("\n") : r; }) : renderBlock)
+			: ((t) => `<p>${t}</p>`);
 		const btnRe = new RegExp(cfg.button_row_labels ?? "^(?:undo|check(?:\\s+answers?)?|reset)\\.?$", "i");
 		const bodyRe = new RegExp(cfg.body_tag_pattern ?? "^\\[\\s*body(?:\\s+text)?\\s*\\]$", "i");
 		const noteRe = new RegExp(cfg.note_cue_pattern ?? "^(?:cs|dev|developer|designer|note|nb)\\s*[:\\-\u2013\u2014]", "i");
@@ -2901,6 +2967,35 @@ class InteractiveBuilder {
 	}
 
 	/**
+	 * THE RED LETTERS TYPED INSIDE A WORD IN A PANEL. A red run that resolves to no tag, of a few letters or digits
+	 * (inline_red_words.glued: run_pattern, max_chars; never a word of exclude_pattern), with no space between it and a
+	 * letter on at least one side — the text part before it (the same source paragraph) ending in a letter, or a lower-case
+	 * letter starting the black text after it — is part of the writer's word: «… in the word 🔴u🔴p» reads «… in the word
+	 * up». Returns the text part that now holds it (`prev`, extended in place, or a new { role: "text" } part when nothing
+	 * of the paragraph came before it), or null when the run is not glued (the caller files it as a note, as before).
+	 * Data Emit_Templates.elements.inline_red_words.panel_glue; env PANELREDGLUE_OFF.
+	 */
+	static #panelGlue(m, prev) {
+		const irw = DataService.Data.EmitTemplates?.elements?.inline_red_words;
+		const cfg = irw?.panel_glue;
+		if (!cfg || cfg.enabled === false || !irw || irw.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "PANELREDGLUE_OFF"]) return null;
+		const gl = irw.glued ?? {};
+		const inner = String(m.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "");
+		if (/[\[\]]/.test(inner)) return null;
+		const own = inner.replace(/^ /, "").replace(/ $/, "");
+		const word = own.trim();
+		if (!word || word.length > (gl.max_chars ?? 4) || !new RegExp(gl.run_pattern ?? "^[\\p{L}\\p{N}’']+$", "u").test(word)) return null;
+		if (irw.exclude_pattern && new RegExp(irw.exclude_pattern, "iu").test(word)) return null;
+		const before = prev ? String(prev.text ?? "") : "";
+		const after = String(m.blackAfter ?? "");
+		const glued = (!/\s$/.test(own) && /^\p{Ll}/u.test(after)) || (!/^\s/.test(own) && /\p{L}$/u.test(before));
+		if (!glued) return null;
+		if (prev) { prev.text = before + own + after; return prev; }
+		return { role: "text", text: own + after };
+	}
+
+	/**
 	 * Every captured member as an ordered {role,…} PART, or null when a member cannot be
 	 * placed at all. Roles: panel · head · text · img · video · embed · table · nested.
 	 * Instruction/noise members and image-arrangement layout markers become NOTES
@@ -2913,6 +3008,7 @@ class InteractiveBuilder {
 	 */
 	static #accMemberParts(members, { tpl, cfg, run, renderTable, notes, delims, flags }) {
 		const parts = [];
+		let lastText = null;   // the last text part a black member opened, with its source paragraph (the panel glue)
 		const idRe = new RegExp(cfg.video_youtube_id_re
 			?? "(?:youtu\\.be/|youtube\\.com/(?:watch\\?v=|embed/))([\\w-]{11})");
 		// A panel delimiter must carry a NUMBER (digit or word) — the bare "[accordion]"
@@ -2999,7 +3095,17 @@ class InteractiveBuilder {
 				// the docx numbered-list artifact ("1." alone on its line) renders nothing
 				if (/^\s*\(?\d{1,3}[.)]\s*$/.test(t)) continue;
 				parts.push({ role: "text", text: t });
+				lastText = { part: parts[parts.length - 1], block: m.block };
 				continue;
+			}
+
+			// the red letters typed inside a word stay in it (Emit_Templates.elements.inline_red_words.panel_glue)
+			if (m.type === "tag" && !m.parse?.primary && m.parse?.class === "noise") {
+				const glued = this.#panelGlue(m, parts[parts.length - 1] === lastText?.part && lastText?.block === m.block ? lastText.part : null);
+				if (glued) {
+					if (glued !== lastText?.part) { parts.push(glued); lastText = { part: glued, block: m.block }; }
+					continue;
+				}
 			}
 
 			// a FACE LABEL WORD. Some writers name the two sides of a flip
@@ -12674,6 +12780,16 @@ class InteractiveBuilder {
 		if (!this.#ddIsDropdownFamily(bundle, tpl)) return this.#ddUploadBox({ bundle, tpl, run, renderBlock });
 		const inline = renderInline ?? ((s) => s);
 		const notes = [];
+		// the question blocks with a TRAILING answer mark (data question_blocks; env DDQBLOCK_OFF) — first, because the
+		// dialects below read [correct] as marking the option after it; null on any other shape
+		const qb = this.#ddQuestionBlocks(bundle, tpl, inline, notes, run);
+		if (qb) {
+			if (this.#ddLeakGuard(qb, tpl)) return null;           // a build must never ADD a leak
+			if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
+			bundle.builtDropDown = true;
+			return qb;
+		}
+		notes.length = 0;
 		// THE THIRD ANSWER-MARK SOURCE. When the writer ANNOUNCES that the
 		// correct answers are highlighted / in green (the per-bundle fence), the
 		// extractor's answer-mark side-channel becomes a mark source alongside red and
@@ -12708,6 +12824,210 @@ class InteractiveBuilder {
 		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
 		bundle.builtDropDown = true;                                // detector / affected-set marker
 		return built;
+	}
+
+	/**
+	 * THE QUESTION BLOCKS WITH A TRAILING ANSWER MARK (the WJFUN dialect — data dropDown.question_blocks; env DDQBLOCK_OFF).
+	 *   Q1. A tourism brochure is promoting the Pinnacles Track.
+	 *   *The walk offers __________ views of the Coromandel Peninsula.*
+	 *   beautiful / nice / spectacular 🔴[Correct answer]🔴 / impressive
+	 *   🔴[Hint]🔴 Think about the purpose of a tourism brochure. … 🔴[End Hint]🔴
+	 * → the paragraph layout, one <li> per block: the stem, a line break, the question line with the drop-down at its blank
+	 * (each side keeps the writer's italics) or after it, then the KB hint. The answer is the option the writer marked —
+	 * the mark TRAILS its option here (same paragraph, nothing after it), so every mark must; never a guess.
+	 * Returns the built html (lead paragraphs and the activity title first), or null on any other shape.
+	 */
+	static #ddQuestionBlocks(bundle, tpl, inline, notes, run, mode = null) {
+		// `mode` (from #mcqQuestionBlocks): the same blocks read for a multi-choice quiz — { openerTags, mcqTpl, skipPattern };
+		// null = the drop-down quiz, exactly as it ships
+		const cfg = tpl?.question_blocks;
+		if (!cfg || cfg.enabled === false) return null;
+		if (!mode && typeof process !== "undefined" && process.env && process.env[cfg.env ?? "DDQBLOCK_OFF"]) return null;
+		const delims = mode?.openerTags ?? tpl.delimiter_tags ?? ["dropdown"];
+		// the writers' further forms of the same blocks (question_blocks.more_forms; env DDQBLOCKX_OFF)
+		const mf = cfg.more_forms;
+		const more = !!mf && mf.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[mf.env ?? "DDQBLOCKX_OFF"]);
+		const stemRe = new RegExp((more && mf.stem_pattern) || cfg.stem_pattern || "^\\s*(\\*\\*)?\\s*Q(\\d{1,2})\\s*[.:)]\\s*(.*?)\\s*(?:\\*\\*)?\\s*$", "i");
+		// the bold numbered stem, the bullet options, a leading heading (question_blocks.numbered_stems; env DDQBLOCKN_OFF)
+		const ns = cfg.numbered_stems;
+		const numbered = !mode && !!ns && ns.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[ns.env ?? "DDQBLOCKN_OFF"]);
+		const numStemRe = numbered && ns.stem_pattern ? new RegExp(ns.stem_pattern, "i") : null;
+		const optRe = new RegExp((numbered && ns.option_marker_pattern) || cfg.option_marker_pattern || "^\\s*(?:\\d{1,2}|[A-Za-z])[.)]\\s+");
+		const blankRe = new RegExp(cfg.blank_pattern ?? "\\s*_{3,}\\s*");
+		const hintTags = cfg.hint_tags ?? ["hint"];
+		const closeTags = cfg.closer_tags ?? ["end hint"];
+		const blackMarkRe = more ? new RegExp(mf.black_mark_pattern ?? "\\s*\\[\\s*correct(?:\\s+answer)?\\s*\\]\\s*$", "i") : null;
+		const words = (s) => String(s).replace(/[*_]/g, " ").trim().split(/\s+/).filter(Boolean).length;
+		const pre = [], units = [];
+		let cur = null, last = null, opener = null, marks = 0;
+		// one typed line: a stem opens a block; before any block it is the lead; else the block's next line (false = decline)
+		const takeLine = (ln, blk) => {
+			const t = this.#cellText(ln);
+			if (!t) return true;
+			let sm = t.match(stemRe), boldNum = false;
+			if (!sm && numStemRe) { sm = t.match(numStemRe); boldNum = !!sm; }
+			if (sm) {
+				cur = { n: Number(sm[2]), bold: !!sm[1], stem: boldNum ? sm[3].replace(/\*\*/g, "").trim() : sm[3].trim(), lines: [], mark: -1, hint: null };
+				units.push(cur);
+				last = null;
+				return true;
+			}
+			if (!cur) { pre.push(t); return true; }
+			if (cur.hint !== null) return false;                     // text after the hint, before the next question
+			// the writer's «[Correct answer]» typed in BLACK at the end of the option line is still the writer's mark
+			const bm = blackMarkRe ? t.match(blackMarkRe) : null;
+			cur.lines.push(bm ? t.slice(0, bm.index).trim() : t);
+			last = { unit: cur, idx: cur.lines.length - 1, block: blk };
+			if (bm) { if (cur.mark >= 0) return false; cur.mark = last.idx; marks++; }
+			return true;
+		};
+		for (const m of bundle?.memberItems ?? []) {
+			if (!m) continue;
+			if (m.type === "black") {
+				for (const ln of String(m.text ?? "").split(/\n+/)) if (!takeLine(ln, m.block)) return null;
+				continue;
+			}
+			if (m.type !== "tag") return null;                       // a table / nested capture is not this form
+			const tag = m.parse?.primary?.tag ?? null;
+			if (tag && delims.includes(tag)) { if (opener) return null; opener = m; continue; }
+			if (tag === "correct") {
+				// the TRAILING mark: the same paragraph as the line before it, nothing typed after it on its line (the writer's
+				// soft-broken next options, in the same paragraph, are the block's next lines)
+				const after = more ? String(m.blackAfter ?? "").split("\n") : [String(m.blackAfter ?? "")];
+				if (!cur || !last || last.unit !== cur || last.block !== m.block || this.#cellText(after[0]) || cur.mark >= 0) return null;
+				cur.mark = last.idx;
+				marks++;
+				for (const ln of after.slice(1)) if (!takeLine(ln, m.block)) return null;
+				continue;
+			}
+			if (tag && hintTags.includes(tag)) {
+				const h = this.#cellText(m.blackAfter ?? "");
+				if (!cur || cur.hint !== null || !h) return null;
+				cur.hint = h;
+				cur.hintLabel = this.#cellText(m.text ?? "").replace(/^\[\s*|\s*\]$/g, "").trim();
+				continue;
+			}
+			if (tag && closeTags.includes(tag)) { if (this.#cellText(m.blackAfter ?? "")) return null; continue; }
+			if (tag === "body" && !cur) { const t = this.#cellText(m.blackAfter ?? ""); if (t) pre.push(t); continue; }
+			// a heading before the first question renders as that heading (numbered_stems.heading_tags)
+			if (numbered && !cur && tag && (ns.heading_tags ?? []).includes(tag)) {
+				const t = this.#cellText(m.blackAfter ?? "").replace(/^\*\*([\s\S]*)\*\*$/, "$1").trim();
+				if (t) pre.push({ h: tag, text: t });
+				continue;
+			}
+			// a picture before the first question renders above the quiz; a request with no nameable picture is the note
+			if (more && tag && (tpl.image_tags ?? []).includes(tag) && !cur) {
+				// the address typed after the tag, or linked on the tag's own words (the block's links)
+				const url = this.#cellMediaUrl(m.blackAfter ?? "")
+					|| ((mode || numbered) ? ((m.block?.links ?? []).map((l) => String(l?.target ?? ""))
+						.find((t) => /^https?:\/\//i.test(t) && (mode || /istockphoto\.com|gm-?\d{6,10}/i.test(t))) ?? null) : null);
+				const fn = url ? this.#accImageFilename(url, tpl, tpl) : null;
+				if (fn && run) pre.push({ img: fn });
+				else {
+					const t = `${this.#cellText(m.text ?? "")} ${this.#cellText(m.blackAfter ?? "")}`.trim();
+					if (t) notes.push(t);
+				}
+				continue;
+			}
+			// the question number typed RED («🔴Q6.🔴») opens its block like a black one
+			if (!tag && (m.parse?.class === "noise" || m.parse?.class === "instruction")) {
+				const sm = this.#cellText(m.text ?? "").match(stemRe);
+				if (sm && cur && cur.hint !== null) {
+					cur = { n: Number(sm[2]), bold: !!sm[1], stem: `${sm[3]} ${this.#cellText(m.blackAfter ?? "")}`.trim(), lines: [], mark: -1, hint: null };
+					units.push(cur);
+					last = null;
+					continue;
+				}
+			}
+			// a [Button] «Reset» / a data marker — the developer's (the other dialects' note_tags), never a question line
+			if (tag && (tpl.note_tags ?? []).includes(tag)) {
+				const t = `${this.#cellText(m.text ?? "")} ${this.#cellText(m.blackAfter ?? "")}`.trim();
+				if (t) notes.push(t);
+				continue;
+			}
+			return null;                                             // a member this form cannot place
+		}
+		if (!opener || !units.length || marks !== units.length) return null;
+		const min = tpl.min_options ?? 2, max = tpl.max_options ?? 10, maxW = cfg.max_option_words ?? 6;
+		// an option line: short, no blank, not a question, not a wrapped quote
+		const optLike = (t) => !blankRe.test(t) && !/[?:]\s*\**\s*$/.test(t) && !/^\*[^*][\s\S]*[^*]\*$/.test(t) && words(t) <= maxW;
+		const italicHalf = (s, wrapped) => (s ? inline(wrapped ? `*${s}*` : s) : "");
+		const hintTpl = DataService.Data.EmitTemplates?.interactive_builders?.hint ?? {};
+		const items = [];
+		for (let k = 0; k < units.length; k++) {
+			const u = units[k];
+			if (u.n !== k + 1 || u.mark < 0) return null;            // the list numbers the blocks: the writer's own numbers must agree
+			// the option run: the numbered lines that end the block (any length), else the short bare lines
+			let s = u.lines.length;
+			while (s > 0 && optRe.test(u.lines[s - 1])) s--;
+			if (s === u.lines.length) while (s > 0 && optLike(u.lines[s - 1])) s--;
+			const opts = u.lines.slice(s);
+			if (u.mark < s || opts.length < min || opts.length > max) return null;
+			const q = u.lines.slice(0, s);
+			if (!q.length && !u.stem) return null;
+			const options = opts.map((t) => t.replace(optRe, "").trim());
+			if (options.some((o) => !o)) return null;
+			const hintParts = u.hint === null ? [] : [
+				Utils.FillTemplate(hintTpl.link ?? "<p class=\"hintLink\">{title} <span class=\"hint\"></span></p>", { title: inline(u.hintLabel || "Hint") }),
+				hintTpl.drop_open ?? "<div class=\"hintDropContent\">",
+				Utils.FillTemplate(tpl.question_text, { text: inline(u.hint) }),
+				hintTpl.drop_close ?? "</div>"];
+			if (mode) {
+				// the multi-choice question: the stem and the question lines its text, the writer's marked option correct, the hint
+				const mt = mode.mcqTpl;
+				const qtext = [u.stem ? inline(u.bold ? `**${u.stem}**` : u.stem) : null, ...q.map((t) => inline(t))].filter(Boolean).join("<br />");
+				items.push([mt.question_open, Utils.FillTemplate(mt.question_text, { text: qtext }), mt.options_open,
+					...options.map((o, i) => Utils.FillTemplate(i === u.mark - s ? mt.option_correct : mt.option, { text: inline(o) })),
+					mt.options_close, ...hintParts, mt.question_close].join("\n"));
+				continue;
+			}
+			const blanks = q.filter((t) => blankRe.test(t));
+			if (blanks.length > 1 || (blanks.length && blanks[0].split(blankRe).length !== 2)) return null;
+			const unit = [tpl.question_open, Utils.FillTemplate(tpl.unit, {
+				answer: u.mark - s + 1,
+				placeholder: tpl.placeholder_text ?? "Select one",
+				options: options.map((o) => Utils.FillTemplate(tpl.option, { option: inline(o) })).join("\n"),
+			}), tpl.question_close].join("\n");
+			const parts = [];
+			if (u.stem) parts.push(inline(u.bold ? `**${u.stem}**` : u.stem) + "<br />");
+			let placed = false;
+			q.forEach((t, i) => {
+				if (blankRe.test(t)) {
+					const w = t.match(/^\*([^*][\s\S]*[^*])\*$/);
+					const [a, b] = (w ? w[1] : t).split(blankRe);
+					if (a.trim()) parts.push(italicHalf(a.trim(), !!w));
+					parts.push(unit);
+					if (b.trim()) parts.push(italicHalf(b.trim(), !!w));
+					placed = true;
+				} else parts.push(inline(t) + (i < q.length - 1 ? "<br />" : ""));
+			});
+			if (!placed) parts.push(unit);
+			parts.push(...hintParts);
+			items.push([tpl.para_item_open, ...parts, tpl.para_item_close].join("\n"));
+		}
+		const out = [];
+		// the opener: its tail is the activity title (a heading where the opener carries «[Hn]»); its other brackets ride as a note
+		const own = this.#cellText(opener.text ?? "");
+		const hm = own.match(new RegExp(cfg.heading_pattern ?? "\\[\\s*h([2-6])\\s*\\]", "i"));
+		const tail = this.#cellText(opener.blackAfter ?? "");
+		if (tail) out.push(hm ? `<h${hm[1]}>${inline(tail)}</h${hm[1]}>` : Utils.FillTemplate(tpl.question_text, { text: inline(tail) }));
+		const skip = new RegExp((mode && mode.skipPattern) || cfg.note_skip_pattern || "\\bactivity\\b|drop\\s*-?\\s*down|\\bquiz\\b|auto\\s*-?\\s*check", "i");
+		for (const br of own.match(/\[[^\]]*\]/g) ?? []) {
+			if (skip.test(br) || (hm && br.match(new RegExp(cfg.heading_pattern ?? "\\[\\s*h([2-6])\\s*\\]", "i")))) continue;
+			notes.push(br);
+		}
+		for (const t of pre) out.push(t.img ? this.#assetImage(t.img, tpl, run)
+			: t.h ? `<${t.h}>${inline(t.text)}</${t.h}>` : Utils.FillTemplate(tpl.question_text, { text: inline(t) }));
+		if (mode) {
+			out.push(Utils.FillTemplate(mode.mcqTpl.group_open, { autocheck: this.#mcqAutocheck(bundle, mode.mcqTpl) }), ...items, mode.mcqTpl.group_close);
+			return out.join("\n");
+		}
+		out.push(Utils.FillTemplate(tpl.paragraph_open, { autocheck: this.#ddAutocheck(bundle, tpl) }));
+		out.push(...items);
+		out.push(tpl.paragraph_close);
+		return out.join("\n");
 	}
 
 	/**
@@ -14403,6 +14723,30 @@ class InteractiveBuilder {
 	 *
 	 *  Data interactive_builders.multiChoiceQuiz; env MCQ_OFF.
 	 * ================================================================== */
+	/**
+	 * THE QUESTION BLOCKS AS A MULTI-CHOICE QUIZ (data interactive_builders.multiChoiceQuiz.question_blocks; env MCQQBLOCK_OFF).
+	 * The writer's «[multi choice]» — or «[checkbox – Auto Check]», which KB 01D maps to the multi-choice quiz — typed as the
+	 * drop-down's question blocks («Q1.» / «Question 1» stems, option lines, ONE trailing «[Correct answer]» each, an optional
+	 * «[Hint] … [End Hint]»): read by the same parser (#ddQuestionBlocks in its multi-choice mode) and emitted as the gold's
+	 * multiChoiceQuiz — the question text the stem and the question lines, the writer's marked option correct, the hint inside
+	 * the question. Returns null (the next reading, or the hand-off box) on any other shape.
+	 */
+	static #mcqQuestionBlocks({ bundle, templates, renderInline, run }) {
+		const mt = templates?.multiChoiceQuiz;
+		const cfg = mt?.question_blocks;
+		if (!cfg || cfg.enabled === false || !templates?.dropDown) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "MCQQBLOCK_OFF"]) return null;
+		const openerTags = (cfg.opener_tags ?? {})[bundle?.type];
+		if (!Array.isArray(openerTags)) return null;
+		const notes = [];
+		const html = this.#ddQuestionBlocks(bundle, templates.dropDown, renderInline ?? ((s) => s), notes, run,
+			{ openerTags, mcqTpl: mt, skipPattern: cfg.note_skip_pattern });
+		if (!html || this.#mcqLeakGuard(html)) return null;
+		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
+		bundle.builtMcq = true;
+		return html;
+	}
+
 	static #multiChoiceQuiz({ bundle, tpl, renderInline }) {
 		if (!tpl || tpl.enabled === false) return null;
 		if (typeof process !== "undefined" && process.env && process.env.MCQ_OFF) return null;
@@ -14458,6 +14802,14 @@ class InteractiveBuilder {
 			if (!qs) return null;
 		}
 
+		// the lines that are not answer choices (data non_options; each its own env toggle): a «Hint:» line is the question's
+		// hint, a [Button]'s label the developer's note, a [body] paragraph after the last options the page's text after the quiz
+		const no = tpl.non_options ?? {};
+		const noOn = (c, env) => !!c && c.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[c.env ?? env]);
+		const reHintLine = noOn(no.hint_line, "MCQHINTLINE_OFF") ? new RegExp(no.hint_line.pattern ?? "^\\s*hint\\s*:\\s*(.+)$", "i") : null;
+		const btnTags = noOn(no.button_label, "MCQBUTTON_OFF") ? (no.button_label.tags ?? ["button"]) : [];
+		const bodyTags = noOn(no.body_after, "MCQBODYEND_OFF") ? (no.body_after.tags ?? ["body"]) : [];
+		const trailing = [];
 		if (!qs) {
 		/* --- the member stream, flattened to ordered STEPS ---------------- */
 		const steps = [];
@@ -14498,6 +14850,20 @@ class InteractiveBuilder {
 				steps.push({ k: "q", t: stripped(m.blackAfter) || stripped(raw) });
 				continue;
 			}
+			// the writer's [Button] label («Check answers») — the developer's, never an answer choice
+			if (tag && btnTags.includes(tag) && stripped(m.blackAfter)) {
+				notes.push(`${stripped(raw)} ${stripped(m.blackAfter)}`.trim());
+				continue;
+			}
+			// a [body] paragraph once a question has been marked, with nothing but more such paragraphs (or notes) after it: the
+			// page's text after the quiz
+			if (tag && bodyTags.includes(tag) && steps.some((s) => s.k === "mark" || s.tick)) {
+				const mems = bundle?.memberItems ?? [];
+				const rest = mems.slice(mems.indexOf(m) + 1);
+				const tail = rest.every((x) => !x || (x.type === "black" && !stripped(x.text))
+					|| (x.type === "tag" && (bodyTags.includes(x.parse?.primary?.tag) || (!x.parse?.primary && (x.parse?.class === "instruction" || x.parse?.class === "noise")))));
+				if (tail) { steps.push({ k: "after", t: String(m.blackAfter ?? "") }); continue; }
+			}
 			if (reCorrect.test(raw)) { steps.push({ k: "mark" }); }
 			else if (reIncorrect.test(raw)) { steps.push({ k: "unmark" }); }
 			else if (m.parse?.class === "instruction" || m.parse?.class === "noise") {
@@ -14523,10 +14889,28 @@ class InteractiveBuilder {
 
 		/* --- questions ---------------------------------------------------- */
 		const tagged = steps.some((s) => s.k === "q");
+		// a question's own lead lines (data question_lead_lines; env MCQLEAD_OFF): a «?» line before any option joins the
+		// question text, and an unmarked line after list-marked options opens the next question
+		const ql = tpl.question_lead_lines;
+		const leadOn = !tagged && !!ql && ql.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[ql.env || "MCQLEAD_OFF"]);
 		qs = [];
 		let cur = null;
 		const startQ = (t) => { cur = { text: t, opts: [] }; qs.push(cur); };
-		for (const s of steps) {
+		// the next step that carries text (marks skipped; a [Question N] tag ends the look)
+		const nextText = (k) => {
+			for (let j = k + 1; j < steps.length; j++) {
+				const t = steps[j];
+				if (t.k === "mark" || t.k === "unmark" || t.k === "key") continue;
+				if (t.k === "q") return null;
+				if (optText(t.t)) return t;
+			}
+			return null;
+		};
+		const headWords = ql?.max_heading_words ?? 8;
+		for (let si = 0; si < steps.length; si++) {
+			const s = steps[si];
+			if (s.k === "after") { trailing.push(s.t); continue; }   // the page's text after the quiz (non_options.body_after)
 			if (s.k === "q") { startQ(s.t); continue; }
 			if (s.k === "mark" || s.k === "unmark") {
 				if (!cur || !cur.opts.length) return null;         // a mark with nothing to mark
@@ -14538,6 +14922,16 @@ class InteractiveBuilder {
 			if (s.k === "key" && tickMode) continue;   // the writer's answer-key line is set aside (guard (a) then decides)
 			const txt = optText(s.t);
 			if (!txt) continue;
+			// a «Hint:» line after the question's options is its hint, never an option (non_options.hint_line)
+			const hl = reHintLine && cur && cur.opts.length ? stripped(s.t).match(reHintLine) : null;
+			if (hl) { cur.hint = cur.hint ? `${cur.hint}\n${hl[1].trim()}` : hl[1].trim(); continue; }
+			if (leadOn && cur && !cur.opts.length && reQEnd.test(stripped(s.t))) { cur.text = `${cur.text}\n${txt}`; continue; }
+			// a short heading line (no closing punctuation) after list-marked options, the question line («…?») right after it
+			if (leadOn && cur && cur.opts.length && cur.listed && !reList.test(String(s.t))
+				&& words(txt) <= headWords && !/:/.test(txt) && !/[.!?:;]["'”’)\]]*\s*(?:\*\*)?\s*$/.test(stripped(s.t))) {
+				const nx = nextText(si);
+				if (nx && reQEnd.test(stripped(nx.t)) && !reList.test(String(nx.t))) { startQ(txt); continue; }
+			}
 			// with no [Question N] tags the writer's question line is the one ending in "?"
 			if (!tagged && reQEnd.test(stripped(s.t)) && (!cur || cur.opts.length)) { startQ(txt); continue; }
 			if (!cur) { if (tagged) return null; startQ(txt); continue; }
@@ -14548,6 +14942,7 @@ class InteractiveBuilder {
 				cur.text = (cur.text ? cur.text + " " : "") + txt;
 				continue;
 			}
+			if (leadOn) { const li = reList.test(String(s.t)); cur.listed = cur.opts.length ? (cur.listed && li) : li; }
 			cur.opts.push({ text: txt, correct: !!(tickMode && s.tick) });
 		}
 		if (qs.length < (tpl.min_questions ?? 1)) return null;
@@ -14600,10 +14995,18 @@ class InteractiveBuilder {
 				out.push(tpl.options_open);
 				for (const o of q.opts) out.push(opt(o));
 				out.push(tpl.options_close);
+				if (q.hint) {                                         // the question's own hint — the KB hint (interactive_builders.hint)
+					const ht = DataService.Data.EmitTemplates?.interactive_builders?.hint ?? {};
+					out.push(Utils.FillTemplate(ht.link ?? "<p class=\"hintLink\">{title} <span class=\"hint\"></span></p>", { title: "Hint" }),
+						ht.drop_open ?? "<div class=\"hintDropContent\">",
+						...q.hint.split("\n").map((h) => `<p>${inline(h)}</p>`),
+						ht.drop_close ?? "</div>");
+				}
 				out.push(tpl.question_close);
 			}
 			out.push(tpl.group_close);
 		}
+		for (const t of trailing) for (const ln of String(t).split(/\n+/)) if (stripped(ln)) out.push(`<p>${inline(ln.trim())}</p>`);
 		const built = out.join("\n");
 		if (this.#mcqLeakGuard(built)) return null;                 // a build must never ADD a leak
 		if (notes.length) bundle.instructions = [...(bundle.instructions ?? []), ...notes];
