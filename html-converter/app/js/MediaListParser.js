@@ -164,6 +164,9 @@ class MediaListParser {
 				url,
 				ecr: cell("ecr"),
 				rowIndex: r,
+				// the row's visible words, every cell (the URL cell's typed text included — a crop the writer typed
+				// beside the address, «URL / (2:54-3:17)», is read from here by the video embed's time range)
+				rowText: cells.map((c) => this.#cleanCell(c)).join(" ║ "),
 			});
 		}
 		return items;

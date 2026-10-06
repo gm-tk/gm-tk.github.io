@@ -3070,6 +3070,13 @@ class ContentConverter {
 						// the un-cued red line too (the body path has no cue test) — lead_instruction_note.uncued, LEADNOTE_UNCUED_OFF
 						const _lnAll = _lnOn && !!_lnCfg.uncued && _lnCfg.uncued.enabled !== false
 							&& !(typeof process !== "undefined" && process.env && process.env[_lnCfg.uncued.env || "LEADNOTE_UNCUED_OFF"]);
+						// the aliased media span («[interactive: video …]», InteractiveScanner's synthetic opener) renders through
+						// #element on every template — the lead-media template exclusion is for an activity's stock picture, not
+						// the writer's whole video request (owner_alias_exclude.lead_any_template; env ALIASLEAD_OFF)
+						const _alCfg = DataService.Data.BoundaryBank?._meta?.opener_rule?.owner_alias_exclude?.lead_any_template;
+						const _aliasSpan = !!_alCfg && _alCfg.enabled !== false && bundle.activityOwner?._aliasElementOwner
+							&& !(typeof process !== "undefined" && process.env && process.env[_alCfg.env || "ALIASLEAD_OFF"])
+							? (bundle.activityLeadItems ?? [])[0] ?? null : null;
 						for (const lead of leadStream) {
 							if (lead.type === "table") { flushLead(); emit(TablesAndGrids.contentTable(lead.block, run, false, this.#norm)); titleDone = true; actProse = true; continue; }
 							if (lead.type === "black") {
@@ -3097,7 +3104,7 @@ class ContentConverter {
 								&& !(typeof process !== "undefined" && process.env
 									&& (process.env[_lmCfg.env || "IDHEAD_OFF"] || process.env[_lmCfg.lead_media_env || "LEADMEDIA_OFF"]))
 								&& !(_lmCfg.lead_media_exclude_templates ?? []).some((t) => String(t) === String(_lmTT ?? ""));
-							if (_lmOn && lp && _lmCfg.lead_media_tags.includes(lp.tag) && bodyItems.indexOf(lead) >= 0) {
+							if ((_lmOn || (_aliasSpan !== null && lead === _aliasSpan)) && lp && (_lmCfg?.lead_media_tags ?? []).includes(lp.tag) && bodyItems.indexOf(lead) >= 0) {
 								flushLead();
 								emit(...this.#element(lead, bodyItems, bodyItems.indexOf(lead), stack, run).filter(Boolean));
 								actProse = true;
@@ -5205,7 +5212,7 @@ class ContentConverter {
 		// an empty bullet is dropped, and a list it left empty (#dropEmptyListItems — outermost).
 		// the multi-file levels overview (#levelOverview — the overview page only, outermost: it wraps the finished body).
 		const finalBody = ContentConverter.#levelOverview(ContentConverter.#dropEmptyListItems(ContentConverter.#liftVisibleTags(ContentConverter.#tagOnlyParagraphNote(ContentConverter.#redundantBold(ContentConverter.#unwrapLonePunct(ContentConverter.#mergeSplitRuns(ContentConverter.#familyRowPerBlock(ContentConverter.#familyQuoteParagraphs(
-			MediaBuilder.videoIconPostpass(PanelsBuilder.panelTitleLevelPostpass(finalBody0, run), run), run), run), run), run), run), run), run), run), page, run);
+			MediaBuilder.stockButtonPostpass(MediaBuilder.videoTimePostpass(MediaBuilder.videoIconPostpass(PanelsBuilder.panelTitleLevelPostpass(finalBody0, run), run), run), run), run), run), run), run), run), run), run), run), page, run);
 		// a fallback-shell page that built its panels is an inquiry page too (the body class and
 		// the inquiry footer class follow, as for every other mode; its footer LINKS stay the registry's own).
 		const inquiryActive = (inquiryMode || cedInquiryMode || secInquiryMode || inqFallbackMode) && finalBody0 !== bodyHtml;
@@ -7160,12 +7167,26 @@ class ContentConverter {
 				// run of 2+ spaces (the OSAI201 gold separator)
 				// strip a leading module-code token (writers prepend the full code
 				// "OSAI201" OR just the series letters "OSAI") from one side
+				// the title bar's template leftovers — a 'MODULE TITLE:' label, another module's code, a te reo placeholder
+				// (header.title_split.template_leftovers; envs TITLELABEL_OFF / TITLECODE_OFF / TITLETEREO_OFF)
+				const tlCfg = DataService.Data.EmitTemplates.header.title_split?.template_leftovers;
+				const tlRule = (k) => {
+					const r = tlCfg?.[k];
+					return r && r.enabled !== false && r.pattern && !(typeof process !== "undefined" && process.env && process.env[r.env])
+						? new RegExp(r.pattern, r.flags ?? "i") : null;
+				};
+				const tlRules = [tlRule("label_lead"), tlRule("code_lead"), tlRule("te_reo_placeholder")].filter(Boolean);
 				const stripCode = (s) => {
 					if (!s || !run.moduleCode) return s;
 					const letters = run.moduleCode.match(/^[A-Za-z]+/)?.[0] ?? run.moduleCode;
-					return s
+					let out = s
 						.replace(new RegExp(`^\\s*${Utils.RegexEscape(run.moduleCode)}\\b[\\s:–-]*`, "i"), "")
 						.replace(new RegExp(`^\\s*${Utils.RegexEscape(letters)}\\b[\\s:–-]+(?=\\S)`, ""), "");
+					for (const rx of tlRules) {
+						const next = out.replace(rx, "");
+						if (next.trim()) out = next;
+					}
+					return out;
 				};
 				// The placeholder list (folded for comparison) is computed once here — this
 				// catches unfilled template boilerplate text like 'MODULE TITLE TE REO',
@@ -11801,7 +11822,7 @@ class ContentConverter {
 			const url = probe
 				|| (MediaBuilder.gatherFollowing(it, bodyItems, i).match(/https?:\/\/[^\s\]]+/)?.[0] ?? "");
 			if (!url) {
-				out.push(NotesAndComments.redFlag("[embed] with no URL found — add the embed source.", run));
+				out.push(MediaBuilder.NoUrlFlag(it, "embed", run));
 				return out;
 			}
 			// An [embed] of an EXTERNAL web page is the KB's externalButton, never a bare iframe: the gold

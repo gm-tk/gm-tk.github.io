@@ -62,7 +62,18 @@
 				"env": "OWNERALIAS_OFF",
 				"alias_words": ["interactive"],
 				"element_tags": ["video", "audio", "image"],
-				"exclude_primary_hows": ["embedded"]
+				"exclude_primary_hows": ["embedded"],
+				"lead_any_template": {
+					"enabled": true,
+					"env": "ALIASLEAD_OFF",
+					"_doc": "THE ALIASED MEDIA SPAN RENDERS ON EVERY TEMPLATE. The span is the box's first lead element, rendered only by the lead-media path — which id_heading_opener.lead_media_exclude_templates turns off on Inquiry pages (the BLL golds drop an activity's stock image). The aliased span is not such an image: it is the writer's whole video request, and on an Inquiry page it rendered nowhere — no video, no flag (TWHK902 '[Interactive: Video: Causes and Effects of Climate Change]', '[interactive: video: Maramataka]', TWHT903 '[interactive: video: Don't Put People in Boxes]'; the gold shows each video). The aliased span goes down the element path on every template."
+				},
+				"titled_form": {
+					"enabled": true,
+					"env": "ALIASTITLED_OFF",
+					"pattern": "^\\W*\\[\\s*interactive\\s*[:\\u2013\\u2014-]\\s*(?:video|audio)\\b",
+					"_doc": "THE TITLED '[interactive: video – <title>]' SPAN IS AN ALIAS ELEMENT TOO. The dash-titled form parses with the 'embedded' how that exclude_primary_hows keeps out (for '[interactive image like this]', '[interactive as a flow diagram …]'), so it was swallowed as the box opener: the video vanished and its title shipped as the note 'video note: biomass energy' (TWHK901 '[interactive: video – Biomass Energy]'; TWHA902 '[interactive: Video – The art of listening]'). A span whose text matches pattern — the alias word, a colon or dash, then the media word — is an alias element whatever its how."
+				}
 			},
 			"heading_table_owner": {
 				"_doc": "THE HEADING-THEN-TABLE SHAPE AFTER AN EMPTY TYPED-WIDGET INVOCATION TAKES THE OWNER FORM. A task-typed invocation with no activity opener before it (`[interactive: drag and drop]`, `[Interactive activity]`, `[Activity: Embedded]`) or with its id embedded in the span (`[Activity 2C][drag and drop]`) is followed by the writer's `[H3]` title, an instruction paragraph and the widget's TABLE; headings terminate the member walk, so the bundle would hold only its invocation — skip_empty would render no box, the heading and prose would render free and the table as a kept <table>. The gold boxes the section: <h3> title + <p> + the BUILT widget (for most such bundles, across Standard, Fundamentals and Inquiry). With this on, InteractiveScanner (right after the member walk): a listed-type bundle with no owner, no captured table and no member beyond its invocation whose walk stopped at a heading_tags heading, followed within max_between prose / between_tags / instruction items by a TABLE and nothing else, becomes an OWNED bundle — a synthetic bare owner (the `_aliasElementOwner` shape: an embedded `[Activity 2C]` id keeps its number, an id-less one takes the positional letter), the heading + prose = activityLeadItems (the converter's lead loop renders the <h3> title and the free prose inside the box), instruction spans join the bundle's instructions (the red Writers Note), and the walk resumes AT the table so it is captured as the widget's data for the builders. Env HEADTABLE_OFF turns this off.",

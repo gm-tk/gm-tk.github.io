@@ -94,6 +94,98 @@ class PageAssembler {
 	 * the writer's words, brackets stripped (a trailing '}' typo too); ContentConverter's #journalInstructionBox
 	 * then gives it its box. Data activity_wrapper.journal_instruction_box.bracket_sentence; env JOURNALINSTR_OFF.
 	 */
+	/**
+	 * THE ONE-CELL TABLE IS THE WRITER'S BOX, NOT A TABLE. A writer often puts one element in a one-row one-cell table —
+	 * «[video] [media item 7] <address> / [caption] Possessive Pronoun», «[alert] Did you know …», «[audio item 1] / …» —
+	 * and the table renderer cannot show such a cell's tags, so the whole table shipped raw inside a hand-off box (the MTK
+	 * leak guard). The human build shows the cell's content as ordinary body every time (the video and its caption, the
+	 * alert box, the audio). On the MTK path (not a bilingual module), a free-body one-row one-cell table whose red tags are
+	 * all plain elements of `tags` (instruction fragments allowed) and which no bare tag line just before it may own is
+	 * replaced, before the page split and the widget scanner, by the items of its cell's paragraphs.
+	 * Data dual_language.mtk_leak_guard.one_cell_unfold; env ONECELLUNFOLD_OFF.
+	 */
+	static #oneCellUnfold(items, run, normaliser) {
+		const dl = DataService.Data.EmitTemplates.elements?.dual_language;
+		const lg = dl?.mtk_leak_guard, cfg = lg?.one_cell_unfold;
+		if (!dl || dl.enabled === false || !lg || lg.enabled === false || !cfg || cfg.enabled === false) return;
+		const env = (k) => typeof process !== "undefined" && process.env && process.env[k];
+		if (env(cfg.env || "ONECELLUNFOLD_OFF") || env("MTKGUARD_OFF") || env("MTKREO_OFF")) return;
+		if (!run.mtkFlag) return;
+		const reo = !env("REOTRANSLATE_OFF") && (/reoTranslate/i.test(run.resolvedRules?.body_class || "") || dl.use_mtk_flag === true
+			|| (dl.code_prefixes || []).some((p) => String(run.moduleCode || "").toUpperCase().startsWith(String(p).toUpperCase())));
+		if (reo) return;
+		const tags = new Set(cfg.tags ?? []);
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		let n = 0;
+		for (let k = items.length - 1; k >= 0; k--) {
+			const it = items[k];
+			if (it?.type !== "table") continue;
+			const b = it.block, rows = b?.rows ?? [];
+			if (rows.length !== 1 || (rows[0] ?? []).length !== 1) continue;
+			const cell = String(rows[0][0] ?? "");
+			let ok = true, any = false, first = null;
+			for (const m of cell.matchAll(RED)) {
+				const p = normaliser.Parse(m[1]);
+				const t = p?.primary?.tag;
+				if (first === null) first = t ?? "";
+				if (t) { if (!tags.has(t)) { ok = false; break; } any = true; }
+				else if (p?.class !== "instruction" && p?.class !== "noise") { ok = false; break; }
+			}
+			// the cell opens with a media / callout element (lead_tags) — a heading or body line first is a layout the
+			// writer may have meant as a box of its own
+			if (!ok || !any || !(cfg.lead_tags ?? []).includes(first) || !/^\s*\u{1f534}\[RED TEXT\]/u.test(cell)) continue;
+			// a bare tag line just before the table may own it (a widget's data, a callout's one-cell body)
+			let j = k - 1;
+			while (j >= 0 && items[j]?.type === "black" && !String(items[j].text ?? "").trim()) j--;
+			const prev = items[j];
+			if (prev?.type === "tag" && prev.parse?.primary && !String(prev.blackAfter ?? "").trim()) continue;
+			// inside a widget's run — a widget tag before the table with no section heading, page boundary or closing tag
+			// between them — the table is the widget's (the scanner captures it): left as it is
+			let inWidget = false;
+			for (let w = k - 1, steps = 0; w >= 0 && steps < (cfg.lookback ?? 60); w--, steps++) {
+				const q = items[w];
+				if (q?.type !== "tag" || !q.parse?.primary) continue;
+				const d = q.parse.primary.directive, t = q.parse.primary.tag;
+				if (d === "INTERACTIVE" || (d === "SUBTAG" && t !== "data marker")) { inWidget = true; break; }
+				if (d === "PAGE_BOUNDARY" || d === "SECTION_MARKER" || d === "CONTAINER_CLOSE" || /^h[1-3]$/.test(String(t))) break;
+			}
+			if (inWidget) continue;
+			// the cell's own paragraphs (the extractor's side-channel), else the whole cell as one paragraph — never a split on
+			// « / », which can fall inside a red span («[Alert top / image]»); a paragraph whose red markers do not pair is left
+			const own = b.cellParas?.[0]?.[0];
+			const paras = Array.isArray(own) && own.length ? own : [cell];
+			const paired = (t) => (String(t).match(/\u{1f534}\[RED TEXT\]/gu) ?? []).length === (String(t).match(/\[\/RED TEXT\]\u{1f534}/gu) ?? []).length;
+			if (!paras.every(paired)) continue;
+			const blocks = paras.filter((t) => String(t ?? "").trim())
+				.map((t) => ({ kind: "para", text: String(t), links: (b.links ?? []).slice(), wtPage: b.wtPage, list: "", listLevel: 0 }));
+			if (!blocks.length) continue;
+			items.splice(k, 1, ...PageSplitter.BuildItemStream(blocks, normaliser));
+			n++;
+		}
+		if (n) run.AddNote("info", "PageAssembler", `${n} one-cell table(s) unfolded into the page body (the cell's elements, not a raw hand-off table).`);
+	}
+
+	/**
+	 * THE TEMPLATE'S FRONT-MATTER FIELDS ARE NEVER LEARNER TEXT. A writer's front-matter block typed after the content
+	 * start shipped its «Label: value» lines as body paragraphs («Module code: TEFUN02», «Key contacts: <name> <email>»,
+	 * «Date submitted: 2024», «Curriculum Level: …»); the human build shows none of them. A free black paragraph whose text
+	 * opens with one of the field labels is dropped. Data front_matter_metadata.body_strip; env FRONTMATTERBODY_OFF.
+	 */
+	static #frontMatterBody(items, run) {
+		const cfg = DataService.Data.InputDocRules?.front_matter_metadata?.body_strip;
+		if (!cfg || cfg.enabled === false || !cfg.pattern) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "FRONTMATTERBODY_OFF"]) return;
+		const re = new RegExp(cfg.pattern, "i");
+		let n = 0;
+		for (let k = items.length - 1; k >= 0; k--) {
+			const it = items[k];
+			if (it?.type !== "black" || !re.test(String(it.text ?? ""))) continue;
+			items.splice(k, 1);
+			n++;
+		}
+		if (n) run.AddNote("info", "PageAssembler", `${n} front-matter field line(s) left out of the body (template metadata, not learner text).`);
+	}
+
 	static #journalBracketSentence(items, run) {
 		const cfg = DataService.Data.EmitTemplates?.activity_wrapper?.journal_instruction_box;
 		if (!cfg || cfg.enabled === false || cfg.bracket_sentence === false) return;
@@ -616,6 +708,8 @@ class PageAssembler {
 		PageAssembler.#blackDeveloperNote(items, run, normaliser);   // BLACKDEVNOTE_OFF
 		PageAssembler.#highlightRequestInSentence(items, run);   // FMTREQHILITE_OFF — before the scanner reads the request as a widget tag
 		PageAssembler.#blackAudioAnimation(items, run, normaliser);   // AUDIOANIMBLACK_OFF
+		PageAssembler.#oneCellUnfold(items, run, normaliser);   // ONECELLUNFOLD_OFF — before the split and the scanner
+		PageAssembler.#frontMatterBody(items, run);   // FRONTMATTERBODY_OFF
 		run.pages = PageSplitter.Split(items, run, normaliser);
 		if (!run.pages.length) {
 			run.AddNote("error", "PageAssembler",
@@ -783,10 +877,21 @@ class PageAssembler {
 			// we never invent the missing one). Env toggle TITLEPH_OFF reverts this
 			// whole rule, falling back instead to a narrower check for what
 			// counts as "placeholder text".
-			run.englishTitle = course;
-			run.teReoTitle = "";
-			run.AddNote("info", "PageAssembler",
-				`[TITLE BAR] held only placeholder text — using the front-matter Course "${course}" as the English title; no Te Reo title (the real one is not in the WT).`);
+			// Before the Course, the front matter's own title fields: the Module code
+			// value's words after the code, or the Subject under a programme-banner
+			// Course (placeholder_title_rule.front_matter_titles; env FMTITLE_OFF).
+			const fmt = PageAssembler.#frontMatterTitle(run);
+			if (fmt) {
+				run.englishTitle = fmt.parts[0];
+				run.teReoTitle = fmt.parts[1] ?? "";
+				run.AddNote("info", "PageAssembler",
+					`[TITLE BAR] held only placeholder text — using the front-matter ${fmt.src} "${fmt.parts.join(" | ")}" as the module title (not the Course "${course}").`);
+			} else {
+				run.englishTitle = course;
+				run.teReoTitle = "";
+				run.AddNote("info", "PageAssembler",
+					`[TITLE BAR] held only placeholder text — using the front-matter Course "${course}" as the English title; no Te Reo title (the real one is not in the WT).`);
+			}
 		} else if (tb?.single && course
 			// a REAL title left after dropping a placeholder half (mixed bar) is the
 			// English title — NOT Te Reo — so don't run the lone-title promotion on it
@@ -982,6 +1087,38 @@ class PageAssembler {
 			});
 		}
 	};
+
+	/**
+	 * The module's own title from the front matter, for a [TITLE BAR] that holds only
+	 * placeholder text (or nothing). Two fields can carry it: the Module code value's
+	 * words after the code token ("ENGC302 Email Me | Īmēra Mai"; a "|" splits English |
+	 * Te Reo), and the Subject when the Course is a programme banner (data pattern) rather
+	 * than a title. A value with no space, or nothing left after the code, is not a title.
+	 * Data header.title_split.placeholder_title_rule.front_matter_titles; env FMTITLE_OFF.
+	 *
+	 * @param {ConversionRun} run - the run whose metadata holds the front-matter fields
+	 * @returns {{parts: string[], src: string}|null} the title halves and their source
+	 */
+	static #frontMatterTitle(run) {
+		const cfg = DataService.Data.EmitTemplates.header?.title_split?.placeholder_title_rule?.front_matter_titles;
+		if (!cfg || cfg.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "FMTITLE_OFF"])) return null;
+		const md = run.metadata ?? {};
+		const tidy = (s) => String(s ?? "").replace(/\u{1f534}/gu, "").replace(/\*+/g, "").replace(/\s+/g, " ").trim();
+		const isTitle = (s) => /\s/.test(s) && /[A-Za-zÀ-ſ]{3}/.test(s);
+		if (cfg.module_code_field && md.moduleCode) {
+			const rest = tidy(tidy(md.moduleCode).replace(new RegExp(cfg.code_token ?? "^\\s*[A-Za-z]{2,8}\\d{2,5}\\s*"), ""));
+			if (isTitle(rest)) {
+				const parts = rest.split(/\s*\|\s*/).map(tidy).filter(Boolean).slice(0, 2);
+				if (parts.length) return { parts, src: "Module code" };
+			}
+		}
+		if (cfg.subject_when_course && md.subject && new RegExp(cfg.subject_when_course, "i").test(tidy(md.course))) {
+			const subj = tidy(md.subject);
+			if (isTitle(subj)) return { parts: [subj], src: "Subject" };
+		}
+		return null;
+	}
 
 	/**
 	 * Decides whether a LONE [TITLE BAR] title — the Writers Template gave only one

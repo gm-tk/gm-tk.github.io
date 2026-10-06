@@ -342,6 +342,23 @@ class MenuBuilder {
 				return { kind: menuType, archetype: "reo_tabs", reoNav: dd.nav, reoPanes: dd.panes,
 					tab1: "", tab2: "", content: "", left: "", right: "" };
 			}
+			// no [TABn] rows: the drop-down tables are the overview-table form — one tab per role heading
+			// (dropdown_menu.overview_fallback; env REODROPOVFALL_OFF)
+			const ofb = ddCfg.overview_fallback;
+			if (ofb && ofb.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[ofb.env ?? "REODROPOVFALL_OFF"])) {
+				const tbls = menuItems.filter((it) => it._reoDropdown && it.type === "table").map((t) => ({ ...t, _reoOverviewTab: true }));
+				if (tbls.length) {
+					const otCfg = DataService.Data.EmitTemplates.elements?.dual_language?.overview_table_tabs ?? {};
+					const ot = this.#reoOverviewTabs(tbls, run, norm, otCfg);
+					if (ot.count > 1) {
+						run.AddNote("info", "MenuBuilder",
+							`MTK drop-down menu with no [TABn] rows composed from its tables (${ot.count} tabs: ${ot.labels.join(" | ")}).`);
+						return { kind: menuType, archetype: "reo_tabs", reoNav: ot.nav, reoPanes: ot.panes,
+							tab1: "", tab2: "", content: "", left: "", right: "" };
+					}
+				}
+			}
 		}
 
 		// MTK OVERVIEW-TABLE TABS (the TRR family; KB 07A §4 + 07D §19.1).

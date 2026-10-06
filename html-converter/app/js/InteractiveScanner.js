@@ -835,8 +835,15 @@ class InteractiveScanner {
 			const _oaeWords = new Set((_oaeCfg && _oaeCfg.alias_words) || []);
 			const _oaeTags = new Set((_oaeCfg && _oaeCfg.element_tags) || []);
 			const _oaeNoHow = new Set((_oaeCfg && _oaeCfg.exclude_primary_hows) || []);
+			// the titled «[interactive: video – <title>]» span parses as "embedded" but is an alias element too
+			// (owner_alias_exclude.titled_form; env ALIASTITLED_OFF)
+			const _oaeTf = _oaeCfg && _oaeCfg.titled_form;
+			const _oaeTfRe = _oaeTf && _oaeTf.enabled !== false && _oaeTf.pattern
+				&& !(typeof process !== "undefined" && process.env && process.env[_oaeTf.env || "ALIASTITLED_OFF"])
+				? new RegExp(_oaeTf.pattern, "i") : null;
 			const _isAliasElement = (p) => _oaeOn && p.parse.primary?.tag !== "activity" && p.parse.primary?.tag != null
-				&& _oaeTags.has(p.parse.primary.tag) && !_oaeNoHow.has(String(p.parse.primary.how ?? ""))
+				&& _oaeTags.has(p.parse.primary.tag)
+				&& (!_oaeNoHow.has(String(p.parse.primary.how ?? "")) || (!!_oaeTfRe && _oaeTfRe.test(String(p.text ?? ""))))
 				&& p.parse.tags.some((t) => t.tag === "activity" && _oaeWords.has(String(t.raw ?? t.alias ?? "").toLowerCase()));
 			while (s >= 0) {
 				const prev = items[s];

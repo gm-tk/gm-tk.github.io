@@ -39,6 +39,12 @@
 				"env": "SPELLALIAS_OFF"
 			},
 			{
+				"_doc": "The writers' spellings of the proverb tag — '[whakatauiki]', '[Whakatuaki]', '[Whaktaukī]', '[whakaukī]' (folded) — resolved to no tag, so the proverb box was not built and the bracket shipped as a Writers Note; the human builds div.whakatauki for each.",
+				"tag": "whakatauki",
+				"aliases": ["whakatauiki", "whakatuaki", "whaktauki", "whakauki"],
+				"env": "WHAKASPELL_OFF"
+			},
+			{
 				"_doc": "The writer's '[HInfo hover: ' opener for the inline hover ('✅ngā wāhanga o te tinana [HInfo hover: ] parts of the body ]', BLL271 / 272 / 273 / 275 / 276) — the same writers' '[HInfo trigger: ' resolves to the info trigger, this spelling resolved to NO tag, so the sentence broke into separate paragraphs around a Writers Note '[HInfo hover:'. The gold builds the word's hover with the definition.",
 				"tag": "info trigger",
 				"aliases": ["hinfo hover"],

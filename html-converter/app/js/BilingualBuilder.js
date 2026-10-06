@@ -1098,6 +1098,11 @@ class BilingualBuilder {
 			&& !(typeof process !== "undefined" && process.env && (process.env[tl.env || "REOLABEL_OFF"] || process.env[tlL.env || "REOLESSONLABEL_OFF"]))
 			? new RegExp(tlL.label_pattern, "iu") : null;
 		let headCarry = 0;
+		const wl = DataService.Data.EmitTemplates?.elements?.dual_language?.widget_label_drop;
+		const wlOn = !!wl && wl.enabled !== false && wl.lead_tag_pattern && wl.label_pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[wl.env || "REOWIDGETLABEL_OFF"]);
+		const wlLead = wlOn ? new RegExp(wl.lead_tag_pattern, "i") : null;
+		const wlLabel = wlOn ? new RegExp(wl.label_pattern, "i") : null;
 		for (const part of TablesAndGrids.cellParts(cell)) {
 			const low = part.toLowerCase();
 			if (ai) {
@@ -1169,6 +1174,8 @@ class BilingualBuilder {
 				let t = canon ? rest : part;
 				let mm;
 				while ((mm = t.match(/^\s*\[[^\]]+\]\s*/))) t = t.slice(mm[0].length);
+				// the widget tag's own words («[Interactive] Carousel») are its label, not prose (dual_language.widget_label_drop)
+				if (wlLead && wlLead.test(part.trim()) && wlLabel.test(t.replace(/\*/g, "").trim())) continue;
 				buf.push(t);
 			}
 		}

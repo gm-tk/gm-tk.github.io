@@ -296,7 +296,13 @@
 		"preserve_leading_space_note": "(As in OSBY201-01.) A docx splits a styled phrase into its own run, and Word often keeps the inter-word SPACE INSIDE that styled run as a LEADING space (run 'their' has no trailing space; the bold run is ' wellbeing or hauora'). Wrapping a bold/italic run with blackText.trim() drops BOTH sides, so restoring only the TRAILING space would lose the leading one and glue the words ('their<b>wellbeing…', 'house or<b>whare</b>'); the human build keeps the space before <b>. When true, DocxExtractor#parseParagraph restores the leading space SYMMETRICALLY, only when the run actually had one, so legitimately-glued cases (no leading space) are untouched. Env BOLDSPACE_OFF uses the drop form."
 	},
 	"front_matter_metadata": {
-		"rule": "The Section-A/B gray info table holds module-specific fields as 'Label: value' paragraphs in the front-matter (before content start). DocxExtractor captures the FILLED ones (a non-empty value after the colon) into run.metadata. This is the ONE place writers add module-specific data inside the otherwise-generic front-matter, so it is mined even though the front-matter is discarded for conversion.",
+		"body_strip": {
+			"enabled": true,
+			"env": "FRONTMATTERBODY_OFF",
+			"pattern": "^\\s*\\**\\s*(?:module\\s+code|key\\s+contacts?(?:\\s*\\([^)]*\\))*|date\\s+submitted|curriculum\\s+level|contact\\s+person)\\s*:",
+			"_doc": "THE TEMPLATE'S FRONT-MATTER FIELDS ARE NEVER LEARNER TEXT. When the writer's front-matter block sits after the content start (after an [End page] or inside the overview), its 'Label: value' lines shipped as body paragraphs — 'Curriculum Level: Phases 1, 2, 3, 4 (Y1-10)', 'Module code: TEFUN02', 'Key contacts: <a staff member's name and email>', 'Date submitted: 2024' (TEFUN02, TEFUN05; CEDR302 'Key contact: (Name), (email), (extension)', CHI1004); the human build shows none of them. PageAssembler (an item pre-pass): a free black paragraph whose text opens with one of these field labels is dropped."
+		},
+		"rule":"The Section-A/B gray info table holds module-specific fields as 'Label: value' paragraphs in the front-matter (before content start). DocxExtractor captures the FILLED ones (a non-empty value after the colon) into run.metadata. This is the ONE place writers add module-specific data inside the otherwise-generic front-matter, so it is mined even though the front-matter is discarded for conversion.",
 		"fields": {
 			"subject": {
 				"labels": [

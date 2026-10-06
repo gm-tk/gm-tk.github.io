@@ -442,7 +442,8 @@ class MediaBuilder {
 		} else {
 			const videoId = url.match(new RegExp(acks.youtube_id))?.[1] ?? null;
 			if (videoId) {
-				let embed = Utils.FillTemplate(tpl.video.youtube, { videoId, params: "" });
+				let embed = Utils.FillTemplate(tpl.video.youtube, { videoId, params: this.#timeParams(it, bodyItems, i, run, videoId) });
+				if (run) (run._timeParamsIds ??= new Set()).add(videoId);   // the page post-pass leaves this id alone
 				// the embed HOST follows the module's group convention
 				// (Html_Convention_Registry; global default is nocookie)
 				if (run.conventions?.videoHost === "youtube") {
@@ -458,7 +459,7 @@ class MediaBuilder {
 				// <address>») ships as their Writers Note, not as a missing-source flag (elements.media_request_before_media)
 				const req = this.#requestBeforeMedia(it, bodyItems, i, kind, run);
 				if (req !== null) out.push(...req);
-				else out.push(NotesAndComments.redFlag(`[${kind}] with no URL found — add the ${kind} source.`, run));
+				else out.push(this.NoUrlFlag(it, kind, run));
 			}
 		}
 
@@ -551,6 +552,213 @@ class MediaBuilder {
 	 * Env toggle: VIDEOICON_OFF (or the data's own enabled:false) disables
 	 * this method entirely, so every video embed stays in the plain form.
 	 */
+	/**
+	 * THE WRITER'S CROP TIMES ON A BUILT YOUTUBE EMBED. A writer types where the video should start and stop after its
+	 * link («[LINK: …] (0:10- 2:12)», «Start 0.56 Finish 1.40 mins», «Start at 0:23 seconds, cut at 3:22.»); the embed
+	 * builds and drops its own words, so the instruction reached no output, while the human build appends it to the
+	 * embed's address. ONE crop is read from the tag's own paragraph (addresses removed): a single range, or a start /
+	 * finish pair; two ranges, a duration alone or an end before the start give none. Start 0 is omitted.
+	 * Data elements.video_time_range; env VIDTIME_OFF.
+	 * The red spans that FOLLOW the tag in the same paragraph («[video] <address> 🔴(0.27-3:06)🔴») are read too, up to the
+	 * next element tag — next_spans; env VIDTIMENEXT_OFF.
+	 * @param {object} it - the video tag's body item
+	 * When the tag's own line holds no crop, the ONE crop written in the video's Media List row(s) — matched by the video
+	 * id, the row's visible words — is used (media_list_row; env VIDTIMEML_OFF); rows with two different crops give none.
+	 * @param {object[]} [bodyItems] - the page's items (for the following spans)
+	 * @param {number} [i] - the item's index
+	 * @param {ConversionRun} [run] - the run (its mediaItems)
+	 * @param {string} [videoId] - the YouTube id (for the Media List row)
+	 * @returns {string} the embed address's query («?start=10&amp;end=132») or ""
+	 */
+	static #timeParams(it, bodyItems, i, run, videoId) {
+		const c = DataService.Data.EmitTemplates.elements?.video_time_range;
+		if (!c || c.enabled === false || (typeof process !== "undefined" && process.env && process.env[c.env ?? "VIDTIME_OFF"])) return "";
+		const RED = /\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu;
+		let raw = `${String(it?.text ?? "")} ${String(it?.blackAfter ?? "")}`;
+		const nx = c.next_spans;
+		if (nx && nx.enabled !== false && Array.isArray(bodyItems) && Number.isInteger(i) && it?.block
+			&& !(typeof process !== "undefined" && process.env && process.env[nx.env ?? "VIDTIMENEXT_OFF"])) {
+			for (let j = i + 1; j < bodyItems.length && bodyItems[j]?.block === it.block; j++) {
+				const n = bodyItems[j];
+				if (n.type === "tag" && n.parse?.primary) break;      // the next element of the paragraph
+				raw += ` ${String(n.text ?? "")} ${String(n.blackAfter ?? "")}`;
+			}
+		}
+		const read = (words) => this.#readCrop(words, c);
+		let got = read(raw);
+		// the video's Media List row(s), when the line itself holds no crop — media_list_row; env VIDTIMEML_OFF
+		const ml = c.media_list_row;
+		if (got === null && videoId && ml && ml.enabled !== false && Array.isArray(run?.mediaItems)
+			&& !(typeof process !== "undefined" && process.env && process.env[ml.env ?? "VIDTIMEML_OFF"])) {
+			const seen = new Map();
+			for (const m of run.mediaItems) {
+				if (!String(m?.url ?? "").includes(videoId) && !String(m?.rowText ?? "").includes(videoId)) continue;
+				const r = read(m.rowText);
+				if (r !== null) seen.set(JSON.stringify(r), r);
+			}
+			if (seen.size === 1) got = [...seen.values()][0];
+		}
+		return this.#cropQuery(got);
+	}
+
+	/**
+	 * One crop from a run of the writer's words (red markers, links and addresses removed): { start, end } (either may be
+	 * null), null when none, "multi" when two ranges. Data elements.video_time_range (its patterns and up_to).
+	 * @param {string} words - the words to read
+	 * @param {object} c - elements.video_time_range
+	 * @returns {object|string|null} the crop
+	 */
+	static #readCrop(words, c) {
+		const RED = /\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu;
+		const sec = (m, s) => Number(m) * 60 + Number(s);
+		const text = String(words ?? "").replace(RED, " ").replace(/\[LINK:[^\]]*\]/g, " ").replace(/https?:\/\/\S+/g, " ");
+		let ranges = [...text.matchAll(new RegExp(c.range_pattern, "gi"))];
+		// «starting at 0:07, to 0:22» — a comma before the range's «to» (range_comma; env VIDTIMECOMMA_OFF)
+		const rc = c.range_comma;
+		if (!ranges.length && rc && rc.enabled !== false && rc.pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[rc.env ?? "VIDTIMECOMMA_OFF"])) {
+			ranges = [...text.matchAll(new RegExp(rc.pattern, "gi"))];
+		}
+		if (ranges.length > 1) return "multi";
+		if (ranges.length === 1) return { start: sec(ranges[0][1], ranges[0][2]), end: sec(ranges[0][3], ranges[0][4]) };
+		const s = text.match(new RegExp(c.start_pattern, "i")), e = text.match(new RegExp(c.end_pattern, "i"));
+		// a start in seconds alone («start at 42 seconds», «start at :58») — start_seconds_pattern
+		const ss = !s && c.start_seconds_pattern ? text.match(new RegExp(c.start_seconds_pattern, "i")) : null;
+		// «(up to 1:38)», «until 3:16» — up_to; env VIDTIMEUPTO_OFF
+		const ut = c.up_to;
+		const u = !e && ut && ut.enabled !== false && ut.pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[ut.env ?? "VIDTIMEUPTO_OFF"])
+			? text.match(new RegExp(ut.pattern, "i")) : null;
+		const start = s ? sec(s[1], s[2]) : (ss ? Number(ss[1] ?? ss[2]) : null);
+		const end = e ? sec(e[1], e[2]) : (u ? sec(u[1], u[2]) : null);
+		return start === null && end === null ? null : { start, end };
+	}
+
+	/** A crop as the embed address's query («?start=10&amp;end=132»; start omitted at 0), or "" for none / an end before
+	 *  the start / two ranges. */
+	static #cropQuery(got) {
+		if (got === null || got === "multi" || !got) return "";
+		const { start, end } = got;
+		if (start !== null && end !== null && end <= start) return "";
+		const p = [];
+		if (start) p.push(`start=${start}`);
+		if (end !== null) p.push(`end=${end}`);
+		return p.length ? `?${p.join("&amp;")}` : "";
+	}
+
+	/**
+	 * THE CROP OF A VIDEO BUILT INSIDE A WIDGET. A carousel slide's, a tab's or an accordion panel's YouTube embed is built
+	 * by its widget builder from the video id alone, so the crop the writer typed beside the video («[Video starting at
+	 * 0:07, to 0:22] <address>», a Media List row's «<address> (Please start video at 1:00)») never reached it. This page
+	 * post-pass gives a YouTube embed with no query whose id the media builder never handled the ONE crop written beside
+	 * that id in the Writers Template — the paragraph that holds it, or the table cell (else the row) — or in its Media
+	 * List row; two different crops give none. Data elements.video_time_range.widget_postpass; env VIDTIMEWIDGET_OFF.
+	 * @param {string} bodyHtml - the page body
+	 * @param {ConversionRun} run - the run (wtBlocks, mediaItems, the ids the media builder handled)
+	 * @returns {string} the body
+	 */
+	static videoTimePostpass(bodyHtml, run) {
+		const c = DataService.Data.EmitTemplates.elements?.video_time_range;
+		const w = c?.widget_postpass;
+		if (!c || c.enabled === false || !w || w.enabled === false) return bodyHtml;
+		if (typeof process !== "undefined" && process.env && (process.env[c.env ?? "VIDTIME_OFF"] || process.env[w.env ?? "VIDTIMEWIDGET_OFF"])) return bodyHtml;
+		if (!bodyHtml || bodyHtml.indexOf("/embed/") < 0) return bodyHtml;
+		const done = run?._timeParamsIds ?? new Set();
+		const cache = new Map();
+		return bodyHtml.replace(/(youtube(?:-nocookie)?\.com\/embed\/)([\w-]{11})(?=")/g, (whole, host, id) => {
+			if (done.has(id)) return whole;
+			if (!cache.has(id)) cache.set(id, this.#cropFor(id, run, c));
+			return whole + cache.get(id);
+		});
+	}
+
+	/**
+	 * A STOCK PICTURE IS NEVER A WEBSITE BUTTON. Through several authoring forms («[image] <address>» after a modal, an
+	 * activity table's picture cell, a tile's picture, «Image: iStock: stepping stone: <address>») an iStock picture's
+	 * address reached the external-destination rule and shipped as «Go to website», or as the address of the writer's own
+	 * button («Yes», «Go to journal»), while the human build shows the picture. This page post-pass renders such an
+	 * address as the picture placeholder (the image path's own form): a button carrying a default label is replaced by the
+	 * picture; a writer's labelled button keeps its label with an empty link, and the picture follows it.
+	 * Data image.stock_button {host_pattern, default_labels}; env STOCKBUTTON_OFF.
+	 * @param {string} bodyHtml - the page body
+	 * @param {ConversionRun} run - the run (image mode, iStock titles)
+	 * @returns {string} the body
+	 */
+	static stockButtonPostpass(bodyHtml, run) {
+		const tpl = DataService.Data.EmitTemplates.image;
+		const c = tpl?.stock_button;
+		if (!c || c.enabled === false) return bodyHtml;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "STOCKBUTTON_OFF"]) return bodyHtml;
+		if (!bodyHtml || bodyHtml.indexOf("externalButton") < 0) return bodyHtml;
+		const host = new RegExp(c.host_pattern ?? "^https?:\\/\\/(?:www\\.)?istockphoto\\.com\\/", "i");
+		const defaults = new Set((c.default_labels ?? ["Go to website"]).map((l) => Utils.Fold(l)));
+		return bodyHtml.replace(/<a href="([^"]*)" target="_blank"><div class="externalButton">([^<]*)<\/div><\/a>/g, (whole, href, label) => {
+			const url = Utils.DecodeHtml ? Utils.DecodeHtml(href) : href.replace(/&amp;/g, "&");
+			if (!host.test(url)) return whole;
+			const id = this.CanonicalStockUrl(url).match(/gm-?(\d{6,10})/)?.[1] ?? null;
+			if (!id) return whole;
+			const pic = run?.imageMode === "P"
+				? [this.FinishImg(Utils.FillTemplate(tpl.mode_P.visible, { label: `iStock-${id}` }), url, id, run),
+					this.FinishImg(Utils.FillTemplate(tpl.mode_P.comment, { filename: Utils.FillTemplate(tpl.filename_rules.istock, { id }) }), url, id, run)].join("\n")
+				: this.FinishImg(Utils.FillTemplate(tpl.mode_D.visible, { filename: Utils.FillTemplate(tpl.filename_rules.istock, { id }) }), url, id, run);
+			if (defaults.has(Utils.Fold(label))) return pic;
+			return `<a href="" target="_blank"><div class="externalButton">${label}</div></a>\n${pic}`;
+		});
+	}
+
+	/** The one crop written beside a video id in the run's Writers Template blocks and Media List rows, as a query. */
+	static #cropFor(id, run, c) {
+		const seen = new Map();
+		const add = (words) => {
+			const r = this.#readCrop(words, c);
+			if (r === "multi") seen.set("multi", r);
+			else if (r) seen.set(JSON.stringify(r), r);
+		};
+		const has = (s) => String(s ?? "").includes(id);
+		for (const b of (run?.wtBlocks ?? [])) {
+			if (b?.kind === "para") {
+				if (has(b.text) || (b.links ?? []).some((l) => has(l?.target))) add(b.text);
+			} else if (b?.kind === "table" && Array.isArray(b.rows)) {
+				b.rows.forEach((cells, r) => {
+					const inCells = (cells ?? []).filter((x) => has(x));
+					if (inCells.length) inCells.forEach(add);
+					else if ((b.rowLinks?.[r] ?? []).some((l) => has(l?.target))) add((cells ?? []).join(" ║ "));
+				});
+			}
+		}
+		for (const m of (run?.mediaItems ?? [])) if (has(m?.url) || has(m?.rowText)) add(m.rowText);
+		if (seen.size !== 1 || seen.has("multi")) return "";
+		return this.#cropQuery([...seen.values()][0]);
+	}
+
+	/**
+	 * The missing-source flag of an address-less media tag. When the tag's line is the writer's brackets only and they
+	 * carry words beyond the bare kind («[Insert video – 1. section one teaching]», «[Insert Video Item 4]», «[Video]
+	 * [Audiovisual item 11]»), the flag names those brackets, verbatim, in place of «[video]» — the developer's only
+	 * record of WHICH video goes there. A line with words outside its brackets keeps the bare flag (media_free_note ships
+	 * those words as the Writers Note). Data elements.no_url_writer_tag; env NOURLTAG_OFF.
+	 * @param {object} it - the media tag's body item
+	 * @param {string} kind - "video" / "embed" / …
+	 * @param {ConversionRun} run - the current conversion run
+	 * @returns {string} the red flag's HTML
+	 */
+	static NoUrlFlag(it, kind, run) {
+		let label = `[${kind}]`;
+		const c = DataService.Data.EmitTemplates.elements?.no_url_writer_tag;
+		if (c && c.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[c.env ?? "NOURLTAG_OFF"])) {
+			const RED = /\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu;
+			const text = String(it?.text ?? "").replace(RED, " ").replace(/\s+/g, " ").trim();
+			const brackets = text.match(/\[[^[\]]*\]/g) ?? [];
+			if (brackets.length && !/[\p{L}\p{N}]/u.test(text.replace(/\[[^[\]]*\]/g, " "))) {
+				const kindWords = new Set(c.kind_words ?? ["insert", "video", "embed", "link", "interactive"]);
+				const words = Utils.Fold(brackets.join(" ").replace(/[[\]]/g, " ")).replace(/[^\p{L}\p{N}]+/gu, " ").split(" ")
+					.filter((w) => w && !kindWords.has(w));
+				if (words.length) label = brackets.map((b) => b.replace(/^\[\s+/, "[").replace(/\s+\]$/, "]")).join(" ");
+			}
+		}
+		return NotesAndComments.redFlag(`${label} with no URL found — add the ${kind} source.`, run);
+	}
+
 	/**
 	 * A media tag with no address whose NEXT item (blank lines skipped) is a media tag of a listed kind is the writer's
 	 * request about that next element, not a missing source: its own words (the kind words aside) ship as the red

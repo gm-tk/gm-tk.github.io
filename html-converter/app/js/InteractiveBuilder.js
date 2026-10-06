@@ -206,11 +206,23 @@ class InteractiveBuilder {
 						// the pairs the writer lists in one line («Possible matching rhyming words: top/mop, pet/net, …»)
 						?? this.#dragAndDropPairList({ bundle, tpl, renderInline })
 						// the picture column sort (a header row of column names over stock-picture cells), where every other form declined
-						?? this.#dragAndDropImageColumn({ bundle, tpl, renderInline, run });
+						?? this.#dragAndDropImageColumn({ bundle, tpl, renderInline, run })
+						// the column sort typed as lines, each choice with its column in red brackets, where every other form declined
+						?? this.#dragAndDropBracketSort({ bundle, tpl, renderInline });
 					// a built widget REPLACES the whole captured bundle: the members rule keeps
 					// the bundle's OTHER members (prose around the table) or declines the build.
 					// (the FIB form placed every member itself — its black sentences ARE the widget — so it skips this)
 					if (html !== null && !bundle?.fillInBlank) html = this.#ddWithMembers({ bundle, tpl, html, renderBlock });
+					// the bracket sort's answer key is the widget's, not a Writers Note: taken out once the build stands (and the
+					// developer's note about the answers it consumed becomes one)
+					if (html !== null && this.#DD_BRACKET_KEYS.has(bundle)) {
+						const { keys, notes } = this.#DD_BRACKET_KEYS.get(bundle);
+						const sp = (x) => String(x).replace(/\s+/g, " ").trim();
+						const drop = new Set(keys.map(sp));
+						const kept = (bundle.instructions ?? []).filter((x) => !drop.has(sp(x)));
+						for (const n of notes) if (!kept.some((x) => sp(x) === n)) kept.push(n);
+						bundle.instructions = kept;
+					}
 					break;
 				case "modal":       // image-pair form → TKmodal set; single document/PDF URL → a button;
 					// else the general trigger+TKmodal set fallback. renderNested/
@@ -1725,6 +1737,142 @@ class InteractiveBuilder {
 		const btnOff = typeof process !== "undefined" && process.env && br?.env && process.env[br.env];
 		if (br && br.enabled !== false && !btnOff) out.push(br.html);
 		out.push(cfg.close);
+		return out.join("\n");
+	}
+
+	/**
+	 * dragAndDrop — THE COLUMN SORT TYPED AS LINES → the KB 03B "Column Layout". The writer lists the choices one per line,
+	 * each followed by its column in red brackets («Visual daily schedule. [Provides structure]», «Safe shelter [Need]»), under
+	 * an optional header table of the column names («[H3] Provides structure ║ [H3] Provides freedom» over one empty row). An
+	 * item is a black member followed, in the same paragraph, by a red tag whose whole text is one bracket (answer_pattern);
+	 * the columns are the header's labels (an answer matches one folded, as a near prefix — «Need» / «Needs» — or within one
+	 * letter's edit — a typed «fFreedom») or, with no table, the distinct answers in the writer's order. The column form's
+	 * markup, the drags in the writer's order; the item lines and a short label line («Choices» — consume_labels) are the
+	 * widget's place for the members rule, and the answer brackets leave the Writers Notes once the build stands. Never
+	 * half-builds: a second table, a header-table row with words, an extraType or media item, fewer than min_items items, an
+	 * answer matching no column or two, an empty column, a repeated item.
+	 * Data interactive_builders.dragAndDrop.bracket_sort; env DDBRACKETSORT_OFF (DRAGDROP_OFF still reverts the whole type).
+	 *
+	 * @param {object} args
+	 * @param {object} args.bundle - the captured interactive
+	 * @param {object} args.tpl - the dragAndDrop templates (the column form's markup is reused)
+	 * @param {function} [args.renderInline] - inline-markup renderer; identity if omitted
+	 * @returns {string|null} the built dragAndDrop HTML, or null to keep the hand-off box
+	 */
+	static #DD_BRACKET_KEYS = new WeakMap();   // bundle → the answer brackets the bracket sort read (out of the Writers Notes once built)
+
+	static #dragAndDropBracketSort({ bundle, tpl, renderInline }) {
+		const cfg = tpl?.bracket_sort, col = tpl?.column;
+		if (!cfg || cfg.enabled === false || !col) return null;
+		const env = typeof process !== "undefined" && process.env ? process.env : {};
+		if (env.DRAGDROP_OFF || env[cfg.env || "DDBRACKETSORT_OFF"]) return null;
+		if (bundle?.extraTypes?.length || (bundle?.media ?? []).length) return null;
+		const tables = bundle?.tables ?? [];
+		if (tables.length > 1) return null;
+		const fold = (s) => Utils.Fold(String(s ?? "")).replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+		// the header table: its first row names the columns (heading markers stripped), every other row empty
+		let headings = null;
+		if (tables.length === 1) {
+			const rows = (tables[0].rows ?? []).filter((r) => Array.isArray(r));
+			if (!rows.length) return null;
+			const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+			const markerRe = new RegExp(col.marked?.header_marker_pattern ?? "^\\[\\s*h[1-6]\\s*\\]$", "i");
+			headings = [];
+			for (const c of rows[0]) {
+				const s = String(c ?? "");
+				const reds = [...s.matchAll(RED)].map((m) => m[1].replace(/\s+/g, " ").trim()).filter(Boolean);
+				if (reds.some((x) => !markerRe.test(x))) return null;
+				const t = this.#cellText(s.replace(RED, " ")).replace(/\s+/g, " ").trim();
+				if (!t || /https?:\/\/|\[/.test(t)) return null;
+				headings.push(t);
+			}
+			if (rows.slice(1).some((r) => r.some((c) => this.#cellText(c).trim()))) return null;
+			if (headings.length < 2 || headings.length > (cfg.max_columns ?? 4)) return null;
+		}
+		// the item lines: a black member and, in the same paragraph, the red bracket that is its answer
+		const members = bundle?.memberItems ?? [];
+		const ansRe = new RegExp(cfg.answer_pattern ?? "^\\s*\\[\\s*([^\\[\\]]{1,40}?)[\\s.]*\\]\\s*$");
+		// a short label line («Choices», «Sortable Statements») is the list's own heading, never an item
+		const labelRe = cfg.consume_labels ? new RegExp(cfg.consume_labels, "i") : null;
+		const noteRe = cfg.note_pattern ? new RegExp(cfg.note_pattern, "i") : null;
+		// the label's own trailing bracket note («Sortable Statements [For drag and drop – please randomise]», typed black)
+		const labelNote = (t) => { const b = /\s*(\[[^\[\]]*\])\s*$/.exec(this.#cellText(t)); return b && noteRe && noteRe.test(b[1]) ? b[1] : ""; };
+		const isLabel = (t) => !!labelRe && labelRe.test(this.#cellText(t).replace(/\*\*|__/g, "").replace(/\s*\[[^\[\]]*\]\s*$/, (b) => (noteRe && noteRe.test(b) ? "" : b)).trim());
+		const items = [], used = new Set(), keys = [];
+		for (let k = 0; k + 1 < members.length; k++) {
+			const m = this.#peekMember(members[k]), nx = this.#peekMember(members[k + 1]);
+			if (m?.type !== "black" || nx?.type !== "tag" || !m.block || nx.block !== m.block) continue;
+			if (String(nx.blackAfter ?? "").trim()) continue;
+			const a = ansRe.exec(String(nx.text ?? ""));
+			const text = this.#cellText(m.text).trim();
+			if (!a || !text || isLabel(m.text)) continue;
+			items.push({ text, ans: a[1].trim(), c: -1 });
+			keys.push(String(nx.text).trim());
+			used.add(k); used.add(k + 1); k++;
+		}
+		if (items.length < (cfg.min_items ?? 4)) return null;
+		// the columns, and each item's key
+		let cols;
+		if (headings) {
+			const H = headings.map(fold);
+			const lev1 = (a, b) => {
+				if (Math.abs(a.length - b.length) > 1) return false;
+				let i = 0, j = 0, d = 0;
+				while (i < a.length && j < b.length) {
+					if (a[i] === b[j]) { i++; j++; continue; }
+					if (++d > 1) return false;
+					if (a.length > b.length) i++; else if (b.length > a.length) j++; else { i++; j++; }
+				}
+				return d + (a.length - i) + (b.length - j) <= 1;
+			};
+			const near = (a, h) => a === h || ((a.startsWith(h) || h.startsWith(a)) && Math.abs(a.length - h.length) <= 2)
+				|| (Math.min(a.length, h.length) >= 5 && lev1(a, h));
+			for (const it of items) {
+				const hit = H.map((h, i) => (near(fold(it.ans), h) ? i : -1)).filter((i) => i >= 0);
+				if (hit.length !== 1) return null;
+				it.c = hit[0];
+			}
+			cols = headings;
+		} else {
+			cols = [];
+			const idx = new Map();
+			for (const it of items) {
+				const f = fold(it.ans);
+				if (!idx.has(f)) { idx.set(f, cols.length); cols.push(it.ans); }
+				it.c = idx.get(f);
+			}
+			if (cols.length < 2 || cols.length > (cfg.max_columns ?? 4)) return null;
+		}
+		if (cols.some((_, c) => !items.some((it) => it.c === c))) return null;
+		if (new Set(items.map((it) => fold(it.text))).size !== items.length) return null;
+		// the label line is consumed with the items (its red note, if any, stays a Writers Note); a red line that only tells
+		// the developer about the answers («[Items / choices, answers in red. Please randomise]» — read as an [answer] tag)
+		// is this sort's Writers Note, not a member to refuse (note_pattern)
+		const notes = [];
+		for (let k = 1; k < members.length; k++) {
+			const m = this.#peekMember(members[k]);
+			if (used.has(k)) continue;
+			if (m?.type === "black" && isLabel(m.text)) { used.add(k); const n = labelNote(m.text); if (n) notes.push(n); }
+			else if (noteRe && m?.type === "tag" && m.parse?.class !== "instruction" && !String(m.blackAfter ?? "").trim()
+				&& noteRe.test(this.#cellText(m.text))) { used.add(k); notes.push(String(m.text).replace(/\s+/g, " ").trim()); }
+		}
+		this.#DD_PAIR_LINES.set(bundle, used);
+		this.#DD_BRACKET_KEYS.set(bundle, { keys, notes });
+		const inline = renderInline ?? ((s) => s);
+		const out = [col.open];
+		for (let c = 0; c < cols.length; c++) {
+			out.push(Utils.FillTemplate(col.col_open, { heading: inline(cols[c]) }));
+			for (const it of items) if (it.c === c) out.push(Utils.FillTemplate(col.drop, { n: c + 1 }));
+			out.push(col.col_close);
+		}
+		out.push(col.mid);
+		for (const it of items) out.push(Utils.FillTemplate(col.drag, { n: it.c + 1, item: inline(it.text) }));
+		out.push(col.drag_col_close);
+		for (let c = 1; c < cols.length; c++) out.push(col.pad);
+		out.push(col.close_inner);
+		const br = tpl?.button_row;
+		if (br && br.enabled !== false && !(br.env && env[br.env])) out.push(br.html);
+		out.push(col.close);
 		return out.join("\n");
 	}
 
@@ -10630,13 +10778,29 @@ class InteractiveBuilder {
 			const groups = data.length === 1
 				? data[0].map((c) => [c]).filter((g) => this.#cellText(g[0]).trim() || /https?:\/\//.test(String(g[0] ?? "")))
 				: data.map((r) => r);
+			// THE PICTURE BRIEF IS NOT THE CAPTION: an [image] cell's short line beside another cell's caption names the
+			// picture for the designer — the picture stays, the line leaves the caption. Data table_slides.image_brief;
+			// env CARIMGBRIEF_OFF.
+			const ib = cfg.image_brief;
+			const ibOn = !!ib && ib.enabled !== false && !env[ib.env ?? "CARIMGBRIEF_OFF"];
 			for (const cells of groups) {
-				const parts = [];
+				const parts = [], perCell = [];
 				for (const cell of cells) {
 					const got = this.#carCellParts(cell, { bundle, tpl, cfg, mv, rich, idRe, inline, links: item.block?.links });
 					if (got === null) return null;                   // red instruction / unreadable cell
-					parts.push(...got);
+					perCell.push(got);
 				}
+				if (ibOn && perCell.length > 1) {
+					const prose = (g) => g.length > 0 && g.every((p) => p.p || p.h);
+					// the brief follows the cell's opening [image] marker; words typed BEFORE it are the slide's title («Stick to the plan / [image] …»)
+					const opensImage = (cell) => /^\s*\[\s*image\b/i.test(String(cell ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, ""));
+					for (let c = 0; c < perCell.length; c++) {
+						const g = perCell[c];
+						if (g.length === 2 && g[0].img && g[1].p && opensImage(cells[c]) && String(g[1].p).split(/\s+/).filter(Boolean).length <= (ib.max_words ?? 8)
+							&& !/\n/.test(String(g[1].p)) && perCell.some((o, j) => j !== c && prose(o))) perCell[c] = [g[0]];
+					}
+				}
+				for (const g of perCell) parts.push(...g);
 				if (!parts.length) continue;                         // an empty row (a spacer) — skipped
 				slides.push({ parts });
 			}

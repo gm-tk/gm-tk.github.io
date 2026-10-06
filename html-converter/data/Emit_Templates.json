@@ -134,6 +134,13 @@
 	"elements": {
 		"dual_language": {
 			"enabled": true,
+			"widget_label_drop": {
+				"_doc": "THE WIDGET TAG'S OWN WORDS ARE NOT PROSE. A bilingual cell part typed as one red instruction — '[Interactive] Carousel', '[Interactive] Carousel pic with word/audio' — lost its bracket tag and kept the tag's words, so the learner read 'Carousel' in both languages. The human build shows nothing there (it builds the widget). A part whose words after a leading tag of lead_tag_pattern are only a widget name (label_pattern) is the tag's label: dropped.",
+				"enabled": true,
+				"env": "REOWIDGETLABEL_OFF",
+				"lead_tag_pattern": "^\\[\\s*interactive\\s*\\]",
+				"label_pattern": "^(?:interactive\\s+)?(?:carousel|flip\\s?cards?|word\\s?(?:find|select)|drag\\s+and\\s+drop|radio\\s+quiz|memory\\s+game|accordion|tabs)\\b(?:\\s+(?:pic|picture|image)s?\\s+with\\s+[\\w/ ]{1,30})?\\s*\\.?$"
+			},
 			"template_labels": {
 				"_doc": "THE BILINGUAL TEMPLATE'S FIELD LABELS NEVER SHIP AS HEADINGS. The PNR / PMT bilingual template's content table carries red field labels beside its heading tags — '[H3] Intro sentence: / Welcome to the world of numbers.', '[H3] Rerenga Kōrero Whakataki: / Nau mai haere mai …', '[H1] Ingoa Kowae: Te Tau 2' — and the label became the heading while the writer's line under it became a paragraph. The human ships '<h3>Welcome to the world of numbers.</h3>' and 'Te Tau 2', no label. A heading part whose words open with a template label (label_pattern) loses the label; when nothing remains, the heading passes to the cell's next text part.",
 				"enabled": true,
@@ -151,6 +158,14 @@
 			"_use_mtk_flag_doc": "false (default) = the 'MTK WRITERS TEMPLATE' house header does NOT put a module in reoMode (almost every WT carries it — it is the house template NAME, not a bilingual marker, and no genuine bilingual module relies on it alone). Genuine bilingual = reoTranslate body_class OR a code_prefixes match. true (or env MTKREO_OFF=1) = the flag is honoured and puts the module in reoMode.",
 			"mtk_leak_guard": {
 				"enabled": true,
+				"one_cell_unfold": {
+					"enabled": true,
+					"env": "ONECELLUNFOLD_OFF",
+					"tags": ["video", "image", "audio", "alert", "important", "body", "button", "data marker", "external link"],
+					"lead_tags": ["video", "image", "audio", "alert", "important"],
+					"_doc_guards": "The cell must OPEN with a red tag of lead_tags (a media element or a callout); a heading tag anywhere keeps the table (a writer's '[H2] WHAT TO DO NEXT? I have used the [H2] tag here but please use …' is a developer note, not a heading); a widget tag — or a quiz sub-tag such as [question] — before the table with no section heading (h1–h3), page boundary or closing tag between keeps it too: the table is that widget's, and unfolding it would end the widget's capture early (COM1005 6.0's answers).",
+					"_doc": "THE ONE-CELL TABLE IS THE WRITER'S BOX. A one-row one-cell table holding one element — '[video] [media item 7] <address> / [caption] Possessive Pronoun' (CHFUN05), '[alert] Did you know …' (FRNO901 / 902, FRFUN06, CEDK501, OSOH401), '[audio item 1] / [transcript] …' (PWY1002) — shipped raw inside a hand-off box (this guard), while the human build shows the cell's content as ordinary body every time (40 of 40 tables whose words the gold carries). PageAssembler (before the page split and the widget scanner): on the MTK path (not a bilingual module), a free-body one-row one-cell table whose red tags all resolve to an element of tags (instruction fragments allowed) and that no bare tag line just before it may own is replaced by the items of its cell's paragraphs."
+				},
 				"_doc": "Leak guard: on a module whose mtkFlag is set but not honoured (see _use_mtk_flag_doc), a NORMAL-path kept free-body table whose rendered HTML still shows a resolved [tag] falls back to the reoMode placeholder form (cv2-interactive bilingual-unbuilt) that hides it — this covers the kept-table class (OS-family [Click drop], ENG-family [image], [body] tables as in ENGS202/TWHA901). Env MTKGUARD_OFF disables just the guard."
 			},
 			"wrapper_open": "<div class=\"row\">\n<div class=\"col-md-8 col-12\">",
@@ -274,6 +289,11 @@
 			},
 			"dropdown_menu": {
 				"enabled": true,
+				"overview_fallback": {
+					"enabled": true,
+					"env": "REODROPOVFALL_OFF",
+					"_doc": "THE DROP-DOWN MENU WITHOUT [TABn] ROWS IS THE OVERVIEW-TABLE FORM. TRR203 / TRR301 / PMT101 write the menu under '[Content for DROP DOWN MENU]' as English | Māori tables, one per section ('[H2] Overview', 'Strands | Dispositions … | Key Objectives', '[H1] Key Objectives:', '[H1] Critical Point of Learning', '[H1] Learning Intentions'), with no [TABn] rows: the drop-down composer declined and the generic walk shipped one 'Overview' tab of raw tables — literal '[TITLE BAR]' cells included — where the gold builds the role tabs of reo / eng pairs. When the drop-down composer declines, MenuBuilder hands its tables to the TRR overview-table composer (overview_table_tabs: one tab per role heading, '[TITLE BAR]' rows skipped)."
+				},
 				"_doc": "The MTK 'Te Aka Taumatua' bilingual Writers Template (the PNR101/102/104 family) opens with a [Content for DROP DOWN MENU] section: ONE English|Maori two-column table holding the whole module menu ([TITLE BAR] row, [H2][TABn] tab-label rows, [H1]/[H2] pane headings, [Body] content), closed by [END OF DROP-DOWN MENU] (PNR102 types it WITHOUT the hyphen), then a [MODULE CONTENT: PAGE 1] marker whose table is the overview body, then [LESSON N CONTENT] lessons. Unless these markers are recognised as content-start, DocxExtractor.TrimFrontMatter would cut EVERYTHING before [LESSON 1 CONTENT] as front matter and the whole overview (menu + title + intro) would vanish. This config drives five coupled pieces: (1) content-start recognition (Input_Doc_Rules content_start_fragments_dropdown); (2) PageSplitter keeps the [MODULE CONTENT: PAGE n] marker's content ON the overview page (module_content_pattern below — the human's 0.0 = menu + module content); (3) InteractiveScanner never opens a widget bundle for the opener (it parses as a 'dropdown' INTERACTIVE invocation — it is a menu marker, not a widget); (4) ContentConverter.#partitionItems routes the opener..closer region's table to the MENU side (flagged _reoDropdown); (5) MenuBuilder.#reoDropdownTabs composes the human's bilingual tabs menu (nav <span reo>/<span eng> labels; per-pane reo/eng element pairs; h4span section heads / h5 lead-ins; the Information pane splits at a 'Connections'-family heading into paddingR|paddingL columns, as in all three human builds). The module title comes from the front-matter metadata table's 'Module Name' row ('Nga tau: 1 | Numbers: 1' — pipe-split, payload order = reo first, the CEDW501 positional-slot precedent; see front_matter_metadata.table_row_fields). The marker family is exactly PNR101/102/104. Env REODROPMENU_OFF turns off ALL five pieces (the overview page is then empty).",
 				"opener_pattern": "^\\[content for drop[ -]?down menu\\]$",
 				"closer_pattern": "^\\[end of drop[ -]?down menu\\]$",
@@ -801,6 +821,42 @@
 				"pattern": "^\\[\\s*(?:insert\\s+)?(?:an?\\s+)?(?:ai\\s+)?audio\\s+animation\\b[^\\[\\]]{0,40}$"
 			}
 		},
+		"video_time_range": {
+			"enabled": true,
+			"env": "VIDTIME_OFF",
+			"range_pattern": "(\\d{1,2})[:.](\\d{2})\\s*(?:min(?:ute)?s?|secs?|seconds)?\\s*(?:[-\\u2013\\u2014]|to)\\s*(\\d{1,2})[:.](\\d{2})",
+			"start_pattern": "\\b(?:start(?:s|ing)?|begin(?:s|ning)?)(?:\\s+(?:at|from))?\\s*:?\\s*(\\d{1,2})[:.](\\d{2})",
+			"end_pattern": "\\b(?:finish(?:es|ing)?|end(?:s|ing)?|cut|stop(?:s|ping)?|go(?:es)?\\s+to)(?:\\s+(?:at|approx(?:imately)?\\.?))*\\s*:?\\s*(\\d{1,2})[:.](\\d{2})",
+			"start_seconds_pattern": "\\b(?:start(?:s|ing)?|begin(?:s|ning)?)(?:\\s+(?:at|from))?\\s*(?::(\\d{2})|(\\d{1,3})\\s*sec(?:ond)?s?\\b)",
+			"media_list_row": {
+				"enabled": true,
+				"env": "VIDTIMEML_OFF",
+				"_doc": "THE CROP WRITTEN IN THE MEDIA LIST ROW. When the video's own line holds no crop, the writer often typed it in the video's Media List row, beside the address ('║ Youtube ║ <address> / (2:54-3:17) ║', '(up to 1:38)' — CHFUN04 / 06, ARFUN04 …), and the gold crops the video from it. The row's visible words (MediaListParser keeps them as rowText) are read the same way for every Media List row naming the video's id; exactly one distinct crop is used — rows that give two different crops (the same video used twice) give none."
+			},
+			"range_comma": {
+				"enabled": true,
+				"env": "VIDTIMECOMMA_OFF",
+				"pattern": "(\\d{1,2})[:.](\\d{2})\\s*(?:min(?:ute)?s?|secs?|seconds)?\\s*,\\s*to\\s+(\\d{1,2})[:.](\\d{2})",
+				"_doc": "'[Video starting at 0:07, to 0:22]' (CEDR101 / CEDR401): a comma before the range's 'to', read as a range when range_pattern finds none."
+			},
+			"widget_postpass": {
+				"enabled": true,
+				"env": "VIDTIMEWIDGET_OFF",
+				"_doc": "THE CROP OF A VIDEO BUILT INSIDE A WIDGET. A carousel slide's, a tab's or an accordion panel's YouTube embed is built by its widget builder from the video id alone, so the crop the writer typed beside it ('[Video starting at 0:07, to 0:22] <address>' CEDR101 / CEDR401; a Media List row's '<address> (Please start video at 1:00)' BLL240 / 250 / 270, '<address> / (1.05-1.50)' CEDK501) never reached it, while the gold crops the video. MediaBuilder.videoTimePostpass (the page's final-body chain, beside the icon post-pass): a YouTube embed with no query whose id the media builder never handled takes the ONE crop written beside that id in the Writers Template — the paragraph that holds it, or its table cell (else its row) — or in its Media List row; two different crops give none."
+			},
+			"up_to": {
+				"enabled": true,
+				"env": "VIDTIMEUPTO_OFF",
+				"pattern": "\\b(?:up\\s*to|until)\\s*:?\\s*(\\d{1,2})[:.](\\d{2})",
+				"_doc": "'(up to 1:38)', 'until 3:16' is an end time too, read when end_pattern finds none."
+			},
+			"next_spans": {
+				"enabled": true,
+				"env": "VIDTIMENEXT_OFF",
+				"_doc": "THE CROP TYPED IN RED AFTER THE ADDRESS. The writer often types the crop as its own red span after the video's address on the same line ('[video] <address> (0.27-3:06)', '(Starts at 0.06)', 'use from 0.18min to 4.23min' — ENFUN02 / 03 / 05 / 07 / 09, HPFUN301 …); it shipped as a Writers Note beside an uncropped embed while the gold crops the video. The red spans and black words that FOLLOW the video tag in the same paragraph are read with its own words, up to the next element tag (a span with its own primary tag); the Writers Note is unchanged."
+			},
+			"_doc": "THE WRITER'S CROP TIMES GO ON THE EMBED. A writer types where a video should start and stop after its link — '(0:10- 2:12)', 'Crop (0.03-1:55)', 'Start 0.56 Finish 1.40 mins', 'Start at 0:23 seconds, cut at 3:22.' (ENGR102, ENGS101, TEFUN01 / 03 / 04 …). The embed built and dropped its own words, so the instruction reached no output; the human build appends it to the YouTube address (TEFUN03 '&end=83', ENGR102 '&start=10&end=132'; KB 04A COMP07: YouTube timestamp parameters can be appended to the iframe src). MediaBuilder.#timeParams reads ONE crop from the tag's own paragraph, addresses removed — one range_pattern match, or a start_pattern / end_pattern pair — and the YouTube embed takes '?start=S&end=E' (start omitted at 0). Two ranges ('5:27-5:42 clipped to 5:59-6:30'), a duration alone ('3:44min') or an end before the start give none."
+		},
 		"video_embed_title_drop": {
 			"enabled": true,
 			"note": "A [video] whose embed was built (a YouTube id OR a generic iframe URL) DROPS its OWN title line (the [video] element's blackAfter) from the body — that text is the video's NAME, which the AcksBuilder ships as the acknowledgement, so the human renders ONLY the embed (ENGC102 overview '[video] Nonfiction Text Features' and the 'Red Pandas | …' / 'PANDA PANTS …' titles are in the human ACKS, never the body; the human build never shows a video-title <p>). SAFETY: only the element's OWN blackAfter is dropped — genuinely-FOLLOWING separate prose (a later [body]-less paragraph the #gatherFollowing also pulled in, e.g. ENGJ402 'Here is an alternative video…') is KEPT, and AUDIO text is always kept (MXFL301 [audio clip] dialogue 'Hi, I'm John Atkins…' has no external embed → kept). Env VIDTITLE_OFF renders the title as a body <p>."
@@ -1316,6 +1372,12 @@
 				"_doc": "A RED ADDRESS ON THE NEXT LINE IS THE VIDEO'S OWN. The writer types '[video] <title>' and the video's address in red on the next line (alone, perhaps with a closing bracket); a red line with no tag in it is shown by no reader, so the video shipped as 'no URL found' and was missing from the page while its address reached the acknowledgements. MediaBuilder.media: an address-less video whose next unconsumed item is an unparsed red line holding only one address of host_pattern (its black words brackets at most) takes that address and consumes the line — the embed the gold shows. Toggle OFF = the flag and no video as before."
 			},
 			"_doc": "A VIDEO TAG WITH NO ADDRESS JUST BEFORE THE VIDEO THAT HAS ONE IS THE WRITER'S REQUEST ABOUT IT. The writer types their instruction as its own bracket ('[please embed video with image and play button]', '[insert video: Dev team please cut at 5:06]') and the video on the next line ('[Video link] <address>'); the instruction parsed as a video element with no address, so it shipped as the red 'Red Flag: [video] with no URL found — add the video source.' directly above a video embedded with its source, and the writer's words were lost. MediaBuilder.media's no-address branch: when the next item (blank lines skipped) is a tag of next_tags that carries an address (a link, or an address in its words — a run of address-less videos is each its own missing source), the tag's own words ship as the red Writers Note instead (a bare tag whose words are only kind_words / numbers ships nothing; the next tag is the video). Toggle OFF = the missing-source flag as before."
+		},
+		"no_url_writer_tag": {
+			"enabled": true,
+			"env": "NOURLTAG_OFF",
+			"kind_words": ["insert", "video", "videos", "embed", "imbed", "link", "interactive", "film", "clip", "audio", "here", "a", "an", "the"],
+			"_doc": "THE MISSING-SOURCE FLAG NAMES THE WRITER'S OWN TAG. An address-less video or embed tag ships the red flag '[video] with no URL found — add the video source.'; when the tag's line is the writer's brackets only and they carry words beyond the bare kind ('[Insert video – 1. section one teaching]', '[Insert Video Item 4]', '[Video] [Audiovisual item 11]', '[Please crop this video from the beginning to 2.41]'), those words were the developer's only record of WHICH video goes there and were dropped — the human build keeps each request beside the video it sourced (DAN1006 '<!-- [Insert introduction video] -->'). MediaBuilder.NoUrlFlag: the flag names the writer's brackets, verbatim, in place of '[video]' / '[embed]'. A bracket of kind_words alone ('[video]', '[Interactive: video]', '[Insert video]') keeps the bare flag, and a line with words outside its brackets keeps it too (media_free_note ships those words as the Writers Note). Env NOURLTAG_OFF."
 		},
 		"media_free_note": {
 			"enabled": true,
@@ -2020,6 +2082,13 @@
 		},
 		"mode_D": {
 			"visible": "<img class=\"img-fluid\" src=\"images/{filename}\" alt=\"\">"
+		},
+		"stock_button": {
+			"enabled": true,
+			"env": "STOCKBUTTON_OFF",
+			"host_pattern": "^https?:\\/\\/(?:www\\.)?istockphoto\\.com\\/",
+			"default_labels": ["Go to website"],
+			"_doc": "A STOCK PICTURE IS NEVER A WEBSITE BUTTON. Through several authoring forms ('[image] <address>' after a modal ENGI401, an activity table's picture cell ENGI400 / PWY1001, a tile's picture WJFUN211, '[image] [item #112] <address>' MXDI201, 'Image: iStock: stepping stone: <address>' CEDR501, a two-row picture / body table SSCI104) an iStock picture's address reached the external-destination rule and shipped as an externalButton 'Go to website', or as the address of the writer's own button ('Yes', 'Go to journal'); the human build shows the picture. MediaBuilder.stockButtonPostpass (the page's final-body chain): an external button whose address is an iStock picture with an id renders the picture placeholder (the image path's own form, FinishImg's title); a button with a default_labels label is replaced by it, a writer's labelled button keeps its label with an empty link and the picture follows."
 		},
 		"filename_rules": {
 			"istock": "iStock-{id}.jpg",
@@ -2917,6 +2986,16 @@
 				},
 				"note": "The writer's CLEAN CATEGORY-SORT table — one table of 3+ columns whose first row is a row of plain category labels (Past | Present | Future, ai | ay | a_e, Noun | Verb | Adjective) and whose data cells are the items that belong under each column (a ' / ' or bullet list in a cell = several items) — builds the KB 03B 'Column Layout': a row.dropContainer with one ddColumn per category (<p>heading</p> + one drop option=c per item in that column, c = the 1-based column index = the answer key), a row.dragContainer whose FIRST ddColumn holds every drag option=c in column order, padded with EMPTY ddColumns to the drop-column count (03B: 'Empty ddColumn pads to match drop column count', as the human mostly does), then the button_row. No blanks attribute, no autoCheck / noBG / hoverBoxes (the developer's editorial modifiers — no writer signal). Tried ONLY where the text form and the image form both returned null. NEVER HALF-BUILDS (null = the hand-off box): a second table, an extraType, a harvested media item, width < min_columns, fewer than min_rows rows, a header cell that is empty / red / a URL / a [tag] / matches header_reject_pattern (a blank run = a FIB, an image word = the image column-sort) / longer than header_max_words (MXFU402's question headers = a match), any data cell that is red / a URL / a [tag], items in fewer than 2 columns (a pooled cell = no answer key), fewer than min_items items, a repeated item (an ambiguous key); the bundle's OTHER members are the shared members rule's business (interactive_builders.dragAndDrop.members). The human mostly builds these tables as the column form. DDCOLUMN_OFF=1 turns it off."
 			},
+			"bracket_sort": {
+				"enabled": true,
+				"env": "DDBRACKETSORT_OFF",
+				"min_items": 4,
+				"max_columns": 4,
+				"answer_pattern": "^\\s*\\[\\s*([^\\[\\]]{1,40}?)[\\s.]*\\]\\s*$",
+				"consume_labels": "^(?:choices|options|items|sortable statements|statements)\\s*:?$",
+				"note_pattern": "\\banswers?\\b[^\\]]*\\b(?:red|brackets?)\\b|\\brandomi[sz]e\\b",
+				"_doc": "THE COLUMN SORT TYPED AS LINES. The writer lists the choices one per line, each followed by its column in red brackets ('Visual daily schedule. [Provides structure]', 'Safe shelter [Need]'), under an optional header table naming the columns ('[H3] Provides structure ║ [H3] Provides freedom' over one empty row). The human builds the KB 03B Column Layout — the column form's own markup (column.open … close, reused here) with the bracket as each item's answer key. Read: every black line followed, in the same paragraph, by a red tag whose whole text is ONE bracket (answer_pattern) is an item; the columns are the header table's first-row labels (heading markers stripped; an answer matches a label folded, as a prefix within two letters — 'Need' / 'Needs' — or within one letter's edit — a typed 'fFreedom') or, with no table, the distinct answers in the writer's order (2 to max_columns). A short black label line ('Choices', 'Sortable Statements' — consume_labels) is the list's own heading, consumed; a red line that only tells the developer about the answers ('[Items / choices, answers in red. Please randomise]', which parses as an [answer] tag — note_pattern) becomes a Writers Note instead of refusing the build; the answer brackets leave the Writers Notes (they are the key, not a note). The last form in the dragAndDrop chain (every other form's build unchanged). NEVER HALF-BUILDS: a second table, a table row with words below the header, an extraType or media item, fewer than min_items items, an answer matching no column or two, a column with no item, a repeated item."
+			},
 			"image_column": {
 				"enabled": true,
 				"env": "DDIMGCOLUMN_OFF",
@@ -3751,6 +3830,12 @@
 					"enabled": true,
 					"env": "CARIMGLINK_OFF",
 					"min_text_chars": 3
+				},
+				"image_brief": {
+					"_doc": "THE PICTURE BRIEF IS NOT THE CAPTION. A slide row '[image] types of leaves ║ Can you see a leaf?' — the image cell's words name the picture for the designer (often with the stock address as a hyperlink on them), the other cell is the learner's caption. The human build puts the brief in the picture's alt and shows the caption only. In a row of two or more cells, an [image] cell that yields its picture plus a short line (at most max_words words) beside another cell that yields prose keeps the picture and drops the line from the caption.",
+					"enabled": true,
+					"env": "CARIMGBRIEF_OFF",
+					"max_words": 8
 				},
 				"media_marker_pattern": "\\[\\s*(image|video|audio|caption|embed)[^\\]]*\\]",
 				"dangling_marker_repair": "\\[\\s*(image|video|audio|caption|embed)\\b(?![^\\[\\]\\n]*\\])",
@@ -4767,6 +4852,27 @@
 		"tooltip_text_default": "Overview",
 		"tooltip_rule": "menu_button_tooltip yes → attribute present; no/none → absent.",
 		"title_split": {
+			"template_leftovers": {
+				"_doc": "THE TITLE BAR'S TEMPLATE LEFTOVERS ARE NOT THE TITLE. A writer copies the title bar from a sibling module or leaves the template's own words in it, and the human build drops each of them. Three forms, each its own rule, applied to the title-bar payload after the module's own code is stripped (never leaving it empty): label_lead — the template's 'MODULE TITLE:' label typed before the title (CEDT104 'MODULE TITLE: Waiata I te Neke | Waiata in Motion'); code_lead — another module's code at the start, an all-capitals code shape followed by the title (ENGI203 'ENGI201 MY TIME CAPSULE | …', MXFU302 'MXFU301 …', OSSM401 'OSSM301 Social Media | Pāhopori', XDLS912 'XFUN07 Building Life Skills – …'; every title bar of that shape in the corpus is a code); te_reo_placeholder — the unwritten te reo half held by a placeholder at the end ('FUNdamentals Sentence Structure | (Te Reo)', '…Structure(Te Reo)', '…/(Te Reo)', 'Audience and Purpose – Te Reo tbc'; WJFUN105 / 106 / 108 / 109).",
+				"label_lead": {
+					"enabled": true,
+					"env": "TITLELABEL_OFF",
+					"pattern": "^\\s*module\\s+title\\s*:\\s*",
+					"flags": "i"
+				},
+				"code_lead": {
+					"enabled": true,
+					"env": "TITLECODE_OFF",
+					"pattern": "^\\s*[A-Z]{2,6}\\d{2,5}[A-Z]?\\b[\\s:\\u2013\\u2014-]+(?=\\S)",
+					"flags": ""
+				},
+				"te_reo_placeholder": {
+					"enabled": true,
+					"env": "TITLETEREO_OFF",
+					"pattern": "\\s*(?:[|/\\u2013\\u2014-]\\s*)?(?:\\(\\s*te\\s+reo\\s*\\)|\\bte\\s+reo\\s+tbc\\b)\\s*$",
+					"flags": "i"
+				}
+			},
 			"lang_boundary_split": {
 				"enabled": true,
 				"env": "TITLELANGSPLIT_OFF",
@@ -4791,7 +4897,15 @@
 					"Te reo Māori translation needed"
 				],
 				"all_placeholder_uses_course": true,
-				"note": "A writer who never replaces the template's italic 'MODULE TITLE TE REO' (or 'MODULE TITLE') placeholder has NOT provided that title — the real one is not in the WT, so it must NOT be shipped as an <h1>. extra_placeholders extends placeholder_titles (folded compare); a half matching ANY is DROPPED. all_placeholder_uses_course: when EVERY title-bar half is a placeholder, do NOT restore it — fall back to the front-matter Course as the SINGLE English title and emit NO Te Reo (matching the human, who ships only what's real; e.g. OSBY101/201, CEDO202, CEDR201/301/302, CEDT201-204). For a MIXED bar (one real + one placeholder, e.g. OSGM501 'GAMING SAFELY | MODULE TITLE TE REO', also OSOH101/501, TEFUN02/05, XGF9001/9006, XLP05), the real half is kept as the English title and the dropped-placeholder flag stops PageAssembler from mis-promoting it to the Te Reo slot. The strings 'module title te reo'/'module title'/'te reo' are unambiguous template boilerplate — no real module is titled that, so the discriminator cannot touch a genuine bilingual title. Env TITLEPH_OFF uses the plain ['te reo'] list with no Course fallback."
+				"front_matter_titles": {
+					"enabled": true,
+					"env": "FMTITLE_OFF",
+					"code_token": "^\\s*[A-Za-z]{2,8}\\d{2,5}[A-Za-z]?\\s*[:\\u2013\\u2014\\-]?\\s*",
+					"module_code_field": true,
+					"subject_when_course": "\\bconnect\\s*ed\\b",
+					"_doc": "THE MODULE'S OWN TITLE FROM THE FRONT MATTER, BEFORE THE COURSE. When every title-bar half is a placeholder (or the bar is bare), two front-matter fields can still carry the module's real title, and the human's h1 follows them: (1) module_code_field — the 'Module code:' value's words after the code token ('Module code: ENGC302 Email Me | Īmēra Mai', or the title alone with no code), a '|' splitting English | Te Reo; a value with no space or only the code is not a title; (2) subject_when_course — the 'Subject:' value when the Course is the programme banner this pattern names ('Course: Tūhono – Ako whakauru | ConnectED', 'Subject: Mixing Colours'), English slot only. Only when neither gives a title does the Course fallback below apply."
+				},
+				"note": "A writer who never replaces the template's italic 'MODULE TITLE TE REO' (or 'MODULE TITLE') placeholder has NOT provided that title — the real one is not in the WT, so it must NOT be shipped as an <h1>. extra_placeholders extends placeholder_titles (folded compare); a half matching ANY is DROPPED. all_placeholder_uses_course: when EVERY title-bar half is a placeholder, do NOT restore it — first try front_matter_titles above, then fall back to the front-matter Course as the SINGLE English title and emit NO Te Reo (the human ships only what's real; e.g. OSBY101/201, CEDO202). For a MIXED bar (one real + one placeholder, e.g. OSGM501 'GAMING SAFELY | MODULE TITLE TE REO', also OSOH101/501, TEFUN02/05, XGF9001/9006, XLP05), the real half is kept as the English title and the dropped-placeholder flag stops PageAssembler from mis-promoting it to the Te Reo slot. The strings 'module title te reo'/'module title'/'te reo' are unambiguous template boilerplate — no real module is titled that, so the discriminator cannot touch a genuine bilingual title. Env TITLEPH_OFF uses the plain ['te reo'] list with no Course fallback."
 			},
 			"bilingual_punct_split": true,
 			"bilingual_dash_split": true,

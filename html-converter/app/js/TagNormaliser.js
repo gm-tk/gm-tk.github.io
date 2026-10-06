@@ -87,7 +87,8 @@ class TagNormaliser {
 		// _meta.toggled_aliases [{ tag, aliases, env }]. Groups: SPELLALIAS_OFF (widget spellings), SUPALIAS_OFF (the
 		// supervisor-note spellings: supervisor's / supervisors / supervision note), SPELLVAR_OFF (the spaced /
 		// joined spellings: over view, bodytext, memorygame, wordhighlighter, carou sel, externallink, dragdrop),
-		// HEADINGHN_OFF (the heading level spelled out: «[Heading H4]» is «[H4]», so it also ends a widget's capture).
+		// HEADINGHN_OFF (the heading level spelled out: «[Heading H4]» is «[H4]», so it also ends a widget's capture),
+		// WHAKASPELL_OFF (the proverb tag's spellings: whakatauiki / whakatuaki / whaktaukī / whakaukī).
 		for (const grp of lexicon._meta?.toggled_aliases ?? []) {
 			if (!grp || grp.enabled === false || !lexicon.tags[grp.tag]) continue;
 			if (typeof process !== "undefined" && process.env && process.env[grp.env || "SPELLALIAS_OFF"]) continue;
