@@ -2180,9 +2180,15 @@ class ContentConverter {
 						&& sideBySideBlocks().has(it.block);
 					const headingCloses = h !== null && h <= actHeadMax && !sbsStay
 						&& (!cfg.heading_closes_only_after_content || top.hasContent);
-					hit = headingCloses
+					// a family dialect: in a listed family a title bar reaching a still-EMPTY box is that box's title
+					// (container_auto_close.activity_close_before.title_bar_title; env ACTTITLEBAR_OFF)
+					const tbt = cfg.title_bar_title;
+					const tbtStay = !!tbt && tbt.enabled !== false && !top.hasContent && primary?.tag === "title bar"
+						&& !(typeof process !== "undefined" && process.env && process.env[tbt.env || "ACTTITLEBAR_OFF"])
+						&& (tbt.prefixes ?? []).includes(String(DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")]?.prefix ?? ""));
+					hit = !tbtStay && (headingCloses
 						|| (primary && cfg.directives.includes(primary.directive))
-						|| (primary && cfg.tags.includes(primary.tag));
+						|| (primary && cfg.tags.includes(primary.tag)));
 				}
 				if (!hit) return;
 				emit(top.close);
@@ -3239,7 +3245,14 @@ class ContentConverter {
 						let _builtBreak = false;   // the built flipCard group closes its column (see #breaksAfterBuilt)
 						const mtkShellI = this.#mtkQuizShellBundle(bundle, it);   // see the owned site above ("lead" cannot occur inline)
 						if (mtkShellI === "widget") emit(...this.#mtkQuizShellPre(bundle, it, run, bodyItems, stack, renderedHeading));
-						else if (!this.#mtkQuizBundleThin(bundle)) { const _placeholderHtml = this.#interactivePlaceholder(bundle, run); emit(_placeholderHtml); _builtBreak = this.#breaksAfterBuilt(_placeholderHtml, run); }   // the built flipCard group closes its column
+						else if (!this.#mtkQuizBundleThin(bundle)) {
+							const _placeholderHtml = this.#interactivePlaceholder(bundle, run);
+							// A built widget whose template OWNS its row (interactive_builders.<type>.own_row — the Pathways persona
+							// pair's two side-by-side columns) and whose HTML is a whole grid row is placed at the top level, outside
+							// the section's content column, as the callouts' own_row form is; inside an activity box it flows as usual.
+							if (!stack.length && this.#ownsRow(bundle, _placeholderHtml)) { breakRow(); parts.push(_placeholderHtml); markContent(); }
+							else { emit(_placeholderHtml); _builtBreak = this.#breaksAfterBuilt(_placeholderHtml, run); }   // the built flipCard group closes its column
+						}
 						const mtkTailI = this.#mtkQuizBundleTail(bundle, run, it);   // CL-0038 (see above)
 						emit(...mtkTailI);
 						if (mtkCfg && (mtkShellI || mtkTailI.length)) mtkSilence(it);
@@ -5146,8 +5159,8 @@ class ContentConverter {
 		// post-passes: every consumer that reads a box's writer id (the tile pairing, the dropbox
 		// modifier) has run, so the page's consecutive numbering is settled last.
 		const bodyHtml = this.#boldMarkerResidue(this.#softBreakLead(this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
-			this.#pageNumberNormalise(this.#freeDropboxBox(this.#introHeadingFullRow(this.#bareLinkUrlNote(this.#bareVideoUrlEmbed(this.#bareStockUrlImage(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
-				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), tileRowTiles, run))), page, run), run), run), run), run), run), page, run), page, run),   // #freeDropboxBox, #journalInstructionBox, #introHeadingFullRow, #summaryHeadingAlert, #bareStockUrlImage, #bareVideoUrlEmbed, #bareLinkUrlNote
+			this.#journalPlaceholderFill(this.#pageNumberNormalise(this.#emptyActivityDrop(this.#freeDropboxBox(this.#introHeadingFullRow(this.#bareLinkUrlNote(this.#bareVideoUrlEmbed(this.#bareStockUrlImage(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
+				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), tileRowTiles, run))), page, run), run), run), run), run), run), page, run), page, run), page, run), page, run),   // #journalPlaceholderFill, #emptyActivityDrop, #freeDropboxBox, #journalInstructionBox, #introHeadingFullRow, #summaryHeadingAlert, #bareStockUrlImage, #bareVideoUrlEmbed, #bareLinkUrlNote
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
 				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
 				// the level-pages dialect's nav/tile labels + registry row
@@ -7586,10 +7599,13 @@ class ContentConverter {
 				}
 			}
 		};
-		for (const tbl of (bundle.tables ?? [])) {
+		// a builder that read EVERY line of its captured tables (bundle.realisedTables — the Pathways persona, which declines on
+		// any line it does not place) has realised each red request in them: its circle-image and audio requests are the build
+		for (const tbl of (bundle.realisedTables ? [] : (bundle.tables ?? []))) {
 			for (const row of (tbl.rows ?? [])) for (const cell of row) scan(cell);
 		}
 		for (const it of [...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])]) {
+			if (bundle.realisedTables && it?.type === "table") continue;
 			scan(it?.text);
 			scan(it?.blackAfter);
 		}
@@ -8661,6 +8677,66 @@ class ContentConverter {
 		return [cfg.row_open, ...tiles, cfg.row_close].join("\n");
 	}
 
+	/** AN ACTIVITY BOX WITH NOTHING IN IT IS NOT SHIPPED. A numbered `div.activity` whose only content is its own empty
+	 *  `row > col-12` (the writer's opener closed before any content reached it — a section marker or container right
+	 *  after it, a second opener, an interactive that built its own box, content the rules drop) is removed, with the
+	 *  content row around it when the box is that row's only child. Runs just before #pageNumberNormalise, so the empty
+	 *  box no longer takes a letter the page's real boxes need. Every removal is named in a run note.
+	 *  Data activity_wrapper.empty_box_drop; env EMPTYBOX_OFF. */
+	static #emptyActivityDrop(html, page, run) {
+		const cfg = DataService.Data.EmitTemplates?.activity_wrapper?.empty_box_drop;
+		if (!cfg || cfg.enabled === false || !html || !html.includes("class=\"activity")) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "EMPTYBOX_OFF"]) return html;
+		const box = "<div class=\"activity(?:\\s[^\"]*)?\" number=\"([^\"]*)\">\\s*<div class=\"row\">\\s*<div class=\"col-12\">\\s*</div>\\s*</div>\\s*</div>";
+		const ids = [];
+		// a box right under the writer's own red note («activity note: will be taken from this merged content») is the
+		// placeholder that note describes — it stays (keep_after_note)
+		const noteBefore = /<p class="cv2-note"[^>]*>[^<]*<\/p>\s*$/;
+		const keepNoted = cfg.keep_after_note !== false;
+		const out = html
+			.replace(new RegExp("<div class=\"row\">\\s*<div class=\"(?:col-md-\\d+ )?col-12\">\\s*" + box + "\\s*</div>\\s*</div>", "g"), (m, id) => { ids.push(id); return ""; })
+			.replace(new RegExp(box, "g"), (m, id, at, all) => {
+				if (keepNoted && noteBefore.test(all.slice(Math.max(0, at - 1500), at))) return m;
+				ids.push(id); return "";
+			});
+		if (ids.length && run && typeof run.AddNote === "function")
+			run.AddNote("info", "ContentConverter", `Page ${page?.lessonLabel ?? ""}: ${ids.length} empty activity box${ids.length > 1 ? "es" : ""} (${ids.join(", ")}) not shipped — the writer's opener held no content (activity_wrapper.empty_box_drop).`);
+		return out;
+	}
+
+	/** THE WRITER'S PLACEHOLDER ID TAKES ITS BOX'S NUMBER. Once the page's activity numbers are settled
+	 *  (#pageNumberNormalise), a journal sentence inside an activity box that still names the writer's placeholder id
+	 *  («complete activity 3X», «… activity XY») names that box's number instead (AGH1008 6.0: «… complete activity 6B.»,
+	 *  the gold's). A placeholder outside every box is left as the writer typed it.
+	 *  Data activity_wrapper.journal_instruction_box.placeholder; env JOURNALPH_OFF. */
+	static #journalPlaceholderFill(html, page, run) {
+		const cfg = DataService.Data.EmitTemplates?.activity_wrapper?.journal_instruction_box;
+		const ph = cfg?.placeholder;
+		if (!cfg || cfg.enabled === false || !ph || ph.enabled === false || !html || !/journal/i.test(html)) return html;
+		if (typeof process !== "undefined" && process.env && (process.env[ph.env || "JOURNALPH_OFF"] || process.env[cfg.env || "JOURNALINSTR_OFF"])) return html;
+		const phRe = new RegExp(ph.id_pattern), jRe = new RegExp(cfg.journal_pattern, "i");
+		if (!phRe.test(html)) return html;
+		// every activity box's span (its open tag … its close) and number
+		const boxes = [], stack = [];
+		const re = /<(\/?)div\b([^>]*)>/g; let m;
+		while ((m = re.exec(html)) !== null) {
+			if (!m[1]) stack.push({ num: /\bclass="(?:[^"]*\s)?activity(?:\s[^"]*)?"[^>]*?\bnumber="([^"]*)"/.exec(m[2])?.[1] ?? null, start: m.index });
+			else { const t = stack.pop(); if (t && t.num) boxes.push({ num: t.num, start: t.start, end: m.index }); }
+		}
+		const fills = [];
+		const out = html.replace(/>([^<]+)</g, (all, text, at) => {
+			if (!jRe.test(text) || !phRe.test(text)) return all;
+			let box = null;
+			for (const b of boxes) if (b.start < at && at < b.end && (!box || b.start > box.start)) box = b;
+			if (!box) return all;
+			fills.push(box.num);
+			return ">" + text.replace(new RegExp(ph.id_pattern, "g"), (x, lead) => lead + box.num) + "<";
+		});
+		if (fills.length && run && typeof run.AddNote === "function")
+			run.AddNote("info", "ContentConverter", `Page ${page?.lessonLabel ?? ""}: the writer's placeholder activity id in ${fills.length} journal sentence${fills.length > 1 ? "s" : ""} now names its box (${fills.join(", ")}) (journal_instruction_box.placeholder).`);
+		return out;
+	}
+
 	/** THE PAGE'S ACTIVITY NUMBERS ARE CONSECUTIVE. KB 00B_CONVERSION_PIPELINE + constraint 62:
 	 *  "the first interactive keeps the writer's activity number; each subsequent interactive takes
 	 *  the next letter … renumber the following activities accordingly"; constraint 65:
@@ -9226,6 +9302,9 @@ class ContentConverter {
 		const leadRe = /^((?:\s|<(?:b|strong|i|em|u|span)\b[^>]*>)*)(?:\/(?:\s|&nbsp;)+)+/;
 		const tailRe = /(?:(?:\s|&nbsp;)+\/)+((?:\s|<\/(?:b|strong|i|em|u|span)>)*)$/;
 		const soundRe = /\/\s*\S{1,4}\s*\/\s*\/?\s*$/;
+		// a block OPENING with sound notation («/ oo / (look)») keeps its slash (soft_break_lead.sound_lead; env SLASHSOUND_OFF)
+		const sl = cfg.sound_lead;
+		const soundLeadRe = sl && sl.enabled !== false && !envOn(sl, "SLASHSOUND_OFF") ? new RegExp(sl.pattern ?? "^\\/\\s*[^\\s/]{1,4}\\s*\\/") : null;
 		const textOf = (s) => s.replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").trim();
 		let nLead = 0, nTail = 0;
 		const out = html.replace(blockRe, (whole, tag, attrs, inner, at) => {
@@ -9235,6 +9314,7 @@ class ContentConverter {
 			if (m) {
 				const after = textOf(inner).replace(/^(?:\/\s*)+/, "");
 				if (after.endsWith("/")) return whole;        // «/ oo /» — a sound, not a line break
+				if (soundLeadRe && soundLeadRe.test(textOf(inner))) return whole;   // «/ oo / (look)» — a sound and its example word
 				rest = m[1] + inner.slice(m[0].length);
 				nLead++;
 			} else if (trailOn) {
@@ -9723,6 +9803,13 @@ class ContentConverter {
 		if (!cfg || cfg.enabled === false || !html || !/journal/i.test(html)) return html;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "JOURNALINSTR_OFF"]) return html;
 		const jRe = new RegExp(cfg.journal_pattern, "i"), vRe = new RegExp(cfg.verb_pattern, "i"), idRe = new RegExp(cfg.id_pattern, "i");
+		// the writer's placeholder id («activity 3X», «activity XY»): the box takes the page's next letter after the boxes
+		// before it (the lesson digit, else the writer's); #journalPlaceholderFill writes the final id into the sentence after
+		// the number normaliser (placeholder; env JOURNALPH_OFF)
+		const phc = cfg.placeholder;
+		const phRe = phc && phc.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[phc.env || "JOURNALPH_OFF"])
+			? new RegExp(phc.id_pattern) : null;
+		const lessonDigit = /^\d+$/.test(String(page?.lessonNumber ?? "")) ? String(parseInt(page.lessonNumber, 10)) : null;
 		const plain = (s) => String(s).replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/&#39;|&rsquo;|&lsquo;/g, "'")
 			.replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
 		const CONT = new Set(["div", "ul", "ol", "li", "table", "thead", "tbody", "tr", "td", "th", "blockquote", "section", "figure", "a", "p", "h1", "h2", "h3", "h4", "h5", "h6"]);
@@ -9750,17 +9837,26 @@ class ContentConverter {
 					if (pClose > 0) {
 						const text = plain(s.slice(m.index, pClose));
 						const w = text.split(" ").filter(Boolean).length;
-						const idm = idRe.exec(text);
-						const id = idm ? idm[1] + idm[2].toUpperCase() : "";
+						const phm = phRe ? phRe.exec(text) : null;
+						const idm = phm ? null : idRe.exec(text);
+						let id = idm ? idm[1] + idm[2].toUpperCase() : "", ph = null;
+						const d = phm ? (lessonDigit ?? (phm[2] != null ? String(parseInt(phm[2], 10)) : null)) : null;
+						if (d !== null) {
+							let max = -1;
+							for (const b of s.slice(0, m.index).matchAll(/\bnumber="(\d+)([A-Z])"/g))
+								if (String(parseInt(b[1], 10)) === d && b[2] !== "X") max = Math.max(max, b[2].charCodeAt(0) - 65);
+							if (max < 25) { id = d + String.fromCharCode(65 + max + 1); ph = { id }; }
+						}
 						const mine = run?._journalTexts?.has(text.replace(/[*_]/g, "").replace(/\s+/g, " ").trim().toLowerCase());
-						if (idm && jRe.test(text) && vRe.test(text) && w >= (cfg.min_words ?? 5) && w <= (cfg.max_words ?? 40)
+						if ((idm || ph) && jRe.test(text) && vRe.test(text) && w >= (cfg.min_words ?? 5) && w <= (cfg.max_words ?? 40)
 							&& (free || (mine && String(stack[2].num).toUpperCase() !== id))
 							// the page already has that id: the page-number de-dupe gives the new box the next free letter — harmless when
 							// no activity box follows it (the gold's own form: AGH1009 7.0 7A → its journal box 7B), a shift of
-							// every later id when one does (never)
-							&& !(new RegExp(`\\bnumber="${id}"`, "i").test(s)
-								&& /<div class="(?:[^"]*\s)?activity(?:\s[^"]*)?"[^>]*? number="/.test(s.slice(pClose))))
-							return { pStart: m.index, pEnd: pClose + 4, row: stack[0], col: stack[1], box: inBox ? stack : null, id, text };
+							// every later id when one does (never) — except for the writer's PLACEHOLDER id, whose box is positional
+							// (KB c62: the later boxes renumber — AGH1003 4.0 «4X» → 4B and the sort after it → 4C, the gold's)
+							&& (ph || !(new RegExp(`\\bnumber="${id}"`, "i").test(s)
+								&& /<div class="(?:[^"]*\s)?activity(?:\s[^"]*)?"[^>]*? number="/.test(s.slice(pClose)))))
+							return { pStart: m.index, pEnd: pClose + 4, row: stack[0], col: stack[1], box: inBox ? stack : null, id, text, ph };
 					}
 				}
 				stack.push({ tag, cls: (/\bclass="([^"]*)"/.exec(m[3]) ?? [])[1] ?? "", num: (/\bnumber="([^"]*)"/.exec(m[3]) ?? [])[1] ?? "", start: m.index, end: m.index + m[0].length });
@@ -12061,6 +12157,19 @@ class ContentConverter {
 	// prose that follows. Data body_region.row_breaks.after_built_widgets — a rule matches the built
 	// html's open-tag class, the module's template_type and subject. Returns true when the inline
 	// widget site should breakRow().
+	/**
+	 * Does a BUILT widget own its row? Its builder template says so (interactive_builders.<type>.own_row.enabled, env from
+	 * own_row.env) and the built HTML is a whole grid row (`<div class="row">` straight into a column) — the form a writer's
+	 * side-by-side pair takes (two persona columns), which the human places at the top level of the body.
+	 */
+	static #ownsRow(bundle, html) {
+		if (!bundle?.built) return false;
+		const cfg = DataService.Data.EmitTemplates.interactive_builders?.[bundle.type]?.own_row;
+		if (!cfg || cfg.enabled === false) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "OWNROW_OFF"]) return false;
+		return /^\s*<div class="row">\s*<div class="col-/.test(String(html ?? ""));
+	}
+
 	static #breaksAfterBuilt(html, run) {
 		const cfg = DataService.Data.EmitTemplates?.body_region?.row_breaks?.after_built_widgets;
 		if (!cfg || cfg.enabled === false) return false;
@@ -12931,6 +13040,9 @@ class ContentConverter {
 			rawKey: this.CaptureFold(String(t).replace(/https?:\/\/\S+|www\.\S+/gi, " ")).split(" ").filter(Boolean).slice(0, 8).join(" ") }));
 		if (built !== null) {
 			bundle.built = true;            // flag for the manifest (built vs un-built)
+			// a builder whose template says it realises every line of its captured tables (interactive_builders.<type>
+			// .realises_tables — the Pathways persona) leaves none of their red requests to surface as notes below
+			if (DataService.Data.EmitTemplates.interactive_builders?.[bundle.type]?.realises_tables === true) bundle.realisedTables = true;
 			// RETAIN embedded writer instructions rather than silently discarding them.
 			// A documented CS:/Dev:/Note:/please… note the writer coloured red inside a
 			// widget cell/member is stripped from the BUILD (so it never corrupts the

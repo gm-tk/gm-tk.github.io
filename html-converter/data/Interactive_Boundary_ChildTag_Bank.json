@@ -736,6 +736,14 @@
 				"slide n"
 			]
 		},
+		"pathwaysPersona": {
+			"heading_is_terminator": true,
+			"uses_data_table": true,
+			"signature_subtags": [
+				"data marker"
+			],
+			"nested_interactives_observed": []
+		},
 		"reorder": {
 			"heading_is_terminator": true,
 			"uses_data_table": true,

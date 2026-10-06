@@ -99,14 +99,25 @@ class PageAssembler {
 		if (!cfg || cfg.enabled === false || cfg.bracket_sentence === false) return;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "JOURNALINSTR_OFF"]) return;
 		const jRe = new RegExp(cfg.journal_pattern, "i"), vRe = new RegExp(cfg.verb_pattern, "i"), idRe = new RegExp(cfg.id_pattern, "i");
+		// the writer's placeholder id («complete activity X.» / «XY.» / «XX.») — a journal sentence too (placeholder; env JOURNALPH_OFF)
+		const ph = cfg.placeholder;
+		const phRe = ph && ph.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[ph.env || "JOURNALPH_OFF"])
+			? new RegExp(ph.id_pattern) : null;
+		const stopOn = !!cfg.outer_stop && cfg.outer_stop.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[cfg.outer_stop.env || "JOURNALSTOP_OFF"]);
 		let n = 0;
 		for (const it of items) {
 			if (!it || it.type !== "tag" || it.parse?.primary?.tag !== "activity" || (it.parse.tags ?? []).length !== 1) continue;
-			const inner = String(it.text ?? "").replace(/^\s*\[/, "").replace(/[\]}]\s*$/, "").trim();
+			// the sentence's own stop typed after the closing bracket («… activity 2A].» — outer_stop; env JOURNALSTOP_OFF)
+			let raw = String(it.text ?? ""), stop = "";
+			const os = stopOn ? /[\]}]\s*([.!?])\s*$/.exec(raw) : null;
+			if (os) { stop = os[1]; raw = raw.slice(0, os.index + 1); }
+			let inner = raw.replace(/^\s*\[/, "").replace(/[\]}]\s*$/, "").trim();
+			if (stop && !/[.!?]$/.test(inner)) inner += stop;
 			if (/[[\]{}]/.test(inner)) continue;   // a second bracket inside: not one sentence
 			const words = inner.split(/\s+/).filter(Boolean).length;
 			if (words < (cfg.min_words ?? 5) || words > (cfg.max_words ?? 40)) continue;
-			if (!jRe.test(inner) || !vRe.test(inner) || !idRe.test(inner)) continue;
+			if (!jRe.test(inner) || !vRe.test(inner) || !(idRe.test(inner) || (phRe && phRe.test(inner)))) continue;
 			const tail = String(it.blackAfter ?? "");
 			it.type = "black";
 			it.text = inner + (tail.trim() ? (/^\s*[.,;:!?]/.test(tail) ? tail.trim() : " " + tail.trim()) : "");

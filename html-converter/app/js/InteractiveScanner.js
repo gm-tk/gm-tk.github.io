@@ -359,9 +359,16 @@ class InteractiveScanner {
 				const _ctgOn = reoMode
 					&& !(typeof process !== "undefined" && process.env && process.env.REOTABLE_OFF)
 					&& (DataService.Data.EmitTemplates?.elements?.dual_language?.content_table_guard?.enabled !== false);
-				const cellType = (_ctgOn && this.#bilingualContentTable(it.block))
+				// THE PATHWAYS PERSONA TABLE (KB 14A §14.2): a table that reads as the writer's persona cell —
+				// «[Audiovisual item N: Whai]» … «[Transcript button]» and the recording's words — is that widget, whatever
+				// other word in it the lexicon would take as a widget («[Include the dropdown text below …]») and whether or
+				// not the bilingual content-table guard would keep it as content. It is read by the builder's own reader, so
+				// it is captured only when it will build. Data interactive_builders.pathwaysPersona; env PERSONA_OFF.
+				const personaType = InteractiveBuilder.PathwaysPersonas(it.block)
+					? { type: "pathwaysPersona", canonTag: "pathways persona" } : null;
+				const cellType = personaType ?? ((_ctgOn && this.#bilingualContentTable(it.block))
 					? null
-					: this.#interactiveInTable(it.block, normaliser, InteractiveScanner.#tableInteractionCue(items, i));
+					: this.#interactiveInTable(it.block, normaliser, InteractiveScanner.#tableInteractionCue(items, i)));
 				if (cellType) {
 					const bankEntry2 = bank.interactives[cellType.type] ?? null;
 					const tableBundle = {
@@ -1944,6 +1951,11 @@ class InteractiveScanner {
 			const next = items[j];
 
 			if (next.type === "table") {           // content_data — usually a member
+				// A PATHWAYS PERSONA TABLE is its own widget (KB 14A §14.2): the walk ends before it, so the main loop
+				// captures it, rather than an un-built widget before it swallowing it as data (PWY1001 1.1's persona after
+				// the «1C: Trust at work» typing activity). Read by the builder's own reader; data
+				// interactive_builders.pathwaysPersona; env PERSONA_OFF.
+				if (bundle.type !== "pathwaysPersona" && InteractiveBuilder.PathwaysPersonas(next.block)) break;
 				// TITLE-SERIES trailing-table semantics: in a [title N]-delimited
 				// accordion, a table arriving after the LAST panel already has content is the
 				// section's own trailing media (CHFUN05's 觉得/想 video), which the gold ships

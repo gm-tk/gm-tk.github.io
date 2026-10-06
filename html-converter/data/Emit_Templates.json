@@ -138,7 +138,13 @@
 				"_doc": "THE BILINGUAL TEMPLATE'S FIELD LABELS NEVER SHIP AS HEADINGS. The PNR / PMT bilingual template's content table carries red field labels beside its heading tags — '[H3] Intro sentence: / Welcome to the world of numbers.', '[H3] Rerenga Kōrero Whakataki: / Nau mai haere mai …', '[H1] Ingoa Kowae: Te Tau 2' — and the label became the heading while the writer's line under it became a paragraph. The human ships '<h3>Welcome to the world of numbers.</h3>' and 'Te Tau 2', no label. A heading part whose words open with a template label (label_pattern) loses the label; when nothing remains, the heading passes to the cell's next text part.",
 				"enabled": true,
 				"env": "REOLABEL_OFF",
-				"label_pattern": "^(?:intro(?:duction)?\\s+sentence|rerenga\\s+k[oō]rero\\s+whakataki|ingoa\\s+k[oō]wae|module\\s+name)\\s*:\\s*"
+				"label_pattern": "^(?:intro(?:duction)?\\s+sentence|rerenga\\s+k[oō]rero\\s+whakataki|ingoa\\s+k[oō]wae|module\\s+name)\\s*:\\s*",
+				"lesson_labels": {
+					"_doc": "The same template's LESSON field labels: «[H2] : Ingoa Akoranga: Te Tau 4» / «[H2] Lesson Title: Number 4» shipped with the label (and a stray leading colon) as the heading; the human ships «Te tau 4» / «Number 4». Applied after label_pattern, on its own toggle; a heading left with no words passes to the cell's next text part, as above.",
+					"enabled": true,
+					"env": "REOLESSONLABEL_OFF",
+					"label_pattern": "^[\\s:;,.–-]*(?:ingoa\\s+akoranga|lesson\\s+title)\\s*:\\s*"
+				}
 			},
 			"_doc": "Bilingual reoTranslate body unfold: a reoTranslate module's English|Māori content table -> interleaved <tag reo>{Māori}</tag><tag eng>{English}</tag> in ONE row>col-md-8 wrapper; media (image/audio/video) emitted ONCE, un-paired. Env REOTRANSLATE_OFF.",
 			"use_mtk_flag": false,
@@ -1113,6 +1119,12 @@
 			"enabled": true,
 			"env": "SLASHLEAD_OFF",
 			"tags": ["p", "li"],
+			"sound_lead": {
+				"enabled": true,
+				"env": "SLASHSOUND_OFF",
+				"pattern": "^\\/\\s*[^\\s/]{1,4}\\s*\\/",
+				"_doc": "A block that OPENS with sound notation keeps its first slash. The lead rule leaves «/ oo /» alone because the text also ends with «/», but a sound followed by its example word — a column heading «/ oo / (look)», «/ th / voiced» — ends with something else, so the lead rule took the first «/» and the learner read «oo / (look)». A block whose text matches pattern (a «/», one to four letters, a «/») is sound notation, not a soft break, and is left alone. Env SLASHSOUND_OFF."
+			},
 			"trailing": {
 				"enabled": true,
 				"env": "SLASHTAIL_OFF",
@@ -1128,7 +1140,12 @@
 			"_doc": "THE RED RUN THAT IS PART OF THE WRITER'S TEXT STAYS IN PLACE (constraint 1: the writer's characters are never deleted). A red run with no bracket that resolves to no tag and carries no instruction word is noise to the tag classifier: it renders nothing, and the text after it starts a new paragraph. Three forms of such a run are the writer's own text; each has its own switch. The run's characters are put back in place in the black text around it (its own spaces kept, nothing added). Never a run matching exclude_pattern, never one that sits between web addresses (skip_before_pattern / skip_after_pattern), never one that belongs to an interactive's capture. Disabled, or under the env toggle, every such run renders nothing.",
 			"enabled": true,
 			"env": "REDWORD_OFF",
-			"exclude_pattern": "\\b(?:image|images|img|insert|link|links|video|audio|button|bold|unbold|italic|italics|underline|heading|alert|tab|tabs|hover|rollover|roll over|defn|definition|caption|icon|font|todo|tbc|retrieved|screenshot|source|credit|website|cs|dev|facing side|reverse side|correct answers?|answer in|h[1-6])\\b",
+			"cell_glue": {
+				"enabled": true,
+				"env": "CELLREDGLUE_OFF",
+				"_doc": "THE RED LETTERS GLUED INSIDE A WORD IN A TABLE CELL STAY IN THE WORD. The extractor writes a red run as «🔴[RED TEXT] ea [/RED TEXT]🔴» — a space of padding inside each marker — so when a kept table cell's markers are stripped, letters the writer typed red INSIDE a word come apart: «t🔴ea🔴ch» → «t ea ch», «laugh🔴ed🔴» → «laugh ed» (BLL253's suffix table, BLL172's word-building table, TRR106 / TRR110's te reo vowels, BLL135, BLL130). In TablesAndGrids.cellParts a marker that touches a letter outside it loses its padding space on that side, so the word stays whole — plain letters, the body rule's form for glued red letters. Env CELLREDGLUE_OFF."
+			},
+			"exclude_pattern":"\\b(?:image|images|img|insert|link|links|video|audio|button|bold|unbold|italic|italics|underline|heading|alert|tab|tabs|hover|rollover|roll over|defn|definition|caption|icon|font|todo|tbc|retrieved|screenshot|source|credit|website|cs|dev|facing side|reverse side|correct answers?|answer in|h[1-6])\\b",
 			"skip_before_pattern": "https?://\\S*\\s*$",
 			"skip_after_pattern": "^\\s*(?:https?://|www\\.)",
 			"glued": {
@@ -1816,6 +1833,13 @@
 			"exclude_code_prefixes": ["SSCI", "SSFUN", "SSOG", "ARFUN"],
 			"require_remaining_member": true
 		},
+		"empty_box_drop": {
+			"enabled": true,
+			"env": "EMPTYBOX_OFF",
+			"keep_after_note": true,
+			"_doc_keep_after_note": "A box directly under the writer's own red note in the same column («activity note: will be taken from this merged content», «existing resource: …», a journal sentence whose id the writer left as a placeholder) is the placeholder that note describes — the developer fills it, and the human ships it filled — so it stays.",
+			"_doc": "AN ACTIVITY BOX WITH NOTHING IN IT IS NOT SHIPPED. A numbered div.activity whose only content is its own empty row > col-12 shows the learner an empty, numbered, bordered box — the human never ships one. It is left when the writer's activity opener is closed before any content reaches it: a section marker or a container right after the opener (a [Title] read as a title bar, a [Whakatauki]), a second opener read from a developer note or an «[Activity body]» line, an interactive that builds its own numbered box, or content the rules drop (a journal placeholder, a developer note). A page-level post-pass run just before the activity-number normaliser (page_number_normalise) removes such a box — and the content row around it when the box is that row's only child — so the empty box no longer takes a letter the page's real boxes need (KB constraint 62: the activity numbers consecutive). Nothing a learner could read is removed (the box is empty by construction); every removal is named in a run note with the box's id. Env EMPTYBOX_OFF ships the empty box again."
+		},
 		"page_number_normalise": {
 			"_doc": "THE PAGE'S ACTIVITY NUMBERS ARE CONSECUTIVE. KB 00B_CONVERSION_PIPELINE line 187 + constraint 62: 'the first interactive keeps the writer's activity number; each subsequent interactive takes the next letter … renumber the following activities accordingly'; constraint 65 / 05D: the MTK quiz box 'carries the next consecutive activity number even where the writer assigned none'. The human's lesson pages mostly follow {page number}{A, B, C …}. The lesson-letter rule keeps every writer id that carries a letter verbatim, so a page could ship `5A, 5A` (two writer boxes with the same id — AGH1001 L5, AGH1009 L5 / L7), `1A, 1A, 1B` (ANZH301 L1) or `4A, 4B, 2A` (AGH1007 L4 — a journal-instruction box carrying the writer's stale digit) where the human ships `5A 5B`, `1A 1B 1C`, `4A 4B 4C`. MECHANISM: ContentConverter.#pageNumberNormalise, a page-level post-pass OUTERMOST in the body chain (after #cdTilePair and the dropbox / interactive post-passes): in document order, majority_digit — on a page with a lesson number a box whose digit differs from the page's MAJORITY digit (>= 2 boxes, a strict majority) takes the majority digit (a page with no lesson number is left alone: the phase panels own their digits); dedupe_letters — a (digit, letter) already used on the page, or a letter that is not a single A–Z, takes the next unused letter for that digit; a writer's gap letters stay. Never on a page carrying a decimal id (the KB 07B `1.1` family) or a bare-digit id (the single-page section form). A duplicate id can be an extra converter box as often as the writer's repeat (ENGJ102 L4: `4A 4B 4C 4C` where the first `4C` is an empty synthetic box), so on such pages the renumber can shift a box's number away from the human's; see _note_enabled. OFF (env NUMNORM_OFF) turns it off.",
 			"enabled": true,
@@ -1837,6 +1861,17 @@
 			"min_words": 5,
 			"max_words": 40,
 			"bracket_sentence": true,
+			"outer_stop": {
+				"enabled": true,
+				"env": "JOURNALSTOP_OFF",
+				"_doc": "THE STOP AFTER THE CLOSING BRACKET. The writer sometimes closes the journal bracket before the sentence's own full stop — «[Go to your learning journal and complete activity 2A].» (AGH1008 2.0, AGH1002 3.0). The bracket-sentence reading wants the bracket to end the run, so without this the sentence is read as an [Activity] opener: a garbled Writers Note («activity note: go to your learning journal and complete») over an empty box. A «.», «!» or «?» right after the closing bracket is the sentence's own stop and joins it. Env JOURNALSTOP_OFF."
+			},
+			"placeholder": {
+				"enabled": true,
+				"env": "JOURNALPH_OFF",
+				"id_pattern": "\\b((?:activit(?:y|ies)|tasks?|complete)\\s+(?:the\\s+)?)(\\d{1,2})?\\s?(XX|XY|X)\\b",
+				"_doc": "THE WRITER'S PLACEHOLDER ID. A journal sentence whose activity id the writer left unfilled — «[Go to your learning journal and complete activity 3X]», «… activity X.]», «XY.», «XX.» (an uppercase X, XX or XY after the activity word, with or without the lesson digit; case-sensitive, so no ordinary word matches) — is the learner's sentence like any other journal instruction (PageAssembler reads the bracket as black text even with no digit), and its box takes the page's NEXT letter after the activity boxes before it, the digit being the writer's or else the page's lesson number (KB constraint 62: the activity numbers consecutive; the human's box is numbered so every time — none carries an X). The placeholder in the sentence, and in a journal button kept in the same box, is replaced by that id. Env JOURNALPH_OFF: a digit-less placeholder opens an [Activity] again and a digit + X id ships verbatim."
+			},
 			"box_open": "<div class=\"activity\" number=\"{id}\">\n<div class=\"row\">\n<div class=\"col-12\">",
 			"box_close": "</div>\n</div>\n</div>"
 		},
@@ -2623,6 +2658,27 @@
 				"option_correct": "<p class=\"mcqOption\" value=\"correct\">{text}</p>",
 				"close": "</div>"
 			},
+			"dot_position_choice": {
+				"_doc": "THE SOUND-POSITION CHOICE: the BLL phonics «Find the sound» activity — «[Self check activity]», a worked-example picture («Rain – <stock address>», or the address alone), then a table of [picture ║ picture] rows each followed by a row of the writer's red answers («Middle dot is the correct answer» / «3rd dot is the correct answer»). Each picture is a multiChoiceQuiz question with the options 1 / 2 / 3 (where the sound sits in the word), the marked dot correct; the worked example shows before the quiz. Built only where every picture has its marked answer (an answer is never invented) and the bundle holds nothing else.",
+				"enabled": true,
+				"env": "DOTPOSCHOICE_OFF",
+				"answer_pattern": "^(1st|first|2nd|second|middle|3rd|third|last)\\s+dot\\s+is\\s+the\\s+(?:correct\\s+)?answer\\.?$",
+				"positions": { "1st": 1, "first": 1, "2nd": 2, "second": 2, "middle": 2, "3rd": 3, "third": 3, "last": 3 },
+				"options": ["1", "2", "3"],
+				"example_pattern": "^(?:([\\p{L}’'-]{1,20})\\s*[–—-]\\s*)?(https?:\\/\\/\\S+)$",
+				"min_questions": 4,
+				"filename_istock": "iStock-{id}.jpg",
+				"image_mode_P": "<img class=\"img-fluid\" src=\"https://placehold.co/600x400?text={label}\" alt=\"\" loading=\"lazy\">",
+				"image_mode_P_comment": "<!-- <img class=\"img-fluid\" loading=\"lazy\" src=\"images/{filename}\" alt=\"\"> -->",
+				"image_mode_D": "<img class=\"img-fluid\" loading=\"lazy\" src=\"images/{filename}\" alt=\"\">",
+				"example": "<div class=\"row\">\n<div class=\"col-md-6 col-12\">\n{picture}\n{word}</div>\n</div>",
+				"example_word": "<p><b>{text}</b></p>\n",
+				"open": "<div class=\"multiChoiceQuiz autoCheck\" columns=\"column-3\">",
+				"question": "<div class=\"row\">\n<div class=\"col-12 mcqQuestion\">\n{picture}\n<div class=\"mcqOptions\">\n{options}\n</div>\n</div>\n</div>",
+				"option": "<p class=\"mcqOption\">{text}</p>",
+				"option_correct": "<p class=\"mcqOption\" value=\"correct\">{text}</p>",
+				"close": "</div>"
+			},
 			"letter_grid_bingo": {
 				"_doc": "THE LETTER-GRID BINGO: the BLL family's `[Self check] Click on the lower case letter ‘s’.` + a TABLE of single letters with the CORRECT cells typed in red (BLL110 / 113 / 120 / 130 / 140 / 150 / 154 / 160 / 170 — each bundle usually holding the lower-case and the capital grid, the writer's `[Add an audio that when they click/hover on the letter it says the name of the letter…]` ELEMENT tag and the `**Alphabet Audio** [LINK]` line). The human builds the KB's BINGO (03E COMP_04): `div.bingo.col-12 > div.bingoContainer[grid=N] > div.number[value=correct] > p` + the `row > activityButton reset-btn / activityButton hidden check-btn` row — grid 12 cells → 4, 9 → 3, 16 → 4; the wrapper `bingo col-12`; the button row; no h4 card title; the cell usually `p.sassoonI-text` (often with a `span.audioTrigger` — the developer's snipped alphabet audio, NOT emitted here: the package cannot supply the asset, so the writer's audio request and the link ride as the red Writers Note after the widget). Tried BEFORE the question-list form; fires only when EVERY table in the bundle is a letter grid (every non-empty cell ≤ max_cell_chars letters / digits once the red markers and bold marks are stripped; ≥ min_cells cells), every extra type is selfCheck itself (the second grid), and each table follows its own `[Self check]` invocation whose black text is the lead; per table → `lead` + the bingo: the cells row-major from the writer's table, value=\"correct\" on the RED cells or, when the writer marked none, on the cells equal to the letter quoted in the lead (`correct_from`; neither → decline, never half-built); `grid` from the cell count (grid_by_cells, else grid_default); the cell class by module-code prefix (cell_class_by_prefix — the BLL family's Sassoon Infant; plain <p> = the KB form elsewhere). The box takes `.interactive` through interactive_widget_types (bingo is listed). Env BINGO_OFF keeps the hand-off box.",
 				"enabled": true,
@@ -2729,6 +2785,15 @@
 				"env": "DDSORTOPENER_OFF",
 				"pattern": "\\binto\\s+(?:the\\s+|their\\s+|its\\s+)?(?:relevant\\s+|correct\\s+|right\\s+|appropriate\\s+|matching\\s+)?(?:colou?red\\s+)?(?:squares?|zones?|categor(?:y|ies)|groups?|columns?)\\b"
 			},
+			"pair_list": {
+				"enabled": true,
+				"env": "DDPAIRLIST_OFF",
+				"_doc": "THE MATCHING PAIRS THE WRITER LISTS IN ONE LINE (KB 03B, the standard layout): no table, but a line naming the pairs — «Possible matching rhyming words: top/mop, pet/net, trick/stick, lip/pip, bike/strike, ride/slide» (the XOTP reader family's rhyme match, six modules; one runs its pairs over two lines, the first ending in a comma). The left word of each pair is a question, the right word its drag, in the writer's order (the page script shuffles the drags). Built only where the bundle has no table and no other widget, the line names at least min_pairs pairs of one to max_words words a side, and every answer is distinct; the bundle's other lines (the follow-up question, the writer's request) are rendered beside the widget by the members rule.",
+				"line_pattern": "^(?:possible\\s+)?matching\\s+[\\p{L}\\s-]{0,30}?(?:words?|pairs?)\\s*:\\s*(.+)$",
+				"pair_pattern": "^([\\p{L}’'-]+(?:\\s[\\p{L}’'-]+){0,2})\\s*\\/\\s*([\\p{L}’'-]+(?:\\s[\\p{L}’'-]+){0,2})$",
+				"min_pairs": 4,
+				"max_pairs": 10
+			},
 			"button_row": {
 				"enabled": true,
 				"env": "DDBUTTONS_OFF",
@@ -2792,6 +2857,25 @@
 					"_echo_consumed_doc": "Under a marked sort only: a black bundle line that merely repeats a drag item (the writer's `* I share your perspective.` list above the table — CEDT501 6.1; the gold shows the instruction line only) is consumed by #ddWithMembers, not rendered as a paragraph."
 				},
 				"note": "The writer's CLEAN CATEGORY-SORT table — one table of 3+ columns whose first row is a row of plain category labels (Past | Present | Future, ai | ay | a_e, Noun | Verb | Adjective) and whose data cells are the items that belong under each column (a ' / ' or bullet list in a cell = several items) — builds the KB 03B 'Column Layout': a row.dropContainer with one ddColumn per category (<p>heading</p> + one drop option=c per item in that column, c = the 1-based column index = the answer key), a row.dragContainer whose FIRST ddColumn holds every drag option=c in column order, padded with EMPTY ddColumns to the drop-column count (03B: 'Empty ddColumn pads to match drop column count', as the human mostly does), then the button_row. No blanks attribute, no autoCheck / noBG / hoverBoxes (the developer's editorial modifiers — no writer signal). Tried ONLY where the text form and the image form both returned null. NEVER HALF-BUILDS (null = the hand-off box): a second table, an extraType, a harvested media item, width < min_columns, fewer than min_rows rows, a header cell that is empty / red / a URL / a [tag] / matches header_reject_pattern (a blank run = a FIB, an image word = the image column-sort) / longer than header_max_words (MXFU402's question headers = a match), any data cell that is red / a URL / a [tag], items in fewer than 2 columns (a pooled cell = no answer key), fewer than min_items items, a repeated item (an ambiguous key); the bundle's OTHER members are the shared members rule's business (interactive_builders.dragAndDrop.members). The human mostly builds these tables as the column form. DDCOLUMN_OFF=1 turns it off."
+			},
+			"image_column": {
+				"enabled": true,
+				"env": "DDIMGCOLUMN_OFF",
+				"_doc": "THE PICTURE COLUMN SORT (KB 03B 'Column Layout' with its images rule). The writer's table under a drag-and-drop tag: a FIRST row naming 2-3 columns in plain words (`Short vowels ║ Long vowels`, `/ oo / (look) ║ / ōō / (zoo)`, `Photograph ║ Illustration`) and every other non-empty cell ONE stock picture — a bare address, or `word – address` (the writer's word for the picture) — the answer key being the column the picture sits in. The column form refuses it (a URL cell) and the image-pair form wants one picture + one word per row, so without this the hand-off box ships where the human builds a layout=\"column\" dragAndDrop whose every drag is a picture. Builds `dragAndDrop images` (03B: 'When a D&D column layout uses images (class=\"dragAndDrop images\")'): a row.dropContainer with one ddColumn per column (<p>heading</p> + one drop option=c per picture in that column), a row.dragContainer whose FIRST ddColumn holds every drag in column order, padded with EMPTY ddColumns to the drop-column count (the 03B key rule, the human's form and the column verifier's check), then the button_row. A drag is the picture (03B: `<img class=\"img-fluid\">`, rendered in the run's image mode through the FinishImg rider, so the alt is the verified acknowledgement title, else the address-slug title) and, when the writer typed a word before the address, that word as a <p> under it. Tried LAST in the dragAndDrop chain — only where every other form returned null, so no other build changes. NEVER HALF-BUILDS (null = the hand-off box): a second table, an extraType, a harvested media item, width outside min_columns..max_columns, a header cell that is empty / red / carries an address or a [tag] / matches header_reject_pattern (a column named for its pictures or an answer = a pairing, not a sort) / is longer than header_max_words, a data cell that is red, carries no address, two addresses, an address off stock_host_pattern or prose longer than word_max_words beside its picture, a repeated picture, pictures in fewer than 2 columns, fewer than min_items pictures. DDIMGCOLUMN_OFF=1 turns it off (DRAGDROP_OFF reverts the whole type).",
+				"open": "<div class=\"dragAndDrop images\" layout=\"column\">\n<div class=\"row dropContainer\">",
+				"drag": "<div class=\"drag\" option=\"{n}\">{image}</div>",
+				"drag_word": "<div class=\"drag\" option=\"{n}\">{image}\n<p>{word}</p></div>",
+				"image_mode_D": "<img class=\"img-fluid\" src=\"images/{filename}\" alt=\"\">",
+				"image_mode_P": "<img class=\"img-fluid\" src=\"https://placehold.co/600x400?text={label}\" alt=\"\">",
+				"image_mode_P_comment": "<!-- <img class=\"img-fluid\" src=\"images/{filename}\" alt=\"\"> -->",
+				"filename_istock": "iStock-{id}.jpg",
+				"min_columns": 2,
+				"max_columns": 3,
+				"min_items": 4,
+				"header_max_words": 8,
+				"header_reject_pattern": "\\bimages?\\b|\\bphotos?\\b|\\bpictures?\\b|\\bcorrect\\s+answers?\\b|_{3,}",
+				"word_max_words": 3,
+				"stock_host_pattern": "istockphoto\\.com|shutterstock\\.com|unsplash\\.com|pixabay\\.com|pexels\\.com|stock\\.adobe\\.com|gettyimages\\."
 			},
 			"note": "dragAndDrop NARROW N:N TEXT-MATCHING form, layout=standard. Input is one 2-column data table [label | answer]; row order is the answer key. Builds the human's questionContainer (one .question per label) + ddContainer (a .drop per row + a .drag per row, option = 1-based row index), answers as <p> text. CONSERVATIVE: the human's LAYOUT choice (standard/column/FIB/scatter) and image-form alt text are NON-DERIVABLE editorial (NOT in the WT — bundle.modifier is the writer's freeform remainder, not layout=), so this fires ONLY on the safest sub-shape and keeps the placeholder otherwise — bail unless exactly one table, width 2, >= min_rows rows, every answer DISTINCT plain text (a repeated answer = categorisation, not matching -> bail), and no media / URL / red / extraType. layout defaults to standard. Env DRAGDROP_OFF."
 		},
@@ -3974,6 +4058,49 @@
 			"filename_istock": "iStock-{id}.jpg",
 			"min_shapes": 2
 		},
+		"pathwaysPersona": {
+			"enabled": true,
+			"env": "PERSONA_OFF",
+			"_doc": "THE PATHWAYS PERSONA (KB 14A §14.2, CL-0113): the rangatahi persona who guides a Pathways module — a circle image, a play button and a transcript button. The writer types it as a TABLE cell: «[Audiovisual item N: Whai]» (or «[Audiovisual item N Leilani]: URL», «[Audiovisual item N: audio recording – Bailey]»), the circle-image lines («[Audioimage] [Photograph in a circle] Image: iStock: …», «[The first circle: Leilani]», «[Persona box]», «[[pathways persona] [Bailey]]»), the audio request («[Include the dropdown text below + an audio recording (item N).]» + the request document), then «[Transcript button]» followed by the words of the recording, and sometimes an «[Alert]» / «[Alert blank]» line after it. The table becomes the KB's pathwaysPersona markup: the persona's KB image (the four named personas only — their images are delivered), the name over it, both buttons empty, the transcript paragraphs, the id naming the audio file ({code}_Audiovisual_item_{n}_01); a following alert line becomes the alert box after the persona. One persona = a row holding the persona; two in one cell = two half columns side by side, each with its own alert. Built ONLY where every persona in the table names one of the KB's personas and carries transcript words, and every line of the cell is a persona line (any other tag or text declines the whole table — never half-built). InteractiveBuilder.PathwaysPersonas reads the table the same way for the scanner, which captures it as this widget only when it reads; otherwise the table goes where it went before.",
+			"av_item_pattern": "^\\[\\s*audiovisual\\s+item\\s*(\\d+)\\b([^\\]]*)\\]\\s*(?::\\s*(?:URL)?)?",
+			"transcript_pattern": "^\\[\\s*transcript(?:\\s+button)?\\s*\\]\\s*:?",
+			"body_pattern": "^\\[\\s*body\\s*\\]",
+			"alert_pattern": "^\\[\\s*alert(\\s+blank)?\\s*\\]",
+			"header_patterns": [
+				"^\\[\\s*persona\\s+box\\b[^\\]]*\\]",
+				"^\\[\\s*\\[?\\s*pathways\\s+persona\\s*\\]?\\s*\\[[^\\]]*\\]\\s*\\]?",
+				"^\\[\\s*the\\s+\\w+\\s+circle\\b[^\\]]*\\]",
+				"^\\[\\s*photograph\\s+in\\s+a\\s+circle\\s*\\]",
+				"^\\[\\s*audio\\s*image\\s*\\]",
+				"^\\[\\s*include\\b[^\\]]*\\baudio\\s+recording\\b",
+				"^please\\s+put\\s+these\\s+images\\s+in\\s+circles\\b"
+			],
+			"realises_tables": true,
+			"_realises_note": "The reader declines on any line it does not place, so a built persona has realised every red request in its table (the circle-image request, the audio request, the box and circle labels): none of them is repeated as a Writers Note after it.",
+			"_header_note": "A header line is the persona's own furniture: the circle-image request and its stock address (the KB names the image), the audio-recording request and its request document, the box / circle labels. Its words are realised by the build, so they are not shown; a header line is allowed only outside a transcript (it ends one).",
+			"request_tail_pattern": "^(?:\\s*:?\\s*URL\\b)?[\\s:]*(?:(?:__)?[^\\[\\]_]*?\\baudiovisual\\s+request\\b[^\\[\\]_]*?(?:__)?)?\\s*(?:\\[LINK:[^\\]]*\\])?\\s*(?:https?:\\/\\/\\S+)?\\s*$",
+			"_request_tail_note": "What may follow an audiovisual item's tag: the writer's «: URL» placeholder and the audio request document («PWY1007 Audiovisual request draft.docx», its link) — the request is the recording team's, not the learner's. Anything else beside the tag declines the table.",
+			"image_line_pattern": "^(?:\\s*\\[IMAGE:[^\\]]*\\])+\\s*$",
+			"personas": {
+				"Whai": "pathwaysPersonas/whai.jpg",
+				"Leilani": "pathwaysPersonas/leilani.jpg",
+				"Bailey": "pathwaysPersonas/bailey.jpg",
+				"Māia": "pathwaysPersonas/māia.jpg"
+			},
+			"name_aliases": { "Maia": "Māia" },
+			"id_template": "{code}_Audiovisual_item_{n}_01",
+			"max_per_table": 2,
+			"transcript_first_p_class": "marB0",
+			"pair_columns": ["col-md-4 col-12 paddingR", "col-md-4 col-12 paddingL"],
+			"own_row": {
+				"enabled": true,
+				"env": "PERSONAROW_OFF",
+				"_doc": "Two personas in one cell are two side-by-side columns at the TOP level of the body (`row > col-md-4 col-12 paddingR | paddingL`, each the persona's row and its alert) — the human's form wherever the pair appears — so the built pair closes the section's content column and takes its own row. A single persona stays inside the content column (`col-md-8 col-12 > row > pathwaysPersona`), as the human places it. Inside an activity box the widget flows as usual."
+			},
+			"alert_open": "<div class=\"alert{modifiers}\">",
+			"alert_col": "col-12",
+			"html": "<div class=\"pathwaysPersona\" id=\"{id}\">\n<div class=\"pathwaysPersonaImage\">\n<img class=\"img-fluid imageCentral\" src=\"{src}\" alt=\"\" />\n<div class=\"pathwaysPersonaText\">\n<h5>{name}</h5>\n</div>\n</div>\n<div class=\"pathwaysPersonaControls\">\n<button type=\"button\" class=\"pathwaysPersonaBtn pathwaysPersonaPlay\" aria-label=\"Play audio\" title=\"Play\"></button>\n<button type=\"button\" class=\"pathwaysPersonaBtn pathwaysPersonaTranscript\" aria-label=\"Show transcript\" title=\"Transcript\"></button>\n</div>\n<div class=\"pathwaysPersonaTranscriptContent\">\n{transcript}\n</div>\n</div>"
+		},
 		"reorder": {
 			"enabled": true,
 			"_doc": "THE REORDER (KB 03F COMP_05): the items listed in their CORRECT order in the source, the page script shuffles them. Built ONLY where the writer says the typed order is the answer (an answer is never invented). The table form below is the one shape built.",
@@ -4097,6 +4224,11 @@
 			"_doc": "THE TYPING QUIZ, shape 1: THE WRITER'S RED ANSWER ON THE QUESTION LINE. Built only where the writer marked the answer (never invent an answer): many typing bundles carry no answer at all and stay hand-offs, and the highlights are mostly the GREEN highlighter, unannounced, which is not trusted. The red answer on the question line — inline (BLL244 '[red]What[/red] game are Zack and Kev playing…'), at the line's end (FRFUN08 'Je vais à le cinéma. Answer: [red]au'), or alone on the next paragraph — usually equals the human's own answer= value. THE FORM is KB 03D's text-only typing quiz (level 1): div.typing layout=standardNoBorder > div.typingContainer > one div.row per question line holding its <p> with an <input class=form-control type=text answer=… placeholder='Type here' caseSensitive='false' /> at each red answer; then the reset / checkAnswer hidden / showAnswer hidden row (KEPT with autoCheck — 03D). autoCheck from the WRITER's own words (the multiChoiceQuiz list). THE BUILD, never half: members grouped by source paragraph; a red 'noise' member is an answer by Utils.AnswerKeyRedWord (a stray ']' skipped, a label rendered as text); an answer-only paragraph joins the line above; the answer-less paragraphs BEFORE the first question are the lead (rendered before the widget); an answer-less paragraph after it, a red INSTRUCTION inside a question line (MXDB302 types its question 'Rectangle 10cm by 2cm' in red), a table, a merged bundle or any other tag → decline and the honest hand-off box stays. A Word auto-number (the extractor writes '1. ' on every numbered-list paragraph) is stripped; a writer's typed number is kept. An 'answer' that is an answer-key label ('Answer: 15%', 'ANSWER: 125.68') or a question ('weekday?') declines (answer_reject_pattern). Env TYPING_OFF.",
 			"enabled": true,
 			"env": "TYPING_OFF",
+			"red_marker_strip": {
+				"enabled": true,
+				"env": "REDMARKSTRIP_OFF",
+				"_doc": "THE RED-RUN MARKERS STRIPPED ONE BY ONE. The typing table, the typing form and the multi-choice quiz read their cells and members with the extractor's red-run markers in them («🔴[RED TEXT]» … «[/RED TEXT]🔴» — the emoji on ONE side of each). Each marker is stripped on its own, so a writer's red answer or label reads as its words; a marker left in a cell would otherwise decline the build (MXFUN01's «[Type and check] Answer shown in red.» GEMA table — the gold's typing widget; MXFU202 5F / 5G «[interactive activity] type and check»). Env REDMARKSTRIP_OFF reads the markers in the both-sides form, which matches no extractor run."
+			},
 			"group_open": "<div class=\"typing{autocheck}\" layout=\"standardNoBorder\">\n<div class=\"typingContainer\">",
 			"container_close": "</div>",
 			"row": "<div class=\"row\">\n<p>{text}</p>\n</div>",
@@ -6932,6 +7064,12 @@
 			"_doc": "KB constraint 5: more tags for the black-leading-tag strip, kept in their own key so they reverse on their own env — `body text`: HIS1002-7.0 `[Body Text] Governments did not…`, MXDI201-8.0 `[body text] In the next activity…`, MXS1004-8.0 `[Body text] Strength is the measure…` typed the writer's [body text] tag in BLACK. Never legitimate content. Env BLACKBODYTEXT_OFF; BLACKTAGSTRIP_OFF turns off the whole strip."
 		},
 		"_black_leading_tag_strip_note": "Structural tags a writer mis-typed in BLACK text (not the red [tag] style the detector reads) would leak as literal content; #renderBlackText strips a leading one of these from each black line. 'body' is the safe, high-frequency case (OSBY201-02 '[body] A trusted adult…'). Env BLACKTAGSTRIP_OFF. Add a tag here only if it is NEVER legitimate body content.",
+		"typed_bullet_glyphs": {
+			"_doc": "A WRITER'S TYPED BULLET GLYPH. Word's own bullets reach the text as «• »; a writer who types a different glyph at the start of each line («› Use information provided in the module to create an itinerary …» — MXFL201's menu, MXFUN02) means the same list, which the human ships as <li>. A line opening with one of `glyphs` and a space is a bullet line (the glyph dropped), exactly as a «• » line is.",
+			"enabled": true,
+			"env": "TYPEDBULLET_OFF",
+			"glyphs": ["›"]
+		},
 		"drop_glyph_only_lines": {
 			"_doc": "A free-body line whose whole content is ONE punctuation glyph (a writer's stray `.` / `,`, a text-box bracket `[` / `]` left after an image, a broken equation's `+` `=` `–`, PNR102's `✔` ticks) would ship as `<p>.</p>`; the human never ships such a paragraph. In ListsAndRuns.renderBlackText's line filter, free-body text only (stitch true — the placeholder / built-widget dumps stay a faithful hand-off): a line that, with its `*` emphasis markers removed, is exactly one character that is not a letter, not a digit, not `_` and not in `keep`, is dropped before it can become a paragraph. `•` is kept for the bullet path's own empty-item rule. OFF keeps these lines.",
 			"enabled": true,
@@ -7814,6 +7952,7 @@
 				"wordSelect",
 				"stopWatch",
 				"rotateBanner",
+				"pathwaysPersona",
 				"shapeHover",
 				"wordFind",
 				"sliderChart",
@@ -8217,6 +8356,12 @@
 			"rendered_heading_max_legacy": 3,
 			"heading_closes_only_after_content": true,
 			"side_by_side_headings_stay": true,
+			"title_bar_title": {
+				"enabled": true,
+				"env": "ACTTITLEBAR_OFF",
+				"prefixes": ["FRFUN"],
+				"_doc": "A FAMILY DIALECT (LOOP §1d exception 1): the FRFUN Languages Fundamentals type an activity as «[Activity N]» + «[Title] <the activity's title>» + «[Body] …» + the widget. «[Title]» parses as a title bar — a SECTION_MARKER, which closes an open activity box — so the writer's box closed EMPTY before its own title, and the title, the instruction and the widget shipped loose (the widget in a synthetic box of its own), where the family's gold keeps them all inside the writer's box (FRFUN06 1.0 «Match the sound to the word» in 1G, 5.0 «Spot the quiet and loud final letters» in 5B). For a module whose prefix is listed, a title bar that arrives while the open activity box is still empty is that box's own title and does not close it. Env ACTTITLEBAR_OFF."
+			},
 			"_doc_side_by_side_headings_stay": "A heading that shares its source paragraph with another heading — a side-by-side caption row ('[H3] Picture A     [H3] Picture B', XGF9003 5C) — labels the open activity's own two-column content and does not auto-close it (the human keeps the row and what follows inside the writer's box). Env SBSHEAD_OFF.",
 			"title_heading_tags": [
 				"activity heading"

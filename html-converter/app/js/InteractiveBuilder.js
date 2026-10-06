@@ -172,6 +172,9 @@ class InteractiveBuilder {
 				case "reorder":     // the table the writer typed in the correct order and said so (the KB 03F re-standard form)
 					html = this.#reorderTable({ bundle, tpl, renderInline });
 					break;
+				case "pathwaysPersona":   // the Pathways persona table → the KB 14A pathwaysPersona component
+					html = this.#pathwaysPersona({ bundle, tpl, renderInline, run });
+					break;
 				case "selfCheck":   // a numbered question-list form → <p class="sCQuestion"> + a free-text sCText/textarea pair
 					// the LETTER-GRID BINGO form (the BLL family's `[Self check]` + a table of letters)
 					// runs FIRST; the question-list form where it declines.
@@ -181,7 +184,9 @@ class InteractiveBuilder {
 						?? this.#typingTable({ bundle, tpl: templates?.typing, renderInline, typed: false })
 						?? this.#selfCheck({ bundle, tpl, renderInline })
 						// the BLL picture-word choice ([word ║ picture ║ word], the red word correct) where every other reading declined
-						?? this.#pictureWordChoice({ bundle, tpl, renderInline, run });
+						?? this.#pictureWordChoice({ bundle, tpl, renderInline, run })
+						// the BLL «Find the sound» pictures with the writer's marked dot under each («Middle dot is the correct answer»)
+						?? this.#dotPositionChoice({ bundle, tpl, renderInline, run });
 					break;
 				case "dragAndDrop": // the narrow N:N text-matching case only (layout=standard)
 					// the image-pair form runs ONLY where the text form declined;
@@ -190,7 +195,11 @@ class InteractiveBuilder {
 						?? this.#dragAndDropImages({ bundle, tpl, renderInline, run })
 						?? this.#dragAndDropColumn({ bundle, tpl, renderInline })
 						// the FIB form: the writer's red answers inside black sentences (the typing reading, a FIB render)
-						?? (tpl?.fib ? this.#typing({ bundle, tpl: templates?.typing, renderInline, fib: tpl.fib, ddTpl: tpl }) : null);
+						?? (tpl?.fib ? this.#typing({ bundle, tpl: templates?.typing, renderInline, fib: tpl.fib, ddTpl: tpl }) : null)
+						// the pairs the writer lists in one line («Possible matching rhyming words: top/mop, pet/net, …»)
+						?? this.#dragAndDropPairList({ bundle, tpl, renderInline })
+						// the picture column sort (a header row of column names over stock-picture cells), where every other form declined
+						?? this.#dragAndDropImageColumn({ bundle, tpl, renderInline, run });
 					// a built widget REPLACES the whole captured bundle: the members rule keeps
 					// the bundle's OTHER members (prose around the table) or declines the build.
 					// (the FIB form placed every member itself — its black sentences ARE the widget — so it skips this)
@@ -1155,6 +1164,66 @@ class InteractiveBuilder {
 		return [cfg.open, ...qs, cfg.close].join("\n");
 	}
 
+	/**
+	 * THE SOUND-POSITION CHOICE (data interactive_builders.selfCheck.dot_position_choice; env DOTPOSCHOICE_OFF). The BLL
+	 * phonics «Find the sound» activity: the opener, a worked-example picture line («Rain – <stock address>»), then ONE table
+	 * whose rows come in pairs — a row of stock pictures, then a row of the writer's red answers under them («Middle dot is the
+	 * correct answer»). Each picture is a question with the options 1 / 2 / 3, the marked position correct; the example shows
+	 * before the quiz. Never half-built: a picture without its answer, a ragged pair, another line or tag keeps the hand-off box.
+	 */
+	static #dotPositionChoice({ bundle, tpl, renderInline, run }) {
+		const cfg = tpl?.dot_position_choice;
+		if (!cfg || cfg.enabled === false || !cfg.answer_pattern) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "DOTPOSCHOICE_OFF"]) return null;
+		if (bundle?.extraTypes?.length) return null;
+		const RED = /\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu;
+		const members = bundle?.memberItems ?? [];
+		const tables = members.filter((m) => m?.type === "table");
+		if (tables.length !== 1) return null;
+		const urlOf = (s) => { const t = String(s ?? "").replace(RED, " ").replace(/__/g, ""); return (/\[LINK:\s*(https?:\/\/[^\]\s]+)/.exec(t) ?? /(https?:\/\/\S+)/.exec(t))?.[1] ?? null; };
+		const plain = (s) => String(s ?? "").replace(RED, " ").replace(/\*\*|__/g, "").replace(/\s+/g, " ").trim();
+		let example = null;
+		for (const m of members) {
+			if (!m || m.type === "table") continue;
+			if (m.type === "tag") { if (String(m.blackAfter ?? "").trim()) return null; continue; }
+			if (m.type !== "black") return null;
+			const t = plain(m.text).replace(/\[LINK:[^\]]*\]/g, "").trim();
+			if (!t) continue;
+			const ex = new RegExp(cfg.example_pattern, "u").exec(t);
+			if (!ex || example) return null;                                               // one worked example at most, nothing else
+			example = { word: ex[1] ?? "", url: urlOf(m.text) ?? ex[2] };
+		}
+		const ansRe = new RegExp(cfg.answer_pattern, "i");
+		const rows = (tables[0].block?.rows ?? []).filter((r) => Array.isArray(r) && r.some((c) => plain(c)));
+		if (!rows.length || rows.length % 2) return null;
+		const inline = renderInline ?? ((s) => s);
+		const picture = (url) => { const filename = this.#accImageFilename(url, cfg, cfg); return filename ? this.#ddImage({ filename, url }, cfg, run) : null; };   // an iStock id names the file, else the URL-slug placeholder
+		const qs = [];
+		for (let k = 0; k < rows.length; k += 2) {
+			const pics = rows[k], ans = rows[k + 1];
+			if (pics.length !== ans.length) return null;
+			for (let c = 0; c < pics.length; c++) {
+				const url = urlOf(pics[c]), a = plain(ans[c]);
+				if (!url && !a) continue;                                                  // an empty cell pair
+				const pos = ansRe.exec(a);
+				if (!url || !pos || !/\u{1f534}\[RED TEXT\]/u.test(String(ans[c] ?? ""))) return null;   // a picture without its marked answer
+				const img = picture(url);
+				if (!img) return null;
+				const right = cfg.positions?.[pos[1].toLowerCase()];
+				const options = (cfg.options ?? ["1", "2", "3"]).map((o, i) => Utils.FillTemplate(i + 1 === right ? cfg.option_correct : cfg.option, { text: inline(o) })).join("\n");
+				qs.push(Utils.FillTemplate(cfg.question, { picture: img, options }));
+			}
+		}
+		if (qs.length < (cfg.min_questions ?? 4)) return null;
+		const out = [];
+		if (example) {
+			const img = picture(example.url);
+			if (!img) return null;
+			out.push(Utils.FillTemplate(cfg.example, { picture: img, word: example.word ? Utils.FillTemplate(cfg.example_word, { text: inline(example.word) }) : "" }));
+		}
+		return [...out, cfg.open, ...qs, cfg.close].join("\n");
+	}
+
 	static #selfCheck({ bundle, tpl, renderInline }) {
 		if (typeof process !== "undefined" && process.env && process.env.SELFCHECK_OFF) return null;
 		if ((bundle?.tables ?? []).length) return null;          // image-matching table form → keep placeholder
@@ -1289,6 +1358,57 @@ class InteractiveBuilder {
 			bundle.instructions = [...(bundle.instructions ?? [])];
 			for (const n of labelNotes) if (!seen.has(n)) { bundle.instructions.push(n); seen.add(n); }
 		}
+		return out.join("\n");
+	}
+
+	/**
+	 * dragAndDrop — THE MATCHING PAIRS LISTED IN ONE LINE (data interactive_builders.dragAndDrop.pair_list; env DDPAIRLIST_OFF).
+	 * No table: one black line names the pairs — «Possible matching rhyming words: top/mop, pet/net, trick/stick, …» (a line that
+	 * ends in a comma continues on the next black line). The left words are the questions, the right words the drags, in the
+	 * writer's order — the same standard-layout markup as the table form. Only that line is read: the bundle's other lines stay
+	 * for the members rule. Declines on a table, another widget, media, fewer than min_pairs pairs, a pair that is not one to
+	 * three words a side, or a repeated answer.
+	 */
+	static #DD_PAIR_LINES = new WeakMap();   // bundle → the member indices the pair-list form read (#ddWithMembers places the widget there)
+
+	static #dragAndDropPairList({ bundle, tpl, renderInline }) {
+		const pl = tpl?.pair_list;
+		if (!pl || pl.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[pl.env || "DDPAIRLIST_OFF"]) return null;
+		if (bundle?.extraTypes?.length || (bundle?.tables ?? []).length || (bundle?.media ?? []).length) return null;
+		const members = bundle?.memberItems ?? [];
+		const plain = (s) => this.#cellText(s).replace(/\*\*|__|✅/g, "").replace(/\s+/g, " ").trim();
+		const lineRe = new RegExp(pl.line_pattern, "iu"), pairRe = new RegExp(pl.pair_pattern, "u");
+		let at = -1, list = null;
+		for (let k = 0; k < members.length && at < 0; k++) {
+			const m = this.#peekMember(members[k]);
+			if (m?.type !== "black") continue;
+			const hit = lineRe.exec(plain(m.text));
+			if (hit) { at = k; list = hit[1]; }
+		}
+		if (at < 0) return null;
+		const used = [at];
+		// a list that ends in a comma runs on into the next black line («… top/mop,» / «lip/ship, ramp/lamp, skate/eight»)
+		while (/,\s*$/.test(list) && at + used.length < members.length) {
+			const nx = this.#peekMember(members[at + used.length]);
+			if (nx?.type !== "black") break;
+			list += " " + plain(nx.text);
+			used.push(at + used.length);
+		}
+		const pairs = list.replace(/[\s.,;]+$/, "").split(/\s*,\s*/).filter(Boolean).map((p) => pairRe.exec(p.trim()));
+		if (pairs.some((p) => !p) || pairs.length < (pl.min_pairs ?? 4) || pairs.length > (pl.max_pairs ?? 10)) return null;
+		const labels = pairs.map((p) => p[1]), answers = pairs.map((p) => p[2]);
+		if (new Set(answers.map((a) => a.toLowerCase())).size !== answers.length) return null;
+		for (const k of used) void members[k].text;   // the pair line(s) are the widget: read
+		this.#DD_PAIR_LINES.set(bundle, new Set(used));   // … and the members rule places the widget there instead of the line
+		const inline = renderInline ?? ((s) => s);
+		const out = [tpl.open];
+		for (const l of labels) out.push(Utils.FillTemplate(tpl.question, { label: inline(l) }));
+		out.push(tpl.mid);
+		for (let i = 0; i < labels.length; i++) out.push(Utils.FillTemplate(tpl.drop, { n: i + 1 }));
+		out.push(tpl.drag_open);
+		for (let i = 0; i < answers.length; i++) out.push(Utils.FillTemplate(tpl.drag, { n: i + 1, answer: inline(answers[i]) }));
+		out.push(...this.#ddClose(tpl));
 		return out.join("\n");
 	}
 
@@ -1549,6 +1669,95 @@ class InteractiveBuilder {
 	}
 
 	/**
+	 * dragAndDrop PICTURE COLUMN SORT → the KB 03B "Column Layout" with its images rule. The writer's table: a FIRST row
+	 * naming 2–3 columns in plain words (`Short vowels ║ Long vowels`, `Photograph ║ Illustration`) and every other
+	 * non-empty cell ONE stock picture — a bare address or `word – address` — the answer key being the column the picture
+	 * sits in. The column form refuses a URL cell and the image-pair form wants one picture + one word per row, so this
+	 * runs LAST in the dragAndDrop chain (every other build is unchanged by construction). The form: `dragAndDrop images`,
+	 * one headed drop ddColumn per column, every drag (the picture, and the writer's word under it when one was typed) in
+	 * the FIRST drag ddColumn in column order, padded with empty ddColumns to the drop-column count, then the button row.
+	 * NEVER HALF-BUILDS (null → the hand-off box) — the guards are listed on the data block.
+	 * Data interactive_builders.dragAndDrop.image_column; env DDIMGCOLUMN_OFF (DRAGDROP_OFF still reverts the whole type).
+	 *
+	 * @param {object} args
+	 * @param {object} args.bundle - the captured interactive
+	 * @param {object} args.tpl - this widget's markup templates (the column form's column / drop / pad markup is shared)
+	 * @param {function} [args.renderInline] - inline-markup renderer
+	 * @param {object} [args.run] - the conversion run (image mode, acknowledgement titles)
+	 * @returns {string|null} the built dragAndDrop HTML, or null to keep the hand-off box
+	 */
+	static #dragAndDropImageColumn({ bundle, tpl, renderInline, run }) {
+		const cfg = tpl?.image_column, col = tpl?.column ?? {};
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env.DRAGDROP_OFF) return null;
+		if (typeof process !== "undefined" && process.env && cfg.env && process.env[cfg.env]) return null;
+		if (bundle?.extraTypes && bundle.extraTypes.length) return null;
+		if ((bundle?.media ?? []).length) return null;
+		const tables = bundle?.tables ?? [];
+		if (tables.length !== 1) return null;
+		const srcRows = (tables[0].rows ?? []).filter((r) => Array.isArray(r));
+		if (srcRows.length < 2) return null;
+		const width = Math.max(0, ...srcRows.map((r) => r.length));
+		if (width < (cfg.min_columns ?? 2) || width > (cfg.max_columns ?? 3)) return null;
+		const inline = renderInline ?? ((s) => s);
+		const urlRe = /https?:\/\/[^\s\]"<>]+/g, tagRe = /\[[^\]]*\]/;
+		const reject = new RegExp(cfg.header_reject_pattern ?? "\\bimages?\\b|\\bphotos?\\b", "i");
+		const hostRe = new RegExp(cfg.stock_host_pattern ?? "istockphoto\\.com", "i");
+		const header = srcRows[0];
+		if (header.length !== width) return null;
+		const headings = [];
+		for (const c of header) {
+			if (this.#hasRedText(c)) return null;
+			const t = this.#cellText(c).replace(/\s+/g, " ").trim();
+			if (!t || /https?:\/\//.test(t) || tagRe.test(t) || reject.test(t.replace(/\*/g, ""))) return null;
+			if (t.split(/\s+/).length > (cfg.header_max_words ?? 8)) return null;
+			headings.push(t);
+		}
+		const cols = headings.map(() => []);
+		const seen = new Set();
+		for (const r of srcRows.slice(1)) {
+			if (r.length > width) return null;
+			for (let c = 0; c < r.length; c++) {
+				const raw = String(r[c] ?? "");
+				if (this.#hasRedText(raw)) return null;
+				const noLink = raw.replace(/\[LINK:[^\]]*\]/gi, " ");
+				const urls = [...new Set((noLink.match(urlRe) ?? []).map((u) => u.replace(/(?:__|\*\*|[.,;)])+$/, "")))];
+				const words = noLink.replace(urlRe, " ").replace(/__|\*+/g, " ").replace(/[–—\-:|/,.]+/g, " ").replace(/\s+/g, " ").trim();
+				if (!urls.length) { if (words) return null; continue; }                      // an empty cell (a ragged column)
+				if (urls.length !== 1 || !hostRe.test(urls[0])) return null;
+				if (tagRe.test(words) || /[[\]]/.test(words)) return null;
+				if (words && words.split(" ").length > (cfg.word_max_words ?? 3)) return null;   // prose beside the picture
+				const filename = this.#accImageFilename(urls[0], cfg, cfg);
+				if (!filename || seen.has(filename)) return null;                             // a repeated picture = an ambiguous key
+				seen.add(filename);
+				cols[c].push({ url: urls[0], filename, word: words });
+			}
+		}
+		const all = cols.flat();
+		if (all.length < (cfg.min_items ?? 4)) return null;
+		if (cols.filter((c) => c.length).length < 2) return null;
+		const out = [cfg.open];
+		for (let c = 0; c < cols.length; c++) {
+			out.push(Utils.FillTemplate(col.col_open ?? "<div class=\"ddColumn\">\n<p>{heading}</p>", { heading: inline(headings[c]) }));
+			for (let i = 0; i < cols[c].length; i++) out.push(Utils.FillTemplate(col.drop ?? "<div class=\"drop\" option=\"{n}\"></div>", { n: c + 1 }));
+			out.push(col.col_close ?? "</div>");
+		}
+		out.push(col.mid ?? "</div>\n<div class=\"row dragContainer\">\n<div class=\"ddColumn\">");
+		for (let c = 0; c < cols.length; c++) for (const it of cols[c]) {
+			const image = this.#ddImage(it, cfg, run);
+			out.push(it.word ? Utils.FillTemplate(cfg.drag_word, { n: c + 1, image, word: inline(it.word) }) : Utils.FillTemplate(cfg.drag, { n: c + 1, image }));
+		}
+		out.push(col.drag_col_close ?? "</div>");
+		for (let c = 1; c < cols.length; c++) out.push(col.pad ?? "<div class=\"ddColumn\"></div>");
+		out.push(col.close_inner ?? "</div>");
+		const br = tpl?.button_row;
+		const btnOff = typeof process !== "undefined" && process.env && br?.env && process.env[br.env];
+		if (br && br.enabled !== false && !btnOff) out.push(br.html);
+		out.push(col.close ?? "</div>");
+		return out.join("\n");
+	}
+
+	/**
 	 * THE MEMBERS RULE for every built dragAndDrop (the text form, the image form, the column form). A built widget
 	 * REPLACES the whole captured bundle, and the three forms only ever read the TABLE — so any other member the scanner
 	 * swallowed (the writer's sentence before the table, the "Go to journal" line after it, a [button], a [body]
@@ -1589,9 +1798,11 @@ class InteractiveBuilder {
 		const bodyRe = new RegExp(cfg.body_tag_pattern ?? "^\\[\\s*body(?:\\s+text)?\\s*\\]$", "i");
 		const noteRe = new RegExp(cfg.note_cue_pattern ?? "^(?:cs|dev|developer|designer|note|nb)\\s*[:\\-\u2013\u2014]", "i");
 		const before = [], after = []; let seenTable = false;
+		const pairLines = this.#DD_PAIR_LINES.get(bundle);   // the pair-list form's own line(s): the widget's place, not prose
 		for (let k = 0; k < members.length; k++) {
 			const m = members[k];
 			if (!m) continue;
+			if (pairLines?.has(k)) { seenTable = true; continue; }
 			if (m.type === "table") { if (seenTable) return null; seenTable = true; continue; }
 			const side = seenTable ? after : before;
 			if (m.type === "black") {
@@ -12291,6 +12502,16 @@ class InteractiveBuilder {
 	 * trims. (Inline **bold** / *italic* / links are handled later by the
 	 * caller's renderInline, so we leave those markers in place here.)
 	 */
+	static #redMarkerRe() {
+		// the extractor's red-run markers, each stripped on its own (the emoji sits on ONE side of each: «🔴[RED TEXT]» …
+		// «[/RED TEXT]🔴»). Data interactive_builders.typing.red_marker_strip; env REDMARKSTRIP_OFF reads the both-sides
+		// form, which matches no extractor run, so a marker left in a quiz or typing table declines the build.
+		const cfg = DataService.Data.EmitTemplates?.interactive_builders?.typing?.red_marker_strip;
+		const off = !cfg || cfg.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[cfg.env || "REDMARKSTRIP_OFF"]);
+		return off ? /\u{1f534}\[\/?RED TEXT\]\u{1f534}/gu : /\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu;
+	}
+
 	static #cellText(value) {
 		return String(value ?? "")
 			.replace(/\u{1f534}\[RED TEXT\]/gu, "")
@@ -14198,7 +14419,7 @@ class InteractiveBuilder {
 		const deny = tpl.decline_tags ?? [];
 
 		const notes = [];
-		const stripped = (s) => String(s ?? "").replace(/\u{1f534}\[\/?RED TEXT\]\u{1f534}/gu, " ")
+		const stripped = (s) => String(s ?? "").replace(this.#redMarkerRe(), " ")
 			.replace(/\*\*/g, "").replace(/\s+/g, " ").trim();
 		const optText = (s) => stripped(String(s ?? "").replace(reList, ""));
 		const words = (s) => stripped(s).split(/\s+/).filter(Boolean).length;
@@ -14251,7 +14472,7 @@ class InteractiveBuilder {
 			}
 			const p = m.parse?.primary;
 			const tag = p?.tag ?? null;
-			const raw = String(m.text ?? "").replace(/\u{1f534}\[\/?RED TEXT\]\u{1f534}/gu, "").trim();
+			const raw = String(m.text ?? "").replace(this.#redMarkerRe(), "").trim();
 			// the widget's own invocation, once
 			if (!seenOpener && openTags.includes(tag)) {
 				seenOpener = true;
@@ -14499,6 +14720,146 @@ class InteractiveBuilder {
 	}
 
 	/* ================================================================== *
+	 *  THE PATHWAYS PERSONA (KB 14A §14.2)
+	 * ================================================================== */
+	/**
+	 * READS A PATHWAYS PERSONA TABLE (data interactive_builders.pathwaysPersona; env PERSONA_OFF). The writer types the persona
+	 * who guides a Pathways module as a table cell: «[Audiovisual item N: Whai]» (the audio recording), the circle-image and
+	 * request lines, «[Transcript button]» and the recording's words, sometimes an «[Alert]» line after them. Every non-empty
+	 * cell of the table must be read this way: each line is an audiovisual item, a header line (header_patterns, an [IMAGE]
+	 * line), a transcript opener, a [Body] or untagged line inside a transcript or an alert, or an alert opener — anything
+	 * else (another tag, red words inside a transcript, untagged words outside one) declines the whole table. Every persona
+	 * must name one of the KB's personas in its audiovisual tag and carry transcript words; at most max_per_table per table.
+	 * The scanner calls this to capture the table as the widget, and the builder below renders what it returns, so the two
+	 * can never disagree.
+	 *
+	 * @param {Object} block - a table block (its rows: arrays of cell strings, a cell's lines joined by « / »)
+	 * @returns {Array<{n:number,name:string,src:string,transcript:string[],alert:?{blank:boolean,lines:string[]}}>|null}
+	 */
+	static PathwaysPersonas(block, why = null) {
+		const cfg = DataService.Data.EmitTemplates?.interactive_builders?.pathwaysPersona;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "PERSONA_OFF"]) return null;
+		const rows = Array.isArray(block?.rows) ? block.rows : null;
+		if (!rows || !rows.length) return null;
+		const cells = rows.flat().map((c) => String(c ?? "")).filter((c) => c.trim());
+		if (!cells.length) return null;
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const re = (p) => new RegExp(p, "iu");
+		const avRe = re(cfg.av_item_pattern), trRe = re(cfg.transcript_pattern), bodyRe = re(cfg.body_pattern),
+			alertRe = re(cfg.alert_pattern), tailRe = re(cfg.request_tail_pattern), imgRe = re(cfg.image_line_pattern);
+		const headRes = (cfg.header_patterns ?? []).map(re);
+		const names = Object.keys(cfg.personas ?? {});
+		const alias = cfg.name_aliases ?? {};
+		const nameOf = (s) => {
+			for (const k of [...names, ...Object.keys(alias)]) {
+				if (new RegExp(`(?<![\\p{L}])${k}(?![\\p{L}])`, "u").test(s)) return alias[k] ?? k;
+			}
+			return null;
+		};
+		const no = (reason, line) => { if (why) why(reason, line); return null; };   // a probe's reason callback (never passed by the engine)
+		const recs = [];
+		for (const cell of cells) {
+			let cur = null, mode = "none";
+			const cellRecs = [], headNames = new Set();
+			// adjacent red spans are one red run («[Include the dropdown text below + an audio recording» «(item 9).]»)
+			const text = cell.replace(/\[\/RED TEXT\]\u{1f534}\s*\u{1f534}\[RED TEXT\]/gu, " ");
+			const parts = text.split(/\s+\/(?:\s+\/)*\s+|\s+\/\s*$/).map((p) => p.trim()).filter(Boolean);
+			for (const p of parts) {
+				const reds = [...p.matchAll(RED)].map((m) => m[1].replace(/\s+/g, " ").trim());
+				const leadRed = p.startsWith("\u{1f534}[RED TEXT]") ? reds[0] ?? "" : null;
+				const black = p.replace(RED, " ").replace(/\s+/g, " ").trim();
+				if (leadRed !== null) {
+					const av = leadRed.match(avRe);
+					if (av) {
+						if (reds.length > 1) return no("red words after the item tag", p);
+						// the circle-image line typed in the same red run as the item («[Audiovisual item 11: Whai] [Audioimage] …»)
+						const rest = leadRed.slice(av[0].length).trim();
+						const restHead = !!rest && headRes.some((h) => h.test(rest));
+						if ((rest && !restHead) || (!restHead && !tailRe.test(black))) return no("words beside the item tag", p);   // learner words beside the item tag
+						cur = { n: +av[1], name: nameOf(av[2] ?? ""), src: null, transcript: [], alert: null };
+						cellRecs.push(cur); mode = "item"; continue;
+					}
+					if (headRes.some((h) => h.test(leadRed))) {                         // its words are realised by the build
+						const hn = nameOf(leadRed);
+						if (hn) headNames.add(hn);
+						mode = cur ? "item" : "none"; continue;
+					}
+					if (reds.length > 1) return no("red words after black words", p);
+					const tr = leadRed.match(trRe);
+					if (tr) {
+						const trRest = leadRed.slice(tr[0].length).trim();   // «[Transcript button]: [Body]» in one red run
+						if (!cur || cur.transcript.length || (trRest && !(bodyRe.test(trRest) && !trRest.replace(bodyRe, "").trim()))) return no("a transcript with no item, a second one, or red words in its tag", p);
+						if (black) cur.transcript.push(black);
+						mode = "transcript"; continue;
+					}
+					if (bodyRe.test(leadRed) && !leadRed.replace(bodyRe, "").trim()) {
+						if (mode !== "transcript" || !black) return no("a [Body] line outside a transcript", p);
+						cur.transcript.push(black); continue;
+					}
+					const al = leadRed.match(alertRe);
+					if (al && !leadRed.slice(al[0].length).trim()) {
+						if (!cur || cur.alert || !black) return no("an alert with no persona, a second one, or no words", p);
+						cur.alert = { blank: !!al[1], lines: [black] };
+						mode = "alert"; continue;
+					}
+					return no("another tag", p);
+				}
+				if (reds.length) return no("a red word inside the line", p);
+				if (imgRe.test(black)) { mode = cur ? "item" : "none"; continue; }
+				if (mode === "transcript") { cur.transcript.push(black); continue; }
+				if (mode === "alert") { cur.alert.lines.push(black); continue; }
+				return no("untagged words outside a transcript", p);
+			}
+			// the persona's name is the one its item tag names; a lone item whose tag names none of them («[Audiovisual item 6
+			// Baileyi]») takes the one persona the cell's own header lines name («[[pathways persona] [Bailey]]»)
+			if (cellRecs.length === 1 && !cellRecs[0].name && headNames.size === 1) cellRecs[0].name = [...headNames][0];
+			if (cellRecs.some((r) => !r.name)) return no("an item that names no KB persona", "");
+			for (const r of cellRecs) { r.src = cfg.personas[r.name]; recs.push(r); }
+		}
+		if (!recs.length || recs.length > (cfg.max_per_table ?? 2)) return no(`${recs.length} personas`, "");
+		if (recs.some((r) => !r.transcript.length)) return no("a persona with no transcript", "");
+		return recs;
+	}
+
+	/**
+	 * BUILDS THE PATHWAYS PERSONA (data interactive_builders.pathwaysPersona; env PERSONA_OFF) from the records
+	 * PathwaysPersonas reads: the KB's pathwaysPersona markup per persona (its KB image, the name over it, both buttons
+	 * empty, the transcript paragraphs — the first carries transcript_first_p_class — and the id naming the audio file from
+	 * id_template), the alert line after it as the alert box. One persona: a row holding it, then its alert. Two: a row of
+	 * two pair_columns, each the persona's row and its alert.
+	 */
+	static #pathwaysPersona({ bundle, tpl, renderInline, run }) {
+		const tables = bundle?.tables ?? [];
+		if (tables.length !== 1 || (bundle?.memberItems ?? []).length !== 1) return null;
+		const recs = this.PathwaysPersonas(tables[0]);
+		if (!recs) return null;
+		const inline = renderInline ?? ((s) => s);
+		const bullet = /^[•●▪◦]\s*/;
+		const paras = (lines, firstClass) => {
+			const out = [];
+			let ul = null;
+			for (const l of lines) {
+				if (bullet.test(l)) { (ul ??= []).push(`<li>${inline(l.replace(bullet, ""))}</li>`); continue; }
+				if (ul) { out.push(`<ul>\n${ul.join("\n")}\n</ul>`); ul = null; }
+				out.push(out.length || !firstClass ? `<p>${inline(l)}</p>` : `<p class="${firstClass}">${inline(l)}</p>`);
+			}
+			if (ul) out.push(`<ul>\n${ul.join("\n")}\n</ul>`);
+			return out.join("\n");
+		};
+		const persona = (r) => Utils.FillTemplate(tpl.html, {
+			id: Utils.FillTemplate(tpl.id_template, { code: run?.moduleCode ?? "MODULE", n: String(r.n) }),
+			src: r.src, name: r.name, transcript: paras(r.transcript, tpl.transcript_first_p_class),
+		});
+		const alert = (r) => !r.alert ? "" : "\n" + Utils.FillTemplate(tpl.alert_open, { modifiers: r.alert.blank ? " blank" : "" })
+			+ `\n<div class="row">\n<div class="${tpl.alert_col ?? "col-12"}">\n${paras(r.alert.lines, null)}\n</div>\n</div>\n</div>`;
+		if (recs.length === 1) return `<div class="row">\n${persona(recs[0])}\n</div>${alert(recs[0])}`;
+		const cols = tpl.pair_columns ?? [];
+		if (cols.length < recs.length) return null;
+		return `<div class="row">\n${recs.map((r, k) => `<div class="${cols[k]}">\n<div class="row">\n${persona(r)}\n</div>${alert(r)}\n</div>`).join("\n")}\n</div>`;
+	}
+
+	/* ================================================================== *
 	 *  THE REORDER — the TABLE form
 	 * ================================================================== */
 	/**
@@ -14673,7 +15034,7 @@ class InteractiveBuilder {
 		if (typeof process !== "undefined" && process.env && (process.env[cfg.env || "TYPTABLE_OFF"] || process.env[tpl.env ?? "TYPING_OFF"])) return null;
 		if (bundle?.extraTypes?.length || (bundle?.media ?? []).length) return null;
 		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
-		const unRed = (s) => String(s ?? "").replace(/\u{1f534}\[\/?RED TEXT\]\u{1f534}/gu, " ");
+		const unRed = (s) => String(s ?? "").replace(this.#redMarkerRe(), " ");
 		const inline = renderInline ?? ((s) => Utils.EscapeHtml(s));
 		// the table guards (a tag-word / still-bracketed answer, a leftover writer
 		// bracket); env TYPTABLEGUARD_OFF turns them off
@@ -14784,7 +15145,7 @@ class InteractiveBuilder {
 		if (bundle?.extraTypes?.length) return null;              // a merged bundle is not this widget
 		const inline = renderInline ?? ((s) => Utils.EscapeHtml(s));
 		const ak = DataService.Data.EmitTemplates.interactive_placeholder?.answer_key ?? {};
-		const unRed = (s) => String(s ?? "").replace(/\u{1f534}\[\/?RED TEXT\]\u{1f534}/gu, " ");
+		const unRed = (s) => String(s ?? "").replace(this.#redMarkerRe(), " ");
 		const textTags = tpl.text_tags ?? ["body", "paragraph"];
 		const reject = new RegExp(tpl.answer_reject_pattern ?? "$^", "i");
 		const notes = [];

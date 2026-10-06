@@ -646,7 +646,15 @@ class TablesAndGrids {
 		const cp = DataService.Data.EmitTemplates?.elements?.soft_break_lead?.cell_parts;
 		const run = !!cp && cp.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env[cp.env || "CELLSLASH_OFF"]);
-		return String(cell ?? "")
+		// red letters typed INSIDE a word («t🔴ea🔴ch») keep the word whole: a marker touching a letter outside it loses the
+		// extractor's padding space on that side (inline_red_words.cell_glue; env CELLREDGLUE_OFF)
+		const gl = DataService.Data.EmitTemplates?.elements?.inline_red_words?.cell_glue;
+		const glue = !!gl && gl.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[gl.env || "CELLREDGLUE_OFF"]);
+		let s = String(cell ?? "");
+		if (glue) s = s.replace(/(\p{L})?\u{1f534}\[RED TEXT\] (\p{L}{1,5}) \[\/RED TEXT\]\u{1f534}(\p{L})?/gu, (m, pre, red, post) => (!pre && !post) ? m
+			: (pre ?? "") + "\u{1f534}[RED TEXT]" + (pre ? "" : " ") + red + (post ? "" : " ") + "[/RED TEXT]\u{1f534}" + (post ?? ""));
+		return s
 			.replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "")
 			.split(run ? /\s+\/(?:\s+\/)*\s+/ : /\s+\/\s+/).map((p) => p.trim()).filter(Boolean);
 	};

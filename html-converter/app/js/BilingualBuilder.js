@@ -1091,6 +1091,12 @@ class BilingualBuilder {
 		const tlRe = tl && tl.enabled !== false && tl.label_pattern
 			&& !(typeof process !== "undefined" && process.env && process.env[tl.env || "REOLABEL_OFF"])
 			? new RegExp(tl.label_pattern, "iu") : null;
+		// the same template's LESSON field labels («Ingoa Akoranga:», «Lesson Title:») on their own toggle
+		// (dual_language.template_labels.lesson_labels; env REOLESSONLABEL_OFF)
+		const tlL = tl?.lesson_labels;
+		const tlLRe = tl && tl.enabled !== false && tlL && tlL.enabled !== false && tlL.label_pattern
+			&& !(typeof process !== "undefined" && process.env && (process.env[tl.env || "REOLABEL_OFF"] || process.env[tlL.env || "REOLESSONLABEL_OFF"]))
+			? new RegExp(tlL.label_pattern, "iu") : null;
 		let headCarry = 0;
 		for (const part of TablesAndGrids.cellParts(cell)) {
 			const low = part.toLowerCase();
@@ -1132,6 +1138,10 @@ class BilingualBuilder {
 				let t = (norm.RenderText(part) || rest.trim() || "").replace(/\*/g, "").trim();
 				if (tlRe && tlRe.test(t)) {
 					t = t.replace(tlRe, "").trim();
+					if (!t) { headCarry = lvl; continue; }
+				}
+				if (tlLRe && tlLRe.test(t)) {
+					t = t.replace(tlLRe, "").trim();
 					if (!t) { headCarry = lvl; continue; }
 				}
 				if (t) text.push(`<h${lvl}>${ListsAndRuns.inlineMarkup(t)}</h${lvl}>`);

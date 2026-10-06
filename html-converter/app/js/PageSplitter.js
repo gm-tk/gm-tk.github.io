@@ -62,7 +62,7 @@ class PageSplitter {
 		// the corpus marker form: 🔴[RED TEXT] … [/RED TEXT]🔴
 		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
 
-		for (const block of blocks) {
+		for (const block of this.#layoutInstructionBlocks(blocks)) {
 			if (block.kind === "table") {
 				items.push({ type: "table", block });
 				continue;
@@ -92,9 +92,70 @@ class PageSplitter {
 				if (pendingTag) pendingTag.blackAfter += tail;
 				else items.push({ type: "black", text: tail, block });
 			}
+			// THE LEARNER LINE TYPED ALL IN RED AFTER ITS OWN TAG: a paragraph that is ONE red span «[body] <a learner
+			// sentence>» keeps its words as the tag's text, instead of a body element with nothing in it.
+			// Data Input_Doc_Rules.red_runs.tagged_learner_line; env REDBODYLINE_OFF.
+			if (pendingTag && !pendingTag.blackAfter.trim() && items[items.length - 1] === pendingTag
+				&& (text.match(RED) ?? []).length === 1 && !text.replace(RED, "").trim()) {
+				const words = this.#taggedLearnerLine(pendingTag, normaliser);
+				if (words) {
+					pendingTag.text = `[${words.bracket}] `;
+					pendingTag.parse = normaliser.Parse(pendingTag.text);
+					pendingTag.blackAfter = words.text;
+				}
+			}
 		}
 		return items;
 	};
+
+	/**
+	 * THE WRITER'S LAYOUT INSTRUCTION TYPED IN BLACK (data Input_Doc_Rules.red_runs.layout_instruction_line; env LAYOUTLINE_OFF):
+	 * a black paragraph «Tab Nav layout with the following layout:» is the writer talking to the developer, and the small table of
+	 * tab names after it is part of the same instruction — the paragraph becomes a red instruction carrying both (the Writers
+	 * Note) and the table leaves the stream. Returns the blocks unchanged when nothing matches.
+	 */
+	static #layoutInstructionBlocks(blocks) {
+		const cfg = DataService.Data.InputDocRules?.red_runs?.layout_instruction_line;
+		if (!cfg || cfg.enabled === false || !Array.isArray(blocks)) return blocks;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "LAYOUTLINE_OFF"]) return blocks;
+		const ro = DataService.Data.InputDocRules.red_runs;
+		const hasRed = (s) => /\u{1f534}\[RED TEXT\]/u.test(String(s ?? ""));
+		const lineRe = new RegExp(cfg.line_pattern, "i"), imgRe = new RegExp(cfg.image_token_pattern, "gi");
+		const plain = (s) => String(s ?? "").replace(imgRe, " ").replace(/\*\*|__|✅/g, "").replace(/\s+/g, " ").trim();
+		let out = null;
+		for (let i = 0; i < blocks.length; i++) {
+			const b = blocks[i];
+			if (!b || b.kind === "table" || hasRed(b.text)) continue;
+			const t = plain(b.text);
+			if (!lineRe.test(t)) continue;
+			out ??= blocks.slice();
+			let words = t;
+			const nx = blocks[i + 1];
+			const cells = nx?.kind === "table" && Array.isArray(nx.rows) ? nx.rows.flat().filter((c) => String(c ?? "").trim()) : null;
+			if (cells && cells.length <= (cfg.max_cells ?? 2) && !cells.some(hasRed)) {
+				const said = cells.map(plain).filter(Boolean);
+				if (said.length) { words += " " + said.join(" / "); out[i + 1] = null; }
+			}
+			out[i] = { ...b, text: `${ro.marker_open}${words}${ro.marker_close}` };
+		}
+		return out ? out.filter(Boolean) : blocks;
+	}
+
+	/** The learner words a red «[body] …» span carries after its bracket (data red_runs.tagged_learner_line), or null. */
+	static #taggedLearnerLine(tagItem, normaliser) {
+		const cfg = DataService.Data.InputDocRules?.red_runs?.tagged_learner_line;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "REDBODYLINE_OFF"]) return null;
+		const m = /^\s*\[([^\]]*)\]\s*([\s\S]*?)\s*$/.exec(String(tagItem.text ?? ""));
+		if (!m || !new RegExp(cfg.bracket_pattern, "i").test(m[1])) return null;
+		const t = m[2].replace(/\s+/g, " ").trim();
+		if (t.split(" ").filter(Boolean).length < (cfg.min_words ?? 3)) return null;
+		if (!new RegExp(cfg.end_pattern, "u").test(t) || new RegExp(cfg.deny_pattern, "u").test(t)) return null;
+		if (cfg.build_verb_pattern && new RegExp(cfg.build_verb_pattern, "i").test(t)) return null;
+		const ign = (cfg.cue_ignore_words ?? []).map(Utils.RegexEscape).join("|");
+		if (normaliser?.HasInstructionCue?.(ign ? t.replace(new RegExp(`\\b(?:${ign})\\b`, "gi"), " ") : t)) return null;
+		return { bracket: m[1].trim(), text: t };
+	}
 
 	/**
 	 * Groups the item stream into pages.

@@ -112,6 +112,27 @@
 			"boundary_pattern": "[\\s:\\[\\]()]$",
 			"marker_pattern": "[\\[(]"
 		},
+		"layout_instruction_line": {
+			"_doc": "THE WRITER'S LAYOUT INSTRUCTION TYPED IN BLACK (KB constraint 37: a writer's instruction to the developer is a red Writers Note, never learner text). A writer heads the module menu with «Tab Nav layout with the following layout:» in BLACK and lists the page's tabs in a one-cell table after it («**Introduction** / **Agency** / … [IMAGE: image23.png]»): both shipped in the menu as learner text, although the page's side tabs are built from the content itself. A black paragraph matching line_pattern becomes a red instruction (the Writers Note); when the next block is a table of no more than max_cells cells, its words (image tokens removed) join the note and the table leaves the page. Other writers type the same instruction red — it is already a note.",
+			"enabled": true,
+			"env": "LAYOUTLINE_OFF",
+			"line_pattern": "^(?:tab|side)[\\s-]*nav(?:igation)?\\s+layout\\b[^.]{0,60}:\\s*$",
+			"max_cells": 2,
+			"image_token_pattern": "\\[IMAGE:[^\\]]*\\]"
+		},
+		"tagged_learner_line": {
+			"_doc": "THE LEARNER LINE TYPED ALL IN RED AFTER ITS OWN TAG (KB constraint 1: the writer's words are never lost). A writer sometimes colours a whole learner paragraph red, its tag included — «[body] Select the best word to end these sentences to fit the rhythm.», «[body] We use words like:» — so the words sit inside the tag's red span and the tag has no black text: the body element rendered nothing (the line was lost) or the line became a developer note. When a paragraph is ONE red span whose bracket is a tag in `bracket_pattern` and whose words after the bracket are a learner sentence — at least min_words words, ending as `end_pattern` says, no instruction cue (Instruction_Cues), nothing `deny_pattern` names (a module code, an address, another bracket) — the words become the tag's text. A developer line of the same shape («[body] CS: scramble the sayings …», «[body] from PHO1031 Lesson 2 & 1») stays a note.",
+			"enabled": true,
+			"env": "REDBODYLINE_OFF",
+			"bracket_pattern": "^\\s*body\\s*$",
+			"min_words": 3,
+			"end_pattern": "[.:?!…][\"'’”)]*$",
+			"deny_pattern": "^\\(|\\b[A-Z]{2,}\\d{3,4}\\b|https?:\\/\\/|www\\.|[\\[\\]]",
+			"cue_ignore_words": ["above", "below"],
+			"build_verb_pattern": "^(?:put|place|move|make|insert|add|use)\\b",
+			"_cue_note": "The instruction-cue test ignores the two layout words a learner line also uses («… Click below to find out how.»); a line that opens with a build verb («Put the two boxes below in some fancy looking box so it stands out a bit.») is the writer talking to the developer and stays a note.",
+			"_deny_note": "A line opening in a round bracket is the writer's aside to the developer («[body] (not sure if we should put the method here or in the workbook, what will look better?)»), never the learner line; a module code («from PHO1031 Lesson 2 & 1»), an address or another bracket marks a developer reference."
+		},
 		"bridge_split_tag": true,
 		"bridge_split_tag_note": "Word can split a single uniform-RED [tag] into separate runs and DROP the colour on an interior space, fragmenting ONE tag across two [RED TEXT] marker spans (ANZH304 '[Please embed this journal story (as in ANZHFUN01 phase 2]'). DocxExtractor.#parseParagraph's red-merge loop BRIDGES a stray non-red whitespace run that sits MID-TAG between two red runs — fires ONLY when the red text so far has an unbalanced '[' (mid-tag) AND the gap run is whitespace-only AND the next run is red, so it reassembles ONE split tag but NEVER merges across real black content (an intentional '[tag: black label]' form) or between two complete tags. The COMMON same-colour split (Word's usual run fragmentation, e.g. '[Tab 1: I'+'ntroduction'+']' -> [Tab 1: Introduction]) is merged by the consecutive-red loop — this adds only the whitespace-gap variant, which is rare. env REDBRIDGE_OFF turns it off.",
 		"red_label_text": {

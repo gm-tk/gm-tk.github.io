@@ -392,6 +392,11 @@ class ListsAndRuns {
 			&& !(typeof process !== "undefined" && process.env && process.env.BLACKTAGSTRIP_OFF))
 			? new RegExp(`^\\[(?:${stripTags.map((t) => String(t).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})\\]\\s*`, "i")
 			: null;
+		// a writer's TYPED bullet glyph («› text») is a bullet line like «• text» (body_region.typed_bullet_glyphs; env TYPEDBULLET_OFF)
+		const _tbg = tpl.body_region?.typed_bullet_glyphs;
+		const typedBulletRe = _tbg && _tbg.enabled !== false && (_tbg.glyphs ?? []).length
+			&& !(typeof process !== "undefined" && process.env && process.env[_tbg.env ?? "TYPEDBULLET_OFF"])
+			? new RegExp(`^[${_tbg.glyphs.map((g) => String(g).replace(/[\]\\^-]/g, "\\$&")).join("")}]\\s+(.*)$`, "u") : null;
 		const nodes = lines.map((raw) => {
 			const indent = nestOff ? 0 : (raw.match(/^[ \t]+/)?.[0].length ?? 0);
 			const level = Math.floor(indent / indentPer);
@@ -409,7 +414,7 @@ class ListsAndRuns {
 				if (c.endsWith(emphB[1])) c = c.slice(0, -emphB[1].length);
 				bullet = [line, c.trim()];
 			} else {
-				bullet = line.match(/^•\s*(.*)$/);
+				bullet = line.match(/^•\s*(.*)$/) ?? (typedBulletRe ? line.match(typedBulletRe) : null);
 			}
 			const numbered = line.match(/^(\d+)[.)]\s+(.*)$/);
 			if (bullet) return { kind: "ul", level, content: bullet[1] };
