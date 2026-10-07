@@ -120,6 +120,14 @@
 			"max_cells": 2,
 			"image_token_pattern": "\\[IMAGE:[^\\]]*\\]"
 		},
+		"lead_tag_separator": {
+			"_doc": "THE SEPARATOR THE WRITER TYPED IN BLACK AFTER A RED TAG IS NOT THE LEARNER'S TEXT. «🔴[Body]🔴: When something is really big …» (ENGR202), «🔴[H3]🔴: Focus activity» (ARFUN03), «🔴[Title] [H2]🔴 – **Meet the sound** “a”» (FRFUN06), «🔴[Important note]🔴: Key concepts» (GEO1006), «🔴[Activity 1B]🔴– What's important to me» (ENGI400): the red tag leaves the stream and its black colon / dash / full stop stayed as the first character of the paragraph or heading. No gold block opens with it. A red span that OPENS its paragraph (no black text before it) and holds only tags (every word inside brackets) or a bare label (label_pattern) gives up ONE leading separator of the black text after it (pattern: a colon, semicolon, comma, en / em dash, a spaced hyphen or a single full stop, before a letter, digit, quotation mark or emphasis mark). The writer's bold / italic marks around the separator alone go with it; marks that open the words stay. A payload that is a web address (a developer request) is left as typed. Cell readers (bilingual cells, flip-card faces, media captions after an address) do not pass through this seam.",
+			"enabled": true,
+			"env": "TAGLEADSEP_OFF",
+			"pattern": "^(\\s*)(\\*{0,3}|_{0,2})(?:[:;,–—]|-(?=\\s)|\\.(?!\\.))(\\*{0,3}|_{0,2})\\s*(?=[\\p{L}\\p{N}“\"‘'(*_¿¡])",
+			"label_pattern": "^\\s*(?:caption|reverse|front|back|important note)\\s*$",
+			"deny_after_pattern": "^\\s*(?:\\*{0,3}|_{0,2})\\s*(?:https?:\\/\\/|www\\.)"
+		},
 		"tagged_learner_line": {
 			"_doc": "THE LEARNER LINE TYPED ALL IN RED AFTER ITS OWN TAG (KB constraint 1: the writer's words are never lost). A writer sometimes colours a whole learner paragraph red, its tag included — «[body] Select the best word to end these sentences to fit the rhythm.», «[body] We use words like:» — so the words sit inside the tag's red span and the tag has no black text: the body element rendered nothing (the line was lost) or the line became a developer note. When a paragraph is ONE red span whose bracket is a tag in `bracket_pattern` and whose words after the bracket are a learner sentence — at least min_words words, ending as `end_pattern` says, no instruction cue (Instruction_Cues), nothing `deny_pattern` names (a module code, an address, another bracket) — the words become the tag's text. A developer line of the same shape («[body] CS: scramble the sayings …», «[body] from PHO1031 Lesson 2 & 1») stays a note.",
 			"enabled": true,
@@ -712,6 +720,12 @@
 			"early copyright clearance",
 			"early copyright review"
 		],
+		"phrases_contains_more": {
+			"_doc": "THE MEDIA-LIST HEADING WITH ITS GUIDE LINK. The template's media-list section can open with the red label and the guide's link on one line — «MEDIA LIST - How to Complete the Media List.pdf» (TWHR905, TWHR907) — which is not the exact «media list» line phrases_exact knows, so the backward walk stopped below it and the label (a Writers Note) and the guide link reached the learner at the end of the last page. These phrases count as contains-phrases of the preamble. Env MLHOWTO_OFF.",
+			"enabled": true,
+			"env": "MLHOWTO_OFF",
+			"phrases": ["how to complete the media list"]
+		},
 		"no_table_heading": true,
 		"label_max_words": 3,
 		"tail_extra_media_tables": true,

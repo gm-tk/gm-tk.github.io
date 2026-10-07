@@ -2950,14 +2950,29 @@ class ContentConverter {
 						// Data: activity_wrapper.embedded_interactive_activity.typed_tag_title   Env: TYPEDTAG_OFF
 						{
 							const _ttCfg = eiaCfg?.typed_tag_title;
+							// the same title when the writer typed no dash — a title-shaped tail only (typed_tag_title.no_dash; env TYPEDTAGND_OFF)
+							const _ndCfg = _ttCfg?.no_dash;
+							const _ttDash = !!_ttCfg && new RegExp(_ttCfg.tag_pattern ?? "^\\[\\s*activity\\s+[\\d.]+[a-z]?\\s*[\\u2013\\u2014-]", "i").test(String(it.text ?? "").trim());
+							const _ttNoDash = !_ttDash && !!_ndCfg && _ndCfg.enabled !== false
+								&& !(typeof process !== "undefined" && process.env && process.env[_ndCfg.env || "TYPEDTAGND_OFF"])
+								&& new RegExp(_ndCfg.tag_pattern ?? "\\[\\s*activity\\b", "i").test(String(it.text ?? ""))
+								&& !(_ndCfg.deny_types ?? []).includes(bundle.type)
+								// a bracket the red tag leaves open closes after the black words: they are inside the writer's request
+								&& (String(it.text ?? "").match(/\[/g) ?? []).length <= (String(it.text ?? "").match(/\]/g) ?? []).length
+								// a tail that is a hyperlink's own words is the link, not a title
+								&& !(it.block?.links ?? []).some((l) => { const lt = String(l?.text ?? "").replace(/[*_]/g, "").trim(); return lt.length > 3 && String(it.blackAfter ?? "").replace(/[*_]/g, "").includes(lt); });
 							if (embeddedAct && actOwner === it && _ttCfg && _ttCfg.enabled !== false && !reoMode
 								&& !(typeof process !== "undefined" && process.env && process.env[_ttCfg.env || "TYPEDTAG_OFF"])
-								&& new RegExp(_ttCfg.tag_pattern ?? "^\\[\\s*activity\\s+[\\d.]+[a-z]?\\s*[\\u2013\\u2014-]", "i").test(String(it.text ?? "").trim())) {
+								&& (_ttDash || _ttNoDash)) {
 								let _tail = String(it.blackAfter ?? "").replace(/\*+/g, "").replace(/\s+/g, " ").trim();
 								let _note = "";
 								const _mNote = _tail.match(/^(.*?)\s*(\([^()]*\))\s*$/);
 								if (_ttCfg.strip_trailing_note !== false && _mNote && _mNote[1].trim()) { _tail = _mNote[1].trim(); _note = _mNote[2]; }
-								if (_tail.length >= (_ttCfg.min_title_chars ?? 2) && !/^[\[(]/.test(_tail)) {
+								const _ndWords = _tail.split(/\s+/).filter(Boolean).length;
+								const _ndShape = !_ttNoDash || (_ndWords <= (_ndCfg.max_words ?? 10)
+									&& !(_ndCfg.deny_pattern && new RegExp(_ndCfg.deny_pattern, "iu").test(_tail))
+									&& !(/[.?]$/.test(_tail) && _ndWords > (_ndCfg.sentence_words ?? 6)));
+								if (_ndShape && _tail.length >= (_ttCfg.min_title_chars ?? 2) && !/^[\[(]/.test(_tail)) {
 									emit(Utils.FillTemplate(_ttCfg.title_heading ?? "<h3>{title}</h3>", { title: Utils.EscapeHtml(_tail) }));
 									it._typedTitle = _tail;
 									it.blackAfter = _note;
@@ -7897,6 +7912,10 @@ class ContentConverter {
 		const noted = new Map();   // the paragraph's block -> the words put back in it, in order
 		const notRe = rx(cfg.exclude_pattern, "iu");
 		const gluedRe = gl ? rx(gl.run_pattern ?? "^[\\p{L}\\p{N}’']+$") : null;
+		const insSpace = !!ins && on(ins.restore_space)
+			&& !(typeof process !== "undefined" && process.env && process.env[ins.restore_space.env || "REDWORDSPACE_OFF"]);
+		const glEmph = !!gl && on(gl.through_emphasis)
+			&& !(typeof process !== "undefined" && process.env && process.env[gl.through_emphasis.env || "REDGLUEEMPH_OFF"]);
 		const optWordRe = ol ? rx(ol.word_pattern ?? "^[\\p{L}\\p{N}’'\\-]+(?:[ \\u00a0]+[\\p{L}\\p{N}’'\\-]+)*,?$") : null;
 		const optSepBeforeRe = ol ? rx(ol.separator_before ?? "[(\\[,/]\\s*$") : null;
 		const optSepAfterRe = ol ? rx(ol.separator_after ?? "^\\s*[)\\],/]") : null;
@@ -7962,9 +7981,35 @@ class ContentConverter {
 			&& !(typeof process !== "undefined" && process.env && process.env[wd.black_paren_request.env || "HOVERPARENREQ_OFF"]) ? wd.black_paren_request : null;
 		const bprLeadRe = bpr ? rx(bpr.lead_pattern ?? "\\s*\\(\\s*(?:roll\\s*-?\\s*over|hover)\\s*(?:defn|definition|def)\\s*$", "iu") : null;
 		const bprDefRe = bpr ? rx(bpr.def_pattern ?? "^\\s*[:–—-]\\s*(.+?)\\s*$") : null;
+		// THE TAG RUN THAT TOOK THE NEXT WORD'S FIRST LETTER (tag_tail; env REDTAGTAIL_OFF): the writer coloured the tag AND the
+		// first letter(s) of the word after it red — «[H3] E» + «arthquake impacts …», «[Body] I» + «n your journal …» — so the
+		// tag's own text ended in the letters and the word lost them («<h3>E</h3><p>arthquake …»). The letters go back to the
+		// black text and the tag stays the tag: glued to a lower-case letter of the black text, or a one-letter word of
+		// spaced_words with its own space («[speech bubble] I » + «hope …»).
+		const tt = on(cfg.tag_tail) && !(typeof process !== "undefined" && process.env && process.env[cfg.tag_tail.env || "REDTAGTAIL_OFF"])
+			? cfg.tag_tail : null;
+		const ttRe = tt ? new RegExp(`^([\\s\\S]*\\])\\s*(\\p{L}{1,${tt.max_letters ?? 2}})(\\s?)$`, "u") : null;
 		let n = 0;
+		let lastJoin = null;   // the host text a red run was last put back into, and where it ended (in_sentence.restore_space)
 		for (let i = 0; i < items.length; i++) {
 			const it = items[i];
+			if (tt && free(it) && it.type === "tag" && it.parse?.primary) {
+				const tin = String(it.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "");
+				const tm = tin.replace(/^ /, "").replace(/ $/, "").match(ttRe);
+				const tafter = String(it.blackAfter ?? "");
+				if (tm && tafter && !(skipAfterRe && skipAfterRe.test(tafter))) {
+					const glued = !tm[3] && /^\p{Ll}/u.test(tafter);
+					const spaced = !!tm[3] && (tt.spaced_words ?? []).includes(tm[2]) && /^\p{L}/u.test(tafter);
+					const np = (glued || spaced) && this.#norm?.Parse ? this.#norm.Parse(tm[1]) : null;
+					if ((glued || spaced) && (!np || np.primary?.tag === it.parse.primary.tag)) {
+						it.text = ` ${tm[1]} `;
+						if (np) it.parse = np;
+						it.blackAfter = tm[2] + (spaced ? " " : "") + tafter;
+						n++;
+						continue;
+					}
+				}
+			}
 			if (bpr && free(it) && it.type === "tag" && !it.parse?.primary && /^\s*\)/.test(String(it.blackAfter ?? ""))) {
 				const prv = i > 0 ? items[i - 1] : null;
 				const hk = free(prv) && prv.block === it.block && (prv.type === "black" || prv.type === "tag") ? (prv.type === "black" ? "text" : "blackAfter") : null;
@@ -8000,8 +8045,15 @@ class ContentConverter {
 			if ((skipBeforeRe && skipBeforeRe.test(before)) || (skipAfterRe && skipAfterRe.test(after))) continue;
 			// glued: no space between the run and a letter on at least one side (the run's own space, if it has one,
 			// is on the far side: «gaming[ q]uiz»)
+			// …or glued across an emphasis marker («*klein*[er]», «[u]*se*») — the letter is past the «*» / «__»
+			// (glued.through_emphasis; env REDGLUEEMPH_OFF)
+			const gAfter = glEmph ? after.replace(/^(?:\*+|__)/, "") : after;
+			const gBefore = glEmph ? before.replace(/(?:\*+|__)$/, "") : before;
+			// a run that follows a red run this pass has just put back, with nothing between them, was its own red span — a
+			// separate word: it goes back after a space (in_sentence.restore_space; env REDWORDSPACE_OFF)
+			const afterRed = insSpace && !!lastJoin && !!host && lastJoin.host === host && lastJoin.key === key && lastJoin.len === before.length;
 			const glued = !!gl && gluedRe.test(word) && word.length <= (gl.max_chars ?? 4)
-				&& ((!/\s$/.test(own) && /^\p{Ll}/u.test(after)) || (!/^\s/.test(own) && /\p{L}$/u.test(before)));
+				&& ((!/\s$/.test(own) && /^\p{Ll}/u.test(gAfter)) || (!/^\s/.test(own) && /\p{L}$/u.test(gBefore)));
 			const option = !glued && !!ol && optWordRe.test(word) && words(word) <= (ol.max_words ?? 3) && inOpenList(before, after)
 				&& (optSepBeforeRe.test(before) || optSepAfterRe.test(after));
 			const sentence = !glued && !option && !!ins && insWordRe.test(word) && words(word) <= (ins.max_words ?? 3)
@@ -8021,7 +8073,10 @@ class ContentConverter {
 				noted.get(it.block).push(_bare);
 			}
 			if (host) {
+				// a red run right after one just put back is its own word: the space between them goes back (restore_space)
+				if (afterRed && /\p{L}$/u.test(before) && /^\p{L}/u.test(own)) own = " " + own;
 				host[key] = before + own + after;
+				lastJoin = { host, key, len: (before + own).length };
 				items.splice(i, 1);
 				i--;
 			} else {
@@ -8091,32 +8146,48 @@ class ContentConverter {
 			const t = s.replace(/\*\*\*/g, "\u0001").replace(/\*\*/g, "\u0002");
 			return { b: (t.match(/\u0002/g) ?? []).length % 2 === 1, i: (t.match(/(?<!\*)\*(?!\*)/g) ?? []).length % 2 === 1 };
 		};
+		// THE WRITER'S NOTE TYPED INSIDE A SENTENCE (note_mid_sentence; env REDNOTEJOIN_OFF): a red note that acts on no tag —
+		// «Words that have the same sound [different colour font], but different spelling …», «… as tipuna [Hover - Male
+		// ancestor.].  Watch these …» — renders as its Writers Note after the sentence, which is not cut in two. The same seam,
+		// for a whole-span instruction (or a bracketed run the classifier calls noise); notes in a row all go after it.
+		const nm = cfg.note_mid_sentence;
+		const nmOn = !!nm && nm.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[nm.env || "REDNOTEJOIN_OFF"]);
+		const nmBeforeRe = nmOn ? new RegExp(nm.before_pattern ?? "(?:[\\p{L}\\p{N},(]|[\\p{L}\\p{N}][*_]{1,3})\\s*$", "u") : null;
+		const nmAfterRe = nmOn ? new RegExp(nm.after_pattern ?? "^\\s*(?:\\*{1,3}|_{1,2})?\\s*(?:\\p{Ll}|[,;:.!?)])", "u") : null;
+		const spent = new Set();   // the notes already moved: the next one in the same paragraph looks past them to the sentence
 		let n = 0;
 		for (let i = 1; i < items.length; i++) {
 			const it = items[i];
 			if (!free(it) || it.type !== "tag" || it.parse?.primary?.directive === "INTERACTIVE") continue;
-			if (!reqRe.test(innerOf(it))) continue;
+			// only a note the writer bracketed: red words without brackets inside a sentence may be the writer's own text
+			const note = nmOn && !it.parse?.primary && !it._redWordNote && (it.parse?.class === "instruction" || it.parse?.class === "noise")
+				&& new RegExp(nm.note_pattern ?? "^\\[[\\s\\S]*\\]$", "u").test(innerOf(it));
+			if (!note && !reqRe.test(innerOf(it))) continue;
 			// a link tag that carries its own address builds a link / button labelled with the words after it — they stay its label
-			if (/https?:\/\/|www\./i.test(innerOf(it)) || (it.block?.links ?? []).length) continue;
-			const prev = items[i - 1];
+			if (/https?:\/\/|www\./i.test(innerOf(it)) || (!note && (it.block?.links ?? []).length)) continue;
+			let h = i - 1;
+			while (h > 0 && spent.has(items[h]) && items[h].block === it.block) h--;
+			const prev = items[h];
 			const hostTags = cfg.host_tags ?? ["body", "paragraph"];
 			const host = free(prev) && prev.block === it.block
 				&& (prev.type === "black" || (prev.type === "tag" && hostTags.includes(prev.parse?.primary?.tag))) ? prev : null;
 			if (!host) continue;
 			const key = host.type === "black" ? "text" : "blackAfter";
 			const before = String(host[key] ?? ""), after0 = String(it.blackAfter ?? "");
-			if (!before.trim() || !beforeRe.test(before) || !afterRe.test(after0)) continue;
+			if (!before.trim() || !(note ? nmBeforeRe : beforeRe).test(before) || !(note ? nmAfterRe : afterRe).test(after0)) continue;
 			// the tag's own address (a link / media URL in its words) is the tag's content, never the sentence's
 			if (cfg.deny_after_pattern && new RegExp(cfg.deny_after_pattern, "iu").test(after0)) continue;
 			// words the writer hyperlinked are the link's own label (the link builder makes them the button / anchor text)
 			const plainAfter = after0.replace(/[*_]/g, "").replace(/\s+/g, " ").trim().toLowerCase();
-			if ((it.block?.links ?? []).some((l) => { const t = String(l?.text ?? "").replace(/[*_]/g, "").replace(/\s+/g, " ").trim().toLowerCase(); return t.length > 2 && plainAfter.includes(t); })) continue;
+			if (!note && (it.block?.links ?? []).some((l) => { const t = String(l?.text ?? "").replace(/[*_]/g, "").replace(/\s+/g, " ").trim().toLowerCase(); return t.length > 2 && plainAfter.includes(t); })) continue;
 			let after = after0.replace(/^\s+/, "");
-			const open = openRuns(before);
+			// (a note keeps the writer's marks on both sides as typed: «*The* [letter highlighter] **s***illy*»)
+			const open = note ? { b: false, i: false } : openRuns(before);
 			if (open.b && /^\*\*(?!\*)/.test(after)) after = after.slice(2);
 			else if (open.i && /^\*(?!\*)/.test(after)) after = after.slice(1);
 			host[key] = before.replace(/\s+$/, "") + (/^[,;:.!?)]/.test(after) ? "" : " ") + after;
 			it.blackAfter = "";
+			if (note) spent.add(it);
 			n++;
 		}
 		if (n) run?.AddNote?.("info", "ContentConverter", `${n} mid-sentence request tag${n === 1 ? "" : "s"}: the writer's words after the tag rejoin the sentence (request_continuation).`);
@@ -12411,6 +12482,10 @@ class ContentConverter {
 		let content = def.proverb_only
 			? this.#gatherProverb(it, bodyItems, i, def)
 			: MediaBuilder.gatherFollowing(it, bodyItems, i);
+		// the proverb's own label line goes before the box (proverb_split_merged.label_before_box; env WHKLABELBEFORE_OFF)
+		if (it._proverbLabels?.length) {
+			out.splice(flags.length, 0, ...it._proverbLabels.map((l) => `<p><b>${ListsAndRuns.inlineMarkup(l)}</b></p>`));
+		}
 		// A CALLOUT TYPED BARE + A ONE-CELL TABLE — the cell IS the box's content. The CED Phase-5
 		// writers put the wānanga / talanoa prompt in a one-row one-cell table under the tag; the strict gather
 		// sees no black text (the next item is the table), so the box would ship EMPTY with a red flag, the table
@@ -12568,6 +12643,12 @@ class ContentConverter {
 		}
 		if (wrap) out.push(wrap.close);
 		out.push(def.close);
+		// the second labelled proverb under the same tag: its label, then its own box (proverb_split_merged.label_before_box)
+		if (it._proverbNext) {
+			const pn = it._proverbNext;
+			out.push(`<p><b>${ListsAndRuns.inlineMarkup(pn.label)}</b></p>`, Utils.FillTemplate(def.open, { modifiers }),
+				...deProv(deBold(deItal(ListsAndRuns.renderBlackText(pn.lines.join("\n"), run)))), def.close);
+		}
 		// KB 01F / 05D: the writer's quote is p.quoteText + p.quoteAck, no wrapper (see #quoteKbForm).
 		// Data flag: callouts.by_tag.<tag>.kb_p_form   Env toggle: its env (QUOTEFORM_OFF)
 		const _qf = def.kb_p_form && !wrap
@@ -13700,7 +13781,38 @@ class ContentConverter {
 						parts.push(ln); t++; took++;
 					}
 					if (!took) break;
-					const restLines = kept.concat(lines.slice(t));
+					// the kept label renders BEFORE the box, where the gold puts it (proverb_split_merged.label_before_box;
+					// env WHKLABELBEFORE_OFF) — the caller places it
+					const lbb = psm.label_before_box;
+					const lbbOn = !!lbb && lbb.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[lbb.env ?? "WHKLABELBEFORE_OFF"]);
+					if (kept.length && lbbOn) {
+						it._proverbLabels = kept.map((l) => l.replace(/\*+/g, "").trim()).filter(Boolean);
+						kept.length = 0;
+					}
+					// a SECOND labelled proverb right after the first («**Proverbe français**» + its lines) is its own
+					// label + box, after the first (the same flag)
+					let tail = lines.slice(t);
+					const nextRe = lbbOn && lbb.next_label_pattern ? new RegExp(lbb.next_label_pattern, "iu") : null;
+					if (nextRe) {
+						let u = 0;
+						while (u < tail.length && !tail[u].trim()) u++;
+						if (u < tail.length && /^\*\*[^*]+\*\*$/.test(tail[u].trim()) && nextRe.test(tail[u].replace(/\*+/g, "").trim())) {
+							const nx = [];
+							let v = u + 1;
+							while (v < tail.length && nx.length < maxPara) {
+								const ln = tail[v].trim();
+								if (!ln) { v++; continue; }
+								if (ln.length > maxChars) break;
+								nx.push(ln); v++;
+							}
+							if (nx.length) {
+								it._proverbNext = { label: tail[u].replace(/\*+/g, "").trim(), lines: nx };
+								tail = tail.slice(v);
+							}
+						}
+					}
+					const restLines = kept.concat(tail);
 					if (restLines.join("").trim()) next.text = restLines.join("\n"); else next._consumed = true;
 					break;
 				}

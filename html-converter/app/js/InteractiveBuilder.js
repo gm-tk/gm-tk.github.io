@@ -10017,7 +10017,7 @@ class InteractiveBuilder {
 		}
 		// VIDEO form (member-based). A captured table here = a mixed/odd shape → the
 		// video walk will reject the non-URL table member and fall back.
-		const vid = this.#carouselVideo({ bundle, tpl });
+		const vid = this.#carouselVideo({ bundle, tpl, run });
 		if (vid !== null) return vid;
 
 		// RICH SLIDE FALLBACK — after every strict dialect has declined, so each
@@ -11301,6 +11301,9 @@ class InteractiveBuilder {
 		// Recognise both: a [slide n]/[slide] marker → new slide; an [H2]-[H6]/[heading]/[story heading]
 		// → the title for the slide just opened (or a new slide for the heading-only carousel form).
 		const headingTags = new Set(["heading", "story heading", "h2", "h3", "h4", "h5", "h6"]);
+		// the black words typed after a slide marker are that slide's title (marker_line_title; env CARSLIDETITLE_OFF)
+		const mlt = tpl.marker_line_title;
+		const mltOn = !!mlt && mlt.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[mlt.env ?? "CARSLIDETITLE_OFF"]);
 		for (const m of members) {
 			const tag = m && m.type === "tag" ? m.parse?.primary?.tag : null;
 			const tags = m && m.type === "tag" ? (m.parse?.tags ?? []).map((t) => t.tag) : [];
@@ -11308,6 +11311,8 @@ class InteractiveBuilder {
 			if (tag === "carousel") continue;                                   // the [carousel]/[slide show] opener
 			if (tags.includes("slide n") || tag === "slide n" || tag === "slide") {
 				cur = { heading: "", image: null, body: [] };                   // a [Slide N] marker opens a new slide
+				const own = mltOn && !/https?:\/\/|www\./i.test(String(text)) && !this.#hasRedText(text) ? this.#cellText(text).trim() : "";
+				if (own) { cur.heading = own; cur.markerTitle = true; }
 				slides.push(cur);
 				continue;
 			}
@@ -11315,7 +11320,7 @@ class InteractiveBuilder {
 				if (this.#hasRedText(text)) return null;
 				const h = this.#cellText(text).trim();
 				if (!h) continue;
-				if (cur && !cur.heading && !cur.image && !cur.body.length) { cur.heading = h; continue; }   // title for the [Slide N] just opened
+				if (cur && (!cur.heading || cur.markerTitle) && !cur.image && !cur.body.length) { cur.heading = h; cur.markerTitle = false; continue; }   // title for the [Slide N] just opened
 				cur = { heading: h, image: null, body: [] };                    // heading-opened slide (no [slide n] markers)
 				slides.push(cur);
 				continue;
@@ -11397,18 +11402,46 @@ class InteractiveBuilder {
 	 * SAFETY (never half-build): null the moment a member is a non-YouTube URL, carries
 	 * caption/heading TEXT beyond the URL, is an image, or there are < min_slides videos.
 	 */
-	static #carouselVideo({ bundle, tpl }) {
+	static #carouselVideo({ bundle, tpl, run }) {
 		const members = bundle?.memberItems ?? [];
 		const videoTpl = DataService.Data.EmitTemplates.video;
 		const ytRe = new RegExp(DataService.Data.AcksFormats.extraction_regexes.youtube_id);
 		const STRUCTURAL = new Set(["carousel", "slide", "slide n", "shape n", "story heading"]);
 		const ids = [];
+		// a member that is only «[Insert media item N]» names the video in Media-List row N
+		// (data carousel.media_item_videos; env CARMLVIDEO_OFF)
+		const mlv = tpl.media_item_videos;
+		const mlItems = Array.isArray(run?.mediaItems) ? run.mediaItems : [];
+		const refRe = mlv && mlv.enabled !== false && mlv.reference_pattern && mlItems.length
+			&& !(typeof process !== "undefined" && process.env && process.env[mlv.env || "CARMLVIDEO_OFF"])
+			? new RegExp(mlv.reference_pattern, "i") : null;
+		const numberedList = mlItems.some((it) => /\d/.test(String(it?.itemNo ?? "")));
+		const notes = [];
 
 		for (const m of members) {
 			const tag = m && m.type === "tag" ? m.parse?.primary?.tag : null;
 			const text = m && m.type === "tag" ? (m.blackAfter ?? "") : (m.text ?? "");
 			const url = m?.block?.links?.[0]?.target
 				?? (text.match(/https?:\/\/[^\s\]"<>]+/)?.[0] ?? "");
+			if (!url && refRe && m?.type === "tag" && !this.#cellText(text).trim()) {
+				const raw = this.#cellText(String(m.text ?? ""));
+				const refAll = new RegExp(refRe.source, "gi");
+				const refs = [...raw.matchAll(refAll)];
+				if (refs.length && !/https?:\/\//.test(raw)) {
+					for (const rm of refs) {                    // one span may name several («[… item 7] [… item 8] [… item 9]»)
+						const n = parseInt(rm[1], 10);
+						const it = numberedList
+							? mlItems.find((x) => parseInt(String(x?.itemNo ?? "").replace(/\D/g, ""), 10) === n)
+							: mlItems[n - 1];
+						const id = it?.url ? String(it.url).match(ytRe)?.[1] : null;
+						if (!id) return null;                   // the row is not a YouTube video → keep the box
+						ids.push(id);
+					}
+					const rest = raw.replace(refAll, " ").replace(/\[\s*\]|[[\]]/g, " ").replace(/\s+/g, " ").trim();
+					if (/[A-Za-z0-9]/.test(rest)) notes.push(rest);
+					continue;
+				}
+			}
 
 			if (url) {
 				const id = url.match(ytRe)?.[1];
@@ -11430,6 +11463,10 @@ class InteractiveBuilder {
 		const items = ids.map((id) => Utils.FillTemplate(tpl.item_video, {
 			embed: Utils.FillTemplate(videoTpl.youtube, { videoId: id, params: "" }),
 		}));
+		if (notes.length) {   // the reference span's other words are the writer's instruction (the Writers Note)
+			const list = (bundle.instructions ??= []);
+			for (const t of notes) if (!list.some((s) => String(s).trim() === t)) list.push(t);
+		}
 		return [tpl.open, ...items, tpl.close].join("\n");
 	}
 

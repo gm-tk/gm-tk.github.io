@@ -284,13 +284,29 @@ class BilingualBuilder {
 					for (const h of src.text) { kept.push(c); if (strip([h]).length) c++; }
 					before = src.mediaPos.map((p) => (p < kept.length ? kept[p] : c));
 				}
+				// with the general rule off, a carousel built from the cell still goes back where the writer typed it
+				// (dual_language.carousel_tag.in_place; env REOCAROUSELPOS_OFF) — the other embeds stay after the text
+				let placed = null;
+				if (!before && src.mediaPos && src.media.length) {
+					const cc = this.#carouselCfg();
+					if (cc && cc.inPlace && src.media.some((m) => String(m).startsWith(cc.open))) {
+						const kept = [];
+						let c = 0;
+						for (const h of src.text) { kept.push(c); if (strip([h]).length) c++; }
+						placed = src.media.map((m, i) => (String(m).startsWith(cc.open)
+							? (src.mediaPos[i] < kept.length ? kept[src.mediaPos[i]] : c) : -1));
+					}
+				}
+				const done = new Set();
 				let mi = 0;
 				for (let k = 0; k < n; k++) {
 					if (before) while (mi < src.media.length && before[mi] <= k) out.push(src.media[mi++]);
+					else if (placed) for (let i = 0; i < placed.length; i++) if (placed[i] >= 0 && placed[i] <= k && !done.has(i)) { out.push(src.media[i]); done.add(i); }
 					if (k < Rt.length) out.push(this.langAttr(Rt[k], "reo"));   // Māori element FIRST
 					if (k < Et.length) out.push(this.langAttr(Et[k], "eng"));   // English element SECOND
 				}
 				if (before) { while (mi < src.media.length) out.push(src.media[mi++]); continue; }
+				if (placed) { src.media.forEach((m, i) => { if (!done.has(i)) out.push(m); }); continue; }
 			} else {
 				for (const p of R.text) out.push(this.langAttr(p, "reo"));   // Māori text FIRST
 				for (const p of E.text) out.push(this.langAttr(p, "eng"));   // English text SECOND
@@ -1103,7 +1119,21 @@ class BilingualBuilder {
 			&& !(typeof process !== "undefined" && process.env && process.env[wl.env || "REOWIDGETLABEL_OFF"]);
 		const wlLead = wlOn ? new RegExp(wl.lead_tag_pattern, "i") : null;
 		const wlLabel = wlOn ? new RegExp(wl.label_pattern, "i") : null;
-		for (const part of TablesAndGrids.cellParts(cell)) {
+		// the writer's ticked list keeps its ticked lines as list items (dual_language.tick_list; env REOTICKLIST_OFF)
+		const tlc = this.#tickListCfg();
+		const parts = tlc ? this.#tickListParts(TablesAndGrids.cellParts(cell), tlc) : TablesAndGrids.cellParts(cell);
+		// the carousel typed in the cell: its tag + slides are ONE media embed (dual_language.carousel_tag; env REOCAROUSEL_OFF)
+		const cc = this.#carouselCfg();
+		const carRuns = cc ? this.#carouselRuns(parts, cc) : new Map();
+		for (let pi = 0; pi < parts.length; pi++) {
+			const part = parts[pi];
+			const cr = carRuns.get(pi);
+			if (cr) {
+				if (ai) { aiFail(); aiGroup++; }
+				flush(); pushM(this.#carouselHtml(cr, cc, ai, run));
+				pi = cr.end - 1;
+				continue;
+			}
 			const low = part.toLowerCase();
 			if (ai) {
 				if (ai.re.test(part) && !aiName(part.replace(ai.re, ""))) {
@@ -1302,6 +1332,118 @@ class BilingualBuilder {
 			unit: c.unit_template ?? "<div class=\"audioImage\">\n<div id=\"{name}\" class=\"audioImageOption\">\n{img}\n</div>\n</div>",
 			cols: c.group_cols ?? {},
 		};
+	};
+
+	/** The writer's ticked list (data dual_language.tick_list; env REOTICKLIST_OFF), compiled, or null when it is off. */
+	static #tickListCfg() {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.tick_list;
+		if (!c || c.enabled === false || !c.box_pattern
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REOTICKLIST_OFF"])) return null;
+		return { re: new RegExp(c.box_pattern, "u"), ticked: new Set(c.ticked ?? ["☑", "☒"]), min: c.min_items ?? 2, maxWords: c.max_words ?? 6 };
+	};
+
+	/**
+	 * A cell's parts with each ticked-list run rewritten: a run of consecutive tick-box parts (each its own short line) of at
+	 * least min_items parts, at least one of them ticked, keeps its ticked parts as «• words» list lines and drops the
+	 * unticked ones. A run with every box empty is the learner's checklist and is left alone.
+	 * @param {string[]} parts - the cell's parts (TablesAndGrids.cellParts)
+	 * @param {object} tl - #tickListCfg()
+	 * @returns {string[]} the parts to render
+	 */
+	static #tickListParts(parts, tl) {
+		const hit = parts.map((p) => {
+			const m = tl.re.exec(String(p));
+			return m && m[2].replace(/\*/g, "").trim().split(/\s+/).length <= tl.maxWords ? { box: m[1], words: m[2].replace(/\*+$/, "").trim() } : null;
+		});
+		const out = [];
+		for (let i = 0; i < parts.length; i++) {
+			if (!hit[i]) { out.push(parts[i]); continue; }
+			let j = i;
+			while (j < parts.length && hit[j]) j++;
+			const run = hit.slice(i, j);
+			if (run.length >= tl.min && run.some((h) => tl.ticked.has(h.box))) {
+				for (const h of run) if (tl.ticked.has(h.box)) out.push(`• ${h.words}`);
+			} else out.push(...parts.slice(i, j));
+			i = j - 1;
+		}
+		return out;
+	};
+
+	/**
+	 * The carousel typed inside a bilingual cell (data dual_language.carousel_tag; env REOCAROUSEL_OFF), its patterns
+	 * compiled, or null when it is off.
+	 */
+	static #carouselCfg() {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.carousel_tag;
+		if (!c || c.enabled === false || !c.tag_pattern
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REOCAROUSEL_OFF"])) return null;
+		return {
+			tagRe: new RegExp(c.tag_pattern, "iu"),
+			labelRe: c.slide_label_pattern ? new RegExp(c.slide_label_pattern, "iu") : null,
+			wordRe: new RegExp(c.word_pattern ?? "^\\*\\*([^*\\[\\]]{1,40})\\*\\*$", "u"),
+			leadWordRe: new RegExp(c.lead_word_pattern ?? "^\\*\\*([^*\\[\\]]{1,40})\\*\\*\\s*(?=\\[)", "u"),
+			min: c.min_slides ?? 2,
+			inPlace: !!c.in_place && c.in_place.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[c.in_place.env ?? "REOCAROUSELPOS_OFF"]),
+			open: c.open ?? "<div class=\"row carousel\">\n<div class=\"col-md-12 col-12 viewer\">",
+			item: c.item_template ?? "<div class=\"item image\">\n{picture}\n<div class=\"carousel-caption\">\n<p><b>{word}</b></p>\n</div>\n</div>",
+			close: c.close ?? "</div>\n</div>",
+		};
+	};
+
+	/**
+	 * The carousel runs of one cell's parts: for each part that is the carousel tag, the slides that follow it — an
+	 * optional «Slide N» label, an optional bold word (its own part, or before the image's [Item] tag), the image part,
+	 * then its audio part — up to the first part that is not a slide's own. A run with fewer than min_slides complete
+	 * slides is not one (its parts render as before).
+	 * @param {string[]} parts - the cell's parts (TablesAndGrids.cellParts)
+	 * @param {object} cc - #carouselCfg()
+	 * @returns {Map<number, {end: number, slides: {word: string|null, img: string, name: string}[]}>} keyed by the tag part's index
+	 */
+	static #carouselRuns(parts, cc) {
+		const out = new Map();
+		const strip = (p) => String(p).replace(/\u{1f534}|\[\/?RED TEXT\]/gu, "").replace(/\s+/g, " ").trim();
+		const isImg = (p) => /\[\s*(?:item[^\]]*\]\s*\[\s*)?(?:image|photo)\s*\]/i.test(p);
+		const isAud = (p) => /\[\s*(?:item[^\]]*\]\s*\[\s*)?audio\s*\]/i.test(p);
+		for (let t = 0; t < parts.length; t++) {
+			if (!cc.tagRe.test(strip(parts[t]))) continue;
+			const slides = [];
+			let word = null, img = null, last = t;
+			for (let k = t + 1; k < parts.length; k++) {
+				const s = strip(parts[k]);
+				if (cc.labelRe && cc.labelRe.test(s)) { if (word || img) break; last = k; continue; }
+				const w = cc.wordRe.exec(s);
+				if (w && !img) { if (word) break; word = w[1].trim(); continue; }
+				if (isImg(s) && !isAud(s) && !img) {
+					const lw = cc.leadWordRe.exec(s);
+					if (lw) { if (word) break; word = lw[1].trim(); }
+					img = lw ? s.slice(lw[0].length) : parts[k];
+					continue;
+				}
+				if (isAud(s) && !isImg(s) && img) {
+					const name = s.replace(/^[\s\S]*\]/, "").replace(/\*/g, "").trim();
+					if (!name) break;
+					slides.push({ word, img, name });
+					word = null; img = null; last = k;
+					continue;
+				}
+				break;
+			}
+			if (slides.length >= cc.min) out.set(t, { end: last + 1, slides });
+			t = last;
+		}
+		return out;
+	};
+
+	/** One carousel run as the KB 04A image carousel, each slide's picture the KB 04B audio-image unit (no lazy loading — c83). */
+	static #carouselHtml(cr, cc, ai, run) {
+		const unit = ai?.unit ?? "<div class=\"audioImage\">\n<div id=\"{name}\" class=\"audioImageOption\">\n{img}\n</div>\n</div>";
+		const items = cr.slides.map((sl) => {
+			const img = TablesAndGrids.cellImage(sl.img, run).join("\n").replace(/\s+loading="lazy"/g, "");
+			const picture = Utils.FillTemplate(unit, { name: Utils.EscapeHtml(sl.name), img });
+			return Utils.FillTemplate(cc.item, { picture, word: ListsAndRuns.inlineMarkup(sl.word ?? sl.name) });
+		});
+		return [cc.open, ...items, cc.close].join("\n");
 	};
 
 	/**

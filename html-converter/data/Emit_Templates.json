@@ -226,6 +226,33 @@
 					"default": "col-md-3 col-6"
 				}
 			},
+			"tick_list": {
+				"enabled": true,
+				"env": "REOTICKLIST_OFF",
+				"_doc": "THE WRITER'S TICKED LIST. The Bilingual template carries a skill checklist the writer fills in per activity — «**What will we be learning?** / ☒ Read / ☐ Write / ☒ Speak / ☒ Listen / ☐ Watch» (and «He aha tā tātou ako ai? / ☒ Pānui / …» in the Māori cell). Rendered part by part, the learner saw every box, the ticked and the unticked, as paragraphs. The human lists only the TICKED skills, as list items, and drops the boxes and the unticked lines. BilingualBuilder.bilingualSplit reads each run of consecutive tick-box parts (box_pattern: a ☐ / ☑ / ☒ leading the part, bold markers allowed) of at least min_items parts in which the writer ticked at least one: a ticked part becomes a «• words» list line, an unticked part is dropped. A run whose every box is empty is a checklist for the learner to tick, and it is left as it is. Env REOTICKLIST_OFF.",
+				"box_pattern": "^\\s*(?:\\*\\*\\s*)?([\\u2610\\u2611\\u2612])\\s*(?:\\*\\*)?\\s*(\\S[\\s\\S]*?)\\s*$",
+				"ticked": ["☑", "☒"],
+				"min_items": 2,
+				"max_words": 6
+			},
+			"carousel_tag": {
+				"enabled": true,
+				"env": "REOCAROUSEL_OFF",
+				"_doc": "THE CAROUSEL TYPED INSIDE A BILINGUAL CELL. The writer types the carousel tag as one part of a content-table cell («[Interactive] Carousel», «[Interactive] [Carousel]», «[Interactive] [Carousel] [AudioHover]», «[Interactive] Carousel pic with word/audio») and then its slides as the cell's next parts: an optional «Slide N» label, an optional bold word (its own part, or typed before the image's [Item] tag), «[Item N] [Image] desc», «[Item N] [Audio] name». Without this the run ships as loose bold words (the same word in both languages), placeholder images and audio players; the human builds ONE KB 04A image carousel — `row carousel > col-md-12 viewer > item image` — each slide the picture that plays its audio (the KB 04B audio-image unit, `id` = the audio name) and the word as its caption. BilingualBuilder.bilingualSplit reads the run before rendering the cell: it ends at the first part that is not a slide's own (a [Body] line, prose) and is built only with at least min_slides complete slides (picture + audio); the caption is the slide's bold word, else the audio name. The carousel is one media embed of the cell (emitted once, from the cell the media come from). No lazy loading on a slide image (KB constraint 83). Env REOCAROUSEL_OFF.",
+				"tag_pattern": "^\\[\\s*interactive\\s*\\]\\s*(?:\\[\\s*carousel\\s*\\]|carousel\\b)",
+				"slide_label_pattern": "^slide\\s+\\d{1,2}\\s*:?$",
+				"word_pattern": "^\\*\\*([^*\\[\\]]{1,40})\\*\\*$",
+				"lead_word_pattern": "^\\*\\*([^*\\[\\]]{1,40})\\*\\*\\s*(?=\\[)",
+				"min_slides": 2,
+				"open": "<div class=\"row carousel\">\n<div class=\"col-md-12 col-12 viewer\">",
+				"item_template": "<div class=\"item image\">\n{picture}\n<div class=\"carousel-caption\">\n<p><b>{word}</b></p>\n</div>\n</div>",
+				"close": "</div>\n</div>",
+				"in_place": {
+					"_doc": "The carousel goes back where the writer typed it in the cell — after the paragraphs before its tag, before the ones after its last slide — on the interleaved bilingual rows, while the general media_in_place rule is off (every other embed of the row stays after the text). The human puts the carousel there. Env REOCAROUSELPOS_OFF.",
+					"enabled": true,
+					"env": "REOCAROUSELPOS_OFF"
+				}
+			},
 			"audio_image": {
 				"enabled": false,
 				"_status": "Default-off. The build matches the human's `row>col paddingR>audioImage>audioImageOption>img` byte-for-byte, BUT the human NESTS the audioImage grid inside the section's `col-md-8` / `div.activity` (with the lesson heading), while this build emits a BARE top-level `<div class=\"row\">` — the rich structure in the WRONG nesting fits the human page worse than a single cv2 widget placeholder. The bilingual page is richly NESTED (section -> activity -> widget), so a piece built in isolation lands in the wrong place. The audioImage build (`ContentConverter.#bilingualAudioImage`) + flag stay here as the base; enabling it needs a HOLISTIC bilingual structural build (row-group the section's heading + grid + widget under one col-md-8 / div.activity). TRR112-style grids (embedded in content tables, not separate 2-row tables) also need the prose+widget split first. env AUDIOIMG_OFF.",
@@ -1209,11 +1236,23 @@
 			"exclude_pattern":"\\b(?:image|images|img|insert|link|links|video|audio|button|bold|unbold|italic|italics|underline|heading|alert|tab|tabs|hover|rollover|roll over|defn|definition|caption|icon|font|todo|tbc|retrieved|screenshot|source|credit|website|cs|dev|facing side|reverse side|correct answers?|answer in|h[1-6])\\b",
 			"skip_before_pattern": "https?://\\S*\\s*$",
 			"skip_after_pattern": "^\\s*(?:https?://|www\\.)",
+			"tag_tail": {
+				"_doc": "THE TAG RUN THAT TOOK THE NEXT WORD'S FIRST LETTER. The writer coloured the tag AND the first letter or two of the word after it red — «🔴[H3] E🔴arthquake impacts on the cultural environment.», «🔴[Body] I🔴n your journal …», «🔴[button] U🔴pload to dropbox», «🔴[caption] J🔴ohn Lewis …». The tag's own text ended in the letters, so the heading shipped as «<h3>E</h3>» over «arthquake …», the paragraph as «n your journal …», the caption as «ohn Lewis …». A run that resolves to a tag and ends in no more than max_letters letters glued to a lower-case letter of the black text after it (no space between), or in a one-letter word of spaced_words followed by its own space, gives the letters back to that text; the tag stays the tag. Never before a web address (skip_after_pattern). Env REDTAGTAIL_OFF.",
+				"enabled": true,
+				"env": "REDTAGTAIL_OFF",
+				"max_letters": 2,
+				"spaced_words": ["I", "A"]
+			},
 			"glued": {
 				"_doc": "A few letters or digits typed red INSIDE a word: no space between the run and a letter on at least one side (the first letter of a word, a phonics passage's focus letters, the digit of «5s»). It can only be part of the word.",
 				"enabled": true,
 				"max_chars": 4,
-				"run_pattern": "^[\\p{L}\\p{N}’']+$"
+				"run_pattern": "^[\\p{L}\\p{N}’']+$",
+				"through_emphasis": {
+					"_doc": "The run is glued to its word ACROSS an emphasis marker: the black text beside it is italic or bold, so the extractor's «*» / «**» / «__» sits between the run and the letter — «*klein*🔴er🔴» (GER1002's comparative endings), «**Meet the**🔴n🔴**umbers**», «🔴u🔴*se open …*». Without this the run (a letter-only red run, so noise to the tag classifier) was dropped and the sentence split at it. The test reads past the markers on that side; the run's own characters go back in place, the markers stay where the writer put them. Env REDGLUEEMPH_OFF.",
+					"enabled": true,
+					"env": "REDGLUEEMPH_OFF"
+				}
 			},
 			"option_list": {
 				"_doc": "The red option inside a bracketed list of options — «(hare, hear)», «[boy, girl, swimming pool]»: the run sits after an opening bracket that is not yet closed, next to a list separator. The list must show every option; with the colour gone the page no longer shows which one the writer marked. The bracket must hold at least one black option beside the run: a bracket of red runs only is a set of answers, not a list of options.",
@@ -1224,7 +1263,12 @@
 				"separator_after": "^\\s*[)\\],/]"
 			},
 			"in_sentence": {
-				"_doc": "One to a few red words inside the running text of a sentence, with black text before them that has not ended its sentence and black text after them that carries it on. The form is ambiguous from the document alone — in some documents the red word is a key term of the sentence, in others the answer of a fill-in frame — so the word comes back into the sentence (constraint 1: the writer's words stay; letters only — a red NUMBER in a sentence stays out) AND the paragraph is followed by ONE red Writers Note naming the words put back (KB constraints 37 / 59), so the developer can make a key term a hover definition or a fill-in a quiz. Never a run inside an interactive's capture (the builders read red runs as answers), never one matching exclude_pattern.",
+				"restore_space": {
+					"_doc": "A red WORD put back after a letter keeps the space before it. Two red runs typed with a space between them («klein*🔴er🔴 🔴als🔴 ich») reach this pass without that space (the black run between them held only the space), so once the first run is glued back into its word the second followed it directly — «kleinerals». A word of this form is never glued to the word before it (that is the glued form), so a space goes back before it when the text before it ends in a letter. Env REDWORDSPACE_OFF.",
+					"enabled": true,
+					"env": "REDWORDSPACE_OFF"
+				},
+				"_doc": "One to a few red words inside the running text of a sentence, with black text before them that has not ended its sentence and black textafter them that carries it on. The form is ambiguous from the document alone — in some documents the red word is a key term of the sentence, in others the answer of a fill-in frame — so the word comes back into the sentence (constraint 1: the writer's words stay; letters only — a red NUMBER in a sentence stays out) AND the paragraph is followed by ONE red Writers Note naming the words put back (KB constraints 37 / 59), so the developer can make a key term a hover definition or a fill-in a quiz. Never a run inside an interactive's capture (the builders read red runs as answers), never one matching exclude_pattern.",
 				"enabled": true,
 				"env": "REDWORDSENT_OFF",
 				"note": {
@@ -1280,7 +1324,16 @@
 			"after_pattern": "^\\s*(?:\\*{1,3}|_{1,2})?\\s*(?:\\p{Ll}|[,;:)])",
 			"deny_after_pattern": "https?:\\/\\/|www\\.|\\.(?:jpe?g|png|gif|pdf|mp3|mp4|docx?)\\b",
 			"_deny_after_note": "The tag's own address — «[Link] https://pepeha.nz/…» (ANZH101), «[video] https://…» (PES1001) — is the tag's content, never the sentence's: words carrying an address never move.",
-			"_doc": "A REQUEST TAG TYPED INSIDE A SENTENCE IS NOT A PARAGRAPH BREAK. «… for others please click on this link [insert link item 1] to see the recommended items)» (ART1003), «… (Link [Merged link 2] to page with information about dropbox …» (ART1004 / ART1005): the tag item cut the writer's sentence into two paragraphs (the fidelity census's F-CUT split-link / split-other rows). For a non-widget tag whose words are a link / media request (request_pattern) in the SAME source paragraph as black text before it that does not end the sentence (before_pattern) and whose own words continue it (after_pattern: a lower-case word or closing punctuation, the writer's italic / bold mark allowed before it), the words rejoin the sentence; the tag keeps its own handling after the paragraph. The writer's italic / bold run cut by the tag is joined back into one run. The format requests («[bold the word X]») stay with inline_format_request; a widget tag never moves."
+			"_doc": "A REQUEST TAG TYPED INSIDE A SENTENCE IS NOT A PARAGRAPH BREAK. «… for others please click on this link [insert link item 1] to see the recommended items)» (ART1003), «… (Link [Merged link 2] to page with information about dropbox …» (ART1004 / ART1005): the tag item cut the writer's sentence into two paragraphs (the fidelity census's F-CUT split-link / split-other rows). For a non-widget tag whose words are a link / media request (request_pattern) in the SAME source paragraph as black text before it that does not end the sentence (before_pattern) and whose own words continue it (after_pattern: a lower-case word or closing punctuation, the writer's italic / bold mark allowed before it), the words rejoin the sentence; the tag keeps its own handling after the paragraph. The writer's italic / bold run cut by the tag is joined back into one run. The format requests («[bold the word X]») stay with inline_format_request; a widget tag never moves.",
+			"note_mid_sentence": {
+				"enabled": true,
+				"env": "REDNOTEJOIN_OFF",
+				"before_pattern": "(?:[\\p{L}\\p{N},(]|[\\p{L}\\p{N}][*_]{1,3})\\s*$",
+				"after_pattern": "^\\s*(?:\\*{1,3}|_{1,2})?\\s*(?:\\p{Ll}|[,;:.!?)])",
+				"note_pattern": "^\\[[\\s\\S]*\\]$",
+				"_note_pattern_note": "Only a note the writer bracketed. Red words without brackets inside a sentence can be the writer's own text — «You can work towards [Agricultural and Horticultural Science] standards …» (the AGH series), which the human keeps in the sentence — and are never moved out of it.",
+				"_doc": "A WRITER'S NOTE TYPED INSIDE A SENTENCE IS NOT A PARAGRAPH BREAK. «Words that have the same sound [different colour font], but different spelling are called homophones.», «… while others thought of him as tipuna [Hover - Male ancestor.].  Watch these three different videos …»: the red note acts on no tag, so it renders as the red Writers Note, and the words after it started a new paragraph opening with the stray «,» / «.» / «:». For a bracketed red note that acts on no tag (note_pattern; the classifier calls it an instruction, or noise) between black text that has not ended its sentence (before_pattern) and black text that continues it (after_pattern: a lower-case word or the sentence's own punctuation), the words rejoin the sentence and the note follows the paragraph. Several notes in one sentence all follow it, in order."
+			}
 		},
 		"inline_format_request": {
 			"_doc": "A FORMATTING REQUEST INSIDE A SENTENCE IS APPLIED, NOT A PARAGRAPH BREAK. The writer types a red request in the middle of a sentence — 'Wana qualities are how [bold the word how] we do the movement …' (ARFUN03), 'explore autumn [bold the word autumn] using movement.' (CEDO202) — and the tag item cut the sentence into two paragraphs while the request rendered nothing (274 such spans / 33 modules). The human keeps one sentence and applies the request ('are <b>how</b> we do'). A tag item whose words match request_pattern (bold / italic, then the words to mark), between black text that does not end a sentence (before_pattern) and black text that continues it (after_pattern), rejoins the sentence; the named words (max_target_words) take the mark from 'marks' when they stand within window_chars of the request, outside any existing mark. Named words not found → the item is left alone.",
@@ -1611,6 +1664,12 @@
 					"pipe_split_single_line_only": true,
 					"label_pattern": "^(?:whakat[aā]u[aā]?k[iī]|proverb|proverbe)\\s*:?$",
 					"_label_doc": "A leading label line in the merged item ('**Whakatauki**', FRNO902) stays out of the box — the gold keeps it as its own bold <p> before the box.",
+					"label_before_box": {
+						"_doc": "The label line kept out of the box is rendered BEFORE the box, as its own bold <p> — where the gold puts it. Left in the merged item, it rendered after the box, under the proverb it names. A SECOND labelled proverb right after the first — a wholly bold line matching next_label_pattern («**Proverbe français**») and its short lines — is its own label + box after the first (the gold's two pairs). Env WHKLABELBEFORE_OFF.",
+						"enabled": true,
+						"env": "WHKLABELBEFORE_OFF",
+						"next_label_pattern": "^(?:whakat[aā]u[aā]?k[iī]|proverb|proverbe)\\b[^.!?:]{0,30}:?$"
+					},
 					"_pipe_doc": "The reo|english pipe / spaced-dash split (split_payload_on_pipe) runs only when the gathered content is ONE line: a proverb that already has its two lines keeps them — the English line's own spaced dash is punctuation ('Pursue excellence – should you stumble, let it be to a lofty mountain', EXBP901: the gold keeps it one <p>).",
 					"_doc": "THE TAGGED WHAKATAUKĪ'S MERGED LINES. By emit time an earlier pass has often joined the proverb, its translation and the commentary into ONE black item ('reo\\nenglish\\ncommentary'); #gatherProverb's length test (proverb_max_chars) would read it as commentary, so the writer's own [Whakatauki] would come out EMPTY with an 'Empty [whakatauki]' red flag (SSEA203_0_0, EXBP901_1_0 / _4_0) or reo-only. A merged item over proverb_max_chars gives up its leading short lines, up to proverb_max_paragraphs, and keeps the rest as free body. KB 07B §7."
 				},
@@ -1889,7 +1948,18 @@
 				"tag_pattern": "^\\[\\s*activity\\s+[\\d.]+[a-z]?\\s*[\u2013\u2014-]",
 				"title_heading": "<h3>{title}</h3>",
 				"min_title_chars": 2,
-				"strip_trailing_note": true
+				"strip_trailing_note": true,
+				"no_dash": {
+					"_doc": "THE SAME TITLE WHEN THE WRITER TYPED NO DASH. «[Activity 1E] [Drag and Drop] Right or wrong?» (BLL143), «[Activity 3A drag and drop] Is the R bossy?» (ENGR102), «[Activity 8E self-marking radio quiz] Which statements are true?» (MXFU301), «[H3] [Activity 4A] [Multi-choice – Auto-marked] Spot the structure» (WJFUN304): the span is the same embedded activity bundle the dash form makes (the widget tag carries the activity number), but tag_pattern wants the dash, so the title rode into the un-built capture as a <p> while the gold opens the box with <h3>Title</h3> (0.87). Any embedded activity tag (tag_pattern here) whose tail is TITLE-SHAPED takes the dash form's heading: at most max_words words, no address, not bracket-led, not a label (deny_pattern), and not a lead into what follows or a long sentence (a tail ending «:», or ending «.» / «?» past sentence_words).",
+					"enabled": true,
+					"env": "TYPEDTAGND_OFF",
+					"tag_pattern": "\\[\\s*activity\\b",
+					"max_words": 10,
+					"sentence_words": 6,
+					"deny_types": ["clickDrop", "accordion", "flipCard", "tabs"],
+					"_deny_types_note": "A widget whose builder makes the tag's tail its own label — the click-drop button «1A Greetings Practice» (JPFUN02, ARFUN04 4U), an accordion / flip-card / tab title — keeps it: taken as the box title, the widget lost its label and fell back to the hand-off.",
+					"deny_pattern": "https?:\\/\\/|www\\.|^(?:title|text to introduce activity|instructions?)\\s*:|:\\s*$"
+				}
 			},
 			"_note_embedded": "A writer tags an interactive AND its activity number in ONE bracket — '[Activity 1A drag and drop]' — so the span's primary directive is INTERACTIVE (drag and drop) while it ALSO carries the [activity] tag + the number. InteractiveScanner gives the bundle activityId='1A' but NO activityOwner (there is no separate [Activity] item to walk back to), so the activity-wrapper path (gated on activityOwner) would be skipped and the widget would render as a BARE cv2-interactive placeholder. The human wraps it: <div class=\"activity interactive\" number=\"1A\"> (ENGS302-01 1A, ANZH205 '[Activity: Embedded – Vertical Drag and Drop]' -> 1A, AGH1004 drag-drop activities). So when a bundle has an activityId from its OWN interactive tag's [activity] tag (no separate owner), the activity wrapper opens around the placeholder (forceInteractive per the widget type, the .interactive rule); the title/instructions/data stay INSIDE the placeholder (un-built widget). Env EMBACT_OFF renders the bare placeholder (no activity wrapper)."
 		},
@@ -3866,6 +3936,12 @@
 				"todo_template": "Build this carousel from the pages of the story{title}{set} — one slide per page (the human's form: images/<story title>/<story title>-01.jpg, -02.jpg …); source: {url}",
 				"_doc": "The writer asks for a decodable / School Journal STORY to be paged through as a carousel — `[carousel]` + `[embed book 1] Are we able to embed just the story … into a carousel so it's like turning the pages` + `The story ‘Zac hid from Dad’ can be found - (in Set 5)` + the story's PDF link (BLL152 / BLL211 / … the BLL1 / BLL2 phonics families). The human builds `div.row.carousel > viewer > item.image > img` × the story's pages, cut from the PDF by hand (BLL152-2.0) — the page count is nowhere in the WT, so the SLIDES are not derivable, but the SHELL is: the ordinary-text path (elements.embed_story_carousel) emits exactly that shell for an `[embed story]` line, and a member captured inside a carousel bundle would never reach it. ON (#carouselStoryShell, dispatched AFTER #carouselRich and before the table-slide last resort, so every other carousel build is unaffected): with no table and no merged type, the members from the opener on are walked — a tag whose first bracket matches reference_pattern (and not exclude_pattern) is a story REFERENCE; once one is seen, a tag with no primary tag whose words match run_line_pattern (≤ run_line_max_words words) and a black line of ≤ run_black_max_words words (the link, `(in Set 5)`, `……`) belong to it; the reference run ends at the first other member. It emits the story shell (the carousel's own open / close + elements.embed_story_carousel's item and placeholder image) and a `Designer/Developer To Do:` note (todo_template: the story title from title_pattern, the set from set_pattern, the source link — the run's own URL, else the bundle's first non-video media link; NO link → the box is kept). The reference tags' own words (the writer's request) become the Writers Note after the widget (≥ request_min_words). AFTER the run: a black line or a `[body]` renders after the shell through the free-body emitter (the discussion questions), an instruction-class tag is skipped (already the Writers Note), anything else → null (the hand-off box keeps every member). Env CARSTORY_OFF."
 			},
+			"media_item_videos": {
+				"_doc": "THE VIDEO CAROUSEL NAMED BY MEDIA-LIST NUMBERS. The writer opens the carousel and lists its slides only as Media-List references — «[Carousel up to 3 vidlets] / [Insert media item 7] / [Insert media item 8]» — the videos' addresses being in rows 7 and 8 of the module's Media List, not in the Writers Template. The member-based video carousel needs a YouTube address on every member, so it declined and the carousel shipped as a hand-off box; the human builds the video carousel from those rows. #carouselVideo reads a member whose red span carries reference_pattern and no address through run.mediaItems — by the row's own number where the list numbers its rows, else by 1-based position when no row carries a number (the modal tile strip's lookup) — and builds the slide from the row's YouTube address. Any other words in the span («Cut at 0:46») become the carousel's Writers Note. A reference that resolves to no YouTube address, or black text after it, keeps the hand-off box (never half-build). Env CARMLVIDEO_OFF.",
+				"enabled": true,
+				"env": "CARMLVIDEO_OFF",
+				"reference_pattern": "\\b(?:insert\\s+)?media\\s+item\\s*#?\\s*(\\d{1,3})\\b"
+			},
 			"same_type_merge": {
 				"enabled": true,
 				"_note": "'carousel + carousel' in a bundle's extraTypes is only the un-built placeholder LABEL, not a genuinely mixed widget (as with the accordion and tabs self-merge). Env CARSAMETYPE_OFF."
@@ -3883,7 +3959,12 @@
 			},
 			"item_image": "<div class=\"item image\">\n{image}\n<div class=\"carousel-caption\">\n<p>{caption}</p>\n</div>\n</div>",
 			"image_slides_enabled": true,
-			"item_image_heading": "<div class=\"item image\">\n<h4>{heading}</h4>\n{image}\n<div class=\"carousel-caption\">\n{caption}\n</div>\n</div>",
+			"marker_line_title": {
+				"_doc": "A SLIDE'S TITLE TYPED ON ITS MARKER LINE IS THE SLIDE'S TITLE. «🔴[slide 8] [H4]🔴 Community», «🔴[Slide 2 heading]🔴 Scenario two», «🔴[slide 3]🔴 **What could happen?**» (OSAI201 / OSAI401 / OSOH501 / OSSM501): the member-based image carousel opened a new slide at the marker and threw away the black words after it, so the slide shipped picture + caption with no title — while the same writer's marker on its own with «[H4] Title» on the next line keeps the title (OSSM501 slides 1–7 kept, 8–10 dropped). The gold shows the title on the slide. The black words after a slide marker — no address, no red text — become that slide's title, rendered in the family's own title form (the <h4> above the picture, or caption_title_bold's first <p><b>…</b></p>). A heading on the next line still names the slide.",
+				"enabled": true,
+				"env": "CARSLIDETITLE_OFF"
+			},
+			"item_image_heading":"<div class=\"item image\">\n<h4>{heading}</h4>\n{image}\n<div class=\"carousel-caption\">\n{caption}\n</div>\n</div>",
 			"_image_slides_note": "The MEMBER-based image-slide carousel (the OSAI201-03 scenario form): a [carousel] opener then per slide a [heading]/[story heading] + an [image] + a [black] body. Builds one item_image_heading per slide — <h4>heading</h4> + the Mode-P/D image + a carousel-caption whose <p>s are the body split on newlines (each via renderInline, so **Scenario:**/**Caution:** render as <b>). #carouselImageSlides; conservative — a slide missing its image or body, a non-iStock image, or any surviving red instruction → null (the orange placeholder, never half-build). The video and image-caption-TABLE forms are separate. The human's editorial caption styling (un-bolding 'Scenario:', bolding the whole 'Caution:' line, dropping the ⚠️) is NON-DERIVABLE and rendered here via the standard inline convention. Env CARIMG_OFF.",
 			"image_mode_D": "<img class=\"img-fluid\" loading=\"lazy\" src=\"images/{filename}\" alt=\"\">",
 			"image_mode_P": "<img class=\"img-fluid\" src=\"https://placehold.co/600x400?text={label}\" alt=\"\" loading=\"lazy\">",
@@ -7857,6 +7938,12 @@
 					"env": "TITLETAG_OFF",
 					"pattern": "^\\s*\\[\\s*h[1-6]\\s*\\]\\s*",
 					"_doc": "KB c79 title hygiene (like the black-typed-tag rule). A HEADING TAG TYPED IN BLACK INSIDE A [LESSON] TITLE IS NOT PART OF THE TITLE: MUS1004's writer typed [LESSON] and then, in black bold, '**[H1] Lesson One. What are the Essentials? Part one.**' (Two, Three alike); the [LESSON] payload is the page title, so without this the lesson h1s would show the literal '[H1] …'. The title-marker step strips a leading heading tag (pattern) from the page title before its label tests (the label strip then reads 'Lesson One.' as the lesson label, as for every other '[LESSON] Lesson N. Title'). Env TITLETAG_OFF."
+				},
+				"lead_separator": {
+					"enabled": true,
+					"env": "TITLESEP_OFF",
+					"pattern": "^\\s*(?:[:;,–—-]|\\.(?!\\.))\\s*(?=[\\p{L}\\p{N}])",
+					"_doc": "THE SEPARATOR THE WRITER TYPED AFTER THE LESSON TAG IS NOT PART OF THE TITLE. «[LESSON] 4» + «: Design Ideas» (DTC1004), «***Lesson 1****:* Explore and Select» (DAN1003), «[Title] [H1] [Novice Page 5]» + «.The Quiet Letters» (FRFUN06): once the tag or the lesson label is taken off, the title kept the writer's colon / full stop and the header read «: Design Ideas». The human title is «Design Ideas». After every other title pass, ONE leading separator (a colon, semicolon, comma, dash or a single full stop — never an ellipsis) before a letter or digit leaves a lesson page's title. An opening quotation mark is the title's own («“The Whole World is Watching”…») and stays."
 				}
 			},
 			"harvest_before_activity_only": true,

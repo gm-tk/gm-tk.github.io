@@ -1405,7 +1405,11 @@ class DocxExtractor {
 		const withoutTable = blocks.filter((b) => b !== tableBlock && b !== legacyTable);
 		const idx = tableBlock ? blocks.indexOf(tableBlock) : -1;
 		const exact = (cfg.phrases_exact ?? []).map((p) => Utils.Fold(String(p)));
-		const contains = (cfg.phrases_contains ?? []).map((p) => Utils.Fold(String(p)));
+		// the media-list heading that carries the guide's link (phrases_contains_more; env MLHOWTO_OFF)
+		const pcm = cfg.phrases_contains_more;
+		const pcmOn = !!pcm && pcm.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[pcm.env || "MLHOWTO_OFF"]);
+		const contains = [...(cfg.phrases_contains ?? []), ...(pcmOn ? (pcm.phrases ?? []) : [])].map((p) => Utils.Fold(String(p)));
 		const maxBack = cfg.max_blocks ?? 8;
 		const RED = /\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu;
 		const REDSPAN = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;

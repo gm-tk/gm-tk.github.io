@@ -71,12 +71,15 @@ class PageSplitter {
 			const text = block.text;
 			let pos = 0;
 			let pendingTag = null;   // last tag item awaiting its blackAfter
+			let blackSeen = false;   // black text already met in this paragraph
+			const opening = [];   // the tag items no black text precedes (lead_tag_separator)
 
 			for (const m of text.matchAll(RED)) {
 				// black text BEFORE this red span: belongs to the previous
 				// tag in this paragraph (its content), else a standalone black
 				const before = text.slice(pos, m.index);
 				if (before.trim()) {
+					blackSeen = true;
 					if (pendingTag) pendingTag.blackAfter += before;
 					else items.push({ type: "black", text: before, block });
 				}
@@ -84,6 +87,7 @@ class PageSplitter {
 				const parse = normaliser.Parse(m[1]);
 				pendingTag = { type: "tag", parse, text: m[1], blackAfter: "", block };
 				items.push(pendingTag);
+				if (!blackSeen) opening.push(pendingTag);
 				pos = m.index + m[0].length;
 			}
 
@@ -92,6 +96,7 @@ class PageSplitter {
 				if (pendingTag) pendingTag.blackAfter += tail;
 				else items.push({ type: "black", text: tail, block });
 			}
+			if (opening.length) this.#leadTagSeparator(opening);
 			// THE LEARNER LINE TYPED ALL IN RED AFTER ITS OWN TAG: a paragraph that is ONE red span «[body] <a learner
 			// sentence>» keeps its words as the tag's text, instead of a body element with nothing in it.
 			// Data Input_Doc_Rules.red_runs.tagged_learner_line; env REDBODYLINE_OFF.
@@ -139,6 +144,32 @@ class PageSplitter {
 			out[i] = { ...b, text: `${ro.marker_open}${words}${ro.marker_close}` };
 		}
 		return out ? out.filter(Boolean) : blocks;
+	}
+
+	/**
+	 * THE SEPARATOR TYPED IN BLACK AFTER A RED TAG (data Input_Doc_Rules.red_runs.lead_tag_separator; env TAGLEADSEP_OFF): a
+	 * red span that opens its paragraph and holds only tags (or a bare label) gives up ONE leading colon / dash / full stop
+	 * of the black text after it — «🔴[Body]🔴: When something …» reads «When something …», «🔴[H3]🔴: Focus activity»
+	 * «Focus activity». Bold / italic marks around the separator alone go with it; a mark that opens the words stays.
+	 */
+	static #leadTagSeparator(tags) {
+		const cfg = DataService.Data.InputDocRules?.red_runs?.lead_tag_separator;
+		if (!cfg || cfg.enabled === false || !cfg.pattern) return;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "TAGLEADSEP_OFF"]) return;
+		const sepRe = new RegExp(cfg.pattern, "u");
+		const labelRe = cfg.label_pattern ? new RegExp(cfg.label_pattern, "iu") : null;
+		const denyRe = cfg.deny_after_pattern ? new RegExp(cfg.deny_after_pattern, "iu") : null;
+		for (const t of tags) {
+			const after = String(t.blackAfter ?? "");
+			const m = sepRe.exec(after);
+			if (!m) continue;
+			const red = String(t.text ?? "");
+			const tagOnly = /\[[^\]]*\]/.test(red) && !/[\p{L}\p{N}]/u.test(red.replace(/\[[^\]]*\]/g, ""));
+			if (!tagOnly && !(labelRe && labelRe.test(red))) continue;
+			const rest = after.slice(m[0].length);
+			if (denyRe && denyRe.test(rest)) continue;
+			t.blackAfter = m[1] + (m[2] === m[3] ? "" : m[2] + m[3]) + rest;
+		}
 	}
 
 	/** The learner words a red «[body] …» span carries after its bracket (data red_runs.tagged_learner_line), or null. */
@@ -1835,6 +1866,22 @@ class PageSplitter {
 					} else if (_llCfg.strip_existing_title !== false && _strip(p.pageTitle) !== String(p.pageTitle).trim()) {
 						p.pageTitle = _strip(p.pageTitle);
 					}
+				}
+			}
+		}
+
+		// The separator the writer typed after the lesson tag or label («[LESSON] 4» + «: Design Ideas», «***Lesson 1****:*
+		// Explore and Select») is not part of the title: after every title pass above, ONE leading colon / semicolon /
+		// comma / dash or a single full stop before a letter or digit leaves a lesson page's title.
+		// Data body_region.lesson_title_dedup.title_markers.lead_separator; env TITLESEP_OFF.
+		{
+			const _lsCfg = DataService?.Data?.EmitTemplates?.body_region?.lesson_title_dedup?.title_markers?.lead_separator;
+			if (_lsCfg && _lsCfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[_lsCfg.env ?? "TITLESEP_OFF"])) {
+				const _lsRe = new RegExp(_lsCfg.pattern ?? "^\\s*(?:[:;,–—-]|\\.(?!\\.))\\s*(?=[\\p{L}\\p{N}])", "u");
+				for (const p of pages) {
+					if (p.isOverview || !p.pageTitle || !_lsRe.test(String(p.pageTitle))) continue;
+					p.pageTitle = String(p.pageTitle).replace(_lsRe, "");
 				}
 			}
 		}
