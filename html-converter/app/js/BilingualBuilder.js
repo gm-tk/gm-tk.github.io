@@ -1163,7 +1163,11 @@ class BilingualBuilder {
 			if (/\[\s*(?:item[^\]]*\]\s*\[\s*)?(?:image|photo)\s*\]/.test(low)) {
 				flush(); for (const x of TablesAndGrids.cellImage(part, run)) pushM(x);
 			} else if (/\[\s*(?:item[^\]]*\]\s*\[\s*)?audio[^\]]*\]/.test(low)) {
-				flush(); pushM('<audio preload="none" class="audioPlayer icon"></audio>');
+				flush();
+				// the writer's WORD before the audio marker is the KB's inline audio trigger (dual_language.audio_word;
+				// env REOAUDIOWORD_OFF); a part with no word keeps the audio player
+				const aw = this.#audioWord(part);
+				pushM(aw ?? '<audio preload="none" class="audioPlayer icon"></audio>');
 			} else if (/\[\s*(?:item[^\]]*\]\s*\[\s*)?video[^\]]*\]/.test(low)) {
 				flush(); pushM('<div class="videoSection ratio ratio-16x9">\n<iframe></iframe>\n</div>');
 			} else if (canon && /^(?:h[1-6]|heading|activity heading)$/.test(canon)) {
@@ -1323,6 +1327,30 @@ class BilingualBuilder {
 	 * audio_image_tag), or null when it is off (data flag / env AUDIOIMGTAG_OFF).
 	 * @returns {{re: RegExp, unit: string, cols: Object}|null}
 	 */
+	/**
+	 * THE WORD THAT PLAYS ITS AUDIO (KB 01E / 04B the inline audio trigger). A cell part whose
+	 * writer's word stands BEFORE its `[Item N] [Audio]` marker («**teo** [Item 58] [Audio] …»,
+	 * «[H2]toa [Item 9] [Audio] toa») renders that word as `span.audioTrigger` named by the word
+	 * (spaces as underscores); a leading tag is the writer's size cue and is dropped. Returns null
+	 * for a part with no such word (the audio player stays).
+	 * Data flag: elements.dual_language.audio_word   Env toggle: REOAUDIOWORD_OFF
+	 */
+	static #audioWord(part) {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.audio_word;
+		if (!c || c.enabled === false || !c.lead_pattern || !c.form
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REOAUDIOWORD_OFF"])) return null;
+		const t = String(part ?? "").replace(/\u{1f534}|\[\/?RED TEXT\]/gu, " ");
+		const m = t.match(new RegExp(c.lead_pattern, "i"));
+		if (!m) return null;
+		// a stray half of a split red bracket («[Item 54 ]» typed over two runs) is never the word
+		const lead = m[1].replace(/\s+/g, " ").trim().replace(/^[\]\s]+/, "").replace(/[[\s]+$/, "").trim();
+		const plain = lead.replace(/[*_]/g, "").replace(/\s+/g, " ").trim();
+		if (!plain || /https?:\/\/|www\./i.test(plain) || plain.split(" ").length > (c.max_words ?? 4)) return null;
+		const name = plain.replace(/[^\p{L}\p{M}\p{N}\s-]/gu, "").trim().replace(/\s+/g, "_");
+		if (!name) return null;
+		return Utils.FillTemplate(c.form, { name: Utils.EscapeHtml(name), word: ListsAndRuns.inlineMarkup(lead) });
+	}
+
 	static #audioImageCfg() {
 		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.audio_image_tag;
 		if (!c || c.enabled === false || !c.tag_pattern

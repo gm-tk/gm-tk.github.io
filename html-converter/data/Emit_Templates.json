@@ -134,6 +134,14 @@
 	"elements": {
 		"dual_language": {
 			"enabled": true,
+			"audio_word": {
+				"_doc": "THE WORD THAT PLAYS ITS AUDIO. A bilingual cell part that carries the writer's WORD before its '[Item N] [Audio]' marker ('**teo** [Item 58] [Audio] **wheo** [LINK: …]' under '[AudioHover]', '[H2]toa [Item 9] [Audio] toa') is the KB's inline audio trigger (01E / 04B COMP_08: <span class=\"audioTrigger\" audioName=\"AUDIO_FILENAME\">trigger word</span>): the word as typed, its audio on the word. Before, the whole part became an empty audio player and the word was lost. The name is the word itself with spaces as underscores (the KB: no spaces in an audio name), as the gold names TRR110's triggers; a leading heading tag is the writer's size cue and is not kept. A part with no word before its marker (only the marker, or the audio's own label after it) keeps the audio player.",
+				"enabled": true,
+				"env": "REOAUDIOWORD_OFF",
+				"max_words": 4,
+				"lead_pattern": "^\\s*(?:\\[[^\\]]*\\]\\s*)*([^\\[]*?)\\s*\\[\\s*item[^\\]]*\\]\\s*\\[\\s*audio[^\\]]*\\]",
+				"form": "<p><span class=\"audioTrigger\" audioName=\"{name}\">{word}</span></p>"
+			},
 			"widget_label_drop": {
 				"_doc": "THE WIDGET TAG'S OWN WORDS ARE NOT PROSE. A bilingual cell part typed as one red instruction — '[Interactive] Carousel', '[Interactive] Carousel pic with word/audio' — lost its bracket tag and kept the tag's words, so the learner read 'Carousel' in both languages. The human build shows nothing there (it builds the widget). A part whose words after a leading tag of lead_tag_pattern are only a widget name (label_pattern) is the tag's label: dropped.",
 				"enabled": true,
@@ -1178,7 +1186,20 @@
 				"enabled": true,
 				"env": "URLTRIM_OFF",
 				"_doc": "The address ends where the URL ends: a matched address that closes with sentence punctuation («. , ; : ! ?» — never the «;» of an entity such as &amp;) or with a «)» that has no matching «(» inside the address (a URL typed in brackets) gives that ending back to the sentence — written after the link — so the link text and the href are the address alone. Env URLTRIM_OFF (or enabled:false) keeps the ending inside the link.",
-				"chars": ".,;:!?"
+				"chars": ".,;:!?",
+				"unmatched_bracket": {
+					"enabled": true,
+					"env": "URLBRACKET_OFF",
+					"_doc": "A «]» that ends the matched address with no «[» inside it is the closing bracket of the marker typed round the address («[LINK: https://…]», the parser's hyperlink marker in a hand-off dump; the writer's «[URL: https://…]»), never part of the URL: it goes back to the text, as an unmatched «)» does. Before, every such link shipped href=\"…]\" — a broken address."
+				}
+			},
+			"url_marker": {
+				"enabled": true,
+				"env": "URLMARKER_OFF",
+				"pattern": "\\[\\s*URL\\s*:\\s*(<a href=\"[^\"]*\" target=\"_blank\">[^<]*</a>)\\s*\\]",
+				"orphan_close": true,
+				"_orphan_close_note": "An orphan «]» right after the line's LAST link, with no «[» left in the line's visible text, is the closing bracket of a red writer instruction whose opening half became a note or a tag («[Developer, please copy the accordion … from» + «https://…]», «[Button: » + «https://www.pepeha.nz/]», «[Insert: Vector of an … [LINK: …]]»): it goes. A line that still holds its «[» (a hand-off dump's «[LINK: <a>…</a>]») keeps it.",
+				"_doc": "THE WRITER'S TYPED «[URL: <address>]» MARKER. A writer who types the address of a standard or a page as «Achievement Standard 92024 [URL: https://www.nzqa.govt.nz/…]» means the link; the bracket and its «URL:» label are the writer's markup (KB constraint 5: no stray markup in the output). Once the linker has made the anchor, the marker round it goes and the link stays in its place."
 			}
 		},
 		"title_video_line_embed": {
@@ -2347,7 +2368,14 @@
 			"_doc_exclude": "A writer's REVEAL-type [button] ('Check answers', 'Reset', 'Check answer and reset buttons', 'Reveal answer') is not a link: the human ships those as its JS reveal button `<div class=\"button clickDrop\">…</div>` and never anchors a label of this kind, so the seam leaves them bare (without the exclusion they would gain a spurious anchor + note).",
 			"targets": [
 				{ "label_match": "dropbox|drop box", "what": "D2L dropbox quicklink", "why": "the per-module rcode is in no Writers Template" },
-				{ "label_match": "portfolio", "what": "D2L portfolio link", "why": "the per-module portfolio location is in no Writers Template" },
+				{ "label_match": "portfolio", "what": "D2L portfolio link", "why": "the per-module portfolio location is in no Writers Template",
+					"fixed_href": {
+						"_doc": "THE PORTFOLIO IS ONE ADDRESS. «Go to portfolio» (KB constraint 55's label for the writer's «[Button] Portfolio») opens D2L's own ePortfolio page, the same in every course — the human links every one to /d2l/folio/main/Index (EXPFUN04 / 05 / 07, the TWHA / TWHK / TWHR Inquiry modules, HPRE203 / 301, ART1006, XGF9006, EXBP901). A button whose whole label matches `label_match`, with no URL of its own, takes `href` and needs no «wire this button» To Do. Env PORTFOLIOHREF_OFF.",
+						"label_match": "^go to (?:your )?portfolio$",
+						"href": "/d2l/folio/main/Index",
+						"env": "PORTFOLIOHREF_OFF"
+					}
+				},
 				{ "label_match": "quiz", "href": "#", "what": "D2L quiz quicklink", "why": "the quiz's rcode is in no Writers Template" },
 				{ "label_match": "journal|workbook", "what": "link to the module's learning journal document", "why": "the journal's location is in no Writers Template" },
 				{ "label_match": "download", "what": "link to the file this button downloads", "why": "the file's location is in no Writers Template" }
@@ -2380,6 +2408,11 @@
 		},
 		"absorb_following_url": {
 			"enabled": true,
+			"media_tag_pattern": "^\\W*\\[\\s*(?:item[^\\]]*\\]\\s*\\[\\s*)?(?:image|images|photo|photograph|picture|img|graphic|diagram|illustration|audio)\\b",
+			"media_tag_env": "BTNURLMEDIA_OFF",
+			"media_tag_link_pattern": "\\blinks?\\b|\\bbuttons?\\b",
+			"_note_media_tag_link": "The writer who asks for the picture BEHIND the button names it in the tag («[image link please use entire photo version … please embed behind the button so it is not just sitting on the page …]», HIS1005 / HIS1007's «[add button] Photograph»): that media tag's address IS the button's link and the absorb stands.",
+			"_note_media_tag": "THE PICTURE AFTER A BUTTON IS NOT THE BUTTON'S LINK. When the item right after a plain [Button] is the writer's MEDIA tag with its address («[button] reset» + «[image] [IMAGE: image83.jpg] https://www.mychillybin.co.nz/…jpg», MXDI202; «[Button] Go to quiz.» + «[Image] Please have this image out to the side … https://resources.stuff.co.nz/…jpg», CEDK401), that address is the picture's own source: the button never takes it, and the picture renders on its own line as every [image] does. Before, the button linked to the picture and the picture was lost. Tested on the following item's own tag text (red markers stripped), an [Item N] prefix allowed.",
 			"_note_absorb": "A plain [Button] (e.g. 'Go to journal') whose URL sits on the IMMEDIATELY-FOLLOWING standalone bare-URL paragraph is the human's LINKED button — the URL is loaded onto the button as its href and the bare-URL <p> is dropped (human '<a href=URL target=_blank><div class=\"button\">Download journal</div></a>'; ENGI302/ENGJ202/SSOG301/MXDI301). #element button branch: when key==='button', the button has NO url of its own, and bodyItems[i+1] is a STANDALONE bare URL (whole content is one http(s) URL, not a tag/element, not consumed), it is absorbed as the href (buttons.button_linked.form) and marked _consumed (the loop's consumed-item skip drops it). The href VALUE is the WT URL (the human re-points to a fresh copy-doc / generic Drive link — non-derivable editorial); the STRUCTURE + label match. Tight: only the bare-URL-alone next item (same discriminator as external_link_button_standalone), never prose; skipped when the dropbox-orange override fires. Env BTNURL_OFF renders the un-linked button + a separate bare-URL <p>."
 		},
 		"button_dropbox": {
@@ -2388,7 +2421,20 @@
 		"button_download": {
 			"enabled": true,
 			"form": "<div class=\"button downloadButton\">{label}</div>",
-			"_note_download": "A [button] whose RAW in-bracket text contains 'download' (e.g. '[Download learning journal button]', as in ENGS302-01) is the human's DOWNLOAD button — <div class=\"button downloadButton\">{label}</div> (orange), NOT a plain <div class=\"button\">'Go to your journal'</div>. The label is the writer's in-bracket descriptive text with the trailing 'button(s)' word stripped ('Download learning journal'). SCOPED to an explicit 'download' in the tag text: most human downloadButtons ('Download journal', 'Response sheet', 'Explore an artwork') come from a BARE [Button]/[Add button] where the label + class are the developer's editorial choice (NON-derivable); a downloadButton usually sits in a PLAIN activity, so the parent 'dropbox' class is not triggered by it. Env DLBTN_OFF."
+			"request_label": {
+				"_doc": "THE WRITER'S REQUEST IS NOT THE BUTTON'S LABEL (KB constraint 5 — a bracket's tag word or a developer instruction is not learner text). A download bracket typed as a request to the developer — «[insert button for response sheet download]», «[add learning journal download button]», «[insert download button]», «[create download button, scroll down to …]» — gave the learner a button reading «insert button for response sheet download»; the human labels it «Download response sheet» / «Download journal». When the bracket opens with `request_lead`, the request is kept as a Writers Note and the label is `label_form` around the request's OBJECT (the words left once the lead and the `filler_words` are removed), provided the object matches `object_pattern` and has at most `object_max_words` words — else `fallback_label`. A leading tag word («Button: Download File», «Button- Download journal») is dropped (`tag_lead`), and an instruction tail («… button plus instructions», «… (with instructions of how to)») moves to the Writers Note (`instruction_tail`). A rewritten label opens with a capital letter. Env DLREQLABEL_OFF.",
+				"enabled": true,
+				"env": "DLREQLABEL_OFF",
+				"request_lead": "^(?:insert|create|add|make|include|attach|put)\\b\\s*",
+				"filler_words": ["a", "an", "the", "this", "that", "button", "buttons", "for", "to", "download", "downloadable"],
+				"object_pattern": "^\\p{L}[\\p{L}' -]*$",
+				"object_max_words": 4,
+				"label_form": "Download {object}",
+				"fallback_label": "Download",
+				"tag_lead": "^button\\s*[:\\-–]?\\s+(?=download\\b)",
+				"instruction_tail": "\\s*(?:\\bbuttons?\\s+)?(?:\\((?:with|plus)\\b[^)]*\\)|\\b(?:plus|with)\\s+(?:the\\s+)?(?:standard\\s+)?instructions?\\b.*)$"
+			},
+			"_note_download":"A [button] whose RAW in-bracket text contains 'download' (e.g. '[Download learning journal button]', as in ENGS302-01) is the human's DOWNLOAD button — <div class=\"button downloadButton\">{label}</div> (orange), NOT a plain <div class=\"button\">'Go to your journal'</div>. The label is the writer's in-bracket descriptive text with the trailing 'button(s)' word stripped ('Download learning journal'). SCOPED to an explicit 'download' in the tag text: most human downloadButtons ('Download journal', 'Response sheet', 'Explore an artwork') come from a BARE [Button]/[Add button] where the label + class are the developer's editorial choice (NON-derivable); a downloadButton usually sits in a PLAIN activity, so the parent 'dropbox' class is not triggered by it. Env DLBTN_OFF."
 		},
 		"external link button": {
 			"form": "<a href=\"{url}\" target=\"_blank\"><div class=\"externalButton\">{label}</div></a>",
@@ -2456,6 +2502,13 @@
 			"absorb_into_activity": true,
 			"absorb_suppresses_own_render": true,
 			"member_branch_yields_to_builder": true,
+			"handoff_tail": {
+				"enabled": true,
+				"env": "GOJOURNALHANDOFF_OFF",
+				"instruction_lead": "^\\s*(?:please\\s+)?(?:insert|add|put|place|include|create)\\b",
+				"_instruction_lead_note": "A variant sentence that opens with a request verb is the writer's instruction to the developer ('Insert Go to journal + check your answers'), never learner text: the heading ships alone and the line stays in the hand-off file.",
+				"_doc": "THE JOURNAL BUTTON AT AN UN-BUILT WIDGET'S TAIL. A widget that does not build ships as a collapsed hand-off box; when its member walk captured the writer's go-to-journal [Button] as the LAST member, the button lived only inside that box. An INLINE bundle (no owning activity) never reached the member branch at all, and an owned bundle's member branch took only the exact label, so a 'Learning journal.' / 'Go to  journal' tail was lost too. The gold ships the journal button straight after the widget. With this rule a bundle that did NOT build and whose last non-blank member is a go-to-journal button (the exact label or a journal variant; a download / upload label never) ships the templated heading after the box (inline: in place after it; owned: inside the still-open activity box), a sentence variant's own sentence before it. A built widget is untouched (its builder decides), and the member stays verbatim in the hand-off file."
+			},
 			"journal_variants": {
 				"enabled": true,
 				"env": "JOURNALVAR_OFF",
@@ -2762,6 +2815,11 @@
 				"absorb_tags": ["engagement quiz button"],
 				"absorb_window": 2,
 				"quiz_bundle_types": ["multiChoiceQuiz", "radioQuiz", "dragAndDrop", "clickDrop", "dropQuiz", "wordSelect", "wordDrag", "typing", "selectionBox", "reorder", "selfCheck"],
+				"second_marker_same_box": {
+					"_doc": "THE QUIZ CONTENT'S OWN HEADER IS NOT A SECOND QUIZ. After the box's shell («[Activity 1C] [MTK quiz] [quickeval] [engage]» … «[button] Go to quiz») the writer often types the header of the quiz content that goes into MTK — a second marker, «[MTK Quiz] [quickeval] [engage]», «[MTKQuiz] Read each statement carefully …», «[MTK Quiz Written Response] [Quick Eval] …», «[MTKQuiz content]» — inside the same box. Any marker used to end the omit-quiz silence, so the second one built a second To Do and a second «Go to quiz» button (KB constraint 65 / CL-0082: the box holds one of each). With this on, a marker reaching the open box that holds the quiz the shell is for continues the silence: it builds nothing and its words stay out with the rest of the quiz content. Env MTKSECONDMARKER_OFF.",
+					"enabled": true,
+					"env": "MTKSECONDMARKER_OFF"
+				},
 				"lead_title_open": {
 					"_doc": "THE BOX'S TITLE ON THE LINE AFTER ITS QUIZ OPENER. When the quiz marker rides on the box's own [Activity] opener (the shell's lead mode) and that opener supplies no title — no black tail, no typed or embedded title, no carried title line — the writer's next-line heading tag ([H3] Understanding wellbeing using data) is the box's title and the [Body] after it the instruction, as the page-loop path already keeps them; without this the first heading ended the instruction run and both were dropped, leaving the box only the note and the button.",
 					"enabled": true,
@@ -2826,6 +2884,13 @@
 			"default_label": "Go to resource",
 			"label_max_chars": 70,
 			"exclude_video_urls": true,
+			"writer_size": {
+				"_doc": "THE WRITER'S POP-OUT SIZE. Every built TKmodal took `default_size` «M», but writers do name the size: «[Click modal XL with a graphic on the front of the tile. On click, modal pops out …]» (the EXP Fundamentals, six per module), «[Modal large body]», «[If able to do a large modal …]», «[M Modal]». A size word written next to the word «modal» in the widget's own lines (its opener or a member — `pattern`, its first or second group) gives the size through `sizes`; with none, `default_size` stands. Env MODALSIZE_OFF.",
+				"enabled": true,
+				"env": "MODALSIZE_OFF",
+				"pattern": "\\b(?:(xl|l|m|s|extra[- ]?large|large|medium|small)\\s+modal|modal\\s+(xl|l|m|s|extra[- ]?large|large|medium|small))\\b",
+				"sizes": { "xl": "XL", "extra large": "XL", "extra-large": "XL", "extralarge": "XL", "l": "L", "large": "L", "m": "M", "medium": "M", "s": "S", "small": "S" }
+			},
 			"form": "<a href=\"{url}\" target=\"_blank\"><div class=\"button\">{label}</div></a>",
 			"note": "A [modal] whose captured content is a SINGLE document/PDF URL is the human's external-resource BUTTON (as in OSBY201-02). The button WORDING is editorial (the WT gives only the URL), so {label} is a derived short writer link-phrase or default_label; the STRUCTURE (the <a><div.button>) is the derivable match. CONSERVATIVE (never half-build): builds ONLY on exactly one URL with no data table / rich members — anything richer keeps the orange placeholder. Env MODALBTN_OFF.",
 			"image_pairs": {
@@ -3170,6 +3235,11 @@
 					"env": "BOLDLEADDASH_OFF",
 					"pattern": "^[–—-]\\s+"
 				},
+				"red_header_row": {
+					"_doc": "THE WRITER'S COLUMN LABELS ARE NOT A PANEL. A table-typed accordion whose FIRST row is wholly red in every non-empty cell is the writer's column labels for the developer ('Sentence for accordion ║ dropdown', 'Accordion heading ║ …', 'Title ║ Images to be used ║ Verb and Example sentence' — ENFUN07, ENFUN09, ENGI103, JPN1004): before, that row became a panel the learner could open ('Sentence for accordion' → 'dropdown'). The row is skipped as a panel; the panels are the rows after it. A first row with any black text is content and stays.",
+					"enabled": true,
+					"env": "ACCREDHEAD_OFF"
+				},
 				"table_cell_lines": {
 					"_doc": "THE CELL'S OWN LINES IN A TABLE-FORM PANEL (KB constraint 5: no stray markup). A table whose rows are the panels carries each panel's body in a cell; the cell's paragraphs reach the builder joined by the in-cell line break (separator), and the body rendered as ONE paragraph with the joiner and the writer's «•» printed («• What makes a good leader in the game? / • How do you make sure everyone can follow you safely? / …»). The human build lists them (accContent > ul > li) or gives each line its own <p>. The panel BODY is split at the separator into lines, which the block renderer turns into <p> / <ul> as anywhere else; the heading is chosen exactly as before. Env ACCCELLLINES_OFF.",
 					"enabled": true,
@@ -3442,6 +3512,22 @@
 				"max_paragraphs": 4,
 				"thought_re": "thought",
 				"layout_thought": "thought",
+				"kea_character": {
+					"_doc": "THE KEA SPEECH BUBBLE (KB 14B2 §14.10, the MiW / WJ cohort; CL-0113: the Kea art is DELIVERED, the audio pending). The writer's '[Insert Kea as per global parameters][kea speech bubble and audio] <text>' is a text-only bubble whose tag names the Kea; the gold (143 Kea bubbles / 21 WJFUN modules) ships the Kea picture column beside a bubble-right, by series. The KB: 'The server does not say which image belongs to which phase — follow a same-phase sibling module'; the series rows are the gold's majority form per series (1xx: kea_1, col-md-3 col-4 / col-md-9 col-10, tertiary — 75 / 75 tertiary; 2xx: kea_1, col-md-4 col-2 / col-md-8 col-8, secondary; 3xx: kea_3, col-md-4 col-2 / col-md-8 col-8, primary-1). The audio is still pending (the KB keeps the audio slot's note), so ONE To Do follows the bubble group. Only this convention of the inactive '14.10 MiW WJ' family is taken.",
+					"enabled": true,
+					"env": "SBKEA_OFF",
+					"code_prefixes": ["WJ"],
+					"tag_re": "\\bkea\\b",
+					"img": "<img class=\"img-fluid imageCentral\" loading=\"lazy\" src=\"kea_characters/{image}\" alt=\"Kea character\">",
+					"tile_skip_src": "kea_characters/",
+					"_tile_skip_note": "The Kea picture is never a phase / lesson TILE's picture: the tile builders take a panel's first picture, and the gold's tiles carry their own stock pictures (WJFUN304's four tiles: iStock-2196243398cc / 2164298456 / 2283251491 / 2237094093). PanelsBuilder.#tileSeg hides it from that search only.",
+					"series": [
+						{ "prefix": "WJFUN1", "image": "kea_1.jpg", "image_col": "<div class=\"col-md-3 col-4 paddingR\">", "col_open": "<div class=\"col-md-9 col-10 paddingL\">", "bubble": "<div class=\"bubble-right tertiary no-hover\">{text}</div>" },
+						{ "prefix": "WJFUN2", "image": "kea_1.jpg", "image_col": "<div class=\"col-md-4 col-2 paddingR\">", "col_open": "<div class=\"col-md-8 col-8 paddingL\">", "bubble": "<div class=\"bubble-right secondary no-hover\">{text}</div>" },
+						{ "prefix": "WJFUN3", "image": "kea_3.jpg", "image_col": "<div class=\"col-md-4 col-2 paddingR\">", "col_open": "<div class=\"col-md-8 col-8 paddingL\">", "bubble": "<div class=\"bubble-right no-hover primary-1\">{text}</div>" }
+					],
+					"todo": "Kea audio still under development — add each Kea speech bubble's inline audio button (<span class=\"audioButton\" audioName=\"…\"> after a <br>, CL-0063) once the audio is delivered."
+				},
 				"placeholder_character": {
 					"enabled": true,
 					"env": "SBPLACEHOLDER_OFF",
@@ -4616,6 +4702,8 @@
 				"d2l_button_pattern": "\\bbutton\\b[^\\n]{0,60}?\\bquiz\\b",
 				"no_answers_pattern": "\\bno\\s+(?:correct|right|wrong|incorrect)\\s+(?:or\\s+(?:wrong|incorrect)\\s+)?answers?\\b|\\banswers\\s+will\\s+vary\\b"
 			},
+			"opener_deny_pattern": "drop\\s*box|\\bcheck[ -]?in\\b",
+			"_note_opener_deny_pattern": "The family fence's dropbox words (the code's default «drop\\s*box») plus the template's «[Check in] Where ākonga can upload some of their work …» — the same upload request under another name, which reaches this widget type only through Tag_Lexicon's toggled «check in» alias (env CHECKIN_OFF): with the alias off no bundle opens on those words, so the wider pattern changes nothing.",
 			"upload_box": {
 				"_doc": "THE UPLOAD BOX. A bundle the family fence refuses because the writer's opener names a DROPBOX (the student upload area) builds the human's own upload button instead of a red flag or a hand-off box: `<a href=\"\" target=\"_blank\"><div class=\"{cls}\">Upload to dropbox</div></a>` + ONE Designer/Developer To Do note carrying the writer's own bracket words. The human build uses this button widely — label 'Upload to dropbox', class `button` outside BLL and `buttonD` inside BLL (the dropbox house style, read from buttons.dropbox_orange_house_style so the two rules cannot drift) — and many of its own buttons carry the EMPTY href we ship (the unwired pre-publish form; the populated ones carry a per-module D2L rcode that is in NO Writers Template — the CL-0044 class, an INTENTIONAL divergence). FENCES: an 'alert dropbox' opener is a REVEAL box, not an upload area (opener_exclude_pattern — CEDT101, whose human build drops them); a MERGED capture (extraTypes) is the gathering class; a captured table, media, or another widget's member keeps the honest hand-off box. Captured black/[body] text is RELEASED around the button in the writer's own order (renderBlock — bullets become real lists; see release_split); a no-primary red span's own text joins the note spec, never learner content. Modules whose human build ships NO upload button (BLL155, BLL266, ENGI400, ENGJ302, ENGJ403, HPRE301, SSEA203, SSOG103, TEDC401, TEDC402, TRR304, XMES201) are forward-looking NAMED divergences. Env DBXBUTTON_OFF turns every upload-box bundle back into its red flag / hand-off box.",
 				"enabled": true,
@@ -7306,6 +7394,16 @@
 				}
 			}
 		},
+		"tab_list_echo": {
+			"_doc": "THE WRITER'S TAB LIST IS NOT MENU CONTENT. An Inquiry writer types the page's tab structure after the overview's [End page] — '[Tabs]' + the labels, 'Can we have side tabs with the following headings, please?' + '[Tab N] label', '[Side tabs]' + the labels, the lesson list with '[Link to Page N]' — and that list became the module menu's last paragraphs / list, repeating the page's own crumb labels (CEDK401, CEDR401, CEDT102, TWHT903; the gold's menu holds none of them). It is the developer's structure spec, which the crumbs already carry. When at least min_hits of the page's crumb labels (min_labels of them on the page) stand as menu <p> / <li> / heading elements, those elements leave the menu, with any list they leave empty. Text-folded comparison (case, diacritics, a leading «1.», punctuation).",
+			"enabled": true,
+			"env": "TABLISTECHO_OFF",
+			"min_labels": 3,
+			"min_hits": 3,
+			"max_item_chars": 80,
+			"_run_note": "The list is the pane's TRAILING run of short plain items (<p> / heading lines, or a list of short <li>, each at most max_item_chars), typed last after the overview's [End page]; it leaves WHOLE when min_hits of its items are crumb labels — an item the crumbs spell differently ('Celebrating diversity' against the crumb 'Celebrating Differences', the lead 'Introduction' against 'Intro') belongs to the same list.",
+			"panes": ["tab1", "tab2", "content", "left", "right"]
+		},
 		"lesson_label_form": {
 			"enabled": true,
 			"env": "MENULABEL_OFF",
@@ -7430,6 +7528,14 @@
 				"min_run": 2
 			}
 		},
+		"title_repeat_near": {
+			"_doc": "A [TITLE] THAT REPEATS THE MODULE TITLE IN OTHER WORDS IS STILL A REPEAT. The writer opens the overview body with «[Title] Module 1 - g, o, u, l, b, f» under «[TITLE BAR] Module 1 - g, o, u, l, f, b», or «[Title] Module 1 – s, a, t, p, i, n.» under «[TITLE BAR] SATPIN - Module 1»; the header already shows the title, and the human never repeats it in the body, but the repeat test asked for the SAME characters, so a trailing full stop, another dash, the sound list in a different order or one word more or less shipped a second <h3> title. A [Title] / mid-document title bar is a repeat — consumed, as the exact repeat already is — when at least `min_share` of its words are words of the module title (its raw form or the form the header shows), reading a run of one-letter words also as one joined word («s, a, t, p, i, n» = «satpin»), and it has at least `min_words` words. Env TITLEREPEAT_OFF.",
+			"enabled": true,
+			"env": "TITLEREPEAT_OFF",
+			"min_share": 0.8,
+			"min_words": 3,
+			"join_letter_runs": true
+		},
 		"drop_glyph_only_lines": {
 			"_doc": "A free-body line whose whole content is ONE punctuation glyph (a writer's stray `.` / `,`, a text-box bracket `[` / `]` left after an image, a broken equation's `+` `=` `–`, PNR102's `✔` ticks) would ship as `<p>.</p>`; the human never ships such a paragraph. In ListsAndRuns.renderBlackText's line filter, free-body text only (stitch true — the placeholder / built-widget dumps stay a faithful hand-off): a line that, with its `*` emphasis markers removed, is exactly one character that is not a letter, not a digit, not `_` and not in `keep`, is dropped before it can become a paragraph. `•` is kept for the bullet path's own empty-item rule. OFF keeps these lines.",
 			"enabled": true,
@@ -7443,6 +7549,14 @@
 			"enabled": true
 		},
 		"fundamentals_panels": {
+			"phase_overview_note": {
+				"_doc": "THE ENFUN PHASE PANEL'S OWN OVERVIEW. The ENFUN writers type an [Overview] block for every phase — an 'Overview' heading, 'We are learning to:' and 'You will show your understanding by:' with their lists. The first becomes the module menu; each later one opened its phase panel as learner content. Every ENFUN gold (ENFUN01–05, 07–09) keeps ONE overview, in the module menu, and none inside a phase panel — a family dialect (keyed to the family by prefixes). The panel's first row, when it opens with the head_pattern and holds only headings and lists, becomes the developer's Writers Note carrying the same words; the phase content after it is untouched.",
+				"enabled": true,
+				"env": "PHASEOVNOTE_OFF",
+				"prefixes": ["ENFUN"],
+				"head_pattern": "^\\s*<h[3-6][^>]*>\\s*(?:<[^>]+>\\s*)*Overview\\s*(?:<[^>]+>\\s*)*</h[3-6]>",
+				"note_prefix": "The phase's own overview (the module menu carries the module's): "
+			},
 			"first_heading_level": {
 				"enabled": true,
 				"env": "PANELH2_OFF",
@@ -7927,7 +8041,13 @@
 					"instruction_pattern": "^\\s*side\\s*tabs?\\s*:?\\s*$",
 					"line_pattern": "^\\s*tab\\s*(\\d+)\\s*[–—:\\-]\\s*(\\S.*)$",
 					"any_heading_level": true,
-					"boundary_heading_names_panel": true
+					"boundary_heading_names_panel": true,
+					"first_heading_only": {
+						"_doc": "boundary_heading_names_panel holds for the FIRST heading of a panel a boundary opened only: its test «no heading emitted since the boundary» reads the emitted parts for an <h1>–<h6> start tag. That test had never matched (its word-boundary escape was a stray control byte), so every later listed heading after the boundary also named the panel instead of opening its own. With this flag the test reads the heading start tag as intended.",
+						"enabled": true,
+						"env": "INQFIRSTHEAD_OFF",
+						"heading_tag_pattern": "<h[1-6]\\b"
+					}
 				},
 				"_doc": "KB 06_TEMPLATE_RECOGNITION.md lines 63 / 169 / 171 — the Inquiry template's navigation IS div.crumbs → div.inquiryPanel[rel] and its body class `inquiry container-fluid`. THE INQUIRY-TEMPLATE FALLBACK SHELL, for Inquiry modules' single pages whose Writers Templates delimit their panels in dialects none of the five modes above accept: a labelled `[Tab N] label` LIST followed by labelled REPEATED openers (BLL250 / 260, CEDR101 / 401 …), labelled openers with no list (CEDR203, CEDT208, CEDW201, TWHR907's `[New side tab] Values`), the label INSIDE the red span (`[Tab 1: MODULE INTRODUCTION]`, `[Tab 2 – Scenario]`, `[Insert Right click tab – ‘The seasons’]` — CEDO201, TWHA902 / 904 / 905, CEDO202), and SECTION markers — `[LESSON N] LABEL` (CEDK401), `[LESSON N]` + an `[H2] Lesson N: label` (TWHK901 / 902, TWHT903), `[Lesson N content] label` (CEDT104), `[page N]` (CEDT102, CEDO204). FIRES ONLY when the module's Module_Structure_Index template_type is in `template_types`, the page model is single-file, NONE of the five existing modes fired, and the body holds >= min_openers panel openers. OPENERS (top level, an open activity closed first): an unconsumed `tab n` SUBTAG item that is not part of the writer's crumb LIST (the first run of >= list_min consecutive labelled tabs — consumed, its labels captured by index, never rendered); a `lesson` / `page` PAGE_BOUNDARY item carrying a digit (`[Lesson Summary]` / `[Lesson Overview]` are not openers); a `lesson content` SECTION_MARKER item ONLY when the page has fewer than 2 lesson / page boundaries (CEDT104's form — never beside `[LESSON N]`). LABELS, in order: the crumb list's entry for that panel index; the opener's own label — the black tail after the tag when it is at most label_max_words long, else the words inside the red span after strip_label_words are removed (`[Tab 2 – Scenario]` → Scenario; `[LESSON 6] A COMMUNITY INITIATIVE` → A community initiative, ALL-CAPS folded to sentence case); else the panel's FIRST heading with strip_label_prefix removed. PANELS (PanelsBuilder.inquiryPanels fallbackMode): when the lead segment before the first opener holds real content (>= intro_min_chars of text or a heading) it is the intro panel with intro_label (intro_label_by_prefix for the module's code prefix — the CED human builds say Intro) and the openers follow as panels 2..N+1; when it does not, the openers are panels 1..N and the first takes its own label or intro_label; an empty trailing segment is dropped. The built page takes the inquiry body class + footer class through content.inquiryActive (as every other mode) and the fixed home / prev / next footer shell through the forceLinks path (a single-file Inquiry page has no registry footer links of its own). Not fired: pages where another mode fires, Inquiry modules the human builds with no shell (CHWHA / GEWHA one page with no openers; ENGFUN02, XDLS901 / 903 / 909 multi-file), every non-Inquiry template. A page whose single-file WT is the empty template (CEDR201 / 301 / 302, CEDT201–204 — no openers) is unaffected. Env INQFALLBACK_OFF (or INQUIRYTABS_OFF) gives the flat page."
 			},
@@ -8094,7 +8214,18 @@
 			"enabled": true,
 			"env": "TYPEDUL_OFF",
 			"lead_pattern": "^\\s*-\\s+",
-			"min_run": 2
+			"min_run": 2,
+			"en_dash": {
+				"_doc": "THE EN DASH IS THE SAME TYPED BULLET. «*– location* / *– design using spatial knowledge*» (a module menu) and « **– Visual learners:** Use colour coding … / **– Verbal learners:** …» (an accordion panel) are a writer's dash list typed with «– » instead of «- »; the page shipped each line as <p>– …</p> with the dash shown, where the human lists them (<ul><li><b>Visual learners:</b> …). A paragraph opening with one of `glyphs`, a space and no digit (a minus sign stays) is a dash line for this pass exactly as a «- » line is. Env TYPEDULENDASH_OFF.",
+				"enabled": true,
+				"env": "TYPEDULENDASH_OFF",
+				"glyphs": ["–"]
+			},
+			"note_gaps": {
+				"_doc": "A DASH RUN THE WRITER'S NOTES BREAK UP. «- I know the words and signs for five body parts.» / [a writer note: the emoji response to add] / «- I can follow rhythms with my body and voice.» / [the same note] — every line of the run is separated from the next by a writer note, so no two dash lines touch and the page shipped each with its dash shown. A run of at least min_run dash paragraphs where EVERY gap between two of them holds one or more writer notes (and nothing else) keeps its paragraphs — a list cannot hold the notes between its items, and the human ships each line as its own paragraph — and loses the typed dash. Env TYPEDULNOTEGAP_OFF.",
+				"enabled": true,
+				"env": "TYPEDULNOTEGAP_OFF"
+			}
 		},
 		"typed_number_list": {
 			"_doc": "KB constraint 42 (Universal): numbered instructions / steps / sub-questions are semantic <ol><li> (start=\"N\" when the run does not begin at 1), NEVER <p>1. …</p> manual numbering. The writer TYPES the numbers as plain text (\"1. What happened…\", not a Word numbered list, so LISTNEST never sees a list); the free-body path (renderBlackText) builds the <ol>, but widget panels render lines as <p> and never see it (e.g. inside a built accordion panel). The human mostly ships such text as a list (usually <ol>), the typed number stripped. MECHANISM: ListsAndRuns.TypedNumberList, a FULL-PAGE post-pass at the EmojiStrip seam (PageAssembler, after the emoji list clause, before LinkTextDisplay, body only — the acks block is never touched): a run of >= min_run consecutive bare <p> elements (whitespace-only between them) whose text opens with SEQUENTIAL typed numbers (n, n+1, …; a restart ends the run) OR with the extractor's Word-numbered-list marker on every item (DocxExtractor prefixes each numbered-list paragraph with \"1. \" and never counts, so a Word list inside a widget panel would show as <p>1. …</p><p>1. …</p> — every question numbered 1; marker_form_all_equal) becomes ONE <ol> (start=\"n\" when n > 1) of <li>s with the lead removed from the first text node. VERBATIM ZONES copied through untouched: cv2-interactive hand-off boxes, cv2-note / cv2-comment, script / style, AND every built widget subtree whose class opens with one of verbatim_widget_classes — a flipCard face keeps its typed number as the card title (TWHK901 <h5>1. Partnership…</h5>), a dragAndDrop question is a plain <p> (CEDR501), a carousel caption a <p> (XGF9003); accordion panels, activity boxes and free body are LIVE (BLL212 / SCCH301 / ENGR101 ship the <ol>). Env TYPEDOL_OFF turns it off.",
@@ -8727,6 +8858,13 @@
 				"env": "ACTTITLEBAR_OFF",
 				"prefixes": ["FRFUN"],
 				"_doc": "A FAMILY DIALECT (LOOP §1d exception 1): the FRFUN Languages Fundamentals type an activity as «[Activity N]» + «[Title] <the activity's title>» + «[Body] …» + the widget. «[Title]» parses as a title bar — a SECTION_MARKER, which closes an open activity box — so the writer's box closed EMPTY before its own title, and the title, the instruction and the widget shipped loose (the widget in a synthetic box of its own), where the family's gold keeps them all inside the writer's box (FRFUN06 1.0 «Match the sound to the word» in 1G, 5.0 «Spot the quiet and loud final letters» in 5B). For a module whose prefix is listed, a title bar that arrives while the open activity box is still empty is that box's own title and does not close it. Env ACTTITLEBAR_OFF."
+			},
+			"side_alert_resume": {
+				"_doc": "A SIDE ALERT TYPED MID-ACTIVITY DOES NOT END THE ACTIVITY. «[Activity 1E] Dictated sentences / [Body] Get a pen and paper … / [side alert] Remember to start your sentence with a capital letter … / … / [Body] When you have finished, take a photo of your writing … / [Button] Upload to Dropbox» — the side alert is a container opener, so the activity box closed at it and the writer's closing instruction and upload button shipped in a loose row after the box; the human keeps them inside the box, with the side alert beside it in the right-hand column (BLL135 1F and the BLL dictated / written sentence activities). A callout whose tag is in `tags`, reaching an activity box that already has content, whose own text run (the plain lines straight after it) is followed by an item tagged with one of `resume_tags`, leaves the box open: the side column is held and placed beside the box's row when the box closes. Env SIDERESUME_OFF.",
+				"enabled": true,
+				"env": "SIDERESUME_OFF",
+				"tags": ["side alert"],
+				"resume_tags": ["body", "button", "audio"]
 			},
 			"_doc_side_by_side_headings_stay": "A heading that shares its source paragraph with another heading — a side-by-side caption row ('[H3] Picture A     [H3] Picture B', XGF9003 5C) — labels the open activity's own two-column content and does not auto-close it (the human keeps the row and what follows inside the writer's box). Env SBSHEAD_OFF.",
 			"title_heading_tags": [

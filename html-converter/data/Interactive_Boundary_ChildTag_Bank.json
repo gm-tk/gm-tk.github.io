@@ -574,7 +574,16 @@
 			"dropbox_never_merges": {
 				"enabled": true,
 				"_doc": "THE DROPBOX SPLIT. The student file-upload DROPBOX is never part of another activity's basket. A dropbox marker swept into a host bundle's extraTypes by same_activity_multi_widget would make every builder bail on the mixed basket (BLL156's clean three-video carousel would be refused because the upload button at the end of the activity was filed as a second widget) AND the trapped dropbox would never reach the upload-box builder, so the upload button the gold uses throughout would be lost twice over. No building non-dropDown bundle carries a dropbox member, so this changes no existing build. THE RULE IS ONE DIRECTION: a FOLLOWER resolving to the dropDown type whose text matches the upload box's OWN deny predicate (opener_deny_pattern, minus upload_box.opener_exclude_pattern — an [alert dropbox] is a REVEAL box, CEDT101, unchanged) TERMINATES the host's walk instead of absorbing; the marker then opens its own bundle and #ddUploadBox renders the gold's button. The REVERSE split (releasing a dropbox-opener HOST's foreign followers) is deliberately NOT done: it would free a [Modal] into the single-URL button path, which builds a button and silently drops the writer's paired '[button] No' member, losing writer content for no gain. The modal member handling would first have to stop swallowing an unplaceable [button]. The predicate pair is READ LIVE from interactive_builders.dropDown so the scanner and the builder can never drift. Env DBXSPLIT_OFF.",
-				"types_never_split": []
+				"types_never_split": [],
+				"release_lead": {
+					"_doc": "THE UPLOAD'S LEAD-IN STAYS ON THE PAGE — for an upload area typed with one of `follower_aliases`. «[Check in] Where ākonga can upload …» reaches the upload-box build through Tag_Lexicon's toggled «check in» alias; as an interactive tag it lets the widget walk before it take the writer's lead-in lines as members («[Body] Take a photo of the words you have written and upload it to show your kaiako»), and the walk then ends at the upload area, leaving those lines hidden in the widget's hand-off box. When the walk ends at an upload area whose alias is listed, the plain lines and [Body] lines it took straight before it go back to the page, as they were before the alias; the widget keeps at least one member. (Every other upload area — «[upload to dropbox]», «[Dropbox]» — keeps the walk as it is.) Env DBXLEAD_OFF.",
+					"enabled": true,
+					"env": "DBXLEAD_OFF",
+					"text_tags": ["body", "body text"],
+					"follower_aliases": ["check in", "check-in"],
+					"opener_takes_no_members": true,
+					"_note_opener_takes_no_members": "An upload area OPENED by one of `follower_aliases` takes no following item as a member: the template types its whole request inside the red bracket, so what follows («[insert text] Congratulations! You've mastered the sounds …») is the page's own content and renders on the page, not inside a declined upload area's hand-off box."
+				}
 			},
 			"closer_never_opens": {
 				"enabled": true,

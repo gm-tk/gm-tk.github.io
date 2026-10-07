@@ -687,17 +687,38 @@ class ListsAndRuns {
 		if (_btOn) {
 			const marks = String(_bt.chars ?? ".,;:!?");
 			const count = (u, c) => u.split(c).length - 1;
+			// a «]» with no «[» inside the address closes the marker typed round it («[LINK: …]» / «[URL: …]»)
+			// (elements.bare_url_link.trailing_punctuation.unmatched_bracket; env URLBRACKET_OFF)
+			const _ub = _bt.unmatched_bracket;
+			const _ubOn = !!_ub && _ub.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[_ub.env || "URLBRACKET_OFF"]);
 			s = s.replace(_buRe, (whole) => {
 				let u = whole, tail = "";
 				for (;;) {
 					const last = u.slice(-1);
 					if (last && marks.includes(last) && !(last === ";" && /&(?:[a-z]+|#\d+);$/i.test(u))) { tail = last + tail; u = u.slice(0, -1); continue; }
 					if (last === ")" && count(u, ")") > count(u, "(")) { tail = last + tail; u = u.slice(0, -1); continue; }
+					if (_ubOn && last === "]" && count(u, "]") > count(u, "[")) { tail = last + tail; u = u.slice(0, -1); continue; }
 					break;
 				}
 				return `<a href="${u}" target="_blank">${u}</a>${tail}`;
 			});
 		} else s = s.replace(_buRe, '<a href="$1" target="_blank">$1</a>');
+		// the writer's typed «[URL: <address>]» marker round a linked address: the link stays, the marker goes
+		// (elements.bare_url_link.url_marker; env URLMARKER_OFF)
+		const _um = _bu?.url_marker;
+		if (_um && _um.enabled !== false && _um.pattern && /url/i.test(s)
+			&& !(typeof process !== "undefined" && process.env && process.env[_um.env || "URLMARKER_OFF"])) {
+			s = s.replace(new RegExp(_um.pattern, "gi"), "$1");
+		}
+		// an ORPHAN «]» right after the line's last link closes a red writer instruction whose «[» went to a note
+		// («[Developer, please copy … from» + «https://…]»): with no «[» left in the visible text, it goes
+		// (elements.bare_url_link.url_marker.orphan_close; env URLMARKER_OFF)
+		if (_um && _um.enabled !== false && _um.orphan_close !== false && s.includes("</a>]")
+			&& !(typeof process !== "undefined" && process.env && process.env[_um.env || "URLMARKER_OFF"])) {
+			const vis = s.replace(/<[^>]+>/g, "");
+			if (vis.split("]").length > vis.split("[").length) s = s.replace(/(<\/a>)\](\s*)$/, "$1$2");
+		}
 		// Weave the Writers Template's own HYPERLINK phrases (block.links {text,target}) onto their
 		// DESCRIPTIVE text as <a href=target>phrase</a> — the human convention. Conservative: exact
 		// phrase text, FIRST occurrence, skip if the text is itself a URL (bare-URL rule already linked
@@ -1244,6 +1265,9 @@ class ListsAndRuns {
 	 * the dash removed from the paragraph's first text node (a dash bolded on its own goes with its emptied inline tag). The
 	 * verbatim zones are the typed-number list's own (hand-off boxes, notes and comments, scripts, styles, the listed built
 	 * widgets). Data: Emit_Templates body_region.typed_dash_list; env TYPEDUL_OFF.
+	 * The en dash «– » is the same typed bullet, never before a digit (typed_dash_list.en_dash; env TYPEDULENDASH_OFF). A run
+	 * whose every gap holds one or more writer notes keeps its paragraphs and loses the typed dash (typed_dash_list.note_gaps;
+	 * env TYPEDULNOTEGAP_OFF).
 	 *
 	 * @param {string} html - one finished page's HTML (before the acks block)
 	 * @returns {string}
@@ -1253,8 +1277,16 @@ class ListsAndRuns {
 		if (!cfg || cfg.enabled === false) return html;
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "TYPEDUL_OFF"]) return html;
 		const src = String(html);
-		if (!/<p>\s*(?:<[^>]+>\s*)*-/.test(src)) return src;   // no candidate at all
+		const envOff = (c, d) => typeof process !== "undefined" && process.env && process.env[c.env || d];
+		const _en = cfg.en_dash;
+		const enG = _en && _en.enabled !== false && (_en.glyphs ?? []).length && !envOff(_en, "TYPEDULENDASH_OFF")
+			? _en.glyphs.map((g) => String(g).replace(/[\]\\^-]/g, "\\$&")).join("") : "";
+		const G = enG ? "[-" + enG + "]" : "-";
+		if (!new RegExp("<p>\\s*(?:<[^>]+>\\s*)*" + G, "u").test(src)) return src;   // no candidate at all
 		const leadRe = new RegExp(cfg.lead_pattern || "^\\s*-\\s+");
+		const enRe = enG ? new RegExp("^\\s*[" + enG + "]\\s+(?!\\d)\\S", "u") : null;
+		const _ng = cfg.note_gaps;
+		const noteGaps = !!_ng && _ng.enabled !== false && !envOff(_ng, "TYPEDULNOTEGAP_OFF");
 		const minRun = Math.max(2, cfg.min_run ?? 2);
 		const tnl = DataService.Data.EmitTemplates?.body_region?.typed_number_list;
 		const widgets = (tnl?.verbatim_widget_classes ?? []).map((c) => String(c).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
@@ -1288,13 +1320,50 @@ class ListsAndRuns {
 		const P_INNER = "(?:(?!<\\/p>)[^])*";
 		const RUN_RE = new RegExp("<p>" + P_INNER + "<\\/p>(?:\\s*<p>" + P_INNER + "<\\/p>)+", "g");
 		const ITEM_RE = () => new RegExp("(<p>(" + P_INNER + ")<\\/p>)(\\s*)", "g");
-		const LEAD_HTML = /^((?:\s*<[^>]+>)*)\s*-(?:\s+|(\s*<\/(b|i|strong|em|u)>)\s*)/;
+		const LEAD_HTML = enG ? new RegExp("^((?:\\s*<[^>]+>)*)\\s*" + G + "(?:\\s+|(\\s*<\\/(b|i|strong|em|u)>)\\s*)", "u")
+			: /^((?:\s*<[^>]+>)*)\s*-(?:\s+|(\s*<\/(b|i|strong|em|u)>)\s*)/;
 		const stripLead = (inner) => inner.replace(LEAD_HTML, (all, open, closeTag, closeName) => {
 			if (!closeTag) return open;
 			const re = new RegExp("(\\s*<" + closeName + "(?:\\s[^>]*)?>)(?![\\s\\S]*<" + closeName + "(?:\\s[^>]*)?>)");
 			return open.replace(re, "");
 		}).replace(/^[ \t ]+/, "");
-		const isDash = (inner) => leadRe.test(inner.replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ")) && LEAD_HTML.test(inner);
+		const isDash = (inner) => {
+			const t = inner.replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ");
+			return (leadRe.test(t) || (!!enRe && enRe.test(t))) && LEAD_HTML.test(inner);
+		};
+		// A dash run the writer's notes break up: every gap between two dash paragraphs holds one or more notes and nothing
+		// else, and no dash paragraph touches the chain from outside — each keeps its <p> and loses the typed dash.
+		if (noteGaps) {
+			const units = [];
+			pieces.forEach((p, k) => {
+				if (!p.live) { units.push({ type: p.s.startsWith("<p class=\"cv2-note\"") ? "note" : "other" }); return; }
+				const re = /<p>((?:(?!<\/p>)[^])*)<\/p>/g; let last = 0, mm;
+				while ((mm = re.exec(p.s))) {
+					if (p.s.slice(last, mm.index).trim()) units.push({ type: "other" });
+					units.push({ type: isDash(mm[1]) ? "dash" : "p", k, start: mm.index, end: re.lastIndex, inner: mm[1] });
+					last = re.lastIndex;
+				}
+				if (p.s.slice(last).trim()) units.push({ type: "other" });
+			});
+			const edits = [];
+			for (let i = 0; i < units.length; i++) {
+				if (units[i].type !== "dash" || (i > 0 && units[i - 1].type === "dash")) continue;
+				const chain = [i]; let j = i + 1;
+				for (;;) {
+					let n = 0;
+					while (j < units.length && units[j].type === "note") { n++; j++; }
+					if (n && j < units.length && units[j].type === "dash") { chain.push(j); j++; continue; }
+					break;
+				}
+				const lastIx = chain[chain.length - 1];
+				if (chain.length >= minRun && !(lastIx + 1 < units.length && units[lastIx + 1].type === "dash")) edits.push(...chain.map((c) => units[c]));
+				i = lastIx;
+			}
+			for (const u of edits.sort((a, b) => b.k - a.k || b.start - a.start)) {
+				const s = pieces[u.k].s;
+				pieces[u.k].s = s.slice(0, u.start) + "<p>" + stripLead(u.inner) + "</p>" + s.slice(u.end);
+			}
+		}
 		const listify = (chunk) => chunk.replace(RUN_RE, (run) => {
 			const items = [];
 			const re = ITEM_RE(); let mm;

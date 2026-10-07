@@ -1741,7 +1741,20 @@ class DocxExtractor {
 		const cleanHows = new Set(cfg.clean_hows ?? ["exact", "denumbered", "denumbered_head"]);
 		const excludeTags = new Set(cfg.exclude_tags ?? []);
 		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		// the same repair inside a table cell (red_runs.repair_missing_bracket.table_cells; env BRACKETFIXCELL_OFF)
+		const tc = cfg.table_cells;
+		const cellsOn = !!tc && tc.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[tc.env || "BRACKETFIXCELL_OFF"]);
+		const fix = (s) => String(s).replace(RED, (whole, inner) => {
+			const fixed = this.#repairLeadingBracket(inner, normaliser, cleanHows, excludeTags);
+			return fixed === null ? whole : "\u{1f534}[RED TEXT]" + fixed + "[/RED TEXT]\u{1f534}";
+		});
 		for (const b of blocks) {
+			if (b.kind === "table" && cellsOn) {
+				if (Array.isArray(b.rows)) b.rows = b.rows.map((r) => (Array.isArray(r) ? r.map((c) => (typeof c === "string" && c.indexOf("]") >= 0 ? fix(c) : c)) : r));
+				if (typeof b.text === "string" && b.text.indexOf("]") >= 0) b.text = fix(b.text);
+				continue;
+			}
 			if (b.kind !== "para" || !b.text || b.text.indexOf("]") < 0) continue;
 			b.text = b.text.replace(RED, (whole, inner) => {
 				const fixed = this.#repairLeadingBracket(inner, normaliser, cleanHows, excludeTags);

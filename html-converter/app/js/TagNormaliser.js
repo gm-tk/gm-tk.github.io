@@ -88,13 +88,14 @@ class TagNormaliser {
 		// supervisor-note spellings: supervisor's / supervisors / supervision note), SPELLVAR_OFF (the spaced /
 		// joined spellings: over view, bodytext, memorygame, wordhighlighter, carou sel, externallink, dragdrop),
 		// HEADINGHN_OFF (the heading level spelled out: «[Heading H4]» is «[H4]», so it also ends a widget's capture),
-		// WHAKASPELL_OFF (the proverb tag's spellings: whakatauiki / whakatuaki / whaktaukī / whakaukī).
+		// WHAKASPELL_OFF (the proverb tag's spellings: whakatauiki / whakatuaki / whaktaukī / whakaukī), CHECKIN_OFF (the
+		// template's «[Check in] Where ākonga can upload …» — the upload area; its group's free_pattern keeps a bare «[Check in]» out).
 		for (const grp of lexicon._meta?.toggled_aliases ?? []) {
 			if (!grp || grp.enabled === false || !lexicon.tags[grp.tag]) continue;
 			if (typeof process !== "undefined" && process.env && process.env[grp.env || "SPELLALIAS_OFF"]) continue;
 			for (const alias of grp.aliases ?? []) {
 				const folded = Utils.Fold(alias);
-				if (!this.#aliasMap.has(folded)) this.#aliasMap.set(folded, { canon: grp.tag, directive: lexicon.tags[grp.tag].directive, toggled: true });
+				if (!this.#aliasMap.has(folded)) this.#aliasMap.set(folded, { canon: grp.tag, directive: lexicon.tags[grp.tag].directive, toggled: true, ...(grp.free_pattern ? { freePattern: String(grp.free_pattern) } : {}) });
 			}
 		}
 
@@ -244,7 +245,7 @@ class TagNormaliser {
 		for (const [cand, how] of candidates) {
 			if (cand && this.#aliasMap.has(cand)) {
 				const hit = this.#aliasMap.get(cand);
-				return { canon: hit.canon, directive: hit.directive, how, alias: cand, toggled: hit.toggled };
+				return { canon: hit.canon, directive: hit.directive, how, alias: cand, toggled: hit.toggled, freePattern: hit.freePattern };
 			}
 		}
 
@@ -266,7 +267,7 @@ class TagNormaliser {
 				|| (lenPos[0] === best.lenPos[0] && lenPos[1] > best.lenPos[1]);
 			if (better) {
 				const hit = this.#aliasMap.get(alias);
-				best = { lenPos, result: { canon: hit.canon, directive: hit.directive, how: "embedded", alias, toggled: hit.toggled } };
+				best = { lenPos, result: { canon: hit.canon, directive: hit.directive, how: "embedded", alias, toggled: hit.toggled, freePattern: hit.freePattern } };
 			}
 		}
 		return best ? best.result : null;
@@ -400,7 +401,7 @@ class TagNormaliser {
 		for (let pass = 0; pass < 3; pass++) {
 			const r = this.#matchOne(remaining);
 			if (!r) break;
-			tags.push({ tag: r.canon, directive: r.directive, how: r.how, fragment, alias: r.alias, ...(r.toggled ? { toggled: true } : {}) });
+			tags.push({ tag: r.canon, directive: r.directive, how: r.how, fragment, alias: r.alias, ...(r.toggled ? { toggled: true } : {}), ...(r.freePattern ? { freePattern: r.freePattern } : {}) });
 			if (hspOn && pass === 0 && r.how === "head" && r.directive === "SECTION_MARKER") {
 				const colon = remaining.indexOf(":");
 				remaining = colon >= 0 ? Utils.StripChars(remaining.slice(colon + 1).replace(/\s+/g, " ").trim(), " .;,:|-") : "";
@@ -531,6 +532,12 @@ class TagNormaliser {
 			&& tags.some((t) => t.tag === "activity" && t.directive === "CONTAINER_OPEN")) {
 			const fm = /^(\d{1,2}[a-z])(?=\s|$|[:.)\]–-])/.exec(free);
 			if (fm) numbers.push(fm[1]);
+		}
+
+		// a toggled spelling whose group names a free_pattern counts only when the span's own words after the bracket match it
+		// (_meta.toggled_aliases[].free_pattern — «[Check in] Where ākonga can upload …», never a bare «[Check in]»)
+		for (let k = tags.length - 1; k >= 0; k--) {
+			if (tags[k].toggled && tags[k].freePattern && !new RegExp(tags[k].freePattern, "i").test(String(free ?? ""))) tags.splice(k, 1);
 		}
 
 		// A TOGGLED spelling (_meta.toggled_aliases) only FILLS a span that resolved to no widget

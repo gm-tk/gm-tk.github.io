@@ -1953,6 +1953,15 @@ class InteractiveScanner {
 	};
 
 	static #swallowMembers(bundle, items, startJ, headingTerminates, absolute, run, normaliser = null) {
+		// an upload area opened by a listed alias («[Check in] Where ākonga can upload …») takes no member — its whole
+		// request sits inside its own red bracket (member_rule.dropbox_never_merges.release_lead.opener_takes_no_members; env DBXLEAD_OFF)
+		{
+			const rl = DataService.Data.BoundaryBank?._meta?.member_rule?.dropbox_never_merges?.release_lead;
+			const op = bundle?.memberItems?.[0];
+			if (rl && rl.enabled !== false && rl.opener_takes_no_members === true && op?.type === "tag"
+				&& (rl.follower_aliases ?? []).includes(String(op.parse?.primary?.alias ?? "").toLowerCase())
+				&& !(typeof process !== "undefined" && process.env && process.env[rl.env || "DBXLEAD_OFF"])) return startJ;
+		}
 		let j = startJ;
 		for (; j < items.length; j++) {
 			const next = items[j];
@@ -2980,7 +2989,25 @@ class InteractiveScanner {
 						const excl = new RegExp(ddTpl.upload_box?.opener_exclude_pattern ?? "\\balert\\b", "i");
 						const own = String(next.text ?? "");
 						// the follower is the student upload area → the host's walk ends here
-						if (deny.test(own) && !excl.test(own)) break;
+						if (deny.test(own) && !excl.test(own)) {
+							// the writer's lead-in to an upload area typed with a listed alias (the plain / [Body] lines the walk took straight before it) goes
+							// back to the page (member_rule.dropbox_never_merges.release_lead; env DBXLEAD_OFF)
+							const rl = dbx.release_lead;
+							if (rl && rl.enabled !== false
+								&& (rl.follower_aliases ?? []).includes(String(next.parse?.primary?.alias ?? "").toLowerCase())
+								&& !(typeof process !== "undefined" && process.env && process.env[rl.env || "DBXLEAD_OFF"])) {
+								const tt = rl.text_tags ?? ["body"];
+								const isLead = (x) => !!x && x.consumedBy === undefined
+									&& ((x.type === "black" && String(x.text ?? "").trim() !== "")
+										|| (x.type === "tag" && tt.includes(x.parse?.primary?.tag) && x.parse?.primary?.directive !== "INTERACTIVE"));
+								while (j - 1 > bundle.startIndex && bundle.memberItems.length > 1
+									&& bundle.memberItems[bundle.memberItems.length - 1] === items[j - 1] && isLead(items[j - 1])) {
+									bundle.memberItems.pop();
+									j--;
+								}
+							}
+							break;
+						}
 					}
 				}
 				// SAME widget type = a CONTINUATION (multi-panel: accordion strips,

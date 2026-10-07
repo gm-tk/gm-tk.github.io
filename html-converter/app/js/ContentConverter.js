@@ -2189,6 +2189,19 @@ class ContentConverter {
 					hit = !tbtStay && (headingCloses
 						|| (primary && cfg.directives.includes(primary.directive))
 						|| (primary && cfg.tags.includes(primary.tag)));
+					// a side alert typed MID-activity, the activity going on after the alert's own lines, leaves the box open:
+					// the side column is held and placed beside the box's row when the box closes
+					// (container_auto_close.activity_close_before.side_alert_resume; env SIDERESUME_OFF)
+					const sar = cfg.side_alert_resume;
+					if (hit && sar && sar.enabled !== false && top.hasContent && primary && (sar.tags ?? []).includes(primary.tag)
+						&& !pendingSideAlert && !(typeof process !== "undefined" && process.env && process.env[sar.env || "SIDERESUME_OFF"])) {
+						const k0 = bodyItems.indexOf(it);
+						let k = k0 + 1;
+						while (k < bodyItems.length && bodyItems[k].type === "black" && bodyItems[k].consumedBy === undefined) k++;
+						const nx = k0 >= 0 ? bodyItems[k] : null;
+						const nt = nx && nx.type === "tag" ? nx.parse?.primary?.tag : null;
+						if (nt && (sar.resume_tags ?? []).includes(nt)) { hit = false; it._sideHold = true; }
+					}
 				}
 				if (!hit) return;
 				emit(top.close);
@@ -2287,8 +2300,20 @@ class ContentConverter {
 			const isMarker = c.type === "tag" && (c.parse?.tags ?? []).some((t) => t.tag === "mtk quiz");
 			const actOpen = c.type === "tag" && (c.parse?.tags ?? []).some((t) => t.tag === "activity" && t.directive === "CONTAINER_OPEN");
 			const hardEnd = isMarker || actOpen || ["CONTAINER_CLOSE", "PAGE_BOUNDARY", "SECTION_MARKER"].includes(dir);
+			// a second marker inside the open box that holds this quiz is the quiz content's own header: it continues the
+			// silence and builds nothing (omit_quiz_content.second_marker_same_box; env MTKSECONDMARKER_OFF)
+			const smb = mtkCfg.second_marker_same_box;
+			if (isMarker && !actOpen && c !== mtk.marker && mtk.frame && mtk.frame === mtkTop() && smb && smb.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[smb.env || "MTKSECONDMARKER_OFF"])) {
+				if (mtk.phase === "run") mtkFlush();
+				c._mtkQuizEmitted = true;
+				// a GHOST run: the quiz content's own title and instruction are dropped like its questions, no shell is built
+				mtk = { phase: "run", marker: c, frame: mtk.frame, kept: 0, isOpener: false, ghost: true };
+				return true;
+			}
 			if (mtk.phase === "run") {
 				const step = hardEnd ? "end" : this.#mtkQuizRunStep(c, mtk, mtkCfg, renderedHeading);
+				if (mtk.ghost && step === "keep") { mtk.kept++; return true; }
 				if (step === "keep") {
 					mtk.kept++;
 					// a kept item whose own lines (or whose black followers) hold the quiz's
@@ -3278,6 +3303,8 @@ class ContentConverter {
 						const mtkTailI = this.#mtkQuizBundleTail(bundle, run, it);   // CL-0038 (see above)
 						emit(...mtkTailI);
 						if (mtkCfg && (mtkShellI || mtkTailI.length)) mtkSilence(it);
+						// the writer's journal button at an un-built inline widget's tail (see #goJournalTail)
+						emit(...this.#goJournalTail(bodyItems, i, run, bundle, true));
 						// The upload box ENDS its activity box — the gold keeps the "Upload to dropbox" button as the box's
 						// LAST content child and ships what the writer typed after it as free body rows (rather than keeping the
 						// box open to the next auto-close boundary, e.g. BLL123 2E's module-end paragraph, XTAS101 1G's carousel).
@@ -3711,8 +3738,13 @@ class ContentConverter {
 						// of a panel a boundary opened names that panel rather than opening another (CEDT301 `[page 6]` + a picture +
 						// `[H1] Hikoi around town`)
 						const _fbLastS = parts.lastIndexOf(INQ_SENTINEL);
+						// «no heading since the boundary»: the heading start tag (black_list.first_heading_only; env INQFIRSTHEAD_OFF —
+						// OFF keeps the earlier test, which never matched, so any listed heading named the panel)
+						const _fh = _blCfg && _blCfg.first_heading_only;
+						const _fbHeadRe = _fh && _fh.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[_fh.env ?? "INQFIRSTHEAD_OFF"])
+							? new RegExp(_fh.heading_tag_pattern ?? "<h[1-6]\\b", "i") : { test: () => false };
 						const _fbNames = fbBlackList && _blCfg.boundary_heading_names_panel !== false && _fbLastS >= 0 && _fbLastS === fbBoundarySentinel
-							&& !/<h[1-6]/i.test(parts.slice(_fbLastS + 1).join(""));
+							&& !_fbHeadRe.test(parts.slice(_fbLastS + 1).join(""));
 						if (_fbNames) { if (!fbLabels[fbLabels.length - 1]) fbLabels[fbLabels.length - 1] = fbClean(it.blackAfter); fbBoundarySentinel = -1; }
 						else if (!stack.length) { fbOpen(fbClean(it.blackAfter), "page"); pageLabelHold = ""; headingHold = false; }
 					}
@@ -4338,6 +4370,14 @@ class ContentConverter {
 						&& !_sidePairOff
 						&& !(primary.tag === "side alert" && _sideAlertOff)
 						&& !stack.length;
+					if (it._sideHold && _sideDef && _sideDef.side_column) {
+						// a side alert typed mid-activity: the box stays open and the side column waits for the box's row to close
+						// (container_auto_close.activity_close_before.side_alert_resume)
+						pendingSideAlert = this.#sideAlertCol(it, bodyItems, i, run, _sideDef, _rhsPre);
+						sideAlertSawMedia = true;
+						while (bodyItems[i + 1]?._consumed) i++;       // its strict text run was consumed
+						break;
+					}
 					if (_rhsTagged) {   // the RHS box with tagged content: its tagged content gathered, the side column placed
 						rhsPlace(it, i, _rhsTagged);
 						i = Math.max(i, _rhsTagged.last);
@@ -4466,7 +4506,9 @@ class ContentConverter {
 							// (see #pageRawTitle above), so a mid-document alias that repeats THAT
 							// wording still gets recognised and consumed, even after the "Module N -"
 							// prefix has been stripped off the main title.
-							|| (this.#pageRawTitle && ftext === foldT(this.#pageRawTitle)));
+							|| (this.#pageRawTitle && ftext === foldT(this.#pageRawTitle))
+							// or the same title in other words (body_region.title_repeat_near; env TITLEREPEAT_OFF)
+							|| this.#nearTitleRepeat(text, [this.#pageEnglishTitle, this.#pageRawTitle]));
 						if (repeatsTitle) break;   // consumed — already in the header
 						if (!text) {
 							const word = (primary.fragment ?? "").trim();
@@ -5289,11 +5331,86 @@ class ContentConverter {
 		const sideTabActive = sideTabMode && finalBody0 !== bodyHtml;
 		const inquiryFlavour = sideTabActive ? (_stCfg.flavour || "fundamentals") : null;
 		const flav = inquiryFlavour ? (_stCfg.flavours || {})[inquiryFlavour] : null;
-		const menuOut = (flav && flav.lesson_menu === "none" && !page.isOverview && menu && menu.kind !== "none")
+		const menuOut0 = (flav && flav.lesson_menu === "none" && !page.isOverview && menu && menu.kind !== "none")
 			? { kind: "none" } : menu;
-		return { bodyHtml: finalBody, menu: menuOut, titleBar, inquiryActive, inquiryFlavour,
+		const menuOut = this.#tabListEcho(menuOut0, finalBody);   // the writer's tab list is not menu content (TABLISTECHO_OFF)
+		return { bodyHtml: this.#phaseOverviewNote(finalBody, run), menu: menuOut, titleBar, inquiryActive, inquiryFlavour,
 			cedInquiry: cedInquiryMode && finalBody0 !== bodyHtml };
 	};
+
+	/**
+	 * THE PHASE PANEL'S OWN OVERVIEW (a family dialect). The writer's per-phase [Overview] block
+	 * (an «Overview» heading + the learning / success lists) opens a later phase panel; the
+	 * family's gold keeps one overview, in the module menu, and none inside a panel. The panel's
+	 * first row, when it opens with head_pattern and holds only headings and lists, becomes the
+	 * developer's Writers Note with the same words.
+	 * Data flag: body_region.fundamentals_panels.phase_overview_note   Env toggle: PHASEOVNOTE_OFF
+	 */
+	static #phaseOverviewNote(body, run) {
+		const cfg = DataService.Data.EmitTemplates.body_region?.fundamentals_panels?.phase_overview_note;
+		if (!cfg || cfg.enabled === false || !body || !String(body).includes('class="fundamentalsPanel"')
+			|| (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "PHASEOVNOTE_OFF"])) return body;
+		const code = String(run?.moduleCode || "").toUpperCase();
+		if (!(cfg.prefixes ?? []).some((p) => code.startsWith(String(p).toUpperCase()))) return body;
+		const head = new RegExp(cfg.head_pattern, "i");
+		// the block is the row's LEADING run: the overview heading, then only label headings and lists; whatever
+		// follows it in the same column (the phase's own opening paragraph) stays learner content in the row
+		const unit = /^\s*(?:<h[3-6]\b[^>]*>(?:(?!<\/?h[3-6]\b)[\s\S])*<\/h[3-6]>|<(ul|ol)\b[^>]*>(?:(?!<\/?(?:ul|ol)\b)[\s\S])*<\/\1>)/i;
+		return String(body).replace(/(<div class="fundamentalsPanel" phase="\d+">\s*)<div class="row">(\s*)<div class="([^"]*)">([\s\S]*?)<\/div>(\s*)<\/div>/g,
+			(whole, open, ws1, colCls, inner, ws2) => {
+				const h = inner.match(head);
+				if (!h) return whole;
+				let rest = inner.slice(h[0].length), block = "";
+				for (let m = rest.match(unit); m; m = rest.match(unit)) { block += m[0]; rest = rest.slice(m[0].length); }
+				if (/<div\b/i.test(rest)) return whole;   // a nested structure: leave the row as it is
+				const text = block.replace(/<li\b[^>]*>/gi, "• ").replace(/<\/(?:li|h[3-6])>/gi, " / ")
+					.replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").replace(/(?:\s*\/\s*){2,}/g, " / ")
+					.replace(/^\s*\/\s*|\s*\/\s*$/g, "").trim();
+				if (!text) return whole;
+				const note = NotesAndComments.redFlag(String(cfg.note_prefix ?? "") + text, run, "cs");
+				return open + note + (rest.trim() ? `\n<div class="row">${ws1}<div class="${colCls}">${rest}</div>${ws2}</div>` : "");
+			});
+	}
+
+	/**
+	 * THE WRITER'S TAB LIST ECHOED IN THE MENU. The tab-structure list an Inquiry writer types
+	 * after the overview's [End page] ('[Tabs]' / '[Side tabs]' / '[Tab N] label' lines) is the
+	 * developer's spec, which the crumbs already carry; it is not menu content. When at least
+	 * min_hits of the page's own crumb labels stand as menu <p> / <li> / heading elements, those
+	 * elements leave the menu panes, with any list they leave empty.
+	 * Data flag: menu.tab_list_echo   Env toggle: TABLISTECHO_OFF
+	 */
+	static #tabListEcho(menu, body) {
+		const cfg = DataService.Data.EmitTemplates.menu?.tab_list_echo;
+		if (!cfg || cfg.enabled === false || !menu || typeof menu !== "object" || !body
+			|| (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "TABLISTECHO_OFF"])) return menu;
+		const fold = (s) => String(s ?? "").replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ").normalize("NFD")
+			.replace(/[̀-ͯ]/g, "").toLowerCase().replace(/^\s*\d+[.)]\s*/, "").replace(/[^a-z0-9]+/g, " ").trim();
+		const labels = new Set([...String(body).matchAll(/<div\b[^>]*\bcrumb="\d+"[^>]*>\s*<p>([\s\S]*?)<\/p>/g)]
+			.map((m) => fold(m[1])).filter((x) => x.length >= 3));
+		if (labels.size < (cfg.min_labels ?? 3)) return menu;
+		// the list is the pane's TRAILING run of short plain items (<p> / heading lines, or a list of short <li>),
+		// typed last; it goes WHOLE when enough of its items are the page's crumb labels (a label the crumbs
+		// spell differently — «Celebrating diversity» / «Celebrating Differences» — is still the same list)
+		const maxC = cfg.max_item_chars ?? 80;
+		const blk = `(?:\\s*<(?:p|h[3-6])\\b[^>]*>[^<]{1,${maxC}}</(?:p|h[3-6])>|\\s*<(?:ol|ul)\\b[^>]*>(?:\\s*<li\\b[^>]*>[^<]{1,${maxC}}</li>)+\\s*</(?:ol|ul)>)`;
+		const tailRe = new RegExp(`(${blk}+)((?:\\s*</div>)*\\s*)$`);
+		let out = null;
+		for (const k of (cfg.panes ?? ["tab1", "tab2", "content", "left", "right"])) {
+			const pane = menu[k];
+			if (typeof pane !== "string" || !pane) continue;
+			const m = pane.match(tailRe);
+			if (!m) continue;
+			const items = [...m[1].matchAll(/<(li|p|h[3-6])\b(?![^>]*class="cv2-)[^>]*>([^<]*)<\/\1>/g)].map((x) => fold(x[2]));
+			const hits = new Set(items.filter((t) => labels.has(t)));
+			if (hits.size < (cfg.min_hits ?? 3)) continue;
+			out = out ?? { ...menu };
+			// a developer note inside the run (the writer's «Can we have side tabs …» request) stays
+			const notes = [...m[1].matchAll(/\s*<p\b[^>]*class="cv2-[^"]*"[^>]*>[^<]*<\/p>/g)].map((x) => x[0]).join("");
+			out[k] = pane.slice(0, m.index) + notes + m[2];
+		}
+		return out ?? menu;
+	}
 
 	/**
 	 * THE LESSON-MENU LABEL FORM (KB constraint 23 (Universal) +
@@ -10467,7 +10584,15 @@ class ContentConverter {
 		const noVideoAbsorb = vdc && vdc.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && process.env[vdc.env ?? "VIDBTN_OFF"])
 			&& nurl && new RegExp(vdc.host_match ?? "youtube\\.com/(?:watch\\?|shorts/|embed/)|youtu\\.be/|vimeo\\.com/(?:video/)?\\d", "i").test(nurl);
-		return nurl && !nIsStruct && !noVideoAbsorb ? nurl : "";
+		// the writer's MEDIA tag («[image] <address>») after the button: the address is the picture's own
+		// source, never the button's href (buttons.absorb_following_url.media_tag_pattern; env BTNURLMEDIA_OFF)
+		// — unless the tag itself asks for the picture behind the button («[image link … embed behind the button]»)
+		const nTagText = String(nxt.text ?? "").replace(/\u{1f534}|\[\/?RED TEXT\]/gu, " ").trim();
+		const noMediaAbsorb = !!nurl && !!auRule.media_tag_pattern && nxt.type === "tag"
+			&& !(typeof process !== "undefined" && process.env && process.env[auRule.media_tag_env ?? "BTNURLMEDIA_OFF"])
+			&& new RegExp(auRule.media_tag_pattern, "i").test(nTagText)
+			&& !(auRule.media_tag_link_pattern && new RegExp(auRule.media_tag_link_pattern, "i").test(nTagText));
+		return nurl && !nIsStruct && !noVideoAbsorb && !noMediaAbsorb ? nurl : "";
 	};
 
 	/**
@@ -10486,7 +10611,7 @@ class ContentConverter {
 	 * reached (its opener is a CONTAINER_OPEN, which stops the walk first).
 	 * Data flag: buttons.go_journal.absorb_into_activity   Env toggle: GOJOURNAL_OFF
 	 */
-	static #goJournalTail(bodyItems, i, run, bundle = null) {
+	static #goJournalTail(bodyItems, i, run, bundle = null, memberOnly = false) {
 		const gjCfg = DataService.Data.EmitTemplates.buttons?.go_journal;
 		if (!gjCfg || gjCfg.enabled === false || gjCfg.absorb_into_activity === false) return [];
 		if (typeof process !== "undefined" && process.env && process.env.GOJOURNAL_OFF) return [];
@@ -10528,11 +10653,29 @@ class ContentConverter {
 		// box still emits here. Data buttons.go_journal.member_branch_yields_to_builder.
 		if (bundle && bundle._goJournalEmitted
 			&& gjCfg.member_branch_yields_to_builder !== false) return [];
-		if (bundle) {
+		if (bundle && !memberOnly) {
 			for (const m of (bundle.memberItems ?? [])) {
 				if (m && isGoJournal(m)) return h4();
 			}
 		}
+		// THE JOURNAL BUTTON AT AN UN-BUILT WIDGET'S TAIL. A bundle that did not build ships
+		// as a collapsed hand-off box; when its LAST non-blank member is a go-to-journal
+		// [button] (the exact label or a journal variant — 'Learning journal.'), the heading
+		// ships after the box. memberOnly is the inline site's call (no owning activity):
+		// only this branch runs there, never the forward walk. A built widget is the builder's.
+		// Data buttons.go_journal.handoff_tail   Env toggle: GOJOURNALHANDOFF_OFF
+		const hoCfg = gjCfg.handoff_tail;
+		if (bundle && bundle.built === false && hoCfg && hoCfg.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[hoCfg.env ?? "GOJOURNALHANDOFF_OFF"])) {
+			const mem = (bundle.memberItems ?? []).filter((m) => m && !(m.type === "black" && !String(m.text ?? "").trim()));
+			const last = mem[mem.length - 1];
+			const v = last ? variantOf(last) : null;
+			// a request-verb sentence is the writer's instruction to the developer: the heading alone
+			if (v && v !== true && v.kind === "sentence" && hoCfg.instruction_lead
+				&& new RegExp(hoCfg.instruction_lead, "i").test(String(v.sentence ?? ""))) return h4();
+			if (v) return withSentence(v, last);
+		}
+		if (memberOnly) return [];
 		for (let j = i + 1; j < bodyItems.length && j <= i + 120; j++) {
 			const c = bodyItems[j];
 			if (!c) break;
@@ -10932,6 +11075,43 @@ class ContentConverter {
 	}
 
 	/**
+	 * THE WRITER'S REQUEST IS NOT THE DOWNLOAD BUTTON'S LABEL (KB constraint 5). A download bracket that opens with a
+	 * request to the developer («insert button for response sheet download», «create download button, scroll down to …»)
+	 * returns the label «Download <object>» — the object being the words left once the request lead and the filler words
+	 * are removed, when it is a short noun phrase — else the fallback label, with the request itself as the note. A
+	 * leading tag word («Button: Download File») is dropped; an instruction tail («… button plus instructions»,
+	 * «… (with instructions of how to)») leaves the label for the note. A rewritten label opens with a capital letter.
+	 * Data buttons.button_download.request_label.
+	 *
+	 * @returns {{label: string, note: (string|null)}}
+	 */
+	static #downloadRequestLabel(text, rq) {
+		let lab = String(text), note = null, changed = false;
+		if (rq.tag_lead) {
+			const re = new RegExp(rq.tag_lead, "i");
+			if (re.test(lab)) { lab = lab.replace(re, ""); changed = true; }
+		}
+		if (rq.instruction_tail) {
+			const m = lab.match(new RegExp(rq.instruction_tail, "i"));
+			if (m && m.index > 0) { note = String(text); lab = lab.slice(0, m.index).trim(); changed = true; }
+		}
+		const lead = rq.request_lead ? new RegExp(rq.request_lead, "i") : null;
+		if (lead && lead.test(lab)) {
+			note = String(text);
+			const fill = (rq.filler_words ?? []).map((w) => String(w).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+			let obj = lab.replace(lead, "");
+			if (fill) obj = obj.replace(new RegExp("\\b(?:" + fill + ")\\b", "gi"), " ");
+			obj = obj.replace(/\s+/g, " ").trim();
+			const ok = !!obj && new RegExp(rq.object_pattern ?? "^\\p{L}[\\p{L}' -]*$", "u").test(obj)
+				&& obj.split(" ").length <= (rq.object_max_words ?? 4);
+			lab = ok ? String(rq.label_form ?? "Download {object}").replace("{object}", obj) : String(rq.fallback_label ?? "Download");
+			changed = true;
+		}
+		if (changed && lab) lab = lab.charAt(0).toUpperCase() + lab.slice(1);
+		return { label: lab || String(text), note };
+	}
+
+	/**
 	 * KB constraint 55's LABEL half (+ CL-0038 / constraint 65, 14.11): a
 	 * submission button keeps its full "Go to" label. The writer's bare noun ("Portfolio",
 	 * "Quiz button", "Dropbox") becomes the KB's canonical label — the first rule whose
@@ -10976,9 +11156,14 @@ class ContentConverter {
 		// `button clickDrop`, never a link — left exactly as it was (its build is its own round)
 		if (cfg.exclude_label_match && new RegExp(cfg.exclude_label_match, "i").test(lbl)) return [html];
 		const hit = (cfg.targets ?? []).find((t) => t.label_match && new RegExp(t.label_match, "i").test(lbl)) ?? cfg.default ?? {};
-		const href = url ? Utils.EscapeHtml(String(url)) : Utils.EscapeHtml(String(hit.href ?? ""));
+		// a target whose address is the same in every course («Go to portfolio» → D2L's ePortfolio) takes it, with no To Do
+		// (buttons.anchor_wrap.targets[].fixed_href; env PORTFOLIOHREF_OFF)
+		const fx = hit.fixed_href;
+		const fixed = !url && !!fx && fx.enabled !== false && !!fx.href && new RegExp(fx.label_match ?? "^$", "i").test(lbl.trim())
+			&& !(typeof process !== "undefined" && process.env && process.env[fx.env || "PORTFOLIOHREF_OFF"]);
+		const href = url ? Utils.EscapeHtml(String(url)) : Utils.EscapeHtml(String(fixed ? fx.href : (hit.href ?? "")));
 		const out = [Utils.FillTemplate(cfg.form ?? "<a href=\"{href}\" target=\"_blank\">{button}</a>", { button: html, href })];
-		if (cfg.todo_note && !url) {
+		if (cfg.todo_note && !url && !fixed) {
 			out.push(NotesAndComments.redFlag(
 				Utils.FillTemplate(cfg.todo_note, { what: hit.what ?? "link target", why: hit.why ?? "no URL was given in the Writers Template" }),
 				run, "todo"));
@@ -11872,6 +12057,7 @@ class ContentConverter {
 			// Data flag: buttons.button_download
 			// Env toggle: DLBTN_OFF
 			const dlCfg = tpl.buttons.button_download;
+			let dlReq = null;
 			if (dlCfg && dlCfg.enabled !== false
 				&& !(typeof process !== "undefined" && process.env && process.env.DLBTN_OFF)
 				&& /\bdownload\b/i.test(String(it.text ?? ""))) {
@@ -11879,7 +12065,7 @@ class ContentConverter {
 					.replace(/^[\s\[]+|[\s\]]+$/g, "")        // strip the surrounding brackets/space
 					.replace(/\s*\bbuttons?\b\s*$/i, "")      // strip the trailing "button(s)" word
 					.replace(/\*/g, "").replace(/\s+/g, " ").trim();
-				if (dlLabel) { label = dlLabel; form = dlCfg.form; }
+				if (dlLabel) { label = dlLabel; form = dlCfg.form; dlReq = dlCfg.request_label ?? null; }
 			}
 			// Never add a journal button the writer did not ask for: a bracket keyed `button` whose
 			// words are a writer INSTRUCTION ("[Please embed the video with a play button and image]",
@@ -11913,6 +12099,15 @@ class ContentConverter {
 			label = this.#buttonLabelBrackets(label, tpl);
 			// KB row 55: the writer's sentence full stop is not part of the label
 			label = this.#buttonLabelTrim(label, tpl);
+			// the writer's REQUEST to the developer is not a download button's label: «insert button for response sheet
+			// download» reads «Download response sheet», the request kept as a Writers Note — read once the bracket's tag
+			// words are split from the label (buttons.button_download.request_label; env DLREQLABEL_OFF)
+			if (dlReq && form === dlCfg.form && dlReq.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[dlReq.env ?? "DLREQLABEL_OFF"])) {
+				const r = this.#downloadRequestLabel(label, dlReq);
+				label = r.label;
+				if (r.note) out.push(NotesAndComments.redFlag(r.note, run, "cs"));
+			}
 			// KB constraint 55's label half: a bare "Quiz" / "Portfolio" / "Dropbox"
 			// becomes the KB's canonical "Go to …" label (the 14.11 family form for BLL / LS / HPE)
 			label = this.#buttonCanonicalLabel(label, key, run, tpl);
@@ -12031,6 +12226,8 @@ class ContentConverter {
 					Utils.Fold(this.#pageEnglishTitle).replace(/\s+/g, "")) {
 				return out;
 			}
+			// the same title in other words (body_region.title_repeat_near; env TITLEREPEAT_OFF)
+			if (text && this.#nearTitleRepeat(text, [this.#pageEnglishTitle, this.#pageRawTitle])) return out;
 			if (!text) {
 				// a bare [Introduction]/[Title] mid-document: the alias WORD
 				// itself is the heading (human BLL146-0.0 renders
@@ -12047,6 +12244,36 @@ class ContentConverter {
 		if (gathered.trim()) out.push(...ListsAndRuns.renderBlackText(gathered, run, this.#gatheredLinks(it, undefined, gathered)));
 		return out;
 	};
+
+	/**
+	 * A [TITLE] THAT REPEATS THE MODULE TITLE IN OTHER WORDS. True when at least min_share of the text's words are words of
+	 * one of the given titles — a run of one-letter words also read as one joined word («s, a, t, p, i, n» = «satpin») —
+	 * and the text has at least min_words words. Data body_region.title_repeat_near; env TITLEREPEAT_OFF.
+	 */
+	static #nearTitleRepeat(text, titles) {
+		const cfg = DataService.Data.EmitTemplates.body_region?.title_repeat_near;
+		if (!cfg || cfg.enabled === false || !text) return false;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "TITLEREPEAT_OFF"]) return false;
+		const words = (s) => Utils.Fold(String(s ?? "")).split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+		const w = words(text);
+		if (w.length < (cfg.min_words ?? 3)) return false;
+		for (const t of titles) {
+			if (!t) continue;
+			const set = new Set(words(t));
+			const found = w.map((x) => set.has(x));
+			if (cfg.join_letter_runs !== false) {
+				for (let a = 0; a < w.length;) {
+					if (!/^\p{L}$/u.test(w[a])) { a++; continue; }
+					let b = a;
+					while (b < w.length && /^\p{L}$/u.test(w[b])) b++;
+					if (b - a >= 2 && set.has(w.slice(a, b).join(""))) for (let k = a; k < b; k++) found[k] = true;
+					a = b;
+				}
+			}
+			if (found.filter(Boolean).length / w.length >= (cfg.min_share ?? 0.8)) return true;
+		}
+		return false;
+	}
 
 	/**
 	 * A MEDIA-ITEM REFERENCE WHOSE URL IS A VIDEO IS THE VIDEO (KB 01E). The Tag_Lexicon reads the writer's generic

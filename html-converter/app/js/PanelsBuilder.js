@@ -280,6 +280,19 @@ class PanelsBuilder {
 	 * Env FUNPANACC_OFF or FUNDPHASE_OFF both disable this lookup (either
 	 * one alone is enough to force a null return).
 	 */
+	/**
+	 * A panel segment as the TILE picture search sees it: the speech bubble's CHARACTER picture
+	 * (the WJ cohort's Kea, speechBubble.text_only.kea_character.tile_skip_src) is never a tile's
+	 * picture — the gold's tiles carry their own stock pictures — so it is hidden from the search only.
+	 * Env toggle: SBKEA_OFF (with the Kea bubble itself)
+	 */
+	static #tileSeg(s) {
+		const k = DataService.Data.EmitTemplates.interactive_builders?.speechBubble?.text_only?.kea_character;
+		const skip = k && k.enabled !== false && k.tile_skip_src ? String(k.tile_skip_src) : "";
+		if (!skip || !s) return s || "";
+		return String(s).replace(/<img\b[^>]*>/gi, (im) => (im.includes(skip) ? "" : im));
+	}
+
 	static #phaseTextDialectRow(run) {
 		const acc = DataService.Data.EmitTemplates.body_region.fundamentals_panels?.phase_text?.accordion_delimiter;
 		if (!acc || acc.enabled === false || !run) return null;
@@ -347,13 +360,13 @@ class PanelsBuilder {
 		nav += (pc.phases_nav_close || "</div>");
 		let fallbackImg = "";
 		for (const s of [...panelSegs, intro || ""]) {
-			const fm = /<img\b[^>]*\bsrc="([^"]*)"/i.exec(s || "");
+			const fm = /<img\b[^>]*\bsrc="([^"]*)"/i.exec(PanelsBuilder.#tileSeg(s));
 			if (fm) { fallbackImg = fm[1]; break; }
 		}
 		const tiles = [];
 		for (let i = 0; i < n; i++) {
 			const num = String(i + 1);
-			const m = /<img\b[^>]*\bsrc="([^"]*)"/i.exec(panelSegs[i] || "");
+			const m = /<img\b[^>]*\bsrc="([^"]*)"/i.exec(PanelsBuilder.#tileSeg(panelSegs[i]));
 			const src = m ? m[1] : fallbackImg;
 			let tile = Utils.FillTemplate(
 				row.tile_open || "<div class=\"col-md-4 col-6\">\n<div class=\"phaseLink\" phase=\"{n}\">\n<h3>{label}</h3>",
@@ -408,13 +421,13 @@ class PanelsBuilder {
 		// panel's OWN first image always wins when it has one)
 		let fallback = null;
 		for (const s of panelSegs) {
-			const fm = /<img\b[^>]*>/i.exec(s || "");
+			const fm = /<img\b[^>]*>/i.exec(PanelsBuilder.#tileSeg(s));
 			if (fm) { fallback = fm[0]; break; }
 		}
 		const tiles = [];
 		for (let i = 0; i < n; i++) {
 			const num = String(i + 1);
-			const m = /<img\b[^>]*>/i.exec(panelSegs[i] || "") ?? (fallback ? [fallback] : null);
+			const m = /<img\b[^>]*>/i.exec(PanelsBuilder.#tileSeg(panelSegs[i])) ?? (fallback ? [fallback] : null);
 			const src = m ? (/\bsrc="([^"]*)"/i.exec(m[0])?.[1] ?? "") : "";
 			const alt = m ? (/\balt="([^"]*)"/i.exec(m[0])?.[1] || lab(i)) : lab(i);
 			let tile = Utils.FillTemplate(
@@ -511,11 +524,11 @@ class PanelsBuilder {
 		nav += (pc.phases_nav_close || "</div>");
 		// the tile grid — CONTENT phases only (2..N), one tile per panel
 		let fallbackImg = "";
-		for (const s of panelSegs) { const fm = /<img\b[^>]*\bsrc="([^"]*)"/i.exec(s || ""); if (fm) { fallbackImg = fm[1]; break; } }
+		for (const s of panelSegs) { const fm = /<img\b[^>]*\bsrc="([^"]*)"/i.exec(PanelsBuilder.#tileSeg(s)); if (fm) { fallbackImg = fm[1]; break; } }
 		const tiles = [];
 		for (let i = 1; i < n; i++) {
 			const num = String(i + 1);
-			const m = /<img\b[^>]*\bsrc="([^"]*)"/i.exec(panelSegs[i] || "");
+			const m = /<img\b[^>]*\bsrc="([^"]*)"/i.exec(PanelsBuilder.#tileSeg(panelSegs[i]));
 			const src = m ? m[1] : fallbackImg;
 			let tile = Utils.FillTemplate(
 				nt.tile_open || "<div class=\"col-md-3 col-6\">\n<div class=\"phaseLink\" phase=\"{n}\">\n<h3>{label}</h3>",
@@ -577,11 +590,11 @@ class PanelsBuilder {
 		// when the WHOLE module has no images anywhere do tiles fall back to
 		// text-only (h3-only).
 		let fallbackImg = "";
-		for (const s of panelSegs) { const fm = /<img\b[^>]*\bsrc="([^"]*)"/i.exec(s || ""); if (fm) { fallbackImg = fm[1]; break; } }
+		for (const s of panelSegs) { const fm = /<img\b[^>]*\bsrc="([^"]*)"/i.exec(PanelsBuilder.#tileSeg(s)); if (fm) { fallbackImg = fm[1]; break; } }
 		let tiles = (pnt.tiles_open || "<div class=\"row phaseContainer\">") + "\n";
 		for (let i = 0; i < n; i++) {
 			const num = String(i + 1);
-			const m = /<img\b[^>]*\bsrc="([^"]*)"/i.exec(panelSegs[i] || "");
+			const m = /<img\b[^>]*\bsrc="([^"]*)"/i.exec(PanelsBuilder.#tileSeg(panelSegs[i]));
 			const src = m ? m[1] : fallbackImg;
 			let tile = Utils.FillTemplate(pnt.tile_open || "<div class=\"col-md-3 col-6\">\n<div class=\"phaseLink\" phase=\"{n}\">\n<h3>Phase {n}</h3>", { n: num });
 			if (src) tile += "\n" + Utils.FillTemplate(pnt.tile_img || "<img class=\"phaseImg\" src=\"{src}\" alt=\"Phase {n}\">", { src, n: num });

@@ -4169,7 +4169,18 @@ class InteractiveBuilder {
 	 * hand-off box) the moment a row yields no heading or no content.
 	 */
 	static #accTablePanels(tableItem, cfg, tpl) {
-		const rows = tableItem?.block?.rows ?? [];
+		let rows = tableItem?.block?.rows ?? [];
+		// the writer's column labels: a FIRST row wholly red in every non-empty cell is not a panel
+		// (panel_delimiters.red_header_row; env ACCREDHEAD_OFF)
+		const rh = cfg.red_header_row;
+		if (rh && rh.enabled !== false && rows.length > 1
+			&& !(typeof process !== "undefined" && process.env && process.env[rh.env ?? "ACCREDHEAD_OFF"])) {
+			const cells0 = (rows[0] ?? []).map((c) => String(typeof c === "string" ? c : (c?.text ?? "")))
+				.filter((c) => this.#cellText(c).trim());
+			const wholeRed = (c) => this.#hasRedText(c)
+				&& !c.replace(/\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\u{1f534}/gu, "").trim();
+			if (cells0.length && cells0.every(wholeRed)) rows = rows.slice(1);
+		}
 		if (rows.length < (cfg.min_panels ?? 1)) return null;
 		const maxHead = cfg.table_head_max_words ?? 10;
 		const panels = [];
@@ -4911,6 +4922,29 @@ class InteractiveBuilder {
 		return ph;
 	}
 
+	/**
+	 * THE KEA SPEECH BUBBLE (KB 14B2 §14.10 / CL-0113). In the WJ cohort, a text-only bubble whose
+	 * INTERACTIVE tag names the Kea («[Insert Kea as per global parameters][kea speech bubble and
+	 * audio]») takes the Kea picture column + bubble-right of its series row (the longest matching
+	 * prefix). Returns { image_col, col_open, bubble, todo } or null.
+	 * Data flag: speechBubble.text_only.kea_character   Env toggle: SBKEA_OFF
+	 */
+	static #sbKea(bundle, tpl, run) {
+		const k = tpl?.text_only?.kea_character;
+		if (!k || k.enabled === false || !bundle) return null;
+		if (typeof process !== "undefined" && process.env && process.env[k.env || "SBKEA_OFF"]) return null;
+		const code = String(run?.moduleCode ?? "").toUpperCase();
+		if (!(k.code_prefixes ?? []).some((p) => code.startsWith(String(p).toUpperCase()))) return null;
+		const re = new RegExp(k.tag_re ?? "\\bkea\\b", "i");
+		const openers = (bundle.memberItems ?? []).filter((m) => m && m.parse?.primary?.directive === "INTERACTIVE");
+		if (!openers.length || !openers.every((m) => re.test(String(m.text ?? "")))) return null;
+		const row = (k.series ?? []).filter((s) => code.startsWith(String(s.prefix).toUpperCase()))
+			.sort((a, b) => String(b.prefix).length - String(a.prefix).length)[0];
+		if (!row) return null;
+		const img = Utils.FillTemplate(k.img, { image: row.image });
+		return { image_col: `${row.image_col}\n${img}\n</div>`, col_open: row.col_open, bubble: row.bubble, todo: k.todo };
+	}
+
 	static #speechBubbleTextOnly({ bundle, tpl, renderInline, run }) {
 		const cfg = tpl?.text_only;
 		if (!cfg || cfg.enabled === false || !bundle) return null;
@@ -4967,7 +5001,8 @@ class InteractiveBuilder {
 		// in the OS / TEDC families a text-only bubble whose writer named NO picture on
 		// its tag line takes the avatar form with the KB 04C placeholder image, and one red To Do follows the group.
 		// Data text_only.placeholder_character (code_prefixes, picture_named_re); env SBPLACEHOLDER_OFF.
-		const ph = this.#sbPlaceholder(bundle, tpl, run);
+		// the WJ cohort's Kea bubble (text_only.kea_character; env SBKEA_OFF) takes the character form first
+		const ph = this.#sbKea(bundle, tpl, run) ?? this.#sbPlaceholder(bundle, tpl, run);
 		const phOn = !!ph;
 		const rows = bubbles.map((b) => {
 			const ps = b.map((t) => `<p>${inline(t)}</p>`).join("\n");
@@ -7285,6 +7320,27 @@ class InteractiveBuilder {
 	 * @param {object} [args.run] - conversion run context (image Mode P/D)
 	 * @returns {string|null} the built trigger+modal set, or null to fall through
 	 */
+	/**
+	 * THE WRITER'S POP-OUT SIZE: a size word written next to «modal» in the widget's own lines («[Click modal XL …]»,
+	 * «[Modal large body]», «[M Modal]») → that size; none → the builder's default_size. Data
+	 * interactive_builders.modal.writer_size; env MODALSIZE_OFF.
+	 */
+	static #modalSize(bundle, tpl, cfg) {
+		const dflt = cfg?.default_size ?? "M";
+		const ws = tpl?.writer_size;
+		if (!ws || ws.enabled === false || !ws.pattern) return dflt;
+		if (typeof process !== "undefined" && process.env && process.env[ws.env || "MODALSIZE_OFF"]) return dflt;
+		const re = new RegExp(ws.pattern, "i");
+		for (const m of [...(bundle?.openerItems ?? []), ...(bundle?.memberItems ?? [])]) {
+			const t = `${m?.text ?? ""} ${m?.blackAfter ?? ""}`.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ");
+			const mm = t.match(re);
+			if (!mm) continue;
+			const s = ws.sizes?.[String(mm[1] ?? mm[2] ?? "").toLowerCase().replace(/\s+/g, " ")];
+			if (s) return s;
+		}
+		return dflt;
+	}
+
 	static #modalImagePairs({ bundle, tpl, renderBlock, run }) {
 		const cfg = tpl?.image_pairs;
 		if (!cfg || cfg.enabled === false) return null;
@@ -7353,7 +7409,7 @@ class InteractiveBuilder {
 			const content = arr.filter((h) => h && String(h).trim()).join("");
 			if (!content.trim()) return null;
 			out.push(this.#assetImage(p.filename, cfg, run));
-			out.push(Utils.FillTemplate(cfg.modal_open, { size: cfg.default_size ?? "M" })
+			out.push(Utils.FillTemplate(cfg.modal_open, { size: this.#modalSize(bundle, tpl, cfg) })
 				+ "\n" + content + "\n" + (cfg.modal_close ?? "</div>"));
 		}
 		return out.join("\n");
@@ -7446,7 +7502,7 @@ class InteractiveBuilder {
 		if (!sets || sets.length < (cfg.min_modals ?? 1)) return null;
 
 		// (3) render through the shared set renderer.
-		const built = this.#modalRenderSets(sets, { tpl, cfg, inline, run, renderBlock, renderNested });
+		const built = this.#modalRenderSets(sets, { tpl, cfg, inline, run, renderBlock, renderNested, size: this.#modalSize(bundle, tpl, cfg) });
 		if (!built) return null;
 		const html = built.join("\n");
 		if (this.#accLeakGuard(html, cfg)) return null;             // a build must never ADD a leak
@@ -8082,7 +8138,7 @@ class InteractiveBuilder {
 	 *
 	 * @returns {string[]|null} one trigger+modal pair per set, or null to decline
 	 */
-	static #modalRenderSets(sets, { tpl, cfg, inline, run, renderBlock, renderNested }) {
+	static #modalRenderSets(sets, { tpl, cfg, inline, run, renderBlock, renderNested, size = null }) {
 		const out = [];
 		// a TILE STRIP is laid out the way its human developer lays it out:
 		// all the tiles together in one row of columns, then the pop-outs after it (the
@@ -8122,7 +8178,7 @@ class InteractiveBuilder {
 				: Utils.FillTemplate(cfg.trigger_button ?? "<div class=\"button TKmodalButton\">{label}</div>",
 					{ label: inline(String(s.label).replace(/\*+/g, "").trim()) });
 			const modal = Utils.FillTemplate(cfg.modal_open ?? "<div class=\"TKmodal\" size=\"{size}\">",
-				{ size: cfg.default_size ?? "M" })
+				{ size: size ?? cfg.default_size ?? "M" })
 				+ "\n" + content + "\n" + (cfg.modal_close ?? "</div>");
 			if (tiles) { tiles.push(trigger); out.push(modal); continue; }
 			out.push(trigger + "\n" + modal);

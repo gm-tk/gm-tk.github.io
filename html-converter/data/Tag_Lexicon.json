@@ -39,6 +39,14 @@
 				"env": "SPELLALIAS_OFF"
 			},
 			{
+				"_doc": "The template's «[Check in] Where ākonga can upload some of their work, and or show they have participated in this lesson, which triggers engagement.» is the same student upload request the writers type as «[upload to dropbox] …» (the same sentence follows both); it resolved to NO tag, so the learner got a Writers Note and no upload button where the human builds «Upload to dropbox» (BLL120 ×22, MXEO102 …). It joins the dropbox alias of this widget type, whose upload-box build (interactive_builders.dropDown.upload_box) makes the button.",
+				"tag": "dropdown",
+				"aliases": ["check in", "check-in"],
+				"free_pattern": "\\bupload",
+				"_note_free_pattern": "Only the template's own form — its upload words typed inside the same red span («[Check in] Where ākonga can upload …»). A bare «[Check in]» followed by the writer's black instruction («Show your kaiako how well you understand this lesson. Download the journal …», MXEO102) is a journal check-in, not the upload area, and stays as it was.",
+				"env": "CHECKIN_OFF"
+			},
+			{
 				"_doc": "The writers' spellings of the proverb tag — '[whakatauiki]', '[Whakatuaki]', '[Whaktaukī]', '[whakaukī]' (folded) — resolved to no tag, so the proverb box was not built and the bracket shipped as a Writers Note; the human builds div.whakatauki for each.",
 				"tag": "whakatauki",
 				"aliases": ["whakatauiki", "whakatuaki", "whaktauki", "whakauki"],
