@@ -397,7 +397,21 @@ class ListsAndRuns {
 		const typedBulletRe = _tbg && _tbg.enabled !== false && (_tbg.glyphs ?? []).length
 			&& !(typeof process !== "undefined" && process.env && process.env[_tbg.env ?? "TYPEDBULLET_OFF"])
 			? new RegExp(`^[${_tbg.glyphs.map((g) => String(g).replace(/[\]\\^-]/g, "\\$&")).join("")}]\\s+(.*)$`, "u") : null;
-		const nodes = lines.map((raw) => {
+		// the writer's typed hyphen bullets («- item» / «– item»), only inside a run of min_run or more such lines (blank lines
+		// between allowed), never before a digit (body_region.typed_bullet_glyphs.dash_runs; env DASHBULLET_OFF)
+		const _dr = _tbg?.dash_runs;
+		const dashRe = _dr && _dr.enabled !== false && (_dr.glyphs ?? []).length
+			&& !(typeof process !== "undefined" && process.env && process.env[_dr.env ?? "DASHBULLET_OFF"])
+			? new RegExp(`^[${_dr.glyphs.map((g) => String(g).replace(/[\]\\^-]/g, "\\$&")).join("")}]\\s+(?!\\d)(\\S.*)$`, "u") : null;
+		const dashRun = new Set();
+		if (dashRe) {
+			const idx = lines.map((l, k) => (l.trim() ? k : -1)).filter((k) => k >= 0);
+			let run0 = [];
+			const close = () => { if (run0.length >= (_dr.min_run ?? 2)) for (const k of run0) dashRun.add(k); run0 = []; };
+			for (const k of idx) { if (dashRe.test(lines[k].trim())) run0.push(k); else close(); }
+			close();
+		}
+		const nodes = lines.map((raw, li) => {
 			const indent = nestOff ? 0 : (raw.match(/^[ \t]+/)?.[0].length ?? 0);
 			const level = Math.floor(indent / indentPer);
 			let line = raw.trim();
@@ -414,7 +428,8 @@ class ListsAndRuns {
 				if (c.endsWith(emphB[1])) c = c.slice(0, -emphB[1].length);
 				bullet = [line, c.trim()];
 			} else {
-				bullet = line.match(/^•\s*(.*)$/) ?? (typedBulletRe ? line.match(typedBulletRe) : null);
+				bullet = line.match(/^•\s*(.*)$/) ?? (typedBulletRe ? line.match(typedBulletRe) : null)
+					?? (dashRun.has(li) ? line.match(dashRe) : null);
 			}
 			const numbered = line.match(/^(\d+)[.)]\s+(.*)$/);
 			if (bullet) return { kind: "ul", level, content: bullet[1] };

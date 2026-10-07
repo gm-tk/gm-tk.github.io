@@ -4243,7 +4243,15 @@ class InteractiveBuilder {
 		const maxWords = cfg.head_max_words ?? 14;
 		if (!head || head.split(/\s+/).length > maxWords) return null;
 		if (this.#accHasBracketTag(head)) return null;
-		return { head, rest: String(m[2] ?? "").trim() };
+		let rest = String(m[2] ?? "").trim();
+		// a separator dash after the head is dropped like the colon (keeping a bold marker it sat inside)
+		// — accordion.panel_delimiters.bold_lead_dash; env BOLDLEADDASH_OFF
+		const _bld = DataService.Data.EmitTemplates?.interactive_builders?.accordion?.panel_delimiters?.bold_lead_dash;
+		if (!bulleted && _bld && _bld.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_bld.env || "BOLDLEADDASH_OFF"])) {
+			rest = rest.replace(new RegExp("^(\\*{0,2})" + String(_bld.pattern ?? "^[–—-]\\s+").replace(/^\^/, "")), "$1").trim();
+		}
+		return { head, rest };
 	}
 
 	/**
@@ -12384,6 +12392,23 @@ class InteractiveBuilder {
 		const plain = t.replace(/\*\*/g, "").trim();
 		if (plain && plain.split(/\s+/).length <= max && !this.#accHasBracketTag(plain)) {
 			return { label: plain, rest: "" };
+		}
+		// (a0) a bold head + a separator dash + the rest of a short first line before the writer's " / " — the whole
+		// first line is the label ("**Taha tinana** – **physical wellbeing** / Some games …"); label_dash_slash_head,
+		// env CDDASHHEAD_OFF
+		const ds = cfg.label_dash_slash_head;
+		if (ds && ds.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[ds.env || "CDDASHHEAD_OFF"])) {
+			const si = t.indexOf(cfg.label_separator ?? " / ");
+			const bm = si > 0 ? t.slice(0, si).match(/^\*\*(.+?)\*\*/) : null;
+			if (bm) {
+				const whole = t.slice(0, si).replace(/\*\*/g, "").replace(/\s+/g, " ").trim();
+				const bh = bm[1].replace(/\s+/g, " ").trim();
+				const after = whole.startsWith(bh) ? whole.slice(bh.length).trim() : "";
+				if (after && new RegExp(ds.dash_pattern ?? "^[–—-]\\s").test(after) && after.replace(/^[–—-]\s*/, "")
+					&& whole.split(/\s+/).length <= max && !this.#accHasBracketTag(whole)) {
+					return { label: whole, rest: t.slice(si + (cfg.label_separator ?? " / ").length).trim() };
+				}
+			}
 		}
 		// (a) a bold lead — "**Stage 1.** • Action: …"
 		const bl = this.#accBoldLead(t, { ...cfg, head_max_words: max });

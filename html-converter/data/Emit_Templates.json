@@ -1896,6 +1896,18 @@
 			},
 			"_note_title": "The text trailing an [Activity NX] tag is the activity TITLE; the human renders it as <h3> as the box's first child (almost every human activity box starts with <h3>, almost never <p>). The interactive-OWNED activity path promotes the lead line to <h3> (#activityOpen renderBlack=false, the addLead title logic). On the STANDALONE path (renderBlack=true, a plain [Activity] with no captured widget — BLL233 1E), when enabled, #activityOpen promotes the FIRST LINE of blackAfter to <h{level}> (the title) and renders the REST as body, mirroring the owned path exactly. Env ACTTITLE_OFF renders it all as <p>."
 		},
+		"title_id_echo": {
+			"_doc": "THE BOX'S TITLE DOES NOT REPEAT ITS NUMBER. A writer who types the id in front of the title («[activity box] 1A Ullis Email», «[Activity 1A Drag and Drop] 1A Greetings and farewells») gets a box numbered 1A whose title reads «1A Ullis Email» — the number shown twice. The gold drops the id from the title (35 of the 38 such headings it shows). A page post-pass, run after the page's numbering is settled: the box's FIRST heading, reached past only its row / column wrappers, loses a leading token equal to the box's own number= when a title follows it. A heading whose id differs from the box's number is left as typed.",
+			"enabled": true,
+			"env": "TITLEIDECHO_OFF",
+			"max_gap_chars": 400
+		},
+		"id_tail_before_heading": {
+			"_doc": "THE ID TYPED AFTER THE OPENER, AND THE WRITER'S HEADING ON THE NEXT LINE. «🔴[Activity]🔴 1B» then «🔴[H2]🔴 Why is poi good for us?»: the black tail is the box's NUMBER (the bracket carries none — number_from_tail reads only the red span's own words), so it is not also rendered as an <h3>1B</h3> title; the writer's heading then opens the still-empty box as its title instead of closing it, and the activity's content stays inside (the gold's box 1B in every such module). Taken only when the tail is nothing but the id (digits + one letter, optionally after the word Activity) and the next item, past blank lines and red notes, is a heading tag — an id typed above content, the form some golds keep as an id title, is left alone.",
+			"enabled": true,
+			"env": "IDTAILHEAD_OFF",
+			"id_pattern": "^(?:activity)?(\\d{1,2}[a-z])$"
+		},
 		"number_from_tail": {
 			"enabled": true,
 			"_note_number_tail": "Some writers type the activity number OUTSIDE the bracket — '[Activity] 3A' instead of '[Activity 3A]' (ANZH101/HIS family). it.parse.numbers is then EMPTY, so #activityOpen would emit a NUMBERLESS <div class=\"activity\"> — the human gives it the number (it almost never ships a numberless box). TagNormaliser lifts a LEADING digit+letter id token from the span's free text (outside the bracket) into parse.numbers when an [Activity] CONTAINER_OPEN tag is present and no bracket number exists — so #activityOpen id, InteractiveScanner activityId, and the adjacent-merge carry all see it. Digit+LETTER only (a bare digit is skipped so prose like '5 minutes' can never be read as a number). Env ACTNUMTAIL_OFF gives the numberless box."
@@ -2089,6 +2101,12 @@
 			"enabled": true,
 			"env": "ACTDBXINSIDE_OFF",
 			"max_lookahead": 120,
+			"plain_button": {
+				"_doc": "THE WRITER'S PLAIN UPLOAD BUTTON AFTER THE WIDGET. The hold below looks for an upload-box widget bundle; a writer who closes the activity with a [Body] instruction and a plain «[Button] Upload to dropbox» (BLL240 / BLL250's flip-card spelling boxes, «When you have finished writing all the words, read your list back …» then the button) saw the box close at the widget's end and both land in a loose row after it — the gold keeps them inside the box (236 of the 249 upload buttons the converter shipped outside a box). A plain button tag whose label matches `label_pattern`, reached before any boundary the hold already honours, holds the box open the same way.",
+				"enabled": true,
+				"env": "ACTDBXBTN_OFF",
+				"label_pattern": "^\\s*(?:upload|submit)\\b"
+			},
 			"_note_hold": "KB constraint 43, the dropbox modifier/placement class. A bundle-OWNED activity box closes at its widget's end, so a writer's dropbox marker placed AFTER the widget but still INSIDE the activity ([Activity 2D] … [clickdrop button] … [microphone, camera and video dropbox buttons] [End page] — XMES101) would escape into its own row UNDER the closed box: the marker is freed into its own dropDown bundle, the upload box builds the Upload-to-dropbox button, and the dropbox postpass (which marks `dropbox` only when the button sits INSIDE the box's own span) would not fire. The human keeps the button INSIDE the activity (BLL always). THE RULE: at the owner close site, walk forward from the bundle's opening item with the auto-close boundary semantics (scanSupNote's walk — skip the owner's own members, consumed items, blank lines; black text, tables and non-boundary tags are content; a stray non-activity CONTAINER_CLOSE is the widget's own end tag and is flagged so it cannot pop the held frame; a heading <= rendered_heading_max, an activity_close_before directive/tag, an activity closer, a page boundary, a section marker, or an item consumed by a DIFFERENT non-dropbox bundle ends the walk with NO hold); when the first foreign bundle reached is a freed upload-box bundle (InteractiveBuilder.UploadBoxCandidate — the upload box's own scan, public so scanner/builder/holder can never drift) with no activity of its own (canonTag/activityOwner/activityId all unset — the isNewActivity test), the activity frame is LEFT OPEN: the dropbox bundle then renders through the ordinary non-owner path inside the still-open box, autoClose (or the page-end drain) closes the box at the next boundary, and the dropbox postpass marks it `dropbox`. FENCES: the ENFUN prose|widget row split (prose_interactive_rows, pirKey) is excluded — its widget row is already closed at the site; the buttonD/BLL plain-box convention is untouched (the postpass's \\bbutton\\b test does not see buttonD — the BLL button moves inside the box, and the box stays plain as the human's BLL boxes are). max_lookahead mirrors #goJournalTail's 120. Env toggle ACTDBXINSIDE_OFF closes the box at the widget's end."
 		},
 		"standalone_dropbox_box": {
@@ -2743,7 +2761,12 @@
 				"shell_box_plain": true,
 				"absorb_tags": ["engagement quiz button"],
 				"absorb_window": 2,
-				"quiz_bundle_types": ["multiChoiceQuiz", "radioQuiz", "dragAndDrop", "clickDrop", "dropQuiz", "wordSelect", "wordDrag", "typing", "selectionBox", "reorder", "selfCheck"]
+				"quiz_bundle_types": ["multiChoiceQuiz", "radioQuiz", "dragAndDrop", "clickDrop", "dropQuiz", "wordSelect", "wordDrag", "typing", "selectionBox", "reorder", "selfCheck"],
+				"lead_title_open": {
+					"_doc": "THE BOX'S TITLE ON THE LINE AFTER ITS QUIZ OPENER. When the quiz marker rides on the box's own [Activity] opener (the shell's lead mode) and that opener supplies no title — no black tail, no typed or embedded title, no carried title line — the writer's next-line heading tag ([H3] Understanding wellbeing using data) is the box's title and the [Body] after it the instruction, as the page-loop path already keeps them; without this the first heading ended the instruction run and both were dropped, leaving the box only the note and the button.",
+					"enabled": true,
+					"env": "MTKLEADTITLE_OFF"
+				}
 			}
 		},
 		"_principle": "PRINCIPLE (the two-layer anchor comparison). Every builder here builds the widget the WRITER's tag specifies. The human developer's finished widget is the reference ONLY where the writer's tag corresponds to the human's element (Decision-Framework B). Where the human editorially SUBSTITUTED a different element (e.g. writer [flip card] -> human accordion; writer [carousel] left as static images), that substitution is NON-derivable (Decision-Framework A1): build the WRITER's tagged widget anyway and judge it on the widget's own correctness, NOT on its likeness to the human's substitution. A structural difference from a human substitution is the expected cost, not a regression. Never half-build: build cleanly or keep the honest placeholder.",
@@ -3141,6 +3164,12 @@
 			},
 			"panel_delimiters": {
 				"enabled": true,
+				"bold_lead_dash": {
+					"_doc": "THE SEPARATOR AFTER A BOLD HEAD NEVER OPENS THE PANEL. The shared bold-lead reading («**Head:** rest», used by the accordion, tabs and click-drop builders) dropped a colon after the head but kept a separator dash, so «**Ships Captain** – Story of two New Zealand boys …» put «Ships Captain» on the bar and opened the panel with «– Story of …» (the gold: «Story of …»). A dash followed by a space directly after the head is dropped the same way the colon is — the bulleted form (bullet_bold_lead) already does.",
+					"enabled": true,
+					"env": "BOLDLEADDASH_OFF",
+					"pattern": "^[–—-]\\s+"
+				},
 				"table_cell_lines": {
 					"_doc": "THE CELL'S OWN LINES IN A TABLE-FORM PANEL (KB constraint 5: no stray markup). A table whose rows are the panels carries each panel's body in a cell; the cell's paragraphs reach the builder joined by the in-cell line break (separator), and the body rendered as ONE paragraph with the joiner and the writer's «•» printed («• What makes a good leader in the game? / • How do you make sure everyone can follow you safely? / …»). The human build lists them (accContent > ul > li) or gives each line its own <p>. The panel BODY is split at the separator into lines, which the block renderer turns into <p> / <ul> as anywhere else; the heading is chosen exactly as before. Env ACCCELLLINES_OFF.",
 					"enabled": true,
@@ -4142,6 +4171,12 @@
 				"min_items": 1,
 				"min_inferred_items": 2,
 				"label_max_words": 8,
+				"label_dash_slash_head": {
+					"_doc": "THE WHOLE FIRST LINE IS THE BUTTON WHEN THE BOLD HEAD IS FOLLOWED BY A DASH. A member typed «**Taha tinana** – **physical wellbeing** / Some games can help …» — a bold head, a separator dash, the rest of a short first line, then the writer's own « / » line break — names its button with the whole first line («Taha tinana – physical wellbeing», the gold's button); the bold-lead reading took «Taha tinana» alone and the panel opened with «– physical wellbeing». Taken only when the text before « / » begins with the bold head, the dash follows it, and it is within label_max_words.",
+					"enabled": true,
+					"env": "CDDASHHEAD_OFF",
+					"dash_pattern": "^[–—-]\\s"
+				},
 				"require_panel_text": true,
 				"leak_guard": true,
 				"image_slug_fallback": true,
@@ -5151,6 +5186,13 @@
 				"XWHA01"
 			],
 			"repeat_modules_env": "MENUREPEAT12_OFF",
+			"writer_instruction": {
+				"_doc": "THE WRITER SAYS THE OVERVIEW IS THE SAME THROUGHOUT THE MODULE. A Writers Template whose overview carries the writer's instruction «Overview section is the same throughout the module» names the source of every lesson menu: a lesson page whose own menu would be EMPTY takes the overview menu's learning-intentions pane (the pane holding «We are learning:»), its wrappers removed, as the simplified lesson menu — the lesson label form (lesson_label_form) then gives it the KB 01B lesson treatment. KB 10 §5 flags an empty lesson menu only when no source supplies its wording; here the writer's own instruction supplies it. The hand-kept lists above (a verbatim repeat) act first; this fills only what they leave empty.",
+				"enabled": true,
+				"env": "MENUSAMEALL_OFF",
+				"pattern": "overview (?:section )?is the same (?:throughout|for (?:all|every|each)) (?:the )?(?:module|lessons?)",
+				"pane_pattern": "we are learning"
+			},
 			"repeat_lists": [
 				{
 					"modules": [
@@ -7379,7 +7421,14 @@
 			"_doc": "A WRITER'S TYPED BULLET GLYPH. Word's own bullets reach the text as «• »; a writer who types a different glyph at the start of each line («› Use information provided in the module to create an itinerary …» — MXFL201's menu, MXFUN02) means the same list, which the human ships as <li>. A line opening with one of `glyphs` and a space is a bullet line (the glyph dropped), exactly as a «• » line is.",
 			"enabled": true,
 			"env": "TYPEDBULLET_OFF",
-			"glyphs": ["›"]
+			"glyphs": ["›"],
+			"dash_runs": {
+				"_doc": "THE WRITER'S TYPED HYPHEN BULLETS. «I can: / - recognise verbal and non-verbal signs … / - explain why consent must be voluntary …» — a writer who types «- » or «– » at the start of each line of a list means a bulleted list, which the human ships as <li> (18 of the 22 such runs the gold shows); the converter shipped each line as a paragraph with the hyphen shown to the learner. A line opening with one of `glyphs` and a space is a bullet line only inside a RUN of `min_run` or more such lines (blank lines between them allowed), and never before a digit — a lone dash line (a dialogue dash, a minus sign) stays as typed.",
+				"enabled": true,
+				"env": "DASHBULLET_OFF",
+				"glyphs": ["-", "–"],
+				"min_run": 2
+			}
 		},
 		"drop_glyph_only_lines": {
 			"_doc": "A free-body line whose whole content is ONE punctuation glyph (a writer's stray `.` / `,`, a text-box bracket `[` / `]` left after an image, a broken equation's `+` `=` `–`, PNR102's `✔` ticks) would ship as `<p>.</p>`; the human never ships such a paragraph. In ListsAndRuns.renderBlackText's line filter, free-body text only (stitch true — the placeholder / built-widget dumps stay a faithful hand-off): a line that, with its `*` emphasis markers removed, is exactly one character that is not a letter, not a digit, not `_` and not in `keep`, is dropped before it can become a paragraph. `•` is kept for the bullet path's own empty-item rule. OFF keeps these lines.",

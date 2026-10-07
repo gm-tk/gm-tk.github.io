@@ -4016,6 +4016,28 @@ class ContentConverter {
 						// poems`, all red) is the box's <h3>; ActivitiesBuilder.activityOpen emits it and
 						// renders the whole black tail as content. See #embeddedOpenerTitle.
 						let _openerRedNote = null;   // the opener's red words the title rule did not take (emitted after the open)
+						// THE ID TYPED AFTER THE OPENER, THE HEADING ON THE NEXT LINE («[Activity] 1B» / «[H2] Why is poi good for
+						// us?»): the tail is the box's number, not an <h3>1B</h3> title, so the heading opens the empty box as its title
+						// (the title-protection rule) instead of closing it. activity_wrapper.id_tail_before_heading; env IDTAILHEAD_OFF
+						const _ith = tpl.activity_wrapper?.id_tail_before_heading;
+						if (!it._tileTailIsId && _ith && _ith.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[_ith.env || "IDTAILHEAD_OFF"])
+							&& !(it.parse?.numbers ?? []).length && !/\n/.test(String(it.blackAfter ?? "").trim())) {
+							const _idm = String(it.blackAfter ?? "").replace(/[*\s]+/g, "").match(new RegExp(_ith.id_pattern ?? "^(?:activity)?(\\d{1,2}[a-z])$", "i"));
+							let _nx = null;
+							for (let k = i + 1; k < bodyItems.length && _idm; k++) {
+								const c = bodyItems[k];
+								if (c.type === "black" && !String(c.text ?? "").trim()) continue;
+								if (c.type === "tag" && !c.parse?.primary && c.consumedBy === undefined) continue;   // a red note
+								_nx = c; break;
+							}
+							if (_idm && _nx && _nx.type === "tag" && _nx.consumedBy === undefined && renderedHeading(_nx.parse?.primary) !== null) {
+								it._tileTailIsId = true;
+								it._activityIdOverride = _idm[1].toUpperCase();
+								run.AddNote("info", "ContentConverter",
+									`Page ${page.lessonLabel}: [${it.text}] — the black tail "${String(it.blackAfter ?? "").trim()}" is the box's number; the next-line heading is its title (id_tail_before_heading).`);
+							}
+						}
 						if (!it._tileTailIsId) {
 							const _et = this.#embeddedOpenerTitle(it, tpl);
 							_openerRedNote = this.#openerFreeNote(it, _et, tpl, run);
@@ -5118,6 +5140,33 @@ class ContentConverter {
 				Object.assign(menu, JSON.parse(JSON.stringify(run.overviewMenu)));
 			}
 		}
+		// THE WRITER SAYS THE OVERVIEW IS THE SAME THROUGHOUT THE MODULE: the overview's learning-intentions pane (wrappers
+		// removed) fills a lesson menu the lists above leave empty, as the simplified lesson menu.
+		// Data menu.lesson_repeats_overview.writer_instruction; env MENUSAMEALL_OFF
+		const _wi = lro?.writer_instruction;
+		if (_wi && _wi.enabled !== false && lro.enabled !== false && !_envOn(_wi.env || "MENUSAMEALL_OFF") && menuType !== "none") {
+			const paneKeys = ["tab1", "tab2", "content", "left", "right"];
+			if (page.isOverview) {
+				const wiRe = new RegExp(_wi.pattern, "i");
+				if ((page.items ?? []).some((x) => wiRe.test(`${x?.text ?? ""} ${x?.blackAfter ?? ""}`))) {
+					// a TABBED overview menu: its learning-intentions pane, wrappers removed, is the simplified lesson menu;
+					// an untabbed overview menu is already the simplified form and is repeated whole
+					const tabbed = ["tab1", "tab2"].some((k) => typeof menu[k] === "string" && menu[k].trim());
+					const paneRe = new RegExp(_wi.pane_pattern ?? "we are learning", "i");
+					const pane = tabbed ? paneKeys.map((k) => menu[k]).find((p) => typeof p === "string" && paneRe.test(p)) : null;
+					// the overview's own designer notes stay on the overview, never copied to every lesson
+					const noNotes = (s) => String(s).replace(/<p class="cv2-note"[^>]*>[\s\S]*?<\/p>\s*/g, "");
+					if (pane) run.overviewSameAll = { content: noNotes(pane).replace(/<\/?div\b[^>]*>/g, "").replace(/\n{2,}/g, "\n").trim() };
+					else if (!tabbed && paneKeys.some((k) => typeof menu[k] === "string" && paneRe.test(menu[k]))) {
+						run.overviewSameAll = JSON.parse(JSON.stringify(menu));
+						for (const k of paneKeys) if (typeof run.overviewSameAll[k] === "string") run.overviewSameAll[k] = noNotes(run.overviewSameAll[k]);
+					}
+				}
+			} else if (run.overviewSameAll && !paneKeys.some((k) => typeof menu[k] === "string" && menu[k].trim())) {
+				Object.assign(menu, JSON.parse(JSON.stringify(run.overviewSameAll)));
+				run.AddNote("info", "ContentConverter", `Page ${page.lessonLabel}: the writer says the overview is the same throughout the module — the overview's learning intentions fill the empty lesson menu (writer_instruction).`);
+			}
+		}
 
 		// KB constraint 23 / 01B: every learning / success LABEL in the module menu is an
 		// <h5> in the KB's form, a section title directly above a label is dropped on a lesson page, the overview tab's
@@ -5180,14 +5229,14 @@ class ContentConverter {
 		// #pageNumberNormalise runs OUTSIDE #cdTilePair and the dropbox / interactive
 		// post-passes: every consumer that reads a box's writer id (the tile pairing, the dropbox
 		// modifier) has run, so the page's consecutive numbering is settled last.
-		const bodyHtml = this.#boldMarkerResidue(this.#softBreakLead(this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
+		const bodyHtml = this.#titleIdEcho(this.#boldMarkerResidue(this.#softBreakLead(this.#stripCloserResidue(PanelsBuilder.fundamentalsPanels(
 			this.#journalPlaceholderFill(this.#pageNumberNormalise(this.#emptyActivityDrop(this.#freeDropboxBox(this.#introHeadingFullRow(this.#bareLinkUrlNote(this.#bareVideoUrlEmbed(this.#bareStockUrlImage(this.#summaryHeadingAlert(this.#journalInstructionBox(this.#dropNoteResidueBullets(this.#alertTitleHeading(this.#cdTilePair(ActivitiesBuilder.activityDropboxPostpass(ActivitiesBuilder.activityInteractivePostpass(this.#promoteNamedHeadings(
 				ActivitiesBuilder.activityTitleLevelPostpass(this.#relevelHeadings(body.filter(Boolean).join("\n")), run)))), tileRowTiles, run))), page, run), run), run), run), run), run), page, run), page, run), page, run), page, run),   // #journalPlaceholderFill, #emptyActivityDrop, #freeDropboxBox, #journalInstructionBox, #introHeadingFullRow, #summaryHeadingAlert, #bareStockUrlImage, #bareVideoUrlEmbed, #bareLinkUrlNote
 			{ on: fundPanelMode, sentinel: FUND_SENTINEL, lessonSentinel: FUND_LESSON_SENTINEL,
 				phaseTextSentinel: FUND_PHASETEXT_SENTINEL, run,
 				// the level-pages dialect's nav/tile labels + registry row
 				// (fundamentals_panels.level_pages; env LEVELPAGE_OFF)
-				levelRow: lvInfo?.row, levelLabels: lvInfo?.labels })), run), run);   // "run" is passed through for the newTabNav registry lookup
+				levelRow: lvInfo?.row, levelLabels: lvInfo?.labels })), run), run), run);   // "run" is passed through for the newTabNav registry lookup; #titleIdEcho runs outermost, after the numbering
 		// INQUIRY-mode wrapping also runs OUTERMOST: it turns the assembled body into
 		// "div.crumbs" + "div.inquiryPanel" elements at each "[Tab N]" sentinel position.
 		// inquiryActive then tells SkeletonBuilder whether to emit the inquiry page's body
@@ -9424,6 +9473,30 @@ class ContentConverter {
 		return out;
 	}
 
+	/** THE BOX'S TITLE DOES NOT REPEAT ITS NUMBER. «[activity box] 1A Ullis Email» ships box 1A titled «1A Ullis Email»; the
+	 *  gold drops the id from the title. Run after the page's numbering is settled: a box's FIRST heading, reached past only its
+	 *  row / column wrappers (within max_gap_chars), loses a leading token equal to the box's own number= when a title follows
+	 *  it. Data activity_wrapper.title_id_echo; env TITLEIDECHO_OFF. */
+	static #titleIdEcho(html, run) {
+		const cfg = DataService.Data.EmitTemplates.activity_wrapper?.title_id_echo;
+		if (!cfg || cfg.enabled === false || !html || !html.includes("number=")) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "TITLEIDECHO_OFF"]) return html;
+		const gap = Number(cfg.max_gap_chars ?? 400);
+		const esc = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+		let n = 0;
+		const out = html.replace(/(<div class="[^"]*\bactivity\b[^"]*"[^>]*\bnumber="([^"]+)"[^>]*>)((?:\s*<div class="(?:row|col-[^"]*)[^"]*">)*\s*)(<h([2-5])\b[^>]*>)(\s*)([\s\S]*?)(<\/h\5>)/g,
+			(whole, open, num, wrap, hOpen, _lvl, lead, inner, hClose) => {
+				if (wrap.length > gap) return whole;
+				const m = inner.match(new RegExp("^" + esc(num) + "\\s+(?=[^\\s<])", "i"));
+				if (!m || !inner.slice(m[0].length).replace(/<[^>]+>/g, "").trim()) return whole;
+				n++;
+				return open + wrap + hOpen + lead + inner.slice(m[0].length) + hClose;
+			});
+		if (n && run && typeof run.AddNote === "function")
+			run.AddNote("info", "ContentConverter", `${n} activity title${n > 1 ? "s" : ""} repeated the box's own number — the id dropped from the title (title_id_echo).`);
+		return out;
+	}
+
 	/** THE PARSED BOLD MARKER NEVER SHOWS. The parsed Writers Template marks bold as «**…**»; a bold run that held only what a
 	 *  builder lifted leaves the bare marker as the block («<h4>**</h4>»), and a bold run across a soft line break leaves one
 	 *  marker on each half («**roue» / «vous**»). Outside the un-built hand-off boxes a listed block whose text is only asterisks
@@ -10572,6 +10645,14 @@ class ContentConverter {
 			if (c.type !== "tag") continue;                               // prose, a blank line, a table = content
 			const p = c.parse?.primary;
 			if (!p) continue;                                             // an instruction / noise span
+			// the writer's PLAIN upload button (plain_button; env ACTDBXBTN_OFF) holds the box open like an upload-box bundle
+			const pb = cfg.plain_button;
+			if (pb && pb.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[pb.env ?? "ACTDBXBTN_OFF"])
+				&& p.directive === "ELEMENT" && /button/.test(p.tag ?? "")
+				&& new RegExp(pb.label_pattern ?? "^\\s*(?:upload|submit)\\b", "i").test(String(c.blackAfter ?? "").replace(/[*_]/g, ""))) {
+				for (const s of strays) s._dbxStrayCloser = true;
+				return true;
+			}
 			if (p.directive === "CONTAINER_CLOSE") {
 				if (p.tag === "end activity" || /\bactivity\b/i.test(p.tag ?? "")) return false;
 				strays.push(c); continue;                                 // the widget's own end tag
@@ -11035,7 +11116,21 @@ class ContentConverter {
 			&& (m._mtkQuizAnchor || lblRe.test(String(m.blackAfter ?? "").replace(/\*/g, "").replace(/\s+/g, " ").trim()));
 		const has = (m) => m && m.type === "tag" && (m.parse?.tags ?? []).some((t) => t.tag === "mtk quiz");
 		const kept = [];
-		const state = { phase: "run", kept: 0, frame: null, isOpener: true, titleTaken: true };
+		// lead mode: the title is already taken only when the box's opener supplies one (its black tail, a typed or
+		// embedded title, a carried title line); otherwise the next-line heading is the box's title
+		// (omit_quiz_content.lead_title_open; env MTKLEADTITLE_OFF)
+		let titleTaken = true;
+		const _lto = o.lead_title_open;
+		if (mode === "lead" && _lto && _lto.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_lto.env || "MTKLEADTITLE_OFF"])) {
+			const own = bundle.activityOwner;
+			const tail = String(own?.blackAfter ?? "").replace(/[*\s]+/g, "");
+			const tailIsId = !!(bundle._idFromTail && bundle.activityId && tail.toUpperCase() === String(bundle.activityId).toUpperCase());
+			titleTaken = (bundle._ownerTitleLines ?? []).length > 0 || !!own?._typedTitle
+				|| (!!tail && !tailIsId)
+				|| (!tailIsId && !!this.#embeddedOpenerTitle(own, DataService.Data.EmitTemplates));
+		}
+		const state = { phase: "run", kept: 0, frame: null, isOpener: true, titleTaken };
 		let ended = mode !== "lead";
 		for (const m of bundle.activityLeadItems) {
 			if (isQuizButton(m)) { if (mode === "lead") ended = true; continue; }
