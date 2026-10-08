@@ -1147,10 +1147,49 @@ class ListsAndRuns {
 		if (i < src.length) pieces.push({ live: true, s: src.slice(i) });
 		return pieces;
 		};
+		// THE MARK THAT LEADS A BLOCK. A p / li that OPENS with a lone sentence mark — «. These smell when they decompose…»
+		// (an accordion head lifted from «**Meat and fat**.»), «<b>: Capturing movement</b>» (a heading lifted from «**Give it a
+		// try**:»), «<b>.</b> It can be felt…» (the full stop of the paragraph before, split at a hover tag) — gives the mark
+		// to the p / li that closes right before it when that one ends in words without a mark of its own; after a heading,
+		// an accordion head, a closed question or nothing, the mark is dropped. The block keeps its words and an inline
+		// wrapper that still holds some. Data orphan_punctuation.leading; env ORPHANLEAD_OFF.
+		const ld = cfg.leading;
+		const ldOn = !!ld && ld.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[ld.env ?? "ORPHANLEAD_OFF"]);
+		const lels = (ld?.elements ?? ["p", "li"]).filter((t) => /^[a-z0-9]+$/.test(t));
+		const marks = String(ld?.marks ?? ".,;:!?").replace(/[\]\\^-]/g, "\\$&");
+		const leadOpenRe = new RegExp("<(" + lels.join("|") + ")(?:\\s[^>]*)?>", "g");
+		const leadRe = new RegExp("^(\\s*)(?:<(b|strong|i|em)>)?\\s*([" + marks + "])(\\s*</(?:b|strong|i|em)>)?(\\s+)(?=[^\\s<" + marks + "])", "u");
+		const prevTextRe = /(<\/(p|li)>)((?:\s*<\/(?:ul|ol)>)?\s*)$/;
+		const markEnd = new RegExp("[" + marks + "]\\s*(?:</(?:a|b|i|u|em|strong|span|sup|sub)>\\s*)*$", "u");
+		const leadFix = (s) => {
+			if (!ldOn || !lels.length) return s;
+			let out = "", last = 0, m;
+			leadOpenRe.lastIndex = 0;
+			while ((m = leadOpenRe.exec(s))) {
+				const at = m.index + m[0].length;
+				const mm = s.slice(at, at + 60).match(leadRe);
+				if (!mm) continue;
+				const wrapOpen = !!mm[2], wrapClosed = !!mm[4];
+				// the block without its mark: «<b>:</b> words» loses the emptied wrapper, «<b>: words</b>» keeps it
+				const keep = (wrapOpen && !wrapClosed) ? `${mm[1]}<${mm[2]}>` : mm[1];
+				let head = out + s.slice(last, at);
+				const before = head.slice(0, head.length - m[0].length);
+				const pm = before.match(prevTextRe);
+				if (pm) {
+					const body = before.slice(0, before.length - pm[0].length);
+					if (endsInText.test(body) && !markEnd.test(body)) head = body + mm[3] + pm[1] + pm[3] + m[0];
+				}
+				out = head + keep;
+				last = at + mm[0].length;
+				leadOpenRe.lastIndex = last;
+			}
+			return out + s.slice(last);
+		};
 		// inside a built widget only a DROP mark goes (a lone dash / bullet / slash — no wording): a sentence mark there may
 		// be the widget's own content (a flip card's «?» front) and stays; the widget's own hand-off boxes and notes are verbatim
-		const inWidget = (w) => carve(w, false).map((p) => (p.live ? fix(p.s, true) : p.s)).join("");
-		return carve(src, true).map((p) => (p.live ? fix(p.s) : (p.widget && ibwOn ? inWidget(p.s) : p.s))).join("");
+		const inWidget = (w) => carve(w, false).map((p) => (p.live ? leadFix(fix(p.s, true)) : p.s)).join("");
+		return carve(src, true).map((p) => (p.live ? leadFix(fix(p.s)) : (p.widget && ibwOn ? inWidget(p.s) : p.s))).join("");
 	};
 
 	/**

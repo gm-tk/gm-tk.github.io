@@ -291,8 +291,48 @@ class ActivitiesBuilder {
 			else leftover.push(word);
 		}
 		const flags = leftover.length >= 2
-			? [NotesAndComments.redFlag(`${it.parse.primary.tag} note: ${leftover.join(" ")}`, run, "cs")] : [];
+			? [NotesAndComments.redFlag(`${it.parse.primary.tag} note: ${this.#noteWords(it, leftover, map)}`, run, "cs")] : [];
 		return { modifiers, flags };
+	};
+
+	/**
+	 * THE WRITER'S WORDS OF THE TAG'S OWN BRACKET. The tag normaliser splits a bracket at every alias it finds, so a second
+	 * tag's alias inside the writer's sentence («[Alert box centre of page]» — «page»; «[typing quiz - self-marking the
+	 * quiz]» — «quiz») was missing from the per-tag remainders and the note read «alert note: centre of». The note's words
+	 * are the bracket holding the primary tag's alias, as typed, with that alias and the actioned modifier words removed — when
+	 * every leftover word is in it; otherwise the leftover words as before. The modifier classes are untouched.
+	 * Data red_flag.note_words_whole; env NOTEWORDS_OFF (= the leftover words alone).
+	 * @returns {string} the note's words
+	 */
+	static #noteWords(it, leftover, map) {
+		const plain = leftover.join(" ");
+		const c = DataService.Data.EmitTemplates.red_flag?.note_words_whole;
+		if (!c || c.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "NOTEWORDS_OFF"])) return plain;
+		const tags = it.parse?.tags ?? [];
+		const prim = tags.find((t) => t.tag === it.parse?.primary?.tag) ?? tags[0];
+		const alias = String(prim?.alias ?? "").trim();
+		if (!alias) return plain;
+		const esc = (a) => a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+		const wordRe = (a, g = "") => new RegExp(`(^|[^\\p{L}\\p{N}])${esc(a)}(?=$|[^\\p{L}\\p{N}])`, "iu" + g);
+		const aRe = wordRe(alias);
+		const text = String(it.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ");
+		const br = [...text.matchAll(/\[([^[\]]*)\]?/g)].map((m) => m[1]).find((b) => aRe.test(b));
+		if (br == null) return plain;
+		let own = br.replace(aRe, "$1");
+		for (const w of Object.keys(map ?? {})) if (typeof map[w] === "string" && w.trim()) own = own.replace(wordRe(w.trim(), "g"), "$1");
+		own = own.replace(/\s+/g, " ").replace(/^[\s:;,.\-–—]+/, "").trim();
+		const fold = own.toLowerCase();
+		if (!own || !leftover.every((w) => fold.includes(String(w).toLowerCase()))) return plain;
+		// only the words a second tag's alias took away come back: every word the bracket adds to the leftover must belong to
+		// such an alias found in it (an activity number, a capital, a colon — nothing else changes)
+		const words = (s) => String(s).toLowerCase().match(/[\p{L}\p{N}]+/gu) ?? [];
+		const have = new Set(words(plain));
+		const extra = words(own).filter((w) => !have.has(w));
+		if (!extra.length) return plain;
+		const aliasWords = new Set(tags.filter((t) => t !== prim).map((t) => String(t.alias ?? "").trim())
+			.filter((a) => a && wordRe(a).test(own)).flatMap(words));
+		return extra.every((w) => aliasWords.has(w)) ? own : plain;
 	};
 
 	/**

@@ -177,6 +177,15 @@ class InteractiveBuilder {
 				case "reorder":     // the table the writer typed in the correct order and said so (the KB 03F re-standard form)
 					html = this.#reorderTable({ bundle, tpl, renderInline });
 					break;
+				case "radioQuiz":   // the radio-quiz table whose answers the writer marked (the KB 03D COMP_02 form)
+					html = this.#radioQuizTable({ bundle, tpl, renderInline });
+					break;
+				case "unclassified":   // an [Activity] whose red request asks for timed flip cards over a table of words → the word grid
+					html = this.#flipWordGridRequested({ bundle, templates, renderInline });
+					break;
+				case "wordDrag":    // the words the learner hears and builds from letter tiles (the KB 03E wordDrag)
+					html = this.#wordDragList({ bundle, tpl });
+					break;
 				case "pathwaysPersona":   // the Pathways persona table → the KB 14A pathwaysPersona component
 					html = this.#pathwaysPersona({ bundle, tpl, renderInline, run });
 					break;
@@ -208,11 +217,17 @@ class InteractiveBuilder {
 						// the picture column sort (a header row of column names over stock-picture cells), where every other form declined
 						?? this.#dragAndDropImageColumn({ bundle, tpl, renderInline, run })
 						// the column sort typed as lines, each choice with its column in red brackets, where every other form declined
-						?? this.#dragAndDropBracketSort({ bundle, tpl, renderInline });
+						?? this.#dragAndDropBracketSort({ bundle, tpl, renderInline })
+						// the picture + audio table («Audio ║ Image ║ Correct answer»), where every other form declined
+						?? this.#dragAndDropAudioImages({ bundle, tpl, run });
+					// the words the learner hears and builds from letter tiles («[drop and drag]» + «[audio] … free, boat, seed»),
+					// where every other form declined — the KB wordDrag; it reads every member itself, so the members rule is skipped
+					let wordBuilt = false;
+					if (html === null) { html = this.#wordDragList({ bundle, tpl: templates?.wordDrag }); wordBuilt = html !== null; }
 					// a built widget REPLACES the whole captured bundle: the members rule keeps
 					// the bundle's OTHER members (prose around the table) or declines the build.
 					// (the FIB form placed every member itself — its black sentences ARE the widget — so it skips this)
-					if (html !== null && !bundle?.fillInBlank) html = this.#ddWithMembers({ bundle, tpl, html, renderBlock });
+					if (html !== null && !bundle?.fillInBlank && !wordBuilt) html = this.#ddWithMembers({ bundle, tpl, html, renderBlock });
 					// the bracket sort's answer key is the widget's, not a Writers Note: taken out once the build stands (and the
 					// developer's note about the answers it consumed becomes one)
 					if (html !== null && this.#DD_BRACKET_KEYS.has(bundle)) {
@@ -246,6 +261,8 @@ class InteractiveBuilder {
 			// so every member the build did not consume either renders around the widget (prose)
 			// or declines the build (never half-build). See #withMembers.
 			if (html) html = this.#withMembers({ bundle, type, html, renderBlock, renderImage, templates, track, run });
+			// a list the writer numbered in Word inside a table cell the widget built from is an <ol> (#cellNumberedLists)
+			if (html) html = this.#cellNumberedLists(bundle, html, templates, type);
 			// the words riding the invocation tag's OWN line that the build did not use become
 			// the red Writers Note after the widget (never lost, never guessed into learner prose).
 			if (html) this.#tagWordsNote({ bundle, html, templates });
@@ -260,6 +277,43 @@ class InteractiveBuilder {
 				`Could not build ${type} #${bundle.index} (${err.message}); left as a placeholder for manual build.`);
 			return null;
 		}
+	}
+
+	/**
+	 * THE WRITER'S NUMBERED LIST STAYS NUMBERED IN A WIDGET. The extractor reads a table cell's paragraphs without Word's
+	 * numbering map, so a numbered list in a cell reaches every widget builder as «• » bullets, and the flip-card faces,
+	 * carousel slides and panels it builds ship it as a <ul>; the table block records beside its rows the text of each
+	 * paragraph whose Word list is numbered (cellNumbered — the kept-table and layout-grid rules' source). After a widget
+	 * builds, a <ul> (with no list inside it) whose every item's words are one of the bundle's tables' numbered paragraphs
+	 * becomes an <ol> — what the second pass (#numberedCellSteps) cannot reach: a builder that does not read the typed «1. »
+	 * (a flip card's face) refuses that pass. Types the data excludes keep their bullets (a carousel's captions).
+	 * Data interactive_builders._cell_numbered_lists {enabled, env WIDGETNUMLIST_OFF, exclude_types}.
+	 */
+	static #cellNumberedLists(bundle, html, templates, type) {
+		const cfg = templates?._cell_numbered_lists;
+		if (!cfg || cfg.enabled === false || !html || !/<ul\b/.test(html)) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "WIDGETNUMLIST_OFF"]) return html;
+		if ((cfg.exclude_types ?? []).includes(type)) return html;
+		const fold = (s) => String(s ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ").replace(/<[^>]+>/g, " ")
+			.replace(/&[a-z#0-9]+;/gi, " ").replace(/^\s*[•·]\s*/, "").replace(/[*_]/g, "").replace(/\s+/g, " ").trim().toLowerCase();
+		const marker = DataService.Data.InputDocRules?.table_markers?.in_cell_line_break ?? " / ";
+		const nums = new Set();
+		for (const m of (bundle?.memberItems ?? [])) {
+			const all = m?.type === "table" ? m.block?.cellNumbered : null;
+			if (!Array.isArray(all)) continue;
+			for (const row of all) for (const cell of (Array.isArray(row) ? row : [])) for (const t of (Array.isArray(cell) ? cell : [])) {
+				const f = fold(t);
+				if (f) { nums.add(f); nums.add(fold(String(t).split(marker)[0])); }
+			}
+		}
+		if (!nums.size) return html;
+		return html.replace(/<ul>((?:(?!<\/?ul\b|<\/?ol\b)[\s\S])*?)<\/ul>/g, (all, inner) => {
+			const items = [...inner.matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/g)].map((x) => fold(x[1]));
+			// a one-item list is the writer numbering ACROSS cards («1. How was the treaty transported?» on each front) — every
+			// card would read «1.»; it keeps its bullet (min_items)
+			if (items.length < (cfg.min_items ?? 2) || !items.every((t) => t && nums.has(t))) return all;
+			return `<ol>${inner}</ol>`;
+		});
 	}
 
 	// =======================================================================
@@ -295,6 +349,11 @@ class InteractiveBuilder {
 		// normaliser matched is dropped where it sits at the edge of the bracket text, a broken bracket ("Carousel of
 		// images]", "[interactive: carousel + captions") is read the same way, and "interactive:" / "insert" prefixes go.
 		const aliases = (m0.parse?.tags ?? []).map((tg) => String(tg.alias ?? "").trim()).filter((a) => a.length >= 3);
+		// an alias at the bracket's END that follows a conjunction is the last item of the writer's own list («… speech bubble
+		// and audio») — it stays (red_flag.note_words_whole; env NOTEWORDS_OFF)
+		const nw = DataService.Data.EmitTemplates?.red_flag?.note_words_whole;
+		const conjRe = (nw && nw.enabled !== false && !(nw.env && env[nw.env]))
+			? new RegExp(nw.conjunction_end_pattern ?? "(?:^|\\s)(?:and|or|with|plus|&|\\+)\\s*$", "i") : null;
 		const trimAlias = (t) => {
 			let x = String(t ?? "").replace(/^\s*(?:interactive|insert)\s*[:\-\u2013]?\s*/i, "").trim();
 			let again = true;
@@ -303,7 +362,10 @@ class InteractiveBuilder {
 				for (const a of aliases) {
 					const re1 = new RegExp("^" + a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b[\\s:\\-\u2013+,]*", "i");
 					const re2 = new RegExp("[\\s:\\-\u2013+,]*\\b" + a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "$", "i");
-					const y = x.replace(re1, "").replace(re2, "").trim();
+					const x1 = x.replace(re1, "");
+					const m2 = x1.match(re2);
+					const keepEnd = !!(conjRe && m2 && conjRe.test(x1.slice(0, m2.index)));
+					const y = (keepEnd ? x1 : x1.replace(re2, "")).trim();
 					if (y !== x) { x = y; again = true; }
 				}
 			}
@@ -1485,6 +1547,146 @@ class InteractiveBuilder {
 	}
 
 	/**
+	 * wordDrag — THE WORDS THE LEARNER HEARS AND BUILDS (KB 03E «Word Drag»; data interactive_builders.wordDrag.word_list;
+	 * env WORDDRAG_OFF). The Blended Literacy writers author a letter-tile activity as a «[word drag]» or «[drop and drag]»
+	 * tag and an «[audio] <link>» line carrying the words the learner hears and builds — on the audio line itself, just
+	 * after it, or on the red line below it: «[audio] [LINK] free, boat, seed, goal, week, road». Each audio line with its
+	 * words is one KB wordDrag: one `.word` per word in the writer's order (`audioName` the word), the letter tiles every
+	 * letter the words need — each letter as often as one word needs it, in alphabetical order, and the sound every word
+	 * shares (a registry grapheme: «ai», «igh», «tch») as ONE tile — `wordLength` the longest word in tiles, layout
+	 * standardAudio (the words are heard). Several numbered tags («[drop and drag 1]» … «[drop and drag 3]») and
+	 * several audio lines in one capture build one widget per audio line, in order. A remark in brackets after the words
+	 * («(please note the double up of letters)») and the audio links ride as Writers Notes; a word line leaves the notes (it
+	 * is the widget). Declines on a table, a nested widget, black words on a tag line, an audio line with no words, a list
+	 * item that is not one word, a note that names the tiles themselves (a sound or a blend in one tile), or any other
+	 * member — the hand-off box keeps them.
+	 */
+	static #wordDragList({ bundle, tpl }) {
+		const cfg = tpl?.word_list;
+		if (!tpl || tpl.enabled === false || !cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "WORDDRAG_OFF"]) return null;
+		if ((bundle?.tables ?? []).length) return null;
+		const okTypes = cfg.types ?? ["wordDrag", "dragAndDrop"];
+		if (!okTypes.includes(bundle?.type) || (bundle?.extraTypes ?? []).some((t) => !okTypes.includes(t))) return null;
+		const members = [...(bundle?.openerItems ?? []), ...(bundle?.memberItems ?? [])];
+		const tagRe = new RegExp(cfg.invocation_pattern, "i");
+		const groups = [];
+		const usedNotes = [];
+		let invoked = false;
+		for (let k = 0; k < members.length; k++) {
+			const m = members[k];
+			if (!m || m.type !== "tag") return null;                                   // black prose, a table, a nested widget
+			const parse = m.parse, prim = parse?.primary;
+			const txt = String(m.text ?? "");
+			if (prim?.directive === "INTERACTIVE") {                                    // a «[word drag]» / «[drop and drag]» invocation
+				if (this.#wdPlain(m.blackAfter) || !tagRe.test(txt)) return null;
+				invoked = true;
+				continue;
+			}
+			if (String(prim?.tag ?? "").toLowerCase() === "audio") {                    // an audio line: its words ride on it, after it, or below it
+				if (!invoked) return null;
+				const own = this.#wdPlain(txt.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ").replace(/^\s*(?:\[[^\]]*\]\s*)+/, ""));
+				const after = this.#wdPlain(m.blackAfter);
+				if (own && after) return null;
+				groups.push({ list: own || after || null });
+				continue;
+			}
+			if (parse && (parse.class === "instruction" || parse.instructionFragment)) {  // a red line: an audio line's words, or a note
+				const g = groups[groups.length - 1];
+				if (g && g.list === null) { g.list = this.#wdPlain(txt); usedNotes.push(txt); }
+				continue;
+			}
+			return null;                                                                 // any other tag → not this shape
+		}
+		if (!invoked || !groups.length || InteractiveBuilder.WordDragTilesNamed(bundle, cfg)) return null;
+		const built = [];
+		for (const g of groups) {
+			const r = g.list ? InteractiveBuilder.WordDragWords(g.list, cfg) : null;
+			if (!r) return null;
+			built.push(r);
+		}
+		for (const m of members) void m.text;                                           // every member is the widget: read
+		// the audio lines' words ARE the widget: never re-shown as the capture's free request after it
+		bundle.realisedMembers = members.filter((m) => String(m.parse?.primary?.tag ?? "").toLowerCase() === "audio").map((m) => this.#peekMember(m));
+		// the notes: a word line leaves them; each remark and the audio links join them
+		const sp = (x) => this.#wdPlain(x);
+		const drop = new Set(usedNotes.map(sp));
+		let notes = (bundle.instructions ?? []).filter((x) => !drop.has(sp(x)));
+		const remarks = built.map((r) => r.remark).filter(Boolean);
+		notes = [...remarks.filter((x) => !notes.includes(x)), ...notes];
+		const urls = [...new Set((bundle?.media ?? []).map((x) => String(x?.target ?? x?.text ?? "")).filter((u) => /^https?:\/\//.test(u)))];
+		if (urls.length && cfg.audio_note) notes.push(Utils.FillTemplate(cfg.audio_note, { urls: urls.join(" ") }));
+		bundle.instructions = notes;
+		const out = [];
+		// the taught sound: when every word of a list holds the same grapheme of the phonics registry (the first in its order —
+		// the longer ones are listed first), that grapheme is ONE tile and wordLength counts tiles (word_list.sound_tile)
+		const st = cfg.sound_tile;
+		const stOn = !!st && st.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[st.env || "WORDDRAGSOUND_OFF"]);
+		for (const { words } of built) {
+			const sound = stOn ? (st.graphemes ?? []).find((g) => words.every((w) => w.toLowerCase().includes(g))) ?? null : null;
+			const gl = sound ? Array.from(sound) : null;
+			const tokens = (w) => {
+				const cp = Array.from(w), lo = cp.map((c) => c.toLowerCase()), toks = [];
+				for (let i = 0; i < cp.length;) {
+					if (gl && gl.every((c, k) => lo[i + k] === c)) { toks.push(cp.slice(i, i + gl.length).join("")); i += gl.length; continue; }
+					if (/\p{L}/u.test(cp[i])) toks.push(cp[i]);
+					i++;
+				}
+				return toks;
+			};
+			// the tiles: each letter (or the taught sound) as often as one word needs it
+			const need = new Map();
+			for (const w of words) {
+				const c = new Map();
+				for (const t of tokens(w)) c.set(t, (c.get(t) ?? 0) + 1);
+				for (const [t, n] of c) need.set(t, Math.max(need.get(t) ?? 0, n));
+			}
+			const tiles = [];
+			for (const ch of [...need.keys()].sort((a, b) => a.localeCompare(b, "en") || (a < b ? -1 : a > b ? 1 : 0))) for (let i = 0; i < need.get(ch); i++) tiles.push(ch);
+			const length = Math.max(...words.map((w) => tokens(w).length));
+			out.push(Utils.FillTemplate(tpl.open, {
+				layout: cfg.layout ?? "standardAudio",
+				letters: Utils.EscapeHtml(tiles.join(cfg.letter_joiner ?? "|")),
+				length,
+			}));
+			for (const w of words) out.push(Utils.FillTemplate(tpl.word, { word: Utils.EscapeHtml(w), name: Utils.EscapeHtml(w) }));
+			out.push(tpl.close);
+		}
+		return out.join("\n");
+	}
+
+	static #wdPlain(s) { return this.#cellText(String(s ?? "")).replace(/\*\*|__|✅/g, "").replace(/\s+/g, " ").trim(); }
+
+	static WordDragTilesNamed(bundle, cfg) {
+		// the writer names the tiles themselves («‘ir’, ‘sh’ and ‘th’ will all be in one tile each», «each consonant blend
+		// counts as one sound and should go into one box»): one tile per letter would go against them (tiles_note_pattern)
+		if (!cfg?.tiles_note_pattern) return false;
+		const re = new RegExp(cfg.tiles_note_pattern, "i");
+		const notes = [...(bundle?.instructions ?? []),
+			...(bundle?.memberItems ?? []).filter((m) => m?.type === "tag" && (m.parse?.class === "instruction" || m.parse?.instructionFragment)).map((m) => m.text)];
+		return notes.some((t) => re.test(this.#wdPlain(t)));
+	}
+
+	/**
+	 * The words of a word-building drag's audio line («snail, paint, trail, stain, faint, train», «this, that, them, than
+	 * (please note the double up of letters)»): { words, remark } — the comma-separated one-word items in the writer's order
+	 * and the bracketed remark after them — or null when the text is not such a list (data interactive_builders.wordDrag.
+	 * word_list: word_pattern, remark_pattern, min_words / max_words). Shared by the builder and the scanner's trailing-audio
+	 * rule, so the two agree on what an audio line's word list is.
+	 */
+	static WordDragWords(text, cfg) {
+		let list = this.#wdPlain(String(text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " "));
+		if (!list || !cfg) return null;
+		let remark = null;
+		const rm = new RegExp(cfg.remark_pattern ?? "^(.*?)\\s*\\(([^()]+)\\)\\s*$", "u").exec(list);
+		if (rm) { list = rm[1]; remark = rm[2].trim(); }
+		const wordRe = new RegExp(cfg.word_pattern ?? "^[\\p{L}'’-]{1,16}$", "u");
+		const words = list.replace(/[\s.,;]+$/, "").split(/\s*,\s*/).map((w) => w.trim());
+		if (words.length < (cfg.min_words ?? 2) || words.length > (cfg.max_words ?? 12) || words.some((w) => !wordRe.test(w))) return null;
+		return { words, remark };
+	}
+
+	/**
 	 * The KB 03B button row on EVERY built standard dragAndDrop — "Reset / Undo hidden / Check answers hidden", 03B's
 	 * own form (the gold carries it on almost every standard D&D; levels 1 and 3 agree). Data
 	 * interactive_builders.dragAndDrop.button_row {enabled, env DDBUTTONS_OFF, close_inner, html, close_outer}; OFF → the
@@ -1614,6 +1816,86 @@ class InteractiveBuilder {
 			const seen = new Set(bundle.instructions ?? []);
 			bundle.instructions = [...(bundle.instructions ?? [])];
 			for (const n of notes) if (!seen.has(n)) { bundle.instructions.push(n); seen.add(n); }
+		}
+		return out.join("\n");
+	}
+
+	/**
+	 * dragAndDrop — THE PICTURE + AUDIO DRAG (data interactive_builders.dragAndDrop.audio_image_word; env DDAUDIOIMG_OFF).
+	 * The Blended Literacy writers type a «[drag and drop]» table «Audio ║ Image ║ Correct answer»: each row the word's
+	 * audio («[wrist] [LINK: …]», or nothing where the header carries the audio folder), a stock picture, and the answer word
+	 * in red or bold. The gold builds the standard layout with an audio column: a `col-1 questionContainer` of `blank`s each
+	 * holding the word's `audioButton`, a `col-3 questionContainer` of the pictures, and the `col-7 ddContainer` with one drop
+	 * per row and the answer words as the drags (option = the row), then the KB button row; `autoCheck` only where the writer's
+	 * tag says «auto check». The audio links ride as one Writers Note. Declines on a second table, a header that does not name
+	 * the three columns, a row without exactly one picture, an answer that is not one to three words, or a repeated answer.
+	 */
+	static #dragAndDropAudioImages({ bundle, tpl, run }) {
+		const cfg = tpl?.audio_image_word, icfg = tpl?.images;
+		if (!cfg || cfg.enabled === false || !icfg) return null;
+		if (typeof process !== "undefined" && process.env && process.env.DRAGDROP_OFF) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "DDAUDIOIMG_OFF"]) return null;
+		if (bundle?.extraTypes?.length) return null;
+		const tables = bundle?.tables ?? [];
+		if (tables.length !== 1) return null;
+		const rows = (tables[0].rows ?? []).filter((r) => Array.isArray(r));
+		if (rows.length < 1 + (tpl.min_rows ?? 2) || rows.length > 1 + (cfg.max_rows ?? 12)) return null;
+		const plain = (c) => this.#cellText(String(c ?? "")).replace(/\*\*|__|✅/g, "").replace(/\s+/g, " ").trim();
+		// the header names the three columns
+		const head = rows[0].map((c) => plain(String(c ?? "").replace(/\[LINK:[^\]]*\]/g, " ")));
+		const col = (re) => head.findIndex((h) => new RegExp(re, "i").test(h));
+		const ia = col(cfg.audio_header_pattern), ii = col(cfg.image_header_pattern), iw = col(cfg.answer_header_pattern);
+		if (ia < 0 || ii < 0 || iw < 0 || new Set([ia, ii, iw]).size !== 3 || rows.some((r) => r.length !== head.length)) return null;
+		const urlsOf = (c) => [...String(c ?? "").matchAll(/\[LINK:\s*(https?:\/\/[^\]\s]+)\s*\]/g)].map((m) => m[1]);
+		// the audio links: the table's links whose own words are not an address («[wrist]» → its drive file, «Audio» → the folder)
+		const audioUrls = [...urlsOf(rows[0][ia]), ...(tables[0].links ?? [])
+			.filter((l) => l && /^https?:\/\//.test(String(l.target ?? "")) && !/^\s*https?:\/\//.test(String(l.text ?? "")))
+			.map((l) => String(l.target))];
+		const wordRe = new RegExp(cfg.answer_pattern ?? "^[\\p{L}'’-]+(?: [\\p{L}'’-]+){0,2}$", "u");
+		const items = [];
+		for (const r of rows.slice(1)) {
+			const url = this.#cellMediaUrl(r[ii]);
+			if (!url) return null;
+			const residual = String(r[ii] ?? "").replace(/\u{1f534}\[RED TEXT\][\s\S]*?\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\[[^\]]*\]/g, "")
+				.replace(/https?:\/\/\S+/g, "").replace(/[*_/|–—\-\[\]]/g, " ").trim();
+			if (residual) return null;                                               // prose rode along with the picture → too rich
+			const word = plain(r[iw]).replace(/[.]$/, "");
+			if (!word || !wordRe.test(word)) return null;
+			const said = plain(String(r[ia] ?? "").replace(/\[LINK:[^\]]*\]/g, " "));
+			const named = /^\[?\s*([\p{L}'’ -]{1,30}?)\s*\]?$/u.exec(said)?.[1] ?? null;
+			if (said && !named) return null;                                          // the audio cell holds more than the word's name
+			audioUrls.push(...urlsOf(r[ia]));
+			// a stock picture's own id names the file («media.istockphoto.com/id/903479832/…» → iStock-903479832.jpg; the
+			// shutterstock photo number likewise), else the shared naming
+			let filename = null;
+			for (const fp of cfg.filename_patterns ?? []) {
+				const fm = new RegExp(fp.pattern, "i").exec(url);
+				if (fm) { filename = Utils.FillTemplate(fp.filename, { id: fm[1] }); break; }
+			}
+			filename = filename ?? this.#accImageFilename(url, icfg, icfg);
+			if (!filename) return null;
+			items.push({ word, audio: named || word.toLowerCase(), label: word, url, filename });
+		}
+		if (new Set(items.map((x) => x.word.toLowerCase())).size !== items.length) return null;   // a repeated answer: an ambiguous key
+		const opener = (bundle?.memberItems ?? []).map((m) => this.#peekMember(m)).find((m) => m?.type === "tag" && m.parse?.primary?.directive === "INTERACTIVE");
+		const auto = cfg.auto_check_pattern && new RegExp(cfg.auto_check_pattern, "i").test(String(opener?.text ?? "")) ? (cfg.auto_check_class ?? " autoCheck") : "";
+		const code = String(run?.moduleCode ?? "");
+		const out = [Utils.FillTemplate(cfg.open, { auto })];
+		for (const it of items) out.push(Utils.FillTemplate(cfg.blank, { name: Utils.EscapeHtml(Utils.FillTemplate(cfg.audio_name ?? "{code}_{word}", { code, word: it.audio })) }));
+		out.push(cfg.mid_questions);
+		for (const it of items) out.push(Utils.FillTemplate(cfg.question, { image: this.#ddImage(it, icfg, run) }));
+		out.push(cfg.mid_drops);
+		for (let i = 0; i < items.length; i++) out.push(Utils.FillTemplate(tpl.drop, { n: i + 1 }));
+		out.push(tpl.drag_open);
+		for (let i = 0; i < items.length; i++) out.push(Utils.FillTemplate(cfg.drag, { n: i + 1, word: Utils.EscapeHtml(items[i].word) }));
+		// the KB 03B «With autoCheck» row is Reset alone (the widget checks itself); otherwise the standard row
+		const br = tpl?.button_row;
+		if (auto && cfg.auto_check_buttons && br && br.enabled !== false) out.push(br.close_inner, cfg.auto_check_buttons, br.close_outer ?? "</div>");
+		else out.push(...this.#ddClose(tpl));
+		const urls = [...new Set(audioUrls)];
+		if (urls.length && cfg.audio_note) {
+			const n = Utils.FillTemplate(cfg.audio_note, { urls: urls.join(" ") });
+			if (!(bundle.instructions ?? []).includes(n)) bundle.instructions = [...(bundle.instructions ?? []), n];
 		}
 		return out.join("\n");
 	}
@@ -5592,8 +5874,12 @@ class InteractiveBuilder {
 				].join("\n"));
 			} else {
 				// an image-less bubble in an OS / TEDC bundle that names no picture takes the
-				// placeholder-character avatar form (#sbPlaceholder; env SBPLACEHOLDER_OFF)
-				const ph = this.#sbPlaceholder(bundle, tpl, run);
+				// placeholder-character avatar form (#sbPlaceholder; env SBPLACEHOLDER_OFF); the WJ cohort's Kea bubble
+				// takes the character form first (text_only.kea_character, its reach here kea_character.rich; env SBKEARICH_OFF)
+				const kr = tpl?.text_only?.kea_character?.rich;
+				const keaRich = !!kr && kr.enabled !== false
+					&& !(typeof process !== "undefined" && process.env && process.env[kr.env ?? "SBKEARICH_OFF"]);
+				const ph = (keaRich ? this.#sbKea(bundle, tpl, run) : null) ?? this.#sbPlaceholder(bundle, tpl, run);
 				if (ph) phUsed = ph;
 				out.push([
 					Utils.FillTemplate(to.open ?? tpl.open, { layout: b.thought ? (to.layout_thought ?? "thought") : (tpl.layout_attr ?? "speech") }),
@@ -6026,7 +6312,7 @@ class InteractiveBuilder {
 	 * timed flip, in the reading-font grid (BLL240 / BLL250 / BLL260 gold). A red run, a tag, a link, a slash or a cell that
 	 * reads as a sentence keeps the hand-off box; so do fewer than min_cards words.
 	 */
-	static #flipWordGrid({ bundle, tpl, renderInline }) {
+	static #flipWordGrid({ bundle, tpl, renderInline, requestText = "", allowRepeat = false }) {
 		const wg = tpl?.word_grid;
 		if (!wg || wg.enabled === false) return null;
 		if (typeof process !== "undefined" && process.env && process.env[wg.env || "FLIPWORDGRID_OFF"]) return null;
@@ -6036,11 +6322,12 @@ class InteractiveBuilder {
 		// a writer request this plain grid cannot honour — the cards coloured by sound, an audio card (BLL230: «Can we please
 		// colour the inside of the flipcards so they can differentiate …») — keeps the box (decline_request_pattern; the
 		// requests are PEEKED: reading a member would mark it consumed)
-		if (wg.decline_request_pattern) {
-			const said = [String(bundle?.modifier ?? ""), String(bundle?.prevItemText ?? ""), ...(bundle?.instructions ?? []),
-				...(bundle?.memberItems ?? []).filter((m) => m && m.type === "tag").map((m) => { const r = this.#peekMember(m); return `${r?.text ?? ""} ${r?.blackAfter ?? ""}`; })].join(" ");
-			if (new RegExp(wg.decline_request_pattern, "i").test(said)) return null;
-		}
+		const said = [String(bundle?.modifier ?? ""), String(bundle?.prevItemText ?? ""), ...(bundle?.instructions ?? []),
+			...(bundle?.memberItems ?? []).filter((m) => m && m.type === "tag").map((m) => { const r = this.#peekMember(m); return `${r?.text ?? ""} ${r?.blackAfter ?? ""}`; }),
+			String(requestText ?? "")].join(" ");
+		if (wg.decline_request_pattern && new RegExp(wg.decline_request_pattern, "i").test(said)) return null;
+		// the cards flip back after the seconds the writer names («… flip cards that open for 3 seconds …»; word_grid.requested)
+		const ms = this.#flipRequestMs(wg, said) ?? wg.default_ms ?? 5000;
 		const maxW = wg.max_words ?? 2;
 		const faceRe = wg.face_label_pattern ? new RegExp(wg.face_label_pattern, "i") : null;
 		const cards = [];
@@ -6057,9 +6344,44 @@ class InteractiveBuilder {
 			}
 		}
 		if (cards.length < (wg.min_cards ?? 4)) return null;
-		if (new Set(cards.map((w) => w.toLowerCase())).size !== cards.length) return null;   // a repeated word: not a word list
+		// a repeated word: not a word list — unless the writer asked for flip cards over this very table (word_grid.requested)
+		if (!allowRepeat && new Set(cards.map((w) => w.toLowerCase())).size !== cards.length) return null;
 		const inline = renderInline ?? ((s) => s);
-		return [wg.open, ...cards.map((w, k) => Utils.FillTemplate(wg.card, { n: k + 1, word: inline(w) })), wg.close].join("\n");
+		return [wg.open, ...cards.map((w, k) => Utils.FillTemplate(wg.card, { n: k + 1, word: inline(w), ms })), wg.close].join("\n");
+	}
+
+	/** The milliseconds a timed-flip request names («… flip cards that open for 3 seconds …» → 3000), or null (none named, or
+	 *  word_grid.requested off). */
+	static #flipRequestMs(wg, said) {
+		const rq = wg?.requested;
+		if (!rq || rq.enabled === false || !rq.request_pattern) return null;
+		if (typeof process !== "undefined" && process.env && process.env[rq.env || "FLIPTIMEDREQ_OFF"]) return null;
+		const m = new RegExp(rq.request_pattern, "i").exec(String(said ?? "").replace(/\s+/g, " "));
+		if (!m) return null;
+		const n = /^\d+$/.test(m[1]) ? +m[1] : (rq.number_words ?? {})[String(m[1]).toLowerCase()];
+		return n > 0 && n <= (rq.max_seconds ?? 30) ? n * 1000 : null;
+	}
+
+	/**
+	 * THE TIMED FLIP CARDS THE WRITER ASKS FOR (data interactive_builders.flipCard.word_grid.requested; env FLIPTIMEDREQ_OFF).
+	 * The Blended Literacy writers often type no widget tag: an [Activity] «Write the words» whose red request «Can we create
+	 * flip cards that open for 3 seconds and then flip back again?» sits over a table of words is captured unclassified and
+	 * stayed a hand-off box. Where a red line of the activity's lead (or a capture note) carries that request and the
+	 * capture holds the table alone, it is read as the flipCard word grid — the grid's own declines kept (a colour, audio or
+	 * picture request; a cell that is not a word) — and the cards flip back after the seconds the writer names.
+	 */
+	static #flipWordGridRequested({ bundle, templates, renderInline }) {
+		const tpl = templates?.flipCard, rq = tpl?.word_grid?.requested;
+		if (!rq || rq.enabled === false || !rq.request_pattern) return null;
+		if (typeof process !== "undefined" && process.env && process.env[rq.env || "FLIPTIMEDREQ_OFF"]) return null;
+		const members = bundle?.memberItems ?? [];
+		if (!members.length || members.some((m) => !m || m.type !== "table")) return null;
+		const red = (bundle?.activityLeadItems ?? []).filter((x) => x && (x.parse?.class === "instruction" || x.parse?.instructionFragment))
+			.map((x) => `${x.text ?? ""} ${x.blackAfter ?? ""}`);
+		const said = [...red, ...(bundle?.instructions ?? [])].join(" ").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ").replace(/\s+/g, " ");
+		if (!new RegExp(rq.request_pattern, "i").test(said)) return null;
+		for (const m of members) void m.block;                                          // the table is the widget: read
+		return this.#flipWordGrid({ bundle, tpl, renderInline, requestText: said, allowRepeat: true });
 	}
 
 	/** The flipCard readings before the word grid: the dialects, then the composer, under the text guard. */
@@ -7597,6 +7919,17 @@ class InteractiveBuilder {
 						if (nt && /^https?:\/\/\S+$/.test(nt)) { url = this.#cellMediaUrl(nt); if (url) i++; }
 					}
 					part.imgUrl = url;
+					// the picture named as ANOTHER module's («[Modal 1 Image] same image from BLL110») — the set's trigger is a
+					// placeholder named for it and one note per widget names the reference (modal.image_reference; env MODALIMGREF_OFF)
+					const ir = cfg.image_reference;
+					if (!url && ir && ir.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[ir.env ?? "MODALIMGREF_OFF"])) {
+						const rm = `${own} ${text}`.match(new RegExp(ir.pattern, "i"));
+						if (rm) {
+							part.imgRef = rm[1].toUpperCase();
+							const note = Utils.FillTemplate(ir.note, { code: part.imgRef });
+							if (!notes.includes(note)) notes.push(note);
+						}
+					}
 				}
 				parts.push(part);
 				continue;
@@ -7817,6 +8150,10 @@ class InteractiveBuilder {
 							const fn = this.#accImageFilename(p.imgUrl, cfg, cfg);
 							if (!fn) return null;
 							cur.filename = cur.filename ?? fn;
+						} else if (p.imgRef && cfg.image_reference?.filename) {
+							// another module's picture: a placeholder trigger named for the reference (the note says which)
+							cur.filename = cur.filename ?? Utils.FillTemplate(cfg.image_reference.filename,
+								{ code: p.imgRef.toLowerCase(), n: String(p.num ?? sets.length) });
 						}
 						// an image sub-tag with no URL is an asset request; the set falls back
 						// to its text label (and declines below if it has neither)
@@ -10048,7 +10385,7 @@ class InteractiveBuilder {
 		// branch below, unchanged. Data carousel.media_table; env
 		// CARMEDTBL_OFF.
 		if (tables.length === 1) {
-			const mt = this.#carouselMediaTable({ bundle, tpl, renderInline, run });
+			const mt = this.#carouselMediaTable({ bundle, tpl, renderInline, run, renderBlock });
 			if (mt !== null) return mt;
 		}
 
@@ -11579,7 +11916,7 @@ class InteractiveBuilder {
 	 *
 	 * Data: carousel.media_table. Env toggle: CARMEDTBL_OFF.
 	 */
-	static #carouselMediaTable({ bundle, tpl, renderInline, run }) {
+	static #carouselMediaTable({ bundle, tpl, renderInline, run, renderBlock }) {
 		const cfg = tpl.media_table;
 		if (!cfg || cfg.enabled === false) return null;
 		if (typeof process !== "undefined" && process.env && process.env.CARMEDTBL_OFF) return null;
@@ -11636,7 +11973,55 @@ class InteractiveBuilder {
 		const trailing = this.#carouselTrailingBody(bundle, inline, tpl);
 		if (trailing === null) return null;
 
-		return [tpl.open, ...slides, tpl.close, ...trailing].join("\n");
+		// the writer's lead-in before the slide table (#carMediaTableLead) renders before the carousel
+		const lead = this.#carMediaTableLead(bundle, cfg.lead, renderBlock);
+
+		return [...lead, tpl.open, ...slides, tpl.close, ...trailing].join("\n");
+	}
+
+	/**
+	 * THE MEDIA-TABLE SLIDESHOW'S LEAD-IN. The media-table build reads the slide table alone, so the learner line the
+	 * writer types before it — on the invocation's own line («[slideshow] Click to see image and video on Chinese
+	 * Zodiac.») or as a [body] / black paragraph between the invocation and the table — never reached the page: the
+	 * invocation's words became the tag-words Writers Note and a [body] line was dropped. The gold ships each as a plain
+	 * paragraph right before the carousel. Each such member renders through the free-body block emitter, in document
+	 * order (the table_slides members rule's «before» half). Blank lines and instruction-class tags (already notes) are
+	 * skipped. Anything else before the table — a heading, a picture, another tag, words opening with a note cue
+	 * (note_cue_pattern) or carrying red text — leaves the lead empty, so the build is unchanged.
+	 * Data carousel.media_table.lead {enabled, env CARMEDLEAD_OFF, note_cue_pattern}; OFF = no lead.
+	 *
+	 * @returns {string[]} the lead's rendered blocks (possibly empty)
+	 */
+	static #carMediaTableLead(bundle, cfg, renderBlock) {
+		if (!cfg || cfg.enabled === false || typeof renderBlock !== "function") return [];
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "CARMEDLEAD_OFF"]) return [];
+		const members = bundle?.memberItems ?? [];
+		const firstT = members.findIndex((m) => m && m.type === "table");
+		if (firstT <= 0) return [];
+		const noteRe = new RegExp(cfg.note_cue_pattern ?? "^(?:cs|dev|developer|designer|note|nb)\\s*[:\\-–—]", "i");
+		const out = [];
+		const take = (raw) => {
+			const words = this.#cellText(raw ?? "").trim();
+			if (!words) return true;
+			if (noteRe.test(words) || this.#hasRedText(raw)) return false;
+			const r = renderBlock(raw);
+			if (!r || (Array.isArray(r) && !r.length)) return false;
+			out.push(...(Array.isArray(r) ? r : [r]));
+			return true;
+		};
+		for (let i = 0; i < firstT; i++) {
+			const m = members[i];
+			if (!m) continue;
+			if (m.type === "black") { if (!take(m.text)) return []; continue; }
+			if (m.type !== "tag") return [];
+			const parse = m.parse, prim = parse?.primary;
+			if (parse && !prim && (parse.class === "instruction" || parse.instructionFragment)) continue;
+			const own = i === 0 && prim?.directive === "INTERACTIVE";
+			const body = String(prim?.tag ?? "").toLowerCase() === "body";
+			if (!own && !body) return [];
+			if (!take(m.blackAfter)) return [];
+		}
+		return out;
 	}
 
 	/**
@@ -12290,6 +12675,12 @@ class InteractiveBuilder {
 		const byNum = new Map();
 		const lead = [];
 		let cur = null;
+		// THE PICTURE IS THE TRIGGER (general_items.image_trigger; env CDIMGTRIGGER_OFF): an item with no label whose image
+		// sub-tag carries its picture takes it as the button's face, as the gold's image click-drops do
+		const it = cfg?.image_trigger;
+		const itOn = !!it && it.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[it.env ?? "CDIMGTRIGGER_OFF"]);
+		const refNotes = [];
 		const openSlot = (n) => {
 			if (n && byNum.has(n)) return byNum.get(n);
 			const s = { label: null, parts: [], notes: [] };
@@ -12312,6 +12703,18 @@ class InteractiveBuilder {
 					cur = byNum.get(n);
 				}
 				const txt = String(p.text ?? "").trim();
+				// another module's picture named inside the image sub-tag's own bracket («[Clickdrop 1 Image] same image from
+				// BLL110») — the item's trigger when it has no label (image_trigger.reference_pattern); one note per widget
+				if (kind === "img" && itOn && it.reference_pattern && !this.#cellMediaUrl(p.raw) && !this.#cellMediaUrl(txt)) {
+					const rm = `${p.raw ?? ""} ${txt}`.match(new RegExp(it.reference_pattern, "i"));
+					if (rm) {
+						const code = rm[1].toUpperCase();
+						cur.trigImg = cur.trigImg ?? Utils.FillTemplate(it.reference_filename, { code: code.toLowerCase(), n: String(n || slots.length) });
+						const note = Utils.FillTemplate(it.reference_note, { code });
+						if (!refNotes.includes(note)) refNotes.push(note);
+						continue;
+					}
+				}
 				if (!txt) continue;
 				if (kind === "label") {
 					const lab = this.#cdLabel(txt, cfg);
@@ -12328,7 +12731,10 @@ class InteractiveBuilder {
 					if (vm) { cur.parts.push({ role: "video", id: vm[1] }); continue; }
 					const fn = this.#accImageFilename(url, tpl, cfg);
 					if (!fn) return null;
-					cur.parts.push({ role: "img", filename: fn });
+					const part = { role: "img", filename: fn };
+					cur.parts.push(part);
+					// an addressed picture as the trigger too, where the data allows it (image_trigger.url_images)
+					if (kind === "img" && itOn && it.url_images === true && !cur.trigPart && !cur.parts.some((q) => q !== part && this.#cdIsProse(q))) cur.trigPart = part;
 					continue;
 				}
 				// TEXT-family: the payload is the item's own panel prose — and, on an
@@ -12396,6 +12802,13 @@ class InteractiveBuilder {
 				// a heading that arrives after the item's own content names the next
 				// section (the OSAH401 rule above).
 				const i = this.#cdOpeningHead(s.parts);
+				if (i < 0 && itOn && (s.trigImg || s.trigPart)) {
+					// no label, but the item's own picture: the picture is the trigger (image_trigger)
+					if (s.trigPart) s.parts.splice(s.parts.indexOf(s.trigPart), 1);
+					list.push({ label: null, labelImg: s.trigPart ? s.trigPart.filename : s.trigImg, parts: s.parts,
+						notes: s.notes });
+					continue;
+				}
 				if (i < 0) return null;
 				const lab = this.#cdLabel(s.parts[i].text, cfg);
 				if (!lab) return null;
@@ -12405,6 +12818,8 @@ class InteractiveBuilder {
 			}
 			list.push({ label: s.label, parts: s.parts, notes: s.notes });
 		}
+		// the reference note once per widget, on its first item (it surfaces on a successful build)
+		if (refNotes.length && list.length) list[0].notes = [...(list[0].notes ?? []), ...refNotes];
 		return { list, lead };
 	}
 
@@ -15542,6 +15957,119 @@ class InteractiveBuilder {
 		const cols = tpl.pair_columns ?? [];
 		if (cols.length < recs.length) return null;
 		return `<div class="row">\n${recs.map((r, k) => `<div class="${cols[k]}">\n<div class="row">\n${persona(r)}\n</div>${alert(r)}\n</div>`).join("\n")}\n</div>`;
+	}
+
+	/* ================================================================== *
+	 *  THE RADIO QUIZ — the marked TABLE form
+	 * ================================================================== */
+	/**
+	 * THE RADIO-QUIZ TABLE WHOSE ANSWERS THE WRITER MARKED (data interactive_builders.radioQuiz.table_form; env RADIOTABLE_OFF).
+	 * One captured table, two forms (an answer only where the writer marked it — every data row carries its mark):
+	 *   (A) a label row over three columns, a statement column and two option columns («Scenario ║ Formal ║ Informal»,
+	 *       «T ║ F ║ Question»), each data row holding a mark (mark_pattern: a pasted tick picture, a red «tick», ✅ …) in
+	 *       exactly one option cell, the other empty;
+	 *   (B) two columns, the statement and its answer — one of two values (true_words / false_words, or the two options a
+	 *       label row names: «True / False», «[Options: Open Closed]»), with or without the label row.
+	 * The KB 03D form: `radioQuiz` + the autoCheck comment, a `row headings` (the two option labels as p.true / p.false and the
+	 * statement label as p.description), one `radioButtons answer="true|false"` row per statement (true = the first option),
+	 * the Reset / Check row. The statements keep the writer's words and inline marks. Never half-built: a merged type, media, a
+	 * picture or address in a statement, any other red word, a row without its single mark, a ragged table → the hand-off box.
+	 */
+	static #radioQuizTable({ bundle, tpl, renderInline }) {
+		const tf = tpl?.table_form;
+		if (!tf || tf.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[tf.env || "RADIOTABLE_OFF"]) return null;
+		if (bundle?.extraTypes?.some((t) => t !== bundle.type) || (bundle?.media ?? []).length) return null;
+		const tables = bundle?.tables ?? [];
+		if (tables.length !== 1) return null;
+		const inline = renderInline ?? ((s) => s);
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const markRe = new RegExp(tf.mark_pattern, "iu");
+		const unred = (c) => String(c ?? "").replace(RED, "$1");
+		const plain = (c) => unred(c).replace(/\*\*|__/g, "").replace(/\s+/g, " ").trim();
+		const rows = (tables[0].rows ?? []).filter((r) => Array.isArray(r) && r.some((c) => plain(c)));
+		if (!rows.length) return null;
+		const width = rows[0].length;
+		if (rows.some((r) => r.length !== width) || (width !== 2 && width !== 3)) return null;
+		const isMark = (c) => !!plain(c) && markRe.test(plain(c));
+		const denyRe = new RegExp(tf.deny_cell_pattern ?? "https?://|www\\.|\\[\\s*(?:image|video|audio|picture|photo)\\b", "i");
+		// a statement: black words only (a red span is a request this form cannot place) — but the red letters glued to the
+		// front of a word are its own letters («[red T]own where you live», glued_red_letters_pattern)
+		const glueRe = tf.glued_red_letters_pattern ? new RegExp(tf.glued_red_letters_pattern, "gu") : null;
+		const statement = (c) => {
+			let s = String(c ?? "");
+			if (glueRe) s = s.replace(glueRe, "$1");
+			if (denyRe.test(s) || [...s.matchAll(RED)].some((m) => m[1].trim())) return null;
+			const t = s.replace(/\s+/g, " ").trim();
+			return t ? t : null;
+		};
+		const wordsOf = (c) => plain(c).replace(/[.:;!?]+$/, "").trim();
+		const tWords = new Set((tf.true_words ?? ["true"]).map((w) => w.toLowerCase()));
+		const fWords = new Set((tf.false_words ?? ["false"]).map((w) => w.toLowerCase()));
+		let labels = null, desc = "", items = [];
+		if (width === 3) {
+			// (A) the label row, then the statement column: the one column every data row fills with words that are not a mark
+			const head = rows[0], data = rows.slice(1);
+			if (data.length < (tf.min_rows ?? 2) || head.some((c) => isMark(c))) return null;
+			const sc = [0, 1, 2].filter((j) => data.every((r) => plain(r[j]) && !isMark(r[j])));
+			if (sc.length !== 1) return null;
+			const s = sc[0], opts = [0, 1, 2].filter((j) => j !== s);
+			if (opts.some((j) => !wordsOf(head[j]))) return null;
+			labels = opts.map((j) => wordsOf(head[j]));
+			desc = wordsOf(head[s]);
+			for (const r of data) {
+				const marks = opts.map((j) => isMark(r[j]));
+				if (marks.filter(Boolean).length !== 1 || opts.some((j, k) => !marks[k] && plain(r[j]))) return null;
+				const text = statement(r[s]);
+				if (!text) return null;
+				items.push({ text, answer: marks[0] ? "true" : "false" });
+			}
+		} else {
+			// (B) statement ║ answer, the label row optional
+			const optRe = new RegExp(tf.options_label_pattern ?? "^\\[?\\s*options?\\s*:\\s*(.+?)\\s*\\]?$", "i");
+			const answerWord = (c) => wordsOf(c).toLowerCase();
+			let data = rows, named = null;
+			const r0 = rows[0], a0 = answerWord(r0[1]);
+			const known = (w) => tWords.has(w) || fWords.has(w);
+			if (!known(a0)) {
+				// a label row: «True / False», «[Options: Open Closed]», or a bare column name («Answer»)
+				data = rows.slice(1);
+				desc = wordsOf(r0[0]).replace(/:$/, "");
+				const lab = plain(r0[1]);
+				const om = lab.match(optRe);
+				const parts = (om ? om[1] : lab).split(/\s*\/\s*|\s{2,}|\s+(?:or)\s+/i).map((x) => x.trim()).filter(Boolean);
+				if (parts.length === 2) named = parts;
+				else if (om) named = om[1].split(/\s+/).filter(Boolean).length === 2 ? om[1].split(/\s+/).filter(Boolean) : null;
+			}
+			if (data.length < (tf.min_rows ?? 2)) return null;
+			if (named && named.length !== 2) return null;
+			// two named options that are themselves true / false words («True / False», «False / True») are read by the words;
+			// any other pair («Open / Closed») by its order — the first named option is the true column
+			const tfNamed = !!named && named.some((n) => tWords.has(n.toLowerCase())) && named.some((n) => fWords.has(n.toLowerCase()));
+			if (named && !tfNamed && named.some((n) => known(n.toLowerCase()))) return null;
+			for (const r of data) {
+				const w = answerWord(r[1]);
+				const text = statement(r[0]);
+				if (!text || !w) return null;
+				let answer = null;
+				if (named && !tfNamed) answer = w === named[0].toLowerCase() ? "true" : w === named[1].toLowerCase() ? "false" : null;
+				else answer = tWords.has(w) ? "true" : fWords.has(w) ? "false" : null;
+				if (!answer) return null;
+				items.push({ text, answer });
+			}
+			labels = named && !tfNamed ? named
+				: tfNamed ? [named.find((n) => tWords.has(n.toLowerCase())), named.find((n) => fWords.has(n.toLowerCase()))]
+				: [tf.default_true ?? "True", tf.default_false ?? "False"];
+		}
+		if (items.length < (tf.min_rows ?? 2) || items.length > (tf.max_rows ?? 20)) return null;
+		const parts = [
+			tpl.open,
+			Utils.FillTemplate(tpl.headings, { t: inline(labels[0]), f: inline(labels[1]), d: inline(desc || (tf.default_description ?? "Description")) }),
+			...items.map((it) => Utils.FillTemplate(tpl.row, { answer: it.answer, text: inline(it.text) })),
+			tpl.buttons,
+			tpl.close,
+		];
+		return parts.filter((x) => x != null && x !== "").join("\n");
 	}
 
 	/* ================================================================== *

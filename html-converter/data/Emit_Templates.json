@@ -8,6 +8,12 @@
 		"comment_policy": "Only TWO comment uses are permitted converter-wide: Mode P's commented image reference (below) and the ACK-TODO supplement (Acks_Formats.json). The acks lesson-label comments are mandated by the acks spec itself. No other comments are ever emitted."
 	},
 	"red_flag": {
+		"note_words_whole": {
+			"_doc": "THE WRITER'S REQUEST KEEPS ITS WORDS. The tag normaliser splits a bracket at every alias it finds, so a second tag's alias inside the writer's sentence went missing from the red note built from it. (1) The container note ('<tag> note: …', ActivitiesBuilder.containerModifiers) took the per-tag remainders: '[Alert box centre of page]' read 'alert note: centre of', '[typing quiz - self-marking the quiz]' 'typing quiz note: - self-marking the'; the words of the bracket holding the primary tag's alias are now that bracket's own text with the alias removed once. (2) The tag-words note (InteractiveBuilder.#tagWordsNote) dropped any alias at the bracket's edge, so '[kea speech bubble and audio]' read '… kea speech bubble and'; an edge alias after a conjunction (conjunction_end_pattern) is the last item of the writer's own list and stays. OFF = the earlier notes.",
+			"enabled": true,
+			"env": "NOTEWORDS_OFF",
+			"conjunction_end_pattern": "(?:^|\\s)(?:and|or|with|plus|&|\\+)\\s*$"
+		},
 		"form": "<p class=\"cv2-note\" style=\"color: red; font-weight: bold;\">Red Flag: {text}</p>",
 		"cs_form": "<p class=\"cv2-note\" style=\"color: red; font-weight: bold;\">Writers Note: {text}</p>",
 		"todo_form": "<p class=\"cv2-note\" style=\"color: red; font-weight: bold;\">Designer/Developer To Do: {text}</p>",
@@ -141,6 +147,12 @@
 				"max_words": 4,
 				"lead_pattern": "^\\s*(?:\\[[^\\]]*\\]\\s*)*([^\\[]*?)\\s*\\[\\s*item[^\\]]*\\]\\s*\\[\\s*audio[^\\]]*\\]",
 				"form": "<p><span class=\"audioTrigger\" audioName=\"{name}\">{word}</span></p>"
+			},
+			"video_no_source": {
+				"_doc": "THE VIDEO WITH NO ADDRESS NAMES ITSELF. A bilingual cell's '[Item N] [Video] <title>' part carries no address — the Media List row it names, when there is one, holds a SharePoint or mail-safety link at most — so its frame shipped empty, with no record of which video belongs there and the writer's title gone. The frame keeps its place (a video whose ID is pending keeps its frame with a visible To Do, KB 05A / CL-0037), and the body path's red missing-source flag (elements.no_url_writer_tag) goes before it, naming the writer's whole line. A part carrying an address is never flagged. OFF = the empty frame alone.",
+				"enabled": true,
+				"env": "REOVIDEONOURL_OFF",
+				"flag": "{label} with no URL found — add the video source."
 			},
 			"widget_label_drop": {
 				"_doc": "THE WIDGET TAG'S OWN WORDS ARE NOT PROSE. A bilingual cell part typed as one red instruction — '[Interactive] Carousel', '[Interactive] Carousel pic with word/audio' — lost its bracket tag and kept the tag's words, so the learner read 'Carousel' in both languages. The human build shows nothing there (it builds the widget). A part whose words after a leading tag of lead_tag_pattern are only a widget name (label_pattern) is the tag's label: dropped.",
@@ -2714,6 +2726,13 @@
 			"_covering_doc": "An EXISTING note only counts as already carrying the tag line's words when it has at least covering_note_min_words words: a bare asset note ('[Image]' → 'image') is contained in almost any instruction, so it would suppress the writer's whole request ('Can these please be created to look like postcards … an audio button to hear the greeting', SSOG103-2.0). Env covering_env = the plain containment test.",
 			"note": "The words a writer types on a widget tag's OWN line ('[flip card] Please present each word on a flip card so that…', '[drag and drop] answers are placed in the correct columns, please place outside the box', '[carousel] Click on the slide to see examples of…') are not read by the builders, which take the tag as the invocation only, so on a built widget they would be lost. They are mostly developer instructions (the human rarely keeps them as learner text), so they are neither guessed into learner prose nor a reason to decline the build: they become the red Writers Note after the widget (the instruction-member class — bundle.instructions, emitted by #interactivePlaceholder), unless the build's own visible text already carries them or a note already says them (min_words 5: the 3–4-word residues a broken bracket leaves — 'of with captions', 'insert icon for' — are the tag's own vocabulary, not a note); red runs are already notes and are not doubled. InteractiveBuilder.#tagWordsNote, after every build. TAGWORDSNOTE_OFF=1 = the words are dropped."
 		},
+		"_cell_numbered_lists": {
+			"_doc": "THE WRITER'S NUMBERED LIST STAYS NUMBERED IN A WIDGET. The extractor reads a table cell's paragraphs without Word's numbering map, so a numbered list typed in a cell reaches every widget builder as '• ' bullets and the flip-card faces, carousel slides and panels built from it shipped a <ul>; the table block records the text of each paragraph whose Word list is numbered (cellNumbered, the kept-table and layout-grid rules' source). After a widget builds, a <ul> holding no list of its own whose every item is one of the bundle's tables' numbered paragraphs becomes an <ol> — the gold's form where it keeps the list (HPFUN202's card back). It reaches what the second pass (_cell_numbered_steps) cannot: that pass refuses a builder that would show the typed '1. ' as text (a flip card's face). A carousel is excluded, as there (exclude_types); a one-item list (min_items) is the writer numbering across cards — each card would read '1.' — and keeps its bullet. OFF = the <ul>.",
+			"enabled": true,
+			"env": "WIDGETNUMLIST_OFF",
+			"exclude_types": ["carousel"],
+			"min_items": 2
+		},
 		"_widget_links": {
 			"enabled": true,
 			"env": "WIDGETLINKS_OFF",
@@ -2839,6 +2858,14 @@
 			},
 			"modal_sets": {
 				"enabled": true,
+				"image_reference": {
+					"_doc": "ANOTHER MODULE'S PICTURE. The BLL series' 'Optional activities' pop-outs name each trigger picture as another module's ('[Modal 1 Image] same image from BLL110', 'Use the same image from BLL110') — no address, so the set had no trigger and the whole widget, its activity texts and video, stayed a hand-off box (BLL140 / 150 / 160 / 170 / 210), while BLL110 / 120 / 130, written with iStock addresses, build. Such an image sub-tag (pattern) gives its set a placeholder trigger named for the reference (filename, shown by Mode P's label) and ONE red To Do per widget names the module whose pictures to copy (note). OFF = the hand-off box.",
+					"enabled": true,
+					"env": "MODALIMGREF_OFF",
+					"pattern": "\\bsame\\s+(?:image|picture|photo)s?\\s+(?:as|from)\\s+(?:in\\s+)?([A-Z]{2,}[A-Z0-9]*\\d+)\\b",
+					"filename": "same-image-as-{code}-modal-{n}.png",
+					"note": "the pop-out pictures — the writer asks for the same images as {code}: copy each one across in place of its placeholder"
+				},
 				"filename_istock": "iStock-{id}.jpg",
 				"image_mode_P": "<img class=\"img-fluid TKmodalButton\" src=\"https://placehold.co/600x400?text={label}\" alt=\"\" loading=\"lazy\">",
 				"image_mode_P_comment": "<!-- <img class=\"img-fluid TKmodalButton\" loading=\"lazy\" src=\"images/{filename}\" alt=\"\"> -->",
@@ -3112,6 +3139,31 @@
 				"header_row_skip": true,
 				"image_tag_pattern": "^\\[?\\s*(?:insert\\s+)?(?:image|photo)[^\\]]*\\]?$",
 				"note": "The writer's IMAGE-PAIR table — one 2-column table whose every data row pairs ONE image URL with ONE plain-text word / sentence, `image | word` (BLL112, BLL122, BLL161, BLL125, BLL220, BLL224, BLL230, BLL210, ENFUN02, MXFUN03, CHFUN05, TEFUN08, BLL244, ENGJ102) or `word | image` (BLL146, BLL130, BLL233, CEDO105, ENFUN04, ENGS201, BLL266) — builds the KB 03B 'Standard Layout — With images' form: `<div class=\"dragAndDrop images\" layout=\"standard\">`, the TEXT side is ALWAYS the fixed question side (col-7 questionContainer, one .question per row) and the IMAGES are the draggable items (col-5 ddContainer: dropContainer with a .drop per row, dragContainer with a .drag holding the image per row, option = the 1-based row index = the answer key) — 03B's placement rule ('images in the questionContainer stretch vertically and make the interactive unusably tall'), whichever way round the writer typed the columns; margB0 on the drag images (03B); the KB button row follows (button_row). The image: an iStock id → filename_istock, any other host → the URL-slug placeholder (#accImageFilename); rendered in the run's image mode through the FinishImg rider (the URL is passed, so the alt is the verified acks title, else the URL-slug title — the human's BLL146 alt IS the iStock title); the image-mode templates carry no loading=lazy and the lazy_free_hosts post-pass strips any the rider adds inside dragAndDrop (constraint 83). Tried ONLY where the text form returned null (it bails on any URL). header_row_skip: a first row with no URL in either cell is a column-label / instruction row ('Image | Sentence', '**Kupu** |', '| Correct answer - can we jumble them up though please', '| [correct answers]') — dropped; its red instruction rides along as the standard red Writers Note after the widget (bundle.instructions). image_tag_pattern: a red run in the IMAGE cell matching it is the writer's own [image] tag; any other red there ('Arrow added to image', 'Please crop a little so …') is a developer asset note — surfaced the same way, the build proceeds. NEVER HALF-BUILDS (null → the hand-off box): a second table, an extraType, a media item harvested out of the table, a ragged row, a row without exactly one image cell + one text cell, the image column changing sides, ANY red run in the TEXT cell (an answer word inside a sentence = a FIB shape — BLL226 / BLL232 / BLL243 / BLL215 / BLL231; `[correct]` — BLL253 / 254 / 256; a red-bracketed audio-word — BLL272 / 273 / 274 / 276; `[Body]` — CEDK102 / SSOG105), an empty label, a URL in the text cell, a repeated label (an ambiguous match), prose riding along with the image, fewer than min_rows rows. The image COLUMN-SORT shape is not built here. The KB's optional autoCheck / noShuffle / noBG modifiers are the developer's editorial choice (no writer signal) — not emitted. The human's own substitutions (BLL112 / ENFUN04 build a noBG column form; BLL146 is the exact KB form) are A1 — the writer's tag is the target. Env DDIMAGES_OFF turns off the whole form (DRAGDROP_OFF turns off the type)."
+			},
+			"audio_image_word": {
+				"_doc": "THE PICTURE + AUDIO DRAG. One table «Audio ║ Image ║ Correct answer» (the header names the three columns; each row the word's audio — «[wrist] [LINK: …]», or nothing where the header carries the audio folder — a stock picture, and the answer word in red or bold) builds the standard layout with an audio column: a col-1 questionContainer of blanks each holding the word's audioButton, a col-3 questionContainer of the pictures, the col-7 ddContainer with one drop per row and the answer words as drags (option = the row), then the KB button row; autoCheck only where the writer's tag says «auto check». The audio links ride as one Writers Note.",
+				"enabled": true,
+				"env": "DDAUDIOIMG_OFF",
+				"audio_header_pattern": "\\baudio\\b",
+				"image_header_pattern": "\\b(?:images?|pictures?|photos?)\\b",
+				"answer_header_pattern": "\\b(?:correct|answers?|words?)\\b",
+				"answer_pattern": "^[\\p{L}'’-]+(?: [\\p{L}'’-]+){0,2}$",
+				"max_rows": 12,
+				"auto_check_pattern": "auto\\s*-?\\s*check",
+				"auto_check_class": " autoCheck",
+				"auto_check_buttons": "<div class=\"row\">\n<div class=\"activityButton reset\">Reset</div>\n</div>",
+				"audio_name": "{code}_{word}",
+				"audio_note": "Audio for the pictures: {urls}",
+				"filename_patterns": [
+					{ "pattern": "istockphoto\\.com/(?:id/|photo/[^?#]*?-gm)(\\d+)", "filename": "iStock-{id}.jpg" },
+					{ "pattern": "shutterstock\\.com/(?:shutterstock/)?(?:photos|image-photo|image-vector)/(?:[^/?#]*-)?(\\d+)", "filename": "shutterstock-{id}.jpg" }
+				],
+				"open": "<div class=\"dragAndDrop{auto}\" layout=\"standard\">\n<div class=\"row\">\n<div class=\"col-1 questionContainer\">",
+				"blank": "<div class=\"blank\">\n<div class=\"audioButton\" audioName=\"{name}\"></div>\n</div>",
+				"mid_questions": "</div>\n<div class=\"col-3 questionContainer\">",
+				"question": "<div class=\"question\">\n{image}\n</div>",
+				"mid_drops": "</div>\n<div class=\"col-7 ddContainer\">\n<div class=\"dropContainer\">",
+				"drag": "<div class=\"drag\" option=\"{n}\">\n<p>{word}</p>\n</div>"
 			},
 			"column": {
 				"enabled": true,
@@ -3526,7 +3578,12 @@
 						{ "prefix": "WJFUN2", "image": "kea_1.jpg", "image_col": "<div class=\"col-md-4 col-2 paddingR\">", "col_open": "<div class=\"col-md-8 col-8 paddingL\">", "bubble": "<div class=\"bubble-right secondary no-hover\">{text}</div>" },
 						{ "prefix": "WJFUN3", "image": "kea_3.jpg", "image_col": "<div class=\"col-md-4 col-2 paddingR\">", "col_open": "<div class=\"col-md-8 col-8 paddingL\">", "bubble": "<div class=\"bubble-right no-hover primary-1\">{text}</div>" }
 					],
-					"todo": "Kea audio still under development — add each Kea speech bubble's inline audio button (<span class=\"audioButton\" audioName=\"…\"> after a <br>, CL-0063) once the audio is delivered."
+					"todo": "Kea audio still under development — add each Kea speech bubble's inline audio button (<span class=\"audioButton\" audioName=\"…\"> after a <br>, CL-0063) once the audio is delivered.",
+					"rich": {
+						"_doc": "THE KEA BUBBLE IN THE RICH COMPOSER. A Kea bubble that shares its bundle with other speech-bubble members (a second bubble, a cast picture, the writer's '[kea speech bubble ends]' closer) is built by the rich composer, whose image-less branch took only the placeholder-character form — so the Kea bubbles of WJFUN105 / 106 / 108 / 109 / 110 / 113 shipped as plain bubbles. That branch now takes the Kea form first, by the same tag test and series rows. OFF = the plain bubble there (the text-only builder's Kea form is unaffected).",
+						"enabled": true,
+						"env": "SBKEARICH_OFF"
+					}
 				},
 				"placeholder_character": {
 					"enabled": true,
@@ -3662,8 +3719,17 @@
 				"_face_label_note": "A cell that names a card FACE («Front ║ Poem ║ Advertisement ║ Song» / «Back ║ Entertain ║ Persuade ║ Entertain», ENFUN01) makes the table a faced card table, not a word list — the box stays; so does a repeated word. The request check also reads the line just before the opener (BLL230's colour request sits there).",
 				"_decline_request_note": "A writer request this plain grid cannot honour keeps the hand-off box: the cards coloured to tell two sounds apart (BLL230 «Can we please colour the inside of the flipcards so they can differentiate …» — the gold's pink / light-blue audio cards), an audio card, a picture on a card.",
 				"open": "<div class=\"row flipCardsContainer sassoon-text\">",
-				"card": "<div class=\"col-md-4 col-12 paddingLR\">\n<div class=\"flipCard noBG flipTimer\" flipTime=\"5000\">\n<div class=\"front\"><p>Word {n}</p></div>\n<div class=\"back\"><p style=\"font-size: 150%;\">{word}</p></div>\n</div>\n</div>",
+				"card": "<div class=\"col-md-4 col-12 paddingLR\">\n<div class=\"flipCard noBG flipTimer\" flipTime=\"{ms}\">\n<div class=\"front\"><p>Word {n}</p></div>\n<div class=\"back\"><p style=\"font-size: 150%;\">{word}</p></div>\n</div>\n</div>",
 				"close": "</div>",
+				"default_ms": 5000,
+				"requested": {
+					"_doc": "THE TIMED FLIP CARDS THE WRITER ASKS FOR. The request «Can we create flip cards that open for N seconds and then flip back again?» sets each card's flipTime (N × 1000; default_ms where no seconds are named), and where it is a red line of an [Activity]'s lead over a capture that holds one table of words (captured unclassified — no widget tag) the capture is read as this word grid, its declines kept.",
+					"enabled": true,
+					"env": "FLIPTIMEDREQ_OFF",
+					"request_pattern": "flip\\s*cards?\\s+that\\s+(?:open|show|stay(?:\\s+open)?)\\s+for\\s+(\\d+|one|two|three|four|five|six|seven|eight|nine|ten)\\s+seconds?",
+					"number_words": { "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10 },
+					"max_seconds": 30
+				},
 				"_doc": "THE WORD GRID — tried only where every other flipCard reading (the dialects, the composer) declined, so no existing build changes. One captured table whose every non-empty cell is ONE word or a two-word phrase (max_words; no red, tag, link, slash or closing punctuation — a sentence is not a word card): the BLL spelling lists («white ║ who ║ whiskers» × 3 rows, «[Flipcards] Can we create flip cards that open for 5 seconds and then flip back again?»). One card per cell in reading order, the gold's own form in every one of its 18 grids (BLL240 / BLL250 / BLL260): the front the card's number label «Word N» (counted per grid), the back the word at 150 % in the reading font (`sassoon-text` on the grid), each card a timed flip (`flipTimer`, flipTime 5000 — the writer's «open for 5 seconds and then flip back»). Empty cells (a blank last row) are skipped; fewer than min_cards words keeps the hand-off box."
 			},
 			"instruction_series": {
@@ -4224,7 +4290,13 @@
 				"item_video_caption": "<div class=\"item video\">\n{embed}\n<div class=\"carousel-caption\">\n<p>{caption}</p>\n</div>\n</div>",
 				"item_video_plain": "<div class=\"item video\">\n{embed}\n</div>",
 				"shorts_id_re": "youtube\\.com/shorts/([\\w-]{11})",
-				"shorts_embed": "<div class=\"videoSection youtubeShort ratio ratio-1x1\">\n<iframe src=\"https://www.youtube-nocookie.com/embed/{videoId}?rel=0&amp;showinfo=0\" frameborder=\"0\" allowfullscreen></iframe>\n</div>"
+				"shorts_embed": "<div class=\"videoSection youtubeShort ratio ratio-1x1\">\n<iframe src=\"https://www.youtube-nocookie.com/embed/{videoId}?rel=0&amp;showinfo=0\" frameborder=\"0\" allowfullscreen></iframe>\n</div>",
+				"lead": {
+					"_doc": "THE SLIDESHOW'S LEAD-IN. The media-table build reads the slide table alone, so the learner line the writer types before it — on the invocation's own line ('[slideshow] Click to see image and video on Chinese Zodiac.') or as a [body] / black paragraph between the invocation and the table — never reached the page (the invocation's words became the tag-words Writers Note, a [body] line was dropped). The gold ships each as a plain paragraph right before the carousel (CHFUN01 / 04 / 05 / 07 / 08). Each such member renders through the free-body block emitter before the carousel, in document order — the table_slides members rule's 'before' half. Blank lines and instruction-class tags (already notes) are skipped; anything else before the table — a heading, a picture, another tag, words opening with a note cue or carrying red text — leaves the lead empty and the build unchanged. OFF = no lead.",
+					"enabled": true,
+					"env": "CARMEDLEAD_OFF",
+					"note_cue_pattern": "^(?:cs|dev|developer|designer|note|nb)\\s*[:\\-\\u2013\\u2014]"
+				}
 			},
 			"media_caption_table": {
 				"enabled": true,
@@ -4242,6 +4314,15 @@
 		"clickDrop": {
 			"general_items": {
 				"enabled": true,
+				"image_trigger": {
+					"_doc": "THE PICTURE IS THE TRIGGER. The BLL series' 'Optional activities' click-drops write each item as a picture and a panel — '[Clickdrop 1 Image] same image from BLL110' + '[Clickdrop 1 text] Find things in your house…' — with no label: in the gold the PICTURE is the trigger (img.clickDrop over each clickDropContent), but the role-word path declined every item because a label is never invented. An item with no label and no opening heading whose image sub-tag carries its picture — an address, or another module's picture named by reference (reference_pattern) — takes that picture as its trigger (the labelImg button face); a reference gets a placeholder named for it (reference_filename) and ONE note per widget names the module whose pictures to copy (reference_note). An item with a label keeps its picture in the panel, as before. url_images: an addressed picture as the trigger too — off, as CEDT501's '[Clickdrop N image] Image; iStock; <title> (<address>)' items would build with their attribution split into a residue note. OFF = the hand-off box.",
+					"enabled": true,
+					"env": "CDIMGTRIGGER_OFF",
+					"url_images": false,
+					"reference_pattern": "\\bsame\\s+(?:image|picture|photo)s?\\s+(?:as|from)\\s+(?:in\\s+)?([A-Z]{2,}[A-Z0-9]*\\d+)\\b",
+					"reference_filename": "same-image-as-{code}-clickdrop-{n}.png",
+					"reference_note": "the click-drop pictures — the writer asks for the same images as {code}: copy each one across in place of its placeholder"
+				},
 				"delimiter_tags": ["click drop"],
 				"delimiter_pattern": "^\\[\\s*(?:start\\s+of\\s+)?click\\s*[- ]?drop(?:\\s+(?:heading|panel|item))?\\s*(?:\\d+|one|two|three|four|five|six|seven|eight|nine|ten)\\s*[:.]?\\s*\\]$",
 				"delimiter_ordinal_pattern": "^\\[\\s*(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\\s+click\\s*[- ]?drop\\s*[:.]?\\s*\\]$",
@@ -4446,6 +4527,66 @@
 			"alert_open": "<div class=\"alert{modifiers}\">",
 			"alert_col": "col-12",
 			"html": "<div class=\"pathwaysPersona\" id=\"{id}\">\n<div class=\"pathwaysPersonaImage\">\n<img class=\"img-fluid imageCentral\" src=\"{src}\" alt=\"\" />\n<div class=\"pathwaysPersonaText\">\n<h5>{name}</h5>\n</div>\n</div>\n<div class=\"pathwaysPersonaControls\">\n<button type=\"button\" class=\"pathwaysPersonaBtn pathwaysPersonaPlay\" aria-label=\"Play audio\" title=\"Play\"></button>\n<button type=\"button\" class=\"pathwaysPersonaBtn pathwaysPersonaTranscript\" aria-label=\"Show transcript\" title=\"Transcript\"></button>\n</div>\n<div class=\"pathwaysPersonaTranscriptContent\">\n{transcript}\n</div>\n</div>"
+		},
+		"radioQuiz": {
+			"enabled": true,
+			"_doc": "THE RADIO QUIZ (KB 03D COMP_02 'Radio Quiz'): container radioQuiz with the autoCheck comment directly inside, a 'row headings' carrying the two option labels (p.true / p.false) and the statement label (p.description), one row per statement — its radioButtons column (answer=\"true\" = the first option, \"false\" = the second) then the statement — and the Reset / Check row. Built only from a table whose answers the writer marked (an answer only where the writer marked it); every other radio-quiz bundle keeps the hand-off box.",
+			"table_form": {
+				"_doc": "THE MARKED TABLE. (A) a label row over three columns — the statement column and two option columns ('Scenario ║ Formal ║ Informal', 'T ║ F ║ Question') — each data row with a mark in exactly one option cell: a pasted tick picture ('[IMAGE: image1.png]'), a red 'tick', a tick symbol (mark_pattern); (B) two columns — the statement and its answer, one of two values: true / false words (true_words / false_words) or the two options a label row names ('True / False', '[Options: Open Closed]' — the first named is the true column). The statements keep the writer's words; a statement carrying a picture, an address or a red word, a row without its single mark, a ragged or wider table declines the build.",
+				"enabled": true,
+				"env": "RADIOTABLE_OFF",
+				"mark_pattern": "^(?:\\[IMAGE:\\s*[^\\]]+\\]|✅|✓|✔|☑|☒|x|tick|correct)$",
+				"deny_cell_pattern": "https?://|www\\.|\\[\\s*(?:image|video|audio|picture|photo)\\b",
+				"glued_red_letters_pattern": "\\u{1f534}\\[RED TEXT\\]\\s*(\\p{L}{1,3})\\s*\\[\\/RED TEXT\\]\\u{1f534}(?=\\p{L})",
+				"true_words": ["true", "t", "yes"],
+				"false_words": ["false", "f", "no"],
+				"options_label_pattern": "^\\[?\\s*options?\\s*:\\s*(.+?)\\s*\\]?$",
+				"min_rows": 2,
+				"max_rows": 20,
+				"default_true": "True",
+				"default_false": "False",
+				"default_description": "Description"
+			},
+			"open": "<div class=\"radioQuiz\">\n<!-- autoCheck -->",
+			"headings": "<div class=\"row headings\">\n<div class=\"col-sm-1 col-2\">\n<p class=\"true\">{t}</p>\n</div>\n<div class=\"col-sm-1 col-2\">\n<p class=\"false\">{f}</p>\n</div>\n<div class=\"col-sm-9 offset-sm-1 col-8\">\n<p class=\"description\">{d}</p>\n</div>\n</div>",
+			"row": "<div class=\"row\">\n<div class=\"col-sm-2 col-4 radioButtons\" answer=\"{answer}\"></div>\n<div class=\"col-sm-9 offset-sm-1 col-8\">\n<p>{text}</p>\n</div>\n</div>",
+			"buttons": "<div class=\"row\">\n<div class=\"activityButton reset\">Reset</div>\n<div class=\"activityButton checkAnswer hidden\">Check answers</div>\n</div>",
+			"close": "</div>"
+		},
+		"unclassified": {
+			"enabled": true,
+			"_doc": "An [Activity] capture with no widget keyword. Built only by the readings named here — the timed flip cards the writer asks for in a red line of the activity's lead (flipCard.word_grid.requested); every other unclassified capture keeps the hand-off box."
+		},
+		"wordDrag": {
+			"enabled": true,
+			"_doc": "THE WORD DRAG (KB 03E 'Word Drag'): letter tiles the learner drags into the drop boxes to build each word; `letters` the tiles (pipe-delimited), `wordLength` the drop boxes, one `.word` per word (`||` alternatives, an optional `audioName`), the 03E button row. The KB's own container form (each container inside its own col-12).",
+			"word_list": {
+				"_doc": "THE WORDS THE LEARNER HEARS AND BUILDS. A «[word drag]» / «[drop and drag]» tag and an «[audio] <link>» line whose red words — on the audio line or on the red line after it — are the words to build («free, boat, seed, goal, week, road»). One `.word` per word in the writer's order (audioName = the word); the tiles every letter the words need, each as often as one word needs it, alphabetical; wordLength the longest word; layout standardAudio. A bracketed remark after the words and the audio link ride as Writers Notes. Declines on a table, black words on the tag or audio line, a list item that is not one word, or any other member.",
+				"enabled": true,
+				"env": "WORDDRAG_OFF",
+				"types": ["wordDrag", "dragAndDrop"],
+				"invocation_pattern": "\\[\\s*(?:word\\s+drag|drop\\s+(?:and|&)\\s+drag|drag\\s+(?:and|&)\\s+drop)\\b",
+				"word_pattern": "^[\\p{L}'’-]{1,16}$",
+				"remark_pattern": "^(.*?)\\s*\\(([^()]+)\\)\\s*$",
+				"tiles_note_pattern": "\\btiles?\\b|\\bsound\\s+box(?:es)?\\b|\\bone\\s+box\\b|\\bdigraphs?\\b|\\bblends?\\b|grouped\\s+together",
+				"_doc_tiles_note_pattern": "A note in the capture that names the tiles themselves (a sound in one tile, a blend in one box) declines the build: one tile per letter would go against the writer.",
+				"min_words": 2,
+				"max_words": 12,
+				"layout": "standardAudio",
+				"letter_joiner": "|",
+				"audio_note": "Audio for the words: {urls}",
+				"sound_tile": {
+					"_doc": "THE TAUGHT SOUND IS ONE TILE. When every word of a list holds the same grapheme of this phonics registry — the first in its order, so the longer ones come first — that grapheme is one tile ('snail, paint, trail' → ai | f | l | n | p | r | s | t) and wordLength counts tiles; a list with no shared grapheme keeps one tile per letter.",
+					"enabled": true,
+					"env": "WORDDRAGSOUND_OFF",
+					"graphemes": ["eigh", "augh", "ough", "igh", "tch", "dge", "air", "ear", "eer", "ere", "ai", "ay", "oa", "ow", "ie", "ee", "ea", "ey", "or", "oy", "oi", "ou", "ue", "ew", "er", "ar", "ir", "ur", "sh", "ch", "th", "wh", "ph", "ck", "ng", "qu", "sc", "mb", "kn", "wr", "oo"]
+				},
+				"keep_trailing_audio": true,
+				"_doc_keep_trailing_audio": "The capture's trailing-media rule takes a widget's LAST [audio] member back out as its own element; an audio line that carries the words (the same reading as the builder's) stays inside the word drag, which it belongs to."
+			},
+			"open": "<div class=\"row wordDrag\" layout=\"{layout}\" letters=\"{letters}\" wordLength=\"{length}\">\n<div class=\"col-12\">\n<div class=\"wordDragContainer\"></div>\n</div>\n<div class=\"col-12\">\n<div class=\"wordDropContainer\"></div>\n</div>\n<div class=\"col-12 wordDragList\">",
+			"word": "<div class=\"word\" word=\"{word}\" audioName=\"{name}\"></div>",
+			"close": "</div>\n<div class=\"col-12 wordDragButtons\">\n<div class=\"activityButton reset\">Reset</div>\n<div class=\"activityButton undo hidden\">Undo</div>\n<div class=\"activityButton checkAnswer hidden\">Check answers</div>\n</div>\n</div>"
 		},
 		"reorder": {
 			"enabled": true,
@@ -8202,6 +8343,13 @@
 				"_doc": "THE ORPHAN MARK INSIDE A BUILT WIDGET. The pass skipped every built widget on the typed-number list's verbatim_widget_classes (those widgets own their inner SHAPE for the typed-number list), so a lone mark left inside one still shipped: DTC1005's clickDrop panel «<p>–</p>» ×10 (the residue of the writer's «[Image – URL]» split by bold), SCCH301's clickDrop «.», ENGC206's flip-card back «•», BLL262 / CEDR101's carousel captions «-» / «.». A lone DROP mark (a dash, a bullet glyph, a slash, a bare «**» — no wording) is never a widget's shape: inside built widgets the pass removes those too; a lone SENTENCE mark there stays (a flip card's «?» front is the card's content, and a merge would double a full stop); un-built hand-off boxes, Writers Notes and comments, scripts and styles stay verbatim. Env ORPHANWIDGET_OFF.",
 				"enabled": true,
 				"env": "ORPHANWIDGET_OFF"
+			},
+			"leading": {
+				"_doc": "THE MARK THAT LEADS A BLOCK. A p / li that OPENS with a lone sentence mark followed by words is what is left when a bold lead became a heading or an accordion head ('**Meat and fat**. These smell…', '[H3] **Give it a try**: Capturing movement'), a label was taken away, or a red tag split the writer's sentence after its last word ('**whakamā** [hover audio trigger]**.** It can be felt…'). The mark goes to the p / li that closes right before the block when that one ends in words without a mark of its own (the writer's full stop ends the sentence before); after a heading, an accordion head, a closed question or nothing it is dropped. The block keeps its words, and an inline wrapper that still holds some. Hand-off boxes, notes and comments are untouched. OFF = the block keeps its leading mark.",
+				"enabled": true,
+				"env": "ORPHANLEAD_OFF",
+				"elements": ["p", "li"],
+				"marks": ".,;:!?"
 			}
 		},
 		"lone_list_number": {

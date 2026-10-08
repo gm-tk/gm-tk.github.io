@@ -7833,6 +7833,7 @@ class ContentConverter {
 		for (const t of (bundle.leadRequests ?? [])) if (!seen.has(t)) { seen.add(t); out.push(t); }
 		for (const it of [...(bundle.openerItems ?? []), ...(bundle.memberItems ?? [])]) {
 			if (!it || it.type !== "tag" || !it.parse?.primary || it.parse.instructionFragment) continue;
+			if (bundle.realisedMembers?.includes(it)) continue;   // a member the build turned into the widget itself (its words are the widget)
 			if ((c.skip_tag_words ?? ["button"]).some((x) => String(it.parse.primary.tag).includes(x))) continue;
 			const w = this.#captureKey(it.text).split(" ").filter(Boolean);
 			if (w.length < (c.min_words ?? 3)) continue;

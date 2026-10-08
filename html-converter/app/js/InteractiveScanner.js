@@ -3442,6 +3442,26 @@ class InteractiveScanner {
 			&& this.#modalTrailKeep(bundle)) return endIndex;
 		const extract = mr.trailing_media_extract ?? [];
 		if (!extract.length) return endIndex;
+		// THE WORD-BUILDING DRAG keeps its trailing audio: «[drop and drag] …» + «[audio] [LINK] snail, paint, trail, …» — the
+		// audio line carries the words the learner hears and builds, so it is the widget's own content, not media after it
+		// (the same word-list reading as the builder's). Data EmitTemplates.interactive_builders.wordDrag.word_list
+		// .keep_trailing_audio; env WORDDRAG_OFF.
+		{
+			const wdl = DataService.Data.EmitTemplates?.interactive_builders?.wordDrag?.word_list;
+			const last = bundle.memberItems[bundle.memberItems.length - 1];
+			if (wdl && wdl.enabled !== false && wdl.keep_trailing_audio === true && wdl.invocation_pattern
+				&& !(typeof process !== "undefined" && process.env && process.env[wdl.env || "WORDDRAG_OFF"])
+				&& (wdl.types ?? ["wordDrag", "dragAndDrop"]).includes(bundle.type)
+				&& last?.type === "tag" && last.parse?.primary?.tag === "audio") {
+				const invRe = new RegExp(wdl.invocation_pattern, "i");
+				const invoked = bundle.memberItems.some((m) => m?.type === "tag" && m.parse?.primary?.directive === "INTERACTIVE"
+					&& invRe.test(String(m.text ?? "")));
+				const own = String(last.text ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ").replace(/^\s*(?:\[[^\]]*\]\s*)+/, "");
+				const after = String(last.blackAfter ?? "");
+				const words = own.trim() && after.trim() ? null : InteractiveBuilder.WordDragWords(own.trim() ? own : after, wdl);
+				if (invoked && words && !InteractiveBuilder.WordDragTilesNamed(bundle, wdl)) return endIndex;
+			}
+		}
 		// The last memberItem always lines up with items[endIndex-1] (members are
 		// swallowed in document order), so each pop shrinks the range by one item.
 		while (bundle.memberItems.length) {

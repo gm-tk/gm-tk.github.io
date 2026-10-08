@@ -61,6 +61,10 @@ class PageSplitter {
 		const items = [];
 		// the corpus marker form: 🔴[RED TEXT] … [/RED TEXT]🔴
 		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		const _pt = DataService.Data.InputDocRules?.red_runs?.punctuation_as_text;
+		const punctRe = (_pt && _pt.enabled !== false && _pt.pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[_pt.env ?? "REDPUNCT_OFF"])) ? new RegExp(_pt.pattern, "u") : null;
+		const punctDenyRe = punctRe && _pt.deny_before_pattern ? new RegExp(_pt.deny_before_pattern, "iu") : null;
 
 		for (const block of this.#layoutInstructionBlocks(blocks)) {
 			if (block.kind === "table") {
@@ -73,6 +77,7 @@ class PageSplitter {
 			let pendingTag = null;   // last tag item awaiting its blackAfter
 			let blackSeen = false;   // black text already met in this paragraph
 			const opening = [];   // the tag items no black text precedes (lead_tag_separator)
+			let lastBlack = null, glued = false;   // the black item a red punctuation mark joined (punctuation_as_text)
 
 			for (const m of text.matchAll(RED)) {
 				// black text BEFORE this red span: belongs to the previous
@@ -81,7 +86,29 @@ class PageSplitter {
 				if (before.trim()) {
 					blackSeen = true;
 					if (pendingTag) pendingTag.blackAfter += before;
-					else items.push({ type: "black", text: before, block });
+					else if (glued && lastBlack) lastBlack.text += before;   // the sentence a red mark joined goes on
+					else { lastBlack = { type: "black", text: before, block }; items.push(lastBlack); }
+				} else if (glued && before) {
+					if (pendingTag) pendingTag.blackAfter += before; else if (lastBlack) lastBlack.text += before;
+				}
+				// the mark must follow black words directly (or a mark that joined them): one right after a red tag is the tag's
+				const afterBlack = before.trim() !== "" || glued;
+				glued = false;
+				// THE WRITER'S PUNCTUATION TYPED IN RED inside a black sentence («We packed a jacket🔴,🔴 a hat🔴,🔴 and …», «…
+				// these perspectives🔴.🔴»): a red span of sentence marks alone, after black words in this paragraph, is the
+				// sentence's own text — it joins the black run instead of cutting the sentence into lines. Data
+				// Input_Doc_Rules.red_runs.punctuation_as_text; env REDPUNCT_OFF.
+				const prevText = pendingTag ? pendingTag.blackAfter : lastBlack?.text ?? "";
+				// (a paragraph carrying the writer's links keeps its items: their links are woven per item)
+				if (punctRe && afterBlack && (pendingTag || lastBlack) && punctRe.test(m[1]) && !(punctDenyRe && punctDenyRe.test(prevText))
+					&& !(_pt.skip_linked !== false && (block.links ?? []).length)) {
+					const glue = m[1].replace(/^\s+/, "").replace(/\s+$/, (sp) => (sp ? " " : ""));
+					// the mark hugs the word before it (the black run's own trailing space goes)
+					if (pendingTag) pendingTag.blackAfter = pendingTag.blackAfter.replace(/\s+$/, "") + glue;
+					else lastBlack.text = lastBlack.text.replace(/\s+$/, "") + glue;
+					glued = true;
+					pos = m.index + m[0].length;
+					continue;
 				}
 				// the red span itself → parse once, carry the result
 				const parse = normaliser.Parse(m[1]);
@@ -94,6 +121,7 @@ class PageSplitter {
 			const tail = text.slice(pos);
 			if (tail.trim()) {
 				if (pendingTag) pendingTag.blackAfter += tail;
+				else if (glued && lastBlack) lastBlack.text += tail;
 				else items.push({ type: "black", text: tail, block });
 			}
 			if (opening.length) this.#leadTagSeparator(opening);

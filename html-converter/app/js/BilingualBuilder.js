@@ -900,6 +900,23 @@ class BilingualBuilder {
 	};
 
 	/**
+	 * THE VIDEO WITH NO ADDRESS NAMES ITSELF. A bilingual cell's «[Item N] [Video] <title>» part carries no address (the
+	 * Media List row it names, when there is one, holds a SharePoint or mail-safety link at most), so its frame ships
+	 * empty. The body path's missing-source flag (MediaBuilder.NoUrlFlag) is the developer's record of which video goes
+	 * there; this is the same flag for the cell, naming the writer's whole line — the item number and the title.
+	 * A part that carries an address is never flagged. Data dual_language.video_no_source; env REOVIDEONOURL_OFF.
+	 * @returns {string} the red flag's HTML, or "" when the rule is off
+	 */
+	static #videoNoSourceFlag(part, run) {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.video_no_source;
+		if (!c || c.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REOVIDEONOURL_OFF"])) return "";
+		const label = this.#stripRed(part).replace(/\s+/g, " ").trim();
+		if (!label || /https?:\/\/|www\./i.test(label)) return "";
+		return NotesAndComments.redFlag(Utils.FillTemplate(c.flag ?? "{label} with no URL found — add the video source.", { label }), run);
+	};
+
+	/**
 	 * Does this table's first cell lead with a recognised callout tag?
 	 * Used by bilingualSection (above) to know when a table should STOP a
 	 * section gather and get its own callout box instead of being folded
@@ -1169,7 +1186,10 @@ class BilingualBuilder {
 				const aw = this.#audioWord(part);
 				pushM(aw ?? '<audio preload="none" class="audioPlayer icon"></audio>');
 			} else if (/\[\s*(?:item[^\]]*\]\s*\[\s*)?video[^\]]*\]/.test(low)) {
-				flush(); pushM('<div class="videoSection ratio ratio-16x9">\n<iframe></iframe>\n</div>');
+				// the frame keeps its place; the red missing-source flag naming the writer's own line goes before it
+				// (dual_language.video_no_source; env REOVIDEONOURL_OFF)
+				const vf = this.#videoNoSourceFlag(part, run);
+				flush(); pushM(`${vf ? vf + "\n" : ""}<div class="videoSection ratio ratio-16x9">\n<iframe></iframe>\n</div>`);
 			} else if (canon && /^(?:h[1-6]|heading|activity heading)$/.test(canon)) {
 				flush();
 				const digit = /^h\d$/.test(canon) ? parseInt(canon[1], 10) : 2;
