@@ -845,19 +845,32 @@ class InteractiveScanner {
 				&& _oaeTags.has(p.parse.primary.tag)
 				&& (!_oaeNoHow.has(String(p.parse.primary.how ?? "")) || (!!_oaeTfRe && _oaeTfRe.test(String(p.text ?? ""))))
 				&& p.parse.tags.some((t) => t.tag === "activity" && _oaeWords.has(String(t.raw ?? t.alias ?? "").toLowerCase()));
+			// The walk never reaches back across a page boundary the splitter consumed (a single-file
+			// page's [End page]): the first content item after it carries the boundary, and the walk
+			// may read that item but nothing before it. Data opener_rule.page_boundary_stop; env
+			// OPENERPAGE_OFF.
+			const _pbsCfg = bank._meta.opener_rule.page_boundary_stop;
+			const _pbsOn = !!_pbsCfg && _pbsCfg.enabled !== false
+				&& !(typeof process !== "undefined" && process.env && process.env[_pbsCfg.env || "OPENERPAGE_OFF"]);
+			let _pbsStopped = null;
 			while (s >= 0) {
 				const prev = items[s];
 				if (prev.consumedBy !== undefined) break;
 				if (prev.type === "tag" && prev.parse.tags.some((t) => t.tag === "activity")) {
 					activityIdx = s; break;                 // found the owner
 				}
+				const _atBoundary = _pbsOn && prev._afterPageBoundary === true;
 				// cross the activity's own heading / lead body / media —
 				// these sit between [Activity] and the widget tag — but a
 				// terminator or a NON-opener tag stops the walk
-				if (prev.type === "black") { s--; continue; }
+				if (prev.type === "black") { if (_atBoundary) { _pbsStopped = prev; break; } s--; continue; }
 				if (prev.type === "tag" && (!prev.parse.primary || openerTags.has(prev.parse.primary?.tag))
-					&& prev.parse.primary?.tag !== "activity") { s--; continue; }
+					&& prev.parse.primary?.tag !== "activity") { if (_atBoundary) { _pbsStopped = prev; break; } s--; continue; }
 				break;
+			}
+			if (_pbsStopped) {
+				run?.AddNote?.("info", "InteractiveScanner",
+					`${type}: the opener walk stopped at the page boundary before «${String((_pbsStopped.blackAfter || _pbsStopped.text || "")).replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim().slice(0, 60)}» — the widget opens its own box on its page (opener_rule.page_boundary_stop).`);
 			}
 
 			if (activityIdx >= 0) {
@@ -987,6 +1000,27 @@ class InteractiveScanner {
 						.replace(/\*/g, "").trim()).length;
 				}
 				if (!(bundle.tables ?? []).length && _chars < (_bid.min_member_chars ?? 40)) {
+					continue;
+				}
+			}
+			// THE INQUIRY SIDE-TABS LIST IS THE CRUMB LIST, NOT A WIDGET. On a registry-known Inquiry module's
+			// single-file page, a `tabs` bundle opened by the `[Side tabs]` instruction whose members are only the
+			// tab labels (red `[Tab N] <label>` subtags or black `Tab N – <label>` lines), followed by at most
+			// trailing_max other items (the first panel's swallowed heading, a callout), is RELEASED: no bundle, no
+			// hand-off box; the instruction, the black label lines and the trailing items stay free (the inquiry
+			// template's black-list reader wants the instruction free, and the heading opens its panel), while each
+			// red `[Tab N] <label>` item is marked consumed by the crumb list itself (no bundle) — the inquiry branches
+			// still read its label from the page items, as they did when a widget had eaten it, but it no longer
+			// counts as a free tab item, which would flip the page into the empty-opener mode and open a bare panel.
+			// Data member_rule.inquiry_side_tabs_crumb_list; env SIDETABSLIST_OFF.
+			{
+				const _crumb = this.#inquirySideTabsCrumbList(bundle, items, run);
+				if (_crumb) {
+					// the instruction too: left free it reads as a fallback panel OPENER (its bracket matches the
+					// side-tab opener patterns) and opens a bare extra panel; the black-list reader accepts the mark
+					if (_crumb.instrIdx >= 0) items[_crumb.instrIdx].consumedBy = "inquiry-crumb-list";
+					for (const k of _crumb.labelTagIdx) items[k].consumedBy = "inquiry-crumb-list";
+					run?.AddNote?.("info", "InteractiveScanner", "the side-tabs label list is the inquiry page's crumb list, not a tabs widget — released to the page (its labels read as crumbs, nothing rendered).");
 					continue;
 				}
 			}
@@ -1207,6 +1241,79 @@ class InteractiveScanner {
 		if (cfg.single_file_only !== false && run?.resolvedRules?.page_model === "multi-file") return false;
 		return true;
 	};
+
+	/**
+	 * THE INQUIRY SIDE-TABS LIST IS THE CRUMB LIST, NOT A WIDGET (member_rule.inquiry_side_tabs_crumb_list; env
+	 * SIDETABSLIST_OFF). True when the bundle is a `tabs` capture opened by the side-tabs instruction on a registry-known
+	 * Inquiry module's single-file page and its members are tab labels only — red `tab n` subtags carrying a label, or
+	 * black `Tab N – label` lines of at most label_max_words words, at least min_labels of them — followed by at most
+	 * trailing_max other items (the first panel's swallowed heading, a callout). Returns { labelTagIdx } — the indices
+	 * of the red `[Tab N] <label>` items, for the caller to mark consumed by the crumb list — or null when the bundle
+	 * is not such a list.
+	 *
+	 * @param {Object} bundle - the captured bundle (startIndex .. endIndex over items)
+	 * @param {Object[]} items - the page items
+	 * @param {ConversionRun} run
+	 * @returns {{labelTagIdx: number[]}|null}
+	 */
+	static #inquirySideTabsCrumbList(bundle, items, run) {
+		const cfg = DataService.Data.BoundaryBank?._meta?.member_rule?.inquiry_side_tabs_crumb_list;
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "SIDETABSLIST_OFF"]) return null;
+		const types = (cfg.bundle_types ?? ["tabs"]).map(String);
+		if (!types.includes(String(bundle?.type)) && !types.includes(String(bundle?.canonTag))) return null;
+		const tt = String(DataService.Data.ModuleStructureIndex?.module_meta?.[String(run?.moduleCode || "")]?.template_type ?? "");
+		if (!(cfg.template_types || ["Inquiry"]).map(String).includes(tt)) return null;
+		if (cfg.single_file_only !== false && run?.resolvedRules?.page_model === "multi-file") return null;
+		const strip = (s) => String(s ?? "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, " ").replace(/\s+/g, " ").trim();
+		const instr = new RegExp(cfg.instruction_pattern || "^\\s*(?:insert\\s+)?side\\s*tabs?\\b", "i");
+		const blackLabel = new RegExp(cfg.black_label_pattern || "^\\s*\\*{0,2}\\s*tab\\s*\\d+\\s*[–—:.\\-]\\s*\\S", "i");
+		const labelHead = /^\s*\*{0,2}\s*tab\s*\d+\s*[–—:.\-]\s*/i;
+		const maxWords = cfg.label_max_words ?? 8, minLabels = cfg.min_labels ?? 3, trailingMax = cfg.trailing_max ?? 2;
+		let invocationSeen = false, labels = 0, trailing = 0, afterLabels = false, instrIdx = -1;
+		const labelTagIdx = [];
+		const words = (s) => s.replace(/\*/g, "").trim().split(/\s+/).filter(Boolean).length;
+		const trail = () => { if (labels < minLabels) return false; afterLabels = true; return ++trailing <= trailingMax; };
+		for (let k = bundle.startIndex; k < bundle.endIndex; k++) {
+			const it = items[k];
+			if (!it) continue;
+			if (it.type === "tag") {
+				const text = strip(it.text);
+				const bracket = (/\[([^\]]*)\]/.exec(text) || [null, text])[1];
+				const tag = String(it.parse?.primary?.tag || "");
+				const tail = strip(it.blackAfter);
+				if (!invocationSeen && instr.test(bracket)) {
+					if (tail && !blackLabel.test(tail)) return null;      // body text on the instruction line → a real capture
+					invocationSeen = true; instrIdx = k;
+					if (tail) { if (words(tail.replace(labelHead, "")) > maxWords) return null; labels++; }
+					continue;
+				}
+				if (!afterLabels && /\btab\b/i.test(tag) && !/^end\b/i.test(tag)) {
+					const label = tail || text.replace(/\[[^\]]*\]/g, "").trim();
+					if (!label || words(label) > maxWords) return null;
+					labels++; labelTagIdx.push(k);
+					continue;
+				}
+				if (!trail()) return null;
+				continue;
+			}
+			if (it.type === "black") {
+				const t = strip(it.text);
+				if (!t) continue;
+				if (!afterLabels && blackLabel.test(t)) {
+					if (words(t.replace(labelHead, "")) > maxWords) return null;
+					labels++;
+					continue;
+				}
+				if (!trail()) return null;
+				continue;
+			}
+			if (it.type === "table") return null;                       // a data table is widget content
+			if (!trail()) return null;
+		}
+		if (!invocationSeen || labels < minLabels) return null;
+		return { instrIdx, labelTagIdx };
+	}
 
 	static #tilePageMarker(it, run) {
 		const tp = DataService.Data.EmitTemplates?.body_region?.fundamentals_panels?.tile_pages;
@@ -1962,9 +2069,19 @@ class InteractiveScanner {
 				&& (rl.follower_aliases ?? []).includes(String(op.parse?.primary?.alias ?? "").toLowerCase())
 				&& !(typeof process !== "undefined" && process.env && process.env[rl.env || "DBXLEAD_OFF"])) return startJ;
 		}
+		// a page boundary the splitter consumed (a single-file page's [End page]) still ends the capture: the first content
+		// item after it carries the boundary (opener_rule.page_boundary_stop; env OPENERPAGE_OFF)
+		const _pbsM = DataService.Data.BoundaryBank?._meta?.opener_rule?.page_boundary_stop;
+		const _pbsMOn = !!_pbsM && _pbsM.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_pbsM.env || "OPENERPAGE_OFF"]);
 		let j = startJ;
 		for (; j < items.length; j++) {
 			const next = items[j];
+			if (_pbsMOn && next._afterPageBoundary === true && j > startJ) {
+				run?.AddNote?.("info", "InteractiveScanner",
+					`${bundle.activityId ? "Activity " + bundle.activityId : bundle.type}: the capture ends at the page boundary before «${String(next.blackAfter || next.text || "").replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, "").trim().slice(0, 60)}» (opener_rule.page_boundary_stop).`);
+				break;
+			}
 
 			if (next.type === "table") {           // content_data — usually a member
 				// A PATHWAYS PERSONA TABLE is its own widget (KB 14A §14.2): the walk ends before it, so the main loop
@@ -1995,12 +2112,32 @@ class InteractiveScanner {
 				// loop's #interactiveInTable opens it as its own separate free-body bundle. DIRECT
 				// invocation only — this deliberately does NOT use the looser face-tag inference from
 				// #interactiveInTable below, so ordinary face/data tables are left untouched.
-				// Env ACTSPLIT_OFF.
+				// Env ACTSPLIT_OFF. The table-cell form has its own data shape
+				// (member_rule.display_terminator_table_cells): with pure_table_only it fires only
+				// when the table IS the display widget authored as a table — every other cell a
+				// picture or empty. A table that also carries data cells is the activity's OWN data
+				// table (the quiz whose prompt cell is the bubble, the click drop whose first row
+				// holds the bubble beside its image) and ending the capture there hands its rows to
+				// the bubble. Env ACTSPLITTABLE_OFF restores the unrefined site. A run note names
+				// every such table either way; the hosts the scoped flip-card / slideshow guards
+				// below own are left to them.
 				const mrT = DataService.Data.BoundaryBank._meta.member_rule;
 				if (mrT.same_activity_display_terminates && normaliser
 					&& !(typeof process !== "undefined" && process.env && process.env.ACTSPLIT_OFF)) {
 					const ct = this.#tableDirectInvocation(next.block, normaliser);
-					if (ct && ct !== bundle.type && (mrT.display_terminator_types ?? []).includes(ct)) break;
+					if (ct && ct !== bundle.type && (mrT.display_terminator_types ?? []).includes(ct)
+						&& !(mrT.table_display_terminates_types ?? []).includes(bundle.type)
+						&& !(mrT.table_display_terminates_types_slideshow ?? []).includes(bundle.type)) {
+						const tcfg = mrT.display_terminator_table_cells;
+						const tcOn = tcfg === undefined || tcfg === true || (tcfg && typeof tcfg === "object" && tcfg.enabled !== false);
+						const unrefined = !!(typeof process !== "undefined" && process.env && process.env[(tcfg && tcfg.env) || "ACTSPLITTABLE_OFF"]);
+						const pureOnly = !unrefined && !!(tcfg && typeof tcfg === "object" && tcfg.pure_table_only);
+						const fires = tcOn && (!pureOnly || this.#displayTableIsPure(next.block, tcfg.image_cell_pattern, normaliser,
+							mrT.display_terminator_types ?? [], tcfg.strip_red_notes !== false));
+						run?.AddNote?.("info", "InteractiveScanner",
+							`${bundle.activityId ? "Activity " + bundle.activityId : bundle.type}: a following table carries a [${ct}] cell — ${fires ? "it ends the " + bundle.type + " capture (a display widget authored as a table)" : "kept as the " + bundle.type + "'s own data table (display_terminator_table_cells.pure_table_only)"}.`);
+						if (fires) break;
+					}
 				}
 				// A MEMBER-based flipCard must TERMINATE at a FOLLOWING table that is itself a
 				// DIFFERENT-type display widget (e.g. a [speech bubble] authored as a table, appearing
@@ -3030,11 +3167,18 @@ class InteractiveScanner {
 					const olb = nai?.owner_lookback;
 					if (!naiId && olb && olb.enabled !== false
 						&& !(typeof process !== "undefined" && process.env && process.env[olb.env || "ACTIDOWNER_OFF"])) {
+						// the lookback never crosses a page boundary the splitter consumed either: the first
+						// item after it carries the boundary (opener_rule.page_boundary_stop; env OPENERPAGE_OFF)
+						const _pbsL = DataService.Data.BoundaryBank?._meta?.opener_rule?.page_boundary_stop;
+						const _pbsLOn = !!_pbsL && _pbsL.enabled !== false
+							&& !(typeof process !== "undefined" && process.env && process.env[_pbsL.env || "OPENERPAGE_OFF"]);
 						for (let b = (bundle.startIndex ?? j) - 1, n = 0; b >= 0 && n < (olb.max_back ?? 60); b--, n++) {
 							const p = items[b]?.type === "tag" ? items[b].parse?.primary : null;
-							if (!p) continue;
+							const _boundaryItem = _pbsLOn && items[b]?._afterPageBoundary === true;
+							if (!p) { if (_boundaryItem) break; continue; }
 							if (p.directive === "PAGE_BOUNDARY" || p.directive === "INTERACTIVE") break;
 							if (p.tag === "activity" && p.directive === "CONTAINER_OPEN") { naiId = items[b].parse.numbers?.[0] ?? null; break; }
+							if (_boundaryItem) break;
 						}
 					}
 					if (nai && nai.enabled !== false && naiId
@@ -3070,7 +3214,11 @@ class InteractiveScanner {
 						`${bundle.activityId ? "Activity " + bundle.activityId : bundle.type}: additional widget [${p.tag}] absorbed (${bundle.type} + ${extra}).`);
 					continue;
 				}
-				if (displayTerminates) break;   // display/narration follower → activity closes here
+				if (displayTerminates) {        // display/narration follower → activity closes here
+					run.AddNote("info", "InteractiveScanner",
+						`${bundle.activityId ? "Activity " + bundle.activityId : bundle.type}: the display follower [${p.tag}] (${extra}) closes the ${bundle.type} capture (display_terminator_types).`);
+					break;
+				}
 				// CONVERSATION + clickDrop reveal: a CONVERSATION-style speechBubble absorbs an
 				// immediately-following clickDrop as its own inline response — the writer's "Click to
 				// see its response:" instruction plus a [Click drop] (front/drop) tag together form
@@ -4476,6 +4624,62 @@ class InteractiveScanner {
 			}
 		}
 		return null;
+	};
+
+	/**
+	 * Is this table a display widget AUTHORED AS A TABLE and nothing more — every cell either the
+	 * display invocation's own cell (a listed type), a picture cell (image_cell_pattern, read after
+	 * the red markers and emphasis are stripped) or empty? A table that also carries data cells (a
+	 * quiz's options, a click drop's front / drop rows, [body] / heading cells around a bubble) is
+	 * the open activity's OWN data table and is not. A red run that invokes no widget — a tag such as
+	 * [image], the designer's note or layout request — is stripped before the cell is read, so the
+	 * black text alone decides. Data
+	 * member_rule.display_terminator_table_cells.{pure_table_only, image_cell_pattern, strip_red_notes}.
+	 *
+	 * @param {Object} block - a table block (block.rows = array of row arrays of cell text)
+	 * @param {string|undefined} imagePattern - the picture-cell regex source
+	 * @param {Object} normaliser - the tag normaliser (red-tag parse)
+	 * @param {string[]} displayTypes - the listed display widget types
+	 * @returns {boolean}
+	 */
+	static #displayTableIsPure(block, imagePattern, normaliser, displayTypes, stripRedNotes = true) {
+		const rows = Array.isArray(block?.rows) ? block.rows : [];
+		if (!rows.length) return false;
+		const RED = /\u{1f534}\[RED TEXT\]([\s\S]*?)\[\/RED TEXT\]\u{1f534}/gu;
+		let imgRe = null;
+		try { imgRe = new RegExp(imagePattern || "^(?:\\[\\s*image[^\\]]*\\]|\\[IMAGE:|_{0,2}https?://)", "i"); } catch { imgRe = /^(?:\[\s*image[^\]]*\]|\[IMAGE:|_{0,2}https?:\/\/)/i; }
+		let displayCells = 0;
+		for (const row of rows) {
+			for (const cell of (Array.isArray(row) ? row : [])) {
+				const raw = String(cell ?? "");
+				let isDisplay = false;
+				for (const m of raw.matchAll(RED)) {
+					const parse = normaliser.Parse(m[1]);
+					if (parse.primary?.directive === "INTERACTIVE"
+						&& displayTypes.includes(this.#widgetTypeFor(parse.primary.tag, parse.primary.alias, normaliser))) { isDisplay = true; break; }
+				}
+				if (isDisplay) { displayCells++; continue; }
+				// a red run that invokes ANOTHER widget makes the cell data (a quiz / hover typed in
+				// its own cell); with strip_red_notes every other red run — a tag such as [image], the
+				// designer's note or layout request («can the unicorn be above the list below») — is
+				// stripped first and what is left in BLACK decides: nothing = an empty cell, a
+				// picture address or placeholder = a picture cell, words = the activity's data
+				let invokes = false;
+				for (const m of raw.matchAll(RED)) {
+					if (normaliser.Parse(m[1]).primary?.directive === "INTERACTIVE") { invokes = true; break; }
+				}
+				if (invokes) return false;
+				const text = (stripRedNotes ? raw.replace(RED, "") : raw.replace(/\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu, ""))
+					.replace(/\*+/g, "").trim();
+				// the cell's lines (the parsed text joins a cell's paragraphs with « / »): every
+				// non-empty line a picture address or placeholder = a picture cell
+				const lines = text.split(/\s+\/\s+|\s*\n\s*/).map((l) => l.replace(/^[\s\/|•·\-–]+/, "").trim()).filter(Boolean);
+				if (!lines.length) continue;               // an empty cell (or red notes alone)
+				if (lines.every((l) => imgRe.test(l))) continue;   // a picture cell
+				return false;                              // a data cell — the activity's own table
+			}
+		}
+		return displayCells > 0;
 	};
 
 	/** Collects hyperlinks + pasted URLs from an item into bundle.media. */

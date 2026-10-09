@@ -1821,7 +1821,8 @@
 		"subject_rules": {
 			"module_code": {
 				"overview": "full-code",
-				"lesson": "free-text:\"Lesson 8\""
+				"lesson": "padded-number",
+				"_note_lesson": "Was the mined literal 'Lesson 8' — one member's chip on one page, rendered as 'Lesson 8 N' on every lesson page. The member golds (SSCI104, SSCI205) show the padded lesson number ('01', '02', '03') on every lesson page."
 			},
 			"h1_count": {
 				"overview": "1",
@@ -2009,7 +2010,8 @@
 		"subject_rules": {
 			"module_code": {
 				"overview": "full-code",
-				"lesson": "free-text:\"Lesson 5\""
+				"lesson": "lesson-label",
+				"_note_lesson": "Was the mined literal 'Lesson 5' — one member's chip on its lesson-5 page, rendered as 'Lesson 5 N' on every lesson page. The member golds label the chip by lesson ('Lesson 1', 'Lesson 2' …) where the subject rule applies (ANZH404); ANZH401 shows the full code on its lesson pages (a deviation, left to the level rules)."
 			},
 			"h1_count": {
 				"overview": "2",

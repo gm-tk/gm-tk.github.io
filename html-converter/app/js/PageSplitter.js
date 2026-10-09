@@ -1404,7 +1404,18 @@ class PageSplitter {
 				}
 
 				// [end page] / [end lesson]
-				if (singleFile) { closed = false; continue; }   // AR-3
+				if (singleFile) {   // AR-3: the marker leaves the stream; the first content item after it carries the
+					// boundary for the interactive scanner's opener walk-back (BoundaryBank
+					// opener_rule.page_boundary_stop; env OPENERPAGE_OFF)
+					const _pbs = DataService.Data.BoundaryBank?._meta?.opener_rule?.page_boundary_stop;
+					if (_pbs && _pbs.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[_pbs.env ?? "OPENERPAGE_OFF"])) {
+						let q = i + 1;
+						while (q < items.length && items[q].type === "black" && !String(items[q].text ?? "").trim()) q++;
+						if (q < items.length) items[q]._afterPageBoundary = true;
+					}
+					closed = false; continue;
+				}
 				// TILE-LESSON CLOSERS (as in module ENGJ403 lesson 5). The writer's
 				// "[end tile lesson navigate back to lesson 5]" closes a TILE
 				// sub-structure INSIDE the lesson, not the page — but it parses as an
@@ -1489,6 +1500,19 @@ class PageSplitter {
 				// the overview is held open until we know (handled above when
 				// the intro arrives; if no intro ever comes, the close stands)
 				closed = true;
+				// The consumed marker leaves the stream, so the interactive scanner's opener
+				// walk-back could reach across it into the previous page's activity: the first
+				// content item after it carries the boundary instead (BoundaryBank
+				// opener_rule.page_boundary_stop; env OPENERPAGE_OFF).
+				{
+					const _pbs = DataService.Data.BoundaryBank?._meta?.opener_rule?.page_boundary_stop;
+					if (_pbs && _pbs.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[_pbs.env ?? "OPENERPAGE_OFF"])) {
+						let q = i + 1;
+						while (q < items.length && items[q].type === "black" && !String(items[q].text ?? "").trim()) q++;
+						if (q < items.length) items[q]._afterPageBoundary = true;
+					}
+				}
 				continue;
 			}
 

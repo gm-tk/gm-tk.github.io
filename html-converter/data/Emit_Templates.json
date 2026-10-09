@@ -5115,6 +5115,7 @@
 			"full-code": "{code}",
 			"decimal": "{lesson}",
 			"padded-number": "{lessonPadded}",
+			"lesson-label": "Lesson {lessonNumber}",
 			"free-text": "{freeText}",
 			"absent": null,
 			"jsfilled/absent": null,
@@ -5122,6 +5123,10 @@
 		},
 		"module_code_literal_guard": {
 			"enabled": true,
+			"label_pattern": "^(?:lesson|module)\\s+\\d+$",
+			"label_style": "lesson-label",
+			"label_env": "CHIPLABEL_OFF",
+			"_doc_label": "A mined free-text chip literal that is a lesson or module LABEL («Lesson 5», «Module 3») was one member's chip text on ONE page: the number is that page's lesson number, not a literal, and appended to the current page's number it read «Lesson 5 1» on every lesson page of the subject. Such a literal renders as the label STYLE instead — module_code_value_map.lesson-label, the label word with THIS page's number («Lesson 1», «Lesson 2» …), the form the human build uses where it labels the chip by lesson. A registry row whose members' golds show a different style (padded numbers, the full code) is corrected to that style in the registry itself; this guard is the net under every mined literal of the label shape. Env CHIPLABEL_OFF renders the literal as configured, page number appended.",
 			"_doc": "The style-anchor registry's free-text overview chip is mined from ONE group member's human build; when that chip is the member's OWN MODULE CODE the literal would leak to every sibling (XFUN01 would show XFUN02, MXFUN02/03 → MXFUN01, ENGFUN02 → ENGFUN03, XLP01-05 → XPL06, XWHA01 → XWHA02). A literal matching code_pattern is the convention 'the module's full code' → render run.moduleCode instead. Genuine free-text ('Module', 'Lesson 5') untouched. Every shown human chip is the module's own code (ENGFUN02, XWHA01/02, XFUN02, MXFUN01); XFUN01's human chip is commented OUT (content XFUN01); the XLP family's human builds swap XLP→XPL systematically = non-derivable editorial (the guard fixes the digits, the letters stay LP). #header-scoped. Env CHIPLIT_OFF.",
 			"code_pattern": "^[A-Z][A-Z-]*\\d+$"
 		},

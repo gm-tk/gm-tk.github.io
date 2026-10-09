@@ -598,12 +598,34 @@ class SkeletonBuilder {
 				&& run.moduleCode && literal !== run.moduleCode) {
 				literal = run.moduleCode;
 			}
-			rendered = `${literal} ${page.lessonNumber ?? ""}`.trim();
+			// LESSON-LABEL LITERAL GUARD. A mined literal that is a lesson or module LABEL
+			// («Lesson 5», «Module 3») was one member's chip text on ONE page — the number is
+			// that page's, not a literal; appended to this page's number it reads «Lesson 5 1».
+			// Such a literal renders as the label STYLE (module_code_value_map.lesson-label:
+			// the label word + this page's own number) with a note. Data
+			// header.module_code_literal_guard.{label_pattern, label_style}; env CHIPLABEL_OFF.
+			const labelRe = litGuard && litGuard.enabled !== false && litGuard.label_pattern
+				&& !(typeof process !== "undefined" && process.env && process.env[litGuard.label_env || "CHIPLABEL_OFF"])
+				? new RegExp(litGuard.label_pattern, "i") : null;
+			const labelStyle = litGuard?.label_style || "lesson-label";
+			if (labelRe && labelRe.test(literal) && mcMap[labelStyle]) {
+				rendered = Utils.FillTemplate(mcMap[labelStyle], {
+					code: run.moduleCode ?? "MODULE",
+					lesson: page.lessonLabel ?? "0.0",
+					lessonPadded: Utils.Pad2(page.lessonNumber ?? 0),
+					lessonNumber: String(page.lessonNumber ?? ""),
+				});
+				run.AddNote("info", "SkeletonBuilder",
+					`Page ${page.lessonLabel}: the registry's chip literal «${literal}» is a lesson label, not a chip — rendered as the ${labelStyle} style «${rendered}» (module_code_literal_guard.label_pattern).`);
+			} else {
+				rendered = `${literal} ${page.lessonNumber ?? ""}`.trim();
+			}
 		} else if (mcValue in mcMap && mcMap[mcValue] !== null) {
 			rendered = Utils.FillTemplate(mcMap[mcValue], {
 				code: run.moduleCode ?? "MODULE",
 				lesson: page.lessonLabel ?? "0.0",
 				lessonPadded: Utils.Pad2(page.lessonNumber ?? 0),
+				lessonNumber: String(page.lessonNumber ?? ""),
 			});
 		} else if (mcValue && !(mcValue in mcMap)) {
 			run.AddNote("warn", "SkeletonBuilder",

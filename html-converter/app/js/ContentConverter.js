@@ -1685,8 +1685,10 @@ class ContentConverter {
 					for (const ln of String(it.text || "").split(/\n/)) { const t = ln.replace(/\*/g, "").trim(); if (t) L.push({ it, t }); }
 				} else L.push({ it, tag: true });
 			}
+			// a free `[Side Tabs]` tag, or one the scanner marked as the released crumb list's own (no bundle)
 			const isInstr = (e) => e.tag
-				? (e.it.type === "tag" && e.it.consumedBy === undefined && /side\s*tabs?/i.test(fbBracket(e.it)) && !String(e.it.blackAfter || "").trim())
+				? (e.it.type === "tag" && (e.it.consumedBy === undefined || e.it.consumedBy === "inquiry-crumb-list")
+					&& /side\s*tabs?/i.test(fbBracket(e.it)) && !String(e.it.blackAfter || "").trim())
 				: instrRe.test(e.t);
 			for (let i = 0; i < L.length && !fbBlackList; i++) {
 				if (!isInstr(L[i])) continue;
@@ -1719,7 +1721,8 @@ class ContentConverter {
 				|| (m.type === "tag" && /^tabs$/i.test(m.parse?.primary?.tag || "") && !String(m.blackAfter || "").trim());
 			const swallowedHeading = (m) => m.type === "tag" && /^h[1-4]$/i.test(m.parse?.primary?.tag || "");
 			const bareListBundle = (it) => {
-				if (it.consumedBy === undefined) return true;
+				// a free item, or one the scanner marked as the released side-tabs crumb list's own (no bundle)
+				if (it.consumedBy === undefined || it.consumedBy === "inquiry-crumb-list") return true;
 				const b = bundles[it.consumedBy];
 				if (!b || b.type !== "tabs" || !(b.memberItems || []).length) return false;
 				const mem = b.memberItems || [];
@@ -2648,6 +2651,9 @@ class ContentConverter {
 				// already open.
 				// a title heading the mode-opener walk handed to the OWNED box renders there.
 				if (it.consumedBy === "activity-mode-merge-title") continue;
+				// an Inquiry page's side-tabs crumb list released by the scanner (member_rule.inquiry_side_tabs_crumb_list):
+				// the red `[Tab N] <label>` items are the crumbs' source and render nothing of their own
+				if (it.consumedBy === "inquiry-crumb-list") continue;
 				if (it.consumedBy === "activity-mode-merge") {
 					if (it.blackAfter && it.blackAfter.trim()) {
 						emit(...actDeBold(ListsAndRuns.renderBlackText(it.blackAfter, run, it.block?.links)));
