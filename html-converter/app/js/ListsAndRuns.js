@@ -462,6 +462,26 @@ class ListsAndRuns {
 				nodes[k] = { kind: "ul", level, content: cand[k], _star: true };
 			}
 		}
+		// A LEVEL JUMP: a list item two or more indent levels deeper than the list item before it. The renderer below nests a
+		// deeper run one level under its parent and its loop skips every item deeper than that, so the writer's sub-bullets
+		// indented six spaces under a two-space parent were lost (an empty nested list). The jump is normalised here, in the
+		// data's form: "nested" (the next nesting), "sibling" (the parent's own level), or "paragraphs" (prose after the
+		// list). Data list_nesting.level_jump {enabled, env LISTJUMP_OFF, form}.
+		const _lj = cfg.level_jump;
+		if (_lj && _lj.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[_lj.env ?? "LISTJUMP_OFF"])) {
+			const form = _lj.form ?? "nested";
+			let prevList = null;
+			for (let k = 0; k < nodes.length; k++) {
+				const nd = nodes[k];
+				if (nd.kind === "p") { if (nd.content.trim()) prevList = null; continue; }
+				if (prevList && nd.level >= prevList.level + 2) {
+					if (form === "paragraphs") { nodes[k] = { kind: "p", level: 0, content: nd.content }; continue; }
+					nd.level = form === "sibling" ? prevList.level : prevList.level + 1;
+				}
+				prevList = nd;
+			}
+		}
 		const fullyBold = (s) => /^\*\*[\s\S]+\*\*$/.test(s.trim());
 
 		// render a contiguous run of list items at `baseLevel` into one <ul>/<ol>; deeper

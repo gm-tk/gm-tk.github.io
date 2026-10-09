@@ -366,9 +366,15 @@ class InteractiveScanner {
 				// it is captured only when it will build. Data interactive_builders.pathwaysPersona; env PERSONA_OFF.
 				const personaType = InteractiveBuilder.PathwaysPersonas(it.block)
 					? { type: "pathwaysPersona", canonTag: "pathways persona" } : null;
-				const cellType = personaType ?? ((_ctgOn && this.#bilingualContentTable(it.block))
+				let cellType = personaType ?? ((_ctgOn && this.#bilingualContentTable(it.block))
 					? null
 					: this.#interactiveInTable(it.block, normaliser, InteractiveScanner.#tableInteractionCue(items, i)));
+				// THE HEADERLESS SECTION TABLE: a bilingual table with no «English ║ Māori» header row but a paired heading
+				// first row («[H1] 1.5 ║ [H1] 1.5») is the section's prose; when the widget the cue would make is an in-cell
+				// form the cell renderer builds (a carousel typed in the cell, a tick list, a video, a dropbox button) the
+				// table stays content and is NOT captured. Data dual_language.content_table_guard.headerless_sections;
+				// env REOSECTIONTABLE_OFF.
+				if (cellType && !personaType && _ctgOn && InteractiveScanner.#headerlessSectionTable(it.block, cellType.type)) cellType = null;
 				if (cellType) {
 					const bankEntry2 = bank.interactives[cellType.type] ?? null;
 					const tableBundle = {
@@ -1131,6 +1137,29 @@ class InteractiveScanner {
 			.replace(/\u{1f534}|\[\/?RED TEXT\]|\*/gu, "").toLowerCase().trim();
 		return new RegExp(cfg?.header_english || "english", "i").test(fold(rows[0][0]))
 			&& new RegExp(cfg?.header_maori || "māori|maori|te reo", "i").test(fold(rows[0][1]));
+	};
+
+	/**
+	 * Is this a HEADERLESS bilingual section table — no «English ║ Māori» header row, but a first row whose two
+	 * cells both open with a heading tag — whose cue would make a widget the cell renderer builds in place? Such a
+	 * table is the section's reo/eng prose and is left to BilingualBuilder (its in-cell carousel / tick list / video /
+	 * dropbox button render there); a cue that needs its own data rows (flipCard, dragAndDrop, an embedded activity)
+	 * is not released. Data dual_language.content_table_guard.headerless_sections; env REOSECTIONTABLE_OFF.
+	 *
+	 * @param {Object} block - a table block
+	 * @param {string} type - the widget type #interactiveInTable would assign
+	 * @returns {boolean}
+	 */
+	static #headerlessSectionTable(block, type) {
+		const cfg = DataService.Data.EmitTemplates?.elements?.dual_language?.content_table_guard?.headerless_sections;
+		if (!cfg || cfg.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "REOSECTIONTABLE_OFF"])) return false;
+		if (!Array.isArray(cfg.release_types) || !cfg.release_types.includes(type)) return false;
+		const rows = block?.rows ?? [];
+		if (!rows.length || !Array.isArray(rows[0]) || rows[0].length < 2) return false;
+		const strip = (s) => String(s ?? "").replace(/🔴|\[\/?RED TEXT\]|\*/g, "");
+		const re = new RegExp(cfg.paired_heading_pattern ?? "^\\s*\\[\\s*h[1-3]\\s*\\]", "i");
+		return re.test(strip(rows[0][0])) && re.test(strip(rows[0][1]));
 	};
 
 	/**

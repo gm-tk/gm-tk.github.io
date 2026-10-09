@@ -10768,7 +10768,7 @@ class InteractiveBuilder {
 						if (vid && videoTpl) cur.parts.push({ video: vid });
 						else if (file) cur.parts.push({ img: file });
 						else {
-							const alt = this.#carouselVideoEmbed(lurl, tpl, cfg);
+							const alt = this.#carouselVideoEmbed(lurl, tpl, cfg, run, restText);
 							if (alt) cur.parts.push({ html: alt });
 							else if (slCfg.note_unresolved_media !== false) this.#carNoteAssetRequest(bundle, m, lab.rest, mv);
 							else return null;                        // a url we cannot place → keep the box
@@ -10839,7 +10839,7 @@ class InteractiveBuilder {
 					continue;
 				}
 				const alt = (vrCfg.other_hosts !== false) && !env.CARVIDEO_OFF
-					? this.#carouselVideoEmbed(url, tpl, cfg) : null;
+					? this.#carouselVideoEmbed(url, tpl, cfg, run, this.#cellText(raw).trim()) : null;
 				// a video/[embed] we cannot resolve is an ASSET REQUEST, not a build failure —
 				// the writer is naming media the developer will source (the decodable-story
 				// [embed book] family, which the free-body path treats as a scaffold). It is
@@ -11187,7 +11187,7 @@ class InteractiveBuilder {
 			for (const cells of groups) {
 				const parts = [], perCell = [];
 				for (const cell of cells) {
-					const got = this.#carCellParts(cell, { bundle, tpl, cfg, mv, rich, idRe, inline, links: item.block?.links });
+					const got = this.#carCellParts(cell, { bundle, tpl, cfg, mv, rich, idRe, inline, links: item.block?.links, run });
 					if (got === null) return null;                   // red instruction / unreadable cell
 					perCell.push(got);
 				}
@@ -11292,7 +11292,7 @@ class InteractiveBuilder {
 	 * @param {object} ctx - bundle / tpl / cfg / mv / rich / idRe / inline
 	 * @returns {Array<object>|null} the parts, or null to decline the whole build
 	 */
-	static #carCellParts(cell, { bundle, tpl, cfg, mv, rich, idRe, links }) {
+	static #carCellParts(cell, { bundle, tpl, cfg, mv, rich, idRe, links, run }) {
 		let raw = String(cell ?? "");
 		if (!raw.trim()) return [];
 		// RED TEXT IN A CELL IS NOT AUTOMATICALLY AN INSTRUCTION. In this dialect the
@@ -11362,7 +11362,7 @@ class InteractiveBuilder {
 		if (isVideo && (!kind || /video|embed/i.test(kind) || !text)) {
 			const id = String(url).match(idRe)?.[1];
 			const embed = id ? { video: id } : (() => {
-				const alt = this.#carouselVideoEmbed(url, tpl, rich);
+				const alt = this.#carouselVideoEmbed(url, tpl, rich, run, text);
 				return alt ? { html: alt } : null;
 			})();
 			if (!embed) { this.#carNoteAssetRequest(bundle, null, raw, mv); return []; }
@@ -11558,8 +11558,15 @@ class InteractiveBuilder {
 	 * @param {object} cfg - the rich_slides config block
 	 * @returns {string|null} the embed HTML, or null to decline
 	 */
-	static #carouselVideoEmbed(url, tpl, cfg) {
+	static #carouselVideoEmbed(url, tpl, cfg, run, label) {
 		const u = String(url ?? "");
+		// a login-walled address (a SharePoint draft or document) is the developer's record, not a learner frame — the
+		// shared login-wall form inside the slide (carousel.login_wall; env CARLOGINWALL_OFF)
+		const lwc = tpl?.login_wall;
+		if (lwc && lwc.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[lwc.env ?? "CARLOGINWALL_OFF"])) {
+			const f = MediaBuilder.LoginWallFrame(u, label, run);
+			if (f) return f;
+		}
 		if (!this.#carouselVideoUrlOk(u, cfg)) return null;
 		const vid = DataService.Data.EmitTemplates.video ?? {};
 		const mt = tpl?.media_table ?? {};

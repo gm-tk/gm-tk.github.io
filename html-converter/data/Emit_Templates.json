@@ -154,6 +154,17 @@
 				"env": "REOVIDEONOURL_OFF",
 				"flag": "{label} with no URL found — add the video source."
 			},
+			"video_media_list_row": {
+				"_doc": "THE NUMBERED VIDEO PART TAKES ITS MEDIA LIST ROW. A bilingual cell's '[Item N] [Video] <title>' part never carries an address (none of the family's video parts does); its Media List row holds it. The frame shipped empty with the flag before it while the acknowledgements, pairing the same row by its page number, credited the video on the page. The row is read by elements.media_list_item_row (the writer's number, else the title's words plus the table's own page), and a video host's address builds the body path's embed in the frame's place — the YouTube frame (TRR102 0.0, TRR103 1.0, TRR203 3.0, PNR101 0.0, TRR110 4.0 match the human build); an address the page cannot embed (SharePoint) keeps the empty frame under the red flag that names the writer's line AND the address (media_list_item_row.not_embeddable_flag — the human pages keep a red designer note there). No row, a tie or a part without an item reference keeps the empty frame and its flag. Env REOVIDEOMLROW_OFF.",
+				"enabled": true,
+				"env": "REOVIDEOMLROW_OFF"
+			},
+			"red_prose_note": {
+				"enabled": false,
+				"env": "REOREDNOTE_OFF",
+				"min_words": 3,
+				"_doc": "A RED NOTE INSIDE A BILINGUAL CELL IS THE WRITER'S NOTE, NOT LEARNER TEXT. The writer types a note to Creative Services in red inside a bilingual table cell ('Note to CS - Please use Sassoon font.', 'Background picture to draw over', 'Card 1 (match to)'); the cell splitter had no tag to read, so it stripped the red markers and shipped the note as learner paragraphs in both languages — the body path turns every red line that is not a tag into a Writers Note. Measured: 122 wholly-red prose parts of three or more words in 15 modules, 39 reaching the learner where the human pages show nothing (13 where the human kept the words). A cell part that is entirely red with no bracket tag and at least `min_words` words now renders as the retained Writers Note (NotesAndComments.redFlag, kind cs — the template-placeholder guard included), never as learner text; a shorter red part (a label, a single word) is left as it was. Env REOREDNOTE_OFF restores the old rendering."
+			},
 			"widget_label_drop": {
 				"_doc": "THE WIDGET TAG'S OWN WORDS ARE NOT PROSE. A bilingual cell part typed as one red instruction — '[Interactive] Carousel', '[Interactive] Carousel pic with word/audio' — lost its bracket tag and kept the tag's words, so the learner read 'Carousel' in both languages. The human build shows nothing there (it builds the widget). A part whose words after a leading tag of lead_tag_pattern are only a widget name (label_pattern) is the tag's label: dropped.",
 				"enabled": true,
@@ -238,6 +249,13 @@
 				"env": "AUDIOIMGTAG_OFF",
 				"_doc": "KB 01E / 04B 'Audio Image': `<div class=\"audioImage\"><div id=\"AUDIO_FILENAME\" class=\"audioImageOption\"><img class=\"img-fluid\" …></div></div>`. In a bilingual cell (BilingualBuilder.bilingualSplit) the writer's `[Audio Image]` / `[Audio Image Hover]` / `[AudioImage]` tag line followed by its `[Item N] [Image] desc` and `[Item N] [Audio] name` lines is ONE audio-image unit (id = the audio name, the img = the cell image the converter already builds), rather than the lexicon's `audioimage` alias of `audio` giving an empty audio player + an image + a second audio player. Units the source runs together (no text between them) share one `div.row`, each unit in the `group_cols` column for the run's size (the gold: 2 → col-md-6 offset-md-0 col-12, 4 → col-md-3 col-6); a lone unit stands bare. A broken shape (no image, or no audio after it) emits the plain embeds. Env AUDIOIMGTAG_OFF.",
 				"tag_pattern": "^\\s*\\[\\s*audio\\s*-?\\s*image(?:\\s+hover)?\\s*\\]\\s*$",
+				"hover_spellings": {
+					"enabled": true,
+					"env": "AUDIOHOVERTAG_OFF",
+					"tag_pattern": "^\\s*(?:\\[\\s*interactive\\s*\\]\\s*)?\\[\\s*audio\\s*-?\\s*hover(?:\\s+image|\\s+trigger)?\\s*\\]\\s*$",
+					"image_lookahead": 2,
+					"_doc": "THE HOVER SPELLINGS OF THE AUDIO-IMAGE TAG. The writer also opens the same unit as «[AudioHover]», «[Audio Hover]», «[Audio Hover Trigger]» or «[Interactive] [Audio Hover Image]» — the picture that plays its audio, when the parts that follow are its «[Item N] [Image] desc» and «[Item N] [Audio] name» lines (TRR106: «[Interactive] [Audio Hover Image] / [Item 10] [Image] Short vowels Uu / [Item 11] [Audio] u short» is the human's `div.audioImage > div#\"u short\".audioImageOption > img`; the plain reading shipped an empty audio player, the picture and a second empty player). A hover tag opens a unit ONLY when an image part follows within image_lookahead parts; a hover tag with audio alone (a word's sound after a heading) is left exactly as it is, and a hover-opened unit whose audio never comes owes no audio player (the picture renders alone). Env AUDIOHOVERTAG_OFF reads only the audio-image spellings."
+				},
 				"unit_template": "<div class=\"audioImage\">\n<div id=\"{name}\" class=\"audioImageOption\">\n{img}\n</div>\n</div>",
 				"group_cols": {
 					"2": "col-md-6 offset-md-0 col-12",
@@ -280,6 +298,13 @@
 			},
 			"content_table_guard": {
 				"enabled": true,
+				"headerless_sections": {
+					"enabled": true,
+					"env": "REOSECTIONTABLE_OFF",
+					"paired_heading_pattern": "^\\s*\\[\\s*(?:h[1-3]|body)\\s*\\]",
+					"release_types": ["carousel"],
+					"_doc": "THE HEADERLESS BILINGUAL SECTION TABLE. The guard knows a reo/eng prose table by its «English ║ Māori» header row; the Pūriki modules' lesson-section tables open with a paired heading or body row instead («[H1] 1.5 ║ [H1] 1.5», «[H3] Find the ‘ao’ ║ [H3] Rapua …»), so a section whose body cell carried a carousel typed in the cell was captured WHOLE as that carousel and its headings and prose hid in a hand-off box (TRR109 1.5 «Kete kupu / Vocabulary»: the human page shows the prose, then the carousel). A table whose first row's two cells both open with a heading or body tag is CONTENT when the type the scanner would make of it is one of release_types — the carousel, which the cell renderer builds in place. The other cues stay captured: a ☒ checklist or a dropbox button (the renderer has no selection box or dropbox button for a cell — the finished pages box them as activities), the generic «[Interactive]» marker (its trailing red instruction would render as prose), and any cue that needs its own data rows (a flip card's faces, a drag-and-drop's pairs, an embedded activity's rows) — the designer finds each whole in its hand-off. Env REOSECTIONTABLE_OFF: the header-row test alone."
+				},
 				"_note_pairing": "Default-on, and it must run WITH section_grouping: the released content tables unfold reo/eng inside the human's div.activity nest, and the embedded-widget marker is re-emitted inside the box. On its own (without the selective boxing + the per-paragraph interleave) unfolding a content table that embeds a widget reference puts the prose in the wrong order and nesting. env REOTABLE_OFF turns it off independently of REONEST_OFF.",
 				"_status": "The guard stops the scanner over-capturing a bilingual `English|Māori` content table as a widget (so the intro unfolds + the activity box wraps the REAL widget). Unfolding a content table that EMBEDS a widget must still emit the widget in the human's structure (its own row>col / the audioImage grid / etc.) — a bare cv2 placeholder is not enough on modules with no activity box (as in TRR113). The guard + `#bilingualContentTable` + the `#bilingualTable` placeholder + the `#bilingualSplit` consecutive-tag strip are flag-gated here; they run together with section_grouping and REOACT to produce the boxes.",
 				"_note_overcapture": "The activity-box prerequisite. Writers embed a widget reference (`[Interactive] [Flipcard]`/`[Carousel]`) INSIDE the intro `[Body]` cell of a bilingual `English|Māori` content table (as in TRR102); without this guard `InteractiveScanner.#interactiveInTable` OVER-CAPTURES the WHOLE content table (Activity NX: + [H2] heading + [Body] prose) as a flipCard widget, so the reo/eng intro prose never renders and the activity box lands on the WRONG content. So in reoMode, `#interactiveInTable` is skipped for a table whose row-0 header is `English|Māori` (`#bilingualContentTable`, mirrors `#bilingualHeader`) — the table falls through to `#bilingualTable` and unfolds as reo/eng. A real widget table ([Activity Embedded] [X] opener, flipCard [Item N] data, quiz) has NO English|Māori header → still captured. env REOTABLE_OFF."
@@ -288,6 +313,16 @@
 				"enabled": true,
 				"bundle_handoff": {
 					"enabled": true,
+					"lead_prose": {
+						"enabled": true,
+						"env": "BILHANDOFFLEAD_OFF",
+						"row_pattern": "^\\s*\\[\\s*(?:h[1-3]|body)\\s*\\]",
+						"other_tag_pattern": "\\[(?!\\s*(?:h[1-3]|body)\\s*\\])[^\\]\\n]{1,60}\\]",
+						"red_note_pattern": "🔴\\[RED TEXT\\]\\s*(?!\\[|\\s*\\[/RED TEXT\\])\\S",
+						"lead_text_pattern": "^\\s*\\[[^\\]]*\\]\\s*[\\p{L}\\p{N}“‘\"'(]",
+						"max_rows": 6,
+						"_doc": "THE SECTION PROSE BEFORE THE HAND-OFF BOX. A Pūriki-module activity is a writer's «[Activity: Embedded] <widget words>» line followed by ONE table that opens with the section's own paired prose rows («[H3] Find the ‘ao’ ║ [H3] Rapua ngā ‘ao’», «[Body] instructions ║ [Body] tohutohu») and continues with the widget's data rows; the scanner captures the whole table as the widget's member, so the heading and the instructions sat only inside the collapsed hand-off box. The finished page shows the heading and the instructions, then the widget. So the bundle's first member table's LEADING rows — each of whose two cells opens with a heading or body tag (row_pattern) followed by a word (lead_text_pattern — a tag followed by a stray colon is not prose), which carry no other tag (other_tag_pattern) and no untagged red span (red_note_pattern — a reviewer's note typed red inside the cell stays in the box), at most max_rows of them — render as bilingual prose before the box; the box keeps the whole table as the designer's reference. Env BILHANDOFFLEAD_OFF: the box alone, as before."
+					},
 					"_doc": "A widget bundle the bilingual section consumes gets the STANDARD hand-off box (#interactivePlaceholder, hand-off only — InteractiveBuilder.Build is NOT tried for a bilingual widget), the same box every bundle outside a section gets, with its data-cv2-index matching {CODE}_interactives.txt. Otherwise the section would render one bare `cv2-interactive bilingual-unbuilt` box holding only the bundle's FIRST member — an EMPTY <table> when that member is the writer's `[Activity: Embedded] …` tag line — and every later member (the reo/eng heading + instruction table, the data table) would render nothing. env BILHANDOFF_OFF."
 				},
 				"_note_selective_boxing":"Default-on. The human boxes SELECTIVELY: only lesson rows that are true interactive activities are `div.activity`; prose / intro / audioImage-grid sections sit in a BARE `col-md-8` (others are callouts or side columns). So #bilingualSection boxes a real-widget section -> div.activity[number] and leaves a prose/audioImage-grid section as a bare col-md-8, and #bilingualRows interleaves reo/eng PER PARAGRAPH (reo,eng,reo,eng — spec §9b balance) and strips the `Activity NX:`/`Ngohe NX:` label (the human omits it / lifts it to the box's number= attr). The `[H1] N.M` discriminator finds every section, the scanner's #bilingualSectionOpener terminator releases each from an over-capturing bundle, and the nesting renders as the human's `row > col-md-8 > div.activity > row > col-12`. See spec §9e. env REONEST_OFF.",
@@ -1465,6 +1500,36 @@
 			"kind_words": ["insert", "video", "videos", "embed", "imbed", "link", "interactive", "film", "clip", "audio", "here", "a", "an", "the"],
 			"_doc": "THE MISSING-SOURCE FLAG NAMES THE WRITER'S OWN TAG. An address-less video or embed tag ships the red flag '[video] with no URL found — add the video source.'; when the tag's line is the writer's brackets only and they carry words beyond the bare kind ('[Insert video – 1. section one teaching]', '[Insert Video Item 4]', '[Video] [Audiovisual item 11]', '[Please crop this video from the beginning to 2.41]'), those words were the developer's only record of WHICH video goes there and were dropped — the human build keeps each request beside the video it sourced (DAN1006 '<!-- [Insert introduction video] -->'). MediaBuilder.NoUrlFlag: the flag names the writer's brackets, verbatim, in place of '[video]' / '[embed]'. A bracket of kind_words alone ('[video]', '[Interactive: video]', '[Insert video]') keeps the bare flag, and a line with words outside its brackets keeps it too (media_free_note ships those words as the Writers Note). Env NOURLTAG_OFF."
 		},
+		"media_list_item_row": {
+			"enabled": true,
+			"env": "MLITEMROW_OFF",
+			"kinds": ["video"],
+			"item_pattern": "\\[\\s*(?:insert\\s+)?(?:media\\s+)?item\\s*(\\d*)\\s*\\]",
+			"row_type_pattern": "video",
+			"kind_words": ["video", "videos", "youtube", "you", "tube", "vimeo", "animation", "movie", "clip", "link", "insert", "embed", "mp4", "mov", "item"],
+			"min_word_chars": 2,
+			"same_page_weight": 10,
+			"used_penalty": 5,
+			"unwrap_pattern": "^https?://[^/]*safelinks\\.protection\\.outlook\\.com/\\?url=([^&\\s]+)",
+			"embed_host_pattern": "youtu\\.?be|youtube\\.com|vimeo\\.com",
+			"not_embeddable_flag": "{label} — the Media List address is not one the page can embed; re-host the video: {url}",
+			"_doc": "A NUMBERED MEDIA TAG WITH NO ADDRESS TAKES ITS MEDIA LIST ROW. The writer types '[Item 1] [Video] Youtube Matike Maranga (Karaoke)' with no address on the line; the Media List row for it carries the address in its source cell. The number lookup alone cannot find it — these lists often leave the Item cell empty and number the page instead ('║ 10 ║ Video ║ Vowel action song ║ Youtube ║ Matike Maranga (Karaoke) … [LINK: …]') — so the tag shipped the red flag and an empty frame while the acknowledgements, pairing the same row by its page number, already credited the video on the page. The human build embeds the row's address when it is a video host's (the YouTube frame on TRR102 0.0, TRR103 1.0, TRR203 3.0, PNR101 0.0, TRR110 4.0); a SharePoint address — a login-walled file the page cannot show — the human re-hosts (Vimeo, a local file) or leaves beside an empty frame with a red designer note naming the item and the file, so an address outside `embed_host_pattern` ships the red flag `not_embeddable_flag` (the writer's line and the address, the developer's record of what to re-host) with the empty frame, never a learner frame on a login wall. MediaBuilder.MediaListRowUrl, read LAST in the address chain (after the tag's own link, the line's, the following line's, the red address line): only a tag of one of `kinds` whose own words carry `item_pattern` consults the list; (1) where the list numbers its rows and the tag carries a number, the row with that number (any type — the writer's pointer is explicit); else (2) among the rows of `row_type_pattern` with an address, the one sharing the most of the tag's title words (the tag's words minus `kind_words`, `min_word_chars` or longer, folded without diacritics) with the row's visible words, plus `same_page_weight` when the row's page is the tag's block's own page (the acknowledgements' page-record evidence; counted only when the run trusts the page records) — a unique best with a positive score; a title-less tag takes only a unique same-page row; a tie or no row keeps the flag. A row embeds once: a row an earlier tag of the run took scores `used_penalty` lower, so the second of two part-matching rows goes to the later tag ('Youtube vowel song' on a later page takes 'Vowel waiata', not the 'Vowel action song' the overview already embeds — the human build's reading). A mail-safety wrapper around a row's address ('safelinks.protection.outlook.com/?url=…') is unwrapped (`unwrap_pattern`, its first group the encoded address), so the YouTube address inside it builds the YouTube frame. A tag with no item reference and a bare '[video]' are untouched. Env MLITEMROW_OFF."
+		},
+		"video_login_wall": {
+			"enabled": true,
+			"env": "VIDLOGINWALL_OFF",
+			"host_pattern": "sharepoint\\.com/(?::v:|[^\"'\\s]*stream\\.aspx)",
+			"flag": "{label} — the video's address is on a login wall the page cannot embed; re-host it: {url}",
+			"shell": "<div class=\"videoSection ratio ratio-16x9\">\n<iframe></iframe>\n</div>",
+			"document_hosts": {
+				"enabled": true,
+				"env": "VIDLOGINWALLDOC_OFF",
+				"host_pattern": "sharepoint\\.com/:[a-uw-z]:",
+				"flag": "{label} — the video's address is a document on a login wall (the audiovisual request), not a video the page can embed; embed the produced video: {url}",
+				"_doc": "A VIDEO TAG WHOSE ADDRESS IS A DOCUMENT IS THE AUDIOVISUAL REQUEST. The writer types '[Video] [Audiovisual item 1 (Malia)] https://mytekuraschool.sharepoint.com/:w:/s/…' — the Word request (the script) for a video the audiovisual team will produce; the generic frame showed the learner a sign-in wall over a document. The human pages keep the empty Vimeo shell with the To Do beside it ('Designer/Developer To Do: add vimeo embed for Audiovisual item 1 (Malia)', FRNO902) or the produced video. A SharePoint share link of any document form (`:w:` `:b:` `:u:` `:x:` `:p:` `:f:` …) on a VIDEO tag takes the parent's form with this wording; the embed tag is untouched (a PDF the writer embeds is a different question). Env VIDLOGINWALLDOC_OFF reverts this sub-block alone."
+			},
+			"_doc": "A VIDEO ON A LOGIN WALL IS THE DEVELOPER'S RECORD, NOT A LEARNER FRAME. The writer types '[Video 1] https://mytekuraschool.sharepoint.com/:v:/s/…' — the audiovisual team's SharePoint draft of a video not yet produced or re-hosted; the generic frame on that address shows the learner a sign-in wall. The human pages never frame it: a red developer note over an empty frame shell ('Designer/Developer To Do: Embed the … animation (Audiovisual item 105 … not yet produced)' over an empty Vimeo shell, FRFUN06), the re-hosted Vimeo (MXFU401), or a red note alone (MXFUN01, MXFU302). MediaBuilder.media, the video branch: a resolved address matching `host_pattern` ships the red flag `flag` naming the writer's line and the address, then `shell` — the empty frame in its place — instead of the generic frame; nothing was embedded, so the line's own words stay as before. Video kind only; the Media List row's address already takes this form through media_list_item_row. Env VIDLOGINWALL_OFF."
+		},
 		"media_free_note": {
 			"enabled": true,
 			"env": "MEDIAFREENOTE_OFF",
@@ -1655,7 +1720,16 @@
 				"open": "<div class=\"alert solid{modifiers}\">",
 				"close": "</div>",
 				"lead_element": "h4",
-				"wrap_content": true
+				"wrap_content": true,
+				"variants": [
+					{
+						"enabled": true,
+						"env": "IMPORTANTPLAIN_OFF",
+						"code_prefixes": [""],
+						"open": "<div class=\"alert{modifiers}\">",
+						"_doc": "THE IMPORTANT CALLOUT IS THE PLAIN ALERT BOX. The writer's '[Important]' callout shipped as '<div class=\"alert solid\">'; measured at every tag site (173 sites / 52 modules), the human pages box it as the plain '<div class=\"alert\">' 31 times, the side / top / blank variants 24, 'alert solid' 4 — and show the words with no box in 62 and drop them in 51 (the instruction-like notes), which no class touches. Corpus-wide the human pages ship 'alert solid' 398 times against the converter's 561. The empty prefix matches every module, so this variant is the form; env IMPORTANTPLAIN_OFF restores the solid class."
+					}
+				]
 			},
 			"wananga": {
 				"open": "<div class=\"wananga{modifiers}\">",
@@ -4170,6 +4244,11 @@
 			},
 			"item_image_caption": "<div class=\"item image\">\n{image}\n<div class=\"carousel-caption\">\n{caption}\n</div>\n</div>",
 			"rich_slides_accordion_sibling_note": "see interactive_builders.accordion.rich_panels.head_from_first_line — the accordion half of the same rule (build the writer's tagged widget).",
+			"login_wall": {
+				"enabled": true,
+				"env": "CARLOGINWALL_OFF",
+				"_doc": "A SLIDE'S ADDRESS ON A LOGIN WALL IS THE DEVELOPER'S RECORD, NOT A LEARNER FRAME. A carousel cell whose address is a SharePoint draft ('[Video 1] …/:v:/…') or a document the writer links in the slide ('[embed] … [LINK: …/:b:/…]', twenty PDF slides on one page) was framed as a video slide — a sign-in wall inside the slideshow; the human pages never frame it. The carousel's video embed asks the body path's login-wall reading first (elements.video_login_wall and its document_hosts — MediaBuilder.LoginWallFrame) and ships the red flag naming the slide's words and the address over the empty frame shell, inside the slide. Env CARLOGINWALL_OFF restores the generic frame in the slide."
+			},
 			"rich_slides": {
 				"member_vocabulary": {
 					"enabled": true,
@@ -8686,6 +8765,17 @@
 					"_note_blocks": "The sibling block digits_by_prefix_families_2 (env HKEEPFAM2_OFF) holds the rest of the qualifying groups; the emitter's path (c) reads every digits_by_prefix_families* block.",
 					"_note": "The same per-digit prefix pin as digits_by_prefix, for families that table does not name, where the human keeps the writer's digit on free-body headings while the shift rule would move it: FRFUN [H2] → h2 (carried by FRFUN06; FRFUN08's human build follows the shift — the family's outlier, a NAMED exception), WJFUN [H4] → h4, ENGC [H4] → h4. CEDT [H2] is not listed (CEDT501's human build follows the shift). A per-group rule (§1d exception 2). Env HKEEPFAM_OFF turns off these rows only."
 				},
+				"digits_by_prefix_families_6": {
+					"enabled": true,
+					"env": "HKEEPFAM6_OFF",
+					"pin_levels": {
+						"2": 3
+					},
+					"2": [
+						"EXPFUN"
+					],
+					"_note": "THE EXPLORE FAMILY'S PANEL [H2] SITS ONE LEVEL UNDER ITS PANEL TITLE. On an EXPlore single-file page every phase panel opens with the writer's [H1] (the panel's own h2) and its sections with [H2] («Watch», «Let's check out some examples», «Activity NA …»); the finished pages render those [H2]s as h3 (EXPFUN02 / 04 / 05 — 36 of 48 sites; EXPFUN03's developer kept h2), while the document rank rule pushed them to h4 under the panel's h2. The same one-level shift block 3 gives ARFUN, in its own block so it reverts alone. Across the other Inquiry families the writer's [H2] has no one form (h3 / h4 / h2 / none), so the shift is this family's dialect, not an Inquiry rule. Env HKEEPFAM6_OFF restores the rank rule for EXPFUN."
+				},
 				"digits_by_prefix_families_3": {
 					"enabled": true,
 					"env": "HKEEPFAM3_OFF",
@@ -8834,6 +8924,12 @@
 		"list_nesting": {
 			"enabled": true,
 			"indent_spaces_per_level": 2,
+			"level_jump": {
+				"enabled": false,
+				"env": "LISTJUMP_OFF",
+				"form": "paragraphs",
+				"_doc": "A LEVEL JUMP IS NORMALISED (BUILT, SWITCHED OFF — awaiting a decision). The writer's sub-bullets sometimes sit two or more indent levels under their parent ('• Both use metaphor to convey their messages.' at two spaces, then '      • In Firework, Katy Perry uses the metaphor …' at six; 'c. What is a perspective?' at four under a numbered item at none); the renderer nests a deeper run one level under the parent and its loop skips every item deeper than that, so the page ships '<li>Both use metaphor …<ul></ul></li>' — the sub-bullets gone (36 empty nested lists on six pages; the human pages show the words). With this block on, a jump is normalised in `form`: 'nested' (the next nesting), 'sibling' (the parent's own level) or 'paragraphs' (prose after the list); no item is skipped. Every form restores the words and every form costs the structure gate on the one page whose human developer built an accordion of paragraphs from the same lines, so the block ships OFF until the form is decided. Env LISTJUMP_OFF also turns it off."
+			},
 			"ol_bold_parents": true,
 			"drop_empty_items": true,
 			"drop_empty_items_note": "A writer bullet whose ONLY content was a red instruction (e.g. '• Insert appropriate introductory video…', as in AGH1004-00) has its instruction lifted to a cv2-note, leaving a black '• ' that #renderBlackText would emit as an EMPTY <li> mixed into the populated 'In this module you will learn about:' list; the human never ships such strays. renderList drops an empty item ONLY when the list ALSO has >=1 real item; a list whose items are ALL empty is a deliberate blank-worksheet scaffold the human DOES ship (e.g. MXFUN03/PES1004/MXDB301) and is left intact. env EMPTYBULLET_OFF keeps the empty <li>.",

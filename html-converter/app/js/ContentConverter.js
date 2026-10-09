@@ -11677,6 +11677,8 @@ class ContentConverter {
 			// Data: keep_writer_digit.digits_by_prefix_families_3 {pin_levels, …}. Env HKEEPFAM3_OFF.
 			// Blocks `_4` (keeps the digit: ENGC / ANZH [H2], HIS [H4]) and `_5` (shifts one: CBI [H2] → h3,
 			// ENG [H3] → h4 / [H4] → h5) are DATA ONLY (this path already reads every block). Env HKEEPFAM4_OFF reverts both.
+			// Block `_6` (shifts one: the EXPlore family's panel [H2] → h3 under its panel title) is data only too; env
+			// HKEEPFAM6_OFF reverts it alone.
 			let _kwdFamLevel = null;
 			const _kwdFamOn = _kwdBase && Object.keys(_kwd ?? {}).filter((k) => k.startsWith("digits_by_prefix_families")).some((k) => {
 				const _kwdFam = _kwd[k];
@@ -12638,7 +12640,9 @@ class ContentConverter {
 	 * code overlays the def (the kb_form swap generalised to a family). `lead_element` on a variant is FIXED
 	 * (the group convention does not override it); `column` is the section column class the callout's row opens
 	 * with (ContentConverter's lazy row open reads it through #calloutColumn). The activity-table family's alert:
-	 * no inner row > col-12, an h3 lead, a `col-md-9 col-12` column (the gold's form).
+	 * no inner row > col-12, an h3 lead, a `col-md-9 col-12` column (the gold's form). A variant whose `code_prefixes`
+	 * holds the empty prefix applies to every module — the important callout's plain `alert` box (its own env
+	 * IMPORTANTPLAIN_OFF restores the def's solid class).
 	 */
 	static #calloutVariant(def, run) {
 		if (!def || !Array.isArray(def.variants) || !def.variants.length) return def;

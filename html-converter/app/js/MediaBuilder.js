@@ -408,6 +408,10 @@ class MediaBuilder {
 			?? linkTagUrl
 			?? (_urlInTextOn ? String(it.text || "").match(_re)?.[0] : undefined)
 			?? redAddrUrl
+			// a numbered tag («[Item 1] [Video] <title>») with no address of its own takes its Media List row's
+			// (elements.media_list_item_row; env MLITEMROW_OFF) — read last, after every address on the page; an
+			// address the page cannot embed is kept for the developer's flag below (it._mlRowUrl), not framed
+			?? this.#mediaListRowEmbedUrl(it, kind, run)
 			?? "";
 
 		let builtVideoEmbed = false;
@@ -451,6 +455,14 @@ class MediaBuilder {
 				}
 				out.push(this.#applyVideoIcon(embed, run));
 				builtVideoEmbed = true;
+			} else if (url && this.#loginWall(url)) {
+				// a login-walled address (the audiovisual team's SharePoint draft, or the request document itself) is the
+				// developer's record, not a learner frame: the red flag naming the line and the address, over the empty
+				// frame shell (elements.video_login_wall and its document_hosts; env VIDLOGINWALL_OFF / VIDLOGINWALLDOC_OFF)
+				const lw = tpl.elements.video_login_wall;
+				out.push(this.MediaListRowFlag(it, run, url, undefined, this.#loginWall(url).flag ?? lw.flag));
+				out.push(lw.shell ?? '<div class="videoSection ratio ratio-16x9">\n<iframe></iframe>\n</div>');
+				builtVideoEmbed = true;   // the line's own words (the video's name, its link) are the flag's; the shell stands for the frame
 			} else if (url) {
 				out.push(this.#applyVideoIcon(Utils.FillTemplate(tpl.video.generic_iframe, { url: Utils.EscapeHtml(url) }), run));
 				builtVideoEmbed = true;
@@ -459,6 +471,7 @@ class MediaBuilder {
 				// <address>») ships as their Writers Note, not as a missing-source flag (elements.media_request_before_media)
 				const req = this.#requestBeforeMedia(it, bodyItems, i, kind, run);
 				if (req !== null) out.push(...req);
+				else if (it._mlRowUrl) out.push(this.MediaListRowFlag(it, run, it._mlRowUrl));
 				else out.push(this.NoUrlFlag(it, kind, run));
 			}
 		}
@@ -742,6 +755,146 @@ class MediaBuilder {
 	 * @param {ConversionRun} run - the current conversion run
 	 * @returns {string} the red flag's HTML
 	 */
+	/**
+	 * The Media List row a NUMBERED media tag with no address of its own points at («[Item 1] [Video] Youtube Matike
+	 * Maranga (Karaoke)»): the row with the tag's number where the list numbers its rows; else, among the rows of the
+	 * tag's kind that carry an address, the one sharing the most of the tag's title words (kind words removed) with the
+	 * row's visible words, weighted up when the row's page is the tag's block's own page (the acknowledgements' page-record
+	 * evidence, counted only when the run trusts the page records) — a unique best with a positive score; a title-less tag
+	 * takes only a unique same-page row. Data elements.media_list_item_row; env MLITEMROW_OFF. The bilingual cell's video
+	 * part (BilingualBuilder) resolves through the same reading.
+	 * @param {Object} it - the media tag's body item (text, blackAfter, block.wtPage)
+	 * @param {string} kind - "video" / "audio" / "embed"
+	 * @param {ConversionRun} run - the run (its mediaItems, pageRecordsUsable)
+	 * @returns {string|undefined} the row's address, or undefined when the rule does not decide
+	 */
+	static MediaListRowUrl(it, kind, run) {
+		const c = DataService.Data.EmitTemplates.elements?.media_list_item_row;
+		if (!c || c.enabled === false || (typeof process !== "undefined" && process.env && process.env[c.env ?? "MLITEMROW_OFF"])) return undefined;
+		if (!(c.kinds ?? ["video"]).includes(kind) || !Array.isArray(run?.mediaItems) || !run.mediaItems.length) return undefined;
+		const RED = /\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu;
+		const own = `${String(it?.text ?? "")} ${String(it?.blackAfter ?? "")}`.replace(RED, " ");
+		const ref = own.match(new RegExp(c.item_pattern ?? "\\[\\s*(?:insert\\s+)?(?:media\\s+)?item\\s*(\\d*)\\s*\\]", "i"));
+		if (!ref) return undefined;
+		const n = parseInt(ref[1], 10);
+		const num = (s) => parseInt(String(s ?? "").replace(/\D/g, ""), 10);
+		const items = run.mediaItems;
+		// a mail-safety wrapper around the address («…safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.youtube…»)
+		// is unwrapped (unwrap_pattern: its first group is the encoded address)
+		const unwrapRe = c.unwrap_pattern ? new RegExp(c.unwrap_pattern, "i") : null;
+		const addr = (m) => {
+			const u = String(m?.url ?? "").trim();
+			const w = unwrapRe ? u.match(unwrapRe) : null;
+			if (!w) return u;
+			try { return decodeURIComponent(w[1]); } catch { return u; }
+		};
+		// a row embeds once: the rows this reading has already given to an earlier tag of the run — the same writer's
+		// line asked again (a bilingual row's second language cell) is the same tag, not an earlier one
+		const used = (run._mlRowsUsed ??= new Map());
+		const key = own.replace(/\s+/g, " ").trim().toLowerCase();
+		const take = (m) => { if (!used.has(m)) used.set(m, key); return addr(m); };
+		// (1) the writer's number, where the list numbers its rows (a number that finds no addressed row falls to the words)
+		if (Number.isInteger(n) && items.some((m) => Number.isInteger(num(m.itemNo)))) {
+			const hit = items.find((m) => num(m.itemNo) === n);
+			if (hit && addr(hit)) return take(hit);
+		}
+		// (2) the row of the tag's kind whose visible words hold the tag's title words
+		const fold = (s) => String(s ?? "").replace(RED, " ").replace(/\[LINK:[^\]]*\]/g, " ").replace(/https?:\/\/\S+/g, " ")
+			.replace(/[*_]/g, "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+		const kindWords = new Set(c.kind_words ?? []);
+		const minLen = c.min_word_chars ?? 2;
+		const title = new Set(fold(own.replace(/\[[^[\]]*\]/g, " ")).split(" ").filter((w) => w.length >= minLen && !kindWords.has(w)));
+		const typeRe = new RegExp(c.row_type_pattern ?? "video", "i");
+		const page = run.pageRecordsUsable && Number.isInteger(it?.block?.wtPage) ? it.block.wtPage : null;
+		const weight = c.same_page_weight ?? 10;
+		const penalty = c.used_penalty ?? 5;
+		const scored = [];
+		for (const m of items) {
+			if (!typeRe.test(String(m?.itemType ?? "")) || !addr(m)) continue;
+			const rw = new Set(fold(m.rowText ?? `${m.description ?? ""} ${m.source ?? ""}`).split(" "));
+			let s = [...title].filter((w) => rw.has(w)).length;
+			if (page !== null && m.wtPage === page) s += weight;
+			if (used.has(m) && used.get(m) !== key) s -= penalty;   // a row an earlier tag took is this tag's only when nothing else names it
+			if (s > 0) scored.push({ m, s });
+		}
+		if (!title.size && !(page !== null)) return undefined;
+		scored.sort((a, b) => b.s - a.s);
+		if (!scored.length || (scored.length > 1 && scored[0].s === scored[1].s)) return undefined;
+		if (!title.size && scored[0].s < weight) return undefined;
+		return take(scored[0].m);
+	}
+
+	/** The Media List row's address when the page can embed it (embed_host_pattern); otherwise it is kept on
+	 *  it._mlRowUrl for the developer's flag and undefined is returned. */
+	static #mediaListRowEmbedUrl(it, kind, run) {
+		const url = this.MediaListRowUrl(it, kind, run);
+		if (!url) return undefined;
+		if (this.MediaListRowEmbeddable(url)) return url;
+		it._mlRowUrl = url;
+		return undefined;
+	}
+
+	/** True when a Media List row's address is on a host the page embeds (data media_list_item_row.embed_host_pattern;
+	 *  no pattern = every address). */
+	static MediaListRowEmbeddable(url) {
+		const c = DataService.Data.EmitTemplates.elements?.media_list_item_row;
+		if (!c || !c.embed_host_pattern) return true;
+		return new RegExp(c.embed_host_pattern, "i").test(String(url ?? ""));
+	}
+
+	/**
+	 * The developer's flag for a Media List address the page cannot embed: the writer's own line and the address, so
+	 * whoever finishes the page knows which file to re-host (data media_list_item_row.not_embeddable_flag).
+	 * @param {Object} it - the media tag's body item (its text names the writer's line)
+	 * @param {ConversionRun} run - the run
+	 * @param {string} url - the row's address
+	 * @param {string} [label] - the line to name (default: the tag's own words)
+	 * @param {string} [template] - the flag's wording (default: media_list_item_row.not_embeddable_flag)
+	 * @returns {string} the red flag's HTML
+	 */
+	static MediaListRowFlag(it, run, url, label, template) {
+		const c = DataService.Data.EmitTemplates.elements?.media_list_item_row ?? {};
+		const RED = /\u{1f534}\[RED TEXT\]|\[\/RED TEXT\]\u{1f534}/gu;
+		const l = (label ?? `${String(it?.text ?? "")} ${String(it?.blackAfter ?? "")}`).replace(RED, " ").replace(/https?:\/\/\S+/g, " ")
+			.replace(/\s+/g, " ").trim();
+		return NotesAndComments.redFlag(Utils.FillTemplate(template ?? c.not_embeddable_flag
+			?? "{label} — the Media List address is not one the page can embed; re-host the video: {url}", { label: l, url }), run);
+	}
+
+	/**
+	 * The login-wall form for a widget builder's own video frame (a carousel slide): the red flag naming the slide's
+	 * words and the address, then the empty frame shell — or null when the page may frame the address. The same reading
+	 * as media()'s (elements.video_login_wall and its document_hosts); the caller's own switch decides whether to ask.
+	 * @param {string} url - the slide's address
+	 * @param {string} [label] - the slide's words
+	 * @param {ConversionRun} [run] - the run
+	 * @returns {string|null} the flag and the shell, or null
+	 */
+	static LoginWallFrame(url, label, run) {
+		const hit = this.#loginWall(url);
+		if (!hit) return null;
+		const lw = DataService.Data.EmitTemplates.elements.video_login_wall;
+		const it = { text: String(label ?? ""), blackAfter: "" };
+		const r = run && typeof run.CountRedFlag === "function" ? run : { CountRedFlag() {} };   // a caller without the run still gets the flag
+		return `${this.MediaListRowFlag(it, r, url, undefined, hit.flag ?? lw.flag)}\n${lw.shell ?? '<div class="videoSection ratio ratio-16x9">\n<iframe></iframe>\n</div>'}`;
+	}
+
+	/** The login-wall block a video address falls under — the block itself (a SharePoint video file, host_pattern) or its
+	 *  document_hosts sub-block (the request document, its own flag wording) — or null when the page may frame the address
+	 *  (data elements.video_login_wall; off, or no pattern, = never). */
+	static #loginWall(url) {
+		const c = DataService.Data.EmitTemplates.elements?.video_login_wall;
+		if (!c || c.enabled === false || !c.host_pattern
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "VIDLOGINWALL_OFF"])) return null;
+		const u = String(url ?? "");
+		if (new RegExp(c.host_pattern, "i").test(u)) return c;
+		const d = c.document_hosts;
+		if (d && d.enabled !== false && d.host_pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[d.env ?? "VIDLOGINWALLDOC_OFF"])
+			&& new RegExp(d.host_pattern, "i").test(u)) return d;
+		return null;
+	}
+
 	static NoUrlFlag(it, kind, run) {
 		let label = `[${kind}]`;
 		const c = DataService.Data.EmitTemplates.elements?.no_url_writer_tag;

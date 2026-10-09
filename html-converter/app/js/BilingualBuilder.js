@@ -254,8 +254,8 @@ class BilingualBuilder {
 				if (box) { out.push(...box); r++; continue; }
 			}
 			const reoCell = rows[r][1], engCell = rows[r][0];   // col-2 = Māori, col-1 = English
-			const R = this.bilingualSplit(reoCell, run, norm);
-			const E = this.bilingualSplit(engCell, run, norm);
+			const R = this.bilingualSplit(reoCell, run, norm, block?.wtPage);
+			const E = this.bilingualSplit(engCell, run, norm, block?.wtPage);
 			if (interleave) {
 				// KB 07B: the writer's BARE SECTION-ID heading (`[H1] 1.1`) is the
 				// section's activity NUMBER, never a heading — the gold never ships a bare-id
@@ -610,6 +610,16 @@ class BilingualBuilder {
 					const hoOn = typeof handoff === "function" && !!hoCfg && hoCfg.enabled !== false
 						&& !(typeof process !== "undefined" && process.env && process.env.BILHANDOFF_OFF);
 					const box = hoOn ? handoff(b) : null;
+					// the section's own prose rows at the head of the bundle's first member table render before the
+					// box (data section_grouping.bundle_handoff.lead_prose; env BILHANDOFFLEAD_OFF)
+					const lp = hoOn && hoCfg.lead_prose;
+					if (lp && lp.enabled !== false
+						&& !(typeof process !== "undefined" && process.env && process.env[lp.env ?? "BILHANDOFFLEAD_OFF"])) {
+						const tb = (b.tables && b.tables[0])
+							|| ((b.memberItems || []).find((m) => m && m.type === "table" && m.block) || {}).block;
+						const k = tb ? this.#leadProseRows(tb, lp) : 0;
+						if (k > 0) inner.push(...this.bilingualRows({ ...tb, rows: tb.rows.slice(0, k) }, run, 0, norm));
+					}
 					inner.push(box || `<div class="cv2-interactive bilingual-unbuilt">\n${TablesAndGrids.contentTable(nx.block, run, true, norm)}\n</div>`);
 					hasWidget = true;
 				}
@@ -815,7 +825,7 @@ class BilingualBuilder {
 		if (!def || !def.open) return null;
 		const out = [];
 		for (let r = 0; r < rows.length; r++) {
-			const R = this.bilingualSplit(rows[r][1], run, norm), E = this.bilingualSplit(rows[r][0], run, norm);
+			const R = this.bilingualSplit(rows[r][1], run, norm, block?.wtPage), E = this.bilingualSplit(rows[r][0], run, norm, block?.wtPage);
 			for (const p of R.text) out.push(this.langAttr(p, "reo"));
 			for (const p of E.text) out.push(this.langAttr(p, "eng"));
 			for (const m of (R.media.length ? R.media : E.media)) out.push(m);
@@ -907,6 +917,66 @@ class BilingualBuilder {
 	 * A part that carries an address is never flagged. Data dual_language.video_no_source; env REOVIDEONOURL_OFF.
 	 * @returns {string} the red flag's HTML, or "" when the rule is off
 	 */
+	/**
+	 * THE NUMBERED VIDEO PART TAKES ITS MEDIA LIST ROW. A bilingual cell's «[Item N] [Video] <title>» part never carries
+	 * an address; its Media List row does. The row is read by MediaBuilder.MediaListRowUrl (the writer's number, else the
+	 * title's words and the table's own page), and a video host's address builds the body path's embed — the YouTube
+	 * frame, the group's host and icon conventions, the row's crop; an address the page cannot embed keeps the empty
+	 * frame under the developer's flag naming the line and the address. Null when no row decides, so the empty frame
+	 * and its flag stand as before. Data dual_language.video_media_list_row; env REOVIDEOMLROW_OFF.
+	 * @param {string} part - the cell part
+	 * @param {ConversionRun} run - the run
+	 * @param {TagNormaliser} norm - the run's normaliser
+	 * @param {number|null} wtPage - the table's Writers Template page, when known
+	 * @returns {string|null} the embed's HTML, or null
+	 */
+	static #videoRowEmbed(part, run, norm, wtPage) {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.video_media_list_row;
+		if (!c || c.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REOVIDEOMLROW_OFF"])) return null;
+		const it = { type: "tag", text: this.#stripRed(part).replace(/\s+/g, " ").trim(), blackAfter: "",
+			block: { links: [], wtPage: Number.isInteger(wtPage) ? wtPage : undefined } };
+		const url = MediaBuilder.MediaListRowUrl(it, "video", run);
+		if (!url) return null;
+		// an address the page cannot embed (SharePoint): the empty frame under the flag that names the line and the address
+		if (!MediaBuilder.MediaListRowEmbeddable(url)) {
+			return `${MediaBuilder.MediaListRowFlag(it, run, url, it.text)}\n<div class="videoSection ratio ratio-16x9">\n<iframe></iframe>\n</div>`;
+		}
+		it._mediaUrl = url;
+		const frags = MediaBuilder.media(it, [it], 0, "video", run, norm);
+		return frags.length ? frags.join("\n") : null;
+	};
+
+	/**
+	 * A RED NOTE INSIDE A BILINGUAL CELL IS THE WRITER'S NOTE. A cell part that is entirely red with no bracket tag and at
+	 * least min_words words («Note to CS - Please use Sassoon font.») is the writer's instruction to Creative Services: the
+	 * retained Writers Note (NotesAndComments.redFlag, kind cs — its template-placeholder guard included), never learner
+	 * text. Returns null when the rule does not apply (a tag, a short label, the rule off); "" when the note is omitted.
+	 * Data dual_language.red_prose_note; env REOREDNOTE_OFF.
+	 * @param {string} part - the cell part
+	 * @param {ConversionRun} run - the run
+	 * @returns {string|null} the note's HTML, "" or null
+	 */
+	/** The cell's «/»-separated parts with the writer's red markers kept (the split TablesAndGrids.cellParts makes, before
+	 *  it strips the markers), so a wholly-red part can be told from learner text. */
+	static #rawCellParts(cell) {
+		const cp = DataService.Data.EmitTemplates?.elements?.soft_break_lead?.cell_parts;
+		const run = !!cp && cp.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[cp.env || "CELLSLASH_OFF"]);
+		return String(cell ?? "").split(run ? /\s+\/(?:\s+\/)*\s+/ : /\s+\/\s+/).map((p) => p.trim()).filter(Boolean);
+	};
+
+	static #redProseNote(part, run) {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.red_prose_note;
+		if (!c || c.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REOREDNOTE_OFF"])) return null;
+		const m = String(part ?? "").trim().match(/^\u{1f534}\[RED TEXT\]\s*([\s\S]*?)\s*\[\/RED TEXT\]\u{1f534}$/u);
+		if (!m || /[[\]]/.test(m[1])) return null;
+		const words = m[1].replace(/[*_]/g, "").trim().split(/\s+/).filter(Boolean);
+		if (words.length < (c.min_words ?? 3)) return null;
+		return NotesAndComments.redFlag(m[1].replace(/\s+/g, " ").trim(), run, "cs") || "";
+	};
+
 	static #videoNoSourceFlag(part, run) {
 		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.video_no_source;
 		if (!c || c.enabled === false
@@ -1093,7 +1163,7 @@ class BilingualBuilder {
 	 * @param {TagNormaliser} norm - resolves any `[Tag]` markers found in the cell
 	 * @returns {{text: string[], media: string[]}} the rendered text elements and media embeds, each in source order
 	 */
-	static bilingualSplit(cell, run, norm) {
+	static bilingualSplit(cell, run, norm, wtPage = null) {
 		const text = [], media = [], buf = [];
 		// Each media embed remembers how many text elements preceded it in the
 		// cell (mediaPos), so bilingualRows can put it back IN PLACE between the paragraphs
@@ -1113,7 +1183,7 @@ class BilingualBuilder {
 		const aiFail = () => {
 			if (!aiPend) return;
 			// a continuation (the tag already opened an earlier unit of this run) owes no audio player
-			if (!aiPend.cont) pushM('<audio preload="none" class="audioPlayer icon"></audio>');
+			if (!aiPend.cont && !aiPend.hover) pushM('<audio preload="none" class="audioPlayer icon"></audio>');
 			if (aiPend.imgPart) for (const x of TablesAndGrids.cellImage(aiPend.imgPart, run)) pushM(x);
 			aiPend = null;
 		};
@@ -1139,6 +1209,11 @@ class BilingualBuilder {
 		// the writer's ticked list keeps its ticked lines as list items (dual_language.tick_list; env REOTICKLIST_OFF)
 		const tlc = this.#tickListCfg();
 		const parts = tlc ? this.#tickListParts(TablesAndGrids.cellParts(cell), tlc) : TablesAndGrids.cellParts(cell);
+		// the same parts with the writer's red markers still on them (cellParts strips them): a part that is wholly red
+		// prose is the writer's note, read below (dual_language.red_prose_note); when the two splits disagree in
+		// count the raw parts are not read
+		const rawParts = this.#rawCellParts(cell);
+		const rawOk = rawParts.length === parts.length;
 		// the carousel typed in the cell: its tag + slides are ONE media embed (dual_language.carousel_tag; env REOCAROUSEL_OFF)
 		const cc = this.#carouselCfg();
 		const carRuns = cc ? this.#carouselRuns(parts, cc) : new Map();
@@ -1152,9 +1227,20 @@ class BilingualBuilder {
 				continue;
 			}
 			const low = part.toLowerCase();
+			// a cell part that is entirely RED prose with no tag is the writer's note to Creative Services — the retained
+			// Writers Note, never learner text (dual_language.red_prose_note; env REOREDNOTE_OFF)
+			const rpn = rawOk ? this.#redProseNote(rawParts[pi], run) : null;
+			if (rpn !== null) { flush(); if (rpn) text.push(rpn); continue; }
 			if (ai) {
 				if (ai.re.test(part) && !aiName(part.replace(ai.re, ""))) {
 					aiFail(); flush(); aiPend = { imgPart: null }; continue;
+				}
+				// a hover spelling of the tag opens a unit only when an image part follows within the lookahead; a hover
+				// tag with audio alone is left as it is, and a hover-opened unit owes no audio player if its audio never
+				// comes (data audio_image_tag.hover_spellings; env AUDIOHOVERTAG_OFF)
+				if (ai.hover && ai.hover.re.test(part) && !aiName(part.replace(ai.hover.re, ""))
+					&& parts.slice(pi + 1, pi + 1 + ai.hover.ahead).some((p) => /\[\s*(?:item[^\]]*\]\s*\[\s*)?(?:image|photo)\s*\]/i.test(p))) {
+					aiFail(); flush(); aiPend = { imgPart: null, hover: true }; continue;
 				}
 				if (aiPend) {
 					const isImg = /\[\s*(?:item[^\]]*\]\s*\[\s*)?(?:image|photo)\s*\]/.test(low);
@@ -1186,6 +1272,10 @@ class BilingualBuilder {
 				const aw = this.#audioWord(part);
 				pushM(aw ?? '<audio preload="none" class="audioPlayer icon"></audio>');
 			} else if (/\[\s*(?:item[^\]]*\]\s*\[\s*)?video[^\]]*\]/.test(low)) {
+				// a numbered part's Media List row gives the frame its address — the body path's embed
+				// (dual_language.video_media_list_row; env REOVIDEOMLROW_OFF)
+				const ve = this.#videoRowEmbed(part, run, norm, wtPage);
+				if (ve) { flush(); pushM(ve); continue; }
 				// the frame keeps its place; the red missing-source flag naming the writer's own line goes before it
 				// (dual_language.video_no_source; env REOVIDEONOURL_OFF)
 				const vf = this.#videoNoSourceFlag(part, run);
@@ -1371,12 +1461,51 @@ class BilingualBuilder {
 		return Utils.FillTemplate(c.form, { name: Utils.EscapeHtml(name), word: ListsAndRuns.inlineMarkup(lead) });
 	}
 
+	/**
+	 * How many LEADING rows of a bundle's member table are the section's own prose — each of the row's first two
+	 * cells opens with a heading or body tag and the row carries no other tag (data
+	 * section_grouping.bundle_handoff.lead_prose: row_pattern / other_tag_pattern / max_rows).
+	 *
+	 * @param {Object} block - the table block
+	 * @param {Object} cfg - the lead_prose data block
+	 * @returns {number} the count of leading prose rows (0 = none)
+	 */
+	static #leadProseRows(block, cfg) {
+		const rows = block?.rows ?? [];
+		if (!rows.length) return 0;
+		const strip = (s) => String(s ?? "").replace(/🔴|\[\/?RED TEXT\]|\*/g, "");
+		const rowRe = new RegExp(cfg.row_pattern ?? "^\\s*\\[\\s*(?:h[1-3]|body)\\s*\\]", "i");
+		const otherRe = new RegExp(cfg.other_tag_pattern ?? "\\[(?!\\s*(?:h[1-3]|body)\\s*\\])[^\\]\\n]{1,60}\\]", "i");
+		// an untagged red span inside the cell is a reviewer's note; a tag followed by punctuation is not prose
+		const noteRe = cfg.red_note_pattern ? new RegExp(cfg.red_note_pattern, "u") : null;
+		const textRe = new RegExp(cfg.lead_text_pattern ?? "^\\s*\\[[^\\]]*\\]\\s*[\\p{L}\\p{N}“‘\"'(]", "iu");
+		const max = Math.max(1, cfg.max_rows ?? 6);
+		let k = 0;
+		for (const r of rows) {
+			if (!Array.isArray(r) || r.length < 2 || k >= max) break;
+			const a = strip(r[0]), bb = strip(r[1]);
+			if (!rowRe.test(a) || !rowRe.test(bb) || otherRe.test(a) || otherRe.test(bb)) break;
+			if (!textRe.test(a) || !textRe.test(bb)) break;
+			if (noteRe && (noteRe.test(String(r[0] ?? "")) || noteRe.test(String(r[1] ?? "")))) break;
+			k++;
+		}
+		return k;
+	};
+
 	static #audioImageCfg() {
 		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.audio_image_tag;
 		if (!c || c.enabled === false || !c.tag_pattern
 			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "AUDIOIMGTAG_OFF"])) return null;
+		// the hover spellings of the same tag («[AudioHover]», «[Audio Hover Trigger]», «[Interactive] [Audio Hover Image]»)
+		// open a unit only when an image part follows within the lookahead (data audio_image_tag.hover_spellings;
+		// env AUDIOHOVERTAG_OFF)
+		const hs = c.hover_spellings;
+		const hover = hs && hs.enabled !== false && hs.tag_pattern
+			&& !(typeof process !== "undefined" && process.env && process.env[hs.env ?? "AUDIOHOVERTAG_OFF"])
+			? { re: new RegExp(hs.tag_pattern, "i"), ahead: Math.max(1, hs.image_lookahead ?? 2) } : null;
 		return {
 			re: new RegExp(c.tag_pattern, "i"),
+			hover,
 			unit: c.unit_template ?? "<div class=\"audioImage\">\n<div id=\"{name}\" class=\"audioImageOption\">\n{img}\n</div>\n</div>",
 			cols: c.group_cols ?? {},
 		};

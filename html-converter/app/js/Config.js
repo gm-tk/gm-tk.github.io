@@ -34,7 +34,7 @@ class Config {
 	// This is shown in the UI so a developer can tell which build produced a
 	// page. It is NOT written into the converted HTML, so changing it never
 	// changes any output — bump it with every release.
-	static AppVersion = "260623.87";
+	static AppVersion = "260623.96";
 
 	// ---------------------------------------------------------------------
 	// RUNTIME DATA FILES (paths are relative to app/index.html — served over HTTP)
