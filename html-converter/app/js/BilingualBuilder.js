@@ -977,6 +977,18 @@ class BilingualBuilder {
 		return NotesAndComments.redFlag(m[1].replace(/\s+/g, " ").trim(), run, "cs") || "";
 	};
 
+	/** The mixed form of the rule above: a part that opens with a red label and goes on in black lifts the label to the
+ *  retained Writers Note and keeps the black remainder as the part (dual_language.red_prose_note.mixed_lead; env
+ *  REOREDLEAD_OFF). Returns {note, rest} or null. */
+	static #redLeadNote(rawPart, run) {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.red_prose_note;
+		if (!c || c.enabled === false
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REOREDNOTE_OFF"])) return null;
+		const ml = TablesAndGrids.redLeadNote(rawPart, c.mixed_lead);
+		if (!ml) return null;
+		return { note: NotesAndComments.redFlag(ml.note, run, "cs") || "", rest: ml.rest };
+	};
+
 	static #videoNoSourceFlag(part, run) {
 		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.video_no_source;
 		if (!c || c.enabled === false
@@ -1218,7 +1230,7 @@ class BilingualBuilder {
 		const cc = this.#carouselCfg();
 		const carRuns = cc ? this.#carouselRuns(parts, cc) : new Map();
 		for (let pi = 0; pi < parts.length; pi++) {
-			const part = parts[pi];
+			let part = parts[pi];
 			const cr = carRuns.get(pi);
 			if (cr) {
 				if (ai) { aiFail(); aiGroup++; }
@@ -1226,6 +1238,11 @@ class BilingualBuilder {
 				pi = cr.end - 1;
 				continue;
 			}
+			// a part that opens with a red label and goes on in black — «Note to CS – link to possible layout of the poem» +
+			// the poem's link — lifts the label to the note and keeps the black remainder as the part
+			// (dual_language.red_prose_note.mixed_lead; env REOREDLEAD_OFF)
+			const rml = rawOk ? this.#redLeadNote(rawParts[pi], run) : null;
+			if (rml) { flush(); if (rml.note) text.push(rml.note); part = rml.rest; }
 			const low = part.toLowerCase();
 			// a cell part that is entirely RED prose with no tag is the writer's note to Creative Services — the retained
 			// Writers Note, never learner text (dual_language.red_prose_note; env REOREDNOTE_OFF)

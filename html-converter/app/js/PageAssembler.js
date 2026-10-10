@@ -1017,12 +1017,14 @@ class PageAssembler {
 						// A bare list-number paragraph leaves the page (body_region.lone_list_number; env LONENUM_OFF) — after TypedNumberList.
 						// An orphan punctuation block merges onto the text before it or leaves (ListsAndRuns.OrphanPunctuation;
 						// body_region.orphan_punctuation; env ORPHANPUNCT_OFF) — after the emoji pass, before TypedNumberList.
+						// The Writers Template's own hint line («Learning outcome/intentions for the lesson») leaves the page
+						// (ListsAndRuns.TemplateHintLine; body_region.template_hint_line; env HINTLINE_OFF) — after OrphanPunctuation.
 						// A run of typed «- » lines becomes a <ul> (ListsAndRuns.TypedDashList; body_region.typed_dash_list; env
 						// TYPEDUL_OFF) — beside TypedNumberList, before the adjacent-list join.
-						const deEmoji = (seg) => ListsAndRuns.MergeAdjacentLists(ListsAndRuns.LoneListNumbers(ListsAndRuns.TypedDashList(ListsAndRuns.TypedNumberList(ListsAndRuns.OrphanPunctuation(ListsAndRuns.EmojiStrip(seg, () =>
+						const deEmoji = (seg) => ListsAndRuns.MergeAdjacentLists(ListsAndRuns.LoneListNumbers(ListsAndRuns.TypedDashList(ListsAndRuns.TypedNumberList(ListsAndRuns.TemplateHintLine(ListsAndRuns.OrphanPunctuation(ListsAndRuns.EmojiStrip(seg, () =>
 							NotesAndComments.redFlag(
 								DataService.Data.InputDocRules?.emoji_strip?.disclosure ?? "",
-								run, "diagnostic")))))));
+								run, "diagnostic"))))))));
 						const ai = tidied.indexOf("<div class=\"acks");
 						// KB constraint 92 / CL-0093: every CJK run takes its language-font class
 						// (ListsAndRuns.LanguageFontWrap; data body_region.language_fonts; env LANGFONT_OFF) —

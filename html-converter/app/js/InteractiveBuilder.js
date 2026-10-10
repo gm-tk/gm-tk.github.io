@@ -3845,7 +3845,12 @@ class InteractiveBuilder {
 				const residual = text.replace(/^\s*\[[^\]]*\]\s*/, "")
 					.replace(/https?:\/\/\S+/g, "").replace(/\S*gm-?\d{6,10}\S*/g, "")
 					.replace(/[/|]/g, " ").trim();
-				if (residual && (cfg.image_caption_as_text !== false)) parts.push({ role: "text", text: residual });
+				// the picture's naming words («avatar Tina», the pasted stock title) are not a caption
+				// (interactive_builders.image_caption_picture_words; env WIDGETIMGWORDS_OFF)
+				const pw = DataService.Data.EmitTemplates.interactive_builders?.image_caption_picture_words;
+				const pwOn = !!pw && pw.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[pw.env ?? "WIDGETIMGWORDS_OFF"]);
+				const pwHit = pwOn && !!residual && (() => { try { return new RegExp(pw.pattern ?? "\\b(?:avatar|istock|image|picture|photo|illustration)\\b", "i").test(residual); } catch { return false; } })();
+				if (residual && (cfg.image_caption_as_text !== false) && !pwHit) parts.push({ role: "text", text: residual });
 				continue;
 			}
 
@@ -5422,6 +5427,21 @@ class InteractiveBuilder {
 	 * A cell is a string carrying "🔴[RED TEXT] … [/RED TEXT]🔴" markers with black
 	 * text between them; each marker plus the text following it is one part.
 	 */
+	/**
+	 * THE PICTURE'S NAMING WORDS ARE NOT THE BUBBLE'S TEXT. An image marker's trailing words that name the picture
+	 * («avatar Tina – friendly wave 'Tina' from: …») belong to the image, never to the bubble; any other trailing words are
+	 * the bubble's text as before. Data speechBubble.rich.image_trail_words; env SBRICHIMGTEXT_OFF.
+	 * @param {string} rest - the marker's trailing text (the address removed)
+	 * @param {object} cfg - the rich composer's block
+	 * @returns {boolean} true when the words name the picture and are dropped
+	 */
+	static #sbImageTrail(rest, cfg) {
+		const c = cfg?.image_trail_words;
+		if (!c || c.enabled === false || !rest) return false;
+		if (typeof process !== "undefined" && process.env && process.env[c.env ?? "SBRICHIMGTEXT_OFF"]) return false;
+		try { return new RegExp(c.pattern ?? "\\b(?:avatar|istock|image|picture|photo|illustration)\\b", "i").test(String(rest)); } catch { return false; }
+	}
+
 	static #sbCellParts(cell, cfg, tpl) {
 		const raw = String(cell ?? "");
 		if (!raw.trim()) return [];
@@ -5453,7 +5473,7 @@ class InteractiveBuilder {
 			const rest = this.#sbRestText(following);
 			if (roles.has("image")) {
 				parts.push({ role: "image", url, hint: this.#cellText(c.span).trim() });
-				if (!roles.has("bubble") && rest) parts.push({ role: "text", text: rest });
+				if (!roles.has("bubble") && rest && !this.#sbImageTrail(rest, cfg)) parts.push({ role: "text", text: rest });
 			}
 			if (roles.has("bubble")) {
 				// record whether this bubble marker was only ever a DANGLING
@@ -5534,7 +5554,7 @@ class InteractiveBuilder {
 		const out = [];
 		if (roles.has("image")) {
 			out.push({ role: "image", url: url ?? this.#memberLinkUrl(m), hint: String(m.text ?? "").trim() });
-			if (!roles.has("bubble") && rest) out.push({ role: "text", text: rest });
+			if (!roles.has("bubble") && rest && !this.#sbImageTrail(rest, cfg)) out.push({ role: "text", text: rest });
 		}
 		if (roles.has("bubble") || p.directive === "INTERACTIVE") {
 			out.push({ role: "bubble", text: rest, tagText: String(m.text ?? "") });
@@ -5754,6 +5774,14 @@ class InteractiveBuilder {
 		const multiAvatarOn = !!(mAv && mAv.enabled !== false) && !env.SBAVATARS_OFF;
 		const castCfg = cfg.cast_row;
 		const castOn = !!(castCfg && castCfg.enabled !== false) && !env.SBCASTROW_OFF;
+		// THE PICTURE'S NAMING WORDS ARE NOT THE BUBBLE'S TEXT: a text part right after a picture whose words name the
+		// picture («avatar Tina», the pasted stock title) belongs to the picture, whatever member carried it
+		// (rich.image_trail_words; env SBRICHIMGTEXT_OFF)
+		for (const g of groups) {
+			for (let i = g.length - 1; i > 0; i--) {
+				if (g[i].role === "text" && g[i - 1].role === "image" && this.#sbImageTrail(g[i].text, cfg)) g.splice(i, 1);
+			}
+		}
 		for (const g of groups) {
 			let b = null;
 			const pending = [];            // text/head seen before this group's bubble
@@ -5859,6 +5887,10 @@ class InteractiveBuilder {
 				].join("\n"));
 			}
 		};
+		// the avatar bubble keeps the writer's thought layout, as the image-less bubble does (rich.avatar_thought_layout;
+		// env SBRICHTHOUGHT_OFF)
+		const atl = cfg.avatar_thought_layout;
+		const avThoughtOn = !!atl && atl.enabled !== false && !env[atl.env ?? "SBRICHTHOUGHT_OFF"];
 		let seen = 0, phUsed = null;   // the placeholder config when any bubble took it
 		for (const b of bubbles) {
 			seen++;
@@ -5867,7 +5899,7 @@ class InteractiveBuilder {
 			if (!text) return null;
 			if (b.imgs.length) {
 				out.push([
-					Utils.FillTemplate(av.open ?? tpl.open, { layout: tpl.layout_attr ?? "speech" }),
+					Utils.FillTemplate(av.open ?? tpl.open, { layout: (b.thought && avThoughtOn) ? (to.layout_thought ?? "thought") : (tpl.layout_attr ?? "speech") }),
 					...b.imgs.map((fn) => Utils.FillTemplate(av.image_col ?? tpl.image_col, { image: this.#assetImage(fn, tpl, run) })),
 					Utils.FillTemplate(av.text_col_right ?? tpl.text_right, { text }),
 					av.close ?? tpl.close,
@@ -11307,6 +11339,11 @@ class InteractiveBuilder {
 		// "[video] Autistic special interests (dev team start at 0:04)"), and it
 		// surfaces as the standard red Writers Note after the widget.
 		raw = this.#carStripInstructionSpans(raw, cfg, (t) => this.#carNoteAssetRequest(bundle, null, t, mv));
+		// A RED LABEL THAT OPENS THE CELL BEFORE BLACK TEXT («Title (slide 1)» + the title) is the writer's label whatever its
+		// words — its position is the cue: lifted to the note channel, the black remainder read as the cell
+		// (carousel.caption_red_lead; env CARREDLEAD_OFF)
+		const rl = TablesAndGrids.redLeadNote(raw, tpl.caption_red_lead);
+		if (rl) { this.#carNoteAssetRequest(bundle, null, rl.note, mv); raw = rl.rest; }
 		if (!raw.trim()) return [];
 		// REPAIR A DANGLING MEDIA MARKER before anything reads the cell. A writer who drops
 		// the CLOSING bracket ("[image Young man gaming", XMES203-2.0, whose well-formed
@@ -12187,6 +12224,7 @@ class InteractiveBuilder {
 			if (!Array.isArray(r)) return null;
 			const pair = this.#imageCaptionPair(r, tpl);
 			if (pair) {
+				if (pair.lead && run && typeof run.AddNote === "function") run.AddNote("info", "InteractiveBuilder", `Carousel slide: the caption's red lead «${pair.lead}» is the writer's note and is left out of the caption (carousel.caption_red_lead).`);
 				slides.push(Utils.FillTemplate(tpl.item_image, {
 					image: this.#assetImage(pair.filename, tpl, run),
 					caption: inline(pair.caption),
@@ -15065,10 +15103,13 @@ class InteractiveBuilder {
 			.replace(/[/|]/g, " ").trim();                 // drop the " / " separator
 		if (imgResidual) return null;
 		// caption: drop the leading [body] tag → the caption prose itself.
-		const caption = this.#cellText(txtCell).replace(/^\s*\[[^\]]*\]\s*/, "").trim();
+		// a caption cell that OPENS with a red label («Title (slide 1)» + the title) keeps the black remainder as the caption;
+		// the label is the writer's note (carousel.caption_red_lead; env CARREDLEAD_OFF)
+		const rl = TablesAndGrids.redLeadNote(txtCell, tpl.caption_red_lead);
+		const caption = this.#cellText(rl ? rl.rest : txtCell).replace(/^\s*\[[^\]]*\]\s*/, "").trim();
 		if (!caption) return null;
 		if (/[•·]|\n/.test(caption)) return null;          // a list / hard newline → don't flatten
-		return { filename, caption };
+		return { filename, caption, lead: rl ? rl.note : null };
 	}
 
 	/**

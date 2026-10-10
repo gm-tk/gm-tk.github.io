@@ -640,6 +640,28 @@ class TablesAndGrids {
 		return links.filter((l) => { const t = String(l?.text ?? "").trim(); return (re.test(t) && !(ex && ex.test(t))) || phrase(l, t); });
 	};
 
+	/**
+	 * A RED LABEL BEFORE BLACK TEXT. A cell part that OPENS with a run the writer typed in red — ≥ min_words words, no
+	 * bracket of its own — and goes on in black («Image: iStock:» + the address, «Front caption :» + the caption, «Note to
+	 * CS – link to possible layout of the poem» + the link) is the writer's instruction and the learner's words in one part:
+	 * the red run is the note, the black remainder is the part. Returns {note, rest} (the remainder with every red marker
+	 * stripped) or null when the part is not that shape or the rule is off.
+	 * @param {string} rawPart - the part with the writer's red markers still on it
+	 * @param {object} cfg - the mixed_lead block ({enabled, env, min_words})
+	 * @returns {{note: string, rest: string}|null}
+	 */
+	static redLeadNote(rawPart, cfg) {
+		if (!cfg || cfg.enabled === false) return null;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env ?? "CELLREDLEAD_OFF"]) return null;
+		const m = String(rawPart ?? "").match(/^\s*\u{1f534}\[RED TEXT\]\s*([^\[\]]*?)\s*\[\/RED TEXT\]\u{1f534}\s*(\S[\s\S]*)$/u);
+		if (!m || /^\u{1f534}/u.test(m[2])) return null;
+		const note = m[1].replace(/[*_]/g, "").replace(/\s+/g, " ").trim();
+		if (note.split(/\s+/).filter(Boolean).length < (cfg.min_words ?? 2)) return null;
+		const rest = m[2].replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "").replace(/\s+/g, " ").trim();
+		if (!/[\p{L}\p{N}]/u.test(rest)) return null;
+		return { note, rest };
+	};
+
 	static cellParts(cell) {
 		// a run of line-break markers (an emptied line between them) is one break, so no marker is left on the next line
 		// (soft_break_lead.cell_parts; env CELLSLASH_OFF)
@@ -710,9 +732,9 @@ class TablesAndGrids {
 		const rpnOn = rpn && rpn.enabled !== false
 			&& !(typeof process !== "undefined" && process.env && (process.env[rpn.env ?? "CELLREDNOTE_OFF"] || process.env.TABLEHOVER_OFF));
 		const parts = this.cellParts(cell);
-		let redOnly = null;
+		let redOnly = null, raw = null;
 		if (rpnOn) {
-			const raw = String(cell ?? "").split(/\s+\/\s+/).map((p) => p.trim()).filter((p) =>
+			raw = String(cell ?? "").split(/\s+\/\s+/).map((p) => p.trim()).filter((p) =>
 				p.replace(/\u{1f534}\[RED TEXT\]/gu, "").replace(/\[\/RED TEXT\]\u{1f534}/gu, "").trim());
 			if (raw.length === parts.length) {
 				redOnly = raw.map((p) => /\u{1f534}\[RED TEXT\]/u.test(p)
@@ -720,6 +742,11 @@ class TablesAndGrids {
 			}
 		}
 		parts.forEach((part, pi) => {
+			// a part that OPENS with a red label and goes on in black («Image: iStock:» + the address, «Front caption :» + the
+			// caption) lifts the label to the writer's note and keeps the black remainder as the part
+			// (layout_table_grid.red_part_note.mixed_lead; env CELLREDLEAD_OFF)
+			const ml = rpnOn && raw && raw.length === parts.length && !(redOnly && redOnly[pi]) ? this.redLeadNote(raw[pi], rpn.mixed_lead) : null;
+			if (ml) { flush(); out.push(NotesAndComments.redFlag(ml.note, run, "cs")); part = ml.rest; }
 			const m = part.match(/^\[([^\]]+)\]\s*([\s\S]*)$/);
 			let canon = null, rest = part;
 			if (m) {
@@ -1089,6 +1116,30 @@ class TablesAndGrids {
 			&& !(typeof process !== "undefined" && process.env && process.env[bk.env ?? "CELLREDBRACKET_OFF"])
 			&& [...s.matchAll(RUNS)].map((m) => innerOf(m[0])).every((inner) => !/[[\]]/.test(inner) || bkFits(inner))
 			&& !restResolves();
+		// A RED LABEL THAT OPENS ITS PART AND GOES ON IN BLACK («Mouseover text:» + the hover words, «front label» + the card's
+		// word, «Title (slide 1)» + the title) is the writer's instruction whatever its words — its position is the cue. Data
+		// cell_red_request.lead_label; env CELLREDLEAD_OFF.
+		const ll = cfg.lead_label;
+		const llOn = !!ll && ll.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[ll.env ?? "CELLREDLEAD_OFF"]);
+		const partBounds = (at, len) => {
+			// the part the run sits in: from the last « / » (or the paragraph separator) before it to the next one after it
+			const seps = [" / "]; if (sep) seps.push(sep);
+			let from = 0, to = s.length;
+			for (const x of seps) {
+				const i = s.lastIndexOf(x, at); if (i >= 0 && i + x.length > from) from = i + x.length;
+				const j = s.indexOf(x, at + len); if (j >= 0 && j < to) to = j;
+			}
+			return { from, to };
+		};
+		const leadLabel = (m) => {
+			const inner = innerOf(m[0]);
+			if (/[[\]]/.test(inner) || inner.split(" ").filter((w) => /[\p{L}\p{N}]/u.test(w)).length < (ll.min_words ?? 2)) return false;
+			const { from, to } = partBounds(m.index, m[0].length);
+			const before = s.slice(from, m.index).replace(/[•\s]+/g, "");
+			const after = s.slice(m.index + m[0].length, to);
+			return !before && !/^\s*\u{1f534}/u.test(after) && /[\p{L}\p{N}]/u.test(after.replace(RUNS, " "));
+		};
 		const hits = [];
 		for (const m of s.matchAll(RUNS)) {
 			const inner = innerOf(m[0]);
@@ -1103,6 +1154,7 @@ class TablesAndGrids {
 				continue;
 			}
 			if (/[[\]]/.test(inner)) continue;
+			if (llOn && leadLabel(m)) { hits.push({ start: m.index, end: m.index + m[0].length, note: NotesAndComments.redFlag(inner, run, "cs") }); continue; }
 			if (inner.split(" ").filter((w) => /[\p{L}\p{N}]/u.test(w)).length < minW) continue;
 			if (!norm.HasInstructionCue(inner)) continue;
 			hits.push({ start: m.index, end: m.index + m[0].length, note: NotesAndComments.redFlag(inner, run, "cs") });

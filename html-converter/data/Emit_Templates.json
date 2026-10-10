@@ -160,9 +160,15 @@
 				"env": "REOVIDEOMLROW_OFF"
 			},
 			"red_prose_note": {
-				"enabled": false,
+				"enabled": true,
 				"env": "REOREDNOTE_OFF",
 				"min_words": 3,
+				"mixed_lead": {
+					"enabled": true,
+					"env": "REOREDLEAD_OFF",
+					"min_words": 2,
+					"_doc": "A RED LABEL BEFORE BLACK TEXT IN A BILINGUAL CELL. A part that opens with a red run of two or more words and no bracket, then goes on in black — 'Note to CS – link to possible layout of the poem' + the poem's link — lifts the red run to the retained Writers Note and keeps the black remainder as the part. Env REOREDLEAD_OFF restores the plain rendering."
+				},
 				"_doc": "A RED NOTE INSIDE A BILINGUAL CELL IS THE WRITER'S NOTE, NOT LEARNER TEXT. The writer types a note to Creative Services in red inside a bilingual table cell ('Note to CS - Please use Sassoon font.', 'Background picture to draw over', 'Card 1 (match to)'); the cell splitter had no tag to read, so it stripped the red markers and shipped the note as learner paragraphs in both languages — the body path turns every red line that is not a tag into a Writers Note. Measured: 122 wholly-red prose parts of three or more words in 15 modules, 39 reaching the learner where the human pages show nothing (13 where the human kept the words). A cell part that is entirely red with no bracket tag and at least `min_words` words now renders as the retained Writers Note (NotesAndComments.redFlag, kind cs — the template-placeholder guard included), never as learner text; a shorter red part (a label, a single word) is left as it was. Env REOREDNOTE_OFF restores the old rendering."
 			},
 			"widget_label_drop": {
@@ -550,6 +556,12 @@
 				"enabled": true,
 				"env": "CELLREDREQ_OFF",
 				"min_words": 3,
+				"lead_label": {
+					"enabled": true,
+					"env": "CELLREDLEAD_OFF",
+					"min_words": 2,
+					"_doc": "A RED LABEL THAT OPENS ITS CELL PART AND GOES ON IN BLACK IS THE WRITER'S INSTRUCTION WHATEVER ITS WORDS. A red run with no instruction cue stayed as a data label the learner reads — right for 'e short' beside its tick, wrong for 'Mouseover text:' + the hover words, 'front label' + the card's word, 'Title (slide 1)' + the title, 'URL link:' + the address, 'Front caption :' + the caption (measured corpus-wide: 326 red-lead parts in 88 modules, the red words reaching the learner at 110 sites the human pages never show). A red run of at least min_words words and no bracket that opens its « / » part (a leading bullet allowed) and is followed by black text in the same part is the writer's note by its position: lifted to the retained Writers Note like a cued request. Env CELLREDLEAD_OFF restores the plain rendering."
+				},
 				"redundant_link": {
 					"_doc": "A RED LINK REQUEST WHOSE ADDRESS IS THE NEXT WORDS' OWN LINK IS REDUNDANT. 'This kete is woven from [Link 2, to https://…/kiekie/] kiekie' with 'kiekie' itself hyperlinked to the same address (TEFUN07) showed the bracket and its address as cell text and left the word plain; the human links the word only. A red run in a kept cell that is exactly one bracketed link request carrying an address (pattern), followed (within lookahead_chars) by words that are one of the table's own hyperlinks to the same address, is removed, and that hyperlink is woven onto those words in the cell.",
 					"enabled": true,
@@ -2791,6 +2803,12 @@
 		"============================================================================"
 	],
 	"interactive_builders": {
+		"image_caption_picture_words": {
+			"enabled": false,
+			"env": "WIDGETIMGWORDS_OFF",
+			"pattern": "\\b(?:avatar|istock|image|picture|photo|illustration|clipart|icon)\\b",
+			"_doc": "THE PICTURE'S NAMING WORDS ARE NOT A CAPTION. The shared member mapper (accordion, flip card, tabs, click drop) keeps the words riding an [image] tag's line as panel or face text (image_caption_as_text) — right for a real caption, wrong for the writer naming the picture ('avatar Tina', the pasted stock title): the learner read 'avatar Tina' on a flip card's back. A residual that matches pattern is the picture's description and is dropped; any other residual stays the caption. Env WIDGETIMGWORDS_OFF restores the old reading."
+		},
 		"_tag_words_note": {
 			"enabled": true,
 			"env": "TAGWORDSNOTE_OFF",
@@ -3534,6 +3552,17 @@
 			"rich": {
 				"enabled": true,
 				"plain_cell_bubbles": true,
+				"avatar_thought_layout": {
+					"enabled": true,
+					"env": "SBRICHTHOUGHT_OFF",
+					"_doc": "THE THOUGHT-BUBBLE TAG KEEPS ITS LAYOUT WHEN A CHARACTER PICTURE SITS BESIDE IT. The composer read the writer's thought wording (thought_re) for its image-less bubbles only; the avatar form opened with the standard speech layout, so '[Thought bubble] Our key question is …' + '[Image] avatar Tina …' shipped as layout=\"speech\" where the human pages carry layout=\"thought\" (measured site by site: 22 of 26 such bubbles). The avatar bubble's open now takes layout_thought when the bubble's own tag wording says thought. Env SBRICHTHOUGHT_OFF restores the speech layout."
+				},
+				"image_trail_words": {
+					"enabled": true,
+					"env": "SBRICHIMGTEXT_OFF",
+					"pattern": "\\b(?:avatar|istock|image|picture|photo|illustration|clipart|icon)\\b",
+					"_doc": "THE PICTURE'S NAMING WORDS ARE NOT THE BUBBLE'S TEXT. An image marker's trailing words ('avatar Tina – friendly wave Tina from: <stock title>') were pushed as a text part after the picture, so the learner read 'avatar Tina' inside the bubble (measured: 10 sites). Trailing words that match pattern — the writer naming the picture — belong to the image (its alt text carries the stock title) and are dropped; any other trailing words stay the bubble's text. Env SBRICHIMGTEXT_OFF restores the old reading."
+				},
 				"image_slug_fallback": true,
 				"dangling_bracket": true,
 				"_dangling_bracket_note": "THE CLOSING BRACKET OUTSIDE THE COLOURED TEXT. Word lets a writer colour part of a line red and leave the rest black; TEDC402 typed two bubbles as '[speech bubble [/RED TEXT]🔴]' (the ']' beyond the colour boundary) and ENGI202's whole thought-bubble table hangs on the same '[Thought bubble ' span. The bubble's own bracket reader (#sbBrackets) demands a complete pair inside the span, so without this the invocation would fall to a designer note (TagNormaliser.Parse tolerates exactly this dangling form for classification, but the bubble builder does its own bracket reading). When true, a bracket that opens inside a red span and never closes is accepted as a marker; the orphan ']' left in the following black text is stripped by #sbRestText's STRAYLEAD rule. Env SBDANGLE_OFF.",
@@ -4127,6 +4156,12 @@
 			"close": "</div>"
 		},
 		"carousel": {
+			"caption_red_lead": {
+				"enabled": true,
+				"env": "CARREDLEAD_OFF",
+				"min_words": 2,
+				"_doc": "A RED LABEL THAT OPENS A SLIDE'S CAPTION CELL IS THE WRITER'S NOTE. The image + caption row allowed the caption cell one red span (its own marker) and unmarked it, so 'Title (slide 1)' + the title shipped as the caption 'Title (slide 1) Metadata' (measured corpus-wide: 22 carousel captions open with a red label the human pages never show). A caption cell — in the table-slides form (where red text is otherwise the slide's own words and only a cue-worded span is lifted) and in the image + caption row — that opens with a red run of at least min_words words and no bracket, followed by black text, keeps the black remainder as the caption; the red lead goes to the carousel's note channel (the table-slides form) or the run notes (the image + caption row). Env CARREDLEAD_OFF restores the old caption."
+			},
 			"table_slides": {
 				"enabled": true,
 				"members": {
@@ -8416,6 +8451,18 @@
 				"ul"
 			]
 		},
+		"template_hint_line": {
+			"_doc": "THE WRITERS TEMPLATE'S OWN HINT LINE IS NOT THE LEARNER'S TEXT. The template's unfilled prompt — 'Learning outcome/intentions for the lesson' (an italic paragraph after the [Body] tag, or a bullet), 'Learning outcome/intention' (the blank Inquiry brief's bullets), 'Lesson # and title' (its [H2]) — left in the body by a writer who never replaced it reached the page as a learner paragraph, list item or heading; the human pages never show it (measured corpus-wide: 12 modules carry a phrase, the human pages show it on none). A p / h1–h6 / li whose whole text — inline wrappers and one trailing mark stripped, folded — is one of the phrases is removed (an li that was its list's only item takes the list with it); hand-off boxes, developer notes and comments, built widgets, scripts and styles are verbatim. Env HINTLINE_OFF restores the blocks.",
+			"enabled": true,
+			"env": "HINTLINE_OFF",
+			"elements": ["p", "h1", "h2", "h3", "h4", "h5", "h6", "li"],
+			"phrases": [
+				"learning outcome/intentions for the lesson",
+				"learning outcomes/intentions for the lesson",
+				"learning outcome/intention",
+				"lesson # and title"
+			]
+		},
 		"orphan_punctuation": {
 			"_doc": "ORPHAN PUNCTUATION. A block (p / h1–h6 / li) whose whole text is ONE sentence mark, or a mark with no wording, is what is left when an inline widget capture, a fill-in answer span, a URL line or a moved definition took the words around it — the gold never ships one. merge_pattern (a lone . , ; : ! ?): the mark joins the end of the text block that closes right before it (through a list close), so the writer's mark is kept; with no text block before it the block is removed. drop_pattern (a lone dash or bullet glyph, a bare ** run, the cell line-break marker / on its own): the block is removed, with a list it leaves empty. Verbatim zones — hand-off boxes, developer notes and comments, the built widgets on typed_number_list.verbatim_widget_classes — are never touched. Env ORPHANPUNCT_OFF.",
 			"enabled": true,
@@ -8888,6 +8935,12 @@
 			"red_part_note": {
 				"enabled": true,
 				"env": "CELLREDNOTE_OFF",
+				"mixed_lead": {
+					"enabled": true,
+					"env": "CELLREDLEAD_OFF",
+					"min_words": 2,
+					"_doc": "A RED LABEL BEFORE BLACK TEXT IN A LAYOUT CELL. A part that OPENS with a run the writer typed in red (two or more words, no bracket of its own) and goes on in black — 'Image: iStock:' + the address, 'Front caption :' + the caption, 'Flipside says' + the card's words — is the writer's instruction and the learner's words in one part: the red run lifts to the retained Writers Note and the black remainder is the part (measured corpus-wide: 326 such parts in 88 modules, the red words reaching the learner at 110 sites the human pages never show). Env CELLREDLEAD_OFF restores the plain rendering."
+				},
 				"_doc": "A ' / '-separated part of a layout-table cell that the writer typed WHOLLY in red with no [tag] the normaliser knows (a note to the developer beside the picture: `please add eyes, mouth and license plate`, `[Image like this – kombi van parked in Auckland`, ENGS202 1.0 / 3.0) renders as the writer's red note (NotesAndComments.redFlag kind cs), the free body's own form, instead of a learner paragraph (which would leak the writer's literal note). The raw cell is split on the same separator; a part count that does not match cellParts keeps the plain rendering. Also off under TABLEHOVER_OFF (the table_cell_release master toggle)."
 			},
 			"single_row_only": false,

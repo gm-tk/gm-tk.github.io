@@ -1213,6 +1213,81 @@ class ListsAndRuns {
 	};
 
 	/**
+	 * THE WRITERS TEMPLATE'S OWN HINT LINE IS NOT THE LEARNER'S TEXT. The template's unfilled prompt — «Learning
+	 * outcome/intentions for the lesson», «Learning outcome/intention», «Lesson # and title» — left in the body as an
+	 * italic paragraph, a bullet or a heading is template furniture the human pages never show. A block (p / h1–h6 / li,
+	 * from body_region.template_hint_line.elements) whose whole text — inline wrappers and one trailing mark stripped,
+	 * folded — is one of the phrases is removed, together with a list it leaves empty. A pre-acks page post-pass over the
+	 * live zones only: hand-off boxes, developer notes and comments, built widgets (the typed-number list's verbatim
+	 * widget classes), scripts and styles are verbatim.
+	 * Data: Emit_Templates.body_region.template_hint_line   Env toggle: HINTLINE_OFF
+	 *
+	 * @param {string} html - one page's HTML (before the acks block)
+	 * @returns {string} the HTML without the template's hint blocks
+	 */
+	static TemplateHintLine(html) {
+		const cfg = DataService.Data.EmitTemplates?.body_region?.template_hint_line;
+		if (!cfg || cfg.enabled === false) return html;
+		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "HINTLINE_OFF"]) return html;
+		const src = String(html);
+		const fold = (s) => Utils.Fold(String(s).replace(/&nbsp;/g, " ")).toLowerCase().replace(/\s+/g, " ").trim().replace(/\s*[.:;,!?]$/u, "").trim();
+		const phrases = new Set((cfg.phrases ?? []).map(fold).filter(Boolean));
+		const els = (cfg.elements ?? ["p", "h1", "h2", "h3", "h4", "h5", "h6", "li"]).filter((t) => /^[a-z0-9]+$/.test(t));
+		if (!phrases.size || !els.length) return src;
+		// a candidate block holds text only, or text inside a chain of inline wrappers (<p><i>…</i></p>, <h2><span>…</span></h2>)
+		const blockRe = new RegExp("<(" + els.join("|") + ")(?:\\s[^>]*)?>((?:\\s*<(?:b|strong|i|em|u|span)(?:\\s[^>]*)?>)*)\\s*([^<]*?)\\s*((?:</(?:b|strong|i|em|u|span)>\\s*)*)</\\1>", "g");
+		const fix = (s) => {
+			let out = "", last = 0, m, hit = false;
+			blockRe.lastIndex = 0;
+			while ((m = blockRe.exec(s))) {
+				if (!phrases.has(fold(m[3]))) continue;
+				hit = true;
+				let head = out + s.slice(last, m.index);
+				const tail = s.slice(m.index + m[0].length);
+				if (m[1] === "li") {
+					// a removed <li> that was its list's only item takes the list with it
+					const om = head.match(/<(ul|ol)(?:\s[^>]*)?>\s*$/);
+					const cm = tail.match(/^\s*<\/(ul|ol)>/);
+					if (om && cm && om[1] === cm[1]) {
+						head = head.slice(0, head.length - om[0].length);
+						s = s.slice(0, m.index + m[0].length) + tail.slice(cm[0].length);
+					}
+				}
+				out = head.replace(/[ \t]+$/, "");
+				last = m.index + m[0].length;
+				blockRe.lastIndex = last;
+			}
+			return hit ? out + s.slice(last) : s;
+		};
+		// the live zones: everything outside hand-off boxes, notes and comments, built widgets, scripts and styles
+		const tnl = DataService.Data.EmitTemplates?.body_region?.typed_number_list;
+		const widgets = (tnl?.verbatim_widget_classes ?? []).map((c) => String(c).replace(/[.*+?^$(){}|[\]\\]/g, "\\$&"));
+		const openRe = new RegExp("<div class=\"(?:cv2-interactive" + (widgets.length ? "|" + widgets.join("|") : "")
+			+ ")|<p class=\"cv2-(?:note|comment)\"|<script\\b|<style\\b", "g");
+		let out = "", i = 0, om;
+		while ((om = openRe.exec(src))) {
+			const j = om.index;
+			let end;
+			if (om[0].startsWith("<div")) {
+				const re = /<div\b|<\/div>/g;
+				re.lastIndex = j; let depth = 0, mm; end = src.length;
+				while ((mm = re.exec(src))) {
+					depth += mm[0] === "</div>" ? -1 : 1;
+					if (depth === 0) { end = re.lastIndex; break; }
+				}
+			} else if (om[0].startsWith("<p")) {
+				const k = src.indexOf("</p>", j); end = k < 0 ? src.length : k + 4;
+			} else {
+				const close = om[0].startsWith("<script") ? "</script>" : "</style>";
+				const k = src.indexOf(close, j); end = k < 0 ? src.length : k + close.length;
+			}
+			out += fix(src.slice(i, j)) + src.slice(j, end);
+			i = end; openRe.lastIndex = end;
+		}
+		return out + fix(src.slice(i));
+	};
+
+	/**
 	 * ADJACENT SIBLING LISTS → ONE LIST. A writer's bullet run split into two
 	 * sibling <ul>s by an item that rendered nothing (a bullet's trailing inline [link to X]
 	 * marker, a consumed item, an image between bullets) is one list in the gold. A full-page
