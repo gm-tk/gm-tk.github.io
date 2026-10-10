@@ -277,6 +277,8 @@ class BilingualBuilder {
 				// after every paragraph of the row. The human interleaves them.
 				const mip = this.#mediaInPlaceOn();
 				const useR = R.media.length > 0, src = useR ? R : E;
+				// the dropbox button typed in the other cell rides with the chosen cell's media (dual_language.dropbox_button)
+				this.#adoptOtherDropbox(src, useR ? E : R, this.#dropboxCfg());
 				let before = null;
 				if (mip && src.mediaPos && src.media.length) {
 					const kept = [];   // kept[i] = stripped index of the i-th original text element
@@ -311,8 +313,9 @@ class BilingualBuilder {
 				for (const p of R.text) out.push(this.langAttr(p, "reo"));   // Māori text FIRST
 				for (const p of E.text) out.push(this.langAttr(p, "eng"));   // English text SECOND
 			}
-			const media = R.media.length ? R.media : E.media;             // media ONCE (un-paired)
-			for (const m of media) out.push(m);
+			const chosen = R.media.length ? R : E;                         // media ONCE (un-paired)
+			this.#adoptOtherDropbox(chosen, chosen === R ? E : R, this.#dropboxCfg());
+			for (const m of chosen.media) out.push(m);
 		}
 		return out;
 	};
@@ -674,11 +677,16 @@ class BilingualBuilder {
 		// A [H2] Lesson N box RESEQUENCES its activity letter (A, B, C… — see
 		// reoLessonLetter above) within each lesson, discarding the writer's own
 		// irregular letters; only assigned when a box is actually going to be emitted.
-		if (openedByLesson && hasWidget) number = `${lessonNum}${this.reoLessonLetter(run, lessonNum)}`;
+		// a section whose content holds the dropbox upload button is boxed too — the KB's activity dropbox box
+		// (dual_language.dropbox_button.box_section; env REODBXBOX_OFF)
+		const dbxCfg = this.#dropboxCfg();
+		const hasDbx = !!(dbxCfg && dbxCfg.box && dbxCfg.box.mode === "section") && inner.some((h) => this.#isDropbox(h, dbxCfg));
+		const boxed = hasWidget || hasDbx;
+		if (openedByLesson && boxed) number = `${lessonNum}${this.reoLessonLetter(run, lessonNum)}`;
 		// KB 07B: a `[H1] N.M`-opened section that is boxed and carried no
 		// "Activity NX:" label takes the writer's own section id as its number= (decimal,
 		// the KB's preferred form, as the gold mostly numbers it).
-		if (isH1 && hasWidget && number === null) {
+		if (isH1 && boxed && number === null) {
 			const sc = this.sectionIdNumberCfg();
 			if (sc && sc.number_from_section !== false) {
 				const sid = this.bilingualSectionNum(it0.block);
@@ -694,9 +702,11 @@ class BilingualBuilder {
 		// KB 07B / 05B: inside the section BOX a writer [H2] heading renders at the
 		// KB's activity level h3 — the heading re-leveller never reaches an activity-anchored
 		// heading, so without this the box would keep the writer's h2. Data section_grouping.boxed_heading_level.
-		const boxedInner = hasWidget ? this.boxedHeadingRelevel(innerHtml, run) : innerHtml;
-		if (inner.length) body = hasWidget
-			? `<div class="row">\n<div class="col-md-8 col-12">\n<div class="activity interactive"${number ? ` number="${number}"` : ""}>\n<div class="row">\n<div class="col-12">\n${boxedInner}\n</div>\n</div>\n</div>\n</div>\n</div>`
+		const boxedInner = boxed ? this.boxedHeadingRelevel(innerHtml, run) : innerHtml;
+		// the box's class: the widget box, the dropbox box, or both when the section holds both
+		const boxCls = hasDbx ? (hasWidget ? `activity interactive ${dbxCfg.box.cls.replace(/^activity\s+/, "")}` : dbxCfg.box.cls) : "activity interactive";
+		if (inner.length) body = boxed
+			? `<div class="row">\n<div class="col-md-8 col-12">\n<div class="${boxCls}"${number ? ` number="${number}"` : ""}>\n<div class="row">\n<div class="col-12">\n${boxedInner}\n</div>\n</div>\n</div>\n</div>\n</div>`
 			: `<div class="row">\n<div class="col-md-8 col-12">\n${innerHtml}\n</div>\n</div>`;
 		// A [H2] Lesson N opener prepends its bare-col <h2> title BEFORE the box (or
 		// bare body) that was just built.
@@ -998,6 +1008,62 @@ class BilingualBuilder {
 		return NotesAndComments.redFlag(Utils.FillTemplate(c.flag ?? "{label} with no URL found — add the video source.", { label }), run);
 	};
 
+	/** THE DROPBOX REQUEST IN A BILINGUAL CELL IS THE UPLOAD BUTTON (data dual_language.dropbox_button; env REODROPBOX_OFF):
+	 *  the compiled rule — the part pattern, the two labels, the anchor template, the To Do and the section-box half
+	 *  (box_section; env REODBXBOX_OFF) — or null when the rule is off. */
+	static #dropboxCfg() {
+		const c = DataService.Data.EmitTemplates?.elements?.dual_language?.dropbox_button;
+		if (!c || c.enabled === false || !c.part_pattern
+			|| (typeof process !== "undefined" && process.env && process.env[c.env ?? "REODROPBOX_OFF"])) return null;
+		const bs = c.box_section;
+		const box = bs && bs.enabled !== false
+			&& !(typeof process !== "undefined" && process.env && process.env[bs.env ?? "REODBXBOX_OFF"])
+			? { cls: bs.class || "activity dropbox", mode: bs.mode === "section" ? "section" : "button" } : null;
+		return {
+			re: new RegExp(c.part_pattern, "i"),
+			labelEng: c.label_eng || "Upload to dropbox",
+			labelReo: c.label_reo || "",
+			pair: c.pair !== false && !!c.label_reo,
+			html: c.button_html || "<a {lang}href=\"\" target=\"_blank\"><div class=\"button\">{label}</div></a>",
+			todo: c.todo_note || "",
+			box,
+		};
+	};
+
+	/** The upload button for one dropbox request part: the reo anchor (when paired), the eng anchor, then the To Do that
+	 *  names the writer's own words — the href is blank, the per-module rcode being in no Writers Template. */
+	static #dropboxButton(part, c, run) {
+		const out = [];
+		if (c.pair) out.push(Utils.FillTemplate(c.html, { lang: "reo ", label: Utils.EscapeHtml(c.labelReo) }));
+		out.push(Utils.FillTemplate(c.html, { lang: c.pair ? "eng " : "", label: Utils.EscapeHtml(c.labelEng) }));
+		if (c.todo) {
+			const spec = this.#stripRed(part).replace(/\s+/g, " ").trim();
+			const note = NotesAndComments.redFlag(Utils.FillTemplate(c.todo, { spec: spec || "(bare [dropbox] marker)" }), run);
+			if (note) out.push(note);
+		}
+		// the «button» box mode: the button and its To Do sit in their own activity dropbox box (the Standard path's
+		// free-dropbox form), leaving the section's other elements where they were
+		if (c.box && c.box.mode === "button")
+			return `<div class="${c.box.cls}">\n<div class="row">\n<div class="col-12">\n${out.join("\n")}\n</div>\n</div>\n</div>`;
+		return out.join("\n");
+	};
+
+	/** True when a rendered fragment holds the upload button this rule builds (its eng label inside div.button). */
+	static #isDropbox(html, c) {
+		return !!c && typeof html === "string" && html.includes(`<div class="button">${Utils.EscapeHtml(c.labelEng)}</div>`);
+	};
+
+	/** Media are emitted from ONE cell of a bilingual row, and the dropbox request sits in the English cell alone — so the
+	 *  chosen cell's split adopts the other cell's button (once, after its own text) rather than losing it. */
+	static #adoptOtherDropbox(chosen, other, c) {
+		if (!c || !chosen || !other || !Array.isArray(other.media) || !Array.isArray(chosen.media)) return;
+		for (const m of other.media) {
+			if (!this.#isDropbox(m, c) || chosen.media.includes(m)) continue;
+			chosen.media.push(m);
+			if (Array.isArray(chosen.mediaPos)) chosen.mediaPos.push(chosen.text.length);
+		}
+	};
+
 	/**
 	 * Does this table's first cell lead with a recognised callout tag?
 	 * Used by bilingualSection (above) to know when a table should STOP a
@@ -1229,6 +1295,8 @@ class BilingualBuilder {
 		// the carousel typed in the cell: its tag + slides are ONE media embed (dual_language.carousel_tag; env REOCAROUSEL_OFF)
 		const cc = this.#carouselCfg();
 		const carRuns = cc ? this.#carouselRuns(parts, cc) : new Map();
+		// the dropbox request part → the upload button (dual_language.dropbox_button; env REODROPBOX_OFF)
+		const dbx = this.#dropboxCfg();
 		for (let pi = 0; pi < parts.length; pi++) {
 			let part = parts[pi];
 			const cr = carRuns.get(pi);
@@ -1297,6 +1365,9 @@ class BilingualBuilder {
 				// (dual_language.video_no_source; env REOVIDEONOURL_OFF)
 				const vf = this.#videoNoSourceFlag(part, run);
 				flush(); pushM(`${vf ? vf + "\n" : ""}<div class="videoSection ratio ratio-16x9">\n<iframe></iframe>\n</div>`);
+			} else if (dbx && dbx.re.test(part)) {
+				// the writer's dropbox request — «[Button] [Dropbox]», a bare «[Dropbox]» — is the KB upload button, built once
+				flush(); pushM(this.#dropboxButton(part, dbx, run));
 			} else if (canon && /^(?:h[1-6]|heading|activity heading)$/.test(canon)) {
 				flush();
 				const digit = /^h\d$/.test(canon) ? parseInt(canon[1], 10) : 2;

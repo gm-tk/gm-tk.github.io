@@ -1231,7 +1231,10 @@ class ListsAndRuns {
 		if (typeof process !== "undefined" && process.env && process.env[cfg.env || "HINTLINE_OFF"]) return html;
 		const src = String(html);
 		const fold = (s) => Utils.Fold(String(s).replace(/&nbsp;/g, " ")).toLowerCase().replace(/\s+/g, " ").trim().replace(/\s*[.:;,!?]$/u, "").trim();
-		const phrases = new Set((cfg.phrases ?? []).map(fold).filter(Boolean));
+		// the template's front-matter prompts ride on their own sub-block and toggle (template_hint_line.front_matter_prompts; env HINTFRONT_OFF)
+		const fm = cfg.front_matter_prompts;
+		const fmOn = !!fm && fm.enabled !== false && !(typeof process !== "undefined" && process.env && process.env[fm.env || "HINTFRONT_OFF"]);
+		const phrases = new Set([...(cfg.phrases ?? []), ...(fmOn ? (fm.phrases ?? []) : [])].map(fold).filter(Boolean));
 		const els = (cfg.elements ?? ["p", "h1", "h2", "h3", "h4", "h5", "h6", "li"]).filter((t) => /^[a-z0-9]+$/.test(t));
 		if (!phrases.size || !els.length) return src;
 		// a candidate block holds text only, or text inside a chain of inline wrappers (<p><i>…</i></p>, <h2><span>…</span></h2>)
@@ -1259,15 +1262,36 @@ class ListsAndRuns {
 			}
 			return hit ? out + s.slice(last) : s;
 		};
+		// the template's placeholder words INSIDE a sentence («Allow insert time 8-10 hours …») leave the live zones' text
+		// (template_hint_line.inline_placeholders; env HINTINLINE_OFF) — each replacement a pattern and the words that stand in for it
+		const ip = cfg.inline_placeholders;
+		const ipOn = !!ip && ip.enabled !== false && Array.isArray(ip.replacements) && ip.replacements.length
+			&& !(typeof process !== "undefined" && process.env && process.env[ip.env || "HINTINLINE_OFF"]);
+		const ipRules = ipOn ? ip.replacements.filter((r) => r && r.match).map((r) => { try { return { re: new RegExp(r.match, "gu"), with: String(r.with ?? "") }; } catch { return null; } }).filter(Boolean) : [];
+		const live = (s) => { let t = fix(s); for (const r of ipRules) t = t.replace(r.re, r.with); return t; };
 		// the live zones: everything outside hand-off boxes, notes and comments, built widgets, scripts and styles
 		const tnl = DataService.Data.EmitTemplates?.body_region?.typed_number_list;
 		const widgets = (tnl?.verbatim_widget_classes ?? []).map((c) => String(c).replace(/[.*+?^$(){}|[\]\\]/g, "\\$&"));
 		const openRe = new RegExp("<div class=\"(?:cv2-interactive" + (widgets.length ? "|" + widgets.join("|") : "")
 			+ ")|<p class=\"cv2-(?:note|comment)\"|<script\\b|<style\\b", "g");
+		// the MODULE MENU is built as a `tabs` block, the same class the tabs widget's verbatim zone names — the menu's own
+		// panes stay live for this pass (the template's front-matter prompts sit there), a real tabs widget stays verbatim
+		// (template_hint_line.front_matter_prompts.menu_live; the sub-block's toggle)
+		let menuStart = -1, menuEnd = -1;
+		if (fmOn && fm.menu_live !== false) {
+			menuStart = src.indexOf("id=\"module-menu-content\"");
+			if (menuStart >= 0) {
+				const mo = src.lastIndexOf("<div", menuStart);
+				const re = /<div\b|<\/div>/g; re.lastIndex = mo; let d = 0, mm; menuEnd = src.length;
+				while ((mm = re.exec(src))) { d += mm[0] === "</div>" ? -1 : 1; if (d === 0) { menuEnd = re.lastIndex; break; } }
+				menuStart = mo;
+			}
+		}
 		let out = "", i = 0, om;
 		while ((om = openRe.exec(src))) {
 			const j = om.index;
 			let end;
+			if (menuStart >= 0 && j > menuStart && j < menuEnd && /^<div class="tabs\b/.test(om[0])) continue;   // the menu's tabs block is live
 			if (om[0].startsWith("<div")) {
 				const re = /<div\b|<\/div>/g;
 				re.lastIndex = j; let depth = 0, mm; end = src.length;
@@ -1281,10 +1305,10 @@ class ListsAndRuns {
 				const close = om[0].startsWith("<script") ? "</script>" : "</style>";
 				const k = src.indexOf(close, j); end = k < 0 ? src.length : k + close.length;
 			}
-			out += fix(src.slice(i, j)) + src.slice(j, end);
+			out += live(src.slice(i, j)) + src.slice(j, end);
 			i = end; openRe.lastIndex = end;
 		}
-		return out + fix(src.slice(i));
+		return out + live(src.slice(i));
 	};
 
 	/**

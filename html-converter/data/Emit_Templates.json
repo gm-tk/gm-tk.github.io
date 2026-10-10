@@ -159,6 +159,24 @@
 				"enabled": true,
 				"env": "REOVIDEOMLROW_OFF"
 			},
+			"dropbox_button": {
+				"_doc": "THE DROPBOX REQUEST IN A BILINGUAL CELL IS THE UPLOAD BUTTON. The writer types the dropbox request as its own « / »-separated cell part — «[Button] [Dropbox]», «[Button] [Add dropbox]», «[Button] [Dropbox Checklist]», a bare «[Dropbox]» — in the English cell after the Kiwi picture; the cell reader stripped its tags and nothing remained, so no Bilingual page carried a button. The KB's universal constraint (an activity that ends in a dropbox button carries the dropbox modifier), the family label «Upload to Dropbox» and the MTK patterns' dropbox placeholder row all name the button; the human pages build it, paired reo / eng, with the D2L quicklink the per-module rcode supplies — a code no Writers Template carries, so the href ships blank under the standing To Do (the Standard path's upload box does the same). The part becomes ONE media element (the reo anchor, the eng anchor, the To Do), emitted once from whichever cell carries it; the words after the tags are the writer's label and are dropped (the KB label stands). Env REODROPBOX_OFF restores the silent drop.",
+				"enabled": false,
+				"env": "REODROPBOX_OFF",
+				"part_pattern": "^\\s*(?:\\[\\s*(?:add\\s+)?button\\s*\\]\\s*)?\\[\\s*(?:add|insert|go\\s+to|voice\\s+recorder|please\\s+add)?[^\\]]*?drop\\s?box[^\\]]*\\]\\s*(?:\\[[^\\]]*\\]\\s*)*$",
+				"label_eng": "Upload to dropbox",
+				"label_reo": "Tukuatu ki te pouaka waihotanga",
+				"pair": false,
+				"button_html": "<a {lang}href=\"\" target=\"_blank\"><div class=\"button\">{label}</div></a>",
+				"todo_note": "Wire this button's D2L dropbox quicklink (the href is intentionally blank — the per-module rcode is in no Writers Template). Writer: {spec}",
+				"box_section": {
+					"_doc": "THE DROPBOX BUTTON SITS IN AN ACTIVITY DROPBOX BOX. Two modes: «button» wraps the button itself (with its To Do) in the KB's activity dropbox box, the Standard path's free-dropbox form, so the section's other elements keep their chains; «section» boxes the whole lesson section whose content holds the button (interactive as well when it also holds a widget), numbered like any boxed section — the human pages do that on most but not all such sections, and where they do not the whole section's chains move. Env REODBXBOX_OFF leaves the button bare.",
+					"enabled": true,
+					"env": "REODBXBOX_OFF",
+					"mode": "button",
+					"class": "activity dropbox"
+				}
+			},
 			"red_prose_note": {
 				"enabled": true,
 				"env": "REOREDNOTE_OFF",
@@ -8461,7 +8479,29 @@
 				"learning outcomes/intentions for the lesson",
 				"learning outcome/intention",
 				"lesson # and title"
-			]
+			],
+			"front_matter_prompts": {
+				"_doc": "THE TEMPLATE'S FRONT-MATTER PROMPTS ARE NOT THE LEARNER'S TEXT. The template's «What do I need to get started?» section asks the writer four questions to replace — equipment and support resources, the learning journal or portfolio, the supervisor or kaimanaaki, the technology — and a writer who leaves them unanswered ships them as list items the learner reads as instructions; the human pages show none. The same exact folded-text match as the phrases above, on its own toggle so the corpus before it stays the toggle-off state. A prompt the writer ANSWERED on the same line is not this shape and is left alone.",
+				"enabled": true,
+				"env": "HINTFRONT_OFF",
+				"menu_live": true,
+				"phrases": [
+					"list any equipment required and support resources – if any",
+					"list any equipment required and support resources - if any",
+					"any information on learning journal or portfolio use",
+					"any information for supervisor or kaimanaaki",
+					"any information for the supervisor or kaimanaaki",
+					"any tech information"
+				]
+			},
+			"inline_placeholders": {
+				"_doc": "THE TEMPLATE'S PLACEHOLDER WORDS INSIDE THE WRITER'S SENTENCE ARE NOT THE LEARNER'S TEXT. The planning sentence the template supplies reads «Allow *insert time* hours for the learning in this module.»; a writer who types the hours after the italic placeholder instead of over it leaves «Allow insert time 8-10 hours …» on the Information tab, and the human pages drop the two words. Each replacement is a pattern over the text of the hint pass's live zones (the module menu's tabs block included) and the words that stand in for it; the block itself stays. Env HINTINLINE_OFF leaves the placeholder words as typed.",
+				"enabled": true,
+				"env": "HINTINLINE_OFF",
+				"replacements": [
+					{ "match": "\\bAllow\\s+insert\\s+time\\s+", "with": "Allow " }
+				]
+			}
 		},
 		"orphan_punctuation": {
 			"_doc": "ORPHAN PUNCTUATION. A block (p / h1–h6 / li) whose whole text is ONE sentence mark, or a mark with no wording, is what is left when an inline widget capture, a fill-in answer span, a URL line or a moved definition took the words around it — the gold never ships one. merge_pattern (a lone . , ; : ! ?): the mark joins the end of the text block that closes right before it (through a list close), so the writer's mark is kept; with no text block before it the block is removed. drop_pattern (a lone dash or bullet glyph, a bare ** run, the cell line-break marker / on its own): the block is removed, with a list it leaves empty. Verbatim zones — hand-off boxes, developer notes and comments, the built widgets on typed_number_list.verbatim_widget_classes — are never touched. Env ORPHANPUNCT_OFF.",
